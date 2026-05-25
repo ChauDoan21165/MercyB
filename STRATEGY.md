@@ -76,7 +76,7 @@ MercyBlade is **not** a single-audience app with a deferred expansion. It is a m
 - **Target languages supported:** English, Japanese, Korean, Chinese, French, German, Spanish, Vietnamese
 - **Up to 16 learning pairs.** A user picks their native language and their target language via a Duolingo-style onboarding flow (onboarding implementation is a separate future dispatch — see §7).
 
-Every pair that has content is real product. None is hidden, deprecated, or "off-mission." Built content stays user-discoverable (`LanguageSwitcher`, the `/languages` index, per-language pages). Burying shipped work users could benefit from has no upside and was a mistake the v3.0 reset corrected (see §15).
+Every pair that has content is real product. None is hidden, deprecated, or "off-mission." Built content stays user-discoverable (`LanguageSwitcher`, the `/languages` index, per-language pages). Burying shipped work users could benefit from has no upside and was a mistake the v3.0 reset corrected (see §16 changelog, v3.0 entry).
 
 ### Candidate pairs (the "few other languages" named)
 
@@ -445,37 +445,206 @@ For effort-allocation decisions across pairs, additionally ask:
 
 ---
 
-## 15. How Future Sessions Should Use This Document
+## 15. Definition of Done: Vietnamese flagship
 
-### When starting a new Claude session (web chat)
+The Vietnamese flagship covers **both axes** of the pair matrix anchored
+to Vietnamese:
 
-The session should:
-1. Clone the repo: `git clone --depth 1 https://github.com/ChauDoan21165/MercyB.git /home/claude/MercyB`
-2. Read this file (STRATEGY.md) first
-3. Read PRINCIPLES.md second
-4. Then engage with the question
+- **Axis 1: VN → EN** — Vietnamese learner studying English. The
+  ~95%-effort home market (§4). The proof case for §1's mission.
+- **Axis 2: EN → VN** — English speaker studying Vietnamese. The
+  reverse direction of the same flagship language, served by the
+  536-lesson Vietnamese-for-foreigners track (§6).
 
-### When starting a new Claude Code session (terminal)
+The flagship is "done enough to start serious work on a **second pair**
+(Korean / Japanese / Chinese / French / German / Spanish on either
+axis)" when **all** of the criteria below hold. Until then, new-pair
+authoring competes with §4's home-market effort allocation and the
+matrix risks drifting toward dilution.
 
-This file auto-loads via CLAUDE.md reference. No paste needed.
+Each criterion is testable — pass/fail, with a named verification
+artifact, not vibes. Each ships its own checkbox here and gets ticked
+when the artifact lands on `origin/main`. None of these criteria are
+already met today; none requires perfection. The bar is "real depth on
+one full direction of one full pair, on both sides."
 
-### When facing a strategic question
+### Axis 1: VN → EN done-criteria
 
-Re-read Sections 4 (the matrix), 5 (product), 11 (moat), 13 (decision framework). The answer is usually in there.
+- [ ] **L1 grammar coverage gap closed.** Every grammar family in
+  `docs/l1-taxonomies/vi-grammar.md` is reachable by at least one
+  detector rule in `src/lib/feedback/l1-error-detector.ts`. *Today:*
+  11 of 15 families have detectors; 4 are detector candidates
+  (`vi_l1_subject_gender`, `vi_l1_topic_comment_fronting`,
+  `vi_l1_co_transfer`, `vi_l1_future_adverb_bare`) tracked as
+  `expected_failure` in `evals/vi-grammar-cases.json`. *Artifact:* all
+  four candidates flip from `expected_failure` to `expected_pass` in
+  one or more follow-up PRs against the harness, each landing
+  `--update-baseline`.
 
-### When feeling lost or off-track
+- [ ] **L1 detector eval baseline ≥ 95%.** Global pass rate on
+  `evals/vi-grammar-cases.json` is ≥ 95% (baseline-eligible cases).
+  *Today:* 94.2% (49/52). *Artifact:* `evals/.baseline.json` on
+  `main` shows `global.rate ≥ 0.95`. Closing the three under-firing
+  patterns from PR #1115's report (`IRREGULAR_PAST` whitelist,
+  inflection in `PREPOSITION_MISMATCHES`, preposition-deletion
+  entries) is the expected path.
 
-Re-read Section 1 (Mission). If the work doesn't serve the mission, stop doing it.
+- [ ] **AI Tutor consumes the L1 profile.** `promptAssembly.ts`
+  drops the unused `_l1Patterns: string[]` placeholder (currently at
+  line 231, per `docs/l1-taxonomies/spec.md` §4.5) and injects a
+  `GrammarFamily[]` projection from `vietnameseL1Profile.grammar.families`
+  into the Vietnamese teacher-voice block. *Today:* unconsumed.
+  *Artifact:* a PR replacing the placeholder, plus a manual probe
+  showing the L1 patterns surfacing mid-conversation in the live tutor
+  for a Vietnamese learner — screenshot or transcript in PR body.
 
-### When tempted to change strategy
+- [ ] **Pronunciation drills cover the §5-named pain points.**
+  `src/lib/pronunciation/vn-phoneme-map.ts` ships `PROBLEM_PAIRS_*`
+  sets for every Vietnamese pain point named in §5 item 3 — `th`,
+  `r`, `l`, `final consonants`, `stress`, `intonation`. *Today:*
+  `PROBLEM_PAIRS_TH_T`, `_R_L`, `_ED_ENDINGS`, `_S_PLURALS` shipped;
+  stress and sentence-level intonation drill sets do not exist.
+  *Artifact:* two new `PROBLEM_PAIRS_*` consts (stress + intonation),
+  each with ≥6 entries.
 
-Strategy that changes constantly isn't strategy. Real change requires:
-- User data (paying user behavior, retention, churn reasons)
-- Market signals (competitor moves, price changes, regulatory shifts)
-- Personal capacity changes (health, family, energy)
-- Time (six months of execution data > any single conversation)
+- [ ] **Placement → lesson routing verified end-to-end.** A
+  Vietnamese learner who completes the placement test is routed to
+  lessons tagged with their flagged L1 interference patterns,
+  validated by a real placement run + lesson-recommendation chain on a
+  real account. *Today:* infrastructure shipped
+  (`getVnL1PatternsByCategory`, `lessonTags`) but no end-to-end
+  runbook on record. *Artifact:* a runbook in `reports/` capturing
+  one Vietnamese learner's placement → flagged-pattern → recommended-
+  lesson chain.
 
-NOT advice from an AI in a chat window. AI advice is a tactical input. Strategy is a long-term commitment. **v3.0 of this doc exists because an AI session did the opposite — it rewrote the product definition from a conversation it mistranslated. Do not repeat that.**
+- [ ] **Native crash telemetry confirmed on-device.** Sentry fires
+  from iOS and Android builds on a real device — not a CI emulator
+  or simulator — and the event lands in the Sentry dashboard. *Today:*
+  wiring shipped (per dispatch reference to PR #1132); on-device
+  probe pending. *Artifact:* Chau's on-device confirmation logged
+  against PR #1132 (issue ID from Sentry pinned in the PR thread).
+
+- [ ] **One named Vietnamese learner outcome.** At least one
+  Vietnamese learner publicly credits MercyBlade for an
+  IELTS / TOEIC / VSTEP score uplift, a job-abroad outcome, or a
+  named conversational-fluency milestone. *Today:* zero named credits
+  on record. *Artifact:* a quoted attribution in `testimonials/` (or
+  equivalent on-repo location) with the learner's documented permission
+  to use the quote. This is the §1 mission test for Axis 1.
+
+### Axis 2: EN → VN done-criteria
+
+- [ ] **L1 profile authored for EN-speakers studying Vietnamese.**
+  An EN→VN profile (name decided at authoring time, e.g.
+  `englishL1Profile` for the Vietnamese-target consumer, or
+  `vietnameseTargetProfile` if framed inversely) exists under
+  `src/lib/l1-profiles/`, mirroring `vi.ts`'s structure but inverted:
+  the L1 is English, the target is Vietnamese. *Today:* zero
+  files for this direction. *Artifact:* the profile lands with
+  ≥10 grammar families, ≥80 paired examples (mirroring the C1 bar
+  for VN→EN scaled to half because EN→VN has less prior taxonomy
+  research), bilingual EN/VI descriptions, severity tiers per the
+  spec §0 lock.
+
+- [ ] **Tone production coaching exists.** The EN→VN track ships a
+  coaching surface for the six Northern (or five Southern) Vietnamese
+  tones — at minimum, a drill that asks the learner to produce a tone
+  on a target syllable and returns at-least-pass/fail feedback.
+  *Today:* zero tone-specific surfaces. *Artifact:* shipped feature
+  with a drill set of ≥12 minimal-tone pairs (e.g. the canonical
+  `ma / má / mà / mả / mã / mạ` set, plus 6+ more contrasts) and a
+  test verifying the scoring distinguishes adjacent tones.
+
+- [ ] **Classifier system explainer + drill.** At least one room
+  teaching the Vietnamese classifier system (`cái`, `con`, `chiếc`,
+  `cuốn`, `quả`, `tấm`, etc.) with a forced-choice drill that scores
+  correct classifier selection given a head-noun + count. *Today:*
+  no room targets this. *Artifact:* one new room JSON in
+  `public/data/` with ≥20 drill items and a scoring path.
+
+- [ ] **EN→VN detector rules.** At least 8 detector rules in a new
+  rule pack (`src/lib/feedback/rule-packs/en-vn/` or equivalent)
+  covering common English → Vietnamese transfer errors: dropped
+  classifier, missing sentence-final particle (`à`, `nhé`, `không`),
+  wrong-pronoun-by-age (`tôi/em/anh/chị/cô/chú`), English noun-phrase
+  word order (`book red` → `sách màu đỏ`), missing aspect marker
+  (`đã/đang/sẽ`), mistranslated copula across `là` and bare adjective
+  predicates, etc. *Today:* zero rules for this direction.
+  *Artifact:* 8+ rules, each with ≥3 fixture cases passing in a
+  parallel EN→VN eval harness (sibling to `evals/vi-grammar-cases.json`).
+
+- [ ] **One named English-speaker outcome.** At least one English
+  speaker publicly credits MercyBlade for measurable conversational
+  Vietnamese fluency — a real-world conversation reported, a level
+  test passed, an in-country transaction handled, an explicit "I can
+  now order pho without switching to English" milestone. *Today:*
+  zero on record. *Artifact:* quoted attribution in `testimonials/`
+  with the learner's documented permission.
+
+### Cross-axis: matrix-doc anchor
+
+- [ ] **`docs/pair-matrix.md` lists capability coverage per axis.**
+  *Today:* in flight (C4). *Artifact:* the file merged on `main`,
+  with rows for both axes of the Vietnamese flagship showing which
+  capabilities (grammar detector, phonology drills, placement
+  routing, tutor injection, crash telemetry, outcomes) are present.
+  This is the dashboard against which the checkboxes above are
+  audited.
+
+### When a criterion is met
+
+Each checkbox is ticked **only** when the named artifact lands on
+`origin/main` (or in Chau's verified Sentry dashboard for the
+on-device gate). The tick edit is a tiny doc PR carrying the artifact
+link. No criterion is closed by argument; only by artifact.
+
+If a criterion's artifact lands but the underlying capability turns
+out not to map to a real learner outcome (e.g. the tutor injection
+ships but learners don't engage with the surfaced patterns), the
+checkbox stays ticked and a new criterion is added below — never
+deleted. This §15 grows; it does not silently shrink.
+
+### Re-open gates (when this section gets revisited)
+
+Re-open and tighten if any of the following happen:
+
+1. **A criterion ticks but the §1 mission test fails.** A capability
+   shipped, no learner outcome materialised within a reasonable
+   window. Tighten the criterion to require the missing link.
+2. **A new pair (Korean, Japanese, Chinese, French, German, Spanish
+   on either axis) starts serious authoring before all flagship
+   checkboxes are ticked.** Confirm explicitly that the second-pair
+   work isn't pulling effort the flagship still needs — §4's
+   "Vietnamese-native wins the tie" principle binds. If the
+   second-pair start is justified (e.g. an audience opportunity that
+   doesn't compete for the flagship's authoring bandwidth), record
+   the rationale here as a §15 addendum, not as a deletion.
+3. **The pair-matrix doc reveals a capability gap not captured
+   above.** Add a checkbox; do not silently absorb the gap.
+
+### Hard rules for editing this section
+
+- Do **not** weaken a criterion to make a checkbox tickable. If a
+  criterion is wrong, replace it with a better one; the artifact
+  bar stays high or moves higher.
+- Do **not** add gamification metrics (XP, streaks, leagues, time
+  in-app). §10 forbids these as KPIs; they don't belong here either.
+- Do **not** add criteria that depend on third-party data that
+  cannot be verified from this repo or from a Chau-controlled
+  account (e.g. Duolingo Vietnamese retention numbers).
+- Do **not** count "the code shipped" as "the criterion is met"
+  unless the artifact is itself a learner-facing outcome (a placed
+  learner, a routed lesson, a Sentry event from a real device, a
+  quoted testimonial). Code-shipped-without-use is the failure mode
+  this section exists to prevent.
+
+### Status snapshot (date this when ticking checkboxes)
+
+As of 2026-05-25, no checkbox above is ticked. The closest
+criteria are *Axis 1: L1 detector eval baseline* (94.2%, needs
+≥ 95%) and *Axis 1: Native crash telemetry* (wired per PR #1132,
+needs Chau's on-device probe). Authoring §15 is itself the start
+of the audit; ticking the boxes is the work.
 
 ---
 
