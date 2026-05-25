@@ -15,15 +15,28 @@ import { lazyWithRetry } from "@/lib/lazyWithRetry";
 import { getSpeechLocale, getTtsLocale, type TutorLanguageCode } from "@/lib/tutor/languageRegistry";
 import { getSafetyLabel, viKidsEnglish as viKidsEnglishConfig } from "@/lib/tutor/productConfigs";
 
-// MercyTeacherTab + MercySpeakTab were orphaned by PR #1093 (floating-helper
-// simplification) — they used to be mounted inside MercyGuidePanel and lost
-// their only consumer. Re-mounted here as additional kids tabs so the 30
-// kidPageN data files + 3,259 photos in public/images/mercy-kids* become
-// user-reachable again via the restored /kids/vi-english surface.
+// MercyTeacherTab was orphaned by PR #1093 (floating-helper simplification);
+// remounted here in kids mode. MercyTeacherTab has an explicit `if (isKidsMode)`
+// early-return diversion to a kids-safe pipeline, so passing `isKidsMode` actually
+// neuters the adult path.
+//
+// MercySpeakTab is intentionally NOT mounted here. PR #1141 mounted it without
+// `isKidsMode`, and even with the prop the adult path remains reachable: the
+// `startRecording()` function calls `navigator.mediaDevices.getUserMedia({audio: true})`
+// + `new MediaRecorder(stream)` gated only by `supportsMediaRecording`, not by
+// `isKidsMode`. `scoreCloud()` (cloud audio upload) is similarly ungated. The
+// `isKidsMode` flag inside MercySpeakTab only swaps the displayed sentence + image;
+// it does NOT gate the recording/upload branch. Mounting MercySpeakTab on
+// /kids/vi-english — with or without the prop — violates CLAUDE.md #2 (Kids mode
+// is sacred. No raw audio.) and the viKidsEnglish productConfig
+// (`rawAudioAllowed: false`, `transcriptStorageAllowed: false`).
+//
+// Restoring user-reachable Mercy Speak on the kids page requires first hardening
+// MercySpeakTab itself to gate `startRecording()` + `scoreCloud()` behind
+// `isKidsMode === false`. Tracked as a follow-up.
 const MercyTeacherTab = lazyWithRetry(
   () => import("@/components/mercy-guide/MercyTeacherTab").then((m) => ({ default: m.MercyTeacherTab })),
 );
-const MercySpeakTab = lazyWithRetry(() => import("@/components/mercy-guide/MercySpeakTab"));
 
 const TUTOR_PRODUCT: TutorProduct = "vi-kids-english";
 const TARGET_LANGUAGE = viKidsEnglishConfig.defaultTargetLanguage as TutorLanguageCode;
@@ -33,12 +46,11 @@ const TARGET_LANGUAGE = viKidsEnglishConfig.defaultTargetLanguage as TutorLangua
 // union) to keep this change contained to /kids/vi-english per the
 // Option B dispatch — the new modes are kids-specific tabs, not a
 // product-wide modes-list change.
-type ExtendedKidsMode = ViKidsTutorMode | "kidsTeacher" | "kidsSpeak";
+type ExtendedKidsMode = ViKidsTutorMode | "kidsTeacher";
 
 const EXTENDED_KIDS_TABS: TeacherMercyModeTab<ExtendedKidsMode>[] = [
   ...VI_KIDS_TUTOR_TABS,
   { id: "kidsTeacher", label: "Mercy Teacher" },
-  { id: "kidsSpeak", label: "Mercy Speak" },
 ];
 
 export default function ViKidsEnglishTutor() {
@@ -197,21 +209,7 @@ export default function ViKidsEnglishTutor() {
           </div>
         )}
 
-        {mode === "kidsSpeak" && (
-          <div data-testid="vi-kids-mercy-speak-mount">
-            <Suspense
-              fallback={
-                <div className="rounded-[16px] border border-violet-100 bg-violet-50/40 p-4 text-sm font-semibold text-violet-700">
-                  Đang tải Mercy Speak…
-                </div>
-              }
-            >
-              <MercySpeakTab />
-            </Suspense>
-          </div>
-        )}
-
-        {mode !== "kidsTeacher" && mode !== "kidsSpeak" && (
+        {mode !== "kidsTeacher" && (
           <>
             <label className="text-xs font-black uppercase text-slate-500">
               {VI_KIDS_TUTOR_COPY.correctionPrompt}
