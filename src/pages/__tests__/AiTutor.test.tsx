@@ -26,7 +26,13 @@ const POPULATED_SUMMARY: MemorySummary = {
   topicCounts: { "present-simple": 3, "past-tense": 1 }, unpracticedCorrectionIds: [],
 };
 
-const { putCorrection, getMemorySummary, markPracticed, fetchCloudTtsUrl } = vi.hoisted(() => {
+const {
+  putCorrection,
+  getMemorySummary,
+  markPracticed,
+  fetchCloudTtsUrl,
+  isPlacementEntryRouteAvailable,
+} = vi.hoisted(() => {
   type CloudTtsArgs = { text: string; language: "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi"; voiceIdOverride?: string };
   type CloudTtsResult = { audioUrl: string; cached: boolean };
   return {
@@ -34,6 +40,7 @@ const { putCorrection, getMemorySummary, markPracticed, fetchCloudTtsUrl } = vi.
     getMemorySummary: vi.fn(async () => ({ ...EMPTY_SUMMARY })),
     markPracticed: vi.fn(async () => {}),
     fetchCloudTtsUrl: vi.fn(async (_args: CloudTtsArgs): Promise<CloudTtsResult | null> => null),
+    isPlacementEntryRouteAvailable: vi.fn(() => false),
   };
 });
 
@@ -128,6 +135,10 @@ vi.mock("@/lib/mercyVoice", () => ({
   fetchCloudTtsUrl,
 }));
 
+vi.mock("@/lib/placement/availability", () => ({
+  isPlacementEntryRouteAvailable,
+}));
+
 beforeEach(() => {
   vi.clearAllMocks();
   MockSpeechRecognition.last = null;
@@ -138,6 +149,7 @@ beforeEach(() => {
   (window as Window & { webkitSpeechRecognition?: unknown }).webkitSpeechRecognition = undefined;
   getMemorySummary.mockResolvedValue({ ...EMPTY_SUMMARY });
   fetchCloudTtsUrl.mockResolvedValue(null);
+  isPlacementEntryRouteAvailable.mockReturnValue(false);
   MockAudioElement.last = null;
 });
 
@@ -179,7 +191,18 @@ describe("AiTutor mock UI", () => {
     expect(todayLesson).toHaveTextContent("No local practice summary is available yet");
     expect(todayLesson).toHaveTextContent("6 min");
     expect(screen.getByRole("button", { name: "Start today's lesson" })).toBeInTheDocument();
+    expect(screen.queryByTestId("ai-tutor-placement-cta")).not.toBeInTheDocument();
     expect(todayLesson.compareDocumentPosition(modeTabs) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
+  it("shows the placement CTA only when the placement route is available", async () => {
+    isPlacementEntryRouteAvailable.mockReturnValue(true);
+
+    render(<AiTutorPage />);
+
+    await screen.findByTestId("ai-tutor-today-lesson");
+    expect(screen.getByTestId("ai-tutor-placement-cta")).toHaveAttribute("href", "/placement");
+    expect(screen.getByText("New here? Take a placement test first.")).toBeInTheDocument();
   });
 
   it("starts the recommended Today Lesson mode from the dashboard", async () => {

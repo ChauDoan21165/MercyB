@@ -6,6 +6,10 @@
 import React, { Suspense, useEffect, useRef } from "react";
 import { lazyWithRetry } from "@/lib/lazyWithRetry";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
+import {
+  isPlacementEntryRouteAvailable,
+  isPlacementV3RouteAvailable,
+} from "@/lib/placement/availability";
 import { AnonymousOnboardingGate } from "@/router/AnonymousOnboardingGate";
 import {
   Routes,
@@ -495,7 +499,7 @@ function AuthRedirect() {
 }
 
 function PlacementV3Gate({ children }: { children: React.ReactNode }) {
-  if (!FEATURE_FLAGS.PLACEMENT_TEST_ENABLED || !FEATURE_FLAGS.PLACEMENT_V3_UI_ENABLED) {
+  if (!isPlacementV3RouteAvailable()) {
     return <Navigate to="/" replace />;
   }
   return <RequireAuth>{children}</RequireAuth>;
@@ -862,11 +866,11 @@ export default function AppRouter() {
               (profile writes are keyed on user.id). */}
           <Route path="/placement"
             element={
-              FEATURE_FLAGS.PLACEMENT_V3_UI_ENABLED ? (
+              isPlacementV3RouteAvailable() ? (
                 <PlacementV3Gate>
                   <LazyPage><PlacementV3WelcomePage /></LazyPage>
                 </PlacementV3Gate>
-              ) : FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+              ) : isPlacementEntryRouteAvailable() ? (
                 <RequireAuth>
                   <LazyPage><PlacementV2Page /></LazyPage>
                 </RequireAuth>
@@ -877,11 +881,11 @@ export default function AppRouter() {
           />
           <Route path="/placement/who"
             element={
-              FEATURE_FLAGS.PLACEMENT_V3_UI_ENABLED ? (
+              isPlacementV3RouteAvailable() ? (
                 <PlacementV3Gate>
                   <LazyPage><PlacementV3WhoForPage /></LazyPage>
                 </PlacementV3Gate>
-              ) : FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+              ) : isPlacementEntryRouteAvailable() ? (
                 <Navigate to="/placement" replace />
               ) : (
                 <Navigate to="/" replace />
@@ -890,7 +894,7 @@ export default function AppRouter() {
           />
           <Route path="/placement/test"
             element={
-              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+              isPlacementEntryRouteAvailable() ? (
                 <Navigate to="/placement" replace />
               ) : (
                 <Navigate to="/" replace />
@@ -899,7 +903,7 @@ export default function AppRouter() {
           />
           <Route path="/placement/results"
             element={
-              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED ? (
+              isPlacementEntryRouteAvailable() ? (
                 <Navigate to="/placement" replace />
               ) : (
                 <Navigate to="/" replace />
