@@ -10,6 +10,7 @@ import {
   ResultsProfile,
 } from "@/components/placement/v3";
 import { getResults } from "@/lib/placement/v3/clientStub";
+import { recordPlacementSnapshot } from "@/lib/stage-3a/adapters/placement-snapshot";
 import type { PlacementV3Recommendation, PlacementV3Results } from "@/lib/placement/v3/types";
 
 const ACTIVE_LESSON_KEY = "mb.placement.v3.activeLesson";
@@ -54,6 +55,10 @@ export default function ResultsPage() {
       return;
     }
     setActiveLesson(readActiveLessonMarker(sessionId, results.recommendations));
+    recordPlacementSnapshot({
+      completedAt: results.completedAt,
+      weaknessTags: results.l1Flags.map((flag) => flag.id),
+    });
   }, [results, sessionId]);
 
   if (loading || !results) {
