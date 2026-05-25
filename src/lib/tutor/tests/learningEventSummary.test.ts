@@ -66,7 +66,7 @@ describe("learningEventSummary", () => {
       event({ eventType: "logic_insight_viewed", mode: "logic", timestamp: TODAY + 4 * HOUR_MS }),
       event({ eventType: "next_focus_viewed", mode: "logic", timestamp: TODAY + 5 * HOUR_MS }),
       event({ eventType: "placement_cta_clicked", timestamp: TODAY + 6 * HOUR_MS }),
-      event({ eventType: "kids_picture_selected", product: "mercy_kids", count: 2, timestamp: TODAY + 7 * HOUR_MS }),
+      event({ eventType: "kids_picture_selected", product: "mercy_kids", timestamp: TODAY + 7 * HOUR_MS }),
       event({ eventType: "kids_speak_clicked", product: "mercy_kids", timestamp: TODAY + 8 * HOUR_MS }),
     ], NOW);
 
@@ -82,16 +82,105 @@ describe("learningEventSummary", () => {
       nextFocusViewedToday: true,
       placementCtaClicksToday: 1,
       placementCtaClickedToday: true,
-      kidsPictureSelectionsToday: 2,
+      kidsPictureSelectionsToday: 1,
       kidsSpeakClicksToday: 1,
       lastSafeActivityAt: TODAY + 8 * HOUR_MS,
     });
     expect(summary.modeUsageCountsToday).toEqual({
       journey: 1,
-      grammar: 5,
+      grammar: 3,
       speak: 0,
       logic: 2,
     });
+  });
+
+  it("counts lesson resume and completion events by occurrence, not progress metadata", () => {
+    const summary = summarizeLearningEvents([
+      event({
+        eventType: "lesson_resumed",
+        mode: "grammar",
+        safeTopicTag: "yesterday-present",
+        count: 2,
+        value: 1,
+        timestamp: TODAY,
+      }),
+      event({
+        eventType: "lesson_resumed",
+        mode: "grammar",
+        safeTopicTag: "past-tense",
+        count: 4,
+        value: 2,
+        timestamp: TODAY + HOUR_MS,
+      }),
+      event({
+        eventType: "lesson_completed",
+        mode: "grammar",
+        safeTopicTag: "past-tense",
+        count: 3,
+        value: 2,
+        timestamp: TODAY + 2 * HOUR_MS,
+      }),
+      event({
+        eventType: "lesson_completed",
+        mode: "logic",
+        safeTopicTag: "vietlish-logic",
+        count: 5,
+        value: 3,
+        timestamp: TODAY + 3 * HOUR_MS,
+      }),
+    ], NOW);
+
+    expect(summary.lessonResumesToday).toBe(2);
+    expect(summary.lessonResumedToday).toBe(true);
+    expect(summary.lessonsCompletedToday).toBe(2);
+    expect(summary.modeUsageCountsToday).toEqual({
+      journey: 0,
+      grammar: 3,
+      speak: 0,
+      logic: 1,
+    });
+  });
+
+  it("does not let progress-style count metadata inflate lifecycle counts", () => {
+    const summary = summarizeLearningEvents([
+      event({
+        eventType: "lesson_started",
+        mode: "grammar",
+        safeTopicTag: "past-tense",
+        count: 7,
+        value: 2,
+        timestamp: TODAY,
+      }),
+      event({
+        eventType: "lesson_resumed",
+        mode: "grammar",
+        safeTopicTag: "past-tense",
+        count: 8,
+        value: 3,
+        timestamp: TODAY + HOUR_MS,
+      }),
+      event({
+        eventType: "lesson_completed",
+        mode: "grammar",
+        safeTopicTag: "past-tense",
+        count: 9,
+        value: 4,
+        timestamp: TODAY + 2 * HOUR_MS,
+      }),
+      event({
+        eventType: "mistake_retried",
+        mode: "grammar",
+        safeTopicTag: "past-tense",
+        count: 3,
+        timestamp: TODAY + 3 * HOUR_MS,
+      }),
+    ], NOW);
+
+    expect(summary.lessonsStartedToday).toBe(1);
+    expect(summary.lessonResumesToday).toBe(1);
+    expect(summary.lessonsCompletedToday).toBe(1);
+    expect(summary.retryCountToday).toBe(3);
+    expect(summary.modeUsageCountsToday.grammar).toBe(4);
   });
 
   it("ignores older events for today counts but keeps the last safe activity timestamp", () => {

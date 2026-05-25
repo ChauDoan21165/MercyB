@@ -102,31 +102,31 @@ function createEmptySummary(): LearningEventProgressSummary {
 function applyTodayEvent(summary: LearningEventProgressSummary, event: LearningEvent): void {
   switch (event.eventType) {
     case "lesson_started":
-      summary.lessonsStartedToday += event.count ?? 1;
+      summary.lessonsStartedToday += 1;
       break;
     case "lesson_resumed":
-      summary.lessonResumesToday += event.count ?? 1;
+      summary.lessonResumesToday += 1;
       break;
     case "lesson_completed":
-      summary.lessonsCompletedToday += event.count ?? 1;
+      summary.lessonsCompletedToday += 1;
       break;
     case "mistake_retried":
       summary.retryCountToday += event.count ?? 1;
       break;
     case "logic_insight_viewed":
-      summary.logicInsightViewsToday += event.count ?? 1;
+      summary.logicInsightViewsToday += 1;
       break;
     case "next_focus_viewed":
-      summary.nextFocusViewsToday += event.count ?? 1;
+      summary.nextFocusViewsToday += 1;
       break;
     case "placement_cta_clicked":
-      summary.placementCtaClicksToday += event.count ?? 1;
+      summary.placementCtaClicksToday += 1;
       break;
     case "kids_picture_selected":
-      summary.kidsPictureSelectionsToday += event.count ?? 1;
+      summary.kidsPictureSelectionsToday += 1;
       break;
     case "kids_speak_clicked":
-      summary.kidsSpeakClicksToday += event.count ?? 1;
+      summary.kidsSpeakClicksToday += 1;
       break;
     case "mode_selected":
     case "lesson_restarted":
@@ -134,7 +134,7 @@ function applyTodayEvent(summary: LearningEventProgressSummary, event: LearningE
   }
 
   if (event.mode) {
-    summary.modeUsageCountsToday[event.mode] += event.count ?? 1;
+    summary.modeUsageCountsToday[event.mode] += 1;
   }
 }
 
