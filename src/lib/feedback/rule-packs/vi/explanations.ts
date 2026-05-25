@@ -328,6 +328,11 @@ export const VN_EXPLANATIONS: L1Explanation[] = [
     vi: "Tiếng Việt phủ định bằng cách thêm 'không' trước động từ — gọn và đứng độc lập. Tiếng Anh cần trợ động từ **do / does / did** đi cùng **not** (hoặc dạng rút gọn **don't / doesn't / didn't**) — không thể đặt 'no' hay 'not' trực tiếp trước động từ thường. Thử: *{FIX}*.",
   },
   {
+    tag: 'vi_l1_subject_gender',
+    en: "English subject pronouns **he** / **she** must match the gender of the noun they refer to in the previous sentence. *My mother is a teacher. **He** works at a primary school* → *My mother is a teacher. **She** works at a primary school*. Try: *{FIX}*.",
+    vi: "Đại từ chủ ngữ tiếng Anh **he** / **she** phải khớp giới tính của danh từ vừa nhắc trong câu trước. Khác tiếng Việt — 'anh/chị/em/ông/bà' chia theo quan hệ, không theo giới tính. *My mother is a teacher. **He** works...* → *...**She** works...*. Thử: *{FIX}*.",
+  },
+  {
     tag: 'vi_l1_co_transfer',
     en: "Vietnamese **có** maps to several English structures — not just **has**. For \"a place contains X,\" use **There is / There are**: *In my house **has** three bedrooms* → ***There are** three bedrooms in my house*. For \"X is qualified Y,\" use **is / are**: *My city **has** very beautiful* → *My city **is** very beautiful*. Try: *{FIX}*.",
     vi: "Tiếng Việt 'có' đa năng. Khi nói nơi nào có gì, tiếng Anh dùng **There is / There are** — không phải 'has'. *In my house has three bedrooms* → ***There are** three bedrooms in my house*. Khi mô tả tính chất, dùng **is / are** — không phải 'has'. *My city has very beautiful* → *My city **is** very beautiful*. Thử: *{FIX}*.",

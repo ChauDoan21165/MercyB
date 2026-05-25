@@ -70,6 +70,7 @@ import {
   ruleReportedSpeech,
   ruleSinceVsFor,
   ruleSomeVsAny,
+  ruleSubjectGender,
   ruleSubjectRelativeOmit,
   ruleSubjunctiveWere,
   ruleSuperlativeThe,
@@ -169,10 +170,15 @@ export const VN_RULES: L1Rule[] = [
   ruleFutureAdverbBare,      // 65 (C1 round-1 candidate flip)
   ruleTopicCommentFronting,  // 63 (C1 round-1 candidate flip)
   ruleGenericPlural,         // 48 — last: loses to plural_s (existing) by design
-  // Round 6 — Bar #1 DoD flip. Runs before ruleDoubleNegative so a
-  // bare-no/bare-not without do-support gets the specific message
-  // instead of falling through to the (broader) double-negative rule.
+  // Round 6 — Bar #1 DoD flips.
+  //   Runs before ruleDoubleNegative so a bare-no/bare-not without
+  //   do-support gets the specific message instead of falling through
+  //   to the (broader) double-negative rule.
   ruleNoAuxNegation,         // 62
+  //   Cross-sentence; doesn't conflict with single-sentence rules but
+  //   placed late so within-sentence patterns get first shot if any
+  //   ambiguity exists.
+  ruleSubjectGender,         // 63
   // Round 6 — Bar #1 DoD flip. Combined detector with two
   // sub-patterns sharing one tag (vi_l1_co_transfer):
   //   A. locative-fronted `has` → `there is/are`
