@@ -6,7 +6,10 @@ describe("MercyGuidePanel floating launcher", () => {
   it("renders a neutral route launcher without product or support selectors", () => {
     render(<MercyGuidePanel isOpen />);
 
-    expect(screen.getByRole('heading', { name: 'Teacher Mercy' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Mercy Guide' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Open the right learning space' }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Vào Mercy Kids' })).toHaveAttribute(
       'href',
       '/kids/vi-english',
@@ -16,6 +19,10 @@ describe("MercyGuidePanel floating launcher", () => {
       '/ai-tutor',
     );
 
+    expect(screen.queryByRole('heading', { name: 'Mercy Kids' })).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(/choose picture|tap speak|kid speaks|picture card/i),
+    ).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /Kids mode/i })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /Teacher mode/i })).not.toBeInTheDocument();
     expect(screen.queryByText(/Gentle|Guided|Immersion/)).not.toBeInTheDocument();

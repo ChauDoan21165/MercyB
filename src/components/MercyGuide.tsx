@@ -211,8 +211,8 @@ function buildTeacherUiPreset(
 ): TeacherUiPreset {
   if (mode === 'kids') {
     return {
-      bubbleLabel: 'Teacher Mercy',
-      bubbleSubtitle: 'Kids',
+      bubbleLabel: 'Mercy Guide',
+      bubbleSubtitle: 'Teacher Mercy helper',
       journeyTitle: roomSummary.hasRoomContext ? roomSummary.roomName : 'Teacher Mercy',
       defaultTab: 'pronunciation',
       availableTabs: ['pronunciation', 'teacher'],
@@ -227,8 +227,8 @@ function buildTeacherUiPreset(
   }
 
   return {
-    bubbleLabel: 'Teacher Mercy',
-    bubbleSubtitle: null,
+    bubbleLabel: 'Mercy Guide',
+    bubbleSubtitle: 'Teacher Mercy helper',
     journeyTitle: roomSummary.hasRoomContext ? roomSummary.roomName : 'Teacher Mercy',
     defaultTab: 'teacher',
     availableTabs: ['teacher', 'grammar', 'pronunciation', 'logic'],
@@ -1201,11 +1201,7 @@ export function MercyGuide({
             bottom: bubblePos.bottom,
             touchAction: 'none',
           }}
-          aria-label={
-            teacherMode === 'kids'
-              ? 'Open Teacher Mercy for kids'
-              : 'Open Mercy Guide'
-          }
+          aria-label="Open Mercy Guide"
         >
           <div
             className={cn(
