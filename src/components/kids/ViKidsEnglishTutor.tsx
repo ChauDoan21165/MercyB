@@ -8,6 +8,7 @@ import { Mic, MicOff } from "lucide-react";
 import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
 import { useTtsSpeaker } from "@/lib/ai-tutor/useTtsSpeaker";
 import { getSpeechLocale, type TutorLanguageCode } from "@/lib/tutor/languageRegistry";
+import { recordLearningEvent } from "@/lib/tutor/learningEvents";
 import { viKidsEnglish as viKidsEnglishConfig } from "@/lib/tutor/productConfigs";
 
 const TARGET_LANGUAGE = viKidsEnglishConfig.defaultTargetLanguage as TutorLanguageCode;
@@ -36,6 +37,12 @@ export default function ViKidsEnglishTutor() {
   const tts = useTtsSpeaker();
 
   const handlePick = (pic: KidPicture) => {
+    recordLearningEvent({
+      eventType: "kids_picture_selected",
+      product: "mercy_kids",
+      targetLanguage: TARGET_LANGUAGE,
+      safeTopicTag: pic.id,
+    });
     setPicked(pic);
     setMercyResponse(null);
     if (stt.listening) stt.stop();
@@ -50,6 +57,14 @@ export default function ViKidsEnglishTutor() {
         if (tts.supported) tts.speak(response, "en-US");
       }
       return;
+    }
+    if (picked) {
+      recordLearningEvent({
+        eventType: "kids_speak_clicked",
+        product: "mercy_kids",
+        targetLanguage: TARGET_LANGUAGE,
+        safeTopicTag: picked.id,
+      });
     }
     stt.start();
   };

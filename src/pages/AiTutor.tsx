@@ -54,6 +54,7 @@ import {
   startStudySession,
   type StudySessionState,
 } from "@/lib/tutor/studySessionState";
+import { recordLearningEvent } from "@/lib/tutor/learningEvents";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
 import ConversationMode, {
   type ConversationMessage,
@@ -374,6 +375,8 @@ function TodayLessonLoopPanel({
 
 export default function AiTutorPage() {
   const shellRef = useRef<HTMLElement | null>(null);
+  const resumedLessonEventRef = useRef<string | null>(null);
+  const nextFocusViewedEventRef = useRef<string | null>(null);
   const { user } = useAuth();
 
   const [target, setTarget] = useState<TutorTarget>(() =>
@@ -448,6 +451,18 @@ export default function AiTutorPage() {
   }));
   const isCorrectionMode = mode === "grammar";
   const latestMercyMessage = getLatestMercyMessage(conversationMessages);
+
+  const recordAiTutorEvent = (
+    eventType: Parameters<typeof recordLearningEvent>[0]["eventType"],
+    details: Omit<Parameters<typeof recordLearningEvent>[0], "eventType" | "product" | "targetLanguage"> = {},
+  ) => {
+    recordLearningEvent({
+      eventType,
+      product: "ai_tutor",
+      targetLanguage: target,
+      ...details,
+    });
+  };
 
   const sttBaseInputRef = useRef<string>("");
   const lastCommittedSttRef = useRef<string>("");
@@ -535,8 +550,36 @@ export default function AiTutorPage() {
     setActiveTodayLesson(savedSession ? buildResumedTodayLesson(savedSession, target) : null);
     setTodayLessonLogicInsight(null);
     setStudySessionState(savedSession);
-    if (savedSession) setMode(savedSession.recommendedMode);
+    if (savedSession) {
+      setMode(savedSession.recommendedMode);
+      const eventKey = `${target}:${savedSession.updatedAt}:${savedSession.currentStep}`;
+      if (resumedLessonEventRef.current !== eventKey) {
+        resumedLessonEventRef.current = eventKey;
+        recordLearningEvent({
+          eventType: "lesson_resumed",
+          product: "ai_tutor",
+          targetLanguage: target,
+          mode: savedSession.recommendedMode,
+          safeTopicTag: savedSession.lastSafeTopicTag || savedSession.suggestedNextFocus,
+          count: savedSession.completedPromptsCount,
+          value: savedSession.retryCount,
+        });
+      }
+    }
   }, [target]);
+
+  useEffect(() => {
+    if (!activeTodayLesson) return;
+    const nextFocus = memory?.suggestedNextFocus || memory?.nextRecommendedFocus || activeTodayLesson.plan.nextFocus;
+    if (!nextFocus) return;
+    const eventKey = `${target}:${activeTodayLesson.plan.nextFocus}:${nextFocus}`;
+    if (nextFocusViewedEventRef.current === eventKey) return;
+    nextFocusViewedEventRef.current = eventKey;
+    recordAiTutorEvent("next_focus_viewed", {
+      mode,
+      safeTopicTag: nextFocus,
+    });
+  }, [activeTodayLesson, memory, mode, target]);
 
   useEffect(() => {
     const syncExplain = () => setExplainLanguage(resolveExplainLanguage(aiTutorConfig, getExplainLanguage(), target));
@@ -583,6 +626,12 @@ export default function AiTutorPage() {
     });
     const lessonInsight = activeTodayLesson ? diagnoseVietlishLogicWithMatch(trimmed) : null;
     setTodayLessonLogicInsight(lessonInsight?.isKnownPattern ? lessonInsight : null);
+    if (activeTodayLesson && lessonInsight?.isKnownPattern) {
+      recordAiTutorEvent("logic_insight_viewed", {
+        mode,
+        safeTopicTag: lessonInsight.patternId,
+      });
+    }
     if (activeTodayLesson && studySessionState) {
       setStudySessionState(recordStudyPromptCompleted(studySessionState, {
         safeTopicTag: lessonInsight?.patternId || activeTodayLesson.plan.nextFocus,
@@ -608,10 +657,21 @@ export default function AiTutorPage() {
     await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
     setPracticeFeedback(MOCK_RESULTS_BY_TARGET[target].feedback);
     if (activeTodayLesson && studySessionState) {
+      recordAiTutorEvent("mistake_retried", {
+        mode,
+        safeTopicTag: activeTodayLesson.plan.nextFocus,
+        count: studySessionState.retryCount + 1,
+      });
       setStudySessionState(recordStudyRetry(studySessionState, {
         safeTopicTag: activeTodayLesson.plan.nextFocus,
         suggestedNextFocus: activeTodayLesson.plan.nextFocus,
       }));
+      recordAiTutorEvent("lesson_completed", {
+        mode,
+        safeTopicTag: activeTodayLesson.plan.nextFocus,
+        count: studySessionState.completedPromptsCount,
+        value: studySessionState.retryCount + 1,
+      });
     }
     setPracticeLoading(false);
     if (lastSavedId) markPracticed(lastSavedId, TUTOR_PRODUCT, target).then(() => loadMemory()).catch(() => {});
@@ -636,11 +696,30 @@ export default function AiTutorPage() {
     setConversationMessages((current) => [...current, mercyMessage]);
     const lessonInsight = activeTodayLesson ? diagnoseVietlishLogicWithMatch(trimmed) : null;
     setTodayLessonLogicInsight(lessonInsight?.isKnownPattern ? lessonInsight : null);
+    if (activeTodayLesson && lessonInsight?.isKnownPattern) {
+      recordAiTutorEvent("logic_insight_viewed", {
+        mode,
+        safeTopicTag: lessonInsight.patternId,
+      });
+    }
     if (activeTodayLesson && studySessionState) {
       const update = {
         safeTopicTag: lessonInsight?.patternId || activeTodayLesson.plan.nextFocus,
         suggestedNextFocus: activeTodayLesson.plan.nextFocus,
       };
+      if (studySessionState.completedPromptsCount > 0) {
+        recordAiTutorEvent("mistake_retried", {
+          mode,
+          safeTopicTag: update.safeTopicTag,
+          count: studySessionState.retryCount + 1,
+        });
+        recordAiTutorEvent("lesson_completed", {
+          mode,
+          safeTopicTag: activeTodayLesson.plan.nextFocus,
+          count: studySessionState.completedPromptsCount,
+          value: studySessionState.retryCount + 1,
+        });
+      }
       setStudySessionState(
         studySessionState.completedPromptsCount > 0
           ? recordStudyRetry(studySessionState, update)
@@ -691,6 +770,10 @@ export default function AiTutorPage() {
       setMode(studySessionState.recommendedMode);
       return;
     }
+    recordAiTutorEvent("lesson_started", {
+      mode: plan.suggestedMode,
+      safeTopicTag: plan.nextFocus,
+    });
     setMode(plan.suggestedMode);
     setActiveTodayLesson({
       plan,
@@ -716,6 +799,14 @@ export default function AiTutorPage() {
   };
 
   const handleRestartTodayLesson = () => {
+    if (studySessionState || activeTodayLesson) {
+      recordAiTutorEvent("lesson_restarted", {
+        mode,
+        safeTopicTag: studySessionState?.lastSafeTopicTag || activeTodayLesson?.plan.nextFocus,
+        count: studySessionState?.completedPromptsCount,
+        value: studySessionState?.retryCount,
+      });
+    }
     clearStudySessionState(TUTOR_PRODUCT, target);
     setActiveTodayLesson(null);
     setStudySessionState(null);
@@ -725,6 +816,13 @@ export default function AiTutorPage() {
     setPracticeAnswer("");
     setPracticeFeedback(null);
     setConversationInput("");
+  };
+
+  const handleModeChange = (nextMode: TutorMode) => {
+    if (nextMode !== mode) {
+      recordAiTutorEvent("mode_selected", { mode: nextMode });
+    }
+    setMode(nextMode);
   };
 
   return (
@@ -741,7 +839,7 @@ export default function AiTutorPage() {
       eyebrow={tutorCopy.ui.eyebrow}
       modeTabs={modeTabs}
       activeMode={mode}
-      onModeChange={setMode}
+      onModeChange={handleModeChange}
       memorySlot={aiTutorConfig.memoryEnabled ? (
         <>
           <TutorTodayLessonCard
@@ -754,6 +852,7 @@ export default function AiTutorPage() {
             <a
               href="/placement"
               data-testid="ai-tutor-placement-cta"
+              onClick={() => recordAiTutorEvent("placement_cta_clicked", { safeTopicTag: "placement" })}
               className="mx-auto mb-4 flex w-full max-w-3xl items-center justify-between gap-3 rounded-xl border border-sky-100 bg-sky-50/80 px-4 py-3 text-left text-sm font-bold text-sky-900 shadow-sm transition hover:border-sky-200 hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
             >
               <span className="min-w-0">

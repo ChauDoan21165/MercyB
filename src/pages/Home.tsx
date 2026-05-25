@@ -13,6 +13,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { isPlacementEntryRouteAvailable } from "@/lib/placement/availability";
+import { recordLearningEvent } from "@/lib/tutor/learningEvents";
 import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 import LanguageTrackHome, {
   TargetSwitcher,
@@ -745,7 +746,15 @@ export default function Home() {
   // libraryCard's structure (icon-badge left, EN+VI text, chevron right)
   // with a sky/blue palette so the three cards read as distinct.
   const placementCard = (
-    <button type="button" onClick={() => nav("/placement")} aria-label="Placement test"
+    <button type="button" onClick={() => {
+      recordLearningEvent({
+        eventType: "placement_cta_clicked",
+        product: "ai_tutor",
+        targetLanguage: "en",
+        safeTopicTag: "placement",
+      });
+      nav("/placement");
+    }} aria-label="Placement test"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}>
       <div style={{
         borderRadius: 20, padding: isPhone ? "16px 18px" : "18px 20px",

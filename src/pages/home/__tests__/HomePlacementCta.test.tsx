@@ -4,6 +4,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, useLocation } from "react-router-dom";
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { getLearningEvents } from "@/lib/tutor/learningEvents";
 
 const { isPlacementEntryRouteAvailable } = vi.hoisted(() => ({
   isPlacementEntryRouteAvailable: vi.fn(() => false),
@@ -128,5 +129,13 @@ describe("Home placement CTA gating", () => {
 
     expect(screen.getByText("Take Placement Test")).toBeInTheDocument();
     expect(screen.getByTestId("pathname")).toHaveTextContent("/placement");
+    expect(getLearningEvents({ eventType: "placement_cta_clicked" })).toEqual([
+      expect.objectContaining({
+        eventType: "placement_cta_clicked",
+        product: "ai_tutor",
+        targetLanguage: "en",
+        safeTopicTag: "placement",
+      }),
+    ]);
   });
 });

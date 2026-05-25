@@ -2,7 +2,29 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import type { SpeechRecognitionLike } from "@/types/speech-recognition";
+import {
+  getLearningEvents,
+  getLearningEventsStorageKey,
+} from "@/lib/tutor/learningEvents";
 import ViKidsEnglishTutor from "../ViKidsEnglishTutor";
+
+class MockSpeechRecognition extends EventTarget implements SpeechRecognitionLike {
+  continuous = false;
+  interimResults = false;
+  lang = "";
+  onstart: (() => void) | null = null;
+  onresult: SpeechRecognitionLike["onresult"] = null;
+  onerror: SpeechRecognitionLike["onerror"] = null;
+  onend: (() => void) | null = null;
+
+  start() {
+    this.onstart?.();
+  }
+
+  stop() {
+    this.onend?.();
+  }
+}
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -29,13 +51,43 @@ describe("ViKidsEnglishTutor", () => {
 
   it("enables the mic button after picking a picture", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition =
-      class {} as unknown as new () => SpeechRecognitionLike;
+      MockSpeechRecognition as unknown as new () => SpeechRecognitionLike;
     render(<ViKidsEnglishTutor />);
     await userEvent.click(screen.getByRole("button", { name: /Chọn quả táo/ }));
     // "apple" appears in both columns — picture picker + selected view
     expect(screen.getAllByText("apple").length).toBeGreaterThanOrEqual(2);
     expect(screen.getByRole("button", { name: /Bấm để nói với Mercy/ })).toBeInTheDocument();
     expect(screen.getByText("Nói")).toBeInTheDocument();
+    expect(getLearningEvents({ eventType: "kids_picture_selected" })).toEqual([
+      expect.objectContaining({
+        eventType: "kids_picture_selected",
+        product: "mercy_kids",
+        targetLanguage: "en",
+        safeTopicTag: "apple",
+      }),
+    ]);
+  });
+
+  it("records safe speak clicks without child utterance, transcript, or audio", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition =
+      MockSpeechRecognition as unknown as new () => SpeechRecognitionLike;
+    render(<ViKidsEnglishTutor />);
+
+    await userEvent.click(screen.getByRole("button", { name: /Chọn quả táo/ }));
+    await userEvent.click(screen.getByRole("button", { name: /Bấm để nói với Mercy/ }));
+
+    expect(getLearningEvents({ eventType: "kids_speak_clicked" })).toEqual([
+      expect.objectContaining({
+        eventType: "kids_speak_clicked",
+        product: "mercy_kids",
+        targetLanguage: "en",
+        safeTopicTag: "apple",
+      }),
+    ]);
+    const serializedEvents = window.localStorage.getItem(getLearningEventsStorageKey()) ?? "";
+    expect(serializedEvents).not.toContain("transcript");
+    expect(serializedEvents).not.toContain("audio");
+    expect(serializedEvents).not.toContain("utterance");
   });
 
   it("does not show Journey/Grammar/Speak/Logic mode tabs", () => {

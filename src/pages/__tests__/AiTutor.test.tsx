@@ -4,6 +4,10 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import AiTutorPage from "../AiTutor";
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
+import {
+  getLearningEvents,
+  getLearningEventsStorageKey,
+} from "@/lib/tutor/learningEvents";
 import type { SpeechRecognitionLike } from "@/types/speech-recognition";
 
 const EMPTY_SUMMARY: MemorySummary = {
@@ -203,6 +207,17 @@ describe("AiTutor mock UI", () => {
     await screen.findByTestId("ai-tutor-today-lesson");
     expect(screen.getByTestId("ai-tutor-placement-cta")).toHaveAttribute("href", "/placement");
     expect(screen.getByText("New here? Take a placement test first.")).toBeInTheDocument();
+
+    await userEvent.click(screen.getByTestId("ai-tutor-placement-cta"));
+
+    expect(getLearningEvents({ eventType: "placement_cta_clicked" })).toEqual([
+      expect.objectContaining({
+        eventType: "placement_cta_clicked",
+        product: "ai_tutor",
+        targetLanguage: "en",
+        safeTopicTag: "placement",
+      }),
+    ]);
   });
 
   it("starts the recommended Today Lesson mode from the dashboard", async () => {
@@ -227,6 +242,22 @@ describe("AiTutor mock UI", () => {
     expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Retries 0");
     expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Completed 0");
     expect(window.localStorage.getItem("mercy.studySession.v1.ai-tutor.en")).toContain("pronunciation");
+    expect(getLearningEvents()).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        eventType: "lesson_started",
+        product: "ai_tutor",
+        targetLanguage: "en",
+        mode: "speak",
+        safeTopicTag: "pronunciation",
+      }),
+      expect.objectContaining({
+        eventType: "next_focus_viewed",
+        product: "ai_tutor",
+        targetLanguage: "en",
+        mode: "speak",
+        safeTopicTag: "pronunciation",
+      }),
+    ]));
   });
 
   it("resumes a saved Today Lesson session and can restart it safely", async () => {
@@ -253,6 +284,17 @@ describe("AiTutor mock UI", () => {
     expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Retries 1");
     expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Completed 2");
     expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Topic yesterday-present");
+    expect(getLearningEvents({ eventType: "lesson_resumed" })).toEqual([
+      expect.objectContaining({
+        eventType: "lesson_resumed",
+        product: "ai_tutor",
+        targetLanguage: "en",
+        mode: "grammar",
+        safeTopicTag: "yesterday-present",
+        count: 2,
+        value: 1,
+      }),
+    ]);
 
     await userEvent.click(screen.getByRole("button", { name: "Resume lesson" }));
     expect(window.localStorage.getItem("mercy.studySession.v1.ai-tutor.en")).toContain("\"currentStep\":3");
@@ -260,6 +302,17 @@ describe("AiTutor mock UI", () => {
     await userEvent.click(screen.getByRole("button", { name: "Restart lesson" }));
     expect(window.localStorage.getItem("mercy.studySession.v1.ai-tutor.en")).toBeNull();
     expect(screen.queryByTestId("ai-tutor-lesson-loop")).not.toBeInTheDocument();
+    expect(getLearningEvents({ eventType: "lesson_restarted" })).toEqual([
+      expect.objectContaining({
+        eventType: "lesson_restarted",
+        product: "ai_tutor",
+        targetLanguage: "en",
+        mode: "grammar",
+        safeTopicTag: "yesterday-present",
+        count: 2,
+        value: 1,
+      }),
+    ]);
   });
 
   it("guides Today's Lesson through prompt, feedback, retry, logic insight, and next focus", async () => {
@@ -296,6 +349,15 @@ describe("AiTutor mock UI", () => {
     const persistedAfterPrompt = window.localStorage.getItem("mercy.studySession.v1.ai-tutor.en") ?? "";
     expect(persistedAfterPrompt).toContain("yesterday-present");
     expect(persistedAfterPrompt).not.toContain("I buy a hat yesterday");
+    expect(getLearningEvents()).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        eventType: "logic_insight_viewed",
+        product: "ai_tutor",
+        targetLanguage: "en",
+        mode: "grammar",
+        safeTopicTag: "yesterday-present",
+      }),
+    ]));
 
     const textareas = screen.getAllByRole("textbox");
     await userEvent.type(textareas[1], "I bought a hat yesterday.");
@@ -305,6 +367,47 @@ describe("AiTutor mock UI", () => {
       expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Step 3");
       expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Retries 1");
     });
+
+    expect(getLearningEvents()).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        eventType: "mistake_retried",
+        product: "ai_tutor",
+        targetLanguage: "en",
+        mode: "grammar",
+        safeTopicTag: "past-tense",
+        count: 1,
+      }),
+      expect.objectContaining({
+        eventType: "lesson_completed",
+        product: "ai_tutor",
+        targetLanguage: "en",
+        mode: "grammar",
+        safeTopicTag: "past-tense",
+        count: 1,
+        value: 1,
+      }),
+    ]));
+    const serializedEvents = window.localStorage.getItem(getLearningEventsStorageKey()) ?? "";
+    expect(serializedEvents).not.toContain("I buy a hat yesterday");
+    expect(serializedEvents).not.toContain("I bought a hat yesterday");
+    expect(serializedEvents).not.toContain("transcript");
+    expect(serializedEvents).not.toContain("audio");
+  });
+
+  it("records safe mode_selected events for AI Tutor mode tabs", async () => {
+    render(<AiTutorPage />);
+    await screen.findByTestId("ai-tutor-today-lesson");
+
+    await userEvent.click(screen.getByRole("button", { name: "Logic" }));
+
+    expect(getLearningEvents({ eventType: "mode_selected" })).toEqual([
+      expect.objectContaining({
+        eventType: "mode_selected",
+        product: "ai_tutor",
+        targetLanguage: "en",
+        mode: "logic",
+      }),
+    ]);
   });
 
   it("keeps Teacher Mercy avatar and header visible after memory loads", async () => {
