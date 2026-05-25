@@ -7,11 +7,20 @@ export type VietlishLogicDiagnosis = {
   retryPrompt: string;
 };
 
+export type VietlishLogicDiagnosisResult = VietlishLogicDiagnosis & {
+  patternId: string | null;
+  isKnownPattern: boolean;
+  fallbackMessage?: string;
+};
+
 type VietlishPattern = {
   id: string;
   match: RegExp;
   diagnosis: VietlishLogicDiagnosis;
 };
+
+const UNKNOWN_FALLBACK_MESSAGE =
+  "Mercy can still explain the English logic. Try a common sentence like: I go school.";
 
 const UNKNOWN_DIAGNOSIS: VietlishLogicDiagnosis = {
   originalPattern: "Unrecognized beginner pattern",
@@ -81,9 +90,34 @@ function normalizeInput(value: string): string {
 }
 
 export function diagnoseVietlishLogic(input: string): VietlishLogicDiagnosis {
+  const result = diagnoseVietlishLogicWithMatch(input);
+  return {
+    originalPattern: result.originalPattern,
+    correctedExample: result.correctedExample,
+    vietnameseThinking: result.vietnameseThinking,
+    englishLogic: result.englishLogic,
+    rememberRule: result.rememberRule,
+    retryPrompt: result.retryPrompt,
+  };
+}
+
+export function diagnoseVietlishLogicWithMatch(input: string): VietlishLogicDiagnosisResult {
   const normalized = normalizeInput(input);
   const pattern = PATTERNS.find((candidate) => candidate.match.test(normalized));
-  return pattern?.diagnosis ?? UNKNOWN_DIAGNOSIS;
+  if (pattern) {
+    return {
+      ...pattern.diagnosis,
+      patternId: pattern.id,
+      isKnownPattern: true,
+    };
+  }
+
+  return {
+    ...UNKNOWN_DIAGNOSIS,
+    patternId: null,
+    isKnownPattern: false,
+    fallbackMessage: UNKNOWN_FALLBACK_MESSAGE,
+  };
 }
 
 export function getSupportedVietlishLogicPatterns(): string[] {

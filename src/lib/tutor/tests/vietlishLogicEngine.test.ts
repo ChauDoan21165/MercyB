@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   diagnoseVietlishLogic,
+  diagnoseVietlishLogicWithMatch,
   getSupportedVietlishLogicPatterns,
 } from "@/lib/tutor/vietlishLogicEngine";
 
@@ -51,6 +52,20 @@ describe("vietlishLogicEngine", () => {
     expect(diagnosis.correctedExample).toMatch(/one clear subject, verb, and time marker/i);
     expect(diagnosis.englishLogic).toMatch(/relationship/);
     expect(diagnosis.retryPrompt).toMatch(/one short sentence/);
+  });
+
+  it("marks known and unknown patterns for structured Logic UI", () => {
+    expect(diagnoseVietlishLogicWithMatch("I go school")).toMatchObject({
+      patternId: "go-school",
+      isKnownPattern: true,
+      correctedExample: "I go to school.",
+    });
+
+    expect(diagnoseVietlishLogicWithMatch("This sentence is not in the beginner list.")).toMatchObject({
+      patternId: null,
+      isKnownPattern: false,
+      fallbackMessage: "Mercy can still explain the English logic. Try a common sentence like: I go school.",
+    });
   });
 
   it("exposes stable supported pattern ids for future lesson planners", () => {
