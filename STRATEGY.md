@@ -639,16 +639,24 @@ one full direction of one full pair, on both sides."
   no room targets this. *Artifact:* one new room JSON in
   `public/data/` with ≥20 drill items and a scoring path.
 
-- [ ] **EN→VN detector rules.** At least 8 detector rules in a new
-  rule pack (`src/lib/feedback/rule-packs/en-vn/` or equivalent)
-  covering common English → Vietnamese transfer errors: dropped
-  classifier, missing sentence-final particle (`à`, `nhé`, `không`),
-  wrong-pronoun-by-age (`tôi/em/anh/chị/cô/chú`), English noun-phrase
-  word order (`book red` → `sách màu đỏ`), missing aspect marker
-  (`đã/đang/sẽ`), mistranslated copula across `là` and bare adjective
-  predicates, etc. *Today:* zero rules for this direction.
-  *Artifact:* 8+ rules, each with ≥3 fixture cases passing in a
-  parallel EN→VN eval harness (sibling to `evals/vi-grammar-cases.json`).
+- [x] **EN→VN detector rules.** At least 8 detector rules in a new
+  rule pack (`src/lib/feedback/rule-packs/en-vn/`) covering common
+  English → Vietnamese transfer errors. *Today:*
+  `src/lib/feedback/rule-packs/en-vn/` ships `EN_VN_RULE_PACK` with
+  **8 detector rules** sourced from the 10 grammar families in
+  `src/lib/l1-profiles/en.ts`: `en_l1_copula_la_adj`,
+  `en_l1_classifier_omission`, `en_l1_aspect_overuse_stative`,
+  `en_l1_noun_modifier_inversion`, `en_l1_plural_marker_redundancy`,
+  `en_l1_negation_la_missing_phai`, `en_l1_calque_take_it_easy`,
+  `en_l1_question_inversion_la_front`. The 2 deferred families
+  (`pronoun_age_register_mismatch`, `sentence_final_particle_omission`)
+  need conversational context the `RuleArgs` surface doesn't expose.
+  Fixture file `evals/en-vn-grammar-cases.json` ships **24 cases
+  (≥3 per rule)**; every fixture fires its exact expected tag in
+  `__tests__/rules.test.ts`. *Artifact:* the new directory +
+  fixture on `main`. Wiring a `detectEnVnError()` entry point into
+  the engine is a separate follow-up PR (the pack ships in
+  isolation per the dispatch).
 
 - [ ] **One named English-speaker outcome.** At least one English
   speaker publicly credits MercyBlade for measurable conversational
