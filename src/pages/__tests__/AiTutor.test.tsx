@@ -179,6 +179,8 @@ describe("AiTutor mock UI", () => {
     expect(todayLesson).toHaveTextContent("No local practice summary is available yet");
     expect(todayLesson).toHaveTextContent("6 min");
     expect(screen.getByRole("button", { name: "Start today's lesson" })).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-placement-cta")).toHaveAttribute("href", "/placement");
+    expect(screen.getByText("New here? Take a placement test first.")).toBeInTheDocument();
     expect(todayLesson.compareDocumentPosition(modeTabs) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 

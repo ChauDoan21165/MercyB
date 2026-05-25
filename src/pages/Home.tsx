@@ -12,7 +12,6 @@ import { lazyWithRetry } from "@/lib/lazyWithRetry";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
-import { FEATURE_FLAGS } from "@/lib/featureFlags";
 import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 import LanguageTrackHome, {
   TargetSwitcher,
@@ -759,8 +758,8 @@ export default function Home() {
         </div>
 
         <div style={{ minWidth: 0, flex: 1 }}>
-          <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(7,89,133,0.92)", letterSpacing: -0.3 }}>Placement test</div>
-          {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(7,89,133,0.55)", marginTop: 2 }}>Bài đánh giá trình độ</div>}
+          <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(7,89,133,0.92)", letterSpacing: -0.3 }}>Take Placement Test</div>
+          {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(7,89,133,0.55)", marginTop: 2 }}>Kiểm tra trình độ</div>}
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
             {isPhone ? "Biết chính xác trình độ của bạn — 6 phút." : "Biết chính xác trình độ thật của bạn. 6–9 phút."}
           </div>
@@ -953,6 +952,8 @@ export default function Home() {
               pill preserved inside the card. */}
           {teacherCard}
 
+          {placementCard}
+
           {/* Try one word — no signup. On desktop: standalone card.
               On mobile: compact chip nested under Teacher Mercy so the
               primary action stays dominant. */}
@@ -1006,40 +1007,6 @@ export default function Home() {
               both signal (5+ attempts) and a hand-curated drill pack.
               Self-gates on its own feature flag + 24h cooldown. */}
           <RecommendedDrillCard />
-
-          {/* ── Intent group: "Start here" ────────────────────────────
-              Placement lives right after Teacher Mercy so new visitors
-              have two clear guided paths: chat (Mercy) or assess
-              (Placement). One is relational, one is diagnostic. */}
-          {/* Placement test card — HIDDEN behind
-              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED (default false; see
-              featureFlags.ts). The card + its "Bắt đầu từ đây" header are
-              not rendered while disabled, so new users never see a way in.
-              Flip the one flag to bring this back. */}
-          {FEATURE_FLAGS.PLACEMENT_TEST_ENABLED && (
-            <>
-              {isPhone && (
-                <div style={{
-                  marginTop: 4, fontSize: z(10), fontWeight: 700, letterSpacing: 1.2,
-                  textTransform: "uppercase", color: "rgba(0,0,0,0.32)",
-                }}>
-                  Bắt đầu từ đây
-                </div>
-              )}
-              <ProgressiveDisclosureCard
-                cardId="placement"
-                title="Placement test"
-                shortLine={isPhone ? "Biết chính xác trình độ — 6 phút." : "Biết chính xác trình độ thật của bạn. 6–9 phút."}
-                accentColor="#0EA5E9"
-                iconBg="rgba(236,246,255,0.96)"
-                iconEl={<Compass size={isPhone ? 20 : 24} color="white" />}
-                onStart={() => nav("/placement")}
-                startLabel="Start placement test →"
-              >
-                {placementCard}
-              </ProgressiveDisclosureCard>
-            </>
-          )}
 
           {/* ── Intent group: "Prepare for exams" ─────────────────────
               Goal-oriented learners scan for their exam. Grouped so the

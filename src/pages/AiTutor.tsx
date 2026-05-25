@@ -749,6 +749,21 @@ export default function AiTutorPage() {
             onStartLesson={handleStartTodayLesson}
             startLabel={activeTodayLesson ? "Resume lesson" : "Start today's lesson"}
           />
+          <a
+            href="/placement"
+            data-testid="ai-tutor-placement-cta"
+            className="mx-auto mb-4 flex w-full max-w-3xl items-center justify-between gap-3 rounded-xl border border-sky-100 bg-sky-50/80 px-4 py-3 text-left text-sm font-bold text-sky-900 shadow-sm transition hover:border-sky-200 hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+          >
+            <span className="min-w-0">
+              <span className="block">New here? Take a placement test first.</span>
+              <span className="mt-0.5 block text-xs font-semibold text-sky-700">
+                Bạn mới học? Kiểm tra trình độ trước.
+              </span>
+            </span>
+            <span className="shrink-0 text-xs font-black uppercase text-sky-700">
+              Start
+            </span>
+          </a>
           <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} />
         </>
       ) : undefined}
