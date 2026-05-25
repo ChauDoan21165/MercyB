@@ -46,11 +46,7 @@ import type { PhonemeSubRule } from './vn-phoneme-map';
 
 export const PROPOSED_PHONEME_SUBSTITUTIONS: PhonemeSubRule[] = [
   // ── Gap 1: Southern Vietnamese dialect ────────────────────────────────
-  // Southern /v/ is realized as a yod-glide [j]. Co-exists with the
-  // existing v→b rule; getAcceptedVariants dedupes by variant.
-  { target: 'v', substitute: 'y', credit: 0.65,
-    labelEn: 'v → y (southern VN /v/ becomes a y-glide)',
-    labelVi: 'v → y (giọng miền Nam: âm "v" thành âm "i" lướt)' },
+  // WIRED into vn-phoneme-map.ts. See git history.
 
   // ── Gap 2: Final consonant cluster simplification ─────────────────────
   // Vietnamese permits no coda clusters. Keep-first-drop-rest is the
@@ -136,13 +132,9 @@ export const PROPOSED_WORD_OVERRIDES: Record<
   Array<{ variant: string; credit: number }>
 > = {
   // ── Gap 1: Southern Vietnamese dialect ──────────────────────────────
-  very:    [{ variant: 'yery',     credit: 0.65 }],
-  voice:   [{ variant: 'yois',     credit: 0.65 }],
-  visit:   [{ variant: 'yisit',    credit: 0.65 }],
-  video:   [{ variant: 'yidio',    credit: 0.65 }],
-  vote:    [{ variant: 'yote',     credit: 0.65 }],
-  have:    [{ variant: 'hay',      credit: 0.55 }],
-  love:    [{ variant: 'loy',      credit: 0.55 }],
+  // WIRED into vn-phoneme-map.ts. `have → hay` (0.55) and `love → loy`
+  // (0.55) were dropped per the 0.60 wrong-floor contract. See git
+  // history for the merge.
 
   // ── Gap 3: Vowel quality drift ──────────────────────────────────────
   sheep:   [{ variant: 'ship',     credit: 0.65 },

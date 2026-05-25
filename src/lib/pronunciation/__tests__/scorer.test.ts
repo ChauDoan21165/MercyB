@@ -32,6 +32,28 @@ describe('scorePronunciation', () => {
     expect(very?.hint?.vi).toBeTruthy();
   });
 
+  it('Southern VN v→y substitution earns 0.65 credit (Gap 1)', () => {
+    // Saigon dialect: /v/ → [j] yod-glide. "very" → "yery".
+    // Co-exists with the existing v→b rule (resolver dedupes by variant).
+    const r = scorePronunciation({
+      target: 'she is very nice',
+      recognized: 'she is yery nice',
+    });
+    const very = r.wordScores.find((w) => w.word === 'very');
+    expect(very?.status).toBe('close');
+    expect(very?.score).toBe(65);
+  });
+
+  it('Southern VN word override fires on "voice" → "yois"', () => {
+    const r = scorePronunciation({
+      target: 'her voice is clear',
+      recognized: 'her yois is clear',
+    });
+    const voice = r.wordScores.find((w) => w.word === 'voice');
+    expect(voice?.status).toBe('close');
+    expect(voice?.score).toBe(65);
+  });
+
   it('VN-typical th→t substitution on "think" earns close', () => {
     const r = scorePronunciation({
       target: 'I think so',
