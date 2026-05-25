@@ -547,6 +547,14 @@ export const L1_VN_EXPLANATIONS: Record<L1WeaknessTag, L1VnExplanation> = {
       "If I will go tomorrow, I will tell you → 'Nếu + tôi + sẽ đi + ngày mai...' (dịch 'sẽ' thành 'will' cho cả hai mệnh đề; mệnh đề 'if' phải dùng 'go')",
     needs_review: false,
   },
+  vi_l1_no_aux_negation: {
+    name_vi: "Phủ định 'no / not' phải đi cùng do/does/did",
+    explanation_vi:
+      "Tiếng Việt phủ định bằng 'không' trước động từ — gọn. Tiếng Anh cần **do / does / did** đi cùng **not** (rút gọn: **don't / doesn't / didn't**) — không đặt 'no' hay 'not' thẳng trước động từ. *I no want* → *I **don't** want*; *He not come* → *He **didn't** come*.",
+    example_wrong_vi_gloss:
+      "I no want coffee → 'Tôi + không + muốn + cà phê' (dịch 'không' thẳng thành 'no'; tiếng Anh phải có 'don't')",
+    needs_review: false,
+  },
 };
 
 /**

@@ -59,8 +59,9 @@ describe("L1_VN_EXPLANATIONS — coverage", () => {
     expect(missing).toEqual([]);
   });
 
-  it("has exactly 60 entries — flags drift if the count changes unexpectedly", () => {
-    expect(listCoveredVnTags()).toHaveLength(60);
+  it("has exactly 61 entries — flags drift if the count changes unexpectedly", () => {
+    // 60 → 61: Round 6 added `vi_l1_no_aux_negation` (Bar #1 DoD flip).
+    expect(listCoveredVnTags()).toHaveLength(61);
   });
 });
 

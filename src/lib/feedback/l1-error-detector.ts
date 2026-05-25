@@ -88,6 +88,12 @@
  *  59. vi_l1_no_article_generic       usage        A2
  *  60. vi_l1_superlative_the          usage        A2
  *  61. vi_l1_if_will                  structural   B1
+ *
+ *  Round 6 additions — rule 62 (1 new). STRATEGY §15 Bar #1 detector
+ *  candidate flipped from `expected_failure` → `expected_pass` per the
+ *  Vietnamese flagship DoD.
+ *
+ *  62. vi_l1_no_aux_negation          structural   A2
  */
 
 export type L1WeaknessTag =
@@ -152,7 +158,9 @@ export type L1WeaknessTag =
   | 'vi_l1_tag_polarity'              // L1-057 B1
   | 'vi_l1_no_article_generic'        // L1-058 A2
   | 'vi_l1_superlative_the'           // L1-059 A2
-  | 'vi_l1_if_will';                  // L1-060 B1
+  | 'vi_l1_if_will'                   // L1-060 B1
+  // Round 6 — Bar #1 DoD flip
+  | 'vi_l1_no_aux_negation';          // L1-061 A2
 
 export type L1FeedbackText = {
   en: string;
@@ -2435,6 +2443,56 @@ export const ruleIfWill: Rule = ({ userText, expectedText, rawExpected }) => {
     tag: 'vi_l1_if_will',
     replacements: { FIX: rawExpected },
   };
+};
+
+// ── Round 6 — Bar #1 DoD flip ──────────────────────────────────────────────
+
+/** Subjects that trigger bare-no negation detection. */
+const NO_AUX_NEG_SUBJECTS = new Set([
+  'i', 'you', 'he', 'she', 'it', 'we', 'they',
+]);
+
+/**
+ * Contraction forms of do-support negation that the expected answer
+ * uses. `normalizeContractions` collapses `don't`/`doesn't`/`didn't`
+ * into these single-token forms before tokenization, so the rule
+ * matches the post-normalisation shape.
+ */
+const NO_AUX_NEG_DO_AUX = new Set([
+  'dont', 'doesnt', 'didnt',
+]);
+
+/**
+ * 62. Bare-no/bare-not negation — Vietnamese transfers `không` directly
+ * onto the verb without do-support. Fires when the user has
+ * `<subject pronoun> + (no|not) + <verb>` at any aligned position and
+ * the expected answer has `<subject> + (dont|doesnt|didnt) + <same verb>`
+ * at the same position. Past-tense vs. present is encoded in the
+ * expected answer's choice of contraction (`didnt` vs `dont`/`doesnt`),
+ * not re-derived here — the rule's only job is to recognise the
+ * structural pattern and surface the right FIX template.
+ *
+ * Coverage: STRATEGY §15 Bar #1 detector candidate; flips
+ * evals/vi-grammar-cases.json entries vi-gram-142 / vi-gram-143
+ * from expected_failure to expected_pass.
+ */
+export const ruleNoAuxNegation: Rule = ({
+  userTokens, expectedTokens, rawExpected,
+}) => {
+  if (userTokens.length !== expectedTokens.length) return null;
+  for (let i = 0; i < userTokens.length - 2; i++) {
+    if (!NO_AUX_NEG_SUBJECTS.has(userTokens[i])) continue;
+    if (userTokens[i] !== expectedTokens[i]) continue;
+    const userNeg = userTokens[i + 1];
+    if (userNeg !== 'no' && userNeg !== 'not') continue;
+    const expAux = expectedTokens[i + 1];
+    if (!NO_AUX_NEG_DO_AUX.has(expAux)) continue;
+    // The verb (and the rest of the sentence) must match between user
+    // and expected so we're confident the diff is purely the negation.
+    if (userTokens[i + 2] !== expectedTokens[i + 2]) continue;
+    return { tag: 'vi_l1_no_aux_negation', replacements: { FIX: rawExpected } };
+  }
+  return null;
 };
 
 // ────────────────────────────────────────────────────────────────────────────
