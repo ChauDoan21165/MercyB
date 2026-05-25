@@ -148,9 +148,11 @@ Per PRINCIPLES §9 (status docs drift — re-audit weekly). Six days of
 shipping since the 2026-05-19 entry; §6 was stale. Net changes this
 session, organised by what they tick:
 
-- **§15 Axis 1: four bars ticked.** Bar #2 (eval baseline ≥ 95%) ticked
+- **§15 Axis 1: five bars ticked.** Bar #1 (L1 grammar coverage gap
+  closed) ticked after #1169 landed `vi_l1_subject_gender`; all five
+  detector candidates now pass. Bar #2 (eval baseline ≥ 95%) ticked
   via PR #1156 — `evals/.baseline.json` is now 100% (was 52/52; current
-  62/62 reflects the four Bar #1 candidate flips below). Bar #3 (AI
+  65/65 reflects the five Bar #1 candidate flips). Bar #3 (AI
   Tutor consumes the L1 profile) ticked via PR #1131 —
   `promptAssembly.ts` injects `viL1Profile.interference` into the
   Vietnamese teacher-voice block. Bar #4 (pronunciation drills cover
@@ -160,11 +162,10 @@ session, organised by what they tick:
   lesson routing E2E) ticked via PR #1143 — runbook in `reports/`
   captures one anon learner's placement → flagged-pattern →
   recommended-lesson chain plus an e2e test.
-- **§15 Axis 1 Bar #1: 4 of 5 detector candidates merged.** Live on
-  main: `vi_l1_no_aux_negation` (#1163), `vi_l1_co_transfer` (landed
-  alongside #1163's downstream), `vi_l1_topic_comment_fronting`
-  (#1170), `vi_l1_future_adverb_bare` (#1164). Gating PR: #1169
-  `vi_l1_subject_gender` — still OPEN. **Bar #1 is NOT yet ticked.**
+- **§15 Axis 1 Bar #1: closed.** Live on main: `vi_l1_no_aux_negation`
+  (#1163), `vi_l1_co_transfer` (landed alongside #1163's downstream),
+  `vi_l1_topic_comment_fronting` (#1170), `vi_l1_future_adverb_bare`
+  (#1164), and `vi_l1_subject_gender` (#1169).
 - **§15 Axis 1 Bars #6 + #7: still owner-gated.** #6 native crash
   telemetry wiring shipped (PR #1132) — awaits Chau's on-device
   Sentry-dashboard probe. #7 named Vietnamese learner outcome — no
@@ -178,9 +179,8 @@ session, organised by what they tick:
 - **ROADMAP.md updated** with the converged Stage 3 sequence (PR #1177)
   — 3A *"What I'm Weak At"* / Local Weakness Map (read-only,
   local-only, descriptive), 3B Suggested Practice with `(c+)` trigger
-  semantics + guardrails, 3C Review Queue, 3D Mastery Map. Stage 3A is
-  gated on §15 Axis 1 Bar #1 closure (so #1169 is also the Stage 3A
-  gate).
+  semantics + guardrails, 3C Review Queue, 3D Mastery Map. Stage 3A
+  had been gated on §15 Axis 1 Bar #1 closure; #1169 closed that gate.
 - **PRINCIPLES.md principle 19 added** (PR #1179) — *"agent-management
   spreadsheet is source of truth + proactive 5-minute re-read"*.
 - **Kids surface fixes** shipped: #1178 page-11..34 image 404 bug
@@ -191,15 +191,15 @@ session, organised by what they tick:
   capability rows updated against current `origin/main`, new sub-table
   for §15 bars that don't map to capability rows (#1, #6, #7), Axis 2
   gained rows for tone production + classifier explainer, eval-harness
-  baseline corrected 52/52 → 62/62, legend extended.
+  baseline corrected 52/52 → 62/62, legend extended. This Bar #1 tick
+  refresh moves the current baseline to 65/65 after #1169.
 - **STRATEGY.md §7 path references corrected** (PR #1182) — §6 + §7
   point at canonical `/ROADMAP.md` (root); `.claude/roadmap.md`
   demoted to historical detail copy. §7 table body unchanged.
 
-What this means for §1 mission test (Axis 1): two engineering bars
-remain — #1 (1 detector PR away) and the two owner-gated bars (#6 + #7,
-neither code-blocked). Once #1169 merges, Bar #1 ticks and Stage 3A
-becomes unblockable.
+What this means for §1 mission test (Axis 1): Bar #1 no longer blocks
+Stage 3A. The remaining Axis 1 bars are owner-gated: #6 native Sentry
+on-device verification and #7 named Vietnamese learner outcome.
 
 ### As of May 19, 2026 (post-money-path wave re-audit)
 
@@ -543,16 +543,13 @@ one full direction of one full pair, on both sides."
 
 ### Axis 1: VN → EN done-criteria
 
-- [ ] **L1 grammar coverage gap closed.** Every grammar family in
+- [x] **L1 grammar coverage gap closed.** Every grammar family in
   `docs/l1-taxonomies/vi-grammar.md` is reachable by at least one
   detector rule in `src/lib/feedback/l1-error-detector.ts`. *Today:*
-  11 of 15 families have detectors; 5 are detector candidates
-  (`vi_l1_subject_gender`, `vi_l1_topic_comment_fronting`,
-  `vi_l1_co_transfer`, `vi_l1_future_adverb_bare`,
-  `vi_l1_no_aux_negation`) tracked as `expected_failure` in
-  `evals/vi-grammar-cases.json`. *Artifact:* all five candidates flip
-  from `expected_failure` to `expected_pass` in one or more follow-up
-  PRs against the harness, each landing `--update-baseline`.
+  all 15 families have detectors; all 5 candidates flipped to
+  `expected_pass`. *Artifact:* PRs #1163, #1170, #1172, #1164, #1169
+  merged to main; `evals/vi-grammar-cases.json` reflects flips;
+  `evals/.baseline.json` shows 65/65 = 100%.
 
 - [x] **L1 detector eval baseline ≥ 95%.** Global pass rate on
   `evals/vi-grammar-cases.json` is ≥ 95% (baseline-eligible cases).
@@ -584,15 +581,16 @@ one full direction of one full pair, on both sides."
   scoring) per the dispatch scoping. *Artifact:* the two new consts
   on `main`.
 
-- [ ] **Placement → lesson routing verified end-to-end.** A
+- [x] **Placement → lesson routing verified end-to-end.** A
   Vietnamese learner who completes the placement test is routed to
   lessons tagged with their flagged L1 interference patterns,
   validated by a real placement run + lesson-recommendation chain on a
-  real account. *Today:* infrastructure shipped
-  (`getVnL1PatternsByCategory`, `lessonTags`) but no end-to-end
-  runbook on record. *Artifact:* a runbook in `reports/` capturing
-  one Vietnamese learner's placement → flagged-pattern → recommended-
-  lesson chain.
+  real account. *Today:* runbook + E2E spec shipped via PR #1143.
+  *Artifact:* `docs/runbooks/placement-to-lesson.md` (step-by-step
+  contract for anon flow with file:line anchors, explicit safety
+  invariants) + `tests/e2e/placement-to-first-lesson.spec.ts` (anon
+  spec walking five v3 tasks → Results → first lesson → /room/:roomId
+  URL shape).
 
 - [ ] **Native crash telemetry confirmed on-device.** Sentry fires
   from iOS and Android builds on a real device — not a CI emulator
@@ -725,12 +723,15 @@ Re-open and tighten if any of the following happen:
 
 ### Status snapshot (date this when ticking checkboxes)
 
-As of 2026-05-25, two Axis 1 checkboxes are ticked: *L1 detector
-eval baseline* (now 100% / 52 of 52) and *AI Tutor consumes the L1
-profile* (PR #1131). The next closest are *Axis 1: Placement →
-lesson routing E2E* (pending PR #1143) and *Axis 1: Native crash
-telemetry* (wired per PR #1132, awaiting Chau's on-device probe).
-Two ticks, eleven open. The bars stay; the work is to land artifacts.
+As of 2026-05-25, five Axis 1 checkboxes are ticked: Bar #1 (L1
+grammar coverage, PRs #1163/#1170/#1172/#1164/#1169), Bar #2 (eval
+baseline 65/65, PR #1156), Bar #3 (AI Tutor L1 injection, PR #1131),
+Bar #4 (pronunciation drills, PR #1173), Bar #5 (placement → lesson
+E2E, PR #1143). Two Axis 1 bars remain, both owner-gated: Bar #6
+(native Sentry on-device probe, wired per PR #1132) and Bar #7
+(named Vietnamese learner outcome). Axis 2: zero ticked on main;
+Bars #1, #3, #4 in flight (#1184, #1176, #1188). Five ticked, eight
+open.
 
 ---
 
