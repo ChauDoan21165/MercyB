@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-25T12:10:19.740Z",
+  "generated_at": "2026-05-25T12:22:50.050Z",
   "global": {
-    "pass": 51,
+    "pass": 52,
     "total": 52,
-    "rate": 0.9807692307692307
+    "rate": 1
   },
   "by_family": {
     "article-omission-overuse": {
@@ -37,9 +37,9 @@
       "rate": 1
     },
     "preposition-selection-transfer": {
-      "pass": 4,
+      "pass": 5,
       "total": 5,
-      "rate": 0.8
+      "rate": 1
     },
     "pronoun-gender-confusion": {
       "pass": 2,
