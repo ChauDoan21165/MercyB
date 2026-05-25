@@ -148,9 +148,11 @@ Per PRINCIPLES §9 (status docs drift — re-audit weekly). Six days of
 shipping since the 2026-05-19 entry; §6 was stale. Net changes this
 session, organised by what they tick:
 
-- **§15 Axis 1: four bars ticked.** Bar #2 (eval baseline ≥ 95%) ticked
+- **§15 Axis 1: five bars ticked.** Bar #1 (L1 grammar coverage gap
+  closed) ticked after #1169 landed `vi_l1_subject_gender`; all five
+  detector candidates now pass. Bar #2 (eval baseline ≥ 95%) ticked
   via PR #1156 — `evals/.baseline.json` is now 100% (was 52/52; current
-  62/62 reflects the four Bar #1 candidate flips below). Bar #3 (AI
+  65/65 reflects the five Bar #1 candidate flips). Bar #3 (AI
   Tutor consumes the L1 profile) ticked via PR #1131 —
   `promptAssembly.ts` injects `viL1Profile.interference` into the
   Vietnamese teacher-voice block. Bar #4 (pronunciation drills cover
@@ -160,11 +162,10 @@ session, organised by what they tick:
   lesson routing E2E) ticked via PR #1143 — runbook in `reports/`
   captures one anon learner's placement → flagged-pattern →
   recommended-lesson chain plus an e2e test.
-- **§15 Axis 1 Bar #1: 4 of 5 detector candidates merged.** Live on
-  main: `vi_l1_no_aux_negation` (#1163), `vi_l1_co_transfer` (landed
-  alongside #1163's downstream), `vi_l1_topic_comment_fronting`
-  (#1170), `vi_l1_future_adverb_bare` (#1164). Gating PR: #1169
-  `vi_l1_subject_gender` — still OPEN. **Bar #1 is NOT yet ticked.**
+- **§15 Axis 1 Bar #1: closed.** Live on main: `vi_l1_no_aux_negation`
+  (#1163), `vi_l1_co_transfer` (landed alongside #1163's downstream),
+  `vi_l1_topic_comment_fronting` (#1170), `vi_l1_future_adverb_bare`
+  (#1164), and `vi_l1_subject_gender` (#1169).
 - **§15 Axis 1 Bars #6 + #7: still owner-gated.** #6 native crash
   telemetry wiring shipped (PR #1132) — awaits Chau's on-device
   Sentry-dashboard probe. #7 named Vietnamese learner outcome — no
@@ -178,9 +179,8 @@ session, organised by what they tick:
 - **ROADMAP.md updated** with the converged Stage 3 sequence (PR #1177)
   — 3A *"What I'm Weak At"* / Local Weakness Map (read-only,
   local-only, descriptive), 3B Suggested Practice with `(c+)` trigger
-  semantics + guardrails, 3C Review Queue, 3D Mastery Map. Stage 3A is
-  gated on §15 Axis 1 Bar #1 closure (so #1169 is also the Stage 3A
-  gate).
+  semantics + guardrails, 3C Review Queue, 3D Mastery Map. Stage 3A
+  had been gated on §15 Axis 1 Bar #1 closure; #1169 closed that gate.
 - **PRINCIPLES.md principle 19 added** (PR #1179) — *"agent-management
   spreadsheet is source of truth + proactive 5-minute re-read"*.
 - **Kids surface fixes** shipped: #1178 page-11..34 image 404 bug
@@ -191,15 +191,15 @@ session, organised by what they tick:
   capability rows updated against current `origin/main`, new sub-table
   for §15 bars that don't map to capability rows (#1, #6, #7), Axis 2
   gained rows for tone production + classifier explainer, eval-harness
-  baseline corrected 52/52 → 62/62, legend extended.
+  baseline corrected 52/52 → 62/62, legend extended. This Bar #1 tick
+  refresh moves the current baseline to 65/65 after #1169.
 - **STRATEGY.md §7 path references corrected** (PR #1182) — §6 + §7
   point at canonical `/ROADMAP.md` (root); `.claude/roadmap.md`
   demoted to historical detail copy. §7 table body unchanged.
 
-What this means for §1 mission test (Axis 1): two engineering bars
-remain — #1 (1 detector PR away) and the two owner-gated bars (#6 + #7,
-neither code-blocked). Once #1169 merges, Bar #1 ticks and Stage 3A
-becomes unblockable.
+What this means for §1 mission test (Axis 1): Bar #1 no longer blocks
+Stage 3A. The remaining Axis 1 bars are owner-gated: #6 native Sentry
+on-device verification and #7 named Vietnamese learner outcome.
 
 ### As of May 19, 2026 (post-money-path wave re-audit)
 
