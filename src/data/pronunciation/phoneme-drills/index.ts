@@ -46,11 +46,30 @@ export type CommonSubstitution = {
   why_vi: string;
 };
 
+/**
+ * Discriminator for the kind of pronunciation contrast a pack targets.
+ * Defaults to 'phoneme' when omitted (back-compat with the original 24
+ * packs). 'stress' and 'intonation' packs may omit `phoneme_ipa` since
+ * the unit they teach isn't a single phoneme.
+ */
+export type PackKind = "phoneme" | "stress" | "intonation";
+
 export type PhonemeDrillPack = {
   /** ASCII URL slug. Stable — used in route + telemetry + graduation key. */
   slug: string;
-  /** IPA representation shown to the learner ("/θ/"). */
-  phoneme_ipa: string;
+  /**
+   * Pack kind. Omitting → 'phoneme'. The route + heatmap render the
+   * same UI for all kinds; this field is read by tests and (later) by
+   * any consumer that needs to fork behavior per-kind.
+   */
+  pack_kind?: PackKind;
+  /**
+   * IPA representation shown to the learner ("/θ/"). Required for
+   * `pack_kind === 'phoneme'`; optional for stress / intonation packs
+   * (whose unit isn't a single phoneme). May be a non-IPA glyph like
+   * "ˈ" (primary stress mark) when present on a stress pack.
+   */
+  phoneme_ipa?: string;
   /** Vietnamese display label. */
   phoneme_label_vi: string;
   /** English display label. */
@@ -58,7 +77,9 @@ export type PhonemeDrillPack = {
   /**
    * Canonical phoneme keys this pack covers. Used by the heatmap CTA
    * to find the right pack from a (single-key) cell click. Pairs like
-   * `ih_iy` list both "ih" and "iy".
+   * `ih_iy` list both "ih" and "iy". Stress / intonation packs use a
+   * placeholder key ("stress" / "intonation") since they don't surface
+   * on the phoneme heatmap.
    */
   canonical_phonemes: readonly string[];
   /** Testable physical cue — mirror, finger on throat, etc. */
@@ -916,6 +937,116 @@ const H: PhonemeDrillPack = {
   ],
 };
 
+// ── Stress packs ────────────────────────────────────────────────────────
+//
+// First non-phoneme pack. Targets word-stress placement — the most
+// frequent prosodic L1-transfer error for Vietnamese learners, per
+// docs/l1-taxonomies/vn-phoneme-gaps.md Gap 4 and STRATEGY §5. The
+// PhonemeDrillPack schema gained a `pack_kind` discriminator + an
+// optional `phoneme_ipa` so this pack fits the same route + UI as the
+// 24 phoneme packs above without forcing a new component path.
+//
+// Selection criteria for the 10 contrasts:
+//   - Noun/verb stress shift (REcord vs reCORD) — 3 pairs (6 sentences
+//     would be possible but the brief asked for 10 contrasts total, so
+//     5 pairs split across 3 noun/verb + 2 loanword + 5 trap-words).
+//   - Loanwords where Vietnamese / French stress patterns leak in
+//     (HOtel / HOSpital / etc).
+//   - VN-pattern-trap words where the learner's default "even stress"
+//     produces a confusable English form (banana, computer).
+const STRESS_2_3_SYLLABLE: PhonemeDrillPack = {
+  slug: "stress_2_3_syllable",
+  pack_kind: "stress",
+  // No phoneme_ipa — pack_kind is 'stress'. The UI's tip-button glyph
+  // gracefully degrades to empty when this is absent.
+  phoneme_label_vi: "trọng âm — từ 2–3 âm tiết",
+  phoneme_label_en: "word stress — 2- and 3-syllable",
+  canonical_phonemes: ["stress"],
+  articulation_tip_vi:
+    "Trọng âm trong tiếng Anh là một âm tiết được phát mạnh hơn, dài hơn, và cao hơn các âm tiết khác. Tiếng Việt phát các âm tiết khá đều, nên hãy luyện 'đẩy ra' đúng một âm tiết duy nhất — đừng phát đều.",
+  articulation_tip_en:
+    "English word stress means one syllable is louder, longer, and higher in pitch than the others. Vietnamese gives every syllable roughly equal weight, so practice pushing out exactly one syllable — don't say them evenly.",
+  common_vn_substitutions: [
+    {
+      wrong_ipa: "even stress",
+      why_vi:
+        "Tiếng Việt là ngôn ngữ thanh điệu — mỗi âm tiết có thanh của riêng nó, độ dài và độ mạnh tương đối đều. Khi sang tiếng Anh, người Việt hay giữ thói quen này: COM-PU-TER thay vì com-PU-ter.",
+    },
+    {
+      wrong_ipa: "first-syllable stress on loanwords",
+      why_vi:
+        "Loanword như 'hotel', 'cafe', 'computer' trong tiếng Việt và tiếng Pháp đều có khuôn nhấn riêng. Khi đọc tiếng Anh, người học hay nhấn vào âm tiết đầu (HO-tel) thay vì âm tiết hai (ho-TEL).",
+    },
+    {
+      wrong_ipa: "final-syllable stress",
+      why_vi:
+        "Một số người học, dưới ảnh hưởng tiếng Pháp, nhấn vào âm tiết cuối (com-pu-TER, cof-FEE). Tiếng Anh chuẩn nhấn trọng âm ở vị trí khác — phải nghe mẫu để nhớ từng từ.",
+    },
+  ],
+  sentences: [
+    {
+      sentence_en: "She broke the world record.",
+      sentence_vi: "Cô ấy đã phá kỷ lục thế giới.",
+      target_word_indices: [4],
+      notes_vi: "Danh từ → trọng âm âm tiết đầu: RE-cord.",
+    },
+    {
+      sentence_en: "I will record the meeting.",
+      sentence_vi: "Tôi sẽ ghi âm cuộc họp.",
+      target_word_indices: [2],
+      notes_vi: "Động từ → trọng âm âm tiết hai: re-CORD.",
+    },
+    {
+      sentence_en: "Thank you for the present.",
+      sentence_vi: "Cảm ơn món quà.",
+      target_word_indices: [4],
+      notes_vi: "Danh từ → trọng âm âm tiết đầu: PRE-sent.",
+    },
+    {
+      sentence_en: "She will present the project today.",
+      sentence_vi: "Cô ấy sẽ trình bày dự án hôm nay.",
+      target_word_indices: [2],
+      notes_vi: "Động từ → trọng âm âm tiết hai: pre-SENT.",
+    },
+    {
+      sentence_en: "That small object is heavy.",
+      sentence_vi: "Vật nhỏ kia rất nặng.",
+      target_word_indices: [2],
+      notes_vi: "Danh từ → trọng âm âm tiết đầu: OB-ject.",
+    },
+    {
+      sentence_en: "We stayed at a quiet hotel.",
+      sentence_vi: "Chúng tôi ở một khách sạn yên tĩnh.",
+      target_word_indices: [5],
+      notes_vi: "Người Việt hay nhấn HO-tel; tiếng Anh đúng là ho-TEL (trọng âm âm tiết hai).",
+    },
+    {
+      sentence_en: "He drinks coffee every morning.",
+      sentence_vi: "Anh ấy uống cà phê mỗi sáng.",
+      target_word_indices: [2],
+      notes_vi: "Trọng âm âm tiết đầu: COF-fee. Đừng nhấn cof-FEE theo kiểu tiếng Pháp.",
+    },
+    {
+      sentence_en: "She bought a new computer yesterday.",
+      sentence_vi: "Cô ấy mua máy tính mới hôm qua.",
+      target_word_indices: [4],
+      notes_vi: "Trọng âm âm tiết giữa: com-PU-ter. Đừng phát đều COM-PU-TER.",
+    },
+    {
+      sentence_en: "My uncle works at the hospital.",
+      sentence_vi: "Chú tôi làm việc ở bệnh viện.",
+      target_word_indices: [5],
+      notes_vi: "Trọng âm âm tiết đầu: HOS-pi-tal. Tránh hos-PI-tal.",
+    },
+    {
+      sentence_en: "I eat a banana every day.",
+      sentence_vi: "Tôi ăn một quả chuối mỗi ngày.",
+      target_word_indices: [3],
+      notes_vi: "Trọng âm âm tiết giữa: ba-NAN-a. Đừng phát đều ba-na-na.",
+    },
+  ],
+};
+
 // ── Registry ────────────────────────────────────────────────────────────
 
 export const PHONEME_DRILL_PACKS: readonly PhonemeDrillPack[] = [
@@ -926,6 +1057,7 @@ export const PHONEME_DRILL_PACKS: readonly PhonemeDrillPack[] = [
   L_FINAL, S_FINAL, Z_FINAL,
   P_B_FINAL, T_D_FINAL, K_G_FINAL,
   F, H,
+  STRESS_2_3_SYLLABLE,
 ];
 
 const SLUG_TO_PACK: Record<string, PhonemeDrillPack> = (() => {
