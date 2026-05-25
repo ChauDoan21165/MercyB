@@ -2,6 +2,7 @@
 > `project_db_schema_drift_audit`; 179 PROD_AHEAD relations) and A31's
 > reconciliation (memory `project_repo_ahead_reconciliation`; latency migration
 > `20260518000000` applied to prod — DO NOT re-apply). Keep for audit trail.
+> See `reports/OPS-reports-superseded-audit-A9h.md` for the audit row that classified this file.
 
 # RECON — Supabase Migration Drift
 

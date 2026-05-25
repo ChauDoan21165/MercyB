@@ -1,6 +1,7 @@
 > **SUPERSEDED 2026-05-19/20:** the wave has drained. For current PR state run
 > `gh pr list --state open`. This doc is the mid-wave snapshot — keep for audit
 > trail, do not act on the sequence.
+> See `reports/OPS-reports-superseded-audit-A9h.md` for the audit row that classified this file.
 
 # PR review backlog — sequencing + risk matrix (A2c)
 
