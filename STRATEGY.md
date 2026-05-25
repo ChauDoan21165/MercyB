@@ -142,6 +142,65 @@ This list is not exhaustive of what MercyBlade may eventually support — it is 
 
 > Update this section every 1-2 weeks. Reality drift = strategy drift.
 
+### As of May 25, 2026 (Bar-tick + roadmap convergence session)
+
+Per PRINCIPLES §9 (status docs drift — re-audit weekly). Six days of
+shipping since the 2026-05-19 entry; §6 was stale. Net changes this
+session, organised by what they tick:
+
+- **§15 Axis 1: four bars ticked.** Bar #2 (eval baseline ≥ 95%) ticked
+  via PR #1156 — `evals/.baseline.json` is now 100% (was 52/52; current
+  62/62 reflects the four Bar #1 candidate flips below). Bar #3 (AI
+  Tutor consumes the L1 profile) ticked via PR #1131 —
+  `promptAssembly.ts` injects `viL1Profile.interference` into the
+  Vietnamese teacher-voice block. Bar #4 (pronunciation drills cover
+  the §5-named pain points) ticked via PR #1173 — all six axes ship
+  (`PROBLEM_PAIRS_TH_T / _R_L / _ED_ENDINGS / _S_PLURALS / _STRESS /
+  _INTONATION`), wired into `soundPairDrills.ts`. Bar #5 (placement →
+  lesson routing E2E) ticked via PR #1143 — runbook in `reports/`
+  captures one anon learner's placement → flagged-pattern →
+  recommended-lesson chain plus an e2e test.
+- **§15 Axis 1 Bar #1: 4 of 5 detector candidates merged.** Live on
+  main: `vi_l1_no_aux_negation` (#1163), `vi_l1_co_transfer` (landed
+  alongside #1163's downstream), `vi_l1_topic_comment_fronting`
+  (#1170), `vi_l1_future_adverb_bare` (#1164). Gating PR: #1169
+  `vi_l1_subject_gender` — still OPEN. **Bar #1 is NOT yet ticked.**
+- **§15 Axis 1 Bars #6 + #7: still owner-gated.** #6 native crash
+  telemetry wiring shipped (PR #1132) — awaits Chau's on-device
+  Sentry-dashboard probe. #7 named Vietnamese learner outcome — no
+  testimonial on record; marketing/operations track.
+- **§15 Axis 2 Bar #1: in flight via PR #1184**, NOT yet ticked —
+  `englishL1Profile` (EN→VN, claimed 10 grammar families + 84 paired
+  examples per the PR title) remains OPEN on origin. Bar #3 (classifier
+  system explainer + drill) also in flight via PR #1176 (Vietnamese
+  classifier room) — also NOT ticked. Bars #2 (tone production), #4
+  (EN→VN detector rules), #5 (named EN-speaker outcome) all still open.
+- **ROADMAP.md updated** with the converged Stage 3 sequence (PR #1177)
+  — 3A *"What I'm Weak At"* / Local Weakness Map (read-only,
+  local-only, descriptive), 3B Suggested Practice with `(c+)` trigger
+  semantics + guardrails, 3C Review Queue, 3D Mastery Map. Stage 3A is
+  gated on §15 Axis 1 Bar #1 closure (so #1169 is also the Stage 3A
+  gate).
+- **PRINCIPLES.md principle 19 added** (PR #1179) — *"agent-management
+  spreadsheet is source of truth + proactive 5-minute re-read"*.
+- **Kids surface fixes** shipped: #1178 page-11..34 image 404 bug
+  (isPage3LessonKey predicate over-matching pages 11–34) and #1181 tile
+  grid scroll cutoff. Both restore product functionality directly hit
+  by the Stage-2 image-missing dispatch earlier this session.
+- **`docs/pair-matrix.md` synced with §15 status** (PR #1185) —
+  capability rows updated against current `origin/main`, new sub-table
+  for §15 bars that don't map to capability rows (#1, #6, #7), Axis 2
+  gained rows for tone production + classifier explainer, eval-harness
+  baseline corrected 52/52 → 62/62, legend extended.
+- **STRATEGY.md §7 path references corrected** (PR #1182) — §6 + §7
+  point at canonical `/ROADMAP.md` (root); `.claude/roadmap.md`
+  demoted to historical detail copy. §7 table body unchanged.
+
+What this means for §1 mission test (Axis 1): two engineering bars
+remain — #1 (1 detector PR away) and the two owner-gated bars (#6 + #7,
+neither code-blocked). Once #1169 merges, Bar #1 ticks and Stage 3A
+becomes unblockable.
+
 ### As of May 19, 2026 (post-money-path wave re-audit)
 
 - **Verified content inventory** (canonical `*_TOTAL_LESSONS` constants in
