@@ -980,6 +980,23 @@ describe("AiTutor mock UI", () => {
     expect(screen.getByText(/4 đã luyện tập/)).toBeInTheDocument();
   });
 
+  it("M3: shows safe Progress / Mastery summary signals", async () => {
+    getMemorySummary.mockResolvedValue({ ...POPULATED_SUMMARY });
+    render(<AiTutorPage />);
+
+    const progressCard = await screen.findByTestId("ai-tutor-memory-card");
+
+    expect(progressCard).toHaveTextContent("Progress / Mastery · EN");
+    expect(progressCard).toHaveTextContent("You have practiced 4 of 6 saved corrections.");
+    expect(progressCard).toHaveTextContent("67%");
+    expect(progressCard).toHaveTextContent("Practice count: 4");
+    expect(progressCard).toHaveTextContent("Mạnh nhất: present-simple");
+    expect(progressCard).toHaveTextContent("Cần ôn: past-tense");
+    expect(progressCard).toHaveTextContent("Weak pattern: past-tense");
+    expect(progressCard).toHaveTextContent("Suggested next focus: past-tense");
+    expect(screen.getByTestId("ai-tutor-progress-meter")).toHaveAttribute("aria-label", "Progress 67%");
+  });
+
   it("A7: loads French memory separately from English memory", async () => {
     window.history.pushState({}, "", "/ai-tutor?target=fr");
     getMemorySummary.mockResolvedValue({ ...EMPTY_SUMMARY, targetLanguage: "fr", memoryKey: "ai-tutor:fr" });
@@ -1025,7 +1042,7 @@ describe("AiTutor mock UI", () => {
   it("M3: shows suggested next focus", async () => {
     getMemorySummary.mockResolvedValue({ ...POPULATED_SUMMARY });
     render(<AiTutorPage />);
-    await waitFor(() => expect(screen.getByText(/Gợi ý tiếp theo: past-tense/)).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText(/Suggested next focus: past-tense/)).toBeInTheDocument());
   });
 
   it("M3: shows empty memory state when no corrections", async () => {
@@ -1034,7 +1051,8 @@ describe("AiTutor mock UI", () => {
     await waitFor(() => expect(screen.getByTestId("ai-tutor-today-lesson")).toBeInTheDocument());
     expect(screen.getByText("Start with one clear daily sentence")).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
-    expect(screen.getByText(/Chưa có lịch sử sửa câu/)).toBeInTheDocument();
+    expect(screen.getByText("Practice today to start building your progress.")).toBeInTheDocument();
+    expect(screen.getByText(/No local summary progress for EN yet/)).toBeInTheDocument();
   });
 
   it("M3: reminder card hidden when memory not yet loaded", () => {
