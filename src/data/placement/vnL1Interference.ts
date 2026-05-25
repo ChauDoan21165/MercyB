@@ -8,7 +8,7 @@ export type VNL1Category =
 
 export type CEFRLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 
-export type Severity = "low" | "med" | "high";
+export type Severity = "low" | "medium" | "high";
 
 export type VNL1Example = {
   incorrect: string;
@@ -28,7 +28,7 @@ export type VNL1Pattern = {
   cefrLevelsObserved: CEFRLevel[];
   severity: Severity;
   remediation: string;
-  lessonTags: string[];
+  ruleTags: string[];
 };
 
 const commonSourceNote =
@@ -36,7 +36,7 @@ const commonSourceNote =
 
 export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
   {
-    id: "final-consonant-cluster-reduction",
+    id: "final_consonant_cluster_reduction",
     category: "phonology",
     name: "Final cluster reduction",
     shortDescription:
@@ -55,10 +55,10 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "high",
     remediation:
       "Train final clusters as timed releases, then connect them to grammar: test/tests, ask/asked, next stop. Use slow-to-fast drills with waveform or recording playback.",
-    lessonTags: ["final-consonants", "clusters", "past-ed", "plural-s", "vn-l1-phonology"],
+    ruleTags: ["final_consonants", "clusters", "past_ed", "plural_s", "vn_l1_phonology"],
   },
   {
-    id: "voiced-final-stop-devoicing",
+    id: "voiced_final_stop_devoicing",
     category: "phonology",
     name: "Voiced final stop loss",
     shortDescription:
@@ -73,13 +73,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "She has a big dok.", corrected: "She has a big dog.", gloss: "con chó lớn", context: "Describing a pet" },
     ],
     cefrLevelsObserved: ["A1", "A2", "B1"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Use minimal pairs with vowel-length cues before final stops: bad/bat, bag/back, robe/rope. Keep the final consonant short but audible.",
-    lessonTags: ["final-stops", "voicing", "minimal-pairs", "vn-l1-phonology"],
+    ruleTags: ["final_stops", "voicing", "minimal_pairs", "vn_l1_phonology"],
   },
   {
-    id: "th-stopping-and-fronting",
+    id: "th_stopping_and_fronting",
     category: "phonology",
     name: "TH substitution",
     shortDescription:
@@ -94,13 +94,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "She has tree books.", corrected: "She has three books.", gloss: "ba quyển sách", context: "Counting items" },
     ],
     cefrLevelsObserved: ["A1", "A2", "B1", "B2"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Teach /theta/ as visible airflow and /eth/ as voiced airflow. Start with high-frequency words: think, three, this, that, they.",
-    lessonTags: ["th", "interdental-fricatives", "function-words", "vn-l1-phonology"],
+    ruleTags: ["th", "interdental_fricatives", "function_words", "vn_l1_phonology"],
   },
   {
-    id: "inflectional-s-ed-inaudible",
+    id: "inflectional_s_ed_inaudible",
     category: "phonology",
     name: "Inaudible -s and -ed",
     shortDescription:
@@ -118,10 +118,10 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "high",
     remediation:
       "Pair meaning contrasts with sound contrasts: one cat/two cats, I walk/I walked, I work/he works. Drill endings after voiceless, voiced, and sibilant sounds.",
-    lessonTags: ["final-s", "past-ed", "third-person-s", "possessive-s", "vn-l1-phonology"],
+    ruleTags: ["final_s", "past_ed", "third_person_s", "possessive_s", "vn_l1_phonology"],
   },
   {
-    id: "word-stress-even-timing",
+    id: "word_stress_even_timing",
     category: "phonology",
     name: "Even word stress",
     shortDescription:
@@ -136,13 +136,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "This is IM-por-tant.", corrected: "This is im-POR-tant.", gloss: "quan trọng", context: "Emphasis" },
     ],
     cefrLevelsObserved: ["A2", "B1", "B2", "C1"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Mark stressed syllables visually and practice reduction of unstressed vowels. Prioritize high-frequency IELTS and workplace vocabulary.",
-    lessonTags: ["word-stress", "schwa", "academic-vocabulary", "vn-l1-phonology"],
+    ruleTags: ["word_stress", "schwa", "academic_vocabulary", "vn_l1_phonology"],
   },
   {
-    id: "diphthong-monophthong-reduction",
+    id: "diphthong_monophthong_reduction",
     category: "phonology",
     name: "Diphthong reduction",
     shortDescription:
@@ -157,13 +157,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "She is late today.", corrected: "She is late today.", gloss: "trễ hôm nay", context: "Often pronounced with too little /eI/ glide" },
     ],
     cefrLevelsObserved: ["A1", "A2", "B1"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Use glide arrows and slow exaggeration, then reduce to natural speed. Contrast bed/bade, got/goat, cut/cow, cot/coin.",
-    lessonTags: ["vowels", "diphthongs", "minimal-pairs", "vn-l1-phonology"],
+    ruleTags: ["vowels", "diphthongs", "minimal_pairs", "vn_l1_phonology"],
   },
   {
-    id: "r-l-w-position-confusion",
+    id: "r_l_w_position_confusion",
     category: "phonology",
     name: "R/L/W position confusion",
     shortDescription:
@@ -178,13 +178,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "I fee happy.", corrected: "I feel happy.", gloss: "tôi cảm thấy vui", context: "Emotion" },
     ],
     cefrLevelsObserved: ["A1", "A2", "B1", "B2"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Diagnose by position, not by letter. Practice initial /r/, initial /w/, and final /l/ separately with mirror feedback.",
-    lessonTags: ["r-l", "v-w", "regional-accent", "vn-l1-phonology"],
+    ruleTags: ["r_l", "v_w", "regional_accent", "vn_l1_phonology"],
   },
   {
-    id: "flat-english-intonation",
+    id: "flat_english_intonation",
     category: "phonology",
     name: "Flat English intonation",
     shortDescription:
@@ -202,10 +202,10 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "low",
     remediation:
       "Use shadowing with pitch traces for yes/no questions, wh-questions, contrastive stress, and polite requests.",
-    lessonTags: ["intonation", "sentence-stress", "pragmatics", "vn-l1-phonology"],
+    ruleTags: ["intonation", "sentence_stress", "pragmatics", "vn_l1_phonology"],
   },
   {
-    id: "missing-subject-verb-agreement",
+    id: "missing_subject_verb_agreement",
     category: "morphology",
     name: "Missing subject agreement",
     shortDescription:
@@ -220,13 +220,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "It depend on the price.", corrected: "It depends on the price.", gloss: "tùy vào giá", context: "Decision making" },
     ],
     cefrLevelsObserved: ["A1", "A2", "B1"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Drill present-simple contrasts in meaningful pairs: I work / she works. Tie the written -s to a clearly audible final sound.",
-    lessonTags: ["third-person-s", "present-simple", "verb-agreement", "vn-l1-morphology"],
+    ruleTags: ["third_person_s", "present_simple", "verb_agreement", "vn_l1_morphology"],
   },
   {
-    id: "past-tense-unmarked",
+    id: "past_tense_unmarked",
     category: "morphology",
     name: "Unmarked past tense",
     shortDescription:
@@ -244,10 +244,10 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "high",
     remediation:
       "Contrast Vietnamese time-adverb marking with English verb marking. Practice regular and high-frequency irregular verbs in personal narratives.",
-    lessonTags: ["past-simple", "regular-verbs", "irregular-verbs", "time-reference", "vn-l1-morphology"],
+    ruleTags: ["past_simple", "regular_verbs", "irregular_verbs", "time_reference", "vn_l1_morphology"],
   },
   {
-    id: "plural-s-omission",
+    id: "plural_s_omission",
     category: "morphology",
     name: "Plural -s omission",
     shortDescription:
@@ -262,13 +262,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "I lived there for five year.", corrected: "I lived there for five years.", gloss: "năm năm", context: "Duration" },
     ],
     cefrLevelsObserved: ["A1", "A2", "B1"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Teach plural -s as part of the noun phrase after numbers and quantifiers. Use count/mass sorting before free writing.",
-    lessonTags: ["plural-s", "count-nouns", "quantifiers", "vn-l1-morphology"],
+    ruleTags: ["plural_s", "count_nouns", "quantifiers", "vn_l1_morphology"],
   },
   {
-    id: "possessive-s-avoidance",
+    id: "possessive_s_avoidance",
     category: "morphology",
     name: "Possessive -s avoidance",
     shortDescription:
@@ -286,10 +286,10 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "low",
     remediation:
       "Contrast của phrases with English apostrophe-s. Practice human possessors first, then organizations and time expressions.",
-    lessonTags: ["possessive-s", "noun-phrases", "of-phrases", "vn-l1-morphology"],
+    ruleTags: ["possessive_s", "noun_phrases", "of_phrases", "vn_l1_morphology"],
   },
   {
-    id: "comparative-superlative-mixing",
+    id: "comparative_superlative_mixing",
     category: "morphology",
     name: "Comparative form mixing",
     shortDescription:
@@ -307,10 +307,10 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "low",
     remediation:
       "Sort adjectives by one-syllable, multi-syllable, and irregular forms. Use Vietnamese hơn/nhất as semantic anchors, then force one English form only.",
-    lessonTags: ["comparatives", "superlatives", "adjectives", "vn-l1-morphology"],
+    ruleTags: ["comparatives", "superlatives", "adjectives", "vn_l1_morphology"],
   },
   {
-    id: "modal-verb-inflection",
+    id: "modal_verb_inflection",
     category: "morphology",
     name: "Modal verb inflection",
     shortDescription:
@@ -325,13 +325,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "I must to leave now.", corrected: "I must leave now.", gloss: "tôi phải đi bây giờ", context: "Obligation" },
     ],
     cefrLevelsObserved: ["A1", "A2", "B1"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Teach modals as a small closed class: modal + base verb, no -s, no to. Drill can/should/must with Vietnamese meaning equivalents.",
-    lessonTags: ["modals", "auxiliaries", "base-verb", "vn-l1-morphology"],
+    ruleTags: ["modals", "auxiliaries", "base_verb", "vn_l1_morphology"],
   },
   {
-    id: "missing-articles",
+    id: "missing_articles",
     category: "syntax",
     name: "Article omission",
     shortDescription:
@@ -346,13 +346,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "I love the music.", corrected: "I love music.", gloss: "tôi yêu âm nhạc", context: "General preference" },
     ],
     cefrLevelsObserved: ["A1", "A2", "B1", "B2", "C1"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Teach article choice through noun phrase slots: count/mass, singular/plural, general/specific, new/known. Use contrastive Vietnamese examples with classifiers.",
-    lessonTags: ["articles", "definiteness", "noun-phrase-syntax", "vn-l1-syntax"],
+    ruleTags: ["articles", "definiteness", "noun_phrase_syntax", "vn_l1_syntax"],
   },
   {
-    id: "copula-be-omission",
+    id: "copula_be_omission",
     category: "syntax",
     name: "Copula be omission",
     shortDescription:
@@ -370,10 +370,10 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "high",
     remediation:
       "Practice be in three frames: be + adjective, be + noun phrase, be + place. Contrast with Vietnamese sentences where no overt be appears.",
-    lessonTags: ["be", "copula", "adjectives", "locations", "vn-l1-syntax"],
+    ruleTags: ["be", "copula", "adjectives", "locations", "vn_l1_syntax"],
   },
   {
-    id: "question-word-order-transfer",
+    id: "question_word_order_transfer",
     category: "syntax",
     name: "Question word order",
     shortDescription:
@@ -391,10 +391,10 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "high",
     remediation:
       "Teach question templates by auxiliary: be, do, did, can. Use Vietnamese word-order comparisons only after the English template is automated.",
-    lessonTags: ["questions", "do-support", "auxiliary-inversion", "vn-l1-syntax"],
+    ruleTags: ["questions", "do_support", "auxiliary_inversion", "vn_l1_syntax"],
   },
   {
-    id: "relative-clause-transfer",
+    id: "relative_clause_transfer",
     category: "syntax",
     name: "Relative clause transfer",
     shortDescription:
@@ -409,13 +409,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "Students want study abroad need IELTS.", corrected: "Students who want to study abroad need IELTS.", gloss: "học sinh muốn du học", context: "Academic advice" },
     ],
     cefrLevelsObserved: ["B1", "B2", "C1"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Teach relative clauses with gap awareness: person who, thing that/which, place where. Have learners delete repeated pronouns.",
-    lessonTags: ["relative-clauses", "complex-sentences", "pronouns", "vn-l1-syntax"],
+    ruleTags: ["relative_clauses", "complex_sentences", "pronouns", "vn_l1_syntax"],
   },
   {
-    id: "negation-no-not-placement",
+    id: "negation_no_not_placement",
     category: "syntax",
     name: "Negation placement",
     shortDescription:
@@ -433,10 +433,10 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "high",
     remediation:
       "Teach negation by verb family: be not, modal not, do/does/did not. Practice with Vietnamese không as the meaning anchor but not the syntax model.",
-    lessonTags: ["negation", "do-support", "modals", "vn-l1-syntax"],
+    ruleTags: ["negation", "do_support", "modals", "vn_l1_syntax"],
   },
   {
-    id: "there-is-co-transfer",
+    id: "there_is_co_transfer",
     category: "syntax",
     name: "There is / có transfer",
     shortDescription:
@@ -451,13 +451,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "In my house has three bedrooms.", corrected: "There are three bedrooms in my house.", gloss: "nhà tôi có ba phòng ngủ", context: "Home description" },
     ],
     cefrLevelsObserved: ["A1", "A2", "B1"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Sort có translations into possession, existence, and description. Drill there is/are with location-first Vietnamese prompts.",
-    lessonTags: ["there-is", "have", "existentials", "vn-l1-syntax"],
+    ruleTags: ["there_is", "have", "existentials", "vn_l1_syntax"],
   },
   {
-    id: "topic-comment-fronting",
+    id: "topic_comment_fronting",
     category: "syntax",
     name: "Topic-comment fronting",
     shortDescription:
@@ -472,13 +472,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "About English, I study every day.", corrected: "I study English every day.", gloss: "về tiếng Anh, tôi học mỗi ngày", context: "Study habit" },
     ],
     cefrLevelsObserved: ["A2", "B1", "B2"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Teach when English topic fronting is marked. Have learners rewrite topic-comment drafts into subject-verb-object clauses first.",
-    lessonTags: ["word-order", "topic-comment", "sentence-structure", "vn-l1-syntax"],
+    ruleTags: ["word_order", "topic_comment", "sentence_structure", "vn_l1_syntax"],
   },
   {
-    id: "literal-vietnamese-calques",
+    id: "literal_vietnamese_calques",
     category: "lexicon",
     name: "Literal Vietnamese calques",
     shortDescription:
@@ -496,10 +496,10 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "low",
     remediation:
       "Teach high-frequency collocations as chunks. Include Vietnamese source phrases so learners see why their literal version happened.",
-    lessonTags: ["collocations", "calques", "everyday-phrases", "vn-l1-lexicon"],
+    ruleTags: ["collocations", "calques", "everyday_phrases", "vn_l1_lexicon"],
   },
   {
-    id: "polysemy-one-vietnamese-many-english",
+    id: "polysemy_one_vietnamese_many_english",
     category: "lexicon",
     name: "One Vietnamese word, many English words",
     shortDescription:
@@ -514,13 +514,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "Can you say me the answer?", corrected: "Can you tell me the answer?", gloss: "nói cho tôi đáp án", context: "Asking for information" },
     ],
     cefrLevelsObserved: ["A2", "B1", "B2"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Build semantic maps from one Vietnamese source word to multiple English verbs. Practice with context sorting rather than translation only.",
-    lessonTags: ["word-choice", "semantic-maps", "verbs", "vn-l1-lexicon"],
+    ruleTags: ["word_choice", "semantic_maps", "verbs", "vn_l1_lexicon"],
   },
   {
-    id: "preposition-selection-transfer",
+    id: "preposition_selection_transfer",
     category: "lexicon",
     name: "Preposition selection",
     shortDescription:
@@ -535,13 +535,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "We discussed about the plan.", corrected: "We discussed the plan.", gloss: "thảo luận về kế hoạch", context: "Work meeting" },
     ],
     cefrLevelsObserved: ["A1", "A2", "B1", "B2", "C1"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Teach prepositions in verb/adjective/noun frames: depend on, interested in, reason for. Keep a personal error bank.",
-    lessonTags: ["prepositions", "collocations", "verb-patterns", "vn-l1-lexicon"],
+    ruleTags: ["prepositions", "collocations", "verb_patterns", "vn_l1_lexicon"],
   },
   {
-    id: "phrasal-verb-avoidance",
+    id: "phrasal_verb_avoidance",
     category: "lexicon",
     name: "Phrasal verb avoidance",
     shortDescription:
@@ -559,10 +559,10 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "low",
     remediation:
       "Introduce phrasal verbs by scenario, not alphabetically. Use listen-and-act drills for high-frequency physical actions first.",
-    lessonTags: ["phrasal-verbs", "spoken-english", "particles", "vn-l1-lexicon"],
+    ruleTags: ["phrasal_verbs", "spoken_english", "particles", "vn_l1_lexicon"],
   },
   {
-    id: "false-friend-loanword-overreach",
+    id: "false_friend_loanword_overreach",
     category: "lexicon",
     name: "Loanword false friends",
     shortDescription:
@@ -580,10 +580,10 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "low",
     remediation:
       "Flag suspicious cognates and teach the current English register. Confirm with corpus-like examples, not dictionary headwords alone.",
-    lessonTags: ["false-friends", "loanwords", "register", "vn-l1-lexicon"],
+    ruleTags: ["false_friends", "loanwords", "register", "vn_l1_lexicon"],
   },
   {
-    id: "idiom-literal-interpretation",
+    id: "idiom_literal_interpretation",
     category: "lexicon",
     name: "Literal idiom interpretation",
     shortDescription:
@@ -601,10 +601,10 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "low",
     remediation:
       "Teach idioms as optional comprehension chunks with register notes. Prefer plain English paraphrase before production.",
-    lessonTags: ["idioms", "metaphor", "reading", "vn-l1-lexicon"],
+    ruleTags: ["idioms", "metaphor", "reading", "vn_l1_lexicon"],
   },
   {
-    id: "over-explicit-pronoun-reference",
+    id: "over_explicit_pronoun_reference",
     category: "discourse",
     name: "Over-explicit pronouns",
     shortDescription:
@@ -622,10 +622,10 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "low",
     remediation:
       "Teach reference chains: introduce with a noun, continue with pronouns. Contrast English clarity with Vietnamese social pronoun habits.",
-    lessonTags: ["pronoun-reference", "cohesion", "writing", "vn-l1-discourse"],
+    ruleTags: ["pronoun_reference", "cohesion", "writing", "vn_l1_discourse"],
   },
   {
-    id: "topic-comment-paragraph-shape",
+    id: "topic_comment_paragraph_shape",
     category: "discourse",
     name: "Topic-comment paragraphing",
     shortDescription:
@@ -640,13 +640,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "English is global. Many companies need it. I study every night.", corrected: "English is important for my career, so I study it every night.", gloss: "tiếng Anh toàn cầu...", context: "Motivation statement" },
     ],
     cefrLevelsObserved: ["B1", "B2", "C1"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Use paragraph frames: claim, reason, example, result. Ask learners to underline the one sentence that controls each paragraph.",
-    lessonTags: ["paragraphs", "coherence", "ielts-writing", "vn-l1-discourse"],
+    ruleTags: ["paragraphs", "coherence", "ielts_writing", "vn_l1_discourse"],
   },
   {
-    id: "connector-overuse-and-stacking",
+    id: "connector_overuse_and_stacking",
     category: "discourse",
     name: "Connector stacking",
     shortDescription:
@@ -661,13 +661,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "Because I was busy. I didn't call you.", corrected: "Because I was busy, I didn't call you.", gloss: "vì tôi bận", context: "Explanation" },
     ],
     cefrLevelsObserved: ["A2", "B1", "B2", "C1"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Teach connectors by function and punctuation, then force sentence combining. Remove connectors that do not change the logical relation.",
-    lessonTags: ["connectors", "cohesion", "sentence-combining", "vn-l1-discourse"],
+    ruleTags: ["connectors", "cohesion", "sentence_combining", "vn_l1_discourse"],
   },
   {
-    id: "time-reference-overmarking",
+    id: "time_reference_overmarking",
     category: "discourse",
     name: "Time reference overmarking",
     shortDescription:
@@ -685,10 +685,10 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "low",
     remediation:
       "Have learners mark time once per paragraph, then use tense and sequencing verbs. Combine repetitive time-marked sentences.",
-    lessonTags: ["time-reference", "narrative", "cohesion", "vn-l1-discourse"],
+    ruleTags: ["time_reference", "narrative", "cohesion", "vn_l1_discourse"],
   },
   {
-    id: "indirect-main-point-delay",
+    id: "indirect_main_point_delay",
     category: "discourse",
     name: "Delayed main point",
     shortDescription:
@@ -703,13 +703,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "My situation is a little difficult... can you help me?", corrected: "Could you help me with my application? My situation is a little difficult.", gloss: "bạn giúp tôi được không", context: "Request" },
     ],
     cefrLevelsObserved: ["B1", "B2", "C1", "C2"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Teach purpose-first email and paragraph templates. Frame directness as clarity, not rudeness, when the relationship and context allow it.",
-    lessonTags: ["email-writing", "main-idea", "professional-english", "vn-l1-discourse"],
+    ruleTags: ["email_writing", "main_idea", "professional_english", "vn_l1_discourse"],
   },
   {
-    id: "direct-request-transfer",
+    id: "direct_request_transfer",
     category: "pragmatics",
     name: "Direct request transfer",
     shortDescription:
@@ -724,13 +724,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "Help me check this.", corrected: "Could you help me check this?", gloss: "giúp tôi xem cái này", context: "Asking a coworker" },
     ],
     cefrLevelsObserved: ["A2", "B1", "B2", "C1"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Teach request ladders by relationship and burden: Can you, Could you, Would you mind, I was wondering if. Practice intonation with each.",
-    lessonTags: ["requests", "politeness", "workplace", "vn-l1-pragmatics"],
+    ruleTags: ["requests", "politeness", "workplace", "vn_l1_pragmatics"],
   },
   {
-    id: "formality-calibration",
+    id: "formality_calibration",
     category: "pragmatics",
     name: "Formality calibration",
     shortDescription:
@@ -745,13 +745,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "Hey bro, I need visa information.", corrected: "Hello, I need information about my visa.", gloss: "anh/chị cho tôi hỏi", context: "Official inquiry" },
     ],
     cefrLevelsObserved: ["B1", "B2", "C1", "C2"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Teach register by channel: text to friend, email to teacher, message to boss, official form. Provide safe default templates.",
-    lessonTags: ["register", "email", "address-terms", "vn-l1-pragmatics"],
+    ruleTags: ["register", "email", "address_terms", "vn_l1_pragmatics"],
   },
   {
-    id: "apology-explanation-before-responsibility",
+    id: "apology_explanation_before_responsibility",
     category: "pragmatics",
     name: "Apology explanation order",
     shortDescription:
@@ -766,13 +766,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "My computer had a problem.", corrected: "Sorry, my computer had a problem. I will resend the file.", gloss: "máy tính bị lỗi", context: "Failed upload" },
     ],
     cefrLevelsObserved: ["A2", "B1", "B2", "C1"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Teach apology formula: sorry + responsibility + repair + brief reason. Role-play late arrival, missed deadline, and wrong order.",
-    lessonTags: ["apologies", "speech-acts", "workplace", "vn-l1-pragmatics"],
+    ruleTags: ["apologies", "speech_acts", "workplace", "vn_l1_pragmatics"],
   },
   {
-    id: "refusal-softening-gap",
+    id: "refusal_softening_gap",
     category: "pragmatics",
     name: "Refusal softening gap",
     shortDescription:
@@ -787,13 +787,13 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
       { incorrect: "I don't want this job.", corrected: "Thank you for the offer, but I have decided to accept another position.", gloss: "tôi không muốn việc này", context: "Rejecting offer" },
     ],
     cefrLevelsObserved: ["B1", "B2", "C1"],
-    severity: "med",
+    severity: "medium",
     remediation:
       "Practice refusal frames by stakes: friend invitation, boss request, customer complaint, job offer. Include alternatives when appropriate.",
-    lessonTags: ["refusals", "politeness", "professional-english", "vn-l1-pragmatics"],
+    ruleTags: ["refusals", "politeness", "professional_english", "vn_l1_pragmatics"],
   },
   {
-    id: "greeting-small-talk-transfer",
+    id: "greeting_small_talk_transfer",
     category: "pragmatics",
     name: "Greeting convention transfer",
     shortDescription:
@@ -811,7 +811,7 @@ export const VN_L1_INTERFERENCE_PATTERNS: VNL1Pattern[] = [
     severity: "low",
     remediation:
       "Teach safe small-talk scripts by closeness level. Mark which Vietnamese care questions are close-relationship only in English.",
-    lessonTags: ["greetings", "small-talk", "culture", "vn-l1-pragmatics"],
+    ruleTags: ["greetings", "small_talk", "culture", "vn_l1_pragmatics"],
   },
 ];
 
