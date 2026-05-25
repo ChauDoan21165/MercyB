@@ -12,8 +12,8 @@ import {
 // ── Registry shape ───────────────────────────────────────────────────────
 
 describe("phoneme drill packs — registry", () => {
-  it("ships the priority list of 24 packs", () => {
-    expect(PHONEME_DRILL_PACKS.length).toBe(24);
+  it("ships the priority list of 25 packs", () => {
+    expect(PHONEME_DRILL_PACKS.length).toBe(25);
   });
 
   it("has unique slugs across all packs", () => {
@@ -55,7 +55,14 @@ describe.each(PHONEME_DRILL_PACKS as readonly PhonemeDrillPack[])(
     it("has bilingual labels", () => {
       expect(pack.phoneme_label_vi.length).toBeGreaterThan(0);
       expect(pack.phoneme_label_en.length).toBeGreaterThan(0);
-      expect(pack.phoneme_ipa.length).toBeGreaterThan(0);
+      // phoneme_ipa is required for pack_kind === 'phoneme' (default).
+      // Stress / intonation packs may omit it — the unit they teach
+      // isn't a single phoneme.
+      const kind = pack.pack_kind ?? "phoneme";
+      if (kind === "phoneme") {
+        expect(pack.phoneme_ipa, pack.slug).toBeTruthy();
+        expect(pack.phoneme_ipa!.length, pack.slug).toBeGreaterThan(0);
+      }
     });
 
     it("each sentence has bilingual text + at least one target word index", () => {
@@ -121,5 +128,36 @@ describe("getDrillPackForPhoneme", () => {
   it("returns null when no pack covers the phoneme", () => {
     // We don't ship a pack for an obscure or unmapped phoneme.
     expect(getDrillPackForPhoneme("zzz")).toBeNull();
+  });
+});
+
+// ── pack_kind discriminator + stress pack ───────────────────────────────
+
+describe("pack_kind discriminator", () => {
+  it("defaults to 'phoneme' for the 24 original packs (kind omitted)", () => {
+    const phonemePacks = PHONEME_DRILL_PACKS.filter(
+      (p) => (p.pack_kind ?? "phoneme") === "phoneme",
+    );
+    expect(phonemePacks.length).toBe(24);
+  });
+
+  it("ships exactly one stress pack", () => {
+    const stressPacks = PHONEME_DRILL_PACKS.filter(
+      (p) => p.pack_kind === "stress",
+    );
+    expect(stressPacks.length).toBe(1);
+    expect(stressPacks[0].slug).toBe("stress_2_3_syllable");
+  });
+
+  it("the stress pack is reachable via getDrillPackBySlug", () => {
+    const pack = getDrillPackBySlug("stress_2_3_syllable");
+    expect(pack).not.toBeNull();
+    expect(pack?.pack_kind).toBe("stress");
+    expect(pack?.sentences.length).toBe(10);
+  });
+
+  it("the stress pack omits phoneme_ipa (unit isn't a phoneme)", () => {
+    const pack = getDrillPackBySlug("stress_2_3_syllable");
+    expect(pack?.phoneme_ipa).toBeUndefined();
   });
 });
