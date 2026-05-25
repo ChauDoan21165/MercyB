@@ -901,29 +901,42 @@ export const rulePrepositionTransfer: Rule = ({ userTokens, expectedTokens, rawE
     }
   }
 
-  const userJoined = userTokens.join(' ');
-  const expectedJoined = expectedTokens.join(' ');
+  // Strip common verb inflections so "waited" / "listening" / "looks"
+  // collapse to the base form before substring lookup. Stem floor of
+  // 3 chars avoids mangling short words (`bed`, `was`, `wing`). Mirrors
+  // the lemma-aware approach in isToTriggerInflection (rule 29).
+  const lemmatize = (s: string): string =>
+    s.replace(/\b([a-z]+?)(?:ed|ing|s)\b/gi, (m, stem) =>
+      stem.length >= 3 ? stem : m,
+    );
+  const userLemma = lemmatize(userTokens.join(' '));
+  const expectedLemma = lemmatize(expectedTokens.join(' '));
+
   for (const m of PREPOSITION_MISMATCHES) {
     if (!m.right.includes(' ')) continue;
     const wrongPhrase = m.wrong;
     const rightPhrase = m.right;
-    if (userJoined.includes(wrongPhrase) && expectedJoined.includes(rightPhrase)) {
-      const extraPrep = rightPhrase.slice(wrongPhrase.length).trim();
-      if (
-        extraPrep &&
-        !userJoined.includes(` ${extraPrep} `) &&
-        !userJoined.endsWith(` ${extraPrep}`)
-      ) {
-        return {
-          tag: 'vi_l1_preposition_transfer',
-          replacements: {
-            FIX: rawExpected,
-            USER_PREP: wrongPhrase,
-            FIX_PREP: rightPhrase,
-          },
-        };
-      }
-    }
+    if (!userLemma.includes(wrongPhrase) || !expectedLemma.includes(rightPhrase)) continue;
+    const extraPrep = rightPhrase.slice(wrongPhrase.length).trim();
+    if (!extraPrep) continue;
+    // Position-aware "already has prep" check: only suppress the rule
+    // if extraPrep appears *immediately after* the wrong phrase. Avoids
+    // false suppression when the prep appears elsewhere in the sentence
+    // (e.g. "waited the bus for thirty minutes" — "for" attaches to
+    // "thirty minutes", not to "waited").
+    const idx = userLemma.indexOf(wrongPhrase);
+    const after = userLemma.slice(idx + wrongPhrase.length);
+    const alreadyHasPrep =
+      after === ` ${extraPrep}` || after.startsWith(` ${extraPrep} `);
+    if (alreadyHasPrep) continue;
+    return {
+      tag: 'vi_l1_preposition_transfer',
+      replacements: {
+        FIX: rawExpected,
+        USER_PREP: wrongPhrase,
+        FIX_PREP: rightPhrase,
+      },
+    };
   }
   return null;
 };
