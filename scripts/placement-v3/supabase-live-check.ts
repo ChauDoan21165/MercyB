@@ -456,11 +456,18 @@ type MemoryStore = {
   sessions: Map<string, PlacementV3Session>;
   responses: Map<string, PlacementV3Response[]>;
   profiles: Map<string, PlacementV3Profile>;
+  profileSnapshots: Map<string, unknown>;
   transientFailureUsed: boolean;
 };
 
 function createMemoryStore(): MemoryStore {
-  return { sessions: new Map(), responses: new Map(), profiles: new Map(), transientFailureUsed: false };
+  return {
+    sessions: new Map(),
+    responses: new Map(),
+    profiles: new Map(),
+    profileSnapshots: new Map(),
+    transientFailureUsed: false,
+  };
 }
 
 function createMemoryDeps(
@@ -543,6 +550,9 @@ function createMemoryDeps(
       store.profiles.set(profile.session_id, saved);
       return saved;
     },
+    writeProfileSnapshot: async (snapshot) => {
+      store.profileSnapshots.set(snapshot.sessionId, snapshot);
+    },
     grade,
     recommendLessons,
   };
@@ -609,6 +619,7 @@ function cleanupMemoryRows(store: MemoryStore, userId: string): number {
       store.sessions.delete(id);
       store.responses.delete(id);
       store.profiles.delete(id);
+      store.profileSnapshots.delete(id);
     }
   }
   return rows;
