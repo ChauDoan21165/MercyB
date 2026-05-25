@@ -45,6 +45,13 @@ import {
   type VietlishLogicDiagnosisResult,
 } from "@/lib/tutor/vietlishLogicEngine";
 import type { TodayLessonPlan } from "@/lib/tutor/todayLessonPlanner";
+import {
+  loadStudySessionState,
+  recordStudyPromptCompleted,
+  recordStudyRetry,
+  startStudySession,
+  type StudySessionState,
+} from "@/lib/tutor/studySessionState";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
 import ConversationMode, {
   type ConversationMessage,
@@ -230,6 +237,7 @@ type TodayLessonLoopPanelProps = {
   practiceFeedback: PracticeFeedback | null;
   latestMercyMessage: MercyConversationMessage | null;
   logicInsight: VietlishLogicDiagnosisResult | null;
+  sessionState: StudySessionState | null;
   memory: MemorySummary | null;
 };
 
@@ -240,6 +248,7 @@ function TodayLessonLoopPanel({
   practiceFeedback,
   latestMercyMessage,
   logicInsight,
+  sessionState,
   memory,
 }: TodayLessonLoopPanelProps) {
   const hasFeedback = Boolean(result || latestMercyMessage);
@@ -268,6 +277,20 @@ function TodayLessonLoopPanel({
           {lesson.plan.estimatedMinutes} min
         </span>
       </div>
+
+      {sessionState && (
+        <div
+          data-testid="ai-tutor-study-session-state"
+          className="mt-3 flex flex-wrap gap-2 text-[11px] font-black uppercase text-slate-600"
+        >
+          <span className="rounded-full bg-slate-50 px-2.5 py-1">Step {sessionState.currentStep}</span>
+          <span className="rounded-full bg-slate-50 px-2.5 py-1">Retries {sessionState.retryCount}</span>
+          <span className="rounded-full bg-slate-50 px-2.5 py-1">Completed {sessionState.completedPromptsCount}</span>
+          {sessionState.lastSafeTopicTag && (
+            <span className="rounded-full bg-slate-50 px-2.5 py-1">Topic {sessionState.lastSafeTopicTag}</span>
+          )}
+        </div>
+      )}
 
       <div className="mt-3 grid gap-2 text-xs font-bold text-slate-700 sm:grid-cols-3">
         <div className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2">
@@ -363,6 +386,7 @@ export default function AiTutorPage() {
   const [isFloatingShell, setIsFloatingShell] = useState(true);
   const [activeTodayLesson, setActiveTodayLesson] = useState<ActiveTodayLesson | null>(null);
   const [todayLessonLogicInsight, setTodayLessonLogicInsight] = useState<VietlishLogicDiagnosisResult | null>(null);
+  const [studySessionState, setStudySessionState] = useState<StudySessionState | null>(null);
 
   const tutorCopy: TutorCopy = getTutorCopy(target, explainLanguage);
   const aiTutorTabLabels: Record<TutorMode, string> = {
@@ -462,6 +486,7 @@ export default function AiTutorPage() {
   useEffect(() => {
     setActiveTodayLesson(null);
     setTodayLessonLogicInsight(null);
+    setStudySessionState(loadStudySessionState(TUTOR_PRODUCT, target));
   }, [target]);
 
   useEffect(() => {
@@ -509,6 +534,12 @@ export default function AiTutorPage() {
     });
     const lessonInsight = activeTodayLesson ? diagnoseVietlishLogicWithMatch(trimmed) : null;
     setTodayLessonLogicInsight(lessonInsight?.isKnownPattern ? lessonInsight : null);
+    if (activeTodayLesson && studySessionState) {
+      setStudySessionState(recordStudyPromptCompleted(studySessionState, {
+        safeTopicTag: lessonInsight?.patternId || activeTodayLesson.plan.nextFocus,
+        suggestedNextFocus: activeTodayLesson.plan.nextFocus,
+      }));
+    }
     setLoading(false);
 
     setLastSavedId(turn.id);
@@ -527,6 +558,12 @@ export default function AiTutorPage() {
     setPracticeFeedback(null);
     await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
     setPracticeFeedback(MOCK_RESULTS_BY_TARGET[target].feedback);
+    if (activeTodayLesson && studySessionState) {
+      setStudySessionState(recordStudyRetry(studySessionState, {
+        safeTopicTag: activeTodayLesson.plan.nextFocus,
+        suggestedNextFocus: activeTodayLesson.plan.nextFocus,
+      }));
+    }
     setPracticeLoading(false);
     if (lastSavedId) markPracticed(lastSavedId, TUTOR_PRODUCT, target).then(() => loadMemory()).catch(() => {});
   };
@@ -550,6 +587,17 @@ export default function AiTutorPage() {
     setConversationMessages((current) => [...current, mercyMessage]);
     const lessonInsight = activeTodayLesson ? diagnoseVietlishLogicWithMatch(trimmed) : null;
     setTodayLessonLogicInsight(lessonInsight?.isKnownPattern ? lessonInsight : null);
+    if (activeTodayLesson && studySessionState) {
+      const update = {
+        safeTopicTag: lessonInsight?.patternId || activeTodayLesson.plan.nextFocus,
+        suggestedNextFocus: activeTodayLesson.plan.nextFocus,
+      };
+      setStudySessionState(
+        studySessionState.completedPromptsCount > 0
+          ? recordStudyRetry(studySessionState, update)
+          : recordStudyPromptCompleted(studySessionState, update),
+      );
+    }
     setConversationLoading(false);
 
     const id = `conv-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`;
@@ -603,6 +651,12 @@ export default function AiTutorPage() {
     setPracticeAnswer("");
     setPracticeFeedback(null);
     setSpeakingMessageId(null);
+    setStudySessionState(startStudySession({
+      product: TUTOR_PRODUCT,
+      targetLanguage: target,
+      safeTopicTag: plan.nextFocus,
+      suggestedNextFocus: plan.nextFocus,
+    }));
     tts.stop();
   };
 
@@ -642,6 +696,7 @@ export default function AiTutorPage() {
           practiceFeedback={practiceFeedback}
           latestMercyMessage={latestMercyMessage}
           logicInsight={todayLessonLogicInsight}
+          sessionState={studySessionState}
           memory={memory}
         />
       )}

@@ -131,6 +131,7 @@ vi.mock("@/lib/mercyVoice", () => ({
 beforeEach(() => {
   vi.clearAllMocks();
   MockSpeechRecognition.last = null;
+  window.localStorage.clear();
   window.history.pushState({}, "", "/ai-tutor");
   window.localStorage.setItem("mercyblade.lessonUiLang", "vi");
   (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = undefined;
@@ -199,6 +200,10 @@ describe("AiTutor mock UI", () => {
     expect(screen.getByTestId("ai-tutor-lesson-loop")).toHaveTextContent("5-minute lesson loop · speak");
     expect(screen.getByTestId("ai-tutor-lesson-loop")).toHaveTextContent("Prompt: Type one clean EN sentence about pronunciation");
     expect(screen.getByTestId("ai-tutor-lesson-loop")).toHaveTextContent("Memory next focus: pronunciation");
+    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Step 1");
+    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Retries 0");
+    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Completed 0");
+    expect(window.localStorage.getItem("mercy.studySession.v1.ai-tutor.en")).toContain("pronunciation");
   });
 
   it("guides Today's Lesson through prompt, feedback, retry, logic insight, and next focus", async () => {
@@ -228,6 +233,21 @@ describe("AiTutor mock UI", () => {
       expect(loop).toHaveTextContent("2. Review Mercy feedback");
       expect(loop).toHaveTextContent("Retry:");
       expect(loop).toHaveTextContent("Vietlish logic insight: Yesterday points to the past");
+      expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Step 2");
+      expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Completed 1");
+    });
+
+    const persistedAfterPrompt = window.localStorage.getItem("mercy.studySession.v1.ai-tutor.en") ?? "";
+    expect(persistedAfterPrompt).toContain("yesterday-present");
+    expect(persistedAfterPrompt).not.toContain("I buy a hat yesterday");
+
+    const textareas = screen.getAllByRole("textbox");
+    await userEvent.type(textareas[1], "I bought a hat yesterday.");
+    await userEvent.click(screen.getByRole("button", { name: /Gửi câu trả lời/ }));
+
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Step 3");
+      expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Retries 1");
     });
   });
 
