@@ -21,6 +21,7 @@ describe("studySessionState", () => {
       targetLanguage: "EN",
       safeTopicTag: "Past Tense",
       suggestedNextFocus: "Past Tense",
+      recommendedMode: "logic",
       now: 1234,
     })).toEqual({
       product: "ai-tutor",
@@ -30,6 +31,7 @@ describe("studySessionState", () => {
       completedPromptsCount: 0,
       lastSafeTopicTag: "past-tense",
       suggestedNextFocus: "past-tense",
+      recommendedMode: "logic",
       updatedAt: 1234,
     });
   });
@@ -40,6 +42,7 @@ describe("studySessionState", () => {
       targetLanguage: "fr",
       safeTopicTag: "gender agreement",
       suggestedNextFocus: "articles",
+      recommendedMode: "journey",
       now: 100,
     });
 
@@ -77,6 +80,7 @@ describe("studySessionState", () => {
       currentStep: 3,
       completedPromptsCount: 1,
       retryCount: 1,
+      recommendedMode: "grammar",
       updatedAt: 300,
     });
 

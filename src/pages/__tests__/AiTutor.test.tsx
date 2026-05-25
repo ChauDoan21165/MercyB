@@ -206,6 +206,39 @@ describe("AiTutor mock UI", () => {
     expect(window.localStorage.getItem("mercy.studySession.v1.ai-tutor.en")).toContain("pronunciation");
   });
 
+  it("resumes a saved Today Lesson session and can restart it safely", async () => {
+    window.localStorage.setItem("mercy.studySession.v1.ai-tutor.en", JSON.stringify({
+      product: "ai-tutor",
+      targetLanguage: "en",
+      currentStep: 3,
+      retryCount: 1,
+      completedPromptsCount: 2,
+      lastSafeTopicTag: "yesterday-present",
+      suggestedNextFocus: "past-tense",
+      recommendedMode: "grammar",
+      updatedAt: 12345,
+    }));
+
+    render(<AiTutorPage />);
+
+    const loop = await screen.findByTestId("ai-tutor-lesson-loop");
+    expect(loop).toHaveTextContent("Continue today's lesson · grammar");
+    expect(loop).toHaveTextContent("Resume lesson: your local progress is restored.");
+    expect(loop).toHaveTextContent("Continue past tense today");
+    expect(screen.getByRole("button", { name: "Grammar" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Step 3");
+    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Retries 1");
+    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Completed 2");
+    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Topic yesterday-present");
+
+    await userEvent.click(screen.getByRole("button", { name: "Resume lesson" }));
+    expect(window.localStorage.getItem("mercy.studySession.v1.ai-tutor.en")).toContain("\"currentStep\":3");
+
+    await userEvent.click(screen.getByRole("button", { name: "Restart lesson" }));
+    expect(window.localStorage.getItem("mercy.studySession.v1.ai-tutor.en")).toBeNull();
+    expect(screen.queryByTestId("ai-tutor-lesson-loop")).not.toBeInTheDocument();
+  });
+
   it("guides Today's Lesson through prompt, feedback, retry, logic insight, and next focus", async () => {
     getMemorySummary.mockResolvedValue({
       ...POPULATED_SUMMARY,

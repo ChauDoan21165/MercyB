@@ -1,4 +1,5 @@
 import type { TutorProduct } from "@/lib/ai-tutor/learningMemory";
+import type { TodayLessonMode } from "@/lib/tutor/todayLessonPlanner";
 
 export type StudySessionState = {
   product: TutorProduct;
@@ -8,6 +9,7 @@ export type StudySessionState = {
   completedPromptsCount: number;
   lastSafeTopicTag: string;
   suggestedNextFocus: string;
+  recommendedMode: TodayLessonMode;
   updatedAt: number;
 };
 
@@ -16,6 +18,7 @@ export type StudySessionStartInput = {
   targetLanguage: string;
   safeTopicTag?: string | null;
   suggestedNextFocus?: string | null;
+  recommendedMode?: TodayLessonMode | null;
   now?: number;
 };
 
@@ -41,6 +44,7 @@ export function createStudySessionState(input: StudySessionStartInput): StudySes
     completedPromptsCount: 0,
     lastSafeTopicTag: sanitizeStudyTopicTag(input.safeTopicTag),
     suggestedNextFocus: sanitizeStudyTopicTag(input.suggestedNextFocus),
+    recommendedMode: normalizeRecommendedMode(input.recommendedMode),
     updatedAt: normalizeTimestamp(input.now),
   };
 }
@@ -146,6 +150,7 @@ function normalizeStudySessionState(
     completedPromptsCount: clampCount(state.completedPromptsCount),
     lastSafeTopicTag: sanitizeStudyTopicTag(state.lastSafeTopicTag),
     suggestedNextFocus: sanitizeStudyTopicTag(state.suggestedNextFocus),
+    recommendedMode: normalizeRecommendedMode(state.recommendedMode),
     updatedAt: normalizeTimestamp(state.updatedAt),
   };
 }
@@ -164,6 +169,12 @@ function clampStep(value: number | undefined): number {
 
 function clampCount(value: number | undefined): number {
   return Math.min(999, Math.max(0, Math.floor(value ?? 0)));
+}
+
+function normalizeRecommendedMode(value: string | null | undefined): TodayLessonMode {
+  return value === "journey" || value === "grammar" || value === "speak" || value === "logic"
+    ? value
+    : "grammar";
 }
 
 function getLocalStorage(): Storage | null {

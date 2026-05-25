@@ -46,6 +46,7 @@ import {
 } from "@/lib/tutor/vietlishLogicEngine";
 import type { TodayLessonPlan } from "@/lib/tutor/todayLessonPlanner";
 import {
+  clearStudySessionState,
   loadStudySessionState,
   recordStudyPromptCompleted,
   recordStudyRetry,
@@ -77,6 +78,7 @@ type PracticeFeedback = {
 type ActiveTodayLesson = {
   plan: TodayLessonPlan;
   prompt: string;
+  resumed: boolean;
 };
 
 type TutorMode = Extract<TutorProductMode, "journey" | "grammar" | "speak" | "logic">;
@@ -222,6 +224,35 @@ function buildTodayLessonPrompt(plan: TodayLessonPlan, target: TutorTarget): str
   return `Write one short ${target.toUpperCase()} sentence about ${plan.nextFocus}.`;
 }
 
+function displaySafeTopic(topicId: string): string {
+  return topicId.replace(/-/g, " ").trim() || "starter sentence";
+}
+
+function buildResumedTodayLesson(state: StudySessionState, target: TutorTarget): ActiveTodayLesson {
+  const focus = displaySafeTopic(state.suggestedNextFocus || state.lastSafeTopicTag);
+  const plan: TodayLessonPlan = {
+    lessonTitle: `Continue ${focus} today`,
+    targetSkill: focus,
+    reason: "Resumed from local Today’s Lesson session state.",
+    steps: [
+      "Continue the current prompt.",
+      "Review Mercy's correction or explanation.",
+      "Retry the mistake once.",
+      "Apply one pattern in a new example.",
+      "Save the next focus.",
+    ],
+    estimatedMinutes: state.recommendedMode === "journey" ? 8 : 7,
+    suggestedMode: state.recommendedMode,
+    nextFocus: focus,
+  };
+
+  return {
+    plan,
+    prompt: buildTodayLessonPrompt(plan, target),
+    resumed: true,
+  };
+}
+
 function getLatestMercyMessage(messages: ConversationMessage[]): MercyConversationMessage | null {
   for (let index = messages.length - 1; index >= 0; index -= 1) {
     const message = messages[index];
@@ -239,6 +270,7 @@ type TodayLessonLoopPanelProps = {
   logicInsight: VietlishLogicDiagnosisResult | null;
   sessionState: StudySessionState | null;
   memory: MemorySummary | null;
+  onRestart: () => void;
 };
 
 function TodayLessonLoopPanel({
@@ -250,6 +282,7 @@ function TodayLessonLoopPanel({
   logicInsight,
   sessionState,
   memory,
+  onRestart,
 }: TodayLessonLoopPanelProps) {
   const hasFeedback = Boolean(result || latestMercyMessage);
   const retryPrompt = result?.practicePrompt || latestMercyMessage?.nextQuestion || lesson.plan.steps[2];
@@ -264,7 +297,7 @@ function TodayLessonLoopPanel({
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
           <div className="text-xs font-black uppercase text-emerald-700">
-            5-minute lesson loop · {mode}
+            {lesson.resumed ? "Continue today's lesson" : "5-minute lesson loop"} · {mode}
           </div>
           <h2 className="mt-1 text-lg font-black leading-6 text-slate-950" style={{ overflowWrap: "break-word" }}>
             {lesson.plan.lessonTitle}
@@ -277,6 +310,11 @@ function TodayLessonLoopPanel({
           {lesson.plan.estimatedMinutes} min
         </span>
       </div>
+      {lesson.resumed && (
+        <div className="mt-3 rounded-xl border border-emerald-100 bg-emerald-50 px-3 py-2 text-sm font-bold text-emerald-900">
+          Resume lesson: your local progress is restored.
+        </div>
+      )}
 
       {sessionState && (
         <div
@@ -321,6 +359,14 @@ function TodayLessonLoopPanel({
           Memory next focus: {nextFocus}
         </div>
       )}
+
+      <button
+        type="button"
+        onClick={onRestart}
+        className="mt-3 inline-flex min-h-9 items-center justify-center rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-black text-slate-700 transition hover:bg-slate-50"
+      >
+        Restart lesson
+      </button>
     </section>
   );
 }
@@ -484,9 +530,11 @@ export default function AiTutorPage() {
   }, [mode, target, explainLanguage]);
 
   useEffect(() => {
-    setActiveTodayLesson(null);
+    const savedSession = loadStudySessionState(TUTOR_PRODUCT, target);
+    setActiveTodayLesson(savedSession ? buildResumedTodayLesson(savedSession, target) : null);
     setTodayLessonLogicInsight(null);
-    setStudySessionState(loadStudySessionState(TUTOR_PRODUCT, target));
+    setStudySessionState(savedSession);
+    if (savedSession) setMode(savedSession.recommendedMode);
   }, [target]);
 
   useEffect(() => {
@@ -638,10 +686,15 @@ export default function AiTutorPage() {
   };
 
   const handleStartTodayLesson = (plan: TodayLessonPlan) => {
+    if (activeTodayLesson && studySessionState) {
+      setMode(studySessionState.recommendedMode);
+      return;
+    }
     setMode(plan.suggestedMode);
     setActiveTodayLesson({
       plan,
       prompt: buildTodayLessonPrompt(plan, target),
+      resumed: false,
     });
     setTodayLessonLogicInsight(null);
     setInput("");
@@ -656,8 +709,21 @@ export default function AiTutorPage() {
       targetLanguage: target,
       safeTopicTag: plan.nextFocus,
       suggestedNextFocus: plan.nextFocus,
+      recommendedMode: plan.suggestedMode,
     }));
     tts.stop();
+  };
+
+  const handleRestartTodayLesson = () => {
+    clearStudySessionState(TUTOR_PRODUCT, target);
+    setActiveTodayLesson(null);
+    setStudySessionState(null);
+    setTodayLessonLogicInsight(null);
+    setResult(null);
+    setError(null);
+    setPracticeAnswer("");
+    setPracticeFeedback(null);
+    setConversationInput("");
   };
 
   return (
@@ -681,6 +747,7 @@ export default function AiTutorPage() {
             memoryLoaded={memoryLoaded}
             memory={memory}
             onStartLesson={handleStartTodayLesson}
+            startLabel={activeTodayLesson ? "Resume lesson" : "Start today's lesson"}
           />
           <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} />
         </>
@@ -698,6 +765,7 @@ export default function AiTutorPage() {
           logicInsight={todayLessonLogicInsight}
           sessionState={studySessionState}
           memory={memory}
+          onRestart={handleRestartTodayLesson}
         />
       )}
       {mode === "grammar" ? (
