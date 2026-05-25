@@ -201,6 +201,32 @@ Forbidden Study OS summary data:
 
 Study OS event summaries must not read from, write to, or merge with `mercy_user_facts` unless a later explicit reviewed design approves it. They must not become an indirect memory sync layer.
 
+## Momentum UI Influence Boundary
+
+Local Study OS momentum may support learner awareness, but it must not drive recommendations yet.
+
+Today's Lesson remains the first study action. Momentum can sit nearby as a calm progress signal, but it should not compete with or replace the guided lesson loop.
+
+Momentum UI is allowed to show safe local facts such as lessons completed today, retry count, logic insight views, next focus views, and mode activity counts. It must stay local-only and explain that boundary clearly.
+
+Momentum UI must not become:
+
+- a score
+- a grade
+- a streak mechanic
+- a shame or guilt mechanic
+- pressure copy
+- a recommendation engine
+- a coaching engine
+- semantic memory
+- Supabase sync
+- external analytics
+- Placement writeback
+
+Momentum UI must not contain raw learner text, corrected sentence text, full transcripts, raw audio, PII, child identity, Supabase user IDs, JWTs, provider keys, provider secrets, or Placement result/status/writeback data.
+
+Future UI influence from momentum, if separately approved, should be small, explainable, reversible, and tested. A future change may use momentum to adjust emphasis, labels, or visibility of existing progress surfaces, but it must not silently personalize the learning path or create hidden scoring.
+
 ## Experiment Examples
 
 ### 1. Four Modes First vs Today's Lesson First
