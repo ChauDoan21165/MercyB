@@ -308,7 +308,12 @@ describe("AiTutor mock UI", () => {
     expect(momentum).toHaveTextContent("Today's momentum");
     expect(momentum).toHaveTextContent("Practice signals");
     expect(momentum).toHaveTextContent("Local to this device");
-    expect(momentum).toHaveTextContent("Safe local activity from today.");
+    expect(momentum).toHaveAccessibleName(
+      "Today's momentum uses safe local activity only. It is not synced, not memory, not a grade, and not a recommendation.",
+    );
+    expect(momentum).toHaveTextContent(
+      "Only today's safe activity on this device. Not synced, not memory, not a grade, and not a recommendation.",
+    );
     expect(momentum).toHaveTextContent("1");
     expect(momentum).toHaveTextContent("lessons completed");
     expect(momentum).toHaveTextContent("2");
@@ -325,6 +330,7 @@ describe("AiTutor mock UI", () => {
     expect(momentum).not.toHaveTextContent("full transcript");
     expect(momentum).not.toHaveTextContent("raw audio");
     expect(momentum).not.toHaveTextContent("secret-token");
+    expect(momentum).not.toHaveTextContent(/you should|streak|shame|score/i);
   });
 
   it("keeps Kids-only local events out of the AI Tutor momentum card", async () => {

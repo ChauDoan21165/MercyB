@@ -204,6 +204,7 @@ export function TutorMomentumCard({ summary }: MomentumProps) {
   return (
     <section
       data-testid="ai-tutor-momentum-card"
+      aria-label="Today's momentum uses safe local activity only. It is not synced, not memory, not a grade, and not a recommendation."
       className="mx-auto mb-4 w-full max-w-3xl rounded-[16px] border border-slate-200 bg-white px-4 py-4 shadow-sm"
       style={{ width: "100%", maxWidth: "100%", minWidth: 0, overflow: "hidden" }}
     >
@@ -216,7 +217,7 @@ export function TutorMomentumCard({ summary }: MomentumProps) {
             Today's momentum
           </h2>
           <p className="mt-1 text-xs font-semibold leading-5 text-slate-600">
-            Safe local activity from today.
+            Only today's safe activity on this device. Not synced, not memory, not a grade, and not a recommendation.
           </p>
         </div>
         <div className="w-fit rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-black uppercase text-slate-600">
