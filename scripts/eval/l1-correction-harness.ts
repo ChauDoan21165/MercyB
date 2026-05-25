@@ -26,6 +26,7 @@ import { dirname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { detectL1Error } from '../../src/lib/feedback/index.js';
+import { vietnameseL1Profile } from '../../src/lib/l1-profiles/index.js';
 
 // ────────────────────────────────────────────────────────────────────────
 // Types
@@ -88,6 +89,7 @@ type Args = {
   json: boolean;
   updateBaseline: boolean;
   regression: boolean;
+  coverage: boolean;
   quiet: boolean;
   help: boolean;
 };
@@ -99,6 +101,7 @@ function parseArgs(argv: string[]): Args {
     json: false,
     updateBaseline: false,
     regression: false,
+    coverage: false,
     quiet: false,
     help: false,
   };
@@ -109,6 +112,7 @@ function parseArgs(argv: string[]): Args {
     else if (a === '--quiet') args.quiet = true;
     else if (a === '--update-baseline') args.updateBaseline = true;
     else if (a === '--regression') args.regression = true;
+    else if (a === '--coverage') args.coverage = true;
     else if (a === '--families') {
       const v = argv[++i];
       if (!v) throw new Error('--families expects a comma-separated list');
@@ -139,6 +143,7 @@ function printHelp(): void {
       '  --families <list>       Comma-separated family filter (e.g. plural-s-omission,copula-be-deletion).',
       '  --update-baseline       Overwrite evals/.baseline.json with this run.',
       '  --regression            Exit 1 if pass rate drops below the saved baseline.',
+      '  --coverage              Assert fixture<->viL1Profile family coverage; exit 1 on drift.',
       '  --json                  Emit a machine-readable JSON object instead of the human table.',
       '  --quiet                 Skip the per-failure detail block.',
       '  --help                  Show this message.',
@@ -362,6 +367,143 @@ function readBaseline(path: string): Baseline | null {
 }
 
 // ────────────────────────────────────────────────────────────────────────
+// Profile<->fixture family-coverage assertion (spec §8 item 4).
+//
+// Two fail-closed checks against viL1Profile:
+//
+//   A. Every fixture-case `family` resolves into a profile family ID
+//      (grammar.families[].id ∪ writing.patterns[].id). The brief
+//      scopes Check A to grammar.families specifically, but writing
+//      fixtures legitimately belong in writing.patterns — checking
+//      both halves of the profile family namespace prevents a noise-
+//      heavy report on placeholder writing cases that conceptually
+//      belong to writing, just under different names.
+//
+//   B. Every grammar.families[] entry with severity === 'high' has
+//      at least one fixture case (any expected_category) referencing
+//      it. High-severity drift is the load-bearing case — the family
+//      that exists in the profile but has zero eval coverage is the
+//      one most likely to silently regress.
+//
+// Name normalisation: profile IDs are snake_case (per spec §0 lock);
+// fixture `family` values are historically kebab-case (legacy from
+// the C5 harness bootstrap). The assertion normalises kebab → snake
+// at comparison time so the check captures conceptual equivalence
+// rather than slug-string identity. A future fixture-rename PR will
+// remove the need for the normaliser.
+// ────────────────────────────────────────────────────────────────────────
+
+function normalizeFamilyId(s: string): string {
+  return s.trim().replace(/-/g, '_');
+}
+
+type CoverageReport = {
+  orphan_fixture_families: Array<{
+    fixture_family: string;
+    normalized: string;
+    case_ids: string[];
+  }>;
+  uncovered_high_severity_grammar_families: string[];
+  ok: boolean;
+};
+
+function buildCoverageReport(results: CaseResult[]): CoverageReport {
+  const grammarFamilyIds = new Set(
+    (vietnameseL1Profile.grammar?.families ?? []).map((f) => f.id),
+  );
+  const writingPatternIds = new Set(
+    (vietnameseL1Profile.writing?.patterns ?? []).map((p) => p.id),
+  );
+  const allProfileFamilyIds = new Set<string>([
+    ...grammarFamilyIds,
+    ...writingPatternIds,
+  ]);
+  const highSeverityGrammarIds = new Set(
+    (vietnameseL1Profile.grammar?.families ?? [])
+      .filter((f) => f.severity === 'high')
+      .map((f) => f.id),
+  );
+
+  // Check A — orphan fixture families.
+  const orphanMap = new Map<
+    string,
+    { fixture_family: string; normalized: string; case_ids: string[] }
+  >();
+  // Check B — for every grammar family with severity high, count cases.
+  const coveredHighSeverity = new Set<string>();
+  for (const r of results) {
+    const fixtureFamily = r.case.family;
+    const normalized = normalizeFamilyId(fixtureFamily);
+    if (!allProfileFamilyIds.has(normalized)) {
+      const existing = orphanMap.get(fixtureFamily);
+      if (existing) existing.case_ids.push(r.case.id);
+      else
+        orphanMap.set(fixtureFamily, {
+          fixture_family: fixtureFamily,
+          normalized,
+          case_ids: [r.case.id],
+        });
+    }
+    if (highSeverityGrammarIds.has(normalized)) {
+      coveredHighSeverity.add(normalized);
+    }
+  }
+
+  const uncovered: string[] = [];
+  for (const id of highSeverityGrammarIds) {
+    if (!coveredHighSeverity.has(id)) uncovered.push(id);
+  }
+
+  return {
+    orphan_fixture_families: [...orphanMap.values()],
+    uncovered_high_severity_grammar_families: uncovered,
+    ok:
+      orphanMap.size === 0 && uncovered.length === 0,
+  };
+}
+
+function printCoverage(report: CoverageReport): void {
+  console.log('');
+  console.log('  profile coverage assertion (--coverage):');
+  console.log('');
+  if (report.orphan_fixture_families.length === 0) {
+    console.log(
+      '    [A] orphan fixture families: 0  (every fixture family resolves into grammar.families ∪ writing.patterns)',
+    );
+  } else {
+    console.log(
+      `    [A] orphan fixture families: ${report.orphan_fixture_families.length}  (fixture references a family not in the profile)`,
+    );
+    for (const o of report.orphan_fixture_families) {
+      const ids = o.case_ids.length > 4
+        ? `${o.case_ids.slice(0, 4).join(', ')}, +${o.case_ids.length - 4} more`
+        : o.case_ids.join(', ');
+      console.log(
+        `        - ${o.fixture_family}  (normalised: ${o.normalized})  cases: ${ids}`,
+      );
+    }
+  }
+  if (report.uncovered_high_severity_grammar_families.length === 0) {
+    console.log(
+      '    [B] uncovered high-severity grammar families: 0  (every grammar.severity=high family has ≥1 fixture case)',
+    );
+  } else {
+    console.log(
+      `    [B] uncovered high-severity grammar families: ${report.uncovered_high_severity_grammar_families.length}  (profile family with severity:high but no fixture case)`,
+    );
+    for (const id of report.uncovered_high_severity_grammar_families) {
+      console.log(`        - ${id}`);
+    }
+  }
+  console.log('');
+  if (report.ok) {
+    console.log('    coverage: OK');
+  } else {
+    console.log('    coverage: DRIFT (exit 1)');
+  }
+}
+
+// ────────────────────────────────────────────────────────────────────────
 // Main
 // ────────────────────────────────────────────────────────────────────────
 
@@ -404,11 +546,14 @@ function main(): void {
   const baselineFile = baselinePath(here);
   const current = buildBaseline(results);
 
+  const coverage = args.coverage ? buildCoverageReport(results) : null;
+
   if (args.json) {
     const payload = {
       fixtures: loaded.map((l) => ({ path: relative(process.cwd(), l.path), cases: l.cases })),
       families_filter: args.families,
       baseline: current,
+      coverage,
       results: results.map((r) => ({
         id: r.case.id,
         family: r.case.family,
@@ -430,6 +575,11 @@ function main(): void {
     }
     printTable(results);
     if (!args.quiet) printFailures(results);
+    if (coverage) printCoverage(coverage);
+  }
+
+  if (coverage && !coverage.ok) {
+    process.exitCode = 1;
   }
 
   if (args.updateBaseline) {
