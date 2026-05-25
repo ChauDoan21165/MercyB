@@ -29,6 +29,13 @@ import { execSync } from "node:child_process";
 const REPO_ROOT = process.cwd();
 const SRC_DIR = join(REPO_ROOT, "src");
 const ALLOWED_FILE = join("src", "lib", "lazyWithRetry.ts");
+const ALLOWED_TEST_FIXTURES = new Set([
+  // Issue #1127 regression fixture: deliberately uses raw React.lazy to
+  // reproduce React's native Suspense rejection lifecycle. Runtime app
+  // code remains protected; this exact test file is the only fixture
+  // allowed to bypass the app-code guard.
+  "src/components/__tests__/ErrorBoundary.suspense-lazy.test.tsx",
+]);
 
 // React.lazy( — only the call form (open paren) so comments / prose
 // mentions of "React.lazy" don't false-positive.
@@ -70,6 +77,7 @@ const violations = [];
 
 for (const rel of listSrcFiles()) {
   if (rel === allowedNormalised) continue;
+  if (ALLOWED_TEST_FIXTURES.has(rel)) continue;
   let content;
   try {
     content = readFileSync(join(REPO_ROOT, rel), "utf8");
