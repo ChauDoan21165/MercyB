@@ -41,10 +41,10 @@
 | L1 Profile                              | ❌         | ❌        | ❌        | ❌        |
 | Grammar taxonomy                        | ❌         | ❌        | ❌        | ❌        |
 | Writing taxonomy                        | ❌         | ❌        | ❌        | ❌        |
-| Detector rules                          | ❌         | ❌        | ❌        | ❌        |
+| Detector rules                          | ✅ `en-vn/` (8 rules, not yet wired) | ❌        | ❌        | ❌        |
 | AI Tutor L1 prompt wire                 | ❌         | ❌        | ❌        | ❌        |
 | Placement test                          | ❌         | ❌        | ❌        | ❌        |
-| Eval harness                            | ❌         | ❌        | ❌        | ❌        |
+| Eval harness                            | ✅ `evals/en-vn-grammar-cases.json` (24 cases) | ❌        | ❌        | ❌        |
 | Tone production coaching                | ❌         | n/a       | n/a       | n/a       |
 | Classifier system explainer + drill     | 🚧 PR #1176 (Vietnamese classifier room — §15 Axis 2 Bar #3) | n/a | n/a | n/a |
 | Course content (rooms / lessons)        | (partial)  | (partial) | (partial) | (partial) |
