@@ -197,6 +197,7 @@ describe("AiTutor mock UI", () => {
     expect(todayLesson).toHaveTextContent("6 min");
     expect(screen.getByRole("button", { name: "Start today's lesson" })).toBeInTheDocument();
     expect(screen.queryByTestId("ai-tutor-placement-cta")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("ai-tutor-momentum-card")).not.toBeInTheDocument();
     expect(todayLesson.compareDocumentPosition(modeTabs) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
@@ -301,20 +302,24 @@ describe("AiTutor mock UI", () => {
 
     render(<AiTutorPage />);
 
+    const todayLesson = await screen.findByTestId("ai-tutor-today-lesson");
     const momentum = await screen.findByTestId("ai-tutor-momentum-card");
 
     expect(momentum).toHaveTextContent("Today's momentum");
     expect(momentum).toHaveTextContent("Practice signals");
     expect(momentum).toHaveTextContent("Local to this device");
+    expect(momentum).toHaveTextContent("Safe local activity from today.");
     expect(momentum).toHaveTextContent("1");
-    expect(momentum).toHaveTextContent("completed");
+    expect(momentum).toHaveTextContent("lessons completed");
     expect(momentum).toHaveTextContent("2");
-    expect(momentum).toHaveTextContent("retries");
+    expect(momentum).toHaveTextContent("retries today");
     expect(momentum).toHaveTextContent("1 viewed");
     expect(momentum).toHaveTextContent("logic insight");
     expect(momentum).toHaveTextContent("next focus");
+    expect(momentum).toHaveTextContent("Mode activity");
     expect(momentum).toHaveTextContent("Grammar 2");
     expect(momentum).toHaveTextContent("Logic 2");
+    expect(todayLesson.compareDocumentPosition(momentum) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(momentum).not.toHaveTextContent("I buy a private ticket");
     expect(momentum).not.toHaveTextContent("I bought a private ticket");
     expect(momentum).not.toHaveTextContent("full transcript");
