@@ -41,9 +41,6 @@ vi.mock("@/pages/Home", () => ({
 vi.mock("@/pages/LoginPage", () => ({
   default: () => <main data-testid="signin-page">Sign in</main>,
 }));
-vi.mock("@/pages/placement/v2/PlacementV2Page", () => ({
-  default: () => <main data-testid="placement-v2-page">Placement V2</main>,
-}));
 vi.mock("@/pages/placement/v3/WelcomePage", () => ({
   default: () => <main data-testid="placement-v3-welcome">Placement V3 Welcome</main>,
 }));
@@ -120,7 +117,6 @@ describe("Placement V3 route guard", () => {
     expect(await screen.findByTestId("home-page")).toBeInTheDocument();
     expect(screen.getByTestId("pathname")).toHaveTextContent("/");
     expect(screen.queryByTestId("placement-v3-welcome")).not.toBeInTheDocument();
-    expect(screen.queryByTestId("placement-v2-page")).not.toBeInTheDocument();
   });
 
   it("handles direct guarded Placement V3 URLs safely when flags are disabled", async () => {

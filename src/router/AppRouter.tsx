@@ -83,7 +83,6 @@ const NotificationPreferencesPage = lazyWithRetry(() => import("@/pages/account/
 // intact on disk (#658 "HIDE not delete") but are no longer routed —
 // the v2 session is a single server-driven loop, not the v1 4-page
 // wizard (reconstruction flag F1; wireframes doc ephemeral).
-const PlacementV2Page = lazyWithRetry(() => import("@/pages/placement/v2/PlacementV2Page"));
 const PlacementV3WelcomePage = lazyWithRetry(() => import("@/pages/placement/v3/WelcomePage"));
 const PlacementV3WhoForPage  = lazyWithRetry(() => import("@/pages/placement/v3/WhoForPage"));
 const PlacementV3TestPage    = lazyWithRetry(() => import("@/pages/placement/v3/TestPage"));
@@ -848,29 +847,19 @@ export default function AppRouter() {
           <Route path="/dev/api"
             element={<LazyPage><DeveloperPortalPage /></LazyPage>} />
 
-          {/* Placement test v2 — STILL HIDDEN behind
-              FEATURE_FLAGS.PLACEMENT_TEST_ENABLED (default false; see
-              featureFlags.ts). PR 11 only WIRES v2 behind the flag — it
-              does NOT flip it (reconstruction flag F2: flipping is the
-              launch decision, the documented one-line call in
-              featureFlags.ts; "wired behind the flag" ≠ "launched").
-              Flag OFF → every /placement* path still redirects to home
-              BEFORE any lazy mount (engine never renders, no placement
-              analytics/Sentry) — #658 behavior 100% preserved. Flag ON →
-              users get the NEW v2 adaptive page (the fix), never the
-              broken v1; the single-page v2 session funnels the legacy
-              sub-paths into /placement. Requires auth when enabled
-              (profile writes are keyed on user.id). */}
+          {/* Placement test — gated by FEATURE_FLAGS.PLACEMENT_TEST_ENABLED
+              (default false; see featureFlags.ts). Flag OFF → every
+              /placement* path redirects to home BEFORE any lazy mount
+              (engine never renders, no placement analytics/Sentry). Flag
+              ON → v3 multimodal session under PlacementV3Gate. v2 was
+              retired in PR-A (chore/c4-v2-retirement-pr-a); v3 has owned
+              the path since #1159 wired the profiles writeback. */}
           <Route path="/placement"
             element={
               isPlacementV3RouteAvailable() ? (
                 <PlacementV3Gate>
                   <LazyPage><PlacementV3WelcomePage /></LazyPage>
                 </PlacementV3Gate>
-              ) : isPlacementEntryRouteAvailable() ? (
-                <RequireAuth>
-                  <LazyPage><PlacementV2Page /></LazyPage>
-                </RequireAuth>
               ) : (
                 <Navigate to="/" replace />
               )
@@ -882,8 +871,6 @@ export default function AppRouter() {
                 <PlacementV3Gate>
                   <LazyPage><PlacementV3WhoForPage /></LazyPage>
                 </PlacementV3Gate>
-              ) : isPlacementEntryRouteAvailable() ? (
-                <Navigate to="/placement" replace />
               ) : (
                 <Navigate to="/" replace />
               )
