@@ -54,11 +54,16 @@ function tokenize(s: string): string[] {
 }
 
 function makeArgs(input: string, expected: string): RuleArgs {
+  // Mirror the real detector: tokens are lowercased by tokenize(), but
+  // userText/expectedText preserve original case (the engine builds
+  // them via normalizeContractions(rawUser), see l1-error-detector.ts).
+  // Pre-lowercasing here would mask case-sensitivity bugs in rules
+  // that read userText directly (e.g. the calque pattern).
   return {
     userTokens: tokenize(input),
     expectedTokens: tokenize(expected),
-    userText: input.toLowerCase(),
-    expectedText: expected.toLowerCase(),
+    userText: input,
+    expectedText: expected,
     rawUser: input,
     rawExpected: expected,
     ctx: {},
@@ -139,4 +144,24 @@ describe("EN_VN_RULES — fixture pass rate", () => {
     const shortfalls = [...tagCounts.entries()].filter(([, n]) => n < 3);
     expect(shortfalls, `Tags with <3 cases:\n${JSON.stringify(shortfalls)}`).toEqual([]);
   });
+});
+
+describe("ruleCalqueTakeItEasy — case-insensitive matching", () => {
+  // Regression: the rule's userText.includes() comparison was
+  // case-sensitive, so capitalized real-world input ("Lấy Nó Dễ Dàng")
+  // bypassed detection even though lowercased unit-test fixtures
+  // passed. Flagged by C3 in #1193.
+  const variants = [
+    "lấy nó dễ dàng",
+    "Lấy nó dễ dàng",
+    "Lấy Nó Dễ Dàng",
+    "LẤY NÓ DỄ DÀNG",
+  ];
+
+  for (const input of variants) {
+    it(`fires on "${input}"`, () => {
+      const hit = runRegistry(makeArgs(`${input}.`, "Bình tĩnh đi."));
+      expect(hit?.tag).toBe("en_l1_calque_take_it_easy");
+    });
+  }
 });
