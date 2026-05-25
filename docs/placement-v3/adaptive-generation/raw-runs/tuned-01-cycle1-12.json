@@ -1,0 +1,184 @@
+{
+  "isoTimestamp": "2026-05-20T11:38:55.100Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 11,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 5223,
+    "tokensInput": 730,
+    "tokensOutput": 242,
+    "estimatedCostUsd": 0.000255,
+    "rawGeneratedItem": "{\n  \"title\": \"Discussing Environmental Changes\",\n  \"modality\": \"speaking\",\n  \"targetCefr\": \"C1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"range\",\n  \"difficultyConstraints\": [\"implicit stance\", \"nuanced register\"],\n  \"promptText\": \"Describe how environmental changes have impacted your community and suggest potential solutions. Use specific examples to support your points.\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"A well-structured response that includes multiple examples of environmental changes, their effects on the community, and at least two viable solutions, demonstrating a nuanced understanding of the topic.\",\n  \"rubricDimensions\": [\"fluency\", \"accuracy\", \"range\", \"interaction\"],\n  \"vietnameseL1Targets\": [\"final consonants\", \"subject-verb agreement\", \"prepositions\", \"nuanced register\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "95df04e9-83e5-4a08-a112-d92c6b38e7a7",
+      "title": "Discussing Environmental Changes",
+      "modality": "speaking",
+      "targetCefr": "C1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "range",
+      "difficultyConstraints": [
+        "implicit stance",
+        "nuanced register"
+      ],
+      "promptText": "Describe how environmental changes have impacted your community and suggest potential solutions. Use specific examples to support your points.",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "A well-structured response that includes multiple examples of environmental changes, their effects on the community, and at least two viable solutions, demonstrating a nuanced understanding of the topic.",
+      "rubricDimensions": [
+        "fluency",
+        "accuracy",
+        "range",
+        "interaction"
+      ],
+      "vietnameseL1Targets": [
+        "final consonants",
+        "subject-verb agreement",
+        "prepositions",
+        "nuanced register"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:38:46.909Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 5223,
+        "tokensInput": 730,
+        "tokensOutput": 242,
+        "estimatedCostUsd": 0.000255
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8191,
+    "tokensInput": 1410,
+    "tokensOutput": 509,
+    "estimatedCostUsd": 0.000517,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"C1\", \"notes\": \"The target CEFR level is too high for the expected learner proficiency.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No harmful content present.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No cultural biases present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"nuanced register\"], \"notes\": \"Limited relevance to Vietnamese L1 transfer patterns.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"High similarity risk with existing item.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"fluency\", \"accuracy\", \"range\", \"interaction\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_hard\", \"severity\": \"high\", \"message\": \"The target CEFR level is too high for the expected learner proficiency.\", \"evidence\": \"targetCefr: 'C1'\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"High similarity risk with existing item.\", \"evidence\": \"duplicateRisk.score: 0.5\" },\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"Limited relevance to Vietnamese L1 transfer patterns.\", \"evidence\": \"vietnameseL1Targets: ['final consonants', 'subject-verb agreement', 'prepositions', 'nuanced register']\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "8c70e3f0-f8a4-4943-8417-deef679c4b0b",
+      "generatedItemId": "95df04e9-83e5-4a08-a112-d92c6b38e7a7",
+      "validatedAt": "2026-05-20T11:38:55.100Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The target CEFR level is too high for the expected learner proficiency.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "Limited relevance to Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "nuanced register"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "High similarity risk with existing item.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "fluency",
+          "accuracy",
+          "range",
+          "interaction"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_hard",
+          "severity": "high",
+          "message": "The target CEFR level is too high for the expected learner proficiency.",
+          "evidence": "targetCefr: 'C1'"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "High similarity risk with existing item.",
+          "evidence": "duplicateRisk.score: 0.5"
+        },
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "Limited relevance to Vietnamese L1 transfer patterns.",
+          "evidence": "vietnameseL1Targets: ['final consonants', 'subject-verb agreement', 'prepositions', 'nuanced register']"
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:38:55.100Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8191,
+        "tokensInput": 1410,
+        "tokensOutput": 509,
+        "estimatedCostUsd": 0.000517
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_hard",
+      "severity": "high",
+      "message": "The target CEFR level is too high for the expected learner proficiency.",
+      "evidence": "targetCefr: 'C1'"
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "High similarity risk with existing item.",
+      "evidence": "duplicateRisk.score: 0.5"
+    },
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "Limited relevance to Vietnamese L1 transfer patterns.",
+      "evidence": "vietnameseL1Targets: ['final consonants', 'subject-verb agreement', 'prepositions', 'nuanced register']"
+    }
+  ]
+}

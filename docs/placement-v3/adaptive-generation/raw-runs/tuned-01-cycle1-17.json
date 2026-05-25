@@ -1,0 +1,181 @@
+{
+  "isoTimestamp": "2026-05-20T11:40:04.184Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 16,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 6041,
+    "tokensInput": 726,
+    "tokensOutput": 269,
+    "estimatedCostUsd": 0.00027,
+    "rawGeneratedItem": "{\n  \"title\": \"Understanding a Weekend Plan\",\n  \"modality\": \"reading\",\n  \"targetCefr\": \"B1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"detail extraction\",\n  \"difficultyConstraints\": [\"connected familiar topic\", \"basic inference\", \"some distractor resistance\"],\n  \"promptText\": \"Read the passage and answer the question.\",\n  \"passageText\": \"Tom and his friends are planning to go to the beach this weekend. They want to leave early in the morning to enjoy the sun. Tom suggests bringing sandwiches and drinks. His friend Sarah thinks they should also take a volleyball to play on the sand. They all agree to meet at Tom's house at 7 AM on Saturday.\",\n  \"audioTranscript\": null,\n  \"questionText\": \"What time do Tom and his friends plan to meet?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"7 AM\",\n  \"rubricDimensions\": [\"detail extraction\", \"comprehension\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"time expression\", \"simple inference\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "2c9fab43-f2ab-48a5-8eba-fca81db6fa62",
+      "title": "Understanding a Weekend Plan",
+      "modality": "reading",
+      "targetCefr": "B1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "detail extraction",
+      "difficultyConstraints": [
+        "connected familiar topic",
+        "basic inference",
+        "some distractor resistance"
+      ],
+      "promptText": "Read the passage and answer the question.",
+      "passageText": "Tom and his friends are planning to go to the beach this weekend. They want to leave early in the morning to enjoy the sun. Tom suggests bringing sandwiches and drinks. His friend Sarah thinks they should also take a volleyball to play on the sand. They all agree to meet at Tom's house at 7 AM on Saturday.",
+      "audioTranscript": null,
+      "questionText": "What time do Tom and his friends plan to meet?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "7 AM",
+      "rubricDimensions": [
+        "detail extraction",
+        "comprehension"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "time expression",
+        "simple inference"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:39:53.264Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 6041,
+        "tokensInput": 726,
+        "tokensOutput": 269,
+        "estimatedCostUsd": 0.00027
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 10919,
+    "tokensInput": 1432,
+    "tokensOutput": 511,
+    "estimatedCostUsd": 0.000521,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"A2\", \"notes\": \"The item is too easy for the target B1 level.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No harmful content present.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No cultural biases present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"subject-verb agreement\", \"time expression\"], \"notes\": \"Limited relevance to Vietnamese L1 transfer patterns.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"Similar to existing item on daily routine.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"detail extraction\", \"comprehension\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_easy\", \"severity\": \"medium\", \"message\": \"The item is too easy for the target B1 level.\", \"evidence\": \"predictedCefr is A2\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"The item is similar to an existing item.\", \"evidence\": \"nearestItemIds includes f342d941-37e5-46f5-8311-4b86db7f6cad\" },\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"low\", \"message\": \"Limited relevance to Vietnamese L1 transfer patterns.\", \"evidence\": \"matchedPatterns include subject-verb agreement and time expression\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "a3bd3776-efba-4228-afc7-23a9a71f39e6",
+      "generatedItemId": "2c9fab43-f2ab-48a5-8eba-fca81db6fa62",
+      "validatedAt": "2026-05-20T11:40:04.184Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item is too easy for the target B1 level.",
+        "predictedCefr": "A2"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "Limited relevance to Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "time expression"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "Similar to existing item on daily routine.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "detail extraction",
+          "comprehension"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target B1 level.",
+          "evidence": "predictedCefr is A2"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is similar to an existing item.",
+          "evidence": "nearestItemIds includes f342d941-37e5-46f5-8311-4b86db7f6cad"
+        },
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "low",
+          "message": "Limited relevance to Vietnamese L1 transfer patterns.",
+          "evidence": "matchedPatterns include subject-verb agreement and time expression"
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:40:04.184Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 10919,
+        "tokensInput": 1432,
+        "tokensOutput": 511,
+        "estimatedCostUsd": 0.000521
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_easy",
+      "severity": "medium",
+      "message": "The item is too easy for the target B1 level.",
+      "evidence": "predictedCefr is A2"
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "The item is similar to an existing item.",
+      "evidence": "nearestItemIds includes f342d941-37e5-46f5-8311-4b86db7f6cad"
+    },
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "low",
+      "message": "Limited relevance to Vietnamese L1 transfer patterns.",
+      "evidence": "matchedPatterns include subject-verb agreement and time expression"
+    }
+  ]
+}

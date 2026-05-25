@@ -1,0 +1,171 @@
+{
+  "isoTimestamp": "2026-05-20T11:43:27.384Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 28,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8909,
+    "tokensInput": 726,
+    "tokensOutput": 281,
+    "estimatedCostUsd": 0.000277,
+    "rawGeneratedItem": "{\n  \"title\": \"Weekend Plans\",\n  \"modality\": \"reading\",\n  \"targetCefr\": \"B1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"detail extraction\",\n  \"difficultyConstraints\": [\"connected familiar topic\", \"basic inference\", \"some distractor resistance\"],\n  \"promptText\": \"Read the passage and answer the question.\",\n  \"passageText\": \"Tom loves weekends because he can spend time with his friends. On Saturday, he usually plays football in the park. After that, they often go to a café to relax and talk. On Sunday, Tom likes to watch movies at home or go to the cinema with his family. He enjoys trying new films and sharing his thoughts about them.\",\n  \"audioTranscript\": null,\n  \"questionText\": \"What does Tom do on Saturday after playing football?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"go to a café to relax and talk\",\n  \"rubricDimensions\": [\"detail extraction\", \"comprehension\", \"inference\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"tense marking\", \"literal Vietnamese calques\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "9bd15e31-eb70-491f-8f6c-b54063c78b24",
+      "title": "Weekend Plans",
+      "modality": "reading",
+      "targetCefr": "B1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "detail extraction",
+      "difficultyConstraints": [
+        "connected familiar topic",
+        "basic inference",
+        "some distractor resistance"
+      ],
+      "promptText": "Read the passage and answer the question.",
+      "passageText": "Tom loves weekends because he can spend time with his friends. On Saturday, he usually plays football in the park. After that, they often go to a café to relax and talk. On Sunday, Tom likes to watch movies at home or go to the cinema with his family. He enjoys trying new films and sharing his thoughts about them.",
+      "audioTranscript": null,
+      "questionText": "What does Tom do on Saturday after playing football?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "go to a café to relax and talk",
+      "rubricDimensions": [
+        "detail extraction",
+        "comprehension",
+        "inference"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "tense marking",
+        "literal Vietnamese calques"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:43:18.783Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8909,
+        "tokensInput": 726,
+        "tokensOutput": 281,
+        "estimatedCostUsd": 0.000277
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8601,
+    "tokensInput": 1546,
+    "tokensOutput": 461,
+    "estimatedCostUsd": 0.000509,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"B1\", \"notes\": \"CEFR fit is appropriate for B1 level.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is safe and does not include harmful themes.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for 13+ age group.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is culturally neutral and does not assume non-Vietnamese knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"subject-verb agreement\", \"tense marking\"], \"notes\": \"Limited relevance to Vietnamese L1 transfer patterns.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"Duplicate risk is high due to similarity with existing item.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"detail extraction\", \"comprehension\", \"inference\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"Limited connection to useful Vietnamese L1 transfer evidence.\", \"evidence\": \"Only two relevant patterns identified.\" },\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"Materially similar to existing item.\", \"evidence\": \"Similar structure to 'Daily Routine' item.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "1beab039-d3c9-4960-b79d-c03253b1a320",
+      "generatedItemId": "9bd15e31-eb70-491f-8f6c-b54063c78b24",
+      "validatedAt": "2026-05-20T11:43:27.384Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "CEFR fit is appropriate for B1 level.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is safe and does not include harmful themes."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+ age group."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is culturally neutral and does not assume non-Vietnamese knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "Limited relevance to Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "tense marking"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity with existing item.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "detail extraction",
+          "comprehension",
+          "inference"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "Limited connection to useful Vietnamese L1 transfer evidence.",
+          "evidence": "Only two relevant patterns identified."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "Materially similar to existing item.",
+          "evidence": "Similar structure to 'Daily Routine' item."
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:43:27.384Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8601,
+        "tokensInput": 1546,
+        "tokensOutput": 461,
+        "estimatedCostUsd": 0.000509
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "Limited connection to useful Vietnamese L1 transfer evidence.",
+      "evidence": "Only two relevant patterns identified."
+    },
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "Materially similar to existing item.",
+      "evidence": "Similar structure to 'Daily Routine' item."
+    }
+  ]
+}

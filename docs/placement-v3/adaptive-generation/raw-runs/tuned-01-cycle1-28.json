@@ -1,0 +1,142 @@
+{
+  "isoTimestamp": "2026-05-20T11:43:09.873Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 27,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 4504,
+    "tokensInput": 731,
+    "tokensOutput": 208,
+    "estimatedCostUsd": 0.000234,
+    "rawGeneratedItem": "{\n  \"title\": \"Introduce Yourself\",\n  \"modality\": \"speaking\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"fluency\",\n  \"difficultyConstraints\": [\"very short\", \"literal meaning only\", \"everyday topic\"],\n  \"promptText\": \"Please introduce yourself. Say your name, age, and one hobby.\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"The learner should say their name, age, and one hobby clearly.\",\n  \"rubricDimensions\": [\"fluency\", \"accuracy\", \"pronunciation\"],\n  \"vietnameseL1Targets\": [\"final consonants\", \"subject-verb agreement\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "6f9634da-4264-4686-9067-cc23712e596c",
+      "title": "Introduce Yourself",
+      "modality": "speaking",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "fluency",
+      "difficultyConstraints": [
+        "very short",
+        "literal meaning only",
+        "everyday topic"
+      ],
+      "promptText": "Please introduce yourself. Say your name, age, and one hobby.",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "The learner should say their name, age, and one hobby clearly.",
+      "rubricDimensions": [
+        "fluency",
+        "accuracy",
+        "pronunciation"
+      ],
+      "vietnameseL1Targets": [
+        "final consonants",
+        "subject-verb agreement"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:43:01.272Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 4504,
+        "tokensInput": 731,
+        "tokensOutput": 208,
+        "estimatedCostUsd": 0.000234
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8601,
+    "tokensInput": 1430,
+    "tokensOutput": 352,
+    "estimatedCostUsd": 0.000426,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"accepted\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": true, \"predictedCefr\": \"A1\", \"notes\": \"The prompt is suitable for A1 level as it requires very basic personal information.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is safe and does not include any harmful material.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The prompt is appropriate for learners aged 13 and above.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The prompt does not assume any specific cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"final consonants\", \"subject-verb agreement\"], \"notes\": \"The targets are relevant for Vietnamese L1 learners.\" },\n  \"duplicateRisk\": { \"score\": 0.0, \"pass\": true, \"nearestItemIds\": [], \"notes\": \"No duplicate items found.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"fluency\", \"accuracy\", \"pronunciation\"], \"notes\": \"The prompt aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The prompt is clear and usable on mobile devices.\" },\n  \"rejectionReasons\": []\n}",
+    "parsedValidation": {
+      "id": "e72be2aa-dbac-4073-8851-22fd81ae30b5",
+      "generatedItemId": "6f9634da-4264-4686-9067-cc23712e596c",
+      "validatedAt": "2026-05-20T11:43:09.873Z",
+      "finalDecision": "accepted",
+      "cefrFit": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt is suitable for A1 level as it requires very basic personal information.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include any harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt is appropriate for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt does not assume any specific cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "The targets are relevant for Vietnamese L1 learners.",
+        "matchedPatterns": [
+          "final consonants",
+          "subject-verb agreement"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0,
+        "pass": true,
+        "notes": "No duplicate items found.",
+        "nearestItemIds": []
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "fluency",
+          "accuracy",
+          "pronunciation"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt is clear and usable on mobile devices."
+      },
+      "rejectionReasons": [],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:43:09.873Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8601,
+        "tokensInput": 1430,
+        "tokensOutput": 352,
+        "estimatedCostUsd": 0.000426
+      }
+    }
+  },
+  "finalDecision": "accepted",
+  "rejectionReasons": []
+}

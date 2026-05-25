@@ -1,0 +1,168 @@
+{
+  "isoTimestamp": "2026-05-20T11:32:05.168Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 12,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 5871,
+    "tokensInput": 724,
+    "tokensOutput": 241,
+    "estimatedCostUsd": 0.000253,
+    "rawGeneratedItem": "{\n  \"title\": \"Daily Routine\",\n  \"modality\": \"reading\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"main idea\",\n  \"difficultyConstraints\": [\"very short\", \"literal meaning only\", \"everyday topic\"],\n  \"promptText\": \"Read the passage and answer the question.\",\n  \"passageText\": \"Every day, I wake up at 7 AM. I eat breakfast at 7:30 AM. Then, I go to school at 8 AM. I study English and Math. I come home at 4 PM.\",\n  \"audioTranscript\": null,\n  \"questionText\": \"What time does the person go to school?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"8 AM\",\n  \"rubricDimensions\": [\"main idea comprehension\", \"literal understanding\"],\n  \"vietnameseL1Targets\": [\"final consonants\", \"subject-verb agreement\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "bb9d6b9c-f2b1-43e6-809a-35c6e8093bd4",
+      "title": "Daily Routine",
+      "modality": "reading",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "main idea",
+      "difficultyConstraints": [
+        "very short",
+        "literal meaning only",
+        "everyday topic"
+      ],
+      "promptText": "Read the passage and answer the question.",
+      "passageText": "Every day, I wake up at 7 AM. I eat breakfast at 7:30 AM. Then, I go to school at 8 AM. I study English and Math. I come home at 4 PM.",
+      "audioTranscript": null,
+      "questionText": "What time does the person go to school?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "8 AM",
+      "rubricDimensions": [
+        "main idea comprehension",
+        "literal understanding"
+      ],
+      "vietnameseL1Targets": [
+        "final consonants",
+        "subject-verb agreement"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:31:57.250Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 5871,
+        "tokensInput": 724,
+        "tokensOutput": 241,
+        "estimatedCostUsd": 0.000253
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 7918,
+    "tokensInput": 1410,
+    "tokensOutput": 446,
+    "estimatedCostUsd": 0.000479,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": false, \"predictedCefr\": \"A1\", \"notes\": \"The item fits A1 level but is too easy for the target audience.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No harmful content present.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No cultural biases present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"final consonants\", \"subject-verb agreement\"], \"notes\": \"Relevant Vietnamese L1 transfer patterns identified.\" },\n  \"duplicateRisk\": { \"score\": 0.1, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"Duplicate risk is high due to similarity with existing item.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"main idea comprehension\", \"literal understanding\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_easy\", \"severity\": \"medium\", \"message\": \"The item is too easy for the target audience.\", \"evidence\": \"predictedCefr is A1\" },\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"nearestItemIds includes an existing item\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "779f00ba-e542-4b19-8559-d000277275f9",
+      "generatedItemId": "bb9d6b9c-f2b1-43e6-809a-35c6e8093bd4",
+      "validatedAt": "2026-05-20T11:32:05.168Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "final consonants",
+          "subject-verb agreement"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.1,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity with existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "main idea comprehension",
+          "literal understanding"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "predictedCefr is A1"
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "nearestItemIds includes an existing item"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:32:05.168Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7918,
+        "tokensInput": 1410,
+        "tokensOutput": 446,
+        "estimatedCostUsd": 0.000479
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_easy",
+      "severity": "medium",
+      "message": "The item is too easy for the target audience.",
+      "evidence": "predictedCefr is A1"
+    },
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "nearestItemIds includes an existing item"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "isoTimestamp": "2026-05-20T11:42:08.741Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 23,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 5434,
+    "tokensInput": 730,
+    "tokensOutput": 228,
+    "estimatedCostUsd": 0.000246,
+    "rawGeneratedItem": "{\n  \"title\": \"Discussing Cultural Influences\",\n  \"modality\": \"speaking\",\n  \"targetCefr\": \"C1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"range\",\n  \"difficultyConstraints\": [\"implicit stance; nuanced register; dense but mobile-readable\"],\n  \"promptText\": \"Describe how your cultural background influences your perspective on global issues. Provide specific examples to illustrate your point.\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"The response should demonstrate a nuanced understanding of cultural influences with specific examples, showcasing a range of vocabulary and complex sentence structures.\",\n  \"rubricDimensions\": [\"fluency\", \"accuracy\", \"range\", \"interaction\"],\n  \"vietnameseL1Targets\": [\"implicit meaning\", \"nuanced register\", \"complex argument\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "e53ea015-0814-4d3a-99cf-879887f622aa",
+      "title": "Discussing Cultural Influences",
+      "modality": "speaking",
+      "targetCefr": "C1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "range",
+      "difficultyConstraints": [
+        "implicit stance; nuanced register; dense but mobile-readable"
+      ],
+      "promptText": "Describe how your cultural background influences your perspective on global issues. Provide specific examples to illustrate your point.",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "The response should demonstrate a nuanced understanding of cultural influences with specific examples, showcasing a range of vocabulary and complex sentence structures.",
+      "rubricDimensions": [
+        "fluency",
+        "accuracy",
+        "range",
+        "interaction"
+      ],
+      "vietnameseL1Targets": [
+        "implicit meaning",
+        "nuanced register",
+        "complex argument"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:41:58.908Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 5434,
+        "tokensInput": 730,
+        "tokensOutput": 228,
+        "estimatedCostUsd": 0.000246
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 9833,
+    "tokensInput": 1450,
+    "tokensOutput": 571,
+    "estimatedCostUsd": 0.00056,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"C1\", \"notes\": \"The item is at the C1 level, which is appropriate for the target CEFR.\" },\n  \"safety\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful material.\" },\n  \"ageAppropriateness\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The content is suitable for learners aged 13 and above.\" },\n  \"culturalNeutrality\": { \"score\": 0.0, \"pass\": false, \"notes\": \"The prompt assumes familiarity with cultural influences that may not be universally understood.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"implicit meaning\", \"nuanced register\"], \"notes\": \"The item does not effectively connect to useful Vietnamese L1 transfer evidence.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"The item has a high similarity risk with existing items.\" },\n  \"rubricCompatibility\": { \"score\": 0.0, \"pass\": true, \"supportedDimensions\": [\"fluency\", \"accuracy\", \"range\", \"interaction\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The item is usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"culturally_awkward\", \"severity\": \"medium\", \"message\": \"The prompt assumes familiarity with cultural influences that may not be universally understood.\", \"evidence\": \"Describe how your cultural background influences your perspective on global issues.\" },\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"The item does not effectively connect to useful Vietnamese L1 transfer evidence.\", \"evidence\": \"The response should demonstrate a nuanced understanding of cultural influences.\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"The item has a high similarity risk with existing items.\", \"evidence\": \"nearestItemIds: [\\\"f342d941-37e5-46f5-8311-4b86db7f6cad\\\"]\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "08a03caf-b248-478c-85a8-3abfcc8b809f",
+      "generatedItemId": "e53ea015-0814-4d3a-99cf-879887f622aa",
+      "validatedAt": "2026-05-20T11:42:08.741Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item is at the C1 level, which is appropriate for the target CEFR.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": false,
+        "notes": "The prompt assumes familiarity with cultural influences that may not be universally understood."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item does not effectively connect to useful Vietnamese L1 transfer evidence.",
+        "matchedPatterns": [
+          "implicit meaning",
+          "nuanced register"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item has a high similarity risk with existing items.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "fluency",
+          "accuracy",
+          "range",
+          "interaction"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "culturally_awkward",
+          "severity": "medium",
+          "message": "The prompt assumes familiarity with cultural influences that may not be universally understood.",
+          "evidence": "Describe how your cultural background influences your perspective on global issues."
+        },
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The item does not effectively connect to useful Vietnamese L1 transfer evidence.",
+          "evidence": "The response should demonstrate a nuanced understanding of cultural influences."
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item has a high similarity risk with existing items.",
+          "evidence": "nearestItemIds: [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"]"
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:42:08.741Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9833,
+        "tokensInput": 1450,
+        "tokensOutput": 571,
+        "estimatedCostUsd": 0.00056
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "culturally_awkward",
+      "severity": "medium",
+      "message": "The prompt assumes familiarity with cultural influences that may not be universally understood.",
+      "evidence": "Describe how your cultural background influences your perspective on global issues."
+    },
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "The item does not effectively connect to useful Vietnamese L1 transfer evidence.",
+      "evidence": "The response should demonstrate a nuanced understanding of cultural influences."
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "The item has a high similarity risk with existing items.",
+      "evidence": "nearestItemIds: [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"]"
+    }
+  ]
+}

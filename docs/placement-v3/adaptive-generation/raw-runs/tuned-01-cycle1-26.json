@@ -1,0 +1,181 @@
+{
+  "isoTimestamp": "2026-05-20T11:42:41.715Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 25,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 5128,
+    "tokensInput": 727,
+    "tokensOutput": 225,
+    "estimatedCostUsd": 0.000244,
+    "rawGeneratedItem": "{\n  \"title\": \"Daily Routine Description\",\n  \"modality\": \"writing\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"coherence\",\n  \"difficultyConstraints\": [\"very short; literal meaning only; everyday topic\"],\n  \"promptText\": \"Write 3-4 sentences about your daily routine. What do you do in the morning? What do you do in the evening?\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"Responses should include simple sentences about morning and evening activities, demonstrating basic coherence.\",\n  \"rubricDimensions\": [\"content\", \"organization\", \"language use\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"simple sentence structure\", \"coherence in listing activities\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "1a10c1c8-7ecf-48d0-b820-624c2662f88a",
+      "title": "Daily Routine Description",
+      "modality": "writing",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "coherence",
+      "difficultyConstraints": [
+        "very short; literal meaning only; everyday topic"
+      ],
+      "promptText": "Write 3-4 sentences about your daily routine. What do you do in the morning? What do you do in the evening?",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "Responses should include simple sentences about morning and evening activities, demonstrating basic coherence.",
+      "rubricDimensions": [
+        "content",
+        "organization",
+        "language use"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "simple sentence structure",
+        "coherence in listing activities"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:42:27.591Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 5128,
+        "tokensInput": 727,
+        "tokensOutput": 225,
+        "estimatedCostUsd": 0.000244
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 14123,
+    "tokensInput": 1450,
+    "tokensOutput": 514,
+    "estimatedCostUsd": 0.000526,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": false, \"predictedCefr\": \"A1\", \"notes\": \"The item fits A1 level but is too easy for the target audience.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No safety concerns identified.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": false, \"notes\": \"The task may not engage learners aged 13+ effectively.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No cultural biases present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"subject-verb agreement\", \"simple sentence structure\"], \"notes\": \"Relevant Vietnamese L1 transfer patterns identified.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"Duplicate risk is high due to similarity with existing item.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"content\", \"organization\", \"language use\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_easy\", \"severity\": \"medium\", \"message\": \"The task is too easy for the target audience.\", \"evidence\": \"predictedCefr is A1\" },\n    { \"code\": \"age_inappropriate\", \"severity\": \"medium\", \"message\": \"The task may not engage learners aged 13+ effectively.\", \"evidence\": \"target audience is 13+\" },\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"nearestItemIds include f342d941-37e5-46f5-8311-4b86db7f6cad\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "9b3f1d7d-5706-406b-acb8-80ec64f1f380",
+      "generatedItemId": "1a10c1c8-7ecf-48d0-b820-624c2662f88a",
+      "validatedAt": "2026-05-20T11:42:41.714Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No safety concerns identified."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": false,
+        "notes": "The task may not engage learners aged 13+ effectively."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "simple sentence structure"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity with existing item.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "content",
+          "organization",
+          "language use"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The task is too easy for the target audience.",
+          "evidence": "predictedCefr is A1"
+        },
+        {
+          "code": "age_inappropriate",
+          "severity": "medium",
+          "message": "The task may not engage learners aged 13+ effectively.",
+          "evidence": "target audience is 13+"
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "nearestItemIds include f342d941-37e5-46f5-8311-4b86db7f6cad"
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:42:41.715Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 14123,
+        "tokensInput": 1450,
+        "tokensOutput": 514,
+        "estimatedCostUsd": 0.000526
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_easy",
+      "severity": "medium",
+      "message": "The task is too easy for the target audience.",
+      "evidence": "predictedCefr is A1"
+    },
+    {
+      "code": "age_inappropriate",
+      "severity": "medium",
+      "message": "The task may not engage learners aged 13+ effectively.",
+      "evidence": "target audience is 13+"
+    },
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "nearestItemIds include f342d941-37e5-46f5-8311-4b86db7f6cad"
+    }
+  ]
+}

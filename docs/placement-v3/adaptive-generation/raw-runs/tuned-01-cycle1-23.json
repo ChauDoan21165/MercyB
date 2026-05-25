@@ -1,0 +1,157 @@
+{
+  "isoTimestamp": "2026-05-20T11:41:53.473Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 22,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 10106,
+    "tokensInput": 732,
+    "tokensOutput": 307,
+    "estimatedCostUsd": 0.000294,
+    "rawGeneratedItem": "{\n  \"title\": \"Understanding Nuanced Perspectives\",\n  \"modality\": \"listening\",\n  \"targetCefr\": \"C1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"detail recall\",\n  \"difficultyConstraints\": [\"implicit stance\", \"nuanced register\", \"dense but mobile-readable\"],\n  \"promptText\": \"Listen to the audio and summarize the speaker's main argument.\",\n  \"passageText\": null,\n  \"audioTranscript\": \"In discussions about climate change, it's crucial to recognize that opinions can vary widely. Some argue that immediate action is necessary, while others believe that gradual changes are more effective. Understanding these perspectives helps in forming a more balanced view. When we listen to differing opinions, we can appreciate the complexity of the issue and the various factors influencing people's beliefs. This nuanced understanding is essential in fostering constructive dialogue.\",\n  \"questionText\": \"What is the main argument presented by the speaker?\",\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"The speaker argues that recognizing differing opinions on climate change is essential for a balanced view and constructive dialogue.\",\n  \"rubricDimensions\": [\"detail recall\", \"nuanced understanding\", \"cohesion\"],\n  \"vietnameseL1Targets\": [\"implicit meaning\", \"nuanced register\", \"cohesion\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "2b3ae33c-c025-41f9-9f31-0401e5c95403",
+      "title": "Understanding Nuanced Perspectives",
+      "modality": "listening",
+      "targetCefr": "C1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "detail recall",
+      "difficultyConstraints": [
+        "implicit stance",
+        "nuanced register",
+        "dense but mobile-readable"
+      ],
+      "promptText": "Listen to the audio and summarize the speaker's main argument.",
+      "passageText": null,
+      "audioTranscript": "In discussions about climate change, it's crucial to recognize that opinions can vary widely. Some argue that immediate action is necessary, while others believe that gradual changes are more effective. Understanding these perspectives helps in forming a more balanced view. When we listen to differing opinions, we can appreciate the complexity of the issue and the various factors influencing people's beliefs. This nuanced understanding is essential in fostering constructive dialogue.",
+      "questionText": "What is the main argument presented by the speaker?",
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "The speaker argues that recognizing differing opinions on climate change is essential for a balanced view and constructive dialogue.",
+      "rubricDimensions": [
+        "detail recall",
+        "nuanced understanding",
+        "cohesion"
+      ],
+      "vietnameseL1Targets": [
+        "implicit meaning",
+        "nuanced register",
+        "cohesion"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:41:46.999Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 10106,
+        "tokensInput": 732,
+        "tokensOutput": 307,
+        "estimatedCostUsd": 0.000294
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 6474,
+    "tokensInput": 1533,
+    "tokensOutput": 418,
+    "estimatedCostUsd": 0.000481,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"C1\", \"notes\": \"The predicted CEFR level is appropriate for the target, but the complexity may exceed the expected learner's capabilities.\" },\n  \"safety\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful material.\" },\n  \"ageAppropriateness\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The content is suitable for learners aged 13 and above.\" },\n  \"culturalNeutrality\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The content does not assume non-Vietnamese cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"implicit meaning\", \"nuanced register\"], \"notes\": \"While there are relevant patterns, the complexity of the task may not effectively target Vietnamese L1 transfer.\" },\n  \"duplicateRisk\": { \"score\": 0.0, \"pass\": true, \"nearestItemIds\": [], \"notes\": \"No duplicate risk identified.\" },\n  \"rubricCompatibility\": { \"score\": 0.0, \"pass\": true, \"supportedDimensions\": [\"detail recall\", \"nuanced understanding\", \"cohesion\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The item is usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_hard\", \"severity\": \"medium\", \"message\": \"The complexity of the task may exceed the expected learner's capabilities.\", \"evidence\": \"targetCefr: C1\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "61a17e68-57a2-499e-b6ca-a9312cc683e8",
+      "generatedItemId": "2b3ae33c-c025-41f9-9f31-0401e5c95403",
+      "validatedAt": "2026-05-20T11:41:53.473Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The predicted CEFR level is appropriate for the target, but the complexity may exceed the expected learner's capabilities.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there are relevant patterns, the complexity of the task may not effectively target Vietnamese L1 transfer.",
+        "matchedPatterns": [
+          "implicit meaning",
+          "nuanced register"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0,
+        "pass": true,
+        "notes": "No duplicate risk identified.",
+        "nearestItemIds": []
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "detail recall",
+          "nuanced understanding",
+          "cohesion"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_hard",
+          "severity": "medium",
+          "message": "The complexity of the task may exceed the expected learner's capabilities.",
+          "evidence": "targetCefr: C1"
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:41:53.473Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 6474,
+        "tokensInput": 1533,
+        "tokensOutput": 418,
+        "estimatedCostUsd": 0.000481
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_hard",
+      "severity": "medium",
+      "message": "The complexity of the task may exceed the expected learner's capabilities.",
+      "evidence": "targetCefr: C1"
+    }
+  ]
+}

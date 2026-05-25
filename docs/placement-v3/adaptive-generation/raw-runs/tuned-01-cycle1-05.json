@@ -1,0 +1,170 @@
+{
+  "isoTimestamp": "2026-05-20T11:37:18.945Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 4,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 5533,
+    "tokensInput": 726,
+    "tokensOutput": 275,
+    "estimatedCostUsd": 0.000274,
+    "rawGeneratedItem": "{\n  \"title\": \"Understanding a School Event\",\n  \"modality\": \"reading\",\n  \"targetCefr\": \"B1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"detail extraction\",\n  \"difficultyConstraints\": [\"connected familiar topic\", \"basic inference\", \"some distractor resistance\"],\n  \"promptText\": \"Read the passage and answer the question.\",\n  \"passageText\": \"Last Saturday, our school organized a sports day. Many students participated in various activities like running, basketball, and soccer. The weather was sunny, and everyone was excited. At the end of the day, the teachers announced the winners and gave out medals. Many students were happy to receive their awards.\",\n  \"audioTranscript\": null,\n  \"questionText\": \"What activities did the students participate in during the sports day?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"running, basketball, and soccer\",\n  \"rubricDimensions\": [\"detail extraction\", \"comprehension\", \"inference\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"final consonants\", \"literal Vietnamese calques\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "97cd5e8f-13da-4c0d-8707-0ae97f3bba55",
+      "title": "Understanding a School Event",
+      "modality": "reading",
+      "targetCefr": "B1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "detail extraction",
+      "difficultyConstraints": [
+        "connected familiar topic",
+        "basic inference",
+        "some distractor resistance"
+      ],
+      "promptText": "Read the passage and answer the question.",
+      "passageText": "Last Saturday, our school organized a sports day. Many students participated in various activities like running, basketball, and soccer. The weather was sunny, and everyone was excited. At the end of the day, the teachers announced the winners and gave out medals. Many students were happy to receive their awards.",
+      "audioTranscript": null,
+      "questionText": "What activities did the students participate in during the sports day?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "running, basketball, and soccer",
+      "rubricDimensions": [
+        "detail extraction",
+        "comprehension",
+        "inference"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "final consonants",
+        "literal Vietnamese calques"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:37:10.255Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 5533,
+        "tokensInput": 726,
+        "tokensOutput": 275,
+        "estimatedCostUsd": 0.000274
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8689,
+    "tokensInput": 1443,
+    "tokensOutput": 485,
+    "estimatedCostUsd": 0.000507,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": true, \"predictedCefr\": \"B1\", \"notes\": \"The item fits the B1 level as it involves connected familiar topics and basic inference.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful material.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is suitable for learners aged 13 and above.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content does not assume non-Vietnamese cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"subject-verb agreement\", \"final consonants\"], \"notes\": \"While there are relevant patterns, the item does not effectively target them in a testable way.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"The item is similar to an existing item, posing a duplicate risk.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"detail extraction\", \"comprehension\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The item is usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"The item does not effectively target Vietnamese-L1 transfer patterns.\", \"evidence\": \"vietnameseL1Targets field\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"duplicateRisk score\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "d38d7455-b258-413b-ad23-93b4cd5050eb",
+      "generatedItemId": "97cd5e8f-13da-4c0d-8707-0ae97f3bba55",
+      "validatedAt": "2026-05-20T11:37:18.945Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item fits the B1 level as it involves connected familiar topics and basic inference.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there are relevant patterns, the item does not effectively target them in a testable way.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "final consonants"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, posing a duplicate risk.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "detail extraction",
+          "comprehension"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The item does not effectively target Vietnamese-L1 transfer patterns.",
+          "evidence": "vietnameseL1Targets field"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "duplicateRisk score"
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:37:18.945Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8689,
+        "tokensInput": 1443,
+        "tokensOutput": 485,
+        "estimatedCostUsd": 0.000507
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "The item does not effectively target Vietnamese-L1 transfer patterns.",
+      "evidence": "vietnameseL1Targets field"
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "duplicateRisk score"
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "isoTimestamp": "2026-05-20T11:31:51.378Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 11,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 5064,
+    "tokensInput": 730,
+    "tokensOutput": 231,
+    "estimatedCostUsd": 0.000248,
+    "rawGeneratedItem": "{\n  \"title\": \"Discussing Cultural Differences\",\n  \"modality\": \"speaking\",\n  \"targetCefr\": \"C1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"range\",\n  \"difficultyConstraints\": [\"implicit stance\", \"nuanced register\", \"dense but mobile-readable\"],\n  \"promptText\": \"In a few sentences, discuss how cultural differences can influence communication styles. Provide examples from your own experience or observations.\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"A well-structured response that includes specific examples of cultural differences affecting communication, demonstrating nuanced understanding and varied vocabulary.\",\n  \"rubricDimensions\": [\"fluency\", \"accuracy\", \"range\", \"interaction\"],\n  \"vietnameseL1Targets\": [\"implicit meaning\", \"nuanced register\", \"complex argument\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "06fc5961-c8b2-49f7-947c-a3c3de821427",
+      "title": "Discussing Cultural Differences",
+      "modality": "speaking",
+      "targetCefr": "C1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "range",
+      "difficultyConstraints": [
+        "implicit stance",
+        "nuanced register",
+        "dense but mobile-readable"
+      ],
+      "promptText": "In a few sentences, discuss how cultural differences can influence communication styles. Provide examples from your own experience or observations.",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "A well-structured response that includes specific examples of cultural differences affecting communication, demonstrating nuanced understanding and varied vocabulary.",
+      "rubricDimensions": [
+        "fluency",
+        "accuracy",
+        "range",
+        "interaction"
+      ],
+      "vietnameseL1Targets": [
+        "implicit meaning",
+        "nuanced register",
+        "complex argument"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:31:40.362Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 5064,
+        "tokensInput": 730,
+        "tokensOutput": 231,
+        "estimatedCostUsd": 0.000248
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 11016,
+    "tokensInput": 1398,
+    "tokensOutput": 547,
+    "estimatedCostUsd": 0.000538,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"C1\", \"notes\": \"The predicted CEFR level is too high for the target audience.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No harmful content present.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No cultural stereotypes present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"implicit meaning\", \"nuanced register\"], \"notes\": \"While some patterns are matched, the complexity may not provide useful transfer evidence for Vietnamese learners.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"The item is similar to an existing item, indicating a higher risk of duplication.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"fluency\", \"accuracy\", \"range\", \"interaction\"], \"notes\": \"Compatible with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The prompt is mobile-readable.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_hard\", \"severity\": \"high\", \"message\": \"The predicted CEFR level is too high for the target audience.\", \"evidence\": \"predictedCefr: 'C1'\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"The item is similar to an existing item.\", \"evidence\": \"nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']\" },\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"The complexity may not provide useful transfer evidence for Vietnamese learners.\", \"evidence\": \"matchedPatterns: ['implicit meaning', 'nuanced register']\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "9031a143-c04e-4e3b-93f5-038ddf4c2515",
+      "generatedItemId": "06fc5961-c8b2-49f7-947c-a3c3de821427",
+      "validatedAt": "2026-05-20T11:31:51.378Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The predicted CEFR level is too high for the target audience.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural stereotypes present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While some patterns are matched, the complexity may not provide useful transfer evidence for Vietnamese learners.",
+        "matchedPatterns": [
+          "implicit meaning",
+          "nuanced register"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, indicating a higher risk of duplication.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with the rubric dimensions.",
+        "supportedDimensions": [
+          "fluency",
+          "accuracy",
+          "range",
+          "interaction"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt is mobile-readable."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_hard",
+          "severity": "high",
+          "message": "The predicted CEFR level is too high for the target audience.",
+          "evidence": "predictedCefr: 'C1'"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is similar to an existing item.",
+          "evidence": "nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']"
+        },
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The complexity may not provide useful transfer evidence for Vietnamese learners.",
+          "evidence": "matchedPatterns: ['implicit meaning', 'nuanced register']"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:31:51.378Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 11016,
+        "tokensInput": 1398,
+        "tokensOutput": 547,
+        "estimatedCostUsd": 0.000538
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_hard",
+      "severity": "high",
+      "message": "The predicted CEFR level is too high for the target audience.",
+      "evidence": "predictedCefr: 'C1'"
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "The item is similar to an existing item.",
+      "evidence": "nearestItemIds: ['7e73bb36-e64c-4f06-a8a5-8c2c130f7e40']"
+    },
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "The complexity may not provide useful transfer evidence for Vietnamese learners.",
+      "evidence": "matchedPatterns: ['implicit meaning', 'nuanced register']"
+    }
+  ]
+}

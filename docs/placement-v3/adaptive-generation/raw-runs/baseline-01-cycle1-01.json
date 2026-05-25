@@ -1,0 +1,140 @@
+{
+  "isoTimestamp": "2026-05-20T11:29:06.252Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 0,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 6331,
+    "tokensInput": 724,
+    "tokensOutput": 238,
+    "estimatedCostUsd": 0.000251,
+    "rawGeneratedItem": "{\n  \"title\": \"Daily Routine\",\n  \"modality\": \"reading\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"main idea\",\n  \"difficultyConstraints\": [\"very short\", \"literal meaning only\", \"everyday topic\"],\n  \"promptText\": \"Read the passage and answer the question.\",\n  \"passageText\": \"Every day, Anna wakes up at 7 a.m. She eats breakfast and goes to school at 8 a.m. After school, she does her homework. In the evening, she plays with her friends.\",\n  \"audioTranscript\": null,\n  \"questionText\": \"What does Anna do after school?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"She does her homework.\",\n  \"rubricDimensions\": [\"main idea understanding\", \"literal comprehension\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"final consonants\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40",
+      "title": "Daily Routine",
+      "modality": "reading",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "main idea",
+      "difficultyConstraints": [
+        "very short",
+        "literal meaning only",
+        "everyday topic"
+      ],
+      "promptText": "Read the passage and answer the question.",
+      "passageText": "Every day, Anna wakes up at 7 a.m. She eats breakfast and goes to school at 8 a.m. After school, she does her homework. In the evening, she plays with her friends.",
+      "audioTranscript": null,
+      "questionText": "What does Anna do after school?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "She does her homework.",
+      "rubricDimensions": [
+        "main idea understanding",
+        "literal comprehension"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "final consonants"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:28:59.310Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 6331,
+        "tokensInput": 724,
+        "tokensOutput": 238,
+        "estimatedCostUsd": 0.000251
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 6941,
+    "tokensInput": 1371,
+    "tokensOutput": 338,
+    "estimatedCostUsd": 0.000408,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"accepted\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": true, \"predictedCefr\": \"A1\", \"notes\": \"The passage and question are appropriate for A1 level.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is safe and non-harmful.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content does not assume non-Vietnamese cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"subject-verb agreement\", \"final consonants\"], \"notes\": \"Targets relevant Vietnamese L1 transfer patterns.\" },\n  \"duplicateRisk\": { \"score\": 0.0, \"pass\": true, \"nearestItemIds\": [], \"notes\": \"No duplicate risk as there are no existing items.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"main idea understanding\", \"literal comprehension\"], \"notes\": \"Compatible with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is easily usable on mobile devices.\" },\n  \"rejectionReasons\": []\n}",
+    "parsedValidation": {
+      "id": "eb9bb106-6157-4a15-941e-0b9637a9cae1",
+      "generatedItemId": "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40",
+      "validatedAt": "2026-05-20T11:29:06.252Z",
+      "finalDecision": "accepted",
+      "cefrFit": {
+        "score": 1,
+        "pass": true,
+        "notes": "The passage and question are appropriate for A1 level.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is safe and non-harmful."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Targets relevant Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "final consonants"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0,
+        "pass": true,
+        "notes": "No duplicate risk as there are no existing items.",
+        "nearestItemIds": []
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with the rubric dimensions.",
+        "supportedDimensions": [
+          "main idea understanding",
+          "literal comprehension"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is easily usable on mobile devices."
+      },
+      "rejectionReasons": [],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:29:06.252Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 6941,
+        "tokensInput": 1371,
+        "tokensOutput": 338,
+        "estimatedCostUsd": 0.000408
+      }
+    }
+  },
+  "finalDecision": "accepted",
+  "rejectionReasons": []
+}

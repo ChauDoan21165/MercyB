@@ -1,0 +1,178 @@
+{
+  "isoTimestamp": "2026-05-20T11:29:47.427Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 3,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 4768,
+    "tokensInput": 731,
+    "tokensOutput": 219,
+    "estimatedCostUsd": 0.000241,
+    "rawGeneratedItem": "{\n  \"title\": \"Describe Your Day\",\n  \"modality\": \"speaking\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"fluency\",\n  \"difficultyConstraints\": [\"very short; literal meaning only; everyday topic\"],\n  \"promptText\": \"Please tell me about your day. What did you do today? Use simple sentences.\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"The learner should provide a simple description of their day, such as 'I woke up. I had breakfast. I went to school.'\",\n  \"rubricDimensions\": [\"fluency\", \"accuracy\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"tense marking\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "77859375-337b-4e37-bf0d-92c911688ac3",
+      "title": "Describe Your Day",
+      "modality": "speaking",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "fluency",
+      "difficultyConstraints": [
+        "very short; literal meaning only; everyday topic"
+      ],
+      "promptText": "Please tell me about your day. What did you do today? Use simple sentences.",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "The learner should provide a simple description of their day, such as 'I woke up. I had breakfast. I went to school.'",
+      "rubricDimensions": [
+        "fluency",
+        "accuracy"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "tense marking"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:29:40.069Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 4768,
+        "tokensInput": 731,
+        "tokensOutput": 219,
+        "estimatedCostUsd": 0.000241
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 7357,
+    "tokensInput": 1380,
+    "tokensOutput": 487,
+    "estimatedCostUsd": 0.000499,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": false, \"predictedCefr\": \"A1\", \"notes\": \"The item fits A1 level but is too easy for the target audience.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No safety concerns identified.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": false, \"notes\": \"The prompt is too simplistic for 13+ learners.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No cultural biases present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"subject-verb agreement\", \"tense marking\"], \"notes\": \"Relevant Vietnamese L1 transfer patterns identified.\" },\n  \"duplicateRisk\": { \"score\": 0.4, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"Duplicate risk is high due to similarity with existing item.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"fluency\", \"accuracy\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_easy\", \"severity\": \"medium\", \"message\": \"The item is too easy for the target audience.\", \"evidence\": \"Predicted CEFR is A1.\" },\n    { \"code\": \"age_inappropriate\", \"severity\": \"medium\", \"message\": \"The prompt is too simplistic for 13+ learners.\", \"evidence\": \"Prompt asks for very basic descriptions.\" },\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"Materially similar to existing item.\", \"evidence\": \"Similar to 'Daily Routine' item.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "4b20ff15-e1a8-4f90-a300-000f6cfbabd6",
+      "generatedItemId": "77859375-337b-4e37-bf0d-92c911688ac3",
+      "validatedAt": "2026-05-20T11:29:47.427Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No safety concerns identified."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": false,
+        "notes": "The prompt is too simplistic for 13+ learners."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "tense marking"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.4,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity with existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "fluency",
+          "accuracy"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "Predicted CEFR is A1."
+        },
+        {
+          "code": "age_inappropriate",
+          "severity": "medium",
+          "message": "The prompt is too simplistic for 13+ learners.",
+          "evidence": "Prompt asks for very basic descriptions."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "Materially similar to existing item.",
+          "evidence": "Similar to 'Daily Routine' item."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:29:47.427Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7357,
+        "tokensInput": 1380,
+        "tokensOutput": 487,
+        "estimatedCostUsd": 0.000499
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_easy",
+      "severity": "medium",
+      "message": "The item is too easy for the target audience.",
+      "evidence": "Predicted CEFR is A1."
+    },
+    {
+      "code": "age_inappropriate",
+      "severity": "medium",
+      "message": "The prompt is too simplistic for 13+ learners.",
+      "evidence": "Prompt asks for very basic descriptions."
+    },
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "Materially similar to existing item.",
+      "evidence": "Similar to 'Daily Routine' item."
+    }
+  ]
+}

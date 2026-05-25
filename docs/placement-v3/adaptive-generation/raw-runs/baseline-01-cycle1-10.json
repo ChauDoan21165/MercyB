@@ -1,0 +1,183 @@
+{
+  "isoTimestamp": "2026-05-20T11:31:14.566Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 9,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 4533,
+    "tokensInput": 731,
+    "tokensOutput": 260,
+    "estimatedCostUsd": 0.000266,
+    "rawGeneratedItem": "{\n  \"title\": \"Understanding Nuance in Articles and Tense\",\n  \"modality\": \"writing\",\n  \"targetCefr\": \"C1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"articles and tense\",\n  \"difficultyConstraints\": [\"implicit stance; nuanced register; dense but mobile-readable\"],\n  \"promptText\": \"Write a short paragraph discussing the importance of using articles correctly in English. Include examples of how tense can change the meaning of a sentence. Be sure to express your opinion subtly.\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"A well-structured paragraph that demonstrates correct use of articles and tense, showing an understanding of how these elements affect meaning. The response should reflect nuanced opinions and coherent argumentation.\",\n  \"rubricDimensions\": [\"coherence\", \"grammar\", \"vocabulary\", \"task achievement\"],\n  \"vietnameseL1Targets\": [\"article usage\", \"tense marking\", \"implicit meaning\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "6534ce62-22d1-4f6e-8655-1667b321558a",
+      "title": "Understanding Nuance in Articles and Tense",
+      "modality": "writing",
+      "targetCefr": "C1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "articles and tense",
+      "difficultyConstraints": [
+        "implicit stance; nuanced register; dense but mobile-readable"
+      ],
+      "promptText": "Write a short paragraph discussing the importance of using articles correctly in English. Include examples of how tense can change the meaning of a sentence. Be sure to express your opinion subtly.",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "A well-structured paragraph that demonstrates correct use of articles and tense, showing an understanding of how these elements affect meaning. The response should reflect nuanced opinions and coherent argumentation.",
+      "rubricDimensions": [
+        "coherence",
+        "grammar",
+        "vocabulary",
+        "task achievement"
+      ],
+      "vietnameseL1Targets": [
+        "article usage",
+        "tense marking",
+        "implicit meaning"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:31:03.447Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 4533,
+        "tokensInput": 731,
+        "tokensOutput": 260,
+        "estimatedCostUsd": 0.000266
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 11119,
+    "tokensInput": 1426,
+    "tokensOutput": 540,
+    "estimatedCostUsd": 0.000538,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"C1\", \"notes\": \"The predicted CEFR level is appropriate for the target, but the complexity may exceed the expected learner capabilities.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No harmful or inappropriate content present.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No cultural biases or assumptions present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"article usage\", \"tense marking\"], \"notes\": \"While there are relevant targets, the complexity of the task may not effectively assess these patterns.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"The item has a high similarity risk with existing items.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"coherence\", \"grammar\", \"vocabulary\", \"task achievement\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The task is mobile-readable and user-friendly.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_hard\", \"severity\": \"medium\", \"message\": \"The complexity of the task may exceed the expected learner capabilities.\", \"evidence\": \"targetCefr: C1\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"The item has a high similarity risk with existing items.\", \"evidence\": \"duplicateRisk.score: 0.5\" },\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"The complexity of the task may not effectively assess relevant Vietnamese L1 transfer patterns.\", \"evidence\": \"vietnameseL1Targets present but not effectively testable.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "2d423ea0-1f5e-4d9e-bd2f-fbb3d5e63ad7",
+      "generatedItemId": "6534ce62-22d1-4f6e-8655-1667b321558a",
+      "validatedAt": "2026-05-20T11:31:14.566Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The predicted CEFR level is appropriate for the target, but the complexity may exceed the expected learner capabilities.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful or inappropriate content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural biases or assumptions present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there are relevant targets, the complexity of the task may not effectively assess these patterns.",
+        "matchedPatterns": [
+          "article usage",
+          "tense marking"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item has a high similarity risk with existing items.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "coherence",
+          "grammar",
+          "vocabulary",
+          "task achievement"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The task is mobile-readable and user-friendly."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_hard",
+          "severity": "medium",
+          "message": "The complexity of the task may exceed the expected learner capabilities.",
+          "evidence": "targetCefr: C1"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item has a high similarity risk with existing items.",
+          "evidence": "duplicateRisk.score: 0.5"
+        },
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The complexity of the task may not effectively assess relevant Vietnamese L1 transfer patterns.",
+          "evidence": "vietnameseL1Targets present but not effectively testable."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:31:14.566Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 11119,
+        "tokensInput": 1426,
+        "tokensOutput": 540,
+        "estimatedCostUsd": 0.000538
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_hard",
+      "severity": "medium",
+      "message": "The complexity of the task may exceed the expected learner capabilities.",
+      "evidence": "targetCefr: C1"
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "The item has a high similarity risk with existing items.",
+      "evidence": "duplicateRisk.score: 0.5"
+    },
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "The complexity of the task may not effectively assess relevant Vietnamese L1 transfer patterns.",
+      "evidence": "vietnameseL1Targets present but not effectively testable."
+    }
+  ]
+}

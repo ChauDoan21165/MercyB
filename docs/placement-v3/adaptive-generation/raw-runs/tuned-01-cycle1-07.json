@@ -1,0 +1,170 @@
+{
+  "isoTimestamp": "2026-05-20T11:37:46.379Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 6,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 5509,
+    "tokensInput": 731,
+    "tokensOutput": 292,
+    "estimatedCostUsd": 0.000285,
+    "rawGeneratedItem": "{\n  \"title\": \"Weekend Plans\",\n  \"modality\": \"listening\",\n  \"targetCefr\": \"B1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"gist\",\n  \"difficultyConstraints\": [\"connected familiar topics\", \"basic inference\", \"some distractor resistance\"],\n  \"promptText\": \"Listen to the conversation and understand what the speakers plan to do this weekend.\",\n  \"passageText\": null,\n  \"audioTranscript\": \"A: Hey, do you have any plans for the weekend? B: Yeah, I think I’ll go hiking if the weather is nice. A: That sounds fun! I might join you. B: Great! We could also go to that new café afterward. A: Oh, I heard it’s really good. Let’s do that!\",\n  \"questionText\": \"What do the speakers plan to do this weekend?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"They plan to go hiking and then visit a new café.\",\n  \"rubricDimensions\": [\"gist understanding\", \"basic inference\", \"connected familiar topics\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"literal Vietnamese calques\", \"intonation\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "4a3fd517-2f30-438d-a2fe-09c1e81cb245",
+      "title": "Weekend Plans",
+      "modality": "listening",
+      "targetCefr": "B1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "gist",
+      "difficultyConstraints": [
+        "connected familiar topics",
+        "basic inference",
+        "some distractor resistance"
+      ],
+      "promptText": "Listen to the conversation and understand what the speakers plan to do this weekend.",
+      "passageText": null,
+      "audioTranscript": "A: Hey, do you have any plans for the weekend? B: Yeah, I think I’ll go hiking if the weather is nice. A: That sounds fun! I might join you. B: Great! We could also go to that new café afterward. A: Oh, I heard it’s really good. Let’s do that!",
+      "questionText": "What do the speakers plan to do this weekend?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "They plan to go hiking and then visit a new café.",
+      "rubricDimensions": [
+        "gist understanding",
+        "basic inference",
+        "connected familiar topics"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "literal Vietnamese calques",
+        "intonation"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:37:36.766Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 5509,
+        "tokensInput": 731,
+        "tokensOutput": 292,
+        "estimatedCostUsd": 0.000285
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 9612,
+    "tokensInput": 1457,
+    "tokensOutput": 481,
+    "estimatedCostUsd": 0.000507,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": true, \"predictedCefr\": \"B1\", \"notes\": \"The item fits the B1 level with connected familiar topics and basic inference.\" },\n  \"safety\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful material.\" },\n  \"ageAppropriateness\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The content is suitable for learners aged 13 and above.\" },\n  \"culturalNeutrality\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The content does not assume non-Vietnamese cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"subject-verb agreement\", \"intonation\"], \"notes\": \"While there are relevant targets, they are not genuinely testable in this context.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"The item is similar to an existing item, indicating a higher risk of duplication.\" },\n  \"rubricCompatibility\": { \"score\": 0.0, \"pass\": true, \"supportedDimensions\": [\"gist understanding\", \"basic inference\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The item is usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"The Vietnamese-L1 targets are not genuinely testable.\", \"evidence\": \"subject-verb agreement, intonation\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"similarity to Daily Routine\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "55db270c-be6b-4f08-9002-9c20abd99aff",
+      "generatedItemId": "4a3fd517-2f30-438d-a2fe-09c1e81cb245",
+      "validatedAt": "2026-05-20T11:37:46.378Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item fits the B1 level with connected familiar topics and basic inference.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there are relevant targets, they are not genuinely testable in this context.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "intonation"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, indicating a higher risk of duplication.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "gist understanding",
+          "basic inference"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The Vietnamese-L1 targets are not genuinely testable.",
+          "evidence": "subject-verb agreement, intonation"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "similarity to Daily Routine"
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:37:46.379Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9612,
+        "tokensInput": 1457,
+        "tokensOutput": 481,
+        "estimatedCostUsd": 0.000507
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "The Vietnamese-L1 targets are not genuinely testable.",
+      "evidence": "subject-verb agreement, intonation"
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "similarity to Daily Routine"
+    }
+  ]
+}

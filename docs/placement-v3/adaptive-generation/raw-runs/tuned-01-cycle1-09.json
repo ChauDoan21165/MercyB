@@ -1,0 +1,171 @@
+{
+  "isoTimestamp": "2026-05-20T11:38:13.551Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 8,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 5453,
+    "tokensInput": 724,
+    "tokensOutput": 325,
+    "estimatedCostUsd": 0.000304,
+    "rawGeneratedItem": "{\n  \"title\": \"Understanding Implicit Meanings\",\n  \"modality\": \"reading\",\n  \"targetCefr\": \"C1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"inference\",\n  \"difficultyConstraints\": [\"implicit stance\", \"nuanced register\", \"dense but mobile-readable\"],\n  \"promptText\": \"Read the passage and infer the author's attitude towards technology.\",\n  \"passageText\": \"In an age where technology permeates every aspect of our lives, it is both a boon and a bane. While it facilitates communication and access to information, it simultaneously fosters a sense of disconnection among individuals. The rapid evolution of technology often leaves a trail of obsolescence in its wake, compelling society to adapt at an unprecedented pace. Thus, one must ponder: is our reliance on technology enhancing our lives, or is it subtly undermining the very fabric of human interaction?\",\n  \"audioTranscript\": null,\n  \"questionText\": \"What is the author's attitude towards the impact of technology on human interaction?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"The author has a critical attitude towards technology's impact on human interaction.\",\n  \"rubricDimensions\": [\"inference\", \"understanding of nuanced meanings\", \"evaluation of author's stance\"],\n  \"vietnameseL1Targets\": [\"implicit meaning\", \"nuanced register\", \"cohesion\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "e0a2e219-5414-4394-b2f6-4dd988642dc1",
+      "title": "Understanding Implicit Meanings",
+      "modality": "reading",
+      "targetCefr": "C1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "inference",
+      "difficultyConstraints": [
+        "implicit stance",
+        "nuanced register",
+        "dense but mobile-readable"
+      ],
+      "promptText": "Read the passage and infer the author's attitude towards technology.",
+      "passageText": "In an age where technology permeates every aspect of our lives, it is both a boon and a bane. While it facilitates communication and access to information, it simultaneously fosters a sense of disconnection among individuals. The rapid evolution of technology often leaves a trail of obsolescence in its wake, compelling society to adapt at an unprecedented pace. Thus, one must ponder: is our reliance on technology enhancing our lives, or is it subtly undermining the very fabric of human interaction?",
+      "audioTranscript": null,
+      "questionText": "What is the author's attitude towards the impact of technology on human interaction?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "The author has a critical attitude towards technology's impact on human interaction.",
+      "rubricDimensions": [
+        "inference",
+        "understanding of nuanced meanings",
+        "evaluation of author's stance"
+      ],
+      "vietnameseL1Targets": [
+        "implicit meaning",
+        "nuanced register",
+        "cohesion"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:38:04.960Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 5453,
+        "tokensInput": 724,
+        "tokensOutput": 325,
+        "estimatedCostUsd": 0.000304
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8591,
+    "tokensInput": 1490,
+    "tokensOutput": 490,
+    "estimatedCostUsd": 0.000517,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"C1\", \"notes\": \"The item is at the C1 level, which is appropriate for the target CEFR.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful material.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is suitable for ages 13 and up.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content does not assume non-Vietnamese cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"implicit meaning\", \"nuanced register\"], \"notes\": \"The item does not effectively connect to useful Vietnamese L1 transfer evidence.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"The item is similar to an existing item, indicating a higher risk of duplication.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"inference\", \"understanding of nuanced meanings\", \"evaluation of author's stance\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The item is mobile-readable and user-friendly.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"The item does not connect to useful Vietnamese L1 transfer evidence.\", \"evidence\": \"vietnameseL1Targets field\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"duplicateRisk score\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "02205714-4d98-46ea-bc03-356858e628d0",
+      "generatedItemId": "e0a2e219-5414-4394-b2f6-4dd988642dc1",
+      "validatedAt": "2026-05-20T11:38:13.551Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item is at the C1 level, which is appropriate for the target CEFR.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is suitable for ages 13 and up."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "The item does not effectively connect to useful Vietnamese L1 transfer evidence.",
+        "matchedPatterns": [
+          "implicit meaning",
+          "nuanced register"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, indicating a higher risk of duplication.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "inference",
+          "understanding of nuanced meanings",
+          "evaluation of author's stance"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item is mobile-readable and user-friendly."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The item does not connect to useful Vietnamese L1 transfer evidence.",
+          "evidence": "vietnameseL1Targets field"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "duplicateRisk score"
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:38:13.551Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8591,
+        "tokensInput": 1490,
+        "tokensOutput": 490,
+        "estimatedCostUsd": 0.000517
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "The item does not connect to useful Vietnamese L1 transfer evidence.",
+      "evidence": "vietnameseL1Targets field"
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "duplicateRisk score"
+    }
+  ]
+}

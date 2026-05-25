@@ -1,0 +1,140 @@
+{
+  "isoTimestamp": "2026-05-20T11:36:28.521Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 0,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 4543,
+    "tokensInput": 724,
+    "tokensOutput": 241,
+    "estimatedCostUsd": 0.000253,
+    "rawGeneratedItem": "{\n  \"title\": \"Daily Routine\",\n  \"modality\": \"reading\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"main idea\",\n  \"difficultyConstraints\": [\"very short\", \"literal meaning only\", \"everyday topic\"],\n  \"promptText\": \"Read the passage and answer the question.\",\n  \"passageText\": \"Every day, Anna wakes up at 7 AM. She eats breakfast and goes to school. At school, she studies math and English. After school, she plays soccer with her friends. Anna loves her daily routine.\",\n  \"audioTranscript\": null,\n  \"questionText\": \"What does Anna do after school?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"plays soccer with her friends\",\n  \"rubricDimensions\": [\"comprehension\", \"main idea identification\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"final consonants\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "f342d941-37e5-46f5-8311-4b86db7f6cad",
+      "title": "Daily Routine",
+      "modality": "reading",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "main idea",
+      "difficultyConstraints": [
+        "very short",
+        "literal meaning only",
+        "everyday topic"
+      ],
+      "promptText": "Read the passage and answer the question.",
+      "passageText": "Every day, Anna wakes up at 7 AM. She eats breakfast and goes to school. At school, she studies math and English. After school, she plays soccer with her friends. Anna loves her daily routine.",
+      "audioTranscript": null,
+      "questionText": "What does Anna do after school?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "plays soccer with her friends",
+      "rubricDimensions": [
+        "comprehension",
+        "main idea identification"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "final consonants"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:36:22.006Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 4543,
+        "tokensInput": 724,
+        "tokensOutput": 241,
+        "estimatedCostUsd": 0.000253
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 6513,
+    "tokensInput": 1373,
+    "tokensOutput": 336,
+    "estimatedCostUsd": 0.000408,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"accepted\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": true, \"predictedCefr\": \"A1\", \"notes\": \"The passage and question are appropriate for A1 level.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is safe and does not include harmful themes.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for learners aged 13 and above.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content does not assume specific cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"subject-verb agreement\", \"final consonants\"], \"notes\": \"Targets relevant Vietnamese L1 transfer patterns.\" },\n  \"duplicateRisk\": { \"score\": 0.0, \"pass\": true, \"nearestItemIds\": [], \"notes\": \"No duplicate items found.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"comprehension\", \"main idea identification\"], \"notes\": \"Compatible with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is easily usable on mobile devices.\" },\n  \"rejectionReasons\": []\n}",
+    "parsedValidation": {
+      "id": "193ac7e4-1c13-4663-b39c-51067c610789",
+      "generatedItemId": "f342d941-37e5-46f5-8311-4b86db7f6cad",
+      "validatedAt": "2026-05-20T11:36:28.521Z",
+      "finalDecision": "accepted",
+      "cefrFit": {
+        "score": 1,
+        "pass": true,
+        "notes": "The passage and question are appropriate for A1 level.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is safe and does not include harmful themes."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content does not assume specific cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Targets relevant Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "final consonants"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0,
+        "pass": true,
+        "notes": "No duplicate items found.",
+        "nearestItemIds": []
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with the rubric dimensions.",
+        "supportedDimensions": [
+          "comprehension",
+          "main idea identification"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is easily usable on mobile devices."
+      },
+      "rejectionReasons": [],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:36:28.521Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 6513,
+        "tokensInput": 1373,
+        "tokensOutput": 336,
+        "estimatedCostUsd": 0.000408
+      }
+    }
+  },
+  "finalDecision": "accepted",
+  "rejectionReasons": []
+}

@@ -1,0 +1,154 @@
+{
+  "isoTimestamp": "2026-05-20T11:30:00.273Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 4,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 5089,
+    "tokensInput": 726,
+    "tokensOutput": 273,
+    "estimatedCostUsd": 0.000273,
+    "rawGeneratedItem": "{\n  \"title\": \"Understanding a New Hobby\",\n  \"modality\": \"reading\",\n  \"targetCefr\": \"B1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"detail extraction\",\n  \"difficultyConstraints\": [\"connected familiar topic; basic inference; some distractor resistance\"],\n  \"promptText\": \"Read the passage and answer the question.\",\n  \"passageText\": \"Many people enjoy different hobbies in their free time. Some like painting, while others prefer sports. One popular hobby is gardening. It allows people to connect with nature and grow their own plants. Gardening can be relaxing and rewarding. People often share their gardening tips and experiences with friends, making it a social activity too.\",\n  \"audioTranscript\": null,\n  \"questionText\": \"What are two benefits of gardening mentioned in the passage?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"It connects people with nature and can be relaxing.\",\n  \"rubricDimensions\": [\"detail extraction\", \"comprehension\", \"inference\"],\n  \"vietnameseL1Targets\": [\"literal Vietnamese calques\", \"subject-verb agreement\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "c02d7266-a6cc-4a75-851f-9032f06a1c0d",
+      "title": "Understanding a New Hobby",
+      "modality": "reading",
+      "targetCefr": "B1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "detail extraction",
+      "difficultyConstraints": [
+        "connected familiar topic; basic inference; some distractor resistance"
+      ],
+      "promptText": "Read the passage and answer the question.",
+      "passageText": "Many people enjoy different hobbies in their free time. Some like painting, while others prefer sports. One popular hobby is gardening. It allows people to connect with nature and grow their own plants. Gardening can be relaxing and rewarding. People often share their gardening tips and experiences with friends, making it a social activity too.",
+      "audioTranscript": null,
+      "questionText": "What are two benefits of gardening mentioned in the passage?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "It connects people with nature and can be relaxing.",
+      "rubricDimensions": [
+        "detail extraction",
+        "comprehension",
+        "inference"
+      ],
+      "vietnameseL1Targets": [
+        "literal Vietnamese calques",
+        "subject-verb agreement"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:29:52.516Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 5089,
+        "tokensInput": 726,
+        "tokensOutput": 273,
+        "estimatedCostUsd": 0.000273
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 7757,
+    "tokensInput": 1439,
+    "tokensOutput": 401,
+    "estimatedCostUsd": 0.000456,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": true, \"predictedCefr\": \"B1\", \"notes\": \"The passage and question align with B1 level expectations.\" },\n  \"safety\": { \"score\": 0.0, \"pass\": true, \"notes\": \"Content is safe and non-harmful.\" },\n  \"ageAppropriateness\": { \"score\": 0.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 0.0, \"pass\": true, \"notes\": \"No cultural assumptions present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"subject-verb agreement\"], \"notes\": \"While there is a relevant target, it is not strongly testable in this context.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"Content is similar to an existing item.\" },\n  \"rubricCompatibility\": { \"score\": 0.0, \"pass\": true, \"supportedDimensions\": [\"detail extraction\", \"comprehension\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 0.0, \"pass\": true, \"notes\": \"Usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"Content is materially similar to an existing item.\", \"evidence\": \"Similar prompt structure and question type.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "252cba9b-bd6b-4f94-8b77-a8c5347e9d05",
+      "generatedItemId": "c02d7266-a6cc-4a75-851f-9032f06a1c0d",
+      "validatedAt": "2026-05-20T11:30:00.273Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": true,
+        "notes": "The passage and question align with B1 level expectations.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is safe and non-harmful."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "No cultural assumptions present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there is a relevant target, it is not strongly testable in this context.",
+        "matchedPatterns": [
+          "subject-verb agreement"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "Content is similar to an existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "detail extraction",
+          "comprehension"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "Content is materially similar to an existing item.",
+          "evidence": "Similar prompt structure and question type."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:30:00.273Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7757,
+        "tokensInput": 1439,
+        "tokensOutput": 401,
+        "estimatedCostUsd": 0.000456
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "Content is materially similar to an existing item.",
+      "evidence": "Similar prompt structure and question type."
+    }
+  ]
+}

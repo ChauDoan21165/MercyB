@@ -1,0 +1,172 @@
+{
+  "isoTimestamp": "2026-05-20T11:37:31.256Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 5,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 3481,
+    "tokensInput": 730,
+    "tokensOutput": 235,
+    "estimatedCostUsd": 0.00025,
+    "rawGeneratedItem": "{\n  \"title\": \"Describe Your Weekend\",\n  \"modality\": \"writing\",\n  \"targetCefr\": \"B1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"task achievement\",\n  \"difficultyConstraints\": [\"connected familiar topic\", \"basic inference\", \"some distractor resistance\"],\n  \"promptText\": \"Write a short paragraph about what you did last weekend. Include details about where you went, who you were with, and what activities you did.\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"A coherent paragraph that describes activities, includes specific details, and uses appropriate past tense verbs.\",\n  \"rubricDimensions\": [\"task achievement\", \"coherence\", \"grammar and vocabulary\"],\n  \"vietnameseL1Targets\": [\"tense marking\", \"subject-verb agreement\", \"cohesion\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "a16ab4b3-f49f-4eb6-a6ae-45132debf0e5",
+      "title": "Describe Your Weekend",
+      "modality": "writing",
+      "targetCefr": "B1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "task achievement",
+      "difficultyConstraints": [
+        "connected familiar topic",
+        "basic inference",
+        "some distractor resistance"
+      ],
+      "promptText": "Write a short paragraph about what you did last weekend. Include details about where you went, who you were with, and what activities you did.",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "A coherent paragraph that describes activities, includes specific details, and uses appropriate past tense verbs.",
+      "rubricDimensions": [
+        "task achievement",
+        "coherence",
+        "grammar and vocabulary"
+      ],
+      "vietnameseL1Targets": [
+        "tense marking",
+        "subject-verb agreement",
+        "cohesion"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:37:22.427Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 3481,
+        "tokensInput": 730,
+        "tokensOutput": 235,
+        "estimatedCostUsd": 0.00025
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8829,
+    "tokensInput": 1401,
+    "tokensOutput": 526,
+    "estimatedCostUsd": 0.000526,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": true, \"predictedCefr\": \"B1\", \"notes\": \"The item fits the B1 level as it requires connected familiar topics and basic inference.\" },\n  \"safety\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful material.\" },\n  \"ageAppropriateness\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The prompt is suitable for learners aged 13 and above.\" },\n  \"culturalNeutrality\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The prompt does not assume non-Vietnamese cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"tense marking\", \"subject-verb agreement\", \"cohesion\"], \"notes\": \"While it targets relevant patterns, the expected answer lacks specificity in addressing Vietnamese L1 transfer.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"The item is similar to an existing item, increasing the risk of duplication.\" },\n  \"rubricCompatibility\": { \"score\": 0.0, \"pass\": true, \"supportedDimensions\": [\"task achievement\", \"coherence\", \"grammar and vocabulary\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The prompt is clear and usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"The expected answer does not sufficiently connect to Vietnamese L1 transfer evidence.\", \"evidence\": \"Expected answer lacks specificity in addressing Vietnamese L1 transfer.\" },\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"Nearest item ID: f342d941-37e5-46f5-8311-4b86db7f6cad\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "64c512ff-46ea-4682-8f37-1c98fd1ce103",
+      "generatedItemId": "a16ab4b3-f49f-4eb6-a6ae-45132debf0e5",
+      "validatedAt": "2026-05-20T11:37:31.256Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item fits the B1 level as it requires connected familiar topics and basic inference.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "The prompt is suitable for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "The prompt does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While it targets relevant patterns, the expected answer lacks specificity in addressing Vietnamese L1 transfer.",
+        "matchedPatterns": [
+          "tense marking",
+          "subject-verb agreement",
+          "cohesion"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, increasing the risk of duplication.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "task achievement",
+          "coherence",
+          "grammar and vocabulary"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "The prompt is clear and usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The expected answer does not sufficiently connect to Vietnamese L1 transfer evidence.",
+          "evidence": "Expected answer lacks specificity in addressing Vietnamese L1 transfer."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "Nearest item ID: f342d941-37e5-46f5-8311-4b86db7f6cad"
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:37:31.256Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8829,
+        "tokensInput": 1401,
+        "tokensOutput": 526,
+        "estimatedCostUsd": 0.000526
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "The expected answer does not sufficiently connect to Vietnamese L1 transfer evidence.",
+      "evidence": "Expected answer lacks specificity in addressing Vietnamese L1 transfer."
+    },
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "Nearest item ID: f342d941-37e5-46f5-8311-4b86db7f6cad"
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "isoTimestamp": "2026-05-20T11:34:08.008Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 21,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 4654,
+    "tokensInput": 731,
+    "tokensOutput": 248,
+    "estimatedCostUsd": 0.000258,
+    "rawGeneratedItem": "{\n  \"title\": \"Nuanced Article Usage in Context\",\n  \"modality\": \"writing\",\n  \"targetCefr\": \"C1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"articles and tense\",\n  \"difficultyConstraints\": [\"implicit stance; nuanced register; dense but mobile-readable\"],\n  \"promptText\": \"Write a short paragraph discussing the importance of learning a second language. Use articles correctly and vary your tenses to express different ideas. Consider how your experience as a Vietnamese speaker influences your perspective.\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"A well-structured paragraph demonstrating correct article usage and appropriate tense variations, reflecting a nuanced understanding of the topic.\",\n  \"rubricDimensions\": [\"coherence\", \"grammar\", \"vocabulary\", \"task achievement\"],\n  \"vietnameseL1Targets\": [\"article usage\", \"tense marking\", \"coherence\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "de539bf4-8361-4ba5-bc40-806a1627c872",
+      "title": "Nuanced Article Usage in Context",
+      "modality": "writing",
+      "targetCefr": "C1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "articles and tense",
+      "difficultyConstraints": [
+        "implicit stance; nuanced register; dense but mobile-readable"
+      ],
+      "promptText": "Write a short paragraph discussing the importance of learning a second language. Use articles correctly and vary your tenses to express different ideas. Consider how your experience as a Vietnamese speaker influences your perspective.",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "A well-structured paragraph demonstrating correct article usage and appropriate tense variations, reflecting a nuanced understanding of the topic.",
+      "rubricDimensions": [
+        "coherence",
+        "grammar",
+        "vocabulary",
+        "task achievement"
+      ],
+      "vietnameseL1Targets": [
+        "article usage",
+        "tense marking",
+        "coherence"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:34:00.005Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 4654,
+        "tokensInput": 731,
+        "tokensOutput": 248,
+        "estimatedCostUsd": 0.000258
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8003,
+    "tokensInput": 1412,
+    "tokensOutput": 449,
+    "estimatedCostUsd": 0.000481,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"C1\", \"notes\": \"The predicted CEFR level is too high for the target audience.\" },\n  \"safety\": { \"score\": 0.0, \"pass\": true, \"notes\": \"No harmful content present.\" },\n  \"ageAppropriateness\": { \"score\": 0.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 0.0, \"pass\": true, \"notes\": \"No cultural assumptions present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": true, \"matchedPatterns\": [\"article usage\", \"tense marking\"], \"notes\": \"Relevant Vietnamese-L1 transfer patterns identified.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"Duplicate risk is high due to similarity in task structure.\" },\n  \"rubricCompatibility\": { \"score\": 0.0, \"pass\": true, \"supportedDimensions\": [\"coherence\", \"grammar\", \"vocabulary\", \"task achievement\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 0.0, \"pass\": true, \"notes\": \"Content is mobile-readable.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_hard\", \"severity\": \"high\", \"message\": \"The predicted CEFR level is too high for the target audience.\", \"evidence\": \"targetCefr: 'C1'\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"Content is similar to existing items.\", \"evidence\": \"duplicateRisk.score: 0.5\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "1e93dd56-9240-4717-a399-50b2f1c4bdfc",
+      "generatedItemId": "de539bf4-8361-4ba5-bc40-806a1627c872",
+      "validatedAt": "2026-05-20T11:34:08.008Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The predicted CEFR level is too high for the target audience.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": true,
+        "notes": "No cultural assumptions present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": true,
+        "notes": "Relevant Vietnamese-L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "article usage",
+          "tense marking"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity in task structure.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "coherence",
+          "grammar",
+          "vocabulary",
+          "task achievement"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is mobile-readable."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_hard",
+          "severity": "high",
+          "message": "The predicted CEFR level is too high for the target audience.",
+          "evidence": "targetCefr: 'C1'"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "Content is similar to existing items.",
+          "evidence": "duplicateRisk.score: 0.5"
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:34:08.008Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8003,
+        "tokensInput": 1412,
+        "tokensOutput": 449,
+        "estimatedCostUsd": 0.000481
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_hard",
+      "severity": "high",
+      "message": "The predicted CEFR level is too high for the target audience.",
+      "evidence": "targetCefr: 'C1'"
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "Content is similar to existing items.",
+      "evidence": "duplicateRisk.score: 0.5"
+    }
+  ]
+}

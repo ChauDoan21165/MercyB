@@ -1,0 +1,158 @@
+{
+  "isoTimestamp": "2026-05-20T11:39:21.415Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 13,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 4710,
+    "tokensInput": 727,
+    "tokensOutput": 220,
+    "estimatedCostUsd": 0.000241,
+    "rawGeneratedItem": "{\n  \"title\": \"Daily Routine Description\",\n  \"modality\": \"writing\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"coherence\",\n  \"difficultyConstraints\": [\"very short; literal meaning only; everyday topic\"],\n  \"promptText\": \"Write 3 sentences about your daily routine. Use simple words.\",\n  \"passageText\": null,\n  \"audioTranscript\": null,\n  \"questionText\": null,\n  \"questionType\": \"open_response\",\n  \"options\": null,\n  \"expectedAnswer\": \"The answer should include 3 clear sentences about daily activities, such as waking up, going to school, and eating dinner.\",\n  \"rubricDimensions\": [\"task achievement\", \"coherence\", \"grammar\"],\n  \"vietnameseL1Targets\": [\"subject-verb agreement\", \"final consonants\", \"simple sentence structure\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "36acf8bc-368e-4558-b06e-671acc1dae78",
+      "title": "Daily Routine Description",
+      "modality": "writing",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "coherence",
+      "difficultyConstraints": [
+        "very short; literal meaning only; everyday topic"
+      ],
+      "promptText": "Write 3 sentences about your daily routine. Use simple words.",
+      "passageText": null,
+      "audioTranscript": null,
+      "questionText": null,
+      "questionType": "open_response",
+      "options": null,
+      "expectedAnswer": "The answer should include 3 clear sentences about daily activities, such as waking up, going to school, and eating dinner.",
+      "rubricDimensions": [
+        "task achievement",
+        "coherence",
+        "grammar"
+      ],
+      "vietnameseL1Targets": [
+        "subject-verb agreement",
+        "final consonants",
+        "simple sentence structure"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:39:14.044Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 4710,
+        "tokensInput": 727,
+        "tokensOutput": 220,
+        "estimatedCostUsd": 0.000241
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 7371,
+    "tokensInput": 1379,
+    "tokensOutput": 450,
+    "estimatedCostUsd": 0.000477,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": false, \"predictedCefr\": \"A1\", \"notes\": \"The item fits the A1 level as it requires very simple sentences.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful material.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is appropriate for learners aged 13 and above.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The prompt does not assume specific cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"subject-verb agreement\", \"final consonants\", \"simple sentence structure\"], \"notes\": \"The item targets relevant Vietnamese L1 transfer patterns.\" },\n  \"duplicateRisk\": { \"score\": 0.8, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"The item is similar to an existing item about daily routines.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"task achievement\", \"coherence\", \"grammar\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The prompt is usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"Similar to existing item ID f342d941-37e5-46f5-8311-4b86db7f6cad\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "900bf7db-8700-4b72-b841-cb2c7968a998",
+      "generatedItemId": "36acf8bc-368e-4558-b06e-671acc1dae78",
+      "validatedAt": "2026-05-20T11:39:21.415Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits the A1 level as it requires very simple sentences.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is appropriate for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt does not assume specific cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item targets relevant Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "subject-verb agreement",
+          "final consonants",
+          "simple sentence structure"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.8,
+        "pass": false,
+        "notes": "The item is similar to an existing item about daily routines.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "task achievement",
+          "coherence",
+          "grammar"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The prompt is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "Similar to existing item ID f342d941-37e5-46f5-8311-4b86db7f6cad"
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:39:21.415Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7371,
+        "tokensInput": 1379,
+        "tokensOutput": 450,
+        "estimatedCostUsd": 0.000477
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "Similar to existing item ID f342d941-37e5-46f5-8311-4b86db7f6cad"
+    }
+  ]
+}

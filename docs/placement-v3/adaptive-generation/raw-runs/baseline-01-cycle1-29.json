@@ -1,0 +1,170 @@
+{
+  "isoTimestamp": "2026-05-20T11:35:46.884Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 28,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 6230,
+    "tokensInput": 726,
+    "tokensOutput": 281,
+    "estimatedCostUsd": 0.000277,
+    "rawGeneratedItem": "{\n  \"title\": \"Understanding a Local Festival\",\n  \"modality\": \"reading\",\n  \"targetCefr\": \"B1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"detail extraction\",\n  \"difficultyConstraints\": [\"connected familiar topic; basic inference; some distractor resistance\"],\n  \"promptText\": \"Read the passage and answer the question.\",\n  \"passageText\": \"Every year, the Mid-Autumn Festival is celebrated in Vietnam. Families gather to enjoy mooncakes and admire the full moon. Children often carry colorful lanterns and participate in traditional games. This festival symbolizes reunion and happiness among family members. Many people also tell stories about the moon and its significance in Vietnamese culture.\",\n  \"audioTranscript\": null,\n  \"questionText\": \"What do families do during the Mid-Autumn Festival?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"Families gather to enjoy mooncakes and admire the full moon.\",\n  \"rubricDimensions\": [\"detail extraction\", \"comprehension\", \"cohesion\"],\n  \"vietnameseL1Targets\": [\"literal Vietnamese calques\", \"subject-verb agreement\", \"prepositions\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "27150733-1941-47eb-ae6c-f65eb93ff67b",
+      "title": "Understanding a Local Festival",
+      "modality": "reading",
+      "targetCefr": "B1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "detail extraction",
+      "difficultyConstraints": [
+        "connected familiar topic; basic inference; some distractor resistance"
+      ],
+      "promptText": "Read the passage and answer the question.",
+      "passageText": "Every year, the Mid-Autumn Festival is celebrated in Vietnam. Families gather to enjoy mooncakes and admire the full moon. Children often carry colorful lanterns and participate in traditional games. This festival symbolizes reunion and happiness among family members. Many people also tell stories about the moon and its significance in Vietnamese culture.",
+      "audioTranscript": null,
+      "questionText": "What do families do during the Mid-Autumn Festival?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "Families gather to enjoy mooncakes and admire the full moon.",
+      "rubricDimensions": [
+        "detail extraction",
+        "comprehension",
+        "cohesion"
+      ],
+      "vietnameseL1Targets": [
+        "literal Vietnamese calques",
+        "subject-verb agreement",
+        "prepositions"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:35:37.756Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 6230,
+        "tokensInput": 726,
+        "tokensOutput": 281,
+        "estimatedCostUsd": 0.000277
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 9128,
+    "tokensInput": 1443,
+    "tokensOutput": 477,
+    "estimatedCostUsd": 0.000503,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": true, \"predictedCefr\": \"B1\", \"notes\": \"The passage and question align with B1 level expectations.\" },\n  \"safety\": { \"score\": 0.0, \"pass\": true, \"notes\": \"Content is safe and appropriate.\" },\n  \"ageAppropriateness\": { \"score\": 0.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 0.0, \"pass\": false, \"notes\": \"The passage assumes knowledge of Vietnamese culture, which may not be familiar to all learners.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": true, \"matchedPatterns\": [\"literal Vietnamese calques\", \"subject-verb agreement\", \"prepositions\"], \"notes\": \"The item connects to relevant Vietnamese L1 transfer patterns.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"The item is similar to an existing item about daily routines.\" },\n  \"rubricCompatibility\": { \"score\": 0.0, \"pass\": true, \"supportedDimensions\": [\"detail extraction\", \"comprehension\", \"cohesion\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 0.0, \"pass\": true, \"notes\": \"The format is usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"culturally_awkward\", \"severity\": \"medium\", \"message\": \"Cultural assumptions may not be universally understood.\", \"evidence\": \"The passage discusses a specific Vietnamese festival.\" },\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"Similar structure and question type to existing item.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "aae5e7ac-5c69-4b02-8201-3bb85c8f0c6d",
+      "generatedItemId": "27150733-1941-47eb-ae6c-f65eb93ff67b",
+      "validatedAt": "2026-05-20T11:35:46.884Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": true,
+        "notes": "The passage and question align with B1 level expectations.",
+        "predictedCefr": "B1"
+      },
+      "safety": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is safe and appropriate."
+      },
+      "ageAppropriateness": {
+        "score": 0,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 0,
+        "pass": false,
+        "notes": "The passage assumes knowledge of Vietnamese culture, which may not be familiar to all learners."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item connects to relevant Vietnamese L1 transfer patterns.",
+        "matchedPatterns": [
+          "literal Vietnamese calques",
+          "subject-verb agreement",
+          "prepositions"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item about daily routines.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 0,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "detail extraction",
+          "comprehension",
+          "cohesion"
+        ]
+      },
+      "learnerUsability": {
+        "score": 0,
+        "pass": true,
+        "notes": "The format is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "culturally_awkward",
+          "severity": "medium",
+          "message": "Cultural assumptions may not be universally understood.",
+          "evidence": "The passage discusses a specific Vietnamese festival."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "Similar structure and question type to existing item."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:35:46.884Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9128,
+        "tokensInput": 1443,
+        "tokensOutput": 477,
+        "estimatedCostUsd": 0.000503
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "culturally_awkward",
+      "severity": "medium",
+      "message": "Cultural assumptions may not be universally understood.",
+      "evidence": "The passage discusses a specific Vietnamese festival."
+    },
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "Similar structure and question type to existing item."
+    }
+  ]
+}

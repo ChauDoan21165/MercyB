@@ -1,0 +1,170 @@
+{
+  "isoTimestamp": "2026-05-20T11:36:53.239Z",
+  "batchId": "tuned-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 2,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 3873,
+    "tokensInput": 731,
+    "tokensOutput": 222,
+    "estimatedCostUsd": 0.000243,
+    "rawGeneratedItem": "{\n  \"title\": \"Listening Item A1 - Speaker Attitude\",\n  \"modality\": \"listening\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"speaker attitude\",\n  \"difficultyConstraints\": [\"very short\", \"literal meaning only\", \"everyday topic\"],\n  \"promptText\": \"Listen to the speaker and say how they feel about the weather.\",\n  \"passageText\": null,\n  \"audioTranscript\": \"It's a beautiful sunny day. I love this weather!\",\n  \"questionText\": \"How does the speaker feel about the weather?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"happy\",\n  \"rubricDimensions\": [\"listening comprehension\", \"speaker attitude recognition\"],\n  \"vietnameseL1Targets\": [\"intonation\", \"copula be\", \"subject-verb agreement\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "aa48651e-a4fd-4a65-b465-a42653d6b37f",
+      "title": "Listening Item A1 - Speaker Attitude",
+      "modality": "listening",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "speaker attitude",
+      "difficultyConstraints": [
+        "very short",
+        "literal meaning only",
+        "everyday topic"
+      ],
+      "promptText": "Listen to the speaker and say how they feel about the weather.",
+      "passageText": null,
+      "audioTranscript": "It's a beautiful sunny day. I love this weather!",
+      "questionText": "How does the speaker feel about the weather?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "happy",
+      "rubricDimensions": [
+        "listening comprehension",
+        "speaker attitude recognition"
+      ],
+      "vietnameseL1Targets": [
+        "intonation",
+        "copula be",
+        "subject-verb agreement"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:36:44.436Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 3873,
+        "tokensInput": 731,
+        "tokensOutput": 222,
+        "estimatedCostUsd": 0.000243
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 8803,
+    "tokensInput": 1384,
+    "tokensOutput": 517,
+    "estimatedCostUsd": 0.000518,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": false, \"predictedCefr\": \"A1\", \"notes\": \"The item fits the A1 level as it uses very familiar words and simple tasks.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is safe and does not include harmful material.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content is appropriate for learners aged 13 and above.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The content does not assume non-Vietnamese cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"intonation\", \"copula be\", \"subject-verb agreement\"], \"notes\": \"While there are relevant patterns, the item does not effectively test them.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"f342d941-37e5-46f5-8311-4b86db7f6cad\"], \"notes\": \"The item is similar to an existing item, posing a duplicate risk.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"listening comprehension\", \"speaker attitude recognition\"], \"notes\": \"The item aligns with the rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"The item is usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"The item does not effectively test relevant Vietnamese L1 transfer patterns.\", \"evidence\": \"The expected answer does not connect to the identified L1 targets.\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"Similar to existing item ID f342d941-37e5-46f5-8311-4b86db7f6cad.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "38dab389-ea3a-4808-aaeb-2e2ef3cb97cf",
+      "generatedItemId": "aa48651e-a4fd-4a65-b465-a42653d6b37f",
+      "validatedAt": "2026-05-20T11:36:53.239Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits the A1 level as it uses very familiar words and simple tasks.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is safe and does not include harmful material."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content is appropriate for learners aged 13 and above."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "The content does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there are relevant patterns, the item does not effectively test them.",
+        "matchedPatterns": [
+          "intonation",
+          "copula be",
+          "subject-verb agreement"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "The item is similar to an existing item, posing a duplicate risk.",
+        "nearestItemIds": [
+          "f342d941-37e5-46f5-8311-4b86db7f6cad"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item aligns with the rubric dimensions.",
+        "supportedDimensions": [
+          "listening comprehension",
+          "speaker attitude recognition"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "The item is usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "The item does not effectively test relevant Vietnamese L1 transfer patterns.",
+          "evidence": "The expected answer does not connect to the identified L1 targets."
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "Similar to existing item ID f342d941-37e5-46f5-8311-4b86db7f6cad."
+        }
+      ],
+      "metadata": {
+        "batchId": "tuned-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:36:53.239Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 8803,
+        "tokensInput": 1384,
+        "tokensOutput": 517,
+        "estimatedCostUsd": 0.000518
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "The item does not effectively test relevant Vietnamese L1 transfer patterns.",
+      "evidence": "The expected answer does not connect to the identified L1 targets."
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "Similar to existing item ID f342d941-37e5-46f5-8311-4b86db7f6cad."
+    }
+  ]
+}

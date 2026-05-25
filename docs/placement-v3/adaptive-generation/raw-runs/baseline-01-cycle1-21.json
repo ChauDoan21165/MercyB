@@ -1,0 +1,183 @@
+{
+  "isoTimestamp": "2026-05-20T11:33:55.351Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 20,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 7166,
+    "tokensInput": 724,
+    "tokensOutput": 328,
+    "estimatedCostUsd": 0.000305,
+    "rawGeneratedItem": "{\n  \"title\": \"Understanding Nuanced Perspectives\",\n  \"modality\": \"reading\",\n  \"targetCefr\": \"C1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"inference\",\n  \"difficultyConstraints\": [\"implicit stance\", \"nuanced register\", \"dense but mobile-readable\"],\n  \"promptText\": \"Read the passage and infer the author's underlying perspective.\",\n  \"passageText\": \"In contemporary discussions about environmental sustainability, it is often observed that while many advocate for immediate action, a significant number of stakeholders prioritize economic growth over ecological concerns. This dichotomy raises questions about the efficacy of proposed solutions, suggesting that a mere shift in policy may not suffice without a fundamental change in societal values. The challenge, therefore, lies not only in implementing effective measures but also in fostering a collective consciousness that values long-term ecological stability over short-term gains.\",\n  \"audioTranscript\": null,\n  \"questionText\": \"What can be inferred about the author's view on the relationship between economic growth and environmental sustainability?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"The author believes that economic growth often takes precedence over environmental sustainability, and that a change in societal values is necessary for effective solutions.\",\n  \"rubricDimensions\": [\"inference\", \"nuance\", \"register\"],\n  \"vietnameseL1Targets\": [\"implicit meaning\", \"nuanced register\", \"cohesion\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "f41d9448-ab39-4474-8301-53afa90af10c",
+      "title": "Understanding Nuanced Perspectives",
+      "modality": "reading",
+      "targetCefr": "C1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "inference",
+      "difficultyConstraints": [
+        "implicit stance",
+        "nuanced register",
+        "dense but mobile-readable"
+      ],
+      "promptText": "Read the passage and infer the author's underlying perspective.",
+      "passageText": "In contemporary discussions about environmental sustainability, it is often observed that while many advocate for immediate action, a significant number of stakeholders prioritize economic growth over ecological concerns. This dichotomy raises questions about the efficacy of proposed solutions, suggesting that a mere shift in policy may not suffice without a fundamental change in societal values. The challenge, therefore, lies not only in implementing effective measures but also in fostering a collective consciousness that values long-term ecological stability over short-term gains.",
+      "audioTranscript": null,
+      "questionText": "What can be inferred about the author's view on the relationship between economic growth and environmental sustainability?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "The author believes that economic growth often takes precedence over environmental sustainability, and that a change in societal values is necessary for effective solutions.",
+      "rubricDimensions": [
+        "inference",
+        "nuance",
+        "register"
+      ],
+      "vietnameseL1Targets": [
+        "implicit meaning",
+        "nuanced register",
+        "cohesion"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:33:45.742Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 7166,
+        "tokensInput": 724,
+        "tokensOutput": 328,
+        "estimatedCostUsd": 0.000305
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 9609,
+    "tokensInput": 1492,
+    "tokensOutput": 547,
+    "estimatedCostUsd": 0.000552,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 0.0, \"pass\": false, \"predictedCefr\": \"C1\", \"notes\": \"The predicted CEFR level is appropriate for the target, but the complexity may exceed the expected learner capabilities.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No harmful content present.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content does not assume non-Vietnamese cultural knowledge.\" },\n  \"vietnameseL1Relevance\": { \"score\": 0.0, \"pass\": false, \"matchedPatterns\": [\"implicit meaning\", \"nuanced register\"], \"notes\": \"While there are relevant patterns, the complexity of the task may not effectively target Vietnamese L1 transfer.\" },\n  \"duplicateRisk\": { \"score\": 0.5, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"Duplicate risk is high due to similarity in task structure.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"inference\", \"nuance\", \"register\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is mobile-readable and usable for learners.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_hard\", \"severity\": \"medium\", \"message\": \"The complexity of the task may exceed learner capabilities.\", \"evidence\": \"C1 level complexity\" },\n    { \"code\": \"duplicate\", \"severity\": \"medium\", \"message\": \"Materially similar to existing item.\", \"evidence\": \"Similar task structure to existing item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\" },\n    { \"code\": \"poor_vietnamese_l1_relevance\", \"severity\": \"medium\", \"message\": \"Complexity may not effectively target Vietnamese L1 transfer.\", \"evidence\": \"Implicit meaning and nuanced register may not be testable.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "c61a95e5-a4f7-4512-9cc8-8bc2c469fa00",
+      "generatedItemId": "f41d9448-ab39-4474-8301-53afa90af10c",
+      "validatedAt": "2026-05-20T11:33:55.351Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 0,
+        "pass": false,
+        "notes": "The predicted CEFR level is appropriate for the target, but the complexity may exceed the expected learner capabilities.",
+        "predictedCefr": "C1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content does not assume non-Vietnamese cultural knowledge."
+      },
+      "vietnameseL1Relevance": {
+        "score": 0,
+        "pass": false,
+        "notes": "While there are relevant patterns, the complexity of the task may not effectively target Vietnamese L1 transfer.",
+        "matchedPatterns": [
+          "implicit meaning",
+          "nuanced register"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.5,
+        "pass": false,
+        "notes": "Duplicate risk is high due to similarity in task structure.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "inference",
+          "nuance",
+          "register"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is mobile-readable and usable for learners."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_hard",
+          "severity": "medium",
+          "message": "The complexity of the task may exceed learner capabilities.",
+          "evidence": "C1 level complexity"
+        },
+        {
+          "code": "duplicate",
+          "severity": "medium",
+          "message": "Materially similar to existing item.",
+          "evidence": "Similar task structure to existing item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        },
+        {
+          "code": "poor_vietnamese_l1_relevance",
+          "severity": "medium",
+          "message": "Complexity may not effectively target Vietnamese L1 transfer.",
+          "evidence": "Implicit meaning and nuanced register may not be testable."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:33:55.351Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9609,
+        "tokensInput": 1492,
+        "tokensOutput": 547,
+        "estimatedCostUsd": 0.000552
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_hard",
+      "severity": "medium",
+      "message": "The complexity of the task may exceed learner capabilities.",
+      "evidence": "C1 level complexity"
+    },
+    {
+      "code": "duplicate",
+      "severity": "medium",
+      "message": "Materially similar to existing item.",
+      "evidence": "Similar task structure to existing item ID 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+    },
+    {
+      "code": "poor_vietnamese_l1_relevance",
+      "severity": "medium",
+      "message": "Complexity may not effectively target Vietnamese L1 transfer.",
+      "evidence": "Implicit meaning and nuanced register may not be testable."
+    }
+  ]
+}

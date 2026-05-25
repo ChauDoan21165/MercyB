@@ -1,0 +1,170 @@
+{
+  "isoTimestamp": "2026-05-20T11:29:35.300Z",
+  "batchId": "baseline-01",
+  "cycle": 0,
+  "promptVersion": "a35-v1",
+  "tuningNote": "Baseline: generate one compact, gradable placement item with explicit Vietnamese-L1 diagnostic target.",
+  "candidateIndex": 2,
+  "generation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 4685,
+    "tokensInput": 731,
+    "tokensOutput": 230,
+    "estimatedCostUsd": 0.000248,
+    "rawGeneratedItem": "{\n  \"title\": \"Daily Routine\",\n  \"modality\": \"listening\",\n  \"targetCefr\": \"A1\",\n  \"learnerL1\": \"vi\",\n  \"targetLanguage\": \"en\",\n  \"skillFocus\": \"speaker attitude\",\n  \"difficultyConstraints\": [\"very short\", \"literal meaning only\", \"everyday topic\"],\n  \"promptText\": \"Listen to the speaker talk about their daily routine.\",\n  \"passageText\": null,\n  \"audioTranscript\": \"I wake up early every day. I feel happy when I start my day. I eat breakfast and go to school. I like my school.\",\n  \"questionText\": \"How does the speaker feel about starting their day?\",\n  \"questionType\": \"short_answer\",\n  \"options\": null,\n  \"expectedAnswer\": \"happy\",\n  \"rubricDimensions\": [\"listening comprehension\", \"speaker attitude recognition\"],\n  \"vietnameseL1Targets\": [\"intonation\", \"literal meaning\", \"copula be\"],\n  \"ageBand\": \"13+\",\n  \"estimatedResponseSeconds\": 45\n}",
+    "parsedItem": {
+      "id": "9141e000-8a52-4bd2-9809-58d99872f3fe",
+      "title": "Daily Routine",
+      "modality": "listening",
+      "targetCefr": "A1",
+      "learnerL1": "vi",
+      "targetLanguage": "en",
+      "skillFocus": "speaker attitude",
+      "difficultyConstraints": [
+        "very short",
+        "literal meaning only",
+        "everyday topic"
+      ],
+      "promptText": "Listen to the speaker talk about their daily routine.",
+      "passageText": null,
+      "audioTranscript": "I wake up early every day. I feel happy when I start my day. I eat breakfast and go to school. I like my school.",
+      "questionText": "How does the speaker feel about starting their day?",
+      "questionType": "short_answer",
+      "options": null,
+      "expectedAnswer": "happy",
+      "rubricDimensions": [
+        "listening comprehension",
+        "speaker attitude recognition"
+      ],
+      "vietnameseL1Targets": [
+        "intonation",
+        "literal meaning",
+        "copula be"
+      ],
+      "ageBand": "13+",
+      "estimatedResponseSeconds": 45,
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:29:26.295Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 4685,
+        "tokensInput": 731,
+        "tokensOutput": 230,
+        "estimatedCostUsd": 0.000248
+      }
+    }
+  },
+  "validation": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "latencyMs": 9005,
+    "tokensInput": 1396,
+    "tokensOutput": 473,
+    "estimatedCostUsd": 0.000493,
+    "rawValidatorResponse": "{\n  \"finalDecision\": \"rejected\",\n  \"cefrFit\": { \"score\": 1.0, \"pass\": false, \"predictedCefr\": \"A1\", \"notes\": \"The item fits A1 level but is too easy for the target audience.\" },\n  \"safety\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No harmful content present.\" },\n  \"ageAppropriateness\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Content is suitable for 13+.\" },\n  \"culturalNeutrality\": { \"score\": 1.0, \"pass\": true, \"notes\": \"No cultural assumptions present.\" },\n  \"vietnameseL1Relevance\": { \"score\": 1.0, \"pass\": true, \"matchedPatterns\": [\"intonation\", \"literal meaning\", \"copula be\"], \"notes\": \"Relevant Vietnamese L1 transfer patterns identified.\" },\n  \"duplicateRisk\": { \"score\": 0.9, \"pass\": false, \"nearestItemIds\": [\"7e73bb36-e64c-4f06-a8a5-8c2c130f7e40\"], \"notes\": \"High similarity to existing item.\" },\n  \"rubricCompatibility\": { \"score\": 1.0, \"pass\": true, \"supportedDimensions\": [\"listening comprehension\", \"speaker attitude recognition\"], \"notes\": \"Compatible with rubric dimensions.\" },\n  \"learnerUsability\": { \"score\": 1.0, \"pass\": true, \"notes\": \"Usable on mobile devices.\" },\n  \"rejectionReasons\": [\n    { \"code\": \"too_easy\", \"severity\": \"medium\", \"message\": \"The item is too easy for the target audience.\", \"evidence\": \"Predicted CEFR is A1, which is below the target.\" },\n    { \"code\": \"duplicate\", \"severity\": \"high\", \"message\": \"The item is materially similar to an existing item.\", \"evidence\": \"Nearest item ID is 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40.\" }\n  ]\n}",
+    "parsedValidation": {
+      "id": "7358f2ba-2ed1-49c1-a2d8-c6c5d2f7cab5",
+      "generatedItemId": "9141e000-8a52-4bd2-9809-58d99872f3fe",
+      "validatedAt": "2026-05-20T11:29:35.300Z",
+      "finalDecision": "rejected",
+      "cefrFit": {
+        "score": 1,
+        "pass": false,
+        "notes": "The item fits A1 level but is too easy for the target audience.",
+        "predictedCefr": "A1"
+      },
+      "safety": {
+        "score": 1,
+        "pass": true,
+        "notes": "No harmful content present."
+      },
+      "ageAppropriateness": {
+        "score": 1,
+        "pass": true,
+        "notes": "Content is suitable for 13+."
+      },
+      "culturalNeutrality": {
+        "score": 1,
+        "pass": true,
+        "notes": "No cultural assumptions present."
+      },
+      "vietnameseL1Relevance": {
+        "score": 1,
+        "pass": true,
+        "notes": "Relevant Vietnamese L1 transfer patterns identified.",
+        "matchedPatterns": [
+          "intonation",
+          "literal meaning",
+          "copula be"
+        ]
+      },
+      "duplicateRisk": {
+        "score": 0.9,
+        "pass": false,
+        "notes": "High similarity to existing item.",
+        "nearestItemIds": [
+          "7e73bb36-e64c-4f06-a8a5-8c2c130f7e40"
+        ]
+      },
+      "rubricCompatibility": {
+        "score": 1,
+        "pass": true,
+        "notes": "Compatible with rubric dimensions.",
+        "supportedDimensions": [
+          "listening comprehension",
+          "speaker attitude recognition"
+        ]
+      },
+      "learnerUsability": {
+        "score": 1,
+        "pass": true,
+        "notes": "Usable on mobile devices."
+      },
+      "rejectionReasons": [
+        {
+          "code": "too_easy",
+          "severity": "medium",
+          "message": "The item is too easy for the target audience.",
+          "evidence": "Predicted CEFR is A1, which is below the target."
+        },
+        {
+          "code": "duplicate",
+          "severity": "high",
+          "message": "The item is materially similar to an existing item.",
+          "evidence": "Nearest item ID is 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40."
+        }
+      ],
+      "metadata": {
+        "batchId": "baseline-01",
+        "cycle": 0,
+        "promptVersion": "a35-v1",
+        "generatedAt": "2026-05-20T11:29:35.300Z",
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "latencyMs": 9005,
+        "tokensInput": 1396,
+        "tokensOutput": 473,
+        "estimatedCostUsd": 0.000493
+      }
+    }
+  },
+  "finalDecision": "rejected",
+  "rejectionReasons": [
+    {
+      "code": "too_easy",
+      "severity": "medium",
+      "message": "The item is too easy for the target audience.",
+      "evidence": "Predicted CEFR is A1, which is below the target."
+    },
+    {
+      "code": "duplicate",
+      "severity": "high",
+      "message": "The item is materially similar to an existing item.",
+      "evidence": "Nearest item ID is 7e73bb36-e64c-4f06-a8a5-8c2c130f7e40."
+    }
+  ]
+}
