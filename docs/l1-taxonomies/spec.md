@@ -398,7 +398,7 @@ mapping is *which layer's source-of-truth the file becomes*, not "rewrite it".
 | `src/lib/feedback/rule-packs/vi/rules.ts` → `VN_RULES` ordered registry | `grammar.rules` (same order). |
 | `src/lib/feedback/rule-packs/vi/explanations.ts` → `VN_EXPLANATIONS` short-form | Merged into `grammar.explanations` (as the `shortForm` field). |
 | `src/lib/feedback/rule-pack-types.ts` → `L1RulePack` + `validateRulePack` | The `L1RulePack` shape is **subsumed** by `GrammarLayer` + `L1ProfileMetadata`. `validateRulePack` generalises into `validateL1Profile` (future work). |
-| `src/data/placement/vnL1Interference.ts` → `VN_L1_INTERFERENCE_PATTERNS` (37 entries) | `interference.patterns`. The `vietnameseRoot` field renames to `nativeRoot`. |
+| `src/data/placement/vnL1Interference.ts` → `VN_L1_INTERFERENCE_PATTERNS` (37 entries) | `interference.patterns`. The `vietnameseRoot` field renames to `nativeRoot`. `lessonTags` removed (moved to `lesson-routing-tags.ts` per §7 Q4). |
 | `docs/placement-vn-l1-interference-taxonomy.md` | Stays — narrative reference doc. The structured data moves into `interference`; the prose stays where it is and cites the same IDs. |
 | **C1** `docs/l1-taxonomies/vi-grammar.md` (shipped — 734 lines, 12 families, end-matter format note) | Becomes `grammar.families` via the mechanical transform C1's format note describes. Per-family `whyViL1` example glosses survive unchanged. Existing detector `grammar.rules` + `grammar.explanations` stay; families link to them via `ruleTags`. |
 | **C2** (upcoming `docs/l1-taxonomies/vi-writing.md`) | Populates `writing.patterns` (currently empty in v1). |
@@ -521,7 +521,7 @@ under a new import surface**, not rewrite.
 Schema published. No code changes. C1/C2/C3 author against this shape.
 
 ### Phase 1 — add the profile object, keep old exports
-- Two one-time codemods (locked in §0):
+- Three one-time codemods (locked in §0 + §7 Q4):
   1. `vnL1Interference.ts`: replace every `severity: 'med'` with
      `severity: 'medium'` (37 entries).
   2. ID namespace rename: kebab-case → snake_case across
@@ -529,6 +529,10 @@ Schema published. No code changes. C1/C2/C3 author against this shape.
      consumer that string-matches them. Keep a deprecation alias
      `getPatternByOldId(oldKebabId)` for one release if any external
      callers exist (grep shows none today; confirm at codemod time).
+  3. Remove `lessonTags` field from `InterferencePattern`; move
+     tag → `PhenomenonId` mappings to
+     `src/lib/l1-routing/lesson-routing-tags.ts` keyed on
+     `PhenomenonId`. Per §7 Q4 decision.
 - New file `src/lib/l1-profiles/vietnamese.ts` exports
   `vietnameseL1Profile: L1Profile` built **by re-exporting** the existing
   data:
