@@ -22,6 +22,7 @@ import {
   type AttemptRecord,
 } from '@/lib/pronunciation/sessionAttempts';
 import { captureWaveform, type Waveform } from '@/lib/pronunciation/audioComparison';
+import { recordPronunciationPhonemes } from '@/lib/stage-3a/adapters/pronunciation-recent';
 import { fetchCloudTtsUrl } from '@/lib/mercyVoice';
 import { isVoiceConfigured } from '@/config/mercyVoices';
 import { loadKidsLessonByKey } from './kidsDataLoader';
@@ -836,6 +837,7 @@ export function MercySpeakTab({
         transcript,
       }),
     );
+    recordPronunciationPhonemes(phonemes);
   }, [
     practiceText,
     transcript,
