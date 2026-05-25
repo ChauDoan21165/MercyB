@@ -60,6 +60,12 @@ import {
   type LearningEventProgressSummary,
 } from "@/lib/tutor/learningEventSummary";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
+import { detectL1Error } from "@/lib/feedback";
+import {
+  getDetectorHint,
+  hasShownHint,
+  type DetectorHintContent,
+} from "@/lib/ai-tutor/detectorHint";
 import ConversationMode, {
   type ConversationMessage,
   type MercyConversationMessage,
@@ -430,6 +436,7 @@ export default function AiTutorPage() {
   const [speakingMessageId, setSpeakingMessageId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<CorrectionResult | null>(null);
+  const [detectorHint, setDetectorHint] = useState<DetectorHintContent | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [practiceAnswer, setPracticeAnswer] = useState("");
   const [practiceFeedback, setPracticeFeedback] = useState<PracticeFeedback | null>(null);
@@ -606,6 +613,7 @@ export default function AiTutorPage() {
     setError(null);
     setLoading(true);
     setResult(null);
+    setDetectorHint(null);
     setPracticeAnswer("");
     setPracticeFeedback(null);
 
@@ -633,6 +641,28 @@ export default function AiTutorPage() {
       grammarTip: next.grammarTip[explainLanguage],
       practicePrompt: next.practicePrompt[explainLanguage],
     });
+
+    // Detector → chip surface (adult AI Tutor only; CorrectionMode is not
+    // mounted in the Mercy Kids surface). Runs AFTER setResult so the LLM-
+    // path response is on screen first; never blocks. The Vietnamese-L1
+    // detector applies only when the learner is studying English (the
+    // bilingual AI Tutor also serves Vietnamese-for-foreigners users on
+    // target === "vi" — chip does not fire for them).
+    if (target === "en") {
+      try {
+        const detection = detectL1Error({
+          userAnswer: trimmed,
+          expectedAnswer: corrected,
+        });
+        const hint = getDetectorHint(detection);
+        if (hint && !hasShownHint(hint.tag)) {
+          setDetectorHint(hint);
+        }
+      } catch {
+        /* detector failure is non-fatal — response already on screen */
+      }
+    }
+
     const lessonInsight = activeTodayLesson ? diagnoseVietlishLogicWithMatch(trimmed) : null;
     setTodayLessonLogicInsight(lessonInsight?.isKnownPattern ? lessonInsight : null);
     if (activeTodayLesson && lessonInsight?.isKnownPattern) {
@@ -928,6 +958,7 @@ export default function AiTutorPage() {
           onPracticeSubmit={handlePracticeSubmit}
           onClear={handleClear}
           tutorCopy={tutorCopy}
+          detectorHint={detectorHint}
         />
       ) : (
         <ConversationMode

@@ -5,6 +5,8 @@
 import type { TutorTurn } from "@/lib/tutor/tutorTypes";
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
+import DetectorHintChip from "@/components/ai-tutor/DetectorHintChip";
+import type { DetectorHintContent } from "@/lib/ai-tutor/detectorHint";
 
 type CorrectionResult = TutorTurn & {
   grammarTip: string;
@@ -40,6 +42,13 @@ type Props = {
   onPracticeSubmit: () => void;
   onClear: () => void;
   tutorCopy: TutorCopy;
+  /**
+   * Chip content for the L1 pattern-awareness surface, gated upstream
+   * by severity + session-dedup (see lib/ai-tutor/detectorHint.ts).
+   * Null → chip not rendered. Adult-tier AI Tutor only — this
+   * component is not mounted from the Mercy Kids surface.
+   */
+  detectorHint?: DetectorHintContent | null;
 };
 
 export default function CorrectionMode({
@@ -65,6 +74,7 @@ export default function CorrectionMode({
   onPracticeSubmit,
   onClear,
   tutorCopy,
+  detectorHint = null,
 }: Props) {
   const charCount = input.length;
   const isEmpty = !input.trim();
@@ -251,6 +261,8 @@ export default function CorrectionMode({
               {result.grammarTip}
             </p>
           </div>
+
+          <DetectorHintChip content={detectorHint} />
 
           {/* Practice section */}
           {!practiceFeedback && (
