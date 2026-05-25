@@ -24,6 +24,10 @@ import {
   releaseStripeWebhookEventClaim,
 } from "./idempotency.ts";
 import { captureEdgeError } from "../_shared/sentry.ts";
+import {
+  stripeWebhookEventSchema,
+  type StripeWebhookEventParsed,
+} from "../_shared/webhookSchemas.ts";
 
 // Sentry tag schema for billing-webhook observability (see PR).
 // All values are low-cardinality + indexed so a future ops dashboard can
@@ -261,8 +265,19 @@ Deno.serve(async (request: Request) => {
     );
   }
 
+  // ── A11: parse + zod runtime validation ──────────────────────────────
+  // Signature ALREADY verified above. JSON.parse + zod validate the
+  // event envelope. On JSON-parse failure or zod-validation failure
+  // we return 400 with a PII-safe Sentry beacon (zod issues + top-
+  // level keys only — never the raw event body, which contains
+  // customer ids, emails, and payment metadata). On parse SUCCESS but
+  // schema validation FAILURE, the event is a signature-verified
+  // Stripe delivery whose envelope we cannot trust — fail loud
+  // (Stripe retries on non-2xx; a real schema drift here is louder
+  // than silent acceptance).
+  let parsedJson: unknown;
   try {
-    event = JSON.parse(new TextDecoder().decode(rawBodyBytes)) as StripeWebhookEvent;
+    parsedJson = JSON.parse(new TextDecoder().decode(rawBodyBytes));
   } catch (error) {
     const serialized = serializeError(error);
 
@@ -285,19 +300,52 @@ Deno.serve(async (request: Request) => {
     );
   }
 
-  if (!event?.id) {
-    // Signature-verified but unusable (no event id) → same dropped-real-
-    // event class as parse_event.
-    await captureBillingWebhookFailure(
-      new Error("stripe-webhook: signature-verified event missing id"),
+  const envelopeParse = stripeWebhookEventSchema.safeParse(parsedJson);
+  if (!envelopeParse.success) {
+    // Schema-level drift on a signature-verified delivery. Replaces
+    // the prior manual `if (!event?.id)` guard and adds structured
+    // observability for any future Stripe envelope-shape change.
+    const topLevelKeys =
+      parsedJson && typeof parsedJson === "object" && !Array.isArray(parsedJson)
+        ? Object.keys(parsedJson as Record<string, unknown>)
+        : [];
+    const eventTypeRaw = (parsedJson as { type?: unknown } | null)?.type;
+    await captureEdgeError(
+      new Error("stripe-webhook event failed zod validation"),
       {
-        stage: "missing_event_id",
-        severity: "high",
-        event_type: typeof event?.type === "string" ? event.type : undefined,
+        functionName: "stripe-webhook",
+        extra: {
+          stage: "envelope-zod",
+          zodIssues: envelopeParse.error.issues.map((iss) => ({
+            path: iss.path.join("."),
+            code: iss.code,
+            message: iss.message,
+          })),
+          topLevelKeys,
+        },
+        tags: {
+          ...BILLING_WEBHOOK_TAGS,
+          stage: "envelope-zod",
+          severity: "high",
+          event_type: typeof eventTypeRaw === "string" ? eventTypeRaw : "unknown",
+        },
       },
     );
-    return json({ ok: false, error: "Stripe event missing id" }, 400);
+    return json(
+      {
+        ok: false,
+        stage: "envelope-zod",
+        error: "Stripe event envelope failed validation",
+      },
+      400,
+    );
   }
+
+  // The zod-parsed envelope; downstream handlers see the same fields
+  // the StripeWebhookEvent type promises (id/type/data.object/...) but
+  // now with runtime guarantee — no `as` assertion required.
+  const parsedEvent: StripeWebhookEventParsed = envelopeParse.data;
+  event = parsedEvent as unknown as StripeWebhookEvent;
 
   if (!isSupportedStripeWebhookEventType(event.type)) {
     return json(
