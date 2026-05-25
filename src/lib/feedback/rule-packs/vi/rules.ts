@@ -81,6 +81,7 @@ import {
   ruleTooVsVery,
   ruleToVerbConfusion,
   ruleUsedToVsBeUsedTo,
+  ruleTopicCommentFronting,
   ruleVeryMuchPlacement,
 } from '../../l1-error-detector.js';
 
@@ -164,6 +165,7 @@ export const VN_RULES: L1Rule[] = [
   // wins over the generic missing-article message.
   ruleNoArticleGeneric,      // 59
   ruleIfWill,                // 61
+  ruleTopicCommentFronting,  // 63 (C1 round-1 candidate flip)
   ruleGenericPlural,         // 48 — last: loses to plural_s (existing) by design
   // Round 6 — Bar #1 DoD flip. Runs before ruleDoubleNegative so a
   // bare-no/bare-not without do-support gets the specific message

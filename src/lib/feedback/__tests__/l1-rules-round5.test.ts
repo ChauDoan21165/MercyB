@@ -423,3 +423,28 @@ describe('round5 rule 61: vi_l1_if_will', () => {
     expectMiss('if i go tomorrow i will tell you', 'if i go tomorrow i will tell you');
   });
 });
+
+// ── 63. vi_l1_topic_comment_fronting (C1 round-1 candidate flip) ────────
+// Vietnamese fronts topics with a comma + resumptive pronoun (subject
+// doubling: "My family, they live in Hue"; object resumption: "This job,
+// I don't like it"). English rewrites to plain SVO.
+describe('round1 candidate flip — vi_l1_topic_comment_fronting', () => {
+  it('positive cases — subject doubling (sub-shape a)', () => {
+    expectHit('my family, they live in hue',           'my family lives in hue',           'vi_l1_topic_comment_fronting');
+    expectHit('my older brother, he works in singapore now', 'my older brother works in singapore now', 'vi_l1_topic_comment_fronting');
+    expectHit('the students, they are studying english', 'the students are studying english', 'vi_l1_topic_comment_fronting');
+  });
+  it('positive cases — object fronting (sub-shape b)', () => {
+    expectHit("this job, i don't like it",             "i don't like this job",             'vi_l1_topic_comment_fronting');
+    expectHit('that book, she read it last week',      'she read that book last week',      'vi_l1_topic_comment_fronting');
+    expectHit('the new manager, we met him yesterday', 'we met the new manager yesterday',  'vi_l1_topic_comment_fronting');
+  });
+  it('negative cases — legitimate EN fronting and clause boundaries', () => {
+    expectMiss('yesterday, i went home',               'yesterday i went home');             // sentence adverb — legitimate
+    expectMiss('finally, we arrived',                  'finally we arrived');                // sentence adverb
+    expectMiss('however, she stayed',                  'however she stayed');                // discourse marker
+    expectMiss('if i go, i will tell you',             'if i go i will tell you');           // subordinate clause boundary
+    expectMiss('when she arrives, call me',            'when she arrives call me');          // subordinate clause boundary
+    expectMiss('my family lives in hue',               'my family lives in hue');            // already correct
+  });
+});

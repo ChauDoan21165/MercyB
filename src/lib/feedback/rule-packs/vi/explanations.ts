@@ -332,4 +332,9 @@ export const VN_EXPLANATIONS: L1Explanation[] = [
     en: "Vietnamese **có** maps to several English structures — not just **has**. For \"a place contains X,\" use **There is / There are**: *In my house **has** three bedrooms* → ***There are** three bedrooms in my house*. For \"X is qualified Y,\" use **is / are**: *My city **has** very beautiful* → *My city **is** very beautiful*. Try: *{FIX}*.",
     vi: "Tiếng Việt 'có' đa năng. Khi nói nơi nào có gì, tiếng Anh dùng **There is / There are** — không phải 'has'. *In my house has three bedrooms* → ***There are** three bedrooms in my house*. Khi mô tả tính chất, dùng **is / are** — không phải 'has'. *My city has very beautiful* → *My city **is** very beautiful*. Thử: *{FIX}*.",
   },
+  {
+    tag: 'vi_l1_topic_comment_fronting',
+    en: "Vietnamese fronts the topic with a comma (*My family, they live in Hue* / *This job, I don't like it*). English usually rewrites to plain subject-verb-object — drop the comma and the resumptive pronoun. Try: *{FIX}*.",
+    vi: "Tiếng Việt mình hay đẩy chủ đề lên đầu câu, ngắt phẩy rồi nhắc lại bằng đại từ (*My family, they live in Hue* / *This job, I don't like it*). Tiếng Anh viết thẳng theo **chủ ngữ + động từ + tân ngữ**, bỏ phẩy và đại từ nhắc lại. Thử: *{FIX}*.",
+  },
 ];

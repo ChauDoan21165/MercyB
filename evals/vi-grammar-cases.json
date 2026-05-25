@@ -629,9 +629,9 @@
       "severity": "medium",
       "input": "My family, they live in Hue.",
       "expected_correction": "My family lives in Hue.",
-      "expected_category": "expected_failure",
+      "expected_category": "expected_pass",
       "source": "C1-taxonomy",
-      "notes": "DETECTOR CANDIDATE — vi_l1_topic_comment_fronting. No rule fires today."
+      "notes": "DETECTOR CANDIDATE — vi_l1_topic_comment_fronting. No rule fires today. [FLIPPED to expected_pass: detector vi_l1_topic_comment_fronting shipped]"
     },
     {
       "id": "vi-gram-111",
@@ -641,9 +641,9 @@
       "severity": "medium",
       "input": "This job, I don't like it.",
       "expected_correction": "I don't like this job.",
-      "expected_category": "expected_failure",
+      "expected_category": "expected_pass",
       "source": "C1-taxonomy",
-      "notes": "DETECTOR CANDIDATE — vi_l1_topic_comment_fronting."
+      "notes": "DETECTOR CANDIDATE — vi_l1_topic_comment_fronting. [FLIPPED to expected_pass: detector vi_l1_topic_comment_fronting shipped]"
     },
     {
       "id": "vi-gram-112",
@@ -653,9 +653,9 @@
       "severity": "medium",
       "input": "My older brother, he works in Singapore now.",
       "expected_correction": "My older brother works in Singapore now.",
-      "expected_category": "expected_failure",
+      "expected_category": "expected_pass",
       "source": "C1-taxonomy",
-      "notes": "DETECTOR CANDIDATE — vi_l1_topic_comment_fronting."
+      "notes": "DETECTOR CANDIDATE — vi_l1_topic_comment_fronting. [FLIPPED to expected_pass: detector vi_l1_topic_comment_fronting shipped]"
     },
     {
       "id": "vi-gram-120",

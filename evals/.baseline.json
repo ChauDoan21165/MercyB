@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-25T18:41:58.136Z",
+  "generated_at": "2026-05-25T18:55:33.192Z",
   "global": {
-    "pass": 57,
-    "total": 57,
+    "pass": 60,
+    "total": 60,
     "rate": 1
   },
   "by_family": {
@@ -62,9 +62,9 @@
       "rate": 1
     },
     "topic-comment-fronting": {
-      "pass": 0,
-      "total": 0,
-      "rate": 0
+      "pass": 3,
+      "total": 3,
+      "rate": 1
     },
     "co-transfer-overgeneralisation": {
       "pass": 3,
