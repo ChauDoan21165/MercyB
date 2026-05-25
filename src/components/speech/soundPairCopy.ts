@@ -29,6 +29,14 @@ export const CATEGORY_NAMES: Record<DrillCategory, Bilingual> = {
     en: 'Plural -s / -es',
     vi: 'Âm "-s / -es" số nhiều',
   },
+  stress: {
+    en: 'Word stress',
+    vi: 'Trọng âm từ',
+  },
+  intonation: {
+    en: 'Question vs statement',
+    vi: 'Giai điệu câu hỏi vs câu khẳng định',
+  },
 };
 
 export const CATEGORY_WHY: Record<DrillCategory, Bilingual> = {
@@ -47,6 +55,14 @@ export const CATEGORY_WHY: Record<DrillCategory, Bilingual> = {
   s: {
     en: 'Final consonants are weak in Vietnamese — the plural "-s" and "-es" are easy to drop, and the meaning shifts with it.',
     vi: 'Phụ âm cuối yếu trong tiếng Việt — "-s" và "-es" số nhiều dễ bị bỏ, và nghĩa thay đổi theo.',
+  },
+  stress: {
+    en: 'Vietnamese is syllable-timed — every syllable gets equal weight. English moves stress to change meaning (REcord/reCORD, GREENhouse/green HOUSE). Train the contrast and meaning follows.',
+    vi: 'Tiếng Việt phát âm tiết đều nhau. Tiếng Anh đổi trọng âm để đổi nghĩa (REcord/reCORD, GREENhouse/green HOUSE). Luyện cặp đối lập để nhận ra nghĩa khác biệt.',
+  },
+  intonation: {
+    en: 'Vietnamese is tonal — pitch lives on the syllable. English uses pitch on the whole sentence: rising for yes/no questions, falling for statements. Same words, different tune, different meaning.',
+    vi: 'Tiếng Việt có thanh điệu trên từng âm tiết. Tiếng Anh dùng giai điệu cả câu: nâng cuối câu hỏi yes/no, hạ cuối câu khẳng định. Cùng chữ, khác giai điệu, khác nghĩa.',
   },
 };
 

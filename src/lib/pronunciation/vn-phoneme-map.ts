@@ -718,3 +718,116 @@ export const PROBLEM_PAIRS_S_PLURALS: ProblemPair[] = [
   },
 ];
 
+/**
+ * Word-stress discrimination pairs — STRATEGY §5 pain point #5.
+ *
+ * Vietnamese is syllable-timed and tonal: each syllable carries its own
+ * tone and roughly equal duration. English is stress-timed — one
+ * syllable in a polysyllabic word is louder / longer / higher in pitch
+ * and the rest reduce. Misplaced stress doesn't just sound foreign; it
+ * can change which word the listener hears (REcord-noun vs reCORD-verb)
+ * or which referent is meant (a greenhouse vs a green house).
+ *
+ * Each entry is a real minimal pair: target + contrast differ ONLY in
+ * stress placement and the meaning that follows from it. The
+ * discrimination UI plays both via TTS and asks the learner to tap the
+ * model that matches a meaning prompt — no learner-pitch scoring.
+ */
+export const PROBLEM_PAIRS_STRESS: ProblemPair[] = [
+  {
+    target: 'a greenhouse', contrast: 'a green house', phoneme: 'word-stress',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Từ ghép GREENhouse (nhà kính trồng cây) nhấn âm tiết đầu; cụm danh từ green HOUSE (ngôi nhà sơn xanh) nhấn cả hai từ. Trọng âm khác → nghĩa khác.',
+  },
+  {
+    target: 'a blackbird', contrast: 'a black bird', phoneme: 'word-stress',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'BLACKbird (loài chim sáo) khác black BIRD (con chim màu đen bất kỳ) — trọng âm cho biết là tên loài hay miêu tả.',
+  },
+  {
+    target: 'the White House', contrast: 'a white house', phoneme: 'word-stress',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'WHITE House (Nhà Trắng ở Washington) nhấn âm tiết đầu; white HOUSE (ngôi nhà sơn trắng) nhấn đều. Trọng âm phân biệt riêng vs chung.',
+  },
+  {
+    target: 'a REcord', contrast: 'to reCORD', phoneme: 'word-stress',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Cùng chữ "record" — danh từ (kỷ lục) nhấn RE-cord; động từ (ghi âm) nhấn re-CORD. Tiếng Việt không có quy tắc đổi trọng âm theo từ loại.',
+  },
+  {
+    target: 'a PREsent', contrast: 'to preSENT', phoneme: 'word-stress',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'PRE-sent (món quà — danh từ) vs pre-SENT (trình bày — động từ). Trọng âm quyết định nghĩa.',
+  },
+  {
+    target: 'an OBject', contrast: 'to obJECT', phoneme: 'word-stress',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'OB-ject (vật — danh từ) vs ob-JECT (phản đối — động từ).',
+  },
+  {
+    target: 'fresh PROduce', contrast: 'to proDUCE', phoneme: 'word-stress',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'PRO-duce (rau củ tươi — danh từ) vs pro-DUCE (sản xuất — động từ).',
+  },
+  {
+    target: 'a PERmit', contrast: 'to perMIT', phoneme: 'word-stress',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'PER-mit (giấy phép — danh từ) vs per-MIT (cho phép — động từ).',
+  },
+];
+
+/**
+ * Utterance-level intonation discrimination pairs — STRATEGY §5 pain
+ * point #6.
+ *
+ * Vietnamese is a tonal language: pitch carries lexical meaning at the
+ * syllable level. English uses pitch at the utterance level — rising
+ * on yes/no questions, falling on statements and wh-questions.
+ * Vietnamese learners often produce English with flat per-syllable
+ * contours, so "are you ok" sounds like a statement and "she is here?"
+ * sounds like a declaration. Each pair shares orthography; only the
+ * final punctuation (and the matching intonation contour) distinguishes
+ * them.
+ *
+ * Discrimination-drill scope (no learner-pitch scoring): the UI plays
+ * the model audio for both contours and asks the learner to tap the
+ * one that matches "this is a question" vs "this is a statement."
+ */
+export const PROBLEM_PAIRS_INTONATION: ProblemPair[] = [
+  {
+    target: 'She is here?', contrast: 'She is here.', phoneme: 'intonation',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Tiếng Anh nâng giọng cuối câu hỏi yes/no, hạ giọng cuối câu khẳng định. Tiếng Việt mình thêm "không?" / "à?" ở cuối — giai điệu không đổi.',
+  },
+  {
+    target: 'You eat fish?', contrast: 'You eat fish.', phoneme: 'intonation',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Câu hỏi yes/no: giọng nâng cuối câu. Câu khẳng định: giọng hạ cuối câu. Cùng chữ, khác giai điệu, khác nghĩa.',
+  },
+  {
+    target: "It's good?", contrast: "It's good.", phoneme: 'intonation',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Nâng giọng → câu hỏi ("Vậy có tốt không?"); hạ giọng → khẳng định ("Nó tốt.").',
+  },
+  {
+    target: "He's coming?", contrast: "He's coming.", phoneme: 'intonation',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Cùng "he is coming" — nâng giọng cuối là câu hỏi xác nhận; hạ giọng là thông báo.',
+  },
+  {
+    target: 'Today?', contrast: 'Today.', phoneme: 'intonation',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Câu một từ vẫn có giai điệu: "Today?" = "Hôm nay à?"; "Today." = trả lời "Hôm nay."',
+  },
+  {
+    target: 'Really?', contrast: 'Really.', phoneme: 'intonation',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: 'Cùng từ "really" — nâng giọng là ngạc nhiên hỏi lại; hạ giọng là khẳng định khô khan.',
+  },
+  {
+    target: 'You know?', contrast: 'You know.', phoneme: 'intonation',
+    audioTarget: null, audioContrast: null,
+    vnWhyConfused: '"You know?" yêu cầu phản hồi; "You know." là khẳng định người nghe đã biết.',
+  },
+];
+

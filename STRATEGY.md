@@ -508,14 +508,17 @@ one full direction of one full pair, on both sides."
   thường gặp ở trình độ này: …"* into the system prompt. *Artifact:*
   PR #1131 merged + probe evidence pinned in that PR's body.
 
-- [ ] **Pronunciation drills cover the §5-named pain points.**
+- [x] **Pronunciation drills cover the §5-named pain points.**
   `src/lib/pronunciation/vn-phoneme-map.ts` ships `PROBLEM_PAIRS_*`
   sets for every Vietnamese pain point named in §5 item 3 — `th`,
-  `r`, `l`, `final consonants`, `stress`, `intonation`. *Today:*
-  `PROBLEM_PAIRS_TH_T`, `_R_L`, `_ED_ENDINGS`, `_S_PLURALS` shipped;
-  stress and sentence-level intonation drill sets do not exist.
-  *Artifact:* two new `PROBLEM_PAIRS_*` consts (stress + intonation),
-  each with ≥6 entries.
+  `r`, `l`, `final consonants`, `stress`, `intonation`. *Today:* all
+  six axes ship — `PROBLEM_PAIRS_TH_T`, `_R_L`, `_ED_ENDINGS`,
+  `_S_PLURALS`, `_STRESS` (8 entries), `_INTONATION` (7 entries) —
+  wired into `CATEGORY_POOLS` in `soundPairDrills.ts` and exposed via
+  the existing discrimination-drill UI. Stress + intonation are
+  content-only at this stage (listen-and-tap, no learner-pitch
+  scoring) per the dispatch scoping. *Artifact:* the two new consts
+  on `main`.
 
 - [ ] **Placement → lesson routing verified end-to-end.** A
   Vietnamese learner who completes the placement test is routed to
