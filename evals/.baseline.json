@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-25T17:34:20.992Z",
+  "generated_at": "2026-05-25T18:41:58.136Z",
   "global": {
-    "pass": 54,
-    "total": 54,
+    "pass": 57,
+    "total": 57,
     "rate": 1
   },
   "by_family": {
@@ -67,9 +67,9 @@
       "rate": 0
     },
     "co-transfer-overgeneralisation": {
-      "pass": 0,
-      "total": 0,
-      "rate": 0
+      "pass": 3,
+      "total": 3,
+      "rate": 1
     },
     "modal-verb-inflection": {
       "pass": 4,

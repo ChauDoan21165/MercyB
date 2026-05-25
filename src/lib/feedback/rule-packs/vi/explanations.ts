@@ -327,4 +327,9 @@ export const VN_EXPLANATIONS: L1Explanation[] = [
     en: "English negates verbs with **do/does/did + not** (or the contractions **don't / doesn't / didn't**), not by placing **no** or **not** straight on the verb. *I **no** want coffee* → *I **don't** want coffee*; *He **not** come yesterday* → *He **didn't** come yesterday*. Try: *{FIX}*.",
     vi: "Tiếng Việt phủ định bằng cách thêm 'không' trước động từ — gọn và đứng độc lập. Tiếng Anh cần trợ động từ **do / does / did** đi cùng **not** (hoặc dạng rút gọn **don't / doesn't / didn't**) — không thể đặt 'no' hay 'not' trực tiếp trước động từ thường. Thử: *{FIX}*.",
   },
+  {
+    tag: 'vi_l1_co_transfer',
+    en: "Vietnamese **có** maps to several English structures — not just **has**. For \"a place contains X,\" use **There is / There are**: *In my house **has** three bedrooms* → ***There are** three bedrooms in my house*. For \"X is qualified Y,\" use **is / are**: *My city **has** very beautiful* → *My city **is** very beautiful*. Try: *{FIX}*.",
+    vi: "Tiếng Việt 'có' đa năng. Khi nói nơi nào có gì, tiếng Anh dùng **There is / There are** — không phải 'has'. *In my house has three bedrooms* → ***There are** three bedrooms in my house*. Khi mô tả tính chất, dùng **is / are** — không phải 'has'. *My city has very beautiful* → *My city **is** very beautiful*. Thử: *{FIX}*.",
+  },
 ];

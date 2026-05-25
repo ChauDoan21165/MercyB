@@ -665,9 +665,9 @@
       "severity": "medium",
       "input": "In my house has three bedrooms.",
       "expected_correction": "There are three bedrooms in my house.",
-      "expected_category": "expected_failure",
+      "expected_category": "expected_pass",
       "source": "C1-taxonomy",
-      "notes": "DETECTOR CANDIDATE — vi_l1_co_transfer (`có` → 'has' over-mapping)."
+      "notes": "Flipped expected_failure → expected_pass by Round 6 ruleCoTransfer (rule 64)."
     },
     {
       "id": "vi-gram-121",
@@ -677,9 +677,9 @@
       "severity": "medium",
       "input": "My city has very beautiful.",
       "expected_correction": "My city is very beautiful.",
-      "expected_category": "expected_failure",
+      "expected_category": "expected_pass",
       "source": "C1-taxonomy",
-      "notes": "DETECTOR CANDIDATE — vi_l1_co_transfer."
+      "notes": "Flipped expected_failure → expected_pass by Round 6 ruleCoTransfer (rule 64)."
     },
     {
       "id": "vi-gram-122",
@@ -689,9 +689,9 @@
       "severity": "medium",
       "input": "In my class has thirty students.",
       "expected_correction": "There are thirty students in my class.",
-      "expected_category": "expected_failure",
+      "expected_category": "expected_pass",
       "source": "C1-taxonomy",
-      "notes": "DETECTOR CANDIDATE — vi_l1_co_transfer."
+      "notes": "Flipped expected_failure → expected_pass by Round 6 ruleCoTransfer (rule 64)."
     },
     {
       "id": "vi-gram-130",
