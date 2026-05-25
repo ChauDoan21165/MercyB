@@ -3,7 +3,7 @@
 // Extracted from AiTutor.tsx.
 
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
-import { planTodayLesson } from "@/lib/tutor/todayLessonPlanner";
+import { planTodayLesson, type TodayLessonPlan } from "@/lib/tutor/todayLessonPlanner";
 
 type Props = {
   memoryLoaded: boolean;
@@ -11,7 +11,7 @@ type Props = {
 };
 
 type TodayLessonProps = Props & {
-  onStartLesson?: (mode: ReturnType<typeof planTodayLesson>["suggestedMode"]) => void;
+  onStartLesson?: (plan: TodayLessonPlan) => void;
 };
 
 export default function TutorMemoryCard({ memoryLoaded, memory }: Props) {
@@ -138,7 +138,7 @@ export function TutorTodayLessonCard({ memoryLoaded, memory, onStartLesson }: To
           </span>
           <button
             type="button"
-            onClick={() => onStartLesson?.(plan.suggestedMode)}
+            onClick={() => onStartLesson?.(plan)}
             className="inline-flex min-h-10 items-center justify-center rounded-lg bg-emerald-700 px-4 py-2 text-sm font-black text-white shadow-sm transition hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
           >
             Start today's lesson

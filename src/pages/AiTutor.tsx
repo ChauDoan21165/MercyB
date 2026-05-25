@@ -40,7 +40,11 @@ import {
   AI_CORRECTION_REQUIRED_MESSAGE,
   correctWithTutorRules,
 } from "@/lib/tutor/correctionEngine";
-import { diagnoseVietlishLogicWithMatch } from "@/lib/tutor/vietlishLogicEngine";
+import {
+  diagnoseVietlishLogicWithMatch,
+  type VietlishLogicDiagnosisResult,
+} from "@/lib/tutor/vietlishLogicEngine";
+import type { TodayLessonPlan } from "@/lib/tutor/todayLessonPlanner";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
 import ConversationMode, {
   type ConversationMessage,
@@ -61,6 +65,11 @@ type PracticeFeedback = {
   encouragement: string;
   tip: string;
   nextStep: string;
+};
+
+type ActiveTodayLesson = {
+  plan: TodayLessonPlan;
+  prompt: string;
 };
 
 type TutorMode = Extract<TutorProductMode, "journey" | "grammar" | "speak" | "logic">;
@@ -190,6 +199,109 @@ function buildLogicReply(userText: string, explainLanguage: ExplainLanguage): Me
   return { ...turn, role: "mercy", logicDiagnosis: diagnosis };
 }
 
+function buildTodayLessonPrompt(plan: TodayLessonPlan, target: TutorTarget): string {
+  if (plan.suggestedMode === "logic") {
+    return "Try this sentence: I go school.";
+  }
+  if (plan.suggestedMode === "speak") {
+    return `Type one clean ${target.toUpperCase()} sentence about ${plan.nextFocus}, then practice saying it once.`;
+  }
+  if (plan.suggestedMode === "journey") {
+    return `Answer in one short ${target.toUpperCase()} sentence: What did you do today?`;
+  }
+  if (plan.nextFocus.toLowerCase().includes("past")) {
+    return "Write one sentence about yesterday. Example idea: I buy a hat yesterday.";
+  }
+  return `Write one short ${target.toUpperCase()} sentence about ${plan.nextFocus}.`;
+}
+
+function getLatestMercyMessage(messages: ConversationMessage[]): MercyConversationMessage | null {
+  for (let index = messages.length - 1; index >= 0; index -= 1) {
+    const message = messages[index];
+    if (message.role === "mercy" && message.userText) return message;
+  }
+  return null;
+}
+
+type TodayLessonLoopPanelProps = {
+  lesson: ActiveTodayLesson;
+  mode: TutorMode;
+  result: CorrectionResult | null;
+  practiceFeedback: PracticeFeedback | null;
+  latestMercyMessage: MercyConversationMessage | null;
+  logicInsight: VietlishLogicDiagnosisResult | null;
+  memory: MemorySummary | null;
+};
+
+function TodayLessonLoopPanel({
+  lesson,
+  mode,
+  result,
+  practiceFeedback,
+  latestMercyMessage,
+  logicInsight,
+  memory,
+}: TodayLessonLoopPanelProps) {
+  const hasFeedback = Boolean(result || latestMercyMessage);
+  const retryPrompt = result?.practicePrompt || latestMercyMessage?.nextQuestion || lesson.plan.steps[2];
+  const nextFocus = memory?.suggestedNextFocus || memory?.nextRecommendedFocus || lesson.plan.nextFocus;
+
+  return (
+    <section
+      data-testid="ai-tutor-lesson-loop"
+      className="mx-auto mb-4 w-full max-w-3xl rounded-[16px] border border-emerald-200 bg-white px-4 py-4 shadow-sm"
+      style={{ width: "100%", maxWidth: "100%", minWidth: 0, overflow: "hidden" }}
+    >
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div className="min-w-0">
+          <div className="text-xs font-black uppercase text-emerald-700">
+            5-minute lesson loop · {mode}
+          </div>
+          <h2 className="mt-1 text-lg font-black leading-6 text-slate-950" style={{ overflowWrap: "break-word" }}>
+            {lesson.plan.lessonTitle}
+          </h2>
+          <p className="mt-2 rounded-xl bg-emerald-50 px-3 py-2 text-sm font-bold leading-6 text-emerald-900" style={{ overflowWrap: "break-word" }}>
+            Prompt: {lesson.prompt}
+          </p>
+        </div>
+        <span className="w-fit rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-black uppercase text-slate-600">
+          {lesson.plan.estimatedMinutes} min
+        </span>
+      </div>
+
+      <div className="mt-3 grid gap-2 text-xs font-bold text-slate-700 sm:grid-cols-3">
+        <div className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2">
+          1. Answer the prompt
+        </div>
+        <div className={`rounded-xl border px-3 py-2 ${hasFeedback ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-slate-100 bg-slate-50"}`}>
+          2. Review Mercy feedback
+        </div>
+        <div className={`rounded-xl border px-3 py-2 ${practiceFeedback ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-slate-100 bg-slate-50"}`}>
+          3. Retry once
+        </div>
+      </div>
+
+      {hasFeedback && (
+        <div className="mt-3 rounded-xl border border-indigo-100 bg-indigo-50/70 px-3 py-2 text-sm font-bold leading-6 text-indigo-900" style={{ overflowWrap: "break-word" }}>
+          Retry: {retryPrompt}
+        </div>
+      )}
+
+      {logicInsight?.isKnownPattern && (
+        <div className="mt-3 rounded-xl border border-amber-100 bg-amber-50 px-3 py-2 text-sm font-semibold leading-6 text-amber-950" style={{ overflowWrap: "break-word" }}>
+          Vietlish logic insight: {logicInsight.englishLogic}
+        </div>
+      )}
+
+      {nextFocus && (
+        <div className="mt-3 text-xs font-bold text-slate-500" style={{ overflowWrap: "break-word" }}>
+          Memory next focus: {nextFocus}
+        </div>
+      )}
+    </section>
+  );
+}
+
 export default function AiTutorPage() {
   const shellRef = useRef<HTMLElement | null>(null);
   const { user } = useAuth();
@@ -249,6 +361,8 @@ export default function AiTutorPage() {
   const [memory, setMemory] = useState<MemorySummary | null>(null);
   const [lastSavedId, setLastSavedId] = useState<string | null>(null);
   const [isFloatingShell, setIsFloatingShell] = useState(true);
+  const [activeTodayLesson, setActiveTodayLesson] = useState<ActiveTodayLesson | null>(null);
+  const [todayLessonLogicInsight, setTodayLessonLogicInsight] = useState<VietlishLogicDiagnosisResult | null>(null);
 
   const tutorCopy: TutorCopy = getTutorCopy(target, explainLanguage);
   const aiTutorTabLabels: Record<TutorMode, string> = {
@@ -262,6 +376,7 @@ export default function AiTutorPage() {
     label: aiTutorTabLabels[mode],
   }));
   const isCorrectionMode = mode === "grammar";
+  const latestMercyMessage = getLatestMercyMessage(conversationMessages);
 
   const sttBaseInputRef = useRef<string>("");
   const lastCommittedSttRef = useRef<string>("");
@@ -345,6 +460,11 @@ export default function AiTutorPage() {
   }, [mode, target, explainLanguage]);
 
   useEffect(() => {
+    setActiveTodayLesson(null);
+    setTodayLessonLogicInsight(null);
+  }, [target]);
+
+  useEffect(() => {
     const syncExplain = () => setExplainLanguage(resolveExplainLanguage(aiTutorConfig, getExplainLanguage(), target));
     window.addEventListener("storage", syncExplain);
     window.addEventListener("focus", syncExplain);
@@ -387,6 +507,8 @@ export default function AiTutorPage() {
       grammarTip: next.grammarTip[explainLanguage],
       practicePrompt: next.practicePrompt[explainLanguage],
     });
+    const lessonInsight = activeTodayLesson ? diagnoseVietlishLogicWithMatch(trimmed) : null;
+    setTodayLessonLogicInsight(lessonInsight?.isKnownPattern ? lessonInsight : null);
     setLoading(false);
 
     setLastSavedId(turn.id);
@@ -426,6 +548,8 @@ export default function AiTutorPage() {
 
     const mercyMessage = buildConversationReply(trimmed, target, explainLanguage, mode);
     setConversationMessages((current) => [...current, mercyMessage]);
+    const lessonInsight = activeTodayLesson ? diagnoseVietlishLogicWithMatch(trimmed) : null;
+    setTodayLessonLogicInsight(lessonInsight?.isKnownPattern ? lessonInsight : null);
     setConversationLoading(false);
 
     const id = `conv-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`;
@@ -465,6 +589,23 @@ export default function AiTutorPage() {
     setPracticeFeedback(null);
   };
 
+  const handleStartTodayLesson = (plan: TodayLessonPlan) => {
+    setMode(plan.suggestedMode);
+    setActiveTodayLesson({
+      plan,
+      prompt: buildTodayLessonPrompt(plan, target),
+    });
+    setTodayLessonLogicInsight(null);
+    setInput("");
+    setConversationInput("");
+    setResult(null);
+    setError(null);
+    setPracticeAnswer("");
+    setPracticeFeedback(null);
+    setSpeakingMessageId(null);
+    tts.stop();
+  };
+
   return (
     <TeacherMercyLearningShell
       ref={shellRef}
@@ -485,7 +626,7 @@ export default function AiTutorPage() {
           <TutorTodayLessonCard
             memoryLoaded={memoryLoaded}
             memory={memory}
-            onStartLesson={(suggestedMode) => setMode(suggestedMode)}
+            onStartLesson={handleStartTodayLesson}
           />
           <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} />
         </>
@@ -493,6 +634,17 @@ export default function AiTutorPage() {
       reminderSlot={aiTutorConfig.memoryEnabled ? <TutorMemoryEmpty memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
       footer={`${tutorCopy.ui.footer} ${getSafetyLabel(aiTutorConfig)}.`}
     >
+      {activeTodayLesson && (
+        <TodayLessonLoopPanel
+          lesson={activeTodayLesson}
+          mode={mode}
+          result={result}
+          practiceFeedback={practiceFeedback}
+          latestMercyMessage={latestMercyMessage}
+          logicInsight={todayLessonLogicInsight}
+          memory={memory}
+        />
+      )}
       {mode === "grammar" ? (
         <CorrectionMode
           input={input}

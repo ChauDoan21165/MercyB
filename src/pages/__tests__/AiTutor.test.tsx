@@ -196,6 +196,39 @@ describe("AiTutor mock UI", () => {
 
     expect(screen.getByRole("button", { name: "Speak" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByTestId("ai-tutor-conversation")).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-lesson-loop")).toHaveTextContent("5-minute lesson loop · speak");
+    expect(screen.getByTestId("ai-tutor-lesson-loop")).toHaveTextContent("Prompt: Type one clean EN sentence about pronunciation");
+    expect(screen.getByTestId("ai-tutor-lesson-loop")).toHaveTextContent("Memory next focus: pronunciation");
+  });
+
+  it("guides Today's Lesson through prompt, feedback, retry, logic insight, and next focus", async () => {
+    getMemorySummary.mockResolvedValue({
+      ...POPULATED_SUMMARY,
+      topicNeedingReview: "past tense",
+      suggestedNextFocus: "past tense",
+      needsReview: ["past tense"],
+      commonMistakePatterns: ["past tense"],
+      confidenceTrend: "needs-review",
+    });
+    render(<AiTutorPage />);
+
+    await screen.findByTestId("ai-tutor-today-lesson");
+    await userEvent.click(screen.getByRole("button", { name: "Start today's lesson" }));
+
+    const loop = screen.getByTestId("ai-tutor-lesson-loop");
+    expect(loop).toHaveTextContent("5-minute lesson loop · grammar");
+    expect(loop).toHaveTextContent("Prompt: Write one sentence about yesterday");
+    expect(loop).toHaveTextContent("Memory next focus: past tense");
+
+    await userEvent.type(screen.getByRole("textbox"), "I buy a hat yesterday.");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+
+    await waitFor(() => {
+      expect(screen.getByText("I bought a hat yesterday.")).toBeInTheDocument();
+      expect(loop).toHaveTextContent("2. Review Mercy feedback");
+      expect(loop).toHaveTextContent("Retry:");
+      expect(loop).toHaveTextContent("Vietlish logic insight: Yesterday points to the past");
+    });
   });
 
   it("keeps Teacher Mercy avatar and header visible after memory loads", async () => {
