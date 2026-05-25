@@ -1,0 +1,1268 @@
+{
+  "runId": "a3-20260520T125936",
+  "timestamp": "2026-05-20T12:59:36.447Z",
+  "command": "pnpm tsx scripts/placement-v3/run-taxonomy-consistency.ts",
+  "auditKinds": [
+    "taxonomy_consistency"
+  ],
+  "issues": [
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "docs/placement-v3/calibration",
+      "message": "Required Placement V3 surface is missing on origin/main: docs/placement-v3/calibration",
+      "evidence": {
+        "surface": "docs/placement-v3/calibration"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "docs/placement-v3/taxonomy",
+      "message": "Required Placement V3 surface is missing on origin/main: docs/placement-v3/taxonomy",
+      "evidence": {
+        "surface": "docs/placement-v3/taxonomy"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "docs/placement-v3/prompt-library",
+      "message": "Required Placement V3 surface is missing on origin/main: docs/placement-v3/prompt-library",
+      "evidence": {
+        "surface": "docs/placement-v3/prompt-library"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "src/lib/recommendations",
+      "message": "Required Placement V3 surface is missing on origin/main: src/lib/recommendations",
+      "evidence": {
+        "surface": "src/lib/recommendations"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "supabase/functions/placement-v3-grade-writing/index.ts",
+      "message": "Required Placement V3 surface is missing on origin/main: supabase/functions/placement-v3-grade-writing/index.ts",
+      "evidence": {
+        "surface": "supabase/functions/placement-v3-grade-writing/index.ts"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "supabase/functions/placement-v3-session-orchestrator/index.ts",
+      "message": "Required Placement V3 surface is missing on origin/main: supabase/functions/placement-v3-session-orchestrator/index.ts",
+      "evidence": {
+        "surface": "supabase/functions/placement-v3-session-orchestrator/index.ts"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_missing_article has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_missing_article"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_preposition_transfer has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_preposition_transfer"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_countable has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_countable"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_possessive_s_missing has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_possessive_s_missing"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_comparative_double has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_comparative_double"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_very_much_placement has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_very_much_placement"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_make_vs_do has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_make_vs_do"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_tag_question has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_tag_question"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_past_perfect_missing has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_past_perfect_missing"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_reported_speech has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_reported_speech"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_since_vs_for has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_since_vs_for"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_countable_much has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_countable_much"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_some_vs_any has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_some_vs_any"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_reflexive_missing has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_reflexive_missing"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_conditional_mix has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_conditional_mix"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_to_infinitive_after_ing has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_to_infinitive_after_ing"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_passive_missing_be has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_passive_missing_be"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_relative_pronoun has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_relative_pronoun"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_used_to_vs_be_used_to has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_used_to_vs_be_used_to"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_another_vs_other has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_another_vs_other"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_look_vs_see_vs_watch has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_look_vs_see_vs_watch"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_by_vs_with has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_by_vs_with"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_time_expressions has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_time_expressions"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_present_perfect_vs_past has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_present_perfect_vs_past"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_subjunctive_were has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_subjunctive_were"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_embedded_question_order has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_embedded_question_order"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_do_support_3ps has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_do_support_3ps"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_subject_relative_omit has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_subject_relative_omit"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_gerund_after_verb has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_gerund_after_verb"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_modal_perfect has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_modal_perfect"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_phrasal_pronoun_order has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_phrasal_pronoun_order"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_comparative_more_long has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_comparative_more_long"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_many_with_uncount has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_many_with_uncount"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_geographical_article has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_geographical_article"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_generic_plural has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_generic_plural"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_double_negative has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_double_negative"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_negative_inversion has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_negative_inversion"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_adverb_before_subject has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_adverb_before_subject"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_make_let_bare has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_make_let_bare"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_too_vs_very has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_too_vs_very"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_a_vs_an_vowel has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_a_vs_an_vowel"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_one_of_the_singular has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_one_of_the_singular"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_each_singular has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_each_singular"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_been_vs_gone has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_been_vs_gone"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_tag_polarity has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_tag_polarity"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_no_article_generic has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_no_article_generic"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_superlative_the has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_superlative_the"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "missing_remediation_link",
+      "severity": "warning",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_if_will has no remediation room link",
+      "evidence": {
+        "tag": "vi_l1_if_will"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_missing_be is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_missing_be"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_question_no_aux is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_question_no_aux"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_missing_article is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_missing_article"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_possessive_gender is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_possessive_gender"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_preposition_transfer is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_preposition_transfer"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_countable is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_countable"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_to_verb_confusion is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_to_verb_confusion"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_can_no_infinitive is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_can_no_infinitive"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_double_past is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_double_past"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_possessive_s_missing is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_possessive_s_missing"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_comparative_double is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_comparative_double"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_adjective_order is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_adjective_order"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_very_much_placement is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_very_much_placement"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_there_are_singular is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_there_are_singular"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_everyone_plural is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_everyone_plural"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_make_vs_do is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_make_vs_do"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_tag_question is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_tag_question"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_past_perfect_missing is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_past_perfect_missing"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_reported_speech is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_reported_speech"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_since_vs_for is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_since_vs_for"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_countable_much is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_countable_much"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_some_vs_any is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_some_vs_any"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_reflexive_missing is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_reflexive_missing"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_conditional_mix is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_conditional_mix"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_to_infinitive_after_ing is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_to_infinitive_after_ing"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_passive_missing_be is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_passive_missing_be"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_relative_pronoun is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_relative_pronoun"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_used_to_vs_be_used_to is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_used_to_vs_be_used_to"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_another_vs_other is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_another_vs_other"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_look_vs_see_vs_watch is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_look_vs_see_vs_watch"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_by_vs_with is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_by_vs_with"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_time_expressions is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_time_expressions"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_present_perfect_vs_past is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_present_perfect_vs_past"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_subjunctive_were is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_subjunctive_were"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_embedded_question_order is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_embedded_question_order"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_do_support_3ps is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_do_support_3ps"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_subject_relative_omit is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_subject_relative_omit"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_gerund_after_verb is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_gerund_after_verb"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_modal_perfect is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_modal_perfect"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_phrasal_pronoun_order is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_phrasal_pronoun_order"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_comparative_more_long is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_comparative_more_long"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_many_with_uncount is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_many_with_uncount"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_geographical_article is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_geographical_article"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_generic_plural is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_generic_plural"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_double_negative is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_double_negative"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_negative_inversion is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_negative_inversion"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_adverb_before_subject is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_adverb_before_subject"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_make_let_bare is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_make_let_bare"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_too_vs_very is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_too_vs_very"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_a_vs_an_vowel is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_a_vs_an_vowel"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_one_of_the_singular is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_one_of_the_singular"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_each_singular is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_each_singular"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_been_vs_gone is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_been_vs_gone"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_tag_polarity is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_tag_polarity"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_no_article_generic is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_no_article_generic"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_superlative_the is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_superlative_the"
+      }
+    },
+    {
+      "id": "dGF4b25vbXlfY29uc2lzdGVu",
+      "auditKind": "taxonomy_consistency",
+      "category": "unused_taxonomy_category",
+      "severity": "info",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "message": "Taxonomy tag vi_l1_if_will is not referenced by the deterministic placement question bank",
+      "evidence": {
+        "tag": "vi_l1_if_will"
+      }
+    }
+  ],
+  "counts": {
+    "total": 111,
+    "blockers": 6,
+    "errors": 0,
+    "warnings": 48,
+    "info": 57,
+    "byCategory": {
+      "missing_required_surface": 6,
+      "missing_remediation_link": 48,
+      "unused_taxonomy_category": 57
+    }
+  },
+  "changedFilesSincePreviousRun": [
+    "package-lock.json",
+    "src/router/AppRouter.tsx"
+  ],
+  "auditedFiles": [
+    "docs/placement-v3/native-audio/native-permission-audit.md",
+    "src/lib/placement/questions.ts",
+    "src/lib/placement/cefrToRoom.ts",
+    "src/lib/weakness/weakness-catalog.ts",
+    "src/lib/weakness/recommendationEngine.ts",
+    "src/lib/weakness/micro-lessons.ts",
+    "supabase/functions/placement-session/types.ts",
+    "supabase/functions/placement-session/config.ts",
+    "supabase/functions/placement-session/engine/itemBank.ts",
+    "supabase/migrations/20260618000000_placement_items.sql",
+    "supabase/migrations/20260619000000_placement_sessions.sql"
+  ],
+  "missingRequiredSurfaces": [
+    "docs/placement-v3/calibration",
+    "docs/placement-v3/taxonomy",
+    "docs/placement-v3/prompt-library",
+    "src/lib/recommendations",
+    "supabase/functions/placement-v3-grade-writing/index.ts",
+    "supabase/functions/placement-v3-session-orchestrator/index.ts"
+  ]
+}

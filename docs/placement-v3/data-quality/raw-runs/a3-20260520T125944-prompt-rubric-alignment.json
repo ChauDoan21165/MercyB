@@ -1,0 +1,178 @@
+{
+  "runId": "a3-20260520T125944",
+  "timestamp": "2026-05-20T12:59:44.999Z",
+  "command": "pnpm tsx scripts/placement-v3/run-prompt-rubric-alignment.ts",
+  "auditKinds": [
+    "prompt_rubric_alignment"
+  ],
+  "issues": [
+    {
+      "id": "cHJvbXB0X3J1YnJpY19hbGln",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "docs/placement-v3/calibration",
+      "message": "Required Placement V3 surface is missing on origin/main: docs/placement-v3/calibration",
+      "evidence": {
+        "surface": "docs/placement-v3/calibration"
+      }
+    },
+    {
+      "id": "cHJvbXB0X3J1YnJpY19hbGln",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "docs/placement-v3/taxonomy",
+      "message": "Required Placement V3 surface is missing on origin/main: docs/placement-v3/taxonomy",
+      "evidence": {
+        "surface": "docs/placement-v3/taxonomy"
+      }
+    },
+    {
+      "id": "cHJvbXB0X3J1YnJpY19hbGln",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "docs/placement-v3/prompt-library",
+      "message": "Required Placement V3 surface is missing on origin/main: docs/placement-v3/prompt-library",
+      "evidence": {
+        "surface": "docs/placement-v3/prompt-library"
+      }
+    },
+    {
+      "id": "cHJvbXB0X3J1YnJpY19hbGln",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "src/lib/recommendations",
+      "message": "Required Placement V3 surface is missing on origin/main: src/lib/recommendations",
+      "evidence": {
+        "surface": "src/lib/recommendations"
+      }
+    },
+    {
+      "id": "cHJvbXB0X3J1YnJpY19hbGln",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "supabase/functions/placement-v3-grade-writing/index.ts",
+      "message": "Required Placement V3 surface is missing on origin/main: supabase/functions/placement-v3-grade-writing/index.ts",
+      "evidence": {
+        "surface": "supabase/functions/placement-v3-grade-writing/index.ts"
+      }
+    },
+    {
+      "id": "cHJvbXB0X3J1YnJpY19hbGln",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "supabase/functions/placement-v3-session-orchestrator/index.ts",
+      "message": "Required Placement V3 surface is missing on origin/main: supabase/functions/placement-v3-session-orchestrator/index.ts",
+      "evidence": {
+        "surface": "supabase/functions/placement-v3-session-orchestrator/index.ts"
+      }
+    },
+    {
+      "id": "cHJvbXB0X3J1YnJpY19hbGln",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "prompt_level_mismatch",
+      "severity": "warning",
+      "file": "src/lib/placement/questions.ts",
+      "message": "Question q_a1_009 descriptor does not mention its CEFR A1",
+      "evidence": {
+        "id": "q_a1_009",
+        "cefr": "A1",
+        "cefrDescriptor": "Vietnamese L1 interference: plural noun inflection (-s) — Vietnamese marks plurals with measure words, not suffixes, so learners often drop the -s"
+      }
+    },
+    {
+      "id": "cHJvbXB0X3J1YnJpY19hbGln",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "rubric_category_mismatch",
+      "severity": "warning",
+      "file": "src/lib/placement/questions.ts",
+      "message": "Question q_a1_009 skill grammar is not reflected in descriptor",
+      "evidence": {
+        "id": "q_a1_009",
+        "skill": "grammar",
+        "cefrDescriptor": "Vietnamese L1 interference: plural noun inflection (-s) — Vietnamese marks plurals with measure words, not suffixes, so learners often drop the -s"
+      }
+    },
+    {
+      "id": "cHJvbXB0X3J1YnJpY19hbGln",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "prompt_level_mismatch",
+      "severity": "warning",
+      "file": "src/lib/placement/questions.ts",
+      "message": "Question q_a2_009 descriptor does not mention its CEFR A2",
+      "evidence": {
+        "id": "q_a2_009",
+        "cefr": "A2",
+        "cefrDescriptor": "Vietnamese L1 interference: past-simple regular -ed ending — Vietnamese speech tends to drop final consonants, so \"walked\" is often heard/written as \"walk\""
+      }
+    },
+    {
+      "id": "cHJvbXB0X3J1YnJpY19hbGln",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "rubric_category_mismatch",
+      "severity": "warning",
+      "file": "src/lib/placement/questions.ts",
+      "message": "Question q_a2_009 skill grammar is not reflected in descriptor",
+      "evidence": {
+        "id": "q_a2_009",
+        "skill": "grammar",
+        "cefrDescriptor": "Vietnamese L1 interference: past-simple regular -ed ending — Vietnamese speech tends to drop final consonants, so \"walked\" is often heard/written as \"walk\""
+      }
+    },
+    {
+      "id": "cHJvbXB0X3J1YnJpY19hbGln",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "rubric_category_mismatch",
+      "severity": "warning",
+      "file": "src/lib/placement/questions.ts",
+      "message": "Question q_b1_009 skill grammar is not reflected in descriptor",
+      "evidence": {
+        "id": "q_b1_009",
+        "skill": "grammar",
+        "cefrDescriptor": "Vietnamese L1 interference: third-person singular -s in present simple. This is the most chronic Vietnamese-learner error and often persists into B1 / B2 — placing it at B1 catches learners whose level is otherwise B1 but who still miss this feature."
+      }
+    }
+  ],
+  "counts": {
+    "total": 11,
+    "blockers": 6,
+    "errors": 0,
+    "warnings": 5,
+    "info": 0,
+    "byCategory": {
+      "missing_required_surface": 6,
+      "prompt_level_mismatch": 2,
+      "rubric_category_mismatch": 3
+    }
+  },
+  "changedFilesSincePreviousRun": [
+    "package-lock.json",
+    "src/router/AppRouter.tsx"
+  ],
+  "auditedFiles": [
+    "docs/placement-v3/native-audio/native-permission-audit.md",
+    "src/lib/placement/questions.ts",
+    "src/lib/placement/cefrToRoom.ts",
+    "src/lib/weakness/weakness-catalog.ts",
+    "src/lib/weakness/recommendationEngine.ts",
+    "src/lib/weakness/micro-lessons.ts",
+    "supabase/functions/placement-session/types.ts",
+    "supabase/functions/placement-session/config.ts",
+    "supabase/functions/placement-session/engine/itemBank.ts",
+    "supabase/migrations/20260618000000_placement_items.sql",
+    "supabase/migrations/20260619000000_placement_sessions.sql"
+  ],
+  "missingRequiredSurfaces": [
+    "docs/placement-v3/calibration",
+    "docs/placement-v3/taxonomy",
+    "docs/placement-v3/prompt-library",
+    "src/lib/recommendations",
+    "supabase/functions/placement-v3-grade-writing/index.ts",
+    "supabase/functions/placement-v3-session-orchestrator/index.ts"
+  ]
+}

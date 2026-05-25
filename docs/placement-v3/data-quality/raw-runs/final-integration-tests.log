@@ -1,0 +1,10 @@
+
+ RUN  v3.2.4 /private/tmp/a3-placement-v3-data-quality
+
+ ✓ tests/integration/placement-v3-data-quality/data-quality-audits.test.ts (16 tests) 134ms
+
+ Test Files  1 passed (1)
+      Tests  16 passed (16)
+   Start at  07:08:28
+   Duration  1.64s (transform 95ms, setup 160ms, collect 45ms, tests 134ms, environment 725ms, prepare 71ms)
+

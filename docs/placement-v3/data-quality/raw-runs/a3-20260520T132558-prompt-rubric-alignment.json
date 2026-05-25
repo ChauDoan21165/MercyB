@@ -1,0 +1,206 @@
+{
+  "runId": "a3-20260520T132558",
+  "timestamp": "2026-05-20T13:25:58.552Z",
+  "command": "pnpm tsx scripts/placement-v3/run-prompt-rubric-alignment.ts",
+  "auditKinds": [
+    "prompt_rubric_alignment"
+  ],
+  "issues": [
+    {
+      "id": "cb8ab52263d42c0bb3021c3d",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "orphaned_rubric_reference",
+      "severity": "warning",
+      "file": "src/data/placement/v3/prompts/conversation.ts",
+      "message": "Prompt a1-c-mercy-greeting has no calibration entry",
+      "evidence": {
+        "id": "a1-c-mercy-greeting"
+      }
+    },
+    {
+      "id": "2ece755cb813ab68af88d777",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "orphaned_rubric_reference",
+      "severity": "warning",
+      "file": "src/data/placement/v3/prompts/conversation.ts",
+      "message": "Prompt a2-c-weekend-chat has no calibration entry",
+      "evidence": {
+        "id": "a2-c-weekend-chat"
+      }
+    },
+    {
+      "id": "3e824f74480fa11272e32284",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "orphaned_rubric_reference",
+      "severity": "warning",
+      "file": "src/data/placement/v3/prompts/conversation.ts",
+      "message": "Prompt b1-c-study-plan has no calibration entry",
+      "evidence": {
+        "id": "b1-c-study-plan"
+      }
+    },
+    {
+      "id": "0a2c2e9e4247914d74c20cf3",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "orphaned_rubric_reference",
+      "severity": "warning",
+      "file": "src/data/placement/v3/prompts/conversation.ts",
+      "message": "Prompt b2-c-opinion-followup has no calibration entry",
+      "evidence": {
+        "id": "b2-c-opinion-followup"
+      }
+    },
+    {
+      "id": "825fb90846916f5fa9fb9a3c",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "orphaned_rubric_reference",
+      "severity": "warning",
+      "file": "src/data/placement/v3/prompts/conversation.ts",
+      "message": "Prompt c1-c-polished-disagreement has no calibration entry",
+      "evidence": {
+        "id": "c1-c-polished-disagreement"
+      }
+    },
+    {
+      "id": "08ee85d1b687eff741b47212",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "orphaned_rubric_reference",
+      "severity": "warning",
+      "file": "src/data/placement/v3/prompts/conversation.ts",
+      "message": "Prompt c2-c-identity-debate has no calibration entry",
+      "evidence": {
+        "id": "c2-c-identity-debate"
+      }
+    },
+    {
+      "id": "12c340e08a0808604aec13a2",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "prompt_level_mismatch",
+      "severity": "warning",
+      "file": "src/lib/placement/questions.ts",
+      "message": "Question q_a1_009 descriptor does not mention its CEFR A1",
+      "evidence": {
+        "id": "q_a1_009",
+        "cefr": "A1",
+        "cefrDescriptor": "Vietnamese L1 interference: plural noun inflection (-s) — Vietnamese marks plurals with measure words, not suffixes, so learners often drop the -s"
+      }
+    },
+    {
+      "id": "5a8b3fcd0124ab1fe0a0e981",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "rubric_category_mismatch",
+      "severity": "warning",
+      "file": "src/lib/placement/questions.ts",
+      "message": "Question q_a1_009 skill grammar is not reflected in descriptor",
+      "evidence": {
+        "id": "q_a1_009",
+        "skill": "grammar",
+        "cefrDescriptor": "Vietnamese L1 interference: plural noun inflection (-s) — Vietnamese marks plurals with measure words, not suffixes, so learners often drop the -s"
+      }
+    },
+    {
+      "id": "f5fcfd85f614f9f89c7e4595",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "prompt_level_mismatch",
+      "severity": "warning",
+      "file": "src/lib/placement/questions.ts",
+      "message": "Question q_a2_009 descriptor does not mention its CEFR A2",
+      "evidence": {
+        "id": "q_a2_009",
+        "cefr": "A2",
+        "cefrDescriptor": "Vietnamese L1 interference: past-simple regular -ed ending — Vietnamese speech tends to drop final consonants, so \"walked\" is often heard/written as \"walk\""
+      }
+    },
+    {
+      "id": "9deb77dddf025a4dcb4566b8",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "rubric_category_mismatch",
+      "severity": "warning",
+      "file": "src/lib/placement/questions.ts",
+      "message": "Question q_a2_009 skill grammar is not reflected in descriptor",
+      "evidence": {
+        "id": "q_a2_009",
+        "skill": "grammar",
+        "cefrDescriptor": "Vietnamese L1 interference: past-simple regular -ed ending — Vietnamese speech tends to drop final consonants, so \"walked\" is often heard/written as \"walk\""
+      }
+    },
+    {
+      "id": "717e355bfa9b2c3a4720385f",
+      "auditKind": "prompt_rubric_alignment",
+      "category": "rubric_category_mismatch",
+      "severity": "warning",
+      "file": "src/lib/placement/questions.ts",
+      "message": "Question q_b1_009 skill grammar is not reflected in descriptor",
+      "evidence": {
+        "id": "q_b1_009",
+        "skill": "grammar",
+        "cefrDescriptor": "Vietnamese L1 interference: third-person singular -s in present simple. This is the most chronic Vietnamese-learner error and often persists into B1 / B2 — placing it at B1 catches learners whose level is otherwise B1 but who still miss this feature."
+      }
+    }
+  ],
+  "counts": {
+    "total": 11,
+    "blockers": 0,
+    "errors": 0,
+    "warnings": 11,
+    "info": 0,
+    "byCategory": {
+      "orphaned_rubric_reference": 6,
+      "prompt_level_mismatch": 2,
+      "rubric_category_mismatch": 3
+    }
+  },
+  "changedFilesSincePreviousRun": [
+    "docs/placement-v3/data-quality/PR_BODY.md",
+    "docs/placement-v3/data-quality/a3-blockers.md",
+    "docs/placement-v3/data-quality/a3-final-report.md",
+    "docs/placement-v3/data-quality/a3-fixes-applied.md",
+    "docs/placement-v3/data-quality/a3-initial-audit.md",
+    "docs/placement-v3/data-quality/a3-integrity-findings.md",
+    "docs/placement-v3/data-quality/a3-prompt-rubric-gaps.md",
+    "docs/placement-v3/data-quality/a3-recommendation-gaps.md",
+    "docs/placement-v3/data-quality/a3-taxonomy-conflicts.md",
+    "scripts/placement-v3/dataQualityAuditCore.ts",
+    "tests/integration/placement-v3-data-quality/data-quality-audits.test.ts"
+  ],
+  "auditedFiles": [
+    "docs/placement-v3/native-audio/native-permission-audit.md",
+    "src/data/placement/v3/prompts/index.ts",
+    "src/data/placement/v3/prompts/writing.ts",
+    "src/data/placement/v3/prompts/speaking.ts",
+    "src/data/placement/v3/prompts/reading.ts",
+    "src/data/placement/v3/prompts/listening.ts",
+    "src/data/placement/v3/prompts/conversation.ts",
+    "src/data/placement/v3/calibration/index.ts",
+    "src/data/placement/v3/calibration/writing-corpus.ts",
+    "src/data/placement/v3/calibration/speaking-corpus.ts",
+    "src/data/placement/v3/calibration/reading-corpus.ts",
+    "src/data/placement/v3/calibration/listening-corpus.ts",
+    "src/lib/placement/v3/recommender.ts",
+    "src/lib/placement/v3/lessonIndex.ts",
+    "src/lib/placement/v3/recommenderTypes.ts",
+    "src/lib/placement/questions.ts",
+    "src/lib/placement/cefrToRoom.ts",
+    "src/lib/weakness/weakness-catalog.ts",
+    "src/lib/weakness/recommendationEngine.ts",
+    "src/lib/weakness/micro-lessons.ts",
+    "supabase/functions/placement-session/types.ts",
+    "supabase/functions/placement-session/config.ts",
+    "supabase/functions/placement-session/engine/itemBank.ts",
+    "supabase/functions/_shared/cefr/rubric.ts",
+    "supabase/functions/_shared/cefr/types.ts",
+    "supabase/functions/placement-v3-grade-writing/types.ts",
+    "supabase/functions/placement-v3-grade-writing/core.ts",
+    "supabase/functions/placement-v3-grade-writing/__tests__/fixtures/prompts.json",
+    "supabase/functions/placement-v3-session/types.ts",
+    "supabase/functions/placement-v3-session/modality.ts",
+    "supabase/functions/placement-v3-session/core.ts",
+    "supabase/migrations/20260618000000_placement_items.sql",
+    "supabase/migrations/20260619000000_placement_sessions.sql",
+    "supabase/migrations/20260627000000_placement_v3_sessions.sql",
+    "supabase/migrations/20260627000001_placement_v3_responses.sql",
+    "supabase/migrations/20260627000002_placement_v3_profiles.sql",
+    "supabase/migrations/20260627000003_placement_v3_rls.sql"
+  ],
+  "missingRequiredSurfaces": []
+}

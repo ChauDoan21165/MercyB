@@ -1,0 +1,1867 @@
+{
+  "generatedAt": "2026-05-20T14:12:53.037Z",
+  "sources": {
+    "taxonomyConsistency": "docs/placement-v3/data-quality/raw-runs/a3-20260520T133236-taxonomy-consistency.json",
+    "promptRubricAlignment": "docs/placement-v3/data-quality/raw-runs/a3-20260520T133158-prompt-rubric-alignment.json"
+  },
+  "counts": {
+    "total": 102,
+    "byPriority": {
+      "P1": 54,
+      "P2": 1,
+      "informational": 47
+    },
+    "byStatus": {
+      "needs linguist review": 54,
+      "needs Chau review": 1,
+      "pending": 47
+    },
+    "byCategory": {
+      "conversation_calibration_gap": 6,
+      "missing_remediation_link": 48,
+      "unused_taxonomy_disposition": 48
+    }
+  },
+  "guardrails": {
+    "productionSafeClaims": "No unsupported production-safe claims detected.",
+    "automationApproval": "Automation never marks packets approved without existing status evidence."
+  },
+  "packets": [
+    {
+      "id": "conversation-calibration:a1-c-mercy-greeting",
+      "sourceIssueId": "cb8ab52263d42c0bb3021c3d",
+      "issue": "Prompt a1-c-mercy-greeting has no calibration entry",
+      "category": "conversation_calibration_gap",
+      "priority": "P1",
+      "promptId": "a1-c-mercy-greeting",
+      "file": "src/data/placement/v3/prompts/conversation.ts",
+      "evidence": {
+        "id": "a1-c-mercy-greeting"
+      },
+      "owner": "Placement V3 assessment owner",
+      "learnerImpact": "Medium if conversation placement is scored without calibration evidence.",
+      "releaseImpact": "Blocks production-safe conversation calibration claims.",
+      "nextAction": "Decide whether conversation scoring is launch-scope; if yes, create reviewed calibration entries.",
+      "reviewQuestion": "What representative accepted, borderline, and weak learner responses should calibrate this prompt?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "conversation-calibration:a2-c-weekend-chat",
+      "sourceIssueId": "2ece755cb813ab68af88d777",
+      "issue": "Prompt a2-c-weekend-chat has no calibration entry",
+      "category": "conversation_calibration_gap",
+      "priority": "P1",
+      "promptId": "a2-c-weekend-chat",
+      "file": "src/data/placement/v3/prompts/conversation.ts",
+      "evidence": {
+        "id": "a2-c-weekend-chat"
+      },
+      "owner": "Placement V3 assessment owner",
+      "learnerImpact": "Medium if conversation placement is scored without calibration evidence.",
+      "releaseImpact": "Blocks production-safe conversation calibration claims.",
+      "nextAction": "Decide whether conversation scoring is launch-scope; if yes, create reviewed calibration entries.",
+      "reviewQuestion": "What representative accepted, borderline, and weak learner responses should calibrate this prompt?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "conversation-calibration:b1-c-study-plan",
+      "sourceIssueId": "3e824f74480fa11272e32284",
+      "issue": "Prompt b1-c-study-plan has no calibration entry",
+      "category": "conversation_calibration_gap",
+      "priority": "P1",
+      "promptId": "b1-c-study-plan",
+      "file": "src/data/placement/v3/prompts/conversation.ts",
+      "evidence": {
+        "id": "b1-c-study-plan"
+      },
+      "owner": "Placement V3 assessment owner",
+      "learnerImpact": "Medium if conversation placement is scored without calibration evidence.",
+      "releaseImpact": "Blocks production-safe conversation calibration claims.",
+      "nextAction": "Decide whether conversation scoring is launch-scope; if yes, create reviewed calibration entries.",
+      "reviewQuestion": "What representative accepted, borderline, and weak learner responses should calibrate this prompt?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "conversation-calibration:b2-c-opinion-followup",
+      "sourceIssueId": "0a2c2e9e4247914d74c20cf3",
+      "issue": "Prompt b2-c-opinion-followup has no calibration entry",
+      "category": "conversation_calibration_gap",
+      "priority": "P1",
+      "promptId": "b2-c-opinion-followup",
+      "file": "src/data/placement/v3/prompts/conversation.ts",
+      "evidence": {
+        "id": "b2-c-opinion-followup"
+      },
+      "owner": "Placement V3 assessment owner",
+      "learnerImpact": "Medium if conversation placement is scored without calibration evidence.",
+      "releaseImpact": "Blocks production-safe conversation calibration claims.",
+      "nextAction": "Decide whether conversation scoring is launch-scope; if yes, create reviewed calibration entries.",
+      "reviewQuestion": "What representative accepted, borderline, and weak learner responses should calibrate this prompt?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "conversation-calibration:c1-c-polished-disagreement",
+      "sourceIssueId": "825fb90846916f5fa9fb9a3c",
+      "issue": "Prompt c1-c-polished-disagreement has no calibration entry",
+      "category": "conversation_calibration_gap",
+      "priority": "P1",
+      "promptId": "c1-c-polished-disagreement",
+      "file": "src/data/placement/v3/prompts/conversation.ts",
+      "evidence": {
+        "id": "c1-c-polished-disagreement"
+      },
+      "owner": "Placement V3 assessment owner",
+      "learnerImpact": "Medium if conversation placement is scored without calibration evidence.",
+      "releaseImpact": "Blocks production-safe conversation calibration claims.",
+      "nextAction": "Decide whether conversation scoring is launch-scope; if yes, create reviewed calibration entries.",
+      "reviewQuestion": "What representative accepted, borderline, and weak learner responses should calibrate this prompt?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "conversation-calibration:c2-c-identity-debate",
+      "sourceIssueId": "08ee85d1b687eff741b47212",
+      "issue": "Prompt c2-c-identity-debate has no calibration entry",
+      "category": "conversation_calibration_gap",
+      "priority": "P1",
+      "promptId": "c2-c-identity-debate",
+      "file": "src/data/placement/v3/prompts/conversation.ts",
+      "evidence": {
+        "id": "c2-c-identity-debate"
+      },
+      "owner": "Placement V3 assessment owner",
+      "learnerImpact": "Medium if conversation placement is scored without calibration evidence.",
+      "releaseImpact": "Blocks production-safe conversation calibration claims.",
+      "nextAction": "Decide whether conversation scoring is launch-scope; if yes, create reviewed calibration entries.",
+      "reviewQuestion": "What representative accepted, borderline, and weak learner responses should calibrate this prompt?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_a_vs_an_vowel",
+      "sourceIssueId": "f3284eba57fa49d31c6c5e31",
+      "issue": "Taxonomy tag vi_l1_a_vs_an_vowel has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_a_vs_an_vowel",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_a_vs_an_vowel"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_adverb_before_subject",
+      "sourceIssueId": "781af03596260c79946bb1c0",
+      "issue": "Taxonomy tag vi_l1_adverb_before_subject has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_adverb_before_subject",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_adverb_before_subject"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_another_vs_other",
+      "sourceIssueId": "de4ff448957fb9e6362f5858",
+      "issue": "Taxonomy tag vi_l1_another_vs_other has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_another_vs_other",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_another_vs_other"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_been_vs_gone",
+      "sourceIssueId": "90643795a3e4287c91ac2415",
+      "issue": "Taxonomy tag vi_l1_been_vs_gone has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_been_vs_gone",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_been_vs_gone"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_by_vs_with",
+      "sourceIssueId": "560d073a4aca56a38aa35e5a",
+      "issue": "Taxonomy tag vi_l1_by_vs_with has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_by_vs_with",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_by_vs_with"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_comparative_double",
+      "sourceIssueId": "366ce4920489d774975c38f7",
+      "issue": "Taxonomy tag vi_l1_comparative_double has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_comparative_double",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_comparative_double"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_comparative_more_long",
+      "sourceIssueId": "a9bd11e5ff62b199e4b1cece",
+      "issue": "Taxonomy tag vi_l1_comparative_more_long has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_comparative_more_long",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_comparative_more_long"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_conditional_mix",
+      "sourceIssueId": "08f3a6212fe0f2b49429ff91",
+      "issue": "Taxonomy tag vi_l1_conditional_mix has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_conditional_mix",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_conditional_mix"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_countable",
+      "sourceIssueId": "75295ac44ce77379aa90d77d",
+      "issue": "Taxonomy tag vi_l1_countable has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_countable",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_countable"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_countable_much",
+      "sourceIssueId": "6d49f343f7069890271d1c65",
+      "issue": "Taxonomy tag vi_l1_countable_much has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_countable_much",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_countable_much"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_do_support_3ps",
+      "sourceIssueId": "7ae0c4cc4514545a9c9ee70a",
+      "issue": "Taxonomy tag vi_l1_do_support_3ps has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_do_support_3ps",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_do_support_3ps"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_double_negative",
+      "sourceIssueId": "e7820046b3e64aa227162392",
+      "issue": "Taxonomy tag vi_l1_double_negative has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_double_negative",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_double_negative"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_each_singular",
+      "sourceIssueId": "1cd24f7a43446534c95cae51",
+      "issue": "Taxonomy tag vi_l1_each_singular has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_each_singular",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_each_singular"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_embedded_question_order",
+      "sourceIssueId": "6aa9882a77dba09ab8fd84ab",
+      "issue": "Taxonomy tag vi_l1_embedded_question_order has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_embedded_question_order",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_embedded_question_order"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_generic_plural",
+      "sourceIssueId": "6f635db7e6abf85bb2532a8f",
+      "issue": "Taxonomy tag vi_l1_generic_plural has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_generic_plural",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_generic_plural"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_geographical_article",
+      "sourceIssueId": "36731db5627406b72828e0af",
+      "issue": "Taxonomy tag vi_l1_geographical_article has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_geographical_article",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_geographical_article"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_gerund_after_verb",
+      "sourceIssueId": "afa2245c9c088086f0c8ba09",
+      "issue": "Taxonomy tag vi_l1_gerund_after_verb has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_gerund_after_verb",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_gerund_after_verb"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_if_will",
+      "sourceIssueId": "a2abcf7616bfcf54e99b198b",
+      "issue": "Taxonomy tag vi_l1_if_will has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_if_will",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_if_will"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_look_vs_see_vs_watch",
+      "sourceIssueId": "1af3ac418b56e6d60338442f",
+      "issue": "Taxonomy tag vi_l1_look_vs_see_vs_watch has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_look_vs_see_vs_watch",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_look_vs_see_vs_watch"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_make_let_bare",
+      "sourceIssueId": "426a4f611de63f36422a455e",
+      "issue": "Taxonomy tag vi_l1_make_let_bare has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_make_let_bare",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_make_let_bare"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_make_vs_do",
+      "sourceIssueId": "d534973c9cee52bc7dec999e",
+      "issue": "Taxonomy tag vi_l1_make_vs_do has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_make_vs_do",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_make_vs_do"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_many_with_uncount",
+      "sourceIssueId": "e64034bfc43199203fe9b810",
+      "issue": "Taxonomy tag vi_l1_many_with_uncount has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_many_with_uncount",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_many_with_uncount"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_missing_article",
+      "sourceIssueId": "57cdc372ce24ec88b3cc4f3a",
+      "issue": "Taxonomy tag vi_l1_missing_article has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_missing_article",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_missing_article"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_modal_perfect",
+      "sourceIssueId": "f515db26ed5169a1e270c232",
+      "issue": "Taxonomy tag vi_l1_modal_perfect has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_modal_perfect",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_modal_perfect"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_negative_inversion",
+      "sourceIssueId": "f5e5d011953df60a71091251",
+      "issue": "Taxonomy tag vi_l1_negative_inversion has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_negative_inversion",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_negative_inversion"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_no_article_generic",
+      "sourceIssueId": "41ea08dedec708c1d8a839ba",
+      "issue": "Taxonomy tag vi_l1_no_article_generic has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_no_article_generic",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_no_article_generic"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_one_of_the_singular",
+      "sourceIssueId": "afc9c809aa6cc85223881bfc",
+      "issue": "Taxonomy tag vi_l1_one_of_the_singular has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_one_of_the_singular",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_one_of_the_singular"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_passive_missing_be",
+      "sourceIssueId": "e912ebeacf0c345cd473b8d3",
+      "issue": "Taxonomy tag vi_l1_passive_missing_be has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_passive_missing_be",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_passive_missing_be"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_past_perfect_missing",
+      "sourceIssueId": "07e350d1ce171d6c353840bc",
+      "issue": "Taxonomy tag vi_l1_past_perfect_missing has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_past_perfect_missing",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_past_perfect_missing"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_phrasal_pronoun_order",
+      "sourceIssueId": "630c47886534d1a9e52a1de2",
+      "issue": "Taxonomy tag vi_l1_phrasal_pronoun_order has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_phrasal_pronoun_order",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_phrasal_pronoun_order"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_possessive_s_missing",
+      "sourceIssueId": "72a73b9fea04743f1b427c73",
+      "issue": "Taxonomy tag vi_l1_possessive_s_missing has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_possessive_s_missing",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_possessive_s_missing"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_preposition_transfer",
+      "sourceIssueId": "4c0aa4e900ee4654b720f418",
+      "issue": "Taxonomy tag vi_l1_preposition_transfer has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_preposition_transfer",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_preposition_transfer"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_present_perfect_vs_past",
+      "sourceIssueId": "79059ef2de16cfdfc6b19501",
+      "issue": "Taxonomy tag vi_l1_present_perfect_vs_past has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_present_perfect_vs_past",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_present_perfect_vs_past"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_reflexive_missing",
+      "sourceIssueId": "0f48416e031d48c89dde2c26",
+      "issue": "Taxonomy tag vi_l1_reflexive_missing has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_reflexive_missing",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_reflexive_missing"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_relative_pronoun",
+      "sourceIssueId": "c989c7a1a986a33236137c79",
+      "issue": "Taxonomy tag vi_l1_relative_pronoun has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_relative_pronoun",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_relative_pronoun"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_reported_speech",
+      "sourceIssueId": "440eeed1324d9d656ff6b02f",
+      "issue": "Taxonomy tag vi_l1_reported_speech has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_reported_speech",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_reported_speech"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_since_vs_for",
+      "sourceIssueId": "6e97f2e59c3b2e6768a27e78",
+      "issue": "Taxonomy tag vi_l1_since_vs_for has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_since_vs_for",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_since_vs_for"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_some_vs_any",
+      "sourceIssueId": "a36b4130abe1ee244c42e5dd",
+      "issue": "Taxonomy tag vi_l1_some_vs_any has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_some_vs_any",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_some_vs_any"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_subject_relative_omit",
+      "sourceIssueId": "b4f0b9f337aa8e2aa46faa1b",
+      "issue": "Taxonomy tag vi_l1_subject_relative_omit has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_subject_relative_omit",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_subject_relative_omit"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_subjunctive_were",
+      "sourceIssueId": "f0cc0f53509bd71ab4ea9c12",
+      "issue": "Taxonomy tag vi_l1_subjunctive_were has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_subjunctive_were",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_subjunctive_were"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_superlative_the",
+      "sourceIssueId": "92736cf1e03d8effc62184fa",
+      "issue": "Taxonomy tag vi_l1_superlative_the has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_superlative_the",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_superlative_the"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_tag_polarity",
+      "sourceIssueId": "5dd410f29f51b949813d6119",
+      "issue": "Taxonomy tag vi_l1_tag_polarity has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_tag_polarity",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_tag_polarity"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_tag_question",
+      "sourceIssueId": "d65b8332696bf02c43c09443",
+      "issue": "Taxonomy tag vi_l1_tag_question has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_tag_question",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_tag_question"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_time_expressions",
+      "sourceIssueId": "85ba4a3de06fa20a3a61efa2",
+      "issue": "Taxonomy tag vi_l1_time_expressions has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_time_expressions",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_time_expressions"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_to_infinitive_after_ing",
+      "sourceIssueId": "e58cdea8f7106bff6e8ea035",
+      "issue": "Taxonomy tag vi_l1_to_infinitive_after_ing has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_to_infinitive_after_ing",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_to_infinitive_after_ing"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_too_vs_very",
+      "sourceIssueId": "3254a0065296b8f91cf26732",
+      "issue": "Taxonomy tag vi_l1_too_vs_very has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_too_vs_very",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_too_vs_very"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_used_to_vs_be_used_to",
+      "sourceIssueId": "a829e1197f5689c41a42333d",
+      "issue": "Taxonomy tag vi_l1_used_to_vs_be_used_to has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_used_to_vs_be_used_to",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_used_to_vs_be_used_to"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "remediation:vi_l1_very_much_placement",
+      "sourceIssueId": "5c00f0b9a8b44a8adca3efb2",
+      "issue": "Taxonomy tag vi_l1_very_much_placement has no remediation room link",
+      "category": "missing_remediation_link",
+      "priority": "P1",
+      "taxonomyId": "vi_l1_very_much_placement",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_very_much_placement"
+      },
+      "owner": "Placement V3 content owner; Chau final approval for learner-facing paths",
+      "learnerImpact": "Potentially high if a weak or incorrect room is surfaced as remediation.",
+      "releaseImpact": "Blocks production-safe remediation claims and broad automated remediation rollout.",
+      "nextAction": "Choose approved-room, detector-only, needs-new-room, or reject-link.",
+      "reviewQuestion": "Does an existing room directly remediate this Vietnamese-L1 pattern, or should the ID remain detector-only until a better room exists?",
+      "status": "needs linguist review"
+    },
+    {
+      "id": "taxonomy-disposition:negation-no-not-placement",
+      "sourceIssueId": "33cb5e297c39968f7f75431c",
+      "issue": "Placement V3 L1 interference id negation-no-not-placement is not referenced by prompts or calibration entries",
+      "category": "unused_taxonomy_disposition",
+      "priority": "P2",
+      "taxonomyId": "negation-no-not-placement",
+      "file": "src/data/placement/v3/prompts/index.ts",
+      "evidence": {
+        "tag": "negation-no-not-placement"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low today; medium if expected to be active V3 prompt coverage.",
+      "releaseImpact": "Blocks clean full-coverage claims for the V3 L1 taxonomy.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "needs Chau review"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_adjective_order",
+      "sourceIssueId": "8e96bfdbc22aa19141cfc304",
+      "issue": "Taxonomy tag vi_l1_adjective_order is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_adjective_order",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_adjective_order"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_adverb_before_subject",
+      "sourceIssueId": "3098bfe7e176d5864ef30e9d",
+      "issue": "Taxonomy tag vi_l1_adverb_before_subject is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_adverb_before_subject",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_adverb_before_subject"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_another_vs_other",
+      "sourceIssueId": "ad06009022b10b4bc0626e69",
+      "issue": "Taxonomy tag vi_l1_another_vs_other is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_another_vs_other",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_another_vs_other"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_been_vs_gone",
+      "sourceIssueId": "7d04a129b3a0c7c5ad12c0a1",
+      "issue": "Taxonomy tag vi_l1_been_vs_gone is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_been_vs_gone",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_been_vs_gone"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_by_vs_with",
+      "sourceIssueId": "2bd6530b4d201a1416910148",
+      "issue": "Taxonomy tag vi_l1_by_vs_with is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_by_vs_with",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_by_vs_with"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_can_no_infinitive",
+      "sourceIssueId": "93697acf22a862f610050210",
+      "issue": "Taxonomy tag vi_l1_can_no_infinitive is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_can_no_infinitive",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_can_no_infinitive"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_comparative_double",
+      "sourceIssueId": "c244f6cee7525117190d5ab3",
+      "issue": "Taxonomy tag vi_l1_comparative_double is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_comparative_double",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_comparative_double"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_comparative_more_long",
+      "sourceIssueId": "eabf861fa60bbe24c479a91a",
+      "issue": "Taxonomy tag vi_l1_comparative_more_long is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_comparative_more_long",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_comparative_more_long"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_countable",
+      "sourceIssueId": "89485e376dd5ac24cff85a8a",
+      "issue": "Taxonomy tag vi_l1_countable is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_countable",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_countable"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_countable_much",
+      "sourceIssueId": "99346c63c135fb3c9fd61dab",
+      "issue": "Taxonomy tag vi_l1_countable_much is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_countable_much",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_countable_much"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_do_support_3ps",
+      "sourceIssueId": "bd12f8e8def50f5ab363755c",
+      "issue": "Taxonomy tag vi_l1_do_support_3ps is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_do_support_3ps",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_do_support_3ps"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_double_negative",
+      "sourceIssueId": "7cd3e61e0ae9ea205f18ff1f",
+      "issue": "Taxonomy tag vi_l1_double_negative is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_double_negative",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_double_negative"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_double_past",
+      "sourceIssueId": "b0eb85ede0fc6de5a6986c69",
+      "issue": "Taxonomy tag vi_l1_double_past is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_double_past",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_double_past"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_each_singular",
+      "sourceIssueId": "ad1c8501dd9aab58503a6908",
+      "issue": "Taxonomy tag vi_l1_each_singular is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_each_singular",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_each_singular"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_embedded_question_order",
+      "sourceIssueId": "071df22f4058e2a78085f626",
+      "issue": "Taxonomy tag vi_l1_embedded_question_order is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_embedded_question_order",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_embedded_question_order"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_everyone_plural",
+      "sourceIssueId": "023dc98f883e8aa9b551ba7c",
+      "issue": "Taxonomy tag vi_l1_everyone_plural is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_everyone_plural",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_everyone_plural"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_generic_plural",
+      "sourceIssueId": "4fe0eff0c767e6a3643dd362",
+      "issue": "Taxonomy tag vi_l1_generic_plural is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_generic_plural",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_generic_plural"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_gerund_after_verb",
+      "sourceIssueId": "801dd8b76bc9a9941b4d7f1d",
+      "issue": "Taxonomy tag vi_l1_gerund_after_verb is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_gerund_after_verb",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_gerund_after_verb"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_if_will",
+      "sourceIssueId": "8424d71404bc4f86ff846d95",
+      "issue": "Taxonomy tag vi_l1_if_will is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_if_will",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_if_will"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_look_vs_see_vs_watch",
+      "sourceIssueId": "16d1c12f43f21a52fc4d5659",
+      "issue": "Taxonomy tag vi_l1_look_vs_see_vs_watch is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_look_vs_see_vs_watch",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_look_vs_see_vs_watch"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_make_let_bare",
+      "sourceIssueId": "0c3a45af7bd808003559f5ad",
+      "issue": "Taxonomy tag vi_l1_make_let_bare is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_make_let_bare",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_make_let_bare"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_make_vs_do",
+      "sourceIssueId": "fcd65744ed7a357544c33665",
+      "issue": "Taxonomy tag vi_l1_make_vs_do is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_make_vs_do",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_make_vs_do"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_many_with_uncount",
+      "sourceIssueId": "1a54857116a78bfd3fa35383",
+      "issue": "Taxonomy tag vi_l1_many_with_uncount is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_many_with_uncount",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_many_with_uncount"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_modal_perfect",
+      "sourceIssueId": "c3897eb347a378c10d5cbb60",
+      "issue": "Taxonomy tag vi_l1_modal_perfect is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_modal_perfect",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_modal_perfect"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_negative_inversion",
+      "sourceIssueId": "a69128d8ec36581a3c2f045f",
+      "issue": "Taxonomy tag vi_l1_negative_inversion is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_negative_inversion",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_negative_inversion"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_one_of_the_singular",
+      "sourceIssueId": "7b7642027b6bde042e0719ca",
+      "issue": "Taxonomy tag vi_l1_one_of_the_singular is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_one_of_the_singular",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_one_of_the_singular"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_past_perfect_missing",
+      "sourceIssueId": "add055c828bf388db9847d5c",
+      "issue": "Taxonomy tag vi_l1_past_perfect_missing is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_past_perfect_missing",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_past_perfect_missing"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_phrasal_pronoun_order",
+      "sourceIssueId": "8df8a3d714c52fa1300974bd",
+      "issue": "Taxonomy tag vi_l1_phrasal_pronoun_order is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_phrasal_pronoun_order",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_phrasal_pronoun_order"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_possessive_gender",
+      "sourceIssueId": "cba872a3155024374ddb6c3a",
+      "issue": "Taxonomy tag vi_l1_possessive_gender is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_possessive_gender",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_possessive_gender"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_possessive_s_missing",
+      "sourceIssueId": "5a7caaa077d79cb5b87060e9",
+      "issue": "Taxonomy tag vi_l1_possessive_s_missing is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_possessive_s_missing",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_possessive_s_missing"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_present_perfect_vs_past",
+      "sourceIssueId": "91fdb8f59dab64cad496f25c",
+      "issue": "Taxonomy tag vi_l1_present_perfect_vs_past is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_present_perfect_vs_past",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_present_perfect_vs_past"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_reflexive_missing",
+      "sourceIssueId": "6588d68967bf80f1f28d29b2",
+      "issue": "Taxonomy tag vi_l1_reflexive_missing is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_reflexive_missing",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_reflexive_missing"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_relative_pronoun",
+      "sourceIssueId": "496d47f1c33bd2a71ade4398",
+      "issue": "Taxonomy tag vi_l1_relative_pronoun is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_relative_pronoun",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_relative_pronoun"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_reported_speech",
+      "sourceIssueId": "f3f572c4d0c75180f03bc437",
+      "issue": "Taxonomy tag vi_l1_reported_speech is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_reported_speech",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_reported_speech"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_since_vs_for",
+      "sourceIssueId": "d703b1dd2f04a57aad5b80a8",
+      "issue": "Taxonomy tag vi_l1_since_vs_for is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_since_vs_for",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_since_vs_for"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_some_vs_any",
+      "sourceIssueId": "564c7047a6cd92fd5d78968c",
+      "issue": "Taxonomy tag vi_l1_some_vs_any is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_some_vs_any",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_some_vs_any"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_subject_relative_omit",
+      "sourceIssueId": "21a86aafe1d08de13e893f33",
+      "issue": "Taxonomy tag vi_l1_subject_relative_omit is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_subject_relative_omit",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_subject_relative_omit"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_superlative_the",
+      "sourceIssueId": "b3bde83a1c7e59a166a962c1",
+      "issue": "Taxonomy tag vi_l1_superlative_the is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_superlative_the",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_superlative_the"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_tag_polarity",
+      "sourceIssueId": "48f6c3438c9291cccb88a7e1",
+      "issue": "Taxonomy tag vi_l1_tag_polarity is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_tag_polarity",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_tag_polarity"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_tag_question",
+      "sourceIssueId": "6964c9fbf6e2f397e65eccdf",
+      "issue": "Taxonomy tag vi_l1_tag_question is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_tag_question",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_tag_question"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_there_are_singular",
+      "sourceIssueId": "f9d2e88a303db406cb6b0af9",
+      "issue": "Taxonomy tag vi_l1_there_are_singular is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_there_are_singular",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_there_are_singular"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_time_expressions",
+      "sourceIssueId": "29f78faaf34de69aa618e825",
+      "issue": "Taxonomy tag vi_l1_time_expressions is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_time_expressions",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_time_expressions"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_to_infinitive_after_ing",
+      "sourceIssueId": "099f962de162bfcd9ed7659c",
+      "issue": "Taxonomy tag vi_l1_to_infinitive_after_ing is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_to_infinitive_after_ing",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_to_infinitive_after_ing"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_to_verb_confusion",
+      "sourceIssueId": "391c9bffcb93be3db4c02ebe",
+      "issue": "Taxonomy tag vi_l1_to_verb_confusion is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_to_verb_confusion",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_to_verb_confusion"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_too_vs_very",
+      "sourceIssueId": "b4bf15c97ca6c0f164ddd7b2",
+      "issue": "Taxonomy tag vi_l1_too_vs_very is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_too_vs_very",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_too_vs_very"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_used_to_vs_be_used_to",
+      "sourceIssueId": "4703ddd4abef3df69c4aff49",
+      "issue": "Taxonomy tag vi_l1_used_to_vs_be_used_to is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_used_to_vs_be_used_to",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_used_to_vs_be_used_to"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    },
+    {
+      "id": "taxonomy-disposition:vi_l1_very_much_placement",
+      "sourceIssueId": "f8953943d76c3c191a78d3ea",
+      "issue": "Taxonomy tag vi_l1_very_much_placement is not referenced by audited placement or V3 recommendation surfaces",
+      "category": "unused_taxonomy_disposition",
+      "priority": "informational",
+      "taxonomyId": "vi_l1_very_much_placement",
+      "file": "src/lib/weakness/weakness-catalog.ts",
+      "evidence": {
+        "tag": "vi_l1_very_much_placement"
+      },
+      "owner": "Placement V3 taxonomy owner",
+      "learnerImpact": "Low unless represented as active learner-facing coverage.",
+      "releaseImpact": "Blocks claims that every legacy taxonomy category is active.",
+      "nextAction": "Classify as runtime, detector-only, future-coverage, deprecated-candidate, or merge-candidate.",
+      "reviewQuestion": "Should this taxonomy ID be kept, wired into runtime coverage, marked detector-only/future, or deprecated?",
+      "status": "pending"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "runId": "a3-20260520T125944",
+  "timestamp": "2026-05-20T12:59:44.392Z",
+  "command": "pnpm tsx scripts/placement-v3/run-recommendation-graph-audit.ts",
+  "auditKinds": [
+    "recommendation_graph"
+  ],
+  "issues": [
+    {
+      "id": "cmVjb21tZW5kYXRpb25fZ3Jh",
+      "auditKind": "recommendation_graph",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "docs/placement-v3/calibration",
+      "message": "Required Placement V3 surface is missing on origin/main: docs/placement-v3/calibration",
+      "evidence": {
+        "surface": "docs/placement-v3/calibration"
+      }
+    },
+    {
+      "id": "cmVjb21tZW5kYXRpb25fZ3Jh",
+      "auditKind": "recommendation_graph",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "docs/placement-v3/taxonomy",
+      "message": "Required Placement V3 surface is missing on origin/main: docs/placement-v3/taxonomy",
+      "evidence": {
+        "surface": "docs/placement-v3/taxonomy"
+      }
+    },
+    {
+      "id": "cmVjb21tZW5kYXRpb25fZ3Jh",
+      "auditKind": "recommendation_graph",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "docs/placement-v3/prompt-library",
+      "message": "Required Placement V3 surface is missing on origin/main: docs/placement-v3/prompt-library",
+      "evidence": {
+        "surface": "docs/placement-v3/prompt-library"
+      }
+    },
+    {
+      "id": "cmVjb21tZW5kYXRpb25fZ3Jh",
+      "auditKind": "recommendation_graph",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "src/lib/recommendations",
+      "message": "Required Placement V3 surface is missing on origin/main: src/lib/recommendations",
+      "evidence": {
+        "surface": "src/lib/recommendations"
+      }
+    },
+    {
+      "id": "cmVjb21tZW5kYXRpb25fZ3Jh",
+      "auditKind": "recommendation_graph",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "supabase/functions/placement-v3-grade-writing/index.ts",
+      "message": "Required Placement V3 surface is missing on origin/main: supabase/functions/placement-v3-grade-writing/index.ts",
+      "evidence": {
+        "surface": "supabase/functions/placement-v3-grade-writing/index.ts"
+      }
+    },
+    {
+      "id": "cmVjb21tZW5kYXRpb25fZ3Jh",
+      "auditKind": "recommendation_graph",
+      "category": "missing_required_surface",
+      "severity": "blocker",
+      "file": "supabase/functions/placement-v3-session-orchestrator/index.ts",
+      "message": "Required Placement V3 surface is missing on origin/main: supabase/functions/placement-v3-session-orchestrator/index.ts",
+      "evidence": {
+        "surface": "supabase/functions/placement-v3-session-orchestrator/index.ts"
+      }
+    }
+  ],
+  "counts": {
+    "total": 6,
+    "blockers": 6,
+    "errors": 0,
+    "warnings": 0,
+    "info": 0,
+    "byCategory": {
+      "missing_required_surface": 6
+    }
+  },
+  "changedFilesSincePreviousRun": [
+    "package-lock.json",
+    "src/router/AppRouter.tsx"
+  ],
+  "auditedFiles": [
+    "docs/placement-v3/native-audio/native-permission-audit.md",
+    "src/lib/placement/questions.ts",
+    "src/lib/placement/cefrToRoom.ts",
+    "src/lib/weakness/weakness-catalog.ts",
+    "src/lib/weakness/recommendationEngine.ts",
+    "src/lib/weakness/micro-lessons.ts",
+    "supabase/functions/placement-session/types.ts",
+    "supabase/functions/placement-session/config.ts",
+    "supabase/functions/placement-session/engine/itemBank.ts",
+    "supabase/migrations/20260618000000_placement_items.sql",
+    "supabase/migrations/20260619000000_placement_sessions.sql"
+  ],
+  "missingRequiredSurfaces": [
+    "docs/placement-v3/calibration",
+    "docs/placement-v3/taxonomy",
+    "docs/placement-v3/prompt-library",
+    "src/lib/recommendations",
+    "supabase/functions/placement-v3-grade-writing/index.ts",
+    "supabase/functions/placement-v3-session-orchestrator/index.ts"
+  ]
+}
