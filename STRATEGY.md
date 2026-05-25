@@ -163,9 +163,11 @@ This list is not exhaustive of what MercyBlade may eventually support — it is 
   lessons**. No new authoring landed in the 2026-05-17 → 2026-05-19 window;
   the wave was hardening + remediation, not content.
 
-- **Roadmap progress:** still in the ~65-70% band (`.claude/roadmap.md`,
-  last formally recomputed 25 Apr / Round 9). Past two days advanced Steps
-  8 and 9 materially (see §7) without closing a formal +5% gate.
+- **Roadmap progress:** still in the ~65-70% band — primary doc is
+  `/ROADMAP.md` (root, owner-authored, PR #1177); `.claude/roadmap.md`
+  is the historical detail copy, last formally recomputed 25 Apr / Round 9.
+  Past two days advanced Steps 8 and 9 materially (see §7) without closing
+  a formal +5% gate.
 - **Schema generalization — language-pedagogy layer:** ✅ Phase 2 seam
   landed on 2026-05-17 — PR-A1 (#540), PR-A2 (#543), PR-A3 (#550). This is
   the foundation for the Duolingo-style pair-selection onboarding
@@ -207,6 +209,9 @@ This list is not exhaustive of what MercyBlade may eventually support — it is 
 ---
 
 ## 7. The Roadmap (Compressed from .claude/roadmap.md)
+
+> Canonical short form: `/ROADMAP.md`. This section preserves the
+> compressed inline copy for reading-in-context.
 
 | Step | % | Theme | Status | Weeks |
 |------|---|-------|--------|-------|
