@@ -54,6 +54,94 @@ describe('scorePronunciation', () => {
     expect(voice?.score).toBe(65);
   });
 
+  // ── Gap 2: Final consonant cluster simplification ─────────────────────
+  // Every Vietnamese learner produces these — Vietnamese permits no coda
+  // clusters. Adding the cluster rules expands partial-credit coverage
+  // to ~18 final-cluster patterns that previously scored 0.
+
+  it('cluster -nd → -n earns 0.80 ("find" → "fin")', () => {
+    const r = scorePronunciation({
+      target: 'i can find it',
+      recognized: 'i can fin it',
+    });
+    const find = r.wordScores.find((w) => w.word === 'find');
+    expect(find?.status).toBe('close');
+    expect(find?.score).toBe(80);
+  });
+
+  it('cluster -st → -s earns 0.75 ("last" → "las")', () => {
+    const r = scorePronunciation({
+      target: 'the last bus',
+      recognized: 'the las bus',
+    });
+    const last = r.wordScores.find((w) => w.word === 'last');
+    expect(last?.status).toBe('close');
+    expect(last?.score).toBe(75);
+  });
+
+  it('cluster -nt → -n earns 0.75 ("want" → "wan")', () => {
+    const r = scorePronunciation({
+      target: 'i want coffee',
+      recognized: 'i wan coffee',
+    });
+    const want = r.wordScores.find((w) => w.word === 'want');
+    expect(want?.status).toBe('close');
+    expect(want?.score).toBe(75);
+  });
+
+  it('cluster -mp → -m earns 0.75 ("jump" → "jum")', () => {
+    const r = scorePronunciation({
+      target: 'kids jump high',
+      recognized: 'kids jum high',
+    });
+    const jump = r.wordScores.find((w) => w.word === 'jump');
+    expect(jump?.status).toBe('close');
+    expect(jump?.score).toBe(75);
+  });
+
+  it('cluster -lp → -l earns 0.70 ("help" → "hel")', () => {
+    const r = scorePronunciation({
+      target: 'please help me',
+      recognized: 'please hel me',
+    });
+    const help = r.wordScores.find((w) => w.word === 'help');
+    expect(help?.status).toBe('close');
+    expect(help?.score).toBe(70);
+  });
+
+  it('cluster -ld → -l earns 0.75 ("told" → "tol")', () => {
+    const r = scorePronunciation({
+      target: 'she told me',
+      recognized: 'she tol me',
+    });
+    const told = r.wordScores.find((w) => w.word === 'told');
+    expect(told?.status).toBe('close');
+    expect(told?.score).toBe(75);
+  });
+
+  it('cluster -pt → -p earns 0.70 ("kept" → "kep")', () => {
+    const r = scorePronunciation({
+      target: 'he kept it',
+      recognized: 'he kep it',
+    });
+    const kept = r.wordScores.find((w) => w.word === 'kept');
+    expect(kept?.status).toBe('close');
+    expect(kept?.score).toBe(70);
+  });
+
+  it('existing -ed drop still fires (no cluster regression on "asked")', () => {
+    // 'asked' ends in 'sked' — would hit -sk$ → -s after stripping -ed,
+    // but the -ed$ rule fires first at 0.85 credit. Confirms the cluster
+    // rules don't shadow existing high-credit endings.
+    const r = scorePronunciation({
+      target: 'she asked me',
+      recognized: 'she ask me',
+    });
+    const asked = r.wordScores.find((w) => w.word === 'asked');
+    expect(asked?.status).toBe('close');
+    expect(asked?.score).toBe(85);
+  });
+
   it('VN-typical th→t substitution on "think" earns close', () => {
     const r = scorePronunciation({
       target: 'I think so',
