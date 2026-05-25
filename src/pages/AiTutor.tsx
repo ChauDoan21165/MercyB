@@ -60,7 +60,7 @@ import {
   type LearningEventProgressSummary,
 } from "@/lib/tutor/learningEventSummary";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
-import { detectL1Error } from "@/lib/feedback";
+import { detectL1Error, detectEnVnError, type L1DetectionResult } from "@/lib/feedback";
 import {
   getDetectorHint,
   hasShownHint,
@@ -437,6 +437,13 @@ export default function AiTutorPage() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<CorrectionResult | null>(null);
   const [detectorHint, setDetectorHint] = useState<DetectorHintContent | null>(null);
+  // EN→VN detector state. Populated when target === "vi" and the EN→VN
+  // pack (PR #1188) fires on the learner's Vietnamese sentence. No UI
+  // surface yet — this PR is a smoke wire-up only; a future PR will
+  // render this through a chip or feedback card analogous to the
+  // DetectorHintChip used for the VN→EN direction. Per dispatch: ONE
+  // consumer-site wire-up only.
+  const [_enVnDetection, setEnVnDetection] = useState<L1DetectionResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [practiceAnswer, setPracticeAnswer] = useState("");
   const [practiceFeedback, setPracticeFeedback] = useState<PracticeFeedback | null>(null);
@@ -614,6 +621,7 @@ export default function AiTutorPage() {
     setLoading(true);
     setResult(null);
     setDetectorHint(null);
+    setEnVnDetection(null);
     setPracticeAnswer("");
     setPracticeFeedback(null);
 
@@ -644,11 +652,10 @@ export default function AiTutorPage() {
 
     // Detector → chip surface (adult AI Tutor only; CorrectionMode is not
     // mounted in the Mercy Kids surface). Runs AFTER setResult so the LLM-
-    // path response is on screen first; never blocks. The Vietnamese-L1
-    // detector applies only when the learner is studying English (the
-    // bilingual AI Tutor also serves Vietnamese-for-foreigners users on
-    // target === "vi" — chip does not fire for them).
+    // path response is on screen first; never blocks.
     if (target === "en") {
+      // VN→EN direction: Vietnamese learner studying English. Detector
+      // surfaces as the DetectorHintChip below the LLM response.
       try {
         const detection = detectL1Error({
           userAnswer: trimmed,
@@ -658,6 +665,21 @@ export default function AiTutorPage() {
         if (hint && !hasShownHint(hint.tag)) {
           setDetectorHint(hint);
         }
+      } catch {
+        /* detector failure is non-fatal — response already on screen */
+      }
+    } else if (target === "vi") {
+      // EN→VN direction: English speaker learning Vietnamese. Smoke
+      // wire-up for the EN→VN detector pack (PR #1188). Result is
+      // captured in state for the future chip / feedback surface;
+      // this PR does not render it. Per dispatch — ONE consumer-site
+      // wire-up only.
+      try {
+        const detection = detectEnVnError({
+          userAnswer: trimmed,
+          expectedAnswer: corrected,
+        });
+        setEnVnDetection(detection);
       } catch {
         /* detector failure is non-fatal — response already on screen */
       }
