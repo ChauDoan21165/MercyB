@@ -15,6 +15,7 @@ import {
   getCurrentPeriodEnd,
   getCurrentPeriodStart,
 } from "./period-resolution.ts";
+import { getSandboxStripeWebhookIgnoreReason } from "./sandbox-event-policy.ts";
 import type {
   BillingEnvironment,
   DBClient,
@@ -80,6 +81,35 @@ function buildEventContext(
     event_created_at: getEventCreatedIso(event),
     ...(extra ?? {}),
   };
+}
+
+async function ignoreSandboxEventWithLog(
+  params: {
+    supabase: DBClient;
+    event: StripeWebhookEvent;
+    markStripeWebhookEventProcessed: MarkProcessedFn;
+    reason: string;
+    extra?: Record<string, unknown>;
+  },
+): Promise<void> {
+  logWebhook(
+    "warn",
+    "sandbox stripe webhook event ignored safely",
+    buildEventContext(params.event, {
+      reason: params.reason,
+      ...(params.extra ?? {}),
+    }),
+  );
+
+  await markProcessedWithLog(
+    params.supabase,
+    params.event,
+    params.markStripeWebhookEventProcessed,
+    {
+      reason: params.reason,
+      ...(params.extra ?? {}),
+    },
+  );
 }
 
 async function markProcessedWithLog(
@@ -395,10 +425,40 @@ async function processSubscriptionLikeEvent(params: {
     getCheckoutEmail(params.raw);
 
   if (!providerSubscriptionId) {
+    const ignoreReason = getSandboxStripeWebhookIgnoreReason(
+      params.environment,
+      "missing_subscription_id",
+    );
+    if (ignoreReason) {
+      await ignoreSandboxEventWithLog({
+        supabase: params.supabase,
+        event: params.event,
+        markStripeWebhookEventProcessed: params.markStripeWebhookEventProcessed,
+        reason: ignoreReason,
+        extra: { status: params.status },
+      });
+      return;
+    }
+
     throw new Error("Stripe event missing subscription id");
   }
 
   if (!providerCustomerId) {
+    const ignoreReason = getSandboxStripeWebhookIgnoreReason(
+      params.environment,
+      "missing_customer_id",
+    );
+    if (ignoreReason) {
+      await ignoreSandboxEventWithLog({
+        supabase: params.supabase,
+        event: params.event,
+        markStripeWebhookEventProcessed: params.markStripeWebhookEventProcessed,
+        reason: ignoreReason,
+        extra: { providerSubscriptionId, status: params.status },
+      });
+      return;
+    }
+
     throw new Error("Stripe event missing customer id");
   }
 
@@ -414,6 +474,26 @@ async function processSubscriptionLikeEvent(params: {
   });
 
   if (!userId) {
+    const ignoreReason = getSandboxStripeWebhookIgnoreReason(
+      params.environment,
+      "unresolved_user",
+    );
+    if (ignoreReason) {
+      await ignoreSandboxEventWithLog({
+        supabase: params.supabase,
+        event: params.event,
+        markStripeWebhookEventProcessed: params.markStripeWebhookEventProcessed,
+        reason: ignoreReason,
+        extra: {
+          providerSubscriptionId,
+          providerCustomerId,
+          hasEmail: Boolean(email),
+          status: params.status,
+        },
+      });
+      return;
+    }
+
     throw new Error("Could not resolve user for Stripe subscription event");
   }
 
@@ -634,6 +714,21 @@ export async function handleInvoicePaid({
   const invoiceEmail = getInvoiceEmail(raw);
 
   if (!providerSubscriptionId) {
+    const ignoreReason = getSandboxStripeWebhookIgnoreReason(
+      environment,
+      "invoice_missing_subscription_id",
+    );
+    if (ignoreReason) {
+      await ignoreSandboxEventWithLog({
+        supabase,
+        event,
+        markStripeWebhookEventProcessed,
+        reason: ignoreReason,
+        extra: { invoiceId: asNonEmptyStringOrNull(raw.id) },
+      });
+      return;
+    }
+
     throw new Error("invoice.paid missing subscription id");
   }
 
@@ -649,12 +744,50 @@ export async function handleInvoicePaid({
   });
 
   if (!userId) {
+    const ignoreReason = getSandboxStripeWebhookIgnoreReason(
+      environment,
+      "invoice_unresolved_user",
+    );
+    if (ignoreReason) {
+      await ignoreSandboxEventWithLog({
+        supabase,
+        event,
+        markStripeWebhookEventProcessed,
+        reason: ignoreReason,
+        extra: {
+          providerSubscriptionId,
+          previewCustomerId,
+          hasInvoiceEmail: Boolean(invoiceEmail),
+          invoiceId: asNonEmptyStringOrNull(raw.id),
+        },
+      });
+      return;
+    }
+
     throw new Error("Could not resolve user for invoice.paid");
   }
 
   const providerCustomerId = getResolvedCustomerId(raw, stripeSubscription);
 
   if (!providerCustomerId) {
+    const ignoreReason = getSandboxStripeWebhookIgnoreReason(
+      environment,
+      "invoice_missing_customer_id",
+    );
+    if (ignoreReason) {
+      await ignoreSandboxEventWithLog({
+        supabase,
+        event,
+        markStripeWebhookEventProcessed,
+        reason: ignoreReason,
+        extra: {
+          providerSubscriptionId,
+          invoiceId: asNonEmptyStringOrNull(raw.id),
+        },
+      });
+      return;
+    }
+
     throw new Error("invoice.paid missing customer id");
   }
 
@@ -765,6 +898,21 @@ export async function handleInvoicePaymentFailed({
   const invoiceEmail = getInvoiceEmail(raw);
 
   if (!providerSubscriptionId) {
+    const ignoreReason = getSandboxStripeWebhookIgnoreReason(
+      environment,
+      "invoice_missing_subscription_id",
+    );
+    if (ignoreReason) {
+      await ignoreSandboxEventWithLog({
+        supabase,
+        event,
+        markStripeWebhookEventProcessed,
+        reason: ignoreReason,
+        extra: { invoiceId: asNonEmptyStringOrNull(raw.id) },
+      });
+      return;
+    }
+
     throw new Error("invoice.payment_failed missing subscription id");
   }
 
@@ -780,12 +928,50 @@ export async function handleInvoicePaymentFailed({
   });
 
   if (!userId) {
+    const ignoreReason = getSandboxStripeWebhookIgnoreReason(
+      environment,
+      "invoice_unresolved_user",
+    );
+    if (ignoreReason) {
+      await ignoreSandboxEventWithLog({
+        supabase,
+        event,
+        markStripeWebhookEventProcessed,
+        reason: ignoreReason,
+        extra: {
+          providerSubscriptionId,
+          previewCustomerId,
+          hasInvoiceEmail: Boolean(invoiceEmail),
+          invoiceId: asNonEmptyStringOrNull(raw.id),
+        },
+      });
+      return;
+    }
+
     throw new Error("Could not resolve user for invoice.payment_failed");
   }
 
   const providerCustomerId = getResolvedCustomerId(raw, stripeSubscription);
 
   if (!providerCustomerId) {
+    const ignoreReason = getSandboxStripeWebhookIgnoreReason(
+      environment,
+      "invoice_missing_customer_id",
+    );
+    if (ignoreReason) {
+      await ignoreSandboxEventWithLog({
+        supabase,
+        event,
+        markStripeWebhookEventProcessed,
+        reason: ignoreReason,
+        extra: {
+          providerSubscriptionId,
+          invoiceId: asNonEmptyStringOrNull(raw.id),
+        },
+      });
+      return;
+    }
+
     throw new Error("invoice.payment_failed missing customer id");
   }
 
