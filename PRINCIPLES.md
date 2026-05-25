@@ -175,6 +175,10 @@ Claude's role is tactical execution and honest technical input. Strategy is Chau
 
 When a conversation drifts toward strategic decisions, the first move is: re-read STRATEGY.md sections 4 (audiences) and 5 (product), then ask whether the proposed direction contradicts what's documented.
 
+Real strategy change requires evidence Claude cannot supply: paying-user behaviour and retention data; competitor, pricing, or regulatory market signals; a shift in Chau's personal capacity (health, family, energy); or six months of execution against the current strategy. Conversation alone never qualifies. If a single chat session ends with a strategic pivot, the line has been crossed.
+
+**v3.0 of STRATEGY.md exists because an AI session crossed that line — it rewrote the product definition from a conversation it mistranslated.** That is the named cautionary tale. Surface drift, name the conflict with the documented strategy, and stop. Do not repeat it.
+
 ---
 
 ## 15. VERIFY BEFORE PROPAGATING "MEMORY FILE" CLAIMS
