@@ -295,9 +295,14 @@ const DevAudioTest = import.meta.env.DEV
   ? lazyWithRetry(() => import("@/pages/DevAudioTest"))
   : null;
 
-// Temporary scaffold (A7b) — Sentry sourcemap upload smoke test. Inert
-// until VITE_SENTRY_SMOKE_TEST_ENABLED=true AND ?confirm=throw. Removed
-// in a follow-up cleanup PR after symbolicated stack trace is verified.
+// Opt-in production probe — Sentry sourcemap symbolication smoke test.
+// Inert by default: the page renders a "disabled" notice unless BOTH
+// `VITE_SENTRY_SMOKE_TEST_ENABLED=true` is set in the build env AND the
+// visitor passes `?confirm=throw` on the URL. Kept on main so each
+// release has a one-click way to verify Sentry receives a symbolicated
+// frame pointing back to src/pages/SentrySmokeTest.tsx (rather than a
+// minified vendor stack). Safe to leave in place — no analytics, no
+// network calls until the explicit confirm.
 const SentrySmokeTest = lazyWithRetry(() => import("@/pages/SentrySmokeTest"));
 const AiTutorPage = lazyWithRetry(() => import("@/pages/AiTutor"));
 
