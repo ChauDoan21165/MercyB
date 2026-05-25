@@ -12,6 +12,7 @@ type Props = {
 
 type TodayLessonProps = Props & {
   onStartLesson?: (plan: TodayLessonPlan) => void;
+  startLabel?: string;
 };
 
 export default function TutorMemoryCard({ memoryLoaded, memory }: Props) {
@@ -99,7 +100,7 @@ export default function TutorMemoryCard({ memoryLoaded, memory }: Props) {
   );
 }
 
-export function TutorTodayLessonCard({ memoryLoaded, memory, onStartLesson }: TodayLessonProps) {
+export function TutorTodayLessonCard({ memoryLoaded, memory, onStartLesson, startLabel = "Start today's lesson" }: TodayLessonProps) {
   if (!memoryLoaded) return null;
   const plan = planTodayLesson(memory);
   const modeLabel = {
@@ -141,7 +142,7 @@ export function TutorTodayLessonCard({ memoryLoaded, memory, onStartLesson }: To
             onClick={() => onStartLesson?.(plan)}
             className="inline-flex min-h-10 items-center justify-center rounded-lg bg-emerald-700 px-4 py-2 text-sm font-black text-white shadow-sm transition hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
           >
-            Start today's lesson
+            {startLabel}
           </button>
         </div>
       </div>

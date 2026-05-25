@@ -45,6 +45,14 @@ import {
   type VietlishLogicDiagnosisResult,
 } from "@/lib/tutor/vietlishLogicEngine";
 import type { TodayLessonPlan } from "@/lib/tutor/todayLessonPlanner";
+import {
+  clearStudySessionState,
+  loadStudySessionState,
+  recordStudyPromptCompleted,
+  recordStudyRetry,
+  startStudySession,
+  type StudySessionState,
+} from "@/lib/tutor/studySessionState";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
 import ConversationMode, {
   type ConversationMessage,
@@ -70,6 +78,7 @@ type PracticeFeedback = {
 type ActiveTodayLesson = {
   plan: TodayLessonPlan;
   prompt: string;
+  resumed: boolean;
 };
 
 type TutorMode = Extract<TutorProductMode, "journey" | "grammar" | "speak" | "logic">;
@@ -215,6 +224,35 @@ function buildTodayLessonPrompt(plan: TodayLessonPlan, target: TutorTarget): str
   return `Write one short ${target.toUpperCase()} sentence about ${plan.nextFocus}.`;
 }
 
+function displaySafeTopic(topicId: string): string {
+  return topicId.replace(/-/g, " ").trim() || "starter sentence";
+}
+
+function buildResumedTodayLesson(state: StudySessionState, target: TutorTarget): ActiveTodayLesson {
+  const focus = displaySafeTopic(state.suggestedNextFocus || state.lastSafeTopicTag);
+  const plan: TodayLessonPlan = {
+    lessonTitle: `Continue ${focus} today`,
+    targetSkill: focus,
+    reason: "Resumed from local Today’s Lesson session state.",
+    steps: [
+      "Continue the current prompt.",
+      "Review Mercy's correction or explanation.",
+      "Retry the mistake once.",
+      "Apply one pattern in a new example.",
+      "Save the next focus.",
+    ],
+    estimatedMinutes: state.recommendedMode === "journey" ? 8 : 7,
+    suggestedMode: state.recommendedMode,
+    nextFocus: focus,
+  };
+
+  return {
+    plan,
+    prompt: buildTodayLessonPrompt(plan, target),
+    resumed: true,
+  };
+}
+
 function getLatestMercyMessage(messages: ConversationMessage[]): MercyConversationMessage | null {
   for (let index = messages.length - 1; index >= 0; index -= 1) {
     const message = messages[index];
@@ -230,7 +268,9 @@ type TodayLessonLoopPanelProps = {
   practiceFeedback: PracticeFeedback | null;
   latestMercyMessage: MercyConversationMessage | null;
   logicInsight: VietlishLogicDiagnosisResult | null;
+  sessionState: StudySessionState | null;
   memory: MemorySummary | null;
+  onRestart: () => void;
 };
 
 function TodayLessonLoopPanel({
@@ -240,7 +280,9 @@ function TodayLessonLoopPanel({
   practiceFeedback,
   latestMercyMessage,
   logicInsight,
+  sessionState,
   memory,
+  onRestart,
 }: TodayLessonLoopPanelProps) {
   const hasFeedback = Boolean(result || latestMercyMessage);
   const retryPrompt = result?.practicePrompt || latestMercyMessage?.nextQuestion || lesson.plan.steps[2];
@@ -255,7 +297,7 @@ function TodayLessonLoopPanel({
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
           <div className="text-xs font-black uppercase text-emerald-700">
-            5-minute lesson loop · {mode}
+            {lesson.resumed ? "Continue today's lesson" : "5-minute lesson loop"} · {mode}
           </div>
           <h2 className="mt-1 text-lg font-black leading-6 text-slate-950" style={{ overflowWrap: "break-word" }}>
             {lesson.plan.lessonTitle}
@@ -268,6 +310,25 @@ function TodayLessonLoopPanel({
           {lesson.plan.estimatedMinutes} min
         </span>
       </div>
+      {lesson.resumed && (
+        <div className="mt-3 rounded-xl border border-emerald-100 bg-emerald-50 px-3 py-2 text-sm font-bold text-emerald-900">
+          Resume lesson: your local progress is restored.
+        </div>
+      )}
+
+      {sessionState && (
+        <div
+          data-testid="ai-tutor-study-session-state"
+          className="mt-3 flex flex-wrap gap-2 text-[11px] font-black uppercase text-slate-600"
+        >
+          <span className="rounded-full bg-slate-50 px-2.5 py-1">Step {sessionState.currentStep}</span>
+          <span className="rounded-full bg-slate-50 px-2.5 py-1">Retries {sessionState.retryCount}</span>
+          <span className="rounded-full bg-slate-50 px-2.5 py-1">Completed {sessionState.completedPromptsCount}</span>
+          {sessionState.lastSafeTopicTag && (
+            <span className="rounded-full bg-slate-50 px-2.5 py-1">Topic {sessionState.lastSafeTopicTag}</span>
+          )}
+        </div>
+      )}
 
       <div className="mt-3 grid gap-2 text-xs font-bold text-slate-700 sm:grid-cols-3">
         <div className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2">
@@ -298,6 +359,14 @@ function TodayLessonLoopPanel({
           Memory next focus: {nextFocus}
         </div>
       )}
+
+      <button
+        type="button"
+        onClick={onRestart}
+        className="mt-3 inline-flex min-h-9 items-center justify-center rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-black text-slate-700 transition hover:bg-slate-50"
+      >
+        Restart lesson
+      </button>
     </section>
   );
 }
@@ -363,6 +432,7 @@ export default function AiTutorPage() {
   const [isFloatingShell, setIsFloatingShell] = useState(true);
   const [activeTodayLesson, setActiveTodayLesson] = useState<ActiveTodayLesson | null>(null);
   const [todayLessonLogicInsight, setTodayLessonLogicInsight] = useState<VietlishLogicDiagnosisResult | null>(null);
+  const [studySessionState, setStudySessionState] = useState<StudySessionState | null>(null);
 
   const tutorCopy: TutorCopy = getTutorCopy(target, explainLanguage);
   const aiTutorTabLabels: Record<TutorMode, string> = {
@@ -460,8 +530,11 @@ export default function AiTutorPage() {
   }, [mode, target, explainLanguage]);
 
   useEffect(() => {
-    setActiveTodayLesson(null);
+    const savedSession = loadStudySessionState(TUTOR_PRODUCT, target);
+    setActiveTodayLesson(savedSession ? buildResumedTodayLesson(savedSession, target) : null);
     setTodayLessonLogicInsight(null);
+    setStudySessionState(savedSession);
+    if (savedSession) setMode(savedSession.recommendedMode);
   }, [target]);
 
   useEffect(() => {
@@ -509,6 +582,12 @@ export default function AiTutorPage() {
     });
     const lessonInsight = activeTodayLesson ? diagnoseVietlishLogicWithMatch(trimmed) : null;
     setTodayLessonLogicInsight(lessonInsight?.isKnownPattern ? lessonInsight : null);
+    if (activeTodayLesson && studySessionState) {
+      setStudySessionState(recordStudyPromptCompleted(studySessionState, {
+        safeTopicTag: lessonInsight?.patternId || activeTodayLesson.plan.nextFocus,
+        suggestedNextFocus: activeTodayLesson.plan.nextFocus,
+      }));
+    }
     setLoading(false);
 
     setLastSavedId(turn.id);
@@ -527,6 +606,12 @@ export default function AiTutorPage() {
     setPracticeFeedback(null);
     await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
     setPracticeFeedback(MOCK_RESULTS_BY_TARGET[target].feedback);
+    if (activeTodayLesson && studySessionState) {
+      setStudySessionState(recordStudyRetry(studySessionState, {
+        safeTopicTag: activeTodayLesson.plan.nextFocus,
+        suggestedNextFocus: activeTodayLesson.plan.nextFocus,
+      }));
+    }
     setPracticeLoading(false);
     if (lastSavedId) markPracticed(lastSavedId, TUTOR_PRODUCT, target).then(() => loadMemory()).catch(() => {});
   };
@@ -550,6 +635,17 @@ export default function AiTutorPage() {
     setConversationMessages((current) => [...current, mercyMessage]);
     const lessonInsight = activeTodayLesson ? diagnoseVietlishLogicWithMatch(trimmed) : null;
     setTodayLessonLogicInsight(lessonInsight?.isKnownPattern ? lessonInsight : null);
+    if (activeTodayLesson && studySessionState) {
+      const update = {
+        safeTopicTag: lessonInsight?.patternId || activeTodayLesson.plan.nextFocus,
+        suggestedNextFocus: activeTodayLesson.plan.nextFocus,
+      };
+      setStudySessionState(
+        studySessionState.completedPromptsCount > 0
+          ? recordStudyRetry(studySessionState, update)
+          : recordStudyPromptCompleted(studySessionState, update),
+      );
+    }
     setConversationLoading(false);
 
     const id = `conv-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`;
@@ -590,10 +686,15 @@ export default function AiTutorPage() {
   };
 
   const handleStartTodayLesson = (plan: TodayLessonPlan) => {
+    if (activeTodayLesson && studySessionState) {
+      setMode(studySessionState.recommendedMode);
+      return;
+    }
     setMode(plan.suggestedMode);
     setActiveTodayLesson({
       plan,
       prompt: buildTodayLessonPrompt(plan, target),
+      resumed: false,
     });
     setTodayLessonLogicInsight(null);
     setInput("");
@@ -603,7 +704,26 @@ export default function AiTutorPage() {
     setPracticeAnswer("");
     setPracticeFeedback(null);
     setSpeakingMessageId(null);
+    setStudySessionState(startStudySession({
+      product: TUTOR_PRODUCT,
+      targetLanguage: target,
+      safeTopicTag: plan.nextFocus,
+      suggestedNextFocus: plan.nextFocus,
+      recommendedMode: plan.suggestedMode,
+    }));
     tts.stop();
+  };
+
+  const handleRestartTodayLesson = () => {
+    clearStudySessionState(TUTOR_PRODUCT, target);
+    setActiveTodayLesson(null);
+    setStudySessionState(null);
+    setTodayLessonLogicInsight(null);
+    setResult(null);
+    setError(null);
+    setPracticeAnswer("");
+    setPracticeFeedback(null);
+    setConversationInput("");
   };
 
   return (
@@ -627,6 +747,7 @@ export default function AiTutorPage() {
             memoryLoaded={memoryLoaded}
             memory={memory}
             onStartLesson={handleStartTodayLesson}
+            startLabel={activeTodayLesson ? "Resume lesson" : "Start today's lesson"}
           />
           <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} />
         </>
@@ -642,7 +763,9 @@ export default function AiTutorPage() {
           practiceFeedback={practiceFeedback}
           latestMercyMessage={latestMercyMessage}
           logicInsight={todayLessonLogicInsight}
+          sessionState={studySessionState}
           memory={memory}
+          onRestart={handleRestartTodayLesson}
         />
       )}
       {mode === "grammar" ? (
