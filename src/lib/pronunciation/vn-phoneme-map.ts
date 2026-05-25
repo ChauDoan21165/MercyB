@@ -54,6 +54,14 @@ export const PHONEME_SUBSTITUTIONS: PhonemeSubRule[] = [
   { target: 'v',  substitute: 'b',  credit: 0.70,
     labelEn: 'v → b (lip + teeth for v, not two lips)',
     labelVi: 'v → b ("v" cần răng chạm môi, không phải hai môi)' },
+  // v → y (Southern Vietnamese dialect: /v/ realized as a yod-glide [j].
+  // A Saigon learner saying English "very" outputs "yery"; the v→b rule
+  // doesn't catch that. Sourced from docs/l1-taxonomies/vn-phoneme-gaps.md
+  // Gap 1. Dialect-blind by design — Northern speakers rarely produce this
+  // so the false-positive cost is near zero.)
+  { target: 'v',  substitute: 'y',  credit: 0.65,
+    labelEn: 'v → y (Southern VN /v/ becomes a y-glide)',
+    labelVi: 'v → y (giọng miền Nam: âm "v" thành âm "i" lướt)' },
   // z → s (zebra → sebra, was → wass)
   { target: 'z',  substitute: 's',  credit: 0.80,
     labelEn: 'z → s (add a buzz for z)',
@@ -95,7 +103,7 @@ export const WORD_OVERRIDES: Record<
   three:   [{ variant: 'tree',  credit: 0.75 }, { variant: 'free',  credit: 0.60 }],
   that:    [{ variant: 'dat',   credit: 0.75 }, { variant: 'zat',   credit: 0.60 }],
   the:     [{ variant: 'da',    credit: 0.75 }, { variant: 'de',    credit: 0.75 }],
-  very:    [{ variant: 'bery',  credit: 0.70 }],
+  very:    [{ variant: 'bery',  credit: 0.70 }, { variant: 'yery',  credit: 0.65 }],
   live:    [{ variant: 'libe',  credit: 0.70 }, { variant: 'lib',   credit: 0.65 }],
   love:    [{ variant: 'lob',   credit: 0.65 }, { variant: 'lop',   credit: 0.55 }],
   she:     [{ variant: 'se',    credit: 0.70 }],
@@ -105,6 +113,14 @@ export const WORD_OVERRIDES: Record<
   little:  [{ variant: 'lit-tuh', credit: 0.80 }, { variant: 'littuh', credit: 0.80 }],
   people:  [{ variant: 'pipo',  credit: 0.70 }, { variant: 'peepo', credit: 0.75 }],
   water:   [{ variant: 'wader', credit: 0.80 }, { variant: 'woder', credit: 0.75 }],
+  // Southern Vietnamese /v/ → [j] yod-glide. From the C3 gap-audit (see
+  // docs/l1-taxonomies/vn-phoneme-gaps.md Gap 1). Marginal 0.55 entries
+  // for `have` and `love` were authored but dropped before wiring per
+  // the wrong-floor contract above.
+  voice:   [{ variant: 'yois',  credit: 0.65 }],
+  visit:   [{ variant: 'yisit', credit: 0.65 }],
+  video:   [{ variant: 'yidio', credit: 0.65 }],
+  vote:    [{ variant: 'yote',  credit: 0.65 }],
 };
 
 /**
