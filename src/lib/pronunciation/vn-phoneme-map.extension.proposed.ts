@@ -80,26 +80,7 @@ export const PROPOSED_WORD_OVERRIDES: Record<
   // history for the merge.
 
   // ── Gap 3: Vowel quality drift ──────────────────────────────────────
-  sheep:   [{ variant: 'ship',     credit: 0.65 },
-            { variant: 'sip',      credit: 0.55 }],
-  feet:    [{ variant: 'fit',      credit: 0.65 }],
-  seat:    [{ variant: 'sit',      credit: 0.65 }],
-  leave:   [{ variant: 'live',     credit: 0.65 },
-            { variant: 'lib',      credit: 0.55 }],
-  fool:    [{ variant: 'full',     credit: 0.70 },
-            { variant: 'fu',       credit: 0.55 }],
-  pool:    [{ variant: 'pull',     credit: 0.70 },
-            { variant: 'pu',       credit: 0.55 }],
-  bad:     [{ variant: 'bed',      credit: 0.65 },
-            { variant: 'bet',      credit: 0.55 }],
-  bag:     [{ variant: 'beg',      credit: 0.65 }],
-  cat:     [{ variant: 'ket',      credit: 0.55 }], // TODO: verify
-  cup:     [{ variant: 'cop',      credit: 0.65 },
-            { variant: 'kap',      credit: 0.55 }],
-  bird:    [{ variant: 'bert',     credit: 0.55 },
-            { variant: 'bet',      credit: 0.50 }], // below floor — review-only
-  about:   [{ variant: 'abowt',    credit: 0.70 },
-            { variant: 'ebowt',    credit: 0.70 }],
+  // WIRED into vn-phoneme-map.ts. See git history.
 
   // ── Gap 4: Word stress (limited — see report) ───────────────────────
   computer:   [{ variant: 'kompiuter',  credit: 0.70 },
