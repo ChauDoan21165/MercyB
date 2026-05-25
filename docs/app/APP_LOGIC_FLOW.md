@@ -280,6 +280,15 @@ These boundaries apply across the app:
 
 If a change needs provider access, cloud memory sync, transcript storage, raw audio storage, or Placement writeback, it must be explicitly approved as a separate task.
 
+### Placement writeback — directional carve-out
+
+The "no Placement writeback" invariant is a **directional contract**, not a no-writes contract. It governs *who* may write to placement state, not *whether* placement state is ever written.
+
+- **Permitted:** Placement writeback FROM within the placement edge function ITSELF (writing to `profiles.placement_*` on completion — `placement_cefr`, `placement_starting_room`, `placement_completed_at`, `placement_weaknesses`, `placement_history`) is permitted as part of the placement flow's own lifecycle.
+- **Prohibited:** The invariant continues to prohibit writebacks FROM other surfaces (Study OS, `mercy_user_facts`, episodic memory, AI Tutor, Mercy Kids, safe learning events) INTO placement state.
+
+In short: the placement engine is the authoritative writer of its own results; everything else reads them. This makes `placement-v3-session`'s `profiles` snapshot write (matching the v2 pattern at `supabase/functions/placement-session/index.ts:361–368`) compliant; an AI Tutor or memory-layer inferring CEFR and patching `profiles.placement_cefr` would not be.
+
 ## Do / Do Not
 
 | Do | Do Not |

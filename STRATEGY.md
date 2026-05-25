@@ -386,7 +386,7 @@ Duolingo is already strong at lessons, streaks, gamification, AI roleplay, and b
 - ❌ Add unsafe memory sync
 - ❌ Expose provider secrets client-side
 - ❌ Store raw audio or full transcripts
-- ❌ Do Placement writeback
+- ❌ Add Placement writeback **from other surfaces into placement state** (Study OS, mercy_user_facts, episodic memory — see "Placement Writeback Boundary" below for the directional carve-out)
 - ❌ Turn Study OS event summaries into indirect semantic memory sync
 
 ### Winning sentence
@@ -401,6 +401,15 @@ Study OS needs safe behavioral signals, but those signals are not the same thing
 - Study OS event summaries = local, time-windowed behavioral summaries: what the learner has been doing recently in study flows.
 
 Study OS event summaries may be derived from #1109 safe local learning events only as counts, booleans, timestamps, and other safe aggregates. They must not contain raw learner text, corrected sentence text, full transcripts, raw audio, PII, child identity, Placement result/status/writeback, Supabase sync, or external analytics.
+
+### Placement Writeback Boundary
+
+The "no Placement writeback" invariant is a **directional contract**, not a no-writes contract. It governs *who is allowed to write to placement state*, not *whether placement state is ever written*.
+
+- ✅ **Permitted:** the placement edge function ITSELF writing to `profiles.placement_*` columns on its own completion (`placement_cefr`, `placement_starting_room`, `placement_completed_at`, `placement_weaknesses`, `placement_history`). This is part of the placement flow's own lifecycle — the engine recording the result of the session it just ran.
+- ❌ **Prohibited:** writebacks FROM other surfaces INTO placement state. Study OS, `mercy_user_facts`, episodic memory, AI Tutor, Mercy Kids, safe learning events — none of these may write to `profiles.placement_*`, `placement_sessions`, or `placement_responses`. Inferring a placement level or weakness from observed behaviour and then patching placement state is exactly the cross-surface coupling this invariant exists to prevent.
+
+The placement engine is the authoritative writer of its own results; everything else reads them.
 
 Future Study OS UI may map those local signals into progress, momentum, weak-topic, or next-focus displays. It must not merge them into `mercy_user_facts`, use them as an indirect memory sync layer, or send them to an admin dashboard unless a separate privacy-reviewed design explicitly approves that change.
 
