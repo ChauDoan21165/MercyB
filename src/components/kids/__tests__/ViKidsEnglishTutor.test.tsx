@@ -20,7 +20,7 @@ describe("ViKidsEnglishTutor", () => {
   it("renders only the two kids-specific tabs", () => {
     render(<ViKidsEnglishTutor />);
 
-    expect(screen.getByRole("button", { name: "Mercy Teacher" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Pick a Picture" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Mercy Speak" })).toBeInTheDocument();
 
     // Old 4-mode adult tabs must NOT be present anymore.
@@ -30,7 +30,7 @@ describe("ViKidsEnglishTutor", () => {
     expect(screen.queryByRole("button", { name: "Logic" })).not.toBeInTheDocument();
   });
 
-  it("defaults to the Mercy Teacher tab (its content mounts on load)", () => {
+  it("defaults to the Pick a Picture tab (its content mounts on load)", () => {
     render(<ViKidsEnglishTutor />);
 
     expect(screen.getByTestId("vi-kids-mercy-teacher-mount")).toBeInTheDocument();
