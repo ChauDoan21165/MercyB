@@ -33,6 +33,15 @@ vi.mock("@/lib/platform", () => ({
   getPlatform: () => platform(),
 }));
 
+// ── Sentry-activation mock ──────────────────────────────────────────
+// NativeBootstrap calls activateSentry("native-cold-start") on every
+// native session so anon mobile users get Sentry before the first
+// error. The mock lets us assert call shape without booting the SDK.
+const activateSentryMock = vi.fn();
+vi.mock("@/lib/monitoring/sentryActivation", () => ({
+  activateSentry: (reason: string) => activateSentryMock(reason),
+}));
+
 // Imported after the mocks above are registered.
 import NativeBootstrap from "@/components/native/NativeBootstrap";
 
@@ -42,10 +51,11 @@ beforeEach(() => {
   setResizeMode.mockClear();
   isNative.mockReset();
   platform.mockReset();
+  activateSentryMock.mockClear();
 });
 
 describe("NativeBootstrap — N4 native UX bootstrap", () => {
-  it("is a hard no-op on web (no plugin calls)", async () => {
+  it("is a hard no-op on web (no plugin calls, no Sentry activation)", async () => {
     isNative.mockReturnValue(false);
     platform.mockReturnValue("web");
 
@@ -56,6 +66,20 @@ describe("NativeBootstrap — N4 native UX bootstrap", () => {
     expect(splashHide).not.toHaveBeenCalled();
     expect(setStyle).not.toHaveBeenCalled();
     expect(setResizeMode).not.toHaveBeenCalled();
+    // Web's route-gating in main.tsx + sentryActivation owns Sentry init
+    // on web — NativeBootstrap must never preempt it.
+    expect(activateSentryMock).not.toHaveBeenCalled();
+  });
+
+  it("activates Sentry on native cold-start with the native reason", async () => {
+    isNative.mockReturnValue(true);
+    platform.mockReturnValue("ios");
+
+    render(<NativeBootstrap />);
+    // Activation is synchronous on mount inside the native branch —
+    // assert without waiting for the async plugin chain.
+    expect(activateSentryMock).toHaveBeenCalledTimes(1);
+    expect(activateSentryMock).toHaveBeenCalledWith("native-cold-start");
   });
 
   it("on iOS: sets the status-bar style and hides the splash; no Android keyboard call", async () => {
