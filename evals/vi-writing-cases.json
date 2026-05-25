@@ -1,0 +1,75 @@
+{
+  "_meta": {
+    "fixture_name": "vi-writing-cases",
+    "schema_version": 1,
+    "purpose": "Placeholder writing-level eval cases — paragraph cohesion, register, discourse-pragmatic transfer. The current L1 detector is sentence-level grammar only, so most cases here are expected_failure (gap markers) waiting for C2's writing-quality coverage.",
+    "source_notes": [
+      "Seed cases authored by C5 (2026-05-24) for harness shape validation. C2 will populate the bulk with corpus-grounded writing samples.",
+      "Family names anticipate C2's likely categories (register-overformal, paragraph-topic-fronting, redundant-calque, apology-explanation-order, formality-mismatch) — they are not detector tag names. C2 may rename.",
+      "All entries are marked source honestly: 'invented' or 'docs/placement-vn-l1-interference-taxonomy.md' where the pattern is rooted in existing taxonomy work.",
+      "Mark NEW corpus-sourced cases with source: 'corpus' when C2 swaps them in."
+    ]
+  },
+  "cases": [
+    {
+      "id": "vi-write-001",
+      "family": "register-overformal",
+      "expected_rule_id": "vi_l1_register_overformal",
+      "expected_phenomenon": "vi_l1_register_overformal",
+      "severity": "low",
+      "input": "Respected sir, I would like to express my profound gratitude for your kind email.",
+      "expected_correction": "Thanks for the email.",
+      "expected_category": "expected_failure",
+      "source": "docs/placement-vn-l1-interference-taxonomy.md",
+      "notes": "DETECTOR CANDIDATE — register-overformal (Pragmatics §formality-calibration). No rule today; sentence-level detector can't see this."
+    },
+    {
+      "id": "vi-write-002",
+      "family": "paragraph-topic-fronting",
+      "expected_rule_id": "vi_l1_paragraph_topic_fronting",
+      "expected_phenomenon": "vi_l1_paragraph_topic_fronting",
+      "severity": "medium",
+      "input": "About English, I think it is very important for my future career.",
+      "expected_correction": "I think English is very important for my future career.",
+      "expected_category": "expected_failure",
+      "source": "docs/placement-vn-l1-interference-taxonomy.md",
+      "notes": "DETECTOR CANDIDATE — discourse-level fronting (Discourse §topic-comment-paragraph-shape)."
+    },
+    {
+      "id": "vi-write-003",
+      "family": "redundant-calque",
+      "expected_rule_id": "vi_l1_redundant_calque",
+      "expected_phenomenon": "vi_l1_redundant_calque",
+      "severity": "low",
+      "input": "In my opinion, I think that learning English is very useful.",
+      "expected_correction": "I think learning English is very useful.",
+      "expected_category": "expected_failure",
+      "source": "invented",
+      "notes": "DETECTOR CANDIDATE — `theo ý kiến của tôi` + `tôi nghĩ` calque stacked. Not in current taxonomy."
+    },
+    {
+      "id": "vi-write-004",
+      "family": "apology-explanation-order",
+      "expected_rule_id": "vi_l1_apology_explanation_order",
+      "expected_phenomenon": "vi_l1_apology_explanation_order",
+      "severity": "medium",
+      "input": "The traffic was terrible because of an accident on the highway, so I am late.",
+      "expected_correction": "Sorry I'm late — there was an accident on the highway.",
+      "expected_category": "expected_failure",
+      "source": "docs/placement-vn-l1-interference-taxonomy.md",
+      "notes": "DETECTOR CANDIDATE — explanation-before-apology (Pragmatics §apology-explanation-before-responsibility)."
+    },
+    {
+      "id": "vi-write-005",
+      "family": "connector-stacking",
+      "expected_rule_id": "vi_l1_connector_stacking",
+      "expected_phenomenon": "vi_l1_connector_stacking",
+      "severity": "low",
+      "input": "So, I went to the store. So, I bought some bread. So, I went home.",
+      "expected_correction": "I went to the store, bought some bread, and went home.",
+      "expected_category": "expected_failure",
+      "source": "docs/placement-vn-l1-interference-taxonomy.md",
+      "notes": "DETECTOR CANDIDATE — mechanical connector stacking (Discourse §connector-overuse-and-stacking)."
+    }
+  ]
+}
