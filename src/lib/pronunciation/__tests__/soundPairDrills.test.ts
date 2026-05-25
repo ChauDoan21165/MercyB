@@ -15,23 +15,29 @@ import {
 } from '../soundPairDrills';
 import {
   PROBLEM_PAIRS_ED_ENDINGS,
+  PROBLEM_PAIRS_INTONATION,
   PROBLEM_PAIRS_R_L,
   PROBLEM_PAIRS_S_PLURALS,
+  PROBLEM_PAIRS_STRESS,
   PROBLEM_PAIRS_TH_T,
 } from '../vn-phoneme-map';
 
 describe('DRILL_CATEGORIES', () => {
-  it('exposes the four expected categories in a stable order', () => {
-    expect([...DRILL_CATEGORIES]).toEqual(['th-t', 'r-l', 'ed', 's']);
+  it('exposes the six expected categories in a stable order', () => {
+    expect([...DRILL_CATEGORIES]).toEqual([
+      'th-t', 'r-l', 'ed', 's', 'stress', 'intonation',
+    ]);
   });
 });
 
 describe('PROBLEM_PAIRS_* catalogs', () => {
-  it('each set has at least 8 pairs', () => {
+  it('each set has at least 6 pairs (stress/intonation) or 8 (older sets)', () => {
     expect(PROBLEM_PAIRS_TH_T.length).toBeGreaterThanOrEqual(8);
     expect(PROBLEM_PAIRS_R_L.length).toBeGreaterThanOrEqual(8);
     expect(PROBLEM_PAIRS_ED_ENDINGS.length).toBeGreaterThanOrEqual(8);
     expect(PROBLEM_PAIRS_S_PLURALS.length).toBeGreaterThanOrEqual(8);
+    expect(PROBLEM_PAIRS_STRESS.length).toBeGreaterThanOrEqual(6);
+    expect(PROBLEM_PAIRS_INTONATION.length).toBeGreaterThanOrEqual(6);
   });
 
   it('each pair has a non-empty VN why-confused explanation', () => {
@@ -40,6 +46,8 @@ describe('PROBLEM_PAIRS_* catalogs', () => {
       ...PROBLEM_PAIRS_R_L,
       ...PROBLEM_PAIRS_ED_ENDINGS,
       ...PROBLEM_PAIRS_S_PLURALS,
+      ...PROBLEM_PAIRS_STRESS,
+      ...PROBLEM_PAIRS_INTONATION,
     ];
     for (const p of all) {
       expect(p.target.trim().length).toBeGreaterThan(0);
@@ -54,10 +62,17 @@ describe('PROBLEM_PAIRS_* catalogs', () => {
       ...PROBLEM_PAIRS_R_L,
       ...PROBLEM_PAIRS_ED_ENDINGS,
       ...PROBLEM_PAIRS_S_PLURALS,
+      ...PROBLEM_PAIRS_STRESS,
+      ...PROBLEM_PAIRS_INTONATION,
     ];
     for (const p of all) {
       expect(p.target.toLowerCase()).not.toBe(p.contrast.toLowerCase());
     }
+  });
+
+  it('stress pool uses phoneme="word-stress" and intonation pool uses phoneme="intonation"', () => {
+    for (const p of PROBLEM_PAIRS_STRESS) expect(p.phoneme).toBe('word-stress');
+    for (const p of PROBLEM_PAIRS_INTONATION) expect(p.phoneme).toBe('intonation');
   });
 });
 

@@ -17,19 +17,23 @@
 
 import {
   PROBLEM_PAIRS_ED_ENDINGS,
+  PROBLEM_PAIRS_INTONATION,
   PROBLEM_PAIRS_R_L,
   PROBLEM_PAIRS_S_PLURALS,
+  PROBLEM_PAIRS_STRESS,
   PROBLEM_PAIRS_TH_T,
   type ProblemPair,
 } from './vn-phoneme-map';
 
-export type DrillCategory = 'th-t' | 'r-l' | 'ed' | 's';
+export type DrillCategory = 'th-t' | 'r-l' | 'ed' | 's' | 'stress' | 'intonation';
 
 export const DRILL_CATEGORIES: readonly DrillCategory[] = [
   'th-t',
   'r-l',
   'ed',
   's',
+  'stress',
+  'intonation',
 ] as const;
 
 const CATEGORY_POOLS: Record<DrillCategory, ProblemPair[]> = {
@@ -37,6 +41,8 @@ const CATEGORY_POOLS: Record<DrillCategory, ProblemPair[]> = {
   'r-l': PROBLEM_PAIRS_R_L,
   ed: PROBLEM_PAIRS_ED_ENDINGS,
   s: PROBLEM_PAIRS_S_PLURALS,
+  stress: PROBLEM_PAIRS_STRESS,
+  intonation: PROBLEM_PAIRS_INTONATION,
 };
 
 export type DrillOptions = {
