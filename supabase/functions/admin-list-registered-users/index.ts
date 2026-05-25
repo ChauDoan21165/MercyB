@@ -14,6 +14,8 @@
 // check → service-role query for the actual data.
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { captureEdgeError } from "../_shared/sentry.ts";
+import { adminListRegisteredUsersRequestSchema } from "../_shared/adminSchemas.ts";
 
 type SubscriptionStatus = "active" | "trialing" | "free" | "unknown";
 
@@ -136,13 +138,51 @@ Deno.serve(async (req) => {
     }
 
     // ── Read pagination ────────────────────────────────────────────────
-    let body: ListBody = {};
+    // ── A11b: request-payload runtime validation ────────────────────────
+    // Auth + admin gate ALREADY passed above. Replaces the un-validated
+    // `as ListBody` cast. Empty body still defaults to {} (preserving
+    // existing behavior); malformed JSON is still tolerated (try/catch
+    // returns {}); only structurally bad shapes (e.g. page="2", perPage
+    // negative) get rejected with 400 + Sentry beacon. clampPerPage /
+    // clampPage remain in place — they handle the upper-bound clamp at
+    // 500 (handler-side policy) on top of the schema's max 1000
+    // (Supabase Auth API hard ceiling).
+    let parsedJson: unknown = {};
     try {
-      body = (await req.json()) as ListBody;
+      parsedJson = await req.json();
     } catch {
-      // empty body is OK — defaults applied below
-      body = {};
+      parsedJson = {};
     }
+    const bodyParse = adminListRegisteredUsersRequestSchema.safeParse(parsedJson);
+    if (!bodyParse.success) {
+      const topLevelKeys =
+        parsedJson && typeof parsedJson === "object" && !Array.isArray(parsedJson)
+          ? Object.keys(parsedJson as Record<string, unknown>)
+          : [];
+      await captureEdgeError(
+        new Error("admin-list-registered-users request failed zod validation"),
+        {
+          functionName: "admin-list-registered-users",
+          userId: userData.user.id,
+          extra: {
+            stage: "request-zod",
+            zodIssues: bodyParse.error.issues.map((iss) => ({
+              path: iss.path.join("."),
+              code: iss.code,
+              message: iss.message,
+            })),
+            topLevelKeys,
+          },
+          tags: { admin: "true", stage: "request-zod" },
+        },
+      );
+      return json(
+        { ok: false, error: "Request body failed validation" },
+        400,
+        CORS,
+      );
+    }
+    const body: ListBody = bodyParse.data;
     const page = clampPage(body.page);
     const perPage = clampPerPage(body.perPage);
 
