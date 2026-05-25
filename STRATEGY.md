@@ -473,30 +473,31 @@ one full direction of one full pair, on both sides."
 - [ ] **L1 grammar coverage gap closed.** Every grammar family in
   `docs/l1-taxonomies/vi-grammar.md` is reachable by at least one
   detector rule in `src/lib/feedback/l1-error-detector.ts`. *Today:*
-  11 of 15 families have detectors; 4 are detector candidates
+  11 of 15 families have detectors; 5 are detector candidates
   (`vi_l1_subject_gender`, `vi_l1_topic_comment_fronting`,
-  `vi_l1_co_transfer`, `vi_l1_future_adverb_bare`) tracked as
-  `expected_failure` in `evals/vi-grammar-cases.json`. *Artifact:* all
-  four candidates flip from `expected_failure` to `expected_pass` in
-  one or more follow-up PRs against the harness, each landing
-  `--update-baseline`.
+  `vi_l1_co_transfer`, `vi_l1_future_adverb_bare`,
+  `vi_l1_no_aux_negation`) tracked as `expected_failure` in
+  `evals/vi-grammar-cases.json`. *Artifact:* all five candidates flip
+  from `expected_failure` to `expected_pass` in one or more follow-up
+  PRs against the harness, each landing `--update-baseline`.
 
-- [ ] **L1 detector eval baseline ≥ 95%.** Global pass rate on
+- [x] **L1 detector eval baseline ≥ 95%.** Global pass rate on
   `evals/vi-grammar-cases.json` is ≥ 95% (baseline-eligible cases).
-  *Today:* 94.2% (49/52). *Artifact:* `evals/.baseline.json` on
-  `main` shows `global.rate ≥ 0.95`. Closing the three under-firing
-  patterns from PR #1115's report (`IRREGULAR_PAST` whitelist,
-  inflection in `PREPOSITION_MISMATCHES`, preposition-deletion
-  entries) is the expected path.
+  *Today:* 100% (52/52) — bar met. *Artifact:* `evals/.baseline.json`
+  on `main` shows `"global": { "pass": 52, "total": 52, "rate": 1 }`
+  (generated 2026-05-25). The three under-firing patterns from
+  PR #1115's report (`IRREGULAR_PAST` whitelist, inflection in
+  `PREPOSITION_MISMATCHES`, preposition-deletion entries) all closed.
 
-- [ ] **AI Tutor consumes the L1 profile.** `promptAssembly.ts`
-  drops the unused `_l1Patterns: string[]` placeholder (currently at
-  line 231, per `docs/l1-taxonomies/spec.md` §4.5) and injects a
-  `GrammarFamily[]` projection from `vietnameseL1Profile.grammar.families`
-  into the Vietnamese teacher-voice block. *Today:* unconsumed.
-  *Artifact:* a PR replacing the placeholder, plus a manual probe
-  showing the L1 patterns surfacing mid-conversation in the live tutor
-  for a Vietnamese learner — screenshot or transcript in PR body.
+- [x] **AI Tutor consumes the L1 profile.** `promptAssembly.ts`
+  drops the unused `_l1Patterns: string[]` placeholder and injects a
+  projection from `vietnameseL1Profile` into the Vietnamese
+  teacher-voice block. *Today:* consumed (PR #1131). `src/lib/ai-tutor/
+  promptAssembly.ts:32` imports `vietnameseL1Profile`; the active
+  parameter is now `l1Patterns: string[]` (no underscore) at line 270;
+  the injection at lines 295-297 emits *"Lưu ý các lỗi tiếng Việt
+  thường gặp ở trình độ này: …"* into the system prompt. *Artifact:*
+  PR #1131 merged + probe evidence pinned in that PR's body.
 
 - [ ] **Pronunciation drills cover the §5-named pain points.**
   `src/lib/pronunciation/vn-phoneme-map.ts` ships `PROBLEM_PAIRS_*`
@@ -640,11 +641,12 @@ Re-open and tighten if any of the following happen:
 
 ### Status snapshot (date this when ticking checkboxes)
 
-As of 2026-05-25, no checkbox above is ticked. The closest
-criteria are *Axis 1: L1 detector eval baseline* (94.2%, needs
-≥ 95%) and *Axis 1: Native crash telemetry* (wired per PR #1132,
-needs Chau's on-device probe). Authoring §15 is itself the start
-of the audit; ticking the boxes is the work.
+As of 2026-05-25, two Axis 1 checkboxes are ticked: *L1 detector
+eval baseline* (now 100% / 52 of 52) and *AI Tutor consumes the L1
+profile* (PR #1131). The next closest are *Axis 1: Placement →
+lesson routing E2E* (pending PR #1143) and *Axis 1: Native crash
+telemetry* (wired per PR #1132, awaiting Chau's on-device probe).
+Two ticks, eleven open. The bars stay; the work is to land artifacts.
 
 ---
 
