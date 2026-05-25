@@ -1,4 +1,5 @@
 import { Suspense, useState } from "react";
+import type { KidsPageId } from "@/components/mercy-guide/MercyTeacherTab";
 import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
 import type { TeacherMercyModeTab } from "@/components/teacher-mercy/TeacherMercyModeTabs";
 import { VI_KIDS_TUTOR_COPY } from "@/lib/kids/viKidsTutorCopy";
@@ -30,6 +31,15 @@ const EXTENDED_KIDS_TABS: TeacherMercyModeTab<ExtendedKidsMode>[] = [
 export default function ViKidsEnglishTutor() {
   const [mode, setMode] = useState<ExtendedKidsMode>("kidsTeacher");
 
+  // Page + object selection state owned at the tutor level so it
+  // survives tab switches: a kid who picks "dog" on the Mercy Teacher
+  // tab and switches to Mercy Speak should still see the dog.
+  // MercyTeacherTab + MercySpeakTab both accept these props but neither
+  // manages the state internally — without the lift here, the page
+  // selector defaulted to 'page1' permanently and onSelect* was undefined.
+  const [selectedKidsPage, setSelectedKidsPage] = useState<KidsPageId>("page1");
+  const [selectedKidsObjectKey, setSelectedKidsObjectKey] = useState<string | null>(null);
+
   return (
     <TeacherMercyLearningShell
       title={VI_KIDS_TUTOR_COPY.title}
@@ -52,7 +62,13 @@ export default function ViKidsEnglishTutor() {
               </div>
             }
           >
-            <MercyTeacherTab isKidsMode />
+            <MercyTeacherTab
+              isKidsMode
+              selectedKidsPage={selectedKidsPage}
+              onSelectKidsPage={setSelectedKidsPage}
+              selectedKidsObjectKey={selectedKidsObjectKey}
+              onSelectKidsObject={setSelectedKidsObjectKey}
+            />
           </Suspense>
         </div>
       )}
@@ -66,7 +82,10 @@ export default function ViKidsEnglishTutor() {
               </div>
             }
           >
-            <MercySpeakTab isKidsMode />
+            <MercySpeakTab
+              isKidsMode
+              selectedKidsObjectKey={selectedKidsObjectKey}
+            />
           </Suspense>
         </div>
       )}
