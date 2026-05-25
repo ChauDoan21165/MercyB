@@ -181,6 +181,22 @@ export const WORD_OVERRIDES: Record<
   visit:   [{ variant: 'yisit', credit: 0.65 }],
   video:   [{ variant: 'yidio', credit: 0.65 }],
   vote:    [{ variant: 'yote',  credit: 0.65 }],
+  // Vowel quality drift — C3 gap-audit Gap 3 (docs/l1-taxonomies/vn-phoneme-gaps.md).
+  // /iː/-/ɪ/, /uː/-/ʊ/, /æ/-/e/, /ʌ/-/ɒ/ collapse plus schwa→full-vowel.
+  // 11 marginal 0.55-or-below variants from the original proposal were
+  // dropped per the file header's wrong-floor contract: `sheep→sip`,
+  // `leave→lib`, `fool→fu`, `pool→pu`, `bad→bet`, `cat→ket` (whole key),
+  // `cup→kap`, `bird→bert`/`bird→bet` (whole key).
+  sheep:   [{ variant: 'ship',  credit: 0.65 }],
+  feet:    [{ variant: 'fit',   credit: 0.65 }],
+  seat:    [{ variant: 'sit',   credit: 0.65 }],
+  leave:   [{ variant: 'live',  credit: 0.65 }],
+  fool:    [{ variant: 'full',  credit: 0.70 }],
+  pool:    [{ variant: 'pull',  credit: 0.70 }],
+  bad:     [{ variant: 'bed',   credit: 0.65 }],
+  bag:     [{ variant: 'beg',   credit: 0.65 }],
+  cup:     [{ variant: 'cop',   credit: 0.65 }],
+  about:   [{ variant: 'abowt', credit: 0.70 }, { variant: 'ebowt', credit: 0.70 }],
 };
 
 /**

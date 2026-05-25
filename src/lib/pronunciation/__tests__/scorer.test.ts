@@ -142,6 +142,81 @@ describe('scorePronunciation', () => {
     expect(asked?.score).toBe(85);
   });
 
+  // ── Gap 3: Vowel quality drift ─────────────────────────────────────
+  // Vietnamese collapses several English vowel contrasts:
+  // /iː/-/ɪ/ (sheep/ship), /uː/-/ʊ/ (fool/full), /æ/-/e/ (bad/bed),
+  // /ʌ/-/ɒ/ (cup/cop), schwa→full vowel (about→abowt).
+
+  it('vowel /iː/-/ɪ/ collapse: "sheep" → "ship" earns 0.65', () => {
+    const r = scorePronunciation({
+      target: 'one sheep here',
+      recognized: 'one ship here',
+    });
+    const sheep = r.wordScores.find((w) => w.word === 'sheep');
+    expect(sheep?.status).toBe('close');
+    expect(sheep?.score).toBe(65);
+  });
+
+  it('vowel /iː/-/ɪ/ collapse: "feet" → "fit" earns 0.65', () => {
+    const r = scorePronunciation({
+      target: 'two feet long',
+      recognized: 'two fit long',
+    });
+    const feet = r.wordScores.find((w) => w.word === 'feet');
+    expect(feet?.status).toBe('close');
+    expect(feet?.score).toBe(65);
+  });
+
+  it('vowel /uː/-/ʊ/ collapse: "fool" → "full" earns 0.70', () => {
+    const r = scorePronunciation({
+      target: 'a happy fool',
+      recognized: 'a happy full',
+    });
+    const fool = r.wordScores.find((w) => w.word === 'fool');
+    expect(fool?.status).toBe('close');
+    expect(fool?.score).toBe(70);
+  });
+
+  it('vowel /uː/-/ʊ/ collapse: "pool" → "pull" earns 0.70', () => {
+    const r = scorePronunciation({
+      target: 'big pool today',
+      recognized: 'big pull today',
+    });
+    const pool = r.wordScores.find((w) => w.word === 'pool');
+    expect(pool?.status).toBe('close');
+    expect(pool?.score).toBe(70);
+  });
+
+  it('vowel /æ/-/e/ collapse: "bad" → "bed" earns 0.65', () => {
+    const r = scorePronunciation({
+      target: 'too bad today',
+      recognized: 'too bed today',
+    });
+    const bad = r.wordScores.find((w) => w.word === 'bad');
+    expect(bad?.status).toBe('close');
+    expect(bad?.score).toBe(65);
+  });
+
+  it('vowel /ʌ/-/ɒ/ collapse: "cup" → "cop" earns 0.65', () => {
+    const r = scorePronunciation({
+      target: 'one cup please',
+      recognized: 'one cop please',
+    });
+    const cup = r.wordScores.find((w) => w.word === 'cup');
+    expect(cup?.status).toBe('close');
+    expect(cup?.score).toBe(65);
+  });
+
+  it('schwa → full vowel: "about" → "abowt" earns 0.70', () => {
+    const r = scorePronunciation({
+      target: 'talk about it',
+      recognized: 'talk abowt it',
+    });
+    const about = r.wordScores.find((w) => w.word === 'about');
+    expect(about?.status).toBe('close');
+    expect(about?.score).toBe(70);
+  });
+
   it('VN-typical th→t substitution on "think" earns close', () => {
     const r = scorePronunciation({
       target: 'I think so',
