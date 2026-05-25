@@ -571,6 +571,14 @@ export const L1_VN_EXPLANATIONS: Record<L1WeaknessTag, L1VnExplanation> = {
       "My family, they live in Hue → 'Gia đình tôi, họ sống ở Huế' (mình giữ nguyên cấu trúc tiếng Việt; tiếng Anh đổi thành 'My family lives in Hue')",
     needs_review: false,
   },
+  vi_l1_future_adverb_bare: {
+    name_vi: "Quên 'will' khi nói về tương lai",
+    explanation_vi:
+      "Tiếng Việt mình nói 'Mai tôi đi' hay 'Tuần sau tôi bắt đầu' — chỉ cần trạng ngữ chỉ thời gian là đủ, động từ giữ nguyên. Tiếng Anh phải thêm **will** trước động từ chính: *Tomorrow I **will** go*. Nhớ: có 'tomorrow / next week / soon / in 2 hours' → cần 'will'.",
+    example_wrong_vi_gloss:
+      "Tomorrow I go → 'Ngày mai + tôi + đi' (mình thấy 'tomorrow' là đủ, quên 'will' trước 'go')",
+    needs_review: false,
+  },
 };
 
 /**

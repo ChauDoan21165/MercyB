@@ -123,9 +123,9 @@
       "severity": "high",
       "input": "Tomorrow I go to my parents house.",
       "expected_correction": "Tomorrow I will go to my parents house.",
-      "expected_category": "expected_failure",
+      "expected_category": "expected_pass",
       "source": "C1-taxonomy",
-      "notes": "DETECTOR CANDIDATE — no rule yet for future-by-adverb. Gap preserved if no rule fires."
+      "notes": "DETECTOR CANDIDATE — no rule yet for future-by-adverb. Gap preserved if no rule fires. [FLIPPED to expected_pass: detector vi_l1_future_adverb_bare shipped]"
     },
     {
       "id": "vi-gram-015",
@@ -135,9 +135,9 @@
       "severity": "high",
       "input": "Next week I start a new job.",
       "expected_correction": "Next week I will start a new job.",
-      "expected_category": "expected_failure",
+      "expected_category": "expected_pass",
       "source": "C1-taxonomy",
-      "notes": "DETECTOR CANDIDATE — vi_l1_future_adverb_bare."
+      "notes": "DETECTOR CANDIDATE — vi_l1_future_adverb_bare. [FLIPPED to expected_pass: detector vi_l1_future_adverb_bare shipped]"
     },
     {
       "id": "vi-gram-020",
