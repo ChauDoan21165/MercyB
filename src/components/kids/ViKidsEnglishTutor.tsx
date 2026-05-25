@@ -15,30 +15,27 @@ import { lazyWithRetry } from "@/lib/lazyWithRetry";
 import { getSpeechLocale, getTtsLocale, type TutorLanguageCode } from "@/lib/tutor/languageRegistry";
 import { getSafetyLabel, viKidsEnglish as viKidsEnglishConfig } from "@/lib/tutor/productConfigs";
 
-// MercyTeacherTab + MercySpeakTab were orphaned by PR #1093 (floating-helper
-// simplification) — they used to be mounted inside MercyGuidePanel and lost
-// their only consumer. Re-mounted here as additional kids tabs so the 30
-// kidPageN data files + 3,259 photos in public/images/mercy-kids* become
-// user-reachable again via the restored /kids/vi-english surface.
+// MercyTeacherTab was orphaned by PR #1093 (floating-helper simplification)
+// and lost its only consumer. Re-mounted here as a kids-safe picture browser
+// so the kidPageN data files + photos become user-reachable again via the
+// restored /kids/vi-english surface.
 const MercyTeacherTab = lazyWithRetry(
   () => import("@/components/mercy-guide/MercyTeacherTab").then((m) => ({ default: m.MercyTeacherTab })),
 );
-const MercySpeakTab = lazyWithRetry(() => import("@/components/mercy-guide/MercySpeakTab"));
 
 const TUTOR_PRODUCT: TutorProduct = "vi-kids-english";
 const TARGET_LANGUAGE = viKidsEnglishConfig.defaultTargetLanguage as TutorLanguageCode;
 
-// Local extension of ViKidsTutorMode for the two restored kids surfaces.
+// Local extension of ViKidsTutorMode for the restored kids picture surface.
 // Kept local (rather than extending the productConfigs TutorProductMode
 // union) to keep this change contained to /kids/vi-english per the
-// Option B dispatch — the new modes are kids-specific tabs, not a
+// Option B dispatch — the new mode is a kids-specific tab, not a
 // product-wide modes-list change.
-type ExtendedKidsMode = ViKidsTutorMode | "kidsTeacher" | "kidsSpeak";
+type ExtendedKidsMode = ViKidsTutorMode | "kidsTeacher";
 
 const EXTENDED_KIDS_TABS: TeacherMercyModeTab<ExtendedKidsMode>[] = [
   ...VI_KIDS_TUTOR_TABS,
   { id: "kidsTeacher", label: "Mercy Teacher" },
-  { id: "kidsSpeak", label: "Mercy Speak" },
 ];
 
 export default function ViKidsEnglishTutor() {
@@ -197,21 +194,7 @@ export default function ViKidsEnglishTutor() {
           </div>
         )}
 
-        {mode === "kidsSpeak" && (
-          <div data-testid="vi-kids-mercy-speak-mount">
-            <Suspense
-              fallback={
-                <div className="rounded-[16px] border border-violet-100 bg-violet-50/40 p-4 text-sm font-semibold text-violet-700">
-                  Đang tải Mercy Speak…
-                </div>
-              }
-            >
-              <MercySpeakTab />
-            </Suspense>
-          </div>
-        )}
-
-        {mode !== "kidsTeacher" && mode !== "kidsSpeak" && (
+        {mode !== "kidsTeacher" && (
           <>
             <label className="text-xs font-black uppercase text-slate-500">
               {VI_KIDS_TUTOR_COPY.correctionPrompt}
