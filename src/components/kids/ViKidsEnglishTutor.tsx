@@ -53,8 +53,22 @@ export default function ViKidsEnglishTutor() {
       footer={VI_KIDS_TUTOR_COPY.footer}
       testId="vi-kids-english-tutor"
     >
+      {/*
+       * Height-bounded mount wrapper. MercyTeacherTab's kids picture grid
+       * uses h-full + overflow-y-auto for the scroll container — but
+       * `h-full` is percentage of parent. Without a defined-height
+       * ancestor, the percentage chain collapses to `auto` and the scroll
+       * container has nothing to scroll against. Symptom: /kids/vi-english
+       * → Mercy Teacher tab → Page 16 → only first 2-3 rows visible, no
+       * scroll. Reserving 290px / 330px of dvh (route header + tutor
+       * avatar block + mode tabs + section padding for mobile vs sm+)
+       * gives the grid a real pixel height the overflow-y-auto can act on.
+       */}
       {mode === "kidsTeacher" && (
-        <div data-testid="vi-kids-mercy-teacher-mount">
+        <div
+          data-testid="vi-kids-mercy-teacher-mount"
+          className="h-[calc(100dvh-290px)] sm:h-[calc(100dvh-330px)]"
+        >
           <Suspense
             fallback={
               <div className="rounded-[16px] border border-indigo-100 bg-indigo-50/40 p-4 text-sm font-semibold text-indigo-700">
@@ -74,7 +88,10 @@ export default function ViKidsEnglishTutor() {
       )}
 
       {mode === "kidsSpeak" && (
-        <div data-testid="vi-kids-mercy-speak-mount">
+        <div
+          data-testid="vi-kids-mercy-speak-mount"
+          className="h-[calc(100dvh-290px)] sm:h-[calc(100dvh-330px)]"
+        >
           <Suspense
             fallback={
               <div className="rounded-[16px] border border-violet-100 bg-violet-50/40 p-4 text-sm font-semibold text-violet-700">
