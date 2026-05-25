@@ -1,83 +1,34 @@
-import { Suspense, useEffect, useState } from "react";
-import TutorMemoryCard, { TutorMemoryEmpty } from "@/components/ai-tutor/TutorMemoryCard";
+import { Suspense, useState } from "react";
 import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
 import type { TeacherMercyModeTab } from "@/components/teacher-mercy/TeacherMercyModeTabs";
-import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
-import { getMemorySummary, type MemorySummary, type TutorProduct } from "@/lib/ai-tutor/learningMemory";
-import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
-import { useTtsSpeaker } from "@/lib/ai-tutor/useTtsSpeaker";
-import {
-  VI_KIDS_TUTOR_COPY,
-  VI_KIDS_TUTOR_TABS,
-  type ViKidsTutorMode,
-} from "@/lib/kids/viKidsTutorCopy";
+import { VI_KIDS_TUTOR_COPY } from "@/lib/kids/viKidsTutorCopy";
 import { lazyWithRetry } from "@/lib/lazyWithRetry";
-import { getSpeechLocale, getTtsLocale, type TutorLanguageCode } from "@/lib/tutor/languageRegistry";
 import { getSafetyLabel, viKidsEnglish as viKidsEnglishConfig } from "@/lib/tutor/productConfigs";
 
-// MercyTeacherTab + MercySpeakTab were orphaned by PR #1093 (floating-helper
-// simplification) — they used to be mounted inside MercyGuidePanel and lost
-// their only consumer. Re-mounted here as additional kids tabs so the 30
-// kidPageN data files + 3,259 photos in public/images/mercy-kids* become
-// user-reachable again via the restored /kids/vi-english surface.
+// Mercy Kids — two-tab surface: Mercy Teacher + Mercy Speak.
+//
+// The original 4 modes (Journey / Grammar / Speak / Logic) lived in the
+// adult Vietnamese tutor experience and never matched the Kids product
+// brief. Trim per /kids/vi-english product call: keep only the
+// kids-specific picture browser + Speak panel.
+//
+// Both tab components are kept kid-safe by `isKidsMode={true}` on the
+// MercySpeakTab mount (PR #1165 pins both cloud-recording feature flags
+// OFF when isKidsMode is true; see MercySpeakTab.tsx around line 689).
 const MercyTeacherTab = lazyWithRetry(
   () => import("@/components/mercy-guide/MercyTeacherTab").then((m) => ({ default: m.MercyTeacherTab })),
 );
 const MercySpeakTab = lazyWithRetry(() => import("@/components/mercy-guide/MercySpeakTab"));
 
-const TUTOR_PRODUCT: TutorProduct = "vi-kids-english";
-const TARGET_LANGUAGE = viKidsEnglishConfig.defaultTargetLanguage as TutorLanguageCode;
-
-// Local extension of ViKidsTutorMode for the two restored kids surfaces.
-// Kept local (rather than extending the productConfigs TutorProductMode
-// union) to keep this change contained to /kids/vi-english per the
-// Option B dispatch — the new modes are kids-specific tabs, not a
-// product-wide modes-list change.
-type ExtendedKidsMode = ViKidsTutorMode | "kidsTeacher" | "kidsSpeak";
+type ExtendedKidsMode = "kidsTeacher" | "kidsSpeak";
 
 const EXTENDED_KIDS_TABS: TeacherMercyModeTab<ExtendedKidsMode>[] = [
-  ...VI_KIDS_TUTOR_TABS,
   { id: "kidsTeacher", label: "Mercy Teacher" },
   { id: "kidsSpeak", label: "Mercy Speak" },
 ];
 
 export default function ViKidsEnglishTutor() {
-  const [mode, setMode] = useState<ExtendedKidsMode>("conversation");
-  const [answer, setAnswer] = useState("");
-  const [memoryLoaded, setMemoryLoaded] = useState(false);
-  const [memory, setMemory] = useState<MemorySummary | null>(null);
-  const stt = useBrowserStt(getSpeechLocale(TARGET_LANGUAGE));
-  const tts = useTtsSpeaker();
-
-  useEffect(() => {
-    if (!viKidsEnglishConfig.memoryEnabled) {
-      void getMemorySummary(TUTOR_PRODUCT, TARGET_LANGUAGE);
-      setMemoryLoaded(true);
-      return;
-    }
-    getMemorySummary(TUTOR_PRODUCT, TARGET_LANGUAGE)
-      .then(setMemory)
-      .catch(() => {})
-      .finally(() => setMemoryLoaded(true));
-  }, []);
-
-  const handleMicToggle = () => {
-    if (stt.listening) {
-      stt.stop();
-      return;
-    }
-    stt.start();
-  };
-
-  const speakLine = () => {
-    if (tts.speaking) {
-      tts.stop();
-      return;
-    }
-    void tts.speak(VI_KIDS_TUTOR_COPY.speakLine, getTtsLocale(TARGET_LANGUAGE), TARGET_LANGUAGE, {
-      voiceStyle: "kid-friendly",
-    });
-  };
+  const [mode, setMode] = useState<ExtendedKidsMode>("kidsTeacher");
 
   return (
     <TeacherMercyLearningShell
@@ -89,143 +40,36 @@ export default function ViKidsEnglishTutor() {
       modeTabs={EXTENDED_KIDS_TABS}
       activeMode={mode}
       onModeChange={setMode}
-      memorySlot={viKidsEnglishConfig.memoryEnabled ? <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
-      reminderSlot={viKidsEnglishConfig.memoryEnabled ? <TutorMemoryEmpty memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
       footer={VI_KIDS_TUTOR_COPY.footer}
       testId="vi-kids-english-tutor"
     >
-      <section className="mx-auto grid w-full max-w-3xl gap-5 rounded-[18px] border border-slate-200 bg-white p-5 shadow-sm">
-        <div>
-          <div className="text-xs font-black uppercase text-indigo-600">
-            English practice · Giải thích tiếng Việt
-          </div>
-          <h2 className="mt-1 text-xl font-black text-slate-900">
-            {mode === "conversation" ? VI_KIDS_TUTOR_COPY.conversationTitle : "Mercy luyện cùng bé"}
-          </h2>
+      {mode === "kidsTeacher" && (
+        <div data-testid="vi-kids-mercy-teacher-mount">
+          <Suspense
+            fallback={
+              <div className="rounded-[16px] border border-indigo-100 bg-indigo-50/40 p-4 text-sm font-semibold text-indigo-700">
+                Đang tải Mercy Teacher…
+              </div>
+            }
+          >
+            <MercyTeacherTab isKidsMode />
+          </Suspense>
         </div>
+      )}
 
-        {mode === "conversation" && (
-          <div className="rounded-[16px] border border-indigo-100 bg-indigo-50/60 p-4">
-            <p className="text-sm font-bold leading-6 text-slate-700">
-              {VI_KIDS_TUTOR_COPY.conversationQuestion}
-            </p>
-            <p className="mt-2 text-sm font-semibold leading-6 text-indigo-700">
-              {VI_KIDS_TUTOR_COPY.conversationHint}
-            </p>
-          </div>
-        )}
-
-        {mode === "grammar" && (
-          <div className="grid gap-3">
-            <div className="rounded-[16px] border border-emerald-200 bg-emerald-50 p-4">
-              <div className="text-xs font-black uppercase text-emerald-600">
-                {VI_KIDS_TUTOR_COPY.correctedLabel}
+      {mode === "kidsSpeak" && (
+        <div data-testid="vi-kids-mercy-speak-mount">
+          <Suspense
+            fallback={
+              <div className="rounded-[16px] border border-violet-100 bg-violet-50/40 p-4 text-sm font-semibold text-violet-700">
+                Đang tải Mercy Speak…
               </div>
-              <p className="mt-1 text-lg font-black text-emerald-900">
-                {VI_KIDS_TUTOR_COPY.correctedExample}
-              </p>
-            </div>
-            <div className="rounded-[16px] border border-slate-200 bg-slate-50 p-4">
-              <div className="text-xs font-black uppercase text-slate-500">
-                {VI_KIDS_TUTOR_COPY.explanationLabel}
-              </div>
-              <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">
-                {VI_KIDS_TUTOR_COPY.explanation}
-              </p>
-            </div>
-            {tts.voiceSource && (
-              <div className={`mt-2 text-[11px] font-semibold ${tts.voiceSource === "mercy" ? "text-emerald-700" : "text-amber-700"}`}>
-                {tts.voiceSource === "mercy" ? "Mercy voice" : "Device voice fallback"}
-              </div>
-            )}
-          </div>
-        )}
-
-        {mode === "speak" && (
-          <div className="rounded-[16px] border border-violet-200 bg-violet-50/60 p-4">
-            <p className="text-lg font-black text-violet-900">
-              {VI_KIDS_TUTOR_COPY.speakLine}
-            </p>
-            <div className="mt-3 grid gap-2 sm:grid-cols-2">
-              <TeacherMercyVoiceControls
-                kind="speaker"
-                supported={tts.supported}
-                active={tts.speaking}
-                preparing={tts.preparing}
-                unavailableLabel={VI_KIDS_TUTOR_COPY.ttsUnavailable}
-                inactiveLabel={VI_KIDS_TUTOR_COPY.ttsPlay}
-                activeLabel={VI_KIDS_TUTOR_COPY.ttsStop}
-                preparingLabel="Preparing Mercy voice…"
-                ariaStart="Mercy đọc câu tiếng Anh"
-                ariaStop="Dừng Mercy đọc"
-                onToggle={speakLine}
-              />
-              <TeacherMercyVoiceControls
-                kind="mic"
-                supported={stt.supported}
-                active={stt.listening}
-                unavailableLabel={VI_KIDS_TUTOR_COPY.micUnavailable}
-                inactiveLabel={VI_KIDS_TUTOR_COPY.micInput}
-                activeLabel={VI_KIDS_TUTOR_COPY.micListening}
-                ariaStart={VI_KIDS_TUTOR_COPY.micAriaStart}
-                ariaStop={VI_KIDS_TUTOR_COPY.micAriaStop}
-                onToggle={handleMicToggle}
-              />
-            </div>
-          </div>
-        )}
-
-        {mode === "logic" && (
-          <div className="rounded-[16px] border border-amber-200 bg-amber-50/60 p-4">
-            <p className="text-sm font-bold leading-6 text-amber-900">
-              {VI_KIDS_TUTOR_COPY.logicTask}
-            </p>
-          </div>
-        )}
-
-        {mode === "kidsTeacher" && (
-          <div data-testid="vi-kids-mercy-teacher-mount">
-            <Suspense
-              fallback={
-                <div className="rounded-[16px] border border-indigo-100 bg-indigo-50/40 p-4 text-sm font-semibold text-indigo-700">
-                  Đang tải Mercy Teacher…
-                </div>
-              }
-            >
-              <MercyTeacherTab isKidsMode />
-            </Suspense>
-          </div>
-        )}
-
-        {mode === "kidsSpeak" && (
-          <div data-testid="vi-kids-mercy-speak-mount">
-            <Suspense
-              fallback={
-                <div className="rounded-[16px] border border-violet-100 bg-violet-50/40 p-4 text-sm font-semibold text-violet-700">
-                  Đang tải Mercy Speak…
-                </div>
-              }
-            >
-              <MercySpeakTab isKidsMode />
-            </Suspense>
-          </div>
-        )}
-
-        {mode !== "kidsTeacher" && mode !== "kidsSpeak" && (
-          <>
-            <label className="text-xs font-black uppercase text-slate-500">
-              {VI_KIDS_TUTOR_COPY.correctionPrompt}
-            </label>
-            <textarea
-              value={answer || stt.transcript}
-              onChange={(event) => setAnswer(event.target.value.slice(0, 300))}
-              placeholder={VI_KIDS_TUTOR_COPY.correctionPlaceholder}
-              rows={3}
-              className="w-full resize-none rounded-[14px] border border-slate-200 bg-slate-50 p-3 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-indigo-300 focus:bg-white focus:outline-none"
-            />
-          </>
-        )}
-      </section>
+            }
+          >
+            <MercySpeakTab isKidsMode />
+          </Suspense>
+        </div>
+      )}
     </TeacherMercyLearningShell>
   );
 }

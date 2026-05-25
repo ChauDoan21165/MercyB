@@ -1,81 +1,39 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi, beforeEach } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 import ViKidsEnglishTutor from "../ViKidsEnglishTutor";
 
-const { fetchCloudTtsUrl } = vi.hoisted(() => ({
-  fetchCloudTtsUrl: vi.fn(async () => null),
-}));
-
-const { getMemorySummary } = vi.hoisted(() => ({
-  getMemorySummary: vi.fn(async () => ({
-    tutorProduct: "vi-kids-english",
-    targetLanguage: "en",
-    memoryKey: "vi-kids-english:en",
-    strengths: [],
-    needsReview: [],
-    commonMistakePatterns: [],
-    nextRecommendedFocus: "",
-    confidenceTrend: "not-enough-data",
-    updatedAt: null,
-    totalCorrections: 0,
-    practicedCount: 0,
-    strongestTopic: "",
-    strongestTopicCount: 0,
-    topicNeedingReview: "",
-    topicNeedingReviewCount: 0,
-    lastPracticedTopic: "",
-    lastPracticedAt: null,
-    suggestedNextFocus: "",
-    topicCounts: {},
-    unpracticedCorrectionIds: [],
-  })),
-}));
-
-vi.mock("@/lib/mercyVoice", () => ({
-  fetchCloudTtsUrl,
-}));
-
-vi.mock("@/lib/ai-tutor/learningMemory", () => ({
-  getMemorySummary,
-}));
-
-beforeEach(() => {
-  vi.clearAllMocks();
-  (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = undefined;
-  (window as Window & { webkitSpeechRecognition?: unknown }).webkitSpeechRecognition = undefined;
-});
-
 describe("ViKidsEnglishTutor", () => {
-  it("uses the shared Teacher Mercy shell with Việt Kids English copy", async () => {
+  it("uses the shared Teacher Mercy shell with Việt Kids English copy", () => {
     render(<ViKidsEnglishTutor />);
 
     expect(screen.getByTestId("vi-kids-english-tutor")).toBeInTheDocument();
-    expect(screen.getByTestId("teacher-mercy-avatar")).toHaveAttribute("src", "/teacher-mercy.webp");
-    expect(screen.getByRole("heading", { name: "Teacher Mercy · English for Việt Kids" })).toBeInTheDocument();
-    expect(screen.getByText(/Giải thích tiếng Việt/)).toBeInTheDocument();
-    await waitFor(() => expect(getMemorySummary).toHaveBeenCalledWith("vi-kids-english", "en"));
-    expect(screen.getByRole("button", { name: "Journey" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Grammar" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Speak" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Logic" })).toBeInTheDocument();
+    expect(screen.getByTestId("teacher-mercy-avatar")).toHaveAttribute(
+      "src",
+      "/teacher-mercy.webp",
+    );
+    expect(
+      screen.getByRole("heading", { name: "Teacher Mercy · English for Việt Kids" }),
+    ).toBeInTheDocument();
     expect(screen.getByText("Kids-safe practice")).toBeInTheDocument();
   });
 
-  it("keeps English-only practice with Vietnamese-first explanation", async () => {
+  it("renders only the two kids-specific tabs", () => {
     render(<ViKidsEnglishTutor />);
 
-    await userEvent.click(screen.getByRole("button", { name: "Grammar" }));
+    expect(screen.getByRole("button", { name: "Mercy Teacher" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Mercy Speak" })).toBeInTheDocument();
 
-    expect(screen.getByText("She goes to school every day.")).toBeInTheDocument();
-    expect(screen.getByText(/Với she\/he\/it/)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/She go to school every day/)).toBeInTheDocument();
+    // Old 4-mode adult tabs must NOT be present anymore.
+    expect(screen.queryByRole("button", { name: "Journey" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Grammar" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Speak" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Logic" })).not.toBeInTheDocument();
   });
 
-  it("does not render disabled product modes", () => {
+  it("defaults to the Mercy Teacher tab (its content mounts on load)", () => {
     render(<ViKidsEnglishTutor />);
 
-    expect(screen.queryByRole("button", { name: "Correction" })).not.toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Correct one sentence" })).not.toBeInTheDocument();
+    expect(screen.getByTestId("vi-kids-mercy-teacher-mount")).toBeInTheDocument();
+    expect(screen.queryByTestId("vi-kids-mercy-speak-mount")).not.toBeInTheDocument();
   });
 });
