@@ -24,7 +24,7 @@ const MercySpeakTab = lazyWithRetry(() => import("@/components/mercy-guide/Mercy
 type ExtendedKidsMode = "kidsTeacher" | "kidsSpeak";
 
 const EXTENDED_KIDS_TABS: TeacherMercyModeTab<ExtendedKidsMode>[] = [
-  { id: "kidsTeacher", label: "Mercy Teacher" },
+  { id: "kidsTeacher", label: "Pick a Picture" },
   { id: "kidsSpeak", label: "Mercy Speak" },
 ];
 
@@ -72,7 +72,7 @@ export default function ViKidsEnglishTutor() {
           <Suspense
             fallback={
               <div className="rounded-[16px] border border-indigo-100 bg-indigo-50/40 p-4 text-sm font-semibold text-indigo-700">
-                Đang tải Mercy Teacher…
+                Đang tải Pick a Picture…
               </div>
             }
           >
