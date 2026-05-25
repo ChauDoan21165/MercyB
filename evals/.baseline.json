@@ -1,0 +1,110 @@
+{
+  "generated_at": "2026-05-25T04:48:55.716Z",
+  "global": {
+    "pass": 49,
+    "total": 52,
+    "rate": 0.9423076923076923
+  },
+  "by_family": {
+    "article-omission-overuse": {
+      "pass": 5,
+      "total": 5,
+      "rate": 1
+    },
+    "tense-adverb-flattening": {
+      "pass": 3,
+      "total": 4,
+      "rate": 0.75
+    },
+    "plural-s-omission": {
+      "pass": 4,
+      "total": 4,
+      "rate": 1
+    },
+    "third-person-s-omission": {
+      "pass": 5,
+      "total": 5,
+      "rate": 1
+    },
+    "copula-be-deletion": {
+      "pass": 5,
+      "total": 5,
+      "rate": 1
+    },
+    "question-inversion-omission": {
+      "pass": 4,
+      "total": 4,
+      "rate": 1
+    },
+    "preposition-selection-transfer": {
+      "pass": 3,
+      "total": 5,
+      "rate": 0.6
+    },
+    "pronoun-gender-confusion": {
+      "pass": 2,
+      "total": 2,
+      "rate": 1
+    },
+    "count-noncount-confusion": {
+      "pass": 4,
+      "total": 4,
+      "rate": 1
+    },
+    "noun-phrase-word-order": {
+      "pass": 5,
+      "total": 5,
+      "rate": 1
+    },
+    "final-cluster-spelling-loss": {
+      "pass": 3,
+      "total": 3,
+      "rate": 1
+    },
+    "topic-comment-fronting": {
+      "pass": 0,
+      "total": 0,
+      "rate": 0
+    },
+    "co-transfer-overgeneralisation": {
+      "pass": 0,
+      "total": 0,
+      "rate": 0
+    },
+    "modal-verb-inflection": {
+      "pass": 4,
+      "total": 4,
+      "rate": 1
+    },
+    "negation-no-not-placement": {
+      "pass": 2,
+      "total": 2,
+      "rate": 1
+    },
+    "register-overformal": {
+      "pass": 0,
+      "total": 0,
+      "rate": 0
+    },
+    "paragraph-topic-fronting": {
+      "pass": 0,
+      "total": 0,
+      "rate": 0
+    },
+    "redundant-calque": {
+      "pass": 0,
+      "total": 0,
+      "rate": 0
+    },
+    "apology-explanation-order": {
+      "pass": 0,
+      "total": 0,
+      "rate": 0
+    },
+    "connector-stacking": {
+      "pass": 0,
+      "total": 0,
+      "rate": 0
+    }
+  }
+}
