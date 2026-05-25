@@ -1,4 +1,8 @@
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
+import {
+  getNextMasteryFocus,
+  type MasterySignal,
+} from "@/lib/tutor/masteryGraph";
 
 export type TodayLessonMode = "journey" | "grammar" | "speak" | "logic";
 
@@ -25,6 +29,8 @@ export type TodayLessonMemorySummary = Pick<
   | "strengths"
   | "commonMistakePatterns"
   | "confidenceTrend"
+  | "topicCounts"
+  | "updatedAt"
 > | null | undefined;
 
 const BEGINNER_FOCUS = "starter sentence";
@@ -64,22 +70,40 @@ const LOGIC_HINTS = ["vietlish", "logic", "translate", "word-for-word", "word fo
 export function planTodayLesson(memory: TodayLessonMemorySummary): TodayLessonPlan {
   if (!hasMemorySignal(memory)) return { ...BEGINNER_PLAN, steps: [...BEGINNER_PLAN.steps] };
 
+  const strongestTopic = firstCleanTopic(memory?.strongestTopic, memory?.strengths?.[0]);
+  const weakPattern = firstCleanTopic(
+    memory?.commonMistakePatterns?.find((pattern) => cleanTopic(pattern) !== strongestTopic),
+    memory?.commonMistakePatterns?.[0],
+  );
+  const masteryFocus = getNextMasteryFocus({
+    practiceCount: memory?.practicedCount ?? 0,
+    strongestTopic,
+    topicNeedingReview: memory?.topicNeedingReview,
+    weakPattern,
+    suggestedNextFocus: memory?.suggestedNextFocus || memory?.nextRecommendedFocus,
+    correctionCategories: memory?.needsReview,
+    topicTags: memory?.commonMistakePatterns,
+    topicCounts: memory?.topicCounts,
+    confidenceTrend: memory?.confidenceTrend,
+    updatedAt: memory?.updatedAt,
+  });
+  const masteryTopic = displayTopic(masteryFocus.topicId);
   const reviewTopic = firstCleanTopic(
+    masteryTopic,
     memory?.topicNeedingReview,
     memory?.needsReview?.[0],
     memory?.nextRecommendedFocus,
     memory?.suggestedNextFocus,
-    memory?.commonMistakePatterns?.[0],
+    weakPattern,
   );
-  const strongestTopic = firstCleanTopic(memory?.strongestTopic, memory?.strengths?.[0]);
   const nextFocus = reviewTopic || strongestTopic || BEGINNER_FOCUS;
-  const suggestedMode = chooseSuggestedMode(nextFocus, memory?.confidenceTrend);
+  const suggestedMode = masteryFocus.recommendedMode || chooseSuggestedMode(nextFocus, memory?.confidenceTrend);
   const lessonTitle = buildLessonTitle(nextFocus, strongestTopic);
 
   return {
     lessonTitle,
     targetSkill: nextFocus,
-    reason: buildReason(nextFocus, strongestTopic, memory?.practicedCount ?? 0),
+    reason: buildReason(nextFocus, strongestTopic, memory?.practicedCount ?? 0, masteryFocus),
     steps: buildSteps(suggestedMode),
     estimatedMinutes: suggestedMode === "journey" ? 8 : 7,
     suggestedMode,
@@ -102,6 +126,7 @@ function hasMemorySignal(memory: TodayLessonMemorySummary): memory is NonNullabl
       memory.needsReview?.[0],
       memory.strengths?.[0],
       memory.commonMistakePatterns?.[0],
+      ...Object.keys(memory.topicCounts ?? {}),
     ),
   );
 }
@@ -123,6 +148,10 @@ function cleanTopic(value: string | null | undefined): string {
     .replace(/\s+/g, " ")
     .trim();
   return normalized.slice(0, 48);
+}
+
+function displayTopic(topicId: string): string {
+  return cleanTopic(topicId.replace(/-/g, " "));
 }
 
 function chooseSuggestedMode(topic: string, confidenceTrend: MemorySummary["confidenceTrend"] | undefined): TodayLessonMode {
@@ -148,14 +177,23 @@ function buildLessonTitle(nextFocus: string, strongestTopic: string): string {
   return `Practice ${nextFocus} today`;
 }
 
-function buildReason(nextFocus: string, strongestTopic: string, practicedCount: number): string {
+function buildReason(
+  nextFocus: string,
+  strongestTopic: string,
+  practicedCount: number,
+  masteryFocus: MasterySignal,
+): string {
   const practiceNote = practicedCount > 0
     ? `You have ${practicedCount} practiced item${practicedCount === 1 ? "" : "s"} in local summary memory.`
     : "Mercy found this from local summary memory.";
+  const reviewNote = masteryFocus.needsReview
+    ? "needs review"
+    : "is improving";
+  const masteryNote = ` Mastery graph marks ${nextFocus} at ${masteryFocus.masteryScore}% mastery with ${masteryFocus.confidenceLevel} confidence, so this focus ${reviewNote}.`;
   const strengthNote = strongestTopic && strongestTopic !== nextFocus
     ? ` Your strongest topic is ${strongestTopic}, so Mercy can connect the review to something familiar.`
     : "";
-  return `${practiceNote} The next useful focus is ${nextFocus}.${strengthNote}`;
+  return `${practiceNote}${masteryNote}${strengthNote}`;
 }
 
 function buildSteps(mode: TodayLessonMode): string[] {

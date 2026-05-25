@@ -17,6 +17,8 @@ function memory(overrides: Partial<NonNullable<TodayLessonMemorySummary>>): NonN
     strengths: [],
     commonMistakePatterns: [],
     confidenceTrend: "not-enough-data",
+    topicCounts: {},
+    updatedAt: null,
     ...overrides,
   };
 }
@@ -73,7 +75,7 @@ describe("planTodayLesson", () => {
     expect(plan.suggestedMode).toBe("grammar");
   });
 
-  it("uses journey mode when the next focus is conversation practice", () => {
+  it("uses grammar mode when mastery graph marks a conversation topic for review", () => {
     const plan = planTodayLesson(memory({
       totalCorrections: 4,
       practicedCount: 3,
@@ -82,7 +84,26 @@ describe("planTodayLesson", () => {
       confidenceTrend: "improving",
     }));
 
+    expect(plan.suggestedMode).toBe("grammar");
+    expect(plan.steps[0]).toBe("Fix one sentence.");
+    expect(plan.reason).toContain("Mastery graph marks daily routine");
+    expect(plan.reason).toContain("needs review");
+  });
+
+  it("uses journey mode when mastery graph sees high confidence conversation progress", () => {
+    const plan = planTodayLesson(memory({
+      totalCorrections: 6,
+      practicedCount: 6,
+      strongestTopic: "introductions",
+      strengths: ["introductions"],
+      topicCounts: { introductions: 4 },
+      confidenceTrend: "improving",
+    }));
+
     expect(plan.suggestedMode).toBe("journey");
+    expect(plan.nextFocus).toBe("introductions");
+    expect(plan.reason).toContain("100% mastery");
+    expect(plan.reason).toContain("high confidence");
     expect(plan.steps[0]).toBe("Answer one short question.");
   });
 

@@ -1008,7 +1008,7 @@ describe("AiTutor mock UI", () => {
     await waitFor(() => expect(screen.getByTestId("ai-tutor-today-lesson")).toBeInTheDocument());
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-card")).toBeInTheDocument());
     expect(screen.getByTestId("ai-tutor-today-lesson")).toHaveTextContent(/Today's lesson/i);
-    expect(screen.getByText(/Practice past-tense in present-simple/)).toBeInTheDocument();
+    expect(screen.getByText(/Practice past tense in present-simple/)).toBeInTheDocument();
     expect(screen.getByText(/6 câu đã sửa/)).toBeInTheDocument();
     expect(screen.getByText(/4 đã luyện tập/)).toBeInTheDocument();
   });
