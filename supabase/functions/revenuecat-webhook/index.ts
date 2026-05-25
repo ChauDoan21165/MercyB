@@ -46,6 +46,12 @@ import { isAuthorized, parseTokens } from "./auth.ts";
 import { handleEvent } from "./projection.ts";
 import type { RcEvent } from "./types.ts";
 import { captureEdgeError } from "../_shared/sentry.ts";
+import { revenuecatWebhookEnvelopeSchema } from "../_shared/webhookSchemas.ts";
+
+// Sentry tag schema for billing-webhook observability — mirrors apple/
+// google/stripe webhook wiring (A11) so one ops dashboard facets all
+// providers. Low-cardinality + indexed.
+const REVENUECAT_TAGS = { webhook: "revenuecat", billing: "true" } as const;
 
 // Sentry tag schema for billing-webhook observability — mirrors the
 // stripe-webhook capture wiring (PR #645) so one ops dashboard facets
@@ -143,10 +149,15 @@ Deno.serve(async (req) => {
     return json({ error: "Unauthorized" }, 401);
   }
 
-  // ── Parse ─────────────────────────────────────────────────────────────────
-  let payload: { event?: RcEvent; api_version?: string };
+  // ── Parse + A11 zod runtime validation ────────────────────────────────────
+  // Auth ALREADY passed above. JSON.parse + zod safeParse the envelope.
+  // On JSON-parse failure or schema-validation failure we return 400
+  // with a PII-safe Sentry beacon (zod issues + top-level keys only —
+  // NEVER the raw event body, which contains app_user_ids, transaction
+  // ids, and amounts).
+  let parsedJson: unknown;
   try {
-    payload = await req.json();
+    parsedJson = await req.json();
   } catch (parseErr) {
     // Auth ALREADY passed above → a genuine RevenueCat-authorized
     // delivery whose body we cannot parse: a real billing event we are
@@ -158,16 +169,48 @@ Deno.serve(async (req) => {
     });
     return json({ error: "Invalid JSON body" }, 400);
   }
-  const event = payload?.event;
-  if (!event || typeof event.type !== "string") {
-    // Authorized + parsed but unusable (no event / no type string) →
-    // same dropped-real-event class as parse_event.
-    await captureBillingWebhookFailure(
-      new Error("revenuecat-webhook: authorized delivery missing event payload"),
-      { stage: "missing_event_payload", severity: "high" },
+
+  const envelopeParse = revenuecatWebhookEnvelopeSchema.safeParse(parsedJson);
+  if (!envelopeParse.success) {
+    // Schema-level drift on an authorized RevenueCat delivery.
+    // Replaces the prior `if (!event || typeof event.type !== "string")`
+    // manual guard and adds structured observability for any envelope-
+    // shape change RevenueCat ships.
+    const topLevelKeys =
+      parsedJson && typeof parsedJson === "object" && !Array.isArray(parsedJson)
+        ? Object.keys(parsedJson as Record<string, unknown>)
+        : [];
+    const eventTypeRaw =
+      (parsedJson as { event?: { type?: unknown } } | null)?.event?.type;
+    await captureEdgeError(
+      new Error("revenuecat-webhook envelope failed zod validation"),
+      {
+        functionName: "revenuecat-webhook",
+        extra: {
+          stage: "envelope-zod",
+          zodIssues: envelopeParse.error.issues.map((iss) => ({
+            path: iss.path.join("."),
+            code: iss.code,
+            message: iss.message,
+          })),
+          topLevelKeys,
+        },
+        tags: {
+          ...REVENUECAT_TAGS,
+          stage: "envelope-zod",
+          severity: "high",
+          event_type: typeof eventTypeRaw === "string" ? eventTypeRaw : "unknown",
+        },
+      },
     );
-    return json({ error: "Missing event payload" }, 400);
+    return json({ error: "Webhook envelope failed validation" }, 400);
   }
+
+  // zod-parsed event — `type` is guaranteed non-empty string by schema.
+  // Cast to RcEvent shape; downstream projection.ts reads only the
+  // fields it expects. Original `payload` shape preserved as input.
+  const payload = envelopeParse.data;
+  const event = payload.event as RcEvent;
 
   const userId = (event.app_user_id ?? event.original_app_user_id ?? "").trim();
   if (!userId) {
