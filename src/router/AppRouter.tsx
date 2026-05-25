@@ -29,6 +29,8 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import TrialExpiredScreen from "@/components/TrialExpiredScreen";
 import ChatSupportButton from "@/components/support/ChatSupportButton";
 import { FeedbackBar } from "@/components/FeedbackBar";
+import { CertificateToast } from "@/components/certificates/CertificateToast";
+import { LevelUpModal } from "@/components/xp/LevelUpModal";
 import LessonUiLangToggle, {
   useLessonUiLang,
 } from "@/components/LessonUiLangToggle";
@@ -50,15 +52,9 @@ const ContentAdvisory      = lazyWithRetry(() => import("@/pages/legal/ContentAd
 const Support             = lazyWithRetry(() => import("@/pages/Support"));
 const AccountPage         = lazyWithRetry(() => import("@/pages/AccountPage"));
 const XPHistoryPage       = lazyWithRetry(() => import("@/pages/xp/XPHistoryPage"));
-const LevelUpModal        = lazyWithRetry(() =>
-  import("@/components/xp/LevelUpModal").then((m) => ({ default: m.LevelUpModal })),
-);
 // A3 — Progress Certificates (gated by `certificates_enabled` flag).
 const MilestoneObserver   = lazyWithRetry(() =>
   import("@/components/certificates/MilestoneObserver").then((m) => ({ default: m.MilestoneObserver })),
-);
-const CertificateToast    = lazyWithRetry(() =>
-  import("@/components/certificates/CertificateToast").then((m) => ({ default: m.CertificateToast })),
 );
 const CertificatesGalleryPage = lazyWithRetry(() => import("@/pages/certificates/CertificatesGalleryPage"));
 const PushPreferencesPage = lazyWithRetry(() => import("@/pages/account/PushPreferences"));
@@ -724,20 +720,21 @@ export default function AppRouter() {
       <RouterBeacon />
 
       {/* A9 — global level-up celebration. Listens for the XP-awarded
-          event and pops once per (user, level). Lazy so it doesn't
-          inflate the initial bundle. */}
-      <Suspense fallback={null}>
-        <LevelUpModal />
-      </Suspense>
+          event and pops once per (user, level). Kept in the app shell
+          because it mounts on every route and is tiny; avoiding a
+          separate global modal chunk removes a stale-deploy failure
+          point on unrelated pages like /pricing. */}
+      <LevelUpModal />
 
       {/* A3 — milestone observer + certificate toast. Both gate
-          themselves on the `certificates_enabled` feature flag and
-          render nothing until it's ON, so the off-state cost is
-          basically zero. */}
+          themselves on the `certificates_enabled` feature flag. The
+          observer stays lazy because it performs background certificate
+          checks; the toast is shell-mounted to avoid a separate global
+          toast chunk on every route. */}
       <Suspense fallback={null}>
         <MilestoneObserver />
-        <CertificateToast />
       </Suspense>
+      <CertificateToast />
 
       <Routes>
         {/* Public auth routes */}

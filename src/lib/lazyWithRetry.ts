@@ -5,6 +5,7 @@ import {
   cacheBustingReload,
   clearChunkRecoveryMarks,
 } from "@/lib/chunkReload";
+import { unregisterAllServiceWorkers } from "@/lib/swRecovery";
 
 // Value is byte-identical to the historical literal — kept as a local
 // alias so the rest of this file (and its tests, which assert the raw
@@ -76,17 +77,20 @@ export function createRetryLoader<T extends ComponentType<any>>(
         }
 
         if (!hasAlreadyReloaded()) {
-        markReloaded();
-        if (typeof window !== "undefined") {
-          // Cache-busting nav, NOT a plain reload: embedded webviews
-          // (FB in-app browser, iOS Chrome/WKWebView) re-serve the stale
-          // document on reload(). See src/lib/chunkReload.ts.
-          cacheBustingReload();
+          markReloaded();
+          if (typeof window !== "undefined") {
+            // Cache-busting nav, NOT a plain reload: embedded webviews
+            // (FB in-app browser, iOS Chrome/WKWebView) re-serve the stale
+            // document on reload(). Remove any old SW first so recovery
+            // cannot be intercepted by a stale cached app shell.
+            void unregisterAllServiceWorkers()
+              .catch(() => 0)
+              .then(() => cacheBustingReload());
+          }
+          // Halt rendering while the reload is in flight. Suspense keeps
+          // showing the fallback; React never sees the error.
+          return new Promise<{ default: T }>(() => {});
         }
-        // Halt rendering while the reload is in flight. Suspense keeps
-        // showing the fallback; React never sees the error.
-        return new Promise<{ default: T }>(() => {});
-      }
         throw retryError;
       }
     }
