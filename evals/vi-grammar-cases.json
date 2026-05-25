@@ -455,9 +455,9 @@
       "severity": "medium",
       "input": "My mother is a teacher. He works at a primary school.",
       "expected_correction": "My mother is a teacher. She works at a primary school.",
-      "expected_category": "expected_failure",
+      "expected_category": "expected_pass",
       "source": "C1-taxonomy",
-      "notes": "DETECTOR CANDIDATE — vi_l1_subject_gender. Subject-position he/she swap across sentences, no existing rule."
+      "notes": "Flipped expected_failure → expected_pass by Round 6 ruleSubjectGender (rule 63)."
     },
     {
       "id": "vi-gram-073",
@@ -467,9 +467,9 @@
       "severity": "medium",
       "input": "My older brother is married. She has two children.",
       "expected_correction": "My older brother is married. He has two children.",
-      "expected_category": "expected_failure",
+      "expected_category": "expected_pass",
       "source": "C1-taxonomy",
-      "notes": "DETECTOR CANDIDATE — vi_l1_subject_gender."
+      "notes": "Flipped expected_failure → expected_pass by Round 6 ruleSubjectGender (rule 63)."
     },
     {
       "id": "vi-gram-074",
@@ -479,9 +479,9 @@
       "severity": "medium",
       "input": "My wife is from Da Nang. He likes the beach.",
       "expected_correction": "My wife is from Da Nang. She likes the beach.",
-      "expected_category": "expected_failure",
+      "expected_category": "expected_pass",
       "source": "C1-taxonomy",
-      "notes": "DETECTOR CANDIDATE — vi_l1_subject_gender."
+      "notes": "Flipped expected_failure → expected_pass by Round 6 ruleSubjectGender (rule 63)."
     },
     {
       "id": "vi-gram-080",

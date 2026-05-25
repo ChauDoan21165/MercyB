@@ -555,6 +555,14 @@ export const L1_VN_EXPLANATIONS: Record<L1WeaknessTag, L1VnExplanation> = {
       "I no want coffee → 'Tôi + không + muốn + cà phê' (dịch 'không' thẳng thành 'no'; tiếng Anh phải có 'don't')",
     needs_review: false,
   },
+  vi_l1_subject_gender: {
+    name_vi: "Đại từ chủ ngữ he / she phải theo giới tính",
+    explanation_vi:
+      "Tiếng Việt dùng anh / chị / em / ông / bà theo quan hệ — không buộc theo giới tính. Tiếng Anh **he / she** phải khớp giới tính của danh từ vừa nhắc. *My mother is a teacher. **He** works...* → *...**She** works...*. Mẹ / chị / vợ → **she**; bố / anh / chồng → **he**.",
+    example_wrong_vi_gloss:
+      "My mother is a teacher. He works at a primary school → 'Mẹ tôi là giáo viên. + Anh ấy / Cô ấy làm việc...' (tiếng Việt dùng một đại từ; tiếng Anh phải chia 'she' cho mẹ)",
+    needs_review: false,
+  },
   vi_l1_co_transfer: {
     name_vi: "'Có' không phải lúc nào cũng là 'has' — dùng there is/are hoặc is/are",
     explanation_vi:

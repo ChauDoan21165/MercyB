@@ -89,15 +89,15 @@
  *  60. vi_l1_superlative_the          usage        A2
  *  61. vi_l1_if_will                  structural   B1
  *
- *  Round 6 additions. STRATEGY §15 Bar #1 detector candidates flipped
- *  from `expected_failure` → `expected_pass` per the Vietnamese flagship
- *  DoD. Numbering is sequential within the round; rule 63 ships in a
- *  parallel PR (#1169 — vi_l1_subject_gender), so this slot lands at 64.
+ *  Round 6 additions — rules 62–64 (3 new). STRATEGY §15 Bar #1 detector
+ *  candidates flipped from `expected_failure` → `expected_pass` per the
+ *  Vietnamese flagship DoD.
  *
  *  62. vi_l1_no_aux_negation          structural    A2
  *  63. vi_l1_topic_comment_fronting   structural    B1
  *  64. vi_l1_co_transfer              structural    A2 — two sub-patterns
  *  65. vi_l1_future_adverb_bare       structural    A2
+ *  66. vi_l1_subject_gender           cross-sent    A2
  */
 
 export type L1WeaknessTag =
@@ -167,7 +167,8 @@ export type L1WeaknessTag =
   | 'vi_l1_no_aux_negation'           // L1-061 A2
   | 'vi_l1_future_adverb_bare'        // L1-065 A2
   | 'vi_l1_co_transfer'               // L1-063 A2 — two sub-patterns
-  | 'vi_l1_topic_comment_fronting';   // L1-064 B1
+  | 'vi_l1_topic_comment_fronting'    // L1-064 B1
+  | 'vi_l1_subject_gender';           // L1-066 A2 — cross-sentence
 
 export type L1FeedbackText = {
   en: string;
@@ -2737,6 +2738,82 @@ export const ruleFutureAdverbBare: Rule = ({ userTokens, expectedTokens, rawExpe
       withoutWill.every((t, j) => t === userTokens[j])
     ) {
       return { tag: 'vi_l1_future_adverb_bare', replacements: { FIX: rawExpected } };
+    }
+  }
+  return null;
+};
+
+// ── vi_l1_subject_gender (rule 66) ─────────────────────────────────────────
+
+/**
+ * Gendered subject nouns the next sentence's pronoun must agree with.
+ * Kept small and unambiguous — words whose grammatical referent is
+ * reliably one biological/social gender in everyday English. Avoid
+ * occupation/role words ("doctor", "engineer", "teacher") because
+ * the L1-transfer error this rule targets is specifically about
+ * family/relational nouns Vietnamese speakers carry over without
+ * gendered-pronoun reflexes.
+ */
+const SUBJECT_GENDER_FEMALE = new Set([
+  'mother', 'wife', 'sister', 'daughter', 'aunt', 'grandmother',
+  'woman', 'girl', 'niece',
+]);
+const SUBJECT_GENDER_MALE = new Set([
+  'father', 'husband', 'brother', 'son', 'uncle', 'grandfather',
+  'man', 'boy', 'nephew',
+]);
+
+function detectSentenceGender(
+  sentence: string,
+): 'female' | 'male' | null {
+  for (const w of sentence.toLowerCase().split(/\s+/)) {
+    if (SUBJECT_GENDER_FEMALE.has(w)) return 'female';
+    if (SUBJECT_GENDER_MALE.has(w))   return 'male';
+  }
+  return null;
+}
+
+/**
+ * 66. Subject pronoun gender mismatch across a sentence boundary. The
+ * Vietnamese third-person pronoun system distinguishes by social
+ * relation (anh / chị / em / ông / bà …) rather than by biological
+ * gender, and many speakers default to a single pronoun when carrying
+ * over to English `he` / `she`. Detects two-sentence input where
+ * sentence N introduces a gendered noun (mother / brother / wife …)
+ * and sentence N+1 starts with the wrong subject pronoun (`he` for a
+ * female antecedent, or `she` for a male antecedent). The expected
+ * answer must flip the pronoun while leaving the rest aligned.
+ *
+ * Cross-sentence reasoning is done by splitting `userText` /
+ * `expectedText` on `\.\s+`; the token stream is flat across sentence
+ * boundaries so it isn't useful here.
+ *
+ * Coverage: STRATEGY §15 Bar #1 detector candidate; flips
+ * evals/vi-grammar-cases.json entries vi-gram-072 / 073 / 074 from
+ * expected_failure to expected_pass.
+ */
+export const ruleSubjectGender: Rule = ({
+  userText, expectedText, rawExpected,
+}) => {
+  const userSents = userText.split(/\.\s+/).map((s) => s.trim()).filter(Boolean);
+  const expSents  = expectedText.split(/\.\s+/).map((s) => s.trim()).filter(Boolean);
+  if (userSents.length < 2) return null;
+  if (userSents.length !== expSents.length) return null;
+
+  for (let i = 0; i < userSents.length - 1; i++) {
+    const gender = detectSentenceGender(userSents[i]);
+    if (!gender) continue;
+    const nextUser = userSents[i + 1].toLowerCase();
+    const nextExp  = expSents[i + 1].toLowerCase();
+    const userHe  = /^he\b/.test(nextUser);
+    const userShe = /^she\b/.test(nextUser);
+    const expHe   = /^he\b/.test(nextExp);
+    const expShe  = /^she\b/.test(nextExp);
+    if (gender === 'female' && userHe && expShe) {
+      return { tag: 'vi_l1_subject_gender', replacements: { FIX: rawExpected } };
+    }
+    if (gender === 'male' && userShe && expHe) {
+      return { tag: 'vi_l1_subject_gender', replacements: { FIX: rawExpected } };
     }
   }
   return null;
