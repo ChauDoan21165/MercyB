@@ -9,6 +9,7 @@ import type {
 import type {
   GraderInput,
   GraderResult,
+  PlacementProfileSnapshotV3,
   PlacementV3Profile,
   PlacementV3Request,
   PlacementV3Response,
@@ -24,6 +25,7 @@ export function createHarness(options: {
   const sessions = new Map<string, PlacementV3Session>();
   const responses = new Map<string, PlacementV3Response[]>();
   const profiles = new Map<string, PlacementV3Profile>();
+  const profileSnapshots: PlacementProfileSnapshotV3[] = [];
   const inFlightClaims = new Set<string>();
   let id = 1;
   const now = vi.fn(() => options.now ?? "2026-05-20T12:00:00.000Z");
@@ -111,6 +113,9 @@ export function createHarness(options: {
       profiles.set(profile.session_id, saved);
       return saved;
     },
+    writeProfileSnapshot: async (snapshot) => {
+      profileSnapshots.push(snapshot);
+    },
     grade: options.grade ?? stubGrade,
     recommendLessons: async (profile) => recommendLessonsStub(profile),
     log: vi.fn(),
@@ -120,6 +125,7 @@ export function createHarness(options: {
     sessions,
     responses,
     profiles,
+    profileSnapshots,
     run: (request: PlacementV3Request, userId = "user-1") =>
       handleAction({ userId, request, deps }),
   };

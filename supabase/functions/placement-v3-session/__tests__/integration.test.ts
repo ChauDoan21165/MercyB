@@ -42,6 +42,43 @@ describe("placement v3 integration flow", () => {
     }
   });
 
+  it("writes a profiles snapshot on completion (directional carve-out)", async () => {
+    // Asserts that the v3 edge function writes its own results to
+    // `profiles.placement_*` on completion — the equivalent of v2's
+    // `placement-session/index.ts:347-371`. Compliant under the
+    // "no Placement writeback" directional carve-out: the placement
+    // engine writing its own session is permitted; cross-surface
+    // writes (Study OS / memory / AI Tutor → placement) are not.
+    const h = createHarness({
+      grade: async () => ({
+        ok: true,
+        assessment: assessment("B1", 0.9),
+        version: "mock",
+      }),
+    });
+    expect(h.profileSnapshots).toHaveLength(0);
+    let state = await h.run({ action: "start" });
+    for (let i = 0; i < 6 && state.ok && state.prompt; i++) {
+      state = await answerCurrent(h, state);
+    }
+    expect(state.ok).toBe(true);
+    if (!state.ok) return;
+
+    expect(h.profileSnapshots).toHaveLength(1);
+    const snap = h.profileSnapshots[0];
+    expect(snap.userId).toBe("user-1");
+    expect(snap.sessionId).toBe(state.session.id);
+    expect(snap.cefr).toBe("B1");
+    expect(snap.startingRoom.length).toBeGreaterThan(0);
+    expect(snap.completedAt).toMatch(/^\d{4}-\d{2}-\d{2}T/);
+    expect(Array.isArray(snap.weaknessTags)).toBe(true);
+    expect(snap.historyEntry.source).toBe("v3");
+    expect(snap.historyEntry.bankVersion).toBe("placement-v3-session-v1");
+    expect(snap.historyEntry.sessionId).toBe(state.session.id);
+    expect(snap.historyEntry.theta).toBeNull();
+    expect(snap.historyEntry.se).toBeNull();
+  });
+
   it("abandon path updates status to abandoned", async () => {
     const h = createHarness();
     let state = await h.run({ action: "start" });

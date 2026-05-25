@@ -3,6 +3,8 @@ import {
   type LanguagePair,
   type OrchestratorDeps,
   type PersistSessionInput,
+  type PlacementHistoryEntryV3,
+  type PlacementProfileSnapshotV3,
   type PlacementV3Profile,
   type PlacementV3Response,
   type PlacementV3ResponseWriteResult,
@@ -129,6 +131,40 @@ export function createPersistence(
         .single();
       if (error) throw new Error(`upsertProfile: ${error.message}`);
       return rowToProfile(data);
+    },
+    async writeProfileSnapshot(snapshot: PlacementProfileSnapshotV3) {
+      // Mirrors v2's writeCompletion (placement-session/index.ts:347-371):
+      // read-modify-write the placement_history jsonb log + write the
+      // shared profiles snapshot fields in a single update. Idempotent
+      // on sessionId so a duplicate replay (resume after edge timeout)
+      // doesn't duplicate the history entry.
+      const { data: prof, error: readErr } = await db
+        .from("profiles")
+        .select("placement_history")
+        .eq("id", snapshot.userId)
+        .maybeSingle();
+      if (readErr) throw new Error(`writeProfileSnapshot.read: ${readErr.message}`);
+      const existingHistory = Array.isArray((prof as { placement_history?: unknown })?.placement_history)
+        ? ((prof as { placement_history: unknown[] }).placement_history as PlacementHistoryEntryV3[])
+        : [];
+      const alreadyLogged = existingHistory.some(
+        (entry) => entry && entry.sessionId === snapshot.historyEntry.sessionId,
+      );
+      const nextHistory = alreadyLogged
+        ? existingHistory
+        : [...existingHistory, snapshot.historyEntry];
+
+      const { error: writeErr } = await db
+        .from("profiles")
+        .update({
+          placement_cefr: snapshot.cefr,
+          placement_starting_room: snapshot.startingRoom,
+          placement_completed_at: snapshot.completedAt,
+          placement_weaknesses: snapshot.weaknessTags,
+          placement_history: nextHistory,
+        })
+        .eq("id", snapshot.userId);
+      if (writeErr) throw new Error(`writeProfileSnapshot.update: ${writeErr.message}`);
     },
   };
 }

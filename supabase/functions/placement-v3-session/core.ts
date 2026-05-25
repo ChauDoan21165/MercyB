@@ -17,6 +17,8 @@ import { aggregateProfile } from "./scoring.ts";
 import {
   type OrchestratorDeps,
   type OrchestratorResponse,
+  type PlacementHistoryEntryV3,
+  type PlacementProfileSnapshotV3,
   type PlacementV3Profile,
   type PlacementV3Request,
   type PlacementV3Response,
@@ -24,6 +26,9 @@ import {
   type PromptTask,
   type RespondInput,
 } from "./types.ts";
+
+const PLACEMENT_V3_BANK_VERSION = "placement-v3-session-v1";
+const FALLBACK_STARTING_ROOM = "placement-v3:b1:grammar-foundation";
 
 const DEFAULT_PAIR = { native: "vi", target: "en" };
 const STALE_UNGRADED_RESPONSE_MS = 30_000;
@@ -277,7 +282,65 @@ async function finalizeProfile(
   const recommendations = await deps.recommendLessons(profile);
   profile = { ...profile, recommended_lessons: recommendations };
   await deps.markProfilesNotCurrent(userId);
-  return deps.upsertProfile(profile);
+  const persisted = await deps.upsertProfile(profile);
+  // Mirror v2's `profiles` snapshot write on completion so downstream
+  // surfaces (FocusAreasCard, AccountPage) read the same columns
+  // regardless of placement version. Compliant under the directional
+  // carve-out of "no Placement writeback" (STRATEGY.md §12).
+  await deps.writeProfileSnapshot(buildProfileSnapshot(persisted, now));
+  return persisted;
+}
+
+function buildProfileSnapshot(
+  profile: PlacementV3Profile,
+  now: string,
+): PlacementProfileSnapshotV3 {
+  const startingRoom =
+    profile.recommended_lessons[0]?.lessonId ?? FALLBACK_STARTING_ROOM;
+  const weaknessTags = collectWeaknessTags(profile);
+  const historyEntry: PlacementHistoryEntryV3 = {
+    ts: now,
+    bankVersion: PLACEMENT_V3_BANK_VERSION,
+    theta: null,
+    se: null,
+    cefr: profile.cefr_overall,
+    perSkill: {},
+    l1Top: profile.l1_interference_flags
+      .slice(0, 3)
+      .map((flag) => flag.patternId),
+    sessionId: profile.session_id,
+    source: "v3",
+  };
+  return {
+    userId: profile.user_id,
+    sessionId: profile.session_id,
+    cefr: profile.cefr_overall,
+    startingRoom,
+    completedAt: now,
+    weaknessTags,
+    historyEntry,
+  };
+}
+
+function collectWeaknessTags(profile: PlacementV3Profile): string[] {
+  // Prefer L1 interference patternIds (stable, snake_case, cross-link
+  // anchors). Fall back to free-form `gaps` strings when no L1 flags
+  // fired (e.g. an unusually strong session). Deduped, capped at 8.
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const flag of profile.l1_interference_flags) {
+    if (!flag.patternId || seen.has(flag.patternId)) continue;
+    seen.add(flag.patternId);
+    out.push(flag.patternId);
+    if (out.length >= 8) return out;
+  }
+  for (const gap of profile.gaps) {
+    if (!gap || seen.has(gap)) continue;
+    seen.add(gap);
+    out.push(gap);
+    if (out.length >= 8) return out;
+  }
+  return out;
 }
 
 async function abandon(
