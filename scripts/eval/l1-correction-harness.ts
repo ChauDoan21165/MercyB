@@ -42,6 +42,14 @@ type FixtureCase = {
   id: string;
   family: string;
   expected_rule_id: string | null;
+  /**
+   * Stable family-id from C1's GrammarFamily.id namespace.
+   * Today this is always equal to expected_rule_id (a detector-tag literal).
+   * Post-C6 ingestor it becomes the canonical phenomenon-id, decoupling the
+   * fixture from detector-rule renames. The verdict logic still keys off
+   * expected_rule_id — expected_phenomenon is carried for downstream tools.
+   */
+  expected_phenomenon: string | null;
   severity: Severity;
   input: string;
   expected_correction: string;
@@ -164,6 +172,9 @@ function loadFixture(path: string): Fixture {
     }
     if (c.expected_rule_id !== null && typeof c.expected_rule_id !== 'string') {
       throw new Error(`${path}: case ${c.id} expected_rule_id must be string or null`);
+    }
+    if (c.expected_phenomenon !== null && typeof c.expected_phenomenon !== 'string') {
+      throw new Error(`${path}: case ${c.id} expected_phenomenon must be string or null`);
     }
     if (!VALID_CATEGORIES.has(c.expected_category)) {
       throw new Error(`${path}: case ${c.id} expected_category must be one of ${[...VALID_CATEGORIES].join('|')}`);
@@ -403,6 +414,7 @@ function main(): void {
         family: r.case.family,
         expected_category: r.case.expected_category,
         expected_rule_id: r.case.expected_rule_id,
+        expected_phenomenon: r.case.expected_phenomenon,
         actual_tag: r.actualTag,
         verdict: r.verdict,
       })),

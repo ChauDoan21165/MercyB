@@ -89,6 +89,7 @@ placeholders for C2's writing-quality coverage and are all marked
       "id": "vi-gram-001",
       "family": "article-omission-overuse",
       "expected_rule_id": "vi_l1_missing_article",
+      "expected_phenomenon": "vi_l1_missing_article",
       "severity": "medium",
       "input": "I bought book yesterday.",
       "expected_correction": "I bought a book yesterday.",
@@ -115,11 +116,22 @@ Field-by-field:
   is `expected_failure` for a detector that doesn't exist yet, in
   which case use the planned tag name (e.g. `vi_l1_subject_gender`).
   Use `null` for false-positive guard cases where no rule should fire.
+  **The harness's verdict logic keys off this field.**
+- **`expected_phenomenon`** (string | null, required) — stable
+  family-id from C1's `GrammarFamily.id` namespace (or the future C6
+  ingestor's). Today this is always equal to `expected_rule_id`. The
+  field exists so that a future detector-rule rename (e.g.
+  `vi_l1_3rd_person_s` → `vi_l1_subject_verb_agreement_singular`)
+  doesn't invalidate fixture cases — only `expected_rule_id` changes,
+  `expected_phenomenon` stays. The harness reads it and surfaces it in
+  `--json` output but does not key verdict logic off it yet.
 - **`severity`** (`"high" | "medium" | "low"`, required) — consumer-
-  side hint for how the tutor should treat a match. The harness records
-  it but does **not** weight by it: severity is for tutor UX, not for
-  rule priority. Rule priority remains first-match-wins in the
-  `VN_RULES` registry order.
+  side hint for how the tutor should treat a match. **Reserved for
+  future consumer-side weighting** — no rule fires on it today; the
+  harness records and renders it but the column has zero behavioural
+  effect until the tutor consumer (C4 / downstream) lands. Severity is
+  for tutor UX, not for rule priority. Rule priority remains
+  first-match-wins in the `VN_RULES` registry order.
 - **`input`** (string, required) — the learner's sentence. Passed as
   `userAnswer` to `detectL1Error`.
 - **`expected_correction`** (string, required) — the target form.
@@ -171,6 +183,14 @@ exits 1 if the current global pass rate is below the stored rate (no
 epsilon — any drop is a fail). Use `--update-baseline` after an
 intentional fixture or detector change; use `--regression` as a
 pre-merge guard.
+
+The zero-epsilon comparison is correct for v1 because every current
+case is deterministic — the detector is pure-regex, the verdict is
+string equality, the same input always produces the same verdict. If
+a Phase 2 fixture introduces LLM-graded writing cases (C2's likely
+direction), re-evaluate: add a small tolerance (e.g. 1%) to absorb
+sampling noise without masking real regressions. Until that happens,
+zero-epsilon is the safer default — any drop is a real signal.
 
 There is intentionally no "automatic baseline update on success" — a
 silent baseline shift would hide regressions. The author must decide
