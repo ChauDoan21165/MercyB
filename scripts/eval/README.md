@@ -30,6 +30,17 @@ npx tsx scripts/eval/l1-correction-harness.ts --update-baseline
 # has dropped. Use in a pre-merge check once the harness has settled.
 npx tsx scripts/eval/l1-correction-harness.ts --regression
 
+# Assert fixture<->viL1Profile family coverage (spec §8 item 4). Two
+# fail-closed checks:
+#   A. Every fixture-case `family` resolves into the profile's family
+#      namespace (grammar.families[].id ∪ writing.patterns[].id).
+#      Kebab→snake normalisation at compare time per the §0 lock.
+#   B. Every grammar.families[] with severity: "high" has at least
+#      one fixture case (any expected_category) referencing it.
+# Exits 1 on drift. Pair with --regression in CI once fixtures are
+# fully on-namespace.
+npx tsx scripts/eval/l1-correction-harness.ts --coverage
+
 # Machine-readable JSON for piping into other tools.
 npx tsx scripts/eval/l1-correction-harness.ts --json
 
