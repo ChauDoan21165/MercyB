@@ -51,6 +51,7 @@ import {
   ruleModalPerfect,
   ruleNegativeInversion,
   ruleNoArticleGeneric,
+  ruleNoAuxNegation,
   ruleOneOfTheSingular,
   rulePassiveMissingBe,
   rulePastEd,
@@ -163,5 +164,9 @@ export const VN_RULES: L1Rule[] = [
   ruleNoArticleGeneric,      // 59
   ruleIfWill,                // 61
   ruleGenericPlural,         // 48 — last: loses to plural_s (existing) by design
+  // Round 6 — Bar #1 DoD flip. Runs before ruleDoubleNegative so a
+  // bare-no/bare-not without do-support gets the specific message
+  // instead of falling through to the (broader) double-negative rule.
+  ruleNoAuxNegation,         // 62
   ruleDoubleNegative,        // 49 — last among A2 structural
 ];

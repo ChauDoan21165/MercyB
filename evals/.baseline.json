@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-25T15:15:36.909Z",
+  "generated_at": "2026-05-25T17:34:20.992Z",
   "global": {
-    "pass": 52,
-    "total": 52,
+    "pass": 54,
+    "total": 54,
     "rate": 1
   },
   "by_family": {
@@ -77,8 +77,8 @@
       "rate": 1
     },
     "negation-no-not-placement": {
-      "pass": 2,
-      "total": 2,
+      "pass": 4,
+      "total": 4,
       "rate": 1
     },
     "vi_write_register": {

@@ -322,4 +322,9 @@ export const VN_EXPLANATIONS: L1Explanation[] = [
     en: "In a 1st-conditional **if**-clause, English uses **present simple** — not **will**. *If I **will go** tomorrow, I will tell you* → *If I **go** tomorrow, I will tell you*. Try: *{FIX}*.",
     vi: "[VI TBD — CC4] Mệnh đề **if** (điều kiện loại 1) dùng hiện tại đơn, không dùng **will**. Thử: *{FIX}*.",
   },
+  {
+    tag: 'vi_l1_no_aux_negation',
+    en: "English negates verbs with **do/does/did + not** (or the contractions **don't / doesn't / didn't**), not by placing **no** or **not** straight on the verb. *I **no** want coffee* → *I **don't** want coffee*; *He **not** come yesterday* → *He **didn't** come yesterday*. Try: *{FIX}*.",
+    vi: "Tiếng Việt phủ định bằng cách thêm 'không' trước động từ — gọn và đứng độc lập. Tiếng Anh cần trợ động từ **do / does / did** đi cùng **not** (hoặc dạng rút gọn **don't / doesn't / didn't**) — không thể đặt 'no' hay 'not' trực tiếp trước động từ thường. Thử: *{FIX}*.",
+  },
 ];
