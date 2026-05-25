@@ -686,14 +686,27 @@ export function MercySpeakTab({
   // cloud path returns a score, it replaces `localMatchScore` for the
   // visible YOU bar + chip row. When it errors, sentinels, or is OFF,
   // we keep `localMatchScore`. Single visible UI shape regardless.
-  const { enabled: azurePhonemeScoringEnabled } = useFeatureFlag('azure_phoneme_scoring', false);
+  const { enabled: azurePhonemeScoringRawFlag } = useFeatureFlag('azure_phoneme_scoring', false);
+  // Kids safety pin: when MercySpeakTab is mounted in a kids product
+  // context (`isKidsMode === true`), the cloud phoneme scoring path is
+  // unconditionally OFF — local-only recording + local scoring. The raw
+  // feature-flag value still controls adult mounts. Pin lives at the
+  // useFeatureFlag boundary so every downstream check (`if
+  // (!azurePhonemeScoringEnabled) return;`, the dependency arrays, the
+  // cloud-pending gate) reads the pinned value. CLAUDE.md non-negotiable
+  // #2 (Kids mode is sacred — no raw audio leaves the device).
+  const azurePhonemeScoringEnabled = !isKidsMode && azurePhonemeScoringRawFlag;
   // Real-time streaming feedback (PR feat/pronunciation-streaming).
   // Default OFF — Chau flips per user_id once the WebSocket + AudioWorklet
   // path is verified end-to-end against the staging Azure region. Stream
   // runs in PARALLEL to the existing post-recording flow; on any failure
   // (connect timeout, slow first partial, websocket error) the existing
   // batch path is unchanged and produces the source-of-truth score.
-  const { enabled: pronunciationStreamingEnabled } = useFeatureFlag('pronunciation_streaming_enabled', false);
+  const { enabled: pronunciationStreamingRawFlag } = useFeatureFlag('pronunciation_streaming_enabled', false);
+  // Kids safety pin (same rationale as azurePhonemeScoringEnabled above):
+  // the streaming-pronunciation path also uploads audio to Azure via
+  // WebSocket. In kids mode it stays OFF regardless of the per-user flag.
+  const pronunciationStreamingEnabled = !isKidsMode && pronunciationStreamingRawFlag;
   const streamingPronunciation = useStreamingPronunciation({
     enabled: pronunciationStreamingEnabled,
     referenceText: practiceText,

@@ -206,7 +206,7 @@ export default function ViKidsEnglishTutor() {
                 </div>
               }
             >
-              <MercySpeakTab />
+              <MercySpeakTab isKidsMode />
             </Suspense>
           </div>
         )}
