@@ -42,6 +42,7 @@ import {
 } from './mercy-guide/shared';
 import { analyzeGrammarWithApi } from './mercy-guide/tabs/grammar-writing/api';
 import { breadcrumbMercyPanel } from '@/lib/monitoring/breadcrumbs';
+import { lazyWithRetry } from '@/lib/lazyWithRetry';
 import useMercyMemory from './mercy-guide/hooks/useMercyMemory';
 import type {
   MercyGuideProps,
@@ -103,8 +104,11 @@ type TeacherUiPreset = {
 // modulepreloaded on every first paint (homepage included). The panel only
 // renders behind `isOpen` (default false), so the Suspense boundary at the
 // `{isOpen && …}` block below fires only on the first open of the guide.
-// See reports/RECON-bundle-audit-A25.md (Lever 1).
-const MercyGuidePanel = React.lazy(
+// Wrapped in lazyWithRetry so a stale-deploy chunk 404 triggers the same
+// Tier-1 cache-bust recovery as every other dynamic import in main.tsx;
+// see Sentry MERCYBLADE-WEB-F (https://chau-doan.sentry.io/issues/7461993296/)
+// for the leak this closes. See reports/RECON-bundle-audit-A25.md (Lever 1).
+const MercyGuidePanel = lazyWithRetry(
   () => import('./mercy-guide/MercyGuidePanel'),
 );
 const MercyGuidePanelResolved =
