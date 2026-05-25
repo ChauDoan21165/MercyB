@@ -8,7 +8,7 @@
 > **Read order:** STRATEGY.md §1, §3, §4 first (defines the axes and
 > committed pairs), then this file (shows current state).
 >
-> **Last updated:** 2026-05-25
+> **Last updated:** 2026-05-25 (post-Bar #1 audit — 4 of 5 candidates merged, #1169 open)
 
 ## Axis 1 — Vietnamese learners studying [target]
 
@@ -19,12 +19,20 @@
 | Writing taxonomy                        | ✅ `vi-writing.md` (12 patterns, 169 examples)          | ❌        | ❌        | ❌        |
 | Phoneme gap audit                       | ✅ `vn-phoneme-gaps.md` (6 audit categories)            | ❌        | ❌        | ❌        |
 | L1 interference atlas                   | ✅ `vnL1Interference.ts` (37 patterns)                  | ❌        | ❌        | ❌        |
-| Detector rules                          | ✅ `l1-error-detector.ts` (60 rules, 52/52 eval pass)   | ❌        | ❌        | ❌        |
-| AI Tutor L1 prompt wire                 | ✅ `promptAssembly.ts` ← `viL1Profile.interference` (PR #1131) | ❌  | ❌        | ❌        |
-| Placement test                          | ✅ existing                                             | ❌        | ❌        | ❌        |
-| Eval harness                            | ✅ 52/52 baseline                                       | ❌        | ❌        | ❌        |
-| Pronunciation coaching                  | (partial — phoneme map + scorer + drill cards exist)    | ❌        | ❌        | ❌        |
+| Detector rules                          | 🚧 `l1-error-detector.ts` — 4 of 5 Bar #1 candidates merged (`vi_l1_no_aux_negation` #1163, `vi_l1_future_adverb_bare` #1164, `vi_l1_topic_comment_fronting` #1170, `vi_l1_co_transfer`); `vi_l1_subject_gender` #1169 open | ❌        | ❌        | ❌        |
+| AI Tutor L1 prompt wire                 | ✅ `promptAssembly.ts` ← `viL1Profile.interference` (PR #1131) — §15 Bar #3 ticked | ❌  | ❌        | ❌        |
+| Placement test                          | ✅ existing + E2E runbook (PR #1143) — §15 Bar #5 ticked | ❌       | ❌        | ❌        |
+| Eval harness                            | ✅ 62/62 baseline (100%) — was 52/52; §15 Bar #2 ticked (PR #1156) | ❌  | ❌        | ❌        |
+| Pronunciation coaching                  | ✅ `PROBLEM_PAIRS_TH_T / _R_L / _ED_ENDINGS / _S_PLURALS / _STRESS / _INTONATION` — all 6 §5 pain points, wired into `soundPairDrills.ts` (PR #1173); §15 Bar #4 ticked | ❌        | ❌        | ❌        |
 | Course content (rooms / lessons)        | ✅ 486 bilingual rooms                                  | (partial) | (partial) | (partial) |
+
+### Axis 1 — §15 bars that don't map to capability rows
+
+| §15 Bar                                 | Status                                                                                       |
+|-----------------------------------------|----------------------------------------------------------------------------------------------|
+| #1 L1 grammar coverage gap closed       | 🚧 4 of 5 detector candidates merged; gate is PR #1169 (`vi_l1_subject_gender`)              |
+| #6 Native crash telemetry on-device     | ⏳ blocked on owner — wiring shipped (PR #1132); awaits Chau's on-device Sentry-dashboard probe |
+| #7 Named Vietnamese learner outcome     | ⏳ open — marketing/operations; no testimonial on record yet                                  |
 
 ## Axis 2 — English speakers studying [target]
 
@@ -37,14 +45,18 @@
 | AI Tutor L1 prompt wire                 | ❌         | ❌        | ❌        | ❌        |
 | Placement test                          | ❌         | ❌        | ❌        | ❌        |
 | Eval harness                            | ❌         | ❌        | ❌        | ❌        |
+| Tone production coaching                | ❌         | n/a       | n/a       | n/a       |
+| Classifier system explainer + drill     | 🚧 PR #1176 (Vietnamese classifier room — §15 Axis 2 Bar #3) | n/a | n/a | n/a |
 | Course content (rooms / lessons)        | (partial)  | (partial) | (partial) | (partial) |
 
 ## Legend
 
 - ✅ shipped, on `origin/main`
 - 🚧 PR in flight
+- ⏳ blocked on owner / operations / marketing (no engineering blocker)
 - (partial) some content exists but does not meet the depth bar
 - ❌ not started
+- n/a not applicable to this pair (capability is L1-specific to a single column)
 
 ## How to read this matrix
 
