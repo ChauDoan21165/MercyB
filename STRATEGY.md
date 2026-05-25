@@ -543,16 +543,13 @@ one full direction of one full pair, on both sides."
 
 ### Axis 1: VN → EN done-criteria
 
-- [ ] **L1 grammar coverage gap closed.** Every grammar family in
+- [x] **L1 grammar coverage gap closed.** Every grammar family in
   `docs/l1-taxonomies/vi-grammar.md` is reachable by at least one
   detector rule in `src/lib/feedback/l1-error-detector.ts`. *Today:*
-  11 of 15 families have detectors; 5 are detector candidates
-  (`vi_l1_subject_gender`, `vi_l1_topic_comment_fronting`,
-  `vi_l1_co_transfer`, `vi_l1_future_adverb_bare`,
-  `vi_l1_no_aux_negation`) tracked as `expected_failure` in
-  `evals/vi-grammar-cases.json`. *Artifact:* all five candidates flip
-  from `expected_failure` to `expected_pass` in one or more follow-up
-  PRs against the harness, each landing `--update-baseline`.
+  all 15 families have detectors; all 5 candidates flipped to
+  `expected_pass`. *Artifact:* PRs #1163, #1170, #1172, #1164, #1169
+  merged to main; `evals/vi-grammar-cases.json` reflects flips;
+  `evals/.baseline.json` shows 65/65 = 100%.
 
 - [x] **L1 detector eval baseline ≥ 95%.** Global pass rate on
   `evals/vi-grammar-cases.json` is ≥ 95% (baseline-eligible cases).
@@ -584,15 +581,16 @@ one full direction of one full pair, on both sides."
   scoring) per the dispatch scoping. *Artifact:* the two new consts
   on `main`.
 
-- [ ] **Placement → lesson routing verified end-to-end.** A
+- [x] **Placement → lesson routing verified end-to-end.** A
   Vietnamese learner who completes the placement test is routed to
   lessons tagged with their flagged L1 interference patterns,
   validated by a real placement run + lesson-recommendation chain on a
-  real account. *Today:* infrastructure shipped
-  (`getVnL1PatternsByCategory`, `lessonTags`) but no end-to-end
-  runbook on record. *Artifact:* a runbook in `reports/` capturing
-  one Vietnamese learner's placement → flagged-pattern → recommended-
-  lesson chain.
+  real account. *Today:* runbook + E2E spec shipped via PR #1143.
+  *Artifact:* `docs/runbooks/placement-to-lesson.md` (step-by-step
+  contract for anon flow with file:line anchors, explicit safety
+  invariants) + `tests/e2e/placement-to-first-lesson.spec.ts` (anon
+  spec walking five v3 tasks → Results → first lesson → /room/:roomId
+  URL shape).
 
 - [ ] **Native crash telemetry confirmed on-device.** Sentry fires
   from iOS and Android builds on a real device — not a CI emulator
@@ -725,12 +723,15 @@ Re-open and tighten if any of the following happen:
 
 ### Status snapshot (date this when ticking checkboxes)
 
-As of 2026-05-25, two Axis 1 checkboxes are ticked: *L1 detector
-eval baseline* (now 100% / 52 of 52) and *AI Tutor consumes the L1
-profile* (PR #1131). The next closest are *Axis 1: Placement →
-lesson routing E2E* (pending PR #1143) and *Axis 1: Native crash
-telemetry* (wired per PR #1132, awaiting Chau's on-device probe).
-Two ticks, eleven open. The bars stay; the work is to land artifacts.
+As of 2026-05-25, five Axis 1 checkboxes are ticked: Bar #1 (L1
+grammar coverage, PRs #1163/#1170/#1172/#1164/#1169), Bar #2 (eval
+baseline 65/65, PR #1156), Bar #3 (AI Tutor L1 injection, PR #1131),
+Bar #4 (pronunciation drills, PR #1173), Bar #5 (placement → lesson
+E2E, PR #1143). Two Axis 1 bars remain, both owner-gated: Bar #6
+(native Sentry on-device probe, wired per PR #1132) and Bar #7
+(named Vietnamese learner outcome). Axis 2: zero ticked on main;
+Bars #1, #3, #4 in flight (#1184, #1176, #1188). Five ticked, eight
+open.
 
 ---
 
