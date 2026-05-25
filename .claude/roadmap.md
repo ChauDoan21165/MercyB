@@ -136,6 +136,8 @@ _Original brief:_ - Phoneme-level feedback (not just word-level)
 
 **Status: ~70% complete (25 Apr 2026 — Round 9 A1-A4).** ✅ Multi-turn conversation thread + persistence (mercy_conversations + mercy_messages, RLS, /mercy page) PR #89. ✅ Episodic memory layer (mercy_user_facts with supersede chain + heuristic EN+VN fact extractor) PR #90. ✅ Rule-based writing rubric (5-dimension scorer with 10 essay-specific L1 detectors, /writing-feedback page) PR #91. ✅ Mock interview scenarios (5 bilingual VN diaspora scenarios — tech support, restaurant, nail salon, tutor, office admin — 28 questions, /interview pages) PR #95. ❌ Voice STT/TTS pipeline wiring (existing TTS works; STT needs Whisper API integration). ❌ LLM-based fact extractor (heuristic in place, LLM swap is daytime work). ❌ LLM-based writing rubric (rule-based foundation in place, LLM enhancement deferred). ❌ Real Mercy memory feeding into ai-chat edge function prompts (schema ready, prompt-slot wiring is daytime work).
 
+**Study OS memory boundary:** `mercy_user_facts` / episodic memory is semantic person memory: what Mercy remembers about the learner/person. Study OS event summaries are local, time-windowed behavioral summaries from safe local learning events: what the learner has been doing recently in study flows. Do not merge Study OS summaries into `mercy_user_facts`, sync them to Supabase, expose them to admin dashboards, include raw learner content/corrected sentence text/transcript/audio/PII/child identity, or use them for Placement writeback unless a later explicit reviewed design authorizes it.
+
 - Voice conversations (multi-turn)
 - Personalized lesson plans (Mercy builds curriculum from placement + weaknesses)
 - Writing feedback (essay → rubric grading)
@@ -382,4 +384,3 @@ He's not in a marathon. He's not in a sprint. He's in a different category of ra
 If you are a fresh Claude session reading this for the first time, don't ask Chau to re-explain his situation. He has done this before. Read this section, the Strategic Defenses doc, and the recent commits. Then ask one specific question to confirm where work resumes.
 
 His message to a new chat is usually short. He expects you to fill in the rest from this file.
-

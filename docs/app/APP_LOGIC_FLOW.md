@@ -180,6 +180,13 @@ Logic mode
 
 M3 memory is local summary-only memory.
 
+There are two separate summary/memory concepts:
+
+- `mercy_user_facts` / episodic memory is semantic person memory: what Mercy remembers about the learner/person.
+- Study OS event summaries are local behavioral summaries: what the learner has been doing recently in study flows.
+
+Study OS event summaries are not semantic memory. They must not read from, write to, merge with, or backfill `mercy_user_facts` unless a later explicit reviewed design approves that boundary crossing. They must not become an indirect memory sync layer.
+
 M3 may store safe aggregate summary fields only:
 
 - strongest topic
@@ -188,14 +195,21 @@ M3 may store safe aggregate summary fields only:
 - practice count
 - suggested next focus
 
+Study OS event summaries may be derived from #1109 safe local learning events. They must stay local-only, time-windowed, behavioral/activity-based, and limited to safe counts, booleans, timestamps, and derived aggregate fields.
+
 M3 must not store:
 
 - raw audio
 - full transcripts
 - raw learner text in the memory card
 - full conversation history
+- corrected sentence text
+- PII
+- child identity
+- Placement result, status, or writeback
 - provider secrets
 - Supabase-synced memory
+- external analytics payloads
 
 M3 memory is meant to help the learner continue practicing without storing sensitive raw content.
 
@@ -258,6 +272,8 @@ These boundaries apply across the app:
 - No full transcript storage.
 - No Supabase memory sync.
 - No Placement writeback.
+- No admin dashboard consumption of raw local Study OS summaries.
+- No external analytics from Study OS summaries without a separate privacy-reviewed design.
 - No kid flow mixed with the advanced AI Tutor flow.
 - No advanced AI Tutor tabs inside Mercy Kids.
 - No AI Tutor CTA inside the Mercy Kids card.
