@@ -96,18 +96,25 @@ Home
 │
 ├── Memory System
 │   ├── Local summary-only memory
+│   ├── Semantic memory boundary:
+│   │   ├── mercy_user_facts = what Mercy remembers about the learner/person
+│   │   └── Study OS event summaries = recent local study behavior
 │   ├── Allowed:
 │   │   ├── strongest topic
 │   │   ├── topic needing review
 │   │   ├── practice count
 │   │   ├── last practiced
 │   │   ├── suggested next focus
-│   │   └── mastery/weak pattern summary
+│   │   ├── mastery/weak pattern summary
+│   │   └── safe counts/booleans/timestamps from local events
 │   └── Must never:
 │       ├── store raw audio
 │       ├── store full transcript
 │       ├── show raw learner text in memory card
+│       ├── store corrected sentence text
+│       ├── merge Study OS summaries with mercy_user_facts
 │       ├── Supabase sync without approval
+│       ├── external analytics without privacy review
 │       └── Placement writeback
 │
 ├── Safe Learning Events
@@ -129,10 +136,11 @@ Home
 │       └── write back to Placement
 │
 └── Study OS
-    ├── Today’s Lesson Planner
-    ├── Vietlish Logic Diagnosis Engine
-    ├── Mistake-to-Mastery Graph
-    ├── Progress / practice count
+    ├── What the learner knows
+    ├── What the learner is weak at
+    ├── What to study next
+    ├── How to review
+    ├── Behavioral signal layer: #1109 local event summaries only
     └── Future parent/teacher dashboard
 ```
 
@@ -145,8 +153,9 @@ Home
 | Floating Mercy Helper | Route guidance only | Open Kids or AI Tutor | Configure product, level, or mixed modes |
 | Logic mode | English/Vietlish reasoning | Type a sentence or choose a reasoning prompt | Speak, record, play TTS, or show fallback voice |
 | Voice | Read clean learner-facing text | Read corrected text, natural reply, or next question | Read raw learner input, labels, metadata, or hidden text |
-| Memory | Local aggregate summary | Store topic tags, counts, last practiced, next focus | Store raw audio, transcript, raw learner text, or sync to Supabase |
+| Memory | Local aggregate summary | Store topic tags, counts, last practiced, next focus | Store raw audio, transcript, raw learner text, corrected sentence text, or sync to Supabase |
 | Safe learning events | Local aggregate study signals | Store allowlisted event type, product, target language, mode, topic tag, timestamp, local session key, count/value | Store raw/corrected text, transcripts, audio, PII, Supabase IDs/JWTs, provider secrets, external analytics, or Placement writeback |
+| Study OS event summaries | Local behavioral signal layer | Derive time-windowed counts, booleans, and timestamps from safe local learning events | Become semantic memory, merge into `mercy_user_facts`, sync to Supabase, feed raw admin dashboards, or write to Placement |
 
 ## File Ownership Map
 
@@ -213,6 +222,8 @@ Ownership rule: voice may read clean learner-facing output only. Cloud provider 
 - `src/components/ai-tutor/TutorMemoryCard.tsx`
 
 Ownership rule: memory is local and summary-only. It may hold safe topic tags, aggregate counts, last practiced, and suggested next focus. It must not hold raw learner text, full transcripts, raw audio, user IDs, JWTs, or Supabase memory sync.
+
+Study OS event summaries are a separate local behavioral signal layer. They describe recent study-flow activity, not learner identity or semantic facts. They may be derived from #1109 safe local learning events and must remain local-only, time-windowed, count/boolean/timestamp based, and free of raw learner content, transcript/audio, corrected sentence text, PII, child identity, Placement result/status/writeback, Supabase sync, and external analytics. They must not read/write/merge with `mercy_user_facts` unless a later explicit reviewed design authorizes that crossing.
 
 ### Routes/CTA
 

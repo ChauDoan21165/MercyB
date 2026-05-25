@@ -344,10 +344,22 @@ Duolingo is already strong at lessons, streaks, gamification, AI roleplay, and b
 - ❌ Expose provider secrets client-side
 - ❌ Store raw audio or full transcripts
 - ❌ Do Placement writeback
+- ❌ Turn Study OS event summaries into indirect semantic memory sync
 
 ### Winning sentence
 
 > MercyB wins by becoming the Vietnamese-first personal AI teacher: simple enough for a 2-year-old, deep enough to fix adult Vietlish, and smart enough to guide the next lesson.
+
+### Study OS Summary Boundary
+
+Study OS needs safe behavioral signals, but those signals are not the same thing as Mercy's semantic memory.
+
+- `mercy_user_facts` / episodic memory = semantic person memory: what Mercy remembers about the learner/person.
+- Study OS event summaries = local, time-windowed behavioral summaries: what the learner has been doing recently in study flows.
+
+Study OS event summaries may be derived from #1109 safe local learning events only as counts, booleans, timestamps, and other safe aggregates. They must not contain raw learner text, corrected sentence text, full transcripts, raw audio, PII, child identity, Placement result/status/writeback, Supabase sync, or external analytics.
+
+Future Study OS UI may map those local signals into progress, momentum, weak-topic, or next-focus displays. It must not merge them into `mercy_user_facts`, use them as an indirect memory sync layer, or send them to an admin dashboard unless a separate privacy-reviewed design explicitly approves that change.
 
 ---
 

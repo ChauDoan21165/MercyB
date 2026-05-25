@@ -81,6 +81,7 @@ Use this ownership table as the baseline:
 | Floating Helper | `MercyGuide.tsx`, `MercyGuidePanel.tsx` | Teacher Mercy identity, close/minimize, simple helper text, route CTAs | product selector, Kids workspace, AI Tutor mode tabs, level/support selector |
 | Voice | `useTtsSpeaker.ts`, `voiceEngine.ts`, `mercyVoice.ts`, `supabase/functions/mercy-tts/*` | clean learner-facing speech | provider secrets client-side, raw input speech, Logic mode voice |
 | Memory | `learningMemory.ts`, `TutorMemoryCard.tsx` | aggregate summary fields | raw learner text, full transcript, raw audio, Supabase sync |
+| Study OS event summaries | `safeLearningEvents.ts`, local Study OS summary code | local time-windowed counts, booleans, timestamps, and safe behavioral aggregates | semantic memory, `mercy_user_facts` merge, corrected sentence text, PII, child identity, Supabase sync, external analytics, Placement writeback |
 | Tutor engines | `todayLessonPlanner.ts`, `vietlishLogicEngine.ts`, `tutorEngine.ts` | structured lesson/correction/logic outputs | storage side effects, provider/env changes, Placement writeback |
 | Safe learning events | `learningEvents.ts` | local-only allowlisted summary events | raw/corrected learner text, transcripts, audio, PII, Supabase IDs/JWTs, provider secrets, external analytics sync, Placement writeback |
 | Placement entry points | `availability.ts`, `Home.tsx`, `AiTutor.tsx`, `AppRouter.tsx` | shared availability gate before `/placement` CTAs/routes | user-facing CTA to unavailable `/placement`, duplicated availability logic, Placement writeback |
@@ -285,9 +286,28 @@ During inspection:
 - Do not add transcript storage.
 - Do not add Supabase memory sync.
 - Do not alter tests unless only docs links require it.
+- Do not convert Study OS event summaries into semantic memory or analytics sync.
+- Do not connect Study OS event summaries to `mercy_user_facts`, admin dashboards, Supabase, or Placement.
 
 During fix PRs spawned from inspection:
 
 - Keep each PR small and tied to one finding.
 - Prefer tests around product boundaries: Kids no tabs, Logic no voice, voice no raw input, memory no raw text, CTAs route correctly.
 - Keep Mercy Kids, AI Tutor, and Floating Helper ownership separate.
+
+## 13. Study OS Summary Inspection Rule
+
+When inspecting Study OS summary work, classify the data before approving it:
+
+- Semantic/person memory belongs to `mercy_user_facts` / episodic memory and describes what Mercy remembers about the learner/person.
+- Study OS event summaries are local behavioral summaries and describe what the learner has been doing recently in study flows.
+
+Study OS event summaries may be derived from #1109 safe local learning events only as time-windowed counts, booleans, timestamps, retry/completion/activity signals, and safe topic tags. They must not include raw learner content, corrected sentence text, transcript/audio, PII, child identity, Placement result/status/writeback, Supabase sync, external analytics, or admin-dashboard raw summary consumption.
+
+If a PR reads, writes, merges, or backfills Study OS summaries into `mercy_user_facts`, treat it as a boundary crossing that requires a separate reviewed design.
+
+## 14. Parallel Pronunciation Taxonomy Boundary
+
+C1-C5 L1 taxonomy / pair-matrix pronunciation work is a docs/offline-eval workstream unless a later reviewed implementation task says otherwise. It must not overlap with AI Tutor runtime, Home, Mercy Kids, Study OS events, Placement writeback, or imported pronunciation runtime.
+
+Files named `src/lib/pronunciation/*.proposed.ts` are proposals only. They must remain non-imported and non-runtime until a later review explicitly approves promotion into production code.

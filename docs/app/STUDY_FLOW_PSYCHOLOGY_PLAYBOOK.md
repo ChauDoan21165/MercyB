@@ -170,12 +170,36 @@ Storage contract:
 - No raw audio storage.
 - No full transcript storage.
 - No raw learner text in analytics.
-- No corrected sentence text in analytics.
+- No corrected sentence text in analytics or Study OS event summaries.
 - No user PII, Supabase user IDs, JWTs, provider keys, or provider secrets in analytics.
+- No PII or child identity in Study OS event summaries.
 - No client-side provider secrets.
 - No Supabase memory sync unless separately approved.
 - No Placement writeback.
 - Analytics should use local-only safe aggregate events only unless a later PR explicitly approves an external provider.
+
+## Study OS Event Summary Boundary
+
+Study OS event summaries are local behavioral summaries. They answer: what has the learner been doing recently in study flows? They are not semantic memory about who the learner is.
+
+- `mercy_user_facts` / episodic memory = semantic person memory: what Mercy remembers about the learner/person.
+- Study OS event summaries = local, time-windowed, activity-based derived summaries from #1109 safe local learning events.
+
+Allowed Study OS summary inputs are safe counts, booleans, timestamps, mode names, retry counts, completion counts, and weak-topic tags that do not contain raw learner content.
+
+Forbidden Study OS summary data:
+
+- raw learner text
+- corrected sentence text
+- full transcripts
+- raw audio
+- PII
+- child identity
+- Placement result/status/writeback
+- Supabase sync
+- external analytics payloads
+
+Study OS event summaries must not read from, write to, or merge with `mercy_user_facts` unless a later explicit reviewed design approves it. They must not become an indirect memory sync layer.
 
 ## Experiment Examples
 
