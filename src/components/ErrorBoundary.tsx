@@ -136,13 +136,26 @@ export class ErrorBoundary extends React.Component<Props, State> {
 
     // Stale-deploy chunk-load failure that fell THROUGH Tier-1 recovery
     // (lazyWithRetry's cache-busting reload) and rethrew into here. This
-    // is exactly the Sentry signature MERCYBLADE-WEB-W / -Z: handled:yes
-    // + componentStack Lazy→Suspense. Don't show the dark stack dump to a
-    // learner — escalate one cache-bust reload (with SW unregister, in
-    // case an old cache-first SW is still serving stale HTML) and render
-    // the calm "updating" screen. Loop-protected by a distinct Tier-2
-    // one-shot so a genuinely-gone chunk terminates instead of looping.
-    if (looksLikeChunkLoadFailure(error)) {
+    // is exactly the Sentry signature MERCYBLADE-WEB-F / -W / -Z:
+    // handled:yes + componentStack Lazy→Suspense. Don't show the dark
+    // stack dump to a learner — escalate one cache-bust reload (with SW
+    // unregister, in case an old cache-first SW is still serving stale
+    // HTML) and render the calm "updating" screen. Loop-protected by a
+    // distinct Tier-2 one-shot so a genuinely-gone chunk terminates
+    // instead of looping.
+    //
+    // Read isChunkError from state (set by getDerivedStateFromError on
+    // the SAME error reference) instead of re-running the matcher here.
+    // Issue #1127: prod Sentry breadcrumbs proved the matcher could
+    // diverge between the two lifecycle methods on the React.lazy +
+    // Suspense + rejected-Promise path even though both methods receive
+    // the same argument per React's lifecycle contract. The exact
+    // mechanism wasn't reproducible in jsdom, but persisting the result
+    // eliminates the divergence by construction — same boolean, no
+    // re-evaluation. looksLikeChunkLoadFailure remains the single
+    // source of truth; it runs once per caught error, in
+    // getDerivedStateFromError, before paint.
+    if (this.state.isChunkError === true) {
       const exhausted = hasErrorBoundaryReloaded();
       const componentStack =
         info && typeof info === "object" && "componentStack" in info
