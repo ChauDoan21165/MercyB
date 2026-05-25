@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import TutorMemoryCard, { TutorMemoryEmpty } from "@/components/ai-tutor/TutorMemoryCard";
 import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
+import type { TeacherMercyModeTab } from "@/components/teacher-mercy/TeacherMercyModeTabs";
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
 import { getMemorySummary, type MemorySummary, type TutorProduct } from "@/lib/ai-tutor/learningMemory";
 import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
@@ -10,14 +11,38 @@ import {
   VI_KIDS_TUTOR_TABS,
   type ViKidsTutorMode,
 } from "@/lib/kids/viKidsTutorCopy";
+import { lazyWithRetry } from "@/lib/lazyWithRetry";
 import { getSpeechLocale, getTtsLocale, type TutorLanguageCode } from "@/lib/tutor/languageRegistry";
 import { getSafetyLabel, viKidsEnglish as viKidsEnglishConfig } from "@/lib/tutor/productConfigs";
+
+// MercyTeacherTab + MercySpeakTab were orphaned by PR #1093 (floating-helper
+// simplification) — they used to be mounted inside MercyGuidePanel and lost
+// their only consumer. Re-mounted here as additional kids tabs so the 30
+// kidPageN data files + 3,259 photos in public/images/mercy-kids* become
+// user-reachable again via the restored /kids/vi-english surface.
+const MercyTeacherTab = lazyWithRetry(
+  () => import("@/components/mercy-guide/MercyTeacherTab").then((m) => ({ default: m.MercyTeacherTab })),
+);
+const MercySpeakTab = lazyWithRetry(() => import("@/components/mercy-guide/MercySpeakTab"));
 
 const TUTOR_PRODUCT: TutorProduct = "vi-kids-english";
 const TARGET_LANGUAGE = viKidsEnglishConfig.defaultTargetLanguage as TutorLanguageCode;
 
+// Local extension of ViKidsTutorMode for the two restored kids surfaces.
+// Kept local (rather than extending the productConfigs TutorProductMode
+// union) to keep this change contained to /kids/vi-english per the
+// Option B dispatch — the new modes are kids-specific tabs, not a
+// product-wide modes-list change.
+type ExtendedKidsMode = ViKidsTutorMode | "kidsTeacher" | "kidsSpeak";
+
+const EXTENDED_KIDS_TABS: TeacherMercyModeTab<ExtendedKidsMode>[] = [
+  ...VI_KIDS_TUTOR_TABS,
+  { id: "kidsTeacher", label: "Mercy Teacher" },
+  { id: "kidsSpeak", label: "Mercy Speak" },
+];
+
 export default function ViKidsEnglishTutor() {
-  const [mode, setMode] = useState<ViKidsTutorMode>("conversation");
+  const [mode, setMode] = useState<ExtendedKidsMode>("conversation");
   const [answer, setAnswer] = useState("");
   const [memoryLoaded, setMemoryLoaded] = useState(false);
   const [memory, setMemory] = useState<MemorySummary | null>(null);
@@ -61,7 +86,7 @@ export default function ViKidsEnglishTutor() {
       helper={VI_KIDS_TUTOR_COPY.helper}
       eyebrow={VI_KIDS_TUTOR_COPY.eyebrow}
       badge={getSafetyLabel(viKidsEnglishConfig)}
-      modeTabs={VI_KIDS_TUTOR_TABS}
+      modeTabs={EXTENDED_KIDS_TABS}
       activeMode={mode}
       onModeChange={setMode}
       memorySlot={viKidsEnglishConfig.memoryEnabled ? <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
@@ -158,16 +183,48 @@ export default function ViKidsEnglishTutor() {
           </div>
         )}
 
-        <label className="text-xs font-black uppercase text-slate-500">
-          {VI_KIDS_TUTOR_COPY.correctionPrompt}
-        </label>
-        <textarea
-          value={answer || stt.transcript}
-          onChange={(event) => setAnswer(event.target.value.slice(0, 300))}
-          placeholder={VI_KIDS_TUTOR_COPY.correctionPlaceholder}
-          rows={3}
-          className="w-full resize-none rounded-[14px] border border-slate-200 bg-slate-50 p-3 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-indigo-300 focus:bg-white focus:outline-none"
-        />
+        {mode === "kidsTeacher" && (
+          <div data-testid="vi-kids-mercy-teacher-mount">
+            <Suspense
+              fallback={
+                <div className="rounded-[16px] border border-indigo-100 bg-indigo-50/40 p-4 text-sm font-semibold text-indigo-700">
+                  Đang tải Mercy Teacher…
+                </div>
+              }
+            >
+              <MercyTeacherTab isKidsMode />
+            </Suspense>
+          </div>
+        )}
+
+        {mode === "kidsSpeak" && (
+          <div data-testid="vi-kids-mercy-speak-mount">
+            <Suspense
+              fallback={
+                <div className="rounded-[16px] border border-violet-100 bg-violet-50/40 p-4 text-sm font-semibold text-violet-700">
+                  Đang tải Mercy Speak…
+                </div>
+              }
+            >
+              <MercySpeakTab />
+            </Suspense>
+          </div>
+        )}
+
+        {mode !== "kidsTeacher" && mode !== "kidsSpeak" && (
+          <>
+            <label className="text-xs font-black uppercase text-slate-500">
+              {VI_KIDS_TUTOR_COPY.correctionPrompt}
+            </label>
+            <textarea
+              value={answer || stt.transcript}
+              onChange={(event) => setAnswer(event.target.value.slice(0, 300))}
+              placeholder={VI_KIDS_TUTOR_COPY.correctionPlaceholder}
+              rows={3}
+              className="w-full resize-none rounded-[14px] border border-slate-200 bg-slate-50 p-3 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-indigo-300 focus:bg-white focus:outline-none"
+            />
+          </>
+        )}
       </section>
     </TeacherMercyLearningShell>
   );
