@@ -13,11 +13,34 @@
 
 **Make MercyBlade the language-learning app that learners publicly credit for their fluency, their exam score, their job abroad, their life change — across every learning pair it serves.**
 
-MercyBlade is a **matrix product**: a learner picks a native language and a target language, and gets a course tailored to *that pair*, not a generic course translated into their language.
+MercyBlade is a **matrix product** with three concrete goals:
 
-The **Vietnamese → English** pair is the home market and the loudest success metric. When the doc talks about "outcomes," the proof case is still a Vietnamese student who credits MercyBlade for an IELTS score or a job abroad — that is where ~95% of effort goes and where the identity moat lives. But the mission is the matrix: every pair that has content is real product, held to the same standard.
+1. **Best app for Vietnamese learners studying English** (primary) **and a few other popular target languages** — Japanese, Korean, Chinese, the languages Vietnamese learners actually want to study for work, study abroad, and migration.
+
+2. **Best app for the English-speaking world studying Vietnamese** (primary) **and a few other less-served languages** — the pairs where existing players treat the language as an afterthought rather than a real course.
+
+3. **Win over Duolingo in these markets.** Not match. Win. The lever is what Duolingo cannot or will not do: modern course architecture, sophisticated learning structure designed in active consultation with Claude, and AI-powered personalization that goes beyond gamification. Duolingo's moat is brand and scale. MercyBlade's moat is depth per pair, honesty about outcomes, and an AI substrate that compounds faster than a content team.
+
+The **Vietnamese ↔ English** axis is the home market and the loudest success metric. When the doc talks about "outcomes," the proof case is still a Vietnamese student who credits MercyBlade for an IELTS score or a job abroad — that is where ~95% of effort goes today and where the identity moat lives. But the mission is the matrix: every pair that has content is real product, held to the same standard.
 
 Not most users. Not most revenue. **Most outcomes.** Everything else follows from that.
+
+---
+
+## 1.1. How we win over Duolingo (the competitive thesis)
+
+Duolingo is the incumbent. It is also the wrong shape for the goal in §1. Beating it does not require beating it everywhere — it requires being clearly better in the specific pairs MercyBlade serves, on the specific axis learners care about: **do they actually learn the language.**
+
+Duolingo's structural weaknesses MercyBlade exploits:
+
+- **Generic course translated into many languages, not designed per pair.** Duolingo's Vietnamese-for-English-speakers course is the same template as their Spanish-for-English course, with vocabulary swapped. MercyBlade's per-pair design (L1 profile, transfer-error taxonomy, pronunciation coaching tuned to L1 phonology) is what no template-based scale player can match.
+- **Gamification optimized for retention, not outcomes.** Streak guilt, XP, leagues. None of these correlate with fluency. MercyBlade refuses this entire surface (see §10) and competes on the metric that actually matters: do learners credit the app for real-world outcomes (IELTS, job, conversation).
+- **Static curriculum that updates on Duolingo's release schedule.** MercyBlade's AI substrate — Mercy as the consistent teacher, Claude-consulted strategy, pair-specific detector rules, evolving prompt assembly — compounds faster than a curriculum team can ship.
+- **Cannot afford depth per pair at their scale.** Duolingo cannot dedicate the attention to Vietnamese-for-English-speakers that MercyBlade can. The economics of being a single-founder, AI-leveraged, pair-focused product make this asymmetry permanent.
+
+The competitive thesis is not "better than Duolingo at being Duolingo." It is "what Duolingo structurally cannot be." Modern course architecture, sophisticated learning structure designed in ongoing Claude consultation, AI-powered personalization, honest outcomes-first design — these are the levers. Every dispatch, every brick, every decision should be checked against: *does this make the pair clearly better than Duolingo on the outcome axis, or is it just feature parity?*
+
+If the answer is feature parity, the work is theater. If the answer is "Duolingo cannot do this with their scale and team shape," the work is on-strategy.
 
 ---
 
@@ -54,6 +77,26 @@ MercyBlade is **not** a single-audience app with a deferred expansion. It is a m
 - **Up to 16 learning pairs.** A user picks their native language and their target language via a Duolingo-style onboarding flow (onboarding implementation is a separate future dispatch — see §7).
 
 Every pair that has content is real product. None is hidden, deprecated, or "off-mission." Built content stays user-discoverable (`LanguageSwitcher`, the `/languages` index, per-language pages). Burying shipped work users could benefit from has no upside and was a mistake the v3.0 reset corrected (see §15).
+
+### Candidate pairs (the "few other languages" named)
+
+The goal in §1 says "a few other popular languages" on both axes. Those are:
+
+**Axis 1 — Vietnamese learners studying:**
+- **English** (primary, ~95% effort today, the flagship)
+- **Japanese** — large Vietnamese student/worker pipeline to Japan, underserved by Vietnamese-first apps
+- **Korean** — large Vietnamese student/worker pipeline to Korea, same gap
+- **Chinese (Mandarin)** — Vietnam–China proximity, business learner demand, regional importance
+
+**Axis 2 — English speakers studying:**
+- **Vietnamese** (primary on this axis, the second flagship after VN→EN reaches §15 done-criteria)
+- **Japanese** — large existing market, but Duolingo's depth here is shallow; MercyBlade can compete on pair-specific structure
+- **Korean** — same shape as Japanese
+- **Chinese (Mandarin)** — same shape
+
+The two axes share the same target-language content where they overlap (a Japanese course is a Japanese course), but the L1 profile, transfer-error taxonomy, pronunciation pain points, and cultural context are pair-specific. This is what §4 means by "real product, not a template."
+
+This list is not exhaustive of what MercyBlade may eventually support — it is the **committed candidate set**. New pairs added beyond this require a §15-style done-criteria check on the flagship before they get effort.
 
 ### Effort allocation (this is the real prioritization, not an audience hierarchy)
 
