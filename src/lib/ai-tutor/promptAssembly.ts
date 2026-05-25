@@ -29,6 +29,37 @@ import type {
 import {
   TUTOR_TOKEN_BUDGETS,
 } from "./types";
+import { vietnameseL1Profile } from "@/lib/l1-profiles/vi";
+
+const VALID_CEFR_LEVELS = new Set(["A1", "A2", "B1", "B2", "C1", "C2"] as const);
+type CefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
+
+/**
+ * One-line shortDescription strings for the L1 interference patterns
+ * that a Vietnamese learner at `cefrLevel` is most likely to produce.
+ *
+ * Filter policy (per dispatch default): severity === "high" AND
+ * cefrLevelsObserved.includes(learnerCefr). High-severity patterns are
+ * the ones the Mercy tutor should actively coach toward — medium / low
+ * are background hints the tutor logs but does not lecture on
+ * mid-conversation. Unknown / unrecognised CEFR → empty array (no
+ * speculative L1 coaching for a learner whose level we don't have).
+ *
+ * Source: viL1Profile.interference.patterns (cross-link to
+ * vnL1Interference.ts via PhenomenonId per spec §4 decision 2 — the
+ * profile holds the same array by reference, not a copy).
+ */
+export function getHighSeverityL1Patterns(cefrLevel: string | null): string[] {
+  if (!cefrLevel) return [];
+  const normalized = cefrLevel.toUpperCase().replace(/\s/g, "") as CefrLevel;
+  if (!VALID_CEFR_LEVELS.has(normalized)) return [];
+  return vietnameseL1Profile.interference.patterns
+    .filter(
+      (p) =>
+        p.severity === "high" && p.cefrLevelsObserved.includes(normalized),
+    )
+    .map((p) => p.shortDescription);
+}
 
 // ─── System Prompt Assembly ───────────────────────────────────────────
 
@@ -187,7 +218,15 @@ export function assembleSystemPrompt(
   cefrLevel: string | null,
   learnerName: string | null,
 ): string {
-  const contextBlock = assembleContextBlock(null, cefrLevel, learnerName, "0", null, null, []);
+  const contextBlock = assembleContextBlock(
+    null,
+    cefrLevel,
+    learnerName,
+    "0",
+    null,
+    null,
+    getHighSeverityL1Patterns(cefrLevel),
+  );
   const basePrompt = BASE_SYSTEM_PROMPT.replace(
     "{learnerDisplayName}",
     learnerName ?? "bạn",
@@ -228,7 +267,7 @@ export function assembleContextBlock(
   streakDays: string,
   lastFocus: string | null,
   weakSkills: string | null,
-  _l1Patterns: string[],
+  l1Patterns: string[],
   _recentCorrections?: unknown[],
 ): string {
   const lines: string[] = [];
@@ -249,8 +288,15 @@ export function assembleContextBlock(
     lines.push(`Bạn đang cần cải thiện: ${weakSkills}.`);
   }
 
-  // L1 patterns
-  // (V4 L1 interference map — consumed read-only; pattern list injected here)
+  // L1 patterns — high-severity Vietnamese-L1 transfer patterns at the
+  // learner's CEFR. Shown to the tutor (LLM-side) so it can pre-empt
+  // common errors during coaching. Caller decides which strings to pass
+  // (see getHighSeverityL1Patterns); empty array → line omitted entirely.
+  if (l1Patterns.length > 0) {
+    lines.push(
+      `Lưu ý các lỗi tiếng Việt thường gặp ở trình độ này: ${l1Patterns.join(" ")}`,
+    );
+  }
 
   return lines.join("\n");
 }
