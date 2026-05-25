@@ -12,6 +12,7 @@ import { lazyWithRetry } from "@/lib/lazyWithRetry";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import { isPlacementEntryRouteAvailable } from "@/lib/placement/availability";
 import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 import LanguageTrackHome, {
   TargetSwitcher,
@@ -952,7 +953,7 @@ export default function Home() {
               pill preserved inside the card. */}
           {teacherCard}
 
-          {placementCard}
+          {isPlacementEntryRouteAvailable() && placementCard}
 
           {/* Try one word — no signup. On desktop: standalone card.
               On mobile: compact chip nested under Teacher Mercy so the
