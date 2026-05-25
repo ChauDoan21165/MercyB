@@ -3,12 +3,14 @@ import { describe, it, expect, beforeEach } from "vitest";
 import {
   HIGH_SEVERITY_DETECTOR_TAGS,
   SESSION_CAP,
+  TAG_TO_NAME_EN,
   getDetectorHint,
   getShownCount,
   hasShownHint,
   markHintShown,
   _resetHintDedupForTesting,
 } from "../detectorHint";
+import { L1_VN_EXPLANATIONS } from "@/lib/feedback/l1-vn-explanations";
 import type { L1DetectionResult } from "@/lib/feedback/l1-error-detector";
 
 beforeEach(() => {
@@ -110,6 +112,52 @@ describe("SESSION_CAP — session-wide cap across DIFFERENT tags", () => {
     expect(getDetectorHint(matched("vi_l1_3rd_person_s"))).not.toBeNull();
     // No markHintShown — call site filtered it. Count must stay at 0.
     expect(getShownCount()).toBe(0);
+  });
+});
+
+describe("TAG_TO_NAME_EN curated labels — v2 medium-severity expansion", () => {
+  // Authoring contract for the 11 medium-severity tags surfaced by the
+  // C5 recon. These tags become chip-eligible only once the gate
+  // expansion lands (PR-A, already merged to main). The labels here
+  // (PR-B) ensure the chip never falls back to a mechanical
+  // "Missing Article" / "Vs With" type string in production.
+  const MEDIUM_TAGS_V2 = [
+    // article family (6)
+    "vi_l1_missing_article",
+    "vi_l1_a_vs_an_vowel",
+    "vi_l1_geographical_article",
+    "vi_l1_no_article_generic",
+    "vi_l1_superlative_the",
+    "vi_l1_generic_plural",
+    // preposition family (3)
+    "vi_l1_preposition_transfer",
+    "vi_l1_time_expressions",
+    "vi_l1_by_vs_with",
+    // pronoun (1)
+    "vi_l1_possessive_gender",
+    // existential (1)
+    "vi_l1_there_are_singular",
+  ] as const;
+
+  it("ships a curated English label for every medium v2 tag", () => {
+    expect(MEDIUM_TAGS_V2.length).toBe(11);
+    for (const tag of MEDIUM_TAGS_V2) {
+      const label = TAG_TO_NAME_EN[tag];
+      expect(label, tag).toBeTruthy();
+      expect(label!.length, tag).toBeGreaterThan(0);
+      // Chip badge budget (informal): 32 chars. Labels longer than
+      // this can wrap or truncate on a 375px viewport.
+      expect(label!.length, tag).toBeLessThanOrEqual(32);
+    }
+  });
+
+  it("every medium v2 tag has a Vietnamese explanation under the 300-char chip budget", () => {
+    for (const tag of MEDIUM_TAGS_V2) {
+      const entry = L1_VN_EXPLANATIONS[tag];
+      expect(entry, tag).toBeTruthy();
+      expect(entry!.explanation_vi.length, tag).toBeGreaterThan(0);
+      expect(entry!.explanation_vi.length, tag).toBeLessThanOrEqual(300);
+    }
   });
 });
 
