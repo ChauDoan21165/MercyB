@@ -95,7 +95,9 @@
  *  parallel PR (#1169 — vi_l1_subject_gender), so this slot lands at 64.
  *
  *  62. vi_l1_no_aux_negation          structural    A2
+ *  63. vi_l1_topic_comment_fronting   structural    B1
  *  64. vi_l1_co_transfer              structural    A2 — two sub-patterns
+ *  65. vi_l1_future_adverb_bare       structural    A2
  */
 
 export type L1WeaknessTag =
@@ -163,6 +165,7 @@ export type L1WeaknessTag =
   | 'vi_l1_if_will'                   // L1-060 B1
   // Round 6 — Bar #1 DoD flips
   | 'vi_l1_no_aux_negation'           // L1-061 A2
+  | 'vi_l1_future_adverb_bare'        // L1-065 A2
   | 'vi_l1_co_transfer'               // L1-063 A2 — two sub-patterns
   | 'vi_l1_topic_comment_fronting';   // L1-064 B1
 
@@ -2671,6 +2674,71 @@ export const ruleTopicCommentFronting: Rule = ({ userText, expectedText, rawExpe
     }
   }
 
+  return null;
+};
+
+/**
+ * Future-adverb future-time markers. Standalone words.
+ * "next <qualifier>" and "in N <unit>" are handled inline below.
+ */
+const FUTURE_TIME_MARKERS = new Set([
+  'tomorrow', 'tonight', 'soon',
+]);
+
+/** Qualifiers that turn `next` into a future-time phrase. */
+const NEXT_QUALIFIERS = new Set([
+  'week', 'month', 'year', 'weekend',
+  'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday',
+  'morning', 'afternoon', 'evening', 'night',
+]);
+
+/** Time units accepted after `in N` (e.g. "in 2 hours"). */
+const IN_N_UNITS = new Set([
+  'minute', 'hour', 'day', 'week', 'month', 'year',
+]);
+
+/** True if tokens carry a future-time marker. Whole-word membership. */
+function hasFutureTimeMarker(tokens: string[]): boolean {
+  for (let i = 0; i < tokens.length; i++) {
+    const t = tokens[i];
+    if (FUTURE_TIME_MARKERS.has(t)) return true;
+    if (t === 'next' && i + 1 < tokens.length && NEXT_QUALIFIERS.has(tokens[i + 1])) return true;
+    if (t === 'in' && i + 2 < tokens.length) {
+      const n = Number(tokens[i + 1]);
+      if (Number.isFinite(n) && n >= 1) {
+        const unit = tokens[i + 2].replace(/s$/, '');
+        if (IN_N_UNITS.has(unit)) return true;
+      }
+    }
+  }
+  return false;
+}
+
+/**
+ * 65. vi_l1_future_adverb_bare — Vietnamese learners often use a bare
+ * present-tense verb with a future-time adverb (tomorrow, next week,
+ * soon, in N hours), because Vietnamese marks future lexically (mai,
+ * tuần sau) and the verb stays uninflected. English needs `will`.
+ *
+ * Detection: expected is exactly one token longer than user, the
+ * inserted token is `will`, AND a future-time marker is present in
+ * either side. Structurally mirrors `ruleMissingBe` (length+1
+ * insertion) with `will` instead of a be-verb.
+ */
+export const ruleFutureAdverbBare: Rule = ({ userTokens, expectedTokens, rawExpected }) => {
+  if (expectedTokens.length !== userTokens.length + 1) return null;
+  if (!hasFutureTimeMarker(userTokens) && !hasFutureTimeMarker(expectedTokens)) return null;
+
+  for (let i = 0; i < expectedTokens.length; i++) {
+    if (expectedTokens[i] !== 'will') continue;
+    const withoutWill = expectedTokens.slice(0, i).concat(expectedTokens.slice(i + 1));
+    if (
+      withoutWill.length === userTokens.length &&
+      withoutWill.every((t, j) => t === userTokens[j])
+    ) {
+      return { tag: 'vi_l1_future_adverb_bare', replacements: { FIX: rawExpected } };
+    }
+  }
   return null;
 };
 

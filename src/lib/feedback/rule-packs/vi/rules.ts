@@ -42,6 +42,7 @@ import {
   ruleGenericPlural,
   ruleGeographicalArticle,
   ruleGerundAfterVerb,
+  ruleFutureAdverbBare,
   ruleIfWill,
   ruleLookSeeWatch,
   ruleMakeLetBare,
@@ -165,6 +166,7 @@ export const VN_RULES: L1Rule[] = [
   // wins over the generic missing-article message.
   ruleNoArticleGeneric,      // 59
   ruleIfWill,                // 61
+  ruleFutureAdverbBare,      // 65 (C1 round-1 candidate flip)
   ruleTopicCommentFronting,  // 63 (C1 round-1 candidate flip)
   ruleGenericPlural,         // 48 — last: loses to plural_s (existing) by design
   // Round 6 — Bar #1 DoD flip. Runs before ruleDoubleNegative so a

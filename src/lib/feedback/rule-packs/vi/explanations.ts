@@ -337,4 +337,9 @@ export const VN_EXPLANATIONS: L1Explanation[] = [
     en: "Vietnamese fronts the topic with a comma (*My family, they live in Hue* / *This job, I don't like it*). English usually rewrites to plain subject-verb-object — drop the comma and the resumptive pronoun. Try: *{FIX}*.",
     vi: "Tiếng Việt mình hay đẩy chủ đề lên đầu câu, ngắt phẩy rồi nhắc lại bằng đại từ (*My family, they live in Hue* / *This job, I don't like it*). Tiếng Anh viết thẳng theo **chủ ngữ + động từ + tân ngữ**, bỏ phẩy và đại từ nhắc lại. Thử: *{FIX}*.",
   },
+  {
+    tag: 'vi_l1_future_adverb_bare',
+    en: "When you talk about the future with **tomorrow**, **next week**, **soon**, or **in 2 hours**, English needs **will** before the verb. Vietnamese just adds the time word — *Mai tôi đi* — and the verb stays the same. Try: *{FIX}*.",
+    vi: "Khi nói về tương lai với **tomorrow**, **next week**, **soon**, hay **in 2 hours**, tiếng Anh cần **will** trước động từ. Tiếng Việt mình chỉ cần thêm từ chỉ thời gian — *Mai tôi đi* — động từ không đổi. Thử: *{FIX}*.",
+  },
 ];

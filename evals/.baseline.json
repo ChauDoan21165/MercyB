@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-25T18:55:33.192Z",
+  "generated_at": "2026-05-25T19:04:00.005Z",
   "global": {
-    "pass": 60,
-    "total": 60,
+    "pass": 62,
+    "total": 62,
     "rate": 1
   },
   "by_family": {
@@ -12,8 +12,8 @@
       "rate": 1
     },
     "tense-adverb-flattening": {
-      "pass": 4,
-      "total": 4,
+      "pass": 6,
+      "total": 6,
       "rate": 1
     },
     "plural-s-omission": {

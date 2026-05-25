@@ -59,11 +59,12 @@ describe("L1_VN_EXPLANATIONS — coverage", () => {
     expect(missing).toEqual([]);
   });
 
-  it("has exactly 63 entries — flags drift if the count changes unexpectedly", () => {
+  it("has exactly 64 entries — flags drift if the count changes unexpectedly", () => {
     // 60 → 61: Round 6 added `vi_l1_no_aux_negation` (Bar #1 DoD flip).
     // 61 → 62: Round 6 added `vi_l1_co_transfer` (Bar #1 DoD flip).
     // 62 → 63: Round 6 added `vi_l1_topic_comment_fronting` (Bar #1 DoD flip).
-    expect(listCoveredVnTags()).toHaveLength(63);
+    // 63 → 64: Round 6 added `vi_l1_future_adverb_bare` (Bar #1 DoD flip).
+    expect(listCoveredVnTags()).toHaveLength(64);
   });
 });
 

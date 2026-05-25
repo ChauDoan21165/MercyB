@@ -448,3 +448,26 @@ describe('round1 candidate flip — vi_l1_topic_comment_fronting', () => {
     expectMiss('my family lives in hue',               'my family lives in hue');            // already correct
   });
 });
+
+// ── vi_l1_future_adverb_bare (C1 round-1 candidate flip) ────────────────
+// Vietnamese marks future lexically (mai / tuần sau / sắp / sẽ); the verb
+// stays uninflected. English needs `will` inserted before the verb when
+// a future-time adverb is present. Structurally mirrors rule 4
+// (vi_l1_missing_be) — length+1 insertion of a specific token.
+describe('round1 candidate flip — vi_l1_future_adverb_bare', () => {
+  it('positive cases — bare verb + future-time adverb', () => {
+    expectHit('tomorrow i go to school',        'tomorrow i will go to school',        'vi_l1_future_adverb_bare');
+    expectHit('next week i start a new job',    'next week i will start a new job',    'vi_l1_future_adverb_bare');
+    expectHit('tonight we eat at home',         'tonight we will eat at home',         'vi_l1_future_adverb_bare');
+    expectHit('soon she finish her work',       'soon she will finish her work',       'vi_l1_future_adverb_bare');
+    expectHit('tomorrow he call me',            'tomorrow he will call me',            'vi_l1_future_adverb_bare');
+    expectHit('next month they move to hanoi',  'next month they will move to hanoi',  'vi_l1_future_adverb_bare');
+    expectHit('in 2 hours i meet you',          'in 2 hours i will meet you',          'vi_l1_future_adverb_bare');
+    expectHit('next monday we travel',          'next monday we will travel',          'vi_l1_future_adverb_bare');
+  });
+  it('negative cases', () => {
+    expectMiss('tomorrow i will go to school', 'tomorrow i will go to school');       // already correct
+    expectMiss('yesterday i went to school',   'yesterday i went to school');         // past, not future
+    expectMiss('i am going to school',         'i am going to school');               // already future via "going to"
+  });
+});
