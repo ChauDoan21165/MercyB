@@ -422,7 +422,16 @@ const POSSESSIVE_GENDERED = new Set(['his', 'her']);
  * Context-specific — these aren't universal swaps, but are high-frequency
  * errors in the Vietnamese → English transfer.
  */
-const PREPOSITION_MISMATCHES: Array<{ wrong: string; right: string }> = [
+const PREPOSITION_MISMATCHES: Array<{
+  wrong: string;
+  right: string;
+  /** When true, `wrong` is a verb+bogus-prep phrase and `right` is just
+   *  the bare verb — the L1 leaks an extra preposition English doesn't
+   *  take ("married with X" → "married X"). Handled by the deletion
+   *  path in rulePrepositionTransfer, not by the substitution or
+   *  insertion paths. */
+  delete?: boolean;
+}> = [
   { wrong: 'in',     right: 'on' },        // "in Monday" → "on Monday"
   { wrong: 'on',     right: 'in' },        // "on Hanoi" → "in Hanoi"
   { wrong: 'at',     right: 'in' },        // "at Vietnam" → "in Vietnam"
@@ -430,6 +439,15 @@ const PREPOSITION_MISMATCHES: Array<{ wrong: string; right: string }> = [
   { wrong: 'listen', right: 'listen to' }, // "listen music" — treated specially
   { wrong: 'wait',   right: 'wait for' },
   { wrong: 'look',   right: 'look at' },
+  // VN-L1 preposition over-insertion. English verb is transitive; the
+  // learner adds a preposition that calques a Vietnamese particle:
+  //   "kết hôn với" → "married with",  "thảo luận về" → "discuss about".
+  { wrong: 'married with',  right: 'married',   delete: true },
+  { wrong: 'discuss about', right: 'discuss',   delete: true },
+  { wrong: 'enter into',    right: 'enter',     delete: true },
+  { wrong: 'approach to',   right: 'approach',  delete: true },
+  { wrong: 'emphasize on',  right: 'emphasize', delete: true },
+  { wrong: 'comprise of',   right: 'comprise',  delete: true },
 ];
 
 const UNCOUNTABLE_NOUNS = new Set([
@@ -913,6 +931,7 @@ export const rulePrepositionTransfer: Rule = ({ userTokens, expectedTokens, rawE
   const expectedLemma = lemmatize(expectedTokens.join(' '));
 
   for (const m of PREPOSITION_MISMATCHES) {
+    if (m.delete === true) continue;
     if (!m.right.includes(' ')) continue;
     const wrongPhrase = m.wrong;
     const rightPhrase = m.right;
@@ -937,6 +956,36 @@ export const rulePrepositionTransfer: Rule = ({ userTokens, expectedTokens, rawE
         FIX_PREP: rightPhrase,
       },
     };
+  }
+
+  // Phrase deletion path. Fires when the user-side carries a verb+bogus-
+  // preposition phrase the L1 learner inserted (e.g. "married with",
+  // "discuss about") and the expected side has the bare verb form. The
+  // guard `!expectedRaw.includes(m.wrong)` rules out cases where the
+  // same wrong phrase appears legitimately in the corrected sentence.
+  //
+  // Uses raw joined tokens (not the lemmatized form computed above for
+  // the insertion path) because deletion entries carry surface phrases,
+  // not lemmas — "married with" should match the user's literal
+  // "married with", not its stem.
+  const userRaw = userTokens.join(' ');
+  const expectedRaw = expectedTokens.join(' ');
+  for (const m of PREPOSITION_MISMATCHES) {
+    if (m.delete !== true) continue;
+    if (
+      userRaw.includes(m.wrong) &&
+      expectedRaw.includes(m.right) &&
+      !expectedRaw.includes(m.wrong)
+    ) {
+      return {
+        tag: 'vi_l1_preposition_transfer',
+        replacements: {
+          FIX: rawExpected,
+          USER_PREP: m.wrong,
+          FIX_PREP: m.right,
+        },
+      };
+    }
   }
   return null;
 };
