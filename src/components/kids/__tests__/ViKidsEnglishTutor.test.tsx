@@ -44,6 +44,10 @@ beforeEach(() => {
   vi.clearAllMocks();
   (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = undefined;
   (window as Window & { webkitSpeechRecognition?: unknown }).webkitSpeechRecognition = undefined;
+  Object.defineProperty(navigator, "mediaDevices", {
+    configurable: true,
+    value: undefined,
+  });
 });
 
 describe("ViKidsEnglishTutor", () => {
@@ -59,6 +63,8 @@ describe("ViKidsEnglishTutor", () => {
     expect(screen.getByRole("button", { name: "Grammar" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Speak" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Logic" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Mercy Teacher" })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Mercy Speak" })).not.toBeInTheDocument();
     expect(screen.getByText("Kids-safe practice")).toBeInTheDocument();
   });
 
@@ -77,5 +83,25 @@ describe("ViKidsEnglishTutor", () => {
 
     expect(screen.queryByRole("button", { name: "Correction" })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Correct one sentence" })).not.toBeInTheDocument();
+  });
+
+  it("keeps Kids Speak on the simple kid-safe mic surface", async () => {
+    const getUserMedia = vi.fn();
+    Object.defineProperty(navigator, "mediaDevices", {
+      configurable: true,
+      value: { getUserMedia },
+    });
+
+    render(<ViKidsEnglishTutor />);
+
+    await userEvent.click(screen.getByRole("button", { name: "Speak" }));
+
+    expect(screen.getByText("I like apples.")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Mercy đọc câu tiếng Anh" })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /Record/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /Play/i })).not.toBeInTheDocument();
+    expect(screen.queryByText(/So sánh với Mercy/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Mobile audio retest/i)).not.toBeInTheDocument();
+    expect(getUserMedia).not.toHaveBeenCalled();
   });
 });
