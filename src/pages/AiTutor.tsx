@@ -55,6 +55,10 @@ import {
   type StudySessionState,
 } from "@/lib/tutor/studySessionState";
 import { recordLearningEvent } from "@/lib/tutor/learningEvents";
+import {
+  getLocalLearningEventProgressSummary,
+  type LearningEventProgressSummary,
+} from "@/lib/tutor/learningEventSummary";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
 import ConversationMode, {
   type ConversationMessage,
@@ -62,6 +66,7 @@ import ConversationMode, {
 } from "@/components/ai-tutor/ConversationMode";
 import TutorMemoryCard, {
   TutorMemoryEmpty,
+  TutorMomentumCard,
   TutorTodayLessonCard,
 } from "@/components/ai-tutor/TutorMemoryCard";
 import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
@@ -437,6 +442,7 @@ export default function AiTutorPage() {
   const [activeTodayLesson, setActiveTodayLesson] = useState<ActiveTodayLesson | null>(null);
   const [todayLessonLogicInsight, setTodayLessonLogicInsight] = useState<VietlishLogicDiagnosisResult | null>(null);
   const [studySessionState, setStudySessionState] = useState<StudySessionState | null>(null);
+  const [localEventSummary, setLocalEventSummary] = useState<LearningEventProgressSummary>(() => getLocalLearningEventProgressSummary());
 
   const tutorCopy: TutorCopy = getTutorCopy(target, explainLanguage);
   const aiTutorTabLabels: Record<TutorMode, string> = {
@@ -451,6 +457,7 @@ export default function AiTutorPage() {
   }));
   const isCorrectionMode = mode === "grammar";
   const latestMercyMessage = getLatestMercyMessage(conversationMessages);
+  const refreshLocalEventSummary = () => setLocalEventSummary(getLocalLearningEventProgressSummary());
 
   const recordAiTutorEvent = (
     eventType: Parameters<typeof recordLearningEvent>[0]["eventType"],
@@ -462,6 +469,7 @@ export default function AiTutorPage() {
       targetLanguage: target,
       ...details,
     });
+    refreshLocalEventSummary();
   };
 
   const sttBaseInputRef = useRef<string>("");
@@ -564,6 +572,7 @@ export default function AiTutorPage() {
           count: savedSession.completedPromptsCount,
           value: savedSession.retryCount,
         });
+        refreshLocalEventSummary();
       }
     }
   }, [target]);
@@ -848,6 +857,7 @@ export default function AiTutorPage() {
             onStartLesson={handleStartTodayLesson}
             startLabel={activeTodayLesson ? "Resume lesson" : "Start today's lesson"}
           />
+          <TutorMomentumCard summary={localEventSummary} />
           {isPlacementEntryRouteAvailable() ? (
             <a
               href="/placement"

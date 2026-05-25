@@ -3,6 +3,7 @@
 // Extracted from AiTutor.tsx.
 
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
+import type { LearningEventProgressSummary } from "@/lib/tutor/learningEventSummary";
 import { planTodayLesson, type TodayLessonPlan } from "@/lib/tutor/todayLessonPlanner";
 
 type Props = {
@@ -13,6 +14,10 @@ type Props = {
 type TodayLessonProps = Props & {
   onStartLesson?: (plan: TodayLessonPlan) => void;
   startLabel?: string;
+};
+
+type MomentumProps = {
+  summary: LearningEventProgressSummary;
 };
 
 export default function TutorMemoryCard({ memoryLoaded, memory }: Props) {
@@ -169,6 +174,85 @@ export function TutorTodayLessonCard({ memoryLoaded, memory, onStartLesson, star
             Mercy will use this to recommend your next lesson.
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+export function TutorMomentumCard({ summary }: MomentumProps) {
+  const modeCounts = summary.modeUsageCountsToday;
+  const aiTutorSignalCount = summary.lessonsStartedToday
+    + summary.lessonResumesToday
+    + summary.lessonsCompletedToday
+    + summary.retryCountToday
+    + summary.logicInsightViewsToday
+    + summary.nextFocusViewsToday
+    + modeCounts.journey
+    + modeCounts.grammar
+    + modeCounts.speak
+    + modeCounts.logic;
+
+  if (aiTutorSignalCount === 0) return null;
+
+  const logicLabel = summary.logicInsightViewedToday
+    ? `${summary.logicInsightViewsToday} viewed`
+    : "Not yet";
+  const nextFocusLabel = summary.nextFocusViewedToday
+    ? `${summary.nextFocusViewsToday} viewed`
+    : "Not yet";
+
+  return (
+    <section
+      data-testid="ai-tutor-momentum-card"
+      className="mx-auto mb-4 w-full max-w-3xl rounded-[16px] border border-slate-200 bg-white px-4 py-4 shadow-sm"
+      style={{ width: "100%", maxWidth: "100%", minWidth: 0, overflow: "hidden" }}
+    >
+      <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <div className="text-xs font-black uppercase text-slate-500">
+            Practice signals
+          </div>
+          <h2 className="mt-1 text-base font-black text-slate-950">
+            Today's momentum
+          </h2>
+        </div>
+        <div className="w-fit rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-black uppercase text-slate-600">
+          Local to this device
+        </div>
+      </div>
+
+      <div className="mt-3 grid gap-2 sm:grid-cols-4">
+        <div className="rounded-xl bg-emerald-50 px-3 py-2">
+          <div className="text-lg font-black text-emerald-700">{summary.lessonsCompletedToday}</div>
+          <div className="text-[11px] font-bold uppercase text-emerald-800">completed</div>
+        </div>
+        <div className="rounded-xl bg-amber-50 px-3 py-2">
+          <div className="text-lg font-black text-amber-700">{summary.retryCountToday}</div>
+          <div className="text-[11px] font-bold uppercase text-amber-800">retries</div>
+        </div>
+        <div className="rounded-xl bg-indigo-50 px-3 py-2">
+          <div className="text-sm font-black text-indigo-700">{logicLabel}</div>
+          <div className="text-[11px] font-bold uppercase text-indigo-800">logic insight</div>
+        </div>
+        <div className="rounded-xl bg-sky-50 px-3 py-2">
+          <div className="text-sm font-black text-sky-700">{nextFocusLabel}</div>
+          <div className="text-[11px] font-bold uppercase text-sky-800">next focus</div>
+        </div>
+      </div>
+
+      <div className="mt-3 flex flex-wrap gap-1.5 text-[11px]">
+        <span className="rounded-full bg-slate-100 px-2.5 py-1 font-bold text-slate-700">
+          Journey {modeCounts.journey}
+        </span>
+        <span className="rounded-full bg-slate-100 px-2.5 py-1 font-bold text-slate-700">
+          Grammar {modeCounts.grammar}
+        </span>
+        <span className="rounded-full bg-slate-100 px-2.5 py-1 font-bold text-slate-700">
+          Speak {modeCounts.speak}
+        </span>
+        <span className="rounded-full bg-slate-100 px-2.5 py-1 font-bold text-slate-700">
+          Logic {modeCounts.logic}
+        </span>
       </div>
     </section>
   );

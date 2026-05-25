@@ -7,6 +7,7 @@ import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 import {
   getLearningEvents,
   getLearningEventsStorageKey,
+  recordLearningEvent,
 } from "@/lib/tutor/learningEvents";
 import type { SpeechRecognitionLike } from "@/types/speech-recognition";
 
@@ -258,6 +259,87 @@ describe("AiTutor mock UI", () => {
         safeTopicTag: "pronunciation",
       }),
     ]));
+  });
+
+  it("shows safe local Study OS momentum signals from local learning events", async () => {
+    const now = Date.now() - 1000;
+    recordLearningEvent({
+      eventType: "lesson_completed",
+      product: "ai_tutor",
+      targetLanguage: "en",
+      mode: "grammar",
+      timestamp: now,
+      count: 7,
+      learnerText: "I buy a private ticket yesterday.",
+      correctedText: "I bought a private ticket yesterday.",
+      transcript: "full transcript",
+      audioBlob: "raw audio",
+      jwt: "secret-token",
+    } as Parameters<typeof recordLearningEvent>[0] & Record<string, unknown>);
+    recordLearningEvent({
+      eventType: "mistake_retried",
+      product: "ai_tutor",
+      targetLanguage: "en",
+      mode: "grammar",
+      timestamp: now + 1,
+      count: 2,
+    });
+    recordLearningEvent({
+      eventType: "logic_insight_viewed",
+      product: "ai_tutor",
+      targetLanguage: "en",
+      mode: "logic",
+      timestamp: now + 2,
+    });
+    recordLearningEvent({
+      eventType: "next_focus_viewed",
+      product: "ai_tutor",
+      targetLanguage: "en",
+      mode: "logic",
+      timestamp: now + 3,
+    });
+
+    render(<AiTutorPage />);
+
+    const momentum = await screen.findByTestId("ai-tutor-momentum-card");
+
+    expect(momentum).toHaveTextContent("Today's momentum");
+    expect(momentum).toHaveTextContent("Practice signals");
+    expect(momentum).toHaveTextContent("Local to this device");
+    expect(momentum).toHaveTextContent("1");
+    expect(momentum).toHaveTextContent("completed");
+    expect(momentum).toHaveTextContent("2");
+    expect(momentum).toHaveTextContent("retries");
+    expect(momentum).toHaveTextContent("1 viewed");
+    expect(momentum).toHaveTextContent("logic insight");
+    expect(momentum).toHaveTextContent("next focus");
+    expect(momentum).toHaveTextContent("Grammar 2");
+    expect(momentum).toHaveTextContent("Logic 2");
+    expect(momentum).not.toHaveTextContent("I buy a private ticket");
+    expect(momentum).not.toHaveTextContent("I bought a private ticket");
+    expect(momentum).not.toHaveTextContent("full transcript");
+    expect(momentum).not.toHaveTextContent("raw audio");
+    expect(momentum).not.toHaveTextContent("secret-token");
+  });
+
+  it("keeps Kids-only local events out of the AI Tutor momentum card", async () => {
+    recordLearningEvent({
+      eventType: "kids_picture_selected",
+      product: "mercy_kids",
+      targetLanguage: "en",
+      safeTopicTag: "apple",
+    });
+    recordLearningEvent({
+      eventType: "kids_speak_clicked",
+      product: "mercy_kids",
+      targetLanguage: "en",
+      safeTopicTag: "apple",
+    });
+
+    render(<AiTutorPage />);
+
+    await screen.findByTestId("ai-tutor-today-lesson");
+    expect(screen.queryByTestId("ai-tutor-momentum-card")).not.toBeInTheDocument();
   });
 
   it("resumes a saved Today Lesson session and can restart it safely", async () => {
