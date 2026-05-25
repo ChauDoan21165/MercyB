@@ -215,5 +215,7 @@ Each audit file should include:
 - Do not add transcript storage.
 - Do not add Supabase memory sync.
 - Do not add Placement writeback.
+- Do not wire learning events into product flows in docs-only PRs.
+- If Placement CTAs are inspected, confirm Home, AI Tutor, and `/placement` route guards use the shared availability helper and do not point users to unavailable `/placement`.
 - Run `git diff --check`.
 - If product code changes accidentally, revert those code changes before committing.

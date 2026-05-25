@@ -214,6 +214,41 @@ Raw audio / raw text / transcript
 └── Do not store
 ```
 
+## Safe Learning Events
+
+Safe learning events are local-only summary signals. They are allowed to help future Study OS decisions, but they are not approved as external analytics, Supabase sync, or Placement writeback.
+
+Contract event names:
+
+- `lesson_started`
+- `lesson_resumed`
+- `lesson_completed`
+- `lesson_restarted`
+- `mode_selected`
+- `mistake_retried`
+- `logic_insight_viewed`
+- `next_focus_viewed`
+- `placement_cta_clicked`
+- `kids_picture_selected`
+- `kids_speak_clicked`
+
+Allowed event fields are limited to summary-style fields such as event type, product, target language, mode, safe topic tag, timestamp, local anonymous session key, and count/value.
+
+Events must not store raw learner text, corrected sentence text, transcripts, raw audio, PII, Supabase user IDs, JWTs, provider keys/secrets, or Placement writeback data.
+
+#1109 added the local engine contract only. It is not wired into AI Tutor, Mercy Kids, or external analytics unless a later PR explicitly does that.
+
+## Placement Entry Points
+
+Placement entry points must use the shared placement availability source in `src/lib/placement/availability.ts`.
+
+- Home Placement CTA uses shared placement availability.
+- AI Tutor Placement CTA uses shared placement availability.
+- `/placement` route guards use the same availability source.
+- No user-facing CTA should point to unavailable `/placement`.
+- Placement availability should remain centralized through the shared helper.
+- Placement CTAs and route guards must not introduce Placement writeback.
+
 ## Safety Boundaries
 
 These boundaries apply across the app:
@@ -241,6 +276,8 @@ If a change needs provider access, cloud memory sync, transcript storage, raw au
 | Use Speak for speaking practice. | Claim "Mercy voice" when cloud audio did not succeed. |
 | Use Logic for English reasoning and Vietlish contrast. | Show speaker/TTS/mic/fallback labels in Logic mode. |
 | Store only safe local M3 aggregate memory. | Store raw audio, full transcripts, or raw learner text in memory. |
+| Use local-only, allowlisted safe learning events when explicitly wired. | Send learning events to external analytics or store raw/corrected text, transcripts, audio, PII, Supabase IDs/JWTs, provider secrets, or Placement writeback data. |
+| Use shared Placement availability for Home, AI Tutor, and `/placement` route guards. | Show user-facing `/placement` CTAs when Placement is unavailable. |
 | Treat M4 as planning/docs only unless separately approved. | Add Supabase memory sync or Placement writeback without approval. |
 
 ## Review Checklist
@@ -255,4 +292,6 @@ Use this checklist when reviewing related product or code changes:
 - Speaker reads only clean learner-facing text.
 - Device fallback voice is clearly labeled when used.
 - Memory remains local summary-only M3 memory.
+- Safe learning events, if touched, remain local-only and allowlisted.
+- Placement CTAs and route guards use the shared availability helper.
 - No raw audio, full transcript, raw learner text, Supabase memory sync, or Placement writeback was added.
