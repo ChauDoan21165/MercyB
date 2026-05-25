@@ -30,6 +30,7 @@ import {
   ruleComparativeDouble,
   ruleComparativeMoreLong,
   ruleConditionalMix,
+  ruleCoTransfer,
   ruleCountable,
   ruleCountableMuch,
   ruleDoSupport3ps,
@@ -168,5 +169,10 @@ export const VN_RULES: L1Rule[] = [
   // bare-no/bare-not without do-support gets the specific message
   // instead of falling through to the (broader) double-negative rule.
   ruleNoAuxNegation,         // 62
+  // Round 6 — Bar #1 DoD flip. Combined detector with two
+  // sub-patterns sharing one tag (vi_l1_co_transfer):
+  //   A. locative-fronted `has` → `there is/are`
+  //   B. `NP has + intensifier + adj` → `NP is + intensifier + adj`
+  ruleCoTransfer,            // 64
   ruleDoubleNegative,        // 49 — last among A2 structural
 ];

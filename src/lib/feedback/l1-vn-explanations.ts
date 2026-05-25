@@ -555,6 +555,14 @@ export const L1_VN_EXPLANATIONS: Record<L1WeaknessTag, L1VnExplanation> = {
       "I no want coffee → 'Tôi + không + muốn + cà phê' (dịch 'không' thẳng thành 'no'; tiếng Anh phải có 'don't')",
     needs_review: false,
   },
+  vi_l1_co_transfer: {
+    name_vi: "'Có' không phải lúc nào cũng là 'has' — dùng there is/are hoặc is/are",
+    explanation_vi:
+      "Tiếng Việt 'có' đa năng. Khi nói nơi nào có gì, dùng **There is / There are** — không phải 'has'. *In my house has three bedrooms* → *There are three bedrooms in my house*. Khi mô tả tính chất, dùng **is / are** — không phải 'has'. *My city has very beautiful* → *My city **is** very beautiful*.",
+    example_wrong_vi_gloss:
+      "In my house has three bedrooms → 'Trong nhà tôi + có + ba phòng ngủ' (dịch 'có' thẳng thành 'has'; tiếng Anh phải mở đầu bằng 'There are')",
+    needs_review: false,
+  },
 };
 
 /**

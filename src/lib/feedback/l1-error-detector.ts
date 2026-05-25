@@ -89,11 +89,13 @@
  *  60. vi_l1_superlative_the          usage        A2
  *  61. vi_l1_if_will                  structural   B1
  *
- *  Round 6 additions — rule 62 (1 new). STRATEGY §15 Bar #1 detector
- *  candidate flipped from `expected_failure` → `expected_pass` per the
- *  Vietnamese flagship DoD.
+ *  Round 6 additions. STRATEGY §15 Bar #1 detector candidates flipped
+ *  from `expected_failure` → `expected_pass` per the Vietnamese flagship
+ *  DoD. Numbering is sequential within the round; rule 63 ships in a
+ *  parallel PR (#1169 — vi_l1_subject_gender), so this slot lands at 64.
  *
- *  62. vi_l1_no_aux_negation          structural   A2
+ *  62. vi_l1_no_aux_negation          structural    A2
+ *  64. vi_l1_co_transfer              structural    A2 — two sub-patterns
  */
 
 export type L1WeaknessTag =
@@ -159,8 +161,9 @@ export type L1WeaknessTag =
   | 'vi_l1_no_article_generic'        // L1-058 A2
   | 'vi_l1_superlative_the'           // L1-059 A2
   | 'vi_l1_if_will'                   // L1-060 B1
-  // Round 6 — Bar #1 DoD flip
-  | 'vi_l1_no_aux_negation';          // L1-061 A2
+  // Round 6 — Bar #1 DoD flips
+  | 'vi_l1_no_aux_negation'           // L1-061 A2
+  | 'vi_l1_co_transfer';              // L1-063 A2 — two sub-patterns
 
 export type L1FeedbackText = {
   en: string;
@@ -2493,6 +2496,103 @@ export const ruleNoAuxNegation: Rule = ({
     return { tag: 'vi_l1_no_aux_negation', replacements: { FIX: rawExpected } };
   }
   return null;
+};
+
+// ── vi_l1_co_transfer (rule 64) ────────────────────────────────────────────
+//
+// Vietnamese `có` is multivalent — it serves possession, existence, and
+// (in spoken/written colloquial) descriptive predicates. Learners
+// over-map all three meanings onto English `has`, producing two
+// distinct structural errors with one shared L1 root:
+//
+//   Sub-pattern A — locative-fronted existential:
+//     "In my house has three bedrooms." → "There are three bedrooms in my house."
+//     Detection: user starts with a locative prep + NP + has + count.
+//                expected starts with "there is/are".
+//
+//   Sub-pattern B — has-instead-of-be predicative:
+//     "My city has very beautiful." → "My city is very beautiful."
+//     Detection: user[i] = "has" where expected[i] = "is", same length,
+//                all other indices align, next token after has/is is a
+//                degree intensifier (very/really/quite/so/too/...).
+//
+// Both share `vi_l1_co_transfer` tag + explanation so the teacher
+// message tells the whole story. Sub-pattern A's restructuring detector
+// runs first; B's token-position swap is the fallback.
+
+const CO_TRANSFER_LOCATIVE_PREPS = new Set(['in', 'on', 'at', 'inside']);
+
+/** Numeric count words sub-pattern A keys on. */
+const CO_TRANSFER_COUNT_HEAD = new Set([
+  'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine',
+  'ten', 'eleven', 'twelve', 'fifteen', 'twenty', 'thirty', 'forty',
+  'fifty', 'sixty', 'seventy', 'eighty', 'ninety', 'hundred',
+  'many', 'several', 'few', 'some', 'lots',
+]);
+
+function isCountHead(token: string): boolean {
+  if (CO_TRANSFER_COUNT_HEAD.has(token)) return true;
+  const n = Number(token);
+  return Number.isFinite(n) && n >= 1;
+}
+
+/** Sub-pattern A: locative-fronted `has` → `there is/are`. */
+function detectLocativeHas(args: RuleArgs): RuleHit | null {
+  const { userTokens, expectedText, rawExpected } = args;
+  if (userTokens.length < 5) return null;
+  if (!CO_TRANSFER_LOCATIVE_PREPS.has(userTokens[0])) return null;
+  // Walk forward looking for "has" followed by a count head, with NP
+  // (any tokens) between the locative prep and "has".
+  let hasIdx = -1;
+  for (let i = 2; i < userTokens.length - 1; i++) {
+    if (userTokens[i] === 'has') { hasIdx = i; break; }
+  }
+  if (hasIdx < 0) return null;
+  if (!isCountHead(userTokens[hasIdx + 1])) return null;
+  // Expected must front with "there is/are".
+  if (!/^there\s+(is|are)\b/i.test(expectedText.trim())) return null;
+  return { tag: 'vi_l1_co_transfer', replacements: { FIX: rawExpected } };
+}
+
+/** Degree intensifiers that gate sub-pattern B's adjective-side check. */
+const CO_TRANSFER_INTENSIFIERS = new Set([
+  'very', 'really', 'quite', 'so', 'too', 'extremely', 'super',
+  'pretty', 'rather', 'incredibly',
+]);
+
+/** Sub-pattern B: `NP has <intensifier> <adj>` → `NP is <intensifier> <adj>`. */
+function detectHasAdjective(args: RuleArgs): RuleHit | null {
+  const { userTokens, expectedTokens, rawExpected } = args;
+  if (userTokens.length !== expectedTokens.length) return null;
+  for (let i = 1; i < userTokens.length - 1; i++) {
+    if (userTokens[i] !== 'has') continue;
+    if (expectedTokens[i] !== 'is') continue;
+    // Predicative-adjective signal: next token is a degree intensifier.
+    // Keeps the rule narrow — `He has interesting hobbies` (where `has`
+    // is correct) doesn't fire because next token isn't a degree word.
+    if (!CO_TRANSFER_INTENSIFIERS.has(userTokens[i + 1])) continue;
+    // Confirm everything else aligns.
+    let aligned = true;
+    for (let j = 0; j < userTokens.length; j++) {
+      if (j === i) continue;
+      if (userTokens[j] !== expectedTokens[j]) { aligned = false; break; }
+    }
+    if (!aligned) continue;
+    return { tag: 'vi_l1_co_transfer', replacements: { FIX: rawExpected } };
+  }
+  return null;
+}
+
+/**
+ * 64. Vietnamese `có` over-mapping. Combined detector for two
+ * structurally distinct sub-patterns that share the same L1 root.
+ *
+ * Coverage: STRATEGY §15 Bar #1 detector candidate; flips
+ * evals/vi-grammar-cases.json entries vi-gram-120 / 121 / 122
+ * from expected_failure to expected_pass.
+ */
+export const ruleCoTransfer: Rule = (args) => {
+  return detectLocativeHas(args) ?? detectHasAdjective(args);
 };
 
 // ────────────────────────────────────────────────────────────────────────────
