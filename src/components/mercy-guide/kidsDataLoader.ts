@@ -100,11 +100,37 @@ type ModuleShape = {
 
 const cache = new Map<number, ModuleShape>();
 
+// Vite cannot statically analyse `import(\`./kids/kidPage${n}Data\`)` —
+// the template-literal path has no extension and no glob, so the dynamic
+// import resolves to nothing in the production build and loadPageModule
+// returns an empty module. Result: the photo grid renders empty on
+// /kids/vi-english in prod. `import.meta.glob` is the Vite-documented
+// fix: it pre-registers a lazy loader per matching file at build time,
+// so each kidPage<N>Data.ts gets its own code-split chunk and the
+// dynamic lookup resolves at runtime through PAGE_MODULES.
+//
+// Lazy mode (`eager: false`) preserves on-demand loading — the modules
+// only fetch their chunks when loadPageModule(n) is called, exactly
+// like the broken template-literal form intended.
+//
+// Re-applies the fix from PR #1157 (reverted by #1165's surgical
+// 3-revert) — same patch, same rationale, applied on top of the
+// post-#1165 kids-restore + safety-pin baseline.
+const PAGE_MODULES = import.meta.glob<ModuleShape>(
+  './kids/kidPage*Data.ts',
+  { eager: false },
+);
+
 async function loadPageModule(pageNumber: number): Promise<ModuleShape> {
   const cached = cache.get(pageNumber);
   if (cached) return cached;
 
-  const mod = await import(`./kids/kidPage${pageNumber}Data`);
+  const path = `./kids/kidPage${pageNumber}Data.ts`;
+  const loader = PAGE_MODULES[path];
+  if (!loader) {
+    throw new Error(`kidPage${pageNumber}Data module not registered`);
+  }
+  const mod = await loader();
   cache.set(pageNumber, mod as ModuleShape);
   return mod as ModuleShape;
 }
