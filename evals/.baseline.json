@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-25T12:22:50.050Z",
+  "generated_at": "2026-05-25T15:15:36.909Z",
   "global": {
     "pass": 52,
     "total": 52,
@@ -81,27 +81,17 @@
       "total": 2,
       "rate": 1
     },
-    "register-overformal": {
+    "vi_write_register": {
       "pass": 0,
       "total": 0,
       "rate": 0
     },
-    "paragraph-topic-fronting": {
+    "vi_write_topic_comment": {
       "pass": 0,
       "total": 0,
       "rate": 0
     },
-    "redundant-calque": {
-      "pass": 0,
-      "total": 0,
-      "rate": 0
-    },
-    "apology-explanation-order": {
-      "pass": 0,
-      "total": 0,
-      "rate": 0
-    },
-    "connector-stacking": {
+    "vi_write_cohesion_parataxis": {
       "pass": 0,
       "total": 0,
       "rate": 0
