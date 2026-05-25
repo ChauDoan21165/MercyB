@@ -32,6 +32,7 @@ import {
 import { hasMeaningfulDifference } from './utils';
 import { analyzeGrammarWithApi } from './api';
 import L1HintCard from './L1HintCard';
+import { recordL1Tag } from '@/lib/stage-3a/adapters/l1-recent';
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 
 type LearningSupportMode = 'gentle' | 'guided' | 'immersion';
@@ -829,6 +830,7 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
       });
 
       setResult(analysis);
+      if (analysis?.l1Hint?.weaknessTag) recordL1Tag(analysis.l1Hint.weaknessTag);
       onAnalysisResult?.(analysis);
 
       emitTeacherWritingState(analysis, {
