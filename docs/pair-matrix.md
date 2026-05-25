@@ -14,7 +14,7 @@
 
 | Capability                              | English (flagship)                                      | Japanese  | Korean    | Chinese   |
 |-----------------------------------------|---------------------------------------------------------|-----------|-----------|-----------|
-| L1 Profile (`src/lib/l1-profiles/`)     | ✅ `vi.ts`                                              | ❌        | ❌        | ❌        |
+| L1 Profile (`src/lib/l1-profiles/`)     | ✅ `vi.ts`                                              | ❌        | ❌        | ✅ `zh.ts` shell |
 | Grammar taxonomy (`docs/l1-taxonomies/`) | ✅ `vi-grammar.md` (15 families, 180 examples)         | ❌        | ❌        | ❌        |
 | Writing taxonomy                        | ✅ `vi-writing.md` (12 patterns, 169 examples)          | ❌        | ❌        | ❌        |
 | Phoneme gap audit                       | ✅ `vn-phoneme-gaps.md` (6 audit categories)            | ❌        | ❌        | ❌        |
