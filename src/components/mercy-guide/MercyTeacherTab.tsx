@@ -34,7 +34,7 @@ import type { NotebookItemType } from '@/services/notebookService';
 
 type LearningSupportMode = 'gentle' | 'guided' | 'immersion';
 
-type KidsPageId =
+export type KidsPageId =
   | 'page1'
   | 'page2'
   | 'page3'
