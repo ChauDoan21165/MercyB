@@ -217,8 +217,14 @@ function normalizePage3Key(value?: string | null): string {
   return cleanText(value).replace(/\.png$/i, '');
 }
 
-function isPage3LessonKey(value?: string | null): boolean {
-  return /^k\d+_/i.test(normalizePage3Key(value));
+export function isPage3LessonKey(value?: string | null): boolean {
+  // Page-3 keys are 3-digit zero-padded: k001_…, k010_…, k099_…
+  // Pages 11–34 use 2-digit prefixes (k11_…, k12_…, … k34_…) and must
+  // NOT route through this sync predicate — they need the async page-NN
+  // loader to find their PNG paths. The old `/^k\d+_/i` over-matched
+  // those, forcing them into getPage3LessonByKey which built a
+  // /images/mercy-kids-page-3/k34_*.png URL that 404s.
+  return /^k0\d+_/i.test(normalizePage3Key(value));
 }
 
 function formatPage3TextFromKey(key: string): string {
