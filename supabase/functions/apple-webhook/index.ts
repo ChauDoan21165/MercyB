@@ -15,6 +15,11 @@ import { registerProviderEvent } from "../_billing/provider-events.ts";
 import type { BillingEnvironment } from "../_billing/types.ts";
 import { verifyAppleJws } from "../_billing/verifyAppleJws.ts";
 import { captureEdgeError } from "../_shared/sentry.ts";
+import {
+  appleNotificationV2Schema,
+  appleWebhookEnvelopeSchema,
+  type AppleNotificationV2,
+} from "../_shared/webhookSchemas.ts";
 
 // Sentry tag schema for billing-webhook observability — mirrors the
 // stripe-webhook capture wiring (PR #645) so one ops dashboard facets
@@ -53,13 +58,8 @@ function normalizeEnvironment(value: unknown): BillingEnvironment {
   return value === "sandbox" || value === "test" ? value : "production";
 }
 
-interface AppleNotificationV2 {
-  notificationType?: string;
-  notificationUUID?: string;
-  data?: {
-    environment?: string;
-  };
-}
+// Inner-payload type now sourced from the zod schema in
+// _shared/webhookSchemas.ts (A11). Kept in the import block above.
 
 Deno.serve(async (req) => {
   if (req.method !== "POST") {
@@ -67,16 +67,59 @@ Deno.serve(async (req) => {
   }
 
   const rawBody = await req.text();
-  const body = (() => {
-    try {
-      return rawBody ? JSON.parse(rawBody) : {};
-    } catch {
-      return null;
-    }
-  })();
-  if (body === null) {
+
+  // ── A11: outer-envelope runtime validation ────────────────────────────
+  // Replaces the prior try/catch JSON.parse + null-check. Reports the
+  // failed-parse cause to Sentry with PII-scrubbed details (zod issues +
+  // top-level key set only — NEVER the raw signedPayload, which is a JWS
+  // that contains transaction data). Distinguishes:
+  //   400 = bad JSON / wrong envelope shape (caller's fault)
+  //   401 = good JSON but JWS does not verify (further down)
+  let parsedJson: unknown;
+  try {
+    parsedJson = rawBody ? JSON.parse(rawBody) : {};
+  } catch (parseErr) {
+    await captureBillingWebhookFailure(parseErr, {
+      stage: "envelope-parse-json",
+      severity: "high",
+      event_type: "malformed_json",
+    });
     return error("Expected valid JSON body", 400);
   }
+
+  const envelopeParse = appleWebhookEnvelopeSchema.safeParse(parsedJson);
+  if (!envelopeParse.success) {
+    // PII-safe Sentry payload: only zod-issue field names + the top-level
+    // key list. The raw signedPayload JWS is never sent to Sentry.
+    const topLevelKeys =
+      parsedJson && typeof parsedJson === "object" && !Array.isArray(parsedJson)
+        ? Object.keys(parsedJson as Record<string, unknown>)
+        : [];
+    await captureEdgeError(
+      new Error("apple-webhook envelope failed zod validation"),
+      {
+        functionName: "apple-webhook",
+        extra: {
+          stage: "envelope-zod",
+          zodIssues: envelopeParse.error.issues.map((iss) => ({
+            path: iss.path.join("."),
+            code: iss.code,
+            message: iss.message,
+          })),
+          topLevelKeys,
+        },
+        tags: {
+          ...BILLING_WEBHOOK_TAGS,
+          stage: "envelope-zod",
+          severity: "high",
+          event_type: "malformed_envelope",
+        },
+      },
+    );
+    return error("Webhook envelope failed validation", 400);
+  }
+
+  const body = envelopeParse.data;
   const headers = requestHeaders(req);
 
   // ── C4: signature verification ─────────────────────────────────────────
@@ -84,10 +127,9 @@ Deno.serve(async (req) => {
   // verifyAppleJws walks the x5c chain, optionally pins the root cert
   // SHA-256 fingerprint via APPLE_ROOT_CERT_SHA256 env var, and returns
   // a structured failure code on any tamper / format error.
-  const signedPayload =
-    typeof body?.signedPayload === "string" ? body.signedPayload : null;
+  const signedPayload = body.signedPayload; // zod-narrowed to string
 
-  const verification = await verifyAppleJws<AppleNotificationV2>(signedPayload);
+  const verification = await verifyAppleJws<unknown>(signedPayload);
 
   if (!verification.ok || !verification.payload) {
     // Log the rejection for security dashboards. Fire-and-forget — a
@@ -116,15 +158,57 @@ Deno.serve(async (req) => {
     });
   }
 
-  const verifiedPayload = verification.payload;
+  // ── A11: inner-payload runtime validation ────────────────────────────
+  // The JWS already verified the payload came from Apple. Now we zod-
+  // parse it to (a) eliminate downstream `any`, and (b) emit an
+  // observability beacon if Apple drifts its schema. On parse failure
+  // we INTENTIONALLY do NOT reject — the existing defensive typeof
+  // checks below preserve resilience for unknown-shape vendor payloads
+  // (dispatch rule: "Do NOT change existing valid-payload behavior").
+  const innerParse = appleNotificationV2Schema.safeParse(verification.payload);
+  const verifiedPayload: AppleNotificationV2 | null = innerParse.success
+    ? innerParse.data
+    : null;
+  if (!innerParse.success) {
+    await captureEdgeError(
+      new Error("apple-webhook inner notification failed zod validation"),
+      {
+        functionName: "apple-webhook",
+        extra: {
+          stage: "inner-payload-zod",
+          zodIssues: innerParse.error.issues.map((iss) => ({
+            path: iss.path.join("."),
+            code: iss.code,
+            message: iss.message,
+          })),
+        },
+        tags: {
+          ...BILLING_WEBHOOK_TAGS,
+          stage: "inner-payload-zod",
+          severity: "high",
+          event_type: "schema_drift",
+        },
+      },
+    );
+  }
+  // Fallback `unverifiedShape` retains the original raw payload for
+  // resilience: if the zod parse failed, the typeof checks below still
+  // extract whatever they can. Never null on a JWS-verified payload.
+  const unverifiedShape = (verification.payload ?? {}) as Record<string, unknown>;
   const providerEventId =
     typeof verifiedPayload?.notificationUUID === "string"
       ? verifiedPayload.notificationUUID
+      : typeof unverifiedShape.notificationUUID === "string"
+      ? unverifiedShape.notificationUUID
       : null;
-  const environment = normalizeEnvironment(verifiedPayload?.data?.environment);
+  const environment = normalizeEnvironment(
+    verifiedPayload?.data?.environment ??
+      (unverifiedShape.data as { environment?: unknown } | undefined)
+        ?.environment,
+  );
   const eventKey =
     providerEventId ??
-    `apple-webhook:${await sha256Hex(rawBody || JSON.stringify(verifiedPayload))}`;
+    `apple-webhook:${await sha256Hex(rawBody || JSON.stringify(verification.payload))}`;
 
   try {
     const supabase = createAdminClient();
@@ -136,8 +220,10 @@ Deno.serve(async (req) => {
       eventType:
         typeof verifiedPayload?.notificationType === "string"
           ? verifiedPayload.notificationType
+          : typeof unverifiedShape.notificationType === "string"
+          ? unverifiedShape.notificationType
           : "apple_webhook_received",
-      payload: verifiedPayload,
+      payload: verification.payload,
       headers,
       metadata: {
         scaffold_only: true,
@@ -169,6 +255,8 @@ Deno.serve(async (req) => {
       event_type:
         typeof verifiedPayload?.notificationType === "string"
           ? verifiedPayload.notificationType
+          : typeof unverifiedShape.notificationType === "string"
+          ? unverifiedShape.notificationType
           : "unknown",
     });
     return error(err instanceof Error ? err.message : "Unexpected error", 500);
