@@ -57,7 +57,15 @@ _Original brief:_ Build 6 approved by Apple. Google Play Build 3 approved. Both 
 
 ## STEP 3 → 45% — Pronunciation Excellence
 
-**Status: ~50% complete (24 Apr 2026 evening — Round 7 A7).** ✅ VN-EN sound pair drills shipped (th/t, r/l, -ed, -s); SoundPairDrillCard component; vn-phoneme-map extended with 4 problem-pair sets. ❌ Real STT scoring (Whisper API wiring); daily pronunciation challenge UI; weekly pronunciation leaderboard; VN accent model. Runbook at reports/a7-phoneme-runbook.md (recommends Whisper for MVP, ~$4/mo).
+**Status: ~95% complete (25 May 2026 — refresh per PRINCIPLES §9; supersedes the 24 Apr A7 snapshot).** All five items in the original brief shipped:
+
+- ✅ Phoneme-level feedback — Azure Speech `azure-phoneme` + `azure-phoneme-stream` edge functions (`supabase/functions/`) return per-phoneme accuracy scores; instrumented via `src/config/latencyThresholds.ts`.
+- ✅ VN-EN sound pair drills (th/t, r/l, -ed, -s) — `SoundPairDrillCard` component; `vn-phoneme-map` extended with 4 problem-pair sets.
+- ✅ Daily pronunciation challenge — `/challenge` route live (`src/router/AppRouter.tsx:1006`, anon-viewable, `DailyChallengePage`). History at `/challenge/history` behind RequireAuth.
+- ✅ Weekly pronunciation leaderboard — `/leaderboard` route live (`src/router/AppRouter.tsx:1033`, anon-viewable, `LeaderboardPage`).
+- ✅ VN accent model — `src/lib/pronunciation/multiAccentTTS.ts` + `useAccentPreference.ts`; UI via `AccentBadge.tsx` + `AccentSelector.tsx`. Per-(word, accent) cache, ElevenLabs cloud path first then `speechSynthesis` BCP-47 fallback.
+
+The remaining ~5% is post-launch polish (accent coverage beyond the current set, drill expansion, telemetry tuning) — not feature gaps in the original brief. `reports/a7-phoneme-runbook.md` is now historical: the Whisper recommendation was superseded by Azure for VN-specific phoneme granularity and accent support.
 
 _Original brief:_ - Phoneme-level feedback (not just word-level)
 - VN-EN sound pair drills (th/t, r/l, -ed endings, -s plurals)
@@ -69,7 +77,7 @@ _Original brief:_ - Phoneme-level feedback (not just word-level)
 
 - Agents: 4 parallel (phoneme engine, drill UI, leaderboard, accent model)
 - Timeline: 1 week
-- Blocker: Speech recognition API costs
+- Blocker: ~~Speech recognition API costs~~ resolved — Azure Speech absorbed at known per-call cost.
 
 ---
 
