@@ -31,31 +31,68 @@ import type {
 } from "@/lib/feedback/l1-error-detector";
 
 /**
- * The set of `L1WeaknessTag` values that map (by concept) to
- * high-severity patterns in `viL1Profile.interference.patterns`.
- * Hand-curated against the 6 high-severity profile patterns:
+ * The set of `L1WeaknessTag` values that are chip-eligible. v1 covered
+ * 6 high-severity profile patterns; v2 (C5 recon) expanded to include
+ * the 4 medium-severity patterns that the grammar detector actually
+ * emits — article omission (6 tags), preposition selection (3 tags),
+ * pronoun gender (1 tag), and there-are/there-is (1 tag). The
+ * phonology pattern `final_consonant_cluster_reduction` is
+ * high-severity in the profile but doesn't surface from the grammar
+ * detector, so it has no tag here. `topic_comment_fronting` and
+ * `plural_s_omission` from the medium tier are already covered (no
+ * ruleTags for the former; `vi_l1_plural_s` for the latter was in v1
+ * via dual-listing under `final_cluster_spelling_loss`).
  *
- *   inflectional_s_ed_inaudible
- *   past_tense_unmarked
- *   copula_be_omission
- *   question_word_order_transfer
- *   negation_no_not_placement
- *   final_consonant_cluster_reduction         (phonology — no grammar
- *                                              detector tag; absent here)
+ * Frequency control is split into two layers:
+ *   1. Per-tag dedup (sessionStorage) — `hasShownHint` / `markHintShown`.
+ *      The same tag never chips twice in a session.
+ *   2. Session-wide cap (`SESSION_CAP`) — the count of unique fired
+ *      tags caps at 3, so even with 17 eligible tags a session sees
+ *      at most 3 chips. Beyond the cap, `getDetectorHint` returns
+ *      null. Keeps signal/noise in the 1–3 chips/session band the
+ *      recon recommended.
  *
- * The grammar detector emits structural tags; the phonology pattern
- * above doesn't surface from this detector, so it's not in the set.
- * Adding more tags later is additive-safe — they just start chipping.
+ * Adding more tags later is additive-safe — they just enter the
+ * cap-gated rotation.
  */
 export const HIGH_SEVERITY_DETECTOR_TAGS: ReadonlySet<L1WeaknessTag> =
   new Set<L1WeaknessTag>([
+    // v1 high-severity (original 6).
     "vi_l1_3rd_person_s",
     "vi_l1_past_ed",
     "vi_l1_plural_s",
     "vi_l1_missing_be",
     "vi_l1_question_no_aux",
     "vi_l1_double_negative",
+    // v2 medium-severity expansion (C5 recon).
+    //   article_omission_overuse  → 6 tags
+    "vi_l1_missing_article",
+    "vi_l1_a_vs_an_vowel",
+    "vi_l1_geographical_article",
+    "vi_l1_no_article_generic",
+    "vi_l1_superlative_the",
+    "vi_l1_generic_plural",
+    //   preposition_selection_transfer  → 3 tags
+    "vi_l1_preposition_transfer",
+    "vi_l1_time_expressions",
+    "vi_l1_by_vs_with",
+    //   pronoun_gender_confusion  → 1 tag
+    "vi_l1_possessive_gender",
+    //   co_transfer_overgeneralisation  → 1 tag
+    "vi_l1_there_are_singular",
   ]);
+
+/**
+ * Maximum number of unique-tag chips shown in a single session.
+ * Tuned after the medium-severity expansion to keep each chip feeling
+ * rare and informative (1–3 chips per session is "signal", 8+ is
+ * "noise" per the C5 recon). Beyond this, `getDetectorHint` returns
+ * null even for an otherwise-eligible tag. The cap counts only chips
+ * that actually rendered (via `markHintShown` in DetectorHintChip's
+ * useEffect), so a detection filtered out at the call site by per-tag
+ * dedup doesn't burn cap budget.
+ */
+export const SESSION_CAP = 3;
 
 /** Render-side content for one chip. */
 export interface DetectorHintContent {
@@ -98,11 +135,15 @@ function tagFallbackLabel(tag: string): string {
  * return the content to render. Returns null when:
  *   - the detector didn't match,
  *   - the tag isn't in HIGH_SEVERITY_DETECTOR_TAGS,
+ *   - the session-wide chip count has reached SESSION_CAP,
  *   - no Vietnamese explanation is registered for the tag.
  *
- * The session-dedup check is intentionally a separate step (see
- * `hasShownHint` / `markHintShown`) so callers can decide when to
- * record the firing relative to mount.
+ * The cap check uses the same sessionStorage key as the per-tag
+ * dedup — counting the number of UNIQUE tags already rendered this
+ * session. Per-tag dedup (`hasShownHint`) remains the caller's
+ * responsibility so the call site can decide when to record the
+ * firing relative to mount; the cap here is an additional outer
+ * gate that protects against fatigue across DIFFERENT tags.
  */
 export function getDetectorHint(
   detection: L1DetectionResult,
@@ -110,6 +151,15 @@ export function getDetectorHint(
   if (!detection.matched) return null;
   const tag = detection.weaknessTag;
   if (!HIGH_SEVERITY_DETECTOR_TAGS.has(tag)) return null;
+  // Session-wide cap. Only RENDERED chips count (markHintShown is
+  // called from DetectorHintChip's useEffect, not here), so a
+  // detection that's about to fire but already-shown won't bump the
+  // count past the cap on a subsequent re-firing of the same tag.
+  // Allow a re-emit of an already-shown tag to slip past the cap
+  // check so the call site's per-tag dedup can decide the no-op —
+  // this keeps the cap purely about unique tags consumed.
+  const shownCount = getShownCount();
+  if (shownCount >= SESSION_CAP && !hasShownHint(tag)) return null;
   const explanation = L1_VN_EXPLANATIONS[tag];
   if (!explanation) return null;
   return {
@@ -152,6 +202,11 @@ function writeShownSet(set: Set<string>): void {
 
 export function hasShownHint(tag: L1WeaknessTag): boolean {
   return readShownSet().has(tag);
+}
+
+/** Number of unique tags chipped this session. Used by SESSION_CAP gate. */
+export function getShownCount(): number {
+  return readShownSet().size;
 }
 
 export function markHintShown(tag: L1WeaknessTag): void {

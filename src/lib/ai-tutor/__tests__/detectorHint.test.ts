@@ -2,7 +2,9 @@ import { describe, it, expect, beforeEach } from "vitest";
 
 import {
   HIGH_SEVERITY_DETECTOR_TAGS,
+  SESSION_CAP,
   getDetectorHint,
+  getShownCount,
   hasShownHint,
   markHintShown,
   _resetHintDedupForTesting,
@@ -46,13 +48,68 @@ describe("getDetectorHint", () => {
     expect(hint?.rationaleVi.length).toBeLessThanOrEqual(300);
   });
 
-  it("returns chip content for all 6 high-severity tags", () => {
+  it("returns chip content for every tag in HIGH_SEVERITY_DETECTOR_TAGS", () => {
+    // v2 expansion: 6 high + 11 medium = 17 eligible tags. Iterates
+    // the Set so the test stays correct if the Set is tuned later.
+    expect(HIGH_SEVERITY_DETECTOR_TAGS.size).toBe(17);
     for (const tag of HIGH_SEVERITY_DETECTOR_TAGS) {
+      _resetHintDedupForTesting(); // each tag tested independently of the cap
       const hint = getDetectorHint(matched(tag));
       expect(hint, tag).not.toBeNull();
       expect(hint?.nameEn.length, tag).toBeGreaterThan(0);
       expect(hint?.rationaleVi.length, tag).toBeGreaterThan(0);
+      expect(hint?.rationaleVi.length, tag).toBeLessThanOrEqual(300);
     }
+  });
+});
+
+describe("SESSION_CAP — session-wide cap across DIFFERENT tags", () => {
+  it("returns chips for the first SESSION_CAP unique tags", () => {
+    const tags: string[] = [
+      "vi_l1_3rd_person_s",
+      "vi_l1_past_ed",
+      "vi_l1_missing_be",
+    ];
+    expect(tags.length).toBe(SESSION_CAP);
+    for (const tag of tags) {
+      const hint = getDetectorHint(matched(tag));
+      expect(hint, tag).not.toBeNull();
+      markHintShown(tag as Parameters<typeof markHintShown>[0]);
+    }
+    expect(getShownCount()).toBe(SESSION_CAP);
+  });
+
+  it("returns null for a fresh tag once the cap is reached", () => {
+    markHintShown("vi_l1_3rd_person_s");
+    markHintShown("vi_l1_past_ed");
+    markHintShown("vi_l1_missing_be");
+    // 3 tags shown — cap reached. A fresh tag must be filtered.
+    expect(getDetectorHint(matched("vi_l1_plural_s"))).toBeNull();
+    expect(getDetectorHint(matched("vi_l1_question_no_aux"))).toBeNull();
+    expect(getDetectorHint(matched("vi_l1_missing_article"))).toBeNull();
+  });
+
+  it("still returns a hint for an ALREADY-shown tag after the cap (call-site dedup decides the no-op)", () => {
+    // Cap exists to prevent FATIGUE across NEW tags. Re-emit of the
+    // same tag passes the cap so the call site's per-tag dedup can
+    // make the final decision without `getDetectorHint` going stale.
+    markHintShown("vi_l1_3rd_person_s");
+    markHintShown("vi_l1_past_ed");
+    markHintShown("vi_l1_missing_be");
+    const hint = getDetectorHint(matched("vi_l1_past_ed"));
+    expect(hint).not.toBeNull();
+    expect(hint?.tag).toBe("vi_l1_past_ed");
+  });
+
+  it("does NOT count detections that were filtered out before render", () => {
+    // markHintShown is called from DetectorHintChip's useEffect, not
+    // from getDetectorHint. A detection that gets through the cap
+    // but is then suppressed at the call site (per-tag dedup) does
+    // NOT bump the count.
+    expect(getShownCount()).toBe(0);
+    expect(getDetectorHint(matched("vi_l1_3rd_person_s"))).not.toBeNull();
+    // No markHintShown — call site filtered it. Count must stay at 0.
+    expect(getShownCount()).toBe(0);
   });
 });
 
