@@ -199,6 +199,60 @@ describe("assembleContextBlock", () => {
     const result = assembleContextBlock(null, null, null, "0", null, "listening, grammar", []);
     expect(result).toContain("Bạn đang cần cải thiện: listening, grammar");
   });
+
+  it("renders the L1 patterns line when patterns are passed", () => {
+    const result = assembleContextBlock(null, null, null, "0", null, null, [
+      "Final clusters are simplified.",
+    ]);
+    expect(result).toContain("Lưu ý các lỗi tiếng Việt thường gặp");
+    expect(result).toContain("Final clusters are simplified.");
+  });
+
+  it("omits the L1 patterns line when the array is empty", () => {
+    const result = assembleContextBlock(null, null, null, "0", null, null, []);
+    expect(result).not.toContain("Lưu ý các lỗi tiếng Việt");
+  });
+});
+
+// ─── L1 Pattern Filter (viL1Profile consumer) ─────────────────────────
+
+describe("getHighSeverityL1Patterns", () => {
+  it("returns at least one viL1Profile-sourced pattern for a B1 learner", async () => {
+    const { getHighSeverityL1Patterns } = await import("../promptAssembly");
+    const { vietnameseL1Profile } = await import("../../l1-profiles/vi");
+    const patterns = getHighSeverityL1Patterns("B1");
+    expect(patterns.length).toBeGreaterThanOrEqual(1);
+    const atlas = new Set(
+      vietnameseL1Profile.interference.patterns.map((p) => p.shortDescription),
+    );
+    for (const s of patterns) {
+      expect(atlas.has(s)).toBe(true);
+    }
+  });
+
+  it("returns an empty array for unknown / null CEFR", async () => {
+    const { getHighSeverityL1Patterns } = await import("../promptAssembly");
+    expect(getHighSeverityL1Patterns(null)).toEqual([]);
+    expect(getHighSeverityL1Patterns("XX")).toEqual([]);
+  });
+
+  it("returns an empty array for C2 (no high-severity patterns at advanced level)", async () => {
+    const { getHighSeverityL1Patterns } = await import("../promptAssembly");
+    expect(getHighSeverityL1Patterns("C2")).toEqual([]);
+  });
+
+  it("assembleSystemPrompt for a B1 learner includes at least one L1 pattern shortDescription", async () => {
+    const { assembleSystemPrompt } = await import("../promptAssembly");
+    const { vietnameseL1Profile } = await import("../../l1-profiles/vi");
+    const prompt = assembleSystemPrompt("general_chat", "B1", "Chau");
+    expect(prompt).toContain("Lưu ý các lỗi tiếng Việt");
+    const b1HighDescriptions = vietnameseL1Profile.interference.patterns
+      .filter((p) => p.severity === "high" && p.cefrLevelsObserved.includes("B1"))
+      .map((p) => p.shortDescription);
+    expect(b1HighDescriptions.length).toBeGreaterThanOrEqual(1);
+    const matched = b1HighDescriptions.some((d) => prompt.includes(d));
+    expect(matched).toBe(true);
+  });
 });
 
 // ─── History Serialization ────────────────────────────────────────────
