@@ -573,12 +573,17 @@ one full direction of one full pair, on both sides."
   `ma / má / mà / mả / mã / mạ` set, plus 6+ more contrasts) and a
   test verifying the scoring distinguishes adjacent tones.
 
-- [ ] **Classifier system explainer + drill.** At least one room
+- [x] **Classifier system explainer + drill.** At least one room
   teaching the Vietnamese classifier system (`cái`, `con`, `chiếc`,
   `cuốn`, `quả`, `tấm`, etc.) with a forced-choice drill that scores
   correct classifier selection given a head-noun + count. *Today:*
-  no room targets this. *Artifact:* one new room JSON in
-  `public/data/` with ≥20 drill items and a scoring path.
+  `public/data/learn_vietnamese_classifiers.json` ships 20
+  forced-choice items covering `cái`, `con`, `chiếc`, `cuốn`, `quả`,
+  `tấm`, `bộ`, `bức`, `ngôi` — including the canonical `con dao`
+  knife exception. Each entry carries a `quiz` block with
+  `prompt_en` / `prompt_vi`, 4-choice options, and `correctIndex`
+  so the existing room engine plus any forced-choice drill UI can
+  score selections. *Artifact:* the room file on `main`.
 
 - [ ] **EN→VN detector rules.** At least 8 detector rules in a new
   rule pack (`src/lib/feedback/rule-packs/en-vn/` or equivalent)
