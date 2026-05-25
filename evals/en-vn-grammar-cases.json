@@ -298,6 +298,30 @@
       "expected_category": "expected_pass",
       "source": "en.ts:question_formation_inversion",
       "notes": "Same pattern, different pronoun."
+    },
+    {
+      "id": "en-vn-gram-025",
+      "family": "direct_translation_calque",
+      "expected_rule_id": "en_l1_calque_take_it_easy",
+      "expected_phenomenon": "en_l1_calque_take_it_easy",
+      "severity": "medium",
+      "input": "Lấy Nó Dễ Dàng.",
+      "expected_correction": "Bình tĩnh đi.",
+      "expected_category": "expected_pass",
+      "source": "en.ts:direct_translation_calque",
+      "notes": "Title-cased calque — case-insensitive matching regression (C3 flag #1193)."
+    },
+    {
+      "id": "en-vn-gram-026",
+      "family": "direct_translation_calque",
+      "expected_rule_id": "en_l1_calque_take_it_easy",
+      "expected_phenomenon": "en_l1_calque_take_it_easy",
+      "severity": "medium",
+      "input": "LẤY NÓ DỄ DÀNG.",
+      "expected_correction": "BÌNH TĨNH ĐI.",
+      "expected_category": "expected_pass",
+      "source": "en.ts:direct_translation_calque",
+      "notes": "All-caps calque — case-insensitive matching regression (C3 flag #1193)."
     }
   ]
 }

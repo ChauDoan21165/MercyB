@@ -237,7 +237,7 @@ export const ruleCalqueTakeItEasy: L1Rule = ({
   userText,
   rawExpected,
 }): RuleHit | null => {
-  if (userText.includes("lấy nó dễ dàng")) {
+  if (userText.toLowerCase().includes("lấy nó dễ dàng")) {
     return {
       tag: "en_l1_calque_take_it_easy",
       replacements: { FIX: rawExpected },
