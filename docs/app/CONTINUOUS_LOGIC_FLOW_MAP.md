@@ -110,6 +110,24 @@ Home
 │       ├── Supabase sync without approval
 │       └── Placement writeback
 │
+├── Safe Learning Events
+│   ├── Local-only summary event engine
+│   ├── Contract events:
+│   │   ├── lesson_started / lesson_resumed
+│   │   ├── lesson_completed / lesson_restarted
+│   │   ├── mode_selected
+│   │   ├── mistake_retried
+│   │   ├── logic_insight_viewed
+│   │   ├── next_focus_viewed
+│   │   ├── placement_cta_clicked
+│   │   ├── kids_picture_selected
+│   │   └── kids_speak_clicked
+│   └── Must never:
+│       ├── sync to Supabase or external analytics without approval
+│       ├── store raw learner text, corrected text, transcript, or audio
+│       ├── store PII, Supabase user IDs, JWTs, provider keys, or secrets
+│       └── write back to Placement
+│
 └── Study OS
     ├── Today’s Lesson Planner
     ├── Vietlish Logic Diagnosis Engine
@@ -128,6 +146,7 @@ Home
 | Logic mode | English/Vietlish reasoning | Type a sentence or choose a reasoning prompt | Speak, record, play TTS, or show fallback voice |
 | Voice | Read clean learner-facing text | Read corrected text, natural reply, or next question | Read raw learner input, labels, metadata, or hidden text |
 | Memory | Local aggregate summary | Store topic tags, counts, last practiced, next focus | Store raw audio, transcript, raw learner text, or sync to Supabase |
+| Safe learning events | Local aggregate study signals | Store allowlisted event type, product, target language, mode, topic tag, timestamp, local session key, count/value | Store raw/corrected text, transcripts, audio, PII, Supabase IDs/JWTs, provider secrets, external analytics, or Placement writeback |
 
 ## File Ownership Map
 
@@ -198,12 +217,20 @@ Ownership rule: memory is local and summary-only. It may hold safe topic tags, a
 ### Routes/CTA
 
 - `src/router/AppRouter.tsx`
+- `src/lib/placement/availability.ts`
 - `src/pages/Home.tsx`
 - `src/pages/MarketingLandingPage.tsx`
 - `src/components/languages/AITutorCtaBanner.tsx`
 - language pages that render `AITutorCtaBanner`
 
-Ownership rule: CTA labels must match destinations. Kids CTAs route to `/kids/vi-english`; AI Tutor CTAs route to `/ai-tutor` or `/ai-tutor?target=<language-code>`.
+Ownership rule: CTA labels must match destinations. Kids CTAs route to `/kids/vi-english`; AI Tutor CTAs route to `/ai-tutor` or `/ai-tutor?target=<language-code>`. Home and AI Tutor Placement CTAs must use the same shared placement availability source as the `/placement` route guard, and no user-facing CTA should point to unavailable `/placement`.
+
+### Safe Learning Events
+
+- `src/lib/tutor/learningEvents.ts`
+- `src/lib/tutor/tests/learningEvents.test.ts`
+
+Ownership rule: learning events are local-only summary signals. #1109 added the engine contract but did not wire events into AI Tutor or Mercy Kids flows. Future wiring must keep the allowlisted payload shape and must not add raw learner text, corrected sentence text, transcripts, raw audio, PII, Supabase user IDs, JWTs, provider keys/secrets, external analytics providers, Supabase sync, or Placement writeback.
 
 ### Docs/Guardrails
 

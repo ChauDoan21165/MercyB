@@ -106,32 +106,53 @@ Home
 
 Adult AI Tutor should guide the learner through a focused study loop. It can include modes, memory, logic diagnosis, and progress, but the default path should be Today's Lesson first.
 
-## Safe Analytics Event Plan
+## Safe Learning Events Contract
 
-Analytics should measure safe aggregate behavior only. Events must not contain raw audio, full transcripts, raw learner text, provider secrets, or private auth payloads.
+Safe learning events measure safe aggregate behavior only. Events must not contain raw audio, full transcripts, raw learner text, corrected sentence text, provider secrets, private auth payloads, user PII, Supabase user IDs, JWTs, or Placement writeback data.
 
-Allowed event examples:
+Contract event names from `src/lib/tutor/learningEvents.ts`:
 
 - `lesson_started`
+- `lesson_resumed`
 - `lesson_completed`
+- `lesson_restarted`
 - `mode_selected`
 - `mistake_retried`
-- `logic_explanation_viewed`
-- `next_lesson_clicked`
+- `logic_insight_viewed`
+- `next_focus_viewed`
+- `placement_cta_clicked`
 - `kids_picture_selected`
 - `kids_speak_clicked`
 
-Recommended event properties should be coarse and safe:
+Older names such as `logic_explanation_viewed` and `next_lesson_clicked` are not contract event names. Use `logic_insight_viewed` and `next_focus_viewed`.
 
-- product area: `kids`, `ai_tutor`
+Allowed event properties are allowlisted and coarse:
+
+- event type
+- product: `ai_tutor` or `mercy_kids`
 - mode: `journey`, `grammar`, `speak`, `logic`
 - target language code
-- lesson id or topic id
-- weak topic id or category
-- experiment variant
-- completion state
+- safe topic tag
+- timestamp
+- local anonymous session key
+- count or value when relevant
 
-Do not include the learner's sentence, transcript, audio, email, token, or provider payload.
+#1109 is engine-only. It adds local-only event recording, filtering, summary, clearing, and pruning helpers. It does not wire events into AI Tutor, Mercy Kids, Placement, or any external analytics provider.
+
+Storage contract:
+
+- local-only for now
+- allowlisted fields only
+- no external analytics provider
+- no Supabase sync
+- no raw learner text
+- no corrected sentence text
+- no transcript
+- no raw audio
+- no PII
+- no Supabase user ID or JWT
+- no provider keys or secrets
+- no Placement writeback
 
 ## Metrics To Measure
 
@@ -149,10 +170,12 @@ Do not include the learner's sentence, transcript, audio, email, token, or provi
 - No raw audio storage.
 - No full transcript storage.
 - No raw learner text in analytics.
+- No corrected sentence text in analytics.
+- No user PII, Supabase user IDs, JWTs, provider keys, or provider secrets in analytics.
 - No client-side provider secrets.
 - No Supabase memory sync unless separately approved.
 - No Placement writeback.
-- Analytics should use safe aggregate events only.
+- Analytics should use local-only safe aggregate events only unless a later PR explicitly approves an external provider.
 
 ## Experiment Examples
 

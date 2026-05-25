@@ -82,6 +82,8 @@ Use this ownership table as the baseline:
 | Voice | `useTtsSpeaker.ts`, `voiceEngine.ts`, `mercyVoice.ts`, `supabase/functions/mercy-tts/*` | clean learner-facing speech | provider secrets client-side, raw input speech, Logic mode voice |
 | Memory | `learningMemory.ts`, `TutorMemoryCard.tsx` | aggregate summary fields | raw learner text, full transcript, raw audio, Supabase sync |
 | Tutor engines | `todayLessonPlanner.ts`, `vietlishLogicEngine.ts`, `tutorEngine.ts` | structured lesson/correction/logic outputs | storage side effects, provider/env changes, Placement writeback |
+| Safe learning events | `learningEvents.ts` | local-only allowlisted summary events | raw/corrected learner text, transcripts, audio, PII, Supabase IDs/JWTs, provider secrets, external analytics sync, Placement writeback |
+| Placement entry points | `availability.ts`, `Home.tsx`, `AiTutor.tsx`, `AppRouter.tsx` | shared availability gate before `/placement` CTAs/routes | user-facing CTA to unavailable `/placement`, duplicated availability logic, Placement writeback |
 
 ## 4. Scan For Forbidden UI
 
@@ -110,12 +112,27 @@ leaf
 tree
 support
 explain
+lesson_started
+lesson_resumed
+lesson_completed
+lesson_restarted
+mode_selected
+mistake_retried
+logic_insight_viewed
+next_focus_viewed
+placement_cta_clicked
+kids_picture_selected
+kids_speak_clicked
+logic_explanation_viewed
+next_lesson_clicked
 ```
+
+`logic_explanation_viewed` and `next_lesson_clicked` are stale non-contract event names. Search for them to find docs or code that still needs alignment; do not treat them as approved event names.
 
 Suggested command:
 
 ```bash
-rg -n "Mercy Kids|AI Tutor|Journey|Grammar|Speak|Logic|Mercy đọc|Device voice|Mercy voice|mic|microphone|textarea|memory|Mở AI Tutor|Vào Mercy Kids|/ai-tutor|/kids/vi-english|level|leaf|tree|support|explain" src docs/app -S
+rg -n "Mercy Kids|AI Tutor|Journey|Grammar|Speak|Logic|Mercy đọc|Device voice|Mercy voice|mic|microphone|textarea|memory|Mở AI Tutor|Vào Mercy Kids|/ai-tutor|/kids/vi-english|level|leaf|tree|support|explain|lesson_started|lesson_resumed|lesson_completed|lesson_restarted|mode_selected|mistake_retried|logic_insight_viewed|next_focus_viewed|placement_cta_clicked|kids_picture_selected|kids_speak_clicked|logic_explanation_viewed|next_lesson_clicked" src docs/app -S
 ```
 
 Interpretation rule: a term is not automatically a bug. Flag it only when it appears in the wrong owner, route, mode, or user flow.
@@ -129,8 +146,10 @@ Flag as FAIL if:
 - Logic mode shows mic/speaker/TTS.
 - Floating helper acts as product selector.
 - CTA label and route do not match.
+- Home, AI Tutor, or route guards use different Placement availability sources.
 - Memory shows raw learner text.
 - Voice reads raw learner text.
+- Learning events store raw/corrected learner text, transcript, raw audio, PII, Supabase user IDs/JWTs, provider secrets, external analytics payloads, or Placement writeback data.
 - Unused/legacy component still appears reachable.
 - Component has no clear route/product owner.
 
