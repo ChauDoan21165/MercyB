@@ -24,7 +24,7 @@ const VALID_CATEGORIES = new Set<VNL1Category>([
   "pragmatics",
 ]);
 
-const VALID_SEVERITIES = new Set(["low", "med", "high"]);
+const VALID_SEVERITIES = new Set(["low", "medium", "high"]);
 
 describe("VN L1 Interference taxonomy", () => {
   test("all entries have required fields", () => {
@@ -39,7 +39,7 @@ describe("VN L1 Interference taxonomy", () => {
       expect(pattern.cefrLevelsObserved.length, pattern.id).toBeGreaterThan(0);
       expect(VALID_SEVERITIES.has(pattern.severity), pattern.id).toBe(true);
       expect(pattern.remediation.trim().length, pattern.id).toBeGreaterThan(0);
-      expect(pattern.lessonTags.length, pattern.id).toBeGreaterThan(0);
+      expect(pattern.ruleTags.length, pattern.id).toBeGreaterThan(0);
     }
   });
 
@@ -48,9 +48,9 @@ describe("VN L1 Interference taxonomy", () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
-  test("all IDs are kebab-case", () => {
+  test("all IDs are snake_case", () => {
     for (const pattern of VN_L1_INTERFERENCE_PATTERNS) {
-      expect(pattern.id, pattern.id).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+      expect(pattern.id, pattern.id).toMatch(/^[a-z0-9]+(?:_[a-z0-9]+)*$/);
     }
   });
 
