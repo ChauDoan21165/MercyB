@@ -12,9 +12,9 @@
  *                                           a `needsReview: true` flag per dispatch
  *                                           override of the spec WritingPattern shape)
  *   docs/l1-taxonomies/vn-phoneme-gaps.md (C3 — 6 audit-grade phoneme gap categories;
- *                                           proposed entries live in
- *                                           src/lib/pronunciation/vn-phoneme-map.extension.proposed.ts
- *                                           and are NOT imported by the runtime profile)
+ *                                           high-value variants wired into
+ *                                           src/lib/pronunciation/vn-phoneme-map.ts via
+ *                                           PR-1/2/3 of the variants-axis series)
  *
  * Hard rules (from the dispatch):
  *   - DO NOT re-author taxonomy content. Mechanical ingest only.
@@ -970,9 +970,9 @@ const writingPatterns: WritingPattern[] = [
 
 // ──────────────────────────────────────────────────────────────────────────
 // Phoneme gap categories — C3 vn-phoneme-gaps.md audit (6 categories).
-// Proposed entries live in vn-phoneme-map.extension.proposed.ts; NOT
-// imported into the runtime profile yet. This block records the audit
-// categories with snake_case IDs.
+// High-value variants from Gaps 1, 2, 3 are wired into
+// src/lib/pronunciation/vn-phoneme-map.ts (PR-1/2/3 of the variants axis).
+// This block records the audit categories with snake_case IDs.
 // ──────────────────────────────────────────────────────────────────────────
 
 const phonemeGapCategories: PhonemeGapCategory[] = [
