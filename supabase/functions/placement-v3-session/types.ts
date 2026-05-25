@@ -227,6 +227,44 @@ export interface PersistSessionInput {
   id?: string;
 }
 
+/**
+ * One append to `profiles.placement_history` from a v3 completion.
+ * Shape mirrors v2's `PlacementHistoryEntry` in
+ * `supabase/functions/placement-session/types.ts` so the jsonb column
+ * can hold v2 + v3 entries side by side. `source: 'v3'` discriminates;
+ * IRT-only fields (`theta`, `se`, numeric `perSkill`) are null/empty
+ * because v3 doesn't use IRT scoring.
+ */
+export interface PlacementHistoryEntryV3 {
+  ts: string;
+  bankVersion: string;
+  theta: null;
+  se: null;
+  cefr: CEFRLevel;
+  perSkill: Record<string, never>;
+  l1Top: string[];
+  sessionId: string;
+  source: "v3";
+}
+
+/**
+ * Snapshot payload passed to `writeProfileSnapshot`. Built from a
+ * completed `PlacementV3Profile` by the orchestrator; persisted to the
+ * shared `profiles` table by the edge function. Mirrors v2's
+ * `LegacySnapshot` shape so consumers (`FocusAreasCard`, `AccountPage`)
+ * read the same columns regardless of which placement version produced
+ * them.
+ */
+export interface PlacementProfileSnapshotV3 {
+  userId: string;
+  sessionId: string;
+  cefr: CEFRLevel;
+  startingRoom: string;
+  completedAt: string;
+  weaknessTags: string[];
+  historyEntry: PlacementHistoryEntryV3;
+}
+
 export interface OrchestratorDeps {
   now: () => string;
   newId: () => string;
@@ -252,6 +290,15 @@ export interface OrchestratorDeps {
   ) => Promise<PlacementV3Response>;
   markProfilesNotCurrent: (userId: string) => Promise<void>;
   upsertProfile: (profile: PlacementV3Profile) => Promise<PlacementV3Profile>;
+  /**
+   * Write the placement completion snapshot to the shared `profiles` table —
+   * mirrors v2's `placement-session/index.ts:361-368` pattern. Compliant
+   * under the directional carve-out of the "no Placement writeback"
+   * invariant: the placement engine writing its own results is permitted;
+   * writebacks FROM other surfaces (Study OS / memory / AI Tutor) are not.
+   * See STRATEGY.md §12 "Placement Writeback Boundary" + docs/app/APP_LOGIC_FLOW.md.
+   */
+  writeProfileSnapshot: (snapshot: PlacementProfileSnapshotV3) => Promise<void>;
   grade: (input: GraderInput) => Promise<GraderResult>;
   recommendLessons: (profile: PlacementV3Profile) => Promise<Recommendation[]>;
   log?: (event: string, meta?: Record<string, unknown>) => void;
