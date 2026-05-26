@@ -998,3 +998,90 @@ describe("context: tone-drill (Stage-3 local-only posture)", () => {
     expect(logAttempt).toHaveBeenCalledTimes(1);
   });
 });
+
+describe("Pronunciation-Assessment header — UTF-8 round-trip", () => {
+  // Regression: previously `btoa(JSON.stringify(config))` treated each
+  // character of the JSON as a single Latin-1 byte. For non-ASCII
+  // ReferenceText (Vietnamese tone diacritics, French é, German ü…)
+  // the header bytes were invalid UTF-8, and Azure's JSON parser
+  // substituted U+FFFD — collapsing distinct ReferenceTexts (e.g.
+  // má/mã) into the same garbled reference and breaking tone-target
+  // discrimination. Fixed by encoding the JSON to UTF-8 bytes first,
+  // then base64. ASCII inputs are byte-identical to the old behaviour.
+
+  async function captureAzureRequestHeader(targetText: string): Promise<string> {
+    let capturedHeader: string | undefined;
+    const deps = makeDeps({
+      fetch: vi.fn().mockImplementation((_url: string, init: RequestInit) => {
+        const headers = init.headers as Record<string, string> | undefined;
+        capturedHeader = headers?.["Pronunciation-Assessment"];
+        return Promise.resolve(azureSuccessResponse());
+      }) as unknown as Deps["fetch"],
+    });
+
+    const formData = new FormData();
+    const blob = new Blob([buildSilentWav(1)], { type: "audio/wav" });
+    formData.append("audio", blob, "test.wav");
+    formData.append("target_text", targetText);
+    formData.append("target_locale", "vi-VN");
+    formData.append("context", "tone-drill");
+    const req = new Request("https://test.example.com/azure-phoneme", {
+      method: "POST",
+      body: formData,
+      headers: { Authorization: "Bearer test-jwt" },
+    });
+
+    const res = await handleRequest(req, deps);
+    expect(res.status).toBe(200);
+    expect(capturedHeader).toBeDefined();
+    return capturedHeader as string;
+  }
+
+  function decodeAndAssertUtf8(headerB64: string): { ReferenceText: string } {
+    // 1. Base64-decode the header into bytes.
+    const binary = atob(headerB64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    // 2. Strict UTF-8 decode — must not throw. The previous Latin-1
+    //    encoding produced invalid UTF-8 for non-ASCII characters and
+    //    this `fatal: true` decoder rejected it.
+    const json = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+    return JSON.parse(json) as { ReferenceText: string };
+  }
+
+  it("má (sắc) survives round-trip as valid UTF-8 with diacritic intact", async () => {
+    const header = await captureAzureRequestHeader("má");
+    const parsed = decodeAndAssertUtf8(header);
+    expect(parsed.ReferenceText).toBe("má");
+  });
+
+  it("mã (ngã) survives round-trip as valid UTF-8 with diacritic intact", async () => {
+    const header = await captureAzureRequestHeader("mã");
+    const parsed = decodeAndAssertUtf8(header);
+    expect(parsed.ReferenceText).toBe("mã");
+  });
+
+  it("the two headers differ — má and mã serialise to distinct bytes", async () => {
+    const ma = await captureAzureRequestHeader("má");
+    const mãHeader = await captureAzureRequestHeader("mã");
+    expect(ma).not.toBe(mãHeader);
+  });
+
+  it("ASCII ReferenceText is byte-identical to the pre-fix behaviour", async () => {
+    // English path regression guard. Existing pronunciation drills
+    // ship ASCII targets — this fix must not move them.
+    const header = await captureAzureRequestHeader("think");
+    const parsed = decodeAndAssertUtf8(header);
+    expect(parsed.ReferenceText).toBe("think");
+    // What the OLD code would have emitted for an ASCII input:
+    const oldEquivalent = btoa(
+      JSON.stringify({
+        ReferenceText: "think",
+        GradingSystem: "HundredMark",
+        Granularity: "Phoneme",
+        EnableMiscue: true,
+      }),
+    );
+    expect(header).toBe(oldEquivalent);
+  });
+});

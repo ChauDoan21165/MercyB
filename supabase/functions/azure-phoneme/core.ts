@@ -556,18 +556,43 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         EnableMiscue: true,
       };
       // Azure's Pronunciation-Assessment header is STANDARD base64
-      // per Microsoft's official REST API docs:
+      // OVER THE UTF-8 BYTES OF THE JSON, per Microsoft's official
+      // REST API docs:
       //   https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-pronunciation-assessment?pivots=programming-language-rest
-      // The official curl example is `echo -n '{...}' | base64 | tr -d '\n'`
-      // which produces base64 with `+`, `/`, and `=` padding intact.
+      // The official curl example is `echo -n '{...}' | base64 | tr -d '\n'`,
+      // where `echo -n` writes UTF-8 bytes in a UTF-8 shell — the
+      // base64 is therefore over the UTF-8 byte sequence.
       //
-      // History: this code previously stripped padding and converted
-      // to base64url ("-"/"_"/no-pad). Azure responded with HTTP 400
-      // "Bad request" (gateway-level rejection — body was the literal
-      // string `"Bad request"` with no JSON detail). Reverted to
-      // plain btoa() to match the documented contract. See PR #259.
+      // Two independent axes to get right:
+      //
+      //   1. Standard base64, NOT base64url. PR #259 fixed this — the
+      //      code previously emitted base64url (`-`/`_`/no-pad) and
+      //      Azure returned HTTP 400 "Bad request" with no JSON detail.
+      //      Keep `+`/`/`/`=` padding.
+      //
+      //   2. UTF-8 byte encoding, NOT Latin-1. `btoa(str)` in Deno /
+      //      browsers does NOT do UTF-8 — it treats each char as a
+      //      single byte (Latin-1 / ISO-8859-1 interpretation). For
+      //      U+0080..U+00FF that single byte differs from the
+      //      character's UTF-8 encoding. A ReferenceText of "má"
+      //      (U+00E1) would arrive at Azure as the byte `0xE1` — an
+      //      invalid UTF-8 sequence — and Azure's JSON parser would
+      //      substitute U+FFFD, collapsing distinct tones (`má`/`mã`)
+      //      into the same garbled reference. Symptom: scoring works
+      //      for English but tone-targets become indistinguishable
+      //      for Vietnamese / French / German / any pair with
+      //      non-ASCII diacritics. Discovered during §15 Axis 2
+      //      Bar #2 empirical verification when scores depended only
+      //      on the audio file and not on the target syllable.
+      //
+      // Fix: TextEncoder produces UTF-8 bytes; `String.fromCharCode`
+      // over a Uint8Array yields a Latin-1 "binary string" whose
+      // bytes match the UTF-8 sequence, and `btoa` then produces
+      // standard base64 over those bytes. ASCII-only input is
+      // byte-identical to the old behaviour.
       const configJson = JSON.stringify(config);
-      const headerValue = btoa(configJson);
+      const utf8Bytes = new TextEncoder().encode(configJson);
+      const headerValue = btoa(String.fromCharCode(...utf8Bytes));
       // Effective locale: explicit `target_locale` wins over the
       // accent-derived English locale. Falls back to accent if the
       // older deps shape (no azureUrlForLocale) is in use.
