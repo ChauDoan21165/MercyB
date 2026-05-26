@@ -1,0 +1,190 @@
+{
+  "id": "learn_vietnamese_classifiers_advanced",
+  "tier": "free",
+  "domain": "Language Learning",
+  "title": {
+    "en": "Vietnamese Classifiers — More Practice",
+    "vi": "Loại Từ Tiếng Việt — Luyện Thêm"
+  },
+  "content": {
+    "en": "Continue practicing Vietnamese classifiers with five additional forced-choice items covering flat objects, bound objects, animals, round objects, and clothing. This continuation keeps the classifier content from the original room while staying within strict room validation limits.",
+    "vi": "Luyện tiếp loại từ tiếng Việt với 5 câu hỏi bổ sung về vật phẳng, vật đóng bìa, con vật, vật tròn và quần áo. Phòng nối tiếp này giữ nội dung của phòng gốc nhưng đáp ứng giới hạn kiểm tra dữ liệu nghiêm ngặt."
+  },
+  "entries": [
+    {
+      "audio": null,
+      "slug": "tam-ban-do",
+      "keywords_en": [
+        "map",
+        "flat",
+        "tam",
+        "classifier"
+      ],
+      "keywords_vi": [
+        "bản đồ",
+        "phẳng",
+        "loại từ"
+      ],
+      "copy": {
+        "en": "Maps are flat — take 'tấm'. 'One map' is 'một tấm bản đồ'. Same pattern as 'tấm ảnh' (photo) and 'tấm thẻ' (card).",
+        "vi": "Bản đồ là vật phẳng, dùng 'tấm'. Một tấm bản đồ."
+      },
+      "tags": [
+        "tam",
+        "map",
+        "classifier"
+      ],
+      "quiz": {
+        "prompt_en": "Which classifier goes with 'bản đồ' (map)?",
+        "prompt_vi": "Loại từ nào đi với 'bản đồ'?",
+        "choices": [
+          "tấm",
+          "cuốn",
+          "bộ",
+          "ngôi"
+        ],
+        "correctIndex": 0
+      }
+    },
+    {
+      "audio": null,
+      "slug": "cuon-tu-dien",
+      "keywords_en": [
+        "dictionary",
+        "cuon",
+        "bound",
+        "classifier"
+      ],
+      "keywords_vi": [
+        "từ điển",
+        "đóng bìa",
+        "loại từ"
+      ],
+      "copy": {
+        "en": "Dictionary is a bound book — takes 'cuốn'. 'One dictionary' is 'một cuốn từ điển'.",
+        "vi": "Từ điển cũng là sách, dùng 'cuốn'. Một cuốn từ điển."
+      },
+      "tags": [
+        "cuon",
+        "book",
+        "classifier"
+      ],
+      "quiz": {
+        "prompt_en": "Which classifier goes with 'từ điển' (dictionary)?",
+        "prompt_vi": "Loại từ nào đi với 'từ điển'?",
+        "choices": [
+          "cuốn",
+          "tấm",
+          "cái",
+          "bộ"
+        ],
+        "correctIndex": 0
+      }
+    },
+    {
+      "audio": null,
+      "slug": "con-meo",
+      "keywords_en": [
+        "cat",
+        "animal",
+        "con",
+        "classifier"
+      ],
+      "keywords_vi": [
+        "mèo",
+        "con vật",
+        "loại từ"
+      ],
+      "copy": {
+        "en": "Cat is an animal — takes 'con'. 'One cat' is 'một con mèo'. The classifier is the same for all common pets.",
+        "vi": "Mèo là con vật, dùng 'con'. Một con mèo, một con chó."
+      },
+      "tags": [
+        "con",
+        "animal",
+        "classifier"
+      ],
+      "quiz": {
+        "prompt_en": "Which classifier goes with 'mèo' (cat)?",
+        "prompt_vi": "Loại từ nào đi với 'mèo'?",
+        "choices": [
+          "con",
+          "cái",
+          "ngôi",
+          "bức"
+        ],
+        "correctIndex": 0
+      }
+    },
+    {
+      "audio": null,
+      "slug": "qua-bong",
+      "keywords_en": [
+        "ball",
+        "round",
+        "qua",
+        "classifier"
+      ],
+      "keywords_vi": [
+        "bóng",
+        "hình tròn",
+        "loại từ"
+      ],
+      "copy": {
+        "en": "Balls and other round non-fruit objects can take 'quả' (or 'trái') based on the round shape. 'One ball' is 'một quả bóng'.",
+        "vi": "Bóng và vật tròn dùng 'quả' theo hình dạng. Một quả bóng, một quả đất."
+      },
+      "tags": [
+        "qua",
+        "round",
+        "classifier"
+      ],
+      "quiz": {
+        "prompt_en": "Which classifier goes with 'bóng' (ball)?",
+        "prompt_vi": "Loại từ nào đi với 'bóng'?",
+        "choices": [
+          "quả",
+          "cái",
+          "con",
+          "tấm"
+        ],
+        "correctIndex": 0
+      }
+    },
+    {
+      "audio": null,
+      "slug": "chiec-ao",
+      "keywords_en": [
+        "shirt",
+        "clothing",
+        "chiec",
+        "classifier"
+      ],
+      "keywords_vi": [
+        "áo",
+        "trang phục",
+        "loại từ"
+      ],
+      "copy": {
+        "en": "Individual clothing items take 'chiếc' — 'one shirt' is 'một chiếc áo'. (A matched set takes 'bộ' instead — 'một bộ quần áo' = one outfit.)",
+        "vi": "Một món quần áo riêng lẻ dùng 'chiếc'. Một chiếc áo, một chiếc quần. (Cả bộ thì dùng 'bộ': một bộ quần áo.)"
+      },
+      "tags": [
+        "chiec",
+        "clothing",
+        "classifier"
+      ],
+      "quiz": {
+        "prompt_en": "Which classifier goes with 'áo' (a single shirt)?",
+        "prompt_vi": "Loại từ nào đi với 'áo' (một chiếc đơn lẻ)?",
+        "choices": [
+          "chiếc",
+          "bộ",
+          "cuốn",
+          "con"
+        ],
+        "correctIndex": 0
+      }
+    }
+  ]
+}
