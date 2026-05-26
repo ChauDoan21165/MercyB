@@ -25,6 +25,7 @@ import {
   type L1DetectionResult,
 } from './l1-error-detector.js';
 import { VN_RULE_PACK } from './rule-packs/vi/index.js';
+import { EN_VN_RULE_PACK } from './rule-packs/en-vn/index.js';
 
 /**
  * Convenience adapter — runs detection against the Vietnamese pack.
@@ -32,6 +33,23 @@ import { VN_RULE_PACK } from './rule-packs/vi/index.js';
  */
 export function detectL1Error(input: L1DetectionInput): L1DetectionResult {
   return detectErrors(input, VN_RULE_PACK);
+}
+
+/**
+ * Axis-2 convenience adapter — runs detection against the EN→VN pack
+ * (English speakers learning Vietnamese). The 8-rule pack ships in
+ * src/lib/feedback/rule-packs/en-vn/ (per PR #1188); this barrel
+ * function is the public entry point that consumer call sites
+ * (AI Tutor target=vi branch today; placement / writing-feedback in
+ * future) invoke without coupling to the pack directly.
+ *
+ * Token shape: the engine's `tokenize()` is whitespace-based + strips
+ * common Western punctuation. Vietnamese orthography is whitespace-
+ * separated at the syllable level, so the same tokenizer works for
+ * Vietnamese input directly — no separate VN tokenizer needed today.
+ */
+export function detectEnVnError(input: L1DetectionInput): L1DetectionResult {
+  return detectErrors(input, EN_VN_RULE_PACK);
 }
 
 // Re-exports — keep the existing import surface working for callers
@@ -49,6 +67,7 @@ export {
 } from './l1-error-detector.js';
 
 export { VN_RULE_PACK } from './rule-packs/vi/index.js';
+export { EN_VN_RULE_PACK } from './rule-packs/en-vn/index.js';
 export {
   RULE_PACKS,
   DEFAULT_RULE_PACK,
