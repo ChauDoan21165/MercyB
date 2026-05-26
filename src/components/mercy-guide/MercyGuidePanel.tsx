@@ -95,14 +95,11 @@ function FloatingHelperLauncher({
       <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center overflow-y-auto p-4">
         <section className="mx-auto w-full max-w-[520px] rounded-3xl border border-white/85 bg-white/92 p-5 shadow-[0_18px_44px_rgba(148,163,184,0.14)]">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-amber-600">
-            Teacher Mercy
+            Mercy Kids
           </p>
           <h3 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
-            Pick a learning space
+            Vào không gian học của bé
           </h3>
-          <p className="mt-3 text-sm font-semibold leading-6 text-slate-600">
-            Mercy Kids and AI Tutor are separate. Open the one you need.
-          </p>
 
           <div className="mt-5 grid gap-3">
             <a
@@ -110,12 +107,6 @@ function FloatingHelperLauncher({
               className="inline-flex min-h-[48px] items-center justify-center rounded-2xl bg-emerald-600 px-5 py-3 text-sm font-black text-white transition hover:bg-emerald-700"
             >
               Vào Mercy Kids
-            </a>
-            <a
-              href="/ai-tutor"
-              className="inline-flex min-h-[48px] items-center justify-center rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-black text-slate-900 transition hover:border-slate-300 hover:bg-slate-50"
-            >
-              Mở AI Tutor
             </a>
           </div>
         </section>
