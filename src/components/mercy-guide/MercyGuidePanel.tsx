@@ -22,6 +22,7 @@ function FloatingHelperLauncher({
   onToggleFullscreen,
   onAvatarError,
   onPanelDragStart,
+  teacherMode,
 }: {
   title: string;
   onClose: () => void;
@@ -29,7 +30,15 @@ function FloatingHelperLauncher({
   onToggleFullscreen?: () => void;
   onAvatarError?: (event: React.SyntheticEvent<HTMLImageElement>) => void;
   onPanelDragStart?: (event: React.PointerEvent<HTMLDivElement>) => void;
+  /**
+   * Teacher mode plumbed through from MercyGuide.tsx (line 1313).
+   * When 'kids', the launcher modal hides the "Mở AI Tutor" exit so a
+   * kids-safe surface never offers the adult AI Tutor as a re-route.
+   * Default / undefined → show both exits as before.
+   */
+  teacherMode?: string;
 }) {
+  const isKidsMode = teacherMode === 'kids';
   return (
     <div className="relative flex h-full min-h-0 flex-col overflow-hidden border-l border-white/70 bg-gradient-to-br from-[#FFF8F1] via-[#FFFCFA] to-[#F7F5FF] shadow-2xl">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,_rgba(255,159,122,0.14),_rgba(192,132,252,0.07)_42%,_transparent_74%)]" />
@@ -95,28 +104,37 @@ function FloatingHelperLauncher({
       <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center overflow-y-auto p-4">
         <section className="mx-auto w-full max-w-[520px] rounded-3xl border border-white/85 bg-white/92 p-5 shadow-[0_18px_44px_rgba(148,163,184,0.14)]">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-amber-600">
-            Teacher Mercy
+            {isKidsMode ? 'Mercy Kids' : 'Teacher Mercy'}
           </p>
           <h3 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
-            Pick a learning space
+            {isKidsMode ? 'Bạn đang ở Mercy Kids' : 'Pick a learning space'}
           </h3>
-          <p className="mt-3 text-sm font-semibold leading-6 text-slate-600">
-            Mercy Kids and AI Tutor are separate. Open the one you need.
-          </p>
+          {!isKidsMode && (
+            <p className="mt-3 text-sm font-semibold leading-6 text-slate-600">
+              Mercy Kids and AI Tutor are separate. Open the one you need.
+            </p>
+          )}
 
           <div className="mt-5 grid gap-3">
             <a
               href="/kids/vi-english"
               className="inline-flex min-h-[48px] items-center justify-center rounded-2xl bg-emerald-600 px-5 py-3 text-sm font-black text-white transition hover:bg-emerald-700"
             >
-              Vào Mercy Kids
+              {isKidsMode ? 'Tiếp tục với Mercy Kids' : 'Vào Mercy Kids'}
             </a>
-            <a
-              href="/ai-tutor"
-              className="inline-flex min-h-[48px] items-center justify-center rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-black text-slate-900 transition hover:border-slate-300 hover:bg-slate-50"
-            >
-              Mở AI Tutor
-            </a>
+            {/*
+             * AI Tutor exit hidden in kids mode. A kids-safe surface
+             * never offers the adult AI Tutor as a re-route; the user is
+             * inside Mercy Kids and the single button keeps them there.
+             */}
+            {!isKidsMode && (
+              <a
+                href="/ai-tutor"
+                className="inline-flex min-h-[48px] items-center justify-center rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-black text-slate-900 transition hover:border-slate-300 hover:bg-slate-50"
+              >
+                Mở AI Tutor
+              </a>
+            )}
           </div>
         </section>
       </div>
@@ -137,6 +155,13 @@ type MercyGuidePanelProps = {
   journeyTitle?: string;
   bubbleLabel?: string | null;
   panelTitle?: string | null;
+  /**
+   * Already passed from MercyGuide.tsx (line 1313) but until now was
+   * dropped on the floor by this panel's destructure. Read here so the
+   * launcher modal can hide the "Mở AI Tutor" adult-surface exit when
+   * the user is on a kids-safe route.
+   */
+  teacherMode?: string;
 } & Record<string, unknown>;
 
 function fallbackAvatar(event: React.SyntheticEvent<HTMLImageElement>): void {
@@ -175,6 +200,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
   journeyTitle,
   bubbleLabel,
   panelTitle,
+  teacherMode,
 }) => {
   const handleClose = useCallback(() => {
     if (onCloseGuide) {
@@ -203,6 +229,7 @@ export const MercyGuidePanel: React.FC<MercyGuidePanelProps> = ({
       onToggleFullscreen={onToggleFullscreen}
       onAvatarError={onAvatarError}
       onPanelDragStart={onPanelDragStart}
+      teacherMode={teacherMode}
     />
   );
 
