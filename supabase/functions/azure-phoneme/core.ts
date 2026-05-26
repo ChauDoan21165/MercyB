@@ -64,6 +64,40 @@ export function normaliseAccentInput(raw: unknown): Accent {
     : DEFAULT_ACCENT;
 }
 
+// Target-locale override — bypasses the accent → Azure-locale lookup so
+// non-English directions can reuse this endpoint without growing the
+// Accent union. Whitelisted explicitly to keep the surface tight; add
+// new locales only when paired with shipped curriculum + scoring tests.
+//
+// Added 2026-05-25 for §15 Axis 2 Bar #2 (Vietnamese tone production
+// coaching). See docs/axis-2/tone-production-design.md §5.
+export const SUPPORTED_TARGET_LOCALES = ["vi-VN"] as const;
+export type SupportedTargetLocale = (typeof SUPPORTED_TARGET_LOCALES)[number];
+
+export function normaliseTargetLocale(raw: unknown): SupportedTargetLocale | null {
+  if (typeof raw !== "string") return null;
+  const v = raw.trim();
+  return (SUPPORTED_TARGET_LOCALES as readonly string[]).includes(v)
+    ? (v as SupportedTargetLocale)
+    : null;
+}
+
+// Caller context — used to opt out of the `speech_attempts` writeback
+// without disabling rate-limit / audit / cost telemetry. The tone-drill
+// surface stays local-only per Stage-3 posture (no transcript or score
+// persisted), but still legitimately consumes Azure budget and must
+// participate in cost tracking.
+//
+// Added 2026-05-25 for §15 Axis 2 Bar #2. See
+// docs/axis-2/tone-production-design.md §1.
+export const NO_LOG_CONTEXTS = ["tone-drill"] as const;
+export type NoLogContext = (typeof NO_LOG_CONTEXTS)[number];
+
+export function isNoLogContext(raw: unknown): raw is NoLogContext {
+  if (typeof raw !== "string") return false;
+  return (NO_LOG_CONTEXTS as readonly string[]).includes(raw.trim());
+}
+
 // ── Types ─────────────────────────────────────────────────────────────────
 
 export type AuditStatus =
@@ -243,6 +277,19 @@ export interface Deps {
    * the header is belt-and-braces.
    */
   azureUrlForAccent: (accent: Accent) => string;
+  /**
+   * Build the Azure REST URL for an arbitrary BCP-47 locale. Used when a
+   * caller passes `target_locale` (non-English directions, e.g. `vi-VN`
+   * for the §15 Axis 2 tone drill). The accent → locale lookup is
+   * unused on this path.
+   *
+   * Optional only for backward compatibility with older test fakes that
+   * predate the §15 Axis 2 Bar #2 work; production wires both. When
+   * a caller passes `target_locale` to the handler and this dep is
+   * absent, the handler falls back to `azureUrlForAccent` with the
+   * default accent — a graceful degradation, not the intended path.
+   */
+  azureUrlForLocale?: (locale: string) => string;
   /** Hard ceiling in USD/day for Azure spend across all users. */
   globalDailyCapUsd: number;
   /** USD → VND conversion factor for the budget RPC. */
@@ -328,6 +375,16 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
     // missing / unknown value — matches the migration default and keeps
     // legacy callers (no accent field) working.
     const accent = normaliseAccentInput(formData.get("accent"));
+    // Optional non-English direction. When set, overrides accent →
+    // locale lookup for both the Azure REST URL and Accept-Language.
+    // Whitelisted in `normaliseTargetLocale`; unknown values resolve
+    // to null and the English accent path runs.
+    const targetLocale = normaliseTargetLocale(formData.get("target_locale"));
+    // Optional caller context. The only honoured value today is
+    // `tone-drill`, which opts out of the `speech_attempts` writeback
+    // while keeping cost / audit telemetry intact (Stage-3 local-only
+    // posture — see docs/axis-2/tone-production-design.md §1).
+    const skipAttemptLog = isNoLogContext(formData.get("context"));
 
     if (!(audio instanceof File) && !(audio instanceof Blob)) {
       await deps.audit({
@@ -499,19 +556,51 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         EnableMiscue: true,
       };
       // Azure's Pronunciation-Assessment header is STANDARD base64
-      // per Microsoft's official REST API docs:
+      // OVER THE UTF-8 BYTES OF THE JSON, per Microsoft's official
+      // REST API docs:
       //   https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-pronunciation-assessment?pivots=programming-language-rest
-      // The official curl example is `echo -n '{...}' | base64 | tr -d '\n'`
-      // which produces base64 with `+`, `/`, and `=` padding intact.
+      // The official curl example is `echo -n '{...}' | base64 | tr -d '\n'`,
+      // where `echo -n` writes UTF-8 bytes in a UTF-8 shell — the
+      // base64 is therefore over the UTF-8 byte sequence.
       //
-      // History: this code previously stripped padding and converted
-      // to base64url ("-"/"_"/no-pad). Azure responded with HTTP 400
-      // "Bad request" (gateway-level rejection — body was the literal
-      // string `"Bad request"` with no JSON detail). Reverted to
-      // plain btoa() to match the documented contract. See PR #259.
+      // Two independent axes to get right:
+      //
+      //   1. Standard base64, NOT base64url. PR #259 fixed this — the
+      //      code previously emitted base64url (`-`/`_`/no-pad) and
+      //      Azure returned HTTP 400 "Bad request" with no JSON detail.
+      //      Keep `+`/`/`/`=` padding.
+      //
+      //   2. UTF-8 byte encoding, NOT Latin-1. `btoa(str)` in Deno /
+      //      browsers does NOT do UTF-8 — it treats each char as a
+      //      single byte (Latin-1 / ISO-8859-1 interpretation). For
+      //      U+0080..U+00FF that single byte differs from the
+      //      character's UTF-8 encoding. A ReferenceText of "má"
+      //      (U+00E1) would arrive at Azure as the byte `0xE1` — an
+      //      invalid UTF-8 sequence — and Azure's JSON parser would
+      //      substitute U+FFFD, collapsing distinct tones (`má`/`mã`)
+      //      into the same garbled reference. Symptom: scoring works
+      //      for English but tone-targets become indistinguishable
+      //      for Vietnamese / French / German / any pair with
+      //      non-ASCII diacritics. Discovered during §15 Axis 2
+      //      Bar #2 empirical verification when scores depended only
+      //      on the audio file and not on the target syllable.
+      //
+      // Fix: TextEncoder produces UTF-8 bytes; `String.fromCharCode`
+      // over a Uint8Array yields a Latin-1 "binary string" whose
+      // bytes match the UTF-8 sequence, and `btoa` then produces
+      // standard base64 over those bytes. ASCII-only input is
+      // byte-identical to the old behaviour.
       const configJson = JSON.stringify(config);
-      const headerValue = btoa(configJson);
-      const azureUrl = deps.azureUrlForAccent(accent);
+      const utf8Bytes = new TextEncoder().encode(configJson);
+      const headerValue = btoa(String.fromCharCode(...utf8Bytes));
+      // Effective locale: explicit `target_locale` wins over the
+      // accent-derived English locale. Falls back to accent if the
+      // older deps shape (no azureUrlForLocale) is in use.
+      const effectiveLocale = targetLocale ?? localeForAccent(accent);
+      const azureUrl =
+        targetLocale && deps.azureUrlForLocale
+          ? deps.azureUrlForLocale(targetLocale)
+          : deps.azureUrlForAccent(accent);
       const controller = new AbortController();
       const timer = setTimeout(() => {
         timedOut = true;
@@ -525,7 +614,7 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
           "Content-Type": "audio/wav; codecs=audio/pcm; samplerate=16000",
           "Pronunciation-Assessment": headerValue,
           Accept: "application/json",
-          "Accept-Language": localeForAccent(accent),
+          "Accept-Language": effectiveLocale,
         },
         body: arrayBuffer,
         signal: controller.signal,
@@ -569,13 +658,14 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
             "Accept-Language",
           ],
           contentType: "audio/wav; codecs=audio/pcm; samplerate=16000",
-          acceptLanguage: localeForAccent(accent),
+          acceptLanguage: effectiveLocale,
           referenceTextLength: referenceText.length,
           referenceTextSample: truncate(referenceText, 80),
           audioBytes: arrayBuffer.byteLength,
           audioSeconds: Number(audioSeconds.toFixed(2)),
           accent,
-          locale: localeForAccent(accent),
+          locale: effectiveLocale,
+          targetLocaleOverride: targetLocale,
           configHeaderLength: headerValue.length,
           // base64 flavour markers — true if any URL-safe substitution
           // characters appear in the header. With the standard-base64
@@ -686,17 +776,22 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
       audioSeconds,
       openaiCostUsd: costUsd,
     });
-    await deps.logAttempt({
-      userId,
-      roomId: roomId || "unknown",
-      lineId: lineId || "unknown",
-      targetText,
-      transcript: azureBody.DisplayText ?? "",
-      overallScore: projection.overallScore,
-      wordScores: projection.wordScores,
-      phonemeScores: projection.phonemeScores,
-      providerCostUsd: costUsd,
-    });
+    // Skip the `speech_attempts` writeback for contexts that ship with
+    // Stage-3 local-only posture (tone drill); cost + audit telemetry
+    // above still ran. See docs/axis-2/tone-production-design.md §1.
+    if (!skipAttemptLog) {
+      await deps.logAttempt({
+        userId,
+        roomId: roomId || "unknown",
+        lineId: lineId || "unknown",
+        targetText,
+        transcript: azureBody.DisplayText ?? "",
+        overallScore: projection.overallScore,
+        wordScores: projection.wordScores,
+        phonemeScores: projection.phonemeScores,
+        providerCostUsd: costUsd,
+      });
+    }
 
     const successBody: SuccessResponse = {
       ok: true,

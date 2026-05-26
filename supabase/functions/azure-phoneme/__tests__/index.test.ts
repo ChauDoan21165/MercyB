@@ -27,11 +27,15 @@ import {
   AZURE_PHONEME_LIMITS,
   clampScore,
   handleRequest,
+  isNoLogContext,
   localeForAccent,
   normaliseAccentInput,
+  normaliseTargetLocale,
   parseWavHeader,
   projectAzureResponse,
   scoreToStatus,
+  SUPPORTED_TARGET_LOCALES,
+  type Accent,
   type AzureResponse,
   type Deps,
   type LogAttemptParams,
@@ -107,6 +111,8 @@ function makeDeps(overrides: Partial<Deps> = {}): Deps {
     azureKey: "test-key",
     azureUrlForAccent: (accent) =>
       `https://test.example.com/azure?language=${accent}`,
+    azureUrlForLocale: (locale) =>
+      `https://test.example.com/azure?language=${locale}`,
     globalDailyCapUsd: 25,
     usdToVnd: 26000,
     azureTimeoutMs: 50,
@@ -857,5 +863,225 @@ describe("accent locale routing", () => {
     const res = await handleRequest(req, deps);
     expect(res.status).toBe(200);
     expect(seenUrls).toEqual(["https://test.example.com/azure?language=uk"]);
+  });
+});
+
+describe("target_locale override (Axis 2 — Vietnamese tone drill)", () => {
+  it("normaliseTargetLocale accepts whitelisted locales, rejects everything else", () => {
+    expect(normaliseTargetLocale("vi-VN")).toBe("vi-VN");
+    expect(normaliseTargetLocale(" vi-VN ")).toBe("vi-VN");
+    expect(normaliseTargetLocale("VI-VN")).toBeNull(); // case-sensitive
+    expect(normaliseTargetLocale("vi-VN-x-Saigon")).toBeNull();
+    expect(normaliseTargetLocale("ja-JP")).toBeNull();
+    expect(normaliseTargetLocale(undefined)).toBeNull();
+    expect(normaliseTargetLocale(null)).toBeNull();
+    expect(normaliseTargetLocale("")).toBeNull();
+  });
+
+  it("SUPPORTED_TARGET_LOCALES is the source of truth for adding directions", () => {
+    expect(SUPPORTED_TARGET_LOCALES).toContain("vi-VN");
+    // Lock the set — a future direction (e.g. ko-KR) requires an
+    // explicit edit + design-doc reference per the comment in core.ts.
+    expect([...SUPPORTED_TARGET_LOCALES].sort()).toEqual(["vi-VN"]);
+  });
+
+  it("when target_locale=vi-VN is sent, the call uses azureUrlForLocale (not azureUrlForAccent)", async () => {
+    const seenUrls: string[] = [];
+    const azureUrlForAccent = vi.fn((accent: Accent) =>
+      `https://test.example.com/azure?language=${accent}`,
+    );
+    const deps = makeDeps({
+      azureUrlForAccent,
+      azureUrlForLocale: (locale) =>
+        `https://test.example.com/azure?language=${locale}`,
+      fetch: vi.fn().mockImplementation((input: string) => {
+        seenUrls.push(input);
+        return Promise.resolve(azureSuccessResponse());
+      }) as unknown as Deps["fetch"],
+    });
+
+    const formData = new FormData();
+    const blob = new Blob([buildSilentWav(2)], { type: "audio/wav" });
+    formData.append("audio", blob, "test.wav");
+    formData.append("target_text", "má");
+    formData.append("roomId", "tone-drill");
+    formData.append("lineId", "ma-sac");
+    formData.append("target_locale", "vi-VN");
+    const req = new Request("https://test.example.com/azure-phoneme", {
+      method: "POST",
+      body: formData,
+      headers: { Authorization: "Bearer test-jwt" },
+    });
+
+    const res = await handleRequest(req, deps);
+    expect(res.status).toBe(200);
+    expect(seenUrls).toEqual(["https://test.example.com/azure?language=vi-VN"]);
+    expect(azureUrlForAccent).not.toHaveBeenCalled();
+  });
+
+  it("when target_locale is unknown ('ja-JP'), the English accent path runs", async () => {
+    const seenUrls: string[] = [];
+    const deps = makeDeps({
+      fetch: vi.fn().mockImplementation((input: string) => {
+        seenUrls.push(input);
+        return Promise.resolve(azureSuccessResponse());
+      }) as unknown as Deps["fetch"],
+    });
+
+    const formData = new FormData();
+    const blob = new Blob([buildSilentWav(2)], { type: "audio/wav" });
+    formData.append("audio", blob, "test.wav");
+    formData.append("target_text", "ohayou gozaimasu");
+    formData.append("target_locale", "ja-JP");
+    const req = new Request("https://test.example.com/azure-phoneme", {
+      method: "POST",
+      body: formData,
+      headers: { Authorization: "Bearer test-jwt" },
+    });
+
+    const res = await handleRequest(req, deps);
+    expect(res.status).toBe(200);
+    // Falls back to azureUrlForAccent with default accent 'us'.
+    expect(seenUrls).toEqual(["https://test.example.com/azure?language=us"]);
+  });
+});
+
+describe("context: tone-drill (Stage-3 local-only posture)", () => {
+  it("isNoLogContext recognises 'tone-drill' only", () => {
+    expect(isNoLogContext("tone-drill")).toBe(true);
+    expect(isNoLogContext(" tone-drill ")).toBe(true);
+    expect(isNoLogContext("Tone-Drill")).toBe(false); // case-sensitive
+    expect(isNoLogContext("speak-tab")).toBe(false);
+    expect(isNoLogContext("")).toBe(false);
+    expect(isNoLogContext(undefined)).toBe(false);
+    expect(isNoLogContext(null)).toBe(false);
+  });
+
+  it("context=tone-drill skips logAttempt but still runs audit + cost telemetry", async () => {
+    const logAttempt = vi.fn().mockResolvedValue(undefined);
+    const audit = vi.fn().mockResolvedValue(undefined);
+    const deps = makeDeps({
+      logAttempt,
+      audit,
+      fetch: vi.fn().mockResolvedValue(azureSuccessResponse()) as unknown as Deps["fetch"],
+    });
+
+    const formData = new FormData();
+    const blob = new Blob([buildSilentWav(2)], { type: "audio/wav" });
+    formData.append("audio", blob, "test.wav");
+    formData.append("target_text", "má");
+    formData.append("target_locale", "vi-VN");
+    formData.append("context", "tone-drill");
+    const req = new Request("https://test.example.com/azure-phoneme", {
+      method: "POST",
+      body: formData,
+      headers: { Authorization: "Bearer test-jwt" },
+    });
+
+    const res = await handleRequest(req, deps);
+    expect(res.status).toBe(200);
+    expect(logAttempt).not.toHaveBeenCalled();
+    // Audit still ran — cost / status telemetry is preserved.
+    expect(audit).toHaveBeenCalled();
+  });
+
+  it("default context (no field set) still logs attempts — backwards-compat", async () => {
+    const logAttempt = vi.fn().mockResolvedValue(undefined);
+    const deps = makeDeps({
+      logAttempt,
+      fetch: vi.fn().mockResolvedValue(azureSuccessResponse()) as unknown as Deps["fetch"],
+    });
+
+    const req = makeRequest(buildSilentWav(2));
+    const res = await handleRequest(req, deps);
+    expect(res.status).toBe(200);
+    expect(logAttempt).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("Pronunciation-Assessment header — UTF-8 round-trip", () => {
+  // Regression: previously `btoa(JSON.stringify(config))` treated each
+  // character of the JSON as a single Latin-1 byte. For non-ASCII
+  // ReferenceText (Vietnamese tone diacritics, French é, German ü…)
+  // the header bytes were invalid UTF-8, and Azure's JSON parser
+  // substituted U+FFFD — collapsing distinct ReferenceTexts (e.g.
+  // má/mã) into the same garbled reference and breaking tone-target
+  // discrimination. Fixed by encoding the JSON to UTF-8 bytes first,
+  // then base64. ASCII inputs are byte-identical to the old behaviour.
+
+  async function captureAzureRequestHeader(targetText: string): Promise<string> {
+    let capturedHeader: string | undefined;
+    const deps = makeDeps({
+      fetch: vi.fn().mockImplementation((_url: string, init: RequestInit) => {
+        const headers = init.headers as Record<string, string> | undefined;
+        capturedHeader = headers?.["Pronunciation-Assessment"];
+        return Promise.resolve(azureSuccessResponse());
+      }) as unknown as Deps["fetch"],
+    });
+
+    const formData = new FormData();
+    const blob = new Blob([buildSilentWav(1)], { type: "audio/wav" });
+    formData.append("audio", blob, "test.wav");
+    formData.append("target_text", targetText);
+    formData.append("target_locale", "vi-VN");
+    formData.append("context", "tone-drill");
+    const req = new Request("https://test.example.com/azure-phoneme", {
+      method: "POST",
+      body: formData,
+      headers: { Authorization: "Bearer test-jwt" },
+    });
+
+    const res = await handleRequest(req, deps);
+    expect(res.status).toBe(200);
+    expect(capturedHeader).toBeDefined();
+    return capturedHeader as string;
+  }
+
+  function decodeAndAssertUtf8(headerB64: string): { ReferenceText: string } {
+    // 1. Base64-decode the header into bytes.
+    const binary = atob(headerB64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    // 2. Strict UTF-8 decode — must not throw. The previous Latin-1
+    //    encoding produced invalid UTF-8 for non-ASCII characters and
+    //    this `fatal: true` decoder rejected it.
+    const json = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+    return JSON.parse(json) as { ReferenceText: string };
+  }
+
+  it("má (sắc) survives round-trip as valid UTF-8 with diacritic intact", async () => {
+    const header = await captureAzureRequestHeader("má");
+    const parsed = decodeAndAssertUtf8(header);
+    expect(parsed.ReferenceText).toBe("má");
+  });
+
+  it("mã (ngã) survives round-trip as valid UTF-8 with diacritic intact", async () => {
+    const header = await captureAzureRequestHeader("mã");
+    const parsed = decodeAndAssertUtf8(header);
+    expect(parsed.ReferenceText).toBe("mã");
+  });
+
+  it("the two headers differ — má and mã serialise to distinct bytes", async () => {
+    const ma = await captureAzureRequestHeader("má");
+    const mãHeader = await captureAzureRequestHeader("mã");
+    expect(ma).not.toBe(mãHeader);
+  });
+
+  it("ASCII ReferenceText is byte-identical to the pre-fix behaviour", async () => {
+    // English path regression guard. Existing pronunciation drills
+    // ship ASCII targets — this fix must not move them.
+    const header = await captureAzureRequestHeader("think");
+    const parsed = decodeAndAssertUtf8(header);
+    expect(parsed.ReferenceText).toBe("think");
+    // What the OLD code would have emitted for an ASCII input:
+    const oldEquivalent = btoa(
+      JSON.stringify({
+        ReferenceText: "think",
+        GradingSystem: "HundredMark",
+        Granularity: "Phoneme",
+        EnableMiscue: true,
+      }),
+    );
+    expect(header).toBe(oldEquivalent);
   });
 });
