@@ -609,17 +609,20 @@ one full direction of one full pair, on both sides."
 
 ### Axis 2: EN → VN done-criteria
 
-- [ ] **L1 profile authored for EN-speakers studying Vietnamese.**
-  An EN→VN profile (name decided at authoring time, e.g.
-  `englishL1Profile` for the Vietnamese-target consumer, or
-  `vietnameseTargetProfile` if framed inversely) exists under
-  `src/lib/l1-profiles/`, mirroring `vi.ts`'s structure but inverted:
-  the L1 is English, the target is Vietnamese. *Today:* zero
-  files for this direction. *Artifact:* the profile lands with
-  ≥10 grammar families, ≥80 paired examples (mirroring the C1 bar
-  for VN→EN scaled to half because EN→VN has less prior taxonomy
-  research), bilingual EN/VI descriptions, severity tiers per the
-  spec §0 lock.
+- [x] **L1 profile authored for EN-speakers studying Vietnamese.**
+  An EN→VN profile exists under `src/lib/l1-profiles/`, mirroring
+  `vi.ts`'s structure but inverted: the L1 is English, the target is
+  Vietnamese. *Today:* `src/lib/l1-profiles/en.ts` ships
+  `englishL1Profile` with `meta.nativeLangCode = "en"`,
+  `meta.targetLangCode = "vi"`, 10 grammar families, **84 paired
+  examples** spanning classifier omission, age-relative pronoun
+  selection, copula `là` misuse with adjectives, sentence-final
+  particle omission, noun-modifier order, aspect-marker overuse,
+  question-formation inversion, negation misplacement, plural-marker
+  redundancy, and direct-translation calques. Bilingual descriptions
+  on every family, severity tiers per spec §0 lock, snake_case IDs.
+  Passes the structural `validateL1Profile` validator. *Artifact:*
+  `src/lib/l1-profiles/en.ts` on `main`.
 
 - [ ] **Tone production coaching exists.** The EN→VN track ships a
   coaching surface for the six Northern (or five Southern) Vietnamese
