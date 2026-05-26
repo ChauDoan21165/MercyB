@@ -430,7 +430,10 @@ function scheduleOneTimeChunkReload(): boolean {
       e.error ? asErrorMessage(e.error) : "",
     ].join(" ");
     if (stringLooksLikeExternalNoise(errorHaystack)) return;
-    handleGlobalFatal("[MB FATAL] window.error", e.error ?? e.message);
+    handleGlobalFatal(
+      "[MB FATAL] window.error",
+      looksLikeChunkLoadFailure(errorHaystack) ? errorHaystack : (e.error ?? e.message),
+    );
   });
 
   window.addEventListener("unhandledrejection", (e: PromiseRejectionEvent) => {

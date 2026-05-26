@@ -142,11 +142,11 @@ This list is not exhaustive of what MercyBlade may eventually support — it is 
 
 > Update this section every 1-2 weeks. Reality drift = strategy drift.
 
-### As of May 25, 2026 (Bar-tick + roadmap convergence session)
+### As of May 26, 2026 (local-only GitLab migration + Axis 2 audit)
 
-Per PRINCIPLES §9 (status docs drift — re-audit weekly). Six days of
+Per PRINCIPLES §9 (status docs drift — re-audit weekly). Seven days of
 shipping since the 2026-05-19 entry; §6 was stale. Net changes this
-session, organised by what they tick:
+session, organised by current status:
 
 - **§15 Axis 1: five bars ticked.** Bar #1 (L1 grammar coverage gap
   closed) ticked after #1169 landed `vi_l1_subject_gender`; all five
@@ -170,17 +170,34 @@ session, organised by what they tick:
   telemetry wiring shipped (PR #1132) — awaits Chau's on-device
   Sentry-dashboard probe. #7 named Vietnamese learner outcome — no
   testimonial on record; marketing/operations track.
-- **§15 Axis 2 Bar #1: in flight via PR #1184**, NOT yet ticked —
-  `englishL1Profile` (EN→VN, claimed 10 grammar families + 84 paired
-  examples per the PR title) remains OPEN on origin. Bar #3 (classifier
-  system explainer + drill) also in flight via PR #1176 (Vietnamese
-  classifier room) — also NOT ticked. Bars #2 (tone production), #4
-  (EN→VN detector rules), #5 (named EN-speaker outcome) all still open.
+- **§15 Axis 2: three bars ticked in code.** Bar #1 (EN→VN L1
+  profile) ticked after #1184 landed `englishL1Profile` at
+  `src/lib/l1-profiles/en.ts` with 10 grammar families + 84 paired
+  examples. Bar #3 (classifier system explainer + drill) ticked after
+  #1176 landed `public/data/learn_vietnamese_classifiers.json` with
+  20 forced-choice items. Bar #4 (EN→VN detector rules) ticked after
+  #1188 landed `src/lib/feedback/rule-packs/en-vn/` with 8 detector
+  rules + `evals/en-vn-grammar-cases.json` carrying 24 fixture cases
+  (≥3 per rule). Bar #2 is **not ticked**: the PR #1206 Option A
+  Azure/adapter attempt failed empirically for adjacent-tone
+  separation. #1208 merged the Option B local-pitch design, but the
+  A2 F0 spike found that design is not production-viable as a scoring
+  system with the current fixtures. Recommended next state: redesign
+  Bar #2's scoring approach, or ship only a non-scored listen-compare
+  prototype while keeping Bar #2 open unless Chau accepts a revised
+  DoD. Bar #5 remains owner-gated: no named English-speaker outcome is
+  on record.
 - **ROADMAP.md updated** with the converged Stage 3 sequence (PR #1177)
   — 3A *"What I'm Weak At"* / Local Weakness Map (read-only,
   local-only, descriptive), 3B Suggested Practice with `(c+)` trigger
   semantics + guardrails, 3C Review Queue, 3D Mastery Map. Stage 3A
   had been gated on §15 Axis 1 Bar #1 closure; #1169 closed that gate.
+- **Stage 3A is designed and adapter-prepped, but the screen
+  implementation has not started.** #1199 merged the Local Weakness Map
+  design. The three sibling adapter PRs merged afterward: #1201 L1
+  detector recent-tag mirror, #1202 Placement v3 snapshot mirror, and
+  #1203 pronunciation phoneme mirror. Those create the local-only input
+  seams; they do not ship the Stage 3A route/screen/aggregator.
 - **PRINCIPLES.md principle 19 added** (PR #1179) — *"agent-management
   spreadsheet is source of truth + proactive 5-minute re-read"*.
 - **Kids surface fixes** shipped: #1178 page-11..34 image 404 bug
@@ -188,7 +205,7 @@ session, organised by what they tick:
   grid scroll cutoff. Both restore product functionality directly hit
   by the Stage-2 image-missing dispatch earlier this session.
 - **`docs/pair-matrix.md` synced with §15 status** (PR #1185) —
-  capability rows updated against current `origin/main`, new sub-table
+  capability rows updated against main, new sub-table
   for §15 bars that don't map to capability rows (#1, #6, #7), Axis 2
   gained rows for tone production + classifier explainer, eval-harness
   baseline corrected 52/52 → 62/62, legend extended. This Bar #1 tick
@@ -196,10 +213,16 @@ session, organised by what they tick:
 - **STRATEGY.md §7 path references corrected** (PR #1182) — §6 + §7
   point at canonical `/ROADMAP.md` (root); `.claude/roadmap.md`
   demoted to historical detail copy. §7 table body unchanged.
+- **Repository operations changed.** GitHub is suspended; work is
+  local-only while GitLab migration is in progress. No GitHub push, PR,
+  Actions, or `gh` status should be treated as current source of truth
+  until hosting is restored or the GitLab remote becomes authoritative.
 
 What this means for §1 mission test (Axis 1): Bar #1 no longer blocks
-Stage 3A. The remaining Axis 1 bars are owner-gated: #6 native Sentry
-on-device verification and #7 named Vietnamese learner outcome.
+Stage 3A, and Stage 3A is now beyond design into adapter preparation.
+The Stage 3A user-facing implementation is still unstarted. The
+remaining Axis 1 bars are owner-gated: #6 native Sentry on-device
+verification and #7 named Vietnamese learner outcome.
 
 ### As of May 19, 2026 (post-money-path wave re-audit)
 
@@ -609,33 +632,51 @@ one full direction of one full pair, on both sides."
 
 ### Axis 2: EN → VN done-criteria
 
-- [ ] **L1 profile authored for EN-speakers studying Vietnamese.**
-  An EN→VN profile (name decided at authoring time, e.g.
-  `englishL1Profile` for the Vietnamese-target consumer, or
-  `vietnameseTargetProfile` if framed inversely) exists under
-  `src/lib/l1-profiles/`, mirroring `vi.ts`'s structure but inverted:
-  the L1 is English, the target is Vietnamese. *Today:* zero
-  files for this direction. *Artifact:* the profile lands with
-  ≥10 grammar families, ≥80 paired examples (mirroring the C1 bar
-  for VN→EN scaled to half because EN→VN has less prior taxonomy
-  research), bilingual EN/VI descriptions, severity tiers per the
-  spec §0 lock.
+- [x] **L1 profile authored for EN-speakers studying Vietnamese.**
+  An EN→VN profile exists under `src/lib/l1-profiles/`, mirroring
+  `vi.ts`'s structure but inverted: the L1 is English, the target is
+  Vietnamese. *Today:* `src/lib/l1-profiles/en.ts` ships
+  `englishL1Profile` with `meta.nativeLangCode = "en"`,
+  `meta.targetLangCode = "vi"`, 10 grammar families, **84 paired
+  examples** spanning classifier omission, age-relative pronoun
+  selection, copula `là` misuse with adjectives, sentence-final
+  particle omission, noun-modifier order, aspect-marker overuse,
+  question-formation inversion, negation misplacement, plural-marker
+  redundancy, and direct-translation calques. Bilingual descriptions
+  on every family, severity tiers per spec §0 lock, snake_case IDs.
+  Passes the structural `validateL1Profile` validator. *Artifact:*
+  `src/lib/l1-profiles/en.ts` on `main`.
 
 - [ ] **Tone production coaching exists.** The EN→VN track ships a
   coaching surface for the six Northern (or five Southern) Vietnamese
   tones — at minimum, a drill that asks the learner to produce a tone
   on a target syllable and returns at-least-pass/fail feedback.
-  *Today:* zero tone-specific surfaces. *Artifact:* shipped feature
-  with a drill set of ≥12 minimal-tone pairs (e.g. the canonical
+  *Today:* still open. The #1206 Option A Azure/adapter attempt
+  produced a 12-pair drill set and adapter work, but failed the
+  empirical adjacent-tone verification for `má` vs `mã`; that is not
+  a shippable Bar #2 close. #1208 merged the Option B design for a
+  local pitch-contour approach, but the A2 F0 spike found Option B is
+  not production-viable as designed for scoring with the current
+  fixtures. The next honest state is either a redesigned scoring
+  approach or a non-scored listen-compare prototype. *Artifact still
+  required under the current DoD:* shipped production feature with a
+  drill set of ≥12 minimal-tone pairs (e.g. the canonical
   `ma / má / mà / mả / mã / mạ` set, plus 6+ more contrasts) and a
-  test verifying the scoring distinguishes adjacent tones.
+  test verifying the scoring distinguishes adjacent tones. If Chau
+  accepts a revised non-scored DoD, update this checkbox text before
+  ticking it.
 
-- [ ] **Classifier system explainer + drill.** At least one room
+- [x] **Classifier system explainer + drill.** At least one room
   teaching the Vietnamese classifier system (`cái`, `con`, `chiếc`,
   `cuốn`, `quả`, `tấm`, etc.) with a forced-choice drill that scores
   correct classifier selection given a head-noun + count. *Today:*
-  no room targets this. *Artifact:* one new room JSON in
-  `public/data/` with ≥20 drill items and a scoring path.
+  `public/data/learn_vietnamese_classifiers.json` ships 20
+  forced-choice items covering `cái`, `con`, `chiếc`, `cuốn`, `quả`,
+  `tấm`, `bộ`, `bức`, `ngôi` — including the canonical `con dao`
+  knife exception. Each entry carries a `quiz` block with
+  `prompt_en` / `prompt_vi`, 4-choice options, and `correctIndex`
+  so the existing room engine plus any forced-choice drill UI can
+  score selections. *Artifact:* the room file on `main`.
 
 - [x] **EN→VN detector rules.** At least 8 detector rules in a new
   rule pack (`src/lib/feedback/rule-packs/en-vn/`) covering common
@@ -666,13 +707,13 @@ one full direction of one full pair, on both sides."
 
 ### Cross-axis: matrix-doc anchor
 
-- [ ] **`docs/pair-matrix.md` lists capability coverage per axis.**
-  *Today:* in flight (C4). *Artifact:* the file merged on `main`,
+- [x] **`docs/pair-matrix.md` lists capability coverage per axis.**
+  *Today:* shipped via #1185 and available at `docs/pair-matrix.md`,
   with rows for both axes of the Vietnamese flagship showing which
   capabilities (grammar detector, phonology drills, placement
   routing, tutor injection, crash telemetry, outcomes) are present.
-  This is the dashboard against which the checkboxes above are
-  audited.
+  The matrix still needs ordinary drift updates when bars move, but
+  the cross-axis dashboard artifact itself exists.
 
 ### When a criterion is met
 
@@ -723,15 +764,23 @@ Re-open and tighten if any of the following happen:
 
 ### Status snapshot (date this when ticking checkboxes)
 
-As of 2026-05-25, five Axis 1 checkboxes are ticked: Bar #1 (L1
+As of 2026-05-26, five Axis 1 checkboxes are ticked: Bar #1 (L1
 grammar coverage, PRs #1163/#1170/#1172/#1164/#1169), Bar #2 (eval
 baseline 65/65, PR #1156), Bar #3 (AI Tutor L1 injection, PR #1131),
 Bar #4 (pronunciation drills, PR #1173), Bar #5 (placement → lesson
 E2E, PR #1143). Two Axis 1 bars remain, both owner-gated: Bar #6
 (native Sentry on-device probe, wired per PR #1132) and Bar #7
-(named Vietnamese learner outcome). Axis 2: zero ticked on main;
-Bars #1, #3, #4 in flight (#1184, #1176, #1188). Five ticked, eight
-open.
+(named Vietnamese learner outcome). Axis 2: three checkboxes are
+ticked in code: Bar #1 EN→VN L1 profile (#1184), Bar #3 classifier
+room/drill (#1176), and Bar #4 EN→VN detector rules (#1188). Axis 2
+Bar #2 remains open because Option A failed empirical adjacent-tone
+verification, and #1208's Option B local-pitch design failed
+production-scoring viability in the A2 spike. Axis 2 remains 3/5
+ticked unless Chau accepts a revised Bar #2 DoD; the recommended next
+state is redesign or a non-scored listen-compare prototype. Bar #5
+remains open because no named English-speaker outcome is on record.
+The cross-axis pair-matrix anchor is shipped via #1185. Nine
+checkboxes ticked, four open.
 
 ---
 
