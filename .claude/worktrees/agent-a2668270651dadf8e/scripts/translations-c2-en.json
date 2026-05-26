@@ -1,0 +1,1229 @@
+{
+  "lessons": {
+    "lclose_reading": {
+      "cultural_notes_en": "Close reading (mikrologische Lektüre / werkimmanente Interpretation) in the Germanistik tradition has its own genealogy that diverges from Anglo-American New Criticism. (1) WERKIMMANENZ: in the 1940s–50s Wolfgang Kayser and Emil Staiger established werkimmanente Interpretation — interpreting a work solely from itself, sealed off from the author's biography and historical context. The method dominated German universities until the 1970s, when the Konstanzer Schule (Iser, Jauss) and, soon after, Diskursanalyse (the German reception of Foucault) opened it up again. C2-level close reading today is always conscious of the werkimmanenz inheritance but does NOT stop there — observations must be combined with context. (2) RÜCKBINDUNG: German close reading must NOT drift into a purely formalist exercise. Every micro-observation has to be rückgebunden (tied back) to a larger interpretive question. The textbook phrasing is: 'Diese mikrologische Beobachtung lässt sich rückbinden an die Frage nach…'. (3) SPRACHLICHE GESTALT vs. INHALT: strictly distinguish linguistic form (sprachliche Gestalt) from content (Inhalt). C2 close reading analyses the Gestalt — word choice, syntax, narrative mode — and does NOT paraphrase the content.\n\nWhere this diverges from Anglo-American practice: in mainstream American literary criticism a brief plot summary or paraphrase is a perfectly legitimate step in a close reading. In Germanistik C2 paraphrase is treated as a sign of shallow reading. The standard warning line is: 'Eine sorgfältige Lektüre verweigert sich der Versuchung, die Stelle zu paraphrasieren'.\n\nOne crucial reference point: Roman Jakobson's distinction between the axis of selection and the axis of combination is foundational. Close reading attends to:\n- Vocabulary that was CHOSEN (paradigmatic) — why does Goethe write 'Werther ergreift die Pistolen' rather than 'Werther nimmt die Pistolen'?\n- How that vocabulary is COMBINED (syntagmatic) — hypotaxis vs. parataxis, word order (Wortstellung)\n\nOn Diktion (stylistic register): C2 close reading must ask why an author chose this word rather than that one. Synonyms carry different Stilebenen: 'sterben' (neutral), 'verscheiden' (elevated), 'krepieren' (vulgar). What does each choice imply?\n\nOn Erzählinstanz (narrative instance), distinguish:\n- Auktorialer Erzähler (omniscient, judgmental)\n- Personaler Erzähler (limited POV)\n- Ich-Erzähler (first-person)\n- Neutraler Erzähler (camera-eye, very rare in the German tradition)\n\nFreie indirekte Rede (free indirect discourse — erlebte Rede) is the workhorse technique of Mann, Kafka, and Walser. You have to recognise and analyse it.\n\nOn Paratext (Genette): title, subtitle, dedication, preface, chapter headings — these are not 'outside' the work; they frame the reading.\n\nCore reference works for German close reading:\n- Wolfgang Kayser, 'Das sprachliche Kunstwerk' (1948) — the werkimmanenz classic\n- Emil Staiger, 'Grundbegriffe der Poetik' (1946) — Stilanalyse\n- Wolfgang Iser, 'Der Akt des Lesens' (1976) — Konstanzer Schule\n- Käte Hamburger, 'Die Logik der Dichtung' (1957) — Erzähltheorie\n- Gérard Genette (German translation), 'Die Erzählung' — narrative instances",
+      "tip_advice_en": "Preparing a C2 close reading (4 steps):\n1. READ THE PASSAGE 3–5 TIMES before taking any notes. Pass 1: holistic. Pass 2: vocabulary choices. Pass 3: syntax. Pass 4: rhythm. Pass 5: rhetorical figures.\n2. ANNOTATION: underline and write margin notes — mark verbs (red ink), adjectives (blue), nouns (green). Make the patterns visible on the page.\n3. STEP-BY-STEP BUNDLING: gather your observations into 2–4 larger clusters — e.g. 'irony cues', 'figures of materiality', 'narrator-distancing'.\n4. RÜCKBINDUNG: every cluster has to connect to a larger interpretive question — what does this say about the work as a whole?\n\nThe language of C2 close reading:\n- 'Die mikrologische Lektüre offenbart…' (a close reading reveals…)\n- 'Bezeichnenderweise rückt der Erzähler X ins Zentrum, nicht Y' (tellingly, the narrator foregrounds X, not Y)\n- 'Im Übergang von X zu Y konstituiert sich jene Schwebe, in der…' (in the transition from X to Y a suspension emerges in which…)\n- 'Die Materialität der Schrift wird gleichsam zum Träger von X' (the materiality of writing becomes, as it were, the carrier of X)\n- 'Eine sorgfältige Lektüre verweigert sich der Versuchung zu paraphrasieren — sie verharrt bei der sprachlichen Gestalt' (a careful reading resists the temptation to paraphrase — it stays with the linguistic form)\n- 'Im Vorgang des Lesens selbst entfaltet sich die Bedeutung' (meaning unfolds in the act of reading itself)\n\nConcrete analytical techniques:\n- WORD CHOICE: 'Auffällig ist die Wahl von X anstelle des näherliegenden Y' (notable is the choice of X over the more obvious Y)\n- SYNTAX: 'Die hypotaktische Verschachtelung erzeugt eine Verzögerung, die…' (the hypotactic nesting produces a delay that…)\n- RHYTHM: 'Der jambische Grundpuls wird an Stelle X durch eine trochäische Inversion gebrochen' (the underlying iambic pulse is broken at point X by a trochaic inversion)\n- REPETITION: 'Das dreifache Wiederkehren des Verbs Y verleiht der Szene eine rituelle Qualität' (the threefold return of the verb Y gives the scene a ritual quality)\n\nWhen the passage is polyvalent:\n- 'Die Stelle eröffnet einen Bedeutungsspielraum, der sich nicht vorschnell schließen lässt' (the passage opens a semantic range that cannot be closed off too quickly)\n- 'Mehrere Lesarten konkurrieren miteinander, ohne dass eine den Vorrang beanspruchen könnte' (several readings compete without any one being able to claim priority)\n\nAvoid absolutely:\n- 'Der Autor will sagen X' (intentionalistic fallacy)\n- 'Diese Stelle bedeutet, dass…' (oversimplification)\n- Paraphrase ('In dieser Szene erzählt Mann, dass…')\n- Generic adjectives ('schöne Sprache', 'tiefer Sinn')\n\nFinal tip: write 1.5–2 pages of close reading per key scene. Less than 1 page = not enough; more than 3 pages = you've drifted into essay mode too early. Close reading is microscope mode — sustained analysis of a very narrow patch of text.",
+      "register_notes_en": "C2 German close reading: use Konjunktiv I for reported speech ('Iser zufolge sei der Akt des Lesens als interaktiver Prozess zu begreifen'). Use Konjunktiv II for hypothetical claims ('das ließe sich mit Schklowskij genauer fassen'). Funktionsverbgefüge (light-verb constructions) to keep on hand: 'ins Zentrum rücken' (to foreground), 'in Einklang bringen mit' (to reconcile with), 'gleichsam zum Träger werden' (to become, as it were, the carrier of). Connectors: 'bezeichnenderweise' (tellingly), 'gleichsam' (as it were), 'mithin' (therefore — formal). Sentence shape: hypotactic nesting is encouraged — 'Die Stelle, in der X vorkommt, das aber wiederum nur dann gilt, wenn Y, lässt sich Z lesen'. Werkimmanenz vs. Rückbindung — do NOT drift into pure formalism; every observation has to land in an interpretation. Do NOT paraphrase ('In dieser Szene sagt Mann, dass…'). Do NOT go intentionalist ('Der Autor will sagen…'). Use instead: 'Die Stelle eröffnet einen Bedeutungsspielraum' / 'Im Vorgang des Lesens entfaltet sich X'.",
+      "idiom_glosses_en": [
+        {
+          "meaning_en": "to read a text against its obvious meaning, against the grain (gehoben/literarisch)",
+          "example_en": "Only a reading against the grain reveals the ironic doubling that the narrator has woven into the very first paragraph."
+        },
+        {
+          "meaning_en": "to read between the lines — to read what is not said directly, the implied meaning (standardsprachlich)",
+          "example_en": "Anyone who reads between the lines will see: what looks like a family novel is in truth a diagnosis of decline."
+        },
+        {
+          "meaning_en": "to lift the veil — to expose, to bring to light (gehoben/literarisch)",
+          "example_en": "The close reading lifts the veil that bourgeois self-certainty lays over decline."
+        },
+        {
+          "meaning_en": "grist to X's mill — to support X's argument (gehoben)",
+          "example_en": "Vaget's scholarship is grist to the mill of a rückbindende reading — he supplies exactly the biographical context that confirms the inner structural logic."
+        }
+      ],
+      "sentences_pronunciation_focus_en": [
+        [
+          "mikrologisch → mee-kroh-LOH-gish",
+          "Eingangsabschnitt → EYE-n-gangs-ap-shnit",
+          "verbürgt → fair-BUERG-t (ü = round lips for 'oo', say 'ee')"
+        ],
+        [
+          "bezeichnenderweise → buh-tsye-khnen-der-VYE-zuh",
+          "Wiederholbarkeit → VEE-der-hohl-bar-kite",
+          "Verfremdung → fair-FREM-doong"
+        ],
+        [
+          "freie indirekte Rede → FRY-uh in-dee-REK-tuh RAY-duh",
+          "Schwebe → SHVAY-buh",
+          "Selbstgewissheit → ZELP-st-guh-VISS-hite"
+        ],
+        [
+          "Materialität → mah-tay-ree-ah-lee-TAYT",
+          "gleichsam → GLYKE-zahm ('ei' = 'eye')",
+          "Ahnenpräsenz → AH-nen-pray-zents"
+        ],
+        [
+          "sorgfältig → ZORK-fel-tikh (final -ig as soft ich-Laut)",
+          "verharrt → fair-HART",
+          "Eigensinn → EYE-gen-zin"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        [],
+        [
+          "close reading"
+        ]
+      ],
+      "vocab_pronunciation_en": [
+        "dee mee-kroh-LOH-gish-uh lek-TUE-ruh — German 'ü' rounded (lips for 'oo', tongue for 'ee'); close reading",
+        "dee VAIRK-ee-mah-nents — intrinsic interpretation; stress on 'VAIRK'",
+        "dee air-TSAYL-in-shtants — narrative instance; the 'z' in 'Erzähl' is 'ts'",
+        "dee FRY-uh in-dee-REK-tuh RAY-duh — free indirect discourse",
+        "dee LAYR-shteh-luh — gap, blank; long 'ay' in first syllable",
+        "dee deek-tsee-OHN — diction; stress on final syllable, 'ti' = 'tsee'",
+        "dee mah-tay-ree-ah-lee-TAYT — materiality; stress on the final '-tät'",
+        "dee fair-FREM-doong — estrangement (Brecht)",
+        "dee hue-poh-TAX-uh / pah-rah-TAX-uh — hypotaxis / parataxis ('y' in 'hypo' said like German 'ü')",
+        "RUEK-bin-den ahn — to tie back to; 'ü' rounded, stress on 'RUEK'"
+      ]
+    },
+    "lnarrative_voice": {
+      "cultural_notes_en": "Narrative theory (Erzähltheorie) at Germanistik C2 level cannot skip the Genette system or the German tradition that runs in parallel to it. (1) GENETTE'S AXES: Gérard Genette distinguishes five axes; the three core ones for close analysis are:\n- VOICE / STIMME (who speaks?): heterodiegetic (telling about someone else) vs. homodiegetic (telling about oneself)\n- FOCALIZATION / FOKUS (who sees?): zero focalization (omniscience), internal focalization (Reflektor), external focalization (camera-eye)\n- TIME (Erzählzeit vs. erzählte Zeit): pause, scene, summary, ellipsis\n\nThe Genette one-liner every C2 Germanist must know: 'Wer spricht ist nicht zwangsläufig wer sieht' (the speaker is not necessarily the seer). (2) GERMAN TRADITION BEFORE GENETTE: Käte Hamburger, 'Die Logik der Dichtung' (1957), distinguishes fictional first-person (the epic preterite, allowing inside-views without omniscience) from real first-person. Franz Stanzel, 'Theorie des Erzählens' (1979), gives the typological triangle of Erzählsituation: auktorial — personal — Ich-Form. You have to recognise both schemes before you reach for Genette. (3) FREIE INDIREKTE REDE / ERLEBTE REDE: the central technique in Kafka, Mann, Walser, Bachmann. Markers: past tense (Präteritum) + 3rd person + the character's deictic markers ('gestern', not 'am Vortag'). Mis-identifying this means mis-reading POV.\n\nWhere this diverges from how POV is usually taught in English: introductory English-language courses often stop at 'first person' vs. 'third person'. At Germanistik C2 the distinction between Stimme and Fokus is a conditio sine qua non. A text can have a third-person Stimme but be internally focalized through a character — that is Personal Erzählsituation, not Auktorial.\n\nA crucial point: Erzähler ≠ Autor. Wayne Booth's Anglo-American term is 'implied author'; the German is 'impliziter Autor'. A C2 analyst has to keep four levels distinct:\n- Realer Autor (W.G. Sebald, the actual person who died in 2001)\n- Impliziter Autor (the figure projected by the work as a whole)\n- Erzähler (the narrating voice inside the text)\n- Figur-Sprecher (a character when they speak)\n\nOn Sebald specifically: 'Die Ausgewanderten', 'Austerlitz' — the ich-Erzähler looks deceptively like the real Sebald. A naïve reading identifies them. A C2 reading analyses the technique of blurring (verwischen) the boundary as Sebald's signature procédé.\n\nOn Mann: 'Buddenbrooks' and 'Der Zauberberg' are textbook auktoriale Erzählsituation. 'Doktor Faustus' is more complex — Serenus Zeitblom is an intradiegetic ich-Erzähler narrating about Adrian Leverkühn.\n\nOn Kafka: both 'Der Process' and 'Das Schloß' are nominally third-person but heavily internally focalized through Josef K. / K. The Erzähler seems to disappear but does NOT fully — moments of narratorial judgment break through.\n\nOn Walser: Robert Walser ('Der Spaziergang', 'Jakob von Gunten') uses an ich-Erzähler but with such extreme self-undermining and ironic self-criticism that the status of the voice (reliable / unreliable) becomes an open question.\n\nCore reference works:\n- Käte Hamburger, 'Die Logik der Dichtung' (1957)\n- Franz Stanzel, 'Theorie des Erzählens' (1979)\n- Gérard Genette, 'Die Erzählung' (German edition, 1994)\n- Wayne C. Booth, 'The Rhetoric of Fiction' (German: 'Die Rhetorik der Erzählkunst')\n- Matías Martínez & Michael Scheffel, 'Einführung in die Erzähltheorie' (the Beck-Verlag standard)",
+      "tip_advice_en": "Analysing Erzählinstanz at C2 (5 steps):\n1. IDENTIFY VOICE (Stimme): heterodiegetic vs. homodiegetic? Which grammatical person?\n2. IDENTIFY FOCALIZATION (Fokus): zero / internal / external? Does it shift?\n3. NOTE AUKTORIAL INTERVENTIONS: where does the narrator comment, ironize, distance himself?\n4. CLASSIFY MODES OF SPEECH REPRESENTATION (Figurenrede): direct speech / indirect speech / free indirect discourse / stream of consciousness\n5. RÜCKBINDUNG: what does this specific combination say about the work as a whole?\n\nThe language of C2 Erzählinstanz analysis:\n- 'Die Erzählinstanz tritt formal hinter X zurück' (the narrative instance formally recedes behind X)\n- 'Was als interne Fokalisierung erscheint, erweist sich als hybrider Modus' (what looks like internal focalization turns out to be a hybrid mode)\n- 'Die auktoriale Instanz artikuliert sich unverhohlen' (the authorial instance speaks openly)\n- 'Die Stimme des Erzählers behält stillschweigend ihre Souveränität' (the narrator's voice silently keeps its sovereignty)\n- 'Die Grenze zwischen Erzähler und Autor wird systematisch verwischt' (the line between narrator and author is systematically blurred)\n- 'Erzähler und Autor nicht in eins setzen' (do not collapse narrator and author into one)\n- 'Hier liegt eine Identifikationsfalle für die naive Lektüre' (this is an identification trap for the naïve reader)\n\nConcrete analytical techniques:\n- MEASURE NARRATOR PRESENCE: frequency of narratorial commentary, generalisations, ironic ruptures\n- NOTE TRANSITIONS: where does the text move direct → free indirect → reported speech?\n- TRACK DEIXIS: 'gestern' vs. 'am Vortag', 'hier' vs. 'dort' — freie indirekte Rede keeps the character's deixis\n- TIME STRUCTURE: discontinuous time-leaps in Sebald, repetition structures in Bernhard\n\nWhen unreliability (Unzuverlässigkeit) is on the table:\n- 'Die Erzählerstimme weist Anzeichen von Unzuverlässigkeit auf' (the narratorial voice shows signs of unreliability)\n- 'Der Text durchsetzt die Erzählerperspektive mit Hinweisen, die deren Selbstdarstellung unterlaufen' (the text seeds the narrator's perspective with cues that undercut his self-presentation)\n- 'Eine Lesart als unreliable narrator gewinnt an Plausibilität, sofern…' (a reading as unreliable narrator gains plausibility provided that…)\n\nFor Sebald-style verwischung (blurring):\n- 'Der Text inszeniert die Differenz zwischen realem und implizitem Autor als selbst diskursive Operation' (the text stages the difference between real and implied author as itself a discursive operation)\n- 'Die Identifikationsangebote werden nicht aufgelöst, sondern produktiv in der Schwebe gehalten' (the offered identifications are not resolved but productively kept in suspension)\n\nAvoid absolutely:\n- 'Der Autor sagt' when you mean the narrator — Erzähler ≠ Autor\n- 'Der Erzähler ist der Autor' — naïve identification\n- 'Allwissender Erzähler' when the text actually uses a Reflektor — terminological sloppiness\n- 'Innensicht' on its own — you have to specify Reflektor / Auktorial / Bewusstseinsstrom\n\nFinal tip: prepare a 2-page Erzählinstanz analysis per work before you write any larger essay. Skipping this step is the fastest way for an essay to drift into plot summary. Erzählinstanz is the foundation; every argument about theme or style rests on it.",
+      "register_notes_en": "C2 Erzählinstanz analysis: strictly distinguish Erzähler from Autor. Use Konjunktiv I for indirect quotation: 'Genette zufolge sei wer spricht nicht zwangsläufig wer sieht'. Genette's axes: Stimme (hetero-/homo-diegetic) + Fokus (zero/internal/external). Stanzel's triad: auktorial / personal / Ich-Form. Funktionsverbgefüge to internalise: 'formal hinter X zurücktreten' (to formally recede behind X), 'den Anschein erwecken' (to give the appearance of), 'in eins setzen' (to collapse into one), 'in der Schwebe halten' (to keep in suspension). With Sebald-style: 'Verwischung als Verfahren' — the blurring is not a defect, it is the procédé. Common terminological mistakes: 'allwissender Erzähler' when the structure is actually a Reflektor; 'Innensicht' on its own without specification. Do NOT write 'der Autor sagt' when the source of the statement is the Erzähler.",
+      "idiom_glosses_en": [
+        {
+          "meaning_en": "to lend one's voice — the author lends a voice to a character or narrator (literarisch)",
+          "example_en": "Mann lends his narrator an ironic voice — it does not belong to him personally, yet it carries his programme for the work."
+        },
+        {
+          "meaning_en": "to stand behind the curtain — hidden but not absent (literarisch)",
+          "example_en": "In Kafka the narrator stands behind the curtain — formally absent, in practice ready to intervene at any moment."
+        },
+        {
+          "meaning_en": "to take off / to put on the mask — to reveal or conceal narrative identity (literarisch)",
+          "example_en": "Sebald never fully takes the narrator's mask off — and never fully puts it on; that is his procédé."
+        },
+        {
+          "meaning_en": "to lay one's cards on the table — to be transparent about one's procédés (standardsprachlich)",
+          "example_en": "An analytical reading lays its narrative-theoretical cards on the table before it moves on to interpretation."
+        }
+      ],
+      "sentences_pronunciation_focus_en": [
+        [
+          "Genettesche → zheh-NET-uh-shuh (French 'G' as in 'genre')",
+          "Erzählinstanz → air-TSAYL-in-shtants",
+          "Reflektor → ray-FLEK-tor"
+        ],
+        [
+          "interne Fokalisierung → in-TAIR-nuh foh-kah-lee-ZEE-rung",
+          "stillschweigend → SHTIL-shvye-gent ('ei' = 'eye')",
+          "Souveränität → zoo-vay-ray-nee-TAYT"
+        ],
+        [
+          "auktorial → owk-toh-ree-AHL ('au' = 'ow' as in 'how')",
+          "unverhohlen → OON-fair-hoh-len",
+          "Figurenstimme → fee-GOO-ren-shtim-muh"
+        ],
+        [
+          "verwischt → fair-VISHT ('w' = 'v')",
+          "Wirklichkeitssuggestion → VEERK-likh-kites-zoo-ges-tsee-ohn",
+          "Vermitteltheit → fair-MIT-elt-hite"
+        ],
+        [
+          "Redlichkeit → RAYT-likh-kite",
+          "in eins setzen → in EYE-ns ZET-sen",
+          "unterläuft → oon-tair-LOYFT ('äu' = 'oy' as in 'boy')"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        [],
+        [
+          "narrative voice"
+        ]
+      ],
+      "vocab_pronunciation_en": [
+        "dee air-TSAYL-in-shtants — narrative instance; 'z' = 'ts'",
+        "dee foh-kah-lee-ZEE-rung — focalization (Genette); stress on 'ZEE'",
+        "owk-toh-ree-AHL / pair-zoh-NAHL / IKH-form — authorial / figural / first-person (Stanzel); 'ich' uses the soft ich-Laut",
+        "dair ray-FLEK-tor — reflector character; stress on 'FLEK'",
+        "dee AHL-vee-sen-hite — omniscience; long 'ah' at the start",
+        "dee hay-tay-roh-dee-AY-geh-zuh — heterodiegesis; long 'AY' on the stressed syllable",
+        "oon-tsoo-fair-LES-see-guh air-TSAY-ler — unreliable narrator; 'z' in 'Erzähler' is 'ts'",
+        "dair im-PLEE-tsee-tuh OW-tor — implied author; 'au' = 'ow' as in 'how'",
+        "dair buh-VOOST-zines-shtrohm — stream of consciousness; long 'oh' in 'shtrohm'",
+        "fair-VISH-en — to blur, smudge; 'w' = 'v'"
+      ]
+    },
+    "lsymbol_metaphor": {
+      "cultural_notes_en": "Analysing Symbol and Metapher at C2 in Germanistik means working with several theoretical traditions at once, not just one. (1) GOETHE'S DISTINCTION: in 'Maximen und Reflexionen' Goethe sets Allegorie (clear, one-to-one) against Symbol (polyvalent, never exhaustively decodable). This still shapes the field — the traditional German Symbol is not an arbitrary sign but a concrete intuition of a universal meaning. A C2 analyst has to recognise when an author is operating in Symbol-logic and when in Allegorie-logic. (2) BLUMENBERG'S METAPHOROLOGIE: Hans Blumenberg, in 'Paradigmen zu einer Metaphorologie' (1960), revolutionised how Metapher is understood — as cognitive necessity. For Blumenberg there are 'absolute Metaphern' that can never be dissolved back into Begriff (concept); they are conditions of possibility for thought. 'Ship' for the journey of life, 'light' for truth, 'book' for the world — none of these can be reduced; none can be discarded. (3) JAKOBSON'S AXIS: Roman Jakobson separates metaphor (selection, paradigmatic axis) from metonymy (contiguity, syntagmatic axis). A text that is dominantly metaphorical (Romanticism) or metonymical (Realism) tells you something about the aesthetic system behind it.\n\nDifference from English-speaking criticism: a lot of Anglophone literary reading still treats symbols as codes to be cracked — 'A stands for B'. In C2 Germanistik that move is Allegorie-Logik, NOT Symbol-Logik. A Symbol has to be preserved in its Vieldeutigkeit (polyvalence) — interpretation does NOT finish the job.\n\nOne crucial detail: 'das Symbol nicht zu entzaubern' ('don't disenchant the symbol') is an Adornoesque warning. Over-explanatory criticism kills aesthetic meaning. A C2 analyst holds the tension between Begriffsarbeit (conceptual work) and Bildwahrung (preserving the image).\n\nOn intertextuelle Tiefenschicht: images in German texts almost always echo a tradition. 'Schnee' in Mann is not just snow — it echoes Petrarch's 'l'aere bianco' (Canzoniere), Mallarmé's 'blancheur', the Baroque Vanitas tradition, the Romantic Wanderer in the snow. A C2 close reader has to hear those echoes.\n\nOn Adorno's 'Verfehlung des Begriffs': the concept never fully embraces the phenomenon. Metaphor is the place where language admits the limit of the concept. 'What cannot be stated, the metaphor must sing of' — a Wittgensteinian paraphrase.\n\nKey works on Symbol/Metapher in German:\n- Goethe, 'Maximen und Reflexionen' — Symbol vs Allegorie\n- Hans Blumenberg, 'Paradigmen zu einer Metaphorologie' (1960)\n- Hans Blumenberg, 'Schiffbruch mit Zuschauer' (1979) — the ship metaphor\n- Theodor W. Adorno, 'Ästhetische Theorie' (1970, posthumous) — Bildverbot, Bildwahrung\n- Roman Jakobson, 'Linguistik und Poetik' (German edition)\n- Paul Ricœur, 'Die lebendige Metapher' (German 1986)\n\nOn Mann's 'Schneekapitel' (Zauberberg, chapter 6): Hans Castorp gets lost in the snow and has a vision both of an idealised Mediterranean landscape and of a horrifying sacrificial scene. The closing sentence — 'Der Mensch soll um der Güte und Liebe willen dem Tode keine Herrschaft einräumen über seine Gedanken' — is canonical and may be quoted verbatim. But it must be attributed to Hans Castorp's interior monologue, not to Mann himself and not to the narrating instance in general.\n\nA warning: DO NOT fabricate quotations. When you reference scenes, describe them rather than quote dialogue verbatim. In your own academic dialogue, every 'Zitat' must be attributed accurately or rendered paraphrastically.",
+      "tip_advice_en": "Symbol-Metapher analysis at C2 (5 steps):\n1. KLASSIFIKATION: Symbol or Allegorie? Metapher or Metonymie? Which Bildtradition?\n2. INTERTEXTUELLE EINORDNUNG: which Bildreservoir is echoed? — Antiquity, the Bible, Petrarch, Romanticism, etc.\n3. KONTEXTUELLE FUNKTION: what is the image doing AT THIS PRECISE POINT of the work?\n4. THEORETISCHE VERORTUNG: Blumenberg, Adorno, Jakobson, Ricœur — which reading carries the most weight?\n5. WAHRUNG vs DEUTUNG: what needs to be explained, and what has to be left standing in its Vieldeutigkeit?\n\nLanguage for Symbol-Metapher-Analyse at C2:\n- 'X fungiert nicht bloß als Kulisse, sondern als komplexes Bedeutungsgeflecht' ('X functions not merely as backdrop but as a complex web of meaning')\n- 'Die Versuchung, X auf eine eindeutige allegorische Botschaft zu reduzieren, gilt es zu widerstehen' ('we must resist the temptation to reduce X to a single allegorical message')\n- 'Mit Blumenberg lässt sich die Metapher als kognitive Unverzichtbarkeit begreifen' ('with Blumenberg, metaphor can be grasped as cognitively indispensable')\n- 'Die Konjunktion von X und Y aktualisiert ein Bildreservoir, das von Antike bis Z reicht' ('the linking of X and Y reactivates an image reservoir stretching from antiquity to Z')\n- 'Eine intertextuelle Tiefenschicht, die der Text zugleich aufruft und ironisch bricht' ('an intertextual deep layer the text both invokes and ironically breaks')\n- 'Das Bild nicht zu entzaubern, sondern in seiner produktiven Vieldeutigkeit zu erhalten' ('preserve the image in its productive polyvalence rather than disenchanting it')\n\nBlumenberg move:\n- 'Hier handelt es sich um eine absolute Metapher im Sinne Blumenbergs — sie lässt sich nicht in Begriffe auflösen, ohne ihren kognitiven Eigensinn zu verlieren' ('this is an absolute metaphor in Blumenberg's sense — it cannot be dissolved into concepts without losing its own cognitive force')\n\nGoethean move:\n- 'In Goethes Sinn handelt es sich nicht um eine Allegorie, sondern um ein Symbol — die Bedeutung kann nicht erschöpfend formuliert werden' ('in Goethe's sense this is not an allegory but a symbol — its meaning cannot be exhaustively stated')\n\nJakobson move:\n- 'Die metonymische Verschiebung von X auf Y entlang einer Kontiguitätsachse' ('the metonymic shift from X to Y along an axis of contiguity')\n\nWhen the image is ironically broken:\n- 'Mann ruft die Tradition auf und bricht sie zugleich' ('Mann invokes the tradition and breaks it at the same time')\n- 'Die Bildtradition wird re-aktualisiert, ohne in restaurativem Pathos zu verharren' ('the image tradition is reactivated without lapsing into restorative pathos')\n\nWhen Adorno's Bildverbot becomes relevant:\n- 'Adornos Bildverbot mahnt: das, was sich nicht in Bilder bannen lässt, darf auch nicht durch begriffliche Vereindeutigung getilgt werden' ('Adorno's Bildverbot warns us: whatever cannot be captured in images must not be erased through conceptual univocalisation')\n\nAbsolute don'ts:\n- 'X bedeutet einfach Y' (oversimplification — Allegorie reduction)\n- 'Schnee = Tod' (equation-style writing — that's allegory, not symbol)\n- 'Was Mann uns sagen will' (intentionalist fallacy)\n- Fabricated quotations — only reference, paraphrase, or use verified quotes (like the closing sentence of the Schneekapitel).\n\nFinal tip: write 2–3 pages of Symbol-Analyse per key image. Keep Begriffsarbeit (conceptual work — what you can argue) and Bildwahrung (preserving the image — what must remain in suspension) cleanly distinct. You need both; missing either side gives you weak criticism.",
+      "register_notes_en": "Symbol-Metapher-Analyse at C2: hold three frames simultaneously — Goethe's dualism (Symbol vs Allegorie), Blumenberg's absolute Metapher, Jakobson's Metapher-Metonymie. Use Konjunktiv I for theory citation: 'Blumenberg zufolge sei die absolute Metapher als kognitive Unverzichtbarkeit zu begreifen'. Functional-verb collocations: 'in Begriffe auflösen' (dissolve into concepts), 'in Bilder bannen' (capture in images), 'aus Beachtung getilgt werden' (be erased from view). Elevated connectors: 'gleichwohl', 'dergestalt', 'je nachdem ob'. The Doppelbewegung formula: 'nicht entzaubern, sondern in produktiver Vieldeutigkeit erhalten — gleichwohl ohne Diskursivierungspflicht entziehen'. NEVER 'X bedeutet Y' (allegory reduction); replace with 'X aktualisiert ein Bedeutungsgeflecht, in dem Y, Z, W einander durchdringen'. Citations: only use verified quotations; describe scenes rather than quote dialogue verbatim when you are not certain.",
+      "idiom_glosses_en": [
+        {
+          "meaning_en": "to expose what is hidden (gehoben/literarisch)",
+          "example_en": "A careful reading lifts the veil that surrounds the snow image — without destroying it."
+        },
+        {
+          "meaning_en": "to coin / shape a symbol (literarisch)",
+          "example_en": "In the snow chapter Mann coins an image that has occupied scholarship to this day."
+        },
+        {
+          "meaning_en": "to put something into words (standardsprachlich)",
+          "example_en": "What Hans Castorp experiences in the dream can only be put into words incompletely — and that is precisely the point."
+        },
+        {
+          "meaning_en": "the through-line, the unifying thread (standardsprachlich)",
+          "example_en": "The through-line of my essay is the double movement of preserving the image and discursivising it."
+        }
+      ],
+      "sentences_pronunciation_focus_en": [
+        [
+          "Schneelandschaft → SHNAY-lahnt-shahft — 'Schn' is 'sh' + 'n', no English 'sk' sound",
+          "Bedeutungsgeflecht → buh-DOY-toongs-guh-flekht — 'eu' is 'oy' as in 'boy'",
+          "Selbstaufgabe → ZELP-st-owf-gah-buh — 'au' is 'ow' as in 'how'"
+        ],
+        [
+          "allegorische → ah-leh-GOH-rish-uh",
+          "hermeneutisch → her-meh-NOY-tish — 'eu' is 'oy'",
+          "widerstreitend → VEE-der-shtry-tend — 'w' is 'v', 'ei' is 'eye'"
+        ],
+        [
+          "Blumenberg → BLOO-men-berk — final 'g' devoices to 'k'",
+          "ornamental → or-nah-men-TAHL",
+          "Vereindeutigung → fer-EYEN-doy-ti-goong — 'ei' is 'eye', 'eu' is 'oy'"
+        ],
+        [
+          "Konjunktion → kon-yoonk-tsi-OHN — 'j' is English 'y'",
+          "abendländisch → AH-bent-len-dish",
+          "Tiefenschicht → TEE-fen-shikht — soft 'ch' as in Scottish 'huge'"
+        ],
+        [
+          "entzaubern → ent-TSOW-bern — 'z' is 'ts', 'au' is 'ow'",
+          "Vieldeutigkeit → FEEL-doy-tikh-kite — 'ei' at the end is 'eye'",
+          "Diskursivierungspflicht → dis-koor-zee-fee-TSEE-roongs-pflikht"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        [],
+        [
+          "symbol metaphor"
+        ]
+      ],
+      "vocab_pronunciation_en": [
+        "dahs zoom-BOHL / dee ah-leh-GOH-ree-uh — 'y' in Symbol is short 'u' like 'put'",
+        "dee meh-TAH-fer / meh-toh-NEW-mee-uh — 'y' is the rounded 'ee' (lips for 'oo', say 'ee')",
+        "dahs buh-DOY-toongs-guh-flekht — 'eu' is 'oy', 'ch' is hard back-of-throat",
+        "dee FEEL-doy-tikh-kite — long 'ee' in 'Viel', 'ei' at end is 'eye'",
+        "dee ahp-zoh-LOO-tuh meh-TAH-fer — long 'oo' as in 'food'",
+        "dee fer-EYEN-doy-ti-goong — 'ei' is 'eye', 'eu' is 'oy'",
+        "dee in-ter-tex-too-EL-luh TEE-fen-shikht — stress on 'EL'",
+        "dahs BIL-der-zer-vwahr — French loan, final 'r' soft",
+        "ent-TSOW-bern — 'z' is 'ts', 'au' is 'ow' as in 'how'",
+        "dee dis-koor-zee-fee-TSEE-roongs-pflikht — long compound; primary stress on TSEE"
+      ]
+    },
+    "lgenre_subversion": {
+      "cultural_notes_en": "Gattungstheorie (genre theory) in C2 Germanistik draws on a rich set of traditions. (1) GOETHE'S TRIAD: Goethe (with Schiller) established the classical triad Lyrik — Epik — Dramatik (Naturformen der Dichtung). Each Naturform has Wesensmerkmale (essential traits). That essentialist conception still has influence, even where it has been criticised. (2) JAUSS'S GATTUNGSGESCHICHTE: Hans Robert Jauss (Constance School) inverted it — Gattung is not a Naturform but a historically situated Erwartungshorizont (horizon of expectation). Every subversion and every rupture is needed to understand a genre as Prozess, not Substanz. (3) THREE MOMENTS from Schaeffer: Jean-Marie Schaeffer (in the German translation) distinguishes:\n- GENERIC NORM (what counts as a Bildungsroman?)\n- GENERIC READING (how do we read a Bildungsroman?)\n- GENERIC DYNAMICS (how does the genre shift?)\n\nDifference from English-language criticism: Anglo-American criticism, especially in its more populist registers, often slips into essentialism — each genre has its own nature (short story = short, novel = long). In C2 Germanistik, Gattung is a dynamic system, established by convention and broken open by subversion — both moves are productive.\n\nThe Bildungsroman in particular: Wilhelm Meisters Lehrjahre (1795–96) is the Urtext. The tradition runs through Schlegel, Stifter (Nachsommer), Keller (Grüner Heinrich), Hesse (Demian, Steppenwolf), Mann (Zauberberg, parodically). The subversive line: Walser (Jakob von Gunten), Bachmann (Malina), Bernhard (Auslöschung), Jelinek (Klavierspielerin). Every subversion is also a re-reading of the Goethean norm.\n\nWomen and subversion: feminist Bildungsroman criticism has insisted that the classical Bildungsroman tradition is gendered male — Wilhelm travels, learns, integrates. Female figures historically had no parallel Bildungsweg available to them. Bachmann's 'Malina' explores this — the female first-person narrator has no Bildungsweg towards Synthese, only a Verschwinden. The 'disappearing into the wall' at the end of the novel is a critical gesture.\n\nOn 'in der Wand verschwinden': this is Bachmann's famous closing of the novel — a verifiable literary-historical event, attested in every edition. A C2 reading may reference it. But DO NOT fabricate quoted Bachmann dialogue. Describe the closing event rather than quoting from it.\n\nOn drama theory: beyond the Bildungsroman, other genres have their own subversion traditions:\n- BÜRGERLICHES TRAUERSPIEL (Lessing, Schiller) — subverted by Brecht through Episches Theater\n- NOVELLE (Goethe's definition: 'unerhörte Begebenheit') — Kleist, Storm, Mann subvert via stream of consciousness\n- ROMAN — countless subversions from Schlegel ('Lucinde') to the present\n- LYRIK — Hölderlin's hymns subvert the ode tradition; Celan subverts the lyric self entirely\n\nOn Wirkungsgeschichte: subversion does not automatically 'succeed'. Wilhelm Meister has had centuries of effect; Bachmann's subversion only gained canonical status from the 1990s onwards. Wirkungsgeschichte is itself a research object.\n\nCore reference literature:\n- Goethe & Schiller, 'Über epische und dramatische Dichtung' (1797)\n- Hans Robert Jauss, 'Theorie der Gattungen und Literatur des Mittelalters' (1972)\n- Jean-Marie Schaeffer, 'Was ist eine literarische Gattung?' (German 1990)\n- Klaus W. Hempfer, 'Gattungstheorie' (1973) — structuralist classic\n- Mikhail Bakhtin, 'Formen der Zeit und des Chronotopos im Roman' (German edition)",
+      "tip_advice_en": "Gattungssubversion analysis at C2 (5 steps):\n1. ESTABLISH THE NORM: what are the Wesensmerkmale of the genre historically? — e.g. Bildungsroman: young male protagonist, journey, crisis, synthesis, integration into society\n2. IDENTIFY SUBVERSION POINTS: which norm-elements get broken? — in Bachmann: young male hero → female first-person narrator; synthesis → disappearance\n3. PRODUCTIVITY: rupture for its own sake or constructive re-reading? — Bachmann re-reads Goethe explicitly, breaks productively\n4. GENRE-HISTORICAL POSITIONING: is this an innovative solitary case or embedded in a tradition of subversion?\n5. READER EFFECT: what does the rupture do to the reader? — disappointed expectation as a cognitive gesture\n\nLanguage for Gattungssubversion analysis at C2:\n- 'Die Gattungserwartung wird systematisch unterlaufen' ('the genre expectation is systematically undermined')\n- 'Was als X anhebt, kulminiert in Y' ('what begins as X culminates in Y')\n- 'Die Konvention wird zugleich aufgerufen und destabilisiert' ('the convention is simultaneously invoked and destabilised')\n- 'Subversion gelingt nicht als bloßer Bruch, sondern als produktive Re-Lektüre' ('subversion succeeds not as bare rupture but as productive re-reading')\n- 'Die Geste der Verweigerung ist ohne ihren ironischen Bezug auf X nicht zu denken' ('the gesture of refusal is unthinkable without its ironic relation to X')\n- 'Die Gattung erweist sich nicht als statisches Schema, sondern als historisch bewegliches Erwartungssystem' ('the genre proves to be not a static schema but a historically mobile system of expectations')\n- 'Stabilität wird allererst durch ihre Brüche sichtbar' ('stability only becomes visible through its ruptures')\n\nJaussian move:\n- 'Im Sinne von Jauss erweist sich die Gattung als Erwartungshorizont, der durch Subversionen historisch bewegt wird' ('in Jauss's sense the genre proves to be a horizon of expectation that is historically moved by subversions')\n\nFeminist move:\n- 'Die klassische Bildungsromankonvention ist gendered male konstruiert — der weibliche Held bricht nicht zufällig die Gattung, sondern macht ihre Voraussetzung sichtbar' ('the classical Bildungsroman convention is gendered male — the female protagonist does not break the genre by accident, she makes its presupposition visible')\n\nWhen subversion fails or is 'only' variation:\n- 'Hier handelt es sich nicht um Subversion, sondern um Variation innerhalb der Konvention' ('this is not subversion, but variation within the convention')\n- 'Der Text bleibt formal innerhalb der Gattung, ohne ihren Erwartungshorizont zu sprengen' ('the text stays formally within the genre without bursting its horizon of expectation')\n\nWhen reception shifts:\n- 'Was zur Entstehungszeit als Provokation galt, ist heute zum kanonischen Bestandteil der Gattung geworden' ('what was felt as provocation at the time of writing has now become a canonical part of the genre')\n\nAbsolute don'ts:\n- 'Bachmann verlässt die Bildungsroman-Tradition' (far too naive — she subverts it, she doesn't leave it behind)\n- 'X gehört nicht zur Gattung Y' (essentialist claim instead of historical one)\n- Fabricated Bachmann / Goethe / Mann quotations\n- Anachronisms — applying Goethe's Erwartungshorizont to Mann without mediation\n\nFinal tip: prepare a one-page Gattungs-Tabelle before drafting — norm elements in one column, subversion points in the second, productivity justification in the third. The visualisation helps avoid drift.",
+      "register_notes_en": "Gattungs-Subversion-Analyse at C2: Jauss's Erwartungshorizont vs Goethe's Naturformen — know both, lean towards the historical method. Functional-verb collocations: 'zur Disposition stellen' (place up for renegotiation), 'in Anspruch nehmen' (claim), 'Rechnung tragen' (take into account), 'gerecht werden' (do justice to). The Doppelbewegung formula is mandatory for subversion: 'zugleich aufrufen und destabilisieren'. For a feminist reading: position yourself within the existing scholarship (Weigel, Bürger) — never claim originality where it isn't yours. Konjunktiv I for theory: 'Jauss zufolge sei die Gattung als Erwartungshorizont zu begreifen'. Keep three concepts distinct — Subversion (productive, cognitive) ≠ bloßer Bruch (purely negative) ≠ Variation (within convention). When referencing real works (Bachmann's 'Malina', Goethe's 'Wilhelm Meister'): you may describe verified closing events ('in der Wand verschwindet'), but DO NOT fabricate quoted dialogue.",
+      "idiom_glosses_en": [
+        {
+          "meaning_en": "to pull the ground out from under something — destabilise its foundation (gehoben/literarisch)",
+          "example_en": "Bachmann's closing image pulls the ground out from under the Bildungsroman convention — and yet not, because the convention remains the reference point."
+        },
+        {
+          "meaning_en": "to turn something on its head, invert it (standardsprachlich)",
+          "example_en": "Bachmann turns the logic of the Bildungsroman on its head — synthesis becomes disappearance, integration becomes erasure."
+        },
+        {
+          "meaning_en": "to turn the tables (standardsprachlich)",
+          "example_en": "Subversive texts turn the tables: what appeared as the support of the tradition becomes the trigger of its crisis."
+        },
+        {
+          "meaning_en": "the stumbling block, the core sticking point (gehoben)",
+          "example_en": "Bachmann's female first-person narrator was the stumbling block for feminist Bildungsroman scholarship."
+        }
+      ],
+      "sentences_pronunciation_focus_en": [
+        [
+          "Bildungsroman → BIL-doongs-roh-mahn — 'u' is short like 'put'",
+          "unterlaufen → oon-ter-LOW-fen — 'au' is 'ow' as in 'how'",
+          "zur Disposition stellen → tsoor dis-poh-zee-tsi-OHN SHTEL-en — 'z' is 'ts'"
+        ],
+        [
+          "Subversion → zoob-ver-zi-OHN — initial 's' is 'z'",
+          "Re-Lektüre → ray lek-TUE-ruh — 'ü' is rounded 'ee' (lips for 'oo', say 'ee')",
+          "destabilisieren → deh-shtah-bee-lee-ZEE-ren — 'st' at start of stem is 'sht'"
+        ],
+        [
+          "Verweigerung → fer-VY-guh-roong — 'ei' is 'eye', 'w' is 'v'",
+          "Selbsterkenntnis → ZELP-st-er-KEN-tnis — final 's' crisp",
+          "ironischer Bezug → ee-ROH-ni-sher buh-TSOOK — 'z' is 'ts'"
+        ],
+        [
+          "Anomalie → ah-noh-mah-LEE-uh — stress on penultimate",
+          "konstitutiv → kon-shti-too-TEEF — final 'v' is crisp 'f'",
+          "gerecht werden → guh-REKHT VER-den — 'ch' is hard back-of-throat as in Scottish 'loch'"
+        ],
+        [
+          "mithin → mit-HIN — stress on the second syllable",
+          "Erwartungssystem → er-VAHR-toongs-zys-tem — 'w' is 'v', 'z' is 'ts'",
+          "allererst → AHL-er-erst — three syllables, stress at front"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        [],
+        [
+          "genre subversion"
+        ]
+      ],
+      "vocab_pronunciation_en": [
+        "dee GAH-toong — short 'a' as in 'father' cut short",
+        "dee GAH-toongs-er-vahr-toong — 'w' is 'v'",
+        "dee zoob-ver-zi-OHN — initial 's' voiced to 'z'",
+        "oon-ter-LOW-fen — 'au' is 'ow' as in 'how'",
+        "der BIL-doongs-roh-mahn — 'u' short as in 'put'",
+        "der er-VAHR-toongs-hoh-ri-tsont — 'z' in horizont is 'ts'",
+        "dee ray lek-TUE-ruh — 'ü' rounded (lips for 'oo', say 'ee')",
+        "deh-shtah-bee-lee-ZEE-ren — 'st' is 'sht' at stem start",
+        "dee ZELP-st-er-KEN-tnis — initial 's' is 'z'",
+        "kon-shti-too-TEEF — final 'v' devoiced to 'f'"
+      ]
+    },
+    "lcomparing_translations": {
+      "cultural_notes_en": "Übersetzungswissenschaft in C2 Germanistik has its own theoretical tradition — it is not simply Anglo-American Translation Studies in German. (1) THE BENJAMIN PARADIGM: Walter Benjamin's 'Die Aufgabe des Übersetzers' (1923, preface to his Baudelaire translation) revolutionised translation theory. The core thought: translation does not serve information (Mitteilung); translation tries to break the limits of its own language in order to let 'reine Sprache' (pure language) sound through. The famous formulation, verifiable and quotable: 'Eine wirkliche Übersetzung ist durchscheinend, sie verdeckt nicht das Original.' A C2 analyst has to know this text. (2) THE SCHLEIERMACHER DICHOTOMY: Friedrich Schleiermacher ('Über die verschiedenen Methoden des Übersetzens', 1813) distinguishes 'bringing the reader to the writer' (foreignising) from 'bringing the writer to the reader' (domesticating). Every modern translation debate eventually circles back to this dichotomy. (3) WIRKUNGSGESCHICHTE: translations are never neutral. The Schlegel–Tieck Shakespeare (1797–1810ff.) 'Germanised' Shakespeare so thoroughly that Heine could quip: 'Shakespeare belongs to Germany.' That Wirkungsgeschichte still shapes how Germans read Shakespeare today.\n\nDifference from English-language practice: in everyday English-speaking criticism, translations are still often judged simply as 'faithful' or 'free'. In C2 Germanistik that dichotomy is too crude — you have to work with the theoretical presuppositions of each Übersetzungsschule.\n\nOne important point: DO NOT 'verteilen Noten' (hand out grades) — that is 'school' literary criticism, not Wissenschaft. A C2 analyst makes visible the Voraussetzungen of each translation; they don't declare a winner.\n\nOn Schlegel–Tieck Shakespeare: August Wilhelm Schlegel and Ludwig Tieck (with Tieck's daughter Dorothea) — the classic from the early 1800s. Characteristics: 'edler Stil', romantic congeniality, very elevated language. Strengths: rhythm, prosodic precision. Weaknesses: smooths over Shakespeare's ruptures, sentimentalises.\n\nOn Erich Fried's Shakespeare (1960s–70s): a poet producing new translations for the stage. Characteristics: contemporary, robust, refuses romanticisation. Strengths: speakability, theatre practice. Weaknesses: occasional modernisms feel anachronistic.\n\nOn Frank Günther's Shakespeare (1990s–2010s): the most ambitious complete re-translation. Characteristics: bilingual editions (German with the English), annotations, ruptures preserved. Strengths: scholarly precision. Weaknesses: less 'singing' than Schlegel.\n\nComparison methodology:\n1. SAMPLE SELECTION: the same passage translated by several translators\n2. ANALYTICAL AXES: lexical, syntactic, prosodic, semantic, pragmatic\n3. IDENTIFY THE PRESUPPOSITIONS: which Übersetzungs-Programm sits behind it?\n4. ASSESS THE EFFECT: what does each choice do for a German reader?\n5. SYNTHESIS: what does the comparison reveal about the original that was not visible before?\n\nOn Hölderlin's Sophocles: an extreme case — in 1804 Friedrich Hölderlin translated Sophocles so literally that Schiller and Goethe called it 'mad'. The contemporary verdict is the opposite: perhaps the most productive translation method in the German tradition. Walter Benjamin honoured Hölderlin as the ideal-typical translator. A C2 analyst knows this scholarly history.\n\nOn Celan's translations: Paul Celan translated Mandelstam, Apollinaire, Shakespeare's sonnets — his translating is itself a poetic act. A C2 analyst can read Celan's Apollinaire translations as original work.\n\nCore reference literature:\n- Walter Benjamin, 'Die Aufgabe des Übersetzers' (1923)\n- Friedrich Schleiermacher, 'Über die verschiedenen Methoden des Übersetzens' (1813)\n- George Steiner, 'Nach Babel' (German 1981) — universal translation theory\n- Antoine Berman, 'L'épreuve de l'étranger' (German title 'Der Schock des Fremden') — foreignising translation\n- Friedmar Apel, 'Sprachbewegung' — German translation history\n- Norbert Greiner, 'Übersetzung und Literaturwissenschaft' — methodology",
+      "tip_advice_en": "Übersetzungsvergleich at C2 (5 steps):\n1. SELECT THE CORPUS: two or three translations of the same original — same excerpt, comparable length\n2. CARTOGRAPHY: capture the differences systematically — no value judgements yet, just observations\n3. IDENTIFY THE PRESUPPOSITIONS: which Übersetzungs-Programme lie behind each set of choices?\n4. FEED BACK: what do the differences say about the original?\n5. THEORETICAL POSITIONING: Schleiermacher's dichotomy? The Benjamin paradigm? Berman?\n\nLanguage for Übersetzungsvergleich at C2:\n- 'Der Übersetzungsvergleich erweist sich als Lehrstück hermeneutischer Differenz' ('comparing translations turns out to be a lesson in hermeneutic difference')\n- 'Keine Übertragung kann das Original unverstellt zur Sprache bringen' ('no translation can bring the original to expression undisguised')\n- 'Mit Benjamins ›Aufgabe des Übersetzers‹ lässt sich die Übersetzung als eigenständiges literarisches Verfahren begreifen' ('with Benjamin's essay we can grasp translation as a literary procedure in its own right')\n- 'Die Schlegelsche Übersetzung kanonisierte X um den Preis einer Glättung' ('Schlegel's translation canonised X at the price of a smoothing')\n- 'Die analytische Aufgabe besteht nicht im Verteilen von Noten, sondern im Sichtbarmachen impliziter Voraussetzungen' ('the analytical task is not to hand out grades but to make implicit presuppositions visible')\n- 'An deren Bruchlinien kommt das Original selbst neu zur Erscheinung' ('at those fault lines the original itself comes back into view')\n\nSchleiermacher move:\n- 'Schlegel verfolgt das einbürgernde Verfahren — er bringt Shakespeare zum deutschen Leser' ('Schlegel follows the domesticating method — he brings Shakespeare to the German reader')\n- 'Hölderlin hingegen verfolgt das verfremdende Verfahren — er bringt den Leser zu Sophokles' ('Hölderlin, on the other hand, follows the foreignising method — he brings the reader to Sophocles')\n\nBenjamin move:\n- 'In Benjamins Sinn lässt sich Hölderlin als idealtypisch begreifen — die Übersetzung verdeckt nicht das Original, sondern lässt es durchscheinen' ('in Benjamin's sense Hölderlin is ideal-typical — the translation does not cover the original, it lets it shine through')\n\nSpecific analytical techniques:\n- LEXICAL CHOICE: 'Wo Schlegel ›X‹ wählt, wählt Fried ›Y‹ — der Unterschied verschiebt das semantische Feld von Z zu W' ('where Schlegel chooses X, Fried chooses Y — the difference shifts the semantic field from Z to W')\n- SYNTACTIC STRUCTURE: 'Schlegel folgt der hypotaktischen Tradition; Günther bricht in Parataxe — eine zeitgenössische Lesbarkeit kostet die rhetorische Schwere' ('Schlegel follows the hypotactic tradition; Günther breaks into parataxis — contemporary readability comes at the cost of rhetorical weight')\n- PROSODY: 'Beide bewahren den Blankvers, aber Frieds Caesuren sind unregelmäßiger — was die Nähe zur sprechbaren Bühnensprache erkauft' ('both preserve the blank verse, but Fried's caesuras are more irregular — which buys closeness to a speakable stage idiom')\n- SEMANTICS: 'Die ›dejection‹ Hamlets ist bei Schlegel ›Schwermut‹ — bei Günther ›Verdüsterung‹ — der Unterschied verlagert das Stimmungsspektrum' ('Hamlet's dejection becomes Schwermut in Schlegel and Verdüsterung in Günther — the difference shifts the mood spectrum')\n- CULTURAL ALLUSIONS: 'Was bei Shakespeare eine elisabethanische Anspielung ist, fällt bei Schlegel weg, wird bei Günther erläutert' ('what is an Elizabethan allusion in Shakespeare drops out in Schlegel and is glossed in Günther')\n\nWhen drawing conclusions:\n- 'Der Vergleich legt nahe, dass das Original mehrere zugleich produktive Lektüren erlaubt — keine Übertragung kann sie alle zur Geltung bringen' ('the comparison suggests that the original allows several simultaneously productive readings — no translation can give them all their full force')\n- 'Erst die Pluralität der Übertragungen macht die Pluralität des Originals sichtbar' ('only the plurality of translations makes the plurality of the original visible')\n\nAbsolute don'ts:\n- 'X ist die bessere Übersetzung' (evaluative schema, not Wissenschaft)\n- 'Y verfehlt das Original' (presupposes that there is one 'correct' translation)\n- 'Schlegel klingt schöner' (subjective, untheoretical)\n- Fabricated Schlegel/Fried/Günther quotations — only verified references, or paraphrase analytically\n\nFinal tip: prepare a one-page Vergleichstabelle — columns: Schlegel / Fried / Günther; rows: lexical / syntactic / prosodic / semantic. The visualisation makes systematic analysis much easier.",
+      "register_notes_en": "Übersetzungsvergleich at C2: Schleiermacher's dichotomy (foreignising/domesticating) + Benjamin (reine Sprache) + Berman (Schock des Fremden) form the theoretical reference frame. NEVER 'verteilen Noten' — the analytical task is Sichtbarmachen impliziter Voraussetzungen. Functional-verb collocations: 'zur Sprache bringen' (bring to expression), 'zur Erscheinung kommen' (come into view), 'zur Geltung bringen' (give full force to), 'durchscheinend lassen' (let shine through). Konjunktiv I for Benjamin citation: 'Benjamin zufolge sei die Aufgabe des Übersetzers…'. When you reference quotations, only use verified ones (Benjamin's 'durchscheinend' formulation is fine). DO NOT fabricate Schlegel/Fried/Günther quotations. Analytical axes — lexical / syntactic / prosodic / semantic / pragmatic — are mandatory and must be systematic. Wirkungsgeschichte has to be situated — the Schlegel–Tieck classic shaped German Shakespeare reception for the long haul.",
+      "idiom_glosses_en": [
+        {
+          "meaning_en": "to do violence to words — bend language to fit a form (gehoben/literarisch)",
+          "example_en": "Hölderlin does violence to the German words in order to make Sophocles' Greek ruptures audible."
+        },
+        {
+          "meaning_en": "to pour old wine into new wineskins — put old content into new form (gehoben; biblical in origin)",
+          "example_en": "Fried's translation pours Shakespeare's wine into new wineskins — the spirit stays, the vessel is contemporary."
+        },
+        {
+          "meaning_en": "to stay on the surface — not to go deep (standardsprachlich)",
+          "example_en": "A translation that only stays on the surface misses what Benjamin calls 'pure language'."
+        },
+        {
+          "meaning_en": "to clothe something in other words — paraphrase (standardsprachlich)",
+          "example_en": "Translating does not mean clothing the same content in other words — it means letting the original shine through."
+        }
+      ],
+      "sentences_pronunciation_focus_en": [
+        [
+          "Übersetzungsvergleich → UE-ber-zet-soongs-fer-glykh — 'ü' is rounded 'ee', final 'ch' is hard back-of-throat",
+          "hermeneutisch → her-meh-NOY-tish — 'eu' is 'oy'",
+          "unverstellt → OON-fer-shtelt — 'v' is 'f', 'st' is 'sht'"
+        ],
+        [
+          "Aufgabe des Übersetzers → OWF-gah-buh des UE-ber-ZET-sers — 'au' is 'ow', 'z' is 'ts'",
+          "Derivat → deh-ree-VAHT — stress on final syllable",
+          "reine Sprache → RY-nuh SHPRAH-khuh — 'ei' is 'eye', 'sp' is 'shp'"
+        ],
+        [
+          "kanonisierte → kah-noh-nee-ZEER-tuh — 'z' is 'ts'",
+          "Glättung → GLET-toong — 'ä' is short 'eh' as in 'bet'",
+          "aufgebrochen → OWF-guh-broh-khen — final 'ch' hard back-of-throat"
+        ],
+        [
+          "Verteilen von Noten → fer-TY-len fon NOH-ten — 'ei' is 'eye', 'v' in von is 'f'",
+          "Sichtbarmachen → ZIKHT-bar-mah-khen — 's' is 'z', 'ch' soft in Sicht- and hard in -mach-",
+          "Bruchlinien → BROOKH-lee-nee-en — 'ch' hard, 'u' long like 'food'"
+        ],
+        [
+          "Übertragungen → UE-ber-TRAH-goong-en — 'ü' rounded",
+          "Möglichkeitsraum → MOEK-likh-kites-rowm — 'ö' rounded 'eh', 'eu' / 'au' both 'ow' here; ei is 'eye'",
+          "Erstrezeption → ERST-reh-tsep-tsi-OHN — two 'ts' clusters"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        [],
+        [
+          "translation comparison"
+        ]
+      ],
+      "vocab_pronunciation_en": [
+        "dee UE-ber-ZET-soong — 'ü' rounded (lips for 'oo', say 'ee')",
+        "der UE-ber-ZET-soongs-fer-glykh — final 'ch' hard back-of-throat",
+        "fer-FREM-dend / EYEN-buer-gernd — 'ei' is 'eye', 'ü' rounded",
+        "dee GLET-toong — short 'eh' as in 'bet'",
+        "dee FOR-ow-zet-soong — 'au' is 'ow' as in 'how'",
+        "kah-noh-nee-ZEER-en — 'z' is 'ts'",
+        "dee RY-nuh SHPRAH-khuh — 'sp' is 'shp', 'ch' hard",
+        "dee BROOKH-lee-nee-uh — 'ch' hard, 'u' long",
+        "der MOEK-likh-kites-rowm — 'ö' rounded 'eh'",
+        "tsoor er-SHY-noong KOM-men — 'z' is 'ts', 'ei' in Erscheinung is 'eye'"
+      ]
+    },
+    "lbiographical_context": {
+      "cultural_notes_en": "The debate between Werkimmanenz (intrinsic, work-immanent reading) and biographical context has a particularly rich history in German Germanistik. (1) GEISTESGESCHICHTLICHE TRADITION (1920s–30s): Wilhelm Dilthey installed biographisches Verstehen as the core of the Geisteswissenschaften — the author's life was the key to the Lebensgefühl, and so to the work. This position remained dominant until WWII. (2) WERKIMMANENZ as a counter-movement (1940s–60s): Wolfgang Kayser, Emil Staiger, Max Wehrli — werkimmanente Interpretation refused biographical reading as methodologically sloppy. The work has to speak for itself. The parallel in English-language criticism is Anglo-American New Criticism. (3) RETURN of contextualisation (1970s onward): the Konstanz school, then discourse analysis, then Cultural Studies — biographical material comes back, but as a 'discursive field', not as causal explanation. Pierre Bourdieu's 'biographical illusion' (1986) warns against essentialist biography.\n\nDifferent from the Vietnamese tradition (and from a lot of mainstream English-language criticism, frankly): Vietnamese literary criticism is heavily biographical — 'Nguyễn Du was in state X when he wrote The Tale of Kiều' is standard. In post-1970 German Germanistik at the C2 level, biographical understanding has to be reflektiert — never as causal explanation, only as discursive contextualisation.\n\nOne important detail: Roland Barthes' 'La mort de l'auteur' (1967, German 'Der Tod des Autors' 2000) and Michel Foucault's 'Qu'est-ce qu'un auteur?' (1969, translated into German early on) were provocations meant to break the biographistic short-circuit. But neither Barthes nor Foucault advocated 'never mention biography' — they advocated reflective distance.\n\nThe Kafka case is especially complex. Kafka's diaries, letters (to Felice, to Milena, the 'Letter to His Father') are exceptionally rich. Tradition one reads Kafka through biography: Max Brod, Walter Benjamin, later Reiner Stach's three-volume biography (2002–2008). Tradition two reads Kafka werkimmanent — as an allegorist of bureaucracy / modernity / language, independent of biography.\n\nThe C2 position is a productive double-move. Reading 'Letter to His Father' purely as biographical evidence is a cheat — it's itself a letter, i.e. a performance; reading it literarisch / as self-staging is productive. Reading the work werkimmanent without any biographical knowledge is impoverishing; reading it as causal explanation is reductive.\n\nOn Bourdieu's 'biographical illusion': a warning against the idea that a biography is a coherent, causally linked life-story. Biographies are retrospective constructions. The C2 analyst has to keep this in mind whenever using biographical material.\n\nOn Goethe-Biographie: Goethe self-mythologised in 'Dichtung und Wahrheit', mixing autobiographical and literary procedure. A C2 reading recognises that 'The Sorrows of Young Werther' is not direct autobiography even though Goethe did have his own Lotte experience. The literary transformation is essential.\n\nOn the 'biographical fallacy': Wimsatt and Beardsley's 'Intentional Fallacy' (1946) is the Anglo-American parallel. German reception via Stanzel, Hamburger. At C2 you should know the Anglo-American tradition to be able to compare.\n\nCore further reading:\n- Roland Barthes, 'The Death of the Author' (1967)\n- Michel Foucault, 'What Is an Author?' (1969)\n- Pierre Bourdieu, 'The Biographical Illusion' (1986)\n- W.K. Wimsatt & M.C. Beardsley, 'The Intentional Fallacy' (1946)\n- Reiner Stach, 'Kafka' (3 vols., 2002–2008) — modern biography as a model\n- Klaus-Detlef Müller, 'Autobiographie und Roman' — autobiographical writing in Germany\n- Sigrid Weigel, 'Bilder des kulturellen Gedächtnisses' — biography and memory",
+      "tip_advice_en": "C2 biography-and-work analysis in five steps:\n1. METHODOLOGICAL SELF-POSITIONING. Werkimmanenz / biographism / productive double-move — where do you stand theoretically?\n2. INTERROGATE THE BIOGRAPHICAL MATERIAL. Is this a diary (self-presentation)? A letter (communicative, performative)? A third-party source? Self-mythologisation?\n3. IDENTIFY THE LINK TO THE WORK. At which points does the work touch biographical material — literally, motivically, structurally?\n4. ANALYSE THE DIFFERENCE. What does the literary transformation produce that wasn't in the biographical material?\n5. TIE IT BACK. What does that difference tell us about the work?\n\nC2 phrases for biography-and-work analysis:\n- 'Die methodische Spannung zwischen Werkimmanenz und biographischer Kontextualisierung gehört zu den Grunddebatten der Germanistik' (the methodological tension between intrinsic interpretation and biographical contextualisation is one of the foundational debates of Germanistik)\n- 'Roland Barthes' Verkündigung des ‚Tod des Autors' lässt sich als korrektives Manifest gegen biographistische Kurzschlüsse begreifen' (Barthes' announcement of the 'death of the author' can be read as a corrective manifesto against biographistic short-circuits)\n- 'Im Fall X erweist sich die Spannung als besonders fruchtbar — sein Schreiben verweist beständig auf biographische Substrate, ohne sich in ihnen zu erschöpfen' (in case X the tension is particularly productive — the writing constantly refers back to biographical substrates without being exhausted by them)\n- 'Die Aufgabe der Kritik ist mithin nicht, die Biographie hinter den Text zu setzen, sondern die produktive Differenz als analytischen Gegenstand zu fassen' (the task of criticism is therefore not to put biography behind the text, but to grasp the productive difference as the analytical object)\n- 'Eine reflektierte Biographik versteht sich nicht als Schlüssel zum Werk, sondern als ergänzende Perspektive' (a self-aware biographical approach sees itself not as the key to the work but as a complementary perspective)\n\nThe Bourdieu move:\n- 'Im Sinne von Bourdieus ‚biographischer Illusion' ist daran zu erinnern, dass Biographien nachträgliche Konstruktionen sind, keine vorgängigen Tatsachen' (following Bourdieu's 'biographical illusion', it's worth remembering that biographies are retrospective constructions, not pre-existing facts)\n\nThe Kafka move:\n- 'Kafkas ‚Brief an den Vater' lässt sich nicht als biographisches Dokument im naiven Sinn lesen — er ist selbst literarische Selbstinszenierung' (Kafka's 'Letter to His Father' can't be read as a biographical document in any naïve sense — it is itself literary self-staging)\n\nThe Goethe move:\n- 'Auch Goethes ‚Dichtung und Wahrheit' verschränkt autobiographisches und literarisches Verfahren — der Titel selbst markiert die Aporie' (Goethe's 'Dichtung und Wahrheit' interweaves the autobiographical and the literary — the title itself signposts the aporia)\n\nWhen biographical speculation is tempting:\n- 'An dieser Stelle ist Vorsicht geboten — es liegt nahe, biographisches Material heranzuziehen, doch der Werkbefund trägt diese Spekulation nicht' (caution is warranted here — biographical material is at hand, but the textual evidence won't carry the speculation)\n- 'Die Versuchung des biographistischen Kurzschlusses ist abzuwehren' (the temptation of the biographistic short-circuit has to be resisted)\n\nWhen the work shows productive difference:\n- 'Was im Brief autobiographisches Bekenntnis war, wird im Werk literarische Konstruktion — der Wechsel des Modus ist konstitutiv' (what was autobiographical confession in the letter becomes literary construction in the work — the change of mode is constitutive)\n\nNever do this:\n- 'Werther IS Goethe' (identification, biographistic)\n- 'Kafka wrote that because his father was authoritarian' (causal short-circuit)\n- 'Biography explains the work' (essentialist)\n- Buying self-mythologisation uncritically — Goethe's 'Dichtung und Wahrheit', Mann's diaries, Kafka's letters are all performative\n\nLast tip: before citing anything biographical, ask what the epistemic status of the source is. Diary (private but performative?), letter (communicative, situational?), essay (public, programmatic?), third-party source (eyewitness, secondary, rumour?). Different sources carry different argumentative weight.",
+      "register_notes_en": "C2 biography-and-work analysis: distinguish Werkimmanenz (Kayser, Staiger) / biographism (Dilthey tradition) / productive double-move (post-1970 Konstanz school plus Bourdieu). Theoretical anchors: Barthes 'Death of the Author', Foucault 'What Is an Author?', Bourdieu 'biographical illusion'. Konjunktiv I for citing theory: 'Bourdieu zufolge sei die Biographie als nachträgliche Konstruktion zu begreifen'. Funktionsverbgefüge: 'hinter den Text setzen' (place behind the text), 'als analytischen Gegenstand fassen' (treat as analytical object), 'in Anschluss an X arbeiten' (work in the line of X). Source status has to be reflected on: diary ≠ letter ≠ essay ≠ third-party source. Self-mythologisation (Goethe's 'Dichtung und Wahrheit', Mann's diaries, Kafka's letters) must be handled critically, not naïvely. Avoid 'X IS the author' (identification); avoid 'biography explains the work' (causal short-circuit). Key formula: 'productive difference as the analytical object — biographical work as complementary, not substitutive perspective'.",
+      "idiom_glosses_en": [
+        {
+          "meaning_en": "to find the final explanation (gehoben)",
+          "example_en": "The biographistic reading promises to find the key to the work — a promise the textual evidence rarely redeems."
+        },
+        {
+          "meaning_en": "to suspect a hidden cause (gehoben)",
+          "example_en": "Sloppy practice suspects something biographical behind every literary gesture — analysis of the work suffers under this inverted hypothesising."
+        },
+        {
+          "meaning_en": "to hold in suspension, to keep a productive tension open (gehoben)",
+          "example_en": "A successful reading keeps the difference between letter and work in suspension — it doesn't resolve it prematurely."
+        },
+        {
+          "meaning_en": "to reshuffle the deck, to reset the interpretive premises (standardsprachlich)",
+          "example_en": "Bourdieu's 'biographical illusion' reshuffles the deck of biographical writing — without taking it out of the game."
+        }
+      ],
+      "sentences_pronunciation_focus_en": [
+        [
+          "methodisch → meh-TOH-dish",
+          "Kontextualisierung → kon-text-too-ah-lee-ZEE-roong",
+          "Grunddebatten → GROONT-deh-bah-tn"
+        ],
+        [
+          "Verkündigung → fair-KUEN-dee-goong",
+          "biographistisch → bee-oh-grah-FIS-tish",
+          "Kurzschlüsse → KOORTS-shlue-suh"
+        ],
+        [
+          "fruchtbar → FROOKHT-bar (hard ch like Scottish 'loch')",
+          "Substrate → zoop-STRAH-tuh",
+          "erschöpfen → air-SHUERP-fn"
+        ],
+        [
+          "mithin → mit-HEEN",
+          "Differenz → dif-eh-RENTS",
+          "analytisch → ah-nah-LUE-tish"
+        ],
+        [
+          "reflektiert → reh-flek-TEERT",
+          "Biographik → bee-oh-GRAH-fik",
+          "ergänzend → air-GEN-tsnd"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        [],
+        [
+          "biography work"
+        ]
+      ],
+      "vocab_pronunciation_en": [
+        "dee VAYRK-ee-mah-nents — 'Werk' rhymes with 'lurk', 'mah' like 'ma'",
+        "dee bee-oh-GRAH-fish-uh kon-text-too-ah-lee-ZEE-roong",
+        "dair bee-oh-grah-FIS-tish-uh KOORTS-shloos — 'Kurz' rhymes with 'curts'",
+        "dee bee-oh-GRAH-fish-uh ee-loo-zee-OHN",
+        "dee ZELPST-in-tseh-nee-roong — 'tsay' = 'ts' + 'ay' as in 'say'",
+        "dee ZELPST-mue-toh-loh-gee-ZEE-roong",
+        "dair TOHT des OW-tors — 'Tod' rhymes with 'goat' minus the 'g'",
+        "dee bee-oh-GRAH-fik",
+        "dee ah-poh-REE-uh — four syllables, stress on REE",
+        "air-GEN-tsnd — soft 'g' as in 'gentle' won't work here; it's hard 'g' as in 'go'"
+      ]
+    },
+    "lreception_canon": {
+      "cultural_notes_en": "Canon criticism in C2 Germanistik has its own rich history and can't simply be reduced to the Anglo-American canon wars. (1) JAUSSIAN WIRKUNGSGESCHICHTE: Hans Robert Jauss founded Rezeptionsästhetik (the Konstanz school) from 1967 onward. Core claim: a work has no meaning outside its effect. Readings are part of the work itself. This position pushed back against the werkimmanent tradition. (2) THE 1990s CANON DISPUTE: Frigga Haug, Sigrid Weigel, Renate von Heydebrand, Renate Berger, Inge Stephan — feminist canon criticism. The charge: the German classical canon is historically gendered male. The response: feminist counter-canons (Bettina von Arnim, Karoline von Günderrode, Else Lasker-Schüler treated not as marginal but as central). (3) THE REICH-RANICKI EDITION: Marcel Reich-Ranicki (the FAZ literary critic) published 'Der Kanon' in 2002 — a five-volume personal selection of German literature. A controversial undertaking: one man (German-Jewish, FAZ-affiliated) decides what 'the canon' is. The response was a wave of counter-canon attempts.\n\nDifferent from Vietnam: the Vietnamese canon is largely stable (Kim Vân Kiều at the centre). In post-1990 German C2 criticism, the canon has been 'hollowed out' — not destroyed, but made visible as a construct.\n\nOne important detail: canon criticism does not advocate 'abandon the canon'. The formal C2 sentence is: 'Wer den Kanon historisiert, lässt ihn nicht hinter sich, sondern macht erst kritisch verfügbar, was ohne Reflexion als selbstverständlich erscheint'. The C2 position is reflektiert, not destruktiv.\n\nOn postcolonial readings of German literature: Edward Said's 'Orientalism' (1978, translated into German fairly quickly) was actually received quite late in Germanistik — only in the 1990s–2000s. Current research re-reads places such as:\n- Goethe's 'West-östlicher Divan' — read through the lens of Orientalism\n- Karl May — colonial imaginations\n- Hauff's 'Kalif Storch' — Orientalism\n- Kafka's 'In the Penal Colony' — colonial structures\n\nOn the concrete Wirkungsgeschichte of Goethe's 'Werther': initial scandal (Werther fever, the alleged wave of suicides). Then canonisation. Then nineteenth-century saccharine reception. Then Lukács reads it as a critique of the bourgeoisie. Then, after 1968, the left reads Werther as either a social conformist or a subversive — both arguments are defensible. Today: Werther scholarship is highly complex, with gender questions at the centre.\n\nOn Sebald's 'Luftkrieg und Literatur' (1999) controversy: Sebald argued that German literature had suppressed the trauma of the Allied bombing campaign. Massive backlash — Walser, Reich-Ranicki, Hage. That dispute is a case study in canonical memory politics.\n\nOn the Bocksgesang dispute: in 1993, Botho Strauß's essay 'Anschwellender Bocksgesang' in Der Spiegel polarised the feuilleton — was it a dangerous turn to the political right, or a culturally critical diagnosis? This dispute belongs to the reception history of contemporary German literature.\n\nOn canon research in Germanistik: Renate von Heydebrand & Simone Winko, 'Einführung in die Wertung von Literatur' (1996); John Guillory, 'Cultural Capital' (1993); Aleida Assmann, 'Erinnerungsräume' (1999) — canon criticism as memory studies.\n\nCore further reading:\n- Hans Robert Jauss, 'Literaturgeschichte als Provokation' (1967)\n- Hans Robert Jauss, 'Ästhetische Erfahrung und literarische Hermeneutik' (1982)\n- Renate von Heydebrand & Simone Winko, 'Einführung in die Wertung von Literatur' (1996)\n- Aleida Assmann, 'Erinnerungsräume' (1999) — cultural memory\n- Sigrid Weigel, 'Die Stimme der Medusa' (1987) — feminist canon criticism\n- Edward Said, 'Orientalism' (German 1981)\n- Marcel Reich-Ranicki (ed.), 'Der Kanon' (2002, 5 vols.) — read as a historical document of the debate",
+      "tip_advice_en": "C2 Wirkungsgeschichte analysis in five steps:\n1. DEFINE THE CORPUS. Reception history of what — a single work (Werther), an author (Goethe), a genre (Bildungsroman), an epoch (Weimar Classicism)?\n2. IDENTIFY THE PHASES: initial reception / canonisation / crisis / re-reading / present.\n3. NAME THE INSTITUTIONS: publishers, schools, universities, the feuilleton, prizes, canon editions.\n4. DOCUMENT THE CONTROVERSIES. Which disputes shaped which phase?\n5. BLIND SPOTS. What was passed over, overlooked, marginalised?\n\nC2 phrases for Wirkungsgeschichte analysis:\n- 'Die Wirkungsgeschichte ist nicht Anhängsel, sondern produktive Fortdauer in wechselnden Erwartungshorizonten' (reception history is not an appendix, it's the productive continuation of a work in shifting horizons of expectation)\n- 'Der Kanon erweist sich als Resultat institutioneller, ökonomischer und ideologischer Selektionsprozesse' (the canon turns out to be the result of institutional, economic and ideological selection processes)\n- 'Eine reflektierte Wirkungsgeschichtsforschung verfolgt nicht die Fortschreibung des Kanons, sondern die Rekonstruktion seiner Brüche' (a self-aware reception-history scholarship doesn't continue writing the canon — it reconstructs its ruptures)\n- 'Wer den Kanon historisiert, lässt ihn nicht hinter sich, sondern macht erst kritisch verfügbar, was als selbstverständlich erscheint' (historicising the canon doesn't leave it behind — it makes available for critique what otherwise looks self-evident)\n- 'Die Kanondebatten haben den vermeintlich gesicherten Bestand in seiner historischen Kontingenz aufgedeckt' (the canon debates have exposed the supposedly secured stock in its historical contingency)\n\nThe Jaussian move:\n- 'Im Sinne von Jauss erweist sich das Werk erst durch seine Wirkungsgeschichte als historisch — die Erstrezeption ist nur ein Moment unter vielen' (in Jauss's sense, the work becomes historical only through its reception history — first reception is just one moment among many)\n\nThe feminist move:\n- 'Die feministische Kanonkritik der achtziger und neunziger Jahre — Weigel, Heydebrand, Stephan — hat sichtbar gemacht, dass der klassische deutsche Kanon historisch gendered male konstruiert ist' (1980s–90s feminist canon criticism made visible the fact that the classical German canon is historically a male-gendered construction)\n\nThe postcolonial move:\n- 'Eine postkoloniale Re-Lektüre etwa von Goethes ‚West-östlichem Divan' fragt nicht, ob das Werk ‚orientalistisch' im pejorativen Sinn ist, sondern wie es sich zum diskursiven Feld des Orientalismus verhält' (a postcolonial re-reading of Goethe's 'West-östlicher Divan' doesn't ask whether the work is 'orientalist' in the pejorative sense, but how it positions itself in the discursive field of Orientalism)\n\nWhen defending the canon as a concept:\n- 'Eine Kanonkritik, die den Kanon nicht ganz auflöst, sondern auf seine Konstruktionsbedingungen reflektiert, leistet konstruktive Arbeit — keine Destruktion' (a canon criticism that doesn't dissolve the canon but reflects on its conditions of construction does constructive work — not destruction)\n\nWhen the canon shifts:\n- 'Was zur Erstrezeption marginalisiert wurde — Bettina von Arnim, Else Lasker-Schüler — wird im aktuellen Kanon zentral verhandelt' (what was marginalised at the time of first reception — Bettina von Arnim, Else Lasker-Schüler — is now treated centrally in the current canon)\n\nNever do this:\n- 'The canon has to be abolished' (destructive, untheoretical)\n- 'X belongs in the canon, Y doesn't' (a valuation move, not Wirkungsgeschichte)\n- A naïve 'honour the marginalised' politics without theoretical reflection\n- Equating canon with 'patriarchal / colonial power' tout court — historically there is more differentiation to do\n\nLast tip: draw up a Wirkungsgeschichte phase table for the key work. Columns = phases (first reception / canonisation / crisis / re-reading / present). Rows = institutions / main voices / blind spots. Visualising it helps you avoid a teleological narrative.",
+      "register_notes_en": "C2 Wirkungsgeschichte analysis: Jauss's Rezeptionsästhetik is the theoretical anchor. The phase architecture has to be chronological. The selection-mechanism triad — institutional / economic / ideological — has to be named explicitly at C2. Canon criticism is not destruktiv: 'wer den Kanon historisiert, lässt ihn nicht hinter sich' is mandatory. Konjunktiv I for theory: 'Jauss zufolge erweise sich das Werk erst durch seine Wirkungsgeschichte als historisch'. Funktionsverbgefüge: 'als Anhängsel verstehen' (treat as appendix), 'im Schatten von X stehen' (stand in X's shadow), 'zur Erscheinung kommen' (come into view), 'kritisch verfügbar machen' (make available for critique). Avoid 'X belongs in the canon, Y doesn't' (a valuation move); avoid 'the canon must be rejected' (destruktiv). Reich-Ranicki's edition (2002), Sebald's 'Luftkrieg und Literatur' (1999), and the Bocksgesang dispute (1995) are concrete canonical controversies you can reference.",
+      "idiom_glosses_en": [
+        {
+          "meaning_en": "to be in second place, eclipsed (standardsprachlich)",
+          "example_en": "Bettina von Arnim stood in Goethe's shadow for decades — feminist scholarship made her visible."
+        },
+        {
+          "meaning_en": "to bring to light, to expose (gehoben/standardsprachlich)",
+          "example_en": "The canon debates of the 1990s brought to light blind spots that had stayed invisible for generations."
+        },
+        {
+          "meaning_en": "to separate the wheat from the chaff (biblical) — to sift the essential from the inessential (gehoben)",
+          "example_en": "Canonisation tries to separate the wheat from the chaff — critical Wirkungsgeschichte asks who is doing the separating, by what criteria."
+        },
+        {
+          "meaning_en": "to prepare the ground, to lay the groundwork (standardsprachlich)",
+          "example_en": "Weigel's 'Die Stimme der Medusa' (1987) laid the ground for the feminist Bettina scholarship of the 1990s."
+        }
+      ],
+      "sentences_pronunciation_focus_en": [
+        [
+          "Wirkungsgeschichte → VEER-koongs-guh-shikh-tuh ('Wirk' starts with 'V', 'ch' is hard like in 'loch')",
+          "Anhängsel → AHN-heng-sl",
+          "Fortdauer → FORT-dow-er ('dow' as in 'how')"
+        ],
+        [
+          "naturwüchsig → nah-TOOR-vuek-zikh — 'ü' is rounded like saying 'ee' with lips for 'oo'",
+          "Selektionsprozesse → zeh-lek-tsee-OHNS-pro-tses-suh",
+          "Sichtbarmachung → ZIKHT-bar-mah-khoong"
+        ],
+        [
+          "Kanondebatten → kah-NOHN-deh-bah-tn",
+          "Personalkanon → per-zo-NAHL-kah-non",
+          "Kontingenz → kon-tin-GENTS"
+        ],
+        [
+          "Fortschreibung → FORT-shrai-boong ('schrei' rhymes with 'shy')",
+          "Verschiebungen → fair-SHEE-boong-n",
+          "blinde Flecken → BLIN-duh FLEK-n"
+        ],
+        [
+          "historisiert → his-toh-ree-ZEERT",
+          "verfügbar → fair-FUEG-bar — 'ü' rounded",
+          "selbstverständlich → ZELPST-fair-shtent-likh — soft 'ch' as in 'huge'"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        [],
+        [
+          "reception canon"
+        ]
+      ],
+      "vocab_pronunciation_en": [
+        "dee VEER-koongs-guh-shikh-tuh — 'W' is 'V', 'ch' hard like 'loch'",
+        "dair kah-NOHN — stress on the second syllable",
+        "dair air-VAR-toongs-ho-ri-tsont",
+        "dee kah-NOHN-deh-bah-tuh",
+        "dee zeh-lek-tsee-OHNS-pro-tses-suh",
+        "dair fair-MAYNT-likh guh-ZEE-kher-tuh buh-SHTANT",
+        "dee kon-tin-GENTS — 'g' hard as in 'go'",
+        "dee BLIN-dn FLEK-n",
+        "his-toh-ree-ZEE-rn",
+        "dair GAY-gn-kah-non — 'gay' for 'gegen-' onset"
+      ]
+    },
+    "ltheoretical_lenses": {
+      "cultural_notes_en": "Theoretical lenses in C2 Germanistik are never a one-pick situation — postwar Germanistik has lived through several theoretical turns, each with its own reception history. (1) FORMALIST TRADITION: Russian Formalism (Shklovsky, Tynyanov, Eikhenbaum, 1910s–30s), suppressed under Stalin, received in German Werkimmanenz (1940s–60s). Core categories: defamiliarisation (Verfremdung), device (Verfahren), sjuzhet vs fabula, dominant function. (2) STRUCTURALISM / POSTSTRUCTURALISM: French theory (Saussure → Barthes → Foucault → Derrida) received in German Germanistik in the 1970s–80s. Kittler revolutionised the field with 'Aufschreibesysteme 1800/1900' (1985) — Medienarchäologie as a distinctly German contribution. (3) FEMINIST TURN, 1970s–80s: Sigrid Weigel, Inge Stephan, Christa Bürger — feminist Germanistik institutionalised itself. Early phase: rediscovering women writers. Later phase: gender as an analytical category for the 'male' canon too. (4) POSTCOLONIAL TURN, 1990s onward: Said, Spivak, Bhabha received relatively late in Germanistik (around the 2000s). Current research re-reads Goethe's 'West-östlicher Divan', Karl May, Hauff's fairy tales, Kafka's 'Penal Colony' through a postcolonial lens. (5) DECOLONIAL THEORY, 2010s onward: Walter Mignolo, Aníbal Quijano — goes beyond the postcolonial by asking after geopolitical knowledge production.\n\nDifferent from Vietnam: Vietnamese Germanistik tends to operate eclectically — multiple theoretical lenses are stacked additively without explicit reflection on their premises. In German C2, every choice of lens has to be justified and its limits flagged.\n\nOne important detail: theoretical lenses are not 'tools' you can pick up neutrally. Every lens makes certain structures visible AND obscures others. A C2 critic is aware of this 'theoretical indebtedness'.\n\nOn COMBINING lenses: a rigid 'lens loyalty' is out — feminist-postcolonial double readings, formalist-feminist syntheses, etc. all happen. But they aren't infinitely combinable. The theoretical premises can contradict. Strict formalism, for example, brackets out gender and colonialism — combining it with feminism or postcolonialism takes meta-theoretical reflection.\n\nOn Kittler's position: Friedrich Kittler attacked Germanistik as a 'hermeneutic enterprise' and argued for Medienarchäologie. His position is neither formalist, feminist, nor postcolonial — it's technological-historical. A C2 analyst has to know Kittler as a distinctively German position between Formalism and discourse analysis.\n\nOn Sloterdijk: Peter Sloterdijk's 'Spheres' trilogy (1998–2004), 'You Must Change Your Life' (2009) — anthropological, philosophical-cultural, often polemical. The position runs sideways to the academic lenses; useful as a reference for culturally-philosophical readings.\n\nOn Luhmann: Niklas Luhmann's systems theory applied to literature (Luhmann himself, later Werber, Plumpe). Literature as a 'system' with its own logic. Neither formalist nor hermeneutic — systems-theoretical.\n\nCore further reading:\n- Viktor Shklovsky, 'Theory of Prose' (German 1966)\n- Friedrich Kittler, 'Aufschreibesysteme 1800/1900' (1985)\n- Sigrid Weigel, 'Die Stimme der Medusa' (1987)\n- Edward Said, 'Orientalism' (German 1981)\n- Gayatri Chakravorty Spivak, 'Can the Subaltern Speak?'\n- Homi Bhabha, 'The Location of Culture' (German 'Die Verortung der Kultur', 2000)\n- Walter Mignolo, 'Epistemic Disobedience' (German 'Epistemischer Ungehorsam', 2012)\n- Niklas Luhmann, 'Die Kunst der Gesellschaft' (1995)",
+      "tip_advice_en": "Choosing your C2 theoretical lens in five steps:\n1. QUESTION FIRST. What do you want to investigate in the work? Devices? Gender? Power? Media? System?\n2. CANDIDATE LENSES. Which theories actually address that question?\n3. CHECK THE FIT. What premises does each lens come with? Are they compatible with your work?\n4. MARK THE LIMITS. What stays invisible under this lens?\n5. CONSIDER COMBINATION. Can a second lens absorb the first one's blind spots? Are the premises compatible?\n\nC2 phrasing for lens-discussion:\n- 'Eine theoretische Linse ist kein neutrales Instrument, sondern ein methodisches Versprechen' (a theoretical lens is not a neutral instrument; it's a methodological promise)\n- 'Sie verspricht Sichtbarmachung bestimmter Strukturen um den Preis der Verdunklung anderer' (it promises to make certain structures visible at the cost of obscuring others)\n- 'Die formalistische Lektüre fokussiert die Verfahren, durch die ein Text zur Literatur wird' (the formalist reading focuses on the devices by which a text becomes literature)\n- 'Die feministische Lektüre stellt die Frage nach der Geschlechtlichkeit literarischer Strukturen' (the feminist reading asks after the gendering of literary structures)\n- 'Die postkoloniale Lektüre arbeitet mit Begriffen wie ‚Othering' und ‚subaltern voice'' (the postcolonial reading works with concepts like Othering and the subaltern voice)\n- 'Eine reife Kritik weiß um die Begrenzungen jeder Linse und kombiniert sie reflektiert' (a mature criticism knows the limits of each lens and combines them deliberately)\n\nThe formalist move:\n- 'Mit Schklowskij lässt sich ‚Verfremdung' als zentrales Verfahren der literarischen Wahrnehmungsverlangsamung begreifen' (with Shklovsky, 'defamiliarisation' can be understood as the central device for slowing down perception in literature)\n\nThe feminist move:\n- 'Aus feministischer Perspektive ist zu fragen, wie die scheinbar neutrale Erzählerposition geschlechtlich kodiert ist' (from a feminist perspective, we have to ask how the apparently neutral narrator position is gender-coded)\n\nThe postcolonial move:\n- 'Eine postkoloniale Re-Lektüre fragt nicht, ob ein Text ‚orientalistisch' im pejorativen Sinn ist, sondern wie er sich zum diskursiven Feld des Orientalismus verhält' (a postcolonial re-reading doesn't ask whether a text is 'orientalist' in the pejorative sense, it asks how it relates to the discursive field of Orientalism)\n\nThe combination move (formalist-feminist):\n- 'Die Kombination formalistischer Verfahrensanalyse mit feministischer Geschlechtsreflexion erlaubt es, sowohl die literarische Strategie als auch ihre geschlechtsstrukturelle Voraussetzung sichtbar zu machen' (combining formalist analysis of devices with feminist reflection on gender lets you make both the literary strategy and its underlying gender structure visible)\n\nMarking limits:\n- 'Diese Linse hat ihre Begrenzungen: sie tendiert dazu, X zu übersehen' (this lens has its limits — it tends to overlook X)\n- 'Eine ergänzende Perspektive wäre Y, die genau das adressiert, was hier methodisch eingeklammert bleibt' (a complementary perspective would be Y, which addresses exactly what is methodologically bracketed here)\n\nWhen theories are incompatible:\n- 'Eine schlichte Addition der Linsen wäre methodisch unsauber, da ihre Voraussetzungen einander widersprechen' (simply adding lenses up would be methodologically sloppy, since their premises contradict each other)\n- 'Eine produktive Kombination erfordert eine metatheoretische Reflexion über die Vereinbarkeit' (productive combination requires meta-theoretical reflection on compatibility)\n\nNever do this:\n- 'Theoretical lenses are tools you can swap in and out' (instrumentalist, naïve)\n- 'A feminist / postcolonial reading is self-evident today' (declarative, untheoretical)\n- Arbitrary lens combinations without reflection on their premises\n- Treating the lens itself as the agenda — the agenda should be the question, the lens is the means\n\nLast tip: before every theoretical essay, write a one-page methodological self-positioning — which lens, why this one, what stays invisible because of it, and how that blind spot is being compensated for. This step protects you from methodological sloppiness.",
+      "register_notes_en": "C2 theoretical-lens discussion: lenses are not 'tools' (instrumentalist, naïve) — they are 'methodological promises with premises'. Sequential vs simultaneous application of lenses — sequential is preferred when the premises clash. The German formalist tradition: Shklovsky → Werkimmanenz (Kayser, Staiger) → Kittler. German feminist anchors: Weigel, Stephan, Bürger; supplemented internationally by Spivak. Postcolonial anchors: Said as main, supplemented by Bhabha (hybridity) and Mignolo (decolonial). Funktionsverbgefüge: 'zur Erscheinung kommen' (come into view), 'in den Blick nehmen' (bring into focus), 'methodisch einklammern' (methodologically bracket). Key formula: 'A theoretical lens is not a neutral instrument but a methodological promise — it promises to make certain structures visible at the cost of obscuring others.' Mature criticism knows the limits and combines reflektiert. Avoid 'orthodox lens loyalty' — but also avoid 'arbitrary combination'.",
+      "idiom_glosses_en": [
+        {
+          "meaning_en": "to put on the glasses, to adopt a specific perspective (standardsprachlich)",
+          "example_en": "Once you put on the postcolonial glasses, you see structures in Goethe's 'Divan' that the hermeneutic Goethe cult overlooked for a long time."
+        },
+        {
+          "meaning_en": "to miss the forest for the trees, to lose the big picture in details (standardsprachlich)",
+          "example_en": "A purely formalist reading risks missing the ideological forest for all the devices."
+        },
+        {
+          "meaning_en": "a blind spot — a region your own perspective can't see (gehoben/standardsprachlich)",
+          "example_en": "Every theoretical lens has its blind spots — the job of the synthesis is to name them."
+        },
+        {
+          "meaning_en": "to dance at two weddings, to try to do two incompatible things at once (standardsprachlich)",
+          "example_en": "Trying to dance at two theoretical weddings without reflecting on the premises means missing both."
+        }
+      ],
+      "sentences_pronunciation_focus_en": [
+        [
+          "theoretische Linse → teh-oh-REH-ti-shuh LIN-zuh",
+          "Versprechen → fair-SHPREH-khn (soft 'ch' as in 'huge')",
+          "Verdunklung → fair-DOON-kloong"
+        ],
+        [
+          "formalistisch → for-mah-LIS-tish",
+          "Verfahren → fair-FAH-rn",
+          "einklammern → AIN-klah-mern"
+        ],
+        [
+          "feministisch → feh-mi-NIS-tish",
+          "Geschlechtlichkeit → guh-SHLEKHT-likh-kait — 'ch' here is the hard sound",
+          "stillschweigend → SHTIL-shvai-gnd"
+        ],
+        [
+          "postkolonial → post-koh-loh-nee-AHL",
+          "Hybridität → hue-bri-di-TAYT — 'y' rounded like 'ü'",
+          "subaltern → zoo-bal-TAIRN"
+        ],
+        [
+          "Begrenzungen → buh-GREN-tsoong-n",
+          "kombiniert → kom-bee-NEERT",
+          "vermag → fair-MAHK ('mahk' rhymes with 'rock' with German 'a')"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        [],
+        [
+          "theoretical lenses"
+        ]
+      ],
+      "vocab_pronunciation_en": [
+        "dee teh-oh-REH-ti-shuh LIN-zuh",
+        "dair for-mah-LIS-moos",
+        "dee fair-FREM-doong — 'fer' like 'fair', soft 'r'",
+        "feh-mi-NIS-ti-shuh li-teh-rah-toor-vis-n-shaft",
+        "post-koh-loh-nee-AHL",
+        "das OH-tuh-ring — English loanword, said with German 't' and trilled-light 'r'",
+        "dee zoo-bal-TAIRN voys",
+        "dee ZIKHT-bar-mah-khoong",
+        "dee fair-DOON-kloong",
+        "AIN-klah-mern — separable verb, stress on the prefix"
+      ]
+    },
+    "lessay_opening": {
+      "cultural_notes_en": "Opening a critical essay in C2 Germanistik comes with a strong stylistic tradition. (1) THE THREE-SENTENCE RULE: the first three sentences have to telegraph the whole architecture of the essay — question, positioning, methodological promise. If you don't grab the reader in three sentences, you lose the kind of audience the feuilletons (FAZ, NZZ, Süddeutsche, ZEIT) and the journal editors (DVjs, Germanisch-Romanische Monatsschrift, Zeitschrift für deutsche Philologie) cultivate. (2) BEFUND-OPENING vs ABSTRACT-OPENING: the Anglo-American tradition often opens abstractly ('This essay argues...'), the German feuilletonistic tradition opens concretely with a finding — an observation, a detail, a controversy, a position. The thesis grows out of that concrete finding. (3) NO PLATITUDES: openings like 'Goethe is one of the greatest German poets' / 'The question of X has occupied scholarship for decades' / 'In an increasingly globalised world...' are forbidden — they signal methodological naïvety. C2 editors strike those sentences.\n\nDifferent from Vietnam: Vietnamese criticism often opens with general context ('In Vietnamese literature, X plays an important role'). In C2 Germanistik that move is a giveaway that the writer hasn't been trained at this level. Start concretely, no warm-up.\n\nOne important detail: research-state positioning does NOT belong in the first paragraph. A common beginner mistake: 'Research on Goethe's Werther has been concerned since the 1950s with the following themes...' (two pages of research overview). The correct version: Befund opening in the first two paragraphs, then the research state as a third, contextualising move.\n\nOn the feuilleton tradition: German opening standards are heavily shaped by Karl Kraus, Walter Benjamin, later Reich-Ranicki, Heinrich Vormweg, and today Iris Radisch (ZEIT) and Andreas Kilb (FAZ). This tradition cultivates precise, often polemically pointed openings.\n\nOn opening typology: three standard modes for C2 critical essays:\n- THE OBSERVATION OPENING: 'The fact that Bachmann ends her novel with a disappearance is striking — she denies the Bildungsroman its classical ending.'\n- THE CONTROVERSY OPENING: 'Lukács read Mann as a bourgeois realist, Adorno as a bourgeois self-critic — both readings pass over a third aspect.'\n- THE CONCEPT OPENING: '‚Translanguaging' has been an established concept since García & Wei (2014) — its application to historical corpora raises theoretical problems that scholarship has so far insufficiently reflected on.'\n\nOn the opening-ending correspondence: a successful essay closes where it began — the conclusion picks up the opening Befund and transforms it through the argument. That symmetry makes the essay readable.\n\nCore further reading (style):\n- Wolf Schneider, 'Deutsch fürs Leben' / 'Deutsch für junge Profis' — modern stylistics\n- Karl Heinz Bohrer, 'Die Ästhetik des Schreckens' — model openings of literary essays\n- Walter Benjamin, 'Einbahnstraße' — aphorism as opening model\n- Theodor W. Adorno, 'Minima Moralia' — pointed Befund opening\n- Rudolf Walter Leonhardt (ed.), 'Wie schreibt man eine Glosse?' — feuilleton stylistics\n- Karl Kraus, 'Die Sprache' (posthumous) — opening classic",
+      "tip_advice_en": "C2 essay-opening strategy in five steps:\n1. NO PLATITUDE. Check the first five words. If they are 'In an increasingly...', 'Scholarship has long...', 'X is an important theme...' — delete and start over.\n2. CONCRETE FINDING. What is your most specific, most precise observation point? Lead with it.\n3. SURPRISE + PLAUSIBILITY. The ideal finding is surprising (otherwise why write the essay?) and plausible (otherwise it can't be developed).\n4. METHODOLOGICAL PROMISE. By sentence two or three the reader should sense which procedure the essay uses.\n5. CORRESPONDENCE TO THE ENDING. Can the opening Befund be picked up again at the close? If yes, the opening can carry the essay.\n\nC2 phrasing for opening-discussion:\n- 'Die Eröffnung muss in den ersten drei Sätzen leisten, was der Aufsatz entfaltet' (the opening has to deliver in the first three sentences what the essay unfolds in full)\n- 'Sie muss Frage, Verortung und methodisches Versprechen verdichten' (it has to condense question, positioning and methodological promise)\n- 'Eine gelungene Eröffnung verzichtet auf Allgemeinplätze und biographische Eingangsfloskeln' (a successful opening avoids platitudes and biographical clichés)\n- 'Sie setzt mit einem präzisen Befund ein, dessen Erklärungsbedürftigkeit den Aufsatz rechtfertigt' (it starts with a precise finding whose need for explanation is what justifies the essay)\n- 'Die Forschungsstand-Verortung gehört nicht in den ersten Absatz' (research-state positioning does not belong in the first paragraph)\n- 'Wer den Essay mit einer Forschungslücken-Klage beginnt, verliert die Aufmerksamkeit binnen weniger Zeilen' (start with a 'research-gap' lament and you lose the reader's attention within a few lines)\n\nThe three standard opening modes:\n\nOBSERVATION OPENING (template):\n- 'Die Tatsache, dass [concrete observation], ist auffällig — [punchline in half a sentence]. [Methodological promise or question].'\n\nCONTROVERSY OPENING (template):\n- '[Position 1] read X as Y, [Position 2] as Z — both readings overlook [a third aspect]. The present contribution closes exactly this gap.'\n\nCONCEPT OPENING (template):\n- '‚X' has been established as a concept since [date] — its application to [Y] raises [theoretical problem] that scholarship has so far [insufficiently reflected on].'\n\nWhen the research state has to be integrated:\n- 'An [Position 1] und [Position 2] der einschlägigen Forschung anschließend, doch in deutlicher Differenz zu [Position 3]...' (building on positions 1 and 2 of the relevant scholarship, but with clear distance from position 3)\n- 'Die folgenden Ausführungen verstehen sich als Vertiefung der von [X] entwickelten Linie — mit einer methodischen Verschiebung, die in der Forschung bislang nicht erprobt wurde' (the following discussion is to be read as a deepening of the line developed by X — with a methodological shift not yet tried in the scholarship)\n\nWhen the thesis is provocative:\n- 'Die These der vorliegenden Untersuchung ist zugespitzt: [provocative thesis]. Was zunächst kontraintuitiv erscheint, lässt sich — so ist zu zeigen — durch [argumentation] plausibel begründen' (the present study's thesis is sharpened: [provocative thesis]. What looks counterintuitive at first can — so we will show — be plausibly grounded via [argumentation])\n\nWhen the opening corresponds to the ending:\n- The plan: pick up the opening Befund at the close in transformed form. For example, the opening observes X as a puzzle; the conclusion shows how X became readable through the argument.\n\nNever do this:\n- 'Goethe is one of the greatest German poets' (platitude)\n- 'The question of Y has occupied scholarship for decades' (research-gap lament)\n- 'In an increasingly X world...' (zeitgeisty cliché)\n- 'What Adorno once said about Mann still holds today...' (authority-quote opening)\n- Biographical opener ('Thomas Mann was born in Lübeck in 1875...')\n\nLast tip: after you've drafted the essay, read the first paragraph in isolation. Ask yourself: would I keep reading? If the answer is no or maybe — rewrite. The opening is the most expensive real estate in the essay — it's worth three or four drafts.",
+      "register_notes_en": "C2 opening strategy: three standard modes — observation / controversy / concept. Forbidden: platitudes ('X is one of the greatest...'), research-gap lament ('Scholarship has long...'), zeitgeisty cliché ('In an increasingly...'), biographical opener ('Thomas Mann was born...'), authority-quote opener ('What Adorno once said...'). The three-sentence rule: condense question + positioning + methodological promise. Research-state positioning does NOT belong in the first paragraph. Funktionsverbgefüge: 'in den Blick rücken' (bring into focus), 'zur Sprache bringen' (bring to speech), 'zur Disposition stellen' (put up for discussion). Konjunktiv II for hedged theses: 'wäre denkbar', 'ließe sich lesen'. Opening-ending correspondence: a successful essay closes where it began — the opening Befund returns transformed. A provocative thesis is fine but has to be covered by the argument.",
+      "idiom_glosses_en": [
+        {
+          "meaning_en": "to begin in the middle of the action, without preamble — Latin, from Horace (gehoben/literarisch)",
+          "example_en": "A professional opening starts in medias res — no warm-up, no platitude, just the finding."
+        },
+        {
+          "meaning_en": "to grab the bull by the horns, to face a hard problem head-on (gehoben/standardsprachlich)",
+          "example_en": "Opening with a provocative thesis means grabbing the bull by the horns — and then you have to be able to argue."
+        },
+        {
+          "meaning_en": "to hit the nail on the head (gehoben/standardsprachlich)",
+          "example_en": "A successful opening hits the nail on the head — it makes pointed what would otherwise stay implicit."
+        },
+        {
+          "meaning_en": "to carry coals to Newcastle (literally: to carry owls to Athens, an Ancient Greek saying) — to do something redundant (gehoben)",
+          "example_en": "Opening with platitudes means carrying owls to Athens — the editor knows already that Goethe matters."
+        }
+      ],
+      "sentences_pronunciation_focus_en": [
+        [
+          "Eröffnung → air-UERF-noong — 'ö' rounded, like saying 'eh' with lips for 'oh'",
+          "verdichten → fair-DIKH-tn",
+          "Versprechen → fair-SHPREH-khn (soft 'ch')"
+        ],
+        [
+          "Allgemeinplätze → AHL-guh-main-pleh-tsuh",
+          "Eingangsfloskeln → AIN-gangs-flos-kln",
+          "Erklärungsbedürftigkeit → air-KLEH-roongs-buh-duerf-tikh-kait"
+        ],
+        [
+          "Beobachtung → buh-OH-bakh-toong — hard 'ch' here",
+          "Beweisbedürftigkeit → buh-VICE-buh-duerf-tikh-kait",
+          "Argumentationsschritte → ar-goo-men-tah-tsee-OHNS-shrit-tuh"
+        ],
+        [
+          "Forschungsstand-Verortung → FOR-shoongs-shtant-fair-or-toong",
+          "umgekehrt → OOM-guh-kayrt",
+          "Absatz → AHP-zats"
+        ],
+        [
+          "Aufmerksamkeit → OWF-merk-zahm-kait",
+          "Forschungslücken-Klage → FOR-shoongs-luek-n-klah-guh — 'ü' rounded",
+          "binnen → BIN-nn"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        [],
+        [
+          "essay opening"
+        ]
+      ],
+      "vocab_pronunciation_en": [
+        "dee air-UERF-noong",
+        "dair KRI-ti-shuh es-SAY — French loanword, stress on the last syllable",
+        "dair buh-FOONT — 'oo' as in 'foot'",
+        "dee air-KLEH-roongs-buh-duerf-tikh-kait",
+        "dair AHL-guh-main-plats",
+        "dee FOR-shoongs-luek-n-klah-guh — 'ü' rounded",
+        "dee fair-DIKH-toong",
+        "fair-DIKH-tn",
+        "kon-tra-in-tu-i-TEEF",
+        "TSOO-guh-shpits-tuh"
+      ]
+    },
+    "lcontroversial_reading": {
+      "cultural_notes_en": "Defending a controversial reading is the Königsdisziplin of C2 Germanistik — it's what separates doctoral students from those at the Habilitation level. (1) STEELMANNING vs STRAWMANNING: the Anglophone distinction between 'steelmanning' (reconstructing the opposing position in its strongest form) and 'strawmanning' (deforming it and fighting the caricature). The C2 critic only steelmans. Weakest form of defence: 'Others say X, that's wrong.' Strongest form: 'The strongest variant of the opposing position I know is X (proponent Y, argument Z) — even against that variant, the following can be said...'. (2) DIFFERENTIATED RECOGNITION: a successful defence of a controversial reading doesn't claim 'my reading is right'. Instead: 'my reading opens up a perspective that hasn't been systematically pursued yet'. That modesty gesture isn't false modesty — it's methodologically honest. Two readings can be productive at the same time. (3) MARKING THE SCOPE: a controversial reading is stronger when its limits are stated explicitly. 'My reading carries for X, not for Y' defends itself better than 'My reading explains everything'.\n\nDifferent from Vietnam: Vietnamese criticism tends toward a 'right/wrong' framework. In German C2 it's 'productive/unproductive' — multiple readings can coexist. The doctoral supervisor will check: 'Does your reading make the other reading obsolete — or supplement it?' If you claim obsolescence, the evidence bar is very high.\n\nOne important detail: defence is not polemic. Polemic (sharp criticism in an aggressive tone) has its own tradition in the German feuilleton (Karl Kraus, Reich-Ranicki). But scholarly defence is not polemic — it's substantive and sober. Personalising it ('Vaget didn't understand this') is a reliable sign of a weak argument.\n\nOn reading Mann 'against the grain': a classic research example is Lukács vs Adorno on Mann. Lukács read Mann as a progressive bourgeois realist. Adorno (in 'Versuch über Wagner' and in 'Aesthetic Theory') read Mann as a self-critic of the bourgeoisie. Both readings are productive, both controversial in their day against bourgeois Mann-worship. A C2 analyst can use these readings as models.\n\nOn Bachmann 'against the grain': feminist Bachmann scholarship positioned itself against the bourgeois Bachmann veneration of the 1960s, which read her as a 'tragic poet'. The feminist reading: Bachmann as an analytic critic of patriarchal structures — controversial but now well established (Weigel, Stephan, Anna Tanneberger).\n\nOn Goethe 'against the grain': postcolonial readings of the 'Divan' are controversial — against Goethe-worship as 'congenial Persian intermediary'. Here scope has to be marked clearly: the postcolonial reading carries for certain aspects (the construction of 'the Orient'), not for others (the formal adaptation of the Hafis-Ghasel).\n\nOn 'defence economy': in oral defence (Disputation, Habilitation, conference) you get about 5 minutes per objection. Economical argument: 1 sentence acknowledging the objection → 2 sentences with the strongest variant of the opposing position → 2 sentences with your own answer → 1 sentence marking the scope. Total: 6 sentences, roughly 90 seconds.\n\nCore further reading (argumentation theory):\n- Stephen Toulmin, 'The Uses of Argument' (1958)\n- Frans van Eemeren, 'Strategic Maneuvering in Argumentative Discourse'\n- Theodor W. Adorno, 'Versuch über Wagner' — model of a controversial reading\n- Georg Lukács, 'Thomas Mann' (1949) — controversial reading from within the bourgeois tradition\n- Sigrid Weigel, 'Die Stimme der Medusa' — model for a gender-critical defence",
+      "tip_advice_en": "C2 defence of a controversial reading in five steps:\n1. STEELMANNING. Reconstruct the strongest variant of the opposing position. Who is the leading dissenting voice? Which argument is the strongest? Prepare it in full.\n2. ACKNOWLEDGMENT. Signal that you take the opposing position seriously — not condescendingly, not ironically.\n3. ARGUMENT. Put your answer in sober, substantive terms — no polemic, no personalisation.\n4. SCOPE-MARKING. State what your reading carries for and what it doesn't. This strengthens, it does not weaken.\n5. SELF-REFLECTION. Where does your argument run out? Where does productive tension remain? Acknowledge it.\n\nC2 phrasing for defending a controversial reading:\n- 'Eine kontroverse Lektüre lässt sich nicht durch Behauptung verteidigen, sondern allein durch eine Argumentation, die ihre Voraussetzungen offenlegt' (a controversial reading can't be defended by assertion, only by an argument that lays its premises open)\n- 'Wer Mann gegen den Strich liest, muss diese Lesart gegen den hermeneutischen Konsens verteidigen' (reading Mann against the grain means having to defend that reading against the hermeneutic consensus)\n- 'Die Verteidigung gelingt nicht als Abwehr, sondern als sorgfältige Aufnahme der Einwände' (defence succeeds not as parrying but as careful uptake of the objections)\n- 'Wer den Gegenstandpunkt nicht in seiner stärksten Form rekonstruiert, hat seinen eigenen nicht verstanden' (anyone who doesn't reconstruct the opposing position in its strongest form hasn't understood their own)\n- 'Ihre Lesart ist nicht ‚richtiger', sondern eröffnet eine bislang nicht systematisch verfolgte Perspektive' (your reading is not 'more correct' — it opens up a perspective that hasn't been systematically pursued)\n- 'Wo die Argumentation erschöpft ist, beginnt die kritische Selbstreflexion' (where the argument runs out, critical self-reflection begins)\n\nThe steelmanning move:\n- 'Die stärkste mir bekannte Variante der Gegenposition stammt von [Name] und argumentiert wie folgt: [stated in full strength]. Selbst gegen diese Variante lässt sich folgendes anführen: [your reply]' (the strongest variant of the opposing position I know comes from [name] and argues as follows: [state in full strength]. Even against that variant, the following can be said: [your reply])\n\nThe differentiated-recognition move:\n- 'Die etablierte Lesart trägt für X — meine Lesart trägt für Y. Beide Lesarten konkurrieren nicht um eine ‚richtige' Auslegung, sondern öffnen unterschiedliche Aspektfelder' (the established reading carries for X; mine carries for Y. The two readings aren't competing for a 'correct' interpretation — they open different fields of aspects)\n\nScope-marking:\n- 'Meine Lesart trägt nicht für die formalen Aspekte — sie konzentriert sich auf die ideologische Dimension' (my reading doesn't carry for the formal aspects — it focuses on the ideological dimension)\n- 'Diese Argumentation hat ihre Grenzen: sie funktioniert für Werk X, weniger für Werk Y' (this argument has its limits: it works for work X, less for work Y)\n\nThe self-reflection move:\n- 'Wo erschöpft sich diese Argumentation? An der Stelle, an der [concrete example]. Hier muss eine ergänzende Perspektive einsetzen' (where does this argument run out? At the point where [concrete example]. A complementary perspective has to come in here)\n- 'Auch eine kontroverse Lektüre weiß um ihre Grenzen, ohne sich deshalb zurückzunehmen' (even a controversial reading knows its limits without retreating because of them)\n\nWhen polemic threatens:\n- 'Erlauben Sie mir, sachlich zu antworten' (allow me to answer in substantive terms)\n- 'Ich möchte den persönlichen Aspekt zurückstellen und auf das Argument fokussieren' (I'd like to set the personal aspect aside and focus on the argument)\n\nWhen the consensus is strong:\n- 'Der hermeneutische Konsens ist nicht Wahrheit, sondern Forschungsmehrheit — eine Differenz, die für die Argumentation entscheidend ist' (the hermeneutic consensus is not truth but a scholarly majority — a distinction that's decisive for the argument)\n\nNever do this:\n- 'X didn't understand it' (personalisation, weak argument)\n- 'This criticism is unjustified' (assertion instead of argument)\n- Strawmanning the opposing position\n- 'My reading is the only correct one' (anti-pluralistic, methodologically sloppy)\n- Polemic without substantive content\n\nLast tip: before every defence, write a one-page 'steelmanning memo' — the strongest opposing position in full form. If you can't reconstruct that form convincingly, your own position isn't ready yet.",
+      "register_notes_en": "C2 defence of a controversial reading: steelmanning is required — reconstruct the opposing position in its strongest form. Five-step structure: steelmanning → acknowledgment → argument → scope-marking → self-reflection. Konjunktiv I for indirect quotation: 'Vaget zufolge sei das Verfallsschema als bürgerliche Selbstkritik zu lesen'. Funktionsverbgefüge: 'in voller Stärke rekonstruieren' (reconstruct in full strength), 'in den Blick nehmen' (bring into focus), 'zur Geltung bringen' (bring into force). Differentiated-recognition formula: 'Your reading is not ‚more correct' — it opens up a perspective that hasn't been systematically pursued.' Avoid 'X didn't understand' (personalisation); avoid 'my reading is the only correct one' (anti-pluralistic). Polemic ≠ scholarly defence — substantive and sober, not aggressive. On the consensus claim: 'The hermeneutic consensus is not truth, it's a scholarly majority.' Ideal Disputation answer in six sentences: 1 acknowledgment + 2 steelmanning + 2 your answer + 1 scope — about 90 seconds.",
+      "idiom_glosses_en": [
+        {
+          "meaning_en": "to stand up to, to face down — literally 'to offer the forehead' (gehoben/literarisch)",
+          "example_en": "Anyone who stands up to the hermeneutic consensus has to double-check their argument."
+        },
+        {
+          "meaning_en": "to turn the tables, to reverse the situation (standardsprachlich)",
+          "example_en": "My argument turns the tables: the decay-narrative itself is the bourgeois gesture Mann is staging."
+        },
+        {
+          "meaning_en": "to be on solid ground, to have a firm basis (standardsprachlich)",
+          "example_en": "A controversial reading has to stand on solid ground — otherwise it breaks under the first objection."
+        },
+        {
+          "meaning_en": "to take your opponent seriously, to respect the opposing position (standardsprachlich)",
+          "example_en": "Steelmanning means taking your opponent so seriously that you formulate their best objection yourself — before they raise it."
+        }
+      ],
+      "sentences_pronunciation_focus_en": [
+        [
+          "Behauptung → buh-HOWP-toong — 'au' as in 'how'",
+          "Voraussetzungen → FOR-ow-zets-oong-n",
+          "Reichweite → RAIKH-vai-tuh — hard 'ch' as in 'loch'"
+        ],
+        [
+          "gegen den Strich → GAY-gn den SHTRIKH — hard 'ch'",
+          "Verfallsschema → fair-FAHLS-shay-mah",
+          "Selbstvergewisserung → ZELPST-fair-guh-vis-uh-roong"
+        ],
+        [
+          "Abwehr → AHP-vair",
+          "Gegenstandpunkt → GAY-gn-shtant-poonkt",
+          "stärksten Form → SHTERK-stn form"
+        ],
+        [
+          "Pointe → po-AN-tuh — French loanword, two nasal syllables",
+          "Anerkennung → AHN-air-ken-noong",
+          "verfolgte Perspektive → fair-FOL-tuh per-spek-TEE-vuh"
+        ],
+        [
+          "erschöpft → air-SHUERPFT — 'ö' rounded",
+          "Selbstreflexion → ZELPST-reh-flek-tsee-ohn",
+          "zurücknehmen → tsoo-RUEK-nay-mn — 'ü' rounded"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        [],
+        [
+          "controversial reading"
+        ]
+      ],
+      "vocab_pronunciation_en": [
+        "dee kon-tro-VAIR-zuh lek-TUE-ruh — 'ü' rounded",
+        "dee fair-TAI-di-goong",
+        "dair AIN-vant",
+        "dair GAY-gn-shtant-poonkt",
+        "dee RAIKH-vai-tuh — hard 'ch'",
+        "dee dif-eh-ren-TSEER-tuh AHN-air-ken-noong",
+        "dair hair-meh-NOY-ti-shuh kon-ZENS",
+        "dee ZELPST-fair-guh-vis-uh-roong",
+        "GAY-gn den SHTRIKH LAY-zn — idiomatic phrase, 'against the grain'",
+        "zikh tsoo-RUEK-nay-mn — reflexive verb, 'ü' rounded"
+      ]
+    },
+    "larts_kunstkritik": {
+      "cultural_notes_en": "KUNSTKRITIK IN THE GERMAN TRADITION:\n\n(1) LESSING (1729-1781): 'Laokoon, or On the Limits of Painting and Poetry' (1766) — drew a sharp line between bildende Kunst (visual art, spatial, simultaneous) and Dichtung (poetry, temporal, successive). The aftershock is still felt today: a critique of a painting shouldn't 'tell a story' (the narrative fallacy).\n\n(2) GOETHE: 'Über Kunst und Altertum' (1816-1832) — Goethe's journal that shaped art criticism as a literary genre. His 'Theory of Colours' (Farbenlehre, 1810) analysed the optics and psychology of colour.\n\n(3) BEUYS (1921-1986): the 'expanded concept of art' — ''Every human being is an artist.'' Social sculpture: society as a total work of art in which everyone takes part in shaping form. Documenta, Kunstakademie Düsseldorf.\n\n(4) RICHTER (1932-): painting after photography. The blur (Verwischung) as a critique of the image's claim to truth. 'Atlas' — his vast photographic archive.\n\n(5) THE FEUILLETON TRADITION: FAZ (Frankfurter Allgemeine Zeitung), SZ (Süddeutsche Zeitung), Die Zeit — the cultural feuilleton is an institution. A print art review still carries more weight in Germany than in the Anglo-American press.\n\n(6) DOCUMENTA (Kassel, every five years): the most important contemporary art exhibition in the world. Each Documenta generates thousands of pages of German-language Kunstkritik. A C2 student should read at least one Documenta catalogue raisonné.\n\n(7) NOTE FOR ENGLISH-SPEAKING LEARNERS: German Kunstkritik leans heavily on nominalisation (Substantivierung): 'das In-Beziehung-Setzen', 'das Sich-Einlassen auf…'. This is a hallmark of German academic prose — don't try to translate it back into the verb-driven style of English journalism.",
+      "tip_advice_en": "STRUCTURE OF A C2 FEUILLETON ART REVIEW (2,500-4,000 characters):\n\n1. EINSTIEG (2-3 sentences): open with a concrete observation — a colour, a material, a curatorial gesture. Never 'The exhibition shows works by…'.\n- 'Already in the first room your step falters: a monochrome grey that, on closer inspection, fractures into dozens of shades.'\n\n2. BESCHREIBUNG (25%): precise, objective description. German readers expect Präzision: material, technique, dimensions. 'Oil on canvas, 200 × 300 cm' is non-negotiable.\n\n3. KONTEXTUALISIERUNG (20%): place the work within the artist's œuvre and within art history — briefly. Germans hate empty name-dropping.\n\n4. DEUTUNG (40%): interpretation. The heart of the piece. Two or three angles:\n- Formal: how does the material act on the viewer?\n- Historical: which tradition does the work stand in?\n- Social: what does the work say about our present?\nEach angle needs a topic sentence: 'The work can be read as a comment on…'\n\n5. URTEIL (15%): a reasoned verdict. Germans want a clear judgement, argued for. 'Gelungen' / 'weniger überzeugend' — and why.\n\nUSEFUL PHRASES:\n- 'Das Werk gibt zu denken, dass…' (the work makes one think that…)\n- 'In der Tradition von X stehend, bricht das Werk doch zugleich mit…' (standing in the tradition of X, the work nevertheless breaks with…)\n- 'Die Materialentscheidung ist hier alles andere als beliebig.' (the choice of material here is anything but arbitrary.)\n- 'Gerade im Scheitern des Anspruchs liegt die eigentliche Aussage.' (the real statement lies precisely in the failure of the claim.)\n\nAVOID:\n- Schwärmerei (gushing): German readers distrust writers who sound 'enthralled'.\n- Biographism: the artist's private life is no substitute for Werkbeschreibung.\n- Unbelegte Behauptungen (unsupported claims): every assertion must be anchored in the work itself.",
+      "register_notes_en": "C2 GERMAN KUNSTKRITIK — register markers:\n\nKONJUNKTIV I for indirect speech: 'Richter himself says his painting is not a statement, but a questioning.' ('Richter selbst sagt, seine Malerei sei kein Statement, sondern ein Befragen.')\nKONJUNKTIV II for counterfactuals: 'Had the jury hung the work differently, its spatial dimension would have become clearer.'\n\nNOMINALSTIL: instead of 'the artist paints in order to show', write 'the painterly procedure serves to render visible…' ('das malerische Verfahren dient der Sichtbarmachung von…').\n\nKOMPOSITA (compound nouns): a German speciality — Bildsprache, Materialgerechtigkeit, Wahrnehmungsbedingungen, Ausstellungsdispositiv. Don't be afraid to coin new compounds as long as they're transparent.\n\nPASSIVE: very common in German academic writing: 'The work is read as a comment on consumer culture.'\n\nMAN: the impersonal subject is everywhere: 'Man könnte einwenden, dass…' ('One could object that…'), 'Man sieht sich konfrontiert mit…' ('One finds oneself confronted with…').\n\nFUNKTIONSVERBGEFÜGE (light-verb constructions): 'zur Anwendung kommen' (to be applied), 'in den Blick nehmen' (to bring into focus), 'zur Diskussion stellen' (to put up for discussion).\n\nAVOID:\n- 'Ich finde das Werk schön' → too subjective.\n- Colloquialisms: 'toll', 'super', 'krass'.\n- Too many Anglicisms: 'Das Statement des Künstlers' → 'Die Aussage des Künstlers' where possible.\n- Unsupported claims: if you say 'the work critiques capitalism', you must show HOW (material, form, exhibition context).",
+      "idiom_glosses_en": [
+        {
+          "meaning_en": "To catch the eye immediately — used when describing what hits you on entering an exhibition.",
+          "example_en": "The first thing that catches the eye is the monstrous chandelier — it's made of used tampons."
+        },
+        {
+          "meaning_en": "To give one pause for thought — formal, polite; used when a work refuses easy answers.",
+          "example_en": "The work gives one pause for thought precisely because it resists any quick reading."
+        },
+        {
+          "meaning_en": "To realise / put into a work — formal, elevated register (gehoben).",
+          "example_en": "What the artist sketches out theoretically he carries through consistently in this installation."
+        },
+        {
+          "meaning_en": "To put it precisely / nail it — used when praising an artist or a critic for hitting the mark.",
+          "example_en": "This work nails the unease of the present moment."
+        }
+      ],
+      "sentences_pronunciation_focus_en": [
+        [
+          "Lessing → LESS-ing",
+          "Laokoon → la-OH-ko-on",
+          "medienspezifisch → MAY-dee-en-shpay-tsi-fish",
+          "gebunden → guh-BOON-den"
+        ],
+        [
+          "Maßgabe → MAHSS-gah-buh",
+          "anekdotisch → ah-nek-DOH-tish",
+          "Sichtbarkeit → ZIKHT-bar-kite",
+          "befragen → buh-FRAH-gen"
+        ],
+        [
+          "Beuys → 'Boyce'",
+          "Kunstbegriff → KOONST-buh-griff",
+          "Sozialutopie → zo-tsee-AHL-oo-toh-pee",
+          "Formgebung → FORM-gay-boong"
+        ],
+        [
+          "Richter → RIKH-ter (back-of-throat 'ch' as in Scottish 'loch')",
+          "dementiert → day-men-TEERT",
+          "Verwischungen → fer-VISH-oong-en",
+          "Skepsis → SKEP-sis"
+        ],
+        [
+          "Auseinandersetzung → OW-zigh-nan-der-zet-soong",
+          "Befund → buh-FOONT",
+          "Lasur → la-ZOOR",
+          "Werkintention → VERK-in-ten-tsee-ohn"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        [],
+        [
+          "Kunstkritik → KOONST-kri-tik"
+        ]
+      ],
+      "vocab_pronunciation_en": [
+        "dee KOONST-kri-tik — long 'oo' as in 'food', stress on first syllable",
+        "dee BILT-buh-trakh-toong — 'ch' here is the hard back-of-throat sound",
+        "dair er-VYE-ter-ter KOONST-buh-griff — 'ei' rhymes with 'eye'",
+        "dee fer-VISH-oong — short 'i' as in 'fish'",
+        "dee la-ZOOR — long 'oo' as in 'boot'",
+        "dee zo-tsee-AH-luh PLAS-tik — 'z' is 'ts' as in 'cats'",
+        "dee BILT-shprah-khuh — 'ch' here is hard, as in 'loch'",
+        "das TAH-fel-bilt — long 'ah' as in 'father'",
+        "dair OWS-shtel-loongs-ka-ta-log — 'au' as 'ow' in 'how'",
+        "dee KOONST-ows-shtel-loong — 'au' as 'ow' in 'how'"
+      ]
+    },
+    "larts_filmkritik": {
+      "cultural_notes_en": "FILMKRITIK IN THE GERMAN TRADITION:\n\n(1) KRACAUER (1889-1966): 'From Caligari to Hitler' (1947) — read Weimar cinema as the psychological pre-history of National Socialism. 'Theory of Film' (1960): cinema as the 'redemption of physical reality'.\n\n(2) FASSBINDER (1945-1982): Neuer Deutscher Film. Melodrama as social critique. Heavily influenced by Douglas Sirk (the German-born Hollywood director). 'The Marriage of Maria Braun', 'Ali: Fear Eats the Soul' (Angst essen Seele auf).\n\n(3) THE BERLIN SCHOOL: Christian Petzold, Maren Ade, Angela Schanelec, Thomas Arslan — the post-Wall generation. A new realism: no psychology, no explanation, only precise observation.\n\n(4) HANEKE (Austrian, but writes in German): 'Caché', 'The White Ribbon', 'Amour' — cinema as an ethical interrogation of the viewer. Violence isn't shown, it's structured in the off-screen.\n\n(5) BERLINALE: the Berlin International Film Festival — one of the Big Three (with Cannes and Venice). Heavily politicised (the Golden Bear often carries political weight).\n\n(6) FILM CRITICISM IN THE PRESS: unlike the French tradition, German film criticism pays less attention to mise en scène and more to content / politics / society. FAZ, SZ, Die Zeit, taz, Der Spiegel each maintain their own film-criticism voice.\n\n(7) NOTE FOR ENGLISH-SPEAKING LEARNERS: German Filmkritik leans on dense compound adjectives — 'gesellschaftskritisch' (society-critiquing), 'sozialrealistisch' (social-realist), 'kammerspielartig' (chamber-play-like). These have no one-word English equivalents and usually need a phrase to unpack.",
+      "tip_advice_en": "STRUCTURE OF A FEUILLETON FILM REVIEW (3,000-5,000 characters):\n\n1. VORSPANN (one sentence): the opening must cut — a single image, a sound, a paradox.\n\n2. MINIMALE INHALTSANGABE (10%): the bare minimum plot summary. No spoilers.\n\n3. FILMISCHE ANALYSE (50%) — the layers:\n- Bildästhetik: camerawork, framing, light, colour.\n- Montage: editing rhythm, ellipses, parallel cutting.\n- Sound: music, noise, silence, voice-over.\n- Schauspielführung: bodies, gesture, delivery.\n\n4. EINORDNUNG (25%): place the film in the director's filmography, in its current of cinema, in its political and social moment.\n\n5. FAZIT (15%): a clear verdict. German readers hate fence-sitting reviews.\n\nUSEFUL PHRASES:\n- 'Der Film handelt nicht von…, sondern er handelt durch…' (the film isn't about…, it acts through…)\n- 'Die Kamera ist hier keine Beobachterin, sondern eine Komplizin.' (the camera here isn't an observer, it's an accomplice.)\n- 'Der Schnitt setzt weniger auf Kontinuität als auf Reibung.' (the editing relies less on continuity than on friction.)\n\nAVOID:\n- Nacherzählung (retelling the plot) — a Filmkritik isn't a synopsis.\n- Betroffenheitsgestus ('this film moved me deeply') — too subjective for a German broadsheet.\n- Blanket verdicts ('a masterpiece') without justification.",
+      "register_notes_en": "C2 GERMAN FILMKRITIK:\n\nPRÄSENS for description of what's on screen: 'The film begins with…', 'The camera follows…'\nPERFEKT for commentary on directorial choices: 'The director has gone for an unusual framing here.'\nKONJUNKTIV II for criticism: 'It would have been better to cut the scene shorter.'\n\nPASSIVE: 'The film is carried by…', 'The tension is generated not by plot but by glances.'\n\nPRECISE ADJECTIVES (not empty ones):\n- 'sperrig' (difficult, resisting easy reception)\n- 'spröde' (dry, refusing to flatter the viewer)\n- 'lakonisch' (laconic, sparse dialogue)\n- 'unterkühlt' (chilled below normal — emotionally restrained)\n\nTECHNICAL PRECISION:\n- 'Die Totale wird hier durch eine Großaufnahme abgelöst' (the wide shot is here replaced by a close-up).\n- 'Der Schnitt erfolgt auf Blickachse' (the cut follows the eyeline).\n\nAVOID:\n- Anglicisms: 'Der Film featured…' → 'Der Film zeigt…'\n- 'The best film of the year' — an absolute claim with no evidence.\n- Spoilers: German Filmkritik never reveals the ending.",
+      "idiom_glosses_en": [
+        {
+          "meaning_en": "To get under your skin — haunting, deeply affecting; use sparingly in a formal review.",
+          "example_en": "The final shot gets under your skin — a silent face held longer than you can bear."
+        },
+        {
+          "meaning_en": "To set the tone — used in analysis of soundtrack or directorial style.",
+          "example_en": "The opening credits already set the tone: a dissonant cello that's never resolved."
+        },
+        {
+          "meaning_en": "To lead nowhere / peter out — fits films with deliberately open endings.",
+          "example_en": "The plot deliberately peters out — a resolution would rob the film of its real point."
+        },
+        {
+          "meaning_en": "To direct the gaze — used when analysing framing or mise en scène.",
+          "example_en": "The framing directs the gaze to what's happening at the edge — the centre stays empty."
+        }
+      ],
+      "sentences_pronunciation_focus_en": [
+        [
+          "emanzipiert → ay-man-tsi-PEERT",
+          "Drehbuch → DRAY-bookh (hard 'ch' as in 'loch')",
+          "zuallererst → tsoo-AL-er-airst",
+          "gemessen → guh-MESS-en"
+        ],
+        [
+          "Fassbinder → FAHSS-bin-der",
+          "melodramatisch → may-lo-dra-MAH-tish",
+          "Verfremdungseffekt → fer-FREM-doongs-eh-fekt",
+          "gemein → guh-MINE (rhymes with 'mine')"
+        ],
+        [
+          "Petzold → PETS-olt",
+          "Realismus → ray-ah-LIS-moos",
+          "Einstellung → INE-shtel-loong",
+          "Wirklichkeit → VEERK-likh-kite (soft 'ich' ch)"
+        ],
+        [
+          "verfehlt → fer-FAYLT",
+          "voyeuristisch → vwa-yer-IS-tish",
+          "Vorwurf → FOR-voorf",
+          "Konsequenz → kon-zay-KVENTS"
+        ],
+        [
+          "Festivalberichterstattung → FES-ti-val-buh-rikh-ter-shtat-toong",
+          "Cannes → 'Kahn'",
+          "Urteilsvermögen → OOR-tiles-fer-mer-gen",
+          "verdichtet → fer-DIKH-tet"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        [],
+        [
+          "Filmkritik → FILM-kri-tik"
+        ]
+      ],
+      "vocab_pronunciation_en": [
+        "dee INE-shtel-loong — long 'i' (eye), short 'e' as in 'bet'",
+        "dee KAH-may-rah-fart — long 'ah' as in 'father'",
+        "dee ka-DRAH-zhuh — French loan, 'zh' as in 'measure'",
+        "dair OFF-rowm — 'au' as 'ow' in 'how'",
+        "dee mon-TAH-zhuh — French loan, 'zh' as in 'measure'",
+        "dair shnit — short 'i' as in 'sit'",
+        "dee PLAHN-zay-kvents — 'qu' is 'kv'",
+        "dee TONE-shpoor — long 'o' as in 'go'",
+        "dee SHOW-shpeel-fyoo-roong — 'au' as 'ow' in 'how'; 'ü' as in French 'tu'",
+        "das DRAY-bookh — hard 'ch' as in Scottish 'loch'"
+      ]
+    },
+    "lcivic_politische_rede": {
+      "cultural_notes_en": "POLITICAL SPEECH IN THE GERMAN TRADITION:\n\n(1) BUNDESTAG — the central forum. Unlike the UK (the adversarial Prime Minister's Questions), Bundestag debate is more formal, less interruption-driven, longer. The Regierungserklärung (government declaration) is its own genre.\n\n(2) BRANDT (1913-1992): the Kniefall of 1970 — falling to his knees before the Warsaw Ghetto memorial. Wordless. Deeply divisive in Germany at the time ('he went too far' vs 'it was necessary').\n\n(3) WEIZSÄCKER (1920-2015): the speech for the 40th anniversary of the end of WWII, 8 May 1985. The first time a German president called 8 May a 'Day of Liberation' rather than 'defeat'. A turning point in national memory.\n\n(4) GAUCK (2013-2017): pastor turned president. A moral, sermon-tinged style centred on Freiheit (freedom) and Verantwortung (responsibility). His speeches often opened with a personal anecdote.\n\n(5) MERKEL (2005-2021): the 'sachlich' style — unrhetorical, sparing with metaphor, short sentences, logical chains. 'Wir schaffen das' (2015) — the most contested line of her career.\n\n(6) WHAT'S GERMAN ABOUT IT: German political speech uses less ornamental metaphor than French rhetoric and less religious vocabulary than American oratory. It leans on Sachlichkeit (factual restraint), tight argumentation, and the weight of historical responsibility (historische Verantwortung).",
+      "tip_advice_en": "ANALYSING A C2 POLITICAL SPEECH:\n\n1. REDESITUATION: Who's speaking? Where? (Bundestag / campaign trail / commemoration) To whom?\n2. AUFBAU: Structure — German speeches tend to be very explicit about structure: Einleitung, Hauptteil (three points), Schluss.\n3. SPRACHLICHE MITTEL:\n- Nominalstil (a marker of Sachlichkeit).\n- Passive (offloading agency? 'It was decided' — by whom?).\n- Konjunktiv (hedging: 'It would be worth examining whether…').\n- Modal verbs (sollen, müssen, dürfen, können — each one maps obligation, possibility, permission differently).\n4. SCHLÜSSELWÖRTER: 'Freiheit', 'Verantwortung', 'Gerechtigkeit', 'Sicherheit', 'Europa'.\n5. HISTORICAL REFERENCES: German political speech almost always reaches back to NS-Zeit or Wiedervereinigung.\n\nUSEFUL PHRASES:\n- 'Die Rede inszeniert den Sprecher als…' (the speech stages the speaker as…)\n- 'Auffällig ist die Häufung von Passivkonstruktionen — sie…' (the clustering of passive constructions is striking — they…)\n- 'Der Konjunktiv II signalisiert hier…' (the subjunctive II here signals…)",
+      "register_notes_en": "C2 GERMAN POLITICAL SPEECH: Nominalstil is the single biggest register marker. 'Die zur Diskussion stehende Frage' beats 'Die Frage, die diskutiert wird'. Passive constructions hide the subject: 'It was decided' (by whom?). Modal verbs sketch obligation: 'müssen' (must), 'sollen' (should — moral), 'dürfen' (be permitted). Konjunktiv I for indirect speech inside the Bundestag: 'The minister said the situation was under control.' Avoid: overblown pathos, colloquialisms, too many Anglicisms.",
+      "idiom_glosses_en": [
+        {
+          "meaning_en": "Merkel's August 2015 line on the refugee crisis. It's become a German political idiom — praised as courageous, attacked as naïve.",
+          "example_en": "With 'Wir schaffen das', Merkel set loose a formula in 2015 that still polarises the German asylum debate today."
+        }
+      ],
+      "sentences_pronunciation_focus_en": [
+        [
+          "Ornament → or-na-MENT",
+          "Medium → MAY-dee-oom",
+          "demokratisch → day-mo-KRAH-tish",
+          "Darstellung → DAR-shtel-loong"
+        ],
+        [
+          "Brandt → 'Brant'",
+          "Kniefall → K'NEE-fall (both 'k' and 'n' are pronounced)",
+          "Regierungserklärung → ray-GEE-roongs-er-klay-roong",
+          "umstritten → OOM-shtri-ten"
+        ],
+        [
+          "Bundestagsdebatte → BOON-des-tahgs-day-bah-tuh",
+          "propositional → pro-po-zi-tsee-o-NAHL",
+          "performativer → per-for-mah-TEE-ver",
+          "Vollzug → FOLL-tsook"
+        ],
+        [
+          "Weizsäcker → VIGHTS-zek-er",
+          "Befreiung → buh-FRY-oong",
+          "Erinnerungskultur → er-IN-er-oongs-kool-toor",
+          "justieren → yoos-TEER-en ('j' is a 'y' sound)"
+        ],
+        [
+          "Wahrheitsgehalt → VAR-hites-guh-halt",
+          "Angemessenheit → AN-guh-mess-en-hite",
+          "Wirksamkeit → VEERK-zam-kite",
+          "verfehlt → fer-FAYLT"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        [],
+        []
+      ],
+      "vocab_pronunciation_en": [
+        "dee ray-GEE-roongs-er-klay-roong — stress on GEE; long 'ee' as in 'see'",
+        "dair BOON-des-tahk — long 'oo' as in 'food'",
+        "dee guh-DENK-ray-duh — short 'e' as in 'bet'",
+        "dair SHOOL-ter-shloos — 'sch' is 'sh'",
+        "dee SHTRITE-kool-toor — 'ei' rhymes with 'eye'",
+        "dair kon-ZENS — 'z' is 'ts'; stress on second syllable",
+        "dee VIL-ens-bil-doong — short 'i' as in 'fish'",
+        "dair buh-FRY-oongs-shlahk — 'ei' rhymes with 'eye'",
+        "dee ZAKH-likh-kite — hard 'ch' (as in 'loch') in 'sach'",
+        "das guh-DEN-ken — short 'e' as in 'bet'"
+      ]
+    },
+    "lcivic_buergerdebatte": {
+      "cultural_notes_en": "BÜRGERDELIBERATION IN THE GERMAN TRADITION:\n\n(1) HABERMAS (1929-): the theory of Öffentlichkeit (the public sphere) and deliberative democracy. 'The Structural Transformation of the Public Sphere' (1962) — a history of public space from the 18th-century bourgeois salon to 20th-century mass media.\n\n(2) THE GERMAN PUBLIC SPHERE: unlike the Anglo-American model, Germany has a strong tradition of Verein (association), Genossenschaft (cooperative), and Mitbestimmung (codetermination in firms — workers on the board). Mediating institutions sit between citizen and state.\n\n(3) STREITKULTUR: since the 1990s Germany has worried about 'Politikverdrossenheit' (political disenchantment). The response: Bürgerdialog, Planungszelle, Bürgerrat — forms of direct or deliberative democracy.\n\n(4) THE MEDIA: public-service broadcasting (ARD, ZDF) has a statutory duty to inform and to provide a forum for debate. A very different model from the US commercial system.\n\n(5) CONTEMPORARY STRESS POINTS: the AfD has broken the post-war consensus (no far right in the Bundestag). Social media fragments the Öffentlichkeit. The open question: does Habermas's model still hold?",
+      "tip_advice_en": "TAKING PART IN A C2 BÜRGERDEBATTE:\n\n1. POSITION BEZIEHEN: 'I'm speaking here as…' — always name the position you're speaking from.\n2. ACKNOWLEDGE THE OTHER POSITION: 'I understand your point that…, but…'\n3. ATTACK THE ARGUMENT, NOT THE PERSON.\n4. EXPOSE YOUR PREMISES: 'My premise is that…' — Germans value transparency about premises.\n5. SEEK CONSENSUS, NOT VICTORY: 'Vielleicht können wir uns darauf einigen, dass…' ('Perhaps we can agree that…')\n\nUSEFUL PHRASES:\n- 'Dem würde ich entgegenhalten, dass…' (I'd counter that…)\n- 'Hier liegt, wie mir scheint, ein Missverständnis vor.' (there seems to be a misunderstanding here.)\n- 'Lassen Sie uns die Prämissen klären, bevor wir…' (let's clarify the premises before we…)\n- 'Das ist ein starkes Argument, allerdings…' (that's a strong argument, but…)\n\nAVOID:\n- Ad hominem: 'You don't know what you're talking about!'\n- Polemik instead of Argument.\n- Silence under provocation — you have to answer, but answer with an argument.",
+      "register_notes_en": "C2 BÜRGERDEBATTE: polite but firm. Siezen is mandatory unless you know the person well. Konjunktiv II for politeness: 'Ich würde vorschlagen…' (I'd suggest…), 'Könnten Sie erläutern…' (could you explain…). Don't interrupt — German debate convention is to let the other person finish. When you push back: 'Da muss ich widersprechen' (I have to disagree there) beats 'Das ist Quatsch' (that's nonsense).",
+      "idiom_glosses_en": [
+        {
+          "meaning_en": "To get to the point — the German love of Sachlichkeit in action. Used when a debate is wandering.",
+          "example_en": "Let's get to the point — what concrete figures are you basing your forecast on?"
+        }
+      ],
+      "sentences_pronunciation_focus_en": [
+        [
+          "Habermas → HAH-ber-mahs",
+          "Faktizität → fak-ti-tsi-TAYT",
+          "deliberative → day-li-bay-rah-TEE-vuh",
+          "Willensbildung → VIL-ens-bil-doong"
+        ],
+        [
+          "Streitkultur → SHTRITE-kool-toor",
+          "argumentativ → ar-goo-men-tah-TEEF",
+          "Selbstbehauptung → ZELPST-buh-howp-toong",
+          "ersetzt → er-ZETST"
+        ],
+        [
+          "postfaktisch → POST-fak-tish",
+          "rhetorisch → ray-TOR-ish",
+          "unvermeidlich → oon-fer-MITE-likh",
+          "beschwört → buh-SHVERT"
+        ],
+        [
+          "zeichnet → TSIKH-net",
+          "Konflikt → kon-FLIKT",
+          "Verfahren → fer-FAH-ren",
+          "Gewalt → guh-VALT"
+        ],
+        [
+          "Missverständnis → MISS-fer-shtent-nis",
+          "Uniformität → oo-ni-for-mi-TAYT",
+          "Einmütigkeit → INE-myoo-tikh-kite",
+          "aufbrechen → OWF-brekh-en"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        [],
+        []
+      ],
+      "vocab_pronunciation_en": [
+        "dee ER-fent-likh-kite — 'ö' is the rounded 'eh' (lips for 'oh', say 'eh')",
+        "dee day-li-bay-rah-tsee-OHN — stress on final syllable",
+        "dair BYOOR-ger-dee-ah-lohk — 'ü' as in French 'tu'",
+        "dee kon-ZENS-fin-doong — 'z' is 'ts' in Konsens",
+        "dair dis-ZENS — stress on second syllable",
+        "dee FOR-fer-shten-di-goong — short 'i' as in 'fish'",
+        "dair IN-tay-res-en-ows-glykh — 'au' as 'ow' in 'how'",
+        "dee BYOOR-ger-buh-tie-li-goong — 'ü' as in French 'tu'",
+        "dee SHTRITE-frah-guh — 'ei' rhymes with 'eye'",
+        "dair GROON-kon-zens — long 'oo' as in 'food'"
+      ]
+    },
+    "lrhet_essay": {
+      "cultural_notes_en": "THE PHILOSOPHICAL ESSAY — GERMAN TRADITION:\n\n(1) ADORNO (1903-1969): 'The Essay as Form' — the essay is a mode of thought set against the system. It doesn't 'prove' like a treatise (Abhandlung); it 'tries out' like a Versuch.\n\n(2) DIFFERENT FROM THE FRENCH DISSERTATION: a German essay is less rigidly structured, allows 'I' where it earns its place, and can open with an anecdote or a question.\n\n(3) STRUCTURE: an opening (a question or paradox), a body (two or three loops of thought, each going deeper), a close (opening a new question — not shutting it down).\n\n(4) KEY FIGURES: Adorno, Benjamin, Lukács, Arendt, Blumenberg — all wrote philosophical essays.",
+      "tip_advice_en": "Writing a C2 philosophical essay: (1) Open with a real question, not a fake one. (2) Allow yourself to 'think on paper' — write to discover, not to prove what you already know. (3) Use Konjunktiv II for speculation: 'Es könnte sein, dass…' (it could be that…). (4) End openly: 'Vielleicht…' (perhaps…) rather than 'Also…' (so…).",
+      "idiom_glosses_en": [],
+      "sentences_pronunciation_focus_en": [
+        [
+          "Essay → eh-SAY",
+          "Abhandlung → AHP-hand-loong",
+          "eigenständig → EYE-gen-shten-dikh",
+          "subsumieren → zoop-zoo-MEER-en"
+        ],
+        [
+          "gleichsam → GLYKH-zam",
+          "Gedankenbildung → guh-DAHN-ken-bil-doong",
+          "Darstellung → DAR-shtel-loong"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        []
+      ],
+      "vocab_pronunciation_en": [
+        "dair eh-SAY — French loan, stress on second syllable",
+        "dee AHP-hand-loong — short 'a' as in 'father' (clipped)",
+        "dair guh-DAHN-ken-gahng — short 'a' as in 'father'",
+        "dee fer-ZOOKHS-an-or-doong — hard 'ch' as in 'loch'",
+        "das buh-GRIF-li-khuh — short 'i' as in 'fish'",
+        "er-ER-tern — 'ö' is rounded 'eh'",
+        "AHP-vay-gen — 'ä' is long 'eh' as in 'they'",
+        "das fyoor oont VEE-der — 'ü' as in French 'tu'"
+      ]
+    },
+    "lrhet_kolloquium": {
+      "cultural_notes_en": "THE GERMAN KOLLOQUIUM / DEFENCE:\n\n(1) Less ritualised than in France: usually 1-2 hours. No 'mention' or honours grade. Just 'bestanden' (passed) or 'nicht bestanden' (failed).\n\n(2) DISPUTATION: a medieval tradition still alive in some departments (especially philosophy). Rigorosum (comprehensive oral exam) vs Disputation (defence of a thesis).\n\n(3) STRATEGY: Germans value Sachlichkeit in the colloquium — no showboating, no defensiveness. Acknowledging a weakness in your work is a sign of strength.",
+      "tip_advice_en": "PREPARING FOR A C2 KOLLOQUIUM: (1) Have three answers ready for 'What's the biggest weakness of your work?' (2) Practise reformulating: 'If I understand you correctly, you mean…' ('Wenn ich Sie richtig verstehe, meinen Sie…'). (3) Use Konjunktiv II for humility: 'There I'd hesitate…' ('Da würde ich zögern…').",
+      "idiom_glosses_en": [],
+      "sentences_pronunciation_focus_en": [
+        [
+          "Kolloquium → ko-LO-kvee-oom",
+          "Bloßstellung → BLOHSS-shtel-loong",
+          "Berechtigung → buh-REKH-ti-goong",
+          "Reichweite → RYKH-vite-uh"
+        ],
+        [
+          "Gegenbehauptung → GAY-gen-buh-howp-toong",
+          "reformulieren → ray-for-moo-LEER-en"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        []
+      ],
+      "vocab_pronunciation_en": [
+        "das ko-LO-kvee-oom — Latin loan, stress on second syllable",
+        "dee fer-TIE-di-goong — 'ei' rhymes with 'eye'",
+        "dair INE-vant — 'ei' rhymes with 'eye'",
+        "das PRYOO-foongs-guh-shprekh — 'ü' as in French 'tu'; hard 'ch' in 'spräch'"
+      ]
+    },
+    "lrhet_philosophie": {
+      "cultural_notes_en": "PHILOSOPHICAL THINKING IN THE GERMAN TRADITION:\n\n(1) KANT (1724-1804): 'Critique of Pure Reason' (1781/1787) — the Copernican revolution in philosophy. Don't ask 'how must our knowledge conform to its objects?' but 'how must objects conform to our knowledge?'. Method: the transcendental deduction.\n\n(2) HEGEL (1770-1831): 'Phenomenology of Spirit' (1807) — thought isn't a static mirror, it's a dialectical motion. Thesis → antithesis → synthesis is the popularised formula; the reality is much messier.\n\n(3) WITTGENSTEIN (1889-1951): wrote in German, global impact. 'Tractatus' (1921): 'What we cannot speak about we must pass over in silence.' 'Philosophical Investigations' (1953): meaning is use (Sprachspiel — language-game).\n\n(4) ADORNO (1903-1969): 'Negative Dialectics' (1966) — against every closed philosophical system. Thought must turn its critique on itself.\n\n(5) WHAT'S GERMAN ABOUT IT: German philosophy is famous for its linguistic difficulty. Kant and Hegel write sentences so long that native speakers have to reread them. But this 'difficulty' is not wilful obscurity — it's the cost of trying to say complex things precisely. A C2 student should read the original, not a translation.",
+      "tip_advice_en": "METHOD FOR A C2 PHILOSOPHY ESSAY:\n\n1. BEGRIFFSANALYSE (concept analysis): define every Begriff (concept) in the question. Distinguish Alltagsbedeutung (everyday meaning) from philosophische Bedeutung (philosophical meaning).\n\n2. EXPOSE THE PRESUPPOSITIONS: every philosophical question carries hidden premises. Your first job is to bring them to light.\n\n3. DEVELOP A THESIS: don't 'answer' the question; propose a thesis and develop it through two or three steps of argument.\n\n4. THINK THROUGH OBJECTIONS: pose the strongest objection to your own position, then answer it.\n\n5. CONCEPTUAL CONSISTENCY: every Begriff is used in exactly one sense throughout the essay.\n\nUSEFUL PHRASES:\n- 'Es wäre zu fragen, ob…' (one would need to ask whether…)\n- 'Unter der Voraussetzung, dass…' (under the premise that…)\n- 'Dem ließe sich entgegenhalten, dass…' (one might object that…)\n- 'Die entscheidende Unterscheidung ist die zwischen…' (the decisive distinction is between…)\n\nAVOID:\n- 'In my opinion…' — philosophy isn't personal opinion.\n- 'Humans have always…' — empty generalisation.\n- Vague vocabulary: 'irgendwie', 'gewissermaßen', 'eigentlich' (when not strictly needed).",
+      "idiom_glosses_en": [],
+      "sentences_pronunciation_focus_en": [
+        [
+          "Selbstverständlichkeit → ZELPST-fer-shtent-likh-kite",
+          "Voraussetzungsstruktur → FOR-ows-zet-soongs-shtrook-toor",
+          "preisgibt → PRICE-gipt"
+        ],
+        [
+          "transzendental → trans-tsen-den-TAHL",
+          "Bedingungen → buh-DING-oong-en",
+          "Wendung → VEN-doong",
+          "empirisch → em-PEER-ish"
+        ],
+        [
+          "Kühnheit → KYOON-hite",
+          "Redlichkeit → RAYT-likh-kite",
+          "Einwände → INE-ven-duh",
+          "entkräftet → ent-KREF-tet"
+        ],
+        [
+          "Unterscheidung → OON-ter-shy-doong",
+          "Anschauung → AHN-show-oong",
+          "Allgemeinen → AHL-guh-my-nen",
+          "assoziativ → ah-zo-tsi-ah-TEEF"
+        ],
+        [
+          "Fehlschluss → FAYL-shloos",
+          "lückenlos → LYOO-ken-lohs",
+          "Beliebigkeit → buh-LEE-bikh-kite",
+          "begründet → buh-GRYOON-det"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        []
+      ],
+      "vocab_pronunciation_en": [
+        "dee FOR-ows-zet-soong — 'au' as 'ow' in 'how'",
+        "trans-tsen-den-TAHL — stress on final syllable",
+        "dair FAYL-shloos — long 'ay' as in 'they'",
+        "dee RAYT-likh-kite — 'ei' rhymes with 'eye'",
+        "dair INE-vant — 'ei' rhymes with 'eye'",
+        "ent-KREF-ten — short 'e' as in 'bet'",
+        "buh-GRIF-likh — short 'i' as in 'fish'",
+        "dee AHN-show-oong — 'au' as 'ow' in 'how'",
+        "dee buh-LEE-bikh-kite — long 'ee' as in 'see'",
+        "das SHPRAHKH-shpeel — hard 'ch' as in 'loch'"
+      ]
+    },
+    "lrhet_persuasion": {
+      "cultural_notes_en": "PERSUASION THEORY IN THE GERMAN TRADITION:\n\n(1) ARISTOTLE: 'Rhetoric' — three means of persuasion (pisteis): logos, ethos, pathos. Aristotle's claim: ethos is the strongest, because we believe people we respect.\n\n(2) CICERO: 'De oratore' — the ideal orator combines sapientia (knowledge) and eloquentia (eloquence).\n\n(3) PERELMAN (1912-1984): 'The New Rhetoric' (1958, with Olbrechts-Tyteca). Written in French but absorbed into German Rhetorik scholarship. The concept of 'auditoire universel' (the universal audience) is central.\n\n(4) HABERMAS: the theory of the 'ideal speech situation' (herrschaftsfreier Diskurs) — the conditions for rational persuasion: equal participation, only the force of the better argument decides.\n\n(5) GERMAN SCEPTICISM OF RHETORIC: a long tradition of distrust, from Kant ('rhetoric is the art of exploiting human weakness for one's own ends') to Habermas (who distinguishes 'communicative action' from 'strategic action'). But this scepticism is itself a rhetorical stance.\n\n(6) APPLICATIONS: law (Plädoyer — closing argument), politics (Bundestagsrede), business (Pitch). The German register: heavy on facts and figures (logos), suspicious of emotion (pathos), high premium on sincerity (ethos).",
+      "tip_advice_en": "C2 PERSUASION-ANALYSIS GRID:\n\n1. LOGOS: What arguments are made? Facts, statistics, logical inferences? Are there unstated premises (enthymemes)?\n\n2. ETHOS: How does the speaker build credibility? Competence signals, modesty signals, or attacks on the opponent's credibility?\n\n3. PATHOS: Which emotions are appealed to? Fear, hope, indignation, pride? At which point in the text?\n\n4. STRUCTURE: Exordium (opening), Narratio (statement of facts), Argumentatio (proofs), Peroratio (closing appeal).\n\nUSEFUL PHRASES:\n- 'Die Rede appelliert hier vorwiegend an den logos, indem…' (the speech here appeals mainly to logos by…)\n- 'Der ethos des Sprechers wird durch… aufgebaut.' (the speaker's ethos is built up through…)\n- 'Der pathos-Appell in der Peroratio zielt darauf ab…' (the pathos appeal in the peroration aims to…)\n- 'Diese Konzession ist eine rhetorische Figur, die den ethos stärkt.' (this concession is a rhetorical figure that strengthens ethos.)",
+      "idiom_glosses_en": [],
+      "sentences_pronunciation_focus_en": [
+        [
+          "Aristoteles → ah-ris-TO-tay-les",
+          "Glaubwürdigkeit → GLOWP-vyoor-dikh-kite",
+          "Bewegung → buh-VAY-goong",
+          "Trias → TREE-as"
+        ],
+        [
+          "Perelman → PER-el-man",
+          "kartesisch → kar-TAY-zish",
+          "Evidenz → ay-vi-DENTS",
+          "Plausiblen → plow-ZEE-blen"
+        ],
+        [
+          "Verzicht → fer-TSIKHT",
+          "kalkuliert → kal-koo-LEERT",
+          "Konzession → kon-tses-see-OHN",
+          "signalisiert → zig-nah-li-ZEERT"
+        ],
+        [
+          "unverzichtbar → oon-fer-TSIKHT-bar",
+          "Handwerkszeug → HANT-verks-tsoyk",
+          "missbrauchen → MISS-brow-khen",
+          "preisgibt → PRICE-gipt"
+        ],
+        [
+          "Rhetorik-Skepsis → ray-TOR-ik SKEP-sis",
+          "vorgibt → FOR-gipt",
+          "verzichtet → fer-TSIKH-tet"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        [],
+        []
+      ],
+      "vocab_pronunciation_en": [
+        "dee GLOWP-vyoor-dikh-kite — 'au' as 'ow' in 'how'; 'ü' as in French 'tu'",
+        "dee YOO-ber-tsoy-goongs-kraft — 'ü' as in French 'tu'",
+        "das en-tyoo-MAYM — Greek loan, stress on final syllable",
+        "dair ah-PELL — French loan, stress on second syllable",
+        "dee kon-tses-see-OHN — stress on final syllable",
+        "das POO-bli-koom — long 'oo' as in 'food'",
+        "das play-doy-AY — French loan",
+        "dee buh-VICE-fyoo-roong — 'ei' rhymes with 'eye'; 'ü' as in French 'tu'"
+      ]
+    },
+    "larts_medienkritik": {
+      "cultural_notes_en": "MEDIA CRITICISM IN THE GERMAN TRADITION: (1) TRENNUNGSGRUNDSATZ: the separation principle between Nachricht (news) and Kommentar (opinion) — the load-bearing pillar of German journalism. (2) PRESSEKODEX: the German press's code of practice, issued by the Presserat. (3) ÖFFENTLICH-RECHTLICHE: ARD, ZDF — funded by the mandatory broadcasting fee (Rundfunkbeitrag). Their statutory duty: Grundversorgung — basic provision of balanced information. (4) FAZ, SZ, ZEIT, taz, BILD — the German press runs from quality broadsheet to tabloid; the Medienlandschaft (media landscape) is unusually diverse.",
+      "tip_advice_en": "C2 MEDIA-ANALYSIS GRID: (1) Trennungsgrundsatz: news or opinion? (2) Reporting verbs: 'behaupten' (claim, with doubt) vs 'mitteilen' (state) vs 'einräumen' (concede). (3) Sources: named or anonymous? (4) Agenda-setting: what's reported, what isn't?",
+      "idiom_glosses_en": [],
+      "sentences_pronunciation_focus_en": [
+        [
+          "Medienkritik → MAY-dee-en-kri-tik",
+          "redaktionell → ray-dak-tsee-o-NELL",
+          "Themenauswahl → TAY-men-ows-vahl"
+        ],
+        [
+          "Berichtsverb → buh-RIKHTS-verb",
+          "behaupten → buh-HOWP-ten",
+          "einräumen → INE-roy-men"
+        ],
+        [
+          "Trennungsgrundsatz → TREN-noongs-groont-zats",
+          "institutionell → in-sti-too-tsee-o-NELL",
+          "verankert → fer-AN-kert"
+        ],
+        [
+          "Öffentlich-Rechtlichen → ER-fent-likh-REKHT-li-khen",
+          "Ausgewogenheit → OWS-guh-voh-gen-hite"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        []
+      ],
+      "vocab_pronunciation_en": [
+        "dair TREN-noongs-groont-zats — short 'e' as in 'bet'",
+        "dee OWS-guh-voh-gen-hite — 'au' as 'ow' in 'how'",
+        "das buh-RIKHTS-verb — hard 'ch' as in 'loch'",
+        "dee TAY-men-ows-vahl — long 'ay' as in 'they'",
+        "dair pro-GRAHM-owf-trahk — 'au' as 'ow' in 'how'",
+        "dee NAHKH-rikht — hard 'ch' as in 'loch'",
+        "dair ko-men-TAR — French/Latin loan, stress on final syllable",
+        "dair PRES-suh-raht — short 'e' as in 'bet'"
+      ]
+    },
+    "lcivic_diplomatie": {
+      "cultural_notes_en": "DIPLOMATIC LANGUAGE: (1) The diplomatic scale (strongest to weakest): verurteilen > bedauern > mit Sorge betrachten > zur Kenntnis nehmen > keinen Kommentar abgeben. (2) Code phrases: 'konstruktiver Meinungsaustausch' = there was no agreement. 'Die Gespräche werden fortgesetzt' = no agreement. (3) Germany as mediator: German diplomacy emphasises 'leise Töne' (quiet tones) and a mediating role.",
+      "tip_advice_en": "SCALE OF DIPLOMATIC VERBS (strong → weak): verurteilen (condemn) > bedauern (regret) > zur Kenntnis nehmen (take note) > nicht kommentieren (no comment). 'Konstruktiver Meinungsaustausch' = disagreement. 'Fortsetzung des Dialogs vereinbart' = no result. ALWAYS: read communiqués twice — once for the public reading, once for the specialist reading.",
+      "idiom_glosses_en": [],
+      "sentences_pronunciation_focus_en": [
+        [
+          "diplomatisch → di-plo-MAH-tish",
+          "Unschärfe → OON-sher-fuh",
+          "verpflichten → fer-PFLIKH-ten"
+        ],
+        [
+          "verurteilen → fer-OOR-tie-len",
+          "bedauern → buh-DOW-ern",
+          "fordern → FOR-dern"
+        ],
+        [
+          "Meinungsaustausch → MY-noongs-ows-towsh",
+          "Einigung → INE-i-goong"
+        ]
+      ],
+      "exercises_pronunciation_focus_en": [
+        []
+      ],
+      "vocab_pronunciation_en": [
+        "fer-OOR-tie-len — 'ei' rhymes with 'eye'",
+        "buh-DOW-ern — 'au' as 'ow' in 'how'",
+        "dair MY-noongs-ows-towsh — 'ei' rhymes with 'eye'; 'au' as 'ow' in 'how'",
+        "dee fer-MIT-ler-ro-luh — short 'i' as in 'fish'",
+        "tsoor KENT-nis nay-men — long 'ay' as in 'they'"
+      ]
+    }
+  },
+  "instructions": {
+    "Điền cấu trúc close reading C2:": "Fill in the C2 close-reading structure:",
+    "Nối thuật ngữ phê bình văn học Đức với chức năng:": "Match the German literary-criticism term with its function:",
+    "Dịch sang tiếng Đức phê bình văn học C2:": "Translate into C2 German literary criticism:",
+    "Điền cấu trúc Erzählinstanz-Analyse C2:": "Fill in the C2 narrator-analysis structure:",
+    "Nối thuật ngữ Erzähltheorie với chức năng:": "Match the narrative-theory term with its function:",
+    "Điền cấu trúc Symbol-Metapher-Analyse C2:": "Fill in the C2 symbol-and-metaphor analysis structure:",
+    "Nối khái niệm Symbol-Metapher với truyền thống Đức:": "Match the symbol/metaphor concept with the German tradition:",
+    "Điền cấu trúc Gattungs-Subversion-Analyse C2:": "Fill in the C2 genre-subversion analysis structure:",
+    "Nối nhà lý thuyết Đức với khái niệm thể loại:": "Match the German theorist with the genre concept:",
+    "Điền cấu trúc Übersetzungsvergleich C2:": "Fill in the C2 translation-comparison structure:",
+    "Nối nhà lý thuyết với khái niệm dịch:": "Match the theorist with the translation concept:",
+    "Điền cấu trúc Biographie-Werk-Analyse C2:": "Fill in the C2 biography-and-work analysis structure:",
+    "Nối lý thuyết gia với khái niệm Biographie-Werk:": "Match the theorist with the biography-and-work concept:",
+    "Điền cấu trúc Wirkungsgeschichte-Analyse C2:": "Fill in the C2 reception-history analysis structure:",
+    "Nối khái niệm Kanon-Forschung với truyền thống Đức:": "Match the canon-studies concept with the German tradition:",
+    "Điền cấu trúc Theoretische Lensen-Diskussion C2:": "Fill in the C2 theoretical-lens discussion structure:",
+    "Nối lăng kính lý thuyết với khái niệm trung tâm:": "Match the theoretical lens with its central concept:",
+    "Điền cấu trúc Eröffnungs-Strategie C2:": "Fill in the C2 opening-strategy structure:",
+    "Nối Eröffnungs-Modus với charakteristik:": "Match the opening mode with its characteristic:",
+    "Điền cấu trúc Verteidigung kontroverser Lektüre C2:": "Fill in the C2 defence-of-a-controversial-reading structure:",
+    "Nối kỹ thuật Verteidigung với chức năng:": "Match the defence technique with its function:",
+    "Điền từ Kunstkritik C2:": "Fill in the C2 art-criticism word:",
+    "Nối thuật ngữ Kunstkritik với chức năng:": "Match the art-criticism term with its function:",
+    "Dịch sang tiếng Đức Kunstkritik C2:": "Translate into C2 German art criticism:",
+    "Điền từ Filmkritik C2:": "Fill in the C2 film-criticism word:",
+    "Nối thuật ngữ Filmkritik với chức năng:": "Match the film-criticism term with its function:",
+    "Dịch sang tiếng Đức Filmkritik C2:": "Translate into C2 German film criticism:",
+    "Điền từ politische Rede C2:": "Fill in the C2 political-speech word:",
+    "Nối thuật ngữ với chức năng:": "Match the term with its function:",
+    "Dịch sang tiếng Đức:": "Translate into German:",
+    "Điền từ Bürgerdebatte C2:": "Fill in the C2 civic-debate word:",
+    "Nối thuật ngữ:": "Match the terms:",
+    "Điền từ:": "Fill in the word:",
+    "Điền từ triết học C2:": "Fill in the C2 philosophy word:",
+    "Nối thuật ngữ triết học Đức:": "Match the German philosophy term:",
+    "Điền từ Persuasionstheorie C2:": "Fill in the C2 persuasion-theory word:"
+  }
+}

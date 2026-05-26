@@ -1,0 +1,329 @@
+name: Deploy with Auto-Rollback
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      skip_health_checks:
+        description: 'Skip health checks (use carefully)'
+        required: false
+        type: boolean
+        default: false
+
+env:
+  DEPLOYMENT_TIMEOUT: 300  # 5 minutes
+  HEALTH_CHECK_RETRIES: 3
+  HEALTH_CHECK_INTERVAL: 10  # seconds
+
+jobs:
+  backup-current:
+    name: Backup Current Version
+    runs-on: ubuntu-latest
+    
+    outputs:
+      backup_sha: ${{ steps.get-current.outputs.sha }}
+      backup_ref: ${{ steps.get-current.outputs.ref }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Get current deployment info
+        id: get-current
+        run: |
+          # Get the previous commit as backup point
+          PREV_SHA=$(git rev-parse HEAD~1)
+          echo "sha=$PREV_SHA" >> $GITHUB_OUTPUT
+          echo "ref=${{ github.ref }}" >> $GITHUB_OUTPUT
+          echo "📦 Backup SHA: $PREV_SHA"
+
+      - name: Save deployment metadata
+        run: |
+          mkdir -p .deployment-backup
+          echo "${{ steps.get-current.outputs.sha }}" > .deployment-backup/last-known-good.txt
+          echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC')" > .deployment-backup/backup-timestamp.txt
+
+      - name: Upload backup metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployment-backup
+          path: .deployment-backup/
+          retention-days: 30
+
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: backup-current
+    
+    outputs:
+      deployment_url: ${{ steps.deploy-info.outputs.url }}
+      deployment_id: ${{ steps.deploy-info.outputs.id }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate data files
+        run: node scripts/validate-data-files.js
+
+      - name: Run TypeScript checks
+        run: npx tsc --noEmit
+
+      - name: Build production bundle
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Set deployment info
+        id: deploy-info
+        run: |
+          # For Lovable hosting, the URL is typically the lovable.app domain
+          # Update this based on your actual deployment target
+          echo "url=https://your-app.lovable.app" >> $GITHUB_OUTPUT
+          echo "id=${{ github.run_id }}" >> $GITHUB_OUTPUT
+
+      - name: Deploy notification
+        run: |
+          echo "## 🚀 Deployment Started" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Time**: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "- **Backup Point**: \`${{ needs.backup-current.outputs.backup_sha }}\`" >> $GITHUB_STEP_SUMMARY
+
+  health-check:
+    name: Run Health Checks
+    runs-on: ubuntu-latest
+    needs: [deploy, backup-current]
+    if: ${{ !inputs.skip_health_checks }}
+    
+    outputs:
+      health_status: ${{ steps.final-status.outputs.status }}
+      health_details: ${{ steps.final-status.outputs.details }}
+    
+    steps:
+      - name: Wait for deployment propagation
+        run: |
+          echo "⏳ Waiting 30 seconds for deployment to propagate..."
+          sleep 30
+
+      - name: Check application availability
+        id: availability-check
+        continue-on-error: true
+        run: |
+          DEPLOYMENT_URL="${{ needs.deploy.outputs.deployment_url }}"
+          MAX_RETRIES=${{ env.HEALTH_CHECK_RETRIES }}
+          RETRY_COUNT=0
+          SUCCESS=false
+          
+          echo "🔍 Checking availability: $DEPLOYMENT_URL"
+          
+          while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$DEPLOYMENT_URL" || echo "000")
+            
+            if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "304" ]; then
+              echo "✅ Application is responding (HTTP $HTTP_CODE)"
+              SUCCESS=true
+              break
+            else
+              echo "⚠️ Attempt $((RETRY_COUNT + 1))/$MAX_RETRIES failed (HTTP $HTTP_CODE)"
+              RETRY_COUNT=$((RETRY_COUNT + 1))
+              
+              if [ $RETRY_COUNT -lt $MAX_RETRIES ]; then
+                echo "Retrying in ${{ env.HEALTH_CHECK_INTERVAL }} seconds..."
+                sleep ${{ env.HEALTH_CHECK_INTERVAL }}
+              fi
+            fi
+          done
+          
+          if [ "$SUCCESS" = false ]; then
+            echo "❌ Application availability check failed"
+            exit 1
+          fi
+
+      - name: Check critical endpoints
+        id: endpoint-check
+        continue-on-error: true
+        run: |
+          BASE_URL="${{ needs.deploy.outputs.deployment_url }}"
+          FAILED_CHECKS=0
+          
+          # Add your critical endpoints here
+          ENDPOINTS=(
+            "/chat/addiction-support-free"
+            "/api/health"
+          )
+          
+          echo "🔍 Checking critical endpoints..."
+          
+          for endpoint in "${ENDPOINTS[@]}"; do
+            URL="$BASE_URL$endpoint"
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$URL" 2>/dev/null || echo "000")
+            
+            if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "304" ]; then
+              echo "✅ $endpoint: OK (HTTP $HTTP_CODE)"
+            else
+              echo "❌ $endpoint: FAILED (HTTP $HTTP_CODE)"
+              FAILED_CHECKS=$((FAILED_CHECKS + 1))
+            fi
+          done
+          
+          if [ $FAILED_CHECKS -gt 0 ]; then
+            echo "❌ $FAILED_CHECKS critical endpoint(s) failed"
+            exit 1
+          fi
+
+      - name: Check console errors
+        id: console-check
+        continue-on-error: true
+        run: |
+          echo "ℹ️ Console error checking requires browser automation"
+          echo "Consider adding Playwright or Puppeteer for comprehensive checks"
+          # This is a placeholder - implement with actual browser testing if needed
+
+      - name: Determine final health status
+        id: final-status
+        run: |
+          AVAILABILITY="${{ steps.availability-check.outcome }}"
+          ENDPOINTS="${{ steps.endpoint-check.outcome }}"
+          
+          if [ "$AVAILABILITY" = "success" ] && [ "$ENDPOINTS" = "success" ]; then
+            echo "status=healthy" >> $GITHUB_OUTPUT
+            echo "details=All health checks passed" >> $GITHUB_OUTPUT
+            echo "✅ All health checks passed"
+          else
+            echo "status=unhealthy" >> $GITHUB_OUTPUT
+            echo "details=Health checks failed - rollback required" >> $GITHUB_OUTPUT
+            echo "❌ Health checks failed"
+            exit 1
+          fi
+
+  rollback:
+    name: Rollback Deployment
+    runs-on: ubuntu-latest
+    needs: [backup-current, deploy, health-check]
+    if: failure() && needs.health-check.outputs.health_status == 'unhealthy'
+    
+    steps:
+      - name: Download backup metadata
+        uses: actions/download-artifact@v4
+        with:
+          name: deployment-backup
+          path: .deployment-backup/
+
+      - name: Checkout backup version
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.backup-current.outputs.backup_sha }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build backup version
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Deploy backup version
+        run: |
+          echo "🔄 Rolling back to commit ${{ needs.backup-current.outputs.backup_sha }}"
+          # Add your actual deployment commands here
+          # This is where you'd redeploy the previous version
+
+      - name: Verify rollback
+        run: |
+          DEPLOYMENT_URL="${{ needs.deploy.outputs.deployment_url }}"
+          sleep 15  # Wait for rollback to propagate
+          
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$DEPLOYMENT_URL")
+          
+          if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "304" ]; then
+            echo "✅ Rollback successful - application responding"
+          else
+            echo "⚠️ Rollback may have issues (HTTP $HTTP_CODE)"
+            exit 1
+          fi
+
+      - name: Rollback notification
+        if: always()
+        run: |
+          echo "## 🔄 Automatic Rollback Executed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "❌ **Deployment failed health checks**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Rollback Details" >> $GITHUB_STEP_SUMMARY
+          echo "- **Failed Commit**: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Rolled Back To**: \`${{ needs.backup-current.outputs.backup_sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Reason**: Health checks failed" >> $GITHUB_STEP_SUMMARY
+          echo "- **Time**: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Next Steps" >> $GITHUB_STEP_SUMMARY
+          echo "1. Review the health check failures in logs" >> $GITHUB_STEP_SUMMARY
+          echo "2. Fix the issues locally" >> $GITHUB_STEP_SUMMARY
+          echo "3. Test thoroughly before redeploying" >> $GITHUB_STEP_SUMMARY
+
+      - name: Create rollback issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🔄 Automatic Rollback: Deployment ${context.runId} Failed`,
+              body: `## Deployment Failure & Rollback
+              
+              A deployment was automatically rolled back due to failed health checks.
+              
+              ### Details
+              - **Failed Commit**: \`${context.sha}\`
+              - **Rolled Back To**: \`${{ needs.backup-current.outputs.backup_sha }}\`
+              - **Workflow Run**: [#${context.runId}](${context.payload.repository.html_url}/actions/runs/${context.runId})
+              - **Branch**: \`${context.ref}\`
+              
+              ### Health Check Status
+              ${{ needs.health-check.outputs.health_details }}
+              
+              ### Action Required
+              Please investigate the failure, fix the issues, and redeploy.
+              
+              ---
+              *This issue was automatically created by the rollback workflow.*`,
+              labels: ['deployment-failure', 'auto-rollback']
+            });
+
+  success-notification:
+    name: Deployment Success
+    runs-on: ubuntu-latest
+    needs: [deploy, health-check]
+    if: success()
+    
+    steps:
+      - name: Success notification
+        run: |
+          echo "## ✅ Deployment Successful" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All health checks passed. Deployment is live." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Deployment Info" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **URL**: ${{ needs.deploy.outputs.deployment_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Time**: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ${{ needs.health-check.outputs.health_status }}" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,131 @@
+{
+  "id": "philosophy_of_everyday_free",
+  "name": "Philosophy of Everyday (Free)",
+  "name_vi": "Triết Học Đời Thường (Miễn Phí)",
+  "description": "A gentle quest for balance, mindfulness, and finding meaning in everyday life.",
+  "description_vi": "Một hành trình nhẹ nhàng đi tìm sự cân bằng, sự an trú trong hiện tại và ý nghĩa giữa đời sống thường ngày.",
+  "keywords_en": [
+    "meaning",
+    "philosophy",
+    "mindfulness",
+    "purpose",
+    "balance"
+  ],
+  "keywords_vi": [
+    "ý nghĩa",
+    "triết học",
+    "chánh niệm",
+    "mục đích",
+    "cân bằng"
+  ],
+  "entries": [
+    {
+      "slug": "meaning-of-life",
+      "keywords_en": [
+        "meaning of life",
+        "purpose",
+        "balance",
+        "mindfulness",
+        "gratitude"
+      ],
+      "keywords_vi": [
+        "ý nghĩa cuộc sống",
+        "mục đích",
+        "cân bằng",
+        "chánh niệm",
+        "biết ơn"
+      ],
+      "copy": {
+        "en": "The meaning of life is a gentle quest for balance between body, mind, and the living world around us. It begins by listening inward — recognizing your core values, quiet passions, and the small worries that visit each day. Practice mindfulness to stay present, cultivating gratitude for simple joys that steady the heart. Build daily rituals of nourishment, movement, and rest to anchor your well-being. Remember that purpose blooms through connection — cherish the relationships that lift your spirit and the moments that remind you of belonging. When challenges come, greet them as teachers guiding you toward growth and self-understanding.\n\nDiscover deeper meaning in higher level.",
+        "vi": "Ý nghĩa của cuộc sống là một hành trình dịu dàng đi tìm sự cân bằng giữa thân, tâm và thế giới quanh ta. Nó bắt đầu từ việc lắng nghe bên trong — nhận ra những giá trị cốt lõi, những đam mê thầm lặng và cả những nỗi bận lòng nhỏ ghé qua mỗi ngày. Hãy thực hành chánh niệm để an trú trong hiện tại, nuôi dưỡng lòng biết ơn trước những niềm vui giản dị giúp trái tim thêm vững vàng. Hãy gây dựng những thói quen nhỏ mỗi ngày — ăn uống điều độ, vận động nhẹ nhàng, nghỉ ngơi đủ đầy — để giữ cho sức khỏe và sự bình an thêm bền chặt. Hãy nhớ rằng ý nghĩa sống nảy nở từ sự gắn kết — hãy trân quý những mối quan hệ nâng đỡ tâm hồn và những khoảnh khắc nhắc bạn rằng mình có một nơi để thuộc về. Khi khó khăn đến, hãy đón nhận chúng như những người thầy dẫn lối cho bạn hiểu sâu hơn về chính mình.\n\nKhám phá ý nghĩa sâu hơn ở cấp độ cao hơn."
+      },
+      "tags": [
+        "philosophy",
+        "mindfulness",
+        "purpose"
+      ],
+      "audio": "meaning_of_life_free.mp3"
+    },
+    {
+      "slug": "small-joys",
+      "keywords_en": [
+        "joy",
+        "simple joys",
+        "mindfulness",
+        "gratitude"
+      ],
+      "keywords_vi": [
+        "niềm vui nhỏ",
+        "niềm vui giản dị",
+        "chánh niệm",
+        "biết ơn"
+      ],
+      "copy": {
+        "en": "Small joys are the hidden threads that quietly hold our days together. Meaning does not depend on grand achievements; it grows from noticing the gentle moments we often overlook — warm sunlight on the floor, the sound of boiling water, the softness of a familiar shirt, or a message from someone you care about. These tiny experiences invite you to pause, breathe, and remember that life is happening right now, not elsewhere. When you let simple joys register fully, your nervous system softens, your thoughts slow down, and gratitude appears without effort. Over time, these small joys form a quiet foundation of contentment. They remind you that even on difficult days, life still offers small anchors of warmth and steadiness. Let today be the day you catch at least one tiny moment and let it shine a little longer.",
+        "vi": "Những niềm vui nhỏ là sợi chỉ âm thầm khâu lại cho những ngày của ta thành một mạch liền. Ý nghĩa không nằm ở những thành tựu lớn lao; nó lớn lên từ việc nhận ra những khoảnh khắc dịu dàng ta thường bỏ lỡ — vạt nắng ấm trải trên sàn, tiếng nước reo lăn tăn, sự mềm mại của chiếc áo quen, hay một tin nhắn từ người mình thương. Những điều nhỏ bé ấy mời bạn dừng lại, hít thở và nhớ rằng cuộc sống đang diễn ra ngay tại đây, chứ không ở một nơi nào khác. Khi bạn để một niềm vui nhỏ thấm vào mình trọn vẹn, hệ thần kinh dịu lại, dòng suy nghĩ chậm xuống và lòng biết ơn tự nhiên hiện ra. Lâu dần, những niềm vui nhỏ ấy dựng nên một nền tảng bình yên lặng lẽ, nhắc bạn rằng ngay cả trong những ngày khó khăn, cuộc sống vẫn dành cho ta những điểm tựa ấm áp. Hôm nay, hãy giữ lấy ít nhất một khoảnh khắc nhỏ và để nó sáng thêm một chút lâu hơn."
+      },
+      "tags": [
+        "joy",
+        "mindfulness",
+        "gratitude"
+      ],
+      "audio": "small_joys_free.mp3"
+    },
+    {
+      "slug": "living-with-awareness",
+      "keywords_en": [
+        "awareness",
+        "presence",
+        "mindfulness",
+        "clarity"
+      ],
+      "keywords_vi": [
+        "nhận thức",
+        "hiện diện",
+        "chánh niệm",
+        "rõ ràng"
+      ],
+      "copy": {
+        "en": "Living with awareness is the art of waking up to your own life. It means noticing the shape of your thoughts, the tone of your emotions, and the rhythm of your body without rushing to fix or judge anything. Awareness brings a gentle clarity that allows you to respond instead of react. When you breathe slowly, you return to the present moment, where choices become softer and more spacious. This presence shows you that even simple actions — washing your hands, unlocking a door, sipping warm tea — can become small rituals of grounding. Over time, living with awareness helps you navigate uncertainty with steadiness. You begin to trust your inner signals, sense what matters, and move through the world with a quieter courage. Awareness is not a destination but a way of being — a soft light you carry with you.",
+        "vi": "Sống tỉnh thức là nghệ thuật thức dậy ngay trong chính đời sống của mình. Điều đó nghĩa là để ý đến hình hài của suy nghĩ, âm sắc của cảm xúc và nhịp điệu của cơ thể mà không vội sửa hay phán xét. Sự tỉnh thức mang lại một sự sáng suốt nhẹ nhàng, để bạn đáp lại chứ không phản ứng. Khi bạn thở chậm, bạn trở về với khoảnh khắc hiện tại, nơi mỗi lựa chọn trở nên nhẹ nhõm và thênh thang hơn. Sự có mặt ấy cho bạn thấy rằng ngay cả những việc giản đơn — rửa tay, mở cửa, nhấp một ngụm trà ấm — cũng có thể thành những nghi thức nhỏ giúp bạn lấy lại thăng bằng. Lâu dần, sống tỉnh thức giúp bạn đi qua những điều bất định một cách vững vàng. Bạn bắt đầu tin vào tín hiệu bên trong, cảm được điều gì là quan trọng và bước đi giữa cuộc đời với một lòng can đảm dịu dàng hơn. Tỉnh thức không phải là đích đến mà là một cách hiện hữu — một ánh sáng dịu bạn mang theo trên suốt đường đời."
+      },
+      "tags": [
+        "awareness",
+        "presence",
+        "clarity"
+      ],
+      "audio": "living_with_awareness_free.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": [
+        "all",
+        "philosophy",
+        "meaning",
+        "mindfulness"
+      ],
+      "keywords_vi": [
+        "tổng hợp",
+        "triết học",
+        "ý nghĩa",
+        "chánh niệm"
+      ],
+      "copy": {
+        "en": "The meaning of life is a gentle quest for balance between body, mind, and the living world around us. It begins by listening inward — recognizing your core values, quiet passions, and the small worries that visit each day. Practice mindfulness to stay present, cultivating gratitude for simple joys that steady the heart. Build daily rituals of nourishment, movement, and rest to anchor your well-being. Remember that purpose blooms through connection — cherish the relationships that lift your spirit and the moments that remind you of belonging. When challenges come, greet them as teachers guiding you toward growth and self-understanding.\n\nDiscover deeper meaning in higher level.\n\nSmall joys are the hidden threads that quietly hold our days together. Meaning does not depend on grand achievements; it grows from noticing the gentle moments we often overlook — warm sunlight on the floor, the sound of boiling water, the softness of a familiar shirt, or a message from someone you care about. These tiny experiences invite you to pause, breathe, and remember that life is happening right now, not elsewhere. When you let simple joys register fully, your thoughts slow down, your nervous system softens, and gratitude appears naturally. Let today be the day you catch at least one tiny moment and let it shine a little longer.\n\nLiving with awareness is the art of waking up to your own life. It means noticing the shape of your thoughts, the tone of your emotions, and the rhythm of your body without rushing to fix or judge anything. Awareness brings a gentle clarity that allows you to respond instead of react. Simple actions — washing your hands, unlocking a door, sipping warm tea — become rituals of grounding. Over time, awareness helps you navigate uncertainty with steadiness and a quiet courage.",
+        "vi": "Ý nghĩa của cuộc sống là một hành trình dịu dàng đi tìm sự cân bằng giữa thân, tâm và thế giới quanh ta. Nó bắt đầu từ việc lắng nghe bên trong — nhận ra những giá trị cốt lõi, những đam mê thầm lặng và cả những nỗi bận lòng nhỏ ghé qua mỗi ngày. Hãy thực hành chánh niệm để an trú trong hiện tại, nuôi dưỡng lòng biết ơn trước những niềm vui giản dị giúp trái tim thêm vững vàng. Hãy gây dựng những thói quen nhỏ mỗi ngày — ăn uống điều độ, vận động nhẹ nhàng, nghỉ ngơi đủ đầy — để giữ cho sức khỏe và sự bình an thêm bền chặt. Hãy nhớ rằng ý nghĩa sống nảy nở từ sự gắn kết — hãy trân quý những mối quan hệ nâng đỡ tâm hồn và những khoảnh khắc nhắc bạn rằng mình có nơi để thuộc về. Khi khó khăn đến, hãy đón nhận chúng như những người thầy.\n\nNhững niềm vui nhỏ là sợi chỉ âm thầm khâu lại những ngày của ta thành một mạch liền. Ý nghĩa không nằm ở những thành tựu lớn; nó lớn lên từ việc nhận ra những khoảnh khắc dịu dàng ta thường bỏ lỡ — vạt nắng trải trên sàn, tiếng nước reo, sự mềm mại của chiếc áo quen, hay một tin nhắn từ người mình thương. Những điều nhỏ bé ấy mời bạn dừng lại, hít thở và nhớ rằng cuộc sống đang diễn ra ngay tại đây. Khi bạn để một niềm vui nhỏ thấm vào mình trọn vẹn, hệ thần kinh dịu lại và lòng biết ơn tự nhiên hiện ra.\n\nSống tỉnh thức là nghệ thuật thức dậy ngay trong chính đời sống của mình. Điều đó nghĩa là để ý đến suy nghĩ, cảm xúc và nhịp điệu của cơ thể mà không phán xét. Những việc giản đơn — rửa tay, mở cửa, nhấp một ngụm trà ấm — có thể thành những nghi thức giúp bạn lấy lại thăng bằng. Lâu dần, sự tỉnh thức giúp bạn đi qua những điều bất định một cách vững vàng, với một lòng can đảm dịu dàng."
+      },
+      "tags": [
+        "all",
+        "philosophy"
+      ],
+      "audio": "meaning_of_life_free.mp3 small_joys_free.mp3 living_with_awareness_free.mp3"
+    }
+  ],
+  "tier": "free",
+  "domain": "General",
+  "title": {
+    "en": "philosophy_of_everyday_free",
+    "vi": "Triết Học Đời Thường (Miễn Phí)"
+  },
+  "domain_image": "/images/domains/general.svg"
+}

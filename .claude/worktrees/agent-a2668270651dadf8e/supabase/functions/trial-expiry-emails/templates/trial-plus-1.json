@@ -1,0 +1,10 @@
+{
+  "campaign": "trial_expiry_d_plus_1",
+  "stage": "D_plus_1",
+  "tone": "open door, no shame, curious",
+  "subject_vi": "Bạn còn nhớ MercyBlade không? Mercy mở cửa đây",
+  "subject_en": "Still curious about MercyBlade? The door's still open",
+  "body_vi": "Chào {{first_name}},\n\nBản dùng thử 3 ngày của bạn vừa kết thúc hôm qua. Mercy biết — đời bận, có khi mấy ngày đó không phải là lúc để học tiếng Anh.\n\nNếu bạn muốn quay lại, đây là 3 thứ Mercy đã thêm vào tuần này, có thể bạn sẽ thích:\n\n• Bài chữa lỗi tiếng Anh người Việt hay mắc (mới)\n• Phòng giả lập phỏng vấn tiếng Anh (mới)\n• Một bộ bài học IELTS Speaking ngắn\n\nMở lại tài khoản miễn phí: https://mercyblade.com\nXem các gói nâng cấp: https://mercyblade.com/pricing\n\nKhông quay lại cũng không sao — Mercy không gửi email này lần nữa đâu.\n\nMercy 💚",
+  "body_en": "Hi {{first_name}},\n\nYour 3-day trial wrapped up yesterday. Mercy gets it — life's busy, and sometimes those days just weren't the right time.\n\nIf you want to come back, here are three things Mercy added this week — you might like one:\n\n• A pack of mistakes Vietnamese speakers make most (new)\n• A mock-interview-in-English room (new)\n• A short IELTS Speaking lesson set\n\nReopen your free account: https://mercyblade.com\nSee upgrade options: https://mercyblade.com/pricing\n\nIf you'd rather not — that's fine. Mercy won't send this one again.\n\nMercy 💚",
+  "notes": "D+1 is the 'open door' beat. Names a few new things to give a real reason to come back, NOT a guilt trip. The 'won't send this again' line is a one-shot promise: this campaign sends ONCE per user, the unique-pending index in email_sends_log enforces it. Updated 2026-04-26: trial-week language → 3-day trial language."
+}

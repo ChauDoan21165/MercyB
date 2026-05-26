@@ -1,0 +1,98 @@
+{
+  "id": "social_anxiety_free",
+  "tier": "free",
+  "domain": "Mental Health",
+  "name": "Social Anxiety",
+  "name_vi": "Lo Âu Xã Hội",
+  "description": "Practical guidance for reducing social anxiety with simple steps",
+  "description_vi": "Những hướng dẫn thiết thực giúp bạn bớt lo âu khi giao tiếp, qua từng bước đơn giản",
+  "keywords_en": [
+    "social anxiety",
+    "small talk",
+    "eye contact",
+    "confidence"
+  ],
+  "keywords_vi": [
+    "lo âu xã hội",
+    "trò chuyện nhỏ",
+    "giao tiếp mắt",
+    "tự tin"
+  ],
+  "title": {
+    "en": "Social Anxiety",
+    "vi": "Lo Âu Xã Hội"
+  },
+  "content": {
+    "en": "Practical guidance for reducing social anxiety with simple steps",
+    "vi": "Những hướng dẫn thiết thực giúp bạn bớt lo âu khi giao tiếp, qua từng bước đơn giản"
+  },
+  "entries": [
+    {
+      "slug": "small-talk",
+      "keywords_en": [
+        "small talk",
+        "conversation",
+        "anxiety"
+      ],
+      "keywords_vi": [
+        "trò chuyện nhỏ",
+        "cuộc trò chuyện",
+        "lo âu"
+      ],
+      "copy": {
+        "en": "Small talk can gently ease social anxiety. Begin with a simple greeting like 'Hi, how's your day?' Smile and listen with warmth. Practice once a day with one person. Invite a friend to role-play and notice your comfort grow each time.",
+        "vi": "Vài câu chuyện phiếm cũng có thể nhẹ nhàng làm dịu nỗi lo âu khi giao tiếp. Hãy bắt đầu bằng một lời chào giản dị như \"Chào bạn, hôm nay bạn thế nào?\" Hãy mỉm cười và lắng nghe thật ân cần. Mỗi ngày hãy thử một lần với một người. Hãy rủ một người bạn cùng đóng vai để tập, rồi bạn sẽ thấy mình mỗi lúc một thoải mái hơn."
+      },
+      "tags": [
+        "talk",
+        "anxiety"
+      ],
+      "audio": "social_anxiety_free_small_talk.mp3"
+    },
+    {
+      "slug": "eye-contact",
+      "keywords_en": [
+        "eye contact",
+        "connection",
+        "confidence"
+      ],
+      "keywords_vi": [
+        "giao tiếp mắt",
+        "kết nối",
+        "tự tin"
+      ],
+      "copy": {
+        "en": "Eye contact quietly builds confidence. Hold someone's gaze for three seconds, then look away naturally. Try in the mirror, or with a cashier. Play an eye-contact game with a friend to reduce avoidance and feel more at ease each day.",
+        "vi": "Ánh mắt giúp bạn tự tin hơn một cách thật lặng lẽ. Hãy nhìn vào mắt một người trong khoảng ba giây, rồi nhẹ nhàng nhìn đi nơi khác. Bạn có thể tập trước gương, hoặc khi đứng trả tiền với nhân viên thu ngân. Hãy rủ một người bạn chơi trò nhìn vào mắt nhau để bớt né tránh và mỗi ngày thấy thoải mái hơn."
+      },
+      "tags": [
+        "contact",
+        "anxiety"
+      ],
+      "audio": "social_anxiety_free_eye_contact.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": [
+        "all",
+        "full content",
+        "combined"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "nội dung đầy đủ",
+        "kết hợp"
+      ],
+      "copy": {
+        "en": "Small talk can gently ease social anxiety. Begin with a simple greeting like 'Hi, how's your day?' Smile and listen with warmth. Practice once a day with one person. Invite a friend to role-play and notice your comfort grow each time.\n\nEye contact quietly builds confidence. Hold someone's gaze for three seconds, then look away naturally. Try in the mirror, or with a cashier. Play an eye-contact game with a friend to reduce avoidance and feel more at ease each day.",
+        "vi": "Vài câu chuyện phiếm cũng có thể nhẹ nhàng làm dịu nỗi lo âu khi giao tiếp. Hãy bắt đầu bằng một lời chào giản dị như \"Chào bạn, hôm nay bạn thế nào?\" Hãy mỉm cười và lắng nghe thật ân cần. Mỗi ngày hãy thử một lần với một người. Hãy rủ một người bạn cùng đóng vai để tập, rồi bạn sẽ thấy mình mỗi lúc một thoải mái hơn.\n\nÁnh mắt giúp bạn tự tin hơn một cách thật lặng lẽ. Hãy nhìn vào mắt một người trong khoảng ba giây, rồi nhẹ nhàng nhìn đi nơi khác. Bạn có thể tập trước gương, hoặc khi đứng trả tiền với nhân viên thu ngân. Hãy rủ một người bạn chơi trò nhìn vào mắt nhau để bớt né tránh và mỗi ngày thấy thoải mái hơn."
+      },
+      "tags": [
+        "all",
+        "combined"
+      ],
+      "audio": "social_anxiety_free_small_talk.mp3 social_anxiety_free_eye_contact.mp3"
+    }
+  ],
+  "domain_image": "/images/domains/mental_health.svg"
+}

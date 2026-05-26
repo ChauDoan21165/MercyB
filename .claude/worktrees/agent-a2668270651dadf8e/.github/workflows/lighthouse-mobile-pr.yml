@@ -1,0 +1,56 @@
+name: Lighthouse Mobile (PR)
+
+# WHY THIS EXISTS — PR #626 consolidated all PR perf/size coverage off
+# pull_request to fix check-run quota exhaustion; ci.yml is now the sole
+# PR workflow emitting the 3 required checks. But MercyBlade's #1
+# non-negotiable is mobile-first, and the only automated perf gate
+# (performance-ci.yml) ran a *desktop* preset, nightly, off PRs — so
+# mobile regressions (e.g. the CAT2 touch-target work) shipped invisibly.
+#
+# This is the deliberate, narrowly-scoped exception: ONE lightweight job
+# (build + a single Lighthouse mobile run, ~1 min) that adds exactly ONE
+# check-run per PR. It does NOT emit any of ci.yml's required checks and
+# must never be promoted to a required check while its assertions are
+# warn-only (see below).
+#
+# Assertions in .lighthouserc.json are intentionally all `warn` for now:
+# the product has no clean *mobile* Lighthouse baseline yet (CAT1 bundle
+# + CAT2 touch-target fixes are still in flight), so a hard error gate
+# would be red on arrival and block every PR. The value here is
+# VISIBILITY — the mobile score + full report link print on every PR.
+# Promote the category/CLS assertions back to `error` once CAT1+CAT2
+# land and a green mobile baseline exists.
+
+on:
+  pull_request:
+    branches: [main]
+
+# Auto-cancel superseded runs on the same PR — keeps CI minutes low,
+# consistent with the #626 quota discipline.
+concurrency:
+  group: lighthouse-mobile-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lighthouse-mobile:
+    name: Lighthouse Mobile
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - name: Run Lighthouse CI (mobile, single run)
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          # Shares the repo-root .lighthouserc.json (mobile form factor,
+          # Slow 4G + 4x CPU). `runs: 1` overrides its numberOfRuns:3
+          # (which the nightly performance-ci.yml run keeps) so the PR
+          # job stays ~1 min.
+          runs: 1
+          staticDistDir: ./dist
+          uploadArtifacts: false
+          temporaryPublicStorage: true

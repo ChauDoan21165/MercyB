@@ -1,0 +1,13 @@
+Subject: Verify your email
+
+Hello,
+
+Please confirm this email address to complete your Mercy Blade sign-in.
+
+Verify here:
+{{verify_url}}
+
+If you didn’t request this, you can ignore this message.
+
+— Mercy Blade
+Calm systems, built to last.

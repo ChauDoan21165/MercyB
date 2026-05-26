@@ -1,0 +1,127 @@
+{
+  "id": "adhd_support_free",
+  "tier": "free",
+  "domain": "Mental Health",
+  "name": "ADHD Support",
+  "name_vi": "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý",
+  "description": "Practical guidance for managing ADHD with simple, supportive strategies. Build focus, organize your day, and rely on a healthy support network.",
+  "description_vi": "Hướng dẫn thiết thực giúp bạn sống chung với ADHD bằng những chiến lược đơn giản, mang tính nâng đỡ. Tăng khả năng tập trung, sắp xếp một ngày của mình và dựa vào một mạng lưới hỗ trợ lành mạnh.",
+  "title": {
+    "en": "ADHD Support",
+    "vi": "Hỗ Trợ Rối Loạn Tăng Động Giảm Chú Ý"
+  },
+  "content": {
+    "en": "Practical guidance for managing ADHD with simple, supportive strategies. Build focus, organize your day, and rely on a healthy support network. Start small, stay consistent, and explore deeper tools in higher tiers.",
+    "vi": "Hướng dẫn thiết thực giúp bạn sống chung với ADHD bằng những chiến lược đơn giản, mang tính nâng đỡ. Tăng khả năng tập trung, sắp xếp một ngày của mình và dựa vào một mạng lưới hỗ trợ lành mạnh. Hãy bắt đầu từ những bước nhỏ, giữ đều đặn, và khám phá thêm những công cụ chuyên sâu ở các cấp độ cao hơn."
+  },
+  "keywords_en": [
+    "adhd",
+    "focus",
+    "time management",
+    "productivity",
+    "support system"
+  ],
+  "keywords_vi": [
+    "adhd",
+    "tập trung",
+    "quản lý thời gian",
+    "năng suất",
+    "hệ thống hỗ trợ"
+  ],
+  "entries": [
+    {
+      "slug": "time-management",
+      "keywords_en": [
+        "time management",
+        "organization",
+        "productivity"
+      ],
+      "keywords_vi": [
+        "quản lý thời gian",
+        "tổ chức",
+        "năng suất"
+      ],
+      "copy": {
+        "en": "Managing ADHD begins with effective time management. Use a planner or digital calendar to break big goals into small steps. Set timers for focused work sessions and reward yourself after completing each part. Prioritize one task at a time to reduce overwhelm. Connect with supportive people who offer encouragement to help you stay on track and build lasting confidence.",
+        "vi": "Sống chung với ADHD bắt đầu từ việc sắp xếp thời gian sao cho hiệu quả. Hãy dùng một cuốn sổ kế hoạch hoặc lịch điện tử để chia mục tiêu lớn thành những bước nhỏ dễ làm. Hẹn giờ cho từng phiên làm việc tập trung, và tự thưởng cho mình sau khi xong mỗi phần. Làm từng việc một để bớt cảm giác quá tải. Hãy kết nối với những người luôn động viên bạn, để bạn đi đúng hướng và dần vững tin hơn."
+      },
+      "tags": [
+        "time-management",
+        "adhd"
+      ],
+      "audio": "adhd_support_free_time_management.mp3"
+    },
+    {
+      "slug": "focus-strategies",
+      "keywords_en": [
+        "focus",
+        "concentration",
+        "productivity"
+      ],
+      "keywords_vi": [
+        "tập trung",
+        "chú ý",
+        "năng suất"
+      ],
+      "copy": {
+        "en": "Focus strategies are essential for managing ADHD. Create a distraction-free workspace and work in short bursts, like 25 minutes of focus followed by a break. Practice mindfulness to stay present and reset when distracted. Join support groups to exchange tips and stay accountable. These small habits help strengthen focus and build daily momentum.",
+        "vi": "Những chiến lược giữ tập trung là điều thiết yếu khi sống chung với ADHD. Hãy tạo một không gian làm việc gọn gàng, không bị phân tâm, và làm theo từng đợt ngắn — chẳng hạn 25 phút tập trung rồi nghỉ một chút. Tập chánh niệm để giữ mình ở hiện tại và kéo mình về mỗi khi bị xao nhãng. Tham gia một nhóm hỗ trợ để trao đổi mẹo hay và cùng nhau giữ kỷ luật. Những thói quen nhỏ ấy giúp bạn tập trung tốt hơn và tạo đà cho mỗi ngày."
+      },
+      "tags": [
+        "focus",
+        "adhd"
+      ],
+      "audio": "adhd_support_free_focus_strategies.mp3"
+    },
+    {
+      "slug": "support-system",
+      "keywords_en": [
+        "support system",
+        "community",
+        "empathy"
+      ],
+      "keywords_vi": [
+        "hệ thống hỗ trợ",
+        "cộng đồng",
+        "đồng cảm"
+      ],
+      "copy": {
+        "en": "A strong support system makes ADHD management easier. Share your challenges openly with friends, family, or support groups to build empathy. Regular check-ins provide encouragement and help you stay motivated. With a community that listens and supports you, ADHD becomes easier to navigate with resilience and confidence.",
+        "vi": "Một mạng lưới hỗ trợ vững vàng khiến việc sống chung với ADHD nhẹ nhàng hơn. Hãy cởi mở chia sẻ những khó khăn của mình với bạn bè, gia đình hoặc một nhóm hỗ trợ, để mọi người thật sự thấu hiểu. Việc hỏi han đều đặn mang lại sự động viên và giúp bạn giữ được động lực. Khi có một cộng đồng lắng nghe và đồng hành, bạn sẽ vượt qua những thử thách của ADHD bằng nghị lực và sự tự tin."
+      },
+      "tags": [
+        "support",
+        "adhd"
+      ],
+      "audio": "adhd_support_free_support_system.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": [
+        "all",
+        "full sequence",
+        "combined",
+        "complete",
+        "adhd support"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "chuỗi đầy đủ",
+        "kết hợp",
+        "hoàn chỉnh",
+        "hỗ trợ adhd"
+      ],
+      "copy": {
+        "en": "Managing ADHD begins with effective time management. Use a planner or digital calendar to break big goals into small steps. Set timers for focused sessions and reward yourself for progress. Prioritize tasks to reduce overwhelm and stay supported by encouraging people around you. Focus strategies reinforce daily momentum: create a distraction-free workspace, work in short bursts, and practice mindfulness to stay present. Support groups provide shared tips and accountability. A strong support system makes ADHD management easier—share challenges openly, stay connected, and rely on a community that listens. With consistency and support, you can navigate ADHD with confidence.",
+        "vi": "Sống chung với ADHD bắt đầu từ việc sắp xếp thời gian sao cho hiệu quả. Hãy dùng một cuốn sổ kế hoạch hoặc lịch điện tử để chia mục tiêu lớn thành những bước nhỏ. Hẹn giờ cho các phiên làm việc tập trung và tự thưởng cho từng tiến bộ. Làm từng việc một để bớt quá tải, và để những người quanh mình tiếp thêm động viên cho bạn. Các chiến lược giữ tập trung sẽ tạo đà cho mỗi ngày: dựng một không gian làm việc không phân tâm, làm theo từng đợt ngắn, và tập chánh niệm để giữ mình ở hiện tại. Nhóm hỗ trợ mang lại những mẹo hay và sự gắn kết. Một mạng lưới hỗ trợ vững vàng khiến việc sống chung với ADHD nhẹ nhàng hơn — hãy cởi mở chia sẻ khó khăn, giữ kết nối, và dựa vào một cộng đồng biết lắng nghe. Với sự đều đặn và những người nâng đỡ bên cạnh, bạn hoàn toàn có thể vượt qua ADHD bằng sự tự tin."
+      },
+      "tags": [
+        "all",
+        "combined",
+        "adhd"
+      ],
+      "audio": "adhd_support_free_all.mp3"
+    }
+  ],
+  "domain_image": "/images/domains/mental_health.svg"
+}

@@ -1,0 +1,59 @@
+{
+  "name": "Depression Support",
+  "name_vi": "Hỗ Trợ Trầm Cảm",
+  "description": "Expert strategies for mastering depression with comprehensive tools",
+  "description_vi": "Các chiến lược chuyên sâu để làm chủ trầm cảm bằng những công cụ toàn diện.",
+  "keywords_en": [
+    "depression",
+    "mood",
+    "support",
+    "routine",
+    "resilience",
+    "cbt"
+  ],
+  "keywords_vi": [
+    "trầm cảm",
+    "tâm trạng",
+    "hỗ trợ",
+    "thói quen",
+    "kiên cường",
+    "cbt"
+  ],
+  "entries": [
+    {
+      "slug": "routine",
+      "keywords_en": [
+        "routine",
+        "structure",
+        "depression"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "cấu trúc",
+        "trầm cảm"
+      ],
+      "copy": {
+        "en": "Designing a scientific routine helps prevent depression recurrence. Align your schedule with natural circadian rhythms, light exposure, and meal timing. Consider polyphasic sleep only under guidance. Track patterns using wearables. Work with a behavioral activation specialist to build a personalized, data-driven structure for sustained remission.",
+        "vi": "Việc xây dựng một thói quen mang tính khoa học giúp ngăn ngừa trầm cảm tái phát. Hãy sắp xếp lịch sinh hoạt phù hợp với nhịp sinh học tự nhiên, ánh sáng và thời gian ăn uống. Chỉ nên cân nhắc ngủ đa pha khi có sự hướng dẫn chuyên môn. Theo dõi các khuôn mẫu sinh hoạt bằng thiết bị đeo thông minh. Làm việc cùng chuyên gia kích hoạt hành vi để xây dựng một cấu trúc cá nhân hóa, dựa trên dữ liệu, nhằm duy trì sự hồi phục bền vững."
+      },
+      "tags": [
+        "routine",
+        "depression"
+      ],
+      "audio": "dep_vip3_1_en.mp3",
+      "essay_ref": "dep_vip3_1_essay.txt"
+    }
+  ],
+  "id": "depression_support_vip3",
+  "title": {
+    "en": "Depression Support",
+    "vi": "Hỗ Trợ Trầm Cảm"
+  },
+  "content": {
+    "en": "Expert strategies for mastering depression with comprehensive tools",
+    "vi": "Các chiến lược chuyên sâu giúp bạn kiểm soát trầm cảm bằng những công cụ toàn diện và thực tế"
+  },
+  "tier": "vip3",
+  "domain": "Mental Health",
+  "domain_image": "/images/domains/mental_health.svg"
+}

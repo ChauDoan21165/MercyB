@@ -1,0 +1,77 @@
+name: Performance CI
+
+# Performance/size coverage moved OFF pull_request (CI-quota consolidation,
+# PR #626). The validate/lint/test jobs that used to live here are now in
+# ci.yml (the single PR workflow emitting the 3 required checks). This runs
+# the FULL perf suite nightly + on main + on demand.
+#
+# A deliberately lightweight, mobile-only Lighthouse run is wired back onto
+# pull_request as its OWN single-job workflow (lighthouse-mobile-pr.yml) so
+# mobile-perf regressions are visible per-PR without re-exploding the PR
+# check-run count #626 fixed. Both jobs share .lighthouserc.json (mobile).
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  bundle-size:
+    name: Bundle Size Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - name: Check bundle sizes
+        run: |
+          echo "Checking bundle sizes..."
+          # Resolve the entry chunk deterministically from index.html. The
+          # old glob `dist/assets/index-*.js` matched 3 unrelated chunks,
+          # and `stat -f%z` is BSD-only (silently empty on the GNU/ubuntu
+          # runner) — the gate was double-broken / a no-op. `wc -c` is
+          # POSIX; the entry is the single <script type="module"> Vite
+          # injects into index.html.
+          ENTRY=$(grep -oE '/assets/index-[A-Za-z0-9_-]+\.js' dist/index.html | head -1)
+          if [ -z "$ENTRY" ]; then
+            echo "❌ Could not locate the entry chunk in dist/index.html"
+            exit 1
+          fi
+          MAIN_SIZE=$(wc -c < "dist${ENTRY}")
+          MAX_SIZE=500000  # 500 KB raw — entry is ~104 KB today; regression ceiling
+          if [ "$MAIN_SIZE" -gt "$MAX_SIZE" ]; then
+            echo "❌ Entry bundle too large: ${ENTRY} = $MAIN_SIZE bytes (max: $MAX_SIZE)"
+            exit 1
+          fi
+          echo "✅ Entry bundle OK: ${ENTRY} = $MAIN_SIZE bytes (max: $MAX_SIZE)"
+
+  lighthouse:
+    name: Lighthouse Performance
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          staticDistDir: ./dist
+          uploadArtifacts: false
+          temporaryPublicStorage: true
+      - name: Upload Lighthouse results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-${{ github.run_id }}
+          path: .lighthouseci/
+          if-no-files-found: ignore

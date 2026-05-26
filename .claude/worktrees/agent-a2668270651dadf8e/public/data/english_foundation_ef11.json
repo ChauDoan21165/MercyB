@@ -1,0 +1,172 @@
+{
+  "id": "english_foundation_ef11",
+  "tier": "free",
+  "title": {
+    "en": "EF-11 — Real-Life Mini Conversations",
+    "vi": "EF-11 — Hội Thoại Ngắn Trong Đời Sống"
+  },
+  "content": {
+    "en": "This room gives beginners simple real-life conversations. Each dialogue is short, slow, and clear, helping you feel safe when speaking English in daily situations. You will practice greetings, asking for help, buying things, and basic small talk. Repeat each line softly after listening to build natural rhythm and confidence.",
+    "vi": "Phòng này mang đến cho người mới bắt đầu những đoạn hội thoại đời thường thật đơn giản. Mỗi đoạn đều ngắn, chậm và rõ ràng, giúp bạn thấy yên tâm khi nói tiếng Anh trong những tình huống hằng ngày. Bạn sẽ luyện chào hỏi, nhờ giúp đỡ, mua đồ và trò chuyện cơ bản. Sau khi nghe, hãy nhẹ nhàng nhắc lại từng câu để dần có nhịp nói tự nhiên và tự tin hơn."
+  },
+  "entries": [
+    {
+      "slug": "greeting-conversation",
+      "keywords_en": [
+        "greeting",
+        "conversation",
+        "hello",
+        "how are you"
+      ],
+      "keywords_vi": [
+        "chào hỏi",
+        "hội thoại",
+        "xin chào",
+        "bạn khỏe không"
+      ],
+      "copy": {
+        "en": "Mini conversation for greetings: Hello. Hello. How are you? I am fine. Thank you. And you? I am fine too. Short. Simple. Safe for beginners.",
+        "vi": "Đoạn hội thoại chào hỏi: Hello. Hello. How are you? I am fine. Thank you. And you? I am fine too. Ngắn gọn, đơn giản và an toàn cho người mới."
+      },
+      "tags": [
+        "greeting",
+        "conversation",
+        "beginner",
+        "small-talk"
+      ],
+      "audio": "ef11_01_en.mp3"
+    },
+    {
+      "slug": "asking-for-help",
+      "keywords_en": [
+        "help",
+        "conversation",
+        "directions",
+        "excuse me"
+      ],
+      "keywords_vi": [
+        "nhờ giúp đỡ",
+        "hội thoại",
+        "hỏi đường",
+        "xin lỗi"
+      ],
+      "copy": {
+        "en": "Mini conversation for asking help: Excuse me. Yes? Can you help me? Sure. What do you need? I need directions. Go straight. Turn left. Thank you. You are welcome.",
+        "vi": "Đoạn hội thoại nhờ giúp đỡ: Excuse me. Yes? Can you help me? Sure. What do you need? I need directions. Go straight. Turn left. Thank you. You are welcome."
+      },
+      "tags": [
+        "asking-help",
+        "directions",
+        "politeness",
+        "daily-life"
+      ],
+      "audio": "ef11_02_en.mp3"
+    },
+    {
+      "slug": "buying-something",
+      "keywords_en": [
+        "shopping",
+        "buying",
+        "payment",
+        "price"
+      ],
+      "keywords_vi": [
+        "mua hàng",
+        "thanh toán",
+        "giá cả",
+        "mua sắm"
+      ],
+      "copy": {
+        "en": "Mini conversation for buying: Hello. Hello. How much is this? It is five dollars. Can I pay by card? Yes, you can. Thank you. Have a nice day. You too.",
+        "vi": "Đoạn hội thoại mua đồ: Hello. Hello. How much is this? It is five dollars. Can I pay by card? Yes, you can. Thank you. Have a nice day. You too."
+      },
+      "tags": [
+        "shopping",
+        "buying",
+        "daily-life",
+        "conversation"
+      ],
+      "audio": "ef11_03_en.mp3"
+    },
+    {
+      "slug": "small-talk-weather",
+      "keywords_en": [
+        "small talk",
+        "weather",
+        "conversation",
+        "nice day"
+      ],
+      "keywords_vi": [
+        "trò chuyện",
+        "thời tiết",
+        "hội thoại",
+        "ngày đẹp"
+      ],
+      "copy": {
+        "en": "Mini conversation about weather: Nice day. Yes, very nice. It is sunny. Yes, and warm. I like this weather. Me too. Have a good day. You too.",
+        "vi": "Đoạn hội thoại về thời tiết: Nice day. Yes, very nice. It is sunny. Yes, and warm. I like this weather. Me too. Have a good day. You too."
+      },
+      "tags": [
+        "small-talk",
+        "weather",
+        "casual",
+        "conversation"
+      ],
+      "audio": "ef11_04_en.mp3"
+    },
+    {
+      "slug": "meeting-someone-new",
+      "keywords_en": [
+        "introductions",
+        "meeting people",
+        "name",
+        "nice to meet you"
+      ],
+      "keywords_vi": [
+        "giới thiệu",
+        "gặp người mới",
+        "tên",
+        "rất vui được gặp"
+      ],
+      "copy": {
+        "en": "Mini conversation meeting someone: Hello. Hi. What is your name? My name is Anna. And you? I am Minh. Nice to meet you. Nice to meet you too.",
+        "vi": "Đoạn hội thoại khi gặp người mới: Hello. Hi. What is your name? My name is Anna. And you? I am Minh. Nice to meet you. Nice to meet you too."
+      },
+      "tags": [
+        "introduction",
+        "meeting-people",
+        "first-meeting",
+        "politeness"
+      ],
+      "audio": "ef11_05_en.mp3"
+    },
+    {
+      "slug": "daily-mini-dialogue-habit",
+      "keywords_en": [
+        "habit",
+        "dialogue practice",
+        "daily practice",
+        "confidence"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "luyện hội thoại",
+        "luyện hàng ngày",
+        "tự tin"
+      ],
+      "copy": {
+        "en": "Practice one mini conversation each day. Repeat slowly. Shadow each line. Feel the rhythm. Small dialogues build real speaking confidence.",
+        "vi": "Mỗi ngày hãy luyện một đoạn hội thoại ngắn. Nhắc lại thật chậm. Nói nhại theo từng câu. Cảm nhận nhịp của câu. Những đoạn hội thoại nhỏ này giúp bạn tự tin hơn khi nói."
+      },
+      "tags": [
+        "daily-habit",
+        "practice",
+        "shadowing",
+        "confidence"
+      ],
+      "audio": "ef11_06_en.mp3"
+    }
+  ],
+  "domain": "English",
+  "domain_image": "/images/domains/english.svg"
+}

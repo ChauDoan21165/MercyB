@@ -1,0 +1,183 @@
+# Mercy Response Cheatsheet
+
+## Rule of thumb
+
+- **UI logic** = structure
+- **Prewritten copy** = tone
+- **API** = understanding
+
+If a cheaper layer can do the job **without making Mercy feel dumb**, use it.
+
+---
+
+## Use UI logic for
+
+- tab switching
+- open / close Mercy Guide
+- start / finish Daily Coach
+- retry counts and limits
+- phrase rotation
+- persistence
+- settings
+- navigation
+- gating and cooldowns
+
+### Examples
+- open Speak tab
+- maybe later
+- finish today
+- change phrase
+
+---
+
+## Use prewritten copy for
+
+- greetings
+- onboarding
+- feature intros
+- transitions
+- completion messages
+- repeated encouragement
+
+### Examples
+- “Hi. I can guide you with one short speaking step today.”
+- “It only takes a moment.”
+- “Nice work today.”
+- “You can stop here for today.”
+- “Let’s open the Speak tab.”
+
+---
+
+## Use API for
+
+- grammar explanation
+- correction
+- bilingual explanation
+- personalized guidance
+- emotional nuance
+- “what should I practice next?”
+- real free-text questions
+
+### Examples
+- “Why is ‘I go yesterday’ wrong?”
+- “Can you correct this sentence?”
+- “I feel embarrassed to speak English.”
+- “What should I focus on today?”
+
+---
+
+## Important routing rule
+
+### If the user asks a real question:
+Use **API** or a **specific routed response**.
+
+Do **not** answer with a generic canned line.
+
+### Bad
+User: “Can you correct my pronunciation?”  
+Mercy: “I’m here with you.”
+
+### Good
+User: “Can you correct my pronunciation?”  
+Mercy: “Yes — let’s practice pronunciation together.”  
+→ open Speak tab
+
+---
+
+## Mercy-specific intent guide
+
+### UI action
+Use code only.
+
+Examples:
+- open Speak
+- start one phrase
+- change phrase
+- maybe later
+
+### Speak help
+Use routing + specific response.
+Open Speak if appropriate.
+
+Examples:
+- pronunciation help
+- how do I say this?
+- can you check my pronunciation?
+
+### English explanation
+Use API.
+
+Examples:
+- grammar
+- sentence meaning
+- explain in Vietnamese
+
+### Emotional support
+Use API when it is personal or vulnerable.
+
+Examples:
+- I feel shy
+- I feel discouraged
+- I’m afraid to speak
+
+### Learning path
+Use API with context.
+
+Examples:
+- what should I practice next?
+- what is best for my level?
+
+---
+
+## Cost rule
+
+### Avoid API for
+- deterministic state changes
+- repeated static messages
+- UI transitions
+- completion banners
+- local session logic
+
+### Use API when
+- meaning matters
+- the user expects understanding
+- canned copy would feel fake or shallow
+
+---
+
+## Engineering rule
+
+### Keep these separate
+- **routing** decides where the request goes
+- **copy library** gives stable wording
+- **API** handles understanding
+
+### Do not let prompts run the app
+Retries, tab switching, persistence, and flow logic stay in code.
+
+---
+
+## Quick decision checklist
+
+### UI logic?
+- deterministic?
+- same every time?
+- state/action based?
+
+### Prewritten copy?
+- repeated moment?
+- tone consistency matters?
+- API adds little value?
+
+### API?
+- depends on user’s exact words?
+- needs explanation or judgment?
+- generic reply would feel wrong?
+
+---
+
+## Final line
+
+**Structure in code.  
+Tone in curated copy.  
+Understanding through API.**

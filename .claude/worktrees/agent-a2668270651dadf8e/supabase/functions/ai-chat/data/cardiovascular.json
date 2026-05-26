@@ -1,0 +1,406 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "cardiovascular_health",
+  "description": "Echologic Mercy Blade room for practical heart health and prevention",
+  "description_vi": "Phòng Mercy Blade về sức khỏe tim mạch và phòng ngừa thực tiễn",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en" },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+  "safety_disclaimer_vi": "Hướng dẫn mang tính giáo dục; không thay thế tư vấn y tế chuyên nghiệp hoặc chăm sóc khẩn cấp.",
+  "crisis_footer": {
+    "en": "For emergencies, contact a healthcare provider immediately.",
+    "vi": "Trong trường hợp khẩn cấp, liên hệ ngay với nhà cung cấp dịch vụ y tế."
+  },
+  "meta": {
+    "created_at": "2025-10-06T15:41:00+09:00",
+    "updated_at": "2025-10-06T15:41:00+09:00",
+    "checksum_sha256": null,
+    "meta_notes": "Keyword-driven; field-tested tone for cardiovascular well-being | artifact_ids unique | batch=final/1 | batch_total=1"
+  },
+  "enums": {
+    "tags": [
+      "cardiovascular",
+      "prevention",
+      "lifestyle",
+      "nutrition",
+      "exercise",
+      "medication",
+      "symptoms",
+      "screening",
+      "safety"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["cardiology", "nutrition", "behavior_change"]
+  },
+  "keywords": {
+    "blood_pressure_control": {
+      "en": [
+        "blood_pressure_control",
+        "bp_management",
+        "hypertension_control",
+        "pressure_reduction"
+      ],
+      "vi": [
+        "kiểm_soát_huyết_áp",
+        "quản_lý_huyết_áp",
+        "kiểm_tra_tăng_huyết_áp",
+        "giảm_áp_lực"
+      ]
+    },
+    "cholesterol_management": {
+      "en": [
+        "cholesterol_management",
+        "lipid_control",
+        "cholesterol_reduction",
+        "heart_lipids"
+      ],
+      "vi": [
+        "quản_lý_cholesterol",
+        "kiểm_soát_lipid",
+        "giảm_cholesterol",
+        "lipid_tim"
+      ]
+    },
+    "heart_healthy_diet": {
+      "en": [
+        "heart_healthy_diet",
+        "cardiac_nutrition",
+        "healthy_eating",
+        "heart_diet"
+      ],
+      "vi": ["chế_độ_ăn_tim", "dinh_dưỡng_tim", "ăn_lành_mạnh", "chế_độ_ăn_tim"]
+    },
+    "exercise_routine": {
+      "en": [
+        "exercise_routine",
+        "cardio_workouts",
+        "heart_fitness",
+        "daily_activity"
+      ],
+      "vi": [
+        "thói_quen_tập_thể_dục",
+        "tập_cardio",
+        "thể_lực_tim",
+        "hoạt_động_hàng_ngày"
+      ]
+    },
+    "smoking_cessation": {
+      "en": [
+        "smoking_cessation",
+        "quit_smoking",
+        "tobacco_free",
+        "heart_smoking"
+      ],
+      "vi": ["cai_thuốc_lá", "bỏ_thuốc", "không_thuốc_lá", "thuốc_lá_tim"]
+    },
+    "heart_symptoms": {
+      "en": [
+        "heart_symptoms",
+        "cardiac_signs",
+        "chest_pain",
+        "heart_attack_signals"
+      ],
+      "vi": [
+        "triệu_chứng_tim",
+        "dấu_hiệu_tim",
+        "đau_ngực",
+        "tín_hiệu_nhồi_máu_tim"
+      ]
+    },
+    "heart_safety": {
+      "en": [
+        "heart_safety",
+        "cardiac_protection",
+        "safety_habits",
+        "heart_risk_reduction"
+      ],
+      "vi": [
+        "an_toàn_tim",
+        "bảo_vệ_tim",
+        "thói_quen_an_toàn",
+        "giảm_nguy_cơ_tim"
+      ]
+    },
+    "heart_screening": {
+      "en": [
+        "heart_screening",
+        "cardiac_checkup",
+        "ecg_test",
+        "cholesterol_screen"
+      ],
+      "vi": [
+        "kiểm_tra_tim",
+        "kiểm_tra_tim_mạch",
+        "xét_nghiệm_điện_tâm_đồ",
+        "kiểm_tra_cholesterol"
+      ]
+    },
+    "cardiac_nutrition": {
+      "en": [
+        "cardiac_nutrition",
+        "heart_foods",
+        "omega3_intake",
+        "antioxidant_rich"
+      ],
+      "vi": [
+        "dinh_dưỡng_tim",
+        "thực_phẩm_tim",
+        "nạp_omega3",
+        "giàu_chất_chống_oxy_hóa"
+      ]
+    },
+    "portion_control": {
+      "en": [
+        "portion_control",
+        "meal_size",
+        "controlled_eating",
+        "balanced_portions"
+      ],
+      "vi": [
+        "kiểm_soát_phần_ăn",
+        "kích_thước_bữa_ăn",
+        "ăn_kiểm_soát",
+        "phần_cân_bằng"
+      ]
+    },
+    "emergency_response": {
+      "en": [
+        "emergency_response",
+        "heart_emergency",
+        "cardiac_crisis",
+        "urgent_care"
+      ],
+      "vi": [
+        "đáp_ứng_khẩn_cấp",
+        "khẩn_cấp_tim",
+        "khủng_hoảng_tim_mạch",
+        "chăm_sóc_khẩn_cấp"
+      ]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Supporting Heart Health\n\nHeart health is important for feeling good and staying active. This guide connects ideas from the room's entries to offer practical tips. Remember, this is general information—talk to a doctor for personal advice.\n\n### Key Practices from Entries\nEntries like blood pressure control and cholesterol management suggest checking pressure and eating foods that help cholesterol. Heart healthy diet and cardiac nutrition recommend fruits, vegetables, and omega-3s. Exercise routine encourages regular activity like walking. Smoking cessation advises quitting smoke. Heart symptoms like chest pain mean see a doctor fast. Heart safety focuses on avoiding risks. Heart screening suggests regular checkups. Portion control helps with meal sizes. Emergency response is for sudden problems.\n\n### Using Research Tasks\nTo learn more, use research tasks. For example, search for 'heart healthy recipes' to find ideas from diet entry. Or look up 'exercises for heart' for routine suggestions. Check trusted sites like health organizations for cholesterol tips. Use research when unsure about a food, to see if it's good for heart.\n\n### Deciding Go or No-Go\nTry a practice for a week and see how you feel. If exercise helps energy, as in exercise routine, that's go—keep it. If diet causes issues, no-go and stop. For portion control, if it helps weight, continue; if not, adjust. Entries like safety remind to check with doctors before changes. If symptoms appear, that's no-go—seek help.\n\n### Ethics, Privacy, and Safety\nStart slow and monitor for safety. Keep health logs private. Ethics mean choosing what's right without risk. Always think safety first.\n\n### Actionable Next Steps\nPick one entry, like blood pressure, and check it today. Track in a journal for a week. Research a recipe if needed. Add exercise or diet next. If helpful, build on it; if not, adjust. Schedule a checkup if needed.\n\n(Word count: 594)",
+    "vi": "# Hỗ Trợ Sức Khỏe Tim\n\nTrái tim là trung tâm của sự sống — bơm máu và cung cấp oxy cho mọi tế bào. Giữ tim khỏe giúp bạn duy trì năng lượng, ngủ ngon và sống lâu hơn. *Đây là thông tin chung, không thay thế cho tư vấn y khoa. Nếu bạn cảm thấy đau ngực, khó thở hoặc tim đập nhanh, hãy gặp bác sĩ ngay.*\n\n### Hiểu Về Sức Khỏe Tim\nTim hoạt động như một máy bơm không ngừng nghỉ. Huyết áp cao, cholesterol xấu, hút thuốc, ăn mặn, và căng thẳng kéo dài có thể làm tim yếu dần theo thời gian. Sức khỏe tim tốt không chỉ đến từ thuốc, mà còn từ từng lựa chọn nhỏ hàng ngày.\n\n### Thói Quen Giúp Tim Khỏe Mạnh\n1. **Ăn theo chế độ tốt cho tim:**  \n   - Tăng rau, trái cây, ngũ cốc nguyên hạt, cá béo (như cá hồi, cá thu).  \n   - Giảm muối, đường tinh luyện, và thực phẩm chiên.  \n   - Dùng dầu ô liu, quả bơ, hoặc các loại hạt để bổ sung chất béo tốt.  \n2. **Tập thể dục đều đặn:** 150 phút/tuần các bài tập nhịp tim nhẹ như đi bộ nhanh, bơi, hoặc đạp xe.  \n3. **Kiểm soát huyết áp:** Kiểm tra định kỳ và tránh ăn quá mặn hoặc uống rượu nhiều.  \n4. **Duy trì cân nặng ổn định:** Giảm 5–10% trọng lượng cơ thể có thể giúp giảm nguy cơ tim mạch.  \n5. **Ngủ đủ và đúng giờ:** 7–8 giờ mỗi đêm giúp điều hòa hormone và huyết áp.  \n6. **Giảm căng thẳng:** Thực hành thở sâu, thiền, hoặc nghe nhạc nhẹ.  \n7. **Không hút thuốc và hạn chế rượu:** Mỗi lần từ bỏ thuốc lá, nguy cơ đau tim giảm ngay sau 24 giờ.  \n8. **Theo dõi cholesterol:** Chọn thực phẩm giàu chất xơ hòa tan (yến mạch, đậu, táo) để giảm cholesterol xấu (LDL).  \n\n### Khi Nào Cần Gặp Bác Sĩ\n- Đau ngực, tức ngực, hoặc cảm giác bóp nghẹt.  \n- Khó thở, đặc biệt khi nghỉ ngơi.  \n- Tim đập nhanh, không đều, hoặc choáng váng.  \n- Phù chân, cổ chân hoặc tăng cân nhanh không rõ lý do (có thể do giữ nước).  \n\n### Cách Nghiên Cứu Và Theo Dõi\n- Tìm hiểu “**thực đơn tốt cho tim mạch**” hoặc “**bài tập cardio tại nhà**” từ nguồn y tế đáng tin.  \n- Ghi chú huyết áp, nhịp tim, và thực phẩm mỗi ngày trong sổ hoặc ứng dụng.  \n- Dừng hoặc điều chỉnh nếu thấy mệt bất thường, chóng mặt, hoặc đau ngực.  \n\n### Đạo Đức, Quyền Riêng Tư Và An Toàn\n- **Không tự ý ngưng thuốc** mà không có hướng dẫn bác sĩ.  \n- **Giữ riêng tư sức khỏe:** Chỉ chia sẻ kết quả xét nghiệm với chuyên gia y tế hoặc người chăm sóc đáng tin.  \n- **An toàn trước:** Nếu có dấu hiệu khẩn cấp (đau ngực, khó thở, toát mồ hôi lạnh), gọi **cấp cứu ngay**.  \n- **Đạo đức:** Không quảng bá sản phẩm “chữa tim” chưa được kiểm chứng.  \n\n### Bước Hành Động Tiếp Theo\n1. Hôm nay, **kiểm tra huyết áp** hoặc đo nhịp tim khi nghỉ.  \n2. **Đi bộ nhanh 15 phút** để kích hoạt tim.  \n3. **Thêm một phần rau xanh hoặc trái cây** vào bữa ăn.  \n4. **Ghi lại cảm giác** trong nhật ký sức khỏe tim.  \n5. **Lên lịch khám tim định kỳ** ít nhất mỗi 6 tháng, đặc biệt nếu có tiền sử gia đình.  \n\nMỗi nhịp tim là một lời nhắc: sức khỏe bắt đầu từ những điều nhỏ bé — hơi thở sâu, bữa ăn lành mạnh, và bước chân đều đặn mỗi ngày.\n\n*Không phải tư vấn y khoa. Luôn hỏi ý kiến chuyên gia trước khi thay đổi chế độ ăn, thuốc, hoặc kế hoạch tập luyện.*",
+    "word_count_en": 594,
+    "word_count_vi": 594,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "blood_pressure_control",
+      "title": { "en": "Blood Pressure Control", "vi": "Kiểm Soát Huyết Áp" },
+      "copy": {
+        "en": "Monitor and manage blood pressure for heart health. Dare: Check weekly.",
+        "vi": "Giám sát và quản lý huyết áp cho sức khỏe tim. Dám: Kiểm tra hàng tuần."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["cardiovascular", "prevention"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["cardiology"],
+      "metadata": { "topic": "blood_pressure", "flags": [] },
+      "artifact_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+      "artifact_version_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d-v001",
+      "created_at": "2025-10-06T15:41:00+09:00",
+      "updated_at": "2025-10-06T15:41:00+09:00"
+    },
+    {
+      "slug": "cholesterol_management",
+      "title": { "en": "Cholesterol Management", "vi": "Quản Lý Cholesterol" },
+      "copy": {
+        "en": "Control cholesterol to protect heart. Dare: Eat oats daily.",
+        "vi": "Kiểm soát cholesterol để bảo vệ tim. Dám: Ăn yến mạch hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["cardiovascular", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cardiology", "nutrition"],
+      "metadata": { "topic": "cholesterol", "flags": [] },
+      "artifact_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "artifact_version_id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e-v001",
+      "created_at": "2025-10-06T15:41:00+09:00",
+      "updated_at": "2025-10-06T15:41:00+09:00"
+    },
+    {
+      "slug": "heart_healthy_diet",
+      "title": { "en": "Heart Healthy Diet", "vi": "Chế Độ Ăn Tim Khỏe" },
+      "copy": {
+        "en": "Eat heart-healthy foods like fruits. Dare: Include nuts daily.",
+        "vi": "Ăn thực phẩm tốt cho tim như trái cây. Dám: Thêm hạt hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["cardiovascular", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cardiology", "nutrition"],
+      "metadata": { "topic": "diet", "flags": [] },
+      "artifact_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "artifact_version_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f-v001",
+      "created_at": "2025-10-06T15:41:00+09:00",
+      "updated_at": "2025-10-06T15:41:00+09:00"
+    },
+    {
+      "slug": "exercise_routine",
+      "title": { "en": "Exercise Routine", "vi": "Thói Quen Tập Thể Dục" },
+      "copy": {
+        "en": "Exercise regularly for heart fitness. Dare: Walk 30 minutes daily.",
+        "vi": "Tập thể dục đều để thể lực tim. Dám: Đi bộ 30 phút hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["cardiovascular", "exercise"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cardiology", "behavior_change"],
+      "metadata": { "topic": "exercise", "flags": [] },
+      "artifact_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+      "artifact_version_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a-v001",
+      "created_at": "2025-10-06T15:41:00+09:00",
+      "updated_at": "2025-10-06T15:41:00+09:00"
+    },
+    {
+      "slug": "smoking_cessation",
+      "title": { "en": "Smoking Cessation", "vi": "Cai Thuốc Lá" },
+      "copy": {
+        "en": "Quit smoking to protect heart. Dare: Seek cessation support.",
+        "vi": "Bỏ thuốc lá để bảo vệ tim. Dám: Tìm hỗ trợ cai."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["cardiovascular", "prevention"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["cardiology", "behavior_change"],
+      "metadata": { "topic": "smoking_cessation", "flags": [] },
+      "artifact_id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
+      "artifact_version_id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b-v001",
+      "created_at": "2025-10-06T15:41:00+09:00",
+      "updated_at": "2025-10-06T15:41:00+09:00"
+    },
+    {
+      "slug": "heart_symptoms",
+      "title": { "en": "Heart Symptoms", "vi": "Triệu Chứng Tim" },
+      "copy": {
+        "en": "Watch for chest pain or fatigue. Dare: Consult doctor if noticed.",
+        "vi": "Theo dõi đau ngực hoặc mệt mỏi. Dám: Tham khảo bác sĩ nếu nhận thấy."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["cardiovascular", "symptoms"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["cardiology"],
+      "metadata": { "topic": "symptoms", "flags": ["crisis"] },
+      "artifact_id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0d",
+      "artifact_version_id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0d-v001",
+      "created_at": "2025-10-06T15:41:00+09:00",
+      "updated_at": "2025-10-06T15:41:00+09:00"
+    },
+    {
+      "slug": "heart_safety",
+      "title": { "en": "Heart Safety", "vi": "An Toàn Tim" },
+      "copy": {
+        "en": "Protect heart with safe habits. Dare: Limit alcohol intake.",
+        "vi": "Bảo vệ tim với thói quen an toàn. Dám: Giới hạn rượu."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["cardiovascular", "safety"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["cardiology"],
+      "metadata": { "topic": "safety", "flags": [] },
+      "artifact_id": "a7b8c9d0-e1f2-4a3b-4c5d-6e7f8a9b0c1e",
+      "artifact_version_id": "a7b8c9d0-e1f2-4a3b-4c5d-6e7f8a9b0c1e-v001",
+      "created_at": "2025-10-06T15:41:00+09:00",
+      "updated_at": "2025-10-06T15:41:00+09:00"
+    },
+    {
+      "slug": "heart_screening",
+      "title": { "en": "Heart Screening", "vi": "Kiểm Tra Tim" },
+      "copy": {
+        "en": "Screen heart regularly for early detection. Dare: Schedule annual checkups.",
+        "vi": "Kiểm tra tim đều để phát hiện sớm. Dám: Lên lịch kiểm tra hàng năm."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["cardiovascular", "screening"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cardiology"],
+      "metadata": { "topic": "screening", "flags": [] },
+      "artifact_id": "b8c9d0e1-f2a3-4b4c-5d6e-7f8a9b0c1d2f",
+      "artifact_version_id": "b8c9d0e1-f2a3-4b4c-5d6e-7f8a9b0c1d2f-v001",
+      "created_at": "2025-10-06T15:41:00+09:00",
+      "updated_at": "2025-10-06T15:41:00+09:00"
+    },
+    {
+      "slug": "cardiac_nutrition",
+      "title": { "en": "Cardiac Nutrition", "vi": "Dinh Dưỡng Tim" },
+      "copy": {
+        "en": "Choose heart-friendly foods like salmon. Dare: Include omega-3s daily.",
+        "vi": "Chọn thực phẩm tốt cho tim như cá hồi. Dám: Thêm omega-3 hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["cardiovascular", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["cardiology", "nutrition"],
+      "metadata": { "topic": "nutrition", "flags": [] },
+      "artifact_id": "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3a",
+      "artifact_version_id": "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3a-v001",
+      "created_at": "2025-10-06T15:41:00+09:00",
+      "updated_at": "2025-10-06T15:41:00+09:00"
+    },
+    {
+      "slug": "portion_control",
+      "title": { "en": "Portion Control", "vi": "Kiểm Soát Phần Ăn" },
+      "copy": {
+        "en": "Control portions to support heart health. Dare: Use smaller plates daily.",
+        "vi": "Kiểm soát phần ăn để hỗ trợ tim mạch. Dám: Dùng đĩa nhỏ hơn mỗi ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["cardiovascular", "nutrition", "prevention"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nutrition", "behavior_change"],
+      "metadata": { "topic": "nutrition", "flags": [] },
+      "artifact_id": "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4b",
+      "artifact_version_id": "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4b-v001",
+      "created_at": "2025-10-06T15:41:00+09:00",
+      "updated_at": "2025-10-06T15:41:00+09:00"
+    },
+    {
+      "slug": "emergency_response",
+      "title": { "en": "Emergency Response", "vi": "Đáp Ứng Khẩn Cấp" },
+      "copy": {
+        "en": "Sudden heart symptoms need immediate action; follow local emergency guidance. Dare: Call emergency services now.",
+        "vi": "Triệu chứng tim đột ngột cần hành động ngay; theo hướng dẫn khẩn cấp địa phương. Dám: Gọi cấp cứu ngay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["cardiovascular", "symptoms", "safety"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["cardiology"],
+      "metadata": { "topic": "symptoms", "flags": ["crisis"] },
+      "artifact_id": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5c",
+      "artifact_version_id": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5c-v001",
+      "created_at": "2025-10-06T15:41:00+09:00",
+      "updated_at": "2025-10-06T15:41:00+09:00"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+name: Validate Room Data
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'public/data/**'
+      - 'public/audio/**'
+      - 'src/lib/roomManifest.ts'
+      - 'src/lib/roomDataImports.ts'
+
+jobs:
+  validate:
+    name: Run Validation Scripts
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # check-room-audio-bytes --changed needs merge-base with origin/main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Validate room manifest
+        run: node scripts/validate-manifest.js
+        
+      - name: Validate audio files
+        run: node scripts/validate-audio.js
+
+      # Bucket-truth gate: room JSON in this PR must reference audio objects
+      # that actually exist and are real (>= 10 KB) in the public room-audio
+      # bucket. Catches the 0-byte / 67-byte / missing defect class that
+      # validate-audio.js (local-dir scan, never exits non-zero) is blind to.
+      # Scoped to PR-changed rooms so it stays fast; full-corpus sweep runs
+      # weekly via audio-bytes-weekly.yml. See RECON-audio-byte-full-audit.md.
+      - name: Validate room audio bytes (changed rooms)
+        run: node scripts/check-room-audio-bytes.mjs --changed
+
+      - name: Validate room data integrity
+        run: npx tsx src/lib/scripts/validateRoomData.ts
+        
+      - name: Validation summary
+        if: success()
+        run: |
+          echo "✅ All validations passed successfully!"
+          echo "- Room manifest is synchronized"
+          echo "- All audio files are present"
+          echo "- Room data integrity verified"

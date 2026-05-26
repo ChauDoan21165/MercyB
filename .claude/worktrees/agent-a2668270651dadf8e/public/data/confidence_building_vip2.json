@@ -1,0 +1,65 @@
+{
+  "name": "Advanced Confidence Building",
+  "name_vi": "Xây Dựng Tự Tin Nâng Cao",
+  "description": "Strengthen your inner confidence with refined practices that grow naturally over time. This VIP2 room offers five weekly micro-habits focused on authentic affirmations, social presence, goal alignment, mindful awareness, and community connection. Each step builds quiet strength and belonging. Track one small moment of courage daily. Higher tiers include personalized reflection tools and guided audio journeys. Discover deeper guidance in higher tiers.",
+  "description_vi": "Củng cố sự tự tin từ bên trong bằng những bài tập tinh tế, lớn lên tự nhiên theo thời gian. Phòng VIP2 này có năm thói quen nhỏ hàng tuần, xoay quanh lời tự khẳng định chân thật, sự tự tin khi ở giữa mọi người, bám sát mục tiêu, sống tỉnh thức và gắn kết với cộng đồng. Mỗi bước bồi đắp một sức mạnh thầm lặng và cảm giác mình thuộc về nơi nào đó. Mỗi ngày ghi lại một khoảnh khắc can đảm nho nhỏ. Các cấp cao hơn có thêm công cụ tự suy ngẫm theo từng người và những bài nghe có người dẫn dắt. Khám phá thêm ở các cấp cao hơn.",
+  "keywords_en": [
+    "refined affirmations",
+    "social confidence",
+    "goal planning",
+    "mindful confidence",
+    "community engagement",
+    "inner strength",
+    "authentic presence",
+    "personal growth"
+  ],
+  "keywords_vi": [
+    "khẳng định tinh chỉnh",
+    "tự tin xã hội",
+    "lập kế hoạch mục tiêu",
+    "tự tin chánh niệm",
+    "tương tác cộng đồng",
+    "sức mạnh nội tại",
+    "sự hiện diện chân thực",
+    "phát triển cá nhân"
+  ],
+  "entries": [
+    {
+      "slug": "mastering-social-confidence",
+      "keywords_en": [
+        "social confidence",
+        "authentic presence",
+        "conversation",
+        "connection"
+      ],
+      "keywords_vi": [
+        "tự tin xã hội",
+        "sự hiện diện chân thực",
+        "cuộc trò chuyện",
+        "kết nối"
+      ],
+      "copy": {
+        "en": "Social confidence blooms through steady practice and authentic presence. Each week, start one meaningful conversation where you share something real about yourself. Ask open questions that invite others to express what matters to them. Attend one gathering or workshop each month to expand comfort in social spaces. Focus on curiosity instead of performance; warmth builds trust more than words do. Smile, listen, and allow pauses without rushing. Every small exchange teaches your body ease and your mind calm assurance. Begin today by greeting someone with genuine openness. Each connection becomes a quiet lesson in belonging. Ready to move with natural confidence? Explore beyond VIP 2.",
+        "vi": "Sự tự tin trước mọi người lớn dần lên nhờ luyện tập đều đặn và sống thật với chính mình. Mỗi tuần, hãy mở một cuộc trò chuyện có ý nghĩa, nơi bạn chia sẻ một điều gì đó thật về bản thân. Hãy hỏi những câu mở để người khác nói ra điều quan trọng với họ. Mỗi tháng tham gia một buổi gặp gỡ hoặc hội thảo để thấy thoải mái hơn giữa đám đông. Hãy tò mò thay vì cố thể hiện; sự ấm áp gây dựng lòng tin nhiều hơn lời nói. Cười, lắng nghe và để cho có những khoảng lặng, đừng vội. Mỗi lần trò chuyện nhỏ lại dạy cơ thể bạn buông lỏng và tâm trí thêm vững vàng. Hãy bắt đầu ngay hôm nay bằng một lời chào thật cởi mở với ai đó. Mỗi mối liên hệ là một bài học lặng lẽ về cảm giác mình thuộc về nơi này. Sẵn sàng bước đi với sự tự tin tự nhiên chưa? Khám phá xa hơn VIP 2."
+      },
+      "tags": [
+        "social",
+        "confidence"
+      ],
+      "audio": "astering_social_confidence_vip2.mp3"
+    }
+  ],
+  "audio": "refining_affirmations_for_strength_vip2.mp3",
+  "id": "confidence_building_vip2",
+  "title": {
+    "en": "Advanced Confidence Building",
+    "vi": "Xây Dựng Tự Tin Nâng Cao"
+  },
+  "content": {
+    "en": "Strengthen your inner confidence with refined practices that grow naturally over time. This VIP2 room offers five weekly micro-habits focused on authentic affirmations, social presence, goal alignment, mindful awareness, and community connection. Each step builds quiet strength and belonging. Track one small moment of courage daily. Higher tiers include personalized reflection tools and guided audio journeys. Discover deeper guidance in higher tiers.",
+    "vi": "Củng cố sự tự tin từ bên trong bằng những bài tập tinh tế, lớn lên tự nhiên theo thời gian. Phòng VIP2 này có năm thói quen nhỏ hàng tuần, xoay quanh lời tự khẳng định chân thật, sự tự tin khi ở giữa mọi người, bám sát mục tiêu, sống tỉnh thức và gắn kết với cộng đồng. Mỗi bước bồi đắp một sức mạnh thầm lặng và cảm giác mình thuộc về nơi nào đó. Mỗi ngày ghi lại một khoảnh khắc can đảm nho nhỏ. Các cấp cao hơn có thêm công cụ tự suy ngẫm theo từng người và những bài nghe có người dẫn dắt. Khám phá thêm ở các cấp cao hơn."
+  },
+  "tier": "vip2",
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [],
+  "properties": {
+    "tier": {
+      "type": "string"
+    },
+    "title": {
+      "type": "object",
+      "properties": {
+        "en": { "type": "string" },
+        "vi": { "type": "string" }
+      }
+    },
+    "content": {
+      "type": "object",
+      "properties": {
+        "en": { "type": "string" },
+        "vi": { "type": "string" }
+      }
+    },
+    "entries": {
+      "oneOf": [
+        { "type": "array" },
+        { "type": "object" }
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "created_at": { "type": "string" },
+        "updated_at": { "type": "string" },
+        "entry_count": { "type": "integer", "minimum": 1 },
+        "tier": { "type": "string" },
+        "room_color": { "type": "string" }
+      }
+    }
+  },
+  "definitions": {
+    "entry": {
+      "type": "object",
+      "properties": {
+        "slug": { "type": "string", "pattern": "^[A-Za-z0-9_-]+$" },
+        "keywordEn": { "type": "string" },
+        "id": { "type": "string" },
+        "keywords_en": { "type": "array", "items": { "type": "string" } },
+        "keywords_vi": { "type": "array", "items": { "type": "string" } },
+        "copy": {
+          "type": "object",
+          "properties": {
+            "en": { "type": "string" },
+            "vi": { "type": "string" }
+          },
+          "additionalProperties": true
+        },
+        "replyEn": { "type": "string" },
+        "replyVi": { "type": "string" },
+        "essay": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "audio": {
+          "oneOf": [
+            { "type": "string", "pattern": "^[A-Za-z0-9._\/-]+\\.mp3$" },
+            {
+              "type": "object",
+              "properties": {
+                "en": { "type": "string", "pattern": "^[A-Za-z0-9._\/-]+\\.mp3$" },
+                "vi": { "type": "string", "pattern": "^[A-Za-z0-9._\/-]+\\.mp3$" }
+              }
+            }
+          ]
+        }
+      },
+      "additionalProperties": true,
+      "anyOf": [
+        { "required": ["slug"] },
+        { "required": ["keywordEn"] },
+        { "required": ["id"] }
+      ]
+    }
+  }
+}

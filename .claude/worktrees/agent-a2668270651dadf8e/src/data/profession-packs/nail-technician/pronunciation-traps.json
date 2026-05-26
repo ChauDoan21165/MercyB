@@ -1,0 +1,64 @@
+[
+  {
+    "word": "acrylic",
+    "ipa_hint": "ə-KRI-lic",
+    "vn_trap_vi": "Người Việt hay đọc 'A-cri-lic' với A đầu rõ. Tiếng Anh nhấn ở giữa: ə-KRI-lic. Nhấn sai làm khách Mỹ phải đoán."
+  },
+  {
+    "word": "polish",
+    "ipa_hint": "POL-ish",
+    "vn_trap_vi": "Đọc là POL-ish. KHÁC HẲN 'Polish' (người Ba Lan) — đọc là POH-lish. Sai chữ này khách trố mắt nhìn.",
+    "drill_pair": "polish (sơn) / Polish (Ba Lan)"
+  },
+  {
+    "word": "gel",
+    "ipa_hint": "JEL",
+    "vn_trap_vi": "Đọc là JEL với G mềm (như chữ J). Người Việt hay đọc là 'GEN' — sai phụ âm cuối."
+  },
+  {
+    "word": "manicure",
+    "ipa_hint": "MA-ni-kuơ",
+    "vn_trap_vi": "Nhấn ở MA, không phải ni. Phụ âm cuối /r/ phải có (kuơ-r), nếu không khách Mỹ tưởng 'manicue' lạ tai."
+  },
+  {
+    "word": "pedicure",
+    "ipa_hint": "PE-di-kuơ",
+    "vn_trap_vi": "Cùng pattern manicure — nhấn ở PE, có /r/ cuối. Khách hay rút gọn 'pedi'."
+  },
+  {
+    "word": "cuticle",
+    "ipa_hint": "KIU-ti-cl",
+    "vn_trap_vi": "Đọc KIU không phải KU. Phụ âm cuối /l/ phải nghe được — 'cuticle' không phải 'cuti'."
+  },
+  {
+    "word": "callus",
+    "ipa_hint": "KA-lus",
+    "vn_trap_vi": "Khác với 'careless' (KE-rless). Người Việt nhầm vì cả hai cùng có /k/ và /l/."
+  },
+  {
+    "word": "smooth",
+    "ipa_hint": "SMOOTH (chữ TH dài)",
+    "vn_trap_vi": "Phụ âm /θ/ cuối phải có hơi thoát ra. Nếu đọc 'smoot' (T cứng) khách hiểu nhầm thành 'smoot' không có nghĩa."
+  },
+  {
+    "word": "ombré",
+    "ipa_hint": "ÔM-brê",
+    "vn_trap_vi": "Từ gốc Pháp, tiếng Anh giữ nhấn cuối: 'ÔM-brê'. KHÔNG đọc 'OM-bri' kiểu Anh."
+  },
+  {
+    "word": "thirty / thirteen",
+    "ipa_hint": "THIR-ty / thir-TEEN",
+    "vn_trap_vi": "Cả hai đều có 'th' khó. THIR-ty (30) nhấn đầu, thir-TEEN (13) nhấn cuối. Khi nói giá tiền, sai trọng âm thành sai số.",
+    "drill_pair": "thirty / thirteen — fourteen / forty — fifteen / fifty"
+  },
+  {
+    "word": "appointment",
+    "ipa_hint": "ə-POINT-ment",
+    "vn_trap_vi": "Người Việt hay nuốt /t/ giữa từ thành 'a-poimen'. Phải có /t/ rõ: ə-POINT-ment."
+  },
+  {
+    "word": "wonderful",
+    "ipa_hint": "WUN-der-ful",
+    "vn_trap_vi": "Chữ 'wonder' đọc là WUN, không WON. Người Việt nhìn chữ O hay đọc thành 'won'."
+  }
+]

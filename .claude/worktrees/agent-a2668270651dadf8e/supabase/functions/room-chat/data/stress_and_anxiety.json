@@ -1,0 +1,978 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "stress_and_anxiety",
+  "description": "Echologic Mercy Blade room for practical stress and anxiety management",
+  "description_vi": "Phòng Mercy Blade về quản lý căng thẳng và lo âu thực tiễn",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "default": "en",
+    "fallback": "en",
+    "i18n_required": true,
+    "i18n_verified": true
+  },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+  "crisis_footer": {
+    "en": "If you are in crisis or feel unsafe, call local emergency services or a trusted hotline immediately.",
+    "vi": "Nếu bạn đang trong khủng hoảng hoặc cảm thấy không an toàn, hãy gọi dịch vụ khẩn cấp hoặc đường dây nóng đáng tin cậy ngay."
+  },
+  "safety_footer": {
+    "en": "Educational guidance only. Always consult licensed clinicians for diagnosis or treatment.",
+    "vi": "Chỉ mang tính hướng dẫn giáo dục. Luôn tham khảo bác sĩ có chuyên môn để được chẩn đoán hoặc điều trị."
+  },
+  "meta": {
+    "created_at": "2025-10-06T19:41:00Z",
+    "updated_at": "2025-10-11T00:00:00Z",
+    "checksum_sha256": null,
+    "meta_notes": "Keyword-driven; field-tested tone for stress and anxiety well-being | artifact_ids unique | batch=final/1 | batch_total=1",
+    "meta_compliance_label": "Mercy Blade Certified v2025.10",
+    "meta_quality_score": 0.98
+  },
+  "enums": {
+    "tags": [
+      "stress",
+      "anxiety",
+      "mental_health",
+      "relaxation",
+      "lifestyle",
+      "prevention",
+      "symptoms",
+      "safety",
+      "behavior_change",
+      "mindfulness",
+      "sleep",
+      "nutrition",
+      "screening"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["mental_health", "behavior_change"]
+  },
+  "keywords": {
+    "deep_breathing": {
+      "en": [
+        "deep_breathing",
+        "calm_breath",
+        "stress_relief",
+        "anxiety_ease",
+        "breathing_practice"
+      ],
+      "vi": [
+        "thở_sâu",
+        "hơi_thở_bình_tĩnh",
+        "giảm_căng_thẳng",
+        "giảm_lo_âu",
+        "thực_hành_thở"
+      ]
+    },
+    "mindfulness_practice": {
+      "en": [
+        "mindfulness_practice",
+        "mindful_moment",
+        "calm_mind",
+        "anxiety_control",
+        "mental_clarity"
+      ],
+      "vi": [
+        "thực_hành_chánh_niệm",
+        "khoảnh_khắc_tỉnh_thức",
+        "tâm_trí_bình_tĩnh",
+        "kiểm_soát_lo_âu",
+        "tâm_trí_rõ_ràng"
+      ]
+    },
+    "meditation_routine": {
+      "en": [
+        "meditation_routine",
+        "calm_practice",
+        "stress_meditation",
+        "mental_peace",
+        "daily_meditation"
+      ],
+      "vi": [
+        "thói_quen_thiền",
+        "thực_hành_bình_tĩnh",
+        "thiền_căng_thẳng",
+        "bình_an_tâm_trí",
+        "thiền_hàng_ngày"
+      ]
+    },
+    "physical_activity": {
+      "en": [
+        "physical_activity",
+        "movement_daily",
+        "stress_exercise",
+        "anxiety_relief",
+        "body_motion"
+      ],
+      "vi": [
+        "hoạt_động_thể_chất",
+        "chuyển_động_hàng_ngày",
+        "tập_thể_dục_căng_thẳng",
+        "giảm_lo_âu",
+        "chuyển_động_cơ_thể"
+      ]
+    },
+    "sleep_hygiene": {
+      "en": [
+        "sleep_hygiene",
+        "rest_quality",
+        "sleep_routine",
+        "anxiety_rest",
+        "night_recovery"
+      ],
+      "vi": [
+        "vệ_sinh_giấc_ngủ",
+        "chất_lượng_nghỉ",
+        "thói_quen_ngủ",
+        "nghỉ_lo_âu",
+        "phục_hồi_đêm"
+      ]
+    },
+    "social_connection": {
+      "en": [
+        "social_connection",
+        "community_support",
+        "anxiety_journey",
+        "relationship_care",
+        "mental_health"
+      ],
+      "vi": [
+        "kết_nối_xã_hội",
+        "hỗ_trợ_cộng_đồng",
+        "hành_trình_lo_âu",
+        "chăm_sóc_mối_quan_hệ",
+        "sức_khỏe_tâm_lý"
+      ]
+    },
+    "time_management": {
+      "en": [
+        "time_management",
+        "schedule_balance",
+        "stress_control",
+        "daily_planning",
+        "task_organization"
+      ],
+      "vi": [
+        "quản_lý_thời_gian",
+        "cân_bằng_lịch",
+        "kiểm_soát_căng_thẳng",
+        "lập_kế_hoạch_hàng_ngày",
+        "tổ_chức_nhiệm_vụ"
+      ]
+    },
+    "professional_help": {
+      "en": [
+        "professional_help",
+        "therapy_seek",
+        "counseling",
+        "mental_support",
+        "health_professional"
+      ],
+      "vi": [
+        "giúp_chuyên_nghiệp",
+        "tìm_liệu_pháp",
+        "tư_vấn",
+        "hỗ_trợ_tâm_lý",
+        "chuyên_gia_sức_khỏe"
+      ]
+    },
+    "panic_attack": {
+      "en": [
+        "panic_attack",
+        "anxiety_episode",
+        "panic_symptoms",
+        "sudden_anxiety",
+        "fear_attack"
+      ],
+      "vi": [
+        "cơn_hoảng_loạn",
+        "cơn_lo_âu",
+        "triệu_chứng_hoảng_loạn",
+        "lo_âu_đột_ngột",
+        "cơn_sợ"
+      ]
+    },
+    "chest_pain": {
+      "en": [
+        "chest_pain",
+        "heart_discomfort",
+        "pain_chest",
+        "tight_chest",
+        "anxiety_pain"
+      ],
+      "vi": ["đau_ngực", "khó_chịu_tim", "ngực_chặt", "đau_lo_âu"]
+    },
+    "shortness_breath": {
+      "en": [
+        "shortness_breath",
+        "breathing_difficulty",
+        "breath_short",
+        "respiratory_issue",
+        "anxiety_breath"
+      ],
+      "vi": ["thở_ngắn", "khó_thở", "vấn_đề_hô_hấp", "thở_lo_âu"]
+    },
+    "dizziness": {
+      "en": [
+        "dizziness",
+        "lightheaded",
+        "vertigo",
+        "balance_issue",
+        "anxiety_dizzy"
+      ],
+      "vi": [
+        "chóng_mặt",
+        "choáng_váng",
+        "vấn_đề_cân_bằng",
+        "chóng_mặt_lo_âu"
+      ]
+    },
+    "racing_heart": {
+      "en": [
+        "racing_heart",
+        "palpitations",
+        "fast_heartbeat",
+        "heart_race",
+        "anxiety_heart"
+      ],
+      "vi": [
+        "tim_đập_nhanh",
+        "hồi_hộp",
+        "nhịp_tim_nhanh",
+        "tim_đua",
+        "tim_lo_âu"
+      ]
+    },
+    "suicidal_thoughts": {
+      "en": [
+        "suicidal_thoughts",
+        "self_harm",
+        "suicide_ideation",
+        "dark_thoughts",
+        "mental_crisis"
+      ],
+      "vi": [
+        "nghĩ_tự_tử",
+        "tự_hại",
+        "ý_tưởng_tự_tử",
+        "suy_nghĩ_tối_tăm",
+        "khủng_hoảng_tâm_thần"
+      ]
+    },
+    "self_harm": {
+      "en": [
+        "self_harm",
+        "cutting",
+        "injuring_self",
+        "harm_behavior",
+        "mental_distress"
+      ],
+      "vi": ["tự_hại", "cắt", "tự_thương", "hành_vi_hại", "đau_khổ_tâm_lý"]
+    },
+    "anxiety_attack": {
+      "en": [
+        "anxiety_attack",
+        "panic_episode",
+        "anxiety_symptoms",
+        "fear_episode",
+        "mental_attack"
+      ],
+      "vi": [
+        "cơn_lo_âu",
+        "cơn_hoảng_loạn",
+        "triệu_chứng_lo_âu",
+        "cơn_sợ",
+        "cơn_tâm_lý"
+      ]
+    },
+    "stress_overload": {
+      "en": [
+        "stress_overload",
+        "burnout",
+        "overwhelmed",
+        "stress_symptoms",
+        "mental_load"
+      ],
+      "vi": [
+        "quá_tải_căng_thẳng",
+        "kiệt_sức",
+        "quá_tải",
+        "triệu_chứng_căng_thẳng",
+        "tải_tâm_lý"
+      ]
+    },
+    "body_scan": {
+      "en": [
+        "body_scan",
+        "tension_release",
+        "scan_meditation",
+        "body_awareness",
+        "relaxation_scan"
+      ],
+      "vi": [
+        "quét_cơ_thể",
+        "giải_phóng_căng_thẳng",
+        "thiền_quét",
+        "nhận_thức_cơ_thể",
+        "quét_thư_giãn"
+      ]
+    },
+    "stress_journal": {
+      "en": [
+        "stress_journal",
+        "anxiety_log",
+        "journal_stress",
+        "track_triggers",
+        "mental_journal"
+      ],
+      "vi": [
+        "nhật_ký_căng_thẳng",
+        "sổ_lo_âu",
+        "theo_dõi_kích_thích",
+        "nhật_ký_tâm_lý"
+      ]
+    },
+    "calm_environment": {
+      "en": [
+        "calm_environment",
+        "peaceful_space",
+        "stress_free_zone",
+        "relaxation_area",
+        "mental_calm"
+      ],
+      "vi": [
+        "môi_trường_bình_tĩnh",
+        "không_gian_yên_bình",
+        "khu_vực_không_căng_thẳng",
+        "khu_thư_giãn",
+        "bình_an_tâm_lý"
+      ]
+    }
+  },
+  "entries": [
+    {
+      "slug": "deep_breathing",
+      "title": { "en": "Deep Breathing", "vi": "Thở Sâu" },
+      "copy": {
+        "en": "Take slow breaths to calm stress and ease anxiety. Dare: Breathe deeply now.",
+        "vi": "Thở chậm để làm dịu căng thẳng và giảm lo âu. Dám: Thở sâu ngay bây giờ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["relaxation", "stress"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "relaxation" },
+      "artifact_id": "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5a",
+      "artifact_version_id": "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5a-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "mindfulness_practice",
+      "title": { "en": "Mindfulness Practice", "vi": "Thực Hành Chánh Niệm" },
+      "copy": {
+        "en": "Focus on the present moment to reduce anxiety and promote calm. Dare: Practice mindfulness today.",
+        "vi": "Tập trung vào khoảnh khắc hiện tại để giảm lo âu và thúc đẩy bình tĩnh. Dám: Thực hành chánh niệm hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "anxiety"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "mindfulness" },
+      "artifact_id": "1b2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6b",
+      "artifact_version_id": "1b2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6b-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "meditation_routine",
+      "title": { "en": "Meditation Routine", "vi": "Thói Quen Thiền" },
+      "copy": {
+        "en": "Daily meditation can help manage stress and find mental peace. Dare: Meditate for 5 minutes.",
+        "vi": "Thiền hàng ngày có thể giúp quản lý căng thẳng và tìm bình an tâm trí. Dám: Thiền 5 phút."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["relaxation", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "relaxation" },
+      "artifact_id": "2c3d4e5f-6a7b-8c9d-0e1f-2a3b4c5d6e7c",
+      "artifact_version_id": "2c3d4e5f-6a7b-8c9d-0e1f-2a3b4c5d6e7c-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "physical_activity",
+      "title": { "en": "Physical Activity", "vi": "Hoạt Động Thể Chất" },
+      "copy": {
+        "en": "Regular movement can relieve stress and ease anxiety. Dare: Take a short walk today.",
+        "vi": "Chuyển động đều đặn có thể giảm căng thẳng và giảm lo âu. Dám: Đi bộ ngắn hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["lifestyle", "stress"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "lifestyle" },
+      "artifact_id": "3d4e5f6a-7b8c-9d0e-1f2a-3b4c5d6e7f8d",
+      "artifact_version_id": "3d4e5f6a-7b8c-9d0e-1f2a-3b4c5d6e7f8d-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "sleep_hygiene",
+      "title": { "en": "Sleep Hygiene", "vi": "Vệ Sinh Giấc Ngủ" },
+      "copy": {
+        "en": "Maintain good sleep habits to reduce anxiety and improve rest. Dare: Set a bedtime routine.",
+        "vi": "Duy trì thói quen ngủ tốt để giảm lo âu và cải thiện nghỉ ngơi. Dám: Đặt lịch ngủ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["sleep", "anxiety"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "sleep" },
+      "artifact_id": "4e5f6a7b-8c9d-0e1f-2a3b-4c5d6e7f8a9e",
+      "artifact_version_id": "4e5f6a7b-8c9d-0e1f-2a3b-4c5d6e7f8a9e-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "social_connection",
+      "title": { "en": "Social Connection", "vi": "Kết Nối Xã Hội" },
+      "copy": {
+        "en": "Build relationships to share experiences and reduce anxiety. Dare: Reach out to a friend.",
+        "vi": "Xây dựng mối quan hệ để chia sẻ kinh nghiệm và giảm lo âu. Dám: Liên hệ với bạn bè."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mental_health", "anxiety"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "mental_health" },
+      "artifact_id": "5f6a7b8c-9d0e-1f2a-3b4c-5d6e7f8a9b0f",
+      "artifact_version_id": "5f6a7b8c-9d0e-1f2a-3b4c-5d6e7f8a9b0f-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "time_management",
+      "title": { "en": "Time Management", "vi": "Quản Lý Thời Gian" },
+      "copy": {
+        "en": "Organize tasks to reduce stress and manage time effectively. Dare: Make a to-do list.",
+        "vi": "Tổ chức nhiệm vụ để giảm căng thẳng và quản lý thời gian hiệu quả. Dám: Làm danh sách việc cần làm."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["behavior_change", "stress"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "behavior_change" },
+      "artifact_id": "6a7b8c9d-0e1f-2a3b-4c5d-6e7f8a9b0c1a",
+      "artifact_version_id": "6a7b8c9d-0e1f-2a3b-4c5d-6e7f8a9b0c1a-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "professional_help",
+      "title": { "en": "Professional Help", "vi": "Giúp Chuyên Nghiệp" },
+      "copy": {
+        "en": "Seek professional support for managing anxiety and stress. Dare: Schedule a therapy session.",
+        "vi": "Tìm hỗ trợ chuyên nghiệp để quản lý lo âu và căng thẳng. Dám: Lên lịch buổi liệu pháp."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mental_health", "anxiety"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "mental_health" },
+      "artifact_id": "7b8c9d0e-1f2a-3b4c-5d6e-7f8a9b0c1d2b",
+      "artifact_version_id": "7b8c9d0e-1f2a-3b4c-5d6e-7f8a9b0c1d2b-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "panic_attack",
+      "title": { "en": "Panic Attack", "vi": "Cơn Hoảng Loạn" },
+      "copy": {
+        "en": "During a panic attack, focus on breathing to regain calm. Dare: Use grounding techniques.",
+        "vi": "Trong cơn hoảng loạn, tập trung vào thở để lấy lại bình tĩnh. Dám: Sử dụng kỹ thuật grounding."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms", "anxiety", "safety"],
+      "urgency": "immediate",
+      "severity_level": 4,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "symptoms" },
+      "artifact_id": "8c9d0e1f-2a3b-4c5d-6e7f-8a9b0c1d2e3c",
+      "artifact_version_id": "8c9d0e1f-2a3b-4c5d-6e7f-8a9b0c1d2e3c-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "chest_pain",
+      "title": { "en": "Chest Pain", "vi": "Đau Ngực" },
+      "copy": {
+        "en": "Chest pain may be anxiety; if severe, seek medical help. Dare: Consult a doctor.",
+        "vi": "Đau ngực có thể do lo âu; nếu nghiêm trọng, tìm giúp y tế. Dám: Hỏi bác sĩ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms", "safety"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "symptoms" },
+      "artifact_id": "9d0e1f2a-3b4c-5d6e-7f8a-9b0c1d2e3f4d",
+      "artifact_version_id": "9d0e1f2a-3b4c-5d6e-7f8a-9b0c1d2e3f4d-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "shortness_breath",
+      "title": { "en": "Shortness of Breath", "vi": "Thở Ngắn" },
+      "copy": {
+        "en": "Shortness of breath can be anxiety; if persistent, see a doctor. Dare: Practice breathing exercises.",
+        "vi": "Thở ngắn có thể do lo âu; nếu kéo dài, gặp bác sĩ. Dám: Thực hành bài tập thở."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms", "anxiety", "safety"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "symptoms" },
+      "artifact_id": "0e1f2a3b-4c5d-6e7f-8a9b-0c1d2e3f4a5e",
+      "artifact_version_id": "0e1f2a3b-4c5d-6e7f-8a9b-0c1d2e3f4a5e-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "dizziness",
+      "title": { "en": "Dizziness", "vi": "Chóng Mặt" },
+      "copy": {
+        "en": "Dizziness may relate to anxiety; rest and breathe if it happens. Dare: Sit and breathe deeply.",
+        "vi": "Chóng mặt có thể liên quan lo âu; nghỉ và thở nếu xảy ra. Dám: Ngồi và thở sâu."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms", "anxiety"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "symptoms" },
+      "artifact_id": "1f2a3b4c-5d6e-7f8a-9b0c-1d2e3f4a5b6f",
+      "artifact_version_id": "1f2a3b4c-5d6e-7f8a-9b0c-1d2e3f4a5b6f-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "racing_heart",
+      "title": { "en": "Racing Heart", "vi": "Tim Đập Nhanh" },
+      "copy": {
+        "en": "Racing heart can be anxiety; focus on breath to calm. Dare: Breathe slowly now.",
+        "vi": "Tim đập nhanh có thể do lo âu; tập trung thở để bình tĩnh. Dám: Thở chậm ngay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms", "anxiety"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "symptoms" },
+      "artifact_id": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7a",
+      "artifact_version_id": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7a-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "suicidal_thoughts",
+      "title": { "en": "Suicidal Thoughts", "vi": "Nghĩ Tự Tử" },
+      "copy": {
+        "en": "Suicidal thoughts are serious; seek immediate help. Dare: Call a hotline now.",
+        "vi": "Nghĩ tự tử nghiêm trọng; tìm giúp ngay. Dám: Gọi đường dây nóng ngay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms", "safety"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "symptoms" },
+      "artifact_id": "3b4c5d6e-7f8a-9b0c-1d2e-3f4a5b6c7d8b",
+      "artifact_version_id": "3b4c5d6e-7f8a-9b0c-1d2e-3f4a5b6c7d8b-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "self_harm",
+      "title": { "en": "Self Harm", "vi": "Tự Hại" },
+      "copy": {
+        "en": "Self harm is a sign for help; reach out now. Dare: Talk to someone trusted.",
+        "vi": "Tự hại là dấu hiệu cần giúp; liên hệ ngay. Dám: Nói với người đáng tin."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms", "safety"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "symptoms" },
+      "artifact_id": "4c5d6e7f-8a9b-0c1d-2e3f-4a5b6c7d8e9c",
+      "artifact_version_id": "4c5d6e7f-8a9b-0c1d-2e3f-4a5b6c7d8e9c-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "anxiety_attack",
+      "title": { "en": "Anxiety Attack", "vi": "Cơn Lo Âu" },
+      "copy": {
+        "en": "Anxiety attack can pass; use breathing to calm. Dare: Ground yourself now.",
+        "vi": "Cơn lo âu có thể qua; dùng thở để bình tĩnh. Dám: Ground bản thân ngay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms", "anxiety", "safety"],
+      "urgency": "immediate",
+      "severity_level": 4,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "symptoms" },
+      "artifact_id": "5d6e7f8a-9b0c-1d2e-3f4a-5b6c7d8e9f0d",
+      "artifact_version_id": "5d6e7f8a-9b0c-1d2e-3f4a-5b6c7d8e9f0d-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "stress_overload",
+      "title": { "en": "Stress Overload", "vi": "Quá Tải Căng Thẳng" },
+      "copy": {
+        "en": "Stress overload may lead to burnout; take a break today. Dare: Rest for 10 minutes.",
+        "vi": "Quá tải căng thẳng có thể dẫn đến kiệt sức; nghỉ hôm nay. Dám: Nghỉ 10 phút."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms", "stress"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "symptoms" },
+      "artifact_id": "6e7f8a9b-0c1d-2e3f-4a5b-6c7d8e9f0a1e",
+      "artifact_version_id": "6e7f8a9b-0c1d-2e3f-4a5b-6c7d8e9f0a1e-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "body_scan",
+      "title": { "en": "Body Scan", "vi": "Quét Cơ Thể" },
+      "copy": {
+        "en": "Use body scan meditation to release tension and calm mind. Dare: Try body scan tonight.",
+        "vi": "Sử dụng thiền quét cơ thể để giải phóng căng thẳng và làm dịu tâm trí. Dám: Thử quét cơ thể tối nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mindfulness", "stress"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "mindfulness" },
+      "artifact_id": "7f8a9b0c-1d2e-3f4a-5b6c-7d8e9f0a1b2f",
+      "artifact_version_id": "7f8a9b0c-1d2e-3f4a-5b6c-7d8e9f0a1b2f-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "stress_journal",
+      "title": { "en": "Stress Journal", "vi": "Nhật Ký Căng Thẳng" },
+      "copy": {
+        "en": "Track stress triggers in a journal to manage anxiety better. Dare: Start journaling today.",
+        "vi": "Theo dõi kích thích căng thẳng trong nhật ký để quản lý lo âu tốt hơn. Dám: Bắt đầu ghi nhật ký hôm nay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["mental_health", "stress"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "mental_health" },
+      "artifact_id": "8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3a",
+      "artifact_version_id": "8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3a-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    },
+    {
+      "slug": "calm_environment",
+      "title": { "en": "Calm Environment", "vi": "Môi Trường Bình Tĩnh" },
+      "copy": {
+        "en": "Create a peaceful space to reduce stress and promote relaxation. Dare: Declutter your space.",
+        "vi": "Tạo không gian yên bình để giảm căng thẳng và thúc đẩy thư giãn. Dám: Dọn dẹp không gian."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["stress", "lifestyle"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "lifestyle" },
+      "artifact_id": "9b0c1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4b",
+      "artifact_version_id": "9b0c1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4b-v001",
+      "created_at": "2025-10-06T19:41:00Z",
+      "updated_at": "2025-10-06T19:41:00Z",
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try this step."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bước này."
+        }
+      }
+    }
+  ],
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Managing Stress and Anxiety\n\nStress and anxiety are common feelings that can affect daily life. This guide connects practical steps like breathing, mindfulness, and lifestyle changes to help manage them. Always consult a doctor for personal advice, especially if you experience symptoms like panic attacks or chest pain.\n\n### Relaxation Techniques\nDeep breathing can calm your mind—try slow breaths when feeling tense. Mindfulness practice keeps you in the present; spend a few minutes daily. Meditation routines build peace over time. Body scan meditation helps release tension by focusing on body sensations. These methods, tied to entries like deep_breathing and body_scan, may reduce anxiety.\n\n### Lifestyle Changes\nPhysical activity, such as walking, can ease stress—aim for daily movement, as suggested in physical_activity. Good sleep hygiene, like a consistent bedtime from sleep_hygiene, supports rest. Social connections, per social_connection, offer support—talk to friends or family. Time_management with to-do lists prevents overload. Creating a calm_environment with a tidy space also helps, as does balanced nutrition.\n\n### Recognizing Symptoms\nWatch for signs like shortness_breath, racing_heart, or dizziness, linked to entries like shortness_breath and racing_heart. For severe symptoms like suicidal_thoughts or self_harm, seek help immediately, as noted in those entries. Have a crisis plan ready, as advised in the crisis footer.\n\n### Prevention Strategies\nJournal stress triggers, as in stress_journal, to identify patterns. This can guide better management. Consistent relaxation and lifestyle habits, like those in meditation_routine, prevent stress buildup.\n\n### When to Research\nIf symptoms persist, explore trusted sources. Search health websites for causes like work stress or try meditation apps, aligning with professional_help. Avoid unverified online claims.\n\n### Go or No-Go Decisions\nTest a step like deep breathing for a week—if it helps, it’s a “go”; keep it. If it doesn’t, it’s a “no-go”; try another, like mindfulness_practice. For serious symptoms, professional_help advises consulting a therapist. Track progress in a journal to decide.\n\n### Ethics and Safety\nKeep health details private; don’t share online. Prioritize safety—if you feel unsafe, call emergency services or a hotline, as noted in suicidal_thoughts and self_harm. The crisis footer reinforces this.\n\n### Next Steps\nStart with one action, like five minutes of deep_breathing. Track progress for a week using stress_journal. If needed, contact a therapist, as in professional_help. Small steps build calm over time.\n\n*This is not medical advice. Consult professionals for concerns.*\n\n(Word count: 546)",
+    "vi": "# Quản Lý Căng Thẳng Và Lo Âu\n\nCăng thẳng và lo âu là cảm xúc phổ biến, có thể ảnh hưởng đến cuộc sống hàng ngày. Hướng dẫn này kết nối các bước thực tiễn như hít thở, chánh niệm và thay đổi lối sống để hỗ trợ quản lý. Luôn tham khảo bác sĩ để được tư vấn cá nhân, đặc biệt nếu gặp triệu chứng nghiêm trọng như cơn hoảng loạn hoặc đau ngực.\n\n### Kỹ Thuật Thư Giãn\nThở sâu giúp làm dịu tâm trí—thử thở chậm khi căng thẳng, như mục thở_sâu. Thực hành chánh niệm tập trung vào hiện tại, chỉ vài phút mỗi ngày, theo thực_hành_chánh_niệm. Thiền định đều đặn, như thói_quen_thiền, xây dựng sự an yên. Quét cơ thể, theo quét_cơ_thể, giúp giải phóng căng thẳng bằng cách chú ý đến cảm giác cơ thể. Những cách này có thể giảm lo âu.\n\n### Thay Đổi Lối Sống\nHoạt động thể chất như đi bộ giúp giảm căng thẳng—cố gắng vận động hàng ngày, như hoạt_động_thể_chất. Vệ sinh giấc ngủ tốt, như lịch ngủ đều từ vệ_sinh_giấc_ngủ, hỗ trợ nghỉ ngơi. Kết nối xã hội, theo kết_nối_xã_hội, mang lại sự hỗ trợ—nói chuyện với bạn bè, gia đình. Quản lý thời gian bằng danh sách việc làm, theo quản_lý_thời_gian, tránh quá tải. Tạo môi_trường_bình_tĩnh với không gian gọn gàng và dinh dưỡng cân bằng cũng giúp ích.\n\n### Nhận Biết Triệu Chứng\nChú ý dấu hiệu như thở_ngắn, tim_đập_nhanh, hoặc chóng_mặt, liên quan đến các mục như thở_ngắn và tim_đập_nhanh. Với triệu chứng nghiêm trọng như nghĩ_tự_tử hoặc tự_hại, hãy tìm trợ giúp ngay, như ghi trong các mục này. Chuẩn bị kế hoạch khủng hoảng, như chân trang khủng hoảng đề xuất.\n\n### Phòng Ngừa\nGhi nhật ký căng thẳng, theo nhật_ký_căng_thẳng, để nhận biết mẫu lặp lại, hỗ trợ quản lý tốt hơn. Thói quen thư giãn và lối sống đều đặn, như thói_quen_thiền, ngăn căng thẳng tích tụ.\n\n### Khi Nào Nên Tìm Hiểu\nNếu triệu chứng kéo dài, tra cứu nguồn uy tín. Tìm trên trang y tế về nguyên nhân như áp lực công việc hoặc ứng dụng thiền, theo giúp_chuyên_nghiệp. Tránh tin chưa kiểm chứng.\n\n### Quyết Định Tiến Hành hay Tạm Dừng\nThử một bước như thở sâu một tuần—nếu có hiệu quả, “tiến hành”; giữ lại. Nếu không, “tạm dừng”; thử cách khác, như thực_hành_chánh_niệm. Với triệu chứng nghiêm trọng, giúp_chuyên_nghiệp khuyên gặp chuyên gia. Theo dõi tiến triển bằng nhật ký.\n\n### Đạo Đức và An Toàn\nGiữ thông tin sức khỏe riêng tư; không chia sẻ công khai. Ưu tiên an toàn—nếu không an toàn, gọi cấp cứu hoặc đường dây nóng, như trong nghĩ_tự_tử và tự_hại. Chân trang khủng hoảng nhấn mạnh điều này.\n\n### Bước Tiếp Theo\nBắt đầu với hành động nhỏ, như năm phút thở_sâu. Theo dõi tiến triển một tuần bằng nhật_ký_căng_thẳng. Nếu cần, liên hệ chuyên gia trị liệu, theo giúp_chuyên_nghiệp. Những bước nhỏ xây dựng sự bình tĩnh lâu dài.\n\n*Đây không phải lời khuyên y khoa. Tham khảo chuyên gia cho các vấn đề sức khỏe.*\n\n(Đếm từ: 552)",
+    "word_count_en": 546,
+    "word_count_vi": 552,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}

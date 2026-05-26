@@ -1,0 +1,123 @@
+/**
+ * Mercy Blade — Room Registry Generator
+ * MB-BLUE-97.9 — 2025-12-29 (+0700)
+ *
+ * SOURCE OF TRUTH:
+ * - /public/data/*.json
+ *
+ * OUTPUT (AUTO-GENERATED — DO NOT EDIT):
+ * - src/lib/roomList.ts
+ *
+ * GUARANTEES:
+ * - IDs normalized (no _vip3_vip3, no duplicates)
+ * - Tier derived ONLY from ID
+ * - ROOM_LIST is single source → ROOM_IDS derived from it
+ */
+
+import fs from "fs";
+import path from "path";
+
+const DATA_DIR = path.resolve("public/data");
+const OUT_FILE = path.resolve("src/lib/roomList.ts");
+
+/* ----------------------------- helpers ----------------------------- */
+
+function normalizeId(id: string): string {
+  return id
+    .toLowerCase()
+    .trim()
+    .replace(/[-\s]+/g, "_")
+    .replace(/_(vip\d+)_\1/g, "_$1")
+    .replace(/_(free)_\1/g, "_$1");
+}
+
+function extractTier(id: string): string {
+  if (id.endsWith("_free")) return "free";
+  const matches = [...id.matchAll(/_vip(\d+)/g)];
+  if (matches.length === 0) return "free";
+  const maxVip = Math.max(...matches.map(m => Number(m[1])));
+  return `vip${maxVip}`;
+}
+
+function prettifyTitleFromId(id: string): string {
+  return id
+    .replace(/_(free|vip\d+)/g, "")
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, c => c.toUpperCase())
+    .trim();
+}
+
+/* ----------------------------- load rooms ----------------------------- */
+
+const files = fs.readdirSync(DATA_DIR).filter(f => f.endsWith(".json"));
+
+type RoomListItem = {
+  id: string;
+  title_en?: string;
+  title_vi?: string;
+  tier: string;
+  hasData: true;
+};
+
+const roomMap = new Map<string, RoomListItem>();
+
+for (const file of files) {
+  const raw = fs.readFileSync(path.join(DATA_DIR, file), "utf8");
+  let json: any;
+
+  try {
+    json = JSON.parse(raw);
+  } catch {
+    console.warn("⚠️ Skipping invalid JSON:", file);
+    continue;
+  }
+
+  if (!json?.id) continue;
+
+  const id = normalizeId(json.id);
+  const tier = extractTier(id);
+
+  if (roomMap.has(id)) continue;
+
+  roomMap.set(id, {
+    id,
+    title_en: json.title?.en || json.title_en || prettifyTitleFromId(id),
+    title_vi: json.title?.vi || json.title_vi,
+    tier,
+    hasData: true,
+  });
+}
+
+/* ----------------------------- emit file ----------------------------- */
+
+const ROOM_LIST = [...roomMap.values()].sort((a, b) =>
+  a.id.localeCompare(b.id)
+);
+
+const ROOM_IDS = ROOM_LIST.map(r => r.id);
+
+const out = `/**
+ * AUTO-GENERATED — DO NOT EDIT
+ * Generated: ${new Date().toISOString()}
+ *
+ * Rooms: ${ROOM_LIST.length}
+ */
+
+export type RoomListItem = {
+  id: string;
+  title_en?: string;
+  title_vi?: string;
+  tier: string;
+  hasData: boolean;
+};
+
+export const ROOM_LIST: RoomListItem[] = ${JSON.stringify(ROOM_LIST, null, 2)};
+
+export const ROOM_IDS = ${JSON.stringify(ROOM_IDS, null, 2)} as const;
+`;
+
+fs.writeFileSync(OUT_FILE, out, "utf8");
+
+console.log("✅ Room registry generated");
+console.log("Rooms:", ROOM_LIST.length);
+console.log("Output:", OUT_FILE);

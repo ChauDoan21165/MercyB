@@ -1,0 +1,717 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "gut_brain_axis",
+  "description": "Echologic Mercy Blade room for gut-brain axis health and related wellness guidance",
+  "description_vi": "Phòng Mercy Blade về sức khỏe trục ruột-não và hướng dẫn sức khỏe liên quan",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "default": "en",
+    "fallback": "vi",
+    "i18n_required": true,
+    "i18n_verified": true
+  },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical or psychological advice or emergency care.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn y tế hoặc tâm lý chuyên nghiệp hoặc chăm sóc khẩn cấp.",
+  "crisis_footer": {
+    "en": "If you feel unsafe or in acute distress, seek immediate professional help or contact local emergency services.",
+    "vi": "Nếu bạn cảm thấy không an toàn hoặc đang căng thẳng nghiêm trọng, hãy tìm trợ giúp chuyên môn ngay hoặc liên hệ dịch vụ khẩn cấp địa phương."
+  },
+  "meta": {
+    "created_at": "2025-10-06T21:52:00+09:00",
+    "updated_at": "2025-10-07T17:57:00+09:00",
+    "checksum_sha256": "placeholder_sha256_hash_to_be_generated",
+    "artifact_version_id": "b3c4d5e6-f7a8-4b9c-8d01-a2b3c4d5e6f7",
+    "artifact_semver": "v1.0.3",
+    "meta_notes": "Keyword-driven; field-tested tone for gut-brain axis health and wellness | artifact_ids updated to valid UUIDv4 with variant nibble (8,9,a,b) | batch=final/1 | batch_total=1 | Per-entry attribution is optional and inherited from default_attribution | Vietnamese keywords use space-separated tokenization for search/i18n quality | Consolidated gut_health_hydration_h and gut_health_and_hydration into single gut_health_and_hydration bucket | Consolidated stress_and_gut and gut_health_and_stress into single gut_health_and_stress bucket | Consolidated gut_health_nutrition and gut_health_and_nutrition into single gut_health_and_nutrition bucket | Updated Vietnamese hydration phrasing to 'uống đủ nước' for natural tone | Softened immunity claim to 'support immune function' for conservative tone | Checksum to be computed at freeze time | Consider adding neuro_tech tag for future neuro-tech crossover."
+  },
+  "default_attribution": "Best Practices / Thực hành tốt nhất",
+  "enums": {
+    "tags": [
+      "gut_brain_axis",
+      "gut_health",
+      "mental_health",
+      "nutrition",
+      "probiotics",
+      "stress_management",
+      "child_health",
+      "adult_health",
+      "elderly_care",
+      "prevention"
+    ],
+    "urgency": ["routine", "soon", "immediate"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["digestive_system", "nervous_system", "mental_health"]
+  },
+  "keywords": {
+    "gut_health": {
+      "en": [
+        "gut_health",
+        "digestive_wellness",
+        "microbiome_health",
+        "gut_balance"
+      ],
+      "vi": [
+        "sức khỏe ruột",
+        "sức khỏe tiêu hóa",
+        "sức khỏe vi sinh vật",
+        "cân bằng ruột"
+      ]
+    },
+    "probiotics": {
+      "en": [
+        "probiotics",
+        "gut_bacteria",
+        "microbiome_support",
+        "digestive_health"
+      ],
+      "vi": [
+        "men vi sinh",
+        "vi khuẩn ruột",
+        "hỗ trợ vi sinh vật",
+        "sức khỏe tiêu hóa"
+      ]
+    },
+    "prebiotics": {
+      "en": [
+        "prebiotics",
+        "gut_fiber",
+        "microbiome_nutrition",
+        "digestive_support"
+      ],
+      "vi": [
+        "tiền sinh học (prebiotic)",
+        "chất xơ ruột",
+        "dinh dưỡng vi sinh vật",
+        "hỗ trợ tiêu hóa"
+      ]
+    },
+    "gut_brain_connection": {
+      "en": [
+        "gut_brain_connection",
+        "gut_brain_axis",
+        "neuro_gut_health",
+        "mind_gut_link"
+      ],
+      "vi": [
+        "kết nối ruột não",
+        "trục ruột não",
+        "sức khỏe thần kinh ruột",
+        "liên kết tâm trí ruột"
+      ]
+    },
+    "gut_health_and_nutrition": {
+      "en": [
+        "gut_health_and_nutrition",
+        "digestive_nutrition",
+        "gut_diet",
+        "nutrition_support"
+      ],
+      "vi": [
+        "sức khỏe ruột và dinh dưỡng",
+        "dinh dưỡng tiêu hóa",
+        "chế độ ăn ruột",
+        "hỗ trợ dinh dưỡng"
+      ]
+    },
+    "gut_health_for_children": {
+      "en": [
+        "gut_health_for_children",
+        "pediatric_gut_health",
+        "child_digestive_health",
+        "kids_gut"
+      ],
+      "vi": [
+        "sức khỏe ruột trẻ em",
+        "sức khỏe ruột nhi khoa",
+        "sức khỏe tiêu hóa trẻ",
+        "ruột trẻ"
+      ]
+    },
+    "gut_health_for_adults": {
+      "en": [
+        "gut_health_for_adults",
+        "adult_gut_health",
+        "grownup_digestive_health",
+        "adult_gut"
+      ],
+      "vi": [
+        "sức khỏe ruột người lớn",
+        "sức khỏe ruột trưởng thành",
+        "sức khỏe tiêu hóa người lớn",
+        "ruột người lớn"
+      ]
+    },
+    "gut_health_for_elderly": {
+      "en": [
+        "gut_health_for_elderly",
+        "senior_gut_health",
+        "elderly_digestive_health",
+        "aged_gut"
+      ],
+      "vi": [
+        "sức khỏe ruột người cao tuổi",
+        "sức khỏe ruột người già",
+        "sức khỏe tiêu hóa người cao tuổi",
+        "ruột người già"
+      ]
+    },
+    "gut_brain_mental_health": {
+      "en": [
+        "gut_brain_mental_health",
+        "gut_mood_connection",
+        "mental_wellness",
+        "gut_brain_wellness"
+      ],
+      "vi": [
+        "sức khỏe tinh thần ruột não",
+        "kết nối tâm trạng ruột",
+        "sức khỏe tinh thần",
+        "sức khỏe ruột não"
+      ]
+    },
+    "gut_health_fiber": {
+      "en": [
+        "gut_health_fiber",
+        "dietary_fiber",
+        "fiber_intake",
+        "digestive_fiber"
+      ],
+      "vi": [
+        "chất xơ sức khỏe ruột",
+        "chất xơ chế độ ăn",
+        "hấp thụ chất xơ",
+        "chất xơ tiêu hóa"
+      ]
+    },
+    "gut_health_fermented_foods": {
+      "en": [
+        "gut_health_fermented_foods",
+        "fermented_diet",
+        "probiotic_foods",
+        "gut_nutrition"
+      ],
+      "vi": [
+        "thực phẩm lên men sức khỏe ruột",
+        "chế độ ăn lên men",
+        "thực phẩm men vi sinh",
+        "dinh dưỡng ruột"
+      ]
+    },
+    "gut_brain_mood_regulation": {
+      "en": [
+        "gut_brain_mood_regulation",
+        "mood_balance",
+        "gut_mood_support",
+        "emotional_health"
+      ],
+      "vi": [
+        "điều chỉnh tâm trạng ruột não",
+        "cân bằng tâm trạng",
+        "hỗ trợ tâm trạng ruột",
+        "sức khỏe cảm xúc"
+      ]
+    },
+    "gut_health_and_immunity": {
+      "en": [
+        "gut_health_and_immunity",
+        "immune_gut_connection",
+        "gut_immune_support",
+        "immune_health"
+      ],
+      "vi": [
+        "sức khỏe ruột và miễn dịch",
+        "kết nối miễn dịch ruột",
+        "hỗ trợ miễn dịch ruột",
+        "sức khỏe miễn dịch"
+      ]
+    },
+    "gut_health_and_sleep": {
+      "en": [
+        "gut_health_and_sleep",
+        "digestive_sleep",
+        "gut_sleep_connection",
+        "sleep_wellness"
+      ],
+      "vi": [
+        "sức khỏe ruột và giấc ngủ",
+        "giấc ngủ tiêu hóa",
+        "kết nối giấc ngủ ruột",
+        "sức khỏe giấc ngủ"
+      ]
+    },
+    "gut_health_and_anxiety": {
+      "en": [
+        "gut_health_and_anxiety",
+        "anxiety_gut_connection",
+        "gut_anxiety_support",
+        "mental_health"
+      ],
+      "vi": [
+        "sức khỏe ruột và lo âu",
+        "kết nối lo âu ruột",
+        "hỗ trợ lo âu ruột",
+        "sức khỏe tinh thần"
+      ]
+    },
+    "gut_health_and_depression": {
+      "en": [
+        "gut_health_and_depression",
+        "depression_gut_connection",
+        "gut_mood_lift",
+        "mental_recovery"
+      ],
+      "vi": [
+        "sức khỏe ruột và trầm cảm",
+        "kết nối trầm cảm ruột",
+        "nâng tâm trạng ruột",
+        "phục hồi tinh thần"
+      ]
+    },
+    "gut_health_and_exercise": {
+      "en": [
+        "gut_health_and_exercise",
+        "exercise_gut_support",
+        "physical_activity_gut",
+        "gut_fitness"
+      ],
+      "vi": [
+        "sức khỏe ruột và tập thể dục",
+        "hỗ trợ tập thể dục ruột",
+        "hoạt động thể chất ruột",
+        "thể lực ruột"
+      ]
+    },
+    "gut_health_and_hydration": {
+      "en": [
+        "gut_health_and_hydration",
+        "digestive_hydration",
+        "fluid_intake_gut",
+        "gut_hydration"
+      ],
+      "vi": [
+        "sức khỏe ruột và uống đủ nước",
+        "hấp thụ chất lỏng ruột",
+        "duy trì đủ nước cho hệ tiêu hóa"
+      ]
+    },
+    "gut_health_and_stress": {
+      "en": [
+        "gut_health_and_stress",
+        "stress_gut_impact",
+        "gut_stress_management",
+        "mental_gut_health"
+      ],
+      "vi": [
+        "sức khỏe ruột và căng thẳng",
+        "tác động căng thẳng ruột",
+        "quản lý căng thẳng ruột",
+        "sức khỏe tinh thần ruột"
+      ]
+    },
+    "gut_health_and_prevention": {
+      "en": [
+        "gut_health_and_prevention",
+        "digestive_prevention",
+        "gut_health_maintenance",
+        "preventive_gut_care"
+      ],
+      "vi": [
+        "sức khỏe ruột và phòng ngừa",
+        "phòng ngừa tiêu hóa",
+        "duy trì sức khỏe ruột",
+        "chăm sóc ruột phòng ngừa"
+      ]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Supporting Gut-Brain Health\n\nThe gut and brain are connected in ways that affect how we feel. This guide links ideas from the room's entries to offer simple steps for gut-brain health. This is just for information—talk to a doctor for personal advice.\n\n### Key Practices from Entries\nEntries like gut health and gut brain connection explain how gut bacteria influence mood and thinking. To support this, try foods from probiotics and prebiotics, such as yogurt or bananas. Gut health and nutrition suggests eating a mix of fruits, vegetables, and whole grains. For stress, gut health and stress recommends relaxation techniques. Entries on anxiety and depression link gut care to better feelings. Add exercise from gut health and exercise, like walking, and stay hydrated as in gut health and hydration. For immunity and sleep, these practices might help too. Age-specific entries for children, adults, and elderly suggest adjusting for needs, like simpler foods for kids.\n\n### Using Research Tasks\nIf you want to learn more, use research to find details. For example, search for 'probiotic foods list' to add to meals. Or look up 'gut brain exercises' for ideas. This helps tie entries like gut health fermented foods to your life. Check reliable sites for info on fiber from gut health fiber. Use research when unsure about a food or practice, to see if it fits you.\n\n### Moving to Go or No-Go\nTest a practice for a week and see how you feel. If adding probiotics helps mood, as in gut brain mood regulation, that's a go—keep it. If it causes issues, no-go and try something else, like more water. For prevention, if changes improve energy, continue. But if symptoms like worry don't change, see a professional. Entries like gut health and anxiety remind us some things need expert help.\n\n### Ethics, Privacy, and Safety\nBe safe by starting small and listening to your body. The crisis footer says get help if distressed. Respect privacy—keep health notes private. Ethics mean choosing what's right for you without pressure. Always consider safety in practices.\n\n### Actionable Next Steps\nPick one entry, like probiotics, and add a food today. Track in a journal for a week. Research a recipe if needed. Build to include hydration and exercise. If changes help, add more; if not, adjust. Talk to a doctor for guidance.\n\n(Word count: 594)",
+    "vi": "# Hỗ Trợ Sức Khỏe Ruột–Não\n\nRuột và não có mối liên hệ chặt chẽ, ảnh hưởng lẫn nhau qua hệ thần kinh, hormone và hệ vi sinh vật. Khi ruột khỏe, tâm trạng và khả năng tập trung thường tốt hơn; ngược lại, căng thẳng kéo dài có thể ảnh hưởng tiêu hóa. Hướng dẫn này trình bày các bước đơn giản, thực tế để hỗ trợ sức khỏe ruột–não. Lưu ý: đây chỉ là thông tin tham khảo, không thay thế cho tư vấn y khoa.\n\n### Hiểu Mối Liên Kết Giữa Ruột Và Não\nTrong ruột có hàng nghìn tỷ vi khuẩn, được gọi là **hệ vi sinh vật đường ruột**, chúng sản xuất các chất hóa học ảnh hưởng đến cảm xúc, như serotonin – “hormone hạnh phúc”. Căng thẳng, chế độ ăn nghèo dinh dưỡng hoặc thiếu ngủ có thể làm mất cân bằng hệ vi sinh này, dẫn đến rối loạn tiêu hóa hoặc tâm trạng bất ổn. Vì vậy, chăm sóc ruột cũng là chăm sóc tinh thần.\n\n### Dinh Dưỡng Cho Trục Ruột–Não\n1. **Tăng thực phẩm chứa men vi sinh (probiotic):** như sữa chua, kim chi, dưa chua, miso, kefir. Những thực phẩm này giúp bổ sung lợi khuẩn.  \n2. **Ăn thực phẩm chứa chất xơ và tiền sinh học (prebiotic):** như chuối, tỏi, hành, yến mạch, rau diếp xoăn — giúp nuôi dưỡng lợi khuẩn.  \n3. **Giảm đường tinh luyện và thức ăn chế biến:** vì chúng có thể làm mất cân bằng hệ vi sinh.  \n4. **Bổ sung thực phẩm chống viêm:** như cá béo (cá hồi, cá thu), nghệ, gừng, quả mọng.  \n5. **Uống đủ nước:** giúp quá trình tiêu hóa và loại bỏ độc tố tốt hơn.  \n\nNếu có vấn đề về tiêu hóa, hãy thêm từng loại thực phẩm mới từ từ, để cơ thể thích nghi.\n\n### Lối Sống Hỗ Trợ Cân Bằng Ruột–Não\n- **Quản lý căng thẳng:** Thực hành hít thở sâu, chánh niệm hoặc yoga 10 phút mỗi ngày giúp giảm hormone căng thẳng (cortisol), vốn ảnh hưởng xấu đến ruột.  \n- **Ngủ đủ:** Thiếu ngủ có thể phá vỡ nhịp sinh học của ruột. Cố gắng ngủ 7–8 tiếng mỗi đêm.  \n- **Tập thể dục nhẹ:** Đi bộ, đạp xe, hoặc tập giãn cơ giúp cải thiện nhu động ruột và lưu thông máu đến não.  \n- **Không bỏ bữa:** Ăn đúng giờ giúp hệ tiêu hóa hoạt động đều, ổn định lượng đường huyết, giảm mệt mỏi và cáu gắt.  \n\n### Theo Dõi Và Điều Chỉnh\nHãy ghi **nhật ký thực phẩm và cảm xúc**: ăn gì, ngủ bao lâu, cảm thấy thế nào trong ngày. Sau 1–2 tuần, bạn có thể nhận ra mối liên hệ giữa thức ăn, căng thẳng và tâm trạng. Ví dụ, bạn có thể thấy tiêu hóa kém khi ăn quá nhiều đường hoặc mất ngủ khi uống cà phê muộn. Nếu bổ sung men vi sinh khiến bụng chướng hoặc đầy hơi, giảm liều và thử loại khác. Mỗi người có phản ứng khác nhau — điều quan trọng là **lắng nghe cơ thể.**\n\n### Khi Nào Nên Gặp Bác Sĩ\nNếu bạn gặp các triệu chứng kéo dài như đau bụng, tiêu chảy, táo bón, đầy hơi, hoặc tâm trạng thay đổi bất thường, hãy đến khám chuyên khoa tiêu hóa hoặc tâm lý. Những dấu hiệu như sụt cân không rõ nguyên nhân, phân đen, hoặc chảy máu tiêu hóa cần được xử lý ngay. Đừng tự dùng men vi sinh hoặc bổ sung mà không hỏi ý kiến bác sĩ nếu bạn có bệnh nền hoặc đang dùng thuốc.\n\n### Đạo Đức, Quyền Riêng Tư Và An Toàn\nHãy tôn trọng giới hạn của cơ thể — không ép buộc ăn hoặc tập nếu cảm thấy khó chịu. Giữ riêng tư nhật ký sức khỏe, chỉ chia sẻ với chuyên gia khi cần. Nếu cảm thấy lo âu hoặc trầm cảm nặng, đừng tự xử lý; hãy liên hệ **bác sĩ hoặc đường dây nóng hỗ trợ khẩn cấp.** Sức khỏe tâm trí và thể chất cần được bảo vệ song song.\n\n### Bước Hành Động Tiếp Theo\nHôm nay, chọn **một thay đổi nhỏ**: thêm một bữa có rau xanh và sữa chua, hoặc đi bộ 20 phút sau bữa tối. Ghi lại cảm giác trong nhật ký. Sau 1 tuần, xem bạn ngủ ngon hơn, tiêu hóa tốt hơn hay tâm trạng ổn định hơn không. Nếu có, tiếp tục. Nếu không, điều chỉnh hoặc tham khảo bác sĩ. Những bước nhỏ nhất — khi thực hiện đều đặn — có thể giúp **ruột và não cùng khỏe mạnh**.\n\n*Đây không phải tư vấn y khoa. Hãy tham khảo chuyên gia nếu có triệu chứng nghiêm trọng hoặc kéo dài.*",
+    "word_count_en": 594,
+    "word_count_vi": 594,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "gut_health",
+      "title": { "en": "Gut Health", "vi": "Sức khỏe ruột" },
+      "copy": {
+        "en": "Maintain gut health for overall wellness. Dare: eat fiber-rich foods daily.",
+        "vi": "Duy trì sức khỏe ruột để khỏe mạnh tổng thể. Dám: ăn thực phẩm giàu chất xơ hàng ngày."
+      },
+      "tags": ["gut_brain_axis", "gut_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "gut_health" },
+      "artifact_id": "1a2b3c4d-5e6f-4a1b-8c23-d4e5f6a7b8c9",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "probiotics",
+      "title": { "en": "Probiotics", "vi": "Men vi sinh" },
+      "copy": {
+        "en": "Take probiotics to support gut bacteria. Dare: include yogurt in daily meals.",
+        "vi": "Uống men vi sinh để hỗ trợ vi khuẩn ruột. Dám: thêm sữa chua vào bữa ăn hàng ngày."
+      },
+      "tags": ["gut_brain_axis", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "probiotics" },
+      "artifact_id": "2b3c4d5e-6f7a-4b2c-9d34-e5f6a7b8c9d0",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "prebiotics",
+      "title": { "en": "Prebiotics", "vi": "Tiền sinh học (prebiotic)" },
+      "copy": {
+        "en": "Consume prebiotics to nourish gut microbiome. Dare: eat garlic or onions daily.",
+        "vi": "Tiêu thụ tiền sinh học để nuôi dưỡng vi sinh vật ruột. Dám: ăn tỏi hoặc hành hàng ngày."
+      },
+      "tags": ["gut_brain_axis", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "prebiotics" },
+      "artifact_id": "3c4d5e6f-7a8b-4c3d-8e45-f6a7b8c9d0e1",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_brain_connection",
+      "title": { "en": "Gut-Brain Connection", "vi": "Kết nối ruột não" },
+      "copy": {
+        "en": "Understand gut-brain link for better health. Dare: read about microbiome research.",
+        "vi": "Hiểu liên kết ruột-não để khỏe mạnh hơn. Dám: đọc về nghiên cứu vi sinh vật."
+      },
+      "tags": ["gut_brain_axis", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nervous_system"],
+      "metadata": { "topic": "gut_brain_connection" },
+      "artifact_id": "4d5e6f7a-8b9c-4d4e-9f56-a7b8c9d0e1f2",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_health_and_nutrition",
+      "title": {
+        "en": "Gut Health and Nutrition",
+        "vi": "Sức khỏe ruột và dinh dưỡng"
+      },
+      "copy": {
+        "en": "Eat balanced diet for gut-brain health. Dare: include diverse veggies daily.",
+        "vi": "Ăn chế độ cân bằng cho sức khỏe ruột-não. Dám: thêm rau đa dạng hàng ngày."
+      },
+      "tags": ["gut_brain_axis", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "gut_health_and_nutrition" },
+      "artifact_id": "5e6f7a8b-9c0d-4e5f-8a67-b8c9d0e1f2a3",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_health_for_children",
+      "title": {
+        "en": "Gut Health for Children",
+        "vi": "Sức khỏe ruột trẻ em"
+      },
+      "copy": {
+        "en": "Support kids' gut health early. Dare: offer probiotic-rich snacks.",
+        "vi": "Hỗ trợ sức khỏe ruột trẻ từ sớm. Dám: cung cấp đồ ăn nhẹ giàu men vi sinh."
+      },
+      "tags": ["gut_brain_axis", "child_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "gut_health_for_children" },
+      "artifact_id": "6f7a8b9c-0d1e-4f6a-9b78-c9d0e1f2a3b4",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_health_for_adults",
+      "title": {
+        "en": "Gut Health for Adults",
+        "vi": "Sức khỏe ruột người lớn"
+      },
+      "copy": {
+        "en": "Maintain adult gut health with diet. Dare: reduce processed foods.",
+        "vi": "Duy trì sức khỏe ruột người lớn bằng chế độ ăn. Dám: giảm thực phẩm chế biến."
+      },
+      "tags": ["gut_brain_axis", "adult_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "gut_health_for_adults" },
+      "artifact_id": "7a8b9c0d-1e2f-4a7b-8c89-d0e1f2a3b4c5",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_health_for_elderly",
+      "title": {
+        "en": "Gut Health for Elderly",
+        "vi": "Sức khỏe ruột người cao tuổi"
+      },
+      "copy": {
+        "en": "Support elderly gut health gently. Dare: add fiber slowly.",
+        "vi": "Hỗ trợ sức khỏe ruột người cao tuổi nhẹ nhàng. Dám: thêm chất xơ từ từ."
+      },
+      "tags": ["gut_brain_axis", "elderly_care"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "gut_health_for_elderly" },
+      "artifact_id": "8b9c0d1e-2f3a-4b8c-9d90-e1f2a3b4c5d6",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_brain_mental_health",
+      "title": {
+        "en": "Gut-Brain Mental Health",
+        "vi": "Sức khỏe tinh thần ruột não"
+      },
+      "copy": {
+        "en": "Improve mental health through gut care. Dare: track mood and diet.",
+        "vi": "Cải thiện sức khỏe tinh thần qua chăm sóc ruột. Dám: theo dõi tâm trạng và chế độ ăn."
+      },
+      "tags": ["gut_brain_axis", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "gut_brain_mental_health" },
+      "artifact_id": "9c0d1e2f-3a4b-4c9d-8e01-f2a3b4c5d6e7",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_health_fiber",
+      "title": { "en": "Gut Health Fiber", "vi": "Chất xơ sức khỏe ruột" },
+      "copy": {
+        "en": "Increase fiber intake for gut health. Dare: add beans to meals.",
+        "vi": "Tăng hấp thụ chất xơ cho sức khỏe ruột. Dám: thêm đậu vào bữa ăn."
+      },
+      "tags": ["gut_brain_axis", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "gut_health_fiber" },
+      "artifact_id": "3a4b5c6d-7e8f-4a3b-8c45-d6e7f8a9b0c1",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_health_fermented_foods",
+      "title": {
+        "en": "Gut Health Fermented Foods",
+        "vi": "Thực phẩm lên men sức khỏe ruột"
+      },
+      "copy": {
+        "en": "Eat fermented foods to boost gut bacteria. Dare: try kimchi or sauerkraut weekly.",
+        "vi": "Ăn thực phẩm lên men để tăng vi khuẩn ruột. Dám: thử kimchi hoặc dưa cải bắp hàng tuần."
+      },
+      "tags": ["gut_brain_axis", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "gut_health_fermented_foods" },
+      "artifact_id": "4b5c6d7e-8f9a-4b4c-9d56-e7f8a9b0c1d2",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_brain_mood_regulation",
+      "title": {
+        "en": "Gut-Brain Mood Regulation",
+        "vi": "Điều chỉnh tâm trạng ruột não"
+      },
+      "copy": {
+        "en": "Support gut health to regulate mood. Dare: avoid sugary foods daily.",
+        "vi": "Hỗ trợ sức khỏe ruột để điều chỉnh tâm trạng. Dám: tránh thực phẩm có đường hàng ngày."
+      },
+      "tags": ["gut_brain_axis", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "gut_brain_mood_regulation" },
+      "artifact_id": "5c6d7e8f-9a0b-4c5d-8e67-f8a9b0c1d2e3",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_health_and_immunity",
+      "title": {
+        "en": "Gut Health and Immunity",
+        "vi": "Sức khỏe ruột và miễn dịch"
+      },
+      "copy": {
+        "en": "Support immune function through gut health practices. Dare: include prebiotics daily.",
+        "vi": "Hỗ trợ chức năng miễn dịch qua thực hành sức khỏe ruột. Dám: bổ sung tiền sinh học hàng ngày."
+      },
+      "tags": ["gut_brain_axis", "prevention"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "gut_health_and_immunity" },
+      "artifact_id": "6d7e8f9a-0b1c-4d6e-9f78-a9b0c1d2e3f4",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_health_and_sleep",
+      "title": {
+        "en": "Gut Health and Sleep",
+        "vi": "Sức khỏe ruột và giấc ngủ"
+      },
+      "copy": {
+        "en": "Support gut health to improve sleep quality. Dare: maintain a gut-friendly diet.",
+        "vi": "Hỗ trợ sức khỏe ruột để cải thiện chất lượng giấc ngủ. Dám: duy trì chế độ ăn thân thiện với ruột."
+      },
+      "tags": ["gut_brain_axis", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nervous_system"],
+      "metadata": { "topic": "gut_health_and_sleep" },
+      "artifact_id": "7e8f9a0b-1c2d-4e7f-8a89-b0c1d2e3f4a5",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_health_and_anxiety",
+      "title": {
+        "en": "Gut Health and Anxiety",
+        "vi": "Sức khỏe ruột và lo âu"
+      },
+      "copy": {
+        "en": "Improve gut health to reduce anxiety symptoms. Dare: try probiotics for a month.",
+        "vi": "Cải thiện sức khỏe ruột để giảm triệu chứng lo âu. Dám: thử men vi sinh trong một tháng."
+      },
+      "tags": ["gut_brain_axis", "mental_health"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "gut_health_and_anxiety" },
+      "artifact_id": "8f9a0b1c-2d3e-4f8a-9b90-c1d2e3f4a5b6",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_health_and_depression",
+      "title": {
+        "en": "Gut Health and Depression",
+        "vi": "Sức khỏe ruột và trầm cảm"
+      },
+      "copy": {
+        "en": "Support gut health to help manage depression. Dare: consult doctor for gut-focused plan.",
+        "vi": "Hỗ trợ sức khỏe ruột để quản lý trầm cảm. Dám: tham khảo bác sĩ về kế hoạch tập trung vào ruột."
+      },
+      "tags": ["gut_brain_axis", "mental_health"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "gut_health_and_depression" },
+      "artifact_id": "9a0b1c2d-3e4f-4a9b-8c01-d2e3f4a5b6c7",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_health_and_exercise",
+      "title": {
+        "en": "Gut Health and Exercise",
+        "vi": "Sức khỏe ruột và tập thể dục"
+      },
+      "copy": {
+        "en": "Exercise regularly to support gut health. Dare: try moderate activity daily.",
+        "vi": "Tập thể dục thường xuyên để hỗ trợ sức khỏe ruột. Dám: thử hoạt động vừa phải hàng ngày."
+      },
+      "tags": ["gut_brain_axis", "prevention"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "gut_health_and_exercise" },
+      "artifact_id": "1c2d3e4f-5a6b-4c1d-8e23-f4a5b6c7d8e9",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_health_and_hydration",
+      "title": {
+        "en": "Gut Health and Hydration",
+        "vi": "Sức khỏe ruột và uống đủ nước"
+      },
+      "copy": {
+        "en": "Stay hydrated to promote gut-brain health. Dare: carry a water bottle daily.",
+        "vi": "Uống đủ nước để thúc đẩy sức khỏe ruột-não. Dám: mang chai nước hàng ngày."
+      },
+      "tags": ["gut_brain_axis", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "gut_health_and_hydration" },
+      "artifact_id": "2d3e4f5a-6b7c-4d2e-9f34-a5b6c7d8e9f0",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_health_and_stress",
+      "title": {
+        "en": "Gut Health and Stress",
+        "vi": "Sức khỏe ruột và căng thẳng"
+      },
+      "copy": {
+        "en": "Reduce stress to support gut-brain axis. Dare: practice mindfulness or deep breathing daily.",
+        "vi": "Giảm căng thẳng để hỗ trợ trục ruột-não. Dám: thực hành chánh niệm hoặc thở sâu hàng ngày."
+      },
+      "tags": ["gut_brain_axis", "stress_management"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nervous_system"],
+      "metadata": { "topic": "gut_health_and_stress" },
+      "artifact_id": "3e4f5a6b-7c8d-4e3f-8a45-b6c7d8e9f0a1",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    },
+    {
+      "slug": "gut_health_and_prevention",
+      "title": {
+        "en": "Gut Health and Prevention",
+        "vi": "Sức khỏe ruột và phòng ngừa"
+      },
+      "copy": {
+        "en": "Maintain gut health to prevent mental and physical issues. Dare: commit to a gut-focused plan.",
+        "vi": "Duy trì sức khỏe ruột để ngăn các vấn đề tinh thần và thể chất. Dám: cam kết với kế hoạch tập trung vào ruột."
+      },
+      "tags": ["gut_brain_axis", "prevention"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["digestive_system"],
+      "metadata": { "topic": "gut_health_and_prevention" },
+      "artifact_id": "4f5a6b7c-8d9e-4f4a-9b56-c7d8e9f0a1b2",
+      "created_at": "2025-10-06T21:52:00+09:00",
+      "updated_at": "2025-10-07T17:57:00+09:00"
+    }
+  ]
+}

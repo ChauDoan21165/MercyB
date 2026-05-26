@@ -1,0 +1,192 @@
+{
+  "id": "personal_safety_self_protection_vip4_bonus",
+  "tier": "vip4",
+  "domain": "LifeSkills",
+  "title": {
+    "en": "Personal Safety & Everyday Self-Protection — VIP4 Bonus",
+    "vi": "An Toàn Cá Nhân & Tự Bảo Vệ Hằng Ngày — Phần Thưởng VIP4"
+  },
+  "content": {
+    "en": "Personal safety is not paranoia—it is awareness, preparation, and calm decision-making. Modern risk rarely comes from dramatic threats. It comes from small oversights: ignoring intuition, trusting too quickly, entering unsafe spaces, or failing to notice shifts in people’s behavior. VIP4 teaches a grounded, realistic approach to self-protection. You learn to read environments before stepping in, identify subtle danger signals, and keep your body language confident but non-confrontational. Self-protection begins with boundaries: saying no to unsafe invitations, leaving when energy feels wrong, and avoiding situations where your attention is compromised. You also study de-escalation: using calm tone, space, and disengagement strategies to prevent conflict from turning physical. This room teaches travel safety, digital safety, nighttime safety, and protective habits that reduce vulnerability without fear. You learn how to secure your belongings, manage alcohol exposure, choose safe routes, and avoid risk patterns like isolation or overtrust. Personal safety also includes social awareness—evaluating intention, noticing inconsistency, and protecting yourself from emotionally manipulative people. When danger appears, you practice clean exits: no arguing, no ego, just leaving. The goal is not to be fearless, but to be prepared. Safety is not one skill—it is a mindset: steady attention, calm presence, and intelligent avoidance. When you master everyday self-protection, you move through the world with confidence instead of fear. You feel safer because you are safer.",
+    "vi": "An toàn cá nhân không phải là hoang tưởng — mà là sự tỉnh táo, sự chuẩn bị và những quyết định bình tĩnh. Rủi ro thời nay hiếm khi đến từ những mối đe dọa kịch tính. Nó đến từ những sơ suất nhỏ: phớt lờ trực giác, tin người quá nhanh, bước vào nơi không an toàn hoặc không để ý những thay đổi trong hành vi của người khác. VIP4 dạy một cách tự bảo vệ thực tế và vững vàng. Bạn học cách đọc môi trường trước khi bước vào, nhận diện những tín hiệu nguy hiểm tinh tế và giữ cho ngôn ngữ cơ thể vừa tự tin vừa không gây hấn. Tự bảo vệ bắt đầu từ ranh giới: nói không với những lời mời không an toàn, rời đi khi bầu không khí thấy không ổn và tránh những tình huống khiến bạn mất tập trung. Bạn cũng học cách hạ nhiệt xung đột: dùng giọng nói bình tĩnh, tạo khoảng cách và những cách rút lui để ngăn xung đột biến thành bạo lực. Phòng này dạy an toàn khi đi lại, an toàn trên không gian số, an toàn về đêm và những thói quen bảo vệ giúp giảm rủi ro mà không gieo nỗi sợ. Bạn học cách giữ gìn đồ đạc cá nhân, kiểm soát việc uống rượu bia, chọn lộ trình an toàn và tránh những kiểu rủi ro như tự tách mình hoặc tin tưởng quá mức. An toàn cá nhân còn bao gồm sự nhạy bén xã hội — đánh giá ý định, để ý sự bất nhất và tự bảo vệ mình trước những người thao túng cảm xúc. Khi nguy hiểm ập đến, bạn luyện cách rút lui gọn gàng: không tranh cãi, không sĩ diện, chỉ việc rời đi. Mục tiêu không phải là không biết sợ mà là luôn sẵn sàng. An toàn không phải một kỹ năng đơn lẻ — mà là một lối tư duy: chú ý đều đặn, hiện diện bình tĩnh và biết tránh né một cách khôn ngoan. Khi làm chủ việc tự bảo vệ hằng ngày, bạn đi qua thế giới bằng sự tự tin thay vì nỗi sợ. Bạn thấy an toàn hơn vì bạn thực sự an toàn hơn."
+  },
+  "entries": [
+    {
+      "slug": "environment-reading",
+      "keywords_en": [
+        "environment reading",
+        "situational awareness",
+        "signals"
+      ],
+      "keywords_vi": [
+        "đọc môi trường",
+        "nhận thức tình huống",
+        "tín hiệu"
+      ],
+      "copy": {
+        "en": "Safety begins before anything happens. Environment reading means scanning space gently: exits, lighting, crowds, intoxication levels, unusual behavior, or energy that feels off. You are not looking for danger—you are looking for clarity. When you understand the space, you move with confidence instead of fear.",
+        "vi": "An toàn bắt đầu từ trước khi có chuyện xảy ra. Đọc môi trường nghĩa là quan sát không gian một cách nhẹ nhàng: lối thoát, ánh sáng, đám đông, mức độ say xỉn, hành vi bất thường hoặc bầu không khí có gì đó không ổn. Bạn không tìm kiếm nguy hiểm — bạn tìm kiếm sự sáng tỏ. Khi hiểu được không gian quanh mình, bạn di chuyển bằng sự tự tin thay vì nỗi sợ."
+      },
+      "tags": [
+        "awareness",
+        "clarity"
+      ],
+      "audio": "vip4_safety_01.mp3"
+    },
+    {
+      "slug": "intuition-trust",
+      "keywords_en": [
+        "intuition",
+        "signals",
+        "self-protection"
+      ],
+      "keywords_vi": [
+        "trực giác",
+        "tín hiệu",
+        "tự bảo vệ"
+      ],
+      "copy": {
+        "en": "Intuition is a survival signal. Your body notices mismatches before your mind does. When something feels wrong—tone, posture, silence, inconsistency—listen. Intuition is not fear; it is pattern recognition. Trusting it reduces risk dramatically. You do not argue with danger—you step away from it.",
+        "vi": "Trực giác là một tín hiệu sinh tồn. Cơ thể bạn nhận ra điều bất ổn trước khi đầu óc kịp phân tích. Khi có gì đó thấy sai sai — giọng nói, tư thế, sự im lặng, sự bất nhất — hãy lắng nghe nó. Trực giác không phải là nỗi sợ; nó là khả năng nhận ra quy luật. Tin vào trực giác giúp giảm rủi ro đáng kể. Bạn không tranh luận với nguy hiểm — bạn tránh xa nó."
+      },
+      "tags": [
+        "signals",
+        "awareness"
+      ],
+      "audio": "vip4_safety_02.mp3"
+    },
+    {
+      "slug": "body-language-safety",
+      "keywords_en": [
+        "body language",
+        "confidence",
+        "non-confrontation"
+      ],
+      "keywords_vi": [
+        "ngôn ngữ cơ thể",
+        "tự tin",
+        "không đối đầu"
+      ],
+      "copy": {
+        "en": "Your body language affects your safety. Confident posture, steady walking pace, and relaxed shoulders reduce your vulnerability. Predators target people who look distracted, timid, or disorganized. You do not need aggression—you need steadiness. The way you carry yourself tells the world how to treat you.",
+        "vi": "Ngôn ngữ cơ thể ảnh hưởng đến sự an toàn của bạn. Tư thế tự tin, nhịp bước ổn định và đôi vai thả lỏng làm bạn ít trở thành mục tiêu hơn. Kẻ xấu thường nhắm vào người trông mất tập trung, rụt rè hoặc lóng ngóng. Bạn không cần phải hung hăng — bạn cần sự vững vàng. Cách bạn thể hiện qua dáng vẻ sẽ cho người khác biết nên đối xử với bạn ra sao."
+      },
+      "tags": [
+        "confidence",
+        "presence"
+      ],
+      "audio": "vip4_safety_03.mp3"
+    },
+    {
+      "slug": "clean-exits",
+      "keywords_en": [
+        "exit",
+        "strategy",
+        "avoidance"
+      ],
+      "keywords_vi": [
+        "thoát sạch",
+        "chiến lược",
+        "tránh né"
+      ],
+      "copy": {
+        "en": "Clean exits prevent escalation. When something feels wrong, you don’t argue, explain, or justify. You simply leave: quietly, calmly, and without drama. Clean exits save your energy and protect you from unnecessary conflict or danger. Leaving early is a strength, not weakness.",
+        "vi": "Rút lui gọn gàng giúp ngăn leo thang. Khi có gì đó thấy không ổn, bạn không tranh cãi, không biện minh hay giải thích. Bạn chỉ đơn giản rời đi: lặng lẽ, bình tĩnh và không làm ầm ĩ. Rút lui gọn gàng giúp tiết kiệm sức lực và bảo vệ bạn khỏi những xung đột hay nguy hiểm không đáng có. Rời đi sớm là sức mạnh, không phải sự yếu đuối."
+      },
+      "tags": [
+        "safety",
+        "wisdom"
+      ],
+      "audio": "vip4_safety_04.mp3"
+    },
+    {
+      "slug": "nighttime-safety",
+      "keywords_en": [
+        "night safety",
+        "routes",
+        "awareness"
+      ],
+      "keywords_vi": [
+        "an toàn ban đêm",
+        "lộ trình",
+        "nhận thức"
+      ],
+      "copy": {
+        "en": "Nighttime amplifies risk. You choose well-lit routes, stay aware of exits, avoid distractions like loud music, and move with purpose. You keep belongings secured and stay near groups when possible. Night safety is not fear—it is smart navigation.",
+        "vi": "Ban đêm làm rủi ro tăng lên. Bạn chọn những lộ trình có đèn sáng, để ý lối thoát, tránh những thứ gây xao nhãng như mở nhạc to và di chuyển một cách có chủ đích. Bạn giữ đồ đạc an toàn và ở gần đám đông khi có thể. An toàn về đêm không phải là sợ hãi — mà là biết di chuyển một cách khôn ngoan."
+      },
+      "tags": [
+        "navigation",
+        "prevention"
+      ],
+      "audio": "vip4_safety_05.mp3"
+    },
+    {
+      "slug": "travel-safety",
+      "keywords_en": [
+        "travel",
+        "precautions",
+        "awareness"
+      ],
+      "keywords_vi": [
+        "du lịch",
+        "phòng ngừa",
+        "nhận thức"
+      ],
+      "copy": {
+        "en": "Travel safety means staying alert in unfamiliar environments: protect documents, avoid displaying valuables, confirm transport routes, and check reviews before booking. You do not rely on luck—you rely on preparation. Safe travel expands your freedom.",
+        "vi": "An toàn khi đi xa nghĩa là luôn cảnh giác ở những nơi xa lạ: giữ kỹ giấy tờ, tránh phô đồ giá trị, xác nhận lộ trình di chuyển và xem đánh giá trước khi đặt chỗ. Bạn không trông chờ vào may mắn — bạn dựa vào sự chuẩn bị. Đi lại an toàn giúp bạn được tự do hơn."
+      },
+      "tags": [
+        "travel",
+        "safety"
+      ],
+      "audio": "vip4_safety_06.mp3"
+    },
+    {
+      "slug": "digital-safety",
+      "keywords_en": [
+        "digital safety",
+        "privacy",
+        "protection"
+      ],
+      "keywords_vi": [
+        "an toàn số",
+        "riêng tư",
+        "bảo vệ"
+      ],
+      "copy": {
+        "en": "Digital safety is modern self-protection. You use strong passwords, avoid suspicious links, limit oversharing, and secure devices with lock screens. You recognize social engineering attempts and verify unknown requests. Your digital habits shape your real-world safety.",
+        "vi": "An toàn trên không gian số là cách tự bảo vệ của thời nay. Bạn dùng mật khẩu mạnh, tránh những đường link đáng ngờ, hạn chế chia sẻ quá nhiều và khóa màn hình thiết bị. Bạn nhận ra các chiêu lừa đảo bằng thao túng tâm lý và kiểm chứng những yêu cầu lạ. Thói quen trên mạng của bạn định hình sự an toàn của bạn ngoài đời thật."
+      },
+      "tags": [
+        "privacy",
+        "protection"
+      ],
+      "audio": "vip4_safety_07.mp3"
+    },
+    {
+      "slug": "self-protection-mindset",
+      "keywords_en": [
+        "mindset",
+        "protection",
+        "confidence"
+      ],
+      "keywords_vi": [
+        "tư duy bảo vệ",
+        "an toàn",
+        "tự tin"
+      ],
+      "copy": {
+        "en": "Self-protection is a mindset. You stay calm, scan lightly, and move with intention. You trust intuition, avoid unnecessary risks, and prioritize your safety without apology. A protective mindset makes you less reactive and more capable. Confidence grows when you know you can protect yourself.",
+        "vi": "Tự bảo vệ là một lối tư duy. Bạn giữ bình tĩnh, quan sát nhẹ nhàng và hành động có chủ đích. Bạn tin vào trực giác, tránh những rủi ro không cần thiết và ưu tiên sự an toàn của mình mà không cần phải áy náy. Lối tư duy bảo vệ giúp bạn bớt phản ứng bốc đồng và làm chủ tình huống tốt hơn. Sự tự tin lớn dần khi bạn biết mình có thể tự bảo vệ bản thân."
+      },
+      "tags": [
+        "mindset",
+        "confidence"
+      ],
+      "audio": "vip4_safety_08.mp3"
+    }
+  ],
+  "domain_image": "/images/domains/lifeskills.svg"
+}

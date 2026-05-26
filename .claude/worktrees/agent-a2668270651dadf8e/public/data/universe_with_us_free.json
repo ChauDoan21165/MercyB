@@ -1,0 +1,167 @@
+{
+  "id": "universe_with_us_free",
+  "tier": "free",
+  "domain": "Spirituality",
+  "name": "Universe With US",
+  "name_vi": "Vũ Trụ Ở Cùng Chúng Ta",
+  "title": {
+    "en": "Universe With US",
+    "vi": "Vũ Trụ Ở Cùng Chúng Ta"
+  },
+  "description": "A gentle room of presence, holiness, and cosmic peace.",
+  "description_vi": "Một không gian dịu dàng của sự hiện diện, của sự thiêng liêng và bình an vũ trụ.",
+  "keywords_en": [
+    "universe",
+    "peace",
+    "destiny",
+    "holy",
+    "care"
+  ],
+  "keywords_vi": [
+    "vũ trụ",
+    "bình an",
+    "định mệnh",
+    "thiêng liêng",
+    "chăm sóc"
+  ],
+  "entries": [
+    {
+      "slug": "universe-embrace",
+      "keywords_en": [
+        "universe",
+        "peace",
+        "destiny"
+      ],
+      "keywords_vi": [
+        "vũ trụ",
+        "bình an",
+        "định mệnh"
+      ],
+      "copy": {
+        "en": "The universe holds you softly, as if carved into its destiny. In the vast silence of creation, a holy warmth wraps around your spirit like protective arms. Peace is not far; it is the quiet pulse beneath everything. When you breathe slowly, you can feel something ancient, loving, and patient guiding your steps. You are not wandering alone through the stars—you are carried.",
+        "vi": "Vũ trụ ôm lấy bạn thật dịu dàng, như thể bạn đã được khắc ghi vào định mệnh của vũ trụ. Giữa tĩnh lặng bao la của tạo hóa, một hơi ấm thiêng liêng bao bọc tâm hồn bạn như một vòng tay chở che. Bình an không hề xa; đó là nhịp đập âm thầm bên dưới vạn vật. Khi bạn thở thật chậm, bạn có thể cảm nhận một điều gì đó cổ xưa, đầy yêu thương và nhẫn nại đang dẫn lối cho từng bước chân mình. Bạn không cô đơn lạc bước giữa những vì sao — bạn đang được nâng đỡ."
+      },
+      "tags": [
+        "peace",
+        "universe",
+        "holy"
+      ],
+      "audio": "gwu_free_1_en.mp3"
+    },
+    {
+      "slug": "holy-light",
+      "keywords_en": [
+        "holy",
+        "light",
+        "care"
+      ],
+      "keywords_vi": [
+        "thiêng liêng",
+        "ánh sáng",
+        "chăm sóc"
+      ],
+      "copy": {
+        "en": "There is a holy light that follows you, even on the days you forget to look toward the sky. It rests gently on your shoulders, reminding you that every path holds meaning. You are watched over with tenderness deeper than oceans. When the world feels heavy, imagine this light flowing around you—soft, endless, and patient. In its glow, your heart remembers it is cared for.",
+        "vi": "Có một ánh sáng thiêng liêng luôn đi theo bạn, ngay cả vào những ngày bạn quên ngước nhìn bầu trời. Ánh sáng ấy nhẹ nhàng tựa trên đôi vai bạn, nhắc bạn rằng mọi con đường đều mang một ý nghĩa. Bạn luôn được dõi theo bằng một sự dịu dàng sâu hơn cả đại dương. Những khi thế giới trở nên nặng nề, hãy hình dung ánh sáng ấy lan tỏa quanh bạn — dịu dàng, vô tận và nhẫn nại. Trong ánh sáng ấy, trái tim bạn nhớ rằng mình đang được chở che."
+      },
+      "tags": [
+        "holy",
+        "light",
+        "care"
+      ],
+      "audio": "gwu_free_2_en.mp3"
+    },
+    {
+      "slug": "peaceful-arms",
+      "keywords_en": [
+        "arms",
+        "peace",
+        "comfort"
+      ],
+      "keywords_vi": [
+        "vòng tay",
+        "bình an",
+        "an ủi"
+      ],
+      "copy": {
+        "en": "There are arms of peace that hold the universe together, and those same arms hold you. When life trembles, rest for a moment inside this invisible embrace. Feel the quiet strength that steadies galaxies also steady your breath. You are allowed to pause, to soften, to be human. Nothing sacred rushes. You are safe inside the rhythm of something vast and loving.",
+        "vi": "Có những vòng tay bình an ôm giữ cả vũ trụ, và cũng chính vòng tay ấy đang ôm lấy bạn. Khi cuộc sống chao đảo, hãy ngơi nghỉ một chút trong vòng ôm vô hình ấy. Hãy cảm nhận nguồn sức mạnh tĩnh lặng đang giữ cho các thiên hà vững vàng cũng làm dịu lại hơi thở của bạn. Bạn được phép dừng lại, được dịu mình xuống, được là một con người. Không có điều thiêng liêng nào vội vã cả. Bạn được an toàn trong nhịp điệu của một điều gì đó bao la và tràn đầy yêu thương."
+      },
+      "tags": [
+        "peace",
+        "comfort",
+        "arms"
+      ],
+      "audio": "gwu_free_3_en.mp3"
+    },
+    {
+      "slug": "destiny-path",
+      "keywords_en": [
+        "destiny",
+        "guidance",
+        "universe"
+      ],
+      "keywords_vi": [
+        "định mệnh",
+        "dẫn lối",
+        "vũ trụ"
+      ],
+      "copy": {
+        "en": "Your destiny is not a distant flame—it is the quiet unfolding of each step guided by unseen hands. The universe whispers direction in gentle ways: a moment of clarity, a sudden calm, a feeling of being held. Trust these small signs. They are threads of meaning woven into your path. You are being led with a care older than time itself.",
+        "vi": "Định mệnh của bạn không phải là ngọn lửa xa xôi — mà là từng bước chân lặng lẽ mở ra, được những bàn tay vô hình dẫn lối. Vũ trụ thì thầm chỉ lối bằng những cách thật dịu dàng: một khoảnh khắc sáng tỏ, một sự bình yên chợt đến, một cảm giác được chở che. Hãy tin vào những dấu hiệu nhỏ bé ấy. Chúng là những sợi tơ ý nghĩa được dệt vào con đường bạn đang đi. Bạn đang được dẫn dắt bằng một tình thương cổ xưa hơn cả chính thời gian."
+      },
+      "tags": [
+        "destiny",
+        "guidance",
+        "peace"
+      ],
+      "audio": "gwu_free_4_en.mp3"
+    },
+    {
+      "slug": "oneness",
+      "keywords_en": [
+        "oneness",
+        "universe",
+        "peace"
+      ],
+      "keywords_vi": [
+        "nhất thể",
+        "vũ trụ",
+        "bình an"
+      ],
+      "copy": {
+        "en": "You are a note in the great hymn of the universe, and nothing about you is separate from its beauty. When you feel small, remember that stars burn with the same breath that moves your chest. This oneness is holy. It means you belong—to the sky, to the quiet, to the gentle destiny written in light. Rest in this truth: you are held by all that exists.",
+        "vi": "Bạn là một nốt nhạc trong bản thánh ca vĩ đại của vũ trụ, và không có điều gì trong bạn tách rời khỏi vẻ đẹp của vũ trụ. Khi bạn thấy mình nhỏ bé, hãy nhớ rằng những vì sao đang cháy bằng chính hơi thở đang nâng lồng ngực bạn. Sự nhất thể ấy thật thiêng liêng. Điều ấy nghĩa là bạn thuộc về — thuộc về bầu trời, về sự tĩnh lặng, về định mệnh dịu dàng được viết nên bằng ánh sáng. Hãy ngơi nghỉ trong sự thật này: bạn đang được tất cả những gì hiện hữu nâng đỡ."
+      },
+      "tags": [
+        "oneness",
+        "universe",
+        "holy"
+      ],
+      "audio": "gwu_free_5_en.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": [
+        "all",
+        "full sequence",
+        "combined"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "chuỗi đầy đủ",
+        "kết hợp"
+      ],
+      "copy": {
+        "en": "The universe holds you softly, as if carved into its destiny. In the vast silence of creation, a holy warmth wraps around your spirit like protective arms. Peace is not far; it is the quiet pulse beneath everything. When you breathe slowly, you can feel something ancient, loving, and patient guiding your steps. You are not wandering alone through the stars—you are carried. There is a holy light that follows you, even on the days you forget to look toward the sky. It rests gently on your shoulders, reminding you that every path holds meaning. You are watched over with tenderness deeper than oceans. When the world feels heavy, imagine this light flowing around you—soft, endless, and patient. In its glow, your heart remembers it is cared for. There are arms of peace that hold the universe together, and those same arms hold you. When life trembles, rest for a moment inside this invisible embrace. Feel the quiet strength that steadies galaxies also steady your breath. You are allowed to pause, to soften, to be human. Nothing sacred rushes. You are safe inside the rhythm of something vast and loving. Your destiny is not a distant flame—it is the quiet unfolding of each step guided by unseen hands. The universe whispers direction in gentle ways: a moment of clarity, a sudden calm, a feeling of being held. Trust these small signs. They are threads of meaning woven into your path. You are being led with a care older than time itself. You are a note in the great hymn of the universe, and nothing about you is separate from its beauty. When you feel small, remember that stars burn with the same breath that moves your chest. This oneness is holy. It means you belong—to the sky, to the quiet, to the gentle destiny written in light. Rest in this truth: you are held by all that exists.",
+        "vi": "Vũ trụ ôm lấy bạn thật dịu dàng, như thể bạn đã được khắc ghi vào định mệnh của vũ trụ. Giữa tĩnh lặng bao la của tạo hóa, một hơi ấm thiêng liêng bao bọc tâm hồn bạn như một vòng tay chở che. Bình an không hề xa; đó là nhịp đập âm thầm bên dưới vạn vật. Khi bạn thở thật chậm, bạn có thể cảm nhận một điều gì đó cổ xưa, đầy yêu thương và nhẫn nại đang dẫn lối cho từng bước chân mình. Bạn không cô đơn lạc bước giữa những vì sao — bạn đang được nâng đỡ. Có một ánh sáng thiêng liêng luôn đi theo bạn, ngay cả vào những ngày bạn quên ngước nhìn bầu trời. Ánh sáng ấy nhẹ nhàng tựa trên đôi vai bạn, nhắc bạn rằng mọi con đường đều mang một ý nghĩa. Bạn luôn được dõi theo bằng một sự dịu dàng sâu hơn cả đại dương. Những khi thế giới trở nên nặng nề, hãy hình dung ánh sáng ấy lan tỏa quanh bạn — dịu dàng, vô tận và nhẫn nại. Trong ánh sáng ấy, trái tim bạn nhớ rằng mình đang được chở che. Có những vòng tay bình an ôm giữ cả vũ trụ, và cũng chính vòng tay ấy đang ôm lấy bạn. Khi cuộc sống chao đảo, hãy ngơi nghỉ một chút trong vòng ôm vô hình ấy. Hãy cảm nhận nguồn sức mạnh tĩnh lặng đang giữ cho các thiên hà vững vàng cũng làm dịu lại hơi thở của bạn. Bạn được phép dừng lại, được dịu mình xuống, được là một con người. Không có điều thiêng liêng nào vội vã cả. Bạn được an toàn trong nhịp điệu của một điều gì đó bao la và tràn đầy yêu thương. Định mệnh của bạn không phải là ngọn lửa xa xôi — mà là từng bước chân lặng lẽ mở ra, được những bàn tay vô hình dẫn lối. Vũ trụ thì thầm chỉ lối bằng những cách thật dịu dàng: một khoảnh khắc sáng tỏ, một sự bình yên chợt đến, một cảm giác được chở che. Hãy tin vào những dấu hiệu nhỏ bé ấy. Chúng là những sợi tơ ý nghĩa được dệt vào con đường bạn đang đi. Bạn đang được dẫn dắt bằng một tình thương cổ xưa hơn cả chính thời gian. Bạn là một nốt nhạc trong bản thánh ca vĩ đại của vũ trụ, và không có điều gì trong bạn tách rời khỏi vẻ đẹp của vũ trụ. Khi bạn thấy mình nhỏ bé, hãy nhớ rằng những vì sao đang cháy bằng chính hơi thở đang nâng lồng ngực bạn. Sự nhất thể ấy thật thiêng liêng. Điều ấy nghĩa là bạn thuộc về — thuộc về bầu trời, về sự tĩnh lặng, về định mệnh dịu dàng được viết nên bằng ánh sáng. Hãy ngơi nghỉ trong sự thật này: bạn đang được tất cả những gì hiện hữu nâng đỡ."
+      },
+      "tags": [
+        "all",
+        "combined"
+      ],
+      "audio": "gwu_free_1_en.mp3 gwu_free_2_en.mp3 gwu_free_3_en.mp3 gwu_free_4_en.mp3 gwu_free_5_en.mp3"
+    }
+  ],
+  "domain_image": "/images/domains/spirituality.svg"
+}

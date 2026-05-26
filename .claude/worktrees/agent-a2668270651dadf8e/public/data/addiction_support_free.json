@@ -1,0 +1,131 @@
+{
+  "id": "addiction_support_free",
+  "tier": "free",
+  "domain": "Mental Health",
+  "name": "Addiction Support",
+  "name_vi": "Hỗ Trợ Cai Nghiện",
+  "description": "Practical guidance for overcoming addiction with emotional and therapeutic support. Start with small, intentional steps and build a strong support network. Discover deeper guidance in higher tiers.",
+  "description_vi": "Hướng dẫn thiết thực giúp bạn vượt qua nghiện ngập, đi cùng là sự đồng hành về mặt cảm xúc và trị liệu. Hãy bắt đầu bằng những bước nhỏ, có chủ đích, rồi từ từ dựng nên một mạng lưới hỗ trợ vững chắc. Bạn sẽ tìm thấy hướng dẫn sâu hơn ở các cấp độ cao hơn.",
+  "keywords_en": [
+    "addiction",
+    "recovery",
+    "healing",
+    "sobriety",
+    "therapy",
+    "support system"
+  ],
+  "keywords_vi": [
+    "nghiện",
+    "phục hồi",
+    "chữa lành",
+    "tỉnh táo",
+    "liệu pháp",
+    "hệ thống hỗ trợ"
+  ],
+  "title": {
+    "en": "Addiction Support",
+    "vi": "Hỗ Trợ Cai Nghiện"
+  },
+  "content": {
+    "en": "Practical guidance for overcoming addiction with emotional and therapeutic support. Start with small, intentional steps and build a strong support network. Discover deeper guidance in higher tiers.",
+    "vi": "Hướng dẫn thiết thực giúp bạn vượt qua nghiện ngập, đi cùng là sự đồng hành về mặt cảm xúc và trị liệu. Hãy bắt đầu bằng những bước nhỏ, có chủ đích, rồi từ từ dựng nên một mạng lưới hỗ trợ vững chắc. Bạn sẽ tìm thấy hướng dẫn sâu hơn ở các cấp độ cao hơn."
+  },
+  "entries": [
+    {
+      "slug": "recovery",
+      "keywords_en": [
+        "recovery",
+        "healing",
+        "sobriety"
+      ],
+      "keywords_vi": [
+        "phục hồi",
+        "chữa lành",
+        "tỉnh táo"
+      ],
+      "copy": {
+        "en": "Addiction recovery starts with small, intentional steps. Acknowledge your challenges without shame and seek professional or peer support. Therapies like CBT help reframe harmful thoughts. Focus on daily progress, celebrating milestones like a sober day. Build a routine to foster hope and resilience in your journey.",
+        "vi": "Việc phục hồi sau nghiện bắt đầu từ những bước nhỏ, có chủ đích. Hãy nhìn nhận khó khăn của mình mà không tự trách, và tìm đến sự hỗ trợ của chuyên gia hoặc của những người cùng cảnh trong nhóm hỗ trợ. Những liệu pháp như CBT giúp bạn nhìn lại và điều chỉnh các suy nghĩ gây hại. Hãy chú ý vào tiến bộ mỗi ngày, ghi nhận từng cột mốc như một ngày tỉnh táo, và dựng cho mình những thói quen tích cực để nuôi hy vọng cũng như sức bền."
+      },
+      "tags": [
+        "recovery",
+        "addiction"
+      ],
+      "audio": "addiction_support_free_recovery.mp3"
+    },
+    {
+      "slug": "therapy",
+      "keywords_en": [
+        "therapy",
+        "CBT",
+        "coping skills"
+      ],
+      "keywords_vi": [
+        "liệu pháp",
+        "CBT",
+        "kỹ năng đối phó"
+      ],
+      "copy": {
+        "en": "Cognitive Behavioral Therapy (CBT) is effective for addiction recovery. It helps identify triggers and develop coping skills to manage cravings. Regular sessions provide a safe space to explore emotions, building a healthier mindset. Practice new habits to replace harmful ones, supporting long-term sobriety.",
+        "vi": "Liệu pháp Nhận thức Hành vi (CBT) có hiệu quả với việc phục hồi sau nghiện. Liệu pháp này giúp bạn nhận ra những yếu tố kích hoạt và rèn kỹ năng ứng phó để làm chủ cơn thèm. Các buổi trị liệu đều đặn mở ra một không gian an toàn để bạn nhìn vào cảm xúc của mình, xây dựng một tư duy lành mạnh hơn và giữ được sự tỉnh táo lâu dài."
+      },
+      "tags": [
+        "therapy",
+        "addiction"
+      ],
+      "audio": "addiction_support_free_therapy.mp3"
+    },
+    {
+      "slug": "support-system",
+      "keywords_en": [
+        "support system",
+        "community",
+        "empathy"
+      ],
+      "keywords_vi": [
+        "hệ thống hỗ trợ",
+        "cộng đồng",
+        "đồng cảm"
+      ],
+      "copy": {
+        "en": "A strong support system is crucial for addiction recovery. Connect with friends, family, or support groups for encouragement. Open communication builds empathy and understanding. Surround yourself with positive influences to stay motivated. Their support fosters resilience, helping you navigate challenges and maintain sobriety.",
+        "vi": "Một mạng lưới hỗ trợ vững chắc có vai trò rất quan trọng khi bạn phục hồi sau nghiện. Hãy kết nối với bạn bè, người thân hoặc nhóm hỗ trợ để có thêm động viên. Khi mọi người trò chuyện cởi mở với nhau, sự đồng cảm và thấu hiểu sẽ lớn dần lên. Hãy đặt mình giữa những ảnh hưởng tích cực để giữ vững động lực; chính sự nâng đỡ ấy giúp bạn vượt qua khó khăn và giữ được sự tỉnh táo."
+      },
+      "tags": [
+        "support",
+        "recovery"
+      ],
+      "audio": "addiction_support_free_support_system.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": [
+        "all",
+        "full sequence",
+        "combined",
+        "complete",
+        "addiction support"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "chuỗi đầy đủ",
+        "kết hợp",
+        "hoàn chỉnh",
+        "hỗ trợ cai nghiện"
+      ],
+      "copy": {
+        "en": "Addiction recovery starts with small, intentional steps... Their support fosters resilience, helping you navigate challenges and maintain sobriety.",
+        "vi": "Việc phục hồi sau nghiện bắt đầu từ những bước nhỏ... Chính sự nâng đỡ ấy giúp bạn vượt qua khó khăn và giữ được sự tỉnh táo."
+      },
+      "tags": [
+        "all",
+        "combined",
+        "full",
+        "complete",
+        "addiction"
+      ],
+      "audio": "addiction_support_free_all.mp3"
+    }
+  ],
+  "domain_image": "/images/domains/mental_health.svg"
+}

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="build-version" content="0.9.23-force-deploy-v2" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover"
+    />
+
+    <title>Mercy Blade: English & Knowledge - Colors of Life</title>
+    <meta
+      name="description"
+      content="Learn English and explore knowledge across colors of life with 48 themed rooms for growth and discovery"
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Warm the Google Fonts connection. The font CSS itself is loaded
+         route-scoped (room + tier-map surfaces only) via
+         src/lib/loadGoogleFont.ts — it is deliberately NOT globally
+         <link>ed here, so the system-font landing path keeps its
+         zero-font-network main paint. These two zero-byte hints just
+         remove the serial DNS + TLS handshake from the font fetch when
+         a font-using route mounts. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Block Chrome auto-translate site-wide. Triggers React reconciliation
+         crashes on Vietnamese-locale Chrome Mobile users when <font>/<b>
+         wrappers desync React's cached DOM positions. App is bilingual VI/EN
+         by design — users don't need browser-level translation.
+         Closes MERCYBLADE-WEB-Y. Related: WEB-G, WEB-K, WEB-V, WEB-H.
+         See reports/a13-web-y-react-crash-diagnosis.md. -->
+    <meta name="google" content="notranslate" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Mercy Blade" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mercyblade.com/" />
+    <meta property="og:title" content="Mercy Blade: English & Knowledge - Colors of Life" />
+    <meta
+      property="og:description"
+      content="Learn English and explore knowledge across colors of life with 48 themed rooms for growth and discovery"
+    />
+    <meta property="og:site_name" content="Mercy Blade" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://mercyblade.com/" />
+    <meta property="twitter:title" content="Mercy Blade: English & Knowledge - Colors of Life" />
+    <meta
+      property="twitter:description"
+      content="Learn English and explore knowledge across colors of life with 48 themed rooms for growth and discovery"
+    />
+
+    <!-- Theme Loader - Prevents flicker during hydration -->
+    <script src="/theme-loader.js"></script>
+
+    <!--
+      Marketing tracking slots (UTM + Facebook Pixel + GA4) are
+      injected programmatically by src/lib/tracking/* at boot, gated
+      on consent + env vars (VITE_FB_PIXEL_ID, VITE_GA4_MEASUREMENT_ID).
+      When env vars are unset (dev / staging) nothing loads here.
+      See reports/a4-tracking-runbook.md for the full pipeline.
+    -->
+    <!-- mb:tracking-slot:fb-pixel -->
+    <!-- mb:tracking-slot:ga4 -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

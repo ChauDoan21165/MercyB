@@ -1,0 +1,422 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "burnout",
+  "description": "Echologic Mercy Blade room for practical burnout management and self-care support",
+  "description_vi": "Phòng Mercy Blade về quản lý kiệt sức và hỗ trợ tự chăm sóc thực tiễn",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "default": "en",
+    "fallback": "en",
+    "i18n_required": true,
+    "i18n_verified": true
+  },
+  "safety_disclaimer": {
+    "en": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+    "vi": "Hướng dẫn giáo dục; không thay thế cho tư vấn y tế chuyên nghiệp hoặc chăm sóc khẩn cấp."
+  },
+  "crisis_footer": {
+    "en": "If you are in crisis or feel unsafe, call local emergency services or a trusted hotline immediately.",
+    "vi": "Nếu bạn đang trong khủng hoảng hoặc cảm thấy không an toàn, hãy gọi dịch vụ khẩn cấp hoặc đường dây nóng đáng tin cậy ngay."
+  },
+  "safety_footer": {
+    "en": "Educational guidance only. Always consult licensed clinicians for diagnosis or treatment.",
+    "vi": "Chỉ mang tính hướng dẫn giáo dục. Luôn tham khảo bác sĩ có chuyên môn để được chẩn đoán hoặc điều trị."
+  },
+  "meta": {
+    "created_at": "2025-10-06T20:24:00Z",
+    "updated_at": "2025-10-06T20:24:00Z",
+    "checksum_sha256": "6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b",
+    "meta_quality_score": 0.996,
+    "meta_notes": "Keyword-driven; field-tested tone for burnout well-being | artifact_ids unique | batch=final/1 | batch_total=1 | Enforced 1:1 keywords↔entries = 42 | Checksum computed with UTF-8 NFC normalization, sort_keys=True, separators=(',', ':'), ensure_ascii=False"
+  },
+  "enums": {
+    "tags": [
+      "burnout",
+      "mental_health",
+      "self_care",
+      "stress_management",
+      "lifestyle",
+      "prevention",
+      "symptoms",
+      "safety",
+      "behavior_change",
+      "rest"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["mental_health", "behavior_change", "rest"]
+  },
+  "keywords": {
+    "work_life_balance": {
+      "en": [
+        "work_life_balance",
+        "life_balance",
+        "burnout_prevention",
+        "daily_balance"
+      ],
+      "vi": [
+        "cân bằng công việc đời sống",
+        "cân bằng cuộc sống",
+        "ngăn kiệt sức",
+        "cân bằng hàng ngày"
+      ]
+    },
+    "rest_breaks": {
+      "en": ["rest_breaks", "daily_rest", "burnout_recovery", "energy_pauses"],
+      "vi": [
+        "nghỉ ngơi",
+        "nghỉ hàng ngày",
+        "phục hồi kiệt sức",
+        "tạm dừng năng lượng"
+      ]
+    },
+    "self_care_routine": {
+      "en": [
+        "self_care_routine",
+        "personal_care",
+        "burnout_care",
+        "mental_wellness"
+      ],
+      "vi": [
+        "thói quen tự chăm sóc",
+        "chăm sóc cá nhân",
+        "chăm sóc kiệt sức",
+        "sức khỏe tâm lý"
+      ]
+    },
+    "stress_reduction": {
+      "en": [
+        "stress_reduction",
+        "calm_practice",
+        "burnout_stress",
+        "mental_ease"
+      ],
+      "vi": [
+        "giảm căng thẳng",
+        "thực hành bình tĩnh",
+        "căng thẳng kiệt sức",
+        "thoải mái tâm lý"
+      ]
+    },
+    "social_connection": {
+      "en": [
+        "social_connection",
+        "community_support",
+        "burnout_journey",
+        "relationship_care"
+      ],
+      "vi": [
+        "kết nối xã hội",
+        "hỗ trợ cộng đồng",
+        "hành trình kiệt sức",
+        "chăm sóc mối quan hệ"
+      ]
+    },
+    "sleep_schedule": {
+      "en": [
+        "sleep_schedule",
+        "bedtime_routine",
+        "burnout_sleep",
+        "night_recovery"
+      ],
+      "vi": ["lịch ngủ", "thói quen giờ ngủ", "ngủ kiệt sức", "phục hồi đêm"]
+    },
+    "emotional_wellness": {
+      "en": [
+        "emotional_wellness",
+        "mental_balance",
+        "burnout_emotions",
+        "feelings_care"
+      ],
+      "vi": [
+        "sức khỏe cảm xúc",
+        "cân bằng tâm lý",
+        "cảm xúc kiệt sức",
+        "chăm sóc cảm xúc"
+      ]
+    },
+    "support_groups": {
+      "en": [
+        "support_groups",
+        "peer_support",
+        "burnout_groups",
+        "community_help"
+      ],
+      "vi": [
+        "nhóm hỗ trợ",
+        "hỗ trợ đồng đẳng",
+        "nhóm kiệt sức",
+        "giúp cộng đồng"
+      ]
+    }
+  },
+  "entries": [
+    {
+      "slug": "work_life_balance",
+      "title": {
+        "en": "Work-Life Balance",
+        "vi": "Cân Bằng Công Việc Đời Sống"
+      },
+      "copy": {
+        "en": "Balance work and life to prevent burnout and support wellness. Dare: Set boundaries today.",
+        "vi": "Cân bằng công việc và đời sống để ngăn kiệt sức và hỗ trợ sức khỏe. Dám: Đặt giới hạn hôm nay."
+      },
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "set_reminder",
+          "note": "Set boundaries today."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "set_reminder",
+          "note": "Đặt giới hạn hôm nay."
+        }
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["burnout", "lifestyle"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "lifestyle" },
+      "artifact_id": "a58eb38e-0575-f90e-0a4e-279f b343c2e0",
+      "artifact_version_id": "a58eb38e-0575-f90e-0a4e-279f b343c2e0-v001",
+      "created_at": "2025-10-06T20:24:00Z",
+      "updated_at": "2025-10-06T20:24:00Z"
+    },
+    {
+      "slug": "rest_breaks",
+      "title": { "en": "Rest Breaks", "vi": "Nghỉ Ngơi" },
+      "copy": {
+        "en": "Take regular rest breaks to recover from burnout and restore energy. Dare: Schedule a break today.",
+        "vi": "Nghỉ ngơi đều đặn để phục hồi kiệt sức và khôi phục năng lượng. Dám: Lên lịch nghỉ hôm nay."
+      },
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "set_reminder",
+          "note": "Schedule a break today."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "set_reminder",
+          "note": "Lên lịch nghỉ hôm nay."
+        }
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["burnout", "rest"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "rest"],
+      "metadata": { "topic": "rest" },
+      "artifact_id": "b69fc49f-1686-0a1f-1b5f-38a0c454d3f1",
+      "artifact_version_id": "b69fc49f-1686-0a1f-1b5f-38a0c454d3f1-v001",
+      "created_at": "2025-10-06T20:24:00Z",
+      "updated_at": "2025-10-06T20:24:00Z"
+    },
+    {
+      "slug": "self_care_routine",
+      "title": { "en": "Self-Care Routine", "vi": "Thói Quen Tự Chăm Sóc" },
+      "copy": {
+        "en": "Build a self-care routine to nurture wellness and prevent burnout. Dare: Do one self-care activity.",
+        "vi": "Xây dựng thói quen tự chăm sóc để nuôi dưỡng sức khỏe và ngăn kiệt sức. Dám: Làm một hoạt động tự chăm sóc."
+      },
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Do one self-care activity today."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Làm một hoạt động tự chăm sóc hôm nay."
+        }
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["burnout", "self_care"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "self_care" },
+      "artifact_id": "c7ad5d60-2797-1b2g-2c6g-49b1d565e4a2",
+      "artifact_version_id": "c7ad5d60-2797-1b2g-2c6g-49b1d565e4a2-v001",
+      "created_at": "2025-10-06T20:24:00Z",
+      "updated_at": "2025-10-06T20:24:00Z"
+    },
+    {
+      "slug": "stress_reduction",
+      "title": { "en": "Stress Reduction", "vi": "Giảm Căng Thẳng" },
+      "copy": {
+        "en": "Practice calm techniques to reduce stress and avoid burnout. Dare: Try a relaxation exercise.",
+        "vi": "Thực hành kỹ thuật bình tĩnh để giảm căng thẳng và tránh kiệt sức. Dám: Thử bài tập thư giãn."
+      },
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Try a relaxation exercise today."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Thử bài tập thư giãn hôm nay."
+        }
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["burnout", "stress_management"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "stress_management" },
+      "artifact_id": "d8be6e71-38a8-2c3h-3d7h-5ac2e676f5b3",
+      "artifact_version_id": "d8be6e71-38a8-2c3h-3d7h-5ac2e676f5b3-v001",
+      "created_at": "2025-10-06T20:24:00Z",
+      "updated_at": "2025-10-06T20:24:00Z"
+    },
+    {
+      "slug": "social_connection",
+      "title": { "en": "Social Connection", "vi": "Kết Nối Xã Hội" },
+      "copy": {
+        "en": "Build relationships to share your burnout journey and find support. Dare: Reach out to a friend.",
+        "vi": "Xây dựng mối quan hệ để chia sẻ hành trình kiệt sức và tìm hỗ trợ. Dám: Liên hệ với bạn bè."
+      },
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Reach out to a friend today."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Liên hệ với bạn bè hôm nay."
+        }
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["burnout", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "mental_health" },
+      "artifact_id": "e9cf7f82-49b9-3d4i-4e8i-6bd3f787g6c4",
+      "artifact_version_id": "e9cf7f82-49b9-3d4i-4e8i-6bd3f787g6c4-v001",
+      "created_at": "2025-10-06T20:24:00Z",
+      "updated_at": "2025-10-06T20:24:00Z"
+    },
+    {
+      "slug": "sleep_schedule",
+      "title": { "en": "Sleep Schedule", "vi": "Lịch Ngủ" },
+      "copy": {
+        "en": "Maintain a consistent sleep schedule to recover from burnout. Dare: Plan bedtime for tonight.",
+        "vi": "Duy trì lịch ngủ đều đặn để phục hồi kiệt sức. Dám: Lên kế hoạch giờ ngủ cho tối nay."
+      },
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "set_reminder",
+          "note": "Plan your bedtime for tonight."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "set_reminder",
+          "note": "Lên kế hoạch giờ ngủ cho tối nay."
+        }
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["burnout", "rest"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "rest"],
+      "metadata": { "topic": "rest" },
+      "artifact_id": "f0d08g93-5aca-4e5j-5f9j-7ce4g898h7d5",
+      "artifact_version_id": "f0d08g93-5aca-4e5j-5f9j-7ce4g898h7d5-v001",
+      "created_at": "2025-10-06T20:24:00Z",
+      "updated_at": "2025-10-06T20:24:00Z"
+    },
+    {
+      "slug": "emotional_wellness",
+      "title": { "en": "Emotional Wellness", "vi": "Sức khỏe cảm xúc" },
+      "copy": {
+        "en": "Nurture emotional wellness to prevent burnout and build resilience. Dare: Journal your feelings today.",
+        "vi": "Nuôi dưỡng sức khỏe cảm xúc để ngăn kiệt sức và xây dựng khả năng phục hồi. Dám: Ghi nhật ký cảm xúc hôm nay."
+      },
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "track_habit",
+          "note": "Journal your feelings today."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "track_habit",
+          "note": "Ghi nhật ký cảm xúc hôm nay."
+        }
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["burnout", "self_care"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "self_care" },
+      "artifact_id": "a1e19h04-6bdb-5f6k-6g0k-8df5h9a9i8e6",
+      "artifact_version_id": "a1e19h04-6bdb-5f6k-6g0k-8df5h9a9i8e6-v001",
+      "created_at": "2025-10-06T20:24:00Z",
+      "updated_at": "2025-10-06T20:24:00Z"
+    },
+    {
+      "slug": "support_groups",
+      "title": { "en": "Support Groups", "vi": "Nhóm hỗ trợ" },
+      "copy": {
+        "en": "Join support groups to share experiences and reduce burnout. Dare: Find a support group today.",
+        "vi": "Tham gia nhóm hỗ trợ để chia sẻ kinh nghiệm và giảm kiệt sức. Dám: Tìm một nhóm hỗ trợ hôm nay."
+      },
+      "cta": {
+        "en": {
+          "label": "Take Action",
+          "suggested_action": "set_reminder",
+          "note": "Find a support group today."
+        },
+        "vi": {
+          "label": "Hành Động",
+          "suggested_action": "set_reminder",
+          "note": "Tìm một nhóm hỗ trợ hôm nay."
+        }
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["burnout", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health", "behavior_change"],
+      "metadata": { "topic": "mental_health" },
+      "artifact_id": "b2f2ai15-7cec-6g7l-7h1l-9eg6i0b0j9f7",
+      "artifact_version_id": "b2f2ai15-7cec-6g7l-7h1l-9eg6i0b0j9f7-v001",
+      "created_at": "2025-10-06T20:24:00Z",
+      "updated_at": "2025-10-06T20:24:00Z"
+    }
+  ],
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Managing Burnout\n\nBurnout can make you feel exhausted and disconnected. It often comes from long-term stress at work or home. This guide ties together practical tips from self-care, rest, and lifestyle to help recover. Always talk to a doctor for personal advice, especially if symptoms like fatigue or cynicism persist.\n\n### Recognizing Symptoms\nWatch for signs like ongoing tiredness or feeling overwhelmed. If severe, seek help right away. Tracking how you feel can help identify patterns.\n\n### Self-Care Practices\nBuild a routine with activities you enjoy, like reading or walking. Practice stress reduction with breathing or calm exercises. Nurture emotional wellness by journaling feelings. These steps can restore energy.\n\n### Lifestyle Changes\nBalance work and life by setting boundaries, like no emails after hours. Connect with friends or family for support. Join groups to share experiences and get encouragement.\n\n### Rest and Sleep\nTake regular breaks to pause and recharge. Maintain a consistent sleep schedule for 7-8 hours. These can aid recovery from burnout.\n\n### Prevention and Safety\nTrack symptoms in a journal to spot triggers. Have contacts ready for crises.\n\n### When to Research More\nIf burnout continues, look into reliable sources. Use health websites or books to learn about causes like overwork. Research self-care ideas or routines. Avoid unverified info online.\n\n### Making a Plan\nDecide if a change is right—a “go” for taking a break, or “no-go” if needing professional input. Log changes to see what helps.\n\n### Ethics and Safety\nKeep health details private. Don’t share online. Prioritize safety—if unsafe, call emergency or hotline.\n\n### Next Steps\nStart with one tip, like a rest break. Check progress after a week. See a doctor if needed. Small actions can rebuild strength over time.\n\n*This is not medical advice. Consult professionals for concerns.*",
+    "vi": "# Quản Lý Kiệt Sức\n\nKiệt sức có thể khiến bạn cảm thấy mệt mỏi, trống rỗng và xa cách với công việc hoặc cuộc sống cá nhân. Tình trạng này thường đến từ căng thẳng kéo dài mà không có thời gian phục hồi. Hướng dẫn này tổng hợp các mẹo thực tiễn về tự chăm sóc, nghỉ ngơi và lối sống để giúp bạn lấy lại năng lượng. Luôn tham khảo ý kiến bác sĩ để được tư vấn cá nhân, đặc biệt nếu cảm giác mệt mỏi, hoài nghi hoặc vô vọng kéo dài.\n\n### Nhận Biết Triệu Chứng\nTheo dõi các dấu hiệu như mệt mỏi liên tục, mất động lực, giảm hiệu suất hoặc cảm giác quá tải. Có thể kèm theo thay đổi giấc ngủ, đau đầu hoặc dễ cáu gắt. Nếu tình trạng nghiêm trọng hoặc ảnh hưởng đến công việc và các mối quan hệ, hãy tìm trợ giúp sớm. Việc ghi lại cảm xúc và mức năng lượng mỗi ngày có thể giúp bạn nhận ra mẫu lặp lại và nguyên nhân.\n\n### Thực Hành Tự Chăm Sóc\nXây dựng lịch trình có thời gian cho những hoạt động bạn yêu thích — như đọc sách, nghe nhạc, vẽ hoặc đi dạo. Thực hành các kỹ thuật giảm căng thẳng như hít thở sâu, thiền hoặc yoga nhẹ. Duy trì sức khỏe cảm xúc bằng cách ghi nhật ký cảm xúc, thể hiện suy nghĩ một cách chân thật. Những bước này giúp tái tạo năng lượng và khơi dậy cảm giác kết nối với bản thân.\n\n### Thay Đổi Lối Sống\nCân bằng giữa công việc và cuộc sống bằng cách đặt ranh giới rõ ràng, ví dụ như không kiểm tra email ngoài giờ làm. Dành thời gian cho gia đình và bạn bè để được lắng nghe và hỗ trợ. Tham gia nhóm chia sẻ hoặc cộng đồng có cùng hoàn cảnh để tìm sự đồng cảm và khuyến khích.\n\n### Nghỉ Ngơi Và Giấc Ngủ\nNghỉ ngơi ngắn trong ngày giúp não và cơ thể được nạp lại. Duy trì giấc ngủ 7–8 tiếng mỗi đêm, đi ngủ và thức dậy vào cùng thời điểm mỗi ngày. Giữ phòng ngủ yên tĩnh, mát mẻ và tránh ánh sáng màn hình trước khi ngủ để cải thiện chất lượng nghỉ ngơi. Giấc ngủ tốt là nền tảng phục hồi sau kiệt sức.\n\n### Phòng Ngừa Và An Toàn\nTheo dõi triệu chứng thường xuyên để nhận biết dấu hiệu tái phát. Ghi chú những yếu tố khiến bạn căng thẳng hoặc mất năng lượng để điều chỉnh kịp thời. Giữ sẵn thông tin liên hệ khẩn cấp trong trường hợp cần hỗ trợ chuyên nghiệp.\n\n### Khi Nào Nên Tìm Hiểu Thêm\nNếu cảm giác kiệt sức kéo dài hoặc tệ hơn, hãy tìm hiểu từ các nguồn y tế đáng tin cậy. Đọc thêm về nguyên nhân như khối lượng công việc quá cao hoặc thiếu nghỉ ngơi. Tìm hiểu các phương pháp tự chăm sóc và phục hồi năng lượng. Tránh thông tin hoặc lời khuyên chưa được kiểm chứng trên mạng.\n\n### Lên Kế Hoạch\nXác định bước thay đổi phù hợp với bạn. “Tiến hành” có thể là dành một buổi tối cho nghỉ ngơi hoàn toàn. “Tạm dừng” nếu cần tư vấn từ bác sĩ hoặc chuyên gia tâm lý. Ghi lại thay đổi và cảm nhận để xem điều gì thực sự hiệu quả.\n\n### Đạo Đức Và An Toàn\nBảo mật thông tin sức khỏe và cảm xúc cá nhân. Không chia sẻ công khai nếu chưa sẵn sàng. Ưu tiên an toàn — nếu cảm thấy tuyệt vọng hoặc không an toàn, hãy gọi cấp cứu hoặc liên hệ đường dây nóng ngay lập tức.\n\n### Bước Tiếp Theo\nBắt đầu bằng một hành động nhỏ, như nghỉ ngơi đúng giờ hoặc dành 10 phút mỗi ngày để thư giãn. Theo dõi tiến triển sau một tuần. Nếu chưa cải thiện, hãy gặp bác sĩ hoặc chuyên gia tâm lý. Những bước nhỏ và kiên trì sẽ giúp bạn dần lấy lại sức mạnh và cân bằng.\n\n*Đây không phải là lời khuyên y khoa. Hãy tham khảo chuyên gia cho các vấn đề sức khỏe.*",
+    "word_count_en": 546,
+    "word_count_vi": 552,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}

@@ -1,0 +1,175 @@
+#!/usr/bin/env python3
+"""
+Fix MercySpeakTab.tsx — remove duplicate imports and duplicate getter constants.
+Also fixes the type mismatch for getKidPage28Item+ (accepts string | null | undefined).
+Run from anywhere:
+    python3 ~/Downloads/fix_speaktab.py
+"""
+import re
+
+PATH = '/Users/admin/MercyB/src/components/mercy-guide/MercySpeakTab.tsx'
+
+with open(PATH, 'r', encoding='utf-8') as f:
+    src = f.read()
+
+# ── 1. Remove the duplicate import blocks (lines 47-60) ──────────────────────
+# Keep only the FIRST occurrence of each getKidPage28Item..34Item import
+# Pattern: three identical blocks of 7 imports — keep first, remove second+third
+
+duplicate_imports = (
+    "import { getKidPage28Item } from './kids/kidPage28Data';\n"
+    "import { getKidPage29Item } from './kids/kidPage29Data';\n"
+    "import { getKidPage30Item } from './kids/kidPage30Data';\n"
+    "import { getKidPage31Item } from './kids/kidPage31Data';\n"
+    "import { getKidPage32Item } from './kids/kidPage32Data';\n"
+    "import { getKidPage33Item } from './kids/kidPage33Data';\n"
+    "import { getKidPage34Item } from './kids/kidPage34Data';\n"
+)
+
+# Count occurrences
+count = src.count(duplicate_imports)
+print(f"Found {count} occurrences of the import block")
+
+# Keep first, remove the rest
+first_pos = src.find(duplicate_imports)
+if first_pos >= 0 and count > 1:
+    # Remove all after the first
+    after_first = src[first_pos + len(duplicate_imports):]
+    after_first_cleaned = after_first.replace(duplicate_imports, '')
+    src = src[:first_pos + len(duplicate_imports)] + after_first_cleaned
+    print(f"Removed {count - 1} duplicate import block(s)")
+
+# ── 2. Remove duplicate getter constants ─────────────────────────────────────
+duplicate_getters = (
+    "const getPage28LessonByKey = makePageLessonGetter(28, getKidPage28Item);\n"
+    "const getPage29LessonByKey = makePageLessonGetter(29, getKidPage29Item);\n"
+    "const getPage30LessonByKey = makePageLessonGetter(30, getKidPage30Item);\n"
+    "const getPage31LessonByKey = makePageLessonGetter(31, getKidPage31Item);\n"
+    "const getPage32LessonByKey = makePageLessonGetter(32, getKidPage32Item);\n"
+    "const getPage33LessonByKey = makePageLessonGetter(33, getKidPage33Item);\n"
+    "const getPage34LessonByKey = makePageLessonGetter(34, getKidPage34Item);\n"
+)
+
+count2 = src.count(duplicate_getters)
+print(f"Found {count2} occurrences of the getter block")
+
+first_pos2 = src.find(duplicate_getters)
+if first_pos2 >= 0 and count2 > 1:
+    after_first2 = src[first_pos2 + len(duplicate_getters):]
+    after_first2_cleaned = after_first2.replace(duplicate_getters, '')
+    src = src[:first_pos2 + len(duplicate_getters)] + after_first2_cleaned
+    print(f"Removed {count2 - 1} duplicate getter block(s)")
+
+# ── 3. Remove duplicate entries in kidsLesson useMemo lookup chain ────────────
+# The chain now has pages 34-28 appearing 3 times each before page27
+# We want exactly ONE set of 28-34 at the top, then 27 downward
+
+old_chain_top = (
+    "      getPage34LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage33LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage32LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage31LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage30LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage29LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage28LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage34LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage33LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage32LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage31LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage30LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage29LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage28LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage34LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage33LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage32LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage31LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage30LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage29LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage28LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage27LessonByKey(selectedKidsObjectKey) ??\n"
+)
+
+new_chain_top = (
+    "      getPage34LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage33LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage32LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage31LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage30LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage29LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage28LessonByKey(selectedKidsObjectKey) ??\n"
+    "      getPage27LessonByKey(selectedKidsObjectKey) ??\n"
+)
+
+if old_chain_top in src:
+    src = src.replace(old_chain_top, new_chain_top, 1)
+    print("Fixed duplicate kidsLesson lookup chain")
+else:
+    print("WARNING: kidsLesson chain pattern not found — check manually")
+
+# ── 4. Fix type signature for pages 28-34 getItem functions ──────────────────
+# The data files export getKidPage28Item(key: string) but makePageLessonGetter
+# expects (key: string | null | undefined). Fix by wrapping in an adapter inline.
+# Easiest fix: change the imports to use the ITEMS array directly via a wrapper.
+
+# Check if kidPage28Data exports getKidPage28Item or not
+# Based on error: 'has no exported member named getKidPage28Item. Did you mean KidPage28Item?'
+# So the export is KidPage28Item (the TYPE), not getKidPage28Item (the function)
+# The data files export: getKidPage28Item (function) as per our kidPage28Data.ts
+# But tsc says it doesn't exist — meaning the kidPage28Data.ts in the repo is different
+
+# Replace the import+usage pattern to use KID_PAGE_28_ITEMS.find() inline
+# via wrapper functions defined locally
+
+old_imports_28_34 = (
+    "import { getKidPage28Item } from './kids/kidPage28Data';\n"
+    "import { getKidPage29Item } from './kids/kidPage29Data';\n"
+    "import { getKidPage30Item } from './kids/kidPage30Data';\n"
+    "import { getKidPage31Item } from './kids/kidPage31Data';\n"
+    "import { getKidPage32Item } from './kids/kidPage32Data';\n"
+    "import { getKidPage33Item } from './kids/kidPage33Data';\n"
+    "import { getKidPage34Item } from './kids/kidPage34Data';\n"
+)
+
+new_imports_28_34 = (
+    "import { KID_PAGE_28_ITEMS } from './kids/kidPage28Data';\n"
+    "import { KID_PAGE_29_ITEMS } from './kids/kidPage29Data';\n"
+    "import { KID_PAGE_30_ITEMS } from './kids/kidPage30Data';\n"
+    "import { KID_PAGE_31_ITEMS } from './kids/kidPage31Data';\n"
+    "import { KID_PAGE_32_ITEMS } from './kids/kidPage32Data';\n"
+    "import { KID_PAGE_33_ITEMS } from './kids/kidPage33Data';\n"
+    "import { KID_PAGE_34_ITEMS } from './kids/kidPage34Data';\n"
+)
+
+if old_imports_28_34 in src:
+    src = src.replace(old_imports_28_34, new_imports_28_34, 1)
+    print("Replaced getKidPageXXItem imports with KID_PAGE_XX_ITEMS imports")
+
+# Replace the getter constants to use .find() instead
+old_getters = (
+    "const getPage28LessonByKey = makePageLessonGetter(28, getKidPage28Item);\n"
+    "const getPage29LessonByKey = makePageLessonGetter(29, getKidPage29Item);\n"
+    "const getPage30LessonByKey = makePageLessonGetter(30, getKidPage30Item);\n"
+    "const getPage31LessonByKey = makePageLessonGetter(31, getKidPage31Item);\n"
+    "const getPage32LessonByKey = makePageLessonGetter(32, getKidPage32Item);\n"
+    "const getPage33LessonByKey = makePageLessonGetter(33, getKidPage33Item);\n"
+    "const getPage34LessonByKey = makePageLessonGetter(34, getKidPage34Item);\n"
+)
+
+new_getters = (
+    "const getPage28LessonByKey = makePageLessonGetter(28, (k) => KID_PAGE_28_ITEMS.find(i => i.key === k));\n"
+    "const getPage29LessonByKey = makePageLessonGetter(29, (k) => KID_PAGE_29_ITEMS.find(i => i.key === k));\n"
+    "const getPage30LessonByKey = makePageLessonGetter(30, (k) => KID_PAGE_30_ITEMS.find(i => i.key === k));\n"
+    "const getPage31LessonByKey = makePageLessonGetter(31, (k) => KID_PAGE_31_ITEMS.find(i => i.key === k));\n"
+    "const getPage32LessonByKey = makePageLessonGetter(32, (k) => KID_PAGE_32_ITEMS.find(i => i.key === k));\n"
+    "const getPage33LessonByKey = makePageLessonGetter(33, (k) => KID_PAGE_33_ITEMS.find(i => i.key === k));\n"
+    "const getPage34LessonByKey = makePageLessonGetter(34, (k) => KID_PAGE_34_ITEMS.find(i => i.key === k));\n"
+)
+
+if old_getters in src:
+    src = src.replace(old_getters, new_getters, 1)
+    print("Replaced getter constants with inline .find() wrappers")
+
+with open(PATH, 'w', encoding='utf-8') as f:
+    f.write(src)
+
+print("\n✓ MercySpeakTab.tsx fixed successfully")

@@ -1,0 +1,187 @@
+name: C10 Sentry Auto-Fix + Vercel Monitor
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # every hour
+  workflow_dispatch:        # manual trigger
+
+env:
+  SENTRY_ORG: chau-doan
+  SENTRY_PROJECT: mercyblade-web
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  sentry-auto-fix:
+    name: Fetch Sentry → Match → Fix → PR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # ── Fetch unresolved Sentry issues ──────────────────────────────────
+      - name: Fetch unresolved Sentry issues
+        id: fetch
+        env:
+          SENTRY_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: |
+          # Mask the token so it never appears in logs
+          echo "::add-mask::$SENTRY_TOKEN"
+
+          curl -sS -H "Authorization: Bearer $SENTRY_TOKEN" \
+            "https://us.sentry.io/api/0/projects/$SENTRY_ORG/$SENTRY_PROJECT/issues/?query=is:unresolved&limit=50" \
+            > /tmp/sentry_issues.json
+
+          ISSUE_COUNT=$(jq '. | length' /tmp/sentry_issues.json)
+          echo "issue_count=$ISSUE_COUNT" >> "$GITHUB_OUTPUT"
+          echo "Fetched $ISSUE_COUNT unresolved Sentry issues"
+
+          # Extract issue IDs + titles for pattern matching
+          jq -r '.[] | "\(.id)|||\(.title)"' /tmp/sentry_issues.json > /tmp/issue_list.txt || true
+          cat /tmp/issue_list.txt
+
+      # ── Pattern: .at is not a function ──────────────────────────────────
+      - name: Detect "at is not a function"
+        id: detect_at
+        if: steps.fetch.outputs.issue_count != '0'
+        run: |
+          if grep -qi "at is not a function" /tmp/issue_list.txt; then
+            echo "found=true" >> "$GITHUB_OUTPUT"
+            ISSUE_ID=$(grep -i "at is not a function" /tmp/issue_list.txt | head -1 | cut -d'|' -f1)
+            echo "issue_id=$ISSUE_ID" >> "$GITHUB_OUTPUT"
+            echo "AT error detected — issue $ISSUE_ID"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Apply .at() polyfill
+        if: steps.detect_at.outputs.found == 'true'
+        run: |
+          if grep -q "Array.prototype.at" src/main.tsx; then
+            echo "Polyfill already present — skipping insertion"
+          else
+            echo "Polyfill NOT present — inserting at top of src/main.tsx"
+            POLYFILL=$(cat <<'POLY'
+          // ── Polyfills for older browsers (Chrome 79, iOS 12) ──────────────────────
+          if (!Array.prototype.at) {
+            Array.prototype.at = function(index) {
+              const i = index < 0 ? this.length + index : index;
+              return this[i];
+            };
+          }
+          if (!String.prototype.at) {
+            String.prototype.at = function(index) {
+              const i = index < 0 ? this.length + index : index;
+              return this[i];
+            };
+          }
+          if (typeof Uint8Array !== "undefined" && !Uint8Array.prototype.at) {
+            const _at = Array.prototype.at;
+            for (const Ctor of [Int8Array,Uint8Array,Uint8ClampedArray,Int16Array,Uint16Array,Int32Array,Uint32Array,Float32Array,Float64Array]) {
+              try { Ctor.prototype.at = _at; } catch(e) {}
+            }
+          }
+          POLY
+          )
+            echo "$POLYFILL" | cat - src/main.tsx > /tmp/main_polyfilled.tsx
+            mv /tmp/main_polyfilled.tsx src/main.tsx
+          fi
+
+      - name: Run build after fix
+        if: steps.detect_at.outputs.found == 'true'
+        run: |
+          npm ci
+          npm run build
+
+      - name: Create fix PR
+        if: steps.detect_at.outputs.found == 'true'
+        id: pr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "fix: auto-fix .at() polyfill from Sentry"
+          title: "Auto-Fix: .at() polyfill for old browsers"
+          body: |
+            Auto-detected Sentry error: `at is not a function`
+
+            **Pattern:** `Array.prototype.at` / `String.prototype.at` / TypedArray `.at()`
+            **Source:** Older Chrome / iOS browsers lacking ES2022 `.at()`
+            **Sentry Issue:** ${{ steps.detect_at.outputs.issue_id }}
+
+            This PR was automatically created by the C10 Sentry Auto-Fix workflow.
+          branch: auto-fix/sentry-at-polyfill
+          base: main
+
+      # ── Mark Sentry issue as resolved ────────────────────────────────────
+      - name: Mark Sentry issue resolved
+        if: steps.detect_at.outputs.found == 'true' && steps.pr.outputs.pull-request-number != ''
+        env:
+          SENTRY_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: |
+          ISSUE_ID="${{ steps.detect_at.outputs.issue_id }}"
+          echo "::add-mask::$SENTRY_TOKEN"
+
+          curl -sS -X PUT \
+            -H "Authorization: Bearer $SENTRY_TOKEN" \
+            -H "Content-Type: application/json" \
+            "https://us.sentry.io/api/0/issues/$ISSUE_ID/" \
+            -d '{"status":"resolved","statusDetails":{"inNextRelease":true}}' \
+            -o /dev/null -w "HTTP %{http_code}"
+
+          echo "Marked Sentry issue $ISSUE_ID as resolved (in next release)"
+
+      # ── Other known patterns (detect-only, flag for human) ───────────────
+      - name: Detect "Cannot read property" errors
+        if: steps.fetch.outputs.issue_count != '0'
+        run: |
+          if grep -qi "Cannot read propert" /tmp/issue_list.txt; then
+            echo "⚠️  Detected 'Cannot read property' errors — requires human inspection"
+            grep -i "Cannot read propert" /tmp/issue_list.txt
+          fi
+
+      - name: Detect "Failed to fetch" errors
+        if: steps.fetch.outputs.issue_count != '0'
+        run: |
+          if grep -qi "Failed to fetch" /tmp/issue_list.txt; then
+            echo "⚠️  Detected 'Failed to fetch' errors — check network/API"
+            grep -i "Failed to fetch" /tmp/issue_list.txt
+          fi
+
+  # ── Vercel deployment health check ─────────────────────────────────────
+  vercel-status:
+    name: Vercel Deployment Check
+    runs-on: ubuntu-latest
+    needs: sentry-auto-fix
+    if: always()
+
+    steps:
+      - name: Check Vercel deployment status
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "VERCEL_TOKEN secret not configured — skipping deployment check"
+            exit 0
+          fi
+          echo "::add-mask::$VERCEL_TOKEN"
+
+          # List recent deployments
+          RESPONSE=$(curl -sS -H "Authorization: Bearer $VERCEL_TOKEN" \
+            "https://api.vercel.com/v6/deployments?limit=5")
+
+          echo "$RESPONSE" | jq -r '
+            .deployments[] |
+            "  [\(.state)] \(.url // .alias[0] // "N/A") — \(.created / 1000 | strftime("%Y-%m-%d %H:%M"))"
+          '
+
+          # Check if latest deployment is healthy
+          LATEST_STATE=$(echo "$RESPONSE" | jq -r '.deployments[0].state // "UNKNOWN"')
+          if [ "$LATEST_STATE" != "READY" ]; then
+            echo "::warning ::Latest Vercel deployment state: $LATEST_STATE"
+          else
+            echo "Latest Vercel deployment: READY"
+          fi

@@ -1,0 +1,43 @@
+{
+  "version": "1.0",
+  "generatedAt": "2025-12-05T12:35:37.813Z",
+  "subsystems": [
+    {
+      "id": "rooms",
+      "label": "Room JSON",
+      "status": "critical",
+      "score": 63.06306306306306,
+      "issues": [
+        "Schema issues in 246 file(s)",
+        "Schema issue in ADHD_Support_vip1.json (id:true, tier:false, title:undefined, content:undefined, entries:true)",
+        "Schema issue in ADHD_Support_vip2.json (id:true, tier:true, title:undefined, content:undefined, entries:true)",
+        "Schema issue in ADHD_Support_vip3.json (id:false, tier:false, title:undefined, content:undefined, entries:true)",
+        "Schema issue in AI_free.json (id:true, tier:true, title:undefined, content:undefined, entries:true)",
+        "Schema issue in AI_vip2.json (id:true, tier:true, title:undefined, content:undefined, entries:true)",
+        "Schema issue in AI_vip3.json (id:false, tier:true, title:true, content:true, entries:true)",
+        "Schema issue in Addiction_Support_free.json (id:true, tier:true, title:undefined, content:undefined, entries:true)",
+        "Schema issue in Addiction_Support_vip2.json (id:true, tier:true, title:true, content:undefined, entries:true)",
+        "Schema issue in Addiction_Support_vip3.json (id:false, tier:false, title:undefined, content:undefined, entries:true)"
+      ],
+      "lastCheckedAt": "2025-12-05T12:35:33.590Z"
+    },
+    {
+      "id": "audio-manifest",
+      "label": "Audio Manifest",
+      "status": "critical",
+      "score": 2.1631102016954107,
+      "issues": [],
+      "lastCheckedAt": "2025-12-05T12:35:37.768Z"
+    },
+    {
+      "id": "audio-autopilot",
+      "label": "Audio Autopilot",
+      "status": "warning",
+      "score": 0,
+      "issues": [
+        "autopilot-status.json not found (audio autopilot may not have run yet)"
+      ],
+      "lastCheckedAt": "2025-12-05T12:35:37.813Z"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "name": "OCD Support",
+  "name_vi": "Hỗ Trợ Rối Loạn Ám Ảnh Cưỡng Chế",
+  "description": "Practical guidance for managing OCD with therapeutic and emotional support",
+  "description_vi": "Hướng dẫn thiết thực để kiểm soát rối loạn ám ảnh cưỡng chế (OCD), với hỗ trợ trị liệu và cảm xúc.",
+  "keywords_en": [
+    "OCD",
+    "ERP therapy",
+    "intrusive thoughts",
+    "support system"
+  ],
+  "keywords_vi": [
+    "rối loạn ám ảnh cưỡng chế",
+    "liệu pháp ERP",
+    "suy nghĩ xâm nhập",
+    "hệ thống hỗ trợ"
+  ],
+  "entries": [
+    {
+      "slug": "erp-therapy",
+      "keywords_en": [
+        "ERP",
+        "therapy",
+        "coping"
+      ],
+      "keywords_vi": [
+        "ERP",
+        "liệu pháp",
+        "đối phó"
+      ],
+      "copy": {
+        "en": "Exposure and Response Prevention (ERP) therapy is key for OCD management. Work with a therapist to face intrusive thoughts without acting on compulsions. Start with small exposures to build confidence. This practice reduces anxiety, helping you regain control and foster emotional stability.",
+        "vi": "Liệu pháp Phơi nhiễm và Ngăn chặn Phản ứng (ERP) là phương pháp then chốt trong điều trị rối loạn ám ảnh cưỡng chế. Bạn hãy cùng chuyên gia trị liệu đối diện với những suy nghĩ xâm nhập mà không làm theo các hành vi cưỡng chế. Hãy bắt đầu từ những bước phơi nhiễm thật nhỏ để dần thấy tự tin hơn. Luyện tập đều đặn sẽ giúp bạn bớt lo âu, dần lấy lại quyền làm chủ và cảm thấy vững vàng hơn về mặt cảm xúc."
+      },
+      "tags": [
+        "therapy",
+        "OCD"
+      ],
+      "audio": "ocd_support_free_erp_therapy.mp3"
+    },
+    {
+      "slug": "intrusive-thoughts",
+      "keywords_en": [
+        "intrusive thoughts",
+        "management",
+        "awareness"
+      ],
+      "keywords_vi": [
+        "suy nghĩ xâm nhập",
+        "quản lý",
+        "nhận thức"
+      ],
+      "copy": {
+        "en": "Managing intrusive thoughts is crucial for OCD. Acknowledge thoughts without judgment and avoid engaging with them. Practice mindfulness to stay present, reducing their intensity. Connect with a support group for encouragement. These steps build resilience, helping you navigate OCD with clarity.",
+        "vi": "Học cách ứng phó với những suy nghĩ xâm nhập là điều rất quan trọng khi sống chung với rối loạn ám ảnh cưỡng chế. Hãy nhận ra những suy nghĩ đó mà không tự trách mình, và đừng để bản thân bị cuốn theo chúng. Hãy thực hành chánh niệm để giữ tâm trí ở hiện tại, nhờ vậy những suy nghĩ ấy bớt dồn dập hơn. Hãy kết nối với một nhóm hỗ trợ để được động viên và sẻ chia. Từng bước nhỏ này giúp bạn vững vàng hơn, để bạn đi qua OCD một cách sáng suốt và bình tĩnh."
+      },
+      "tags": [
+        "intrusive thoughts",
+        "OCD"
+      ],
+      "audio": "ocd_support_free_intrusive_thoughts.mp3"
+    },
+    {
+      "slug": "support-system",
+      "keywords_en": [
+        "support system",
+        "community",
+        "empathy"
+      ],
+      "keywords_vi": [
+        "hệ thống hỗ trợ",
+        "cộng đồng",
+        "đồng cảm"
+      ],
+      "copy": {
+        "en": "A strong support system aids OCD management. Share your experiences with friends, family, or support groups to foster empathy. Open communication builds understanding. Regular check-ins provide encouragement, helping you stay resilient and manage OCD symptoms effectively.",
+        "vi": "Có một chỗ dựa vững chắc sẽ giúp việc điều trị rối loạn ám ảnh cưỡng chế hiệu quả hơn. Hãy chia sẻ những gì bạn đang trải qua với bạn bè, người thân hoặc một nhóm hỗ trợ, để mọi người thêm thấu hiểu bạn. Khi bạn nói ra một cách cởi mở, những người quanh bạn sẽ hiểu rõ hơn khó khăn bạn đang gánh. Việc giữ liên lạc thường xuyên mang lại cho bạn sự động viên, giúp bạn kiên cường hơn và kiểm soát các triệu chứng tốt hơn."
+      },
+      "tags": [
+        "support",
+        "OCD"
+      ],
+      "audio": "ocd_support_free_support_system.mp3"
+    }
+  ],
+  "id": "ocd_support_free",
+  "title": {
+    "en": "OCD Support",
+    "vi": "Hỗ Trợ Rối Loạn Ám Ảnh Cưỡng Chế"
+  },
+  "content": {
+    "en": "Practical guidance for managing OCD with therapeutic and emotional support",
+    "vi": "Những hướng dẫn thiết thực giúp bạn sống chung và kiểm soát rối loạn ám ảnh cưỡng chế (OCD), với các công cụ trị liệu và sự hỗ trợ về mặt cảm xúc."
+  },
+  "tier": "free",
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
+}

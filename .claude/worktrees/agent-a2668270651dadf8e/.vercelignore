@@ -1,0 +1,14 @@
+# deps / Vercel
+node_modules
+.vercel
+.git
+
+# huge build outputs (must ignore)
+dist
+build
+out
+coverage
+.vite
+
+# misc
+.DS_Store

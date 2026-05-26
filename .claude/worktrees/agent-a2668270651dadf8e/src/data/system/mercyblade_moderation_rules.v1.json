@@ -1,0 +1,462 @@
+{
+  "artifact_id": "7c08bd5a-9677-48b9-8bef-10709009a441",
+  "artifact_version_id": "7c08bd5a-9677-48b9-8bef-10709009a441-v001",
+  "description": "Mercy Blade multilingual moderation rules (EN/VI) with obfuscation handling, context gates, and escalation policy.",
+  "policy": {
+    "severity_levels": {
+      "1": "mild profanity / coarse language",
+      "2": "direct insult / harassment",
+      "3": "sexual explicitness / graphic profanity",
+      "4": "violent threats / targeted harassment",
+      "5": "hate slurs / sexual violence / child exploitation"
+    },
+    "actions": [
+      {
+        "score_gte": 1,
+        "window_hours": 24,
+        "action": "warn",
+        "message_en": "⚠️ Language not allowed in Mercy Blade. Please be respectful.",
+        "message_vi": "⚠️ Ngôn từ này không được phép trên Mercy Blade. Vui lòng dùng lời lẽ lịch sự."
+      },
+      {
+        "score_gte": 2,
+        "window_hours": 24,
+        "action": "temp_mute_24h",
+        "message_en": "🚫 Second violation in 24h. You are muted for 24 hours.",
+        "message_vi": "🚫 Vi phạm lần 2 trong 24 giờ. Tài khoản của bạn bị tắt tiếng 24 giờ."
+      },
+      {
+        "score_gte": 3,
+        "window_hours": 24,
+        "action": "suspend_review",
+        "message_en": "⛔ Multiple or severe violations. Account suspended pending review.",
+        "message_vi": "⛔ Vi phạm nhiều lần hoặc nghiêm trọng. Tài khoản bị tạm khóa để xem xét."
+      }
+    ],
+    "scoring": {
+      "severity1": 1,
+      "severity2": 1,
+      "severity3": 2,
+      "severity4": 2,
+      "severity5": 3
+    },
+    "reset_after_days": 30
+  },
+  "normalization_pipeline": [
+    "unicode_nfkc",
+    "lowercase",
+    "strip_zero_width",
+    "remove_urls",
+    "remove_emails",
+    "remove_accents",
+    "map_leetspeak",
+    "collapse_repeats",
+    "collapse_whitespace"
+  ],
+  "context_gates": {
+    "allow_if_medical_en": [
+      {
+        "regex": "sexual (health|education)",
+        "window_tokens": 8
+      },
+      {
+        "regex": "breastfeeding|lactation",
+        "window_tokens": 8
+      },
+      {
+        "regex": "prostate exam|gynecology|urology",
+        "window_tokens": 10
+      }
+    ],
+    "allow_if_medical_vi": [
+      {
+        "regex": "sức khoẻ sinh sản|giáo dục giới tính|tư vấn tình dục",
+        "window_tokens": 10
+      },
+      {
+        "regex": "khám tuyến tiền liệt|phụ khoa|tiết niệu",
+        "window_tokens": 10
+      }
+    ]
+  },
+  "rules": [
+    {
+      "id": "en_prof_1",
+      "lang": "en",
+      "category": "profanity",
+      "severity": 1,
+      "patterns": [
+        "\\bass(es)?\\b",
+        "\\b(crap|shit+)\\b",
+        "\\b(hell|damn)\\b"
+      ],
+      "examples": {
+        "flag": [
+          "what the hell",
+          "this is crap"
+        ],
+        "allow": [
+          "class",
+          "passage"
+        ]
+      }
+    },
+    {
+      "id": "en_prof_2",
+      "lang": "en",
+      "category": "profanity",
+      "severity": 2,
+      "patterns": [
+        "\\b(bitch(es)?|bastard(s)?)\\b",
+        "\\b(dick|prick)\\b"
+      ],
+      "examples": {
+        "flag": [
+          "you bastard",
+          "stop being a bitch"
+        ],
+        "allow": [
+          "bastard file (false positive)"
+        ]
+      }
+    },
+    {
+      "id": "en_prof_3",
+      "lang": "en",
+      "category": "profanity",
+      "severity": 3,
+      "patterns": [
+        "\\bfuck(ing|er|s)?\\b",
+        "\\bmotherfucker(s)?\\b",
+        "\\bcunt(s)?\\b"
+      ],
+      "examples": {
+        "flag": [
+          "f*** you",
+          "motherfucker"
+        ],
+        "allow": [
+          "fuchsia (should not hit)"
+        ]
+      }
+    },
+    {
+      "id": "en_harass_1",
+      "lang": "en",
+      "category": "harassment",
+      "severity": 2,
+      "patterns": [
+        "\\b(stupid|idiot|moron|retard)\\b",
+        "\\b(loser|worthless)\\b"
+      ],
+      "examples": {
+        "flag": [
+          "you are stupid"
+        ],
+        "allow": [
+          "stupendous (not)"
+        ]
+      }
+    },
+    {
+      "id": "en_threat_1",
+      "lang": "en",
+      "category": "violence_threat",
+      "severity": 4,
+      "patterns": [
+        "\\b(kill|stab|shoot|hang|lynch)\\b.+\\byou\\b",
+        "\\b(go|drop) die\\b",
+        "\\bkys\\b"
+      ],
+      "examples": {
+        "flag": [
+          "i will kill you"
+        ],
+        "allow": [
+          "kill process (context whitelist could exempt)"
+        ]
+      }
+    },
+    {
+      "id": "en_hate_1",
+      "lang": "en",
+      "category": "hate_slur",
+      "severity": 5,
+      "patterns": [
+        "\\b(nigger|nigga|kike|chink|spic)\\b"
+      ],
+      "examples": {
+        "flag": [
+          "you kike"
+        ],
+        "allow": [
+          "—"
+        ]
+      }
+    },
+    {
+      "id": "en_sex_1",
+      "lang": "en",
+      "category": "sexual_explicit",
+      "severity": 3,
+      "patterns": [
+        "\\b(pussy|cock|dick|cum|handjob|blowjob|anal|dildo|porn(o)?)\\b"
+      ],
+      "context_allow": [
+        "allow_if_medical_en"
+      ],
+      "examples": {
+        "flag": [
+          "send porn"
+        ],
+        "allow": [
+          "sexual health education"
+        ]
+      }
+    },
+    {
+      "id": "en_sex_2",
+      "lang": "en",
+      "category": "sexual_violence",
+      "severity": 5,
+      "patterns": [
+        "\\brape\\b|\\bmolest\\b|\\bincest\\b|\\bpedophile\\b"
+      ],
+      "examples": {
+        "flag": [
+          "i will rape you"
+        ],
+        "allow": [
+          "—"
+        ]
+      }
+    },
+    {
+      "id": "en_obfus_1",
+      "lang": "en",
+      "category": "profanity_obfuscated",
+      "severity": 3,
+      "patterns": [
+        "\\bf[\\W_]*u[\\W_]*c[\\W_]*k\\b",
+        "\\bc[\\W_]*u[\\W_]*n[\\W_]*t\\b"
+      ],
+      "examples": {
+        "flag": [
+          "f.u.c.k",
+          "c__u__n__t"
+        ],
+        "allow": [
+          "f/u for follow-up (context)"
+        ]
+      }
+    },
+    {
+      "id": "vi_prof_1",
+      "lang": "vi",
+      "category": "profanity",
+      "severity": 1,
+      "patterns": [
+        "\\b(đồ|đứa)\\s+(ngu|khùng|điên)\\b",
+        "\\bđồ\\s+óc\\s+chó\\b"
+      ],
+      "examples": {
+        "flag": [
+          "đồ ngu"
+        ],
+        "allow": [
+          "nguội (not)"
+        ]
+      }
+    },
+    {
+      "id": "vi_prof_2",
+      "lang": "vi",
+      "category": "profanity",
+      "severity": 2,
+      "patterns": [
+        "\\b(địt|đụ|đéo)\\b",
+        "\\b(con|thằng)\\s+(điếm|khốn|mất dạy)\\b"
+      ],
+      "examples": {
+        "flag": [
+          "địt mẹ mày"
+        ],
+        "allow": [
+          "điếm số học (not)"
+        ]
+      }
+    },
+    {
+      "id": "vi_prof_3",
+      "lang": "vi",
+      "category": "profanity",
+      "severity": 3,
+      "patterns": [
+        "\\b(cặc|lồn|buồi)\\b",
+        "\\bđụ\\s*m[aà]\\b"
+      ],
+      "examples": {
+        "flag": [
+          "cặc"
+        ],
+        "allow": [
+          "—"
+        ]
+      }
+    },
+    {
+      "id": "vi_harass_1",
+      "lang": "vi",
+      "category": "harassment",
+      "severity": 2,
+      "patterns": [
+        "\\b(mày|tụi mày).*(ngu|đồ rác rưởi|đáng khinh)\\b"
+      ],
+      "examples": {
+        "flag": [
+          "mày đáng khinh"
+        ],
+        "allow": [
+          "—"
+        ]
+      }
+    },
+    {
+      "id": "vi_threat_1",
+      "lang": "vi",
+      "category": "violence_threat",
+      "severity": 4,
+      "patterns": [
+        "\\b(tao)\\s*(sẽ)?\\s*(giết|đâm|đánh|đốt)\\s*(mày|bọn mày)\\b",
+        "\\bđi chết đi\\b"
+      ],
+      "examples": {
+        "flag": [
+          "tao sẽ giết mày"
+        ],
+        "allow": [
+          "—"
+        ]
+      }
+    },
+    {
+      "id": "vi_sex_1",
+      "lang": "vi",
+      "category": "sexual_explicit",
+      "severity": 3,
+      "patterns": [
+        "\\b(chịch|địt|hiếp|dâm|đồi trụy|porn|sex)\\b"
+      ],
+      "context_allow": [
+        "allow_if_medical_vi"
+      ],
+      "examples": {
+        "flag": [
+          "xem porn"
+        ],
+        "allow": [
+          "giáo dục giới tính"
+        ]
+      }
+    },
+    {
+      "id": "vi_sex_2",
+      "lang": "vi",
+      "category": "sexual_violence",
+      "severity": 5,
+      "patterns": [
+        "\\b(hiếp|cưỡng hiếp|ấu dâm|loạn luân)\\b"
+      ],
+      "examples": {
+        "flag": [
+          "tao sẽ hiếp mày"
+        ],
+        "allow": [
+          "—"
+        ]
+      }
+    },
+    {
+      "id": "vi_obfus_1",
+      "lang": "vi",
+      "category": "profanity_obfuscated",
+      "severity": 3,
+      "patterns": [
+        "\\bd[\\W_]*i[\\W_]*t\\b",
+        "\\bd[\\W_]*e[\\W_]*o\\b"
+      ],
+      "examples": {
+        "flag": [
+          "d.i.t"
+        ],
+        "allow": [
+          "—"
+        ]
+      }
+    }
+  ],
+  "engine_hints": {
+    "regex_flags": [
+      "IGNORECASE",
+      "UNICODE"
+    ],
+    "word_boundary": "\\b",
+    "preprocessing": {
+      "zero_width": [
+        "\\u200B",
+        "\\u200C",
+        "\\u200D",
+        "\\uFEFF"
+      ],
+      "leet_map": {
+        "0": "o",
+        "1": "i",
+        "3": "e",
+        "4": "a",
+        "5": "s",
+        "7": "t",
+        "$": "s",
+        "@": "a",
+        "!": "i"
+      },
+      "repeat_max": 3
+    }
+  },
+  "storage_contract": {
+    "user_behavior_log_fields": [
+      "user_id",
+      "ts",
+      "lang",
+      "matched_rule_ids",
+      "normalized_text",
+      "raw_text",
+      "severity_max",
+      "score_delta",
+      "ip_hash"
+    ],
+    "privacy": "store normalized + hashed identifiers only; rotate keys monthly"
+  },
+  "pseudocode_enforcement": {
+    "normalize": [
+      "t = nfkc(t)",
+      "t = lowercase(t)",
+      "t = strip_zero_width(t)",
+      "t = remove_urls_emails(t)",
+      "t = remove_accents(t)",
+      "t = map_leetspeak(t)",
+      "t = collapse_repeated_chars(t, max=3)",
+      "t = collapse_whitespace(t)"
+    ],
+    "match": [
+      "for rule in rules:",
+      "  if regex(rule.patterns).any_match(t) and not in_allowlist_context(t, rule.context_allow):",
+      "     hits.append(rule)"
+    ],
+    "score": [
+      "severity_max = max(hit.severity)",
+      "score_delta = policy.scoring['severity{severity_max}']",
+      "apply_escalation(user_id, score_delta, window=24h)"
+    ]
+  },
+  "entries": []
+}

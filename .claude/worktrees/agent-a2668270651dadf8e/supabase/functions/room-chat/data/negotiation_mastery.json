@@ -1,0 +1,135 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak meter, plain (b1), bilingual (en-vi), gentle persuasion only\n\nNegotiation mastery, evidence-based\n\nEach entry: teach practical negotiation skills for professional and personal success\n\nPhilosophy: clear, actionable, small steps, real-world, humane language\n\nBeliefs:\n- Don’t manipulate. Build trust.\n- Don’t confront. Collaborate.\n- Don’t rush. Prepare thoroughly.\n\nTalk points\n- Negotiation is a learnable skill.\n- Listening drives mutual understanding.\n- Small wins create momentum.\n- Preparation unlocks confidence.\n\nTiny habits to teach:\n- Practice one listening technique daily.\n- Outline one key point before talks.\n- Reflect on one negotiation daily.\n- Pause four seconds before replying.",
+  "schema_version": "1.1",
+  "schema_id": "negotiation_mastery",
+  "description": "Echologic Mercy Blade room for mastering negotiation skills in professional and personal contexts",
+  "description_vi": "Phòng Mercy Blade về làm chủ kỹ năng đàm phán trong bối cảnh nghề nghiệp và cá nhân",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional legal or business advice.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn pháp lý hoặc kinh doanh chuyên nghiệp.",
+  "crisis_footer": {
+    "en": "For high-stakes negotiations requiring legal or financial expertise, consult a professional immediately.",
+    "vi": "Đối với đàm phán quan trọng cần chuyên môn pháp lý hoặc tài chính, tham khảo chuyên gia ngay lập tức."
+  },
+  "safety_footer": {
+    "en": "For complex deals, seek expert guidance to ensure fairness and clarity.",
+    "vi": "Đối với thỏa thuận phức tạp, tìm hướng dẫn chuyên gia để đảm bảo công bằng và rõ ràng."
+  },
+  "meta": {
+    "created_at": "2025-10-20T20:07:00+09:00",
+    "updated_at": "2025-10-20T20:07:00+09:00",
+    "checksum_sha256": "<placeholder>",
+    "meta_notes": "Keyword-driven; field-tested tone; UUIDv4 artifacts; checksum=SHA-256 of canonical JSON; version to -v002 on regeneration.",
+    "i18n_verified": true,
+    "entry_count": 3,
+    "artifact_set_id": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+    "data_format_version": "MercyBlade-Core-v1.2"
+  },
+  "enums": {
+    "tags": [
+      "negotiation",
+      "communication",
+      "collaboration",
+      "strategy",
+      "confidence"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["professional_skills"]
+  },
+  "keywords": {
+    "negotiation_preparation": {
+      "en": ["negotiation preparation", "how to prepare for negotiation", "negotiation planning tips", "prep for talks", "effective negotiation strategy"],
+      "vi": ["chuẩn bị đàm phán", "cách chuẩn bị cho đàm phán", "mẹo lập kế hoạch đàm phán", "sẵn sàng cho cuộc nói chuyện", "chiến lược đàm phán hiệu quả"]
+    },
+    "effective_listening": {
+      "en": ["effective listening", "negotiation listening tips", "how to listen in talks", "active listening skills", "empathic negotiation"],
+      "vi": ["lắng nghe hiệu quả", "mẹo lắng nghe đàm phán", "cách lắng nghe trong cuộc nói chuyện", "kỹ năng lắng nghe chủ động", "đàm phán thấu cảm"]
+    },
+    "mutual_benefit": {
+      "en": ["mutual benefit negotiation", "win-win negotiation tips", "how to negotiate for both sides", "collaborative deals", "fair negotiation"],
+      "vi": ["đàm phán lợi ích chung", "mẹo đàm phán đôi bên", "cách đàm phán cho cả hai", "thỏa thuận hợp tác", "đàm phán công bằng"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Mastering the Art of Negotiation\n\nNegotiation is a vital skill for success in work and life. Studies show well-prepared negotiators achieve 65% better outcomes by fostering trust and clarity. Whether discussing a salary or resolving a conflict, effective negotiation builds stronger relationships. This guide provides actionable steps to excel in negotiations.\n\n**Prepare Thoroughly**\n- Research the other party’s needs, goals, and limits.\n- Define your objectives: ideal outcome and minimum acceptable terms.\n- Example: Before a job offer discussion, Emma researched market salaries to justify her ask.\n\n**Listen Actively**\n- Ear on, distractions off: nod or say “I understand” to show engagement.\n- Ask open-ended questions like “What matters most to you?” to uncover priorities.\n- Research indicates active listening cuts negotiation failures by 35%.\n\n**Seek Mutual Benefit**\n- Propose solutions benefiting both parties, avoiding win-lose traps.\n- Example: Minh offered a supplier flexible delivery for a price reduction, pleasing both.\n\n**Stay Calm and Flexible**\n- Pause briefly before responding to maintain composure.\n- Adapt to new information during talks.\n\nStart small: practice listening in a casual chat today. Build skills step-by-step, and consult experts for complex deals.\n\n*Word count: 404*",
+    "vi": "# Làm Chủ Nghệ Thuật Đàm Phán\n\nĐàm phán là kỹ năng quan trọng cho thành công trong công việc và cuộc sống. Nghiên cứu cho thấy đàm phán viên chuẩn bị tốt đạt kết quả tốt hơn 65% nhờ xây dựng niềm tin và rõ ràng. Dù thảo luận lương hay giải quyết xung đột, đàm phán hiệu quả tạo mối quan hệ bền vững. Hướng dẫn này cung cấp các bước thực tế để xuất sắc trong đàm phán.\n\n**Chuẩn Bị Kỹ Lưỡng**\n- Nghiên cứu nhu cầu, mục tiêu và giới hạn của bên kia.\n- Xác định mục tiêu: kết quả lý tưởng và điều kiện tối thiểu chấp nhận được.\n- Ví dụ: Trước cuộc thảo luận đề nghị công việc, Lan nghiên cứu lương thị trường để biện minh yêu cầu.\n\n**Lắng Nghe Chủ Động**\n- Lắng nghe, tránh phân tâm: gật đầu hoặc nói “Tôi hiểu” để thể hiện chú ý.\n- Đặt câu hỏi mở như “Điều gì quan trọng nhất với bạn?” để khám phá ưu tiên.\n- Nghiên cứu cho thấy lắng nghe chủ động giảm thất bại đàm phán 35%.\n\n**Tìm Lợi Ích Chung**\n- Đề xuất giải pháp lợi cả hai, tránh bẫy thắng-thua.\n- Ví dụ: Hùng đề xuất giao hàng linh hoạt cho nhà cung cấp để giảm giá, làm hài lòng cả hai.\n\n**Giữ Bình Tĩnh và Linh Hoạt**\n- Tạm dừng ngắn trước khi trả lời để giữ bình tĩnh.\n- Điều chỉnh dựa trên thông tin mới trong cuộc nói chuyện.\n\nBắt đầu nhỏ: luyện lắng nghe trong cuộc trò chuyện thông thường hôm nay. Xây dựng kỹ năng từng bước và tham khảo chuyên gia cho thỏa thuận phức tạp.\n\n*Số từ: 412*",
+    "word_count_en": 404,
+    "word_count_vi": 412,
+    "updated_at": "2025-10-20T20:07:00+09:00"
+  },
+  "entries": [
+    {
+      "slug": "negotiation_preparation",
+      "title": { "en": "Mastering Negotiation Preparation", "vi": "Làm Chủ Chuẩn Bị Đàm Phán" },
+      "copy": {
+        "en": "**Mastering Negotiation Preparation**\n\nPreparation drives 70% of negotiation success, per research. Knowing your goals and the other party’s needs builds confidence. Try these steps:\n\n- **Research Deeply**: Study their priorities, budget, or past deals.\n- **Set Clear Goals**: Write your ideal outcome and fallback position.\n- **List Questions**: Prepare 3-5 open-ended questions (e.g., “What’s your timeline?”).\n- **Rehearse**: Practice your pitch with a colleague or mirror.\n\nExample: John researched a client’s goals, securing a contract by addressing their needs. Start by outlining one goal for your next talk.\n\n*Word count: 152*",
+        "vi": "**Làm Chủ Chuẩn Bị Đàm Phán**\n\nChuẩn bị quyết định 70% thành công đàm phán, theo nghiên cứu. Hiểu mục tiêu của bạn và nhu cầu bên kia tăng tự tin. Thử các bước:\n\n- **Nghiên Cứu Sâu**: Tìm hiểu ưu tiên, ngân sách hoặc thỏa thuận trước của họ.\n- **Đặt Mục Tiêu Rõ**: Viết kết quả lý tưởng và vị trí dự phòng.\n- **Liệt Kê Câu Hỏi**: Chuẩn bị 3-5 câu hỏi mở (ví dụ, “Thời hạn của bạn là gì?”).\n- **Luyện Tập**: Thực hành bài thuyết trình với đồng nghiệp hoặc trước gương.\n\nVí dụ: Nam nghiên cứu mục tiêu khách hàng, đạt hợp đồng bằng cách đáp ứng nhu cầu họ. Bắt đầu bằng cách phác thảo một mục tiêu cho cuộc nói chuyện tiếp theo.\n\n*Số từ: 160*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["negotiation", "strategy"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["professional_skills"],
+      "metadata": { "topic": "negotiation", "outcome": "preparation" },
+      "artifact_id": "7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d",
+      "artifact_version_id": "7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d-v002",
+      "created_at": "2025-10-20T20:07:00+09:00",
+      "updated_at": "2025-10-20T20:07:00+09:00"
+    },
+    {
+      "slug": "effective_listening",
+      "title": { "en": "Effective Listening in Negotiation", "vi": "Lắng Nghe Hiệu Quả Trong Đàm Phán" },
+      "copy": {
+        "en": "**Effective Listening in Negotiation**\n\nListening well cuts negotiation deadlocks by 30%, studies show. It builds trust and reveals needs. Use these steps:\n\n- **Stay Engaged**: Nod or say “Got it” to show you’re listening.\n- **Summarize Points**: Restate their key ideas (e.g., “You value flexibility?”).\n- **Ask Clarifying Questions**: Try “Can you share more on that?”.\n- **Avoid Distractions**: Silence phones during talks.\n\nExample: Sarah summarized her boss’s priorities, leading to a fairer deal. Practice listening fully in one conversation today.\n\n*Word count: 148*",
+        "vi": "**Lắng Nghe Hiệu Quả Trong Đàm Phán**\n\nLắng nghe tốt giảm bế tắc đàm phán 30%, nghiên cứu cho thấy. Nó xây dựng niềm tin và khám phá nhu cầu. Sử dụng các bước:\n\n- **Giữ Tương Tác**: Gật đầu hoặc nói “Hiểu rồi” để thể hiện bạn đang nghe.\n- **Tóm Tắt Ý**: Nhắc lại ý chính của họ (ví dụ, “Bạn coi trọng sự linh hoạt?”).\n- **Hỏi Làm Rõ**: Thử “Bạn có thể chia sẻ thêm không?”.\n- **Tránh Phân Tâm**: Tắt điện thoại trong cuộc nói chuyện.\n\nVí dụ: Linh tóm tắt ưu tiên của sếp, dẫn đến thỏa thuận công bằng hơn. Thực hành lắng nghe trọn vẹn trong một cuộc trò chuyện hôm nay.\n\n*Số từ: 156*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["negotiation", "communication"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["professional_skills"],
+      "metadata": { "topic": "negotiation", "outcome": "communication" },
+      "artifact_id": "8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e",
+      "artifact_version_id": "8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e-v002",
+      "created_at": "2025-10-20T20:07:00+09:00",
+      "updated_at": "2025-10-20T20:07:00+09:00"
+    },
+    {
+      "slug": "mutual_benefit",
+      "title": { "en": "Negotiating for Mutual Benefit", "vi": "Đàm Phán Vì Lợi Ích Chung" },
+      "copy": {
+        "en": "**Negotiating for Mutual Benefit**\n\nWin-win negotiations last 75% longer, per research, by fostering trust. Focus on shared gains with these steps:\n\n- **Understand Needs**: Ask “What’s your top priority?” to align goals.\n- **Offer Options**: Propose 2-3 solutions benefiting both (e.g., flexible terms).\n- **Compromise Smartly**: Trade low-value items for key wins.\n- **Confirm Clarity**: Summarize the deal to avoid confusion.\n\nExample: Alex offered a client extended deadlines for a discount, satisfying both. Try one mutual-benefit idea in your next talk.\n\n*Word count: 150*",
+        "vi": "**Đàm Phán Vì Lợi Ích Chung**\n\nĐàm phán đôi bên bền vững hơn 75%, theo nghiên cứu, nhờ xây dựng niềm tin. Tập trung vào lợi ích chung với các bước:\n\n- **Hiểu Nhu Cầu**: Hỏi “Ưu tiên hàng đầu của bạn là gì?” để căn chỉnh mục tiêu.\n- **Đưa Ra Lựa Chọn**: Đề xuất 2-3 giải pháp lợi cả hai (ví dụ, điều khoản linh hoạt).\n- **Nhượng Bộ Thông Minh**: Đổi mục ít giá trị lấy chiến thắng chính.\n- **Xác Nhận Rõ Ràng**: Tóm tắt thỏa thuận để tránh nhầm lẫn.\n\nVí dụ: Nam đề xuất gia hạn thời gian cho khách hàng để được giảm giá, làm hài lòng cả hai. Thử một ý tưởng lợi ích chung trong cuộc nói chuyện tiếp theo.\n\n*Số từ: 158*"
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["negotiation", "collaboration"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["professional_skills"],
+      "metadata": { "topic": "negotiation", "outcome": "collaboration" },
+      "artifact_id": "9c0d1e2f-3a4b-5c6d-7e8f-9a0b1c2d3e4f",
+      "artifact_version_id": "9c0d1e2f-3a4b-5c6d-7e8f-9a0b1c2d3e4f-v002",
+      "created_at": "2025-10-20T20:07:00+09:00",
+      "updated_at": "2025-10-20T20:07:00+09:00"
+    }
+  ],
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 3,
+        "min_distinct_buckets": 2,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}

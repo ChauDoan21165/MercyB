@@ -1,0 +1,153 @@
+/**
+ * Global Theme CSS Module
+ * Centralized theme styles to prevent duplication
+ */
+
+/* Global smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Safe area support for mobile (iOS notch) */
+body {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Theme-aware border colors */
+.theme-border {
+  border-color: hsl(var(--border));
+}
+
+.theme-border-light {
+  border-color: hsl(var(--border) / 0.5);
+}
+
+/* Theme-aware backgrounds */
+.theme-bg-base {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+.theme-bg-card {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+}
+
+.theme-bg-muted {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
+}
+
+/* Theme-aware text colors */
+.theme-text-base {
+  color: hsl(var(--foreground));
+}
+
+.theme-text-muted {
+  color: hsl(var(--muted-foreground));
+}
+
+.theme-text-accent {
+  color: hsl(var(--accent-foreground));
+}
+
+/* Hover states */
+.theme-hover {
+  @apply hover:bg-accent hover:text-accent-foreground transition-colors duration-200;
+}
+
+/* Focus states (accessibility) */
+.theme-focus {
+  @apply focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none;
+}
+
+/* Disabled states */
+.theme-disabled {
+  @apply disabled:opacity-50 disabled:pointer-events-none;
+}
+
+/* Loading states */
+.theme-loading {
+  @apply opacity-50 cursor-wait pointer-events-none;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  .theme-border {
+    border-color: hsl(var(--border));
+  }
+}
+
+/* Sticky header fixes for iOS Safari */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 20;
+}
+
+/* Touch-friendly tap areas */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Tap feedback animation */
+.tap-feedback {
+  @apply active:scale-95 transition-transform duration-150;
+}
+
+/* Ripple effect container */
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Micro-animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 200ms ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 200ms ease-out;
+}
+
+/* Severity colors (for admin health checks) */
+.severity-error {
+  @apply text-destructive bg-destructive/10 border-destructive;
+}
+
+.severity-warn {
+  @apply text-yellow-600 bg-yellow-100 border-yellow-600 dark:text-yellow-400 dark:bg-yellow-900/20 dark:border-yellow-400;
+}
+
+.severity-info {
+  @apply text-blue-600 bg-blue-100 border-blue-600 dark:text-blue-400 dark:bg-blue-900/20 dark:border-blue-400;
+}
+
+.severity-success {
+  @apply text-green-600 bg-green-100 border-green-600 dark:text-green-400 dark:bg-green-900/20 dark:border-green-400;
+}

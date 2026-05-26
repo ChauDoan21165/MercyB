@@ -1,0 +1,84 @@
+name: Production Deployment
+
+# Real Vercel production deploy on every push to main. Replaces the
+# former Lovable-era no-op stub that built an artifact, echoed
+# "live on Lovable hosting", and reported a GREEN success without ever
+# deploying anything (masked the 2026-05-18 stuck-deploys incident).
+# This workflow FAILS LOUD (red) if the build or deploy fails — no
+# more silent green. Preview deploys remain Vercel's responsibility
+# (PRs); this is main → production only.
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:   # manual: fire a real prod deploy on demand
+
+# Serialize production deploys; NEVER cancel one mid-flight.
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Vercel Production
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          # Match the Vercel project's configured runtime (.vercel
+          # project nodeVersion = 24.x) so the local build matches prod.
+          node-version: '24'
+
+      - name: Verify required Vercel secrets are present
+        run: |
+          set -euo pipefail
+          missing=()
+          [ -n "${VERCEL_TOKEN:-}" ]      || missing+=("VERCEL_TOKEN")
+          [ -n "${VERCEL_ORG_ID:-}" ]     || missing+=("VERCEL_ORG_ID")
+          [ -n "${VERCEL_PROJECT_ID:-}" ] || missing+=("VERCEL_PROJECT_ID")
+          if [ "${#missing[@]}" -gt 0 ]; then
+            echo "::error::Missing GitHub Actions secret(s): ${missing[*]}. Add them under Settings → Secrets and variables → Actions before this workflow can deploy."
+            exit 1
+          fi
+          echo "::add-mask::$VERCEL_TOKEN"
+          echo "All three Vercel secrets present."
+
+      - name: Pull Vercel production environment
+        # Fetches the project's settings + production env vars so the
+        # client bundle is built with the same VITE_* values as prod
+        # (a bare `npm run build` on the runner would NOT have them).
+        run: npx --yes vercel@latest pull --yes --environment=production --token="$VERCEL_TOKEN"
+
+      - name: Build production bundle (Vercel build pipeline)
+        run: npx --yes vercel@latest build --prod --token="$VERCEL_TOKEN"
+
+      - name: Deploy prebuilt output to Vercel production
+        id: deploy
+        run: |
+          set -euo pipefail
+          URL="$(npx --yes vercel@latest deploy --prebuilt --prod --token="$VERCEL_TOKEN")"
+          echo "Deployed to: $URL"
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+
+      - name: Write deployment summary
+        if: success()
+        run: |
+          {
+            echo "## ✅ Production deployment shipped"
+            echo ""
+            echo "- **Commit:** \`${{ github.sha }}\`"
+            echo "- **Branch:** \`${{ github.ref_name }}\`"
+            echo "- **URL:** ${{ steps.deploy.outputs.url }}"
+            echo "- **Time:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          } >> "$GITHUB_STEP_SUMMARY"

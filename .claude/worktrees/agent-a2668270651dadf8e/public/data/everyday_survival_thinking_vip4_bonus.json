@@ -1,0 +1,192 @@
+{
+  "id": "everyday_survival_thinking_vip4_bonus",
+  "tier": "vip4",
+  "domain": "LifeSkills",
+  "title": {
+    "en": "Everyday Survival Thinking — VIP4 Bonus",
+    "vi": "Tư Duy Sinh Tồn Hằng Ngày — Phần Thưởng VIP4"
+  },
+  "content": {
+    "en": "Survival in modern life is not about wilderness or crisis fantasies. It is the everyday ability to stay aware, think clearly, and navigate uncertainty without panic. Most people are reactive: they rush decisions, ignore signals, or let emotions override logic. At VIP4, you learn to build a stable, reliable survival mind—calm, observant, and strategic. Everyday survival thinking begins with situational awareness: noticing what others miss, interpreting risks early, and understanding the environment before acting. You learn to manage cognitive load, reduce impulsive choices, and apply small mental models that protect you: \"slow is smooth,\" \"check twice before committing,\" and \"don’t escalate small problems.\" You also study decision triage—knowing what requires immediate action, what can wait, and what is irrelevant. This prevents overwhelm and builds confidence. You will practice threat detection in social, financial, and digital contexts, learning to avoid scams, misleading offers, pressure tactics, and emotional traps. Survival thinking is not fear-based; it is clarity-based. It teaches you to pause, breathe, and evaluate pathways before stepping forward. You also learn troubleshooting: breaking a confusing situation into smaller, solvable pieces. Good survival thinkers do not know everything—they know how to learn quickly. Lastly, you build emotional resilience: the ability to stay functional when plans fail or circumstances shift suddenly. Modern survival is mental: how fast you adapt, how well you interpret signals, and how consistently you stay grounded. This room gives you the mindset to stay safe, steady, and effective in a world full of noise and unpredictability.",
+    "vi": "Sinh tồn trong đời sống hiện đại không phải là chuyện rừng rú hay những kịch bản thảm họa. Đó là khả năng giữ tỉnh táo, suy nghĩ rành mạch và vượt qua bất định mà không hoảng loạn. Đa số mọi người phản ứng theo bản năng: vội vàng quyết định, bỏ qua tín hiệu hoặc để cảm xúc lấn át lý trí. Ở VIP4, bạn học cách xây dựng một tư duy sinh tồn vững vàng và đáng tin cậy — bình tĩnh, biết quan sát và có chiến lược. Tư duy sinh tồn bắt đầu từ nhận thức tình huống: thấy được điều người khác bỏ lỡ, đọc rủi ro từ sớm và hiểu môi trường trước khi hành động. Bạn học cách điều tiết lượng thông tin phải xử lý, hạn chế những quyết định bốc đồng và áp dụng vài quy tắc tư duy nhỏ giúp bảo vệ chính mình: \"chậm mà chắc,\" \"kiểm tra hai lần trước khi quyết\" và \"đừng thổi phồng việc nhỏ.\" Bạn cũng học cách phân loại quyết định — việc gì cần xử lý ngay, việc gì có thể chờ và việc gì không đáng bận tâm. Điều này giúp tránh quá tải và tạo sự tự tin. Bạn sẽ luyện phát hiện nguy cơ trong bối cảnh xã hội, tài chính và kỹ thuật số — tránh lừa đảo, những lời chào mập mờ, chiêu gây áp lực và bẫy cảm xúc. Tư duy sinh tồn không dựa trên nỗi sợ mà dựa trên sự sáng suốt. Nó dạy bạn tạm dừng, hít thở và cân nhắc các hướng đi trước khi bước tiếp. Bạn cũng học cách xử lý vấn đề: chia một tình huống rối rắm thành những phần nhỏ dễ giải quyết. Người có tư duy sinh tồn không cần biết hết mọi thứ — họ biết cách học thật nhanh. Cuối cùng, bạn rèn sức bật cảm xúc: vẫn hoạt động được khi kế hoạch đổ vỡ hoặc tình thế đột ngột thay đổi. Sinh tồn hiện đại là chuyện của tinh thần: bạn thích nghi nhanh đến đâu, đọc tín hiệu tốt đến đâu và giữ được sự vững vàng nội tâm đều đặn ra sao. Phòng này cho bạn lối tư duy để luôn an toàn, vững vàng và hiệu quả trong một thế giới đầy nhiễu loạn và khó lường."
+  },
+  "entries": [
+    {
+      "slug": "situational-awareness",
+      "keywords_en": [
+        "awareness",
+        "observation",
+        "signals"
+      ],
+      "keywords_vi": [
+        "nhận thức tình huống",
+        "quan sát",
+        "tín hiệu"
+      ],
+      "copy": {
+        "en": "Situational awareness is the foundation of everyday survival. It means noticing the environment, the people in it, and the small changes that signal risk or opportunity. You practice scanning gently—not anxiously—paying attention to exits, energy shifts, tone changes, or unusual behaviors. Awareness prevents surprise. It gives you time to respond calmly instead of reacting under pressure. The more you notice, the safer and more effective you become.",
+        "vi": "Nhận thức tình huống là nền tảng của sinh tồn hằng ngày. Nó nghĩa là để ý môi trường, con người trong đó và những thay đổi nhỏ báo hiệu rủi ro hoặc cơ hội. Bạn luyện quan sát nhẹ nhàng — không lo lắng — chú ý lối thoát, sự chuyển biến của bầu không khí, thay đổi trong giọng nói hoặc hành vi bất thường. Nhận thức giúp bạn không bị bất ngờ. Nó cho bạn thời gian để đáp lại một cách bình tĩnh thay vì phản ứng dưới áp lực. Càng để ý nhiều, bạn càng an toàn và hiệu quả hơn."
+      },
+      "tags": [
+        "awareness",
+        "clarity"
+      ],
+      "audio": "vip4_survival_01.mp3"
+    },
+    {
+      "slug": "risk-filtering",
+      "keywords_en": [
+        "risk",
+        "filtering",
+        "decision"
+      ],
+      "keywords_vi": [
+        "rủi ro",
+        "lọc",
+        "quyết định"
+      ],
+      "copy": {
+        "en": "Risk filtering is the ability to separate real risks from imagined ones. Many people panic over harmless things while ignoring true danger. You learn to evaluate risk based on behavior, context, and patterns—not emotion. When you filter risk correctly, you stay calm where others panic and stay alert where others sleep. This skill saves time, stress, and sometimes money or safety.",
+        "vi": "Lọc rủi ro là khả năng tách rủi ro thật khỏi rủi ro chỉ là tưởng tượng. Nhiều người hoảng lên vì những chuyện vô hại nhưng lại bỏ qua nguy cơ thật sự. Bạn học cách đánh giá rủi ro dựa trên hành vi, bối cảnh và quy luật lặp lại — chứ không dựa vào cảm xúc. Khi lọc rủi ro đúng, bạn vẫn bình tĩnh ở chỗ người khác hoảng loạn và vẫn cảnh giác ở chỗ người khác lơ là. Kỹ năng này giúp tiết kiệm thời gian, bớt căng thẳng và đôi khi giữ được cả tiền bạc lẫn sự an toàn."
+      },
+      "tags": [
+        "risk",
+        "clarity"
+      ],
+      "audio": "vip4_survival_02.mp3"
+    },
+    {
+      "slug": "decision-triage",
+      "keywords_en": [
+        "triage",
+        "priority",
+        "logic"
+      ],
+      "keywords_vi": [
+        "phân loại quyết định",
+        "ưu tiên",
+        "logic"
+      ],
+      "copy": {
+        "en": "Decision triage means knowing what requires immediate action, what can wait, and what should be ignored. Without triage, every task feels urgent and stress becomes constant. You learn simple rules: if it protects safety, do it now; if it protects money, evaluate carefully; if it is emotional, pause before acting. Triage builds discipline and prevents chaos.",
+        "vi": "Phân loại quyết định nghĩa là biết việc gì cần xử lý ngay, việc gì có thể chờ và việc gì nên bỏ qua. Thiếu sự phân loại, mọi việc đều có vẻ khẩn cấp và căng thẳng trở thành thường trực. Bạn học những quy tắc đơn giản: nếu liên quan đến an toàn, làm ngay; nếu liên quan đến tiền bạc, cân nhắc kỹ; nếu liên quan đến cảm xúc, hãy tạm dừng trước khi hành động. Phân loại tạo nên kỷ luật và ngăn ngừa hỗn loạn."
+      },
+      "tags": [
+        "priority",
+        "discipline"
+      ],
+      "audio": "vip4_survival_03.mp3"
+    },
+    {
+      "slug": "thought-slowing",
+      "keywords_en": [
+        "slow thinking",
+        "calm",
+        "mental clarity"
+      ],
+      "keywords_vi": [
+        "chậm lại",
+        "bình tĩnh",
+        "rõ ràng"
+      ],
+      "copy": {
+        "en": "In emergencies or stressful situations, thinking often speeds up and becomes chaotic. Survival requires the opposite: slowing down. When you slow your thought process—breathing deeper, speaking slower, pausing before reacting—your clarity returns. Slowness is not weakness. It is control. It prevents emotional mistakes and gives you space to choose wisely.",
+        "vi": "Trong những lúc khẩn cấp hay căng thẳng, suy nghĩ thường tăng tốc và trở nên hỗn loạn. Sinh tồn đòi hỏi điều ngược lại: chậm lại. Khi bạn làm chậm dòng suy nghĩ — hít thở sâu hơn, nói chậm hơn, dừng lại một nhịp trước khi phản ứng — sự sáng suốt sẽ quay về. Chậm không phải là yếu đuối. Đó là sự làm chủ. Nó giúp tránh những sai lầm do cảm xúc và cho bạn khoảng trống để lựa chọn khôn ngoan."
+      },
+      "tags": [
+        "calm",
+        "clarity"
+      ],
+      "audio": "vip4_survival_04.mp3"
+    },
+    {
+      "slug": "problem-deconstruction",
+      "keywords_en": [
+        "problem solving",
+        "deconstruction",
+        "clarity"
+      ],
+      "keywords_vi": [
+        "giải quyết vấn đề",
+        "tách nhỏ",
+        "rõ ràng"
+      ],
+      "copy": {
+        "en": "Big problems overwhelm because they are messy. Deconstruction means breaking them into smaller parts until each piece is solvable. You identify: What is the core issue? What is noise? What is the next smallest step? Deconstruction reduces fear and accelerates action. It turns chaos into a checklist.",
+        "vi": "Vấn đề lớn khiến ta choáng ngợp vì chúng rối rắm. Tách nhỏ nghĩa là chia chúng thành những phần nhỏ hơn cho đến khi từng phần đều có thể giải quyết được. Bạn xác định: đâu là vấn đề cốt lõi? Đâu chỉ là nhiễu? Bước nhỏ tiếp theo là gì? Tách nhỏ giúp bớt sợ hãi và đẩy nhanh hành động. Nó biến sự hỗn loạn thành một danh sách việc cần làm."
+      },
+      "tags": [
+        "problem solving",
+        "clarity"
+      ],
+      "audio": "vip4_survival_05.mp3"
+    },
+    {
+      "slug": "avoiding-traps",
+      "keywords_en": [
+        "traps",
+        "scams",
+        "pressure"
+      ],
+      "keywords_vi": [
+        "bẫy",
+        "lừa đảo",
+        "áp lực"
+      ],
+      "copy": {
+        "en": "Modern life is full of traps: emotional manipulation, urgency scams, unfair contracts, and pressure tactics. Survival thinking teaches you: if someone rushes you, slow down; if something feels too good, verify; if someone avoids details, ask more questions. The goal is not paranoia—it is protection.",
+        "vi": "Đời sống hiện đại đầy rẫy cạm bẫy: thao túng cảm xúc, lừa đảo bằng cách tạo cảm giác cấp bách, hợp đồng bất lợi và chiêu gây áp lực. Tư duy sinh tồn dạy bạn: nếu ai đó hối thúc, hãy chậm lại; nếu thứ gì nghe quá hời, hãy kiểm chứng; nếu ai đó né tránh chi tiết, hãy hỏi thêm. Mục tiêu không phải là hoang tưởng — mà là biết tự bảo vệ."
+      },
+      "tags": [
+        "safety",
+        "awareness"
+      ],
+      "audio": "vip4_survival_06.mp3"
+    },
+    {
+      "slug": "adaptive-thinking",
+      "keywords_en": [
+        "adaptability",
+        "flexibility",
+        "resilience"
+      ],
+      "keywords_vi": [
+        "thích nghi",
+        "linh hoạt",
+        "bền bỉ"
+      ],
+      "copy": {
+        "en": "Survival depends on adaptability. When plans fail or conditions shift, rigid people break while flexible people adjust. Adaptive thinking means updating your approach quickly, letting go of outdated assumptions, and switching strategies without emotional resistance. Adaptability turns uncertainty into opportunity.",
+        "vi": "Sinh tồn phụ thuộc vào khả năng thích nghi. Khi kế hoạch đổ vỡ hoặc hoàn cảnh thay đổi, người cứng nhắc sẽ gãy còn người linh hoạt thì xoay xở. Tư duy thích nghi nghĩa là nhanh chóng điều chỉnh cách làm, buông bỏ những giả định đã lỗi thời và đổi chiến lược mà không để cảm xúc cản trở. Khả năng thích nghi biến bất định thành cơ hội."
+      },
+      "tags": [
+        "resilience",
+        "strategy"
+      ],
+      "audio": "vip4_survival_07.mp3"
+    },
+    {
+      "slug": "functional-calm",
+      "keywords_en": [
+        "functional calm",
+        "control",
+        "stability"
+      ],
+      "keywords_vi": [
+        "bình tĩnh chức năng",
+        "kiểm soát",
+        "ổn định"
+      ],
+      "copy": {
+        "en": "Functional calm is the ability to stay effective even when stressed. You may feel pressure, but you remain operational: thinking clearly, communicating cleanly, and moving deliberately. It is not about suppressing emotion but managing it. Functional calm is the survival skill that keeps you stable when everything becomes uncertain.",
+        "vi": "Bình tĩnh chức năng là khả năng vẫn làm việc hiệu quả ngay cả khi căng thẳng. Bạn có thể cảm thấy áp lực nhưng vẫn vận hành được: suy nghĩ rành mạch, giao tiếp rõ ràng và hành động có chủ đích. Đây không phải là kìm nén cảm xúc mà là làm chủ nó. Bình tĩnh chức năng là kỹ năng sinh tồn giúp bạn giữ vững khi mọi thứ trở nên bất định."
+      },
+      "tags": [
+        "calm",
+        "stability"
+      ],
+      "audio": "vip4_survival_08.mp3"
+    }
+  ],
+  "domain_image": "/images/domains/lifeskills.svg"
+}

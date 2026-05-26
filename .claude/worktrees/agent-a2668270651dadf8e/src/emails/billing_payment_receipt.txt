@@ -1,0 +1,14 @@
+Subject: Payment received
+
+Hello,
+
+We’ve received your payment.
+
+Amount: {{amount}} {{currency}}
+Date: {{date}}
+Reference: {{receipt_id}}
+
+Your access remains active. No further action is needed.
+
+— Mercy Blade
+Calm systems, built to last.

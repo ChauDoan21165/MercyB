@@ -1,0 +1,135 @@
+{
+  "id": "stress_free",
+  "tier": "free",
+  "domain": "Mental Health",
+  "name": "Stress Relief",
+  "name_vi": "Giảm Căng Thẳng",
+  "description": "Simple practices to calm your mind, reset your rhythm, and build lasting peace through breathing, mindfulness, and routines.",
+  "description_vi": "Những cách đơn giản để làm dịu tâm trí, lấy lại nhịp sống cân bằng và nuôi dưỡng sự bình yên lâu dài qua hơi thở, chánh niệm và thói quen.",
+  "keywords_en": [
+    "stress",
+    "breathing",
+    "mindfulness",
+    "relaxation",
+    "calm",
+    "routines"
+  ],
+  "keywords_vi": [
+    "căng thẳng",
+    "hít thở",
+    "chánh niệm",
+    "thư giãn",
+    "bình tĩnh",
+    "thói quen"
+  ],
+  "room_essay_en": "Simple practices to calm your mind, reset your rhythm, and build lasting peace through breathing, mindfulness, and routines.",
+  "room_essay_vi": "Những cách đơn giản để làm dịu tâm trí, lấy lại nhịp sống cân bằng và nuôi dưỡng sự bình yên lâu dài qua hơi thở, chánh niệm và thói quen.",
+  "entries": [
+    {
+      "copy": {
+        "en": "Breathing is the simplest way to calm your mind. Sit comfortably, close your eyes, and inhale through your nose for four seconds. Hold briefly, then exhale slowly for six. One deep breath can ease tension and steady focus. Practice this during quiet moments or before sleep. Each breath tells your body it is safe to relax. Journal weekly about how breathing changes your mood or clarity. Small steps build calm that lasts. Begin with one deep breath right now.",
+        "vi": "Hơi thở là cách đơn giản nhất để làm dịu tâm trí. Hãy ngồi thoải mái, nhắm mắt lại và hít vào bằng mũi trong bốn giây. Nín thở một chút, rồi thở ra thật chậm trong sáu giây. Chỉ một hơi thở sâu cũng có thể làm dịu căng thẳng và giúp bạn tập trung trở lại. Hãy tập như vậy vào những lúc yên tĩnh hoặc trước khi đi ngủ. Mỗi hơi thở như một lời nhắn gửi đến cơ thể, rằng bạn đang an toàn và có thể buông lỏng. Mỗi tuần, hãy ghi lại xem hơi thở thay đổi tâm trạng và sự minh mẫn của bạn như thế nào. Những bước nhỏ ấy dần tạo nên sự bình tĩnh bền lâu. Hãy bắt đầu ngay bây giờ bằng một hơi thở sâu."
+      },
+      "slug": "stress-relief-breathing",
+      "tags": [
+        "breathing",
+        "relaxation",
+        "stress relief"
+      ],
+      "audio": "stress_free_breathing.mp3",
+      "keywords_en": [
+        "breathing",
+        "relaxation",
+        "deep breath",
+        "tension relief"
+      ],
+      "keywords_vi": [
+        "hít thở",
+        "thư giãn",
+        "hơi thở sâu",
+        "giảm căng thẳng"
+      ]
+    },
+    {
+      "copy": {
+        "en": "Mindful pauses reset your inner rhythm. Each day, stop for one minute to notice something real—sound, scent, color, or texture. This simple awareness brings you back from worry to presence. Let thoughts pass like clouds, focusing gently on what's here and now. Afterward, notice how your breath and shoulders soften. Journal weekly about moments of calm you discovered. Over time, these mindful pauses form anchors of peace. Begin today with one quiet minute of noticing.",
+        "vi": "Những phút giây chánh niệm giúp bạn lấy lại nhịp điệu bên trong. Mỗi ngày, hãy dừng lại một phút để ý đến một điều gì đó thật cụ thể quanh mình — một âm thanh, một mùi hương, một màu sắc hay một chất liệu nào đó. Sự chú tâm giản dị ấy kéo bạn ra khỏi lo âu và đưa về với hiện tại. Hãy để những suy nghĩ trôi đi như mây, nhẹ nhàng hướng sự chú ý vào những gì đang ở đây, ngay lúc này. Rồi để ý xem hơi thở của bạn dịu lại và đôi vai chùng xuống thế nào. Mỗi tuần, hãy ghi lại những khoảnh khắc bình yên mà bạn tìm thấy. Dần dần, những quãng nghỉ chánh niệm ấy trở thành điểm tựa cho sự bình yên trong bạn. Hãy bắt đầu ngay hôm nay bằng một phút thật yên lặng để quan sát."
+      },
+      "slug": "mindful-moments",
+      "tags": [
+        "mindfulness",
+        "awareness",
+        "present"
+      ],
+      "audio": "stress_free_mindful_moments.mp3",
+      "keywords_en": [
+        "mindfulness",
+        "awareness",
+        "present moment",
+        "calm"
+      ],
+      "keywords_vi": [
+        "chánh niệm",
+        "nhận thức",
+        "khoảnh khắc hiện tại",
+        "bình tĩnh"
+      ]
+    },
+    {
+      "copy": {
+        "en": "Calm grows from rhythm. Choose one small routine—a short walk, stretching, or journaling—to clear your mind each day. Routines create predictability, giving your nervous system a sense of safety. Keep it brief and consistent; five minutes is enough. Track in a journal how your body and emotions respond. If a day feels heavy, return to your chosen habit for grounding. Over time, routine becomes resilience. Begin today with one gentle walk to breathe and reset.",
+        "vi": "Sự bình tĩnh lớn dần lên từ nhịp điệu đều đặn. Hãy chọn một thói quen nhỏ — đi bộ một quãng ngắn, vươn vai duỗi người hay viết nhật ký — để mỗi ngày đầu óc được thư thái hơn. Thói quen khiến mọi thứ trở nên quen thuộc và dễ đoán, nhờ đó hệ thần kinh của bạn thấy an toàn hơn. Hãy giữ cho nó ngắn gọn và đều đặn; năm phút thôi là đủ. Ghi vào nhật ký xem cơ thể và cảm xúc của bạn phản ứng ra sao. Nếu một ngày nào đó thấy nặng nề, hãy quay về với thói quen bạn đã chọn để lấy lại thăng bằng. Dần dần, thói quen trở thành sức bền nội tâm. Hãy bắt đầu ngay hôm nay bằng một buổi đi bộ thong thả để hít thở và làm mới lại tinh thần."
+      },
+      "slug": "simple-routines",
+      "tags": [
+        "routine",
+        "habits",
+        "structure"
+      ],
+      "audio": "stress_free_simple_routines.mp3",
+      "keywords_en": [
+        "routine",
+        "habits",
+        "structure",
+        "consistency"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "tập quán",
+        "cấu trúc",
+        "nhất quán"
+      ]
+    },
+    {
+      "copy": {
+        "en": "Breathing is the simplest way to calm your mind. Sit comfortably, close your eyes, and inhale through your nose for four seconds. Hold briefly, then exhale slowly for six. One deep breath can ease tension and steady focus. Practice this during quiet moments or before sleep. Each breath tells your body it is safe to relax. Journal weekly about how breathing changes your mood or clarity. Small steps build calm that lasts. Begin with one deep breath right now.\n\nMindful pauses reset your inner rhythm. Each day, stop for one minute to notice something real—sound, scent, color, or texture. This simple awareness brings you back from worry to presence. Let thoughts pass like clouds, focusing gently on what's here and now. Afterward, notice how your breath and shoulders soften. Journal weekly about moments of calm you discovered. Over time, these mindful pauses form anchors of peace. Begin today with one quiet minute of noticing.\n\nCalm grows from rhythm. Choose one small routine—a short walk, stretching, or journaling—to clear your mind each day. Routines create predictability, giving your nervous system a sense of safety. Keep it brief and consistent; five minutes is enough. Track in a journal how your body and emotions respond. If a day feels heavy, return to your chosen habit for grounding. Over time, routine becomes resilience. Begin today with one gentle walk to breathe and reset.",
+        "vi": "Hơi thở là cách đơn giản nhất để làm dịu tâm trí. Hãy ngồi thoải mái, nhắm mắt lại và hít vào bằng mũi trong bốn giây. Nín thở một chút, rồi thở ra thật chậm trong sáu giây. Chỉ một hơi thở sâu cũng có thể làm dịu căng thẳng và giúp bạn tập trung trở lại. Hãy tập như vậy vào những lúc yên tĩnh hoặc trước khi đi ngủ. Mỗi hơi thở như một lời nhắn gửi đến cơ thể, rằng bạn đang an toàn và có thể buông lỏng. Mỗi tuần, hãy ghi lại xem hơi thở thay đổi tâm trạng và sự minh mẫn của bạn như thế nào. Những bước nhỏ ấy dần tạo nên sự bình tĩnh bền lâu. Hãy bắt đầu ngay bây giờ bằng một hơi thở sâu.\n\nNhững phút giây chánh niệm giúp bạn lấy lại nhịp điệu bên trong. Mỗi ngày, hãy dừng lại một phút để ý đến một điều gì đó thật cụ thể quanh mình — một âm thanh, một mùi hương, một màu sắc hay một chất liệu nào đó. Sự chú tâm giản dị ấy kéo bạn ra khỏi lo âu và đưa về với hiện tại. Hãy để những suy nghĩ trôi đi như mây, nhẹ nhàng hướng sự chú ý vào những gì đang ở đây, ngay lúc này. Rồi để ý xem hơi thở của bạn dịu lại và đôi vai chùng xuống thế nào. Mỗi tuần, hãy ghi lại những khoảnh khắc bình yên mà bạn tìm thấy. Dần dần, những quãng nghỉ chánh niệm ấy trở thành điểm tựa cho sự bình yên trong bạn. Hãy bắt đầu ngay hôm nay bằng một phút thật yên lặng để quan sát.\n\nSự bình tĩnh lớn dần lên từ nhịp điệu đều đặn. Hãy chọn một thói quen nhỏ — đi bộ một quãng ngắn, vươn vai duỗi người hay viết nhật ký — để mỗi ngày đầu óc được thư thái hơn. Thói quen khiến mọi thứ trở nên quen thuộc và dễ đoán, nhờ đó hệ thần kinh của bạn thấy an toàn hơn. Hãy giữ cho nó ngắn gọn và đều đặn; năm phút thôi là đủ. Ghi vào nhật ký xem cơ thể và cảm xúc của bạn phản ứng ra sao. Nếu một ngày nào đó thấy nặng nề, hãy quay về với thói quen bạn đã chọn để lấy lại thăng bằng. Dần dần, thói quen trở thành sức bền nội tâm. Hãy bắt đầu ngay hôm nay bằng một buổi đi bộ thong thả để hít thở và làm mới lại tinh thần."
+      },
+      "slug": "all",
+      "tags": [
+        "all",
+        "stress"
+      ],
+      "audio": "stress_free_breathing.mp3 stress_free_mindful_moments.mp3 stress_free_simple_routines.mp3",
+      "keywords_en": [
+        "all",
+        "stress",
+        "breathing",
+        "mindfulness",
+        "routines"
+      ],
+      "keywords_vi": [
+        "tổng hợp",
+        "căng thẳng",
+        "hít thở",
+        "chánh niệm",
+        "thói quen"
+      ]
+    }
+  ],
+  "title": {
+    "en": "stress_free",
+    "vi": "Giảm Căng Thẳng"
+  },
+  "domain_image": "/images/domains/mental_health.svg"
+}

@@ -1,0 +1,99 @@
+/**
+ * Global Focus Ring System
+ * Consistent keyboard focus indicators across the app
+ */
+
+/* Base focus ring - apply to all interactive elements */
+.focus-ring {
+  outline: 2px solid #4BB7FF;
+  outline-offset: 2px;
+  transition: outline-color 0.15s ease;
+}
+
+/* Focus-visible only (not on mouse click) */
+.focus-ring-visible:focus-visible {
+  outline: 2px solid #4BB7FF;
+  outline-offset: 2px;
+}
+
+/* Keyboard-only mode enhancement */
+.keyboard-only *:focus {
+  outline: 3px solid #4BB7FF !important;
+  outline-offset: 3px !important;
+}
+
+/* High contrast mode enhancement */
+.high-contrast .focus-ring,
+.high-contrast .focus-ring-visible:focus-visible {
+  outline-width: 3px;
+  outline-color: currentColor;
+}
+
+/* Reduced motion - instant focus ring */
+@media (prefers-reduced-motion: reduce) {
+  .focus-ring,
+  .focus-ring-visible:focus-visible {
+    transition: none;
+  }
+}
+
+/* Focus within container */
+.focus-within-ring:focus-within {
+  outline: 2px solid #4BB7FF;
+  outline-offset: 2px;
+}
+
+/* Prevent focus scroll-jumping on mobile */
+*:focus {
+  scroll-margin-top: 1rem;
+}
+
+/* Screen reader only - hide visually but keep for SR */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus,
+.sr-only:active {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Show ARIA labels visually (preview mode) */
+.show-aria-labels [aria-label]::after {
+  content: " [" attr(aria-label) "]";
+  font-size: 0.75rem;
+  color: #4BB7FF;
+  font-weight: bold;
+  margin-left: 0.25rem;
+}
+
+/* Ensure minimum touch target size (44x44px) */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* High contrast adjustments */
+.high-contrast {
+  filter: contrast(1.2);
+}
+
+.high-contrast * {
+  border-width: 2px !important;
+}

@@ -1,0 +1,31 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/main.tsx",
+    "src/App.tsx",
+    "src/pages/**/*",
+    "src/layouts/**/*",
+    "src/components/**/*",
+    "src/hooks/**/*",
+    "src/lib/constants/**/*",
+    "src/lib/rooms/**/*",
+    "src/lib/roomLoader.ts",
+    "src/lib/roomDataLoader.ts",
+    "src/lib/roomFetcher.ts",
+    "src/lib/supabaseClient.ts"
+  ],
+  "exclude": [
+    "src/**/__tests__/**",
+    "src/test/**",
+    "src/pages/api/**",
+    "src/pages/admin/**",
+    "src/lib/audio/**",
+    "src/lib/performance/**",
+    "src/simulator/**",
+    "src/design-system/**",
+    "src/lib/motion.ts",
+    "src/lib/animations.ts",
+    "src/lib/security/**",
+    "src/security/**"
+  ]
+}
