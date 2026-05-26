@@ -1,0 +1,874 @@
+{
+  "header": "// dumb tree, no diagnostics, catch keyword, speak sharp, mood: slow",
+  "schema_version": "1.1",
+  "schema_id": "immune",
+  "description": "Echologic Mercy Blade room for practical immune system health",
+  "description_vi": "Phòng Mercy Blade về sức khỏe hệ miễn dịch thực tiễn",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "default": "en",
+    "fallback": "en",
+    "i18n_required": true
+  },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+  "safety_disclaimer_vi": "Thông tin giáo dục; không thay thế tư vấn y khoa hoặc cấp cứu.",
+  "crisis_footer": {
+    "en": "In danger or medical distress? Contact emergency services or a trusted hotline immediately.",
+    "vi": "Gặp nguy hiểm hoặc khẩn cấp y tế? Gọi cấp cứu hoặc đường dây nóng đáng tin ngay."
+  },
+  "safety_footer": {
+    "en": "Prioritize safety and legality; if unsure, pause and seek professional guidance.",
+    "vi": "Ưu tiên an toàn và hợp pháp; nếu không chắc, hãy hỏi ý kiến chuyên gia."
+  },
+  "meta": {
+    "created_at": "2025-10-09T13:25:00Z",
+    "updated_at": "2025-10-09T13:25:00Z",
+    "i18n_verified": true,
+    "learning_mode": true,
+    "entry_count": 30
+  },
+  "enums": {
+    "tags": ["immune", "nutrition", "lifestyle", "exercise", "medication", "prevention", "symptoms", "safety", "screening", "stress"],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["immune"]
+  },
+  "keywords": {
+    "fever_response": {
+      "en": ["fever response", "high fever", "temperature spike"],
+      "vi": ["phản_ứng_sốt", "sốt_cao", "tăng_nhiệt_độ"],
+      "synonyms": {
+        "en": ["fever signs", "immune fever", "high temperature"],
+        "vi": ["dấu_hiệu_sốt", "sốt_miễn_dịch", "nhiệt_độ_cao"]
+      }
+    },
+    "persistent_fatigue": {
+      "en": ["persistent fatigue", "chronic tiredness", "ongoing exhaustion"],
+      "vi": ["mệt_mỏi_kéo_dài", "kiệt_sức_mãn_tính", "mệt_mỏi_liên_tục"],
+      "synonyms": {
+        "en": ["constant fatigue", "immune tiredness", "energy drain"],
+        "vi": ["mệt_mỏi_liên_tục", "mệt_miễn_dịch", "mất_năng_lượng"]
+      }
+    },
+    "swollen_lymph_nodes": {
+      "en": ["swollen lymph nodes", "lymph swelling", "node inflammation"],
+      "vi": ["sưng_hạch_bạch_huyết", "sưng_hạch", "viêm_hạch"],
+      "synonyms": {
+        "en": ["lymph enlargement", "immune nodes", "swollen glands"],
+        "vi": ["tăng_hạch", "hạch_miễn_dịch", "tuyến_sưng"]
+      }
+    },
+    "recurrent_infections": {
+      "en": ["recurrent infections", "frequent illness", "repeated infections"],
+      "vi": ["nhiễm_trùng_tái_phát", "bệnh_thường_xuyên", "nhiễm_trùng_lặp_lại"],
+      "synonyms": {
+        "en": ["chronic infections", "immune weakness", "frequent sickness"],
+        "vi": ["nhiễm_trùng_mãn", "yếu_miễn_dịch", "bệnh_liên_tục"]
+      }
+    },
+    "severe_allergic_reaction": {
+      "en": ["severe allergic reaction", "anaphylaxis signs", "allergy crisis"],
+      "vi": ["dị_ứng_nặng", "dấu_hiệu_sốc_phản_vệ", "khủng_hoảng_dị_ứng"],
+      "synonyms": {
+        "en": ["allergic shock", "immune reaction", "anaphylaxis emergency"],
+        "vi": ["sốc_dị_ứng", "phản_ứng_miễn_dịch", "khẩn_cấp_sốc_phản_vệ"]
+      }
+    },
+    "suspected_immunodeficiency": {
+      "en": ["suspected immunodeficiency", "immune failure", "weak immunity"],
+      "vi": ["nghi_suy_giảm_miễn_dịch", "thất_bại_miễn_dịch", "miễn_dịch_yếu"],
+      "synonyms": {
+        "en": ["immune deficiency", "low immunity", "immune disorder"],
+        "vi": ["thiếu_miễn_dịch", "miễn_dịch_thấp", "rối_loạn_miễn_dịch"]
+      }
+    },
+    "balanced_nutrition": {
+      "en": ["balanced nutrition", "nutrient mix", "healthy diet"],
+      "vi": ["dinh_dưỡng_cân_bằng", "hỗn_hợp_dinh_dưỡng", "chế_độ_lành_mạnh"],
+      "synonyms": {
+        "en": ["varied diet", "whole foods", "nutrient balance"],
+        "vi": ["chế_độ_đa_dạng", "thực_phẩm_nguyên", "cân_bằng_dinh_dưỡng"]
+      }
+    },
+    "vitamin_c_intake": {
+      "en": ["vitamin c intake", "immune boost", "citrus foods"],
+      "vi": ["nạp_vitamin_c", "tăng_cường_miễn_dịch", "thực_phẩm_citrus"],
+      "synonyms": {
+        "en": ["vitamin c foods", "antioxidant intake", "immune support"],
+        "vi": ["thực_phẩm_vitamin_c", "nạp_chất_chống_oxy_hóa", "hỗ_trợ_miễn_dịch"]
+      }
+    },
+    "zinc_supplement": {
+      "en": ["zinc supplement", "zinc intake", "immune mineral"],
+      "vi": ["bổ_sung_kẽm", "nạp_kẽm", "khoáng_miễn_dịch"],
+      "synonyms": {
+        "en": ["zinc foods", "mineral boost", "immune zinc"],
+        "vi": ["thực_phẩm_kẽm", "tăng_khoáng_chất", "kẽm_miễn_dịch"]
+      }
+    },
+    "vitamin_d_role": {
+      "en": ["vitamin d role", "sunshine vitamin", "immune regulation"],
+      "vi": ["vai_trò_vitamin_d", "vitamin_nắng", "điều_hòa_miễn_dịch"],
+      "synonyms": {
+        "en": ["vitamin d intake", "immune vitamin", "sun exposure"],
+        "vi": ["nạp_vitamin_d", "vitamin_miễn_dịch", "tiếp_xúc_nắng"]
+      }
+    },
+    "probiotic_foods": {
+      "en": ["probiotic foods", "gut health", "fermented foods"],
+      "vi": ["thực_phẩm_probiotic", "sức_khỏe_ruột", "thức_ăn_lên_men"],
+      "synonyms": {
+        "en": ["yogurt intake", "probiotic diet", "gut bacteria"],
+        "vi": ["nạp_sữa_chua", "chế_độ_probiotic", "vi_khuẩn_ruột"]
+      }
+    },
+    "sleep_routine": {
+      "en": ["sleep routine", "rest cycle", "sleep hygiene"],
+      "vi": ["thói_quen_ngủ", "chu_kỳ_nghỉ", "vệ_sinh_giấc_ngủ"],
+      "synonyms": {
+        "en": ["nightly rest", "sleep habits", "rest routine"],
+        "vi": ["nghỉ_đêm", "thói_quen_ngủ", "lịch_nghỉ_ngơi"]
+      }
+    },
+    "exercise_habits": {
+      "en": ["exercise habits", "physical activity", "daily movement"],
+      "vi": ["thói_quen_tập_thể_dục", "hoạt_động_thể_chất", "vận_động_hàng_ngày"],
+      "synonyms": {
+        "en": ["workout routine", "active lifestyle", "movement habits"],
+        "vi": ["lịch_tập_luyện", "lối_sống_năng_động", "thói_quen_vận_động"]
+      }
+    },
+    "stress_management": {
+      "en": ["stress management", "calm techniques", "stress relief"],
+      "vi": ["quản_lý_căng_thẳng", "kỹ_thuật_bình_tĩnh", "giảm_căng_thẳng"],
+      "synonyms": {
+        "en": ["stress control", "relaxation methods", "calm strategies"],
+        "vi": ["kiểm_soát_căng_thẳng", "phương_pháp_thư_giãn", "chiến_lược_bình_tĩnh"]
+      }
+    },
+    "smoking_cessation": {
+      "en": ["smoking cessation", "quit smoking", "stop tobacco"],
+      "vi": ["cai_thuốc_lá", "bỏ_hút_thuốc", "ngừng_thuốc_lá"],
+      "synonyms": {
+        "en": ["end smoking", "tobacco quit", "break habit"],
+        "vi": ["kết_thúc_hút", "cai_thuốc", "phá_thói_quen"]
+      }
+    },
+    "alcohol_moderation": {
+      "en": ["alcohol moderation", "limit drinks", "drink control"],
+      "vi": ["điều_tiết_rượu", "giới_hạn_rượu", "kiểm_soát_uống"],
+      "synonyms": {
+        "en": ["moderate drinking", "alcohol limit", "safe drinking"],
+        "vi": ["uống_điều_độ", "giới_hạn_rượu", "uống_an_toàn"]
+      }
+    },
+    "caffeine_limits": {
+      "en": ["caffeine limits", "limit caffeine", "coffee control"],
+      "vi": ["giới_hạn_caffeine", "giới_hạn_cà_phê", "kiểm_soát_cà_phê"],
+      "synonyms": {
+        "en": ["caffeine moderation", "moderate coffee", "stimulant control"],
+        "vi": ["điều_tiết_caffeine", "cà_phê_điều_độ", "kiểm_soát_chất_kích_thích"]
+      }
+    },
+    "hand_hygiene": {
+      "en": ["hand hygiene", "wash hands", "clean hands"],
+      "vi": ["vệ_sinh_tay", "rửa_tay", "tay_sạch"],
+      "synonyms": {
+        "en": ["hand washing", "germ prevention", "hygiene habits"],
+        "vi": ["rửa_tay_sạch", "ngăn_vi_khuẩn", "thói_quen_vệ_sinh"]
+      }
+    },
+    "vaccination_routine": {
+      "en": ["vaccination routine", "immune shots", "vaccine schedule"],
+      "vi": ["lịch_tiêm_chủng", "tiêm_miễn_dịch", "lịch_vaccine"],
+      "synonyms": {
+        "en": ["vaccine plan", "immunization schedule", "shot routine"],
+        "vi": ["kế_hoạch_vaccine", "lịch_miễn_dịch", "lịch_tiêm"]
+      }
+    },
+    "allergy_management": {
+      "en": ["allergy management", "allergen avoidance", "trigger control"],
+      "vi": ["quản_lý_dị_ứng", "tránh_dị_nguyên", "kiểm_soát_kích_thích"],
+      "synonyms": {
+        "en": ["allergy control", "immune response", "allergen care"],
+        "vi": ["kiểm_soát_dị_ứng", "phản_ứng_miễn_dịch", "chăm_sóc_dị_nguyên"]
+      }
+    },
+    "immune_screening": {
+      "en": ["immune screening", "health check", "blood tests"],
+      "vi": ["sàng_lọc_miễn_dịch", "kiểm_tra_sức_khỏe", "xét_nghiệm_máu"],
+      "synonyms": {
+        "en": ["immune check", "wellness scan", "blood screening"],
+        "vi": ["kiểm_miễn_dịch", "quét_sức_khỏe", "sàng_lọc_máu"]
+      }
+    },
+    "antioxidant_foods": {
+      "en": ["antioxidant foods", "immune nutrition", "berry intake"],
+      "vi": ["thực_phẩm_chống_oxy_hóa", "dinh_dưỡng_miễn_dịch", "nạp_quả_mọng"],
+      "synonyms": {
+        "en": ["antioxidant diet", "healthy foods", "cell protection"],
+        "vi": ["chế_độ_chống_oxy_hóa", "thực_phẩm_lành_mạnh", "bảo_vệ_tế_bào"]
+      }
+    },
+    "omega_fatty_acids": {
+      "en": ["omega fatty acids", "healthy fats", "fish oil"],
+      "vi": ["axit_béo_omega", "chất_béo_lành_mạnh", "dầu_cá"],
+      "synonyms": {
+        "en": ["omega intake", "immune fats", "anti-inflammatory fats"],
+        "vi": ["nạp_omega", "mỡ_miễn_dịch", "chất_béo_chống_viêm"]
+      }
+    },
+    "protein_intake": {
+      "en": ["protein intake", "lean protein", "immune fuel"],
+      "vi": ["nạp_protein", "protein_nạc", "nhiên_liệu_miễn_dịch"],
+      "synonyms": {
+        "en": ["protein diet", "muscle support", "nutrition boost"],
+        "vi": ["chế_độ_protein", "hỗ_trợ_cơ", "tăng_dinh_dưỡng"]
+      }
+    },
+    "fiber_intake": {
+      "en": ["fiber intake", "dietary fiber", "gut support"],
+      "vi": ["nạp_chất_xơ", "chất_xơ_thực_phẩm", "hỗ_trợ_ruột"],
+      "synonyms": {
+        "en": ["fiber diet", "plant fiber", "digestive health"],
+        "vi": ["chế_độ_xơ", "xơ_thực_vật", "sức_khỏe_tiêu_hóa"]
+      }
+    },
+    "hydration_monitor": {
+      "en": ["hydration monitor", "fluid track", "water balance"],
+      "vi": ["giám_sát_nước", "theo_dõi_chất_lỏng", "cân_bằng_nước"],
+      "synonyms": {
+        "en": ["hydration check", "fluid balance", "water tracking"],
+        "vi": ["kiểm_tra_nước", "cân_bằng_chất_lỏng", "theo_dõi_nước"]
+      }
+    },
+    "environmental_toxins": {
+      "en": ["environmental toxins", "chemical exposure", "toxin avoidance"],
+      "vi": ["độc_tố_môi_trường", "phơi_nhiễm_hóa_chất", "tránh_độc_tố"],
+      "synonyms": {
+        "en": ["toxin control", "clean living", "chemical avoidance"],
+        "vi": ["kiểm_soát_độc_tố", "sống_sạch", "tránh_hóa_chất"]
+      }
+    },
+    "medication_safety": {
+      "en": ["medication safety", "safe meds", "drug caution"],
+      "vi": ["an_toàn_thuốc", "thuốc_an_toàn", "cẩn_thận_thuốc"],
+      "synonyms": {
+        "en": ["med precaution", "drug safety", "pill care"],
+        "vi": ["cảnh_báo_thuốc", "an_toàn_thuốc", "chăm_sóc_viên"]
+      }
+    },
+    "herbal_caution": {
+      "en": ["herbal caution", "supplement safety", "herb care"],
+      "vi": ["cảnh_báo_thảo_dược", "an_toàn_bổ_sung", "chăm_sóc_thảo_dược"],
+      "synonyms": {
+        "en": ["herbal safety", "supplement caution", "natural care"],
+        "vi": ["an_toàn_thảo_dược", "cảnh_báo_bổ_sung", "chăm_sóc_tự_nhiên"]
+      }
+    },
+    "mindful_eating": {
+      "en": ["mindful eating", "conscious eating", "slow eating"],
+      "vi": ["ăn_chánh_niệm", "ăn_ý_thức", "ăn_chậm"],
+      "synonyms": {
+        "en": ["mindful diet", "attentive eating", "aware meals"],
+        "vi": ["chế_độ_chánh_niệm", "ăn_chú_ý", "bữa_ăn_tỉnh_thức"]
+      }
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Supporting Your Immune System\n\nYour immune system helps protect you from illness. Simple daily habits can support it. This guide combines practical steps from nutrition, lifestyle, and prevention to help you stay healthy. Always check with a doctor for personal advice, especially if you notice symptoms like high fever, persistent fatigue, or swollen lymph nodes.\n\n### Nutrition for Immunity\nEating a varied diet can help your body fight illness. Foods rich in vitamin C, like oranges, or zinc, like nuts and beans, may support immune health. Probiotics from yogurt or fermented foods like kimchi can promote gut health, which is linked to immunity. Try filling half your plate with vegetables for fiber and adding lean proteins like eggs or tofu. Antioxidants from berries or omega-3s from fish like salmon can also help. Sip water regularly to stay hydrated, aiming for pale yellow urine as a guide.\n\n### Lifestyle Choices\nSleep, exercise, and stress management play a big role. Aim for a consistent bedtime to get enough rest. Even a short walk each day can support your immune system. To manage stress, try breathing slowly for a few minutes. Limiting alcohol and caffeine, and quitting smoking, can also help. These habits may reduce strain on your body and support overall health.\n\n### Prevention and Safety\nWashing your hands often, especially when you arrive somewhere, can reduce infections. Stay up to date with vaccines by checking your records. If you have allergies, read labels to avoid triggers. Be cautious with medications or herbal supplements, and always check with a doctor to avoid harmful interactions. Ventilating rooms daily can lower exposure to toxins.\n\n### When to Research More\nIf you notice signs like frequent infections or ongoing tiredness, it may be time to dig deeper. Schedule a health check or blood test to spot any issues early. Use reliable sources, like government health websites or trusted professionals, to learn more. Avoid unverified claims online, as they may mislead you.\n\n### Making a Plan\nDecide if you’re ready to act. A “go” means starting small changes, like adding a fruit to your meals or walking daily. A “no-go” means waiting until you have more information or professional advice. Track your habits to stay consistent, but don’t make big changes without guidance. Small steps, like eating mindfully or washing hands often, can add up.\n\n### Ethics and Safety\nRespect your privacy and others’. Don’t share personal health details publicly. Always prioritize safety—stop and ask a doctor if you’re unsure about a supplement or symptom. If you feel very sick, like with a high fever or severe allergic reaction, call emergency services right away.\n\n### Next Steps\nStart with one or two changes, like drinking more water or setting a bedtime. Check your progress weekly. If you’re unsure where to begin, talk to a healthcare provider. Small, steady actions can support your immune system over time.\n\n*This is not medical advice. Always consult a professional for health concerns.*",
+    "vi": "# Hỗ Trợ Hệ Miễn Dịch\n\nHệ miễn dịch bảo vệ cơ thể khỏi bệnh tật. Những thói quen đơn giản hằng ngày có thể giúp tăng cường chức năng miễn dịch. Hướng dẫn này kết hợp các bước thực tiễn về dinh dưỡng, lối sống và phòng ngừa để giúp bạn duy trì sức khỏe. Luôn tham khảo ý kiến bác sĩ, đặc biệt nếu bạn có các triệu chứng như sốt cao, mệt mỏi kéo dài hoặc sưng hạch bạch huyết.\n\n### Dinh Dưỡng Cho Miễn Dịch\nChế độ ăn đa dạng giúp cơ thể chống lại bệnh tật. Thực phẩm giàu vitamin C như cam, hoặc kẽm như các loại hạt và đậu, có thể hỗ trợ hệ miễn dịch. Probiotic từ sữa chua hoặc thực phẩm lên men như kimchi giúp cải thiện hệ vi sinh đường ruột, yếu tố quan trọng cho miễn dịch. Hãy để nửa đĩa ăn của bạn là rau củ, bổ sung thêm protein nạc như trứng hoặc đậu phụ. Chất chống oxy hóa từ quả mọng và omega-3 từ cá như cá hồi cũng có lợi. Uống đủ nước, hướng đến màu nước tiểu vàng nhạt làm dấu hiệu.\n\n### Lối Sống\nGiấc ngủ, vận động và kiểm soát căng thẳng đều quan trọng. Cố gắng đi ngủ đúng giờ để phục hồi năng lượng. Ngay cả một buổi đi bộ ngắn mỗi ngày cũng giúp tăng sức đề kháng. Để giảm căng thẳng, hãy thử hít thở chậm trong vài phút. Hạn chế rượu, caffeine và bỏ thuốc lá để giảm gánh nặng cho cơ thể. Những thói quen này góp phần duy trì sức khỏe tổng thể.\n\n### Phòng Ngừa Và An Toàn\nRửa tay thường xuyên, đặc biệt khi đến nơi công cộng, giúp giảm nguy cơ nhiễm khuẩn. Cập nhật vaccine bằng cách kiểm tra hồ sơ tiêm chủng. Nếu bạn có dị ứng, hãy đọc kỹ nhãn để tránh tác nhân. Thận trọng với thuốc hoặc thực phẩm bổ sung thảo dược, và luôn hỏi ý kiến bác sĩ để tránh tương tác có hại. Mở cửa thông gió mỗi ngày giúp giảm tiếp xúc với vi sinh và độc tố.\n\n### Khi Nào Cần Tìm Hiểu Thêm\nNếu bạn thường xuyên bị nhiễm trùng hoặc mệt mỏi kéo dài, nên kiểm tra sức khỏe sớm. Lên lịch khám hoặc xét nghiệm máu để phát hiện vấn đề tiềm ẩn. Tìm hiểu từ nguồn đáng tin cậy như trang web y tế chính phủ hoặc chuyên gia. Tránh tin vào các tuyên bố chưa được kiểm chứng trên mạng vì có thể gây hiểu lầm.\n\n### Lên Kế Hoạch\nHãy xác định xem bạn đã sẵn sàng hành động chưa. “Tiến hành” nghĩa là bắt đầu bằng những thay đổi nhỏ, như thêm trái cây vào bữa ăn hoặc đi bộ mỗi ngày. “Tạm dừng” nghĩa là chờ thêm thông tin hoặc tư vấn chuyên môn. Theo dõi thói quen của bạn để duy trì ổn định, và đừng thay đổi lớn nếu chưa có hướng dẫn. Những bước nhỏ như ăn uống chánh niệm hay rửa tay thường xuyên có thể mang lại hiệu quả lâu dài.\n\n### Đạo Đức Và An Toàn\nTôn trọng quyền riêng tư của bản thân và người khác. Không chia sẻ thông tin sức khỏe cá nhân công khai. Luôn ưu tiên an toàn — dừng lại và hỏi bác sĩ nếu bạn không chắc về thực phẩm bổ sung hoặc triệu chứng. Nếu bạn bị sốt cao hoặc phản ứng dị ứng nghiêm trọng, hãy gọi cấp cứu ngay.\n\n### Bước Tiếp Theo\nBắt đầu với một hoặc hai thay đổi nhỏ, như uống nhiều nước hơn hoặc đặt giờ ngủ cố định. Theo dõi tiến độ hàng tuần. Nếu chưa biết bắt đầu từ đâu, hãy hỏi bác sĩ. Những hành động nhỏ nhưng đều đặn sẽ giúp củng cố hệ miễn dịch theo thời gian.\n\n*Đây không phải là lời khuyên y tế. Luôn hỏi ý kiến chuyên gia cho các vấn đề sức khỏe.*",
+    "word_count_en": 592,
+    "word_count_vi": 604,
+    "updated_at": "2025-10-11T08:52:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "fever_response",
+      "title": {"en": "Fever Response", "vi": "Phản Ứng Sốt"},
+      "copy": {
+        "en": "Danger warning. High fever echoed. Dare: Seek urgent care. Call emergency services now.",
+        "vi": "Nguy hiểm. sốt_cao vang. Dám: Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."
+      },
+      "echo_en": "high fever",
+      "echo_vi": "sốt_cao",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["immune"],
+      "metadata": {"topic": "symptoms", "flags": ["crisis"], "outcome": "seek_help"},
+      "language": {"cefr": "B1", "en_focus": ["keywords", "collocations"], "vi_gloss": ["fever: sốt"], "practice": "Say: Call emergency now."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "persistent_fatigue",
+      "title": {"en": "Persistent Fatigue", "vi": "Mệt Mỏi Kéo Dài"},
+      "copy": {
+        "en": "Danger warning. Persistent fatigue echoed. Dare: Seek urgent care. Call emergency services now.",
+        "vi": "Nguy hiểm. mệt_mỏi_kéo_dài vang. Dám: Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."
+      },
+      "echo_en": "persistent fatigue",
+      "echo_vi": "mệt_mỏi_kéo_dài",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["immune"],
+      "metadata": {"topic": "symptoms", "flags": ["crisis"], "outcome": "seek_help"},
+      "language": {"cefr": "B1", "en_focus": ["keywords", "collocations"], "vi_gloss": ["fatigue: mệt mỏi"], "practice": "Say: Seek urgent help."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "swollen_lymph_nodes",
+      "title": {"en": "Swollen Lymph Nodes", "vi": "Sưng Hạch Bạch Huyết"},
+      "copy": {
+        "en": "Danger warning. Swollen lymph nodes echoed. Dare: Seek urgent care. Call emergency services now.",
+        "vi": "Nguy hiểm. sưng_hạch_bạch_huyết vang. Dám: Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."
+      },
+      "echo_en": "swollen lymph nodes",
+      "echo_vi": "sưng_hạch_bạch_huyết",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["immune"],
+      "metadata": {"topic": "symptoms", "flags": ["crisis"], "outcome": "seek_help"},
+      "language": {"cefr": "B1", "en_focus": ["keywords", "collocations"], "vi_gloss": ["lymph nodes: hạch bạch huyết"], "practice": "Say: Call for help."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "recurrent_infections",
+      "title": {"en": "Recurrent Infections", "vi": "Nhiễm Trùng Tái Phát"},
+      "copy": {
+        "en": "Danger warning. Recurrent infections echoed. Dare: Seek urgent care. Call emergency services now.",
+        "vi": "Nguy hiểm. nhiễm_trùng_tái_phát vang. Dám: Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."
+      },
+      "echo_en": "recurrent infections",
+      "echo_vi": "nhiễm_trùng_tái_phát",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["immune"],
+      "metadata": {"topic": "symptoms", "flags": ["crisis"], "outcome": "seek_help"},
+      "language": {"cefr": "B1", "en_focus": ["keywords", "collocations"], "vi_gloss": ["infection: nhiễm trùng"], "practice": "Say: Get urgent help."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "severe_allergic_reaction",
+      "title": {"en": "Severe Allergic Reaction", "vi": "Dị Ứng Nặng"},
+      "copy": {
+        "en": "Danger warning. Severe allergic reaction echoed. Dare: Seek urgent care. Call emergency services now.",
+        "vi": "Nguy hiểm. dị_ứng_nặng vang. Dám: Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."
+      },
+      "echo_en": "severe allergic reaction",
+      "echo_vi": "dị_ứng_nặng",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["immune"],
+      "metadata": {"topic": "symptoms", "flags": ["crisis"], "outcome": "seek_help"},
+      "language": {"cefr": "B1", "en_focus": ["keywords", "collocations"], "vi_gloss": ["allergy: dị ứng"], "practice": "Say: Call emergency now."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "suspected_immunodeficiency",
+      "title": {"en": "Suspected Immunodeficiency", "vi": "Nghi Suy Giảm Miễn Dịch"},
+      "copy": {
+        "en": "Danger warning. Suspected immunodeficiency echoed. Dare: Seek urgent care. Call emergency services now.",
+        "vi": "Nguy hiểm. nghi_suy_giảm_miễn_dịch vang. Dám: Tìm chăm sóc khẩn cấp. Gọi cấp cứu ngay."
+      },
+      "echo_en": "suspected immunodeficiency",
+      "echo_vi": "nghi_suy_giảm_miễn_dịch",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["symptoms"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["immune"],
+      "metadata": {"topic": "symptoms", "flags": ["crisis"], "outcome": "seek_help"},
+      "language": {"cefr": "B1", "en_focus": ["keywords", "collocations"], "vi_gloss": ["immunodeficiency: suy giảm miễn dịch"], "practice": "Say: Seek urgent help."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "balanced_nutrition",
+      "title": {"en": "Balanced Nutrition", "vi": "Dinh Dưỡng Cân Bằng"},
+      "copy": {
+        "en": "Varied diet may support immunity. Dare: Plan a colorful plate.",
+        "vi": "Chế độ đa dạng có thể hỗ trợ miễn dịch. Dám: Lên_kế_hoạch dĩa đa_màu."
+      },
+      "echo_en": "balanced nutrition",
+      "echo_vi": "dinh_dưỡng_cân_bằng",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune"],
+      "metadata": {"topic": "nutrition", "outcome": "plan_change"},
+      "language": {"cefr": "B1", "en_focus": ["keywords", "collocations"], "vi_gloss": ["nutrition: dinh dưỡng"], "practice": "Say: Eat balanced meals."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "vitamin_c_intake",
+      "title": {"en": "Vitamin C Intake", "vi": "Nạp Vitamin C"},
+      "copy": {
+        "en": "Vitamin C may support immunity. Dare: Eat an orange today.",
+        "vi": "Vitamin C có thể hỗ trợ miễn dịch. Dám: Ăn cam hôm nay."
+      },
+      "echo_en": "vitamin c intake",
+      "echo_vi": "nạp_vitamin_c",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune"],
+      "metadata": {"topic": "nutrition", "outcome": "plan_change"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["vitamin C: vitamin C"], "practice": "Say: Boost vitamin C."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "zinc_supplement",
+      "title": {"en": "Zinc Supplement", "vi": "Bổ Sung Kẽm"},
+      "copy": {
+        "en": "Zinc may support immunity. Dare: Add nuts or beans today.",
+        "vi": "Kẽm có thể hỗ trợ miễn dịch. Dám: Thêm hạt hoặc đậu hôm nay."
+      },
+      "echo_en": "zinc intake",
+      "echo_vi": "nạp_kẽm",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune"],
+      "metadata": {"topic": "nutrition", "outcome": "plan_change"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["zinc: kẽm"], "practice": "Say: Include zinc sources."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "vitamin_d_role",
+      "title": {"en": "Vitamin D Role", "vi": "Vai Trò Vitamin D"},
+      "copy": {
+        "en": "Vitamin D may support immunity. Dare: Get brief sunlight today.",
+        "vi": "Vitamin D có thể hỗ trợ miễn dịch. Dám: Ra nắng ngắn hôm nay."
+      },
+      "echo_en": "sunshine vitamin",
+      "echo_vi": "vitamin_nắng",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune"],
+      "metadata": {"topic": "nutrition", "outcome": "plan_change"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["vitamin D: vitamin D"], "practice": "Say: Check vitamin D intake."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "probiotic_foods",
+      "title": {"en": "Probiotic Foods", "vi": "Thực Phẩm Probiotic"},
+      "copy": {
+        "en": "Probiotics may support immunity. Dare: Add yogurt or kimchi.",
+        "vi": "Probiotic có thể hỗ trợ miễn dịch. Dám: Thêm sữa chua hoặc kimchi."
+      },
+      "echo_en": "probiotic foods",
+      "echo_vi": "thực_phẩm_probiotic",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune"],
+      "metadata": {"topic": "nutrition", "outcome": "self_regulate"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["probiotic: lợi khuẩn"], "practice": "Say: Try probiotic foods."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "sleep_routine",
+      "title": {"en": "Sleep Routine", "vi": "Thói Quen Ngủ"},
+      "copy": {
+        "en": "Sleep may strengthen immunity. Dare: Fix a consistent bedtime.",
+        "vi": "Ngủ có thể tăng miễn dịch. Dám: Ấn định giờ ngủ đều."
+      },
+      "echo_en": "sleep hygiene",
+      "echo_vi": "vệ_sinh_giấc_ngủ",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["lifestyle"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune"],
+      "metadata": {"topic": "lifestyle", "outcome": "plan_change"},
+      "language": {"cefr": "B1", "en_focus": ["collocations"], "vi_gloss": ["sleep: giấc ngủ"], "practice": "Say: Protect sleep time."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "exercise_habits",
+      "title": {"en": "Exercise Habits", "vi": "Thói Quen Tập Thể Dục"},
+      "copy": {
+        "en": "Activity may support immunity. Dare: Walk ten minutes today.",
+        "vi": "Vận động có thể hỗ trợ miễn dịch. Dám: Đi bộ mười phút hôm nay."
+      },
+      "echo_en": "physical activity",
+      "echo_vi": "hoạt_động_thể_chất",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["exercise"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune"],
+      "metadata": {"topic": "exercise", "outcome": "plan_change"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["exercise: tập thể dục"], "practice": "Say: Move daily."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "stress_management",
+      "title": {"en": "Stress Management", "vi": "Quản Lý Căng Thẳng"},
+      "copy": {
+        "en": "Calm may support immunity. Dare: Breathe five slow cycles.",
+        "vi": "Bình tĩnh có thể hỗ trợ miễn dịch. Dám: Thở chậm năm chu kỳ."
+      },
+      "echo_en": "calm techniques",
+      "echo_vi": "kỹ_thuật_bình_tĩnh",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["stress"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune"],
+      "metadata": {"topic": "stress", "outcome": "self_regulate"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["stress: căng thẳng"], "practice": "Say: Release tension now."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "smoking_cessation",
+      "title": {"en": "Smoking Cessation", "vi": "Cai Thuốc Lá"},
+      "copy": {
+        "en": "Quitting may support immunity. Dare: Text a quit buddy.",
+        "vi": "Bỏ thuốc có thể hỗ trợ miễn dịch. Dám: Nhắn bạn đồng hành cai."
+      },
+      "echo_en": "quit smoking",
+      "echo_vi": "bỏ_hút_thuốc",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["lifestyle"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["immune"],
+      "metadata": {"topic": "lifestyle", "outcome": "plan_change"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["smoking: hút thuốc"], "practice": "Say: I choose health."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "alcohol_moderation",
+      "title": {"en": "Alcohol Moderation", "vi": "Điều Tiết Rượu"},
+      "copy": {
+        "en": "Less alcohol may help immunity. Dare: Choose nonalcoholic tonight.",
+        "vi": "Giảm rượu có thể giúp miễn dịch. Dám: Chọn đồ không cồn tối nay."
+      },
+      "echo_en": "limit drinks",
+      "echo_vi": "giới_hạn_rượu",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["lifestyle"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["immune"],
+      "metadata": {"topic": "lifestyle", "outcome": "self_regulate"},
+      "language": {"cefr": "B1", "en_focus": ["collocations"], "vi_gloss": ["alcohol: rượu"], "practice": "Say: Skip the drink."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "caffeine_limits",
+      "title": {"en": "Caffeine Limits", "vi": "Giới Hạn Caffeine"},
+      "copy": {
+        "en": "Less caffeine may help immunity. Dare: Stop after one cup.",
+        "vi": "Giảm caffeine có thể giúp miễn dịch. Dám: Dừng sau một ly."
+      },
+      "echo_en": "limit caffeine",
+      "echo_vi": "giới_hạn_cà_phê",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["lifestyle"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["immune"],
+      "metadata": {"topic": "lifestyle", "outcome": "self_regulate"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["caffeine: cà phê"], "practice": "Say: Cut caffeine now."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "hand_hygiene",
+      "title": {"en": "Hand Hygiene", "vi": "Vệ Sinh Tay"},
+      "copy": {
+        "en": "Handwashing may reduce infections. Dare: Wash hands on arrival.",
+        "vi": "Rửa tay có thể giảm nhiễm trùng. Dám: Rửa tay khi tới."
+      },
+      "echo_en": "wash hands",
+      "echo_vi": "rửa_tay",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["prevention"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune"],
+      "metadata": {"topic": "prevention", "outcome": "self_regulate"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["hygiene: vệ sinh"], "practice": "Say: Wash hands now."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "vaccination_routine",
+      "title": {"en": "Vaccination Routine", "vi": "Lịch Tiêm Chủng"},
+      "copy": {
+        "en": "Vaccines may prevent illness. Dare: Check your vaccine record.",
+        "vi": "Vaccine có thể ngăn bệnh. Dám: Kiểm tra sổ tiêm chủng."
+      },
+      "echo_en": "vaccine schedule",
+      "echo_vi": "lịch_vaccine",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["prevention"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["immune"],
+      "metadata": {"topic": "prevention", "outcome": "plan_change"},
+      "language": {"cefr": "B1", "en_focus": ["collocations"], "vi_gloss": ["vaccination: tiêm chủng"], "practice": "Say: Update vaccines soon."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "allergy_management",
+      "title": {"en": "Allergy Management", "vi": "Quản Lý Dị Ứng"},
+      "copy": {
+        "en": "Avoiding triggers may reduce flares. Dare: Read labels carefully.",
+        "vi": "Tránh tác nhân có thể giảm bùng phát. Dám: Đọc nhãn cẩn thận."
+      },
+      "echo_en": "allergen avoidance",
+      "echo_vi": "tránh_dị_nguyên",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["prevention"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["immune"],
+      "metadata": {"topic": "prevention", "outcome": "self_regulate"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["allergy: dị ứng"], "practice": "Say: Avoid known triggers."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "immune_screening",
+      "title": {"en": "Immune Screening", "vi": "Sàng Lọc Miễn Dịch"},
+      "copy": {
+        "en": "Screening may detect issues. Dare: Schedule a blood test.",
+        "vi": "Sàng lọc có thể phát hiện vấn đề. Dám: Lên lịch xét nghiệm máu."
+      },
+      "echo_en": "health check",
+      "echo_vi": "kiểm_tra_sức_khỏe",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["screening"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["immune"],
+      "metadata": {"topic": "screening", "outcome": "plan_change"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["screening: sàng lọc"], "practice": "Say: Book screening soon."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "antioxidant_foods",
+      "title": {"en": "Antioxidant Foods", "vi": "Thực Phẩm Chống Oxy Hóa"},
+      "copy": {
+        "en": "Antioxidants may support immunity. Dare: Add berries at lunch.",
+        "vi": "Chống oxy hóa có thể hỗ trợ miễn dịch. Dám: Thêm quả mọng bữa trưa."
+      },
+      "echo_en": "berry intake",
+      "echo_vi": "nạp_quả_mọng",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune"],
+      "metadata": {"topic": "nutrition", "outcome": "plan_change"},
+      "language": {"cefr": "B1", "en_focus": ["collocations"], "vi_gloss": ["antioxidant: chống oxy hóa"], "practice": "Say: Choose colorful foods."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "omega_fatty_acids",
+      "title": {"en": "Omega Fatty Acids", "vi": "Axit Béo Omega"},
+      "copy": {
+        "en": "Omega-3s may support immunity. Dare: Buy salmon or mackerel.",
+        "vi": "Omega-3 có thể hỗ trợ miễn dịch. Dám: Mua cá hồi hoặc thu."
+      },
+      "echo_en": "healthy fats",
+      "echo_vi": "chất_béo_lành_mạnh",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune"],
+      "metadata": {"topic": "nutrition", "outcome": "plan_change"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["omega-3: omega-3"], "practice": "Say: Eat fish twice weekly."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "protein_intake",
+      "title": {"en": "Protein Intake", "vi": "Nạp Protein"},
+      "copy": {
+        "en": "Protein may support immunity. Dare: Add eggs or tofu.",
+        "vi": "Protein có thể hỗ trợ miễn dịch. Dám: Thêm trứng hoặc đậu phụ."
+      },
+      "echo_en": "lean protein",
+      "echo_vi": "protein_nạc",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency.: ":"routine",
+      "severity_level": 2,
+      "systems": ["immune"],
+      "metadata": {"topic": "nutrition", "outcome": "plan_change"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["protein: đạm"], "practice": "Say: Choose lean protein."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "fiber_intake",
+      "title": {"en": "Fiber Intake", "vi": "Nạp Chất Xơ"},
+      "copy": {
+        "en": "Fiber may support immunity. Dare: Fill half plate vegetables.",
+        "vi": "Chất xơ có thể hỗ trợ miễn dịch. Dám: Nửa dĩa là rau."
+      },
+      "echo_en": "dietary fiber",
+      "echo_vi": "chất_xơ_thực_phẩm",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune"],
+      "metadata": {"topic": "nutrition", "outcome": "plan_change"},
+      "language": {"cefr": "B1", "en_focus": ["collocations"], "vi_gloss": ["fiber: chất xơ"], "practice": "Say: Add beans and greens."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "hydration_monitor",
+      "title": {"en": "Hydration Monitor", "vi": "Giám Sát Nước"},
+      "copy": {
+        "en": "Hydration may support immunity. Dare: Check pale yellow urine.",
+        "vi": "Giữ nước có thể hỗ trợ miễn dịch. Dám: Kiểm tra nước tiểu vàng nhạt."
+      },
+      "echo_en": "water balance",
+      "echo_vi": "cân_bằng_nước",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["immune"],
+      "metadata": {"topic": "nutrition", "outcome": "self_regulate"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["hydration: giữ nước"], "practice": "Say: Sip water hourly."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "environmental_toxins",
+      "title": {"en": "Environmental Toxins", "vi": "Độc Tố Môi Trường"},
+      "copy": {
+        "en": "Toxin avoidance may protect immunity. Dare: Ventilate rooms daily.",
+        "vi": "Tránh độc tố có thể bảo vệ miễn dịch. Dám: Thông gió phòng mỗi ngày."
+      },
+      "echo_en": "toxin avoidance",
+      "echo_vi": "tránh_độc_tố",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["prevention"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["immune"],
+      "metadata": {"topic": "prevention", "outcome": "self_regulate"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["toxin: độc tố"], "practice": "Say: Open windows now."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "medication_safety",
+      "title": {"en": "Medication Safety", "vi": "An Toàn Thuốc"},
+      "copy": {
+        "en": "Medication safety may prevent harm. Dare: Read instructions first.",
+        "vi": "An toàn thuốc có thể ngừa hại. Dám: Đọc hướng dẫn trước."
+      },
+      "echo_en": "safe meds",
+      "echo_vi": "thuốc_an_toàn",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["safety"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune"],
+      "metadata": {"topic": "safety", "outcome": "self_regulate"},
+      "language": {"cefr": "B1", "en_focus": ["collocations"], "vi_gloss": ["medication: thuốc"], "practice": "Say: Use medicines safely."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "herbal_caution",
+      "title": {"en": "Herbal Caution", "vi": "Cảnh Báo Thảo Dược"},
+      "copy": {
+        "en": "Herb interactions may occur. Dare: Ask a clinician first.",
+        "vi": "Tương tác thảo dược có thể xảy ra. Dám: Hỏi chuyên viên trước."
+      },
+      "echo_en": "supplement safety",
+      "echo_vi": "an_toàn_bổ_sung",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["safety"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["immune"],
+      "metadata": {"topic": "safety", "outcome": "plan_change"},
+      "language": {"cefr": "B1", "en_focus": ["keywords"], "vi_gloss": ["herbal: thảo dược"], "practice": "Say: Check interactions first."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    },
+    {
+      "slug": "mindful_eating",
+      "title": {"en": "Mindful Eating", "vi": "Ăn Chánh Niệm"},
+      "copy": {
+        "en": "Mindful bites may help immunity. Dare: Chew slowly at meals.",
+        "vi": "Ăn chánh niệm có thể giúp miễn dịch. Dám: Nhai chậm khi ăn."
+      },
+      "echo_en": "conscious eating",
+      "echo_vi": "ăn_ý_thức",
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune"],
+      "metadata": {"topic": "nutrition", "outcome": "self_regulate"},
+      "language": {"cefr": "B1", "en_focus": ["collocations"], "vi_gloss": ["mindful: chánh niệm"], "practice": "Say: Slow down eating."},
+      "created_at": "2025-10-09T13:25:00Z",
+      "updated_at": "2025-10-09T13:25:00Z"
+    }
+  ]
+}

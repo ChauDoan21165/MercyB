@@ -1,0 +1,10 @@
+
+ RUN  v3.2.4 /Users/admin/MercyB
+
+ ✓ tests/integration/placement-v3-forensics/forensics.test.ts (16 tests) 3ms
+
+ Test Files  1 passed (1)
+      Tests  16 passed (16)
+   Start at  07:10:50
+   Duration  585ms (transform 37ms, setup 37ms, collect 17ms, tests 3ms, environment 231ms, prepare 43ms)
+

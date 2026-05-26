@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    "types": ["node"],
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "strict": false
+  },
+  "include": ["scripts/**/*.ts", "scripts/**/*.tsx", "scripts/**/*.mts", "scripts/**/*.cts"],
+  "exclude": ["scripts/_scratch/**", "node_modules", "dist", "supabase"]
+}

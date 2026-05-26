@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="build-version" content="0.9.23-force-deploy-v2" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover"
+    />
+
+    <title>MercyBlade — Ngoại ngữ cho người Việt và Tiếng Việt cho thế giới</title>
+    <meta
+      name="description"
+      content="Ngoại ngữ cho người Việt và Tiếng Việt cho thế giới nói tiếng Anh. MercyBlade sửa lỗi tiếng Anh của người Việt, giải thích bằng tiếng Việt — AI thầy giáo hiểu cách người Việt học. Luyện IELTS, VSTEP, TOEIC và phát âm."
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Warm the Google Fonts connection. The font CSS itself is loaded
+         route-scoped (room + tier-map surfaces only) via
+         src/lib/loadGoogleFont.ts — it is deliberately NOT globally
+         <link>ed here, so the system-font landing path keeps its
+         zero-font-network main paint. These two zero-byte hints just
+         remove the serial DNS + TLS handshake from the font fetch when
+         a font-using route mounts. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload the Home hero LCP image so the browser discovers and
+         downloads it immediately from the HTML shell instead of waiting
+         for the SPA render. fetchpriority="high" signals this is the
+         LCP candidate. Lighthouse PR 3. -->
+    <link rel="preload" as="image" href="/teacher-mercy.avif" type="image/avif" fetchpriority="high" />
+    <script>
+      (function () {
+        try {
+          document.documentElement.setAttribute(
+            'data-mb-route',
+            window.location.pathname.indexOf('/ai-tutor') === 0 ? 'ai-tutor' : 'default'
+          );
+        } catch (e) {
+          document.documentElement.setAttribute('data-mb-route', 'default');
+        }
+      })();
+    </script>
+    <style>
+      html[data-mb-route="ai-tutor"] #mb-static-hero {
+        display: none !important;
+      }
+    </style>
+
+    <!-- Block Chrome auto-translate site-wide. Triggers React reconciliation
+         crashes on Vietnamese-locale Chrome Mobile users when <font>/<b>
+         wrappers desync React's cached DOM positions. App is bilingual VI/EN
+         by design — users don't need browser-level translation.
+         Closes MERCYBLADE-WEB-Y. Related: WEB-G, WEB-K, WEB-V, WEB-H.
+         See reports/a13-web-y-react-crash-diagnosis.md. -->
+    <meta name="google" content="notranslate" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Mercy Blade" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+    <!-- Open Graph / Facebook / Zalo. og:image is a committed 1200×630
+         PNG (regenerate via scripts/generate-og-image.mjs) — Zalo and
+         Facebook scrapers do not execute JS, so this static head is the
+         share-preview source of truth. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mercyblade.com/" />
+    <meta property="og:title" content="MercyBlade — Ngoại ngữ cho người Việt và Tiếng Việt cho thế giới" />
+    <meta
+      property="og:description"
+      content="Ngoại ngữ cho người Việt và Tiếng Việt cho thế giới nói tiếng Anh. MercyBlade sửa lỗi tiếng Anh của người Việt, giải thích bằng tiếng Việt — AI thầy giáo hiểu cách người Việt học."
+    />
+    <meta property="og:site_name" content="MercyBlade" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:image" content="https://mercyblade.com/brand/og-image.png" />
+    <meta property="og:image:secure_url" content="https://mercyblade.com/brand/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="MercyBlade — Ngoại ngữ cho người Việt và Tiếng Việt cho thế giới. Sửa lỗi tiếng Anh của người Việt, giải thích bằng tiếng Việt."
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://mercyblade.com/" />
+    <meta property="twitter:title" content="MercyBlade — Ngoại ngữ cho người Việt và Tiếng Việt cho thế giới" />
+    <meta
+      property="twitter:description"
+      content="Sửa lỗi tiếng Anh của người Việt, giải thích bằng tiếng Việt — AI thầy giáo hiểu cách người Việt học. Luyện IELTS, VSTEP, TOEIC và phát âm."
+    />
+    <meta property="twitter:image" content="https://mercyblade.com/brand/og-image.png" />
+    <meta
+      property="twitter:image:alt"
+      content="MercyBlade — Ngoại ngữ cho người Việt và Tiếng Việt cho thế giới."
+    />
+
+    <!-- Structured data — site-wide Organization schema. Static and
+         route-invariant (true for every URL) so it is safe in the SPA
+         shell; non-JS crawlers (Google rich results, Zalo, Facebook)
+         read it directly. Per-route Article/Product/Breadcrumb schema +
+         canonical are handled client-side by src/components/seo/SeoMeta.tsx
+         on pages that opt in — do NOT add a static canonical or per-route
+         schema here, the shell cannot know the route and a blanket
+         canonical would point every page at "/". -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "MercyBlade",
+        "alternateName": "Mercy Blade",
+        "url": "https://mercyblade.com/",
+        "logo": "https://mercyblade.com/icons/icon-512.png",
+        "description": "Ngoại ngữ cho người Việt và Tiếng Việt cho thế giới nói tiếng Anh. MercyBlade sửa lỗi tiếng Anh của người Việt, giải thích bằng tiếng Việt — AI thầy giáo hiểu cách người Việt học."
+      }
+    </script>
+
+    <!-- Theme Loader - Prevents flicker during hydration -->
+    <script src="/theme-loader.js"></script>
+
+    <!--
+      Marketing tracking slots (UTM + Facebook Pixel + GA4) are
+      injected programmatically by src/lib/tracking/* at boot, gated
+      on consent + env vars (VITE_FB_PIXEL_ID, VITE_GA4_MEASUREMENT_ID).
+      When env vars are unset (dev / staging) nothing loads here.
+      See reports/a4-tracking-runbook.md for the full pipeline.
+    -->
+    <!-- mb:tracking-slot:fb-pixel -->
+    <!-- mb:tracking-slot:ga4 -->
+  </head>
+  <body>
+    <div id="root">
+      <!-- Static hero shell: provides instant LCP before React loads.
+           removed by Home.tsx on mount. aria-hidden so screen readers
+           wait for the real interactive component. -->
+      <div id="mb-static-hero" aria-hidden="true"
+           style="display:flex;flex-direction:column;align-items:center;
+                  justify-content:center;min-height:100svh;padding:20px 16px;
+                  text-align:center;font-family:system-ui,-apple-system,sans-serif;
+                  background:linear-gradient(180deg,rgba(255,252,245,0.98),rgba(248,243,234,0.94))">
+        <picture>
+          <source srcset="/teacher-mercy.avif" type="image/avif" />
+          <source srcset="/teacher-mercy.webp" type="image/webp" />
+          <img src="/teacher-mercy.png" alt="Teacher Mercy"
+               width="1024" height="1024"
+               style="width:min(320px,70vw);height:auto;border-radius:28px;
+                      box-shadow:0 18px 42px rgba(0,0,0,0.07)" />
+        </picture>
+        <h1 style="font-size:clamp(28px,8vw,42px);font-weight:950;
+                   line-height:1.05;color:rgba(10,10,10,0.96);
+                   margin:16px 0 0">
+          Small Steps.
+          <span style="background-image:linear-gradient(135deg,#B45309,#D97706 28%,#14B8A6 74%,#0F766E 100%);
+                       -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+                       background-clip:text">
+            Real Progress.
+          </span>
+        </h1>
+        <p style="font-size:18px;font-weight:500;color:rgba(0,0,0,0.55);margin:8px 0 0">
+          English for real <span style="color:rgba(13,148,136,0.92)">life</span>.
+        </p>
+        <p style="font-size:13px;font-weight:600;color:rgba(0,0,0,0.35);margin:6px 0 0">
+          See your pronunciation score in 12 seconds — no signup.
+        </p>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- Safety net: if React doesn't remove the static hero within
+         5s (e.g. non-Home route), remove it to prevent stuck shell. -->
+    <script>
+      setTimeout(function () {
+        var el = document.getElementById('mb-static-hero');
+        if (el) el.remove();
+      }, 5000);
+    </script>
+  </body>
+</html>

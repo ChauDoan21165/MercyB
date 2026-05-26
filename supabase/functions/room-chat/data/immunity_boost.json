@@ -1,0 +1,537 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "immunity_boost",
+  "description": "Echologic Mercy Blade room for boosting immunity and promoting overall health",
+  "description_vi": "Phòng Mercy Blade về tăng cường miễn dịch và thúc đẩy sức khỏe tổng thể",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "default": "en",
+    "fallback": "vi",
+    "i18n_required": true,
+    "i18n_verified": true
+  },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+  "safety_disclaimer_vi": "Hướng dẫn mang tính giáo dục; không thay thế tư vấn y tế chuyên nghiệp hoặc chăm sóc khẩn cấp.",
+  "crisis_footer": {
+    "en": "If you experience severe symptoms or suspect an infection, call {emergency_number} immediately.",
+    "vi": "Nếu bạn gặp triệu chứng nghiêm trọng hoặc nghi ngờ nhiễm trùng, hãy gọi {emergency_number} ngay lập tức."
+  },
+  "meta": {
+    "created_at": "2025-10-06T21:30:00+09:00",
+    "updated_at": "2025-10-06T21:30:00+09:00",
+    "checksum_sha256": null,
+    "meta_notes": "Keyword-driven; field-tested tone for immunity enhancement and prevention | artifact_ids unique | batch=final/1 | batch_total=1"
+  },
+  "enums": {
+    "tags": [
+      "immunity",
+      "nutrition",
+      "lifestyle",
+      "vaccination",
+      "sleep",
+      "exercise",
+      "hygiene",
+      "prevention",
+      "child_health",
+      "adult_health",
+      "elderly_care",
+      "hydration"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["immune_system", "cardiovascular_system", "respiratory_system"]
+  },
+  "keywords": {
+    "immune_nutrition": {
+      "en": [
+        "immune_nutrition",
+        "diet_for_immunity",
+        "nutrient_boost",
+        "immune_foods"
+      ],
+      "vi": [
+        "dinh dưỡng miễn dịch",
+        "chế độ ăn cho miễn dịch",
+        "tăng cường dinh dưỡng",
+        "thực phẩm miễn dịch"
+      ]
+    },
+    "balanced_diet": {
+      "en": ["balanced_diet", "healthy_eating", "nutrient_mix", "diet_balance"],
+      "vi": [
+        "chế độ ăn cân bằng",
+        "ăn uống lành mạnh",
+        "hỗn hợp dinh dưỡng",
+        "cân bằng chế độ ăn"
+      ]
+    },
+    "fruits_veggies": {
+      "en": [
+        "fruits_veggies",
+        "produce_intake",
+        "vitamin_foods",
+        "antioxidant_foods"
+      ],
+      "vi": [
+        "trái cây rau củ",
+        "nạp sản phẩm tươi",
+        "thực phẩm vitamin",
+        "thực phẩm chống oxy hóa"
+      ]
+    },
+    "probiotics": {
+      "en": ["probiotics", "gut_health", "fermented_foods", "probiotic_foods"],
+      "vi": [
+        "probiotic",
+        "sức khỏe ruột",
+        "thực phẩm lên men",
+        "thực phẩm probiotic"
+      ]
+    },
+    "vitamin_c": {
+      "en": [
+        "vitamin_c",
+        "immune_vitamin",
+        "citrus_foods",
+        "antioxidant_vitamin"
+      ],
+      "vi": [
+        "vitamin c",
+        "vitamin miễn dịch",
+        "thực phẩm cam quýt",
+        "vitamin chống oxy hóa"
+      ]
+    },
+    "zinc_intake": {
+      "en": ["zinc_intake", "mineral_boost", "zinc_foods", "immune_mineral"],
+      "vi": [
+        "nạp kẽm",
+        "tăng cường khoáng",
+        "thực phẩm kẽm",
+        "khoáng miễn dịch"
+      ]
+    },
+    "sleep_hygiene": {
+      "en": ["sleep_hygiene", "rest_routine", "sleep_quality", "night_rest"],
+      "vi": [
+        "vệ sinh giấc ngủ",
+        "thói quen nghỉ ngơi",
+        "chất lượng giấc ngủ",
+        "nghỉ đêm"
+      ]
+    },
+    "exercise_regular": {
+      "en": [
+        "exercise_regular",
+        "physical_activity",
+        "workout_routine",
+        "fitness_habit"
+      ],
+      "vi": [
+        "tập thể dục đều",
+        "hoạt động thể chất",
+        "lịch tập luyện",
+        "thói quen thể dục"
+      ]
+    },
+    "stress_reduction": {
+      "en": [
+        "stress_reduction",
+        "calm_techniques",
+        "relaxation_practice",
+        "mental_ease"
+      ],
+      "vi": [
+        "giảm căng thẳng",
+        "kỹ thuật bình tĩnh",
+        "thực hành thư giãn",
+        "thoải mái tâm lý"
+      ]
+    },
+    "hygiene_practices": {
+      "en": [
+        "hygiene_practices",
+        "hand_washing",
+        "clean_habits",
+        "germ_prevention"
+      ],
+      "vi": [
+        "thực hành vệ sinh",
+        "rửa tay",
+        "thói quen sạch",
+        "ngăn ngừa vi trùng"
+      ]
+    },
+    "vaccination_update": {
+      "en": [
+        "vaccination_update",
+        "immunization_check",
+        "vaccine_booster",
+        "shot_update"
+      ],
+      "vi": [
+        "cập nhật tiêm chủng",
+        "kiểm tra miễn dịch",
+        "tiêm nhắc lại",
+        "cập nhật tiêm"
+      ]
+    },
+    "hydration_routine": {
+      "en": [
+        "hydration_routine",
+        "water_intake",
+        "daily_hydration",
+        "fluid_balance"
+      ],
+      "vi": [
+        "thói quen nước",
+        "nạp nước",
+        "nước hàng ngày",
+        "cân bằng chất lỏng"
+      ]
+    },
+    "immune_vitamin_d": {
+      "en": [
+        "immune_vitamin_d",
+        "sunlight_exposure",
+        "vitamin_d_foods",
+        "supplement_d"
+      ],
+      "vi": [
+        "vitamin d miễn dịch",
+        "tiếp xúc nắng",
+        "thực phẩm vitamin d",
+        "bổ sung d"
+      ]
+    }
+  },
+  "entries": [
+    {
+      "slug": "immune_nutrition",
+      "title": { "en": "Immune Nutrition", "vi": "Dinh Dưỡng Miễn Dịch" },
+      "copy": {
+        "en": "Eat nutrient-rich foods to support immunity. Dare: Add berries to your meal.",
+        "vi": "Ăn thực phẩm giàu dinh dưỡng để hỗ trợ miễn dịch. Dám: Thêm quả mọng vào bữa ăn."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["immunity", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "v4w5x6y7-z8a9-4b0c-1d2e-3f4g5h6i7j8k",
+      "created_at": "2025-10-06T21:30:00+09:00",
+      "updated_at": "2025-10-06T21:30:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "Meal time", "vi": "Thời gian bữa ăn" },
+        "type": { "en": "Dietary", "vi": "Chế độ ăn" }
+      }
+    },
+    {
+      "slug": "balanced_diet",
+      "title": { "en": "Balanced Diet", "vi": "Chế Độ Ăn Cân Bằng" },
+      "copy": {
+        "en": "Balanced meals with veggies and proteins for immunity. Dare: Plan a balanced meal.",
+        "vi": "Bữa ăn cân bằng với rau củ và protein cho miễn dịch. Dám: Lập kế hoạch bữa cân bằng."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["immunity", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "w5x6y7z8-a9b0-4c1d-2e3f-4g5h6i7j8k9l",
+      "created_at": "2025-10-06T21:30:00+09:00",
+      "updated_at": "2025-10-06T21:30:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "Meal time", "vi": "Thời gian bữa ăn" },
+        "type": { "en": "Dietary", "vi": "Chế độ ăn" }
+      }
+    },
+    {
+      "slug": "fruits_veggies",
+      "title": { "en": "Fruits and Veggies", "vi": "Trái Cây Rau Củ" },
+      "copy": {
+        "en": "Fruits and veggies with vitamins for immunity boost. Dare: Eat a colorful salad.",
+        "vi": "Trái cây rau củ với vitamin để tăng miễn dịch. Dám: Ăn salad đa màu."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["immunity", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "x6y7z8a9-b0c1-4d2e-3f4g-5h6i7j8k9l0m",
+      "created_at": "2025-10-06T21:30:00+09:00",
+      "updated_at": "2025-10-06T21:30:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "Meal time", "vi": "Thời gian bữa ăn" },
+        "type": { "en": "Dietary", "vi": "Chế độ ăn" }
+      }
+    },
+    {
+      "slug": "probiotics",
+      "title": { "en": "Probiotics", "vi": "Probiotic" },
+      "copy": {
+        "en": "Probiotics from yogurt for gut and immunity. Dare: Add yogurt to breakfast.",
+        "vi": "Probiotic từ sữa chua cho ruột và miễn dịch. Dám: Thêm sữa chua vào sáng."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["immunity", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "y7z8a9b0-c1d2-4e3f-5g6h-7i8j9k0l1m2n",
+      "created_at": "2025-10-06T21:30:00+09:00",
+      "updated_at": "2025-10-06T21:30:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "Meal time", "vi": "Thời gian bữa ăn" },
+        "type": { "en": "Dietary", "vi": "Chế độ ăn" }
+      }
+    },
+    {
+      "slug": "vitamin_c",
+      "title": { "en": "Vitamin C", "vi": "Vitamin C" },
+      "copy": {
+        "en": "Vitamin C from oranges for immunity support. Dare: Eat citrus fruit.",
+        "vi": "Vitamin C từ cam cho hỗ trợ miễn dịch. Dám: Ăn trái cây họ cam."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["immunity", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "z8a9b0c1-d2e3-4f5g-6h7i-8j9k0l1m2n3o",
+      "created_at": "2025-10-06T21:30:00+09:00",
+      "updated_at": "2025-10-06T21:30:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "Meal time", "vi": "Thời gian bữa ăn" },
+        "type": { "en": "Dietary", "vi": "Chế độ ăn" }
+      }
+    },
+    {
+      "slug": "zinc_intake",
+      "title": { "en": "Zinc Intake", "vi": "Nạp Kẽm" },
+      "copy": {
+        "en": "Zinc from nuts for immunity enhancement. Dare: Snack on nuts.",
+        "vi": "Kẽm từ hạt cho tăng miễn dịch. Dám: Ăn vặt hạt."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["immunity", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "a9b0c1d2-e3f4-5g6h-7i8j-9k0l1m2n3o4p",
+      "created_at": "2025-10-06T21:30:00+09:00",
+      "updated_at": "2025-10-06T21:30:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "Meal time", "vi": "Thời gian bữa ăn" },
+        "type": { "en": "Dietary", "vi": "Chế độ ăn" }
+      }
+    },
+    {
+      "slug": "sleep_hygiene",
+      "title": { "en": "Sleep Hygiene", "vi": "Vệ Sinh Giấc Ngủ" },
+      "copy": {
+        "en": "Good sleep habits for immunity. Dare: Set bedtime routine.",
+        "vi": "Thói quen ngủ tốt cho miễn dịch. Dám: Đặt lịch ngủ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["immunity", "sleep"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "sleep" },
+      "artifact_id": "b0c1d2e3-f4g5-6h7i-8j9k-0l1m2n3o4p5q",
+      "created_at": "2025-10-06T21:30:00+09:00",
+      "updated_at": "2025-10-06T21:30:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "7-9 hours", "vi": "7-9 giờ" },
+        "type": { "en": "Rest", "vi": "Nghỉ ngơi" }
+      }
+    },
+    {
+      "slug": "exercise_regular",
+      "title": { "en": "Regular Exercise", "vi": "Tập Thể Dục Đều" },
+      "copy": {
+        "en": "Regular physical activity boosts immunity. Dare: Walk 30 minutes.",
+        "vi": "Hoạt động thể chất đều đặn tăng miễn dịch. Dám: Đi bộ 30 phút."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["immunity", "exercise"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "lifestyle" },
+      "artifact_id": "c1d2e3f4-g5h6-7i8j-9k0l-1m2n3o4p5q6r",
+      "created_at": "2025-10-06T21:30:00+09:00",
+      "updated_at": "2025-10-06T21:30:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Moderate", "vi": "Vừa phải" },
+        "time": { "en": "30 minutes", "vi": "30 phút" },
+        "type": { "en": "Aerobic", "vi": "Aerobic" }
+      }
+    },
+    {
+      "slug": "stress_reduction",
+      "title": { "en": "Stress Reduction", "vi": "Giảm Căng Thẳng" },
+      "copy": {
+        "en": "Reduce stress with meditation for immunity. Dare: Meditate 10 minutes.",
+        "vi": "Giảm căng thẳng với thiền cho miễn dịch. Dám: Thiền 10 phút."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["immunity", "lifestyle"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "lifestyle" },
+      "artifact_id": "d2e3f4g5-h6i7-8j9k-0l1m-2n3o4p5q6r7s",
+      "created_at": "2025-10-06T21:30:00+09:00",
+      "updated_at": "2025-10-06T21:30:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "10 minutes", "vi": "10 phút" },
+        "type": { "en": "Meditation", "vi": "Thiền" }
+      }
+    },
+    {
+      "slug": "hygiene_practices",
+      "title": { "en": "Hygiene Practices", "vi": "Thực Hành Vệ Sinh" },
+      "copy": {
+        "en": "Wash hands regularly to prevent illness. Dare: Practice handwashing.",
+        "vi": "Rửa tay đều để ngừa bệnh. Dám: Thực hành rửa tay."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["immunity", "hygiene"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "hygiene" },
+      "artifact_id": "e3f4g5h6-i7j8-9k0l-1m2n-3o4p5q6r7s8t",
+      "created_at": "2025-10-06T21:30:00+09:00",
+      "updated_at": "2025-10-06T21:30:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "2 minutes", "vi": "2 phút" },
+        "type": { "en": "Hygiene", "vi": "Vệ sinh" }
+      }
+    },
+    {
+      "slug": "vaccination_update",
+      "title": { "en": "Vaccination Update", "vi": "Cập Nhật Tiêm Chủng" },
+      "copy": {
+        "en": "Update vaccinations for immunity protection. Dare: Check vaccine records.",
+        "vi": "Cập nhật tiêm chủng để bảo vệ miễn dịch. Dám: Kiểm tra hồ sơ vaccine."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["immunity", "vaccination"],
+      "urgency": "soon",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "vaccination" },
+      "artifact_id": "f4g5h6i7-j8k9-0l1m-2n3o-4p5q6r7s8t9u",
+      "created_at": "2025-10-06T21:30:00+09:00",
+      "updated_at": "2025-10-06T21:30:00+09:00",
+      "fitt": {
+        "frequency": { "en": "As needed", "vi": "Khi cần" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "15 minutes", "vi": "15 phút" },
+        "type": { "en": "Vaccination", "vi": "Tiêm chủng" }
+      }
+    },
+    {
+      "slug": "hydration_routine",
+      "title": { "en": "Hydration Routine", "vi": "Thói Quen Nước" },
+      "copy": {
+        "en": "Drink water regularly for immunity and health. Dare: Track daily water intake.",
+        "vi": "Uống nước đều cho miễn dịch và sức khỏe. Dám: Theo dõi lượng nước uống hằng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["immunity", "hydration"],
+      "urgency": "routine",
+      "severity_level": 1,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "hydration" },
+      "artifact_id": "g5h6i7j8-k9l0-1m2n-3o4p-5q6r7s8t9u0v",
+      "created_at": "2025-10-06T21:30:00+09:00",
+      "updated_at": "2025-10-06T21:30:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "Ongoing", "vi": "Liên tục" },
+        "type": { "en": "Fluid intake", "vi": "Hấp thụ chất lỏng" }
+      }
+    },
+    {
+      "slug": "immune_vitamin_d",
+      "title": { "en": "Immune Vitamin D", "vi": "Vitamin D Miễn Dịch" },
+      "copy": {
+        "en": "Get sunlight or vitamin D supplements for immunity. Dare: Spend 15 minutes in the sun daily.",
+        "vi": "Tiếp xúc ánh nắng hoặc bổ sung vitamin D cho miễn dịch. Dám: Dành 15 phút dưới nắng hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["immunity", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["immune_system"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "h6i7j8k9-l0m1-2n3o-4p5q-6r7s8t9u0v1w",
+      "created_at": "2025-10-06T21:30:00+09:00",
+      "updated_at": "2025-10-06T21:30:00+09:00",
+      "fitt": {
+        "frequency": { "en": "Daily", "vi": "Hàng ngày" },
+        "intensity": { "en": "Low", "vi": "Nhẹ" },
+        "time": { "en": "15 minutes", "vi": "15 phút" },
+        "type": {
+          "en": "Sun exposure or supplement",
+          "vi": "Tiếp xúc ánh nắng hoặc bổ sung"
+        }
+      }
+    }
+  ],
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Boosting Immunity\n\nImmunity helps your body fight illness. Good habits can support it. This guide ties together tips from nutrition, lifestyle, and prevention to help boost health. Always talk to a doctor for personal advice.\n\n### Nutrition for Immunity\nEat a balanced diet with veggies and proteins. Add fruits like oranges for vitamin C. Include probiotics from yogurt for gut health. Zinc from nuts can aid immune cells. Vitamin D from sunlight or supplements supports defense. These foods can help your body stay strong.\n\n### Lifestyle Choices\nGet good sleep with a routine—aim for 7-9 hours. Regular exercise like walking boosts cells that fight germs. Reduce stress with meditation to avoid weakening immunity. Wash hands often to prevent spread. Stay hydrated with water for cell function.\n\n### Prevention\nUpdate vaccines to protect from diseases.\n\n### When to Research More\nIf often sick, look into sources like health websites for causes. Research foods or exercises. Use books for tips. Avoid unverified info.\n\n### Making a Plan\nDecide if a change fits—a “go” for adding fruits, or “no-go” if needing doctor input. Track to see effects.\n\n### Ethics and Safety\nKeep health details private. Prioritize safety—call if severe symptoms.\n\n### Next Steps\nStart with one tip, like 15 minutes in sun. Check progress after a week. See doctor if needed. Small steps can strengthen immunity over time.\n\n*This is not medical advice. Consult professionals.*",
+    "vi": "# Tăng Cường Miễn Dịch\n\nHệ miễn dịch giúp cơ thể chống lại bệnh tật và phục hồi nhanh hơn. Duy trì các thói quen lành mạnh có thể củng cố khả năng phòng vệ tự nhiên. Hướng dẫn này tổng hợp các mẹo thực tiễn về dinh dưỡng, lối sống và phòng ngừa để hỗ trợ sức khỏe miễn dịch. Luôn trao đổi với bác sĩ để được tư vấn cá nhân, đặc biệt nếu bạn thường xuyên bị ốm hoặc có bệnh nền.\n\n### Dinh Dưỡng Cho Miễn Dịch\nĂn uống đa dạng và cân bằng để cung cấp đầy đủ vitamin và khoáng chất cần thiết. Tăng cường rau xanh, trái cây tươi và protein nạc như cá, gà hoặc đậu. Thêm thực phẩm giàu **vitamin C** (cam, ổi, kiwi) giúp cơ thể chống oxy hóa. **Kẽm** từ hạt bí, đậu và thịt nạc giúp tế bào miễn dịch hoạt động hiệu quả. **Probiotic** trong sữa chua hoặc thực phẩm lên men như kimchi hỗ trợ sức khỏe đường ruột — nơi chứa nhiều tế bào miễn dịch. Đảm bảo đủ **vitamin D** bằng cách tắm nắng 10–15 phút mỗi ngày hoặc bổ sung nếu được bác sĩ khuyến nghị. Những yếu tố này giúp cơ thể mạnh mẽ và phục hồi nhanh hơn.\n\n### Lối Sống Hỗ Trợ Miễn Dịch\nGiấc ngủ đủ và đều đặn (7–9 giờ mỗi đêm) giúp cơ thể tái tạo và điều hòa hormone miễn dịch. Tập thể dục thường xuyên, như đi bộ, bơi lội hoặc yoga, giúp tăng lưu thông máu và hỗ trợ hoạt động của tế bào miễn dịch. Giảm căng thẳng bằng thiền, hít thở sâu hoặc viết nhật ký, vì stress kéo dài có thể làm yếu hệ miễn dịch. Rửa tay thường xuyên và giữ vệ sinh cá nhân để ngăn ngừa nhiễm khuẩn. Uống đủ nước suốt ngày để duy trì hoạt động tế bào và loại bỏ độc tố.\n\n### Phòng Ngừa Bệnh Tật\nDuy trì tiêm chủng đầy đủ để bảo vệ khỏi bệnh truyền nhiễm. Kiểm tra lại lịch vaccine, bao gồm cúm, viêm gan và uốn ván. Tránh hút thuốc và hạn chế rượu — cả hai đều làm giảm hiệu quả miễn dịch. Duy trì cân nặng hợp lý và tránh thức khuya thường xuyên để không gây mệt mỏi cho cơ thể.\n\n### Khi Nào Nên Tìm Hiểu Thêm\nNếu bạn thường xuyên bị cảm, mệt mỏi hoặc nhiễm trùng nhẹ, hãy tìm hiểu thêm từ nguồn y tế đáng tin cậy. Nghiên cứu các thực phẩm, thói quen hoặc bài tập giúp tăng sức đề kháng. Đọc sách hướng dẫn về miễn dịch hoặc dinh dưỡng khoa học. Tránh tin vào các quảng cáo thực phẩm bổ sung hoặc “tăng miễn dịch cấp tốc” không được kiểm chứng.\n\n### Lên Kế Hoạch\nXác định bước thay đổi nhỏ, dễ thực hiện. “Tiến hành” có thể là thêm một phần rau vào bữa ăn hoặc dành 15 phút phơi nắng buổi sáng. “Tạm dừng” nếu bạn cần hỏi ý kiến bác sĩ trước khi dùng thực phẩm bổ sung. Theo dõi thay đổi trong năng lượng, giấc ngủ và sức khỏe tổng thể để xem điều gì hiệu quả nhất.\n\n### Đạo Đức Và An Toàn\nBảo mật thông tin sức khỏe cá nhân. Không tự ý dùng thuốc hoặc thực phẩm bổ sung liều cao mà không có hướng dẫn. Ưu tiên an toàn — nếu bạn có triệu chứng bất thường hoặc bệnh kéo dài, hãy gặp bác sĩ để được kiểm tra.\n\n### Bước Tiếp Theo\nBắt đầu bằng một hành động nhỏ, như uống thêm nước hoặc ra ngoài hít thở không khí trong lành. Kiểm tra lại sau một tuần và duy trì thói quen tốt. Nếu cần, gặp bác sĩ để được tư vấn cụ thể. Những thay đổi nhỏ, kiên trì sẽ giúp củng cố hệ miễn dịch theo thời gian.\n\n*Đây không phải là lời khuyên y khoa. Hãy tham khảo chuyên gia cho các vấn đề sức khỏe.*",
+
+    "word_count_en": 546,
+    "word_count_vi": 552,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  }
+}

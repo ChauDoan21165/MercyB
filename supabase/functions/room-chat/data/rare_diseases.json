@@ -1,0 +1,464 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "rare_diseases",
+  "description": "Echologic Mercy Blade room for rare disease management and related health guidance",
+  "description_vi": "Phòng Mercy Blade về quản lý bệnh hiếm gặp và hướng dẫn sức khỏe liên quan",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "default": "en",
+    "fallback": "vi",
+    "i18n_required": true,
+    "i18n_verified": true
+  },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical advice or emergency care.",
+  "safety_disclaimer_vi": "Hướng dẫn mang tính giáo dục; không thay thế tư vấn y tế chuyên nghiệp hoặc chăm sóc khẩn cấp.",
+  "crisis_footer": {
+    "en": "For emergencies, contact local crisis support, emergency services, or the nearest hospital.",
+    "vi": "Trong trường hợp khẩn cấp, liên hệ hỗ trợ khủng hoảng địa phương, dịch vụ khẩn cấp hoặc bệnh viện gần nhất."
+  },
+  "meta": {
+    "created_at": "2025-10-06T22:11:00+09:00",
+    "updated_at": "2025-10-11T00:00:00Z",
+    "checksum_sha256": "placeholder_sha256_hash_to_be_generated",
+    "meta_notes": "Keyword-driven; field-tested tone for rare disease management and support | artifact_ids updated to UUIDv4 | batch=final/1 | batch_total=1 | Per-entry attribution is optional and inherited from default_attribution.",
+    "default_attribution": "Best Practices / Thực hành tốt nhất"
+  },
+  "enums": {
+    "tags": [
+      "rare_diseases", "chronic_conditions", "genetic_disorders", "symptom_management",
+      "nutrition", "mental_health", "child_health", "adult_health", "elderly_care",
+      "specialized_care", "prevention"
+    ],
+    "urgency": ["routine", "soon", "immediate"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["genetic_system", "immune_system", "nervous_system", "musculoskeletal_system", "mental_health"]
+  },
+  "keywords": {
+    "rare_disease_management": {
+      "en": ["rare_disease_management", "chronic_rare_conditions", "specialized_care", "disease_control"],
+      "vi": ["quản lý bệnh hiếm gặp", "tình trạng mãn tính hiếm", "chăm sóc chuyên biệt", "kiểm soát bệnh"]
+    },
+    "genetic_disorder_support": {
+      "en": ["genetic_disorder_support", "genetic_disease_care", "rare_genetic_conditions", "genetic_health"],
+      "vi": ["hỗ trợ rối loạn di truyền", "chăm sóc bệnh di truyền", "tình trạng di truyền hiếm", "sức khỏe di truyền"]
+    },
+    "rare_disease_nutrition": {
+      "en": ["rare_disease_nutrition", "dietary_support", "nutrition_for_rare_diseases", "specialized_diet"],
+      "vi": ["dinh dưỡng bệnh hiếm gặp", "hỗ trợ chế độ ăn", "dinh dưỡng cho bệnh hiếm", "chế độ ăn chuyên biệt"]
+    },
+    "rare_disease_symptom_management": {
+      "en": ["rare_disease_symptom_management", "symptom_control", "chronic_symptom_care", "rare_disease_symptoms"],
+      "vi": ["quản lý triệu chứng bệnh hiếm", "kiểm soát triệu chứng", "chăm sóc triệu chứng mãn tính", "triệu chứng bệnh hiếm"]
+    },
+    "rare_disease_in_children": {
+      "en": ["rare_disease_in_children", "pediatric_rare_diseases", "child_genetic_conditions", "kids_rare_disease"],
+      "vi": ["bệnh hiếm gặp trẻ em", "bệnh hiếm nhi khoa", "tình trạng di truyền trẻ", "bệnh hiếm trẻ"]
+    },
+    "rare_disease_in_adults": {
+      "en": ["rare_disease_in_adults", "adult_rare_diseases", "grownup_genetic_conditions", "adult_chronic"],
+      "vi": ["bệnh hiếm gặp người lớn", "bệnh hiếm trưởng thành", "tình trạng di truyền người lớn", "mãn tính người lớn"]
+    },
+    "rare_disease_in_elderly": {
+      "en": ["rare_disease_in_elderly", "senior_rare_diseases", "elderly_genetic_conditions", "aged_chronic"],
+      "vi": ["bệnh hiếm gặp người cao tuổi", "bệnh hiếm người già", "tình trạng di truyền người cao tuổi", "mãn tính người già"]
+    },
+    "rare_disease_mental_health": {
+      "en": ["rare_disease_mental_health", "mental_wellness", "emotional_support", "chronic_mental_care"],
+      "vi": ["sức khỏe tinh thần bệnh hiếm", "sức khỏe tinh thần", "hỗ trợ cảm xúc", "chăm sóc tinh thần mãn tính"]
+    },
+    "rare_disease_exercise": {
+      "en": ["rare_disease_exercise", "physical_activity_rare", "gentle_exercise", "chronic_fitness"],
+      "vi": ["tập thể dục bệnh hiếm", "hoạt động thể chất hiếm", "tập thể dục nhẹ nhàng", "thể lực mãn tính"]
+    },
+    "rare_disease_sleep": {
+      "en": ["rare_disease_sleep", "rest_for_rare_diseases", "sleep_health", "chronic_sleep_care"],
+      "vi": ["giấc ngủ bệnh hiếm", "nghỉ ngơi cho bệnh hiếm", "sức khỏe giấc ngủ", "chăm sóc giấc ngủ mãn tính"]
+    },
+    "rare_disease_stress_management": {
+      "en": ["rare_disease_stress_management", "stress_reduction_rare", "mental_wellness", "chronic_stress_care"],
+      "vi": ["quản lý căng thẳng bệnh hiếm", "giảm căng thẳng hiếm", "sức khỏe tinh thần", "chăm sóc căng thẳng mãn tính"]
+    },
+    "rare_disease_medication": {
+      "en": ["rare_disease_medication", "specialized_treatment", "chronic_medication", "rare_disease_therapy"],
+      "vi": ["thuốc bệnh hiếm", "điều trị chuyên biệt", "thuốc mãn tính", "liệu pháp bệnh hiếm"]
+    },
+    "rare_disease_monitoring": {
+      "en": ["rare_disease_monitoring", "symptom_tracking", "chronic_health_check", "rare_disease_care"],
+      "vi": ["theo dõi bệnh hiếm", "theo dõi triệu chứng", "kiểm tra sức khỏe mãn tính", "chăm sóc bệnh hiếm"]
+    },
+    "rare_disease_medical_consultation": {
+      "en": ["rare_disease_medical_consultation", "specialist_consultation", "chronic_care", "rare_disease_support"],
+      "vi": ["tư vấn y tế bệnh hiếm", "tư vấn chuyên gia", "chăm sóc mãn tính", "hỗ trợ bệnh hiếm"]
+    },
+    "rare_disease_support_groups": {
+      "en": ["rare_disease_support_groups", "patient_support", "community_care", "emotional_support"],
+      "vi": ["nhóm hỗ trợ bệnh hiếm", "hỗ trợ bệnh nhân", "chăm sóc cộng đồng", "hỗ trợ cảm xúc"]
+    },
+    "rare_disease_genetic_testing": {
+      "en": ["rare_disease_genetic_testing", "genetic_diagnosis", "testing_for_rare_diseases", "genetic_health_check"],
+      "vi": ["xét nghiệm di truyền bệnh hiếm", "chẩn đoán di truyền", "xét nghiệm bệnh hiếm", "kiểm tra sức khỏe di truyền"]
+    },
+    "rare_disease_prevention": {
+      "en": ["rare_disease_prevention", "genetic_prevention", "chronic_prevention", "health_maintenance"],
+      "vi": ["phòng ngừa bệnh hiếm", "phòng ngừa di truyền", "phòng ngừa mãn tính", "duy trì sức khỏe"]
+    },
+    "rare_disease_child_health": {
+      "en": ["rare_disease_child_health", "pediatric_rare_health", "child_chronic_care", "kids_genetic_health"],
+      "vi": ["sức khỏe bệnh hiếm trẻ em", "sức khỏe hiếm nhi khoa", "chăm sóc mãn tính trẻ", "sức khỏe di truyền trẻ"]
+    },
+    "rare_disease_adult_health": {
+      "en": ["rare_disease_adult_health", "adult_rare_health", "grownup_chronic_care", "adult_genetic_health"],
+      "vi": ["sức khỏe bệnh hiếm người lớn", "sức khỏe hiếm trưởng thành", "chăm sóc mãn tính người lớn", "sức khỏe di truyền người lớn"]
+    },
+    "rare_disease_elderly_health": {
+      "en": ["rare_disease_elderly_health", "elderly_rare_health", "senior_chronic_care", "aged_genetic_health"],
+      "vi": ["sức khỏe bệnh hiếm người cao tuổi", "sức khỏe hiếm người già", "chăm sóc mãn tính người cao tuổi", "sức khỏe di truyền người cao tuổi"]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Supporting People with Rare Diseases\n\nRare diseases can be hard to handle, but some steps might help with daily life. This guide brings together ideas from the room's entries to offer practical tips. Keep in mind this is for general information—always talk to a doctor for personal advice.\n\n### Key Practices from Entries\nThe room has entries on management and support. For example, rare disease management and symptom management suggest tracking how you feel and following a plan. Nutrition from rare disease nutrition recommends balanced meals to support health. Mental health and stress management entries suggest relaxation techniques to deal with worry. Exercise from rare disease exercise proposes gentle activities like walking. Sleep from rare disease sleep is important for rest. Medication from rare disease medication reminds to follow doctor's orders. Monitoring with rare disease monitoring helps spot changes. Medical consultation and genetic testing suggest seeing specialists for tests and plans. Support groups encourage connecting with others. Prevention focuses on healthy habits. Age-specific entries for children, adults, and elderly adjust tips, like play for kids or careful care for older people.\n\n### Using Research Tasks\nTo learn more, use research tasks. For instance, search for \\\"support groups for [disease name]\\\" to find communities, tying to support groups entry. Or look up \\\"gentle exercises for rare diseases\\\" for ideas. Check trusted sites like health organizations for info on genetic testing. Use research when unsure about a habit, to see if it's safe or useful.\n\n### Deciding Go or No-Go\nTry a practice for a week and note effects. If nutrition helps energy, as in nutrition entry, that's go—keep it. If exercise causes fatigue, no-go and stop. For stress techniques, if they calm you, continue; if not, try another. Entries like medical consultation remind to check with doctors before changes. If symptoms don't improve, that's no-go for self-help—seek help.\n\n### Ethics, Privacy, and Safety\nStart slow and listen to your body for safety. The crisis footer says get help in emergencies. Keep health details private. Ethics mean choosing what's right without pressure. Always prioritize safety.\n\n### Actionable Next Steps\nPick one entry, like nutrition, and add a healthy food today. Track in a journal for a week. Research a group if needed. Add exercise or stress tips next. If helpful, build on it; if not, adjust. Schedule a doctor visit for guidance.\n\n(Word count: 594)",
+    "vi": "# Hỗ Trợ Người Mắc Bệnh Hiếm\n\nBệnh hiếm gặp có thể khó khăn, nhưng một số bước đơn giản có thể giúp quản lý cuộc sống hàng ngày. Hướng dẫn này kết hợp các ý tưởng từ các mục trong phòng để đưa ra gợi ý thực tế. Lưu ý, đây là thông tin chung—luôn tham khảo ý kiến bác sĩ cho lời khuyên cá nhân.\n\n### Thực Hành Chính từ Các Mục\nPhòng này có các mục về quản lý và hỗ trợ. Ví dụ, quản lý bệnh hiếm và quản lý triệu chứng khuyên nên theo dõi cảm giác và tuân theo kế hoạch. Dinh dưỡng từ dinh dưỡng bệnh hiếm đề xuất bữa ăn cân bằng để hỗ trợ sức khỏe. Sức khỏe tinh thần và quản lý căng thẳng gợi ý kỹ thuật thư giãn để giảm lo lắng. Tập thể dục từ tập thể dục bệnh hiếm đề xuất hoạt động nhẹ nhàng như đi bộ. Giấc ngủ từ giấc ngủ bệnh hiếm quan trọng cho nghỉ ngơi. Thuốc từ thuốc bệnh hiếm nhắc nhở tuân theo chỉ dẫn bác sĩ. Theo dõi với theo dõi bệnh hiếm giúp nhận biết thay đổi. Tư vấn y tế và xét nghiệm di truyền khuyên gặp chuyên gia để kiểm tra và lập kế hoạch. Nhóm hỗ trợ khuyến khích kết nối với người khác. Phòng ngừa tập trung vào thói quen lành mạnh. Các mục dành cho trẻ em, người lớn và người cao tuổi điều chỉnh gợi ý, như chơi cho trẻ hoặc chăm sóc cẩn thận cho người già.\n\n### Sử Dụng Nghiên Cứu\nĐể tìm hiểu thêm, hãy dùng nhiệm vụ nghiên cứu. Ví dụ, tìm kiếm \\\"nhóm hỗ trợ cho [tên bệnh]\\\" để tìm cộng đồng, liên quan đến mục nhóm hỗ trợ. Hoặc tra cứu \\\"bài tập nhẹ cho bệnh hiếm\\\" để lấy ý tưởng. Kiểm tra các trang web đáng tin cậy như tổ chức y tế để biết thông tin về xét nghiệm di truyền. Dùng nghiên cứu khi không chắc về một thói quen, để xem nó có an toàn hoặc hữu ích không.\n\n### Quyết Định Tiếp Tục hay Dừng\nThử một thói quen trong một tuần và ghi lại hiệu quả. Nếu dinh dưỡng tăng năng lượng, như trong mục dinh dưỡng, thì tiếp tục. Nếu tập thể dục gây mệt mỏi, dừng lại. Với kỹ thuật giảm căng thẳng, nếu chúng giúp bạn bình tĩnh, tiếp tục; nếu không, thử cách khác. Các mục như tư vấn y tế nhắc nhở kiểm tra với bác sĩ trước khi thay đổi. Nếu triệu chứng không cải thiện, đó là dấu hiệu dừng tự xử lý—tìm sự trợ giúp.\n\n### Đạo Đức, Quyền Riêng Tư và An Toàn\nBắt đầu chậm và lắng nghe cơ thể để đảm bảo an toàn. Chân trang khủng hoảng nói rằng hãy tìm giúp đỡ trong trường hợp khẩn cấp. Giữ thông tin sức khỏe riêng tư. Đạo đức nghĩa là chọn điều đúng mà không bị áp lực. Luôn ưu tiên an toàn.\n\n### Bước Hành Động Tiếp Theo\nChọn một mục, như dinh dưỡng, và thêm một thực phẩm lành mạnh hôm nay. Theo dõi trong nhật ký một tuần. Nghiên cứu một nhóm nếu cần. Thêm bài tập hoặc mẹo giảm căng thẳng tiếp theo. Nếu hữu ích, tiếp tục; nếu không, điều chỉnh. Lên lịch thăm bác sĩ để được hướng dẫn.\n\n(Đếm từ: 596)",
+    "word_count_en": 594,
+    "word_count_vi": 596,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "rare_disease_management",
+      "title": {"en": "Rare Disease Management", "vi": "Quản lý bệnh hiếm gặp"},
+      "copy": {
+        "en": "Manage rare diseases with specialized care. Dare: follow a tailored health plan.",
+        "vi": "Quản lý bệnh hiếm gặp với chăm sóc chuyên biệt. Dám: tuân theo kế hoạch sức khỏe phù hợp."
+      },
+      "tags": ["rare_diseases", "chronic_conditions"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["genetic_system"],
+      "metadata": {"topic": "management", "flags": ["crisis"]},
+      "artifact_id": "1a2b3c4d-5e6f-4a1b-8c23-d4e5f6a7b8c9",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "genetic_disorder_support",
+      "title": {"en": "Genetic Disorder Support", "vi": "Hỗ trợ rối loạn di truyền"},
+      "copy": {
+        "en": "Support genetic disorders with medical guidance. Dare: seek genetic counseling.",
+        "vi": "Hỗ trợ rối loạn di truyền với hướng dẫn y tế. Dám: tìm tư vấn di truyền."
+      },
+      "tags": ["rare_diseases", "genetic_disorders"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["genetic_system"],
+      "metadata": {"topic": "support"},
+      "artifact_id": "2b3c4d5e-6f7a-4b2c-9d34-e5f6a7b8c9d0",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_nutrition",
+      "title": {"en": "Rare Disease Nutrition", "vi": "Dinh dưỡng bệnh hiếm gặp"},
+      "copy": {
+        "en": "Use nutrition to support rare disease health. Dare: consult a dietitian.",
+        "vi": "Sử dụng dinh dưỡng để hỗ trợ sức khỏe bệnh hiếm. Dám: tham khảo chuyên gia dinh dưỡng."
+      },
+      "tags": ["rare_diseases", "nutrition"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["genetic_system"],
+      "metadata": {"topic": "nutrition"},
+      "artifact_id": "3c4d5e6f-7a8b-4c3d-8e45-f6a7b8c9d0e1",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_symptom_management",
+      "title": {"en": "Rare Disease Symptom Management", "vi": "Quản lý triệu chứng bệnh hiếm"},
+      "copy": {
+        "en": "Manage symptoms with medical advice. Dare: keep a symptom journal.",
+        "vi": "Quản lý triệu chứng với tư vấn y tế. Dám: ghi nhật ký triệu chứng."
+      },
+      "tags": ["rare_diseases", "symptom_management"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["genetic_system"],
+      "metadata": {"topic": "symptom_management"},
+      "artifact_id": "4d5e6f7a-8b9c-4d4e-9f56-a7b8c9d0e1f2",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_in_children",
+      "title": {"en": "Rare Disease in Children", "vi": "Bệnh hiếm gặp trẻ em"},
+      "copy": {
+        "en": "Care for children with rare diseases. Dare: consult pediatric specialists.",
+        "vi": "Chăm sóc trẻ em mắc bệnh hiếm. Dám: tham khảo chuyên gia nhi khoa."
+      },
+      "tags": ["rare_diseases", "child_health"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["genetic_system"],
+      "metadata": {"topic": "child_health", "flags": ["crisis"]},
+      "artifact_id": "5e6f7a8b-9c0d-4e5f-8a67-b8c9d0e1f2a3",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_in_adults",
+      "title": {"en": "Rare Disease in Adults", "vi": "Bệnh hiếm gặp người lớn"},
+      "copy": {
+        "en": "Manage adult rare diseases with care. Dare: follow specialized plans.",
+        "vi": "Quản lý bệnh hiếm ở người lớn với chăm sóc. Dám: tuân theo kế hoạch chuyên biệt."
+      },
+      "tags": ["rare_diseases", "adult_health"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["genetic_system"],
+      "metadata": {"topic": "adult_health", "flags": ["crisis"]},
+      "artifact_id": "6f7a8b9c-0d1e-4f6a-9b78-c9d0e1f2a3b4",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_in_elderly",
+      "title": {"en": "Rare Disease in Elderly", "vi": "Bệnh hiếm gặp người cao tuổi"},
+      "copy": {
+        "en": "Support elderly with rare diseases. Dare: seek geriatric care advice.",
+        "vi": "Hỗ trợ người cao tuổi mắc bệnh hiếm. Dám: tìm lời khuyên chăm sóc người già."
+      },
+      "tags": ["rare_diseases", "elderly_care"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["genetic_system"],
+      "metadata": {"topic": "elderly_care", "flags": ["crisis"]},
+      "artifact_id": "7a8b9c0d-1e2f-4a7b-8c89-d0e1f2a3b4c5",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_mental_health",
+      "title": {"en": "Rare Disease Mental Health", "vi": "Sức khỏe tinh thần bệnh hiếm"},
+      "copy": {
+        "en": "Address mental health in rare disease patients. Dare: seek counseling support.",
+        "vi": "Giải quyết sức khỏe tinh thần ở bệnh nhân bệnh hiếm. Dám: tìm hỗ trợ tư vấn."
+      },
+      "tags": ["rare_diseases", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": {"topic": "mental_health"},
+      "artifact_id": "8b9c0d1e-2f3a-4b8c-9d90-e1f2a3b4c5d6",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_exercise",
+      "title": {"en": "Rare Disease Exercise", "vi": "Tập thể dục bệnh hiếm"},
+      "copy": {
+        "en": "Engage in gentle exercise for rare disease support. Dare: consult doctor for plans.",
+        "vi": "Tham gia tập thể dục nhẹ nhàng để hỗ trợ bệnh hiếm. Dám: tham khảo bác sĩ về kế hoạch."
+      },
+      "tags": ["rare_diseases", "prevention"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["musculoskeletal_system"],
+      "metadata": {"topic": "exercise"},
+      "artifact_id": "9c0d1e2f-3a4b-4c9d-8e01-f2a3b4c5d6e7",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_sleep",
+      "title": {"en": "Rare Disease Sleep", "vi": "Giấc ngủ bệnh hiếm"},
+      "copy": {
+        "en": "Prioritize sleep for rare disease health. Dare: create a sleep routine.",
+        "vi": "Ưu tiên giấc ngủ cho sức khỏe bệnh hiếm. Dám: thiết lập thói quen ngủ."
+      },
+      "tags": ["rare_diseases", "prevention"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nervous_system"],
+      "metadata": {"topic": "sleep"},
+      "artifact_id": "a0d1e2f3-4b5c-4d0e-9f12-a3b4c5d6e7f8",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_stress_management",
+      "title": {"en": "Rare Disease Stress Management", "vi": "Quản lý căng thẳng bệnh hiếm"},
+      "copy": {
+        "en": "Manage stress in rare disease care. Dare: practice daily relaxation.",
+        "vi": "Quản lý căng thẳng trong chăm sóc bệnh hiếm. Dám: thực hành thư giãn hàng ngày."
+      },
+      "tags": ["rare_diseases", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": {"topic": "stress_management"},
+      "artifact_id": "b1e2f3a4-5c6d-4e1f-8a23-b4c5d6e7f8a9",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_medication",
+      "title": {"en": "Rare Disease Medication", "vi": "Thuốc bệnh hiếm"},
+      "copy": {
+        "en": "Follow prescribed medications for rare diseases. Dare: adhere to dosage strictly.",
+        "vi": "Tuân theo thuốc được kê cho bệnh hiếm. Dám: tuân thủ liều lượng nghiêm ngặt."
+      },
+      "tags": ["rare_diseases", "chronic_conditions"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["genetic_system"],
+      "metadata": {"topic": "medication"},
+      "artifact_id": "c2f3a4b5-6d7e-4f2a-9b34-c5d6e7f8a9b0",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_monitoring",
+      "title": {"en": "Rare Disease Monitoring", "vi": "Theo dõi bệnh hiếm"},
+      "copy": {
+        "en": "Track symptoms to manage rare diseases. Dare: use a health app.",
+        "vi": "Theo dõi triệu chứng để quản lý bệnh hiếm. Dám: sử dụng ứng dụng sức khỏe."
+      },
+      "tags": ["rare_diseases", "symptom_management"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["genetic_system"],
+      "metadata": {"topic": "monitoring"},
+      "artifact_id": "a3b4c5d6-e7f8-49a0-b1c2-d3e4f5a6b7c8",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_medical_consultation",
+      "title": {"en": "Rare Disease Medical Consultation", "vi": "Tư vấn y tế bệnh hiếm"},
+      "copy": {
+        "en": "Consult specialists for rare disease care plans. Dare: schedule regular checkups.",
+        "vi": "Tham khảo chuyên gia để lập kế hoạch chăm sóc bệnh hiếm. Dám: lên lịch kiểm tra định kỳ."
+      },
+      "tags": ["rare_diseases", "specialized_care"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["genetic_system"],
+      "metadata": {"topic": "medical_consultation", "flags": ["crisis"]},
+      "artifact_id": "b4c5d6e7-f8a9-40b1-a2d3-e4f5a6b7c8d9",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_support_groups",
+      "title": {"en": "Rare Disease Support Groups", "vi": "Nhóm hỗ trợ bệnh hiếm"},
+      "copy": {
+        "en": "Join support groups for rare disease patients. Dare: attend a group meeting.",
+        "vi": "Tham gia nhóm hỗ trợ cho bệnh nhân bệnh hiếm. Dám: tham dự một buổi họp nhóm."
+      },
+      "tags": ["rare_diseases", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": {"topic": "support_groups"},
+      "artifact_id": "c5d6e7f8-a9b0-41c2-a3e4-f5a6b7c8d9e0",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_genetic_testing",
+      "title": {"en": "Rare Disease Genetic Testing", "vi": "Xét nghiệm di truyền bệnh hiếm"},
+      "copy": {
+        "en": "Use genetic testing to diagnose rare diseases. Dare: discuss with a geneticist.",
+        "vi": "Sử dụng xét nghiệm di truyền để chẩn đoán bệnh hiếm. Dám: thảo luận với chuyên gia di truyền."
+      },
+      "tags": ["rare_diseases", "genetic_disorders"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["genetic_system"],
+      "metadata": {"topic": "genetic_testing"},
+      "artifact_id": "d6e7f8a9-b0c1-42d3-a4f5-a6b7c8d9e0f1",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_prevention",
+      "title": {"en": "Rare Disease Prevention", "vi": "Phòng ngừa bệnh hiếm"},
+      "copy": {
+        "en": "Adopt healthy habits to support rare disease management. Dare: maintain a balanced lifestyle.",
+        "vi": "Áp dụng thói quen lành mạnh để hỗ trợ quản lý bệnh hiếm. Dám: duy trì lối sống cân bằng."
+      },
+      "tags": ["rare_diseases", "prevention"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["genetic_system"],
+      "metadata": {"topic": "prevention"},
+      "artifact_id": "e7f8a9b0-c1d2-43e4-a5a6-b7c8d9e0f1a2",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_child_health",
+      "title": {"en": "Rare Disease Child Health", "vi": "Sức khỏe bệnh hiếm trẻ em"},
+      "copy": {
+        "en": "Support children with rare diseases through specialized care. Dare: seek pediatric expert advice.",
+        "vi": "Hỗ trợ trẻ em mắc bệnh hiếm bằng chăm sóc chuyên biệt. Dám: tìm lời khuyên chuyên gia nhi khoa."
+      },
+      "tags": ["rare_diseases", "child_health"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["genetic_system"],
+      "metadata": {"topic": "child_health", "flags": ["crisis"]},
+      "artifact_id": "f8a9b0c1-d2e3-44f5-a6b7-c8d9e0f1a2b3",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_adult_health",
+      "title": {"en": "Rare Disease Adult Health", "vi": "Sức khỏe bệnh hiếm người lớn"},
+      "copy": {
+        "en": "Manage adult rare diseases with tailored plans. Dare: follow a specialist care plan.",
+        "vi": "Quản lý bệnh hiếm ở người lớn bằng kế hoạch phù hợp. Dám: tuân theo kế hoạch chăm sóc chuyên gia."
+      },
+      "tags": ["rare_diseases", "adult_health"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["genetic_system"],
+      "metadata": {"topic": "adult_health", "flags": ["crisis"]},
+      "artifact_id": "a9b0c1d2-e3f4-45a6-b7c8-d9e0f1a2b3c4",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    },
+    {
+      "slug": "rare_disease_elderly_health",
+      "title": {"en": "Rare Disease Elderly Health", "vi": "Sức khỏe bệnh hiếm người cao tuổi"},
+      "copy": {
+        "en": "Support elderly with rare diseases through careful monitoring. Dare: consult specialists regularly.",
+        "vi": "Hỗ trợ người cao tuổi mắc bệnh hiếm bằng theo dõi cẩn thận. Dám: tham khảo chuyên gia thường xuyên."
+      },
+      "tags": ["rare_diseases", "elderly_care"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["genetic_system"],
+      "metadata": {"topic": "elderly_care", "flags": ["crisis"]},
+      "artifact_id": "b0c1d2e3-f4a5-46b7-c8d9-e0f1a2b3c4d5",
+      "created_at": "2025-10-06T22:11:00+09:00",
+      "updated_at": "2025-10-07T16:34:00+09:00"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "fixture_name": "vi-writing-cases",
+    "schema_version": 1,
+    "purpose": "Placeholder writing-level eval cases — paragraph cohesion, register, discourse-pragmatic transfer. The current L1 detector is sentence-level grammar only, so most cases here are expected_failure (gap markers) waiting for a writing-level detector.",
+    "source_notes": [
+      "Seed cases authored by C5 (2026-05-24) for harness shape validation. C2 renamed (2026-05-25) family IDs to match viL1Profile.writing.patterns and viL1Profile.grammar.families per C4 spec §0 snake_case lock — closes the 5 orphan-fixture-family drift the harness --coverage assertion (#1140) was flagging.",
+      "vi-write-004 (formerly apology-explanation-order) was dropped: it is an oral speech-act / pragmatic-transfer pattern with no writing-pattern home in the profile; belongs in a future placement-pragmatics fixture file.",
+      "expected_rule_id / expected_phenomenon left pointing at aspirational detector tags (vi_l1_register_overformal, vi_l1_paragraph_topic_fronting, vi_l1_redundant_calque, vi_l1_connector_stacking). When a writing-level detector ships, the case flips from expected_failure to expected_pass and the tag aligns. Forward-compatible.",
+      "All entries are marked source honestly: 'invented' or 'docs/placement-vn-l1-interference-taxonomy.md' where the pattern is rooted in existing taxonomy work.",
+      "Mark NEW corpus-sourced cases with source: 'corpus' when they get swapped in."
+    ]
+  },
+  "cases": [
+    {
+      "id": "vi-write-001",
+      "family": "vi_write_register",
+      "expected_rule_id": "vi_l1_register_overformal",
+      "expected_phenomenon": "vi_l1_register_overformal",
+      "severity": "low",
+      "input": "Respected sir, I would like to express my profound gratitude for your kind email.",
+      "expected_correction": "Thanks for the email.",
+      "expected_category": "expected_failure",
+      "source": "docs/placement-vn-l1-interference-taxonomy.md",
+      "notes": "DETECTOR CANDIDATE — register-overformal (vi_write_register §1 overshoot row, e.g. 'Respected Professor Smith, Kindly please grant…'). No rule today; sentence-level detector can't see this."
+    },
+    {
+      "id": "vi-write-002",
+      "family": "vi_write_topic_comment",
+      "expected_rule_id": "vi_l1_paragraph_topic_fronting",
+      "expected_phenomenon": "vi_l1_paragraph_topic_fronting",
+      "severity": "medium",
+      "input": "About English, I think it is very important for my future career.",
+      "expected_correction": "I think English is very important for my future career.",
+      "expected_category": "expected_failure",
+      "source": "docs/placement-vn-l1-interference-taxonomy.md",
+      "notes": "DETECTOR CANDIDATE — discourse-level topic fronting (vi_write_topic_comment §4 covers 'About X, it is…' pattern verbatim)."
+    },
+    {
+      "id": "vi-write-003",
+      "family": "vi_write_topic_comment",
+      "expected_rule_id": "vi_l1_redundant_calque",
+      "expected_phenomenon": "vi_l1_redundant_calque",
+      "severity": "low",
+      "input": "In my opinion, I think that learning English is very useful.",
+      "expected_correction": "I think learning English is very useful.",
+      "expected_category": "expected_failure",
+      "source": "invented",
+      "notes": "DETECTOR CANDIDATE — doubled opinion marker ('Theo tôi' + 'tôi nghĩ' calque stacked). vi_write_topic_comment §4 has this exact row: 'In my opinion, I think education is important.' → 'I think education is important.'"
+    },
+    {
+      "id": "vi-write-005",
+      "family": "vi_write_cohesion_parataxis",
+      "expected_rule_id": "vi_l1_connector_stacking",
+      "expected_phenomenon": "vi_l1_connector_stacking",
+      "severity": "low",
+      "input": "So, I went to the store. So, I bought some bread. So, I went home.",
+      "expected_correction": "I went to the store, bought some bread, and went home.",
+      "expected_category": "expected_failure",
+      "source": "docs/placement-vn-l1-interference-taxonomy.md",
+      "notes": "DETECTOR CANDIDATE — discourse-level connector overshoot. vi_write_cohesion_parataxis §2 covers both under-connection (parataxis) and over-connection (mechanical scaffolding); the 'So, … So, … So, …' pattern collapses to a single coordinated sentence."
+    }
+  ]
+}

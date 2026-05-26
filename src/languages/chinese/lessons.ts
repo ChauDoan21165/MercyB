@@ -1,0 +1,188 @@
+// Type definitions for Chinese lesson data
+// Mirrors the schema used by all 50 lessons; types derived from existing data.
+
+export type ChineseVocabEntry = {
+  chinese: string;
+  pinyin: string;
+  english: string;
+  vi?: string;
+};
+
+export type ChineseSentence = {
+  chinese: string;
+  pinyin: string;
+  english: string;
+  vi?: string;
+  pronunciation_focus?: string[];
+  pronunciation_focus_en?: string[];
+};
+
+export type ChineseDialogueLine = {
+  speaker: string;
+  chinese: string;
+  pinyin: string;
+  english: string;
+  vi?: string;
+};
+
+export type ChineseExerciseFillBlank = {
+  type: "fill-blank";
+  question: string;
+  answer: string;
+};
+
+export type ChineseExerciseMatching = {
+  type: "matching";
+  pairs: ChineseVocabEntry[];
+  instruction: string;
+};
+
+export type ChineseExerciseTranslation = {
+  type: "translation";
+  vietnamese: string;
+  chinese: string;
+  pinyin: string;
+};
+
+export type ChineseExercise =
+  | ChineseExerciseFillBlank
+  | ChineseExerciseMatching
+  | ChineseExerciseTranslation;
+
+export type ChineseCefrLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
+
+// Category meta — parallels FRENCH_CATEGORIES / GERMAN_CATEGORIES shape.
+// Categories listed here are the ones currently used in the lesson data
+// (study_career = Cat 1 Học tập & Nghề nghiệp, cultural_communication =
+// Cat 2 Giao tiếp Văn hóa, fluency = B2 calibration sample). New B2
+// rounds add to this list as they ship.
+export type ChineseCategoryId =
+  | "study_career"
+  | "cultural_communication"
+  | "travel_mobility"
+  | "personal_social"
+  | "fluency"
+  | "academic_discourse"
+  | "professional_negotiation"
+  | "public_communication"
+  | "literary_criticism"
+  | "arts_criticism"
+  | "civic_discourse"
+  | "rhetoric_capstone";
+
+export type ChineseCategoryMeta = {
+  id: ChineseCategoryId;
+  title_vi: string;
+  title_en: string;
+  expected_count: number;
+};
+
+export const CHINESE_CATEGORIES: ReadonlyArray<ChineseCategoryMeta> = [
+  { id: "study_career", title_vi: "Học tập & Nghề nghiệp", title_en: "Study & Career", expected_count: 10 },
+  { id: "cultural_communication", title_vi: "Giao tiếp Văn hóa", title_en: "Cultural Communication", expected_count: 10 },
+  { id: "travel_mobility", title_vi: "Du lịch & Di chuyển", title_en: "Travel & Mobility", expected_count: 10 },
+  { id: "personal_social", title_vi: "Quan hệ cá nhân & Xã hội", title_en: "Personal & Social Relationships", expected_count: 10 },
+  { id: "fluency", title_vi: "Lưu loát", title_en: "Fluency", expected_count: 5 },
+  { id: "academic_discourse", title_vi: "Diễn ngôn học thuật", title_en: "Academic Discourse", expected_count: 10 },
+  { id: "professional_negotiation", title_vi: "Đàm phán chuyên nghiệp", title_en: "Professional Negotiation", expected_count: 10 },
+  { id: "public_communication", title_vi: "Truyền thông công chúng", title_en: "Public Communication", expected_count: 10 },
+  { id: "literary_criticism", title_vi: "Phê bình văn học", title_en: "Literary Criticism", expected_count: 10 },
+];
+
+export type IdiomGloss = {
+  idiom: string;
+  literal: string;
+  meaning: string;
+  example: string;
+  /** English mirror of literal. B2+ only. */
+  literal_en?: string;
+  /** English mirror of meaning. B2+ only. */
+  meaning_en?: string;
+  /** English mirror of example. B2+ only. */
+  example_en?: string;
+};
+
+// B2-specific dialogue line — adds Vietnamese gloss to the existing
+// {speaker, chinese, pinyin, english} shape used by lessons 1-50.
+export type ChineseB2DialogueLine = {
+  speaker: string;
+  chinese: string;
+  pinyin: string;
+  english: string;
+  vi?: string;
+};
+
+export type ChineseLesson = {
+  id: number;
+  level: ChineseCefrLevel;
+  title: string;
+  pinyin: string;
+  topic: string;
+  vocab: ChineseVocabEntry[];
+  sentences: ChineseSentence[];
+  dialogue: ChineseDialogueLine[];
+  exercises: ChineseExercise[];
+  // B2-specific optional fields (Phase 2 conversation-focused lessons).
+  // All optional — existing A1/A2/B1 lessons typecheck unchanged.
+  cultural_notes_vi?: string;
+  cultural_notes_en?: string;
+  tip_advice_vi?: string;
+  tip_advice_en?: string;
+  dialogue_long?: ChineseB2DialogueLine[];
+  roleplay_prompts?: string[];
+  /** English mirror of roleplay_prompts. B2+ only. */
+  roleplay_prompts_en?: string[];
+  register_notes?: string;
+  /** English mirror of register_notes. B2+ only. */
+  register_notes_en?: string;
+  idiom_glosses?: IdiomGloss[];
+  // Forward-compatible fields for the cross-language B2 template.
+  // Legacy `title` / `topic` remain authoritative until the renderer reads these.
+  category?: ChineseCategoryId;
+  title_vi?: string;
+  title_en?: string;
+};
+
+// ── Lazy lesson registry ────────────────────────────────────────────────
+// The data array used to live inline above this comment. It now lives in
+// per-level lessons-{level}.ts files that are loaded on demand. The page
+// imports only the level the user selects, so the initial chunk shrinks
+// dramatically as more C1/C2/etc rounds ship.
+
+// Phase 3: lesson data now fetched from Supabase via useLessonData / fetchLessonsBatch.
+// These stubs preserve the exported API surface for backward compat.
+const _cache = new Map<string, ChineseLesson[]>();
+export async function loadLessonsForLevel(
+  _level: ChineseCefrLevel,
+): Promise<ChineseLesson[]> {
+  return [];
+}
+export async function loadAllLessons(): Promise<ChineseLesson[]> {
+  return [];
+}
+
+// Sync helpers — operate on whatever's currently in the cache. Callers
+// that need lessons must await loadLessonsForLevel / loadAllLessons first.
+
+export function getLessonsByCategory(
+  category: ChineseCategoryId,
+): ChineseLesson[] {
+  const out: ChineseLesson[] = [];
+  for (const arr of _cache.values()) {
+    for (const l of arr) if ((l as { category?: string }).category === category) out.push(l);
+  }
+  return out;
+}
+
+export function getLessonById(id: number | string): ChineseLesson | undefined {
+  for (const arr of _cache.values()) {
+    const found = arr.find((l) => (l as { id: number | string }).id === id);
+    if (found) return found;
+  }
+  return undefined;
+}
+
+// Total lesson count across every level. Kept manually in sync with the
+// per-level files; updated by scripts/install-lessons-registry.mjs at
+// generation time.
+export const CHINESE_TOTAL_LESSONS = 149;

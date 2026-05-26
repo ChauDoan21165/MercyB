@@ -1,0 +1,150 @@
+{
+  "generated_at": "2026-05-20T17:13:29.536Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "archival_state": "BLOCKED_SAFE_ARCHIVED_PENDING_UPSTREAM_EVIDENCE",
+  "long_term_blocked_safe_archival_state_finalized": true,
+  "denial_lineage_continuity_preserved": true,
+  "unsupported_readiness_suppression_continuity_preserved": true,
+  "strict_mode_enforcement_continuity_preserved": true,
+  "future_validation_sequencing_preserved": true,
+  "retained_evidence_gap_continuity_preserved": true,
+  "retained_artifacts_traceable": true,
+  "stream_count": 9,
+  "retained_artifacts": [
+    {
+      "key": "blockedSafeJson",
+      "path": "reports/governance-convergence/governance-unified-blocked-safe-ledger.json",
+      "exists": true
+    },
+    {
+      "key": "contradictionsJson",
+      "path": "reports/governance-convergence/governance-cross-stream-contradiction-matrix.json",
+      "exists": true
+    },
+    {
+      "key": "readinessJson",
+      "path": "reports/governance-convergence/governance-readiness-propagation-audit.json",
+      "exists": true
+    },
+    {
+      "key": "denialJson",
+      "path": "reports/governance-convergence/governance-final-denial-consistency-board.json",
+      "exists": true
+    },
+    {
+      "key": "certificationJson",
+      "path": "reports/governance-convergence/governance-global-blocked-safe-certification.json",
+      "exists": true
+    },
+    {
+      "key": "escalationJson",
+      "path": "reports/governance-convergence/governance-cross-stream-escalation-ledger.json",
+      "exists": true
+    },
+    {
+      "key": "suppressionJson",
+      "path": "reports/governance-convergence/governance-unsupported-readiness-suppression-map.json",
+      "exists": true
+    },
+    {
+      "key": "handoffJson",
+      "path": "reports/governance-convergence/governance-final-convergence-handoff-board.json",
+      "exists": true
+    },
+    {
+      "key": "finalSummaryJson",
+      "path": "reports/governance-convergence/governance-final-convergence-certification-summary.json",
+      "exists": true
+    },
+    {
+      "key": "denialLineageJson",
+      "path": "reports/governance-convergence/governance-global-denial-lineage-map.json",
+      "exists": true
+    },
+    {
+      "key": "strictVerificationJson",
+      "path": "reports/governance-convergence/governance-cross-stream-strict-mode-verification.json",
+      "exists": true
+    },
+    {
+      "key": "closureReportJson",
+      "path": "reports/governance-convergence/governance-final-blocked-safe-closure-report.json",
+      "exists": true
+    },
+    {
+      "key": "retentionSummaryJson",
+      "path": "reports/governance-convergence/governance-final-blocked-safe-retention-summary.json",
+      "exists": true
+    },
+    {
+      "key": "validationSequencingJson",
+      "path": "reports/governance-convergence/governance-future-validation-dependency-sequencing.json",
+      "exists": true
+    },
+    {
+      "key": "evidenceGapLedgerJson",
+      "path": "reports/governance-convergence/governance-evidence-gap-master-ledger.json",
+      "exists": true
+    },
+    {
+      "key": "denialPreservationJson",
+      "path": "reports/governance-convergence/governance-long-term-denial-preservation-board.json",
+      "exists": true
+    },
+    {
+      "key": "archivalIntegrityJson",
+      "path": "reports/governance-convergence/governance-final-archival-integrity-report.json",
+      "exists": true
+    },
+    {
+      "key": "permanentDenialIndexJson",
+      "path": "reports/governance-convergence/governance-permanent-denial-lineage-index.json",
+      "exists": true
+    },
+    {
+      "key": "retainedEvidenceGapCatalogJson",
+      "path": "reports/governance-convergence/governance-retained-evidence-gap-catalog.json",
+      "exists": true
+    },
+    {
+      "key": "archiveBoardJson",
+      "path": "reports/governance-convergence/governance-final-blocked-safe-archive-board.json",
+      "exists": true
+    },
+    {
+      "key": "permanentSealJson",
+      "path": "reports/governance-convergence/governance-permanent-blocked-safe-seal.json",
+      "exists": true
+    },
+    {
+      "key": "permanentPrerequisitesJson",
+      "path": "reports/governance-convergence/governance-permanent-validation-prerequisite-index.json",
+      "exists": true
+    },
+    {
+      "key": "permanentStrictJson",
+      "path": "reports/governance-convergence/governance-permanent-strict-mode-preservation-report.json",
+      "exists": true
+    },
+    {
+      "key": "permanentSummaryJson",
+      "path": "reports/governance-convergence/governance-permanent-governance-archive-summary.json",
+      "exists": true
+    }
+  ]
+}

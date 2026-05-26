@@ -1,0 +1,186 @@
+name: CI Pipeline
+
+# Consolidated PR CI. This is the ONLY workflow that runs on pull_request
+# for required checks. It emits exactly the 3 check-run names required by
+# ruleset 16546337 — "Build and Test", "Lint Code", "Validate Rooms".
+# Do NOT rename these jobs' `name:` values or branch protection breaks.
+# Everything else (perf, visual, mutation, extra validators) moved to
+# schedule / workflow_dispatch / push:main — see chore/consolidate-workflows.
+
+on:
+  push:
+    branches: ['main', 'develop']
+  pull_request:
+    branches: ['main', 'develop']
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Run TypeScript checks
+        run: npx tsc --noEmit
+
+      # Phase-2 gate #6: tsconfig.json excludes supabase/, so the line
+      # above never type-checks edge-function code. This gates the
+      # placement-session engine (IRT/EAP/MLE math). Step added to the
+      # existing job (job name unchanged — branch protection safe).
+      - name: Run edge-function TypeScript checks (placement-session)
+        run: npm run typecheck:functions
+
+      # Edge-function CI gate. The Node tsc gate above structurally CANNOT
+      # resolve Deno URL / npm: / jsr: specifiers, so index.ts + _shared of
+      # every edge function ship untyped. `deno check` IS Deno-aware and
+      # closes that gap for the curated money-path allowlist in
+      # scripts/deno-check-edge-functions.sh (green on main today; the
+      # script documents the pre-existing debt it is built to widen into).
+      # Step added to the existing job (job name unchanged — branch
+      # protection safe, same precedent as the tsc step above).
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v2.x   # repo deno.lock is v5 → needs Deno >= 2.2
+
+      - name: Run edge-function Deno type-check (deno check)
+        run: npm run deno:check:functions
+
+      - name: Build project
+        run: npm run build
+
+      # Eager first-paint bundle-size budget. Sums gzipped bytes of
+      # every chunk in dist/index.html's modulepreload set + entry
+      # script and fails if the total exceeds the budget in the
+      # script. Step added to the existing job (job name unchanged —
+      # branch protection safe). See scripts/check-bundle-budget.mjs
+      # for the threshold + how to widen it intentionally.
+      - name: Check eager bundle gzip budget
+        run: node scripts/check-bundle-budget.mjs
+
+      - name: Validate data files
+        run: node scripts/validate-data-files.js
+
+      - name: Validate room registry
+        run: node scripts/validate-room-registry.js
+
+      - name: Validate kids rooms
+        run: node scripts/validate-kids-rooms.js
+
+      # App-store blocker B2: every user-identifying live table must be
+      # classified in supabase/functions/delete-account/user-data-manifest.ts.
+      # Script exits 0 (skip) if Supabase env vars are absent, so forked-PR
+      # runs don't break — but trusted PRs and push:main fail loud on drift.
+      - name: Check delete-account coverage
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/check-delete-account-coverage.mjs
+
+      - name: Generate and verify room registry
+        run: |
+          echo "🔄 Generating room registry..."
+          node scripts/generate-room-registry.mjs
+          if [ -n "$(git status --porcelain src/lib/roomManifest.ts src/lib/roomDataImports.ts)" ]; then
+            echo "❌ Registry files are out of sync! Run 'node scripts/generate-room-registry.mjs' locally and commit."
+            git diff src/lib/roomManifest.ts src/lib/roomDataImports.ts
+            exit 1
+          else
+            echo "✅ Registry files are in sync"
+          fi
+
+      - name: Run tests
+        run: npm test
+        continue-on-error: false
+
+  lint:
+    name: Lint Code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Check for console.logs
+        run: |
+          if grep -r "console.log" src/ --exclude-dir=node_modules; then
+            echo "⚠️ Warning: console.log statements found"
+          fi
+        continue-on-error: true
+
+  validate:
+    name: Validate Rooms
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Validate rooms
+        run: npm run validate-rooms
+
+  boundaries:
+    # ── Module Boundaries (A13) ─────────────────────────────────────
+    # Lock architectural module boundaries via dependency-cruiser. Errors
+    # are real violations (UI→edge, business-logic→UI, etc.); warnings
+    # are circulars and cross-feature imports (informational).
+    #
+    # NOT in the branch-protection required-checks ruleset yet — per the
+    # A13 dispatch, that promotion happens after ~1 week of stability so
+    # false positives can be addressed without blocking merges. Once
+    # promoted, add this job's name "Module Boundaries" to the ruleset
+    # (memory: project_ci_workflow_consolidation — never rename it after).
+    name: Module Boundaries
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: depcruise --validate (errors only)
+        run: npm run depcruise:validate
+
+      - name: depcruise metrics (informational, never fails)
+        if: always()
+        run: npm run depcruise:metrics || true

@@ -1,0 +1,71 @@
+{
+  "isoTimestamp": "2026-05-20T14:18:52.049Z",
+  "scenario": "malformed-json-grader-output",
+  "runLabel": "after",
+  "reconstruction": {
+    "sessionId": "session-malformed-json-grader-output",
+    "correlationId": "corr-malformed-json-grader-output-after",
+    "startedAt": "2026-05-20T18:00:01.000Z",
+    "endedAt": "2026-05-20T18:00:06.000Z",
+    "eventCount": 6,
+    "missingSequences": [],
+    "providerSwitches": [],
+    "retries": [],
+    "fallbacks": [],
+    "recoverability": "degraded_safe",
+    "degraded": true,
+    "deterministic": true,
+    "inconsistentRetries": [],
+    "orchestrationDeadEnds": [],
+    "steps": [
+      {
+        "sequence": 1,
+        "occurredAt": "2026-05-20T18:00:01.000Z",
+        "type": "session_event",
+        "step": "session.start",
+        "message": "Placement session started.",
+        "severity": "info"
+      },
+      {
+        "sequence": 2,
+        "occurredAt": "2026-05-20T18:00:02.000Z",
+        "type": "feature_flag_snapshot",
+        "step": "flags.snapshot",
+        "message": "Feature flags captured.",
+        "severity": "info"
+      },
+      {
+        "sequence": 3,
+        "occurredAt": "2026-05-20T18:00:03.000Z",
+        "type": "orchestration_transition",
+        "step": "orchestrator.next",
+        "message": "Moved from start to grading.",
+        "severity": "info"
+      },
+      {
+        "sequence": 4,
+        "occurredAt": "2026-05-20T18:00:04.000Z",
+        "type": "provider_event",
+        "step": "grader.parse",
+        "message": "Provider returned malformed JSON.",
+        "severity": "error"
+      },
+      {
+        "sequence": 5,
+        "occurredAt": "2026-05-20T18:00:05.000Z",
+        "type": "degraded_result",
+        "step": "grader.fallback",
+        "message": "Heuristic low-confidence grade returned.",
+        "severity": "warn"
+      },
+      {
+        "sequence": 6,
+        "occurredAt": "2026-05-20T18:00:06.000Z",
+        "type": "orchestration_transition",
+        "step": "session.safe-result",
+        "message": "Session ended with safe degraded or normal result.",
+        "severity": "info"
+      }
+    ]
+  }
+}

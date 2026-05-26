@@ -1,0 +1,59 @@
+-- 20260623000000_index_user_subscriptions_tier_id.sql
+--
+-- Add the missing index on public.user_subscriptions (tier_id).
+--
+-- Why: production-readiness sweep finding H3 — see
+-- /private/tmp/production-readiness-report.md §"Area 3: Database Indexes"
+-- and /private/tmp/pg-indexes-preflight-report.md. user_subscriptions was
+-- created in 20251020094557_3ba06735-3135-46de-bb93-2f80c36b31ff.sql with:
+--
+--   id      UUID PRIMARY KEY                                   -- auto-indexed
+--   user_id UUID NOT NULL  UNIQUE(user_id)                     -- auto-indexed
+--   tier_id UUID NOT NULL REFERENCES public.subscription_tiers(id)  -- NOT indexed
+--
+-- Committed migrations index `user_id` (idx_user_subscriptions_user_id) and
+-- `status` (idx_user_subscriptions_status) but NEVER `tier_id`. Postgres does
+-- NOT auto-index foreign keys (only PK + UNIQUE), so every `tier_id` lookup is
+-- a SEQUENTIAL SCAN of the whole table:
+--
+--   1. Entitlement hot path — email-automations/index.ts:236-238 runs
+--        SELECT user_id, tier_id FROM user_subscriptions
+--         WHERE tier_id IN (<vipTierIds>);
+--      and again at :327-328 / :462 for expiring-subscription sweeps.
+--   2. FK enforcement — every subscription_tiers row mutation (or RESTRICT
+--      check) must scan user_subscriptions by tier_id to find referencing
+--      rows; an unindexed referenced→referencing direction is a known
+--      Postgres footgun on the billing path.
+--
+-- Moderate volume today (~100 users) so this is "real but not catastrophic
+-- yet" (report H3) — landed now while it is cheap, before the table grows.
+--
+-- APPLY VIA SUPABASE SQL EDITOR ONLY (Phase 2 manual gate, per CLAUDE.md
+-- — Chau applies; this is NOT auto-applied). CREATE INDEX CONCURRENTLY
+-- CANNOT run inside a transaction block, so it MUST be run statement-by-
+-- statement in the SQL Editor and MUST NOT be applied via
+-- `supabase db push` (which wraps each migration in a txn and would
+-- error: "CREATE INDEX CONCURRENTLY cannot run inside a transaction
+-- block"). CONCURRENTLY is used so the index build takes no
+-- ACCESS EXCLUSIVE write lock — safe whether the table is small today or
+-- large later. If you would rather apply this through db push, replace
+-- `CREATE INDEX CONCURRENTLY` below with plain `CREATE INDEX`
+-- (acceptable only while the table is small).
+--
+-- 100% idempotent: the statement is `IF NOT EXISTS`, so re-running is a
+-- no-op against a database that already has the index. This also means it
+-- is safe even if a prod-only intervention already added an equivalent
+-- index under a different name — verify first via the preflight report's
+-- pg_indexes query; if a functionally-equivalent index already exists,
+-- this migration is a documented no-op (do NOT drop the existing one).
+-- Human-reviewed before apply (CLAUDE.md).
+
+-- ── tier_id ─────────────────────────────────────────────────────────────
+-- Benefits:  SELECT ... FROM user_subscriptions WHERE tier_id IN ($1,...)
+--            (email-automations entitlement + expiry sweeps) + the
+--            subscription_tiers → user_subscriptions FK constraint check.
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_user_subscriptions_tier_id
+  ON public.user_subscriptions (tier_id);
+
+-- ── Rollback (DOWN) — documentation only; run manually if reverting ─────
+--   DROP INDEX CONCURRENTLY IF EXISTS public.idx_user_subscriptions_tier_id;

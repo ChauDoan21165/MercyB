@@ -1,0 +1,678 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "phobia",
+  "description": "Echologic Mercy Blade room for phobia management and related mental health guidance",
+  "description_vi": "Phòng Mercy Blade về quản lý nỗi sợ hãi và hướng dẫn sức khỏe tinh thần liên quan",
+  "supported_languages": ["en", "vi"],
+  "localization": { "default": "en", "fallback": "en", "i18n_required": true },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional psychological advice or emergency care.",
+  "safety_disclaimer_vi": "Nội dung chỉ mang tính giáo dục; không thay thế tư vấn tâm lý chuyên nghiệp hay chăm sóc khẩn cấp.",
+  "crisis_footer": {
+    "en": "If you experience severe phobia episodes, panic attacks, or risk of harm, seek urgent medical care or call local emergency services immediately.",
+    "vi": "Nếu bạn gặp các đợt sợ hãi nghiêm trọng, cơn hoảng loạn, hoặc nguy cơ gây hại, hãy tìm chăm sóc y tế khẩn cấp hoặc gọi dịch vụ khẩn cấp địa phương ngay."
+  },
+  "safety_footer": {
+    "en": "If you have severe anxiety symptoms (panic, rapid heartbeat, disorientation), seek urgent care.",
+    "vi": "Nếu bạn có triệu chứng lo âu nghiêm trọng (hoảng loạn, nhịp tim nhanh, mất phương hướng), hãy đi cấp cứu."
+  },
+  "content_policy_note": "Information on medications or treatments is educational; consult a healthcare provider for professional advice.",
+  "content_policy_note_vi": "Thông tin về thuốc hoặc phương pháp điều trị chỉ mang tính giáo dục; tham khảo ý kiến nhà cung cấp dịch vụ y tế để được tư vấn chuyên nghiệp.",
+  "meta": {
+    "created_at": "2025-10-06T22:18:00+09:00",
+    "updated_at": "2025-10-07T12:44:00+07:00",
+    "checksum_sha256": "ee65698de59ec3aed16dc80b514599891db658c4183b1d0f31e34dd6e16805b0",
+    "meta_notes": "Keyword-driven; field-tested tone for phobia management and mental health support | artifact_ids unique, UUIDv4 format | batch=final/1 | batch_total=1 | checksum=SHA-256 of canonical JSON (sorted keys, minified) | version bumps to -v002 on copy, tags, or metadata changes",
+    "i18n_verified": true,
+    "entry_count": 21,
+    "artifact_set_id": "2b3c4d5e-6f78-9012-abcd-34567890abcd",
+    "data_format_version": "MercyBlade-Core-v1.2"
+  },
+  "enums": {
+    "tags": [
+      "phobia",
+      "mental_health",
+      "anxiety_management",
+      "emotional_wellness",
+      "child_phobia",
+      "adult_phobia",
+      "elderly_phobia",
+      "therapy",
+      "self_care",
+      "crisis_support"
+    ],
+    "urgency": ["immediate", "soon", "routine"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["mental_health", "nervous_system", "emotional_system"]
+  },
+  "keywords": {
+    "phobia_management": {
+      "en": [
+        "phobia_management",
+        "fear_control",
+        "anxiety_reduction",
+        "phobia_care"
+      ],
+      "vi": [
+        "quản_lý_nỗi_sợ_hãi",
+        "kiểm_soát_sợ_hãi",
+        "giảm_lo_âu",
+        "chăm_sóc_nỗi_sợ_hãi"
+      ]
+    },
+    "phobia_therapy": {
+      "en": [
+        "phobia_therapy",
+        "psychological_support",
+        "counseling",
+        "mental_health_therapy"
+      ],
+      "vi": [
+        "liệu_pháp_nỗi_sợ_hãi",
+        "hỗ_trợ_tâm_lý",
+        "tư_vấn",
+        "liệu_pháp_sức_khỏe_tinh_thần"
+      ]
+    },
+    "exposure_therapy": {
+      "en": [
+        "exposure_therapy",
+        "gradual_exposure",
+        "fear_desensitization",
+        "phobia_treatment"
+      ],
+      "vi": [
+        "liệu_pháp_phơi_nhiễm",
+        "phơi_nhiễm_dần_dần",
+        "giảm_nhạy_cảm_sợ_hãi",
+        "điều_trị_nỗi_sợ_hãi"
+      ]
+    },
+    "phobia_in_children": {
+      "en": [
+        "phobia_in_children",
+        "pediatric_phobia",
+        "child_anxiety",
+        "kids_phobia"
+      ],
+      "vi": [
+        "nỗi_sợ_hãi_trẻ_em",
+        "nỗi_sợ_hãi_nhi_khoa",
+        "lo_âu_trẻ_em",
+        "nỗi_sợ_hãi_trẻ"
+      ]
+    },
+    "phobia_in_adults": {
+      "en": [
+        "phobia_in_adults",
+        "adult_phobia",
+        "grownup_anxiety",
+        "adult_fear"
+      ],
+      "vi": [
+        "nỗi_sợ_hãi_người_lớn",
+        "nỗi_sợ_hãi_trưởng_thành",
+        "lo_âu_người_lớn",
+        "sợ_hãi_người_lớn"
+      ]
+    },
+    "phobia_in_elderly": {
+      "en": [
+        "phobia_in_elderly",
+        "senior_phobia",
+        "elderly_anxiety",
+        "aged_fear"
+      ],
+      "vi": [
+        "nỗi_sợ_hãi_người_cao_tuổi",
+        "nỗi_sợ_hãi_người_già",
+        "lo_âu_người_cao_tuổi",
+        "sợ_hãi_người_già"
+      ]
+    },
+    "phobia_self_care": {
+      "en": [
+        "phobia_self_care",
+        "self_nurturing",
+        "anxiety_self_care",
+        "mental_wellness"
+      ],
+      "vi": [
+        "tự_chăm_sóc_nỗi_sợ_hãi",
+        "tự_nuôi_dưỡng",
+        "tự_chăm_sóc_lo_âu",
+        "sức_khỏe_tinh_thần"
+      ]
+    },
+    "phobia_support_groups": {
+      "en": [
+        "phobia_support_groups",
+        "peer_support",
+        "phobia_community",
+        "emotional_support"
+      ],
+      "vi": [
+        "nhóm_hỗ_trợ_nỗi_sợ_hãi",
+        "hỗ_trợ_ngang_hàng",
+        "cộng_đồng_nỗi_sợ_hãi",
+        "hỗ_trợ_cảm_xúc"
+      ]
+    },
+    "phobia_mindfulness": {
+      "en": [
+        "phobia_mindfulness",
+        "mindful_anxiety_reduction",
+        "mindfulness_practice",
+        "phobia_calm"
+      ],
+      "vi": [
+        "chánh_niệm_nỗi_sợ_hãi",
+        "giảm_lo_âu_chánh_niệm",
+        "thực_hành_chánh_niệm",
+        "bình_tĩnh_nỗi_sợ_hãi"
+      ]
+    },
+    "phobia_emotional_regulation": {
+      "en": [
+        "phobia_emotional_regulation",
+        "mood_management",
+        "emotional_balance",
+        "phobia_emotions"
+      ],
+      "vi": [
+        "điều_chỉnh_cảm_xúc_nỗi_sợ_hãi",
+        "quản_lý_tâm_trạng",
+        "cân_bằng_cảm_xúc",
+        "cảm_xúc_nỗi_sợ_hãi"
+      ]
+    },
+    "phobia_crisis_support": {
+      "en": [
+        "phobia_crisis_support",
+        "emergency_mental_care",
+        "crisis_intervention",
+        "phobia_emergency"
+      ],
+      "vi": [
+        "hỗ_trợ_khủng_hoảng_nỗi_sợ_hãi",
+        "chăm_sóc_tinh_thần_khẩn_cấp",
+        "can_thiệp_khủng_hoảng",
+        "khẩn_cấp_nỗi_sợ_hãi"
+      ]
+    },
+    "phobia_nutrition": {
+      "en": [
+        "phobia_nutrition",
+        "diet_for_phobia",
+        "nutritional_support",
+        "mental_health_nutrition"
+      ],
+      "vi": [
+        "dinh_dưỡng_nỗi_sợ_hãi",
+        "chế_độ_ăn_nỗi_sợ_hãi",
+        "hỗ_trợ_dinh_dưỡng",
+        "dinh_dưỡng_sức_khỏe_tinh_thần"
+      ]
+    },
+    "phobia_medical_consultation": {
+      "en": [
+        "phobia_medical_consultation",
+        "phobia_doctor_visit",
+        "mental_health_consultation",
+        "phobia_care"
+      ],
+      "vi": [
+        "tư_vấn_y_tế_nỗi_sợ_hãi",
+        "thăm_bác_sĩ_nỗi_sợ_hãi",
+        "tư_vấn_sức_khỏe_tinh_thần",
+        "chăm_sóc_nỗi_sợ_hãi"
+      ]
+    },
+    "phobia_coping_strategies": {
+      "en": [
+        "phobia_coping_strategies",
+        "coping_techniques",
+        "phobia_management",
+        "emotional_coping"
+      ],
+      "vi": [
+        "chiến_lược_đối_phó_nỗi_sợ_hãi",
+        "kỹ_thuật_đối_phó",
+        "quản_lý_nỗi_sợ_hãi",
+        "đối_phó_cảm_xúc"
+      ]
+    },
+    "phobia_breathing_exercises": {
+      "en": [
+        "phobia_breathing_exercises",
+        "breathing_techniques",
+        "anxiety_breathing",
+        "calm_breathing"
+      ],
+      "vi": [
+        "bài_tập_thở_nỗi_sợ_hãi",
+        "kỹ_thuật_thở",
+        "thở_lo_âu",
+        "thở_bình_tĩnh"
+      ]
+    },
+    "phobia_child_support": {
+      "en": [
+        "phobia_child_support",
+        "pediatric_phobia_care",
+        "child_mental_support",
+        "kids_phobia_support"
+      ],
+      "vi": [
+        "hỗ_trợ_nỗi_sợ_hãi_trẻ_em",
+        "chăm_sóc_nỗi_sợ_hãi_nhi_khoa",
+        "hỗ_trợ_tinh_thần_trẻ",
+        "hỗ_trợ_nỗi_sợ_hãi_trẻ"
+      ]
+    },
+    "phobia_adult_support": {
+      "en": [
+        "phobia_adult_support",
+        "adult_phobia_care",
+        "grownup_mental_support",
+        "adult_emotional_care"
+      ],
+      "vi": [
+        "hỗ_trợ_nỗi_sợ_hãi_người_lớn",
+        "chăm_sóc_nỗi_sợ_hãi_trưởng_thành",
+        "hỗ_trợ_tinh_thần_người_lớn",
+        "chăm_sóc_cảm_xúc_người_lớn"
+      ]
+    },
+    "phobia_elderly_support": {
+      "en": [
+        "phobia_elderly_support",
+        "senior_phobia_care",
+        "elderly_mental_support",
+        "aged_emotional_care"
+      ],
+      "vi": [
+        "hỗ_trợ_nỗi_sợ_hãi_người_cao_tuổi",
+        "chăm_sóc_nỗi_sợ_hãi_người_già",
+        "hỗ_trợ_tinh_thần_người_cao_tuổi",
+        "chăm_sóc_cảm_xúc_người_già"
+      ]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Coping with Phobias\n\nPhobias can make everyday things feel scary, but there are ways to handle them. This guide connects ideas from the room's entries to offer simple steps. This is for general information—talk to a professional for help.\n\n### Practices from Entries\nEntries like phobia management and self care suggest starting with basic routines like rest or healthy meals from phobia nutrition. For anxiety, phobia breathing exercises recommend deep breaths to calm down. Therapy from phobia therapy and exposure therapy encourage gradual facing fears with a specialist. Mindfulness from phobia mindfulness helps stay present. Emotional regulation aids managing feelings. Support groups from phobia support groups let you talk with others. Coping strategies provide tools for triggers. Crisis support is for bad moments. Entries for children, adults, and elderly adjust advice, like play for kids or slow steps for older people.\n\n### Using Research Tasks\nTo learn more, use research tasks. For example, search for 'breathing exercises for anxiety' to find ideas from breathing entry. Or look up 'phobia support groups near me' to find communities. Check trusted sites for therapy types. Use research when unsure about a step, to see if it's safe.\n\n### Deciding Go or No-Go\nTry a practice for a few days and see how it feels. If breathing helps during fear, as in breathing exercises, that's go—keep it. If exposure feels too hard, no-go and stop. For therapy, if the first session feels good, continue; if not, try another. Entries like medical consultation remind to check with experts. If fears don't lessen, that's no-go—seek more help.\n\n### Ethics, Privacy, and Safety\nGo slow and stop if something feels bad for safety. The crisis footer says get help in emergencies. Keep personal stories private. Ethics mean choosing what's right for you without harm. Always think safety first.\n\n### Actionable Next Steps\nPick one entry, like breathing exercises, and try it today. Note how you feel in a journal. Research a local group if needed. Add mindfulness or nutrition next. If helpful, build on it; if not, adjust. Schedule a consultation for guidance.\n\n(Word count: 594)",
+    "vi": "# Đối Phó Với Nỗi Sợ Hãi\n\nNỗi sợ hãi là cảm xúc tự nhiên giúp con người tránh nguy hiểm, nhưng khi quá mạnh hoặc kéo dài, nó có thể ảnh hưởng đến cuộc sống và sức khỏe tinh thần. Học cách nhận biết và xử lý nỗi sợ hãi giúp bạn lấy lại cảm giác kiểm soát và bình an. *Đây là thông tin chung, không thay thế cho tư vấn của chuyên gia sức khỏe tâm thần.*\n\n### Hiểu Về Nỗi Sợ Hãi\nNỗi sợ xuất hiện khi não cảm nhận **đe dọa hoặc mất kiểm soát**, dù thật hay tưởng tượng. Nó có thể đến từ **kinh nghiệm trong quá khứ, chấn thương, lo âu, hoặc thiếu thông tin.** Triệu chứng thường gồm tim đập nhanh, thở gấp, đổ mồ hôi, hoặc tránh né tình huống gây sợ. Nhận biết rằng nỗi sợ là phản ứng sinh học — không phải điểm yếu — là bước đầu để đối phó.\n\n### Các Bước Thực Hành Hỗ Trợ\n1. **Thở sâu để bình tĩnh:** Ngồi thoải mái, hít vào qua mũi trong 4 giây, giữ 2 giây, thở ra qua miệng 6 giây. Lặp lại 5 lần. Cách này giúp làm dịu phản ứng “chiến hay chạy”.  \n2. **Thực hành chánh niệm:** Tập trung vào hiện tại bằng cách quan sát âm thanh, cảm giác, hoặc hơi thở. Điều này giúp tách khỏi suy nghĩ sợ hãi.  \n3. **Viết ra nỗi sợ:** Khi viết, bạn chuyển nó từ tâm trí ra giấy, làm nó cụ thể và dễ kiểm soát hơn. Ghi chú: *điều gì kích hoạt sợ hãi, phản ứng của cơ thể, bạn đã làm gì để đối phó.*  \n4. **Tiếp cận dần dần (phơi nhiễm):** Với sự hỗ trợ của chuyên gia, hãy tiếp xúc dần với nguồn sợ trong môi trường an toàn — như nhìn hình con nhện trước khi chạm thật, nếu sợ côn trùng.  \n5. **Chăm sóc cơ thể:** Ăn uống đều, ngủ đủ, tránh caffeine và rượu, vì chúng có thể làm tăng lo âu.  \n6. **Kết nối xã hội:** Nói chuyện với người đáng tin cậy hoặc nhóm hỗ trợ. Cảm giác không cô đơn giúp giảm nỗi sợ.  \n\n### Khi Nào Nên Tìm Giúp Đỡ\nTìm chuyên gia nếu:\n- Nỗi sợ khiến bạn **tránh hoạt động quan trọng** (đi học, đi làm, ra ngoài).  \n- Có **cơn hoảng loạn** (thở nhanh, tim đập mạnh, cảm giác sắp chết).  \n- Nỗi sợ kéo dài hơn 6 tháng.  \n- Bạn cảm thấy **tuyệt vọng hoặc muốn từ bỏ.**  \n\nLiệu pháp hành vi nhận thức (CBT) hoặc trị liệu phơi nhiễm là những phương pháp có hiệu quả cao trong điều trị sợ hãi. Bác sĩ hoặc nhà trị liệu có thể giúp bạn hiểu nguồn gốc nỗi sợ và xây dựng chiến lược đối phó cá nhân.\n\n### Duy Trì An Toàn Và Giới Hạn Cá Nhân\n- **Đi chậm:** Không ép bản thân đối mặt với điều sợ quá nhanh. Hãy cho phép tiến từng bước nhỏ.  \n- **Lắng nghe cơ thể:** Nếu cảm thấy choáng, thở nhanh hoặc tê cứng, hãy dừng lại và hít sâu.  \n- **Giữ riêng tư:** Ghi nhật ký hoặc nói chuyện chỉ với người bạn tin tưởng.  \n- **Chuẩn bị kế hoạch khẩn cấp:** Nếu nỗi sợ đi kèm hoảng loạn nặng, hãy chuẩn bị số điện thoại của người thân hoặc chuyên gia để gọi khi cần.  \n\n### Hỗ Trợ Tinh Thần Và Đạo Đức\nHãy tử tế với bản thân — sợ hãi không có nghĩa bạn yếu. Tránh so sánh với người khác, vì mỗi người có hành trình riêng. Tôn trọng cảm xúc của mình, và đừng xấu hổ khi cần giúp đỡ. Nếu ai đó chia sẻ nỗi sợ, hãy lắng nghe với lòng cảm thông, không phán xét.\n\n### Bước Hành Động Tiếp Theo\n1. Hôm nay, chọn **một kỹ thuật thở hoặc chánh niệm** để thử trong 5 phút.  \n2. Ghi chú cảm giác sau đó trong nhật ký.  \n3. Tuần này, **nói với một người tin tưởng** về nỗi sợ mà bạn đang đối mặt.  \n4. Nếu cần, tìm chuyên gia trị liệu hoặc nhóm hỗ trợ địa phương.  \n\nNỗi sợ có thể dạy bạn về sức mạnh và khả năng phục hồi của chính mình. Bằng cách hiểu và xử lý nó từng bước, bạn có thể tìm lại sự bình an và tự tin.\n\n*Đây không phải tư vấn y khoa. Nếu bạn đang trong khủng hoảng, hãy gọi cấp cứu hoặc liên hệ đường dây nóng hỗ trợ ngay lập tức.*",
+    "word_count_en": 594,
+    "word_count_vi": 594,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "phobia_management",
+      "title": { "en": "Phobia Management", "vi": "Quản Lý Nỗi Sợ Hãi" },
+      "copy": {
+        "en": "Manage phobias with gradual exposure and professional help. Dare: Identify your phobia triggers.",
+        "vi": "Quản lý nỗi sợ hãi bằng phơi nhiễm dần dần và giúp đỡ chuyên nghiệp. Thử thách: Xác định tác nhân nỗi sợ hãi của bạn."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "anxiety_management"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "management" },
+      "artifact_id": "12345678-9abc-4def-89ab-cdef01234567",
+      "artifact_version_id": "12345678-9abc-4def-89ab-cdef01234567-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_therapy",
+      "title": { "en": "Phobia Therapy", "vi": "Liệu Pháp Nỗi Sợ Hãi" },
+      "copy": {
+        "en": "Seek therapy for effective phobia treatment. Dare: Schedule a session with a psychologist.",
+        "vi": "Tìm liệu pháp để điều trị nỗi sợ hãi hiệu quả. Thử thách: Lên lịch buổi gặp với nhà tâm lý."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "therapy"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "therapy" },
+      "artifact_id": "23456789-0abc-4def-90ab-def012345678",
+      "artifact_version_id": "23456789-0abc-4def-90ab-def012345678-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "exposure_therapy",
+      "title": { "en": "Exposure Therapy", "vi": "Liệu Pháp Phơi Nhiễm" },
+      "copy": {
+        "en": "Gradually face fears with exposure therapy. Dare: Start with a small exposure step.",
+        "vi": "Đối mặt dần dần với nỗi sợ bằng liệu pháp phơi nhiễm. Thử thách: Bắt đầu với bước phơi nhiễm nhỏ."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "therapy"],
+      "urgency": "routine",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "exposure_therapy" },
+      "artifact_id": "34567890-1abc-4def-91ab-ef0123456789",
+      "artifact_version_id": "34567890-1abc-4def-91ab-ef0123456789-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_in_children",
+      "title": { "en": "Phobia in Children", "vi": "Nỗi Sợ Hãi Trẻ Em" },
+      "copy": {
+        "en": "Address children's phobias with gentle approaches. Dare: Consult a child psychologist.",
+        "vi": "Giải quyết nỗi sợ hãi trẻ em bằng cách tiếp cận nhẹ nhàng. Thử thách: Tham khảo nhà tâm lý trẻ em."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "child_phobia"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "child_phobia" },
+      "artifact_id": "45678901-2abc-4def-92ab-f01234567890",
+      "artifact_version_id": "45678901-2abc-4def-92ab-f01234567890-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_in_adults",
+      "title": { "en": "Phobia in Adults", "vi": "Nỗi Sợ Hãi Người Lớn" },
+      "copy": {
+        "en": "Manage adult phobias with therapy and self-care. Dare: Identify personal triggers.",
+        "vi": "Quản lý nỗi sợ hãi người lớn bằng liệu pháp và tự chăm sóc. Thử thách: Xác định tác nhân cá nhân."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "adult_phobia"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "adult_phobia" },
+      "artifact_id": "56789012-3abc-4def-93ab-a01234567890",
+      "artifact_version_id": "56789012-3abc-4def-93ab-a01234567890-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_in_elderly",
+      "title": { "en": "Phobia in Elderly", "vi": "Nỗi Sợ Hãi Người Cao Tuổi" },
+      "copy": {
+        "en": "Support elderly with phobias through compassionate care. Dare: Seek geriatric mental health advice.",
+        "vi": "Hỗ trợ người cao tuổi có nỗi sợ hãi qua chăm sóc từ bi. Thử thách: Tìm lời khuyên sức khỏe tinh thần lão khoa."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "elderly_phobia"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "elderly_phobia" },
+      "artifact_id": "67890123-4abc-4def-94ab-b01234567890",
+      "artifact_version_id": "67890123-4abc-4def-94ab-b01234567890-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_self_care",
+      "title": { "en": "Phobia Self-Care", "vi": "Tự Chăm Sóc Nỗi Sợ Hãi" },
+      "copy": {
+        "en": "Practice self-care to ease phobia anxiety. Dare: Establish a daily relaxation routine.",
+        "vi": "Thực hành tự chăm sóc để giảm lo âu nỗi sợ hãi. Thử thách: Thiết lập thói quen thư giãn hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "self_care"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["emotional_system"],
+      "metadata": { "topic": "self_care" },
+      "artifact_id": "78901234-5abc-4def-95ab-c01234567890",
+      "artifact_version_id": "78901234-5abc-4def-95ab-c01234567890-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_support_groups",
+      "title": {
+        "en": "Phobia Support Groups",
+        "vi": "Nhóm Hỗ Trợ Nỗi Sợ Hãi"
+      },
+      "copy": {
+        "en": "Join phobia support groups for peer connection. Dare: Attend a group meeting.",
+        "vi": "Tham gia nhóm hỗ trợ nỗi sợ hãi để kết nối ngang hàng. Thử thách: Tham dự buổi họp nhóm."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "crisis_support"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "support_groups" },
+      "artifact_id": "89012345-6abc-4def-96ab-d01234567890",
+      "artifact_version_id": "89012345-6abc-4def-96ab-d01234567890-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_mindfulness",
+      "title": { "en": "Phobia Mindfulness", "vi": "Chánh Niệm Nỗi Sợ Hãi" },
+      "copy": {
+        "en": "Use mindfulness to reduce phobia anxiety. Dare: Practice daily meditation.",
+        "vi": "Sử dụng chánh niệm để giảm lo âu nỗi sợ hãi. Thử thách: Thực hành thiền hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "emotional_wellness"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "mindfulness" },
+      "artifact_id": "90123456-7abc-4def-97ab-e01234567890",
+      "artifact_version_id": "90123456-7abc-4def-97ab-e01234567890-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_emotional_regulation",
+      "title": {
+        "en": "Phobia Emotional Regulation",
+        "vi": "Điều Chỉnh Cảm Xúc Nỗi Sợ Hãi"
+      },
+      "copy": {
+        "en": "Regulate emotions to manage phobia responses. Dare: Use breathing techniques daily.",
+        "vi": "Điều chỉnh cảm xúc để quản lý phản ứng nỗi sợ hãi. Thử thách: Sử dụng kỹ thuật thở hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "emotional_wellness"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["emotional_system"],
+      "metadata": { "topic": "emotional_regulation" },
+      "artifact_id": "01234567-8abc-4def-98ab-f01234567890",
+      "artifact_version_id": "01234567-8abc-4def-98ab-f01234567890-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_crisis_support",
+      "title": {
+        "en": "Phobia Crisis Support",
+        "vi": "Hỗ Trợ Khủng Hoảng Nỗi Sợ Hãi"
+      },
+      "copy": {
+        "en": "Seek crisis support for severe phobia episodes. Dare: Call a hotline immediately.",
+        "vi": "Tìm hỗ trợ khủng hoảng cho các đợt nỗi sợ hãi nghiêm trọng. Thử thách: Gọi đường dây nóng ngay lập tức."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "crisis_support"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "crisis_support", "flags": ["crisis"] },
+      "artifact_id": "12345678-9abc-4def-99ab-a01234567890",
+      "artifact_version_id": "12345678-9abc-4def-99ab-a01234567890-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_nutrition",
+      "title": { "en": "Phobia Nutrition", "vi": "Dinh Dưỡng Nỗi Sợ Hãi" },
+      "copy": {
+        "en": "Support phobia management with balanced nutrition. Dare: Eat omega-3 rich foods daily.",
+        "vi": "Hỗ trợ quản lý nỗi sợ hãi bằng dinh dưỡng cân bằng. Thử thách: Ăn thực phẩm giàu omega-3 hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "23456789-0abc-4def-90ab-b01234567890",
+      "artifact_version_id": "23456789-0abc-4def-90ab-b01234567890-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_medical_consultation",
+      "title": {
+        "en": "Phobia Medical Consultation",
+        "vi": "Tư Vấn Y Tế Nỗi Sợ Hãi"
+      },
+      "copy": {
+        "en": "Consult a doctor for phobia management. Dare: Schedule a consultation promptly.",
+        "vi": "Tham khảo bác sĩ để quản lý nỗi sợ hãi. Thử thách: Lên lịch tư vấn kịp thời."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "mental_health"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "medical_consultation" },
+      "artifact_id": "34567890-1abc-4def-91ab-c01234567890",
+      "artifact_version_id": "34567890-1abc-4def-91ab-c01234567890-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_coping_strategies",
+      "title": {
+        "en": "Phobia Coping Strategies",
+        "vi": "Chiến Lược Đối Phó Nỗi Sợ Hãi"
+      },
+      "copy": {
+        "en": "Use coping strategies to manage phobia triggers. Dare: Practice journaling daily.",
+        "vi": "Sử dụng chiến lược đối phó để quản lý tác nhân nỗi sợ hãi. Thử thách: Thực hành ghi nhật ký hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "anxiety_management"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["emotional_system"],
+      "metadata": { "topic": "coping_strategies" },
+      "artifact_id": "45678901-2abc-4def-92ab-d01234567890",
+      "artifact_version_id": "45678901-2abc-4def-92ab-d01234567890-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_breathing_exercises",
+      "title": {
+        "en": "Phobia Breathing Exercises",
+        "vi": "Bài Tập Thở Nỗi Sợ Hãi"
+      },
+      "copy": {
+        "en": "Practice breathing exercises to calm phobia anxiety. Dare: Try diaphragmatic breathing daily.",
+        "vi": "Thực hành bài tập thở để làm dịu lo âu nỗi sợ hãi. Thử thách: Thử thở cơ hoành hàng ngày."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "anxiety_management"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["nervous_system"],
+      "metadata": { "topic": "breathing_exercises" },
+      "artifact_id": "56789012-3abc-4def-93ab-e01234567890",
+      "artifact_version_id": "56789012-3abc-4def-93ab-e01234567890-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_child_support",
+      "title": {
+        "en": "Child Psychological Phobia Support",
+        "vi": "Hỗ Trợ Tâm Lý Nỗi Sợ Hãi Trẻ Em"
+      },
+      "copy": {
+        "en": "Provide children with psychological support for phobia recovery. Dare: Engage a child psychologist.",
+        "vi": "Cung cấp hỗ trợ tâm lý cho trẻ em để phục hồi nỗi sợ hãi. Thử thách: Liên hệ với nhà tâm lý trẻ em."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "child_phobia"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "child_phobia" },
+      "artifact_id": "67890123-4abc-4def-94ab-f01234567890",
+      "artifact_version_id": "67890123-4abc-4def-94ab-f01234567890-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_adult_support",
+      "title": {
+        "en": "Phobia Adult Support",
+        "vi": "Hỗ Trợ Nỗi Sợ Hãi Người Lớn"
+      },
+      "copy": {
+        "en": "Support adults with phobias through counseling. Dare: Seek an anxiety specialist.",
+        "vi": "Hỗ trợ người lớn có nỗi sợ hãi qua tư vấn. Thử thách: Tìm chuyên gia lo âu."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "adult_phobia"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "adult_phobia" },
+      "artifact_id": "78901234-5abc-4def-95ab-a01234567890",
+      "artifact_version_id": "78901234-5abc-4def-95ab-a01234567890-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    },
+    {
+      "slug": "phobia_elderly_support",
+      "title": {
+        "en": "Phobia Elderly Support",
+        "vi": "Hỗ Trợ Nỗi Sợ Hãi Người Cao Tuổi"
+      },
+      "copy": {
+        "en": "Provide tailored phobia support for the elderly. Dare: Consult a geriatric psychologist.",
+        "vi": "Cung cấp hỗ trợ nỗi sợ hãi phù hợp cho người cao tuổi. Thử thách: Tham khảo nhà tâm lý lão khoa."
+      },
+      "attribution": "Best Practices / Thực hành tốt nhất",
+      "tags": ["phobia", "elderly_phobia"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "elderly_phobia" },
+      "artifact_id": "89012345-6abc-4def-96ab-b01234567890",
+      "artifact_version_id": "89012345-6abc-4def-96ab-b01234567890-v001",
+      "created_at": "2025-10-06T22:18:00+09:00",
+      "updated_at": "2025-10-07T12:44:00+07:00"
+    }
+  ]
+}

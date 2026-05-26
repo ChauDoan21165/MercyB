@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog MercyBlade</title>
+    <link>https://mercyblade.com/blog</link>
+    <atom:link href="https://mercyblade.com/blog-rss.xml" rel="self" type="application/rss+xml"/>
+    <description>Câu chuyện, mẹo học, và sự thật về tiếng Anh cho người Việt. Stories and tips for Vietnamese learners of English.</description>
+    <language>vi</language>
+    <lastBuildDate>Sat, 25 Apr 2026 04:28:46 GMT</lastBuildDate>
+    <item>
+      <title>Tại sao &quot;I am go&quot; lại sai? — giải thích bằng ngữ pháp tiếng Việt</title>
+      <link>https://mercyblade.com/blog/tai-sao-i-am-go-lai-sai</link>
+      <guid isPermaLink="true">https://mercyblade.com/blog/tai-sao-i-am-go-lai-sai</guid>
+      <pubDate>Thu, 23 Apr 2026 09:00:00 GMT</pubDate>
+      <author>noreply@mercyblade.com (Chau Doan)</author>
+      <description>Một trong những lỗi đầu tiên mọi học viên Việt mắc phải — và cũng là lỗi tiết lộ nhiều nhất về cách tiếng Việt tổ chức câu khác tiếng Anh ra sao.</description>
+      <category>grammar</category>
+      <category>beginner</category>
+      <category>l1-transfer</category>
+    </item>
+    <item>
+      <title>5 lỗi phát âm tiếng Anh phổ biến nhất của người Việt</title>
+      <link>https://mercyblade.com/blog/5-loi-phat-am-tieng-anh-pho-bien-cua-nguoi-viet</link>
+      <guid isPermaLink="true">https://mercyblade.com/blog/5-loi-phat-am-tieng-anh-pho-bien-cua-nguoi-viet</guid>
+      <pubDate>Wed, 22 Apr 2026 09:00:00 GMT</pubDate>
+      <author>noreply@mercyblade.com (Chau Doan)</author>
+      <description>Vì sao người Việt hay đọc &quot;think&quot; thành &quot;tink&quot;? Vì sao &quot;fish&quot; thường ra &quot;fis&quot;? Đây là 5 lỗi phát âm phổ biến nhất, cùng cách sửa từng lỗi trong vài phút.</description>
+      <category>pronunciation</category>
+      <category>beginner</category>
+      <category>vietnamese-english</category>
+    </item>
+  </channel>
+</rss>

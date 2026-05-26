@@ -1,0 +1,33 @@
+[
+  {
+    "promptId": "typical-sunday-a1",
+    "taskText": "Describe your typical Sunday. What do you do, where do you go, who do you spend time with? Write 5-10 sentences.",
+    "expectedLevel": "A1"
+  },
+  {
+    "promptId": "typical-sunday-a2",
+    "taskText": "Describe your typical Sunday. What do you do, where do you go, who do you spend time with? Write 5-10 sentences.",
+    "expectedLevel": "A2"
+  },
+  {
+    "promptId": "typical-sunday-b1",
+    "taskText": "Describe your typical Sunday. What do you do, where do you go, who do you spend time with? Write 5-10 sentences.",
+    "expectedLevel": "B1"
+  },
+  {
+    "promptId": "typical-sunday-b2",
+    "taskText": "Describe your typical Sunday. What do you do, where do you go, who do you spend time with? Write 5-10 sentences.",
+    "expectedLevel": "B2"
+  },
+  {
+    "promptId": "typical-sunday-c1",
+    "taskText": "Describe your typical Sunday. What do you do, where do you go, who do you spend time with? Write 5-10 sentences.",
+    "expectedLevel": "C1"
+  },
+  {
+    "promptId": "typical-sunday-c2",
+    "taskText": "Describe your typical Sunday. What do you do, where do you go, who do you spend time with? Write 5-10 sentences.",
+    "expectedLevel": "C2"
+  }
+]
+

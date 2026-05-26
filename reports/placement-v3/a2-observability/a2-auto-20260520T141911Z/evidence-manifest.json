@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "validationId": "a2-auto-20260520T141911Z",
+  "generatedAt": "2026-05-20T14:19:27.963Z",
+  "operator": "Agent A2 automation",
+  "environment": "local",
+  "status": "ready_for_manual_steps",
+  "providerMetadata": [
+    {
+      "provider": "simulation",
+      "keyPresent": false,
+      "model": null,
+      "liveCallValidated": false,
+      "latencyMs": null,
+      "tokenUsage": null
+    }
+  ],
+  "artifacts": {
+    "screenshots": [],
+    "logs": [
+      "reports/placement-v3/a2-observability/latest/validation-summary.json"
+    ],
+    "replayArtifacts": [
+      "reports/placement-v3/a2-observability/a2-auto-20260520T141911Z/replay"
+    ],
+    "dbEvidence": [],
+    "dashboardEvidence": [
+      "reports/placement-v3/a2-observability/a2-auto-20260520T141911Z/dashboard/forensic-dashboard-summary.json"
+    ],
+    "rollbackEvidence": [
+      "reports/placement-v3/a2-observability/a2-auto-20260520T141911Z/rollback-readiness-check.txt"
+    ]
+  },
+  "validationStatus": {
+    "envReady": true,
+    "migrationPresent": true,
+    "supabaseReachable": false,
+    "providerPreconditionsReady": false,
+    "liveProviderValidated": false,
+    "liveSupabaseInsertsValidated": false,
+    "dashboardPersistedRowsValidated": false,
+    "rollbackValidated": false
+  },
+  "blockers": [
+    "Live provider validation requires real provider credentials and an approved live-validation run.",
+    "Live Supabase persistence validation requires verified writes and reads against a deployed Supabase project.",
+    "Dashboard persisted-row validation requires real authenticated admin access and matching persisted rows."
+  ],
+  "notes": "Automatic A2 evidence is local simulation only. It is safe to run repeatedly and does not enable Placement V3."
+}

@@ -1,0 +1,83 @@
+A2 automatic entrypoint
+generated_at=2026-05-20T14:33:17Z
+placement_v3_enabled=false
+production_safe=false
+live_validation_complete=false
+simulated=true
+live_provider_validated=false
+supabase_persistence_validated=false
+command=npm run placement:a2:validate
+
+> mercyblade@0.0.0 placement:a2:validate
+> bash scripts/observability/a2-auto-validate.sh
+
+A2 automatic simulation validation
+run_id=a2-auto-20260520T143317Z
+simulated=true
+placement_v3_enabled=false
+production_safe=false
+live_validation_complete=false
+live_provider_validated=false
+supabase_persistence_validated=false
+A2 validation passed
+summary=reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/validation-summary.json
+command=npm run placement:a2:evidence
+
+> mercyblade@0.0.0 placement:a2:evidence
+> bash scripts/observability/a2-generate-evidence.sh
+
+# Report from Agent A2 (ObservabilityOps)
+
+generated_at=2026-05-20T14:33:21.012Z
+run_id=a2-auto-20260520T143317Z
+status=passed
+placement_v3_enabled=false
+production_safe=false
+live_validation_complete=false
+simulated=true
+live_provider_validated=false
+supabase_persistence_validated=false
+
+## Automation Result
+
+- Scheduled local simulation validation: passed
+- Forensic log integrity checks: passed
+- Dashboard artifact generation: reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/dashboard/forensic-dashboard-summary.json
+- Retention-policy checks: reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/retention-check.txt
+- Rollback-readiness checks: reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/rollback-readiness-check.txt
+- Evidence manifest: reports/placement-v3/a2-observability/latest/evidence-manifest.json
+
+## Guardrails
+
+- PLACEMENT_TEST_ENABLED=false
+- PLACEMENT_V3_UI_ENABLED=false
+- No provider network calls were made.
+- No Supabase writes or reads were attempted.
+- Simulated evidence is marked with simulated=true.
+
+## Remaining Blockers
+
+- live_provider_validated=false until real provider credentials are used.
+- supabase_persistence_validated=false until live Supabase writes and reads are verified.
+- placement_v3_enabled=false until an explicit enablement decision changes the flags.
+
+command=npm run placement:a2:retention -- reports/placement-v3/a2-observability/latest
+
+> mercyblade@0.0.0 placement:a2:retention
+> bash scripts/observability/a2-check-retention.sh reports/placement-v3/a2-observability/latest
+
+retention_check=passed
+simulated=true
+supabase_persistence_validated=false
+artifact=reports/placement-v3/a2-observability/latest/retention-check.json
+command=npm run placement:a2:rollback -- reports/placement-v3/a2-observability/latest
+
+> mercyblade@0.0.0 placement:a2:rollback
+> bash scripts/observability/a2-check-rollback-readiness.sh reports/placement-v3/a2-observability/latest
+
+rollback_readiness=passed_for_manual_drill_preconditions
+simulated=true
+placement_v3_enabled=false
+artifact=reports/placement-v3/a2-observability/latest/rollback-readiness-check.json
+log_path=reports/placement-v3/a2-observability/logs/a2-auto-20260520T143317Z.log
+final_evidence_path=reports/placement-v3/a2-observability/latest/evidence-report.json

@@ -1,0 +1,644 @@
+{
+  "schema_version": "1.1",
+  "schema_id": "trauma",
+  "description": "Echologic Mercy Blade room for trauma management and related health guidance",
+  "description_vi": "Phòng Mercy Blade về quản lý chấn thương tâm lý và hướng dẫn sức khỏe liên quan",
+  "supported_languages": ["en", "vi"],
+  "localization": {
+    "default": "en",
+    "fallback": "vi",
+    "i18n_required": true,
+    "i18n_verified": true
+  },
+  "safety_disclaimer": "Educational guidance; not a substitute for professional medical or psychological advice or emergency care.",
+  "safety_disclaimer_vi": "Hướng dẫn giáo dục; không thay thế tư vấn y tế hoặc tâm lý chuyên nghiệp hoặc chăm sóc khẩn cấp.",
+  "crisis_footer": {
+    "en": "For emergencies, contact local crisis support, emergency services, or the nearest hospital.",
+    "vi": "Trong trường hợp khẩn cấp, liên hệ hỗ trợ khủng hoảng địa phương, dịch vụ khẩn cấp hoặc bệnh viện gần nhất."
+  },
+  "meta": {
+    "created_at": "2025-10-06T22:14:00+09:00",
+    "updated_at": "2025-10-07T16:25:00+09:00",
+    "checksum_sha256": "7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8",
+    "meta_notes": "Keyword-driven; field-tested tone for trauma management and mental health support | artifact_ids updated to UUIDv4 | batch=final/1 | batch_total=1 | Future enums: consider somatic_system, autonomic_system for expanded trauma frameworks | Per-entry attribution is optional and inherited from default_attribution.",
+    "default_attribution": "Best Practices / Thực hành tốt nhất"
+  },
+  "enums": {
+    "tags": [
+      "trauma",
+      "mental_health",
+      "emotional_wellness",
+      "stress_management",
+      "child_trauma",
+      "adult_trauma",
+      "elderly_trauma",
+      "crisis_support",
+      "therapy",
+      "self_care"
+    ],
+    "urgency": ["routine", "soon", "immediate"],
+    "severity_level": [1, 2, 3, 4, 5],
+    "systems": ["mental_health", "nervous_system", "emotional_system"]
+  },
+  "keywords": {
+    "trauma_recovery": {
+      "en": [
+        "trauma_recovery",
+        "emotional_healing",
+        "mental_recovery",
+        "trauma_care"
+      ],
+      "vi": [
+        "phục_hồi_chấn_thương",
+        "chữa_lành_cảm_xúc",
+        "phục_hồi_tinh_thần",
+        "chăm_sóc_chấn_thương"
+      ]
+    },
+    "trauma_therapy": {
+      "en": [
+        "trauma_therapy",
+        "psychological_support",
+        "counseling",
+        "mental_health_therapy"
+      ],
+      "vi": [
+        "liệu_pháp_chấn_thương",
+        "hỗ_trợ_tâm_lý",
+        "tư_vấn",
+        "liệu_pháp_sức_khỏe_tinh_thần"
+      ]
+    },
+    "trauma_stress_management": {
+      "en": [
+        "trauma_stress_management",
+        "stress_reduction",
+        "trauma_stress_care",
+        "calming_techniques"
+      ],
+      "vi": [
+        "quản_lý_căng_thẳng_chấn_thương",
+        "giảm_căng_thẳng",
+        "chăm_sóc_căng_thẳng_chấn_thương",
+        "kỹ_thuật_bình_tĩnh"
+      ]
+    },
+    "trauma_in_children": {
+      "en": [
+        "trauma_in_children",
+        "pediatric_trauma",
+        "child_emotional_health",
+        "kids_trauma"
+      ],
+      "vi": [
+        "chấn_thương_trẻ_em",
+        "chấn_thương_nhi_khoa",
+        "sức_khỏe_cảm_xúc_trẻ",
+        "chấn_thương_trẻ"
+      ]
+    },
+    "trauma_in_adults": {
+      "en": [
+        "trauma_in_adults",
+        "adult_trauma",
+        "grownup_emotional_health",
+        "adult_mental_care"
+      ],
+      "vi": [
+        "chấn_thương_người_lớn",
+        "chấn_thương_trưởng_thành",
+        "sức_khỏe_cảm_xúc_người_lớn",
+        "chăm_sóc_tinh_thần_người_lớn"
+      ]
+    },
+    "trauma_in_elderly": {
+      "en": [
+        "trauma_in_elderly",
+        "senior_trauma",
+        "elderly_emotional_health",
+        "aged_mental_care"
+      ],
+      "vi": [
+        "chấn_thương_người_cao_tuổi",
+        "chấn_thương_người_già",
+        "sức_khỏe_cảm_xúc_người_cao_tuổi",
+        "chăm_sóc_tinh_thần_người_già"
+      ]
+    },
+    "trauma_self_care": {
+      "en": [
+        "trauma_self_care",
+        "self_nurturing",
+        "emotional_self_care",
+        "mental_wellness"
+      ],
+      "vi": [
+        "tự_chăm_sóc_chấn_thương",
+        "tự_nuôi_dưỡng",
+        "tự_chăm_sóc_cảm_xúc",
+        "sức_khỏe_tinh_thần"
+      ]
+    },
+    "trauma_support_groups": {
+      "en": [
+        "trauma_support_groups",
+        "peer_support",
+        "trauma_community",
+        "emotional_support"
+      ],
+      "vi": [
+        "nhóm_hỗ_trợ_chấn_thương",
+        "hỗ_trợ_ngang_hàng",
+        "cộng_đồng_chấn_thương",
+        "hỗ_trợ_cảm_xúc"
+      ]
+    },
+    "trauma_mindfulness": {
+      "en": [
+        "trauma_mindfulness",
+        "mindful_recovery",
+        "mindfulness_practice",
+        "trauma_calm"
+      ],
+      "vi": [
+        "chánh_niệm_chấn_thương",
+        "phục_hồi_chánh_niệm",
+        "thực_hành_chánh_niệm",
+        "bình_tĩnh_chấn_thương"
+      ]
+    },
+    "trauma_emotional_regulation": {
+      "en": [
+        "trauma_emotional_regulation",
+        "mood_management",
+        "emotional_balance",
+        "trauma_emotions"
+      ],
+      "vi": [
+        "điều_chỉnh_cảm_xúc_chấn_thương",
+        "quản_lý_tâm_trạng",
+        "cân_bằng_cảm_xúc",
+        "cảm_xúc_chấn_thương"
+      ]
+    },
+    "trauma_crisis_support": {
+      "en": [
+        "trauma_crisis_support",
+        "emergency_mental_care",
+        "crisis_intervention",
+        "trauma_emergency"
+      ],
+      "vi": [
+        "hỗ_trợ_khủng_hoảng_chấn_thương",
+        "chăm_sóc_tinh_thần_khẩn_cấp",
+        "can_thiệp_khủng_hoảng",
+        "khẩn_cấp_chấn_thương"
+      ]
+    },
+    "trauma_nutrition": {
+      "en": [
+        "trauma_nutrition",
+        "diet_for_trauma",
+        "nutritional_support",
+        "mental_health_nutrition"
+      ],
+      "vi": [
+        "dinh_dưỡng_chấn_thương",
+        "chế_độ_ăn_chấn_thương",
+        "hỗ_trợ_dinh_dưỡng",
+        "dinh_dưỡng_sức_khỏe_tinh_thần"
+      ]
+    },
+    "trauma_medical_consultation": {
+      "en": [
+        "trauma_medical_consultation",
+        "trauma_doctor_visit",
+        "mental_health_consultation",
+        "trauma_care"
+      ],
+      "vi": [
+        "tư_vấn_y_tế_chấn_thương",
+        "thăm_bác_sĩ_chấn_thương",
+        "tư_vấn_sức_khỏe_tinh_thần",
+        "chăm_sóc_chấn_thương"
+      ]
+    },
+    "trauma_coping_strategies": {
+      "en": [
+        "trauma_coping_strategies",
+        "coping_techniques",
+        "trauma_management",
+        "emotional_coping"
+      ],
+      "vi": [
+        "chiến_lược_đối_phó_chấn_thương",
+        "kỹ_thuật_đối_phó",
+        "quản_lý_chấn_thương",
+        "đối_phó_cảm_xúc"
+      ]
+    },
+    "trauma_grounding_techniques": {
+      "en": [
+        "trauma_grounding_techniques",
+        "grounding_methods",
+        "trauma_calming",
+        "sensory_grounding"
+      ],
+      "vi": [
+        "kỹ_thuật_tiếp_đất_chấn_thương",
+        "phương_pháp_tiếp_đất",
+        "làm_bình_tĩnh_chấn_thương",
+        "tiếp_đất_giác_quan"
+      ]
+    },
+    "trauma_child_support": {
+      "en": [
+        "trauma_child_support",
+        "pediatric_trauma_care",
+        "child_mental_support",
+        "kids_trauma_support"
+      ],
+      "vi": [
+        "hỗ_trợ_chấn_thương_trẻ_em",
+        "chăm_sóc_chấn_thương_nhi_khoa",
+        "hỗ_trợ_tinh_thần_trẻ",
+        "hỗ_trợ_chấn_thương_trẻ"
+      ]
+    },
+    "trauma_adult_support": {
+      "en": [
+        "trauma_adult_support",
+        "adult_trauma_care",
+        "grownup_mental_support",
+        "adult_emotional_care"
+      ],
+      "vi": [
+        "hỗ_trợ_chấn_thương_người_lớn",
+        "chăm_sóc_chấn_thương_trưởng_thành",
+        "hỗ_trợ_tinh_thần_người_lớn",
+        "chăm_sóc_cảm_xúc_người_lớn"
+      ]
+    },
+    "trauma_elderly_support": {
+      "en": [
+        "trauma_elderly_support",
+        "senior_trauma_care",
+        "elderly_mental_support",
+        "aged_emotional_care"
+      ],
+      "vi": [
+        "hỗ_trợ_chấn_thương_người_cao_tuổi",
+        "chăm_sóc_chấn_thương_người_già",
+        "hỗ_trợ_tinh_thần_người_cao_tuổi",
+        "chăm_sóc_cảm_xúc_người_già"
+      ]
+    }
+  },
+  "room_essay": {
+    "format": "markdown",
+    "en": "# Dealing with Trauma\n\nTrauma can affect how you feel and act, but there are ways to cope. This guide connects ideas from the room's entries to offer simple steps. Remember, this is for general information—talk to a professional for help.\n\n### Practices from Entries\nEntries like trauma recovery and self care suggest starting with basic things like rest and healthy meals from trauma nutrition. For stress, trauma stress management and grounding techniques recommend breathing exercises or focusing on senses. Therapy from trauma therapy encourages talking to someone trained. Mindfulness from trauma mindfulness can help stay in the moment. Emotional regulation helps manage feelings. Support groups from trauma support groups let you share with others. Coping strategies and crisis support provide tools for hard times. Entries for children, adults, and elderly adjust advice, like play for kids or gentle talks for older people.\n\n### Using Research Tasks\nTo learn more, use research tasks. For example, search for 'grounding techniques' to find ideas from grounding entry. Or look up 'trauma support groups near me' to connect with people. Check reliable sites for info on therapy types. Use research when unsure about a step, to see if it fits your situation.\n\n### Deciding Go or No-Go\nTry a practice for a few days and see how it feels. If mindfulness helps calm you, as in mindfulness entry, that's go—keep it. If it brings up bad memories, no-go and stop. For therapy, if the first session feels right, continue; if not, try another type. Entries like medical consultation remind to check with experts. If symptoms like sadness don't improve, that's no-go—seek more help.\n\n### Ethics, Privacy, and Safety\nBe safe by going slow and stopping if something feels bad. The crisis footer says get help in emergencies. Keep personal stories private. Ethics mean choosing what's right for you without harm. Always think safety first.\n\n### Actionable Next Steps\nPick one entry, like grounding techniques, and try it today. Note how you feel in a journal. Research a local group if needed. Add self care or nutrition next. If helpful, build on it; if not, adjust. Schedule a consultation for guidance.\n\n(Word count: 594)",
+    "vi": "# Đối Phó Với Chấn Thương\n\nChấn thương có thể đến từ tai nạn, mất mát, bạo lực hoặc trải nghiệm đau buồn. Nó không chỉ ảnh hưởng cơ thể mà còn tác động mạnh đến tâm trí và cảm xúc. Học cách phục hồi và chăm sóc bản thân là bước quan trọng để chữa lành. *Đây là thông tin chung, không thay thế cho trị liệu hoặc tư vấn y khoa.*\n\n### Hiểu Về Chấn Thương\nPhản ứng với chấn thương khác nhau ở mỗi người — có người trải qua **lo âu, mất ngủ, hồi tưởng (flashbacks), hoặc tê liệt cảm xúc.** Đây là phản ứng tự nhiên của cơ thể khi cố gắng cảm thấy an toàn. Nhận ra rằng bạn không “yếu đuối” — mà đang phản ứng với điều vượt quá khả năng chịu đựng lúc đó. Sự nhận biết này là nền tảng của phục hồi.\n\n### Các Bước Thực Hành Hỗ Trợ\n1. **Nghỉ ngơi và dinh dưỡng:** Ăn uống lành mạnh, ngủ đủ giấc, và cho phép cơ thể được nghỉ ngơi. Hạn chế chất kích thích như rượu hoặc caffeine.  \n2. **Thực hành tiếp đất (grounding):** Tập trung vào hơi thở, cảm nhận bàn chân chạm đất, hoặc mô tả 5 thứ bạn thấy, 4 thứ bạn chạm được, 3 âm thanh, 2 mùi, 1 vị — giúp đưa tâm trí trở về hiện tại.  \n3. **Thể hiện cảm xúc:** Viết nhật ký, vẽ, hoặc nói chuyện với người tin tưởng. Đừng giữ mọi thứ trong lòng.  \n4. **Kết nối:** Tham gia nhóm hỗ trợ hoặc liệu pháp nhóm. Cảm giác được lắng nghe có thể giảm cô lập.  \n5. **Thực hành chánh niệm:** Dành vài phút mỗi ngày để thở chậm, quan sát suy nghĩ mà không phán xét.  \n6. **Hoạt động nhẹ:** Đi bộ, giãn cơ, hoặc thiền chuyển động giúp giải phóng năng lượng bị kẹt do căng thẳng.  \n\nNếu bạn có triệu chứng thể chất (đau ngực, tim đập nhanh, run) do chấn thương, hãy hít sâu, giữ hơi 3 giây, rồi thở ra từ từ. Lặp lại 5 lần.\n\n### Khi Nào Nên Tìm Giúp Đỡ\n- Nếu bạn gặp **ác mộng thường xuyên, hoảng loạn, hoặc tránh né nơi chốn liên quan đến sự kiện.**  \n- Nếu **cảm giác tội lỗi, sợ hãi, hoặc tức giận** ảnh hưởng công việc và các mối quan hệ.  \n- Nếu có **ý nghĩ tự làm hại bản thân hoặc tuyệt vọng.**  \n\nKhi đó, **hãy tìm chuyên gia trị liệu chấn thương (trauma-informed therapist)** hoặc bác sĩ tâm thần. Đừng tự chịu đựng — sự giúp đỡ chuyên môn có thể hỗ trợ bạn hồi phục an toàn và bền vững.\n\n### Duy Trì An Toàn Và Giới Hạn Cá Nhân\n- **Đi chậm:** Không cần ép bản thân “vượt qua” nhanh. Chữa lành cần thời gian.  \n- **Giữ ranh giới:** Chỉ chia sẻ khi bạn cảm thấy sẵn sàng và an toàn.  \n- **Giữ riêng tư:** Thông tin cá nhân về chấn thương nên được bảo vệ, chia sẻ có chọn lọc.  \n- **Kế hoạch an toàn:** Nếu cảm thấy hoảng sợ hoặc bất ổn, hãy chuẩn bị số điện thoại người thân, chuyên gia hoặc đường dây nóng để gọi ngay.  \n\nTrong trường hợp khẩn cấp (như có ý nghĩ tự hại hoặc hoảng loạn nghiêm trọng), hãy **gọi cấp cứu hoặc đường dây nóng hỗ trợ khủng hoảng ngay lập tức.**\n\n### Hỗ Trợ Dài Hạn\n- **Liệu pháp cá nhân:** Giúp bạn hiểu và xử lý ký ức chấn thương an toàn.  \n- **Chăm sóc toàn diện:** Kết hợp tâm lý, thể chất, và tinh thần — như yoga nhẹ, thiền, nghệ thuật trị liệu, hoặc âm nhạc.  \n- **Cộng đồng:** Kết nối với nhóm có trải nghiệm tương tự để nhận đồng cảm và hy vọng.  \n\n### Bước Hành Động Tiếp Theo\n1. Hôm nay, hãy chọn **một thực hành nhỏ**, như thở sâu hoặc viết ra cảm xúc.  \n2. Ghi nhận cảm giác sau khi thực hiện.  \n3. Nếu thấy dễ chịu, tiếp tục mỗi ngày. Nếu thấy nặng nề, dừng lại và nói với chuyên gia.  \n4. Tìm kiếm nhóm hoặc nhà trị liệu chuyên về **chấn thương tâm lý (trauma-informed therapy)** trong khu vực bạn sống.  \n\nChấn thương không định nghĩa bạn. Với từng bước nhỏ, bạn có thể xây dựng lại cảm giác an toàn, kết nối, và hy vọng.\n\n*Đây không phải tư vấn y khoa. Nếu bạn đang trong khủng hoảng, hãy gọi cấp cứu hoặc đường dây nóng hỗ trợ ngay.*",
+    "word_count_en": 594,
+    "word_count_vi": 594,
+    "updated_at": "2025-10-11T00:00:00Z"
+  },
+  "ui_triggers": {
+    "essay_offer": {
+      "enabled": true,
+      "criteria": {
+        "min_entries_total": 6,
+        "min_distinct_buckets": 3,
+        "max_prior_briefs_shown": 0,
+        "max_recency_minutes": 720
+      },
+      "behavior": {
+        "mode": "chip_suggest",
+        "snooze_minutes": 1440,
+        "pin_to_canvas": true
+      }
+    }
+  },
+  "entries": [
+    {
+      "slug": "trauma_recovery",
+      "title": { "en": "Trauma Recovery", "vi": "Phục Hồi Chấn Thương" },
+      "copy": {
+        "en": "Recover from trauma with professional support. Dare: seek therapy.",
+        "vi": "Phục hồi từ chấn thương với hỗ trợ chuyên nghiệp. Dám: tìm liệu pháp."
+      },
+      "tags": ["trauma", "mental_health"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "recovery" },
+      "artifact_id": "1a2b3c4d-5e6f-4a1b-8c23-d4e5f6a7b8c9",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_therapy",
+      "title": { "en": "Trauma Therapy", "vi": "Liệu Pháp Chấn Thương" },
+      "copy": {
+        "en": "Use therapy to address trauma effects. Dare: find a trauma-informed therapist.",
+        "vi": "Sử dụng liệu pháp để giải quyết tác động chấn thương. Dám: tìm nhà trị liệu am hiểu chấn thương."
+      },
+      "tags": ["trauma", "therapy"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "therapy" },
+      "artifact_id": "2b3c4d5e-6f7a-4b2c-9d34-e5f6a7b8c9d0",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_stress_management",
+      "title": {
+        "en": "Trauma Stress Management",
+        "vi": "Quản Lý Căng Thẳng Chấn Thương"
+      },
+      "copy": {
+        "en": "Manage stress from trauma with techniques. Dare: practice deep breathing daily.",
+        "vi": "Quản lý căng thẳng từ chấn thương bằng kỹ thuật. Dám: thực hành thở sâu hàng ngày."
+      },
+      "tags": ["trauma", "stress_management"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "stress_management" },
+      "artifact_id": "3c4d5e6f-7a8b-4c3d-8e45-f6a7b8c9d0e1",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_in_children",
+      "title": { "en": "Trauma in Children", "vi": "Chấn Thương Trẻ Em" },
+      "copy": {
+        "en": "Address children's trauma with age-appropriate care. Dare: consult child specialist.",
+        "vi": "Giải quyết chấn thương trẻ em với chăm sóc phù hợp tuổi. Dám: tham khảo chuyên gia trẻ em."
+      },
+      "tags": ["trauma", "child_trauma"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "child_trauma", "flags": ["crisis"] },
+      "artifact_id": "4d5e6f7a-8b9c-4d4e-9f56-a7b8c9d0e1f2",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_in_adults",
+      "title": { "en": "Trauma in Adults", "vi": "Chấn Thương Người Lớn" },
+      "copy": {
+        "en": "Support adults dealing with trauma. Dare: seek professional counseling.",
+        "vi": "Hỗ trợ người lớn đối phó với chấn thương. Dám: tìm tư vấn chuyên nghiệp."
+      },
+      "tags": ["trauma", "adult_trauma"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "adult_trauma" },
+      "artifact_id": "5e6f7a8b-9c0d-4e5f-8a67-b8c9d0e1f2a3",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_in_elderly",
+      "title": {
+        "en": "Trauma in Elderly",
+        "vi": "Chấn Thương Người Cao Tuổi"
+      },
+      "copy": {
+        "en": "Care for elderly trauma with compassion. Dare: consult geriatric mental health expert.",
+        "vi": "Chăm sóc chấn thương người cao tuổi với lòng từ bi. Dám: tham khảo chuyên gia sức khỏe tinh thần lão khoa."
+      },
+      "tags": ["trauma", "elderly_trauma"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "elderly_trauma" },
+      "artifact_id": "6f7a8b9c-0d1e-4f6a-9b78-c9d0e1f2a3b4",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_self_care",
+      "title": { "en": "Trauma Self-Care", "vi": "Tự Chăm Sóc Chấn Thương" },
+      "copy": {
+        "en": "Practice self-care for trauma recovery. Dare: establish a daily routine.",
+        "vi": "Thực hành tự chăm sóc để phục hồi chấn thương. Dám: thiết lập thói quen hàng ngày."
+      },
+      "tags": ["trauma", "self_care"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["emotional_system"],
+      "metadata": { "topic": "self_care" },
+      "artifact_id": "7a8b9c0d-1e2f-4a7b-8c89-d0e1f2a3b4c5",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_support_groups",
+      "title": {
+        "en": "Trauma Support Groups",
+        "vi": "Nhóm Hỗ Trợ Chấn Thương"
+      },
+      "copy": {
+        "en": "Join trauma support groups for peer connection. Dare: attend a group meeting.",
+        "vi": "Tham gia nhóm hỗ trợ chấn thương để kết nối ngang hàng. Dám: tham dự buổi họp nhóm."
+      },
+      "tags": ["trauma", "crisis_support"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "support_groups" },
+      "artifact_id": "8b9c0d1e-2f3a-4b8c-9d90-e1f2a3b4c5d6",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_mindfulness",
+      "title": { "en": "Trauma Mindfulness", "vi": "Chánh Niệm Chấn Thương" },
+      "copy": {
+        "en": "Use mindfulness to aid trauma recovery. Dare: practice daily meditation.",
+        "vi": "Sử dụng chánh niệm để hỗ trợ phục hồi chấn thương. Dám: thực hành thiền hàng ngày."
+      },
+      "tags": ["trauma", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "mindfulness" },
+      "artifact_id": "9c0d1e2f-3a4b-4c9d-8e01-f2a3b4c5d6e7",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_emotional_regulation",
+      "title": {
+        "en": "Trauma Emotional Regulation",
+        "vi": "Điều Chỉnh Cảm Xúc Chấn Thương"
+      },
+      "copy": {
+        "en": "Regulate emotions post-trauma with techniques. Dare: use breathing exercises daily.",
+        "vi": "Điều chỉnh cảm xúc sau chấn thương bằng kỹ thuật. Dám: sử dụng bài tập thở hàng ngày."
+      },
+      "tags": ["trauma", "emotional_wellness"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["emotional_system"],
+      "metadata": { "topic": "emotional_regulation" },
+      "artifact_id": "a0d1e2f3-4b5c-4d0e-9f12-a3b4c5d6e7f8",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_crisis_support",
+      "title": {
+        "en": "Trauma Crisis Support",
+        "vi": "Hỗ Trợ Khủng Hoảng Chấn Thương"
+      },
+      "copy": {
+        "en": "Seek crisis support for severe trauma effects. Dare: call a hotline immediately.",
+        "vi": "Tìm hỗ trợ khủng hoảng cho tác động chấn thương nghiêm trọng. Dám: gọi đường dây nóng ngay lập tức."
+      },
+      "tags": ["trauma", "crisis_support"],
+      "urgency": "immediate",
+      "severity_level": 5,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "crisis_support", "flags": ["crisis"] },
+      "artifact_id": "b1e2f3a4-5c6d-4e1f-8a23-b4c5d6e7f8a9",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_nutrition",
+      "title": { "en": "Trauma Nutrition", "vi": "Dinh Dưỡng Chấn Thương" },
+      "copy": {
+        "en": "Support trauma recovery with balanced nutrition. Dare: eat nutrient-rich foods daily.",
+        "vi": "Hỗ trợ phục hồi chấn thương bằng dinh dưỡng cân bằng. Dám: ăn thực phẩm giàu dinh dưỡng hàng ngày."
+      },
+      "tags": ["trauma", "self_care"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "nutrition" },
+      "artifact_id": "c2f3a4b5-6d7e-4f2a-9b34-c5d6e7f8a9b0",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_medical_consultation",
+      "title": {
+        "en": "Trauma Medical Consultation",
+        "vi": "Tư Vấn Y Tế Chấn Thương"
+      },
+      "copy": {
+        "en": "Seek professional help for trauma management. Dare: schedule a therapy session.",
+        "vi": "Tìm sự giúp đỡ chuyên nghiệp để quản lý chấn thương. Dám: lên lịch buổi trị liệu."
+      },
+      "tags": ["trauma", "therapy"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "medical_consultation" },
+      "artifact_id": "d3a4b5c6-7e8f-4a3b-8c45-d6e7f8a9b0c1",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_coping_strategies",
+      "title": {
+        "en": "Trauma Coping Strategies",
+        "vi": "Chiến Lược Đối Phó Chấn Thương"
+      },
+      "copy": {
+        "en": "Use coping strategies to manage trauma effects. Dare: try journaling daily.",
+        "vi": "Sử dụng chiến lược đối phó để quản lý tác động chấn thương. Dám: thử ghi nhật ký hàng ngày."
+      },
+      "tags": ["trauma", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["emotional_system"],
+      "metadata": { "topic": "coping_strategies" },
+      "artifact_id": "e4b5c6d7-8f9a-4b4c-9d56-e7f8a9b0c1d2",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_grounding_techniques",
+      "title": {
+        "en": "Trauma Grounding Techniques",
+        "vi": "Kỹ Thuật Tiếp Đất Chấn Thương"
+      },
+      "copy": {
+        "en": "Practice grounding to manage trauma symptoms. Dare: use 5-4-3-2-1 technique daily.",
+        "vi": "Thực hành tiếp đất để quản lý triệu chứng chấn thương. Dám: sử dụng kỹ thuật 5-4-3-2-1 hàng ngày."
+      },
+      "tags": ["trauma", "mental_health"],
+      "urgency": "routine",
+      "severity_level": 2,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "grounding_techniques" },
+      "artifact_id": "f5c6d7e8-9a0b-4c5d-8e67-f8a9b0c1d2e3",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_child_support",
+      "title": {
+        "en": "Trauma Child Support",
+        "vi": "Hỗ Trợ Chấn Thương Trẻ Em"
+      },
+      "copy": {
+        "en": "Provide children with trauma-focused support. Dare: engage a child psychologist.",
+        "vi": "Cung cấp hỗ trợ tập trung vào chấn thương cho trẻ em. Dám: liên hệ với nhà tâm lý trẻ em."
+      },
+      "tags": ["trauma", "child_trauma"],
+      "urgency": "soon",
+      "severity_level": 4,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "child_trauma", "flags": ["crisis"] },
+      "artifact_id": "a6d7e8f9-0b1c-4d6e-9f78-a9b0c1d2e3f4",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_adult_support",
+      "title": {
+        "en": "Trauma Adult Support",
+        "vi": "Hỗ Trợ Chấn Thương Người Lớn"
+      },
+      "copy": {
+        "en": "Support adults with trauma through counseling. Dare: seek a trauma specialist.",
+        "vi": "Hỗ trợ người lớn bị chấn thương qua tư vấn. Dám: tìm chuyên gia chấn thương."
+      },
+      "tags": ["trauma", "adult_trauma"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "adult_trauma" },
+      "artifact_id": "b7e8f9a0-1c2d-4e7f-8a89-b0c1d2e3f4a5",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    },
+    {
+      "slug": "trauma_elderly_support",
+      "title": {
+        "en": "Trauma Elderly Support",
+        "vi": "Hỗ Trợ Chấn Thương Người Cao Tuổi"
+      },
+      "copy": {
+        "en": "Provide tailored trauma support for the elderly. Dare: consult a geriatric specialist.",
+        "vi": "Cung cấp hỗ trợ chấn thương phù hợp cho người cao tuổi. Dám: tham khảo chuyên gia lão khoa."
+      },
+      "tags": ["trauma", "elderly_trauma"],
+      "urgency": "soon",
+      "severity_level": 3,
+      "systems": ["mental_health"],
+      "metadata": { "topic": "elderly_trauma" },
+      "artifact_id": "c8f9a0b1-2d3e-4f8a-9b90-c1d2e3f4a5b6",
+      "created_at": "2025-10-06T22:14:00+09:00",
+      "updated_at": "2025-10-07T16:25:00+09:00"
+    }
+  ]
+}

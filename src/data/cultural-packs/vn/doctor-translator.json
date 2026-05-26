@@ -1,0 +1,142 @@
+{
+  "id": "doctor-translator",
+  "title_vn": "Đi bệnh viện cùng bố mẹ — phiên dịch",
+  "title_en": "Translating for parents at the doctor's office",
+  "summary_vn": "Cụm từ và câu hữu ích khi giúp bố mẹ lớn tuổi đi khám bác sĩ ở môi trường tiếng Anh.",
+  "summary_en": "Phrases and lines for adults helping elderly parents navigate English-speaking medical appointments.",
+  "tone": "practical",
+  "regional_note": "Bố mẹ miền Bắc có thể quen với cách diễn đạt y tế chính thức hơn (huyết áp, tiểu đường); bố mẹ miền Nam có thể dùng từ dân dã hơn (đường máu, mỡ máu). Khi phiên dịch sang tiếng Anh, cả hai đều dịch ra cùng từ y khoa.",
+  "phrases": [
+    {
+      "id": "introduce-as-translator",
+      "vn_moment": "Giới thiệu mình là người phiên dịch",
+      "context": "Đầu cuộc khám, bác sĩ chưa rõ vai trò của bạn.",
+      "english": "I'm here to translate for my mom. She speaks Vietnamese — I'll relay everything you say to her, and her answers back to you. Please speak directly to her, not me, and I'll interpret.",
+      "cultural_note": "Telling the doctor to address the patient directly preserves the parent's dignity. Otherwise the conversation drifts to you and the parent feels invisible."
+    },
+    {
+      "id": "ask-doctor-slow-down",
+      "vn_moment": "Yêu cầu bác sĩ nói chậm hơn",
+      "context": "Bác sĩ giải thích nhanh, bạn cần thời gian dịch lại.",
+      "english": "Could you slow down a little? I want to make sure I translate this correctly for her. I'd rather take an extra thirty seconds than miss something important.",
+      "cultural_note": "American doctors are often time-pressed. Asking once, politely, almost always works. Asking apologetically signals you're managing care, not arguing."
+    },
+    {
+      "id": "translate-medical-term",
+      "vn_moment": "Hỏi bác sĩ giải thích từ chuyên môn",
+      "context": "Bác sĩ dùng từ y khoa bạn không biết tiếng Việt tương đương.",
+      "english": "Could you explain that term in everyday English? I want to translate it correctly — I don't have the Vietnamese medical vocabulary for some of these.",
+      "cultural_note": "Doctors switch to plain English when asked. Don't pretend you know the term and guess — incorrect translations of medical terms can change a treatment decision."
+    },
+    {
+      "id": "blood-pressure-history",
+      "vn_moment": "Huyết áp — tiền sử",
+      "context": "Bác sĩ hỏi tiền sử bệnh.",
+      "english": "She has high blood pressure — she's been on medication for it for about ten years. We can give you the prescription details.",
+      "cultural_note": "Bring the parent's medication list (paper or photo) to every appointment. The exact drug names matter. Don't rely on parent's memory for spellings."
+    },
+    {
+      "id": "diabetes-history",
+      "vn_moment": "Tiểu đường — chế độ ăn",
+      "context": "Bác sĩ hỏi về lượng đường máu.",
+      "english": "She has type 2 diabetes — diagnosed about five years ago. Her last A1C was around 7. She manages it with diet and metformin.",
+      "cultural_note": "Vietnamese parents often track diabetes with food rules ('không ăn ngọt') rather than numeric goals. Translate to numbers when the doctor needs them."
+    },
+    {
+      "id": "where-pain",
+      "vn_moment": "Đau ở chỗ nào",
+      "context": "Dịch lại câu hỏi vị trí đau.",
+      "english": "He's pointing here — the lower right side of his abdomen. The pain has been there for about three days, sharper when he moves.",
+      "cultural_note": "Have the parent point. Vietnamese descriptions of pain location ('đau bụng dưới') can be vague; pointing on the body is the cleanest translation."
+    },
+    {
+      "id": "pain-scale",
+      "vn_moment": "Đau theo thang 1-10",
+      "context": "Bác sĩ hỏi thang điểm đau.",
+      "english": "On a scale of 1 to 10 — 1 being barely there, 10 being unbearable — he says it's a 6 right now, but it goes up to 8 when he stands.",
+      "cultural_note": "Many Vietnamese parents under-rate pain to avoid 'troubling' the doctor. Ask twice if the answer seems low compared to how they're walking or standing."
+    },
+    {
+      "id": "medication-list",
+      "vn_moment": "Danh sách thuốc đang uống",
+      "context": "Y tá hỏi danh sách thuốc.",
+      "english": "Here's her current medication list — I have it on a printed sheet. She's also taking traditional Vietnamese herbal teas, but no prescribed supplements outside this list.",
+      "cultural_note": "Mention herbal/traditional medicine even if it 'doesn't count' — some Vietnamese herbs interact with Western drugs (especially blood thinners and blood pressure meds)."
+    },
+    {
+      "id": "allergies-and-side-effects",
+      "vn_moment": "Dị ứng và phản ứng phụ",
+      "context": "Bác sĩ hỏi tiền sử dị ứng.",
+      "english": "She's allergic to penicillin — she had a rash and breathing trouble in her thirties. No other known allergies. She's had nausea on certain pain medications, but I'll find the exact name and email it to your office.",
+      "cultural_note": "If you don't know the exact answer, say so — don't guess. Doctors trust 'I'll find out' more than uncertain answers."
+    },
+    {
+      "id": "consent-explained",
+      "vn_moment": "Giải thích đồng ý điều trị",
+      "context": "Bác sĩ cần ký đồng ý phẫu thuật / xét nghiệm.",
+      "english": "Before she signs, can we walk through it once more in Vietnamese? I want to make sure she understands the procedure, the risks, and the recovery time. She doesn't sign things she hasn't fully understood.",
+      "cultural_note": "Don't translate consent forms in the room without taking time. A parent feeling rushed into signing is a recipe for resentment later."
+    },
+    {
+      "id": "follow-up-instructions",
+      "vn_moment": "Hướng dẫn sau khám",
+      "context": "Y tá đưa giấy hướng dẫn về.",
+      "english": "Could I get the discharge instructions in writing? I'll translate them for her at home with the family. We'll also write down the schedule for the medication so she doesn't have to remember in English.",
+      "cultural_note": "Always ask for written instructions. Verbal instructions in English don't survive the car ride home."
+    },
+    {
+      "id": "interpreter-service",
+      "vn_moment": "Yêu cầu dịch vụ phiên dịch chính thức",
+      "context": "Bệnh viện có dịch vụ phiên dịch tiếng Việt.",
+      "english": "Does this hospital have a Vietnamese interpreter service? For complex appointments — surgery consults, cancer treatment plans — I'd prefer a professional interpreter on top of me. I want her to hear it in two voices, not just mine.",
+      "cultural_note": "US hospitals are required by federal law (Title VI) to provide free interpreter services. Asking is your right — and it can lift a heavy load off you."
+    },
+    {
+      "id": "describing-traditional-remedies",
+      "vn_moment": "Kể về thuốc Bắc / thuốc Nam",
+      "context": "Bố mẹ đang dùng cao đơn hoàn tán hoặc thuốc Bắc.",
+      "english": "She's been using traditional Vietnamese herbal medicine for joint pain — I don't have the exact ingredients in English, but I can show you the package. I want to make sure it doesn't interact with what you prescribe.",
+      "cultural_note": "Bring the package. A photo works too. Doctors take a few seconds to pattern-match the ingredients; you don't have to translate every herb."
+    },
+    {
+      "id": "asking-second-opinion",
+      "vn_moment": "Xin ý kiến bác sĩ thứ hai",
+      "context": "Bố mẹ muốn hỏi ý kiến bác sĩ khác.",
+      "english": "Before we commit to surgery, my mom would like a second opinion. Could you help arrange a referral, or recommend someone we could see?",
+      "cultural_note": "Asking for a second opinion is normal and expected in Western medicine. Doctors aren't offended. Vietnamese parents sometimes feel asking is rude — reassure them in Vietnamese before raising it in English."
+    },
+    {
+      "id": "billing-and-insurance",
+      "vn_moment": "Hỏi về chi phí và bảo hiểm",
+      "context": "Bác sĩ kê toa, bạn hỏi chi phí.",
+      "english": "Before we fill the prescription, can you check whether her insurance covers this medication? If not, is there a generic version that's covered?",
+      "cultural_note": "Vietnamese parents often won't fill an expensive prescription without telling you. Ask about the cost in the room while the doctor's options are still open."
+    }
+  ],
+  "dialogues": [
+    {
+      "title": "First appointment, mom is nervous",
+      "setting": "Reception desk at a clinic. Your mom is silent next to you.",
+      "lines": [
+        { "speaker": "Receptionist", "english": "And who is the patient today?" },
+        { "speaker": "You", "english": "My mom — she's right here. I'm her son. She speaks Vietnamese, so I'll be translating during the visit." },
+        { "speaker": "Receptionist", "english": "Has she been here before?" },
+        { "speaker": "You", "english": "First time. We brought her medical records and a list of her medications — I have them on this sheet." },
+        { "speaker": "Receptionist", "english": "Great. Do you need a Vietnamese interpreter?" },
+        { "speaker": "You", "english": "I'll handle today, but for the surgery consult next week — yes, I'd like to request a Vietnamese interpreter for that appointment. Could we book that now?" }
+      ]
+    },
+    {
+      "title": "Doctor explains a diagnosis",
+      "setting": "In the exam room. Doctor finishes a brief explanation.",
+      "lines": [
+        { "speaker": "Doctor", "english": "So based on the imaging, we're looking at early-stage osteoarthritis in both knees. We have several options: physical therapy first, then injections if that doesn't help." },
+        { "speaker": "You", "english": "Could I take a moment to translate this for her, and then ask follow-up questions?" },
+        { "speaker": "Doctor", "english": "Of course, take your time." },
+        { "speaker": "You (in VN to mom)", "english": "Bác sĩ nói khớp gối hai bên bị thoái hóa giai đoạn đầu. Có hai hướng — tập vật lý trị liệu trước, nếu không đỡ thì tiêm thuốc sau.", "vn": "Bác sĩ nói khớp gối hai bên bị thoái hóa giai đoạn đầu. Có hai hướng — tập vật lý trị liệu trước, nếu không đỡ thì tiêm thuốc sau." },
+        { "speaker": "You (to doctor)", "english": "She's asking about the physical therapy — how often, and whether it's covered by her Medicare plan?" },
+        { "speaker": "Doctor", "english": "Twice a week for six weeks initially. Most Medicare plans cover it; we'll verify before scheduling." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "generated_at": "2026-05-20T17:13:29.541Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "final_blocked_safe_archive_board_generated": true,
+  "blocked_safe_archival_posture_retained": true,
+  "archive_ready_for_long_term_retention": true,
+  "archive_ready_for_enablement": false,
+  "board_items": [
+    {
+      "id": "archival_integrity",
+      "status": "TRACEABLE",
+      "artifact": "reports/governance-convergence/governance-final-archival-integrity-report.json"
+    },
+    {
+      "id": "permanent_denial_lineage",
+      "status": "INCOMPLETE_RETAINED_BLOCKED",
+      "artifact": "reports/governance-convergence/governance-permanent-denial-lineage-index.json"
+    },
+    {
+      "id": "retained_evidence_gaps",
+      "status": "OPEN_GAPS_RETAINED",
+      "artifact": "reports/governance-convergence/governance-retained-evidence-gap-catalog.json"
+    },
+    {
+      "id": "unsupported_readiness_suppression",
+      "status": "PRESERVED",
+      "artifact": "reports/governance-convergence/governance-long-term-denial-preservation-board.json"
+    },
+    {
+      "id": "strict_mode_denial",
+      "status": "PRESERVED",
+      "artifact": "reports/governance-convergence/governance-cross-stream-strict-mode-verification.json"
+    },
+    {
+      "id": "do_not_enable",
+      "status": "PRESERVED",
+      "artifact": "reports/governance-convergence/governance-unified-blocked-safe-ledger.json"
+    }
+  ]
+}

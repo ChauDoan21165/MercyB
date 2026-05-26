@@ -1,0 +1,177 @@
+# PATH: supabase/config.toml
+
+project_id = "buemdfxyhxunzpgdoqin"
+
+# =========================
+# EMAIL
+# =========================
+[functions.email-broadcast]
+verify_jwt = false
+
+[functions.email-automations]
+verify_jwt = false
+
+[functions.send-redeem-email]
+verify_jwt = false
+
+[functions.send-pending-emails]
+verify_jwt = false
+
+# RFC 8058 one-click unsubscribe endpoint. Public by design: the opaque
+# per-user profiles.email_unsubscribe_token IS the credential (same
+# trust model as the unsubscribe_by_token RPC's anon grant). Never
+# requires a JWT — mail clients POST it unauthenticated.
+[functions.email-unsubscribe]
+verify_jwt = false
+
+
+# =========================
+# CHAT / AI
+# =========================
+[functions.room-chat]
+verify_jwt = true
+
+[functions.ai-chat]
+verify_jwt = true
+
+[functions.ai-reasoning]
+verify_jwt = true
+
+[functions.ai-dashboard]
+verify_jwt = true
+
+[functions.generate-matches]
+verify_jwt = true
+
+
+# =========================
+# PAYMENTS
+# =========================
+[functions.paypal-payment]
+verify_jwt = true
+
+[functions.bank-transfer-orders]
+verify_jwt = false
+
+[functions.verify-payment-screenshot]
+verify_jwt = true
+
+[functions.generate-gift-code]
+verify_jwt = true
+
+[functions.redeem-gift-code]
+verify_jwt = false
+
+
+# =========================
+# AUDIO
+# =========================
+[functions.text-to-speech]
+verify_jwt = true
+
+[functions.generate-room-audio]
+verify_jwt = false
+
+[functions.generate-warmth-audio]
+verify_jwt = false
+
+[functions.audio-storage-audit]
+verify_jwt = true
+
+
+# =========================
+# GUIDES  (SECURED)
+# =========================
+[functions.guide-assistant]
+verify_jwt = true
+
+[functions.guide-english-helper]
+verify_jwt = true
+
+[functions.guide-pronunciation-coach]
+verify_jwt = true
+
+
+# =========================
+# ADMIN / SECURITY  (SECURED)
+# =========================
+[functions.admin-management]
+verify_jwt = true
+
+[functions.manage-admins]
+verify_jwt = true
+
+[functions.admin-stats]
+verify_jwt = true
+
+[functions.security-alert]
+verify_jwt = false
+
+[functions.audit-v4-safe-shield]
+verify_jwt = true
+
+[functions.audit-db-health]
+verify_jwt = true
+
+
+# =========================
+# HEALTH / MONITORING
+# =========================
+[functions.health-check]
+verify_jwt = false
+
+[functions.uptime-monitor]
+verify_jwt = false
+
+[functions.room-health-summary]
+verify_jwt = true
+
+
+# =========================
+# ROOM ACCESS / LOADING
+# =========================
+[functions.get-room]
+enabled = true
+verify_jwt = true
+entrypoint = "./functions/get-room/index.ts"
+
+[functions.secure-room-loader]
+enabled = true
+verify_jwt = true
+entrypoint = "./functions/secure-room-loader/index.ts"
+
+[functions.access-control]
+enabled = true
+verify_jwt = true
+entrypoint = "./functions/access-control/index.ts"
+
+
+# =========================
+# STRIPE WEBHOOK
+# =========================
+[functions.stripe-webhook]
+enabled = true
+verify_jwt = false
+import_map = "./functions/stripe-webhook/deno.json"
+entrypoint = "./functions/stripe-webhook/index.ts"
+
+# =========================
+# ADMIN DAILY DIGEST
+# =========================
+[functions.admin-daily-digest]
+enabled = true
+verify_jwt = true
+import_map = "./functions/admin-daily-digest/deno.json"
+entrypoint = "./functions/admin-daily-digest/index.ts"
+
+[functions.adult-content-url]
+enabled = true
+verify_jwt = true
+import_map = "./functions/adult-content-url/deno.json"
+entrypoint = "./functions/adult-content-url/index.ts"
+
+[functions.me-entitlement]
+enabled = true
+verify_jwt = true
+import_map = "./functions/me-entitlement/deno.json"
+entrypoint = "./functions/me-entitlement/index.ts"

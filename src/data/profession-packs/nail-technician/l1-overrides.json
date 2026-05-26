@@ -1,0 +1,51 @@
+[
+  {
+    "tag": "vi_nail_let_me_to",
+    "name_vi": "Sau 'let me' không có 'to'",
+    "why_vi": "Tiếng Việt mình nói 'để em LÀM LẠI cho cô' — không có từ nối. Tiếng Anh sau 'let me' đi với động từ NGUYÊN MẪU không 'to'. Câu này cực phổ biến ở salon vì tiếng nào cũng có 'để em…'.",
+    "example_wrong": "Let me to fix it for you.",
+    "example_right": "Let me fix it for you."
+  },
+  {
+    "tag": "vi_nail_how_much_money",
+    "name_vi": "Hỏi giá: 'how much' không cần 'money'",
+    "why_vi": "Người Việt hay dịch 'bao nhiêu tiền' thành 'how much money'. Khách Mỹ chỉ nói 'how much'. Thêm 'money' nghe ngượng.",
+    "example_wrong": "How much money the gel manicure?",
+    "example_right": "How much is a gel manicure?"
+  },
+  {
+    "tag": "vi_nail_singular_minute",
+    "name_vi": "Số nhiều cho phút / đô la / khách",
+    "why_vi": "Tiếng Việt số nhiều không đổi: 'mười phút', 'năm đô', 'ba khách'. Tiếng Anh thêm -s: 'ten minutes', 'five dollars', 'three customers'. Quên -s là lỗi nhận diện ngay người mới sang.",
+    "example_wrong": "Wait ten minute, please.",
+    "example_right": "Wait ten minutes, please."
+  },
+  {
+    "tag": "vi_nail_no_article_color",
+    "name_vi": "Hỏi màu cần mạo từ 'a'",
+    "why_vi": "Tiếng Việt: 'cô chọn màu' — không cần mạo từ. Tiếng Anh: 'pick A color' / 'choose A color'. Bỏ 'a' nghe cụt và sai cấu trúc.",
+    "example_wrong": "You can pick color over there.",
+    "example_right": "You can pick a color over there."
+  },
+  {
+    "tag": "vi_nail_can_swallow_t",
+    "name_vi": "Nuốt phụ âm /t/ trong 'can't'",
+    "why_vi": "Tiếng Việt không có thói quen nhả phụ âm cuối. Khi nói 'I can't change the price', nuốt /t/ thành 'I can change the price' — Ý NGƯỢC HẲN. Đây là lỗi nguy hiểm với tiền.",
+    "example_wrong": "I can change the price myself.",
+    "example_right": "I can't change the price myself."
+  },
+  {
+    "tag": "vi_nail_no_to_be_question",
+    "name_vi": "Câu hỏi cần trợ động từ",
+    "why_vi": "Tiếng Việt: 'Cô đau không?' — không cần trợ động từ. Tiếng Anh: 'Does it hurt?' / 'Is it too hot?' — phải có do/does/is. Bỏ trợ động từ là lỗi câu hỏi phổ biến nhất.",
+    "example_wrong": "It hurt?",
+    "example_right": "Does it hurt?"
+  },
+  {
+    "tag": "vi_nail_singular_appointment",
+    "name_vi": "'Appointment' đếm được — cần mạo từ",
+    "why_vi": "Tiếng Việt: 'có hẹn không?' — không có mạo từ. Tiếng Anh: 'do you have AN appointment?'. 'Appointment' là danh từ đếm được số ít — phải có mạo từ.",
+    "example_wrong": "Do you have appointment?",
+    "example_right": "Do you have an appointment?"
+  }
+]

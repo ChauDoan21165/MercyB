@@ -1,0 +1,200 @@
+{
+  "id": "executive_function_mastery_vip2",
+  "tier": "vip2",
+  "domain": "Productivity",
+  "title": {
+    "en": "Executive Function Mastery — Room 8",
+    "vi": "Làm Chủ Chức Năng Điều Hành — Phòng 8"
+  },
+  "content": {
+    "en": "Executive function is the brain’s management system—your ability to plan, prioritize, initiate tasks, regulate emotions, switch strategically, and follow through. When executive function is strong, life feels organized and doable. When it weakens, everything feels heavy: decisions stall, motivation drops, tasks pile up, and small responsibilities feel overwhelming. This room teaches you how to strengthen the core pillars of executive function using simple, repeatable practices that fit real life. We begin with task initiation—learning how to start without waiting for motivation. You will learn how to reduce cognitive load, use external prompts, and design low-resistance entry points. Next, we refine prioritization with clear filters so you stop treating all tasks as equal. We also explore emotional regulation, because frustration, anxiety, and avoidance block the executive system more than lack of skill. You will learn to create buffers, use state-shifting habits, and stabilize your mind before returning to work. We then strengthen working memory using external scaffolding—lists, checklists, maps, anchors—so your brain can think instead of remember. Finally, we train follow-through using micro-commitments, accountability loops, and structured review. Executive function improves with design, not pressure. When these skills become automatic, your days feel smoother, your tasks feel lighter, and your life becomes easier to steer.",
+    "vi": "Chức năng điều hành là hệ thống quản lý của não bộ—khả năng lập kế hoạch, sắp xếp ưu tiên, bắt tay vào việc, điều tiết cảm xúc, chuyển hướng có chiến lược và làm cho xong. Khi chức năng điều hành mạnh, cuộc sống thấy gọn gàng và trong tầm tay. Khi nó yếu đi, mọi thứ trở nên nặng nề: quyết định cứ dùng dằng, động lực tụt, việc chất đống, và những trách nhiệm nhỏ cũng khiến bạn quá tải. Phòng này dạy bạn cách củng cố các trụ cột của chức năng điều hành bằng những cách làm đơn giản, lặp đi lặp lại được và hợp với đời sống thật. Ta bắt đầu từ việc bắt tay vào làm—học cách khởi động mà không phải chờ có động lực. Bạn sẽ học cách giảm gánh nặng cho đầu óc, dùng các tín hiệu bên ngoài và tạo những điểm khởi đầu ít gây chùn tay. Tiếp theo, ta mài lại cách sắp xếp ưu tiên bằng những tiêu chí rõ ràng để bạn thôi coi mọi việc là quan trọng như nhau. Ta cũng tìm hiểu cách điều tiết cảm xúc, vì bực bội, lo âu và né tránh làm nghẽn hệ điều hành còn hơn cả thiếu kỹ năng. Bạn sẽ học cách tạo khoảng đệm, dùng những thói quen giúp đổi trạng thái và làm dịu tâm trí trước khi quay lại làm việc. Sau đó ta củng cố trí nhớ làm việc bằng những điểm tựa bên ngoài—danh sách, bảng việc cần làm, sơ đồ, mốc neo—để não được tư duy thay vì phải gồng nhớ. Cuối cùng, ta rèn việc làm cho trót bằng những cam kết nhỏ, vòng nhắc trách nhiệm và buổi nhìn lại có bài bản. Chức năng điều hành tiến bộ nhờ cách thiết kế, chứ không nhờ ép. Khi những kỹ năng này thành phản xạ, ngày của bạn trôi êm hơn, việc thấy nhẹ hơn, và cuộc đời dễ cầm lái hơn."
+  },
+  "entries": [
+    {
+      "slug": "task-initiation",
+      "keywords_en": [
+        "initiation",
+        "starting",
+        "resistance"
+      ],
+      "keywords_vi": [
+        "khởi động",
+        "bắt đầu",
+        "kháng cự"
+      ],
+      "copy": {
+        "en": "Task initiation improves with tiny entry points. Reduce the size of the first step until your brain says yes. Use countdowns, environment cues, and two-minute actions to bypass avoidance. Starting is a skill—not a feeling.",
+        "vi": "Việc khởi động sẽ dễ hơn khi bước đầu tiên đủ nhỏ để não chịu gật đầu. Hãy thu nhỏ bước đầu lại, dùng đếm ngược, tín hiệu từ môi trường và những việc làm trong hai phút để vượt qua sự né tránh. Bắt đầu là một kỹ năng—không phải một cảm hứng."
+      },
+      "tags": [
+        "starting",
+        "resistance",
+        "ease"
+      ],
+      "audio": "vip2_productivity_81.mp3"
+    },
+    {
+      "slug": "priority-filters",
+      "keywords_en": [
+        "prioritization",
+        "filters",
+        "clarity"
+      ],
+      "keywords_vi": [
+        "ưu tiên",
+        "bộ lọc",
+        "rõ ràng"
+      ],
+      "copy": {
+        "en": "Use simple filters to prioritize: impact, urgency, alignment, effort. Ask: What moves life forward? What prevents future problems? What aligns with my values? Filters prevent overwhelm by reducing the number of decisions your brain must make.",
+        "vi": "Hãy dùng vài tiêu chí đơn giản để sắp xếp ưu tiên: mức tác động, mức khẩn cấp, mức phù hợp, mức công sức. Hãy tự hỏi: Điều gì đưa cuộc sống tiến lên? Điều gì chặn được rắc rối về sau? Điều gì hợp với giá trị của mình? Có tiêu chí thì bớt quá tải, vì não phải ra ít quyết định hơn."
+      },
+      "tags": [
+        "clarity",
+        "decision",
+        "focus"
+      ],
+      "audio": "vip2_productivity_82.mp3"
+    },
+    {
+      "slug": "working-memory-support",
+      "keywords_en": [
+        "working memory",
+        "support",
+        "external tools"
+      ],
+      "keywords_vi": [
+        "trí nhớ làm việc",
+        "hỗ trợ",
+        "công cụ ngoài"
+      ],
+      "copy": {
+        "en": "Working memory weakens under stress. Support it using external scaffolding: lists, checklists, diagrams, timers, and written next steps. Offloading memory frees cognitive space so your brain can think clearly.",
+        "vi": "Trí nhớ làm việc yếu đi khi căng thẳng. Hãy đỡ nó bằng những điểm tựa bên ngoài: danh sách, bảng việc cần làm, sơ đồ, hẹn giờ, và bước tiếp theo viết sẵn ra. Trút bớt phần phải nhớ ra ngoài sẽ rộng chỗ cho đầu óc nghĩ rõ ràng."
+      },
+      "tags": [
+        "organization",
+        "memory",
+        "clarity"
+      ],
+      "audio": "vip2_productivity_83.mp3"
+    },
+    {
+      "slug": "state-shifting",
+      "keywords_en": [
+        "state shift",
+        "emotion regulation",
+        "energy"
+      ],
+      "keywords_vi": [
+        "đổi trạng thái",
+        "điều chỉnh cảm xúc",
+        "năng lượng"
+      ],
+      "copy": {
+        "en": "When emotions block execution, shift state before returning to work. Use breath resets, movement, hydration, or short grounding rituals. Regulating emotion reactivates the executive system.",
+        "vi": "Khi cảm xúc cản trở việc làm, hãy đổi trạng thái trước khi quay lại. Hít thở để dịu lại, vận động nhẹ, uống nước, hoặc làm một nghi thức ngắn để lấy lại thăng bằng. Điều tiết được cảm xúc thì hệ điều hành sẽ chạy lại."
+      },
+      "tags": [
+        "emotions",
+        "regulation",
+        "reset"
+      ],
+      "audio": "vip2_productivity_84.mp3"
+    },
+    {
+      "slug": "decision-minimization",
+      "keywords_en": [
+        "decision fatigue",
+        "minimization",
+        "system"
+      ],
+      "keywords_vi": [
+        "mệt mỏi quyết định",
+        "giảm quyết định",
+        "hệ thống"
+      ],
+      "copy": {
+        "en": "Reduce daily decision load by standardizing routines, meals, schedules, and tools. The fewer decisions you make, the more cognitive energy remains for meaningful tasks.",
+        "vi": "Giảm số quyết định mỗi ngày bằng cách cố định lại thói quen, bữa ăn, lịch và công cụ. Càng ít phải quyết định, bạn càng còn nhiều sức cho đầu óc lo việc đáng giá."
+      },
+      "tags": [
+        "efficiency",
+        "clarity",
+        "routine"
+      ],
+      "audio": "vip2_productivity_85.mp3"
+    },
+    {
+      "slug": "strategic-switching",
+      "keywords_en": [
+        "task switching",
+        "strategy",
+        "control"
+      ],
+      "keywords_vi": [
+        "đổi việc chiến lược",
+        "chiến lược",
+        "kiểm soát"
+      ],
+      "copy": {
+        "en": "Switch tasks intentionally, not impulsively. Use batching, theme days, and focus cycles to reduce context loss. Strategic switching preserves momentum while preventing cognitive overload.",
+        "vi": "Hãy đổi việc một cách có chủ đích, đừng đổi theo cảm hứng nhất thời. Hãy gom việc cùng loại, dành mỗi ngày cho một chủ đề và làm theo từng đợt tập trung để đỡ mất mạch. Đổi việc có chiến lược giữ được đà mà không làm đầu óc quá tải."
+      },
+      "tags": [
+        "strategy",
+        "focus",
+        "momentum"
+      ],
+      "audio": "vip2_productivity_86.mp3"
+    },
+    {
+      "slug": "micro-commitments",
+      "keywords_en": [
+        "commitment",
+        "follow-through",
+        "identity"
+      ],
+      "keywords_vi": [
+        "cam kết nhỏ",
+        "làm tới nơi",
+        "bản sắc"
+      ],
+      "copy": {
+        "en": "Strengthen follow-through using micro-commitments: small promises you can keep daily. Each kept commitment reinforces identity—“I finish things.” Completion builds the executive system from the inside out.",
+        "vi": "Hãy rèn việc làm cho trót bằng những cam kết nhỏ: những lời hứa đơn giản mà ngày nào bạn cũng giữ được. Mỗi lần giữ được lời hứa lại củng cố con người bạn—“Tôi làm là làm cho xong.” Làm cho xong sẽ dựng hệ điều hành lên từ bên trong."
+      },
+      "tags": [
+        "identity",
+        "progress",
+        "completion"
+      ],
+      "audio": "vip2_productivity_87.mp3"
+    },
+    {
+      "slug": "structured-review",
+      "keywords_en": [
+        "review",
+        "reflection",
+        "adjustment"
+      ],
+      "keywords_vi": [
+        "xem lại",
+        "phản tư",
+        "điều chỉnh"
+      ],
+      "copy": {
+        "en": "Weekly and monthly reviews strengthen planning, prioritization, and follow-through. Reviewing turns mistakes into learning and shifts your system from reactive to intentional. Your executive function grows each time you reflect and adjust.",
+        "vi": "Nhìn lại hằng tuần và hằng tháng giúp bạn lập kế hoạch, sắp xếp ưu tiên và làm cho xong tốt hơn. Mỗi lần nhìn lại là biến sai sót thành bài học và đưa cách làm của bạn từ chạy theo sự việc sang chủ động dẫn dắt. Chức năng điều hành lớn lên mỗi lần bạn ngẫm lại và điều chỉnh."
+      },
+      "tags": [
+        "review",
+        "learning",
+        "growth"
+      ],
+      "audio": "vip2_productivity_88.mp3"
+    }
+  ],
+  "domain_image": "/images/domains/productivity.svg"
+}

@@ -1,0 +1,115 @@
+{
+  "generated_at": "2026-05-20T17:13:29.542Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "contradiction_escalation_lineage_complete": false,
+  "strict_mode_gate_consistency_verified": true,
+  "denial_board_conflict_count": 0,
+  "readiness_lineage_incomplete_count": 9,
+  "escalations": [
+    {
+      "agent": "A39",
+      "escalation_required": true,
+      "escalation_reasons": [
+        "missing_required_evidence",
+        "replay_or_observability_dependency_missing"
+      ],
+      "lineage_complete": false,
+      "escalation_state": "ESCALATION_REQUIRED"
+    },
+    {
+      "agent": "A42",
+      "escalation_required": true,
+      "escalation_reasons": [
+        "missing_required_evidence",
+        "replay_or_observability_dependency_missing"
+      ],
+      "lineage_complete": false,
+      "escalation_state": "ESCALATION_REQUIRED"
+    },
+    {
+      "agent": "A44",
+      "escalation_required": true,
+      "escalation_reasons": [
+        "missing_required_evidence",
+        "replay_or_observability_dependency_missing"
+      ],
+      "lineage_complete": false,
+      "escalation_state": "ESCALATION_REQUIRED"
+    },
+    {
+      "agent": "A45",
+      "escalation_required": true,
+      "escalation_reasons": [
+        "missing_required_evidence",
+        "replay_or_observability_dependency_missing"
+      ],
+      "lineage_complete": false,
+      "escalation_state": "ESCALATION_REQUIRED"
+    },
+    {
+      "agent": "A46",
+      "escalation_required": true,
+      "escalation_reasons": [
+        "missing_required_evidence",
+        "replay_or_observability_dependency_missing"
+      ],
+      "lineage_complete": false,
+      "escalation_state": "ESCALATION_REQUIRED"
+    },
+    {
+      "agent": "A47",
+      "escalation_required": true,
+      "escalation_reasons": [
+        "missing_required_evidence",
+        "replay_or_observability_dependency_missing"
+      ],
+      "lineage_complete": false,
+      "escalation_state": "ESCALATION_REQUIRED"
+    },
+    {
+      "agent": "A48",
+      "escalation_required": true,
+      "escalation_reasons": [
+        "missing_required_evidence",
+        "replay_or_observability_dependency_missing"
+      ],
+      "lineage_complete": false,
+      "escalation_state": "ESCALATION_REQUIRED"
+    },
+    {
+      "agent": "A49",
+      "escalation_required": true,
+      "escalation_reasons": [
+        "missing_required_evidence",
+        "replay_or_observability_dependency_missing"
+      ],
+      "lineage_complete": false,
+      "escalation_state": "ESCALATION_REQUIRED"
+    },
+    {
+      "agent": "A50",
+      "escalation_required": true,
+      "escalation_reasons": [
+        "missing_required_evidence",
+        "replay_or_observability_dependency_missing"
+      ],
+      "lineage_complete": false,
+      "escalation_state": "ESCALATION_REQUIRED"
+    }
+  ]
+}

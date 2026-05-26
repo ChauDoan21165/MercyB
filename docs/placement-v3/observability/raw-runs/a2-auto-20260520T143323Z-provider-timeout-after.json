@@ -1,0 +1,234 @@
+{
+  "isoTimestamp": "2026-05-20T14:33:23.772Z",
+  "command": "tsx scripts/placement-v3/run-failure-injection.ts --run-id a2-auto-20260520T143323Z",
+  "scenario": "provider-timeout",
+  "runLabel": "after",
+  "runId": "a2-auto-20260520T143323Z",
+  "providerValidation": "simulated-local; Placement V3 Edge Functions absent on origin/main",
+  "events": [
+    {
+      "id": "provider-timeout-after-1",
+      "sessionId": "session-provider-timeout",
+      "correlationId": "corr-provider-timeout-after",
+      "occurredAt": "2026-05-20T18:00:01.000Z",
+      "sequence": 1,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "provider-timeout"
+        }
+      },
+      "type": "session_event",
+      "step": "session.start",
+      "message": "Placement session started.",
+      "sessionState": "in_progress"
+    },
+    {
+      "id": "provider-timeout-after-2",
+      "sessionId": "session-provider-timeout",
+      "correlationId": "corr-provider-timeout-after",
+      "occurredAt": "2026-05-20T18:00:02.000Z",
+      "sequence": 2,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "provider-timeout"
+        }
+      },
+      "type": "feature_flag_snapshot",
+      "step": "flags.snapshot",
+      "message": "Feature flags captured."
+    },
+    {
+      "id": "provider-timeout-after-3",
+      "sessionId": "session-provider-timeout",
+      "correlationId": "corr-provider-timeout-after",
+      "occurredAt": "2026-05-20T18:00:03.000Z",
+      "sequence": 3,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "provider-timeout"
+        }
+      },
+      "type": "orchestration_transition",
+      "step": "orchestrator.next",
+      "message": "Moved from start to grading.",
+      "fromState": "started",
+      "toState": "grading",
+      "action": "respond"
+    },
+    {
+      "id": "provider-timeout-after-4",
+      "sessionId": "session-provider-timeout",
+      "correlationId": "corr-provider-timeout-after",
+      "occurredAt": "2026-05-20T18:00:04.000Z",
+      "sequence": 4,
+      "severity": "warn",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "provider-timeout"
+        }
+      },
+      "type": "provider_event",
+      "step": "grader.provider",
+      "message": "OpenAI timed out.",
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "attempt": 1,
+      "status": "timeout",
+      "latencyMs": 20000
+    },
+    {
+      "id": "provider-timeout-after-5",
+      "sessionId": "session-provider-timeout",
+      "correlationId": "corr-provider-timeout-after",
+      "occurredAt": "2026-05-20T18:00:05.000Z",
+      "sequence": 5,
+      "severity": "warn",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "provider-timeout"
+        }
+      },
+      "type": "latency_event",
+      "step": "grader.provider",
+      "message": "Provider exceeded latency budget.",
+      "latencyMs": 20000,
+      "budgetMs": 15000,
+      "exceededBudget": true
+    },
+    {
+      "id": "provider-timeout-after-6",
+      "sessionId": "session-provider-timeout",
+      "correlationId": "corr-provider-timeout-after",
+      "occurredAt": "2026-05-20T18:00:06.000Z",
+      "sequence": 6,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "provider-timeout"
+        }
+      },
+      "type": "recoverability_state",
+      "step": "grader.recoverability",
+      "message": "Timeout can recover by fallback provider.",
+      "state": "recoverable",
+      "reason": "provider timeout"
+    },
+    {
+      "id": "provider-timeout-after-7",
+      "sessionId": "session-provider-timeout",
+      "correlationId": "corr-provider-timeout-after",
+      "occurredAt": "2026-05-20T18:00:07.000Z",
+      "sequence": 7,
+      "severity": "info",
+      "featureFlags": {
+        "source": "simulation",
+        "flags": {
+          "placement_v3_enabled": true,
+          "placement_v3_forensics": true,
+          "scenario": "provider-timeout"
+        }
+      },
+      "type": "orchestration_transition",
+      "step": "session.safe-result",
+      "message": "Session ended with safe degraded or normal result.",
+      "fromState": "grading",
+      "toState": "completed",
+      "action": "complete"
+    }
+  ],
+  "reconstruction": {
+    "sessionId": "session-provider-timeout",
+    "correlationId": "corr-provider-timeout-after",
+    "startedAt": "2026-05-20T18:00:01.000Z",
+    "endedAt": "2026-05-20T18:00:07.000Z",
+    "eventCount": 7,
+    "missingSequences": [],
+    "providerSwitches": [],
+    "retries": [],
+    "fallbacks": [],
+    "recoverability": "recoverable",
+    "degraded": false,
+    "deterministic": "unknown",
+    "inconsistentRetries": [],
+    "orchestrationDeadEnds": [],
+    "steps": [
+      {
+        "sequence": 1,
+        "occurredAt": "2026-05-20T18:00:01.000Z",
+        "type": "session_event",
+        "step": "session.start",
+        "message": "Placement session started.",
+        "severity": "info"
+      },
+      {
+        "sequence": 2,
+        "occurredAt": "2026-05-20T18:00:02.000Z",
+        "type": "feature_flag_snapshot",
+        "step": "flags.snapshot",
+        "message": "Feature flags captured.",
+        "severity": "info"
+      },
+      {
+        "sequence": 3,
+        "occurredAt": "2026-05-20T18:00:03.000Z",
+        "type": "orchestration_transition",
+        "step": "orchestrator.next",
+        "message": "Moved from start to grading.",
+        "severity": "info"
+      },
+      {
+        "sequence": 4,
+        "occurredAt": "2026-05-20T18:00:04.000Z",
+        "type": "provider_event",
+        "step": "grader.provider",
+        "message": "OpenAI timed out.",
+        "severity": "warn"
+      },
+      {
+        "sequence": 5,
+        "occurredAt": "2026-05-20T18:00:05.000Z",
+        "type": "latency_event",
+        "step": "grader.provider",
+        "message": "Provider exceeded latency budget.",
+        "severity": "warn"
+      },
+      {
+        "sequence": 6,
+        "occurredAt": "2026-05-20T18:00:06.000Z",
+        "type": "recoverability_state",
+        "step": "grader.recoverability",
+        "message": "Timeout can recover by fallback provider.",
+        "severity": "info"
+      },
+      {
+        "sequence": 7,
+        "occurredAt": "2026-05-20T18:00:07.000Z",
+        "type": "orchestration_transition",
+        "step": "session.safe-result",
+        "message": "Session ended with safe degraded or normal result.",
+        "severity": "info"
+      }
+    ]
+  }
+}

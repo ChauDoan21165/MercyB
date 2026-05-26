@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-05-20T14:33:20.849Z",
+  "runId": "a2-auto-20260520T143317Z",
+  "status": "passed",
+  "simulated": true,
+  "live_provider_validated": false,
+  "supabase_persistence_validated": false,
+  "placement_v3_enabled": false,
+  "artifacts": {
+    "rawDir": "docs/placement-v3/observability/raw-runs",
+    "replayDir": "reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/replay",
+    "dashboard": "reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/dashboard/forensic-dashboard-summary.json",
+    "retention": "reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/retention-check.txt",
+    "rollback": "reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/rollback-readiness-check.txt"
+  },
+  "failedChecks": []
+}

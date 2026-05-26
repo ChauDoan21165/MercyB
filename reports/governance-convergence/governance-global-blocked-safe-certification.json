@@ -1,0 +1,107 @@
+{
+  "generated_at": "2026-05-20T17:13:29.531Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "global_blocked_safe_continuity_certified": false,
+  "denial_boards_reconciled": false,
+  "strict_mode_gates_denial_preserving": true,
+  "streams_with_missing_certification_evidence": 9,
+  "streams_with_blocked_safe_contradictions": 0,
+  "stream_certifications": [
+    {
+      "agent": "A39",
+      "domain": "capacity denial and cohort ceiling governance",
+      "blocked_safe_posture_preserved": true,
+      "denial_lineage_present": false,
+      "evidence_present": false,
+      "do_not_enable_posture": "PRESERVED",
+      "certification_state": "CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A42",
+      "domain": "reliability/failover denial governance",
+      "blocked_safe_posture_preserved": true,
+      "denial_lineage_present": false,
+      "evidence_present": false,
+      "do_not_enable_posture": "PRESERVED",
+      "certification_state": "CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A44",
+      "domain": "human-review approval denial lineage",
+      "blocked_safe_posture_preserved": true,
+      "denial_lineage_present": false,
+      "evidence_present": false,
+      "do_not_enable_posture": "PRESERVED",
+      "certification_state": "CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A45",
+      "domain": "provider validation denial evidence",
+      "blocked_safe_posture_preserved": true,
+      "denial_lineage_present": false,
+      "evidence_present": false,
+      "do_not_enable_posture": "PRESERVED",
+      "certification_state": "CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A46",
+      "domain": "governance contradiction audits",
+      "blocked_safe_posture_preserved": true,
+      "denial_lineage_present": false,
+      "evidence_present": false,
+      "do_not_enable_posture": "PRESERVED",
+      "certification_state": "CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A47",
+      "domain": "observability/audit continuity evidence",
+      "blocked_safe_posture_preserved": true,
+      "denial_lineage_present": false,
+      "evidence_present": false,
+      "do_not_enable_posture": "PRESERVED",
+      "certification_state": "CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A48",
+      "domain": "release denial and canary-block lineage",
+      "blocked_safe_posture_preserved": true,
+      "denial_lineage_present": false,
+      "evidence_present": false,
+      "do_not_enable_posture": "PRESERVED",
+      "certification_state": "CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A49",
+      "domain": "replay certification denial evidence",
+      "blocked_safe_posture_preserved": true,
+      "denial_lineage_present": false,
+      "evidence_present": false,
+      "do_not_enable_posture": "PRESERVED",
+      "certification_state": "CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE"
+    },
+    {
+      "agent": "A50",
+      "domain": "supervised execution governance",
+      "blocked_safe_posture_preserved": true,
+      "denial_lineage_present": false,
+      "evidence_present": false,
+      "do_not_enable_posture": "PRESERVED",
+      "certification_state": "CERTIFICATION_BLOCKED_BY_MISSING_EVIDENCE"
+    }
+  ]
+}

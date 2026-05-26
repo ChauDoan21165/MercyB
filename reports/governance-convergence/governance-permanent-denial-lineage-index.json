@@ -1,0 +1,149 @@
+{
+  "generated_at": "2026-05-20T17:13:29.539Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "archival_denial_lineage_complete": false,
+  "denial_lineage_index_preserved": true,
+  "incomplete_lineage_count": 9,
+  "index": [
+    {
+      "agent": "A39",
+      "domain": "capacity denial and cohort ceiling governance",
+      "denial_lineage_present": false,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE",
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE",
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "capacity_denial",
+        "cohort_ceiling"
+      ],
+      "permanently_traceable": false
+    },
+    {
+      "agent": "A42",
+      "domain": "reliability/failover denial governance",
+      "denial_lineage_present": false,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE",
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE",
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "reliability_denial",
+        "failover_denial"
+      ],
+      "permanently_traceable": false
+    },
+    {
+      "agent": "A44",
+      "domain": "human-review approval denial lineage",
+      "denial_lineage_present": false,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE",
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE",
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "human_review_denial",
+        "approval_readiness"
+      ],
+      "permanently_traceable": false
+    },
+    {
+      "agent": "A45",
+      "domain": "provider validation denial evidence",
+      "denial_lineage_present": false,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE",
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE",
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "provider_validation_denial",
+        "live_provider_block"
+      ],
+      "permanently_traceable": false
+    },
+    {
+      "agent": "A46",
+      "domain": "governance contradiction audits",
+      "denial_lineage_present": false,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE",
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE",
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "contradiction_audit",
+        "governance_signoff_denial"
+      ],
+      "permanently_traceable": false
+    },
+    {
+      "agent": "A47",
+      "domain": "observability/audit continuity evidence",
+      "denial_lineage_present": false,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE",
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE",
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "audit_continuity"
+      ],
+      "permanently_traceable": false
+    },
+    {
+      "agent": "A48",
+      "domain": "release denial and canary-block lineage",
+      "denial_lineage_present": false,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE",
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE",
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "release_denial",
+        "canary_block"
+      ],
+      "permanently_traceable": false
+    },
+    {
+      "agent": "A49",
+      "domain": "replay certification denial evidence",
+      "denial_lineage_present": false,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE",
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE",
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "replay_certification_denial"
+      ],
+      "permanently_traceable": false
+    },
+    {
+      "agent": "A50",
+      "domain": "supervised execution governance",
+      "denial_lineage_present": false,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE",
+      "closure_state": "DENIAL_LINEAGE_INCOMPLETE",
+      "evidence_files": [],
+      "missing_required_evidence": [
+        "denial_lineage",
+        "observability_dependency",
+        "replay_dependency",
+        "supervised_execution_denial"
+      ],
+      "permanently_traceable": false
+    }
+  ]
+}

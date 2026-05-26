@@ -1,0 +1,39 @@
+#!/usr/bin/env sh
+# Pre-commit gate. Refuses the commit on any non-zero step.
+#
+# Order is fail-fast: cheapest reliable signal first. Typecheck catches
+# the bug class most likely to ship (TS errors, wrong types after a
+# rebase, conflict markers); lint catches style + simple correctness;
+# kids-rooms validation and the room-registry regen come last because
+# they're slower and rarely the failing step in practice.
+#
+# Skip with --no-verify only for genuine emergencies. Bypassing this
+# hook was a contributing factor to PR #454's conflict-marker incident.
+
+set -e
+
+echo "🔎  Typechecking…"
+npm run --silent typecheck
+
+echo "🧹  Linting…"
+npm run --silent lint
+
+echo "🔍  Validating kids rooms…"
+node scripts/validate-kids-rooms.js
+
+echo "🔄  Regenerating room registry…"
+npm run --silent generate:room-registry
+
+# The manifest is a pure function of the ENTIRE public/data/ working tree.
+# In a shared checkout, a parallel agent's uncommitted room add/delete/rename
+# leaks into the regen and used to be silently force-staged into THIS commit
+# (Principle #13 amplifier). Refuse the commit unless the manifest delta is
+# fully explained by room JSON staged here. See
+# reports/RECON-pre-commit-hook-audit.md.
+echo "🧾  Verifying room-manifest delta…"
+node scripts/check-manifest-delta.mjs
+
+# Delta is empty or fully explained — capture the regenerated manifest.
+git add src/lib/roomManifest.ts 2>/dev/null || true
+
+echo "✅  Pre-commit OK"

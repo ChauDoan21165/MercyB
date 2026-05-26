@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -e
+
+echo "🔍 Pre-commit safety check..."
+
+# Block obvious secrets
+if git diff --cached --name-only | grep -E '(ANON_KEY|\.env|secret|token|key=)' >/dev/null; then
+  echo "❌ Blocked: looks like a secret/junk file is staged."
+  exit 1
+fi
+
+# Block common junk
+if git diff --cached --name-only | grep -E '(\.DS_Store|dist/|node_modules/|\.vite/)' >/dev/null; then
+  echo "❌ Blocked: build or OS junk staged."
+  exit 1
+fi
+
+echo "✅ Pre-commit checks passed."
+exit 0

@@ -1,0 +1,265 @@
+// eslint.config.js
+
+import js from "@eslint/js";
+import globals from "globals";
+import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
+import tseslint from "typescript-eslint";
+
+export default [
+  /* ===============================
+   * GLOBAL IGNORES (HARD)
+   * =============================== */
+  {
+    ignores: [
+      "node_modules/**",
+      "dist/**",
+      "build/**",
+      "coverage/**",
+      ".vite/**",
+      ".vercel/**",
+      "**/*.map",
+      "**/*.min.js",
+
+      // legacy / infra noise
+      "scripts/**",
+      "supabase/migrations/**",
+      "supabase/seed.sql",
+      "src/_legacy_next_pages/**",
+
+      // repo-root stray files (not in src)
+      "public/**",
+      ".husky/**",
+
+      // Agent worktrees. Sub-agents check out the whole repo under
+      // .claude/worktrees/agent-*/ and run their own builds there, so
+      // the entire `.claude/` tree carries other agents' dist bundles
+      // and source copies. Linting them produced ~5,900 unrelated
+      // errors and blocked every commit until this file ignored them.
+      ".claude/**",
+
+      // Supabase Edge Functions are Deno-runtime code, not the React
+      // app. They have their own deploy lifecycle. The permissive rule
+      // block lower in this file is kept for scoped runs, but they're
+      // excluded from the default `eslint .` so a Deno-side issue
+      // can't block the React side from committing.
+      "supabase/functions/**",
+
+      // Capacitor-generated native bundles. These are minified copies
+      // of the vite build, dropped into ios/ and android/ by
+      // `npx cap sync`. They're committed to the repo so the iOS
+      // and Android Studio projects open without a fresh sync, but
+      // they're not source — never lint them.
+      "ios/App/App/public/**",
+      "android/app/src/main/assets/public/**",
+      "android/app/build/**",
+    ],
+  },
+
+  /* ===============================
+   * BASE
+   * =============================== */
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+
+  /* ===============================
+   * REACT APP (src) — REALITY MODE
+   * =============================== */
+  {
+    files: ["src/**/*.{ts,tsx}"],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: { ...globals.browser },
+    },
+    plugins: {
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
+    },
+    rules: {
+      /* React */
+      ...reactHooks.configs.recommended.rules,
+      "react-refresh/only-export-components": "off",
+
+      /* Hooks — ALL CHURN OFF */
+      "react-hooks/rules-of-hooks": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "react-hooks/incompatible-library": "off",
+      "react-hooks/use-memo": "off",
+      "react-hooks/use-callback": "off",
+      "react-hooks/set-state-in-effect": "off",
+      "react-hooks/refs": "off",
+      "react-hooks/purity": "off",
+      "react-hooks/immutability": "off",
+      "react-hooks/static-components": "off",
+
+      /* TypeScript reality */
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-unsafe-function-type": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+
+      /* Control-flow / infra */
+      "no-unsafe-finally": "off",
+      "no-constant-condition": "off",
+      "prefer-const": "off",
+
+      /* MercyB reality */
+      "no-empty": "off",
+      "no-useless-escape": "off",
+
+      /* Mercy grammar guardrails */
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            {
+              name: "./tabs/GrammarWritingTab",
+              message: "Use ./tabs/grammar-writing/GrammarWritingTab only.",
+            },
+            {
+              name: "@/components/mercy-guide/tabs/GrammarWritingTab",
+              message: "Use the split grammar-writing tab only.",
+            },
+            {
+              name: "./tabs/grammar-writing/fallback",
+              message: "Grammar flow must be API-only. Do not import fallback.",
+            },
+            {
+              name: "@/components/mercy-guide/tabs/grammar-writing/fallback",
+              message: "Grammar flow must be API-only. Do not import fallback.",
+            },
+          ],
+          patterns: [
+            {
+              group: ["**/tabs/GrammarWritingTab", "**/tabs/GrammarWritingTab.*"],
+              message: "Old monolith GrammarWritingTab is forbidden.",
+            },
+            {
+              group: ["**/grammar-writing/fallback", "**/grammar-writing/fallback.*"],
+              message: "Fallback grammar logic is forbidden.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+
+  /* ===============================
+   * SUPABASE EDGE (Deno)
+   * =============================== */
+  {
+    files: ["supabase/functions/**/*.ts"],
+    languageOptions: {
+      globals: { ...globals.deno },
+    },
+    rules: {
+      "no-constant-condition": "off",
+      "no-empty": "off",
+      "no-control-regex": "off",
+      "no-useless-escape": "off",
+      "prefer-const": "off",
+
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-unsafe-function-type": "off",
+    },
+  },
+
+  /* ===============================
+   * NON-REACT TS (TOOLS / LOADERS)
+   * =============================== */
+  {
+    files: ["**/*.ts"],
+    ignores: ["src/**", "supabase/functions/**"],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: { ...globals.node },
+    },
+    rules: {
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-unsafe-function-type": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+
+      "no-undef": "off",
+      "no-console": "off",
+      "no-redeclare": "off",
+      "prefer-const": "off",
+      "no-empty": "off",
+      "no-useless-escape": "off",
+    },
+  },
+
+  /* ===============================
+   * NODE SCRIPTS (.js/.cjs/.mjs)
+   * =============================== */
+  {
+    files: ["**/*.{js,cjs,mjs}"],
+    ignores: ["src/**", "supabase/functions/**"],
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: "commonjs",
+      globals: { ...globals.node },
+    },
+    rules: {
+      "no-undef": "off",
+      "no-console": "off",
+      "no-redeclare": "off",
+      "prefer-const": "off",
+
+      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+    },
+  },
+
+  /* ===============================
+   * NO-EXPLICIT-ANY FORWARD-LOCK (A22)
+   * ===============================
+   * Directories empirically verified to contain ZERO
+   * @typescript-eslint/no-explicit-any violations (incl. their tests)
+   * as of origin/main e16bce4c (A45 type-safety audit, re-verified
+   * with the live rule 2026-05-18). Promote the rule from the global
+   * "off" (set in the REACT APP block above) to "error" here so new
+   * `any` cannot be introduced into the payment/auth and other clean
+   * surfaces. This is a forward-lock only — no existing source is
+   * changed. Placed LAST so it wins precedence for matching files.
+   *
+   * src/pages added 2026-05-19 (A45): all 83 no-explicit-any
+   * violations across 14 page files were given proper types — room
+   * arrays typed via TierRoom/RoomMeta, error catches narrowed to
+   * `unknown`, window debug globals declared in src/types/window.d.ts.
+   * The broad src/pages/** glob supersedes the earlier
+   * src/pages/auth/** entry. Zero @ts-ignore / @ts-expect-error.
+   *
+   * Excluded (have live violations — do NOT add without a source fix):
+   *   src/billing            (subscriptionRepository.ts:62)
+   *   src/components/auth    (__tests__/EmailBlock.codeFlow.test.tsx)
+   *   src/core               (engine/trainingFlow.ts:56)
+   */
+  {
+    files: [
+      "src/lib/auth/**/*.{ts,tsx}",
+      "src/components/payment/**/*.{ts,tsx}",
+      "src/components/billing/**/*.{ts,tsx}",
+      "src/pages/**/*.{ts,tsx}",
+      "src/store/**/*.{ts,tsx}",
+      "src/security/**/*.{ts,tsx}",
+      "src/middleware/**/*.{ts,tsx}",
+      "src/mercy/**/*.{ts,tsx}",
+      "src/integrations/**/*.{ts,tsx}",
+      "src/contexts/**/*.{ts,tsx}",
+      // A64 type-safety wave 2 (2026-05-19): every `any` in
+      // src/hooks (45) and src/services (23) was replaced with
+      // proper types — generics / structural casts / unknown.
+      "src/hooks/**/*.{ts,tsx}",
+      "src/services/**/*.{ts,tsx}",
+    ],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "error",
+    },
+  },
+];

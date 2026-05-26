@@ -1,0 +1,143 @@
+{
+  "id": "funerals",
+  "title_vn": "Tang lễ Việt Nam",
+  "title_en": "Vietnamese funerals",
+  "summary_vn": "Cách giải thích nghi lễ tang Việt Nam — khăn tang, hương khói, lễ giỗ — bằng tiếng Anh, một cách trang trọng.",
+  "summary_en": "How to explain Vietnamese funeral rites — mourning bands, incense, death anniversaries — in English, with respect.",
+  "tone": "sacred",
+  "regional_note": "Tang lễ miền Bắc giữ nghi lễ Phật giáo / Khổng giáo nguyên vẹn hơn; miền Nam có pha trộn ảnh hưởng Cao Đài và đạo Công giáo. Cả hai đều coi tang lễ là việc trọng — không có 'phong cách nhẹ nhàng' phổ biến cho mọi gia đình.",
+  "phrases": [
+    {
+      "id": "white-mourning-color",
+      "vn_moment": "Khăn tang trắng",
+      "context": "Đồng nghiệp hỏi vì sao đeo khăn trắng trên đầu.",
+      "english": "White is the mourning color in Vietnamese tradition — the opposite of Western black. The white headband or armband shows you're family of the deceased.",
+      "cultural_note": "Don't wear white to a Vietnamese funeral if you're not family — it can read as claiming a closer relationship than you have. Dark colors are safer for friends/coworkers."
+    },
+    {
+      "id": "incense-three-sticks",
+      "vn_moment": "Ba nén hương",
+      "context": "Khách đến viếng thắp hương trước bàn thờ.",
+      "english": "When you visit, you'll be handed three sticks of incense to light. You hold them at your forehead, bow to the altar three times, then place them in the bowl of ashes.",
+      "cultural_note": "Three is the right number — not one, not five. The three bows correspond to acknowledging the deceased, the family, and the line of ancestors."
+    },
+    {
+      "id": "envelope-condolence",
+      "vn_moment": "Phong bì viếng",
+      "context": "Đồng nghiệp hỏi nên đem gì khi đi viếng.",
+      "english": "It's customary to bring a small envelope with cash — usually called a 'condolence envelope.' The amount is modest; it helps offset funeral costs and shows respect.",
+      "cultural_note": "Unlike weddings, the envelopes for funerals are usually plain white or have a black/grey strip. Never red. Hand it to a family member at the door, not the deceased's altar."
+    },
+    {
+      "id": "bow-not-handshake",
+      "vn_moment": "Cúi đầu — không bắt tay",
+      "context": "Cách chào gia quyến khi đến viếng.",
+      "english": "When you greet the family, give a small bow rather than a handshake. Words are usually short — 'I'm sorry for your loss' translates well. They'll bow back to thank you.",
+      "cultural_note": "Hugs and prolonged eye contact aren't expected. The gesture of attendance matters more than what's said."
+    },
+    {
+      "id": "no-flowers-only",
+      "vn_moment": "Vòng hoa tang",
+      "context": "Bạn không phải người Việt hỏi có nên gửi hoa.",
+      "english": "Funeral wreaths are common — usually large standing arrangements with white chrysanthemums. They're delivered to the funeral location, not the family home.",
+      "cultural_note": "White chrysanthemums are the funeral flower in Vietnamese culture — never give them as a 'cheer up' gift to a Vietnamese person at any other time. The signal is unmistakable."
+    },
+    {
+      "id": "wake-multi-day",
+      "vn_moment": "Lễ tang kéo dài nhiều ngày",
+      "context": "Giải thích vì sao xin nghỉ phép dài ngày.",
+      "english": "A traditional Vietnamese wake runs two to three days at minimum — sometimes longer if the family wants to wait for relatives traveling from far away. Family members stay with the casket the whole time.",
+      "cultural_note": "If a Vietnamese coworker requests several consecutive days off for a family death, this is what's happening. The duration isn't optional."
+    },
+    {
+      "id": "burial-vs-cremation",
+      "vn_moment": "Hỏa táng hay địa táng",
+      "context": "Giải thích lựa chọn của gia đình.",
+      "english": "Some families bury, some cremate. Cremation has become much more common in cities, especially when family graves are far from where the deceased lived. Both are respected.",
+      "cultural_note": "Don't ask 'why didn't they choose the other one' — the choice is family-private and often involves practical constraints, not preference."
+    },
+    {
+      "id": "death-anniversary",
+      "vn_moment": "Lễ giỗ — đám giỗ hằng năm",
+      "context": "Đồng nghiệp hỏi vì sao bạn nấu nhiều đồ ăn vào một ngày cụ thể.",
+      "english": "Every year on the anniversary of a family member's death — by the lunar calendar — we hold a 'giỗ.' The family gathers, cooks the deceased's favorite dishes, and offers them at the altar before eating together.",
+      "cultural_note": "Giỗ is not a sad event in tone — it's about presence, not grieving in the moment. Food is central. Being invited to a giỗ is a sign of family closeness."
+    },
+    {
+      "id": "100-day-ceremony",
+      "vn_moment": "Lễ 49 ngày, lễ 100 ngày",
+      "context": "Giải thích vì sao có lễ tiếp theo sau tang.",
+      "english": "After the funeral, families hold a 49-day and a 100-day ceremony — Buddhist tradition holds that the soul transitions through stages. The family prays and serves food at the altar on those days.",
+      "cultural_note": "These aren't large events — usually just close family. Don't expect to be invited unless you're a close friend or relative."
+    },
+    {
+      "id": "no-celebrating-during-mourning",
+      "vn_moment": "Năm tang — kiêng cữ",
+      "context": "Giải thích vì sao không tham dự đám cưới hoặc Tết vui chơi.",
+      "english": "During the year after a parent's death, the family doesn't attend weddings, doesn't celebrate Tết loudly, and avoids public festivities. It's a year of mourning.",
+      "cultural_note": "If a Vietnamese friend declines a wedding invitation citing a family death within the past year, this is the cultural reason. Don't push them to attend."
+    },
+    {
+      "id": "altar-photo-black-ribbon",
+      "vn_moment": "Ảnh bàn thờ với dải đen",
+      "context": "Khách thấy ảnh có dải khăn đen quanh khung.",
+      "english": "When you see a photo on a family altar with a black ribbon across one corner, it means the person has passed. The ribbon stays on for the first year of mourning.",
+      "cultural_note": "Don't ask 'who's that' if the answer is obvious from the ribbon — the family knows you noticed. A respectful nod is enough."
+    },
+    {
+      "id": "bringing-children",
+      "vn_moment": "Trẻ em đi viếng",
+      "context": "Bạn không phải người Việt hỏi có thể đem con nhỏ đi viếng không.",
+      "english": "Children attending wakes is normal — it's how they learn the rituals. Younger kids might wear white headbands too if they're family.",
+      "cultural_note": "Vietnamese funerals are not adults-only. Quiet kids are welcome; a family member will often help guide them through the incense ritual."
+    },
+    {
+      "id": "funeral-music",
+      "vn_moment": "Nhạc tang lễ",
+      "context": "Đồng nghiệp hỏi vì sao có nhạc kèn ngoài đường.",
+      "english": "Traditional Vietnamese funerals have a small band playing — drums, horns, and string instruments. The music isn't somber the way a Western funeral march is; it accompanies the procession.",
+      "cultural_note": "The music can be loud and at unexpected hours — that's normal. It's not a celebration; it's the sound of the mourning ritual."
+    },
+    {
+      "id": "what-to-say",
+      "vn_moment": "'Chia buồn cùng gia đình'",
+      "context": "Câu kinh điển khi đến viếng.",
+      "english": "The phrase we use is 'chia buồn' — sharing the sadness. The English equivalent is 'I'm sorry for your loss,' said simply and once.",
+      "cultural_note": "Long speeches aren't expected. A short, sincere line is the right register. Don't tell stories about the deceased unless asked."
+    },
+    {
+      "id": "altar-fruit-ongoing",
+      "vn_moment": "Hoa quả trên bàn thờ",
+      "context": "Giải thích vì sao thay trái cây trên bàn thờ thường xuyên.",
+      "english": "Even after the funeral ends, the altar gets fresh fruit and water daily for the first year. It's how the family keeps presence with the deceased.",
+      "cultural_note": "If you're staying in the family home and you see this routine, don't disrupt it. The fruit isn't decorative — it's an active ritual."
+    }
+  ],
+  "dialogues": [
+    {
+      "title": "Coworker offering condolences",
+      "setting": "A coworker has heard your grandmother passed and wants to know what to do.",
+      "lines": [
+        { "speaker": "Coworker", "english": "I'm so sorry to hear about your grandmother. Is there anything I can do?" },
+        { "speaker": "You", "english": "Thank you. The wake is at our family home over the next three days. If you'd like to pay your respects, you can come any time during the day." },
+        { "speaker": "Coworker", "english": "Should I bring anything? Flowers?" },
+        { "speaker": "You", "english": "If you want to send flowers, white chrysanthemums in a standing wreath is the traditional choice. Or a small condolence envelope with cash — we'd hand it to my dad at the door." },
+        { "speaker": "Coworker", "english": "What should I wear?" },
+        { "speaker": "You", "english": "Dark colors. Black or navy. Avoid white — that's reserved for the immediate family." },
+        { "speaker": "Coworker", "english": "Got it. I'll come tomorrow. Take whatever time you need at work." }
+      ]
+    },
+    {
+      "title": "Explaining the death anniversary",
+      "setting": "A neighbor smells cooking and asks about the holiday.",
+      "lines": [
+        { "speaker": "Neighbor", "english": "Smells incredible — what's the occasion?" },
+        { "speaker": "You", "english": "It's my grandfather's death anniversary. We call it 'giỗ' — every year on the lunar date he passed, the family cooks his favorite dishes and offers them at our home altar before we eat together." },
+        { "speaker": "Neighbor", "english": "Oh — I'm sorry, I didn't mean to —" },
+        { "speaker": "You", "english": "No, please — it's not a sad event in tone. It's about remembering him by being together. The kids learn about him by hearing the stories at the table." },
+        { "speaker": "Neighbor", "english": "That's a beautiful tradition." },
+        { "speaker": "You", "english": "Thank you. We do it every year." }
+      ]
+    }
+  ]
+}

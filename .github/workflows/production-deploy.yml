@@ -1,0 +1,115 @@
+name: Production Deployment
+
+# Real Vercel production deploy on every push to main. Replaces the
+# former Lovable-era no-op stub that built an artifact, echoed
+# "live on Lovable hosting", and reported a GREEN success without ever
+# deploying anything (masked the 2026-05-18 stuck-deploys incident).
+# This workflow FAILS LOUD (red) if the build or deploy fails — no
+# more silent green. Preview deploys remain Vercel's responsibility
+# (PRs); this is main → production only.
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:   # manual: fire a real prod deploy on demand
+
+# Serialize production deploys; NEVER cancel one mid-flight.
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Vercel Production
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      # Sentry sourcemap upload. vite.config.ts only activates
+      # @sentry/vite-plugin when ALL THREE of these are present, so the
+      # `npm run build` invoked by `vercel build` (which inherits this
+      # runner env) can de-mangle prod stack traces in Sentry. ORG and
+      # PROJECT are NOT secret — hardcoded to the canonical values so the
+      # only manual step is adding the SENTRY_AUTH_TOKEN GitHub secret
+      # (Settings → Secrets and variables → Actions). If the token is
+      # absent the plugin is a silent no-op and the deploy still ships —
+      # sourcemap upload is optional and prod deploy must never depend
+      # on it (CLAUDE.md: core path survives optional failures).
+      SENTRY_ORG: chau-doan
+      SENTRY_PROJECT: mercyblade-web
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          # Match the Vercel project's configured runtime (.vercel
+          # project nodeVersion = 24.x) so the local build matches prod.
+          node-version: '24'
+
+      - name: Verify required Vercel secrets are present
+        run: |
+          set -euo pipefail
+          missing=()
+          [ -n "${VERCEL_TOKEN:-}" ]      || missing+=("VERCEL_TOKEN")
+          [ -n "${VERCEL_ORG_ID:-}" ]     || missing+=("VERCEL_ORG_ID")
+          [ -n "${VERCEL_PROJECT_ID:-}" ] || missing+=("VERCEL_PROJECT_ID")
+          if [ "${#missing[@]}" -gt 0 ]; then
+            echo "::error::Missing GitHub Actions secret(s): ${missing[*]}. Add them under Settings → Secrets and variables → Actions before this workflow can deploy."
+            exit 1
+          fi
+          echo "::add-mask::$VERCEL_TOKEN"
+          echo "All three Vercel secrets present."
+
+      - name: Sentry sourcemap upload status (non-blocking)
+        # Make the skip VISIBLE instead of silent: the brief requires
+        # "fail gracefully if token wrong, not silently skip". A wrong
+        # token fails the build loud (the @sentry/vite-plugin throws on
+        # auth error during `vercel build`). A *missing* token is the
+        # legitimate opt-out path — we surface it as a CI warning here
+        # but never `exit 1`, because blocking prod deploys on an
+        # optional observability feature violates "core path survives
+        # optional failures".
+        run: |
+          set -euo pipefail
+          if [ -n "${SENTRY_AUTH_TOKEN:-}" ]; then
+            echo "::add-mask::$SENTRY_AUTH_TOKEN"
+            echo "SENTRY_AUTH_TOKEN present — sourcemaps will upload to ${SENTRY_ORG}/${SENTRY_PROJECT}."
+          else
+            echo "::warning::SENTRY_AUTH_TOKEN is not set. Production sourcemaps will NOT upload to Sentry; minified stack traces will not be de-mangled. Add the SENTRY_AUTH_TOKEN secret under Settings → Secrets and variables → Actions to enable it."
+          fi
+
+      - name: Pull Vercel production environment
+        # Fetches the project's settings + production env vars so the
+        # client bundle is built with the same VITE_* values as prod
+        # (a bare `npm run build` on the runner would NOT have them).
+        run: npx --yes vercel@latest pull --yes --environment=production --token="$VERCEL_TOKEN"
+
+      - name: Build production bundle (Vercel build pipeline)
+        run: npx --yes vercel@latest build --prod --token="$VERCEL_TOKEN"
+
+      - name: Deploy prebuilt output to Vercel production
+        id: deploy
+        run: |
+          set -euo pipefail
+          URL="$(npx --yes vercel@latest deploy --prebuilt --prod --token="$VERCEL_TOKEN")"
+          echo "Deployed to: $URL"
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+
+      - name: Write deployment summary
+        if: success()
+        run: |
+          {
+            echo "## ✅ Production deployment shipped"
+            echo ""
+            echo "- **Commit:** \`${{ github.sha }}\`"
+            echo "- **Branch:** \`${{ github.ref_name }}\`"
+            echo "- **URL:** ${{ steps.deploy.outputs.url }}"
+            echo "- **Time:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          } >> "$GITHUB_STEP_SUMMARY"

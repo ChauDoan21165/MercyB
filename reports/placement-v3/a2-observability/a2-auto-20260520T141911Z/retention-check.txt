@@ -1,0 +1,4 @@
+retention_check=passed
+simulated=true
+supabase_persistence_validated=false
+artifact=reports/placement-v3/a2-observability/a2-auto-20260520T141911Z/retention-check.json

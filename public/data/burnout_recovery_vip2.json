@@ -1,0 +1,185 @@
+{
+  "id": "burnout_recovery_vip2",
+  "tier": "vip2",
+  "title": {
+    "en": "Burnout Recovery",
+    "vi": "Phục Hồi Kiệt Sức"
+  },
+  "content": {
+    "en": "Advanced strategies for burnout recovery with systems",
+    "vi": "Chiến lược nâng cao để phục hồi kiệt sức thông qua các hệ thống thực hành."
+  },
+  "keywords_en": [
+    "burnout",
+    "recovery",
+    "rest",
+    "balance",
+    "system"
+  ],
+  "keywords_vi": [
+    "kiệt sức",
+    "phục hồi",
+    "nghỉ ngơi",
+    "cân bằng",
+    "hệ thống"
+  ],
+  "entries": [
+    {
+      "slug": "rest-day",
+      "keywords_en": [
+        "rest day",
+        "recovery",
+        "burnout"
+      ],
+      "keywords_vi": [
+        "ngày nghỉ",
+        "phục hồi",
+        "kiệt sức"
+      ],
+      "copy": {
+        "en": "The recovery sabbath protocol rebuilds mental and physical reserves. Unplug for twenty-four hours and immerse yourself in nature. Avoid decisions; read lightly and move slowly. Track heart rate variability before and after. Join a recovery circle for shared sabbath practice to experience deep restoration through structured disconnection and ritual.",
+        "vi": "Nghi thức nghỉ phục hồi giúp tái tạo dự trữ tinh thần và thể chất. Ngắt kết nối hoàn toàn trong 24 giờ và hòa mình vào thiên nhiên. Tránh ra quyết định; đọc nhẹ nhàng và di chuyển chậm rãi. Theo dõi biến thiên nhịp tim trước và sau khi nghỉ. Tham gia nhóm thực hành nghỉ phục hồi chung để trải nghiệm tái tạo sâu thông qua sự tách biệt có chủ đích và nghi thức đều đặn."
+      },
+      "tags": [
+        "rest",
+        "burnout"
+      ],
+      "audio": "burnout_recovery_vip2_rest_day.mp3"
+    },
+    {
+      "slug": "boundary",
+      "keywords_en": [
+        "boundary",
+        "no",
+        "balance"
+      ],
+      "keywords_vi": [
+        "ranh giới",
+        "từ chối",
+        "cân bằng"
+      ],
+      "copy": {
+        "en": "Create a boundary ecosystem to prevent burnout. Use a boundary menu—hard no, soft no, future yes. Automate limits with tools and conduct a weekly boundary audit. Join a mastermind for mutual reinforcement and accountability, creating an unbreakable protection system for your energy.",
+        "vi": "Hãy dựng cả một hệ thống ranh giới để khỏi kiệt sức. Chuẩn bị sẵn vài kiểu trả lời: từ chối dứt khoát, từ chối nhẹ nhàng, hoặc hẹn để sau. Dùng công cụ để tự động hóa các giới hạn và mỗi tuần soát lại xem mình có giữ được ranh giới không. Tham gia một nhóm cùng chí hướng để củng cố lẫn nhau và cùng nhắc nhau giữ cam kết, dựng nên một lớp bảo vệ năng lượng khó lòng phá vỡ."
+      },
+      "tags": [
+        "boundary",
+        "burnout"
+      ],
+      "audio": "burnout_recovery_vip2_boundary.mp3"
+    },
+    {
+      "slug": "micro-break",
+      "keywords_en": [
+        "micro break",
+        "reset",
+        "recovery"
+      ],
+      "keywords_vi": [
+        "nghỉ ngắn",
+        "đặt lại",
+        "phục hồi"
+      ],
+      "copy": {
+        "en": "Follow an ultradian micro-break system: ninety minutes of work, twenty of rest. In each five-minute reset, practice box breathing, eye palming, or a short micro-nap. Use an HRV app to time cycles and track recovery scores. Join a group for break optimization to align your rhythm with biology and prevent burnout.",
+        "vi": "Hãy theo nhịp nghỉ ngắn theo chu kỳ tự nhiên của cơ thể: làm 90 phút rồi nghỉ 20 phút. Trong mỗi quãng nghỉ 5 phút, hãy tập thở hộp, úp lòng bàn tay che mắt cho thư giãn, hoặc chợp mắt một lát. Dùng ứng dụng đo HRV để canh chu kỳ và theo dõi điểm phục hồi. Tham gia một nhóm cùng tối ưu cách nghỉ để điều chỉnh nhịp làm việc hợp với sinh học và tránh kiệt sức."
+      },
+      "tags": [
+        "break",
+        "burnout"
+      ],
+      "audio": "burnout_recovery_vip2_micro_break.mp3"
+    },
+    {
+      "slug": "energy-audit",
+      "keywords_en": [
+        "energy audit",
+        "drain",
+        "recovery"
+      ],
+      "keywords_vi": [
+        "kiểm toán năng lượng",
+        "hút năng lượng",
+        "phục hồi"
+      ],
+      "copy": {
+        "en": "Run a seven-day energy audit to detect leaks. Log activities, energy, and emotions, then apply the Pareto principle to find the top twenty percent causing eighty percent of fatigue. Eliminate the top three drains and measure net energy gain. Review progress with a coach to achieve energy surplus through systematic optimization.",
+        "vi": "Hãy rà soát lại năng lượng của mình trong bảy ngày để tìm chỗ rò rỉ. Ghi lại các hoạt động, mức năng lượng và cảm xúc, rồi áp dụng nguyên tắc Pareto để tìm ra 20% nguyên nhân gây ra 80% sự mệt mỏi. Loại bỏ ba thứ hút năng lượng nhiều nhất và đo lại xem mình thu về được bao nhiêu. Cùng huấn luyện viên xem lại tiến trình để dần có dư năng lượng nhờ tối ưu một cách có hệ thống."
+      },
+      "tags": [
+        "energy",
+        "burnout"
+      ],
+      "audio": "burnout_recovery_vip2_energy_audit.mp3"
+    },
+    {
+      "slug": "delegation",
+      "keywords_en": [
+        "delegation",
+        "load",
+        "recovery"
+      ],
+      "keywords_vi": [
+        "ủy quyền",
+        "tải công việc",
+        "phục hồi"
+      ],
+      "copy": {
+        "en": "Delegate to offload burnout pressure. List all tasks and rate effort versus impact. Pass on low-impact work and prioritize with the Eisenhower matrix. Track time reclaimed. Work with a mentor to refine your delegation skill, reducing workload and risk through strategic task leverage.",
+        "vi": "Ủy quyền để giảm áp lực gây kiệt sức. Liệt kê tất cả công việc và đánh giá nỗ lực so với tác động. Chuyển giao công việc ít quan trọng và ưu tiên theo ma trận Eisenhower. Theo dõi thời gian được giải phóng. Làm việc với người cố vấn để nâng cao kỹ năng ủy quyền, giảm tải và rủi ro thông qua phân bổ chiến lược."
+      },
+      "tags": [
+        "delegation",
+        "burnout"
+      ],
+      "audio": "burnout_recovery_vip2_delegation.mp3"
+    },
+    {
+      "slug": "purpose",
+      "keywords_en": [
+        "purpose",
+        "meaning",
+        "recovery"
+      ],
+      "keywords_vi": [
+        "mục đích",
+        "ý nghĩa",
+        "phục hồi"
+      ],
+      "copy": {
+        "en": "Realign your purpose to counter burnout. Use the Ikigai framework to connect passion, mission, vocation, and profession. Engage in a purpose-driven activity weekly and track fulfillment. Join a purpose group for shared exploration and motivation, restoring energy through meaningful alignment.",
+        "vi": "Tái định hướng mục đích sống để chống lại kiệt sức. Sử dụng mô hình Ikigai để kết nối đam mê, sứ mệnh, nghề nghiệp và công việc. Tham gia hoạt động có mục đích mỗi tuần và theo dõi cảm giác viên mãn. Tham gia nhóm tìm kiếm mục đích chung để khám phá và duy trì động lực, phục hồi năng lượng qua sự gắn kết đầy ý nghĩa."
+      },
+      "tags": [
+        "purpose",
+        "burnout"
+      ],
+      "audio": "burnout_recovery_vip2_purpose.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": [
+        "all",
+        "full sequence",
+        "combined"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "chuỗi đầy đủ",
+        "kết hợp"
+      ],
+      "copy": {
+        "en": "The recovery sabbath protocol rebuilds mental and physical reserves. Unplug for twenty-four hours and immerse yourself in nature. Avoid decisions; read lightly and move slowly. Track heart rate variability before and after. Join a recovery circle for shared sabbath practice to experience deep restoration through structured disconnection and ritual. Create a boundary ecosystem to prevent burnout. Use a boundary menu—hard no, soft no, future yes. Automate limits with tools and conduct a weekly boundary audit. Join a mastermind for mutual reinforcement and accountability, creating an unbreakable protection system for your energy. Follow an ultradian micro-break system: ninety minutes of work, twenty of rest. In each five-minute reset, practice box breathing, eye palming, or a short micro-nap. Use an HRV app to time cycles and track recovery scores. Join a group for break optimization to align your rhythm with biology and prevent burnout. Run a seven-day energy audit to detect leaks. Log activities, energy, and emotions, then apply the Pareto principle to find the top twenty percent causing eighty percent of fatigue. Eliminate the top three drains and measure net energy gain. Review progress with a coach to achieve energy surplus through systematic optimization. Delegate to offload burnout pressure. List all tasks and rate effort versus impact. Pass on low-impact work and prioritize with the Eisenhower matrix. Track time reclaimed. Work with a mentor to refine your delegation skill, reducing workload and risk through strategic task leverage. Realign your purpose to counter burnout. Use the Ikigai framework to connect passion, mission, vocation, and profession. Engage in a purpose-driven activity weekly and track fulfillment. Join a purpose group for shared exploration and motivation, restoring energy through meaningful alignment.",
+        "vi": "Nghi thức nghỉ phục hồi giúp tái tạo dự trữ tinh thần và thể chất. Ngắt kết nối hoàn toàn trong 24 giờ và hòa mình vào thiên nhiên. Tránh ra quyết định; đọc nhẹ nhàng và di chuyển chậm rãi. Theo dõi biến thiên nhịp tim trước và sau khi nghỉ. Tham gia nhóm thực hành nghỉ phục hồi chung để trải nghiệm tái tạo sâu thông qua sự tách biệt có chủ đích và nghi thức đều đặn. Hãy dựng cả một hệ thống ranh giới để khỏi kiệt sức. Chuẩn bị sẵn vài kiểu trả lời: từ chối dứt khoát, từ chối nhẹ nhàng, hoặc hẹn để sau. Dùng công cụ để tự động hóa các giới hạn và mỗi tuần soát lại xem mình có giữ được ranh giới không. Tham gia một nhóm cùng chí hướng để củng cố lẫn nhau và cùng nhắc nhau giữ cam kết, dựng nên một lớp bảo vệ năng lượng khó lòng phá vỡ. Hãy theo nhịp nghỉ ngắn theo chu kỳ tự nhiên của cơ thể: làm 90 phút rồi nghỉ 20 phút. Trong mỗi quãng nghỉ 5 phút, hãy tập thở hộp, úp lòng bàn tay che mắt cho thư giãn, hoặc chợp mắt một lát. Dùng ứng dụng đo HRV để canh chu kỳ và theo dõi điểm phục hồi. Tham gia một nhóm cùng tối ưu cách nghỉ để điều chỉnh nhịp làm việc hợp với sinh học và tránh kiệt sức. Hãy rà soát lại năng lượng của mình trong bảy ngày để tìm chỗ rò rỉ. Ghi lại các hoạt động, mức năng lượng và cảm xúc, rồi áp dụng nguyên tắc Pareto để tìm ra 20% nguyên nhân gây ra 80% sự mệt mỏi. Loại bỏ ba thứ hút năng lượng nhiều nhất và đo lại xem mình thu về được bao nhiêu. Cùng huấn luyện viên xem lại tiến trình để dần có dư năng lượng nhờ tối ưu một cách có hệ thống. Ủy quyền để giảm áp lực gây kiệt sức. Liệt kê tất cả công việc và đánh giá nỗ lực so với tác động. Chuyển giao công việc ít quan trọng và ưu tiên theo ma trận Eisenhower. Theo dõi thời gian được giải phóng. Làm việc với người cố vấn để nâng cao kỹ năng ủy quyền, giảm tải và rủi ro thông qua phân bổ chiến lược. Tái định hướng mục đích sống để chống lại kiệt sức. Sử dụng mô hình Ikigai để kết nối đam mê, sứ mệnh, nghề nghiệp và công việc. Tham gia hoạt động có mục đích mỗi tuần và theo dõi cảm giác viên mãn. Tham gia nhóm tìm kiếm mục đích chung để khám phá và duy trì động lực, phục hồi năng lượng qua sự gắn kết đầy ý nghĩa."
+      },
+      "tags": [
+        "all",
+        "combined"
+      ],
+      "audio": "bur_vip2_1_en.mp3 bur_vip2_2_en.mp3 bur_vip2_3_en.mp3 bur_vip2_4_en.mp3 bur_vip2_5_en.mp3 bur_vip2_6_en.mp3"
+    }
+  ],
+  "audio": "bur_vip3_5_en.mp3",
+  "domain": "General",
+  "domain_image": "/images/domains/general.svg"
+}

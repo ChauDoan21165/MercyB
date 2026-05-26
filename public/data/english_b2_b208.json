@@ -1,0 +1,118 @@
+{
+  "id": "english_b2_b208",
+  "tier": "free",
+  "domain": "English B2",
+  "title": {
+    "en": "B2-08 — Cause, Effect & Consequence",
+    "vi": "B2-08 — Nguyên Nhân, Kết Quả & Hệ Quả"
+  },
+  "content": {
+    "en": "Explaining why something happens and what it leads to is the engine of Speaking Part 3 and the problem-solution essay. At band 5.5–6.5 learners overuse because and so and overclaim with the only reason. This room builds a wider, more accurate cause-and-effect range using Vietnamese situations you know well.",
+    "vi": "Giải thích vì sao một việc xảy ra và nó dẫn tới đâu chính là động cơ của Speaking Part 3 và bài luận vấn đề-giải pháp. Ở band 5.5–6.5, người học lạm dụng because với so và nói quá lên với the only reason. Phòng này dựng một dải nguyên nhân-kết quả rộng hơn, chính xác hơn qua những tình huống Việt Nam mà bạn rành."
+  },
+  "entries": [
+    {
+      "slug": "cause-language",
+      "keywords_en": [
+        "cause",
+        "reason"
+      ],
+      "keywords_vi": [
+        "nguyên nhân",
+        "lý do"
+      ],
+      "copy": {
+        "en": "Go beyond because. To introduce a cause use due to, owing to, because of, and as a result of, all followed by a noun phrase. Traffic jams in Hanoi are largely due to the sheer number of motorbikes. Because of the long Tết holiday, factories close for over a week. Notice these take a noun, not a full clause — a frequent Vietnamese error is due to it rains instead of due to the rain.",
+        "vi": "Hãy vượt ra khỏi mỗi chữ because. Để dẫn vào nguyên nhân, dùng due to, owing to, because of, và as a result of, theo sau tất cả đều là một cụm danh từ. Traffic jams in Hanoi are largely due to the sheer number of motorbikes. Because of the long Tết holiday, factories close for over a week. Để ý chúng đi với danh từ, không phải một mệnh đề đầy đủ — lỗi người Việt hay mắc là due to it rains thay vì due to the rain."
+      },
+      "audio": "b208_01_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "effect-language",
+      "keywords_en": [
+        "effect",
+        "result"
+      ],
+      "keywords_vi": [
+        "kết quả",
+        "hệ quả"
+      ],
+      "copy": {
+        "en": "To introduce an effect use leads to, results in, causes, and gives rise to. The rapid growth of xe máy ownership has led to serious air pollution. Cheap street food results in millions of quick, affordable meals every day. These verbs let you keep the cause as the subject and the effect as the object, which reads more clearly than a long because sentence.",
+        "vi": "Để dẫn vào kết quả, dùng leads to, results in, causes, và gives rise to. The rapid growth of xe máy ownership has led to serious air pollution. Cheap street food results in millions of quick, affordable meals every day. Mấy động từ này cho phép để nguyên nhân làm chủ ngữ và kết quả làm tân ngữ, đọc gọn hơn một câu because dài lê thê."
+      },
+      "audio": "b208_02_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "consequence-chains",
+      "keywords_en": [
+        "consequence",
+        "chain"
+      ],
+      "keywords_vi": [
+        "hệ quả",
+        "chuỗi"
+      ],
+      "copy": {
+        "en": "Band 6.5 links a chain, not just one step. Use which means that, as a consequence, and this in turn. Many young people move to the city for work, which means that rural towns lose workers; as a consequence, families are often separated until Tết. Each link adds one logical step. A clear two-step or three-step chain shows real reasoning, not a single guess.",
+        "vi": "Band 6.5 nối được cả một chuỗi, chứ không chỉ một bước. Dùng which means that, as a consequence, và this in turn. Many young people move to the city for work, which means that rural towns lose workers; as a consequence, families are often separated until Tết. Mỗi mắt xích thêm một bước suy luận. Một chuỗi hai hoặc ba bước rõ ràng cho thấy lập luận thật sự, chứ không phải một phỏng đoán lẻ tẻ."
+      },
+      "audio": "b208_03_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "problem-solution-essays",
+      "keywords_en": [
+        "problem",
+        "solution"
+      ],
+      "keywords_vi": [
+        "vấn đề",
+        "giải pháp"
+      ],
+      "copy": {
+        "en": "The problem-solution essay needs cause-effect in body one and a matching solution in body two. Problem: Air pollution from motorbikes is worsening because the fleet keeps growing. Solution: Encouraging electric models such as VinFast bikes would reduce emissions without removing people's main transport. Match each solution to a cause you named — an unconnected solution loses task-response marks.",
+        "vi": "Bài luận vấn đề-giải pháp cần nguyên nhân-kết quả ở thân một và một giải pháp ăn khớp ở thân hai. Vấn đề: Air pollution from motorbikes is worsening because the fleet keeps growing. Giải pháp: Encouraging electric models such as VinFast bikes would reduce emissions without removing people's main transport. Hãy khớp mỗi giải pháp với một nguyên nhân bạn đã nêu — giải pháp lạc đề sẽ mất điểm task response."
+      },
+      "audio": "b208_04_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "avoiding-overclaiming",
+      "keywords_en": [
+        "overclaim",
+        "caution"
+      ],
+      "keywords_vi": [
+        "nói quá",
+        "thận trọng"
+      ],
+      "copy": {
+        "en": "Avoid saying one thing is the only cause — real life rarely works that way, and examiners notice. Replace the only reason with a major factor, one of the main reasons, partly because, and contributes to. A major factor behind traffic jams is the number of motorbikes, although poor road planning also contributes. Careful cause language sounds more academic and is harder to attack.",
+        "vi": "Đừng nói một thứ là the only cause — đời thực hiếm khi như vậy, và giám khảo nhận ra ngay. Thay the only reason bằng a major factor, one of the main reasons, partly because, và contributes to. A major factor behind traffic jams is the number of motorbikes, although poor road planning also contributes. Cách nói nguyên nhân thận trọng vừa nghe học thuật hơn vừa khó bị bắt bẻ hơn."
+      },
+      "audio": "b208_05_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "daily-cause-effect-routine",
+      "keywords_en": [
+        "routine",
+        "daily"
+      ],
+      "keywords_vi": [
+        "thói quen",
+        "hằng ngày"
+      ],
+      "copy": {
+        "en": "Each day pick one Vietnamese situation — Tết migration, the rise of food delivery, learning English for a promotion — and speak a three-sentence chain: one cause with due to, one effect with leads to, one consequence with which means that. Two minutes. Building real cause-effect chains daily is what turns vague Part 3 answers into band-6 reasoning.",
+        "vi": "Mỗi ngày chọn một tình huống Việt Nam — di cư dịp Tết, cơn bùng nổ giao đồ ăn, học tiếng Anh để thăng chức — rồi nói một chuỗi ba câu: một nguyên nhân với due to, một kết quả với leads to, một hệ quả với which means that. Hai phút. Ngày nào cũng dựng một chuỗi nguyên nhân-kết quả thật — đó là thứ biến một câu Part 3 mơ hồ thành lập luận band 6."
+      },
+      "audio": "b208_06_en.mp3",
+      "tags": []
+    }
+  ],
+  "domain_image": "/images/domains/english.svg"
+}

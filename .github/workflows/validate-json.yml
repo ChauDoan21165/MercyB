@@ -1,0 +1,19 @@
+name: Validate JSON
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      VITE_MB_VALIDATION_MODE: strict
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: node scripts/validate-rooms-ci.js
+      - run: node scripts/validate-room-links.cjs

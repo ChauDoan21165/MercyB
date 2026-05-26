@@ -1,0 +1,49 @@
+{
+  "level": 1,
+  "focus": "Short correct sentences under time. Clean endings. Calm repetition.",
+  "targets": { "mastery": 60, "minimums": { "pressure": 45, "accuracy": 50 }, "sessions": 3 },
+  "modules": [
+    {
+      "moduleKey": "timed_speaking",
+      "title": "Timed Speaking — Short Answers",
+      "durationSec": 60,
+      "prompts": [
+        { "id": "L1_TS_001", "text": "Introduce yourself in 3 sentences. End with your goal.", "constraints": ["3_sentences"] },
+        { "id": "L1_TS_002", "text": "Describe your day in 5 short sentences.", "constraints": ["5_sentences"] },
+        { "id": "L1_TS_003", "text": "Explain why you study English. Use 'because' once.", "constraints": ["use_because"] }
+      ],
+      "scoringProfile": { "targetWords": 35 }
+    },
+    {
+      "moduleKey": "accuracy_drill",
+      "title": "Accuracy — Clean Sentence Repair",
+      "items": [
+        { "id": "L1_AD_001", "bad": "He go to work yesterday.", "goal": "Fix the tense." },
+        { "id": "L1_AD_002", "bad": "I am agree with you.", "goal": "Fix the structure." }
+      ]
+    },
+    {
+      "moduleKey": "gate_test",
+      "title": "Level 1 Gate",
+      "tasks": [
+        { "id": "L1_GATE_A", "type": "timed_speaking", "durationSec": 60, "promptId": "L1_TS_002", "constraints": ["5_sentences", "past_tense"] },
+        { "id": "L1_GATE_B", "type": "accuracy_check", "count": 5 }
+      ]
+    },
+    {
+      "moduleKey": "recovery",
+      "title": "Recovery Loop (3 sessions)",
+      "days": 3,
+      "plan": [
+        { "day": 1, "tasks": ["accuracy_drill", "timed_speaking"] },
+        { "day": 2, "tasks": ["accuracy_drill", "timed_speaking"] },
+        { "day": 3, "tasks": ["timed_speaking", "recheck"] }
+      ]
+    }
+  ],
+  "mercyHostRules": [
+    { "if": "pressure < 45", "diagnosis": "Pressure is breaking your structure.", "prescription": "Reduce sentence length. Finish cleanly. Repeat once." },
+    { "if": "accuracy < 50", "diagnosis": "You are moving faster than your grammar.", "prescription": "Do 5 repairs, then one timed answer." },
+    { "if": "fluency < 40", "diagnosis": "Output volume is too low.", "prescription": "Add one extra sentence. Keep it simple." }
+  ]
+}

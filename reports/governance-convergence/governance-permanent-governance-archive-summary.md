@@ -1,0 +1,22 @@
+# Governance Permanent Governance Archive Summary
+
+generated_at=2026-05-20T17:13:29.542Z
+production_safe=false
+production_readiness=false
+placement_v3_enabled=false
+placement_test_enabled=false
+placement_v3_ui_enabled=false
+placement_v3_enablement=BLOCKED
+live_validation_complete=false
+live_provider_validated=false
+live_replay_validated=false
+provider_drift_measured=false
+production_persistence_validated=false
+supervised_execution_allowed=false
+writes_production_data=false
+autonomous_execution=SUPERVISED_ONLY
+DO_NOT_ENABLE
+archive_status=PERMANENT_BLOCKED_SAFE_RETAINED
+enablement_status=DO_NOT_ENABLE
+validation_status=BLOCKED_PENDING_REAL_EVIDENCE
+open_gap_count=26

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "git": {
+    "deploymentEnabled": {
+      "main": false
+    }
+  },
+  "functions": {
+    "api/mercy/grammar.ts": {
+      "maxDuration": 30
+    },
+    "api/tts.ts": {
+      "maxDuration": 30
+    }
+  },
+  "redirects": [
+    {
+      "source": "/about/chau",
+      "destination": "/",
+      "statusCode": 302
+    }
+  ],
+  "rewrites": [
+    { "source": "/api/tts", "destination": "/api/tts" },
+    { "source": "/api/mercy/grammar", "destination": "/api/mercy/grammar" },
+    { "source": "/((?!assets/).*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/index.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, must-revalidate" }
+      ]
+    }
+  ]
+}

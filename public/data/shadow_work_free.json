@@ -1,0 +1,192 @@
+{
+  "id": "shadow_work_free",
+  "name": "Shadow Work",
+  "name_vi": "Chữa Lành Phần Bóng Tối",
+  "description": {
+    "en": "Introductory shadow work: identifying hidden traits, integration, reflection, forgiveness, awareness, and inner wholeness.",
+    "vi": "Nhập môn hành trình chữa lành phần bóng tối: nhận diện những nét tính cách ẩn giấu, hợp nhất, chiêm nghiệm, tha thứ, tỉnh thức và sự trọn vẹn trong tâm hồn."
+  },
+  "keywords_en": [
+    "self_reflection",
+    "shadow_work",
+    "forgiveness",
+    "awareness",
+    "integration"
+  ],
+  "keywords_vi": [
+    "tự chiêm nghiệm",
+    "làm việc với bóng tối",
+    "tha thứ",
+    "nhận thức",
+    "hòa nhập"
+  ],
+  "entries": [
+    {
+      "slug": "identifying-hidden-traits",
+      "keywords_en": [
+        "shadow work",
+        "self-awareness",
+        "hidden traits",
+        "acceptance"
+      ],
+      "keywords_vi": [
+        "làm việc với bóng tối",
+        "tự nhận thức",
+        "mặt khuất",
+        "chấp nhận"
+      ],
+      "copy": {
+        "en": "Shadow work starts with identifying hidden traits. Notice feelings like jealousy that bother you. Studies show awareness reduces stress by 25%. Journal one shadow emotion daily to see patterns. This gentle step embraces all parts of you. Start today for self-acceptance. Discover deeper meaning in VIP 1, 2, or 3.",
+        "vi": "Hành trình chữa lành phần bóng tối bắt đầu từ việc gọi tên những phần còn ẩn sâu trong con người mình. Hãy để ý đến những cảm xúc như ghen tị hay tức giận — những điều khiến bạn thấy khó chịu. Nghiên cứu cho thấy việc nhận biết rõ về mình giúp giảm căng thẳng 25%. Mỗi ngày, hãy viết vài dòng về một cảm xúc trong vùng tối ấy để dần nhận ra những khuôn mẫu lặp lại. Bước nhỏ nhẹ nhàng này giúp bạn ôm trọn mọi phần của chính mình. Hãy bắt đầu ngay hôm nay để học cách chấp nhận bản thân. Khám phá ý nghĩa sâu hơn ở các cấp VIP 1, 2, hoặc 3."
+      },
+      "tags": [
+        "self_reflection"
+      ],
+      "audio": "identifying_hidden_traits_free.mp3"
+    },
+    {
+      "slug": "integrating-shadow-parts",
+      "keywords_en": [
+        "integration",
+        "self-compassion",
+        "acceptance",
+        "growth"
+      ],
+      "keywords_vi": [
+        "hòa nhập",
+        "tự bi",
+        "chấp nhận",
+        "phát triển"
+      ],
+      "copy": {
+        "en": "Integrate shadow parts by accepting them kindly. Evidence shows self-compassion boosts growth by 30%. Practice: say I accept this part to one shadow trait weekly. This fosters wholeness without judgment. Start with one trait today. Discover deeper meaning in VIP 1, 2, or 3.",
+        "vi": "Hãy hòa hợp với những phần bóng tối bằng cách đón nhận chúng một cách dịu dàng. Nghiên cứu cho thấy lòng trắc ẩn với chính mình giúp ta trưởng thành hơn 30%. Cách thực hành: mỗi tuần, hãy nói 'Mình chấp nhận phần này của mình' với một nét tính cách bạn từng chối bỏ. Điều này nuôi dưỡng cảm giác trọn vẹn mà không kèm theo phán xét. Hãy bắt đầu từ một phần nhỏ ngay hôm nay. Khám phá ý nghĩa sâu hơn ở các cấp VIP 1, 2, hoặc 3."
+      },
+      "tags": [
+        "integration"
+      ],
+      "audio": "integrating_shadow_parts_free.mp3"
+    },
+    {
+      "slug": "reflecting-on-shadows",
+      "keywords_en": [
+        "reflection",
+        "healing",
+        "shadow emotions",
+        "awareness"
+      ],
+      "keywords_vi": [
+        "chiêm nghiệm",
+        "chữa lành",
+        "cảm xúc bóng tối",
+        "nhận thức"
+      ],
+      "copy": {
+        "en": "Reflection heals shadows by 30%, per psychology. Sit 5 minutes daily with a shadow feeling. Journal one thought weekly. This process integrates hidden self gently. Embrace without rush. Start reflecting today. Discover deeper meaning in VIP 1, 2, or 3.",
+        "vi": "Theo tâm lý học, việc lắng lại và suy ngẫm giúp chữa lành những vùng tối trong tâm hồn tới 30%. Mỗi ngày, hãy ngồi yên 5 phút cùng một cảm xúc bạn vẫn thường né tránh. Mỗi tuần, ghi lại một suy nghĩ. Cách làm này nhẹ nhàng đưa bạn kết nối lại với phần mình từng giấu kín. Đừng vội — hãy đón nhận tất cả bằng một tâm thế bình thản. Hãy bắt đầu suy ngẫm ngay hôm nay. Khám phá ý nghĩa sâu hơn ở các cấp VIP 1, 2, hoặc 3."
+      },
+      "tags": [
+        "reflection"
+      ],
+      "audio": "reflecting_on_shadows_free.mp3"
+    },
+    {
+      "slug": "forgiving-shadow-self",
+      "keywords_en": [
+        "forgiveness",
+        "self-acceptance",
+        "healing",
+        "shadow work"
+      ],
+      "keywords_vi": [
+        "tha thứ",
+        "chấp nhận bản thân",
+        "chữa lành",
+        "làm việc với bóng tối"
+      ],
+      "copy": {
+        "en": "Forgive shadow self for growth. Studies show forgiveness reduces inner conflict by 35%. Practice one forgiveness act weekly for a shadow trait. This builds self-acceptance. Embrace all parts kindly. Start forgiving today. Discover deeper meaning in VIP 1, 2, or 3.",
+        "vi": "Hãy tha thứ cho phần bóng tối trong mình để mở lối cho sự trưởng thành. Nghiên cứu cho thấy sự tha thứ giúp giảm 35% những giằng xé trong lòng. Mỗi tuần, hãy tập tha thứ cho một phần mình từng tự trách. Điều này nuôi dưỡng khả năng chấp nhận bản thân. Hãy ôm trọn mọi phần của mình bằng tấm lòng bao dung. Bắt đầu ngay hôm nay bằng một hành động tha thứ. Khám phá ý nghĩa sâu hơn ở các cấp VIP 1, 2, hoặc 3."
+      },
+      "tags": [
+        "forgiveness"
+      ],
+      "audio": "forgiving_shadow_self_free.mp3"
+    },
+    {
+      "slug": "awareness-of-triggers",
+      "keywords_en": [
+        "awareness",
+        "triggers",
+        "mindfulness",
+        "healing"
+      ],
+      "keywords_vi": [
+        "nhận thức",
+        "tác nhân kích hoạt",
+        "chánh niệm",
+        "chữa lành"
+      ],
+      "copy": {
+        "en": "Awareness of triggers uncovers shadows. Research indicates mindfulness aids integration by 25%. Note one trigger monthly and reflect. This small step fosters awareness. Embrace gently. Start noting today. Discover deeper meaning in VIP 1, 2, or 3.",
+        "vi": "Việc nhận ra điều gì khơi dậy cảm xúc trong mình sẽ hé lộ phần bóng tối bên trong. Nghiên cứu cho thấy chánh niệm giúp quá trình hòa hợp nội tâm tốt hơn 25%. Mỗi tháng, hãy ghi lại một điều thường khiến bạn phản ứng mạnh và suy ngẫm về nó. Bước nhỏ này giúp bạn hiểu mình rõ hơn. Hãy đón nhận một cách nhẹ nhàng. Bắt đầu ghi lại ngay hôm nay. Khám phá ý nghĩa sâu hơn ở các cấp VIP 1, 2, hoặc 3."
+      },
+      "tags": [
+        "awareness"
+      ],
+      "audio": "awareness_of_triggers_free.mp3"
+    },
+    {
+      "slug": "embracing-inner-wholeness",
+      "keywords_en": [
+        "inner wholeness",
+        "integration",
+        "peace",
+        "acceptance"
+      ],
+      "keywords_vi": [
+        "toàn vẹn nội tâm",
+        "hòa nhập",
+        "bình an",
+        "chấp nhận"
+      ],
+      "copy": {
+        "en": "Embrace inner wholeness through shadow work. Evidence shows integration promotes peace by 40%. Practice daily acceptance of one shadow aspect. This builds self-compassion. Start embracing today. Discover deeper meaning in VIP 1, 2, or 3.",
+        "vi": "Hãy đón nhận sự trọn vẹn trong tâm hồn qua hành trình chữa lành phần bóng tối. Bằng chứng cho thấy quá trình hòa hợp này giúp lòng ta bình an hơn 40%. Mỗi ngày, hãy chấp nhận một khía cạnh mình từng chối bỏ. Điều này nuôi dưỡng lòng trắc ẩn với chính mình và sự bình yên sâu trong tâm. Hãy bắt đầu đón nhận chính mình ngay hôm nay. Khám phá ý nghĩa sâu hơn ở các cấp VIP 1, 2, hoặc 3."
+      },
+      "tags": [
+        "integration"
+      ],
+      "audio": "embracing_inner_wholeness_free.mp3"
+    },
+    {
+      "slug": "all",
+      "keywords_en": [
+        "all",
+        "full content",
+        "combined"
+      ],
+      "keywords_vi": [
+        "tất cả",
+        "nội dung đầy đủ",
+        "kết hợp"
+      ],
+      "copy": {
+        "en": "Shadow work starts with identifying hidden traits. Notice feelings like jealousy that bother you. Studies show awareness reduces stress by 25%. Journal one shadow emotion daily to see patterns. This gentle step embraces all parts of you. Start today for self-acceptance. Discover deeper meaning in VIP 1, 2, or 3.\n\nIntegrate shadow parts by accepting them kindly. Evidence shows self-compassion boosts growth by 30%. Practice: say I accept this part to one shadow trait weekly. This fosters wholeness without judgment. Start with one trait today. Discover deeper meaning in VIP 1, 2, or 3.\n\nReflection heals shadows by 30%, per psychology. Sit 5 minutes daily with a shadow feeling. Journal one thought weekly. This process integrates hidden self gently. Embrace without rush. Start reflecting today. Discover deeper meaning in VIP 1, 2, or 3.\n\nForgive shadow self for growth. Studies show forgiveness reduces inner conflict by 35%. Practice one forgiveness act weekly for a shadow trait. This builds self-acceptance. Embrace all parts kindly. Start forgiving today. Discover deeper meaning in VIP 1, 2, or 3.\n\nAwareness of triggers uncovers shadows. Research indicates mindfulness aids integration by 25%. Note one trigger monthly and reflect. This small step fosters awareness. Embrace gently. Start noting today. Discover deeper meaning in VIP 1, 2, or 3.\n\nEmbrace inner wholeness through shadow work. Evidence shows integration promotes peace by 40%. Practice daily acceptance of one shadow aspect. This builds self-compassion. Start embracing today. Discover deeper meaning in VIP 1, 2, or 3.",
+        "vi": "Hành trình chữa lành phần bóng tối bắt đầu từ việc gọi tên những phần còn ẩn sâu trong con người mình. Hãy để ý đến những cảm xúc như ghen tị hay tức giận — những điều khiến bạn thấy khó chịu. Nghiên cứu cho thấy việc nhận biết rõ về mình giúp giảm căng thẳng 25%. Mỗi ngày, hãy viết vài dòng về một cảm xúc trong vùng tối ấy để dần nhận ra những khuôn mẫu lặp lại. Bước nhỏ nhẹ nhàng này giúp bạn ôm trọn mọi phần của chính mình. Hãy bắt đầu ngay hôm nay để học cách chấp nhận bản thân. Khám phá ý nghĩa sâu hơn ở các cấp VIP 1, 2, hoặc 3.\n\nHãy hòa hợp với những phần bóng tối bằng cách đón nhận chúng một cách dịu dàng. Nghiên cứu cho thấy lòng trắc ẩn với chính mình giúp ta trưởng thành hơn 30%. Cách thực hành: mỗi tuần, hãy nói 'Mình chấp nhận phần này của mình' với một nét tính cách bạn từng chối bỏ. Điều này nuôi dưỡng cảm giác trọn vẹn mà không kèm theo phán xét. Hãy bắt đầu từ một phần nhỏ ngay hôm nay. Khám phá ý nghĩa sâu hơn ở các cấp VIP 1, 2, hoặc 3.\n\nTheo tâm lý học, việc lắng lại và suy ngẫm giúp chữa lành những vùng tối trong tâm hồn tới 30%. Mỗi ngày, hãy ngồi yên 5 phút cùng một cảm xúc bạn vẫn thường né tránh. Mỗi tuần, ghi lại một suy nghĩ. Cách làm này nhẹ nhàng đưa bạn kết nối lại với phần mình từng giấu kín. Đừng vội — hãy đón nhận tất cả bằng một tâm thế bình thản. Hãy bắt đầu suy ngẫm ngay hôm nay. Khám phá ý nghĩa sâu hơn ở các cấp VIP 1, 2, hoặc 3.\n\nHãy tha thứ cho phần bóng tối trong mình để mở lối cho sự trưởng thành. Nghiên cứu cho thấy sự tha thứ giúp giảm 35% những giằng xé trong lòng. Mỗi tuần, hãy tập tha thứ cho một phần mình từng tự trách. Điều này nuôi dưỡng khả năng chấp nhận bản thân. Hãy ôm trọn mọi phần của mình bằng tấm lòng bao dung. Bắt đầu ngay hôm nay bằng một hành động tha thứ. Khám phá ý nghĩa sâu hơn ở các cấp VIP 1, 2, hoặc 3.\n\nViệc nhận ra điều gì khơi dậy cảm xúc trong mình sẽ hé lộ phần bóng tối bên trong. Nghiên cứu cho thấy chánh niệm giúp quá trình hòa hợp nội tâm tốt hơn 25%. Mỗi tháng, hãy ghi lại một điều thường khiến bạn phản ứng mạnh và suy ngẫm về nó. Bước nhỏ này giúp bạn hiểu mình rõ hơn. Hãy đón nhận một cách nhẹ nhàng. Bắt đầu ghi lại ngay hôm nay. Khám phá ý nghĩa sâu hơn ở các cấp VIP 1, 2, hoặc 3.\n\nHãy đón nhận sự trọn vẹn trong tâm hồn qua hành trình chữa lành phần bóng tối. Bằng chứng cho thấy quá trình hòa hợp này giúp lòng ta bình an hơn 40%. Mỗi ngày, hãy chấp nhận một khía cạnh mình từng chối bỏ. Điều này nuôi dưỡng lòng trắc ẩn với chính mình và sự bình yên sâu trong tâm. Hãy bắt đầu đón nhận chính mình ngay hôm nay. Khám phá ý nghĩa sâu hơn ở các cấp VIP 1, 2, hoặc 3."
+      },
+      "tags": [
+        "all",
+        "combined"
+      ],
+      "audio": "identifying_hidden_traits_free.mp3 integrating_shadow_parts_free.mp3 reflecting_on_shadows_free.mp3 forgiving_shadow_self_free.mp3 awareness_of_triggers_free.mp3 embracing_inner_wholeness_free.mp3"
+    }
+  ],
+  "tier": "free",
+  "domain": "General",
+  "title": {
+    "en": "Introductory shadow work: identifying hidden traits, integration, reflection, forgiveness, awareness, and inner wholeness.",
+    "vi": "Nhập môn hành trình chữa lành phần bóng tối: nhận diện những nét tính cách ẩn giấu, hợp nhất, chiêm nghiệm, tha thứ, tỉnh thức và sự trọn vẹn trong tâm hồn."
+  },
+  "domain_image": "/images/domains/general.svg"
+}

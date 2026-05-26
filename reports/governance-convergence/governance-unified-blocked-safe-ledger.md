@@ -1,0 +1,31 @@
+# Governance Unified Blocked-Safe Ledger
+
+generated_at=2026-05-20T17:13:29.531Z
+production_safe=false
+production_readiness=false
+placement_v3_enabled=false
+placement_test_enabled=false
+placement_v3_ui_enabled=false
+placement_v3_enablement=BLOCKED
+live_validation_complete=false
+live_provider_validated=false
+live_replay_validated=false
+provider_drift_measured=false
+production_persistence_validated=false
+supervised_execution_allowed=false
+writes_production_data=false
+autonomous_execution=SUPERVISED_ONLY
+DO_NOT_ENABLE
+governance_fabric_state=BLOCKED_SAFE_INCOMPLETE
+
+## Streams
+
+- A39: BLOCKED_BY_MISSING_EVIDENCE missing=denial_lineage,capacity_denial,cohort_ceiling contradictions=0
+- A42: BLOCKED_BY_MISSING_EVIDENCE missing=denial_lineage,reliability_denial,failover_denial contradictions=0
+- A44: BLOCKED_BY_MISSING_EVIDENCE missing=denial_lineage,human_review_denial,approval_readiness contradictions=0
+- A45: BLOCKED_BY_MISSING_EVIDENCE missing=denial_lineage,provider_validation_denial,live_provider_block contradictions=0
+- A46: BLOCKED_BY_MISSING_EVIDENCE missing=denial_lineage,contradiction_audit,governance_signoff_denial contradictions=0
+- A47: BLOCKED_BY_MISSING_EVIDENCE missing=denial_lineage,audit_continuity contradictions=0
+- A48: BLOCKED_BY_MISSING_EVIDENCE missing=denial_lineage,release_denial,canary_block contradictions=0
+- A49: BLOCKED_BY_MISSING_EVIDENCE missing=denial_lineage,replay_certification_denial contradictions=0
+- A50: BLOCKED_BY_MISSING_EVIDENCE missing=denial_lineage,observability_dependency,replay_dependency,supervised_execution_denial contradictions=0

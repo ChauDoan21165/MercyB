@@ -1,0 +1,35 @@
+name: Validate Edge Functions Deployed
+
+on:
+  push:
+    branches:
+      - main
+
+# A previous push's run is superseded by a newer one. Edge-function
+# probing makes external HTTP calls; cancelling stale runs avoids
+# wasted invocations + clearer signal in PR checks.
+concurrency:
+  group: validate-edge-functions-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Probe every Edge Function for 401 (deployed) vs 404 (missing)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Validate Edge Function deployment
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY || secrets.SUPABASE_ANON_KEY || secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+        run: npx tsx scripts/validate-edge-functions.ts

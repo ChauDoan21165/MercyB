@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "src",
+    "vite.config.*",
+    "sentry.config.ts",
+    "logrocket.config.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "supabase",
+    "scripts",
+    "src/app",
+    "src/screens/DrillResultScreen.tsx",
+    "src/screens/GateScreen.tsx",
+    "src/screens/LevelMapScreen.tsx",
+    "src/screens/OnboardingScreen.tsx",
+    "src/screens/PlacementScreen.tsx",
+    "src/screens/TrainHomeScreen.tsx"
+  ]
+}

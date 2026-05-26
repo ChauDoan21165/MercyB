@@ -1,0 +1,210 @@
+{
+  "generatedAt": "2026-05-20T14:33:20.849Z",
+  "runId": "a2-auto-20260520T143317Z",
+  "simulated": true,
+  "placement_v3_enabled": false,
+  "live_provider_validated": false,
+  "supabase_persistence_validated": false,
+  "totals": {
+    "scenarios": 10,
+    "failedChecks": 0,
+    "providerSwitches": 1,
+    "fallbacks": 1
+  },
+  "rows": [
+    {
+      "scenario": "provider-timeout",
+      "simulated": true,
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-provider-timeout-after.json",
+      "replayPath": "reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/replay/a2-auto-20260520T143317Z-provider-timeout-after-replay.json",
+      "eventCount": 7,
+      "eventTypes": [
+        "feature_flag_snapshot",
+        "latency_event",
+        "orchestration_transition",
+        "provider_event",
+        "recoverability_state",
+        "session_event"
+      ],
+      "missingCoreEventTypes": [],
+      "missingSequences": 0,
+      "inconsistentRetries": [],
+      "orchestrationDeadEnds": [],
+      "providerSwitches": 0,
+      "fallbacks": 0
+    },
+    {
+      "scenario": "malformed-json-grader-output",
+      "simulated": true,
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-malformed-json-grader-output-after.json",
+      "replayPath": "reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/replay/a2-auto-20260520T143317Z-malformed-json-grader-output-after-replay.json",
+      "eventCount": 6,
+      "eventTypes": [
+        "degraded_result",
+        "feature_flag_snapshot",
+        "orchestration_transition",
+        "provider_event",
+        "session_event"
+      ],
+      "missingCoreEventTypes": [],
+      "missingSequences": 0,
+      "inconsistentRetries": [],
+      "orchestrationDeadEnds": [],
+      "providerSwitches": 0,
+      "fallbacks": 0
+    },
+    {
+      "scenario": "provider-fallback",
+      "simulated": true,
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-provider-fallback-after.json",
+      "replayPath": "reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/replay/a2-auto-20260520T143317Z-provider-fallback-after-replay.json",
+      "eventCount": 7,
+      "eventTypes": [
+        "fallback_event",
+        "feature_flag_snapshot",
+        "orchestration_transition",
+        "provider_event",
+        "session_event"
+      ],
+      "missingCoreEventTypes": [],
+      "missingSequences": 0,
+      "inconsistentRetries": [],
+      "orchestrationDeadEnds": [],
+      "providerSwitches": 1,
+      "fallbacks": 1
+    },
+    {
+      "scenario": "retry-exhaustion",
+      "simulated": true,
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-retry-exhaustion-after.json",
+      "replayPath": "reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/replay/a2-auto-20260520T143317Z-retry-exhaustion-after-replay.json",
+      "eventCount": 6,
+      "eventTypes": [
+        "feature_flag_snapshot",
+        "orchestration_transition",
+        "retry_event",
+        "session_event"
+      ],
+      "missingCoreEventTypes": [],
+      "missingSequences": 0,
+      "inconsistentRetries": [],
+      "orchestrationDeadEnds": [],
+      "providerSwitches": 0,
+      "fallbacks": 0
+    },
+    {
+      "scenario": "recommendation-engine-failure",
+      "simulated": true,
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-recommendation-engine-failure-after.json",
+      "replayPath": "reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/replay/a2-auto-20260520T143317Z-recommendation-engine-failure-after-replay.json",
+      "eventCount": 5,
+      "eventTypes": [
+        "feature_flag_snapshot",
+        "orchestration_transition",
+        "recommendation_event",
+        "session_event"
+      ],
+      "missingCoreEventTypes": [],
+      "missingSequences": 0,
+      "inconsistentRetries": [],
+      "orchestrationDeadEnds": [],
+      "providerSwitches": 0,
+      "fallbacks": 0
+    },
+    {
+      "scenario": "taxonomy-parse-failure",
+      "simulated": true,
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-taxonomy-parse-failure-after.json",
+      "replayPath": "reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/replay/a2-auto-20260520T143317Z-taxonomy-parse-failure-after-replay.json",
+      "eventCount": 5,
+      "eventTypes": [
+        "feature_flag_snapshot",
+        "orchestration_transition",
+        "session_event",
+        "taxonomy_trigger"
+      ],
+      "missingCoreEventTypes": [],
+      "missingSequences": 0,
+      "inconsistentRetries": [],
+      "orchestrationDeadEnds": [],
+      "providerSwitches": 0,
+      "fallbacks": 0
+    },
+    {
+      "scenario": "persistence-write-failure",
+      "simulated": true,
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-persistence-write-failure-after.json",
+      "replayPath": "reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/replay/a2-auto-20260520T143317Z-persistence-write-failure-after-replay.json",
+      "eventCount": 4,
+      "eventTypes": [
+        "feature_flag_snapshot",
+        "orchestration_transition",
+        "recoverability_state",
+        "session_event"
+      ],
+      "missingCoreEventTypes": [],
+      "missingSequences": 0,
+      "inconsistentRetries": [],
+      "orchestrationDeadEnds": [
+        "no terminal transition after orchestrator.next at sequence 3"
+      ],
+      "providerSwitches": 0,
+      "fallbacks": 0
+    },
+    {
+      "scenario": "feature-flag-mismatch",
+      "simulated": true,
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-feature-flag-mismatch-after.json",
+      "replayPath": "reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/replay/a2-auto-20260520T143317Z-feature-flag-mismatch-after-replay.json",
+      "eventCount": 5,
+      "eventTypes": [
+        "feature_flag_snapshot",
+        "orchestration_transition",
+        "session_event"
+      ],
+      "missingCoreEventTypes": [],
+      "missingSequences": 0,
+      "inconsistentRetries": [],
+      "orchestrationDeadEnds": [],
+      "providerSwitches": 0,
+      "fallbacks": 0
+    },
+    {
+      "scenario": "interrupted-session-recovery",
+      "simulated": true,
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-interrupted-session-recovery-after.json",
+      "replayPath": "reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/replay/a2-auto-20260520T143317Z-interrupted-session-recovery-after-replay.json",
+      "eventCount": 6,
+      "eventTypes": [
+        "feature_flag_snapshot",
+        "orchestration_transition",
+        "recoverability_state",
+        "session_event"
+      ],
+      "missingCoreEventTypes": [],
+      "missingSequences": 0,
+      "inconsistentRetries": [],
+      "orchestrationDeadEnds": [],
+      "providerSwitches": 0,
+      "fallbacks": 0
+    },
+    {
+      "scenario": "partial-orchestration-corruption",
+      "simulated": true,
+      "rawPath": "docs/placement-v3/observability/raw-runs/a2-auto-20260520T143317Z-partial-orchestration-corruption-after.json",
+      "replayPath": "reports/placement-v3/a2-observability/a2-auto-20260520T143317Z/replay/a2-auto-20260520T143317Z-partial-orchestration-corruption-after-replay.json",
+      "eventCount": 4,
+      "eventTypes": [
+        "feature_flag_snapshot",
+        "orchestration_transition",
+        "session_event"
+      ],
+      "missingCoreEventTypes": [],
+      "missingSequences": 0,
+      "inconsistentRetries": [],
+      "orchestrationDeadEnds": [],
+      "providerSwitches": 0,
+      "fallbacks": 0
+    }
+  ]
+}

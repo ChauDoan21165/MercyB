@@ -1,0 +1,49 @@
+name: Validate Data Files
+
+on:
+  push:
+    branches: ['main', 'develop']
+    paths:
+      - 'public/data/**/*.json'
+      - 'scripts/validate-data-files.js'
+      - '.github/workflows/validate-data.yml'
+
+jobs:
+  validate:
+    name: Validate JSON Data Files
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run data validation
+        id: validate
+        run: node scripts/validate-data-files.js
+
+      - name: Post validation summary
+        if: always()
+        run: |
+          echo "## 📋 Data Validation Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.validate.outcome }}" == "success" ]; then
+            echo "✅ All data files validated successfully!" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "- All JSON files are properly formatted" >> $GITHUB_STEP_SUMMARY
+            echo "- Required fields present in all entries" >> $GITHUB_STEP_SUMMARY
+            echo "- Audio file references validated" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Validation failed - PR cannot be merged" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please fix the validation errors shown above before merging." >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi

@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mercyblade.local/schemas/placement-v3-forensics-evidence-manifest.schema.json",
+  "title": "Placement V3 Forensics Evidence Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "validationId",
+    "generatedAt",
+    "operator",
+    "environment",
+    "status",
+    "providerMetadata",
+    "artifacts",
+    "validationStatus",
+    "blockers"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "validationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "operator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "environment": {
+      "type": "string",
+      "enum": ["local", "staging", "production"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["blocked", "ready_for_manual_steps", "in_progress", "passed", "failed"]
+    },
+    "providerMetadata": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["provider", "keyPresent", "model", "liveCallValidated"],
+        "properties": {
+          "provider": { "type": "string" },
+          "keyPresent": { "type": "boolean" },
+          "model": { "type": ["string", "null"] },
+          "liveCallValidated": { "type": "boolean" },
+          "latencyMs": { "type": ["number", "null"], "minimum": 0 },
+          "tokenUsage": {
+            "type": ["object", "null"],
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "screenshots",
+        "logs",
+        "replayArtifacts",
+        "dbEvidence",
+        "dashboardEvidence",
+        "rollbackEvidence"
+      ],
+      "properties": {
+        "screenshots": { "$ref": "#/$defs/artifactList" },
+        "logs": { "$ref": "#/$defs/artifactList" },
+        "replayArtifacts": { "$ref": "#/$defs/artifactList" },
+        "dbEvidence": { "$ref": "#/$defs/artifactList" },
+        "dashboardEvidence": { "$ref": "#/$defs/artifactList" },
+        "rollbackEvidence": { "$ref": "#/$defs/artifactList" }
+      }
+    },
+    "validationStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "envReady",
+        "migrationPresent",
+        "supabaseReachable",
+        "providerPreconditionsReady",
+        "liveProviderValidated",
+        "liveSupabaseInsertsValidated",
+        "dashboardPersistedRowsValidated",
+        "rollbackValidated"
+      ],
+      "properties": {
+        "envReady": { "type": "boolean" },
+        "migrationPresent": { "type": "boolean" },
+        "supabaseReachable": { "type": "boolean" },
+        "providerPreconditionsReady": { "type": "boolean" },
+        "liveProviderValidated": { "type": "boolean" },
+        "liveSupabaseInsertsValidated": { "type": "boolean" },
+        "dashboardPersistedRowsValidated": { "type": "boolean" },
+        "rollbackValidated": { "type": "boolean" }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "artifactList": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string" },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "capturedAt", "description", "redacted"],
+            "properties": {
+              "path": { "type": "string" },
+              "capturedAt": { "type": "string", "format": "date-time" },
+              "description": { "type": "string" },
+              "redacted": { "type": "boolean" },
+              "correlationId": { "type": ["string", "null"] }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

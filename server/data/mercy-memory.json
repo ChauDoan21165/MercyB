@@ -1,0 +1,33 @@
+{
+  "test-user": {
+    "userKey": "test-user",
+    "writing": {
+      "patterns": [],
+      "strengths": [],
+      "currentFocus": [],
+      "recurringTopics": [],
+      "commonWritingModes": [],
+      "lastSubmittedText": "I go to school yesterday",
+      "lastCorrectedText": "",
+      "lastEnhancedText": ""
+    },
+    "logic": {
+      "vietlishPatterns": [],
+      "bridgesLearned": [],
+      "currentLogicFocus": [
+        "past tense correction"
+      ]
+    },
+    "pronunciation": {
+      "troubleWords": [],
+      "soundPatterns": [],
+      "confidenceLevel": "medium",
+      "lastPracticeLine": ""
+    },
+    "coaching": {
+      "preferredPromptStyle": "mixed",
+      "preferredFeedbackStyle": "gentle"
+    },
+    "updatedAt": "2026-04-07T23:06:41.144Z"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "generated_at": "2026-05-20T17:13:29.541Z",
+  "production_safe": false,
+  "production_readiness": false,
+  "placement_v3_enabled": false,
+  "placement_test_enabled": false,
+  "placement_v3_ui_enabled": false,
+  "placement_v3_enablement": "BLOCKED",
+  "live_validation_complete": false,
+  "live_provider_validated": false,
+  "live_replay_validated": false,
+  "provider_drift_measured": false,
+  "production_persistence_validated": false,
+  "supervised_execution_allowed": false,
+  "writes_production_data": false,
+  "autonomous_execution": "SUPERVISED_ONLY",
+  "do_not_enable": true,
+  "complete": true,
+  "long_term_denial_preservation_active": true,
+  "all_denial_lineage_traceable": false,
+  "unsupported_readiness_suppression_preserved": true,
+  "strict_mode_denial_enforcement_preserved": true,
+  "entries": [
+    {
+      "agent": "A39",
+      "denial_preserved": true,
+      "denial_lineage_present": false,
+      "unsupported_readiness_suppression_active": true,
+      "strict_mode_denial_preserving": true,
+      "do_not_enable_preserved": true,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE"
+    },
+    {
+      "agent": "A42",
+      "denial_preserved": true,
+      "denial_lineage_present": false,
+      "unsupported_readiness_suppression_active": true,
+      "strict_mode_denial_preserving": true,
+      "do_not_enable_preserved": true,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE"
+    },
+    {
+      "agent": "A44",
+      "denial_preserved": true,
+      "denial_lineage_present": false,
+      "unsupported_readiness_suppression_active": true,
+      "strict_mode_denial_preserving": true,
+      "do_not_enable_preserved": true,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE"
+    },
+    {
+      "agent": "A45",
+      "denial_preserved": true,
+      "denial_lineage_present": false,
+      "unsupported_readiness_suppression_active": true,
+      "strict_mode_denial_preserving": true,
+      "do_not_enable_preserved": true,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE"
+    },
+    {
+      "agent": "A46",
+      "denial_preserved": true,
+      "denial_lineage_present": false,
+      "unsupported_readiness_suppression_active": true,
+      "strict_mode_denial_preserving": true,
+      "do_not_enable_preserved": true,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE"
+    },
+    {
+      "agent": "A47",
+      "denial_preserved": true,
+      "denial_lineage_present": false,
+      "unsupported_readiness_suppression_active": true,
+      "strict_mode_denial_preserving": true,
+      "do_not_enable_preserved": true,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE"
+    },
+    {
+      "agent": "A48",
+      "denial_preserved": true,
+      "denial_lineage_present": false,
+      "unsupported_readiness_suppression_active": true,
+      "strict_mode_denial_preserving": true,
+      "do_not_enable_preserved": true,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE"
+    },
+    {
+      "agent": "A49",
+      "denial_preserved": true,
+      "denial_lineage_present": false,
+      "unsupported_readiness_suppression_active": true,
+      "strict_mode_denial_preserving": true,
+      "do_not_enable_preserved": true,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE"
+    },
+    {
+      "agent": "A50",
+      "denial_preserved": true,
+      "denial_lineage_present": false,
+      "unsupported_readiness_suppression_active": true,
+      "strict_mode_denial_preserving": true,
+      "do_not_enable_preserved": true,
+      "preservation_state": "PRESERVED_PENDING_LINEAGE"
+    }
+  ]
+}

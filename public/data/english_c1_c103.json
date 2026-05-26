@@ -1,0 +1,118 @@
+{
+  "id": "english_c1_c103",
+  "tier": "free",
+  "domain": "English C1",
+  "title": {
+    "en": "C1-03 — Professional English for Work",
+    "vi": "C1-03 — Tiếng Anh Chuyên Nghiệp Trong Công Việc"
+  },
+  "content": {
+    "en": "This room helps you use English confidently in professional settings. You will learn how to communicate clearly at work, express opinions with maturity, give updates, and handle small challenges calmly. These entries focus on clean structure, polite tone, and steady confidence—skills that make your English sound reliable and professional.",
+    "vi": "Phòng này giúp bạn dùng tiếng Anh một cách tự tin trong môi trường công việc. Bạn sẽ học cách giao tiếp rành mạch, trình bày ý kiến chín chắn, báo cáo tiến độ và xử lý những tình huống nhỏ một cách nhẹ nhàng. Các mục nội dung tập trung vào câu cú gọn gàng, giọng điệu lịch sự và sự tự tin vững vàng — những kỹ năng khiến tiếng Anh của bạn nghe đáng tin cậy và chuyên nghiệp."
+  },
+  "entries": [
+    {
+      "slug": "giving-simple-work-updates",
+      "keywords_en": [
+        "update",
+        "work"
+      ],
+      "keywords_vi": [
+        "báo cáo",
+        "công việc"
+      ],
+      "copy": {
+        "en": "A clear update is short and calm. Start with status: The report is ready. Add a detail: I checked all numbers. Finish with next step: I will send it this afternoon. This structure keeps communication clean and efficient.",
+        "vi": "Một bản báo cáo rõ ràng thì ngắn gọn và điềm tĩnh. Mở đầu bằng tình trạng: Báo cáo đã xong. Thêm một chi tiết: Tôi đã kiểm tra toàn bộ số liệu. Khép lại bằng bước tiếp theo: Tôi sẽ gửi chiều nay. Cách trình bày này khiến việc trao đổi gọn gàng và hiệu quả."
+      },
+      "audio": "c103_01_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "expressing-professional-opinions",
+      "keywords_en": [
+        "opinions",
+        "professional"
+      ],
+      "keywords_vi": [
+        "ý kiến",
+        "chuyên nghiệp"
+      ],
+      "copy": {
+        "en": "Share your opinion gently and logically. Use soft openers: I think this option is better or My view is simple. Then give one reason and one example. This pattern helps colleagues understand you without confusion or pressure.",
+        "vi": "Hãy nói ý kiến của bạn một cách nhẹ nhàng và có lý lẽ. Mở đầu bằng những câu mềm mỏng: Tôi nghĩ lựa chọn này tốt hơn hoặc Quan điểm của tôi khá đơn giản. Rồi đưa ra một lý do và một ví dụ. Cách nói này giúp đồng nghiệp hiểu bạn mà không thấy bị ép hay rối trí."
+      },
+      "audio": "c103_02_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "polite-corrections-and-feedback",
+      "keywords_en": [
+        "feedback",
+        "polite"
+      ],
+      "keywords_vi": [
+        "phản hồi",
+        "lịch sự"
+      ],
+      "copy": {
+        "en": "Feedback must be clear but kind. Use lines like Maybe we can adjust this part or This section may need a small change. Speak softly, focus on solutions, and keep your tone neutral. Polite corrections build trust and teamwork.",
+        "vi": "Góp ý thì phải rõ ràng mà vẫn tử tế. Bạn hãy dùng những câu như Có lẽ chúng ta chỉnh lại phần này một chút hoặc Đoạn này chắc cần thay đổi nhỏ. Nói khẽ thôi, hướng vào cách giải quyết và giữ giọng bình thản. Lời góp ý lịch sự gây dựng được sự tin cậy và tinh thần làm việc cùng nhau."
+      },
+      "audio": "c103_03_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "handling-small-conflicts-calmly",
+      "keywords_en": [
+        "conflict",
+        "calm"
+      ],
+      "keywords_vi": [
+        "xung đột",
+        "bình tĩnh"
+      ],
+      "copy": {
+        "en": "When disagreements happen, breathe and slow down. Use soft phrases: I understand your view or Let us find a middle point. Avoid strong words or fast speech. Calm energy reduces tension and opens space for solutions.",
+        "vi": "Khi nảy sinh bất đồng, hãy hít một hơi và chậm lại. Dùng những câu mềm mỏng: Tôi hiểu quan điểm của bạn hoặc Chúng ta hãy tìm một điểm chung. Tránh dùng từ nặng hay nói dồn dập. Một thái độ điềm tĩnh sẽ làm dịu căng thẳng và mở đường cho cách giải quyết."
+      },
+      "audio": "c103_04_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "clear-email-and-message-style",
+      "keywords_en": [
+        "email",
+        "communication"
+      ],
+      "keywords_vi": [
+        "email",
+        "giao tiếp"
+      ],
+      "copy": {
+        "en": "Write emails with clear structure. Start with purpose: I am writing about..., add detail: Here is the update..., then close gently: Let me know if you need more. Clean writing shows professionalism and respect.",
+        "vi": "Hãy viết email theo một bố cục rõ ràng. Mở đầu bằng mục đích: Tôi viết về..., thêm chi tiết: Đây là cập nhật..., rồi khép lại nhẹ nhàng: Hãy cho tôi biết nếu bạn cần thêm. Lối viết gọn gàng cho thấy sự chuyên nghiệp và tôn trọng."
+      },
+      "audio": "c103_05_en.mp3",
+      "tags": []
+    },
+    {
+      "slug": "daily-professional-practice",
+      "keywords_en": [
+        "practice",
+        "professional"
+      ],
+      "keywords_vi": [
+        "luyện tập",
+        "chuyên nghiệp"
+      ],
+      "copy": {
+        "en": "Spend two minutes each day practicing one skill: updates, opinions, feedback, or polite corrections. Small daily practice builds strong workplace English. Consistency is more important than perfection.",
+        "vi": "Mỗi ngày hãy dành hai phút luyện một kỹ năng: báo cáo, nêu ý kiến, góp ý hay sửa lời cho lịch sự. Luyện một chút đều đặn mỗi ngày sẽ xây nên vốn tiếng Anh vững vàng nơi công sở. Kiên trì còn quan trọng hơn cả sự hoàn hảo."
+      },
+      "audio": "c103_06_en.mp3",
+      "tags": []
+    }
+  ],
+  "domain_image": "/images/domains/english.svg"
+}

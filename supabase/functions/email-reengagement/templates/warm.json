@@ -1,0 +1,10 @@
+{
+  "campaign": "reengagement_7d",
+  "bucket": "warm",
+  "tone": "warm, friendly, no urgency",
+  "subject_vi": "Mercy nhớ bạn — bài học mới đang chờ",
+  "subject_en": "Mercy misses you — your next lesson is ready",
+  "body_vi": "Chào bạn,\n\nMercy thấy bạn chưa quay lại MercyBlade khoảng một tuần rồi. Không sao — Mercy chỉ muốn nói rằng phòng học cũ vẫn còn nguyên ở đó, đợi bạn bất cứ lúc nào.\n\nNếu bạn có 10 phút hôm nay, hãy thử một bài học mới nhé. Mercy đã chuẩn bị vài phòng phù hợp với trình độ của bạn.\n\nMở MercyBlade: https://mercyblade.com\n\nMercy 💚",
+  "body_en": "Hi there,\n\nMercy noticed you haven't been back at MercyBlade for about a week. That's totally fine — just wanted to say your room is still here whenever you're ready.\n\nIf you have 10 minutes today, try a new lesson. Mercy lined up a few rooms that match your level.\n\nOpen MercyBlade: https://mercyblade.com\n\nMercy 💚",
+  "notes": "Tone: warm without urgency. No streak language. No shame. The 'Mercy noticed' framing keeps it personal but not surveillance-y."
+}

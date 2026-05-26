@@ -1,0 +1,100 @@
+{
+  "generated_at": "2026-05-25T20:41:37.659Z",
+  "global": {
+    "pass": 65,
+    "total": 65,
+    "rate": 1
+  },
+  "by_family": {
+    "article-omission-overuse": {
+      "pass": 5,
+      "total": 5,
+      "rate": 1
+    },
+    "tense-adverb-flattening": {
+      "pass": 6,
+      "total": 6,
+      "rate": 1
+    },
+    "plural-s-omission": {
+      "pass": 4,
+      "total": 4,
+      "rate": 1
+    },
+    "third-person-s-omission": {
+      "pass": 5,
+      "total": 5,
+      "rate": 1
+    },
+    "copula-be-deletion": {
+      "pass": 5,
+      "total": 5,
+      "rate": 1
+    },
+    "question-inversion-omission": {
+      "pass": 4,
+      "total": 4,
+      "rate": 1
+    },
+    "preposition-selection-transfer": {
+      "pass": 5,
+      "total": 5,
+      "rate": 1
+    },
+    "pronoun-gender-confusion": {
+      "pass": 5,
+      "total": 5,
+      "rate": 1
+    },
+    "count-noncount-confusion": {
+      "pass": 4,
+      "total": 4,
+      "rate": 1
+    },
+    "noun-phrase-word-order": {
+      "pass": 5,
+      "total": 5,
+      "rate": 1
+    },
+    "final-cluster-spelling-loss": {
+      "pass": 3,
+      "total": 3,
+      "rate": 1
+    },
+    "topic-comment-fronting": {
+      "pass": 3,
+      "total": 3,
+      "rate": 1
+    },
+    "co-transfer-overgeneralisation": {
+      "pass": 3,
+      "total": 3,
+      "rate": 1
+    },
+    "modal-verb-inflection": {
+      "pass": 4,
+      "total": 4,
+      "rate": 1
+    },
+    "negation-no-not-placement": {
+      "pass": 4,
+      "total": 4,
+      "rate": 1
+    },
+    "vi_write_register": {
+      "pass": 0,
+      "total": 0,
+      "rate": 0
+    },
+    "vi_write_topic_comment": {
+      "pass": 0,
+      "total": 0,
+      "rate": 0
+    },
+    "vi_write_cohesion_parataxis": {
+      "pass": 0,
+      "total": 0,
+      "rate": 0
+    }
+  }
+}

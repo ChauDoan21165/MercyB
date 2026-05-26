@@ -1,0 +1,62 @@
+// File: src/pages/DeleteAccount.tsx
+
+export default function DeleteAccount() {
+  return (
+    <div style={{ padding: 24, maxWidth: 860, margin: "0 auto", lineHeight: 1.6 }}>
+      <h1>Delete Your Account</h1>
+
+      <p>
+        <strong>Last updated:</strong> March 24, 2026
+      </p>
+
+      <p>
+        If you want to delete your Mercy Blade account and associated data, follow the
+        steps below.
+      </p>
+
+      <h2>Delete from inside the app</h2>
+      <ol>
+        <li>Sign in to your Mercy Blade account.</li>
+        <li>Go to <strong>Account Settings</strong>.</li>
+        <li>Select <strong>Delete Account</strong>.</li>
+        <li>Confirm the deletion request.</li>
+      </ol>
+
+      <h2>Request deletion by email</h2>
+      <p>
+        If you cannot access the app, you can request account deletion by contacting:
+      </p>
+      <p>
+        <strong>admin@mercyblade.com</strong>
+      </p>
+
+      <h2>What will be deleted</h2>
+      <ul>
+        <li>Account information such as your email address and profile details.</li>
+        <li>Learning progress and related app data associated with your account.</li>
+        <li>App-specific preferences and associated user records, where applicable.</li>
+      </ul>
+
+      <h2>What may be retained for a limited time</h2>
+      <ul>
+        <li>Records required for legal compliance.</li>
+        <li>Security, fraud-prevention, and abuse-prevention records.</li>
+        <li>Limited billing or transaction records where retention is required by law.</li>
+      </ul>
+
+      <h2>Processing time</h2>
+      <p>
+        We aim to process account deletion requests within 7 days, unless a longer
+        retention period is required by law or for legitimate security reasons.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        If you have questions about account deletion, contact:
+      </p>
+      <p>
+        <strong>admin@mercyblade.com</strong>
+      </p>
+    </div>
+  );
+}
