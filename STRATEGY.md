@@ -170,12 +170,21 @@ session, organised by what they tick:
   telemetry wiring shipped (PR #1132) — awaits Chau's on-device
   Sentry-dashboard probe. #7 named Vietnamese learner outcome — no
   testimonial on record; marketing/operations track.
-- **§15 Axis 2 Bar #1: in flight via PR #1184**, NOT yet ticked —
-  `englishL1Profile` (EN→VN, claimed 10 grammar families + 84 paired
-  examples per the PR title) remains OPEN on origin. Bar #3 (classifier
-  system explainer + drill) also in flight via PR #1176 (Vietnamese
-  classifier room) — also NOT ticked. Bars #2 (tone production), #4
-  (EN→VN detector rules), #5 (named EN-speaker outcome) all still open.
+- **§15 Axis 2: three bars ticked on `main`.** Bar #1 (EN→VN L1
+  profile) ticked after PR #1184 landed `englishL1Profile` at
+  `src/lib/l1-profiles/en.ts` with 10 grammar families + 84 paired
+  examples. Bar #3 (classifier system explainer + drill) ticked after
+  PR #1176 landed `public/data/learn_vietnamese_classifiers.json` with
+  20 forced-choice items (`cái`, `con`, `chiếc`, `cuốn`, `quả`, `tấm`,
+  `bộ`, `bức`, `ngôi` — including the canonical `con dao` knife
+  exception). Bar #4 (EN→VN detector rules) ticked after PR #1188
+  landed `src/lib/feedback/rule-packs/en-vn/` with 8 detector rules +
+  `evals/en-vn-grammar-cases.json` carrying 24 fixture cases (≥3 per
+  rule). Bar #2 (tone production coaching) escalated to a second
+  design pass — empirical Azure vi-VN test failure on PR #1206 showed
+  the originally-scoped pitch-only approach can't distinguish adjacent
+  tones reliably; Option B in design. Bar #5 (named EN-speaker
+  outcome) remains owner-gated marketing/operations track.
 - **ROADMAP.md updated** with the converged Stage 3 sequence (PR #1177)
   — 3A *"What I'm Weak At"* / Local Weakness Map (read-only,
   local-only, descriptive), 3B Suggested Practice with `(c+)` trigger
@@ -731,15 +740,18 @@ Re-open and tighten if any of the following happen:
 
 ### Status snapshot (date this when ticking checkboxes)
 
-As of 2026-05-25, five Axis 1 checkboxes are ticked: Bar #1 (L1
+As of 2026-05-25, Axis 1: five ticked, two owner-gated. Bar #1 (L1
 grammar coverage, PRs #1163/#1170/#1172/#1164/#1169), Bar #2 (eval
 baseline 65/65, PR #1156), Bar #3 (AI Tutor L1 injection, PR #1131),
 Bar #4 (pronunciation drills, PR #1173), Bar #5 (placement → lesson
-E2E, PR #1143). Two Axis 1 bars remain, both owner-gated: Bar #6
-(native Sentry on-device probe, wired per PR #1132) and Bar #7
-(named Vietnamese learner outcome). Axis 2: zero ticked on main;
-Bars #1, #3, #4 in flight (#1184, #1176, #1188). Five ticked, eight
-open.
+E2E, PR #1143) ticked; Bar #6 (native Sentry on-device probe, wired
+per PR #1132) and Bar #7 (named Vietnamese learner outcome) both
+owner-gated. Axis 2: three ticked, two open. Bar #1 (EN→VN L1
+profile, PR #1184), Bar #3 (classifier room + drill, PR #1176),
+Bar #4 (EN→VN detector rules, PR #1188) ticked; Bar #2 (tone
+production coaching) escalated to Option B second design pass per
+empirical Azure vi-VN test failure on PR #1206; Bar #5 (named
+EN-speaker outcome) owner-gated marketing. Eight ticked, four open.
 
 ---
 
