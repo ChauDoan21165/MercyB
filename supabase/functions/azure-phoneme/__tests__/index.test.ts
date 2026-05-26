@@ -27,11 +27,15 @@ import {
   AZURE_PHONEME_LIMITS,
   clampScore,
   handleRequest,
+  isNoLogContext,
   localeForAccent,
   normaliseAccentInput,
+  normaliseTargetLocale,
   parseWavHeader,
   projectAzureResponse,
   scoreToStatus,
+  SUPPORTED_TARGET_LOCALES,
+  type Accent,
   type AzureResponse,
   type Deps,
   type LogAttemptParams,
@@ -107,6 +111,8 @@ function makeDeps(overrides: Partial<Deps> = {}): Deps {
     azureKey: "test-key",
     azureUrlForAccent: (accent) =>
       `https://test.example.com/azure?language=${accent}`,
+    azureUrlForLocale: (locale) =>
+      `https://test.example.com/azure?language=${locale}`,
     globalDailyCapUsd: 25,
     usdToVnd: 26000,
     azureTimeoutMs: 50,
@@ -857,5 +863,138 @@ describe("accent locale routing", () => {
     const res = await handleRequest(req, deps);
     expect(res.status).toBe(200);
     expect(seenUrls).toEqual(["https://test.example.com/azure?language=uk"]);
+  });
+});
+
+describe("target_locale override (Axis 2 — Vietnamese tone drill)", () => {
+  it("normaliseTargetLocale accepts whitelisted locales, rejects everything else", () => {
+    expect(normaliseTargetLocale("vi-VN")).toBe("vi-VN");
+    expect(normaliseTargetLocale(" vi-VN ")).toBe("vi-VN");
+    expect(normaliseTargetLocale("VI-VN")).toBeNull(); // case-sensitive
+    expect(normaliseTargetLocale("vi-VN-x-Saigon")).toBeNull();
+    expect(normaliseTargetLocale("ja-JP")).toBeNull();
+    expect(normaliseTargetLocale(undefined)).toBeNull();
+    expect(normaliseTargetLocale(null)).toBeNull();
+    expect(normaliseTargetLocale("")).toBeNull();
+  });
+
+  it("SUPPORTED_TARGET_LOCALES is the source of truth for adding directions", () => {
+    expect(SUPPORTED_TARGET_LOCALES).toContain("vi-VN");
+    // Lock the set — a future direction (e.g. ko-KR) requires an
+    // explicit edit + design-doc reference per the comment in core.ts.
+    expect([...SUPPORTED_TARGET_LOCALES].sort()).toEqual(["vi-VN"]);
+  });
+
+  it("when target_locale=vi-VN is sent, the call uses azureUrlForLocale (not azureUrlForAccent)", async () => {
+    const seenUrls: string[] = [];
+    const azureUrlForAccent = vi.fn((accent: Accent) =>
+      `https://test.example.com/azure?language=${accent}`,
+    );
+    const deps = makeDeps({
+      azureUrlForAccent,
+      azureUrlForLocale: (locale) =>
+        `https://test.example.com/azure?language=${locale}`,
+      fetch: vi.fn().mockImplementation((input: string) => {
+        seenUrls.push(input);
+        return Promise.resolve(azureSuccessResponse());
+      }) as unknown as Deps["fetch"],
+    });
+
+    const formData = new FormData();
+    const blob = new Blob([buildSilentWav(2)], { type: "audio/wav" });
+    formData.append("audio", blob, "test.wav");
+    formData.append("target_text", "má");
+    formData.append("roomId", "tone-drill");
+    formData.append("lineId", "ma-sac");
+    formData.append("target_locale", "vi-VN");
+    const req = new Request("https://test.example.com/azure-phoneme", {
+      method: "POST",
+      body: formData,
+      headers: { Authorization: "Bearer test-jwt" },
+    });
+
+    const res = await handleRequest(req, deps);
+    expect(res.status).toBe(200);
+    expect(seenUrls).toEqual(["https://test.example.com/azure?language=vi-VN"]);
+    expect(azureUrlForAccent).not.toHaveBeenCalled();
+  });
+
+  it("when target_locale is unknown ('ja-JP'), the English accent path runs", async () => {
+    const seenUrls: string[] = [];
+    const deps = makeDeps({
+      fetch: vi.fn().mockImplementation((input: string) => {
+        seenUrls.push(input);
+        return Promise.resolve(azureSuccessResponse());
+      }) as unknown as Deps["fetch"],
+    });
+
+    const formData = new FormData();
+    const blob = new Blob([buildSilentWav(2)], { type: "audio/wav" });
+    formData.append("audio", blob, "test.wav");
+    formData.append("target_text", "ohayou gozaimasu");
+    formData.append("target_locale", "ja-JP");
+    const req = new Request("https://test.example.com/azure-phoneme", {
+      method: "POST",
+      body: formData,
+      headers: { Authorization: "Bearer test-jwt" },
+    });
+
+    const res = await handleRequest(req, deps);
+    expect(res.status).toBe(200);
+    // Falls back to azureUrlForAccent with default accent 'us'.
+    expect(seenUrls).toEqual(["https://test.example.com/azure?language=us"]);
+  });
+});
+
+describe("context: tone-drill (Stage-3 local-only posture)", () => {
+  it("isNoLogContext recognises 'tone-drill' only", () => {
+    expect(isNoLogContext("tone-drill")).toBe(true);
+    expect(isNoLogContext(" tone-drill ")).toBe(true);
+    expect(isNoLogContext("Tone-Drill")).toBe(false); // case-sensitive
+    expect(isNoLogContext("speak-tab")).toBe(false);
+    expect(isNoLogContext("")).toBe(false);
+    expect(isNoLogContext(undefined)).toBe(false);
+    expect(isNoLogContext(null)).toBe(false);
+  });
+
+  it("context=tone-drill skips logAttempt but still runs audit + cost telemetry", async () => {
+    const logAttempt = vi.fn().mockResolvedValue(undefined);
+    const audit = vi.fn().mockResolvedValue(undefined);
+    const deps = makeDeps({
+      logAttempt,
+      audit,
+      fetch: vi.fn().mockResolvedValue(azureSuccessResponse()) as unknown as Deps["fetch"],
+    });
+
+    const formData = new FormData();
+    const blob = new Blob([buildSilentWav(2)], { type: "audio/wav" });
+    formData.append("audio", blob, "test.wav");
+    formData.append("target_text", "má");
+    formData.append("target_locale", "vi-VN");
+    formData.append("context", "tone-drill");
+    const req = new Request("https://test.example.com/azure-phoneme", {
+      method: "POST",
+      body: formData,
+      headers: { Authorization: "Bearer test-jwt" },
+    });
+
+    const res = await handleRequest(req, deps);
+    expect(res.status).toBe(200);
+    expect(logAttempt).not.toHaveBeenCalled();
+    // Audit still ran — cost / status telemetry is preserved.
+    expect(audit).toHaveBeenCalled();
+  });
+
+  it("default context (no field set) still logs attempts — backwards-compat", async () => {
+    const logAttempt = vi.fn().mockResolvedValue(undefined);
+    const deps = makeDeps({
+      logAttempt,
+      fetch: vi.fn().mockResolvedValue(azureSuccessResponse()) as unknown as Deps["fetch"],
+    });
+
+    const req = makeRequest(buildSilentWav(2));
+    const res = await handleRequest(req, deps);
+    expect(res.status).toBe(200);
+    expect(logAttempt).toHaveBeenCalledTimes(1);
   });
 });

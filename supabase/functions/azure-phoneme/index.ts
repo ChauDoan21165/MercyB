@@ -52,7 +52,11 @@ const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
 const AZURE_REGION = Deno.env.get("AZURE_SPEECH_REGION") ?? "canadacentral";
 const AZURE_KEY = Deno.env.get("AZURE_SPEECH_KEY") ?? "";
 function buildAzureUrl(accent: Accent): string {
-  return `https://${AZURE_REGION}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=${localeForAccent(accent)}&format=detailed`;
+  return buildAzureUrlForLocale(localeForAccent(accent));
+}
+
+function buildAzureUrlForLocale(locale: string): string {
+  return `https://${AZURE_REGION}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=${locale}&format=detailed`;
 }
 const GLOBAL_DAILY_CAP_USD = Number(
   Deno.env.get("AZURE_SPEECH_DAILY_CAP_USD") || "25",
@@ -273,6 +277,7 @@ const productionDeps: Deps = {
   logAttempt,
   azureKey: AZURE_KEY,
   azureUrlForAccent: buildAzureUrl,
+  azureUrlForLocale: buildAzureUrlForLocale,
   globalDailyCapUsd: GLOBAL_DAILY_CAP_USD,
   usdToVnd: USD_TO_VND,
 };
