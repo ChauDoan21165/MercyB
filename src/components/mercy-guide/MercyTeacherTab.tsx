@@ -13,6 +13,7 @@ import {
   ArrowRight,
   BookmarkPlus,
   Brain,
+  ChevronDown,
   Crown,
   Lightbulb,
   Lock,
@@ -1255,6 +1256,27 @@ export function MercyTeacherTab({
   const [lazyPageItems, setLazyPageItems] = useState<KidsLessonCard[]>([]);
   const [lazyPageItemsLoading, setLazyPageItemsLoading] = useState(false);
 
+  // Owner-approved collapse mechanism for the kids picture grid header
+  // (KidsPageTabBar). Auto-collapses on first tile tap so the grid eats
+  // the recovered space; a sticky chevron bar at the top of the scroll
+  // container re-expands it. State stays local — Speak tab doesn't need
+  // it (brief). Note: MercyTeacherTab unmounts on Teacher→Speak tab
+  // switch (ViKidsEnglishTutor conditional render), so the collapsed
+  // state resets on round-trip — documented behaviour, not a bug.
+  const [isHeaderCollapsed, setIsHeaderCollapsed] = useState<boolean>(false);
+
+  // Wrap the parent-provided onSelectKidsObject so a tile tap also
+  // collapses the header on the FIRST tap. Subsequent taps with the
+  // header already collapsed are no-ops on the collapse axis (the
+  // chevron is the only way back).
+  const handleKidsObjectSelectWithCollapse = useCallback(
+    (key: string) => {
+      onSelectKidsObject?.(key);
+      setIsHeaderCollapsed((prev) => (prev ? prev : true));
+    },
+    [onSelectKidsObject],
+  );
+
   useEffect(() => {
     const pageNumber = parseInt(selectedKidsPage.replace('page', ''), 10);
     if (pageNumber < 14 || pageNumber > 34 || Number.isNaN(pageNumber)) {
@@ -1332,15 +1354,51 @@ export function MercyTeacherTab({
           }}
         >
           <div className="mx-auto w-full max-w-[920px]">
-            <KidsPageTabBar
-              activePage={selectedKidsPage}
-              onSelectPage={handlePageSelect}
-            />
+            {/*
+             * Chevron bar — sticky to the top of the scroll container,
+             * only visible when the header is collapsed. One tap
+             * re-expands the KidsPageTabBar below. No text, no
+             * breadcrumb, no other affordance per owner brief.
+             */}
+            {isHeaderCollapsed && (
+              <div className="sticky top-0 z-10 -mx-2 mb-1 flex justify-center bg-white/95 py-2 backdrop-blur-sm sm:-mx-3">
+                <button
+                  type="button"
+                  onClick={() => setIsHeaderCollapsed(false)}
+                  aria-label="Mở rộng thanh chọn trang"
+                  className="flex h-9 w-16 items-center justify-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-slate-600"
+                >
+                  <ChevronDown className="h-6 w-6" aria-hidden />
+                </button>
+              </div>
+            )}
+
+            {/*
+             * Collapsing header: KidsPageTabBar. Animates max-height
+             * + opacity in parallel; overflow-hidden clips the
+             * page-tab strip cleanly during transition. Tailwind
+             * `max-h-0` / `max-h-[240px]` is the on/off pair — 240px
+             * is roomy enough for the 34-page tab strip wrapping on
+             * mobile (~3 rows × ~64px each).
+             */}
+            <div
+              className={`overflow-hidden transition-all duration-200 ease-out ${
+                isHeaderCollapsed
+                  ? 'pointer-events-none max-h-0 opacity-0'
+                  : 'max-h-[240px] opacity-100'
+              }`}
+              aria-hidden={isHeaderCollapsed}
+            >
+              <KidsPageTabBar
+                activePage={selectedKidsPage}
+                onSelectPage={handlePageSelect}
+              />
+            </div>
 
             <KidsImageGrid
               items={displayablePageItems}
               selectedKey={selectedKidsObjectKey}
-              onSelect={onSelectKidsObject}
+              onSelect={handleKidsObjectSelectWithCollapse}
             />
           </div>
         </div>
