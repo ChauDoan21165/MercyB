@@ -15,10 +15,25 @@
  *        c. mã.mp3 targeted at mã  (matched)   → expected: pass
  *        d. mã.mp3 targeted at má  (mismatched)→ expected: retry
  *   3. Prints the score + bucket for each call.
- *   4. Exits 0 if both matched calls landed in pass (or
- *      low-confidence-pass) AND both mismatched calls landed in retry.
- *      Exits 2 if Azure couldn't empirically distinguish — owner then
- *      reads question 2 and decides whether to escalate.
+ *   4. Tristate exit (PRINCIPLES #7 — "unavailable" is NOT "Azure
+ *      failed"):
+ *        0  VERIFIED PASS  All 4 calls returned a real Azure score
+ *                          AND ordering is correct (matched ≥
+ *                          low-confidence-pass, mismatched = retry).
+ *                          Bar #2 unblocked — Option A confirmed.
+ *        2  VERIFIED FAIL  All 4 calls returned real Azure scores
+ *                          AND ordering is wrong (Azure cannot
+ *                          empirically distinguish má vs mã).
+ *                          Escalate to design §5 Option B (Web Audio
+ *                          local pitch extractor).
+ *        3  INCONCLUSIVE   Any call returned `unavailable`. The
+ *                          request never reached Azure scoring;
+ *                          verification could not be performed.
+ *                          Operator fixes the listed cause(s) and
+ *                          reruns. Do NOT escalate Option B from a
+ *                          3 — that's the dispatch question 2
+ *                          escalation path, and INCONCLUSIVE is not
+ *                          the same signal as VERIFIED FAIL.
  *
  * Usage:
  *   SUPABASE_URL=... \
@@ -34,8 +49,9 @@
  * evidence Chau attaches to the PR before merging.
  */
 
-import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
 
 const SUPABASE_URL = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL ?? "";
 const SUPABASE_JWT = process.env.SUPABASE_USER_JWT ?? "";
@@ -131,39 +147,58 @@ async function callOnce(args: {
   };
 }
 
-async function mp3ToWav16k(mp3: Uint8Array): Promise<Uint8Array> {
-  // Shell out to ffmpeg. The script intentionally has no JS audio
-  // deps — operators run this with ffmpeg installed (`brew install
-  // ffmpeg` or apt). If ffmpeg is missing, surface that early so
-  // the operator sees the real blocker.
+async function runFfmpeg(args: string[]): Promise<void> {
   const { spawn } = await import("node:child_process");
-  return new Promise((resolveBytes, reject) => {
-    const ff = spawn("ffmpeg", [
-      "-hide_banner",
-      "-loglevel", "error",
-      "-i", "pipe:0",
-      "-f", "wav",
-      "-ar", "16000",
-      "-ac", "1",
-      "-c:a", "pcm_s16le",
-      "pipe:1",
-    ]);
-    const chunks: Buffer[] = [];
-    ff.stdout.on("data", (chunk: Buffer) => chunks.push(chunk));
+  return new Promise((resolveFn, reject) => {
+    const ff = spawn("ffmpeg", args);
     ff.stderr.on("data", (chunk: Buffer) =>
       process.stderr.write(`[ffmpeg] ${chunk.toString()}`),
     );
     ff.on("error", reject);
     ff.on("close", (code) => {
       if (code === 0) {
-        resolveBytes(new Uint8Array(Buffer.concat(chunks)));
+        resolveFn();
       } else {
         reject(new Error(`ffmpeg exited with code ${code}`));
       }
     });
-    ff.stdin.write(mp3);
-    ff.stdin.end();
   });
+}
+
+/**
+ * Convert mp3 bytes → WAV PCM 16k mono 16-bit, via ffmpeg with a temp
+ * FILE output (NOT a pipe). With `pipe:1` output, ffmpeg cannot seek
+ * back to patch the RIFF / data chunk size fields after the stream
+ * closes — both end up as 0xFFFFFFFF placeholders. The edge function's
+ * `parseWavHeader` then reads `dataSize = 0xFFFFFFFF`, computes
+ * `durationSeconds = 0xFFFFFFFF / 32000 ≈ 134_217s`, and the
+ * `audio_too_long` cap (60s) returns 413 — Azure is never called.
+ *
+ * Writing to a real file gives ffmpeg a seekable output; it patches
+ * the header correctly on close, and downstream `parseWavHeader`
+ * sees the true dataSize. Tradeoff: tmpdir IO per call. Negligible
+ * for a 4-call operator verification.
+ */
+async function mp3ToWav16k(mp3: Uint8Array): Promise<Uint8Array> {
+  const dir = await mkdtemp(join(tmpdir(), "tone-verify-"));
+  const inPath = join(dir, "in.mp3");
+  const outPath = join(dir, "out.wav");
+  try {
+    await writeFile(inPath, mp3);
+    await runFfmpeg([
+      "-hide_banner",
+      "-loglevel", "error",
+      "-y",
+      "-i", inPath,
+      "-ar", "16000",
+      "-ac", "1",
+      "-c:a", "pcm_s16le",
+      outPath,
+    ]);
+    return new Uint8Array(await readFile(outPath));
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
 }
 
 function reportRow(r: CallResult): string {
@@ -198,17 +233,36 @@ async function main(): Promise<void> {
 
   console.log();
 
+  // Tristate classification per PRINCIPLES #7. The script must NOT
+  // conflate "Azure failed" with "verification could not be performed."
+  // Any `unavailable` outcome → INCONCLUSIVE (exit 3). Only when all
+  // four calls produced a real score do we have grounds to declare
+  // VERIFIED PASS (0) or VERIFIED FAIL (2).
+
+  const inconclusive = calls.filter((c) => c.bucket === "unavailable");
+  if (inconclusive.length > 0) {
+    console.log("[verify-tone-spec] ⚠ INCONCLUSIVE — verification could not be performed.");
+    console.log("[verify-tone-spec] Per PRINCIPLES #7, 'unavailable' is not 'Azure failed.' Fix the listed cause(s) and rerun.");
+    console.log();
+    console.log("[verify-tone-spec] Causes by call:");
+    for (const c of inconclusive) {
+      console.log(`  - ${c.audioFile} as ${c.targetSyllable}: ${c.reason}`);
+    }
+    process.exit(3);
+  }
+
   const passed = (b: Bucket) => b === "pass" || b === "low-confidence-pass";
   const matchedOk = calls.filter((c) => c.matched).every((c) => passed(c.bucket));
   const mismatchedOk = calls.filter((c) => !c.matched).every((c) => c.bucket === "retry");
 
   if (matchedOk && mismatchedOk) {
-    console.log("[verify-tone-spec] ✅ PASS — Azure distinguishes má/mã empirically.");
+    console.log("[verify-tone-spec] ✅ VERIFIED PASS — Azure distinguishes má/mã empirically.");
     console.log("[verify-tone-spec] Bar #2 closure is unblocked. Attach this output to the PR.");
     process.exit(0);
   }
 
-  console.log("[verify-tone-spec] ❌ FAIL — Azure could not empirically distinguish má/mã.");
+  console.log("[verify-tone-spec] ❌ VERIFIED FAIL — Azure produced real scores but ordering is wrong.");
+  console.log("[verify-tone-spec] Azure cannot empirically distinguish má (sắc) from mã (ngã).");
   console.log("[verify-tone-spec] Per dispatch question 2, do NOT ship Option A.");
   console.log("[verify-tone-spec] Escalate to a second design pass for Option B (Web Audio local pitch).");
   process.exit(2);
