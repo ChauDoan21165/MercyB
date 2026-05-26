@@ -250,6 +250,7 @@ export const PUBLIC_ROOM_MANIFEST: Record<string, string> = {
   "kautilya_grand_strategy_vip9_vol1": "data/kautilya_grand_strategy_vip9_vol1.json",
   "kautilya_grand_strategy_vip9_vol2": "data/kautilya_grand_strategy_vip9_vol2.json",
   "kautilya_vip9_vol3": "data/kautilya_vip9_vol3.json",
+  "learn_vietnamese_classifiers": "data/learn_vietnamese_classifiers.json",
   "life_logistics_adulting_skills_vip4_bonus": "data/life_logistics_adulting_skills_vip4_bonus.json",
   "life_systems_and_stability_vip2": "data/life_systems_and_stability_vip2.json",
   "little_scientist_kids_l2": "data/little_scientist_kids_l2.json",
