@@ -106,7 +106,7 @@ export default function CorrectionMode({
             <label className="text-xs font-black uppercase text-slate-500">
               {ui.inputLabel}
             </label>
-            <span className="shrink-0 text-[11px] font-medium text-slate-400">
+            <span className="shrink-0 text-[11px] font-medium text-slate-500">
               {charCount} / 500
             </span>
           </div>
@@ -186,7 +186,7 @@ export default function CorrectionMode({
             <div className="mt-2 text-sm font-black text-slate-600">
               {ui.emptyTitle}
             </div>
-            <div className="mt-1 text-xs font-medium text-slate-400">
+            <div className="mt-1 text-xs font-medium text-slate-500">
               {ui.emptyBody}
             </div>
           </section>
@@ -217,7 +217,7 @@ export default function CorrectionMode({
               {result.correctedText}
             </div>
             {!ttsSupported && (
-              <div className="mt-2 text-[11px] text-slate-400">
+              <div className="mt-2 text-[11px] text-slate-500">
                 🔊 {ui.ttsUnavailable}
               </div>
             )}

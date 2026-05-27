@@ -213,7 +213,7 @@ export default function ConversationMode({
                         {isPreparingVoice ? ui.ttsPreparing : isSpeakingVoice ? ui.ttsStop : ui.ttsPlay}
                       </button>
                     ) : allowTts ? (
-                      <div className="text-[11px] font-medium text-slate-400">{ui.ttsUnavailable}</div>
+                      <div className="text-[11px] font-medium text-slate-500">{ui.ttsUnavailable}</div>
                     ) : null}
                     {allowTts && isActiveVoice && ttsVoiceSource && (
                       <div className={`text-[11px] font-semibold ${ttsVoiceSource === "mercy" ? "text-emerald-700" : "text-amber-700"}`}>

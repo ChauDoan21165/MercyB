@@ -159,7 +159,7 @@ function Header() {
         <div className="mt-1.5 text-[13px] font-semibold leading-snug text-slate-600">
           Based on your placement test — tap any area to see a quick lesson.
         </div>
-        <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-400">
+        <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-500">
           Dựa trên bài đánh giá xếp lớp — chạm vào một mục để xem bài học ngắn.
         </div>
       </div>
@@ -195,7 +195,7 @@ function EmptyCard({ onCta }: { onCta: () => void }) {
           <div className="mt-1.5 text-[13px] font-semibold leading-snug text-slate-600">
             Take the placement test to see where to focus first.
           </div>
-          <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-400">
+          <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-500">
             Làm bài đánh giá xếp lớp để biết nên tập trung vào đâu.
           </div>
         </div>
@@ -222,7 +222,7 @@ function BalancedCard() {
           <div className="mt-1.5 text-[13px] font-semibold leading-snug text-slate-600">
             No weak spots jumped out on your placement. Keep practising.
           </div>
-          <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-400">
+          <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-500">
             Bài đánh giá không phát hiện điểm yếu rõ rệt. Tiếp tục luyện tập nhé.
           </div>
         </div>

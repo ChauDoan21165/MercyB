@@ -244,7 +244,7 @@ function SectionBlock({
     >
       <header className="flex items-center justify-between gap-2">
         <h4 className="text-xs font-semibold uppercase tracking-wide text-amber-700">
-          {labelVi} <span className="text-slate-400">/ {labelEn}</span>
+          {labelVi} <span className="text-slate-500">/ {labelEn}</span>
         </h4>
         <button
           type="button"
@@ -306,7 +306,7 @@ function QuizItem({ index, question }: QuizItemProps): React.ReactElement {
         <ul className="mt-1 space-y-0.5 text-xs text-slate-600">
           {question.options.map((opt, oi) => (
             <li key={oi}>
-              <span className="mr-1 font-mono text-slate-400">
+              <span className="mr-1 font-mono text-slate-500">
                 {String.fromCharCode(65 + oi)}.
               </span>
               {opt}

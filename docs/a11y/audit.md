@@ -183,13 +183,45 @@ Verified hooks in 8+ files. The `haptics.ts`, `motion.ts`, and `animations.ts` u
 
 `#94a3b8` is the single biggest contrast offender. Used in `Pricing.tsx` (8 places), `LocalWeaknessMap.tsx` (2 places), `SuggestedPracticeList.tsx` (1 place), and the `Home.tsx`'s mobile-card subtitle pattern. Most uses are at 11–13px — well into "normal text" territory.
 
-**Status (updated 2026-05-27):** The 11 named locations above (Pricing × 8 hex, Stage-3A × 2, Stage-3B × 1) are now ✅ **shipped** — replaced with `#64748b` (slate-500, 4.78:1 on white). Pinned against regression by `src/components/__tests__/a11y-contrast.test.ts`.
+**Status (updated 2026-05-27):**
 
-**Remaining footprint (out of this MR's scope — follow-up audit + sweep required):**
+**Wave 0 — !68 (P2 + W1, 11 locations):** ✅ shipped — Pricing × 8 hex + Stage-3A × 2 class + Stage-3B × 1 class, all → `#64748b` / `text-slate-500`. Pinned by `src/components/__tests__/a11y-contrast.test.ts`.
 
-A whole-codebase grep finds **~172 additional bare `text-slate-400` usages** and **~80 additional `#94a3b8` hex usages** outside the five audited routes. They span Home, AccountPage, Billing, Progress, AI-Tutor, LessonRenderer, leaderboard cards, gift / family / corporate forms, listening, certificates, several admin / dev surfaces, and the MarketingLandingPage's inline `<style>` block. Some are bare text spans (contrast issue), others are chart fills / `no_data` indicators / canvas `fillStyle` (governed by WCAG 1.4.11 non-text contrast 3:1, not 1.4.3 text 4.5:1).
+**Wave 1 — this MR (Home / Account / AI-Tutor, 14 locations):** ✅ shipped — 14 text-content occurrences across 6 files, all → `text-slate-500` / `#64748b`:
 
-Per C3's audit methodology (route-by-route, per-page WCAG review), these need their own audit pass before being touched — a blanket replace would risk visual regressions in places the original audit hasn't analysed. **Recommended follow-up:** one MR per audited route surface, each appending its file paths to `CONTRAST_FIXED_FILES` in the contrast test as it ships.
+| File | Locations | Form |
+|---|---|---|
+| `src/components/home/FocusAreasCard.tsx` | 3 | Tailwind class |
+| `src/components/home/FocusAreasMicroLessonDialog.tsx` | 2 | Tailwind class |
+| `src/components/ai-tutor/ConversationMode.tsx` | 1 | Tailwind class |
+| `src/components/ai-tutor/CorrectionMode.tsx` | 3 | Tailwind class |
+| `src/components/ai-tutor/TutorMemoryCard.tsx` | 1 | Tailwind class |
+| `src/pages/account/NotificationPreferences.tsx` | 4 | inline `#94a3b8` hex |
+
+**Wave-1 documented exceptions (intentional design, NOT fixed):**
+
+| File:line | Why exempt |
+|---|---|
+| `src/pages/Home.tsx:1125` | Decorative `<ChevronRight aria-hidden="true">` icon. WCAG 1.4.3 applies to text; 1.4.11 (graphical objects 3:1) applies to non-decorative graphics. `aria-hidden` makes this neither — screen readers skip it entirely. |
+| `src/pages/AccountPage.tsx:767, 785, 801, 814` | Decorative `▾` disclosure chevrons, all `aria-hidden`. Same reasoning. |
+| `src/components/home/WeeklyProgressWidget.tsx:53` | `scoreColor()`'s `null` branch — the score number renders at `fontSize: 26` + `fontWeight: 950`. WCAG large-text threshold (≥18pt or ≥14pt bold) is 3:1, not 4.5:1; slate-400 on white = 3.13:1 PASSES. |
+| `src/components/ai-tutor/ConversationMode.tsx:276` | `disabled:text-slate-400` on a disabled CTA. WCAG SC 1.4.3 explicitly exempts inactive UI components. |
+| `src/components/ai-tutor/CorrectionMode.tsx:150` | Same — `disabled:text-slate-400` on a disabled submit button. |
+
+The static guard's regex skips `disabled:` / `dark:` / `hover:` / `focus:` / `group-*:` / `peer-*:` variant prefixes and lines containing `aria-hidden`, so these exceptions don't need a per-line allow-list. The `WeeklyProgressWidget` null-score is in a file outside `CONTRAST_FIXED_FILES`; if/when that file is brought into the guard, a per-line exception entry will be needed.
+
+**Remaining footprint (out of this MR's scope — wave-2+ sweep):**
+
+Whole-codebase grep finds **~158 remaining bare `text-slate-400`** + **~75 remaining `#94a3b8` hex** usages across Billing, Progress, LessonRenderer, leaderboard cards, gift / family / corporate forms, listening, certificates, several admin / dev surfaces, and `MarketingLandingPage`'s inline `<style>` block. Some are bare text spans (real contrast issues), others are chart fills / `no_data` indicators / canvas `fillStyle` (governed by WCAG 1.4.11 non-text 3:1, not 1.4.3 text 4.5:1).
+
+**Recommended next waves** (rough order of VI-learner visibility):
+
+- **Wave 2** — Progress / Billing / Listening (post-onboarding learner surfaces; high VI-text density).
+- **Wave 3** — LessonRenderer + leaderboard cards (in-lesson surfaces).
+- **Wave 4** — Gift / Family / Corporate forms (transactional, lower volume).
+- **Wave 5** — Admin / dev surfaces (internal audience, lowest priority).
+
+Each wave appends its file paths to `CONTRAST_FIXED_FILES` in the contrast test as it ships.
 
 ### Live regions
 
