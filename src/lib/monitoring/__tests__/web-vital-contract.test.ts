@@ -138,4 +138,17 @@ describe("web-vital breadcrumb contract — drift guard", () => {
     const _proof: Metric["name"] extends "FID" ? true : false = false;
     expect(_proof).toBe(false);
   });
+
+  it("the local WebVitalName union no longer includes FID (audit §6 (1) shipped)", async () => {
+    // Compile-time sanity for OUR own enum. Pairs with the upstream
+    // Metric["name"] check above. If FID is ever re-added to
+    // src/config/perfBudget.ts WebVitalName, this assignment stops
+    // compiling — the audit's §6 (1) fix is being undone.
+    const { WEB_VITAL_THRESHOLDS } = await import("@/config/perfBudget");
+    type WebVitalName = import("@/config/perfBudget").WebVitalName;
+    const _proof: WebVitalName extends "FID" ? true : false = false;
+    expect(_proof).toBe(false);
+    // Runtime sanity: the threshold table also has no "FID" key.
+    expect(Object.keys(WEB_VITAL_THRESHOLDS)).not.toContain("FID");
+  });
 });

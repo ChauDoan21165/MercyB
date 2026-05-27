@@ -1,7 +1,7 @@
 // Frontend performance budget.
 //
 // Two flavours of budget here:
-//   - Per-metric thresholds (LCP / FID / CLS / TTFB / FCP / INP) — Google's
+//   - Per-metric thresholds (LCP / CLS / TTFB / FCP / INP) — Google's
 //     Core Web Vitals "good" cut-offs, with a "warning" band before "poor".
 //   - Bundle-size ceilings — total + per-page (per chunk) limits used by
 //     scripts/track-bundle-size.ts as a build-time gate.
@@ -12,7 +12,7 @@
 //   - scripts/track-bundle-size.ts (build-time bundle gate)
 //   - supabase/functions/perf-alert/ (slow-route alert cron)
 
-export type WebVitalName = "LCP" | "FID" | "CLS" | "TTFB" | "FCP" | "INP";
+export type WebVitalName = "LCP" | "CLS" | "TTFB" | "FCP" | "INP";
 
 export type VitalRating = "good" | "needs_improvement" | "poor" | "no_data";
 
@@ -30,7 +30,8 @@ export interface VitalThreshold {
 
 /**
  * Google Core Web Vitals "good" / "needs improvement" cutoffs.
- * Sources: web.dev/vitals + 2024 INP replacing FID guidance.
+ * Sources: web.dev/vitals. INP replaced FID as the official Core Web Vital
+ * for interactivity in March 2024; FID is no longer tracked here.
  */
 export const WEB_VITAL_THRESHOLDS: Record<WebVitalName, VitalThreshold> = {
   LCP: {
@@ -38,13 +39,6 @@ export const WEB_VITAL_THRESHOLDS: Record<WebVitalName, VitalThreshold> = {
     needsImprovement: 4000,
     label: "Largest Contentful Paint",
     labelVi: "Tải nội dung lớn nhất (LCP)",
-    unit: "ms",
-  },
-  FID: {
-    good: 100,
-    needsImprovement: 300,
-    label: "First Input Delay",
-    labelVi: "Độ trễ tương tác đầu tiên (FID)",
     unit: "ms",
   },
   CLS: {
