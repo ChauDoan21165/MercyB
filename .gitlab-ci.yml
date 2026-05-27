@@ -1,0 +1,116 @@
+# .gitlab-ci.yml
+#
+# First GitLab CI config in this repository. The repository was migrated
+# from GitHub to GitLab on 2026-05-26 (see docs/migration/github-to-gitlab.md)
+# and the existing `.github/workflows/*` files are not yet ported. This
+# file intentionally scopes itself to a single concern — nightly external
+# Postgres backups — so it can land without speculating about the rest
+# of the CI migration. Future jobs should append stages/jobs below.
+#
+# Why this job exists:
+#   Supabase's own backups live inside Supabase. If the Supabase account
+#   is ever locked out, those backups are inaccessible. This job takes
+#   an encrypted off-Supabase dump on a schedule so the founder always
+#   holds a key-recoverable copy. See scripts/db-backup/README.md for
+#   the full design.
+
+stages:
+  - backup
+
+# ── Shared defaults ────────────────────────────────────────────────────
+
+# postgres:16-alpine ships pg_dump + pg_restore. We add gpg (gnupg) and
+# rclone via apk so the same image carries the whole pipeline.
+.backup_image: &backup_image
+  image: postgres:16-alpine
+  before_script:
+    - apk add --no-cache --quiet gnupg rclone bash coreutils
+    # Sanity check: the toolchain is present. Never echo env values.
+    - command -v pg_dump
+    - command -v gpg
+    - command -v rclone
+    - command -v bash
+
+# ── Nightly scheduled backup ───────────────────────────────────────────
+#
+# Required CI/CD variables (configure under Settings → CI/CD → Variables,
+# all "protected", "masked" where the value format permits):
+#
+#   SUPABASE_DB_URL     masked     postgres connection string for prod
+#   GPG_RECIPIENT_KEY   file type  armored public key (multi-line file)
+#   RCLONE_CONFIG       file type  contents of ~/.config/rclone/rclone.conf
+#   RCLONE_REMOTE       protected  remote+path, e.g. "b2:mercyb-backups/prod"
+#
+# A "file"-type variable is written to disk by GitLab and exposed as a
+# path — that's why we set GPG_RECIPIENT_KEY_ID="$GPG_RECIPIENT_KEY"
+# below: the script auto-detects the file path and imports the key.
+
+nightly-db-backup:
+  <<: *backup_image
+  stage: backup
+  rules:
+    # Schedule-only. Never runs on merge requests, pushes, or tags.
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+  variables:
+    # Where to drop the encrypted dump inside the job's workspace.
+    BACKUP_OUTPUT_DIR: "$CI_PROJECT_DIR/_backup_out"
+    BACKUP_ENV_LABEL: "prod"
+    # Treat the GitLab "file" variable's path as the recipient. The
+    # dump script detects it's a file and imports the public key.
+    GPG_RECIPIENT_KEY_ID: "$GPG_RECIPIENT_KEY"
+  script:
+    - mkdir -p "$BACKUP_OUTPUT_DIR"
+    # Make rclone use the project's RCLONE_CONFIG file variable.
+    - export RCLONE_CONFIG="$RCLONE_CONFIG"
+    # Take the dump. The script prints exactly one line to stdout on
+    # success: `OK <path> <bytes>`. Anything else is failure.
+    - SUMMARY="$(bash scripts/db-backup/nightly-dump.sh)"
+    - echo "$SUMMARY"
+    # Extract the path from the OK summary line for the upload step.
+    - DUMP_PATH="$(printf '%s' "$SUMMARY" | awk '{print $2}')"
+    # Upload — rclone handles B2/S3/R2 uniformly. Use --immutable so the
+    # remote rejects accidental overwrites of an existing dump with the
+    # same name (defense-in-depth against a clock issue producing
+    # colliding filenames).
+    - rclone copy --immutable "$DUMP_PATH" "$RCLONE_REMOTE"
+    - echo "Uploaded $DUMP_PATH to $RCLONE_REMOTE"
+  artifacts:
+    # Keep the encrypted dump as a job artifact for 7 days as a
+    # secondary safety net (object-store upload is primary). It's
+    # encrypted, so artifact visibility doesn't expose data.
+    when: on_success
+    expire_in: 7 days
+    paths:
+      - _backup_out/*.dump.gpg
+
+# ── Manual "test the pipeline" job ─────────────────────────────────────
+#
+# Lets Chau trigger a one-off backup from the GitLab UI to validate the
+# full pipeline without waiting for the schedule. It uses the same
+# script and the same CI/CD variables as the scheduled job, so a green
+# manual run means the schedule will also work.
+
+nightly-db-backup-now:
+  <<: *backup_image
+  stage: backup
+  rules:
+    # Web (UI-triggered) pipelines only, AND manual gate.
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: manual
+  variables:
+    BACKUP_OUTPUT_DIR: "$CI_PROJECT_DIR/_backup_out"
+    BACKUP_ENV_LABEL: "prod"
+    GPG_RECIPIENT_KEY_ID: "$GPG_RECIPIENT_KEY"
+  script:
+    - mkdir -p "$BACKUP_OUTPUT_DIR"
+    - export RCLONE_CONFIG="$RCLONE_CONFIG"
+    - SUMMARY="$(bash scripts/db-backup/nightly-dump.sh)"
+    - echo "$SUMMARY"
+    - DUMP_PATH="$(printf '%s' "$SUMMARY" | awk '{print $2}')"
+    - rclone copy --immutable "$DUMP_PATH" "$RCLONE_REMOTE"
+    - echo "Uploaded $DUMP_PATH to $RCLONE_REMOTE (manual run)"
+  artifacts:
+    when: on_success
+    expire_in: 7 days
+    paths:
+      - _backup_out/*.dump.gpg
