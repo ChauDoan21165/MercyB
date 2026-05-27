@@ -21,15 +21,26 @@ const REPO_ROOT = join(__dirname, "..", "..", "..");
 describe("WeakAt page (/weak-at)", () => {
   it("renders the LocalWeaknessMap component", () => {
     render(<WeakAt />);
-    // The shipped LocalWeaknessMap (or its current stub) carries a
-    // test-id so the wiring is provable without depending on the
-    // component's internal copy. C3's real component must preserve
-    // this testid OR be rendered as the only child of <main>.
     const inMain = screen.getByRole("main");
     expect(inMain).toBeTruthy();
-    // Stub assertion: the testid exists on the placeholder component
-    // shipped alongside this PR until C3 lands the real one.
-    expect(screen.queryByTestId("local-weakness-map-stub")).toBeTruthy();
+    // The shipped LocalWeaknessMap renders one of two top-level testids
+    // depending on whether the local snapshot is empty (see
+    // src/components/stage-3a/LocalWeaknessMap.tsx). Either is wiring-
+    // proof; jsdom's empty localStorage will pick the empty state.
+    const populated = screen.queryByTestId("local-weakness-map");
+    const empty = screen.queryByTestId("local-weakness-empty");
+    const loading = screen.queryByTestId("local-weakness-loading");
+    expect(populated || empty || loading).toBeTruthy();
+  });
+
+  it("renders the SuggestedPracticeList below the weakness map", () => {
+    render(<WeakAt />);
+    // Same posture as the LocalWeaknessMap assertion — either the
+    // populated list or its empty state proves the wiring.
+    const list = screen.queryByTestId("suggested-practice-list");
+    const empty = screen.queryByTestId("suggested-practice-empty");
+    const loading = screen.queryByTestId("suggested-practice-loading");
+    expect(list || empty || loading).toBeTruthy();
   });
 
   it("renders bilingual title — VI primary, EN secondary", () => {
