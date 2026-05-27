@@ -14,6 +14,11 @@ export {
 } from "./zh.js";
 
 export {
+  englishL1Profile,
+  default as defaultEnglishL1Profile,
+} from "./en.js";
+
+export {
   vietnameseL1Profile,
   default as defaultVietnameseL1Profile,
   type CEFR,
