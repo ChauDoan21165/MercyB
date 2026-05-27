@@ -413,12 +413,44 @@ regexes are EN-substring-anchored and still match the new bilingual
 strings). `npm run typecheck:ci` + ESLint + vitest 100/100 across
 the mercy-guide subtree + 41/41 across the streak subtree pass.
 
-**Files still pending Phase-2 audit:** `LoginPage.tsx`, `Tiers.tsx`,
-the rest of `mercy-guide/` (chiefly `MercyTeacherTab.tsx` —
-1,734 lines, second-highest VI density in the directory), the
-`onboarding/` + `feedback/` + `billing/` + `account/` component
-directories, plus the lower-priority Tier-3 files listed in the
-table above.
+**Revisions shipped (Phase-2 #4):** the non-optional revision
+candidates from the batch-2 audit (`docs/bilingual-audit-batch-2`
+branch — `LoginPage.tsx`, `Tiers.tsx`, `MercyEnglishTab.tsx`)
+landed as source-string changes. Tiers.tsx had 7/7 OK and contributed
+no revisions. LoginPage.tsx and MercyEnglishTab.tsx revisions
+broken out:
+
+| Site | Before | After | Notes |
+|---|---|---|---|
+| `LoginPage.tsx:287` | `✅ You've been signed out.` (EN-only) | `✅ Bạn đã đăng xuất.\n✅ You've been signed out.` (bilingual) | mirror the `${vi}\n${en}` shape `mapAuthRedirectError` already uses on the error path |
+| `LoginPage.tsx:292` | `✅ Account created. You can sign in now.` (EN-only) | `✅ Đã tạo tài khoản. Bạn có thể đăng nhập ngay.\n✅ Account created. You can sign in now.` (bilingual) | same shape |
+| `LoginPage.tsx:298` | `✅ Password updated. You can sign in now.` (EN-only) | `✅ Đã cập nhật mật khẩu. Bạn có thể đăng nhập ngay.\n✅ Password updated. You can sign in now.` (bilingual) | same shape |
+| `MercyEnglishTab.tsx:59` | `Mở một room để học từ vựng và câu mẫu từ chính nội dung đó.` | `Mở một phòng học để học từ vựng và câu mẫu từ chính nội dung đó.` | replaces untranslated `room` with `phòng học`; aligns with `phòng này` already used at line 163 |
+
+4 source-line edits across 2 files; no test changes (no existing
+test matches the changed strings). `npm run typecheck:ci` + ESLint +
+vitest pass.
+
+The five "(optional)" candidates flagged in the batch-2 audits
+(LoginPage.tsx:470 drop-agent subtitle, LoginPage.tsx:592
+`Vui lòng đợi…` → `Đang xử lý…`, Tiers.tsx:189 fallback-label
+ordering flip, MercyEnglishTab.tsx:215 EN-first → VI-first) stay
+deferred — they are stylistic improvements, not defects, and the
+audit doc records the alternative wording for a future author.
+
+The four "(optional)" candidates leftover from the batch-1 audits
+(MercySpeakTab.tsx:1159 tighter VI, MercySpeakTab.tsx:1646 bilingual
+affordance, AccountPage.tsx:885 mirror EN `reset`, AiTutor.tsx:931
+tighter EN-VI pair) stay deferred for the same reason.
+
+**Files still pending Phase-2 audit:** the rest of `mercy-guide/`
+(chiefly `MercyTeacherTab.tsx` — 1,734 lines, kids-mode-coupled and
+in CC2's lane), the `onboarding/` + `feedback/` + `billing/` +
+`account/` component directories, plus the lower-priority Tier-3
+files listed in the table above. The consumer pricing surface
+`src/screens/Pricing.tsx` should take the §255 priority slot
+originally assigned to `src/pages/Tiers.tsx` (per the batch-2
+re-categorization finding).
 
 **Cross-cutting findings worth promoting before further Phase-2
 work:**
