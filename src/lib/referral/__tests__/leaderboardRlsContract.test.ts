@@ -32,6 +32,20 @@ const SQL_PATH = resolve(
 
 const SQL = readFileSync(SQL_PATH, "utf8");
 
+const SAFE_SQL_PATH = resolve(
+  __dirname,
+  "../../../../supabase/migrations/20260629000000_safe_referral_leaderboard_projection.sql",
+);
+
+const SAFE_SQL = readFileSync(SAFE_SQL_PATH, "utf8");
+
+const PHASE2_RUNBOOK_PATH = resolve(
+  __dirname,
+  "../../../../docs/security/referral-leaderboard-auth-users-exposed-phase2.md",
+);
+
+const PHASE2_RUNBOOK = readFileSync(PHASE2_RUNBOOK_PATH, "utf8");
+
 describe("referral_leaderboard_optin migration", () => {
   it("creates the opt-in table", () => {
     expect(SQL).toMatch(
@@ -133,6 +147,83 @@ describe("public read grants", () => {
     );
     expect(SQL).toMatch(
       /GRANT SELECT ON public\.all_time_referral_leaderboard TO anon, authenticated/,
+    );
+  });
+});
+
+describe("safe referral leaderboard projections", () => {
+  it("creates public physical tables, not public views", () => {
+    expect(SAFE_SQL).toMatch(
+      /CREATE TABLE IF NOT EXISTS public\.referral_leaderboard_monthly_public/,
+    );
+    expect(SAFE_SQL).toMatch(
+      /CREATE TABLE IF NOT EXISTS public\.referral_leaderboard_all_time_public/,
+    );
+    expect(SAFE_SQL).not.toMatch(
+      /CREATE (?:MATERIALIZED )?VIEW public\.referral_leaderboard_monthly_public/,
+    );
+    expect(SAFE_SQL).not.toMatch(
+      /CREATE (?:MATERIALIZED )?VIEW public\.referral_leaderboard_all_time_public/,
+    );
+  });
+
+  it("excludes raw auth identifiers and PII from public projection columns", () => {
+    const monthlyPublicBlock =
+      SAFE_SQL.split("CREATE TABLE IF NOT EXISTS public.referral_leaderboard_monthly_public")[1]
+        ?.split(");")[0] ?? "";
+    const allTimePublicBlock =
+      SAFE_SQL.split("CREATE TABLE IF NOT EXISTS public.referral_leaderboard_all_time_public")[1]
+        ?.split(");")[0] ?? "";
+    const publicBlocks = `${monthlyPublicBlock}\n${allTimePublicBlock}`;
+
+    expect(publicBlocks).toMatch(/rank\s+integer/);
+    expect(publicBlocks).toMatch(/display_name\s+text/);
+    expect(publicBlocks).not.toMatch(/\buser_id\b/);
+    expect(publicBlocks).not.toMatch(/\bemail\b/);
+    expect(publicBlocks).not.toMatch(/\bphone\b/);
+    expect(publicBlocks).not.toMatch(/\braw_/);
+    expect(publicBlocks).not.toMatch(/\bprovider\b/);
+    expect(publicBlocks).not.toMatch(/\bmetadata\b/);
+  });
+
+  it("does not reference auth.users in public projection table DDL", () => {
+    const publicDdlWithComments =
+      SAFE_SQL.split("CREATE TABLE IF NOT EXISTS public.referral_leaderboard_monthly_public")[1]
+        ?.split("CREATE OR REPLACE FUNCTION public.refresh_safe_referral_leaderboard_projections")[0] ?? "";
+    const publicDdl = publicDdlWithComments.replace(
+      /COMMENT ON TABLE public\.referral_leaderboard_(?:monthly|all_time)_public IS\s+'[^']*';/g,
+      "",
+    );
+    expect(publicDdl).not.toMatch(/auth\.users/);
+  });
+
+  it("keeps refresh and private candidate access off browser roles", () => {
+    expect(SAFE_SQL).toMatch(
+      /REVOKE ALL ON FUNCTION public\.refresh_safe_referral_leaderboard_projections\(\)\s+FROM PUBLIC, anon, authenticated/,
+    );
+    expect(SAFE_SQL).toMatch(
+      /GRANT EXECUTE ON FUNCTION public\.refresh_safe_referral_leaderboard_projections\(\)\s+TO service_role/,
+    );
+    expect(SAFE_SQL).toMatch(
+      /REVOKE ALL ON FUNCTION public\.get_referral_recognition_candidates\(date, integer\)\s+FROM PUBLIC, anon, authenticated/,
+    );
+    expect(SAFE_SQL).toMatch(
+      /GRANT EXECUTE ON FUNCTION public\.get_referral_recognition_candidates\(date, integer\)\s+TO service_role/,
+    );
+  });
+
+  it("schedules the safe projection refresh without touching legacy grants", () => {
+    expect(SAFE_SQL).toMatch(/refresh-safe-referral-leaderboards-daily/);
+    expect(SAFE_SQL).toMatch(
+      /SELECT public\.refresh_safe_referral_leaderboard_projections\(\);/,
+    );
+  });
+});
+
+describe("referral leaderboard Phase 2 runbook", () => {
+  it("unschedules the legacy refresh cron before legacy objects are dropped", () => {
+    expect(PHASE2_RUNBOOK).toContain(
+      "select cron.unschedule('refresh-referral-leaderboards-daily');",
     );
   });
 });

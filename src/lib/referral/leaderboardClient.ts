@@ -1,13 +1,13 @@
 // src/lib/referral/leaderboardClient.ts
 //
-// Read-side client for the public monthly + all-time referral leaderboards.
-// These materialized views already filter on opt-in (status='active'),
-// so any row returned is publicly opted-in by definition.
+// Read-side client for the safe public monthly + all-time referral
+// leaderboard projections. These physical tables intentionally omit raw
+// auth/profile user IDs.
 
 import { supabase } from "@/lib/supabaseClient";
 
 export type MonthlyLeaderboardRow = {
-  user_id: string;
+  rank: number;
   display_name: string;
   total_referrals_this_month: number;
   successful_conversions: number;
@@ -15,7 +15,7 @@ export type MonthlyLeaderboardRow = {
 };
 
 export type AllTimeLeaderboardRow = {
-  user_id: string;
+  rank: number;
   display_name: string;
   total_referrals: number;
   total_premium_conversions: number;
@@ -57,27 +57,21 @@ export async function getMonthlyTop(
   limit = 100,
 ): Promise<MonthlyLeaderboardRow[]> {
   const result = (await (supabase
-    .from("monthly_referral_leaderboard") as unknown as {
+    .from("referral_leaderboard_monthly_public") as unknown as {
       select: (cols: string) => {
         eq: (col: string, val: string) => {
           order: (
             col: string,
             opts: { ascending: boolean },
-          ) => {
-            order: (
-              col: string,
-              opts: { ascending: boolean },
-            ) => { limit: (n: number) => Promise<MonthlyResp> };
-          };
+          ) => { limit: (n: number) => Promise<MonthlyResp> };
         };
       };
     })
     .select(
-      "user_id, display_name, total_referrals_this_month, successful_conversions, month_starts_on",
+      "rank, display_name, total_referrals_this_month, successful_conversions, month_starts_on",
     )
     .eq("month_starts_on", monthStart)
-    .order("successful_conversions", { ascending: false })
-    .order("total_referrals_this_month", { ascending: false })
+    .order("rank", { ascending: true })
     .limit(Math.max(1, Math.min(500, Math.round(limit))))) as MonthlyResp;
 
   if (result.error || !Array.isArray(result.data)) return [];
@@ -88,40 +82,20 @@ export async function getAllTimeTop(
   limit = 100,
 ): Promise<AllTimeLeaderboardRow[]> {
   const result = (await (supabase
-    .from("all_time_referral_leaderboard") as unknown as {
+    .from("referral_leaderboard_all_time_public") as unknown as {
       select: (cols: string) => {
         order: (
           col: string,
           opts: { ascending: boolean },
-        ) => {
-          order: (
-            col: string,
-            opts: { ascending: boolean },
-          ) => { limit: (n: number) => Promise<AllTimeResp> };
-        };
+        ) => { limit: (n: number) => Promise<AllTimeResp> };
       };
     })
     .select(
-      "user_id, display_name, total_referrals, total_premium_conversions, first_referral_date",
+      "rank, display_name, total_referrals, total_premium_conversions, first_referral_date",
     )
-    .order("total_premium_conversions", { ascending: false })
-    .order("total_referrals", { ascending: false })
+    .order("rank", { ascending: true })
     .limit(Math.max(1, Math.min(500, Math.round(limit))))) as AllTimeResp;
 
   if (result.error || !Array.isArray(result.data)) return [];
   return result.data;
-}
-
-/**
- * Compute the caller's monthly rank (1-indexed) by scanning the
- * top-500 result. Returns null if the caller isn't visible in the
- * top slice — keeps the client side simple; an exact rank for users
- * outside the top 500 is rare and noisy.
- */
-export function findRank(
-  rows: { user_id: string }[],
-  userId: string,
-): number | null {
-  const idx = rows.findIndex((r) => r.user_id === userId);
-  return idx >= 0 ? idx + 1 : null;
 }

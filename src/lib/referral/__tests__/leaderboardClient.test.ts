@@ -2,21 +2,28 @@
 //
 // Date-helper tests for the read-side leaderboard client.
 
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi, beforeEach } from "vitest";
 
 // The module under test imports the supabase singleton at module-load.
 // In a node test environment without env vars, that crashes — so stub
 // the client first.
+const fromMock = vi.hoisted(() => vi.fn());
+
 vi.mock("@/lib/supabaseClient", () => ({
-  supabase: { from: vi.fn() },
+  supabase: { from: fromMock },
 }));
 
 import {
+  getAllTimeTop,
+  getMonthlyTop,
   monthStartIso,
   lastMonthStartIso,
   monthBucket,
-  findRank,
 } from "../leaderboardClient";
+
+beforeEach(() => {
+  fromMock.mockReset();
+});
 
 describe("monthStartIso", () => {
   it("returns YYYY-MM-01 for a mid-month date", () => {
@@ -49,22 +56,59 @@ describe("monthBucket", () => {
   });
 });
 
-describe("findRank", () => {
-  it("returns 1-indexed rank when found", () => {
-    const rows = [
-      { user_id: "a" },
-      { user_id: "b" },
-      { user_id: "c" },
-    ];
-    expect(findRank(rows, "a")).toBe(1);
-    expect(findRank(rows, "c")).toBe(3);
+describe("safe public projection reads", () => {
+  it("reads monthly rows from the safe physical projection without user_id", async () => {
+    const limitMock = vi.fn().mockResolvedValue({
+      data: [
+        {
+          rank: 1,
+          display_name: "Chau",
+          total_referrals_this_month: 3,
+          successful_conversions: 2,
+          month_starts_on: "2026-05-01",
+        },
+      ],
+      error: null,
+    });
+    const orderMock = vi.fn(() => ({ limit: limitMock }));
+    const eqMock = vi.fn(() => ({ order: orderMock }));
+    const selectMock = vi.fn(() => ({ eq: eqMock }));
+    fromMock.mockReturnValue({ select: selectMock });
+
+    const rows = await getMonthlyTop("2026-05-01", 100);
+
+    expect(fromMock).toHaveBeenCalledWith("referral_leaderboard_monthly_public");
+    expect(selectMock).toHaveBeenCalledWith(
+      "rank, display_name, total_referrals_this_month, successful_conversions, month_starts_on",
+    );
+    expect(orderMock).toHaveBeenCalledWith("rank", { ascending: true });
+    expect(rows[0]).not.toHaveProperty("user_id");
   });
 
-  it("returns null when the user isn't in the list", () => {
-    expect(findRank([{ user_id: "a" }], "missing")).toBeNull();
-  });
+  it("reads all-time rows from the safe physical projection without user_id", async () => {
+    const limitMock = vi.fn().mockResolvedValue({
+      data: [
+        {
+          rank: 1,
+          display_name: "Chau",
+          total_referrals: 9,
+          total_premium_conversions: 4,
+          first_referral_date: "2026-05-01T00:00:00Z",
+        },
+      ],
+      error: null,
+    });
+    const orderMock = vi.fn(() => ({ limit: limitMock }));
+    const selectMock = vi.fn(() => ({ order: orderMock }));
+    fromMock.mockReturnValue({ select: selectMock });
 
-  it("returns null on empty input", () => {
-    expect(findRank([], "x")).toBeNull();
+    const rows = await getAllTimeTop(100);
+
+    expect(fromMock).toHaveBeenCalledWith("referral_leaderboard_all_time_public");
+    expect(selectMock).toHaveBeenCalledWith(
+      "rank, display_name, total_referrals, total_premium_conversions, first_referral_date",
+    );
+    expect(orderMock).toHaveBeenCalledWith("rank", { ascending: true });
+    expect(rows[0]).not.toHaveProperty("user_id");
   });
 });

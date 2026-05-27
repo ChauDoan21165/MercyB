@@ -1,19 +1,17 @@
 // src/pages/leaderboards/MonthlyReferralLeaderboard.tsx — /leaderboard/referral
 //
 // Public monthly referral leaderboard. Anon-viewable. Tabs: this month
-// / last month / all time. Top 100 entries with the caller's row
-// highlighted (indigo ring). Mobile-first; bilingual VI primary.
+// / last month / all time. Mobile-first; bilingual VI primary.
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Trophy, Medal } from "lucide-react";
+import { Trophy } from "lucide-react";
 import { useAuth } from "@/providers/AuthProvider";
 import {
   getMonthlyTop,
   getAllTimeTop,
   monthStartIso,
   lastMonthStartIso,
-  findRank,
   type MonthlyLeaderboardRow,
   type AllTimeLeaderboardRow,
   type Period,
@@ -69,12 +67,6 @@ export default function MonthlyReferralLeaderboard() {
     };
   }, [user?.id]);
 
-  const myUserId = user?.id;
-  const myRank = useMemo(
-    () => (rows && myUserId ? findRank(rows, myUserId) : null),
-    [rows, myUserId],
-  );
-
   const isLoading = rows === null;
 
   return (
@@ -117,13 +109,6 @@ export default function MonthlyReferralLeaderboard() {
           </h2>
         </div>
 
-        {user && optedIn && myRank !== null && (
-          <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-700">
-            <Medal className="h-3.5 w-3.5" />
-            {REFERRAL_LB_COPY.yourRank(myRank).vi}
-          </p>
-        )}
-
         {user && !optedIn && (
           <p className="mt-3 text-xs text-amber-700">
             {REFERRAL_LB_COPY.notOnBoard.vi}{" "}
@@ -158,34 +143,24 @@ export default function MonthlyReferralLeaderboard() {
         </p>
       ) : (
         <ol className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-          {rows.map((row, idx) => {
-            const rank = idx + 1;
-            const isMe = row.user_id === myUserId;
+          {rows.map((row) => {
             return (
               <li
-                key={row.user_id}
-                className={
-                  "flex items-center gap-3 border-b border-slate-100 px-4 py-2.5 last:border-b-0 " +
-                  (isMe ? "bg-indigo-50 ring-2 ring-indigo-300 font-medium" : "")
-                }
+                key={`${row._kind}-${row.rank}-${row.display_name}`}
+                className="flex items-center gap-3 border-b border-slate-100 px-4 py-2.5 last:border-b-0"
               >
                 <span
                   className={
                     "w-8 shrink-0 text-right text-xs font-mono " +
-                    (rank <= 3
+                    (row.rank <= 3
                       ? "text-amber-600 font-bold"
                       : "text-slate-400")
                   }
                 >
-                  #{rank}
+                  #{row.rank}
                 </span>
                 <span className="flex-1 truncate text-sm text-slate-800">
                   {row.display_name}
-                  {isMe && (
-                    <span className="ml-1.5 text-[10px] uppercase tracking-wide text-indigo-600">
-                      {REFERRAL_LB_COPY.yourRow.vi}
-                    </span>
-                  )}
                 </span>
                 <span className="w-16 text-right text-sm tabular-nums text-slate-700">
                   {row._kind === "monthly"
