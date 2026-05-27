@@ -47,6 +47,7 @@ type Plan = {
   cta: string;
   accent: PlanAccent;
   bullets?: string[];
+  bulletsVi?: string[];
   savingsBadge?: string;
 };
 
@@ -206,6 +207,11 @@ export default function Pricing() {
         "Good for first-time visitors",
         "No billing required",
       ],
+      bulletsVi: [
+        "Khám phá trước khi nâng cấp",
+        "Phù hợp cho người mới ghé thăm",
+        "Không cần thẻ thanh toán",
+      ],
     },
     {
       key: "month",
@@ -224,6 +230,11 @@ export default function Pricing() {
         "Good for trying the full experience",
         "Flexible monthly billing",
       ],
+      bulletsVi: [
+        "Mở khóa mọi phòng premium",
+        "Phù hợp cho người muốn thử trọn vẹn",
+        "Thanh toán linh hoạt hàng tháng",
+      ],
     },
     {
       key: "year",
@@ -241,6 +252,11 @@ export default function Pricing() {
         "Best long-term value",
         "Full premium access all year",
         "Less billing friction",
+      ],
+      bulletsVi: [
+        "Giá trị dài hạn tốt nhất",
+        "Trọn quyền premium cả năm",
+        "Ít gián đoạn thanh toán hơn",
       ],
       // Replaced the legacy "Save 17%" string with the SavingsBadge
       // component (rendered in the card body below). This field is
@@ -526,6 +542,23 @@ export default function Pricing() {
       fontWeight: 600,
     };
 
+    // Vietnamese bullet companion — pairs with the `bulletsVi?: string[]`
+    // field on `Plan`. Tolerates missing / shorter VI arrays gracefully —
+    // falls back to EN-only render if the VI string at the same index is
+    // absent. Color is slate-500 (#64748b, 4.78:1 contrast on white) per
+    // the !64 a11y-contrast audit; do NOT switch to slate-400 even though
+    // sibling muted styles still use it — the audit test forbids the
+    // failing slate-400 hex in audit-fixed files (which this file is,
+    // post-!58 batch-2 alignment).
+    const bulletViStyle: React.CSSProperties = {
+      display: "block",
+      fontSize: 12,
+      fontWeight: 400,
+      color: "#64748b",
+      marginTop: 2,
+      lineHeight: 1.5,
+    };
+
     const actionStyle: React.CSSProperties = {
       marginTop: "auto",
       display: "inline-flex",
@@ -564,7 +597,14 @@ export default function Pricing() {
           </div>
           {plan.bullets?.length ? (
             <ul style={bulletListStyle}>
-              {plan.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+              {plan.bullets.map((bullet, i) => (
+                <li key={bullet}>
+                  {bullet}
+                  {plan.bulletsVi?.[i] ? (
+                    <span style={bulletViStyle}>{plan.bulletsVi[i]}</span>
+                  ) : null}
+                </li>
+              ))}
             </ul>
           ) : null}
           <button type="button" style={actionStyle} onClick={() => navigate("/rooms")}>
@@ -903,8 +943,8 @@ export default function Pricing() {
           Gói đăng ký tự động gia hạn. Gói sẽ tự động gia hạn vào cuối mỗi kỳ thanh toán với mức giá niêm yết trừ khi bạn hủy ít nhất 24 giờ trước ngày gia hạn. Bạn có thể quản lý hoặc hủy bất cứ lúc nào.
         </p>
         <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-          <a href="/terms"   target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}>Terms of Use (EULA) / Điều khoản sử dụng</a>
-          <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}>Privacy Policy / Chính sách bảo mật</a>
+          <a href="/terms"   target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}>Điều khoản sử dụng / Terms of Use (EULA)</a>
+          <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}>Chính sách quyền riêng tư / Privacy Policy</a>
         </div>
       </div>
     </main>
