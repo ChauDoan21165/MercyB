@@ -62,7 +62,7 @@ export function selectSuggestedPractice(
       sourceTag: topL1.tag,
       viLabel: desc.shortVi,
       enLabel: desc.shortEn,
-      rationale: `Mẫu này đã xuất hiện ${topL1.count} lần gần đây.`,
+      rationale: `Bạn đã gặp mẫu này ${topL1.count} lần gần đây.`,
     });
   }
 
@@ -75,7 +75,7 @@ export function selectSuggestedPractice(
       sourceTag: topPlacement.tag,
       viLabel: desc.shortVi,
       enLabel: desc.shortEn,
-      rationale: "Ghi nhận từ bài kiểm tra trình độ.",
+      rationale: "Từ bài kiểm tra trình độ của bạn.",
     });
   }
 
@@ -89,7 +89,7 @@ export function selectSuggestedPractice(
       sourceTag: topPron.axis,
       viLabel: desc.shortVi,
       enLabel: desc.shortEn,
-      rationale: `Tỉ lệ chưa đúng ${errorPct}% qua ${topPron.samples} lần luyện.`,
+      rationale: `Khoảng ${errorPct}% chưa chính xác trong ${topPron.samples} lần luyện gần đây.`,
     });
   }
 
