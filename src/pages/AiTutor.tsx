@@ -37,6 +37,7 @@ import {
   type TutorProductMode,
 } from "@/lib/tutor/productConfigs";
 import { isPlacementEntryRouteAvailable } from "@/lib/placement/availability";
+import { reportRouteMountPerf } from "@/lib/monitoring/routePerf";
 import {
   AI_CORRECTION_REQUIRED_MESSAGE,
   correctWithTutorRules,
@@ -385,6 +386,14 @@ function TodayLessonLoopPanel({
 }
 
 export default function AiTutorPage() {
+  // Route mount-perf observer. Captured first so the elapsed time
+  // covers the full hook prologue + render. Breadcrumb-only via
+  // reportRouteMountPerf; zero behavior change.
+  const routeMountStartRef = useRef<number>(performance.now());
+  useEffect(() => {
+    reportRouteMountPerf("ai_tutor", performance.now() - routeMountStartRef.current);
+  }, []);
+
   const shellRef = useRef<HTMLElement | null>(null);
   const resumedLessonEventRef = useRef<string | null>(null);
   const nextFocusViewedEventRef = useRef<string | null>(null);

@@ -28,6 +28,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { useNavigate, useParams, useSearchParams, Link } from "react-router-dom";
 
 import { useAuth } from "@/providers/AuthProvider";
+import { reportRouteMountPerf } from "@/lib/monitoring/routePerf";
 import { SpeechDrill, type SpeechAttemptEvent } from "@/components/speech/SpeechDrill";
 import { recordSpeechAttempt } from "@/services/speechAttempts";
 import {
@@ -57,6 +58,17 @@ import {
 const FIRST_VISIT_KEY_PREFIX = "mercy.drill.firstVisit.v1.";
 
 export default function PhonemeDrillPage() {
+  // Route mount-perf observer. Captured first so the elapsed time
+  // covers the full hook prologue + render. Breadcrumb-only via
+  // reportRouteMountPerf; zero behavior change.
+  const routeMountStartRef = useRef<number>(performance.now());
+  useEffect(() => {
+    reportRouteMountPerf(
+      "practice_phoneme_drill",
+      performance.now() - routeMountStartRef.current,
+    );
+  }, []);
+
   const { phonemeSlug = "" } = useParams<{ phonemeSlug: string }>();
   const [searchParams] = useSearchParams();
   const { user } = useAuth();
