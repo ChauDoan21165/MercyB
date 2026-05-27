@@ -1122,7 +1122,7 @@ export function MercySpeakTab({
     setComparisonOpen(true);
 
     if (!practiceText) {
-      setComparisonError('Hãy thu âm trước · Record first');
+      setComparisonError('Thu âm trước · Record first');
       return;
     }
     const userBlob = recordedAudioBlobRef.current;
@@ -1766,7 +1766,7 @@ export function MercySpeakTab({
       <div className="rounded-[20px] border border-sky-200 bg-sky-50 p-3 text-sm text-slate-800 shadow-sm" data-testid="mobile-audio-retest-panel">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="font-semibold text-slate-950">Mobile audio retest · Kiểm tra âm thanh mobile</p>
+            <p className="font-semibold text-slate-950">Kiểm tra lại âm thanh điện thoại · Mobile audio retest</p>
             <p className="mt-1 text-xs leading-5 text-slate-600">
               Dev-only panel. Use on iPhone Safari/Capacitor; first audible output uses browser TTS, not cloud TTS.
             </p>
@@ -1822,10 +1822,10 @@ export function MercySpeakTab({
           </Button>
           <span className="text-xs text-slate-600" aria-live="polite">
             {mobileDiagnosticsCopyStatus === 'copied'
-              ? 'Copied anonymized diagnostics · Đã sao chép chẩn đoán ẩn danh'
+              ? 'Đã sao chép chẩn đoán ẩn danh · Copied anonymized diagnostics'
               : mobileDiagnosticsCopyStatus === 'failed'
-                ? 'Diagnostics copy failed. Please try again. · Không sao chép được chẩn đoán. Hãy thử lại.'
-                : 'Anonymized, last 5 events only · Ẩn danh, chỉ 5 sự kiện gần nhất'}
+                ? 'Không sao chép được. Thử lại nhé. · Diagnostics copy failed. Please try again.'
+                : 'Ẩn danh, chỉ 5 sự kiện gần nhất · Anonymized, last 5 events only'}
           </span>
         </div>
         <div className="mt-3 grid gap-3 md:grid-cols-2">
@@ -1973,7 +1973,7 @@ export function MercySpeakTab({
               <div>
                 <div className="flex items-center justify-between gap-3">
                   <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
-                    {isListening && !transcript ? 'Đang nghe... / Listening' : 'You'}
+                    {isListening && !transcript ? 'Đang nghe... / Listening' : 'Bạn · You'}
                   </span>
                   <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
                     {transcript ? `${matchScore}%` : (isListening ? `${micLevel}%` : '0%')}

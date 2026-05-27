@@ -609,7 +609,7 @@ export default function AccountPage() {
             {pronunciationFlagEnabled ? (
               <SecondaryLink
                 en="My progress"
-                vi="Tiến độ của tôi"
+                vi="Tiến độ"
                 onClick={() => nav("/progress")}
                 testId="account-progress-link"
               />
@@ -780,7 +780,7 @@ export default function AccountPage() {
             <span>
               {lang === "en"
                 ? "Leaderboard settings"
-                : "Bảng xếp hạng & tùy chọn"}
+                : "Bảng xếp hạng và cài đặt"}
             </span>
             <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#94a3b8" }} aria-hidden>▾</span>
           </summary>
@@ -796,7 +796,7 @@ export default function AccountPage() {
         <details style={detailsCard}>
           <summary style={summaryStyle}>
             <span>
-              {lang === "en" ? "Learning languages" : "Ngôn ngữ học"}
+              {lang === "en" ? "Learning languages" : "Ngôn ngữ đang học"}
             </span>
             <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#94a3b8" }} aria-hidden>▾</span>
           </summary>
@@ -828,7 +828,7 @@ export default function AccountPage() {
               rel="noopener noreferrer"
               style={{ ...legalButtonBase, textDecoration: "none" } as React.CSSProperties}
             >
-              <BiLabel en="Privacy Policy" vi="Chính sách bảo mật" />
+              <BiLabel en="Privacy Policy" vi="Chính sách quyền riêng tư" />
             </a>
             <a
               href="/terms"
