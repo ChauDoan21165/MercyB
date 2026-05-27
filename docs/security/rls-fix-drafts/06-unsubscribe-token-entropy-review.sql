@@ -1,0 +1,79 @@
+-- ─────────────────────────────────────────────────────────────────────────
+-- DRAFT — DOCUMENTATION ONLY. NO MIGRATION NEEDED.
+-- ─────────────────────────────────────────────────────────────────────────
+-- This file lives in docs/security/rls-fix-drafts/, NOT in
+-- supabase/migrations/. See ./README.md.
+--
+-- Finding: !84 §1 finding #6 / §3A — MEDIUM.
+--          `public.unsubscribe_by_token(text)` is anon-callable; if the
+--          underlying unsubscribe_token has weak entropy or is
+--          enumerable, an attacker could mass-unsubscribe users from
+--          email.
+-- ─────────────────────────────────────────────────────────────────────────
+--
+-- Verdict
+-- =======
+-- After reading the generator (supabase/migrations/20260522000000_email_preferences.sql:68-78):
+--
+--   CREATE OR REPLACE FUNCTION public.profiles_set_unsubscribe_token()
+--   RETURNS trigger LANGUAGE plpgsql AS $$
+--   BEGIN
+--     IF NEW.email_unsubscribe_token IS NULL OR NEW.email_unsubscribe_token = '' THEN
+--       NEW.email_unsubscribe_token := encode(extensions.gen_random_bytes(24), 'hex');
+--     END IF;
+--     RETURN NEW;
+--   END;
+--   $$;
+--
+-- The token is **24 random bytes (192 bits) from pgcrypto's CSPRNG**,
+-- hex-encoded (48 hex chars, lowercase). pgcrypto's gen_random_bytes
+-- delegates to OpenSSL RAND_bytes on supported platforms — the same
+-- source RFC 5288, RFC 5869, and most production secret-token
+-- generators use.
+--
+-- 192 bits of entropy comfortably exceeds the 128-bit threshold
+-- commonly cited for unguessable session/unsubscribe tokens.
+-- Enumeration is computationally infeasible (≈ 2^192 ≈ 6.3 × 10^57
+-- possibilities, far beyond brute-force).
+--
+-- Additionally:
+--   - The token is per-profile (UNIQUE index on
+--     profiles.email_unsubscribe_token, partial index where NOT NULL).
+--   - The trigger fires BEFORE INSERT, so every new profile gets one.
+--   - The 20260522 migration also backfills tokens for existing rows:
+--       UPDATE public.profiles
+--          SET email_unsubscribe_token = encode(extensions.gen_random_bytes(24), 'hex')
+--        WHERE email_unsubscribe_token IS NULL;
+--
+-- Conclusion
+-- ==========
+-- **No fix migration required.** The unsubscribe-token entropy meets
+-- and exceeds the recommended bar. The audit finding in !84 §1 #6 is
+-- formally resolved as "already adequately mitigated by the existing
+-- generator".
+--
+-- The remaining risk surface is unrelated to entropy:
+--   - Email-link interception (CASL-style risk if a user's inbox is
+--     compromised, but that's an attacker-controlled-mailbox scenario
+--     — out of scope for this audit).
+--   - Replay: a leaked token continues to work indefinitely. Acceptable
+--     for unsubscribe semantics; the token IS the credential by
+--     design.
+--   - Per-IP rate limit on the unsubscribe endpoint itself (the edge
+--     function, not the RPC) — defensive but not load-bearing given
+--     the token strength.
+--
+-- A-side action: mark !84 §1 #6 as resolved in the tracker with this
+-- file as the evidence. No SQL to apply.
+
+-- ── Optional defense-in-depth — DOES NOT NEED TO BE APPLIED ───────────
+-- If A-side wants per-IP rate limiting on the unsubscribe RPC as
+-- defense-in-depth, the pattern matches draft 04 (record_login_attempt):
+--
+--   public.unsubscribe_by_token(_token text)
+--     - call public.incr_ip_rate_limit('login_attempt'-style bucket)
+--     - if over limit, raise
+--   But this adds friction to a legitimate one-click flow (RFC 8058)
+--   and adds zero security in practice given 192-bit token entropy.
+--   Recommend AGAINST applying this defense-in-depth unless logs show
+--   evidence of attempted enumeration.
