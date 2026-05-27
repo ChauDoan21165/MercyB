@@ -10,6 +10,23 @@ import { defineConfig, devices } from '@playwright/test';
  * playwright.smoke.config.ts. The two configs are intentionally
  * separate — different goals (visual regression vs feature flow) and
  * different directories.
+ *
+ * ────────────────────────────────────────────────────────────────────
+ * Dead-config note (Phase 2, 2026-05-27):
+ *
+ * The four non-chromium project entries below (`firefox`, `webkit`,
+ * `mobile-chrome`, `mobile-safari`) are NOT exercised by any CI
+ * workflow today. `.github/workflows/playwright.yml` opts into
+ * `--project=chromium` explicitly. Locally a developer can still run
+ * them via `npx playwright test --project=firefox`, but nothing in
+ * the merge gate uses them.
+ *
+ * They remain in this config because the Q2 owner decision in
+ * `docs/testing/playwright-config-audit.md` ("collapse to chromium,
+ * or keep an opt-in multibrowser job for release candidates?") is
+ * deferred to a follow-up MR. When Q2 is resolved, prune the array
+ * to whatever set the owner picks.
+ * ────────────────────────────────────────────────────────────────────
  */
 export default defineConfig({
   testDir: './e2e',
