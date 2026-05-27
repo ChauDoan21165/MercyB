@@ -1,17 +1,37 @@
 /**
  * Stage 3A — Tier 2 + Tier 3 invariant guards.
  *
- * Companion to `invariants.test.tsx` (which covers the Tier 1 guards
- * G1–G6). This file picks up the Stage 3A gaps ranked Tier 2 and
- * Tier 3 in `docs/stage-3ab/invariant-gap-audit.md` §4 — the ones
- * that would degrade UX, break a contracted behaviour, or surface as
- * a visible bug, but not silently leak data.
+ * Companion to `invariants.test.tsx` (Tier 1 only — the
+ * must-never-leak surface). This file is the **single canonical home
+ * for every Tier 2 (degraded contract) and Tier 3 (visible-bug)
+ * guard** from `docs/stage-3ab/invariant-gap-audit.md` §4.
  *
- * Split rationale: the original Tier 1 file is the "must-never-leak"
- * surface; adding Tier 2 + Tier 3 here keeps each file under ~20
- * tests and makes it obvious at a glance which guards close which
+ * History note. Tier 2 guards were originally landed in two places
+ * — partly here (!35) and partly bolted onto the Tier 1 file (!33).
+ * That duplication was consolidated here in !46-redux (this MR).
+ * Future Tier 2 + Tier 3 tests go in this file; the Tier 1 file
+ * stays scoped to ranks 1–6 leak-class guards.
+ *
+ * Split rationale: keeping each file under ~25 tests + scoped to a
+ * single tier makes it obvious at a glance which guards close which
  * tier of audit gap. The two files share no fixtures by design —
  * each tier's assertions are self-contained.
+ *
+ * ─── Adding a new Tier 2 or Tier 3 guard ──────────────────────────
+ *
+ *   - Tier 2 = degraded contract. The surface still works but
+ *     violates a stated invariant (e.g. `isEmpty` drifts from the
+ *     bucket counts; aggregator silently writes localStorage). Add
+ *     it to this file.
+ *   - Tier 3 = visible-but-recoverable bug (e.g. severity dot grows
+ *     a tooltip; a taxonomy fallback throws instead of returning a
+ *     calm string). Add it to this file.
+ *   - Tier 1 (leak class) belongs in `invariants.test.tsx`. If
+ *     you're not sure which tier your guard is, default to Tier 2 +
+ *     write a one-line comment naming the audit rank you're closing.
+ *
+ * Update the audit gap map below when you add a new guard so the
+ * coverage stays traceable.
  *
  * Gap → guard mapping (audit §4 rank in parens):
  *
@@ -194,6 +214,39 @@ describe("Stage 3A — Tier 2: aggregator isEmpty consistency (3A-G4)", () => {
     expect(pronOnly.topPronunciationPainPoints.length).toBeGreaterThan(0);
     expect(pronOnly.isEmpty).toBe(false);
   });
+
+  // Ported from !33 (formerly in invariants.test.tsx). Cross-checks
+  // that `isEmpty` is STRUCTURALLY derived from the three buckets —
+  // not a separately-stored flag that could drift. A regression where
+  // the aggregator caches an earlier `isEmpty` value and the bucket
+  // counts move on would slip through the two assertions above.
+  it("isEmpty is structurally derived from the three bucket lengths (no drift)", () => {
+    const cases: Array<{ seed: () => void; expectEmpty: boolean }> = [
+      { seed: () => {}, expectEmpty: true },
+      {
+        seed: () =>
+          window.localStorage.setItem(
+            L1_STORAGE_KEY,
+            JSON.stringify([{ tag: "vi_l1_past_ed", ts: Date.now() - 60_000 }]),
+          ),
+        expectEmpty: false,
+      },
+    ];
+    for (const c of cases) {
+      window.localStorage.clear();
+      c.seed();
+      const map = aggregateLocalWeaknesses();
+      const derived =
+        map.topL1Patterns.length === 0 &&
+        map.placementWeaknesses.length === 0 &&
+        map.topPronunciationPainPoints.length === 0;
+      expect(
+        map.isEmpty,
+        `isEmpty drifted from constituents: ${JSON.stringify(map)}`,
+      ).toBe(derived);
+      expect(map.isEmpty).toBe(c.expectEmpty);
+    }
+  });
 });
 
 // ──────────────────────────────────────────────────────────────────────
@@ -223,6 +276,34 @@ describe("Stage 3A — Tier 2: skeleton on first paint (3A-G7)", () => {
       "first paint must not show the empty state — empty resolves through useEffect",
     ).not.toContain('data-testid="local-weakness-empty"');
   });
+
+  // Ported from !33. Static belt-and-suspenders alongside the SSR
+  // runtime check above. If a refactor accidentally deletes the
+  // SkeletonLoading component or the `!data → <SkeletonLoading />`
+  // early-return, the SSR test STILL passes today (no testid would
+  // render → fails), but the static grep gives a much clearer
+  // failure message ("missing early-return shape" vs "expected
+  // testid in HTML"). Keeping both keeps the failure message
+  // diagnostic for whichever piece breaks.
+  it("source contains the `!data → <SkeletonLoading />` early-return + component definition", () => {
+    const text = readFileSync(
+      resolve(REPO_ROOT, "src/components/stage-3a/LocalWeaknessMap.tsx"),
+      "utf8",
+    );
+    const code = stripJsComments(text);
+    expect(
+      code,
+      "missing `if (!data) return <SkeletonLoading />` early-return",
+    ).toMatch(/if\s*\(\s*!data\s*\)\s*return\s+<SkeletonLoading\s*\/>/);
+    expect(
+      code,
+      "missing `function SkeletonLoading(...)` component definition",
+    ).toMatch(/function\s+SkeletonLoading\s*\(/);
+    expect(
+      code,
+      'missing the `data-testid="local-weakness-loading"` anchor',
+    ).toContain('data-testid="local-weakness-loading"');
+  });
 });
 
 // ──────────────────────────────────────────────────────────────────────
@@ -242,6 +323,44 @@ describe("Stage 3A — Tier 2: aggregator no-localStorage-write (3A-G13)", () =>
     const clearSpy = vi.spyOn(window.localStorage, "clear");
 
     aggregateLocalWeaknesses();
+    aggregateLocalWeaknesses();
+
+    expect(setItemSpy).not.toHaveBeenCalled();
+    expect(removeItemSpy).not.toHaveBeenCalled();
+    expect(clearSpy).not.toHaveBeenCalled();
+  });
+
+  // Ported from !33. The test above runs the aggregator twice
+  // against empty storage. This one seeds all three buckets so the
+  // aggregator takes the FULL read path through every adapter — a
+  // future "cache-back" change in any adapter would surface here.
+  it("stays write-free even with all three buckets seeded (full read-path)", () => {
+    window.localStorage.setItem(
+      L1_STORAGE_KEY,
+      JSON.stringify([{ tag: "vi_l1_3rd_person_s", ts: 1_700_000_000 }]),
+    );
+    window.localStorage.setItem(
+      PLACEMENT_STORAGE_KEY,
+      JSON.stringify({
+        cefr: "B1",
+        weaknesses: ["past_tense_unmarked"],
+        completedAt: 1_700_000_000,
+        sessionId: "guard-fixture",
+      }),
+    );
+    window.localStorage.setItem(
+      PRON_STORAGE_KEY,
+      JSON.stringify([
+        { phoneme: "th", accuracy: 40, ts: 1_700_000_000, painPointAxis: "TH_T" },
+        { phoneme: "th", accuracy: 40, ts: 1_700_000_001, painPointAxis: "TH_T" },
+        { phoneme: "th", accuracy: 40, ts: 1_700_000_002, painPointAxis: "TH_T" },
+      ]),
+    );
+
+    const setItemSpy = vi.spyOn(window.localStorage, "setItem");
+    const removeItemSpy = vi.spyOn(window.localStorage, "removeItem");
+    const clearSpy = vi.spyOn(window.localStorage, "clear");
+
     aggregateLocalWeaknesses();
 
     expect(setItemSpy).not.toHaveBeenCalled();
@@ -311,6 +430,33 @@ describe("Stage 3A — Tier 2: perfInstrumentation never calls captureException 
       code,
       "perfInstrumentation.ts called captureException — Stage 3A is breadcrumbs-only",
     ).not.toMatch(/captureException\s*\(/);
+  });
+
+  // Ported from !33. Stricter than the call-shape regex above: if
+  // perfInstrumentation.ts imports anything beyond `addBreadcrumb`
+  // from the captureException module, that signals intent to use a
+  // wider surface (e.g. `captureMessage`, `setTag`) — which would
+  // break the "breadcrumbs-only" contract even before the new
+  // identifier reaches a call site. Catches the regression one
+  // commit earlier.
+  it("imports ONLY `addBreadcrumb` from the captureException module (named-import strictness)", () => {
+    const text = readFileSync(
+      resolve(REPO_ROOT, PERF_INSTRUMENTATION_FILE),
+      "utf8",
+    );
+    const code = stripJsComments(text);
+    const namedImportRe =
+      /import\s*\{\s*([^}]+)\s*\}\s*from\s*['"][^'"]*captureException[^'"]*['"]/;
+    const m = code.match(namedImportRe);
+    if (m) {
+      const names = m[1].split(",").map((s) => s.trim()).filter(Boolean);
+      expect(
+        names,
+        "perfInstrumentation.ts imported beyond `addBreadcrumb` from captureException module",
+      ).toEqual(["addBreadcrumb"]);
+    }
+    // If there's no named import at all, the file is fine — it
+    // can't be using captureException either.
   });
 });
 
