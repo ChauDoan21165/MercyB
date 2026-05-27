@@ -142,6 +142,10 @@ This list is not exhaustive of what MercyBlade may eventually support — it is 
 
 > Update this section every 1-2 weeks. Reality drift = strategy drift.
 
+### As of May 26, 2026 — later (GitLab migration recovery complete + Stage 3A signal layer landed)
+
+Follow-up to the earlier 2026-05-26 entry below: the migration-recovery and Stage 3A signal-layer waves both closed during the same day. The re-land wave put the seven critical PRs lost in the GitHub→GitLab cutover back on `main` — placement v3 snapshot adapter (#1202), L1 detector tag adapter (#1201), pronunciation phoneme adapter (#1203), `englishL1Profile` for EN→VN learners (#1184, Axis 2 Bar #1 artifact), the `detectEnVnError` wire-in into the AiTutor consumer (#1188 follow-up, Axis 2 Bar #4 "Today" update), the Vietnamese classifier room (#1176, Axis 2 Bar #3 artifact), and the kids-modal AI-Tutor-entry fix (#1205). Wave 2 then closed the Stage 3A reducer side: detector test-coverage adds for `vi_l1_co_transfer` (#1187) and `vi_l1_no_aux_negation` (#1189), plus the local weakness aggregator (reducer over the three adapter signals) and the learner-language taxonomy the aggregator references — both new GitLab-native work merged 2026-05-26. With three adapters + aggregator + taxonomy on `main`, the Stage 3A signal layer is functionally complete on the code side; only the user-facing route/screen (Day 4) remains before §15 Axis 1 Bar #1's depth-within-pair benefit becomes visible to learners. GitLab is the active remote; GitHub PR numbers are kept in citations for traceability since most landed work originates as a re-land of a GitHub PR.
+
 ### As of May 26, 2026 (local-only GitLab migration + Axis 2 audit)
 
 Per PRINCIPLES §9 (status docs drift — re-audit weekly). Seven days of
@@ -692,10 +696,11 @@ one full direction of one full pair, on both sides."
   need conversational context the `RuleArgs` surface doesn't expose.
   Fixture file `evals/en-vn-grammar-cases.json` ships **24 cases
   (≥3 per rule)**; every fixture fires its exact expected tag in
-  `__tests__/rules.test.ts`. *Artifact:* the new directory +
-  fixture on `main`. Wiring a `detectEnVnError()` entry point into
-  the engine is a separate follow-up PR (the pack ships in
-  isolation per the dispatch).
+  `__tests__/rules.test.ts`. The `detectEnVnError()` entry point
+  wiring the pack into the AiTutor consumer has now landed as a
+  #1188 follow-up — the pack is no longer an isolated artifact; it
+  is live in the tutor path. *Artifact:* the new directory + fixture
+  on `main`, plus the consumer wire-in.
 
 - [ ] **One named English-speaker outcome.** At least one English
   speaker publicly credits MercyBlade for measurable conversational
@@ -764,23 +769,28 @@ Re-open and tighten if any of the following happen:
 
 ### Status snapshot (date this when ticking checkboxes)
 
-As of 2026-05-26, five Axis 1 checkboxes are ticked: Bar #1 (L1
-grammar coverage, PRs #1163/#1170/#1172/#1164/#1169), Bar #2 (eval
-baseline 65/65, PR #1156), Bar #3 (AI Tutor L1 injection, PR #1131),
-Bar #4 (pronunciation drills, PR #1173), Bar #5 (placement → lesson
-E2E, PR #1143). Two Axis 1 bars remain, both owner-gated: Bar #6
-(native Sentry on-device probe, wired per PR #1132) and Bar #7
+As of 2026-05-26, Axis 1 stays at 5/7 ticked (no change this pass):
+Bar #1 (L1 grammar coverage, PRs #1163/#1170/#1172/#1164/#1169), Bar
+#2 (eval baseline 65/65, PR #1156), Bar #3 (AI Tutor L1 injection, PR
+#1131), Bar #4 (pronunciation drills, PR #1173), Bar #5 (placement →
+lesson E2E, PR #1143). Two Axis 1 bars remain, both owner-gated: Bar
+#6 (native Sentry on-device probe, wired per PR #1132) and Bar #7
 (named Vietnamese learner outcome). Axis 2: three checkboxes are
-ticked in code: Bar #1 EN→VN L1 profile (#1184), Bar #3 classifier
-room/drill (#1176), and Bar #4 EN→VN detector rules (#1188). Axis 2
-Bar #2 remains open because Option A failed empirical adjacent-tone
-verification, and #1208's Option B local-pitch design failed
-production-scoring viability in the A2 spike. Axis 2 remains 3/5
-ticked unless Chau accepts a revised Bar #2 DoD; the recommended next
-state is redesign or a non-scored listen-compare prototype. Bar #5
-remains open because no named English-speaker outcome is on record.
-The cross-axis pair-matrix anchor is shipped via #1185. Nine
-checkboxes ticked, four open.
+ticked in code — Bar #1 EN→VN L1 profile (#1184), Bar #3 classifier
+room/drill (#1176), and Bar #4 EN→VN detector rules (#1188, with the
+`detectEnVnError` wire-in now on `main` as a #1188 follow-up). On
+the code side Axis 2 is effectively 4/5 closed: three ticked plus
+Bar #2 parked pending Chau's DoD decision (Option A failed empirical
+adjacent-tone verification, and #1208's Option B local-pitch design
+failed production-scoring viability in the A2 F0 spike; the next
+state is either a redesigned scoring approach or a non-scored
+listen-compare prototype, neither of which is current code work).
+Bar #5 (named English-speaker outcome) remains open on the owner
+track because no testimonial is on record. The cross-axis
+pair-matrix anchor is shipped via #1185. Nine checkboxes ticked,
+four open; under the 4/5-closed-on-code-side view, only Bar #5
+(Axis 2) is active code-side work, since Bar #2 is decision-gated,
+Bar #6 is on-device probe, and Bar #7 is testimonial-gated.
 
 ---
 

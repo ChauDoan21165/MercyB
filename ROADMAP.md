@@ -44,6 +44,8 @@ Ships with a marketing-visible demo artifact: one screen, one story, one sentenc
 
 **Hard prereq:** §15 Bar #1 (L1 grammar coverage gap closed) must tick — both #1164 (`vi_l1_future_adverb_bare`) and #1169 (`vi_l1_subject_gender`) merged. Otherwise 3A ships with an incomplete detector surface and misrepresents the wedge.
 
+**Status (2026-05-26):** Signal layer complete. The three adapter PRs (#1201 L1 detector tag mirror, #1202 Placement v3 snapshot mirror, #1203 pronunciation phoneme mirror) are on `main`. Wave 2 closed the reducer side: the local weakness aggregator (reducer over the three adapter signals) and the learner-language taxonomy the aggregator references both merged on 2026-05-26, alongside test-coverage adds for `vi_l1_co_transfer` (#1187) and `vi_l1_no_aux_negation` (#1189). Local-only input seams + aggregator + taxonomy are in place. Day 4 — the user-facing route/screen — is the next slice.
+
 ### 3B — Suggested Practice (not Planner)
 
 Soft suggestions only. *"You may want to practice…"* never *"You must complete…"* No streaks, no XP, no guilt, no daily coercion.
