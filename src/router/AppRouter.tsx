@@ -28,6 +28,7 @@ import { useAuth } from "@/providers/AuthProvider";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import TrialExpiredScreen from "@/components/TrialExpiredScreen";
 import ChatSupportButton from "@/components/support/ChatSupportButton";
+import SkipToContent from "@/components/a11y/SkipToContent";
 import { FeedbackBar } from "@/components/FeedbackBar";
 import { CertificateToast } from "@/components/certificates/CertificateToast";
 import { LevelUpModal } from "@/components/xp/LevelUpModal";
@@ -619,6 +620,10 @@ function AppHeroShell() {
         <Outlet />
       ) : (
         <>
+          {/* Bilingual skip link — the first focusable element on the
+              page. Visually hidden until focused. Targets each page's
+              <main id="main-content" tabIndex={-1}>. WCAG 2.4.1. */}
+          <SkipToContent />
           <div style={band} aria-label="Mercy global hero band">
             <div style={bandInner}>
               <div style={leftNavWrap}>

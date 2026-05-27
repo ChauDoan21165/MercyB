@@ -71,7 +71,7 @@ export default function ResultsPage() {
 
   if (loading || !results) {
     return (
-      <main className="px-4 py-8">
+      <main id="main-content" tabIndex={-1} className="px-4 py-8">
         <LoadingPlaceholder label={{ en: "Loading your results", vi: "Đang tải kết quả của bạn" }} />
       </main>
     );
@@ -86,7 +86,7 @@ export default function ResultsPage() {
   };
 
   return (
-    <main className="mx-auto min-h-[calc(100vh-72px)] w-full max-w-[980px] px-4 py-6">
+    <main id="main-content" tabIndex={-1} className="mx-auto min-h-[calc(100vh-72px)] w-full max-w-[980px] px-4 py-6">
       <section className="rounded-[20px] border border-amber-100 bg-[#FFF8F3] p-5 text-center">
         <BilingualLabel
           as="h1"

@@ -878,6 +878,8 @@ export default function OnboardingPage() {
         </div>
 
         <main
+          id="main-content"
+          tabIndex={-1}
           style={{
             background: "white",
             borderRadius: 24,

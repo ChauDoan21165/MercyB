@@ -10,7 +10,7 @@ export default function ResumePage() {
 
   if (resume.loading) {
     return (
-      <main className="px-4 py-8">
+      <main id="main-content" tabIndex={-1} className="px-4 py-8">
         <LoadingPlaceholder label={{ en: "Checking for an unfinished test", vi: "Đang kiểm tra bài còn dang dở" }} />
       </main>
     );
@@ -22,7 +22,7 @@ export default function ResumePage() {
   };
 
   return (
-    <main className="flex min-h-[calc(100vh-72px)] justify-center px-4 py-8">
+    <main id="main-content" tabIndex={-1} className="flex min-h-[calc(100vh-72px)] justify-center px-4 py-8">
       <section className="w-full max-w-[560px] rounded-[18px] border border-slate-200 bg-white p-6 text-center shadow-sm">
         <BilingualLabel
           as="h1"

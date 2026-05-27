@@ -22,14 +22,14 @@ export default function WelcomePage() {
 
   if (resume.loading) {
     return (
-      <main className="px-4 py-8">
+      <main id="main-content" tabIndex={-1} className="px-4 py-8">
         <LoadingPlaceholder />
       </main>
     );
   }
 
   return (
-    <main className="flex min-h-[calc(100vh-72px)] justify-center px-4 py-8 sm:py-12">
+    <main id="main-content" tabIndex={-1} className="flex min-h-[calc(100vh-72px)] justify-center px-4 py-8 sm:py-12">
       <div className="w-full max-w-[540px] text-center">
         <BilingualLabel
           as="h1"

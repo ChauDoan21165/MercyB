@@ -1,5 +1,7 @@
 # MercyBlade accessibility audit — 2026-05-27
 
+> **Update 2026-05-27 — blocker shipped.** The skip-link blocker called out below is **fixed** in `fix/a11y-skip-link`. `SkipToContent.tsx` ships, mounts in `AppHeroShell` as the first focusable element, and every audit-priority page exposes `<main id="main-content" tabIndex={-1}>` as the focus target. The "Documentation drift" table is updated to reflect the new reality. The 15 remaining findings ship as separate dispatches. Original audit text below is preserved for context.
+
 **Audit branch:** `docs/a11y-audit`
 **Scope:** Diagnostic only. Page-by-page WCAG 2.1 AA review of the five highest-traffic anon routes (`/`, `/weak-at`, `/onboarding`, `/pricing`, `/placement`) + the Stage-3A/3B components rendered inside `/weak-at`. No source changes in this MR.
 **Auditor:** Agent C3, static analysis (no live screen-reader/keyboard run, no axe-core execution — those are deferred follow-ups).
@@ -26,10 +28,10 @@ Before page-level findings, a context check. The existing doc claims 25/25 a11y 
 
 | Claim | Reality | Note |
 |---|---|---|
-| `src/components/a11y/SkipToContent.tsx` | **missing** | The component is named in the config (`A11Y_CONFIG.skipToContentId = 'main-content'`) but the component file does not exist. Nothing renders a skip link in any page shell. |
+| `src/components/a11y/SkipToContent.tsx` | ✅ shipped (2026-05-27) | Bilingual VI/EN skip link, mounted in `AppHeroShell` as the first focusable element. Targets each page's `<main id="main-content">` via `A11Y_CONFIG.skipToContentId`. Tested in `src/components/a11y/__tests__/SkipToContent.test.tsx`. |
 | `src/components/a11y/FocusRing.css` | **missing** | No `FocusRing.css` file. No `.focus-ring` class shipped. App relies on the browser's default focus ring. |
 | `src/components/a11y/A11YPreviewMode.tsx` | **missing** | No file. The "admin preview" mode in the doc doesn't ship. |
-| `id="main-content"` somewhere in DOM | **missing** | Zero matches in `src/`. The skip-link target ID has no anchor. |
+| `id="main-content"` somewhere in DOM | ✅ shipped (2026-05-27) | Added `<main id="main-content" tabIndex={-1}>` to Home + Pricing (previously had no `<main>`); added `id` + `tabIndex` to existing `<main>` on Marketing, WeakAt, Onboarding, Placement v3 (Welcome/Test/Resume/Results). |
 | `eslint-plugin-jsx-a11y` installed | **missing** | Not in `package.json`. ESLint runs but without a11y rules. |
 | `@axe-core` / `jest-axe` automated testing | **missing** | Zero matches in `src/`. No CI step references axe-core. |
 | `src/components/a11y/AccessibleToast.tsx` | ✅ exists | Verified. |
@@ -141,7 +143,7 @@ The biggest systemic a11y axis for MercyBlade is **language switching for screen
 | `/placement/welcome` | yes | yes | no |
 | `/placement/test` | yes | yes | no |
 
-**Global blocker:** no skip link anywhere — `A11Y_CONFIG.skipToContentId` defines an ID that no DOM element ever exposes. This is the single biggest keyboard-user friction point and would be a guaranteed App Store accessibility finding.
+**Global blocker (RESOLVED 2026-05-27):** ~~no skip link anywhere — `A11Y_CONFIG.skipToContentId` defines an ID that no DOM element ever exposes.~~ Shipped in `fix/a11y-skip-link`: bilingual `SkipToContent` mounts in `AppHeroShell` as the first focusable element; every audit-priority page now exposes `<main id="main-content" tabIndex={-1}>`.
 
 ### Touch targets (WCAG 2.5.5 mobile)
 

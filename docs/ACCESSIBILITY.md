@@ -1,5 +1,7 @@
 # Accessibility (A11Y) Implementation Guide
 
+> **2026-05-27 honesty note.** The "25/25 Implemented Features" checklist below was found to overstate shipped reality in the 2026-05-27 a11y audit (see `docs/a11y/audit.md`). This file is being brought back into alignment piecemeal as each finding lands. **Verified shipped today:** the bilingual `SkipToContent` skip link + `<main id="main-content">` landmarks on the 5 audit-priority anon routes. **Still claimed but NOT shipped:** `FocusRing.css`, `A11YPreviewMode.tsx`, `eslint-plugin-jsx-a11y` install, `axe-core` automated testing — each tracked in `docs/a11y/audit.md` as separate follow-ups.
+
 ## Overview
 
 Mercy Blade implements comprehensive accessibility features following WCAG 2.1 AA standards. This guide covers all accessibility systems, patterns, and testing procedures.
@@ -31,7 +33,7 @@ Mercy Blade implements comprehensive accessibility features following WCAG 2.1 A
 - ✅ **3. ARIA labels**: All interactive elements have descriptive labels
 - ✅ **4. Focus ring system**: Global `.focus-ring` class with customizable styling
 - ✅ **5. Keyboard navigation**: Full tab navigation with proper focus management
-- ✅ **6. Skip-to-content**: `<SkipToContent>` component for keyboard users
+- ✅ **6. Skip-to-content**: `<SkipToContent>` component for keyboard users — bilingual VI/EN, mounted in `AppHeroShell` as the first focusable element (shipped 2026-05-27 via `fix/a11y-skip-link`). Targets each page's `<main id="main-content" tabIndex={-1}>` landmark.
 - ✅ **7. Color contrast**: All text meets 4.5:1 contrast ratio (WCAG AA)
 
 ### B. Screen Reader & ARIA Precision (6/6)

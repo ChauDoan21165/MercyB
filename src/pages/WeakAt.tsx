@@ -15,7 +15,7 @@ import SuggestedPracticeList from "@/components/stage-3b/SuggestedPracticeList";
 
 export default function WeakAt() {
   return (
-    <main className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12">
+    <main id="main-content" tabIndex={-1} className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12">
       <header className="mb-6">
         {/* Bilingual title — VI primary (the home-axis), EN secondary */}
         <h1

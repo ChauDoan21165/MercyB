@@ -933,7 +933,7 @@ export default function Home() {
         <XPBadge />
       </div>
 
-      <div style={frame}>
+      <main id="main-content" tabIndex={-1} style={frame}>
         {/* Headline */}
         <section style={heroShell} aria-label="Homepage hero">
           <h1 style={headline}>
@@ -1189,7 +1189,7 @@ export default function Home() {
             </React.Fragment>
           ) : null}
         </div>
-      </div>
+      </main>
 
       <div style={{ position: "fixed", left: 0, right: 0, bottom: `calc(${isPhone ? 8 : 10}px + env(safe-area-inset-bottom, 0px))`, zIndex: 80, padding: "0 16px", pointerEvents: "none" }} aria-label="Bottom music dock">
         <div style={{ maxWidth: PAGE_MAX, margin: "0 auto", pointerEvents: "auto" }}>
