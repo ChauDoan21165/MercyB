@@ -189,7 +189,7 @@ armSentryActivation({
 
 // Defer non-critical boot work out of the synchronous path:
 //   - runConfigHealthCheck: probes external services and reports to Sentry.
-//   - initializeWebVitals: subscribes to LCP/FID/CLS/TTFB/FCP/INP observers.
+//   - initializeWebVitals: subscribes to LCP/CLS/INP/TTFB/FCP observers.
 // initSentry() is NO LONGER here — it is route-gated above (loads only on
 // a real trigger, not on every idle tick). configHealth still runs every
 // session: it reports degradation through the gated captureMessage()

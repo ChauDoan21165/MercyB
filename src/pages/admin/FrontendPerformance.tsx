@@ -2,7 +2,7 @@
  * /admin/frontend-perf — Core Web Vitals dashboard for level-9+ admins.
  *
  * Sections:
- *   1. Hero: latest LCP / FID / CLS rating across all routes (mobile + desktop)
+ *   1. Hero: latest LCP / INP / CLS rating across all routes (mobile + desktop)
  *   2. 30-day P50/P95 LCP per route (line chart)
  *   3. Top 10 slowest routes (table)
  *   4. CLS distribution (bar chart by route)

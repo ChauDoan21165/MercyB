@@ -74,7 +74,7 @@ Reference doc for every Sentry breadcrumb category emitted by `src/`. Use this w
 - **Emitter:** `src/lib/perf/webVitalsTracking.ts`
 - **Level:** `info`
 - **Threshold:** none — emits on every recorded vital (deduped per `(metric.id, route)`)
-- **Payload:** `{ name, value, route, device_class, rating }` — `name` is one of `"LCP" | "CLS" | "INP" | "TTFB" | "FCP"` (the 5 actually subscribed today; FID is declared in `WebVitalName` but not subscribed — see `web-vitals-audit.md` §6 (1)). `route` is the `bucketRoute()` output. `device_class` is `"mobile" | "desktop"` only — there is **no** `"tablet"` bucket today (`classifyDevice()` splits at `< 768`). `rating` is `"good" | "needs-improvement" | "poor"`. Vitals also land in the `web_vitals_events` table for time-series analysis.
+- **Payload:** `{ name, value, route, device_class, rating }` — `name` is one of `"LCP" | "CLS" | "INP" | "TTFB" | "FCP"` (FID was dropped from `WebVitalName` in `fix/web-vitals-drop-fid`; see `web-vitals-audit.md` §6 (1)). `route` is the `bucketRoute()` output. `device_class` is `"mobile" | "desktop"` only — there is **no** `"tablet"` bucket today (`classifyDevice()` splits at `< 768`). `rating` is `"good" | "needs-improvement" | "poor"`. Vitals also land in the `web_vitals_events` table for time-series analysis.
 - **Sentry query:** `breadcrumbs.category:web-vital`
 - **What to do with it:** for a sustained regression, query Supabase `web_vitals_events` directly — the breadcrumb is a per-event hint, the table is the dataset. The shape is pinned by `src/lib/monitoring/__tests__/web-vital-contract.test.ts`; for the deeper audit (per-metric coverage, alerting gaps, dead code) see `docs/observability/web-vitals-audit.md`.
 

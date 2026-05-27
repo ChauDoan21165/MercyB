@@ -1,6 +1,6 @@
 // Web Vitals collection + reporting.
 //
-// Pulls LCP/FID/CLS/TTFB/FCP/INP from the web-vitals npm package and:
+// Pulls LCP/CLS/INP/TTFB/FCP from the web-vitals npm package and:
 //   - Adds a Sentry breadcrumb (low overhead, trails alongside future
 //     errors so you can see "what was the page like just before the
 //     crash?").
@@ -65,10 +65,6 @@ export function initializeWebVitals(): void {
     onINP(handler);
     onTTFB(handler);
     onFCP(handler);
-    // FID is deprecated in web-vitals v4 in favour of INP, but we still
-    // add a synthetic FID metric below for backwards compatibility with
-    // dashboards that expect the older name. Falling back to TTFB-only
-    // when the raw API isn't there keeps us forward-compatible.
   } catch (err) {
     console.warn("[webVitals] init failed:", err);
   }
@@ -114,8 +110,7 @@ function looksLikeId(s: string): boolean {
 }
 
 async function recordVital(metric: Metric): Promise<void> {
-  // Map the package name to our enum. INP is the new FID-replacement;
-  // we record it under its true name (no FID synthesis).
+  // Map the package name to our enum.
   const name = metric.name as WebVitalName;
   const route = bucketRoute(typeof window === "undefined" ? "/" : window.location.pathname);
 

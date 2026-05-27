@@ -2,6 +2,8 @@
 
 Snapshot of what Core Web Vitals MercyBlade captures today, where the metric data lands, and where the gaps are. **No code changes in this audit** — gap-fill proposals are in §6 and require a separate dispatch to implement.
 
+> **Update (post-`fix/web-vitals-drop-fid`):** gap §6 (1) — *FID declared but never subscribed* — is **shipped**. `WebVitalName` no longer lists FID; the threshold table dropped its entry; the contract test compile-time-asserts FID is excluded from both the upstream `Metric["name"]` union and our local `WebVitalName`. The rest of this audit is unchanged below — §2 / §3 / §6 (1) prose still describes the *pre-fix* state for historical clarity, with a 🟢 line on §6 (1) marking the resolution.
+
 Companion to `docs/observability/perf-instrumentation.md` — that doc catalogs the `web-vital` Sentry breadcrumb category; this doc goes deeper into what's actually behind it.
 
 ---
@@ -33,9 +35,9 @@ The `web-vitals` npm package (pinned `^5.1.0` in `package.json`) emits one obser
 | **INP** — Interaction to Next Paint | ✅ `onINP` | ms | 200 / 500 | Replaces FID since web-vitals v4. **No alert wired** today — see gap §6 (2). |
 | **TTFB** — Time to First Byte | ✅ `onTTFB` | ms | 800 / 1800 | |
 | **FCP** — First Contentful Paint | ✅ `onFCP` | ms | 1800 / 3000 | |
-| **FID** — First Input Delay | ⚠️ **declared, not subscribed** | ms | 100 / 300 | `WebVitalName` union in `src/config/perfBudget.ts` still lists FID, but `webVitalsTracking.ts` never calls `onFID` (the function isn't exported by web-vitals v4 on all builds). The dashboard column for FID is permanently empty. See gap §6 (1). |
+| ~~**FID** — First Input Delay~~ | 🟢 **dropped** | — | — | Removed from `WebVitalName` in `fix/web-vitals-drop-fid` (this MR). INP is the official Core Web Vital for interactivity since 2024. See §6 (1) for the resolution. |
 
-**5 of 6** declared vitals actually flow. FID is the one stranded declaration.
+**5 / 5** declared vitals flow. FID is no longer in the union.
 
 ## 3. Sentry breadcrumb shape (`web-vital`)
 
@@ -84,13 +86,11 @@ Inserts are fire-and-forget — the `try/catch` swallows insert failures with a 
 
 Listed roughly by impact, highest first.
 
-### (1) `FID` declared but never subscribed
+### (1) `FID` declared but never subscribed — 🟢 SHIPPED in `fix/web-vitals-drop-fid`
 
-`WebVitalName` includes `"FID"` and `WEB_VITAL_THRESHOLDS["FID"]` carries a threshold, but no `onFID` call exists. **Two clean fixes**:
-- **(1a)** Drop FID from `WebVitalName` and the threshold table. INP has been the Core Web Vital since 2024 and the package's `onFID` signature is no longer guaranteed.
-- **(1b)** Add a conditional `onFID` subscription mirroring `src/simulator/perf/WebVitalsCollector.ts`'s pattern (`const onFID = (webVitals as any).onFID; if (onFID) onFID(handler);`). Use this if dashboards or external integrations still expect FID rows.
+`WebVitalName` previously included `"FID"` and `WEB_VITAL_THRESHOLDS["FID"]` carried a threshold, but no `onFID` call existed. **Resolution:** option **(1a)** taken — FID dropped from `WebVitalName` and the threshold table; package-side `Metric["name"]` already excluded it. Comment scrub: `src/main.tsx`, `src/lib/perf/webVitalsTracking.ts`, `src/pages/admin/FrontendPerformance.tsx`, and this audit's §2 / §3 / §7 prose. Contract test (`src/lib/monitoring/__tests__/web-vital-contract.test.ts`) pins the exclusion at compile time for both the upstream `Metric["name"]` and the local `WebVitalName`. No behavior change to live metric capture (FID was never subscribed).
 
-Recommendation: **(1a)** — fewer moving parts, dashboards can drop their FID column.
+Dead-code candidates *not* touched here (separate dispatches): the deprecated `fid` field + `(webVitals as any).onFID` guard in `src/simulator/perf/WebVitalsCollector.ts`, and the sibling dead-code file in §6 (4).
 
 ### (2) Alert coverage is LCP-only
 
