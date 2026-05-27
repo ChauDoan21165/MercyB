@@ -99,6 +99,7 @@ const SpeechHistoryPage    = lazyWithRetry(() => import("@/pages/speech/SpeechHi
 const DailyChallengePage   = lazyWithRetry(() => import("@/pages/challenges/DailyChallengePage"));
 const ChallengeHistoryPage = lazyWithRetry(() => import("@/pages/challenges/ChallengeHistoryPage"));
 const ProgressPage         = lazyWithRetry(() => import("@/pages/Progress"));
+const WeakAtPage           = lazyWithRetry(() => import("@/pages/WeakAt"));
 const ListeningLibraryPage = lazyWithRetry(() => import("@/pages/listening/Library"));
 const ListeningClipPage    = lazyWithRetry(() => import("@/pages/listening/ClipPlayer"));
 const LeaderboardPage      = lazyWithRetry(() => import("@/pages/LeaderboardPage"));
@@ -1019,6 +1020,14 @@ export default function AppRouter() {
               and renders the anon empty state for signed-out callers. */}
           <Route path="/progress"
             element={<LazyPage><ProgressPage /></LazyPage>}
+          />
+
+          {/* Stage 3A — local weakness map. Reads from this device only
+              (per docs/stage-3a/local-weakness-map-design.md), distinct
+              from /progress's Supabase aggregation. Anon-viewable; the
+              underlying component renders its own empty state. */}
+          <Route path="/weak-at"
+            element={<LazyPage><WeakAtPage /></LazyPage>}
           />
 
           {/* Public weekly leaderboard — anon-viewable */}

@@ -1095,6 +1095,28 @@ export default function Home() {
           </ProgressiveDisclosureCard>
           <FocusAreasCard />
 
+          {/* Stage-3A discovery — local-only weakness map. Coexists
+              with FocusAreasCard (Supabase): different consumers,
+              different posture. C5 dispatch — per C1 recon. */}
+          <button
+            type="button"
+            data-testid="home-weak-at-link"
+            onClick={() => nav("/weak-at")}
+            className="w-full rounded-[20px] border border-slate-200 bg-white px-5 py-4 text-left shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-400"
+          >
+            <div className="flex items-center justify-between gap-3">
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-slate-900">
+                  Xem điểm bạn cần luyện
+                </p>
+                <p className="mt-0.5 text-xs text-slate-500">
+                  See what you're working on
+                </p>
+              </div>
+              <ChevronRight size={20} className="shrink-0 text-slate-400" aria-hidden="true" />
+            </div>
+          </button>
+
           {/* Weekly leaderboard — retention card (feature-flagged). */}
           {leaderboardEnabled && Boolean(user) && <LeaderboardCard />}
 
