@@ -57,7 +57,7 @@ breaks at least one user-facing flow.
 |---|---|---|---|---|---|
 | Repo | **GitLab** — `gitlab.com:cd12536/mercyB` | Source-of-truth Git remote, MR review, CI runner | All deploys gated; all agent dispatches gated; no new code can land. Existing prod build keeps serving. | **Partial.** The `old-origin` GitHub remote is retained read-only (`git remote -v` shows both); local clones in every worktree carry the full history. No mirror branch on a third host. | $0 (free tier) |
 | Hosting | **Netlify** — current primary post-Vercel migration | Edge-hosted SPA, preview deploys, free SSL, branch deploys | Production site offline at `mercyblade.com`. iOS app continues to render the `dist/` shipped inside the Capacitor bundle but cannot serve fresh content. | **Partial.** The previous Vercel project + workflow (`production-deploy.yml`) still exists in repo but is no longer the live path. Cloudflare DNS can be retargeted in minutes. | ~$0–19 (Free / Pro tier) |
-| Database | **Supabase** — project `buemdfxyhxunzpgdoqin.supabase.co` | Postgres + Auth + Storage + Edge Functions + Realtime | Every auth flow, every gate, every payment record, every audio fetch. The single biggest single-point-of-failure in the stack. | **Partial.** `supabase/migrations/` (239 files) IS the schema source-of-truth. `supabase/functions/` (110 functions) is in repo. Recent data (last N days) is in Supabase only; no scheduled `pg_dump` to external storage today. | ~$25 (Pro tier) |
+| Database | **Supabase** — project `buemdfxyhxunzpgdoqin.supabase.co` | Postgres + Auth + Storage + Edge Functions + Realtime | Every auth flow, every gate, every payment record, every audio fetch. The single biggest single-point-of-failure in the stack. | **Partial → Strong once MR !69 merges.** `supabase/migrations/` (239 files) IS the schema source-of-truth. `supabase/functions/` (110 functions) is in repo. Recent data is currently in Supabase only; MR !69 (`feat/external-pg-dump-nightly`) ships the nightly external `pg_dump` with GPG encryption + rclone upload — see §5.3. | ~$25 (Pro tier) |
 | Payments | **Stripe** | Subscription billing, customer portal, webhook events | New checkouts fail; existing subscribers keep access until `current_period_end` per the entitlement contract in `./../architecture/systems/billing-entitlement.md`. **Hidden grace period: weeks of runway.** | **Strong.** The `current_period_end + status` derivation in `src/billing/computeEntitlement.ts` means existing paying users keep full access through Stripe outages until their period naturally expires. | ~2.9% + $0.30/txn |
 | DNS | **Cloudflare** — `mercyblade.com` zone | Authoritative DNS, TLS termination, CDN for `room-audio` Storage bucket (per `[[project_supabase_audio_cdn_stale]]`), email routing (`admin@mercyblade.com` → Chau's inbox) | DNS resolution stops → site appears offline globally; CDN cache continues to serve until TTL expires. Email forwarding stops simultaneously. | **None.** Single DNS provider. Zone file is exportable but no live secondary nameserver. | $0 (free tier) |
 | Errors | **Sentry** — org `chau-doan`, project `mercyblade-web`, region `us.sentry.io` ([[project_sentry_infra_access]]) | Production error capture, perf instrumentation, source-map de-mangling, RLS alert rules `17072095` / `17072096` | **No user-visible impact.** Errors fall back to `console.*` per the perfInstrumentation contract (`./../architecture/systems/observability.md`). The SDK is route-gated — static legal/marketing pages don't load it. | **Strong by design.** Sentry is breadcrumbs + captureException; both are bounded; loss of Sentry is loss of visibility, not loss of the product. | ~$0–26 (Developer / Team tier) |
@@ -66,6 +66,8 @@ breaks at least one user-facing flow.
 | Phoneme scoring | **Azure Speech Services** — accessed via `supabase/functions/azure-phoneme` + `azure-phoneme-stream` | Per-phoneme accuracy scoring for the Speak tab | Speak-tab cloud scoring fails; degrades to local Needleman-Wunsch + Levenshtein fuzzy fallback at `src/lib/pronunciation/scorer.ts:347` (already implemented). User loses per-phoneme detail, keeps top-level score. | **Strong by design.** Local fallback is the contract per the pronunciation pipeline (`./../architecture/system-overview.md` §5). | Pay-as-you-go (~$1/1k requests) |
 | Auth (OAuth providers) | **Google / Apple Sign-in** — proxied through Supabase Auth | Convenience sign-in option | Users who signed up via OAuth cannot sign back in if the proxy chain breaks. Email+password users unaffected. | **Strong by design.** Supabase Auth is the canonical auth surface; OAuth is one method among several. See §4. | $0 (included in Supabase Auth) |
 | Email | **Resend** — sending domain `mercyblade.com`, from `admin@mercyblade.com` ([[project_sending_address]]) | Transactional + campaign email delivery | Password reset emails stop, gift redeem emails stop, daily admin digest stops. **Auth flow degrades silently if reset email never arrives.** | **None today.** No fallback email provider. The 9 edge functions in `supabase/functions/email-*` all assume Resend. | $0–20 (Free / Pro) |
+| LLM (primary) | **OpenAI** — accessed via `supabase/functions/guide-assistant`, `ai-chat`, `ai-reasoning`, `ai-tutor` | Mercy chat replies, grammar correction, English explanation, the production tutor surface (per `./../architecture/systems/ai-tutor.md` §2 layer 1 + `./../architecture/systems/mercy-guide.md` §2 path B) | New tutor replies + grammar fixes fail; existing classified prewritten replies (`mercyGuideReplyLibrary.ts`) keep serving. Crisis pre-gate + rate-limit + AI-disabled response shape ([[`./../architecture/systems/mercy-guide.md` §5]]) all already handle the failure mode — users see a calm "AI temporarily unavailable" not a 500. | **Strong by design.** The prewritten-reply path is the silent fallback; mercy-guide classifier routes top-N intents through it. Outage degrades to "library-only", which is bounded but not broken. No alt LLM wired today. | Pay-as-you-go (~$10–30/day at current scale) |
+| LLM (secondary) | **Anthropic** — accessed via `@anthropic-ai/sdk` if/when wired | Currently NOT a runtime dependency for the user-facing tutor flow. Anthropic is used in the developer-side agent fleet (Claude Code) NOT in the production app. | **No production impact** today. Listed for completeness because the agent dispatches that author this codebase are gated on Anthropic. **Lockout from Anthropic stops new agent work but does not break the running product.** | **Strong by design.** Production tutor surface uses OpenAI; Anthropic is dev-tooling. | Pay-as-you-go (~$50–200/mo across the agent fleet) |
 | Analytics | **GA4 + Microsoft Clarity + Meta Pixel** | Marketing attribution, behavior replay, ads pixel | **No user-visible impact.** All analytics are best-effort, route-gated, and consent-gated ([[project_marketing_consent_is_tracking]]). | **Strong by design.** Analytics loss is invisible to users. | $0 / free tiers |
 
 **Memory anchors used above:**
@@ -551,6 +553,91 @@ of failure.
 **Hardening candidates:** Resend's webhook to a second provider
 mirror would be the cheapest fix; not done today.
 
+### §2.11 OpenAI (LLM, production tutor) unavailable
+
+**Failure mode:** `supabase/functions/guide-assistant` (and the
+sibling `ai-chat` / `ai-reasoning` / `ai-tutor` functions) return
+5xx from the OpenAI backend, or the API key is revoked / billed
+account is suspended.
+
+**Existing belt-and-braces:**
+- **The prewritten-reply library** at
+  `src/components/mercy-guide/mercyGuideReplyLibrary.ts` (per
+  `./../architecture/systems/mercy-guide.md` §2 path A). The mercy-
+  guide classifier dispatches the top-N intents to the library
+  synchronously; only `api_tutor` route hits OpenAI. During an
+  OpenAI outage, library hits keep working; `api_tutor` queries
+  return the `aiDisabledResponse` shape (per the guide-assistant
+  AI-disabled check at `./../architecture/systems/mercy-guide.md`
+  §2 path B step 3).
+- **Crisis pre-gate runs BEFORE the LLM call** (`containsCrisisKeywords`
+  in `guide-assistant/index.ts`). Self-harm / medical-emergency
+  intercepts continue to return `SAFE_RESPONSE` even with the LLM
+  unreachable.
+- **Rate-limit + AI-enabled checks** all degrade gracefully — the
+  shape `{ summary_vi, content_vi, ... }` is returned with a
+  Vietnamese-first "AI temporarily unavailable" message rather than
+  a 500.
+
+**Recovery sequence:**
+
+1. **Check `status.openai.com`.** Most OpenAI outages are < 2 hours.
+2. **If outage > 4 hours**, the library-only mode is the current
+   acceptable degraded state. No alt LLM is wired today — wiring
+   one in a stressed window is risky (system-prompt assembly,
+   safety rails, tier-depth gating all need adapter work).
+3. **If the failure is account-level** (key revoked, billing
+   suspended), recover via `platform.openai.com` → Billing /
+   Settings. OpenAI lockout recovery is identity-layer recovery —
+   see §3.
+4. **If the outage is > 24 hours and the team decides to swap**,
+   the cleanest path is to wire **Anthropic** as the alt LLM
+   provider — adapter work fits inside `supabase/functions/_shared/`
+   (the `openai` import in each edge function is the only
+   provider-coupled surface; the rest of the pipeline is
+   provider-agnostic). Tradeoff: ~1–2 days of focused work; cannot
+   be done blind under stress.
+
+**Hardening candidates** (NOT done in an outage):
+- **Anthropic Claude** (already a dev-tooling dependency — adapter
+  cost is the only new work). Tradeoff: different safety-rail
+  semantics + cost shape.
+- **Google Gemini** (vendor diversity). Tradeoff: different
+  prompt-engineering norms; rebuild prompt-quality test set.
+- **A self-hosted open-weights model** (e.g. Llama 3.x via Together
+  or Replicate). Tradeoff: quality cliff for VI-language Mercy
+  voice; not a quick swap.
+
+### §2.12 Anthropic (LLM, agent fleet) unavailable
+
+**Failure mode:** `@anthropic-ai/sdk` calls return 5xx, or the API
+key is revoked.
+
+**User-visible impact: NONE.** Anthropic is not on the production
+user-facing critical path. It is the LLM that powers the
+agent-dispatch fleet (Claude Code) that authors this codebase.
+
+**Recovery sequence:**
+
+1. **The running product is unaffected.** Skip to step 2 only if
+   active agent dispatches are blocked.
+2. **Pause agent work.** The dispatch protocol can wait; users
+   don't.
+3. **Recover the Anthropic account** via `console.anthropic.com`.
+   Identity-layer recovery; see §3.
+4. **If lockout is long-running**, switch agent work to a
+   different model provider's CLI (e.g. OpenAI's `codex-cli` if
+   available, or self-driven). Tradeoff: the per-agent context
+   conventions (CLAUDE.md, memory file format) are
+   Claude-Code-specific; switching is a full re-onboarding for
+   the agent fleet.
+
+**Why this is in the runbook even though it doesn't affect users:**
+the May 26 incident's recovery REQUIRED uninterrupted agent work.
+A simultaneous Anthropic lockout during a GitHub-suspension recovery
+would have made the cascade much worse. Account-hardening §3 applies
+here too.
+
 ---
 
 ## §3 Identity / account hardening checklist
@@ -563,14 +650,14 @@ door.**
 
 For every service in §1's table, confirm:
 
-| Check | GitLab | Netlify | Vercel | Supabase | Stripe | Cloudflare | Sentry | Apple Dev | Play | Azure | Resend |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Email+password sign-in enabled (NOT just OAuth) | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
-| 2FA via authenticator app (NOT SMS) | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
-| Recovery email is NOT a Gmail aliased to the same Google account that signs in | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
-| Password reset path tested in the last 90 days | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
-| Recovery codes stored offline (paper or password manager export) | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
-| Support contact path documented | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| Check | GitLab | Netlify | Vercel | Supabase | Stripe | Cloudflare | Sentry | Apple Dev | Play | Azure | Resend | OpenAI | Anthropic |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Email+password sign-in enabled (NOT just OAuth) | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 2FA via authenticator app (NOT SMS) | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| Recovery email is NOT a Gmail aliased to the same Google account that signs in | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| Password reset path tested in the last 90 days | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| Recovery codes stored offline (paper or password manager export) | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| Support contact path documented | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
 
 Fill these in after the first quarterly review; they are deliberately
 left blank in the inaugural version of this doc to force the
@@ -618,6 +705,8 @@ into 1–2 Google accounts.
 | Google Play | play.google.com/console/about/support | (slow; usually no side channel) |
 | Azure | portal.azure.com → Support | azure.status.com |
 | Resend | support@resend.com | Discord |
+| OpenAI | help.openai.com (in-dashboard); status.openai.com | Twitter @OpenAIDevs |
+| Anthropic | support@anthropic.com; status.anthropic.com | Twitter @AnthropicAI |
 
 Update these the moment a service routes a real support ticket
 elsewhere — vendor support-channel routing changes.
@@ -705,8 +794,19 @@ curl -s "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/dns_records/expor
 
 ### §5.3 Supabase Postgres daily dump
 
+> **Cross-reference: MR !69** (`feat/external-pg-dump-nightly` —
+> "nightly external Postgres backups, GPG-encrypted, rclone-uploaded").
+> C7's in-flight infrastructure MR ships the productionized version
+> of this command — a nightly cron with GPG encryption + rclone upload
+> to off-Supabase storage. The bash below is the minimal local-only
+> form to run by hand under stress; **once !69 merges, the productionized
+> path replaces this snippet** and this section should be updated to
+> "Run by hand only if the nightly job has failed to write for ≥ 36 h."
+
 ```bash
-# Requires service-role key in Keychain (per [[project_agent_infra_access]])
+# Local manual form — requires service-role key in Keychain
+# (per [[project_agent_infra_access]]). For the productionized
+# nightly cron + GPG encryption + rclone upload, see MR !69.
 PG_PWD="$(security find-generic-password -s mb-supabase-service-role -w)"
 mkdir -p "$HOME/Backups"
 PGPASSWORD="${PG_PWD}" pg_dump \
@@ -720,7 +820,8 @@ find "$HOME/Backups" -name 'mercyb-*.dump' -mtime +30 -delete
 
 **Why daily, not hourly:** the user-data churn on a ~100-user app
 is bounded; daily dumps cost ~50 MB/day at current scale.
-Cost-of-storage << ops-burden-of-hourly.
+Cost-of-storage << ops-burden-of-hourly. !69's productionized cron
+runs nightly for the same reason.
 
 ### §5.4 Supabase project link (for alt-project restoration)
 
