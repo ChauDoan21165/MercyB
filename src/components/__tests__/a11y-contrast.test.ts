@@ -1,36 +1,38 @@
 /**
- * A11y contrast — static drift guard against the !64 audit's P2 + W1
- * contrast findings (slate-400 / #94a3b8 sub-AA on white).
+ * A11y contrast — static drift guard against the !64 audit's slate-400
+ * sub-AA contrast finding. Started in !68 (P2 + W1, three files); this
+ * file extends with each subsequent route-by-route sweep MR.
  *
- * The audit (`docs/a11y/audit.md`) names exactly 11 locations where
- * the muted-text token failed WCAG AA 4.5:1:
+ * Currently guarded surfaces:
  *
- *   - Pricing.tsx — 8 inline `color: "#94a3b8"` declarations
- *     (lines 119, 477, 501, 516, 646, 653, 675, 824)
- *   - LocalWeaknessMap.tsx — 2 `text-slate-400` class usages
- *     (lines 307, 349)
- *   - SuggestedPracticeList.tsx — 1 `text-slate-400` class usage
- *     (line 173)
+ *   Wave 0 (!68 — P2 + W1):
+ *     - src/screens/Pricing.tsx
+ *     - src/components/stage-3a/LocalWeaknessMap.tsx
+ *     - src/components/stage-3b/SuggestedPracticeList.tsx
  *
- * This MR fixed all 11 by switching to `#64748b` (slate-500), measured
- * 4.78:1 on white. The test below pins those three files at zero
- * occurrences of the failing token so a future contributor cannot
- * accidentally re-introduce the failing color in any of them.
+ *   Wave 1 (this MR — Home / Account / AI-Tutor sweep):
+ *     - src/components/home/FocusAreasCard.tsx
+ *     - src/components/home/FocusAreasMicroLessonDialog.tsx
+ *     - src/components/ai-tutor/ConversationMode.tsx
+ *     - src/components/ai-tutor/CorrectionMode.tsx
+ *     - src/components/ai-tutor/TutorMemoryCard.tsx
+ *     - src/pages/account/NotificationPreferences.tsx
  *
- * Deliberately scoped. The codebase has ~170 other bare
- * `text-slate-400` usages outside the audit's 5 audited routes
- * (Home / weak-at / onboarding / pricing / placement). Those need
- * their own route-by-route audit per the !64 methodology before
- * being changed; they are documented in the MR description as a
- * follow-up sweep, not silently dragged into this fix.
+ * Each guarded file must stay free of `text-slate-400` (bare class)
+ * and `#94a3b8` (hex) literals. Variant prefixes (`disabled:`, `dark:`,
+ * `hover:`, etc.) and `aria-hidden` decorative elements are allowed —
+ * see the filter list below.
  *
- * ─── Adding a new file to the contrast guard ──────────────────────
+ * ─── Adding a file to the guard ────────────────────────────────────
  *
- * When a future a11y MR fixes the contrast of additional files (e.g.
- * a follow-up sweep of Home, Account, AI-Tutor surfaces), append the
- * file path to `CONTRAST_FIXED_FILES` here AND tick the same file off
- * in `docs/a11y/audit.md`. The guard's job is to ensure that once a
- * file is "audited + fixed", it stays fixed.
+ *   1. Land the audit-aware fix (replace bare `text-slate-400` /
+ *      `#94a3b8` with the WCAG-AA token chosen per location).
+ *   2. Append the file path to `CONTRAST_FIXED_FILES` here.
+ *   3. Tick the file off in `docs/a11y/audit.md` §"Color contrast —
+ *      at-a-glance".
+ *
+ * The guard's job is to ensure that once a file is "audited + fixed",
+ * it stays fixed against future regressions.
  */
 
 import { readFileSync } from "node:fs";
@@ -42,37 +44,89 @@ import { describe, expect, it } from "vitest";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, "../../../");
 
-/**
- * Files where the !64 audit's contrast finding was fixed in MR
- * fix/a11y-text-slate-400-contrast. Each of these must stay free of
- * `text-slate-400` (bare class) and `#94a3b8` (hex) literals.
- *
- * Variant prefixes (`dark:text-slate-400`, `disabled:text-slate-400`)
- * are NOT contrast offenders in the audited contexts — dark-mode
- * tokens render light-on-dark with passing contrast, and disabled
- * controls are WCAG-exempt per SC 1.4.3. None of the three files in
- * this list use those variants today; if a future contributor
- * introduces one it'll need its own a11y review before being
- * exempted.
- */
 const CONTRAST_FIXED_FILES = [
+  // Wave 0 — !68 audit P2 + W1
   "src/screens/Pricing.tsx",
   "src/components/stage-3a/LocalWeaknessMap.tsx",
   "src/components/stage-3b/SuggestedPracticeList.tsx",
+  // Wave 1 — this MR (Home / Account / AI-Tutor)
+  "src/components/home/FocusAreasCard.tsx",
+  "src/components/home/FocusAreasMicroLessonDialog.tsx",
+  "src/components/ai-tutor/ConversationMode.tsx",
+  "src/components/ai-tutor/CorrectionMode.tsx",
+  "src/components/ai-tutor/TutorMemoryCard.tsx",
+  "src/pages/account/NotificationPreferences.tsx",
 ] as const;
 
-describe("a11y contrast — !64 audit P2 + W1 stays fixed", () => {
-  it("no audit-fixed file contains the failing Tailwind class `text-slate-400`", () => {
-    const offenders: { file: string; line: number; text: string }[] = [];
-    for (const rel of CONTRAST_FIXED_FILES) {
-      const content = readFileSync(resolve(REPO_ROOT, rel), "utf8");
-      const lines = content.split("\n");
-      lines.forEach((line, i) => {
-        if (/\btext-slate-400\b/.test(line)) {
-          offenders.push({ file: rel, line: i + 1, text: line.trim() });
-        }
-      });
-    }
+/**
+ * Variant-prefix forms (`disabled:`, `dark:`, `hover:`, `focus:`,
+ * `group-hover:`, `peer-hover:`) carry their own contrast story:
+ *
+ *   - `disabled:text-slate-400` — WCAG SC 1.4.3 explicitly EXEMPTS
+ *     inactive UI components from text-contrast requirements.
+ *   - `dark:text-slate-400` — in dark mode this renders light-on-dark
+ *     (slate-400 on slate-900 ≈ 5.7:1), which passes AA.
+ *   - `hover:`/`focus:` — transient interactive state.
+ *
+ * A line matching any of these prefixes is NOT a contrast violation.
+ */
+const VARIANT_PREFIX_RE =
+  /\b(disabled|dark|hover|focus|group-hover|group-focus|peer-hover|peer-focus):text-slate-400\b/;
+
+/**
+ * `aria-hidden` elements are decorative — typically icons or layout
+ * glyphs (e.g. disclosure chevrons). WCAG 1.4.3 applies to text;
+ * WCAG 1.4.11 (non-text contrast 3:1) applies to graphical objects
+ * needed to understand content. An aria-hidden chevron is exempt
+ * from both because screen readers skip it AND it carries no
+ * semantic content. A line containing `aria-hidden` plus the
+ * offending token is a decorative use, not a violation.
+ */
+const ARIA_HIDDEN_RE = /aria-hidden/;
+
+/**
+ * Per-file line exceptions for intentional design decisions that
+ * survived the audit-aware fix. Each entry must point to a real
+ * line in the file AND have a documented rationale in the audit
+ * doc. Use sparingly — every entry is debt against future drift
+ * detection.
+ *
+ * (None as of this MR — all Wave-1 exceptions live in files outside
+ * CONTRAST_FIXED_FILES today: Home.tsx aria-hidden chevron at
+ * src/pages/Home.tsx:1125, AccountPage.tsx ▾ chevrons at
+ * src/pages/AccountPage.tsx:767/785/801/814, WeeklyProgressWidget
+ * null-state large-text score color at line 53. Documented in
+ * `docs/a11y/audit.md` §"Color contrast — at-a-glance".)
+ */
+const LINE_EXCEPTIONS: ReadonlyMap<string, ReadonlySet<number>> = new Map();
+
+function shouldSkipLine(line: string): boolean {
+  if (VARIANT_PREFIX_RE.test(line)) return true;
+  if (ARIA_HIDDEN_RE.test(line)) return true;
+  return false;
+}
+
+function offendersInFile(
+  rel: string,
+  pattern: RegExp,
+): { file: string; line: number; text: string }[] {
+  const content = readFileSync(resolve(REPO_ROOT, rel), "utf8");
+  const exempt = LINE_EXCEPTIONS.get(rel) ?? new Set<number>();
+  const offenders: { file: string; line: number; text: string }[] = [];
+  content.split("\n").forEach((line, i) => {
+    if (!pattern.test(line)) return;
+    if (shouldSkipLine(line)) return;
+    if (exempt.has(i + 1)) return;
+    offenders.push({ file: rel, line: i + 1, text: line.trim() });
+  });
+  return offenders;
+}
+
+describe("a11y contrast — !64 audit fixes stay fixed across each route wave", () => {
+  it("no audit-fixed file contains a bare `text-slate-400` class", () => {
+    const offenders = CONTRAST_FIXED_FILES.flatMap((f) =>
+      offendersInFile(f, /\btext-slate-400\b/),
+    );
     expect(
       offenders,
       `Failing slate-400 class re-introduced in an audit-fixed file. Use text-slate-500 (4.78:1 on white) or text-slate-600 (7.04:1) instead:\n${offenders
@@ -82,18 +136,9 @@ describe("a11y contrast — !64 audit P2 + W1 stays fixed", () => {
   });
 
   it("no audit-fixed file contains the failing hex literal `#94a3b8`", () => {
-    const offenders: { file: string; line: number; text: string }[] = [];
-    for (const rel of CONTRAST_FIXED_FILES) {
-      const content = readFileSync(resolve(REPO_ROOT, rel), "utf8");
-      const lines = content.split("\n");
-      lines.forEach((line, i) => {
-        // Case-insensitive — `#94A3B8` is the same color and trips
-        // the same audit finding.
-        if (/#94a3b8\b/i.test(line)) {
-          offenders.push({ file: rel, line: i + 1, text: line.trim() });
-        }
-      });
-    }
+    const offenders = CONTRAST_FIXED_FILES.flatMap((f) =>
+      offendersInFile(f, /#94a3b8\b/i),
+    );
     expect(
       offenders,
       `Failing slate-400 hex (#94a3b8) re-introduced in an audit-fixed file. Use #64748b (slate-500, 4.78:1 on white) or #475569 (slate-600, 7.04:1) instead:\n${offenders

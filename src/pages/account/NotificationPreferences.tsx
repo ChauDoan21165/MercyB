@@ -196,7 +196,7 @@ export default function NotificationPreferencesPage(): React.ReactElement {
             Tắt từng loại email mà không cần unsubscribe toàn bộ. Toggle cập nhật
             ngay khi bạn bấm.
           </p>
-          <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 4 }}>
+          <p style={{ fontSize: 12, color: "#64748b", marginTop: 4 }}>
             Opt out per category — no need to unsubscribe from everything. Each
             toggle saves immediately.
           </p>
@@ -265,7 +265,7 @@ export default function NotificationPreferencesPage(): React.ReactElement {
                       <div style={{ fontSize: 15, fontWeight: 800, color: "rgba(10,10,10,0.94)" }}>
                         {t.titleVi}
                       </div>
-                      <div style={{ fontSize: 12, color: "#94a3b8", marginTop: 1 }}>
+                      <div style={{ fontSize: 12, color: "#64748b", marginTop: 1 }}>
                         {t.titleEn}
                       </div>
                       <p
@@ -281,7 +281,7 @@ export default function NotificationPreferencesPage(): React.ReactElement {
                       <p
                         style={{
                           fontSize: 12,
-                          color: "#94a3b8",
+                          color: "#64748b",
                           margin: "2px 0 0",
                           lineHeight: 1.5,
                         }}
@@ -336,7 +336,7 @@ export default function NotificationPreferencesPage(): React.ReactElement {
           Email giao dịch (đăng ký, đặt lại mật khẩu, biên lai thanh toán) vẫn được
           gửi vì đây là yêu cầu pháp lý — các tùy chọn ở trên chỉ áp dụng cho email
           marketing.
-          <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 4 }}>
+          <div style={{ fontSize: 11, color: "#64748b", marginTop: 4 }}>
             Transactional email (sign-in, password reset, billing receipts) still
             goes out — only marketing email is governed by the toggles above.
           </div>

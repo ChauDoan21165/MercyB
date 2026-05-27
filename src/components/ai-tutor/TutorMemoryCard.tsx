@@ -278,7 +278,7 @@ export function TutorMemoryEmpty({ memoryLoaded, memory }: Props) {
       <div className="text-xs font-bold text-slate-500">
         Practice today to start building your progress.
       </div>
-      <div className="mt-1 text-[11px] font-medium text-slate-400">
+      <div className="mt-1 text-[11px] font-medium text-slate-500">
         No local summary progress for {languageLabel} yet.
       </div>
     </section>
