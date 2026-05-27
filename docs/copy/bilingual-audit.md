@@ -386,8 +386,32 @@ reference set.
 
 **Files audited so far (Phase-2 #1):** 3 of the priority list named
 above (`AiTutor.tsx`, `MercySpeakTab.tsx`, `AccountPage.tsx`).
-Source strings unchanged in this MR — diagnostic only, per the
-Phase-2 ground rule that revisions land per-file in follow-up MRs.
+Source strings unchanged in that MR (`!42`) — diagnostic only, per
+the Phase-2 ground rule that revisions land per-file in follow-up
+MRs.
+
+**Revisions shipped (Phase-2 #2 — `!48`):** all 9 revision
+candidates from the `!42` audit landed as actual source-string
+changes. `AiTutor.tsx` had 7/7 OK and contributed no revisions.
+`MercySpeakTab.tsx` and `AccountPage.tsx` revisions broken out:
+
+| Site | Before | After | Notes |
+|---|---|---|---|
+| `MercySpeakTab.tsx:1125` | `Hãy thu âm trước · Record first` | `Thu âm trước · Record first` | drops `Hãy` bare imperative |
+| `MercySpeakTab.tsx:1769` | `Mobile audio retest · Kiểm tra âm thanh mobile` (EN · VI) | `Kiểm tra lại âm thanh điện thoại · Mobile audio retest` (VI · EN) | flips ordering + replaces `mobile` calque |
+| `MercySpeakTab.tsx:1825` | `Copied anonymized diagnostics · Đã sao chép …` (EN · VI) | `Đã sao chép chẩn đoán ẩn danh · Copied anonymized diagnostics` (VI · EN) | flips ordering |
+| `MercySpeakTab.tsx:1827` | `Diagnostics copy failed. Please try again. · … Hãy thử lại.` (EN · VI) | `Không sao chép được. Thử lại nhé. · Diagnostics copy failed. Please try again.` (VI · EN) | flips ordering + drops `Hãy` imperative (replaced with `nhé` particle) + drops VI noun repetition |
+| `MercySpeakTab.tsx:1828` | `Anonymized, last 5 events only · Ẩn danh, chỉ 5 sự kiện gần nhất` (EN · VI) | `Ẩn danh, chỉ 5 sự kiện gần nhất · Anonymized, last 5 events only` (VI · EN) | flips ordering |
+| `MercySpeakTab.tsx:1976` | `'You'` (EN-only fallback in VI surface) | `'Bạn · You'` | adds VI; matches bilingual surface convention |
+| `AccountPage.tsx:612` | `vi="Tiến độ của tôi"` | `vi="Tiến độ"` | drops possessive to sidestep `bạn` vs `tôi` consistency conflict; the `/progress` destination page keeps its `Tiến độ của tôi` title (the audit's second proposed form taken over the first, because changing to `Tiến độ của bạn` would break the cross-file mirror with `streakCopy.ts` and `Progress.tsx`) |
+| `AccountPage.tsx:783` | `Bảng xếp hạng & tùy chọn` | `Bảng xếp hạng và cài đặt` | replaces `&` with `và` + uses `cài đặt` for "settings" |
+| `AccountPage.tsx:799` | `Ngôn ngữ học` | `Ngôn ngữ đang học` | resolves the linguistics-vs-learning-languages ambiguity |
+| `AccountPage.tsx:831` | `vi="Chính sách bảo mật"` | `vi="Chính sách quyền riêng tư"` | aligns with section heading `Quyền riêng tư` at line 812 |
+
+10 source-line edits across 2 files; no test changes (existing test
+regexes are EN-substring-anchored and still match the new bilingual
+strings). `npm run typecheck:ci` + ESLint + vitest 100/100 across
+the mercy-guide subtree + 41/41 across the streak subtree pass.
 
 **Files still pending Phase-2 audit:** `LoginPage.tsx`, `Tiers.tsx`,
 the rest of `mercy-guide/` (chiefly `MercyTeacherTab.tsx` —
