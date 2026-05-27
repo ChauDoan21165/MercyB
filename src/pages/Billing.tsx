@@ -597,6 +597,9 @@ export default function Billing() {
             <span style={{ fontWeight: 700 }}>Auto-renew</span>
             <span style={{ ...VIETNAMESE_SUB_STYLE, marginBottom: 4 }}>Tự động gia hạn</span>
             <b>{loading ? "..." : ent?.cancel_at_period_end ? "Off — cancels at period end" : "On"}</b>
+            <span style={{ ...VIETNAMESE_SUB_STYLE, marginBottom: 4 }}>
+              {loading ? "" : ent?.cancel_at_period_end ? "Tắt — sẽ hủy vào cuối kỳ" : "Bật"}
+            </span>
           </div>
         </div>
 

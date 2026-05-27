@@ -523,6 +523,43 @@ follow-up sweep MR (Phase-2 #6).
    commercial/product vocabulary in a way that lands warmer than
    the literal English.
 
+**Revisions shipped (Phase-2 #6):** the non-optional revision
+candidates from the Phase-2 #5 batch landed as source-string
+changes. `UnifiedMercyChat.tsx` had 16/16 OK and contributed no
+revisions. `Pricing.tsx` (structural plus inline edits) +
+`Billing.tsx` (single inline edit) revisions broken out:
+
+| Site | Before | After | Notes |
+|---|---|---|---|
+| `Pricing.tsx` `Plan` type + 3 plan objects + render path | `bullets: string[]` only (EN-only on a VI-primary surface — 9 strings) | Added `bulletsVi?: string[]` to the `Plan` type; populated all 3 plans (level0 / month / year) with 3 VI bullets each; both render paths (level0 simple + paid-plans) updated to render each EN bullet with its VI companion in a muted slate-500 sub-style. Tolerates missing/short `bulletsVi` (falls back to EN-only per index) — defensive. | Structural change. The audit's stated highest-impact bilingual-contract gap. New `bulletViStyle` uses `#64748b` (slate-500, 4.78:1 on white) per the !64 a11y-contrast audit — slate-400 (#94a3b8) is forbidden in audit-fixed files. |
+| `Pricing.tsx:907` (footer terms link) | `Terms of Use (EULA) / Điều khoản sử dụng` (EN · VI) | `Điều khoản sử dụng / Terms of Use (EULA)` (VI · EN) | flips ordering to honor `vi-style-guide.md` §2 (VI must dominate). |
+| `Pricing.tsx:908` (footer privacy link) | `Privacy Policy / Chính sách bảo mật` (EN · VI) | `Chính sách quyền riêng tư / Privacy Policy` (VI · EN) | flips ordering AND propagates `AccountPage.tsx:831`'s shipped `Chính sách quyền riêng tư` revision from !48 for cross-file consistency. |
+| `Billing.tsx:599` (auto-renew value) | EN-only `On` / `Off — cancels at period end` inside an otherwise-bilingual card | Added a VI sub-span: `Bật` / `Tắt — sẽ hủy vào cuối kỳ` (loading state renders empty string) — matches the surrounding `VIETNAMESE_SUB_STYLE` muted-subscript shape | Single inline edit; the LABEL above (`Auto-renew` / `Tự động gia hạn`) was already bilingual, only the VALUE was EN-only. |
+
+4 logical edits across 2 files (one structural; three inline).
+No test changes needed — the existing test regexes are EN
+substring-anchored and continue to match the EN halves preserved
+in the bilingual composites. `npm run typecheck:ci` + ESLint +
+vitest billing + pricing + a11y-contrast all green (69/69 across
+the touched-area suites).
+
+`Tiers.tsx` had 7/7 OK in the Phase-2 #3 audit and contributed no
+revisions (consistent with the Phase-2 #4 batch); its single
+"(optional)" fallback-label ordering flip stays deferred.
+
+The five "(optional)" candidates flagged in the Phase-2 #5 batch
+(Pricing.tsx:470 subtitle-agent-drop, Pricing.tsx:887–891 EN-only
+disclosure-footer paragraph, Pricing.tsx:658–662 trust badges
+without VI subtitles, Pricing.tsx:684 + 724 short CTAs without VI
+subtitles, Billing.tsx:507 `Vui lòng chọn` warmer alternative,
+Billing.tsx:885 EN-mirror `đặt lại` for the reset message) stay
+deferred — they are stylistic improvements, not defects, and the
+audit doc records the alternative wording for a future author.
+
+The four "(optional)" candidates leftover from the batch-1 audits
+plus the five "(optional)" from the Phase-2 #3 batch ALSO stay
+deferred for the same reason, per the !48 + !58 + !65 precedent.
+
 **Files still pending Phase-2 audit:** `MercyGuidePanel.tsx`,
 `MercySuggestTab.tsx` (the two small remaining `mercy-guide/`
 non-kids files — both presumed to use the `em` register confirmed
