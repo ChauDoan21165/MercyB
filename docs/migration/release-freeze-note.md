@@ -1,6 +1,6 @@
 # Release Freeze Note
 
-Last updated: 2026-05-26
+Last updated: 2026-05-27
 
 ## Status
 
@@ -26,6 +26,13 @@ path is restored and a new production deployment is confirmed.
 The release gate cannot turn green while the deploy path is frozen. Even if
 local checks pass, release readiness still lacks a confirmed production
 deployment from the current authoritative branch.
+
+The A-side monetization/auth release gate is tracked in
+`reports/A-SIDE-monetization-auth-release-gate-tracker.md`. That tracker is
+separate from C-side Stage 3A/3B progress: C-side work is not blocked by the
+A-side security lane, and Chau merges A-side MRs separately from C-side MRs.
+Each Supabase Critical in the A-side tracker must be handled as one dedicated
+MR, not combined into a batch MR.
 
 The gate also remains blocked until Chau confirms the Android Studio checks:
 
