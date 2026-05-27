@@ -11,6 +11,7 @@
 // no actions — discovery + reading-only.
 
 import LocalWeaknessMap from "@/components/stage-3a/LocalWeaknessMap";
+import SuggestedPracticeList from "@/components/stage-3b/SuggestedPracticeList";
 
 export default function WeakAt() {
   return (
@@ -35,6 +36,9 @@ export default function WeakAt() {
         </p>
       </header>
       <LocalWeaknessMap />
+      <div className="mt-6">
+        <SuggestedPracticeList />
+      </div>
     </main>
   );
 }
