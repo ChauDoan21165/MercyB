@@ -484,14 +484,16 @@ you see a sustained `chunk_load_failure` count, **don't** assume
 stale deploy — check Vercel's edge-cache status and the
 `/version.json` rollout state.
 
-### 6g. The two perf directories overlap
+### 6g. Canonical Web Vitals path
 
-`src/lib/perf/webVitalsTracking.ts` and
-`src/lib/performance/web-vitals.ts` both touch Web Vitals. The
-former is the newer canonical path; the latter is kept for
-back-compat with older imports. When adding a new Vital report or
-threshold, edit `perf/`, not `performance/`. New code should not
-import from `performance/web-vitals.ts`.
+`src/lib/perf/webVitalsTracking.ts` is the canonical live emitter for
+Web Vitals (LCP / CLS / INP / TTFB / FCP). A sibling dead-code file
+historically lived at `src/lib/performance/web-vitals.ts` and was a
+common source of confusion — same domain, different module, near-
+identical name. It was deleted in `chore/remove-dead-web-vitals-
+sibling` after a zero-importer audit. When adding a new Vital report
+or threshold, edit `src/lib/perf/webVitalsTracking.ts` +
+`src/config/perfBudget.ts`. There is no other Web Vitals module.
 
 ### 6h. The 10s hard-cap flush is the lower bound, not the upper bound
 
