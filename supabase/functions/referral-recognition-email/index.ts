@@ -118,16 +118,15 @@ Deno.serve(async (req) => {
     const monthBucket = currentMonthBucket();
     const monthStart = currentMonthStartIso();
 
-    // 3) Top 10 of the current month
-    const { data: lbRows, error: lbErr } = await supabase
-      .from("monthly_referral_leaderboard")
-      .select(
-        "user_id, display_name, successful_conversions, total_referrals_this_month",
-      )
-      .eq("month_starts_on", monthStart)
-      .order("successful_conversions", { ascending: false })
-      .order("total_referrals_this_month", { ascending: false })
-      .limit(10);
+    // 3) Top 10 of the current month. This service-only RPC reads the
+    // private physical projection, not the legacy public materialized view.
+    const { data: lbRows, error: lbErr } = await supabase.rpc(
+      "get_referral_recognition_candidates",
+      {
+        p_month_starts_on: monthStart,
+        p_limit: 10,
+      },
+    );
 
     if (lbErr) return json({ ok: false, error: lbErr.message }, 500);
     const top10: LeaderboardRow[] = (lbRows ?? []) as LeaderboardRow[];

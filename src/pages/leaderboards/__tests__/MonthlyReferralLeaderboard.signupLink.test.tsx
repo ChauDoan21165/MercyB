@@ -21,7 +21,6 @@ vi.mock("@/lib/referral/leaderboardClient", () => ({
   getAllTimeTop: async () => [],
   monthStartIso: () => "2026-05-01",
   lastMonthStartIso: () => "2026-04-01",
-  findRank: () => null,
 }));
 
 vi.mock("@/lib/referral/leaderboardOptIn", () => ({
