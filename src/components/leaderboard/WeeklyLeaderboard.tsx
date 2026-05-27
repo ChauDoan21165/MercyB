@@ -132,7 +132,7 @@ export function WeeklyLeaderboard({
                 <span
                   className={
                     "w-8 shrink-0 text-right text-xs font-mono " +
-                    (row.rank <= 3 ? "text-amber-600 font-bold" : "text-slate-400")
+                    (row.rank <= 3 ? "text-amber-600 font-bold" : "text-slate-500")
                   }
                 >
                   #{row.rank}
@@ -148,7 +148,7 @@ export function WeeklyLeaderboard({
                 <span className="w-16 text-right text-sm tabular-nums text-slate-700">
                   {Math.round(row.total_score)}
                 </span>
-                <span className="hidden w-16 text-right text-xs tabular-nums text-slate-400 sm:inline-block">
+                <span className="hidden w-16 text-right text-xs tabular-nums text-slate-500 sm:inline-block">
                   {row.attempts_count}
                   <span className="ml-1">×</span>
                 </span>

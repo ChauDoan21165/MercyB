@@ -18,7 +18,7 @@
  *     - src/components/ai-tutor/TutorMemoryCard.tsx
  *     - src/pages/account/NotificationPreferences.tsx
  *
- *   Wave 2 (this MR — Progress / Billing / Listening):
+ *   Wave 2 (!83 — Progress / Billing / Listening):
  *     - src/pages/Progress.tsx
  *     - src/pages/Billing.tsx
  *     - src/pages/BillingSuccess.tsx
@@ -26,6 +26,12 @@
  *     - src/components/pricing/IapPlanCard.tsx
  *     - src/pages/listening/Library.tsx
  *     - src/pages/listening/ClipPlayer.tsx
+ *
+ *   Wave 3 (this MR — LessonRenderer + leaderboard):
+ *     - src/components/languages/LessonRenderer.tsx
+ *     - src/components/leaderboard/WeeklyLeaderboard.tsx
+ *     - src/components/leaderboard/LeaderboardCard.tsx
+ *     - src/pages/leaderboards/MonthlyReferralLeaderboard.tsx
  *
  * Each guarded file must stay free of `text-slate-400` (bare class)
  * and `#94a3b8` (hex) literals. Three escape hatches let intentional
@@ -75,7 +81,7 @@ const CONTRAST_FIXED_FILES = [
   "src/components/ai-tutor/CorrectionMode.tsx",
   "src/components/ai-tutor/TutorMemoryCard.tsx",
   "src/pages/account/NotificationPreferences.tsx",
-  // Wave 2 — this MR (Progress / Billing / Listening)
+  // Wave 2 — !83 (Progress / Billing / Listening)
   "src/pages/Progress.tsx",
   "src/pages/Billing.tsx",
   "src/pages/BillingSuccess.tsx",
@@ -83,6 +89,11 @@ const CONTRAST_FIXED_FILES = [
   "src/components/pricing/IapPlanCard.tsx",
   "src/pages/listening/Library.tsx",
   "src/pages/listening/ClipPlayer.tsx",
+  // Wave 3 — this MR (LessonRenderer + leaderboard)
+  "src/components/languages/LessonRenderer.tsx",
+  "src/components/leaderboard/WeeklyLeaderboard.tsx",
+  "src/components/leaderboard/LeaderboardCard.tsx",
+  "src/pages/leaderboards/MonthlyReferralLeaderboard.tsx",
 ] as const;
 
 /**

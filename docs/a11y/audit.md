@@ -218,7 +218,7 @@ Verified hooks in 8+ files. The `haptics.ts`, `motion.ts`, and `animations.ts` u
 
 The static guard's regex skips `disabled:` / `dark:` / `hover:` / `focus:` / `group-*:` / `peer-*:` variant prefixes and lines containing `aria-hidden`, so these exceptions don't need a per-line allow-list. The `WeeklyProgressWidget` null-score is in a file outside `CONTRAST_FIXED_FILES`; if/when that file is brought into the guard, a per-line exception entry will be needed.
 
-**Wave 2 — this MR (Progress / Billing / Listening, 26 locations):** ✅ shipped — 26 text-content `#94a3b8` hex literals across 7 files, all → `#64748b`:
+**Wave 2 — !83 (Progress / Billing / Listening, 26 locations):** ✅ shipped — 26 text-content `#94a3b8` hex literals across 7 files, all → `#64748b`:
 
 | File | Locations | Form |
 |---|---|---|
@@ -236,15 +236,32 @@ The static guard's regex skips `disabled:` / `dark:` / `hover:` / `focus:` / `gr
 |---|---|
 | `src/pages/Progress.tsx` `scoreColor()` null branch | The hex is returned for `n === null` and consumed in two AA-compliant contexts: (1) the score number renders at `fontSize: 56` + `fontWeight: 950` — WCAG large-text threshold 3:1, slate-400 on white = 3.13:1 PASSES; (2) chart `<Bar>` fills — WCAG 1.4.11 non-text contrast 3:1, same 3.13:1 PASSES. Keeping the lighter shade preserves visual hierarchy ("no data yet" reads as quieter than a real low score, which uses slate-500). Marked in-source with `// a11y-contrast:exception`. |
 
-**New guard mechanism (this MR):** the contrast test gains a third escape hatch — an inline `// a11y-contrast:exception` marker on the same line as a `text-slate-400` / `#94a3b8` literal. Used sparingly for one-off cases where the literal IS the intended design and the WCAG threshold is genuinely met (typically large-text or non-text contexts). Every marker must pair with a rationale comment on the line(s) above AND an entry in this audit doc. Two existing escape hatches still apply: variant prefixes (`disabled:` / `dark:` / etc.) and `aria-hidden` decorative elements.
+**Inline exception-marker mechanism (added in !83):** the contrast test has a third escape hatch — an inline `// a11y-contrast:exception` marker on the same line as a `text-slate-400` / `#94a3b8` literal. Used sparingly for one-off cases where the literal IS the intended design and the WCAG threshold is genuinely met (typically large-text or non-text contexts). Every marker must pair with a rationale comment on the line(s) above AND an entry in this audit doc. Two other escape hatches still apply: variant prefixes (`disabled:` / `dark:` / etc.) and `aria-hidden` decorative elements.
 
-**Remaining footprint (out of this MR's scope — wave-3+ sweep):**
+**Wave 3 — this MR (LessonRenderer + leaderboard, 15 locations):** ✅ shipped — 14 → `text-slate-500` + 1 → `text-slate-600`, across 4 files:
 
-After waves 0+1+2, whole-codebase grep finds **~120 remaining bare `text-slate-400`** + **~60 remaining `#94a3b8` hex** usages across LessonRenderer, leaderboard cards, gift / family / corporate forms, certificates, the `MarketingLandingPage` inline `<style>` block, the speech-history page, and several admin / dev surfaces. Mix of text-spans (real contrast issues), chart fills (`no_data` indicators governed by WCAG 1.4.11 non-text 3:1), and canvas `fillStyle` (also non-text).
+| File | Locations | Form | Token chosen |
+|---|---|---|---|
+| `src/components/languages/LessonRenderer.tsx` | 9 | Tailwind class | `text-slate-500` (4.78:1 on white) |
+| `src/components/languages/LessonRenderer.tsx` | 1 | Tailwind class | `text-slate-600` (6.12:1 on `bg-slate-100`) |
+| `src/components/leaderboard/WeeklyLeaderboard.tsx` | 2 | Tailwind class | `text-slate-500` |
+| `src/components/leaderboard/LeaderboardCard.tsx` | 3 | Tailwind class | `text-slate-500` |
+| `src/pages/leaderboards/MonthlyReferralLeaderboard.tsx` | 1 | Tailwind class | `text-slate-500` |
+
+**Wave 3 used a per-location darker token for the first time.** `LessonRenderer.tsx`'s `FallbackBadge` is a `text-[9px]` chip on `bg-slate-100` — at that background lightness, slate-500 only clears 4.32:1 (FAILS 4.5:1). The single chip uses `text-slate-600` (6.12:1) instead. Every other wave-3 location is on white-or-near-white and slate-500 clears with margin.
+
+**Wave-3 documented exceptions:** none.
+
+**Wave-3 bilingual split:** unusually mixed because LessonRenderer is the multi-language lesson surface (any of VI/EN/JA/KO/ZH/FR/DE/ES can be the lesson's native script).
+- **Explicit VI peer content:** 3 of 15 (`leaderboardCopy.*.vi` on `LeaderboardCard` lines 123 / 152 / 236).
+- **Language-agnostic:** 12 of 15 — rank numerals (`#1`, `#2`, …), attempts counts, romanization spans (any non-Roman script), phonetic transcriptions (IPA), register labels (`FORMAL` / `INFORMAL` / …), example sentences in the lesson's own native language. These darken for every learner regardless of language pair — including Vietnamese learners studying any of the supported targets.
+
+**Remaining footprint (out of this MR's scope — wave-4+ sweep):**
+
+After waves 0+1+2+3, whole-codebase grep finds **~105 remaining bare `text-slate-400`** + **~55 remaining `#94a3b8` hex** usages across gift / family / corporate forms, certificates, the `MarketingLandingPage` inline `<style>` block, the speech-history page, and several admin / dev surfaces. Mix of text-spans, chart fills, and canvas `fillStyle`.
 
 **Recommended next waves** (rough order of VI-learner visibility):
 
-- **Wave 3** — LessonRenderer + leaderboard cards (in-lesson surfaces; high VI-text density).
 - **Wave 4** — Gift / Family / Corporate forms + certificates (transactional, lower volume).
 - **Wave 5** — Speech-history page + admin / dev surfaces (internal-leaning audience, lowest priority).
 - **Wave 6** — `MarketingLandingPage` inline `<style>` block (one-off CSS file; outside the Tailwind/inline-React patterns).
