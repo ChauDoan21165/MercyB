@@ -106,12 +106,71 @@ If Chau wants to consolidate, the cleanest path is **NOT a merge**. Keep two con
 
 Total churn: ~6 file moves, 2 config edits, 1 docs add, 1 npm-script add. Each item is independently shippable — no big-bang migration is required.
 
-## Open questions for Chau
+## Phase 1 status — 2026-05-27
 
-- **Q1.** Does the legacy `e2e/` suite still run in CI? If not, the visual-regression snapshots may have drifted from production for many releases without anyone noticing. Worth checking the GitHub Actions logs.
-- **Q2.** Is the multi-browser matrix (firefox / webkit / mobile-chrome / mobile-safari) still load-bearing? Each adds run-time + storage. If only one prod regression in the last year came from a non-chromium browser, the matrix may be cargo.
-- **Q3.** Are the legacy specs' VIP / `/rooms-vipN` URLs intentional? CLAUDE.md non-negotiable #5 says "no VIP tier" — if those routes are dead, the specs are testing 404 pages.
-- **Q4.** Should `tests/e2e/` start gating PRs (currently optional)? The new anon specs in !36 + !41 + this MR are stable and don't require any `TEST_*` env (they `test.skip` cleanly when env is absent on the auth-required specs).
+This follow-up MR (`chore/legacy-e2e-migration-phase-1`) executes the **lowest-risk** steps of the proposal above. **No deletions** — only deprecation markers + the answered open questions below.
+
+### Actions taken
+
+- **`e2e/navigation.spec.ts`** — marked `// DEPRECATED`. Every URL it navigates to is dead (`/rooms-vip{1,2,3}`, `/sexuality-culture`, redirect-only `/chat/<id>-vip3*`). No `tests/e2e/` analogue is needed — VIP-tier navigation is a deleted product surface (CLAUDE.md non-negotiable #5), not a regressed feature.
+- **`e2e/user-journey.spec.ts`** — marked `// DEPRECATED`. Heavy reliance on dead `/subscribe` and `/vip1`; the surviving `/tiers` / `/` / `/rooms` portions are now covered by focused smoke specs (`tier-map-anon.spec.ts`, `marketing-landing-anon.spec.ts`, legacy `room-loading.spec.ts`). The brittle `text=Mercy Blade` assertion also no longer matches the live brand spelling (`MercyBlade`, no space).
+- **Open questions Q1–Q4** answered in-doc with reasoning. Q2 and Q4 carry `REQUIRES_OWNER_DECISION` flags on specific sub-choices (multibrowser policy, gate-vs-report).
+- **No actual deletions** — the dispatch explicitly defers deletion to a separate Phase-2 MR after Chau reviews this one. The deprecated specs remain discoverable by `npx playwright test -c playwright.config.ts` and will continue to fail; that failure is the correct signal that cleanup is pending.
+
+### What this MR did NOT change
+
+- The other four legacy specs (`error-handling`, `kids-foundation`, `room-loading`, `visual-regression`) — kept as-is per the migration proposal (kids is the only CI-gated spec; the other three cover ground the smoke suite does not yet).
+- `playwright.config.ts` and `playwright.smoke.config.ts` — left untouched. The proposed rename + npm script wiring is Phase 2 work.
+- `.github/workflows/playwright.yml` — unchanged. The chromium-only opt-in into `kids-foundation.spec.ts` continues; expanding to `tests/e2e/*-anon.spec.ts` per Q4 is Phase 2a.
+- No source code touched outside `tests/` and `docs/` (per dispatch).
+
+### Next dispatch (Phase 2 — after Chau reviews)
+
+1. Delete `e2e/navigation.spec.ts` and `e2e/user-journey.spec.ts`.
+2. Add `test:visual` npm script + CI-job extension to run anon `tests/e2e/*-anon.spec.ts` on every PR.
+3. Decide multibrowser policy (Q2 sub-choice).
+4. Decide gate-vs-report (Q4 sub-choice).
+5. Rename `playwright.config.ts` → `playwright.visual.config.ts` and `e2e/` → `tests/visual/`.
+
+## Open questions — resolved 2026-05-27 (Phase 1 follow-up MR)
+
+### Q1. Does the legacy `e2e/` suite still run in CI?
+
+**ANSWER:** Mostly no. Only `e2e/kids-foundation.spec.ts` runs in CI, chromium only — see `.github/workflows/playwright.yml:43`:
+
+```yaml
+- name: Run Playwright tests
+  run: npx playwright test e2e/kids-foundation.spec.ts --project=chromium
+```
+
+The other five legacy specs (`navigation`, `user-journey`, `room-loading`, `error-handling`, `visual-regression`) are **not** executed by any workflow. The multi-browser matrix in `playwright.config.ts` is declarative-only — CI explicitly opts into `--project=chromium`. The `tests/e2e/` smoke suite is also not currently CI-gated.
+
+**Implication for migration:** the legacy suite's 5 non-kids specs have been silently dark for an unknown period. The visual-regression snapshots have probably drifted; expect baseline noise on the first re-enable. `navigation.spec.ts` and `user-journey.spec.ts` are already broken-by-construction (every URL is dead — see Phase 1 below) and CI never noticed because CI never ran them.
+
+### Q2. Is the multi-browser matrix (firefox / webkit / mobile-chrome / mobile-safari) load-bearing?
+
+**ANSWER:** No, not currently. Per Q1, CI runs chromium only. The four extra browser projects in `playwright.config.ts` are dead config — nothing exercises them. Strategy-aligned recommendation: collapse the matrix to chromium only when the migration's Phase 2 lands (or move firefox/webkit to an opt-in `--project=multibrowser` job that only runs on release-candidate branches). Mobile coverage on iOS lives in the Capacitor build/native simulator path, not in browser Playwright, so dropping `mobile-safari` is safe.
+
+**REQUIRES_OWNER_DECISION:** whether to keep a single `multibrowser` opt-in job (for pre-release smoke) or drop the matrix entirely. Either is defensible.
+
+### Q3. Are the legacy specs' VIP / `/rooms-vipN` URLs intentional?
+
+**ANSWER:** No. CLAUDE.md non-negotiable #5 ("No VIP tier") supersedes the tier-naming model these specs encode. Verified 2026-05-27 against `src/router/AppRouter.tsx`:
+
+- `/rooms-vip1`, `/rooms-vip2`, `/rooms-vip3` — zero matching routes
+- `/sexuality-culture` — zero matching routes
+- `/subscribe`, `/vip1` (referenced by `user-journey.spec.ts`) — zero matching routes
+
+These specs are dead. Phase 1 of this MR adds `// DEPRECATED` markers; Phase 2 deletes them.
+
+### Q4. Should `tests/e2e/` start gating PRs?
+
+**ANSWER:** Yes for the anon specs, not yet for the auth specs. Two-step rollout:
+
+1. **Phase 2a (this MR's natural follow-up):** add a new workflow that runs the **anon** specs only — `tests/e2e/*-anon.spec.ts` matches 10 specs after !47 — chromium, on every PR. They have no `TEST_*` env-var dependency, average ~3-4 seconds per spec, and total wall time is well under 5 minutes. Net cost is small for the regression coverage.
+2. **Phase 2b (when the test Supabase project is wired into CI):** extend to the full `tests/e2e/` suite. The auth specs `test.skip` cleanly when env is absent, so we can land the workflow before the secrets are provisioned — the suite just runs degraded until then.
+
+**REQUIRES_OWNER_DECISION:** whether to gate-on-merge (block PR) or report-only (post a comment) at first. Defaults to "block on merge" for anon — these specs are deliberately written to fail loudly.
 
 ## Maintenance note
 

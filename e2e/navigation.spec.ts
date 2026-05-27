@@ -1,5 +1,27 @@
 import { test, expect } from '@playwright/test';
 
+// DEPRECATED — proposed for deletion in Phase 2 of the legacy `e2e/` migration.
+//
+// Every URL this spec navigates to is dead:
+//   - `/rooms-vip1`, `/rooms-vip2`, `/rooms-vip3`  → pre-tier-rename, no Route element matches
+//                                                    (CLAUDE.md non-negotiable #5: "no VIP tier")
+//   - `/sexuality-culture`                         → no Route element matches
+//   - `/chat/<id>-vip3*` and `/chat/<id>-vip3-sub*` → `/chat/:roomId` exists but is now a
+//                                                    ChatAliasRedirect; the assertion that the
+//                                                    URL stays put after click is broken-by-
+//                                                    construction
+//
+// Verified 2026-05-27 against `src/router/AppRouter.tsx` — zero matching routes.
+//
+// No equivalent spec in `tests/e2e/` is needed: VIP-tier navigation is a deleted product
+// surface, not a regressed feature. See `docs/testing/playwright-config-audit.md` Phase 1
+// for the full reasoning + deletion plan.
+//
+// This file is intentionally NOT removed in the current MR; it's marked DEPRECATED so a
+// future PR can delete it without ambiguity. Until then it remains discoverable by
+// `npx playwright test -c playwright.config.ts` and continues to fail, which is the
+// correct signal that the dead-route problem still needs cleanup.
+
 /**
  * Navigation E2E Tests
  * Verifies navigation flows work correctly across all room types
