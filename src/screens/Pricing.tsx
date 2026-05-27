@@ -630,7 +630,11 @@ export default function Pricing() {
   }
 
   const defaultPricingMarkup = (
-    <div style={{ maxWidth: PAGE_MAX, margin: "0 auto", padding: "12px 16px 40px" }}>
+    <main
+      id="main-content"
+      tabIndex={-1}
+      style={{ maxWidth: PAGE_MAX, margin: "0 auto", padding: "12px 16px 40px" }}
+    >
 
       {/* ── Hero banner ─────────────────────────────────────── */}
       <div style={{
@@ -903,7 +907,7 @@ export default function Pricing() {
           <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}>Privacy Policy / Chính sách bảo mật</a>
         </div>
       </div>
-    </div>
+    </main>
   );
 
   return (

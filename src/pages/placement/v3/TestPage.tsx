@@ -118,7 +118,7 @@ export default function TestPage() {
 
   if (loading || !session) {
     return (
-      <main className="px-4 py-8">
+      <main id="main-content" tabIndex={-1} className="px-4 py-8">
         <LoadingPlaceholder />
       </main>
     );
@@ -126,14 +126,14 @@ export default function TestPage() {
 
   if (!task) {
     return (
-      <main className="px-4 py-8">
+      <main id="main-content" tabIndex={-1} className="px-4 py-8">
         <LoadingPlaceholder label={{ en: "Preparing results", vi: "Đang chuẩn bị kết quả" }} />
       </main>
     );
   }
 
   return (
-    <main data-clarity-mask="true" className="min-h-[calc(100vh-72px)] bg-white">
+    <main id="main-content" tabIndex={-1} data-clarity-mask="true" className="min-h-[calc(100vh-72px)] bg-white">
       <ProgressStrip
         current={progress.answeredCount}
         total={progress.estimatedTotal}

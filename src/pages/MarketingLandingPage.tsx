@@ -89,7 +89,7 @@ export default function MarketingLandingPage() {
   };
 
   return (
-    <main className="mb-ml">
+    <main id="main-content" tabIndex={-1} className="mb-ml">
       <SeoMeta
         title="MercyBlade — Ngoại ngữ cho người Việt và Tiếng Việt cho thế giới nói tiếng Anh"
         description="Học tiếng Anh cho người Việt: sửa lỗi phát âm, luyện giao tiếp và luyện thi cùng Cô Mercy. Dùng thử miễn phí 7 ngày, không cần thẻ."
