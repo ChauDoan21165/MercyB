@@ -89,6 +89,10 @@ const PlacementV3TestPage    = lazyWithRetry(() => import("@/pages/placement/v3/
 const PlacementV3ResultsPage = lazyWithRetry(() => import("@/pages/placement/v3/ResultsPage"));
 const PlacementV3ResumePage  = lazyWithRetry(() => import("@/pages/placement/v3/ResumePage"));
 const PlacementV3SkipConfirmPage = lazyWithRetry(() => import("@/pages/placement/v3/SkipConfirmPage"));
+// Eager (not lazy) — the shell is a 30-line observer-only wrapper
+// with no dependencies worth code-splitting, and it must be on hand
+// to instrument every placement page's mount.
+import PlacementRouteShell from "@/pages/placement/v3/PlacementRouteShell";
 
 const SpeechDrillPage      = lazyWithRetry(() => import("@/pages/SpeechDrillPage"));
 const PhonemeDrillPage     = lazyWithRetry(() => import("@/pages/practice/PhonemeDrillPage"));
@@ -864,7 +868,9 @@ export default function AppRouter() {
             element={
               isPlacementV3RouteAvailable() ? (
                 <PlacementV3Gate>
-                  <LazyPage><PlacementV3WelcomePage /></LazyPage>
+                  <PlacementRouteShell routeName="placement_welcome">
+                    <LazyPage><PlacementV3WelcomePage /></LazyPage>
+                  </PlacementRouteShell>
                 </PlacementV3Gate>
               ) : (
                 <Navigate to="/" replace />
@@ -875,7 +881,9 @@ export default function AppRouter() {
             element={
               isPlacementV3RouteAvailable() ? (
                 <PlacementV3Gate>
-                  <LazyPage><PlacementV3WhoForPage /></LazyPage>
+                  <PlacementRouteShell routeName="placement_who_for">
+                    <LazyPage><PlacementV3WhoForPage /></LazyPage>
+                  </PlacementRouteShell>
                 </PlacementV3Gate>
               ) : (
                 <Navigate to="/" replace />
@@ -903,28 +911,36 @@ export default function AppRouter() {
           <Route path="/placement/test/:sessionId"
             element={
               <PlacementV3Gate>
-                <LazyPage><PlacementV3TestPage /></LazyPage>
+                <PlacementRouteShell routeName="placement_test">
+                  <LazyPage><PlacementV3TestPage /></LazyPage>
+                </PlacementRouteShell>
               </PlacementV3Gate>
             }
           />
           <Route path="/placement/results/:sessionId"
             element={
               <PlacementV3Gate>
-                <LazyPage><PlacementV3ResultsPage /></LazyPage>
+                <PlacementRouteShell routeName="placement_results">
+                  <LazyPage><PlacementV3ResultsPage /></LazyPage>
+                </PlacementRouteShell>
               </PlacementV3Gate>
             }
           />
           <Route path="/placement/resume"
             element={
               <PlacementV3Gate>
-                <LazyPage><PlacementV3ResumePage /></LazyPage>
+                <PlacementRouteShell routeName="placement_resume">
+                  <LazyPage><PlacementV3ResumePage /></LazyPage>
+                </PlacementRouteShell>
               </PlacementV3Gate>
             }
           />
           <Route path="/placement/skip"
             element={
               <PlacementV3Gate>
-                <LazyPage><PlacementV3SkipConfirmPage /></LazyPage>
+                <PlacementRouteShell routeName="placement_skip_confirm">
+                  <LazyPage><PlacementV3SkipConfirmPage /></LazyPage>
+                </PlacementRouteShell>
               </PlacementV3Gate>
             }
           />
