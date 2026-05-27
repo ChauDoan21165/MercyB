@@ -20,9 +20,10 @@
 ## Summary
 
 - **Routes enumerated:** 191 (from `AppRouter.tsx`).
-- **tests/e2e/ smoke specs:** 11 (`admin-flag-control`, `auth-and-placement`, `grammar-and-l1-detection`, `placement-forensics-dashboard`, `placement-to-first-lesson`, `placement-v3`, `placement-v3-vertical`, `practice-with-mercy-flow`, `pronunciation-full-flow`, `stage-3a-weak-at`, `streak-flow`).
+- **tests/e2e/ smoke specs:** 14 P0 (`onboarding-anon`, `pricing-anon`, `marketing-landing-anon` from !36) + 11 prior + **5 P1 new in this MR** (`blog-anon`, `languages-anon`, `professions-anon`, `support-anon`, `weekly-digest-anon`) = 19 total.
 - **e2e/ legacy specs:** 6 (`error-handling`, `kids-foundation`, `navigation`, `room-loading`, `user-journey`, `visual-regression`).
-- **P0 routes with zero coverage in EITHER dir (today):** `/onboarding`, `/pricing` (= `/upgrade`), `/` first-visit anon (MarketingLandingPage). Three new specs in this MR close this gap.
+- **P0 routes with zero coverage in EITHER dir (post-!36):** none on the originally identified set — closed by !36.
+- **P1 routes flipped from zero-coverage to smoke in THIS MR:** `/blog`, `/blog/weekly-digest`, `/languages`, `/professions`, `/support` (5 hub-level surfaces).
 
 ## P0 routes
 
@@ -52,16 +53,16 @@
 |---|---|---|---|---|---|
 | `/rooms` | `AllRooms` | — | `room-loading.spec.ts` | smoke | Public room catalog (~486 rooms). Visual-regression only today. |
 | `/rooms/:roomId` | `RoomPage` (via roomLoader) | — | `room-loading.spec.ts` | smoke | Per-room render; legacy spec covers a sample. |
-| `/blog` | `BlogIndex` | — | — | none | Public blog index. |
-| `/blog/:slug` | `BlogPost` | — | — | none | Public blog post. |
-| `/blog/weekly-digest`, `…/:weekStart` | `WeeklyDigest` | — | — | none | Public community digest archive. |
-| `/languages` + 8 sub | `LanguageHub` + 8 | — | — | none | Public family hub + 8 individual landings (Vietnamese, French, German, Japanese, Chinese, Korean, Spanish). |
-| `/professions` + 7 sub | `ProfessionsHub` + 7 | — | — | none | Public profession landings (nail-tech, restaurant, customer-service, tech-worker, healthcare, drivers, hospitality). |
-| `/exam/ielts`, `/exam/toefl`, `/exam/toeic`, `/exam/vstep` (hubs) | exam hub components | — | — | none | Public exam hubs. |
+| `/blog` | `BlogIndex` | **NEW** `blog-anon.spec.ts` | — | smoke (NEW) | Public blog index (`getAllPosts()` is fully static). |
+| `/blog/:slug` | `BlogPost` | — | — | none | Public blog post. Per-slug data dependence — deferred. |
+| `/blog/weekly-digest`, `…/:weekStart` | `WeeklyDigest` | **NEW** `weekly-digest-anon.spec.ts` | — | smoke (NEW) | Public community digest. Spec covers chrome + the four legitimate data states (loading/loaded/empty/error). |
+| `/languages` + 7 sub | `LanguagesIndexPage` + 7 | **NEW** `languages-anon.spec.ts` (hub) | — | smoke (NEW, hub only) | Hub asserts hero + 7 sub-route links. Per-language sub-pages still uncovered. |
+| `/professions` + 7 sub | `ProfessionsIndexPage` + 7 | **NEW** `professions-anon.spec.ts` (hub) | — | smoke (NEW, hub only) | Hub asserts hero + the active-card link set. Per-profession sub-pages still uncovered. |
+| `/exam/ielts`, `/exam/toefl`, `/exam/toeic`, `/exam/vstep` (hubs) | exam hub components | — | — | none | Exam hubs are `RequireAuth`-wrapped — anon spec is not viable, signed-in expansion deferred. |
 | `/exam-prep/ielts/{listening,reading,speaking,writing}` | exam-prep components | `practice-with-mercy-flow.spec.ts` (speaking only) | — | full (speaking only); none (others) | One of four practice surfaces covered. |
 | `/exam-prep/toefl/{listening,reading,speaking,writing}` | exam-prep components | — | — | none | TOEFL parallel suite. |
 | `/exam-prep/toeic` | exam-prep TOEIC | — | — | none | TOEIC index. |
-| `/support` | `Support` | — | — | none | Public support page. |
+| `/support` | `Support` | **NEW** `support-anon.spec.ts` | — | smoke (NEW) | Public support page. Hero + contact section + channel-name presence. |
 | `/account`, `/account/*` | `AccountPage` | `streak-flow.spec.ts` (touches `/account`) | — | transit | Signed-in account hub. |
 | `/progress` | `Progress` | — | — | none | Signed-in long-term progress. |
 | `/admin/feature-flags` | admin flags page | `admin-flag-control.spec.ts` | — | full | Admin flow covered; other `/admin/*` sub-pages are not. |
@@ -111,11 +112,21 @@
 
 Three new specs under `tests/e2e/`:
 
+### P0 specs added in !36 (now merged)
+
 1. `onboarding-anon.spec.ts` — `/onboarding` anon render + native-pick → target step click-through.
 2. `pricing-anon.spec.ts` — `/pricing` anon render + key brand copy + tier list presence.
 3. `marketing-landing-anon.spec.ts` — `/` first-visit anon → MarketingLandingPage hero + dual CTAs link to `/onboarding`.
 
-All three are anon-only, do not touch Supabase, do not require any `TEST_*` env var, and use the `page.addInitScript` + `blockExternalServices` pattern already established by `stage-3a-weak-at.spec.ts`.
+### P1 specs added in THIS MR
+
+4. `blog-anon.spec.ts` — `/blog` index hero + at least one post link.
+5. `languages-anon.spec.ts` — `/languages` hub hero + all 7 sub-route links.
+6. `professions-anon.spec.ts` — `/professions` hub hero + active card link set.
+7. `support-anon.spec.ts` — `/support` hero + contact section + Zalo/Messenger affordances.
+8. `weekly-digest-anon.spec.ts` — `/blog/weekly-digest` hero + privacy footer + one of the four legitimate data-section states.
+
+All anon-only, no Supabase fixtures, no `TEST_*` env vars, same `blockExternalServices` pattern as `stage-3a-weak-at.spec.ts`.
 
 ## Suggested follow-ups (NOT in this MR)
 
@@ -123,9 +134,11 @@ All three are anon-only, do not touch Supabase, do not require any `TEST_*` env 
 - **P0:** `auth-pages-anon.spec.ts` covering `/login`, `/signin`, `/signup`, `/reset-password` render-only (no real auth). Plays nicely with the existing `auth-and-placement.spec.ts` which already does the signup mutation.
 - **P1:** `rooms-catalog-anon.spec.ts` for `/rooms` — index renders some cards anonymously.
 - **P1:** Expand `exam-prep` coverage from speaking-only (current) to listening + reading + writing.
-- **P1:** `language-family-anon.spec.ts` parametrised across `/languages/{french,german,…}`.
-- **P1:** `profession-landings-anon.spec.ts` parametrised across `/professions/{nail-tech,restaurant,…}`.
-- **P2:** A `seo-landings-anon.spec.ts` smoke pass over the five `/seo/*` pages.
+- **P1:** `language-family-anon.spec.ts` parametrised across `/languages/{french,german,…}` (sub-pages).
+- **P1:** `profession-landings-anon.spec.ts` parametrised across `/professions/{nail-tech,restaurant,…}` (sub-pages).
+- **P1:** `blog-post-anon.spec.ts` for `/blog/:slug` (per-post render, requires a stable test post slug).
+- **P1:** `leaderboard-anon.spec.ts` for `/leaderboard` (anon-viewable per AppRouter; Supabase dependency similar to weekly-digest).
+- **P2:** `seo-landings-anon.spec.ts` smoke pass over the five `/seo/*` pages.
 
 ## Maintenance
 
