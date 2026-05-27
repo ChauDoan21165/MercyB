@@ -22,9 +22,10 @@ what's needed for that.
 
 | File | Role |
 |---|---|
-| `nightly-dump.sh` | The dump script. Runs `pg_dump --format=custom --compress=9`, pipes through `gpg --encrypt`, writes a single `.dump.gpg` file. |
-| `restore.sh` | Companion decrypt + `pg_restore`. **Destructive.** Has a 10-second guard countdown and a `--dry-run` mode. |
-| `.gitlab-ci.yml` job `nightly-db-backup` | Scheduled execution at 04:00 UTC daily, uploads to object store via `rclone`. |
+| `nightly-dump.sh` | Two encrypted dumps per run: a `.schema.dump.gpg` (DDL-only, fast restore) and a `.dump.gpg` (full schema + data). `pg_dump --format=custom --compress=9` piped through `gpg --encrypt`. Plaintext never touches disk. |
+| `restore.sh` | Companion decrypt + `pg_restore`. **Destructive.** 10-second guard countdown and a `--dry-run` mode. |
+| `.gitlab-ci.yml` job `nightly-db-backup` | Scheduled execution at the configured cron time, uploads to object store via `rclone` into date-bucketed remote folders (`daily/`, `weekly/`, `monthly/`). |
+| `.gitlab-ci.yml` job `test-db-backup-now` | Manual UI-triggered run with identical logic — lets Chau validate the pipeline without waiting for the schedule. |
 | `tests/scripts/db-backup-script-shape.test.ts` | Vitest shape test — catches credential-leak regressions in the bash scripts at compile time. |
 
 ## One-time setup (Chau, before first run)
@@ -64,21 +65,24 @@ the variable contents permit):
 
 | Variable | Type | Contents |
 |---|---|---|
-| `SUPABASE_DB_URL` | masked, protected | `postgresql://postgres:<password>@db.<project-ref>.supabase.co:5432/postgres` |
-| `GPG_RECIPIENT_KEY` | file (NOT masked — armored public-key blob breaks masking) | The contents of `mercyb-backup-pub.asc` from step 1 |
-| `RCLONE_CONFIG` | file | Your rclone config (see step 3) |
-| `RCLONE_REMOTE` | not masked, protected | The rclone remote name + path, e.g. `b2:mercyb-backups/prod` |
+| `DATABASE_URL` | masked, protected | `postgresql://postgres:<password>@db.<project-ref>.supabase.co:5432/postgres` |
+| `GPG_PUBLIC_KEY_FILE` | **file** (NOT masked — armored public-key blob breaks masking) | The contents of `mercyb-backup-pub.asc` from step 1 |
+| `RCLONE_CONFIG` | **file** | Your rclone config (see step 3) |
+| `RCLONE_CONFIG_REMOTE` | not masked, protected | The rclone remote name + path, e.g. `b2:mercyb-backups/prod` |
 
-**Why `GPG_RECIPIENT_KEY` is a "file" variable, not a regular one:** the
-public-key blob is multi-line and contains characters GitLab's masking
-rejects. File-type variables are written to disk as a path that the job
-can read, which is exactly what `nightly-dump.sh` expects when
-`GPG_RECIPIENT_KEY_ID` points at a readable file path.
+**Why `GPG_PUBLIC_KEY_FILE` is a "file" variable, not a regular one:**
+the public-key blob is multi-line and contains characters GitLab's
+masking rejects. File-type variables are written to disk as a path
+exposed through the env var, which is exactly what `nightly-dump.sh`
+expects.
 
-In the CI job, the env var `GPG_RECIPIENT_KEY_ID` is set to
-`$GPG_RECIPIENT_KEY` (the file path GitLab writes the contents to), and
-`nightly-dump.sh` detects it's a file path and imports the public key
-on the fly.
+There is also a legacy alternative env var `GPG_RECIPIENT_KEY_ID` that
+takes a key id / fingerprint ALREADY in the keyring — useful on a
+laptop where you've imported the public key. CI runners are fresh per
+job so `GPG_PUBLIC_KEY_FILE` is the practical choice in CI.
+
+The dump script also accepts `SUPABASE_DB_URL` as a fallback if
+`DATABASE_URL` is unset, but new setups should use `DATABASE_URL`.
 
 ### 3. Set up the off-Supabase object store
 
@@ -106,46 +110,89 @@ cat ~/.config/rclone/rclone.conf    # paste this into the GitLab variable RCLONE
 
 ### 4. First manual run
 
-Trigger the `nightly-db-backup-now` manual job in GitLab CI **once**
-before relying on the schedule. It uses identical code paths to the
-scheduled job, so a successful manual run means the schedule will work
-too.
+Trigger the `test-db-backup-now` manual job in GitLab CI **once** before
+relying on the schedule. It uses identical code paths to the scheduled
+job, so a successful manual run means the schedule will work too.
 
-## Retention policy
+## Date-bucketed remote layout
 
-Recommended via `rclone` lifecycle rules (or set in the object-store
-console — they're equivalent):
+The scheduled CI job uploads into three folders under
+`$RCLONE_CONFIG_REMOTE`:
 
-- **7 daily** — keep the last 7 days verbatim.
-- **4 weekly** — Sundays only, kept for 28 days.
-- **12 monthly** — first of the month only, kept for 1 year.
+| Folder | What lands here | When |
+|---|---|---|
+| `daily/`   | Every night's pair of dumps (schema + full) | Always |
+| `weekly/`  | Sunday night's pair of dumps                | Day-of-week == 7 (Sunday, UTC) |
+| `monthly/` | First-of-the-month pair of dumps            | Day-of-month == 01 (UTC) |
 
-For Backblaze B2, this is a lifecycle rule on the bucket:
+The same encrypted files are simply copied into each folder, so the
+weekly/monthly snapshots survive even after the daily folder gets
+pruned. Pruning is independent per folder (see below).
+
+## Retention policy + rclone-based pruning
+
+Recommended: **7 daily + 4 weekly + 12 monthly**.
+
+### Option A — rclone-based pruning (works on any S3-compatible store)
+
+Run these as a follow-up job in the same CI pipeline, or on a separate
+cron. They use `--min-age` to delete files older than the cutoff:
+
+```bash
+# Daily — keep only the last 7 days:
+rclone delete --min-age 8d "$RCLONE_CONFIG_REMOTE/daily/"
+
+# Weekly — keep only the last 4 Sundays (28 days ≈ 4 weeks; use 29d
+# so we never accidentally trim a still-recent week):
+rclone delete --min-age 29d "$RCLONE_CONFIG_REMOTE/weekly/"
+
+# Monthly — keep only the last 12 monthly snapshots (366d to be safe
+# across leap years):
+rclone delete --min-age 366d "$RCLONE_CONFIG_REMOTE/monthly/"
+```
+
+Dry-run first if you're not sure what would go:
+
+```bash
+rclone delete --dry-run --min-age 8d "$RCLONE_CONFIG_REMOTE/daily/"
+```
+
+### Option B — object-store lifecycle rules
+
+If the provider supports it (Backblaze B2, S3, R2 all do), set lifecycle
+rules in the provider console. Backblaze B2 example:
 
 ```
-keepLastVersions: 7         # daily
-keepLastWeekly:   4         # weekly
-keepLastMonthly: 12         # monthly
+keepLastVersions: 7        # daily
+keepLastWeekly:   4        # weekly
+keepLastMonthly: 12        # monthly
 ```
 
-For S3, set lifecycle transitions to Glacier Deep Archive after 30 days,
-delete after 1 year.
+S3: transition objects to Glacier Deep Archive after 30 days, delete
+after the retention window.
+
+The lifecycle-rule approach is slightly more reliable than the rclone
+approach because it survives client-side bugs (e.g. an empty
+`$RCLONE_CONFIG_REMOTE` would otherwise wipe the bucket root with
+`rclone delete`). If you choose Option B, you can skip the rclone
+prune commands entirely.
 
 ## Manual run (laptop)
 
-You may want to take a one-off dump before a risky migration. With
-`SUPABASE_DB_URL` and a keyring containing the public key both set:
+You may want to take a one-off pair of dumps before a risky migration.
+With `DATABASE_URL` and a keyring containing the public key both set:
 
 ```bash
-export SUPABASE_DB_URL="postgresql://postgres:...@db.<ref>.supabase.co:5432/postgres"
+export DATABASE_URL="postgresql://postgres:...@db.<ref>.supabase.co:5432/postgres"
 export GPG_RECIPIENT_KEY_ID="admin@mercyblade.com"   # or the fingerprint
 export BACKUP_OUTPUT_DIR="$HOME/Desktop/mercyb-backups"
 
 ./scripts/db-backup/nightly-dump.sh
-# OK /Users/you/Desktop/mercyb-backups/mercyb-2026-05-27T04-00-00Z-prod.dump.gpg 184320104
+# OK /Users/you/Desktop/mercyb-backups/mercyb-2026-05-27T04-00-00Z-prod.schema.dump.gpg 41244
+# OK /Users/you/Desktop/mercyb-backups/mercyb-2026-05-27T04-00-00Z-prod.dump.gpg        184320104
 ```
 
-The single `OK <path> <bytes>` line is the success contract — anything
+The two `OK <path> <bytes>` lines are the success contract — anything
 else means failure.
 
 ## Restore procedure
@@ -155,9 +202,12 @@ straight back over the live Supabase project unless you have already
 exhausted every other option — a successful restore to a staging or
 local Postgres is the test that the dump is actually usable.
 
+If you only need to check structure quickly (e.g. confirm a table
+exists), restore from the `.schema.dump.gpg` file — it's tiny and fast.
+
 ```bash
 # 1. Pull the backup down.
-rclone copy b2:mercyb-backups/prod/mercyb-2026-05-27T04-00-00Z-prod.dump.gpg ./
+rclone copy "$RCLONE_CONFIG_REMOTE/daily/mercyb-2026-05-27T04-00-00Z-prod.dump.gpg" ./
 
 # 2. Make sure your GPG private key is in your keyring.
 #    (Import once from the 1Password export — `gpg --import mercyb-backup-priv.asc`.)
@@ -207,12 +257,12 @@ backup/restore pipelines most commonly break.
 In rough order of likelihood:
 
 1. **Supabase account locked / suspended** — the use case that drove
-   this. Restore to a fresh Supabase or Neon project and re-point the
-   app.
-2. **Bad migration shipped to prod** — restore a pre-migration dump to
-   a side project, dump the affected tables, copy the rows back into
-   prod (don't full-restore prod from a backup if you can possibly
-   avoid it).
+   this. Restore the full dump to a fresh Supabase or Neon project and
+   re-point the app.
+2. **Bad migration shipped to prod** — restore the schema-only dump to
+   a side project, dump the affected tables from prod, replay; OR
+   restore the full pre-migration dump to a side project and copy the
+   affected rows back into prod.
 3. **Data accidentally deleted** — same surgical restore as (2).
 4. **Disaster recovery / region outage** — bring up a new project, full
    restore, re-point.

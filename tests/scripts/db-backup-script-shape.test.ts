@@ -127,8 +127,38 @@ describe("scripts/db-backup/nightly-dump.sh — credential-safety shape", () => 
     expect(exits.length).toBeGreaterThanOrEqual(3);
   });
 
-  it("emits a single-line success summary starting with OK", () => {
-    expect(NIGHTLY_DUMP).toMatch(/printf\s+['"]OK\s+%s\s+%s/);
+  it("emits TWO OK success summary lines (one per dump)", () => {
+    // The contract: a `.schema.dump.gpg` AND a `.dump.gpg` per run, in
+    // that order. We assert the printf shape AND that exactly two such
+    // printfs exist (one per dump file).
+    const okPrintfs = NIGHTLY_DUMP.match(/printf\s+['"]OK\s+%s\s+%s/g) ?? [];
+    expect(okPrintfs.length).toBe(2);
+  });
+
+  it("takes a schema-only dump in addition to the full dump", () => {
+    // Schema-only is the fast-restore fallback for structural checks
+    // without decompressing the full data dump. Required deliverable
+    // for this MR.
+    expect(NIGHTLY_DUMP).toMatch(/--schema-only/);
+    // And the output filename for it should follow .schema.dump.gpg.
+    expect(NIGHTLY_DUMP).toMatch(/\.schema\.dump\.gpg/);
+  });
+
+  it("accepts either GPG_PUBLIC_KEY_FILE or GPG_RECIPIENT_KEY_ID as the recipient", () => {
+    // Two distinct env vars per the dispatch refinement. GitLab CI uses
+    // GPG_PUBLIC_KEY_FILE (file-type variable); laptop runs use
+    // GPG_RECIPIENT_KEY_ID against a preloaded keyring.
+    expect(NIGHTLY_DUMP).toMatch(/\bGPG_PUBLIC_KEY_FILE\b/);
+    expect(NIGHTLY_DUMP).toMatch(/\bGPG_RECIPIENT_KEY_ID\b/);
+    // The "neither is set" error path must exist.
+    expect(NIGHTLY_DUMP).toMatch(/neither GPG_PUBLIC_KEY_FILE nor GPG_RECIPIENT_KEY_ID/);
+  });
+
+  it("prefers DATABASE_URL with SUPABASE_DB_URL as fallback", () => {
+    // Per the dispatch refinement: DATABASE_URL is canonical;
+    // SUPABASE_DB_URL is the legacy alias.
+    expect(NIGHTLY_DUMP).toMatch(/\$\{DATABASE_URL[:-]/);
+    expect(NIGHTLY_DUMP).toMatch(/\$\{SUPABASE_DB_URL[:-]/);
   });
 });
 
