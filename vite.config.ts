@@ -64,6 +64,27 @@ function isReactPath(s: string) {
   );
 }
 
+function sanitizeSentryDeployEnvPart(value: string): string {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function getSentryDeployEnvironment(): string {
+  const netlifyContext = process.env.CONTEXT?.trim();
+
+  if (netlifyContext === 'production') return 'production';
+  if (netlifyContext === 'deploy-preview') return 'preview';
+  if (netlifyContext === 'branch-deploy') {
+    const branch = sanitizeSentryDeployEnvPart(process.env.BRANCH ?? '');
+    return branch ? `branch-${branch}` : 'branch-deploy';
+  }
+
+  return String(process.env.VITE_APP_ENV ?? process.env.NODE_ENV ?? 'development').trim();
+}
+
 export default defineConfig({
   plugins: [
     react({
@@ -90,7 +111,7 @@ export default defineConfig({
 
     // Sentry source-map upload — only active when SENTRY_AUTH_TOKEN +
     // SENTRY_ORG + SENTRY_PROJECT are present (i.e. real production
-    // builds on Vercel). On laptop builds with no token the plugin is a
+    // deploy builds). On laptop builds with no token the plugin is a
     // no-op, so dev builds never reach out to Sentry. The plugin sets
     // `build.sourcemap = "hidden"` automatically: source maps are
     // generated, uploaded, and then NOT referenced by the JS bundle, so
@@ -107,6 +128,16 @@ export default defineConfig({
             // still goes through. No data leaves the build host except
             // the sourcemaps.
             telemetry: false,
+            release: {
+              // Netlify production deploys may still have legacy Vercel env
+              // vars in the build environment. Without an explicit deploy env,
+              // @sentry/vite-plugin auto-detects VERCEL_TARGET_ENV and reports
+              // releases as `vercel-preview`. Netlify CONTEXT is the source of
+              // truth for the release deploy label.
+              deploy: {
+                env: getSentryDeployEnvironment(),
+              },
+            },
             // Per @sentry/vite-plugin v4.x API, sourcemap-related
             // options nest under `sourcemaps:`. A bare top-level
             // `filesToDeleteAfterUpload` was the v2.x shape, removed in
