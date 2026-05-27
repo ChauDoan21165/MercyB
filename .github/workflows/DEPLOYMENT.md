@@ -1,167 +1,198 @@
 # Deployment Configuration Guide
 
-This guide explains how MercyBlade deploys. The project deploys
-**exclusively via Vercel** — production through a GitHub Actions
-workflow, PR previews through Vercel's native GitHub integration.
-There is no other deploy target and no preview-deploy job to
-"enable": previews are automatic.
+> **2026-05-27 — post-migration rewrite.** Production hosting moved from
+> **Vercel** to **Netlify** during the May 26–27 incident cascade (see
+> `docs/runbooks/disaster-recovery.md` §0 and §2.2 for the authoritative
+> incident log). The repository simultaneously moved from GitHub to
+> **GitLab** (`gitlab.com:cd12536/mercyB`). This file is being kept up
+> to date with the new ground truth. The original Vercel-centric copy
+> is preserved in git history if needed.
 
-## Overview
+---
 
-- **Production (`main` → prod):** the `production-deploy.yml` GitHub
-  Actions workflow is the single owner. See below.
-- **PR previews:** Vercel's native GitHub integration builds and
-  deploys a preview for every pull request automatically. The preview
-  URL appears as the **Vercel** check on the PR. No secrets or
-  workflow changes are required for this — it is configured on the
-  Vercel project, not in this repo.
-- **`preview-deployment.yml`** does **not** deploy. It validates JSON,
-  type-checks, builds, uploads a build artifact, and comments build
-  status on the PR. It is a CI gate, not a deployer.
+## Current ground truth (read this first)
 
-## Production Deployment (main → prod)
+- **Repository:** GitLab — `gitlab.com:cd12536/mercyB`. The
+  GitHub remote is retained read-only as `old-origin` for forensics.
+  Use `glab mr create`, not `gh pr create`.
+- **Hosting (production):** **Netlify**. The site at
+  `mercyblade.com` is served from Netlify with Cloudflare DNS in
+  front of it. Sentry's deploy-environment tag is read from
+  `NETLIFY_CONTEXT` (`production` / `deploy-preview` / `branch-deploy`)
+  per commit `952d3e9e3 fix(sentry): map deploy environment from
+  Netlify CONTEXT, not stale VERCEL_ENV`.
+- **Hosting (recovery / fallback):** **Vercel** is now the
+  *recovery* host. `vercel.json` still ships in the repo and the
+  Vercel project is preserved as the documented emergency landing
+  pad. Memory: [[project_vercel_prod_deploy]] (now stale on
+  "primary" — Vercel is recovery-only post-migration). See
+  `docs/runbooks/disaster-recovery.md` §2.2 for the swap procedure.
+- **CI/CD:** GitLab CI (`.gitlab-ci.yml`). Today the only scheduled
+  job is the nightly Postgres backup (`nightly-db-backup`). MR-time
+  gates (typecheck, lint, test, validate-rooms) are not yet ported
+  from the legacy GitHub Actions workflows — that work is its own
+  migration track per the GitLab-CI consolidation MR.
+- **Legacy GitHub Actions:** the `.github/workflows/*.yml` files
+  (`production-deploy.yml`, `preview-deployment.yml`,
+  `deploy-edge-functions.yml`, `sync-lessons.yml`, etc.) are
+  **legacy** — they do not run today. Treat them as documentation
+  of the prior deploy shape, not as current pipeline. Do not
+  modify them in a passing PR; the GitHub-to-GitLab CI port is its
+  own dispatch.
 
-Production is deployed by the **`production-deploy.yml`** GitHub Actions
-workflow — the single owner of production deploys. On every push to `main`
-(and via `workflow_dispatch`) it:
+For the full incident-recovery model (what happens when GitLab /
+Netlify / Vercel / Supabase go down, who owns each layer, and
+pre-staged commands to swap providers under stress), the
+authoritative runbook is
+**[`docs/runbooks/disaster-recovery.md`](../../docs/runbooks/disaster-recovery.md)**.
+This file is for the steady-state deploy workflow; that file is
+for incidents.
 
-1. Pulls the Vercel production environment (`vercel pull --environment=production`)
-2. Builds the production bundle with the Vercel build pipeline (`vercel build --prod`)
-3. Deploys the prebuilt output (`vercel deploy --prebuilt --prod`)
+---
 
-It **fails loud (red)** if the build or deploy fails — it replaced a former
-no-op stub that reported a false green without ever deploying anything (see
-the workflow's header comment and PR #657). Requires the GitHub Actions
-secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
+## Production deployment (main → prod)
 
-> **No double-deploy (PR #681, merged 2026-05-19).** Vercel's GitHub
-> App used to also auto-deploy `main`, double-deploying production.
-> Root `vercel.json` now sets `{"git":{"deploymentEnabled":{"main":
-> false}}}`, so the GitHub App no longer deploys `main` —
-> `production-deploy.yml` is the **sole** prod owner. The GitHub App
-> still auto-deploys **PR-branch previews** (only the production
-> branch is gated; this is intentional — do not "fix" it). Revert
-> path if Actions ever proves flaky: delete the `git` block from
-> `vercel.json`.
+### Today (Netlify-native)
 
-## Important Notes
+Netlify is connected to the GitLab repo via Netlify's GitLab
+integration. The connection is configured in the Netlify dashboard,
+not in this repo. On every push to `main`, Netlify:
 
-### Supabase Backend
+1. Detects the push via the GitLab webhook.
+2. Pulls the source.
+3. Runs `npm install` and `npm run build`.
+4. Publishes the `dist/` output to the production site at
+   `mercyblade.com`.
 
-- **Preview branches do NOT create separate database instances**
-- All preview deployments share the same Supabase backend (the single project)
-- Supabase Branching (a separate DB per preview) is not configured
-- If you need isolated database environments, set this up manually through the Supabase dashboard
+There is **no GitLab CI deploy job** today — Netlify's webhook
+integration is the trigger. If a deploy goes wrong, the Netlify
+dashboard's deploy log is the first thing to check.
 
-### What Gets Previewed
+### Manual production deploy (rare)
 
-✅ **Previewed:**
-- Frontend code changes
-- UI/UX updates
-- Component changes
-- Styling modifications
+For emergency manual deploys (e.g. Netlify's webhook is broken,
+or a quick one-off from a specific commit):
 
-❌ **Not Isolated Per Preview:**
-- Database changes (all previews share same DB)
-- Edge functions (deployed globally)
-- Storage buckets
-- Auth configuration
+```bash
+# Build locally with prod-equivalent env
+npm install
+npm run build
 
-## How Preview Deploys Work
+# Deploy to prod
+netlify deploy --prod --dir=dist --auth="$NETLIFY_AUTH_TOKEN"
+```
 
-Previews require **no configuration in this repo**. The Vercel project
-is connected to GitHub via Vercel's native integration; opening or
-updating a PR triggers a preview build on Vercel directly. The result
-surfaces as the **Vercel** status check on the PR, with the preview
-URL.
+`NETLIFY_AUTH_TOKEN` is stored in macOS Keychain — see
+[`docs/runbooks/disaster-recovery.md`](../../docs/runbooks/disaster-recovery.md)
+§5.5 for the pre-staged form.
 
-If you ever need a build artifact without Vercel (e.g. to deploy a
-one-off to another host), `preview-deployment.yml` already uploads the
-`dist/` folder as a downloadable artifact on every PR run — download
-it from the workflow run and deploy it wherever you like.
+### Recovery deploy (Netlify down, Vercel as fallback)
 
-## Workflow Behavior (`preview-deployment.yml`)
+See [`docs/runbooks/disaster-recovery.md`](../../docs/runbooks/disaster-recovery.md)
+§2.2 for the full procedure. Short version:
 
-### When Triggered
-- On pull request creation
-- On new commits to an open pull request
-- On pull request reopening
+```bash
+vercel pull --environment=production --token="$VERCEL_TOKEN"
+vercel build --prod
+vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
+```
 
-### What It Does
-1. ✅ Validates all JSON data files
-2. ✅ Runs TypeScript type checking
-3. ✅ Builds the production bundle
-4. ✅ Uploads build artifacts (`dist/`)
-5. 💬 Comments build status on the PR
+Then swap the Cloudflare DNS A-record at the dashboard.
 
-It does **not** deploy — Vercel's native integration handles the
-preview deploy independently.
+---
 
-### Concurrency
-- Only one preview build runs per PR at a time
-- New commits cancel in-progress builds
+## Preview deployments
 
-## Environment Variables
+Netlify auto-builds a preview deploy for every merge request branch
+via its GitLab integration. The preview URL is posted as a comment
+on the MR by Netlify's GitLab bot. No configuration in this repo is
+required — it is wired at the Netlify project level.
 
-Preview and production deployments use the same environment variables:
-- `VITE_SUPABASE_URL`
-- `VITE_SUPABASE_PUBLISHABLE_KEY`
+Sentry's deploy-environment for previews is `deploy-preview` (read
+from `NETLIFY_CONTEXT`).
 
-These are managed in the Vercel project dashboard (Settings → Environment
-Variables). See `docs/SECURITY_HARDENING_2025.md` for the canonical list.
+**Database is shared.** Preview deploys all point at the same
+production Supabase project (`buemdfxyhxunzpgdoqin.supabase.co`).
+Supabase Branching (DB-per-preview) is not configured. Schema
+changes affect every preview at once; coordinate carefully.
 
-## Cost Considerations
+---
 
-### Vercel
-- Preview deployments are free on all plans
-- The project is on Vercel Pro (no Hobby deployment rate limit)
+## What gets deployed
 
-### GitHub Actions
-- Free tier: 2,000 minutes/month for private repos
-- Public repos: unlimited
+✅ **Deployed by Netlify:**
 
-## Troubleshooting
+- The Vite-built SPA (`dist/`) — every page in `src/router/AppRouter.tsx`.
+- Static assets (`public/*`).
+- Static `_redirects` rules (`public/_redirects`).
 
-### Build Fails
-1. Check the workflow run logs in GitHub Actions
-2. Ensure all dependencies are in `package.json`
-3. Verify data validation passes locally
+❌ **NOT deployed by Netlify** (separate deploy paths):
 
-### Production Deploy Fails
-1. Check the `production-deploy.yml` run logs in GitHub Actions
-2. Verify the `VERCEL_TOKEN` / `VERCEL_ORG_ID` / `VERCEL_PROJECT_ID`
-   secrets are set and the token is not expired
-3. The workflow fails loud (red) on a real failure — never assume a
-   green badge means shipped without checking the run
+- **Supabase edge functions** (`supabase/functions/*`) — deploy via
+  `supabase functions deploy <name> --project-ref <ref>`. The CI
+  pipeline for this is not yet ported to GitLab; today this is a
+  manual developer-machine deploy. See "Edge functions — verified
+  deploy procedure" below.
+- **Supabase database migrations** (`supabase/migrations/*.sql`) —
+  applied manually via the Supabase dashboard SQL Editor by Chau.
+  CLI `db push` is **not** the canonical apply path (memory:
+  [[project_agent_infra_access]] — agent restriction).
+- **Supabase Storage bucket contents** (`room-audio`, etc.) — no
+  build-step deploy; managed via the dashboard or `supabase
+  storage` CLI.
+- **iOS / Android app bundles** — see
+  [`docs/architecture/systems/native-shells.md`](../../docs/architecture/systems/native-shells.md)
+  for the Capacitor + store-submission flow.
 
-### Preview Missing or Stale
-1. Check the **Vercel** status check on the PR for the preview URL and
-   build log (the preview is built by Vercel, not by GitHub Actions)
-2. Remember: all previews share the same database — DB changes affect
-   every preview immediately
-3. Consider feature flags for gradual rollouts
+---
 
-## Best Practices
+## Environment variables
 
-1. **Always validate data files** before committing
-2. **Test database changes carefully** - they affect all previews
-3. **Use meaningful commit messages** for easy tracking
-4. **Close PRs when done** to clean up preview deployments
-5. **Monitor build times** and optimize if needed
+Production and preview environments use the same env vars. Today
+they are managed in the **Netlify project dashboard** (Settings →
+Build & deploy → Environment), not in this repo. The canonical
+list is `docs/SECURITY_HARDENING_2025.md`; the Vite-prefixed subset
+(`VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`,
+`VITE_SUPABASE_ANON_KEY`, `VITE_SENTRY_DSN`,
+`VITE_REVENUECAT_APPLE_API_KEY`, analytics IDs) reaches the
+browser bundle. Server-only secrets (Stripe webhook signing,
+Resend API key, RevenueCat webhook auth token) live in Supabase
+Edge Function secrets (`supabase secrets set <KEY>=<value>
+--project-ref buemdfxyhxunzpgdoqin`).
 
-## Edge Functions — Verified Deploy Procedure
+The Vercel project's env vars are retained (mirroring Netlify's)
+so the recovery deploy path in §2.2 of disaster-recovery.md works
+without re-population.
 
-PR #669 added a real edge-function deploy + PR drift-gate pipeline,
-replacing the old `supabase-functions.yml` (which only ever deployed a
-non-existent `mercy_weekly_cron` and failed for 100+ runs). When you still
-deploy an edge function **manually** from a developer machine, the safety
-bar is to confirm twice that the bundle you want is the bundle you shipped —
-the procedure below makes a stale deploy impossible.
+---
+
+## Cost notes
+
+- **Netlify:** free or Pro tier; deploy bandwidth + build minutes
+  fit the current scale (~100 users).
+- **Vercel:** the project remains on Pro (no Hobby deployment
+  rate limit) so emergency recovery deploys don't hit limits.
+- **Supabase:** Pro tier (per `STRATEGY.md` §"Tech stack").
+- **GitLab:** free tier; CI minutes fit a single nightly job.
+- **Cloudflare:** free tier (DNS + CDN); the `room-audio` bucket
+  is Cloudflare-fronted per memory:
+  [[project_supabase_audio_cdn_stale]].
+
+---
+
+## Edge functions — verified deploy procedure
+
+Edge function deploys today are **manual from a developer machine**.
+The MR-time deploy pipeline that was tracked in PR #669
+(`deploy-edge-functions.yml`) is part of the GitHub-to-GitLab CI
+port that hasn't landed yet. Until it does, use the procedure
+below — it costs ~10 seconds per deploy and makes the stale-deploy
+class of mistake impossible.
 
 Two stale-deploy cycles in PRs #257 and #258 (azure-phoneme code
 merged to main but the manual deploy was run from a working tree
 that didn't pull latest) cost real time. The procedure below adds
-~10 seconds per deploy and makes that class of mistake impossible.
+the verify-twice gate that prevents repetition.
 
 ### Five-step procedure
 
@@ -214,10 +245,6 @@ grep configHeaderUsesBase64UrlChars supabase/functions/azure-phoneme/core.ts
 # → matches one line; PR #259 is also live.
 ```
 
-If the second `grep` had returned nothing, the deploy was stale and
-the next /pronunciation/srs attempt would still 400 — exactly the
-loop PR #258 hit before this procedure existed.
-
 ### Picking a good marker
 
 A marker is "any string unique to your PR's diff." The best ones
@@ -226,22 +253,121 @@ are stable across rebases:
 - a new exported function name
 - a new constant name (`UPPER_SNAKE_CASE`)
 - a new sentinel reason value (`"azure_payload_failed"`)
-- a comment line that names the PR (`PR #259`) — handy for cross-
-  referencing back to the change history
+- a comment line that names the MR (`MR !456`) — handy for
+  cross-referencing back to the change history
 
 Avoid markers that legitimately exist elsewhere in the file (e.g.
-common keywords). When in doubt, `git diff main...HEAD <file>` and
-pick a string from the green-prefix lines.
+common keywords). When in doubt,
+`git diff main...HEAD <file>` and pick a string from the
+green-prefix lines.
 
-## Additional Resources
+---
 
-- [Vercel Deploy Documentation](https://vercel.com/docs/deployments/overview)
-- [Vercel Git Integration](https://vercel.com/docs/git)
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
+## Troubleshooting
+
+### Production deploy didn't trigger
+
+1. Open the Netlify dashboard → site → **Deploys**. Is the latest
+   commit listed?
+2. If not, check the GitLab → Netlify webhook in the Netlify
+   dashboard → **Site settings** → **Build & deploy** → **Continuous
+   deployment**. The webhook URL should be reachable from GitLab.
+3. As a fallback, manually trigger from the dashboard: **Deploys**
+   → **Trigger deploy** → **Deploy site**.
+
+### Build fails on Netlify but passes locally
+
+1. Check the Netlify build log for the failing step.
+2. Most common cause: a Node version mismatch. Netlify reads
+   `.nvmrc` or `NODE_VERSION` env var; this repo targets Node 22.
+3. Second most common: missing env var. The Netlify dashboard's
+   env-var list must include every `VITE_*` referenced at build
+   time.
+4. Reproduce locally with the same Node version (`nvm use 22`) and
+   the same env shape (`netlify env:list` to compare).
+
+### Preview is missing or stale
+
+1. Check the **Netlify** bot's comment on the MR for the preview
+   URL. If absent, Netlify's webhook didn't fire — see "Production
+   deploy didn't trigger" above.
+2. Remember: all previews share the same Supabase project. DB
+   changes affect every preview immediately.
+3. Consider feature flags for gradual rollouts.
+
+### Sentry events tagged with the wrong `deploy_env`
+
+The environment is read from `NETLIFY_CONTEXT` (post-migration). If
+you see `production` events that are actually previews, or vice
+versa, check:
+
+1. The `src/lib/monitoring/sentryInit.ts` environment-mapper —
+   `NETLIFY_CONTEXT` should map `production` → `production`,
+   `deploy-preview` → `preview`, `branch-deploy` → `branch`.
+2. The Netlify env var `NETLIFY_CONTEXT` is set by Netlify itself
+   per deploy; you do not configure it.
+
+### "I can't push to origin"
+
+The remote is GitLab now. `git remote -v` should show:
+
+```
+old-origin  git@github.com-chau:ChauDoan21165/MercyB.git (fetch + push)
+origin      git@gitlab.com:cd12536/mercyB.git (fetch + push)
+```
+
+If `origin` still points at GitHub, your local repo is from before
+the migration. `git remote set-url origin git@gitlab.com:cd12536/mercyB.git`.
+
+---
+
+## Pre-deployment checklist
+
+Before pushing to `main`:
+
+- [ ] Run validation: `npm run validate-rooms`
+- [ ] Test locally: `npm run build && npm run preview`
+- [ ] Check TypeScript: `npm run typecheck:ci` (not `typecheck` —
+      the `:ci` variant matches CI exactly)
+- [ ] Run lint: `npm run lint`
+- [ ] Run unit tests: `npm test`
+- [ ] Wait for the Netlify preview deploy on the MR; click through
+      the change at 375 px width
+- [ ] Read the MR description; ensure it lists the test plan
+
+The Netlify preview is the gate. If preview is green and you've
+clicked through the relevant flow, the push to `main` is the safe
+default.
+
+---
+
+## Related runbooks
+
+- **`docs/runbooks/disaster-recovery.md`** — incident playbook
+  (GitLab down, Netlify down, Supabase locked out, …). Authoritative
+  recovery procedures per provider.
+- **`.github/workflows/ROLLBACK.md`** — application-level rollback
+  (rolling back a bad deploy to a known-good version).
+- **`docs/runbooks/placement-to-lesson.md`** — per-flow runbook
+  example.
+- **`docs/architecture/systems/observability.md`** — Sentry
+  configuration; explains the `NETLIFY_CONTEXT` mapping.
+- **`docs/architecture/systems/native-shells.md`** — iOS / Android
+  Capacitor deploy paths (separate from the web deploy this file
+  documents).
+
+---
 
 ## Support
 
 For issues with:
-- **Workflow configuration**: Check GitHub Actions logs
-- **Supabase backend**: See the Supabase project dashboard and `docs/`
-- **Deployment platform**: See the Vercel project dashboard / Vercel support
+
+- **Production deploy** — Netlify dashboard → support@netlify.com (Pro)
+  or community forum (free).
+- **Recovery deploy** — Vercel dashboard → help@vercel.com (Pro).
+- **GitLab CI / repo** — `support@gitlab.com` or community forum.
+- **Supabase backend** — see the Supabase project dashboard and
+  `docs/runbooks/disaster-recovery.md` §2.3.
+
+When in doubt, follow `docs/runbooks/disaster-recovery.md` —
+that's the authoritative incident-response runbook.

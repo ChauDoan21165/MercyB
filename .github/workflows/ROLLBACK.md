@@ -1,210 +1,337 @@
 # Rollback Guide
 
-This guide explains the automated rollback system and how to manually roll back deployments when needed.
+> **2026-05-27 — post-migration rewrite.** Production hosting moved
+> from Vercel to **Netlify** during the May 26–27 incident cascade
+> (see `docs/runbooks/disaster-recovery.md` §0). Rollback paths
+> previously documented for the Vercel-native "Promote to Production"
+> flow have been replaced with Netlify-equivalents. The
+> `deploy-with-rollback.yml` GitHub Actions workflow referenced in
+> the prior version of this doc **was deleted in PR #681** (memory:
+> [[project_vercel_prod_deploy]]) before the migration and is not
+> applicable post-migration either way. The original copy is in git
+> history if needed.
 
-## Automated Rollback
+---
 
-The `deploy-with-rollback.yml` workflow automatically rolls back failed deployments.
+## When to use this guide
 
-### How It Works
+This doc covers **application-level rollback** — rolling back a bad
+deploy to a known-good version of the same product. For
+**incident-level recovery** (provider outages, account lockouts,
+full service migrations), the authoritative runbook is
+**[`docs/runbooks/disaster-recovery.md`](../../docs/runbooks/disaster-recovery.md)**.
 
-1. **Backup**: Before deploying, saves the current (working) version's commit SHA
-2. **Deploy**: Deploys the new version to production
-3. **Health Check**: Runs comprehensive health checks:
-   - Application availability (HTTP response)
-   - Critical endpoint validation
-   - Console error detection (optional)
-4. **Rollback**: If health checks fail, automatically redeploys the backup version
-5. **Notify**: Creates a GitHub issue documenting the failure
+The two are distinct:
 
-### Health Checks
+- **Rollback (this doc):** *"We shipped a bad deploy; restore the
+  previous one."* Minutes to fix. Reversible.
+- **Disaster recovery:** *"GitLab is down" / "Netlify is down" /
+  "Supabase locked us out"*. Hours or days to fix. The runbook in
+  `docs/runbooks/disaster-recovery.md` is the authority.
 
-The workflow checks:
-- ✅ **Availability**: Is the app responding with HTTP 200/304?
-- ✅ **Endpoints**: Are critical routes accessible?
-- ✅ **Retry Logic**: 3 attempts with 10-second intervals
+---
 
-### Configuration
+## Option 1 — Netlify "Restore Deploy" (recommended for the frontend)
 
-Edit these variables in the workflow:
+The fastest path for a bad frontend deploy is restoring a previous
+Netlify deploy directly from the dashboard.
 
-```yaml
-env:
-  DEPLOYMENT_TIMEOUT: 300        # 5 minutes
-  HEALTH_CHECK_RETRIES: 3        # Number of retry attempts
-  HEALTH_CHECK_INTERVAL: 10      # Seconds between retries
-```
+1. Open the Netlify dashboard → site → **Deploys**.
+2. Find the last green production deploy (look for the "Published"
+   tag against `main`).
+3. Open its **⋯** menu → **Publish deploy** (or "Restore deploy",
+   depending on the dashboard wording).
 
-### Adding Custom Health Checks
+This rewrites the production alias to point at the previously-built
+artifact. Near-instant; no rebuild required.
 
-Add your critical endpoints in the `endpoint-check` step:
+**Advantages**
 
-```bash
-ENDPOINTS=(
-  "/chat/addiction-support-free"
-  "/api/health"
-  "/api/user/profile"  # Add your endpoints here
-)
-```
+- ✅ No code change.
+- ✅ Near-instant — promoting an already-built artifact.
+- ✅ Visual list of every prior deploy with commit SHA + Sentry
+  release tag.
 
-## Manual Rollback Options
+**Limits**
 
-### Option 1: Vercel Deployment Rollback (Recommended)
+> ⚠️ Netlify "Publish deploy" rolls back the **frontend bundle
+> only**. Supabase edge functions, database migrations, and Storage
+> are deployed via separate paths (`docs/architecture/systems/native-shells.md`
+> §2.3 of the disaster recovery doc has the full map). If the bad
+> deploy included an edge-function update, see **Option 3** below.
 
-Production is hosted on Vercel. To roll back the frontend to a known-good
-deployment without a code change:
+---
 
-1. Open the Vercel project → **Deployments** tab
-2. Find the last good production deployment
-3. Open its **⋯** menu → **Promote to Production** (or **Instant Rollback**)
+## Option 2 — `netlify deploy --prod` from a known-good commit
 
-**Advantages**:
-- ✅ No code changes needed
-- ✅ Near-instant (promotes an already-built deployment)
-- ✅ Visual list of every prior deployment with commit SHA
-
-> ⚠️ This rolls back the **frontend bundle only**. Edge functions, database
-> migrations, and Storage are deployed separately and are **not** reverted by
-> a Vercel promote — see *If Database Rollback Needed* below and *Option 3*.
-
-### Option 2: Using GitHub Actions (For CI/CD Pipelines)
-
-If using GitHub-Actions-driven deploys (the `production-deploy.yml` workflow):
-
-1. **Trigger Manual Rollback**:
-   ```bash
-   # Via GitHub CLI
-   gh workflow run deploy-with-rollback.yml --ref main
-   
-   # Or use GitHub UI
-   # Actions → Deploy with Auto-Rollback → Run workflow
-   ```
-
-2. **Deploy Specific Commit**:
-   ```bash
-   # Checkout the commit you want to deploy
-   git checkout <commit-sha>
-   
-   # Trigger deployment
-   git push origin HEAD:rollback-branch --force
-   ```
-
-### Option 3: Using Git Revert (Last Resort)
-
-If all else fails:
+When the dashboard isn't reachable (rare) or you want a CLI path:
 
 ```bash
-# Revert the last commit
-git revert HEAD
+# Check out the commit you want to restore
+git checkout <known-good-sha>
 
-# Or revert to a specific commit
-git revert <commit-sha>
+# Build clean
+npm install
+npm run build
 
-# Push the revert
+# Push it to prod
+netlify deploy --prod --dir=dist --auth="$NETLIFY_AUTH_TOKEN"
+```
+
+`NETLIFY_AUTH_TOKEN` lives in macOS Keychain — see
+[`docs/runbooks/disaster-recovery.md`](../../docs/runbooks/disaster-recovery.md)
+§5.5. After the deploy, `dig +short mercyblade.com A` should still
+point at Netlify (no DNS swap needed).
+
+If you don't have Netlify CLI installed:
+
+```bash
+npm install -g netlify-cli
+netlify login
+```
+
+---
+
+## Option 3 — fall back to Vercel (recovery host)
+
+If Netlify itself is degraded, the recovery host is **Vercel**.
+`vercel.json` still ships in the repo and the project is preserved
+for this exact path.
+
+```bash
+vercel pull --environment=production --token="$VERCEL_TOKEN"
+vercel build --prod
+vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
+```
+
+Then swap Cloudflare DNS to the Vercel origin. The full procedure
+is documented in
+[`docs/runbooks/disaster-recovery.md`](../../docs/runbooks/disaster-recovery.md)
+§2.2 — read it before doing this under stress.
+
+---
+
+## Option 4 — git revert (last resort)
+
+For the rare case where a code-level revert is the right shape (not
+a deploy rollback, but an undo of the commit itself):
+
+```bash
+# Revert the bad commit
+git revert <bad-sha>
+
+# Or revert multiple commits in a range
+git revert <oldest-sha>..<newest-sha>
+
+# Push the revert; Netlify auto-deploys on push to main
 git push origin main
 ```
 
-⚠️ **Warning**: This creates a new commit that undoes changes. It doesn't restore the exact previous state.
+⚠️ **This creates a new commit** that undoes the previous changes;
+it does not restore the previous state byte-for-byte. Use Option 1
+or 2 if you need exact restoration.
 
-## Rollback Workflow Comparison
+---
 
-| Method | Speed | Scope | Best For |
-|--------|-------|-------|----------|
-| **Vercel Promote** | Near-instant | Frontend only* | Bad frontend deploy |
-| **GitHub Actions** | 2-5 min | Frontend only* | Re-deploy a specific commit |
-| **Git Revert** | Varies | Code only | Emergency code fixes |
+## Rollback method comparison
 
-*Backend changes (edge functions, DB) deploy immediately and may need separate rollback.
+| Method                       | Speed         | Scope            | Best for                          |
+|------------------------------|---------------|------------------|-----------------------------------|
+| **Netlify Publish deploy**   | Near-instant  | Frontend only*   | Bad frontend deploy               |
+| **`netlify deploy --prod`**  | 1–3 min       | Frontend only*   | CLI-only environments             |
+| **Vercel recovery deploy**   | 3–5 min       | Frontend only*   | Netlify itself is degraded        |
+| **`git revert`**             | Varies        | Code only        | The bug is in code, not deploy    |
 
-## Preventing Rollback Scenarios
+*Backend changes (edge functions, migrations, Storage) deploy via
+separate paths and must be rolled back separately.
 
-### Pre-Deployment Checklist
+---
+
+## Edge function rollback
+
+Edge functions are not rolled back by any frontend host. To revert
+an edge function to a prior version:
+
+```bash
+# Check out the prior version of the function
+git checkout <known-good-sha> -- supabase/functions/<name>/
+
+# Use the verified deploy procedure from DEPLOYMENT.md §"Edge functions"
+# (Steps 1–5 — sync, marker-grep, deploy, download, verify-grep)
+```
+
+If the edge function update was part of a stale-deploy mishap (a
+function shipped from a stale tree), the verify-grep procedure in
+**[`.github/workflows/DEPLOYMENT.md`](./DEPLOYMENT.md)** is what
+catches it.
+
+---
+
+## Database / migration rollback
+
+⚠️ **Database changes are NOT automatically rolled back.**
+
+For a migration rollback:
+
+1. **Verify the migration is the cause** — check Sentry for the
+   error class spike that started at the migration timestamp.
+2. **Write a reverse migration.** Don't try to "unwind" a migration
+   in-place; write a new migration file with the inverse operation
+   and apply it via the Supabase dashboard SQL Editor.
+3. **Test the reverse migration on a staging copy first** if the
+   stakes warrant. For destructive changes (DROP, ALTER COLUMN
+   that loses data), the reverse migration may not be loss-less.
+4. **Memory: [[project_db_schema_drift_audit]]** — the canonical
+   apply path is Supabase SQL Editor by Chau, NOT `supabase db
+   push`. Agent-driven migrations are not in the working contract.
+
+---
+
+## Preventing rollback scenarios
+
+### Pre-deployment checklist
 
 Before pushing to `main`:
 
-- [ ] Run validation: `node scripts/validate-data-files.js`
-- [ ] Test locally: `npm run build && npm run preview`
-- [ ] Check TypeScript: `npx tsc --noEmit`
-- [ ] Review changes in PR
-- [ ] Wait for preview deployment to pass
-- [ ] Test in preview environment
+- [ ] `npm run typecheck:ci` (matches CI exactly — not
+      `typecheck`)
+- [ ] `npm run lint`
+- [ ] `npm test`
+- [ ] `npm run validate-rooms`
+- [ ] Local build: `npm run build && npm run preview`
+- [ ] Wait for the Netlify preview deploy on the MR
+- [ ] Click through the changed flow at 375 px width
+- [ ] Read the MR description; confirm the test plan reflects what
+      you actually ran
 
-### Gradual Rollout Strategy
+### Gradual rollout strategy (when stakes warrant)
 
-Instead of deploying directly to production:
+For risky changes:
 
-1. **Use branches**: `develop` → `staging` → `main`
-2. **Feature flags**: Toggle features without redeployment
-3. **Canary deployments**: Deploy to subset of users first
-4. **Monitor metrics**: Watch errors, performance, user behavior
+1. **Branch-based rollout** — use a `branch-deploy` URL (Netlify
+   serves every branch as a separate preview) to put the change in
+   front of a subset of testers.
+2. **Feature flags** — wrap the change in a feature flag so the
+   deploy is "dark" by default and the flag flip is the real
+   rollout. See `src/lib/featureFlags.ts`.
+3. **Monitor metrics post-deploy** — Sentry error rate, key page
+   load metrics, the `me-entitlement` call rate.
 
-## Monitoring & Alerts
+---
 
-### Health Check Failures
+## Monitoring & alerts
 
-When automated rollback triggers:
+### Where to look first after a deploy
 
-1. Check the GitHub issue created automatically
-2. Review workflow logs for specific failures
-3. Check Vercel deployment + function logs, and Sentry for runtime errors
-4. Review recent code changes
-5. Test the failing commit locally
+1. **Sentry** — `chau-doan / mercyblade-web`. The two RLS alert
+   rules (`17072095`, `17072096`) fire on sustained security
+   regressions; new error classes appear as separate issues.
+2. **Netlify deploy log** — for build/deploy failures themselves.
+3. **Supabase dashboard** — for DB / Auth / edge-function errors.
+4. **`@sentry/capacitor` native crashes** — for the iOS/Android
+   apps. Memory: [[project_sentry_infra_access]] notes that §15
+   Bar #6 (native crash telemetry confirmed on-device) is owner-
+   gated.
 
-### Common Failure Causes
+### Common post-deploy failure causes
 
-- **Build errors**: Missing dependencies, TypeScript errors
-- **Data validation**: Invalid JSON structure
-- **API endpoints**: Backend changes not deployed
-- **Environment vars**: Missing or incorrect secrets
-- **Browser errors**: JavaScript runtime errors
+- **Build errors** — TypeScript errors that escaped `typecheck:ci`,
+  missing deps.
+- **Data validation** — invalid room JSON (caught by
+  `rooms:check` prebuild hook locally; should never reach
+  Netlify).
+- **API endpoints** — backend changes (edge functions, migrations)
+  not deployed in lockstep with the frontend.
+- **Environment vars** — missing or incorrect secret in Netlify's
+  dashboard.
+- **JavaScript runtime errors** — covered by Sentry; the
+  route-gate means the SDK only loads when needed
+  ([`docs/architecture/systems/observability.md`](../../docs/architecture/systems/observability.md)).
 
-## Rollback Best Practices
+---
+
+## Rollback best practices
 
 ### DO ✅
 
-- Test thoroughly in preview environments
-- Use automated health checks
-- Document why rollbacks happened
-- Keep rollback commits clean
-- Monitor after rollback
+- Use Netlify "Publish deploy" first; it's the fastest, lowest-risk
+  path.
+- Document why the rollback happened in a short incident note
+  (`reports/incident-YYYY-MM-DD.md` — same convention as
+  disaster-recovery.md §7.2).
+- Keep rollback commits clean (if you `git revert`, include the
+  reverted commit's SHA in the message body).
+- Re-monitor Sentry for ~10 minutes after the rollback to confirm
+  the error class has stopped firing.
 
 ### DON'T ❌
 
-- Skip health checks in production
-- Deploy without validation
-- Force push to main
-- Delete backup commits
-- Ignore rollback warnings
+- Skip the post-rollback monitor window.
+- Force-push to `main` (you don't need to — Netlify rolls back via
+  the dashboard, not via git).
+- Delete the bad commit. Keep it in history so the root-cause can
+  be diagnosed and a real fix authored.
+- "Just roll back and ignore the bug" — every rollback gets a
+  short post-incident note explaining the cause AND the planned
+  fix.
 
-## Emergency Procedures
+---
 
-### If Automated Rollback Fails
+## Emergency procedures
 
-1. **Manual intervention required**
-2. Use the Vercel Deployments tab to promote the last good deploy immediately
-3. Check backend status separately
-4. Review edge function logs
-5. Verify database state
+### If both Netlify and Vercel are unreachable
 
-### If Database Rollback Needed
+Cloudflare Pages is the third-line option per
+[`docs/runbooks/disaster-recovery.md`](../../docs/runbooks/disaster-recovery.md)
+§2.2. Single-vendor concentration means it's emergency-only.
 
-⚠️ **Database changes are NOT automatically rolled back**
+```bash
+# Build, then deploy to Cloudflare Pages
+npm run build
+npx wrangler pages deploy dist --project-name mercyblade
+```
 
-For database rollback:
-1. You may need to manually revert migrations
-2. Check data integrity before reverting
-3. Consider creating backup before risky changes
-4. Use database snapshots if available
+DNS swap is the same Cloudflare dashboard step as for Vercel.
 
-## Support Resources
+### If a rollback doesn't recover (the bug is in the DB / function)
 
-- [Vercel Instant Rollback](https://vercel.com/docs/deployments/instant-rollback)
-- [GitHub Actions Workflow Syntax](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions)
-- [Vercel Deployments](https://vercel.com/docs/deployments/overview)
+1. **Check whether the bad change was in an edge function or
+   migration**, not the frontend.
+2. **Rollback the relevant layer** — see "Edge function rollback"
+   or "Database / migration rollback" above.
+3. **Verify the bug is gone post-rollback.** Open the relevant
+   page or trigger the relevant flow; confirm Sentry shows the
+   error class stopped.
 
-## Questions?
+---
 
-For issues with:
-- **Frontend rollbacks**: Use the Vercel Deployments tab (promote a prior deploy)
-- **GitHub Actions**: Check workflow logs and GitHub documentation
-- **Backend (Supabase)**: Revert the migration / redeploy the edge function manually
+## Cross-references
+
+- **`.github/workflows/DEPLOYMENT.md`** — steady-state deploy
+  workflow. Read this for "how does production deploy normally?"
+- **`docs/runbooks/disaster-recovery.md`** — incident-level
+  playbook for provider outages.
+- **`docs/architecture/systems/observability.md`** — Sentry
+  monitoring + the dashboard alert rules.
+- **`docs/architecture/systems/billing-entitlement.md`** — the
+  entitlement contract that gives subscriber-impacting deploys
+  weeks of runway (existing premium users keep access until
+  `current_period_end`).
+- **`CLAUDE.md`** — operating discipline; the "restore before
+  redesign" principle is the spirit of this whole doc.
+
+---
+
+## Support
+
+- **Netlify support** — `support@netlify.com` (Pro) or community
+  forum.
+- **Vercel support** — `help@vercel.com` (Pro tier) or community
+  forum.
+- **Supabase support** — `support@supabase.io`.
+- **GitLab support** — `support@gitlab.com` or forum.
+
+The standing principle (`PRINCIPLES.md` §5 — diagnose before
+patching): every rollback needs a one-line cause documented in the
+incident note. Otherwise the same class of bug ships again next
+week.
