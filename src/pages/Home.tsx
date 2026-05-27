@@ -9,6 +9,7 @@ import { BookOpen, ChevronRight, Compass, GraduationCap, LibraryBig, Mic } from 
 
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { lazyWithRetry } from "@/lib/lazyWithRetry";
+import { reportRouteMountPerf } from "@/lib/monitoring/routePerf";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
@@ -78,6 +79,14 @@ function hasOpenTeacherMercyPanel(): boolean {
 }
 
 export default function Home() {
+  // Route mount-perf observer. Captured first so the elapsed time
+  // covers the full hook prologue + render. Breadcrumb-only via
+  // reportRouteMountPerf; zero behavior change.
+  const routeMountStartRef = useRef<number>(performance.now());
+  useEffect(() => {
+    reportRouteMountPerf("home", performance.now() - routeMountStartRef.current);
+  }, []);
+
   const nav    = useNavigate();
   const access = useUserAccess();
   const { user } = useAuth();
