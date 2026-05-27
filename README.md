@@ -20,7 +20,8 @@ them before making product or architecture decisions.
 | Frontend     | React 18, Vite 6, TypeScript 5                                    |
 | Data / state | TanStack Query 5, React Router 6                                  |
 | Backend      | Supabase (Postgres, Auth, Storage, Edge Functions) — Pro plan    |
-| Hosting      | Vercel — production + preview deploys (Pro)                       |
+| Hosting      | **Netlify** — production + preview deploys (Vercel is the documented recovery host; see `docs/runbooks/disaster-recovery.md`) |
+| Repository   | **GitLab** (`gitlab.com:cd12536/mercyB`); GitHub kept read-only as `old-origin` |
 | Mobile       | Capacitor 8 (iOS + Android shells)                                |
 | Monitoring   | Sentry (`@sentry/react` 10)                                       |
 
@@ -29,12 +30,18 @@ them before making product or architecture decisions.
 ### Prerequisites
 
 - **Node 22+** — the CI pipeline and the Capacitor 8 toolchain target Node 22.
-  (The Vercel production build runtime is Node 24; local Node 22+ is fine.)
+  (The Netlify production build runtime is Node 22; local Node 22+ is fine.)
 - **npm** — this repo uses npm; there is no pnpm/yarn lockfile.
 - **Supabase CLI** *(optional)* — only for edge-function / migration work.
   Invoke via `npx supabase ...` (the repo's scripts already do).
-- **Vercel CLI** *(optional)* — only for manual deploys / env pulls
-  (`npx vercel ...`).
+- **Netlify CLI** *(optional)* — only for manual production deploys
+  (`npx netlify ...`). See `.github/workflows/DEPLOYMENT.md`.
+- **Vercel CLI** *(optional)* — only for emergency recovery deploys to
+  the documented fallback host (`npx vercel ...`); see
+  `docs/runbooks/disaster-recovery.md` §2.2.
+- **`glab` CLI** *(optional)* — for creating merge requests from the
+  terminal (`glab mr create`). The repo is on GitLab; `gh pr create` is
+  the legacy path.
 
 ### Install & run
 
@@ -44,10 +51,13 @@ npm install      # also installs the pre-commit room-validation hooks
 npm run dev      # Vite on 127.0.0.1:3107 + grammar server on :3001 (strictPort)
 ```
 
-Environment variables are **not** auto-provisioned. They live in the Vercel
-project (build/runtime) and Supabase project settings; see `SETUP.md` and
-`docs/SECURITY_HARDENING_2025.md` for the canonical list. If Supabase is
-unreachable in dev, audio degrades silently to a local `/audio/{key}` path.
+Environment variables are **not** auto-provisioned. They live in the
+**Netlify** project (build/runtime env) and Supabase project settings;
+see `SETUP.md` and `docs/SECURITY_HARDENING_2025.md` for the canonical
+list. The legacy Vercel project retains a mirror copy so the documented
+recovery path in `docs/runbooks/disaster-recovery.md` §2.2 works without
+re-population. If Supabase is unreachable in dev, audio degrades silently
+to a local `/audio/{key}` path.
 
 ## Repository structure
 
@@ -107,6 +117,9 @@ npx cap sync ios       # copy dist/ into the iOS shell, reinstall pods
 | `SETUP.md`                                        | Local dev setup, hooks, IAP env vars     |
 | `ROOM_GUIDE.md`                                   | Canonical room-system reference          |
 | `SECURITY.md`, `docs/SECURITY_HARDENING_2025.md`  | Security monitoring + hardening checklist |
-| `.github/workflows/DEPLOYMENT.md`                 | Deploy runbook (Vercel + edge functions) |
-| `.github/workflows/ROLLBACK.md`                   | Rollback runbook                         |
+| `.github/workflows/DEPLOYMENT.md`                 | Deploy runbook (Netlify primary; edge functions; recovery via Vercel) |
+| `.github/workflows/ROLLBACK.md`                   | Rollback runbook (Netlify CLI + dashboard) |
+| `docs/runbooks/disaster-recovery.md`              | Provider-outage / account-lockout playbook (authoritative) |
+| `docs/onboarding/`                                | New-contributor docs (README, local-setup, first PR, glossary) |
+| `docs/architecture/`                              | System overview + 9 per-system deep-dives + data-flow |
 | `docs/`                                           | Billing, app-store submission, observability, performance, accessibility |
