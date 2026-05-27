@@ -836,9 +836,13 @@ describe("classifyRlsTable — admin/privileged RLS table → featureArea", () =
     expect(classifyRlsTable("ADMIN_Whatever")).toBe("admin");
   });
 
+  it("maps profiles RLS to auth so it is not inferred as Teacher AI", () => {
+    expect(classifyRlsTable("profiles")).toBe("auth");
+    expect(classifyRlsTable("PROFILES")).toBe("auth");
+  });
+
   it("returns null for learner tables + empty input (→ normal inference)", () => {
     expect(classifyRlsTable("rooms")).toBeNull();
-    expect(classifyRlsTable("profiles")).toBeNull();
     expect(classifyRlsTable("")).toBeNull();
     expect(classifyRlsTable(undefined)).toBeNull();
     expect(classifyRlsTable(null)).toBeNull();
@@ -866,6 +870,25 @@ describe("enrichEventTags — featureArea preserved for rls_denied events", () =
     const event = { tags: { rls_denied: "true", featureArea: "bogus" } };
     enrichEventTags(event as never);
     expect(event.tags.featureArea).not.toBe("bogus");
+  });
+
+  it("keeps profiles RLS classified as auth instead of Mercy Teacher AI", () => {
+    const event = {
+      exception: {
+        values: [
+          {
+            type: "Error",
+            value: "PostgREST 403 (RLS denied): profiles [POST]",
+          },
+        ],
+      },
+      tags: { rls_denied: "true", featureArea: "auth" } as Record<string, string>,
+    };
+
+    enrichEventTags(event as never);
+
+    expect(event.tags.featureArea).toBe("auth");
+    expect(event.tags.rootCauseHint).toBe("auth_session_or_rls");
   });
 });
 

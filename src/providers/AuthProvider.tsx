@@ -73,22 +73,13 @@ async function syncRevenueCatOnAuth(userId: string | null): Promise<void> {
 }
 
 /**
- * V9 fix (audit-user-journey-v9 Path 1 R1): the `handle_new_user()`
- * SQL trigger inserts a `profiles` row on every new `auth.users`
- * insert, but has no error handler. If that insert silently fails
- * (constraint, permissions, transient outage) the user exists in
- * `auth.users` but no `profiles` row does — premium status, leaderboard,
- * streak, and Mercy memory all read blank for the rest of the session.
- *
- * Backfill on every verified-session event. Idempotent: the SELECT
- * short-circuits when the row already exists, so we add at most one
- * round-trip per sign-in. Errors are swallowed (dev-warn only) so a
- * Supabase hiccup never blocks auth UX.
+ * Verify that the service-owned profile row exists on every verified-session
+ * event. The browser must not create `profiles` rows: the
+ * on_auth_user_created trigger owns profile creation for all auth.users
+ * INSERTs, including anonymous signups. If the trigger ever misses one,
+ * browser upsert becomes an INSERT and is correctly denied by RLS.
  */
-async function backfillProfileRowOnAuth(
-  userId: string | null,
-  email: string | null,
-): Promise<void> {
+async function backfillProfileRowOnAuth(userId: string | null): Promise<void> {
   if (!userId) return;
   try {
     const { data: existing, error: selectError } = await supabase
@@ -103,14 +94,10 @@ async function backfillProfileRowOnAuth(
       return;
     }
     if (existing) return;
-    const { error: upsertError } = await supabase
-      .from("profiles")
-      .upsert(
-        { id: userId, email: email ?? null },
-        { onConflict: "id" },
+    if (import.meta.env.DEV) {
+      console.warn(
+        "[auth] profile row missing; browser profile creation is disabled",
       );
-    if (upsertError && import.meta.env.DEV) {
-      console.warn("[auth] profile backfill upsert failed:", upsertError.message);
     }
   } catch (err) {
     if (import.meta.env.DEV) {
@@ -377,12 +364,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             // identified to RevenueCat. Fire-and-forget; no-op on web.
             const verifiedSession = getVerifiedSession(nextSession ?? null);
             const verifiedId = verifiedSession?.user?.id ?? null;
-            const verifiedEmail = verifiedSession?.user?.email ?? null;
             void syncRevenueCatOnAuth(verifiedId);
-            // V9 fix: ensure a profiles row exists even if the
-            // handle_new_user() trigger silently failed. Idempotent and
-            // fire-and-forget. See backfillProfileRowOnAuth above.
-            void backfillProfileRowOnAuth(verifiedId, verifiedEmail);
+            // Verify the service-owned profiles row without attempting a
+            // browser-side INSERT that RLS should deny.
+            void backfillProfileRowOnAuth(verifiedId);
             // Duolingo-onboarding PR 3: carry the anonymous (native,
             // target) pick into the new profile so signup never forces
             // a re-pick. One-time, idempotent, never overwrites a set
