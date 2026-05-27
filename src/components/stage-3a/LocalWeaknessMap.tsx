@@ -149,10 +149,10 @@ function L1Row({ pattern }: { pattern: L1PatternSummary }) {
         }`}
       >
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-semibold leading-snug text-slate-900">
+          <p lang="vi" className="text-sm font-semibold leading-snug text-slate-900">
             {lang.shortVi}
           </p>
-          <p className="mt-0.5 text-[12px] leading-snug text-slate-500">
+          <p lang="en" className="mt-0.5 text-[12px] leading-snug text-slate-500">
             {lang.shortEn}
           </p>
           <QuietMeta
@@ -176,12 +176,12 @@ function L1Row({ pattern }: { pattern: L1PatternSummary }) {
           className="mt-2 rounded-xl border border-indigo-50 bg-indigo-50/40 px-3 py-2"
         >
           {lang.exampleVi && (
-            <p className="text-[12px] leading-snug text-slate-700">
+            <p lang="vi" className="text-[12px] leading-snug text-slate-700">
               {lang.exampleVi}
             </p>
           )}
           {lang.exampleEn && (
-            <p className="mt-1 text-[12px] leading-snug text-slate-500">
+            <p lang="en" className="mt-1 text-[12px] leading-snug text-slate-500">
               {lang.exampleEn}
             </p>
           )}
@@ -224,10 +224,10 @@ function PlacementRow({ weakness }: { weakness: PlacementWeaknessSummary }) {
   return (
     <li className="flex items-start gap-2 rounded-2xl border border-amber-100/70 bg-white/80 px-3 py-2.5">
       <div className="min-w-0 flex-1">
-        <p className="text-sm font-semibold leading-snug text-slate-900">
+        <p lang="vi" className="text-sm font-semibold leading-snug text-slate-900">
           {lang.shortVi}
         </p>
-        <p className="mt-0.5 text-[12px] leading-snug text-slate-500">
+        <p lang="en" className="mt-0.5 text-[12px] leading-snug text-slate-500">
           {lang.shortEn}
         </p>
       </div>
@@ -296,14 +296,15 @@ function PronunciationRow({
   return (
     <li className="flex items-start gap-2 rounded-2xl border border-teal-100/70 bg-white/80 px-3 py-2.5">
       <div className="min-w-0 flex-1">
-        <p className="text-sm font-semibold leading-snug text-slate-900">
+        <p lang="vi" className="text-sm font-semibold leading-snug text-slate-900">
           {lang.shortVi}
         </p>
-        <p className="mt-0.5 text-[12px] leading-snug text-slate-500">
+        <p lang="en" className="mt-0.5 text-[12px] leading-snug text-slate-500">
           {lang.shortEn}
         </p>
         <p
           data-testid="pronunciation-meta"
+          lang="vi"
           className="mt-1 text-[11px] leading-snug text-slate-500"
         >
           ~{ratePct}% chưa chính xác · {painPoint.samples} lần luyện
@@ -332,10 +333,10 @@ function SectionHeading({
         {icon}
       </span>
       <div className="min-w-0">
-        <h3 className="text-sm font-bold leading-tight text-slate-900">
+        <h3 lang="vi" className="text-sm font-bold leading-tight text-slate-900">
           {titleVi}
         </h3>
-        <p className="text-[11px] leading-tight text-slate-500">{titleEn}</p>
+        <p lang="en" className="text-[11px] leading-tight text-slate-500">{titleEn}</p>
       </div>
     </div>
   );
@@ -346,7 +347,7 @@ function QuietMeta({ count, lastSeen }: { count: number; lastSeen: number }) {
   // "you-have-X" language; just facts.
   const ago = formatAgo(lastSeen);
   return (
-    <p className="mt-1 text-[11px] leading-snug text-slate-500">
+    <p lang="vi" className="mt-1 text-[11px] leading-snug text-slate-500">
       {count} lần · {ago}
     </p>
   );
@@ -397,10 +398,10 @@ function GlobalEmptyState() {
       <div className="mx-auto mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm">
         <Sparkles className="h-6 w-6 text-indigo-400" aria-hidden />
       </div>
-      <p className="text-sm font-semibold leading-snug text-slate-900">
+      <p lang="vi" className="text-sm font-semibold leading-snug text-slate-900">
         Chưa có dữ liệu — hãy hoàn thành vài bài để xem điểm yếu của bạn.
       </p>
-      <p className="mt-1 text-[12px] leading-snug text-slate-500">
+      <p lang="en" className="mt-1 text-[12px] leading-snug text-slate-500">
         Complete a few lessons to see your weakness map.
       </p>
     </section>
