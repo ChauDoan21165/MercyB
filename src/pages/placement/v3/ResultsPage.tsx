@@ -10,6 +10,7 @@ import {
   ResultsProfile,
 } from "@/components/placement/v3";
 import { getResults } from "@/lib/placement/v3/clientStub";
+import { recordPlacementSnapshot } from "@/lib/stage-3a/adapters/placementSnapshotAdapter";
 import type { PlacementV3Recommendation, PlacementV3Results } from "@/lib/placement/v3/types";
 
 const ACTIVE_LESSON_KEY = "mb.placement.v3.activeLesson";
@@ -55,6 +56,18 @@ export default function ResultsPage() {
     }
     setActiveLesson(readActiveLessonMarker(sessionId, results.recommendations));
   }, [results, sessionId]);
+
+  // Stage 3A snapshot mirror — local-only, read-side accelerator for the
+  // "What I'm Weak At" screen. Server is the source of truth (profiles.placement_*).
+  useEffect(() => {
+    if (!results) return;
+    recordPlacementSnapshot({
+      cefr: results.overallCefr,
+      weaknesses: results.l1Flags.map((f) => f.id),
+      completedAt: Date.parse(results.completedAt),
+      sessionId: results.sessionId,
+    });
+  }, [results]);
 
   if (loading || !results) {
     return (
