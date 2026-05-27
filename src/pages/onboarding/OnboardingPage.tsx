@@ -456,15 +456,18 @@ function StepHeader({
           (same stepTitleStyle: size, weight, colour, line-height) with a
           divider between them — peers, not heading + translation. Kept
           as separate, non-nested elements so each language is its own
-          text node for queries/SR. */}
-      <h1 ref={headingRef} tabIndex={-1} style={stepTitleStyle}>{title.vi}</h1>
+          text node for queries/SR.
+          `lang` attrs per a11y audit O2: without them a VI screen-reader
+          voice phoneticises the EN sibling using Vietnamese phonemes
+          (and vice-versa), making both unintelligible to learners. */}
+      <h1 lang="vi" ref={headingRef} tabIndex={-1} style={stepTitleStyle}>{title.vi}</h1>
       <PeerDivider />
-      <div style={stepTitleStyle}>{title.en}</div>
+      <div lang="en" style={stepTitleStyle}>{title.en}</div>
       {body ? (
         <>
-          <p style={{ ...peerBodyStyle, marginTop: 16 }}>{body.vi}</p>
+          <p lang="vi" style={{ ...peerBodyStyle, marginTop: 16 }}>{body.vi}</p>
           <PeerDivider />
-          <p style={peerBodyStyle}>{body.en}</p>
+          <p lang="en" style={peerBodyStyle}>{body.en}</p>
         </>
       ) : null}
     </header>
