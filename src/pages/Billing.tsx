@@ -488,7 +488,7 @@ export default function Billing() {
       <div style={{ ...card, marginBottom: 16, background: "linear-gradient(180deg,#f8fafc 0%, #eefbf7 100%)" }}>
         <h1 style={{ margin: 0, fontSize: "clamp(22px, 5.2vw, 32px)", lineHeight: 1.1, fontWeight: 950, color: "#111827" }}>
           Billing
-          <span style={{ ...VIETNAMESE_SUB_STYLE, fontSize: 16, fontWeight: 500, color: "#94a3b8" }}>
+          <span style={{ ...VIETNAMESE_SUB_STYLE, fontSize: 16, fontWeight: 500, color: "#64748b" }}>
             Quản lý thanh toán
           </span>
         </h1>
@@ -496,7 +496,7 @@ export default function Billing() {
         <p style={{ margin: "10px 0 0", color: "#475569", lineHeight: 1.5 }}>
           Manage your subscription and payment methods.
         </p>
-        <p style={{ margin: "3px 0 0", fontSize: 13, color: "#94a3b8", lineHeight: 1.5 }}>
+        <p style={{ margin: "3px 0 0", fontSize: 13, color: "#64748b", lineHeight: 1.5 }}>
           Quản lý gói đăng ký và phương thức thanh toán của bạn.
         </p>
 
@@ -612,7 +612,7 @@ export default function Billing() {
 
             <div style={{ marginTop: 8, color: "#475569", lineHeight: 1.4, fontSize: 14 }}>
               Flexible recurring access with monthly billing.
-              <span style={{ ...VIETNAMESE_SUB_STYLE, color: "#94a3b8", fontSize: 12 }}>
+              <span style={{ ...VIETNAMESE_SUB_STYLE, color: "#64748b", fontSize: 12 }}>
                 Truy cập linh hoạt, thanh toán hàng tháng.
               </span>
             </div>
@@ -640,7 +640,7 @@ export default function Billing() {
 
             <div style={{ marginTop: 8, color: "#475569", lineHeight: 1.4, fontSize: 14 }}>
               Best long-term value with full premium access all year.
-              <span style={{ ...VIETNAMESE_SUB_STYLE, color: "#94a3b8", fontSize: 12 }}>
+              <span style={{ ...VIETNAMESE_SUB_STYLE, color: "#64748b", fontSize: 12 }}>
                 Giá trị tốt nhất với quyền Premium trong cả năm.
               </span>
             </div>
@@ -672,7 +672,7 @@ export default function Billing() {
             </div>
             <div style={{ marginTop: 8, color: "#475569", lineHeight: 1.5, fontSize: 14 }}>
               Subscriptions on iOS are billed through your Apple ID.
-              <span style={{ ...VIETNAMESE_SUB_STYLE, color: "#94a3b8", fontSize: 12 }}>
+              <span style={{ ...VIETNAMESE_SUB_STYLE, color: "#64748b", fontSize: 12 }}>
                 Trên iOS, gói đăng ký được thanh toán qua Apple ID.
               </span>
             </div>

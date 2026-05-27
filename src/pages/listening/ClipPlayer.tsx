@@ -261,7 +261,7 @@ export default function ClipPlayer(): React.ReactElement {
           <h1 style={{ fontSize: 22, fontWeight: 950, margin: "6px 0 2px", color: "rgba(10,10,10,0.94)" }}>
             {clip.title_vi}
           </h1>
-          <div style={{ fontSize: 13, color: "#94a3b8" }}>{clip.title_en}</div>
+          <div style={{ fontSize: 13, color: "#64748b" }}>{clip.title_en}</div>
           <p style={{ fontSize: 13, color: "#475569", marginTop: 10, lineHeight: 1.55 }}>
             {clip.description_vi}
           </p>
@@ -412,7 +412,7 @@ export default function ClipPlayer(): React.ReactElement {
               ))}
             </div>
           ) : (
-            <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 8 }}>
+            <p style={{ fontSize: 12, color: "#64748b", marginTop: 8 }}>
               Nghe trước khi đọc — bấm 'Hiện' khi muốn xem.
             </p>
           )}

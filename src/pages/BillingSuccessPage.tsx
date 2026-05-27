@@ -25,7 +25,7 @@ const viStyle: React.CSSProperties = {
   display: "block",
   fontSize: 12,
   fontWeight: 400,
-  color: "#94a3b8",
+  color: "#64748b",
   marginTop: 3,
   lineHeight: 1.5,
 };
@@ -221,7 +221,7 @@ export default function BillingSuccessPage() {
               disabled={entitlementLoading}
             >
               {entitlementLoading ? "Refreshing…" : "Refresh access"}
-              <span style={{ ...viStyle, color: "#94a3b8" }}>
+              <span style={{ ...viStyle, color: "#64748b" }}>
                 {entitlementLoading ? "Đang làm mới…" : "Làm mới quyền truy cập"}
               </span>
             </button>

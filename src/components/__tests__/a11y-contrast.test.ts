@@ -10,7 +10,7 @@
  *     - src/components/stage-3a/LocalWeaknessMap.tsx
  *     - src/components/stage-3b/SuggestedPracticeList.tsx
  *
- *   Wave 1 (this MR — Home / Account / AI-Tutor sweep):
+ *   Wave 1 (!72 — Home / Account / AI-Tutor):
  *     - src/components/home/FocusAreasCard.tsx
  *     - src/components/home/FocusAreasMicroLessonDialog.tsx
  *     - src/components/ai-tutor/ConversationMode.tsx
@@ -18,10 +18,29 @@
  *     - src/components/ai-tutor/TutorMemoryCard.tsx
  *     - src/pages/account/NotificationPreferences.tsx
  *
+ *   Wave 2 (this MR — Progress / Billing / Listening):
+ *     - src/pages/Progress.tsx
+ *     - src/pages/Billing.tsx
+ *     - src/pages/BillingSuccess.tsx
+ *     - src/pages/BillingSuccessPage.tsx
+ *     - src/components/pricing/IapPlanCard.tsx
+ *     - src/pages/listening/Library.tsx
+ *     - src/pages/listening/ClipPlayer.tsx
+ *
  * Each guarded file must stay free of `text-slate-400` (bare class)
- * and `#94a3b8` (hex) literals. Variant prefixes (`disabled:`, `dark:`,
- * `hover:`, etc.) and `aria-hidden` decorative elements are allowed —
- * see the filter list below.
+ * and `#94a3b8` (hex) literals. Three escape hatches let intentional
+ * design pass:
+ *
+ *   - Variant prefixes (`disabled:`, `dark:`, `hover:`, etc.) on the
+ *     Tailwind class — see VARIANT_PREFIX_RE.
+ *   - `aria-hidden` lines — decorative graphics; WCAG 1.4.3 doesn't
+ *     apply and 1.4.11 exempts decorative non-text.
+ *   - Inline `// a11y-contrast:exception` marker on the SAME line as
+ *     the literal — for one-off cases like `Progress.tsx`'s
+ *     `scoreColor()` null branch where the color is used in a
+ *     large-text or non-text context that already meets 3:1. Every
+ *     marker MUST be paired with a rationale comment AND a citation
+ *     in `docs/a11y/audit.md`.
  *
  * ─── Adding a file to the guard ────────────────────────────────────
  *
@@ -49,13 +68,21 @@ const CONTRAST_FIXED_FILES = [
   "src/screens/Pricing.tsx",
   "src/components/stage-3a/LocalWeaknessMap.tsx",
   "src/components/stage-3b/SuggestedPracticeList.tsx",
-  // Wave 1 — this MR (Home / Account / AI-Tutor)
+  // Wave 1 — !72 (Home / Account / AI-Tutor)
   "src/components/home/FocusAreasCard.tsx",
   "src/components/home/FocusAreasMicroLessonDialog.tsx",
   "src/components/ai-tutor/ConversationMode.tsx",
   "src/components/ai-tutor/CorrectionMode.tsx",
   "src/components/ai-tutor/TutorMemoryCard.tsx",
   "src/pages/account/NotificationPreferences.tsx",
+  // Wave 2 — this MR (Progress / Billing / Listening)
+  "src/pages/Progress.tsx",
+  "src/pages/Billing.tsx",
+  "src/pages/BillingSuccess.tsx",
+  "src/pages/BillingSuccessPage.tsx",
+  "src/components/pricing/IapPlanCard.tsx",
+  "src/pages/listening/Library.tsx",
+  "src/pages/listening/ClipPlayer.tsx",
 ] as const;
 
 /**
@@ -85,6 +112,18 @@ const VARIANT_PREFIX_RE =
 const ARIA_HIDDEN_RE = /aria-hidden/;
 
 /**
+ * Inline-marker escape hatch. A line containing the literal token
+ * `a11y-contrast:exception` is exempt from both grep guards. The
+ * marker is intentionally awkward so it never appears by accident —
+ * every use SHOULD be paired with:
+ *   - a multi-line rationale comment immediately above the line,
+ *     explaining which WCAG threshold the color actually meets, and
+ *   - a citation in `docs/a11y/audit.md` so reviewers can confirm
+ *     the exception was audited.
+ */
+const EXCEPTION_MARKER_RE = /a11y-contrast:exception/;
+
+/**
  * Per-file line exceptions for intentional design decisions that
  * survived the audit-aware fix. Each entry must point to a real
  * line in the file AND have a documented rationale in the audit
@@ -103,6 +142,7 @@ const LINE_EXCEPTIONS: ReadonlyMap<string, ReadonlySet<number>> = new Map();
 function shouldSkipLine(line: string): boolean {
   if (VARIANT_PREFIX_RE.test(line)) return true;
   if (ARIA_HIDDEN_RE.test(line)) return true;
+  if (EXCEPTION_MARKER_RE.test(line)) return true;
   return false;
 }
 
