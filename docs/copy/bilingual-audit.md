@@ -413,12 +413,42 @@ regexes are EN-substring-anchored and still match the new bilingual
 strings). `npm run typecheck:ci` + ESLint + vitest 100/100 across
 the mercy-guide subtree + 41/41 across the streak subtree pass.
 
+**Files audited (Phase-2 #3):** 3 more priority files. Diagnostic
+only — no source string changes; revisions landed in the Phase-2 #4
+sub-section below.
+
+| Audit | Surface | Strings | Verdict summary |
+|---|---|---|---|
+| [`docs/copy/audits/LoginPage.tsx.md`](audits/LoginPage.tsx.md) | `/signin` — email + phone + OAuth + bilingual marketing panel | 22 | **18/22 OK + 4 revision candidates**: 3 EN-only success notices (lines 287, 292, 298) on a VI-primary surface — easy fix, mirror the `${vi}\n${en}` shape `mapAuthRedirectError` already uses; 1 borderline `Vui lòng đợi…` on OAuth busy buttons. The §254 "auth = shame risk" hypothesis did NOT pan out — `humanizeAuthError` + `mapAuthRedirectError` emit bilingual errors. |
+| [`docs/copy/audits/Tiers.tsx.md`](audits/Tiers.tsx.md) | `/tiers` — per-tier room-count diagnostic page | 7 | **7/7 OK.** No revisions. **⚠ Audit re-categorization needed:** this file is NOT the consumer pricing surface §255 implied — it is an internal tier/room-count diagnostic. The consumer pricing surface is `src/screens/Pricing.tsx`. The Phase-2 priority slot in §255 should reassign to `Pricing.tsx`. |
+| [`docs/copy/audits/MercyEnglishTab.tsx.md`](audits/MercyEnglishTab.tsx.md) | `mercy-guide/MercyEnglishTab` — English-immersive vocab/example help | 12 | **2/3 VI strings OK + 1 revision candidate** (`room` untranslated on line 59 vs `phòng này` on line 163 — same file, same concept). Picked as the **non-kids substitute for `MercyTeacherTab.tsx`** (which imports `kidsDataLoader` + carries `isKidsMode` — CC2's lane). |
+
+**Audit-process findings worth promoting:**
+
+1. **The §255 priority entry mis-targets `Tiers.tsx`.** The
+   audit's "pricing surface" priority is actually
+   `src/screens/Pricing.tsx`. Re-route the priority slot in a
+   follow-up doc-update; this batch's audit covers the
+   mis-categorized file and confirms it's a 7/7-OK diagnostic.
+2. **`MercyTeacherTab.tsx` (1,734 lines, second-highest VI
+   density in `mercy-guide/`) is kids-mode-coupled** (imports
+   `kidsDataLoader`, has `isKidsMode` prop, references
+   `/images/mercy-kids*` paths). It belongs in CC2's kids-mode
+   lane; do not assign it to a non-kids Phase-2 auditor.
+3. **`useChromeT` (`t({vi, en})`) is the cleanest bilingual
+   pattern in the codebase.** `LoginPage.tsx` routes 18 surfaces
+   through it; every one passes the §5 quick-checklist. Worth
+   promoting to `vi-style-guide.md` §6 as the recommended
+   bilingual-pairing mechanism for new chrome.
+4. **The `room` vs `phòng` drift surfaced in MercyEnglishTab is a
+   codebase-wide style question.** Pinning `phòng` as the VI for
+   "lesson room" (with `room` reserved for internal codenames) is
+   a one-line style-guide decision worth making.
+
 **Revisions shipped (Phase-2 #4):** the non-optional revision
-candidates from the batch-2 audit (`docs/bilingual-audit-batch-2`
-branch — `LoginPage.tsx`, `Tiers.tsx`, `MercyEnglishTab.tsx`)
-landed as source-string changes. Tiers.tsx had 7/7 OK and contributed
-no revisions. LoginPage.tsx and MercyEnglishTab.tsx revisions
-broken out:
+candidates from the Phase-2 #3 batch landed as source-string
+changes. Tiers.tsx had 7/7 OK and contributed no revisions.
+LoginPage.tsx and MercyEnglishTab.tsx revisions broken out:
 
 | Site | Before | After | Notes |
 |---|---|---|---|
@@ -431,7 +461,7 @@ broken out:
 test matches the changed strings). `npm run typecheck:ci` + ESLint +
 vitest pass.
 
-The five "(optional)" candidates flagged in the batch-2 audits
+The five "(optional)" candidates flagged in the Phase-2 #3 batch
 (LoginPage.tsx:470 drop-agent subtitle, LoginPage.tsx:592
 `Vui lòng đợi…` → `Đang xử lý…`, Tiers.tsx:189 fallback-label
 ordering flip, MercyEnglishTab.tsx:215 EN-first → VI-first) stay
@@ -443,14 +473,14 @@ The four "(optional)" candidates leftover from the batch-1 audits
 affordance, AccountPage.tsx:885 mirror EN `reset`, AiTutor.tsx:931
 tighter EN-VI pair) stay deferred for the same reason.
 
-**Files still pending Phase-2 audit:** the rest of `mercy-guide/`
-(chiefly `MercyTeacherTab.tsx` — 1,734 lines, kids-mode-coupled and
-in CC2's lane), the `onboarding/` + `feedback/` + `billing/` +
-`account/` component directories, plus the lower-priority Tier-3
-files listed in the table above. The consumer pricing surface
-`src/screens/Pricing.tsx` should take the §255 priority slot
-originally assigned to `src/pages/Tiers.tsx` (per the batch-2
-re-categorization finding).
+**Files still pending Phase-2 audit:** `src/screens/Pricing.tsx`
+(should take §255's reassigned priority slot per the Phase-2 #3
+re-categorization), the rest of `mercy-guide/` non-kids files
+(`MercyGuidePanel.tsx`, `MercySuggestTab.tsx`,
+`UnifiedMercyChat.tsx`), the `feedback/` + `billing/` + `account/`
+component directories, plus the lower-priority Tier-3 files listed
+in the table above. `MercyTeacherTab.tsx` is kids-mode-coupled and
+belongs in CC2's lane.
 
 **Cross-cutting findings worth promoting before further Phase-2
 work:**
