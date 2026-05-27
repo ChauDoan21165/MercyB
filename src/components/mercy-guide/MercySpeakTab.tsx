@@ -21,6 +21,7 @@ import {
   appendAttempt,
   type AttemptRecord,
 } from '@/lib/pronunciation/sessionAttempts';
+import { recordPronunciationPhonemes } from '@/lib/stage-3a/adapters/pronunciationAdapter';
 import { captureWaveform, type Waveform } from '@/lib/pronunciation/audioComparison';
 import { fetchCloudTtsUrl } from '@/lib/mercyVoice';
 import { isVoiceConfigured } from '@/config/mercyVoices';
@@ -827,14 +828,22 @@ export function MercySpeakTab({
 
     lastHistoryAppendKeyRef.current = key;
     const phonemes = cloudWordScores.flatMap((w) => w.phonemes ?? []);
+    const attemptTs = Date.now();
     setAttemptHistory((prev) =>
       appendAttempt(prev, {
-        timestamp: Date.now(),
+        timestamp: attemptTs,
         overallScore: matchScore,
         phonemes,
         audioBlob: blob,
         transcript,
       }),
+    );
+    // Stage-3A local weakness map: mirror this attempt's per-phoneme
+    // scores into the local ring-buffer. Local-only, no network; the
+    // adapter swallows storage failures so this can't break the speak
+    // tab's primary path. See docs/stage-3a/local-weakness-map-design.md.
+    recordPronunciationPhonemes(
+      phonemes.map((p) => ({ phoneme: p.phoneme, accuracy: p.score, ts: attemptTs })),
     );
   }, [
     practiceText,
