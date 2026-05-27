@@ -8,6 +8,13 @@
  * callers pass a stable `routeName` so a single Sentry category
  * (`route.perf.mount`) covers every wired-up route.
  *
+ * See `docs/observability/perf-instrumentation.md` for the full
+ * breadcrumb catalog (every category, threshold, payload shape, and
+ * Sentry query). Adding a new `routeName` or a new perf category?
+ * Update that doc + the catalog list in
+ * `src/lib/monitoring/__tests__/breadcrumb-catalog.test.ts` in the
+ * same PR — the drift guard fails the build otherwise.
+ *
  * Posture (inherited from the Stage 3A/3B precedents):
  *   - Breadcrumb-only. Zero `captureException`. A slow mount is
  *     degraded-but-working, not an error.
