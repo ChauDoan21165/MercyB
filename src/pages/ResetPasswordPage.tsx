@@ -1,6 +1,6 @@
 // src/pages/ResetPasswordPage.tsx
 
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
 import { useChromeLanguage, pickChrome } from "@/lib/i18n/chromeLanguage";
@@ -260,6 +260,10 @@ export default function ResetPasswordPage() {
   const [showPw, setShowPw] = useState(false);
   const [status, setStatus] = useState<Status>(null);
 
+  // Stable per-instance ids for label/input pairing.
+  const newPwInputId = useId();
+  const confirmPwInputId = useId();
+
   // A51 — mirror LoginPage's A30 announcer: a single visually-hidden
   // polite live region so SR users hear "passwords don't match" /
   // success / error on this page (it had no live semantics at all).
@@ -472,7 +476,7 @@ export default function ResetPasswordPage() {
         </p>
 
         <div style={{ marginTop: 18 }}>
-          <label style={UI.label}>
+          <label htmlFor={newPwInputId} style={UI.label}>
             {pickChrome({ vi: "Mật khẩu mới", en: "New password" }, lang)}
           </label>
           <div
@@ -487,10 +491,10 @@ export default function ResetPasswordPage() {
             }}
           >
             <input
+              id={newPwInputId}
               value={pw1}
               onChange={(e) => setPw1(e.target.value)}
               placeholder="••••••••"
-              aria-label={pickChrome({ vi: "Mật khẩu mới", en: "New password" }, lang)}
               type={showPw ? "text" : "password"}
               autoComplete="new-password"
               disabled={busy || booting || !ready}
@@ -532,14 +536,14 @@ export default function ResetPasswordPage() {
         </div>
 
         <div style={{ marginTop: 12 }}>
-          <label style={UI.label}>
+          <label htmlFor={confirmPwInputId} style={UI.label}>
             {pickChrome({ vi: "Xác nhận mật khẩu", en: "Confirm password" }, lang)}
           </label>
           <input
+            id={confirmPwInputId}
             value={pw2}
             onChange={(e) => setPw2(e.target.value)}
             placeholder="••••••••"
-            aria-label={pickChrome({ vi: "Xác nhận mật khẩu", en: "Confirm password" }, lang)}
             type={showPw ? "text" : "password"}
             autoComplete="new-password"
             disabled={busy || booting || !ready}
