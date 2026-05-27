@@ -640,13 +640,11 @@ function classifyByContent(haystacks: string[]): FeatureArea | null {
   return null;
 }
 
-// Map a PostgREST RLS-denied table (the `rls_table` tag set by
-// captureRlsDenied) to a FeatureArea. ONLY admin/privileged surfaces —
-// the ones guarded by get_admin_level() (#562 access_codes admin RLS;
-// email_campaigns/email_events are admin-gated per CLAUDE.md) and the
-// `admin_*` table convention — get a definitive "admin" area. Everything
-// else returns null so a denial on a learner table still flows through
-// the normal route/content inference (it is NOT an admin problem).
+// Map selected PostgREST RLS-denied tables (the `rls_table` tag set by
+// captureRlsDenied) to a FeatureArea. Admin/privileged surfaces get a
+// definitive "admin" area. The auth-owned profiles table gets "auth" so
+// profile/session RLS failures do not get reclassified as Mercy/Teacher AI
+// by route/content inference.
 // Conservative by design: an unrecognised table is never "admin".
 const ADMIN_RLS_TABLES: ReadonlySet<string> = new Set([
   "access_codes",
@@ -654,12 +652,15 @@ const ADMIN_RLS_TABLES: ReadonlySet<string> = new Set([
   "email_events",
 ]);
 
+const AUTH_RLS_TABLES: ReadonlySet<string> = new Set(["profiles"]);
+
 export function classifyRlsTable(
   table: string | undefined | null,
 ): FeatureArea | null {
   if (!table) return null;
   const t = table.toLowerCase();
   if (t.startsWith("admin_")) return "admin";
+  if (AUTH_RLS_TABLES.has(t)) return "auth";
   return ADMIN_RLS_TABLES.has(t) ? "admin" : null;
 }
 
@@ -733,7 +734,7 @@ function rootCauseHint(area: FeatureArea, haystacks: string[]): string {
     return "offline_cache_or_indexeddb";
   }
   if (area === "admin" && /rls denied/i.test(blob)) return "admin_rls_denied";
-  if (area === "auth" && /supabase|jwt|\bsession\b/i.test(blob)) return "auth_session_or_rls";
+  if (area === "auth" && /supabase|jwt|\bsession\b|rls denied|profiles|postgrest/i.test(blob)) return "auth_session_or_rls";
   if (area === "billing" && /stripe|subscription|checkout/i.test(blob)) return "stripe_or_subscription";
   if (area === "room" && /(\bload\b|\bopen\b|not found)/i.test(blob)) return "room_load_or_registry";
   if (area === "mercy" && /teacher|grammar|openai/i.test(blob)) return "teacher_ai_or_api";
