@@ -1,5 +1,30 @@
 import { test, expect } from '@playwright/test';
 
+// DEPRECATED — proposed for deletion in Phase 2 of the legacy `e2e/` migration.
+//
+// Two reasons this spec is no longer load-bearing:
+//
+//   1. Heavy reliance on dead routes that no longer match any Route element:
+//        - `/subscribe` (the spec asserts URL changes to `/subscribe` after clicking a tier
+//                        card; the live app routes `/pricing` and `/upgrade` instead — see
+//                        src/router/AppRouter.tsx:811-812 and the `/pricing` smoke spec in
+//                        tests/e2e/pricing-anon.spec.ts)
+//        - `/vip1`      (pre-tier-rename; CLAUDE.md non-negotiable #5 — "no VIP tier")
+//
+//   2. The remaining live-route portion is now covered by smaller, more focused smoke specs:
+//        - `/tiers` chrome + Upgrade CTA   → tests/e2e/tier-map-anon.spec.ts (P2, !47)
+//        - `/`      MarketingLandingPage   → tests/e2e/marketing-landing-anon.spec.ts (P0, !36)
+//        - `/rooms` index render           → legacy e2e/room-loading.spec.ts (kept; no smoke
+//                                            analogue yet)
+//
+// Verified 2026-05-27 against `src/router/AppRouter.tsx` — `/subscribe` and `/vip1` have
+// zero matching routes; the visible-text `"Mercy Blade"` assertion is also brittle (the
+// current brand spelling on the marketing landing is `MercyBlade` with no space).
+//
+// See `docs/testing/playwright-config-audit.md` Phase 1 for the deletion plan + open
+// questions resolved. This file is NOT removed in the current MR; the marker exists so a
+// follow-up PR can drop it cleanly.
+
 /**
  * E2E tests for complete user journey
  * Tests the flow: Homepage → Tiers → Payment → Rooms
