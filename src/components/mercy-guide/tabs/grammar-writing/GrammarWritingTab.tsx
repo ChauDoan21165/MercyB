@@ -32,6 +32,8 @@ import {
 import { hasMeaningfulDifference } from './utils';
 import { analyzeGrammarWithApi } from './api';
 import L1HintCard from './L1HintCard';
+import { recordL1Tag } from '@/lib/stage-3a/adapters/l1TagAdapter';
+import type { L1WeaknessTag } from '@/lib/feedback/l1-error-detector';
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 
 type LearningSupportMode = 'gentle' | 'guided' | 'immersion';
@@ -830,6 +832,12 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
 
       setResult(analysis);
       onAnalysisResult?.(analysis);
+
+      // Stage 3A — mirror the L1 detector tag into the local ring buffer
+      // for the "What I'm Weak At" screen. Local-only, no Supabase.
+      if (analysis?.l1Hint?.weaknessTag) {
+        recordL1Tag(analysis.l1Hint.weaknessTag as L1WeaknessTag, Date.now());
+      }
 
       emitTeacherWritingState(analysis, {
         currentWritingMode: analysis?.writingMode ?? derivedWritingMode,
