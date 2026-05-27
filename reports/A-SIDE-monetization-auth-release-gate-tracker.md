@@ -1,109 +1,207 @@
-# A-side Monetization + Auth Release Gate Tracker
+# A-side Monetization/Auth Release Gate Tracker
 
-Last updated: 2026-05-27
+Owner lane: ChatGPT / A-side
+Scope: monetization, auth, entitlement, referral, and A-side release-gate security work
+Status date: 2026-05-27
 
-Scope: A-side release/security lane only. This tracker covers monetization,
-auth, Supabase security criticals, and Android release checks that can block
-the A-side release gate. It does not govern Kids/C-side work.
+## Purpose
 
-## Gate state
+This tracker records the A-side monetization/auth release-gate state that was previously held in session memory but was not present on `main`.
 
-**A-side monetization/auth release gate is blocked.** The referral leaderboard
-`auth_users_exposed` Critical is closed, but the gate remains red until Profiles
-POST RLS is accepted or explicitly waived by Chau, Android Studio checks are
-either passed or removed from the release gate, and documented
-monetization/auth follow-ups are resolved or reclassified.
+It complements the Claude-side security tracking work, including:
 
-**C-side Stage 3A/3B progress is separate and is not blocked by the A-side
-security lane.** Stage 3A/3B may continue under its own tracker and acceptance
-criteria. Chau merges A-side MRs separately from C-side MRs.
+- `subscriptions-rls-callsite-verification` / MR !94
+- in-flight `rls-audit-surface.md`
 
-**Each Supabase Critical must be one MR.** Do not combine multiple Supabase
-Criticals in a single MR, even if the fixes are small or adjacent.
+This file is the A-side monetization/auth slice, not the full security-audit surface.
 
-## Supabase Criticals / Advisor Findings
+## Operating split
 
-| Critical | Status | MR rule | Gate effect | Next action |
-|---|---|---|---|---|
-| `Mercy Blade Real auth_users_exposed referral leaderboard` | CLOSED | Completed as MR !32 plus Phase 2 destructive SQL after explicit Chau approval | No longer blocks on this Critical | Phase 2 destructive SQL completed successfully. Old legacy matviews dropped: `public.monthly_referral_leaderboard`, `public.all_time_referral_leaderboard`. Old browser grants gone. Legacy cron gone/absent. Safe projections remain live and browser-selectable: `public.referral_leaderboard_monthly_public`, `public.referral_leaderboard_all_time_public`. API postflight: old anon routes return 404; safe anon routes return 200. Dependency postflight: no remaining public referral leaderboard dependency on `auth.users`. Supabase Advisor postflight did not show referral leaderboard `auth_users_exposed`. |
-| `security_definer_view` | active Advisor backlog | Separate follow-up lane from referral leaderboard | Backlog gate item; do not combine with referral leaderboard MR | Scope and remediate independently in a separate follow-up lane. |
-| `authenticated_security_definer_function_executable` | active Advisor backlog | Separate follow-up lane | Backlog gate item; unrelated to referral leaderboard closure | Scope and remediate independently. |
-| `auth_leaked_password_protection` | active Advisor backlog | Separate follow-up lane | Backlog gate item; unrelated to referral leaderboard closure | Scope and remediate independently. |
-| `mercy-ai rls_disabled_in_public` | not confirmed current critical | No MR until exact current finding is reproduced | Blocked pending evidence if still claimed | Live Advisor returns none; require exact current screenshot/project before treating as active. |
-| `mercy-ai sensitive_columns_exposed` | not confirmed current critical | No MR until exact current finding is reproduced | Hardening backlog, not confirmed current Critical | Live Advisor returns none; risky admin/billing surfaces remain hardening backlog. |
+- ChatGPT owns A-side only.
+- Claude owns C-side and Kids.
+- A-side must not touch Kids/C-side unless Chau explicitly reassigns.
+- GitLab/Netlify are the production path.
+- GitHub/Vercel are historical/inactive unless restored.
 
-## A-side Observations / Acceptance Gates
+## Production DB safety rule
+
+Destructive production SQL requires Chau's exact phrase:
+
+> Approve Phase 2 destructive SQL for <task>.
+
+This applies to:
+
+- `DROP`
+- `REVOKE`
+- `DELETE`
+- `TRUNCATE`
+- RLS tightening that removes access
+- destructive schema cutover/migration
+
+This does not apply to:
+
+- read-only queries
+- new-object creation
+- additive policies
+- merging an MR that contains SQL but does not auto-apply it
+
+Even with service-role access, agents must not run destructive production SQL without the exact approval phrase.
+
+## Current ACTIVE CRITICAL: `public.subscriptions`
+
+### Status
+
+`public.subscriptions` is ACTIVE CRITICAL / NOT CLOSED.
+
+MR !86 is merged, but production is not closed. The production apply failed before the intended SQL execution, and the intended production state has not been verified.
+
+A2 postflight failed.
+
+### Intended MR !86 migration
+
+Migration:
+
+```text
+supabase/migrations/20260701000000_subscriptions_rls_select_policies.sql
+```
+
+Intended Phase 1 fix remains additive:
+
+- enable RLS on `public.subscriptions`
+- add authenticated self SELECT policy
+- add admin SELECT policy
+
+No destructive-SQL approval phrase is required for the implementation MR because the intended Phase 1 implementation does not use `DROP`, `REVOKE`, `DELETE`, `TRUNCATE`, or destructive migration steps. Production apply still requires normal review discipline.
+
+### Current verification state
+
+Expected policies are missing:
+
+- `subscriptions_self_select`
+- `subscriptions_admin_select`
+
+Unexpected/legacy policy observed:
+
+- `subscriptions_admin_read`
+
+Authenticated self-read failed in simulation.
+
+### Closure requirements
+
+Do not mark `public.subscriptions` closed until production verification records:
+
+- RLS enabled on `public.subscriptions`
+- `subscriptions_self_select` present and effective
+- `subscriptions_admin_select` present and effective
+- `subscriptions_admin_read` either removed, superseded, or explicitly accepted as harmless by Chau/DB owner
+- authenticated self-read simulation passes
+- admin read simulation passes
+- no unintended browser-readable exposure remains
+
+## Closed Critical: referral leaderboard `auth_users_exposed`
+
+Referral leaderboard is CLOSED.
+
+Closure state:
+
+- completed as MR !32 plus Phase 2 destructive SQL after explicit Chau approval
+- old legacy matviews dropped: `public.monthly_referral_leaderboard`, `public.all_time_referral_leaderboard`
+- old browser grants gone
+- legacy cron gone/absent
+- safe projections remain live and browser-selectable:
+  - `public.referral_leaderboard_monthly_public`
+  - `public.referral_leaderboard_all_time_public`
+- API postflight: old anon routes return 404; safe anon routes return 200
+- dependency postflight: no remaining public referral leaderboard dependency on `auth.users`
+- Supabase Advisor postflight did not show referral leaderboard `auth_users_exposed`
+
+Do not reopen this Critical unless new production evidence shows the referral leaderboard again exposes `auth.users`.
+
+## MR !85 entitlement/user-rank Phase A
+
+MR !85 is merged but not production-applied.
+
+Keep MR !85 in the A-side monetization/auth release-gate backlog until production application and verification are recorded. Do not claim production closure from merge status alone.
+
+## C7 corrected residuals
+
+### SECURITY DEFINER functions without caller-check
+
+Corrected residual count: 3.
+
+Residual functions:
+
+- `get_admin_level`
+- `check_admin_email_rate_limit`
+- `referral_owner_grants_in_year`
+
+False positives / already caller-checked:
+
+- `grant_referral_reward`
+- `kick_study_group_member`
+- `apply_referral_code`
+
+Previous count was 6. Use the corrected residual count of 3 going forward.
+
+### SECURITY DEFINER views without `security_invoker`
+
+Corrected residual count: 1.
+
+Residual view:
+
+- `v_user_pronunciation_stats`
+
+False positive / already hardened:
+
+- `vip3_public_profiles`, hardened on 2025-12-07
+
+Previous count was 2. Use the corrected residual count of 1 going forward.
+
+### Draft SQL status
+
+`docs/rls-fix-drafts/` contains drafts only.
+
+Do not treat files in `docs/rls-fix-drafts/` as migrations to apply. Review each draft when ready to ship.
+
+## Priority order
+
+Keep the A-side security priority order:
+
+1. `public.subscriptions` ACTIVE CRITICAL
+2. C7 residuals in corrected risk order
+3. remaining `security_definer_view` backlog
+4. other monetization/auth release-gate items
+
+## A-side observations / release gates
 
 | Gate | State | Evidence / source | Next action |
 |---|---|---|---|
+| `public.subscriptions` RLS | ACTIVE CRITICAL / NOT CLOSED | MR !86 merged; production apply failed before intended SQL execution; A2 postflight failed; expected policies missing; authenticated self-read simulation failed. | Apply and verify the additive Phase 1 fix in production through normal reviewed deployment discipline. |
+| Referral leaderboard `auth_users_exposed` | CLOSED | MR !32 plus approved Phase 2 destructive SQL; postflight showed safe projections live and no remaining public dependency on `auth.users`. | No action unless new evidence reopens it. |
+| MR !85 entitlement/user-rank Phase A | merged, not production-applied | Merge recorded; production application and verification not recorded. | Keep open until production application and verification are documented. |
 | Profiles POST RLS acceptance/observation | open observation | Local tests include profile RLS contract coverage; production acceptance not recorded in this tracker. | Chau or assigned DB owner records acceptance, rejection, or required MR. |
 | Android Studio release checks | still part of release gate | `docs/migration/release-freeze-note.md`; A4 verification found missing local Gradle project files, no device attached, AAB version mismatch, and packaged Capacitor `appId` mismatch. | Chau reruns Android Studio checklist or explicitly removes Android from this release gate. |
 | Play Console acceptance readiness | unknown | No Play Console access/status recorded here. | Chau records package acceptance plus version acceptance or exact rejection. |
-| Native Sentry probe | scoped/deferred | Owner scope exists; deferred behind Supabase Critical work. | Resume after the confirmed Supabase Critical lane is cleared or Chau explicitly reprioritizes. |
-| A-side DB reads/new-object creation | unblocked | Service key located in `.env.validation`. | Reads and new-object creation may proceed in the A-side lane. Destructive DB operations still require explicit Chau per-operation approval. |
+| Native Sentry probe | scoped/deferred | Owner scope exists; deferred behind Supabase Critical work. | Resume after confirmed Supabase Critical lane is cleared or Chau explicitly reprioritizes. |
 
-## Already Documented Monetization/Auth Gate Items
+## MR / merge rules
 
-| Item | Current state from repo docs | Gate effect | Source |
-|---|---|---|---|
-| Monetization Step 9 / entitlement Phase A | Phase A merged: entitlement gates, `_shared/entitlement.ts`, honest gift errors, invoice `period_end`. | Not blocking by itself; keep as baseline. | `STRATEGY.md` §6/§7 |
-| Monetization Phase B | In flight: entitlements table, T2 retirement, monotonic payload, currency unit fix. | Blocks if any item is required for the current A-side money-path release. | `STRATEGY.md` §7 |
-| A18 recompute entitlement implementation | `WAIT-FOR-X`: #789 merged and A17 entitlements migration/RPC applied; PR-B not a hard A18 blocker. | Blocks recompute writer dispatch until prerequisites are green. | `reports/A18-recompute-impl-readiness-A8c.md` |
-| Gift-code silent-failure customer remediation | Forward fix merged; historical victim apply package and outreach ops documented. | Blocks customer-remediation closure until Chau applies/records outcome. | `STRATEGY.md` §6; `reports/CUSTOMER-gift-victim-apply-package.md`; `reports/CUSTOMER-gift-outreach-ops-A3b.md` |
-| Native marketing tracker verification | Device verification checklist exists for iOS/Android native tracker silence and privacy-paperwork redo. | Blocks native submission/privacy readiness until Chau captures device evidence. | `reports/NATIVE-tracker-verify-checklist-A6b.md` |
-| Delete-account/auth privacy pipeline | Delete-account pipeline and pending privacy gaps documented; direct `auth.users` deletion is part of the final pass. | Blocks privacy/auth release claims until pending merges/apply steps are closed or waived. | `reports/PRIVACY-delete-account-pipeline-A4g.md` |
-| 2FA security review | Phase 2 security review exists. | Gate state depends on Chau/owner acceptance of the review. | `reports/2fa-phase-2-security-review.md` |
-
-## MR / Merge Rules
-
-- A-side monetization/auth MRs are merged by Chau separately from C-side Stage
-  3A/3B MRs.
-- Do not bundle Supabase Criticals together. One confirmed Critical equals one
-  MR and one verification record.
+- A-side monetization/auth MRs are merged by Chau separately from C-side Stage 3A/3B MRs.
+- Do not bundle Supabase Criticals together. One confirmed Critical equals one MR and one verification record.
 - Do not include Kids/C-side changes in A-side monetization/auth MRs.
-- Do not use a documentation-only MR to claim a Supabase Critical is fixed.
-  The fixing MR must include the actual SQL/config/policy change and evidence.
+- Do not use a documentation-only MR to claim a Supabase Critical is fixed. The fixing MR must include the actual SQL/config/policy change and evidence.
+- This tracker is documentation only and does not apply SQL.
 
-## Android Gate Snapshot
+## Stale contradictions corrected here
 
-Current A4 verification result: Android Studio blocker is not cleared.
-
-- Clean Gradle sync/build: unknown from local checkout because `android/gradlew`,
-  `android/settings.gradle*`, and `android/app/build.gradle*` were absent.
-- Merged AAB manifest package: observed `com.mercyapps.mercyblade`.
-- Release AAB version: observed `versionCode 22` and `versionName 1.0.7`,
-  which does not match the requested `versionCode 16` and `versionName 1.0.6`.
-- Packaged Capacitor config: observed `appId: com.chaudoan.mercyblade`, which
-  conflicts with the expected Android application ID.
-- Device launcher/OAuth smoke: unknown because no device/emulator was attached.
-- Play Console acceptance: unknown.
-
-## Stale Contradictions Corrected Here
-
-- Android release checks remain part of the release gate until Chau says
-  otherwise; they are not cleared by the presence of `app-release.aab`.
-- C-side Stage 3A/3B progress is not gated by the A-side security lane.
-- `mercy-ai rls_disabled_in_public` and `mercy-ai sensitive_columns_exposed`
-  are not confirmed current Criticals from live Advisor output; do not track
-  them as active without exact screenshot/project evidence.
-- Referral leaderboard `auth_users_exposed` is CLOSED. Phase 2 destructive SQL
-  completed successfully after explicit Chau approval.
-- Old legacy matviews dropped: `public.monthly_referral_leaderboard` and
-  `public.all_time_referral_leaderboard`.
-- Old browser grants are gone; legacy cron is gone/absent.
-- Safe projections remain live and browser-selectable:
-  `public.referral_leaderboard_monthly_public` and
-  `public.referral_leaderboard_all_time_public`.
-- API postflight: old anon routes return 404; safe anon routes return 200.
-- Dependency postflight: no remaining public referral leaderboard dependency on
-  `auth.users`.
-- Supabase Advisor postflight did not show referral leaderboard
-  `auth_users_exposed`.
-- Remaining Advisor backlog is unrelated: `security_definer_view`,
-  `authenticated_security_definer_function_executable`, and
-  `auth_leaked_password_protection`.
-- Service key is located in `.env.validation`; A-side DB reads and new-object
-  creation are unblocked.
-- Destructive DB operations require explicit Chau per-operation approval.
-- A-side Supabase Criticals are not a batch MR; each confirmed Critical must
-  be remediated and verified independently.
+- `public.subscriptions` remains ACTIVE CRITICAL / NOT CLOSED even though MR !86 merged.
+- MR !86 production apply failed before intended SQL execution.
+- A2 postflight failed.
+- `subscriptions_self_select` and `subscriptions_admin_select` are missing.
+- `subscriptions_admin_read` is unexpected/legacy.
+- authenticated self-read failed in simulation.
+- referral leaderboard `auth_users_exposed` is CLOSED.
+- MR !85 is merged but not production-applied.
+- C7 SECURITY DEFINER function residual count is 3, not 6.
+- C7 SECURITY DEFINER view residual count is 1, not 2.
+- destructive production SQL still requires Chau's exact approval phrase.
