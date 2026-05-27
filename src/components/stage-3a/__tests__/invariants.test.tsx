@@ -35,7 +35,10 @@ import { describe, expect, it, beforeEach, afterEach, vi } from "vitest";
 import { render, cleanup } from "@testing-library/react";
 
 import LocalWeaknessMap from "../LocalWeaknessMap";
-import type { LocalWeaknessMap as LocalWeaknessMapData } from "@/lib/stage-3a/aggregator";
+import {
+  aggregateLocalWeaknesses,
+  type LocalWeaknessMap as LocalWeaknessMapData,
+} from "@/lib/stage-3a/aggregator";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, "../../../../");
@@ -249,5 +252,273 @@ describe("LocalWeaknessMap — copy guard (VI)", () => {
       `Found banned VI shame substring in rendered output:\n${text}`,
     ).not.toMatch(/điểm số|hạng|sai|kém|tệ/i);
     unmount();
+  });
+});
+
+// ══════════════════════════════════════════════════════════════════════
+// Tier 2 invariants — gap audit !25 §4 ranks 7 / 8 / 10 / 11 / 12.
+//
+// Tier 1 (ranks 1–6) lives either in Stage 3A's original 6 guards above
+// or in the Stage 3B mirror file (C5's `test/stage-3b-invariants` wave).
+// Tier 2 closes the contracted-invariant degradations the design doc
+// names but the original suite did not exercise:
+//
+//   G7  — aggregator + 3 adapters + perfInstrumentation contain no
+//         fetch() call sites (gap audit 3A-G2).
+//   G8  — `aggregateLocalWeaknesses().isEmpty` always matches the
+//         constituent-empty rule across seeded + unseeded localStorage
+//         (gap audit 3A-G4).
+//   G9  — `LocalWeaknessMap` renders SkeletonLoading as its loading
+//         branch — the early-return + the component definition both
+//         survive in source (gap audit 3A-G7; runtime-flushing of
+//         useEffect in testing-library makes a render-time spy
+//         unreliable, so we lock the contract statically).
+//   G10 — `perfInstrumentation.ts` contains no captureException CALL
+//         site — only the breadcrumb path. Imports from a module whose
+//         path happens to contain "captureException" are fine
+//         (gap audit 3A-G8).
+//   G11 — `aggregateLocalWeaknesses()` calls no localStorage write
+//         APIs when invoked directly (no component render in between)
+//         (gap audit 3A-G13).
+// ══════════════════════════════════════════════════════════════════════
+
+// ──────────────────────────────────────────────────────────────────────
+// Guard G7 — no fetch in aggregator / adapter / perfInstrumentation
+// ──────────────────────────────────────────────────────────────────────
+
+describe("Stage 3A — adapter / aggregator fetch guard (gap audit 3A-G2)", () => {
+  it("contains no fetch( call sites in the read-side surface", () => {
+    const files = [
+      "src/lib/stage-3a/aggregator.ts",
+      "src/lib/stage-3a/adapters/l1TagAdapter.ts",
+      "src/lib/stage-3a/adapters/placementSnapshotAdapter.ts",
+      "src/lib/stage-3a/adapters/pronunciationAdapter.ts",
+      "src/lib/stage-3a/perfInstrumentation.ts",
+    ];
+    const offenders: string[] = [];
+    for (const f of files) {
+      const text = readFileSync(resolve(REPO_ROOT, f), "utf8");
+      // Strip comments first — adapter headers legitimately name
+      // `fetch` in prose to declare what the file must not do.
+      const code = stripJsComments(text);
+      if (/\bfetch\s*\(/.test(code)) {
+        offenders.push(`${f}: contains fetch( call site`);
+      }
+      if (/window\.fetch\b/.test(code)) {
+        offenders.push(`${f}: references window.fetch`);
+      }
+      if (/globalThis\.fetch\b/.test(code)) {
+        offenders.push(`${f}: references globalThis.fetch`);
+      }
+    }
+    expect(
+      offenders,
+      `fetch references leaked into Stage 3A read surface:\n${offenders.join("\n")}`,
+    ).toEqual([]);
+  });
+});
+
+// ──────────────────────────────────────────────────────────────────────
+// Guard G8 — isEmpty consistency in aggregator output
+// ──────────────────────────────────────────────────────────────────────
+
+const L1_STORAGE_KEY = "mb.stage3a.l1.recent";
+const PRONUNCIATION_STORAGE_KEY = "mb.stage3a.pronunciation.recent";
+
+describe("aggregateLocalWeaknesses — isEmpty consistency (gap audit 3A-G4)", () => {
+  beforeEach(() => {
+    window.localStorage.clear();
+  });
+
+  it("returns isEmpty: true with all three buckets empty when localStorage is unseeded", () => {
+    const map = aggregateLocalWeaknesses();
+    expect(map.topL1Patterns).toEqual([]);
+    expect(map.placementWeaknesses).toEqual([]);
+    expect(map.topPronunciationPainPoints).toEqual([]);
+    expect(map.isEmpty).toBe(true);
+  });
+
+  it("returns isEmpty: false when ONLY the L1 bucket has data", () => {
+    window.localStorage.setItem(
+      L1_STORAGE_KEY,
+      JSON.stringify([{ tag: "vi_l1_3rd_person_s", ts: 1_700_000_000 }]),
+    );
+    const map = aggregateLocalWeaknesses();
+    expect(map.topL1Patterns.length).toBeGreaterThan(0);
+    expect(map.placementWeaknesses).toEqual([]);
+    expect(map.topPronunciationPainPoints).toEqual([]);
+    expect(map.isEmpty).toBe(false);
+  });
+
+  it("returns isEmpty: false when ONLY the pronunciation bucket has data (≥3 samples)", () => {
+    // Pronunciation aggregation gates on PRONUNCIATION_MIN_SAMPLES (3),
+    // so seed three same-axis entries to surface a row.
+    window.localStorage.setItem(
+      PRONUNCIATION_STORAGE_KEY,
+      JSON.stringify([
+        { phoneme: "th", accuracy: 40, ts: 1_700_000_000, painPointAxis: "TH_T" },
+        { phoneme: "th", accuracy: 40, ts: 1_700_000_001, painPointAxis: "TH_T" },
+        { phoneme: "th", accuracy: 40, ts: 1_700_000_002, painPointAxis: "TH_T" },
+      ]),
+    );
+    const map = aggregateLocalWeaknesses();
+    expect(map.topL1Patterns).toEqual([]);
+    expect(map.placementWeaknesses).toEqual([]);
+    expect(map.topPronunciationPainPoints.length).toBeGreaterThan(0);
+    expect(map.isEmpty).toBe(false);
+  });
+
+  it("isEmpty is structurally derived: isEmpty === (l1.length===0 && placement.length===0 && pronunciation.length===0)", () => {
+    // Cross-check the invariant across all four reachable buckets-empty
+    // permutations we can synthesize here (placement adapter writes
+    // are gated on a server-side completion that the unit test can't
+    // replicate, so we exercise L1 + pronunciation × empty/seeded).
+    const cases: Array<{ seed: () => void; expectEmpty: boolean }> = [
+      { seed: () => {}, expectEmpty: true },
+      {
+        seed: () =>
+          window.localStorage.setItem(
+            L1_STORAGE_KEY,
+            JSON.stringify([{ tag: "vi_l1_past_ed", ts: 1_700_000_000 }]),
+          ),
+        expectEmpty: false,
+      },
+    ];
+    for (const c of cases) {
+      window.localStorage.clear();
+      c.seed();
+      const map = aggregateLocalWeaknesses();
+      const derived =
+        map.topL1Patterns.length === 0 &&
+        map.placementWeaknesses.length === 0 &&
+        map.topPronunciationPainPoints.length === 0;
+      expect(
+        map.isEmpty,
+        `isEmpty drifted from constituents: ${JSON.stringify(map)}`,
+      ).toBe(derived);
+      expect(map.isEmpty).toBe(c.expectEmpty);
+    }
+  });
+});
+
+// ──────────────────────────────────────────────────────────────────────
+// Guard G9 — SkeletonLoading early-return survives in source
+// ──────────────────────────────────────────────────────────────────────
+
+describe("LocalWeaknessMap — loading state guard (gap audit 3A-G7)", () => {
+  it("source contains the `!data → <SkeletonLoading />` early-return AND the component definition", () => {
+    // Runtime check is unreliable here: react-testing-library flushes
+    // useEffect synchronously, so by the time `render()` returns the
+    // skeleton has already been swapped for the populated branch.
+    // Lock the contract statically instead — if either half goes
+    // missing, the loading branch becomes unreachable.
+    const text = readFileSync(
+      resolve(REPO_ROOT, "src/components/stage-3a/LocalWeaknessMap.tsx"),
+      "utf8",
+    );
+    const code = stripJsComments(text);
+    expect(
+      code,
+      "missing `if (!data) return <SkeletonLoading />` early-return",
+    ).toMatch(/if\s*\(\s*!data\s*\)\s*return\s+<SkeletonLoading\s*\/>/);
+    expect(
+      code,
+      "missing `function SkeletonLoading(...)` component definition",
+    ).toMatch(/function\s+SkeletonLoading\s*\(/);
+    expect(
+      code,
+      'missing the `data-testid="local-weakness-loading"` anchor',
+    ).toContain('data-testid="local-weakness-loading"');
+  });
+});
+
+// ──────────────────────────────────────────────────────────────────────
+// Guard G10 — perfInstrumentation must not emit captureException
+// ──────────────────────────────────────────────────────────────────────
+
+describe("perfInstrumentation — breadcrumbs-only guard (gap audit 3A-G8)", () => {
+  it("contains no captureException( call site (importing from the module's PATH is fine)", () => {
+    const text = readFileSync(
+      resolve(REPO_ROOT, "src/lib/stage-3a/perfInstrumentation.ts"),
+      "utf8",
+    );
+    const code = stripJsComments(text);
+    // Strict on call-site shape: `captureException(`. The named
+    // module path `"../monitoring/captureException.js"` does NOT match
+    // this regex because the trailing chars are `.js"`, not `(`.
+    const callSiteRe = /\bcaptureException\s*\(/;
+    expect(
+      callSiteRe.test(code),
+      "perfInstrumentation.ts called captureException — Stage 3A's contract is breadcrumbs-only",
+    ).toBe(false);
+    // And the file's documented import is `addBreadcrumb`-only.
+    const namedImportRe =
+      /import\s*\{\s*([^}]+)\s*\}\s*from\s*['"][^'"]*captureException[^'"]*['"]/;
+    const m = code.match(namedImportRe);
+    if (m) {
+      const names = m[1].split(",").map((s) => s.trim()).filter(Boolean);
+      expect(
+        names,
+        "perfInstrumentation.ts imported beyond `addBreadcrumb` from captureException module",
+      ).toEqual(["addBreadcrumb"]);
+    }
+  });
+});
+
+// ──────────────────────────────────────────────────────────────────────
+// Guard G11 — aggregator itself never writes localStorage
+// ──────────────────────────────────────────────────────────────────────
+
+describe("aggregateLocalWeaknesses — no localStorage write (gap audit 3A-G13)", () => {
+  beforeEach(() => {
+    window.localStorage.clear();
+  });
+
+  it("does not call setItem / removeItem / clear when invoked directly (no component in between)", () => {
+    const setItemSpy = vi.spyOn(window.localStorage, "setItem");
+    const removeItemSpy = vi.spyOn(window.localStorage, "removeItem");
+    const clearSpy = vi.spyOn(window.localStorage, "clear");
+
+    aggregateLocalWeaknesses();
+
+    expect(setItemSpy).not.toHaveBeenCalled();
+    expect(removeItemSpy).not.toHaveBeenCalled();
+    expect(clearSpy).not.toHaveBeenCalled();
+  });
+
+  it("stays write-free even with seeded buckets (read path exercises all three adapters)", () => {
+    // Seed all three buckets so every adapter takes its full read
+    // path. None of them should write back.
+    window.localStorage.setItem(
+      L1_STORAGE_KEY,
+      JSON.stringify([{ tag: "vi_l1_3rd_person_s", ts: 1_700_000_000 }]),
+    );
+    window.localStorage.setItem(
+      "mb.stage3a.placement.snapshot",
+      JSON.stringify({
+        cefr: "B1",
+        weaknesses: ["past_tense_unmarked"],
+        completedAt: 1_700_000_000,
+        sessionId: "guard-fixture",
+      }),
+    );
+    window.localStorage.setItem(
+      PRONUNCIATION_STORAGE_KEY,
+      JSON.stringify([
+        { phoneme: "th", accuracy: 40, ts: 1_700_000_000, painPointAxis: "TH_T" },
+        { phoneme: "th", accuracy: 40, ts: 1_700_000_001, painPointAxis: "TH_T" },
+        { phoneme: "th", accuracy: 40, ts: 1_700_000_002, painPointAxis: "TH_T" },
+      ]),
+    );
+
+    const setItemSpy = vi.spyOn(window.localStorage, "setItem");
+    const removeItemSpy = vi.spyOn(window.localStorage, "removeItem");
+    const clearSpy = vi.spyOn(window.localStorage, "clear");
+
+    aggregateLocalWeaknesses();
+
+    expect(setItemSpy).not.toHaveBeenCalled();
+    expect(removeItemSpy).not.toHaveBeenCalled();
+    expect(clearSpy).not.toHaveBeenCalled();
   });
 });

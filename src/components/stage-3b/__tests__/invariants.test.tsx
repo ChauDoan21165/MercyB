@@ -482,3 +482,87 @@ describe("Stage 3B — analytics import guard", () => {
     ).toEqual([]);
   });
 });
+
+// ══════════════════════════════════════════════════════════════════════
+// Tier 2 invariants — gap audit !25 §4 rank 9 (3B-G8).
+//
+// The engine takes element [0] of each pre-sorted source. Tier 1's
+// existing engine tests cover the L1 cap and the deterministic
+// "head-of-source" rule, but not the placement and pronunciation caps
+// at the structural level — a future "promote by signal strength"
+// rewrite that loops one source would surface as a UI imbalance
+// (e.g. 5 placement items + 0 L1 + 0 pronunciation) and pass the
+// existing tests. Lock the cap explicitly across all three kinds.
+// ══════════════════════════════════════════════════════════════════════
+
+describe("Stage 3B — one-per-kind cap guard (gap audit 3B-G8)", () => {
+  it("returns at most one item per kind across all three kinds, even with many candidates per source", () => {
+    const state: LocalWeaknessMapData = {
+      topL1Patterns: [
+        { tag: "vi_l1_3rd_person_s", count: 9, lastSeen: 9_000 },
+        { tag: "vi_l1_past_ed", count: 7, lastSeen: 8_000 },
+        { tag: "vi_l1_plural_s", count: 5, lastSeen: 7_000 },
+        { tag: "vi_l1_missing_be", count: 3, lastSeen: 6_000 },
+        { tag: "vi_l1_no_aux_negation", count: 2, lastSeen: 5_000 },
+      ],
+      placementWeaknesses: [
+        { tag: "th_stopping_and_fronting", severity: "high" },
+        { tag: "plural_s_omission", severity: "medium" },
+        { tag: "missing_articles", severity: "low" },
+        { tag: "past_tense_unmarked", severity: "high" },
+        { tag: "copula_be_omission", severity: "medium" },
+      ],
+      topPronunciationPainPoints: [
+        { axis: "TH_T", errorRate: 0.7, samples: 6 },
+        { axis: "R_L", errorRate: 0.5, samples: 4 },
+        { axis: "ED_ENDINGS", errorRate: 0.3, samples: 3 },
+        { axis: "S_PLURALS", errorRate: 0.2, samples: 3 },
+        { axis: "STRESS", errorRate: 0.1, samples: 3 },
+      ],
+      isEmpty: false,
+      generatedAt: 0,
+    };
+    const result = selectSuggestedPractice(state);
+    const countByKind = {
+      l1: result.filter((i) => i.kind === "l1").length,
+      placement: result.filter((i) => i.kind === "placement").length,
+      pronunciation: result.filter((i) => i.kind === "pronunciation").length,
+    };
+    expect(
+      countByKind.l1,
+      `l1 kind exceeded one-per-kind cap: ${countByKind.l1}`,
+    ).toBeLessThanOrEqual(1);
+    expect(
+      countByKind.placement,
+      `placement kind exceeded one-per-kind cap: ${countByKind.placement}`,
+    ).toBeLessThanOrEqual(1);
+    expect(
+      countByKind.pronunciation,
+      `pronunciation kind exceeded one-per-kind cap: ${countByKind.pronunciation}`,
+    ).toBeLessThanOrEqual(1);
+    // With all three sources providing candidates, the cap means exactly
+    // one item per kind — total 3 items.
+    expect(result).toHaveLength(3);
+  });
+
+  it("holds the cap even when only one source has many candidates and the others are empty", () => {
+    // Single-source stress test: 5 placement entries, nothing else.
+    // The output must still be 1 placement item (not 5, not 0).
+    const state: LocalWeaknessMapData = {
+      topL1Patterns: [],
+      placementWeaknesses: [
+        { tag: "th_stopping_and_fronting", severity: "high" },
+        { tag: "plural_s_omission", severity: "medium" },
+        { tag: "missing_articles", severity: "low" },
+        { tag: "past_tense_unmarked", severity: "high" },
+        { tag: "copula_be_omission", severity: "medium" },
+      ],
+      topPronunciationPainPoints: [],
+      isEmpty: false,
+      generatedAt: 0,
+    };
+    const result = selectSuggestedPractice(state);
+    expect(result).toHaveLength(1);
+    expect(result[0].kind).toBe("placement");
+  });
+});
