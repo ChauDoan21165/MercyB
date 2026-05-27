@@ -12,15 +12,28 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it } from "vitest";
 
 import WeakAt from "../WeakAt";
 
 const REPO_ROOT = join(__dirname, "..", "..", "..");
 
+// SuggestedPracticeList (Day 6 wire-in) calls `useNavigate()` at the
+// hook level, so WeakAt requires a router context to render. The
+// MemoryRouter wrapper keeps these tests provider-light while
+// satisfying that requirement.
+function renderPage() {
+  return render(
+    <MemoryRouter initialEntries={["/weak-at"]}>
+      <WeakAt />
+    </MemoryRouter>,
+  );
+}
+
 describe("WeakAt page (/weak-at)", () => {
   it("renders the LocalWeaknessMap component", () => {
-    render(<WeakAt />);
+    renderPage();
     const inMain = screen.getByRole("main");
     expect(inMain).toBeTruthy();
     // The shipped LocalWeaknessMap renders one of two top-level testids
@@ -34,7 +47,7 @@ describe("WeakAt page (/weak-at)", () => {
   });
 
   it("renders the SuggestedPracticeList below the weakness map", () => {
-    render(<WeakAt />);
+    renderPage();
     // Same posture as the LocalWeaknessMap assertion — either the
     // populated list or its empty state proves the wiring.
     const list = screen.queryByTestId("suggested-practice-list");
@@ -44,7 +57,7 @@ describe("WeakAt page (/weak-at)", () => {
   });
 
   it("renders bilingual title — VI primary, EN secondary", () => {
-    render(<WeakAt />);
+    renderPage();
     const vi = screen.getByTestId("weak-at-title-vi");
     const en = screen.getByTestId("weak-at-title-en");
     expect(vi.textContent).toBe("Điểm yếu của bạn");
@@ -54,7 +67,7 @@ describe("WeakAt page (/weak-at)", () => {
   });
 
   it("renders a one-line source note explaining the local-only posture", () => {
-    render(<WeakAt />);
+    renderPage();
     // Source-note framing is critical for trust: users must know the
     // signal doesn't leave the device. Assert the VN phrasing is
     // present (matches docs/stage-3a/local-weakness-map-design.md §7).
@@ -65,8 +78,11 @@ describe("WeakAt page (/weak-at)", () => {
   it("does not assert any auth gate (anon-viewable, matches /progress posture)", () => {
     // WeakAt itself doesn't read useAuth or useUserAccess — the
     // empty-state in LocalWeaknessMap covers signed-out callers.
-    // This test pins the absence by rendering with no providers.
-    expect(() => render(<WeakAt />)).not.toThrow();
+    // This test pins the absence by rendering with only a router
+    // wrapper (no AuthProvider). Router-only is the floor — the
+    // SuggestedPracticeList wire-in uses `useNavigate()`, which is
+    // why the bare-render variant is no longer viable.
+    expect(() => renderPage()).not.toThrow();
   });
 });
 

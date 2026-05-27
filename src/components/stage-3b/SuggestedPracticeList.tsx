@@ -4,14 +4,28 @@
 //
 // Consumes the deterministic 0–3 items from
 // `selectSuggestedPractice(state)` and renders them as a Vietnamese-
-// first mobile-first card list. Each row is a button — onClick is a
-// stub for now (next brick wires the actual practice handoff).
+// first mobile-first card list. Each row is a button that navigates
+// to the practice surface for its weakness kind.
+//
+// Routing map (full rationale + slug coverage live in
+// `practiceRoutes.ts` next to this component):
+//
+//   - l1            → /ai-tutor?focus=<sourceTag>
+//   - placement     → /placement/results
+//   - pronunciation → /practice/phoneme/<slug>
+//                     (TH_T/R_L/ED_ENDINGS/S_PLURALS/STRESS only;
+//                      INTONATION + unknown axes fall back to
+//                      /weak-at?focus=pronunciation:<axis>)
+//
+// No new routes were introduced for this wiring — the engine fans out
+// across surfaces that already exist in `src/router/AppRouter.tsx`.
 //
 // Hard invariants (inherited from Stage 3A boundaries):
 //   - Pure read. Calls `aggregateLocalWeaknesses()` once on mount;
 //     no writes. No Supabase. No fetch. No mercy_user_facts.
 //     No localStorage.setItem / removeItem (read-only via the
-//     aggregator's existing seam).
+//     aggregator's existing seam). Navigation is router-level — no
+//     side-effecting handoff state is written anywhere.
 //   - No gamification language in rendered output — no "streak",
 //     "xp", "level", "badge", "score"; no shame words. Labels come
 //     from the engine, which sources them from
@@ -21,6 +35,7 @@
 //   - Empty list → calm VI message; never "you have no weaknesses".
 
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { BookOpen, ClipboardList, Volume2, Sparkles } from "lucide-react";
 
 import {
@@ -33,6 +48,8 @@ import type {
   SuggestedPracticeKind,
 } from "@/stage-3b/types";
 
+import { routeForSuggestedPractice } from "./practiceRoutes";
+
 export interface SuggestedPracticeListProps {
   /**
    * Test seam — inject pre-aggregated state instead of calling the
@@ -44,6 +61,7 @@ export interface SuggestedPracticeListProps {
 export default function SuggestedPracticeList({
   initialState,
 }: SuggestedPracticeListProps = {}) {
+  const navigate = useNavigate();
   const [state, setState] = useState<LocalWeaknessMapData | null>(
     initialState ?? null,
   );
@@ -92,26 +110,32 @@ export default function SuggestedPracticeList({
       </div>
       <ul className="mt-3 flex flex-col gap-2">
         {items.map((item) => (
-          <SuggestedPracticeRow key={item.id} item={item} />
+          <SuggestedPracticeRow
+            key={item.id}
+            item={item}
+            onSelect={() => navigate(routeForSuggestedPractice(item))}
+          />
         ))}
       </ul>
     </section>
   );
 }
 
-function SuggestedPracticeRow({ item }: { item: SuggestedPracticeItem }) {
+function SuggestedPracticeRow({
+  item,
+  onSelect,
+}: {
+  item: SuggestedPracticeItem;
+  onSelect: () => void;
+}) {
   return (
     <li>
       <button
         type="button"
         data-testid={`suggested-practice-item-${item.kind}`}
         data-source-tag={item.sourceTag}
-        onClick={() => {
-          // Stub: real wiring (route to a focused drill) ships in the
-          // next brick. Logging gives the next contributor a breadcrumb.
-          // eslint-disable-next-line no-console
-          console.log("[suggested-practice] selected", item.id);
-        }}
+        data-route={routeForSuggestedPractice(item)}
+        onClick={onSelect}
         className="flex w-full items-start gap-3 rounded-2xl border border-violet-100/70 bg-white/80 px-3 py-2.5 text-left transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
       >
         <KindChip kind={item.kind} />
