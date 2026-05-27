@@ -46,6 +46,8 @@ Ships with a marketing-visible demo artifact: one screen, one story, one sentenc
 
 **Status (2026-05-26):** Signal layer complete. The three adapter PRs (#1201 L1 detector tag mirror, #1202 Placement v3 snapshot mirror, #1203 pronunciation phoneme mirror) are on `main`. Wave 2 closed the reducer side: the local weakness aggregator (reducer over the three adapter signals) and the learner-language taxonomy the aggregator references both merged on 2026-05-26, alongside test-coverage adds for `vi_l1_co_transfer` (#1187) and `vi_l1_no_aux_negation` (#1189). Local-only input seams + aggregator + taxonomy are in place. Day 4 — the user-facing route/screen — is the next slice.
 
+**Status (2026-05-27):** Stage 3A shipped. The Local Weakness Map UI component, the `/weak-at` route (linked from Home), and lightweight performance instrumentation around the aggregator are all on `main`. The marketing-visible demo artifact specification lives at `docs/stage-3a/marketing-screenshot-spec.md` — pre-screenshot seed data, viewport, framing copy, and per-platform posting checklist. The E2E + invariant-guard test pass is still pending (separate MR); it gates audit confidence but not the launch artifact, since the screenshot is captured against a developer-seeded device store rather than CI state. The next brick is Stage 3B Suggested Practice — soft suggestions only, `(c+)` trigger semantics — already fully specified in §3B below; no design pass needed before authoring begins.
+
 ### 3B — Suggested Practice (not Planner)
 
 Soft suggestions only. *"You may want to practice…"* never *"You must complete…"* No streaks, no XP, no guilt, no daily coercion.
