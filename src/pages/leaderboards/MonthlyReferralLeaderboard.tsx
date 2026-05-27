@@ -154,7 +154,7 @@ export default function MonthlyReferralLeaderboard() {
                     "w-8 shrink-0 text-right text-xs font-mono " +
                     (row.rank <= 3
                       ? "text-amber-600 font-bold"
-                      : "text-slate-400")
+                      : "text-slate-500")
                   }
                 >
                   #{row.rank}

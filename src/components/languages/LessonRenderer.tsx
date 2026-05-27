@@ -150,7 +150,7 @@ type RendererLabels = typeof RENDERER_LABELS[keyof typeof RENDERER_LABELS];
 
 function FallbackBadge({ other }: { other: "vi" | "en" }) {
   return (
-    <span className="ml-1.5 rounded-full bg-slate-100 px-1.5 py-0.5 text-[9px] font-medium uppercase text-slate-400">
+    <span className="ml-1.5 rounded-full bg-slate-100 px-1.5 py-0.5 text-[9px] font-medium uppercase text-slate-600">
       {other}
     </span>
   );
@@ -270,7 +270,7 @@ export function LessonRenderer({
             <p className="text-xs text-slate-500">{lesson.title.en}</p>
           )}
           {lesson.title.native && (
-            <p className="text-xs italic text-slate-400 mt-0.5">
+            <p className="text-xs italic text-slate-500 mt-0.5">
               {lesson.title.native}
               {lesson.title.romanization && (
                 <span className="ml-1 not-italic">
@@ -281,7 +281,7 @@ export function LessonRenderer({
           )}
 
           {!open && (
-            <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-400">
+            <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-500">
               {vocabCount > 0 && (
                 <span className="inline-flex items-center gap-1">
                   <BookOpen className="h-3 w-3" /> {vocabCount} {labels.vocabChip}
@@ -427,7 +427,7 @@ export function LessonRenderer({
                     );
                   })()}
                   {s.note && (
-                    <p className="mt-1 text-[11px] italic text-slate-400">
+                    <p className="mt-1 text-[11px] italic text-slate-500">
                       {s.note}
                     </p>
                   )}
@@ -460,7 +460,7 @@ export function LessonRenderer({
                         {v.native}
                       </span>
                       {v.romanization && (
-                        <span className="text-slate-400 ml-1">
+                        <span className="text-slate-500 ml-1">
                           {v.romanization}
                         </span>
                       )}
@@ -479,7 +479,7 @@ export function LessonRenderer({
                           nativeLanguage,
                         );
                         return phonetic ? (
-                          <span className="block text-[10px] text-slate-400">
+                          <span className="block text-[10px] text-slate-500">
                             {phonetic}
                           </span>
                         ) : null;
@@ -626,7 +626,7 @@ export function LessonRenderer({
             const fallback = isNativeFallback(slots, nativeLanguage);
             return (
               <p className="px-1 text-[11px] italic leading-relaxed text-slate-500">
-                <span className="font-semibold uppercase tracking-wide text-slate-400 not-italic">
+                <span className="font-semibold uppercase tracking-wide text-slate-500 not-italic">
                   {labels.registerHeading}
                   {fallback && (
                     <FallbackBadge
@@ -778,7 +778,7 @@ function ExerciseRow({
       <span className="block text-[10px] text-green-600 mt-0.5">
         → {ex.native}
         {ex.romanization && (
-          <span className="text-slate-400 ml-1 italic">
+          <span className="text-slate-500 ml-1 italic">
             ({ex.romanization})
           </span>
         )}
@@ -843,7 +843,7 @@ function DialogueLineRows({
             </span>{" "}
             <span className="text-slate-900 font-medium">{d.native}</span>
             {d.romanization && (
-              <span className="text-slate-400 ml-1 italic">
+              <span className="text-slate-500 ml-1 italic">
                 ({d.romanization})
               </span>
             )}
@@ -960,7 +960,7 @@ function IdiomGlossList({
                     </p>
                   )}
                   {example && (
-                    <p className="italic text-slate-400">{example}</p>
+                    <p className="italic text-slate-500">{example}</p>
                   )}
                 </div>
               )}
