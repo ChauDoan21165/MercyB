@@ -60,7 +60,7 @@ import {
   type LearningEventProgressSummary,
 } from "@/lib/tutor/learningEventSummary";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
-import { detectL1Error } from "@/lib/feedback";
+import { detectEnVnError, detectL1Error } from "@/lib/feedback";
 import {
   getDetectorHint,
   hasShownHint,
@@ -644,10 +644,18 @@ export default function AiTutorPage() {
 
     // Detector → chip surface (adult AI Tutor only; CorrectionMode is not
     // mounted in the Mercy Kids surface). Runs AFTER setResult so the LLM-
-    // path response is on screen first; never blocks. The Vietnamese-L1
-    // detector applies only when the learner is studying English (the
-    // bilingual AI Tutor also serves Vietnamese-for-foreigners users on
-    // target === "vi" — chip does not fire for them).
+    // path response is on screen first; never blocks.
+    //
+    // Two direction-aware branches:
+    //  - target === "en" (Axis 1, VN→EN): Vietnamese-L1 detector +
+    //    chip render via getDetectorHint. Original flow, unchanged.
+    //  - target === "vi" (Axis 2, EN→VN): English-L1 detector wired
+    //    via detectEnVnError (PR #1188 follow-up). The chip surface
+    //    for en_l1_* tags isn't built yet — getDetectorHint's tag
+    //    catalog is vi_l1_*-specific — so the result is computed
+    //    and discarded. The detector is exercised in production so
+    //    the Axis 2 chip-render PR can land on a known-good
+    //    detector path.
     if (target === "en") {
       try {
         const detection = detectL1Error({
@@ -658,6 +666,19 @@ export default function AiTutorPage() {
         if (hint && !hasShownHint(hint.tag)) {
           setDetectorHint(hint);
         }
+      } catch {
+        /* detector failure is non-fatal — response already on screen */
+      }
+    } else if (target === "vi") {
+      try {
+        // Detection result is intentionally unused here; en_l1_*
+        // chip rendering lands in a follow-up PR. The call exists
+        // to exercise the detector in production and surface any
+        // engine-level breakage before the UI consumer ships.
+        void detectEnVnError({
+          userAnswer: trimmed,
+          expectedAnswer: corrected,
+        });
       } catch {
         /* detector failure is non-fatal — response already on screen */
       }
