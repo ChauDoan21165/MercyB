@@ -3,6 +3,7 @@
 **Status:** read-only diagnostic produced by C-side. The fixes called out below are decisions for A-side / Chau.
 
 **Generated:** 2026-05-27.
+**Last refreshed:** 2026-05-27 — `public.subscriptions` finding marked RESOLVED post-!86. See the top-of-doc resolution block.
 **Method:** five parallel inventory passes over `supabase/migrations/` (237 SQL files), `supabase/functions/` (109 edge functions), and `supabase/config.toml`. Every claim in this doc has the migration file path it came from; spot-checked against the actual SQL before publishing.
 
 **Cross-references:**
@@ -11,30 +12,54 @@
 
 ---
 
-## ⚠️ CRITICAL — NEW UNDOCUMENTED FINDING
+## 🟢 RESOLVED — `public.subscriptions` RLS (originally flagged CRITICAL)
 
-> **`public.subscriptions` has no Row Level Security and is readable by every authenticated user.**
+> **Status:** SHIPPED in `a1/subscriptions-rls-select-policies` (!86, merged 2026-05-27). The finding below describes the **historical** state at !84's authoring time; the resolution paragraph at the end of this block describes what actually shipped. This banner is preserved (rather than deleted) so the next auditor sees both the original severity and the chain of action that closed it.
 >
-> Severity: **CRITICAL** (worse than the `security_definer_view` Advisor backlog item — that finding is about views bypassing RLS on policy-protected base tables; this one is the raw billing table itself with no protection at all).
+> ---
 >
-> **Evidence:**
+> **Originally:** `public.subscriptions` had no Row Level Security and was readable by every authenticated user. Severity: **CRITICAL** — worse than the `security_definer_view` Advisor backlog item, because `security_definer_view` is about views bypassing RLS on otherwise-protected base tables, while this was the raw billing table itself with no protection at all.
+>
+> **Evidence (at original authoring):**
 > - Created in `supabase/migrations/20260315211233_unified_entitlements_and_subscriptions.sql:3`.
 > - Schema includes `user_id`, `provider` (stripe/apple/google), `provider_customer_id`, `provider_subscription_id`, `provider_transaction_id`, `status`, `current_period_start/end`, `cancel_at_period_end`, `canceled_at`, `ended_at`, **`raw_payload jsonb`** (full webhook payload — often contains customer email, card metadata, address fragments).
-> - `grep -rn "ENABLE ROW LEVEL.*public\.subscriptions\b" supabase/migrations/` → zero matches.
-> - The batch RLS-enable migration `20260422020000_enable_rls_on_exposed_tables.sql` (which retroactively closed 11 other Advisor-flagged tables) **did not include `subscriptions`** — it covers `ai_price_catalog`, `ai_product_catalog`, `apple_iap_events`, `billing_price_map`, `mercy_feedback_*`, `stripe_events`, `stripe_webhook_events`, `user_subscription_state`, and `entitlement_events` only.
+> - `grep -rn "ENABLE ROW LEVEL.*public\.subscriptions\b" supabase/migrations/` returned zero matches at audit time.
+> - The batch RLS-enable migration `20260422020000_enable_rls_on_exposed_tables.sql` (which retroactively closed 11 other Advisor-flagged tables) did not include `subscriptions` — it covered `ai_price_catalog`, `ai_product_catalog`, `apple_iap_events`, `billing_price_map`, `mercy_feedback_*`, `stripe_events`, `stripe_webhook_events`, `user_subscription_state`, and `entitlement_events` only.
 >
-> **Reproduction (read-only):**
+> **Why it was worse than `security_definer_view`:** the Advisor `security_definer_view` finding is about Postgres-15-default `security_invoker = false` on views — the view evaluates as the owner rather than the caller, but the base tables typically still have RLS. With `public.subscriptions` un-RLS'd, the base table itself was unprotected — even a correctly-written `security_invoker = true` view over it would have exposed every row.
+>
+> ---
+>
+> **Resolution:** A1 shipped `supabase/migrations/20260701000000_subscriptions_rls_select_policies.sql` (!86, merged 2026-05-27 21:42 UTC). The migration enables RLS plus two SELECT policies:
+>
 > ```sql
-> -- As any authenticated user (anon SDK with a valid session):
-> SELECT user_id, provider, status, current_period_end, raw_payload
-> FROM public.subscriptions
-> LIMIT 10;
-> -- → returns rows. RLS is not preventing access.
+> ALTER TABLE public.subscriptions ENABLE ROW LEVEL SECURITY;
+>
+> CREATE POLICY subscriptions_self_select
+>   ON public.subscriptions FOR SELECT TO authenticated
+>   USING (auth.uid() = user_id);
+>
+> CREATE POLICY subscriptions_admin_select
+>   ON public.subscriptions FOR SELECT TO authenticated
+>   USING (public.get_admin_level(auth.uid()) >= 9);
 > ```
 >
-> **Why this is worse than `security_definer_view`:** the Advisor `security_definer_view` finding is about Postgres-15-default `security_invoker = false` on views — the view evaluates as the owner rather than the caller, but the base tables typically still have RLS. Here, the base table itself is unprotected, so even a correctly-written `security_invoker = true` view over it would expose every row.
+> No GRANT/REVOKE changes. No INSERT/UPDATE/DELETE policies — writes were already service-role-only via the stripe-webhook / apple-iap-sync / google-webhook edge functions, and stay that way.
 >
-> **A-side action (per tracker rules — destructive SQL needs explicit Chau approval):** the fix is `ALTER TABLE public.subscriptions ENABLE ROW LEVEL SECURITY;` plus a per-user policy (`USING (auth.uid() = user_id)`) and an admin-read policy gated on `get_admin_level() >= 9`. **This doc does NOT apply the fix.** It is the diagnostic; A-side decides scope, MR shape, and rollout.
+> **Pre-merge call-site verification** is in `docs/security/subscriptions-rls-callsite-verification.md` (!94 companion doc): 20 call sites audited, 15 service-role (bypass RLS, unaffected), 1 user-JWT edge function reading only the caller's own row (works correctly), 3 browser-side helpers in `src/billing/*` that are dead code in prod (zero callers), and 2 admin dashboard call sites that read all rows via the admin policy.
+>
+> **Complementary follow-up:** !94 flagged a latent frontend / backend admin-gate mismatch (`useAdminAccess.ts:59` admitted `safeLevel > 0` while !86's admin policy requires `>= 9`). The mismatch was harmless in production (Chau is the only admin in prod and is at level 10, confirmed by the `admin_users` distribution check) but was closed for future-proofing in **!100** (`fix/admin-gate-level-9-align`, merged 2026-05-27): `useAdminAccess.ts:59` now also requires `safeLevel >= 9`.
+>
+> **Verification post-merge** (run any time to re-confirm):
+> ```sql
+> -- As any non-admin authenticated session:
+> SELECT count(*) FROM public.subscriptions WHERE user_id != auth.uid();
+> -- Expect 0 (RLS filtering).
+> ```
+>
+> **Still tracked as out-of-scope follow-ups** (not part of !86, not part of this resolution):
+> - `src/hooks/useUserAccess.ts:213, 330` carry the same loose `adminLevel > 0` pattern that !100 closed in `useAdminAccess.ts`. Sibling hook with its own snapshot tests; deserves its own MR. Flagged in !100's description.
+> - The `useUserAccess.ts` tightening is a future hardening, not a regression — Chau is still the only admin at level 10 and no current account is affected.
 
 ---
 
@@ -79,7 +104,7 @@ An earlier draft pass claimed 29 tables had RLS-enabled but zero policies. Spot-
 
 | # | Finding | Severity | Status | Where | Tracker entry |
 |---|---|---|---|---|---|
-| 1 | **`public.subscriptions` has no RLS** | **CRITICAL** | **LIVE** | §2B, top-of-doc | **NOT IN TRACKER** — newly discovered by this audit |
+| 1 | **`public.subscriptions` has no RLS** | CRITICAL (historical) | **HISTORICAL-CLOSED** | §2B, top-of-doc | Closed by !86 (`20260701000000_subscriptions_rls_select_policies.sql`) on 2026-05-27; latent frontend mismatch closed in !100 |
 | 2 | `security_definer_view` (views w/o `security_invoker = true`) — concrete inventory | HIGH | LIVE — Advisor backlog | §3D | Tracker row: `security_definer_view` |
 | 3 | `authenticated_security_definer_function_executable` — concrete inventory | HIGH | LIVE — Advisor backlog | §3B, §4B | Tracker row: `authenticated_security_definer_function_executable` |
 | 4 | `record_login_attempt(email,...)` callable by anon — DoS / lockout-flood vector | MEDIUM-HIGH | LIVE | §3A, §4B | Not in tracker |
@@ -91,7 +116,7 @@ An earlier draft pass claimed 29 tables had RLS-enabled but zero policies. Spot-
 | 10 | `auth_users_exposed` via referral leaderboard matviews | CRITICAL | **HISTORICAL-CLOSED** | §5B | Closed in Phase 2 destructive SQL (tracker MR !32 + safe projections) |
 | 11 | `mercy-ai rls_disabled_in_public`, `mercy-ai sensitive_columns_exposed` | n/a | **NOT CONFIRMED** | n/a | Tracker says no live-Advisor evidence; do not classify as active |
 
-**Net live exposure beyond what the tracker already covers:** finding #1 (CRITICAL) plus #4, #5, #6, #7 (MEDIUM range). Findings #2, #3, #8 are the three Advisor backlog items the tracker is already watching, with concrete inventories added.
+**Net live exposure beyond what the tracker already covers:** post-!86, finding #1 is now HISTORICAL-CLOSED. Remaining live exposure is #4, #5, #6, #7 (MEDIUM range). Findings #2, #3, #8 are the three Advisor backlog items the tracker is already watching, with concrete inventories added.
 
 ---
 
@@ -114,13 +139,13 @@ A representative high-stakes subset (the full set is ~155 tables):
 | `placement_v3_sessions` | 3 | User-scoped |
 | `admin_users` | 4 | Hierarchical admin levels |
 
-### 2B. Tables that NEVER had ENABLE ROW LEVEL SECURITY ← critical gap candidates
+### 2B. Tables that NEVER had ENABLE ROW LEVEL SECURITY ← historical critical gap candidates
 
-| Table | Created in | Severity | Notes |
+| Table | Created in | Severity | Status |
 |---|---|---|---|
-| **`public.subscriptions`** | `20260315211233_unified_entitlements_and_subscriptions.sql` | **CRITICAL** | Raw provider webhook payloads. See top-of-doc. |
+| ~~**`public.subscriptions`**~~ | `20260315211233_unified_entitlements_and_subscriptions.sql` | CRITICAL (historical) | 🟢 **CLOSED** by `20260701000000_subscriptions_rls_select_policies.sql` (!86, merged 2026-05-27) — see top-of-doc resolution block. |
 
-The other tables in the same migration (`entitlement_events`, the `profiles` ALTER) either had RLS already or got it from the batch retroactive enable.
+After !86 there are no remaining public-schema tables that lack RLS. The other tables in `20260315211233…` (`entitlement_events`, the `profiles` ALTER) either had RLS already at create time or got it from the batch retroactive enable at `20260422020000…`.
 
 ### 2C. Tables with RLS enabled but no `CREATE POLICY` for non-service-role
 
@@ -382,7 +407,7 @@ Verify each admin function does an admin-level check before privileged operation
 | `security_definer_view` | §3D — two NEEDS-REVIEW views (`vip3_public_profiles`, `v_user_pronunciation_stats`) + one INTENTIONAL (`feature_flags_public`) + eight RPC-only safe + four hardened Phase A | Verify the two NEEDS-REVIEW views, then either flip to `security_invoker = true` or ratify with comment |
 | `authenticated_security_definer_function_executable` | §3B — ~15 functions, of which 8 are admin-gated (safe), 4 are self-scoped (safe), and ~6 take user-id params without enforced caller-equals-subject check (`get_admin_level`, `grant_referral_reward`, `kick_study_group_member`, `check_admin_email_rate_limit`, `referral_owner_grants_in_year`, `apply_referral_code`) | Per-function decision: add internal authz check, revoke EXECUTE, or ratify |
 | `auth_leaked_password_protection` | Out of repo scope — Supabase Auth dashboard setting | Chau toggles in the Supabase dashboard |
-| **NEW — `public.subscriptions` no-RLS** | §1 finding #1, top-of-doc | **CRITICAL** — add to tracker; A-side decides on the destructive SQL MR |
+| ~~**NEW — `public.subscriptions` no-RLS**~~ | §1 finding #1, top-of-doc | 🟢 **CLOSED** — RLS + own-row + admin-read policies shipped in !86 (`20260701000000_subscriptions_rls_select_policies.sql`); latent frontend gate mismatch closed in !100. |
 | `mercy-ai rls_disabled_in_public` (not confirmed) | No matching tracker-evidence found in repo migrations | Per tracker rules, do not classify as active without exact Advisor screenshot |
 | `mercy-ai sensitive_columns_exposed` (not confirmed) | No matching evidence | Same; do not classify as active |
 
@@ -392,7 +417,7 @@ Verify each admin function does an admin-level check before privileged operation
 
 This list is decision-shaped, not action-shaped. C-side does not apply destructive SQL; A-side / Chau decides scope per the tracker's "one MR per Critical" rule.
 
-1. **CRITICAL — `public.subscriptions` RLS enable.** New tracker row required. Single-table single-MR per the existing rule; the diff is one `ALTER TABLE ... ENABLE ROW LEVEL SECURITY` plus the user-own-row policy plus optional admin-read policy.
+1. ~~**CRITICAL — `public.subscriptions` RLS enable.**~~ 🟢 **CLOSED** in !86 (`20260701000000_subscriptions_rls_select_policies.sql`, merged 2026-05-27). One-MR-per-Critical rule satisfied. Resolution detail in the top-of-doc block. Complementary frontend gate alignment closed in !100.
 2. **HIGH — `security_definer_view` resolution.** Two views need a verdict; the third (`feature_flags_public`) needs a doc comment so the next audit doesn't misclassify it.
 3. **HIGH — `authenticated_security_definer_function_executable` per-function decisions.** Six functions need caller-equals-subject checks or to be moved behind edge functions.
 4. **MEDIUM — `record_login_attempt` rate-limit shim.** Add per-IP rate limit on the function body, or move the lockout-counter mutation behind an edge function with its own throttle.
