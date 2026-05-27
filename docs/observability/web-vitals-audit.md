@@ -90,7 +90,7 @@ Listed roughly by impact, highest first.
 
 `WebVitalName` previously included `"FID"` and `WEB_VITAL_THRESHOLDS["FID"]` carried a threshold, but no `onFID` call existed. **Resolution:** option **(1a)** taken — FID dropped from `WebVitalName` and the threshold table; package-side `Metric["name"]` already excluded it. Comment scrub: `src/main.tsx`, `src/lib/perf/webVitalsTracking.ts`, `src/pages/admin/FrontendPerformance.tsx`, and this audit's §2 / §3 / §7 prose. Contract test (`src/lib/monitoring/__tests__/web-vital-contract.test.ts`) pins the exclusion at compile time for both the upstream `Metric["name"]` and the local `WebVitalName`. No behavior change to live metric capture (FID was never subscribed).
 
-Dead-code candidates *not* touched here (separate dispatches): the deprecated `fid` field + `(webVitals as any).onFID` guard in `src/simulator/perf/WebVitalsCollector.ts`, and the sibling dead-code file in §6 (4).
+Dead-code follow-ups (now also done): the deprecated `fid` field + `(webVitals as any).onFID` guard in `src/simulator/perf/WebVitalsCollector.ts` was dropped in `chore/simulator-drop-fid` (🟢); the sibling dead-code file shipped in §6 (4) (🟢).
 
 ### (2) Alert coverage is LCP-only
 
