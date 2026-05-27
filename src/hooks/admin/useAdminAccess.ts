@@ -94,7 +94,14 @@ function normalizeText(value: unknown): string | null {
 function isAdminFromProfile(profile: ProfileAdminRow | null): boolean {
   if (!profile) return false;
   const level = normalizeLevel(profile.admin_level);
-  return Boolean(profile.is_admin) || level >= 1;
+  // No `Boolean(profile.is_admin) ||` disjunct: the is_admin column does
+  // not appear in !86's SQL admin policy and therefore should not admit
+  // admin status here either. Final isAdmin verdict still goes through
+  // permissionsFromLevel(>=9). Removed in the post-!100/!105 hardening
+  // pass; the disjunct was effectively no-op in prod because Chau (the
+  // only is_admin=true row) is also at admin_level=10 and is caught by
+  // the level check below.
+  return level >= 1;
 }
 
 async function fetchAdminRoleByRpc(

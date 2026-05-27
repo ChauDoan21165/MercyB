@@ -213,13 +213,12 @@ function authenticatedFreeAccess(params: {
   // adminLevel threshold must match the SQL admin policy in
   // supabase/migrations/20260701000000_subscriptions_rls_select_policies.sql:
   //   USING (public.get_admin_level(auth.uid()) >= 9)
-  // Sibling fix to !100 (useAdminAccess.ts:59). The Boolean(params.isAdmin)
-  // disjunct is preserved for caller-supplied overrides; in prod the only
-  // is_admin=true profile is Chau's at admin_level=10, so the disjunct is
-  // effectively no-op. If a future is_admin=true row ever appears with
-  // admin_level<9, the frontend would over-admit relative to the SQL —
-  // separate hardening note in this MR's description.
-  const isAdmin = Boolean(params.isAdmin) || adminLevel >= 9 || isHighAdmin;
+  // No `Boolean(params.isAdmin) ||` disjunct: !86's SQL policy ignores
+  // is_admin / params.isAdmin flags and only checks admin_level. The
+  // flag-bypass disjunct that lived here was removed in the post-!100/!105
+  // hardening pass — `params.isAdmin` was effectively dead (the only
+  // caller of authenticatedFreeAccess in src/ does not pass it).
+  const isAdmin = adminLevel >= 9 || isHighAdmin;
   const loading = Boolean(params.loading);
   const isTrialExpired = Boolean(params.isTrialExpired) && !isHighAdmin;
   const unlockMercyFeatures = !isTrialExpired && (FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin);
@@ -339,10 +338,13 @@ export const useUserAccess = (): UserAccess => {
           // adminLevel threshold must match the SQL admin policy in
           // 20260701000000_subscriptions_rls_select_policies.sql:
           //   USING (public.get_admin_level(auth.uid()) >= 9)
-          // Sibling fix to !100. Boolean(profile.is_admin) disjunct preserved
-          // for back-compat with the profiles.is_admin column; in prod the only
-          // is_admin=true profile is Chau's at admin_level=10.
-          isAdmin = Boolean(profile.is_admin) || adminLevel >= 9 || isHighAdmin;
+          // No `Boolean(profile.is_admin) ||` disjunct: !86's SQL policy
+          // ignores the is_admin column and only checks admin_level. The
+          // flag-bypass disjunct that lived here was removed in the
+          // post-!100/!105 hardening pass — in prod the only is_admin=true
+          // row is Chau's at admin_level=10, which the level check below
+          // already covers.
+          isAdmin = adminLevel >= 9 || isHighAdmin;
         }
       } catch {
         // keep level0/admin defaults — never block access resolution on profile error
