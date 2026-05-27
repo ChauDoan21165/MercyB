@@ -31,7 +31,7 @@
 | Route | Page component | tests/e2e/ | e2e/ | Coverage | Notes |
 |---|---|---|---|---|---|
 | `/` (first-visit anon) | `MarketingLandingPage` | **NEW** `marketing-landing-anon.spec.ts` | — | smoke (NEW) | AnonymousOnboardingGate renders this when no anon pair + no user. Brand line is the locked phrase. |
-| `/` (returning anon / signed-in) | `Home` | transit (in 4 specs) | `user-journey.spec.ts` | transit | Several specs land here as a stepping stone. No dedicated render-quality assertion. |
+| `/` (returning anon / signed-in) | `Home` | transit (in 4 specs) | — | transit | Several smoke specs land here as a stepping stone. No dedicated render-quality assertion. (Legacy `e2e/user-journey.spec.ts` deleted in Phase 2 of the legacy-e2e migration — see `docs/testing/playwright-config-audit.md`.) |
 | `/onboarding` | `OnboardingPage` | **NEW** `onboarding-anon.spec.ts` | — | smoke (NEW) | Anon entry, locked #14. Public pair picker. |
 | `/pricing` (= `/upgrade`) | `screens/Pricing` | **NEW** `pricing-anon.spec.ts` | — | smoke (NEW) | Conversion funnel terminus. Anon-viewable. |
 | `/weak-at` | `WeakAt` | `stage-3a-weak-at.spec.ts` | — | full | Empty / populated / partial-state matrix via localStorage seed. |

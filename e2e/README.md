@@ -158,14 +158,18 @@ npx playwright show-trace trace.zip
 Snapshots are stored in:
 ```
 e2e/__screenshots__/
-├── visual-regression.spec.ts/
-│   ├── rooms-free-tier-chromium.png
-│   ├── rooms-vip3-tier-chromium.png
-│   ├── room-adhd-support-chromium.png
-│   └── ...
-└── navigation.spec.ts/
+└── visual-regression.spec.ts/
+    ├── rooms-free-tier-chromium.png
+    ├── rooms-vip3-tier-chromium.png
+    ├── room-adhd-support-chromium.png
     └── ...
 ```
+
+> **Phase-2 migration note (2026-05-27):** `navigation.spec.ts` and
+> `user-journey.spec.ts` were deleted in the legacy-e2e migration.
+> Their snapshot directories may still exist on disk under
+> `e2e/__screenshots__/` from earlier runs — safe to delete by hand.
+> Context: `docs/testing/playwright-config-audit.md`.
 
 ## CI/CD Integration
 

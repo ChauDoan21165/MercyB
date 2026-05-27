@@ -1,16 +1,16 @@
-name: Playwright Visual Regression Tests
+name: Playwright (kids + anon smoke)
 
 on:
   push:
     branches: [main]
+  pull_request:
 
-# A new push to main cancels the in-flight Playwright run on the same
-# ref. Without this, a rapid wave of PR merges (e.g. the 2026-05-19 night
-# of merges) stacks 7+ concurrent visual-regression suites on the
+# A new push to main / PR ref cancels the in-flight Playwright run on
+# the same ref. Without this, a rapid wave of PR merges (e.g. the
+# 2026-05-19 night of merges) stacks 7+ concurrent suites on the
 # GitHub-hosted runner pool, starving every other workflow in the repo.
-# The group key is parameterised on github.ref so the pattern stays safe
-# if pull_request is ever added to triggers — each PR ref then gets its
-# own isolated cancellation group instead of cancelling another PR's run.
+# Group key is parameterised on github.ref so each PR gets its own
+# isolated cancellation group instead of cancelling another PR's run.
 concurrency:
   group: playwright-${{ github.ref }}
   cancel-in-progress: true
@@ -23,36 +23,66 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      
-      - name: Run Playwright tests
+
+      # Legacy visual-smoke spec for the kids surface — CLAUDE.md
+      # non-negotiable #2 ("Kids mode is sacred"). Stays under the
+      # legacy playwright.config.ts until the rename in Phase 3 of the
+      # docs/testing/playwright-config-audit.md migration plan.
+      - name: Run kids visual smoke (chromium)
         run: npx playwright test e2e/kids-foundation.spec.ts --project=chromium
         env:
           CI: true
-      
+
+      # Anon smoke specs from tests/e2e/ — none of these need a
+      # TEST_* env var. Specs named `<route>-anon.spec.ts` are
+      # picked up by the glob; the two anon specs with non-conformant
+      # names (stage-3a-weak-at, placement-forensics-dashboard) are
+      # listed explicitly. Auth specs in tests/e2e/ are NOT in this
+      # run — they call `test.skip(!hasSupabaseTestCreds())` and would
+      # report as skipped, but enumerating only the anon set keeps the
+      # CI signal tight and the wall-clock low.
+      #
+      # Per docs/testing/playwright-config-audit.md Q4: gate-on-merge
+      # is the default for these — they're designed to fail loudly,
+      # and a red workflow is exactly the signal we want when an anon
+      # surface regresses.
+      - name: Run anon E2E smoke (chromium)
+        run: |
+          npx playwright test \
+            -c playwright.smoke.config.ts \
+            'tests/e2e/*-anon.spec.ts' \
+            tests/e2e/stage-3a-weak-at.spec.ts \
+            tests/e2e/placement-forensics-dashboard.spec.ts \
+            --project=chromium
+        env:
+          CI: true
+
       - name: Upload Playwright Report
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
-          path: playwright-report/
+          path: |
+            playwright-report/
+            playwright-smoke-report/
           retention-days: 30
-      
+
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
         if: failure()
@@ -60,7 +90,7 @@ jobs:
           name: test-results
           path: test-results/
           retention-days: 7
-      
+
       - name: Comment PR with results
         if: github.event_name == 'pull_request' && failure()
         uses: actions/github-script@v7
@@ -70,5 +100,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '❌ Visual regression tests failed. Check the uploaded artifacts for details.'
+              body: '❌ Playwright (kids + anon smoke) failed. Check the uploaded artifacts.'
             })

@@ -132,6 +132,47 @@ This follow-up MR (`chore/legacy-e2e-migration-phase-1`) executes the **lowest-r
 4. Decide gate-vs-report (Q4 sub-choice).
 5. Rename `playwright.config.ts` → `playwright.visual.config.ts` and `e2e/` → `tests/visual/`.
 
+## Phase 2 status — 2026-05-27
+
+This follow-up MR (`chore/legacy-e2e-migration-phase-2`) executes the deletions deferred from Phase 1 and addresses Q1 by expanding CI coverage. The Q2 + Q4 owner sub-choices remain deferred — see "What this MR did NOT change" below.
+
+### Actions taken
+
+- **Deleted `e2e/navigation.spec.ts`** — every URL was dead per the Phase-1 audit and the `// DEPRECATED` marker shipped in !55. Verified again 2026-05-27 against `src/router/AppRouter.tsx` — no resurrected routes.
+- **Deleted `e2e/user-journey.spec.ts`** — same reasoning. Surviving coverage lives in `tests/e2e/{marketing-landing,tier-map,pricing}-anon.spec.ts` and the legacy `e2e/room-loading.spec.ts`.
+- **Expanded `.github/workflows/playwright.yml`** to address Q1:
+  - Added `pull_request` to the trigger list (was `push: main` only — CI never gated PRs).
+  - Renamed workflow from "Playwright Visual Regression Tests" to "Playwright (kids + anon smoke)" to reflect dual purpose.
+  - Added a second `playwright test` step that runs the anon smoke suite from `tests/e2e/` (`*-anon.spec.ts` glob + `stage-3a-weak-at.spec.ts` + `placement-forensics-dashboard.spec.ts`, chromium only). Auth-required specs in `tests/e2e/` are intentionally excluded — none of the smoke env vars are wired into CI yet, and the cleanest signal is to enumerate exactly the specs we know are deterministic.
+  - Artifact-upload step extended to include `playwright-smoke-report/` alongside the existing `playwright-report/`.
+- **Annotated `playwright.config.ts`** with a "Dead-config note" header flagging the four non-chromium project entries (`firefox`, `webkit`, `mobile-chrome`, `mobile-safari`) as not exercised by any CI workflow. The entries are NOT removed — that's the Q2 owner decision.
+- **Updated `e2e/README.md`** and `docs/testing/e2e-coverage-map.md` to drop dangling references to the deleted specs.
+
+### What this MR did NOT change
+
+- **Q2 (multibrowser policy)** — the four non-chromium projects remain in `playwright.config.ts`. The new header comment names them as dead, but the prune is an explicit owner decision (keep an opt-in `multibrowser` job for release-candidate branches? or collapse to chromium-only?).
+- **Q4 (gate-on-merge vs report-only)** sub-choice — this MR defaults to **gate-on-merge** for the anon smoke (per the Phase-1 Q4 answer "defaults to block-on-merge"). The workflow run is now PR-blocking. If Chau wants report-only first, a follow-up flips `if: failure()` semantics or adds a `continue-on-error` to the smoke step. The default is the simpler, stricter pattern; reverting is one line.
+- **The Phase-1 proposal items 1 (rename configs), 4 (kids visual companion), 5 (move behavioural specs from `e2e/` into `tests/e2e/`), 6 (visual snapshot baseline pin), 7 (top-level `docs/testing/README.md`)** — deferred to Phase 3. Not blocking.
+- No source code touched outside `tests/`, `e2e/`, `docs/`, and `.github/workflows/` (per dispatch — "tests + docs only" plus the CI workflow Q1 fix).
+
+### CI workflow contract after this MR
+
+| Trigger | What runs | Project | Blocks PR? |
+|---|---|---|---|
+| `push: main` | kids visual + anon smoke (~15 specs) | chromium | n/a (post-merge) |
+| `pull_request` | kids visual + anon smoke (~15 specs) | chromium | yes (gate) |
+
+Auth specs in `tests/e2e/` still gate on `hasSupabaseTestCreds()` and skip cleanly when the test Supabase project secrets are absent — those will switch on automatically once Phase 3b provisions the CI secret.
+
+### Phase 3 backlog (owner-gated)
+
+1. **Q2 resolution:** prune `playwright.config.ts` projects array OR add an opt-in `multibrowser` workflow.
+2. **Q4 follow-up:** confirm gate-on-merge is the right posture; revert to report-only if any spec turns out to be flaky in CI.
+3. **Config rename:** `playwright.config.ts` → `playwright.visual.config.ts`, `e2e/` → `tests/visual/`. Carries `test:visual` npm script + workflow path updates.
+4. **Behavioural spec migration:** move `e2e/error-handling.spec.ts` + `e2e/room-loading.spec.ts` into `tests/e2e/` (they're behavioural, not visual — see the Phase-1 proposal item 5).
+5. **Visual baseline regeneration:** if Q2 lands as "chromium only", regenerate visual-regression baselines pinned to chromium.
+6. **Top-level `docs/testing/README.md`** — index for the split.
+
 ## Open questions — resolved 2026-05-27 (Phase 1 follow-up MR)
 
 ### Q1. Does the legacy `e2e/` suite still run in CI?
