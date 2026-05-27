@@ -6,13 +6,20 @@ After cloning this repository, follow these steps to set up your development env
 
 ### Prerequisites
 
-- **Node 22+** — CI and the Capacitor 8 toolchain target Node 22. (The Vercel
-  production build runtime is Node 24; a local Node 22+ is fine.)
+- **Node 22+** — CI and the Capacitor 8 toolchain target Node 22.
+  Netlify (the post-2026-05-27 production host) runs Node 22; local
+  Node 22+ is fine.
 - **npm** — this repo uses npm; there is no pnpm/yarn lockfile.
 - **Supabase CLI** *(optional)* — only for edge-function / migration work.
   Invoke via `npx supabase ...` (no global install required).
-- **Vercel CLI** *(optional)* — only for manual deploys / env pulls
-  (`npx vercel ...`).
+- **Netlify CLI** *(optional)* — for manual production deploys
+  (`npx netlify ...`). See `.github/workflows/DEPLOYMENT.md`.
+- **Vercel CLI** *(optional)* — only for emergency recovery deploys to
+  the documented fallback host (`npx vercel ...`); see
+  `docs/runbooks/disaster-recovery.md` §2.2.
+- **`glab` CLI** *(optional)* — for creating merge requests from the
+  terminal (`glab mr create`). The repo is on GitLab; `gh pr create`
+  is the legacy path.
 - **Capacitor 8** *(iOS/Android only)* — Xcode (iOS) / Android Studio. Sync
   with `npx cap sync ios` / `npx cap sync android` after a build.
 - **Sentry** — error monitoring is wired via `@sentry/react`; the DSN is an
@@ -44,12 +51,14 @@ This installs pre-commit hooks that:
 
 ### 3. Configure Environment
 
-Environment variables are **not** auto-configured. They are managed in the
-Vercel project dashboard (build + runtime env) and in Supabase project
-settings; see `docs/SECURITY_HARDENING_2025.md` for the canonical list. For
-local development, create a `.env.local` at the repo root (gitignored) with
-the variables you need. If Supabase is unreachable, audio degrades silently
-to a local `/audio/{key}` path.
+Environment variables are **not** auto-configured. They are managed in
+the **Netlify** project dashboard (build + runtime env) post-2026-05-27
+migration, with the Vercel project retaining a mirror copy for the
+documented recovery deploy path. See
+`docs/SECURITY_HARDENING_2025.md` for the canonical list. For local
+development, create a `.env.local` at the repo root (gitignored) with
+the variables you need. If Supabase is unreachable, audio degrades
+silently to a local `/audio/{key}` path.
 
 ### 4. Start Development
 
@@ -173,11 +182,23 @@ git commit --no-verify -m "Emergency fix"
 
 ## CI/CD
 
-The repository includes GitHub Actions that run on push to `main` and `develop` branches:
+**Post-2026-05-26 migration:** the repository is on **GitLab**
+(`gitlab.com:cd12536/mercyB`) and CI runs via **GitLab CI**
+(`.gitlab-ci.yml`). Today the only scheduled job is the nightly
+Postgres backup; PR-time gates are not yet ported from the legacy
+GitHub Actions workflows.
 
-- `.github/workflows/validate-and-update-registry.yml`
+The `.github/workflows/*.yml` files retained in repo (including
+`validate-and-update-registry.yml`, `ci.yml`,
+`production-deploy.yml`, `sync-lessons.yml`,
+`deploy-edge-functions.yml`) are **legacy** — they do not run on
+GitLab. Treat them as documentation of the prior pipeline shape.
+The GitLab CI port is its own dispatch.
 
-This ensures validation runs even if developers bypass local hooks.
+For the canonical deploy + rollback runbooks, see
+`.github/workflows/DEPLOYMENT.md` and `.github/workflows/ROLLBACK.md`.
+For incident-recovery procedures (provider outages, account
+lockouts), see `docs/runbooks/disaster-recovery.md`.
 
 ## Questions?
 

@@ -480,8 +480,12 @@ JWT for the cloud scorer without forcing signup.
 **Key files.**
 - `src/lib/supabaseClient.ts` — **the only** browser Supabase client
   (anon key). Singleton. Server-side service-role clients live in
-  `api/*` (Vercel functions) and `supabase/functions/*` (edge), never
-  bundled.
+  the Vercel-style serverless functions under `api/*` (today's
+  registered entries per `vercel.json` are `mercy/grammar`,
+  `mercy-ai`, `mercy-feedback`, `mercy-guide`, `tts` — NOT
+  Stripe-webhook-related) and the Supabase edge functions under
+  `supabase/functions/*` (including `stripe-webhook`, `apple-webhook`,
+  and all billing webhooks). Never bundled.
 - `src/integrations/supabase/client.ts` — re-export.
 - `src/lib/auth/anonymousBootstrap.ts` — flag-gated anon sign-in.
 - `src/lib/auth/conversion.ts`, `conversionTriggers.ts` — anon → signed
@@ -586,10 +590,14 @@ telemetry — wiring shipped via PR #1132, owner-gated on Chau's
 on-device probe).
 
 **Don't break.** Sentry SDK is **route-gated** — static legal /
-marketing pages must not fetch the SDK (`production-deploy.yml` config,
-PRs #720, #740). Pre-#657 CI greens cannot be trusted. Production
-deploys go through `production-deploy.yml` only; the GitHub-App main
-auto-deploy is disabled (memory: [[project_vercel_prod_deploy]]).
+marketing pages must not fetch the SDK (PRs #720, #740). Pre-#657 CI
+greens cannot be trusted (legacy GitHub Actions state, pre-migration).
+Post-2026-05-27 migration: production deploys go through Netlify's
+GitLab integration; the `production-deploy.yml` workflow that was the
+sole pre-migration prod-ship path is legacy. The `NETLIFY_CONTEXT`
+env var drives Sentry's deploy-environment tag (memory:
+[[project_vercel_prod_deploy]] is stale on "primary" — see
+`docs/runbooks/disaster-recovery.md`).
 
 **See also.** `docs/OBSERVABILITY.md`, `docs/slo-handbook.md`.
 
@@ -723,33 +731,54 @@ don't fall back. Workbox `room-audio` cache pattern matches
 
 ---
 
-## 22. Vercel + CI/CD
+## 22. Hosting + CI/CD
 
-**What it does.** Vercel PRO deployments (web). GitLab CI emits the
-three required checks (the canonical PR gate). Edge-function deploy
-pipeline is in flight.
+**What it does.** Production hosting + the PR/CI gates. Post-2026-05-27
+migration (see `docs/runbooks/disaster-recovery.md`), **Netlify** is
+primary; **Vercel** is the documented recovery host (`vercel.json`
+retained for the §2.2 emergency redeploy). **GitLab** is the canonical
+repository; the `.github/workflows/*.yml` files are **legacy** (the
+GitHub Actions runner doesn't fire on GitLab). `.gitlab-ci.yml`
+carries the only currently-scheduled CI job (nightly Postgres backup);
+PR-time gates are not yet ported from the legacy workflows — that's
+its own dispatch.
 
 **Key files.**
-- `vercel.json` — main auto-deploy via GitHub App is **disabled**;
-  prod ships via `production-deploy.yml`. Previews still via the App.
-- `.github/workflows/ci.yml` — PR workflow (the three required
-  checks). The job names are part of the contract — don't rename
-  (memory: [[project_ci_workflow_consolidation]]).
-- `.github/workflows/production-deploy.yml` — sole prod-deploy path.
-- `.github/workflows/DEPLOYMENT.md`, `ROLLBACK.md` — runbooks.
-- `.github/workflows/sync-lessons.yml` — language-lesson `.ts` merges
-  to main auto-sync to prod Supabase (memory:
-  [[project_lessons_autosync_prod]]).
-- Edge function deploy: PR #669 is the in-flight real deploy + drift
-  pipeline; needs `SUPABASE_ACCESS_TOKEN` + `SUPABASE_PROJECT_REF`
-  secrets (memory: [[project_edge_fn_ci_deploy]]).
+- `.github/workflows/DEPLOYMENT.md` — canonical deploy runbook
+  (Netlify primary, Vercel recovery, legacy GitHub Actions noted).
+- `.github/workflows/ROLLBACK.md` — canonical rollback runbook
+  (Netlify Publish-deploy primary, Vercel recovery, git revert
+  last-resort).
+- `docs/runbooks/disaster-recovery.md` — authoritative
+  incident-recovery runbook (provider outages, account lockouts,
+  full-migration playbook). The source-of-truth for "what's
+  primary, what's recovery."
+- `.gitlab-ci.yml` — current GitLab CI config. Today scopes only the
+  nightly Postgres backup; PR-time gates not yet ported.
+- `vercel.json` — retained for the documented recovery deploy path.
+  The GitHub-App auto-deploy block is stale shape from the
+  pre-migration state; memory:
+  [[project_vercel_prod_deploy]] (now stale on "primary" — Vercel is
+  recovery-only).
+- `.github/workflows/*.yml` (legacy): `ci.yml`, `production-deploy.yml`,
+  `sync-lessons.yml`, `deploy-edge-functions.yml`. These are reference
+  for the prior pipeline shape; they do not run on GitLab. Memories
+  [[project_ci_workflow_consolidation]], [[project_lessons_autosync_prod]],
+  [[project_edge_fn_ci_deploy]] still describe the *intent* but the
+  *trigger* is no longer GitHub Actions.
 
 **Owner-lane.** Platform.
 **Strategic priority.** —
 
-**Don't break.** Don't trust pre-#657 green CI runs. Repository remote
-is now GitLab (`origin = git@gitlab.com:cd12536/mercyB.git`); the old
-GitHub remote is `old-origin`. Use `glab` for MRs, not `gh pr`.
+**Don't break.** Don't trust pre-#657 green CI runs (legacy Actions
+state). Repository remote is GitLab (`origin = git@gitlab.com:cd12536/mercyB.git`);
+the old GitHub remote is `old-origin`. Use `glab` for MRs, not
+`gh pr`. The Stripe webhook is a **Supabase edge function** at
+`supabase/functions/stripe-webhook/`, posted to directly by Stripe
+at `https://buemdfxyhxunzpgdoqin.supabase.co/functions/v1/stripe-webhook`
+— not routed through Netlify, Vercel, or Cloudflare. See
+[`systems/billing-entitlement.md` §5d](./systems/billing-entitlement.md)
+for the verified treatment.
 
 ---
 

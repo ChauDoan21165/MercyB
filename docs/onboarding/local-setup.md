@@ -13,9 +13,9 @@
 
 You need:
 
-- **Node 22+.** CI and the Capacitor 8 toolchain target Node 22. The
-  Vercel production build runtime is Node 24; local Node 22+ is
-  fine. Check with `node -v`.
+- **Node 22+.** CI and the Capacitor 8 toolchain target Node 22.
+  Netlify (the post-2026-05-27 production host) runs Node 22; local
+  Node 22+ is fine. Check with `node -v`.
 - **npm.** This repo uses npm. There is no pnpm/yarn lockfile.
   `corepack` is not configured.
 - **git.** Standard. The repo is on GitLab —
@@ -32,8 +32,11 @@ Optional, for specific work only:
 - **Supabase CLI** — only for editing edge functions or running
   migrations locally. Invoke via `npx supabase ...`; no global
   install required.
-- **Vercel CLI** — only for manual deploys / env pulls. Invoke via
-  `npx vercel ...`.
+- **Netlify CLI** — for manual production deploys. Invoke via
+  `npx netlify ...`. See `.github/workflows/DEPLOYMENT.md`.
+- **Vercel CLI** — only for emergency recovery deploys to the
+  documented fallback host (`npx vercel ...`); see
+  `docs/runbooks/disaster-recovery.md` §2.2.
 - **Xcode** — only for iOS Capacitor builds.
 - **Android Studio** — only for Android Capacitor builds.
 
@@ -87,20 +90,23 @@ The repo ships an **`.env.example`** at the root, but it documents
 **only the Apple IAP / RevenueCat / analytics subset** of env vars.
 The two env vars you actually need to talk to Supabase
 (`VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`) are **NOT** in
-`.env.example` — they live in the Vercel project's build/runtime
-env, and are obtained from there or from Chau.
+`.env.example` — they live in the **Netlify** project's build/runtime
+env (post-2026-05-27 migration; the Vercel project's env retains a
+mirror copy for the documented recovery deploy path). Obtain them
+from there or from Chau.
 
 > Why this is the case: those keys were added to the Vercel env
 > early in the project's life, before `.env.example` was created,
-> and never back-ported. The canonical list (with rationale per
-> key) lives in **`docs/SECURITY_HARDENING_2025.md`**.
+> and never back-ported. They're now mirrored in Netlify too. The
+> canonical list (with rationale per key) lives in
+> **`docs/SECURITY_HARDENING_2025.md`**.
 
 ### What you need at minimum to run `npm run dev`
 
 ```bash
 # .env.local at the repo root (gitignored — never commit)
 VITE_SUPABASE_URL=https://buemdfxyhxunzpgdoqin.supabase.co
-VITE_SUPABASE_ANON_KEY=<get from Chau or Vercel project env>
+VITE_SUPABASE_ANON_KEY=<get from Chau, the Netlify project env, or the Vercel recovery env>
 ```
 
 That's enough to boot the dev server. Without the Supabase URL/key,

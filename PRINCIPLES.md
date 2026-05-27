@@ -161,10 +161,10 @@ This is the planner-Claude's responsibility to put in every parallel-dispatch pr
 
 ## 14. READ THE REPO FIRST — STRATEGY BEFORE ADVICE
 
-Every new Claude session (web chat) MUST start by cloning the public repo:
+Every new Claude session (web chat) MUST start by cloning the canonical repo. The repo migrated from GitHub to GitLab on 2026-05-26; the `old-origin` GitHub remote is retained read-only on local clones for forensics but is not the canonical source today:
 
 ```
-git clone --depth 1 https://github.com/ChauDoan21165/MercyB.git /home/claude/MercyB
+git clone --depth 1 https://gitlab.com/cd12536/mercyB.git /home/claude/MercyB
 ```
 
 Then read STRATEGY.md and PRINCIPLES.md (this file) BEFORE responding to any strategic question.
@@ -222,7 +222,7 @@ Use these tags when assigning future work to renamed agents:
   Specialty: release gates, verifier guard updates, package-shape conflicts, tricky release/verifier PR repair.
 
 - **A5 — Merge Watcher**
-  Specialty: CI watch, merge readiness, GitHub PR state, post-merge validation, exact blocker reporting.
+  Specialty: CI watch, merge readiness, GitLab MR state (post-2026-05-26 migration; the legacy "GitHub PR state" framing was retained for back-compat in agent dispatches but agents should expect MR semantics today), post-merge validation, exact blocker reporting.
 
 - **A6 — Mobile Diagnostics**
   Specialty: mobile/audio diagnostics, TypeScript CI fixes, privacy-safe telemetry/export checks, product-adjacent verifier work.

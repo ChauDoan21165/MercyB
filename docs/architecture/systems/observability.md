@@ -421,9 +421,11 @@ failed, it returns `false` — but `whenSentryReady()` STILL resolves
 `isSentryEnabled()` and choose replay vs. console-drop.
 
 If you're debugging "I called `captureError` and nothing shows up in
-the dashboard", check (1) is `VITE_SENTRY_DSN` set in the env Vercel
-uses, (2) is `isSentryEnabled()` returning `true` at the time of the
-call, (3) is the event being suppressed by `scrubEvent`'s rules.
+the dashboard", check (1) is `VITE_SENTRY_DSN` set in the env the
+host uses (Netlify primary post-2026-05-27 migration; Vercel as the
+documented recovery host), (2) is `isSentryEnabled()` returning
+`true` at the time of the call, (3) is the event being suppressed by
+`scrubEvent`'s rules.
 
 ### 6b. Pre-init `captureMessage` does NOT round-trip
 
@@ -481,8 +483,10 @@ alerts.
 
 But the chunk-load class can also fire on a legitimate CDN outage. If
 you see a sustained `chunk_load_failure` count, **don't** assume
-stale deploy — check Vercel's edge-cache status and the
-`/version.json` rollout state.
+stale deploy — check the current host's edge-cache status (Netlify
+post-2026-05-27 migration; check the Netlify dashboard's Deploys +
+edge-cache state), Cloudflare's CDN status, and the `/version.json`
+rollout state.
 
 ### 6g. Canonical Web Vitals path
 
@@ -517,8 +521,9 @@ The `TUTOR_LOG_REDACTION_RULES` in `src/lib/ai-tutor/types.ts` are
 the canonical regex set; the billing layer borrows them; observability
 should too. Specifically: `logAiUsage` (server) and any client-side
 `logger` call paths must run the same scrub. If you find a log line
-in Vercel's function logs that contains an email or JWT, **that is a
-bug** — open it.
+in the host's function logs (Netlify Functions tab post-2026-05-27
+migration; Vercel's logs apply only on the documented recovery host)
+that contains an email or JWT, **that is a bug** — open it.
 
 ### 6k. Sentry's `release` tag must match what's deployed
 
