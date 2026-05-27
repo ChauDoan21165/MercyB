@@ -56,7 +56,7 @@ export function MercyEnglishTab({
                 lesson.
               </p>
               <p className="mt-1 text-xs text-muted-foreground">
-                Mở một room để học từ vựng và câu mẫu từ chính nội dung đó.
+                Mở một phòng học để học từ vựng và câu mẫu từ chính nội dung đó.
               </p>
 
               <Button

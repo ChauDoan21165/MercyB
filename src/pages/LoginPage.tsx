@@ -284,18 +284,23 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (readSearchFlag(search, "logged_out")) {
-      setNotice({ tone: "success", message: "✅ You’ve been signed out." });
+      setNotice({
+        tone: "success",
+        message: "✅ Bạn đã đăng xuất.\n✅ You’ve been signed out.",
+      });
     }
     if (readSearchFlag(search, "created")) {
       setNotice({
         tone: "success",
-        message: "✅ Account created. You can sign in now.",
+        message:
+          "✅ Đã tạo tài khoản. Bạn có thể đăng nhập ngay.\n✅ Account created. You can sign in now.",
       });
     }
     if (readSearchFlag(search, "reset")) {
       setNotice({
         tone: "success",
-        message: "✅ Password updated. You can sign in now.",
+        message:
+          "✅ Đã cập nhật mật khẩu. Bạn có thể đăng nhập ngay.\n✅ Password updated. You can sign in now.",
       });
     }
   }, [search]);
