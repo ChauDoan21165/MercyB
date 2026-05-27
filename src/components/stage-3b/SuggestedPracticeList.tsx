@@ -34,7 +34,7 @@
 //   - Mobile-first 375–414 px. Vertical flow; no horizontal scrolls.
 //   - Empty list → calm VI message; never "you have no weaknesses".
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BookOpen, ClipboardList, Volume2, Sparkles } from "lucide-react";
 
@@ -42,11 +42,15 @@ import {
   aggregateLocalWeaknesses,
   type LocalWeaknessMap as LocalWeaknessMapData,
 } from "@/lib/stage-3a/aggregator";
-import { selectSuggestedPractice } from "@/stage-3b/suggestedPractice";
+import {
+  reportUiMountPerf,
+  selectSuggestedPracticeInstrumented,
+} from "@/stage-3b/perfInstrumentation";
 import type {
   SuggestedPracticeItem,
   SuggestedPracticeKind,
 } from "@/stage-3b/types";
+import { recordSuggestedPracticeView } from "@/stage-3b/viewCount";
 
 import { routeForSuggestedPractice } from "./practiceRoutes";
 
@@ -66,6 +70,10 @@ export default function SuggestedPracticeList({
     initialState ?? null,
   );
 
+  // Mount-to-first-paint start. Captured once during component
+  // construction via useRef so re-renders don't reset it.
+  const mountStartRef = useRef<number>(nowMs());
+
   useEffect(() => {
     if (initialState) return;
     try {
@@ -81,9 +89,25 @@ export default function SuggestedPracticeList({
     }
   }, [initialState]);
 
-  if (!state) return <SkeletonLoading />;
+  // Items derived once per render. Computed before the early returns
+  // below so the hooks that depend on `hasItems` stay above any
+  // conditional return (Rules of Hooks).
+  const items = state
+    ? selectSuggestedPracticeInstrumented(state)
+    : [];
+  const hasItems = items.length > 0;
 
-  const items = selectSuggestedPractice(state);
+  // Diagnostic view counter — local-only, gated on a non-empty render.
+  useEffect(() => {
+    if (hasItems) recordSuggestedPracticeView();
+  }, [hasItems]);
+
+  // Mount-to-first-paint Sentry breadcrumb (only fires if slow).
+  useEffect(() => {
+    reportUiMountPerf(nowMs() - mountStartRef.current);
+  }, []);
+
+  if (!state) return <SkeletonLoading />;
   if (items.length === 0) return <EmptyState />;
 
   return (
@@ -204,6 +228,13 @@ function SkeletonLoading() {
       <div className="h-36 animate-pulse rounded-[20px] bg-slate-100" />
     </div>
   );
+}
+
+function nowMs(): number {
+  if (typeof performance !== "undefined" && typeof performance.now === "function") {
+    return performance.now();
+  }
+  return Date.now();
 }
 
 function EmptyState() {
