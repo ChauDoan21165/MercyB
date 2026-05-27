@@ -343,24 +343,21 @@ audioCache.preload(nextUrl);
 - Fails if Lighthouse scores < 90
 
 ### ✅ 24. Measure and optimize core web vitals
-**Status**: Complete  
-**Implementation**: `src/lib/performance/web-vitals.ts`
+**Status**: Complete
+**Implementation**: `src/lib/perf/webVitalsTracking.ts` (canonical live emitter; the historical sibling `src/lib/performance/web-vitals.ts` was deleted in `chore/remove-dead-web-vitals-sibling` after a zero-importer audit)
 
 **Tracked Metrics**:
 - LCP (Largest Contentful Paint)
-- FID (First Input Delay)
+- INP (Interaction to Next Paint) — replaced FID as the Core Web Vital for interactivity in March 2024
 - CLS (Cumulative Layout Shift)
 - FCP (First Contentful Paint)
 - TTFB (Time to First Byte)
 
-**Usage**:
-```typescript
-import { initWebVitals } from '@/lib/performance/web-vitals';
+**Usage**: vitals are auto-wired at boot from `src/main.tsx` via `initializeWebVitals()` and land in two places — a `web-vital` Sentry breadcrumb and the `web_vitals_events` Supabase table for time-series analysis. See `docs/observability/web-vitals-audit.md` for the full coverage map.
 
-// In App.tsx
-useEffect(() => {
-  initWebVitals();
-}, []);
+```typescript
+// Already wired at boot; you do not need to call this from product code.
+import { initializeWebVitals } from '@/lib/perf/webVitalsTracking';
 ```
 
 ### ✅ 25. Remove remaining debug/dev-only code paths
@@ -391,7 +388,7 @@ if (isDev) {
 - ✅ `src/lib/performance/supabase-query-cache.ts` - Supabase query caching
 - ✅ `src/lib/performance/supabase-logger.ts` - Query performance logging
 - ✅ `src/lib/performance/audio-cache.ts` - Audio caching system
-- ✅ `src/lib/performance/web-vitals.ts` - Web Vitals tracking
+- ✅ `src/lib/perf/webVitalsTracking.ts` - Web Vitals tracking (canonical; the legacy `src/lib/performance/web-vitals.ts` sibling was deleted as dead code)
 
 ### Build Configuration
 - ✅ `vite.config.bundle-analysis.ts` - Bundle analysis config
@@ -411,7 +408,7 @@ if (isDev) {
 
 ### Core Web Vitals (Target)
 - ✅ LCP: < 2.5s (good)
-- ✅ FID: < 100ms (good)
+- ✅ INP: < 200ms (good) — replaced FID as the Core Web Vital for interactivity in March 2024
 - ✅ CLS: < 0.1 (good)
 
 ### Render Performance
@@ -466,17 +463,15 @@ audioCache.release(audioUrl);
 ```
 
 ### Track Web Vitals
+Vitals are auto-wired at boot from `src/main.tsx` — product code does not need to call anything. To inspect them:
+
 ```typescript
-import { initWebVitals, getVitalsSummary } from '@/lib/performance/web-vitals';
-
-// Initialize tracking
-useEffect(() => {
-  initWebVitals();
-}, []);
-
-// Get summary
-const vitals = getVitalsSummary();
-console.log('LCP:', vitals.LCP);
+// In an admin page:
+//   /admin/frontend-perf — full LCP/INP/CLS dashboard.
+// Programmatically:
+//   - Sentry: query breadcrumbs.category:web-vital
+//   - DB:     SELECT * FROM web_vitals_events WHERE route = '/'
+// See docs/observability/web-vitals-audit.md for the full coverage map.
 ```
 
 ---

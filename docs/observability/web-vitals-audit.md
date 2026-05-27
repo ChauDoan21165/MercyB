@@ -106,11 +106,11 @@ Proposal: add an `INP_ALERT_MS` (default 500 ms = the "poor" cutoff) and extend 
 
 Recommendation: **(3a)** is more useful long-term, but it's a schema/dashboard change that should land alongside a dashboard refactor.
 
-### (4) Dead code — `src/lib/performance/web-vitals.ts`
+### (4) Dead code — `src/lib/performance/web-vitals.ts` — 🟢 SHIPPED in `chore/remove-dead-web-vitals-sibling`
 
-Sibling file at `src/lib/performance/web-vitals.ts` (note the `performance/` vs `perf/` path collision) is **zero-importer dead code**: ~110 lines that re-implement `getRating`, hold a private `vitalsData[]` array, expose `initWebVitals()` / `getVitalsData()` / `getVitalsSummary()`, and contain a `// TODO: Send to analytics service in production` comment that has never been wired. The thresholds inside it (CLS / INP / LCP / FCP / TTFB) **duplicate** `src/config/perfBudget.ts`.
+The sibling file at `src/lib/performance/web-vitals.ts` (note the `performance/` vs `perf/` path collision) was **zero-importer dead code**: ~110 lines that re-implemented `getRating`, held a private `vitalsData[]` array, exposed `initWebVitals()` / `getVitalsData()` / `getVitalsSummary()`, and contained a `// TODO: Send to analytics service in production` comment that was never wired. Its thresholds (CLS / INP / LCP / FCP / TTFB) duplicated `src/config/perfBudget.ts`.
 
-Proposal: delete the file. The "Restore before redesign" rule from CLAUDE.md says check before deletion — `grep -rn 'lib/performance/web-vitals\|initWebVitals\|getVitalsData\|getVitalsSummary' src/` returns zero hits (verified at this audit's land). Safe to retire in a small follow-up PR.
+**Resolution:** deleted in this MR. Verified zero importers across `src/`, `tests/`, `scripts/`, `supabase/` (4-way grep on the path and each exported symbol — `initWebVitals` / `getVitalsData` / `getVitalsSummary`). Doc references in `docs/REACT_PERFORMANCE_OPTIMIZATION.md` and `docs/architecture/systems/observability.md` updated to point to the canonical `src/lib/perf/webVitalsTracking.ts`. No `index.ts` barrel re-export to remove (the `src/lib/performance/index.ts` barrel never listed it).
 
 ### (5) `value_ms` column is mislabeled for CLS
 
@@ -142,5 +142,5 @@ Proposal: add `delta` and `navigation_type` to both the breadcrumb payload AND t
 - **Existing bucket-route unit tests:** `src/lib/perf/__tests__/webVitalsTracking.test.ts`
 - **Dashboard:** `src/pages/admin/FrontendPerformance.tsx`
 - **Alert cron:** `supabase/functions/perf-alert/`
-- **Dead-code candidate:** `src/lib/performance/web-vitals.ts`
 - **Test/simulator (not live):** `src/simulator/perf/WebVitalsCollector.ts`
+  (The pre-deletion dead-code sibling `src/lib/performance/web-vitals.ts` was removed in `chore/remove-dead-web-vitals-sibling`; see §6 (4).)
