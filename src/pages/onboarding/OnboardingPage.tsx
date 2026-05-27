@@ -84,6 +84,7 @@ import { useAuth } from "@/providers/AuthProvider";
 import { qk } from "@/lib/queries/keys";
 import { writeAnonymousPair } from "@/lib/languagePair/anonymousPair";
 import { trackEvent, type AnalyticsEventName } from "@/lib/analytics";
+import { announce } from "@/lib/a11y/announcements";
 // Onboarding no longer routes to a goal-derived first lesson — it lands
 // on "/" (home) so goal selection cannot gate first entry. The old
 // firstLesson.ts helper + the goal/profession/level picker UI were
@@ -389,15 +390,24 @@ function StepHeader({
   title,
   body,
   lang,
+  headingRef,
 }: {
   title: ChromeSlots;
   body?: ChromeSlots;
   lang?: NativeLang;
+  /**
+   * Optional ref attached to the rendered `<h1>`. The parent uses it
+   * to programmatically `.focus()` the heading on step transition so a
+   * keyboard / SR user lands on the new content instead of `<body>`
+   * (WCAG 2.4.3). `tabIndex={-1}` makes the heading focusable without
+   * entering the regular tab order.
+   */
+  headingRef?: React.Ref<HTMLHeadingElement>;
 }) {
   if (lang) {
     return (
       <header style={{ marginBottom: 6 }}>
-        <h1 style={stepTitleStyle}>{pickChrome(title, lang)}</h1>
+        <h1 ref={headingRef} tabIndex={-1} style={stepTitleStyle}>{pickChrome(title, lang)}</h1>
         {body ? (
           <p
             style={{
@@ -447,7 +457,7 @@ function StepHeader({
           divider between them — peers, not heading + translation. Kept
           as separate, non-nested elements so each language is its own
           text node for queries/SR. */}
-      <h1 style={stepTitleStyle}>{title.vi}</h1>
+      <h1 ref={headingRef} tabIndex={-1} style={stepTitleStyle}>{title.vi}</h1>
       <PeerDivider />
       <div style={stepTitleStyle}>{title.en}</div>
       {body ? (
@@ -525,6 +535,35 @@ export default function OnboardingPage() {
   );
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // ── Focus management (WCAG 2.4.3) ────────────────────────────────
+  // On step transition, programmatically focus the new step's <h1> so
+  // a keyboard / SR user lands on the new content instead of <body>.
+  // The first render (initial mount) is intentionally skipped — focus
+  // moves only on transitions, not on page load, so a sighted user
+  // tabbing in from the global header isn't snapped to the h1.
+  // Pairs with an `announce()` to surface the heading text in the
+  // shared polite live region — useful when the focus move alone
+  // isn't loud enough (e.g. an SR that doesn't re-read the focused
+  // element automatically).
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
+  const hasMountedRef = useRef(false);
+
+  useEffect(() => {
+    if (!hasMountedRef.current) {
+      hasMountedRef.current = true;
+      return;
+    }
+    const headingEl = headingRef.current;
+    if (!headingEl) return;
+    headingEl.focus();
+    // Keep VI primary — the rendered h1's textContent is whatever
+    // pickChrome / bilingual peer selected, which already honors the
+    // chrome-language contract (VI for pre-pick, native-language for
+    // single-language steps).
+    const headingText = (headingEl.textContent ?? "").trim();
+    if (headingText) announce(headingText);
+  }, [step]);
 
   // Reset the per-step timer whenever the step changes — the
   // telemetry payload reports time-on-step.
@@ -916,6 +955,7 @@ export default function OnboardingPage() {
               <StepHeader
                 title={ONBOARDING_COPY.native.title}
                 body={ONBOARDING_COPY.native.body}
+                headingRef={headingRef}
               />
               {/* Native picker: each option shown in its OWN language
                   ("Tiếng Việt" / "English") so both audiences can
@@ -941,6 +981,7 @@ export default function OnboardingPage() {
                 title={ONBOARDING_COPY.target.title}
                 body={ONBOARDING_COPY.target.body}
                 lang={chromeLang}
+                headingRef={headingRef}
               />
               <TargetGrid
                 native={draft.native_language}
@@ -987,6 +1028,7 @@ export default function OnboardingPage() {
                 title={ONBOARDING_COPY.startWith.title}
                 body={ONBOARDING_COPY.startWith.body}
                 lang={chromeLang}
+                headingRef={headingRef}
               />
               <ChoiceGrid
                 choices={draft.target_languages.map((t) => ({

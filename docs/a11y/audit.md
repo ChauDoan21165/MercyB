@@ -3,6 +3,8 @@
 > **Update 2026-05-27 — blocker shipped.** The skip-link blocker called out below is **fixed** in `fix/a11y-skip-link`. `SkipToContent.tsx` ships, mounts in `AppHeroShell` as the first focusable element, and every audit-priority page exposes `<main id="main-content" tabIndex={-1}>` as the focus target. The "Documentation drift" table is updated to reflect the new reality. The 15 remaining findings ship as separate dispatches. Original audit text below is preserved for context.
 >
 > **Update 2026-05-27 — serious finding "EmailBlock label linking" shipped.** Fix in `fix/a11y-form-label-linking`. The audit named two label/input pairs in `EmailBlock` — re-grepping the codebase surfaced **six** more sibling-style pairs with the same defect across auth-flow forms (`PhoneOtp`, `ResetPasswordPage`, legacy `Reset`). All eight now use `useId()` for instance-unique ids + `htmlFor`/`id` linkage. The orphaned `aria-label` on each input was removed — the visible `<label>` is now the canonical accessible name source. WCAG 1.3.1 + 3.3.2 covered. A pinned `FormLabelLinkage.a11y.test.tsx` guards against future regression on these forms.
+>
+> **Update 2026-05-27 — serious finding O1 "Onboarding focus on step transition" shipped.** Fix in `fix/a11y-onboarding-focus-management`. Each step's `<h1>` is now programmatically focusable (`tabIndex={-1}`); on `step` change, a `useEffect` focuses the new heading and announces its text via the shared polite live region (`@/lib/a11y/announcements`). Initial mount is intentionally skipped so a sighted keyboard user tabbing in from the header isn't snapped to the h1. WCAG 2.4.3 covered. Pinned by `OnboardingPage.focus.test.tsx` — 5 tests covering initial-mount-no-steal + `tabIndex` contract + focus-moves-on-VI-pick + focus-moves-on-EN-pick + announce-payload.
 
 **Audit branch:** `docs/a11y-audit`
 **Scope:** Diagnostic only. Page-by-page WCAG 2.1 AA review of the five highest-traffic anon routes (`/`, `/weak-at`, `/onboarding`, `/pricing`, `/placement`) + the Stage-3A/3B components rendered inside `/weak-at`. No source changes in this MR.
@@ -66,7 +68,7 @@ Strong structure on the radiogroup (lines 216–217, 292–293 wire `role="radio
 
 | # | Severity | Finding | Location | Proposed fix |
 |---|---|---|---|---|
-| O1 | serious | **No focus move on step transition.** After native pick → target step renders, focus stays on the dismissed button (now unmounted) and falls back to `<body>`. A keyboard-only user loses their place; a screen-reader user gets no announcement of the new step. WCAG 2.4.3. | `src/pages/onboarding/OnboardingPage.tsx:571` `handleNativeSelect` and parallel target-step transitions | After step transition, programmatically `.focus()` the new `<h1>` (add `tabIndex={-1}` to it for programmatic focus). Optionally pair with `announce()` from `src/lib/a11y/announcements.ts`. |
+| O1 | ~~serious~~ **RESOLVED 2026-05-27** | ~~No focus move on step transition.~~ Shipped in `fix/a11y-onboarding-focus-management`: `StepHeader`'s `<h1>` is programmatically focusable via `tabIndex={-1}`; a `useEffect` on `step` calls `headingRef.current.focus()` + `announce(headingText)`. Initial mount intentionally skipped (no auto-steal). Tested in `OnboardingPage.focus.test.tsx`. |
 | O2 | moderate | Bilingual peer header on native step renders both VI and EN under a single `<h1>` + sibling `<div>` (lines 450–452) without `lang` attributes on either. A VI screen reader reads the EN sibling using VI phonemes (and vice-versa). | `src/pages/onboarding/OnboardingPage.tsx:450-452` | Add `lang="vi"` to the `<h1>` element and `lang="en"` to the sibling `<div>`. Same fix on the body paragraphs at lines 458–462. |
 | O3 | moderate | Choice buttons (lines 224–270) have no explicit `minHeight` — depend on padding. Visual inspection suggests they're ≥44px but the contract isn't pinned. | `src/pages/onboarding/OnboardingPage.tsx` `cardBase()` | Add `minHeight: 56` to `cardBase()` to lock the WCAG 2.5.5 target with margin. |
 | O4 | minor | The Skip affordance (line 830) is a `<button>` styled as a link — fine for behavior, but it sits below the primary CTA and lacks a visible focus state in inline styles. Browser default focus ring will render but is easy to miss against the gradient. | `src/pages/onboarding/OnboardingPage.tsx:830` | Add explicit `:focus-visible` styling; add `data-testid="onboarding-skip"` for the future E2E spec. |
@@ -139,7 +141,7 @@ The biggest systemic a11y axis for MercyBlade is **language switching for screen
 | Page | Tab-reachable | Focus order sensible | Skip link |
 |---|---|---|---|
 | `/` (Marketing) | yes | yes | **no** (global gap) |
-| `/onboarding` | yes | partial — focus does NOT move on step transition (O1) | no |
+| `/onboarding` | yes | ✅ focus moves on step transition (O1 RESOLVED 2026-05-27) | yes (post-blocker) |
 | `/pricing` | yes | yes | no |
 | `/weak-at` | yes | yes | no |
 | `/placement/welcome` | yes | yes | no |
@@ -242,7 +244,7 @@ A future fix wave could land these in roughly this order — each step is indepe
 2. **Serious — contrast sweep:** flip `text-slate-400` → `text-slate-500` and `#94a3b8` → `#64748b` across the 11 identified locations. ~15-line diff. Covers WCAG 1.4.3.
 3. **Serious — EmailBlock label linking:** ~~add `htmlFor` + `id` to the existing `<label>` / `<input>` pairs. ~6-line diff. Covers WCAG 1.3.1 + 3.3.2.~~ **SHIPPED 2026-05-27**; the fix also swept three sibling auth components flagged during implementation (`PhoneOtp`, `ResetPasswordPage`, legacy `Reset`).
 4. **Serious — `<main>` landmarks on Home + Pricing:** ~4-line diff.
-5. **Serious — Onboarding focus move on step transition:** add `tabIndex={-1}` to `<h1>` + a useEffect that focuses it on step change. ~10-line diff. Covers WCAG 2.4.3.
+5. **Serious — Onboarding focus move on step transition:** ~~add `tabIndex={-1}` to `<h1>` + a useEffect that focuses it on step change. ~10-line diff. Covers WCAG 2.4.3.~~ **SHIPPED 2026-05-27** in `fix/a11y-onboarding-focus-management`. `StepHeader` accepts a `headingRef`; OnboardingPage focuses the new step's `<h1>` and announces its text on transition. Initial render gated to avoid auto-steal.
 6. **Documentation honesty:** replace `docs/ACCESSIBILITY.md`'s 25/25 with a verified baseline (this audit's findings as starting point).
 7. **Moderate — bilingual `<lang>` wrapper:** introduce `<Bilingual>` component + migrate WeakAt + Onboarding + Home cards. ~30 lines new, ~50 lines edited.
 8. **Moderate — heading hierarchy on Pricing:** promote `<h3>` plan-card titles to `<h2>`.
