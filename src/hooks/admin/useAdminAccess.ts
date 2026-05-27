@@ -56,7 +56,15 @@ const defaultPermissions: AdminPermissions = {
 
 function permissionsFromLevel(level: number): AdminPermissions {
   const safeLevel = Number.isFinite(level) ? Math.max(0, level) : 0;
-  const isAdmin = safeLevel > 0;
+  // Must match the SQL admin policy in
+  // supabase/migrations/20260701000000_subscriptions_rls_select_policies.sql:
+  //   USING (public.get_admin_level(auth.uid()) >= 9)
+  // If this gate admits a user that the SQL policy rejects, the admin
+  // dashboards (AdminSubscriptions, CostMonitoring, AdminDashboard,
+  // AdminFeedbackPage) render with broken/empty data instead of
+  // refusing access cleanly. See !94 callsite verification for the
+  // analysis that motivated this alignment.
+  const isAdmin = safeLevel >= 9;
 
   return {
     level: safeLevel,
