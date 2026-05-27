@@ -85,6 +85,23 @@ function getSentryDeployEnvironment(): string {
   return String(process.env.VITE_APP_ENV ?? process.env.NODE_ENV ?? 'development').trim();
 }
 
+function getSentryReleaseName(): string | undefined {
+  return (
+    process.env.VERCEL_GIT_COMMIT_SHA?.trim() ||
+    process.env.COMMIT_REF?.trim() ||
+    undefined
+  );
+}
+
+const sentryReleaseName = getSentryReleaseName();
+const sentryDeployEnvironment = getSentryDeployEnvironment();
+
+if (process.env.CONTEXT || process.env.COMMIT_REF) {
+  console.info(
+    `[sentry] release deploy config: release=${sentryReleaseName ?? '(auto)'} env=${sentryDeployEnvironment}`,
+  );
+}
+
 export default defineConfig({
   plugins: [
     react({
@@ -129,13 +146,17 @@ export default defineConfig({
             // the sourcemaps.
             telemetry: false,
             release: {
+              // Use the same explicit release name for source-map upload and
+              // runtime events. Netlify exposes COMMIT_REF; leaving this empty
+              // lets @sentry/vite-plugin fall back to CI auto-detection.
+              name: sentryReleaseName,
               // Netlify production deploys may still have legacy Vercel env
               // vars in the build environment. Without an explicit deploy env,
               // @sentry/vite-plugin auto-detects VERCEL_TARGET_ENV and reports
               // releases as `vercel-preview`. Netlify CONTEXT is the source of
               // truth for the release deploy label.
               deploy: {
-                env: getSentryDeployEnvironment(),
+                env: sentryDeployEnvironment,
               },
             },
             // Per @sentry/vite-plugin v4.x API, sourcemap-related
@@ -475,13 +496,12 @@ export default defineConfig({
     }),
   ],
 
-  // Inline Vercel's deploy SHA so the runtime Sentry init can tag every event
-  // with a release. Vercel sets VERCEL_GIT_COMMIT_SHA on production builds;
-  // local builds without it inline an empty string and Sentry falls back to
-  // its own release detection (none, in our case).
+  // Inline the deploy SHA so the runtime Sentry init can tag every event
+  // with the same release used for source maps. Vercel sets
+  // VERCEL_GIT_COMMIT_SHA; Netlify sets COMMIT_REF.
   define: {
     'import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA': JSON.stringify(
-      process.env.VERCEL_GIT_COMMIT_SHA ?? '',
+      sentryReleaseName ?? '',
     ),
   },
 
