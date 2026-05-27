@@ -210,7 +210,16 @@ function authenticatedFreeAccess(params: {
   const email = params.email?.trim() || undefined;
   const adminLevel = safeNumber(params.adminLevel, 0);
   const isHighAdmin = Boolean(params.isHighAdmin) || adminLevel >= 9;
-  const isAdmin = Boolean(params.isAdmin) || adminLevel > 0 || isHighAdmin;
+  // adminLevel threshold must match the SQL admin policy in
+  // supabase/migrations/20260701000000_subscriptions_rls_select_policies.sql:
+  //   USING (public.get_admin_level(auth.uid()) >= 9)
+  // Sibling fix to !100 (useAdminAccess.ts:59). The Boolean(params.isAdmin)
+  // disjunct is preserved for caller-supplied overrides; in prod the only
+  // is_admin=true profile is Chau's at admin_level=10, so the disjunct is
+  // effectively no-op. If a future is_admin=true row ever appears with
+  // admin_level<9, the frontend would over-admit relative to the SQL —
+  // separate hardening note in this MR's description.
+  const isAdmin = Boolean(params.isAdmin) || adminLevel >= 9 || isHighAdmin;
   const loading = Boolean(params.loading);
   const isTrialExpired = Boolean(params.isTrialExpired) && !isHighAdmin;
   const unlockMercyFeatures = !isTrialExpired && (FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin);
@@ -327,7 +336,13 @@ export const useUserAccess = (): UserAccess => {
         if (profile) {
           adminLevel = safeNumber(profile.admin_level, 0);
           isHighAdmin = adminLevel >= 9;
-          isAdmin = Boolean(profile.is_admin) || adminLevel > 0 || isHighAdmin;
+          // adminLevel threshold must match the SQL admin policy in
+          // 20260701000000_subscriptions_rls_select_policies.sql:
+          //   USING (public.get_admin_level(auth.uid()) >= 9)
+          // Sibling fix to !100. Boolean(profile.is_admin) disjunct preserved
+          // for back-compat with the profiles.is_admin column; in prod the only
+          // is_admin=true profile is Chau's at admin_level=10.
+          isAdmin = Boolean(profile.is_admin) || adminLevel >= 9 || isHighAdmin;
         }
       } catch {
         // keep level0/admin defaults — never block access resolution on profile error
