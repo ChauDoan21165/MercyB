@@ -116,7 +116,7 @@ const viStyle: React.CSSProperties = {
   display: "block",
   fontSize: 13,
   fontWeight: 500,
-  color: "#94a3b8",
+  color: "#64748b",
   lineHeight: 1.5,
   marginTop: 2,
 };
@@ -474,7 +474,7 @@ export default function Pricing() {
       display: "block",
       fontSize: 13,
       fontWeight: 500,
-      color: "#94a3b8",
+      color: "#64748b",
       marginTop: 3,
     };
 
@@ -498,7 +498,7 @@ export default function Pricing() {
     const subViStyle: React.CSSProperties = {
       fontSize: 12,
       fontWeight: 400,
-      color: "#94a3b8",
+      color: "#64748b",
       margin: "2px 0 0",
       lineHeight: 1.5,
     };
@@ -513,7 +513,7 @@ export default function Pricing() {
     const bodyViStyle: React.CSSProperties = {
       fontSize: 12,
       lineHeight: 1.5,
-      color: "#94a3b8",
+      color: "#64748b",
       margin: "2px 0 0",
     };
 
@@ -643,14 +643,14 @@ export default function Pricing() {
         <h1 style={{ margin: 0, fontSize: 30, lineHeight: 1.1, fontWeight: 950, color: "#111827" }}>
           Get full access to all premium rooms
         </h1>
-        <p style={{ margin: "4px 0 0", fontSize: 13, color: "#94a3b8", lineHeight: 1.5 }}>
+        <p style={{ margin: "4px 0 0", fontSize: 13, color: "#64748b", lineHeight: 1.5 }}>
           Mở toàn bộ phòng học premium của MercyBlade
         </p>
 
         <p style={{ margin: "12px 0 0", color: "#475569", lineHeight: 1.7, fontSize: 15 }}>
           Choose a plan that fits your learning pace. Upgrade anytime.
         </p>
-        <p style={{ margin: "3px 0 0", fontSize: 13, color: "#94a3b8", lineHeight: 1.5 }}>
+        <p style={{ margin: "3px 0 0", fontSize: 13, color: "#64748b", lineHeight: 1.5 }}>
           Chọn gói phù hợp với tốc độ học của bạn. Có thể nâng cấp bất cứ lúc nào.
         </p>
 
@@ -672,7 +672,7 @@ export default function Pricing() {
           ].map(({ en, vi }) => (
             <div key={en} style={{ borderRadius: 14, border: "1px solid rgba(15,23,42,0.08)", background: "rgba(255,255,255,0.80)", padding: "10px 12px" }}>
               <div style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>✓ {en}</div>
-              <div style={{ fontSize: 11, fontWeight: 400, color: "#94a3b8", marginTop: 2 }}>{vi}</div>
+              <div style={{ fontSize: 11, fontWeight: 400, color: "#64748b", marginTop: 2 }}>{vi}</div>
             </div>
           ))}
         </div>
@@ -821,7 +821,7 @@ export default function Pricing() {
               boxShadow: "0 8px 22px rgba(16,185,129,0.12)",
             };
             const labelEnStyle: React.CSSProperties = { fontSize: 12, fontWeight: 700, color: "#475569", textTransform: "uppercase", letterSpacing: "0.06em" };
-            const labelViStyle: React.CSSProperties = { fontSize: 11, fontWeight: 500, color: "#94a3b8", marginTop: 1 };
+            const labelViStyle: React.CSSProperties = { fontSize: 11, fontWeight: 500, color: "#64748b", marginTop: 1 };
             const figureStyle: React.CSSProperties = { fontSize: 22, fontWeight: 950, color: "#0f172a", marginTop: 6, lineHeight: 1.1 };
             const subFigureStyle: React.CSSProperties = { fontSize: 12, color: "#64748b", marginTop: 4 };
             const arrowStyle: React.CSSProperties = {

@@ -304,7 +304,7 @@ function PronunciationRow({
         </p>
         <p
           data-testid="pronunciation-meta"
-          className="mt-1 text-[11px] leading-snug text-slate-400"
+          className="mt-1 text-[11px] leading-snug text-slate-500"
         >
           ~{ratePct}% chưa chính xác · {painPoint.samples} lần luyện
         </p>
@@ -346,7 +346,7 @@ function QuietMeta({ count, lastSeen }: { count: number; lastSeen: number }) {
   // "you-have-X" language; just facts.
   const ago = formatAgo(lastSeen);
   return (
-    <p className="mt-1 text-[11px] leading-snug text-slate-400">
+    <p className="mt-1 text-[11px] leading-snug text-slate-500">
       {count} lần · {ago}
     </p>
   );

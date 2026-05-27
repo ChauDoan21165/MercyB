@@ -170,7 +170,7 @@ function SuggestedPracticeRow({
           <p className="mt-0.5 text-[12px] leading-snug text-slate-500">
             {item.enLabel}
           </p>
-          <p className="mt-1 text-[11px] leading-snug text-slate-400">
+          <p className="mt-1 text-[11px] leading-snug text-slate-500">
             {item.rationale}
           </p>
         </div>
