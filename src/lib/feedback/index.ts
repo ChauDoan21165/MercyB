@@ -25,6 +25,7 @@ import {
   type L1DetectionResult,
 } from './l1-error-detector.js';
 import { VN_RULE_PACK } from './rule-packs/vi/index.js';
+import { EN_VN_RULE_PACK } from './rule-packs/en-vn/index.js';
 
 /**
  * Convenience adapter — runs detection against the Vietnamese pack.
@@ -32,6 +33,20 @@ import { VN_RULE_PACK } from './rule-packs/vi/index.js';
  */
 export function detectL1Error(input: L1DetectionInput): L1DetectionResult {
   return detectErrors(input, VN_RULE_PACK);
+}
+
+/**
+ * Convenience adapter — runs detection against the EN→VN pack
+ * (English-L1 transfer patterns surfacing in Vietnamese learner
+ * output). Axis 2 counterpart to `detectL1Error`. The engine itself
+ * is language-agnostic; this adapter only fixes the pack.
+ *
+ * Wiring promised by PR #1188's body: *"wiring an actual
+ * detectEnVnError() entry point into the engine is a SEPARATE
+ * follow-up PR."* This is that adapter.
+ */
+export function detectEnVnError(input: L1DetectionInput): L1DetectionResult {
+  return detectErrors(input, EN_VN_RULE_PACK);
 }
 
 // Re-exports — keep the existing import surface working for callers
@@ -49,6 +64,7 @@ export {
 } from './l1-error-detector.js';
 
 export { VN_RULE_PACK } from './rule-packs/vi/index.js';
+export { EN_VN_RULE_PACK } from './rule-packs/en-vn/index.js';
 export {
   RULE_PACKS,
   DEFAULT_RULE_PACK,

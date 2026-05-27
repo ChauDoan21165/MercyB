@@ -14,9 +14,15 @@
 
 import type { L1RulePack } from '../rule-pack-types.js';
 import { VN_RULE_PACK } from './vi/index.js';
+import { EN_VN_RULE_PACK } from './en-vn/index.js';
 
 export const RULE_PACKS: Record<string, L1RulePack> = {
   vi: VN_RULE_PACK,
+  // EN→VN pack — English-L1 transfer patterns in Vietnamese learner
+  // output (Axis 2, §15 Bar #4). The `vi` key remains the default
+  // for the VN→EN flagship; `resolveRulePack('en')` returns this
+  // pack for callers that route by L1 code.
+  en: EN_VN_RULE_PACK,
 };
 
 /** Default pack used when the learner has no `profiles.l1` set. */
