@@ -20,10 +20,11 @@
 ## Summary
 
 - **Routes enumerated:** 191 (from `AppRouter.tsx`).
-- **tests/e2e/ smoke specs:** 14 P0 (`onboarding-anon`, `pricing-anon`, `marketing-landing-anon` from !36) + 11 prior + **5 P1 new in this MR** (`blog-anon`, `languages-anon`, `professions-anon`, `support-anon`, `weekly-digest-anon`) = 19 total.
-- **e2e/ legacy specs:** 6 (`error-handling`, `kids-foundation`, `navigation`, `room-loading`, `user-journey`, `visual-regression`).
+- **tests/e2e/ smoke specs:** 24 total (11 prior + 3 P0 from !36 + 5 P1 from !41 + **5 P2 new in this MR**).
+- **e2e/ legacy specs:** 6 (`error-handling`, `kids-foundation`, `navigation`, `room-loading`, `user-journey`, `visual-regression`). The split between the two suites is now documented in `docs/testing/playwright-config-audit.md`.
 - **P0 routes with zero coverage in EITHER dir (post-!36):** none on the originally identified set — closed by !36.
-- **P1 routes flipped from zero-coverage to smoke in THIS MR:** `/blog`, `/blog/weekly-digest`, `/languages`, `/professions`, `/support` (5 hub-level surfaces).
+- **P1 routes flipped from zero-coverage to smoke in !41:** `/blog`, `/blog/weekly-digest`, `/languages`, `/professions`, `/support`.
+- **P2 routes flipped from zero-coverage to smoke in THIS MR:** `/seo/*` (5 SEO landings in one parametrised spec), `/tiers`, `/stories`, `/culture/vn`, `/roleplay`.
 
 ## P0 routes
 
@@ -90,13 +91,15 @@
 
 | Route | Coverage | Note |
 |---|---|---|
-| `/seo/hoc-tieng-anh-cho-nguoi-viet`, `/seo/sua-phat-am-tieng-anh`, `/seo/loi-tieng-anh-nguoi-viet-hay-sai`, `/seo/phong-van-tieng-anh`, `/seo/hoc-tieng-anh-mien-phi` | none | SEO landings; all static. |
+| `/seo/hoc-tieng-anh-cho-nguoi-viet`, `/seo/sua-phat-am-tieng-anh`, `/seo/loi-tieng-anh-nguoi-viet-hay-sai`, `/seo/phong-van-tieng-anh`, `/seo/hoc-tieng-anh-mien-phi` | **NEW** `seo-landings-anon.spec.ts` (smoke, all 5) | Parametrised smoke — SeoLayout testid + page-specific H1 + UTM-tagged CTA per landing. |
 | `/billing`, `/billing/success` | none | Stripe handoff — backend-driven; e2e via real Stripe is out of scope. |
 | `/redeem`, `/promo-code` | none | Anon redirects. |
-| `/tiers`, `/tiers/:tierId` | none | Tier map. |
-| `/roleplay`, `/roadmap`, `/stories`, `/stories/:storyId`, `/stories/share` | none | Secondary feature surfaces. |
+| `/tiers`, `/tiers/:tierId` | **NEW** `tier-map-anon.spec.ts` (smoke, `/tiers`) | Tier-Map hero + Upgrade CTA + English/Core/Life trio. `/tiers/:tierId` still uncovered. |
+| `/roleplay` | **NEW** `roleplay-anon.spec.ts` (smoke) | Roleplay heading in either flag-on or flag-off state. |
+| `/roadmap`, `/stories/:storyId`, `/stories/share` | none | Roadmap is `RequireAuth`-wrapped; share flow is auth-required. |
+| `/stories` | **NEW** `stories-anon.spec.ts` (smoke) | Stories index hero + trust note + filter region. |
 | `/interview`, `/interview/:slug`, `/interview/:slug/summary` | none | Mock interview entry. |
-| `/culture/vn`, `/culture/vn/:packId` | none | Culture content. |
+| `/culture/vn`, `/culture/vn/:packId` | **NEW** `culture-vn-anon.spec.ts` (smoke, `/culture/vn`) | Culture-VN hero + free-trust line + at least one pack link. `/culture/vn/:packId` still uncovered. |
 | `/dev/api`, `/dev/audio-test`, `/__sentry-smoke-test` | none | Developer-only diagnostics. |
 | `/invite/:token`, `/referral`, `/referral/invite-family` | none | Referral flow. |
 | `/auth`, `/auth/callback`, `/auth/recover`, `/auth/challenge`, `/auth/security` | none | Auth redirect / recovery edges. |
@@ -118,13 +121,25 @@ Three new specs under `tests/e2e/`:
 2. `pricing-anon.spec.ts` — `/pricing` anon render + key brand copy + tier list presence.
 3. `marketing-landing-anon.spec.ts` — `/` first-visit anon → MarketingLandingPage hero + dual CTAs link to `/onboarding`.
 
-### P1 specs added in THIS MR
+### P1 specs added in !41 (now merged)
 
 4. `blog-anon.spec.ts` — `/blog` index hero + at least one post link.
 5. `languages-anon.spec.ts` — `/languages` hub hero + all 7 sub-route links.
 6. `professions-anon.spec.ts` — `/professions` hub hero + active card link set.
 7. `support-anon.spec.ts` — `/support` hero + contact section + Zalo/Messenger affordances.
 8. `weekly-digest-anon.spec.ts` — `/blog/weekly-digest` hero + privacy footer + one of the four legitimate data-section states.
+
+### P2 specs added in THIS MR
+
+9. `seo-landings-anon.spec.ts` — parametrised over the 5 `/seo/*` landings; SeoLayout testid + page-specific H1 + UTM-tagged CTA per landing.
+10. `tier-map-anon.spec.ts` — `/tiers` heading + Upgrade CTA + the English/Core/Life column-label trio.
+11. `stories-anon.spec.ts` — `/stories` hero (VI primary, EN secondary) + editorial-review trust note + filter region.
+12. `culture-vn-anon.spec.ts` — `/culture/vn` hero + free-for-everyone trust line + at least one pack-detail link.
+13. `roleplay-anon.spec.ts` — `/roleplay` heading + one of the two legitimate flag-state branches (enabled / disabled).
+
+### Companion docs in THIS MR
+
+- `docs/testing/playwright-config-audit.md` — diagnostic comparison of `tests/e2e/` (smoke) vs `e2e/` (legacy visual-regression), open questions for Chau, and a migration proposal (NOT executed).
 
 All anon-only, no Supabase fixtures, no `TEST_*` env vars, same `blockExternalServices` pattern as `stage-3a-weak-at.spec.ts`.
 
@@ -138,7 +153,8 @@ All anon-only, no Supabase fixtures, no `TEST_*` env vars, same `blockExternalSe
 - **P1:** `profession-landings-anon.spec.ts` parametrised across `/professions/{nail-tech,restaurant,…}` (sub-pages).
 - **P1:** `blog-post-anon.spec.ts` for `/blog/:slug` (per-post render, requires a stable test post slug).
 - **P1:** `leaderboard-anon.spec.ts` for `/leaderboard` (anon-viewable per AppRouter; Supabase dependency similar to weekly-digest).
-- **P2:** `seo-landings-anon.spec.ts` smoke pass over the five `/seo/*` pages.
+- **P2:** Per-language sub-page specs under `/languages/{french,german,…}` and per-profession sub-pages under `/professions/{nail-tech,restaurant,…}` — hubs are covered in !41, sub-pages still uncovered.
+- **P2:** `legal-pages-anon.spec.ts` for `/privacy`, `/terms`, `/legal/*` (these were tagged P0 in the original audit but never landed — keep on the suggested-follow-ups list).
 
 ## Maintenance
 
