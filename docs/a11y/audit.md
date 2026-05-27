@@ -74,7 +74,7 @@ This is the biggest a11y hotspot of the five pages. Inline styles everywhere, no
 | # | Severity | Finding | Location | Proposed fix |
 |---|---|---|---|---|
 | P1 | serious | **No `<main>` landmark.** Whole page is `<div>` containers. Screen-reader users get no landmark navigation; a "skip to main content" link (when L1 is fixed) would have nowhere to land. | `src/screens/Pricing.tsx` page root | Wrap the page body in `<main id="main-content">`. |
-| P2 | serious | **Sub-AA contrast on VI subtitles.** `color: "#94a3b8"` (slate-400) on white with `fontSize: 11-13px` measures 3.13:1, fails WCAG AA 4.5:1 for normal text. Used 8+ times for the VI translation peer of EN copy — every paying visitor sees this. | `src/screens/Pricing.tsx:119, 477, 501, 516, 646, 653, 675, 824` | Switch to `#64748b` (slate-500) → 4.78:1 on white. Or bold the affected lines and treat as "large" copy where 3:1 suffices. |
+| P2 | ✅ shipped (this MR) | **Sub-AA contrast on VI subtitles.** ~~`color: "#94a3b8"` (slate-400) on white with `fontSize: 11-13px` measures 3.13:1, fails WCAG AA 4.5:1 for normal text. Used 8+ times for the VI translation peer of EN copy — every paying visitor sees this.~~ All 8 inline `color: "#94a3b8"` declarations replaced with `"#64748b"` (slate-500, **4.78:1** on white). Pinned by `src/components/__tests__/a11y-contrast.test.ts`. | `src/screens/Pricing.tsx:119, 477, 501, 516, 646, 653, 675, 824` | ~~Switch to `#64748b` (slate-500) → 4.78:1 on white. Or bold the affected lines and treat as "large" copy where 3:1 suffices.~~ |
 | P3 | moderate | Plan-card CTA button (line 753) has `minHeight: 42` — below WCAG 2.5.5 mobile target of 44×44. | `src/screens/Pricing.tsx:753` | Bump to `minHeight: 44`. |
 | P4 | moderate | Decorative empty `<p aria-hidden="true" />` (line 556) is OK as-is, but inline styles use no `lang=` on VI text. SR users hear English voice over Vietnamese. | `src/screens/Pricing.tsx` (multiple) | Audit the VI/EN dual lines; add `lang="vi"` to Vietnamese spans. Mirror the MarketingLanding pattern. |
 | P5 | moderate | No `<h1>` audit issue — the hero h1 (line 643) is correct — but headings jump from `h1` to `h3` in several plan cards (no `h2`). Skipping levels confuses SR outline. | `src/screens/Pricing.tsx` (multiple `<h3>` in plan cards) | Promote plan-card titles to `<h2>` or wrap them in an `<h2>` section header. |
@@ -86,7 +86,7 @@ Clean structurally — has `<main>`, single `<h1>`, semantic `<section>` regions
 
 | # | Severity | Finding | Location | Proposed fix |
 |---|---|---|---|---|
-| W1 | serious | **Sub-AA contrast on rationale text.** `text-slate-400` (#94a3b8) at `text-[11px]` for the third line on each item card. Fails 4.5:1; the rationale carries the "why" of every suggestion. | `src/components/stage-3a/LocalWeaknessMap.tsx:307, 349` and `src/components/stage-3b/SuggestedPracticeList.tsx:173` | Use `text-slate-500` (#64748b) — 4.78:1. Three single-class edits. |
+| W1 | ✅ shipped (this MR) | **Sub-AA contrast on rationale text.** ~~`text-slate-400` (#94a3b8) at `text-[11px]` for the third line on each item card. Fails 4.5:1; the rationale carries the "why" of every suggestion.~~ All three usages replaced with `text-slate-500` (**4.78:1** on white). Pinned by `src/components/__tests__/a11y-contrast.test.ts`. | `src/components/stage-3a/LocalWeaknessMap.tsx:307, 349` and `src/components/stage-3b/SuggestedPracticeList.tsx:173` | ~~Use `text-slate-500` (#64748b) — 4.78:1. Three single-class edits.~~ |
 | W2 | moderate | The component renders Vietnamese taxonomy strings (`shortVi`) directly alongside English (`shortEn`) without `lang` attributes. The VI phonemes will be mangled by an EN screen-reader voice. | `src/components/stage-3a/LocalWeaknessMap.tsx:303-310` (each row), `src/components/stage-3b/SuggestedPracticeList.tsx:165-174` | Add `lang="vi"` to the VI paragraph and `lang="en"` to the EN paragraph wherever taxonomy strings are rendered. |
 | W3 | minor | Empty-state copy (LocalWeaknessMap line 392-407, SuggestedPracticeList line 194-205) — the SR-visible text reads bilingually but again with no `lang` attribution. | same files | Same VI/EN `lang` fix as W2. |
 | W4 | minor | Icon buttons inside `LocalWeaknessMap` rows (the chevron at line 164–166) are wrapped in a `<button>` with `aria-expanded` ✓ but the chevron `<span>` is `aria-hidden` only — the button's accessible name comes from the row content, which is good. No fix needed; documenting the audit result. | — | Verified clean. |
@@ -180,6 +180,14 @@ Verified hooks in 8+ files. The `haptics.ts`, `motion.ts`, and `animations.ts` u
 | `#cbd5e1` (slate-300) | white | 1.61:1 | ❌ | ❌ |
 
 `#94a3b8` is the single biggest contrast offender. Used in `Pricing.tsx` (8 places), `LocalWeaknessMap.tsx` (2 places), `SuggestedPracticeList.tsx` (1 place), and the `Home.tsx`'s mobile-card subtitle pattern. Most uses are at 11–13px — well into "normal text" territory.
+
+**Status (updated 2026-05-27):** The 11 named locations above (Pricing × 8 hex, Stage-3A × 2, Stage-3B × 1) are now ✅ **shipped** — replaced with `#64748b` (slate-500, 4.78:1 on white). Pinned against regression by `src/components/__tests__/a11y-contrast.test.ts`.
+
+**Remaining footprint (out of this MR's scope — follow-up audit + sweep required):**
+
+A whole-codebase grep finds **~172 additional bare `text-slate-400` usages** and **~80 additional `#94a3b8` hex usages** outside the five audited routes. They span Home, AccountPage, Billing, Progress, AI-Tutor, LessonRenderer, leaderboard cards, gift / family / corporate forms, listening, certificates, several admin / dev surfaces, and the MarketingLandingPage's inline `<style>` block. Some are bare text spans (contrast issue), others are chart fills / `no_data` indicators / canvas `fillStyle` (governed by WCAG 1.4.11 non-text contrast 3:1, not 1.4.3 text 4.5:1).
+
+Per C3's audit methodology (route-by-route, per-page WCAG review), these need their own audit pass before being touched — a blanket replace would risk visual regressions in places the original audit hasn't analysed. **Recommended follow-up:** one MR per audited route surface, each appending its file paths to `CONTRAST_FIXED_FILES` in the contrast test as it ships.
 
 ### Live regions
 
