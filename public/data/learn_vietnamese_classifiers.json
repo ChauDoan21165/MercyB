@@ -1,0 +1,105 @@
+{
+  "id": "learn_vietnamese_classifiers",
+  "tier": "free",
+  "domain": "Vietnamese",
+  "title": {
+    "en": "Vietnamese Classifiers",
+    "vi": "Loại từ tiếng Việt"
+  },
+  "content": {
+    "en": "Vietnamese uses small words called classifiers (loại từ) before a noun to mark what kind of thing you are counting or pointing at. English does not need them — you can just say \"a dog\" — but in Vietnamese, \"một con chó\" sounds natural and \"một chó\" sounds wrong. This A2/B1 room drills the nine most useful classifiers: cái (generic objects), con (animals and creatures), chiếc (individual countable items, often vehicles), cuốn (books and bound volumes), quả (round fruits and balls), tấm (flat sheets like photos and mats), người (humans, by role), bài (texts, songs, lessons), and bức (flat artworks like paintings and letters). Each entry teaches one classifier and ends with three forced-choice drills. Read the noun, pick the right classifier from the options, then check your answer. Do not memorize a giant list — learn the category each classifier covers, and the noun-to-classifier match becomes obvious.",
+    "vi": "Tiếng Việt dùng một nhóm từ nhỏ gọi là loại từ, đặt trước danh từ để nói rõ bạn đang đếm hay chỉ vào loại vật nào. Tiếng Anh không cần — chỉ cần nói \"a dog\" — nhưng trong tiếng Việt, nói \"một con chó\" mới tự nhiên, còn \"một chó\" thì nghe sai. Phòng A2/B1 này luyện chín loại từ hay dùng nhất: cái (đồ vật chung), con (động vật, sinh vật), chiếc (vật đếm được riêng lẻ, thường là phương tiện), cuốn (sách, vật đóng tập), quả (trái cây tròn, quả bóng), tấm (vật phẳng như ảnh, chiếu), người (con người, theo vai trò), bài (văn bản, bài hát, bài học), và bức (tranh, thư, vật phẳng nghệ thuật). Mỗi mục dạy một loại từ và kết thúc bằng ba câu trắc nghiệm chọn loại từ đúng. Đọc danh từ, chọn loại từ phù hợp trong các đáp án, rồi xem đáp án. Đừng học thuộc danh sách dài — hãy hiểu mỗi loại từ phủ nhóm vật nào, lúc đó việc ghép loại từ với danh từ sẽ tự nhiên."
+  },
+  "entries": [
+    {
+      "slug": "cai-generic-objects",
+      "keywords_en": ["cai", "generic objects", "classifier"],
+      "keywords_vi": ["cái", "đồ vật chung", "loại từ"],
+      "copy": {
+        "en": "Use cái for non-living everyday objects: chairs, tables, pens, cups, knives. It is the default classifier when you are not sure — but con (animals), chiếc (individual countable units), and cuốn (books) override it. Drill 1: ____ ghế (a chair). Options: A) con  B) cái  C) cuốn  D) quả. Correct: B (cái ghế). Drill 2: ____ bàn (a table). Options: A) cái  B) bức  C) bài  D) tấm. Correct: A (cái bàn). Drill 3: ____ bút (a pen). Options: A) chiếc  B) cuốn  C) cái  D) con. Correct: C (cái bút). Note on drill 3: chiếc bút is also accepted in modern speech, but cái bút is the standard A2 answer.",
+        "vi": "Dùng cái cho đồ vật vô tri hằng ngày: ghế, bàn, bút, cốc, dao. Đây là loại từ mặc định khi bạn chưa chắc — nhưng con (động vật), chiếc (đơn vị đếm riêng lẻ), và cuốn (sách) sẽ thay thế nó. Câu 1: ____ ghế. Đáp án: A) con  B) cái  C) cuốn  D) quả. Đúng: B (cái ghế). Câu 2: ____ bàn. Đáp án: A) cái  B) bức  C) bài  D) tấm. Đúng: A (cái bàn). Câu 3: ____ bút. Đáp án: A) chiếc  B) cuốn  C) cái  D) con. Đúng: C (cái bút). Ghi chú câu 3: chiếc bút cũng được dùng trong tiếng Việt hiện đại, nhưng cái bút là đáp án chuẩn cho A2."
+      },
+      "tags": ["classifier", "vietnamese", "drill"]
+    },
+    {
+      "slug": "con-animals-creatures",
+      "keywords_en": ["con", "animals", "creatures"],
+      "keywords_vi": ["con", "động vật", "sinh vật"],
+      "copy": {
+        "en": "Use con for animals, fish, insects, and other living creatures. It also appears in a few fixed human nouns (con người = a human being, con trai = son), but for most people roles you use người. Drill 1: ____ chó (a dog). Options: A) cái  B) con  C) chiếc  D) bức. Correct: B (con chó). Drill 2: ____ cá (a fish). Options: A) bức  B) quả  C) con  D) bài. Correct: C (con cá). Drill 3: ____ mèo (a cat). Options: A) con  B) cuốn  C) tấm  D) cái. Correct: A (con mèo).",
+        "vi": "Dùng con cho động vật, cá, côn trùng và các sinh vật sống khác. Nó cũng xuất hiện trong vài danh từ chỉ người cố định (con người, con trai), nhưng với hầu hết vai trò của người ta dùng người. Câu 1: ____ chó. Đáp án: A) cái  B) con  C) chiếc  D) bức. Đúng: B (con chó). Câu 2: ____ cá. Đáp án: A) bức  B) quả  C) con  D) bài. Đúng: C (con cá). Câu 3: ____ mèo. Đáp án: A) con  B) cuốn  C) tấm  D) cái. Đúng: A (con mèo)."
+      },
+      "tags": ["classifier", "vietnamese", "drill"]
+    },
+    {
+      "slug": "chiec-individual-countable",
+      "keywords_en": ["chiec", "vehicles", "individual items"],
+      "keywords_vi": ["chiếc", "phương tiện", "vật đếm riêng"],
+      "copy": {
+        "en": "Use chiếc for individual countable items — especially vehicles, shoes, rings, watches, and one-of-a-pair objects. It overlaps with cái but feels more specific, like saying \"a single\" instead of \"a\". Drill 1: ____ xe (a car or vehicle). Options: A) cái  B) chiếc  C) con  D) bức. Correct: B (chiếc xe). Drill 2: ____ giày (a shoe, one of a pair). Options: A) chiếc  B) quả  C) bài  D) cuốn. Correct: A (chiếc giày). Drill 3: ____ đồng hồ (a watch). Options: A) cuốn  B) tấm  C) chiếc  D) con. Correct: C (chiếc đồng hồ).",
+        "vi": "Dùng chiếc cho vật đếm được riêng lẻ — đặc biệt là phương tiện, giày, nhẫn, đồng hồ và vật lẻ trong cặp. Nó trùng phạm vi với cái nhưng cụ thể hơn, như nói \"một chiếc\" thay vì \"một cái\". Câu 1: ____ xe. Đáp án: A) cái  B) chiếc  C) con  D) bức. Đúng: B (chiếc xe). Câu 2: ____ giày. Đáp án: A) chiếc  B) quả  C) bài  D) cuốn. Đúng: A (chiếc giày). Câu 3: ____ đồng hồ. Đáp án: A) cuốn  B) tấm  C) chiếc  D) con. Đúng: C (chiếc đồng hồ)."
+      },
+      "tags": ["classifier", "vietnamese", "drill"]
+    },
+    {
+      "slug": "cuon-books-volumes",
+      "keywords_en": ["cuon", "books", "bound volumes"],
+      "keywords_vi": ["cuốn", "sách", "vật đóng tập"],
+      "copy": {
+        "en": "Use cuốn for books, notebooks, magazines, dictionaries — anything bound into a volume. Quyển is a synonym used in the North. Drill 1: ____ sách (a book). Options: A) cái  B) cuốn  C) tấm  D) quả. Correct: B (cuốn sách). Drill 2: ____ vở (a notebook). Options: A) cuốn  B) chiếc  C) bài  D) bức. Correct: A (cuốn vở). Drill 3: ____ tạp chí (a magazine). Options: A) con  B) tấm  C) cuốn  D) cái. Correct: C (cuốn tạp chí).",
+        "vi": "Dùng cuốn cho sách, vở, tạp chí, từ điển — mọi thứ đóng thành tập. Quyển là từ đồng nghĩa dùng ở miền Bắc. Câu 1: ____ sách. Đáp án: A) cái  B) cuốn  C) tấm  D) quả. Đúng: B (cuốn sách). Câu 2: ____ vở. Đáp án: A) cuốn  B) chiếc  C) bài  D) bức. Đúng: A (cuốn vở). Câu 3: ____ tạp chí. Đáp án: A) con  B) tấm  C) cuốn  D) cái. Đúng: C (cuốn tạp chí)."
+      },
+      "tags": ["classifier", "vietnamese", "drill"]
+    },
+    {
+      "slug": "qua-round-fruits-balls",
+      "keywords_en": ["qua", "fruits", "balls", "round"],
+      "keywords_vi": ["quả", "trái cây", "bóng", "tròn"],
+      "copy": {
+        "en": "Use quả for round fruits, balls, and roughly spherical objects. Trái is the Southern synonym — both are correct. Drill 1: ____ chuối (a banana). Options: A) cái  B) bài  C) quả  D) con. Correct: C (quả chuối). Drill 2: ____ táo (an apple). Options: A) quả  B) tấm  C) chiếc  D) cuốn. Correct: A (quả táo). Drill 3: ____ bóng (a ball). Options: A) cuốn  B) quả  C) bức  D) cái. Correct: B (quả bóng).",
+        "vi": "Dùng quả cho trái cây tròn, quả bóng và vật gần hình cầu. Trái là từ đồng nghĩa dùng ở miền Nam — cả hai đều đúng. Câu 1: ____ chuối. Đáp án: A) cái  B) bài  C) quả  D) con. Đúng: C (quả chuối). Câu 2: ____ táo. Đáp án: A) quả  B) tấm  C) chiếc  D) cuốn. Đúng: A (quả táo). Câu 3: ____ bóng. Đáp án: A) cuốn  B) quả  C) bức  D) cái. Đúng: B (quả bóng)."
+      },
+      "tags": ["classifier", "vietnamese", "drill"]
+    },
+    {
+      "slug": "tam-flat-sheets",
+      "keywords_en": ["tam", "flat sheets", "photos", "mats"],
+      "keywords_vi": ["tấm", "vật phẳng", "ảnh", "chiếu"],
+      "copy": {
+        "en": "Use tấm for flat sheet-like objects: photos, mats, cards, posters, panels. It overlaps with bức for photos and posters — both are heard. As an A2 rule, use tấm for everyday flat items (photo, card, mat) and bức for artistic or formal ones (painting, letter, wall). Drill 1: ____ ảnh (a photo). Options: A) cái  B) tấm  C) con  D) quả. Correct: B (tấm ảnh). Drill 2: ____ chiếu (a sleeping mat). Options: A) tấm  B) cuốn  C) bài  D) chiếc. Correct: A (tấm chiếu). Drill 3: ____ thẻ (a card). Options: A) cuốn  B) bức  C) tấm  D) con. Correct: C (tấm thẻ).",
+        "vi": "Dùng tấm cho vật phẳng dạng tờ: ảnh, chiếu, thẻ, áp-phích, tấm bảng. Nó trùng phạm vi với bức cho ảnh và áp-phích — cả hai đều được nghe. Quy tắc A2: dùng tấm cho vật phẳng hằng ngày (ảnh, thẻ, chiếu), dùng bức cho vật phẳng mang tính nghệ thuật hay trang trọng (tranh, thư, tường). Câu 1: ____ ảnh. Đáp án: A) cái  B) tấm  C) con  D) quả. Đúng: B (tấm ảnh). Câu 2: ____ chiếu. Đáp án: A) tấm  B) cuốn  C) bài  D) chiếc. Đúng: A (tấm chiếu). Câu 3: ____ thẻ. Đáp án: A) cuốn  B) bức  C) tấm  D) con. Đúng: C (tấm thẻ)."
+      },
+      "tags": ["classifier", "vietnamese", "drill"]
+    },
+    {
+      "slug": "nguoi-people",
+      "keywords_en": ["nguoi", "people", "humans"],
+      "keywords_vi": ["người", "con người", "vai trò"],
+      "copy": {
+        "en": "Use người before human role nouns: friend, worker, foreigner, witness. With kinship and titled relations (anh, chị, em, thầy, cô) you usually drop the classifier and use the title directly. Drill 1: ____ bạn (a friend). Options: A) con  B) người  C) bức  D) cái. Correct: B (người bạn). Drill 2: ____ công nhân (a worker). Options: A) người  B) cuốn  C) chiếc  D) quả. Correct: A (người công nhân). Drill 3: ____ khách (a guest). Options: A) tấm  B) bài  C) người  D) con. Correct: C (người khách).",
+        "vi": "Dùng người trước danh từ chỉ vai trò con người: bạn, công nhân, người nước ngoài, nhân chứng. Với quan hệ thân tộc và xưng hô có chức danh (anh, chị, em, thầy, cô) thường bỏ loại từ, dùng thẳng từ xưng hô. Câu 1: ____ bạn. Đáp án: A) con  B) người  C) bức  D) cái. Đúng: B (người bạn). Câu 2: ____ công nhân. Đáp án: A) người  B) cuốn  C) chiếc  D) quả. Đúng: A (người công nhân). Câu 3: ____ khách. Đáp án: A) tấm  B) bài  C) người  D) con. Đúng: C (người khách)."
+      },
+      "tags": ["classifier", "vietnamese", "drill"]
+    },
+    {
+      "slug": "bai-texts-songs-lessons",
+      "keywords_en": ["bai", "songs", "poems", "lessons"],
+      "keywords_vi": ["bài", "bài hát", "bài thơ", "bài học"],
+      "copy": {
+        "en": "Use bài for self-contained texts and performances: songs, poems, lessons, essays, articles, speeches. Anything that is \"a piece\" of language or music. Drill 1: ____ hát (a song). Options: A) con  B) bài  C) quả  D) cuốn. Correct: B (bài hát). Drill 2: ____ thơ (a poem). Options: A) bài  B) tấm  C) cái  D) chiếc. Correct: A (bài thơ). Drill 3: ____ học (a lesson). Options: A) bức  B) cuốn  C) bài  D) con. Correct: C (bài học).",
+        "vi": "Dùng bài cho văn bản và phần biểu diễn trọn vẹn: bài hát, bài thơ, bài học, bài luận, bài báo, bài diễn văn. Bất cứ thứ gì là \"một phần\" ngôn ngữ hay âm nhạc. Câu 1: ____ hát. Đáp án: A) con  B) bài  C) quả  D) cuốn. Đúng: B (bài hát). Câu 2: ____ thơ. Đáp án: A) bài  B) tấm  C) cái  D) chiếc. Đúng: A (bài thơ). Câu 3: ____ học. Đáp án: A) bức  B) cuốn  C) bài  D) con. Đúng: C (bài học)."
+      },
+      "tags": ["classifier", "vietnamese", "drill"]
+    },
+    {
+      "slug": "buc-flat-artworks",
+      "keywords_en": ["buc", "paintings", "letters", "walls"],
+      "keywords_vi": ["bức", "tranh", "thư", "tường"],
+      "copy": {
+        "en": "Use bức for flat artistic or formal flat objects: paintings, letters, photos (in formal speech), murals, walls. The contrast with tấm: tấm is everyday (mat, card, ID photo), bức is artistic or formal (oil painting, handwritten letter, wall). Drill 1: ____ tranh (a painting). Options: A) cái  B) bức  C) cuốn  D) con. Correct: B (bức tranh). Drill 2: ____ thư (a letter). Options: A) bức  B) quả  C) tấm  D) bài. Correct: A (bức thư). Drill 3: ____ tường (a wall). Options: A) chiếc  B) cuốn  C) bức  D) tấm. Correct: C (bức tường). Note on drill 3: bức tường is the standard pairing — walls are treated as flat formal surfaces.",
+        "vi": "Dùng bức cho vật phẳng mang tính nghệ thuật hoặc trang trọng: tranh, thư, ảnh (trong văn nói trang trọng), bích hoạ, tường. Phân biệt với tấm: tấm dùng cho vật hằng ngày (chiếu, thẻ, ảnh thẻ), bức dùng cho vật phẳng nghệ thuật hoặc trang trọng (tranh sơn dầu, thư viết tay, bức tường). Câu 1: ____ tranh. Đáp án: A) cái  B) bức  C) cuốn  D) con. Đúng: B (bức tranh). Câu 2: ____ thư. Đáp án: A) bức  B) quả  C) tấm  D) bài. Đúng: A (bức thư). Câu 3: ____ tường. Đáp án: A) chiếc  B) cuốn  C) bức  D) tấm. Đúng: C (bức tường). Ghi chú câu 3: bức tường là cách ghép chuẩn — tường được coi là bề mặt phẳng trang trọng."
+      },
+      "tags": ["classifier", "vietnamese", "drill"]
+    }
+  ]
+}
