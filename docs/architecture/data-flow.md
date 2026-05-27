@@ -212,17 +212,19 @@ create cross-surface coupling (`STRATEGY.md` §12).
 | Browser → Storage  | `room-audio` bucket                        | reads only; public bucket             |
 | Browser → Edge fn  | `azure-phoneme`, `ai-tutor`, `placement-session`, `me-entitlement`, etc. | scoring, LLM calls, placement engine |
 | Browser → Edge fn  | `email-broadcast` (admin only)             | campaign send (admin-gated)           |
-| Webhook → Edge fn  | `apple-webhook`, `apple-server-notifications`, Stripe webhook (Vercel function) | subscription state changes            |
+| Webhook → Edge fn  | `apple-webhook`, `apple-server-notifications`, `stripe-webhook` — all three are **Supabase edge functions** posted to directly by the respective providers (Stripe → `https://buemdfxyhxunzpgdoqin.supabase.co/functions/v1/stripe-webhook`; not routed through Netlify, Vercel, or Cloudflare DNS). See [`systems/billing-entitlement.md` §5d](./systems/billing-entitlement.md) for the verified host treatment. | subscription state changes            |
 | Cron → Edge fn     | `admin-daily-digest`, `email-reengagement`, `send-pending-emails`         | scheduled jobs                        |
 
 The **browser** always uses the singleton in `src/lib/supabaseClient.ts`
-(anon key). Server-side service-role clients live in the Vercel
-functions under `api/*` and Supabase edge functions under
+(anon key). Server-side service-role clients live in the serverless
+functions under `api/*` and the Supabase edge functions under
 `supabase/functions/*` — never bundled to the browser.
 
-There is **no HTML SSR** in this app (see [system-overview.md §1](./system-overview.md#1-application-shell--routing)). `vercel.json`
-rewrites everything to a static `index.html`; `npm run build` is a
-plain `vite build` SPA.
+There is **no HTML SSR** in this app (see [system-overview.md §1](./system-overview.md#1-application-shell--routing));
+`npm run build` is a plain `vite build` SPA, and the host (Netlify
+post-2026-05-27 migration; Vercel as documented recovery —
+`vercel.json` retained for the recovery path) rewrites everything
+to a static `index.html`.
 
 ### 2c. Placement writeback boundary (directional contract)
 
@@ -402,18 +404,27 @@ Subscription rows come from three webhook sources, each routed
 through the entitlement recompute:
 
 ```text
-Stripe webhook   (Vercel fn, api/*) ──┐
-Apple webhook    (apple-webhook)    ──┼─▶  upsert into `subscriptions`
-Google purchase  (billing-google-… ) ──┘            │
-                                                    ▼
-                                       recomputeAndPersistEntitlement
-                                       (src/billing/recomputeAndPersistEntitlement.ts
-                                        + _shared mirror in edge fn)
-                                                    ▼
-                                       persists derived entitlement
-                                                    ▼
-                                       (next read sees the new value)
+Stripe webhook   (supabase edge fn)   ──┐
+Apple webhook    (apple-webhook)      ──┼─▶  upsert into `subscriptions`
+Google purchase  (billing-google-…)   ──┘            │
+                                                     ▼
+                                        recomputeAndPersistEntitlement
+                                        (src/billing/recomputeAndPersistEntitlement.ts
+                                         + _shared mirror in edge fn)
+                                                     ▼
+                                        persists derived entitlement
+                                                     ▼
+                                        (next read sees the new value)
 ```
+
+> All three provider webhooks are **Supabase edge functions** (see
+> [`systems/billing-entitlement.md` §5d](./systems/billing-entitlement.md)
+> "Stripe webhook host — verified"). Stripe is configured to POST
+> directly to
+> `https://buemdfxyhxunzpgdoqin.supabase.co/functions/v1/stripe-webhook`
+> — not routed through `mercyblade.com` (Netlify), not via Vercel,
+> not via Cloudflare DNS as an origin. The Cloudflare zone covers
+> `mercyblade.com` only; `*.supabase.co` is not proxied through it.
 
 The recompute is idempotent + event-id-deduplicated
 (`hasProcessedEvent`). Replaying a webhook does not double-write.

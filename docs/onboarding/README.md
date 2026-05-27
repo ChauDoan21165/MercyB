@@ -20,8 +20,9 @@ secondary tracks for Japanese, Korean, Chinese, French, German, and
 Spanish (`STRATEGY.md` §4). Live web app: `https://mercyblade.com`.
 Capacitor 8 ships the same SPA as iOS and Android apps. Backend is
 Supabase (Postgres, Auth, Storage, Edge Functions). Hosting is
-Vercel Pro. Stack: React 18 + Vite 6 + TypeScript 5 + TanStack Query
-5 + React Router 6.
+**Netlify** (post-2026-05-27 migration; Vercel is the documented
+recovery host — see `docs/runbooks/disaster-recovery.md`). Stack:
+React 18 + Vite 6 + TypeScript 5 + TanStack Query 5 + React Router 6.
 
 ## What makes this repo different
 

@@ -165,10 +165,17 @@ silently no-ops via `hasProcessedEvent`. See
 
 ### Fluid Compute
 Vercel's default function runtime since Edge Functions were
-deprecated. We run Vercel functions under `api/*` on Fluid Compute.
-Cold starts are minimal because instances reuse across concurrent
-requests. (Note: the Stripe webhook is one of those Vercel
-functions, not a Supabase edge function.)
+deprecated. Pre-2026-05-27 migration, this repo ran the
+Vercel-style serverless functions under `api/*` on Vercel's Fluid
+Compute. Post-migration the primary host is Netlify; Vercel is
+retained as the documented recovery host
+(`docs/runbooks/disaster-recovery.md`). Today's `api/*` entries
+(per `vercel.json`) are `mercy/grammar`, `mercy-ai`,
+`mercy-feedback`, `mercy-guide`, `tts` — **NOT the Stripe webhook**.
+The Stripe webhook is a separate **Supabase edge function** at
+`supabase/functions/stripe-webhook/` (see
+`docs/architecture/systems/billing-entitlement.md` §5d for the
+verified treatment).
 
 ### `getMeEntitlement`
 The browser-side helper (`src/lib/getMeEntitlement.ts`) that
@@ -549,8 +556,10 @@ worktree isolation mandatory for parallel agent work.
 - **SLO** — Service Level Objective. See `docs/slo-handbook.md`.
 - **SPA** — Single-Page Application.
 - **SSR** — Server-Side Rendering. **MercyBlade does NOT have
-  SSR** — it's a SPA. `vercel.json` rewrites everything to a
-  static `index.html`. Memory: `project_server_host_dead_not_ssr`.
+  SSR** — it's a SPA. The host (Netlify primary post-2026-05-27
+  migration; Vercel as documented recovery — `vercel.json` retained)
+  rewrites everything to a static `index.html`. Memory:
+  `project_server_host_dead_not_ssr`.
 - **STT** — Speech-to-Text.
 - **SW** — Service Worker. Registered in production only.
 - **TLS** — Transport Layer Security.
@@ -558,7 +567,10 @@ worktree isolation mandatory for parallel agent work.
 - **UI** — User Interface.
 - **UTM** — URL Tracking parameter (e.g. `utm_source`, gated by
   marketing consent).
-- **WAF** — Web Application Firewall. Vercel Firewall.
+- **WAF** — Web Application Firewall. Netlify's Edge Functions /
+  rules surface and Cloudflare's WAF are the two layers we touch
+  today; Vercel Firewall applies only on the documented recovery
+  host.
 
 ---
 

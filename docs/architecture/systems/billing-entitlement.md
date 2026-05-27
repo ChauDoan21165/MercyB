@@ -89,10 +89,12 @@ Strategic anchors (`STRATEGY.md`):
 | `supabase/functions/get-profile/`                                     | Client profile read                  | Returns `profiles.premium_*` projection                 |
 | `supabase/functions/admin-billing-*` (several)                        | Admin tooling                        | Admin-gated mutations + reads                           |
 
-Stripe's webhook itself lives in a **Vercel function** (`api/*`), not
-an edge function — Stripe signs webhooks against the public webhook
-endpoint that Vercel hosts. Internally that handler still calls the
-edge-function recompute, so the parity guarantee holds.
+Stripe's webhook itself is a **Supabase edge function** at
+`supabase/functions/stripe-webhook/`, posted to directly by Stripe
+at `https://buemdfxyhxunzpgdoqin.supabase.co/functions/v1/stripe-webhook`
+— NOT routed through Netlify, Vercel, or Cloudflare DNS as an
+origin. See §5d "Stripe webhook host — verified" below for the
+verified request flow, secrets configuration, and debug procedure.
 
 ### 2d. Client-facing hooks + the cache
 
