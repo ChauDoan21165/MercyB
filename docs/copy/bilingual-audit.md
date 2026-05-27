@@ -473,12 +473,64 @@ The four "(optional)" candidates leftover from the batch-1 audits
 affordance, AccountPage.tsx:885 mirror EN `reset`, AiTutor.tsx:931
 tighter EN-VI pair) stay deferred for the same reason.
 
-**Files still pending Phase-2 audit:** `src/screens/Pricing.tsx`
-(should take §255's reassigned priority slot per the Phase-2 #3
-re-categorization), the rest of `mercy-guide/` non-kids files
-(`MercyGuidePanel.tsx`, `MercySuggestTab.tsx`,
-`UnifiedMercyChat.tsx`), the `feedback/` + `billing/` + `account/`
-component directories, plus the lower-priority Tier-3 files listed
+**Files audited (Phase-2 #5):** 3 more priority files. Diagnostic
+only — no source string changes; revisions will queue for a
+follow-up sweep MR (Phase-2 #6).
+
+| Audit | Surface | Strings | Verdict summary |
+|---|---|---|---|
+| [`docs/copy/audits/Pricing.tsx.md`](audits/Pricing.tsx.md) | `/pricing` + `/upgrade` — consumer pricing surface (hero + plan cards + comparison + subscription disclosure) | 26 | **22/26 OK + 4 revision candidates**: 3 plan-card `bullets` arrays are EN-only on a VI-primary surface (the page's main bilingual-contract gap — 9 EN-only value-prop bullets total across Free/Monthly/Yearly), 1 EN-first ordering on the disclosure-footer link pair (`Terms of Use (EULA) / Điều khoản sử dụng` + `Privacy Policy / Chính sách bảo mật` should flip). Includes a cross-file alignment opportunity: propagate `AccountPage.tsx:831`'s shipped `Chính sách quyền riêng tư` revision to the same link here. |
+| [`docs/copy/audits/UnifiedMercyChat.tsx.md`](audits/UnifiedMercyChat.tsx.md) | `mercy-guide/UnifiedMercyChat` — single-stream Mercy chat panel (Unified mode) | 16 | **16/16 OK** — no defects. Picked as the **non-kids mercy-guide file** alongside `MercyEnglishTab.tsx` (audited in Phase-2 #3). One cross-cutting finding worth promoting: this file uses `em` (younger-sibling pronoun) as the consistent learner-address register, distinct from `bạn` elsewhere. Worth codifying in `vi-style-guide.md` §1. Plus the encouragement-inline template at line 350–352 is one of the strongest no-shame strings in the codebase — exemplar candidate for §6. |
+| [`docs/copy/audits/Billing.tsx.md`](audits/Billing.tsx.md) | `/billing` — signed-in billing management (status + cards + actions + notices) | 28 | **27/28 OK + 1 revision candidate**: line 599's `Auto-renew` value (`On` / `Off — cancels at period end`) is EN-only inside an otherwise-bilingual card (the LABEL has VI `Tự động gia hạn` at line 598, but the VALUE doesn't). All status labels, all `UiMessage { en, vi }` notices, all plan-button states are clean bilingual pairs. The `VIETNAMESE_SUB_STYLE` muted-subscript pattern is consistent + worth promoting to `vi-style-guide.md` §6 as the canonical inline-status bilingual shape. |
+
+**Audit-process findings worth promoting:**
+
+1. **The `em` pronoun is the dominant Mercy-conversational
+   register** in three non-kids mercy-guide files
+   (`UnifiedMercyChat.tsx`, plus inferred presence in
+   `MercySuggestTab.tsx` and `MercyGuidePanel.tsx` — both pending
+   audit). `vi-style-guide.md` §1's pronoun table currently lists
+   `bạn` (learner) and `mình` (Mercy) but does not codify `em`.
+   Worth a §1 update: `em` for the Mercy-conversational
+   surfaces (warm-elder-sister voice), `bạn` for system-spoken /
+   settings / page-chrome surfaces.
+2. **The plan-card `bullets: string[]` array in `Pricing.tsx`
+   ships EN-only** (9 strings across 3 plans). The fix requires
+   touching the `Plan` type (add `bulletsVi?: string[]`) AND the
+   render path — higher cost than a string-only edit but the
+   single highest-impact VI-primary contract gap on the page.
+   Revision authors: scope this as a structural change, not a
+   single-line swap.
+3. **Two bilingual-pairing patterns coexist in the codebase**: the
+   `BiText { en, vi }` component (`Pricing.tsx`, others) AND the
+   `VIETNAMESE_SUB_STYLE` muted-subscript pattern (`Billing.tsx`,
+   `AccountPage.tsx`). Both are on-voice when applied
+   consistently. Worth a `vi-style-guide.md` §6 entry comparing
+   them: `BiText` for inline action labels + free-form bilingual
+   prose; subscript for compact inline status/state labels in
+   data-dense cards.
+4. **`Vui lòng + bare verb` is a recurring borderline pattern.**
+   Appears 4× in `Billing.tsx`'s error notices (acceptable per
+   §3), 1× in Pricing.tsx's error banner, 1× in `Billing.tsx`'s
+   `canceledLike` informational notice (borderline — softer
+   alternatives exist). The §3 rule "acceptable on technical-
+   failure errors with no honorific subject" continues to hold;
+   the audit recommends NOT tightening it across the codebase
+   without a deliberate register-policy decision.
+5. **The `Tặng 2 tháng` (`Billing.tsx:651`) and `phòng học`
+   (`Pricing.tsx:647`) patterns** are worth promoting to
+   `vi-style-guide.md` §6 — they show how to translate
+   commercial/product vocabulary in a way that lands warmer than
+   the literal English.
+
+**Files still pending Phase-2 audit:** `MercyGuidePanel.tsx`,
+`MercySuggestTab.tsx` (the two small remaining `mercy-guide/`
+non-kids files — both presumed to use the `em` register confirmed
+in `UnifiedMercyChat.tsx`), `BillingSuccess.tsx` +
+`BillingSuccessPage.tsx` (post-payment companions to Billing.tsx,
+~250 lines each), the `feedback/` + `account/` component
+directories (sampling), `Support.tsx`, `RoleplayPage.tsx`,
+`SpeechDrillPage.tsx`, plus the lower-priority Tier-3 files listed
 in the table above. `MercyTeacherTab.tsx` is kids-mode-coupled and
 belongs in CC2's lane.
 
