@@ -179,7 +179,7 @@ export default function ShareStory(): React.ReactElement {
         <p className="text-sm text-slate-600">
           Vui lòng đăng nhập để chia sẻ câu chuyện.
         </p>
-        <p className="mt-1 text-xs text-slate-400">Please sign in to share your story.</p>
+        <p className="mt-1 text-xs text-slate-500">Please sign in to share your story.</p>
         <Link to="/signin" className="mt-4 inline-block rounded-full bg-amber-500 px-5 py-2 text-sm font-bold text-white">
           Đăng nhập
         </Link>
@@ -201,7 +201,7 @@ export default function ShareStory(): React.ReactElement {
         <h1 className="text-xl font-bold text-slate-900">
           Chia sẻ câu chuyện của bạn
         </h1>
-        <p className="mt-1 text-xs text-slate-400">Share your story</p>
+        <p className="mt-1 text-xs text-slate-500">Share your story</p>
 
         <div className="mt-6 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
           <p className="font-semibold">Bạn chưa đủ điều kiện để chia sẻ ngay.</p>
@@ -222,7 +222,7 @@ export default function ShareStory(): React.ReactElement {
         <h1 className="text-xl font-bold text-slate-900">
           Cảm ơn bạn đã chia sẻ!
         </h1>
-        <p className="mt-1 text-xs text-slate-400">Thank you for sharing.</p>
+        <p className="mt-1 text-xs text-slate-500">Thank you for sharing.</p>
         <p className="mt-4 text-sm text-slate-700">
           Câu chuyện của bạn đang chờ duyệt. Chúng tôi sẽ liên hệ qua email
           khi câu chuyện được đăng.
@@ -243,7 +243,7 @@ export default function ShareStory(): React.ReactElement {
         <h1 className="text-2xl font-bold text-slate-900">
           Chia sẻ câu chuyện của bạn
         </h1>
-        <p className="text-xs text-slate-400">Share your story</p>
+        <p className="text-xs text-slate-500">Share your story</p>
         <p className="mt-2 text-sm text-slate-600">
           Câu chuyện của bạn có thể giúp người Việt khác tin rằng họ cũng làm
           được. Chúng tôi sẽ duyệt trước khi đăng công khai.
@@ -255,7 +255,7 @@ export default function ShareStory(): React.ReactElement {
         <div>
           <label className="block text-sm font-semibold text-slate-800">
             Câu chuyện của bạn (tiếng Việt)
-            <span className="block text-xs font-normal text-slate-400">
+            <span className="block text-xs font-normal text-slate-500">
               Your story (Vietnamese) — required
             </span>
           </label>
@@ -268,7 +268,7 @@ export default function ShareStory(): React.ReactElement {
             className="mt-2 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
             placeholder="Trước khi dùng MercyBlade tôi…"
           />
-          <p className="mt-1 text-xs text-slate-400">
+          <p className="mt-1 text-xs text-slate-500">
             Còn {charsLeft} / {MAX_VI_CHARS} ký tự
           </p>
         </div>
@@ -277,7 +277,7 @@ export default function ShareStory(): React.ReactElement {
         <div>
           <label className="block text-sm font-semibold text-slate-800">
             English version (optional)
-            <span className="block text-xs font-normal text-slate-400">
+            <span className="block text-xs font-normal text-slate-500">
               Bản tiếng Anh (tuỳ chọn)
             </span>
           </label>
@@ -295,7 +295,7 @@ export default function ShareStory(): React.ReactElement {
         <div>
           <label className="block text-sm font-semibold text-slate-800">
             Tên hiển thị
-            <span className="block text-xs font-normal text-slate-400">Display name</span>
+            <span className="block text-xs font-normal text-slate-500">Display name</span>
           </label>
           <input
             value={displayName}
@@ -310,7 +310,7 @@ export default function ShareStory(): React.ReactElement {
         <div>
           <label className="block text-sm font-semibold text-slate-800">
             Bối cảnh câu chuyện
-            <span className="block text-xs font-normal text-slate-400">Story context (optional)</span>
+            <span className="block text-xs font-normal text-slate-500">Story context (optional)</span>
           </label>
           <select
             value={context}
@@ -331,7 +331,7 @@ export default function ShareStory(): React.ReactElement {
         {/* Profession */}
         <div>
           <label className="block text-sm font-semibold text-slate-800">
-            Nghề nghiệp <span className="text-xs font-normal text-slate-400">(tuỳ chọn)</span>
+            Nghề nghiệp <span className="text-xs font-normal text-slate-500">(tuỳ chọn)</span>
           </label>
           <input
             value={profession}
@@ -390,7 +390,7 @@ export default function ShareStory(): React.ReactElement {
         {/* Tags */}
         <div>
           <label className="block text-sm font-semibold text-slate-800">
-            Thẻ <span className="text-xs font-normal text-slate-400">Tags</span>
+            Thẻ <span className="text-xs font-normal text-slate-500">Tags</span>
           </label>
           <div className="mt-2 flex flex-wrap gap-2">
             {STORY_TAGS.map((tag) => {
@@ -428,7 +428,7 @@ export default function ShareStory(): React.ReactElement {
             />
             <span>
               Tôi đồng ý hiển thị ảnh kèm câu chuyện công khai. /
-              <span className="text-slate-400"> I consent to displaying my photo publicly.</span>
+              <span className="text-slate-500"> I consent to displaying my photo publicly.</span>
             </span>
           </label>
 
@@ -455,7 +455,7 @@ export default function ShareStory(): React.ReactElement {
         >
           {submit.kind === "submitting" ? "Đang gửi…" : "Gửi câu chuyện"}
         </button>
-        <p className="text-center text-xs text-slate-400">
+        <p className="text-center text-xs text-slate-500">
           Câu chuyện sẽ được đội ngũ MercyBlade duyệt trước khi đăng công khai.
         </p>
       </form>

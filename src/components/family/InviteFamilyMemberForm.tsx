@@ -67,7 +67,7 @@ export default function InviteFamilyMemberForm({
 
       <form onSubmit={onSubmit} className="mt-3 flex flex-col gap-2">
         <label className="text-[13px] font-bold text-slate-700">
-          Email <span className="font-normal text-slate-400">(tuỳ chọn / optional)</span>
+          Email <span className="font-normal text-slate-500">(tuỳ chọn / optional)</span>
           <input
             type="email"
             value={email}

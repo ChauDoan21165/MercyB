@@ -76,7 +76,7 @@ export default function FamilyPlanCard({
               ? `${members.length} of ${maxMembers} seats used.`
               : "Premium covered by the plan owner."}
           </div>
-          <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-400">
+          <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-500">
             {isOwner
               ? `${members.length}/${maxMembers} chỗ đã dùng.`
               : "Premium được bao phủ bởi chủ gói."}

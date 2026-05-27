@@ -332,7 +332,7 @@ export default function Certificate({
               <div
                 style={{
                   fontSize: "clamp(11px, 1.6cqw, 14px)",
-                  color: "#94a3b8",
+                  color: "#64748b",
                   marginTop: "0.2em",
                   fontStyle: "italic",
                 }}

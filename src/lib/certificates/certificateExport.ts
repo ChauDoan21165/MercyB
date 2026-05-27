@@ -173,7 +173,7 @@ function drawCertificateOnCanvas(
     cursor += 32;
   }
   if (input.subtitleVi) {
-    ctx.fillStyle = "#94a3b8";
+    ctx.fillStyle = "#64748b";
     ctx.font = "400 22px system-ui, -apple-system, Helvetica, Arial, sans-serif";
     ctx.fillText(input.subtitleVi, CANVAS_W / 2, cursor);
     cursor += 50;

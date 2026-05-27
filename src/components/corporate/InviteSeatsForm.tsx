@@ -63,7 +63,7 @@ export function InviteSeatsForm({
     >
       <h2 className="text-base font-semibold mb-1">
         Mời thành viên
-        <span className="text-slate-400 font-normal ml-2">Invite seats</span>
+        <span className="text-slate-500 font-normal ml-2">Invite seats</span>
       </h2>
       <p className="text-xs text-slate-500 mb-3">
         Dán danh sách email (mỗi dòng một email, hoặc cách nhau bằng dấu phẩy).
