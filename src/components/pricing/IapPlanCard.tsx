@@ -275,7 +275,7 @@ function ShellCard({ children }: { children: React.ReactNode }) {
         <h3 style={{ margin: 0, fontSize: 19, fontWeight: 900, color: "#111827" }}>
           Mercy Blade Pro
         </h3>
-        <div style={{ fontSize: 13, color: "#94a3b8", fontWeight: 500, marginTop: 2 }}>
+        <div style={{ fontSize: 13, color: "#64748b", fontWeight: 500, marginTop: 2 }}>
           Toàn quyền truy cập / Full access
         </div>
       </div>
@@ -322,7 +322,7 @@ function PlanRow(props: {
     >
       <div>
         <div style={{ fontSize: 15, fontWeight: 900, color: "#111827" }}>{titleEn}</div>
-        <div style={{ fontSize: 12, color: "#94a3b8", marginTop: 2 }}>{titleVi}</div>
+        <div style={{ fontSize: 12, color: "#64748b", marginTop: 2 }}>{titleVi}</div>
       </div>
       <div style={{ fontSize: 22, fontWeight: 900, color: "#111827" }}>
         {pkg ? pkg.priceString : "—"}

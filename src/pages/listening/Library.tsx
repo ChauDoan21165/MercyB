@@ -132,7 +132,7 @@ function ClipCard({
       <h3 style={{ fontSize: 15, fontWeight: 800, color: "#1f2937", margin: "8px 0 2px" }}>
         {clip.title_vi}
       </h3>
-      <div style={{ fontSize: 12, color: "#94a3b8" }}>{clip.title_en}</div>
+      <div style={{ fontSize: 12, color: "#64748b" }}>{clip.title_en}</div>
     </Link>
   );
 }
@@ -193,7 +193,7 @@ export default function Library(): React.ReactElement {
             khám bác sĩ, gọi tổng đài, phỏng vấn xin việc — không phải tiếng Anh
             sách giáo khoa.
           </p>
-          <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 4 }}>
+          <p style={{ fontSize: 12, color: "#64748b", marginTop: 4 }}>
             30 real-world English clips — coffee orders, doctor calls, customer
             service, interviews. No textbook English.
           </p>

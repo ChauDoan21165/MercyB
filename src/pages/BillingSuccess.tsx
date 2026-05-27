@@ -41,7 +41,7 @@ const viStyle: React.CSSProperties = {
   display: "block",
   fontSize: 13,
   fontWeight: 400,
-  color: "#94a3b8",
+  color: "#64748b",
   marginTop: 3,
   lineHeight: 1.5,
 };
@@ -179,7 +179,7 @@ export default function BillingSuccess() {
             ? "Your subscription is confirmed and premium access is now active."
             : message}
         </p>
-        <p style={{ margin: "3px 0 0", fontSize: 13, color: "#94a3b8", lineHeight: 1.5 }}>
+        <p style={{ margin: "3px 0 0", fontSize: 13, color: "#64748b", lineHeight: 1.5 }}>
           {hasPremium
             ? "Gói đăng ký đã được xác nhận và quyền Premium đang hoạt động."
             : "Vui lòng chờ trong giây lát…"}
@@ -243,7 +243,7 @@ export default function BillingSuccess() {
                 color: "#111827", fontWeight: 900, cursor: "pointer",
                 display: "flex", flexDirection: "column", alignItems: "center" }}>
               Refresh status
-              <span style={{ ...viStyle, color: "#94a3b8" }}>Kiểm tra lại</span>
+              <span style={{ ...viStyle, color: "#64748b" }}>Kiểm tra lại</span>
             </button>
           ) : null}
         </div>
