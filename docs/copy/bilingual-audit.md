@@ -560,16 +560,80 @@ The four "(optional)" candidates leftover from the batch-1 audits
 plus the five "(optional)" from the Phase-2 #3 batch ALSO stay
 deferred for the same reason, per the !48 + !58 + !65 precedent.
 
-**Files still pending Phase-2 audit:** `MercyGuidePanel.tsx`,
-`MercySuggestTab.tsx` (the two small remaining `mercy-guide/`
-non-kids files — both presumed to use the `em` register confirmed
-in `UnifiedMercyChat.tsx`), `BillingSuccess.tsx` +
-`BillingSuccessPage.tsx` (post-payment companions to Billing.tsx,
-~250 lines each), the `feedback/` + `account/` component
-directories (sampling), `Support.tsx`, `RoleplayPage.tsx`,
-`SpeechDrillPage.tsx`, plus the lower-priority Tier-3 files listed
-in the table above. `MercyTeacherTab.tsx` is kids-mode-coupled and
-belongs in CC2's lane.
+**Files audited (Phase-2 #7):** 3 more priority files — the
+remaining `mercy-guide/` non-kids members plus the live
+post-payment landing page. Diagnostic only; revisions will queue
+for a follow-up sweep MR (Phase-2 #8).
+
+| Audit | Surface | Strings | Verdict summary |
+|---|---|---|---|
+| [`docs/copy/audits/MercyGuidePanel.tsx.md`](audits/MercyGuidePanel.tsx.md) | Floating Mercy Guide panel shell — header pill + body card | 4 (non-kids only) | **3/4 OK + 1 revision candidate**: line 70 header subtitle (`Choose where you want to practice.`) is EN-only on a Mercy-surface panel. **CC2 lane note:** the panel's body card today is a Mercy Kids landing (lines 96–112) — explicitly out of scope per the dispatch's CC2 rule; audited only the panel-shell strings. Plus a structural observation: the panel currently renders ONLY the kids card body; the multi-tab body presumably ships from `UnifiedMercyChat.tsx` (separate file). |
+| [`docs/copy/audits/MercySuggestTab.tsx.md`](audits/MercySuggestTab.tsx.md) | Suggest tab inside Mercy Guide — "Recommended for you" list chrome | 3 | **0/3 OK + 3 revision candidates**: the ENTIRE chrome surface is EN-only on a Mercy-conversational tab (heading + empty-state + per-item nav button). Per-item data fields (`title_vi`, `reason_vi`) are bilingual at the data layer; only the chrome is the gap. Single-file's the cleanest single-file bilingual-contract gap audited to date. |
+| [`docs/copy/audits/BillingSuccessPage.tsx.md`](audits/BillingSuccessPage.tsx.md) | `/billing/success` — post-checkout landing (header + status grid + 4-button action row, 3 conditional states) | 25 | **25/25 OK** — no defects. Every conditional state of every conditional surface has a paired VI line via the file's local `viStyle` constant; uses `#64748b` (slate-500, a11y-compliant). The cleanest end-to-end bilingual page audited so far — `vi-style-guide.md` §6 exemplar candidate for "post-action confirmation page." |
+
+**Audit-process findings worth promoting:**
+
+1. **Em-pronoun thesis update** (from !65 `UnifiedMercyChat`
+   audit): the thesis distinguishes `em` (younger-sibling
+   register, Mercy-conversational surfaces) from `bạn`
+   (second-person formal, system-spoken / settings /
+   page-chrome surfaces). This batch's audits:
+   - `MercyGuidePanel.tsx` — proposed revision uses `em`
+     (extends the thesis to the panel-shell subtitle layer).
+   - `MercySuggestTab.tsx` — all 3 proposed VI translations
+     reach for `em` (strengthens the thesis on a third
+     mercy-guide file).
+   - `BillingSuccessPage.tsx` — uses `bạn` throughout
+     (CONFIRMS the thesis's scope distinction; billing-result
+     is system-spoken, `bạn` is correct).
+   Combined: the thesis is now confirmed across 3 mercy-guide
+   files AND its complement (`bạn`-on-system-spoken) is
+   confirmed on the billing surface. Worth codifying in
+   `vi-style-guide.md` §1.
+2. **Cross-file `Vào phòng học` canonicalization continues.**
+   Today the "go to room" framing appears as `Vào phòng học`
+   in `MercyEnglishTab.tsx:163` (audited !53; revision !58
+   resolved the `room → phòng` half-translation),
+   `Pricing.tsx:647` (audited !65, shipped via !89),
+   `BillingSuccessPage.tsx:231` (audited here — already
+   bilingual). The proposed `MercySuggestTab.tsx` revision
+   suggests `Vào phòng học` for the "Go to room" button. Worth
+   promoting `Vào phòng học` (and the related `Vào lộ trình`
+   for "Go to path") to `vi-style-guide.md` §6 as the
+   canonical VI for navigation CTAs that lead into a learning
+   surface.
+3. **Two known noise files (dead duplicates) flagged this
+   batch:**
+   - `src/pages/BillingSuccess.tsx` — older variant of
+     `BillingSuccessPage.tsx`; zero importers (`grep -rn
+     'BillingSuccess[^P]' src/` confirmed). Different polling
+     logic + different copy from the live page. Tracked
+     source; not audited (the live page is the audit subject).
+     Same shape as the `upabase/functions/stripe-webhook.ts`
+     stray flagged in !80 — needs a deliberate-deletion
+     dispatch, NOT a silent edit.
+   - `MercyGuidePanel.tsx`'s panel-body rendering ONLY the
+     kids card today is suspicious — `UnifiedMercyChat.tsx`
+     ships the tab-host body separately. Whether
+     `MercyGuidePanel.tsx` is itself stale-or-different-from-
+     intended is a question for the next architecture pass,
+     not this audit's copy verdict.
+4. **A11y-compliant color choice exemplar.**
+   `BillingSuccessPage.tsx`'s local `viStyle` uses `#64748b`
+   (slate-500) out of the gate, matching the !64 a11y-contrast
+   audit's required palette. This is the pattern other pages
+   should adopt when refactoring away from `#94a3b8`
+   (slate-400, forbidden in audit-fixed files). Worth a
+   `vi-style-guide.md` §6 line.
+
+**Files still pending Phase-2 audit:** the `feedback/` +
+`account/` component directories (sampling), `Support.tsx`,
+`RoleplayPage.tsx`, `SpeechDrillPage.tsx`, plus the
+lower-priority Tier-3 files listed in the table above.
+`MercyTeacherTab.tsx` is kids-mode-coupled and belongs in CC2's
+lane. The dead `BillingSuccess.tsx` + the
+`MercyGuidePanel.tsx` panel-body-structure question (Phase-2
+#7 cross-cutting #3) are non-audit follow-ups.
 
 **Cross-cutting findings worth promoting before further Phase-2
 work:**
