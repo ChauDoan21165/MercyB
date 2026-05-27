@@ -369,6 +369,51 @@ giant sweep MR), so reviewers can read each surface against the
 style guide without scrolling through hundreds of unrelated string
 changes.
 
+## Phase-2 progress — per-file appendix audits
+
+To keep each surface's audit independently scannable (and to let
+parallel Phase-2 work land without merge conflicts on this doc),
+per-file audits live as siblings in `docs/copy/audits/` rather than
+appended sections in this file. Each appendix uses the same
+verdict framework (`§Method` above) and the same `vi-style-guide.md`
+reference set.
+
+| Audit | Surface | Strings | Verdict summary |
+|---|---|---|---|
+| [`docs/copy/audits/AiTutor.tsx.md`](audits/AiTutor.tsx.md) | `/ai-tutor` — Logic mode openers + lesson-loop chrome | 7 | **7/7 OK** — no defects; two stylistic borderline notes. Strong surface. |
+| [`docs/copy/audits/MercySpeakTab.tsx.md`](audits/MercySpeakTab.tsx.md) | `mercy-guide/MercySpeakTab` — pronunciation surface, mic errors, per-word breakdown | 32 | **27/32 OK + 5 revision candidates**: 3 awkward (`Hãy` bare imperatives × 2, `You` English fallback), 1 MT-feel (`mobile` untranslated, line 1769), 1 ordering inconsistency (4 strings reverse to EN · VI — should flip back to VI · EN). |
+| [`docs/copy/audits/AccountPage.tsx.md`](audits/AccountPage.tsx.md) | `/account` — settings, membership, destructive actions | 34 | **30/34 OK + 4 revision candidates**: 1 pronoun inconsistency (`tôi` on system-spoken label), 1 ambiguous heading (`Ngôn ngữ học`), 2 minor (`&` instead of `và`, `Chính sách bảo mật` vs `quyền riêng tư` alignment). |
+
+**Files audited so far (Phase-2 #1):** 3 of the priority list named
+above (`AiTutor.tsx`, `MercySpeakTab.tsx`, `AccountPage.tsx`).
+Source strings unchanged in this MR — diagnostic only, per the
+Phase-2 ground rule that revisions land per-file in follow-up MRs.
+
+**Files still pending Phase-2 audit:** `LoginPage.tsx`, `Tiers.tsx`,
+the rest of `mercy-guide/` (chiefly `MercyTeacherTab.tsx` —
+1,734 lines, second-highest VI density in the directory), the
+`onboarding/` + `feedback/` + `billing/` + `account/` component
+directories, plus the lower-priority Tier-3 files listed in the
+table above.
+
+**Cross-cutting findings worth promoting before further Phase-2
+work:**
+
+1. **The recognition-error envelope in `MercySpeakTab.tsx`
+   (lines 422–438)** — six strings, all on-voice — is the
+   strongest error-message surface audited to date. Worth
+   promoting to `vi-style-guide.md` §6 exemplars.
+2. **The destructive-action confirmation prose in
+   `AccountPage.tsx` (lines 884, 903, 984)** — three paragraphs
+   of factual, correctly-registered destructive-action copy — is
+   the exemplar for "irreversible-action UX" copy. Also worth
+   promoting to §6.
+3. **Pronoun consistency (`bạn` for the learner, `mình` for
+   Mercy)** is the single most common revision class — appears
+   as the `Tiến độ của tôi` slip on AccountPage.tsx:612 and the
+   `You` fallback on MercySpeakTab.tsx:1976. Phase-2 should
+   convention-check every file against this rule.
+
 ## References
 
 - `docs/copy/vi-style-guide.md` — the canonical voice + bilingual pairing reference for any future copy work (the prescriptive complement to this diagnostic).
