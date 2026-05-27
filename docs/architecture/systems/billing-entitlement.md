@@ -63,7 +63,7 @@ Strategic anchors (`STRATEGY.md`):
 | `computeEntitlement.ts`                             | Three pure entry points that wrap `deriveEntitlementFromSubscriptions`: `computeEntitlement` (base), `computeEntitlementForUser` (family flow-through, async loaders), `computeEntitlementWithGifts` (gift stacking). Plus `isFamilyMember`, `isCorporateSeat`, `getCorporateSeatEntitlement`, `effectiveGiftEnd`. |
 | `subscriptionRepository.ts`                         | `deriveEntitlementFromSubscriptions` (the canonical derivation), `isEntitlingSubscription` predicate, plus the Supabase read/write helpers (`getSubscriptionsByUserId`, `upsertSubscription`, `hasProcessedEvent`, `insertEntitlementEvent`). Test-seam injectable. |
 | `recomputeAndPersistEntitlement.ts`                 | Reads `subscriptions` for a user, derives, and writes `profiles.premium_status / premium_expires_at / premium_source`. The only function that *writes* the projection.            |
-| `stripe/mapStripeSubscription.ts`                   | Stripe API shape → internal `SubscriptionRow`. Owned by Stripe's webhook handler (Vercel function under `api/*`).                     |
+| `stripe/mapStripeSubscription.ts`                   | Stripe API shape → internal `SubscriptionRow`. Owned by Stripe's webhook handler — the **Supabase edge function** at `supabase/functions/stripe-webhook/` (NOT a Vercel `api/*` function; see §5d "Stripe webhook host — verified" for the verified request flow). |
 
 ### 2b. Server (`supabase/functions/_shared/`)
 
@@ -374,20 +374,64 @@ client is the **only** way to unit-test these functions without
 hitting the real Supabase singleton. Don't "simplify" the dynamic
 import — you'll lose the test coverage.
 
-### 5d. Stripe webhook lives in Vercel, not Supabase
+### 5d. Stripe webhook host — verified
 
-Apple and Google webhooks are edge functions
-(`apple-webhook`, `billing-google-attach-purchase`), but the Stripe
-webhook is a Vercel function under `api/*`. Stripe's signed-webhook
-endpoint needs a stable public URL and Vercel handles that. Internally
-the handler still calls the edge-function recompute.
+**Correction over prior drafts:** earlier versions of this doc said
+the Stripe webhook was a Vercel function under `api/*`. That was
+wrong. The verified state, post-Netlify migration:
+
+- **The Stripe webhook is a Supabase edge function** at
+  `supabase/functions/stripe-webhook/index.ts` (`Deno.serve`,
+  ~5,000 LOC across 14 supporting modules).
+- Registered in `supabase/config.toml` `[functions.stripe-webhook]`
+  with `verify_jwt = false` (Stripe deliveries carry no Supabase
+  JWT — signature verification is done in
+  `stripe-signature.ts` against `STRIPE_WEBHOOK_SECRET` /
+  `SECRET_STRIPE_WEBHOOK_SECRET` / `STRIPE_SIGNING_SECRET` /
+  `STRIPE_WEBHOOK_SIGNING_SECRET`; the helper accepts comma- or
+  newline-separated values so rotated secrets continue verifying
+  during cutover).
+- **Live URL** (where Stripe is configured to POST):
+  `https://buemdfxyhxunzpgdoqin.supabase.co/functions/v1/stripe-webhook`.
+- **Not** routed through `mercyblade.com` (Netlify), not routed
+  through Vercel, not routed through Cloudflare DNS as an
+  origin. Stripe → directly to Supabase. Cloudflare is the DNS
+  for `mercyblade.com` but does not proxy `*.supabase.co`.
+- The Apple + Google webhooks (`apple-webhook`,
+  `billing-google-attach-purchase`) are also Supabase edge
+  functions — the entire billing-webhook surface is uniformly
+  Supabase. There is no Vercel/Netlify function in the webhook
+  path for any provider.
+
+Why earlier docs got this wrong: the repo's root-level `api/`
+directory (`api/mercy/grammar.ts`, `api/tts.ts`, `api/mercy-ai.ts`,
+etc., registered in `vercel.json`) is a real Vercel-style
+serverless-function surface, but **does not contain anything
+Stripe-related**. The "Vercel function under `api/*`" claim
+conflated the two surfaces.
+
+**Known noise file:** a stray `upabase/functions/stripe-webhook.ts`
+exists at the repo root (typo'd path — missing the leading `s`).
+It is dead code: `supabase functions deploy` only scans
+`supabase/functions/`, and the file is not registered in any
+config. Flagged for cleanup, not edited.
 
 When debugging "Stripe event didn't update my entitlement", check:
 
-1. Vercel function logs (`api/stripe-webhook` or similar).
-2. `entitlement_events` table for `(provider='stripe', event_id=evt.id)`.
-3. `subscriptions` for the user's latest row.
-4. `profiles.premium_*` for the projected state.
+1. **Supabase edge function logs** for `stripe-webhook` (dashboard
+   → Edge Functions → stripe-webhook → Logs). Sentry breadcrumbs
+   under tag `webhook=stripe` if the function is wired to a
+   `SENTRY_DSN`.
+2. **Stripe dashboard webhook delivery log** (Developers → Webhooks
+   → the configured endpoint → recent events). 4xx/5xx response
+   codes there mean the signature failed or the function 500'd.
+3. **`stripe_webhook_events` table** for idempotency state
+   (`idempotency.ts` claims + releases the event id; a stuck
+   `claimed` row means the function crashed mid-process).
+4. `entitlement_events` table for `(provider='stripe',
+   event_id=evt.id)`.
+5. `subscriptions` for the user's latest row.
+6. `profiles.premium_*` for the projected state.
 
 ### 5e. Two `audience_type` enums collide in email functions
 
