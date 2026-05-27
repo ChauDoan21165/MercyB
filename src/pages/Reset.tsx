@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -9,6 +9,8 @@ export default function Reset() {
   const [pw2, setPw2] = useState("");
   const [err, setErr] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
+  const newPwInputId = useId();
+  const confirmPwInputId = useId();
 
   const recovery = useMemo(() => {
     const rawHash = window.location.hash || "";
@@ -101,16 +103,18 @@ export default function Reset() {
       <h1>Reset Password</h1>
       {err && <p style={{ color: "crimson" }}>{err}</p>}
 
-      <label>New password</label>
+      <label htmlFor={newPwInputId}>New password</label>
       <input
+        id={newPwInputId}
         type="password"
         value={pw}
         onChange={(e) => setPw(e.target.value)}
         style={{ width: "100%", marginBottom: 12 }}
       />
 
-      <label>Confirm password</label>
+      <label htmlFor={confirmPwInputId}>Confirm password</label>
       <input
+        id={confirmPwInputId}
         type="password"
         value={pw2}
         onChange={(e) => setPw2(e.target.value)}

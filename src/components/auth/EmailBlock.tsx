@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useId, useRef, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import {
   ensureSessionOrThrow,
@@ -35,6 +35,12 @@ export default function EmailBlock({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPw, setShowPw] = useState(false);
+
+  // Stable per-instance ids for label/input pairing. Using `useId`
+  // means two EmailBlock instances on one page (not expected, but
+  // possible) get unique ids — the link contract holds regardless.
+  const emailInputId = useId();
+  const passwordInputId = useId();
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const statusRef = useRef<HTMLDivElement | null>(null);
@@ -673,12 +679,12 @@ export default function EmailBlock({
       </div>
 
       <div style={{ marginTop: 12 }}>
-        <label style={UI.label}>Email</label>
+        <label htmlFor={emailInputId} style={UI.label}>Email</label>
         <input
+          id={emailInputId}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@email.com"
-          aria-label="Email"
           autoComplete="email"
           data-clarity-mask="true"
           className={AUTH_FOCUS_RING}
@@ -689,7 +695,7 @@ export default function EmailBlock({
 
       {showPasswordField && (
         <div style={{ marginTop: 12 }}>
-          <label style={UI.label}>Mật khẩu · Password</label>
+          <label htmlFor={passwordInputId} style={UI.label}>Mật khẩu · Password</label>
           <div
             className={AUTH_FOCUS_RING_WITHIN}
             style={{
@@ -703,10 +709,10 @@ export default function EmailBlock({
             }}
           >
             <input
+              id={passwordInputId}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              aria-label="Mật khẩu · Password"
               // Clarity auto-masks type=password, but this field flips
               // to type=text on "show password" — mask explicitly so it
               // never leaks in that state.

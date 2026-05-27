@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useId, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { ensureSessionOrThrow, humanizeAuthError } from "@/lib/authHelpers";
 import { UI, AUTH_FOCUS_RING } from "@/components/auth/authUI";
@@ -19,6 +19,10 @@ export default function PhoneOtp({
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
   const t = useChromeT();
+
+  // Stable per-instance ids for label/input pairing — see EmailBlock.
+  const phoneInputId = useId();
+  const smsCodeInputId = useId();
 
   const disabled = busyParent || busy;
 
@@ -122,12 +126,12 @@ export default function PhoneOtp({
       </div>
 
       <div style={{ marginTop: 12 }}>
-        <label style={UI.label}>{t({ vi: "Số điện thoại", en: "Phone" })}</label>
+        <label htmlFor={phoneInputId} style={UI.label}>{t({ vi: "Số điện thoại", en: "Phone" })}</label>
         <input
+          id={phoneInputId}
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           placeholder="+84 901234567"
-          aria-label={t({ vi: "Số điện thoại", en: "Phone" })}
           autoComplete="tel"
           className={AUTH_FOCUS_RING}
           style={UI.input(disabled)}
@@ -151,12 +155,12 @@ export default function PhoneOtp({
         </div>
       ) : (
         <div style={{ marginTop: 12 }}>
-          <label style={UI.label}>{t({ vi: "Mã SMS", en: "SMS code" })}</label>
+          <label htmlFor={smsCodeInputId} style={UI.label}>{t({ vi: "Mã SMS", en: "SMS code" })}</label>
           <input
+            id={smsCodeInputId}
             value={token}
             onChange={(e) => setToken(e.target.value)}
             placeholder="123456"
-            aria-label={t({ vi: "Mã SMS", en: "SMS code" })}
             autoComplete="one-time-code"
             className={AUTH_FOCUS_RING}
             style={UI.input(disabled)}

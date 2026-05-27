@@ -1,6 +1,8 @@
 # MercyBlade accessibility audit — 2026-05-27
 
 > **Update 2026-05-27 — blocker shipped.** The skip-link blocker called out below is **fixed** in `fix/a11y-skip-link`. `SkipToContent.tsx` ships, mounts in `AppHeroShell` as the first focusable element, and every audit-priority page exposes `<main id="main-content" tabIndex={-1}>` as the focus target. The "Documentation drift" table is updated to reflect the new reality. The 15 remaining findings ship as separate dispatches. Original audit text below is preserved for context.
+>
+> **Update 2026-05-27 — serious finding "EmailBlock label linking" shipped.** Fix in `fix/a11y-form-label-linking`. The audit named two label/input pairs in `EmailBlock` — re-grepping the codebase surfaced **six** more sibling-style pairs with the same defect across auth-flow forms (`PhoneOtp`, `ResetPasswordPage`, legacy `Reset`). All eight now use `useId()` for instance-unique ids + `htmlFor`/`id` linkage. The orphaned `aria-label` on each input was removed — the visible `<label>` is now the canonical accessible name source. WCAG 1.3.1 + 3.3.2 covered. A pinned `FormLabelLinkage.a11y.test.tsx` guards against future regression on these forms.
 
 **Audit branch:** `docs/a11y-audit`
 **Scope:** Diagnostic only. Page-by-page WCAG 2.1 AA review of the five highest-traffic anon routes (`/`, `/weak-at`, `/onboarding`, `/pricing`, `/placement`) + the Stage-3A/3B components rendered inside `/weak-at`. No source changes in this MR.
@@ -166,7 +168,7 @@ Verified hooks in 8+ files. The `haptics.ts`, `motion.ts`, and `animations.ts` u
 
 ### Forms
 
-- **EmailBlock** (`src/components/auth/EmailBlock.tsx:676, 692`) renders visible `<label>` text and a paired `<input>` with `aria-label`, but the label and input are **not** programmatically linked via `htmlFor` / `id`. Result: clicking the visible label text does not focus the input. SR users get a label via `aria-label`, but the redundant visible label is a non-functional decoration.
+- ~~**EmailBlock** (`src/components/auth/EmailBlock.tsx:676, 692`) renders visible `<label>` text and a paired `<input>` with `aria-label`, but the label and input are **not** programmatically linked via `htmlFor` / `id`. Result: clicking the visible label text does not focus the input. SR users get a label via `aria-label`, but the redundant visible label is a non-functional decoration.~~ **RESOLVED 2026-05-27** in `fix/a11y-form-label-linking`. Fix also covered the same defect in `PhoneOtp.tsx` (phone + SMS-code), `ResetPasswordPage.tsx` (new + confirm password), and legacy `Reset.tsx` (new + confirm password) — 8 input/label pairs total. All use `useId()` for instance-unique ids.
 - **WritingTaskCard** (`src/components/placement/v3/WritingTaskCard.tsx:22`) uses a proper `<label className="sr-only" htmlFor="placement-writing-answer">` — correct pattern, replicate it.
 - **Onboarding** has no inputs (it's a button-only picker).
 - **Error states** — `humanizeAuthError` in LoginPage feeds into a `role="alert"` region (`<div aria-live="polite" aria-atomic="true">` at LoginPage.tsx:449–450), which is the right pattern ✓.
@@ -238,7 +240,7 @@ A future fix wave could land these in roughly this order — each step is indepe
 
 1. **Blocker fix:** create `SkipToContent.tsx`, render it in the app shell, add `id="main-content"` to every page `<main>`. ~30 lines + 5-page edit. Covers WCAG 2.4.1.
 2. **Serious — contrast sweep:** flip `text-slate-400` → `text-slate-500` and `#94a3b8` → `#64748b` across the 11 identified locations. ~15-line diff. Covers WCAG 1.4.3.
-3. **Serious — EmailBlock label linking:** add `htmlFor` + `id` to the existing `<label>` / `<input>` pairs. ~6-line diff. Covers WCAG 1.3.1 + 3.3.2.
+3. **Serious — EmailBlock label linking:** ~~add `htmlFor` + `id` to the existing `<label>` / `<input>` pairs. ~6-line diff. Covers WCAG 1.3.1 + 3.3.2.~~ **SHIPPED 2026-05-27**; the fix also swept three sibling auth components flagged during implementation (`PhoneOtp`, `ResetPasswordPage`, legacy `Reset`).
 4. **Serious — `<main>` landmarks on Home + Pricing:** ~4-line diff.
 5. **Serious — Onboarding focus move on step transition:** add `tabIndex={-1}` to `<h1>` + a useEffect that focuses it on step change. ~10-line diff. Covers WCAG 2.4.3.
 6. **Documentation honesty:** replace `docs/ACCESSIBILITY.md`'s 25/25 with a verified baseline (this audit's findings as starting point).
