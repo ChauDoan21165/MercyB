@@ -36,6 +36,14 @@
 #                             Valid statuses: idle, working, blocked,
 #                             reporting.
 #   mark-idle <agent>         Shorthand for `mark <agent> idle`.
+#   report-done <agent> <mr>  Atomic close-out: marks <agent> idle AND
+#                             appends one JSON line to the dispatch log
+#                             (~/.mercyb/dispatch-log.jsonl) recording
+#                             the agent, the MR number, and a timestamp.
+#                             Call this at the end of a dispatch right
+#                             after `glab mr create`. Backward-compatible
+#                             with `mark-idle` — if you forget, the agent
+#                             still goes idle, just without the log line.
 #   list                      Pretty-print every agent + its state.
 #   idle                      Print just the agents currently idle, one
 #                             per line. Useful for "who can I dispatch?".
@@ -69,6 +77,7 @@ usage() {
 
 STATE_DIR="${MERCYB_STATE_DIR:-$HOME/.mercyb}"
 STATE_FILE="$STATE_DIR/agent-state.json"
+DISPATCH_LOG_FILE="$STATE_DIR/dispatch-log.jsonl"
 
 ensure_state_file() {
   mkdir -p "$STATE_DIR"
@@ -140,6 +149,49 @@ cmd_mark_idle() {
   cmd_mark "$agent" idle
 }
 
+# Append one JSON line to the dispatch log. We do not lock the file —
+# bash `printf >>` to a regular file with a single-line payload is
+# atomic on POSIX up to PIPE_BUF (4096 bytes on Linux/macOS), and our
+# lines are far shorter than that. Concurrent agents writing at the
+# same instant will interleave whole lines, never partial bytes.
+append_dispatch_log() {
+  local agent="$1"
+  local mr="$2"
+  local branch worktree ts line
+  branch="$(current_branch)"
+  worktree="$(current_worktree)"
+  ts="$(iso_ts)"
+  line="$(
+    jq -cn \
+      --arg ts "$ts" \
+      --arg agent "$agent" \
+      --arg mr "$mr" \
+      --arg branch "$branch" \
+      --arg worktree "$worktree" \
+      --arg action "done" \
+      '{ts: $ts, agent: $agent, mr: ($mr | tonumber? // $mr), branch: $branch, worktree: $worktree, action: $action}'
+  )"
+  printf '%s\n' "$line" >> "$DISPATCH_LOG_FILE"
+}
+
+cmd_report_done() {
+  local agent="$1"
+  local mr="$2"
+  # Validate MR is a positive integer. We accept the raw string to keep
+  # error messages clear, then check.
+  if ! [[ "$mr" =~ ^[0-9]+$ ]]; then
+    log_err "report-done <mr> must be a positive integer, got: $mr"
+    exit 1
+  fi
+  ensure_state_file
+  # Atomic ordering: log line FIRST, then state flip. If the log append
+  # fails, the agent stays in its prior status (caller sees the error
+  # and retries). If the state flip fails after a successful log append,
+  # the log is still truthful and `mark-idle` can be re-run by hand.
+  append_dispatch_log "$agent" "$mr"
+  cmd_mark "$agent" idle
+}
+
 cmd_list() {
   ensure_state_file
   # Pretty table: agent | status | branch | ts | worktree.
@@ -188,6 +240,14 @@ case "$1" in
       exit 1
     fi
     cmd_mark_idle "$1"
+    ;;
+  report-done)
+    shift
+    if [[ $# -lt 2 ]]; then
+      log_err "report-done requires <agent> <mr_number>"
+      exit 1
+    fi
+    cmd_report_done "$1" "$2"
     ;;
   list)
     cmd_list
