@@ -31,19 +31,54 @@ stages:
     - command -v rclone
     - command -v bash
 
+# Shared dump-and-upload body. Refer to scripts/db-backup/README.md for
+# the rclone retention/prune commands that consume these date-bucketed
+# folders.
+.backup_script: &backup_script
+  - mkdir -p "$BACKUP_OUTPUT_DIR"
+  - export RCLONE_CONFIG="$RCLONE_CONFIG"
+  # Run the dump script. It prints exactly two OK lines on success:
+  #   OK <schema-file> <bytes>
+  #   OK <full-file>   <bytes>
+  - SUMMARY="$(bash scripts/db-backup/nightly-dump.sh)"
+  - echo "$SUMMARY"
+  # Pull the two file paths out of the OK summary lines.
+  - SCHEMA_PATH="$(printf '%s' "$SUMMARY" | awk '/^OK /{print $2}' | sed -n '1p')"
+  - FULL_PATH="$(printf '%s'   "$SUMMARY" | awk '/^OK /{print $2}' | sed -n '2p')"
+  # Date-bucket the remote path so the rclone-prune commands in the
+  # README can target daily / weekly / monthly subfolders cleanly:
+  #   - daily/    every night
+  #   - weekly/   on Sundays (day-of-week == 7 in ISO terms)
+  #   - monthly/  on the 1st of the month
+  - DOW="$(date -u +%u)"          # 1 (Mon) .. 7 (Sun)
+  - DOM="$(date -u +%d)"          # 01..31
+  - rclone copy --immutable "$SCHEMA_PATH" "$RCLONE_CONFIG_REMOTE/daily/"
+  - rclone copy --immutable "$FULL_PATH"   "$RCLONE_CONFIG_REMOTE/daily/"
+  - 'if [ "$DOW" = "7" ]; then rclone copy --immutable "$SCHEMA_PATH" "$RCLONE_CONFIG_REMOTE/weekly/"; rclone copy --immutable "$FULL_PATH" "$RCLONE_CONFIG_REMOTE/weekly/"; fi'
+  - 'if [ "$DOM" = "01" ]; then rclone copy --immutable "$SCHEMA_PATH" "$RCLONE_CONFIG_REMOTE/monthly/"; rclone copy --immutable "$FULL_PATH" "$RCLONE_CONFIG_REMOTE/monthly/"; fi'
+  - echo "Uploaded schema=$SCHEMA_PATH full=$FULL_PATH to $RCLONE_CONFIG_REMOTE"
+
 # ── Nightly scheduled backup ───────────────────────────────────────────
 #
 # Required CI/CD variables (configure under Settings → CI/CD → Variables,
 # all "protected", "masked" where the value format permits):
 #
-#   SUPABASE_DB_URL     masked     postgres connection string for prod
-#   GPG_RECIPIENT_KEY   file type  armored public key (multi-line file)
-#   RCLONE_CONFIG       file type  contents of ~/.config/rclone/rclone.conf
-#   RCLONE_REMOTE       protected  remote+path, e.g. "b2:mercyb-backups/prod"
+#   DATABASE_URL          masked     postgres connection string for prod
+#                                    (or SUPABASE_DB_URL as fallback)
+#   GPG_PUBLIC_KEY_FILE   file type  armored public key (multi-line file)
+#                                    (or GPG_RECIPIENT_KEY_ID with a key
+#                                    id if the keyring is preloaded — but
+#                                    GitLab runners are fresh per job so
+#                                    GPG_PUBLIC_KEY_FILE is the practical
+#                                    choice in CI)
+#   RCLONE_CONFIG         file type  contents of ~/.config/rclone/rclone.conf
+#   RCLONE_CONFIG_REMOTE  protected  remote+path, e.g. "b2:mercyb-backups/prod"
 #
-# A "file"-type variable is written to disk by GitLab and exposed as a
-# path — that's why we set GPG_RECIPIENT_KEY_ID="$GPG_RECIPIENT_KEY"
-# below: the script auto-detects the file path and imports the key.
+# Both GPG_PUBLIC_KEY_FILE and RCLONE_CONFIG are GitLab "file"-type
+# variables: GitLab writes their contents to a path inside the job
+# workspace and exposes that path through the env var. Our dump script
+# detects that GPG_PUBLIC_KEY_FILE is a file path and imports the key
+# on the fly.
 
 nightly-db-backup:
   <<: *backup_image
@@ -52,32 +87,13 @@ nightly-db-backup:
     # Schedule-only. Never runs on merge requests, pushes, or tags.
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
   variables:
-    # Where to drop the encrypted dump inside the job's workspace.
     BACKUP_OUTPUT_DIR: "$CI_PROJECT_DIR/_backup_out"
     BACKUP_ENV_LABEL: "prod"
-    # Treat the GitLab "file" variable's path as the recipient. The
-    # dump script detects it's a file and imports the public key.
-    GPG_RECIPIENT_KEY_ID: "$GPG_RECIPIENT_KEY"
-  script:
-    - mkdir -p "$BACKUP_OUTPUT_DIR"
-    # Make rclone use the project's RCLONE_CONFIG file variable.
-    - export RCLONE_CONFIG="$RCLONE_CONFIG"
-    # Take the dump. The script prints exactly one line to stdout on
-    # success: `OK <path> <bytes>`. Anything else is failure.
-    - SUMMARY="$(bash scripts/db-backup/nightly-dump.sh)"
-    - echo "$SUMMARY"
-    # Extract the path from the OK summary line for the upload step.
-    - DUMP_PATH="$(printf '%s' "$SUMMARY" | awk '{print $2}')"
-    # Upload — rclone handles B2/S3/R2 uniformly. Use --immutable so the
-    # remote rejects accidental overwrites of an existing dump with the
-    # same name (defense-in-depth against a clock issue producing
-    # colliding filenames).
-    - rclone copy --immutable "$DUMP_PATH" "$RCLONE_REMOTE"
-    - echo "Uploaded $DUMP_PATH to $RCLONE_REMOTE"
+  script: *backup_script
   artifacts:
-    # Keep the encrypted dump as a job artifact for 7 days as a
-    # secondary safety net (object-store upload is primary). It's
-    # encrypted, so artifact visibility doesn't expose data.
+    # Keep the encrypted dumps as job artifacts for 7 days — a secondary
+    # safety net behind the object-store upload. Dumps are encrypted, so
+    # artifact visibility doesn't expose data.
     when: on_success
     expire_in: 7 days
     paths:
@@ -90,7 +106,7 @@ nightly-db-backup:
 # script and the same CI/CD variables as the scheduled job, so a green
 # manual run means the schedule will also work.
 
-nightly-db-backup-now:
+test-db-backup-now:
   <<: *backup_image
   stage: backup
   rules:
@@ -100,15 +116,7 @@ nightly-db-backup-now:
   variables:
     BACKUP_OUTPUT_DIR: "$CI_PROJECT_DIR/_backup_out"
     BACKUP_ENV_LABEL: "prod"
-    GPG_RECIPIENT_KEY_ID: "$GPG_RECIPIENT_KEY"
-  script:
-    - mkdir -p "$BACKUP_OUTPUT_DIR"
-    - export RCLONE_CONFIG="$RCLONE_CONFIG"
-    - SUMMARY="$(bash scripts/db-backup/nightly-dump.sh)"
-    - echo "$SUMMARY"
-    - DUMP_PATH="$(printf '%s' "$SUMMARY" | awk '{print $2}')"
-    - rclone copy --immutable "$DUMP_PATH" "$RCLONE_REMOTE"
-    - echo "Uploaded $DUMP_PATH to $RCLONE_REMOTE (manual run)"
+  script: *backup_script
   artifacts:
     when: on_success
     expire_in: 7 days
