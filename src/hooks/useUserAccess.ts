@@ -218,7 +218,10 @@ function authenticatedFreeAccess(params: {
   // flag-bypass disjunct that lived here was removed in the post-!100/!105
   // hardening pass — `params.isAdmin` was effectively dead (the only
   // caller of authenticatedFreeAccess in src/ does not pass it).
-  const isAdmin = adminLevel >= 9 || isHighAdmin;
+  // Post-!111 stylistic collapse: isHighAdmin already incorporates
+  // `adminLevel >= 9` (line above), so `adminLevel >= 9 || isHighAdmin`
+  // simplifies to just `isHighAdmin`.
+  const isAdmin = isHighAdmin;
   const loading = Boolean(params.loading);
   const isTrialExpired = Boolean(params.isTrialExpired) && !isHighAdmin;
   const unlockMercyFeatures = !isTrialExpired && (FORCE_UNLOCK_MERCY_FEATURES || isHighAdmin);
@@ -342,9 +345,12 @@ export const useUserAccess = (): UserAccess => {
           // ignores the is_admin column and only checks admin_level. The
           // flag-bypass disjunct that lived here was removed in the
           // post-!100/!105 hardening pass — in prod the only is_admin=true
-          // row is Chau's at admin_level=10, which the level check below
-          // already covers.
-          isAdmin = adminLevel >= 9 || isHighAdmin;
+          // row is Chau's at admin_level=10, which isHighAdmin below
+          // already covers via `adminLevel >= 9`.
+          // Post-!111 stylistic collapse: isHighAdmin is literally
+          // `adminLevel >= 9` (assigned line above), so the old
+          // `adminLevel >= 9 || isHighAdmin` simplifies to `isHighAdmin`.
+          isAdmin = isHighAdmin;
         }
       } catch {
         // keep level0/admin defaults — never block access resolution on profile error
