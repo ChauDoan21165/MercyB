@@ -49,25 +49,43 @@ without the exact approval phrase.
 
 ## Current Gate State
 
-A-side has no active Critical blockers recorded in this tracker.
+A-side has no active Critical blockers recorded for MR !112 or MR !85.
 
-## Closed Criticals
+`public.subscriptions` is on MR !104 evidence hold in MR !128: the A-side lane
+reported Phase 2 as merged/applied/postflight passed, but this tracker MR must
+not become source-of-truth for that closure until the actual postflight evidence
+or `pg_policy` result is attached.
+
+## Critical Tracker
 
 ### `public.subscriptions`
 
-Status: CLOSED.
+Status: EVIDENCE HOLD / NOT CLOSED BY THIS TRACKER MR.
 
-Closure state:
+Reported closure state:
 
 - MR !86 merged the additive Phase 1 RLS lane.
-- MR !104 Phase 2 merged, production-applied, and postflight passed.
-- RLS is enabled on `public.subscriptions`.
-- `subscriptions_self_select` is present and effective.
-- `subscriptions_admin_select` is present and effective.
-- Postflight passed after production application.
+- MR !104 Phase 2 was reported as merged, production-applied, and postflight
+  passed.
 
-Do not reopen this Critical unless new production evidence shows
-`public.subscriptions` is again broadly authenticated-readable or RLS-disabled.
+Evidence hold:
+
+- The actual MR !104 production-apply log or postflight query output is not
+  attached to this tracker MR.
+- C-side could not verify through PostgREST because `pg_catalog` is hidden and
+  Chau is locked out of Supabase UI.
+- A-side must attach either the original postflight evidence or a read-only
+  production result for:
+
+```sql
+SELECT polname
+FROM pg_policy
+WHERE polrelid = 'public.subscriptions'::regclass
+ORDER BY polname;
+```
+
+Do not mark this Critical closed in this tracker MR until evidence confirms
+MR !104 Phase 2 production application and postflight.
 
 ### Referral Leaderboard `auth_users_exposed`
 
@@ -164,7 +182,7 @@ each draft when ready to ship.
 
 | Gate | State | Evidence / source | Next action |
 |---|---|---|---|
-| `public.subscriptions` RLS | CLOSED | MR !104 Phase 2 merged/applied/postflight passed. | No action unless new evidence reopens it. |
+| `public.subscriptions` RLS | EVIDENCE HOLD / NOT CLOSED BY THIS TRACKER MR | MR !104 Phase 2 was reported merged/applied/postflight passed, but this MR does not contain the apply log or `pg_policy` postflight output. | Attach the MR !104 postflight evidence or run the read-only `pg_policy` check before recording closure. |
 | Referral leaderboard `auth_users_exposed` | CLOSED | MR !32 plus approved Phase 2 destructive SQL; postflight showed safe projections live and no remaining public dependency on `auth.users`. | No action unless new evidence reopens it. |
 | MR !112 admin-security-health auth fix | MERGED | MR !112 merged. | No tracker blocker. |
 | MR !85 entitlement/user-rank Phase A | CLOSED | Production-applied and postflight passed. | No tracker blocker. |
@@ -186,11 +204,13 @@ each draft when ready to ship.
 
 ## Stale Contradictions Corrected Here
 
-- `public.subscriptions` is CLOSED after MR !104 Phase 2 merged,
-  production-applied, and postflight passed.
+- `public.subscriptions` MR !104 Phase 2 closure is on evidence hold in this
+  tracker MR until the production apply/postflight output or read-only
+  `pg_policy` result is attached.
 - Referral leaderboard `auth_users_exposed` remains CLOSED.
 - MR !112 admin-security-health auth fix is merged.
 - MR !85 entitlement/user-rank Phase A is production-applied and postflight
   passed.
-- A-side has no active Critical blockers recorded in this tracker.
+- A-side has no active Critical blockers recorded for MR !112 or MR !85; the
+  `public.subscriptions` closure line is held pending MR !104 evidence.
 - Future production applies need one owner only; avoid parallel applies.
