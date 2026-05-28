@@ -21,12 +21,15 @@ export function MercySuggestTab({
         <div className="space-y-3">
           <h4 className="flex items-center gap-2 text-sm font-medium">
             <Sparkles className="h-4 w-4 text-primary" />
-            Recommended for you
+            Gợi ý cho em · Recommended for you
           </h4>
 
           {suggestions.length === 0 ? (
             <p className="py-4 text-center text-sm text-muted-foreground">
-              No suggestions yet. Explore some rooms first!
+              Chưa có gợi ý nào. Em vào vài phòng trước nhé.
+              <span className="mt-1 block text-xs">
+                No suggestions yet. Explore some rooms first!
+              </span>
             </p>
           ) : (
             suggestions.map((item, idx) => (
@@ -53,7 +56,7 @@ export function MercySuggestTab({
                   onClick={() => onNavigateSuggestion(item)}
                 >
                   <ChevronRight className="mr-1 h-3 w-3" />
-                  {item.type === 'path' ? 'Go to path' : 'Go to room'}
+                  {item.type === 'path' ? 'Vào lộ trình · Go to path' : 'Vào phòng học · Go to room'}
                 </Button>
               </div>
             ))
