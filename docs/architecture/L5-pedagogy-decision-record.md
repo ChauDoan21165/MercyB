@@ -65,9 +65,11 @@ deep-dive is the design doc. This one is the audit trail.
 
 ## Decisions deferred
 
-Three decisions surfaced by !122 (L6 design doc) §Open questions.
-Each is research-blocked, not decidable tonight. Structured
-shape per dispatch:
+Six decisions: three surfaced by !122 (L6 design doc) §Open
+questions, plus three backfilled from !131 (L4 design doc)
+§Open questions that C7 flagged as L5-blocked. Each is
+research-blocked, not decidable tonight. Structured shape per
+dispatch:
 
 ### Decision: Weakness-count significance threshold
 
@@ -127,6 +129,62 @@ shape per dispatch:
   and what the §15 Bar §"named outcome" can credibly attribute.
   Reversing it post-launch resets the meaning of every prior
   parent-view "this pattern is now consistent" claim.
+
+### Decision: L4 intervention threshold defaults
+
+- **Context:** Backfilled from !131 (L4 doc) Q2 *"trigger
+  threshold defaults"*: at what observed-count has a signal
+  *fired enough to intervene*? Candidate shapes: *3+ L1 hits in
+  7 days*, *5+ in 14 days*, *N hits in last K tutor turns
+  regardless of wall-clock*. May converge with the L6 surfacing
+  threshold above (one number serving both) or diverge (L4 fires
+  earlier on weaker signal, L6 surfaces later on stronger
+  signal). L5 owns the answer; L4 reads it.
+- **Decision:** [PENDING]
+- **Rationale:** [PENDING]
+- **Decided by:** [PENDING]
+- **Decided when:** [PENDING]
+- **Reversibility:** Medium. Threshold lives in a rule table
+  (per !131 §Open Q1). Adjusting it propagates to L4 nudges at
+  next read; learners may experience a step-change in intervention
+  frequency.
+
+### Decision: L4 suggestion lifetime / TTL
+
+- **Context:** Backfilled from !131 (L4 doc) Q3 *"suggestion
+  lifetime"*: how long does an L4-emitted suggestion remain valid
+  before re-evaluation? !131 proposes 7 days as a placeholder
+  default and explicitly defers ratification to L5. Candidate
+  shapes: *fixed TTL across all suggestions*, *per-rule TTL set
+  by rule author*, *signal-driven invalidation (suggestion expires
+  when the underlying L3 signal stops firing for K days)*.
+- **Decision:** [PENDING]
+- **Rationale:** [PENDING]
+- **Decided by:** [PENDING]
+- **Decided when:** [PENDING]
+- **Reversibility:** Medium. Pure-function policy swap; no
+  schema impact. Learner-experience continuity matters — TTL
+  changes alter the felt-rhythm of suggestions.
+
+### Decision: L4 attribution rationale content authorship
+
+- **Context:** Backfilled from !131 (L4 doc) Q5 — the *"L5-authored
+  content"* path of the attribution-surface question. When L4
+  emits a structured reason (rule-id + signal context), who writes
+  the Vietnamese/English user-facing rationale strings the
+  consumer renders to the learner / parent? Three candidate shapes:
+  *(a)* L4 ships hard-coded reason strings per rule (engineering
+  owns), *(b)* L5 maintains a canonical reason library that L4
+  selects by id (pedagogy owns), *(c)* hybrid — L4 ships a fallback
+  string per rule, L5 can override per-rule via the library
+  without an L4 deploy.
+- **Decision:** [PENDING]
+- **Rationale:** [PENDING]
+- **Decided by:** [PENDING]
+- **Decided when:** [PENDING]
+- **Reversibility:** Easy. Reason strings are content; replacing
+  them is a content-only edit. The decision determines *who is
+  authorised* to make those edits, not whether they're editable.
 
 ---
 

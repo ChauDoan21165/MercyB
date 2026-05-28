@@ -306,3 +306,7 @@ rather than repeated under every L0–L7 entry above.
 L7 deliberately has no docs. L4 / L5 / L6 gaps are real and will
 need to be closed as those layers move from "next" / "research-
 required" / "parallel-track candidate" to "in flight."
+
+### Stage 4 / 5 consolidated decision queue
+
+- [`docs/architecture/STAGE-4-5-decision-queue.md`](./architecture/STAGE-4-5-decision-queue.md) — Consolidates the L4/L5/L6 open-question lists into one queue: 18 decidable-now + 3 cross-layer + 11 research-blocked. Read this when deciding what to act on next.
