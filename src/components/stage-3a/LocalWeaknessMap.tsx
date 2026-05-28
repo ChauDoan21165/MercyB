@@ -35,6 +35,8 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { Bilingual } from "@/components/Bilingual";
+
 import {
   aggregateLocalWeaknesses,
   type L1PatternSummary,
@@ -149,12 +151,15 @@ function L1Row({ pattern }: { pattern: L1PatternSummary }) {
         }`}
       >
         <div className="min-w-0 flex-1">
-          <p lang="vi" className="text-sm font-semibold leading-snug text-slate-900">
-            {lang.shortVi}
-          </p>
-          <p lang="en" className="mt-0.5 text-[12px] leading-snug text-slate-500">
-            {lang.shortEn}
-          </p>
+          {/* Pilot migration to <Bilingual> — see docs/copy/bilingual-audit.md
+              "Pilot migrations (Bilingual wrapper)". Other inline lang
+              pairs in this file are scheduled for the follow-up sweep. */}
+          <Bilingual
+            vi={lang.shortVi}
+            en={lang.shortEn}
+            viClassName="text-sm font-semibold leading-snug text-slate-900"
+            enClassName="mt-0.5 text-[12px] leading-snug text-slate-500"
+          />
           <QuietMeta
             count={pattern.count}
             lastSeen={pattern.lastSeen}

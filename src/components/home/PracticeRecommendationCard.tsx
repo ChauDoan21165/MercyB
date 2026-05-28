@@ -22,6 +22,7 @@ import {
   recordRecommendationShown,
   type Recommendation,
 } from "@/lib/mercy/practiceRecommendations";
+import { Bilingual } from "@/components/Bilingual";
 
 export default function PracticeRecommendationCard() {
   const { user } = useAuth();
@@ -79,8 +80,19 @@ export default function PracticeRecommendationCard() {
           <Compass size={20} color="white" aria-hidden />
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={titleViStyle}>{rec.title_vi}</div>
-          <div style={titleEnStyle}>{rec.title_en}</div>
+          {/* Pilot migration to <Bilingual> — see
+              docs/copy/bilingual-audit.md "Pilot migrations
+              (Bilingual wrapper)". Adds lang attrs the inline pair
+              was missing (the WCAG 3.1.2 gap that motivated the
+              extraction). The description-paragraph pair below
+              stays inline pending the follow-up sweep. */}
+          <Bilingual
+            as="div"
+            vi={rec.title_vi}
+            en={rec.title_en}
+            viStyle={titleViStyle}
+            enStyle={titleEnStyle}
+          />
         </div>
         <div style={timeChipStyle} aria-label={`Khoảng ${rec.estimated_minutes} phút`}>
           <Clock size={12} aria-hidden />

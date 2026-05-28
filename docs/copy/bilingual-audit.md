@@ -659,6 +659,51 @@ architecture question) were NOT silently edited in this MR
 per the dispatch constraint. They remain on the deferred-
 deletion / deferred-architecture follow-up list.
 
+## Pilot migrations (Bilingual wrapper)
+
+Post-!96/!110, the inline VI-primary + EN-secondary `lang`-attr
+pattern had three independent implementations (W2 stage-3a/3b,
+O2 onboarding, P4 Pricing). The Rule of Three was satisfied;
+the extraction MR pulled the shared shape into a single
+component.
+
+**Shipped:** `src/components/Bilingual.tsx` — typed wrapper with
+`vi` / `en` content props, `primary` order toggle (default
+`'vi'`), `as` + `viAs` / `enAs` element overrides, parallel
+`viClassName` / `enClassName` + `viStyle` / `enStyle`, and
+`viLang` / `enLang` BCP 47 overrides. Renders a React Fragment
+(no container element — the caller's surrounding markup is
+preserved). Empty-string handling is deliberate-NOT-silent-drop
+so missing halves surface visibly at the data layer.
+
+**Test:** `src/components/__tests__/Bilingual.test.tsx` — 15
+tests across DOM order, lang attributes, element-type
+overrides, styling, edge cases (empty string, ReactNode
+children), and pilot-consumer parity (W2 / P4-BiText / Home
+inline shapes).
+
+**Pilot migrations done (3 sites, 1 per consumer flavour):**
+
+| Surface | Site | Notes |
+|---|---|---|
+| W2 — Tailwind classes, VI-primary | `src/components/stage-3a/LocalWeaknessMap.tsx` row title pair (was lines 152–157) | First L1-row VI/EN pair; the other inline lang pairs in this file (~7 more) stay inline for the follow-up sweep. |
+| P4 — inline style, EN-primary | `src/screens/Pricing.tsx` `BiText` helper (line 125) | The `BiText` public signature `({en, vi})` is preserved — every existing `BiText` call site (9 in this file) continues to work unchanged; only the helper's internals delegate to `<Bilingual>`. The non-`BiText` inline `<span lang="…">` pairs in `renderCard` (~595, ~599, ~606, ~629, ~632, ~634–635) stay inline for the follow-up sweep. |
+| Home — inline style, VI-primary, NOT-currently-lang-tagged | `src/components/home/PracticeRecommendationCard.tsx` title pair (was lines 82–83) | This pair did NOT have `lang` attrs before — the migration BOTH wraps in `<Bilingual>` AND adds the WCAG 3.1.2 fix. The description pair below (lines 91–92) is similarly un-lang-tagged but stays for the follow-up sweep. |
+
+**Remaining inline lang-attr call sites (follow-up sweep
+candidates):**
+
+- `src/components/stage-3a/LocalWeaknessMap.tsx` — 7 more `<p lang="…">` pairs (lines 179, 184, 227, 230, 299, 302, 307, 336, 339, 350, 401, 404 per pre-pilot survey).
+- `src/components/stage-3b/SuggestedPracticeList.tsx` — 6 `<p lang="…">` pairs (lines 126, 131, 168, 171, 174, 247, 250).
+- `src/pages/onboarding/OnboardingPage.tsx` — 4 lang-tagged elements (lines 463, 465, 468, 470). **Special case:** the `<h1 ref={headingRef} tabIndex={-1}>` carries wizard focus-management state; migrating to `<Bilingual>` requires a `primaryRef` prop addition (deliberately deferred — the current wrapper does NOT support refs, per the component header). When O2 migrates, either add the prop or carve a `<BilingualHeading>` variant.
+- `src/screens/Pricing.tsx` — ~10 non-`BiText` inline `<span lang="…">` / `<p lang="…">` pairs in `renderCard`.
+- `src/components/home/PracticeRecommendationCard.tsx` — description pair at lines 91–92 (not lang-tagged today; same pattern as the migrated title pair).
+
+The above are pilot-scope-deferred per the dispatch's anti-
+bundling rule. Each surface migrates in its own MR.
+
+---
+
 **Files still pending Phase-2 audit:** the `feedback/` +
 `account/` component directories (sampling), `Support.tsx`,
 `RoleplayPage.tsx`, `SpeechDrillPage.tsx`, plus the

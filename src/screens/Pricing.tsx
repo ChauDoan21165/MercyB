@@ -28,6 +28,7 @@ import {
 } from "@/lib/pricing/displayPrices";
 import PaywallExperiment from "@/components/pricing/PaywallExperiment";
 import SeoMeta from "@/components/seo/SeoMeta";
+import { Bilingual } from "@/components/Bilingual";
 import { useAuth } from "@/providers/AuthProvider";
 
 type PlanKey = "level0" | "month" | "year";
@@ -127,10 +128,18 @@ function BiText({ en, vi }: { en: string; vi: string }) {
   // consistently); VI is the typographically-smaller peer below. Both
   // languages declare `lang` so a screen-reader voice phoneticises
   // each correctly. WCAG 3.1.2 — finding P4 in docs/a11y/audit.md.
+  //
+  // Pilot migration to <Bilingual> — see docs/copy/bilingual-audit.md
+  // "Pilot migrations (Bilingual wrapper)". The BiText helper keeps
+  // its public {en, vi} signature so every existing call site (the
+  // 9 BiText() invocations across this file) continues to work
+  // unchanged; only the internals delegate to the shared wrapper.
+  // Pricing's other inline lang-attr pairs (the non-BiText
+  // <span lang="…"> pairs in renderCard at ~595, ~599, ~606, etc.)
+  // are scheduled for the follow-up sweep.
   return (
     <span style={{ display: "block" }}>
-      <span lang="en">{en}</span>
-      <span lang="vi" style={viStyle}>{vi}</span>
+      <Bilingual primary="en" as="span" en={en} vi={vi} viStyle={viStyle} />
     </span>
   );
 }
