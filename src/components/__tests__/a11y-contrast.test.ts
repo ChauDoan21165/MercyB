@@ -46,7 +46,7 @@
  *     - src/pages/certificates/CertificatesGalleryPage.tsx
  *     - src/lib/certificates/certificateExport.ts
  *
- *   Wave 5 (this MR — speech-history + admin):
+ *   Wave 5 (!109 — speech-history + admin):
  *     - src/pages/speech/SpeechHistoryPage.tsx
  *     - src/pages/admin/InterviewPromptsModeration.tsx
  *     - src/pages/admin/StoryModeration.tsx
@@ -57,6 +57,9 @@
  *     - src/pages/admin/FrontendPerformance.tsx
  *     - src/pages/admin/SloDetail.tsx
  *     - src/pages/admin/SloDashboard.tsx
+ *
+ *   Wave 6 (this MR — MarketingLanding inline `<style>` block):
+ *     - src/pages/MarketingLandingPage.tsx
  *
  * Each guarded file must stay free of `text-slate-400` (bare class)
  * and `#94a3b8` (hex) literals. Three escape hatches let intentional
@@ -131,7 +134,7 @@ const CONTRAST_FIXED_FILES = [
   "src/components/certificates/Certificate.tsx",
   "src/pages/certificates/CertificatesGalleryPage.tsx",
   "src/lib/certificates/certificateExport.ts",
-  // Wave 5 — this MR (speech-history + admin dashboards)
+  // Wave 5 — !109 (speech-history + admin dashboards)
   "src/pages/speech/SpeechHistoryPage.tsx",
   "src/pages/admin/InterviewPromptsModeration.tsx",
   "src/pages/admin/StoryModeration.tsx",
@@ -142,6 +145,8 @@ const CONTRAST_FIXED_FILES = [
   "src/pages/admin/FrontendPerformance.tsx",
   "src/pages/admin/SloDetail.tsx",
   "src/pages/admin/SloDashboard.tsx",
+  // Wave 6 — this MR (MarketingLanding inline <style> block)
+  "src/pages/MarketingLandingPage.tsx",
 ] as const;
 
 /**
