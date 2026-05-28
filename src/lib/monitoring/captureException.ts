@@ -48,6 +48,7 @@ type SentryShape = {
   ) => void;
   setUser: (user: { id: string } | null) => void;
   setTag: (key: string, value: string) => void;
+  getCurrentScope?: () => { getUser?: () => { id?: string } | null | undefined };
   withScope: (cb: (scope: { setTag: (k: string, v: string) => void }) => void) => void;
   addBreadcrumb: (b: {
     category?: string;
@@ -55,6 +56,19 @@ type SentryShape = {
     level?: "info" | "warning" | "error" | "debug";
     data?: Record<string, unknown>;
   }) => void;
+};
+
+type RlsSessionResult = {
+  data?: {
+    session?: {
+      user?: { id?: string | null } | null;
+    } | null;
+  } | null;
+} | null;
+
+export type RlsDeniedCaptureContext = {
+  authorizationHeader?: string | null;
+  getSession?: () => Promise<RlsSessionResult>;
 };
 
 /** Account tier as exposed to Sentry — never PII, only coarse cohort. */
@@ -136,7 +150,11 @@ export function captureMessage(
  * it preserves a pinned value for rls_denied events. Non-admin tables
  * are left unpinned → normal route/content inference still runs.
  */
-export function captureRlsDenied(table: string, method: string): void {
+export function captureRlsDenied(
+  table: string,
+  method: string,
+  context: RlsDeniedCaptureContext = {},
+): void {
   if (!isSentryEnabled()) {
     // Pull Sentry init so a SUSTAINED RLS regression still reaches the
     // #578/#562 alert for an anonymous user. The first denial's rls_*
@@ -148,14 +166,108 @@ export function captureRlsDenied(table: string, method: string): void {
   const sdk = getSentryModule() as SentryShape | null;
   if (!sdk || typeof sdk.withScope !== "function") return;
   const area = classifyRlsTable(table);
+  void captureRlsDeniedWithContext(sdk, table, method, area, context);
+}
+
+async function captureRlsDeniedWithContext(
+  sdk: SentryShape,
+  table: string,
+  method: string,
+  area: string | null,
+  context: RlsDeniedCaptureContext,
+): Promise<void> {
+  const extra = await buildRlsDeniedContext(sdk, context);
   sdk.withScope((scope) => {
     scope.setTag("rls_denied", "true");
     scope.setTag("rls_table", table || "unknown");
     if (area) scope.setTag("featureArea", area);
     sdk.captureException(
       new Error(`PostgREST 403 (RLS denied): ${table} [${method}]`),
+      { extra },
     );
   });
+}
+
+async function buildRlsDeniedContext(
+  sdk: SentryShape,
+  context: RlsDeniedCaptureContext,
+): Promise<Record<string, unknown>> {
+  const session = await readRlsSession(context.getSession);
+
+  return {
+    route_pathname: getCurrentPathname(),
+    sentry_scope_user_id: getSentryScopeUserId(sdk) ?? null,
+    supabase_session_user_id: session.userId ?? null,
+    supabase_session_lookup_error: session.lookupError,
+    request_has_authorization_bearer: hasBearerAuthorization(context.authorizationHeader),
+    request_token_expiry_status: getBearerExpiryStatus(context.authorizationHeader),
+  };
+}
+
+async function readRlsSession(
+  getSession: RlsDeniedCaptureContext["getSession"],
+): Promise<{ userId: string | null; lookupError: boolean }> {
+  if (!getSession) return { userId: null, lookupError: false };
+
+  try {
+    const result = await getSession();
+    const id = result?.data?.session?.user?.id;
+    return { userId: typeof id === "string" && id ? id : null, lookupError: false };
+  } catch {
+    return { userId: null, lookupError: true };
+  }
+}
+
+function getCurrentPathname(): string | null {
+  if (typeof window === "undefined") return null;
+  return window.location?.pathname ?? null;
+}
+
+function getSentryScopeUserId(sdk: SentryShape): string | null {
+  const user = sdk.getCurrentScope?.()?.getUser?.();
+  return typeof user?.id === "string" && user.id ? user.id : null;
+}
+
+function hasBearerAuthorization(header: string | null | undefined): boolean {
+  return getBearerToken(header) != null;
+}
+
+function getBearerExpiryStatus(
+  header: string | null | undefined,
+): "missing" | "valid" | "expired" | "unknown" {
+  const token = getBearerToken(header);
+  if (!token) return "missing";
+
+  const exp = readJwtExp(token);
+  if (typeof exp !== "number") return "unknown";
+
+  return exp * 1000 <= Date.now() ? "expired" : "valid";
+}
+
+function getBearerToken(header: string | null | undefined): string | null {
+  if (!header) return null;
+  const match = /^Bearer\s+(.+)$/i.exec(header.trim());
+  return match?.[1] ? match[1] : null;
+}
+
+function readJwtExp(token: string): number | null {
+  const payload = token.split(".")[1];
+  if (!payload) return null;
+
+  try {
+    const decoded = JSON.parse(decodeBase64Url(payload)) as { exp?: unknown };
+    return typeof decoded.exp === "number" ? decoded.exp : null;
+  } catch {
+    return null;
+  }
+}
+
+function decodeBase64Url(input: string): string {
+  const normalized = input.replace(/-/g, "+").replace(/_/g, "/");
+  const padded = normalized.padEnd(normalized.length + ((4 - (normalized.length % 4)) % 4), "=");
+
+  if (typeof atob === "function") return atob(padded);
+  return Buffer.from(padded, "base64").toString("utf8");
 }
 
 export function tagWithUser(userId: string | null | undefined): void {

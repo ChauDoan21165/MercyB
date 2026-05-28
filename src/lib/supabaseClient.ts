@@ -241,11 +241,46 @@ function instrumentedFetch(
             : input.url;
       if (url.includes("/rest/v1/")) {
         const table = url.split("/rest/v1/")[1]?.split(/[/?]/)[0] || "unknown";
-        captureRlsDenied(table, init?.method ?? "GET");
+        captureRlsDenied(table, init?.method ?? "GET", {
+          authorizationHeader: getAuthorizationHeader(input, init),
+          getSession: () => supabase.auth.getSession(),
+        });
       }
     }
     return res;
   });
+}
+
+function getAuthorizationHeader(input: RequestInfo | URL, init?: RequestInit): string | null {
+  return readHeader(init?.headers, "authorization") ?? readRequestHeader(input, "authorization");
+}
+
+function readRequestHeader(input: RequestInfo | URL, key: string): string | null {
+  if (typeof Request !== "undefined" && input instanceof Request) {
+    return input.headers.get(key);
+  }
+
+  return null;
+}
+
+function readHeader(headers: HeadersInit | undefined, key: string): string | null {
+  if (!headers) return null;
+
+  if (typeof Headers !== "undefined" && headers instanceof Headers) {
+    return headers.get(key);
+  }
+
+  const lowerKey = key.toLowerCase();
+  if (Array.isArray(headers)) {
+    const found = headers.find(([name]) => name.toLowerCase() === lowerKey);
+    return found?.[1] ?? null;
+  }
+
+  for (const [name, value] of Object.entries(headers)) {
+    if (name.toLowerCase() === lowerKey) return value;
+  }
+
+  return null;
 }
 
 // Only override supabase-js's fetch when a global fetch exists. In an
