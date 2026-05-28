@@ -34,7 +34,7 @@ export function LearningSupportModePicker({ value, onChange, className = "" }: L
             <button key={opt.value} type="button" onClick={() => onChange(opt.value)}
               onMouseEnter={() => show(opt.value)} onMouseLeave={hide}
               className={["relative flex flex-1 items-center justify-center gap-1 px-2.5 text-xs font-semibold transition-all",
-                isActive ? `${c.active} border` : "text-slate-400 hover:text-slate-600 hover:bg-slate-50",
+                isActive ? `${c.active} border` : "text-slate-500 hover:text-slate-600 hover:bg-slate-50",
                 idx === 0 ? "rounded-l-full" : idx === 2 ? "rounded-r-full" : "border-x border-slate-100",
               ].join(" ")} aria-pressed={isActive}>
               <span className="text-[13px]">{opt.icon}</span>

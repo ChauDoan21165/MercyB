@@ -122,7 +122,7 @@ export function MercyGuideTab() {
   return (
     <div className="flex h-full flex-col bg-white">
       <div className="flex items-center justify-between border-b bg-slate-50 p-2">
-        <span className="px-2 text-[10px] font-bold uppercase text-slate-400">
+        <span className="px-2 text-[10px] font-bold uppercase text-slate-500">
           Mercy Player
         </span>
 

@@ -136,7 +136,7 @@ export default function StoriesPage(): React.ReactElement {
         <p className="mt-1 text-sm text-slate-500">
           Real stories from Vietnamese learners.
         </p>
-        <p className="mt-2 text-xs text-slate-400">
+        <p className="mt-2 text-xs text-slate-500">
           Mỗi câu chuyện đều do người học tự gửi và được đội ngũ MercyBlade duyệt.
         </p>
       </header>

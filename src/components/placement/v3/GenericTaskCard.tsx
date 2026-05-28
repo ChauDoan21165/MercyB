@@ -16,14 +16,14 @@ export function GenericTaskCard({ instruction, prompt, children, footer }: Props
       <BilingualLabel
         text={instruction}
         enClassName="text-xs font-black uppercase tracking-[0.08em] text-slate-500"
-        viClassName="text-[12px] font-medium text-slate-400"
+        viClassName="text-[12px] font-medium text-slate-500"
       />
       <BilingualLabel
         text={prompt}
         as="h2"
         className="mt-4"
         enClassName="text-xl font-black leading-snug text-slate-950 sm:text-2xl"
-        viClassName="text-sm font-medium leading-relaxed text-slate-400"
+        viClassName="text-sm font-medium leading-relaxed text-slate-500"
       />
       <div className="mt-5">{children}</div>
       {footer ? <div className="mt-5">{footer}</div> : null}

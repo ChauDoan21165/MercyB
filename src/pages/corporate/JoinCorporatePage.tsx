@@ -79,7 +79,7 @@ export default function JoinCorporatePage() {
           <div>
             <label htmlFor="join-code" className="block text-sm font-semibold mb-1">
               Mã mời
-              <span className="text-slate-400 font-normal ml-2">Invite code</span>
+              <span className="text-slate-500 font-normal ml-2">Invite code</span>
             </label>
             <input
               id="join-code"

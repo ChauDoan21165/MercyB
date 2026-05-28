@@ -1,168 +1,77 @@
 /**
- * A11y contrast — static drift guard against the !64 audit's slate-400
- * sub-AA contrast finding. Started in !68 (P2 + W1, three files); this
- * file extends with each subsequent route-by-route sweep MR.
+ * A11y contrast — whole-tree static drift guard.
  *
- * Currently guarded surfaces:
+ * Closes the slate-400 contrast lane opened by the !64 audit and
+ * walked route-by-route across waves 0-6 (!68 → !72 → !83 → !88 →
+ * !97 → !109 → !116). Wave 7 (this file's current shape) converts
+ * the guard from an explicit-allow-list (`CONTRAST_FIXED_FILES`)
+ * into a near-blanket invariant: every `src/` file is scanned for
+ * bare `text-slate-400` (Tailwind) or `#94a3b8` (hex) literals. The
+ * lane is now closed in the same shape it was opened — any new
+ * regression anywhere in the tree fails CI loudly.
  *
- *   Wave 0 (!68 — P2 + W1):
- *     - src/screens/Pricing.tsx
- *     - src/components/stage-3a/LocalWeaknessMap.tsx
- *     - src/components/stage-3b/SuggestedPracticeList.tsx
+ * Escape hatches (four, all per-line; no per-file allow-list):
  *
- *   Wave 1 (!72 — Home / Account / AI-Tutor):
- *     - src/components/home/FocusAreasCard.tsx
- *     - src/components/home/FocusAreasMicroLessonDialog.tsx
- *     - src/components/ai-tutor/ConversationMode.tsx
- *     - src/components/ai-tutor/CorrectionMode.tsx
- *     - src/components/ai-tutor/TutorMemoryCard.tsx
- *     - src/pages/account/NotificationPreferences.tsx
- *
- *   Wave 2 (!83 — Progress / Billing / Listening):
- *     - src/pages/Progress.tsx
- *     - src/pages/Billing.tsx
- *     - src/pages/BillingSuccessPage.tsx
- *     - (src/pages/BillingSuccess.tsx — deleted as dead duplicate in the
- *        cleanup MR that closed C5's !95/!108 noise-file list)
- *     - src/components/pricing/IapPlanCard.tsx
- *     - src/pages/listening/Library.tsx
- *     - src/pages/listening/ClipPlayer.tsx
- *
- *   Wave 3 (!88 — LessonRenderer + leaderboard):
- *     - src/components/languages/LessonRenderer.tsx
- *     - src/components/leaderboard/WeeklyLeaderboard.tsx
- *     - src/components/leaderboard/LeaderboardCard.tsx
- *     - src/pages/leaderboards/MonthlyReferralLeaderboard.tsx
- *
- *   Wave 4 (!97 — forms + certificates):
- *     - src/components/corporate/CorporateAccountForm.tsx
- *     - src/components/corporate/InviteSeatsForm.tsx
- *     - src/components/family/InviteFamilyMemberForm.tsx
- *     - src/components/family/FamilyPlanCard.tsx
- *     - src/components/gift/PurchaseGiftForm.tsx
- *     - src/components/gift/MyGiftsList.tsx
- *     - src/components/contribute/ContributeSentenceForm.tsx
- *     - src/pages/stories/ShareStory.tsx
- *     - src/components/certificates/Certificate.tsx
- *     - src/pages/certificates/CertificatesGalleryPage.tsx
- *     - src/lib/certificates/certificateExport.ts
- *
- *   Wave 5 (!109 — speech-history + admin):
- *     - src/pages/speech/SpeechHistoryPage.tsx
- *     - src/pages/admin/InterviewPromptsModeration.tsx
- *     - src/pages/admin/StoryModeration.tsx
- *     - src/pages/admin/TeacherFeedbackTriage.tsx
- *     - src/pages/admin/BehavioralAnalytics.tsx
- *     - src/pages/admin/RetentionDashboard.tsx
- *     - src/pages/admin/LatencyMonitoring.tsx
- *     - src/pages/admin/FrontendPerformance.tsx
- *     - src/pages/admin/SloDetail.tsx
- *     - src/pages/admin/SloDashboard.tsx
- *
- *   Wave 6 (this MR — MarketingLanding inline `<style>` block):
- *     - src/pages/MarketingLandingPage.tsx
- *
- * Each guarded file must stay free of `text-slate-400` (bare class)
- * and `#94a3b8` (hex) literals. Three escape hatches let intentional
- * design pass:
- *
- *   - Variant prefixes (`disabled:`, `dark:`, `hover:`, etc.) on the
- *     Tailwind class — see VARIANT_PREFIX_RE.
+ *   - Variant prefixes (`disabled:`, `dark:`, `hover:`, `focus:`,
+ *     `group-hover:`, `group-focus:`, `peer-hover:`, `peer-focus:`,
+ *     `placeholder:`) on the Tailwind class. Each carries its own
+ *     contrast story — see VARIANT_PREFIX_RE comment.
  *   - `aria-hidden` lines — decorative graphics; WCAG 1.4.3 doesn't
  *     apply and 1.4.11 exempts decorative non-text.
- *   - Inline `// a11y-contrast:exception` marker on the SAME line as
- *     the literal — for one-off cases like `Progress.tsx`'s
- *     `scoreColor()` null branch where the color is used in a
- *     large-text or non-text context that already meets 3:1. Every
- *     marker MUST be paired with a rationale comment AND a citation
- *     in `docs/a11y/audit.md`.
+ *   - Inline `// a11y-contrast:exception` marker on the SAME line
+ *     as the literal — for one-off cases (chart borders, `no_data`
+ *     indicators, large-text consumers) that already meet WCAG
+ *     1.4.11 non-text 3:1 or 1.4.3 large-text 3:1. Each marker MUST
+ *     be paired with a rationale comment and an audit-doc citation.
+ *   - Files in SKIP_FILES — genuine special cases like this test
+ *     file itself (the regex literals would self-trip), and
+ *     `Bilingual.test.tsx`'s test fixture that deliberately uses the
+ *     failing color to assert bilingual rendering doesn't depend on
+ *     it.
  *
- * ─── Adding a file to the guard ────────────────────────────────────
+ * Adding a new contrast-failing literal anywhere in `src/` now
+ * fails CI by default. Fix it (text → slate-500 on white, slate-600
+ * on slate-100, etc.) or document the exception (marker + rationale
+ * + audit doc).
  *
- *   1. Land the audit-aware fix (replace bare `text-slate-400` /
- *      `#94a3b8` with the WCAG-AA token chosen per location).
- *   2. Append the file path to `CONTRAST_FIXED_FILES` here.
- *   3. Tick the file off in `docs/a11y/audit.md` §"Color contrast —
- *      at-a-glance".
- *
- * The guard's job is to ensure that once a file is "audited + fixed",
- * it stays fixed against future regressions.
+ * Wave history:
+ *   - !68  P2 + W1 — Pricing + Stage 3A/3B (11 fixes).
+ *   - !72  Wave 1 — Home + Account + AI-Tutor (14 fixes + 5 exceptions).
+ *   - !83  Wave 2 — Progress + Billing + Listening (26 fixes + 1 exception).
+ *   - !88  Wave 3 — LessonRenderer + leaderboard (15 fixes; first slate-600
+ *          escalation for bg-slate-100).
+ *   - !97  Wave 4 — Forms + certificates (27 fixes; first canvas-text fix).
+ *   - !109 Wave 5 — Speech-history + admin (13 fixes + 4 exceptions).
+ *   - !116 Wave 6 — MarketingLanding inline <style> (3 fixes).
+ *   - This MR (wave 7) — whole-tree conversion + long-tail cleanup.
  */
 
-import { readFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { readFileSync, readdirSync, statSync } from "node:fs";
+import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { describe, expect, it } from "vitest";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, "../../../");
-
-const CONTRAST_FIXED_FILES = [
-  // Wave 0 — !68 audit P2 + W1
-  "src/screens/Pricing.tsx",
-  "src/components/stage-3a/LocalWeaknessMap.tsx",
-  "src/components/stage-3b/SuggestedPracticeList.tsx",
-  // Wave 1 — !72 (Home / Account / AI-Tutor)
-  "src/components/home/FocusAreasCard.tsx",
-  "src/components/home/FocusAreasMicroLessonDialog.tsx",
-  "src/components/ai-tutor/ConversationMode.tsx",
-  "src/components/ai-tutor/CorrectionMode.tsx",
-  "src/components/ai-tutor/TutorMemoryCard.tsx",
-  "src/pages/account/NotificationPreferences.tsx",
-  // Wave 2 — !83 (Progress / Billing / Listening)
-  "src/pages/Progress.tsx",
-  "src/pages/Billing.tsx",
-  "src/pages/BillingSuccessPage.tsx",
-  "src/components/pricing/IapPlanCard.tsx",
-  "src/pages/listening/Library.tsx",
-  "src/pages/listening/ClipPlayer.tsx",
-  // Wave 3 — !88 (LessonRenderer + leaderboard)
-  "src/components/languages/LessonRenderer.tsx",
-  "src/components/leaderboard/WeeklyLeaderboard.tsx",
-  "src/components/leaderboard/LeaderboardCard.tsx",
-  "src/pages/leaderboards/MonthlyReferralLeaderboard.tsx",
-  // Wave 4 — !97 (forms + certificates)
-  "src/components/corporate/CorporateAccountForm.tsx",
-  "src/components/corporate/InviteSeatsForm.tsx",
-  "src/components/family/InviteFamilyMemberForm.tsx",
-  "src/components/family/FamilyPlanCard.tsx",
-  "src/components/gift/PurchaseGiftForm.tsx",
-  "src/components/gift/MyGiftsList.tsx",
-  "src/components/contribute/ContributeSentenceForm.tsx",
-  "src/pages/stories/ShareStory.tsx",
-  "src/components/certificates/Certificate.tsx",
-  "src/pages/certificates/CertificatesGalleryPage.tsx",
-  "src/lib/certificates/certificateExport.ts",
-  // Wave 5 — !109 (speech-history + admin dashboards)
-  "src/pages/speech/SpeechHistoryPage.tsx",
-  "src/pages/admin/InterviewPromptsModeration.tsx",
-  "src/pages/admin/StoryModeration.tsx",
-  "src/pages/admin/TeacherFeedbackTriage.tsx",
-  "src/pages/admin/BehavioralAnalytics.tsx",
-  "src/pages/admin/RetentionDashboard.tsx",
-  "src/pages/admin/LatencyMonitoring.tsx",
-  "src/pages/admin/FrontendPerformance.tsx",
-  "src/pages/admin/SloDetail.tsx",
-  "src/pages/admin/SloDashboard.tsx",
-  // Wave 6 — this MR (MarketingLanding inline <style> block)
-  "src/pages/MarketingLandingPage.tsx",
-] as const;
+const SRC_ROOT = resolve(REPO_ROOT, "src");
 
 /**
- * Variant-prefix forms (`disabled:`, `dark:`, `hover:`, `focus:`,
- * `group-hover:`, `peer-hover:`) carry their own contrast story:
+ * Variant-prefix forms carry their own contrast story:
  *
  *   - `disabled:text-slate-400` — WCAG SC 1.4.3 explicitly EXEMPTS
  *     inactive UI components from text-contrast requirements.
- *   - `dark:text-slate-400` — in dark mode this renders light-on-dark
+ *   - `dark:text-slate-400` — in dark mode renders light-on-dark
  *     (slate-400 on slate-900 ≈ 5.7:1), which passes AA.
- *   - `hover:`/`focus:` — transient interactive state.
+ *   - `hover:` / `focus:` — transient interactive state.
+ *   - `placeholder:` — placeholder text in form inputs; WCAG
+ *     guidance treats placeholders as decorative hint text whose
+ *     contrast is less strictly governed than primary body text.
  *
  * A line matching any of these prefixes is NOT a contrast violation.
  */
 const VARIANT_PREFIX_RE =
-  /\b(disabled|dark|hover|focus|group-hover|group-focus|peer-hover|peer-focus):text-slate-400\b/;
+  /\b(disabled|dark|hover|focus|group-hover|group-focus|peer-hover|peer-focus|placeholder):text-slate-400\b/;
 
 /**
  * `aria-hidden` elements are decorative — typically icons or layout
@@ -178,30 +87,32 @@ const ARIA_HIDDEN_RE = /aria-hidden/;
 /**
  * Inline-marker escape hatch. A line containing the literal token
  * `a11y-contrast:exception` is exempt from both grep guards. The
- * marker is intentionally awkward so it never appears by accident —
- * every use SHOULD be paired with:
- *   - a multi-line rationale comment immediately above the line,
- *     explaining which WCAG threshold the color actually meets, and
- *   - a citation in `docs/a11y/audit.md` so reviewers can confirm
- *     the exception was audited.
+ * marker is intentionally awkward so it never appears by accident.
+ * Every use MUST be paired with:
+ *   - a rationale comment (typically on the line above) citing the
+ *     WCAG threshold the literal actually meets, and
+ *   - an entry in `docs/a11y/audit.md` so reviewers can confirm the
+ *     exception was audited.
  */
 const EXCEPTION_MARKER_RE = /a11y-contrast:exception/;
 
 /**
- * Per-file line exceptions for intentional design decisions that
- * survived the audit-aware fix. Each entry must point to a real
- * line in the file AND have a documented rationale in the audit
- * doc. Use sparingly — every entry is debt against future drift
- * detection.
+ * Files excluded from the whole-tree scan. Two categories:
  *
- * (None as of this MR — all Wave-1 exceptions live in files outside
- * CONTRAST_FIXED_FILES today: Home.tsx aria-hidden chevron at
- * src/pages/Home.tsx:1125, AccountPage.tsx ▾ chevrons at
- * src/pages/AccountPage.tsx:767/785/801/814, WeeklyProgressWidget
- * null-state large-text score color at line 53. Documented in
- * `docs/a11y/audit.md` §"Color contrast — at-a-glance".)
+ *   1. This test file itself. It contains the regex literals it
+ *      grep-scans for — a self-reference that would always trip.
+ *   2. `Bilingual.test.tsx` — its test fixture sets `color: "#94a3b8"`
+ *      deliberately to verify that bilingual rendering does NOT
+ *      depend on the failing color. Marking the line in-source would
+ *      obscure the test's intent.
+ *
+ * Use sparingly. Every entry is debt against the near-blanket
+ * invariant the guard exists to enforce.
  */
-const LINE_EXCEPTIONS: ReadonlyMap<string, ReadonlySet<number>> = new Map();
+const SKIP_FILES: ReadonlySet<string> = new Set([
+  "src/components/__tests__/a11y-contrast.test.ts",
+  "src/components/__tests__/Bilingual.test.tsx",
+]);
 
 function shouldSkipLine(line: string): boolean {
   if (VARIANT_PREFIX_RE.test(line)) return true;
@@ -210,42 +121,66 @@ function shouldSkipLine(line: string): boolean {
   return false;
 }
 
+/** Recursively collect `.ts` / `.tsx` source files under `src/`,
+ * skipping test dirs / files and the obvious non-source folders. */
+function collectSourceFiles(dir: string, out: string[] = []): string[] {
+  for (const entry of readdirSync(dir)) {
+    if (entry === "node_modules") continue;
+    const full = join(dir, entry);
+    const stat = statSync(full);
+    if (stat.isDirectory()) {
+      collectSourceFiles(full, out);
+      continue;
+    }
+    if (!stat.isFile()) continue;
+    if (!/\.(ts|tsx)$/.test(entry)) continue;
+    out.push(full);
+  }
+  return out;
+}
+
 function offendersInFile(
   rel: string,
   pattern: RegExp,
 ): { file: string; line: number; text: string }[] {
   const content = readFileSync(resolve(REPO_ROOT, rel), "utf8");
-  const exempt = LINE_EXCEPTIONS.get(rel) ?? new Set<number>();
   const offenders: { file: string; line: number; text: string }[] = [];
   content.split("\n").forEach((line, i) => {
     if (!pattern.test(line)) return;
     if (shouldSkipLine(line)) return;
-    if (exempt.has(i + 1)) return;
     offenders.push({ file: rel, line: i + 1, text: line.trim() });
   });
   return offenders;
 }
 
-describe("a11y contrast — !64 audit fixes stay fixed across each route wave", () => {
-  it("no audit-fixed file contains a bare `text-slate-400` class", () => {
-    const offenders = CONTRAST_FIXED_FILES.flatMap((f) =>
-      offendersInFile(f, /\btext-slate-400\b/),
-    );
+function scanWholeTree(pattern: RegExp): { file: string; line: number; text: string }[] {
+  const files = collectSourceFiles(SRC_ROOT).map((p) =>
+    relative(REPO_ROOT, p),
+  );
+  const offenders: { file: string; line: number; text: string }[] = [];
+  for (const rel of files) {
+    if (SKIP_FILES.has(rel)) continue;
+    offenders.push(...offendersInFile(rel, pattern));
+  }
+  return offenders;
+}
+
+describe("a11y contrast — !64 audit fixes stay fixed across the whole `src/` tree", () => {
+  it("no `src/` file contains a bare `text-slate-400` class (variant prefixes + aria-hidden + exception markers excluded)", () => {
+    const offenders = scanWholeTree(/\btext-slate-400\b/);
     expect(
       offenders,
-      `Failing slate-400 class re-introduced in an audit-fixed file. Use text-slate-500 (4.78:1 on white) or text-slate-600 (7.04:1) instead:\n${offenders
+      `Failing slate-400 class found in src/. Use text-slate-500 (4.78:1 on white) or text-slate-600 (7.04:1 on white / 6.12:1 on slate-100) — or mark with \`// a11y-contrast:exception\` + rationale + audit doc citation:\n${offenders
         .map((o) => `  ${o.file}:${o.line}  ${o.text}`)
         .join("\n")}`,
     ).toEqual([]);
   });
 
-  it("no audit-fixed file contains the failing hex literal `#94a3b8`", () => {
-    const offenders = CONTRAST_FIXED_FILES.flatMap((f) =>
-      offendersInFile(f, /#94a3b8\b/i),
-    );
+  it("no `src/` file contains the failing hex literal `#94a3b8` (same escape hatches)", () => {
+    const offenders = scanWholeTree(/#94a3b8\b/i);
     expect(
       offenders,
-      `Failing slate-400 hex (#94a3b8) re-introduced in an audit-fixed file. Use #64748b (slate-500, 4.78:1 on white) or #475569 (slate-600, 7.04:1) instead:\n${offenders
+      `Failing slate-400 hex (#94a3b8) found in src/. Use #64748b (slate-500) or #475569 (slate-600) — or mark with \`// a11y-contrast:exception\` + rationale + audit doc citation:\n${offenders
         .map((o) => `  ${o.file}:${o.line}  ${o.text}`)
         .join("\n")}`,
     ).toEqual([]);

@@ -179,7 +179,7 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
                     <span className="font-medium text-slate-900">
                       {entry.word}
                     </span>
-                    <span className="text-slate-400">—</span>
+                    <span className="text-slate-500">—</span>
                     <span className="text-slate-600">{gloss}</span>
                   </div>
                 );
@@ -241,7 +241,7 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
                     duplication of the <h3> above (which already picks
                     uiLang). Mirrors GermanLessonsPage; honors #523
                     single-language rule. */}
-                <span className="text-[10px] text-slate-400">
+                <span className="text-[10px] text-slate-500">
                   {catLessons.length}{" "}
                   {uiLang === "en"
                     ? catLessons.length === 1
@@ -299,9 +299,9 @@ function LessonTile({
           <p className="text-xs font-medium text-slate-900">{title}</p>
         </div>
         {open ? (
-          <ChevronUp className="h-3 w-3 shrink-0 text-slate-400" />
+          <ChevronUp className="h-3 w-3 shrink-0 text-slate-500" />
         ) : (
-          <ChevronDown className="h-3 w-3 shrink-0 text-slate-400" />
+          <ChevronDown className="h-3 w-3 shrink-0 text-slate-500" />
         )}
       </button>
 

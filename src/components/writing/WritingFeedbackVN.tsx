@@ -127,7 +127,7 @@ export function WritingFeedbackVN({ feedback }: Props) {
                   <p className="mt-2 rounded bg-slate-100 px-2 py-1 font-mono text-[11px] text-slate-700">
                     “{excerpt}”
                     {lineHits.length > 0 ? (
-                      <span className="ml-2 text-slate-400">
+                      <span className="ml-2 text-slate-500">
                         (line {lineHits.slice(0, 3).join(", ")}
                         {lineHits.length > 3 ? `, +${lineHits.length - 3}` : ""})
                       </span>
@@ -205,7 +205,7 @@ export function WritingFeedbackVN({ feedback }: Props) {
           <ol className="space-y-2 text-xs leading-relaxed text-slate-700">
             {topRevisions.map((rev, idx) => (
               <li key={idx} className="flex gap-2">
-                <ChevronRight size={14} className="mt-0.5 shrink-0 text-slate-400" />
+                <ChevronRight size={14} className="mt-0.5 shrink-0 text-slate-500" />
                 <span>{rev.vi}</span>
               </li>
             ))}

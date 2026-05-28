@@ -223,7 +223,7 @@ function Stat({ icon, labelEn, labelVi, value }: StatProps): React.ReactElement 
       <span className="text-[10px] font-medium uppercase tracking-wide text-slate-500">
         {labelVi}
       </span>
-      <span className="text-[10px] text-slate-400">{labelEn}</span>
+      <span className="text-[10px] text-slate-500">{labelEn}</span>
     </div>
   );
 }

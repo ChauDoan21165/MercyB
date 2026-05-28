@@ -174,7 +174,7 @@ export default function SeoTopicPage(props: SeoTopicPageProps): React.ReactEleme
           <p style={{ fontSize: 15, color: "#475569", marginTop: 14, lineHeight: 1.55 }}>
             {props.descriptionVi}
           </p>
-          <p style={{ fontSize: 13, color: "#94a3b8", marginTop: 8, lineHeight: 1.5 }}>
+          <p style={{ fontSize: 13, color: "#64748b", marginTop: 8, lineHeight: 1.5 }}>
             {props.descriptionEn}
           </p>
 

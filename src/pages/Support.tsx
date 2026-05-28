@@ -196,7 +196,7 @@ function FaqRow({ item, defaultOpen }: { item: FaqItem; defaultOpen?: boolean })
   const subStyle: React.CSSProperties = {
     fontSize: 13,
     fontWeight: 500,
-    color: "#94a3b8",
+    color: "#64748b",
   };
 
   const bodyStyle: React.CSSProperties = {
@@ -292,7 +292,7 @@ export default function Support() {
       }}
     >
       <h1 style={{ marginBottom: 4 }}>Support</h1>
-      <p style={{ marginTop: 0, color: "#94a3b8", fontSize: 14 }}>Hỗ trợ</p>
+      <p style={{ marginTop: 0, color: "#64748b", fontSize: 14 }}>Hỗ trợ</p>
 
       <section
         aria-label="Chat with us / Nhắn tin với Mercy"
@@ -301,12 +301,12 @@ export default function Support() {
         <h2 style={{ marginBottom: 4, fontSize: 22, fontWeight: 800 }}>
           Nhắn tin với Mercy
         </h2>
-        <p style={{ marginTop: 0, color: "#94a3b8", fontSize: 14 }}>
+        <p style={{ marginTop: 0, color: "#64748b", fontSize: 14 }}>
           Chat with us
         </p>
         <p style={{ marginTop: 6, marginBottom: 12, color: "#475569", fontSize: 14 }}>
           Người Việt thường được phản hồi nhanh nhất qua Zalo và Messenger. Email cũng được. ·
-          <span style={{ color: "#94a3b8" }}> Vietnamese learners reach us fastest via Zalo or Messenger. Email works too.</span>
+          <span style={{ color: "#64748b" }}> Vietnamese learners reach us fastest via Zalo or Messenger. Email works too.</span>
         </p>
 
         <div
@@ -368,7 +368,7 @@ export default function Support() {
             display: "block",
             fontSize: 14,
             fontWeight: 500,
-            color: "#94a3b8",
+            color: "#64748b",
             marginTop: 2,
           }}
         >
@@ -389,7 +389,7 @@ export default function Support() {
             display: "block",
             fontSize: 14,
             fontWeight: 500,
-            color: "#94a3b8",
+            color: "#64748b",
             marginTop: 2,
           }}
         >

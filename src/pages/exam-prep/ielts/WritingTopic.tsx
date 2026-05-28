@@ -67,7 +67,7 @@ export default function WritingTopic() {
             {topic.key_vocabulary.map((v: IeltsVocabularyItem, i: number) => (
               <li key={i} className="text-sm">
                 <span className="font-semibold text-slate-900">{v.word}</span>
-                <span className="text-xs text-slate-400 ml-1">{v.pronunciation_ipa}</span>
+                <span className="text-xs text-slate-500 ml-1">{v.pronunciation_ipa}</span>
                 <span className="ml-1 rounded bg-slate-100 px-1 py-0.5 text-[10px] uppercase text-slate-500">{v.level}</span>
                 <span className="block text-xs text-slate-600">{v.translation_vi}</span>
               </li>
@@ -76,7 +76,7 @@ export default function WritingTopic() {
         </div>
       )}
       <div className="mt-4">
-        <p className="text-xs text-slate-400">
+        <p className="text-xs text-slate-500">
           {topic.description_en}
         </p>
       </div>

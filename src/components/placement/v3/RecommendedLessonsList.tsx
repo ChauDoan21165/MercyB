@@ -13,7 +13,7 @@ export function RecommendedLessonsList({ recommendations, onStartLesson }: Props
       <BilingualLabel
         text={{ en: "Start here", vi: "Bắt đầu từ đây" }}
         enClassName="text-lg font-black text-slate-950"
-        viClassName="text-sm font-medium text-slate-400"
+        viClassName="text-sm font-medium text-slate-500"
       />
       <div className="mt-4 grid gap-3">
         {recommendations.slice(0, 12).map((lesson, index) => (
@@ -37,13 +37,13 @@ export function RecommendedLessonsList({ recommendations, onStartLesson }: Props
               text={lesson.description}
               className="mt-2"
               enClassName="text-sm font-semibold leading-6 text-slate-700"
-              viClassName="text-xs font-medium leading-5 text-slate-400"
+              viClassName="text-xs font-medium leading-5 text-slate-500"
             />
             <BilingualLabel
               text={lesson.reason}
               className="mt-3 rounded-[12px] bg-white/70 p-3"
               enClassName="text-xs font-bold leading-5 text-slate-600"
-              viClassName="text-xs font-medium leading-5 text-slate-400"
+              viClassName="text-xs font-medium leading-5 text-slate-500"
             />
             {index === 0 ? (
               <Button

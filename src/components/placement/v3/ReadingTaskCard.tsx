@@ -22,7 +22,7 @@ export function ReadingTaskCard({ task, value, onChange }: Props) {
             <BilingualLabel
               text={{ en: "Read the passage", vi: "Đọc đoạn văn sau" }}
               enClassName="text-sm font-black text-slate-800"
-              viClassName="text-xs font-medium text-slate-400"
+              viClassName="text-xs font-medium text-slate-500"
             />
             <Button
               type="button"
@@ -37,7 +37,7 @@ export function ReadingTaskCard({ task, value, onChange }: Props) {
           </div>
           <p className="mt-4 text-[15px] leading-7 text-slate-800">{task.passage.en}</p>
           {showVi ? (
-            <p className="mt-3 text-sm leading-6 text-slate-400">{task.passage.vi}</p>
+            <p className="mt-3 text-sm leading-6 text-slate-500">{task.passage.vi}</p>
           ) : null}
         </section>
       ) : null}
@@ -66,7 +66,7 @@ export function ReadingTaskCard({ task, value, onChange }: Props) {
                   <BilingualLabel
                     text={option.label}
                     enClassName="text-base font-bold text-slate-800"
-                    viClassName="text-xs font-medium text-slate-400"
+                    viClassName="text-xs font-medium text-slate-500"
                   />
                 </button>
               );

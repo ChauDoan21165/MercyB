@@ -254,7 +254,7 @@ function FeaturedB2Lesson({ uiLanguage }: { uiLanguage: LessonUiLang }) {
   if (loading) {
     return (
       <div className="rounded-lg bg-slate-100 animate-pulse h-20 flex items-center justify-center">
-        <span className="text-sm text-slate-400">
+        <span className="text-sm text-slate-500">
           Loading lesson from Supabase…
         </span>
       </div>

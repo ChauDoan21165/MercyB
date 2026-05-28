@@ -1237,7 +1237,7 @@ export function MercyGuide({
             </span>
           )}
           {showBubbleLabel && teacherUi.bubbleSubtitle && (
-            <span className="mt-0.5 text-xs font-medium text-slate-400">
+            <span className="mt-0.5 text-xs font-medium text-slate-500">
               {teacherUi.bubbleSubtitle}
             </span>
           )}

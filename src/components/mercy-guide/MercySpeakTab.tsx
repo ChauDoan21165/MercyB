@@ -1676,7 +1676,7 @@ export function MercySpeakTab({
               <button
                 type="button"
                 onClick={() => setExpandedWordIdx(null)}
-                className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 hover:text-slate-700"
+                className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 hover:text-slate-700"
                 aria-label="Close phoneme breakdown"
               >
                 Đóng · Close
@@ -1937,10 +1937,10 @@ export function MercySpeakTab({
                 <div className="flex gap-0.5">
                   <button type="button"
                     onClick={() => { setVoiceGender('mercy'); try { localStorage.setItem('mb.voice.gender','mercy'); } catch {} }}
-                    className={`flex-1 rounded-full text-[9px] font-bold py-0.5 transition ${voiceGender === 'mercy' ? 'bg-[#5DAFB6] text-white' : 'bg-slate-100 text-slate-400'}`}>♀</button>
+                    className={`flex-1 rounded-full text-[9px] font-bold py-0.5 transition ${voiceGender === 'mercy' ? 'bg-[#5DAFB6] text-white' : 'bg-slate-100 text-slate-500'}`}>♀</button>
                   <button type="button"
                     onClick={() => { setVoiceGender('josh'); try { localStorage.setItem('mb.voice.gender','josh'); } catch {} }}
-                    className={`flex-1 rounded-full text-[9px] font-bold py-0.5 transition ${voiceGender === 'josh' ? 'bg-[#3B6FD4] text-white' : 'bg-slate-100 text-slate-400'}`}>♂</button>
+                    className={`flex-1 rounded-full text-[9px] font-bold py-0.5 transition ${voiceGender === 'josh' ? 'bg-[#3B6FD4] text-white' : 'bg-slate-100 text-slate-500'}`}>♂</button>
                 </div>
               </div>
               {!isListening ? (

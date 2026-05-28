@@ -238,7 +238,7 @@ export default function WritingPracticeSessionPage() {
             onChange={(e) => setText(e.target.value)}
             disabled={submitting || !!feedback}
             placeholder="Viết bài của bạn tại đây... · Write your draft here..."
-            className="min-h-[220px] w-full resize-y rounded-2xl border border-[#E5CDB9] bg-white p-4 text-base leading-7 text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-[#EFA98B] focus:ring-2 focus:ring-[#FFD3BF] disabled:bg-slate-50 disabled:text-slate-700 md:min-h-[280px]"
+            className="min-h-[220px] w-full resize-y rounded-2xl border border-[#E5CDB9] bg-white p-4 text-base leading-7 text-slate-900 shadow-sm outline-none transition placeholder:text-slate-500 focus:border-[#EFA98B] focus:ring-2 focus:ring-[#FFD3BF] disabled:bg-slate-50 disabled:text-slate-700 md:min-h-[280px]"
             aria-label="Writing submission"
           />
           <div className="mt-1.5 flex flex-wrap items-center justify-between gap-2 text-[11px]">
@@ -254,7 +254,7 @@ export default function WritingPracticeSessionPage() {
               {wordCount} / {prompt.target_words_min}–
               {prompt.target_words_max} từ
             </span>
-            <span className="italic text-slate-400">
+            <span className="italic text-slate-500">
               Tự động lưu nháp · Drafts auto-saved
             </span>
           </div>
@@ -384,7 +384,7 @@ function FeedbackPanel({
                   <span className="font-semibold text-rose-700 line-through decoration-rose-400">
                     {c.original}
                   </span>{" "}
-                  <span className="text-slate-400">→</span>{" "}
+                  <span className="text-slate-500">→</span>{" "}
                   <span className="font-semibold text-emerald-700">
                     {c.suggested}
                   </span>
@@ -421,7 +421,7 @@ function FeedbackPanel({
                   <span className="font-semibold text-slate-700">
                     {v.user_word}
                   </span>{" "}
-                  <span className="text-slate-400">→</span>{" "}
+                  <span className="text-slate-500">→</span>{" "}
                   <span className="font-semibold text-sky-800">
                     {v.better}
                   </span>

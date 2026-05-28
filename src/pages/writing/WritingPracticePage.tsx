@@ -198,7 +198,7 @@ export default function WritingPracticePage() {
                 })}
               </div>
               {loadingCompleted ? (
-                <p className="mt-1 text-[10px] italic text-slate-400">
+                <p className="mt-1 text-[10px] italic text-slate-500">
                   Đang tải lịch sử làm bài...
                 </p>
               ) : null}

@@ -50,7 +50,13 @@ const cardStyle: React.CSSProperties = {
 // number is still visible, the alarm color is gone. Green stays for
 // genuine wins (≥80); amber kept for the 60-79 progressing band.
 function scoreColor(n: number | null): string {
-  if (n === null) return "#94a3b8";
+  // Null branch keeps the slate-400 hex as a documented exception:
+  // the score number renders at fontSize 26 + fontWeight 950 (WCAG
+  // large-text threshold 3:1; slate-400 on white = 3.13:1 PASSES).
+  // Kept lighter than the sub-60 branch (slate-500) so "no data
+  // yet" reads as quieter than a real low score. Full rationale in
+  // docs/a11y/audit.md §"Color contrast — wave 7 cleanup".
+  if (n === null) return "#94a3b8"; // a11y-contrast:exception (large text, see comment above)
   if (n >= 80) return "#059669";
   if (n >= 60) return "#d97706";
   return "#64748b";
