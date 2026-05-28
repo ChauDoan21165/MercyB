@@ -49,43 +49,32 @@ without the exact approval phrase.
 
 ## Current Gate State
 
-A-side has no active Critical blockers recorded for MR !112 or MR !85.
-
-`public.subscriptions` is on MR !104 evidence hold in MR !128: the A-side lane
-reported Phase 2 as merged/applied/postflight passed, but this tracker MR must
-not become source-of-truth for that closure until the actual postflight evidence
-or `pg_policy` result is attached.
+A-side has no active Critical blockers recorded in this tracker.
 
 ## Critical Tracker
 
 ### `public.subscriptions`
 
-Status: EVIDENCE HOLD / NOT CLOSED BY THIS TRACKER MR.
+Status: CLOSED.
 
-Reported closure state:
+Closure state:
 
 - MR !86 merged the additive Phase 1 RLS lane.
-- MR !104 Phase 2 was reported as merged, production-applied, and postflight
-  passed.
+- MR !104 Phase 2 merged, production-applied, and final postflight passed.
+- Legacy policy absent:
+  - `subscriptions_admin_read`
+- Remaining policies:
+  - `subscriptions_self_select`
+  - `subscriptions_admin_select`
+- Final evidence:
+  - RLS enabled.
+  - Authenticated self-read works.
+  - Authenticated cross-user read blocked.
+  - Broad authenticated `raw_payload` visibility blocked.
+  - `service_role` read works.
 
-Evidence hold:
-
-- The actual MR !104 production-apply log or postflight query output is not
-  attached to this tracker MR.
-- C-side could not verify through PostgREST because `pg_catalog` is hidden and
-  Chau is locked out of Supabase UI.
-- A-side must attach either the original postflight evidence or a read-only
-  production result for:
-
-```sql
-SELECT polname
-FROM pg_policy
-WHERE polrelid = 'public.subscriptions'::regclass
-ORDER BY polname;
-```
-
-Do not mark this Critical closed in this tracker MR until evidence confirms
-MR !104 Phase 2 production application and postflight.
+Do not reopen this Critical unless new production evidence shows
+`public.subscriptions` is again broadly authenticated-readable or RLS-disabled.
 
 ### Referral Leaderboard `auth_users_exposed`
 
@@ -118,6 +107,10 @@ leaderboard again exposes `auth.users`.
 Status: MERGED.
 
 MR !112 admin-security-health auth fix is merged.
+
+Authenticated visual `/admin` Security Health check still needs Chau/admin
+browser session. The anon-bearer 401 bug is fixed in deployed bundle
+`b53bac466`.
 
 ### MR !85 Entitlement/User-rank Phase A
 
@@ -182,9 +175,9 @@ each draft when ready to ship.
 
 | Gate | State | Evidence / source | Next action |
 |---|---|---|---|
-| `public.subscriptions` RLS | EVIDENCE HOLD / NOT CLOSED BY THIS TRACKER MR | MR !104 Phase 2 was reported merged/applied/postflight passed, but this MR does not contain the apply log or `pg_policy` postflight output. | Attach the MR !104 postflight evidence or run the read-only `pg_policy` check before recording closure. |
+| `public.subscriptions` RLS | CLOSED | MR !104 Phase 2 merged, production-applied, and final postflight passed; `subscriptions_admin_read` absent; `subscriptions_self_select` and `subscriptions_admin_select` remain; RLS enabled; authenticated self-read works; cross-user read and broad authenticated `raw_payload` visibility blocked; `service_role` read works. | No action unless new evidence reopens it. |
 | Referral leaderboard `auth_users_exposed` | CLOSED | MR !32 plus approved Phase 2 destructive SQL; postflight showed safe projections live and no remaining public dependency on `auth.users`. | No action unless new evidence reopens it. |
-| MR !112 admin-security-health auth fix | MERGED | MR !112 merged. | No tracker blocker. |
+| MR !112 admin-security-health auth fix | MERGED | MR !112 merged; deployed bundle `b53bac466` fixes the anon-bearer 401 bug. | Authenticated visual `/admin` Security Health check still needs Chau/admin browser session. |
 | MR !85 entitlement/user-rank Phase A | CLOSED | Production-applied and postflight passed. | No tracker blocker. |
 | Profiles POST RLS acceptance/observation | open observation | Local tests include profile RLS contract coverage; production acceptance not recorded in this tracker. | Chau or assigned DB owner records acceptance, rejection, or required MR. |
 | Android Studio release checks | still part of release gate | A4 verification found missing local Gradle project files, no device attached, AAB version mismatch, and packaged Capacitor `appId` mismatch. | Chau reruns Android Studio checklist or explicitly removes Android from this release gate. |
@@ -204,13 +197,11 @@ each draft when ready to ship.
 
 ## Stale Contradictions Corrected Here
 
-- `public.subscriptions` MR !104 Phase 2 closure is on evidence hold in this
-  tracker MR until the production apply/postflight output or read-only
-  `pg_policy` result is attached.
+- `public.subscriptions` is CLOSED after MR !104 Phase 2 merged,
+  production-applied, and final postflight passed.
 - Referral leaderboard `auth_users_exposed` remains CLOSED.
 - MR !112 admin-security-health auth fix is merged.
 - MR !85 entitlement/user-rank Phase A is production-applied and postflight
   passed.
-- A-side has no active Critical blockers recorded for MR !112 or MR !85; the
-  `public.subscriptions` closure line is held pending MR !104 evidence.
+- A-side has no active Critical blockers recorded in this tracker.
 - Future production applies need one owner only; avoid parallel applies.
