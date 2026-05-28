@@ -108,6 +108,21 @@ beforeEach(() => {
   mockUseAuth.mockReturnValue({ user: { id: "user-uuid-1" } });
   vi.spyOn(console, "log").mockImplementation(() => {});
   vi.spyOn(console, "warn").mockImplementation(() => {});
+
+  // Clear the persistent SR-only live region (`<div id="live-region-
+  // polite">`) left over from any prior test's `announce()` call.
+  // `announce()` (src/lib/a11y/announcements.ts) lazily appends the
+  // div to `document.body` and uses a 1000ms `setTimeout` to clear
+  // its text — so within fast test runs the previous announcement
+  // is still in the DOM when the next test's `screen.queryByText`
+  // runs. Without this cleanup the `?direction=vn` tests flake
+  // because the VI target-step heading text leaks from a prior
+  // step-transition announcement. Fix is local to this file; the
+  // helper itself stays unchanged.
+  for (const id of ["live-region-polite", "live-region-assertive"]) {
+    const region = document.getElementById(id);
+    if (region) region.remove();
+  }
 });
 
 function storedPair(): { native: string; targets: string[] } | null {
