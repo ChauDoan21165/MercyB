@@ -123,10 +123,14 @@ const viStyle: React.CSSProperties = {
 };
 
 function BiText({ en, vi }: { en: string; vi: string }) {
+  // EN-primary in DOM order (the buttons it sits in use this shape
+  // consistently); VI is the typographically-smaller peer below. Both
+  // languages declare `lang` so a screen-reader voice phoneticises
+  // each correctly. WCAG 3.1.2 — finding P4 in docs/a11y/audit.md.
   return (
     <span style={{ display: "block" }}>
-      {en}
-      <span style={viStyle}>{vi}</span>
+      <span lang="en">{en}</span>
+      <span lang="vi" style={viStyle}>{vi}</span>
     </span>
   );
 }
@@ -583,25 +587,25 @@ export default function Pricing() {
         <div key={plan.key} style={commonCardStyle}>
           <div style={badgeStyle}>{plan.eyebrow}</div>
           <h3 style={titleStyle}>
-            {plan.title}
-            <span style={titleViStyle}>{plan.titleVi}</span>
+            <span lang="en">{plan.title}</span>
+            <span lang="vi" style={titleViStyle}>{plan.titleVi}</span>
           </h3>
           <p style={priceStyle} aria-hidden="true" />
           <div>
-            <p style={subEnStyle}>{plan.subtitleEn}</p>
-            <p style={subViStyle}>{plan.subtitleVi}</p>
+            <p lang="en" style={subEnStyle}>{plan.subtitleEn}</p>
+            <p lang="vi" style={subViStyle}>{plan.subtitleVi}</p>
           </div>
           <div>
-            <p style={bodyEnStyle}>{plan.bodyEn}</p>
-            <p style={bodyViStyle}>{plan.bodyVi}</p>
+            <p lang="en" style={bodyEnStyle}>{plan.bodyEn}</p>
+            <p lang="vi" style={bodyViStyle}>{plan.bodyVi}</p>
           </div>
           {plan.bullets?.length ? (
             <ul style={bulletListStyle}>
               {plan.bullets.map((bullet, i) => (
                 <li key={bullet}>
-                  {bullet}
+                  <span lang="en">{bullet}</span>
                   {plan.bulletsVi?.[i] ? (
-                    <span style={bulletViStyle}>{plan.bulletsVi[i]}</span>
+                    <span lang="vi" style={bulletViStyle}>{plan.bulletsVi[i]}</span>
                   ) : null}
                 </li>
               ))}
@@ -622,17 +626,17 @@ export default function Pricing() {
       <div key={plan.key} style={{ ...commonCardStyle, opacity: isBusy ? 0.75 : 1 }}>
         <div style={badgeStyle}>{plan.eyebrow}</div>
         <h3 style={titleStyle}>
-          {plan.title}
-          <span style={titleViStyle}>{plan.titleVi}</span>
+          <span lang="en">{plan.title}</span>
+          <span lang="vi" style={titleViStyle}>{plan.titleVi}</span>
         </h3>
-        <p style={priceStyle}>{plan.price}</p>
+        <p lang="en" style={priceStyle}>{plan.price}</p>
         <div>
-          <p style={subEnStyle}>{plan.subtitleEn}</p>
-          <p style={subViStyle}>{plan.subtitleVi}</p>
+          <p lang="en" style={subEnStyle}>{plan.subtitleEn}</p>
+          <p lang="vi" style={subViStyle}>{plan.subtitleVi}</p>
         </div>
         <div>
-          <p style={bodyEnStyle}>{plan.bodyEn}</p>
-          <p style={bodyViStyle}>{plan.bodyVi}</p>
+          <p lang="en" style={bodyEnStyle}>{plan.bodyEn}</p>
+          <p lang="vi" style={bodyViStyle}>{plan.bodyVi}</p>
         </div>
         {plan.bullets?.length ? (
           <ul style={bulletListStyle}>
@@ -684,17 +688,17 @@ export default function Pricing() {
         padding: 20,
         marginBottom: 18,
       }}>
-        <h1 style={{ margin: 0, fontSize: 30, lineHeight: 1.1, fontWeight: 950, color: "#111827" }}>
+        <h1 lang="en" style={{ margin: 0, fontSize: 30, lineHeight: 1.1, fontWeight: 950, color: "#111827" }}>
           Get full access to all premium rooms
         </h1>
-        <p style={{ margin: "4px 0 0", fontSize: 13, color: "#64748b", lineHeight: 1.5 }}>
+        <p lang="vi" style={{ margin: "4px 0 0", fontSize: 13, color: "#64748b", lineHeight: 1.5 }}>
           Mở toàn bộ phòng học premium của MercyBlade
         </p>
 
-        <p style={{ margin: "12px 0 0", color: "#475569", lineHeight: 1.7, fontSize: 15 }}>
+        <p lang="en" style={{ margin: "12px 0 0", color: "#475569", lineHeight: 1.7, fontSize: 15 }}>
           Choose a plan that fits your learning pace. Upgrade anytime.
         </p>
-        <p style={{ margin: "3px 0 0", fontSize: 13, color: "#64748b", lineHeight: 1.5 }}>
+        <p lang="vi" style={{ margin: "3px 0 0", fontSize: 13, color: "#64748b", lineHeight: 1.5 }}>
           Chọn gói phù hợp với tốc độ học của bạn. Có thể nâng cấp bất cứ lúc nào.
         </p>
 
@@ -715,8 +719,8 @@ export default function Pricing() {
               : { en: "Manage or cancel anytime in Stripe",      vi: "Quản lý hoặc hủy bất cứ lúc nào qua Stripe" },
           ].map(({ en, vi }) => (
             <div key={en} style={{ borderRadius: 14, border: "1px solid rgba(15,23,42,0.08)", background: "rgba(255,255,255,0.80)", padding: "10px 12px" }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>✓ {en}</div>
-              <div style={{ fontSize: 11, fontWeight: 400, color: "#64748b", marginTop: 2 }}>{vi}</div>
+              <div lang="en" style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>✓ {en}</div>
+              <div lang="vi" style={{ fontSize: 11, fontWeight: 400, color: "#64748b", marginTop: 2 }}>{vi}</div>
             </div>
           ))}
         </div>
@@ -928,7 +932,7 @@ export default function Pricing() {
         )}
       </div>
 
-      <p style={{ marginTop: 16, fontSize: 13, color: "#64748b", lineHeight: 1.6 }}>
+      <p lang="en" style={{ marginTop: 16, fontSize: 13, color: "#64748b", lineHeight: 1.6 }}>
         {isIos
           ? "Subscriptions are billed through your Apple ID and managed in Apple ID → Subscriptions."
           : "Payments are processed securely through Stripe. Existing subscribers are managed through Stripe Billing Portal."}
@@ -936,15 +940,15 @@ export default function Pricing() {
 
       {/* Subscription disclosure — required by Apple 3.1.2(c) + Google Play */}
       <div style={{ marginTop: 20, padding: 14, borderRadius: 12, border: "1px solid rgba(0,0,0,0.08)", background: "#f8fafc", fontSize: 12, lineHeight: 1.6, color: "#475569" }}>
-        <p style={{ marginTop: 0, marginBottom: 6 }}>
+        <p lang="en" style={{ marginTop: 0, marginBottom: 6 }}>
           <strong>Auto-renewing subscription.</strong> Your subscription renews automatically at the end of each billing period at the price shown above unless you cancel at least 24 hours before the renewal date. You can manage or cancel your subscription at any time from the billing portal (web) or Apple account settings (iOS).
         </p>
-        <p style={{ margin: "0 0 8px", color: "#64748b" }}>
+        <p lang="vi" style={{ margin: "0 0 8px", color: "#64748b" }}>
           Gói đăng ký tự động gia hạn. Gói sẽ tự động gia hạn vào cuối mỗi kỳ thanh toán với mức giá niêm yết trừ khi bạn hủy ít nhất 24 giờ trước ngày gia hạn. Bạn có thể quản lý hoặc hủy bất cứ lúc nào.
         </p>
         <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-          <a href="/terms"   target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}>Điều khoản sử dụng / Terms of Use (EULA)</a>
-          <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}>Chính sách quyền riêng tư / Privacy Policy</a>
+          <a href="/terms"   target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}><span lang="vi">Điều khoản sử dụng</span> / <span lang="en">Terms of Use (EULA)</span></a>
+          <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}><span lang="vi">Chính sách quyền riêng tư</span> / <span lang="en">Privacy Policy</span></a>
         </div>
       </div>
     </main>
