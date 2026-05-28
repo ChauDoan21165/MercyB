@@ -123,11 +123,12 @@ export default function SuggestedPracticeList({
         <div className="min-w-0">
           <h3
             id="suggested-practice-heading"
+            lang="vi"
             className="text-sm font-bold leading-tight text-slate-900"
           >
             Gợi ý luyện tập
           </h3>
-          <p className="text-[11px] leading-tight text-slate-500">
+          <p lang="en" className="text-[11px] leading-tight text-slate-500">
             Suggested practice
           </p>
         </div>
@@ -164,13 +165,13 @@ function SuggestedPracticeRow({
       >
         <KindChip kind={item.kind} />
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-semibold leading-snug text-slate-900">
+          <p lang="vi" className="text-sm font-semibold leading-snug text-slate-900">
             {item.viLabel}
           </p>
-          <p className="mt-0.5 text-[12px] leading-snug text-slate-500">
+          <p lang="en" className="mt-0.5 text-[12px] leading-snug text-slate-500">
             {item.enLabel}
           </p>
-          <p className="mt-1 text-[11px] leading-snug text-slate-500">
+          <p lang="vi" className="mt-1 text-[11px] leading-snug text-slate-500">
             {item.rationale}
           </p>
         </div>
@@ -243,10 +244,10 @@ function EmptyState() {
       data-testid="suggested-practice-empty"
       className="mx-auto w-full max-w-[420px] rounded-[20px] border border-slate-200/70 bg-gradient-to-br from-slate-50 to-white px-4 py-6 text-center shadow-[0_10px_28px_rgba(15,23,42,0.04)]"
     >
-      <p className="text-sm font-semibold leading-snug text-slate-900">
+      <p lang="vi" className="text-sm font-semibold leading-snug text-slate-900">
         Chưa có gợi ý nào — luyện thêm vài bài để Mercy hiểu bạn rõ hơn.
       </p>
-      <p className="mt-1 text-[12px] leading-snug text-slate-500">
+      <p lang="en" className="mt-1 text-[12px] leading-snug text-slate-500">
         Suggestions appear after a few lessons.
       </p>
     </section>
