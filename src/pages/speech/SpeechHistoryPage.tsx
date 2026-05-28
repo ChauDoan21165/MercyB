@@ -124,7 +124,7 @@ const PAGE_SIZE = 20;
 // ── Colour helpers ─────────────────────────────────────────────────────
 
 function scoreColor(n: number | null): string {
-  if (n === null) return "#94a3b8";
+  if (n === null) return "#64748b";
   if (n >= 80) return "#059669"; // green
   if (n >= 60) return "#d97706"; // amber
   return "#dc2626"; // red
@@ -204,7 +204,7 @@ const trendColor: Record<Trend, string> = {
   improving: "#059669",
   stable: "#64748b",
   declining: "#dc2626",
-  insufficient: "#94a3b8",
+  insufficient: "#64748b",
 };
 
 function TrendBadge({ trend }: { trend: Trend }) {
@@ -471,7 +471,7 @@ export default function SpeechHistoryPage() {
               style={{
                 marginTop: 8,
                 fontSize: 13,
-                color: "#94a3b8",
+                color: "#64748b",
                 whiteSpace: "pre-line",
               }}
             >
@@ -604,7 +604,7 @@ function AttemptRow({
         >
           {truncated}
         </span>
-        <span style={{ fontSize: 11, color: "#94a3b8", whiteSpace: "nowrap" }}>
+        <span style={{ fontSize: 11, color: "#64748b", whiteSpace: "nowrap" }}>
           {time.en}
         </span>
         <span style={scorePillStyle(row.overall_score)}>

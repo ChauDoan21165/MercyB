@@ -218,7 +218,7 @@ export default function InterviewPromptsModeration(): React.ReactElement {
               <span className="rounded-full bg-slate-100 px-2 py-0.5 font-semibold text-slate-700">
                 {QUESTION_TYPE_LABELS_VI[row.question_type]}
               </span>
-              <span className="ml-auto font-mono uppercase text-slate-400">{row.status}</span>
+              <span className="ml-auto font-mono uppercase text-slate-500">{row.status}</span>
             </header>
 
             {editingId === row.id ? (
@@ -246,7 +246,7 @@ export default function InterviewPromptsModeration(): React.ReactElement {
               <p className="mt-2 text-xs italic text-slate-500">{row.context}</p>
             )}
 
-            <p className="mt-2 text-[11px] text-slate-400">
+            <p className="mt-2 text-[11px] text-slate-500">
               {new Date(row.submitted_at).toLocaleString("vi-VN")} · {row.upvotes_count} upvotes ·{" "}
               {row.flag_count} flags
             </p>

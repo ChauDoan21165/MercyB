@@ -82,7 +82,11 @@ const TIER_COLOR: Record<RetentionTier, { bg: string; fg: string }> = {
   red:    { bg: "#fee2e2", fg: "#991b1b" },
   yellow: { bg: "#fef3c7", fg: "#92400e" },
   green:  { bg: "#d1fae5", fg: "#065f46" },
-  "n/a":  { bg: "#f1f5f9", fg: "#94a3b8" },
+  // n/a cell uses slate-600 fg on slate-100 bg (6.4:1 PASSES AA). Earlier
+  // slate-400 / slate-500 fg both failed against slate-100 — see the
+  // wave-3 LessonRenderer FallbackBadge precedent in
+  // docs/a11y/audit.md §"Color contrast — at-a-glance".
+  "n/a":  { bg: "#f1f5f9", fg: "#475569" },
 };
 
 // ── RPC type (cast for fields not in generated types yet) ─────────────
@@ -311,7 +315,7 @@ export default function RetentionDashboard(): React.ReactElement {
               Đang tải dữ liệu… · Loading…
             </p>
           ) : weeks.length === 0 ? (
-            <p style={{ fontSize: 13, color: "#94a3b8", marginTop: 12 }}>
+            <p style={{ fontSize: 13, color: "#64748b", marginTop: 12 }}>
               Chưa có dữ liệu — chạy aggregator trước. · No data yet — run the
               aggregator first.
             </p>
@@ -400,7 +404,7 @@ export default function RetentionDashboard(): React.ReactElement {
           )}
         </section>
 
-        <p style={{ fontSize: 11, color: "#94a3b8" }}>
+        <p style={{ fontSize: 11, color: "#64748b" }}>
           Privacy posture: dashboard reads aggregate counts only via a
           SECURITY DEFINER RPC; admin level &lt; 9 sees nothing. No
           individual user data is exposed.

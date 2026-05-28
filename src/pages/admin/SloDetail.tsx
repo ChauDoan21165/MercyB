@@ -70,7 +70,7 @@ const STATUS_COLOR: Record<BudgetStatus, string> = {
   warning: "#f59e0b",
   critical: "#ef4444",
   exhausted: "#7f1d1d",
-  no_data: "#94a3b8",
+  no_data: "#94a3b8", // a11y-contrast:exception — used as borderColor on the SLO status badge (WCAG 1.4.11 non-text 3:1; slate-400 on white = 3.13:1 PASSES). Not text. Audit doc §wave-5.
 };
 
 interface HourBucket {

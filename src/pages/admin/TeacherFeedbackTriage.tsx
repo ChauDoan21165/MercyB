@@ -341,7 +341,7 @@ export default function TeacherFeedbackTriage(): React.ReactElement {
                 </pre>
               )}
 
-              <p className="mt-2 text-xs text-slate-400">
+              <p className="mt-2 text-xs text-slate-500">
                 {new Date(row.created_at).toLocaleString("vi-VN")}
               </p>
 
