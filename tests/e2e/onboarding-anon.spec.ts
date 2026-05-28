@@ -64,15 +64,22 @@ test.describe("/onboarding — anon", () => {
   }) => {
     await page.goto(`${BASE_URL}/onboarding`);
 
-    // Each choice is rendered in its OWN language so both audiences
-    // can self-identify regardless of the default chrome language.
+    // Each choice is rendered via `pickChrome(c.label, lang)` — the
+    // EN choice's label resolves to "Tiếng Anh" in the default
+    // VI-chrome render and to "English" when chrome lang flips
+    // (mirrors the unit-test pattern at OnboardingPage.test.tsx:148).
+    // The picker uses role="radio" (single-select native pick),
+    // NOT role="button" — see OnboardingPage.tsx:234.
     await expect(
-      page.getByRole("button", { name: /Tiếng Việt/ }),
+      page.getByRole("radio", { name: /Tiếng Việt/ }),
     ).toBeVisible();
-    await expect(page.getByRole("button", { name: /^English$/ })).toBeVisible();
+    await expect(
+      page.getByRole("radio", { name: /Tiếng Anh|English/ }),
+    ).toBeVisible();
 
-    // The Skip affordance is also up — picker is dismissable per the
-    // entry-step contract (writes a safe en→[vi] / vi→[en] default).
+    // The Skip affordance is a plain <button> (not part of the
+    // radio group) — picker is dismissable per the entry-step
+    // contract (writes a safe en→[vi] / vi→[en] default).
     await expect(page.getByRole("button", { name: /Bỏ qua|Skip/ })).toBeVisible();
   });
 
@@ -81,7 +88,7 @@ test.describe("/onboarding — anon", () => {
   }) => {
     await page.goto(`${BASE_URL}/onboarding`);
 
-    await page.getByRole("button", { name: /Tiếng Việt/ }).click();
+    await page.getByRole("radio", { name: /Tiếng Việt/ }).click();
 
     // Target step header appears. Single-language chrome is the
     // default once a native pick has been recorded (lang=chromeLang on
@@ -121,9 +128,14 @@ test.describe("/onboarding — anon", () => {
     await expect(
       page.getByRole("heading", { level: 1 }),
     ).toBeVisible();
-    // At least one native choice button remains reachable.
+    // `?direction=vn` pre-seeds an English-speaker → wants-Vietnamese
+    // intent, so the page skips the native (radio) step and lands
+    // directly on the target step — which uses role="checkbox" for
+    // its multi-select grid (see OnboardingPage.tsx TargetGrid). The
+    // "picker is usable" assertion checks the deep-linked checkbox
+    // grid, not the bypassed native radios.
     await expect(
-      page.getByRole("button", { name: /Tiếng Việt|^English$/ }).first(),
+      page.getByRole("checkbox", { name: /Vietnamese|Tiếng Việt/ }).first(),
     ).toBeVisible();
   });
 });
