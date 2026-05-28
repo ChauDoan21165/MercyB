@@ -300,6 +300,117 @@ Smaller than Stage 3A's Local Weakness Map, deliberately.
 
 ---
 
+## Decisions recorded
+
+> Follows the !126 decision-record protocol — see
+> `L5-pedagogy-decision-record.md` § How to use this doc. Past
+> decisions are immutable; revisions supersede; cross-link from
+> code. The § Open questions list above is the historical record
+> of what was open when each decision was made; entries there are
+> NOT edited.
+
+### Decision: L6-Q1 — Access model
+
+- **Context:** § Open questions #1. How does a parent get access to the parent view? Choices were **A** kid-initiated invite (consent-first), **B** paywall-implied (parent buys, kid uses).
+- **Decision:** **B** — paywall-implied access. A parent subscription auto-grants parent view; payment IS access.
+- **Rationale:** Lower friction on the conversion path; aligns with the Premium-bundled pricing decision (Q7). Honors that the parent typically drives the purchase decision in the family persona segment.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Medium. Adding a consent step on top later is additive; removing the paywall coupling would require rethinking the entire access model.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #1.
+
+### Decision: L6-Q2 — Parent view default language
+
+- **Context:** § Open questions #2. What language does the parent view default to? Choices were **A** VI-primary always, **B** follow learner's `lessonUiLang`, **C** detect from parent signup; default to A.
+- **Decision:** **C** — locale-detect at parent signup with VI fallback.
+- **Rationale:** Drift-resistant (one-time detection beats live coupling that breaks when the kid toggles); Vietnamese-first when detection is ambiguous, matching the non-negotiable. Settings can override later if a diaspora parent wants EN-primary.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Easy. Detection + default is a startup-time policy; revisable per-account from settings.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #2.
+
+### Decision: L6-Q3 — Visibility scope
+
+- **Context:** § Open questions #3. Does the parent view show high-level category buckets only, or specific tags + 90-second VN explainer videos? Choices were **A** aggregate categories only, **B** specific weakness tags + VN videos (the differentiation wedge).
+- **Decision:** **B** — specific weakness tags + 90-second VN explainer videos. **Phased delivery:** the structural surface (per-tag pages, video slots, copy scaffolding) ships in the v1 parent view; the per-tag video content authoring is a separate workstream that backfills into the existing slots.
+- **Rationale:** The per-tag VN explainer videos are the marketing wedge — "the Vietnamese parent finally understands what their kid is learning" — and they distinguish MercyB from a generic dashboard. Phasing decouples the structural build (engineering) from the content authoring (production) so v1 can ship with structure + placeholder copy.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Easy at the structural level; the per-tag content is additive over time.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #3.
+
+### Decision: L6-Q4 — Time signals
+
+- **Context:** § Open questions #4. Does the parent view show practice-time per day? Choices were **A** show practice-time/day, **B** hide.
+- **Decision:** **B** — hide practice-time. The parent view does not surface minutes/day or any time-on-task metric.
+- **Rationale:** Non-negotiable #4 — outcomes over engagement. Time signals invite streak-shaming and parent pressure that conflict with the brand's positioning. The accepted cost (some parents will ask "is my kid using it?" and bounce) is preferable to publishing a metric that pushes the experience away from outcomes.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Easy. Time signals are derived data; surfacing them later is additive.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #4.
+
+### Decision: L6-Q5 — Numeric scores
+
+- **Context:** § Open questions #5. Does the parent view show numeric scores, qualitative bands, or both? Choices were **A** numeric (CEFR + accuracy %), **B** qualitative only, **C** numeric in expanded view, qualitative in summary.
+- **Decision:** **C** — qualitative as the default surface, numeric on drill-in.
+- **Rationale:** Honors both audiences: VN test-prep parents who distrust "fuzzy" reporting can drill into the numbers; diaspora parents who want a quick narrative get the qualitative summary up front. Accepts the doubled UI surface as a worthwhile cost for serving both personas without forcing a choice.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Easy. Both representations derive from the same underlying L3 aggregates; the choice is a presentation policy.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #5.
+
+### Decision: L6-Q6 — Initial-scope audience
+
+- **Context:** § Open questions #6. Does v1 include Persona C (teacher class-view), or parent-only? Choices were **A** Persona A+B only (defer C), **B** include Persona C in same MR, **C** A+B first; C as named-timeline follow-up.
+- **Decision:** **C** — parent-first; class view as a named follow-up phase on the roadmap.
+- **Rationale:** Ships a useful v1 to the parent personas without taking on the RLS + class-roster + per-student-view design surface in the same release. Naming C on the roadmap sets honest external expectations and preserves the option to negotiate teacher deals on a credible timeline.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Easy. Adding the C surface later is additive; v1's data model should not foreclose the multi-student-per-account shape.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #6.
+
+### Decision: L6-Q7 — Pricing
+
+- **Context:** § Open questions #7. How is the parent view priced? Choices were **A** bundle in Premium, **B** separate Family tier above Premium, **C** free 7-day preview, Premium-bundled after.
+- **Decision:** **A** — bundled in Premium. Existing Premium subscribers get the parent view as part of their existing tier.
+- **Rationale:** No new tier complexity (aligns with the project's "few tiers" hygiene). The price-discrimination opportunity a Family tier would represent is judged not worth the tier-count cost. Bundling also keeps the Q1 paywall-implied access model simple — one purchase grants both kid use and parent view.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Medium. Carving out into a separate tier later would require migrating existing Premium subscribers' entitlements.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #7.
+
+### Decision: L6-Q8 — Weekly digest email
+
+- **Context:** § Open questions #8. What cadence does the parent digest email ship at? Choices were **A** weekly opt-in, **B** monthly opt-in, **C** never (in-app only).
+- **Decision:** **A** — weekly opt-in digest.
+- **Rationale:** Maintains parent habit and surfaces MercyB regularly without becoming the only product surface. Opt-in respects email-consent posture; weekly cadence aligns with the natural "week's worth of practice" narrative that the digest will frame.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Easy. Cadence is an automation policy; opt-in is a per-account flag.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #8.
+
+### Decision: L6-Q9 — L4 dependency (provisional)
+
+- **Context:** § Open questions #9. Ship L6 first-build now on raw L3 aggregates (descriptive framing, no "Mercy helped" attribution), or wait until L4 lands so the weekly story can attribute? This is the L6 face of cross-layer X1.
+- **Decision:** **A** — ship L6 first-build now on L3 aggregates with descriptive framing. Attribution claims are gated behind `// L5-PENDING`-tagged stubs that will activate once L4 + L5 land.
+- **Rationale:** Same posture as cross-layer X1: don't gate L6 progress on L4/L5 cadence. Descriptive framing ("count fell 12 → 4") is honest and useful without attribution; the digest copy is designed so the future attribution sentence layers on additively.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Easy. Attribution copy is additive once the signal exists.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Cross-layer X1; `L5-pedagogy-decision-record.md` § Decisions made → Cross-layer X1.
+
+### Decision: L6-Q10 — Mercy persona in parent view
+
+- **Context:** § Open questions #10. Does Mercy speak to parents in the parent view? Choices were **A** Mercy speaks everywhere, **B** neutral data view, **C** Mercy in the digest email only; in-app neutral.
+- **Decision:** **C** — Mercy voice in the digest email only; in-app parent view is neutral / data-dense.
+- **Rationale:** Best-of-both. The digest email is a narrative surface where Mercy's warmth lands well; the in-app parent view is a working surface where parents want data over voice. Accepts the cost of maintaining two coherent voices in exchange for matching the register of each surface.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Easy. Voice is a copy policy per surface; either side can be re-flavoured without engine changes.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #9.
+
+---
+
 ## What this doc is not
 
 Not a roadmap (sequencing lives in `ROADMAP.md`). Not a launch

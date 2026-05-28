@@ -282,6 +282,97 @@ priority), parent-view suggestion stream (L6-blocked).
 
 ---
 
+## Decisions recorded
+
+> Follows the !126 decision-record protocol — see
+> `L5-pedagogy-decision-record.md` § How to use this doc. Past
+> decisions are immutable; revisions supersede; cross-link from
+> code. The § Open questions list above is the historical record
+> of what was open when each decision was made; entries there are
+> NOT edited.
+
+### Decision: L4-Q1 — Rule storage
+
+- **Context:** § Open questions #1. Where do L4 rule definitions live? Choices were **A** hard-coded TS rule table, **B** JSON in `public/data/`, **C** Supabase table + admin UI.
+- **Decision:** **A** — hard-coded TypeScript rule table (e.g. `src/lib/stage-3a/l4/rules.ts`).
+- **Rationale:** Fastest to ship, fully type-safe, no new admin surface or RLS work, and rule edits stay in the same review path as the engine they drive. Non-engineer rule-authoring can be revisited if L4 scales past a handful of rules.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Medium. Moving to **B** or **C** later is a refactor: extract the rule shape, write a loader, migrate the table; the rule data itself is the same shape regardless of source.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #10.
+
+### Decision: L4-Q4 — Re-suggestion after dismiss
+
+- **Context:** § Open questions #4. When a learner dismisses an L4-emitted suggestion, does it ever re-surface? Choices were **A** never re-surface, **B** re-evaluate next session, **C** per-rule override (L5 decides).
+- **Decision:** **A** — dismiss is permanent. The engine honors a deterministic dismissed-suggestion-id set; once an id is dismissed it does not re-emit. Option **C** is moot per X2 (L5 does not own per-rule policy).
+- **Rationale:** Strong learner-agency signal (dismiss means dismiss). Deterministic behavior is easier to reason about and test than re-evaluation rules. The accidental-dismiss risk is accepted; learners can resurface a pattern by re-encountering it through normal practice.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Medium. The dismissed-id set is a pure-function input; switching to **B** is a policy swap in the resolver, not a schema change.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #11; `L5-pedagogy-decision-record.md` § Decisions made → Cross-layer X2.
+
+### Decision: L4-Q5 — Attribution surface (engineering shape)
+
+- **Context:** § Open questions #5. How does L4 emit the rationale for a suggestion? Choices were **A** L4 emits the user-facing `reason` string verbatim, **B** L4 emits a structured reason (id + signal context), consumer composes the user-facing text, **C** L5-authored reason library.
+- **Decision:** **B** — engine emits a structured `TriggerReason` (rule-id + signal context); the presentation layer composes the VI/EN user-facing text via `<Bilingual>` (see `src/components/Bilingual.tsx`). Option **C** is moot per X2.
+- **Rationale:** Separation of engine and presentation: the engine reasons about evidence, the UI reasons about copy. Each surface (in-app card, parent digest, future teacher view) can render the same `TriggerReason` in its own register without engine-side branching. The `<Bilingual>` wrapper already exists and enforces VI/EN lang-attribute discipline.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Easy. Collapsing back to **A** is a refactor that moves string composition into the engine; the `TriggerReason` payload is a superset.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #12; `L5-pedagogy-decision-record.md` § Decisions made → Cross-layer X2.
+
+### Decision: L4-Q6 — L1 tag vs placement conflict
+
+- **Context:** § Open questions #6. When the live L1 stream and a stale placement snapshot disagree about a learner's pattern strength, which signal wins? Choices were **A** L1 recent wins (live > stale), **B** placement wins until next run, **C** both fire, consumer arbitrates.
+- **Decision:** **A** — the live signal wins over stale placement. L4 reads the most recent L1 tag history and disregards the placement snapshot when the two disagree.
+- **Rationale:** Placement is a point-in-time estimate; live L1 signal is current evidence. Respecting current learner state matters more than honoring an aging commitment. Placement's value is initial scoping; ongoing L4 behavior should reflect what the learner is doing now.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Easy. Pure-function arbitration; swap the resolver to **B** or **C** without schema impact.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #13.
+
+### Decision: L4-Q7 — Frequency cap
+
+- **Context:** § Open questions #7. How many L4-sourced suggestions can fire per session? Choices were **A** ≤1/session, **B** ≤1/surface, **C** no cap (TTLs handle it).
+- **Decision:** **A** — at most one L4 suggestion per session anywhere. A learner with multiple active patterns sees one at a time.
+- **Rationale:** Gentle posture aligns with the outcomes-over-engagement non-negotiable. Crowding interventions across surfaces risks the experience reading as nagging. The trade — only the top-priority pattern surfaces per session — is accepted; lower-priority patterns will surface in subsequent sessions.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Easy. The cap is a single integer in the rule resolver.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #14.
+
+### Decision: L4-Q8 — First rule's domain
+
+- **Context:** § Open questions #8. Which L1-transfer pattern does L4 implement first as a proof-of-concept rule? Choices were **A** Vietnamese L1 past-tense-marker omission, **B** pronunciation final-consonant-cluster reduction, **C** topic-comment fronting.
+- **Decision:** **A** — Vietnamese L1 past-tense-marker omission (e.g. learner says "yesterday I go" / "hôm qua tôi đi" → expected "yesterday I went"). The detector for this pattern has the largest evidence base in the existing L1-detector tests.
+- **Rationale:** Highest-confidence detector + text-only signal = cheapest path to a demo-able L4 surface; strongest "Vietnamese-first" pedagogy demo. Pronunciation (option **B**) depends on the Stage 3A pronunciation adapter maturing further. Topic-comment fronting (option **C**) has a smaller affected population for a less-visible payoff.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Easy. Each rule is independent; the choice of *first* rule does not constrain later rule additions.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #15.
+
+### Decision: L4-Q9 — Read-loop posture
+
+- **Context:** § Open questions #9. When does L4 evaluate its rules? Choices were **A** synchronously on read (every render), **B** on signal-change (write-side hook in the ring-buffer adapters), **C** periodic debounce.
+- **Decision:** **B** — evaluate on signal change. L4 hooks the L3 ring-buffer write path; rule outputs update when the underlying signal changes, not on every consumer read.
+- **Rationale:** Cheap per-read cost (consumers just read the current rule outputs); avoids burning cycles re-evaluating rules every render. The risk — a missed signal-change edge leaving outputs stale — is accepted as a smaller cost than per-read re-evaluation across many consumer surfaces.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Medium. Swapping to **A** or **C** is a re-architecture of when evaluation runs, but the rule shape itself is unchanged.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Decidable now #16.
+
+### Decision: L4-Q10 — L5 prerequisite gate (provisional)
+
+- **Context:** § Open questions #10 (meta-question). Ship L4 scope-1 now with hard-coded defaults for the L5-blocked entries (Q2, Q3), or block on L5 ratification?
+- **Decision:** **A** — ship L4 scope-1 now with provisional L5-blocked defaults. Every default that depends on an L5 [PENDING] entry is tagged `// L5-PENDING` at its implementation site so a grep finds them when L5 lands. This decision is the L4 face of cross-layer X1.
+- **Rationale:** L4 progress should not be gated on pedagogy-adviser cadence; provisional defaults are honest because they are marked and traceable to specific § Decisions deferred entries in the L5 doc. L5 ratifies by replacing the constants and removing the tag.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Easy at the constant level; medium at the policy level.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Cross-layer X1; `L5-pedagogy-decision-record.md` § Decisions made → Cross-layer X1.
+
+---
+
 ## What this doc is not
 
 Not a roadmap (sequencing lives in `ROADMAP.md` §L4). Not an
