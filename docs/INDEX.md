@@ -252,6 +252,8 @@ roadmap, but no design doc, market sketch, or copy spec exists.
 A first L6 doc would be a candidate for "Likely should be tracked"
 status from day one.
 
+- [`docs/architecture/L6-parent-teacher-family-layer.md`](./architecture/L6-parent-teacher-family-layer.md) — Design + market + copy. First L6 artifact; scope contract for Stage 5 authoring. Closes the gap !113 flagged.
+
 ### L7 — Differentiation
 
 Positional identity ("the product MercyBlade IS"), not comparative.
