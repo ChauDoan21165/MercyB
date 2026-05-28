@@ -17,6 +17,7 @@ This file is an **index**, not a runbook. Each phase below names the operative d
 | **Hour +24 close-of-day-1 review** | [`day-1-close-review.md`](./day-1-close-review.md) | Hour +24 (operationalizes `launch-window-operations.md` §6) |
 | **First-week reads — what to measure** | [`first-week-metrics-spec.md`](./first-week-metrics-spec.md) | Day 1 to day 7 |
 | **Post-week-1 — retrospective template** | [`week-1-retrospective.md`](./week-1-retrospective.md) | Day 7+ (filled into `reports/launch-week-1-YYYY-MM-DD.md`) |
+| **Week-4 retrospective (week-1 §7 deferrals + new weeks-2–4 decisions)** | [`week-4-retrospective.md`](./week-4-retrospective.md) | Week 4+ (filled into `reports/launch-week-4-YYYY-MM-DD.md`) |
 
 Operator opens the docs **in the order above** for any given launch wave.
 
