@@ -34,6 +34,7 @@ import { analyzeGrammarWithApi } from './api';
 import L1HintCard from './L1HintCard';
 import { recordL1Tag } from '@/lib/stage-3a/adapters/l1TagAdapter';
 import { installStage4SignalHook } from '@/lib/stage-4/signalHook';
+import Stage4SuggestionPanel from '@/components/stage-4/Stage4SuggestionPanel';
 import type { L1WeaknessTag } from '@/lib/feedback/l1-error-detector';
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 
@@ -1025,6 +1026,13 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
               </div>
             </div>
           </div>
+
+          {/* Stage 4 (L4) — diagnostic intervention. Renders ONE
+              dismissible suggestion via Stage 3B's card chrome when an L4
+              rule fires (e.g. the VN past-tense-marker rule). The
+              signal-change hook installed above keeps L4's buffer fresh;
+              this panel reads it. Renders nothing until a rule fires. */}
+          <Stage4SuggestionPanel />
 
           {error ? (
             <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">

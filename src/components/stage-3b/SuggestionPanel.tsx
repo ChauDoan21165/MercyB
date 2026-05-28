@@ -3,27 +3,34 @@
 // Stage 3B — Suggestion panel (brick 2).
 //
 // Live consumer of `getSuggestion(event, weaknesses)`. Renders exactly
-// ONE SuggestionCard when the engine returns a Suggestion, or nothing
-// when it returns null. Wires the card's dismiss control to the engine's
-// state API (`dismissSuggestion`).
+// ONE SuggestionCard when a Suggestion is available, or nothing when not.
 //
-// Hard invariants (per ROADMAP §3B):
-//   - Local-only. Reads gate state through `getSuggestion` (which calls
-//     `isSuggestionsDisabled` + `getDismissedSuggestionIds`); writes
-//     through `dismissSuggestion`. NEVER touches raw localStorage —
-//     state API only, per brick-2 brief.
-//   - Soft: never throws. If the engine returns null for ANY reason
-//     (disabled, empty weaknesses, already-dismissed, no taxonomy hit),
-//     this component renders nothing.
-//   - One suggestion at a time. The engine is single-pick; this panel
-//     does not stack multiple cards.
-//   - Dismiss is final per session: clicking dismiss removes the card
-//     immediately AND persists the id so the engine won't re-emit it on
-//     the next render. (Brick 1 already guards this on the engine side;
-//     the local `useState` here is purely so the current view drops the
-//     card without waiting for a parent re-render.)
+// Two modes (the second is additive — the original contract is intact):
+//
+//   1. Derived mode (original): pass `event` + `weaknesses`; the panel
+//      derives the suggestion via the Stage 3B engine `getSuggestion`
+//      and wires dismiss to `dismissSuggestion`.
+//
+//   2. Injected mode (added for L4 wiring): pass a ready `suggestion`
+//      (already composed by an upstream producer, e.g. L4 via
+//      `useStage4Suggestion` + `composeStage4Reason`) and an `onDismiss`
+//      handler. The panel renders that suggestion directly and delegates
+//      dismissal to `onDismiss` so the producer owns the permanent-
+//      dismiss persistence. This keeps the panel a pure display surface
+//      and lets L4 route its output through the same card chrome without
+//      forking the engine. When `suggestion` is `null`, the panel renders
+//      nothing.
+//
+// Hard invariants (per ROADMAP §3B), unchanged:
+//   - Local-only. Derived mode reads gate state through `getSuggestion`;
+//     dismissal persists through `dismissSuggestion` (or the injected
+//     `onDismiss`). NEVER touches raw localStorage.
+//   - Soft: never throws. Renders nothing when there is no suggestion.
+//   - One suggestion at a time. Single-pick; no stacking.
+//   - Dismiss removes the card immediately AND (via the engine state API
+//     or the injected handler) persists so it does not re-surface.
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import type { LocalWeaknessMap } from "@/lib/stage-3a/aggregator";
 import {
@@ -37,37 +44,64 @@ import SuggestionCard from "./SuggestionCard";
 
 export interface SuggestionPanelProps {
   /**
-   * The activity event that just happened. The engine biases its first
-   * probe to the matching domain (e.g. a placement_step_completed event
-   * looks at placement weaknesses first).
+   * Derived mode — the activity event that just happened. The engine
+   * biases its first probe to the matching domain. Omit in injected
+   * mode.
    */
-  event: ActivityEvent;
+  event?: ActivityEvent;
   /**
-   * The Stage 3A aggregator output. Caller is responsible for passing
-   * fresh data; this component reads it as-is.
+   * Derived mode — the Stage 3A aggregator output. Caller passes fresh
+   * data; read as-is. Omit in injected mode.
    */
-  weaknesses: LocalWeaknessMap;
+  weaknesses?: LocalWeaknessMap;
+  /**
+   * Injected mode — a ready suggestion to render directly (or `null` to
+   * render nothing). When provided, `event`/`weaknesses` are ignored and
+   * the engine is NOT consulted. Producers using this MUST also pass
+   * `onDismiss` so dismissal persistence stays with the producer.
+   */
+  suggestion?: Suggestion | null;
+  /**
+   * Injected mode — dismiss handler. Called with the suggestion id when
+   * the learner dismisses. Defaults to the Stage 3B `dismissSuggestion`
+   * state API when omitted (derived mode behaviour).
+   */
+  onDismiss?: (id: string) => void;
 }
 
 export default function SuggestionPanel({
   event,
   weaknesses,
+  suggestion: injectedSuggestion,
+  onDismiss,
 }: SuggestionPanelProps) {
-  const [suggestion, setSuggestion] = useState<Suggestion | null>(() =>
-    getSuggestion(event, weaknesses),
-  );
+  // Injected mode is active whenever the derived inputs are not both
+  // present. In that mode the panel renders the externally-supplied
+  // suggestion verbatim instead of deriving one.
+  const isInjected = event === undefined || weaknesses === undefined;
+
+  const compute = useCallback((): Suggestion | null => {
+    if (isInjected) return injectedSuggestion ?? null;
+    return getSuggestion(event as ActivityEvent, weaknesses as LocalWeaknessMap);
+  }, [isInjected, injectedSuggestion, event, weaknesses]);
+
+  const [suggestion, setSuggestion] = useState<Suggestion | null>(compute);
 
   // Re-probe whenever the inputs change. Cheap (engine is pure +
-  // synchronous); avoids a stale card hanging around after the parent
-  // hands us a different event or fresher weaknesses.
+  // synchronous, injected mode is a passthrough); avoids a stale card
+  // hanging around after the parent hands us fresher data.
   useEffect(() => {
-    setSuggestion(getSuggestion(event, weaknesses));
-  }, [event, weaknesses]);
+    setSuggestion(compute());
+  }, [compute]);
 
   if (!suggestion) return null;
 
   const handleDismiss = (id: string) => {
-    dismissSuggestion(id);
+    if (onDismiss) {
+      onDismiss(id);
+    } else {
+      dismissSuggestion(id);
+    }
     setSuggestion(null);
   };
 
