@@ -626,6 +626,39 @@ for a follow-up sweep MR (Phase-2 #8).
    (slate-400, forbidden in audit-fixed files). Worth a
    `vi-style-guide.md` §6 line.
 
+**Revisions shipped (Phase-2 #8):** the non-optional revision
+candidates from the Phase-2 #7 batch landed as source-string
+changes. `BillingSuccessPage.tsx` had 25/25 OK and contributed
+no revisions. `MercyGuidePanel.tsx` (1 revision) +
+`MercySuggestTab.tsx` (3 revisions) revisions broken out:
+
+| Site | Before | After | Notes |
+|---|---|---|---|
+| `MercyGuidePanel.tsx:70` (header subtitle) | EN-only `Choose where you want to practice.` | VI primary `Chọn nơi em muốn luyện hôm nay.` + EN secondary `Choose where you want to practice.` (stacked, both `text-slate-500` for a11y safety; VI larger weight) | Uses `em` per the !65 thesis (Mercy-conversational register). VI primary in DOM order per `vi-style-guide.md` §2. |
+| `MercySuggestTab.tsx:24` (heading) | EN-only `Recommended for you` | `Gợi ý cho em · Recommended for you` (VI · EN inline composite) | Em-pronoun thesis applied. Single-line composite matches the existing mercy-guide sibling pattern (e.g. `MercyEnglishTab.tsx:215`). |
+| `MercySuggestTab.tsx:29` (empty state) | EN-only `No suggestions yet. Explore some rooms first!` | VI primary `Chưa có gợi ý nào. Em vào vài phòng trước nhé.` + EN secondary block | Drops the EN exclamation-mark imperative in favor of the warm `em + nhé`-particle frame (per the !48 `MercySpeakTab.tsx:1827` precedent that dropped `Hãy thử lại` for `Thử lại nhé`). |
+| `MercySuggestTab.tsx:56` (button label, 2 states) | EN-only `Go to path` / `Go to room` | VI · EN inline: `Vào lộ trình · Go to path` / `Vào phòng học · Go to room` | Uses the cross-file canonical `Vào phòng học` (now in MercyEnglishTab:163 post-!58, Pricing:647 post-!89, BillingSuccessPage:231). Strengthens the §6 canonicalization promotion candidate. |
+
+4 logical edits across 2 files; no test changes (no existing
+test matches the changed strings). `npm run typecheck:ci` +
+ESLint + vitest a11y-contrast + mercy-guide subtree all green
+(102/102 across the mercy-guide test suite). The new bilingual
+markup on both files keeps slate-500 (`#64748b`) — neither file
+is in the !64 `CONTRAST_FIXED_FILES` allow-list, so the a11y
+test does not strictly require it, but using slate-500 keeps
+both files forward-compatible if the list extends.
+
+`BillingSuccessPage.tsx` had 25/25 OK in the Phase-2 #7 audit
+and contributed no revisions (consistent with the Phase-2 #6
+`UnifiedMercyChat.tsx` 16/16-OK precedent).
+
+The two noise files flagged in Phase-2 #7 cross-cutting #3
+(`src/pages/BillingSuccess.tsx` dead duplicate +
+`MercyGuidePanel.tsx`'s panel-body-renders-only-kids-card
+architecture question) were NOT silently edited in this MR
+per the dispatch constraint. They remain on the deferred-
+deletion / deferred-architecture follow-up list.
+
 **Files still pending Phase-2 audit:** the `feedback/` +
 `account/` component directories (sampling), `Support.tsx`,
 `RoleplayPage.tsx`, `SpeechDrillPage.tsx`, plus the

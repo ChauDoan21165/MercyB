@@ -67,6 +67,9 @@ function FloatingHelperLauncher({
             {title}
           </h2>
           <p className="truncate text-[11px] font-semibold text-slate-500">
+            Chọn nơi em muốn luyện hôm nay.
+          </p>
+          <p className="truncate text-[10px] font-normal text-slate-500">
             Choose where you want to practice.
           </p>
         </div>
