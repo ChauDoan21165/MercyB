@@ -1005,8 +1005,12 @@ export default function Pricing() {
           viStyle={{ margin: "0 0 8px", color: "#64748b" }}
         />
         <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-          <a href="/terms"   target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}><span lang="vi">Điều khoản sử dụng</span> / <span lang="en">Terms of Use (EULA)</span></a>
-          <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}><span lang="vi">Chính sách quyền riêng tư</span> / <span lang="en">Privacy Policy</span></a>
+          <a href="/terms"   target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}>
+            <Bilingual as="span" vi="Điều khoản sử dụng" en="Terms of Use (EULA)" separator=" / " />
+          </a>
+          <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb", textDecoration: "underline" }}>
+            <Bilingual as="span" vi="Chính sách quyền riêng tư" en="Privacy Policy" separator=" / " />
+          </a>
         </div>
       </div>
     </main>
