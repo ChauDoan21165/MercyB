@@ -33,6 +33,7 @@ import { hasMeaningfulDifference } from './utils';
 import { analyzeGrammarWithApi } from './api';
 import L1HintCard from './L1HintCard';
 import { recordL1Tag } from '@/lib/stage-3a/adapters/l1TagAdapter';
+import { installStage4SignalHook } from '@/lib/stage-4/signalHook';
 import type { L1WeaknessTag } from '@/lib/feedback/l1-error-detector';
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 
@@ -684,6 +685,13 @@ export function GrammarWritingTab({
       teacherTask,
     ],
   );
+
+  // Stage 4 (L4) — subscribe the intervention engine to the L1
+  // ring-buffer write path (Q9=B: evaluate on signal change). This is
+  // the live signal site — `recordL1Tag` fires here on each analysis, so
+  // installing here keeps L4's suggestion buffer fresh. Idempotent; the
+  // returned teardown removes the subscription on unmount.
+  useEffect(() => installStage4SignalHook(), []);
 
   useEffect(() => {
     if (!teacherTask) return;
