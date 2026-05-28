@@ -229,12 +229,12 @@ function PlacementRow({ weakness }: { weakness: PlacementWeaknessSummary }) {
   return (
     <li className="flex items-start gap-2 rounded-2xl border border-amber-100/70 bg-white/80 px-3 py-2.5">
       <div className="min-w-0 flex-1">
-        <p lang="vi" className="text-sm font-semibold leading-snug text-slate-900">
-          {lang.shortVi}
-        </p>
-        <p lang="en" className="mt-0.5 text-[12px] leading-snug text-slate-500">
-          {lang.shortEn}
-        </p>
+        <Bilingual
+          vi={lang.shortVi}
+          en={lang.shortEn}
+          viClassName="text-sm font-semibold leading-snug text-slate-900"
+          enClassName="mt-0.5 text-[12px] leading-snug text-slate-500"
+        />
       </div>
       <SeverityDot severity={weakness.severity} />
     </li>
@@ -301,12 +301,12 @@ function PronunciationRow({
   return (
     <li className="flex items-start gap-2 rounded-2xl border border-teal-100/70 bg-white/80 px-3 py-2.5">
       <div className="min-w-0 flex-1">
-        <p lang="vi" className="text-sm font-semibold leading-snug text-slate-900">
-          {lang.shortVi}
-        </p>
-        <p lang="en" className="mt-0.5 text-[12px] leading-snug text-slate-500">
-          {lang.shortEn}
-        </p>
+        <Bilingual
+          vi={lang.shortVi}
+          en={lang.shortEn}
+          viClassName="text-sm font-semibold leading-snug text-slate-900"
+          enClassName="mt-0.5 text-[12px] leading-snug text-slate-500"
+        />
         <p
           data-testid="pronunciation-meta"
           lang="vi"
@@ -338,10 +338,14 @@ function SectionHeading({
         {icon}
       </span>
       <div className="min-w-0">
-        <h3 lang="vi" className="text-sm font-bold leading-tight text-slate-900">
-          {titleVi}
-        </h3>
-        <p lang="en" className="text-[11px] leading-tight text-slate-500">{titleEn}</p>
+        <Bilingual
+          vi={titleVi}
+          en={titleEn}
+          viAs="h3"
+          enAs="p"
+          viClassName="text-sm font-bold leading-tight text-slate-900"
+          enClassName="text-[11px] leading-tight text-slate-500"
+        />
       </div>
     </div>
   );
@@ -403,12 +407,12 @@ function GlobalEmptyState() {
       <div className="mx-auto mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm">
         <Sparkles className="h-6 w-6 text-indigo-400" aria-hidden />
       </div>
-      <p lang="vi" className="text-sm font-semibold leading-snug text-slate-900">
-        Chưa có dữ liệu — hãy hoàn thành vài bài để xem điểm yếu của bạn.
-      </p>
-      <p lang="en" className="mt-1 text-[12px] leading-snug text-slate-500">
-        Complete a few lessons to see your weakness map.
-      </p>
+      <Bilingual
+        vi="Chưa có dữ liệu — hãy hoàn thành vài bài để xem điểm yếu của bạn."
+        en="Complete a few lessons to see your weakness map."
+        viClassName="text-sm font-semibold leading-snug text-slate-900"
+        enClassName="mt-1 text-[12px] leading-snug text-slate-500"
+      />
     </section>
   );
 }

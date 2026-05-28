@@ -100,8 +100,12 @@ export default function PracticeRecommendationCard() {
         </div>
       </header>
 
-      <p style={descStyle}>{rec.description_vi}</p>
-      <p style={descEnStyle}>{rec.description_en}</p>
+      <Bilingual
+        vi={rec.description_vi}
+        en={rec.description_en}
+        viStyle={descStyle}
+        enStyle={descEnStyle}
+      />
 
       <div style={ctaRowStyle}>
         <button type="button" onClick={onStart} style={primaryBtnStyle} disabled={!rec.target}>
