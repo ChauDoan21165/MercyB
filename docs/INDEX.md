@@ -139,3 +139,168 @@ find docs -type f -name "*.md" | while read f; do
   [ "$lines" -gt 50 ] && echo "$lines $f"
 done | sort -rn
 ```
+
+## Cross-reference: docs by L0–L7 layer
+
+> Parallel to !99's restructured `ROADMAP.md`. The flat file list
+> above tells you *what exists*. This section tells you *which
+> docs sit in which layer of the L0–L7 model*, so you can find
+> the right doc when you know the layer you're working in.
+>
+> A doc may appear under more than one layer when it substantively
+> covers both. Docs that apply across every layer (collaboration
+> rules, product framing, navigation aids) are listed once under
+> § Cross-cutting at the bottom rather than repeated.
+>
+> Layers without a dedicated doc carry an explicit
+> *"No dedicated docs — see ROADMAP §<layer>"* line. Those are
+> either expected (L7 is emergent by design) or real gaps flagged
+> for future authoring (L4, L5, L6).
+
+### L0 — Foundation
+
+Platform substrate: auth, deploy, security hardening, native
+identity, release gates. See [`ROADMAP.md` §L0](../ROADMAP.md#l0--foundation).
+
+| Path | Covers what (re: L0) |
+|---|---|
+| `SETUP.md` | Local development environment — Node 22+, npm, optional CLIs (Supabase / Netlify / Vercel / glab / Capacitor). |
+| `.github/workflows/DEPLOYMENT.md` | Production deploy paths post-Vercel→Netlify migration. |
+| `.github/workflows/ROLLBACK.md` | Rollback runbook. Netlify deploy-history primary; Vercel recovery-only. |
+| `docs/runbooks/disaster-recovery.md` | Provider-outage playbook (GitHub suspension, Vercel migration, Supabase lockout). |
+| `docs/architecture/systems/native-shells.md` | Capacitor 8 iOS + Android shells; bundle-id divergence; the one-bundle-two-shells contract. |
+| `docs/architecture/systems/observability.md` | Sentry route-gate, monitoring + perf seams. |
+| `docs/architecture/systems/billing-entitlement.md` | Stripe/Apple/Google webhooks, entitlement read/write — the billing substrate underneath L2. |
+| `docs/onboarding/local-setup.md` | Bare-metal "fresh clone to dev server running" — gotchas SETUP.md doesn't cover. |
+
+### L1 — Bilingual + Privacy Substrate
+
+VI/EN parity, shame-language guardrails, local-only behavioral
+signal, no surveillance, no streaks/XP/badges. Substrate, never
+"finished." See [`ROADMAP.md` §L1](../ROADMAP.md#l1--bilingual--privacy-substrate).
+
+| Path | Covers what (re: L1) |
+|---|---|
+| `docs/architecture/systems/onboarding-language-pair.md` | Anonymous pair-pick entry; the VI/EN substrate that gates Home. |
+| `docs/architecture/data-flow.md` | Local-only behavioral signal flow (Stage 3A buffers, Supabase boundary, what stays on-device). |
+| `docs/ACCESSIBILITY.md` | A11Y implementation. A11Y is part of the substrate, not optional polish. |
+
+### L2 — Learning OS
+
+Rooms, AI Tutor, placement v3, L1 detector consumption,
+pronunciation boundaries. Active / stabilizing.
+See [`ROADMAP.md` §L2](../ROADMAP.md#l2--learning-os).
+
+| Path | Covers what (re: L2) |
+|---|---|
+| `docs/architecture/systems/search-rooms.md` | Room registry (~488 JSON files) + the rooms-search surface. |
+| `docs/architecture/systems/ai-tutor.md` | Live `guide-assistant` edge-function path + the two-layer tutor surface (incl. §15 Bar #3 L1 injection). |
+| `docs/architecture/systems/mercy-guide.md` | Dockable in-context Teacher Mercy panel — the tutor UI surface. |
+| `docs/architecture/systems/placement-v3.md` | Server-side 2PL IRT adaptive placement engine. |
+| `docs/architecture/data-flow.md` | The learner-signal pipeline; entitlement derivation read path. |
+| `docs/architecture/systems/billing-entitlement.md` | Entitlement read/write rules — what L2 surfaces gate on. |
+
+### L3 — Diagnostic Signal Layer
+
+Stage 3A Local Weakness Map + Stage 3B Suggested Practice.
+Shipped passive; closes ~30% of the diagnostic loop. See
+[`ROADMAP.md` §L3](../ROADMAP.md#l3--diagnostic-signal-layer).
+
+| Path | Covers what (re: L3) |
+|---|---|
+| `docs/architecture/systems/study-os-stage-3.md` | Stage 3A/3B/3C/3D Study OS bricks — adapter contracts, aggregator, `/weak-at` route, `(c+)` trigger semantics. |
+| *(also)* `docs/architecture/data-flow.md` | Stage 3A localStorage buffer flow + the read-side of `/weak-at`. |
+| *(also, untracked but load-bearing)* `docs/stage-3a/local-weakness-map-design.md` | Stage 3A design doc — sibling of the deep-dive; "Likely should be tracked" per the inventory above. |
+
+### L4 — Diagnostic Intervention Layer
+
+The planner that biases what the learner SEES NEXT based on weakness
+signals. **NEXT engineering target.** See
+[`ROADMAP.md` §L4](../ROADMAP.md#l4--diagnostic-intervention-layer).
+
+**No dedicated docs — see ROADMAP §L4.** Flagged as a real gap:
+the layer that closes ~70% of the diagnostic loop has no design
+doc, no contract sketch, no boundary spec. When L4 work starts,
+this section should add a deep-dive sibling to
+`study-os-stage-3.md`.
+
+### L5 — Pedagogy Layer
+
+Curriculum, sequencing, SRS policy, L1-transfer-aware scheduling,
+motivation-aware pacing. Research-required, owner-decision-heavy.
+See [`ROADMAP.md` §L5](../ROADMAP.md#l5--pedagogy-layer).
+
+**No dedicated docs — see ROADMAP §L5.** Expected (the layer is
+research-blocked, not engineering-blocked) but a real gap: when
+pedagogy decisions land, they need a decision-record artifact
+(*"what is the success metric for good planning?"*, *"what does a
+well-planned week look like?"*) before L4 can ground its
+heuristics. Flagged for future authoring once Chau / a pedagogy
+adviser commits to a position.
+
+### L6 — Parent / Teacher / Family Intelligence
+
+Diaspora-parent diagnostic transparency. Parallel-track candidate
+(not sequential successor to L5). See
+[`ROADMAP.md` §L6](../ROADMAP.md#l6--parent--teacher--family-intelligence)
+and the preserved Stage 5 Parent/Teacher View detail in
+[`ROADMAP.md` § Layer detail: L6](../ROADMAP.md#layer-detail-l6--parent--teacher--family-intelligence).
+
+**No dedicated docs — see ROADMAP §L6.** Flagged as a real gap:
+this is the highest-differentiation-per-effort layer in the
+roadmap, but no design doc, market sketch, or copy spec exists.
+A first L6 doc would be a candidate for "Likely should be tracked"
+status from day one.
+
+### L7 — Differentiation
+
+Positional identity ("the product MercyBlade IS"), not comparative.
+Emerges from L4+L5+L6; not directly buildable. See
+[`ROADMAP.md` §L7](../ROADMAP.md#l7--differentiation).
+
+**No dedicated docs — see ROADMAP §L7.** NOT a gap: this layer is
+emergent by design. Documenting it standalone would be a category
+error — there is no L7 *system* to deep-dive. The three positional
+statements live in the ROADMAP and surface through L2/L3/L4/L6
+docs as those layers ship.
+
+### Cross-cutting (apply across L0–L7)
+
+These docs are not layer-specific — they describe the rules,
+mission, and navigation that every layer shares. Listed here once
+rather than repeated under every L0–L7 entry above.
+
+| Path | Why cross-cutting |
+|---|---|
+| `CLAUDE.md` | Project mission, the five non-negotiables, operating discipline, architecture pointers. |
+| `STRATEGY.md` *(repo root)* | The canonical living strategy doc — pair matrix (§4), product strategy (§5), Definition of Done (§15), Duolingo competition strategy (§12). |
+| `PRINCIPLES.md` | 19 collaboration principles — apply to every layer's work. |
+| `ROADMAP.md` *(repo root)* | The L0–L7 layer model itself + cross-cutting constraints (Study OS boundaries, local-only posture, §15 relationship, Rule). |
+| `README.md` | Product README — bilingual-first product framing + tech stack table. |
+| `docs/architecture/system-overview.md` | Reference map of every major system in `src/` + the Supabase surface. Cross-layer index. |
+| `docs/onboarding/README.md` | First stop for a new contributor — cross-layer reading order. |
+| `docs/onboarding/your-first-contribution.md` | Senior-to-junior walkthrough — process across all layers. |
+| `docs/onboarding/glossary.md` | Project-specific terms — touches every layer's vocabulary. |
+| `docs/contributing/agent-handoff.md` | Agent briefing (Claude / GPT / human) — read **before** the first dispatch on any layer. |
+
+### Real layer gaps (summary, for future authoring)
+
+- **L4 — Diagnostic Intervention Layer**: no dedicated docs. When
+  L4 engineering starts, author a deep-dive sibling to
+  `docs/architecture/systems/study-os-stage-3.md` describing the
+  planner's contract, the bias mechanism, the placement-resampling
+  hook, and the tutor-suggestion modification.
+- **L5 — Pedagogy Layer**: no dedicated docs (expected — research-
+  blocked). When pedagogy decisions land, author a
+  decision-record artifact at `docs/pedagogy/decisions.md` (or
+  similar) documenting the success metric, well-planned-week
+  shape, L1-transfer weighting, and motivation-aware pacing
+  signal set.
+- **L6 — Parent / Teacher / Family Intelligence**: no dedicated
+  docs. Highest-differentiation-per-effort opportunity. A first
+  doc (design + market + copy direction) would be a "Likely should
+  be tracked" candidate from day one.
+
+L7 deliberately has no docs. L4 / L5 / L6 gaps are real and will
+need to be closed as those layers move from "next" / "research-
+required" / "parallel-track candidate" to "in flight."
