@@ -21,8 +21,9 @@
  *   Wave 2 (!83 — Progress / Billing / Listening):
  *     - src/pages/Progress.tsx
  *     - src/pages/Billing.tsx
- *     - src/pages/BillingSuccess.tsx
  *     - src/pages/BillingSuccessPage.tsx
+ *     - (src/pages/BillingSuccess.tsx — deleted as dead duplicate in the
+ *        cleanup MR that closed C5's !95/!108 noise-file list)
  *     - src/components/pricing/IapPlanCard.tsx
  *     - src/pages/listening/Library.tsx
  *     - src/pages/listening/ClipPlayer.tsx
@@ -109,7 +110,6 @@ const CONTRAST_FIXED_FILES = [
   // Wave 2 — !83 (Progress / Billing / Listening)
   "src/pages/Progress.tsx",
   "src/pages/Billing.tsx",
-  "src/pages/BillingSuccess.tsx",
   "src/pages/BillingSuccessPage.tsx",
   "src/components/pricing/IapPlanCard.tsx",
   "src/pages/listening/Library.tsx",
