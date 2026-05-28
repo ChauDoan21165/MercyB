@@ -737,25 +737,40 @@ the wrapper doesn't model.
 | `src/components/home/PracticeRecommendationCard.tsx` | 1 | !121. Description pair (this MR ALSO adds the WCAG 3.1.2 `lang` attrs the inline pair was missing). |
 | `src/pages/onboarding/OnboardingPage.tsx` | 2 | **This MR.** Pre-pick `StepHeader` title pair (`viAs="h1" enAs="div"` + `primaryRef={headingRef}` + `tabIndex={-1}` + `separator={<PeerDivider />}`) and body pair (`separator={<PeerDivider />}`). |
 
-**Flagged — deliberately NOT migrated (3 sites still flagged; 1 closed by this MR's `separator` prop):**
+**Flagged — deliberately NOT migrated (post-!121 / post-!123 separator add):**
 
-| Site | Reason |
+| Site | Status |
 |---|---|
-| `LocalWeaknessMap.tsx` L1Row `exampleVi`/`exampleEn` (around lines 184/189) | Each side guarded by its own `&& { … }` conditional. `<Bilingual>` deliberately does not silently drop empty halves (per its component-header contract); migrating would render an empty `<p>` whenever only one example is populated. Could be resolved by adding a `dropEmpty` opt-in to the wrapper, but that's a wrapper-API change, not a mechanical sweep. |
-| `SuggestedPracticeList.tsx` heading `<h3 id="suggested-practice-heading">` + EN subtitle (lines 124–133) | The `<h3>` carries an `id` referenced by the parent `<section aria-labelledby="suggested-practice-heading">`. `<Bilingual>` has no `viId`/`enId` prop to pass through. Could be resolved by extending the wrapper's API; not done per the wrapper-stability rule. |
-| `Pricing.tsx` plan-card bullets `<li>` containing `<span lang="en">{bullet}</span> {plan.bulletsVi?.[i] && <span lang="vi">…</span>}` (around lines 615/617) | Same conditional-one-side-missing pattern as the L1 example pair. The VI half is only rendered when `plan.bulletsVi?.[i]` is truthy; `<Bilingual>` would emit an empty VI span otherwise. |
-| ~~`Pricing.tsx` legal-link anchors `<a>…<span lang="vi">VI</span> / <span lang="en">EN</span></a>`~~ | **Closed by THIS MR's `separator` prop.** The wrapper now accepts an optional `ReactNode` between the two language nodes; a future revision can migrate these anchors with `separator=" / "`. Not migrated as part of this MR per the anti-bundling rule (separator addition is here; legal-link migration in its own follow-up). |
+| ~~`LocalWeaknessMap.tsx` L1Row `exampleVi`/`exampleEn`~~ | **CLOSED by THIS MR's `dropEmpty` prop.** Migrated. |
+| ~~`SuggestedPracticeList.tsx` heading `<h3 id="suggested-practice-heading">`~~ | **CLOSED by THIS MR's `viProps` prop.** Migrated. `viProps={{ id: "suggested-practice-heading" }}` passes the heading-id through to the rendered h3 so `aria-labelledby` still resolves. |
+| ~~`Pricing.tsx` plan-card bullets~~ | **CLOSED by THIS MR's `dropEmpty` prop.** Migrated. `primary="en" dropEmpty` cleanly handles the EN-always / VI-optional shape. |
+| `Pricing.tsx` legal-link anchors | Unblocked by !123's `separator` prop; not migrated in this MR per anti-bundling (separator-only follow-up). |
 
 **Open follow-ups:**
 
-1. ~~**O2 onboarding migration** — blocked on the `primaryRef` wrapper-API addition.~~ **CLOSED in THIS MR.**
-2. **Conditional-render extension** — two of the three remaining flags (L1 example, plan bullets) share the same "one side may be empty / undefined" shape. A `dropEmpty` opt-in on `<Bilingual>` (or a sibling `<BilingualOptional>` component) would close them together. Deliberately deferred — the wrapper's "no silent drop" contract is a feature, not a bug.
-3. **Per-side prop passthrough** — SuggestedPracticeList heading needs `id`; potentially other surfaces want `data-testid`. A `viProps` / `enProps` escape hatch on `<Bilingual>` would close all such cases. Deferred for the same reason as #2 — keep the wrapper minimal until a third unmigratable site demands it.
-4. **Legal-link anchor migration** — newly unblocked by THIS MR's `separator` prop. Mechanical follow-up.
+1. ~~**O2 onboarding migration**~~ — **CLOSED in !123.**
+2. ~~**Conditional-render extension (`dropEmpty`)**~~ — **CLOSED in THIS MR.**
+3. ~~**Per-side prop passthrough (`viProps` / `enProps`)**~~ — **CLOSED in THIS MR.**
+4. **Legal-link anchor migration** — newly-unblocked by !123's `separator` prop; mechanical follow-up. (Anti-bundling: not in this MR — `separator` + `dropEmpty` + `viProps` could interact and the isolated-MR rule applies.)
 
-Tests verified post-sweep (!121): 124 vitest specs across `stage-3a/`, `stage-3b/`, `home/`, `screens/`, and `Bilingual.test.tsx` — all green. Tests verified post-O2-migration (this MR): same suites still green + `OnboardingPage` subtree 67/67 + `Bilingual.test.tsx` extended to 27/27. No test-file edits required for the !121 sweep; this MR added 12 tests to cover the three new wrapper props (primaryRef, tabIndex, separator).
+Tests verified post-sweep (!121): 124 vitest specs. Tests post-O2-migration (!123): + `OnboardingPage` subtree 67/67 + `Bilingual.test.tsx` extended to 27. **Tests post-`dropEmpty` + `viProps`/`enProps` (THIS MR): `Bilingual.test.tsx` extended from 27 → 43 (16 new); 145 vitest specs across stage-3a + stage-3b + screens + Bilingual subtrees all green, no test-file edits required for the 3 site migrations (the markup change was transparent to existing assertions).**
 
-**All four established consumer flavours (W2 / O2 / P4 / Home) now have at least one site migrated**, so the wrapper API is now considered proven. The remaining backlog is the 3 flagged sites plus follow-up #2/#3/#4 — each is its own MR per the anti-bundling rule.
+**All four established consumer flavours (W2 / O2 / P4 / Home) have at least one site migrated**, and every documented inline lang-attr pattern in the codebase is now either migrated or unblocked-pending-mechanical-follow-up. Only follow-up #4 (legal-link) remains.
+
+## Wrapper API summary (post-extension)
+
+After !115 (initial wrapper) + !121 (sweep) + !123 (primaryRef + separator) + THIS MR (dropEmpty + viProps/enProps), `<Bilingual>` exposes **18 props** across five concerns:
+
+- **Content:** `vi`, `en`
+- **Order + element type:** `primary`, `as`, `viAs`, `enAs`
+- **Styling:** `viClassName`, `enClassName`, `viStyle`, `enStyle`
+- **Language attribute:** `viLang`, `enLang`
+- **Focus management:** `primaryRef`, `tabIndex`
+- **Layout:** `separator`
+- **Conditional rendering:** `dropEmpty`
+- **Escape hatch:** `viProps`, `enProps`
+
+Every prop is opt-in; the minimum useful call is `<Bilingual vi="…" en="…" />`. All pre-extension consumers continue to render byte-identically — backward compatibility is the binding contract.
 
 ---
 

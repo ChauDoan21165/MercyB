@@ -180,6 +180,64 @@ export interface BilingualProps {
    * drop a load-bearing visual semantic.
    */
   separator?: ReactNode;
+  /**
+   * When `true`, an empty side (one of `vi` / `en` is `""`, `null`,
+   * `undefined`, or `false`) renders NOTHING for that side — no
+   * element, no `lang` attr, no DOM impact. If both sides are empty,
+   * the wrapper returns `null`.
+   *
+   * Default `false` — !115's deliberate-NO-silent-drop contract
+   * stays the law. An empty string with `dropEmpty=false` still
+   * renders an empty `<p lang="vi"></p>` so the missing-half is
+   * visible at the data layer.
+   *
+   * Use case: conditional one-side-missing patterns like
+   * LocalWeaknessMap's L1Row example-pair (`{exampleVi && <p>…</p>}`
+   * separately from `{exampleEn && <p>…</p>}`) and Pricing's
+   * plan-card bullets where `plan.bulletsVi?.[i]` may be undefined
+   * per-bullet. Migrating these to `<Bilingual>` without
+   * `dropEmpty` would emit empty paragraphs when only one side had
+   * content — a regression.
+   *
+   * When `dropEmpty` drops one side, the `separator` is also
+   * omitted — a separator between one rendered element and nothing
+   * is presentational noise.
+   */
+  dropEmpty?: boolean;
+  /**
+   * Arbitrary props spread onto the VI side's rendered element.
+   * Escape hatch for `id`, `aria-*`, `data-*`, `role`, and other
+   * attributes the wrapper doesn't model individually.
+   *
+   * **Merge order:** `viProps` is spread first; the wrapper's
+   * explicit per-side props (`lang`, `className`, `style`, `ref`,
+   * `tabIndex`) then overlay. This means a caller passing
+   * `viProps={{ lang: 'fr' }}` does NOT defeat the `viLang` contract
+   * — `viLang` (or its default) always wins. Pass `viLang="fr"` if
+   * you need to override the language.
+   *
+   * Use case: SuggestedPracticeList's heading carries
+   * `id="suggested-practice-heading"` referenced by the parent
+   * `<section aria-labelledby="…">`. Pass via
+   * `viProps={{ id: 'suggested-practice-heading' }}`.
+   */
+  viProps?: Record<string, unknown>;
+  /**
+   * Arbitrary props spread onto the EN side's rendered element. See
+   * `viProps` for merge-order semantics — `enProps` is spread first,
+   * the wrapper's explicit per-side props then overlay.
+   */
+  enProps?: Record<string, unknown>;
+}
+
+/**
+ * Whether a `ReactNode` content side is "empty" for `dropEmpty`
+ * purposes. Mirrors React's "renders nothing" semantics — falsy
+ * primitives (empty string, null, undefined, false) count as empty.
+ * `0` does NOT count, because `0` renders as visible text "0".
+ */
+function isEmptyContent(node: ReactNode): boolean {
+  return node === "" || node === null || node === undefined || node === false;
 }
 
 export function Bilingual({
@@ -198,6 +256,9 @@ export function Bilingual({
   primaryRef,
   tabIndex,
   separator,
+  dropEmpty = false,
+  viProps,
+  enProps,
 }: BilingualProps) {
   // Resolve per-side element types — falls back to `as` when not
   // overridden.
@@ -209,38 +270,60 @@ export function Bilingual({
   // to the data, not to the JSX.
   const isViPrimary = primary !== "en";
 
-  const viNode = createElement(
-    viElement,
-    {
-      lang: viLang,
-      className: viClassName,
-      style: viStyle,
-      // `ref` is forwarded only when this side is primary; React's
-      // createElement accepts undefined ref cleanly (no warning, no
-      // attached ref).
-      ref: isViPrimary ? primaryRef : undefined,
-      tabIndex: isViPrimary ? tabIndex : undefined,
-    },
-    vi,
-  );
+  // `dropEmpty` semantics. When false (default), preserve !115's
+  // no-silent-drop contract — empty halves still render. When true,
+  // render nothing for an empty side; if both sides are empty, the
+  // wrapper returns null.
+  const dropVi = dropEmpty && isEmptyContent(vi);
+  const dropEn = dropEmpty && isEmptyContent(en);
+  if (dropVi && dropEn) return null;
 
-  const enNode = createElement(
-    enElement,
-    {
-      lang: enLang,
-      className: enClassName,
-      style: enStyle,
-      ref: isViPrimary ? undefined : primaryRef,
-      tabIndex: isViPrimary ? undefined : tabIndex,
-    },
-    en,
-  );
+  // viProps / enProps are spread FIRST; the wrapper's explicit
+  // per-side props (lang/className/style/ref/tabIndex) then overlay.
+  // This protects the `viLang` / `enLang` contract from being
+  // accidentally overridden by an arbitrary `viProps={{ lang: '…' }}`.
+  const viNode = dropVi
+    ? null
+    : createElement(
+        viElement,
+        {
+          ...viProps,
+          lang: viLang,
+          className: viClassName,
+          style: viStyle,
+          // `ref` is forwarded only when this side is primary; React's
+          // createElement accepts undefined ref cleanly (no warning, no
+          // attached ref).
+          ref: isViPrimary ? primaryRef : undefined,
+          tabIndex: isViPrimary ? tabIndex : undefined,
+        },
+        vi,
+      );
+
+  const enNode = dropEn
+    ? null
+    : createElement(
+        enElement,
+        {
+          ...enProps,
+          lang: enLang,
+          className: enClassName,
+          style: enStyle,
+          ref: isViPrimary ? undefined : primaryRef,
+          tabIndex: isViPrimary ? undefined : tabIndex,
+        },
+        en,
+      );
+
+  // Separator only renders when BOTH sides actually rendered. A
+  // separator between one element and `null` is presentational noise.
+  const showSeparator = separator !== undefined && viNode !== null && enNode !== null;
 
   if (primary === "en") {
     return (
       <>
         {enNode}
-        {separator}
+        {showSeparator ? separator : null}
         {viNode}
       </>
     );
@@ -249,7 +332,7 @@ export function Bilingual({
   return (
     <>
       {viNode}
-      {separator}
+      {showSeparator ? separator : null}
       {enNode}
     </>
   );
