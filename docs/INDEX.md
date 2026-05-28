@@ -238,6 +238,8 @@ well-planned week look like?"*) before L4 can ground its
 heuristics. Flagged for future authoring once Chau / a pedagogy
 adviser commits to a position.
 
+- [`docs/architecture/L5-pedagogy-decision-record.md`](./architecture/L5-pedagogy-decision-record.md) — Decision-record stub. Captures the 3 deferred decisions surfaced by !122 (threshold / sequencing / mastery). All entries [PENDING] — not yet decidable.
+
 ### L6 — Parent / Teacher / Family Intelligence
 
 Diaspora-parent diagnostic transparency. Parallel-track candidate
