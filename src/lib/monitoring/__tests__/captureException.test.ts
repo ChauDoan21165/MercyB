@@ -78,6 +78,7 @@ type SentrySdkSpy = {
   captureMessage: ReturnType<typeof vi.fn>;
   setUser: ReturnType<typeof vi.fn>;
   setTag: ReturnType<typeof vi.fn>;
+  getCurrentScope: ReturnType<typeof vi.fn>;
   withScope: ReturnType<typeof vi.fn>;
   addBreadcrumb: ReturnType<typeof vi.fn>;
 };
@@ -88,6 +89,7 @@ function makeSdk(): SentrySdkSpy {
     captureMessage: vi.fn(),
     setUser: vi.fn(),
     setTag: vi.fn(),
+    getCurrentScope: vi.fn(() => ({ getUser: vi.fn(() => null) })),
     // withScope receives a callback with a scope object whose setTag we
     // can spy on per-call by examining the scope handed in.
     withScope: vi.fn((cb: (scope: { setTag: ReturnType<typeof vi.fn> }) => void) => {
@@ -120,7 +122,22 @@ beforeEach(() => {
 
 afterEach(() => {
   vi.restoreAllMocks();
+  vi.useRealTimers();
 });
+
+async function flushRlsCapture(): Promise<void> {
+  for (let i = 0; i < 5; i += 1) {
+    await Promise.resolve();
+  }
+}
+
+function makeJwt(exp: number): string {
+  const encode = (value: unknown) =>
+    Buffer.from(JSON.stringify(value))
+      .toString("base64url");
+
+  return `${encode({ alg: "none", typ: "JWT" })}.${encode({ exp })}.signature`;
+}
 
 // ────────────────────────────────────────────────────────────────────────
 // captureError
@@ -228,10 +245,11 @@ describe("captureMessage", () => {
 // ────────────────────────────────────────────────────────────────────────
 
 describe("captureRlsDenied", () => {
-  it("tags rls_denied=true + rls_table on the scope and captures an Error in scope isolation", () => {
+  it("tags rls_denied=true + rls_table on the scope and captures an Error in scope isolation", async () => {
     const sdk = makeSdk();
     getSentryModuleMock.mockReturnValue(sdk);
     captureRlsDenied("admin_allowlist", "GET");
+    await flushRlsCapture();
     expect(sdk.withScope).toHaveBeenCalledTimes(1);
     const scopeSpy = withScopeLastScope.current!;
     expect(scopeSpy.setTag).toHaveBeenCalledWith("rls_denied", "true");
@@ -243,20 +261,22 @@ describe("captureRlsDenied", () => {
     expect(err.message).toContain("GET");
   });
 
-  it("pins featureArea=admin only when classifyRlsTable returns 'admin'", () => {
+  it("pins featureArea=admin only when classifyRlsTable returns 'admin'", async () => {
     classifyRlsTableMock.mockReturnValue("admin");
     const sdk = makeSdk();
     getSentryModuleMock.mockReturnValue(sdk);
     captureRlsDenied("admin_allowlist", "DELETE");
+    await flushRlsCapture();
     const scopeSpy = withScopeLastScope.current!;
     expect(scopeSpy.setTag).toHaveBeenCalledWith("featureArea", "admin");
   });
 
-  it("does NOT pin featureArea when classifyRlsTable returns null (non-admin table)", () => {
+  it("does NOT pin featureArea when classifyRlsTable returns null (non-admin table)", async () => {
     classifyRlsTableMock.mockReturnValue(null);
     const sdk = makeSdk();
     getSentryModuleMock.mockReturnValue(sdk);
     captureRlsDenied("profiles", "POST");
+    await flushRlsCapture();
     const scopeSpy = withScopeLastScope.current!;
     const featureAreaCalls = scopeSpy.setTag.mock.calls.filter(
       (c: unknown[]) => c[0] === "featureArea",
@@ -264,12 +284,74 @@ describe("captureRlsDenied", () => {
     expect(featureAreaCalls).toHaveLength(0);
   });
 
-  it("uses 'unknown' for rls_table when the table arg is empty", () => {
+  it("uses 'unknown' for rls_table when the table arg is empty", async () => {
     const sdk = makeSdk();
     getSentryModuleMock.mockReturnValue(sdk);
     captureRlsDenied("", "GET");
+    await flushRlsCapture();
     const scopeSpy = withScopeLastScope.current!;
     expect(scopeSpy.setTag).toHaveBeenCalledWith("rls_table", "unknown");
+  });
+
+  it("adds route, scope user, session user, bearer presence, and token expiry context", async () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-05-28T10:25:00Z"));
+    window.history.pushState({}, "", "/tiers");
+
+    const sdk = makeSdk();
+    sdk.getCurrentScope.mockReturnValue({
+      getUser: vi.fn(() => ({ id: "sentry-user-1" })),
+    });
+    getSentryModuleMock.mockReturnValue(sdk);
+
+    captureRlsDenied("rooms", "GET", {
+      authorizationHeader: `Bearer ${makeJwt(Math.floor(Date.now() / 1000) + 60)}`,
+      getSession: vi.fn().mockResolvedValue({
+        data: { session: { user: { id: "session-user-1" } } },
+      }),
+    });
+
+    await flushRlsCapture();
+
+    expect(sdk.captureException).toHaveBeenCalledTimes(1);
+    expect(sdk.captureException.mock.calls[0][1]).toEqual({
+      extra: {
+        route_pathname: "/tiers",
+        sentry_scope_user_id: "sentry-user-1",
+        supabase_session_user_id: "session-user-1",
+        supabase_session_lookup_error: false,
+        request_has_authorization_bearer: true,
+        request_token_expiry_status: "valid",
+      },
+    });
+  });
+
+  it("classifies missing and expired bearer tokens without logging token material", async () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-05-28T10:25:00Z"));
+
+    const sdk = makeSdk();
+    getSentryModuleMock.mockReturnValue(sdk);
+
+    captureRlsDenied("study_log", "POST", {
+      authorizationHeader: `Bearer ${makeJwt(Math.floor(Date.now() / 1000) - 60)}`,
+      getSession: vi.fn().mockRejectedValue(new Error("session unavailable")),
+    });
+    await flushRlsCapture();
+
+    const extra = sdk.captureException.mock.calls[0][1]?.extra as Record<string, unknown>;
+    expect(extra.request_has_authorization_bearer).toBe(true);
+    expect(extra.request_token_expiry_status).toBe("expired");
+    expect(extra.supabase_session_lookup_error).toBe(true);
+    expect(JSON.stringify(extra)).not.toContain("signature");
+
+    sdk.captureException.mockClear();
+    captureRlsDenied("study_log", "POST");
+    await flushRlsCapture();
+
+    const missingExtra = sdk.captureException.mock.calls[0][1]?.extra as Record<string, unknown>;
+    expect(missingExtra.request_has_authorization_bearer).toBe(false);
+    expect(missingExtra.request_token_expiry_status).toBe("missing");
   });
 
   it("pre-init: pulls activateSentry('explicit-rls'), does NOT enqueue (first denial's rls_* tags can't survive replay)", () => {
