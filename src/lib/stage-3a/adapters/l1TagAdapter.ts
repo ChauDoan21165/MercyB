@@ -36,6 +36,39 @@ export interface L1RecentEntry {
   ts: number;
 }
 
+/**
+ * Post-write subscribers. A generic notifier so downstream layers (e.g.
+ * Stage 4's signal-change hook, Q9=B) can react to a fresh L1 tag write
+ * WITHOUT this adapter importing them — the dependency points the right
+ * way (the listener imports the adapter, not vice-versa), so Stage 3A
+ * stays Stage-4-agnostic. Listeners are notified after a successful
+ * write; a throwing listener is isolated so it can never corrupt the
+ * ring-buffer write path.
+ */
+type L1TagListener = () => void;
+const l1TagListeners = new Set<L1TagListener>();
+
+/**
+ * Register a listener fired after each successful `recordL1Tag` write.
+ * Returns an unsubscribe fn. Idempotent on the same listener reference.
+ */
+export function subscribeL1TagRecorded(listener: L1TagListener): () => void {
+  l1TagListeners.add(listener);
+  return () => {
+    l1TagListeners.delete(listener);
+  };
+}
+
+function notifyL1TagRecorded(): void {
+  for (const listener of l1TagListeners) {
+    try {
+      listener();
+    } catch {
+      // A downstream listener must never break the ring-buffer write.
+    }
+  }
+}
+
 function getStorage(): Storage | null {
   try {
     if (typeof window === "undefined") return null;
@@ -106,6 +139,11 @@ export function recordL1Tag(
   const trimmed =
     next.length > MAX_ENTRIES ? next.slice(next.length - MAX_ENTRIES) : next;
   safeWrite(storage, trimmed);
+
+  // Notify post-write subscribers (e.g. Stage 4's signal-change hook).
+  // After the write so listeners read the up-to-date buffer; only on a
+  // real append (the dedupe path above returns before reaching here).
+  notifyL1TagRecorded();
 }
 
 /**
