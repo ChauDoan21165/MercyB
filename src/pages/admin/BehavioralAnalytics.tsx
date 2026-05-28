@@ -267,7 +267,7 @@ export default function BehavioralAnalytics(): React.ReactElement {
           </>
         )}
 
-        <p style={{ fontSize: 11, color: "#94a3b8" }}>
+        <p style={{ fontSize: 11, color: "#64748b" }}>
           Data is read through SECURITY DEFINER RPCs that gate on get_admin_level
           ≥ 9. No individual user rows are returned to the client.
         </p>
@@ -300,7 +300,7 @@ function FunnelStat({
       <div style={{ fontSize: 24, fontWeight: 900, color: highlight ? "#065f46" : "#1f2937", marginTop: 4, fontVariantNumeric: "tabular-nums" }}>
         {value.toLocaleString()}
       </div>
-      <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 2 }}>
+      <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>
         {pct(value, ofTotal)} of signups
       </div>
     </div>

@@ -202,7 +202,7 @@ export default function StoryModeration(): React.ReactElement {
                 {row.profession && (
                   <p className="text-xs text-slate-500">{row.profession}</p>
                 )}
-                <p className="mt-1 text-xs text-slate-400">
+                <p className="mt-1 text-xs text-slate-500">
                   {new Date(row.submitted_at).toLocaleString("vi-VN")} ·{" "}
                   <span className="font-mono uppercase">{row.status}</span>
                 </p>

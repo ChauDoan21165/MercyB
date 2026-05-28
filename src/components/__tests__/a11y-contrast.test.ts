@@ -33,7 +33,7 @@
  *     - src/components/leaderboard/LeaderboardCard.tsx
  *     - src/pages/leaderboards/MonthlyReferralLeaderboard.tsx
  *
- *   Wave 4 (this MR — forms + certificates):
+ *   Wave 4 (!97 — forms + certificates):
  *     - src/components/corporate/CorporateAccountForm.tsx
  *     - src/components/corporate/InviteSeatsForm.tsx
  *     - src/components/family/InviteFamilyMemberForm.tsx
@@ -45,6 +45,18 @@
  *     - src/components/certificates/Certificate.tsx
  *     - src/pages/certificates/CertificatesGalleryPage.tsx
  *     - src/lib/certificates/certificateExport.ts
+ *
+ *   Wave 5 (this MR — speech-history + admin):
+ *     - src/pages/speech/SpeechHistoryPage.tsx
+ *     - src/pages/admin/InterviewPromptsModeration.tsx
+ *     - src/pages/admin/StoryModeration.tsx
+ *     - src/pages/admin/TeacherFeedbackTriage.tsx
+ *     - src/pages/admin/BehavioralAnalytics.tsx
+ *     - src/pages/admin/RetentionDashboard.tsx
+ *     - src/pages/admin/LatencyMonitoring.tsx
+ *     - src/pages/admin/FrontendPerformance.tsx
+ *     - src/pages/admin/SloDetail.tsx
+ *     - src/pages/admin/SloDashboard.tsx
  *
  * Each guarded file must stay free of `text-slate-400` (bare class)
  * and `#94a3b8` (hex) literals. Three escape hatches let intentional
@@ -107,7 +119,7 @@ const CONTRAST_FIXED_FILES = [
   "src/components/leaderboard/WeeklyLeaderboard.tsx",
   "src/components/leaderboard/LeaderboardCard.tsx",
   "src/pages/leaderboards/MonthlyReferralLeaderboard.tsx",
-  // Wave 4 — this MR (forms + certificates)
+  // Wave 4 — !97 (forms + certificates)
   "src/components/corporate/CorporateAccountForm.tsx",
   "src/components/corporate/InviteSeatsForm.tsx",
   "src/components/family/InviteFamilyMemberForm.tsx",
@@ -119,6 +131,17 @@ const CONTRAST_FIXED_FILES = [
   "src/components/certificates/Certificate.tsx",
   "src/pages/certificates/CertificatesGalleryPage.tsx",
   "src/lib/certificates/certificateExport.ts",
+  // Wave 5 — this MR (speech-history + admin dashboards)
+  "src/pages/speech/SpeechHistoryPage.tsx",
+  "src/pages/admin/InterviewPromptsModeration.tsx",
+  "src/pages/admin/StoryModeration.tsx",
+  "src/pages/admin/TeacherFeedbackTriage.tsx",
+  "src/pages/admin/BehavioralAnalytics.tsx",
+  "src/pages/admin/RetentionDashboard.tsx",
+  "src/pages/admin/LatencyMonitoring.tsx",
+  "src/pages/admin/FrontendPerformance.tsx",
+  "src/pages/admin/SloDetail.tsx",
+  "src/pages/admin/SloDashboard.tsx",
 ] as const;
 
 /**

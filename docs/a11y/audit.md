@@ -258,7 +258,7 @@ The static guard's regex skips `disabled:` / `dark:` / `hover:` / `focus:` / `gr
 - **Explicit VI peer content:** 3 of 15 (`leaderboardCopy.*.vi` on `LeaderboardCard` lines 123 / 152 / 236).
 - **Language-agnostic:** 12 of 15 — rank numerals (`#1`, `#2`, …), attempts counts, romanization spans (any non-Roman script), phonetic transcriptions (IPA), register labels (`FORMAL` / `INFORMAL` / …), example sentences in the lesson's own native language. These darken for every learner regardless of language pair — including Vietnamese learners studying any of the supported targets.
 
-**Wave 4 — this MR (forms + certificates, 27 locations):** ✅ shipped — 23 Tailwind-class form fixes + 3 hex certificate fixes + 1 canvas `fillStyle` fix, across 11 files:
+**Wave 4 — !97 (forms + certificates, 27 locations):** ✅ shipped — 23 Tailwind-class form fixes + 3 hex certificate fixes + 1 canvas `fillStyle` fix, across 11 files:
 
 | File | Locations | Form |
 |---|---|---|
@@ -286,15 +286,45 @@ Net VI-positive: 25 of 27 directly benefit Vietnamese learners (either VI text o
 
 **Notable canvas-text fix:** `certificateExport.ts` paints the VI subtitle onto the user-exported PDF / PNG certificate. That asset is what learners share with employers, family, or social platforms — the contrast story extends to non-DOM rendering. Fixing this is a 1-line `ctx.fillStyle` change that improves every certificate exported from this MR forward (already-exported PNGs are unchanged).
 
-**Remaining footprint (out of this MR's scope — wave-5+ sweep):**
+**Wave 5 — this MR (speech-history + admin, 13 fixes + 4 exceptions):** ✅ shipped — 12 → `slate-500` + 1 → `slate-600` (on `bg-slate-100`) + 4 chart-border `a11y-contrast:exception` markers (non-text 1.4.11 3:1 already met), across 10 files:
 
-After waves 0+1+2+3+4, whole-codebase grep finds **~95 remaining bare `text-slate-400`** + **~50 remaining `#94a3b8` hex** usages across the speech-history page, admin / dev surfaces, the `MarketingLandingPage` inline `<style>` block, and a long tail of one-off non-Tailwind sites. Increasingly the remaining usages skew toward non-text contexts (chart fills, `no_data` indicators) where WCAG 1.4.11 3:1 applies, not 1.4.3 4.5:1.
+| File | Fix locations | Exception locations | Form |
+|---|---|---|---|
+| `src/pages/speech/SpeechHistoryPage.tsx` | 4 (`scoreColor` null + `trendColor.insufficient` + VI empty-state + 11px caption) | — | inline `#94a3b8` hex |
+| `src/pages/admin/InterviewPromptsModeration.tsx` | 2 | — | Tailwind class |
+| `src/pages/admin/StoryModeration.tsx` | 1 | — | Tailwind class |
+| `src/pages/admin/TeacherFeedbackTriage.tsx` | 1 | — | Tailwind class |
+| `src/pages/admin/BehavioralAnalytics.tsx` | 2 | — | inline `#94a3b8` hex |
+| `src/pages/admin/RetentionDashboard.tsx` | 2 → `#64748b` + **1 → `#475569`** (TIER_COLOR n/a fg on `bg-slate-100`) | — | inline hex |
+| `src/pages/admin/LatencyMonitoring.tsx` | — | 1 (STATUS_BORDER `insufficient_data`) | inline hex (border) |
+| `src/pages/admin/FrontendPerformance.tsx` | — | 1 (RATING_COLOR `no_data`) | inline hex (border) |
+| `src/pages/admin/SloDetail.tsx` | — | 1 (STATUS_BORDER `no_data`) | inline hex (border) |
+| `src/pages/admin/SloDashboard.tsx` | — | 1 (STATUS_BORDER `no_data`) | inline hex (border) |
 
-**Recommended next waves** (rough order of VI-learner visibility):
+**Wave-5 documented exceptions** (4, all chart-border non-text uses where slate-400 on white = 3.13:1 PASSES WCAG 1.4.11 3:1; marked in-source with `// a11y-contrast:exception`):
 
-- **Wave 5** — Speech-history page + admin / dev surfaces (internal-leaning audience, lowest learner priority).
-- **Wave 6** — `MarketingLandingPage` inline `<style>` block (one-off CSS file; outside the Tailwind/inline-React patterns).
-- **Wave 7 (cleanup)** — long-tail non-text uses; reclassify each as 1.4.11 non-text 3:1 vs. text 4.5:1 and adjust per category.
+| File:identifier | Consumer | WCAG citation |
+|---|---|---|
+| `LatencyMonitoring.tsx` `STATUS_BORDER.insufficient_data` | `borderColor:` on status badge | 1.4.11 non-text 3:1 → 3.13:1 PASSES |
+| `FrontendPerformance.tsx` `RATING_COLOR.no_data` | `borderColor:` on rating chip | 1.4.11 non-text 3:1 → 3.13:1 PASSES |
+| `SloDetail.tsx` `STATUS_BORDER.no_data` | `borderColor:` on SLO status badge | 1.4.11 non-text 3:1 → 3.13:1 PASSES |
+| `SloDashboard.tsx` `STATUS_BORDER.no_data` | `borderColor:` on SLO dashboard status badge | 1.4.11 non-text 3:1 → 3.13:1 PASSES |
+
+**Wave 5 audience framing:** admin dashboards are owner-only (only Chau is admin level 10 in prod), so the "many users see this" framing doesn't apply — the fixes still matter for Chau's daily use, but the wave-5 contrast story is **internal-tooling polish**, not learner-facing accessibility. `SpeechHistoryPage` is the exception: it's a signed-in learner surface and DOES darken VI/EN copy users see (`emptyState.vi`, the score number's null state, the trend "insufficient" badge).
+
+**Wave 5 also confirmed the wave-3 slate-100 precedent.** `RetentionDashboard.tsx`'s `TIER_COLOR.n/a` cell renders a text fg on a `bg-slate-100` background — slate-500 fails at 4.0:1 here, slate-600 clears 6.4:1. Same pattern as wave 3's `LessonRenderer` `FallbackBadge`. Future waves that touch any `bg-slate-100`/`bg-slate-200` site should pre-emptively pick slate-600.
+
+**Remaining footprint (out of this MR's scope — wave-6+ sweep):**
+
+After waves 0+1+2+3+4+5, whole-codebase grep finds **~85 remaining bare `text-slate-400`** + **~45 remaining `#94a3b8` hex** usages. The long tail is increasingly:
+- Non-text contexts (chart fills, `no_data` indicators, canvas `fillStyle` on misc components) governed by 1.4.11 3:1.
+- The `MarketingLandingPage` inline `<style>` block (one-off CSS file).
+- Scattered one-offs in routes that haven't been audited.
+
+**Recommended next waves:**
+
+- **Wave 6** — `MarketingLandingPage` inline `<style>` block (one-off CSS file; outside the Tailwind/inline-React patterns; learner-facing landing page so contrast matters for first impressions).
+- **Wave 7 (cleanup)** — long-tail non-text reclassification: walk each remaining usage and either exempt (with `a11y-contrast:exception` marker) when it's genuinely 1.4.11 non-text or fix when it's text we missed. Goal: take `CONTRAST_FIXED_FILES` from the 41 files at end-of-wave-5 up to near-total coverage of the codebase, treating exception markers as the long-tail mechanism.
 
 Each wave appends its file paths to `CONTRAST_FIXED_FILES` in the contrast test as it ships.
 

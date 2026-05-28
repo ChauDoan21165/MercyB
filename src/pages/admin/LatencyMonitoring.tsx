@@ -86,7 +86,7 @@ const STATUS_BORDER: Record<DegradationStatus, string> = {
   healthy: "#10b981",
   warning: "#f59e0b",
   alert: "#ef4444",
-  insufficient_data: "#94a3b8",
+  insufficient_data: "#94a3b8", // a11y-contrast:exception — used as borderColor on the status badge (WCAG 1.4.11 non-text 3:1; slate-400 on white = 3.13:1 PASSES). Not text. Audit doc §wave-5.
 };
 const STATUS_LABEL: Record<DegradationStatus, string> = {
   healthy: "Healthy",
