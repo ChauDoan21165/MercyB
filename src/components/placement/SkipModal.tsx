@@ -63,7 +63,7 @@ export function SkipModal({ open, onOpenChange, onKeepTesting, onSkip }: Props) 
                 display: 'block',
                 fontSize: 13,
                 fontWeight: 400,
-                color: '#94a3b8',
+                color: '#64748b',
                 marginTop: 4,
               }}
             >
@@ -76,7 +76,7 @@ export function SkipModal({ open, onOpenChange, onKeepTesting, onSkip }: Props) 
             <span
               style={{
                 display: 'block',
-                color: '#94a3b8',
+                color: '#64748b',
                 marginTop: 6,
               }}
             >
@@ -119,7 +119,7 @@ export function SkipModal({ open, onOpenChange, onKeepTesting, onSkip }: Props) 
                 display: 'block',
                 fontSize: 12,
                 fontWeight: 400,
-                color: '#94a3b8',
+                color: '#64748b',
                 marginTop: 2,
               }}
             >

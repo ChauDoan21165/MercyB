@@ -69,7 +69,7 @@ export function ProgressStrip({ current, total }: Props) {
             display: 'block',
             fontSize: 11,
             fontWeight: 400,
-            color: '#94a3b8',
+            color: '#64748b',
             textTransform: 'none',
             letterSpacing: 0,
             marginTop: 2,

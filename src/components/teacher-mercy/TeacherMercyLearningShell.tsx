@@ -119,7 +119,7 @@ function TeacherMercyLearningShellInner<TMode extends string>(
         </div>
 
         {footer && (
-          <footer className="border-t border-slate-100 bg-slate-50 px-4 py-3 text-center text-[11px] font-medium text-slate-400">
+          <footer className="border-t border-slate-100 bg-slate-50 px-4 py-3 text-center text-[11px] font-medium text-slate-500">
             {footer}
           </footer>
         )}

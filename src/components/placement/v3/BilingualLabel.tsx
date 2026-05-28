@@ -20,7 +20,7 @@ export function BilingualLabel({
   return (
     <Tag className={className}>
       <span className={cn("block", enClassName)}>{text.en}</span>
-      <span className={cn("mt-1 block text-slate-400", viClassName)}>{text.vi}</span>
+      <span className={cn("mt-1 block text-slate-500", viClassName)}>{text.vi}</span>
     </Tag>
   );
 }

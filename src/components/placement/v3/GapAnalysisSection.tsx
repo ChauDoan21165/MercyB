@@ -13,7 +13,7 @@ export function GapAnalysisSection({ strengths, gaps }: Props) {
         <BilingualLabel
           text={{ en: "Strengths", vi: "Điểm mạnh" }}
           enClassName="text-lg font-black text-slate-950"
-          viClassName="text-sm font-medium text-slate-400"
+          viClassName="text-sm font-medium text-slate-500"
         />
         <ul className="mt-4 space-y-3">
           {strengths.map((item) => (
@@ -31,7 +31,7 @@ export function GapAnalysisSection({ strengths, gaps }: Props) {
         <BilingualLabel
           text={{ en: "Next gaps", vi: "Khoảng trống cần lấp" }}
           enClassName="text-lg font-black text-slate-950"
-          viClassName="text-sm font-medium text-slate-400"
+          viClassName="text-sm font-medium text-slate-500"
         />
         <ul className="mt-4 space-y-3">
           {gaps.map((item) => (

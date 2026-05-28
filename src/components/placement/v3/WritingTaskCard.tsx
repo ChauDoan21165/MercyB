@@ -32,11 +32,11 @@ export function WritingTaskCard({ task, value, onChange }: Props) {
       <div className="mt-3 flex items-center justify-between gap-3 text-sm">
         <span className={enough ? "font-bold text-emerald-700" : "font-bold text-slate-600"}>
           {words} words
-          <span className="block text-xs font-medium text-slate-400">
+          <span className="block text-xs font-medium text-slate-500">
             {words} từ
           </span>
         </span>
-        <span className="text-right text-xs font-medium text-slate-400">
+        <span className="text-right text-xs font-medium text-slate-500">
           Minimum {min} words
           <span className="block">Tối thiểu {min} từ</span>
         </span>

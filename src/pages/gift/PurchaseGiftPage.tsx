@@ -32,7 +32,7 @@ export default function PurchaseGiftPage(): React.ReactElement {
         </Link>
         .
       </p>
-      <p className="mt-2 text-center text-xs text-slate-400">
+      <p className="mt-2 text-center text-xs text-slate-500">
         <Link to="/gift/my" className="underline">
           Xem lịch sử quà / My gifts
         </Link>

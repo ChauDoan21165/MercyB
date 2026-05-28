@@ -88,7 +88,7 @@ export default function SpeakingTopic() {
           <ul className="space-y-2">{topic.key_vocabulary.map((v: TOEFLSpeakingVocabularyItem, i: number) => (
             <li key={i} className="text-sm">
               <span className="font-semibold text-slate-900">{v.word}</span>
-              <span className="text-xs text-slate-400 ml-1">{v.pronunciation_ipa}</span>
+              <span className="text-xs text-slate-500 ml-1">{v.pronunciation_ipa}</span>
               <span className="ml-1 rounded bg-slate-100 px-1 py-0.5 text-[10px] uppercase text-slate-500">{v.level}</span>
               <span className="block text-xs text-slate-600">{v.translation_vi}</span>
             </li>

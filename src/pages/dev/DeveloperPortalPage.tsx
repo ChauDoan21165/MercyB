@@ -145,7 +145,7 @@ export default function DeveloperPortalPage() {
           Vietnamese-L1 error detection, and aggregate stats. Bearer-auth,
           1,000 requests / hour by default, no PII.
         </p>
-        <p style={{ marginTop: 6, color: "#94a3b8", fontSize: 13 }}>
+        <p style={{ marginTop: 6, color: "#64748b", fontSize: 13 }}>
           API công khai dành cho các đối tác muốn nhúng cộng đồng người
           học của {PRODUCT_CONFIG.name}: câu song ngữ trong ngày, phát hiện
           lỗi tiếng Anh do tiếng Việt, và số liệu tổng hợp.

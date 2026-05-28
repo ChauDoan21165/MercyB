@@ -53,7 +53,7 @@ export default function VNCulturalIndexPage(): React.ReactElement {
           Vietnamese culture, in English — for diaspora users explaining
           their world to coworkers, neighbors, and kids' teachers.
         </p>
-        <p className="mt-2 text-xs text-slate-400">
+        <p className="mt-2 text-xs text-slate-500">
           Miễn phí cho mọi người dùng / Free for everyone.
         </p>
       </header>
@@ -87,7 +87,7 @@ export default function VNCulturalIndexPage(): React.ReactElement {
                     <p className="text-xs leading-relaxed text-slate-500">
                       {pack.summary_en}
                     </p>
-                    <p className="text-xs text-slate-400">
+                    <p className="text-xs text-slate-500">
                       {pack.phrases.length} cụm từ · {pack.dialogues.length} hội thoại
                     </p>
                   </CardContent>

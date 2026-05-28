@@ -106,7 +106,7 @@ export default function CorporateDashboardPage() {
       >
         <h2 className="text-base font-semibold mb-3">
           Thành viên hiện có
-          <span className="text-slate-400 font-normal ml-2">Members</span>
+          <span className="text-slate-500 font-normal ml-2">Members</span>
         </h2>
         <SeatList corporateAccountId={account.id} isAdmin />
       </section>

@@ -106,7 +106,7 @@ export default function ShortcutHelpOverlay(): React.ReactElement {
                 }}
               >
                 {CATEGORY_LABELS[category].vn}
-                <span style={{ color: "#94a3b8" }}>
+                <span style={{ color: "#64748b" }}>
                   {" "}/ {CATEGORY_LABELS[category].en}
                 </span>
               </h3>
@@ -157,7 +157,7 @@ function KeyDisplay({ keyString }: { keyString: string }): React.ReactElement {
       {steps.map((step, i) => (
         <React.Fragment key={i}>
           {i > 0 ? (
-            <span style={{ color: "#94a3b8", fontSize: 11 }}>then</span>
+            <span style={{ color: "#64748b", fontSize: 11 }}>then</span>
           ) : null}
           <KeyChord chord={step} />
         </React.Fragment>

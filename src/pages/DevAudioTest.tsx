@@ -162,7 +162,7 @@ error    : ${error ? error.message : 'null'}`}
           <ul className="mt-1 space-y-0.5 text-xs text-slate-700">
             {latencyLog.map((entry, i) => (
               <li key={`${entry.at}-${i}`}>
-                <span className="text-slate-400">
+                <span className="text-slate-500">
                   {new Date(entry.at).toLocaleTimeString()}
                 </span>{' '}
                 {entry.label}

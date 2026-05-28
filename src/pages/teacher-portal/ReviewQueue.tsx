@@ -123,7 +123,7 @@ export default function ReviewQueue(): React.ReactElement {
         <p className="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-6 text-center text-sm text-slate-500">
           Không có mục nào cần duyệt cho {CONTENT_TYPE_LABEL_VI[activeTab]}.
           <br />
-          <span className="text-xs text-slate-400">
+          <span className="text-xs text-slate-500">
             No items pending for {CONTENT_TYPE_LABEL_EN[activeTab]}.
           </span>
         </p>

@@ -56,7 +56,7 @@ const instructionVi: React.CSSProperties = {
   fontWeight: 400,
   letterSpacing: 0,
   textTransform: 'none',
-  color: '#94a3b8',
+  color: '#64748b',
   marginTop: 2,
 };
 
@@ -71,7 +71,7 @@ const promptStyle: React.CSSProperties = {
 const promptViStyle: React.CSSProperties = {
   marginTop: 6,
   fontSize: 14,
-  color: '#94a3b8',
+  color: '#64748b',
   lineHeight: 1.45,
 };
 
@@ -94,7 +94,7 @@ const passageTitleVi: React.CSSProperties = {
   marginLeft: 6,
   fontSize: 13,
   fontWeight: 400,
-  color: '#94a3b8',
+  color: '#64748b',
 };
 
 const toggleBtnStyle: React.CSSProperties = {
@@ -120,7 +120,7 @@ const passageViStyle: React.CSSProperties = {
   marginTop: 10,
   fontSize: 14,
   lineHeight: 1.6,
-  color: '#94a3b8',
+  color: '#64748b',
 };
 
 const optionsList: React.CSSProperties = {

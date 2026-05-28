@@ -391,7 +391,7 @@ export default function AccountPage() {
     fontSize: 11,
     fontWeight: 400,
     // #64748b (slate-500) ≈ 4.8:1 on white — passes WCAG 1.4.3 AA for the
-    // 11px sub-label. The previous #94a3b8 sat at ~2.7:1 and failed. Still
+    // 11px sub-label. The previous #64748b sat at ~2.7:1 and failed. Still
     // lighter than the EN line above it so the visual hierarchy holds.
     color: "#64748b",
     marginTop: 1,
@@ -764,7 +764,7 @@ export default function AccountPage() {
             <span>
               {lang === "en" ? "Share referral code" : "Chia sẻ mã giới thiệu"}
             </span>
-            <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#94a3b8" }} aria-hidden>▾</span>
+            <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#64748b" }} aria-hidden>▾</span>
           </summary>
           <div style={detailsBody}>
             <ReferralCard userId={user?.id} />
@@ -782,7 +782,7 @@ export default function AccountPage() {
                 ? "Leaderboard settings"
                 : "Bảng xếp hạng và cài đặt"}
             </span>
-            <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#94a3b8" }} aria-hidden>▾</span>
+            <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#64748b" }} aria-hidden>▾</span>
           </summary>
           <div style={detailsBody}>
             <WeeklyLeaderboardOptInPanel />
@@ -798,7 +798,7 @@ export default function AccountPage() {
             <span>
               {lang === "en" ? "Learning languages" : "Ngôn ngữ đang học"}
             </span>
-            <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#94a3b8" }} aria-hidden>▾</span>
+            <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#64748b" }} aria-hidden>▾</span>
           </summary>
           <div style={detailsBody}>
             <LanguagePairSettings />
@@ -811,7 +811,7 @@ export default function AccountPage() {
             <span>
               {lang === "en" ? "Privacy" : "Quyền riêng tư"}
             </span>
-            <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#94a3b8" }} aria-hidden>▾</span>
+            <span className="mb-chevron" style={{ transition: "transform 0.2s", color: "#64748b" }} aria-hidden>▾</span>
           </summary>
           <div style={detailsBody}>
             <TrackingConsentPanel />

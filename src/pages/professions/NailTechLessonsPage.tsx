@@ -122,9 +122,9 @@ function LessonTile({ lesson }: LessonTileProps) {
           <p className="text-xs text-slate-500">{lesson.title_en}</p>
         </div>
         {open ? (
-          <ChevronUp className="h-4 w-4 shrink-0 text-slate-400" />
+          <ChevronUp className="h-4 w-4 shrink-0 text-slate-500" />
         ) : (
-          <ChevronDown className="h-4 w-4 shrink-0 text-slate-400" />
+          <ChevronDown className="h-4 w-4 shrink-0 text-slate-500" />
         )}
       </button>
 

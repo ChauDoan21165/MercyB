@@ -106,7 +106,7 @@ const promptLabelVi: React.CSSProperties = {
   marginLeft: 6,
   fontSize: 12,
   fontWeight: 400,
-  color: '#94a3b8',
+  color: '#64748b',
   textTransform: 'none',
   letterSpacing: 0,
 };
@@ -123,7 +123,7 @@ const targetEnStyle: React.CSSProperties = {
 const targetViStyle: React.CSSProperties = {
   marginTop: 6,
   fontSize: 15,
-  color: '#94a3b8',
+  color: '#64748b',
   lineHeight: 1.45,
 };
 
@@ -151,7 +151,7 @@ function micButtonStyle(state: DrillState): React.CSSProperties {
   if (state === 'scoring') {
     return {
       ...base,
-      background: '#94a3b8',
+      background: '#64748b',
       cursor: 'wait',
     };
   }
@@ -211,7 +211,7 @@ function wordColor(status: WordStatus): string {
     case 'correct': return '#059669';
     case 'close': return '#d97706';
     case 'wrong': return '#dc2626';
-    case 'missed': return '#94a3b8';
+    case 'missed': return '#64748b';
   }
 }
 
@@ -341,12 +341,12 @@ export function SpeechDrill({
   if (state === 'unsupported') {
     return (
       <div style={cardStyle} role="region" aria-label="Speech drill">
-        <MicOff size={40} color="#94a3b8" aria-hidden />
+        <MicOff size={40} color="#64748b" aria-hidden />
         <div>
           <div style={{ fontSize: 17, fontWeight: 800, color: 'rgba(0,0,0,0.84)' }}>
             Pronunciation practice works best in Chrome or Safari on iOS
           </div>
-          <div style={{ marginTop: 6, fontSize: 14, color: '#94a3b8' }}>
+          <div style={{ marginTop: 6, fontSize: 14, color: '#64748b' }}>
             Tính năng luyện phát âm hoạt động tốt nhất trên Chrome hoặc Safari
           </div>
         </div>
@@ -404,7 +404,7 @@ export function SpeechDrill({
         >
           {caption.en}
         </div>
-        <div style={{ marginTop: 3, fontSize: 13, fontWeight: 400, color: '#94a3b8' }}>
+        <div style={{ marginTop: 3, fontSize: 13, fontWeight: 400, color: '#64748b' }}>
           {caption.vi}
         </div>
       </div>
@@ -486,7 +486,7 @@ function ResultBlock({
         aria-label={`Overall score ${score.overallScore} out of 100`}
       >
         {score.overallScore}
-        <span style={{ fontSize: 18, fontWeight: 700, color: '#94a3b8', marginLeft: 6 }}>
+        <span style={{ fontSize: 18, fontWeight: 700, color: '#64748b', marginLeft: 6 }}>
           / 100
         </span>
       </div>
@@ -495,7 +495,7 @@ function ResultBlock({
 
       <div style={{ fontSize: 14, lineHeight: 1.55, color: '#475569' }}>
         {score.feedback.en}
-        <span style={{ display: 'block', marginTop: 4, fontSize: 13, color: '#94a3b8' }}>
+        <span style={{ display: 'block', marginTop: 4, fontSize: 13, color: '#64748b' }}>
           {score.feedback.vi}
         </span>
       </div>
@@ -532,7 +532,7 @@ const phonemeSectionHeadingVi: React.CSSProperties = {
   marginLeft: 6,
   fontSize: 12,
   fontWeight: 400,
-  color: '#94a3b8',
+  color: '#64748b',
   textTransform: 'none',
   letterSpacing: 0,
 };
@@ -562,7 +562,7 @@ const phonemeSummaryViStyle: React.CSSProperties = {
   marginTop: 2,
   fontSize: 12,
   fontWeight: 400,
-  color: '#94a3b8',
+  color: '#64748b',
 };
 
 const phonemeBodyStyle: React.CSSProperties = {
@@ -622,7 +622,7 @@ function PhonemeFeedbackSection({
                 Practice: [{labelShort}]
                 <span style={phonemeSummaryViStyle}>Luyện âm: [{labelShort}]</span>
               </span>
-              <span style={{ fontSize: 11, color: '#94a3b8', fontWeight: 700 }}>
+              <span style={{ fontSize: 11, color: '#64748b', fontWeight: 700 }}>
                 tap to expand
               </span>
             </summary>
@@ -636,7 +636,7 @@ function PhonemeFeedbackSection({
                 <div style={{ fontSize: 13, fontWeight: 700, color: 'rgba(0,0,0,0.84)', lineHeight: 1.5 }}>
                   {tip.articulation.en}
                 </div>
-                <div style={{ marginTop: 2, fontSize: 12, color: '#94a3b8', lineHeight: 1.5 }}>
+                <div style={{ marginTop: 2, fontSize: 12, color: '#64748b', lineHeight: 1.5 }}>
                   {tip.articulation.vi}
                 </div>
               </div>
@@ -644,7 +644,7 @@ function PhonemeFeedbackSection({
               <div>
                 <div style={{ fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 0.6, color: 'rgba(0,0,0,0.55)', marginBottom: 6 }}>
                   Practice words
-                  <span style={{ marginLeft: 6, fontSize: 11, fontWeight: 400, color: '#94a3b8', textTransform: 'none', letterSpacing: 0 }}>
+                  <span style={{ marginLeft: 6, fontSize: 11, fontWeight: 400, color: '#64748b', textTransform: 'none', letterSpacing: 0 }}>
                     · Từ luyện tập
                   </span>
                 </div>
@@ -666,7 +666,7 @@ function PhonemeFeedbackSection({
                   )}
                 </div>
                 {onPracticeWord ? (
-                  <div style={{ marginTop: 6, fontSize: 11, color: '#94a3b8' }}>
+                  <div style={{ marginTop: 6, fontSize: 11, color: '#64748b' }}>
                     Tap a word to practice it · Nhấn vào một từ để luyện
                   </div>
                 ) : null}
@@ -866,7 +866,7 @@ function ListenControls({
       >
         <Volume2 size={16} aria-hidden />
         Listen
-        <span style={{ fontSize: 11, fontWeight: 500, color: '#94a3b8', marginLeft: 4 }}>
+        <span style={{ fontSize: 11, fontWeight: 500, color: '#64748b', marginLeft: 4 }}>
           · Nghe
         </span>
       </button>

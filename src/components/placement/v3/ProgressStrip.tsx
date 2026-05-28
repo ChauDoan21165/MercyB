@@ -41,13 +41,13 @@ export function ProgressStrip({ current, total, modality, modalities }: Props) {
         <div className="mt-2 flex items-center justify-between gap-3 text-[11px] font-black uppercase tracking-[0.06em] text-slate-600">
           <span>
             Task {Math.min(current + 1, total)} of {total}
-            <span className="block font-medium normal-case tracking-normal text-slate-400">
+            <span className="block font-medium normal-case tracking-normal text-slate-500">
               Mục {Math.min(current + 1, total)} / {total}
             </span>
           </span>
           <span aria-live="polite" className="text-right">
             {labels[modality].en}
-            <span className="block font-medium normal-case tracking-normal text-slate-400">
+            <span className="block font-medium normal-case tracking-normal text-slate-500">
               {labels[modality].vi}
             </span>
           </span>

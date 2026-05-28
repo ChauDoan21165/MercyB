@@ -120,7 +120,7 @@ export default function StreamingFeedback({
 
       <div className="flex flex-wrap items-center gap-1.5">
         {words.length === 0 ? (
-          <span className="text-xs italic text-slate-400">
+          <span className="text-xs italic text-slate-500">
             {isStreaming
               ? "Đang chờ từ đầu tiên… · Waiting for first word…"
               : "Bấm Record để bắt đầu · Tap Record to start"}
@@ -149,7 +149,7 @@ export default function StreamingFeedback({
         )}
       </div>
 
-      <p className="mt-3 text-[10px] leading-snug text-slate-400">
+      <p className="mt-3 text-[10px] leading-snug text-slate-500">
         Xanh = ổn · Vàng = gần đúng · Đỏ = chưa rõ ·{" "}
         <span className="italic">Green = good · Amber = close · Red = unclear</span>
       </p>

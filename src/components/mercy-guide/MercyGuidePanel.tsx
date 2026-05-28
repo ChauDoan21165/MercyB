@@ -77,7 +77,7 @@ function FloatingHelperLauncher({
         <div className="flex shrink-0 items-center gap-1">
           <button
             type="button"
-            className="rounded-full p-2 text-slate-400 outline-none transition hover:bg-white/70 hover:text-slate-600 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
+            className="rounded-full p-2 text-slate-500 outline-none transition hover:bg-white/70 hover:text-slate-600 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
             aria-label={isFullscreen ? 'Exit full screen' : 'Full screen'}
             onClick={onToggleFullscreen}
           >
@@ -87,7 +87,7 @@ function FloatingHelperLauncher({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-full border border-transparent bg-white/75 p-2 text-slate-400 transition hover:border-red-100 hover:bg-red-50 hover:text-red-500"
+            className="rounded-full border border-transparent bg-white/75 p-2 text-slate-500 transition hover:border-red-100 hover:bg-red-50 hover:text-red-500"
             aria-label="Close Mercy panel"
           >
             <X size={17} />

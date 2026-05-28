@@ -139,7 +139,7 @@ export const TierSection = ({
                 {price.note && (
                   <div
                     className={`text-xs italic ${
-                      isDarkBackground ? "text-slate-400" : "text-gray-500"
+                      isDarkBackground ? "text-slate-500" : "text-gray-500"
                     } mt-2`}
                   >
                     {price.note.en}

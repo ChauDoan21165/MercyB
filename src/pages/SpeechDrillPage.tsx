@@ -79,7 +79,7 @@ const progressLabelVi: React.CSSProperties = {
   display: 'block',
   fontSize: 11,
   fontWeight: 400,
-  color: '#94a3b8',
+  color: '#64748b',
   textTransform: 'none',
   letterSpacing: 0,
   marginTop: 2,
@@ -106,7 +106,7 @@ const levelLabelViStyle: React.CSSProperties = {
   marginLeft: 6,
   fontSize: 12,
   fontWeight: 400,
-  color: '#94a3b8',
+  color: '#64748b',
   textTransform: 'none',
   letterSpacing: 0,
 };
@@ -391,7 +391,7 @@ export default function SpeechDrillPage() {
                   marginTop: 6,
                   fontSize: 14,
                   fontWeight: 500,
-                  color: '#94a3b8',
+                  color: '#64748b',
                 }}
               >
                 Làm tốt lắm. Bạn đã hoàn thành cả {total} câu.
@@ -477,7 +477,7 @@ export default function SpeechDrillPage() {
           >
             <div style={{ fontSize: 13, fontWeight: 700, color: '#9a3412', lineHeight: 1.45 }}>
               Practising just the word "{practiceOverride}"
-              <span style={{ display: 'block', fontSize: 12, fontWeight: 400, color: '#94a3b8', marginTop: 2 }}>
+              <span style={{ display: 'block', fontSize: 12, fontWeight: 400, color: '#64748b', marginTop: 2 }}>
                 Đang luyện riêng từ "{practiceOverride}"
               </span>
             </div>

@@ -122,7 +122,7 @@ export default function UnsubscribePage(): React.ReactElement {
             <p
               style={{
                 fontSize: 12,
-                color: "#94a3b8",
+                color: "#64748b",
                 marginTop: 6,
                 lineHeight: 1.5,
               }}
@@ -174,7 +174,7 @@ export default function UnsubscribePage(): React.ReactElement {
               Liên kết unsubscribe của bạn thiếu hoặc sai định dạng. Hãy mở lại email
               gần nhất từ MercyBlade và bấm vào nút unsubscribe ở chân email.
             </p>
-            <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 6 }}>
+            <p style={{ fontSize: 12, color: "#64748b", marginTop: 6 }}>
               Your unsubscribe link is missing or malformed. Open the most recent email
               from MercyBlade and click the unsubscribe link in the footer.
             </p>
@@ -213,7 +213,7 @@ export default function UnsubscribePage(): React.ReactElement {
               </Link>{" "}
               để tắt email từng loại.
             </p>
-            <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 6 }}>
+            <p style={{ fontSize: 12, color: "#64748b", marginTop: 6 }}>
               This unsubscribe link doesn't match any account. Sign in and use{" "}
               <Link to="/account/notifications" style={{ color: "#1e3a8a", fontWeight: 700 }}>
                 Notification preferences
@@ -236,7 +236,7 @@ export default function UnsubscribePage(): React.ReactElement {
               Hệ thống không xử lý được yêu cầu unsubscribe. Vui lòng thử lại sau vài
               phút, hoặc gửi email cho chúng tôi.
             </p>
-            <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 6 }}>
+            <p style={{ fontSize: 12, color: "#64748b", marginTop: 6 }}>
               We couldn't process your unsubscribe request. Try again in a few minutes
               or email us.
             </p>
