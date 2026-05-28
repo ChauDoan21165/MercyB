@@ -185,6 +185,19 @@ describe("searchRooms (mocked dataset)", () => {
       KNOWN_IDS.mindfulnessFree
     );
   });
+
+  // Regression: calculateScore() used to add an unconditional +0.5 hasData
+  // bonus, which defeated the `score > 0` non-match filter and made every
+  // data-bearing room match every query. The slice limit hid the leak for
+  // queries with >= limit real matches. See docs/audit/search-ranking-2026-05-27.md.
+  it("should return empty for a query that matches no room", () => {
+    expect(searchRooms("__xyz__no_room_matches_this__")).toEqual([]);
+  });
+
+  it("should agree with hasSearchResults() on negative queries", () => {
+    const q = "__xyz__no_room_matches_this__";
+    expect(searchRooms(q).length === 0).toBe(hasSearchResults(q) === false);
+  });
 });
 
 describe("getSearchSuggestions (mocked dataset)", () => {
