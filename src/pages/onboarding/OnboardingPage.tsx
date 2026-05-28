@@ -78,6 +78,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Check } from "lucide-react";
 
+import { Bilingual } from "@/components/Bilingual";
+
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
@@ -459,16 +461,32 @@ function StepHeader({
           text node for queries/SR.
           `lang` attrs per a11y audit O2: without them a VI screen-reader
           voice phoneticises the EN sibling using Vietnamese phonemes
-          (and vice-versa), making both unintelligible to learners. */}
-      <h1 lang="vi" ref={headingRef} tabIndex={-1} style={stepTitleStyle}>{title.vi}</h1>
-      <PeerDivider />
-      <div lang="en" style={stepTitleStyle}>{title.en}</div>
+          (and vice-versa), making both unintelligible to learners.
+          Post-!115 + this MR's primaryRef/tabIndex/separator extensions
+          to <Bilingual>: replaces the inline <h1 lang=vi ref tabIndex>
+          + <PeerDivider/> + <div lang=en> trio with the wrapper. The
+          headingRef + tabIndex={-1} stay on the VI side (the primary)
+          per the wrapper's primary-side-only semantics; <PeerDivider/>
+          travels in via `separator`. */}
+      <Bilingual
+        viAs="h1"
+        enAs="div"
+        vi={title.vi}
+        en={title.en}
+        viStyle={stepTitleStyle}
+        enStyle={stepTitleStyle}
+        primaryRef={headingRef}
+        tabIndex={-1}
+        separator={<PeerDivider />}
+      />
       {body ? (
-        <>
-          <p lang="vi" style={{ ...peerBodyStyle, marginTop: 16 }}>{body.vi}</p>
-          <PeerDivider />
-          <p lang="en" style={peerBodyStyle}>{body.en}</p>
-        </>
+        <Bilingual
+          vi={body.vi}
+          en={body.en}
+          viStyle={{ ...peerBodyStyle, marginTop: 16 }}
+          enStyle={peerBodyStyle}
+          separator={<PeerDivider />}
+        />
       ) : null}
     </header>
   );

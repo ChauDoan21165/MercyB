@@ -667,71 +667,95 @@ O2 onboarding, P4 Pricing). The Rule of Three was satisfied;
 the extraction MR pulled the shared shape into a single
 component.
 
-**Shipped:** `src/components/Bilingual.tsx` — typed wrapper with
-`vi` / `en` content props, `primary` order toggle (default
-`'vi'`), `as` + `viAs` / `enAs` element overrides, parallel
-`viClassName` / `enClassName` + `viStyle` / `enStyle`, and
+**Shipped:** `src/components/Bilingual.tsx` — typed wrapper. Core
+props (from !115): `vi` / `en` content; `primary` order toggle
+(default `'vi'`); `as` + `viAs` / `enAs` element overrides;
+parallel `viClassName` / `enClassName` + `viStyle` / `enStyle`;
 `viLang` / `enLang` BCP 47 overrides. Renders a React Fragment
 (no container element — the caller's surrounding markup is
 preserved). Empty-string handling is deliberate-NOT-silent-drop
 so missing halves surface visibly at the data layer.
 
-**Test:** `src/components/__tests__/Bilingual.test.tsx` — 15
-tests across DOM order, lang attributes, element-type
-overrides, styling, edge cases (empty string, ReactNode
-children), and pilot-consumer parity (W2 / P4-BiText / Home
-inline shapes).
+**Post-!115 extensions (this MR — `feat/bilingual-primaryref-o2`):**
+- `primaryRef?: Ref<HTMLElement>` — forwarded to the rendered
+  element on whichever side `primary` resolves to. Enables O2's
+  wizard focus-management (`headingRef.current?.focus()` on step
+  mount).
+- `tabIndex?: number` — applied to the PRIMARY element ONLY
+  (asymmetric by design; the secondary element never wants
+  tabIndex in any audited consumer).
+- `separator?: ReactNode` — rendered BETWEEN the two sides when
+  present. Default `undefined` (backward-compatible — every !115
+  pilot consumer keeps its Fragment-of-two-siblings shape). O2's
+  pre-pick screens use this to render `<PeerDivider />` so the
+  two languages read as peers, not headline + translation.
 
-**Pilot migrations done (3 sites, 1 per consumer flavour):**
+**Test:** `src/components/__tests__/Bilingual.test.tsx` — 27
+tests (was 15 in !115; +12 in this MR). New coverage: primaryRef
+forwards correctly, follows `primary` flip across re-renders,
+`.focus()` lands on the primary element; tabIndex applies to
+primary only and is omitted when undefined (!115 regression
+guard); separator renders between sides + omitted when undefined
+(!115 regression guard) + accepts any ReactNode; full O2-parity
+test that mirrors the OnboardingPage StepHeader title-pair
+shape.
+
+**Pilot migrations done (4 sites — !115 plus this MR's O2):**
 
 | Surface | Site | Notes |
 |---|---|---|
-| W2 — Tailwind classes, VI-primary | `src/components/stage-3a/LocalWeaknessMap.tsx` row title pair (was lines 152–157) | First L1-row VI/EN pair; the other inline lang pairs in this file (~7 more) stay inline for the follow-up sweep. |
-| P4 — inline style, EN-primary | `src/screens/Pricing.tsx` `BiText` helper (line 125) | The `BiText` public signature `({en, vi})` is preserved — every existing `BiText` call site (9 in this file) continues to work unchanged; only the helper's internals delegate to `<Bilingual>`. The non-`BiText` inline `<span lang="…">` pairs in `renderCard` (~595, ~599, ~606, ~629, ~632, ~634–635) stay inline for the follow-up sweep. |
-| Home — inline style, VI-primary, NOT-currently-lang-tagged | `src/components/home/PracticeRecommendationCard.tsx` title pair (was lines 82–83) | This pair did NOT have `lang` attrs before — the migration BOTH wraps in `<Bilingual>` AND adds the WCAG 3.1.2 fix. The description pair below (lines 91–92) is similarly un-lang-tagged but stays for the follow-up sweep. |
+| W2 — Tailwind classes, VI-primary | `src/components/stage-3a/LocalWeaknessMap.tsx` row title pair (was lines 152–157) | !115. First L1-row VI/EN pair; the other inline lang pairs in this file (~7 more) stay inline for the follow-up sweep. |
+| P4 — inline style, EN-primary | `src/screens/Pricing.tsx` `BiText` helper (line 125) | !115. `BiText` public `({en, vi})` signature preserved — every existing call site (9 in this file) continues to work unchanged. Non-`BiText` inline pairs in `renderCard` stay inline for the follow-up sweep. |
+| Home — inline style, VI-primary, NOT-currently-lang-tagged | `src/components/home/PracticeRecommendationCard.tsx` title pair (was lines 82–83) | !115. Migration BOTH wraps in `<Bilingual>` AND adds the WCAG 3.1.2 fix. Description pair (lines 91–92) deferred. |
+| **O2 — inline style, mixed elements (h1 + div), VI-primary, ref + tabIndex + divider** | `src/pages/onboarding/OnboardingPage.tsx` pre-pick `StepHeader` title + body pairs (was lines 463–470) | **This MR.** Title pair: `<Bilingual viAs="h1" enAs="div" primaryRef={headingRef} tabIndex={-1} separator={<PeerDivider />} ... />`. Body pair: `<Bilingual separator={<PeerDivider />} ... />` (no ref/tabIndex, both `<p>`). Closes the O2 special-case deferred in !115. The `if (lang)` branch above (single-language `<h1>` via `pickChrome(title, lang)`) is NOT a bilingual pair and remains as-is. |
 
 **Remaining inline lang-attr call sites (follow-up sweep
 candidates):**
 
-- ~~`src/components/stage-3a/LocalWeaknessMap.tsx` — 7 more `<p lang="…">` pairs~~ **DONE in the sweep MR** (PlacementRow, PronunciationRow shortVi/shortEn, SectionHeading, GlobalEmptyState). L1Row example pair (`exampleVi`/`exampleEn`) deliberately **left inline** — see "Sweep migration" flag below.
-- ~~`src/components/stage-3b/SuggestedPracticeList.tsx` — 6 `<p lang="…">` pairs~~ **DONE in the sweep MR** (row item viLabel/enLabel + EmptyState). Heading h3/p pair **left inline** — see "Sweep migration" flag below.
-- `src/pages/onboarding/OnboardingPage.tsx` — 4 lang-tagged elements (lines 463, 465, 468, 470). **Special case (still pending):** the `<h1 ref={headingRef} tabIndex={-1}>` carries wizard focus-management state; migrating to `<Bilingual>` requires a `primaryRef` prop addition (deliberately deferred — the current wrapper does NOT support refs, per the component header). When O2 migrates, either add the prop or carve a `<BilingualHeading>` variant.
-- ~~`src/screens/Pricing.tsx` — ~10 non-`BiText` inline pairs~~ **DONE in the sweep MR** (hero h1+VI subtitle, hero secondary pair, feature grid divs, plan card titles × 2, plan card subtitle pairs × 2, plan card body pairs × 2, auto-renewal disclosure). Plan-card bullets + legal-link anchors **left inline** — see flags.
-- ~~`src/components/home/PracticeRecommendationCard.tsx` — description pair~~ **DONE in the sweep MR**. The migration also added the WCAG 3.1.2 `lang` attrs that the inline pair was missing.
+- ~~`src/components/stage-3a/LocalWeaknessMap.tsx` — 7 more `<p lang="…">` pairs~~ **DONE in the sweep MR !121** (PlacementRow, PronunciationRow shortVi/shortEn, SectionHeading, GlobalEmptyState). L1Row example pair (`exampleVi`/`exampleEn`) deliberately **left inline** — see "Sweep migration" flag below.
+- ~~`src/components/stage-3b/SuggestedPracticeList.tsx` — 6 `<p lang="…">` pairs~~ **DONE in the sweep MR !121** (row item viLabel/enLabel + EmptyState). Heading h3/p pair **left inline** — see "Sweep migration" flag below.
+- ~~`src/pages/onboarding/OnboardingPage.tsx` — 4 lang-tagged elements~~ **DONE in THIS MR** via the `primaryRef` + `tabIndex` + `separator` extensions to `<Bilingual>` (pilot-migrations table row 4 above). The wrapper-API blocker that originally deferred O2 is now closed.
+- ~~`src/screens/Pricing.tsx` — ~10 non-`BiText` inline pairs~~ **DONE in the sweep MR !121** (hero h1+VI subtitle, hero secondary pair, feature grid divs, plan card titles × 2, plan card subtitle pairs × 2, plan card body pairs × 2, auto-renewal disclosure). Plan-card bullets + legal-link anchors **left inline** — see flags.
+- ~~`src/components/home/PracticeRecommendationCard.tsx` — description pair~~ **DONE in the sweep MR !121**. The migration also added the WCAG 3.1.2 `lang` attrs that the inline pair was missing.
 
 ## Sweep migration (post-!115)
 
-The pilot migrations established three call-site shapes; this MR
-applies `<Bilingual>` to every inline lang-attr pair across the
-backlog **except O2** (deferred per the `headingRef` blocker above)
-and four flagged sites where the inline pattern uses a feature the
-wrapper doesn't model.
+The pilot migrations established three call-site shapes; the
+sweep MR (!121) applies `<Bilingual>` to every inline lang-attr
+pair across the backlog **except O2** (closed in THIS MR via the
+`primaryRef` extension — see pilot-migrations table row 4 above)
+and four flagged sites where the inline pattern uses a feature
+the wrapper doesn't model.
 
-**Migrated (13 sites across 4 files):**
+**Migrated (13 sites across 4 files in !121, plus 2 sites in O2 in this MR):**
 
 | File | Sites | Notes |
 |---|---|---|
-| `src/components/stage-3a/LocalWeaknessMap.tsx` | 4 | PlacementRow, PronunciationRow shortVi/shortEn pair, SectionHeading (uses `viAs="h3" enAs="p"`), GlobalEmptyState. |
-| `src/components/stage-3b/SuggestedPracticeList.tsx` | 2 | Row item viLabel/enLabel pair (rationale `<p>` stays inline — VI-only, not a bilingual pair), EmptyState. |
-| `src/screens/Pricing.tsx` | 9 | Hero h1+VI subtitle, hero secondary p pair, feature grid divs, plan card titles × 2 (level0 + paid), plan card subtitle pairs × 2, plan card body pairs × 2, auto-renewal disclosure. All `primary="en"`. |
-| `src/components/home/PracticeRecommendationCard.tsx` | 1 | Description pair (this MR ALSO adds the WCAG 3.1.2 `lang` attrs the inline pair was missing). |
+| `src/components/stage-3a/LocalWeaknessMap.tsx` | 4 | !121. PlacementRow, PronunciationRow shortVi/shortEn pair, SectionHeading (uses `viAs="h3" enAs="p"`), GlobalEmptyState. |
+| `src/components/stage-3b/SuggestedPracticeList.tsx` | 2 | !121. Row item viLabel/enLabel pair (rationale `<p>` stays inline — VI-only, not a bilingual pair), EmptyState. |
+| `src/screens/Pricing.tsx` | 9 | !121. Hero h1+VI subtitle, hero secondary p pair, feature grid divs, plan card titles × 2 (level0 + paid), plan card subtitle pairs × 2, plan card body pairs × 2, auto-renewal disclosure. All `primary="en"`. |
+| `src/components/home/PracticeRecommendationCard.tsx` | 1 | !121. Description pair (this MR ALSO adds the WCAG 3.1.2 `lang` attrs the inline pair was missing). |
+| `src/pages/onboarding/OnboardingPage.tsx` | 2 | **This MR.** Pre-pick `StepHeader` title pair (`viAs="h1" enAs="div"` + `primaryRef={headingRef}` + `tabIndex={-1}` + `separator={<PeerDivider />}`) and body pair (`separator={<PeerDivider />}`). |
 
-**Flagged — deliberately NOT migrated (4 sites):**
+**Flagged — deliberately NOT migrated (3 sites still flagged; 1 closed by this MR's `separator` prop):**
 
 | Site | Reason |
 |---|---|
 | `LocalWeaknessMap.tsx` L1Row `exampleVi`/`exampleEn` (around lines 184/189) | Each side guarded by its own `&& { … }` conditional. `<Bilingual>` deliberately does not silently drop empty halves (per its component-header contract); migrating would render an empty `<p>` whenever only one example is populated. Could be resolved by adding a `dropEmpty` opt-in to the wrapper, but that's a wrapper-API change, not a mechanical sweep. |
-| `SuggestedPracticeList.tsx` heading `<h3 id="suggested-practice-heading">` + EN subtitle (lines 124–133) | The `<h3>` carries an `id` referenced by the parent `<section aria-labelledby="suggested-practice-heading">`. `<Bilingual>` has no `viId`/`enId` prop to pass through. Could be resolved by extending the wrapper's API; not done in this MR per the wrapper-stability rule. |
+| `SuggestedPracticeList.tsx` heading `<h3 id="suggested-practice-heading">` + EN subtitle (lines 124–133) | The `<h3>` carries an `id` referenced by the parent `<section aria-labelledby="suggested-practice-heading">`. `<Bilingual>` has no `viId`/`enId` prop to pass through. Could be resolved by extending the wrapper's API; not done per the wrapper-stability rule. |
 | `Pricing.tsx` plan-card bullets `<li>` containing `<span lang="en">{bullet}</span> {plan.bulletsVi?.[i] && <span lang="vi">…</span>}` (around lines 615/617) | Same conditional-one-side-missing pattern as the L1 example pair. The VI half is only rendered when `plan.bulletsVi?.[i]` is truthy; `<Bilingual>` would emit an empty VI span otherwise. |
-| `Pricing.tsx` legal-link anchors `<a>…<span lang="vi">VI</span> / <span lang="en">EN</span></a>` (around lines 999–1000) | The literal `" / "` text separator between the two languages is design-intentional in-line presentation. `<Bilingual>` renders the two language nodes as adjacent fragment children with no slot for a between-content separator. Could be resolved by adding a `separator` prop, but that's wrapper-API expansion. |
+| ~~`Pricing.tsx` legal-link anchors `<a>…<span lang="vi">VI</span> / <span lang="en">EN</span></a>`~~ | **Closed by THIS MR's `separator` prop.** The wrapper now accepts an optional `ReactNode` between the two language nodes; a future revision can migrate these anchors with `separator=" / "`. Not migrated as part of this MR per the anti-bundling rule (separator addition is here; legal-link migration in its own follow-up). |
 
 **Open follow-ups:**
 
-1. **O2 onboarding migration** — blocked on the `primaryRef` wrapper-API addition (or a `<BilingualHeading>` variant carve-out). Tracked separately.
-2. **Conditional-render extension** — three of the four flags above (L1 example, plan bullets) share the same "one side may be empty / undefined" shape. A `dropEmpty` opt-in on `<Bilingual>` (or a sibling `<BilingualOptional>` component) would close them together. Deliberately deferred — the wrapper's "no silent drop" contract is a feature, not a bug.
+1. ~~**O2 onboarding migration** — blocked on the `primaryRef` wrapper-API addition.~~ **CLOSED in THIS MR.**
+2. **Conditional-render extension** — two of the three remaining flags (L1 example, plan bullets) share the same "one side may be empty / undefined" shape. A `dropEmpty` opt-in on `<Bilingual>` (or a sibling `<BilingualOptional>` component) would close them together. Deliberately deferred — the wrapper's "no silent drop" contract is a feature, not a bug.
 3. **Per-side prop passthrough** — SuggestedPracticeList heading needs `id`; potentially other surfaces want `data-testid`. A `viProps` / `enProps` escape hatch on `<Bilingual>` would close all such cases. Deferred for the same reason as #2 — keep the wrapper minimal until a third unmigratable site demands it.
+4. **Legal-link anchor migration** — newly unblocked by THIS MR's `separator` prop. Mechanical follow-up.
 
-Tests verified post-sweep: 124 vitest specs across `stage-3a/`, `stage-3b/`, `home/`, `screens/`, and `Bilingual.test.tsx` — all green. No test-file edits required; the markup change was transparent to existing assertions.
+Tests verified post-sweep (!121): 124 vitest specs across `stage-3a/`, `stage-3b/`, `home/`, `screens/`, and `Bilingual.test.tsx` — all green. Tests verified post-O2-migration (this MR): same suites still green + `OnboardingPage` subtree 67/67 + `Bilingual.test.tsx` extended to 27/27. No test-file edits required for the !121 sweep; this MR added 12 tests to cover the three new wrapper props (primaryRef, tabIndex, separator).
+
+**All four established consumer flavours (W2 / O2 / P4 / Home) now have at least one site migrated**, so the wrapper API is now considered proven. The remaining backlog is the 3 flagged sites plus follow-up #2/#3/#4 — each is its own MR per the anti-bundling rule.
 
 ---
 

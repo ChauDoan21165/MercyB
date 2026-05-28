@@ -20,6 +20,7 @@
 // touches the wrapper API. Adding a prop without a test row here is a
 // regression-vector.
 
+import { createRef } from "react";
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
 
@@ -190,6 +191,142 @@ describe("<Bilingual>", () => {
     });
   });
 
+  describe("primaryRef", () => {
+    it("forwards to the VI element when primary='vi' (default)", () => {
+      const ref = createRef<HTMLElement>();
+      const { container } = render(
+        <Bilingual vi="A" en="B" primaryRef={ref} />,
+      );
+      const viNode = container.querySelector("[lang='vi']");
+      expect(viNode).toBe(ref.current);
+    });
+
+    it("forwards to the EN element when primary='en'", () => {
+      const ref = createRef<HTMLElement>();
+      const { container } = render(
+        <Bilingual primary="en" vi="A" en="B" primaryRef={ref} />,
+      );
+      const enNode = container.querySelector("[lang='en']");
+      expect(enNode).toBe(ref.current);
+    });
+
+    it("ref re-points to the new primary side when primary flips between renders", () => {
+      // O2's wizard doesn't actually flip mid-render — the
+      // headingRef is stable per step. But the wrapper's contract
+      // must follow `primary` strictly so a future consumer that
+      // does flip (e.g. an A/B brand-experiment toggle) gets the
+      // right element.
+      const ref = createRef<HTMLElement>();
+      const { container, rerender } = render(
+        <Bilingual vi="A" en="B" primaryRef={ref} />,
+      );
+      expect(ref.current).toBe(container.querySelector("[lang='vi']"));
+
+      rerender(
+        <Bilingual primary="en" vi="A" en="B" primaryRef={ref} />,
+      );
+      expect(ref.current).toBe(container.querySelector("[lang='en']"));
+    });
+
+    it("ref target supports HTMLElement.focus() — the O2 wizard use case", () => {
+      // The whole point of primaryRef is post-step focus management.
+      // Smoke-test that the forwarded ref's `.focus()` lands focus on
+      // the primary element.
+      const ref = createRef<HTMLElement>();
+      const { container } = render(
+        <Bilingual as="h1" vi="Mới" en="New" primaryRef={ref} tabIndex={-1} />,
+      );
+      ref.current?.focus();
+      const viNode = container.querySelector("[lang='vi']");
+      expect(document.activeElement).toBe(viNode);
+    });
+  });
+
+  describe("tabIndex", () => {
+    it("applies to the primary element only (default primary='vi')", () => {
+      const { container } = render(
+        <Bilingual vi="A" en="B" tabIndex={-1} />,
+      );
+      const viNode = container.querySelector("[lang='vi']");
+      const enNode = container.querySelector("[lang='en']");
+      expect(viNode?.getAttribute("tabindex")).toBe("-1");
+      expect(enNode?.hasAttribute("tabindex")).toBe(false);
+    });
+
+    it("follows primary='en' — applies to EN element, not VI", () => {
+      const { container } = render(
+        <Bilingual primary="en" vi="A" en="B" tabIndex={0} />,
+      );
+      const viNode = container.querySelector("[lang='vi']");
+      const enNode = container.querySelector("[lang='en']");
+      expect(enNode?.getAttribute("tabindex")).toBe("0");
+      expect(viNode?.hasAttribute("tabindex")).toBe(false);
+    });
+
+    it("is omitted from both sides when prop is undefined (regression for !115 pilots)", () => {
+      const { container } = render(<Bilingual vi="A" en="B" />);
+      const viNode = container.querySelector("[lang='vi']");
+      const enNode = container.querySelector("[lang='en']");
+      expect(viNode?.hasAttribute("tabindex")).toBe(false);
+      expect(enNode?.hasAttribute("tabindex")).toBe(false);
+    });
+  });
+
+  describe("separator", () => {
+    it("renders between the two sides when present (default primary='vi')", () => {
+      const { container } = render(
+        <Bilingual
+          vi="A"
+          en="B"
+          separator={<hr data-testid="sep" />}
+        />,
+      );
+      const children = Array.from(container.children);
+      expect(children).toHaveLength(3);
+      expect(children[0]).toHaveAttribute("lang", "vi");
+      expect((children[1] as HTMLElement).getAttribute("data-testid")).toBe(
+        "sep",
+      );
+      expect(children[2]).toHaveAttribute("lang", "en");
+    });
+
+    it("renders between sides in primary='en' order too", () => {
+      const { container } = render(
+        <Bilingual
+          primary="en"
+          vi="A"
+          en="B"
+          separator={<hr data-testid="sep" />}
+        />,
+      );
+      const children = Array.from(container.children);
+      expect(children).toHaveLength(3);
+      expect(children[0]).toHaveAttribute("lang", "en");
+      expect((children[1] as HTMLElement).getAttribute("data-testid")).toBe(
+        "sep",
+      );
+      expect(children[2]).toHaveAttribute("lang", "vi");
+    });
+
+    it("omitted when undefined — Fragment-of-two-siblings shape preserved (!115 regression guard)", () => {
+      // The !115 pilot consumers (W2, P4 BiText, Home) rely on the
+      // wrapper rendering exactly two children. Adding the separator
+      // prop must not break that default.
+      const { container } = render(<Bilingual vi="A" en="B" />);
+      expect(container.children).toHaveLength(2);
+    });
+
+    it("accepts any ReactNode as separator (string, fragment, element)", () => {
+      const { container } = render(
+        <Bilingual vi="A" en="B" separator="—" />,
+      );
+      // String separator becomes a text node — sibling count stays at
+      // 2 elements (the text node isn't an HTMLElement), but the text
+      // is in the DOM between the two element children.
+      expect(container.textContent).toBe("A—B");
+    });
+  });
+
   describe("pilot-consumer parity", () => {
     // Shape parity with the four established inline implementations.
     // These tests document that the wrapper's output IS equivalent to
@@ -242,6 +379,48 @@ describe("<Bilingual>", () => {
       expect(second.tagName).toBe("SPAN");
       expect(second.getAttribute("lang")).toBe("vi");
       expect((second as HTMLElement).style.fontSize).toBe("11px");
+    });
+
+    it("matches the O2 inline shape (OnboardingPage pre-pick StepHeader title pair)", () => {
+      // Inline pattern (OnboardingPage.tsx pre-pick StepHeader):
+      //   <h1 lang="vi" ref={headingRef} tabIndex={-1} style={stepTitleStyle}>{title.vi}</h1>
+      //   <PeerDivider />
+      //   <div lang="en" style={stepTitleStyle}>{title.en}</div>
+      const stepTitleStyle = { fontSize: "22px", fontWeight: 800 };
+      const headingRef = createRef<HTMLElement>();
+      const { container } = render(
+        <Bilingual
+          viAs="h1"
+          enAs="div"
+          vi="Mới bắt đầu"
+          en="Just starting"
+          viStyle={stepTitleStyle}
+          enStyle={stepTitleStyle}
+          primaryRef={headingRef}
+          tabIndex={-1}
+          separator={
+            <div
+              data-testid="peer-divider"
+              aria-hidden
+              style={{ height: 1, background: "rgba(0,0,0,0.10)" }}
+            />
+          }
+        />,
+      );
+      const [first, second, third] = Array.from(container.children);
+      // VI side: h1 with ref + tabIndex
+      expect(first.tagName).toBe("H1");
+      expect(first.getAttribute("lang")).toBe("vi");
+      expect(first.getAttribute("tabindex")).toBe("-1");
+      expect(headingRef.current).toBe(first);
+      // Separator: divider div
+      expect((second as HTMLElement).getAttribute("data-testid")).toBe(
+        "peer-divider",
+      );
+      // EN side: div with same style; NO ref, NO tabIndex
+      expect(third.tagName).toBe("DIV");
+      expect(third.getAttribute("lang")).toBe("en");
+      expect(third.hasAttribute("tabindex")).toBe(false);
     });
 
     it("matches the Home card inline shape (PracticeRecommendationCard title pair)", () => {

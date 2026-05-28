@@ -48,28 +48,53 @@
 //     surrounding markup. The lang attributes go on the VI/EN children
 //     directly, which is what WCAG 3.1.2 actually requires.
 //
-// What this wrapper deliberately does NOT do:
+// Post-!115 extensions (this dispatch):
 //
-//   - O2's `headingRef` + `tabIndex={-1}` focus-management pattern is
-//     NOT supported. O2's <h1 ref={headingRef} tabIndex={-1}> for
-//     post-step focus management is wizard-specific accessibility; a
-//     generic wrapper that took refs would be overloaded. O2 stays
-//     inline for now; if/when O2 needs to migrate, add a `primaryRef`
-//     prop with deliberate scope (or carve out a separate
-//     `<BilingualHeading>` variant).
+//   - `primaryRef` — forwarded to the rendered element on whichever
+//     side `primary` resolves to (VI when primary='vi'; EN when
+//     primary='en'). Enables O2's wizard focus-management pattern
+//     (the parent calls `headingRef.current?.focus()` on step
+//     transition so a keyboard / SR user lands on the new content
+//     instead of `<body>`, WCAG 2.4.3).
+//   - `tabIndex` — applied to the PRIMARY element ONLY (not the
+//     secondary). O2 uses `tabIndex={-1}` to make the heading
+//     programmatically focusable without entering the regular tab
+//     order. The asymmetry is deliberate: the secondary element
+//     never wants tabIndex in any consumer audited.
+//   - `separator` — optional ReactNode rendered BETWEEN the primary
+//     and secondary elements. Default undefined (no separator,
+//     backward-compatible — every pre-!115 consumer keeps its
+//     Fragment-of-two-siblings shape). O2's pre-pick screens use
+//     this to render a `<PeerDivider />` between equal-weight
+//     language sections (Chau's spec: "stacked with a visual
+//     separator" so the two languages read as peers, not headline +
+//     translation).
+//
+// What this wrapper still deliberately does NOT do:
+//
 //   - Empty-string handling. If either `vi` or `en` is an empty string,
 //     the wrapper renders an empty lang-tagged element — the consumer's
 //     responsibility to omit either side via conditional rendering. We
 //     do not silently drop the side because that would hide a bug at
 //     the data layer (one of the strings missing in a bilingual pair
 //     should be loud, not quiet).
+//   - Secondary-side ref / tabIndex. The audited consumers only ever
+//     need the primary side to be focus-managed; adding a
+//     `secondaryRef` would double the API surface for no real use case.
+//     If a future consumer needs it, add the prop with the same
+//     "deliberate scope" framing.
 //
 // Established test surface contracts:
 //   - Both languages render in correct order based on `primary`.
 //   - Both elements carry their `lang` attribute (default 'vi' / 'en').
 //   - Per-side `className` / `style` / `viAs` / `enAs` honored.
+//   - `primaryRef` forwards to the primary side's rendered element
+//     and follows `primary` when the value flips.
+//   - `tabIndex` applied to primary side only.
+//   - `separator` renders between sides when present; absent when
+//     undefined (regression-protected for the !115 pilot consumers).
 
-import { createElement, type CSSProperties, type ReactNode } from "react";
+import { createElement, type CSSProperties, type ReactNode, type Ref } from "react";
 
 export type BilingualElement =
   | "p"
@@ -119,6 +144,42 @@ export interface BilingualProps {
    * 'en-US' / 'en-GB' similarly.
    */
   enLang?: string;
+  /**
+   * Ref forwarded to the PRIMARY side's rendered DOM element (the one
+   * that renders first per `primary`). Typed as `Ref<HTMLElement>`
+   * because every supported `BilingualElement` value extends
+   * HTMLElement; consumers that need a narrower type (e.g.
+   * `HTMLHeadingElement` for O2's `useRef<HTMLHeadingElement | null>`)
+   * can pass a narrowed ref — TypeScript's structural ref typing
+   * accepts the widening at the boundary.
+   *
+   * Use case: O2's wizard focus management. The onboarding step's
+   * `useEffect` calls `headingRef.current?.focus()` on mount so a
+   * keyboard/SR user lands on the new step's heading instead of
+   * `<body>` (WCAG 2.4.3). Without this prop, the heading-as-h1 would
+   * have to stay inline.
+   */
+  primaryRef?: Ref<HTMLElement>;
+  /**
+   * `tabIndex` applied to the PRIMARY element only. Asymmetric by
+   * design — the secondary element never wants tabIndex in any
+   * audited consumer. O2 uses `tabIndex={-1}` so the heading is
+   * programmatically focusable (via `primaryRef.current?.focus()`)
+   * without entering the regular tab order.
+   */
+  tabIndex?: number;
+  /**
+   * Optional ReactNode rendered BETWEEN the primary and secondary
+   * elements. Default undefined (no separator — backward-compatible
+   * with every pre-!115 pilot consumer).
+   *
+   * Use case: O2's pre-pick `<StepHeader>` renders a hairline
+   * `<PeerDivider />` between the two languages so the pair reads as
+   * "two language sections" (peers) rather than "headline +
+   * translation". Without this prop, migrating O2 would silently
+   * drop a load-bearing visual semantic.
+   */
+  separator?: ReactNode;
 }
 
 export function Bilingual({
@@ -134,11 +195,19 @@ export function Bilingual({
   enStyle,
   viLang = "vi",
   enLang = "en",
+  primaryRef,
+  tabIndex,
+  separator,
 }: BilingualProps) {
   // Resolve per-side element types — falls back to `as` when not
   // overridden.
   const viElement = viAs ?? as;
   const enElement = enAs ?? as;
+
+  // The PRIMARY side gets `ref` + `tabIndex`; the SECONDARY side gets
+  // neither. Build per-side prop bags here so the conditional belongs
+  // to the data, not to the JSX.
+  const isViPrimary = primary !== "en";
 
   const viNode = createElement(
     viElement,
@@ -146,6 +215,11 @@ export function Bilingual({
       lang: viLang,
       className: viClassName,
       style: viStyle,
+      // `ref` is forwarded only when this side is primary; React's
+      // createElement accepts undefined ref cleanly (no warning, no
+      // attached ref).
+      ref: isViPrimary ? primaryRef : undefined,
+      tabIndex: isViPrimary ? tabIndex : undefined,
     },
     vi,
   );
@@ -156,6 +230,8 @@ export function Bilingual({
       lang: enLang,
       className: enClassName,
       style: enStyle,
+      ref: isViPrimary ? undefined : primaryRef,
+      tabIndex: isViPrimary ? undefined : tabIndex,
     },
     en,
   );
@@ -164,6 +240,7 @@ export function Bilingual({
     return (
       <>
         {enNode}
+        {separator}
         {viNode}
       </>
     );
@@ -172,6 +249,7 @@ export function Bilingual({
   return (
     <>
       {viNode}
+      {separator}
       {enNode}
     </>
   );
