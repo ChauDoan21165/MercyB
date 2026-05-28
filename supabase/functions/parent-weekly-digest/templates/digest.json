@@ -1,0 +1,9 @@
+{
+  "campaign": "parent_weekly_digest",
+  "tone": "Mercy voice — warm, respectful, parent-to-parent. No shame, no pressure, no ranking. Q10=C: Mercy speaks only here, never in the in-app parent view.",
+  "subject_vi": "Tuần này {{learner_name_vi}} đã luyện gì",
+  "subject_en": "What {{learner_name_en}} practiced this week",
+  "body_vi": "Chào bạn,\n\nMercy gửi bạn vài dòng về tuần học của con.\n\n{{patterns_block_vi}}\n\n{{cefr_block_vi}}\n\n{{attribution_block_vi}}Bạn có thể xem chi tiết — kèm video tiếng Việt giải thích từng mẫu câu — trong trang phụ huynh: https://mercyblade.com/parent/me\n\nMercy không xếp hạng, không nhắc nhở chuỗi ngày, không gây áp lực. Chỉ là sự thật, để bạn hiểu con đang học gì.\n\nMercy 💚\n\n— Không muốn nhận thư tuần này nữa? Mở Account → Email preferences để tắt.",
+  "body_en": "Hi there,\n\nMercy here with a few lines about your child's week.\n\n{{patterns_block_en}}\n\n{{cefr_block_en}}\n\n{{attribution_block_en}}You can see the details — with a Vietnamese video explaining each pattern — in the parent view: https://mercyblade.com/parent/me\n\nNo rankings, no streak nudges, no pressure. Just the honest picture of what your child is learning.\n\nMercy 💚\n\n— Don't want these? Account → Email preferences to turn off the parent digest.",
+  "notes": "Bilingual VI primary (non-negotiable #1). Q9=A descriptive — {{attribution_block_*}} is an L5-PENDING slot that is EMPTY today (render.ts formatAttributionBlock returns ''); when L4+L5 land it carries the 'two more sessions and this drops' clause additively. {{patterns_block_*}} and {{cefr_block_*}} are pre-formatted bilingual fragments that stay readable when CEFR is null or there are zero flagged patterns. The /parent/me link points at the parent view; the per-pattern 90s VN videos are the in-app wedge (Q3=B), referenced here but not embedded."
+}

@@ -24,6 +24,13 @@ verify_jwt = false
 [functions.email-unsubscribe]
 verify_jwt = false
 
+# L6 — Parent / Family layer weekly digest (Q8=A opt-in). Cron-triggered
+# (migration 20260528120000) via the default "daily_pass" action, so the
+# function must accept unauthenticated calls; admin-only actions
+# (send_test / run_now) do their own get_admin_level check internally.
+[functions.parent-weekly-digest]
+verify_jwt = false
+
 
 # =========================
 # CHAT / AI
