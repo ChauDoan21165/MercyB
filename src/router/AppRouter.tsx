@@ -53,6 +53,9 @@ const ContentAdvisory      = lazyWithRetry(() => import("@/pages/legal/ContentAd
 const Support             = lazyWithRetry(() => import("@/pages/Support"));
 const AccountPage         = lazyWithRetry(() => import("@/pages/AccountPage"));
 const XPHistoryPage       = lazyWithRetry(() => import("@/pages/xp/XPHistoryPage"));
+// L6 — Parent / Family layer. Parent-only this build (Q6=C); class/teacher
+// view is a named future phase. Premium-gated inside the component (Q1=B/Q7=A).
+const ParentDashboardPage = lazyWithRetry(() => import("@/pages/parent/ParentDashboard"));
 // A3 — Progress Certificates (gated by `certificates_enabled` flag).
 const MilestoneObserver   = lazyWithRetry(() =>
   import("@/components/certificates/MilestoneObserver").then((m) => ({ default: m.MilestoneObserver })),
@@ -1049,6 +1052,18 @@ export default function AppRouter() {
               underlying component renders its own empty state. */}
           <Route path="/weak-at"
             element={<LazyPage><WeakAtPage /></LazyPage>}
+          />
+
+          {/* L6 — Parent / Family layer. Parent-only this build (Q6=C);
+              auth-required, Premium-gated inside the component (Q1=B paywall-
+              implied, Q7=A bundled). `:learnerId` is a forward-compat seam
+              for the named future multi-kid / teacher class-view phase. */}
+          <Route path="/parent/:learnerId"
+            element={
+              <RequireAuth>
+                <LazyPage><ParentDashboardPage /></LazyPage>
+              </RequireAuth>
+            }
           />
 
           {/* Public weekly leaderboard — anon-viewable */}
