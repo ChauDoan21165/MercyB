@@ -32,6 +32,8 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import CostSummaryWidget from "@/components/admin/CostSummaryWidget";
+import { supabase } from "@/lib/supabaseClient";
+import { getAdminSecurityHealthAuthHeaders } from "./adminSecurityHealthAuth";
 import {
   getAppFromSearch,
   getAppFromStorage,
@@ -370,14 +372,31 @@ export default function AdminDashboard() {
       setServerFeedCheckedAt("");
     } else {
       try {
+        const authHeaders = await getAdminSecurityHealthAuthHeaders(
+          supabase,
+          supabaseAnonKey,
+        );
+
+        if (!authHeaders.ok) {
+          pushCheck({
+            key: "admin-security-feed",
+            label: "Admin security edge feed",
+            state: "warn",
+            summary: "Security edge feed is not available for this session.",
+            detail: authHeaders.detail,
+          });
+          setServerFeedCheckedAt("");
+          setSecurityChecks(nextChecks);
+          setSecurityCheckedAt(new Date().toISOString());
+          setSecurityLoading(false);
+          return;
+        }
+
         const { response, responseMs } = await timedFetch(
           securityEdgeFeedUrl,
           {
             method: "GET",
-            headers: {
-              apikey: supabaseAnonKey,
-              Authorization: `Bearer ${supabaseAnonKey}`,
-            },
+            headers: authHeaders.headers,
           },
           7_000,
         );
