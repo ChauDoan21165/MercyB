@@ -190,15 +190,41 @@ dispatch:
 
 ## Decisions made
 
-> Empty. Populate as decisions land.
->
 > Same structured shape as § Decisions deferred above. When a
 > decision moves from deferred → made, leave the deferred entry
 > in place (immutable record), add a new entry here with the
 > same title plus the dated decision body, and cross-link the
 > two. See § How to use this doc.
 
-*(no entries yet)*
+### Decision: Cross-layer X1 — Ship L4 / L6 with provisional L5-blocked defaults (provisional)
+
+- **Context:** Cross-layer question X1 in `STAGE-4-5-decision-queue.md`: should L4 (scope-1) and L6 (first-build) ship now with hard-coded defaults for L5-blocked values, or block on L5 ratification? L4-Q10 + L6-Q9 share this shape. Both layers' values that depend on L5 (intervention thresholds, surfacing thresholds, attribution gating) are research-blocked per § Decisions deferred above.
+- **Decision:** **A** — ship L4 and L6 now with provisional defaults; every L5-blocked default is tagged `// L5-PENDING` at the implementation site so a grep finds them when L5 lands. Each such site cross-references the specific § Decisions deferred entry it provisionally fills.
+- **Rationale:** Demo-able L4 + L6 surfaces are needed before L5 input arrives (Stage 4/5 build progress should not be gated on pedagogy-adviser cadence). Provisional defaults are honest because they are marked at every implementation site and traceable to a [PENDING] decision record — they are not silent decisions. L5 ratifies (or revises) by replacing the tagged constants and removing the `// L5-PENDING` marker.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Easy at the constant level (swap a number), medium at the policy level (a substantially different L5 answer may force L4/L6 surface changes, but the surfaces will exist to revise).
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Cross-layer X1; `L4-diagnostic-intervention-layer.md` § Decisions recorded → L4-Q10; `L6-parent-teacher-family-layer.md` § Decisions recorded → L6-Q9; § Decisions deferred entries "L4 intervention threshold defaults", "L4 suggestion lifetime / TTL", "L4 attribution rationale content authorship" (all stay [PENDING] — only their provisional fallback values were chosen, not the canonical L5 values).
+
+### Decision: Cross-layer X2 — L5 does NOT own per-rule policy
+
+- **Context:** Cross-layer question X2 in `STAGE-4-5-decision-queue.md`: do the L4 Option-C handoffs (Q4-C "L5 decides per-rule re-suggestion", Q5-C "L5-authored reason strings") imply L5 should hold a rule-by-rule library that overrides L4 defaults? Decided here because the answer scopes L5's authorship surface.
+- **Decision:** **NO** — L5 does not author per-rule policy. L4 owns its own defaults and rule-level behavior (Q4-A dismiss is permanent; Q5-B engine emits structured `TriggerReason`, presentation composes the text). L5's scope stays at the meta / threshold layer (the six § Decisions deferred entries plus future threshold work), not at the per-rule layer.
+- **Rationale:** Per-rule policy stored in L5 would couple L5's research-blocked cadence to every L4 rule edit; this layer cannot move at engineering speed if every new L4 rule waits on pedagogy ratification. Keeping per-rule defaults in L4 lets the engine ship rules at the pace evidence supports them; L5 still constrains the *thresholds* and *significance bars* those rules respond to.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Medium. Reversing requires standing up an L5 rule-library surface and a per-rule override resolver in L4. Not destructive; the existing L4 rule shape would remain compatible if a library is layered on top later.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Cross-layer X2; `L4-diagnostic-intervention-layer.md` § Decisions recorded → L4-Q4, L4-Q5.
+
+### Decision: Cross-layer X3 — Two thresholds, not one (provisional values)
+
+- **Context:** Cross-layer question X3 in `STAGE-4-5-decision-queue.md`: should L4's intervention threshold and L6's surfacing-significance threshold be a single number serving both, or two numbers (L4 acts on weaker evidence, L6 surfaces on stronger)? Both individual threshold values are research-blocked — see § Decisions deferred entries "L4 intervention threshold defaults" and "Weakness-count significance threshold".
+- **Decision:** **B** — two thresholds. L4 intervenes on weaker evidence than L6 reports on. The specific numbers are provisional and tagged `// L5-PENDING` at the L4 and L6 implementation sites; this decision settles only the *shape* (two thresholds, not one), not the *values*.
+- **Rationale:** "Act on" and "tell the parent about" are different products. An L4 nudge is a low-cost in-app suggestion; a parent-view "this pattern is significant" line is a stronger claim that benefits from more evidence before it surfaces. Collapsing to one threshold either makes L4 sluggish (set at L6's bar) or makes L6 noisy (set at L4's bar). The cost is doubled threshold-tuning surface, accepted explicitly.
+- **Decided by:** Chau
+- **Decided when:** 2026-05-28
+- **Reversibility:** Easy at the number level (re-tune), medium at the shape level (collapsing back to one threshold is a code change but not a schema change). § Decisions deferred entries stay [PENDING] until L5 ratifies the actual numbers.
+- **Cross-link:** `STAGE-4-5-decision-queue.md` § Cross-layer X3; § Decisions deferred entries "L4 intervention threshold defaults" and "Weakness-count significance threshold" (both stay [PENDING] — only the two-vs-one *shape* was chosen, not the values).
 
 ---
 
