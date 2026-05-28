@@ -327,6 +327,198 @@ describe("<Bilingual>", () => {
     });
   });
 
+  describe("dropEmpty", () => {
+    // `dropEmpty=true` skips rendering of empty-content sides — for
+    // conditional one-side-missing patterns like LocalWeaknessMap's
+    // L1Row examples or Pricing's plan-card bullets. Default false
+    // preserves !115's deliberate-no-silent-drop contract.
+
+    it("default (dropEmpty=false): empty vi still renders empty lang-tagged element (!115 regression guard)", () => {
+      const { container } = render(<Bilingual vi="" en="Hello" />);
+      const children = Array.from(container.children);
+      expect(children).toHaveLength(2);
+      expect(children[0].getAttribute("lang")).toBe("vi");
+      expect(children[0].textContent).toBe("");
+      expect(children[1].getAttribute("lang")).toBe("en");
+      expect(children[1].textContent).toBe("Hello");
+    });
+
+    it("dropEmpty=true: empty-string vi → only EN renders", () => {
+      const { container } = render(
+        <Bilingual dropEmpty vi="" en="Hello" />,
+      );
+      const children = Array.from(container.children);
+      expect(children).toHaveLength(1);
+      expect(children[0].getAttribute("lang")).toBe("en");
+      expect(children[0].textContent).toBe("Hello");
+    });
+
+    it("dropEmpty=true: empty-string en → only VI renders", () => {
+      const { container } = render(
+        <Bilingual dropEmpty vi="Xin chào" en="" />,
+      );
+      const children = Array.from(container.children);
+      expect(children).toHaveLength(1);
+      expect(children[0].getAttribute("lang")).toBe("vi");
+      expect(children[0].textContent).toBe("Xin chào");
+    });
+
+    it("dropEmpty=true: undefined vi → only EN renders (handles `string | undefined` callers)", () => {
+      const { container } = render(
+        <Bilingual dropEmpty vi={undefined} en="Hello" />,
+      );
+      const children = Array.from(container.children);
+      expect(children).toHaveLength(1);
+      expect(children[0].getAttribute("lang")).toBe("en");
+    });
+
+    it("dropEmpty=true: null en → only VI renders", () => {
+      const { container } = render(
+        <Bilingual dropEmpty vi="Xin chào" en={null} />,
+      );
+      const children = Array.from(container.children);
+      expect(children).toHaveLength(1);
+      expect(children[0].getAttribute("lang")).toBe("vi");
+    });
+
+    it("dropEmpty=true: both empty → renders null (no DOM children)", () => {
+      const { container } = render(<Bilingual dropEmpty vi="" en="" />);
+      expect(container.children).toHaveLength(0);
+      expect(container.textContent).toBe("");
+    });
+
+    it("dropEmpty=true: both populated → renders both sides (regression — dropEmpty must not break the common case)", () => {
+      const { container } = render(
+        <Bilingual dropEmpty vi="Xin chào" en="Hello" />,
+      );
+      const children = Array.from(container.children);
+      expect(children).toHaveLength(2);
+      expect(children[0].getAttribute("lang")).toBe("vi");
+      expect(children[1].getAttribute("lang")).toBe("en");
+    });
+
+    it("dropEmpty=true + separator: separator is omitted when one side is dropped (no stray divider)", () => {
+      const { container } = render(
+        <Bilingual dropEmpty vi="" en="Hello" separator={<hr data-testid="sep" />} />,
+      );
+      const children = Array.from(container.children);
+      expect(children).toHaveLength(1);
+      // The separator must NOT appear when only one side rendered.
+      expect(container.querySelector("hr")).toBeNull();
+    });
+
+    it("dropEmpty=true + separator: separator IS rendered when both sides render", () => {
+      const { container } = render(
+        <Bilingual dropEmpty vi="Xin chào" en="Hello" separator={<hr data-testid="sep" />} />,
+      );
+      expect(container.querySelector("hr")).not.toBeNull();
+      expect(container.children).toHaveLength(3);
+    });
+
+    it("`0` is NOT empty (renders as visible text)", () => {
+      const { container } = render(
+        <Bilingual dropEmpty vi={0} en="Hello" />,
+      );
+      const children = Array.from(container.children);
+      expect(children).toHaveLength(2);
+      expect(children[0].textContent).toBe("0");
+    });
+  });
+
+  describe("viProps / enProps", () => {
+    // Arbitrary per-side props (id, aria-*, data-*, role, etc.) flow
+    // onto the rendered element via the viProps/enProps escape hatch.
+    // Explicit Bilingual props win over viProps to protect the
+    // wrapper's per-side contracts (lang, className, style, ref).
+
+    it("viProps id flows through to the VI element only", () => {
+      const { container } = render(
+        <Bilingual vi="Xin chào" en="Hello" viProps={{ id: "vi-heading" }} />,
+      );
+      const [first, second] = Array.from(container.children);
+      expect(first.getAttribute("id")).toBe("vi-heading");
+      expect(second.getAttribute("id")).toBeNull();
+    });
+
+    it("enProps aria-label flows through to the EN element only", () => {
+      const { container } = render(
+        <Bilingual
+          vi="Xin chào"
+          en="Hello"
+          enProps={{ "aria-label": "english greeting" }}
+        />,
+      );
+      const [first, second] = Array.from(container.children);
+      expect(first.getAttribute("aria-label")).toBeNull();
+      expect(second.getAttribute("aria-label")).toBe("english greeting");
+    });
+
+    it("viProps and enProps coexist without leaking into each other", () => {
+      const { container } = render(
+        <Bilingual
+          vi="Xin chào"
+          en="Hello"
+          viProps={{ id: "vi-id", "data-vi": "1" }}
+          enProps={{ id: "en-id", "data-en": "1" }}
+        />,
+      );
+      const [first, second] = Array.from(container.children);
+      expect(first.getAttribute("id")).toBe("vi-id");
+      expect(first.getAttribute("data-vi")).toBe("1");
+      expect(first.getAttribute("data-en")).toBeNull();
+      expect(second.getAttribute("id")).toBe("en-id");
+      expect(second.getAttribute("data-en")).toBe("1");
+      expect(second.getAttribute("data-vi")).toBeNull();
+    });
+
+    it("explicit Bilingual props win over viProps (lang / className / style protected from accidental override)", () => {
+      const { container } = render(
+        <Bilingual
+          vi="Xin chào"
+          en="Hello"
+          viLang="vi-VN"
+          viClassName="explicit"
+          viStyle={{ color: "rgb(1, 2, 3)" }}
+          viProps={{
+            // These should ALL be defeated by the explicit Bilingual props.
+            lang: "fr",
+            className: "from-props",
+            style: { color: "rgb(99, 99, 99)" },
+          }}
+        />,
+      );
+      const [first] = Array.from(container.children);
+      // viLang wins.
+      expect(first.getAttribute("lang")).toBe("vi-VN");
+      // viClassName wins.
+      expect(first.getAttribute("class")).toBe("explicit");
+      // viStyle wins.
+      expect((first as HTMLElement).style.color).toBe("rgb(1, 2, 3)");
+    });
+
+    it("viProps role flows through (a11y use case)", () => {
+      const { container } = render(
+        <Bilingual vi="Tiếng Việt" en="English" viProps={{ role: "note" }} />,
+      );
+      const [first] = Array.from(container.children);
+      expect(first.getAttribute("role")).toBe("note");
+    });
+
+    it("viProps + dropEmpty: when the VI side is dropped, viProps don't render anywhere", () => {
+      const { container } = render(
+        <Bilingual
+          dropEmpty
+          vi=""
+          en="Hello"
+          viProps={{ id: "should-not-exist" }}
+          enProps={{ id: "en-target" }}
+        />,
+      );
+      expect(container.querySelector("#should-not-exist")).toBeNull();
+      expect(container.querySelector("#en-target")).not.toBeNull();
+    });
+  });
+
   describe("pilot-consumer parity", () => {
     // Shape parity with the four established inline implementations.
     // These tests document that the wrapper's output IS equivalent to

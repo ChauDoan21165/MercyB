@@ -180,16 +180,13 @@ function L1Row({ pattern }: { pattern: L1PatternSummary }) {
           data-testid={`l1-example-${pattern.tag}`}
           className="mt-2 rounded-xl border border-indigo-50 bg-indigo-50/40 px-3 py-2"
         >
-          {lang.exampleVi && (
-            <p lang="vi" className="text-[12px] leading-snug text-slate-700">
-              {lang.exampleVi}
-            </p>
-          )}
-          {lang.exampleEn && (
-            <p lang="en" className="mt-1 text-[12px] leading-snug text-slate-500">
-              {lang.exampleEn}
-            </p>
-          )}
+          <Bilingual
+            dropEmpty
+            vi={lang.exampleVi}
+            en={lang.exampleEn}
+            viClassName="text-[12px] leading-snug text-slate-700"
+            enClassName="mt-1 text-[12px] leading-snug text-slate-500"
+          />
         </div>
       )}
     </li>

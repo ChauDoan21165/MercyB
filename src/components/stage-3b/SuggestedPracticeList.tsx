@@ -122,16 +122,15 @@ export default function SuggestedPracticeList({
           <Sparkles className="h-4 w-4 text-violet-600" aria-hidden />
         </span>
         <div className="min-w-0">
-          <h3
-            id="suggested-practice-heading"
-            lang="vi"
-            className="text-sm font-bold leading-tight text-slate-900"
-          >
-            Gợi ý luyện tập
-          </h3>
-          <p lang="en" className="text-[11px] leading-tight text-slate-500">
-            Suggested practice
-          </p>
+          <Bilingual
+            vi="Gợi ý luyện tập"
+            en="Suggested practice"
+            viAs="h3"
+            enAs="p"
+            viClassName="text-sm font-bold leading-tight text-slate-900"
+            enClassName="text-[11px] leading-tight text-slate-500"
+            viProps={{ id: "suggested-practice-heading" }}
+          />
         </div>
       </div>
       <ul className="mt-3 flex flex-col gap-2">

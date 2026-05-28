@@ -627,10 +627,14 @@ export default function Pricing() {
             <ul style={bulletListStyle}>
               {plan.bullets.map((bullet, i) => (
                 <li key={bullet}>
-                  <span lang="en">{bullet}</span>
-                  {plan.bulletsVi?.[i] ? (
-                    <span lang="vi" style={bulletViStyle}>{plan.bulletsVi[i]}</span>
-                  ) : null}
+                  <Bilingual
+                    primary="en"
+                    as="span"
+                    dropEmpty
+                    en={bullet}
+                    vi={plan.bulletsVi?.[i]}
+                    viStyle={bulletViStyle}
+                  />
                 </li>
               ))}
             </ul>
