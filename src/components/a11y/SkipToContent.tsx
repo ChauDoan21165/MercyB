@@ -31,6 +31,7 @@
 
 import { useRef } from "react";
 import { A11Y_CONFIG } from "@/config/a11y";
+import { Bilingual } from "@/components/Bilingual";
 
 export default function SkipToContent() {
   const ref = useRef<HTMLAnchorElement>(null);
@@ -65,9 +66,21 @@ export default function SkipToContent() {
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-300",
       ].join(" ")}
     >
-      <span lang="vi">Bỏ qua đến nội dung chính</span>
-      <span aria-hidden className="mx-1.5 text-white/60">·</span>
-      <span lang="en">Skip to main content</span>
+      {/* Tier-2 sweep migration to <Bilingual> — see
+          docs/copy/bilingual-audit.md "Tier-2 backlog" section.
+          Preserves the bilingual posture documented in the file
+          header: VI primary, EN secondary, both lang-tagged. The
+          middle `·` separator keeps its `mx-1.5 text-white/60`
+          styling exactly (white-on-violet, anchor-scoped) so the
+          visible skip-link pill renders identically. */}
+      <Bilingual
+        as="span"
+        vi="Bỏ qua đến nội dung chính"
+        en="Skip to main content"
+        separator={
+          <span aria-hidden className="mx-1.5 text-white/60">·</span>
+        }
+      />
     </a>
   );
 }
