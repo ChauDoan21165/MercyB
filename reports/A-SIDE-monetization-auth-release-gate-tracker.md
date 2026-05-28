@@ -2,7 +2,7 @@
 
 Owner lane: ChatGPT / A-side
 Scope: monetization, auth, entitlement, referral, and A-side release-gate security work
-Status date: 2026-05-27
+Status date: 2026-05-28
 
 ## Purpose
 
@@ -50,6 +50,10 @@ without the exact approval phrase.
 ## Current Gate State
 
 A-side has no active Critical blockers recorded in this tracker.
+
+Latest A-side release-gate verification found one non-Critical release-gate
+ledger item pending: `20260702000000` did not appear in the linked Supabase
+migration ledger output.
 
 ## Critical Tracker
 
@@ -183,6 +187,26 @@ each draft when ready to ship.
 | Android Studio release checks | still part of release gate | A4 verification found missing local Gradle project files, no device attached, AAB version mismatch, and packaged Capacitor `appId` mismatch. | Chau reruns Android Studio checklist or explicitly removes Android from this release gate. |
 | Play Console acceptance readiness | unknown | No Play Console access/status recorded here. | Chau records package acceptance plus version acceptance or exact rejection. |
 | Native Sentry probe | scoped/deferred | Owner scope exists; deferred behind previous Supabase Critical work. | Resume if Chau prioritizes native release evidence. |
+
+## Latest A-side Release-gate Verification
+
+Run date: 2026-05-28 UTC.
+
+Scope: A-side only. No SQL writes. No product code. No C-side work.
+
+| Check | Result | Evidence / notes |
+|---|---|---|
+| MR !134 | PASS | MR !134 is merged; branch and merge-request pipelines were green. |
+| `/admin` live deploy | PASS | `https://mercyblade.com/admin` returned HTTP 200 from Netlify with current asset set `index-ksR59SgW.js`, `supabase-DXjt-d6_.js`, `ui-DMtyoxMb.js`, `vendor-DiQ1t48U.js`, `react-Blmy93np.js`; HTML ETag changed to `b82438f0862539f93f45100d2059c780-ssl`. |
+| Security Health `admin-security-feed` 401 | MANUAL CHECK PENDING | Anonymous `/admin` reaches the admin gate and does not call `admin-security-health`; no 401 is shown in that flow. Authenticated visual Security Health verification still needs Chau/admin browser session. Direct unauthenticated edge-function call still returns the expected 401. |
+| Monetization/auth surfaces | PASS | Live route smoke returned HTTP 200 for `/pricing`, `/signin`, `/billing`, and `/account`; protected `/billing` and `/account` redirected to `/signin?returnTo=...` as expected when unauthenticated. |
+| Referral leaderboard surface | PASS | `/leaderboard/referral` returned HTTP 200 and rendered the referral leaderboard surface. |
+| MR !85 entitlement/user-rank Phase A | PASS | Anon REST reads of `user_entitlements`, `user_entitlements_v`, `v_user_ai_monthly_meter`, and `mb_user_effective_rank` returned 401; service-role reads of all four returned 200. `get_my_ai_monthly_meter()` returned 401 to anon and 200 to service role. |
+| `public.subscriptions` closure | PASS | Closure remains based on A2 final evidence: `subscriptions_admin_read` absent; `subscriptions_self_select` and `subscriptions_admin_select` present; RLS enabled; authenticated self-read works; authenticated cross-user read blocked; broad authenticated `raw_payload` visibility blocked. A4 live REST recheck: anon `subscriptions` read returned 401; service-role `subscriptions` reads returned 200 including `raw_payload`. Direct `pg_policy` recheck was not rerun because no DB password is available and Supabase schema dump is blocked by Docker not running. |
+| Referral leaderboard closure | PASS | Anon REST safe routes returned 200: `referral_leaderboard_monthly_public`, `referral_leaderboard_all_time_public`. Legacy routes returned 404: `monthly_referral_leaderboard`, `all_time_referral_leaderboard`. |
+| Migration ledger `20260630000000` | PASS | `supabase migration list --linked` showed remote `20260630000000`. |
+| Migration ledger `20260701000000` | PASS | `supabase migration list --linked` showed remote `20260701000000`. |
+| Migration ledger `20260702000000` | FAIL / PENDING | `supabase migration list --linked` did not show `20260702000000` in the filtered output. This is a release-gate ledger item, not a newly observed live Critical. |
 
 ## MR / Merge Rules
 
