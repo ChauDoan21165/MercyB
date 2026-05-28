@@ -14,6 +14,7 @@ This file is an **index**, not a runbook. Each phase below names the operative d
 | **Pre-launch — variant + measurement framework** | [`stage-3-content-kit/ab-variants.md`](./stage-3-content-kit/ab-variants.md) + [`stage-3-content-kit/measurement-plan.md`](./stage-3-content-kit/measurement-plan.md) + [`stage-3-content-kit/decision-criteria.md`](./stage-3-content-kit/decision-criteria.md) | Set up once; referenced throughout |
 | **Morning-of launch — checklist** | [`prelaunch-checklist.md`](./prelaunch-checklist.md) | Hour −1 to hour 0 |
 | **During-launch — operating procedure** | [`launch-window-operations.md`](./launch-window-operations.md) | Hour 0 to hour +72 |
+| **Hour +24 close-of-day-1 review** | [`day-1-close-review.md`](./day-1-close-review.md) | Hour +24 (operationalizes `launch-window-operations.md` §6) |
 | **First-week reads — what to measure** | [`first-week-metrics-spec.md`](./first-week-metrics-spec.md) | Day 1 to day 7 |
 | **Post-week-1 — retrospective template** | [`week-1-retrospective.md`](./week-1-retrospective.md) | Day 7+ (filled into `reports/launch-week-1-YYYY-MM-DD.md`) |
 
