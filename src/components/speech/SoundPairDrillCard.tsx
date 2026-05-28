@@ -38,8 +38,9 @@ import {
   CATEGORY_NAMES,
   CATEGORY_WHY,
   UI_COPY,
-  type Bilingual,
+  type Bilingual as BilingualPair,
 } from './soundPairCopy';
+import { Bilingual } from '@/components/Bilingual';
 
 export type SoundPairDrillCardProps = {
   /** Optional initial category. Omit to show the picker first. */
@@ -388,14 +389,24 @@ function ResultChip({ result }: { result: PairResult }) {
   );
 }
 
-function Bi({ text }: { text: Bilingual }) {
+function Bi({ text }: { text: BilingualPair }) {
+  // Tier-2 sweep migration to <Bilingual> — see docs/copy/bilingual-audit.md
+  // "Tier-2 backlog" section. The local `Bilingual` TYPE from
+  // ./soundPairCopy is aliased to `BilingualPair` to free the
+  // `Bilingual` identifier for the shared component import. The
+  // middle `·` separator preserves its original aria-hidden styling
+  // exactly — the muted-slate color stays on the same line as
+  // aria-hidden so the !64 contrast-test exemption applies.
   return (
-    <>
-      <span lang="vi">{text.vi}</span>
-      <span className="text-slate-400 mx-1" aria-hidden>
-        ·
-      </span>
-      <span lang="en">{text.en}</span>
-    </>
+    <Bilingual
+      as="span"
+      vi={text.vi}
+      en={text.en}
+      separator={
+        <span className="text-slate-400 mx-1" aria-hidden>
+          ·
+        </span>
+      }
+    />
   );
 }
