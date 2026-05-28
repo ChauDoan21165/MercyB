@@ -218,11 +218,9 @@ The planner that biases what the learner SEES NEXT based on weakness
 signals. **NEXT engineering target.** See
 [`ROADMAP.md` §L4](../ROADMAP.md#l4--diagnostic-intervention-layer).
 
-**No dedicated docs — see ROADMAP §L4.** Flagged as a real gap:
-the layer that closes ~70% of the diagnostic loop has no design
-doc, no contract sketch, no boundary spec. When L4 work starts,
-this section should add a deep-dive sibling to
-`study-os-stage-3.md`.
+| Path | Covers what (re: L4) |
+|---|---|
+| `docs/architecture/L4-diagnostic-intervention-layer.md` | Design + first-build scope + open questions for the rule engine that maps L3 signals to L5/Stage-3B actions. Authored per !113 / !122 flagged gap; companion to L6. |
 
 ### L5 — Pedagogy Layer
 
