@@ -13,11 +13,11 @@
 
 | Category | Count |
 |---|---|
-| **Decidable now (Chau A/B/C or YES/NO tonight)** | **18** |
+| **Decidable now (Chau A/B/C or YES/NO tonight)** | **17** |
 | **Cross-layer (one decision unblocks multiple)** | **3** |
 | **Research-blocked (needs data / pedagogy / product call)** | **11** |
 
-The **18 decidable-now** entries are the load-bearing output —
+The **17 decidable-now** entries are the load-bearing output —
 Chau can make every one of them in one sitting without needing
 data we don't have. The 3 cross-layer items have outsized leverage:
 answering them clears multiple downstream blockers. The 11
@@ -172,7 +172,7 @@ decisions above:
 
 ## How to use this queue
 
-1. **Decidable-now first** (18 entries). Pick A/B/C per entry; write the choice into the source layer doc's §Open questions section (or a follow-up MR).
+1. **Decidable-now first** (17 entries). Pick A/B/C per entry; write the choice into the source layer doc's §Open questions section (or a follow-up MR).
 2. **Cross-layer next** (3 entries) — each clears multiple downstream blockers.
 3. **Don't pre-fill Research-blocked** — `[PENDING]` is honest until data / pedagogy input arrives (per !126 protocol rule #4).
 4. **Decided entries** follow !126's decision-record protocol — never edit past decisions; revisions supersede; cross-link from code.
