@@ -294,7 +294,7 @@ const CSS = `
 .mb-ml-h2{margin:0;font-size:clamp(1.25rem,4vw,1.7rem);font-weight:800;
  color:#0f172a;line-height:1.25;}
 .mb-ml-h2-en{margin:6px 0 0;font-size:.95rem;font-weight:600;
- color:#94a3b8;}
+ color:#64748b;}
 .mb-ml-trial-copy{margin:14px 0 0;color:#475569;
  font-size:clamp(.98rem,2.5vw,1.1rem);}
 .mb-ml-center{text-align:center;}
@@ -305,7 +305,7 @@ const CSS = `
  box-shadow:0 1px 2px rgba(0,0,0,.04);}
 .mb-ml-col-h{margin:0;font-size:1.18rem;font-weight:800;color:#0F766E;}
 .mb-ml-col-vi{margin:10px 0 0;color:#334155;font-size:1rem;}
-.mb-ml-col-en{margin:8px 0 0;color:#94a3b8;font-size:.9rem;
+.mb-ml-col-en{margin:8px 0 0;color:#64748b;font-size:.9rem;
  line-height:1.45;}
 
 .mb-ml-founder{text-align:center;}
@@ -320,7 +320,7 @@ const CSS = `
 
 .mb-ml-footer{text-align:center;border-top:1px solid rgba(0,0,0,.08);
  padding-top:34px;}
-.mb-ml-legal{margin:20px 0 0;font-size:.9rem;color:#94a3b8;}
+.mb-ml-legal{margin:20px 0 0;font-size:.9rem;color:#64748b;}
 
 @media (min-width:760px){
  .mb-ml-hero{margin-top:34px;}

@@ -288,7 +288,7 @@ Net VI-positive: 25 of 27 directly benefit Vietnamese learners (either VI text o
 
 **Notable canvas-text fix:** `certificateExport.ts` paints the VI subtitle onto the user-exported PDF / PNG certificate. That asset is what learners share with employers, family, or social platforms — the contrast story extends to non-DOM rendering. Fixing this is a 1-line `ctx.fillStyle` change that improves every certificate exported from this MR forward (already-exported PNGs are unchanged).
 
-**Wave 5 — this MR (speech-history + admin, 13 fixes + 4 exceptions):** ✅ shipped — 12 → `slate-500` + 1 → `slate-600` (on `bg-slate-100`) + 4 chart-border `a11y-contrast:exception` markers (non-text 1.4.11 3:1 already met), across 10 files:
+**Wave 5 — !109 (speech-history + admin, 13 fixes + 4 exceptions):** ✅ shipped — 12 → `slate-500` + 1 → `slate-600` (on `bg-slate-100`) + 4 chart-border `a11y-contrast:exception` markers (non-text 1.4.11 3:1 already met), across 10 files:
 
 | File | Fix locations | Exception locations | Form |
 |---|---|---|---|
@@ -316,17 +316,33 @@ Net VI-positive: 25 of 27 directly benefit Vietnamese learners (either VI text o
 
 **Wave 5 also confirmed the wave-3 slate-100 precedent.** `RetentionDashboard.tsx`'s `TIER_COLOR.n/a` cell renders a text fg on a `bg-slate-100` background — slate-500 fails at 4.0:1 here, slate-600 clears 6.4:1. Same pattern as wave 3's `LessonRenderer` `FallbackBadge`. Future waves that touch any `bg-slate-100`/`bg-slate-200` site should pre-emptively pick slate-600.
 
-**Remaining footprint (out of this MR's scope — wave-6+ sweep):**
+**Wave 6 — this MR (MarketingLanding inline `<style>` block, 3 fixes + 0 exceptions):** ✅ shipped — 3 `color:#94a3b8` declarations inside the page's `const CSS` template, all → `#64748b` (slate-500, 4.78:1 on the page's white body). Single-file MR:
 
-After waves 0+1+2+3+4+5, whole-codebase grep finds **~85 remaining bare `text-slate-400`** + **~45 remaining `#94a3b8` hex** usages. The long tail is increasingly:
-- Non-text contexts (chart fills, `no_data` indicators, canvas `fillStyle` on misc components) governed by 1.4.11 3:1.
-- The `MarketingLandingPage` inline `<style>` block (one-off CSS file).
-- Scattered one-offs in routes that haven't been audited.
+| File | Locations | Form |
+|---|---|---|
+| `src/pages/MarketingLandingPage.tsx` | 3 (`.mb-ml-h2-en`, `.mb-ml-col-en`, `.mb-ml-legal`) | inline `<style>` CSS rule |
 
-**Recommended next waves:**
+**Wave-6 documented exceptions:** none.
 
-- **Wave 6** — `MarketingLandingPage` inline `<style>` block (one-off CSS file; outside the Tailwind/inline-React patterns; learner-facing landing page so contrast matters for first impressions).
-- **Wave 7 (cleanup)** — long-tail non-text reclassification: walk each remaining usage and either exempt (with `a11y-contrast:exception` marker) when it's genuinely 1.4.11 non-text or fix when it's text we missed. Goal: take `CONTRAST_FIXED_FILES` from the 41 files at end-of-wave-5 up to near-total coverage of the codebase, treating exception markers as the long-tail mechanism.
+**Wave 6 location breakdown:**
+- **`.mb-ml-h2-en`** (line 297) — the EN subtitle under each section's VI H2. `font-size: .95rem; font-weight: 600` — normal text by WCAG (600 is not "bold" per WCAG; bold = 700+). Previously 3.13:1 FAILED; now 4.78:1 PASSES.
+- **`.mb-ml-col-en`** (line 308) — the EN paragraph body inside each of the 3 value-prop columns. `font-size: .9rem`, regular weight. Same fix.
+- **`.mb-ml-legal`** (line 323) — the footer legal/copyright/links block. Same `.9rem` size, regular weight. Same fix.
+
+**Wave 6 audience framing:** MarketingLanding is **the public learner entry point** — anonymous traffic, no auth gate, no per-user feature flag. This is the highest-impact wave by raw eyeball count. The previously-failing EN subtitles + column EN copy + legal footer were all visible to every visitor; the fix lands on first-impression copy specifically (the 3 affected classes are all "EN translation peer" or "EN body" patterns — every learner sees them on first load).
+
+**Wave 6 methodology note:** the inline `<style>` template (CSS-in-JS string, NOT React `style={}` props and NOT a separate stylesheet file) is structurally unique in the codebase. The fix is a clean find-and-replace on the hex literals inside the template — same WCAG math as Tailwind-class fixes, different syntactic form. The drift-guard regex catches `#94a3b8` literals regardless of where they live, so the same guard machinery works for inline `<style>` blocks without change.
+
+**Remaining footprint (out of this MR's scope — wave-7 cleanup only):**
+
+After waves 0+1+2+3+4+5+6, whole-codebase grep finds **~85 remaining bare `text-slate-400`** + **~40 remaining `#94a3b8` hex** usages (the −5 hex delta vs end-of-wave-5 is wave 6's 3 fixes + minor accounting). The remaining tail is now **almost entirely non-text contexts**:
+- Chart fills + `no_data` indicators on misc components governed by WCAG 1.4.11 3:1.
+- Canvas `fillStyle` on non-text rendering (decorative dividers, sparkline backgrounds).
+- Scattered one-offs in routes that haven't been route-audited (per the original audit methodology, route-by-route is the proper audit cadence; wave 7 is the residual-cleanup form).
+
+**Recommended final wave:**
+
+- **Wave 7 (cleanup)** — long-tail non-text reclassification: walk each remaining `text-slate-400` / `#94a3b8` usage and either exempt (with `a11y-contrast:exception` marker + WCAG citation) when it's genuinely 1.4.11 non-text or fix when it's text we missed. Goal: take `CONTRAST_FIXED_FILES` from the **42 files at end-of-wave-6** up to near-total coverage of the codebase, with `a11y-contrast:exception` markers documenting every non-text use case. After wave 7, the guard becomes a near-blanket invariant: any new bare `text-slate-400` / `#94a3b8` in `src/` must either appear in a fixed file (and get re-fixed by CI) or be deliberately marked as an exception with a documented WCAG citation.
 
 Each wave appends its file paths to `CONTRAST_FIXED_FILES` in the contrast test as it ships.
 
