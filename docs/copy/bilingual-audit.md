@@ -715,7 +715,7 @@ candidates):**
 - ~~`src/components/stage-3a/LocalWeaknessMap.tsx` — 7 more `<p lang="…">` pairs~~ **DONE in the sweep MR !121** (PlacementRow, PronunciationRow shortVi/shortEn, SectionHeading, GlobalEmptyState). L1Row example pair (`exampleVi`/`exampleEn`) deliberately **left inline** — see "Sweep migration" flag below.
 - ~~`src/components/stage-3b/SuggestedPracticeList.tsx` — 6 `<p lang="…">` pairs~~ **DONE in the sweep MR !121** (row item viLabel/enLabel + EmptyState). Heading h3/p pair **left inline** — see "Sweep migration" flag below.
 - ~~`src/pages/onboarding/OnboardingPage.tsx` — 4 lang-tagged elements~~ **DONE in THIS MR** via the `primaryRef` + `tabIndex` + `separator` extensions to `<Bilingual>` (pilot-migrations table row 4 above). The wrapper-API blocker that originally deferred O2 is now closed.
-- ~~`src/screens/Pricing.tsx` — ~10 non-`BiText` inline pairs~~ **DONE in the sweep MR !121** (hero h1+VI subtitle, hero secondary pair, feature grid divs, plan card titles × 2, plan card subtitle pairs × 2, plan card body pairs × 2, auto-renewal disclosure). Plan-card bullets + legal-link anchors **left inline** — see flags.
+- ~~`src/screens/Pricing.tsx` — ~10 non-`BiText` inline pairs~~ **DONE.** !121 shipped 9 of them (hero h1+VI subtitle, hero secondary pair, feature grid divs, plan card titles × 2, plan card subtitle pairs × 2, plan card body pairs × 2, auto-renewal disclosure). !130 shipped plan-card bullets via `dropEmpty`. The legal-link migration MR shipped the two legal anchors via `separator=" / "`. Pricing now has zero inline lang-attr pairs.
 - ~~`src/components/home/PracticeRecommendationCard.tsx` — description pair~~ **DONE in the sweep MR !121**. The migration also added the WCAG 3.1.2 `lang` attrs that the inline pair was missing.
 
 ## Sweep migration (post-!115)
@@ -744,18 +744,20 @@ the wrapper doesn't model.
 | ~~`LocalWeaknessMap.tsx` L1Row `exampleVi`/`exampleEn`~~ | **CLOSED by THIS MR's `dropEmpty` prop.** Migrated. |
 | ~~`SuggestedPracticeList.tsx` heading `<h3 id="suggested-practice-heading">`~~ | **CLOSED by THIS MR's `viProps` prop.** Migrated. `viProps={{ id: "suggested-practice-heading" }}` passes the heading-id through to the rendered h3 so `aria-labelledby` still resolves. |
 | ~~`Pricing.tsx` plan-card bullets~~ | **CLOSED by THIS MR's `dropEmpty` prop.** Migrated. `primary="en" dropEmpty` cleanly handles the EN-always / VI-optional shape. |
-| `Pricing.tsx` legal-link anchors | Unblocked by !123's `separator` prop; not migrated in this MR per anti-bundling (separator-only follow-up). |
+| ~~`Pricing.tsx` legal-link anchors~~ | **CLOSED in the legal-link migration MR.** Each anchor's two language spans + literal `" / "` text separator migrated to `<Bilingual as="span" separator=" / " />` with the anchor preserved as the outer wrapper (href / target / rel / style intact — broken legal links are worse than unmigrated ones). |
 
 **Open follow-ups:**
 
 1. ~~**O2 onboarding migration**~~ — **CLOSED in !123.**
-2. ~~**Conditional-render extension (`dropEmpty`)**~~ — **CLOSED in THIS MR.**
-3. ~~**Per-side prop passthrough (`viProps` / `enProps`)**~~ — **CLOSED in THIS MR.**
-4. **Legal-link anchor migration** — newly-unblocked by !123's `separator` prop; mechanical follow-up. (Anti-bundling: not in this MR — `separator` + `dropEmpty` + `viProps` could interact and the isolated-MR rule applies.)
+2. ~~**Conditional-render extension (`dropEmpty`)**~~ — **CLOSED in !130.**
+3. ~~**Per-side prop passthrough (`viProps` / `enProps`)**~~ — **CLOSED in !130.**
+4. ~~**Legal-link anchor migration**~~ — **CLOSED in the legal-link migration MR.**
 
-Tests verified post-sweep (!121): 124 vitest specs. Tests post-O2-migration (!123): + `OnboardingPage` subtree 67/67 + `Bilingual.test.tsx` extended to 27. **Tests post-`dropEmpty` + `viProps`/`enProps` (THIS MR): `Bilingual.test.tsx` extended from 27 → 43 (16 new); 145 vitest specs across stage-3a + stage-3b + screens + Bilingual subtrees all green, no test-file edits required for the 3 site migrations (the markup change was transparent to existing assertions).**
+**The inline-pair backlog is now CLOSED.** Every site flagged by !96/!108/!115/!121 has either been migrated to `<Bilingual>` or, in the case of the legal-link anchors, wraps the wrapper inside its outer `<a>`. No follow-up sweep MRs are queued against the inline-pair pattern.
 
-**All four established consumer flavours (W2 / O2 / P4 / Home) have at least one site migrated**, and every documented inline lang-attr pattern in the codebase is now either migrated or unblocked-pending-mechanical-follow-up. Only follow-up #4 (legal-link) remains.
+Tests verified post-sweep (!121): 124 vitest specs. Post-O2-migration (!123): +`OnboardingPage` 67/67 + `Bilingual.test.tsx` 27. Post-`dropEmpty` + `viProps`/`enProps` (!130): `Bilingual.test.tsx` → 43, 145 across stage-3a + stage-3b + screens + Bilingual subtrees. **Tests post-legal-link migration (THIS MR):** existing `Pricing.lang.test.tsx` (7 tests) passes unchanged — the DOM output is byte-identical to the inline version, so the test's `getByText` + `getAttribute("lang")` assertions on the legal-link spans still resolve. No new test row required (the migration is a refactor inside markup the existing tests already cover); `Bilingual.test.tsx` 43 + Pricing 7 = 50 specs pass post-migration.
+
+**The four established consumer flavours (W2 / O2 / P4 / Home) plus the inline-anchor-wrapping-the-wrapper variant (legal links) collectively cover every shape the inline-pair pattern produced in this codebase.**
 
 ## Wrapper API summary (post-extension)
 
