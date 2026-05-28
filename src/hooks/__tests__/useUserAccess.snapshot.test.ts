@@ -2,16 +2,19 @@
 //
 // MB-BLUE alignment (AUTH-DRIVEN, ENTITLEMENT-DRIVEN)
 
+import React from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { renderHook, waitFor } from "@testing-library/react";
 import { useUserAccess } from "../useUserAccess";
 import { normalizeTier } from "@/lib/constants/tiers";
+import { qk } from "@/lib/queries/keys";
 import type { UserAccess } from "../useUserAccess";
 
 // Shared mock shapes. Profile rows and entitlement payloads are
 // intentionally loose here — several tests feed deliberately corrupted
 // data to exercise the hook's defensive parsing.
-type MockUser = { email?: string } | null;
+type MockUser = { id?: string; email?: string } | null;
 type MockProfileResult = {
   data: Record<string, unknown> | null;
   error: { message: string } | null;
@@ -27,18 +30,26 @@ vi.mock("@/providers/AuthProvider", () => {
 
   const __setAuth = (next: Partial<typeof state>) => {
     state = { ...state, ...next };
+    if (state.user) {
+      state = {
+        ...state,
+        user: { id: state.user.id ?? "user-1", ...state.user },
+      };
+    }
   };
 
   return {
-    useAuth: () => ({
-      user: state.user,
-      isLoading: state.isLoading,
-      signOut: vi.fn(),
-      signInWithOAuth: vi.fn(),
-      signInWithPassword: vi.fn(),
-      signUpWithPassword: vi.fn(),
-      resetPassword: vi.fn(),
-    }),
+    useAuth: () => {
+      return {
+        user: state.user,
+        isLoading: state.isLoading,
+        signOut: vi.fn(),
+        signInWithOAuth: vi.fn(),
+        signInWithPassword: vi.fn(),
+        signUpWithPassword: vi.fn(),
+        resetPassword: vi.fn(),
+      };
+    },
     __mock: { __setAuth },
   };
 });
@@ -129,6 +140,28 @@ const { __setEntitlement } = ((
   __setEntitlement: (next: MockEntitlement) => void;
 };
 
+function makeQueryClient() {
+  return new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+        staleTime: 30_000,
+        gcTime: 5 * 60_000,
+        refetchOnMount: false,
+        refetchOnReconnect: false,
+        refetchOnWindowFocus: false,
+      },
+    },
+  });
+}
+
+function renderUseUserAccess(client = makeQueryClient()) {
+  return renderHook(() => useUserAccess(), {
+    wrapper: ({ children }: { children: React.ReactNode }) =>
+      React.createElement(QueryClientProvider, { client }, children),
+  });
+}
+
 // Snapshot only stable, serializable fields.
 function stableSnapshot(a: UserAccess) {
   return {
@@ -164,7 +197,7 @@ describe("useUserAccess snapshots - baseline", () => {
 
     __setEntitlement({ tier: "level0" });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isAuthenticated).toBe(true);
@@ -196,7 +229,7 @@ describe("useUserAccess snapshots - baseline", () => {
 
     __setEntitlement({ tier: "premium_month" });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.tier).toBe("premium_month");
@@ -227,7 +260,7 @@ describe("useUserAccess snapshots - baseline", () => {
 
     __setEntitlement({ tier: "premium_year" });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.tier).toBe("premium_year");
@@ -258,7 +291,7 @@ describe("useUserAccess snapshots - baseline", () => {
 
     __setEntitlement({ tier: "level0" });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isHighAdmin).toBe(true);
@@ -283,7 +316,7 @@ describe("useUserAccess snapshots - baseline", () => {
   it("unauthenticated user access snapshot (demo mode)", async () => {
     __setAuth({ user: null, isLoading: false });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isDemoMode).toBe(true);
@@ -310,7 +343,7 @@ describe("useUserAccess snapshots - baseline", () => {
   it("auth loading stays loading until auth resolves", async () => {
     __setAuth({ user: null, isLoading: true });
 
-    const { result, rerender } = renderHook(() => useUserAccess());
+    const { result, rerender } = renderUseUserAccess();
 
     expect(result.current.isLoading).toBe(true);
     expect(result.current.loading).toBe(true);
@@ -344,7 +377,7 @@ describe("useUserAccess admin vs non-admin", () => {
 
     __setEntitlement({ tier: "level0" });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -368,7 +401,7 @@ describe("useUserAccess admin vs non-admin", () => {
 
     __setEntitlement({ tier: "level0" });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -392,7 +425,7 @@ describe("useUserAccess admin vs non-admin", () => {
 
     __setEntitlement(null);
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -415,7 +448,7 @@ describe("useUserAccess admin vs non-admin", () => {
 
     __setEntitlement({ tier: "premium_month" });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -439,7 +472,7 @@ describe("useUserAccess admin vs non-admin", () => {
 
     __setEntitlement({ tier: "premium_year" });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -451,6 +484,43 @@ describe("useUserAccess admin vs non-admin", () => {
     expect(result.current.adminLevel).toBe(0);
     expect(result.current.tier).toBe("premium_year");
     expect(result.current.canAccessPremium()).toBe(true);
+  });
+});
+
+describe("useUserAccess profile query cache sharing", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    __setAuth({ user: null, isLoading: false });
+    __setProfilesResult({ data: null, error: null });
+    __setEntitlement(null);
+  });
+
+  it("reuses cached profile data instead of issuing a separate profiles read", async () => {
+    const client = makeQueryClient();
+    const userId = "cached-user-1";
+
+    __setAuth({
+      user: { id: userId, email: "cached-admin@example.com" },
+      isLoading: false,
+    });
+    __setEntitlement({ tier: "level0" });
+
+    client.setQueryData(qk.profile(userId), {
+      id: userId,
+      email: "cached-admin@example.com",
+      is_admin: true,
+      admin_level: 9,
+    });
+
+    const { result } = renderUseUserAccess(client);
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(result.current.isAdmin).toBe(true);
+    expect(result.current.adminLevel).toBe(9);
+    expect(mockFrom).not.toHaveBeenCalled();
   });
 });
 
@@ -476,7 +546,7 @@ describe("useUserAccess corrupted profile rows and malformed entitlement payload
 
     __setEntitlement({ tier: "level0" });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -508,7 +578,7 @@ describe("useUserAccess corrupted profile rows and malformed entitlement payload
 
     __setEntitlement({ tier: "level0" });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -538,7 +608,7 @@ describe("useUserAccess corrupted profile rows and malformed entitlement payload
       source: ["stripe"],
     });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -566,7 +636,7 @@ describe("useUserAccess corrupted profile rows and malformed entitlement payload
       weird: true,
     });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -590,7 +660,7 @@ describe("useUserAccess corrupted profile rows and malformed entitlement payload
 
     __setEntitlement({ tier: "premium_month" });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -629,7 +699,7 @@ describe("useUserAccess auth-loaded but partially broken downstream data", () =>
 
     __setEntitlement({ tier: "premium_year" });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -647,7 +717,7 @@ describe("useUserAccess auth-loaded but partially broken downstream data", () =>
     __setProfilesResult({ data: null, error: null });
     __setEntitlement({ tier: "level0" });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isAuthenticated).toBe(true);
@@ -671,7 +741,7 @@ describe("useUserAccess auth-loaded but partially broken downstream data", () =>
     __setEntitlement({ tier: "premium_year" });
     __setAuth({ user: null, isLoading: false });
 
-    const { result } = renderHook(() => useUserAccess());
+    const { result } = renderUseUserAccess();
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -686,7 +756,7 @@ describe("useUserAccess auth-loaded but partially broken downstream data", () =>
   it("auth loading suppresses downstream work until auth resolves", async () => {
     __setAuth({ user: { email: "loading@example.com" }, isLoading: true });
 
-    const { result, rerender } = renderHook(() => useUserAccess());
+    const { result, rerender } = renderUseUserAccess();
 
     expect(result.current.isLoading).toBe(true);
     expect(result.current.loading).toBe(true);

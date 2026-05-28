@@ -11,6 +11,7 @@ import {
   fetchCurrentEntitlement,
   resolveEntitlementTier,
 } from "@/lib/authService";
+import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 
 export interface FeatureAccess {
   hasMercyGuide: boolean;
@@ -72,9 +73,6 @@ export interface UserAccess {
 const FORCE_UNLOCK_MERCY_FEATURES = true;
 const TRIAL_ENDED_MESSAGE =
   "Your free trial has ended. Please upgrade to continue.";
-
-// Profile query timeout in ms — avoid hanging the access resolution
-const PROFILE_QUERY_TIMEOUT_MS = 6000;
 
 function isPremiumTier(tier: TierId): boolean {
   return tier === "premium_month" || tier === "premium_year";
@@ -272,6 +270,9 @@ export const useUserAccess = (): UserAccess => {
   // Avoids the effect re-running on every render due to derived string recalculation
   const userId = user?.id ?? null;
   const userEmail = user?.email ?? null;
+  const profileQuery = useProfileQuery(authLoading ? null : userId);
+  const profile = profileQuery.data ?? null;
+  const profileLoading = Boolean(userId) && profileQuery.isLoading;
 
   // Run counter — discard results from stale concurrent runs
   const runIdRef = useRef(0);
@@ -313,6 +314,10 @@ export const useUserAccess = (): UserAccess => {
         }),
       );
 
+      if (profileLoading) {
+        return;
+      }
+
       let adminLevel = 0;
       let isHighAdmin = false;
       let isAdmin = false;
@@ -320,40 +325,22 @@ export const useUserAccess = (): UserAccess => {
       // to prevent stale or spoofed profile email affecting access decisions
       const resolvedEmail = userEmail?.trim() || undefined;
 
-      try {
-        // Race profile query against a timeout to avoid hanging access resolution
-        const profilePromise = supabase
-          .from("profiles")
-          .select("id, is_admin, admin_level")
-          .eq("id", userId ?? "")
-          .maybeSingle();
-
-        const timeoutPromise = new Promise<null>((resolve) =>
-          window.setTimeout(() => resolve(null), PROFILE_QUERY_TIMEOUT_MS),
-        );
-
-        const result = await Promise.race([profilePromise, timeoutPromise]);
-        const profile = result && "data" in result ? result.data : null;
-
-        if (profile) {
-          adminLevel = safeNumber(profile.admin_level, 0);
-          isHighAdmin = adminLevel >= 9;
-          // adminLevel threshold must match the SQL admin policy in
-          // 20260701000000_subscriptions_rls_select_policies.sql:
-          //   USING (public.get_admin_level(auth.uid()) >= 9)
-          // No `Boolean(profile.is_admin) ||` disjunct: !86's SQL policy
-          // ignores the is_admin column and only checks admin_level. The
-          // flag-bypass disjunct that lived here was removed in the
-          // post-!100/!105 hardening pass — in prod the only is_admin=true
-          // row is Chau's at admin_level=10, which isHighAdmin below
-          // already covers via `adminLevel >= 9`.
-          // Post-!111 stylistic collapse: isHighAdmin is literally
-          // `adminLevel >= 9` (assigned line above), so the old
-          // `adminLevel >= 9 || isHighAdmin` simplifies to `isHighAdmin`.
-          isAdmin = isHighAdmin;
-        }
-      } catch {
-        // keep level0/admin defaults — never block access resolution on profile error
+      if (profile) {
+        adminLevel = safeNumber(profile.admin_level, 0);
+        isHighAdmin = adminLevel >= 9;
+        // adminLevel threshold must match the SQL admin policy in
+        // 20260701000000_subscriptions_rls_select_policies.sql:
+        //   USING (public.get_admin_level(auth.uid()) >= 9)
+        // No `Boolean(profile.is_admin) ||` disjunct: !86's SQL policy
+        // ignores the is_admin column and only checks admin_level. The
+        // flag-bypass disjunct that lived here was removed in the
+        // post-!100/!105 hardening pass — in prod the only is_admin=true
+        // row is Chau's at admin_level=10, which isHighAdmin below
+        // already covers via `adminLevel >= 9`.
+        // Post-!111 stylistic collapse: isHighAdmin is literally
+        // `adminLevel >= 9` (assigned line above), so the old
+        // `adminLevel >= 9 || isHighAdmin` simplifies to `isHighAdmin`.
+        isAdmin = isHighAdmin;
       }
 
       let entitlementTier: TierId = "level0";
@@ -414,7 +401,7 @@ export const useUserAccess = (): UserAccess => {
     };
 
     void run();
-  }, [authLoading, user, userId, userEmail]);
+  }, [authLoading, profile, profileLoading, user, userId, userEmail]);
 
   return useMemo(() => access, [access]);
 };
