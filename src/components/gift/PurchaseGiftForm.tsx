@@ -123,7 +123,7 @@ export default function PurchaseGiftForm({
                   aria-pressed={duration === d}
                 >
                   {d} tháng
-                  <span className="ml-1 text-xs text-slate-400">/ mo</span>
+                  <span className="ml-1 text-xs text-slate-500">/ mo</span>
                 </button>
               ))}
             </div>
@@ -145,7 +145,7 @@ export default function PurchaseGiftForm({
           <div className="space-y-2">
             <Label htmlFor="personal-message">
               Lời nhắn / Personal message{" "}
-              <span className="text-xs text-slate-400">(tuỳ chọn / optional)</span>
+              <span className="text-xs text-slate-500">(tuỳ chọn / optional)</span>
             </Label>
             <Textarea
               id="personal-message"
@@ -157,7 +157,7 @@ export default function PurchaseGiftForm({
             />
             <p
               className={`text-xs ${
-                messageOver ? "text-rose-600" : "text-slate-400"
+                messageOver ? "text-rose-600" : "text-slate-500"
               }`}
               aria-live="polite"
             >

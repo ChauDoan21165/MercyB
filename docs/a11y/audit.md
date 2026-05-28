@@ -240,7 +240,7 @@ The static guard's regex skips `disabled:` / `dark:` / `hover:` / `focus:` / `gr
 
 **Inline exception-marker mechanism (added in !83):** the contrast test has a third escape hatch — an inline `// a11y-contrast:exception` marker on the same line as a `text-slate-400` / `#94a3b8` literal. Used sparingly for one-off cases where the literal IS the intended design and the WCAG threshold is genuinely met (typically large-text or non-text contexts). Every marker must pair with a rationale comment on the line(s) above AND an entry in this audit doc. Two other escape hatches still apply: variant prefixes (`disabled:` / `dark:` / etc.) and `aria-hidden` decorative elements.
 
-**Wave 3 — this MR (LessonRenderer + leaderboard, 15 locations):** ✅ shipped — 14 → `text-slate-500` + 1 → `text-slate-600`, across 4 files:
+**Wave 3 — !88 (LessonRenderer + leaderboard, 15 locations):** ✅ shipped — 14 → `text-slate-500` + 1 → `text-slate-600`, across 4 files:
 
 | File | Locations | Form | Token chosen |
 |---|---|---|---|
@@ -258,15 +258,43 @@ The static guard's regex skips `disabled:` / `dark:` / `hover:` / `focus:` / `gr
 - **Explicit VI peer content:** 3 of 15 (`leaderboardCopy.*.vi` on `LeaderboardCard` lines 123 / 152 / 236).
 - **Language-agnostic:** 12 of 15 — rank numerals (`#1`, `#2`, …), attempts counts, romanization spans (any non-Roman script), phonetic transcriptions (IPA), register labels (`FORMAL` / `INFORMAL` / …), example sentences in the lesson's own native language. These darken for every learner regardless of language pair — including Vietnamese learners studying any of the supported targets.
 
-**Remaining footprint (out of this MR's scope — wave-4+ sweep):**
+**Wave 4 — this MR (forms + certificates, 27 locations):** ✅ shipped — 23 Tailwind-class form fixes + 3 hex certificate fixes + 1 canvas `fillStyle` fix, across 11 files:
 
-After waves 0+1+2+3, whole-codebase grep finds **~105 remaining bare `text-slate-400`** + **~55 remaining `#94a3b8` hex** usages across gift / family / corporate forms, certificates, the `MarketingLandingPage` inline `<style>` block, the speech-history page, and several admin / dev surfaces. Mix of text-spans, chart fills, and canvas `fillStyle`.
+| File | Locations | Form |
+|---|---|---|
+| `src/components/corporate/CorporateAccountForm.tsx` | 6 | Tailwind class |
+| `src/components/corporate/InviteSeatsForm.tsx` | 1 | Tailwind class |
+| `src/components/family/InviteFamilyMemberForm.tsx` | 1 | Tailwind class |
+| `src/components/family/FamilyPlanCard.tsx` | 1 | Tailwind class |
+| `src/components/gift/PurchaseGiftForm.tsx` | 3 | Tailwind class |
+| `src/components/gift/MyGiftsList.tsx` | 1 | Tailwind class |
+| `src/components/contribute/ContributeSentenceForm.tsx` | 5 | Tailwind class |
+| `src/pages/stories/ShareStory.tsx` | 5 | Tailwind class |
+| `src/components/certificates/Certificate.tsx` | 1 | inline `#94a3b8` hex (VI subtitle on certificate UI) |
+| `src/pages/certificates/CertificatesGalleryPage.tsx` | 2 | inline `#94a3b8` hex (date label + footer link wrapper) |
+| `src/lib/certificates/certificateExport.ts` | 1 | canvas `ctx.fillStyle` (VI subtitle painted onto exported PDF/PNG at 22px regular — normal text on canvas, same 4.5:1 threshold applies) |
+
+**Wave-4 documented exceptions:** none.
+
+**Wave-4 bilingual split** — forms-heavy mix differs from wave 3:
+- **Explicit VI text:** Certificate.tsx VI subtitle + certificateExport.ts canvas VI subtitle + FamilyPlanCard.tsx VI subtitle (3 of 27).
+- **EN labels paired with VI primary copy** (dominant form pattern): all 6 CorporateAccountForm hints, InviteSeatsForm "Invite seats", all 5 ContributeSentenceForm EN labels ("English sentence" / "Vietnamese translation" / "Context" / "CEFR" / "Suggested L1 rule"), all 5 ShareStory EN sub-prompts, PurchaseGiftForm "/ mo" suffix — **18 of 27**. These EN labels sit next to bold VI primary labels; darkening them helps users who can't fully read the EN label still see the form's structure.
+- **Bilingual VI / EN hints** (parenthetical "tuỳ chọn / optional", "Mã / Code", etc.): 4 of 27.
+- **Language-neutral** (dates, conditional warning state, link wrappers): 2 of 27.
+
+Net VI-positive: 25 of 27 directly benefit Vietnamese learners (either VI text or EN-paired-with-VI labels they navigate forms by).
+
+**Notable canvas-text fix:** `certificateExport.ts` paints the VI subtitle onto the user-exported PDF / PNG certificate. That asset is what learners share with employers, family, or social platforms — the contrast story extends to non-DOM rendering. Fixing this is a 1-line `ctx.fillStyle` change that improves every certificate exported from this MR forward (already-exported PNGs are unchanged).
+
+**Remaining footprint (out of this MR's scope — wave-5+ sweep):**
+
+After waves 0+1+2+3+4, whole-codebase grep finds **~95 remaining bare `text-slate-400`** + **~50 remaining `#94a3b8` hex** usages across the speech-history page, admin / dev surfaces, the `MarketingLandingPage` inline `<style>` block, and a long tail of one-off non-Tailwind sites. Increasingly the remaining usages skew toward non-text contexts (chart fills, `no_data` indicators) where WCAG 1.4.11 3:1 applies, not 1.4.3 4.5:1.
 
 **Recommended next waves** (rough order of VI-learner visibility):
 
-- **Wave 4** — Gift / Family / Corporate forms + certificates (transactional, lower volume).
-- **Wave 5** — Speech-history page + admin / dev surfaces (internal-leaning audience, lowest priority).
+- **Wave 5** — Speech-history page + admin / dev surfaces (internal-leaning audience, lowest learner priority).
 - **Wave 6** — `MarketingLandingPage` inline `<style>` block (one-off CSS file; outside the Tailwind/inline-React patterns).
+- **Wave 7 (cleanup)** — long-tail non-text uses; reclassify each as 1.4.11 non-text 3:1 vs. text 4.5:1 and adjust per category.
 
 Each wave appends its file paths to `CONTRAST_FIXED_FILES` in the contrast test as it ships.
 

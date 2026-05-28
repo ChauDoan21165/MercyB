@@ -319,7 +319,7 @@ function EarnedCard({
         {meta?.blurb_vi}
       </p>
 
-      <p style={{ margin: 0, fontSize: 11, color: "#94a3b8" }}>
+      <p style={{ margin: 0, fontSize: 11, color: "#64748b" }}>
         {formatDate(certificate.earned_at)}
       </p>
 
@@ -559,7 +559,7 @@ function WhatYouCanEarn({
       <p
         style={{
           fontSize: 11,
-          color: "#94a3b8",
+          color: "#64748b",
           marginTop: 16,
           lineHeight: 1.5,
         }}

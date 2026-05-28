@@ -99,7 +99,7 @@ function Section({ title, empty, rows, kind }: SectionProps): React.ReactElement
                       ? `Tặng cho / To: ${row.recipientEmail ?? "—"}`
                       : `Tặng từ / From: ${row.purchaserEmail ?? "—"}`}
                   </p>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-slate-500">
                     {kind === "purchased" ? (
                       <>
                         Mã / Code:{" "}

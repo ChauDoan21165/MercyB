@@ -27,11 +27,24 @@
  *     - src/pages/listening/Library.tsx
  *     - src/pages/listening/ClipPlayer.tsx
  *
- *   Wave 3 (this MR — LessonRenderer + leaderboard):
+ *   Wave 3 (!88 — LessonRenderer + leaderboard):
  *     - src/components/languages/LessonRenderer.tsx
  *     - src/components/leaderboard/WeeklyLeaderboard.tsx
  *     - src/components/leaderboard/LeaderboardCard.tsx
  *     - src/pages/leaderboards/MonthlyReferralLeaderboard.tsx
+ *
+ *   Wave 4 (this MR — forms + certificates):
+ *     - src/components/corporate/CorporateAccountForm.tsx
+ *     - src/components/corporate/InviteSeatsForm.tsx
+ *     - src/components/family/InviteFamilyMemberForm.tsx
+ *     - src/components/family/FamilyPlanCard.tsx
+ *     - src/components/gift/PurchaseGiftForm.tsx
+ *     - src/components/gift/MyGiftsList.tsx
+ *     - src/components/contribute/ContributeSentenceForm.tsx
+ *     - src/pages/stories/ShareStory.tsx
+ *     - src/components/certificates/Certificate.tsx
+ *     - src/pages/certificates/CertificatesGalleryPage.tsx
+ *     - src/lib/certificates/certificateExport.ts
  *
  * Each guarded file must stay free of `text-slate-400` (bare class)
  * and `#94a3b8` (hex) literals. Three escape hatches let intentional
@@ -89,11 +102,23 @@ const CONTRAST_FIXED_FILES = [
   "src/components/pricing/IapPlanCard.tsx",
   "src/pages/listening/Library.tsx",
   "src/pages/listening/ClipPlayer.tsx",
-  // Wave 3 — this MR (LessonRenderer + leaderboard)
+  // Wave 3 — !88 (LessonRenderer + leaderboard)
   "src/components/languages/LessonRenderer.tsx",
   "src/components/leaderboard/WeeklyLeaderboard.tsx",
   "src/components/leaderboard/LeaderboardCard.tsx",
   "src/pages/leaderboards/MonthlyReferralLeaderboard.tsx",
+  // Wave 4 — this MR (forms + certificates)
+  "src/components/corporate/CorporateAccountForm.tsx",
+  "src/components/corporate/InviteSeatsForm.tsx",
+  "src/components/family/InviteFamilyMemberForm.tsx",
+  "src/components/family/FamilyPlanCard.tsx",
+  "src/components/gift/PurchaseGiftForm.tsx",
+  "src/components/gift/MyGiftsList.tsx",
+  "src/components/contribute/ContributeSentenceForm.tsx",
+  "src/pages/stories/ShareStory.tsx",
+  "src/components/certificates/Certificate.tsx",
+  "src/pages/certificates/CertificatesGalleryPage.tsx",
+  "src/lib/certificates/certificateExport.ts",
 ] as const;
 
 /**
