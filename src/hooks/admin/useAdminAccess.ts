@@ -91,16 +91,34 @@ function normalizeText(value: unknown): string | null {
   return trimmed || null;
 }
 
+/**
+ * Returns true if the profile row carries any admin-level signal — used
+ * by useAdminAccess() to ROUTE (not to gate). When true, the hook
+ * short-circuits the RPC fallback and resolves permissions from the
+ * profile directly. The FINAL permission verdict still goes through
+ * permissionsFromLevel(safeLevel), which requires safeLevel >= 9 for
+ * isAdmin/canViewAdmin per !86's SQL policy.
+ *
+ * Why >= 1 (not >= 9): the codebase supports a graduated admin tier
+ * system in permissionsFromLevel — level 3 (canManageUsers), level 5
+ * (canManageContent), level 7 (canManagePayments), level 8
+ * (canManageAdmins), level 9 (canEditSystem + isAdmin). A user at level
+ * 3 is a legitimate admin in the tier system (manages users) even
+ * though they cannot view the admin app shell. This function correctly
+ * routes them through the profile path so their tier-specific
+ * capabilities resolve from cached profile data instead of forcing an
+ * RPC roundtrip. Tightening to >= 9 here would force levels 1-8
+ * through RPC for no observable end-user benefit.
+ *
+ * Why no `Boolean(profile.is_admin) ||` disjunct: removed in !106's
+ * post-!100/!105 hardening pass. The is_admin column is not consulted
+ * by !86's SQL policy and should not admit admin status (even indirect
+ * routing status) here either. In prod the only is_admin=true row is
+ * Chau's at admin_level=10, which the level check below catches.
+ */
 function isAdminFromProfile(profile: ProfileAdminRow | null): boolean {
   if (!profile) return false;
   const level = normalizeLevel(profile.admin_level);
-  // No `Boolean(profile.is_admin) ||` disjunct: the is_admin column does
-  // not appear in !86's SQL admin policy and therefore should not admit
-  // admin status here either. Final isAdmin verdict still goes through
-  // permissionsFromLevel(>=9). Removed in the post-!100/!105 hardening
-  // pass; the disjunct was effectively no-op in prod because Chau (the
-  // only is_admin=true row) is also at admin_level=10 and is caught by
-  // the level check below.
   return level >= 1;
 }
 
