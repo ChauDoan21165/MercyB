@@ -115,12 +115,7 @@ function calculateScore(
   if (options.tier && room.tier === options.tier) {
     score += 1;
   }
-  
-  // Prefer rooms with data
-  if (room.hasData) {
-    score += 0.5;
-  }
-  
+
   return score;
 }
 
