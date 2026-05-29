@@ -62,7 +62,12 @@ vi.mock("@/pages/placement/v3/SkipConfirmPage", () => ({
 
 function LocationProbe() {
   const location = useLocation();
-  return <div data-testid="pathname">{location.pathname}</div>;
+  return (
+    <>
+      <div data-testid="pathname">{location.pathname}</div>
+      <div data-testid="search">{location.search}</div>
+    </>
+  );
 }
 
 async function renderRoute(
@@ -174,5 +179,19 @@ describe("Placement V3 route guard", () => {
     expect(await screen.findByTestId("signin-page")).toBeInTheDocument();
     expect(screen.getByTestId("pathname")).toHaveTextContent("/signin");
     expect(screen.queryByTestId("placement-v3-test")).not.toBeInTheDocument();
+  });
+
+  it("redirects logged-out /placement/who to sign-in with returnTo preserved", async () => {
+    authState.user = null;
+
+    await renderRoute("/placement/who");
+
+    expect(await screen.findByTestId("signin-page")).toBeInTheDocument();
+    expect(screen.getByTestId("pathname")).toHaveTextContent("/signin");
+    expect(screen.getByTestId("search")).toHaveTextContent(
+      "?returnTo=%2Fplacement%2Fwho",
+    );
+    expect(screen.queryByTestId("home-page")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("placement-v3-who")).not.toBeInTheDocument();
   });
 });
