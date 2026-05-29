@@ -147,6 +147,14 @@ async function openTab(name: string) {
   await userEvent.click(within(screen.getByTestId("teacher-mercy-mode-tabs")).getByRole("button", { name }));
 }
 
+async function speakCurrentTarget(transcript: string) {
+  await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói|Đọc câu thay vì gõ/i }));
+  act(() => {
+    MockSpeechRecognition.last?.emitFinalTranscript(transcript);
+    MockSpeechRecognition.last?.stop();
+  });
+}
+
 describe("AiTutor four-tab seed flow", () => {
   it("renders the Teacher Mercy shell with four tabs", () => {
     render(<AiTutorPage />);
@@ -216,16 +224,47 @@ describe("AiTutor four-tab seed flow", () => {
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
 
     expect(screen.getByTestId("ai-tutor-speak-target")).toHaveTextContent("I bought a hat yesterday.");
-    await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói|Đọc câu thay vì gõ/i }));
-    act(() => {
-      MockSpeechRecognition.last?.emitFinalTranscript("I bought a hat yesterday.");
-      MockSpeechRecognition.last?.stop();
-    });
+    await speakCurrentTarget("I bought a hat yesterday.");
 
     expect(await screen.findByTestId("ai-tutor-speak-score")).toHaveTextContent("Bạn nói giống câu mẫu khoảng 100%.");
     expect(screen.getByTestId("ai-tutor-speak-score")).toHaveTextContent("Mercy đang nghe theo từ. Sẽ chấm phát âm chi tiết hơn sau.");
     expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
     expect(screen.queryByText(/pronunciation score|phát âm score/i)).not.toBeInTheDocument();
+  });
+
+  it("does not repeat Speak follow-up templates for the same corrected sentence", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    await speakCurrentTarget("I bought a hat yesterday.");
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+
+    await speakCurrentTarget("I bought a hat yesterday again.");
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("What kind of hat was it?");
+    });
+    expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent("Where did you buy it?");
+  });
+
+  it("offers a graceful pivot after four Speak follow-up turns on the same topic", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    await speakCurrentTarget("I bought a hat yesterday.");
+    await speakCurrentTarget("I bought a red hat yesterday.");
+    await speakCurrentTarget("I bought a blue hat yesterday.");
+    await speakCurrentTarget("I bought a small hat yesterday.");
+    await speakCurrentTarget("I bought another hat yesterday.");
+
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Bạn muốn luyện thêm câu khác không?");
+    });
   });
 
   it("falls back to the generic Speak prompt when no corrected sentence exists", async () => {

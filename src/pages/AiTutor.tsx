@@ -65,6 +65,10 @@ import {
   getLocalLearningEventProgressSummary,
   type LearningEventProgressSummary,
 } from "@/lib/tutor/learningEventSummary";
+import {
+  getSpeakFollowUpTopicId,
+  selectSpeakFollowUp,
+} from "@/lib/tutor/speakFollowups";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
 import { detectEnVnError, detectL1Error } from "@/lib/feedback";
 import {
@@ -102,6 +106,14 @@ type ActiveTodayLesson = {
   plan: TodayLessonPlan;
   prompt: string;
   resumed: boolean;
+};
+
+type SpeakFollowUpSession = {
+  topicId: string;
+  turnsOnTopic: number;
+  askedQuestions: string[];
+  currentQuestion: string | null;
+  currentIsPivot: boolean;
 };
 
 type TutorMode = Extract<TutorProductMode, "journey" | "grammar" | "speak" | "logic">;
@@ -707,6 +719,13 @@ export default function AiTutorPage() {
   const [conversationInput, setConversationInput] = useState("");
   const [speakRepeatInput, setSpeakRepeatInput] = useState("");
   const [latestCorrectedSeed, setLatestCorrectedSeed] = useState<CorrectedSentenceSeed | null>(null);
+  const [speakFollowUpSession, setSpeakFollowUpSession] = useState<SpeakFollowUpSession>({
+    topicId: "",
+    turnsOnTopic: 0,
+    askedQuestions: [],
+    currentQuestion: null,
+    currentIsPivot: false,
+  });
   const [conversationMessages, setConversationMessages] = useState<ConversationMessage[]>(() => [
     createOpeningMessage(
       typeof window === "undefined"
@@ -777,8 +796,34 @@ export default function AiTutorPage() {
 
   const sttBaseInputRef = useRef<string>("");
   const lastCommittedSttRef = useRef<string>("");
+  const lastRecordedSpeakAttemptRef = useRef<string>("");
   const wasListeningRef = useRef(false);
   const ignoreNextSttCommitRef = useRef(false);
+
+  const recordSpeakRepeatAttempt = (spokenText: string) => {
+    const targetSentence = latestCorrectedSeed?.correctedSentence.trim();
+    const spoken = normalizeSpokenText(spokenText);
+    if (!targetSentence || !spoken || spoken === lastRecordedSpeakAttemptRef.current) return;
+    lastRecordedSpeakAttemptRef.current = spoken;
+
+    setSpeakFollowUpSession((current) => {
+      const topicId = getSpeakFollowUpTopicId(targetSentence);
+      const sameTopic = current.topicId === topicId;
+      const turnsOnTopic = sameTopic ? current.turnsOnTopic : 0;
+      const askedQuestions = sameTopic ? current.askedQuestions : [];
+      const selection = selectSpeakFollowUp(targetSentence, {
+        askedQuestions,
+        turnsOnTopic,
+      });
+      return {
+        topicId: selection.topicId,
+        turnsOnTopic: turnsOnTopic + 1,
+        askedQuestions: selection.isPivot ? askedQuestions : [...askedQuestions, selection.question],
+        currentQuestion: selection.question,
+        currentIsPivot: selection.isPivot,
+      };
+    });
+  };
 
   useEffect(() => {
     const transcript = normalizeSpokenText(stt.transcript);
@@ -811,6 +856,7 @@ export default function AiTutorPage() {
       } else if (mode === "speak") {
         const next = appendCleanSpeech(sttBaseInputRef.current, transcript);
         setSpeakRepeatInput(next);
+        recordSpeakRepeatAttempt(next);
       } else {
         const next = appendCleanSpeech(sttBaseInputRef.current, transcript);
         setConversationInput(next);
@@ -821,7 +867,7 @@ export default function AiTutorPage() {
   const handleMicToggle = () => {
     if (stt.listening) { stt.stop(); return; }
     stt.reset();
-    sttBaseInputRef.current = mode === "grammar" ? input : mode === "speak" ? speakRepeatInput : conversationInput;
+    sttBaseInputRef.current = mode === "grammar" ? input : mode === "speak" ? "" : conversationInput;
     lastCommittedSttRef.current = "";
     stt.start();
   };
@@ -1171,6 +1217,14 @@ export default function AiTutorPage() {
       updatedAt: Date.now(),
     });
     setSpeakRepeatInput("");
+    lastRecordedSpeakAttemptRef.current = "";
+    setSpeakFollowUpSession({
+      topicId: getSpeakFollowUpTopicId(trimmed),
+      turnsOnTopic: 0,
+      askedQuestions: [],
+      currentQuestion: null,
+      currentIsPivot: false,
+    });
     handleModeChange("speak");
   };
 
@@ -1316,6 +1370,8 @@ export default function AiTutorPage() {
           ttsSpeaking={speakingMessageId === "speak-target" && tts.speaking}
           ttsPreparing={speakingMessageId === "speak-target" && tts.preparing}
           ttsVoiceSource={tts.voiceSource}
+          followUpPrompt={speakFollowUpSession.currentQuestion}
+          followUpIsPivot={speakFollowUpSession.currentIsPivot}
           onMicToggle={handleMicToggle}
           onReadTarget={handleReadSpeakTarget}
           tutorCopy={tutorCopy}
