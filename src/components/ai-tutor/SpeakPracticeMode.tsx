@@ -1,6 +1,6 @@
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
-import { calculateSentenceMatchPercent, selectSpeakFollowUp } from "@/lib/tutor/speakFollowups";
+import { calculateSentenceMatchPercent } from "@/lib/tutor/speakFollowups";
 
 type Props = {
   targetSentence: string | null;
@@ -12,6 +12,8 @@ type Props = {
   ttsSpeaking: boolean;
   ttsPreparing: boolean;
   ttsVoiceSource?: "mercy" | "device" | null;
+  followUpPrompt: string | null;
+  followUpIsPivot: boolean;
   onMicToggle: () => void;
   onReadTarget: () => void;
   tutorCopy: TutorCopy;
@@ -27,6 +29,8 @@ export default function SpeakPracticeMode({
   ttsSpeaking,
   ttsPreparing,
   ttsVoiceSource,
+  followUpPrompt,
+  followUpIsPivot,
   onMicToggle,
   onReadTarget,
   tutorCopy,
@@ -35,7 +39,6 @@ export default function SpeakPracticeMode({
   const score = targetSentence && repeatInput.trim()
     ? calculateSentenceMatchPercent(repeatInput, targetSentence)
     : null;
-  const followUp = targetSentence && score !== null ? selectSpeakFollowUp(targetSentence) : null;
   const micFallbackMessage = micError
     ? "Không dùng được micro. Hãy cho phép micro trong trình duyệt hoặc gõ câu của bạn."
     : "Không dùng được giọng nói trên thiết bị hoặc trình duyệt này. Bạn vẫn có thể luyện bằng cách nghe câu mẫu trước.";
@@ -137,13 +140,13 @@ export default function SpeakPracticeMode({
             </div>
           )}
 
-          {followUp && (
+          {followUpPrompt && (
             <div data-testid="ai-tutor-speak-follow-up" className="mt-4 rounded-[16px] border border-slate-200 bg-white px-4 py-4">
               <div className="text-xs font-black uppercase text-slate-500">
-                Câu hỏi tiếp theo
+                {followUpIsPivot ? "Đổi câu luyện" : "Câu hỏi tiếp theo"}
               </div>
               <p className="mt-1 text-sm font-black leading-6 text-slate-900">
-                {followUp}
+                {followUpPrompt}
               </p>
             </div>
           )}

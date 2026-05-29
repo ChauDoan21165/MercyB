@@ -4,6 +4,21 @@ export type SpeakFollowUpPattern = {
   questions: readonly string[];
 };
 
+export type SpeakFollowUpSelection = {
+  topicId: string;
+  question: string;
+  isPivot: boolean;
+};
+
+const GENERIC_FOLLOW_UPS = [
+  "Can you tell me one more detail about that?",
+  "What happened after that?",
+  "How did you feel about it?",
+] as const;
+
+export const SPEAK_FOLLOW_UP_DEPTH_CAP = 4;
+export const SPEAK_FOLLOW_UP_PIVOT = "Bạn muốn luyện thêm câu khác không?";
+
 export const SPEAK_FOLLOW_UP_PATTERNS: readonly SpeakFollowUpPattern[] = [
   {
     id: "bought-hat-yesterday",
@@ -47,10 +62,36 @@ export const SPEAK_FOLLOW_UP_PATTERNS: readonly SpeakFollowUpPattern[] = [
   },
 ];
 
-export function selectSpeakFollowUp(sentence: string): string {
+export function getSpeakFollowUpTopicId(sentence: string): string {
   const normalized = sentence.replace(/\s+/g, " ").trim();
   const pattern = SPEAK_FOLLOW_UP_PATTERNS.find((candidate) => candidate.test.test(normalized));
-  return pattern?.questions[0] ?? "Can you tell me one more detail about that?";
+  return pattern?.id ?? "generic";
+}
+
+export function selectSpeakFollowUp(
+  sentence: string,
+  options: {
+    askedQuestions?: readonly string[];
+    turnsOnTopic?: number;
+  } = {},
+): SpeakFollowUpSelection {
+  const normalized = sentence.replace(/\s+/g, " ").trim();
+  const pattern = SPEAK_FOLLOW_UP_PATTERNS.find((candidate) => candidate.test.test(normalized));
+  const topicId = pattern?.id ?? "generic";
+  const asked = new Set((options.askedQuestions ?? []).map((question) => question.trim().toLowerCase()));
+  const turnsOnTopic = options.turnsOnTopic ?? 0;
+
+  if (turnsOnTopic >= SPEAK_FOLLOW_UP_DEPTH_CAP) {
+    return { topicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
+  }
+
+  const candidates = [...(pattern?.questions ?? []), ...GENERIC_FOLLOW_UPS];
+  const question = candidates.find((candidate) => !asked.has(candidate.trim().toLowerCase()));
+  if (!question) {
+    return { topicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
+  }
+
+  return { topicId, question, isPivot: false };
 }
 
 export function calculateSentenceMatchPercent(spoken: string, target: string): number {
