@@ -70,9 +70,9 @@ function TeacherMercyLearningShellInner<TMode extends string>(
                 </div>
                 <div className="text-sm font-bold text-slate-600" data-testid={greetingTestId}>
                   {greetingName ? (
-                    <>Chào {greetingName} · Hi {greetingName}</>
+                    <>Chào {greetingName}</>
                   ) : (
-                    <>Chào bạn · Hi there</>
+                    <>Chào bạn</>
                   )}
                 </div>
               </div>
@@ -104,9 +104,6 @@ function TeacherMercyLearningShellInner<TMode extends string>(
         </header>
 
         <div className="px-4 pt-4 sm:px-6">
-          {memorySlot}
-          {reminderSlot}
-
           <TeacherMercyModeTabs
             tabs={modeTabs}
             activeMode={activeMode}
@@ -116,6 +113,9 @@ function TeacherMercyLearningShellInner<TMode extends string>(
           <div className="pb-5">
             {children}
           </div>
+
+          {memorySlot}
+          {reminderSlot}
         </div>
 
         {footer && (

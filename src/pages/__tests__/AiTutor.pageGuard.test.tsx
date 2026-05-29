@@ -24,7 +24,7 @@ describe("AiTutor page guard", () => {
         <AiTutorPage />
       </MemoryRouter>,
     );
-    expect(screen.getByRole("heading", { name: /Teacher Mercy AI Tutor/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Sửa tiếng Anh với Mercy/ })).toBeInTheDocument();
   });
 
   it("greeting avoids email", () => {
