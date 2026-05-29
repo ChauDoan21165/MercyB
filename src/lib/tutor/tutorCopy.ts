@@ -91,6 +91,11 @@ export type TutorCopy = TutorLanguagePack & {
     ttsBrowserFallback: string;
     ttsMercyVoiceLabel: string;
     ttsDeviceVoiceFallbackLabel: string;
+    voiceInputTitle: string;
+    voiceDraftTitle: string;
+    useVoiceDraft: string;
+    clearVoiceDraft: string;
+    sendToSpeak: string;
     explanationLabel: string;
     grammarTipLabel: string;
     practiceLabel: string;
@@ -180,6 +185,11 @@ export function getTutorCopy(targetLanguage: unknown, uiLanguage: unknown): Tuto
         ttsBrowserFallback: "Mercy voice unavailable. Using device voice.",
         ttsMercyVoiceLabel: "Mercy voice",
         ttsDeviceVoiceFallbackLabel: "Device voice fallback",
+        voiceInputTitle: "Speak instead of typing",
+        voiceDraftTitle: "Voice draft",
+        useVoiceDraft: "Use this sentence",
+        clearVoiceDraft: "Record again",
+        sendToSpeak: "Send this sentence to Speak practice",
         explanationLabel: "Explanation",
         grammarTipLabel: "Grammar tip",
         practiceLabel: "Practice",
@@ -245,12 +255,17 @@ export function getTutorCopy(targetLanguage: unknown, uiLanguage: unknown): Tuto
         ttsUnavailable: "Giọng đọc trình duyệt chưa khả dụng trên thiết bị này.",
         ttsAriaStop: "Dừng đọc",
         ttsAriaPlay: "Mercy đọc câu đã sửa bằng giọng AI",
-        ttsPreparing: "Preparing Mercy voice...",
+        ttsPreparing: "Đang chuẩn bị giọng Mercy...",
         ttsStop: "Dừng",
         ttsPlay: "Mercy đọc",
-        ttsBrowserFallback: "Mercy voice unavailable. Using device voice.",
-        ttsMercyVoiceLabel: "Mercy voice",
-        ttsDeviceVoiceFallbackLabel: "Device voice fallback",
+        ttsBrowserFallback: "Chưa dùng được giọng Mercy. Đang dùng giọng của thiết bị.",
+        ttsMercyVoiceLabel: "Giọng Mercy",
+        ttsDeviceVoiceFallbackLabel: "Giọng thiết bị",
+        voiceInputTitle: "Đọc câu thay vì gõ",
+        voiceDraftTitle: "Bản nháp giọng nói",
+        useVoiceDraft: "Dùng câu này",
+        clearVoiceDraft: "Thu lại",
+        sendToSpeak: "Đưa câu này sang Luyện nói",
         explanationLabel: "Giải thích",
         grammarTipLabel: "Mẹo ngữ pháp",
         practiceLabel: "Luyện tập",

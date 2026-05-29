@@ -129,7 +129,7 @@ export default function CorrectionMode({
 
             <div className="rounded-[14px] border border-slate-200 bg-slate-50 px-4 py-3">
               <div className="text-xs font-black uppercase text-slate-500">
-                Đọc câu thay vì gõ
+                {ui.voiceInputTitle}
               </div>
               <div className="mt-3">
                 <TeacherMercyVoiceControls
@@ -137,7 +137,7 @@ export default function CorrectionMode({
                   supported={micSupported}
                   active={micListening}
                   unavailableLabel={tutorCopy.micLabels.unavailable}
-                  inactiveLabel="Đọc câu thay vì gõ"
+                  inactiveLabel={ui.voiceInputTitle}
                   activeLabel={tutorCopy.micLabels.listening}
                   ariaStart={tutorCopy.micLabels.ariaStart}
                   ariaStop={tutorCopy.micLabels.ariaStop}
@@ -152,7 +152,7 @@ export default function CorrectionMode({
                   className="mt-3 rounded-[14px] border border-amber-200 bg-amber-50 px-4 py-3"
                 >
                   <div className="text-[11px] font-black uppercase text-amber-700">
-                    Bản nháp giọng nói
+                    {ui.voiceDraftTitle}
                   </div>
                   <p className="mt-1 text-sm font-semibold leading-6 text-amber-950">
                     {voiceDraft}
@@ -163,14 +163,14 @@ export default function CorrectionMode({
                       onClick={onUseVoiceDraft}
                       className="min-h-10 rounded-full bg-amber-700 px-4 py-2 text-xs font-black text-white transition hover:bg-amber-800"
                     >
-                      Dùng câu này
+                      {ui.useVoiceDraft}
                     </button>
                     <button
                       type="button"
                       onClick={onClearVoiceDraft}
                       className="min-h-10 rounded-full border border-amber-200 bg-white px-4 py-2 text-xs font-bold text-amber-800 transition hover:bg-amber-100"
                     >
-                      Thu lại
+                      {ui.clearVoiceDraft}
                     </button>
                   </div>
                 </div>
@@ -261,7 +261,7 @@ export default function CorrectionMode({
             onClick={() => onSendToSpeak(result.correctedText)}
             className="min-h-[48px] rounded-full bg-indigo-700 px-4 py-3 text-sm font-black text-white transition hover:bg-indigo-800"
           >
-            Đưa câu này sang Luyện nói
+            {ui.sendToSpeak}
           </button>
 
           <button
