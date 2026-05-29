@@ -1,0 +1,7 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  # Netlify ignore command contract:
+  #   exit 0 = ignore this deploy and skip the build
+  #   exit 1 = continue with the build
+  ignore = "bash scripts/netlify-ignore-build.sh"
