@@ -145,19 +145,19 @@ describe("Placement V3 route guard", () => {
     expect(screen.queryByTestId("placement-v3-resume")).not.toBeInTheDocument();
   });
 
-  it("requires both test and V3 UI flags before the mocked V3 flow is reachable", async () => {
+  it("keeps Placement V3 unreachable when only the legacy test flag is disabled and V3 UI is disabled", async () => {
     await renderRoute("/placement", {
       placementTestEnabled: false,
-      placementV3UiEnabled: true,
+      placementV3UiEnabled: false,
     });
 
     expect(await screen.findByTestId("home-page")).toBeInTheDocument();
     expect(screen.queryByTestId("placement-v3-welcome")).not.toBeInTheDocument();
   });
 
-  it("allows the mocked Placement V3 flow only when both test flags are enabled", async () => {
+  it("allows the mocked Placement V3 flow when the V3 UI flag is enabled", async () => {
     await renderRoute("/placement", {
-      placementTestEnabled: true,
+      placementTestEnabled: false,
       placementV3UiEnabled: true,
     });
 
@@ -166,6 +166,21 @@ describe("Placement V3 route guard", () => {
     });
     expect(screen.getByTestId("pathname")).toHaveTextContent("/placement");
     expect(screen.queryByTestId("home-page")).not.toBeInTheDocument();
+  });
+
+  it("renders /placement/who for a signed-in user when the V3 UI flag is enabled", async () => {
+    await renderRoute("/placement/who?v=auth-redirect-4", {
+      placementTestEnabled: false,
+      placementV3UiEnabled: true,
+    });
+
+    await waitFor(() => {
+      expect(screen.getByTestId("placement-v3-who")).toBeInTheDocument();
+    });
+    expect(screen.getByTestId("pathname")).toHaveTextContent("/placement/who");
+    expect(screen.getByTestId("search")).toHaveTextContent("?v=auth-redirect-4");
+    expect(screen.queryByTestId("home-page")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("signin-page")).not.toBeInTheDocument();
   });
 
   it("enabled test flags still require auth for direct Placement V3 routes", async () => {
