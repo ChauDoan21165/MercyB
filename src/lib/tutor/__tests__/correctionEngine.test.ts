@@ -17,6 +17,12 @@ describe("correctionEngine", () => {
     ["He go to school every day.", "He goes to school every day."],
     ["She eat rice every day.", "She eats rice every day."],
     ["It have food every day.", "It has food every day."],
+    ["I bought hat yesterday.", "I bought a hat yesterday."],
+    ["She is teacher.", "She is a teacher."],
+    ["I have two book.", "I have two books."],
+    ["Many student like English.", "Many students like English."],
+    ["This book I like.", "I like this book."],
+    ["English I study every day.", "I study English every day."],
   ])("corrects beginner English fallback: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",
@@ -43,6 +49,20 @@ describe("correctionEngine", () => {
       corrected: "",
       appliedRuleIds: [],
       message: AI_CORRECTION_REQUIRED_MESSAGE,
+    });
+  });
+
+  it.each([
+    "I bought hats yesterday.",
+    "She is a teacher.",
+    "I have one book.",
+    "I have some rice.",
+    "This book, I like it.",
+  ])("does not over-trigger obvious L4 negative control: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      corrected: expect.any(String),
+      appliedRuleIds: [],
     });
   });
 
