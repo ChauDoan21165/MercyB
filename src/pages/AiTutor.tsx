@@ -70,12 +70,13 @@ import {
   selectSpeakFollowUp,
 } from "@/lib/tutor/speakFollowups";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
-import { detectEnVnError, detectL1Error } from "@/lib/feedback";
+import { detectEnVnError } from "@/lib/feedback";
 import {
   getDetectorHint,
   hasShownHint,
   type DetectorHintContent,
 } from "@/lib/ai-tutor/detectorHint";
+import { detectStep5VnEnError } from "@/lib/ai-tutor/step5VnEnDetectors";
 import type {
   ConversationMessage,
   MercyConversationMessage,
@@ -1035,8 +1036,8 @@ export default function AiTutorPage() {
     // path response is on screen first; never blocks.
     //
     // Two direction-aware branches:
-    //  - target === "en" (Axis 1, VN→EN): Vietnamese-L1 detector +
-    //    chip render via getDetectorHint. Original flow, unchanged.
+    //  - target === "en" (Axis 1, VN→EN): Step 5 Vietnamese-L1
+    //    detector package + chip render via getDetectorHint.
     //  - target === "vi" (Axis 2, EN→VN): English-L1 detector wired
     //    via detectEnVnError (PR #1188 follow-up). The chip surface
     //    for en_l1_* tags isn't built yet — getDetectorHint's tag
@@ -1046,7 +1047,7 @@ export default function AiTutorPage() {
     //    detector path.
     if (target === "en") {
       try {
-        const detection = detectL1Error({
+        const detection = detectStep5VnEnError({
           userAnswer: trimmed,
           expectedAnswer: corrected,
         });
