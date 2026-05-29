@@ -67,7 +67,8 @@ import {
 } from "@/lib/tutor/learningEventSummary";
 import {
   getSpeakFollowUpTopicId,
-  selectSpeakFollowUp,
+  resolveSpeakFollowUpTopicId,
+  selectSpeakFollowUpByTopicId,
 } from "@/lib/tutor/speakFollowups";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
 import { detectEnVnError } from "@/lib/feedback";
@@ -828,11 +829,15 @@ export default function AiTutorPage() {
     lastRecordedSpeakAttemptRef.current = spoken;
 
     setSpeakFollowUpSession((current) => {
-      const topicId = getSpeakFollowUpTopicId(targetSentence);
+      const topicId = resolveSpeakFollowUpTopicId({
+        seedSentence: targetSentence,
+        learnerText: spoken,
+        currentTopicId: current.topicId,
+      });
       const sameTopic = current.topicId === topicId;
       const turnsOnTopic = sameTopic ? current.turnsOnTopic : 0;
       const askedQuestions = sameTopic ? current.askedQuestions : [];
-      const selection = selectSpeakFollowUp(targetSentence, {
+      const selection = selectSpeakFollowUpByTopicId(topicId, {
         askedQuestions,
         turnsOnTopic,
       });
