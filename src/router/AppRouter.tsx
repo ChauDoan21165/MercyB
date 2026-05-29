@@ -508,10 +508,11 @@ function AuthRedirect() {
 }
 
 function PlacementV3Gate({ children }: { children: React.ReactNode }) {
-  if (!isPlacementV3RouteAvailable()) {
-    return <Navigate to="/" replace />;
-  }
-  return <RequireAuth>{children}</RequireAuth>;
+  return (
+    <RequireAuth>
+      {isPlacementV3RouteAvailable() ? children : <Navigate to="/" replace />}
+    </RequireAuth>
+  );
 }
 
 // ── Shell ─────────────────────────────────────────────────────────────────────
@@ -874,46 +875,42 @@ export default function AppRouter() {
               the path since #1159 wired the profiles writeback. */}
           <Route path="/placement"
             element={
-              isPlacementV3RouteAvailable() ? (
-                <PlacementV3Gate>
-                  <PlacementRouteShell routeName="placement_welcome">
-                    <LazyPage><PlacementV3WelcomePage /></LazyPage>
-                  </PlacementRouteShell>
-                </PlacementV3Gate>
-              ) : (
-                <Navigate to="/" replace />
-              )
+              <PlacementV3Gate>
+                <PlacementRouteShell routeName="placement_welcome">
+                  <LazyPage><PlacementV3WelcomePage /></LazyPage>
+                </PlacementRouteShell>
+              </PlacementV3Gate>
             }
           />
           <Route path="/placement/who"
             element={
-              isPlacementV3RouteAvailable() ? (
-                <PlacementV3Gate>
-                  <PlacementRouteShell routeName="placement_who_for">
-                    <LazyPage><PlacementV3WhoForPage /></LazyPage>
-                  </PlacementRouteShell>
-                </PlacementV3Gate>
-              ) : (
-                <Navigate to="/" replace />
-              )
+              <PlacementV3Gate>
+                <PlacementRouteShell routeName="placement_who_for">
+                  <LazyPage><PlacementV3WhoForPage /></LazyPage>
+                </PlacementRouteShell>
+              </PlacementV3Gate>
             }
           />
           <Route path="/placement/test"
             element={
-              isPlacementEntryRouteAvailable() ? (
-                <Navigate to="/placement" replace />
-              ) : (
-                <Navigate to="/" replace />
-              )
+              <PlacementV3Gate>
+                {isPlacementEntryRouteAvailable() ? (
+                  <Navigate to="/placement" replace />
+                ) : (
+                  <Navigate to="/" replace />
+                )}
+              </PlacementV3Gate>
             }
           />
           <Route path="/placement/results"
             element={
-              isPlacementEntryRouteAvailable() ? (
-                <Navigate to="/placement" replace />
-              ) : (
-                <Navigate to="/" replace />
-              )
+              <PlacementV3Gate>
+                {isPlacementEntryRouteAvailable() ? (
+                  <Navigate to="/placement" replace />
+                ) : (
+                  <Navigate to="/" replace />
+                )}
+              </PlacementV3Gate>
             }
           />
           <Route path="/placement/test/:sessionId"
