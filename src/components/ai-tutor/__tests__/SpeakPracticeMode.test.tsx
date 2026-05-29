@@ -1,0 +1,148 @@
+import { render, screen, within } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
+import SpeakPracticeMode, {
+  type SpeakPronunciationResult,
+} from "../SpeakPracticeMode";
+import { getTutorCopy } from "@/lib/tutor/tutorCopy";
+
+vi.mock("@/components/teacher-mercy/TeacherMercyVoiceControls", () => ({
+  default: ({
+    inactiveLabel,
+    unavailableLabel,
+    supported,
+  }: {
+    inactiveLabel: string;
+    unavailableLabel: string;
+    supported: boolean;
+  }) => (
+    supported ? (
+      <button type="button">{inactiveLabel}</button>
+    ) : (
+      <div role="status">{unavailableLabel}</div>
+    )
+  ),
+}));
+
+const baseProps = {
+  targetSentence: "I bought a hat yesterday.",
+  repeatInput: "I bought a hat yesterday.",
+  micSupported: true,
+  micListening: false,
+  ttsSupported: true,
+  ttsSpeaking: false,
+  ttsPreparing: false,
+  followUpPrompt: null,
+  followUpIsPivot: false,
+  onMicToggle: vi.fn(),
+  onReadTarget: vi.fn(),
+  tutorCopy: getTutorCopy("en", "vi"),
+};
+
+function renderSpeak(
+  pronunciationResult?: SpeakPronunciationResult | null,
+  repeatInput = baseProps.repeatInput,
+) {
+  render(
+    <SpeakPracticeMode
+      {...baseProps}
+      repeatInput={repeatInput}
+      pronunciationResult={pronunciationResult}
+    />,
+  );
+}
+
+describe("SpeakPracticeMode pronunciation result display", () => {
+  it("shows Step 3 fallback wording only for local scoring", () => {
+    renderSpeak({ mode: "local-fallback", provider: "local" });
+
+    const score = screen.getByTestId("ai-tutor-speak-score");
+    expect(score).toHaveTextContent("Bạn nói giống câu mẫu khoảng 100%.");
+    expect(score).toHaveTextContent(
+      "Mercy đang nghe theo từ. Sẽ chấm phát âm chi tiết hơn sau.",
+    );
+    expect(score).not.toHaveTextContent(
+      "Mercy đã chấm phát âm chi tiết hơn bằng từng âm.",
+    );
+    expect(screen.queryByTestId("ai-tutor-speak-word-detail")).not.toBeInTheDocument();
+  });
+
+  it("shows Step 7 wording and detail only for Azure batch phoneme evidence", () => {
+    renderSpeak({
+      mode: "azure-batch",
+      provider: "azure",
+      overallScore: 86.4,
+      phonemeScores: [
+        { phoneme: "b", accuracyScore: 96, word: "bought" },
+        { phoneme: "ɔ", accuracyScore: 74.4, word: "bought" },
+      ],
+      words: [
+        {
+          word: "bought",
+          accuracyScore: 82.2,
+          phonemes: [
+            { phoneme: "b", accuracyScore: 96 },
+            { phoneme: "ɔ", accuracyScore: 74.4 },
+          ],
+        },
+      ],
+    });
+
+    const score = screen.getByTestId("ai-tutor-speak-score");
+    expect(score).toHaveTextContent(
+      "Mercy đã chấm phát âm chi tiết hơn bằng từng âm.",
+    );
+    expect(score).toHaveTextContent("Điểm tổng thể khoảng 86%.");
+    expect(score).not.toHaveTextContent("Bạn nói giống câu mẫu khoảng");
+    expect(score).not.toHaveTextContent("Mercy đang nghe theo từ");
+
+    const detail = screen.getByTestId("ai-tutor-speak-word-detail");
+    expect(within(detail).getByText("bought")).toBeInTheDocument();
+    expect(detail).toHaveTextContent("82%");
+    expect(detail).toHaveTextContent("/b/ 96%");
+    expect(detail).toHaveTextContent("/ɔ/ 74%");
+  });
+
+  it("does not show phoneme detail when fallback result includes unsupported detail", () => {
+    renderSpeak({
+      mode: "local-fallback",
+      provider: "local",
+      overallScore: 91,
+      words: [
+        {
+          word: "bought",
+          phonemes: [{ phoneme: "b", accuracyScore: 96 }],
+        },
+      ],
+    });
+
+    const score = screen.getByTestId("ai-tutor-speak-score");
+    expect(score).toHaveTextContent("Bạn nói giống câu mẫu khoảng 100%.");
+    expect(score).not.toHaveTextContent("bằng từng âm");
+    expect(score).not.toHaveTextContent("/b/");
+    expect(screen.queryByTestId("ai-tutor-speak-word-detail")).not.toBeInTheDocument();
+  });
+
+  it("degrades safely when Azure batch evidence has no phoneme detail", () => {
+    renderSpeak({
+      mode: "azure-batch",
+      provider: "azure",
+      overallScore: 78,
+      words: [
+        {
+          word: "bought",
+          accuracyScore: 76,
+        },
+      ],
+    });
+
+    const score = screen.getByTestId("ai-tutor-speak-score");
+    expect(score).toHaveTextContent("Mercy đã nhận kết quả luyện nói.");
+    expect(score).toHaveTextContent("Điểm tổng thể khoảng 78%.");
+    expect(score).not.toHaveTextContent("từng âm");
+    expect(score).not.toHaveTextContent("chi tiết");
+    const detail = screen.getByTestId("ai-tutor-speak-word-detail");
+    expect(within(detail).getByText("bought")).toBeInTheDocument();
+    expect(detail).toHaveTextContent("76%");
+    expect(detail).not.toHaveTextContent("/");
+  });
+});

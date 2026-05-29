@@ -2,9 +2,29 @@ import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVo
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
 import { calculateSentenceMatchPercent } from "@/lib/tutor/speakFollowups";
 
+export type SpeakPronunciationResult = {
+  mode: "local-fallback" | "azure-batch";
+  provider?: "local" | "azure";
+  overallScore?: number | null;
+  phonemeScores?: Array<{
+    phoneme: string;
+    accuracyScore?: number | null;
+    word?: string | null;
+  }>;
+  words?: Array<{
+    word: string;
+    accuracyScore?: number | null;
+    phonemes?: Array<{
+      phoneme: string;
+      accuracyScore?: number | null;
+    }>;
+  }>;
+};
+
 type Props = {
   targetSentence: string | null;
   repeatInput: string;
+  pronunciationResult?: SpeakPronunciationResult | null;
   micSupported: boolean;
   micListening: boolean;
   micError?: string | null;
@@ -22,6 +42,7 @@ type Props = {
 export default function SpeakPracticeMode({
   targetSentence,
   repeatInput,
+  pronunciationResult,
   micSupported,
   micListening,
   micError,
@@ -36,9 +57,25 @@ export default function SpeakPracticeMode({
   tutorCopy,
 }: Props) {
   const hasTarget = Boolean(targetSentence);
-  const score = targetSentence && repeatInput.trim()
+  const localScore = targetSentence && repeatInput.trim()
     ? calculateSentenceMatchPercent(repeatInput, targetSentence)
     : null;
+  const hasAzureBatchResult =
+    pronunciationResult?.mode === "azure-batch" &&
+    pronunciationResult.provider === "azure";
+  const azurePhonemeScores = hasAzureBatchResult
+    ? (pronunciationResult.phonemeScores ?? []).filter((score) =>
+        score.phoneme.trim())
+    : [];
+  const hasAzurePhonemeEvidence = azurePhonemeScores.length > 0;
+  const azureOverallScore =
+    typeof pronunciationResult?.overallScore === "number"
+      ? Math.max(0, Math.min(100, Math.round(pronunciationResult.overallScore)))
+      : null;
+  const azureWords = hasAzureBatchResult
+    ? (pronunciationResult.words ?? []).filter((word) => word.word.trim())
+    : [];
+  const score = hasAzureBatchResult ? azureOverallScore : localScore;
   const micFallbackMessage = micError
     ? "Không dùng được micro. Hãy cho phép micro trong trình duyệt hoặc gõ câu của bạn."
     : "Không dùng được giọng nói trên thiết bị hoặc trình duyệt này. Bạn vẫn có thể luyện bằng cách nghe câu mẫu trước.";
@@ -129,14 +166,69 @@ export default function SpeakPracticeMode({
             )}
           </div>
 
-          {score !== null && (
+          {(score !== null || hasAzureBatchResult) && (
             <div data-testid="ai-tutor-speak-score" className="mt-4 rounded-[16px] border border-indigo-100 bg-indigo-50 px-4 py-4">
-              <p className="text-sm font-black leading-6 text-indigo-950">
-                Bạn nói giống câu mẫu khoảng {score}%.
-              </p>
-              <p className="mt-1 text-sm font-semibold leading-6 text-indigo-900">
-                Mercy đang nghe theo từ. Sẽ chấm phát âm chi tiết hơn sau.
-              </p>
+              {hasAzureBatchResult ? (
+                <>
+                  {hasAzurePhonemeEvidence ? (
+                    <p className="text-sm font-black leading-6 text-indigo-950">
+                      Mercy đã chấm phát âm chi tiết hơn bằng từng âm.
+                    </p>
+                  ) : (
+                    <p className="text-sm font-black leading-6 text-indigo-950">
+                      Mercy đã nhận kết quả luyện nói.
+                    </p>
+                  )}
+                  {score !== null && (
+                    <p className="mt-1 text-sm font-semibold leading-6 text-indigo-900">
+                      Điểm tổng thể khoảng {score}%.
+                    </p>
+                  )}
+                  {azureWords.length > 0 && (
+                    <ul data-testid="ai-tutor-speak-word-detail" className="mt-3 space-y-2">
+                      {azureWords.map((word, wordIndex) => (
+                        <li
+                          key={`${word.word}-${wordIndex}`}
+                          className="rounded-[12px] border border-indigo-100 bg-white px-3 py-2 text-sm font-semibold leading-6 text-slate-800"
+                        >
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="font-black text-slate-950">{word.word}</span>
+                            {typeof word.accuracyScore === "number" && (
+                              <span className="text-xs font-black text-indigo-700">
+                                {Math.round(word.accuracyScore)}%
+                              </span>
+                            )}
+                          </div>
+                          {hasAzurePhonemeEvidence && word.phonemes && word.phonemes.length > 0 && (
+                            <div className="mt-1 flex flex-wrap gap-1.5">
+                              {word.phonemes.map((phoneme, phonemeIndex) => (
+                                <span
+                                  key={`${word.word}-${phoneme.phoneme}-${phonemeIndex}`}
+                                  className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-bold text-slate-700"
+                                >
+                                  /{phoneme.phoneme}/
+                                  {typeof phoneme.accuracyScore === "number"
+                                    ? ` ${Math.round(phoneme.accuracyScore)}%`
+                                    : ""}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : (
+                <>
+                  <p className="text-sm font-black leading-6 text-indigo-950">
+                    Bạn nói giống câu mẫu khoảng {score}%.
+                  </p>
+                  <p className="mt-1 text-sm font-semibold leading-6 text-indigo-900">
+                    Mercy đang nghe theo từ. Sẽ chấm phát âm chi tiết hơn sau.
+                  </p>
+                </>
+              )}
             </div>
           )}
 
