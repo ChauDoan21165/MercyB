@@ -808,7 +808,7 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
         roomId: roomId || "unknown",
         lineId: lineId || "unknown",
         targetText,
-        transcript: azureBody.DisplayText ?? "",
+        transcript: "",
         overallScore: projection.overallScore,
         wordScores: projection.wordScores,
         phonemeScores: projection.phonemeScores,

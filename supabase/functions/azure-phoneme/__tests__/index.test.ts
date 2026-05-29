@@ -341,7 +341,7 @@ describe("handleRequest — Azure happy path", () => {
   it("returns 200 with unified shape including per-phoneme scores", async () => {
     const azureBody: AzureResponse = {
       RecognitionStatus: "Success",
-      DisplayText: "I think this is going to work",
+      DisplayText: "private azure transcript should not persist",
       NBest: [{
         Display: "I think this is going to work",
         AccuracyScore: 89,
@@ -410,6 +410,7 @@ describe("handleRequest — Azure happy path", () => {
     ]);
     expect(JSON.stringify(body)).not.toContain("RIFF");
     expect(JSON.stringify(body)).not.toContain("data:");
+    expect(JSON.stringify(body)).not.toContain("private azure transcript");
 
     const thinkWord = body.word_scores.find((w) => w.word === "think");
     expect(thinkWord).toBeDefined();
@@ -426,6 +427,8 @@ describe("handleRequest — Azure happy path", () => {
     expect(logCall.overallScore).toBe(89);
     expect(logCall.userId).toBe("user-1");
     expect(logCall.providerCostUsd).toBeGreaterThan(0);
+    expect(logCall.transcript).toBe("");
+    expect(JSON.stringify(logCall)).not.toContain("private azure transcript");
 
     // audit called with status='ok'.
     const okAudit = (deps.audit as ReturnType<typeof vi.fn>).mock.calls.find(
@@ -1108,7 +1111,7 @@ describe("context: tone-drill (Stage-3 local-only posture)", () => {
     expect(audit).toHaveBeenCalled();
   });
 
-  it("default context (no field set) still logs attempts — backwards-compat", async () => {
+  it("default context (no field set) logs safe attempt metadata without transcript", async () => {
     const logAttempt = vi.fn().mockResolvedValue(undefined);
     const deps = makeDeps({
       logAttempt,
@@ -1119,6 +1122,8 @@ describe("context: tone-drill (Stage-3 local-only posture)", () => {
     const res = await handleRequest(req, deps);
     expect(res.status).toBe(200);
     expect(logAttempt).toHaveBeenCalledTimes(1);
+    const logCall = logAttempt.mock.calls[0][0] as LogAttemptParams;
+    expect(logCall.transcript).toBe("");
   });
 });
 
