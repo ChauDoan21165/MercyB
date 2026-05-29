@@ -147,4 +147,78 @@ describe("suggestionState — tolerates denied storage", () => {
       window.localStorage.setItem = original;
     }
   });
+
+  it("does not throw when localStorage.removeItem rejects", () => {
+    const original = window.localStorage.removeItem.bind(window.localStorage);
+    window.localStorage.removeItem = () => {
+      throw new Error("denied");
+    };
+    try {
+      expect(() => setSuggestionsDisabled(false)).not.toThrow();
+      expect(() => clearDismissedSuggestions()).not.toThrow();
+    } finally {
+      window.localStorage.removeItem = original;
+    }
+  });
+
+  it("returns defaults and no-ops when localStorage is unavailable", () => {
+    const descriptor = Object.getOwnPropertyDescriptor(window, "localStorage");
+    Object.defineProperty(window, "localStorage", {
+      configurable: true,
+      value: undefined,
+    });
+    try {
+      expect(isSuggestionsDisabled()).toBe(false);
+      expect(getDismissedSuggestionIds().size).toBe(0);
+      expect(() => setSuggestionsDisabled(true)).not.toThrow();
+      expect(() => dismissSuggestion("stage3b:l1:a")).not.toThrow();
+      expect(() => clearDismissedSuggestions()).not.toThrow();
+    } finally {
+      if (descriptor) Object.defineProperty(window, "localStorage", descriptor);
+    }
+  });
+
+  it("returns defaults and no-ops when window is absent", () => {
+    const originalWindow = window;
+    const descriptor = Object.getOwnPropertyDescriptor(globalThis, "window");
+    Object.defineProperty(globalThis, "window", {
+      configurable: true,
+      value: undefined,
+    });
+    try {
+      expect(isSuggestionsDisabled()).toBe(false);
+      expect(getDismissedSuggestionIds().size).toBe(0);
+      expect(() => setSuggestionsDisabled(true)).not.toThrow();
+      expect(() => dismissSuggestion("stage3b:l1:a")).not.toThrow();
+      expect(() => clearDismissedSuggestions()).not.toThrow();
+    } finally {
+      if (descriptor) {
+        Object.defineProperty(globalThis, "window", descriptor);
+      } else {
+        Object.defineProperty(globalThis, "window", {
+          configurable: true,
+          value: originalWindow,
+        });
+      }
+    }
+  });
+
+  it("returns defaults and no-ops when accessing localStorage throws", () => {
+    const descriptor = Object.getOwnPropertyDescriptor(window, "localStorage");
+    Object.defineProperty(window, "localStorage", {
+      configurable: true,
+      get() {
+        throw new Error("blocked");
+      },
+    });
+    try {
+      expect(isSuggestionsDisabled()).toBe(false);
+      expect(getDismissedSuggestionIds().size).toBe(0);
+      expect(() => setSuggestionsDisabled(true)).not.toThrow();
+      expect(() => dismissSuggestion("stage3b:l1:a")).not.toThrow();
+      expect(() => clearDismissedSuggestions()).not.toThrow();
+    } finally {
+      if (descriptor) Object.defineProperty(window, "localStorage", descriptor);
+    }
+  });
 });
