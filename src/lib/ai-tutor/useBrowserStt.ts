@@ -12,6 +12,7 @@ export interface UseBrowserSttResult {
   finalTranscript: string;
   start: () => void;
   stop: () => void;
+  reset: () => void;
   error: string | null;
 }
 
@@ -143,7 +144,14 @@ export function useBrowserStt(lang = "en-US"): UseBrowserSttResult {
   }, [lang]);
 
   const stop = useCallback(() => {
-    recRef.current?.stop();
+    const rec = recRef.current;
+    rec?.stop();
+    if (rec) {
+      rec.onresult = null;
+      rec.onerror = null;
+      rec.onend = null;
+      rec.onstart = null;
+    }
     recRef.current = null;
     setListening(false);
     const committed = collapseRepeatedPhrases(finalRef.current || interimRef.current);
@@ -152,11 +160,18 @@ export function useBrowserStt(lang = "en-US"): UseBrowserSttResult {
     if (committed) setTranscript(committed);
   }, []);
 
+  const reset = useCallback(() => {
+    finalRef.current = "";
+    interimRef.current = "";
+    finalSegmentsRef.current = [];
+    setTranscript("");
+  }, []);
+
   useEffect(() => {
     return () => {
       recRef.current?.stop();
     };
   }, []);
 
-  return { supported, listening, transcript, finalTranscript: finalRef.current, start, stop, error };
+  return { supported, listening, transcript, finalTranscript: finalRef.current, start, stop, reset, error };
 }

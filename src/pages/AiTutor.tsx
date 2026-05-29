@@ -207,6 +207,11 @@ function buildEnglishConversationExplanation(
       ? "Khi nói về việc đã xảy ra, dùng động từ quá khứ như went, bought, ate hoặc had."
       : "For something that already happened, use past-tense verbs such as went, bought, ate, or had.";
   }
+  if (hasRule("morning-routine-tense-parallel")) {
+    return explainLanguage === "vi"
+      ? "Khi nói thói quen buổi sáng, dùng thì hiện tại đơn và giữ động từ song song: brush ... and have ..."
+      : "For a morning routine, use present simple and keep the verbs parallel: brush ... and have ...";
+  }
   if (/\bI\s+went\b.*\b(buy|go|eat|have|do)\b/i.test(userText)) {
     return explainLanguage === "vi"
       ? "Cẩn thận giữ cùng một mốc thời gian: nếu bắt đầu bằng “I went…”, động từ sau đó cũng nên ở dạng quá khứ."
@@ -281,8 +286,10 @@ function buildConversationReply(
 ): MercyConversationMessage {
   if (mode === "logic") return buildLogicReply(userText, explainLanguage);
 
-  const localCorrection = buildLocalCorrection(userText, target);
+  const localCorrection = buildSpeakAwareCorrection(userText, target, mode);
   const tutorCopy = getTutorCopy(target, explainLanguage);
+  const naturalReply = buildSpeakNaturalReply(userText, target, tutorCopy.naturalReplies[0] ?? tutorCopy.ui.emptyConversation);
+  const nextQuestion = buildSpeakNextQuestion(userText, target, tutorCopy.nextQuestionTemplates[0] ?? "");
   const { turn } = buildConversationTurn({
     id: `mercy-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
     targetLanguage: target,
@@ -293,11 +300,62 @@ function buildConversationReply(
       ? buildConversationExplanation(userText, target, localCorrection, explainLanguage)
       : localCorrection.message,
     naturalReply: localCorrection.ok
-      ? tutorCopy.naturalReplies[0] ?? tutorCopy.ui.emptyConversation
+      ? naturalReply
       : tutorCopy.ui.conversationFallback,
-    nextQuestion: tutorCopy.nextQuestionTemplates[0] ?? "",
+    nextQuestion,
   });
   return { ...turn, role: "mercy" };
+}
+
+function buildSpeakAwareCorrection(
+  userText: string,
+  target: TutorTarget,
+  mode: TutorMode,
+): ReturnType<typeof buildLocalCorrection> {
+  if (mode !== "speak" || target !== "en") return buildLocalCorrection(userText, target);
+
+  const normalized = userText.replace(/\s+/g, " ").trim();
+  if (
+    /\bin the morning\b/i.test(normalized) &&
+    /\bbrushed my teeth\b/i.test(normalized) &&
+    /\bI have my coffee\b/i.test(normalized)
+  ) {
+    return {
+      ok: true,
+      corrected: "In the morning, I brush my teeth and then have my coffee.",
+      appliedRuleIds: ["en-speak-morning-routine-tense-parallel"],
+      status: "corrected",
+    };
+  }
+
+  return buildLocalCorrection(userText, target);
+}
+
+function buildSpeakNaturalReply(userText: string, target: TutorTarget, fallback: string): string {
+  if (target !== "en") return fallback;
+  const normalized = userText.toLowerCase();
+  if (/\bmarket\b|\bbuy food\b|\bbought food\b/.test(normalized)) {
+    return "Good. That sounds like a useful errand.";
+  }
+  if (/\bdrink coffee\b|\bi have coffee\b|\bi had coffee\b/.test(normalized)) {
+    return "Nice. That is a clear daily habit.";
+  }
+  if (/\bbrush(?:ed)? my teeth\b|\bteeth\b|\bin the morning\b.*\bcoffee\b/.test(normalized)) {
+    return "Good. Your morning routine is clear.";
+  }
+  return fallback;
+}
+
+function buildSpeakNextQuestion(userText: string, target: TutorTarget, fallback: string): string {
+  if (target !== "en") return fallback;
+  const normalized = userText.toLowerCase();
+  if (/\bmarket\b|\bbuy food\b|\bbought food\b/.test(normalized)) {
+    return "What did you buy at the market?";
+  }
+  if (/\bbrush(?:ed)? my teeth\b|\bteeth\b|\bin the morning\b.*\bcoffee\b/.test(normalized)) {
+    return "What do you usually do after coffee?";
+  }
+  return fallback;
 }
 
 function buildLogicReply(userText: string, explainLanguage: ExplainLanguage): MercyConversationMessage {
@@ -599,6 +657,7 @@ export default function AiTutorPage() {
   const sttBaseInputRef = useRef<string>("");
   const lastCommittedSttRef = useRef<string>("");
   const wasListeningRef = useRef(false);
+  const ignoreNextSttCommitRef = useRef(false);
 
   useEffect(() => {
     const transcript = normalizeSpokenText(stt.transcript);
@@ -616,6 +675,11 @@ export default function AiTutorPage() {
     }
     if (wasListeningRef.current) {
       wasListeningRef.current = false;
+      if (ignoreNextSttCommitRef.current) {
+        ignoreNextSttCommitRef.current = false;
+        sttBaseInputRef.current = "";
+        return;
+      }
       if (!transcript || transcript === lastCommittedSttRef.current) return;
       lastCommittedSttRef.current = transcript;
       if (mode === "grammar") {
@@ -629,6 +693,7 @@ export default function AiTutorPage() {
 
   const handleMicToggle = () => {
     if (stt.listening) { stt.stop(); return; }
+    stt.reset();
     sttBaseInputRef.current = mode !== "grammar" ? conversationInput : input;
     lastCommittedSttRef.current = "";
     stt.start();
@@ -864,6 +929,13 @@ export default function AiTutorPage() {
   const handleConversationSend = async () => {
     const trimmed = conversationInput.trim();
     if (!trimmed || conversationLoading) return;
+    if (stt.listening) {
+      ignoreNextSttCommitRef.current = true;
+      stt.stop();
+    }
+    stt.reset();
+    sttBaseInputRef.current = "";
+    lastCommittedSttRef.current = "";
 
     const userMessage: ConversationMessage = {
       id: `user-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
@@ -929,6 +1001,13 @@ export default function AiTutorPage() {
       tts.stop();
       setSpeakingMessageId(null);
       return;
+    }
+    if (stt.listening) {
+      ignoreNextSttCommitRef.current = true;
+      stt.stop();
+      stt.reset();
+      sttBaseInputRef.current = "";
+      lastCommittedSttRef.current = "";
     }
     if (speakingMessageId === message.id && tts.speaking) {
       tts.stop();
