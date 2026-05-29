@@ -212,6 +212,8 @@ The planner that turns signal into behavior change:
   engine re-tests, it preferentially samples patterns flagged as
   fragile.
 
+AI Tutor architecture: see `docs/architecture/AI-TUTOR-architecture.md` (four-tab seed-grown design, Phase 1 in flight).
+
 **Push system, not pull.** L3 said "here's what you're weak at."
 L4 says "let's go work on it." This is where Stage 3A/3B signals
 stop being informational and become directive.
