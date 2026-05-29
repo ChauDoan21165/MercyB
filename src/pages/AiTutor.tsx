@@ -283,12 +283,13 @@ function buildConversationReply(
   target: TutorTarget,
   explainLanguage: ExplainLanguage,
   mode: TutorMode,
+  previousNaturalReply = "",
 ): MercyConversationMessage {
   if (mode === "logic") return buildLogicReply(userText, explainLanguage);
 
   const localCorrection = buildSpeakAwareCorrection(userText, target, mode);
   const tutorCopy = getTutorCopy(target, explainLanguage);
-  const naturalReply = buildSpeakNaturalReply(userText, target, tutorCopy.naturalReplies[0] ?? tutorCopy.ui.emptyConversation);
+  const naturalReply = buildSpeakNaturalReply(userText, target, tutorCopy.naturalReplies[0] ?? tutorCopy.ui.emptyConversation, previousNaturalReply);
   const nextQuestion = buildSpeakNextQuestion(userText, target, tutorCopy.nextQuestionTemplates[0] ?? "");
   const { turn } = buildConversationTurn({
     id: `mercy-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
@@ -327,11 +328,27 @@ function buildSpeakAwareCorrection(
       status: "corrected",
     };
   }
+  if (/\bgo to work\b/i.test(normalized) && /\bocean email\b/i.test(normalized)) {
+    return {
+      ok: true,
+      corrected: "I had my coffee, checked to see if I had any emails, and then went to work.",
+      appliedRuleIds: ["en-speak-workday-email-asr"],
+      status: "corrected",
+    };
+  }
   if (/\bcoffee\b/i.test(normalized) && /\bemail\b/i.test(normalized) && /\bgo to work\b/i.test(normalized)) {
     return {
       ok: true,
       corrected: "I had my coffee, checked my email, and then went to work.",
       appliedRuleIds: ["en-speak-workday-tense-sequence"],
+      status: "corrected",
+    };
+  }
+  if (/\boffice\b/i.test(normalized) && /\band up today\b/i.test(normalized)) {
+    return {
+      ok: true,
+      corrected: "I went to the office, but the last part is unclear.",
+      appliedRuleIds: ["en-speak-unclear-asr"],
       status: "corrected",
     };
   }
@@ -355,35 +372,69 @@ function buildSpeakAwareCorrection(
   return buildLocalCorrection(userText, target);
 }
 
-function buildSpeakNaturalReply(userText: string, target: TutorTarget, fallback: string): string {
+function pickNonRepeatedReply(candidates: string[], previousNaturalReply: string): string {
+  const previous = previousNaturalReply.trim().toLowerCase();
+  return candidates.find((candidate) => candidate.trim().toLowerCase() !== previous) ?? candidates[0] ?? "";
+}
+
+function buildSpeakNaturalReply(userText: string, target: TutorTarget, fallback: string, previousNaturalReply = ""): string {
   if (target !== "en") return fallback;
   const normalized = userText.toLowerCase();
-  if (/\bemail\b/.test(normalized) && /\bwork\b/.test(normalized)) {
-    return "Good. You are describing the start of your workday.";
+  if (/\boffice\b/.test(normalized) && /\band up today\b/.test(normalized)) {
+    return pickNonRepeatedReply([
+      "I heard that you went to the office, but the last part was unclear.",
+      "You went to the office. Please repeat the last part more clearly.",
+    ], previousNaturalReply);
+  }
+  if (/\b(?:email|emails|ocean email|urgent email)\b/.test(normalized) && /\b(?:work|office)\b/.test(normalized)) {
+    return pickNonRepeatedReply([
+      "That sounds like a normal start to a workday.",
+      "Got it. After coffee and email, you go to work.",
+      "Good. You are describing the start of your workday.",
+    ], previousNaturalReply);
+  }
+  if (/\boffice\b|\bgo to work\b|\bat work\b|\btasks?\b/.test(normalized)) {
+    return pickNonRepeatedReply([
+      "You went to the office.",
+      "Got it. You are talking about your workday.",
+      "That sounds like part of your day at work.",
+    ], previousNaturalReply);
   }
   if (/\bboss\b|\bcolleges\b|\bcolleagues\b|\bassign(?:s|ed)?\b/.test(normalized)) {
-    return "Good detail. That sounds like a work discussion with your team.";
+    return pickNonRepeatedReply([
+      "Good detail. That sounds like a work discussion with your team.",
+      "That sounds like a conversation with your boss and colleagues.",
+    ], previousNaturalReply);
   }
   if (/\blunch\b|\bwork all day\b/.test(normalized)) {
-    return "Clear. You are describing the rest of your workday.";
+    return pickNonRepeatedReply([
+      "Clear. You are describing the rest of your workday.",
+      "Good. Now you are talking about lunch and the rest of the day.",
+    ], previousNaturalReply);
   }
   if (/\bmarket\b|\bbuy food\b|\bbought food\b/.test(normalized)) {
-    return "Good. That sounds like a useful errand.";
+    return pickNonRepeatedReply(["Good. That sounds like a useful errand."], previousNaturalReply);
   }
   if (/\bdrink coffee\b|\bi have coffee\b|\bi had coffee\b/.test(normalized)) {
-    return "Nice. That is a clear daily habit.";
+    return pickNonRepeatedReply(["Nice. That is a clear daily habit."], previousNaturalReply);
   }
   if (/\bbrush(?:ed)? my teeth\b|\bteeth\b|\bin the morning\b.*\bcoffee\b/.test(normalized)) {
-    return "Good. Your morning routine is clear.";
+    return pickNonRepeatedReply(["Good. Your morning routine is clear."], previousNaturalReply);
   }
-  return fallback;
+  return pickNonRepeatedReply([fallback, "Got it. Tell me one more detail about that."], previousNaturalReply);
 }
 
 function buildSpeakNextQuestion(userText: string, target: TutorTarget, fallback: string): string {
   if (target !== "en") return fallback;
   const normalized = userText.toLowerCase();
-  if (/\bemail\b/.test(normalized) && /\bwork\b/.test(normalized)) {
+  if (/\boffice\b/.test(normalized) && /\band up today\b/.test(normalized)) {
+    return "Can you say that last part again in one short sentence?";
+  }
+  if (/\b(?:email|emails|ocean email|urgent email)\b/.test(normalized) && /\b(?:work|office)\b/.test(normalized)) {
     return "What do you usually do when you arrive at work?";
+  }
+  if (/\boffice\b|\bgo to work\b|\bat work\b|\btasks?\b/.test(normalized)) {
+    return "What was the first task you worked on?";
   }
   if (/\bboss\b|\bcolleges\b|\bcolleagues\b|\bassign(?:s|ed)?\b/.test(normalized)) {
     return "What kind of tasks does your boss assign?";
@@ -990,7 +1041,8 @@ export default function AiTutorPage() {
 
     await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
 
-    const mercyMessage = buildConversationReply(trimmed, target, explainLanguage, mode);
+    const previousNaturalReply = getLatestMercyMessage(conversationMessages)?.naturalReply ?? "";
+    const mercyMessage = buildConversationReply(trimmed, target, explainLanguage, mode, previousNaturalReply);
     setConversationMessages((current) => [...current, mercyMessage]);
     const lessonInsight = activeTodayLesson ? diagnoseVietlishLogicWithMatch(trimmed) : null;
     setTodayLessonLogicInsight(lessonInsight?.isKnownPattern ? lessonInsight : null);
