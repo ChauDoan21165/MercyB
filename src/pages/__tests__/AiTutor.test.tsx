@@ -1042,6 +1042,49 @@ describe("AiTutor mock UI", () => {
     });
   });
 
+  it("Speak produces content-aware replies for a workday sequence", async () => {
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: "Luyện nói" }));
+
+    await userEvent.type(screen.getByRole("textbox"), "I have my coffee I checked my email then I go to work");
+    await userEvent.click(within(screen.getByTestId("ai-tutor-conversation")).getByRole("button", { name: /Luyện nói|Send/ }));
+    await waitFor(() => expect(screen.getByText("Good. You are describing the start of your workday.")).toBeInTheDocument());
+
+    await userEvent.type(
+      screen.getByRole("textbox"),
+      "after that I work with my colleges and discussed with my boss about what have you been done and then just do the work he assign me",
+    );
+    await userEvent.click(within(screen.getByTestId("ai-tutor-conversation")).getByRole("button", { name: /Luyện nói|Send/ }));
+    await waitFor(() => expect(screen.getByText("Good detail. That sounds like a work discussion with your team.")).toBeInTheDocument());
+
+    await userEvent.type(screen.getByRole("textbox"), "and then I work all day and then I have lunch that's it");
+    await userEvent.click(within(screen.getByTestId("ai-tutor-conversation")).getByRole("button", { name: /Luyện nói|Send/ }));
+
+    await waitFor(() => {
+      expect(screen.getByText("Clear. You are describing the rest of your workday.")).toBeInTheDocument();
+      expect(screen.getByText("What do you usually do after lunch?")).toBeInTheDocument();
+    });
+    expect(screen.queryByText("Nice. That sounds like a clear morning routine.")).not.toBeInTheDocument();
+    expect(screen.queryByText("What do you do after that?")).not.toBeInTheDocument();
+  });
+
+  it("Speak corrects workday colleague and assignment wording", async () => {
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: "Luyện nói" }));
+
+    await userEvent.type(
+      screen.getByRole("textbox"),
+      "after that I work with my colleges and discussed with my boss about what have you been done and then just do the work he assign me",
+    );
+    await userEvent.click(within(screen.getByTestId("ai-tutor-conversation")).getByRole("button", { name: /Luyện nói|Send/ }));
+
+    await waitFor(() => {
+      expect(screen.getByText("After that, I work with my colleagues and discuss with my boss what has been done. Then I do the work he assigns me.")).toBeInTheDocument();
+      expect(screen.getByText("What kind of tasks does your boss assign?")).toBeInTheDocument();
+    });
+    expect(screen.queryByText(/morning routine/i)).not.toBeInTheDocument();
+  });
+
   it.each([
     ["de", /Gia sư tiếng Đức/, /Gõ một câu tiếng Đức/, /gõ câu tiếng Đức/],
     ["ja", /Gia sư tiếng Nhật/, /Gõ một câu tiếng Nhật/, /gõ câu tiếng Nhật/],
