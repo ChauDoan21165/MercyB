@@ -1,6 +1,0 @@
-{
-  "beforeIntegrity": 100,
-  "afterIntegrity": 100,
-  "lastChecked": "2026-05-13T00:00:00.000Z",
-  "note": "Audio integrity tracked on Supabase Storage; local stub kept at 100 to satisfy check-system-health.ts"
-}
