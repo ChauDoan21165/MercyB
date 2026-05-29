@@ -51,6 +51,8 @@ const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
 
 const AZURE_REGION = Deno.env.get("AZURE_SPEECH_REGION") ?? "canadacentral";
 const AZURE_KEY = Deno.env.get("AZURE_SPEECH_KEY") ?? "";
+const AZURE_PHONEME_BATCH_ENABLED =
+  Deno.env.get("AZURE_PHONEME_BATCH_ENABLED") === "true";
 function buildAzureUrl(accent: Accent): string {
   return buildAzureUrlForLocale(localeForAccent(accent));
 }
@@ -275,6 +277,7 @@ const productionDeps: Deps = {
   sumGlobalCostToday,
   audit,
   logAttempt,
+  azureBatchEnabled: AZURE_PHONEME_BATCH_ENABLED,
   azureKey: AZURE_KEY,
   azureUrlForAccent: buildAzureUrl,
   azureUrlForLocale: buildAzureUrlForLocale,

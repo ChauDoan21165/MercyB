@@ -108,6 +108,7 @@ function makeDeps(overrides: Partial<Deps> = {}): Deps {
     sumGlobalCostToday: vi.fn().mockResolvedValue(0),
     audit: vi.fn().mockResolvedValue(undefined),
     logAttempt: vi.fn().mockResolvedValue(undefined),
+    azureBatchEnabled: true,
     azureKey: "test-key",
     azureUrlForAccent: (accent) =>
       `https://test.example.com/azure?language=${accent}`,
@@ -198,6 +199,113 @@ describe("handleRequest — rate limit", () => {
   });
 });
 
+describe("handleRequest — Step 7 batch gate and validation", () => {
+  it("returns use_local:true when the explicit batch env gate is disabled", async () => {
+    const deps = makeDeps({
+      azureBatchEnabled: false,
+      fetch: vi.fn(),
+    });
+
+    const res = await handleRequest(makeRequest(buildSilentWav(2)), deps);
+
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as {
+      ok: boolean;
+      use_local: boolean;
+      reason: string;
+    };
+    expect(body).toEqual({
+      ok: false,
+      use_local: true,
+      reason: "azure_disabled",
+    });
+    expect(deps.fetch).not.toHaveBeenCalled();
+    expect(deps.logAttempt).not.toHaveBeenCalled();
+  });
+
+  it("returns use_local:true when Azure key is missing even if the batch gate is enabled", async () => {
+    const deps = makeDeps({
+      azureBatchEnabled: true,
+      azureKey: "",
+      fetch: vi.fn(),
+    });
+
+    const res = await handleRequest(makeRequest(buildSilentWav(2)), deps);
+
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as {
+      ok: boolean;
+      use_local: boolean;
+      reason: string;
+    };
+    expect(body).toEqual({
+      ok: false,
+      use_local: true,
+      reason: "azure_missing_env",
+    });
+    expect(deps.fetch).not.toHaveBeenCalled();
+    expect(deps.logAttempt).not.toHaveBeenCalled();
+  });
+
+  it("rejects missing target_text before any Azure call", async () => {
+    const formData = new FormData();
+    formData.append("audio", new Blob([buildSilentWav(2)], { type: "audio/wav" }), "test.wav");
+    const req = new Request("https://test.example.com/azure-phoneme", {
+      method: "POST",
+      body: formData,
+      headers: { Authorization: "Bearer test-jwt" },
+    });
+    const deps = makeDeps({ fetch: vi.fn() });
+
+    const res = await handleRequest(req, deps);
+
+    expect(res.status).toBe(400);
+    const body = (await res.json()) as { error: string };
+    expect(body.error).toBe("Missing target_text");
+    expect(deps.fetch).not.toHaveBeenCalled();
+    expect(deps.logAttempt).not.toHaveBeenCalled();
+  });
+
+  it("rejects invalid audio before any Azure call", async () => {
+    const badAudio = new Uint8Array([0x52, 0x49, 0x46, 0x46, 0, 1, 2, 3, 0x4e, 0x4f, 0x50, 0x45]);
+    const deps = makeDeps({ fetch: vi.fn() });
+
+    const res = await handleRequest(makeRequest(badAudio), deps);
+
+    expect(res.status).toBe(415);
+    const body = (await res.json()) as { error: string };
+    expect(body.error).toBe("unsupported_audio_format");
+    expect(deps.fetch).not.toHaveBeenCalled();
+    expect(deps.logAttempt).not.toHaveBeenCalled();
+  });
+
+  it("returns use_local:true for malformed Azure JSON without fake phoneme feedback", async () => {
+    const deps = makeDeps({
+      fetch: vi.fn().mockResolvedValue(
+        new Response("{not-json", {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }),
+      ),
+    });
+
+    const res = await handleRequest(makeRequest(buildSilentWav(2)), deps);
+
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as {
+      ok: boolean;
+      use_local: boolean;
+      reason: string;
+      phoneme_scores?: unknown;
+    };
+    expect(body.ok).toBe(false);
+    expect(body.use_local).toBe(true);
+    expect(body.reason).toBe("azure_response_invalid");
+    expect(body.phoneme_scores).toBeUndefined();
+    expect(deps.logAttempt).not.toHaveBeenCalled();
+  });
+});
+
 describe("handleRequest — budget bypass (chat-RPC no longer gates phoneme)", () => {
   it("ignores check_ai_budget result and proceeds to Azure", async () => {
     // The chat-models AI-budget RPC (`check_ai_budget`) is no longer
@@ -233,7 +341,7 @@ describe("handleRequest — Azure happy path", () => {
   it("returns 200 with unified shape including per-phoneme scores", async () => {
     const azureBody: AzureResponse = {
       RecognitionStatus: "Success",
-      DisplayText: "I think this is going to work",
+      DisplayText: "private azure transcript should not persist",
       NBest: [{
         Display: "I think this is going to work",
         AccuracyScore: 89,
@@ -276,17 +384,33 @@ describe("handleRequest — Azure happy path", () => {
     const body = (await res.json()) as {
       ok: boolean;
       score: number;
+      overall_score: number;
       provider: string;
+      mode: string;
       audio_seconds: number;
       cost_usd_cents: number;
       word_scores: Array<{ word: string; score: number; status: string; phonemes: Array<{ phoneme: string; score: number }> }>;
+      phoneme_scores: Array<{ word: string; phoneme: string; score: number }>;
     };
 
     expect(body.ok).toBe(true);
     expect(body.provider).toBe("azure");
+    expect(body.mode).toBe("batch");
     expect(body.score).toBe(89);
+    expect(body.overall_score).toBe(89);
     expect(body.audio_seconds).toBeCloseTo(2, 1);
     expect(body.word_scores).toHaveLength(3);
+    expect(body.phoneme_scores).toEqual([
+      { word: "I", phoneme: "ay", score: 88 },
+      { word: "think", phoneme: "th", score: 48 },
+      { word: "think", phoneme: "ih", score: 42 },
+      { word: "think", phoneme: "ng", score: 100 },
+      { word: "think", phoneme: "k", score: 53 },
+      { word: "this", phoneme: "dh", score: 94 },
+    ]);
+    expect(JSON.stringify(body)).not.toContain("RIFF");
+    expect(JSON.stringify(body)).not.toContain("data:");
+    expect(JSON.stringify(body)).not.toContain("private azure transcript");
 
     const thinkWord = body.word_scores.find((w) => w.word === "think");
     expect(thinkWord).toBeDefined();
@@ -303,6 +427,8 @@ describe("handleRequest — Azure happy path", () => {
     expect(logCall.overallScore).toBe(89);
     expect(logCall.userId).toBe("user-1");
     expect(logCall.providerCostUsd).toBeGreaterThan(0);
+    expect(logCall.transcript).toBe("");
+    expect(JSON.stringify(logCall)).not.toContain("private azure transcript");
 
     // audit called with status='ok'.
     const okAudit = (deps.audit as ReturnType<typeof vi.fn>).mock.calls.find(
@@ -985,7 +1111,7 @@ describe("context: tone-drill (Stage-3 local-only posture)", () => {
     expect(audit).toHaveBeenCalled();
   });
 
-  it("default context (no field set) still logs attempts — backwards-compat", async () => {
+  it("default context (no field set) logs safe attempt metadata without transcript", async () => {
     const logAttempt = vi.fn().mockResolvedValue(undefined);
     const deps = makeDeps({
       logAttempt,
@@ -996,6 +1122,8 @@ describe("context: tone-drill (Stage-3 local-only posture)", () => {
     const res = await handleRequest(req, deps);
     expect(res.status).toBe(200);
     expect(logAttempt).toHaveBeenCalledTimes(1);
+    const logCall = logAttempt.mock.calls[0][0] as LogAttemptParams;
+    expect(logCall.transcript).toBe("");
   });
 });
 
