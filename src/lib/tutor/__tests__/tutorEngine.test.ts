@@ -56,8 +56,9 @@ describe("tutorEngine", () => {
     });
 
     const speakable = getSpeakableText(turn);
-    expect(speakable).toContain("Je suis alle au marche.");
+    expect(speakable).toContain("Bonne phrase.");
     expect(speakable).toContain("Qu'est-ce que tu fais apres ca ?");
+    expect(speakable).not.toContain("Je suis alle au marche.");
     expect(speakable).not.toContain("Je suis aller au marche");
   });
 

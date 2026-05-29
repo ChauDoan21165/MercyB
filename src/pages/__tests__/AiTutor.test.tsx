@@ -559,27 +559,29 @@ describe("AiTutor mock UI", () => {
     });
 
     await waitFor(() => {
-      expect(screen.getByRole("textbox")).toHaveValue("tôi buồn vì mất cái xe đạp");
+      expect(screen.getByTestId("ai-tutor-voice-draft")).toHaveTextContent("tôi buồn vì mất cái xe đạp");
     });
+    expect(screen.getByRole("textbox")).toHaveValue("");
   });
 
-  it("does not append a matching STT transcript to existing textarea text", async () => {
+  it("keeps Grammar STT as an explicit voice draft instead of appending to typed text", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
     render(<AiTutorPage />);
 
-    await userEvent.type(screen.getByRole("textbox"), "tôi buồn vì mất cái xe đạp");
+    await userEvent.type(screen.getByRole("textbox"), "I buy a hat yesterday.");
     await userEvent.click(screen.getByRole("button", { name: /Nói câu của bạn/ }));
     act(() => {
-      MockSpeechRecognition.last?.emitFinalTranscript("tôi buồn vì mất cái xe đạp");
+      MockSpeechRecognition.last?.emitFinalTranscript("can I buy I had this today");
       MockSpeechRecognition.last?.stop();
     });
 
     await waitFor(() => {
-      expect(screen.getByRole("textbox")).toHaveValue("tôi buồn vì mất cái xe đạp");
+      expect(screen.getByTestId("ai-tutor-voice-draft")).toHaveTextContent("can I buy I had this today");
     });
+    expect(screen.getByRole("textbox")).toHaveValue("I buy a hat yesterday.");
   });
 
-  it("previews repeated STT interim transcripts without multiplying textarea text", async () => {
+  it("uses Grammar voice draft only after explicit user action", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
     render(<AiTutorPage />);
 
@@ -590,12 +592,19 @@ describe("AiTutor mock UI", () => {
     });
 
     await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-voice-draft")).toHaveTextContent("tôi buồn vì mất cái xe đạp");
+    });
+    expect(screen.getByRole("textbox")).toHaveValue("");
+
+    await userEvent.click(screen.getByRole("button", { name: "Use this text" }));
+
+    await waitFor(() => {
       expect(screen.getByRole("textbox")).toHaveValue("tôi buồn vì mất cái xe đạp");
     });
     expect((screen.getByRole("textbox") as HTMLTextAreaElement).value.length).toBeLessThan(500);
   });
 
-  it("collapses noisy repeated Vietnamese STT into one clean utterance", async () => {
+  it("collapses noisy repeated Vietnamese STT in the Grammar voice draft", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
     render(<AiTutorPage />);
 
@@ -608,9 +617,8 @@ describe("AiTutor mock UI", () => {
     });
 
     await waitFor(() => {
-      expect(screen.getByRole("textbox")).toHaveValue("tôi buồn vì mất cái xe đạp");
+      expect(screen.getByTestId("ai-tutor-voice-draft")).toHaveTextContent("tôi buồn vì mất cái xe đạp");
     });
-    expect((screen.getByRole("textbox") as HTMLTextAreaElement).value.length).toBeLessThan(500);
   });
 
   it("keeps Vietnamese UI with French target copy after hydration", async () => {
@@ -843,6 +851,103 @@ describe("AiTutor mock UI", () => {
     expect(utterance.text).not.toMatch(/Teacher Mercy|Natural reply|Câu trả lời tự nhiên|Giải thích/);
   });
 
+  it("Speak speaker reads only the current assistant utterance after a learner answer", async () => {
+    const speak = vi.fn();
+    fetchCloudTtsUrl.mockResolvedValue(null);
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        cancel: vi.fn(),
+        getVoices: vi.fn(() => []),
+        resume: vi.fn(),
+        speak,
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
+    });
+
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: "Speak" }));
+    await userEvent.type(screen.getByRole("textbox"), "I drink coffee");
+    await userEvent.click(screen.getByRole("button", { name: /Luyện nói|Send/ }));
+
+    await waitFor(() => {
+      expect(screen.getByText("Nice. That sounds like a clear morning routine.")).toBeInTheDocument();
+      expect(screen.getByText("What do you do after that?")).toBeInTheDocument();
+    });
+
+    const speakerButtons = screen.getAllByRole("button", { name: /Mercy đọc/ });
+    await userEvent.click(speakerButtons[speakerButtons.length - 1]);
+
+    await waitFor(() => expect(speak).toHaveBeenCalledTimes(1));
+    const utterance = speak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
+    expect(utterance.text).toBe("Nice. That sounds like a clear morning routine. What do you do after that?");
+    expect(utterance.text).not.toContain("What do you usually do in the morning?");
+    expect(utterance.text).not.toContain("I drink coffee");
+  });
+
+  it("device fallback receives only the current Speak assistant utterance", async () => {
+    const speak = vi.fn();
+    fetchCloudTtsUrl.mockResolvedValue(null);
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        cancel: vi.fn(),
+        getVoices: vi.fn(() => []),
+        resume: vi.fn(),
+        speak,
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
+    });
+
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: "Speak" }));
+    await userEvent.type(screen.getByRole("textbox"), "I went to the market and buy food");
+    await userEvent.click(screen.getByRole("button", { name: /Luyện nói|Send/ }));
+
+    await waitFor(() => expect(screen.getByText("What do you do after that?")).toBeInTheDocument());
+
+    const speakerButtons = screen.getAllByRole("button", { name: /Mercy đọc/ });
+    await userEvent.click(speakerButtons[speakerButtons.length - 1]);
+
+    await waitFor(() => expect(speak).toHaveBeenCalledTimes(1));
+    const utterance = speak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
+    expect(utterance.text).toBe("Nice. That sounds like a clear morning routine. What do you do after that?");
+    expect(fetchCloudTtsUrl).toHaveBeenCalledWith(expect.objectContaining({
+      text: "Nice. That sounds like a clear morning routine. What do you do after that?",
+      language: "en",
+    }));
+    expect(utterance.text).not.toContain("I went to the market and buy food");
+  });
+
+  it("Speak does not explain a you-question as third-person singular", async () => {
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: "Speak" }));
+    await userEvent.type(screen.getByRole("textbox"), "What do you usually do in the morning?");
+    await userEvent.click(screen.getByRole("button", { name: /Luyện nói|Send/ }));
+
+    await waitFor(() => expect(screen.getByText("What do you do after that?")).toBeInTheDocument());
+    expect(screen.queryByText(/ngôi thứ ba số ít|she\/he\/it|third-person singular/i)).not.toBeInTheDocument();
+  });
+
+  it("Speak flags mixed tense without third-person singular explanation", async () => {
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: "Speak" }));
+    await userEvent.type(screen.getByRole("textbox"), "I went to the market and buy food");
+    await userEvent.click(screen.getByRole("button", { name: /Luyện nói|Send/ }));
+
+    await waitFor(() => {
+      expect(screen.getByText(/giữ cùng một mốc thời gian/i)).toBeInTheDocument();
+      expect(screen.getByText("What do you do after that?")).toBeInTheDocument();
+    });
+    expect(screen.queryByText(/ngôi thứ ba số ít|she\/he\/it|third-person singular/i)).not.toBeInTheDocument();
+  });
+
   it.each([
     ["de", /Gia sư tiếng Đức/, /Viết một câu tiếng Đức/, /gõ câu tiếng Đức/],
     ["ja", /Gia sư tiếng Nhật/, /Viết một câu tiếng Nhật/, /gõ câu tiếng Nhật/],
@@ -902,6 +1007,33 @@ describe("AiTutor mock UI", () => {
     await waitFor(() => {
       expect(screen.getByText("I bought a hat yesterday.")).toBeInTheDocument();
     });
+  });
+
+  it("explains yesterday past-tense correction without third-person singular copy", async () => {
+    render(<AiTutorPage />);
+    await userEvent.type(screen.getByRole("textbox"), "I buy a hat yesterday.");
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+
+    await waitFor(() => {
+      expect(screen.getByText("I bought a hat yesterday.")).toBeInTheDocument();
+      expect(screen.getByText(/Khi nói về việc đã xảy ra.*quá khứ/i)).toBeInTheDocument();
+    });
+    expect(screen.queryByText(/ngôi thứ ba số ít|she\/he\/it|third-person singular/i)).not.toBeInTheDocument();
+  });
+
+  it("does not turn a noisy mixed transcript into a fluent wrong correction", async () => {
+    render(<AiTutorPage />);
+    await userEvent.type(
+      screen.getByRole("textbox"),
+      "I buy a hat yesterday. can I buy I had this today",
+    );
+    await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
+
+    await waitFor(() => {
+      expect(screen.getByText("I bought a hat yesterday.")).toBeInTheDocument();
+      expect(screen.getByText(/transcript bị nhiễu|noisy transcript/i)).toBeInTheDocument();
+    });
+    expect(screen.queryByText(/can I bought I had this today/i)).not.toBeInTheDocument();
   });
 
   it("repairs run-on punctuation and speaker reads only natural corrected text", async () => {

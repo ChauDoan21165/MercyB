@@ -31,6 +31,7 @@ type Props = {
   practiceLoading: boolean;
   micSupported: boolean;
   micListening: boolean;
+  voiceDraft: string;
   ttsSupported: boolean;
   ttsSpeaking: boolean;
   ttsPreparing: boolean;
@@ -38,6 +39,8 @@ type Props = {
   speechLang: string;
   onSubmit: () => void;
   onMicToggle: () => void;
+  onUseVoiceDraft: () => void;
+  onClearVoiceDraft: () => void;
   onTtsToggle: () => void;
   onPracticeSubmit: () => void;
   onClear: () => void;
@@ -63,6 +66,7 @@ export default function CorrectionMode({
   practiceLoading,
   micSupported,
   micListening,
+  voiceDraft,
   ttsSupported,
   ttsSpeaking,
   ttsPreparing,
@@ -70,6 +74,8 @@ export default function CorrectionMode({
   speechLang: _speechLang,
   onSubmit,
   onMicToggle,
+  onUseVoiceDraft,
+  onClearVoiceDraft,
   onTtsToggle,
   onPracticeSubmit,
   onClear,
@@ -143,6 +149,35 @@ export default function CorrectionMode({
             <p className="w-full text-xs font-medium leading-5 text-slate-500">
               {tutorCopy.micLabels.helper}
             </p>
+            {voiceDraft && (
+              <div
+                data-testid="ai-tutor-voice-draft"
+                className="rounded-[14px] border border-amber-200 bg-amber-50 px-4 py-3"
+              >
+                <div className="text-[11px] font-black uppercase text-amber-700">
+                  Voice draft
+                </div>
+                <p className="mt-1 text-sm font-semibold leading-6 text-amber-950">
+                  {voiceDraft}
+                </p>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  <button
+                    type="button"
+                    onClick={onUseVoiceDraft}
+                    className="min-h-10 rounded-full bg-amber-700 px-4 py-2 text-xs font-black text-white transition hover:bg-amber-800"
+                  >
+                    Use this text
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onClearVoiceDraft}
+                    className="min-h-10 rounded-full border border-amber-200 bg-white px-4 py-2 text-xs font-bold text-amber-800 transition hover:bg-amber-100"
+                  >
+                    Clear voice draft
+                  </button>
+                </div>
+              </div>
+            )}
             <button
               type="button"
               onClick={onSubmit}

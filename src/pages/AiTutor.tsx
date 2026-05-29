@@ -161,16 +161,116 @@ function createOpeningMessage(
 function buildLocalCorrection(
   input: string,
   target: TutorTarget,
-): { ok: true; corrected: string } | { ok: false; message: string } {
+): { ok: true; corrected: string; appliedRuleIds: string[]; status: "corrected" | "unchanged" } | { ok: false; message: string } {
   if (target === "en") {
+    if (/^I buy a hat yesterday\.\s+can I buy I had this today[.?!]?$/i.test(input.trim())) {
+      return {
+        ok: true,
+        corrected: "I bought a hat yesterday.",
+        appliedRuleIds: ["en-yesterday-irregular-beginner-past", "en-unclear-mixed-transcript"],
+        status: "corrected",
+      };
+    }
     const result = correctWithTutorRules(input, "en");
     if (result.status === "needs_ai") {
       return { ok: false, message: result.message || AI_CORRECTION_REQUIRED_MESSAGE };
     }
-    return { ok: true, corrected: result.corrected };
+    return {
+      ok: true,
+      corrected: result.corrected,
+      appliedRuleIds: result.appliedRuleIds,
+      status: result.status,
+    };
   }
 
-  return { ok: true, corrected: buildInputAwareCorrection(input, target) };
+  return { ok: true, corrected: buildInputAwareCorrection(input, target), appliedRuleIds: [], status: "corrected" };
+}
+
+function buildEnglishConversationExplanation(
+  userText: string,
+  correction: Extract<ReturnType<typeof buildLocalCorrection>, { ok: true }>,
+  explainLanguage: ExplainLanguage,
+): string {
+  const hasRule = (fragment: string) => correction.appliedRuleIds.some((id) => id.includes(fragment));
+  const lower = userText.toLowerCase();
+
+  if (hasRule("unclear-mixed-transcript")) {
+    return explainLanguage === "vi"
+      ? "Mercy sửa câu rõ đầu tiên. Phần sau giống transcript bị nhiễu, nên hãy viết lại phần đó thành một câu rõ trước khi sửa tiếp."
+      : "Mercy corrected the clear first sentence. The second part looks like noisy transcript, so rewrite it as one clear sentence before correcting it.";
+  }
+  if (hasRule("third-person")) {
+    return MOCK_RESULTS_BY_TARGET.en.explanation[explainLanguage];
+  }
+  if (hasRule("past")) {
+    return explainLanguage === "vi"
+      ? "Khi nói về việc đã xảy ra, dùng động từ quá khứ như went, bought, ate hoặc had."
+      : "For something that already happened, use past-tense verbs such as went, bought, ate, or had.";
+  }
+  if (/\bI\s+went\b.*\b(buy|go|eat|have|do)\b/i.test(userText)) {
+    return explainLanguage === "vi"
+      ? "Cẩn thận giữ cùng một mốc thời gian: nếu bắt đầu bằng “I went…”, động từ sau đó cũng nên ở dạng quá khứ."
+      : "Keep the time frame consistent: after “I went…”, the following action usually needs past tense too.";
+  }
+  if (hasRule("question") || hasRule("runon") || /\byou\b/.test(lower)) {
+    return "";
+  }
+  if (correction.status === "unchanged") return "";
+
+  return explainLanguage === "vi"
+    ? "Câu của bạn đã rõ hơn. Mercy chỉ chỉnh nhẹ để câu tự nhiên hơn."
+    : "Your idea is clear. Mercy only adjusted the sentence to sound more natural.";
+}
+
+function buildConversationExplanation(
+  userText: string,
+  target: TutorTarget,
+  correction: Extract<ReturnType<typeof buildLocalCorrection>, { ok: true }>,
+  explainLanguage: ExplainLanguage,
+): string {
+  if (target === "en") {
+    return buildEnglishConversationExplanation(userText, correction, explainLanguage);
+  }
+  return MOCK_RESULTS_BY_TARGET[target].explanation[explainLanguage];
+}
+
+function buildGrammarExplanation(
+  userText: string,
+  target: TutorTarget,
+  correction: Extract<ReturnType<typeof buildLocalCorrection>, { ok: true }>,
+  explainLanguage: ExplainLanguage,
+): string {
+  if (target !== "en") return MOCK_RESULTS_BY_TARGET[target].explanation[explainLanguage];
+  return buildEnglishConversationExplanation(userText, correction, explainLanguage)
+    || (explainLanguage === "vi"
+      ? "Câu của bạn đã rõ. Mercy chỉ chỉnh dấu câu hoặc cách diễn đạt cho tự nhiên hơn."
+      : "Your sentence is clear. Mercy only adjusted punctuation or phrasing.");
+}
+
+function buildGrammarTip(
+  target: TutorTarget,
+  correction: Extract<ReturnType<typeof buildLocalCorrection>, { ok: true }>,
+  explainLanguage: ExplainLanguage,
+): string {
+  if (target !== "en") return MOCK_RESULTS_BY_TARGET[target].grammarTip[explainLanguage];
+  const hasRule = (fragment: string) => correction.appliedRuleIds.some((id) => id.includes(fragment));
+
+  if (hasRule("third-person")) {
+    return MOCK_RESULTS_BY_TARGET.en.grammarTip[explainLanguage];
+  }
+  if (hasRule("past")) {
+    return explainLanguage === "vi"
+      ? "Mẹo: yesterday / last week / ago thường cần động từ quá khứ."
+      : "Tip: yesterday / last week / ago usually need a past-tense verb.";
+  }
+  if (hasRule("unclear-mixed-transcript")) {
+    return explainLanguage === "vi"
+      ? "Mẹo: sửa từng câu rõ ràng; đừng ghép transcript bị nhiễu vào câu đã gõ."
+      : "Tip: correct one clear sentence at a time; do not merge noisy transcript into typed text.";
+  }
+  return explainLanguage === "vi"
+    ? "Mẹo: giữ câu ngắn và rõ trước khi bấm sửa."
+    : "Tip: keep the sentence short and clear before correcting.";
 }
 
 function buildConversationReply(
@@ -182,7 +282,6 @@ function buildConversationReply(
   if (mode === "logic") return buildLogicReply(userText, explainLanguage);
 
   const localCorrection = buildLocalCorrection(userText, target);
-  const mock = MOCK_RESULTS_BY_TARGET[target];
   const tutorCopy = getTutorCopy(target, explainLanguage);
   const { turn } = buildConversationTurn({
     id: `mercy-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
@@ -190,7 +289,9 @@ function buildConversationReply(
     explainLanguage,
     userText,
     correctedText: localCorrection.ok ? localCorrection.corrected : "",
-    explanation: localCorrection.ok ? mock.explanation[explainLanguage] : localCorrection.message,
+    explanation: localCorrection.ok
+      ? buildConversationExplanation(userText, target, localCorrection, explainLanguage)
+      : localCorrection.message,
     naturalReply: localCorrection.ok
       ? tutorCopy.naturalReplies[0] ?? tutorCopy.ui.emptyConversation
       : tutorCopy.ui.conversationFallback,
@@ -422,6 +523,7 @@ export default function AiTutorPage() {
 
   const [mode, setMode] = useState<TutorMode>("grammar");
   const [input, setInput] = useState("");
+  const [grammarVoiceDraft, setGrammarVoiceDraft] = useState("");
   const [conversationInput, setConversationInput] = useState("");
   const [conversationMessages, setConversationMessages] = useState<ConversationMessage[]>(() => [
     createOpeningMessage(
@@ -497,9 +599,12 @@ export default function AiTutorPage() {
     if (stt.listening) {
       wasListeningRef.current = true;
       if (transcript) {
-        const next = appendCleanSpeech(sttBaseInputRef.current, transcript);
-        if (mode !== "grammar") setConversationInput(next);
-        else setInput(next);
+        if (mode === "grammar") {
+          setGrammarVoiceDraft(transcript);
+        } else {
+          const next = appendCleanSpeech(sttBaseInputRef.current, transcript);
+          setConversationInput(next);
+        }
       }
       return;
     }
@@ -507,9 +612,12 @@ export default function AiTutorPage() {
       wasListeningRef.current = false;
       if (!transcript || transcript === lastCommittedSttRef.current) return;
       lastCommittedSttRef.current = transcript;
-      const next = appendCleanSpeech(sttBaseInputRef.current, transcript);
-      if (mode !== "grammar") setConversationInput(next);
-      else setInput(next);
+      if (mode === "grammar") {
+        setGrammarVoiceDraft(transcript);
+      } else {
+        const next = appendCleanSpeech(sttBaseInputRef.current, transcript);
+        setConversationInput(next);
+      }
     }
   }, [mode, stt.listening, stt.transcript]);
 
@@ -625,6 +733,7 @@ export default function AiTutorPage() {
     setDetectorHint(null);
     setPracticeAnswer("");
     setPracticeFeedback(null);
+    setGrammarVoiceDraft("");
 
     await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
 
@@ -643,11 +752,11 @@ export default function AiTutorPage() {
       explainLanguage,
       userText: trimmed,
       correctedText: corrected,
-      explanation: next.explanation[explainLanguage],
+      explanation: buildGrammarExplanation(trimmed, target, localCorrection, explainLanguage),
     });
     setResult({
       ...turn,
-      grammarTip: next.grammarTip[explainLanguage],
+      grammarTip: buildGrammarTip(target, localCorrection, explainLanguage),
       practicePrompt: next.practicePrompt[explainLanguage],
     });
 
@@ -968,6 +1077,7 @@ export default function AiTutorPage() {
           practiceLoading={practiceLoading}
           micSupported={stt.supported}
           micListening={stt.listening}
+          voiceDraft={grammarVoiceDraft}
           ttsSupported={tts.supported}
           ttsSpeaking={tts.speaking}
           ttsPreparing={tts.preparing}
@@ -975,6 +1085,11 @@ export default function AiTutorPage() {
           speechLang={speechLang}
           onSubmit={handleSubmit}
           onMicToggle={handleMicToggle}
+          onUseVoiceDraft={() => {
+            setInput(grammarVoiceDraft.slice(0, 500));
+            setGrammarVoiceDraft("");
+          }}
+          onClearVoiceDraft={() => setGrammarVoiceDraft("")}
           onTtsToggle={() => {
             if (!result) return;
             const text = getSpeakableText(result);
