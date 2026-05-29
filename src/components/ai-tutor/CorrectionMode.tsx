@@ -155,7 +155,7 @@ export default function CorrectionMode({
                 className="rounded-[14px] border border-amber-200 bg-amber-50 px-4 py-3"
               >
                 <div className="text-[11px] font-black uppercase text-amber-700">
-                  Voice draft
+                  Bản nháp giọng nói
                 </div>
                 <p className="mt-1 text-sm font-semibold leading-6 text-amber-950">
                   {voiceDraft}
@@ -166,14 +166,14 @@ export default function CorrectionMode({
                     onClick={onUseVoiceDraft}
                     className="min-h-10 rounded-full bg-amber-700 px-4 py-2 text-xs font-black text-white transition hover:bg-amber-800"
                   >
-                    Use this text
+                    Dùng câu này
                   </button>
                   <button
                     type="button"
                     onClick={onClearVoiceDraft}
                     className="min-h-10 rounded-full border border-amber-200 bg-white px-4 py-2 text-xs font-bold text-amber-800 transition hover:bg-amber-100"
                   >
-                    Clear voice draft
+                    Thu lại
                   </button>
                 </div>
               </div>

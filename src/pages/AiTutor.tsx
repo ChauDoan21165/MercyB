@@ -1115,6 +1115,7 @@ export default function AiTutorPage() {
           onSend={handleConversationSend}
           onMicToggle={handleMicToggle}
           onSpeak={handleConversationSpeak}
+          onStartCorrection={() => handleModeChange("grammar")}
           tutorCopy={tutorCopy}
         />
       )}

@@ -519,7 +519,8 @@ describe("AiTutor mock UI", () => {
   it("shows microphone control when browser speech recognition is supported", () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = vi.fn();
     render(<AiTutorPage />);
-    expect(screen.getByRole("button", { name: /Nói câu của bạn/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Nhập bằng giọng nói/ })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /Nói câu của bạn/ })).not.toBeInTheDocument();
     expect(
       screen.getByText("Mercy sẽ chuyển giọng nói của bạn thành câu để sửa."),
     ).toBeInTheDocument();
@@ -531,7 +532,7 @@ describe("AiTutor mock UI", () => {
 
     expect(screen.queryByRole("button", { name: /Mercy đọc/ })).not.toBeInTheDocument();
 
-    const micButton = screen.getByRole("button", { name: /Nói câu của bạn/ });
+    const micButton = screen.getByRole("button", { name: /Nhập bằng giọng nói/ });
     await userEvent.click(micButton);
 
     expect(screen.getByRole("button", { name: /Dừng nghe/ })).toHaveTextContent(
@@ -545,7 +546,7 @@ describe("AiTutor mock UI", () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
     render(<AiTutorPage />);
 
-    await userEvent.click(screen.getByRole("button", { name: /Nói câu của bạn/ }));
+    await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
     act(() => {
       MockSpeechRecognition.last?.emitFinalTranscript("tôi buồn vì mất cái xe đạp");
       MockSpeechRecognition.last?.emitFinalTranscript("tôi buồn vì mất cái xe đạp");
@@ -563,7 +564,7 @@ describe("AiTutor mock UI", () => {
     render(<AiTutorPage />);
 
     await userEvent.type(screen.getByRole("textbox"), "I buy a hat yesterday.");
-    await userEvent.click(screen.getByRole("button", { name: /Nói câu của bạn/ }));
+    await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
     act(() => {
       MockSpeechRecognition.last?.emitFinalTranscript("can I buy I had this today");
       MockSpeechRecognition.last?.stop();
@@ -579,7 +580,7 @@ describe("AiTutor mock UI", () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
     render(<AiTutorPage />);
 
-    await userEvent.click(screen.getByRole("button", { name: /Nói câu của bạn/ }));
+    await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
     act(() => {
       MockSpeechRecognition.last?.emitInterimTranscript("tôi buồn vì mất cái xe đạp");
       MockSpeechRecognition.last?.emitInterimTranscript("tôi buồn vì mất cái xe đạp tôi buồn vì mất cái xe đạp");
@@ -590,7 +591,7 @@ describe("AiTutor mock UI", () => {
     });
     expect(screen.getByRole("textbox")).toHaveValue("");
 
-    await userEvent.click(screen.getByRole("button", { name: "Use this text" }));
+    await userEvent.click(screen.getByRole("button", { name: "Dùng câu này" }));
 
     await waitFor(() => {
       expect(screen.getByRole("textbox")).toHaveValue("tôi buồn vì mất cái xe đạp");
@@ -602,7 +603,7 @@ describe("AiTutor mock UI", () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
     render(<AiTutorPage />);
 
-    await userEvent.click(screen.getByRole("button", { name: /Nói câu của bạn/ }));
+    await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
     act(() => {
       MockSpeechRecognition.last?.emitFinalTranscript(
         "tôi buồn vì mất cái xe đạp tôi buồn vì mất cái xe đạp ok ok chương trình nó chạy xong",
@@ -623,7 +624,7 @@ describe("AiTutor mock UI", () => {
     await waitFor(() => expect(getMemorySummary).toHaveBeenCalledWith("ai-tutor", "fr"));
     expect(screen.getAllByText(/Gõ một câu tiếng Pháp/).length).toBeGreaterThan(0);
     expect(screen.getByPlaceholderText(/gõ câu tiếng Pháp/)).toBeInTheDocument();
-    expect(screen.getByText("Câu tiếng Pháp của bạn")).toBeInTheDocument();
+    expect(screen.getByText("Gõ câu tiếng Pháp của bạn")).toBeInTheDocument();
     expect(screen.queryByText(/Write an English sentence/i)).not.toBeInTheDocument();
   });
 
@@ -649,24 +650,47 @@ describe("AiTutor mock UI", () => {
     expect(screen.getByPlaceholderText(/gõ câu tiếng Pháp/)).toBeInTheDocument();
   });
 
-  it("starts Conversation mode in French when target=fr", async () => {
+  it("renders Lộ trình as a compact path without speaking controls", async () => {
     window.history.pushState({}, "", "/ai-tutor?target=fr");
     render(<AiTutorPage />);
 
     await userEvent.click(screen.getByRole("button", { name: "Lộ trình" }));
 
-    expect(screen.getByTestId("ai-tutor-conversation")).toBeInTheDocument();
-    expect(screen.getByText("Mercy hỏi · Bạn trả lời")).toBeInTheDocument();
-    expect(screen.getByText("Qu'est-ce que tu fais le matin ?")).toBeInTheDocument();
+    const journeyPath = screen.getByTestId("ai-tutor-journey-path");
+    expect(journeyPath).toHaveTextContent("Lộ trình học hôm nay");
+    expect(journeyPath).toHaveTextContent("1. Sửa một câu");
+    expect(journeyPath).toHaveTextContent("2. Nghe Mercy giải thích");
+    expect(journeyPath).toHaveTextContent("3. Thử lại bằng một câu mới");
+    expect(within(journeyPath).getByRole("button", { name: "Bắt đầu sửa câu" })).toBeInTheDocument();
+    expect(within(journeyPath).queryByRole("textbox")).not.toBeInTheDocument();
+    expect(within(journeyPath).queryByRole("button", { name: /Mercy đọc|Nhập bằng giọng nói|Nói câu của bạn|Send|Gửi|Luyện nói/ })).not.toBeInTheDocument();
+    expect(screen.queryByTestId("ai-tutor-conversation-mic-fallback")).not.toBeInTheDocument();
+    expect(screen.queryByText("Qu'est-ce que tu fais le matin ?")).not.toBeInTheDocument();
   });
 
-  it("starts Conversation mode in Chinese when target=zh", async () => {
-    window.history.pushState({}, "", "/ai-tutor?target=zh");
+  it("Lộ trình start button switches to Sửa câu", async () => {
     render(<AiTutorPage />);
 
     await userEvent.click(screen.getByRole("button", { name: "Lộ trình" }));
+    await userEvent.click(screen.getByRole("button", { name: "Bắt đầu sửa câu" }));
 
-    expect(screen.getByText("你早上通常做什么？")).toBeInTheDocument();
+    expect(within(screen.getByTestId("teacher-mercy-mode-tabs")).getByRole("button", { name: "Sửa câu" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByTestId("ai-tutor-layout")).toBeInTheDocument();
+    expect(screen.getByRole("textbox")).toBeInTheDocument();
+  });
+
+  it("Luyện nói keeps the speaking practice controls", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await userEvent.click(screen.getByRole("button", { name: "Luyện nói" }));
+
+    const speakPanel = screen.getByTestId("ai-tutor-conversation");
+    expect(speakPanel).toBeInTheDocument();
+    expect(within(speakPanel).getByRole("textbox")).toBeInTheDocument();
+    expect(within(speakPanel).getByRole("button", { name: /Nhập bằng giọng nói/ })).toBeInTheDocument();
+    expect(within(speakPanel).getByRole("button", { name: /Mercy đọc/ })).toBeInTheDocument();
+    expect(within(speakPanel).getByRole("button", { name: /Luyện nói|Send/ })).toBeInTheDocument();
   });
 
   it("keeps Logic mode explanation-only with no mic, speaker, or voice fallback UI", async () => {
@@ -701,7 +725,7 @@ describe("AiTutor mock UI", () => {
     expect(screen.queryByRole("button", { name: /Mercy đọc|Read corrected sentence|Stop Mercy voice|Dừng đọc/ })).not.toBeInTheDocument();
     expect(screen.queryByText("Mercy voice unavailable. Using device voice.")).not.toBeInTheDocument();
     expect(screen.queryByText("Device voice fallback")).not.toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: /Nói câu của bạn/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /Nhập bằng giọng nói|Nói câu của bạn/ })).not.toBeInTheDocument();
     expect(screen.queryByTestId("ai-tutor-conversation-mic-fallback")).not.toBeInTheDocument();
 
     await userEvent.type(
@@ -745,13 +769,13 @@ describe("AiTutor mock UI", () => {
     expect(screen.queryByTestId("ai-tutor-conversation-mic-fallback")).not.toBeInTheDocument();
   });
 
-  it("sends a typed Conversation reply and shows correction plus one next question", async () => {
+  it("sends a typed Speak reply and shows correction plus one next question", async () => {
     window.history.pushState({}, "", "/ai-tutor?target=fr");
     render(<AiTutorPage />);
 
-    await userEvent.click(screen.getByRole("button", { name: "Lộ trình" }));
+    await userEvent.click(screen.getByRole("button", { name: "Luyện nói" }));
     await userEvent.type(screen.getByRole("textbox"), "Je suis aller au marché");
-    await userEvent.click(screen.getByRole("button", { name: /Send|Gửi/ }));
+    await userEvent.click(within(screen.getByTestId("ai-tutor-conversation")).getByRole("button", { name: /Luyện nói|Send|Gửi/ }));
 
     expect(screen.getByText("Je suis aller au marché")).toBeInTheDocument();
     await waitFor(() => {
@@ -767,13 +791,13 @@ describe("AiTutor mock UI", () => {
     );
   });
 
-  it("mic fills Conversation input without touching correction mode input", async () => {
+  it("mic fills Speak input without touching correction mode input", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
     render(<AiTutorPage />);
 
     await userEvent.type(screen.getByRole("textbox"), "She go to school");
-    await userEvent.click(screen.getByRole("button", { name: "Lộ trình" }));
-    await userEvent.click(screen.getByRole("button", { name: /Nói câu của bạn/ }));
+    await userEvent.click(screen.getByRole("button", { name: "Luyện nói" }));
+    await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
     act(() => {
       MockSpeechRecognition.last?.emitFinalTranscript("I drink coffee");
       MockSpeechRecognition.last?.stop();
@@ -805,7 +829,7 @@ describe("AiTutor mock UI", () => {
 
     window.history.pushState({}, "", "/ai-tutor?target=zh");
     render(<AiTutorPage />);
-    await userEvent.click(screen.getByRole("button", { name: "Lộ trình" }));
+    await userEvent.click(screen.getByRole("button", { name: "Luyện nói" }));
 
     const speakerButtons = screen.getAllByRole("button", { name: /Mercy đọc/ });
     await userEvent.click(speakerButtons[0]);
@@ -835,7 +859,7 @@ describe("AiTutor mock UI", () => {
 
     window.localStorage.setItem("mercyblade.lessonUiLang", "en");
     render(<AiTutorPage />);
-    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
+    await userEvent.click(screen.getByRole("button", { name: "Speak" }));
 
     await userEvent.click(screen.getAllByRole("button", { name: /Read corrected sentence|Mercy đọc câu/ })[0]);
 
@@ -1309,9 +1333,9 @@ describe("AiTutor mock UI", () => {
 
     window.history.pushState({}, "", "/ai-tutor?target=fr");
     render(<AiTutorPage />);
-    await userEvent.click(screen.getByRole("button", { name: "Lộ trình" }));
+    await userEvent.click(screen.getByRole("button", { name: "Luyện nói" }));
     await userEvent.type(screen.getByRole("textbox"), "Je suis aller au marché");
-    await userEvent.click(screen.getByRole("button", { name: /Send|Gửi/ }));
+    await userEvent.click(within(screen.getByTestId("ai-tutor-conversation")).getByRole("button", { name: /Luyện nói|Send|Gửi/ }));
     await waitFor(() => expect(screen.getByText("Je suis allé au marché.")).toBeInTheDocument());
 
     const speakerButtons = screen.getAllByRole("button", { name: /Mercy đọc/ });
