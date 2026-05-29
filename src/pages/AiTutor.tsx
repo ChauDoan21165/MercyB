@@ -72,15 +72,13 @@ import {
   hasShownHint,
   type DetectorHintContent,
 } from "@/lib/ai-tutor/detectorHint";
-import ConversationMode, {
-  type ConversationMessage,
-  type MercyConversationMessage,
+import type {
+  ConversationMessage,
+  MercyConversationMessage,
 } from "@/components/ai-tutor/ConversationMode";
-import TutorMemoryCard, {
-  TutorMemoryEmpty,
-  TutorMomentumCard,
-  TutorTodayLessonCard,
-} from "@/components/ai-tutor/TutorMemoryCard";
+import JourneyMode from "@/components/ai-tutor/JourneyMode";
+import SpeakPracticeMode from "@/components/ai-tutor/SpeakPracticeMode";
+import LogicMode from "@/components/ai-tutor/LogicMode";
 import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
 
 type CorrectionResult = TutorTurn & {
@@ -92,6 +90,12 @@ type PracticeFeedback = {
   encouragement: string;
   tip: string;
   nextStep: string;
+};
+
+type CorrectedSentenceSeed = {
+  correctedSentence: string;
+  sourceText: string;
+  updatedAt: number;
 };
 
 type ActiveTodayLesson = {
@@ -701,6 +705,8 @@ export default function AiTutorPage() {
   const [input, setInput] = useState("");
   const [grammarVoiceDraft, setGrammarVoiceDraft] = useState("");
   const [conversationInput, setConversationInput] = useState("");
+  const [speakRepeatInput, setSpeakRepeatInput] = useState("");
+  const [latestCorrectedSeed, setLatestCorrectedSeed] = useState<CorrectedSentenceSeed | null>(null);
   const [conversationMessages, setConversationMessages] = useState<ConversationMessage[]>(() => [
     createOpeningMessage(
       typeof window === "undefined"
@@ -781,6 +787,9 @@ export default function AiTutorPage() {
       if (transcript) {
         if (mode === "grammar") {
           setGrammarVoiceDraft(transcript);
+        } else if (mode === "speak") {
+          const next = appendCleanSpeech(sttBaseInputRef.current, transcript);
+          setSpeakRepeatInput(next);
         } else {
           const next = appendCleanSpeech(sttBaseInputRef.current, transcript);
           setConversationInput(next);
@@ -799,6 +808,9 @@ export default function AiTutorPage() {
       lastCommittedSttRef.current = transcript;
       if (mode === "grammar") {
         setGrammarVoiceDraft(transcript);
+      } else if (mode === "speak") {
+        const next = appendCleanSpeech(sttBaseInputRef.current, transcript);
+        setSpeakRepeatInput(next);
       } else {
         const next = appendCleanSpeech(sttBaseInputRef.current, transcript);
         setConversationInput(next);
@@ -809,7 +821,7 @@ export default function AiTutorPage() {
   const handleMicToggle = () => {
     if (stt.listening) { stt.stop(); return; }
     stt.reset();
-    sttBaseInputRef.current = mode !== "grammar" ? conversationInput : input;
+    sttBaseInputRef.current = mode === "grammar" ? input : mode === "speak" ? speakRepeatInput : conversationInput;
     lastCommittedSttRef.current = "";
     stt.start();
   };
@@ -945,6 +957,11 @@ export default function AiTutorPage() {
       ...turn,
       grammarTip: buildGrammarTip(target, localCorrection, explainLanguage),
       practicePrompt: next.practicePrompt[explainLanguage],
+    });
+    setLatestCorrectedSeed({
+      correctedSentence: corrected,
+      sourceText: trimmed,
+      updatedAt: Date.now(),
     });
 
     // Detector → chip surface (adult AI Tutor only; CorrectionMode is not
@@ -1145,6 +1162,37 @@ export default function AiTutorPage() {
     void tts.speak(text, ttsLang, target);
   };
 
+  const handleSendCorrectedSentenceToSpeak = (correctedSentence: string) => {
+    const trimmed = correctedSentence.trim();
+    if (!trimmed) return;
+    setLatestCorrectedSeed({
+      correctedSentence: trimmed,
+      sourceText: input.trim(),
+      updatedAt: Date.now(),
+    });
+    setSpeakRepeatInput("");
+    handleModeChange("speak");
+  };
+
+  const handleReadSpeakTarget = () => {
+    const text = latestCorrectedSeed?.correctedSentence.trim();
+    if (!text) return;
+    if (stt.listening) {
+      ignoreNextSttCommitRef.current = true;
+      stt.stop();
+      stt.reset();
+      sttBaseInputRef.current = "";
+      lastCommittedSttRef.current = "";
+    }
+    if (tts.speaking) {
+      tts.stop();
+      setSpeakingMessageId(null);
+      return;
+    }
+    setSpeakingMessageId("speak-target");
+    void tts.speak(text, ttsLang, target);
+  };
+
   const handleClear = () => {
     setInput("");
     setResult(null);
@@ -1230,57 +1278,20 @@ export default function AiTutorPage() {
       modeTabs={modeTabs}
       activeMode={mode}
       onModeChange={handleModeChange}
-      memorySlot={aiTutorConfig.memoryEnabled ? (
-        <>
-          <TutorTodayLessonCard
-            memoryLoaded={memoryLoaded}
-            memory={memory}
-            onStartLesson={handleStartTodayLesson}
-            startLabel={activeTodayLesson ? "Tiếp tục" : "Bắt đầu"}
-          />
-          <TutorMomentumCard summary={localEventSummary} />
-          {isPlacementEntryRouteAvailable() ? (
-            <a
-              href="/placement"
-              data-testid="ai-tutor-placement-cta"
-              onClick={() => recordAiTutorEvent("placement_cta_clicked", { safeTopicTag: "placement" })}
-              className="mx-auto mb-4 flex w-full max-w-3xl items-center justify-between gap-3 rounded-xl border border-sky-100 bg-sky-50/80 px-4 py-3 text-left text-sm font-bold text-sky-900 shadow-sm transition hover:border-sky-200 hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
-            >
-              <span className="min-w-0">
-                <span className="block">Bạn mới học?</span>
-                <span className="mt-0.5 block text-xs font-semibold text-sky-700">
-                  Kiểm tra trình độ trước.
-                </span>
-              </span>
-              <span className="shrink-0 text-xs font-black uppercase text-sky-700">
-                Bắt đầu
-              </span>
-            </a>
-          ) : null}
-          <TutorMemoryCard memoryLoaded={memoryLoaded} memory={memory} />
-        </>
-      ) : undefined}
-      reminderSlot={aiTutorConfig.memoryEnabled ? <TutorMemoryEmpty memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
       footer={`${tutorCopy.ui.footer} ${getSafetyLabel(aiTutorConfig)}.`}
     >
-      {mode === "grammar" ? (
+      {mode === "journey" ? (
+        <JourneyMode onStartCorrection={() => handleModeChange("grammar")} />
+      ) : mode === "grammar" ? (
         <CorrectionMode
           input={input}
           setInput={setInput}
           loading={loading}
           result={result}
           error={error}
-          practiceAnswer={practiceAnswer}
-          setPracticeAnswer={setPracticeAnswer}
-          practiceFeedback={practiceFeedback}
-          practiceLoading={practiceLoading}
           micSupported={stt.supported}
           micListening={stt.listening}
           voiceDraft={grammarVoiceDraft}
-          ttsSupported={tts.supported}
-          ttsSpeaking={tts.speaking}
-          ttsPreparing={tts.preparing}
-          ttsVoiceSource={tts.voiceSource}
           speechLang={speechLang}
           onSubmit={handleSubmit}
           onMicToggle={handleMicToggle}
@@ -1289,55 +1300,28 @@ export default function AiTutorPage() {
             setGrammarVoiceDraft("");
           }}
           onClearVoiceDraft={() => setGrammarVoiceDraft("")}
-          onTtsToggle={() => {
-            if (!result) return;
-            const text = getSpeakableText(result);
-            if (!text) return;
-            if (tts.speaking) {
-              tts.stop();
-            } else {
-              void tts.speak(text, ttsLang, target);
-            }
-          }}
-          onPracticeSubmit={handlePracticeSubmit}
+          onSendToSpeak={handleSendCorrectedSentenceToSpeak}
           onClear={handleClear}
           tutorCopy={tutorCopy}
           detectorHint={detectorHint}
         />
-      ) : (
-        <ConversationMode
-          messages={conversationMessages}
-          input={conversationInput}
-          setInput={setConversationInput}
-          loading={conversationLoading}
+      ) : mode === "speak" ? (
+        <SpeakPracticeMode
+          targetSentence={latestCorrectedSeed?.correctedSentence ?? null}
+          repeatInput={speakRepeatInput}
           micSupported={stt.supported}
           micListening={stt.listening}
           micError={stt.error}
           ttsSupported={tts.supported}
-          ttsSpeaking={tts.speaking}
-          ttsPreparing={tts.preparing}
+          ttsSpeaking={speakingMessageId === "speak-target" && tts.speaking}
+          ttsPreparing={speakingMessageId === "speak-target" && tts.preparing}
           ttsVoiceSource={tts.voiceSource}
-          speakingMessageId={speakingMessageId}
-          mode={mode}
-          onSend={handleConversationSend}
           onMicToggle={handleMicToggle}
-          onSpeak={handleConversationSpeak}
-          onStartCorrection={() => handleModeChange("grammar")}
+          onReadTarget={handleReadSpeakTarget}
           tutorCopy={tutorCopy}
         />
-      )}
-      {activeTodayLesson && (
-        <TodayLessonLoopPanel
-          lesson={activeTodayLesson}
-          mode={mode}
-          result={result}
-          practiceFeedback={practiceFeedback}
-          latestMercyMessage={latestMercyMessage}
-          logicInsight={todayLessonLogicInsight}
-          sessionState={studySessionState}
-          memory={memory}
-          onRestart={handleRestartTodayLesson}
-        />
+      ) : (
+        <LogicMode latestCorrectedSentence={latestCorrectedSeed?.correctedSentence ?? null} />
       )}
     </TeacherMercyLearningShell>
   );

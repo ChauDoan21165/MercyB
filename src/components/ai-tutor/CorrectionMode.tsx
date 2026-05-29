@@ -1,5 +1,5 @@
 // src/components/ai-tutor/CorrectionMode.tsx
-// Input, result display, TTS, and practice flow.
+// Input and correction result display.
 // Extracted from AiTutor.tsx for reuse across modes.
 
 import type { TutorTurn } from "@/lib/tutor/tutorTypes";
@@ -13,36 +13,21 @@ type CorrectionResult = TutorTurn & {
   practicePrompt: string;
 };
 
-type PracticeFeedback = {
-  encouragement: string;
-  tip: string;
-  nextStep: string;
-};
-
 type Props = {
   input: string;
   setInput: (value: string) => void;
   loading: boolean;
   result: CorrectionResult | null;
   error: string | null;
-  practiceAnswer: string;
-  setPracticeAnswer: (value: string) => void;
-  practiceFeedback: PracticeFeedback | null;
-  practiceLoading: boolean;
   micSupported: boolean;
   micListening: boolean;
   voiceDraft: string;
-  ttsSupported: boolean;
-  ttsSpeaking: boolean;
-  ttsPreparing: boolean;
-  ttsVoiceSource?: "mercy" | "device" | null;
   speechLang: string;
   onSubmit: () => void;
   onMicToggle: () => void;
   onUseVoiceDraft: () => void;
   onClearVoiceDraft: () => void;
-  onTtsToggle: () => void;
-  onPracticeSubmit: () => void;
+  onSendToSpeak: (correctedSentence: string) => void;
   onClear: () => void;
   tutorCopy: TutorCopy;
   /**
@@ -60,24 +45,15 @@ export default function CorrectionMode({
   loading,
   result,
   error,
-  practiceAnswer,
-  setPracticeAnswer,
-  practiceFeedback,
-  practiceLoading,
   micSupported,
   micListening,
   voiceDraft,
-  ttsSupported,
-  ttsSpeaking,
-  ttsPreparing,
-  ttsVoiceSource,
   speechLang: _speechLang,
   onSubmit,
   onMicToggle,
   onUseVoiceDraft,
   onClearVoiceDraft,
-  onTtsToggle,
-  onPracticeSubmit,
+  onSendToSpeak,
   onClear,
   tutorCopy,
   detectorHint = null,
@@ -109,7 +85,7 @@ export default function CorrectionMode({
           </div>
 
           <div className="mb-2 flex items-center justify-between gap-3">
-            <label className="text-xs font-black uppercase text-slate-500">
+            <label htmlFor="ai-tutor-grammar-input" className="text-xs font-black uppercase text-slate-500">
               {ui.inputLabel}
             </label>
             <span className="shrink-0 text-[11px] font-medium text-slate-500">
@@ -118,12 +94,14 @@ export default function CorrectionMode({
           </div>
 
           <textarea
+            id="ai-tutor-grammar-input"
             value={input}
             onChange={(e) => {
               if (e.target.value.length <= 500) setInput(e.target.value);
             }}
             placeholder={tutorCopy.placeholder}
             rows={5}
+            autoFocus
             className="w-full min-w-0 resize-none rounded-[14px] border border-slate-200 bg-slate-50 p-4 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-indigo-300 focus:bg-white focus:outline-none"
             onKeyDown={(e) => {
               if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
@@ -133,51 +111,6 @@ export default function CorrectionMode({
           />
 
           <div className="mt-3 flex flex-col gap-3">
-            <TeacherMercyVoiceControls
-              kind="mic"
-              supported={micSupported}
-              active={micListening}
-              unavailableLabel={tutorCopy.micLabels.unavailable}
-              inactiveLabel={tutorCopy.micLabels.input}
-              activeLabel={tutorCopy.micLabels.listening}
-              ariaStart={tutorCopy.micLabels.ariaStart}
-              ariaStop={tutorCopy.micLabels.ariaStop}
-              onToggle={onMicToggle}
-              className="w-full"
-              fallbackTestId="ai-tutor-mic-fallback"
-            />
-            <p className="w-full text-xs font-medium leading-5 text-slate-500">
-              {tutorCopy.micLabels.helper}
-            </p>
-            {voiceDraft && (
-              <div
-                data-testid="ai-tutor-voice-draft"
-                className="rounded-[14px] border border-amber-200 bg-amber-50 px-4 py-3"
-              >
-                <div className="text-[11px] font-black uppercase text-amber-700">
-                  Bản nháp giọng nói
-                </div>
-                <p className="mt-1 text-sm font-semibold leading-6 text-amber-950">
-                  {voiceDraft}
-                </p>
-                <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                  <button
-                    type="button"
-                    onClick={onUseVoiceDraft}
-                    className="min-h-10 rounded-full bg-amber-700 px-4 py-2 text-xs font-black text-white transition hover:bg-amber-800"
-                  >
-                    Dùng câu này
-                  </button>
-                  <button
-                    type="button"
-                    onClick={onClearVoiceDraft}
-                    className="min-h-10 rounded-full border border-amber-200 bg-white px-4 py-2 text-xs font-bold text-amber-800 transition hover:bg-amber-100"
-                  >
-                    Thu lại
-                  </button>
-                </div>
-              </div>
-            )}
             <button
               type="button"
               onClick={onSubmit}
@@ -193,6 +126,56 @@ export default function CorrectionMode({
                 ui.submit
               )}
             </button>
+
+            <div className="rounded-[14px] border border-slate-200 bg-slate-50 px-4 py-3">
+              <div className="text-xs font-black uppercase text-slate-500">
+                Đọc câu thay vì gõ
+              </div>
+              <div className="mt-3">
+                <TeacherMercyVoiceControls
+                  kind="mic"
+                  supported={micSupported}
+                  active={micListening}
+                  unavailableLabel={tutorCopy.micLabels.unavailable}
+                  inactiveLabel="Đọc câu thay vì gõ"
+                  activeLabel={tutorCopy.micLabels.listening}
+                  ariaStart={tutorCopy.micLabels.ariaStart}
+                  ariaStop={tutorCopy.micLabels.ariaStop}
+                  onToggle={onMicToggle}
+                  className="w-full"
+                  fallbackTestId="ai-tutor-mic-fallback"
+                />
+              </div>
+              {voiceDraft && (
+                <div
+                  data-testid="ai-tutor-voice-draft"
+                  className="mt-3 rounded-[14px] border border-amber-200 bg-amber-50 px-4 py-3"
+                >
+                  <div className="text-[11px] font-black uppercase text-amber-700">
+                    Bản nháp giọng nói
+                  </div>
+                  <p className="mt-1 text-sm font-semibold leading-6 text-amber-950">
+                    {voiceDraft}
+                  </p>
+                  <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                    <button
+                      type="button"
+                      onClick={onUseVoiceDraft}
+                      className="min-h-10 rounded-full bg-amber-700 px-4 py-2 text-xs font-black text-white transition hover:bg-amber-800"
+                    >
+                      Dùng câu này
+                    </button>
+                    <button
+                      type="button"
+                      onClick={onClearVoiceDraft}
+                      className="min-h-10 rounded-full border border-amber-200 bg-white px-4 py-2 text-xs font-bold text-amber-800 transition hover:bg-amber-100"
+                    >
+                      Thu lại
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
 
             {result && !loading && (
               <button
@@ -251,32 +234,6 @@ export default function CorrectionMode({
             <div className="text-xl font-black leading-snug text-emerald-900">
               {result.correctedText}
             </div>
-            {!ttsSupported && (
-              <div className="mt-2 text-[11px] text-slate-500">
-                🔊 {ui.ttsUnavailable}
-              </div>
-            )}
-            {ttsSupported && (
-              <TeacherMercyVoiceControls
-                kind="speaker"
-                supported={ttsSupported}
-                active={ttsSpeaking}
-                preparing={ttsPreparing}
-                unavailableLabel={ui.ttsUnavailable}
-                inactiveLabel={ui.ttsPlay}
-                activeLabel={ui.ttsStop}
-                preparingLabel={ui.ttsPreparing}
-                ariaStart={ui.ttsAriaPlay}
-                ariaStop={ui.ttsAriaStop}
-                onToggle={onTtsToggle}
-                className="mt-3"
-              />
-            )}
-            {ttsVoiceSource && (
-              <div className={`mt-2 text-[11px] font-semibold ${ttsVoiceSource === "mercy" ? "text-emerald-700" : "text-amber-700"}`}>
-                {ttsVoiceSource === "mercy" ? ui.ttsMercyVoiceLabel : ui.ttsDeviceVoiceFallbackLabel}
-              </div>
-            )}
           </div>
 
           <div className="rounded-[16px] border border-slate-200 bg-white p-5">
@@ -299,76 +256,21 @@ export default function CorrectionMode({
 
           <DetectorHintChip content={detectorHint} />
 
-          {/* Practice section */}
-          {!practiceFeedback && (
-            <div className="rounded-[18px] border border-violet-200 bg-violet-50/50 p-5">
-              <div className="mb-2 text-xs font-black uppercase text-violet-600">
-                {ui.practiceLabel}
-              </div>
-              <p className="text-sm font-semibold leading-6 text-slate-700">
-                {result.practicePrompt}
-              </p>
-              <textarea
-                value={practiceAnswer}
-                onChange={(e) => setPracticeAnswer(e.target.value)}
-                placeholder={ui.practicePlaceholder}
-                rows={3}
-                className="mt-3 w-full min-w-0 resize-none rounded-[12px] border border-violet-200 bg-white p-3 text-[14px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-violet-400 focus:outline-none"
-              />
-              <button
-                type="button"
-                onClick={onPracticeSubmit}
-                disabled={!practiceAnswer.trim() || practiceLoading}
-                className="mt-3 min-h-[44px] w-full rounded-full bg-violet-700 px-4 py-2.5 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-violet-200 disabled:text-violet-400"
-              >
-                {practiceLoading ? (
-                  <span className="inline-flex items-center justify-center gap-2">
-                    <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-                    {ui.practiceSubmitting}
-                  </span>
-                ) : (
-                  ui.practiceSubmit
-                )}
-              </button>
-            </div>
-          )}
+          <button
+            type="button"
+            onClick={() => onSendToSpeak(result.correctedText)}
+            className="min-h-[48px] rounded-full bg-indigo-700 px-4 py-3 text-sm font-black text-white transition hover:bg-indigo-800"
+          >
+            Đưa câu này sang Luyện nói
+          </button>
 
-          {/* Practice feedback */}
-          {practiceFeedback && (
-            <div className="rounded-[18px] border border-emerald-200 bg-emerald-50 p-5">
-              <div className="mb-2 text-xs font-black uppercase text-emerald-600">
-                {ui.feedbackLabel}
-              </div>
-              <p className="text-sm font-bold leading-6 text-emerald-800">
-                {practiceFeedback.encouragement}
-              </p>
-              <div className="mt-3 rounded-[12px] bg-white/70 p-3">
-                <div className="text-xs font-black uppercase text-slate-500">{ui.tipLabel}</div>
-                <p className="mt-1 text-sm font-medium leading-6 text-slate-700">{practiceFeedback.tip}</p>
-              </div>
-              <div className="mt-3 rounded-[12px] bg-white/70 p-3">
-                <div className="text-xs font-black uppercase text-slate-500">{ui.nextStepLabel}</div>
-                <p className="mt-1 text-sm font-medium leading-6 text-slate-700">{practiceFeedback.nextStep}</p>
-              </div>
-              <button
-                type="button"
-                onClick={onClear}
-                className="mt-4 min-h-[48px] w-full rounded-full border border-emerald-300 bg-white px-4 py-3 text-sm font-bold text-emerald-700 transition hover:bg-emerald-50"
-              >
-                {ui.tryAnother}
-              </button>
-            </div>
-          )}
-
-          {!practiceFeedback && (
-            <button
-              type="button"
-              onClick={onClear}
-              className="min-h-[48px] rounded-full border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-600 transition hover:bg-slate-50"
-            >
-              {ui.tryAnother}
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={onClear}
+            className="min-h-[48px] rounded-full border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-600 transition hover:bg-slate-50"
+          >
+            {ui.tryAnother}
+          </button>
         </section>
       )}
     </div>

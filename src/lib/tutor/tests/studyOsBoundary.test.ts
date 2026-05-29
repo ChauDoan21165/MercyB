@@ -67,11 +67,13 @@ describe("Study OS static boundary", () => {
       "src/lib/tutor/productConfigs.ts",
       "src/lib/tutor/speakableText.ts",
       "src/lib/tutor/speakConversationState.ts",
+      "src/lib/tutor/speakFollowups.ts",
       "src/lib/tutor/studySessionState.ts",
       "src/lib/tutor/todayLessonPlanner.ts",
       "src/lib/tutor/tutorCopy.ts",
       "src/lib/tutor/tutorEngine.ts",
       "src/lib/tutor/tutorTypes.ts",
+      "src/lib/tutor/vietlishCuratedLogic.ts",
       "src/lib/tutor/vietlishLogicEngine.ts",
     ]);
   });
