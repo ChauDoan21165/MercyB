@@ -12,7 +12,7 @@
  * no daily requirement, no pushy."
  */
 
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 
 import type { LocalWeaknessMap } from "../../stage-3a/aggregator";
 import {
@@ -24,10 +24,16 @@ import {
   decideSuggestion,
   FORBIDDEN_PHRASES,
   FORBIDDEN_REGEXES,
+  getSuggestion,
   type ActivityEvent,
   type GateState,
   type Suggestion,
 } from "../suggestionEngine";
+import {
+  clearDismissedSuggestions,
+  dismissSuggestion,
+  setSuggestionsDisabled,
+} from "../suggestionState";
 
 const EMPTY_GATE: GateState = {
   disabled: false,
@@ -140,6 +146,27 @@ describe("suggestionEngine — null when evidence is missing", () => {
       decideSuggestion(pronunciationEvent("TH_T"), weaknesses, EMPTY_GATE),
     ).toBeNull();
   });
+
+  it("skips unknown phoneme axes and falls back to the next useful action", () => {
+    const weaknesses: LocalWeaknessMap = {
+      ...emptyWeaknesses(),
+      topL1Patterns: [
+        { tag: "vi_l1_3rd_person_s", count: 2, lastSeen: 1_700_000_000_000 },
+      ],
+      topPronunciationPainPoints: [
+        { axis: "UNKNOWN_AXIS", errorRate: 0.8, samples: 5 },
+      ],
+      isEmpty: false,
+    };
+
+    const result = decideSuggestion(
+      pronunciationEvent("UNKNOWN_AXIS"),
+      weaknesses,
+      EMPTY_GATE,
+    );
+
+    expect(result?.triggerReason.kind).toBe("repeated_l1_pattern");
+  });
 });
 
 describe("suggestionEngine — null when no useful next action", () => {
@@ -233,6 +260,87 @@ describe("suggestionEngine — activity event biases first probe", () => {
       EMPTY_GATE,
     );
     expect(pronPick!.triggerReason.kind).toBe("high_error_phoneme");
+  });
+
+  it("prefers placement after placement activity, then falls through when the placement tag is not actionable", () => {
+    const weaknesses: LocalWeaknessMap = {
+      ...emptyWeaknesses(),
+      topL1Patterns: [
+        { tag: "vi_l1_3rd_person_s", count: 5, lastSeen: 1_700_000_000_000 },
+      ],
+      placementWeaknesses: [
+        { tag: "final_consonant_cluster_reduction", severity: "high" },
+      ],
+      isEmpty: false,
+    };
+
+    const placementPick = decideSuggestion(
+      placementEvent(),
+      weaknesses,
+      EMPTY_GATE,
+    );
+    expect(placementPick?.triggerReason.kind).toBe("high_severity_placement");
+
+    const fallbackPick = decideSuggestion(
+      placementEvent(),
+      {
+        ...weaknesses,
+        placementWeaknesses: [
+          { tag: "unknown_placement_tag", severity: "high" },
+        ],
+      },
+      EMPTY_GATE,
+    );
+    expect(fallbackPick?.triggerReason.kind).toBe("repeated_l1_pattern");
+  });
+
+  it("treats placement vi_l1_* tags as L1-backed actionable placement suggestions", () => {
+    const weaknesses: LocalWeaknessMap = {
+      ...emptyWeaknesses(),
+      placementWeaknesses: [
+        { tag: "vi_l1_3rd_person_s", severity: "high" },
+      ],
+      isEmpty: false,
+    };
+
+    const result = decideSuggestion(placementEvent(), weaknesses, EMPTY_GATE);
+
+    expect(result?.id).toBe("stage3b:placement:vi_l1_3rd_person_s");
+    expect(result?.triggerReason.kind).toBe("high_severity_placement");
+    expect(result?.suggestionText.vi).toContain("em");
+  });
+});
+
+describe("suggestionEngine — getSuggestion wrapper reads persisted gate state", () => {
+  const weaknesses: LocalWeaknessMap = {
+    ...emptyWeaknesses(),
+    topL1Patterns: [
+      { tag: "vi_l1_3rd_person_s", count: 3, lastSeen: 1_700_000_000_000 },
+    ],
+    isEmpty: false,
+  };
+
+  beforeEach(() => {
+    clearDismissedSuggestions();
+    setSuggestionsDisabled(false);
+  });
+
+  it("delegates to decideSuggestion when persisted gates are open", () => {
+    const result = getSuggestion(lessonEvent(), weaknesses);
+
+    expect(result?.id).toBe("stage3b:l1:vi_l1_3rd_person_s");
+  });
+
+  it("suppresses every suggestion when the persisted disabled flag is set", () => {
+    setSuggestionsDisabled(true);
+
+    expect(getSuggestion(lessonEvent(), weaknesses)).toBeNull();
+  });
+
+  it("suppresses a suggestion whose stable id is in the persisted dismissed set", () => {
+    dismissSuggestion("stage3b:l1:vi_l1_3rd_person_s");
+
+    expect(getSuggestion(lessonEvent(), weaknesses)).toBeNull();
   });
 });
 
