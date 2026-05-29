@@ -1279,6 +1279,7 @@ export default function AiTutorPage() {
           loading={conversationLoading}
           micSupported={stt.supported}
           micListening={stt.listening}
+          micError={stt.error}
           ttsSupported={tts.supported}
           ttsSpeaking={tts.speaking}
           ttsPreparing={tts.preparing}
