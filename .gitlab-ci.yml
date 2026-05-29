@@ -59,6 +59,7 @@ stages:
   before_script:
     # `--legacy-peer-deps` mirrors the GitHub workflow's flag — the
     # repo's peer-dep tree currently requires it.
+    - sleep $((RANDOM % 60))
     - npm ci --legacy-peer-deps --cache .npm --prefer-offline
 
 # Reusable rules: run on merge-request events targeting main/develop, on
