@@ -327,6 +327,30 @@ function buildSpeakAwareCorrection(
       status: "corrected",
     };
   }
+  if (/\bcoffee\b/i.test(normalized) && /\bemail\b/i.test(normalized) && /\bgo to work\b/i.test(normalized)) {
+    return {
+      ok: true,
+      corrected: "I had my coffee, checked my email, and then went to work.",
+      appliedRuleIds: ["en-speak-workday-tense-sequence"],
+      status: "corrected",
+    };
+  }
+  if (/\b(colleges|colleagues)\b/i.test(normalized) && /\bboss\b/i.test(normalized) && /\bassign me\b/i.test(normalized)) {
+    return {
+      ok: true,
+      corrected: "After that, I work with my colleagues and discuss with my boss what has been done. Then I do the work he assigns me.",
+      appliedRuleIds: ["en-speak-workday-colleagues-assigns"],
+      status: "corrected",
+    };
+  }
+  if (/\bwork all day\b/i.test(normalized) && /\blunch\b/i.test(normalized)) {
+    return {
+      ok: true,
+      corrected: "Then I work all day and have lunch. That's it.",
+      appliedRuleIds: ["en-speak-workday-lunch-sequence"],
+      status: "corrected",
+    };
+  }
 
   return buildLocalCorrection(userText, target);
 }
@@ -334,6 +358,15 @@ function buildSpeakAwareCorrection(
 function buildSpeakNaturalReply(userText: string, target: TutorTarget, fallback: string): string {
   if (target !== "en") return fallback;
   const normalized = userText.toLowerCase();
+  if (/\bemail\b/.test(normalized) && /\bwork\b/.test(normalized)) {
+    return "Good. You are describing the start of your workday.";
+  }
+  if (/\bboss\b|\bcolleges\b|\bcolleagues\b|\bassign(?:s|ed)?\b/.test(normalized)) {
+    return "Good detail. That sounds like a work discussion with your team.";
+  }
+  if (/\blunch\b|\bwork all day\b/.test(normalized)) {
+    return "Clear. You are describing the rest of your workday.";
+  }
   if (/\bmarket\b|\bbuy food\b|\bbought food\b/.test(normalized)) {
     return "Good. That sounds like a useful errand.";
   }
@@ -349,6 +382,15 @@ function buildSpeakNaturalReply(userText: string, target: TutorTarget, fallback:
 function buildSpeakNextQuestion(userText: string, target: TutorTarget, fallback: string): string {
   if (target !== "en") return fallback;
   const normalized = userText.toLowerCase();
+  if (/\bemail\b/.test(normalized) && /\bwork\b/.test(normalized)) {
+    return "What do you usually do when you arrive at work?";
+  }
+  if (/\bboss\b|\bcolleges\b|\bcolleagues\b|\bassign(?:s|ed)?\b/.test(normalized)) {
+    return "What kind of tasks does your boss assign?";
+  }
+  if (/\blunch\b|\bwork all day\b/.test(normalized)) {
+    return "What do you usually do after lunch?";
+  }
   if (/\bmarket\b|\bbuy food\b|\bbought food\b/.test(normalized)) {
     return "What did you buy at the market?";
   }
