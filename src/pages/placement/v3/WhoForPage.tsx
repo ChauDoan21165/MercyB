@@ -2,12 +2,18 @@ import { useNavigate } from "react-router-dom";
 import { Baby, UserRound } from "lucide-react";
 import { BackButton, BilingualLabel } from "@/components/placement/v3";
 import { usePlacementSessionV3 } from "@/hooks/placement/v3";
+import { useAuth } from "@/providers/AuthProvider";
 
 export default function WhoForPage() {
   const navigate = useNavigate();
-  const { loading, start } = usePlacementSessionV3(false);
+  const { user } = useAuth();
+  const { loading, error, start } = usePlacementSessionV3(false);
 
   const startAdult = async () => {
+    if (!user) {
+      navigate("/signin?returnTo=%2Fplacement%2Fwho");
+      return;
+    }
     const session = await start();
     if (session) navigate(`/placement/test/${session.sessionId}`);
   };
@@ -32,7 +38,11 @@ export default function WhoForPage() {
         >
           <UserRound className="h-8 w-8 text-emerald-700" aria-hidden />
           <BilingualLabel
-            text={{ en: "Me — an adult learner", vi: "Mình — người lớn đang học" }}
+            text={
+              user
+                ? { en: "Me — an adult learner", vi: "Mình — người lớn đang học" }
+                : { en: "Sign in to take the test", vi: "Đăng nhập để làm bài test" }
+            }
             className="mt-3"
             enClassName="text-lg font-black text-slate-900"
             viClassName="text-sm font-medium text-slate-500"
@@ -71,6 +81,15 @@ export default function WhoForPage() {
           />
         </button>
       </div>
+
+      {error ? (
+        <div
+          role="alert"
+          className="mt-5 rounded-[14px] border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-800"
+        >
+          {error}
+        </div>
+      ) : null}
     </main>
   );
 }
