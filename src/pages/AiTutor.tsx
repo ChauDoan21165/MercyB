@@ -223,6 +223,16 @@ function buildEnglishConversationExplanation(
   if (hasRule("third-person")) {
     return MOCK_RESULTS_BY_TARGET.en.explanation[explainLanguage];
   }
+  if (hasRule("subject-verb-agreement")) {
+    return explainLanguage === "vi"
+      ? "Với he, she, it ở hiện tại, thêm -s vào động từ chính: he goes, she works, it makes."
+      : "With he, she, it in the present, add -s to the main verb: he goes, she works, it makes.";
+  }
+  if (hasRule("preposition-pattern")) {
+    return explainLanguage === "vi"
+      ? "Một vài cụm tiếng Anh đi với giới từ cố định. Học cả cụm: depend on, interested in, good at, listen to."
+      : "Some English phrases need a fixed preposition. Learn the phrase: depend on, interested in, good at, listen to.";
+  }
   if (hasRule("past")) {
     return explainLanguage === "vi"
       ? "Khi nói về việc đã xảy ra, dùng động từ quá khứ như went, bought, ate hoặc had."
@@ -283,6 +293,16 @@ function buildGrammarTip(
 
   if (hasRule("third-person")) {
     return MOCK_RESULTS_BY_TARGET.en.grammarTip[explainLanguage];
+  }
+  if (hasRule("subject-verb-agreement")) {
+    return explainLanguage === "vi"
+      ? "Mẹo: he/she/it + verb-s trong hiện tại."
+      : "Tip: he/she/it + verb-s in the present.";
+  }
+  if (hasRule("preposition-pattern")) {
+    return explainLanguage === "vi"
+      ? "Mẹo: ghi nhớ cả cụm, không dịch từng giới từ."
+      : "Tip: remember the whole phrase; do not translate the preposition word by word.";
   }
   if (hasRule("past")) {
     return explainLanguage === "vi"

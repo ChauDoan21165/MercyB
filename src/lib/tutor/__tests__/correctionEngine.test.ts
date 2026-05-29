@@ -30,6 +30,65 @@ describe("correctionEngine", () => {
     });
   });
 
+  it.each([
+    ["he go to work", "He goes to work."],
+    ["she work every day", "She works every day."],
+    ["it make sense", "It makes sense."],
+  ])("corrects narrow Step 5 subject-verb agreement: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: expect.arrayContaining(["en-step5-subject-verb-agreement"]),
+    });
+  });
+
+  it.each([
+    "he can go to work",
+    "she will work tomorrow",
+    "it should make sense",
+  ])("does not trigger Step 5 subject-verb agreement after modals: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    "He went to work.",
+    "She worked yesterday.",
+    "It made sense.",
+  ])("does not trigger Step 5 subject-verb agreement on past tense: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["I depend of my family", "I depend on my family."],
+    ["She is interested with English", "She is interested in English."],
+    ["He is good in English", "He is good at English."],
+    ["I listen music every day", "I listen to music every day."],
+  ])("corrects whitelisted Step 5 preposition pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: expect.arrayContaining(["en-step5-preposition-pattern"]),
+    });
+  });
+
+  it.each([
+    "I work in English every day.",
+    "She is good in class.",
+    "I listen to music every day.",
+    "It depends on the weather.",
+  ])("does not broadly rewrite prepositions: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
   it("rejects unchanged wrong correction text", () => {
     expect(
       validateCorrectionChangedWhenNeeded(
