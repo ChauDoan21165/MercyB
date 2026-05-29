@@ -70,7 +70,15 @@ function hasOnlyOneNextQuestion(turn: TutorTurn): boolean {
 }
 
 function buildSpeakableText(parts: Array<string | undefined>): string {
-  return sanitizeSpeakableText(parts.map(normalizeText).filter(Boolean).join(" "));
+  const joined = parts
+    .map(normalizeText)
+    .filter(Boolean)
+    .map((part, index, list) => {
+      if (index === list.length - 1 || /[.!?。！？]$/.test(part)) return part;
+      return `${part}.`;
+    })
+    .join(" ");
+  return sanitizeSpeakableText(joined);
 }
 
 export function buildCorrectionTurn(input: CorrectionTurnInput): TutorCorrectionResult {
@@ -104,7 +112,7 @@ export function buildConversationTurn(input: ConversationTurnInput): TutorConver
     explanation: shortenExplanation(input.explanation),
     naturalReply: naturalReply || undefined,
     nextQuestion: nextQuestion || undefined,
-    shouldReadAloudText: buildSpeakableText([correctedText, naturalReply, nextQuestion]),
+    shouldReadAloudText: buildSpeakableText([naturalReply, nextQuestion]),
     createdAt: createIsoDate(input.createdAt),
   };
 
