@@ -7,7 +7,7 @@ describe("getTutorCopy", () => {
 
     expect(copy.targetLanguage).toBe("en");
     expect(copy.correctionTitle).toBe("English correction");
-    expect(copy.ui.inputLabel).toBe("Câu tiếng Anh của bạn");
+    expect(copy.ui.inputLabel).toBe("Gõ câu tiếng Anh của bạn");
   });
 
   it("returns French target copy without English-only sentence copy", () => {
@@ -15,7 +15,7 @@ describe("getTutorCopy", () => {
 
     expect(copy.targetLanguage).toBe("fr");
     expect(copy.placeholder).toMatch(/gõ câu tiếng Pháp/);
-    expect(copy.ui.inputLabel).toBe("Câu tiếng Pháp của bạn");
+    expect(copy.ui.inputLabel).toBe("Gõ câu tiếng Pháp của bạn");
     expect(copy.ui.inputLabel).not.toMatch(/English sentence/i);
     expect(copy.starterQuestions[0]).toBe("Qu'est-ce que tu fais le matin ?");
     expect(copy.fallbackMessages.conversationNeedsAi).toMatch(/conversation en français/);
