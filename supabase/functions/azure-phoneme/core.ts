@@ -143,16 +143,26 @@ export type UnifiedWordScore = {
   phonemes: { phoneme: string; score: number }[];
 };
 
+export type UnifiedPhonemeScore = {
+  word: string;
+  phoneme: string;
+  score: number;
+};
+
 export type SuccessResponse = {
   ok: true;
-  score: number;
-  word_scores: UnifiedWordScore[];
   provider: "azure";
+  mode: "batch";
+  score: number;
+  overall_score: number;
+  word_scores: UnifiedWordScore[];
+  phoneme_scores: UnifiedPhonemeScore[];
   audio_seconds: number;
   cost_usd_cents: number;
 };
 
 export type SentinelReason =
+  | "azure_disabled"
   | "trial_expired"
   | "global_daily_cap_reached"
   | "azure_no_match"
@@ -267,6 +277,8 @@ export interface Deps {
   audit: (params: AuditParams) => Promise<void>;
   /** Insert one row into speech_attempts. Best-effort; never throws. */
   logAttempt: (params: LogAttemptParams) => Promise<void>;
+  /** Explicit Step-7 batch gate. False means no Azure provider call. */
+  azureBatchEnabled: boolean;
   /** Azure subscription key. Empty string indicates misconfiguration → sentinel. */
   azureKey: string;
   /**
@@ -506,6 +518,17 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
     //    users with "available in paid plans", which contradicts the
     //    trial-gating policy already enforced above.
     const costUsd = computeCostUsd(audioSeconds);
+
+    if (!deps.azureBatchEnabled) {
+      await deps.audit({
+        userId,
+        status: "whisper_error",
+        audioSeconds,
+        openaiCostUsd: costUsd,
+        errorMsg: "azure_disabled",
+      });
+      return sentinel("azure_disabled");
+    }
 
     if (!deps.azureKey) {
       console.error("[azure-phoneme] AZURE_SPEECH_KEY env var is missing");
@@ -795,9 +818,12 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
 
     const successBody: SuccessResponse = {
       ok: true,
-      score: projection.overallScore,
-      word_scores: projection.wordScores,
       provider: "azure",
+      mode: "batch",
+      score: projection.overallScore,
+      overall_score: projection.overallScore,
+      word_scores: projection.wordScores,
+      phoneme_scores: projection.phonemeScores,
       audio_seconds: Number(audioSeconds.toFixed(2)),
       cost_usd_cents: Math.round(costUsd * 10000) / 100,
     };
@@ -907,12 +933,13 @@ export function computeCostUsd(seconds: number): number {
 export function projectAzureResponse(body: AzureResponse): {
   overallScore: number;
   wordScores: UnifiedWordScore[];
-  phonemeScores: unknown;
+  phonemeScores: UnifiedPhonemeScore[];
 } {
   const nbest = body.NBest?.[0];
   const overallRaw = nbest?.AccuracyScore ?? 0;
   const overallScore = clampScore(overallRaw);
 
+  const phonemeScores: UnifiedPhonemeScore[] = [];
   const wordScores: UnifiedWordScore[] = (nbest?.Words ?? []).map((w) => {
     const wordText = (w.Word ?? "").trim();
     const wordScore = clampScore(w.AccuracyScore ?? 0);
@@ -920,6 +947,14 @@ export function projectAzureResponse(body: AzureResponse): {
       phoneme: (ph.Phoneme ?? "").trim(),
       score: clampScore(ph.AccuracyScore ?? 0),
     }));
+    for (const ph of phonemes) {
+      if (!ph.phoneme) continue;
+      phonemeScores.push({
+        word: wordText,
+        phoneme: ph.phoneme,
+        score: ph.score,
+      });
+    }
     return {
       word: wordText,
       heard: wordText,
@@ -932,7 +967,7 @@ export function projectAzureResponse(body: AzureResponse): {
   return {
     overallScore,
     wordScores,
-    phonemeScores: nbest?.Words ?? null,
+    phonemeScores,
   };
 }
 
