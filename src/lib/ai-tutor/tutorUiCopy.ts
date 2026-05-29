@@ -153,9 +153,9 @@ export const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
       en: "Write another Spanish sentence about something you did yesterday.",
     },
     feedback: {
-      encouragement: "Good! Your Spanish sentence now uses the past tense naturally.",
-      tip: "Use pretérito for completed past actions.",
-      nextStep: "Try another sentence with 'la semana pasada'.",
+      encouragement: "Tốt! Câu tiếng Tây Ban Nha của bạn đã dùng thì quá khứ tự nhiên hơn.",
+      tip: "Dùng pretérito cho hành động đã hoàn thành trong quá khứ.",
+      nextStep: "Thử viết thêm một câu với 'la semana pasada'.",
     },
   },
   vi: {
