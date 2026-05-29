@@ -28,6 +28,7 @@ type Props = {
   loading: boolean;
   micSupported: boolean;
   micListening: boolean;
+  micError?: string | null;
   ttsSupported: boolean;
   ttsSpeaking: boolean;
   ttsPreparing: boolean;
@@ -48,6 +49,7 @@ export default function ConversationMode({
   loading,
   micSupported,
   micListening,
+  micError,
   ttsSupported,
   ttsSpeaking,
   ttsPreparing,
@@ -63,6 +65,10 @@ export default function ConversationMode({
   const isLogicMode = mode === "logic";
   const { ui } = tutorCopy;
   const allowTts = mode !== "logic";
+  const showMicFallback = mode === "speak" && !isLogicMode && (!micSupported || Boolean(micError));
+  const micFallbackMessage = micError
+    ? "Không dùng được micro. Hãy cho phép micro trong trình duyệt hoặc gõ câu của bạn."
+    : "Không dùng được giọng nói trên thiết bị hoặc trình duyệt này. Bạn vẫn có thể gõ câu và bấm gửi.";
   const modeCopy = {
     journey: {
       eyebrow: ui.conversationEyebrow,
@@ -320,6 +326,15 @@ export default function ConversationMode({
             {modeCopy.send}
           </button>
         </div>
+        {showMicFallback && (
+          <p
+            className="mt-2 rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold leading-5 text-amber-900"
+            data-testid="ai-tutor-speak-mic-fallback-message"
+            role="status"
+          >
+            {micFallbackMessage}
+          </p>
+        )}
       </div>
     </section>
   );

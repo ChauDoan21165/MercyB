@@ -107,6 +107,10 @@ class MockSpeechRecognition extends EventTarget implements SpeechRecognitionLike
       ],
     } as unknown as Parameters<NonNullable<SpeechRecognitionLike["onresult"]>>[0]);
   }
+
+  emitError(error: string) {
+    this.onerror?.({ error } as Parameters<NonNullable<SpeechRecognitionLike["onerror"]>>[0]);
+  }
 }
 
 class MockAudioElement {
@@ -691,6 +695,38 @@ describe("AiTutor mock UI", () => {
     expect(within(speakPanel).getByRole("button", { name: /Nhập bằng giọng nói/ })).toBeInTheDocument();
     expect(within(speakPanel).getByRole("button", { name: /Mercy đọc/ })).toBeInTheDocument();
     expect(within(speakPanel).getByRole("button", { name: /Luyện nói|Send/ })).toBeInTheDocument();
+  });
+
+  it("Speak shows unsupported mic fallback while keeping typing available", async () => {
+    render(<AiTutorPage />);
+
+    await userEvent.click(screen.getByRole("button", { name: "Luyện nói" }));
+
+    const speakPanel = screen.getByTestId("ai-tutor-conversation");
+    expect(within(speakPanel).getByTestId("ai-tutor-conversation-mic-fallback")).toHaveTextContent(/micro|giọng nói/i);
+    expect(screen.getByTestId("ai-tutor-speak-mic-fallback-message")).toHaveTextContent(/không dùng được giọng nói/i);
+    expect(screen.getByTestId("ai-tutor-speak-mic-fallback-message")).toHaveTextContent(/gõ câu/i);
+    expect(within(speakPanel).getByRole("textbox")).toBeEnabled();
+    await userEvent.type(within(speakPanel).getByRole("textbox"), "I type instead");
+    expect(within(speakPanel).getByRole("button", { name: /Luyện nói|Send/ })).toBeEnabled();
+  });
+
+  it("Speak shows denied mic fallback while keeping typing available", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await userEvent.click(screen.getByRole("button", { name: "Luyện nói" }));
+    await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
+    act(() => {
+      MockSpeechRecognition.last?.emitError("not-allowed");
+    });
+
+    expect(await screen.findByTestId("ai-tutor-speak-mic-fallback-message")).toHaveTextContent(/cho phép micro/i);
+    expect(screen.getByTestId("ai-tutor-speak-mic-fallback-message")).toHaveTextContent(/gõ câu/i);
+    const speakPanel = screen.getByTestId("ai-tutor-conversation");
+    expect(within(speakPanel).getByRole("textbox")).toBeEnabled();
+    await userEvent.type(within(speakPanel).getByRole("textbox"), "I can still type");
+    expect(within(speakPanel).getByRole("button", { name: /Luyện nói|Send/ })).toBeEnabled();
   });
 
   it("keeps Logic mode explanation-only with no mic, speaker, or voice fallback UI", async () => {
