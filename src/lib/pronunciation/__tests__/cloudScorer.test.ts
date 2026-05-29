@@ -13,7 +13,7 @@ vi.mock("@/lib/audio/wavEncoder", () => ({
   blobToWavPcm16k: vi.fn(),
 }));
 
-import { scoreCloud } from "../cloudScorer";
+import { scoreCloud, scorePronunciationWithStep7Fallback } from "../cloudScorer";
 import { blobToWavPcm16k } from "@/lib/audio/wavEncoder";
 
 const blobToWavPcm16kMock = vi.mocked(blobToWavPcm16k);
@@ -203,5 +203,131 @@ describe("scoreCloud — 401 auth required", () => {
         fetchImpl,
       }),
     ).rejects.toThrow(/auth_required/);
+  });
+});
+
+describe("scorePronunciationWithStep7Fallback", () => {
+  it("returns local sentence-match fallback without calling the provider when Step 7 is disabled", async () => {
+    const fetchImpl = vi.fn();
+
+    const result = await scorePronunciationWithStep7Fallback({
+      audioBlob: RECORDED_BLOB,
+      target: "hello world",
+      transcript: "hello world",
+      step7Enabled: false,
+      fetchImpl,
+      supabaseUrl: SUPABASE_URL,
+    });
+
+    expect(result.mode).toBe("local_sentence_match");
+    expect(result.provider).toBe("local");
+    expect(result.overallScore).toBe(100);
+    expect(result.useLocalFallback).toBe(true);
+    expect(result.labelKind).toBe("sentence_match");
+    expect(result.messageKey).toBe("pronunciation.score.local_sentence_match");
+    expect(result.phonemeScores).toBeUndefined();
+    expect(fetchImpl).not.toHaveBeenCalled();
+    expect(blobToWavPcm16kMock).not.toHaveBeenCalled();
+  });
+
+  it("returns local sentence-match fallback when the provider errors", async () => {
+    const fetchImpl = vi.fn().mockRejectedValue(new TypeError("network down"));
+
+    const result = await scorePronunciationWithStep7Fallback({
+      audioBlob: RECORDED_BLOB,
+      target: "hello world",
+      transcript: "hello world",
+      step7Enabled: true,
+      userJwt: "test-jwt",
+      fetchImpl,
+      supabaseUrl: SUPABASE_URL,
+    });
+
+    expect(result.mode).toBe("local_sentence_match");
+    expect(result.provider).toBe("local");
+    expect(result.overallScore).toBe(100);
+    expect(result.useLocalFallback).toBe(true);
+    expect(result.labelKind).toBe("sentence_match");
+    expect(result.phonemeScores).toBeUndefined();
+    expect(fetchImpl).toHaveBeenCalledOnce();
+  });
+
+  it("returns azure_phoneme_batch when the provider succeeds with phoneme detail", async () => {
+    const cloudBody = {
+      ok: true,
+      score: 82,
+      provider: "azure",
+      audio_seconds: 2.5,
+      cost_usd_cents: 0.07,
+      word_scores: [
+        {
+          word: "think",
+          heard: "think",
+          score: 82,
+          status: "close",
+          phonemes: [
+            { phoneme: "th", score: 70 },
+            { phoneme: "ih", score: 86 },
+          ],
+        },
+      ],
+    };
+    const fetchImpl = vi
+      .fn()
+      .mockResolvedValue(new Response(JSON.stringify(cloudBody), { status: 200 }));
+
+    const result = await scorePronunciationWithStep7Fallback({
+      audioBlob: RECORDED_BLOB,
+      target: "I think",
+      transcript: "I think",
+      step7Enabled: true,
+      userJwt: "test-jwt",
+      fetchImpl,
+      supabaseUrl: SUPABASE_URL,
+    });
+
+    expect(result.mode).toBe("azure_phoneme_batch");
+    expect(result.provider).toBe("azure");
+    expect(result.overallScore).toBe(82);
+    expect(result.useLocalFallback).toBe(false);
+    expect(result.labelKind).toBe("pronunciation_detail");
+    expect(result.messageKey).toBe("pronunciation.score.azure_phoneme_batch");
+    expect(result.wordScores?.[0].word).toBe("think");
+    expect(result.phonemeScores).toEqual([
+      { word: "think", phoneme: "th", score: 70 },
+      { word: "think", phoneme: "ih", score: 86 },
+    ]);
+  });
+
+  it("keeps provider success without phoneme detail labeled as local fallback", async () => {
+    const cloudBody = {
+      ok: true,
+      score: 88,
+      provider: "azure",
+      audio_seconds: 2.5,
+      cost_usd_cents: 0.07,
+      word_scores: [
+        { word: "hello", heard: "hello", score: 88, status: "correct", phonemes: [] },
+      ],
+    };
+    const fetchImpl = vi
+      .fn()
+      .mockResolvedValue(new Response(JSON.stringify(cloudBody), { status: 200 }));
+
+    const result = await scorePronunciationWithStep7Fallback({
+      audioBlob: RECORDED_BLOB,
+      target: "hello world",
+      transcript: "hello world",
+      step7Enabled: true,
+      userJwt: "test-jwt",
+      fetchImpl,
+      supabaseUrl: SUPABASE_URL,
+    });
+
+    expect(result.mode).toBe("local_sentence_match");
+    expect(result.provider).toBe("local");
+    expect(result.useLocalFallback).toBe(true);
+    expect(result.labelKind).toBe("sentence_match");
+    expect(result.phonemeScores).toBeUndefined();
   });
 });
