@@ -1048,7 +1048,7 @@ describe("AiTutor mock UI", () => {
 
     await userEvent.type(screen.getByRole("textbox"), "I have my coffee I checked my email then I go to work");
     await userEvent.click(within(screen.getByTestId("ai-tutor-conversation")).getByRole("button", { name: /Luyện nói|Send/ }));
-    await waitFor(() => expect(screen.getByText("Good. You are describing the start of your workday.")).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText("That sounds like a normal start to a workday.")).toBeInTheDocument());
 
     await userEvent.type(
       screen.getByRole("textbox"),
@@ -1066,6 +1066,49 @@ describe("AiTutor mock UI", () => {
     });
     expect(screen.queryByText("Nice. That sounds like a clear morning routine.")).not.toBeInTheDocument();
     expect(screen.queryByText("What do you do after that?")).not.toBeInTheDocument();
+  });
+
+  it("Speak avoids canned morning routine replies for coffee email and office turns", async () => {
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: "Luyện nói" }));
+
+    await userEvent.type(
+      screen.getByRole("textbox"),
+      "I have my coffee I checked to see if I have any ocean email and then I go to work",
+    );
+    await userEvent.click(within(screen.getByTestId("ai-tutor-conversation")).getByRole("button", { name: /Luyện nói|Send/ }));
+
+    await waitFor(() => {
+      expect(screen.getByText("I had my coffee, checked to see if I had any emails, and then went to work.")).toBeInTheDocument();
+      expect(screen.getByText("That sounds like a normal start to a workday.")).toBeInTheDocument();
+      expect(screen.getByText("What do you usually do when you arrive at work?")).toBeInTheDocument();
+    });
+    expect(screen.queryByText("Nice. That sounds like a clear morning routine.")).not.toBeInTheDocument();
+    expect(screen.queryByText("What do you do after that?")).not.toBeInTheDocument();
+
+    await userEvent.type(screen.getByRole("textbox"), "and then I go to the office and up today");
+    await userEvent.click(within(screen.getByTestId("ai-tutor-conversation")).getByRole("button", { name: /Luyện nói|Send/ }));
+
+    await waitFor(() => {
+      expect(screen.getByText("I went to the office, but the last part is unclear.")).toBeInTheDocument();
+      expect(screen.getByText("I heard that you went to the office, but the last part was unclear.")).toBeInTheDocument();
+      expect(screen.getByText("Can you say that last part again in one short sentence?")).toBeInTheDocument();
+    });
+  });
+
+  it("Speak varies repeated fallback replies across consecutive turns", async () => {
+    render(<AiTutorPage />);
+    await userEvent.click(screen.getByRole("button", { name: "Luyện nói" }));
+
+    await userEvent.type(screen.getByRole("textbox"), "hello");
+    await userEvent.click(within(screen.getByTestId("ai-tutor-conversation")).getByRole("button", { name: /Luyện nói|Send/ }));
+    await waitFor(() => expect(screen.getByText("Nice. That sounds like a clear morning routine.")).toBeInTheDocument());
+
+    await userEvent.type(screen.getByRole("textbox"), "hello again");
+    await userEvent.click(within(screen.getByTestId("ai-tutor-conversation")).getByRole("button", { name: /Luyện nói|Send/ }));
+
+    await waitFor(() => expect(screen.getByText("Got it. Tell me one more detail about that.")).toBeInTheDocument());
+    expect(screen.getAllByText("Nice. That sounds like a clear morning routine.")).toHaveLength(1);
   });
 
   it("Speak corrects workday colleague and assignment wording", async () => {
