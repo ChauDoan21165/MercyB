@@ -69,6 +69,54 @@ const PATTERNS: VietlishPattern[] = [
     },
   },
   {
+    id: "l4-pronunciation-final-sound-nudge",
+    match: /\b(i\s+bought\s+a\s+hat|i\s+want\s+\w+|i\s+went\b|a\s+hat\b)\b/i,
+    diagnosis: {
+      originalPattern: "Final sound practice: bought / hat / want / went",
+      correctedExample: "Practice the final sound in 'bought' / 'hat'.",
+      vietnameseThinking: "Vietnamese often does not release final consonant sounds as strongly as English.",
+      englishLogic: "In English, the final -t, -d, or -s sound can change what listeners hear.",
+      rememberRule: "This is only a text-based practice nudge, not an audio grade.",
+      retryPrompt: "Say one short sentence slowly and touch the final sound: bought, hat, want, or went.",
+    },
+  },
+  {
+    id: "l4-article-a-an-the",
+    match: /\b(i\s+bought\s+hat\s+yesterday|she\s+is\s+teacher)\b/i,
+    diagnosis: {
+      originalPattern: "I bought hat yesterday. / She is teacher.",
+      correctedExample: "I bought a hat yesterday. / She is a teacher.",
+      vietnameseThinking: "Tiếng Việt không dùng mạo từ như a/an/the, nhưng tiếng Anh thường cần a/an trước danh từ đếm được số ít.",
+      englishLogic: "A singular countable noun usually needs a small marker like a or an.",
+      rememberRule: "One countable thing: a/an + noun.",
+      retryPrompt: "Write one sentence with a/an + one job or one object.",
+    },
+  },
+  {
+    id: "l4-plural-s-after-quantity",
+    match: /\b(two\s+book|many\s+student)\b/i,
+    diagnosis: {
+      originalPattern: "I have two book. / Many student like English.",
+      correctedExample: "I have two books. / Many students like English.",
+      vietnameseThinking: "Khi có two/many/some/several..., danh từ đếm được thường cần số nhiều.",
+      englishLogic: "Words like two and many point to more than one, so countable nouns usually add plural -s.",
+      rememberRule: "Quantity word + plural countable noun.",
+      retryPrompt: "Write one sentence with two/many + a plural noun.",
+    },
+  },
+  {
+    id: "l4-topic-comment-word-order",
+    match: /\b(this\s+book\s+i\s+like|english\s+i\s+study\s+every\s+day)\b/i,
+    diagnosis: {
+      originalPattern: "This book I like. / English I study every day.",
+      correctedExample: "I like this book. / I study English every day.",
+      vietnameseThinking: "Tiếng Việt có thể đưa chủ đề lên đầu câu, nhưng tiếng Anh cơ bản thường cần trật tự Chủ ngữ + Động từ + Tân ngữ.",
+      englishLogic: "Basic English usually puts the subject first, then the verb, then the object.",
+      rememberRule: "Subject + verb + object.",
+      retryPrompt: "Rewrite one sentence with I + verb + object.",
+    },
+  },
+  {
     id: "interesting-interested",
     match: /\bi\s+am\s+interesting\s+in\s+english\b/i,
     diagnosis: {

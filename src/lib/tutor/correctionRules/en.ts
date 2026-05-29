@@ -29,6 +29,25 @@ const KNOWN_UNCORRECTED_PAST_MARKER_VERBS = [
   "write",
 ];
 
+const MISSING_ARTICLE_NOUNS: Record<string, "a" | "an"> = {
+  apple: "an",
+  book: "a",
+  hat: "a",
+  orange: "an",
+  student: "a",
+  teacher: "a",
+};
+
+const COUNTABLE_PLURAL_NOUNS: Record<string, string> = {
+  apple: "apples",
+  book: "books",
+  hat: "hats",
+  lesson: "lessons",
+  orange: "oranges",
+  student: "students",
+  word: "words",
+};
+
 function replaceVerbAfterSubject(
   input: string,
   verbs: Record<string, string>,
@@ -52,6 +71,42 @@ function punctuateQuestionForm(input: string): string {
   return `${trimmed}?`;
 }
 
+function addArticleAfterVerb(input: string): string {
+  const nounPattern = Object.keys(MISSING_ARTICLE_NOUNS).join("|");
+  const objectPattern = new RegExp(
+    `\\b(I|You|We|They|He|She)\\s+(bought|buy|want|need)\\s+(${nounPattern})\\b`,
+    "gi",
+  );
+  const bePattern = new RegExp(
+    `\\b(He|She|I)\\s+(is|am)\\s+(${nounPattern})\\b`,
+    "gi",
+  );
+
+  return input
+    .replace(objectPattern, (_match, subject: string, verb: string, noun: string) => {
+      const article = MISSING_ARTICLE_NOUNS[noun.toLowerCase()];
+      return `${subject} ${verb} ${article} ${noun}`;
+    })
+    .replace(bePattern, (_match, subject: string, verb: string, noun: string) => {
+      const article = MISSING_ARTICLE_NOUNS[noun.toLowerCase()];
+      return `${subject} ${verb} ${article} ${noun}`;
+    });
+}
+
+function pluralizeAfterQuantity(input: string): string {
+  const nounPattern = Object.keys(COUNTABLE_PLURAL_NOUNS).join("|");
+  const pattern = new RegExp(`\\b(two|three|many|some|several)\\s+(${nounPattern})\\b`, "gi");
+  return input.replace(pattern, (_match, quantity: string, noun: string) => {
+    return `${quantity} ${COUNTABLE_PLURAL_NOUNS[noun.toLowerCase()] ?? noun}`;
+  });
+}
+
+function repairTopicCommentOrder(input: string): string {
+  return input
+    .replace(/^this book i like[.?!]?$/i, "I like this book")
+    .replace(/^english i study every day[.?!]?$/i, "I study English every day");
+}
+
 export const englishCorrectionRules: CorrectionRule[] = [
   {
     id: "en-runon-morning-routine-punctuation",
@@ -65,6 +120,26 @@ export const englishCorrectionRules: CorrectionRule[] = [
       /\byesterday\b/i.test(input) &&
       /\b(I|You|We|They|He|She|It)\s+(buy|do|eat|go|have)\b/i.test(input),
     apply: (input) => replaceVerbAfterSubject(input, PAST_VERBS),
+  },
+  {
+    id: "en-l4-missing-singular-article",
+    detects: (input) =>
+      /\b(I|You|We|They|He|She)\s+(bought|buy|want|need)\s+(apple|book|hat|orange|student|teacher)\b/i.test(input) ||
+      /\b(He|She|I)\s+(is|am)\s+(apple|book|hat|orange|student|teacher)\b/i.test(input),
+    apply: addArticleAfterVerb,
+  },
+  {
+    id: "en-l4-quantity-plural-s",
+    detects: (input) =>
+      /\b(two|three|many|some|several)\s+(apple|book|hat|lesson|orange|student|word)\b/i.test(input),
+    apply: pluralizeAfterQuantity,
+  },
+  {
+    id: "en-l4-topic-comment-word-order",
+    detects: (input) =>
+      /^this book i like[.?!]?$/i.test(input.trim()) ||
+      /^english i study every day[.?!]?$/i.test(input.trim()),
+    apply: repairTopicCommentOrder,
   },
   {
     id: "en-third-person-daily-go-eat-have",
