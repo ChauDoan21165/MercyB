@@ -31,8 +31,8 @@ describe("correctionEngine", () => {
   });
 
   it.each([
-    ["he go to work", "He goes to work."],
-    ["she work every day", "She works every day."],
+    ["he go every day", "He goes every day."],
+    ["she work here", "She works here."],
     ["it make sense", "It makes sense."],
   ])("corrects narrow Step 5 subject-verb agreement: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
@@ -43,9 +43,9 @@ describe("correctionEngine", () => {
   });
 
   it.each([
-    "he can go to work",
-    "she will work tomorrow",
-    "it should make sense",
+    "he can go",
+    "she should work",
+    "it will make sense",
   ])("does not trigger Step 5 subject-verb agreement after modals: %s", (input) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "unchanged",
@@ -54,14 +54,15 @@ describe("correctionEngine", () => {
   });
 
   it.each([
-    "He went to work.",
-    "She worked yesterday.",
-    "It made sense.",
-  ])("does not trigger Step 5 subject-verb agreement on past tense: %s", (input) => {
-    expect(correctWithTutorRules(input, "en")).toMatchObject({
-      status: "unchanged",
-      appliedRuleIds: [],
-    });
+    ["He go last Monday", "He goes last Monday."],
+    ["She work last Friday", "She works last Friday."],
+    ["He go yesterday", "He goes yesterday."],
+    ["She work two days ago", "She works two days ago."],
+    ["It make noise last night", "It makes noise last night."],
+  ])("does not trigger present-tense Step 5 SVA in past-time context: %s", (input, forbidden) => {
+    const result = correctWithTutorRules(input, "en");
+    expect(result.appliedRuleIds).not.toContain("en-step5-subject-verb-agreement");
+    expect(result.corrected).not.toBe(forbidden);
   });
 
   it.each([

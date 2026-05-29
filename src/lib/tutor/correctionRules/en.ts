@@ -73,6 +73,14 @@ function isQuestionLike(input: string): boolean {
   );
 }
 
+function hasPastTimeMarker(input: string): boolean {
+  return (
+    /\byesterday\b/i.test(input) ||
+    /\blast\s+(?:night|week|month|year|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(input) ||
+    /\b(?:a|one|two|three|\d+)\s+(?:day|days|week|weeks|month|months|year|years)\s+ago\b/i.test(input)
+  );
+}
+
 function repairStep5SubjectVerbAgreement(input: string): string {
   return input.replace(
     /\b(He|She|It)\s+(go|make|work)\b/gi,
@@ -175,7 +183,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
     id: "en-step5-subject-verb-agreement",
     detects: (input) =>
       !isQuestionLike(input) &&
-      !/\b(yesterday|last\s+(?:night|week|month|year)|ago)\b/i.test(input) &&
+      !hasPastTimeMarker(input) &&
       /\b(He|She|It)\s+(go|make|work)\b/i.test(input),
     apply: repairStep5SubjectVerbAgreement,
   },
