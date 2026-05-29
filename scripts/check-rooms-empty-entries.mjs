@@ -50,9 +50,14 @@ function getRoomId(json, fallback) {
   return String(id).trim();
 }
 
+const KNOWN_NON_ROOM_IDS = new Set([
+  "guide_articles_en_vi",
+]);
+
 function isRoomJson(json) {
   // Keep narrow: only treat objects with string id as rooms.
-  return !!(json && typeof json === "object" && typeof json.id === "string");
+  if (!(json && typeof json === "object" && typeof json.id === "string")) return false;
+  return !KNOWN_NON_ROOM_IDS.has(json.id);
 }
 
 // -----------------------------
