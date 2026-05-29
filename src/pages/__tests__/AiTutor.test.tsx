@@ -118,6 +118,7 @@ beforeEach(() => {
   vi.clearAllMocks();
   MockSpeechRecognition.last = null;
   window.localStorage.clear();
+  window.sessionStorage.clear();
   window.history.pushState({}, "", "/ai-tutor");
   window.localStorage.setItem("mercyblade.lessonUiLang", "vi");
   (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = undefined;
@@ -134,13 +135,17 @@ beforeEach(() => {
   });
 });
 
-async function correctHatSentence() {
+async function correctSentence(input: string, expected: string) {
   await userEvent.type(
     screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i }),
-    "I buy a hat yesterday.",
+    input,
   );
   await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
-  await waitFor(() => expect(screen.getByText("I bought a hat yesterday.")).toBeInTheDocument());
+  await waitFor(() => expect(screen.getByText(expected)).toBeInTheDocument());
+}
+
+async function correctHatSentence() {
+  await correctSentence("I buy a hat yesterday.", "I bought a hat yesterday.");
 }
 
 async function openTab(name: string) {
@@ -199,6 +204,44 @@ describe("AiTutor four-tab seed flow", () => {
     expect(screen.getByText(/Khi nói về việc đã xảy ra/)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" })).toBeInTheDocument();
     expect(screen.queryByText(/Bạn nói giống câu mẫu/)).not.toBeInTheDocument();
+  });
+
+  it("shows a Step 5 article omission hint in Correction", async () => {
+    render(<AiTutorPage />);
+
+    await correctSentence("She is teacher.", "She is a teacher.");
+
+    const chip = await screen.findByTestId("detector-hint-chip");
+    expect(chip).toHaveAttribute("data-tag", "vi_l1_missing_article");
+    expect(chip).toHaveTextContent("Missing a / an / the");
+  });
+
+  it("shows a Step 5 plural omission hint in Correction", async () => {
+    render(<AiTutorPage />);
+
+    await correctSentence("I have two book.", "I have two books.");
+
+    const chip = await screen.findByTestId("detector-hint-chip");
+    expect(chip).toHaveAttribute("data-tag", "vi_l1_plural_s");
+    expect(chip).toHaveTextContent("Plural -s");
+  });
+
+  it("keeps the existing past-tense omission hint in Correction", async () => {
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+
+    const chip = await screen.findByTestId("detector-hint-chip");
+    expect(chip).toHaveAttribute("data-tag", "vi_l1_past_ed");
+    expect(chip).toHaveTextContent("Past tense -ed");
+  });
+
+  it("does not show a Step 5 hint for safe Correction input", async () => {
+    render(<AiTutorPage />);
+
+    await correctSentence("I like music.", "I like music.");
+
+    expect(screen.queryByTestId("detector-hint-chip")).not.toBeInTheDocument();
   });
 
   it("supports voice draft confirmation in Grammar without making mic primary", async () => {
