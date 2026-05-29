@@ -44,6 +44,7 @@ stages:
 
 .node_job: &node_job
   image: node:22-bullseye-slim
+  interruptible: true
   # Cache npm install output across jobs of the same MR / branch. The
   # cache key tracks package-lock.json so a lockfile change invalidates
   # the cache and forces a fresh install. `pull-push` lets the first
@@ -62,14 +63,207 @@ stages:
     - sleep $((RANDOM % 60))
     - npm ci --legacy-peer-deps --cache .npm --prefer-offline
 
-# Reusable rules: run on merge-request events targeting main/develop, on
-# direct push to main, and on direct push to develop. Tags and other
-# branches do not trigger the test stage.
+# Local runner jobs are explicitly tagged so the Mac runner can keep
+# "run untagged jobs" disabled. Shared-runner fallbacks are separate
+# manual jobs with no tags and only appear when a pipeline is started
+# with MERCYB_SHARED_RUNNER_FALLBACK=1.
 
-.test_rules: &test_rules
+.local_runner: &local_runner
+  tags:
+    - local
+    - mac
+    - mercyb
+
+# Changes that affect the full app build/test path. Docs-only changes do
+# not need the heavy build job on merge-request pipelines; protected
+# branches still run the full validation below regardless of diff shape.
+
+.app_validation_changes: &app_validation_changes
+  - package.json
+  - package-lock.json
+  - tsconfig*.json
+  - vite.config.*
+  - vitest.config.*
+  - index.html
+  - src/**/*
+  - public/**/*
+  - scripts/**/*
+  - tests/**/*
+  - supabase/functions/**/*
+  - supabase/config.toml
+  - .gitlab-ci.yml
+
+.lint_validation_changes: &lint_validation_changes
+  - package.json
+  - package-lock.json
+  - eslint.config.*
+  - tsconfig*.json
+  - src/**/*
+  - scripts/**/*
+  - tests/**/*
+  - .gitlab-ci.yml
+
+.room_validation_changes: &room_validation_changes
+  - package.json
+  - package-lock.json
+  - scripts/validate-rooms*
+  - scripts/validate-data-files.js
+  - scripts/validate-room-registry.js
+  - scripts/validate-kids-rooms.js
+  - scripts/generate-room-registry.mjs
+  - src/data/**/*
+  - src/lib/room*.ts
+  - src/lib/room*/**/*
+  - src/lib/rooms/**/*
+  - src/lib/roomDataImports.ts
+  - src/lib/roomManifest.ts
+  - .gitlab-ci.yml
+
+.module_validation_changes: &module_validation_changes
+  - package.json
+  - package-lock.json
+  - dependency-cruiser.*
+  - .dependency-cruiser.*
+  - src/**/*
+  - scripts/**/*
+  - .gitlab-ci.yml
+
+# Reusable rules: protected branch pushes run full validation regardless
+# of changes. Merge requests use changes filters to skip heavy work for
+# docs-only or unrelated updates.
+
+.app_test_rules: &app_test_rules
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop")'
-    - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop")'
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *app_validation_changes
+
+.lint_test_rules: &lint_test_rules
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *lint_validation_changes
+
+.room_test_rules: &room_test_rules
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *room_validation_changes
+
+.module_test_rules: &module_test_rules
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *module_validation_changes
+
+.manual_shared_app_rules: &manual_shared_app_rules
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+      when: manual
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *app_validation_changes
+      when: manual
+
+.manual_shared_lint_rules: &manual_shared_lint_rules
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+      when: manual
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *lint_validation_changes
+      when: manual
+
+.manual_shared_room_rules: &manual_shared_room_rules
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+      when: manual
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *room_validation_changes
+      when: manual
+
+.manual_shared_module_rules: &manual_shared_module_rules
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+      when: manual
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *module_validation_changes
+      when: manual
+
+.manual_shared_fallback: &manual_shared_fallback
+  allow_failure: false
+
+.build_script: &build_script
+  - npx tsc --noEmit
+  - npm run typecheck:functions
+  # node:22-bullseye-slim ships without curl, the CA bundle, unzip, or
+  # git. We need them for:
+  #   - curl + ca-certificates: HTTPS fetch of the Deno install
+  #     script and cert-chain validation (deno.land).
+  #   - unzip: the Deno installer unpacks a .zip release ("Error:
+  #     either unzip or 7z is required to install Deno" otherwise).
+  #   - git: scripts/check-no-raw-react-lazy.mjs uses `git ls-files`
+  #     as its fast path. Without git on PATH, the script falls back
+  #     to a recursive walk() that has a latent `require()`-in-ESM
+  #     bug — fixing the bug is out of scope for this CI port MR, so
+  #     we keep the fast path live by installing git here. Other
+  #     build-job steps that touch git (`git status --porcelain`,
+  #     `git diff` in the registry-drift check) need it too.
+  # `--no-install-recommends` keeps image bloat minimal; all four
+  # packages are tiny. Only the `build` job needs Deno + the
+  # registry-drift check, so the install scope is intentionally
+  # limited here rather than hoisted into a shared anchor.
+  - apt-get update && apt-get install -y --no-install-recommends curl ca-certificates unzip git
+  # Deno toolchain install for the edge-function check. The official
+  # install.sh fetches the latest stable Deno when invoked without a
+  # version arg. The repo's deno.lock is v5 → needs Deno >= 2.2; any
+  # stable 2.x or later satisfies that. Important: do NOT pass
+  # `v2.x` here. That works for the GitHub setup-deno action (which
+  # does semver-range resolution) but install.sh interprets the arg
+  # as a literal release tag and 404s on a non-existent `v2.x` tag.
+  # If pinning becomes necessary, use a concrete release like
+  # `v2.4.0`. DENO_INSTALL=/usr/local puts deno on PATH for the rest
+  # of the job.
+  - 'curl -fsSL https://deno.land/install.sh | DENO_INSTALL=/usr/local sh'
+  - export PATH="/usr/local/bin:$PATH"
+  - command -v deno
+  - npm run deno:check:functions
+  - npm run build
+  - node scripts/check-bundle-budget.mjs
+  - node scripts/validate-data-files.js
+  - node scripts/validate-room-registry.js
+  - node scripts/validate-kids-rooms.js
+  # check-delete-account-coverage exits 0 (skip) when Supabase env
+  # vars are absent — safe to call unconditionally. When the CI/CD
+  # variables VITE_SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY are set
+  # in GitLab project settings, the check fires for real.
+  - node scripts/check-delete-account-coverage.mjs
+  # Generate the room registry and fail if the on-disk version drifts
+  # from what generation produces — mirrors the GitHub workflow's
+  # "Generate and verify room registry" step.
+  - echo "🔄 Generating room registry..."
+  - node scripts/generate-room-registry.mjs
+  - 'if [ -n "$(git status --porcelain src/lib/roomManifest.ts src/lib/roomDataImports.ts)" ]; then echo "❌ Registry files are out of sync — run scripts/generate-room-registry.mjs locally and commit."; git diff src/lib/roomManifest.ts src/lib/roomDataImports.ts; exit 1; fi'
+  - echo "✅ Registry files are in sync"
+  - npm test
+
+.lint_script: &lint_script
+  - npm run lint
+  - 'grep -r "console.log" src/ --exclude-dir=node_modules || true'
+
+.validate_rooms_script: &validate_rooms_script
+  - npm run validate-rooms
+
+.module_boundaries_script: &module_boundaries_script
+  - npm run depcruise:validate
+  # `|| true` mirrors the GitHub workflow's `if: always()` + `|| true`.
+  - npm run depcruise:metrics || true
 
 # ── `test` stage jobs ──────────────────────────────────────────────────
 
@@ -80,94 +274,52 @@ stages:
 #
 # Mirrors GitHub's `build` job. Each line corresponds to a step there.
 build:
-  <<: *node_job
-  <<: *test_rules
+  <<: [*node_job, *local_runner, *app_test_rules]
   stage: test
-  script:
-    - npx tsc --noEmit
-    - npm run typecheck:functions
-    # node:22-bullseye-slim ships without curl, the CA bundle, unzip, or
-    # git. We need them for:
-    #   - curl + ca-certificates: HTTPS fetch of the Deno install
-    #     script and cert-chain validation (deno.land).
-    #   - unzip: the Deno installer unpacks a .zip release ("Error:
-    #     either unzip or 7z is required to install Deno" otherwise).
-    #   - git: scripts/check-no-raw-react-lazy.mjs uses `git ls-files`
-    #     as its fast path. Without git on PATH, the script falls back
-    #     to a recursive walk() that has a latent `require()`-in-ESM
-    #     bug — fixing the bug is out of scope for this CI port MR, so
-    #     we keep the fast path live by installing git here. Other
-    #     build-job steps that touch git (`git status --porcelain`,
-    #     `git diff` in the registry-drift check) need it too.
-    # `--no-install-recommends` keeps image bloat minimal; all four
-    # packages are tiny. Only the `build` job needs Deno + the
-    # registry-drift check, so the install scope is intentionally
-    # limited here rather than hoisted into a shared anchor.
-    - apt-get update && apt-get install -y --no-install-recommends curl ca-certificates unzip git
-    # Deno toolchain install for the edge-function check. The official
-    # install.sh fetches the latest stable Deno when invoked without a
-    # version arg. The repo's deno.lock is v5 → needs Deno >= 2.2; any
-    # stable 2.x or later satisfies that. Important: do NOT pass
-    # `v2.x` here. That works for the GitHub setup-deno action (which
-    # does semver-range resolution) but install.sh interprets the arg
-    # as a literal release tag and 404s on a non-existent `v2.x` tag.
-    # If pinning becomes necessary, use a concrete release like
-    # `v2.4.0`. DENO_INSTALL=/usr/local puts deno on PATH for the rest
-    # of the job.
-    - 'curl -fsSL https://deno.land/install.sh | DENO_INSTALL=/usr/local sh'
-    - export PATH="/usr/local/bin:$PATH"
-    - command -v deno
-    - npm run deno:check:functions
-    - npm run build
-    - node scripts/check-bundle-budget.mjs
-    - node scripts/validate-data-files.js
-    - node scripts/validate-room-registry.js
-    - node scripts/validate-kids-rooms.js
-    # check-delete-account-coverage exits 0 (skip) when Supabase env
-    # vars are absent — safe to call unconditionally. When the CI/CD
-    # variables VITE_SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY are set
-    # in GitLab project settings, the check fires for real.
-    - node scripts/check-delete-account-coverage.mjs
-    # Generate the room registry and fail if the on-disk version drifts
-    # from what generation produces — mirrors the GitHub workflow's
-    # "Generate and verify room registry" step.
-    - echo "🔄 Generating room registry..."
-    - node scripts/generate-room-registry.mjs
-    - 'if [ -n "$(git status --porcelain src/lib/roomManifest.ts src/lib/roomDataImports.ts)" ]; then echo "❌ Registry files are out of sync — run scripts/generate-room-registry.mjs locally and commit."; git diff src/lib/roomManifest.ts src/lib/roomDataImports.ts; exit 1; fi'
-    - echo "✅ Registry files are in sync"
-    - npm test
+  script: *build_script
+
+build:shared-fallback:
+  <<: [*node_job, *manual_shared_fallback, *manual_shared_app_rules]
+  stage: test
+  script: *build_script
 
 # `lint` — eslint + a soft console.log warning (does not fail the job,
 # same as GitHub's `continue-on-error: true`).
 lint:
-  <<: *node_job
-  <<: *test_rules
+  <<: [*node_job, *local_runner, *lint_test_rules]
   stage: test
-  script:
-    - npm run lint
-    - 'grep -r "console.log" src/ --exclude-dir=node_modules || true'
+  script: *lint_script
+
+lint:shared-fallback:
+  <<: [*node_job, *manual_shared_fallback, *manual_shared_lint_rules]
+  stage: test
+  script: *lint_script
 
 # `validate-rooms` — the full room-content validator. Heavier than the
 # build-stage validate-room-registry / validate-kids-rooms steps; runs
 # in its own job so a content-only break does not also stall the build.
 validate-rooms:
-  <<: *node_job
-  <<: *test_rules
+  <<: [*node_job, *local_runner, *room_test_rules]
   stage: test
-  script:
-    - npm run validate-rooms
+  script: *validate_rooms_script
+
+validate-rooms:shared-fallback:
+  <<: [*node_job, *manual_shared_fallback, *manual_shared_room_rules]
+  stage: test
+  script: *validate_rooms_script
 
 # `module-boundaries` — dependency-cruiser validation. Per the GitHub
 # workflow's note, errors are real violations; the metrics pass is
 # informational and never fails.
 module-boundaries:
-  <<: *node_job
-  <<: *test_rules
+  <<: [*node_job, *local_runner, *module_test_rules]
   stage: test
-  script:
-    - npm run depcruise:validate
-    # `|| true` mirrors the GitHub workflow's `if: always()` + `|| true`.
-    - npm run depcruise:metrics || true
+  script: *module_boundaries_script
+
+module-boundaries:shared-fallback:
+  <<: [*node_job, *manual_shared_fallback, *manual_shared_module_rules]
+  stage: test
+  script: *module_boundaries_script
 
 # ── `backup` stage (unchanged from prior version) ──────────────────────
 
