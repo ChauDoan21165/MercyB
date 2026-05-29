@@ -136,7 +136,7 @@ describe("native identity — Android scaffold check (skips on fresh-clone CI)",
       const stringsXml = readRepoFile("android/app/src/main/res/values/strings.xml");
 
       expect(
-        expectSingleMatch(buildGradle, /namespace\s+["']([^"']+)["']/, "Android namespace"),
+        expectSingleMatch(buildGradle, /namespace\s*=?\s*["']([^"']+)["']/, "Android namespace"),
       ).toBe(EXPECTED.android.namespace);
       expect(
         expectSingleMatch(buildGradle, /applicationId\s+["']([^"']+)["']/, "Android applicationId"),
