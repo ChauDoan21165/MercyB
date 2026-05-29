@@ -29,6 +29,7 @@ scripts/_scratch/
 scripts/.user-id-tables.json
 docs/*_LOG.md
 bad.txt
+.claude/worktrees/agent-*/
 room_scan_report.json
 orphan_candidates.txt
 orphan_*.txt

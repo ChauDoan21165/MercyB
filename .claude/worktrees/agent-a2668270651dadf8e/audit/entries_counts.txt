@@ -1,3 +1,0 @@
-     481 tmp_entries_has.txt
-     109 tmp_entries_empty.txt
-     590 total

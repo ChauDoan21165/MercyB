@@ -1,9 +1,0 @@
-{
-  "campaign": "account_conversion_welcome",
-  "tone": "warm, factual, no celebration overshoot",
-  "subject_vi": "Tài khoản đã được tạo — tiến độ đã được giữ",
-  "subject_en": "Your account is saved — your progress came with you",
-  "body_vi": "Chào {{first_name}},\n\nTài khoản đã được tạo. Tiến độ luyện tập, chuỗi ngày học, và mọi điểm bạn đã ghi đều được giữ — tất cả đã chuyển sang tài khoản chính thức của bạn.\n\nĐây là 3 điều bạn có thể làm tiếp theo:\n\n1. Mở https://mercyblade.com bằng email + mật khẩu vừa tạo (hoặc Google/Apple nếu bạn đã chọn đăng nhập đó).\n2. Vào /account để kiểm tra streak và lịch sử Speak — nếu thiếu gì, trả lời email này.\n3. Thử một mock interview ở /mock-interview — gói trial 3 ngày đang miễn phí.\n\nBất cứ khi nào bạn muốn xoá tài khoản, vào /account/privacy là xoá ngay — tôn trọng quyền riêng tư là chuyện đầu tiên mình quan tâm.\n\nMercy 💚",
-  "body_en": "Hi {{first_name}},\n\nYour account is created. Your practice progress, streak counter, and every score you logged came with you — all of it transferred to your permanent account.\n\nThree things you can do next:\n\n1. Sign in at https://mercyblade.com with the email + password you set (or Google/Apple if you used those instead).\n2. Visit /account to check your streak and Speak history — if anything's missing, just reply to this email.\n3. Try a mock interview at /mock-interview — your 3-day trial is free.\n\nWhenever you want to delete your account, /account/privacy does it instantly. Privacy first — always.\n\nMercy 💚",
-  "notes": "Tone: factual confirmation that progress survived. NO celebration overshoot ('Welcome to the family!'), NO upsell pressure. The single soft pointer to the trial-eligible mock interview is the one nudge. Sender wiring runs via existing Resend integration (see runbook in reports/a6-trial-expiry-runbook.md for the pattern)."
-}

@@ -1,1 +1,0 @@
-export const FALLBACK_NAMES = ['Mercy', 'Teacher', 'Guide'] as const;
