@@ -310,6 +310,56 @@ describe("AiTutor four-tab seed flow", () => {
     });
   });
 
+  it("uses the learner's latest spoken topic instead of drifting back to the corrected seed", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    expect(screen.getByTestId("ai-tutor-speak-target")).toHaveTextContent("I bought a hat yesterday.");
+    await speakCurrentTarget("I had dinner with my family.");
+
+    const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+    expect(followUp).toHaveTextContent("What did you eat?");
+    expect(followUp).not.toHaveTextContent("Where did you buy it?");
+    expect(followUp).not.toHaveTextContent(/morning|work/i);
+  });
+
+  it("keeps dinner and family follow-ups on topic for four turns without repeated questions", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    const questions: string[] = [];
+    for (const transcript of [
+      "I had dinner with my family.",
+      "It was very good.",
+      "We talked for a long time.",
+      "I felt happy.",
+    ]) {
+      const previousQuestion = questions.at(-1);
+      await speakCurrentTarget(transcript);
+      await waitFor(() => {
+        const text = screen.getByTestId("ai-tutor-speak-follow-up").textContent ?? "";
+        expect(text).not.toMatch(/Bạn muốn luyện thêm câu khác không/);
+        if (previousQuestion) expect(text).not.toBe(previousQuestion);
+      });
+      const text = screen.getByTestId("ai-tutor-speak-follow-up").textContent ?? "";
+      expect(text).not.toMatch(/Where did you buy it|What kind of hat was it|morning|work/i);
+      questions.push(text);
+    }
+
+    expect(new Set(questions).size).toBe(questions.length);
+
+    await speakCurrentTarget("It was a nice time.");
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Bạn muốn luyện thêm câu khác không?");
+    });
+  });
+
   it("falls back to the generic Speak prompt when no corrected sentence exists", async () => {
     render(<AiTutorPage />);
 

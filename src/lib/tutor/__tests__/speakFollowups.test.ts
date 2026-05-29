@@ -2,7 +2,9 @@ import { describe, expect, it } from "vitest";
 import {
   SPEAK_FOLLOW_UP_PIVOT,
   calculateSentenceMatchPercent,
+  resolveSpeakFollowUpTopicId,
   selectSpeakFollowUp,
+  selectSpeakFollowUpByTopicId,
 } from "@/lib/tutor/speakFollowups";
 
 describe("speakFollowups", () => {
@@ -18,6 +20,29 @@ describe("speakFollowups", () => {
     expect(selectSpeakFollowUp("I had dinner with my family.")).toEqual({
       topicId: "dinner-family",
       question: "What did you eat?",
+      isPivot: false,
+    });
+  });
+
+  it("lets the latest learner topic override the corrected seed and then persist", () => {
+    expect(resolveSpeakFollowUpTopicId({
+      seedSentence: "I bought a hat yesterday.",
+      learnerText: "I had dinner with my family.",
+      currentTopicId: "bought-hat-yesterday",
+    })).toBe("dinner-family");
+
+    expect(resolveSpeakFollowUpTopicId({
+      seedSentence: "I bought a hat yesterday.",
+      learnerText: "It was very good.",
+      currentTopicId: "dinner-family",
+    })).toBe("dinner-family");
+
+    expect(selectSpeakFollowUpByTopicId("dinner-family", {
+      askedQuestions: ["What did you eat?"],
+      turnsOnTopic: 1,
+    })).toEqual({
+      topicId: "dinner-family",
+      question: "Who cooked dinner?",
       isPivot: false,
     });
   });

@@ -10,6 +10,12 @@ export type SpeakFollowUpSelection = {
   isPivot: boolean;
 };
 
+export type SpeakFollowUpTopicInput = {
+  seedSentence?: string | null;
+  learnerText?: string | null;
+  currentTopicId?: string | null;
+};
+
 const GENERIC_FOLLOW_UPS = [
   "Can you tell me one more detail about that?",
   "What happened after that?",
@@ -68,6 +74,44 @@ export function getSpeakFollowUpTopicId(sentence: string): string {
   return pattern?.id ?? "generic";
 }
 
+export function resolveSpeakFollowUpTopicId({
+  seedSentence,
+  learnerText,
+  currentTopicId,
+}: SpeakFollowUpTopicInput): string {
+  const learnerTopicId = learnerText ? getSpeakFollowUpTopicId(learnerText) : "generic";
+  if (learnerTopicId !== "generic") return learnerTopicId;
+
+  if (currentTopicId && currentTopicId !== "generic") return currentTopicId;
+
+  return seedSentence ? getSpeakFollowUpTopicId(seedSentence) : "generic";
+}
+
+export function selectSpeakFollowUpByTopicId(
+  topicId: string,
+  options: {
+    askedQuestions?: readonly string[];
+    turnsOnTopic?: number;
+  } = {},
+): SpeakFollowUpSelection {
+  const pattern = SPEAK_FOLLOW_UP_PATTERNS.find((candidate) => candidate.id === topicId);
+  const resolvedTopicId = pattern?.id ?? "generic";
+  const asked = new Set((options.askedQuestions ?? []).map((question) => question.trim().toLowerCase()));
+  const turnsOnTopic = options.turnsOnTopic ?? 0;
+
+  if (turnsOnTopic >= SPEAK_FOLLOW_UP_DEPTH_CAP) {
+    return { topicId: resolvedTopicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
+  }
+
+  const candidates = [...(pattern?.questions ?? []), ...GENERIC_FOLLOW_UPS];
+  const question = candidates.find((candidate) => !asked.has(candidate.trim().toLowerCase()));
+  if (!question) {
+    return { topicId: resolvedTopicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
+  }
+
+  return { topicId: resolvedTopicId, question, isPivot: false };
+}
+
 export function selectSpeakFollowUp(
   sentence: string,
   options: {
@@ -75,23 +119,7 @@ export function selectSpeakFollowUp(
     turnsOnTopic?: number;
   } = {},
 ): SpeakFollowUpSelection {
-  const normalized = sentence.replace(/\s+/g, " ").trim();
-  const pattern = SPEAK_FOLLOW_UP_PATTERNS.find((candidate) => candidate.test.test(normalized));
-  const topicId = pattern?.id ?? "generic";
-  const asked = new Set((options.askedQuestions ?? []).map((question) => question.trim().toLowerCase()));
-  const turnsOnTopic = options.turnsOnTopic ?? 0;
-
-  if (turnsOnTopic >= SPEAK_FOLLOW_UP_DEPTH_CAP) {
-    return { topicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
-  }
-
-  const candidates = [...(pattern?.questions ?? []), ...GENERIC_FOLLOW_UPS];
-  const question = candidates.find((candidate) => !asked.has(candidate.trim().toLowerCase()));
-  if (!question) {
-    return { topicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
-  }
-
-  return { topicId, question, isPivot: false };
+  return selectSpeakFollowUpByTopicId(getSpeakFollowUpTopicId(sentence), options);
 }
 
 export function calculateSentenceMatchPercent(spoken: string, target: string): number {
