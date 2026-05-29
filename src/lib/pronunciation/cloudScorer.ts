@@ -2,12 +2,12 @@
  * Day 2 of the phoneme scoring plan
  * (reports/plan-phoneme-scoring-azure-2026-04-26.md § 2 Day 2).
  *
- * Client-side wrapper that tries Azure Pronunciation Assessment first
- * and falls back to the local scorer (`./scorer`) on any failure.
+ * Client-side helpers for trying Azure Pronunciation Assessment and
+ * falling back to the local scorer (`./scorer`) on any failure.
  *
- * Single result shape: every path returns `ScoreResult`. The caller
- * (MercySpeakTab — gated by the `azure_phoneme_scoring` feature flag)
- * never has to branch on which provider answered.
+ * `scoreCloud` preserves the legacy `ScoreResult` shape. The Step 7
+ * wrapper below returns a normalized result that labels fallback as
+ * sentence/word matching, never phoneme or pronunciation grading.
  *
  * Failure modes that trigger local fallback:
  *   - WAV conversion error (decoder failure, sample-rate quirk)
@@ -60,6 +60,47 @@ export type CloudScoreInput = {
    * function which routes Azure to the matching locale (en-US/en-GB/
    * en-AU/en-CA). Omitting it lets the edge fn default to 'us'.
    */
+  accent?: Accent;
+};
+
+export type PronunciationScoreMode = "local_sentence_match" | "azure_phoneme_batch";
+export type PronunciationScoreProvider = "local" | "azure";
+export type PronunciationScoreLabelKind = "sentence_match" | "pronunciation_detail";
+export type PronunciationScoreMessageKey =
+  | "pronunciation.score.local_sentence_match"
+  | "pronunciation.score.azure_phoneme_batch";
+
+export type NormalizedPhonemeScore = {
+  word: string;
+  phoneme: string;
+  score: number;
+};
+
+export type NormalizedPronunciationScoreResult = {
+  mode: PronunciationScoreMode;
+  provider?: PronunciationScoreProvider;
+  overallScore: number;
+  wordScores?: WordScore[];
+  phonemeScores?: NormalizedPhonemeScore[];
+  messageKey: PronunciationScoreMessageKey;
+  labelKind: PronunciationScoreLabelKind;
+  useLocalFallback: boolean;
+};
+
+export type ScoreWithStep7FallbackInput = {
+  /** Existing app recording format: raw MediaRecorder blob. */
+  audioBlob: Blob;
+  /** The sentence the learner was trying to say. */
+  target: string;
+  /** Browser STT transcript used by the honest local sentence-match fallback. */
+  transcript?: string;
+  /** Feature flag / config gate. When false, no edge call is attempted. */
+  step7Enabled: boolean;
+  /** Bearer JWT for the edge function. Required only when step7Enabled is true. */
+  userJwt?: string;
+  supabaseUrl?: string;
+  fetchImpl?: typeof fetch;
+  timeoutMs?: number;
   accent?: Accent;
 };
 
@@ -157,6 +198,85 @@ function fallback(input: CloudScoreInput): ScoreResult {
     recognized: input.transcript ?? "",
   };
   return scorePronunciation(localInput);
+}
+
+function scoreLocalSentenceMatch(
+  input: Pick<ScoreWithStep7FallbackInput, "target" | "transcript">,
+): NormalizedPronunciationScoreResult {
+  const result = scorePronunciation({
+    target: input.target,
+    recognized: input.transcript ?? "",
+  });
+
+  return {
+    mode: "local_sentence_match",
+    provider: "local",
+    overallScore: result.overallScore,
+    wordScores: result.wordScores,
+    messageKey: "pronunciation.score.local_sentence_match",
+    labelKind: "sentence_match",
+    useLocalFallback: true,
+  };
+}
+
+function flattenPhonemeScores(wordScores: WordScore[]): NormalizedPhonemeScore[] {
+  return wordScores.flatMap((wordScore) =>
+    (wordScore.phonemes ?? []).map((phonemeScore) => ({
+      word: wordScore.word,
+      phoneme: phonemeScore.phoneme,
+      score: phonemeScore.score,
+    })),
+  );
+}
+
+function normalizeAzureScore(result: ScoreResult): NormalizedPronunciationScoreResult {
+  const phonemeScores = flattenPhonemeScores(result.wordScores);
+
+  return {
+    mode: "azure_phoneme_batch",
+    provider: "azure",
+    overallScore: result.overallScore,
+    wordScores: result.wordScores,
+    phonemeScores,
+    messageKey: "pronunciation.score.azure_phoneme_batch",
+    labelKind: "pronunciation_detail",
+    useLocalFallback: false,
+  };
+}
+
+/**
+ * Step 7 public wrapper. It is intentionally honest about fallback mode:
+ * if the batch provider is disabled or unavailable, the result is labeled
+ * as sentence/word matching and carries no phonemeScores.
+ */
+export async function scorePronunciationWithStep7Fallback(
+  input: ScoreWithStep7FallbackInput,
+): Promise<NormalizedPronunciationScoreResult> {
+  if (!input.step7Enabled || !input.userJwt) {
+    return scoreLocalSentenceMatch(input);
+  }
+
+  try {
+    const result = await scoreCloud({
+      audioBlob: input.audioBlob,
+      target: input.target,
+      transcript: input.transcript,
+      userJwt: input.userJwt,
+      supabaseUrl: input.supabaseUrl,
+      fetchImpl: input.fetchImpl,
+      timeoutMs: input.timeoutMs,
+      accent: input.accent,
+    });
+
+    const phonemeScores = flattenPhonemeScores(result.wordScores);
+    if (phonemeScores.length === 0) {
+      return scoreLocalSentenceMatch(input);
+    }
+
+    return normalizeAzureScore(result);
+  } catch {
+    return scoreLocalSentenceMatch(input);
+  }
 }
 
 /**
