@@ -29,6 +29,11 @@ import {
   buildCorrectionTurn,
   getSpeakableText,
 } from "@/lib/tutor/tutorEngine";
+import {
+  createSpeakConversationState,
+  selectSpeakConversationReply,
+  type SpeakConversationState,
+} from "@/lib/tutor/speakConversationState";
 import type { TutorTurn } from "@/lib/tutor/tutorTypes";
 import {
   aiTutor as aiTutorConfig,
@@ -283,14 +288,25 @@ function buildConversationReply(
   target: TutorTarget,
   explainLanguage: ExplainLanguage,
   mode: TutorMode,
+  speakConversationState: SpeakConversationState,
   previousNaturalReply = "",
-): MercyConversationMessage {
-  if (mode === "logic") return buildLogicReply(userText, explainLanguage);
+): { message: MercyConversationMessage; speakConversationState: SpeakConversationState } {
+  if (mode === "logic") {
+    return {
+      message: buildLogicReply(userText, explainLanguage),
+      speakConversationState,
+    };
+  }
 
   const localCorrection = buildSpeakAwareCorrection(userText, target, mode);
   const tutorCopy = getTutorCopy(target, explainLanguage);
-  const naturalReply = buildSpeakNaturalReply(userText, target, tutorCopy.naturalReplies[0] ?? tutorCopy.ui.emptyConversation, previousNaturalReply);
-  const nextQuestion = buildSpeakNextQuestion(userText, target, tutorCopy.nextQuestionTemplates[0] ?? "");
+  const speakReply = mode === "speak" && target === "en"
+    ? selectSpeakConversationReply(userText, speakConversationState)
+    : null;
+  const naturalReply = speakReply?.naturalReply
+    ?? buildSpeakNaturalReply(userText, target, tutorCopy.naturalReplies[0] ?? tutorCopy.ui.emptyConversation, previousNaturalReply);
+  const nextQuestion = speakReply?.nextQuestion
+    ?? buildSpeakNextQuestion(userText, target, tutorCopy.nextQuestionTemplates[0] ?? "");
   const { turn } = buildConversationTurn({
     id: `mercy-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
     targetLanguage: target,
@@ -300,12 +316,15 @@ function buildConversationReply(
     explanation: localCorrection.ok
       ? buildConversationExplanation(userText, target, localCorrection, explainLanguage)
       : localCorrection.message,
-    naturalReply: localCorrection.ok
+    naturalReply: localCorrection.ok || speakReply
       ? naturalReply
       : tutorCopy.ui.conversationFallback,
     nextQuestion,
   });
-  return { ...turn, role: "mercy" };
+  return {
+    message: { ...turn, role: "mercy" },
+    speakConversationState: speakReply?.state ?? speakConversationState,
+  };
 }
 
 function buildSpeakAwareCorrection(
@@ -700,6 +719,9 @@ export default function AiTutorPage() {
         )),
     ),
   ]);
+  const [speakConversationState, setSpeakConversationState] = useState<SpeakConversationState>(() =>
+    createSpeakConversationState(),
+  );
   const [conversationLoading, setConversationLoading] = useState(false);
   const [speakingMessageId, setSpeakingMessageId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -836,6 +858,7 @@ export default function AiTutorPage() {
   useEffect(() => {
     if (mode === "grammar") return;
     setConversationMessages([createOpeningMessage(target, explainLanguage, mode)]);
+    setSpeakConversationState(createSpeakConversationState());
     setConversationInput("");
     setSpeakingMessageId(null);
     tts.stop();
@@ -1042,7 +1065,15 @@ export default function AiTutorPage() {
     await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
 
     const previousNaturalReply = getLatestMercyMessage(conversationMessages)?.naturalReply ?? "";
-    const mercyMessage = buildConversationReply(trimmed, target, explainLanguage, mode, previousNaturalReply);
+    const { message: mercyMessage, speakConversationState: nextSpeakConversationState } = buildConversationReply(
+      trimmed,
+      target,
+      explainLanguage,
+      mode,
+      speakConversationState,
+      previousNaturalReply,
+    );
+    setSpeakConversationState(nextSpeakConversationState);
     setConversationMessages((current) => [...current, mercyMessage]);
     const lessonInsight = activeTodayLesson ? diagnoseVietlishLogicWithMatch(trimmed) : null;
     setTodayLessonLogicInsight(lessonInsight?.isKnownPattern ? lessonInsight : null);
@@ -1140,6 +1171,7 @@ export default function AiTutorPage() {
     setTodayLessonLogicInsight(null);
     setInput("");
     setConversationInput("");
+    setSpeakConversationState(createSpeakConversationState());
     setResult(null);
     setError(null);
     setPracticeAnswer("");
@@ -1173,6 +1205,7 @@ export default function AiTutorPage() {
     setPracticeAnswer("");
     setPracticeFeedback(null);
     setConversationInput("");
+    setSpeakConversationState(createSpeakConversationState());
   };
 
   const handleModeChange = (nextMode: TutorMode) => {
