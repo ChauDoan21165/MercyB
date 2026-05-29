@@ -1,5 +1,5 @@
 // src/pages/__tests__/AiTutor.test.tsx
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import AiTutorPage from "../AiTutor";
@@ -171,12 +171,13 @@ describe("AiTutor mock UI", () => {
     const shell = screen.getByTestId("ai-tutor-shell");
     expect(shell).toBeInTheDocument();
     expect(screen.getByTestId("ai-tutor-mercy-avatar")).toHaveAttribute("src", "/teacher-mercy.webp");
-    expect(screen.getByRole("heading", { name: "Teacher Mercy AI Tutor" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Sửa tiếng Anh với Mercy" })).toBeInTheDocument();
     expect(screen.getByTestId("teacher-mercy-mode-tabs")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Journey" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Grammar" })).toHaveAttribute("aria-pressed", "true");
-    expect(screen.getByRole("button", { name: "Speak" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Logic" })).toBeInTheDocument();
+    const tabs = screen.getByTestId("teacher-mercy-mode-tabs");
+    expect(within(tabs).getByRole("button", { name: "Lộ trình" })).toBeInTheDocument();
+    expect(within(tabs).getByRole("button", { name: "Sửa câu" })).toHaveAttribute("aria-pressed", "true");
+    expect(within(tabs).getByRole("button", { name: "Luyện nói" })).toBeInTheDocument();
+    expect(within(tabs).getByRole("button", { name: "Logic" })).toBeInTheDocument();
     expect(screen.getByText(/Không lưu âm thanh thô hoặc toàn bộ transcript/)).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
 
@@ -185,20 +186,20 @@ describe("AiTutor mock UI", () => {
     expect(shell).not.toHaveTextContent(/\bAdult\b|adult learner/i);
   });
 
-  it("puts Today's Lesson above the mode tabs as the first study action", async () => {
+  it("puts mode tabs and Grammar input before dashboard cards", async () => {
     render(<AiTutorPage />);
 
     const todayLesson = await screen.findByTestId("ai-tutor-today-lesson");
     const modeTabs = screen.getByTestId("teacher-mercy-mode-tabs");
+    const grammarPanel = screen.getByTestId("ai-tutor-layout");
 
-    expect(todayLesson).toHaveTextContent("Today's lesson");
-    expect(todayLesson).toHaveTextContent("Start with one clear daily sentence");
-    expect(todayLesson).toHaveTextContent("No local practice summary is available yet");
-    expect(todayLesson).toHaveTextContent("6 min");
-    expect(screen.getByRole("button", { name: "Start today's lesson" })).toBeInTheDocument();
+    expect(todayLesson).toHaveTextContent("Bài hôm nay");
+    expect(todayLesson).toHaveTextContent("6 phút");
+    expect(screen.getByRole("button", { name: "Bắt đầu" })).toBeInTheDocument();
     expect(screen.queryByTestId("ai-tutor-placement-cta")).not.toBeInTheDocument();
     expect(screen.queryByTestId("ai-tutor-momentum-card")).not.toBeInTheDocument();
-    expect(todayLesson.compareDocumentPosition(modeTabs) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(modeTabs.compareDocumentPosition(grammarPanel) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(grammarPanel.compareDocumentPosition(todayLesson) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
   it("shows the placement CTA only when the placement route is available", async () => {
@@ -208,7 +209,7 @@ describe("AiTutor mock UI", () => {
 
     await screen.findByTestId("ai-tutor-today-lesson");
     expect(screen.getByTestId("ai-tutor-placement-cta")).toHaveAttribute("href", "/placement");
-    expect(screen.getByText("New here? Take a placement test first.")).toBeInTheDocument();
+    expect(screen.getByText("Bạn mới học?")).toBeInTheDocument();
 
     await userEvent.click(screen.getByTestId("ai-tutor-placement-cta"));
 
@@ -233,16 +234,16 @@ describe("AiTutor mock UI", () => {
     render(<AiTutorPage />);
 
     await screen.findByTestId("ai-tutor-today-lesson");
-    await userEvent.click(screen.getByRole("button", { name: "Start today's lesson" }));
+    await userEvent.click(screen.getByRole("button", { name: "Bắt đầu" }));
 
-    expect(screen.getByRole("button", { name: "Speak" })).toHaveAttribute("aria-pressed", "true");
+    expect(within(screen.getByTestId("teacher-mercy-mode-tabs")).getByRole("button", { name: "Luyện nói" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByTestId("ai-tutor-conversation")).toBeInTheDocument();
-    expect(screen.getByTestId("ai-tutor-lesson-loop")).toHaveTextContent("5-minute lesson loop · speak");
-    expect(screen.getByTestId("ai-tutor-lesson-loop")).toHaveTextContent("Prompt: Type one clean EN sentence about pronunciation");
-    expect(screen.getByTestId("ai-tutor-lesson-loop")).toHaveTextContent("Memory next focus: pronunciation");
-    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Step 1");
-    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Retries 0");
-    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Completed 0");
+    expect(screen.getByTestId("ai-tutor-lesson-loop")).toHaveTextContent("Bài hôm nay · Luyện nói");
+    expect(screen.getByTestId("ai-tutor-lesson-loop")).toHaveTextContent("Gợi ý: Type one clean EN sentence about pronunciation");
+    expect(screen.getByTestId("ai-tutor-lesson-loop")).toHaveTextContent("Ôn tiếp: pronunciation");
+    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Bước 1");
+    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Thử lại 0");
+    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Đã xong 0");
     expect(window.localStorage.getItem("mercy.studySession.v1.ai-tutor.en")).toContain("pronunciation");
     expect(getLearningEvents()).toEqual(expect.arrayContaining([
       expect.objectContaining({
@@ -305,24 +306,17 @@ describe("AiTutor mock UI", () => {
     const todayLesson = await screen.findByTestId("ai-tutor-today-lesson");
     const momentum = await screen.findByTestId("ai-tutor-momentum-card");
 
-    expect(momentum).toHaveTextContent("Today's momentum");
-    expect(momentum).toHaveTextContent("Practice signals");
-    expect(momentum).toHaveTextContent("Local to this device");
-    expect(momentum).toHaveAccessibleName(
-      "Today's momentum uses safe local activity only. It is not synced, not memory, not a grade, and not a recommendation.",
-    );
-    expect(momentum).toHaveTextContent(
-      "Only today's safe activity on this device. Not synced, not memory, not a grade, and not a recommendation.",
-    );
+    expect(momentum).toHaveAccessibleName("Tiến bộ hôm nay");
+    expect(momentum).toHaveTextContent("Hôm nay: 1 bài · 2 lần luyện lại");
     expect(momentum).toHaveTextContent("1");
-    expect(momentum).toHaveTextContent("lessons completed");
+    expect(momentum).toHaveTextContent("bài xong");
     expect(momentum).toHaveTextContent("2");
-    expect(momentum).toHaveTextContent("retries today");
-    expect(momentum).toHaveTextContent("1 viewed");
-    expect(momentum).toHaveTextContent("logic insight");
-    expect(momentum).toHaveTextContent("next focus");
-    expect(momentum).toHaveTextContent("Mode activity");
-    expect(momentum).toHaveTextContent("Grammar 2");
+    expect(momentum).toHaveTextContent("luyện lại");
+    expect(momentum).toHaveTextContent("1 lần");
+    expect(momentum).toHaveTextContent("logic");
+    expect(momentum).toHaveTextContent("ôn tiếp");
+    expect(momentum).toHaveTextContent("Chế độ");
+    expect(momentum).toHaveTextContent("Sửa câu 2");
     expect(momentum).toHaveTextContent("Logic 2");
     expect(todayLesson.compareDocumentPosition(momentum) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(momentum).not.toHaveTextContent("I buy a private ticket");
@@ -369,14 +363,14 @@ describe("AiTutor mock UI", () => {
     render(<AiTutorPage />);
 
     const loop = await screen.findByTestId("ai-tutor-lesson-loop");
-    expect(loop).toHaveTextContent("Continue today's lesson · grammar");
-    expect(loop).toHaveTextContent("Resume lesson: your local progress is restored.");
+    expect(loop).toHaveTextContent("Tiếp tục bài hôm nay · Sửa câu");
+    expect(loop).toHaveTextContent("Mercy đã lưu tiến độ trên máy này.");
     expect(loop).toHaveTextContent("Continue past tense today");
-    expect(screen.getByRole("button", { name: "Grammar" })).toHaveAttribute("aria-pressed", "true");
-    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Step 3");
-    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Retries 1");
-    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Completed 2");
-    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Topic yesterday-present");
+    expect(within(screen.getByTestId("teacher-mercy-mode-tabs")).getByRole("button", { name: "Sửa câu" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Bước 3");
+    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Thử lại 1");
+    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Đã xong 2");
+    expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Chủ điểm yesterday-present");
     expect(getLearningEvents({ eventType: "lesson_resumed" })).toEqual([
       expect.objectContaining({
         eventType: "lesson_resumed",
@@ -389,10 +383,10 @@ describe("AiTutor mock UI", () => {
       }),
     ]);
 
-    await userEvent.click(screen.getByRole("button", { name: "Resume lesson" }));
+    await userEvent.click(screen.getByRole("button", { name: "Tiếp tục" }));
     expect(window.localStorage.getItem("mercy.studySession.v1.ai-tutor.en")).toContain("\"currentStep\":3");
 
-    await userEvent.click(screen.getByRole("button", { name: "Restart lesson" }));
+    await userEvent.click(screen.getByRole("button", { name: "Làm lại bài" }));
     expect(window.localStorage.getItem("mercy.studySession.v1.ai-tutor.en")).toBeNull();
     expect(screen.queryByTestId("ai-tutor-lesson-loop")).not.toBeInTheDocument();
     expect(getLearningEvents({ eventType: "lesson_restarted" })).toEqual([
@@ -420,23 +414,23 @@ describe("AiTutor mock UI", () => {
     render(<AiTutorPage />);
 
     await screen.findByTestId("ai-tutor-today-lesson");
-    await userEvent.click(screen.getByRole("button", { name: "Start today's lesson" }));
+    await userEvent.click(screen.getByRole("button", { name: "Bắt đầu" }));
 
     const loop = screen.getByTestId("ai-tutor-lesson-loop");
-    expect(loop).toHaveTextContent("5-minute lesson loop · grammar");
-    expect(loop).toHaveTextContent("Prompt: Write one sentence about yesterday");
-    expect(loop).toHaveTextContent("Memory next focus: past tense");
+    expect(loop).toHaveTextContent("Bài hôm nay · Sửa câu");
+    expect(loop).toHaveTextContent("Gợi ý: Write one sentence about yesterday");
+    expect(loop).toHaveTextContent("Ôn tiếp: past tense");
 
     await userEvent.type(screen.getByRole("textbox"), "I buy a hat yesterday.");
     await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
 
     await waitFor(() => {
       expect(screen.getByText("I bought a hat yesterday.")).toBeInTheDocument();
-      expect(loop).toHaveTextContent("2. Review Mercy feedback");
-      expect(loop).toHaveTextContent("Retry:");
-      expect(loop).toHaveTextContent("Vietlish logic insight: Yesterday points to the past");
-      expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Step 2");
-      expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Completed 1");
+      expect(loop).toHaveTextContent("2. Xem Mercy sửa");
+      expect(loop).toHaveTextContent("Thử lại:");
+      expect(loop).toHaveTextContent("Gợi ý logic: Yesterday points to the past");
+      expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Bước 2");
+      expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Đã xong 1");
     });
 
     const persistedAfterPrompt = window.localStorage.getItem("mercy.studySession.v1.ai-tutor.en") ?? "";
@@ -457,8 +451,8 @@ describe("AiTutor mock UI", () => {
     await userEvent.click(screen.getByRole("button", { name: /Gửi câu trả lời/ }));
 
     await waitFor(() => {
-      expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Step 3");
-      expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Retries 1");
+      expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Bước 3");
+      expect(screen.getByTestId("ai-tutor-study-session-state")).toHaveTextContent("Thử lại 1");
     });
 
     expect(getLearningEvents()).toEqual(expect.arrayContaining([
@@ -506,15 +500,15 @@ describe("AiTutor mock UI", () => {
   it("keeps Teacher Mercy avatar and header visible after memory loads", async () => {
     render(<AiTutorPage />);
     expect(screen.getByTestId("ai-tutor-mercy-avatar")).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Teacher Mercy AI Tutor/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Sửa tiếng Anh với Mercy/ })).toBeInTheDocument();
     expect(screen.getByTestId("teacher-mercy-mode-tabs")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Journey" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Grammar" })).toHaveAttribute("aria-pressed", "true");
-    expect(screen.getByRole("button", { name: "Speak" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Lộ trình" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Sửa câu" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: "Luyện nói" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Logic" })).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
     expect(screen.getByTestId("ai-tutor-mercy-avatar")).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Teacher Mercy AI Tutor/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Sửa tiếng Anh với Mercy/ })).toBeInTheDocument();
   });
 
   it("shows microphone fallback when browser speech recognition is unavailable", () => {
@@ -627,7 +621,7 @@ describe("AiTutor mock UI", () => {
     expect(screen.getByRole("heading", { name: /Gia sư tiếng Pháp/ })).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
     await waitFor(() => expect(getMemorySummary).toHaveBeenCalledWith("ai-tutor", "fr"));
-    expect(screen.getByText(/Viết một câu tiếng Pháp/)).toBeInTheDocument();
+    expect(screen.getAllByText(/Gõ một câu tiếng Pháp/).length).toBeGreaterThan(0);
     expect(screen.getByPlaceholderText(/gõ câu tiếng Pháp/)).toBeInTheDocument();
     expect(screen.getByText("Câu tiếng Pháp của bạn")).toBeInTheDocument();
     expect(screen.queryByText(/Write an English sentence/i)).not.toBeInTheDocument();
@@ -639,7 +633,7 @@ describe("AiTutor mock UI", () => {
     expect(screen.getByRole("heading", { name: /Gia sư tiếng Trung/ })).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
     await waitFor(() => expect(getMemorySummary).toHaveBeenCalledWith("ai-tutor", "zh"));
-    expect(screen.getByText(/Viết một câu tiếng Trung/)).toBeInTheDocument();
+    expect(screen.getAllByText(/Gõ một câu tiếng Trung/).length).toBeGreaterThan(0);
     expect(screen.getByPlaceholderText(/gõ câu tiếng Trung/)).toBeInTheDocument();
     expect(screen.queryByText(/Write an English sentence/i)).not.toBeInTheDocument();
   });
@@ -659,7 +653,7 @@ describe("AiTutor mock UI", () => {
     window.history.pushState({}, "", "/ai-tutor?target=fr");
     render(<AiTutorPage />);
 
-    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
+    await userEvent.click(screen.getByRole("button", { name: "Lộ trình" }));
 
     expect(screen.getByTestId("ai-tutor-conversation")).toBeInTheDocument();
     expect(screen.getByText("Mercy hỏi · Bạn trả lời")).toBeInTheDocument();
@@ -670,7 +664,7 @@ describe("AiTutor mock UI", () => {
     window.history.pushState({}, "", "/ai-tutor?target=zh");
     render(<AiTutorPage />);
 
-    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
+    await userEvent.click(screen.getByRole("button", { name: "Lộ trình" }));
 
     expect(screen.getByText("你早上通常做什么？")).toBeInTheDocument();
   });
@@ -755,7 +749,7 @@ describe("AiTutor mock UI", () => {
     window.history.pushState({}, "", "/ai-tutor?target=fr");
     render(<AiTutorPage />);
 
-    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
+    await userEvent.click(screen.getByRole("button", { name: "Lộ trình" }));
     await userEvent.type(screen.getByRole("textbox"), "Je suis aller au marché");
     await userEvent.click(screen.getByRole("button", { name: /Send|Gửi/ }));
 
@@ -778,7 +772,7 @@ describe("AiTutor mock UI", () => {
     render(<AiTutorPage />);
 
     await userEvent.type(screen.getByRole("textbox"), "She go to school");
-    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
+    await userEvent.click(screen.getByRole("button", { name: "Lộ trình" }));
     await userEvent.click(screen.getByRole("button", { name: /Nói câu của bạn/ }));
     act(() => {
       MockSpeechRecognition.last?.emitFinalTranscript("I drink coffee");
@@ -789,7 +783,7 @@ describe("AiTutor mock UI", () => {
       expect(screen.getByRole("textbox")).toHaveValue("I drink coffee");
     });
 
-    await userEvent.click(screen.getByRole("button", { name: "Grammar" }));
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu" }));
     expect(screen.getByRole("textbox")).toHaveValue("She go to school");
   });
 
@@ -811,7 +805,7 @@ describe("AiTutor mock UI", () => {
 
     window.history.pushState({}, "", "/ai-tutor?target=zh");
     render(<AiTutorPage />);
-    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
+    await userEvent.click(screen.getByRole("button", { name: "Lộ trình" }));
 
     const speakerButtons = screen.getAllByRole("button", { name: /Mercy đọc/ });
     await userEvent.click(speakerButtons[0]);
@@ -869,9 +863,9 @@ describe("AiTutor mock UI", () => {
     });
 
     render(<AiTutorPage />);
-    await userEvent.click(screen.getByRole("button", { name: "Speak" }));
+    await userEvent.click(screen.getByRole("button", { name: "Luyện nói" }));
     await userEvent.type(screen.getByRole("textbox"), "I drink coffee");
-    await userEvent.click(screen.getByRole("button", { name: /Luyện nói|Send/ }));
+    await userEvent.click(within(screen.getByTestId("ai-tutor-conversation")).getByRole("button", { name: /Luyện nói|Send/ }));
 
     await waitFor(() => {
       expect(screen.getByText("Nice. That sounds like a clear morning routine.")).toBeInTheDocument();
@@ -906,9 +900,9 @@ describe("AiTutor mock UI", () => {
     });
 
     render(<AiTutorPage />);
-    await userEvent.click(screen.getByRole("button", { name: "Speak" }));
+    await userEvent.click(screen.getByRole("button", { name: "Luyện nói" }));
     await userEvent.type(screen.getByRole("textbox"), "I went to the market and buy food");
-    await userEvent.click(screen.getByRole("button", { name: /Luyện nói|Send/ }));
+    await userEvent.click(within(screen.getByTestId("ai-tutor-conversation")).getByRole("button", { name: /Luyện nói|Send/ }));
 
     await waitFor(() => expect(screen.getByText("What do you do after that?")).toBeInTheDocument());
 
@@ -927,9 +921,9 @@ describe("AiTutor mock UI", () => {
 
   it("Speak does not explain a you-question as third-person singular", async () => {
     render(<AiTutorPage />);
-    await userEvent.click(screen.getByRole("button", { name: "Speak" }));
+    await userEvent.click(screen.getByRole("button", { name: "Luyện nói" }));
     await userEvent.type(screen.getByRole("textbox"), "What do you usually do in the morning?");
-    await userEvent.click(screen.getByRole("button", { name: /Luyện nói|Send/ }));
+    await userEvent.click(within(screen.getByTestId("ai-tutor-conversation")).getByRole("button", { name: /Luyện nói|Send/ }));
 
     await waitFor(() => expect(screen.getByText("What do you do after that?")).toBeInTheDocument());
     expect(screen.queryByText(/ngôi thứ ba số ít|she\/he\/it|third-person singular/i)).not.toBeInTheDocument();
@@ -937,9 +931,9 @@ describe("AiTutor mock UI", () => {
 
   it("Speak flags mixed tense without third-person singular explanation", async () => {
     render(<AiTutorPage />);
-    await userEvent.click(screen.getByRole("button", { name: "Speak" }));
+    await userEvent.click(screen.getByRole("button", { name: "Luyện nói" }));
     await userEvent.type(screen.getByRole("textbox"), "I went to the market and buy food");
-    await userEvent.click(screen.getByRole("button", { name: /Luyện nói|Send/ }));
+    await userEvent.click(within(screen.getByTestId("ai-tutor-conversation")).getByRole("button", { name: /Luyện nói|Send/ }));
 
     await waitFor(() => {
       expect(screen.getByText(/giữ cùng một mốc thời gian/i)).toBeInTheDocument();
@@ -949,17 +943,17 @@ describe("AiTutor mock UI", () => {
   });
 
   it.each([
-    ["de", /Gia sư tiếng Đức/, /Viết một câu tiếng Đức/, /gõ câu tiếng Đức/],
-    ["ja", /Gia sư tiếng Nhật/, /Viết một câu tiếng Nhật/, /gõ câu tiếng Nhật/],
-    ["ko", /Gia sư tiếng Hàn/, /Viết một câu tiếng Hàn/, /gõ câu tiếng Hàn/],
-    ["es", /Gia sư tiếng Tây Ban Nha/, /Viết một câu tiếng Tây Ban Nha/, /type your Spanish sentence/],
-    ["vi", /Gia sư tiếng Việt/, /Viết một câu tiếng Việt/, /gõ câu tiếng Việt/],
+    ["de", /Gia sư tiếng Đức/, /Gõ một câu tiếng Đức/, /gõ câu tiếng Đức/],
+    ["ja", /Gia sư tiếng Nhật/, /Gõ một câu tiếng Nhật/, /gõ câu tiếng Nhật/],
+    ["ko", /Gia sư tiếng Hàn/, /Gõ một câu tiếng Hàn/, /gõ câu tiếng Hàn/],
+    ["es", /Gia sư tiếng Tây Ban Nha/, /Gõ một câu tiếng Tây Ban Nha/, /type your Spanish sentence/],
+    ["vi", /Gia sư tiếng Việt/, /Gõ một câu tiếng Việt/, /gõ câu tiếng Việt/],
   ])("keeps %s target copy after hydration", async (target, heading, helper, placeholder) => {
     window.history.pushState({}, "", `/ai-tutor?target=${target}`);
     render(<AiTutorPage />);
     expect(screen.getByRole("heading", { name: heading })).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
-    expect(screen.getByText(helper)).toBeInTheDocument();
+    expect(screen.getAllByText(helper).length).toBeGreaterThan(0);
     expect(screen.getByPlaceholderText(placeholder)).toBeInTheDocument();
   });
 
@@ -970,7 +964,7 @@ describe("AiTutor mock UI", () => {
 
   it("shows empty state before first submit", () => {
     render(<AiTutorPage />);
-    expect(screen.getByText(/AI sẵn sàng sửa câu của bạn/)).toBeInTheDocument();
+    expect(screen.getByText(/Sẵn sàng sửa câu/)).toBeInTheDocument();
   });
 
   it("shows button disabled with empty input", () => {
@@ -988,7 +982,7 @@ describe("AiTutor mock UI", () => {
     render(<AiTutorPage />);
     await userEvent.type(screen.getByRole("textbox"), "She go to school");
     await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
-    expect(screen.getByText(/AI đang phân tích/)).toBeInTheDocument();
+    expect(screen.getByText(/Mercy đang sửa/)).toBeInTheDocument();
   });
 
   it("shows corrected sentence after loading", async () => {
@@ -1315,7 +1309,7 @@ describe("AiTutor mock UI", () => {
 
     window.history.pushState({}, "", "/ai-tutor?target=fr");
     render(<AiTutorPage />);
-    await userEvent.click(screen.getByRole("button", { name: "Journey" }));
+    await userEvent.click(screen.getByRole("button", { name: "Lộ trình" }));
     await userEvent.type(screen.getByRole("textbox"), "Je suis aller au marché");
     await userEvent.click(screen.getByRole("button", { name: /Send|Gửi/ }));
     await waitFor(() => expect(screen.getByText("Je suis allé au marché.")).toBeInTheDocument());
@@ -1369,7 +1363,7 @@ describe("AiTutor mock UI", () => {
     await userEvent.click(screen.getByRole("button", { name: /Sửa câu này/ }));
     await waitFor(() => expect(screen.getByText(/Luyện tập/)).toBeInTheDocument());
     await userEvent.click(screen.getByRole("button", { name: /Làm mới/ }));
-    expect(screen.getByText(/AI sẵn sàng sửa câu của bạn/)).toBeInTheDocument();
+    expect(screen.getByText(/Sẵn sàng sửa câu/)).toBeInTheDocument();
   });
 
   it("no fetch call is made", async () => {
@@ -1411,10 +1405,9 @@ describe("AiTutor mock UI", () => {
     render(<AiTutorPage />);
     await waitFor(() => expect(screen.getByTestId("ai-tutor-today-lesson")).toBeInTheDocument());
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-card")).toBeInTheDocument());
-    expect(screen.getByTestId("ai-tutor-today-lesson")).toHaveTextContent(/Today's lesson/i);
-    expect(screen.getByText(/Practice past tense in present-simple/)).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-today-lesson")).toHaveTextContent(/Bài hôm nay/i);
     expect(screen.getByText(/6 câu đã sửa/)).toBeInTheDocument();
-    expect(screen.getByText(/4 đã luyện tập/)).toBeInTheDocument();
+    expect(screen.getByText(/4 đã luyện/)).toBeInTheDocument();
   });
 
   it("M3: shows safe Progress / Mastery summary signals", async () => {
@@ -1423,14 +1416,12 @@ describe("AiTutor mock UI", () => {
 
     const progressCard = await screen.findByTestId("ai-tutor-memory-card");
 
-    expect(progressCard).toHaveTextContent("Progress / Mastery · EN");
-    expect(progressCard).toHaveTextContent("You have practiced 4 of 6 saved corrections.");
+    expect(progressCard).toHaveTextContent("Tiến bộ: 67%");
     expect(progressCard).toHaveTextContent("67%");
-    expect(progressCard).toHaveTextContent("Practice count: 4");
-    expect(progressCard).toHaveTextContent("Mạnh nhất: present-simple");
+    expect(progressCard).toHaveTextContent("Mạnh: present-simple");
     expect(progressCard).toHaveTextContent("Cần ôn: past-tense");
-    expect(progressCard).toHaveTextContent("Weak pattern: past-tense");
-    expect(progressCard).toHaveTextContent("Suggested next focus: past-tense");
+    expect(progressCard).toHaveTextContent("Lỗi hay gặp: past-tense");
+    expect(progressCard).toHaveTextContent("Ôn tiếp: past-tense");
     expect(screen.getByTestId("ai-tutor-progress-meter")).toHaveAttribute("aria-label", "Progress 67%");
   });
 
@@ -1454,14 +1445,14 @@ describe("AiTutor mock UI", () => {
       suggestedNextFocus: "articles-fr",
     });
     render(<AiTutorPage />);
-    await waitFor(() => expect(screen.getByText(/Mạnh nhất: gender-agreement/)).toBeInTheDocument());
-    expect(screen.queryByText(/Mạnh nhất: present-simple/)).not.toBeInTheDocument();
+    await waitFor(() => expect(screen.getByText(/Mạnh: gender-agreement/)).toBeInTheDocument());
+    expect(screen.queryByText(/Mạnh: present-simple/)).not.toBeInTheDocument();
   });
 
   it("M3: shows strongest topic chip", async () => {
     getMemorySummary.mockResolvedValue({ ...POPULATED_SUMMARY });
     render(<AiTutorPage />);
-    await waitFor(() => expect(screen.getByText(/Mạnh nhất: present-simple/)).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText(/Mạnh: present-simple/)).toBeInTheDocument());
   });
 
   it("M3: shows topic needing review chip", async () => {
@@ -1479,17 +1470,16 @@ describe("AiTutor mock UI", () => {
   it("M3: shows suggested next focus", async () => {
     getMemorySummary.mockResolvedValue({ ...POPULATED_SUMMARY });
     render(<AiTutorPage />);
-    await waitFor(() => expect(screen.getByText(/Suggested next focus: past-tense/)).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText(/Ôn tiếp: past-tense/)).toBeInTheDocument());
   });
 
   it("M3: shows empty memory state when no corrections", async () => {
     getMemorySummary.mockResolvedValue({ ...EMPTY_SUMMARY });
     render(<AiTutorPage />);
     await waitFor(() => expect(screen.getByTestId("ai-tutor-today-lesson")).toBeInTheDocument());
-    expect(screen.getByText("Start with one clear daily sentence")).toBeInTheDocument();
+    expect(screen.getByText(/Bài hôm nay/)).toBeInTheDocument();
     await waitFor(() => expect(screen.getByTestId("ai-tutor-memory-empty")).toBeInTheDocument());
-    expect(screen.getByText("Practice today to start building your progress.")).toBeInTheDocument();
-    expect(screen.getByText(/No local summary progress for EN yet/)).toBeInTheDocument();
+    expect(screen.getByText(/Tiến bộ: chưa có dữ liệu EN/)).toBeInTheDocument();
   });
 
   it("M3: reminder card hidden when memory not yet loaded", () => {

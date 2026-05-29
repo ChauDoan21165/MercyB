@@ -402,6 +402,12 @@ function TodayLessonLoopPanel({
   const hasFeedback = Boolean(result || latestMercyMessage);
   const retryPrompt = result?.practicePrompt || latestMercyMessage?.nextQuestion || lesson.plan.steps[2];
   const nextFocus = memory?.suggestedNextFocus || memory?.nextRecommendedFocus || lesson.plan.nextFocus;
+  const modeLabel: Record<TutorMode, string> = {
+    journey: "Lộ trình",
+    grammar: "Sửa câu",
+    speak: "Luyện nói",
+    logic: "Logic",
+  };
 
   return (
     <section
@@ -412,22 +418,22 @@ function TodayLessonLoopPanel({
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
           <div className="text-xs font-black uppercase text-emerald-700">
-            {lesson.resumed ? "Continue today's lesson" : "5-minute lesson loop"} · {mode}
+            {lesson.resumed ? "Tiếp tục bài hôm nay" : "Bài hôm nay"} · {modeLabel[mode]}
           </div>
           <h2 className="mt-1 text-lg font-black leading-6 text-slate-950" style={{ overflowWrap: "break-word" }}>
             {lesson.plan.lessonTitle}
           </h2>
           <p className="mt-2 rounded-xl bg-emerald-50 px-3 py-2 text-sm font-bold leading-6 text-emerald-900" style={{ overflowWrap: "break-word" }}>
-            Prompt: {lesson.prompt}
+            Gợi ý: {lesson.prompt}
           </p>
         </div>
         <span className="w-fit rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-black uppercase text-slate-600">
-          {lesson.plan.estimatedMinutes} min
+          {lesson.plan.estimatedMinutes} phút
         </span>
       </div>
       {lesson.resumed && (
         <div className="mt-3 rounded-xl border border-emerald-100 bg-emerald-50 px-3 py-2 text-sm font-bold text-emerald-900">
-          Resume lesson: your local progress is restored.
+          Mercy đã lưu tiến độ trên máy này.
         </div>
       )}
 
@@ -436,42 +442,42 @@ function TodayLessonLoopPanel({
           data-testid="ai-tutor-study-session-state"
           className="mt-3 flex flex-wrap gap-2 text-[11px] font-black uppercase text-slate-600"
         >
-          <span className="rounded-full bg-slate-50 px-2.5 py-1">Step {sessionState.currentStep}</span>
-          <span className="rounded-full bg-slate-50 px-2.5 py-1">Retries {sessionState.retryCount}</span>
-          <span className="rounded-full bg-slate-50 px-2.5 py-1">Completed {sessionState.completedPromptsCount}</span>
+          <span className="rounded-full bg-slate-50 px-2.5 py-1">Bước {sessionState.currentStep}</span>
+          <span className="rounded-full bg-slate-50 px-2.5 py-1">Thử lại {sessionState.retryCount}</span>
+          <span className="rounded-full bg-slate-50 px-2.5 py-1">Đã xong {sessionState.completedPromptsCount}</span>
           {sessionState.lastSafeTopicTag && (
-            <span className="rounded-full bg-slate-50 px-2.5 py-1">Topic {sessionState.lastSafeTopicTag}</span>
+            <span className="rounded-full bg-slate-50 px-2.5 py-1">Chủ điểm {sessionState.lastSafeTopicTag}</span>
           )}
         </div>
       )}
 
       <div className="mt-3 grid gap-2 text-xs font-bold text-slate-700 sm:grid-cols-3">
         <div className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2">
-          1. Answer the prompt
+          1. Trả lời
         </div>
         <div className={`rounded-xl border px-3 py-2 ${hasFeedback ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-slate-100 bg-slate-50"}`}>
-          2. Review Mercy feedback
+          2. Xem Mercy sửa
         </div>
         <div className={`rounded-xl border px-3 py-2 ${practiceFeedback ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-slate-100 bg-slate-50"}`}>
-          3. Retry once
+          3. Thử lại
         </div>
       </div>
 
       {hasFeedback && (
         <div className="mt-3 rounded-xl border border-indigo-100 bg-indigo-50/70 px-3 py-2 text-sm font-bold leading-6 text-indigo-900" style={{ overflowWrap: "break-word" }}>
-          Retry: {retryPrompt}
+          Thử lại: {retryPrompt}
         </div>
       )}
 
       {logicInsight?.isKnownPattern && (
         <div className="mt-3 rounded-xl border border-amber-100 bg-amber-50 px-3 py-2 text-sm font-semibold leading-6 text-amber-950" style={{ overflowWrap: "break-word" }}>
-          Vietlish logic insight: {logicInsight.englishLogic}
+          Gợi ý logic: {logicInsight.englishLogic}
         </div>
       )}
 
       {nextFocus && (
         <div className="mt-3 text-xs font-bold text-slate-500" style={{ overflowWrap: "break-word" }}>
-          Memory next focus: {nextFocus}
+          Ôn tiếp: {nextFocus}
         </div>
       )}
 
@@ -480,7 +486,7 @@ function TodayLessonLoopPanel({
         onClick={onRestart}
         className="mt-3 inline-flex min-h-9 items-center justify-center rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-black text-slate-700 transition hover:bg-slate-50"
       >
-        Restart lesson
+        Làm lại bài
       </button>
     </section>
   );
@@ -1024,7 +1030,7 @@ export default function AiTutorPage() {
             memoryLoaded={memoryLoaded}
             memory={memory}
             onStartLesson={handleStartTodayLesson}
-            startLabel={activeTodayLesson ? "Resume lesson" : "Start today's lesson"}
+            startLabel={activeTodayLesson ? "Tiếp tục" : "Bắt đầu"}
           />
           <TutorMomentumCard summary={localEventSummary} />
           {isPlacementEntryRouteAvailable() ? (
@@ -1035,13 +1041,13 @@ export default function AiTutorPage() {
               className="mx-auto mb-4 flex w-full max-w-3xl items-center justify-between gap-3 rounded-xl border border-sky-100 bg-sky-50/80 px-4 py-3 text-left text-sm font-bold text-sky-900 shadow-sm transition hover:border-sky-200 hover:bg-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
             >
               <span className="min-w-0">
-                <span className="block">New here? Take a placement test first.</span>
+                <span className="block">Bạn mới học?</span>
                 <span className="mt-0.5 block text-xs font-semibold text-sky-700">
-                  Bạn mới học? Kiểm tra trình độ trước.
+                  Kiểm tra trình độ trước.
                 </span>
               </span>
               <span className="shrink-0 text-xs font-black uppercase text-sky-700">
-                Start
+                Bắt đầu
               </span>
             </a>
           ) : null}
@@ -1051,19 +1057,6 @@ export default function AiTutorPage() {
       reminderSlot={aiTutorConfig.memoryEnabled ? <TutorMemoryEmpty memoryLoaded={memoryLoaded} memory={memory} /> : undefined}
       footer={`${tutorCopy.ui.footer} ${getSafetyLabel(aiTutorConfig)}.`}
     >
-      {activeTodayLesson && (
-        <TodayLessonLoopPanel
-          lesson={activeTodayLesson}
-          mode={mode}
-          result={result}
-          practiceFeedback={practiceFeedback}
-          latestMercyMessage={latestMercyMessage}
-          logicInsight={todayLessonLogicInsight}
-          sessionState={studySessionState}
-          memory={memory}
-          onRestart={handleRestartTodayLesson}
-        />
-      )}
       {mode === "grammar" ? (
         <CorrectionMode
           input={input}
@@ -1123,6 +1116,19 @@ export default function AiTutorPage() {
           onMicToggle={handleMicToggle}
           onSpeak={handleConversationSpeak}
           tutorCopy={tutorCopy}
+        />
+      )}
+      {activeTodayLesson && (
+        <TodayLessonLoopPanel
+          lesson={activeTodayLesson}
+          mode={mode}
+          result={result}
+          practiceFeedback={practiceFeedback}
+          latestMercyMessage={latestMercyMessage}
+          logicInsight={todayLessonLogicInsight}
+          sessionState={studySessionState}
+          memory={memory}
+          onRestart={handleRestartTodayLesson}
         />
       )}
     </TeacherMercyLearningShell>
