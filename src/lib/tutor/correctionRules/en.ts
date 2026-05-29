@@ -18,6 +18,12 @@ const DAILY_THIRD_PERSON_VERBS: Record<string, string> = {
   have: "has",
 };
 
+const STEP5_THIRD_PERSON_VERBS: Record<string, string> = {
+  go: "goes",
+  make: "makes",
+  work: "works",
+};
+
 const KNOWN_UNCORRECTED_PAST_MARKER_VERBS = [
   "come",
   "drink",
@@ -57,6 +63,30 @@ function replaceVerbAfterSubject(
   return input.replace(pattern, (_match, subject: string, verb: string) => {
     return `${subject} ${verbs[verb.toLowerCase()] ?? verb}`;
   });
+}
+
+function isQuestionLike(input: string): boolean {
+  const trimmed = input.trim();
+  return (
+    /[?？]$/.test(trimmed) ||
+    /^(what|where|when|why|how|who|which|do|does|did|are|is|can|could|would|will|should)\b/i.test(trimmed)
+  );
+}
+
+function hasPastTimeMarker(input: string): boolean {
+  return (
+    /\byesterday\b/i.test(input) ||
+    /\blast\s+(?:night|week|month|year|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(input) ||
+    /\b(?:a|one|two|three|\d+)\s+(?:day|days|week|weeks|month|months|year|years)\s+ago\b/i.test(input)
+  );
+}
+
+function repairStep5SubjectVerbAgreement(input: string): string {
+  return input.replace(
+    /\b(He|She|It)\s+(go|make|work)\b/gi,
+    (_match, subject: string, verb: string) =>
+      `${subject} ${STEP5_THIRD_PERSON_VERBS[verb.toLowerCase()] ?? verb}`,
+  );
 }
 
 function punctuateMorningRoutineRunOn(input: string): string {
@@ -107,6 +137,14 @@ function repairTopicCommentOrder(input: string): string {
     .replace(/^english i study every day[.?!]?$/i, "I study English every day");
 }
 
+function repairStep5PrepositionPatterns(input: string): string {
+  return input
+    .replace(/\b(depend|depends|depended|depending)\s+of\b/gi, "$1 on")
+    .replace(/\b(interested)\s+with\b/gi, "$1 in")
+    .replace(/\b(good)\s+in\s+(English|math|science)\b/gi, "$1 at $2")
+    .replace(/\b(listen|listens|listened|listening)\s+(music|the music|songs|a song|the song)\b/gi, "$1 to $2");
+}
+
 export const englishCorrectionRules: CorrectionRule[] = [
   {
     id: "en-runon-morning-routine-punctuation",
@@ -140,6 +178,23 @@ export const englishCorrectionRules: CorrectionRule[] = [
       /^this book i like[.?!]?$/i.test(input.trim()) ||
       /^english i study every day[.?!]?$/i.test(input.trim()),
     apply: repairTopicCommentOrder,
+  },
+  {
+    id: "en-step5-subject-verb-agreement",
+    detects: (input) =>
+      !isQuestionLike(input) &&
+      !hasPastTimeMarker(input) &&
+      /\b(He|She|It)\s+(go|make|work)\b/i.test(input),
+    apply: repairStep5SubjectVerbAgreement,
+  },
+  {
+    id: "en-step5-preposition-pattern",
+    detects: (input) =>
+      /\b(depend|depends|depended|depending)\s+of\b/i.test(input) ||
+      /\binterested\s+with\b/i.test(input) ||
+      /\bgood\s+in\s+(English|math|science)\b/i.test(input) ||
+      /\b(listen|listens|listened|listening)\s+(music|the music|songs|a song|the song)\b/i.test(input),
+    apply: repairStep5PrepositionPatterns,
   },
   {
     id: "en-third-person-daily-go-eat-have",

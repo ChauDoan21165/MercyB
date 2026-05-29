@@ -30,6 +30,66 @@ describe("correctionEngine", () => {
     });
   });
 
+  it.each([
+    ["he go every day", "He goes every day."],
+    ["she work here", "She works here."],
+    ["it make sense", "It makes sense."],
+  ])("corrects narrow Step 5 subject-verb agreement: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: expect.arrayContaining(["en-step5-subject-verb-agreement"]),
+    });
+  });
+
+  it.each([
+    "he can go",
+    "she should work",
+    "it will make sense",
+  ])("does not trigger Step 5 subject-verb agreement after modals: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["He go last Monday", "He goes last Monday."],
+    ["She work last Friday", "She works last Friday."],
+    ["He go yesterday", "He goes yesterday."],
+    ["She work two days ago", "She works two days ago."],
+    ["It make noise last night", "It makes noise last night."],
+  ])("does not trigger present-tense Step 5 SVA in past-time context: %s", (input, forbidden) => {
+    const result = correctWithTutorRules(input, "en");
+    expect(result.appliedRuleIds).not.toContain("en-step5-subject-verb-agreement");
+    expect(result.corrected).not.toBe(forbidden);
+  });
+
+  it.each([
+    ["I depend of my family", "I depend on my family."],
+    ["She is interested with English", "She is interested in English."],
+    ["He is good in English", "He is good at English."],
+    ["I listen music every day", "I listen to music every day."],
+  ])("corrects whitelisted Step 5 preposition pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: expect.arrayContaining(["en-step5-preposition-pattern"]),
+    });
+  });
+
+  it.each([
+    "I work in English every day.",
+    "She is good in class.",
+    "I listen to music every day.",
+    "It depends on the weather.",
+  ])("does not broadly rewrite prepositions: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
   it("rejects unchanged wrong correction text", () => {
     expect(
       validateCorrectionChangedWhenNeeded(
