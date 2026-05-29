@@ -19,9 +19,9 @@
 //   0 = OK (no structural errors)
 //   1 = FAIL (parse errors OR (id drift unless allowed) OR (strict mismatches))
 
-import fs from "fs";
-import path from "path";
-import process from "process";
+const fs = require("fs");
+const path = require("path");
+const process = require("process");
 
 const ROOT = process.cwd();
 const DATA_DIR = path.join(ROOT, "public", "data");
