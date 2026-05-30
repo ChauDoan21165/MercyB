@@ -78,6 +78,7 @@ import {
   type DetectorHintContent,
 } from "@/lib/ai-tutor/detectorHint";
 import { detectStep5VnEnError } from "@/lib/ai-tutor/step5VnEnDetectors";
+import { recordL1Tag } from "@/lib/stage-3a/adapters/l1TagAdapter";
 import type {
   ConversationMessage,
   MercyConversationMessage,
@@ -1058,6 +1059,7 @@ export default function AiTutorPage() {
         });
         const hint = getDetectorHint(detection);
         if (hint && !hasShownHint(hint.tag)) {
+          recordL1Tag(hint.tag);
           setDetectorHint(hint);
         }
       } catch {
