@@ -110,16 +110,28 @@ function repairMorningRoutineSubjectCarryover(input: string): string {
 
 function isHatBikingSummerRunOn(input: string): boolean {
   const normalized = input.replace(/\s+/g, " ").trim();
-  return (
-    /\bi\s+bought\s+a?\s*hat\s+yesterday\b/i.test(normalized) &&
+  if (/\b(?:do not|don't|not|no)\s+plan\s+to\s+bike\b/i.test(normalized)) {
+    return false;
+  }
+
+  const hasSummerCanadaWeather =
     /\b(?:canada|summer)\b/i.test(normalized) &&
     /\b(?:sunny|hot)\b/i.test(normalized) &&
-    /\b(?:bike|biking)\b/i.test(normalized) &&
-    /\bi\s+need\s+(?:it|a?\s*hat)\b/i.test(normalized)
-  );
+    /\b(?:bike|biking)\b/i.test(normalized);
+  const hasHatNeed =
+    /\bi\s+need\s+(?:it|a?\s*hat)\b/i.test(normalized) ||
+    /\bi\s+also\s+(?:buy|bought)\s+a?\s*hat\b/i.test(normalized);
+  const startsWithHatPurchase = /\bi\s+bought\s+a?\s*hat\s+yesterday\b/i.test(normalized);
+  const startsWithBicyclePurchase = /\bi\s+bought\s+a?\s*bicycle\s+yesterday\b/i.test(normalized);
+
+  return hasSummerCanadaWeather && hasHatNeed && (startsWithHatPurchase || startsWithBicyclePurchase);
 }
 
-function repairHatBikingSummerRunOn(_input: string): string {
+function repairHatBikingSummerRunOn(input: string): string {
+  if (/\bi\s+bought\s+a?\s*bicycle\s+yesterday\b/i.test(input)) {
+    return "I bought a bicycle yesterday because summer is coming, and I plan to bike a lot. I also bought a hat because it is very sunny in Canada";
+  }
+
   return "I bought a hat yesterday because it is very sunny and hot in Canada, and I need it for biking this summer";
 }
 

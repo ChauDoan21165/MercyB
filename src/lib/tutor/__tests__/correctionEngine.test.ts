@@ -137,6 +137,32 @@ describe("correctionEngine", () => {
     });
   });
 
+  it("repairs bicycle, hat, summer, Canada, and biking run-on output", () => {
+    expect(
+      correctWithTutorRules(
+        "I bought a bicycle yesterday someone's coming and I've been a bike a lot I also buy a hat because it's very sunny in the summer in Canada.",
+        "en",
+      ),
+    ).toMatchObject({
+      status: "corrected",
+      corrected: "I bought a bicycle yesterday because summer is coming, and I plan to bike a lot. I also bought a hat because it is very sunny in Canada.",
+      appliedRuleIds: ["en-hat-biking-summer-runon"],
+    });
+  });
+
+  it("does not rewrite clear negative biking plans in bicycle and hat sentences", () => {
+    const result = correctWithTutorRules(
+      "I bought a bicycle yesterday. I also bought a hat because it was sunny. I do not plan to bike a lot this summer in Canada.",
+      "en",
+    );
+
+    expect(result.appliedRuleIds).not.toContain("en-hat-biking-summer-runon");
+    expect(result.corrected).not.toBe(
+      "I bought a bicycle yesterday because summer is coming, and I plan to bike a lot. I also bought a hat because it is very sunny in Canada.",
+    );
+    expect(result.corrected).not.toContain("I plan to bike a lot");
+  });
+
   it("repairs capitalization and punctuation in a morning-routine run-on", () => {
     expect(
       correctWithTutorRules(
