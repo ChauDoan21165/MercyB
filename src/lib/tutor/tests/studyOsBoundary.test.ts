@@ -59,6 +59,7 @@ const productionFiles = listTutorProductionFiles();
 describe("Study OS static boundary", () => {
   it("scans only the intended production tutor files", () => {
     expect(productionFiles.map((file) => file.rel)).toEqual([
+      "src/lib/tutor/bilingualSalienceDetector.ts",
       "src/lib/tutor/contentAwarePivots.ts",
       "src/lib/tutor/correctionEngine.ts",
       "src/lib/tutor/languageRegistry.ts",
