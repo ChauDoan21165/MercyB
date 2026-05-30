@@ -67,6 +67,18 @@ const TOPIC_LABELS: Record<SpeakConversationTopic, string> = {
   general: "General practice",
 };
 
+const TOPIC_FOLLOW_UP_PHRASES: Record<SpeakConversationTopic, string> = {
+  morning: "your morning routine",
+  work: "work",
+  office: "the office",
+  lunch: "lunch",
+  evening: "your evening",
+  dinner: "dinner",
+  family: "your family",
+  commute: "your commute",
+  general: "that",
+};
+
 const UNCLEAR_ASR_PATTERNS = [
   /\band up today\b/i,
   /\b(can i buy i had|buy i had)\b/i,
@@ -131,6 +143,9 @@ export function detectSpeakConversationContext(userText: string): SpeakDetectedC
     }
     return { topic: "office", intent: "office-work", isUnclear };
   }
+  if (/\b(commute|bus|train|drive|traffic|motorbike|bike|walk to work)\b/.test(normalized)) {
+    return { topic: "commute", intent: "commute", isUnclear };
+  }
   if (/\b(work|job|tasks?|emails?|urgent email|check my email|check email)\b/.test(normalized)) {
     if (/\bemails?\b|\bcheck (?:my )?email\b/.test(normalized)) {
       return {
@@ -140,9 +155,6 @@ export function detectSpeakConversationContext(userText: string): SpeakDetectedC
       };
     }
     return { topic: "work", intent: "work", isUnclear };
-  }
-  if (/\b(commute|bus|train|drive|traffic|motorbike|bike|walk to work)\b/.test(normalized)) {
-    return { topic: "commute", intent: "commute", isUnclear };
   }
   if (/\b(family|mother|father|wife|husband|children|kids|parents)\b/.test(normalized)) {
     return { topic: "family", intent: "family", isUnclear };
@@ -380,6 +392,27 @@ function buildTopicCandidates(context: SpeakDetectedContext): ReplyCandidate[] {
   }
 }
 
+function buildContinuityCandidates(context: SpeakDetectedContext): ReplyCandidate[] {
+  const phrase = TOPIC_FOLLOW_UP_PHRASES[context.topic];
+  return [
+    {
+      id: `${context.topic}-continue-detail`,
+      naturalReply: `Good. Let's stay with ${phrase}.`,
+      nextQuestion: `What is one more detail about ${phrase}?`,
+    },
+    {
+      id: `${context.topic}-continue-next`,
+      naturalReply: `Clear. You are still talking about ${phrase}.`,
+      nextQuestion: `What usually happens next with ${phrase}?`,
+    },
+    {
+      id: `${context.topic}-continue-feeling`,
+      naturalReply: `That is useful detail about ${phrase}.`,
+      nextQuestion: `How do you feel about ${phrase}?`,
+    },
+  ];
+}
+
 export function selectSpeakConversationReply(
   userText: string,
   previousState: SpeakConversationState = createSpeakConversationState(),
@@ -408,7 +441,14 @@ export function selectSpeakConversationReply(
   } else if (activeContext.isUnclear) {
     reply = buildClarification(activeContext);
   } else {
-    const selected = selectCandidate(buildTopicCandidates(activeContext), usedFollowUpIdsForTopic, previousState.avoidReplyTemplates);
+    const selected = selectCandidate(
+      [
+        ...buildTopicCandidates(activeContext),
+        ...buildContinuityCandidates(activeContext),
+      ],
+      usedFollowUpIdsForTopic,
+      previousState.avoidReplyTemplates,
+    );
     if (selected) {
       reply = selected;
     } else {
