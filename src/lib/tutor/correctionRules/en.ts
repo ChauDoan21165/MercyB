@@ -101,6 +101,13 @@ function punctuateQuestionForm(input: string): string {
   return `${trimmed}?`;
 }
 
+function repairMorningRoutineSubjectCarryover(input: string): string {
+  return input.replace(
+    /^in the morning,?\s+i wake up and they have a breakfast and coffee and then i go to my office[.?!]?$/i,
+    "In the morning, I wake up, have breakfast and coffee, and then go to my office",
+  );
+}
+
 function addArticleAfterVerb(input: string): string {
   const nounPattern = Object.keys(MISSING_ARTICLE_NOUNS).join("|");
   const objectPattern = new RegExp(
@@ -146,6 +153,12 @@ function repairStep5PrepositionPatterns(input: string): string {
 }
 
 export const englishCorrectionRules: CorrectionRule[] = [
+  {
+    id: "en-morning-routine-subject-carryover",
+    detects: (input) =>
+      /^in the morning,?\s+i wake up and they have a breakfast and coffee and then i go to my office[.?!]?$/i.test(input.trim()),
+    apply: repairMorningRoutineSubjectCarryover,
+  },
   {
     id: "en-runon-morning-routine-punctuation",
     detects: (input) =>

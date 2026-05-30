@@ -138,6 +138,19 @@ describe("correctionEngine", () => {
     });
   });
 
+  it("repairs the morning-routine subject carryover from speech input", () => {
+    expect(
+      correctWithTutorRules(
+        "In the morning I wake up and they have a breakfast and coffee and then I go to my office.",
+        "en",
+      ),
+    ).toMatchObject({
+      status: "corrected",
+      corrected: "In the morning, I wake up, have breakfast and coffee, and then go to my office.",
+      appliedRuleIds: ["en-morning-routine-subject-carryover"],
+    });
+  });
+
   it("adds question punctuation for simple question forms", () => {
     expect(correctWithTutorRules("what do you usually do in the morning", "en")).toMatchObject({
       status: "corrected",
