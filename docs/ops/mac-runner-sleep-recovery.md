@@ -21,13 +21,21 @@ Host state observed during the incident review:
   - `2026-05-28T15:45:21Z` / `09:45:21` local: a GitLab Runner helper image request caused Docker to start the VM again.
   - `2026-05-28T22:30:40Z` / `16:30:40` local: Docker recorded pause/unpause handling and then `POST /shutdown`, closing guest services including the Docker API proxy control socket.
 - `gitlab-runner --version` reported GitLab Runner 19.0.0 on `darwin/arm64`, configured with the Docker executor in `~/.gitlab-runner/config.toml`.
-- No GitLab Runner launchd service was installed or loaded:
+- At the time of the 2026-05-28 review, no GitLab Runner launchd service was installed or loaded:
   - `brew services list` showed `gitlab-runner none`.
   - `launchctl print gui/501/com.gitlab.gitlab-runner` returned "Could not find service".
   - `launchctl print system/com.gitlab.gitlab-runner` returned "Could not find service".
   - No `*gitlab*runner*.plist` was present in `/Library/LaunchDaemons` or `~/Library/LaunchAgents`.
 
 Conclusion: macOS sleep is confirmed. Docker Desktop engine pause/shutdown across that boundary is confirmed. The runner also lacked a launchd supervisor, so even after wake it had no reliable host-level service recovery path.
+
+### Update — 2026-05-29: stock launchd plist installed (still insufficient)
+
+A launchd supervisor has since been added, so the "no supervisor" gap above is partially closed — but with the weaker variant this doc warns against:
+
+- `~/Library/LaunchAgents/gitlab-runner.plist` was created `2026-05-29 06:37` with `Label = gitlab-runner`, `KeepAlive = true`, `RunAtLoad = true`. It execs `/opt/homebrew/bin/gitlab-runner run` directly against `~/.gitlab-runner/config.toml`.
+- This is the **stock** service (see "Install GitLab Runner Under launchd → Stock fallback"), **not** the Docker-readiness wrapper. It starts `gitlab-runner run` immediately on load and on wake with no `until docker info` gate, so after a sleep→wake boundary the runner can come back online and pick up a job before Docker Desktop has finished recreating its socket — the exact `runner_system_failure` failure mode this doc exists to prevent.
+- Recommended: migrate to the `com.gitlab.gitlab-runner.plist` Docker-readiness wrapper documented below (it runs `open -gj -a Docker`, blocks on `until docker info`, then execs the runner). Do not keep both plists loaded — they compete for the same `config.toml` and can spawn duplicate runner processes; unload `gitlab-runner.plist` before loading the wrapper, per that section.
 
 ## Prevention Configuration
 
