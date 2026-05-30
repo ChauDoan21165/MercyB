@@ -1377,8 +1377,6 @@ export default function AiTutorPage() {
     }
     if (tts.speaking) {
       tts.stop();
-      setSpeakingMessageId(null);
-      return;
     }
     setSpeakingMessageId("speak-target");
     void tts.speak(text, ttsLang, target, {
@@ -1512,6 +1510,7 @@ export default function AiTutorPage() {
           ttsSpeaking={speakingMessageId === "speak-target" && tts.speaking}
           ttsPreparing={speakingMessageId === "speak-target" && tts.preparing}
           ttsVoiceSource={tts.voiceSource}
+          ttsError={tts.error}
           followUpPrompt={speakFollowUpSession.currentQuestion}
           followUpIsPivot={speakFollowUpSession.currentIsPivot}
           onMicToggle={handleMicToggle}

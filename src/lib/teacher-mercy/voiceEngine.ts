@@ -61,6 +61,7 @@ export interface SpeakTutorTextResult {
 
 const PREPARING_MESSAGE = "Preparing Mercy voice…";
 const FALLBACK_MESSAGE = "Mercy voice unavailable. Using device voice.";
+const BROWSER_TTS_ERROR_MESSAGE = "Không nghe thấy? Kiểm tra âm lượng hoặc thử bấm lại.";
 
 const DEFAULT_STATUS: VoiceEngineStatus = {
   status: "idle",
@@ -117,6 +118,24 @@ function browserVoiceFor(locale: string): SpeechSynthesisVoice | null {
   return voices.find((voice) => voice.lang.startsWith(languagePrefix)) ?? voices[0] ?? null;
 }
 
+function waitForBrowserVoices(): Promise<void> {
+  if (typeof window === "undefined" || !window.speechSynthesis) return Promise.resolve();
+  if (window.speechSynthesis.getVoices().length > 0) return Promise.resolve();
+
+  return new Promise((resolve) => {
+    let settled = false;
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      window.speechSynthesis.removeEventListener?.("voiceschanged", finish);
+      window.clearTimeout(timeoutId);
+      resolve();
+    };
+    const timeoutId = window.setTimeout(finish, 250);
+    window.speechSynthesis.addEventListener?.("voiceschanged", finish, { once: true });
+  });
+}
+
 function stopCloudAudio() {
   const audio = currentAudio;
   if (!audio) return;
@@ -158,10 +177,14 @@ async function speakViaBrowser(text: string, locale: string, currentRequestId: n
   }
 
   stopBrowserSpeech();
+  await waitForBrowserVoices();
+  if (requestId !== currentRequestId) return false;
+
   return new Promise<boolean>((resolve) => {
     const utterance = new window.SpeechSynthesisUtterance(text);
     utterance.lang = locale;
-    utterance.rate = 0.85;
+    utterance.rate = 1;
+    utterance.pitch = 1;
     utterance.volume = 1;
     const voice = browserVoiceFor(locale);
     if (voice) utterance.voice = voice;
@@ -189,8 +212,8 @@ async function speakViaBrowser(text: string, locale: string, currentRequestId: n
           status: "error",
           speaking: false,
           preparing: false,
-          lastError: "Speech playback failed. Please try again.",
-          message: "Speech playback failed. Please try again.",
+          lastError: BROWSER_TTS_ERROR_MESSAGE,
+          message: BROWSER_TTS_ERROR_MESSAGE,
         });
       }
       resolve(false);
@@ -198,8 +221,7 @@ async function speakViaBrowser(text: string, locale: string, currentRequestId: n
 
     currentUtterance = utterance;
     try {
-      // Some mobile browsers suspend the speech queue between user gestures.
-      // Resume immediately before speaking so device TTS starts reliably.
+      window.speechSynthesis.cancel();
       window.speechSynthesis.resume?.();
       window.speechSynthesis.speak(utterance);
     } catch {
@@ -207,8 +229,8 @@ async function speakViaBrowser(text: string, locale: string, currentRequestId: n
         status: "error",
         speaking: false,
         preparing: false,
-        lastError: "Speech playback failed. Please try again.",
-        message: "Speech playback failed. Please try again.",
+        lastError: BROWSER_TTS_ERROR_MESSAGE,
+        message: BROWSER_TTS_ERROR_MESSAGE,
       });
       resolve(false);
     }

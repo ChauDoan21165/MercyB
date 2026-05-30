@@ -93,7 +93,7 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
     const safeText = String(text ?? "").trim();
     if (!safeText) return;
     if (!supported) {
-      setError("Speech playback is not supported in this browser.");
+      setError("Không nghe thấy? Kiểm tra âm lượng hoặc thử bấm lại.");
       return;
     }
 
@@ -129,8 +129,8 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
       setSpeaking(false);
     }
 
-    if (!targetLanguage.supportsBrowserTts && !result.spoken) {
-      setError(`Speech playback is not supported for ${targetLanguage.labelEn}.`);
+    if (!result.spoken && safeText) {
+      setError("Không nghe thấy? Kiểm tra âm lượng hoặc thử bấm lại.");
     }
 
     void lang;

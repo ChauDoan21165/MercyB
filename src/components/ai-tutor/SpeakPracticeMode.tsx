@@ -32,6 +32,7 @@ type Props = {
   ttsSpeaking: boolean;
   ttsPreparing: boolean;
   ttsVoiceSource?: "mercy" | "device" | null;
+  ttsError?: string | null;
   followUpPrompt: string | null;
   followUpIsPivot: boolean;
   onMicToggle: () => void;
@@ -51,6 +52,7 @@ export default function SpeakPracticeMode({
   ttsSpeaking,
   ttsPreparing,
   ttsVoiceSource,
+  ttsError,
   followUpPrompt,
   followUpIsPivot,
   onMicToggle,
@@ -117,7 +119,7 @@ export default function SpeakPracticeMode({
                 preparing={ttsPreparing}
                 unavailableLabel={tutorCopy.ui.ttsUnavailable}
                 inactiveLabel="Mercy đọc"
-                activeLabel={tutorCopy.ui.ttsStop}
+                activeLabel="Đang đọc…"
                 preparingLabel={tutorCopy.ui.ttsPreparing}
                 ariaStart={tutorCopy.ui.ttsAriaPlay}
                 ariaStop={tutorCopy.ui.ttsAriaStop}
@@ -131,6 +133,15 @@ export default function SpeakPracticeMode({
               <div className={`mt-2 text-[11px] font-semibold ${ttsVoiceSource === "mercy" ? "text-emerald-700" : "text-amber-700"}`}>
                 {ttsVoiceSource === "mercy" ? tutorCopy.ui.ttsMercyVoiceLabel : tutorCopy.ui.ttsDeviceVoiceFallbackLabel}
               </div>
+            )}
+            {ttsError && (
+              <p
+                className="mt-2 rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold leading-5 text-amber-900"
+                data-testid="ai-tutor-speak-tts-error"
+                role="status"
+              >
+                {ttsError}
+              </p>
             )}
           </div>
 
