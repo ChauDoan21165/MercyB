@@ -418,6 +418,23 @@ describe("AiTutor four-tab seed flow", () => {
     expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent("The fish burned. What did you eat instead?");
   });
 
+  it("scores the typed Speak repeat fallback honestly without phoneme evidence", async () => {
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    await userEvent.type(
+      screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" }),
+      "I bought a hat yesterday.",
+    );
+
+    const score = await screen.findByTestId("ai-tutor-speak-score");
+    expect(score).toHaveTextContent("Bạn nói giống câu mẫu khoảng 100%.");
+    expect(score).toHaveTextContent("Mercy đang nghe theo từ. Sẽ chấm phát âm chi tiết hơn sau.");
+    expect(score).not.toHaveTextContent("Mercy đã chấm phát âm chi tiết hơn bằng từng âm.");
+  });
+
   it("does not repeat Speak follow-up templates for the same corrected sentence", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
     render(<AiTutorPage />);
@@ -508,8 +525,10 @@ describe("AiTutor four-tab seed flow", () => {
 
     await openTab("Luyện nói");
 
-    expect(screen.getByTestId("ai-tutor-speak-generic-prompt")).toHaveTextContent(/What do you usually do|Bạn thường/i);
-    expect(screen.queryByTestId("ai-tutor-speak-target")).not.toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-speak-target")).toHaveTextContent("What do you usually do in the morning?");
+    expect(screen.getByTestId("ai-tutor-speak-generic-prompt")).toHaveTextContent("Chưa có câu đã sửa");
+    expect(screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" })).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-conversation-mic-fallback")).toBeInTheDocument();
   });
 
   it("keeps Speak TTS scoped to the latest corrected practice target", async () => {

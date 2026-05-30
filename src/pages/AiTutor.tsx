@@ -1335,7 +1335,7 @@ export default function AiTutorPage() {
   };
 
   const handleReadSpeakTarget = () => {
-    const text = latestCorrectedSeed?.correctedSentence.trim();
+    const text = latestCorrectedSeed?.correctedSentence.trim() || tutorCopy.starterQuestions[0] || "";
     if (!text) return;
     if (stt.listening) {
       ignoreNextSttCommitRef.current = true;
@@ -1480,6 +1480,7 @@ export default function AiTutorPage() {
           followUpIsPivot={speakFollowUpSession.currentIsPivot}
           onMicToggle={handleMicToggle}
           onReadTarget={handleReadSpeakTarget}
+          onRepeatInputChange={setSpeakRepeatInput}
           tutorCopy={tutorCopy}
         />
       ) : (
