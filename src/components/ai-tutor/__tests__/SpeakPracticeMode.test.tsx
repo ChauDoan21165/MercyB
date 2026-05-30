@@ -39,8 +39,11 @@ const baseProps = {
   ttsPreparing: false,
   followUpPrompt: null,
   followUpIsPivot: false,
+  followUpTtsSpeaking: false,
+  followUpTtsPreparing: false,
   onMicToggle: vi.fn(),
   onReadTarget: vi.fn(),
+  onReadFollowUp: vi.fn(),
   onRepeatInputChange: vi.fn(),
   tutorCopy: getTutorCopy("en", "vi"),
 };
@@ -84,6 +87,26 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     fireEvent.click(screen.getByRole("button", { name: "Mercy đọc" }));
 
     expect(onReadTarget).toHaveBeenCalledTimes(1);
+  });
+
+  it("renders read-aloud controls for the next follow-up question", () => {
+    const onReadTarget = vi.fn();
+    const onReadFollowUp = vi.fn();
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        followUpPrompt="Where did you buy it?"
+        onReadTarget={onReadTarget}
+        onReadFollowUp={onReadFollowUp}
+      />,
+    );
+
+    expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+    const followUp = within(screen.getByTestId("ai-tutor-speak-follow-up"));
+    fireEvent.click(followUp.getByRole("button", { name: "Mercy đọc" }));
+
+    expect(onReadFollowUp).toHaveBeenCalledTimes(1);
+    expect(onReadTarget).not.toHaveBeenCalled();
   });
 
   it("shows a safe TTS fallback when device voice is unavailable", () => {

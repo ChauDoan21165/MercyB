@@ -525,6 +525,47 @@ describe("AiTutor four-tab seed flow", () => {
     expect(followUp).not.toHaveTextContent("bằng từng âm");
   });
 
+  it("reads the next Speak follow-up question aloud", async () => {
+    const browserSpeak = vi.fn((utterance: MockSpeechSynthesisUtterance) => {
+      utterance.onstart?.();
+      utterance.onend?.();
+    });
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        speak: browserSpeak,
+        cancel: vi.fn(),
+        getVoices: vi.fn(() => [{ lang: "en-US" }]),
+        resume: vi.fn(),
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
+    });
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    await userEvent.type(
+      screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" }),
+      "I bought a hat yesterday.",
+    );
+
+    const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+    expect(followUp).toHaveTextContent("Where did you buy it?");
+    await userEvent.click(within(followUp).getByRole("button", { name: "Mercy đọc câu hỏi tiếp theo" }));
+
+    await waitFor(() => expect(browserSpeak).toHaveBeenCalledTimes(1));
+    expect(fetchCloudTtsUrl).not.toHaveBeenCalled();
+    const utterance = browserSpeak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
+    expect(utterance.text).toBe("Where did you buy it?");
+    expect(utterance.lang).toBe("en-US");
+  });
+
   it("uses the learner's latest typed Speak topic for the next follow-up", async () => {
     render(<AiTutorPage />);
 

@@ -33,10 +33,14 @@ type Props = {
   ttsPreparing: boolean;
   ttsVoiceSource?: "mercy" | "device" | null;
   ttsError?: string | null;
+  ttsErrorScope?: "target" | "follow-up" | null;
   followUpPrompt: string | null;
   followUpIsPivot: boolean;
+  followUpTtsSpeaking: boolean;
+  followUpTtsPreparing: boolean;
   onMicToggle: () => void;
   onReadTarget: () => void;
+  onReadFollowUp: () => void;
   onRepeatInputChange: (value: string) => void;
   tutorCopy: TutorCopy;
 };
@@ -53,10 +57,14 @@ export default function SpeakPracticeMode({
   ttsPreparing,
   ttsVoiceSource,
   ttsError,
+  ttsErrorScope,
   followUpPrompt,
   followUpIsPivot,
+  followUpTtsSpeaking,
+  followUpTtsPreparing,
   onMicToggle,
   onReadTarget,
+  onReadFollowUp,
   onRepeatInputChange,
   tutorCopy,
 }: Props) {
@@ -85,6 +93,8 @@ export default function SpeakPracticeMode({
   const micFallbackMessage = micError
     ? "Không dùng được micro. Hãy cho phép micro trong trình duyệt hoặc gõ câu của bạn."
     : "Không dùng được giọng nói trên thiết bị hoặc trình duyệt này. Bạn vẫn có thể luyện bằng cách nghe câu mẫu trước.";
+  const targetTtsError = ttsErrorScope === "follow-up" ? null : ttsError;
+  const followUpTtsError = ttsErrorScope === "follow-up" ? ttsError : null;
 
   return (
     <section
@@ -134,13 +144,13 @@ export default function SpeakPracticeMode({
                 {ttsVoiceSource === "mercy" ? tutorCopy.ui.ttsMercyVoiceLabel : tutorCopy.ui.ttsDeviceVoiceFallbackLabel}
               </div>
             )}
-            {ttsError && (
+            {targetTtsError && (
               <div
                 className="mt-2 rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold leading-5 text-amber-900"
                 data-testid="ai-tutor-speak-tts-error"
                 role="status"
               >
-                <span>{ttsError}</span>
+                <span>{targetTtsError}</span>
                 <button
                   type="button"
                   onClick={onReadTarget}
@@ -276,6 +286,40 @@ export default function SpeakPracticeMode({
               <p className="mt-1 text-sm font-black leading-6 text-slate-900">
                 {followUpPrompt}
               </p>
+              {ttsSupported ? (
+                <TeacherMercyVoiceControls
+                  kind="speaker"
+                  supported={ttsSupported}
+                  active={followUpTtsSpeaking}
+                  preparing={followUpTtsPreparing}
+                  unavailableLabel={tutorCopy.ui.ttsUnavailable}
+                  inactiveLabel="Mercy đọc"
+                  activeLabel="Đang đọc…"
+                  preparingLabel={tutorCopy.ui.ttsPreparing}
+                  ariaStart="Mercy đọc câu hỏi tiếp theo"
+                  ariaStop={tutorCopy.ui.ttsAriaStop}
+                  onToggle={onReadFollowUp}
+                  className="mt-3"
+                />
+              ) : (
+                <div className="mt-2 text-[11px] text-slate-500">{tutorCopy.ui.ttsUnavailable}</div>
+              )}
+              {followUpTtsError && (
+                <div
+                  className="mt-2 rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold leading-5 text-amber-900"
+                  data-testid="ai-tutor-speak-follow-up-tts-error"
+                  role="status"
+                >
+                  <span>{followUpTtsError}</span>
+                  <button
+                    type="button"
+                    onClick={onReadFollowUp}
+                    className="ml-2 rounded-full border border-amber-300 bg-white px-2 py-0.5 text-[11px] font-black text-amber-900"
+                  >
+                    Thử lại
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </>

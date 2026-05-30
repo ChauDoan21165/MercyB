@@ -1397,6 +1397,28 @@ export default function AiTutorPage() {
     });
   };
 
+  const handleReadSpeakFollowUp = () => {
+    const text = speakFollowUpSession.currentQuestion?.trim() || "";
+    if (!text) return;
+    if (stt.listening) {
+      ignoreNextSttCommitRef.current = true;
+      stt.stop();
+      stt.reset();
+      sttBaseInputRef.current = "";
+      lastCommittedSttRef.current = "";
+    }
+    if (tts.speaking) {
+      tts.stop();
+    }
+    setSpeakingMessageId("speak-follow-up");
+    void tts.speak(text, ttsLang, target, {
+      // Speak mode must start audio from the click gesture. Avoid the async
+      // cloud probe here so device TTS cannot be blocked before playback.
+      preferCloudVoice: false,
+      fallbackToBrowserTts: true,
+    });
+  };
+
   const handleClear = () => {
     setInput("");
     setResult(null);
@@ -1521,10 +1543,14 @@ export default function AiTutorPage() {
           ttsPreparing={speakingMessageId === "speak-target" && tts.preparing}
           ttsVoiceSource={tts.voiceSource}
           ttsError={tts.error}
+          ttsErrorScope={speakingMessageId === "speak-follow-up" ? "follow-up" : "target"}
           followUpPrompt={speakFollowUpSession.currentQuestion}
           followUpIsPivot={speakFollowUpSession.currentIsPivot}
+          followUpTtsSpeaking={speakingMessageId === "speak-follow-up" && tts.speaking}
+          followUpTtsPreparing={speakingMessageId === "speak-follow-up" && tts.preparing}
           onMicToggle={handleMicToggle}
           onReadTarget={handleReadSpeakTarget}
+          onReadFollowUp={handleReadSpeakFollowUp}
           onRepeatInputChange={setSpeakRepeatInput}
           tutorCopy={tutorCopy}
         />
