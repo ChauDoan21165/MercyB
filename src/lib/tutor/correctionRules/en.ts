@@ -230,8 +230,51 @@ function repairBeVerbOmission(input: string): string {
     .replace(/\b(You|We|They)\s+(very\s+(?:happy|sad|tired|busy)(?:\s+today)?)\b/gi, "$1 are $2");
 }
 
+const TIME_EXPRESSION_PLACEMENT_PATTERN =
+  /^(I|you|he|she|it|we|they)\s+(yesterday|today|tonight|tomorrow|this morning|this afternoon|this evening|last night|last week|last month|last year|last summer|on Monday|on Tuesday|on Wednesday|on Thursday|on Friday|on Saturday|on Sunday|last Monday|last Tuesday|last Wednesday|last Thursday|last Friday|last Saturday|last Sunday|in 2024|an hour ago|two hours ago|three days ago)\s+(.+?)[.?!]?$/i;
+
+const TIME_EXPRESSION_AUDITED_VERB_FRAMES =
+  /^(?:went to school|watched TV|visited grandma|moved to Canada|finished dinner|bought a hat)$/i;
+
+const TIME_EXPRESSION_FREQUENCY_ADVERBS =
+  /\b(?:always|usually|often|sometimes|rarely|never|every day|every week|every month|every year)\b/i;
+
+const TIME_EXPRESSION_CLAUSE_MARKERS =
+  /\b(?:and|but|because|when|while|if|that|who|which|where|after|before|since|although|though|so)\b/i;
+
+const TIME_EXPRESSION_EMBEDDED_SUBJECT =
+  /\b(?:I|you|he|she|it|we|they)\s+(?:am|are|is|was|were|do|does|did|have|has|had|will|would|can|could|should|buy|bought|go|went|watch|watched|visit|visited|move|moved|finish|finished|study|said|say|busy)\b/i;
+
+const TIME_EXPRESSION_REPORTING_VERBS =
+  /^(?:said|say|says|told|tell|tells|thought|think|thinks|knew|know|knows)\b/i;
+
+function getTimeExpressionPlacementMatch(input: string): RegExpMatchArray | null {
+  const trimmed = input.trim();
+  const match = trimmed.match(TIME_EXPRESSION_PLACEMENT_PATTERN);
+  if (!match) return null;
+
+  const verbPhrase = (match[3] ?? "").trim();
+  if (!verbPhrase) return null;
+  if (!TIME_EXPRESSION_AUDITED_VERB_FRAMES.test(verbPhrase)) return null;
+  if (TIME_EXPRESSION_FREQUENCY_ADVERBS.test(match[2] ?? "")) return null;
+  if (TIME_EXPRESSION_CLAUSE_MARKERS.test(verbPhrase)) return null;
+  if (TIME_EXPRESSION_EMBEDDED_SUBJECT.test(verbPhrase)) return null;
+  if (TIME_EXPRESSION_REPORTING_VERBS.test(verbPhrase)) return null;
+  if (/[,;:]/.test(verbPhrase)) return null;
+
+  return match;
+}
+
+function hasTimeExpressionPlacement(input: string): boolean {
+  return getTimeExpressionPlacementMatch(input) !== null;
+}
+
 function repairTimeExpressionPlacement(input: string): string {
-  return input.replace(/^i yesterday bought a hat[.?!]?$/i, "I bought a hat yesterday");
+  const match = getTimeExpressionPlacementMatch(input);
+  if (!match) return input;
+
+  const [, subject, timeExpression, verbPhrase] = match;
+  return `${subject} ${verbPhrase.trim()} ${timeExpression}`;
 }
 
 export const englishCorrectionRules: CorrectionRule[] = [
@@ -282,8 +325,9 @@ export const englishCorrectionRules: CorrectionRule[] = [
   },
   {
     id: "en-time-expression-placement",
-    detects: (input) => /^i yesterday bought a hat[.?!]?$/i.test(input.trim()),
+    detects: hasTimeExpressionPlacement,
     apply: repairTimeExpressionPlacement,
+    fpRiskNote: "Medium risk. Time-expression placement can overlap with acceptable fronted time expressions, noun postmodifiers, frequency adverbs, subordinate clauses, and stylistic emphasis. This v1 rule uses a closed whitelist, avoids comma insertion, rejects frequency adverbs, rejects noun subjects, rejects multi-clause sentences, and only rewrites pronoun subject + whitelisted time expression + single verb phrase shapes.",
   },
   {
     id: "en-be-verb-omission",

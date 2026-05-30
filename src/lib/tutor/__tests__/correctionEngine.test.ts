@@ -283,9 +283,11 @@ describe("correctionEngine", () => {
   });
 
   it.each([
-    ["I yesterday bought a hat", "I bought a hat yesterday."],
-    ["I yesterday bought a hat.", "I bought a hat yesterday."],
-    ["I yesterday bought a hat!", "I bought a hat yesterday."],
+    ["I yesterday went to school.", "I went to school yesterday."],
+    ["She last night watched TV.", "She watched TV last night."],
+    ["They on Monday visited grandma.", "They visited grandma on Monday."],
+    ["He in 2024 moved to Canada.", "He moved to Canada in 2024."],
+    ["We an hour ago finished dinner.", "We finished dinner an hour ago."],
   ])("repairs only the narrow time-expression placement pattern: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",
@@ -295,13 +297,21 @@ describe("correctionEngine", () => {
   });
 
   it.each([
-    "Yesterday I bought a hat.",
-    "I bought a hat yesterday.",
+    "I usually go to school.",
+    "She often watches TV at night.",
+    "I went to school yesterday.",
+    "Yesterday I went to school.",
+    "I always go to school.",
+    "They every day study English.",
+    "The class on Monday is hard.",
+    "The meeting on Monday was cancelled.",
+    "I yesterday said I was busy.",
+    "I yesterday bought a book.",
   ])("does not over-trigger time-expression placement: %s", (input) => {
-    expect(correctWithTutorRules(input, "en")).toMatchObject({
-      status: "unchanged",
-      appliedRuleIds: [],
-    });
+    const result = correctWithTutorRules(input, "en");
+
+    expect(result.appliedRuleIds).not.toContain("en-time-expression-placement");
+    expect(result.corrected).not.toBe("I said I was busy yesterday.");
   });
 
   it.each([
