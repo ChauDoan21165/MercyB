@@ -16,6 +16,14 @@ describe("speakFollowups", () => {
     });
   });
 
+  it("selects English follow-ups for hat biking practice", () => {
+    expect(selectSpeakFollowUp("I bought a hat yesterday because I plan to bike a lot this summer.")).toEqual({
+      topicId: "hat-biking-summer",
+      question: "Why do you need the hat?",
+      isPivot: false,
+    });
+  });
+
   it("selects a dinner follow-up grounded in the target sentence", () => {
     expect(selectSpeakFollowUp("I had dinner with my family.")).toEqual({
       topicId: "dinner-family",
@@ -58,9 +66,10 @@ describe("speakFollowups", () => {
   it("pivots after the same-topic depth cap", () => {
     expect(selectSpeakFollowUp("I bought a hat yesterday.", { turnsOnTopic: 4 })).toEqual({
       topicId: "bought-hat-yesterday",
-      question: SPEAK_FOLLOW_UP_PIVOT,
+      question: "Do you want to practice another sentence?",
       isPivot: true,
     });
+    expect(SPEAK_FOLLOW_UP_PIVOT).not.toMatch(/[ăâđêôơưàáạảãằắặẳẵầấậẩẫèéẹẻẽềếệểễìíịỉĩòóọỏõồốộổỗờớợởỡùúụủũừứựửữỳýỵỷỹ]/i);
   });
 
   it("calculates exact sentence-match as 100", () => {

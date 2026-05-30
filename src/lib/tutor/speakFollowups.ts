@@ -23,13 +23,23 @@ const GENERIC_FOLLOW_UPS = [
 ] as const;
 
 export const SPEAK_FOLLOW_UP_DEPTH_CAP = 4;
-export const SPEAK_FOLLOW_UP_PIVOT = "Bạn muốn luyện thêm câu khác không?";
+export const SPEAK_FOLLOW_UP_PIVOT = "Do you want to practice another sentence?";
 
 export const SPEAK_FOLLOW_UP_PATTERNS: readonly SpeakFollowUpPattern[] = [
   {
+    id: "bicycle-hat-summer",
+    test: /\bi bought\b.*\bbicycle\b.*\bhat\b|\bi bought\b.*\bhat\b.*\bbicycle\b/i,
+    questions: ["Where did you buy it?", "How often do you bike in the summer?", "Is it very sunny where you live?"],
+  },
+  {
+    id: "hat-biking-summer",
+    test: /\bi bought\b.*\bhat\b.*\b(?:summer|bike|biking|sunny|canada)\b/i,
+    questions: ["Why do you need the hat?", "How often do you bike in the summer?", "Is it very sunny where you live?"],
+  },
+  {
     id: "bought-hat-yesterday",
     test: /\bi bought\b.*\bhat\b.*\byesterday\b/i,
-    questions: ["Where did you buy it?", "What kind of hat was it?"],
+    questions: ["Where did you buy it?", "Why do you need the hat?", "Is it very sunny where you live?"],
   },
   {
     id: "dinner-family",

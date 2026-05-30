@@ -127,14 +127,34 @@ describe("correctionEngine", () => {
   });
 
   it.each([
-    "I bought a hat yesterday because it is summer Canada is very sunny very hot so and I win bike everywhere I need a hat.",
-    "I bought a hat yesterday because summer is coming and it is very hot I need a hat since I've been bike a lot.",
-  ])("repairs hat, summer, Canada, and biking run-on output: %s", (input) => {
-    expect(correctWithTutorRules(input, "en")).toMatchObject({
+    [
+      "They bought a hat yesterday Because summer sucks coming and it's very sunny I need a hat.",
+      "I bought a hat yesterday because summer is coming, and it is very sunny.",
+    ],
+    [
+      "I bought a hat yesterday because summer is coming and I will bike a lot I need a hat.",
+      "I bought a hat yesterday because I plan to bike a lot this summer.",
+    ],
+    [
+      "I bought a hat yesterday because it is summer Canada is very sunny very hot so and I win bike everywhere I need a hat.",
+      "I bought a hat yesterday because I plan to bike a lot this summer, and it is very sunny in Canada.",
+    ],
+    [
+      "I bought a hat yesterday because summer is coming and it is very hot I need a hat since I've been bike a lot.",
+      "I bought a hat yesterday because I plan to bike a lot this summer.",
+    ],
+    [
+      "I bought a bicycle yesterday someone's coming and I've been a bike a lot I also buy a hat because it's very sunny in the summer in Canada.",
+      "I bought a bicycle yesterday because summer is coming, and I plan to bike a lot. I also bought a hat because it is very sunny in Canada.",
+    ],
+  ])("repairs hat, summer, Canada, and biking run-on output: %s", (input, expected) => {
+    const result = correctWithTutorRules(input, "en");
+    expect(result).toMatchObject({
       status: "corrected",
-      corrected: "I bought a hat yesterday because it is very sunny and hot in Canada, and I need it for biking this summer.",
+      corrected: expected,
       appliedRuleIds: ["en-hat-biking-summer-runon"],
     });
+    expect(result.corrected).not.toMatch(/summer sucks coming|someone'?s coming|I'?ve been a bike|I win bike|they\b/i);
   });
 
   it("repairs bicycle, hat, summer, Canada, and biking run-on output", () => {
