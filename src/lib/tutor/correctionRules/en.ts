@@ -37,6 +37,7 @@ const KNOWN_UNCORRECTED_PAST_MARKER_VERBS = [
 
 const MISSING_ARTICLE_NOUNS: Record<string, "a" | "an"> = {
   apple: "an",
+  bicycle: "a",
   book: "a",
   hat: "a",
   orange: "an",
@@ -53,6 +54,10 @@ const COUNTABLE_PLURAL_NOUNS: Record<string, string> = {
   student: "students",
   word: "words",
 };
+
+function isProperNounArticleMatch(noun: string): boolean {
+  return /^[A-Z]/.test(noun);
+}
 
 function replaceVerbAfterSubject(
   input: string,
@@ -163,14 +168,32 @@ function addArticleAfterVerb(input: string): string {
   );
 
   return input
-    .replace(objectPattern, (_match, subject: string, verb: string, noun: string) => {
+    .replace(objectPattern, (match, subject: string, verb: string, noun: string) => {
+      if (isProperNounArticleMatch(noun)) return match;
       const article = MISSING_ARTICLE_NOUNS[noun.toLowerCase()];
       return `${subject} ${verb} ${article} ${noun}`;
     })
-    .replace(bePattern, (_match, subject: string, verb: string, noun: string) => {
+    .replace(bePattern, (match, subject: string, verb: string, noun: string) => {
+      if (isProperNounArticleMatch(noun)) return match;
       const article = MISSING_ARTICLE_NOUNS[noun.toLowerCase()];
       return `${subject} ${verb} ${article} ${noun}`;
     });
+}
+
+function hasMissingCommonNounArticle(input: string): boolean {
+  const nounPattern = Object.keys(MISSING_ARTICLE_NOUNS).join("|");
+  const objectPattern = new RegExp(
+    `\\b(I|You|We|They|He|She)\\s+(bought|buy|want|need)\\s+(${nounPattern})\\b`,
+    "gi",
+  );
+  const bePattern = new RegExp(
+    `\\b(He|She|I)\\s+(is|am)\\s+(${nounPattern})\\b`,
+    "gi",
+  );
+  const matchesCommonNoun = (pattern: RegExp) =>
+    Array.from(input.matchAll(pattern)).some((match) => !isProperNounArticleMatch(match[3] ?? ""));
+
+  return matchesCommonNoun(objectPattern) || matchesCommonNoun(bePattern);
 }
 
 function pluralizeAfterQuantity(input: string): string {
@@ -235,9 +258,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
   },
   {
     id: "en-l4-missing-singular-article",
-    detects: (input) =>
-      /\b(I|You|We|They|He|She)\s+(bought|buy|want|need)\s+(apple|book|hat|orange|student|teacher)\b/i.test(input) ||
-      /\b(He|She|I)\s+(is|am)\s+(apple|book|hat|orange|student|teacher)\b/i.test(input),
+    detects: hasMissingCommonNounArticle,
     apply: addArticleAfterVerb,
   },
   {

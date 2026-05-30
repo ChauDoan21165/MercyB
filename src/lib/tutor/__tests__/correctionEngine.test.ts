@@ -20,13 +20,16 @@ describe("correctionEngine", () => {
     ["She eat rice every day.", "She eats rice every day."],
     ["It have food every day.", "It has food every day."],
     ["I bought hat yesterday.", "I bought a hat yesterday."],
+    ["I bought bicycle yesterday.", "I bought a bicycle yesterday."],
     ["She is teacher.", "She is a teacher."],
     ["I have two book.", "I have two books."],
     ["Many student like English.", "Many students like English."],
+    ["I go school.", "I go to school."],
+    ["She very happy.", "She is very happy."],
+    ["Yesterday I buy a hat.", "Yesterday I bought a hat."],
     ["This book I like.", "I like this book."],
     ["English I study every day.", "I study English every day."],
     ["In my family, my mother I love very much.", "In my family, I love my mother very much."],
-    ["She very happy.", "She is very happy."],
     ["He very busy today.", "He is very busy today."],
     ["They very tired.", "They are very tired."],
     ["I yesterday bought a hat.", "I bought a hat yesterday."],
@@ -78,6 +81,7 @@ describe("correctionEngine", () => {
     ["He is good in English", "He is good at English."],
     ["I go school every day", "I go to school every day."],
     ["I listen music every day", "I listen to music every day."],
+    ["I go school", "I go to school."],
   ])("corrects whitelisted Step 5 preposition pattern: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",
@@ -93,6 +97,29 @@ describe("correctionEngine", () => {
     "I go to school every day.",
     "It depends on the weather.",
   ])("does not broadly rewrite prepositions: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["She very happy.", "She is very happy."],
+    ["He very busy.", "He is very busy."],
+    ["It very sad.", "It is very sad."],
+  ])("corrects narrow be-verb omission: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: expect.arrayContaining(["en-be-verb-omission"]),
+    });
+  });
+
+  it.each([
+    "She is very happy.",
+    "They are very happy.",
+    "She very quickly finished.",
+  ])("does not broadly add be-verbs: %s", (input) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "unchanged",
       appliedRuleIds: [],
@@ -123,6 +150,7 @@ describe("correctionEngine", () => {
 
   it.each([
     "I bought hats yesterday.",
+    "I bought Apple yesterday.",
     "She is a teacher.",
     "She eats rice every night.",
     "She is very happy.",
@@ -134,11 +162,13 @@ describe("correctionEngine", () => {
     "I have some rice.",
     "This book, I like it.",
   ])("does not over-trigger obvious L4 negative control: %s", (input) => {
-    expect(correctWithTutorRules(input, "en")).toMatchObject({
+    const result = correctWithTutorRules(input, "en");
+    expect(result).toMatchObject({
       status: "unchanged",
       corrected: expect.any(String),
       appliedRuleIds: [],
     });
+    expect(result.corrected).not.toBe("I bought an Apple yesterday.");
   });
 
   it.each([
