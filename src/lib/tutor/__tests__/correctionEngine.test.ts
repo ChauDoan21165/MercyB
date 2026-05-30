@@ -4,6 +4,7 @@ import {
   correctWithTutorRules,
   validateCorrectionChangedWhenNeeded,
 } from "@/lib/tutor/correctionEngine";
+import { englishCorrectionRules } from "@/lib/tutor/correctionRules/en";
 
 describe("correctionEngine", () => {
   it.each([
@@ -38,6 +39,157 @@ describe("correctionEngine", () => {
       status: "corrected",
       corrected: expected,
     });
+  });
+
+  it.each([
+    ["I bought hat yesterday.", "I bought a hat yesterday."],
+    ["I bought bicycle yesterday.", "I bought a bicycle yesterday."],
+    ["She is teacher.", "She is a teacher."],
+    ["I want apple.", "I want an apple."],
+  ])("corrects approved Step 5 article omission for whitelisted count nouns: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: expect.arrayContaining(["en-l4-missing-singular-article"]),
+    });
+  });
+
+  it.each([
+    "I drink water.",
+    "I bought the bicycle.",
+    "I bought my bicycle.",
+    "I like music.",
+    "I like dogs.",
+    "I bought Apple yesterday.",
+  ])("does not over-trigger approved Step 5 article omission: %s", (input) => {
+    const result = correctWithTutorRules(input, "en");
+    expect(result).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+    expect(result.corrected).not.toMatch(/\b(?:a|an)\s+(?:water|the bicycle|my bicycle|music|dogs|Apple)\b/i);
+  });
+
+  it.each([
+    ["I have two book.", "I have two books."],
+    ["Many student like English.", "Many students like English."],
+    ["I learned several word today.", "I learned several words today."],
+  ])("corrects approved Step 5 plural omission for whitelisted regular nouns: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: expect.arrayContaining(["en-l4-quantity-plural-s"]),
+    });
+  });
+
+  it.each([
+    "some water",
+    "much money",
+    "one book",
+    "two child",
+  ])("does not over-trigger approved Step 5 plural omission: %s", (input) => {
+    const result = correctWithTutorRules(input, "en");
+    expect(result).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+    expect(result.corrected).not.toContain("childs");
+  });
+
+  it("combines approved Step 5 SVA and missing-to rules for one learner sentence", () => {
+    expect(correctWithTutorRules("She go school.", "en")).toMatchObject({
+      status: "corrected",
+      corrected: "She goes to school.",
+      appliedRuleIds: ["en-step5-subject-verb-agreement", "en-step5-preposition-pattern"],
+    });
+  });
+
+  it.each([
+    "They go.",
+    "My parents cook.",
+    "I go.",
+    "You go.",
+    "He can go.",
+    "She will work.",
+  ])("does not over-trigger approved Step 5 third-person singular: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["He go on Monday.", "He went on Monday."],
+    ["He go in 2024.", "He went in 2024."],
+    ["She work an hour ago.", "She work an hour ago."],
+    ["It make last summer.", "It make last summer."],
+  ])("blocks SVA after approved past markers: %s", (input, expected) => {
+    const result = correctWithTutorRules(input, "en");
+    expect(result.appliedRuleIds).not.toContain("en-step5-subject-verb-agreement");
+    expect(result.corrected).toBe(expected);
+    expect(result.corrected).not.toMatch(/\b(?:goes|works|makes)\b/);
+  });
+
+  it.each([
+    ["I go school.", "I go to school."],
+    ["She goes school.", "She goes to school."],
+    ["I am going school.", "I am going to school."],
+  ])("corrects approved Step 5 missing-to school pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: expect.arrayContaining(["en-step5-preposition-pattern"]),
+    });
+  });
+
+  it.each([
+    "I go to school.",
+    "I go home.",
+    "I go there.",
+    "I go downtown.",
+    "I go abroad.",
+    "I go upstairs.",
+    "I go school bus.",
+  ])("does not over-trigger approved Step 5 missing-to school pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["She very happy.", "She is very happy."],
+    ["I very busy.", "I am very busy."],
+    ["They very tired.", "They are very tired."],
+  ])("corrects approved Step 5 be-drop with very anchor: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-be-verb-omission"],
+    });
+  });
+
+  it.each([
+    "She is very happy.",
+    "She very quickly finished.",
+    "I very much like it.",
+  ])("does not over-trigger approved Step 5 be-drop: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["en-l4-missing-singular-article", "articles"],
+    ["en-l4-quantity-plural-s", "plurals"],
+    ["en-step5-subject-verb-agreement", "3rd-person singular"],
+    ["en-step5-preposition-pattern", "missing to"],
+    ["en-be-verb-omission", "be-drop"],
+  ])("keeps fp_risk_note metadata for approved Step 5 pattern %s (%s)", (ruleId) => {
+    const rule = englishCorrectionRules.find((candidate) => candidate.id === ruleId);
+    expect(rule?.fpRiskNote).toEqual(expect.any(String));
+    expect(rule?.fpRiskNote?.length).toBeGreaterThan(20);
   });
 
   it.each([
