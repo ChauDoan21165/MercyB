@@ -50,6 +50,60 @@ describe("detectStep5VnEnError — plural -s omission", () => {
   });
 });
 
+describe("detectStep5VnEnError — subject-verb agreement", () => {
+  it("flags narrow third-person present-simple SVA omissions", () => {
+    expect(detect("he go every day", "he goes every day")).toMatchObject({
+      matched: true,
+      weaknessTag: "vi_l1_3rd_person_s",
+    });
+    expect(detect("she work here", "she works here")).toMatchObject({
+      matched: true,
+      weaknessTag: "vi_l1_3rd_person_s",
+    });
+    expect(detect("it make sense", "it makes sense")).toMatchObject({
+      matched: true,
+      weaknessTag: "vi_l1_3rd_person_s",
+    });
+  });
+
+  it("does not flag modal, future, past-time, or question contexts as SVA", () => {
+    expect(detect("he can go", "he can go").weaknessTag).not.toBe("vi_l1_3rd_person_s");
+    expect(detect("she will work", "she will work").weaknessTag).not.toBe("vi_l1_3rd_person_s");
+    expect(detect("he go last Monday", "he went last Monday").weaknessTag).not.toBe("vi_l1_3rd_person_s");
+    expect(detect("she work yesterday", "she worked yesterday").weaknessTag).not.toBe("vi_l1_3rd_person_s");
+    expect(detect("does he go every day", "does he goes every day").weaknessTag).not.toBe("vi_l1_3rd_person_s");
+  });
+});
+
+describe("detectStep5VnEnError — preposition transfer", () => {
+  it("flags only whitelisted Step 5 preposition patterns", () => {
+    expect(detect("I depend of my family", "I depend on my family")).toMatchObject({
+      matched: true,
+      weaknessTag: "vi_l1_preposition_transfer",
+    });
+    expect(detect("She is interested with English", "She is interested in English")).toMatchObject({
+      matched: true,
+      weaknessTag: "vi_l1_preposition_transfer",
+    });
+    expect(detect("He is good in English", "He is good at English")).toMatchObject({
+      matched: true,
+      weaknessTag: "vi_l1_preposition_transfer",
+    });
+    expect(detect("I listen music every day", "I listen to music every day")).toMatchObject({
+      matched: true,
+      weaknessTag: "vi_l1_preposition_transfer",
+    });
+  });
+
+  it("does not broadly replace prepositions outside the whitelist", () => {
+    expect(detect("I am in Monday", "I am on Monday").weaknessTag).not.toBe("vi_l1_preposition_transfer");
+    expect(detect("I am in Hanoi", "I am on Hanoi").matched).toBe(false);
+    expect(detect("I wait bus", "I wait for bus").matched).toBe(false);
+    expect(detect("I look the board", "I look at the board").matched).toBe(false);
+    expect(detect("I listen to music", "I listen to music").matched).toBe(false);
+  });
+});
+
 describe("detectStep5VnEnError — existing behavior", () => {
   it("preserves the shipped past-tense omission detector", () => {
     expect(detect("yesterday i walk to school", "yesterday i walked to school")).toMatchObject({
