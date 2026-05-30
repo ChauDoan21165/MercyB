@@ -69,7 +69,14 @@ import {
   getSpeakFollowUpTopicId,
   resolveSpeakFollowUpTopicId,
   selectSpeakFollowUpByTopicId,
+  type SpeakFollowUpSelection,
 } from "@/lib/tutor/speakFollowups";
+import { detectBilingualSaliencePivot } from "@/lib/tutor/bilingualSalienceDetector";
+import {
+  buildConstrainedPivotPrompt,
+  decidePivotResponse,
+  type PivotPromptTurn,
+} from "@/lib/tutor/pivotPromptSafety";
 import CorrectionMode from "@/components/ai-tutor/CorrectionMode";
 import { detectEnVnError } from "@/lib/feedback";
 import {
@@ -122,6 +129,20 @@ type SpeakFollowUpSession = {
 type TutorMode = Extract<TutorProductMode, "journey" | "grammar" | "speak" | "logic">;
 type ConversationTutorMode = Exclude<TutorMode, "grammar">;
 
+type MockPivotCandidateResult =
+  | string
+  | null
+  | {
+      candidate?: string | null;
+      failed?: boolean;
+    };
+
+declare global {
+  interface Window {
+    __MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__?: (prompt: string) => MockPivotCandidateResult;
+  }
+}
+
 const AI_TUTOR_MODES: TutorMode[] = aiTutorConfig.modes.filter(
   (mode): mode is TutorMode => mode === "journey" || mode === "grammar" || mode === "speak" || mode === "logic",
 );
@@ -144,6 +165,50 @@ const LOGIC_STARTER_PROMPTS = [
   "Vì sao nói “I go to school” mà không nói “I go school”?",
   "Vì sao “I bought a hat yesterday” đúng hơn “I buy a hat yesterday”?",
 ] as const;
+
+function normalizeMockPivotResult(result: MockPivotCandidateResult): { candidate?: string | null; failed?: boolean } {
+  if (typeof result === "string" || result === null) return { candidate: result };
+  return result;
+}
+
+function resolveMockedContentAwarePivot(
+  learnerText: string,
+  deterministicSelection: SpeakFollowUpSelection,
+  previousTurns: PivotPromptTurn[],
+): SpeakFollowUpSelection {
+  if (typeof window === "undefined" || !window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__) {
+    return deterministicSelection;
+  }
+
+  const salience = detectBilingualSaliencePivot(learnerText);
+  if (!salience) return deterministicSelection;
+
+  const localCorrection = correctWithTutorRules(learnerText, "en");
+  if (!salience.highStakes && localCorrection.status === "corrected") {
+    return deterministicSelection;
+  }
+
+  const promptInput = {
+    currentLearnerReply: learnerText,
+    selectedSaliencePivot: salience,
+    sessionTurns: previousTurns,
+  };
+  const prompt = buildConstrainedPivotPrompt(promptInput);
+  const mocked = normalizeMockPivotResult(window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__(prompt));
+  const decision = decidePivotResponse({
+    promptInput,
+    candidate: mocked.candidate,
+    failed: mocked.failed,
+  });
+
+  if (decision.source !== "pivot") return deterministicSelection;
+
+  return {
+    topicId: deterministicSelection.topicId,
+    question: decision.text,
+    isPivot: true,
+  };
+}
 
 function createLogicOpeningMessage(explainLanguage: ExplainLanguage): MercyConversationMessage {
   const { turn } = buildConversationTurn({
@@ -820,6 +885,7 @@ export default function AiTutorPage() {
   const sttBaseInputRef = useRef<string>("");
   const lastCommittedSttRef = useRef<string>("");
   const lastRecordedSpeakAttemptRef = useRef<string>("");
+  const speakPivotTurnsRef = useRef<PivotPromptTurn[]>([]);
   const wasListeningRef = useRef(false);
   const ignoreNextSttCommitRef = useRef(false);
 
@@ -842,12 +908,23 @@ export default function AiTutorPage() {
         askedQuestions,
         turnsOnTopic,
       });
+      const pivotAwareSelection = resolveMockedContentAwarePivot(
+        spoken,
+        selection,
+        speakPivotTurnsRef.current,
+      );
+      speakPivotTurnsRef.current = [
+        ...speakPivotTurnsRef.current,
+        { role: "learner" as const, text: spoken },
+        { role: "assistant" as const, text: pivotAwareSelection.question },
+      ].slice(-8);
+
       return {
-        topicId: selection.topicId,
+        topicId: pivotAwareSelection.topicId,
         turnsOnTopic: turnsOnTopic + 1,
-        askedQuestions: selection.isPivot ? askedQuestions : [...askedQuestions, selection.question],
-        currentQuestion: selection.question,
-        currentIsPivot: selection.isPivot,
+        askedQuestions: pivotAwareSelection.isPivot ? askedQuestions : [...askedQuestions, pivotAwareSelection.question],
+        currentQuestion: pivotAwareSelection.question,
+        currentIsPivot: pivotAwareSelection.isPivot,
       };
     });
   };
@@ -1246,6 +1323,7 @@ export default function AiTutorPage() {
     });
     setSpeakRepeatInput("");
     lastRecordedSpeakAttemptRef.current = "";
+    speakPivotTurnsRef.current = [];
     setSpeakFollowUpSession({
       topicId: getSpeakFollowUpTopicId(trimmed),
       turnsOnTopic: 0,
