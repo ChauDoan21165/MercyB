@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { act, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -6,6 +7,8 @@ import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 import { hasShownHint } from "@/lib/ai-tutor/detectorHint";
 import { readL1RecentTags } from "@/lib/stage-3a/adapters/l1TagAdapter";
 import type { SpeechRecognitionLike } from "@/types/speech-recognition";
+
+const FORBIDDEN_STANCE_WORDING = /diagnosis|depressed|anxiety|trauma|therapy|mental health|clinical|disorder/i;
 
 const EMPTY_SUMMARY: MemorySummary = {
   tutorProduct: "ai-tutor",
@@ -351,7 +354,45 @@ describe("AiTutor four-tab seed flow", () => {
     expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Your wife is skilled. What is she good at?");
   });
 
-  it("lets high-stakes salience override the local correction path in Speak", async () => {
+  it("keeps high-stakes Step 9 pivot behavior when Step 10 does not pause", async () => {
+    window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "Losing keys is stressful. Where did you last see them?");
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("I lost my keys");
+
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Losing keys is stressful. Where did you last see them?");
+  });
+
+  it("adds brief acknowledgment wording for mild emotional Speak content without diagnosis terms", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("I bought a hat yesterday and I feel happy");
+
+    const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+    expect(followUp).toHaveTextContent("I hear you. Where did you buy it?");
+    expect(followUp).not.toHaveTextContent(FORBIDDEN_STANCE_WORDING);
+  });
+
+  it("asks one simple clarification for unclear Speak replies", async () => {
+    window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "This pivot should not be used. What happened?");
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("I don't understand");
+
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Can you say that another way?");
+    expect(window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__).not.toHaveBeenCalled();
+  });
+
+  it("uses needs_pause wording and suppresses correction or pivot for one Speak turn", async () => {
     window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "That sounds scary. Are you safe now?");
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
     render(<AiTutorPage />);
@@ -360,7 +401,11 @@ describe("AiTutor four-tab seed flow", () => {
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
     await speakCurrentTarget("I was scared because she go every day");
 
-    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("That sounds scary. Are you safe now?");
+    const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+    expect(followUp).toHaveTextContent("I’m sorry that happened. Let’s pause correction for a moment. Are you okay to continue?");
+    expect(followUp).not.toHaveTextContent("That sounds scary. Are you safe now?");
+    expect(followUp).not.toHaveTextContent(FORBIDDEN_STANCE_WORDING);
+    expect(window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__).not.toHaveBeenCalled();
   });
 
   it("does not let ordinary salience override the local L4 correction path in Speak", async () => {
@@ -374,6 +419,47 @@ describe("AiTutor four-tab seed flow", () => {
 
     expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
     expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent("What made it hard?");
+  });
+
+  it("keeps neutral Speak follow-up behavior unchanged after a paused turn", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("I was scared");
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("I’m sorry that happened.");
+
+    await speakCurrentTarget("I bought a hat yesterday.");
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+    });
+  });
+
+  it("does not preserve emotional stance across remounts", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    const { unmount } = render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("I was scared");
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("I’m sorry that happened.");
+
+    unmount();
+    MockSpeechRecognition.last = null;
+    render(<AiTutorPage />);
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("I bought a hat yesterday.");
+
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+    expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent("I’m sorry that happened.");
+  });
+
+  it("does not add storage writes for stance integration", () => {
+    const source = readFileSync("src/pages/AiTutor.tsx", "utf8");
+
+    expect(source).not.toMatch(/localStorage|sessionStorage|indexedDB/i);
   });
 
   it("falls back to deterministic Step 8 follow-up for invalid mocked pivot candidates", async () => {

@@ -72,6 +72,8 @@ import {
   type SpeakFollowUpSelection,
 } from "@/lib/tutor/speakFollowups";
 import { detectBilingualSaliencePivot } from "@/lib/tutor/bilingualSalienceDetector";
+import type { BilingualSaliencePivot } from "@/lib/tutor/bilingualSalienceDetector";
+import { classifyResponseStance } from "@/lib/tutor/emotionalResponseBoundary";
 import {
   buildConstrainedPivotPrompt,
   decidePivotResponse,
@@ -166,6 +168,10 @@ const LOGIC_STARTER_PROMPTS = [
   "Vì sao “I bought a hat yesterday” đúng hơn “I buy a hat yesterday”?",
 ] as const;
 
+const SPEAK_STANCE_ACKNOWLEDGMENT = "I hear you.";
+const SPEAK_STANCE_CLARIFICATION = "Can you say that another way?";
+const SPEAK_STANCE_PAUSE = "I’m sorry that happened. Let’s pause correction for a moment. Are you okay to continue?";
+
 function normalizeMockPivotResult(result: MockPivotCandidateResult): { candidate?: string | null; failed?: boolean } {
   if (typeof result === "string" || result === null) return { candidate: result };
   return result;
@@ -173,6 +179,7 @@ function normalizeMockPivotResult(result: MockPivotCandidateResult): { candidate
 
 function resolveMockedContentAwarePivot(
   learnerText: string,
+  salience: BilingualSaliencePivot | null,
   deterministicSelection: SpeakFollowUpSelection,
   previousTurns: PivotPromptTurn[],
 ): SpeakFollowUpSelection {
@@ -180,7 +187,6 @@ function resolveMockedContentAwarePivot(
     return deterministicSelection;
   }
 
-  const salience = detectBilingualSaliencePivot(learnerText);
   if (!salience) return deterministicSelection;
 
   const localCorrection = correctWithTutorRules(learnerText, "en");
@@ -894,8 +900,29 @@ export default function AiTutorPage() {
     const spoken = normalizeSpokenText(spokenText);
     if (!targetSentence || !spoken || spoken === lastRecordedSpeakAttemptRef.current) return;
     lastRecordedSpeakAttemptRef.current = spoken;
+    const salience = detectBilingualSaliencePivot(spoken);
+    const stance = classifyResponseStance({
+      learnerText: spoken,
+      salience,
+    });
 
     setSpeakFollowUpSession((current) => {
+      if (stance.stance === "needs_pause") {
+        return {
+          ...current,
+          currentQuestion: SPEAK_STANCE_PAUSE,
+          currentIsPivot: false,
+        };
+      }
+
+      if (stance.stance === "needs_clarification") {
+        return {
+          ...current,
+          currentQuestion: SPEAK_STANCE_CLARIFICATION,
+          currentIsPivot: false,
+        };
+      }
+
       const topicId = resolveSpeakFollowUpTopicId({
         seedSentence: targetSentence,
         learnerText: spoken,
@@ -910,9 +937,13 @@ export default function AiTutorPage() {
       });
       const pivotAwareSelection = resolveMockedContentAwarePivot(
         spoken,
+        salience,
         selection,
         speakPivotTurnsRef.current,
       );
+      const question = stance.stance === "needs_acknowledgment"
+        ? `${SPEAK_STANCE_ACKNOWLEDGMENT} ${pivotAwareSelection.question}`
+        : pivotAwareSelection.question;
       speakPivotTurnsRef.current = [
         ...speakPivotTurnsRef.current,
         { role: "learner" as const, text: spoken },
@@ -923,7 +954,7 @@ export default function AiTutorPage() {
         topicId: pivotAwareSelection.topicId,
         turnsOnTopic: turnsOnTopic + 1,
         askedQuestions: pivotAwareSelection.isPivot ? askedQuestions : [...askedQuestions, pivotAwareSelection.question],
-        currentQuestion: pivotAwareSelection.question,
+        currentQuestion: question,
         currentIsPivot: pivotAwareSelection.isPivot,
       };
     });
