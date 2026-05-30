@@ -1,0 +1,206 @@
+{
+  "rule": "hasPastTimeMarker",
+  "ruleId": "en-yesterday-irregular-beginner-past",
+  "language": "en",
+  "description": "Generalized past-time detection (audit commit ad3641395). The hasPastTimeMarker helper drives rule en-yesterday-irregular-beginner-past, which rewrites a beginner present-tense irregular verb (buy/do/eat/go/have) to its past form ONLY when a recognized past-time marker is present AND a (subject pronoun + target verb) adjacency exists. The audit's negation lookahead (?!\\s+not\\b) keeps it from mangling negated past. This golden set locks that firing surface and its false-positive boundary. Expectations encode the VERIFIED behavior on current main; coverage-gap cases lock today's no-fire behavior and are flagged for Lane A.",
+  "cases": [
+    {
+      "id": "hptm-pos-001",
+      "category": "positive",
+      "input": "Yesterday I go to school",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Yesterday I went to school.",
+      "expectedRuleFired": "hasPastTimeMarker",
+      "notes": "Standard past-tense verb correction after 'yesterday' (go -> went)."
+    },
+    {
+      "id": "hptm-pos-002",
+      "category": "positive",
+      "input": "Last week I buy a book",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Last week I bought a book.",
+      "expectedRuleFired": "hasPastTimeMarker",
+      "notes": "'last week' marker (buy -> bought)."
+    },
+    {
+      "id": "hptm-pos-003",
+      "category": "positive",
+      "input": "Last night I eat rice",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Last night I ate rice.",
+      "expectedRuleFired": "hasPastTimeMarker",
+      "notes": "'last night' marker (eat -> ate)."
+    },
+    {
+      "id": "hptm-pos-004",
+      "category": "positive",
+      "input": "Two days ago I go to Hanoi",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Two days ago I went to Hanoi.",
+      "expectedRuleFired": "hasPastTimeMarker",
+      "notes": "'<N> days ago' marker (go -> went)."
+    },
+    {
+      "id": "hptm-pos-005",
+      "category": "positive",
+      "input": "Three weeks ago I have a fever",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Three weeks ago I had a fever.",
+      "expectedRuleFired": "hasPastTimeMarker",
+      "notes": "'<N> weeks ago' marker (have -> had)."
+    },
+    {
+      "id": "hptm-pos-006",
+      "category": "positive",
+      "input": "Last Monday I do my homework",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Last Monday I did my homework.",
+      "expectedRuleFired": "hasPastTimeMarker",
+      "notes": "'last <weekday>' marker (do -> did)."
+    },
+    {
+      "id": "hptm-pos-007",
+      "category": "positive",
+      "input": "Last year I go to Japan",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Last year I went to Japan.",
+      "expectedRuleFired": "hasPastTimeMarker",
+      "notes": "'last year' marker (go -> went)."
+    },
+    {
+      "id": "hptm-pos-008",
+      "category": "positive",
+      "input": "The day before yesterday I eat pho",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "The day before yesterday I ate pho.",
+      "expectedRuleFired": "hasPastTimeMarker",
+      "notes": "Compound marker containing 'yesterday' (eat -> ate)."
+    },
+    {
+      "id": "hptm-neg-001",
+      "category": "negative",
+      "input": "Tomorrow I go to school",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Tomorrow I go to school.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress: future marker 'tomorrow' must NOT trigger past-tense rewrite."
+    },
+    {
+      "id": "hptm-neg-002",
+      "category": "negative",
+      "input": "Next week I buy a book",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Next week I buy a book.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress: 'next week' is future; the 'last <unit>' lookalike must not fire."
+    },
+    {
+      "id": "hptm-neg-003",
+      "category": "negative",
+      "input": "I will go to school next week",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I will go to school next week.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress: future modal 'will go' + 'next week' must not be rewritten to past."
+    },
+    {
+      "id": "hptm-neg-004",
+      "category": "negative",
+      "input": "If I had known, I would have gone yesterday",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "If I had known, I would have gone yesterday.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress: 'yesterday' present but the sentence is already correct conditional past; no (pronoun + target-verb) adjacency, so the rule correctly abstains."
+    },
+    {
+      "id": "hptm-neg-005",
+      "category": "negative",
+      "input": "Back in the day I go to the gym",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Back in the day I go to the gym.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress: idiom 'back in the day' is not a recognized past marker; rule must not fire."
+    },
+    {
+      "id": "hptm-neg-006",
+      "category": "negative",
+      "input": "Yesterday's homework is due tomorrow",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Yesterday's homework is due tomorrow.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress: nested time refs — possessive 'Yesterday's' + future 'tomorrow', no target verb. Marker present but rule must abstain."
+    },
+    {
+      "id": "hptm-neg-007",
+      "category": "negative",
+      "input": "Every day I go to school",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Every day I go to school.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress: present habitual, no past marker; 'go' must stay present."
+    },
+    {
+      "id": "hptm-neg-008",
+      "category": "negative",
+      "input": "Yesterday I went to school",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Yesterday I went to school.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress: already-correct past ('went') must not be re-touched even with 'yesterday' present."
+    },
+    {
+      "id": "hptm-neg-009",
+      "category": "negative",
+      "input": "Yesterday I do not go to school",
+      "expectedStatus": "needs_ai",
+      "expectedCorrection": "",
+      "expectedRuleFired": null,
+      "notes": "FP-stress: negation guard (?!\\s+not\\b) blocks the deterministic 'do -> did' rewrite, so the rule produces no change; the engine then escalates to needs_ai rather than emitting a wrong fix."
+    },
+    {
+      "id": "hptm-neg-010",
+      "category": "negative",
+      "input": "Do you go to school every day?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Do you go to school every day?",
+      "expectedRuleFired": null,
+      "notes": "FP-stress: question form, no past marker; rule must not fire."
+    },
+    {
+      "id": "hptm-gap-001",
+      "category": "coverage-gap",
+      "input": "On Monday I go to school",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "On Monday I go to school.",
+      "expectedRuleFired": null,
+      "notes": "COVERAGE GAP (current main): 'on <weekday>' is NOT recognized by hasPastTimeMarker (only 'last <weekday>'), so a learner's past intent is left uncorrected. Behavior locked as-is; flagged for Lane A, not fixed here."
+    },
+    {
+      "id": "hptm-gap-002",
+      "category": "coverage-gap",
+      "input": "In 2024 I go to Japan",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "In 2024 I go to Japan.",
+      "expectedRuleFired": null,
+      "notes": "COVERAGE GAP (current main): explicit year 'in <year>' is not a recognized past marker. Behavior locked as-is; flagged for Lane A, not fixed here."
+    },
+    {
+      "id": "hptm-gap-003",
+      "category": "coverage-gap",
+      "input": "An hour ago I eat lunch",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "An hour ago I eat lunch.",
+      "expectedRuleFired": null,
+      "notes": "COVERAGE GAP (current main): the '<N> ... ago' pattern only covers day/week/month/year units, so 'an hour ago' does not fire. Behavior locked as-is; flagged for Lane A, not fixed here."
+    },
+    {
+      "id": "hptm-gap-004",
+      "category": "coverage-gap",
+      "input": "Last summer I go to the beach",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Last summer I go to the beach.",
+      "expectedRuleFired": null,
+      "notes": "COVERAGE GAP (current main): 'last <season>' is not in the 'last <unit/weekday>' set, so it does not fire. Behavior locked as-is; flagged for Lane A, not fixed here."
+    }
+  ]
+}
