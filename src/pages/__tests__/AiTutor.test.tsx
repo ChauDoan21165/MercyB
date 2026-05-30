@@ -123,6 +123,7 @@ beforeEach(() => {
   window.sessionStorage.clear();
   window.history.pushState({}, "", "/ai-tutor");
   window.localStorage.setItem("mercyblade.lessonUiLang", "vi");
+  delete window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__;
   (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = undefined;
   (window as Window & { webkitSpeechRecognition?: unknown }).webkitSpeechRecognition = undefined;
   getMemorySummary.mockResolvedValue({ ...EMPTY_SUMMARY });
@@ -310,6 +311,111 @@ describe("AiTutor four-tab seed flow", () => {
     expect(screen.getByTestId("ai-tutor-speak-score")).toHaveTextContent("Mercy đang nghe theo từ. Sẽ chấm phát âm chi tiết hơn sau.");
     expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
     expect(screen.queryByText(/pronunciation score|phát âm score/i)).not.toBeInTheDocument();
+  });
+
+  it("keeps deterministic Step 8 Speak follow-up when no salience is found", async () => {
+    const mockPivot = vi.fn(() => "This should not be used. What happened?");
+    window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = mockPivot;
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("I bought a hat yesterday.");
+
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+    expect(mockPivot).not.toHaveBeenCalled();
+  });
+
+  it("uses a valid mocked content-aware pivot for English salience in Speak", async () => {
+    window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "The fish burned. What did you eat instead?");
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("my wife burned the fish");
+
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("The fish burned. What did you eat instead?");
+  });
+
+  it("uses a valid mocked content-aware pivot for VN salience in Speak", async () => {
+    window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "Your wife is skilled. What is she good at?");
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("my wife rất giỏi");
+
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Your wife is skilled. What is she good at?");
+  });
+
+  it("lets high-stakes salience override the local correction path in Speak", async () => {
+    window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "That sounds scary. Are you safe now?");
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("I was scared because she go every day");
+
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("That sounds scary. Are you safe now?");
+  });
+
+  it("does not let ordinary salience override the local L4 correction path in Speak", async () => {
+    window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "That hard detail matters. What made it hard?");
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("she work here and it was hard");
+
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+    expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent("What made it hard?");
+  });
+
+  it("falls back to deterministic Step 8 follow-up for invalid mocked pivot candidates", async () => {
+    window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "Nice, the fish burned. What did you eat?");
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("my wife burned the fish");
+
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+    expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent("Nice");
+  });
+
+  it("falls back to deterministic Step 8 follow-up for mocked pivot timeout or failure", async () => {
+    window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => ({ failed: true }));
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("my wife burned the fish");
+
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+  });
+
+  it("rejects repeated mocked assistant pivots and uses deterministic Step 8 fallback", async () => {
+    window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "The fish burned. What did you eat instead?");
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("my wife burned the fish");
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("The fish burned. What did you eat instead?");
+
+    await speakCurrentTarget("my wife burned the fish again");
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+    });
+    expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent("The fish burned. What did you eat instead?");
   });
 
   it("does not repeat Speak follow-up templates for the same corrected sentence", async () => {
