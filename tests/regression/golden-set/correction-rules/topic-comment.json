@@ -1,0 +1,155 @@
+{
+  "rule": "topicCommentWordOrder",
+  "ruleId": "en-l4-topic-comment-word-order",
+  "language": "en",
+  "description": "Topic-comment fronting correction (audit commit ad3641395), rule en-l4-topic-comment-word-order. Vietnamese learners front the topic ('This book I like'); the rule re-orders the three audited surfaces to canonical SVO. expectedCorrection / expectedStatus encode the VERIFIED output of correctWithTutorRules('en') on current main (captured from the live engine, not hand-traced): the engine normalizes whitespace, capitalizes only the first character, runs the rule loop, then adds terminal punctuation. The rule is exact-match on its 3 audited surfaces, so positives are meaningful variants across those surfaces (case / trailing punctuation / optional comma).",
+  "fp_risk_note": "Topic-comment fronting is the 2nd-highest false-positive surface in the audit set: the same comma-fronted, object-first shape that signals awkward learner English is ALSO valid English emphasis. The negative cases stress: (1) valid topicalization with a resumptive pronoun — 'My homework, I finished it'; (2) conditional fronting — 'If it rains, we cancel'; (3) adverbial fronting — 'Slowly, she opened the door'; (4) ESL question-word fronting — 'What time, did you arrive?'; (5) quoted speech with an internal comma — \"'Yes,' he said\"; (6) prepositional-phrase fronting, including the deliberate near-miss of the 'In my family,...' positive prefix — 'In the morning, I exercise' (PP preamble but NO fronted object); (7) subordinate-clause fronting — 'Because I was tired, I slept early'. A regression that widens the rule from its 3 hardcoded surfaces toward a general fronting detector will start rewriting these valid sentences — any such change must re-green this negative set first.",
+  "positive": [
+    {
+      "id": "topic-comment-pos-this-book",
+      "input": "This book I like",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I like this book.",
+      "expectedRuleFired": "topicCommentWordOrder",
+      "notes": "VN-style topic fronting: object ('this book') placed first. Audited surface; re-ordered to SVO."
+    },
+    {
+      "id": "topic-comment-pos-this-book-trailing-period",
+      "input": "This book I like.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I like this book.",
+      "expectedRuleFired": "topicCommentWordOrder",
+      "notes": "Same surface with a trailing period — the rule's [.?!]? optional terminator absorbs it. Locks punctuation handling."
+    },
+    {
+      "id": "topic-comment-pos-english-study",
+      "input": "English I study every day",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I study English every day.",
+      "expectedRuleFired": "topicCommentWordOrder",
+      "notes": "Topic-fronted object 'English'. Audited surface; re-ordered to 'I study English every day'."
+    },
+    {
+      "id": "topic-comment-pos-english-study-trailing-qmark",
+      "input": "English I study every day?",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I study English every day.",
+      "expectedRuleFired": "topicCommentWordOrder",
+      "notes": "Trailing '?' absorbed by the rule's [.?!]? terminator. Subject-initial (not WH-initial), so the separate question-mark rule stays off; only the topic-comment rule fires."
+    },
+    {
+      "id": "topic-comment-pos-family-mother-with-comma",
+      "input": "In my family, my mother I love very much",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "In my family, I love my mother very much.",
+      "expectedRuleFired": "topicCommentWordOrder",
+      "notes": "PP preamble ('In my family,') + topic-fronted object ('my mother'). Audited surface; object moved after the verb."
+    },
+    {
+      "id": "topic-comment-pos-family-mother-no-comma",
+      "input": "In my family my mother I love very much",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "In my family, I love my mother very much.",
+      "expectedRuleFired": "topicCommentWordOrder",
+      "notes": "Same surface, comma after 'family' optional in the detector. Output normalizes the comma back in."
+    }
+  ],
+  "negative": [
+    {
+      "id": "topic-comment-neg-valid-emphasis-homework",
+      "input": "My homework, I finished it",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "My homework, I finished it.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (valid topic emphasis): valid English topicalization with a comma + resumptive pronoun 'it'. Must stay unchanged. Highest-priority FP guard for this rule."
+    },
+    {
+      "id": "topic-comment-neg-valid-emphasis-movie",
+      "input": "That movie, I really enjoyed",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "That movie, I really enjoyed.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (valid topic emphasis): valid fronting-for-emphasis. Must stay unchanged."
+    },
+    {
+      "id": "topic-comment-neg-conditional-if-rains",
+      "input": "If it rains, we cancel the trip",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "If it rains, we cancel the trip.",
+      "expectedRuleFired": null,
+      "notes": "Conditional (if-clause) fronting — not topic-comment."
+    },
+    {
+      "id": "topic-comment-neg-conditional-if-study",
+      "input": "If you study hard, you will pass",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "If you study hard, you will pass.",
+      "expectedRuleFired": null,
+      "notes": "Conditional fronting."
+    },
+    {
+      "id": "topic-comment-neg-adverbial-slowly",
+      "input": "Slowly, she opened the door",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Slowly, she opened the door.",
+      "expectedRuleFired": null,
+      "notes": "Manner-adverb fronting."
+    },
+    {
+      "id": "topic-comment-neg-adverbial-carefully",
+      "input": "Carefully, she answered the question",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Carefully, she answered the question.",
+      "expectedRuleFired": null,
+      "notes": "Adverbial fronting."
+    },
+    {
+      "id": "topic-comment-neg-question-what-time",
+      "input": "What time, did you arrive?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "What time, did you arrive?",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (ESL question-word fronting): common WH-fronting with a comma. Ends with '?', so the question-final-mark rule also stays off."
+    },
+    {
+      "id": "topic-comment-neg-question-where",
+      "input": "Where, are you going?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Where, are you going?",
+      "expectedRuleFired": null,
+      "notes": "ESL WH-fronting."
+    },
+    {
+      "id": "topic-comment-neg-quoted-yes",
+      "input": "'Yes,' he said",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "'Yes,' he said.",
+      "expectedRuleFired": null,
+      "notes": "Quoted speech with a comma inside the quotes."
+    },
+    {
+      "id": "topic-comment-neg-quoted-agree",
+      "input": "'I agree,' she replied",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "'I agree,' she replied.",
+      "expectedRuleFired": null,
+      "notes": "Quoted speech."
+    },
+    {
+      "id": "topic-comment-neg-prep-phrase-morning",
+      "input": "In the morning, I exercise",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "In the morning, I exercise.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (prepositional-phrase fronting): deliberately resembles the 'In my family,...' positive prefix but has NO topic-fronted object, so it must NOT fire."
+    },
+    {
+      "id": "topic-comment-neg-subordinate-because-tired",
+      "input": "Because I was tired, I slept early",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Because I was tired, I slept early.",
+      "expectedRuleFired": null,
+      "notes": "Subordinate-clause (because-clause) fronting."
+    }
+  ]
+}
