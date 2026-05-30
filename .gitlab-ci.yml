@@ -382,6 +382,23 @@ test:shared-fallback:
   parallel: 2
   script: *test_shard_script
 
+delete-account-live:
+  <<: [*node_job, *local_runner]
+  stage: test
+  allow_failure: true
+  rules:
+    - if: '$MERCYB_DELETE_ACCOUNT_LIVE_GUARD == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+      when: manual
+    - if: '$MERCYB_DELETE_ACCOUNT_LIVE_GUARD == "1" && $CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes:
+        - scripts/check-delete-account-live.mjs
+        - scripts/check-delete-account-coverage.mjs
+        - supabase/functions/delete-account/**/*
+        - .gitlab-ci.yml
+      when: manual
+  script:
+    - node scripts/check-delete-account-live.mjs
+
 # `lint` — eslint + a soft console.log warning (does not fail the job,
 # same as GitHub's `continue-on-error: true`).
 lint:
