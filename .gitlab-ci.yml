@@ -289,7 +289,9 @@ variables:
   - node scripts/generate-room-registry.mjs
   - 'if [ -n "$(git status --porcelain src/lib/roomManifest.ts src/lib/roomDataImports.ts)" ]; then echo "❌ Registry files are out of sync — run scripts/generate-room-registry.mjs locally and commit."; git diff src/lib/roomManifest.ts src/lib/roomDataImports.ts; exit 1; fi'
   - echo "✅ Registry files are in sync"
-  - npm test
+  # NB: the Vitest suite no longer runs in `build`. It moved to the
+  # sharded `test` jobs below (`npx vitest run --shard …`). `build` is
+  # now typecheck + bundle build + data/registry validators only.
 
 .lint_script: &lint_script
   - npm run lint
@@ -303,14 +305,29 @@ variables:
   # `|| true` mirrors the GitHub workflow's `if: always()` + `|| true`.
   - npm run depcruise:metrics || true
 
+.test_shard_script: &test_shard_script
+  # `node:22-bullseye-slim` ships without git. A few suites spawn it to
+  # build throwaway repos — scripts/__tests__/audit-local-artifacts and
+  # scripts/__tests__/check-manifest-delta both `git init`. When tests
+  # ran inside the `build` job they inherited that job's apt-installed
+  # git; the extracted shards must install it too or those suites fail
+  # with `spawnSync git ENOENT` (whichever shard the files land in).
+  # Only git is needed — curl/unzip/deno were build-only, not test deps.
+  # `--no-install-recommends` keeps the install lean.
+  - apt-get update && apt-get install -y --no-install-recommends git
+  - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL
+
 # ── `test` stage jobs ──────────────────────────────────────────────────
 
 # `build` — typecheck + edge-fn typecheck + Deno check + bundle build +
-# data/registry validators + tests. The `npm test` step covers the
-# post-migration doc-drift detector (`tests/docs/post-migration-doc-drift.test.ts`)
-# because vitest discovers it under its default `tests/**` glob.
+# data/registry validators. The Vitest suite used to run here as a final
+# `npm test` step; it now runs in the sharded `test` jobs below. The
+# post-migration doc-drift detector
+# (`tests/docs/post-migration-doc-drift.test.ts`) still runs because
+# vitest discovers it under its default `tests/**` glob in those jobs.
 #
-# Mirrors GitHub's `build` job. Each line corresponds to a step there.
+# Mirrors GitHub's `build` job (minus the test step). Each line
+# corresponds to a step there.
 build:
   <<: [*node_job, *local_runner, *app_test_rules]
   stage: test
@@ -320,6 +337,44 @@ build:shared-fallback:
   <<: [*node_job, *manual_shared_fallback, *manual_shared_app_rules]
   stage: test
   script: *build_script
+
+# `test` — Vitest suite, sharded across N parallel job instances.
+# Extracted from the old monolithic `npm test` step that closed the
+# `build` job. Vitest's native `--shard i/n` partitions test *files*
+# across instances; GitLab's `parallel: 2` spawns two job copies and
+# sets CI_NODE_INDEX (1..2) and CI_NODE_TOTAL (2). Each shard reports its
+# own status and the pipeline passes only if BOTH shards pass.
+#
+# Profiled at 589 files / ~10173 tests: 2 shards split 295/294 files
+# (~42s and ~49s, vs ~85s monolithic). On the `concurrent = 1` local
+# runner the two shards still run serially, so today's wall-clock is
+# roughly neutral (and pays one extra cached `npm ci`). The win is
+# automatic the moment runner concurrency is raised or jobs route to
+# cloud runners — bump `parallel` and the shards fan out to a ~2-4x
+# speedup with no further repo change. Sharding by file means a flaky
+# order-dependent test could surface differently than in the monolithic
+# run; none were found (the union of `--shard 1/2` + `--shard 2/2`
+# equals the monolithic run exactly — 589 files / 10173 tests, all
+# green).
+#
+# Tests run against `src/` via vitest's own transform, so they do NOT
+# need `npm run build` output and run independently of the `build` job.
+# Cache CONSUMER (pull-only): shards share the node_modules cache the
+# `build` producer seeds and never re-archive it. See `.npm_cache_def`.
+test:
+  <<: [*node_job, *local_runner, *app_test_rules]
+  stage: test
+  parallel: 2
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  script: *test_shard_script
+
+test:shared-fallback:
+  <<: [*node_job, *manual_shared_fallback, *manual_shared_app_rules]
+  stage: test
+  parallel: 2
+  script: *test_shard_script
 
 # `lint` — eslint + a soft console.log warning (does not fail the job,
 # same as GitHub's `continue-on-error: true`).
