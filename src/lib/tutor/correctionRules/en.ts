@@ -2,6 +2,7 @@ export type CorrectionRule = {
   id: string;
   detects: (input: string) => boolean;
   apply: (input: string) => string;
+  fpRiskNote?: string;
 };
 
 const PAST_VERBS: Record<string, string> = {
@@ -81,8 +82,10 @@ function isQuestionLike(input: string): boolean {
 function hasPastTimeMarker(input: string): boolean {
   return (
     /\byesterday\b/i.test(input) ||
-    /\blast\s+(?:night|week|month|year|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(input) ||
-    /\b(?:a|one|two|three|\d+)\s+(?:day|days|week|weeks|month|months|year|years)\s+ago\b/i.test(input)
+    /\blast\s+(?:night|week|month|year|summer|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(input) ||
+    /\bon\s+(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(input) ||
+    /\bin\s+\d{4}\b/i.test(input) ||
+    /\b(?:an?|one|two|three|\d+)\s+(?:hour|hours|day|days|week|weeks|month|months|year|years)\s+ago\b/i.test(input)
   );
 }
 
@@ -260,12 +263,14 @@ export const englishCorrectionRules: CorrectionRule[] = [
     id: "en-l4-missing-singular-article",
     detects: hasMissingCommonNounArticle,
     apply: addArticleAfterVerb,
+    fpRiskNote: "Article insertion is limited to whitelisted count nouns and skips capitalized proper/company names.",
   },
   {
     id: "en-l4-quantity-plural-s",
     detects: (input) =>
       /\b(two|three|many|some|several)\s+(apple|book|hat|lesson|orange|student|word)\b/i.test(input),
     apply: pluralizeAfterQuantity,
+    fpRiskNote: "Plural -s insertion is limited to regular whitelisted count nouns and intentionally skips irregulars/uncountables.",
   },
   {
     id: "en-l4-topic-comment-word-order",
@@ -285,6 +290,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: (input) =>
       /\b(?:I|He|She|It|You|We|They)\s+very\s+(?:happy|sad|tired|busy)(?:\s+today)?\b/i.test(input),
     apply: repairBeVerbOmission,
+    fpRiskNote: "Be-drop v1 requires a pronoun plus very plus a small adjective whitelist.",
   },
   {
     id: "en-step5-subject-verb-agreement",
@@ -293,6 +299,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
       !hasPastTimeMarker(input) &&
       /\b(He|She|It)\s+(go|make|work)\b/i.test(input),
     apply: repairStep5SubjectVerbAgreement,
+    fpRiskNote: "Third-person -s only covers he/she/it with whitelisted verbs and is blocked by questions, modals, and past markers.",
   },
   {
     id: "en-step5-preposition-pattern",
@@ -303,6 +310,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
       /\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/i.test(input) ||
       /\b(listen|listens|listened|listening)\s+(music|the music|songs|a song|the song)\b/i.test(input),
     apply: repairStep5PrepositionPatterns,
+    fpRiskNote: "Missing-to repair is phrase-whitelisted and does not rewrite home/there/downtown/abroad/upstairs or school bus.",
   },
   {
     id: "en-third-person-daily-go-eat-have",
@@ -310,6 +318,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
       /\b(She|He|It)\s+(go|eat|have)\b/i.test(input) &&
       /\bevery day\b/i.test(input),
     apply: (input) => replaceVerbAfterSubject(input, DAILY_THIRD_PERSON_VERBS),
+    fpRiskNote: "Daily-routine third-person -s only covers he/she/it with go/eat/have in every-day contexts.",
   },
   {
     id: "en-third-person-school-routine",
@@ -317,6 +326,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
       /\b(She|He|It)\s+go\s+to\s+school\b/i.test(input) &&
       !/\byesterday\b/i.test(input),
     apply: (input) => replaceVerbAfterSubject(input, DAILY_THIRD_PERSON_VERBS),
+    fpRiskNote: "School-routine third-person -s is limited to he/she/it go to school and avoids yesterday contexts.",
   },
   {
     id: "en-question-form-final-mark",
