@@ -1350,7 +1350,12 @@ export default function AiTutorPage() {
       return;
     }
     setSpeakingMessageId("speak-target");
-    void tts.speak(text, ttsLang, target);
+    void tts.speak(text, ttsLang, target, {
+      // Speak mode must start audio from the click gesture. Avoid the async
+      // cloud probe here so device TTS cannot be blocked before playback.
+      preferCloudVoice: false,
+      fallbackToBrowserTts: true,
+    });
   };
 
   const handleClear = () => {

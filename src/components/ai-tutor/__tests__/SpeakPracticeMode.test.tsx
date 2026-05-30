@@ -10,13 +10,15 @@ vi.mock("@/components/teacher-mercy/TeacherMercyVoiceControls", () => ({
     inactiveLabel,
     unavailableLabel,
     supported,
+    onToggle,
   }: {
     inactiveLabel: string;
     unavailableLabel: string;
     supported: boolean;
+    onToggle: () => void;
   }) => (
     supported ? (
-      <button type="button">{inactiveLabel}</button>
+      <button type="button" onClick={onToggle}>{inactiveLabel}</button>
     ) : (
       <div role="status">{unavailableLabel}</div>
     )
@@ -62,6 +64,36 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     expect(screen.getByRole("button", { name: "Mercy đọc" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Nhập bằng giọng nói|Đọc câu thay vì gõ/i })).toBeInTheDocument();
     expect(screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" })).toBeInTheDocument();
+  });
+
+  it("invokes the read-aloud handler from the Mercy đọc button", () => {
+    const onReadTarget = vi.fn();
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        repeatInput=""
+        pronunciationResult={null}
+        onReadTarget={onReadTarget}
+      />,
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Mercy đọc" }));
+
+    expect(onReadTarget).toHaveBeenCalledTimes(1);
+  });
+
+  it("shows a safe TTS fallback when device voice is unavailable", () => {
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        repeatInput=""
+        ttsSupported={false}
+        pronunciationResult={null}
+      />,
+    );
+
+    expect(screen.queryByRole("button", { name: "Mercy đọc" })).not.toBeInTheDocument();
+    expect(screen.getByText(baseProps.tutorCopy.ui.ttsUnavailable)).toBeInTheDocument();
   });
 
   it("keeps the text repeat fallback visible when the mic is unsupported", () => {
