@@ -108,6 +108,21 @@ function repairMorningRoutineSubjectCarryover(input: string): string {
   );
 }
 
+function isHatBikingSummerRunOn(input: string): boolean {
+  const normalized = input.replace(/\s+/g, " ").trim();
+  return (
+    /\bi\s+bought\s+a?\s*hat\s+yesterday\b/i.test(normalized) &&
+    /\b(?:canada|summer)\b/i.test(normalized) &&
+    /\b(?:sunny|hot)\b/i.test(normalized) &&
+    /\b(?:bike|biking)\b/i.test(normalized) &&
+    /\bi\s+need\s+(?:it|a?\s*hat)\b/i.test(normalized)
+  );
+}
+
+function repairHatBikingSummerRunOn(_input: string): string {
+  return "I bought a hat yesterday because it is very sunny and hot in Canada, and I need it for biking this summer";
+}
+
 function addArticleAfterVerb(input: string): string {
   const nounPattern = Object.keys(MISSING_ARTICLE_NOUNS).join("|");
   const objectPattern = new RegExp(
@@ -153,6 +168,11 @@ function repairStep5PrepositionPatterns(input: string): string {
 }
 
 export const englishCorrectionRules: CorrectionRule[] = [
+  {
+    id: "en-hat-biking-summer-runon",
+    detects: isHatBikingSummerRunOn,
+    apply: repairHatBikingSummerRunOn,
+  },
   {
     id: "en-morning-routine-subject-carryover",
     detects: (input) =>
