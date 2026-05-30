@@ -3,7 +3,7 @@
   "ruleId": "en-yesterday-irregular-beginner-past",
   "language": "en",
   "description": "Generalized past-time detection (audit commit ad3641395). The hasPastTimeMarker helper drives rule en-yesterday-irregular-beginner-past, which rewrites a beginner present-tense irregular verb (buy/do/eat/go/have) to its past form ONLY when a recognized past-time marker is present AND a (subject pronoun + target verb) adjacency exists. The audit's negation lookahead (?!\\s+not\\b) keeps it from mangling negated past. Expectations encode the VERIFIED behaviour of correctWithTutorRules() on current main.",
-  "fp_risk_note": "Past-time detection has the broadest false-positive surface in the audit set, and Lane A has since broadened the marker regex (now recognizing 'on <weekday>', 'in <year>', '<n> hour(s) ago', 'last summer' in addition to the original yesterday/last-<unit>/<n>-<unit>-ago set). That widening raises the FP risk, so the negative cases stress: (1) future markers that look temporal — 'tomorrow', 'next week', future modal 'will go'; (2) already-correct past where a marker is present but no (pronoun + target-verb) adjacency exists — e.g. conditional 'would have gone yesterday'; (3) idioms not recognized as markers — 'back in the day'; (4) nested / possessive time references — \"Yesterday's homework is due tomorrow\"; (5) the negation guard, where 'do not' must NOT be rewritten and the engine escalates to needs_ai. The former coverage-gap markers (on <weekday>/in <year>/an hour ago/last summer) are now covered and live in positive[]; a regression that re-widens the regex without re-checking the negatives will turn future/idiom/possessive sentences into wrong rewrites.",
+  "fp_risk_note": "Past-time detection has the broadest false-positive surface in the audit set. Lane A narrowed beginner past correction so 'on <weekday>', 'in <year>', 'an hour ago', and 'last summer' are not safe rewrite triggers. The negative cases stress: (1) future markers that look temporal — 'tomorrow', 'next week', future modal 'will go'; (2) already-correct past where a marker is present but no (pronoun + target-verb) adjacency exists — e.g. conditional 'would have gone yesterday'; (3) idioms not recognized as markers — 'back in the day'; (4) nested / possessive time references — \"Yesterday's homework is due tomorrow\"; (5) the negation guard, where 'do not' must NOT be rewritten and the engine escalates to needs_ai; (6) unaudited temporal markers that should stay unchanged until explicitly supported. A regression that widens the rewrite trigger without re-checking these will turn uncertain sentences into wrong corrections.",
   "positive": [
     {
       "id": "hptm-pos-001",
@@ -68,38 +68,6 @@
       "expectedCorrection": "The day before yesterday I ate pho.",
       "expectedRuleFired": "hasPastTimeMarker",
       "notes": "Compound marker containing 'yesterday' (eat -> ate)."
-    },
-    {
-      "id": "hptm-pos-009",
-      "input": "On Monday I go to school",
-      "expectedStatus": "corrected",
-      "expectedCorrection": "On Monday I went to school.",
-      "expectedRuleFired": "hasPastTimeMarker",
-      "notes": "Was hptm-neg-011 (coverage gap). Lane A broadened hasPastTimeMarker to recognize 'on <weekday>', so the rule now fires (go -> went)."
-    },
-    {
-      "id": "hptm-pos-010",
-      "input": "In 2024 I go to Japan",
-      "expectedStatus": "corrected",
-      "expectedCorrection": "In 2024 I went to Japan.",
-      "expectedRuleFired": "hasPastTimeMarker",
-      "notes": "Was hptm-neg-012 (coverage gap). Lane A broadened hasPastTimeMarker to recognize 'in <year>', so the rule now fires (go -> went)."
-    },
-    {
-      "id": "hptm-pos-011",
-      "input": "An hour ago I eat lunch",
-      "expectedStatus": "corrected",
-      "expectedCorrection": "An hour ago I ate lunch.",
-      "expectedRuleFired": "hasPastTimeMarker",
-      "notes": "Was hptm-neg-013 (coverage gap). Lane A broadened the '<n> ... ago' pattern to include hour(s), so the rule now fires (eat -> ate)."
-    },
-    {
-      "id": "hptm-pos-012",
-      "input": "Last summer I go to the beach",
-      "expectedStatus": "corrected",
-      "expectedCorrection": "Last summer I went to the beach.",
-      "expectedRuleFired": "hasPastTimeMarker",
-      "notes": "Was hptm-neg-014 (coverage gap). Lane A added 'summer' to the 'last <unit>' set, so the rule now fires (go -> went)."
     }
   ],
   "negative": [
@@ -182,6 +150,38 @@
       "expectedCorrection": "Do you go to school every day?",
       "expectedRuleFired": null,
       "notes": "FP-stress (question form): no past marker; rule must not fire."
+    },
+    {
+      "id": "hptm-neg-011",
+      "input": "On Monday I go to school",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "On Monday I go to school.",
+      "expectedRuleFired": null,
+      "notes": "Coverage gap after Lane A narrowing: 'on <weekday>' is not safe enough for beginner past rewrite, so the rule abstains."
+    },
+    {
+      "id": "hptm-neg-012",
+      "input": "In 2024 I go to Japan",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "In 2024 I go to Japan.",
+      "expectedRuleFired": null,
+      "notes": "Coverage gap after Lane A narrowing: explicit year 'in <year>' is not safe enough for beginner past rewrite, so the rule abstains."
+    },
+    {
+      "id": "hptm-neg-013",
+      "input": "An hour ago I eat lunch",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "An hour ago I eat lunch.",
+      "expectedRuleFired": null,
+      "notes": "Coverage gap after Lane A narrowing: 'an hour ago' is not safe enough for beginner past rewrite, so the rule abstains."
+    },
+    {
+      "id": "hptm-neg-014",
+      "input": "Last summer I go to the beach",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Last summer I go to the beach.",
+      "expectedRuleFired": null,
+      "notes": "Coverage gap after Lane A narrowing: 'last <season>' is not safe enough for beginner past rewrite, so the rule abstains."
     }
   ]
 }

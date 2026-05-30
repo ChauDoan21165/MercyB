@@ -329,15 +329,26 @@ describe("correctionEngine", () => {
     ["She eat rice last night.", "She ate rice last night."],
     ["We have a meeting two days ago.", "We had a meeting two days ago."],
     ["He go last Monday.", "He went last Monday."],
-    ["On Monday I go to school.", "On Monday I went to school."],
-    ["In 2024 I go to Japan.", "In 2024 I went to Japan."],
-    ["An hour ago I eat lunch.", "An hour ago I ate lunch."],
-    ["Last summer I go to the beach.", "Last summer I went to the beach."],
   ])("uses generalized past markers only for known beginner past verbs: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",
       corrected: expected,
       appliedRuleIds: ["en-yesterday-irregular-beginner-past"],
+    });
+  });
+
+  it.each([
+    "On Monday I go to school.",
+    "In 2024 I go to Japan.",
+    "An hour ago I eat lunch.",
+    "Last summer I go to the beach.",
+  ])("does not use unaudited past-time markers for beginner irregular-past correction: %s", (input) => {
+    const result = correctWithTutorRules(input, "en");
+
+    expect(result).toMatchObject({
+      status: "unchanged",
+      corrected: input,
+      appliedRuleIds: [],
     });
   });
 

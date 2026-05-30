@@ -101,6 +101,14 @@ function hasSvaTemporalBlocker(input: string): boolean {
   );
 }
 
+function hasBeginnerPastCorrectionMarker(input: string): boolean {
+  return (
+    /\byesterday\b/i.test(input) ||
+    /\blast\s+(?:night|week|month|year|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(input) ||
+    /\b(?:one|two|three|\d+)\s+(?:day|days|week|weeks|month|months|year|years)\s+ago\b/i.test(input)
+  );
+}
+
 function repairStep5SubjectVerbAgreement(input: string): string {
   return input.replace(
     /\b(He|She|It)\s+(go|make|work)\b/gi,
@@ -314,7 +322,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
   {
     id: "en-yesterday-irregular-beginner-past",
     detects: (input) =>
-      hasPastTimeMarker(input) &&
+      hasBeginnerPastCorrectionMarker(input) &&
       /\b(I|You|We|They|He|She|It)\s+(buy|do|eat|go|have)\b/i.test(input),
     apply: (input) => replaceVerbAfterSubject(input, PAST_VERBS),
   },
