@@ -82,10 +82,22 @@ function isQuestionLike(input: string): boolean {
 function hasPastTimeMarker(input: string): boolean {
   return (
     /\byesterday\b/i.test(input) ||
-    /\blast\s+(?:night|week|month|year|summer|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(input) ||
+    /\blast\s+(?:night|week|month|year|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(input) ||
+    /\b(?:an?|one|two|three|\d+)\s+(?:day|days|week|weeks|month|months|year|years)\s+ago\b/i.test(input) ||
+    /^on\s+(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s+(?:I|you|we|they|he|she|it)\b/i.test(input.trim()) ||
+    /^in\s+\d{4}\s+(?:I|you|we|they|he|she|it)\b/i.test(input.trim()) ||
+    /^(?:an?|one|two|three|\d+)\s+(?:hour|hours)\s+ago\s+(?:I|you|we|they|he|she|it)\b/i.test(input.trim()) ||
+    /^last\s+(?:summer|spring|winter|fall|autumn)\s+(?:I|you|we|they|he|she|it)\b/i.test(input.trim())
+  );
+}
+
+function hasSvaTemporalBlocker(input: string): boolean {
+  return (
+    hasPastTimeMarker(input) ||
     /\bon\s+(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(input) ||
     /\bin\s+\d{4}\b/i.test(input) ||
-    /\b(?:an?|one|two|three|\d+)\s+(?:hour|hours|day|days|week|weeks|month|months|year|years)\s+ago\b/i.test(input)
+    /\b(?:an?|one|two|three|\d+)\s+(?:hour|hours)\s+ago\b/i.test(input) ||
+    /\blast\s+(?:summer|spring|winter|fall|autumn)\b/i.test(input)
   );
 }
 
@@ -345,7 +357,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
     id: "en-step5-subject-verb-agreement",
     detects: (input) =>
       !isQuestionLike(input) &&
-      !hasPastTimeMarker(input) &&
+      !hasSvaTemporalBlocker(input) &&
       /\b(He|She|It)\s+(go|make|work)\b/i.test(input),
     apply: repairStep5SubjectVerbAgreement,
     fpRiskNote: "Third-person -s only covers he/she/it with whitelisted verbs and is blocked by questions, modals, and past markers.",
