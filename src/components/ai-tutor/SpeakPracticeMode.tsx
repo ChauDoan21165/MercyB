@@ -2,6 +2,13 @@ import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVo
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
 import { calculateSentenceMatchPercent } from "@/lib/tutor/speakFollowups";
 
+const VIETNAMESE_LETTER_PATTERN = /[ăâđêôơưàáạảãằắặẳẵầấậẩẫèéẹẻẽềếệểễìíịỉĩòóọỏõồốộổỗờớợởỡùúụủũừứựửữỳýỵỷỹ]/i;
+
+export function isSpeakFollowUpReadAloudEligible(text: string | null | undefined) {
+  const trimmed = String(text ?? "").trim();
+  return /[a-z]/i.test(trimmed) && !VIETNAMESE_LETTER_PATTERN.test(trimmed);
+}
+
 export type SpeakPronunciationResult = {
   mode: "local-fallback" | "azure-batch";
   provider?: "local" | "azure";
@@ -95,6 +102,7 @@ export default function SpeakPracticeMode({
     : "Không dùng được giọng nói trên thiết bị hoặc trình duyệt này. Bạn vẫn có thể luyện bằng cách nghe câu mẫu trước.";
   const targetTtsError = ttsErrorScope === "follow-up" ? null : ttsError;
   const followUpTtsError = ttsErrorScope === "follow-up" ? ttsError : null;
+  const canReadFollowUp = isSpeakFollowUpReadAloudEligible(followUpPrompt);
 
   return (
     <section
@@ -286,7 +294,7 @@ export default function SpeakPracticeMode({
               <p className="mt-1 text-sm font-black leading-6 text-slate-900">
                 {followUpPrompt}
               </p>
-              {ttsSupported ? (
+              {canReadFollowUp && ttsSupported ? (
                 <TeacherMercyVoiceControls
                   kind="speaker"
                   supported={ttsSupported}
@@ -301,10 +309,10 @@ export default function SpeakPracticeMode({
                   onToggle={onReadFollowUp}
                   className="mt-3"
                 />
-              ) : (
+              ) : canReadFollowUp ? (
                 <div className="mt-2 text-[11px] text-slate-500">{tutorCopy.ui.ttsUnavailable}</div>
-              )}
-              {followUpTtsError && (
+              ) : null}
+              {canReadFollowUp && followUpTtsError && (
                 <div
                   className="mt-2 rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold leading-5 text-amber-900"
                   data-testid="ai-tutor-speak-follow-up-tts-error"

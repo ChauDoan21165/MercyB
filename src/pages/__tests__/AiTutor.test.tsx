@@ -64,6 +64,24 @@ class MockSpeechSynthesisUtterance {
   }
 }
 
+class MockEndingAudio {
+  static last: MockEndingAudio | null = null;
+  src = "";
+  onplay: (() => void) | null = null;
+  onended: (() => void) | null = null;
+  onerror: (() => void) | null = null;
+  pause = vi.fn();
+  play = vi.fn(async () => {
+    this.onplay?.();
+    this.onended?.();
+  });
+
+  constructor(src?: string) {
+    this.src = src ?? "";
+    MockEndingAudio.last = this;
+  }
+}
+
 class MockSpeechRecognition extends EventTarget implements SpeechRecognitionLike {
   static last: MockSpeechRecognition | null = null;
   continuous = false;
@@ -139,6 +157,11 @@ beforeEach(() => {
     configurable: true,
     value: undefined,
   });
+  Object.defineProperty(window, "Audio", {
+    configurable: true,
+    value: undefined,
+  });
+  MockEndingAudio.last = null;
 });
 
 async function correctSentence(input: string, expected: string) {
@@ -530,6 +553,7 @@ describe("AiTutor four-tab seed flow", () => {
       utterance.onstart?.();
       utterance.onend?.();
     });
+    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/follow-up.mp3", cached: false });
     Object.defineProperty(window, "speechSynthesis", {
       configurable: true,
       value: {
@@ -545,6 +569,10 @@ describe("AiTutor four-tab seed flow", () => {
       configurable: true,
       value: MockSpeechSynthesisUtterance,
     });
+    Object.defineProperty(window, "Audio", {
+      configurable: true,
+      value: MockEndingAudio,
+    });
     render(<AiTutorPage />);
 
     await correctHatSentence();
@@ -559,11 +587,13 @@ describe("AiTutor four-tab seed flow", () => {
     expect(followUp).toHaveTextContent("Where did you buy it?");
     await userEvent.click(within(followUp).getByRole("button", { name: "Mercy đọc câu hỏi tiếp theo" }));
 
-    await waitFor(() => expect(browserSpeak).toHaveBeenCalledTimes(1));
-    expect(fetchCloudTtsUrl).not.toHaveBeenCalled();
-    const utterance = browserSpeak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
-    expect(utterance.text).toBe("Where did you buy it?");
-    expect(utterance.lang).toBe("en-US");
+    await waitFor(() => expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
+      text: "Where did you buy it?",
+      language: "en",
+    }));
+    expect(MockEndingAudio.last?.src).toBe("https://example.test/follow-up.mp3");
+    expect(MockEndingAudio.last?.play).toHaveBeenCalledTimes(1);
+    expect(browserSpeak).not.toHaveBeenCalled();
   });
 
   it("uses the learner's latest typed Speak topic for the next follow-up", async () => {
@@ -619,6 +649,11 @@ describe("AiTutor four-tab seed flow", () => {
     await waitFor(() => {
       expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Bạn muốn luyện thêm câu khác không?");
     });
+    expect(
+      within(screen.getByTestId("ai-tutor-speak-follow-up")).queryByRole("button", {
+        name: "Mercy đọc câu hỏi tiếp theo",
+      }),
+    ).not.toBeInTheDocument();
   });
 
   it("uses the learner's latest spoken topic instead of drifting back to the corrected seed", async () => {
@@ -682,11 +717,12 @@ describe("AiTutor four-tab seed flow", () => {
     expect(screen.getByTestId("ai-tutor-conversation-mic-fallback")).toBeInTheDocument();
   });
 
-  it("keeps Speak TTS scoped to the latest corrected practice target", async () => {
+  it("keeps Speak TTS scoped to the latest corrected practice target through Mercy audio first", async () => {
     const browserSpeak = vi.fn((utterance: MockSpeechSynthesisUtterance) => {
       utterance.onstart?.();
       utterance.onend?.();
     });
+    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/target.mp3", cached: false });
     Object.defineProperty(window, "speechSynthesis", {
       configurable: true,
       value: {
@@ -702,18 +738,23 @@ describe("AiTutor four-tab seed flow", () => {
       configurable: true,
       value: MockSpeechSynthesisUtterance,
     });
+    Object.defineProperty(window, "Audio", {
+      configurable: true,
+      value: MockEndingAudio,
+    });
     render(<AiTutorPage />);
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
     await userEvent.click(screen.getByRole("button", { name: /Mercy đọc/ }));
 
-    await waitFor(() => expect(browserSpeak).toHaveBeenCalledTimes(1));
-    expect(fetchCloudTtsUrl).not.toHaveBeenCalled();
-    const utterance = browserSpeak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
-    expect(utterance.text).toBe("I bought a hat yesterday.");
-    expect(utterance.lang).toBe("en-US");
-    expect(utterance.text).not.toContain("I buy a hat yesterday");
+    await waitFor(() => expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
+      text: "I bought a hat yesterday.",
+      language: "en",
+    }));
+    expect(MockEndingAudio.last?.src).toBe("https://example.test/target.mp3");
+    expect(MockEndingAudio.last?.play).toHaveBeenCalledTimes(1);
+    expect(browserSpeak).not.toHaveBeenCalled();
   });
 
   it("restarts Speak TTS cleanly on a second Mercy đọc click", async () => {
