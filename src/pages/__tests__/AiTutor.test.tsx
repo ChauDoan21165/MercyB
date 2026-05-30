@@ -627,7 +627,7 @@ describe("AiTutor four-tab seed flow", () => {
       value: {
         speak: browserSpeak,
         cancel: vi.fn(),
-        getVoices: vi.fn(() => []),
+        getVoices: vi.fn(() => [{ lang: "en-US" }]),
         resume: vi.fn(),
         addEventListener: vi.fn(),
         removeEventListener: vi.fn(),
@@ -649,6 +649,74 @@ describe("AiTutor four-tab seed flow", () => {
     expect(utterance.text).toBe("I bought a hat yesterday.");
     expect(utterance.lang).toBe("en-US");
     expect(utterance.text).not.toContain("I buy a hat yesterday");
+  });
+
+  it("restarts Speak TTS cleanly on a second Mercy đọc click", async () => {
+    const cancel = vi.fn();
+    const resume = vi.fn();
+    const browserSpeak = vi.fn((utterance: MockSpeechSynthesisUtterance) => {
+      utterance.onstart?.();
+    });
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        speak: browserSpeak,
+        cancel,
+        getVoices: vi.fn(() => [{ lang: "en-US" }]),
+        resume,
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
+    });
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await userEvent.click(screen.getByRole("button", { name: /Mercy đọc/ }));
+    await waitFor(() => expect(browserSpeak).toHaveBeenCalledTimes(1));
+    await userEvent.click(screen.getByRole("button", { name: /Mercy đọc|Dừng đọc/ }));
+
+    await waitFor(() => expect(browserSpeak).toHaveBeenCalledTimes(2));
+    expect(cancel).toHaveBeenCalled();
+    expect(resume).toHaveBeenCalled();
+    expect(browserSpeak.mock.calls[0][0]).not.toBe(browserSpeak.mock.calls[1][0]);
+    expect((browserSpeak.mock.calls[1][0] as MockSpeechSynthesisUtterance).text).toBe("I bought a hat yesterday.");
+  });
+
+  it("shows the safe Speak TTS error when browser speech fails", async () => {
+    const browserSpeak = vi.fn((utterance: MockSpeechSynthesisUtterance) => {
+      utterance.onerror?.();
+    });
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        speak: browserSpeak,
+        cancel: vi.fn(),
+        getVoices: vi.fn(() => [{ lang: "en-US" }]),
+        resume: vi.fn(),
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
+    });
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await userEvent.click(screen.getByRole("button", { name: /Mercy đọc/ }));
+
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-speak-tts-error")).toHaveTextContent(
+        "Không nghe thấy? Kiểm tra âm lượng hoặc thử bấm lại.",
+      );
+    });
   });
 
   it("updates Speak target when Grammar corrects a new sentence", async () => {

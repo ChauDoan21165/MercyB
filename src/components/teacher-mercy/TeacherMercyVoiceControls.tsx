@@ -79,7 +79,7 @@ export default function TeacherMercyVoiceControls({
         }
         onToggle();
       }}
-      disabled={disabled || preparing}
+      disabled={disabled || (preparing && kind !== "speaker")}
       className={`min-h-[44px] rounded-full border px-4 py-2.5 text-sm font-black transition ${
         active
           ? "border-red-300 bg-red-50 text-red-700"
