@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import SpeakPracticeMode, {
   type SpeakPronunciationResult,
@@ -35,6 +35,7 @@ const baseProps = {
   followUpIsPivot: false,
   onMicToggle: vi.fn(),
   onReadTarget: vi.fn(),
+  onRepeatInputChange: vi.fn(),
   tutorCopy: getTutorCopy("en", "vi"),
 };
 
@@ -52,6 +53,51 @@ function renderSpeak(
 }
 
 describe("SpeakPracticeMode pronunciation result display", () => {
+  it("renders the target sentence and existing Speak controls", () => {
+    renderSpeak(null, "");
+
+    expect(screen.getByTestId("ai-tutor-speak-target")).toHaveTextContent(
+      "I bought a hat yesterday.",
+    );
+    expect(screen.getByRole("button", { name: "Mercy đọc" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Nhập bằng giọng nói|Đọc câu thay vì gõ/i })).toBeInTheDocument();
+    expect(screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" })).toBeInTheDocument();
+  });
+
+  it("keeps the text repeat fallback visible when the mic is unsupported", () => {
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        repeatInput=""
+        micSupported={false}
+        pronunciationResult={null}
+      />,
+    );
+
+    expect(screen.getByTestId("ai-tutor-speak-mic-fallback-message")).toHaveTextContent(
+      "Không dùng được giọng nói",
+    );
+    expect(screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" })).toBeInTheDocument();
+  });
+
+  it("calls the repeat input change handler from the text fallback", () => {
+    const onRepeatInputChange = vi.fn();
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        repeatInput=""
+        pronunciationResult={null}
+        onRepeatInputChange={onRepeatInputChange}
+      />,
+    );
+
+    fireEvent.change(screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" }), {
+      target: { value: "I bought a hat yesterday." },
+    });
+
+    expect(onRepeatInputChange).toHaveBeenCalledWith("I bought a hat yesterday.");
+  });
+
   it("shows Step 3 fallback wording only for local scoring", () => {
     renderSpeak({ mode: "local-fallback", provider: "local" });
 

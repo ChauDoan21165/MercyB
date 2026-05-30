@@ -36,6 +36,7 @@ type Props = {
   followUpIsPivot: boolean;
   onMicToggle: () => void;
   onReadTarget: () => void;
+  onRepeatInputChange: (value: string) => void;
   tutorCopy: TutorCopy;
 };
 
@@ -54,11 +55,14 @@ export default function SpeakPracticeMode({
   followUpIsPivot,
   onMicToggle,
   onReadTarget,
+  onRepeatInputChange,
   tutorCopy,
 }: Props) {
-  const hasTarget = Boolean(targetSentence);
-  const localScore = targetSentence && repeatInput.trim()
-    ? calculateSentenceMatchPercent(repeatInput, targetSentence)
+  const fallbackTarget = tutorCopy.starterQuestions[0] ?? "What do you usually do in the morning?";
+  const practiceTarget = targetSentence?.trim() || fallbackTarget;
+  const hasCorrectedTarget = Boolean(targetSentence?.trim());
+  const localScore = practiceTarget && repeatInput.trim()
+    ? calculateSentenceMatchPercent(repeatInput, practiceTarget)
     : null;
   const hasAzureBatchResult =
     pronunciationResult?.mode === "azure-batch" &&
@@ -92,21 +96,19 @@ export default function SpeakPracticeMode({
         Luyện nói câu đã sửa
       </h2>
 
-      {!hasTarget ? (
-        <div data-testid="ai-tutor-speak-generic-prompt" className="mt-4 rounded-[16px] border border-dashed border-slate-200 bg-slate-50 px-4 py-4">
-          <p className="text-sm font-bold leading-6 text-slate-700">
-            {tutorCopy.starterQuestions[0] ?? "What do you usually do in the morning?"}
-          </p>
-        </div>
-      ) : (
-        <>
+      <>
           <div className="mt-4 rounded-[16px] border border-emerald-200 bg-emerald-50 px-4 py-4">
             <div className="text-xs font-black uppercase text-emerald-700">
-              Câu mẫu
+              {hasCorrectedTarget ? "Câu mẫu" : "Câu luyện"}
             </div>
             <p data-testid="ai-tutor-speak-target" className="mt-1 text-lg font-black leading-7 text-emerald-950">
-              {targetSentence}
+              {practiceTarget}
             </p>
+            {!hasCorrectedTarget && (
+              <p data-testid="ai-tutor-speak-generic-prompt" className="mt-2 text-xs font-semibold leading-5 text-emerald-800">
+                Chưa có câu đã sửa. Bạn có thể luyện câu mẫu này trước.
+              </p>
+            )}
             {ttsSupported ? (
               <TeacherMercyVoiceControls
                 kind="speaker"
@@ -164,6 +166,22 @@ export default function SpeakPracticeMode({
                 {repeatInput}
               </p>
             )}
+            <label
+              htmlFor="ai-tutor-speak-repeat-input"
+              className="mt-3 block text-xs font-black uppercase text-slate-500"
+            >
+              Gõ câu bạn đọc lại
+            </label>
+            <textarea
+              id="ai-tutor-speak-repeat-input"
+              data-testid="ai-tutor-speak-repeat-input"
+              value={repeatInput}
+              onChange={(event) => onRepeatInputChange(event.target.value)}
+              rows={3}
+              className="mt-2 w-full rounded-[14px] border border-slate-200 bg-white px-3 py-2 text-sm font-semibold leading-6 text-slate-800 outline-none transition focus:border-indigo-300 focus:ring-2 focus:ring-indigo-100"
+              placeholder="I bought a hat yesterday."
+              aria-label="Gõ câu bạn đọc lại"
+            />
           </div>
 
           {(score !== null || hasAzureBatchResult) && (
@@ -243,7 +261,6 @@ export default function SpeakPracticeMode({
             </div>
           )}
         </>
-      )}
     </section>
   );
 }
