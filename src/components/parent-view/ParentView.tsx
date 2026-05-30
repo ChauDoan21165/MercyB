@@ -121,7 +121,7 @@ export default function ParentView({
     <div
       data-testid="parent-view"
       data-locale={locale}
-      className="mx-auto w-full max-w-[560px] space-y-4 px-4 py-4"
+      className="mx-auto w-full max-w-[560px] space-y-4 py-4"
     >
       <Headline summary={summary} locale={locale} />
       {summary.isEmpty ? (
@@ -222,7 +222,16 @@ function CategoryBucket({
           data-testid={`parent-numbers-toggle-${config.id}`}
           onClick={() => setShowNumbers((v) => !v)}
           aria-pressed={showNumbers}
-          className="shrink-0 rounded-full border border-slate-200 bg-white/80 px-2.5 py-1 text-[11px] font-medium text-slate-600"
+          aria-label={
+            showNumbers
+              ? locale === "en"
+                ? `Hide numbers for ${config.titleEn}`
+                : `Ẩn số liệu cho ${config.titleVi}`
+              : locale === "en"
+                ? `Show numbers for ${config.titleEn}`
+                : `Xem số liệu cho ${config.titleVi}`
+          }
+          className="shrink-0 rounded-full border border-slate-200 bg-white/80 px-3 py-2 text-[11px] font-medium text-slate-600"
         >
           {showNumbers
             ? locale === "en"
@@ -315,6 +324,11 @@ function CategoryItem({
             enClassName="mt-0.5 text-[12px] leading-snug text-slate-500"
           />
           {showNumbers && <NumericDrillIn item={item} locale={locale} />}
+          {hasExample && (
+            <span className="mt-1 block text-[11px] font-medium text-indigo-600">
+              {locale === "en" ? "View example" : "Xem ví dụ"}
+            </span>
+          )}
         </div>
         {hasExample && (
           <span aria-hidden className="mt-0.5 text-slate-400">
@@ -387,12 +401,13 @@ function AskMercyCta() {
     <Link
       to="/weak-at"
       data-testid="parent-ask-mercy"
+      aria-label="Mở bản đồ điểm cần luyện"
       className="block rounded-[20px] border border-slate-200/70 bg-white px-4 py-3 text-center text-sm font-semibold text-indigo-700 shadow-[0_10px_28px_rgba(15,23,42,0.04)]"
     >
       <Bilingual
         primary="vi"
-        vi="Hỏi Mercy về điều này"
-        en="Ask Mercy about this"
+        vi="Xem bản đồ điểm cần luyện"
+        en="Open practice map"
         viClassName="text-sm font-semibold text-indigo-700"
         enClassName="text-[12px] text-slate-500"
       />
@@ -440,6 +455,8 @@ function AccessSkeleton() {
   return (
     <div
       data-testid="parent-access-loading"
+      role="status"
+      aria-live="polite"
       className="mx-auto w-full max-w-[560px] px-4 py-8 text-center text-sm text-slate-500"
     >
       <span lang="vi">Đang kiểm tra quyền truy cập…</span>
@@ -451,7 +468,10 @@ function DataSkeleton() {
   return (
     <div
       data-testid="parent-data-loading"
-      className="mx-auto w-full max-w-[560px] space-y-4 px-4 py-4"
+      role="status"
+      aria-live="polite"
+      aria-label="Đang tải tóm tắt tiến bộ"
+      className="mx-auto w-full max-w-[560px] space-y-4 py-4"
     >
       {[0, 1, 2].map((i) => (
         <div key={i} className="h-28 animate-pulse rounded-[20px] bg-slate-100" />
@@ -471,8 +491,8 @@ function EmptyState() {
       </div>
       <Bilingual
         primary="vi"
-        vi="Chưa đủ dữ liệu tuần này. Hãy luyện thêm vài buổi để xem tóm tắt."
-        en="Not enough data this week — a few more sessions will fill this in."
+        vi="Chưa có tóm tắt tuần này. Hãy luyện thêm vài buổi để phần này hiện rõ hơn."
+        en="A few more practice sessions will fill this summary in."
         viClassName="text-sm font-semibold leading-snug text-slate-900"
         enClassName="mt-1 text-[12px] leading-snug text-slate-500"
       />
