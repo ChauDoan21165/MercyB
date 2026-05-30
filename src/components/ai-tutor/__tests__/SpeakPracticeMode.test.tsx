@@ -109,6 +109,23 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     expect(onReadTarget).not.toHaveBeenCalled();
   });
 
+  it("does not render follow-up read-aloud controls for Vietnamese helper text", () => {
+    const onReadFollowUp = vi.fn();
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        followUpPrompt="Bạn muốn luyện thêm câu khác không?"
+        followUpIsPivot
+        onReadFollowUp={onReadFollowUp}
+      />,
+    );
+
+    const followUp = within(screen.getByTestId("ai-tutor-speak-follow-up"));
+    expect(followUp.getByText("Bạn muốn luyện thêm câu khác không?")).toBeInTheDocument();
+    expect(followUp.queryByRole("button", { name: "Mercy đọc" })).not.toBeInTheDocument();
+    expect(onReadFollowUp).not.toHaveBeenCalled();
+  });
+
   it("shows a safe TTS fallback when device voice is unavailable", () => {
     render(
       <SpeakPracticeMode

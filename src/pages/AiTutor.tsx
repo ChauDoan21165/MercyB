@@ -93,7 +93,9 @@ import type {
   MercyConversationMessage,
 } from "@/components/ai-tutor/ConversationMode";
 import JourneyMode from "@/components/ai-tutor/JourneyMode";
-import SpeakPracticeMode from "@/components/ai-tutor/SpeakPracticeMode";
+import SpeakPracticeMode, {
+  isSpeakFollowUpReadAloudEligible,
+} from "@/components/ai-tutor/SpeakPracticeMode";
 import LogicMode from "@/components/ai-tutor/LogicMode";
 import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
 
@@ -1389,17 +1391,12 @@ export default function AiTutorPage() {
       tts.stop();
     }
     setSpeakingMessageId("speak-target");
-    void tts.speak(text, ttsLang, target, {
-      // Speak mode must start audio from the click gesture. Avoid the async
-      // cloud probe here so device TTS cannot be blocked before playback.
-      preferCloudVoice: false,
-      fallbackToBrowserTts: true,
-    });
+    void tts.speak(text, ttsLang, target);
   };
 
   const handleReadSpeakFollowUp = () => {
     const text = speakFollowUpSession.currentQuestion?.trim() || "";
-    if (!text) return;
+    if (!isSpeakFollowUpReadAloudEligible(text)) return;
     if (stt.listening) {
       ignoreNextSttCommitRef.current = true;
       stt.stop();
@@ -1411,12 +1408,7 @@ export default function AiTutorPage() {
       tts.stop();
     }
     setSpeakingMessageId("speak-follow-up");
-    void tts.speak(text, ttsLang, target, {
-      // Speak mode must start audio from the click gesture. Avoid the async
-      // cloud probe here so device TTS cannot be blocked before playback.
-      preferCloudVoice: false,
-      fallbackToBrowserTts: true,
-    });
+    void tts.speak(text, ttsLang, target);
   };
 
   const handleClear = () => {
