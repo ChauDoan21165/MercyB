@@ -35,6 +35,32 @@ stages:
   - test
   - backup
 
+# ── Global CI tuning (Lane C: faster feedback) ─────────────────────────
+#
+# The local Mac runner is `concurrent = 1`, so the four `test`-stage jobs
+# run strictly serially — every second of per-job overhead is a second of
+# pipeline wall-clock. These knobs trim the cache archive/extract tax that
+# wraps each job (a trace showed ~15s to save + ~6s to restore the
+# node_modules cache, per job):
+#   - FF_USE_FASTZIP            parallel zip impl; the large node_modules
+#                               cache (~1756 pkgs) archives far faster
+#                               than the default gzip path.
+#   - CACHE_COMPRESSION_LEVEL   `fast` trades a little cache size for
+#                               speed. The cache is local-only on this
+#                               runner ("stored only locally"), so the
+#                               extra bytes cost nothing.
+#   - TRANSFER_METER_FREQUENCY  progress logging cadence only; no
+#                               behaviour change.
+#   - GIT_DEPTH                 bounded shallow clone. CI's only git usage
+#                               (status/diff/ls-files in the registry-drift
+#                               and check-no-raw-react-lazy steps) reads
+#                               the working tree, never deep history.
+variables:
+  FF_USE_FASTZIP: "true"
+  CACHE_COMPRESSION_LEVEL: "fast"
+  TRANSFER_METER_FREQUENCY: "2s"
+  GIT_DEPTH: "20"
+
 # ── Shared anchors for the `test` stage ────────────────────────────────
 #
 # `node:22-bullseye-slim` matches `.github/workflows/ci.yml`'s pinned
@@ -42,20 +68,32 @@ stages:
 # for the project's native deps; the size cost (~150 MB) is paid once
 # per runner cache.
 
+# Reusable npm cache definition (key + paths only). Each job picks a
+# `policy`. The key tracks package-lock.json so a lockfile change
+# invalidates the cache and forces a fresh install.
+#
+# Producer/consumer split: `build` runs first and is the cache PRODUCER
+# (`pull-push`). The lighter jobs (lint / validate-rooms /
+# module-boundaries) are CONSUMERS (`pull`) — they still run `npm ci`, so
+# a cache miss is always safe; they simply stop re-archiving an identical
+# node_modules (~15s each, per the trace). On a `concurrent = 1` runner
+# those three saves are pure serial dead time, so dropping them comes off
+# the pipeline wall-clock directly. Shared-runner fallback jobs keep
+# `pull-push` (the anchor default) because they run on a different runner
+# with its own cold local cache and must seed it themselves.
+.npm_cache_def: &npm_cache_def
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - node_modules/
+    - .npm/
+
 .node_job: &node_job
   image: node:22-bullseye-slim
   interruptible: true
-  # Cache npm install output across jobs of the same MR / branch. The
-  # cache key tracks package-lock.json so a lockfile change invalidates
-  # the cache and forces a fresh install. `pull-push` lets the first
-  # job populate the cache and later jobs pull it.
   cache:
-    key:
-      files:
-        - package-lock.json
-    paths:
-      - node_modules/
-      - .npm/
+    <<: *npm_cache_def
     policy: pull-push
   before_script:
     # `--legacy-peer-deps` mirrors the GitHub workflow's flag — the
@@ -288,6 +326,11 @@ build:shared-fallback:
 lint:
   <<: [*node_job, *local_runner, *lint_test_rules]
   stage: test
+  # Cache consumer: pull only, never re-archive node_modules. See
+  # `.npm_cache_def`.
+  cache:
+    <<: *npm_cache_def
+    policy: pull
   script: *lint_script
 
 lint:shared-fallback:
@@ -301,6 +344,11 @@ lint:shared-fallback:
 validate-rooms:
   <<: [*node_job, *local_runner, *room_test_rules]
   stage: test
+  # Cache consumer: pull only, never re-archive node_modules. See
+  # `.npm_cache_def`.
+  cache:
+    <<: *npm_cache_def
+    policy: pull
   script: *validate_rooms_script
 
 validate-rooms:shared-fallback:
@@ -314,6 +362,11 @@ validate-rooms:shared-fallback:
 module-boundaries:
   <<: [*node_job, *local_runner, *module_test_rules]
   stage: test
+  # Cache consumer: pull only, never re-archive node_modules. See
+  # `.npm_cache_def`.
+  cache:
+    <<: *npm_cache_def
+    policy: pull
   script: *module_boundaries_script
 
 module-boundaries:shared-fallback:
