@@ -135,13 +135,20 @@ export default function SpeakPracticeMode({
               </div>
             )}
             {ttsError && (
-              <p
+              <div
                 className="mt-2 rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold leading-5 text-amber-900"
                 data-testid="ai-tutor-speak-tts-error"
                 role="status"
               >
-                {ttsError}
-              </p>
+                <span>{ttsError}</span>
+                <button
+                  type="button"
+                  onClick={onReadTarget}
+                  className="ml-2 rounded-full border border-amber-300 bg-white px-2 py-0.5 text-[11px] font-black text-amber-900"
+                >
+                  Thử lại
+                </button>
+              </div>
             )}
           </div>
 

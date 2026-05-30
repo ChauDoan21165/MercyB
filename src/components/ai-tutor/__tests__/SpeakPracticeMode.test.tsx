@@ -101,20 +101,24 @@ describe("SpeakPracticeMode pronunciation result display", () => {
   });
 
   it("shows read-aloud progress and the safe TTS error message", () => {
+    const onReadTarget = vi.fn();
     render(
       <SpeakPracticeMode
         {...baseProps}
         repeatInput=""
         pronunciationResult={null}
         ttsSpeaking
-        ttsError="Không nghe thấy? Kiểm tra âm lượng hoặc thử bấm lại."
+        ttsError="Nếu không nghe thấy, hãy kiểm tra âm lượng, tab Chrome có bị tắt tiếng không, hoặc thử Safari."
+        onReadTarget={onReadTarget}
       />,
     );
 
     expect(screen.getByRole("button", { name: "Đang đọc…" })).toBeInTheDocument();
     expect(screen.getByTestId("ai-tutor-speak-tts-error")).toHaveTextContent(
-      "Không nghe thấy? Kiểm tra âm lượng hoặc thử bấm lại.",
+      "Nếu không nghe thấy, hãy kiểm tra âm lượng, tab Chrome có bị tắt tiếng không, hoặc thử Safari.",
     );
+    fireEvent.click(screen.getByRole("button", { name: "Thử lại" }));
+    expect(onReadTarget).toHaveBeenCalledTimes(1);
   });
 
   it("keeps the text repeat fallback visible when the mic is unsupported", () => {

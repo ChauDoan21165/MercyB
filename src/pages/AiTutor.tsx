@@ -999,6 +999,16 @@ export default function AiTutorPage() {
     }
   }, [mode, stt.listening, stt.transcript]);
 
+  useEffect(() => {
+    if (mode !== "speak") return;
+    const repeat = normalizeSpokenText(speakRepeatInput);
+    if (!repeat) return;
+    const timerId = window.setTimeout(() => {
+      recordSpeakRepeatAttempt(repeat);
+    }, 350);
+    return () => window.clearTimeout(timerId);
+  }, [latestCorrectedSeed?.correctedSentence, mode, speakRepeatInput]);
+
   const handleMicToggle = () => {
     if (stt.listening) { stt.stop(); return; }
     stt.reset();

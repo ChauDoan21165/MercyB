@@ -519,6 +519,30 @@ describe("AiTutor four-tab seed flow", () => {
     expect(score).toHaveTextContent("Bạn nói giống câu mẫu khoảng 100%.");
     expect(score).toHaveTextContent("Mercy đang nghe theo từ. Sẽ chấm phát âm chi tiết hơn sau.");
     expect(score).not.toHaveTextContent("Mercy đã chấm phát âm chi tiết hơn bằng từng âm.");
+
+    const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+    expect(followUp).toHaveTextContent("Where did you buy it?");
+    expect(followUp).not.toHaveTextContent("bằng từng âm");
+  });
+
+  it("uses the learner's latest typed Speak topic for the next follow-up", async () => {
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    await userEvent.type(
+      screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" }),
+      "I had dinner with my family.",
+    );
+
+    const score = await screen.findByTestId("ai-tutor-speak-score");
+    expect(score).toHaveTextContent("Bạn nói giống câu mẫu khoảng");
+
+    const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+    expect(followUp).toHaveTextContent("What did you eat?");
+    expect(followUp).not.toHaveTextContent("Where did you buy it?");
+    expect(followUp).not.toHaveTextContent(/morning|work/i);
   });
 
   it("does not repeat Speak follow-up templates for the same corrected sentence", async () => {
