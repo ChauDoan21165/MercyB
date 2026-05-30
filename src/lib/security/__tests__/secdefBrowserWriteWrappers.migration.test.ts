@@ -25,7 +25,7 @@ const repoRoot = resolve(here, "../../../../");
 const migration = readFileSync(
   resolve(
     repoRoot,
-    "supabase/migrations/20260622000000_secdef_browser_write_wrappers.sql",
+    "supabase/migrations/20260622000001_secdef_browser_write_wrappers.sql",
   ),
   "utf8",
 );
