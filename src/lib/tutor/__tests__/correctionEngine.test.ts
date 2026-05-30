@@ -14,6 +14,8 @@ describe("correctionEngine", () => {
     ["He have a test yesterday.", "He had a test yesterday."],
     ["I have lunch yesterday.", "I had lunch yesterday."],
     ["I do homework yesterday.", "I did homework yesterday."],
+    ["She eat rice last night.", "She ate rice last night."],
+    ["We have a meeting two days ago.", "We had a meeting two days ago."],
     ["He go to school every day.", "He goes to school every day."],
     ["She eat rice every day.", "She eats rice every day."],
     ["It have food every day.", "It has food every day."],
@@ -23,6 +25,11 @@ describe("correctionEngine", () => {
     ["Many student like English.", "Many students like English."],
     ["This book I like.", "I like this book."],
     ["English I study every day.", "I study English every day."],
+    ["In my family, my mother I love very much.", "In my family, I love my mother very much."],
+    ["She very happy.", "She is very happy."],
+    ["He very busy today.", "He is very busy today."],
+    ["They very tired.", "They are very tired."],
+    ["I yesterday bought a hat.", "I bought a hat yesterday."],
   ])("corrects beginner English fallback: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",
@@ -69,6 +76,7 @@ describe("correctionEngine", () => {
     ["I depend of my family", "I depend on my family."],
     ["She is interested with English", "She is interested in English."],
     ["He is good in English", "He is good at English."],
+    ["I go school every day", "I go to school every day."],
     ["I listen music every day", "I listen to music every day."],
   ])("corrects whitelisted Step 5 preposition pattern: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
@@ -82,6 +90,7 @@ describe("correctionEngine", () => {
     "I work in English every day.",
     "She is good in class.",
     "I listen to music every day.",
+    "I go to school every day.",
     "It depends on the weather.",
   ])("does not broadly rewrite prepositions: %s", (input) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
@@ -115,6 +124,12 @@ describe("correctionEngine", () => {
   it.each([
     "I bought hats yesterday.",
     "She is a teacher.",
+    "She eats rice every night.",
+    "She is very happy.",
+    "They are very tired.",
+    "She very quickly finished.",
+    "Yesterday I bought a hat.",
+    "My mother loves me very much.",
     "I have one book.",
     "I have some rice.",
     "This book, I like it.",

@@ -59,7 +59,7 @@ function replaceVerbAfterSubject(
   verbs: Record<string, string>,
 ): string {
   const verbPattern = Object.keys(verbs).join("|");
-  const pattern = new RegExp(`\\b(I|You|We|They|He|She|It)\\s+(${verbPattern})\\b`, "gi");
+  const pattern = new RegExp(`\\b(I|You|We|They|He|She|It)\\s+(${verbPattern})\\b(?!\\s+not\\b)`, "gi");
   return input.replace(pattern, (_match, subject: string, verb: string) => {
     return `${subject} ${verbs[verb.toLowerCase()] ?? verb}`;
   });
@@ -184,7 +184,8 @@ function pluralizeAfterQuantity(input: string): string {
 function repairTopicCommentOrder(input: string): string {
   return input
     .replace(/^this book i like[.?!]?$/i, "I like this book")
-    .replace(/^english i study every day[.?!]?$/i, "I study English every day");
+    .replace(/^english i study every day[.?!]?$/i, "I study English every day")
+    .replace(/^in my family,?\s+my mother i love very much[.?!]?$/i, "In my family, I love my mother very much");
 }
 
 function repairStep5PrepositionPatterns(input: string): string {
@@ -192,7 +193,19 @@ function repairStep5PrepositionPatterns(input: string): string {
     .replace(/\b(depend|depends|depended|depending)\s+of\b/gi, "$1 on")
     .replace(/\b(interested)\s+with\b/gi, "$1 in")
     .replace(/\b(good)\s+in\s+(English|math|science)\b/gi, "$1 at $2")
+    .replace(/\b(go|goes|went|going)\s+school\b/gi, "$1 to school")
     .replace(/\b(listen|listens|listened|listening)\s+(music|the music|songs|a song|the song)\b/gi, "$1 to $2");
+}
+
+function repairBeVerbOmission(input: string): string {
+  return input
+    .replace(/\b(I)\s+(very\s+(?:happy|sad|tired|busy)(?:\s+today)?)\b/gi, "$1 am $2")
+    .replace(/\b(He|She|It)\s+(very\s+(?:happy|sad|tired|busy)(?:\s+today)?)\b/gi, "$1 is $2")
+    .replace(/\b(You|We|They)\s+(very\s+(?:happy|sad|tired|busy)(?:\s+today)?)\b/gi, "$1 are $2");
+}
+
+function repairTimeExpressionPlacement(input: string): string {
+  return input.replace(/^i yesterday bought a hat[.?!]?$/i, "I bought a hat yesterday");
 }
 
 export const englishCorrectionRules: CorrectionRule[] = [
@@ -216,7 +229,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
   {
     id: "en-yesterday-irregular-beginner-past",
     detects: (input) =>
-      /\byesterday\b/i.test(input) &&
+      hasPastTimeMarker(input) &&
       /\b(I|You|We|They|He|She|It)\s+(buy|do|eat|go|have)\b/i.test(input),
     apply: (input) => replaceVerbAfterSubject(input, PAST_VERBS),
   },
@@ -237,8 +250,20 @@ export const englishCorrectionRules: CorrectionRule[] = [
     id: "en-l4-topic-comment-word-order",
     detects: (input) =>
       /^this book i like[.?!]?$/i.test(input.trim()) ||
-      /^english i study every day[.?!]?$/i.test(input.trim()),
+      /^english i study every day[.?!]?$/i.test(input.trim()) ||
+      /^in my family,?\s+my mother i love very much[.?!]?$/i.test(input.trim()),
     apply: repairTopicCommentOrder,
+  },
+  {
+    id: "en-time-expression-placement",
+    detects: (input) => /^i yesterday bought a hat[.?!]?$/i.test(input.trim()),
+    apply: repairTimeExpressionPlacement,
+  },
+  {
+    id: "en-be-verb-omission",
+    detects: (input) =>
+      /\b(?:I|He|She|It|You|We|They)\s+very\s+(?:happy|sad|tired|busy)(?:\s+today)?\b/i.test(input),
+    apply: repairBeVerbOmission,
   },
   {
     id: "en-step5-subject-verb-agreement",
@@ -254,6 +279,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
       /\b(depend|depends|depended|depending)\s+of\b/i.test(input) ||
       /\binterested\s+with\b/i.test(input) ||
       /\bgood\s+in\s+(English|math|science)\b/i.test(input) ||
+      /\b(go|goes|went|going)\s+school\b/i.test(input) ||
       /\b(listen|listens|listened|listening)\s+(music|the music|songs|a song|the song)\b/i.test(input),
     apply: repairStep5PrepositionPatterns,
   },
