@@ -9,6 +9,10 @@ OSASCRIPT_BIN="${MERCYB_OSASCRIPT_BIN:-/usr/bin/osascript}"
 LOG_FILE="${MERCYB_RUNNER_HEALTH_LOG:-$HOME/Library/Logs/MercyB/ci-runner-healthcheck.log}"
 NOTIFY_CMD="${MERCYB_RUNNER_NOTIFY_CMD:-}"
 
+# Intentional-pause switch: when the local Mac runner is deliberately stopped
+# (cloud GitLab runners are primary), `touch ~/.mercyb-runner-paused` and this
+# monitor exits silently instead of firing false "Docker daemon down" /
+# "gitlab-runner not started" alerts. Managed by scripts/{pause,resume}-runner-monitor.sh.
 if [ -f "$PAUSE_MARKER" ]; then
   exit 0
 fi
