@@ -216,7 +216,7 @@ function repairStep5PrepositionPatterns(input: string): string {
     .replace(/\b(depend|depends|depended|depending)\s+of\b/gi, "$1 on")
     .replace(/\b(interested)\s+with\b/gi, "$1 in")
     .replace(/\b(good)\s+in\s+(English|math|science)\b/gi, "$1 at $2")
-    .replace(/\b(go|goes|went|going)\s+school\b/gi, "$1 to school")
+    .replace(/\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/gi, "$1 to school")
     .replace(/\b(listen|listens|listened|listening)\s+(music|the music|songs|a song|the song)\b/gi, "$1 to $2");
 }
 
@@ -300,7 +300,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
       /\b(depend|depends|depended|depending)\s+of\b/i.test(input) ||
       /\binterested\s+with\b/i.test(input) ||
       /\bgood\s+in\s+(English|math|science)\b/i.test(input) ||
-      /\b(go|goes|went|going)\s+school\b/i.test(input) ||
+      /\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/i.test(input) ||
       /\b(listen|listens|listened|listening)\s+(music|the music|songs|a song|the song)\b/i.test(input),
     apply: repairStep5PrepositionPatterns,
   },
