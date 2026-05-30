@@ -117,6 +117,7 @@ describe("Teacher Mercy voiceEngine", () => {
     });
 
     expect(fetchCloudTtsUrl).toHaveBeenCalled();
+    expect(window.speechSynthesis.resume).toHaveBeenCalled();
     expect(synth.speak).toHaveBeenCalledTimes(1);
     expect(result.fallback).toBe(true);
   });

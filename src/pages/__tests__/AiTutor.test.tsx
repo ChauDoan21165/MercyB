@@ -542,6 +542,7 @@ describe("AiTutor four-tab seed flow", () => {
         speak: browserSpeak,
         cancel: vi.fn(),
         getVoices: vi.fn(() => []),
+        resume: vi.fn(),
         addEventListener: vi.fn(),
         removeEventListener: vi.fn(),
       },
@@ -557,8 +558,10 @@ describe("AiTutor four-tab seed flow", () => {
     await userEvent.click(screen.getByRole("button", { name: /Mercy đọc/ }));
 
     await waitFor(() => expect(browserSpeak).toHaveBeenCalledTimes(1));
+    expect(fetchCloudTtsUrl).not.toHaveBeenCalled();
     const utterance = browserSpeak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
     expect(utterance.text).toBe("I bought a hat yesterday.");
+    expect(utterance.lang).toBe("en-US");
     expect(utterance.text).not.toContain("I buy a hat yesterday");
   });
 

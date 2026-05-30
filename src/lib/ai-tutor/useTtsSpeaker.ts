@@ -23,7 +23,10 @@ export interface UseTtsSpeakerResult {
     text: string,
     lang: string,
     target?: TutorLanguageCode,
-    options?: Pick<SpeakTutorTextOptions, "voiceStyle">,
+    options?: Pick<
+      SpeakTutorTextOptions,
+      "voiceStyle" | "preferCloudVoice" | "fallbackToBrowserTts"
+    >,
   ) => Promise<void>;
   stop: () => void;
   error: string | null;
@@ -82,7 +85,10 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
     text: string,
     lang: string,
     target: TutorLanguageCode = "en",
-    options: Pick<SpeakTutorTextOptions, "voiceStyle"> = {},
+    options: Pick<
+      SpeakTutorTextOptions,
+      "voiceStyle" | "preferCloudVoice" | "fallbackToBrowserTts"
+    > = {},
   ) => {
     const safeText = String(text ?? "").trim();
     if (!safeText) return;
@@ -108,8 +114,9 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
     const result = await speakTutorText(safeText, {
       targetLanguage: targetLanguage.code,
       voiceStyle: options.voiceStyle ?? "teacher-mercy",
-      preferCloudVoice: true,
-      fallbackToBrowserTts: targetLanguage.supportsBrowserTts,
+      preferCloudVoice: options.preferCloudVoice ?? true,
+      fallbackToBrowserTts:
+        options.fallbackToBrowserTts ?? targetLanguage.supportsBrowserTts,
     });
 
     if (requestRef.current !== requestId) return;

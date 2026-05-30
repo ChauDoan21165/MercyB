@@ -198,6 +198,9 @@ async function speakViaBrowser(text: string, locale: string, currentRequestId: n
 
     currentUtterance = utterance;
     try {
+      // Some mobile browsers suspend the speech queue between user gestures.
+      // Resume immediately before speaking so device TTS starts reliably.
+      window.speechSynthesis.resume?.();
       window.speechSynthesis.speak(utterance);
     } catch {
       setStatus({
