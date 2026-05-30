@@ -82,6 +82,7 @@ describe("correctionEngine", () => {
     ["I go school every day", "I go to school every day."],
     ["I listen music every day", "I listen to music every day."],
     ["I go school", "I go to school."],
+    ["She goes school", "She goes to school."],
   ])("corrects whitelisted Step 5 preposition pattern: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",
@@ -95,6 +96,7 @@ describe("correctionEngine", () => {
     "She is good in class.",
     "I listen to music every day.",
     "I go to school every day.",
+    "I go school bus.",
     "It depends on the weather.",
   ])("does not broadly rewrite prepositions: %s", (input) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
@@ -107,6 +109,7 @@ describe("correctionEngine", () => {
     ["She very happy.", "She is very happy."],
     ["He very busy.", "He is very busy."],
     ["It very sad.", "It is very sad."],
+    ["They very tired.", "They are very tired."],
   ])("corrects narrow be-verb omission: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",
@@ -119,7 +122,95 @@ describe("correctionEngine", () => {
     "She is very happy.",
     "They are very happy.",
     "She very quickly finished.",
+    "I was very happy.",
   ])("does not broadly add be-verbs: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["I yesterday bought a hat", "I bought a hat yesterday."],
+    ["I yesterday bought a hat.", "I bought a hat yesterday."],
+    ["I yesterday bought a hat!", "I bought a hat yesterday."],
+  ])("repairs only the narrow time-expression placement pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-time-expression-placement"],
+    });
+  });
+
+  it.each([
+    "Yesterday I bought a hat.",
+    "I bought a hat yesterday.",
+  ])("does not over-trigger time-expression placement: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["She eat rice last night.", "She ate rice last night."],
+    ["We have a meeting two days ago.", "We had a meeting two days ago."],
+    ["He go last Monday.", "He went last Monday."],
+  ])("uses generalized past markers only for known beginner past verbs: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-yesterday-irregular-beginner-past"],
+    });
+  });
+
+  it.each([
+    "She eats rice every night.",
+    "I will buy a hat tomorrow.",
+  ])("does not over-trigger generalized past markers: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    "I do not buy a hat yesterday.",
+    "I do not have lunch yesterday.",
+    "He does not go last Monday.",
+  ])("does not rewrite negated beginner past verbs: %s", (input) => {
+    const result = correctWithTutorRules(input, "en");
+    expect(result.appliedRuleIds).not.toContain("en-yesterday-irregular-beginner-past");
+    expect(result.corrected).not.toMatch(/\b(?:bought|had|went)\b/);
+  });
+
+  it.each([
+    ["I do homework yesterday.", "I did homework yesterday."],
+    ["I have lunch yesterday.", "I had lunch yesterday."],
+  ])("still corrects non-negated beginner past verbs: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-yesterday-irregular-beginner-past"],
+    });
+  });
+
+  it.each([
+    ["This book I like.", "I like this book."],
+    ["English I study every day.", "I study English every day."],
+    ["In my family, my mother I love very much.", "In my family, I love my mother very much."],
+  ])("repairs only whitelisted topic-comment word order: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-l4-topic-comment-word-order"],
+    });
+  });
+
+  it.each([
+    "This book, I like it.",
+    "In my family, my mother loves me very much.",
+  ])("does not over-trigger topic-comment word order: %s", (input) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "unchanged",
       appliedRuleIds: [],
