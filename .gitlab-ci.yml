@@ -305,6 +305,18 @@ variables:
   # `|| true` mirrors the GitHub workflow's `if: always()` + `|| true`.
   - npm run depcruise:metrics || true
 
+.test_shard_script: &test_shard_script
+  # `node:22-bullseye-slim` ships without git. A few suites spawn it to
+  # build throwaway repos — scripts/__tests__/audit-local-artifacts and
+  # scripts/__tests__/check-manifest-delta both `git init`. When tests
+  # ran inside the `build` job they inherited that job's apt-installed
+  # git; the extracted shards must install it too or those suites fail
+  # with `spawnSync git ENOENT` (whichever shard the files land in).
+  # Only git is needed — curl/unzip/deno were build-only, not test deps.
+  # `--no-install-recommends` keeps the install lean.
+  - apt-get update && apt-get install -y --no-install-recommends git
+  - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL
+
 # ── `test` stage jobs ──────────────────────────────────────────────────
 
 # `build` — typecheck + edge-fn typecheck + Deno check + bundle build +
@@ -356,15 +368,13 @@ test:
   cache:
     <<: *npm_cache_def
     policy: pull
-  script:
-    - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL
+  script: *test_shard_script
 
 test:shared-fallback:
   <<: [*node_job, *manual_shared_fallback, *manual_shared_app_rules]
   stage: test
   parallel: 2
-  script:
-    - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL
+  script: *test_shard_script
 
 # `lint` — eslint + a soft console.log warning (does not fail the job,
 # same as GitHub's `continue-on-error: true`).
