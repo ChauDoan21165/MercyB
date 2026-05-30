@@ -13,6 +13,10 @@ import {
   type TutorLanguageCode,
 } from "@/lib/tutor/languageRegistry";
 
+const TTS_NOT_AUDIBLE_MESSAGE =
+  "Nếu không nghe thấy, hãy kiểm tra âm lượng, tab Chrome có bị tắt tiếng không, hoặc thử Safari.";
+const TTS_ERROR_MESSAGE = "Không nghe thấy? Kiểm tra âm lượng hoặc thử bấm lại.";
+
 export interface UseTtsSpeakerResult {
   supported: boolean;
   speaking: boolean;
@@ -44,6 +48,7 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
   const [error, setError] = useState<string | null>(null);
   const requestRef = useRef(0);
   const pollRef = useRef<number | null>(null);
+  const audibleFallbackTimerRef = useRef<number | null>(null);
 
   const syncFromVoiceStatus = useCallback(() => {
     const voiceStatus = getVoiceStatus();
@@ -62,6 +67,13 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
     }
   }, []);
 
+  const clearAudibleFallbackTimer = useCallback(() => {
+    if (audibleFallbackTimerRef.current !== null) {
+      window.clearTimeout(audibleFallbackTimerRef.current);
+      audibleFallbackTimerRef.current = null;
+    }
+  }, []);
+
   useEffect(() => {
     if (!supported) return;
     const id = window.setInterval(() => {
@@ -73,13 +85,14 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
   const stop = useCallback(() => {
     requestRef.current += 1;
     clearPoll();
+    clearAudibleFallbackTimer();
     stopTutorSpeech();
     setPreparing(false);
     setSpeaking(false);
     setUsingBrowserFallback(false);
     setVoiceSource(null);
     setError(null);
-  }, [clearPoll]);
+  }, [clearAudibleFallbackTimer, clearPoll]);
 
   const speak = useCallback(async (
     text: string,
@@ -93,13 +106,14 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
     const safeText = String(text ?? "").trim();
     if (!safeText) return;
     if (!supported) {
-      setError("Không nghe thấy? Kiểm tra âm lượng hoặc thử bấm lại.");
+      setError(TTS_ERROR_MESSAGE);
       return;
     }
 
     const requestId = requestRef.current + 1;
     requestRef.current = requestId;
     clearPoll();
+    clearAudibleFallbackTimer();
     setError(null);
     setUsingBrowserFallback(false);
     setVoiceSource(null);
@@ -109,6 +123,13 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
       if (requestRef.current !== requestId) return;
       syncFromVoiceStatus();
     }, 25);
+    audibleFallbackTimerRef.current = window.setTimeout(() => {
+      if (requestRef.current !== requestId) return;
+      const voiceStatus = getVoiceStatus();
+      if (voiceStatus.speaking || voiceStatus.preparing) {
+        setError(TTS_NOT_AUDIBLE_MESSAGE);
+      }
+    }, 6000);
 
     const targetLanguage = getTutorLanguage(target);
     const result = await speakTutorText(safeText, {
@@ -121,6 +142,7 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
 
     if (requestRef.current !== requestId) return;
     clearPoll();
+    clearAudibleFallbackTimer();
     syncFromVoiceStatus();
     setPreparing(false);
     setUsingBrowserFallback(result.fallback || getVoiceStatus().usingBrowserFallback);
@@ -130,11 +152,11 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
     }
 
     if (!result.spoken && safeText) {
-      setError("Không nghe thấy? Kiểm tra âm lượng hoặc thử bấm lại.");
+      setError(TTS_ERROR_MESSAGE);
     }
 
     void lang;
-  }, [clearPoll, supported, syncFromVoiceStatus]);
+  }, [clearAudibleFallbackTimer, clearPoll, supported, syncFromVoiceStatus]);
 
   useEffect(() => stop, [stop]);
 
