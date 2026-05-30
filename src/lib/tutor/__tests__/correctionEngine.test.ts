@@ -126,6 +126,17 @@ describe("correctionEngine", () => {
     });
   });
 
+  it.each([
+    "I bought a hat yesterday because it is summer Canada is very sunny very hot so and I win bike everywhere I need a hat.",
+    "I bought a hat yesterday because summer is coming and it is very hot I need a hat since I've been bike a lot.",
+  ])("repairs hat, summer, Canada, and biking run-on output: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: "I bought a hat yesterday because it is very sunny and hot in Canada, and I need it for biking this summer.",
+      appliedRuleIds: ["en-hat-biking-summer-runon"],
+    });
+  });
+
   it("repairs capitalization and punctuation in a morning-routine run-on", () => {
     expect(
       correctWithTutorRules(
