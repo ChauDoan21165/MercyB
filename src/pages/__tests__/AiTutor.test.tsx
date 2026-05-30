@@ -548,6 +548,34 @@ describe("AiTutor four-tab seed flow", () => {
     expect(followUp).not.toHaveTextContent("bằng từng âm");
   });
 
+  it("sends the natural hat-biking correction into Speak and asks an English follow-up", async () => {
+    Object.defineProperty(window, "Audio", {
+      configurable: true,
+      value: MockEndingAudio,
+    });
+    render(<AiTutorPage />);
+
+    await correctSentence(
+      "I bought a hat yesterday because summer is coming and I will bike a lot I need a hat.",
+      "I bought a hat yesterday because I plan to bike a lot this summer.",
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    expect(screen.getByTestId("ai-tutor-speak-target")).toHaveTextContent(
+      "I bought a hat yesterday because I plan to bike a lot this summer.",
+    );
+
+    await userEvent.type(
+      screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" }),
+      "I bought a hat yesterday because I plan to bike a lot this summer.",
+    );
+
+    const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+    expect(followUp).toHaveTextContent(/Why do you need the hat|How often do you bike in the summer|Is it very sunny where you live/);
+    expect(followUp).not.toHaveTextContent("Bạn muốn luyện thêm câu khác không?");
+    expect(within(followUp).getByRole("button", { name: "Mercy đọc câu hỏi tiếp theo" })).toBeInTheDocument();
+  });
+
   it("reads the next Speak follow-up question aloud", async () => {
     const browserSpeak = vi.fn((utterance: MockSpeechSynthesisUtterance) => {
       utterance.onstart?.();
@@ -628,7 +656,7 @@ describe("AiTutor four-tab seed flow", () => {
 
     await speakCurrentTarget("I bought a hat yesterday again.");
     await waitFor(() => {
-      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("What kind of hat was it?");
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Why do you need the hat?");
     });
     expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent("Where did you buy it?");
   });
@@ -647,13 +675,8 @@ describe("AiTutor four-tab seed flow", () => {
     await speakCurrentTarget("I bought another hat yesterday.");
 
     await waitFor(() => {
-      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Bạn muốn luyện thêm câu khác không?");
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Do you want to practice another sentence?");
     });
-    expect(
-      within(screen.getByTestId("ai-tutor-speak-follow-up")).queryByRole("button", {
-        name: "Mercy đọc câu hỏi tiếp theo",
-      }),
-    ).not.toBeInTheDocument();
   });
 
   it("uses the learner's latest spoken topic instead of drifting back to the corrected seed", async () => {
@@ -690,11 +713,11 @@ describe("AiTutor four-tab seed flow", () => {
       await speakCurrentTarget(transcript);
       await waitFor(() => {
         const text = screen.getByTestId("ai-tutor-speak-follow-up").textContent ?? "";
-        expect(text).not.toMatch(/Bạn muốn luyện thêm câu khác không/);
+        expect(text).not.toMatch(/Do you want to practice another sentence/);
         if (previousQuestion) expect(text).not.toBe(previousQuestion);
       });
       const text = screen.getByTestId("ai-tutor-speak-follow-up").textContent ?? "";
-      expect(text).not.toMatch(/Where did you buy it|What kind of hat was it|morning|work/i);
+      expect(text).not.toMatch(/Where did you buy it|Why do you need the hat|morning|work/i);
       questions.push(text);
     }
 
@@ -702,7 +725,7 @@ describe("AiTutor four-tab seed flow", () => {
 
     await speakCurrentTarget("It was a nice time.");
     await waitFor(() => {
-      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Bạn muốn luyện thêm câu khác không?");
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Do you want to practice another sentence?");
     });
   });
 

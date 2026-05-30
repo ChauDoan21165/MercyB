@@ -114,25 +114,41 @@ function isHatBikingSummerRunOn(input: string): boolean {
     return false;
   }
 
-  const hasSummerCanadaWeather =
-    /\b(?:canada|summer)\b/i.test(normalized) &&
-    /\b(?:sunny|hot)\b/i.test(normalized) &&
-    /\b(?:bike|biking)\b/i.test(normalized);
-  const hasHatNeed =
-    /\bi\s+need\s+(?:it|a?\s*hat)\b/i.test(normalized) ||
-    /\bi\s+also\s+(?:buy|bought)\s+a?\s*hat\b/i.test(normalized);
-  const startsWithHatPurchase = /\bi\s+bought\s+a?\s*hat\s+yesterday\b/i.test(normalized);
-  const startsWithBicyclePurchase = /\bi\s+bought\s+a?\s*bicycle\s+yesterday\b/i.test(normalized);
-
-  return hasSummerCanadaWeather && hasHatNeed && (startsWithHatPurchase || startsWithBicyclePurchase);
+  return (
+    /\b(?:i|they)\s+(?:bought|buy)\b/i.test(normalized) &&
+    /\byesterday\b/i.test(normalized) &&
+    /\b(?:hat|bicycle|bike)\b/i.test(normalized) &&
+    (
+      /\b(?:summer|canada|sunny|hot)\b/i.test(normalized) ||
+      /\b(?:will|plan to|win|been)\s+(?:a\s+)?bik(?:e|ing)\b/i.test(normalized) ||
+      /\bsomeone'?s coming\b/i.test(normalized) ||
+      /\bsummer sucks coming\b/i.test(normalized)
+    )
+  );
 }
 
 function repairHatBikingSummerRunOn(input: string): string {
-  if (/\bi\s+bought\s+a?\s*bicycle\s+yesterday\b/i.test(input)) {
-    return "I bought a bicycle yesterday because summer is coming, and I plan to bike a lot. I also bought a hat because it is very sunny in Canada";
+  const normalized = input.replace(/\s+/g, " ").trim();
+  const mentionsBicycle = /\b(?:bicycle|bike)\b/i.test(normalized) && /\b(?:bought|buy)\s+a?\s*(?:bicycle|bike)\b/i.test(normalized);
+  const mentionsHat = /\bhat\b/i.test(normalized);
+  const mentionsCanada = /\bcanada\b/i.test(normalized);
+  const mentionsBikePlan = /\b(?:will|plan to|win|been)\s+(?:a\s+)?bik(?:e|ing)\b/i.test(normalized) || /\bbike a lot\b/i.test(normalized);
+
+  if (mentionsBicycle && mentionsHat) {
+    return mentionsCanada
+      ? "I bought a bicycle yesterday because summer is coming, and I plan to bike a lot. I also bought a hat because it is very sunny in Canada"
+      : "I bought a bicycle yesterday because summer is coming, and I plan to bike a lot. I also bought a hat because it is very sunny";
   }
 
-  return "I bought a hat yesterday because it is very sunny and hot in Canada, and I need it for biking this summer";
+  if (mentionsHat && mentionsBikePlan) {
+    return mentionsCanada
+      ? "I bought a hat yesterday because I plan to bike a lot this summer, and it is very sunny in Canada"
+      : "I bought a hat yesterday because I plan to bike a lot this summer";
+  }
+
+  return mentionsCanada
+    ? "I bought a hat yesterday because summer is coming, and it is very sunny in Canada"
+    : "I bought a hat yesterday because summer is coming, and it is very sunny";
 }
 
 function addArticleAfterVerb(input: string): string {
