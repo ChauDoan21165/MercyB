@@ -80,6 +80,7 @@
     "mb:status": "node scripts/morning-status.mjs",
     "pr:ready": "node scripts/pr-ready.mjs",
     "ops:morning": "node scripts/ops-morning.mjs",
+    "test:regression": "vitest run tests/regression/**",
     "test:resume": "vitest run src/pages/placement/v3/__tests__/ResultsPage.resumeSmoke.test.tsx",
     "verify:v3-placement": "node scripts/verify-v3-placement.mjs",
     "release:v3-placement": "node scripts/release-v3-placement.mjs",
