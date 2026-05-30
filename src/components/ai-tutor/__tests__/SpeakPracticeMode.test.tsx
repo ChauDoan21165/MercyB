@@ -265,6 +265,56 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     expect(screen.queryByTestId("ai-tutor-speak-word-detail")).not.toBeInTheDocument();
   });
 
+  it("renders tone contour match wording", () => {
+    renderSpeak({
+      mode: "local-fallback",
+      provider: "local",
+      toneContour: {
+        bucket: "match",
+        score: 88,
+        confidence: 0.78,
+        expectedContour: "rising",
+      },
+    });
+
+    const tone = screen.getByTestId("ai-tutor-speak-tone-contour");
+    expect(tone).toHaveTextContent(
+      "Đường cao độ có vẻ đúng: giọng đi lên như câu mẫu.",
+    );
+    expect(tone).toHaveTextContent(
+      "Mercy chỉ đang xem đường giọng, không thay thế nhận xét âm riêng lẻ.",
+    );
+    expect(tone).not.toHaveTextContent(/pronunciation score|chấm phát âm|từng âm/i);
+  });
+
+  it("renders tone contour mismatch wording", () => {
+    renderSpeak({
+      mode: "local-fallback",
+      provider: "local",
+      toneContour: {
+        bucket: "mismatch",
+        score: 28,
+        confidence: 0.81,
+        expectedContour: "falling",
+      },
+    });
+
+    const tone = screen.getByTestId("ai-tutor-speak-tone-contour");
+    expect(tone).toHaveTextContent(
+      "Đường cao độ có vẻ chưa khớp: câu này nên đi xuống.",
+    );
+    expect(tone).toHaveTextContent(
+      "Mercy chỉ đang xem đường giọng, không thay thế nhận xét âm riêng lẻ.",
+    );
+    expect(tone).not.toHaveTextContent(/pronunciation score|chấm phát âm|từng âm/i);
+  });
+
+  it("renders no tone contour feedback when no tone contour evidence exists", () => {
+    renderSpeak({ mode: "local-fallback", provider: "local" });
+
+    expect(screen.queryByTestId("ai-tutor-speak-tone-contour")).not.toBeInTheDocument();
+  });
+
   it("degrades safely when Azure batch evidence has no phoneme detail", () => {
     renderSpeak({
       mode: "azure-batch",

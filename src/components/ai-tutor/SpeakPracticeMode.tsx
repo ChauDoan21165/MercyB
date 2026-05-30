@@ -13,6 +13,12 @@ export type SpeakPronunciationResult = {
   mode: "local-fallback" | "azure-batch";
   provider?: "local" | "azure";
   overallScore?: number | null;
+  toneContour?: {
+    bucket: "match" | "mismatch";
+    score?: number | null;
+    confidence: number;
+    expectedContour: "rising" | "falling";
+  };
   phonemeScores?: Array<{
     phoneme: string;
     accuracyScore?: number | null;
@@ -97,6 +103,9 @@ export default function SpeakPracticeMode({
     ? (pronunciationResult.words ?? []).filter((word) => word.word.trim())
     : [];
   const score = hasAzureBatchResult ? azureOverallScore : localScore;
+  const toneContour = pronunciationResult?.toneContour;
+  const toneContourDirection =
+    toneContour?.expectedContour === "rising" ? "đi lên" : "đi xuống";
   const micFallbackMessage = micError
     ? "Không dùng được micro. Hãy cho phép micro trong trình duyệt hoặc gõ câu của bạn."
     : "Không dùng được giọng nói trên thiết bị hoặc trình duyệt này. Bạn vẫn có thể luyện bằng cách nghe câu mẫu trước.";
@@ -220,7 +229,7 @@ export default function SpeakPracticeMode({
             />
           </div>
 
-          {(score !== null || hasAzureBatchResult) && (
+          {(score !== null || hasAzureBatchResult || toneContour) && (
             <div data-testid="ai-tutor-speak-score" className="mt-4 rounded-[16px] border border-indigo-100 bg-indigo-50 px-4 py-4">
               {hasAzureBatchResult ? (
                 <>
@@ -282,6 +291,21 @@ export default function SpeakPracticeMode({
                     Mercy đang nghe theo từ. Sẽ chấm phát âm chi tiết hơn sau.
                   </p>
                 </>
+              )}
+              {toneContour && (
+                <div
+                  data-testid="ai-tutor-speak-tone-contour"
+                  className="mt-3 rounded-[12px] border border-indigo-100 bg-white px-3 py-2"
+                >
+                  <p className="text-sm font-black leading-6 text-indigo-950">
+                    {toneContour.bucket === "match"
+                      ? `Đường cao độ có vẻ đúng: giọng ${toneContourDirection} như câu mẫu.`
+                      : `Đường cao độ có vẻ chưa khớp: câu này nên ${toneContourDirection}.`}
+                  </p>
+                  <p className="mt-1 text-xs font-semibold leading-5 text-indigo-800">
+                    Mercy chỉ đang xem đường giọng, không thay thế nhận xét âm riêng lẻ.
+                  </p>
+                </div>
               )}
             </div>
           )}
