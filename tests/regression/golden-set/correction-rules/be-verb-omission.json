@@ -1,0 +1,75 @@
+{
+  "rule": "beVerbOmission",
+  "ruleId": "en-be-verb-omission",
+  "language": "en",
+  "description": "Be-verb omission repair (audit commit ad3641395). Rule en-be-verb-omission inserts the missing copula in beginner '<pronoun> very <adjective>' sentences: I -> am, He/She/It -> is, You/We/They -> are, across the adjective set happy/sad/tired/busy (optionally followed by 'today'). Expectations encode the VERIFIED behaviour of correctWithTutorRules() on current main.",
+  "fp_risk_note": "The copula-insertion must fire only when the copula is genuinely missing. The negative cases stress: (1) already-correct sentences that already contain 'am/is/are' before 'very' — inserting again would double the copula; (2) adjectives OUTSIDE the supported happy/sad/tired/busy set (e.g. 'cold') — the rule must abstain rather than guess; (3) non-copula uses of 'very' such as 'very much' where no adjective follows. KNOWN FALSE POSITIVE (documented in the MR, deliberately excluded from this golden because locking a buggy output as 'expected' would bless it): an inverted question 'Are you very happy?' currently fires and yields the double-copula 'Are you are very happy?'. A regression that broadens the pronoun/adjective match must re-check these.",
+  "positive": [
+    {
+      "id": "bvo-pos-001",
+      "input": "I very happy",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I am very happy.",
+      "expectedRuleFired": "beVerbOmission",
+      "notes": "First person -> 'am' (I very happy -> I am very happy)."
+    },
+    {
+      "id": "bvo-pos-002",
+      "input": "He very tired",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He is very tired.",
+      "expectedRuleFired": "beVerbOmission",
+      "notes": "Third person singular -> 'is' (He very tired -> He is very tired)."
+    },
+    {
+      "id": "bvo-pos-003",
+      "input": "They very busy today",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They are very busy today.",
+      "expectedRuleFired": "beVerbOmission",
+      "notes": "Plural -> 'are', with trailing 'today' preserved."
+    },
+    {
+      "id": "bvo-pos-004",
+      "input": "She very sad",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She is very sad.",
+      "expectedRuleFired": "beVerbOmission",
+      "notes": "Third person singular -> 'is' (sad adjective)."
+    },
+    {
+      "id": "bvo-pos-005",
+      "input": "We very tired",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "We are very tired.",
+      "expectedRuleFired": "beVerbOmission",
+      "notes": "Plural 'We' -> 'are'."
+    }
+  ],
+  "negative": [
+    {
+      "id": "bvo-neg-001",
+      "input": "I am very happy",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I am very happy.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (already correct): copula 'am' already present; rule must not double it."
+    },
+    {
+      "id": "bvo-neg-002",
+      "input": "It very cold today",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "It very cold today.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (adjective outside set): 'cold' is not in happy/sad/tired/busy, so the rule correctly abstains rather than guessing the copula."
+    },
+    {
+      "id": "bvo-neg-003",
+      "input": "I very much enjoy it",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I very much enjoy it.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (non-copula 'very'): 'very much' is not '<pronoun> very <adjective>'; rule must not fire."
+    }
+  ]
+}
