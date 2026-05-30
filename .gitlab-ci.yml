@@ -304,6 +304,12 @@ variables:
   - npm run depcruise:validate
   # `|| true` mirrors the GitHub workflow's `if: always()` + `|| true`.
   - npm run depcruise:metrics || true
+  # Dead-code reaccumulation tripwire — INFO-LEVEL, never fails the pipeline.
+  # Reports files that became orphans (no in/out edges) so a reviewer catches
+  # them on the introducing PR. Full tiered inventory + false-positive classes:
+  # docs/dead-code-risk-map.md. The `|| true` is belt-and-suspenders; the scan's
+  # rules are severity:warn so depcruise already exits 0.
+  - npm run depcruise:orphans || true
 
 .test_shard_script: &test_shard_script
   # `node:22-bullseye-slim` ships without git. A few suites spawn it to
