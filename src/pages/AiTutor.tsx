@@ -93,7 +93,9 @@ import type {
   MercyConversationMessage,
 } from "@/components/ai-tutor/ConversationMode";
 import JourneyMode from "@/components/ai-tutor/JourneyMode";
-import SpeakPracticeMode from "@/components/ai-tutor/SpeakPracticeMode";
+import SpeakPracticeMode, {
+  isSpeakFollowUpReadAloudEligible,
+} from "@/components/ai-tutor/SpeakPracticeMode";
 import LogicMode from "@/components/ai-tutor/LogicMode";
 import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
 
@@ -1399,7 +1401,7 @@ export default function AiTutorPage() {
 
   const handleReadSpeakFollowUp = () => {
     const text = speakFollowUpSession.currentQuestion?.trim() || "";
-    if (!text) return;
+    if (!isSpeakFollowUpReadAloudEligible(text)) return;
     if (stt.listening) {
       ignoreNextSttCommitRef.current = true;
       stt.stop();
