@@ -1,0 +1,75 @@
+{
+  "rule": "step5SubjectVerbAgreement",
+  "ruleId": "en-step5-subject-verb-agreement",
+  "language": "en",
+  "description": "Step-5 third-person-singular subject-verb agreement (audit commit ad3641395), rule en-step5-subject-verb-agreement. A He/She/It subject directly followed by a base verb in {go, make, work} is conjugated (go->goes, make->makes, work->works), but only when the sentence is not question-like and carries no SVA temporal blocker. expectedStatus/expectedCorrection are the VERIFIED output of correctWithTutorRules('en') on current main (captured from the live engine).",
+  "fp_risk_note": "Medium overlap risk. This rule runs before the third-person daily/school-routine rules and preempts the bare 'He go ...' case, so 'go' positives here are real (e.g. 'She go to the park'). make/work are unique to this rule and isolate it unambiguously. Guards stressed by the negatives: (1) already-conjugated input ('He goes to work') must not double-fire; (2) an SVA temporal blocker ('yesterday', and also on-weekday/in-year/season/N-hours-ago) suppresses this rule — locked here with 'yesterday'; (3) question-like input ('Does he go to work?') is excluded; (4) non He/She/It subjects ('I go to work') are correct English. Note: with a non-yesterday blocker + 'go to school', the routine rule (not this one) fires instead — see third-person-school-routine fixtures.",
+  "positive": [
+    {
+      "id": "s5sva-pos-001",
+      "input": "She make a cake",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She makes a cake.",
+      "expectedRuleFired": "step5SubjectVerbAgreement",
+      "notes": "make -> makes; 'make' is unique to this rule, so it isolates cleanly."
+    },
+    {
+      "id": "s5sva-pos-002",
+      "input": "He work very hard",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He works very hard.",
+      "expectedRuleFired": "step5SubjectVerbAgreement",
+      "notes": "work -> works; unique verb."
+    },
+    {
+      "id": "s5sva-pos-003",
+      "input": "She go to the park",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She goes to the park.",
+      "expectedRuleFired": "step5SubjectVerbAgreement",
+      "notes": "go -> goes; this rule preempts the third-person daily/school rules for the bare 'go' case (not 'to school', no 'every day')."
+    },
+    {
+      "id": "s5sva-pos-004",
+      "input": "It make noise",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "It makes noise.",
+      "expectedRuleFired": "step5SubjectVerbAgreement",
+      "notes": "It subject; make -> makes."
+    }
+  ],
+  "negative": [
+    {
+      "id": "s5sva-neg-001",
+      "input": "He goes to work",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He goes to work.",
+      "expectedRuleFired": null,
+      "notes": "Already correctly conjugated — must not double-fire."
+    },
+    {
+      "id": "s5sva-neg-002",
+      "input": "He went to work yesterday",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He went to work yesterday.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (temporal blocker): 'yesterday' (an SVA temporal blocker) suppresses this rule; the verb is already past anyway."
+    },
+    {
+      "id": "s5sva-neg-003",
+      "input": "Does he go to work?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Does he go to work?",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (question): question-like input is excluded; 'does ...' already carries the agreement."
+    },
+    {
+      "id": "s5sva-neg-004",
+      "input": "I go to work",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I go to work.",
+      "expectedRuleFired": null,
+      "notes": "First-person subject is correct English; the rule is He/She/It only."
+    }
+  ]
+}
