@@ -307,6 +307,8 @@ function repairStep5PrepositionPatterns(input: string): string {
 const PERSON_OBJECT_PRONOUN_PATTERN = "(?:me|you|him|her|us|them)";
 const STEP6_LISTEN_OBJECT_PATTERN = "(?:me|you|him|her|us|them|music|song|teacher|radio|podcast|lesson|story)";
 const CLOCK_TIME_PATTERN = "(?:\\d{1,2}\\s+o(?:'|\\u2019)?clock|\\d{1,2}\\s*(?:AM|PM|am|pm)|\\d{1,2}:\\d{2})";
+const STEP6_LOOK_AT_BLOCKED_PARTICLE_PATTERN = "(?:for|after|up|over|around|out|like|into)";
+const STEP6_LOOK_AT_SEPARATED_PARTICLE_PATTERN = "(?:up|over|around|out)";
 
 function repairStep6WaitFor(input: string): string {
   const pattern = new RegExp(`\\b(wait|waits|waited|waiting)\\s+(${PERSON_OBJECT_PRONOUN_PATTERN})\\b`, "gi");
@@ -316,6 +318,28 @@ function repairStep6WaitFor(input: string): string {
 function repairStep6ListenTo(input: string): string {
   const pattern = new RegExp(`\\b(listen|listens|listened|listening)\\s+(${STEP6_LISTEN_OBJECT_PATTERN})\\b`, "gi");
   return input.replace(pattern, "$1 to $2");
+}
+
+function hasStep6LookAtPronoun(input: string): boolean {
+  if (new RegExp(`\\blook(?:s|ed|ing)?\\s+${STEP6_LOOK_AT_BLOCKED_PARTICLE_PATTERN}\\b`, "i").test(input)) {
+    return false;
+  }
+  if (new RegExp(`\\blook(?:s|ed|ing)?\\s+${PERSON_OBJECT_PRONOUN_PATTERN}\\s+${STEP6_LOOK_AT_SEPARATED_PARTICLE_PATTERN}\\b`, "i").test(input)) {
+    return false;
+  }
+
+  return new RegExp(
+    `\\b(look|looks|looked|looking)\\s+${PERSON_OBJECT_PRONOUN_PATTERN}\\b(?!\\s+${STEP6_LOOK_AT_SEPARATED_PARTICLE_PATTERN}\\b)`,
+    "i",
+  ).test(input);
+}
+
+function repairStep6LookAtPronoun(input: string): string {
+  const pattern = new RegExp(
+    `\\b(look|looks|looked|looking)\\s+(${PERSON_OBJECT_PRONOUN_PATTERN})\\b(?!\\s+${STEP6_LOOK_AT_SEPARATED_PARTICLE_PATTERN}\\b)`,
+    "gi",
+  );
+  return input.replace(pattern, "$1 at $2");
 }
 
 function repairStep6DiscussAbout(input: string): string {
@@ -389,6 +413,8 @@ const BE_DROP_TIME_MARKER_PATTERN =
   "(?:today|yesterday|last\\s+(?:night|week|month|year|summer|spring|winter|fall|autumn)|(?:an?|one|two|three|\\d+)\\s+(?:hour|hours|day|days|week|weeks|month|months|year|years)\\s+ago)";
 const BE_DROP_ADJECTIVE_PHRASE_PATTERN =
   `very\\s+${BE_DROP_ADJECTIVE_PATTERN}(?:\\s+${BE_DROP_TIME_MARKER_PATTERN})?`;
+const STEP6_LOCATION_PHRASE_PATTERN =
+  "(?:in\\s+(?:Canada|Vietnam|school|the\\s+room|the\\s+house|the\\s+office|the\\s+hospital|the\\s+airport)|at\\s+(?:school|home|work|the\\s+room|the\\s+house|the\\s+office|the\\s+hospital|the\\s+airport))";
 
 function getStep6InMonthYearMatch(input: string): RegExpMatchArray | null {
   const pattern = new RegExp(
@@ -457,6 +483,24 @@ function repairBeVerbOmission(input: string): string {
   );
   return input.replace(pattern, (_match, subject: string, phrase: string) => {
     return `${subject} ${copulaForBeDropSubject(subject, input)} ${phrase}`;
+  });
+}
+
+function hasStep6LocationBeDrop(input: string): boolean {
+  if (isQuestionLike(input) || isBeAuxInvertedQuestion(input)) return false;
+  return new RegExp(
+    `^(?:I|you|he|she|it|we|they)\\s+${STEP6_LOCATION_PHRASE_PATTERN}[.?!]?$`,
+    "i",
+  ).test(input.trim());
+}
+
+function repairStep6LocationBeDrop(input: string): string {
+  const pattern = new RegExp(
+    `^(I|you|he|she|it|we|they)\\s+(${STEP6_LOCATION_PHRASE_PATTERN})([.?!]?)$`,
+    "i",
+  );
+  return input.trim().replace(pattern, (_match, subject: string, location: string, punctuation: string) => {
+    return `${subject} ${copulaForBeDropSubject(subject, input)} ${location}${punctuation}`;
   });
 }
 
@@ -618,6 +662,18 @@ export const englishCorrectionRules: CorrectionRule[] = [
       new RegExp(`\\b(listen|listens|listened|listening)\\s+${STEP6_LISTEN_OBJECT_PATTERN}\\b`, "i").test(input),
     apply: repairStep6ListenTo,
     fpRiskNote: "Low-medium risk if limited to to insertion only. Article correction is deliberately excluded. The rule blocks no-object and adverb surfaces such as listen carefully.",
+  },
+  {
+    id: "en-step6-look-at-pronoun",
+    detects: hasStep6LookAtPronoun,
+    apply: repairStep6LookAtPronoun,
+    fpRiskNote: "High risk. Look can be a linking verb or part of many phrasal verbs, including separated phrasal verbs. V1 is pronoun-object only and blocks adjective complements, particles, and separated phrasal-verb surfaces.",
+  },
+  {
+    id: "en-step6-location-be-drop",
+    detects: hasStep6LocationBeDrop,
+    apply: repairStep6LocationBeDrop,
+    fpRiskNote: "High risk. Be-insertion rules can misfire on questions, fragments, noun-postmodifier surfaces, and sentences with existing finite verbs. V1 only handles pronoun subject plus whitelisted location phrase with no finite verb, blocks questions, and defers name/noun subjects.",
   },
   {
     id: "en-step6-discuss-about",

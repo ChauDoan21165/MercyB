@@ -1,0 +1,83 @@
+{
+  "rule": "step6LocationBeDrop",
+  "ruleId": "en-step6-location-be-drop",
+  "language": "en",
+  "description": "Inserts a missing be verb only for pronoun-subject location predicates with whitelisted location phrases.",
+  "fp_risk_note": "High risk. Be-insertion rules can misfire on questions, fragments, noun-postmodifier surfaces, and sentences with existing finite verbs. V1 only handles pronoun subject plus whitelisted location phrase with no finite verb, blocks questions, and defers name/noun subjects.",
+  "positive": [
+    {
+      "id": "location-be-drop-pos-001",
+      "input": "I in Canada.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I am in Canada.",
+      "expectedRuleFired": "step6LocationBeDrop",
+      "notes": "First-person pronoun plus whitelisted country location takes am."
+    },
+    {
+      "id": "location-be-drop-pos-002",
+      "input": "She at school.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She is at school.",
+      "expectedRuleFired": "step6LocationBeDrop",
+      "notes": "Third-person singular pronoun plus whitelisted school location takes is."
+    },
+    {
+      "id": "location-be-drop-pos-003",
+      "input": "They in the room.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They are in the room.",
+      "expectedRuleFired": "step6LocationBeDrop",
+      "notes": "Plural pronoun plus whitelisted room location takes are."
+    }
+  ],
+  "negative": [
+    {
+      "id": "location-be-drop-neg-001",
+      "input": "Are you in Canada?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Are you in Canada?",
+      "expectedRuleFired": null,
+      "notes": "Fronted-copula question already has be."
+    },
+    {
+      "id": "location-be-drop-neg-002",
+      "input": "I am in Canada.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I am in Canada.",
+      "expectedRuleFired": null,
+      "notes": "Already contains finite be verb."
+    },
+    {
+      "id": "location-be-drop-neg-003",
+      "input": "I work in Canada.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I work in Canada.",
+      "expectedRuleFired": null,
+      "notes": "Existing finite verb means this is not be-drop."
+    },
+    {
+      "id": "location-be-drop-neg-004",
+      "input": "She very happy.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She is very happy.",
+      "expectedRuleFired": "beVerbOmission",
+      "notes": "Existing adjective be-drop rule handles adjective predicates; location be-drop must not fire."
+    },
+    {
+      "id": "location-be-drop-neg-005",
+      "input": "John in accounting.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "John in accounting.",
+      "expectedRuleFired": null,
+      "notes": "Name subjects and non-place accounting are deferred."
+    },
+    {
+      "id": "location-be-drop-neg-006",
+      "input": "The class on Monday is hard.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The class on Monday is hard.",
+      "expectedRuleFired": null,
+      "notes": "Noun-postmodifier surface with existing finite verb must not be rewritten."
+    }
+  ]
+}
