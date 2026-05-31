@@ -1,0 +1,115 @@
+{
+  "rule": "calqueSayWithPerson",
+  "ruleId": "en-calque-say-with-person",
+  "language": "en",
+  "description": "Rewrites say with a person-pronoun calque to say to that person only when with + pronoun is the immediate complement and the tail is allowlisted.",
+  "fp_risk_note": "High risk. With is valid in parentheticals, absolute constructions, questions, manner phrases, and many non-calque structures. V1 only fires on say/says/said/saying + with + pronoun when with + pronoun is the immediate complement and the pronoun tail is explicitly allowlisted. It blocks intervening direct objects, comma-before-with parentheticals, fronted wh-object questions, and any non-allowlisted tail.",
+  "positive": [
+    {
+      "id": "calque-say-with-person-pos-001",
+      "input": "I want to say with you.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I want to say to you.",
+      "expectedRuleFired": "calqueSayWithPerson",
+      "notes": "Say with you is a Vietnamese transfer pattern; with + pronoun is the immediate complement."
+    },
+    {
+      "id": "calque-say-with-person-pos-002",
+      "input": "She said with me yesterday.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She said to me yesterday.",
+      "expectedRuleFired": "calqueSayWithPerson",
+      "notes": "The pronoun is followed by an allowlisted time adverbial."
+    },
+    {
+      "id": "calque-say-with-person-pos-003",
+      "input": "He says with her every day.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He says to her every day.",
+      "expectedRuleFired": "calqueSayWithPerson",
+      "notes": "The frequency tail is explicitly allowlisted."
+    }
+  ],
+  "negative": [
+    {
+      "id": "calque-say-with-person-neg-001",
+      "input": "Say it with me.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Say it with me.",
+      "expectedRuleFired": null,
+      "notes": "Intervening direct object means with me is not the immediate complement of say."
+    },
+    {
+      "id": "calque-say-with-person-neg-002",
+      "input": "She said with him beside me.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said with him beside me.",
+      "expectedRuleFired": null,
+      "notes": "Beside me is a non-allowlisted tail."
+    },
+    {
+      "id": "calque-say-with-person-neg-003",
+      "input": "I would say, with him, that it's wrong.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I would say, with him, that it's wrong.",
+      "expectedRuleFired": null,
+      "notes": "Comma-before-with parenthetical is blocked."
+    },
+    {
+      "id": "calque-say-with-person-neg-004",
+      "input": "What are you saying with them?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "What are you saying with them?",
+      "expectedRuleFired": null,
+      "notes": "Fronted wh-object question is blocked."
+    },
+    {
+      "id": "calque-say-with-person-neg-005",
+      "input": "She said with him present.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said with him present.",
+      "expectedRuleFired": null,
+      "notes": "Absolute construction tail is not allowlisted."
+    },
+    {
+      "id": "calque-say-with-person-neg-006",
+      "input": "He said with her gone.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He said with her gone.",
+      "expectedRuleFired": null,
+      "notes": "Absolute construction tail is not allowlisted."
+    },
+    {
+      "id": "calque-say-with-person-neg-007",
+      "input": "They said with us there.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "They said with us there.",
+      "expectedRuleFired": null,
+      "notes": "There-tail absolute construction is not allowlisted."
+    },
+    {
+      "id": "calque-say-with-person-neg-008",
+      "input": "I went with you.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I went with you.",
+      "expectedRuleFired": null,
+      "notes": "Rule only applies to say verb forms."
+    },
+    {
+      "id": "calque-say-with-person-neg-009",
+      "input": "She talked with him.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She talked with him.",
+      "expectedRuleFired": null,
+      "notes": "Talk with is valid and not in scope."
+    },
+    {
+      "id": "calque-say-with-person-neg-010",
+      "input": "Say it with confidence.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Say it with confidence.",
+      "expectedRuleFired": null,
+      "notes": "Manner phrase with confidence is valid."
+    }
+  ]
+}

@@ -397,6 +397,36 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["I want to say with you.", "I want to say to you."],
+    ["She said with me yesterday.", "She said to me yesterday."],
+    ["He says with her every day.", "He says to her every day."],
+  ])("corrects approved say-with-person calque: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-calque-say-with-person"],
+    });
+  });
+
+  it.each([
+    "Say it with me.",
+    "She said with him beside me.",
+    "I would say, with him, that it's wrong.",
+    "What are you saying with them?",
+    "She said with him present.",
+    "He said with her gone.",
+    "They said with us there.",
+    "I went with you.",
+    "She talked with him.",
+    "Say it with confidence.",
+  ])("does not over-trigger say-with-person calque: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["An hour ago I eat lunch.", "An hour ago I ate lunch."],
     ["Last summer she go to Canada.", "Last summer she went to Canada."],
     ["In 2024 they move to Toronto.", "In 2024 they moved to Toronto."],
@@ -607,6 +637,7 @@ describe("correctionEngine", () => {
     ["en-calque-open-turn-on-appliance", "open appliance"],
     ["en-calque-close-turn-off-appliance", "close appliance"],
     ["en-calque-take-medicine", "take medicine"],
+    ["en-calque-say-with-person", "say with person"],
     ["en-step6-past-marker-recall", "past-marker recall"],
     ["en-step6-in-month-year", "in-month/year"],
     ["en-step6-enter-concrete-place", "enter concrete place"],
