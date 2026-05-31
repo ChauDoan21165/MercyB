@@ -321,6 +321,8 @@ function repairStep6PastMarkerRecall(input: string): string {
 
 const STEP6_IN_MONTH_YEAR_CONTEXT_PATTERN = "\\b(?:was born|were born|moved here|arrived)";
 const STEP6_IN_MONTH_YEAR_TOKEN_PATTERN = `(?:${STEP6_MONTH_NAMES}|\\d{4})`;
+const STEP6_ENTER_CONCRETE_PLACE_PATTERN =
+  "(?:room|classroom|class|house|building|office|school|hospital|airport)";
 
 function getStep6InMonthYearMatch(input: string): RegExpMatchArray | null {
   const pattern = new RegExp(
@@ -347,6 +349,14 @@ function repairStep6InMonthYear(input: string): string {
   const context = match[1] ?? "";
   const token = match[2] ?? "";
   return input.replace(new RegExp(`\\b${context}\\s+${token}\\b`, "i"), `${context} in ${token}`);
+}
+
+function repairStep6EnterConcretePlace(input: string): string {
+  const pattern = new RegExp(
+    `\\b(enter|enters|entered|entering)\\s+(?:to|into)\\s+((?:the\\s+)?${STEP6_ENTER_CONCRETE_PLACE_PATTERN})\\b`,
+    "gi",
+  );
+  return input.replace(pattern, "$1 $2");
 }
 
 function repairBeVerbOmission(input: string): string {
@@ -526,6 +536,16 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: hasStep6InMonthYear,
     apply: repairStep6InMonthYear,
     fpRiskNote: "Medium risk. Years can be quantities or noun modifiers. Rule must block year/month tokens followed by nouns and avoid broad numeric rewriting.",
+  },
+  {
+    id: "en-step6-enter-concrete-place",
+    detects: (input) =>
+      new RegExp(
+        `\\b(enter|enters|entered|entering)\\s+(?:to|into)\\s+(?:the\\s+)?${STEP6_ENTER_CONCRETE_PLACE_PATTERN}\\b`,
+        "i",
+      ).test(input),
+    apply: repairStep6EnterConcretePlace,
+    fpRiskNote: "Medium risk. Enter into is valid with agreements, contracts, and abstract states. Rule only applies to a closed concrete-place whitelist.",
   },
   {
     id: "en-third-person-daily-go-eat-have",

@@ -231,6 +231,30 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["I enter to the room.", "I enter the room."],
+    ["She entered to the classroom.", "She entered the classroom."],
+    ["They enter into the house.", "They enter the house."],
+  ])("corrects approved Step 6 enter concrete-place pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-enter-concrete-place"],
+    });
+  });
+
+  it.each([
+    "They enter into an agreement.",
+    "I enter the room.",
+    "I go to the room.",
+    "She entered into a contract.",
+  ])("does not over-trigger approved Step 6 enter concrete-place pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["We discuss about homework.", "We discuss homework."],
     ["They discussed about the problem.", "They discussed the problem."],
     ["I want to discuss about this.", "I want to discuss this."],
@@ -337,6 +361,7 @@ describe("correctionEngine", () => {
     ["en-step6-wait-for-person-object", "wait-for"],
     ["en-step6-past-marker-recall", "past-marker recall"],
     ["en-step6-in-month-year", "in-month/year"],
+    ["en-step6-enter-concrete-place", "enter concrete place"],
     ["en-step6-discuss-about", "discuss-about"],
     ["en-step6-marry-with", "marry-with"],
     ["en-step6-at-clock-time", "at-clock-time"],

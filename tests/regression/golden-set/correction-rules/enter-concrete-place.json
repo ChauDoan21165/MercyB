@@ -1,0 +1,67 @@
+{
+  "rule": "step6EnterConcretePlace",
+  "ruleId": "en-step6-enter-concrete-place",
+  "language": "en",
+  "description": "Removes to/into after enter only before a closed whitelist of concrete place nouns.",
+  "fp_risk_note": "Medium risk. Enter into is valid with agreements, contracts, and abstract states. Rule only applies to a closed concrete-place whitelist.",
+  "positive": [
+    {
+      "id": "enter-concrete-place-pos-001",
+      "input": "I enter to the room.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I enter the room.",
+      "expectedRuleFired": "step6EnterConcretePlace",
+      "notes": "Removes to before whitelisted concrete place room."
+    },
+    {
+      "id": "enter-concrete-place-pos-002",
+      "input": "She entered to the classroom.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She entered the classroom.",
+      "expectedRuleFired": "step6EnterConcretePlace",
+      "notes": "Removes to before whitelisted concrete place classroom."
+    },
+    {
+      "id": "enter-concrete-place-pos-003",
+      "input": "They enter into the house.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They enter the house.",
+      "expectedRuleFired": "step6EnterConcretePlace",
+      "notes": "Removes into before whitelisted concrete place house."
+    }
+  ],
+  "negative": [
+    {
+      "id": "enter-concrete-place-neg-001",
+      "input": "They enter into an agreement.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "They enter into an agreement.",
+      "expectedRuleFired": null,
+      "notes": "Legal/abstract enter into phrase stays unchanged."
+    },
+    {
+      "id": "enter-concrete-place-neg-002",
+      "input": "I enter the room.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I enter the room.",
+      "expectedRuleFired": null,
+      "notes": "Already correct enter phrase stays unchanged."
+    },
+    {
+      "id": "enter-concrete-place-neg-003",
+      "input": "I go to the room.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I go to the room.",
+      "expectedRuleFired": null,
+      "notes": "Unrelated go to phrase stays unchanged."
+    },
+    {
+      "id": "enter-concrete-place-neg-004",
+      "input": "She entered into a contract.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She entered into a contract.",
+      "expectedRuleFired": null,
+      "notes": "Contract phrase stays unchanged."
+    }
+  ]
+}
