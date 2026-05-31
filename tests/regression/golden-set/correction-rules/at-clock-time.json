@@ -1,0 +1,60 @@
+{
+  "rule": "step6AtClockTime",
+  "ruleId": "en-step6-at-clock-time",
+  "language": "en",
+  "description": "Inserts at before explicit clock times after a small whitelist of time-taking verbs.",
+  "fp_risk_note": "Low-medium risk. Only explicit clock-time formats should trigger; duration and vague time expressions must stay unchanged.",
+  "positive": [
+    {
+      "id": "at-clock-time-pos-001",
+      "input": "I wake up 7 o'clock.",
+      "expectedCorrection": "I wake up at 7 o'clock.",
+      "expectedRuleFired": "step6AtClockTime",
+      "notes": "Inserts at before o'clock time."
+    },
+    {
+      "id": "at-clock-time-pos-002",
+      "input": "She starts work 8 AM.",
+      "expectedCorrection": "She starts work at 8 AM.",
+      "expectedRuleFired": "step6AtClockTime",
+      "notes": "Inserts at before AM time."
+    },
+    {
+      "id": "at-clock-time-pos-003",
+      "input": "We meet 6:30.",
+      "expectedCorrection": "We meet at 6:30.",
+      "expectedRuleFired": "step6AtClockTime",
+      "notes": "Inserts at before colon clock time."
+    }
+  ],
+  "negative": [
+    {
+      "id": "at-clock-time-neg-001",
+      "input": "I wake up early.",
+      "expectedCorrection": "I wake up early.",
+      "expectedRuleFired": null,
+      "notes": "Vague time stays unchanged."
+    },
+    {
+      "id": "at-clock-time-neg-002",
+      "input": "She works 8 hours.",
+      "expectedCorrection": "She works 8 hours.",
+      "expectedRuleFired": null,
+      "notes": "Duration stays unchanged."
+    },
+    {
+      "id": "at-clock-time-neg-003",
+      "input": "We meet tomorrow.",
+      "expectedCorrection": "We meet tomorrow.",
+      "expectedRuleFired": null,
+      "notes": "Future adverb stays unchanged."
+    },
+    {
+      "id": "at-clock-time-neg-004",
+      "input": "We meet at 6:30.",
+      "expectedCorrection": "We meet at 6:30.",
+      "expectedRuleFired": null,
+      "notes": "Already correct phrase stays unchanged."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "rule": "step6DiscussAbout",
+  "ruleId": "en-step6-discuss-about",
+  "language": "en",
+  "description": "Removes unnecessary about immediately after forms of discuss.",
+  "fp_risk_note": "Low-medium risk. Safe only when about immediately follows a form of discuss.",
+  "positive": [
+    {
+      "id": "discuss-about-pos-001",
+      "input": "We discuss about homework.",
+      "expectedCorrection": "We discuss homework.",
+      "expectedRuleFired": "step6DiscussAbout",
+      "notes": "Removes about after discuss."
+    },
+    {
+      "id": "discuss-about-pos-002",
+      "input": "They discussed about the problem.",
+      "expectedCorrection": "They discussed the problem.",
+      "expectedRuleFired": "step6DiscussAbout",
+      "notes": "Removes about after discussed."
+    },
+    {
+      "id": "discuss-about-pos-003",
+      "input": "I want to discuss about this.",
+      "expectedCorrection": "I want to discuss this.",
+      "expectedRuleFired": "step6DiscussAbout",
+      "notes": "Removes about after infinitive discuss."
+    }
+  ],
+  "negative": [
+    {
+      "id": "discuss-about-neg-001",
+      "input": "We talk about homework.",
+      "expectedCorrection": "We talk about homework.",
+      "expectedRuleFired": null,
+      "notes": "Talk about stays unchanged."
+    },
+    {
+      "id": "discuss-about-neg-002",
+      "input": "We discuss homework.",
+      "expectedCorrection": "We discuss homework.",
+      "expectedRuleFired": null,
+      "notes": "Already correct discuss phrase stays unchanged."
+    },
+    {
+      "id": "discuss-about-neg-003",
+      "input": "This is about homework.",
+      "expectedCorrection": "This is about homework.",
+      "expectedRuleFired": null,
+      "notes": "Non-discuss about phrase stays unchanged."
+    }
+  ]
+}

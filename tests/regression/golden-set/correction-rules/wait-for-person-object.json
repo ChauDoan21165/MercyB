@@ -1,0 +1,60 @@
+{
+  "rule": "step6WaitForPersonObject",
+  "ruleId": "en-step6-wait-for-person-object",
+  "language": "en",
+  "description": "Inserts for after wait verb forms only before person-object pronouns.",
+  "fp_risk_note": "Medium risk. Wait can be intransitive or part of idioms. Rule only inserts for before person/pronoun objects and abstains elsewhere.",
+  "positive": [
+    {
+      "id": "wait-for-person-object-pos-001",
+      "input": "I wait you.",
+      "expectedCorrection": "I wait for you.",
+      "expectedRuleFired": "step6WaitForPersonObject",
+      "notes": "Inserts for before object pronoun you."
+    },
+    {
+      "id": "wait-for-person-object-pos-002",
+      "input": "She waited me.",
+      "expectedCorrection": "She waited for me.",
+      "expectedRuleFired": "step6WaitForPersonObject",
+      "notes": "Inserts for before object pronoun me."
+    },
+    {
+      "id": "wait-for-person-object-pos-003",
+      "input": "They are waiting him.",
+      "expectedCorrection": "They are waiting for him.",
+      "expectedRuleFired": "step6WaitForPersonObject",
+      "notes": "Inserts for before object pronoun him."
+    }
+  ],
+  "negative": [
+    {
+      "id": "wait-for-person-object-neg-001",
+      "input": "I wait for you.",
+      "expectedCorrection": "I wait for you.",
+      "expectedRuleFired": null,
+      "notes": "Already correct wait for phrase stays unchanged."
+    },
+    {
+      "id": "wait-for-person-object-neg-002",
+      "input": "Please wait here.",
+      "expectedCorrection": "Please wait here.",
+      "expectedRuleFired": null,
+      "notes": "Intransitive wait stays unchanged."
+    },
+    {
+      "id": "wait-for-person-object-neg-003",
+      "input": "Wait a minute.",
+      "expectedCorrection": "Wait a minute.",
+      "expectedRuleFired": null,
+      "notes": "Common wait phrase stays unchanged."
+    },
+    {
+      "id": "wait-for-person-object-neg-004",
+      "input": "He waits tables.",
+      "expectedCorrection": "He waits tables.",
+      "expectedRuleFired": null,
+      "notes": "Wait tables idiom stays unchanged."
+    }
+  ]
+}
