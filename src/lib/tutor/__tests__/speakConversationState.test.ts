@@ -123,6 +123,43 @@ describe("speakConversationState", () => {
     expect(`${replies[3].naturalReply} ${replies[3].nextQuestion}`).toMatch(/family|home|weekend|together/i);
   });
 
+  it("keeps a commute topic for four turns with natural non-repeated follow-ups", () => {
+    let state = createSpeakConversationState();
+    const replies = [
+      "I take the bus to work.",
+      "The traffic is heavy.",
+      "It takes thirty minutes.",
+      "I listen to music on the bus.",
+    ].map((text) => {
+      const reply = next(text, state);
+      state = reply.state;
+      return reply;
+    });
+    const combinedReplies = replies.map((reply) => `${reply.naturalReply} ${reply.nextQuestion}`);
+
+    expect(replies.map((reply) => reply.state.currentTopic)).toEqual(["commute", "commute", "commute", "commute"]);
+    expect(state.turnCountOnTopic).toBe(4);
+    expect(state.shouldPivot).toBe(false);
+    expect(new Set(combinedReplies).size).toBe(combinedReplies.length);
+    combinedReplies.forEach((reply) => {
+      expect(reply).toMatch(/commute|bus|traffic|work/i);
+      expect(reply).not.toBe(SPEAK_FOLLOW_UP_PIVOT);
+    });
+  });
+
+  it("switches topic when the learner clearly changes from commute to dinner", () => {
+    let state = createSpeakConversationState();
+    state = next("I take the bus to work.", state).state;
+    state = next("The traffic is heavy.", state).state;
+
+    const reply = next("At night I have dinner with my family.", state);
+
+    expect(reply.state.currentTopic).toBe("dinner");
+    expect(reply.state.turnCountOnTopic).toBe(1);
+    expect(`${reply.naturalReply} ${reply.nextQuestion}`).toMatch(/dinner|evening/i);
+    expect(`${reply.naturalReply} ${reply.nextQuestion}`).not.toMatch(/commute|traffic|bus/i);
+  });
+
   it("does not repeat a follow-up id inside the same topic session", () => {
     let state = createSpeakConversationState();
 
