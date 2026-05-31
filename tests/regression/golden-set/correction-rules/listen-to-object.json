@@ -11,6 +11,7 @@
       "expectedStatus": "corrected",
       "expectedCorrection": "I listen to music.",
       "expectedRuleFired": "step6ListenToObject",
+      "mustNotFire": ["en-l4-missing-singular-article"],
       "notes": "Inserts to before whitelisted object noun music."
     },
     {
@@ -19,6 +20,7 @@
       "expectedStatus": "corrected",
       "expectedCorrection": "She listens to teacher.",
       "expectedRuleFired": "step6ListenToObject",
+      "mustNotFire": ["en-l4-missing-singular-article"],
       "notes": "Inserts to only; article repair is deliberately excluded."
     },
     {
@@ -27,6 +29,7 @@
       "expectedStatus": "corrected",
       "expectedCorrection": "They listened to song.",
       "expectedRuleFired": "step6ListenToObject",
+      "mustNotFire": ["en-l4-missing-singular-article"],
       "notes": "Inserts to before whitelisted object noun song."
     }
   ],

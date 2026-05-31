@@ -11,6 +11,7 @@
       "expectedStatus": "corrected",
       "expectedCorrection": "He is a teacher.",
       "expectedRuleFired": "step6ProfessionArticle",
+      "mustNotFire": ["en-l4-missing-singular-article"],
       "notes": "Singular he plus bare consonant profession takes a."
     },
     {
@@ -19,6 +20,7 @@
       "expectedStatus": "corrected",
       "expectedCorrection": "She is a doctor.",
       "expectedRuleFired": "step6ProfessionArticle",
+      "mustNotFire": ["en-l4-missing-singular-article"],
       "notes": "Singular she plus bare consonant profession takes a."
     },
     {
@@ -27,6 +29,7 @@
       "expectedStatus": "corrected",
       "expectedCorrection": "I am a student.",
       "expectedRuleFired": "step6ProfessionArticle",
+      "mustNotFire": ["en-l4-missing-singular-article"],
       "notes": "Singular I plus bare consonant profession takes a."
     },
     {
@@ -35,6 +38,7 @@
       "expectedStatus": "corrected",
       "expectedCorrection": "He is an engineer.",
       "expectedRuleFired": "step6ProfessionArticle",
+      "mustNotFire": ["en-l4-missing-singular-article"],
       "notes": "Vowel-sound profession engineer takes an."
     },
     {
@@ -43,6 +47,7 @@
       "expectedStatus": "corrected",
       "expectedCorrection": "She is an artist.",
       "expectedRuleFired": "step6ProfessionArticle",
+      "mustNotFire": ["en-l4-missing-singular-article"],
       "notes": "Vowel-sound profession artist takes an."
     }
   ],
