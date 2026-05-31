@@ -1,0 +1,59 @@
+{
+  "rule": "negationGuard",
+  "ruleId": "en-yesterday-irregular-beginner-past",
+  "language": "en",
+  "description": "Negation guard on the past-tense rewrite (audit commit ad3641395). replaceVerbAfterSubject (used by en-yesterday-irregular-beginner-past) carries a negative lookahead (?!\\s+not\\b) so a negated verb is NOT rewritten. When a past marker + (pronoun + target verb) are present but the verb is negated, the rule produces no change and the engine escalates to needs_ai rather than emitting a wrong fix (e.g. 'did not go'). Expectations encode the VERIFIED behaviour of correctWithTutorRules() on current main.",
+  "fp_risk_note": "This rule's false-positive surface is negation: without the (?!\\s+not\\b) guard, 'Yesterday I do not go' would be mis-rewritten. The NEGATIVE cases here are the guard's core contract — negated past sentences (a recognized marker + 'pronoun + do/eat/have + not') must NOT fire the past rewrite; because the sentence is still detected as clearly-wrong but cannot be safely auto-fixed, the engine returns needs_ai (corrected=''). The POSITIVE cases are the non-negated counterparts that MUST still fire — proving the guard does not over-suppress ordinary past correction. A regression that loosens or drops the negation lookahead will turn these negatives into wrong rewrites.",
+  "positive": [
+    {
+      "id": "ng-pos-001",
+      "input": "Yesterday I go to school",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Yesterday I went to school.",
+      "expectedRuleFired": "negationGuard",
+      "notes": "Non-negated: rule fires normally (go -> went). Guard must not over-suppress."
+    },
+    {
+      "id": "ng-pos-002",
+      "input": "Last week I do my homework",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Last week I did my homework.",
+      "expectedRuleFired": "negationGuard",
+      "notes": "Non-negated: 'do' -> 'did' fires (contrast for ng-neg-002)."
+    },
+    {
+      "id": "ng-pos-003",
+      "input": "Two days ago I eat rice",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Two days ago I ate rice.",
+      "expectedRuleFired": "negationGuard",
+      "notes": "Non-negated: 'eat' -> 'ate' fires (contrast for ng-neg-001)."
+    }
+  ],
+  "negative": [
+    {
+      "id": "ng-neg-001",
+      "input": "Yesterday I do not go to school",
+      "expectedStatus": "needs_ai",
+      "expectedCorrection": "",
+      "expectedRuleFired": null,
+      "notes": "Guard core: 'do not' blocks the rewrite of 'do'; rule produces no change and the engine escalates to needs_ai instead of emitting a wrong fix."
+    },
+    {
+      "id": "ng-neg-002",
+      "input": "Last week I do not eat meat",
+      "expectedStatus": "needs_ai",
+      "expectedCorrection": "",
+      "expectedRuleFired": null,
+      "notes": "Guard core: marker present + 'I do not'; guard blocks 'do', 'eat' isn't adjacent to a pronoun, so nothing fires -> needs_ai."
+    },
+    {
+      "id": "ng-neg-003",
+      "input": "Yesterday we do not have class",
+      "expectedStatus": "needs_ai",
+      "expectedCorrection": "",
+      "expectedRuleFired": null,
+      "notes": "Guard core: 'we do not have' — guard blocks 'do'; no safe deterministic fix -> needs_ai."
+    }
+  ]
+}
