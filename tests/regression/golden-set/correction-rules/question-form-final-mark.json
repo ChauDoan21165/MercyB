@@ -1,0 +1,67 @@
+{
+  "rule": "questionFormFinalMark",
+  "ruleId": "en-question-form-final-mark",
+  "language": "en",
+  "description": "Question-form terminal punctuation (Step 5). Rule en-question-form-final-mark appends a '?' to a sentence that begins with a question word or auxiliary (what/where/when/why/how/do/does/did/are/is/can/could/would/will...) but lacks a terminal question mark. Expectations encode the VERIFIED behaviour of correctWithTutorRules() on current main.",
+  "fp_risk_note": "The '?' must be appended only to genuine question-initial sentences missing terminal punctuation. The negative cases stress: (1) questions that already end in '?' — re-appending would yield '??'; (2) declaratives that are NOT question-initial ('I like apples') even though they are statements; (3) declaratives that merely contain a question-trigger word mid-sentence ('The cat is black' — 'is' is not sentence-initial) must not be turned into questions. A regression that loosens the initial-word anchor would wrongly question-mark statements.",
+  "positive": [
+    {
+      "id": "qfm-pos-001",
+      "input": "What is your name",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "What is your name?",
+      "expectedRuleFired": "questionFormFinalMark",
+      "notes": "Wh-question missing '?' -> appended."
+    },
+    {
+      "id": "qfm-pos-002",
+      "input": "Where do you live",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Where do you live?",
+      "expectedRuleFired": "questionFormFinalMark",
+      "notes": "Wh + auxiliary 'do' question -> '?' appended."
+    },
+    {
+      "id": "qfm-pos-003",
+      "input": "Can you help me",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Can you help me?",
+      "expectedRuleFired": "questionFormFinalMark",
+      "notes": "Modal-initial yes/no question -> '?' appended."
+    },
+    {
+      "id": "qfm-pos-004",
+      "input": "How are you",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "How are you?",
+      "expectedRuleFired": "questionFormFinalMark",
+      "notes": "Wh + copula question -> '?' appended."
+    }
+  ],
+  "negative": [
+    {
+      "id": "qfm-neg-001",
+      "input": "What is your name?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "What is your name?",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (already punctuated): terminal '?' present; rule must not append a second."
+    },
+    {
+      "id": "qfm-neg-002",
+      "input": "I like apples",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I like apples.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (declarative, not question-initial): must stay a statement with a period."
+    },
+    {
+      "id": "qfm-neg-003",
+      "input": "The cat is black",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The cat is black.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (trigger word mid-sentence): 'is' is not sentence-initial, so this declarative must not become a question."
+    }
+  ]
+}
