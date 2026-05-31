@@ -315,6 +315,8 @@ const CALQUE_MEDICINE_OBJECT_PATTERN =
   "(?:medicine|medication|pill|pills|tablet|tablets|antibiotics|painkillers)";
 const CALQUE_MEDICINE_QUANTITY_PATTERN =
   "(?:(?:a|an|one|two|three|four|five|\\d+)\\s+)?";
+const CALQUE_SAY_WITH_PERSON_PATTERN =
+  /\b(say|says|said|saying)\s+with\s+(me|you|him|her|us|them)\b/gi;
 
 function repairStep6WaitFor(input: string): string {
   const pattern = new RegExp(`\\b(wait|waits|waited|waiting)\\s+(${PERSON_OBJECT_PRONOUN_PATTERN})\\b`, "gi");
@@ -423,6 +425,50 @@ function repairCalqueTakeMedicine(input: string): string {
   );
   return input.replace(pattern, (_match, verb: string, object: string) => {
     return `${takeVerbForMedicineCalque(verb)} ${object}`;
+  });
+}
+
+function isFrontedWhObjectQuestionBeforeSay(input: string, matchIndex: number): boolean {
+  const clausePrefix = input.slice(0, matchIndex).split(/[.!?;]/).pop()?.trim() ?? "";
+  return /^(?:what|which)\b/i.test(clausePrefix);
+}
+
+function isAllowedSayWithPersonTail(tail: string): boolean {
+  const normalized = tail.trim().replace(/[.!?]+$/u, "").trim();
+  if (!normalized) return true;
+
+  if (/^,\s+(?:I|you|we|they|he|she|it|there)\b\s+\S+/i.test(normalized)) return true;
+  if (/^(?:that|who|which|when|where|because|so)\b\s+\S+/i.test(normalized)) return true;
+  if (/^(?:yesterday|today|now|then|later|again|every day)$/i.test(normalized)) return true;
+  if (/^(?:after|before)\s+(?:that|then|school|work|class|lunch|dinner|breakfast|\d{1,2}(?::\d{2})?(?:\s*(?:AM|PM|am|pm))?)$/i.test(normalized)) {
+    return true;
+  }
+  if (new RegExp(`^at\\s+${CLOCK_TIME_PATTERN}$`, "i").test(normalized)) return true;
+
+  return false;
+}
+
+function getCalqueSayWithPersonMatch(input: string): RegExpMatchArray | null {
+  CALQUE_SAY_WITH_PERSON_PATTERN.lastIndex = 0;
+  for (const match of input.matchAll(CALQUE_SAY_WITH_PERSON_PATTERN)) {
+    if (isFrontedWhObjectQuestionBeforeSay(input, match.index ?? 0)) continue;
+    const tail = input.slice((match.index ?? 0) + match[0].length);
+    if (isAllowedSayWithPersonTail(tail)) return match;
+  }
+  return null;
+}
+
+function hasCalqueSayWithPerson(input: string): boolean {
+  return getCalqueSayWithPersonMatch(input) !== null;
+}
+
+function repairCalqueSayWithPerson(input: string): string {
+  CALQUE_SAY_WITH_PERSON_PATTERN.lastIndex = 0;
+  return input.replace(CALQUE_SAY_WITH_PERSON_PATTERN, (match, verb: string, pronoun: string, offset: number) => {
+    if (isFrontedWhObjectQuestionBeforeSay(input, offset)) return match;
+    const tail = input.slice(offset + match.length);
+    if (!isAllowedSayWithPersonTail(tail)) return match;
+    return `${verb} to ${pronoun}`;
   });
 }
 
@@ -776,6 +822,12 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: hasCalqueTakeMedicine,
     apply: repairCalqueTakeMedicine,
     fpRiskNote: "Medium risk. Drink and eat are correct with food/liquids, and medicine sentences can include food/water plus medicine. V1 only rewrites eat/drink directly governing a medicine-object whitelist.",
+  },
+  {
+    id: "en-calque-say-with-person",
+    detects: hasCalqueSayWithPerson,
+    apply: repairCalqueSayWithPerson,
+    fpRiskNote: "High risk. With is valid in parentheticals, absolute constructions, questions, manner phrases, and many non-calque structures. V1 only fires on say/says/said/saying plus with plus a pronoun when with plus pronoun is the immediate complement and the pronoun tail is explicitly allowlisted. It blocks intervening direct objects, fronted wh-object questions, and any non-allowlisted tail.",
   },
   {
     id: "en-step6-discuss-about",
