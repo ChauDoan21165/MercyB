@@ -230,6 +230,10 @@ function repairBeVerbOmission(input: string): string {
     .replace(/\b(You|We|They)\s+(very\s+(?:happy|sad|tired|busy)(?:\s+today)?)\b/gi, "$1 are $2");
 }
 
+function isBeAuxInvertedQuestion(input: string): boolean {
+  return /^(?:am|are|is|was|were)\s+(?:i|you|he|she|it|we|they)\b/i.test(input.trim());
+}
+
 const TIME_EXPRESSION_PLACEMENT_PATTERN =
   /^(I|you|he|she|it|we|they)\s+(yesterday|today|tonight|tomorrow|this morning|this afternoon|this evening|last night|last week|last month|last year|last summer|on Monday|on Tuesday|on Wednesday|on Thursday|on Friday|on Saturday|on Sunday|last Monday|last Tuesday|last Wednesday|last Thursday|last Friday|last Saturday|last Sunday|in 2024|an hour ago|two hours ago|three days ago)\s+(.+?)[.?!]?$/i;
 
@@ -332,9 +336,10 @@ export const englishCorrectionRules: CorrectionRule[] = [
   {
     id: "en-be-verb-omission",
     detects: (input) =>
+      !isBeAuxInvertedQuestion(input) &&
       /\b(?:I|He|She|It|You|We|They)\s+very\s+(?:happy|sad|tired|busy)(?:\s+today)?\b/i.test(input),
     apply: repairBeVerbOmission,
-    fpRiskNote: "Be-drop v1 requires a pronoun plus very plus a small adjective whitelist.",
+    fpRiskNote: "Be-drop v1 requires a pronoun plus very plus a small adjective whitelist and skips subject-aux-inverted be questions.",
   },
   {
     id: "en-step5-subject-verb-agreement",

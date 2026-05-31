@@ -171,6 +171,11 @@ describe("correctionEngine", () => {
 
   it.each([
     "She is very happy.",
+    "Are you very happy?",
+    "Is she very tired?",
+    "Were they very busy?",
+    "Am I late?",
+    "Was he sick yesterday?",
     "She very quickly finished.",
     "I very much like it.",
   ])("does not over-trigger approved Step 5 be-drop: %s", (input) => {
@@ -273,6 +278,11 @@ describe("correctionEngine", () => {
   it.each([
     "She is very happy.",
     "They are very happy.",
+    "Are you very happy?",
+    "Is she very tired?",
+    "Were they very busy?",
+    "Am I late?",
+    "Was he sick yesterday?",
     "She very quickly finished.",
     "I was very happy.",
   ])("does not broadly add be-verbs: %s", (input) => {
