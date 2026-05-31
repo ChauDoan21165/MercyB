@@ -75,6 +75,15 @@ const PROFESSION_ARTICLES: Record<string, "a" | "an"> = {
   writer: "a",
 };
 
+const STEP6_POSSESSIVE_OWNER_PATTERN =
+  "(?:mother|father|brother|sister|friend|teacher|boss|wife|husband)";
+
+const STEP6_POSSESSIVE_OBJECT_PATTERN =
+  "(?:car|phone|house|room|bag|book|computer|bicycle|bike|office|job)";
+
+const STEP6_POSSESSIVE_COMPOUND_EXCLUSION_PATTERN =
+  /\b(?:mother tongue|sister city|father figure|brother country|teacher training|boss fight)\b/i;
+
 function isProperNounArticleMatch(noun: string): boolean {
   return /^[A-Z]/.test(noun);
 }
@@ -250,6 +259,26 @@ function repairStep6ProfessionArticle(input: string): string {
     const article = PROFESSION_ARTICLES[profession.toLowerCase()] ?? "a";
     return `${prefix} ${article} ${profession}`;
   });
+}
+
+function hasStep6PossessiveS(input: string): boolean {
+  if (STEP6_POSSESSIVE_COMPOUND_EXCLUSION_PATTERN.test(input)) return false;
+
+  const pattern = new RegExp(
+    `\\b(?:my|your|his|her|our|their)\\s+${STEP6_POSSESSIVE_OWNER_PATTERN}\\s+${STEP6_POSSESSIVE_OBJECT_PATTERN}\\b`,
+    "i",
+  );
+  return pattern.test(input);
+}
+
+function repairStep6PossessiveS(input: string): string {
+  if (STEP6_POSSESSIVE_COMPOUND_EXCLUSION_PATTERN.test(input)) return input;
+
+  const pattern = new RegExp(
+    `\\b((?:my|your|his|her|our|their)\\s+)(${STEP6_POSSESSIVE_OWNER_PATTERN})\\s+(${STEP6_POSSESSIVE_OBJECT_PATTERN})\\b`,
+    "gi",
+  );
+  return input.replace(pattern, "$1$2's $3");
 }
 
 function pluralizeAfterQuantity(input: string): string {
@@ -479,6 +508,12 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: hasStep6ProfessionArticle,
     apply: repairStep6ProfessionArticle,
     fpRiskNote: "Medium risk. Profession nouns overlap with identity, role, and discourse-specific article choice. V1 only inserts a/an for singular pronoun subject plus be plus bare whitelisted profession noun. It excludes the, all other determiners, plural subjects, adjective predicates, and any surface already covered by the shipped article rule.",
+  },
+  {
+    id: "en-step6-possessive-s",
+    detects: hasStep6PossessiveS,
+    apply: repairStep6PossessiveS,
+    fpRiskNote: "High risk. Noun-noun sequences may be compounds, appositives, or ownership. V1 requires both a singular owner whitelist and a concrete-object whitelist, blocks fixed compounds such as mother tongue and sister city, and excludes plural owners to avoid apostrophe ambiguity.",
   },
   {
     id: "en-l4-missing-singular-article",

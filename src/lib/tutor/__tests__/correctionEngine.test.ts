@@ -99,6 +99,31 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["My mother car is old.", "My mother's car is old."],
+    ["His brother phone is new.", "His brother's phone is new."],
+    ["Her friend house is big.", "Her friend's house is big."],
+  ])("corrects approved Step 6 possessive-s pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-possessive-s"],
+    });
+  });
+
+  it.each([
+    "My mother tongue is Vietnamese.",
+    "This is a sister city.",
+    "My parents car is old.",
+    "My friends car is old.",
+    "My mother is old.",
+  ])("does not over-trigger approved Step 6 possessive-s pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["I have two book.", "I have two books."],
     ["Many student like English.", "Many students like English."],
     ["I learned several word today.", "I learned several words today."],
@@ -411,6 +436,7 @@ describe("correctionEngine", () => {
     ["en-step5-preposition-pattern", "missing to"],
     ["en-be-verb-omission", "be-drop"],
     ["en-step6-profession-article", "profession article"],
+    ["en-step6-possessive-s", "possessive s"],
     ["en-step6-wait-for-person-object", "wait-for"],
     ["en-step6-listen-to-object", "listen-to"],
     ["en-step6-past-marker-recall", "past-marker recall"],

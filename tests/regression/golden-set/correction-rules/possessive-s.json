@@ -1,0 +1,75 @@
+{
+  "rule": "step6PossessiveS",
+  "ruleId": "en-step6-possessive-s",
+  "language": "en",
+  "description": "Adds possessive 's only for possessive determiner plus singular owner whitelist plus concrete owned object whitelist.",
+  "fp_risk_note": "High risk. Noun-noun sequences may be compounds, appositives, or ownership. V1 requires both a singular owner whitelist and a concrete-object whitelist, blocks fixed compounds such as mother tongue and sister city, and excludes plural owners to avoid apostrophe ambiguity.",
+  "positive": [
+    {
+      "id": "possessive-s-pos-001",
+      "input": "My mother car is old.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "My mother's car is old.",
+      "expectedRuleFired": "step6PossessiveS",
+      "notes": "Singular whitelisted owner mother plus concrete object car takes possessive 's."
+    },
+    {
+      "id": "possessive-s-pos-002",
+      "input": "His brother phone is new.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "His brother's phone is new.",
+      "expectedRuleFired": "step6PossessiveS",
+      "notes": "Singular whitelisted owner brother plus concrete object phone takes possessive 's."
+    },
+    {
+      "id": "possessive-s-pos-003",
+      "input": "Her friend house is big.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Her friend's house is big.",
+      "expectedRuleFired": "step6PossessiveS",
+      "notes": "Singular whitelisted owner friend plus concrete object house takes possessive 's."
+    }
+  ],
+  "negative": [
+    {
+      "id": "possessive-s-neg-001",
+      "input": "My mother tongue is Vietnamese.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "My mother tongue is Vietnamese.",
+      "expectedRuleFired": null,
+      "notes": "Fixed compound mother tongue stays unchanged."
+    },
+    {
+      "id": "possessive-s-neg-002",
+      "input": "This is a sister city.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "This is a sister city.",
+      "expectedRuleFired": null,
+      "notes": "Fixed compound sister city stays unchanged."
+    },
+    {
+      "id": "possessive-s-neg-003",
+      "input": "My parents car is old.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "My parents car is old.",
+      "expectedRuleFired": null,
+      "notes": "Plural owner parents is outside v1 scope."
+    },
+    {
+      "id": "possessive-s-neg-004",
+      "input": "My friends car is old.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "My friends car is old.",
+      "expectedRuleFired": null,
+      "notes": "Plural owner friends must abstain."
+    },
+    {
+      "id": "possessive-s-neg-005",
+      "input": "My mother is old.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "My mother is old.",
+      "expectedRuleFired": null,
+      "notes": "No concrete owned object, so rule abstains."
+    }
+  ]
+}
