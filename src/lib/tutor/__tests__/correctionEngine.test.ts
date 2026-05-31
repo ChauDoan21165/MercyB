@@ -119,13 +119,14 @@ describe("correctionEngine", () => {
   });
 
   it.each([
-    ["He go on Monday.", "He went on Monday."],
-    ["He go in 2024.", "He went in 2024."],
+    ["He go on Monday.", "He go on Monday."],
+    ["He go in 2024.", "He go in 2024."],
     ["She work an hour ago.", "She work an hour ago."],
     ["It make last summer.", "It make last summer."],
-  ])("blocks SVA after approved past markers: %s", (input, expected) => {
+  ])("blocks SVA after temporal contexts that are not safe past-tense rewrites: %s", (input, expected) => {
     const result = correctWithTutorRules(input, "en");
     expect(result.appliedRuleIds).not.toContain("en-step5-subject-verb-agreement");
+    expect(result.appliedRuleIds).not.toContain("en-yesterday-irregular-beginner-past");
     expect(result.corrected).toBe(expected);
     expect(result.corrected).not.toMatch(/\b(?:goes|works|makes)\b/);
   });
@@ -328,6 +329,10 @@ describe("correctionEngine", () => {
     ["She eat rice last night.", "She ate rice last night."],
     ["We have a meeting two days ago.", "We had a meeting two days ago."],
     ["He go last Monday.", "He went last Monday."],
+    ["On Monday I go to school.", "On Monday I went to school."],
+    ["In 2024 I go to Japan.", "In 2024 I went to Japan."],
+    ["An hour ago I eat lunch.", "An hour ago I ate lunch."],
+    ["Last summer I go to the beach.", "Last summer I went to the beach."],
   ])("uses generalized past markers only for known beginner past verbs: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",
@@ -339,6 +344,10 @@ describe("correctionEngine", () => {
   it.each([
     "She eats rice every night.",
     "I will buy a hat tomorrow.",
+    "I go to school on Monday.",
+    "I go to Japan in 2024.",
+    "I eat lunch an hour ago.",
+    "I go to the beach last summer.",
   ])("does not over-trigger generalized past markers: %s", (input) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "unchanged",
