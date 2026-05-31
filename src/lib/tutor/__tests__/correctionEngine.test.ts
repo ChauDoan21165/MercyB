@@ -260,6 +260,68 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["Look me.", "Look at me."],
+    ["She looked him.", "She looked at him."],
+    ["They are looking us.", "They are looking at us."],
+  ])("corrects approved Step 6 look-at pronoun pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-look-at-pronoun"],
+    });
+  });
+
+  it.each([
+    "She looks happy.",
+    "I look for my phone.",
+    "He looks like his father.",
+    "Look at me.",
+    "I'll look you up.",
+    "Look them over.",
+  ])("does not over-trigger approved Step 6 look-at pronoun pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["I in Canada.", "I am in Canada."],
+    ["She at school.", "She is at school."],
+    ["They in the room.", "They are in the room."],
+  ])("corrects approved Step 6 location be-drop pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-location-be-drop"],
+    });
+  });
+
+  it.each([
+    "Are you in Canada?",
+    "I am in Canada.",
+    "I work in Canada.",
+    "She very happy.",
+    "John in accounting.",
+    "The class on Monday is hard.",
+  ])("does not over-trigger approved Step 6 location be-drop pattern: %s", (input) => {
+    const result = correctWithTutorRules(input, "en");
+    if (input === "She very happy.") {
+      expect(result).toMatchObject({
+        status: "corrected",
+        appliedRuleIds: ["en-be-verb-omission"],
+      });
+      expect(result.appliedRuleIds).not.toContain("en-step6-location-be-drop");
+      return;
+    }
+
+    expect(result).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["An hour ago I eat lunch.", "An hour ago I ate lunch."],
     ["Last summer she go to Canada.", "Last summer she went to Canada."],
     ["In 2024 they move to Toronto.", "In 2024 they moved to Toronto."],
@@ -465,6 +527,8 @@ describe("correctionEngine", () => {
     ["en-step6-possessive-s", "possessive s"],
     ["en-step6-wait-for-person-object", "wait-for"],
     ["en-step6-listen-to-object", "listen-to"],
+    ["en-step6-look-at-pronoun", "look-at"],
+    ["en-step6-location-be-drop", "location be-drop"],
     ["en-step6-past-marker-recall", "past-marker recall"],
     ["en-step6-in-month-year", "in-month/year"],
     ["en-step6-enter-concrete-place", "enter concrete place"],
