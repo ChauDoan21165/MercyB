@@ -317,6 +317,8 @@ const CALQUE_MEDICINE_QUANTITY_PATTERN =
   "(?:(?:a|an|one|two|three|four|five|\\d+)\\s+)?";
 const CALQUE_SAY_WITH_PERSON_PATTERN =
   /\b(say|says|said|saying)\s+with\s+(me|you|him|her|us|them)\b/gi;
+const CALQUE_BORROW_ME_OBJECT_PATTERN =
+  /\b(Can|Could|Would|Will)\s+(you|he|she|they)\s+borrow\s+(me|you|him|her|us|them)\s+(a|an|the|my|your|his|her|our|their|this|that)\s+(pen|pencil|book|phone|charger|laptop|bike|bicycle|car|umbrella|bag|notebook)(?=\s*[.?!]?$)/gi;
 
 function repairStep6WaitFor(input: string): string {
   const pattern = new RegExp(`\\b(wait|waits|waited|waiting)\\s+(${PERSON_OBJECT_PRONOUN_PATTERN})\\b`, "gi");
@@ -470,6 +472,20 @@ function repairCalqueSayWithPerson(input: string): string {
     if (!isAllowedSayWithPersonTail(tail)) return match;
     return `${verb} to ${pronoun}`;
   });
+}
+
+function hasCalqueBorrowMeObject(input: string): boolean {
+  CALQUE_BORROW_ME_OBJECT_PATTERN.lastIndex = 0;
+  return CALQUE_BORROW_ME_OBJECT_PATTERN.test(input);
+}
+
+function repairCalqueBorrowMeObject(input: string): string {
+  CALQUE_BORROW_ME_OBJECT_PATTERN.lastIndex = 0;
+  return input.replace(
+    CALQUE_BORROW_ME_OBJECT_PATTERN,
+    (_match, modal: string, subject: string, pronoun: string, determiner: string, object: string) =>
+      `${modal} ${subject} lend ${pronoun} ${determiner} ${object}`,
+  );
 }
 
 function repairStep6DiscussAbout(input: string): string {
@@ -828,6 +844,12 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: hasCalqueSayWithPerson,
     apply: repairCalqueSayWithPerson,
     fpRiskNote: "High risk. With is valid in parentheticals, absolute constructions, questions, manner phrases, and many non-calque structures. V1 only fires on say/says/said/saying plus with plus a pronoun when with plus pronoun is the immediate complement and the pronoun tail is explicitly allowlisted. It blocks intervening direct objects, fronted wh-object questions, and any non-allowlisted tail.",
+  },
+  {
+    id: "en-calque-borrow-me-object",
+    detects: hasCalqueBorrowMeObject,
+    apply: repairCalqueBorrowMeObject,
+    fpRiskNote: "High risk. Borrow/lend direction is easy to reverse incorrectly. V1 only rewrites modal requests with Can/Could/Would/Will plus you/he/she/they plus borrow plus a person pronoun plus a determiner and whitelisted concrete object at sentence end. It blocks subject I, borrowed/borrows/borrowing, imperatives, embedded clauses, from-phrases, multi-clause tails, broad borrow/lend grammar, and non-whitelisted objects.",
   },
   {
     id: "en-step6-discuss-about",
