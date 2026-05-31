@@ -62,6 +62,19 @@ const COUNTABLE_PLURAL_NOUNS: Record<string, string> = {
   word: "words",
 };
 
+const PROFESSION_ARTICLES: Record<string, "a" | "an"> = {
+  artist: "an",
+  doctor: "a",
+  driver: "a",
+  engineer: "an",
+  farmer: "a",
+  lawyer: "a",
+  nurse: "a",
+  student: "a",
+  teacher: "a",
+  writer: "a",
+};
+
 function isProperNounArticleMatch(noun: string): boolean {
   return /^[A-Z]/.test(noun);
 }
@@ -223,6 +236,20 @@ function hasMissingCommonNounArticle(input: string): boolean {
     Array.from(input.matchAll(pattern)).some((match) => !isProperNounArticleMatch(match[3] ?? ""));
 
   return matchesCommonNoun(objectPattern) || matchesCommonNoun(bePattern);
+}
+
+function hasStep6ProfessionArticle(input: string): boolean {
+  const professionPattern = Object.keys(PROFESSION_ARTICLES).join("|");
+  return new RegExp(`\\b(?:I\\s+am|He\\s+is|She\\s+is)\\s+(?:${professionPattern})\\b`, "i").test(input);
+}
+
+function repairStep6ProfessionArticle(input: string): string {
+  const professionPattern = Object.keys(PROFESSION_ARTICLES).join("|");
+  const pattern = new RegExp(`\\b(I\\s+am|He\\s+is|She\\s+is)\\s+(${professionPattern})\\b`, "gi");
+  return input.replace(pattern, (_match, prefix: string, profession: string) => {
+    const article = PROFESSION_ARTICLES[profession.toLowerCase()] ?? "a";
+    return `${prefix} ${article} ${profession}`;
+  });
 }
 
 function pluralizeAfterQuantity(input: string): string {
@@ -446,6 +473,12 @@ export const englishCorrectionRules: CorrectionRule[] = [
       hasBeginnerPastCorrectionMarker(input) &&
       /\b(I|You|We|They|He|She|It)\s+(buy|do|eat|go|have)\b/i.test(input),
     apply: (input) => replaceVerbAfterSubject(input, PAST_VERBS),
+  },
+  {
+    id: "en-step6-profession-article",
+    detects: hasStep6ProfessionArticle,
+    apply: repairStep6ProfessionArticle,
+    fpRiskNote: "Medium risk. Profession nouns overlap with identity, role, and discourse-specific article choice. V1 only inserts a/an for singular pronoun subject plus be plus bare whitelisted profession noun. It excludes the, all other determiners, plural subjects, adjective predicates, and any surface already covered by the shipped article rule.",
   },
   {
     id: "en-l4-missing-singular-article",
