@@ -245,16 +245,21 @@ function repairStep5PrepositionPatterns(input: string): string {
     .replace(/\b(depend|depends|depended|depending)\s+of\b/gi, "$1 on")
     .replace(/\b(interested)\s+with\b/gi, "$1 in")
     .replace(/\b(good)\s+in\s+(English|math|science)\b/gi, "$1 at $2")
-    .replace(/\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/gi, "$1 to school")
-    .replace(/\b(listen|listens|listened|listening)\s+(music|the music|songs|a song|the song)\b/gi, "$1 to $2");
+    .replace(/\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/gi, "$1 to school");
 }
 
 const PERSON_OBJECT_PRONOUN_PATTERN = "(?:me|you|him|her|us|them)";
+const STEP6_LISTEN_OBJECT_PATTERN = "(?:me|you|him|her|us|them|music|song|teacher|radio|podcast|lesson|story)";
 const CLOCK_TIME_PATTERN = "(?:\\d{1,2}\\s+o(?:'|\\u2019)?clock|\\d{1,2}\\s*(?:AM|PM|am|pm)|\\d{1,2}:\\d{2})";
 
 function repairStep6WaitFor(input: string): string {
   const pattern = new RegExp(`\\b(wait|waits|waited|waiting)\\s+(${PERSON_OBJECT_PRONOUN_PATTERN})\\b`, "gi");
   return input.replace(pattern, "$1 for $2");
+}
+
+function repairStep6ListenTo(input: string): string {
+  const pattern = new RegExp(`\\b(listen|listens|listened|listening)\\s+(${STEP6_LISTEN_OBJECT_PATTERN})\\b`, "gi");
+  return input.replace(pattern, "$1 to $2");
 }
 
 function repairStep6DiscussAbout(input: string): string {
@@ -492,8 +497,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
       /\b(depend|depends|depended|depending)\s+of\b/i.test(input) ||
       /\binterested\s+with\b/i.test(input) ||
       /\bgood\s+in\s+(English|math|science)\b/i.test(input) ||
-      /\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/i.test(input) ||
-      /\b(listen|listens|listened|listening)\s+(music|the music|songs|a song|the song)\b/i.test(input),
+      /\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/i.test(input),
     apply: repairStep5PrepositionPatterns,
     fpRiskNote: "Missing-to repair is phrase-whitelisted and does not rewrite home/there/downtown/abroad/upstairs or school bus.",
   },
@@ -502,6 +506,13 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: (input) => new RegExp(`\\b(wait|waits|waited|waiting)\\s+${PERSON_OBJECT_PRONOUN_PATTERN}\\b`, "i").test(input),
     apply: repairStep6WaitFor,
     fpRiskNote: "Medium risk. Wait can be intransitive or part of idioms; this rule only inserts for before person/pronoun objects and abstains elsewhere.",
+  },
+  {
+    id: "en-step6-listen-to-object",
+    detects: (input) =>
+      new RegExp(`\\b(listen|listens|listened|listening)\\s+${STEP6_LISTEN_OBJECT_PATTERN}\\b`, "i").test(input),
+    apply: repairStep6ListenTo,
+    fpRiskNote: "Low-medium risk if limited to to insertion only. Article correction is deliberately excluded. The rule blocks no-object and adverb surfaces such as listen carefully.",
   },
   {
     id: "en-step6-discuss-about",

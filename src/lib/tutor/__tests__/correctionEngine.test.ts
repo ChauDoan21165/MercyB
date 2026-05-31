@@ -183,6 +183,30 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["I listen music.", "I listen to music."],
+    ["She listens teacher.", "She listens to teacher."],
+    ["They listened song.", "They listened to song."],
+  ])("corrects approved Step 6 listen-to object pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-listen-to-object"],
+    });
+  });
+
+  it.each([
+    "I listen to music.",
+    "Listen carefully.",
+    "Listen!",
+    "She hears music.",
+  ])("does not over-trigger approved Step 6 listen-to object pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["An hour ago I eat lunch.", "An hour ago I ate lunch."],
     ["Last summer she go to Canada.", "Last summer she went to Canada."],
     ["In 2024 they move to Toronto.", "In 2024 they moved to Toronto."],
@@ -359,6 +383,7 @@ describe("correctionEngine", () => {
     ["en-step5-preposition-pattern", "missing to"],
     ["en-be-verb-omission", "be-drop"],
     ["en-step6-wait-for-person-object", "wait-for"],
+    ["en-step6-listen-to-object", "listen-to"],
     ["en-step6-past-marker-recall", "past-marker recall"],
     ["en-step6-in-month-year", "in-month/year"],
     ["en-step6-enter-concrete-place", "enter concrete place"],
@@ -411,7 +436,6 @@ describe("correctionEngine", () => {
     ["She is interested with English", "She is interested in English."],
     ["He is good in English", "He is good at English."],
     ["I go school every day", "I go to school every day."],
-    ["I listen music every day", "I listen to music every day."],
     ["I go school", "I go to school."],
     ["She goes school", "She goes to school."],
   ])("corrects whitelisted Step 5 preposition pattern: %s", (input, expected) => {
