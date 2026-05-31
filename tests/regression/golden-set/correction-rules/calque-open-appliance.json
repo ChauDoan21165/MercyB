@@ -1,0 +1,107 @@
+{
+  "rule": "calqueOpenTurnOnAppliance",
+  "ruleId": "en-calque-open-turn-on-appliance",
+  "language": "en",
+  "description": "Calque Batch 1: Vietnamese 'mở' maps to both 'open' and 'turn on', so learners say 'open the TV' for an appliance. Rule en-calque-open-turn-on-appliance rewrites 'open the <whitelisted appliance>' to 'turn on the <appliance>'. Expectations encode the VERIFIED behaviour of correctWithTutorRules() on the engine WITH calque Batch 1 (MR !281) applied.",
+  "fp_risk_note": "This calque is high-risk because 'open' is correct for most physical objects. The negatives lock the whitelist boundary: (1) physically-opened objects ('door', 'window', 'box') must keep 'open'; (2) lid-sense devices deliberately CUT from the whitelist ('laptop', 'computer') must NOT be rewritten (you open a laptop lid, not turn it on); (3) head-noun boundary phrases ('open the computer case') must not match on the embedded appliance word; (4) already-correct 'turn on ...' must be left alone. Positives cover the whitelisted appliances only (TV/television/light(s)/radio/fan/air conditioner/AC).",
+  "positive": [
+    {
+      "id": "coa-pos-001",
+      "input": "open the TV",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Turn on the TV.",
+      "expectedRuleFired": "calqueOpenTurnOnAppliance",
+      "notes": "Appliance 'TV' -> turn on."
+    },
+    {
+      "id": "coa-pos-002",
+      "input": "open the light",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Turn on the light.",
+      "expectedRuleFired": "calqueOpenTurnOnAppliance",
+      "notes": "Appliance 'light' -> turn on."
+    },
+    {
+      "id": "coa-pos-003",
+      "input": "open the radio",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Turn on the radio.",
+      "expectedRuleFired": "calqueOpenTurnOnAppliance",
+      "notes": "Appliance 'radio' -> turn on."
+    },
+    {
+      "id": "coa-pos-004",
+      "input": "open the fan",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Turn on the fan.",
+      "expectedRuleFired": "calqueOpenTurnOnAppliance",
+      "notes": "Appliance 'fan' -> turn on."
+    },
+    {
+      "id": "coa-pos-005",
+      "input": "open the air conditioner",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Turn on the air conditioner.",
+      "expectedRuleFired": "calqueOpenTurnOnAppliance",
+      "notes": "Multi-word appliance 'air conditioner' -> turn on."
+    }
+  ],
+  "negative": [
+    {
+      "id": "coa-neg-001",
+      "input": "open the door",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Open the door.",
+      "expectedRuleFired": null,
+      "notes": "Whitelist boundary: 'door' is physically opened; must keep 'open'."
+    },
+    {
+      "id": "coa-neg-002",
+      "input": "open the window",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Open the window.",
+      "expectedRuleFired": null,
+      "notes": "Whitelist boundary: 'window' is physically opened; rule must not fire."
+    },
+    {
+      "id": "coa-neg-003",
+      "input": "open the box",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Open the box.",
+      "expectedRuleFired": null,
+      "notes": "Whitelist boundary: 'box' is physically opened; rule must not fire."
+    },
+    {
+      "id": "coa-neg-004",
+      "input": "open the laptop",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Open the laptop.",
+      "expectedRuleFired": null,
+      "notes": "Locked regression guard (lid sense): 'laptop' is CUT from the whitelist — you open a laptop lid; must not become 'turn on'."
+    },
+    {
+      "id": "coa-neg-005",
+      "input": "open the computer",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Open the computer.",
+      "expectedRuleFired": null,
+      "notes": "Locked regression guard (lid sense): 'computer' cut from the whitelist; must not be rewritten."
+    },
+    {
+      "id": "coa-neg-006",
+      "input": "open the computer case",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Open the computer case.",
+      "expectedRuleFired": null,
+      "notes": "Head-noun boundary: head noun is 'case', not an appliance; must not match the embedded 'computer'."
+    },
+    {
+      "id": "coa-neg-007",
+      "input": "turn on the TV",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Turn on the TV.",
+      "expectedRuleFired": null,
+      "notes": "Already correct: 'turn on the TV' must not be re-touched."
+    }
+  ]
+}
