@@ -95,6 +95,29 @@ describe("adaptSpeakPronunciationResult", () => {
     ]);
   });
 
+  it("maps azure_phoneme_batch to azure-batch only when real phoneme evidence exists", () => {
+    const result = adaptSpeakPronunciationResult(
+      azureResult({
+        phonemeScores: [{ word: "hat", phoneme: "h", score: 97 }],
+        wordScores: [
+          {
+            word: "hat",
+            heard: "hat",
+            score: 94,
+            status: "correct",
+            phonemes: [{ phoneme: "h", score: 97 }],
+          },
+        ],
+      }),
+    );
+
+    expect(result?.mode).toBe("azure-batch");
+    expect(result?.provider).toBe("azure");
+    expect(result?.phonemeScores).toEqual([
+      { word: "hat", phoneme: "h", accuracyScore: 97 },
+    ]);
+  });
+
   it("degrades Azure word-score-only results to local-fallback display mode", () => {
     const result = adaptSpeakPronunciationResult(
       azureResult({
@@ -179,6 +202,12 @@ describe("adaptSpeakPronunciationResult", () => {
     expect(result?.mode).toBe("local-fallback");
     expect(result?.phonemeScores).toBeUndefined();
     expect(result?.words).toBeUndefined();
+  });
+
+  it("does not create fake tone contour evidence from phoneme or word scores", () => {
+    const result = adaptSpeakPronunciationResult(azureResult());
+
+    expect(result?.toneContour).toBeUndefined();
   });
 
   it("passes match rising and falling tone contour evidence", () => {
@@ -303,12 +332,6 @@ describe("adaptSpeakPronunciationResult", () => {
         expectedContour: "rising",
       },
     });
-
-    expect(result?.toneContour).toBeUndefined();
-  });
-
-  it("does not create fake tone contour evidence from phoneme or word scores", () => {
-    const result = adaptSpeakPronunciationResult(azureResult());
 
     expect(result?.toneContour).toBeUndefined();
   });
