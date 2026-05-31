@@ -6,6 +6,7 @@
 //   local/dev env opts in. It does not fabricate Azure phoneme or tone output.
 
 import { cleanup, render, screen, within } from "@testing-library/react";
+import { fetch as nodeFetch, File as NodeFile, FormData as NodeFormData } from "undici";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("@/components/teacher-mercy/TeacherMercyVoiceControls", () => ({
@@ -50,6 +51,8 @@ import { scoreTone } from "../scoreTone";
 import { scoreToneContour, type ToneContourScoreResult } from "../toneContourScorer";
 
 const blobToWavPcm16kMock = vi.mocked(blobToWavPcm16k);
+type NodeFetchInit = NonNullable<Parameters<typeof nodeFetch>[1]>;
+type NodeFetchBody = NodeFetchInit["body"];
 
 const SMOKE_AUDIO_BLOB = new Blob([new Uint8Array([0, 1, 2, 3])], {
   type: "audio/webm",
@@ -157,17 +160,19 @@ function liveFetchWithoutJsdomSignal(
   calledUrls: string[],
   responseStatuses: number[],
   fetchErrors: string[],
+  fallbackAudioBlob: Blob,
 ): typeof fetch {
-  return (async (input: RequestInfo | URL, init?: RequestInit) => {
+  return (async (...args: Parameters<typeof fetch>) => {
+    const [input, init] = args;
     calledUrls.push(String(input));
     const { signal: _jsdomSignal, body, ...runtimeInit } = init ?? {};
     try {
-      const response = await fetch(input, {
+      const response = await nodeFetch(String(input), {
         ...runtimeInit,
-        body: await toNodeFetchBody(body),
-      });
+        body: await toNodeFetchBody(body, fallbackAudioBlob),
+      } as Parameters<typeof nodeFetch>[1]);
       responseStatuses.push(response.status);
-      return response;
+      return response as unknown as Response;
     } catch (err) {
       const message = err instanceof Error ? err.message.slice(0, 120) : "unknown_fetch_error";
       const cause =
@@ -180,21 +185,110 @@ function liveFetchWithoutJsdomSignal(
   }) as typeof fetch;
 }
 
-async function toNodeFetchBody(body: BodyInit | null | undefined): Promise<BodyInit | null | undefined> {
-  if (!(body instanceof FormData)) return body;
+async function toNodeFetchBody(
+  body: BodyInit | null | undefined,
+  fallbackAudioBlob: Blob,
+): Promise<NodeFetchBody | undefined> {
+  if (!(body instanceof FormData)) return body as NodeFetchBody | undefined;
 
-  const nodeFormData = new FormData();
+  const nodeFormData = new NodeFormData();
   for (const [key, value] of body.entries()) {
-    if (value instanceof Blob) {
-      nodeFormData.append(key, new Blob([await value.arrayBuffer()], { type: value.type }), "recording.wav");
-    } else {
+    if (typeof value === "string") {
       nodeFormData.append(key, value);
+      continue;
+    }
+
+    const valueName = getFileName(value);
+    const valueType = getBlobType(value);
+    const arrayBufferReader = getArrayBufferReader(value);
+    const textReader = getTextReader(value);
+
+    if (arrayBufferReader) {
+      nodeFormData.append(
+        key,
+        new NodeFile([Buffer.from(await arrayBufferReader())], valueName, {
+          type: valueType,
+        }),
+      );
+    } else if (textReader) {
+      nodeFormData.append(
+        key,
+        new NodeFile([await textReader()], valueName, { type: valueType }),
+      );
+    } else if (key === "audio") {
+      nodeFormData.append(
+        key,
+        new NodeFile([Buffer.from(await readBlobArrayBuffer(fallbackAudioBlob))], valueName, {
+          type: fallbackAudioBlob.type,
+        }),
+      );
+    } else {
+      nodeFormData.append(key, String(value));
     }
   }
-  return nodeFormData;
+  return nodeFormData as NodeFetchBody;
+}
+
+function getArrayBufferReader(value: unknown): (() => Promise<ArrayBuffer>) | null {
+  const arrayBuffer = (value as { arrayBuffer?: unknown })?.arrayBuffer;
+  return typeof arrayBuffer === "function"
+    ? () => arrayBuffer.call(value) as Promise<ArrayBuffer>
+    : null;
+}
+
+function getTextReader(value: unknown): (() => Promise<string>) | null {
+  const text = (value as { text?: unknown })?.text;
+  return typeof text === "function"
+    ? () => text.call(value) as Promise<string>
+    : null;
+}
+
+function getFileName(value: unknown): string {
+  const name = (value as { name?: unknown })?.name;
+  return typeof name === "string" && name ? name : "recording.wav";
+}
+
+function getBlobType(value: unknown): string {
+  const type = (value as { type?: unknown })?.type;
+  return typeof type === "string" ? type : "";
+}
+
+async function readBlobArrayBuffer(blob: Blob): Promise<ArrayBuffer> {
+  if (typeof (blob as { arrayBuffer?: unknown }).arrayBuffer === "function") {
+    return blob.arrayBuffer();
+  }
+
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(reader.error ?? new Error("file_reader_failed"));
+    reader.onload = () => {
+      if (reader.result instanceof ArrayBuffer) {
+        resolve(reader.result);
+      } else {
+        reject(new Error("file_reader_non_array_buffer"));
+      }
+    };
+    reader.readAsArrayBuffer(blob);
+  });
 }
 
 describe("Step 7 Azure-path smoke harness", () => {
+  it("rebuilds mixed live-smoke FormData without treating string fields as blobs", async () => {
+    const formData = new FormData();
+    const audioBlob = new Blob([new Uint8Array([1, 2, 3])], { type: "audio/wav" });
+    formData.append("audio", audioBlob, "recording.wav");
+    formData.append("target_text", "My voice should go up?");
+
+    const rebuilt = await toNodeFetchBody(formData, audioBlob);
+
+    expect(rebuilt).toBeInstanceOf(NodeFormData);
+    expect((rebuilt as unknown as NodeFormData).get("target_text")).toBe("My voice should go up?");
+    const audio = (rebuilt as unknown as NodeFormData).get("audio");
+    expect(audio).toBeInstanceOf(NodeFile);
+    expect((audio as NodeFile).size).toBe(3);
+    expect((audio as NodeFile).type).toBe("audio/wav");
+  });
+
   it("keeps no-Azure fallback scoring, tone, and Speak display safe for sample learner utterances", async () => {
     const fetchImpl = vi.fn();
 
@@ -287,7 +381,12 @@ describe("Step 7 Azure-path smoke harness", () => {
     const calledUrls: string[] = [];
     const responseStatuses: number[] = [];
     const fetchErrors: string[] = [];
-    const liveFetch = liveFetchWithoutJsdomSignal(calledUrls, responseStatuses, fetchErrors);
+    const liveFetch = liveFetchWithoutJsdomSignal(
+      calledUrls,
+      responseStatuses,
+      fetchErrors,
+      smokeWavBlob,
+    );
 
     const sample = SAMPLE_UTTERANCES[2];
     const supabaseUrl = process.env.VITE_SUPABASE_URL?.replace(/\/+$/, "");
