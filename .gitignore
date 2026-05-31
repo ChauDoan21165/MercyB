@@ -30,6 +30,8 @@ scripts/.user-id-tables.json
 docs/*_LOG.md
 bad.txt
 .claude/worktrees/agent-*/
+.claude/*.lock
+.claude/scheduled_tasks.lock
 room_scan_report.json
 orphan_candidates.txt
 orphan_*.txt
