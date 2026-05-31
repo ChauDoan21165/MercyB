@@ -183,6 +183,78 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["An hour ago I eat lunch.", "An hour ago I ate lunch."],
+    ["Last summer she go to Canada.", "Last summer she went to Canada."],
+    ["In 2024 they move to Toronto.", "In 2024 they moved to Toronto."],
+  ])("corrects approved Step 6 past-marker recall pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-past-marker-recall"],
+    });
+  });
+
+  it.each([
+    "On Monday I go to school.",
+    "Every Monday I go to school.",
+    "Last summer I went to Canada.",
+    "I said an hour ago I was busy.",
+  ])("does not over-trigger approved Step 6 past-marker recall pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["I was born 2020.", "I was born in 2020."],
+    ["She moved here March.", "She moved here in March."],
+    ["They arrived 2023.", "They arrived in 2023."],
+  ])("corrects approved Step 6 in-month/year pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-in-month-year"],
+    });
+  });
+
+  it.each([
+    "I started 2020 projects.",
+    "I was born in 2020.",
+    "March is cold.",
+    "I have 2020 dollars.",
+  ])("does not over-trigger approved Step 6 in-month/year pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["I enter to the room.", "I enter the room."],
+    ["She entered to the classroom.", "She entered the classroom."],
+    ["They enter into the house.", "They enter the house."],
+  ])("corrects approved Step 6 enter concrete-place pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-enter-concrete-place"],
+    });
+  });
+
+  it.each([
+    "They enter into an agreement.",
+    "I enter the room.",
+    "I go to the room.",
+    "She entered into a contract.",
+  ])("does not over-trigger approved Step 6 enter concrete-place pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["We discuss about homework.", "We discuss homework."],
     ["They discussed about the problem.", "They discussed the problem."],
     ["I want to discuss about this.", "I want to discuss this."],
@@ -287,6 +359,9 @@ describe("correctionEngine", () => {
     ["en-step5-preposition-pattern", "missing to"],
     ["en-be-verb-omission", "be-drop"],
     ["en-step6-wait-for-person-object", "wait-for"],
+    ["en-step6-past-marker-recall", "past-marker recall"],
+    ["en-step6-in-month-year", "in-month/year"],
+    ["en-step6-enter-concrete-place", "enter concrete place"],
     ["en-step6-discuss-about", "discuss-about"],
     ["en-step6-marry-with", "marry-with"],
     ["en-step6-at-clock-time", "at-clock-time"],
@@ -437,9 +512,6 @@ describe("correctionEngine", () => {
 
   it.each([
     "On Monday I go to school.",
-    "In 2024 I go to Japan.",
-    "An hour ago I eat lunch.",
-    "Last summer I go to the beach.",
   ])("does not use unaudited past-time markers for beginner irregular-past correction: %s", (input) => {
     const result = correctWithTutorRules(input, "en");
 

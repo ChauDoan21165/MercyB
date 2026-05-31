@@ -1,0 +1,67 @@
+{
+  "rule": "step6InMonthYear",
+  "ruleId": "en-step6-in-month-year",
+  "language": "en",
+  "description": "Inserts in before bare month/year tokens only in whitelisted time-expression contexts.",
+  "fp_risk_note": "Medium risk. Years can be quantities or noun modifiers. Rule must block year/month tokens followed by nouns and avoid broad numeric rewriting.",
+  "positive": [
+    {
+      "id": "in-month-year-pos-001",
+      "input": "I was born 2020.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I was born in 2020.",
+      "expectedRuleFired": "step6InMonthYear",
+      "notes": "Born context takes in before a bare year."
+    },
+    {
+      "id": "in-month-year-pos-002",
+      "input": "She moved here March.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She moved here in March.",
+      "expectedRuleFired": "step6InMonthYear",
+      "notes": "Moved-here context takes in before a bare month."
+    },
+    {
+      "id": "in-month-year-pos-003",
+      "input": "They arrived 2023.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They arrived in 2023.",
+      "expectedRuleFired": "step6InMonthYear",
+      "notes": "Arrived context takes in before a bare past year."
+    }
+  ],
+  "negative": [
+    {
+      "id": "in-month-year-neg-001",
+      "input": "I started 2020 projects.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I started 2020 projects.",
+      "expectedRuleFired": null,
+      "notes": "Year as noun modifier stays unchanged."
+    },
+    {
+      "id": "in-month-year-neg-002",
+      "input": "I was born in 2020.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I was born in 2020.",
+      "expectedRuleFired": null,
+      "notes": "Already correct phrase stays unchanged."
+    },
+    {
+      "id": "in-month-year-neg-003",
+      "input": "March is cold.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "March is cold.",
+      "expectedRuleFired": null,
+      "notes": "Month as sentence subject stays unchanged."
+    },
+    {
+      "id": "in-month-year-neg-004",
+      "input": "I have 2020 dollars.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I have 2020 dollars.",
+      "expectedRuleFired": null,
+      "notes": "Year-like quantity stays unchanged."
+    }
+  ]
+}
