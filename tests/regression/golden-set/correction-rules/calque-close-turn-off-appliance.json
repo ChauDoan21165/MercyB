@@ -1,0 +1,75 @@
+{
+  "rule": "calqueCloseTurnOffAppliance",
+  "ruleId": "en-calque-close-turn-off-appliance",
+  "language": "en",
+  "description": "Rewrites Vietnamese 'tat/dong' calque close to turn off only for closed appliance/electrical direct objects.",
+  "fp_risk_note": "High risk if object scope is broad. Close is correct for doors, windows, boxes, books, laptops, files, shops, accounts, and cases. V1 only rewrites a closed appliance/electrical object whitelist and requires the whitelist token to be the direct-object head noun.",
+  "positive": [
+    {
+      "id": "calque-close-turn-off-appliance-pos-001",
+      "input": "Close the light.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Turn off the light.",
+      "expectedRuleFired": "calqueCloseTurnOffAppliance",
+      "notes": "Light is a closed electrical object where English uses turn off."
+    },
+    {
+      "id": "calque-close-turn-off-appliance-pos-002",
+      "input": "Please close the TV.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Please turn off the TV.",
+      "expectedRuleFired": "calqueCloseTurnOffAppliance",
+      "notes": "TV is a closed appliance object and the polite frame is preserved."
+    },
+    {
+      "id": "calque-close-turn-off-appliance-pos-003",
+      "input": "She closed the fan.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She turned off the fan.",
+      "expectedRuleFired": "calqueCloseTurnOffAppliance",
+      "notes": "Past closed maps to turned off for a whitelisted appliance object."
+    }
+  ],
+  "negative": [
+    {
+      "id": "calque-close-turn-off-appliance-neg-001",
+      "input": "Close the door.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Close the door.",
+      "expectedRuleFired": null,
+      "notes": "Close is correct for doors."
+    },
+    {
+      "id": "calque-close-turn-off-appliance-neg-002",
+      "input": "Close the window.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Close the window.",
+      "expectedRuleFired": null,
+      "notes": "Close is correct for windows."
+    },
+    {
+      "id": "calque-close-turn-off-appliance-neg-003",
+      "input": "Close the box.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Close the box.",
+      "expectedRuleFired": null,
+      "notes": "Close is correct for boxes."
+    },
+    {
+      "id": "calque-close-turn-off-appliance-neg-004",
+      "input": "Close the laptop.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Close the laptop.",
+      "expectedRuleFired": null,
+      "notes": "Laptop is explicitly excluded because close may mean close the lid."
+    },
+    {
+      "id": "calque-close-turn-off-appliance-neg-005",
+      "input": "Close the TV stand.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Close the TV stand.",
+      "expectedRuleFired": null,
+      "notes": "TV is not the direct-object head noun; stand is."
+    }
+  ]
+}

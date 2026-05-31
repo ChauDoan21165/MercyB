@@ -309,6 +309,12 @@ const STEP6_LISTEN_OBJECT_PATTERN = "(?:me|you|him|her|us|them|music|song|teache
 const CLOCK_TIME_PATTERN = "(?:\\d{1,2}\\s+o(?:'|\\u2019)?clock|\\d{1,2}\\s*(?:AM|PM|am|pm)|\\d{1,2}:\\d{2})";
 const STEP6_LOOK_AT_BLOCKED_PARTICLE_PATTERN = "(?:for|after|up|over|around|out|like|into)";
 const STEP6_LOOK_AT_SEPARATED_PARTICLE_PATTERN = "(?:up|over|around|out)";
+const CALQUE_APPLIANCE_OBJECT_PATTERN =
+  "(?:light|lights|TV|television|fan|air\\s+conditioner|AC|radio|heater)";
+const CALQUE_MEDICINE_OBJECT_PATTERN =
+  "(?:medicine|medication|pill|pills|tablet|tablets|antibiotics|painkillers)";
+const CALQUE_MEDICINE_QUANTITY_PATTERN =
+  "(?:(?:a|an|one|two|three|four|five|\\d+)\\s+)?";
 
 function repairStep6WaitFor(input: string): string {
   const pattern = new RegExp(`\\b(wait|waits|waited|waiting)\\s+(${PERSON_OBJECT_PRONOUN_PATTERN})\\b`, "gi");
@@ -340,6 +346,84 @@ function repairStep6LookAtPronoun(input: string): string {
     "gi",
   );
   return input.replace(pattern, "$1 at $2");
+}
+
+function turnOnVerbForOpen(openVerb: string): string {
+  const normalized = openVerb.toLowerCase();
+  if (normalized === "opened") return "turned on";
+  if (normalized === "opens") return "turns on";
+  if (normalized === "opening") return "turning on";
+  return /^[A-Z]/.test(openVerb) ? "Turn on" : "turn on";
+}
+
+function turnOffVerbForClose(closeVerb: string): string {
+  const normalized = closeVerb.toLowerCase();
+  if (normalized === "closed") return "turned off";
+  if (normalized === "closes") return "turns off";
+  if (normalized === "closing") return "turning off";
+  return /^[A-Z]/.test(closeVerb) ? "Turn off" : "turn off";
+}
+
+function hasCalqueOpenTurnOnAppliance(input: string): boolean {
+  const pattern = new RegExp(
+    `\\b(?:open|opens|opened|opening)\\s+(?:(?:the|a|an)\\s+)?${CALQUE_APPLIANCE_OBJECT_PATTERN}(?=\\s*[.?!]?$)`,
+    "i",
+  );
+  return pattern.test(input);
+}
+
+function repairCalqueOpenTurnOnAppliance(input: string): string {
+  const pattern = new RegExp(
+    `\\b(open|opens|opened|opening)\\s+((?:(?:the|a|an)\\s+)?${CALQUE_APPLIANCE_OBJECT_PATTERN})(?=\\s*[.?!]?$)`,
+    "gi",
+  );
+  return input.replace(pattern, (_match, verb: string, object: string) => {
+    return `${turnOnVerbForOpen(verb)} ${object}`;
+  });
+}
+
+function hasCalqueCloseTurnOffAppliance(input: string): boolean {
+  const pattern = new RegExp(
+    `\\b(?:close|closes|closed|closing)\\s+(?:(?:the|a|an)\\s+)?${CALQUE_APPLIANCE_OBJECT_PATTERN}(?=\\s*[.?!]?$)`,
+    "i",
+  );
+  return pattern.test(input);
+}
+
+function repairCalqueCloseTurnOffAppliance(input: string): string {
+  const pattern = new RegExp(
+    `\\b(close|closes|closed|closing)\\s+((?:(?:the|a|an)\\s+)?${CALQUE_APPLIANCE_OBJECT_PATTERN})(?=\\s*[.?!]?$)`,
+    "gi",
+  );
+  return input.replace(pattern, (_match, verb: string, object: string) => {
+    return `${turnOffVerbForClose(verb)} ${object}`;
+  });
+}
+
+function takeVerbForMedicineCalque(verb: string): string {
+  const normalized = verb.toLowerCase();
+  if (normalized === "ate" || normalized === "drank") return "took";
+  if (normalized === "eats" || normalized === "drinks") return "takes";
+  if (normalized === "eating" || normalized === "drinking") return "taking";
+  return /^[A-Z]/.test(verb) ? "Take" : "take";
+}
+
+function hasCalqueTakeMedicine(input: string): boolean {
+  const pattern = new RegExp(
+    `\\b(?:eat|eats|ate|eating|drink|drinks|drank|drinking)\\s+${CALQUE_MEDICINE_QUANTITY_PATTERN}${CALQUE_MEDICINE_OBJECT_PATTERN}\\b`,
+    "i",
+  );
+  return pattern.test(input);
+}
+
+function repairCalqueTakeMedicine(input: string): string {
+  const pattern = new RegExp(
+    `\\b(eat|eats|ate|eating|drink|drinks|drank|drinking)\\s+(${CALQUE_MEDICINE_QUANTITY_PATTERN}${CALQUE_MEDICINE_OBJECT_PATTERN})\\b`,
+    "gi",
+  );
+  return input.replace(pattern, (_match, verb: string, object: string) => {
+    return `${takeVerbForMedicineCalque(verb)} ${object}`;
+  });
 }
 
 function repairStep6DiscussAbout(input: string): string {
@@ -674,6 +758,24 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: hasStep6LocationBeDrop,
     apply: repairStep6LocationBeDrop,
     fpRiskNote: "High risk. Be-insertion rules can misfire on questions, fragments, noun-postmodifier surfaces, and sentences with existing finite verbs. V1 only handles pronoun subject plus whitelisted location phrase with no finite verb, blocks questions, and defers name/noun subjects.",
+  },
+  {
+    id: "en-calque-open-turn-on-appliance",
+    detects: hasCalqueOpenTurnOnAppliance,
+    apply: repairCalqueOpenTurnOnAppliance,
+    fpRiskNote: "High risk if object scope is broad. Open is correct for doors, windows, boxes, books, apps, laptops, computer cases, and many nouns. V1 only rewrites a closed appliance/electrical object whitelist and requires the whitelist token to be the direct-object head noun.",
+  },
+  {
+    id: "en-calque-close-turn-off-appliance",
+    detects: hasCalqueCloseTurnOffAppliance,
+    apply: repairCalqueCloseTurnOffAppliance,
+    fpRiskNote: "High risk if object scope is broad. Close is correct for doors, windows, boxes, books, laptops, files, shops, accounts, and cases. V1 only rewrites a closed appliance/electrical object whitelist and requires the whitelist token to be the direct-object head noun.",
+  },
+  {
+    id: "en-calque-take-medicine",
+    detects: hasCalqueTakeMedicine,
+    apply: repairCalqueTakeMedicine,
+    fpRiskNote: "Medium risk. Drink and eat are correct with food/liquids, and medicine sentences can include food/water plus medicine. V1 only rewrites eat/drink directly governing a medicine-object whitelist.",
   },
   {
     id: "en-step6-discuss-about",

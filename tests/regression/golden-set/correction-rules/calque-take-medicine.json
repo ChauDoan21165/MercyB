@@ -1,0 +1,75 @@
+{
+  "rule": "calqueTakeMedicine",
+  "ruleId": "en-calque-take-medicine",
+  "language": "en",
+  "description": "Rewrites eat/drink medicine calques to take medicine only when eat/drink directly governs a medicine-object whitelist.",
+  "fp_risk_note": "Medium risk. Drink and eat are correct with food/liquids, and medicine sentences can include food/water plus medicine. V1 only rewrites eat/drink directly governing a medicine-object whitelist.",
+  "positive": [
+    {
+      "id": "calque-take-medicine-pos-001",
+      "input": "I drink medicine.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I take medicine.",
+      "expectedRuleFired": "calqueTakeMedicine",
+      "notes": "Drink directly governs medicine, so English uses take."
+    },
+    {
+      "id": "calque-take-medicine-pos-002",
+      "input": "She ate two pills.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She took two pills.",
+      "expectedRuleFired": "calqueTakeMedicine",
+      "notes": "Ate directly governs a quantified medicine object."
+    },
+    {
+      "id": "calque-take-medicine-pos-003",
+      "input": "He drinks antibiotics every day.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He takes antibiotics every day.",
+      "expectedRuleFired": "calqueTakeMedicine",
+      "notes": "Drinks directly governs antibiotics and preserves the frequency phrase."
+    }
+  ],
+  "negative": [
+    {
+      "id": "calque-take-medicine-neg-001",
+      "input": "I drink water.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I drink water.",
+      "expectedRuleFired": null,
+      "notes": "Drink is correct with water."
+    },
+    {
+      "id": "calque-take-medicine-neg-002",
+      "input": "She eats rice.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She eats rice.",
+      "expectedRuleFired": null,
+      "notes": "Eat is correct with rice."
+    },
+    {
+      "id": "calque-take-medicine-neg-003",
+      "input": "He takes medicine.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He takes medicine.",
+      "expectedRuleFired": null,
+      "notes": "Already uses take."
+    },
+    {
+      "id": "calque-take-medicine-neg-004",
+      "input": "Drink more water with medicine.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Drink more water with medicine.",
+      "expectedRuleFired": null,
+      "notes": "Drink directly governs water, not medicine."
+    },
+    {
+      "id": "calque-take-medicine-neg-005",
+      "input": "Eat before taking medicine.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Eat before taking medicine.",
+      "expectedRuleFired": null,
+      "notes": "Eat does not directly govern a medicine object."
+    }
+  ]
+}
