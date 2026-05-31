@@ -1,0 +1,75 @@
+{
+  "rule": "missingSingularArticle",
+  "ruleId": "en-l4-missing-singular-article",
+  "language": "en",
+  "description": "Missing singular article insertion (Step 5 / L4). Rule en-l4-missing-singular-article inserts a/an before a whitelisted singular count noun (apple/bicycle/book/hat/orange/student/teacher) after a verb like want/need/buy/bought, choosing 'an' before a vowel-initial noun. Expectations encode the VERIFIED behaviour of correctWithTutorRules() on current main.",
+  "fp_risk_note": "Article insertion must stay scoped to the whitelisted count nouns and must not guess elsewhere. The negative cases stress: (1) sentences that already have the article ('I want an apple') — re-inserting would double it; (2) uncountable / non-whitelisted nouns ('water') where no article should be added; (3) non-noun complements ('He is happy') where 'happy' is an adjective, not a count noun. Note: copula+profession ('He is teacher' -> 'He is a teacher') is handled by a DIFFERENT rule (en-step6-profession-article) and is intentionally NOT covered here.",
+  "positive": [
+    {
+      "id": "mas-pos-001",
+      "input": "I want apple",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I want an apple.",
+      "expectedRuleFired": "missingSingularArticle",
+      "notes": "Vowel-initial noun -> 'an' (want apple -> want an apple)."
+    },
+    {
+      "id": "mas-pos-002",
+      "input": "She bought hat",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She bought a hat.",
+      "expectedRuleFired": "missingSingularArticle",
+      "notes": "Consonant-initial noun -> 'a' after past verb 'bought'."
+    },
+    {
+      "id": "mas-pos-003",
+      "input": "I need book",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I need a book.",
+      "expectedRuleFired": "missingSingularArticle",
+      "notes": "'need book' -> 'need a book'."
+    },
+    {
+      "id": "mas-pos-004",
+      "input": "They want orange",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They want an orange.",
+      "expectedRuleFired": "missingSingularArticle",
+      "notes": "Vowel-initial 'orange' -> 'an'."
+    }
+  ],
+  "negative": [
+    {
+      "id": "mas-neg-001",
+      "input": "I want an apple",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I want an apple.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (already correct): article 'an' present; rule must not double it."
+    },
+    {
+      "id": "mas-neg-002",
+      "input": "She bought a hat",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She bought a hat.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (already correct): 'a hat' is well-formed; rule must abstain."
+    },
+    {
+      "id": "mas-neg-003",
+      "input": "I drink water",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I drink water.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (uncountable / non-whitelisted): 'water' takes no article; rule must not fire."
+    },
+    {
+      "id": "mas-neg-004",
+      "input": "He is happy",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He is happy.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (adjective, not a count noun): 'happy' is not a noun; rule must abstain."
+    }
+  ]
+}
