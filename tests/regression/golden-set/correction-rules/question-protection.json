@@ -1,0 +1,67 @@
+{
+  "rule": "lookAtPronoun",
+  "ruleId": "en-step6-look-at-pronoun",
+  "language": "en",
+  "description": "Step 6 look-at-pronoun: inserts the missing 'at' in 'look + pronoun-object' surfaces (look me -> look at me). This fixture focuses on QUESTION-FORM PROTECTION — the rule fires on declarative/imperative surfaces but must NOT fire on questions or already-correct 'look at ...' phrasings. Expectations encode the VERIFIED behaviour of correctWithTutorRules() on current main. Complements the bundled look-at-pronoun.json with a protection-focused negative set.",
+  "fp_risk_note": "'look' is high-risk: it can be a linking verb or part of many (possibly separated) phrasal verbs, and question forms already place the particle correctly. The negative cases lock the protection behaviour: (1) modal yes/no questions already correct ('Can you look at me?'); (2) wh-questions ending in a stranded particle ('What are you looking at?'); (3) auxiliary questions already correct ('Do you look at them?'). None may trigger an 'at' insertion. The positives confirm the rule still fires on plain declarative/imperative 'look + pronoun'.",
+  "positive": [
+    {
+      "id": "lap-pos-001",
+      "input": "Please look me",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Please look at me.",
+      "expectedRuleFired": "lookAtPronoun",
+      "notes": "Imperative 'look me' -> 'look at me'."
+    },
+    {
+      "id": "lap-pos-002",
+      "input": "I look you",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I look at you.",
+      "expectedRuleFired": "lookAtPronoun",
+      "notes": "Declarative 'I look you' -> 'I look at you'."
+    },
+    {
+      "id": "lap-pos-003",
+      "input": "Look us",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Look at us.",
+      "expectedRuleFired": "lookAtPronoun",
+      "notes": "Bare imperative 'Look us' -> 'Look at us'."
+    },
+    {
+      "id": "lap-pos-004",
+      "input": "She look him",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She look at him.",
+      "expectedRuleFired": "lookAtPronoun",
+      "notes": "'look him' -> 'look at him' (the rule inserts 'at'; it does not also fix 3rd-person agreement)."
+    }
+  ],
+  "negative": [
+    {
+      "id": "lap-neg-001",
+      "input": "Can you look at me?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Can you look at me?",
+      "expectedRuleFired": null,
+      "notes": "Question protection: modal yes/no question already correct; rule must not fire."
+    },
+    {
+      "id": "lap-neg-002",
+      "input": "What are you looking at?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "What are you looking at?",
+      "expectedRuleFired": null,
+      "notes": "Question protection: wh-question with stranded particle; must not be touched."
+    },
+    {
+      "id": "lap-neg-003",
+      "input": "Do you look at them?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Do you look at them?",
+      "expectedRuleFired": null,
+      "notes": "Question protection: auxiliary question already correct; rule must abstain."
+    }
+  ]
+}
