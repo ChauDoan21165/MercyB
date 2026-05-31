@@ -13,6 +13,7 @@ import {
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
 import { useTtsSpeaker } from "@/lib/ai-tutor/useTtsSpeaker";
+import { usePronunciationRecorder } from "@/hooks/usePronunciationRecorder";
 import {
   MOCK_RESULTS_BY_TARGET,
   buildInputAwareCorrection,
@@ -95,9 +96,12 @@ import type {
 import JourneyMode from "@/components/ai-tutor/JourneyMode";
 import SpeakPracticeMode, {
   isSpeakFollowUpReadAloudEligible,
+  type SpeakPronunciationResult,
 } from "@/components/ai-tutor/SpeakPracticeMode";
+import { adaptSpeakPronunciationResult } from "@/components/ai-tutor/speakPronunciationResultAdapter";
 import LogicMode from "@/components/ai-tutor/LogicMode";
 import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
+import { scorePronunciationWithStep7Fallback } from "@/lib/pronunciation/cloudScorer";
 
 type CorrectionResult = TutorTurn & {
   grammarTip: string;
@@ -173,6 +177,10 @@ const LOGIC_STARTER_PROMPTS = [
 const SPEAK_STANCE_ACKNOWLEDGMENT = "I hear you.";
 const SPEAK_STANCE_CLARIFICATION = "Can you say that another way?";
 const SPEAK_STANCE_PAUSE = "I’m sorry that happened. Let’s pause correction for a moment. Are you okay to continue?";
+const STEP7_AZURE_BATCH_ENABLED =
+  (import.meta as ImportMeta & { env?: Record<string, string> }).env
+    ?.VITE_AZURE_PHONEME_BATCH_ENABLED === "true";
+const EMPTY_SPEAK_AUDIO_BLOB = new Blob([], { type: "audio/webm" });
 
 function normalizeMockPivotResult(result: MockPivotCandidateResult): { candidate?: string | null; failed?: boolean } {
   if (typeof result === "string" || result === null) return { candidate: result };
@@ -786,7 +794,7 @@ export default function AiTutorPage() {
   const shellRef = useRef<HTMLElement | null>(null);
   const resumedLessonEventRef = useRef<string | null>(null);
   const nextFocusViewedEventRef = useRef<string | null>(null);
-  const { user } = useAuth();
+  const { user, session } = useAuth();
 
   const [target, setTarget] = useState<TutorTarget>(() =>
     typeof window === "undefined"
@@ -804,6 +812,7 @@ export default function AiTutorPage() {
   const ttsLang = getTtsLocale(target);
   const stt = useBrowserStt(speechLang);
   const tts = useTtsSpeaker();
+  const pronunciationRecorder = usePronunciationRecorder();
 
   const nickname: string | undefined =
     (user?.user_metadata as Record<string, unknown> | undefined)?.nickname as string | undefined;
@@ -814,6 +823,8 @@ export default function AiTutorPage() {
   const [grammarVoiceDraft, setGrammarVoiceDraft] = useState("");
   const [conversationInput, setConversationInput] = useState("");
   const [speakRepeatInput, setSpeakRepeatInput] = useState("");
+  const [speakPronunciationResult, setSpeakPronunciationResult] =
+    useState<SpeakPronunciationResult | null>(null);
   const [latestCorrectedSeed, setLatestCorrectedSeed] = useState<CorrectedSentenceSeed | null>(null);
   const [speakFollowUpSession, setSpeakFollowUpSession] = useState<SpeakFollowUpSession>({
     topicId: "",
@@ -893,6 +904,7 @@ export default function AiTutorPage() {
   const sttBaseInputRef = useRef<string>("");
   const lastCommittedSttRef = useRef<string>("");
   const lastRecordedSpeakAttemptRef = useRef<string>("");
+  const speakPronunciationRequestRef = useRef(0);
   const speakPivotTurnsRef = useRef<PivotPromptTurn[]>([]);
   const wasListeningRef = useRef(false);
   const ignoreNextSttCommitRef = useRef(false);
@@ -1011,9 +1023,71 @@ export default function AiTutorPage() {
     return () => window.clearTimeout(timerId);
   }, [latestCorrectedSeed?.correctedSentence, mode, speakRepeatInput]);
 
+  useEffect(() => {
+    if (mode !== "speak") {
+      setSpeakPronunciationResult(null);
+      return;
+    }
+
+    const targetSentence =
+      latestCorrectedSeed?.correctedSentence.trim() ||
+      tutorCopy.starterQuestions[0] ||
+      "";
+    const transcript = normalizeSpokenText(speakRepeatInput);
+
+    if (!targetSentence || !transcript) {
+      setSpeakPronunciationResult(null);
+      return;
+    }
+
+    const requestId = speakPronunciationRequestRef.current + 1;
+    speakPronunciationRequestRef.current = requestId;
+    setSpeakPronunciationResult(null);
+    const audioBlob = pronunciationRecorder.audioBlob ?? EMPTY_SPEAK_AUDIO_BLOB;
+    const canUseAzureBatch =
+      STEP7_AZURE_BATCH_ENABLED &&
+      Boolean(pronunciationRecorder.audioBlob) &&
+      Boolean(session?.access_token);
+
+    const timerId = window.setTimeout(() => {
+      scorePronunciationWithStep7Fallback({
+        audioBlob,
+        target: targetSentence,
+        transcript,
+        step7Enabled: canUseAzureBatch,
+        userJwt: session?.access_token,
+      })
+        .then((result) => {
+          if (speakPronunciationRequestRef.current !== requestId) return;
+          setSpeakPronunciationResult(adaptSpeakPronunciationResult(result));
+        })
+        .catch(() => {
+          if (speakPronunciationRequestRef.current !== requestId) return;
+          setSpeakPronunciationResult(null);
+        });
+    }, 250);
+
+    return () => window.clearTimeout(timerId);
+  }, [
+    latestCorrectedSeed?.correctedSentence,
+    mode,
+    pronunciationRecorder.audioBlob,
+    session?.access_token,
+    speakRepeatInput,
+    tutorCopy.starterQuestions,
+  ]);
+
   const handleMicToggle = () => {
-    if (stt.listening) { stt.stop(); return; }
+    if (stt.listening) {
+      stt.stop();
+      void pronunciationRecorder.stopRecording();
+      return;
+    }
     stt.reset();
+    if (mode === "speak" && STEP7_AZURE_BATCH_ENABLED && session?.access_token) {
+      pronunciationRecorder.reset();
+      void pronunciationRecorder.startRecording();
+    }
     sttBaseInputRef.current = mode === "grammar" ? input : mode === "speak" ? "" : conversationInput;
     lastCommittedSttRef.current = "";
     stt.start();
@@ -1365,6 +1439,8 @@ export default function AiTutorPage() {
       updatedAt: Date.now(),
     });
     setSpeakRepeatInput("");
+    setSpeakPronunciationResult(null);
+    pronunciationRecorder.reset();
     lastRecordedSpeakAttemptRef.current = "";
     speakPivotTurnsRef.current = [];
     setSpeakFollowUpSession({
@@ -1527,6 +1603,7 @@ export default function AiTutorPage() {
         <SpeakPracticeMode
           targetSentence={latestCorrectedSeed?.correctedSentence ?? null}
           repeatInput={speakRepeatInput}
+          pronunciationResult={speakPronunciationResult}
           micSupported={stt.supported}
           micListening={stt.listening}
           micError={stt.error}
