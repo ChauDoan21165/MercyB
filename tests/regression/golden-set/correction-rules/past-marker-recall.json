@@ -1,0 +1,67 @@
+{
+  "rule": "step6PastMarkerRecall",
+  "ruleId": "en-step6-past-marker-recall",
+  "language": "en",
+  "description": "Recovers guarded past-tense correction for fronted explicit-past-marker plus subject plus whitelisted present/base verb shapes.",
+  "fp_risk_note": "Medium risk. Explicit past markers can still appear in habitual, narrative, or multi-clause contexts. V1 only corrects single-clause, unambiguous explicit-past-marker plus present/base verb shapes and excludes weekday/habitual cases.",
+  "positive": [
+    {
+      "id": "past-marker-recall-pos-001",
+      "input": "An hour ago I eat lunch.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "An hour ago I ate lunch.",
+      "expectedRuleFired": "step6PastMarkerRecall",
+      "notes": "Fronted hour-ago marker plus base eat is safe to rewrite."
+    },
+    {
+      "id": "past-marker-recall-pos-002",
+      "input": "Last summer she go to Canada.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Last summer she went to Canada.",
+      "expectedRuleFired": "step6PastMarkerRecall",
+      "notes": "Fronted last-summer marker plus base go is safe to rewrite."
+    },
+    {
+      "id": "past-marker-recall-pos-003",
+      "input": "In 2024 they move to Toronto.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "In 2024 they moved to Toronto.",
+      "expectedRuleFired": "step6PastMarkerRecall",
+      "notes": "Past year marker passes the dynamic current-year cutoff and rewrites move."
+    }
+  ],
+  "negative": [
+    {
+      "id": "past-marker-recall-neg-001",
+      "input": "On Monday I go to school.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "On Monday I go to school.",
+      "expectedRuleFired": null,
+      "notes": "Ambiguous weekday marker stays unchanged."
+    },
+    {
+      "id": "past-marker-recall-neg-002",
+      "input": "Every Monday I go to school.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Every Monday I go to school.",
+      "expectedRuleFired": null,
+      "notes": "Habitual every-Monday form stays unchanged."
+    },
+    {
+      "id": "past-marker-recall-neg-003",
+      "input": "Last summer I went to Canada.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Last summer I went to Canada.",
+      "expectedRuleFired": null,
+      "notes": "Already-past verb stays unchanged."
+    },
+    {
+      "id": "past-marker-recall-neg-004",
+      "input": "I said an hour ago I was busy.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I said an hour ago I was busy.",
+      "expectedRuleFired": null,
+      "notes": "Multi-clause/reporting shape stays unchanged."
+    }
+  ]
+}

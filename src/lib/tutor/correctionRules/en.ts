@@ -25,6 +25,12 @@ const STEP5_THIRD_PERSON_VERBS: Record<string, string> = {
   work: "works",
 };
 
+const STEP6_PAST_MARKER_RECALL_VERBS: Record<string, string> = {
+  eat: "ate",
+  go: "went",
+  move: "moved",
+};
+
 const KNOWN_UNCORRECTED_PAST_MARKER_VERBS = [
   "come",
   "drink",
@@ -268,6 +274,51 @@ function repairStep6AtClockTime(input: string): string {
   return input.replace(pattern, "$1 at $2");
 }
 
+const STEP6_PAST_MARKER_CLAUSE_BLOCKERS =
+  /\b(?:and|but|because|when|while|if|that|who|which|where|after|before|since|although|though|so|said|told)\b/i;
+
+const STEP6_MONTH_NAMES =
+  "(?:january|february|march|april|may|june|july|august|september|october|november|december)";
+
+function isPastYear(year: string): boolean {
+  const parsedYear = Number.parseInt(year, 10);
+  if (!Number.isFinite(parsedYear)) return false;
+  return parsedYear <= new Date().getFullYear() - 1;
+}
+
+function getStep6PastMarkerRecallMatch(input: string): RegExpMatchArray | null {
+  const trimmed = input.trim();
+  if (/[,:;]/.test(trimmed) || STEP6_PAST_MARKER_CLAUSE_BLOCKERS.test(trimmed)) return null;
+  if (/^every\s+(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(trimmed)) return null;
+  if (/^on\s+(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(trimmed)) return null;
+
+  const verbPattern = Object.keys(STEP6_PAST_MARKER_RECALL_VERBS).join("|");
+  const markerPattern = `(?:(?:an?|one|two|three|\\d+)\\s+hours?\\s+ago|last\\s+(?:summer|spring|winter|fall|autumn)|in\\s+(\\d{4}))`;
+  const pattern = new RegExp(`^(${markerPattern})\\s+(I|you|we|they|he|she|it)\\s+(${verbPattern})\\b`, "i");
+  const match = trimmed.match(pattern);
+  if (!match) return null;
+
+  const year = match[2];
+  if (year && !isPastYear(year)) return null;
+
+  return match;
+}
+
+function hasStep6PastMarkerRecall(input: string): boolean {
+  return getStep6PastMarkerRecallMatch(input) !== null;
+}
+
+function repairStep6PastMarkerRecall(input: string): string {
+  const match = getStep6PastMarkerRecallMatch(input);
+  if (!match) return input;
+
+  const verb = match[4] ?? "";
+  return input.replace(
+    new RegExp(`\\b${verb}\\b`, "i"),
+    STEP6_PAST_MARKER_RECALL_VERBS[verb.toLowerCase()] ?? verb,
+  );
+}
+
 function repairBeVerbOmission(input: string): string {
   return input
     .replace(/\b(I)\s+(very\s+(?:happy|sad|tired|busy)(?:\s+today)?)\b/gi, "$1 am $2")
@@ -433,6 +484,12 @@ export const englishCorrectionRules: CorrectionRule[] = [
       ).test(input),
     apply: repairStep6AtClockTime,
     fpRiskNote: "Low-medium risk. Only explicit clock-time formats trigger; duration and vague time expressions stay unchanged.",
+  },
+  {
+    id: "en-step6-past-marker-recall",
+    detects: hasStep6PastMarkerRecall,
+    apply: repairStep6PastMarkerRecall,
+    fpRiskNote: "Medium risk. Explicit past markers can still appear in habitual, narrative, or multi-clause contexts. V1 only corrects single-clause, unambiguous explicit-past-marker plus present/base verb shapes and excludes weekday/habitual cases.",
   },
   {
     id: "en-third-person-daily-go-eat-have",

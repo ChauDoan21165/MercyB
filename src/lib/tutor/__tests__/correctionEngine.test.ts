@@ -183,6 +183,30 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["An hour ago I eat lunch.", "An hour ago I ate lunch."],
+    ["Last summer she go to Canada.", "Last summer she went to Canada."],
+    ["In 2024 they move to Toronto.", "In 2024 they moved to Toronto."],
+  ])("corrects approved Step 6 past-marker recall pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-past-marker-recall"],
+    });
+  });
+
+  it.each([
+    "On Monday I go to school.",
+    "Every Monday I go to school.",
+    "Last summer I went to Canada.",
+    "I said an hour ago I was busy.",
+  ])("does not over-trigger approved Step 6 past-marker recall pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["We discuss about homework.", "We discuss homework."],
     ["They discussed about the problem.", "They discussed the problem."],
     ["I want to discuss about this.", "I want to discuss this."],
@@ -287,6 +311,7 @@ describe("correctionEngine", () => {
     ["en-step5-preposition-pattern", "missing to"],
     ["en-be-verb-omission", "be-drop"],
     ["en-step6-wait-for-person-object", "wait-for"],
+    ["en-step6-past-marker-recall", "past-marker recall"],
     ["en-step6-discuss-about", "discuss-about"],
     ["en-step6-marry-with", "marry-with"],
     ["en-step6-at-clock-time", "at-clock-time"],
@@ -437,9 +462,6 @@ describe("correctionEngine", () => {
 
   it.each([
     "On Monday I go to school.",
-    "In 2024 I go to Japan.",
-    "An hour ago I eat lunch.",
-    "Last summer I go to the beach.",
   ])("does not use unaudited past-time markers for beginner irregular-past correction: %s", (input) => {
     const result = correctWithTutorRules(input, "en");
 
