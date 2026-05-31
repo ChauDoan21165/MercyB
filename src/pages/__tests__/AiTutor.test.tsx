@@ -677,6 +677,11 @@ describe("AiTutor four-tab seed flow", () => {
     await waitFor(() => {
       expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Do you want to practice another sentence?");
     });
+    expect(
+      within(screen.getByTestId("ai-tutor-speak-follow-up")).queryByRole("button", {
+        name: "Mercy đọc câu hỏi tiếp theo",
+      }),
+    ).not.toBeInTheDocument();
   });
 
   it("uses the learner's latest spoken topic instead of drifting back to the corrected seed", async () => {
