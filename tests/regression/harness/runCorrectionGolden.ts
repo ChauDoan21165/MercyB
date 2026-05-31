@@ -35,6 +35,14 @@ export interface GoldenCase {
   expectedCorrection: string;
   /** Logical rule name that should fire (positive), or null (negative). */
   expectedRuleFired: string | null;
+  /**
+   * Composition cases: the FULL set of concrete engine rule ids that must ALL
+   * co-fire on this input (e.g. 3rd-person agreement × missing-`to`). When
+   * present and non-empty it supersedes `expectedRuleFired` for the positive
+   * assertion — every id listed must appear in `appliedRuleIds`. Use concrete
+   * engine ids here (not logical names), captured from the live engine.
+   */
+  expectedRulesFired?: string[];
   notes: string;
   language?: TutorCorrectionLanguage;
 }
@@ -148,6 +156,18 @@ export function validateFixtureSchema(file: string, data: unknown): string[] {
       ) {
         errors.push(`${where} "expectedRuleFired" must be a string (positive) or null (negative)`);
       }
+      if ("expectedRulesFired" in testCase) {
+        const ids = testCase.expectedRulesFired;
+        if (
+          !Array.isArray(ids) ||
+          ids.length < 2 ||
+          !ids.every((id) => isNonEmptyString(id))
+        ) {
+          errors.push(
+            `${where} "expectedRulesFired" (composition) must be an array of >=2 non-empty rule-id strings`,
+          );
+        }
+      }
     });
   }
 
@@ -175,11 +195,22 @@ function registerCase(
     expect(result.corrected, `corrected mismatch for ${testCase.id}`).toBe(testCase.expectedCorrection);
 
     if (category === "positive") {
-      const expectedId = resolveRuleId(fixture, testCase.expectedRuleFired);
-      expect(
-        result.appliedRuleIds,
-        `${testCase.id} expected rule "${testCase.expectedRuleFired ?? fixture.rule}" (${expectedId}) to fire`,
-      ).toContain(expectedId);
+      // Composition case: assert EVERY listed rule id co-fired. Otherwise fall
+      // back to the single-rule contract.
+      if (testCase.expectedRulesFired && testCase.expectedRulesFired.length > 0) {
+        for (const id of testCase.expectedRulesFired) {
+          expect(
+            result.appliedRuleIds,
+            `${testCase.id} (composition) expected rule "${id}" to co-fire; got [${result.appliedRuleIds.join(", ")}]`,
+          ).toContain(id);
+        }
+      } else {
+        const expectedId = resolveRuleId(fixture, testCase.expectedRuleFired);
+        expect(
+          result.appliedRuleIds,
+          `${testCase.id} expected rule "${testCase.expectedRuleFired ?? fixture.rule}" (${expectedId}) to fire`,
+        ).toContain(expectedId);
+      }
     } else {
       expect(
         result.appliedRuleIds,

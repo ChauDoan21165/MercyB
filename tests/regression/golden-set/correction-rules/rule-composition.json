@@ -1,0 +1,71 @@
+{
+  "rule": "missingToComposition",
+  "ruleId": "en-step5-preposition-pattern",
+  "language": "en",
+  "description": "COMPOSITION golden set: two be-verb-INDEPENDENT interaction classes where the missing-`to` preposition rule (en-step5-preposition-pattern) co-fires with a second rule on a single input. (1) 3rd-person agreement x missing-to: 'She go school' -> 'She goes to school.' (en-step5-subject-verb-agreement + en-step5-preposition-pattern). (2) past-marker x missing-to: 'She go school yesterday' -> 'She went to school yesterday.' (en-yesterday-irregular-beginner-past + en-step5-preposition-pattern). Every expectedCorrection / expectedStatus / expectedRulesFired value was captured from the LIVE engine (correctWithTutorRules('en')) on this branch's main, not hand-traced. Positives assert the FULL co-firing set via expectedRulesFired[]; negatives assert the anchor rule en-step5-preposition-pattern does NOT fire. be-drop interaction pairs are intentionally EXCLUDED here, deferred until Workstream 1a (be-verb FP) gate opens.",
+  "fp_risk_note": "Composition is the precision risk that single-rule fixtures cannot see: two rules firing on one string can interact (ordering, double-rewrite, mangled output) even when each is individually correct. The positives lock that the two verified classes produce CLEAN composed output (one well-formed sentence, both rule ids present), not a half-applied or doubly-applied string. The negatives stress that the anchor preposition rule stays OFF when 'to' is already present ('She goes to school'), when 'school' is not the verb's bare object ('we go to the school festival'), and when only the OTHER rule should fire ('She go to school' -> agreement fires, preposition must not). A regression that makes the preposition rule greedier, or that breaks rule ordering so composed output mangles, will re-flag here first.",
+  "positive": [
+    {
+      "id": "composition-pos-3sg-missing-to",
+      "input": "She go school",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She goes to school.",
+      "expectedRuleFired": "en-step5-preposition-pattern",
+      "expectedRulesFired": ["en-step5-subject-verb-agreement", "en-step5-preposition-pattern"],
+      "notes": "3rd-sing x missing-to. Both rules co-fire and compose cleanly: 'go'->'goes' (agreement) AND insert 'to' (preposition). be-verb-independent."
+    },
+    {
+      "id": "composition-pos-3sg-missing-to-lowercase",
+      "input": "she go school",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She goes to school.",
+      "expectedRuleFired": "en-step5-preposition-pattern",
+      "expectedRulesFired": ["en-step5-subject-verb-agreement", "en-step5-preposition-pattern"],
+      "notes": "Same composition with lowercase subject — first-letter capitalization in the pipeline composes with both rules. Locks case handling under composition."
+    },
+    {
+      "id": "composition-pos-pastmarker-missing-to",
+      "input": "She go school yesterday",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She went to school yesterday.",
+      "expectedRuleFired": "en-step5-preposition-pattern",
+      "expectedRulesFired": ["en-yesterday-irregular-beginner-past", "en-step5-preposition-pattern"],
+      "notes": "past-marker x missing-to. 'go'->'went' (irregular past, trailing 'yesterday') AND insert 'to'. Both co-fire; output is one clean past-tense sentence. be-verb-independent."
+    },
+    {
+      "id": "composition-pos-pastmarker-missing-to-lowercase",
+      "input": "she go school yesterday",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She went to school yesterday.",
+      "expectedRuleFired": "en-step5-preposition-pattern",
+      "expectedRulesFired": ["en-yesterday-irregular-beginner-past", "en-step5-preposition-pattern"],
+      "notes": "Lowercase variant of the past-marker composition. Locks capitalization composing with the past-marker + preposition pair."
+    }
+  ],
+  "negative": [
+    {
+      "id": "composition-neg-already-prepositioned",
+      "input": "She goes to school",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She goes to school.",
+      "expectedRuleFired": null,
+      "notes": "Already correct (agreement + 'to' present). Neither rule fires; the anchor preposition rule must NOT insert a second 'to'."
+    },
+    {
+      "id": "composition-neg-school-not-bare-object",
+      "input": "we go to the school festival",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "We go to the school festival.",
+      "expectedRuleFired": null,
+      "notes": "'school' is inside a noun phrase ('the school festival'), not the bare object after the verb. The preposition rule must NOT fire — guards the composition anchor against over-reach."
+    },
+    {
+      "id": "composition-neg-only-agreement-fires",
+      "input": "She go to school",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She goes to school.",
+      "expectedRuleFired": null,
+      "notes": "'to' already present, so only agreement ('go'->'goes') fires; this is NOT a composition. Asserts the anchor preposition rule stays OFF even though the partner rule fires."
+    }
+  ]
+}
