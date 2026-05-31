@@ -3,7 +3,7 @@
   "ruleId": "en-be-verb-omission",
   "language": "en",
   "description": "Be-verb omission repair (audit commit ad3641395). Rule en-be-verb-omission inserts the missing copula in beginner '<pronoun> very <adjective>' sentences: I -> am, He/She/It -> is, You/We/They -> are, across the adjective set happy/sad/tired/busy (optionally followed by 'today'). Expectations encode the VERIFIED behaviour of correctWithTutorRules() on current main.",
-  "fp_risk_note": "The copula-insertion must fire only when the copula is genuinely missing. The negative cases stress: (1) already-correct sentences that already contain 'am/is/are' before 'very' — inserting again would double the copula; (2) adjectives OUTSIDE the supported happy/sad/tired/busy set (e.g. 'cold') — the rule must abstain rather than guess; (3) non-copula uses of 'very' such as 'very much' where no adjective follows. KNOWN FALSE POSITIVE (documented in the MR, deliberately excluded from this golden because locking a buggy output as 'expected' would bless it): an inverted question 'Are you very happy?' currently fires and yields the double-copula 'Are you are very happy?'. A regression that broadens the pronoun/adjective match must re-check these.",
+  "fp_risk_note": "The copula-insertion must fire only when the copula is genuinely missing. The negative cases stress: (1) already-correct sentences that already contain 'am/is/are' before 'very' — inserting again would double the copula; (2) adjectives OUTSIDE the supported happy/sad/tired/busy set (e.g. 'cold') — the rule must abstain rather than guess; (3) non-copula uses of 'very' such as 'very much' where no adjective follows; (4) inverted question forms ('Are you very happy?', 'Is she very tired?', 'Were they very busy?') where a fronted copula already exists — a previously-documented false positive (it yielded the double copula 'Are you are very happy?') that Lane A has since FIXED; these now lock the regression so it cannot reappear. A regression that broadens the pronoun/adjective match must re-check all of these.",
   "positive": [
     {
       "id": "bvo-pos-001",
@@ -70,6 +70,30 @@
       "expectedCorrection": "I very much enjoy it.",
       "expectedRuleFired": null,
       "notes": "FP-stress (non-copula 'very'): 'very much' is not '<pronoun> very <adjective>'; rule must not fire."
+    },
+    {
+      "id": "bvo-neg-004",
+      "input": "Are you very happy?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Are you very happy?",
+      "expectedRuleFired": null,
+      "notes": "FP regression lock (question inversion): a fronted 'Are' already supplies the copula; the rule must NOT insert a second one. Previously fired -> 'Are you are very happy?'; fixed by Lane A. Verified no-fire on current main."
+    },
+    {
+      "id": "bvo-neg-005",
+      "input": "Is she very tired?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Is she very tired?",
+      "expectedRuleFired": null,
+      "notes": "FP regression lock (question inversion): fronted 'Is' already supplies the copula. Previously fired -> 'Is she is very tired?'; fixed by Lane A. Verified no-fire on current main."
+    },
+    {
+      "id": "bvo-neg-006",
+      "input": "Were they very busy?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Were they very busy?",
+      "expectedRuleFired": null,
+      "notes": "FP regression lock (question inversion, past): fronted 'Were' already supplies the copula. Previously fired -> 'Were they are very busy?'; fixed by Lane A. Verified no-fire on current main."
     }
   ]
 }
