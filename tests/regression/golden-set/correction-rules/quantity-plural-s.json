@@ -1,0 +1,67 @@
+{
+  "rule": "quantityPluralS",
+  "ruleId": "en-l4-quantity-plural-s",
+  "language": "en",
+  "description": "Quantity plural agreement (Step 5 / L4). Rule en-l4-quantity-plural-s pluralizes a whitelisted singular count noun (apple/book/hat/lesson/orange/student/word) when it follows a plural quantity word (two/three/many/some/several). Expectations encode the VERIFIED behaviour of correctWithTutorRules() on current main.",
+  "fp_risk_note": "Pluralization must fire only on a recognized quantity word + a whitelisted singular count noun. The negative cases stress: (1) nouns already pluralized ('two books') — re-pluralizing would yield 'bookss'; (2) non-whitelisted nouns ('cats') the rule does not own; (3) uncountable nouns after a quantifier ('some water') which must stay singular. A regression that broadens the noun set or the quantity set must re-check these.",
+  "positive": [
+    {
+      "id": "qps-pos-001",
+      "input": "I have two book",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I have two books.",
+      "expectedRuleFired": "quantityPluralS",
+      "notes": "'two book' -> 'two books'."
+    },
+    {
+      "id": "qps-pos-002",
+      "input": "She sees three apple",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She sees three apples.",
+      "expectedRuleFired": "quantityPluralS",
+      "notes": "'three apple' -> 'three apples'."
+    },
+    {
+      "id": "qps-pos-003",
+      "input": "We read many student",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "We read many students.",
+      "expectedRuleFired": "quantityPluralS",
+      "notes": "'many student' -> 'many students'."
+    },
+    {
+      "id": "qps-pos-004",
+      "input": "I know several word",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I know several words.",
+      "expectedRuleFired": "quantityPluralS",
+      "notes": "'several word' -> 'several words'."
+    }
+  ],
+  "negative": [
+    {
+      "id": "qps-neg-001",
+      "input": "I have two books",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I have two books.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (already plural): 'two books' is correct; rule must not double-pluralize."
+    },
+    {
+      "id": "qps-neg-002",
+      "input": "I see two cats",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I see two cats.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (non-whitelisted noun): 'cat' is not in the rule's noun set; rule must abstain."
+    },
+    {
+      "id": "qps-neg-003",
+      "input": "I drink some water",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I drink some water.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (uncountable after quantifier): 'some water' must stay singular."
+    }
+  ]
+}
