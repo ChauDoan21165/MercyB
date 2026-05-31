@@ -22,7 +22,7 @@
     "check:empty-entries": "node scripts/check-rooms-empty-entries.mjs",
     "check:empty-rooms": "node scripts/check-empty-rooms.cjs",
     "check:kw-coverage": "node scripts/check-rooms-keyword-coverage.mjs",
-    "check:delete-account-guard": "vitest run supabase/functions/delete-account/__tests__ && node scripts/check-delete-account-coverage.mjs",
+    "check:delete-account-guard": "vitest run supabase/functions/delete-account/__tests__ src/pages/__tests__/AccountPage.deleteAccount.test.tsx && node scripts/check-delete-account-coverage.mjs",
     "check:delete-account-live": "node scripts/check-delete-account-live.mjs",
     "check:mercy-grammar": "rg -n \"localGrammarFallback|tabs/GrammarWritingTab|grammar-writing/fallback\" src && exit 1 || exit 0",
     "placement:v3:live": "tsx scripts/placement-v3/run-live-validation.ts",
