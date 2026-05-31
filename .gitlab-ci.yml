@@ -382,6 +382,31 @@ test:shared-fallback:
   parallel: 2
   script: *test_shard_script
 
+delete-account-guard:
+  <<: [*node_job, *local_runner]
+  stage: test
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+  script:
+    - npm run check:delete-account-guard
+
+delete-account-guard:shared-fallback:
+  <<: [*node_job, *manual_shared_fallback]
+  stage: test
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: manual
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+      when: manual
+  script:
+    - npm run check:delete-account-guard
+
 delete-account-live:
   <<: [*node_job, *local_runner]
   stage: test
