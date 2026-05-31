@@ -1,0 +1,53 @@
+{
+  "rule": "step6MarryWith",
+  "ruleId": "en-step6-marry-with",
+  "language": "en",
+  "description": "Removes with after marry verb forms when followed by a person-object pronoun.",
+  "fp_risk_note": "Low-medium risk. Only remove with immediately after a marry verb form when followed by a person/pronoun object.",
+  "positive": [
+    {
+      "id": "marry-with-pos-001",
+      "input": "She married with him.",
+      "expectedCorrection": "She married him.",
+      "expectedRuleFired": "step6MarryWith",
+      "notes": "Removes with after married."
+    },
+    {
+      "id": "marry-with-pos-002",
+      "input": "He will marry with her.",
+      "expectedCorrection": "He will marry her.",
+      "expectedRuleFired": "step6MarryWith",
+      "notes": "Removes with after modal plus marry."
+    },
+    {
+      "id": "marry-with-pos-003",
+      "input": "I want to marry with you.",
+      "expectedCorrection": "I want to marry you.",
+      "expectedRuleFired": "step6MarryWith",
+      "notes": "Removes with after infinitive marry."
+    }
+  ],
+  "negative": [
+    {
+      "id": "marry-with-neg-001",
+      "input": "She married him.",
+      "expectedCorrection": "She married him.",
+      "expectedRuleFired": null,
+      "notes": "Already correct marry phrase stays unchanged."
+    },
+    {
+      "id": "marry-with-neg-002",
+      "input": "She is married to him.",
+      "expectedCorrection": "She is married to him.",
+      "expectedRuleFired": null,
+      "notes": "Be married to stays unchanged."
+    },
+    {
+      "id": "marry-with-neg-003",
+      "input": "They went with him.",
+      "expectedCorrection": "They went with him.",
+      "expectedRuleFired": null,
+      "notes": "Unrelated with phrase stays unchanged."
+    }
+  ]
+}

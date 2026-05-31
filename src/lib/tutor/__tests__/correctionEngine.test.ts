@@ -159,6 +159,100 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["I wait you.", "I wait for you."],
+    ["She waited me.", "She waited for me."],
+    ["They are waiting him.", "They are waiting for him."],
+  ])("corrects approved Step 6 wait-for person object pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-wait-for-person-object"],
+    });
+  });
+
+  it.each([
+    "I wait for you.",
+    "Please wait here.",
+    "Wait a minute.",
+    "He waits tables.",
+  ])("does not over-trigger approved Step 6 wait-for person object pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["We discuss about homework.", "We discuss homework."],
+    ["They discussed about the problem.", "They discussed the problem."],
+    ["I want to discuss about this.", "I want to discuss this."],
+  ])("corrects approved Step 6 discuss-about pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-discuss-about"],
+    });
+  });
+
+  it.each([
+    "We talk about homework.",
+    "We discuss homework.",
+    "This is about homework.",
+  ])("does not over-trigger approved Step 6 discuss-about pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["She married with him.", "She married him."],
+    ["He will marry with her.", "He will marry her."],
+    ["I want to marry with you.", "I want to marry you."],
+  ])("corrects approved Step 6 marry-with pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-marry-with"],
+    });
+  });
+
+  it.each([
+    "She married him.",
+    "She is married to him.",
+    "They went with him.",
+  ])("does not over-trigger approved Step 6 marry-with pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["I wake up 7 o'clock.", "I wake up at 7 o'clock."],
+    ["She starts work 8 AM.", "She starts work at 8 AM."],
+    ["We meet 6:30.", "We meet at 6:30."],
+  ])("corrects approved Step 6 at-clock-time pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-at-clock-time"],
+    });
+  });
+
+  it.each([
+    "I wake up early.",
+    "She works 8 hours.",
+    "We meet tomorrow.",
+    "We meet at 6:30.",
+  ])("does not over-trigger approved Step 6 at-clock-time pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["She very happy.", "She is very happy."],
     ["I very busy.", "I am very busy."],
     ["They very tired.", "They are very tired."],
@@ -192,7 +286,11 @@ describe("correctionEngine", () => {
     ["en-step5-subject-verb-agreement", "3rd-person singular"],
     ["en-step5-preposition-pattern", "missing to"],
     ["en-be-verb-omission", "be-drop"],
-  ])("keeps fp_risk_note metadata for approved Step 5 pattern %s (%s)", (ruleId) => {
+    ["en-step6-wait-for-person-object", "wait-for"],
+    ["en-step6-discuss-about", "discuss-about"],
+    ["en-step6-marry-with", "marry-with"],
+    ["en-step6-at-clock-time", "at-clock-time"],
+  ])("keeps fp_risk_note metadata for approved correction pattern %s (%s)", (ruleId) => {
     const rule = englishCorrectionRules.find((candidate) => candidate.id === ruleId);
     expect(rule?.fpRiskNote).toEqual(expect.any(String));
     expect(rule?.fpRiskNote?.length).toBeGreaterThan(20);
