@@ -1,0 +1,99 @@
+{
+  "rule": "calqueCloseTurnOffAppliance",
+  "ruleId": "en-calque-close-turn-off-appliance",
+  "language": "en",
+  "description": "Calque Batch 1: Vietnamese 'đóng/tắt' leads learners to say 'close the TV' for an appliance. Rule en-calque-close-turn-off-appliance rewrites 'close the <whitelisted appliance>' to 'turn off the <appliance>'. Expectations encode the VERIFIED behaviour of correctWithTutorRules() on the engine WITH calque Batch 1 (MR !281) applied.",
+  "fp_risk_note": "'close' is correct for most physical objects, so the rule must stay scoped to the appliance whitelist. The negatives lock the boundary: (1) physically-closed objects ('door', 'window') keep 'close'; (2) lid-sense devices CUT from the whitelist ('laptop', 'computer') must NOT be rewritten; (3) head-noun boundary ('turn off the TV stand' — head noun 'stand') must not match; (4) already-correct 'turn off ...' is left alone. Positives cover the whitelisted appliances only.",
+  "positive": [
+    {
+      "id": "cca-pos-001",
+      "input": "close the TV",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Turn off the TV.",
+      "expectedRuleFired": "calqueCloseTurnOffAppliance",
+      "notes": "Appliance 'TV' -> turn off."
+    },
+    {
+      "id": "cca-pos-002",
+      "input": "close the light",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Turn off the light.",
+      "expectedRuleFired": "calqueCloseTurnOffAppliance",
+      "notes": "Appliance 'light' -> turn off."
+    },
+    {
+      "id": "cca-pos-003",
+      "input": "close the radio",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Turn off the radio.",
+      "expectedRuleFired": "calqueCloseTurnOffAppliance",
+      "notes": "Appliance 'radio' -> turn off."
+    },
+    {
+      "id": "cca-pos-004",
+      "input": "close the fan",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Turn off the fan.",
+      "expectedRuleFired": "calqueCloseTurnOffAppliance",
+      "notes": "Appliance 'fan' -> turn off."
+    },
+    {
+      "id": "cca-pos-005",
+      "input": "close the air conditioner",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Turn off the air conditioner.",
+      "expectedRuleFired": "calqueCloseTurnOffAppliance",
+      "notes": "Multi-word appliance 'air conditioner' -> turn off."
+    }
+  ],
+  "negative": [
+    {
+      "id": "cca-neg-001",
+      "input": "close the door",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Close the door.",
+      "expectedRuleFired": null,
+      "notes": "Whitelist boundary: 'door' is physically closed; must keep 'close'."
+    },
+    {
+      "id": "cca-neg-002",
+      "input": "close the window",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Close the window.",
+      "expectedRuleFired": null,
+      "notes": "Whitelist boundary: 'window' is physically closed; rule must not fire."
+    },
+    {
+      "id": "cca-neg-003",
+      "input": "close the laptop",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Close the laptop.",
+      "expectedRuleFired": null,
+      "notes": "Locked regression guard (lid sense): 'laptop' CUT from the whitelist — you close a laptop lid; must not become 'turn off'."
+    },
+    {
+      "id": "cca-neg-004",
+      "input": "close the computer",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Close the computer.",
+      "expectedRuleFired": null,
+      "notes": "Locked regression guard (lid sense): 'computer' cut from the whitelist; must not be rewritten."
+    },
+    {
+      "id": "cca-neg-005",
+      "input": "turn off the TV stand",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Turn off the TV stand.",
+      "expectedRuleFired": null,
+      "notes": "Head-noun boundary: head noun is 'stand', not an appliance; must not match embedded 'TV'."
+    },
+    {
+      "id": "cca-neg-006",
+      "input": "turn off the TV",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Turn off the TV.",
+      "expectedRuleFired": null,
+      "notes": "Already correct: 'turn off the TV' must not be re-touched."
+    }
+  ]
+}
