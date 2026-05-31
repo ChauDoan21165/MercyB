@@ -1,6 +1,18 @@
 import type { NormalizedPronunciationScoreResult } from "@/lib/pronunciation/cloudScorer";
 import type { SpeakPronunciationResult } from "./SpeakPracticeMode";
 
+type ToneContourCandidate = {
+  bucket?: unknown;
+  score?: unknown;
+  confidence?: unknown;
+  expectedContour?: unknown;
+};
+
+type NormalizedPronunciationScoreResultWithTone =
+  NormalizedPronunciationScoreResult & {
+    toneContour?: ToneContourCandidate;
+  };
+
 function finiteScore(value: unknown): number | undefined {
   return typeof value === "number" && Number.isFinite(value) ? value : undefined;
 }
@@ -10,17 +22,41 @@ function textValue(value: unknown): string | null {
 }
 
 function toLocalFallback(
-  result: NormalizedPronunciationScoreResult | null | undefined,
+  result: NormalizedPronunciationScoreResultWithTone | null | undefined,
 ): SpeakPronunciationResult {
   return {
     mode: "local-fallback",
     provider: "local",
     overallScore: finiteScore(result?.overallScore),
+    ...toneContourDisplay(result?.toneContour),
+  };
+}
+
+function toneContourDisplay(
+  toneContour: ToneContourCandidate | undefined,
+): Pick<SpeakPronunciationResult, "toneContour"> {
+  if (!toneContour) return {};
+
+  const bucket = toneContour.bucket;
+  const expectedContour = toneContour.expectedContour;
+  const confidence = finiteScore(toneContour.confidence);
+
+  if (bucket !== "match" && bucket !== "mismatch") return {};
+  if (expectedContour !== "rising" && expectedContour !== "falling") return {};
+  if (confidence === undefined || confidence < 0.65) return {};
+
+  return {
+    toneContour: {
+      bucket,
+      expectedContour,
+      confidence,
+      score: finiteScore(toneContour.score) ?? null,
+    },
   };
 }
 
 export function adaptSpeakPronunciationResult(
-  result: NormalizedPronunciationScoreResult | null | undefined,
+  result: NormalizedPronunciationScoreResultWithTone | null | undefined,
 ): SpeakPronunciationResult | null {
   if (!result) return null;
 
@@ -80,6 +116,7 @@ export function adaptSpeakPronunciationResult(
     provider: "azure",
     overallScore: finiteScore(result.overallScore),
     phonemeScores: flatPhonemeScores,
+    ...toneContourDisplay(result.toneContour),
     ...(words.length > 0 ? { words } : {}),
   };
 }

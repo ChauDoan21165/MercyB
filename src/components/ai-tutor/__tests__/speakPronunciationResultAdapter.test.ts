@@ -181,6 +181,138 @@ describe("adaptSpeakPronunciationResult", () => {
     expect(result?.words).toBeUndefined();
   });
 
+  it("passes match rising and falling tone contour evidence", () => {
+    expect(
+      adaptSpeakPronunciationResult({
+        ...azureResult(),
+        toneContour: {
+          bucket: "match",
+          score: 91,
+          confidence: 0.82,
+          expectedContour: "rising",
+        },
+      })?.toneContour,
+    ).toEqual({
+      bucket: "match",
+      score: 91,
+      confidence: 0.82,
+      expectedContour: "rising",
+    });
+
+    expect(
+      adaptSpeakPronunciationResult({
+        ...azureResult(),
+        toneContour: {
+          bucket: "match",
+          score: null,
+          confidence: 0.76,
+          expectedContour: "falling",
+        },
+      })?.toneContour,
+    ).toEqual({
+      bucket: "match",
+      score: null,
+      confidence: 0.76,
+      expectedContour: "falling",
+    });
+  });
+
+  it("passes mismatch rising and falling tone contour evidence", () => {
+    expect(
+      adaptSpeakPronunciationResult({
+        ...azureResult(),
+        toneContour: {
+          bucket: "mismatch",
+          score: 22,
+          confidence: 0.81,
+          expectedContour: "rising",
+        },
+      })?.toneContour,
+    ).toEqual({
+      bucket: "mismatch",
+      score: 22,
+      confidence: 0.81,
+      expectedContour: "rising",
+    });
+
+    expect(
+      adaptSpeakPronunciationResult({
+        ...azureResult(),
+        toneContour: {
+          bucket: "mismatch",
+          score: 31,
+          confidence: 0.72,
+          expectedContour: "falling",
+        },
+      })?.toneContour,
+    ).toEqual({
+      bucket: "mismatch",
+      score: 31,
+      confidence: 0.72,
+      expectedContour: "falling",
+    });
+  });
+
+  it("drops uncertain tone contour evidence", () => {
+    const result = adaptSpeakPronunciationResult({
+      ...azureResult(),
+      toneContour: {
+        bucket: "uncertain",
+        score: 0,
+        confidence: 0.3,
+        expectedContour: "rising",
+      },
+    });
+
+    expect(result?.toneContour).toBeUndefined();
+  });
+
+  it("drops flat and unknown expected tone contours", () => {
+    expect(
+      adaptSpeakPronunciationResult({
+        ...azureResult(),
+        toneContour: {
+          bucket: "match",
+          score: 80,
+          confidence: 0.8,
+          expectedContour: "flat",
+        },
+      })?.toneContour,
+    ).toBeUndefined();
+
+    expect(
+      adaptSpeakPronunciationResult({
+        ...azureResult(),
+        toneContour: {
+          bucket: "match",
+          score: 80,
+          confidence: 0.8,
+          expectedContour: "unknown",
+        },
+      })?.toneContour,
+    ).toBeUndefined();
+  });
+
+  it("drops tone contour evidence below the confidence threshold", () => {
+    const result = adaptSpeakPronunciationResult({
+      ...azureResult(),
+      toneContour: {
+        bucket: "match",
+        score: 80,
+        confidence: 0.64,
+        expectedContour: "rising",
+      },
+    });
+
+    expect(result?.toneContour).toBeUndefined();
+  });
+
+  it("does not create fake tone contour evidence from phoneme or word scores", () => {
+    const result = adaptSpeakPronunciationResult(azureResult());
+
+    expect(result?.toneContour).toBeUndefined();
+  });
+
   it("ignores non-display contract fields after mapping", () => {
     const result = adaptSpeakPronunciationResult(azureResult());
 
