@@ -384,6 +384,11 @@ const STEP6_IN_MONTH_YEAR_CONTEXT_PATTERN = "\\b(?:was born|were born|moved here
 const STEP6_IN_MONTH_YEAR_TOKEN_PATTERN = `(?:${STEP6_MONTH_NAMES}|\\d{4})`;
 const STEP6_ENTER_CONCRETE_PLACE_PATTERN =
   "(?:room|classroom|class|house|building|office|school|hospital|airport)";
+const BE_DROP_ADJECTIVE_PATTERN = "(?:happy|sad|tired|busy)";
+const BE_DROP_TIME_MARKER_PATTERN =
+  "(?:today|yesterday|last\\s+(?:night|week|month|year|summer|spring|winter|fall|autumn)|(?:an?|one|two|three|\\d+)\\s+(?:hour|hours|day|days|week|weeks|month|months|year|years)\\s+ago)";
+const BE_DROP_ADJECTIVE_PHRASE_PATTERN =
+  `very\\s+${BE_DROP_ADJECTIVE_PATTERN}(?:\\s+${BE_DROP_TIME_MARKER_PATTERN})?`;
 
 function getStep6InMonthYearMatch(input: string): RegExpMatchArray | null {
   const pattern = new RegExp(
@@ -420,11 +425,39 @@ function repairStep6EnterConcretePlace(input: string): string {
   return input.replace(pattern, "$1 $2");
 }
 
+function hasBeDropPastTimeMarker(input: string): boolean {
+  return (
+    /\byesterday\b/i.test(input) ||
+    /\blast\s+(?:night|week|month|year|summer|spring|winter|fall|autumn)\b/i.test(input) ||
+    /\b(?:an?|one|two|three|\d+)\s+(?:hour|hours|day|days|week|weeks|month|months|year|years)\s+ago\b/i.test(input)
+  );
+}
+
+function copulaForBeDropSubject(subject: string, input: string): "am" | "is" | "are" | "was" | "were" {
+  const normalizedSubject = subject.toLowerCase();
+  if (hasBeDropPastTimeMarker(input)) {
+    return ["you", "we", "they"].includes(normalizedSubject) ? "were" : "was";
+  }
+  if (normalizedSubject === "i") return "am";
+  if (["you", "we", "they"].includes(normalizedSubject)) return "are";
+  return "is";
+}
+
+function hasUnsafeBeDropMissingToComposition(input: string): boolean {
+  return new RegExp(
+    `\\b(?:I|He|She|It|You|We|They)\\s+very\\s+${BE_DROP_ADJECTIVE_PATTERN}\\s+(?:go|goes|went|going)\\s+school\\b(?!\\s+bus\\b)`,
+    "i",
+  ).test(input);
+}
+
 function repairBeVerbOmission(input: string): string {
-  return input
-    .replace(/\b(I)\s+(very\s+(?:happy|sad|tired|busy)(?:\s+today)?)\b/gi, "$1 am $2")
-    .replace(/\b(He|She|It)\s+(very\s+(?:happy|sad|tired|busy)(?:\s+today)?)\b/gi, "$1 is $2")
-    .replace(/\b(You|We|They)\s+(very\s+(?:happy|sad|tired|busy)(?:\s+today)?)\b/gi, "$1 are $2");
+  const pattern = new RegExp(
+    `\\b(I|He|She|It|You|We|They)\\s+(${BE_DROP_ADJECTIVE_PHRASE_PATTERN})\\b`,
+    "gi",
+  );
+  return input.replace(pattern, (_match, subject: string, phrase: string) => {
+    return `${subject} ${copulaForBeDropSubject(subject, input)} ${phrase}`;
+  });
 }
 
 function isBeAuxInvertedQuestion(input: string): boolean {
@@ -546,9 +579,10 @@ export const englishCorrectionRules: CorrectionRule[] = [
     id: "en-be-verb-omission",
     detects: (input) =>
       !isBeAuxInvertedQuestion(input) &&
-      /\b(?:I|He|She|It|You|We|They)\s+very\s+(?:happy|sad|tired|busy)(?:\s+today)?\b/i.test(input),
+      !hasUnsafeBeDropMissingToComposition(input) &&
+      new RegExp(`\\b(?:I|He|She|It|You|We|They)\\s+${BE_DROP_ADJECTIVE_PHRASE_PATTERN}\\b`, "i").test(input),
     apply: repairBeVerbOmission,
-    fpRiskNote: "Be-drop v1 requires a pronoun plus very plus a small adjective whitelist and skips subject-aux-inverted be questions.",
+    fpRiskNote: "Be-drop v1 requires a pronoun plus very plus a small adjective whitelist, skips subject-aux-inverted be questions, uses was/were for explicit past markers, and abstains from unsafe be-drop plus missing-to run-on surfaces.",
   },
   {
     id: "en-step5-subject-verb-agreement",
@@ -562,10 +596,13 @@ export const englishCorrectionRules: CorrectionRule[] = [
   {
     id: "en-step5-preposition-pattern",
     detects: (input) =>
-      /\b(depend|depends|depended|depending)\s+of\b/i.test(input) ||
-      /\binterested\s+with\b/i.test(input) ||
-      /\bgood\s+in\s+(English|math|science)\b/i.test(input) ||
-      /\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/i.test(input),
+      !hasUnsafeBeDropMissingToComposition(input) &&
+      (
+        /\b(depend|depends|depended|depending)\s+of\b/i.test(input) ||
+        /\binterested\s+with\b/i.test(input) ||
+        /\bgood\s+in\s+(English|math|science)\b/i.test(input) ||
+        /\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/i.test(input)
+      ),
     apply: repairStep5PrepositionPatterns,
     fpRiskNote: "Missing-to repair is phrase-whitelisted and does not rewrite home/there/downtown/abroad/upstairs or school bus.",
   },
