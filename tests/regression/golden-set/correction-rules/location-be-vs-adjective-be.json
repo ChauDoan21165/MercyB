@@ -1,0 +1,67 @@
+{
+  "rule": "locationBeDrop",
+  "ruleId": "en-step6-location-be-drop",
+  "language": "en",
+  "description": "Step 6 location-be drop: inserts the dropped copula for a pronoun subject + whitelisted location phrase with no finite verb ('She at school' -> 'She is at school'). This fixture focuses on DISAMBIGUATION — the rule must fire on LOCATION-be surfaces but must NOT fire on ADJECTIVE-be surfaces ('She happy') or on questions. Expectations encode the VERIFIED behaviour of correctWithTutorRules() on current main. Complements the bundled location-be-drop.json.",
+  "fp_risk_note": "Be-insertion is high-risk and must not over-trigger. This fixture stresses the location-vs-adjective boundary plus question protection: (1) adjective complements ('She happy', 'He sad', 'They tired') are NOT location phrases and must NOT receive a location-be insertion by this rule (a different rule handles copula-omission before 'very <adjective>'); (2) question forms ('Is she at school?') already carry a fronted copula and must be left untouched. The positives confirm the rule still inserts is/are for pronoun + whitelisted location with the correct number agreement.",
+  "positive": [
+    {
+      "id": "lbd-pos-001",
+      "input": "She at school",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She is at school.",
+      "expectedRuleFired": "locationBeDrop",
+      "notes": "Location-be: singular pronoun -> 'is' ('She at school' -> 'She is at school')."
+    },
+    {
+      "id": "lbd-pos-002",
+      "input": "They at home",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They are at home.",
+      "expectedRuleFired": "locationBeDrop",
+      "notes": "Location-be: plural pronoun -> 'are' ('They at home' -> 'They are at home')."
+    },
+    {
+      "id": "lbd-pos-003",
+      "input": "He at the office",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He is at the office.",
+      "expectedRuleFired": "locationBeDrop",
+      "notes": "Location-be: 'at the office' location phrase -> inserts 'is'."
+    }
+  ],
+  "negative": [
+    {
+      "id": "lbd-neg-001",
+      "input": "She happy",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She happy.",
+      "expectedRuleFired": null,
+      "notes": "Disambiguation: 'happy' is an adjective complement, not a location phrase; location-be-drop must NOT fire."
+    },
+    {
+      "id": "lbd-neg-002",
+      "input": "He sad",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He sad.",
+      "expectedRuleFired": null,
+      "notes": "Disambiguation: adjective-be surface; this rule must abstain (not a location)."
+    },
+    {
+      "id": "lbd-neg-003",
+      "input": "They tired",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "They tired.",
+      "expectedRuleFired": null,
+      "notes": "Disambiguation: adjective complement; location-be-drop must not insert a copula here."
+    },
+    {
+      "id": "lbd-neg-004",
+      "input": "Is she at school?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Is she at school?",
+      "expectedRuleFired": null,
+      "notes": "Question protection: fronted copula already present; rule must not fire."
+    }
+  ]
+}
