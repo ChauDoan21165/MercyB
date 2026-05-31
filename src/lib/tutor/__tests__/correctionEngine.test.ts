@@ -414,6 +414,32 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["She very happy yesterday", "She was very happy yesterday."],
+    ["they very happy yesterday", "They were very happy yesterday."],
+    ["he very tired last night", "He was very tired last night."],
+    ["we very tired two days ago", "We were very tired two days ago."],
+  ])("uses past copula for be-drop with explicit past-time marker: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-be-verb-omission"],
+    });
+  });
+
+  it("does not compose be-drop and missing-to into a run-on", () => {
+    const result = correctWithTutorRules("he very happy go school", "en");
+
+    expect(result).toMatchObject({
+      status: "unchanged",
+      corrected: "He very happy go school.",
+      appliedRuleIds: [],
+    });
+    expect(result.corrected).not.toBe("He is very happy go to school.");
+    expect(result.appliedRuleIds).not.toContain("en-be-verb-omission");
+    expect(result.appliedRuleIds).not.toContain("en-step5-preposition-pattern");
+  });
+
+  it.each([
     "She is very happy.",
     "Are you very happy?",
     "Is she very tired?",
