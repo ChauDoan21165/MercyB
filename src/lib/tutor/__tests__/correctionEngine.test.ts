@@ -322,6 +322,81 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["Open the light.", "Turn on the light."],
+    ["Can you open the TV?", "Can you turn on the TV?"],
+    ["I opened the fan.", "I turned on the fan."],
+  ])("corrects approved open to turn-on appliance calque: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-calque-open-turn-on-appliance"],
+    });
+  });
+
+  it.each([
+    "Open the door.",
+    "Open the window.",
+    "Open the box.",
+    "Open the laptop.",
+    "Open the TV stand.",
+  ])("does not over-trigger open to turn-on appliance calque: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["Close the light.", "Turn off the light."],
+    ["Please close the TV.", "Please turn off the TV."],
+    ["She closed the fan.", "She turned off the fan."],
+  ])("corrects approved close to turn-off appliance calque: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-calque-close-turn-off-appliance"],
+    });
+  });
+
+  it.each([
+    "Close the door.",
+    "Close the window.",
+    "Close the box.",
+    "Close the laptop.",
+    "Close the TV stand.",
+  ])("does not over-trigger close to turn-off appliance calque: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["I drink medicine.", "I take medicine."],
+    ["She ate two pills.", "She took two pills."],
+    ["He drinks antibiotics every day.", "He takes antibiotics every day."],
+  ])("corrects approved take medicine calque: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-calque-take-medicine"],
+    });
+  });
+
+  it.each([
+    "I drink water.",
+    "She eats rice.",
+    "He takes medicine.",
+    "Drink more water with medicine.",
+    "Eat before taking medicine.",
+  ])("does not over-trigger take medicine calque: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["An hour ago I eat lunch.", "An hour ago I ate lunch."],
     ["Last summer she go to Canada.", "Last summer she went to Canada."],
     ["In 2024 they move to Toronto.", "In 2024 they moved to Toronto."],
@@ -529,6 +604,9 @@ describe("correctionEngine", () => {
     ["en-step6-listen-to-object", "listen-to"],
     ["en-step6-look-at-pronoun", "look-at"],
     ["en-step6-location-be-drop", "location be-drop"],
+    ["en-calque-open-turn-on-appliance", "open appliance"],
+    ["en-calque-close-turn-off-appliance", "close appliance"],
+    ["en-calque-take-medicine", "take medicine"],
     ["en-step6-past-marker-recall", "past-marker recall"],
     ["en-step6-in-month-year", "in-month/year"],
     ["en-step6-enter-concrete-place", "enter concrete place"],
