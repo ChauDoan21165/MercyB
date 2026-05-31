@@ -1,0 +1,59 @@
+{
+  "rule": "thirdPersonSchoolRoutine",
+  "ruleId": "en-third-person-school-routine",
+  "language": "en",
+  "description": "Third-person-singular agreement for the 'go to school' routine (audit commit ad3641395), rule en-third-person-school-routine. A He/She/It subject + 'go to school' is conjugated to 'goes to school'. expectedStatus/expectedCorrection are the VERIFIED output of correctWithTutorRules('en') on current main (captured from the live engine).",
+  "fp_risk_note": "This rule overlaps heavily with en-step5-subject-verb-agreement, which runs EARLIER and also rewrites 'He go ...' -> 'He goes ...'. So plain 'He go to school' is attributed to step5-SVA, not this rule. This rule's id only surfaces when step5-SVA is suppressed by an SVA temporal blocker that is NOT 'yesterday' (on <weekday>, in <year>, last <season>, <N> hours ago) — those block step5-SVA but the routine rule only bows out on 'yesterday'. Hence the positives carry such markers. Negatives stress: already-conjugated ('He goes to school'); 'yesterday', where this rule correctly stands down AND en-yesterday-irregular instead rewrites go->went ('He go to school yesterday' -> 'He went to school yesterday.', this rule's id absent); and first-person subjects (correct English). A regression that reorders these rules or widens the blocker set will shift which rule fires here.",
+  "positive": [
+    {
+      "id": "tps-pos-001",
+      "input": "He go to school on Monday",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He goes to school on Monday.",
+      "expectedRuleFired": "thirdPersonSchoolRoutine",
+      "notes": "'on Monday' blocks step5-SVA (an SVA temporal blocker) but is not 'yesterday', so the routine rule fires: go -> goes."
+    },
+    {
+      "id": "tps-pos-002",
+      "input": "She go to school in 2024",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She goes to school in 2024.",
+      "expectedRuleFired": "thirdPersonSchoolRoutine",
+      "notes": "'in 2024' suppresses step5-SVA; routine rule conjugates go -> goes. She subject."
+    },
+    {
+      "id": "tps-pos-003",
+      "input": "He go to school last summer",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He goes to school last summer.",
+      "expectedRuleFired": "thirdPersonSchoolRoutine",
+      "notes": "'last summer' (a season, not 'yesterday') suppresses step5-SVA; routine rule fires."
+    }
+  ],
+  "negative": [
+    {
+      "id": "tps-neg-001",
+      "input": "He goes to school",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He goes to school.",
+      "expectedRuleFired": null,
+      "notes": "Already correctly conjugated — must not fire."
+    },
+    {
+      "id": "tps-neg-002",
+      "input": "He go to school yesterday",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He went to school yesterday.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress / interplay: this rule correctly stands down on 'yesterday'. The output IS corrected — but by en-yesterday-irregular-beginner-past (go -> went), NOT this rule, so this rule's id must be absent from appliedRuleIds."
+    },
+    {
+      "id": "tps-neg-003",
+      "input": "I go to school",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I go to school.",
+      "expectedRuleFired": null,
+      "notes": "First-person subject is correct English; the rule is He/She/It only."
+    }
+  ]
+}
