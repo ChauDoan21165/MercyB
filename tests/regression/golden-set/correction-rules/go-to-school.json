@@ -1,0 +1,67 @@
+{
+  "rule": "goToSchool",
+  "ruleId": "en-step5-preposition-pattern",
+  "language": "en",
+  "description": "Missing-preposition repair for 'go school' -> 'go to school' (audit commit ad3641395). This is one sub-pattern of rule en-step5-preposition-pattern, which inserts the missing 'to' after go/goes/went/going + school. Expectations encode the VERIFIED behaviour of correctWithTutorRules() on current main; the asserted rule id is en-step5-preposition-pattern (the rule that owns this sub-pattern).",
+  "fp_risk_note": "The 'to' insertion must fire only when it is genuinely missing. The negative cases stress already-correct phrasings that must NOT be re-touched: 'go to school' (preposition already present — a regression that matches 'go ... school' too loosely would double it to 'go to to school'), an infinitive 'want to go to school', and third-person 'goes to school'. Note: en-step5-preposition-pattern also owns unrelated sub-patterns (depend of->on, interested with->in, good in->at, listen music->to); this fixture scopes positives/negatives to the go-to-school surface only.",
+  "positive": [
+    {
+      "id": "gts-pos-001",
+      "input": "I go school every day",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I go to school every day.",
+      "expectedRuleFired": "goToSchool",
+      "notes": "Base form 'go school' -> 'go to school'."
+    },
+    {
+      "id": "gts-pos-002",
+      "input": "He goes school",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He goes to school.",
+      "expectedRuleFired": "goToSchool",
+      "notes": "Third-person 'goes school' -> 'goes to school'."
+    },
+    {
+      "id": "gts-pos-003",
+      "input": "We went school yesterday",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "We went to school yesterday.",
+      "expectedRuleFired": "goToSchool",
+      "notes": "Past 'went school' -> 'went to school' (preposition fix only; 'went' already past)."
+    },
+    {
+      "id": "gts-pos-004",
+      "input": "They are going school",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They are going to school.",
+      "expectedRuleFired": "goToSchool",
+      "notes": "Progressive 'going school' -> 'going to school'."
+    }
+  ],
+  "negative": [
+    {
+      "id": "gts-neg-001",
+      "input": "I go to school every day",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I go to school every day.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (already correct): 'to' already present; rule must not double it to 'go to to school'."
+    },
+    {
+      "id": "gts-neg-002",
+      "input": "I want to go to school",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I want to go to school.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (infinitive, already correct): 'to go to school' is well-formed; rule must abstain."
+    },
+    {
+      "id": "gts-neg-003",
+      "input": "She goes to school",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She goes to school.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (third-person, already correct): 'goes to school' must not be re-touched."
+    }
+  ]
+}
