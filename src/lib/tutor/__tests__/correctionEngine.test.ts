@@ -207,6 +207,30 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["I was born 2020.", "I was born in 2020."],
+    ["She moved here March.", "She moved here in March."],
+    ["They arrived 2023.", "They arrived in 2023."],
+  ])("corrects approved Step 6 in-month/year pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-in-month-year"],
+    });
+  });
+
+  it.each([
+    "I started 2020 projects.",
+    "I was born in 2020.",
+    "March is cold.",
+    "I have 2020 dollars.",
+  ])("does not over-trigger approved Step 6 in-month/year pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["We discuss about homework.", "We discuss homework."],
     ["They discussed about the problem.", "They discussed the problem."],
     ["I want to discuss about this.", "I want to discuss this."],
@@ -312,6 +336,7 @@ describe("correctionEngine", () => {
     ["en-be-verb-omission", "be-drop"],
     ["en-step6-wait-for-person-object", "wait-for"],
     ["en-step6-past-marker-recall", "past-marker recall"],
+    ["en-step6-in-month-year", "in-month/year"],
     ["en-step6-discuss-about", "discuss-about"],
     ["en-step6-marry-with", "marry-with"],
     ["en-step6-at-clock-time", "at-clock-time"],

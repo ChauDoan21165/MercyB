@@ -319,6 +319,36 @@ function repairStep6PastMarkerRecall(input: string): string {
   );
 }
 
+const STEP6_IN_MONTH_YEAR_CONTEXT_PATTERN = "\\b(?:was born|were born|moved here|arrived)";
+const STEP6_IN_MONTH_YEAR_TOKEN_PATTERN = `(?:${STEP6_MONTH_NAMES}|\\d{4})`;
+
+function getStep6InMonthYearMatch(input: string): RegExpMatchArray | null {
+  const pattern = new RegExp(
+    `(${STEP6_IN_MONTH_YEAR_CONTEXT_PATTERN})\\s+(${STEP6_IN_MONTH_YEAR_TOKEN_PATTERN})(?=\\s*[.?!]?$)`,
+    "i",
+  );
+  const match = input.trim().match(pattern);
+  if (!match) return null;
+
+  const token = match[2] ?? "";
+  if (/^\d{4}$/.test(token) && !isPastYear(token)) return null;
+
+  return match;
+}
+
+function hasStep6InMonthYear(input: string): boolean {
+  return getStep6InMonthYearMatch(input) !== null;
+}
+
+function repairStep6InMonthYear(input: string): string {
+  const match = getStep6InMonthYearMatch(input);
+  if (!match) return input;
+
+  const context = match[1] ?? "";
+  const token = match[2] ?? "";
+  return input.replace(new RegExp(`\\b${context}\\s+${token}\\b`, "i"), `${context} in ${token}`);
+}
+
 function repairBeVerbOmission(input: string): string {
   return input
     .replace(/\b(I)\s+(very\s+(?:happy|sad|tired|busy)(?:\s+today)?)\b/gi, "$1 am $2")
@@ -490,6 +520,12 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: hasStep6PastMarkerRecall,
     apply: repairStep6PastMarkerRecall,
     fpRiskNote: "Medium risk. Explicit past markers can still appear in habitual, narrative, or multi-clause contexts. V1 only corrects single-clause, unambiguous explicit-past-marker plus present/base verb shapes and excludes weekday/habitual cases.",
+  },
+  {
+    id: "en-step6-in-month-year",
+    detects: hasStep6InMonthYear,
+    apply: repairStep6InMonthYear,
+    fpRiskNote: "Medium risk. Years can be quantities or noun modifiers. Rule must block year/month tokens followed by nouns and avoid broad numeric rewriting.",
   },
   {
     id: "en-third-person-daily-go-eat-have",
