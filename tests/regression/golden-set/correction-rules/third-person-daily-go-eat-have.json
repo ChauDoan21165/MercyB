@@ -1,0 +1,59 @@
+{
+  "rule": "thirdPersonDailyGoEatHave",
+  "ruleId": "en-third-person-daily-go-eat-have",
+  "language": "en",
+  "description": "Third-person-singular present agreement for daily-routine verbs (audit commit ad3641395), rule en-third-person-daily-go-eat-have. With a 'every day' habitual marker present, a He/She/It subject + base verb (go/eat/have) is conjugated (eat->eats, have->has, go->goes). expectedStatus/expectedCorrection are the VERIFIED output of correctWithTutorRules('en') on current main (captured from the live engine): whitespace normalized, first character capitalized, rule loop, terminal punctuation.",
+  "fp_risk_note": "Low FP risk; the main hazard is rule overlap. The eat/have positives isolate this rule cleanly because eat/have are NOT in the step5-SVA verb set {go,make,work}. The 'go' branch is in practice preempted: en-step5-subject-verb-agreement runs earlier and rewrites 'He go ...' -> 'He goes ...' before this rule sees it (so 'He go every day' is attributed to step5-SVA, not this rule) — that is current intended behavior. Negatives stress: already-conjugated input ('She eats rice every day'), the missing habitual marker ('She eat rice' with no 'every day' -> rule abstains; recall gap, not a defect), and a first-person subject ('I eat ...') which is correct English and must not fire.",
+  "positive": [
+    {
+      "id": "tpd-pos-001",
+      "input": "She eat rice every day",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She eats rice every day.",
+      "expectedRuleFired": "thirdPersonDailyGoEatHave",
+      "notes": "eat -> eats with 'every day' marker; She subject. eat is unique to this rule, so it isolates cleanly from step5-SVA."
+    },
+    {
+      "id": "tpd-pos-002",
+      "input": "He have lunch every day",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He has lunch every day.",
+      "expectedRuleFired": "thirdPersonDailyGoEatHave",
+      "notes": "have -> has with 'every day'; He subject."
+    },
+    {
+      "id": "tpd-pos-003",
+      "input": "It eat grass every day",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "It eats grass every day.",
+      "expectedRuleFired": "thirdPersonDailyGoEatHave",
+      "notes": "It subject; eat -> eats."
+    }
+  ],
+  "negative": [
+    {
+      "id": "tpd-neg-001",
+      "input": "She eats rice every day",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She eats rice every day.",
+      "expectedRuleFired": null,
+      "notes": "Already correctly conjugated — must not double-conjugate."
+    },
+    {
+      "id": "tpd-neg-002",
+      "input": "She eat rice",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She eat rice.",
+      "expectedRuleFired": null,
+      "notes": "No 'every day' habitual marker, so the rule abstains. Recall gap (it does not yet catch bare third-person SVA on eat/have), not a false positive."
+    },
+    {
+      "id": "tpd-neg-003",
+      "input": "I eat lunch every day",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I eat lunch every day.",
+      "expectedRuleFired": null,
+      "notes": "First-person subject is correct English; the rule is He/She/It only."
+    }
+  ]
+}
