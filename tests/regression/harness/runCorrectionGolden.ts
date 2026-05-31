@@ -43,6 +43,15 @@ export interface GoldenCase {
    * engine ids here (not logical names), captured from the live engine.
    */
   expectedRulesFired?: string[];
+  /**
+   * Anti-double-fire / exclusion contract: concrete engine rule ids that must
+   * NOT appear in `appliedRuleIds` for this input. Asserted in BOTH positive
+   * and negative cases. Use it to lock that a rule fires *cleanly without a
+   * second rule double-firing* — e.g. profession-article inserting `a`/`an`
+   * must not also trip the generic missing-singular-article rule, and listen-to
+   * inserting `to` must not rewrite articles (`to teacher`, not `to the teacher`).
+   */
+  mustNotFire?: string[];
   notes: string;
   language?: TutorCorrectionLanguage;
 }
@@ -168,6 +177,18 @@ export function validateFixtureSchema(file: string, data: unknown): string[] {
           );
         }
       }
+      if ("mustNotFire" in testCase) {
+        const ids = testCase.mustNotFire;
+        if (
+          !Array.isArray(ids) ||
+          ids.length < 1 ||
+          !ids.every((id) => isNonEmptyString(id))
+        ) {
+          errors.push(
+            `${where} "mustNotFire" must be an array of >=1 non-empty rule-id strings`,
+          );
+        }
+      }
     });
   }
 
@@ -193,6 +214,14 @@ function registerCase(
       expect(result.status, `status mismatch for ${testCase.id}`).toBe(testCase.expectedStatus);
     }
     expect(result.corrected, `corrected mismatch for ${testCase.id}`).toBe(testCase.expectedCorrection);
+
+    // Anti-double-fire contract: none of these rule ids may have fired.
+    for (const id of testCase.mustNotFire ?? []) {
+      expect(
+        result.appliedRuleIds,
+        `${testCase.id} expected rule "${id}" to NOT double-fire; got [${result.appliedRuleIds.join(", ")}]`,
+      ).not.toContain(id);
+    }
 
     if (category === "positive") {
       // Composition case: assert EVERY listed rule id co-fired. Otherwise fall
