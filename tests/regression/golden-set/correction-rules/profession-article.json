@@ -1,0 +1,91 @@
+{
+  "rule": "step6ProfessionArticle",
+  "ruleId": "en-step6-profession-article",
+  "language": "en",
+  "description": "Inserts a/an only in singular pronoun subject plus be plus bare whitelisted profession predicate sentences.",
+  "fp_risk_note": "Medium risk. Profession nouns overlap with identity, role, and discourse-specific article choice. V1 only inserts a/an for singular pronoun subject plus be plus bare whitelisted profession noun. It excludes the, all other determiners, plural subjects, adjective predicates, and any surface already covered by the shipped article rule.",
+  "positive": [
+    {
+      "id": "profession-article-pos-001",
+      "input": "He is teacher.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He is a teacher.",
+      "expectedRuleFired": "step6ProfessionArticle",
+      "notes": "Singular he plus bare consonant profession takes a."
+    },
+    {
+      "id": "profession-article-pos-002",
+      "input": "She is doctor.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She is a doctor.",
+      "expectedRuleFired": "step6ProfessionArticle",
+      "notes": "Singular she plus bare consonant profession takes a."
+    },
+    {
+      "id": "profession-article-pos-003",
+      "input": "I am student.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I am a student.",
+      "expectedRuleFired": "step6ProfessionArticle",
+      "notes": "Singular I plus bare consonant profession takes a."
+    },
+    {
+      "id": "profession-article-pos-004",
+      "input": "He is engineer.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He is an engineer.",
+      "expectedRuleFired": "step6ProfessionArticle",
+      "notes": "Vowel-sound profession engineer takes an."
+    },
+    {
+      "id": "profession-article-pos-005",
+      "input": "She is artist.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She is an artist.",
+      "expectedRuleFired": "step6ProfessionArticle",
+      "notes": "Vowel-sound profession artist takes an."
+    }
+  ],
+  "negative": [
+    {
+      "id": "profession-article-neg-001",
+      "input": "They are teacher.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "They are teacher.",
+      "expectedRuleFired": null,
+      "notes": "Plural subject is outside article-only v1 scope."
+    },
+    {
+      "id": "profession-article-neg-002",
+      "input": "He is the teacher.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He is the teacher.",
+      "expectedRuleFired": null,
+      "notes": "Existing determiner the stays unchanged."
+    },
+    {
+      "id": "profession-article-neg-003",
+      "input": "He is my teacher.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He is my teacher.",
+      "expectedRuleFired": null,
+      "notes": "Possessive determiner stays unchanged."
+    },
+    {
+      "id": "profession-article-neg-004",
+      "input": "She is a doctor.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She is a doctor.",
+      "expectedRuleFired": null,
+      "notes": "Already correct article stays unchanged."
+    },
+    {
+      "id": "profession-article-neg-005",
+      "input": "He is happy.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He is happy.",
+      "expectedRuleFired": null,
+      "notes": "Adjective predicate stays unchanged."
+    }
+  ]
+}

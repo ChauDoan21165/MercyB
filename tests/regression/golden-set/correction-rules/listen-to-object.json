@@ -1,0 +1,67 @@
+{
+  "rule": "step6ListenToObject",
+  "ruleId": "en-step6-listen-to-object",
+  "language": "en",
+  "description": "Inserts to after listen verb forms only before object pronouns or a small safe object-noun whitelist.",
+  "fp_risk_note": "Low-medium risk if limited to to insertion only. Article correction is deliberately excluded. The rule must block no-object and adverb surfaces such as listen carefully.",
+  "positive": [
+    {
+      "id": "listen-to-object-pos-001",
+      "input": "I listen music.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I listen to music.",
+      "expectedRuleFired": "step6ListenToObject",
+      "notes": "Inserts to before whitelisted object noun music."
+    },
+    {
+      "id": "listen-to-object-pos-002",
+      "input": "She listens teacher.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She listens to teacher.",
+      "expectedRuleFired": "step6ListenToObject",
+      "notes": "Inserts to only; article repair is deliberately excluded."
+    },
+    {
+      "id": "listen-to-object-pos-003",
+      "input": "They listened song.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They listened to song.",
+      "expectedRuleFired": "step6ListenToObject",
+      "notes": "Inserts to before whitelisted object noun song."
+    }
+  ],
+  "negative": [
+    {
+      "id": "listen-to-object-neg-001",
+      "input": "I listen to music.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I listen to music.",
+      "expectedRuleFired": null,
+      "notes": "Already correct listen to phrase stays unchanged."
+    },
+    {
+      "id": "listen-to-object-neg-002",
+      "input": "Listen carefully.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Listen carefully.",
+      "expectedRuleFired": null,
+      "notes": "Adverb surface stays unchanged."
+    },
+    {
+      "id": "listen-to-object-neg-003",
+      "input": "Listen!",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Listen!",
+      "expectedRuleFired": null,
+      "notes": "No-object imperative stays unchanged."
+    },
+    {
+      "id": "listen-to-object-neg-004",
+      "input": "She hears music.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She hears music.",
+      "expectedRuleFired": null,
+      "notes": "Different verb stays unchanged."
+    }
+  ]
+}

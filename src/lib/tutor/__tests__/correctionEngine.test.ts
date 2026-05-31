@@ -44,7 +44,6 @@ describe("correctionEngine", () => {
   it.each([
     ["I bought hat yesterday.", "I bought a hat yesterday."],
     ["I bought bicycle yesterday.", "I bought a bicycle yesterday."],
-    ["She is teacher.", "She is a teacher."],
     ["I want apple.", "I want an apple."],
   ])("corrects approved Step 5 article omission for whitelisted count nouns: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
@@ -68,6 +67,35 @@ describe("correctionEngine", () => {
       appliedRuleIds: [],
     });
     expect(result.corrected).not.toMatch(/\b(?:a|an)\s+(?:water|the bicycle|my bicycle|music|dogs|Apple)\b/i);
+  });
+
+  it.each([
+    ["He is teacher.", "He is a teacher."],
+    ["She is doctor.", "She is a doctor."],
+    ["I am student.", "I am a student."],
+    ["He is engineer.", "He is an engineer."],
+    ["She is artist.", "She is an artist."],
+  ])("corrects approved Step 6 profession-article predicate pattern: %s", (input, expected) => {
+    const result = correctWithTutorRules(input, "en");
+    expect(result).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-profession-article"],
+    });
+    expect(result.appliedRuleIds).not.toContain("en-l4-missing-singular-article");
+  });
+
+  it.each([
+    "They are teacher.",
+    "He is the teacher.",
+    "He is my teacher.",
+    "She is a doctor.",
+    "He is happy.",
+  ])("does not over-trigger approved Step 6 profession-article predicate pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
   });
 
   it.each([
@@ -176,6 +204,30 @@ describe("correctionEngine", () => {
     "Wait a minute.",
     "He waits tables.",
   ])("does not over-trigger approved Step 6 wait-for person object pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["I listen music.", "I listen to music."],
+    ["She listens teacher.", "She listens to teacher."],
+    ["They listened song.", "They listened to song."],
+  ])("corrects approved Step 6 listen-to object pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-step6-listen-to-object"],
+    });
+  });
+
+  it.each([
+    "I listen to music.",
+    "Listen carefully.",
+    "Listen!",
+    "She hears music.",
+  ])("does not over-trigger approved Step 6 listen-to object pattern: %s", (input) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "unchanged",
       appliedRuleIds: [],
@@ -358,7 +410,9 @@ describe("correctionEngine", () => {
     ["en-step5-subject-verb-agreement", "3rd-person singular"],
     ["en-step5-preposition-pattern", "missing to"],
     ["en-be-verb-omission", "be-drop"],
+    ["en-step6-profession-article", "profession article"],
     ["en-step6-wait-for-person-object", "wait-for"],
+    ["en-step6-listen-to-object", "listen-to"],
     ["en-step6-past-marker-recall", "past-marker recall"],
     ["en-step6-in-month-year", "in-month/year"],
     ["en-step6-enter-concrete-place", "enter concrete place"],
@@ -411,7 +465,6 @@ describe("correctionEngine", () => {
     ["She is interested with English", "She is interested in English."],
     ["He is good in English", "He is good at English."],
     ["I go school every day", "I go to school every day."],
-    ["I listen music every day", "I listen to music every day."],
     ["I go school", "I go to school."],
     ["She goes school", "She goes to school."],
   ])("corrects whitelisted Step 5 preposition pattern: %s", (input, expected) => {

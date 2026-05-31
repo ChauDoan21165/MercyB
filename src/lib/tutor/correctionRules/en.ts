@@ -62,6 +62,19 @@ const COUNTABLE_PLURAL_NOUNS: Record<string, string> = {
   word: "words",
 };
 
+const PROFESSION_ARTICLES: Record<string, "a" | "an"> = {
+  artist: "an",
+  doctor: "a",
+  driver: "a",
+  engineer: "an",
+  farmer: "a",
+  lawyer: "a",
+  nurse: "a",
+  student: "a",
+  teacher: "a",
+  writer: "a",
+};
+
 function isProperNounArticleMatch(noun: string): boolean {
   return /^[A-Z]/.test(noun);
 }
@@ -225,6 +238,20 @@ function hasMissingCommonNounArticle(input: string): boolean {
   return matchesCommonNoun(objectPattern) || matchesCommonNoun(bePattern);
 }
 
+function hasStep6ProfessionArticle(input: string): boolean {
+  const professionPattern = Object.keys(PROFESSION_ARTICLES).join("|");
+  return new RegExp(`\\b(?:I\\s+am|He\\s+is|She\\s+is)\\s+(?:${professionPattern})\\b`, "i").test(input);
+}
+
+function repairStep6ProfessionArticle(input: string): string {
+  const professionPattern = Object.keys(PROFESSION_ARTICLES).join("|");
+  const pattern = new RegExp(`\\b(I\\s+am|He\\s+is|She\\s+is)\\s+(${professionPattern})\\b`, "gi");
+  return input.replace(pattern, (_match, prefix: string, profession: string) => {
+    const article = PROFESSION_ARTICLES[profession.toLowerCase()] ?? "a";
+    return `${prefix} ${article} ${profession}`;
+  });
+}
+
 function pluralizeAfterQuantity(input: string): string {
   const nounPattern = Object.keys(COUNTABLE_PLURAL_NOUNS).join("|");
   const pattern = new RegExp(`\\b(two|three|many|some|several)\\s+(${nounPattern})\\b`, "gi");
@@ -245,16 +272,21 @@ function repairStep5PrepositionPatterns(input: string): string {
     .replace(/\b(depend|depends|depended|depending)\s+of\b/gi, "$1 on")
     .replace(/\b(interested)\s+with\b/gi, "$1 in")
     .replace(/\b(good)\s+in\s+(English|math|science)\b/gi, "$1 at $2")
-    .replace(/\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/gi, "$1 to school")
-    .replace(/\b(listen|listens|listened|listening)\s+(music|the music|songs|a song|the song)\b/gi, "$1 to $2");
+    .replace(/\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/gi, "$1 to school");
 }
 
 const PERSON_OBJECT_PRONOUN_PATTERN = "(?:me|you|him|her|us|them)";
+const STEP6_LISTEN_OBJECT_PATTERN = "(?:me|you|him|her|us|them|music|song|teacher|radio|podcast|lesson|story)";
 const CLOCK_TIME_PATTERN = "(?:\\d{1,2}\\s+o(?:'|\\u2019)?clock|\\d{1,2}\\s*(?:AM|PM|am|pm)|\\d{1,2}:\\d{2})";
 
 function repairStep6WaitFor(input: string): string {
   const pattern = new RegExp(`\\b(wait|waits|waited|waiting)\\s+(${PERSON_OBJECT_PRONOUN_PATTERN})\\b`, "gi");
   return input.replace(pattern, "$1 for $2");
+}
+
+function repairStep6ListenTo(input: string): string {
+  const pattern = new RegExp(`\\b(listen|listens|listened|listening)\\s+(${STEP6_LISTEN_OBJECT_PATTERN})\\b`, "gi");
+  return input.replace(pattern, "$1 to $2");
 }
 
 function repairStep6DiscussAbout(input: string): string {
@@ -443,6 +475,12 @@ export const englishCorrectionRules: CorrectionRule[] = [
     apply: (input) => replaceVerbAfterSubject(input, PAST_VERBS),
   },
   {
+    id: "en-step6-profession-article",
+    detects: hasStep6ProfessionArticle,
+    apply: repairStep6ProfessionArticle,
+    fpRiskNote: "Medium risk. Profession nouns overlap with identity, role, and discourse-specific article choice. V1 only inserts a/an for singular pronoun subject plus be plus bare whitelisted profession noun. It excludes the, all other determiners, plural subjects, adjective predicates, and any surface already covered by the shipped article rule.",
+  },
+  {
     id: "en-l4-missing-singular-article",
     detects: hasMissingCommonNounArticle,
     apply: addArticleAfterVerb,
@@ -492,8 +530,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
       /\b(depend|depends|depended|depending)\s+of\b/i.test(input) ||
       /\binterested\s+with\b/i.test(input) ||
       /\bgood\s+in\s+(English|math|science)\b/i.test(input) ||
-      /\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/i.test(input) ||
-      /\b(listen|listens|listened|listening)\s+(music|the music|songs|a song|the song)\b/i.test(input),
+      /\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/i.test(input),
     apply: repairStep5PrepositionPatterns,
     fpRiskNote: "Missing-to repair is phrase-whitelisted and does not rewrite home/there/downtown/abroad/upstairs or school bus.",
   },
@@ -502,6 +539,13 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: (input) => new RegExp(`\\b(wait|waits|waited|waiting)\\s+${PERSON_OBJECT_PRONOUN_PATTERN}\\b`, "i").test(input),
     apply: repairStep6WaitFor,
     fpRiskNote: "Medium risk. Wait can be intransitive or part of idioms; this rule only inserts for before person/pronoun objects and abstains elsewhere.",
+  },
+  {
+    id: "en-step6-listen-to-object",
+    detects: (input) =>
+      new RegExp(`\\b(listen|listens|listened|listening)\\s+${STEP6_LISTEN_OBJECT_PATTERN}\\b`, "i").test(input),
+    apply: repairStep6ListenTo,
+    fpRiskNote: "Low-medium risk if limited to to insertion only. Article correction is deliberately excluded. The rule blocks no-object and adverb surfaces such as listen carefully.",
   },
   {
     id: "en-step6-discuss-about",
