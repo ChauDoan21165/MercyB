@@ -1,0 +1,107 @@
+{
+  "rule": "timeExpressionPlacement",
+  "ruleId": "en-time-expression-placement",
+  "language": "en",
+  "description": "Time-expression placement correction (audit commit ad3641395), rule en-time-expression-placement. Beginner learners front a time expression between subject and verb ('I yesterday went to school'); the rule moves it to the end ('I went to school yesterday'). v1 is a closed-whitelist rule: pronoun subject + whitelisted time expression (yesterday/today/tonight/tomorrow/this morning|afternoon|evening/last night|week|month|year|summer/on <weekday>/last <weekday>/in 2024/an hour ago/two hours ago/three days ago) + an audited verb frame (went to school | watched TV | visited grandma | moved to Canada | finished dinner | bought a hat). expectedStatus / expectedCorrection encode the VERIFIED output of correctWithTutorRules('en') on current main (captured from the live engine): whitespace normalized, only the first character capitalized, rule loop, then terminal punctuation.",
+  "fp_risk_note": "Medium FP risk. Misplaced-time correction overlaps with acceptable fronted time expressions, noun postmodifiers, frequency adverbs, subordinate clauses, and stylistic emphasis. The negative cases stress the v1 guards: (1) already-correct order where the time follows the verb — 'I went to school yesterday' (no rewrite, must not loop); (2) valid sentence-initial fronted time — 'Yesterday I went to school' (subject is not a pronoun in slot 1, so it must not fire); (3) non-audited verb frame — 'I yesterday ate breakfast' (correct shape but the verb phrase is outside the closed whitelist, so the rule abstains — a recall gap, not a defect); (4) noun subject — 'John yesterday went to school' (pronoun-only); (5) fronted frequency adverb mistaken for a time marker — 'I usually watched TV' ('usually' is not in the time whitelist); (6) extra trailing words that break the audited-frame anchor — 'I yesterday went to school again'. A regression that widens the time whitelist, the verb-frame whitelist, or relaxes the pronoun/clause guards without re-checking these will start reordering valid or out-of-scope sentences.",
+  "positive": [
+    {
+      "id": "tep-pos-001",
+      "input": "I yesterday went to school",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I went to school yesterday.",
+      "expectedRuleFired": "timeExpressionPlacement",
+      "notes": "'yesterday' fronted between subject and verb; moved to the end. Frame 'went to school'."
+    },
+    {
+      "id": "tep-pos-002",
+      "input": "She last night watched TV",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She watched TV last night.",
+      "expectedRuleFired": "timeExpressionPlacement",
+      "notes": "Multi-word time expression 'last night'; third-person subject. Frame 'watched TV'."
+    },
+    {
+      "id": "tep-pos-003",
+      "input": "He yesterday bought a hat",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He bought a hat yesterday.",
+      "expectedRuleFired": "timeExpressionPlacement",
+      "notes": "Frame 'bought a hat' (the original audited surface), now generalized to the 'He' subject."
+    },
+    {
+      "id": "tep-pos-004",
+      "input": "They last week moved to Canada",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They moved to Canada last week.",
+      "expectedRuleFired": "timeExpressionPlacement",
+      "notes": "'last week' marker; plural subject. Frame 'moved to Canada'."
+    },
+    {
+      "id": "tep-pos-005",
+      "input": "We last night finished dinner",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "We finished dinner last night.",
+      "expectedRuleFired": "timeExpressionPlacement",
+      "notes": "Frame 'finished dinner'; plural subject 'We'."
+    },
+    {
+      "id": "tep-pos-006",
+      "input": "I on Monday visited grandma",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I visited grandma on Monday.",
+      "expectedRuleFired": "timeExpressionPlacement",
+      "notes": "'on Monday' weekday marker; frame 'visited grandma'."
+    }
+  ],
+  "negative": [
+    {
+      "id": "tep-neg-001",
+      "input": "I went to school yesterday",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I went to school yesterday.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (already correct): the time already follows the verb, so the subject+time+verb pattern does not match. Must not re-reorder / loop."
+    },
+    {
+      "id": "tep-neg-002",
+      "input": "Yesterday I went to school",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Yesterday I went to school.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (valid fronted time): grammatical sentence-initial time adverbial. Slot 1 is not a pronoun, so the rule must not fire."
+    },
+    {
+      "id": "tep-neg-003",
+      "input": "I yesterday ate breakfast",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I yesterday ate breakfast.",
+      "expectedRuleFired": null,
+      "notes": "Correct misplaced-time shape but 'ate breakfast' is outside the audited verb-frame whitelist, so v1 abstains. Recall gap, not a defect — no false positive."
+    },
+    {
+      "id": "tep-neg-004",
+      "input": "John yesterday went to school",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "John yesterday went to school.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (noun subject): the rule is pronoun-subject only; a proper-noun subject must not fire."
+    },
+    {
+      "id": "tep-neg-005",
+      "input": "I usually watched TV",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I usually watched TV.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (frequency adverb): 'usually' is a fronted frequency adverb, not a time marker in the whitelist, so the rule must not fire."
+    },
+    {
+      "id": "tep-neg-006",
+      "input": "I yesterday went to school again",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I yesterday went to school again.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (anchored verb frame): trailing 'again' makes the verb phrase 'went to school again', which is not the exact audited frame, so the rule abstains."
+    }
+  ]
+}
