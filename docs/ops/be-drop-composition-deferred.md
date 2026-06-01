@@ -1,5 +1,7 @@
 # be-drop composition — deferred (WS2 hold)
 
+> For golden-net schema, runner, and authoring rules, see the canonical reference: [`golden-net-harness.md`](./golden-net-harness.md). This doc is a topic-specific deferral note only.
+
 **Status:** HELD. B3 will not lock be-drop composition golden fixtures until
 Lane A resolves the two engine gaps below.
 
