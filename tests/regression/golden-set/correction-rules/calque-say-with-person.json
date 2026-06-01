@@ -1,0 +1,235 @@
+{
+  "rule": "calqueSayWithPerson",
+  "ruleId": "en-calque-say-with-person",
+  "language": "en",
+  "description": "Rewrites only immediate say/says/said/saying with object-pronoun complements from with to to, with a tight tail allowlist.",
+  "fp_risk_note": "High risk. With is valid in parentheticals, absolute constructions, questions, manner phrases, and non-calque structures. Rebuilt v1 only rewrites say/says/said/saying with immediate with plus object pronoun, blocks fronted what/which questions and intervening objects, and allows only sentence end, punctuation boundary, or a small enumerated time/place tail.",
+  "positive": [
+    {
+      "id": "calque-say-with-person-pos-001",
+      "input": "I want to say with you.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I want to say to you.",
+      "expectedRuleFired": "calqueSayWithPerson",
+      "notes": "Immediate say with object-pronoun complement at sentence end."
+    },
+    {
+      "id": "calque-say-with-person-pos-002",
+      "input": "She said with me yesterday.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She said to me yesterday.",
+      "expectedRuleFired": "calqueSayWithPerson",
+      "notes": "Allows enumerated safe time tail: yesterday."
+    },
+    {
+      "id": "calque-say-with-person-pos-003",
+      "input": "He says with her every day.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He says to her every day.",
+      "expectedRuleFired": "calqueSayWithPerson",
+      "notes": "Allows enumerated safe frequency tail: every day."
+    },
+    {
+      "id": "calque-say-with-person-pos-004",
+      "input": "They are saying with us now.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They are saying to us now.",
+      "expectedRuleFired": "calqueSayWithPerson",
+      "notes": "Allows progressive saying with immediate object pronoun and safe now tail."
+    },
+    {
+      "id": "calque-say-with-person-pos-005",
+      "input": "Please say with them after class.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Please say to them after class.",
+      "expectedRuleFired": "calqueSayWithPerson",
+      "notes": "Allows enumerated safe after-class tail."
+    },
+    {
+      "id": "calque-say-with-person-pos-006",
+      "input": "I said with him at 5 PM.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I said to him at 5 PM.",
+      "expectedRuleFired": "calqueSayWithPerson",
+      "notes": "Allows at plus clock-time tail."
+    }
+  ],
+  "negative": [
+    {
+      "id": "calque-say-with-person-neg-001",
+      "input": "Say it with me.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Say it with me.",
+      "expectedRuleFired": null,
+      "notes": "Intervening object makes with a non-immediate complement."
+    },
+    {
+      "id": "calque-say-with-person-neg-002",
+      "input": "She said the truth with him.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said the truth with him.",
+      "expectedRuleFired": null,
+      "notes": "Intervening object blocks the rule."
+    },
+    {
+      "id": "calque-say-with-person-neg-003",
+      "input": "I would say, with him, that it is wrong.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I would say, with him, that it is wrong.",
+      "expectedRuleFired": null,
+      "notes": "Comma immediately before with marks parenthetical use."
+    },
+    {
+      "id": "calque-say-with-person-neg-004",
+      "input": "What are you saying with them?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "What are you saying with them?",
+      "expectedRuleFired": null,
+      "notes": "Fronted what-question is blocked."
+    },
+    {
+      "id": "calque-say-with-person-neg-005",
+      "input": "Which sentence are you saying with them?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Which sentence are you saying with them?",
+      "expectedRuleFired": null,
+      "notes": "Fronted which-question is blocked."
+    },
+    {
+      "id": "calque-say-with-person-neg-006",
+      "input": "She said with him beside me.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said with him beside me.",
+      "expectedRuleFired": null,
+      "notes": "Non-allowlisted prepositional/adverbial tail blocks the rule."
+    },
+    {
+      "id": "calque-say-with-person-neg-007",
+      "input": "She said with him present.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said with him present.",
+      "expectedRuleFired": null,
+      "notes": "Adjective tail after pronoun blocks the rule."
+    },
+    {
+      "id": "calque-say-with-person-neg-008",
+      "input": "She said with him gone.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said with him gone.",
+      "expectedRuleFired": null,
+      "notes": "Participle/adjective tail after pronoun blocks the rule."
+    },
+    {
+      "id": "calque-say-with-person-neg-009",
+      "input": "They said with us there.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "They said with us there.",
+      "expectedRuleFired": null,
+      "notes": "Unlisted location tail blocks the rule."
+    },
+    {
+      "id": "calque-say-with-person-neg-010",
+      "input": "She said with him sitting near me.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said with him sitting near me.",
+      "expectedRuleFired": null,
+      "notes": "Participle tail blocks the rule."
+    },
+    {
+      "id": "calque-say-with-person-neg-011",
+      "input": "She said with him in the room.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said with him in the room.",
+      "expectedRuleFired": null,
+      "notes": "Prepositional tail blocks the rule."
+    },
+    {
+      "id": "calque-say-with-person-neg-012",
+      "input": "She said with him by my side.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said with him by my side.",
+      "expectedRuleFired": null,
+      "notes": "Prepositional tail blocks the rule."
+    },
+    {
+      "id": "calque-say-with-person-neg-013",
+      "input": "She said with me that he was late.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said with me that he was late.",
+      "expectedRuleFired": null,
+      "notes": "Broad that-clause tail is not allowlisted."
+    },
+    {
+      "id": "calque-say-with-person-neg-014",
+      "input": "She said with him who was beside me.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said with him who was beside me.",
+      "expectedRuleFired": null,
+      "notes": "Broad who-clause tail is not allowlisted."
+    },
+    {
+      "id": "calque-say-with-person-neg-015",
+      "input": "She said with him which was strange.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said with him which was strange.",
+      "expectedRuleFired": null,
+      "notes": "Broad which-clause tail is not allowlisted."
+    },
+    {
+      "id": "calque-say-with-person-neg-016",
+      "input": "She said with him when I arrived.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said with him when I arrived.",
+      "expectedRuleFired": null,
+      "notes": "Broad when-clause tail is not allowlisted."
+    },
+    {
+      "id": "calque-say-with-person-neg-017",
+      "input": "She said with him where we met.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said with him where we met.",
+      "expectedRuleFired": null,
+      "notes": "Broad where-clause tail is not allowlisted."
+    },
+    {
+      "id": "calque-say-with-person-neg-018",
+      "input": "She said with him because he asked.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said with him because he asked.",
+      "expectedRuleFired": null,
+      "notes": "Broad because-clause tail is not allowlisted."
+    },
+    {
+      "id": "calque-say-with-person-neg-019",
+      "input": "She said with him so I listened.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She said with him so I listened.",
+      "expectedRuleFired": null,
+      "notes": "Broad so-clause tail is not allowlisted."
+    },
+    {
+      "id": "calque-say-with-person-neg-020",
+      "input": "Say with me that song.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Say with me that song.",
+      "expectedRuleFired": null,
+      "notes": "Object after pronoun is outside the tail allowlist."
+    },
+    {
+      "id": "calque-say-with-person-neg-021",
+      "input": "She talked with him.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She talked with him.",
+      "expectedRuleFired": null,
+      "notes": "Only say/says/said/saying are in scope."
+    },
+    {
+      "id": "calque-say-with-person-neg-022",
+      "input": "I went with you.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I went with you.",
+      "expectedRuleFired": null,
+      "notes": "Only say/says/said/saying are in scope."
+    }
+  ]
+}

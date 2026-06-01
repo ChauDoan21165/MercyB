@@ -340,6 +340,8 @@ const CALQUE_MEDICINE_OBJECT_PATTERN =
   "(?:medicine|medication|pill|pills|tablet|tablets|antibiotics|painkillers)";
 const CALQUE_MEDICINE_QUANTITY_PATTERN =
   "(?:(?:a|an|one|two|three|four|five|\\d+)\\s+)?";
+const CALQUE_SAY_WITH_PERSON_TAIL_PATTERN =
+  "(?:(?:yesterday|today|tonight|now|then|later|soon|again|every\\s+day|after\\s+(?:class|school|work|lunch|dinner|breakfast)|before\\s+(?:class|school|work|lunch|dinner|breakfast)|at\\s+\\d{1,2}(?::\\d{2})?\\s*(?:AM|PM|am|pm)?)(?:\\s*[.?!])?|[.?!,;:]?)";
 
 function repairStep6WaitFor(input: string): string {
   const pattern = new RegExp(`\\b(wait|waits|waited|waiting)\\s+(${PERSON_OBJECT_PRONOUN_PATTERN})\\b`, "gi");
@@ -449,6 +451,26 @@ function repairCalqueTakeMedicine(input: string): string {
   return input.replace(pattern, (_match, verb: string, object: string) => {
     return `${takeVerbForMedicineCalque(verb)} ${object}`;
   });
+}
+
+function getCalqueSayWithPersonMatch(input: string): RegExpMatchArray | null {
+  const trimmed = input.trim();
+  if (/^(?:what|which)\b/i.test(trimmed)) return null;
+
+  const pattern = new RegExp(
+    `\\b(?:say|says|said|saying)\\s+with\\s+${PERSON_OBJECT_PRONOUN_PATTERN}\\b(?:\\s+${CALQUE_SAY_WITH_PERSON_TAIL_PATTERN}|\\s*[.?!,;:]?|)$`,
+    "i",
+  );
+  return trimmed.match(pattern);
+}
+
+function hasCalqueSayWithPerson(input: string): boolean {
+  return getCalqueSayWithPersonMatch(input) !== null;
+}
+
+function repairCalqueSayWithPerson(input: string): string {
+  if (!hasCalqueSayWithPerson(input)) return input;
+  return input.replace(/\b(say|says|said|saying)\s+with\s+(me|you|him|her|us|them)\b/gi, "$1 to $2");
 }
 
 function repairStep6DiscussAbout(input: string): string {
@@ -801,6 +823,12 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: hasCalqueTakeMedicine,
     apply: repairCalqueTakeMedicine,
     fpRiskNote: "Medium risk. Drink and eat are correct with food/liquids, and medicine sentences can include food/water plus medicine. V1 only rewrites eat/drink directly governing a medicine-object whitelist.",
+  },
+  {
+    id: "en-calque-say-with-person",
+    detects: hasCalqueSayWithPerson,
+    apply: repairCalqueSayWithPerson,
+    fpRiskNote: "High risk. With is valid in parentheticals, absolute constructions, questions, manner phrases, and non-calque structures. Rebuilt v1 only rewrites say/says/said/saying with immediate with plus object pronoun, blocks fronted what/which questions and intervening objects, and allows only sentence end, punctuation boundary, or a small enumerated time/place tail.",
   },
   {
     id: "en-step6-discuss-about",
