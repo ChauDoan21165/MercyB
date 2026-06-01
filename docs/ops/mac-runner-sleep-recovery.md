@@ -2,7 +2,36 @@
 
 Last verified: 2026-05-28 on `admin`'s Mac runner.
 
+> ## ⚠️ Update — 2026-06-01: runners now serve the SHELL executor, not Docker
+>
+> The setup below describes a **Docker executor** on the Mac host (Docker Desktop). **That is no longer the topology.** The Mac runners now serve the **`shell` (bash) executor** — confirmed in CI traces: `Preparing the "shell" executor` / `Using Shell (bash) executor...`. Treat the Docker-executor analysis in the rest of this doc as **historical** (accurate for the original sleep incident), not current.
+>
+> **Current failure mode (e.g. MR 327, pipeline 2568273906):** the pipeline is **not** failing on a Docker daemon at all. The `.gitlab-ci.yml` jobs were authored for a Debian **Docker container** — each declares `image: node:22-bullseye-slim` and runs `apt-get install … git/curl/unzip` + a Deno installer. On a macOS **shell** executor:
+> - `image:` is silently **ignored** (shell executor doesn't use container images), and
+> - `apt-get` does not exist → jobs died with **`bash: line N: apt-get: command not found`** (the build + a test shard failed this way; the "Cannot connect to the Docker daemon" wording is a cousin of the same docker-era-config-on-non-docker-host mismatch).
+>
+> **No stray docker-routing directive.** `.gitlab-ci.yml` has no `services:`, no `dind`/`privileged`, no `DOCKER_HOST`, and no docker-specific tag — all jobs share the one tag set `[local, mac, mercyb]`. The Docker coupling was purely the implicit `image:` + `apt-get`/Deno install steps.
+>
+> **Config fix (merged):** `fix/ci-macos-shell-runner-setup` made the OS-package and Deno steps portable — each is now an OS-aware `case "$(uname -s)" in Darwin) command -v git … ;; Linux) apt-get install … ;;` block, and Deno is `if command -v deno; then use existing; else install per-OS; fi`. So the config is now correct on **both** a Debian docker host and a macOS shell host.
+>
+> **Runner topology (infra, not repo) — authoritative fleet (GitLab → Settings → CI/CD → Runners, 2026-06-01):** four project runners are assigned, **all macOS `shell` executor**. Jobs use the `.local_runner` anchor, which requires **all three** tags `local, mac, mercyb` (confirmed in `.gitlab-ci.yml` line 111), so a runner is eligible only if it carries the full set:
+>
+> | ID | Name | State | Tags | Eligible for `mercyb` jobs? |
+> |----|------|-------|------|------------------------------|
+> | `53441166` | MercyB Mac shell runner | online, active | `local, mac, mercyb` | ✅ yes |
+> | `53419565` | mac-runner-2 | online, active | `local, mac, mercyb` | ✅ yes |
+> | `53419663` | mac-runner-3 | online, **idle, 0 jobs** | `local, mac, ` **`mercy`** | ❌ **no — tag typo** (`mercy`, missing trailing `b`, never matches `mercyb`-tagged jobs) |
+> | `53401441` | (unnamed, former primary) | **offline**, idle, 1000+ historical jobs | `mac, mercyb, local` | ⚠️ eligible but offline (stale) |
+>
+> Three of the four report the same public IP `24.129.225.88` (same site / behind one NAT). The two that actually serve `mercyb` jobs today are `53441166` and `53419565`.
+>
+> Green pipelines still require, out of repo scope: the shell hosts to have **node 22 + git + deno** present on PATH, the `mac-runner-3` (`53419663`) **tag typo corrected** (`mercy` → `mercyb`) so it can participate, and the offline `53401441` **either brought online or de-assigned**. Those are infra changes (GitLab runner settings / `~/.gitlab-runner/config.toml` / host provisioning), not a `.gitlab-ci.yml` edit.
+>
+> **Corrected root cause (supersedes the earlier "two same-tagged runners" wording):** jobs requesting the `mercyb` tag are eligible on **multiple active shell runners** and distribute across them **non-deterministically**. Before the OS-aware install fix, every eligible runner ran the docker-era steps (`apt-get`, Deno into `/usr/local/bin`) that fail on a macOS shell host — producing `apt-get: command not found` and the `deno.zip: Permission denied` intermittently, depending on which runner happened to pick up the job. The merged config (`case "$(uname -s)"`, conditional Deno install) resolves this on **all** runners. `mac-runner-3` (`53419663`) never participated because its `mercy` tag typo excludes it from `mercyb` jobs, and the offline `53401441` is stale.
+
 ## Summary
+
+> **Historical (pre-2026-06-01, Docker-executor era):**
 
 The runner failures are caused by the Mac host sleeping while it is acting as a GitLab Docker executor. That sleep boundary makes Docker Desktop's VM and socket unavailable, so GitLab Runner reaches `prepare_executor`, cannot prepare the Docker executor, and reports `runner_system_failure`.
 
