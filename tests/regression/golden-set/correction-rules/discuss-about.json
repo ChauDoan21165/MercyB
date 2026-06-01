@@ -48,6 +48,34 @@
       "expectedCorrection": "This is about homework.",
       "expectedRuleFired": null,
       "notes": "Non-discuss about phrase stays unchanged."
+    },
+    {
+      "id": "discuss-about-neg-004",
+      "input": "What did you discuss about?",
+      "expectedCorrection": "What did you discuss about?",
+      "expectedRuleFired": null,
+      "notes": "FP guard (wh-object question): 'about' is stranded in a question, not the discuss-about calque. Stays unchanged."
+    },
+    {
+      "id": "discuss-about-neg-005",
+      "input": "What are you discussing about?",
+      "expectedCorrection": "What are you discussing about?",
+      "expectedRuleFired": null,
+      "notes": "FP guard (wh-object question, progressive): stranded 'about' in a question. Stays unchanged."
+    },
+    {
+      "id": "discuss-about-neg-006",
+      "input": "We discuss our concerns about the test.",
+      "expectedCorrection": "We discuss our concerns about the test.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (intervening object): 'about' modifies the object noun 'concerns', it does not immediately follow 'discuss'. Stays unchanged."
+    },
+    {
+      "id": "discuss-about-neg-007",
+      "input": "She talked about it during the discussion.",
+      "expectedCorrection": "She talked about it during the discussion.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (different verb): 'talked about' is correct; 'discussion' as a noun must not trigger the rule. Stays unchanged."
     }
   ]
 }
