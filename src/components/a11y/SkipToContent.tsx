@@ -37,10 +37,19 @@ export default function SkipToContent() {
   const ref = useRef<HTMLAnchorElement>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    const target = document.getElementById(A11Y_CONFIG.skipToContentId);
+    // Prefer the per-page <main id="main-content"> landmark when a page
+    // declares one (Home, Pricing, placement, …). On the broad route set
+    // that does NOT (most content pages under AppHeroShell), fall back to
+    // the shell's content region, marked `data-skip-fallback`, so the
+    // skip link always lands on a real focusable target past the header
+    // band instead of silently no-op'ing. The fallback uses a data-attr,
+    // not a second #main-content, to avoid duplicate-id / double-<main>.
+    const target =
+      document.getElementById(A11Y_CONFIG.skipToContentId) ??
+      document.querySelector<HTMLElement>("[data-skip-fallback]");
     if (!target) {
-      // No target on this route — let the default hash-jump handle
-      // it. The browser will at least scroll to top.
+      // Nothing to target on this route — let the default hash-jump
+      // handle it. The browser will at least scroll to top.
       return;
     }
     event.preventDefault();
