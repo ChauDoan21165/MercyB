@@ -55,8 +55,13 @@ distinction.
   Chinese A1/A2/B1 lessons carry **zero** Vietnamese glosses (all vi is B2+), so
   an A1 vi→zh seed requires **generation** (the gap). The B2 seed is the real
   adaptation artifact; the empty A1 seed is emitted to make the gap visible.
-- **vi→ja** — pending. No per-sentence vi/romaji in source → fully generated
-  (vi gloss via injected Translator + romaji via wanakana), strictest gate.
+- **vi→ja** — 22 authored A1 items → 20-card seed (generated: vi gloss authored,
+  romaji via wanakana, certified through the gate incl. round-trip). CAVEATS for
+  the human-review pass: (1) wanakana leaves kanji untransliterated (romaji is a
+  HINT on kanji-bearing cards, not a finished reading); (2) wanakana romanizes
+  the topic particle は literally as "ha" (e.g. こんにちは→"konnichiha", should be
+  "konnichiwa"). The round-trip passes trivially because the authored fromVi map
+  returns the source Japanese — the real correctness gate is human review.
 - **generate/** — build-time generation seams (Translator interface, deriveRomaji,
   round-trip checker, generateCandidates). Production MT wiring deferred (no
   offline endpoint); seeds use authored/injected translators + the human review.

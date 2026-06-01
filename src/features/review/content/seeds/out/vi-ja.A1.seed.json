@@ -1,0 +1,229 @@
+{
+  "flow": "vi-ja",
+  "level": "A1",
+  "status": "for-review",
+  "certifiedTotal": 22,
+  "certifiedAtLevel": 22,
+  "cards": [
+    {
+      "id": "vi-ja:vocab:xin-chao",
+      "flow": "vi-ja",
+      "kind": "vocab",
+      "front": "xin chào",
+      "back": "こんにちは",
+      "pronunciation": "konnichiha",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:vocab:chao-buoi-sang",
+      "flow": "vi-ja",
+      "kind": "vocab",
+      "front": "chào buổi sáng",
+      "back": "おはようございます",
+      "pronunciation": "ohayougozaimasu",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:vocab:chao-buoi-toi",
+      "flow": "vi-ja",
+      "kind": "vocab",
+      "front": "chào buổi tối",
+      "back": "こんばんは",
+      "pronunciation": "konbanha",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:vocab:tam-biet",
+      "flow": "vi-ja",
+      "kind": "vocab",
+      "front": "tạm biệt",
+      "back": "さようなら",
+      "pronunciation": "sayounara",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:vocab:cam-on",
+      "flow": "vi-ja",
+      "kind": "vocab",
+      "front": "cảm ơn",
+      "back": "ありがとうございます",
+      "pronunciation": "arigatougozaimasu",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:vocab:toi",
+      "flow": "vi-ja",
+      "kind": "vocab",
+      "front": "tôi",
+      "back": "わたし",
+      "pronunciation": "watashi",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:sentence:toi-la-tanaka",
+      "flow": "vi-ja",
+      "kind": "sentence",
+      "front": "tôi là Tanaka.",
+      "back": "わたしは田中です。",
+      "pronunciation": "watashiha田中desu.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:sentence:toi-en-tu-tokyo",
+      "flow": "vi-ja",
+      "kind": "sentence",
+      "front": "tôi đến từ Tokyo.",
+      "back": "出身は東京です。",
+      "pronunciation": "出身ha東京desu.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:vocab:mot",
+      "flow": "vi-ja",
+      "kind": "vocab",
+      "front": "một",
+      "back": "いち",
+      "pronunciation": "ichi",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:vocab:hai",
+      "flow": "vi-ja",
+      "kind": "vocab",
+      "front": "hai",
+      "back": "に",
+      "pronunciation": "ni",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:vocab:ba",
+      "flow": "vi-ja",
+      "kind": "vocab",
+      "front": "ba",
+      "back": "さん",
+      "pronunciation": "san",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:vocab:nam",
+      "flow": "vi-ja",
+      "kind": "vocab",
+      "front": "năm",
+      "back": "ご",
+      "pronunciation": "go",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:vocab:muoi",
+      "flow": "vi-ja",
+      "kind": "vocab",
+      "front": "mười",
+      "back": "じゅう",
+      "pronunciation": "juu",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:sentence:xin-chao-ban-khoe-khong",
+      "flow": "vi-ja",
+      "kind": "sentence",
+      "front": "xin chào, bạn khỏe không?",
+      "back": "こんにちは、元気ですか？",
+      "pronunciation": "konnichiha,元気desuka?",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:sentence:hom-nay-la-thu-sau",
+      "flow": "vi-ja",
+      "kind": "sentence",
+      "front": "hôm nay là thứ sáu.",
+      "back": "今日は金曜日です。",
+      "pronunciation": "今日ha金曜日desu.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:sentence:sinh-nhat-cua-toi-vao-thang-nam",
+      "flow": "vi-ja",
+      "kind": "sentence",
+      "front": "sinh nhật của tôi vào tháng năm.",
+      "back": "誕生日は五月です。",
+      "pronunciation": "誕生日ha五月desu.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:sentence:bay-gio-la-ba-gio",
+      "flow": "vi-ja",
+      "kind": "sentence",
+      "front": "bây giờ là ba giờ.",
+      "back": "今、三時です。",
+      "pronunciation": "今,三時desu.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:vocab:bay-gio",
+      "flow": "vi-ja",
+      "kind": "vocab",
+      "front": "bây giờ",
+      "back": "今 (いま)",
+      "pronunciation": "今 (ima)",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:vocab:ben-phai",
+      "flow": "vi-ja",
+      "kind": "vocab",
+      "front": "bên phải",
+      "back": "右 (みぎ)",
+      "pronunciation": "右 (migi)",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    },
+    {
+      "id": "vi-ja:vocab:ben-trai",
+      "flow": "vi-ja",
+      "kind": "vocab",
+      "front": "bên trái",
+      "back": "左 (ひだり)",
+      "pronunciation": "左 (hidari)",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "japanese/lessons+authored-vi"
+    }
+  ]
+}
