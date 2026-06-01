@@ -189,49 +189,6 @@ function repairMorningRoutineSubjectCarryover(input: string): string {
   );
 }
 
-function isHatBikingSummerRunOn(input: string): boolean {
-  const normalized = input.replace(/\s+/g, " ").trim();
-  if (/\b(?:do not|don't|not|no)\s+plan\s+to\s+bike\b/i.test(normalized)) {
-    return false;
-  }
-
-  return (
-    /\b(?:i|they)\s+(?:bought|buy)\b/i.test(normalized) &&
-    /\byesterday\b/i.test(normalized) &&
-    /\b(?:hat|bicycle|bike)\b/i.test(normalized) &&
-    (
-      /\b(?:summer|canada|sunny|hot)\b/i.test(normalized) ||
-      /\b(?:will|plan to|win|been)\s+(?:a\s+)?bik(?:e|ing)\b/i.test(normalized) ||
-      /\bsomeone'?s coming\b/i.test(normalized) ||
-      /\bsummer sucks coming\b/i.test(normalized)
-    )
-  );
-}
-
-function repairHatBikingSummerRunOn(input: string): string {
-  const normalized = input.replace(/\s+/g, " ").trim();
-  const mentionsBicycle = /\b(?:bicycle|bike)\b/i.test(normalized) && /\b(?:bought|buy)\s+a?\s*(?:bicycle|bike)\b/i.test(normalized);
-  const mentionsHat = /\bhat\b/i.test(normalized);
-  const mentionsCanada = /\bcanada\b/i.test(normalized);
-  const mentionsBikePlan = /\b(?:will|plan to|win|been)\s+(?:a\s+)?bik(?:e|ing)\b/i.test(normalized) || /\bbike a lot\b/i.test(normalized);
-
-  if (mentionsBicycle && mentionsHat) {
-    return mentionsCanada
-      ? "I bought a bicycle yesterday because summer is coming, and I plan to bike a lot. I also bought a hat because it is very sunny in Canada"
-      : "I bought a bicycle yesterday because summer is coming, and I plan to bike a lot. I also bought a hat because it is very sunny";
-  }
-
-  if (mentionsHat && mentionsBikePlan) {
-    return mentionsCanada
-      ? "I bought a hat yesterday because I plan to bike a lot this summer, and it is very sunny in Canada"
-      : "I bought a hat yesterday because I plan to bike a lot this summer";
-  }
-
-  return mentionsCanada
-    ? "I bought a hat yesterday because summer is coming, and it is very sunny in Canada"
-    : "I bought a hat yesterday because summer is coming, and it is very sunny";
-}
-
 function addArticleAfterVerb(input: string): string {
   const nounPattern = Object.keys(MISSING_ARTICLE_NOUNS).join("|");
   const objectPattern = new RegExp(
@@ -687,11 +644,6 @@ function repairTimeExpressionPlacement(input: string): string {
 }
 
 export const englishCorrectionRules: CorrectionRule[] = [
-  {
-    id: "en-hat-biking-summer-runon",
-    detects: isHatBikingSummerRunOn,
-    apply: repairHatBikingSummerRunOn,
-  },
   {
     id: "en-morning-routine-subject-carryover",
     detects: (input) =>
