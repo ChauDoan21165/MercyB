@@ -54,6 +54,22 @@
       "expectedCorrection": "I go to school.",
       "expectedRuleFired": null,
       "notes": "First-person subject is correct English; the rule is He/She/It only."
+    },
+    {
+      "id": "tps-neg-004",
+      "input": "Do you go to school?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Do you go to school?",
+      "expectedRuleFired": null,
+      "notes": "FP guard (question, second person): 'you' is not He/She/It, so no conjugation; stays unchanged."
+    },
+    {
+      "id": "tps-neg-005",
+      "input": "Does he go?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Does he go?",
+      "expectedRuleFired": null,
+      "notes": "FP guard (question, no 'to school'): the routine rule needs 'go to school'; bare 'go' in a question stays unchanged."
     }
   ]
 }
