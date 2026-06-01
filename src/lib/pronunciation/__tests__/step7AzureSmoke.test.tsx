@@ -156,7 +156,7 @@ async function resolveSmokeWavBlob(): Promise<Blob> {
   return new Blob([buildSilentWavPcm16k()], { type: "audio/wav" });
 }
 
-function buildSilentWavPcm16k(seconds = 0.1): Uint8Array {
+function buildSilentWavPcm16k(seconds = 0.1): ArrayBuffer {
   const sampleRate = 16_000;
   const bitsPerSample = 16;
   const channels = 1;
@@ -186,7 +186,7 @@ function buildSilentWavPcm16k(seconds = 0.1): Uint8Array {
   writeAscii(36, "data");
   view.setUint32(40, dataSize, true);
 
-  return new Uint8Array(buffer);
+  return buffer;
 }
 
 function liveFetchWithoutJsdomSignal(
