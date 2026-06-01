@@ -86,6 +86,30 @@
       "expectedCorrection": "They enter into the garden.",
       "expectedRuleFired": null,
       "notes": "FP guard (concrete place outside the whitelist): 'garden' is not in {room, classroom, class, house, building, office, school, hospital, airport}; rule abstains."
+    },
+    {
+      "id": "enter-concrete-place-neg-q-008",
+      "input": "Did you enter the room?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did you enter the room?",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (Q/do-support, already-correct): a did-question with a whitelist place and no 'to/into' to remove; rule must not fire. Live-engine verified unchanged 2026-06-01."
+    },
+    {
+      "id": "enter-concrete-place-neg-wh-009",
+      "input": "Where did you enter?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Where did you enter?",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (wh-question, no object): the place is fronted/absent after 'enter', so there is no 'to/into + place' pattern; rule abstains. Live-engine verified unchanged 2026-06-01."
+    },
+    {
+      "id": "enter-concrete-place-neg-obj-010",
+      "input": "They enter the house quietly.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "They enter the house quietly.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (already-correct + trailing adverb): direct-object 'house' with no 'to/into'; the trailing adverb must not perturb the abstain. Live-engine verified unchanged 2026-06-01."
     }
   ]
 }

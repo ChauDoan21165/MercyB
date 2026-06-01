@@ -81,6 +81,30 @@
       "expectedCorrection": "Listen up everyone.",
       "expectedRuleFired": null,
       "notes": "Confusable: phrasal 'listen up' — particle 'up' is not a whitelisted object, so the rule abstains."
+    },
+    {
+      "id": "listen-to-object-neg-q-007",
+      "input": "Did you listen to music?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did you listen to music?",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (Q/do-support, already-correct): a did-question that already has 'to' — the rule must not double-insert. Live-engine verified unchanged 2026-06-01."
+    },
+    {
+      "id": "listen-to-object-neg-wh-008",
+      "input": "What are you listening to?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "What are you listening to?",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (wh-question, stranded preposition): the object is fronted and 'to' is sentence-final, so there is no bare object after 'listening'; rule abstains. Live-engine verified unchanged 2026-06-01."
+    },
+    {
+      "id": "listen-to-object-neg-obj-009",
+      "input": "I listen to him every morning.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I listen to him every morning.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (intervening object + frequency adverbial, already-correct): 'to' already present before the pronoun object; trailing adverbial must not retrigger insertion. Live-engine verified unchanged 2026-06-01."
     }
   ]
 }
