@@ -5,3 +5,9 @@
   #   exit 0 = ignore this deploy and skip the build
   #   exit 1 = continue with the build
   ignore = "bash scripts/netlify-ignore-build.sh"
+
+[context.deploy-preview]
+  command = "echo skipped && exit 1"
+
+[context.branch-deploy]
+  command = "echo skipped && exit 1"
