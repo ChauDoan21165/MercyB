@@ -11,7 +11,7 @@
       "kind": "vocab",
       "front": "xin chào",
       "back": "こんにちは",
-      "pronunciation": "konnichiha",
+      "pronunciation": "konnichiwa",
       "cefr": "A1",
       "provenance": "generated",
       "source": "japanese/lessons+authored-vi"
@@ -33,7 +33,7 @@
       "kind": "vocab",
       "front": "chào buổi tối",
       "back": "こんばんは",
-      "pronunciation": "konbanha",
+      "pronunciation": "konbanwa",
       "cefr": "A1",
       "provenance": "generated",
       "source": "japanese/lessons+authored-vi"
@@ -77,7 +77,7 @@
       "kind": "sentence",
       "front": "tôi là Tanaka.",
       "back": "わたしは田中です。",
-      "pronunciation": "watashiha田中desu.",
+      "pronunciation": "watashi wa tanaka desu.",
       "cefr": "A1",
       "provenance": "generated",
       "source": "japanese/lessons+authored-vi"
@@ -88,7 +88,7 @@
       "kind": "sentence",
       "front": "tôi đến từ Tokyo.",
       "back": "出身は東京です。",
-      "pronunciation": "出身ha東京desu.",
+      "pronunciation": "shusshin wa tōkyō desu.",
       "cefr": "A1",
       "provenance": "generated",
       "source": "japanese/lessons+authored-vi"
@@ -154,7 +154,7 @@
       "kind": "sentence",
       "front": "xin chào, bạn khỏe không?",
       "back": "こんにちは、元気ですか？",
-      "pronunciation": "konnichiha,元気desuka?",
+      "pronunciation": "konnichiwa, genki desu ka?",
       "cefr": "A1",
       "provenance": "generated",
       "source": "japanese/lessons+authored-vi"
@@ -165,7 +165,7 @@
       "kind": "sentence",
       "front": "hôm nay là thứ sáu.",
       "back": "今日は金曜日です。",
-      "pronunciation": "今日ha金曜日desu.",
+      "pronunciation": "kyō wa kinyōbi desu.",
       "cefr": "A1",
       "provenance": "generated",
       "source": "japanese/lessons+authored-vi"
@@ -176,7 +176,7 @@
       "kind": "sentence",
       "front": "sinh nhật của tôi vào tháng năm.",
       "back": "誕生日は五月です。",
-      "pronunciation": "誕生日ha五月desu.",
+      "pronunciation": "tanjōbi wa gogatsu desu.",
       "cefr": "A1",
       "provenance": "generated",
       "source": "japanese/lessons+authored-vi"
@@ -187,7 +187,7 @@
       "kind": "sentence",
       "front": "bây giờ là ba giờ.",
       "back": "今、三時です。",
-      "pronunciation": "今,三時desu.",
+      "pronunciation": "ima, sanji desu.",
       "cefr": "A1",
       "provenance": "generated",
       "source": "japanese/lessons+authored-vi"

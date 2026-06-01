@@ -66,12 +66,11 @@ distinction.
   an A1 vi→zh seed requires **generation** (the gap). The B2 seed is the real
   adaptation artifact; the empty A1 seed is emitted to make the gap visible.
 - **vi→ja** — 22 authored A1 items → 20-card seed (generated: vi gloss authored,
-  romaji via wanakana, certified through the gate incl. round-trip). CAVEATS for
-  the human-review pass: (1) wanakana leaves kanji untransliterated (romaji is a
-  HINT on kanji-bearing cards, not a finished reading); (2) wanakana romanizes
-  the topic particle は literally as "ha" (e.g. こんにちは→"konnichiha", should be
-  "konnichiwa"). The round-trip passes trivially because the authored fromVi map
-  returns the source Japanese — the real correctness gate is human review.
+  certified through the gate incl. round-trip). **Romaji human-reviewed + corrected**
+  (CEO pass): topic particle は→"wa" and all kanji transliterated (田中→tanaka,
+  東京→tōkyō, 今日→kyō, 金曜日→kinyōbi, etc.) via per-card `reading` overrides in
+  `ingestion/japaneseSeed.authored.ts`; the "今 (いま)" reading-in-parens vocab
+  cards are left as-is. **Wired live** (behind FEATURE_REVIEW).
 - **generate/** — build-time generation seams (Translator interface, deriveRomaji,
   round-trip checker, generateCandidates). Production MT wiring deferred (no
   offline endpoint); seeds use authored/injected translators + the human review.

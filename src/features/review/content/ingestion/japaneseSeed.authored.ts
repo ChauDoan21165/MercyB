@@ -38,6 +38,13 @@ export interface AuthoredJaItem {
   /** Source English gloss I used as the translation bridge (provenance only). */
   enBridge: string;
   kind: ReviewItemKind;
+  /**
+   * Optional human-reviewed romaji override. When present it REPLACES the
+   * wanakana-derived reading (which leaves kanji untransliterated and romanizes
+   * the topic particle は literally as "ha"). Supplied for cards a human
+   * corrected; pure-kana cards omit it and use the deterministic wanakana output.
+   */
+  reading?: string;
 }
 
 export const FLOW: ReviewFlowId = "vi-ja";
@@ -50,16 +57,17 @@ export const SOURCE = "japanese/lessons+authored-vi";
  */
 export const AUTHORED_JA_ITEMS: readonly AuthoredJaItem[] = [
   // ── Greetings (lesson 3) ──────────────────────────────────────────────────
-  { back: "こんにちは", vi: "xin chào", enBridge: "hello / good afternoon", kind: "vocab" },
+  // reading overrides: は (topic particle) → "wa", kanji transliterated. Human-reviewed.
+  { back: "こんにちは", vi: "xin chào", enBridge: "hello / good afternoon", kind: "vocab", reading: "konnichiwa" },
   { back: "おはようございます", vi: "chào buổi sáng", enBridge: "good morning", kind: "vocab" },
-  { back: "こんばんは", vi: "chào buổi tối", enBridge: "good evening", kind: "vocab" },
+  { back: "こんばんは", vi: "chào buổi tối", enBridge: "good evening", kind: "vocab", reading: "konbanwa" },
   { back: "さようなら", vi: "tạm biệt", enBridge: "goodbye", kind: "vocab" },
   { back: "ありがとうございます", vi: "cảm ơn", enBridge: "thank you", kind: "vocab" },
 
   // ── Self introduction (lesson 4) ──────────────────────────────────────────
   { back: "わたし", vi: "tôi", enBridge: "I", kind: "vocab" },
-  { back: "わたしは田中です。", vi: "tôi là Tanaka.", enBridge: "I am Tanaka.", kind: "sentence" },
-  { back: "出身は東京です。", vi: "tôi đến từ Tokyo.", enBridge: "I am from Tokyo.", kind: "sentence" },
+  { back: "わたしは田中です。", vi: "tôi là Tanaka.", enBridge: "I am Tanaka.", kind: "sentence", reading: "watashi wa tanaka desu." },
+  { back: "出身は東京です。", vi: "tôi đến từ Tokyo.", enBridge: "I am from Tokyo.", kind: "sentence", reading: "shusshin wa tōkyō desu." },
 
   // ── Numbers (lesson 5) ────────────────────────────────────────────────────
   { back: "いち", vi: "một", enBridge: "1", kind: "vocab" },
@@ -69,12 +77,12 @@ export const AUTHORED_JA_ITEMS: readonly AuthoredJaItem[] = [
   { back: "じゅう", vi: "mười", enBridge: "10", kind: "vocab" },
 
   // ── Greetings sentences (lesson 3) ────────────────────────────────────────
-  { back: "こんにちは、元気ですか？", vi: "xin chào, bạn khỏe không?", enBridge: "Hello, how are you?", kind: "sentence" },
+  { back: "こんにちは、元気ですか？", vi: "xin chào, bạn khỏe không?", enBridge: "Hello, how are you?", kind: "sentence", reading: "konnichiwa, genki desu ka?" },
 
   // ── Days / months / time (lessons 7, 8, 9) ────────────────────────────────
-  { back: "今日は金曜日です。", vi: "hôm nay là thứ sáu.", enBridge: "Today is Friday.", kind: "sentence" },
-  { back: "誕生日は五月です。", vi: "sinh nhật của tôi vào tháng năm.", enBridge: "My birthday is in May.", kind: "sentence" },
-  { back: "今、三時です。", vi: "bây giờ là ba giờ.", enBridge: "It is 3 o'clock now.", kind: "sentence" },
+  { back: "今日は金曜日です。", vi: "hôm nay là thứ sáu.", enBridge: "Today is Friday.", kind: "sentence", reading: "kyō wa kinyōbi desu." },
+  { back: "誕生日は五月です。", vi: "sinh nhật của tôi vào tháng năm.", enBridge: "My birthday is in May.", kind: "sentence", reading: "tanjōbi wa gogatsu desu." },
+  { back: "今、三時です。", vi: "bây giờ là ba giờ.", enBridge: "It is 3 o'clock now.", kind: "sentence", reading: "ima, sanji desu." },
   { back: "今 (いま)", vi: "bây giờ", enBridge: "now", kind: "vocab" },
 
   // ── Directions (lesson 10) ────────────────────────────────────────────────
@@ -93,6 +101,9 @@ export const RAW_ITEMS: readonly RawGenItem[] = AUTHORED_JA_ITEMS.map((it) => ({
   flow: FLOW,
   kind: it.kind,
   back: it.back,
+  // Pass the human-reviewed romaji override when present; otherwise the
+  // generator derives it via wanakana (correct for pure-kana cards).
+  reading: it.reading,
   cefr: LEVEL,
   source: SOURCE,
 }));

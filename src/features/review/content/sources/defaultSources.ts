@@ -21,6 +21,7 @@ import { BILINGUAL_SENTENCES } from "@/data/bilingualSentencesSchema";
 import viDeSeed from "../seeds/out/vi-de.A1.seed.json";
 import viKoSeed from "../seeds/out/vi-ko.A1.seed.json";
 import viZhSeed from "../seeds/out/vi-zh.B2.seed.json";
+import viJaSeed from "../seeds/out/vi-ja.A1.seed.json";
 
 import type { ReviewSource } from "./source";
 import { createSpanishLessonsSource } from "./spanishLessons";
@@ -36,14 +37,15 @@ import { createSeedSource, type SeedLike } from "./seedSource";
  *   - vi-de          ← reviewed A1 seed (adapted from German lessons)
  *   - vi-ko          ← reviewed A1 seed (adapted from Korean lessons, sentences)
  *   - vi-zh          ← reviewed B2 seed (adapted from Chinese lessons)
+ *   - vi-ja          ← reviewed A1 seed (generated; romaji human-corrected:
+ *                      は→"wa", kanji transliterated — see japaneseSeed.authored.ts)
  *
- * Notes:
+ * All 7 flows are now wired (still gated by FEATURE_REVIEW, default off).
+ *
+ * Note:
  *   - vi-zh is **B2-only**: Chinese A1/A2/B1 lessons carry no Vietnamese gloss,
  *     so an A1 vi-zh seed is a KNOWN GAP for a future GENERATION pass (see
  *     content/README.md). The empty seeds/out/vi-zh.A1.seed.json marks it.
- *   - vi-ja is intentionally NOT wired: its seed is generated and its wanakana
- *     romaji (kanji untransliterated, は→"ha") needs a human review pass before
- *     going live. // TODO(review): wire vi-ja after human review of its seed.
  */
 export function createDefaultSources(): ReviewSource[] {
   const allSpanish = [
@@ -61,5 +63,6 @@ export function createDefaultSources(): ReviewSource[] {
     createSeedSource("seed:vi-de:A1", "vi-de", viDeSeed as unknown as SeedLike),
     createSeedSource("seed:vi-ko:A1", "vi-ko", viKoSeed as unknown as SeedLike),
     createSeedSource("seed:vi-zh:B2", "vi-zh", viZhSeed as unknown as SeedLike),
+    createSeedSource("seed:vi-ja:A1", "vi-ja", viJaSeed as unknown as SeedLike),
   ];
 }
