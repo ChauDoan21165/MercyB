@@ -416,6 +416,51 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["I want to say with you.", "I want to say to you."],
+    ["She said with me yesterday.", "She said to me yesterday."],
+    ["He says with her every day.", "He says to her every day."],
+    ["They are saying with us now.", "They are saying to us now."],
+    ["Please say with them after class.", "Please say to them after class."],
+    ["I said with him at 5 PM.", "I said to him at 5 PM."],
+  ])("corrects tightened say-with-person calque: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-calque-say-with-person"],
+    });
+  });
+
+  it.each([
+    "Say it with me.",
+    "She said the truth with him.",
+    "I would say, with him, that it is wrong.",
+    "What are you saying with them?",
+    "Which sentence are you saying with them?",
+    "She said with him beside me.",
+    "She said with him present.",
+    "She said with him gone.",
+    "They said with us there.",
+    "She said with him sitting near me.",
+    "She said with him in the room.",
+    "She said with him by my side.",
+    "She said with me that he was late.",
+    "She said with him who was beside me.",
+    "She said with him which was strange.",
+    "She said with him when I arrived.",
+    "She said with him where we met.",
+    "She said with him because he asked.",
+    "She said with him so I listened.",
+    "Say with me that song.",
+    "She talked with him.",
+    "I went with you.",
+  ])("does not over-trigger tightened say-with-person calque: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["An hour ago I eat lunch.", "An hour ago I ate lunch."],
     ["Last summer she go to Canada.", "Last summer she went to Canada."],
     ["In 2024 they move to Toronto.", "In 2024 they moved to Toronto."],
@@ -626,6 +671,7 @@ describe("correctionEngine", () => {
     ["en-calque-open-turn-on-appliance", "open appliance"],
     ["en-calque-close-turn-off-appliance", "close appliance"],
     ["en-calque-take-medicine", "take medicine"],
+    ["en-calque-say-with-person", "say with person"],
     ["en-step6-past-marker-recall", "past-marker recall"],
     ["en-step6-in-month-year", "in-month/year"],
     ["en-step6-enter-concrete-place", "enter concrete place"],
