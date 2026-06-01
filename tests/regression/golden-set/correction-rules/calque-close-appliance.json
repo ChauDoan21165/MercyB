@@ -44,6 +44,22 @@
       "expectedCorrection": "Turn off the air conditioner.",
       "expectedRuleFired": "calqueCloseTurnOffAppliance",
       "notes": "Multi-word appliance 'air conditioner' -> turn off."
+    },
+    {
+      "id": "cca-pos-006",
+      "input": "Please close the TV.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Please turn off the TV.",
+      "expectedRuleFired": "calqueCloseTurnOffAppliance",
+      "notes": "Imperative with 'Please' prefix; appliance 'TV' -> turn off. (folded from calque-close-turn-off-appliance.json)"
+    },
+    {
+      "id": "cca-pos-007",
+      "input": "She closed the fan.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She turned off the fan.",
+      "expectedRuleFired": "calqueCloseTurnOffAppliance",
+      "notes": "Past tense 'closed' -> 'turned off' for appliance 'fan'. (folded from calque-close-turn-off-appliance.json)"
     }
   ],
   "negative": [
@@ -94,6 +110,22 @@
       "expectedCorrection": "Turn off the TV.",
       "expectedRuleFired": null,
       "notes": "Already correct: 'turn off the TV' must not be re-touched."
+    },
+    {
+      "id": "cca-neg-007",
+      "input": "Close the box.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Close the box.",
+      "expectedRuleFired": null,
+      "notes": "Whitelist boundary: 'box' is physically closed; must keep 'close'. (folded from calque-close-turn-off-appliance.json)"
+    },
+    {
+      "id": "cca-neg-008",
+      "input": "Close the TV stand.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Close the TV stand.",
+      "expectedRuleFired": null,
+      "notes": "Head-noun boundary: head noun is 'stand', not the appliance 'TV'; 'close' must not become 'turn off'. (folded from calque-close-turn-off-appliance.json)"
     }
   ]
 }
