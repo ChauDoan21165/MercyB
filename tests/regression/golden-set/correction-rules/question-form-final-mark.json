@@ -78,6 +78,30 @@
       "expectedCorrection": "Tell me where you are.",
       "expectedRuleFired": null,
       "notes": "FP guard (embedded question under an imperative): 'Tell me ...' is not question-initial, so no '?' is appended."
+    },
+    {
+      "id": "qfm-neg-006",
+      "input": "What you said is true.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "What you said is true.",
+      "expectedRuleFired": null,
+      "notes": "FP-lock (!305 guard): declarative-WH subject clause ('What you said' is the subject, not a question). Was a false positive before !305; the narrowed question-frame guard now leaves it unchanged."
+    },
+    {
+      "id": "qfm-neg-007",
+      "input": "How beautiful this is!",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "How beautiful this is!",
+      "expectedRuleFired": null,
+      "notes": "FP-lock (!305 guard): exclamative 'How ...!', not a question. Was a false positive before !305 (rewrote the '!' to '?'); the guard now leaves it unchanged AND preserves the '!'."
+    },
+    {
+      "id": "qfm-neg-008",
+      "input": "She asked where he went.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She asked where he went.",
+      "expectedRuleFired": null,
+      "notes": "FP-lock (!305 guard): embedded WH clause under a declarative ('She asked ...'); not a question-initial frame, so no '?' is appended."
     }
   ]
 }
