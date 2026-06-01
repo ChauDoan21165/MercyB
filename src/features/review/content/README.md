@@ -46,14 +46,23 @@ standalone via `npx tsx src/features/review/content/scripts/content-lint.ts`.
 generated cards was enforced at build time and is not re-run — the persisted
 seed has no Translator.)
 
-## Wiring policy — seeds are NOT live
+## Wiring policy — a flow goes live only after review
 
 Building a seed does **not** wire a flow into the live `ReviewApp`. A flow flips
 on only after its seed passes the gate **and** a human review pass — at which
-point a `seedSource` (reading the certified seed) gets registered in
-`sources/defaultSources.ts`. Until then `getItems('vi-de'|'vi-ja'|'vi-ko'|'vi-zh')`
-still returns `[]` at runtime. `status: "for-review"` on every seed enforces the
-distinction.
+point a per-flow loader is registered in `sources/lazyLoaders.ts`
+(`DEFAULT_FLOW_LOADERS`). An unregistered flow's `getItems()` returns `[]`.
+`status: "for-review"` on every seed marks content that hasn't cleared review.
+
+## Bundle: lazy per-flow loading
+
+`ContentAdapter` loads each flow's content via `import()` (see
+`sources/lazyLoaders.ts`), so Vite code-splits every flow into its own chunk
+fetched only when that deck is opened. The `ReviewApp` chunk is ~7 KB gzip; the
+heavy Spanish/bilingual lesson data and each seed are separate on-demand chunks.
+Tests inject eager `sources` instead (the sync path) so they never pull real
+content. Do NOT reintroduce a static `createDefaultSources()` that imports the
+whole corpus — it re-bloats the ReviewApp chunk to ~230 KB gzip.
 
 ## Status (all for-review, none wired live)
 
