@@ -36,6 +36,16 @@ Reads lessons read-only, runs the gate, writes `seeds/out/<flow>.<level>.seed.js
 generation-backed flows (zh/ko/ja gaps) plug a real `Translator` into the gate's
 `roundTrip` option inside this script; vi→de needs none.
 
+## Content-lint (DC4)
+
+`seeds/__tests__/seedsLint.test.ts` re-gates every committed seed under
+`seeds/out/` — CI runs the vitest suite, so an uncertified card (or a seed not
+marked `for-review`) turns the build red and cannot land. The same logic runs
+standalone via `npx tsx src/features/review/content/scripts/content-lint.ts`.
+(It re-checks the full structural gate; the back-translation round-trip for
+generated cards was enforced at build time and is not re-run — the persisted
+seed has no Translator.)
+
 ## Wiring policy — seeds are NOT live
 
 Building a seed does **not** wire a flow into the live `ReviewApp`. A flow flips
