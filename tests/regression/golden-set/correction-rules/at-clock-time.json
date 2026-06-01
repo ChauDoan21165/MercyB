@@ -55,6 +55,34 @@
       "expectedCorrection": "We meet at 6:30.",
       "expectedRuleFired": null,
       "notes": "Already correct phrase stays unchanged."
+    },
+    {
+      "id": "at-clock-time-neg-005",
+      "input": "I arrive 7am.",
+      "expectedCorrection": "I arrive 7am.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (different verb): clock time present but 'arrive' is outside the whitelist {wake up, start work, meet}; rule abstains."
+    },
+    {
+      "id": "at-clock-time-neg-006",
+      "input": "I meet him 6:30.",
+      "expectedCorrection": "I meet him 6:30.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (intervening object): 'meet' is not immediately followed by the clock time ('him' intervenes), so no 'at' is inserted."
+    },
+    {
+      "id": "at-clock-time-neg-007",
+      "input": "When do we meet?",
+      "expectedCorrection": "When do we meet?",
+      "expectedRuleFired": null,
+      "notes": "FP guard (question, no clock token): 'meet' with no following clock-time format; rule abstains."
+    },
+    {
+      "id": "at-clock-time-neg-008",
+      "input": "I have an 8 o'clock class.",
+      "expectedCorrection": "I have an 8 o'clock class.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (clock token as noun modifier): \"8 o'clock\" modifies 'class' and 'have' is outside the verb whitelist; rule abstains."
     }
   ]
 }
