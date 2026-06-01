@@ -1070,4 +1070,41 @@ describe("correctionEngine", () => {
       corrected: "What do you usually do in the morning?",
     });
   });
+
+  it.each([
+    ["What is your name.", "What is your name?"],
+    ["Where do you live.", "Where do you live?"],
+    ["Why are you late.", "Why are you late?"],
+    ["How old are you.", "How old are you?"],
+    ["Can you help me.", "Can you help me?"],
+    ["Do you like English.", "Do you like English?"],
+    ["Where do you live", "Where do you live?"],
+  ])("adds question punctuation only for clear question frames: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-question-form-final-mark"],
+    });
+  });
+
+  it.each([
+    "What you said is true.",
+    "What he did was wrong.",
+    "What I need is time.",
+    "How beautiful this is!",
+    "How nice it looks!",
+    "How hard this test was!",
+    "How beautiful this is.",
+    "The thing that you said is true.",
+    "I know what you said.",
+    "What is your name?",
+  ])("does not add question punctuation to declarative WH clauses or already-punctuated questions: %s", (input) => {
+    const result = correctWithTutorRules(input, "en");
+
+    expect(result).toMatchObject({
+      status: "unchanged",
+      corrected: input,
+      appliedRuleIds: [],
+    });
+  });
 });

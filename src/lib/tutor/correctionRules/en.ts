@@ -153,8 +153,32 @@ function punctuateMorningRoutineRunOn(input: string): string {
 }
 
 function punctuateQuestionForm(input: string): string {
-  const trimmed = input.trim().replace(/[.!?]+$/u, "");
+  const trimmed = input.trim();
+  if (/[?？!]$/.test(trimmed)) return trimmed;
+  if (/\.$/.test(trimmed)) return trimmed.replace(/\.$/, "?");
   return `${trimmed}?`;
+}
+
+function hasQuestionFinalMarkCandidate(input: string): boolean {
+  const trimmed = input.trim();
+  if (!trimmed || /[?？!]$/.test(trimmed)) return false;
+
+  const subject = "(?:i|you|we|they|he|she|it|this|that|these|those|there|[a-z]+(?:\\s+[a-z]+){0,3})";
+  const lexicalVerb = "[a-z]+(?:\\s+[a-z]+)*";
+  const beAux = "(?:am|are|is|was|were)";
+  const doAux = "(?:do|does|did)";
+  const modalAux = "(?:can|could|would|will|should)";
+  const aux = `(?:${beAux}|${doAux}|${modalAux})`;
+
+  const frames = [
+    `^(?:what|where|when|why)\\s+${aux}\\s+${subject}\\b`,
+    `^how\\s+(?:old|often|many|much)\\s+${aux}\\s+${subject}\\b`,
+    `^${doAux}\\s+${subject}\\s+${lexicalVerb}\\b`,
+    `^${beAux}\\s+${subject}\\b`,
+    `^${modalAux}\\s+${subject}\\b`,
+  ];
+
+  return frames.some((frame) => new RegExp(frame, "i").test(trimmed));
 }
 
 function repairMorningRoutineSubjectCarryover(input: string): string {
@@ -977,9 +1001,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
   },
   {
     id: "en-question-form-final-mark",
-    detects: (input) =>
-      /^(what|where|when|why|how|do|does|did|are|is|can|could|would|will)\b/i.test(input.trim()) &&
-      !/[?？]$/.test(input.trim()),
+    detects: hasQuestionFinalMarkCandidate,
     apply: punctuateQuestionForm,
   },
 ];
