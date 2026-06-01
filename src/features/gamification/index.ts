@@ -25,17 +25,25 @@ export {
 export { createGamificationStore } from "./store/createGamificationStore";
 export { InMemoryGamificationStore } from "./store/InMemoryGamificationStore";
 
+export { IndexedDbGamificationStore } from "./store/IndexedDbGamificationStore"; // F5
+
+// ── Engines (pure reducers) ──
+export { streakEngine } from "./engines/streakEngine"; // F1
+export { xpEngine } from "./engines/xpEngine"; // F2
+export { dailyGoalEngine } from "./engines/dailyGoalEngine"; // F3
+export { achievementEngine, ACHIEVEMENTS } from "./engines/achievementEngine"; // F4
+
+// ── React layer ──
+export { useGamification } from "./hooks/useGamification"; // F6
+export { default as StreakWidget } from "./components/StreakWidget";
+export { default as XpWidget } from "./components/XpWidget";
+export { default as DailyGoalWidget } from "./components/DailyGoalWidget";
+export { default as AchievementsScreen } from "./components/AchievementsScreen";
+export { default as GamificationPage } from "./routes/GamificationPage";
+
 // ── Nav ──
 export {
   gamificationNavItems,
   GAMIFICATION_ROUTE,
   type GamificationNavItem,
 } from "./nav/gamificationNav";
-
-// Wired during integration:
-//   export { streakEngine } from "./engines/streakEngine";        // F1
-//   export { xpEngine } from "./engines/xpEngine";                // F2
-//   export { dailyGoalEngine } from "./engines/dailyGoalEngine";  // F3
-//   export { achievementEngine, ACHIEVEMENTS } from "./engines/achievementEngine"; // F4
-//   export { IndexedDbGamificationStore } from "./store/IndexedDbGamificationStore"; // F5
-//   export { useGamification } from "./hooks/useGamification";     // F6
