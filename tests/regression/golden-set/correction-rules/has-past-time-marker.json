@@ -158,6 +158,14 @@
       "expectedCorrection": "On Monday I go to school.",
       "expectedRuleFired": null,
       "notes": "Coverage gap after Lane A narrowing: 'on <weekday>' is not safe enough for beginner past rewrite, so the rule abstains."
+    },
+    {
+      "id": "hptm-neg-012",
+      "input": "Yesterday I cook rice.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Yesterday I cook rice.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (different lemma): a past marker is present but 'cook' is outside the target verb set {buy,do,eat,go,have}, so the rule abstains."
     }
   ]
 }

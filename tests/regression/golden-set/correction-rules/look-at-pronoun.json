@@ -78,6 +78,30 @@
       "expectedCorrection": "Look them over.",
       "expectedRuleFired": null,
       "notes": "Separated phrasal verb look over must not become look at them over."
+    },
+    {
+      "id": "look-at-pronoun-neg-007",
+      "input": "Watch me.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Watch me.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (different verb): the rule targets 'look'; 'watch me' must not get 'at' inserted."
+    },
+    {
+      "id": "look-at-pronoun-neg-008",
+      "input": "Look it up.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Look it up.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (non-person pronoun + separated particle): 'it' is outside the person-object set {me,you,him,her,us,them}, and 'up' is a separated particle; rule abstains."
+    },
+    {
+      "id": "look-at-pronoun-neg-009",
+      "input": "They look down on us.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "They look down on us.",
+      "expectedRuleFired": null,
+      "notes": "FP guard ('look down on' phrasal): 'look' is not immediately followed by a person pronoun ('down' intervenes); rule abstains."
     }
   ]
 }
