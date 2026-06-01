@@ -53,10 +53,34 @@ import { scoreToneContour, type ToneContourScoreResult } from "../toneContourSco
 const blobToWavPcm16kMock = vi.mocked(blobToWavPcm16k);
 type NodeFetchInit = NonNullable<Parameters<typeof nodeFetch>[1]>;
 type NodeFetchBody = NodeFetchInit["body"];
+type ResponseSummarySource = {
+  status: number;
+  clone: () => { text: () => Promise<string> };
+};
+type SmokeAuthFetch = (
+  input: string,
+  init?: Parameters<typeof nodeFetch>[1],
+) => Promise<{ status: number; text: () => Promise<string> }>;
+type LiveSmokeTokenSource = "env_jwt" | "runtime_mint";
+type LiveSmokeTokenResult = {
+  token: string;
+  source: LiveSmokeTokenSource;
+};
 
 const SMOKE_AUDIO_BLOB = new Blob([new Uint8Array([0, 1, 2, 3])], {
   type: "audio/webm",
 });
+
+const AZURE_PHONEME_EDGE_PATH = "/functions/v1/azure-phoneme";
+const SAFE_EDGE_RESPONSE_FIELDS = [
+  "ok",
+  "use_local",
+  "reason",
+  "error",
+  "provider",
+  "mode",
+] as const;
+const SAFE_RESPONSE_TEXT_LIMIT = 240;
 
 const SAMPLE_UTTERANCES = [
   {
@@ -79,8 +103,7 @@ const SAMPLE_UTTERANCES = [
 const LIVE_AZURE_ENABLED =
   process.env.STEP7_LIVE_AZURE_SMOKE === "true" &&
   process.env.VITE_AZURE_PHONEME_BATCH_ENABLED === "true" &&
-  Boolean(process.env.VITE_SUPABASE_URL) &&
-  Boolean(process.env.STEP7_SMOKE_USER_JWT);
+  Boolean(process.env.VITE_SUPABASE_URL);
 
 const liveAzureIt = LIVE_AZURE_ENABLED ? it : it.skip;
 
@@ -193,18 +216,21 @@ function liveFetchWithoutJsdomSignal(
   calledUrls: string[],
   responseStatuses: number[],
   fetchErrors: string[],
+  responseSummaries: string[],
   fallbackAudioBlob: Blob,
 ): typeof fetch {
   return (async (...args: Parameters<typeof fetch>) => {
     const [input, init] = args;
-    calledUrls.push(String(input));
+    const requestUrl = String(input);
+    calledUrls.push(requestUrl);
     const { signal: _jsdomSignal, body, ...runtimeInit } = init ?? {};
     try {
-      const response = await nodeFetch(String(input), {
+      const response = await nodeFetch(requestUrl, {
         ...runtimeInit,
         body: await toNodeFetchBody(body, fallbackAudioBlob),
       } as Parameters<typeof nodeFetch>[1]);
       responseStatuses.push(response.status);
+      await captureAzurePhonemeResponseSummary(requestUrl, response, responseSummaries);
       return response as unknown as Response;
     } catch (err) {
       const message = err instanceof Error ? err.message.slice(0, 120) : "unknown_fetch_error";
@@ -216,6 +242,150 @@ function liveFetchWithoutJsdomSignal(
       throw err;
     }
   }) as typeof fetch;
+}
+
+async function resolveLiveSmokeUserJwt(
+  env: Record<string, string | undefined> = process.env,
+  fetchImpl: SmokeAuthFetch = nodeFetch,
+): Promise<LiveSmokeTokenResult> {
+  const staticJwt = env.STEP7_SMOKE_USER_JWT?.trim();
+  if (staticJwt) {
+    return { token: staticJwt, source: "env_jwt" };
+  }
+
+  const email = env.STEP7_SMOKE_USER_EMAIL?.trim();
+  const password = env.STEP7_SMOKE_USER_PASSWORD;
+  if (!email || !password) {
+    throw new Error("missing smoke-user credentials; no token minted");
+  }
+
+  const supabaseUrl = env.VITE_SUPABASE_URL?.trim().replace(/\/+$/, "");
+  const anonKey = env.VITE_SUPABASE_ANON_KEY?.trim() || env.SUPABASE_ANON_KEY?.trim();
+  if (!supabaseUrl || !anonKey) {
+    throw new Error("missing Supabase Auth config; no token minted");
+  }
+
+  const response = await fetchImpl(`${supabaseUrl}/auth/v1/token?grant_type=password`, {
+    method: "POST",
+    headers: {
+      apikey: anonKey,
+      authorization: `Bearer ${anonKey}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  });
+  const bodyText = await response.text();
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error(
+      `smoke-user login failed; status=${response.status}; body=${summarizeSafeAuthBody(
+        bodyText,
+      )}`,
+    );
+  }
+
+  const parsed = parseJsonObject(bodyText);
+  const accessToken = parsed && typeof parsed.access_token === "string"
+    ? parsed.access_token.trim()
+    : "";
+  if (!accessToken) {
+    throw new Error("smoke-user login did not return access_token; no token minted");
+  }
+  return { token: accessToken, source: "runtime_mint" };
+}
+
+function logLiveSmokeTokenSource(
+  tokenResult: LiveSmokeTokenResult,
+  log: (message: string) => void = console.info,
+): void {
+  log(`[step7Smoke] tokenSource=${tokenResult.source}; tokenLength=${tokenResult.token.length}`);
+}
+
+async function captureAzurePhonemeResponseSummary(
+  requestUrl: string,
+  response: ResponseSummarySource,
+  responseSummaries: string[],
+): Promise<void> {
+  if (!requestUrl.includes(AZURE_PHONEME_EDGE_PATH)) return;
+  responseSummaries.push(await summarizeSafeEdgeResponse(response));
+}
+
+async function summarizeSafeEdgeResponse(response: ResponseSummarySource): Promise<string> {
+  let text = "";
+  try {
+    text = await response.clone().text();
+  } catch {
+    return JSON.stringify({ status: response.status });
+  }
+
+  if (!text.trim()) {
+    return JSON.stringify({ status: response.status });
+  }
+
+  try {
+    const parsed = JSON.parse(text) as unknown;
+    return JSON.stringify(sanitizeEdgeJson(response.status, parsed));
+  } catch {
+    return JSON.stringify({ status: response.status });
+  }
+}
+
+function sanitizeEdgeJson(status: number, parsed: unknown): Record<string, unknown> {
+  const summary: Record<string, unknown> = { status };
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+    return summary;
+  }
+
+  const record = parsed as Record<string, unknown>;
+  for (const field of SAFE_EDGE_RESPONSE_FIELDS) {
+    if (field in record && isSafePrimitive(record[field])) {
+      summary[field] =
+        typeof record[field] === "string"
+          ? sanitizeSafeResponseText(record[field])
+          : record[field];
+    }
+  }
+  return summary;
+}
+
+function isSafePrimitive(value: unknown): value is string | number | boolean | null {
+  return value === null || ["string", "number", "boolean"].includes(typeof value);
+}
+
+function sanitizeSafeResponseText(value: string): string {
+  return value
+    .replace(/eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/g, "[redacted_jwt]")
+    .replace(/data:audio\/[^;]+;base64,[A-Za-z0-9+/=]+/g, "[redacted_audio_data]")
+    .replace(/[^\t\n\r -~]/g, "")
+    .slice(0, SAFE_RESPONSE_TEXT_LIMIT);
+}
+
+function parseJsonObject(text: string): Record<string, unknown> | null {
+  try {
+    const parsed = JSON.parse(text) as unknown;
+    return parsed && typeof parsed === "object" && !Array.isArray(parsed)
+      ? parsed as Record<string, unknown>
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+function summarizeSafeAuthBody(text: string): string {
+  const parsed = parseJsonObject(text);
+  if (!parsed) return sanitizeSafeResponseText(text);
+
+  const summary: Record<string, string> = {};
+  for (const field of ["error", "error_description", "msg", "message"]) {
+    const value = parsed[field];
+    if (typeof value === "string") {
+      summary[field] = sanitizeSafeResponseText(value);
+    }
+  }
+  return Object.keys(summary).length > 0 ? JSON.stringify(summary) : "{}";
+}
+
+function hasLiveAzurePhonemeEvidence(result: NormalizedPronunciationScoreResult): boolean {
+  return result.mode === "azure_phoneme_batch" && (result.phonemeScores?.length ?? 0) > 0;
 }
 
 async function toNodeFetchBody(
@@ -322,6 +492,139 @@ describe("Step 7 Azure-path smoke harness", () => {
     expect((audio as NodeFile).type).toBe("audio/wav");
   });
 
+  it("captures only sanitized Azure edge response details for live-smoke failures", async () => {
+    const summaries: string[] = [];
+    const response = new Response(
+      JSON.stringify({
+        ok: false,
+        use_local: true,
+        reason: "azure_error",
+        error: "provider_unavailable",
+        provider: "local",
+        mode: "local_sentence_match",
+        transcript: "do not log learner transcript",
+        token: "eyJabc.def.ghi",
+      }),
+      { status: 200 },
+    );
+
+    await captureAzurePhonemeResponseSummary(
+      "https://dev-smoke.supabase.co/functions/v1/azure-phoneme",
+      response,
+      summaries,
+    );
+
+    expect(summaries).toHaveLength(1);
+    expect(summaries[0]).toContain('"status":200');
+    expect(summaries[0]).toContain('"use_local":true');
+    expect(summaries[0]).toContain('"reason":"azure_error"');
+    expect(summaries[0]).toContain('"error":"provider_unavailable"');
+    expect(summaries[0]).not.toContain("transcript");
+    expect(summaries[0]).not.toContain("eyJabc");
+    expect(Object.keys(JSON.parse(summaries[0]) as Record<string, unknown>).sort()).toEqual([
+      "error",
+      "mode",
+      "ok",
+      "provider",
+      "reason",
+      "status",
+      "use_local",
+    ]);
+  });
+
+  it("fails safely when no static JWT or smoke-user credentials are available", async () => {
+    const fetchImpl = vi.fn();
+
+    await expect(resolveLiveSmokeUserJwt(
+      {
+        VITE_SUPABASE_URL: "https://dev-smoke.supabase.co",
+        VITE_SUPABASE_ANON_KEY: "anon-key",
+      },
+      fetchImpl,
+    )).rejects.toThrow("missing smoke-user credentials; no token minted");
+    expect(fetchImpl).not.toHaveBeenCalled();
+  });
+
+  it("uses an existing static smoke JWT without attempting runtime login", async () => {
+    const fetchImpl = vi.fn();
+
+    const tokenResult = await resolveLiveSmokeUserJwt(
+      { STEP7_SMOKE_USER_JWT: "static-smoke-jwt" },
+      fetchImpl,
+    );
+
+    expect(tokenResult).toEqual({ token: "static-smoke-jwt", source: "env_jwt" });
+    expect(fetchImpl).not.toHaveBeenCalled();
+  });
+
+  it("mints a runtime smoke-user access token without logging the token value", async () => {
+    const dummyEmail = ["step7", "smoke", "user"].join("_");
+    const dummyPassword = ["dummy", "smoke", "password"].join("_");
+    const dummyToken = ["runtime", "token", "value"].join("_");
+    const fetchImpl = vi.fn<SmokeAuthFetch>().mockResolvedValue({
+      status: 200,
+      text: async () => JSON.stringify({ access_token: dummyToken }),
+    });
+    const log = vi.fn();
+
+    const tokenResult = await resolveLiveSmokeUserJwt(
+      {
+        VITE_SUPABASE_URL: "https://dev-smoke.supabase.co/",
+        VITE_SUPABASE_ANON_KEY: "anon-key",
+        STEP7_SMOKE_USER_EMAIL: dummyEmail,
+        STEP7_SMOKE_USER_PASSWORD: dummyPassword,
+      },
+      fetchImpl,
+    );
+    logLiveSmokeTokenSource(tokenResult, log);
+
+    expect(tokenResult).toEqual({ token: dummyToken, source: "runtime_mint" });
+    expect(fetchImpl).toHaveBeenCalledWith(
+      "https://dev-smoke.supabase.co/auth/v1/token?grant_type=password",
+      expect.objectContaining({
+        method: "POST",
+        headers: expect.objectContaining({
+          apikey: "anon-key",
+          authorization: "Bearer anon-key",
+          "content-type": "application/json",
+        }),
+      }),
+    );
+    expect(log).toHaveBeenCalledWith("[step7Smoke] tokenSource=runtime_mint; tokenLength=19");
+    expect(log.mock.calls.flat().join(" ")).not.toContain(dummyEmail);
+    expect(log.mock.calls.flat().join(" ")).not.toContain(dummyPassword);
+    expect(log.mock.calls.flat().join(" ")).not.toContain(dummyToken);
+  });
+
+  it("requires live Azure mode plus phoneme evidence for a green live smoke", () => {
+    expect(hasLiveAzurePhonemeEvidence({
+      mode: "azure_phoneme_batch",
+      provider: "azure",
+      overallScore: 82,
+      messageKey: "pronunciation.score.azure_phoneme_batch",
+      labelKind: "pronunciation_detail",
+      useLocalFallback: false,
+      phonemeScores: [{ word: "voice", phoneme: "v", score: 91 }],
+    })).toBe(true);
+    expect(hasLiveAzurePhonemeEvidence({
+      mode: "azure_phoneme_batch",
+      provider: "azure",
+      overallScore: 82,
+      messageKey: "pronunciation.score.azure_phoneme_batch",
+      labelKind: "pronunciation_detail",
+      useLocalFallback: false,
+      phonemeScores: [],
+    })).toBe(false);
+    expect(hasLiveAzurePhonemeEvidence({
+      mode: "local_sentence_match",
+      provider: "local",
+      overallScore: 82,
+      messageKey: "pronunciation.score.local_sentence_match",
+      labelKind: "sentence_match",
+      useLocalFallback: true,
+    })).toBe(false);
+  });
+
   it("keeps no-Azure fallback scoring, tone, and Speak display safe for sample learner utterances", async () => {
     const fetchImpl = vi.fn();
 
@@ -414,10 +717,12 @@ describe("Step 7 Azure-path smoke harness", () => {
     const calledUrls: string[] = [];
     const responseStatuses: number[] = [];
     const fetchErrors: string[] = [];
+    const responseSummaries: string[] = [];
     const liveFetch = liveFetchWithoutJsdomSignal(
       calledUrls,
       responseStatuses,
       fetchErrors,
+      responseSummaries,
       smokeWavBlob,
     );
 
@@ -427,13 +732,15 @@ describe("Step 7 Azure-path smoke harness", () => {
     if (process.env.MERCYB_SMOKE_BASE_URL) {
       expect(process.env.MERCYB_SMOKE_BASE_URL).toMatch(/^https:\/\/mercyblade\.com\/?$/);
     }
+    const tokenResult = await resolveLiveSmokeUserJwt();
+    logLiveSmokeTokenSource(tokenResult);
 
     const result = await scorePronunciationWithStep7Fallback({
       audioBlob: SMOKE_AUDIO_BLOB,
       target: sample.target,
       transcript: sample.learner,
       step7Enabled: true,
-      userJwt: process.env.STEP7_SMOKE_USER_JWT,
+      userJwt: tokenResult.token,
       supabaseUrl,
       fetchImpl: liveFetch,
       timeoutMs: Number(process.env.STEP7_SMOKE_TIMEOUT_MS ?? 15_000),
@@ -441,12 +748,15 @@ describe("Step 7 Azure-path smoke harness", () => {
 
     expectWellFormedScore(result);
     expect(calledUrls).toContain(`${supabaseUrl}/functions/v1/azure-phoneme`);
-    if (result.mode !== "azure_phoneme_batch") {
+    if (!hasLiveAzurePhonemeEvidence(result)) {
       throw new Error(
         `live Azure smoke did not return phoneme evidence; mode=${result.mode}; provider=${
           result.provider ?? "unknown"
+        }; tokenSource=${tokenResult.source}; tokenLength=${tokenResult.token.length
         }; edgeStatuses=${responseStatuses.join(",") || "none"}; fetchErrors=${
           fetchErrors.join(" | ") || "none"
+        }; edgeResponses=${
+          responseSummaries.join(" | ") || "none"
         }`,
       );
     }
@@ -469,7 +779,7 @@ describe("Step 7 Azure-path smoke harness", () => {
     const toneResult = await scoreTone({
       audioBlob: SMOKE_AUDIO_BLOB,
       targetSyllable: process.env.STEP7_SMOKE_TONE_TARGET ?? "má",
-      userJwt: process.env.STEP7_SMOKE_USER_JWT ?? null,
+      userJwt: tokenResult.token,
       supabaseUrl,
       fetchImpl: liveFetch,
       timeoutMs: Number(process.env.STEP7_SMOKE_TIMEOUT_MS ?? 15_000),
