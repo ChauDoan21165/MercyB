@@ -62,6 +62,46 @@
       "expectedCorrection": "I have 2020 dollars.",
       "expectedRuleFired": null,
       "notes": "Year-like quantity stays unchanged."
+    },
+    {
+      "id": "in-month-year-neg-005",
+      "input": "I came 1990.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I came 1990.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (different context verb): 'came' is outside the context set {was/were born, moved here, arrived}; rule abstains."
+    },
+    {
+      "id": "in-month-year-neg-006",
+      "input": "I was born March in Hanoi.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I was born March in Hanoi.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (token not at sentence end): the matcher requires the month/year token at the end; 'March' is mid-sentence, so it abstains."
+    },
+    {
+      "id": "in-month-year-neg-007",
+      "input": "I will arrive 2099.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I will arrive 2099.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (future-year): 'arrive' is a context verb and '2099' is at the end, but the past-year guard blocks non-past years; rule abstains."
+    },
+    {
+      "id": "in-month-year-neg-008",
+      "input": "When were you born?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "When were you born?",
+      "expectedRuleFired": null,
+      "notes": "FP guard (question, no trailing token): 'were born' with no month/year token at the end; rule abstains."
+    },
+    {
+      "id": "in-month-year-neg-009",
+      "input": "We moved here 5 years ago.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "We moved here 5 years ago.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (non-year token): 'moved here' is a context verb but '5 years ago' is not a month name or 4-digit year; rule abstains."
     }
   ]
 }

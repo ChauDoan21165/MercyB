@@ -62,6 +62,30 @@
       "expectedCorrection": "She entered into a contract.",
       "expectedRuleFired": null,
       "notes": "Contract phrase stays unchanged."
+    },
+    {
+      "id": "enter-concrete-place-neg-005",
+      "input": "I enter in the room.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I enter in the room.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (different preposition): the rule targets 'enter to/into', not 'enter in'; rule abstains."
+    },
+    {
+      "id": "enter-concrete-place-neg-006",
+      "input": "She entered quickly into the office.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She entered quickly into the office.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (intervening adverb): 'entered' is not immediately followed by 'into' ('quickly' intervenes); rule abstains."
+    },
+    {
+      "id": "enter-concrete-place-neg-007",
+      "input": "They enter into the garden.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "They enter into the garden.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (concrete place outside the whitelist): 'garden' is not in {room, classroom, class, house, building, office, school, hospital, airport}; rule abstains."
     }
   ]
 }
