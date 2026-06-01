@@ -138,10 +138,10 @@
       "source": "chinese/lessons-a1+authored-vi"
     },
     {
-      "id": "vi-zh:sentence:bau-troi-mau-xanh",
+      "id": "vi-zh:sentence:bau-troi-mau-xanh-duong",
       "flow": "vi-zh",
       "kind": "sentence",
-      "front": "bầu trời màu xanh.",
+      "front": "bầu trời màu xanh dương.",
       "back": "天空是蓝色的。",
       "pronunciation": "tiān kōng shì lán sè de.",
       "cefr": "A1",

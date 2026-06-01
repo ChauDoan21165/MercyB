@@ -74,7 +74,7 @@ export const AUTHORED_ZH_ITEMS: readonly AuthoredZhItem[] = [
 
   // ── Colors ────────────────────────────────────────────────────────────────
   { back: "我喜欢红色的花。", vi: "tôi thích hoa màu đỏ.", pinyin: "wǒ xǐ huān hóng sè de huā.", enBridge: "I like red flowers.", kind: "sentence" },
-  { back: "天空是蓝色的。", vi: "bầu trời màu xanh.", pinyin: "tiān kōng shì lán sè de.", enBridge: "The sky is blue.", kind: "sentence" },
+  { back: "天空是蓝色的。", vi: "bầu trời màu xanh dương.", pinyin: "tiān kōng shì lán sè de.", enBridge: "The sky is blue.", kind: "sentence" },
   { back: "她穿了一件白色的裙子。", vi: "cô ấy mặc một chiếc váy màu trắng.", pinyin: "tā chuān le yī jiàn bái sè de qún zi.", enBridge: "She wore a white dress.", kind: "sentence" },
 
   // ── Food & drink ──────────────────────────────────────────────────────────

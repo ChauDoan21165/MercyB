@@ -24,18 +24,21 @@ describe("default content adapter wiring", () => {
     );
   });
 
-  it.each(["vi-de", "vi-ko", "vi-zh", "vi-ja"] as const)(
-    "%s serves its reviewed seed (20 well-formed items)",
-    async (flow) => {
-      const items = await adapter.getItems(flow);
-      expect(items).toHaveLength(20);
-      for (const it of items) {
-        expect(it.flow).toBe(flow);
-        expect(it.front.trim().length).toBeGreaterThan(0);
-        expect(it.back.trim().length).toBeGreaterThan(0);
-      }
-    },
-  );
+  // vi-de/ko/ja serve one 20-card seed; vi-zh serves A1 (20) + B2 (20) = 40.
+  it.each([
+    ["vi-de", 20],
+    ["vi-ko", 20],
+    ["vi-zh", 40],
+    ["vi-ja", 20],
+  ] as const)("%s serves its reviewed seed(s) (%i well-formed items)", async (flow, n) => {
+    const items = await adapter.getItems(flow);
+    expect(items).toHaveLength(n);
+    for (const it of items) {
+      expect(it.flow).toBe(flow);
+      expect(it.front.trim().length).toBeGreaterThan(0);
+      expect(it.back.trim().length).toBeGreaterThan(0);
+    }
+  });
 
   it("vi-ja items carry a reading with no untransliterated kanji (paren-format aside)", async () => {
     const items = await adapter.getItems("vi-ja");

@@ -16,8 +16,7 @@
 //   - en-vi / vi-en  ← bilingual sentence library (lazy, shared chunk)
 //   - vi-de          ← reviewed A1 seed (German adaptation)
 //   - vi-ko          ← reviewed A1 seed (Korean adaptation, sentences)
-//   - vi-zh          ← reviewed B2 seed (Chinese adaptation; A1 is a generation
-//                      gap surfaced separately, not wired here)
+//   - vi-zh          ← reviewed A1 (generated) + B2 (adapted) seeds, merged
 //   - vi-ja          ← reviewed A1 seed (generated; romaji human-corrected)
 
 import type { ReviewFlowId, ReviewItem } from "@/features/review/types";
@@ -64,6 +63,13 @@ export const DEFAULT_FLOW_LOADERS: Partial<Record<ReviewFlowId, ItemsLoader>> = 
   "vi-en": () => loadBilingual("vi-en"),
   "vi-de": () => import("../seeds/out/vi-de.A1.seed.json").then((m) => seedItems("vi-de", m)),
   "vi-ko": () => import("../seeds/out/vi-ko.A1.seed.json").then((m) => seedItems("vi-ko", m)),
-  "vi-zh": () => import("../seeds/out/vi-zh.B2.seed.json").then((m) => seedItems("vi-zh", m)),
+  // vi-zh serves both the A1 (generated, human-reviewed) and B2 (adapted) seeds.
+  "vi-zh": async () => {
+    const [a1, b2] = await Promise.all([
+      import("../seeds/out/vi-zh.A1.seed.json"),
+      import("../seeds/out/vi-zh.B2.seed.json"),
+    ]);
+    return [...seedItems("vi-zh", a1), ...seedItems("vi-zh", b2)];
+  },
   "vi-ja": () => import("../seeds/out/vi-ja.A1.seed.json").then((m) => seedItems("vi-ja", m)),
 };
