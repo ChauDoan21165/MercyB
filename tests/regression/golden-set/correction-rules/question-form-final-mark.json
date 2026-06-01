@@ -102,6 +102,22 @@
       "expectedCorrection": "She asked where he went.",
       "expectedRuleFired": null,
       "notes": "FP-lock (!305 guard): embedded WH clause under a declarative ('She asked ...'); not a question-initial frame, so no '?' is appended."
+    },
+    {
+      "id": "qfm-neg-009",
+      "input": "How beautiful this is.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "How beautiful this is.",
+      "expectedRuleFired": null,
+      "notes": "FP-lock (!305 guard): exclamative 'How ...' in PERIOD form (not just the '!' form). The guard must recognize the exclamative frame regardless of terminal punctuation — no '?' appended, '.' preserved."
+    },
+    {
+      "id": "qfm-neg-010",
+      "input": "Can you help me?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Can you help me?",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (already-punctuated modal question): a genuine question that already ends in '?'; the rule must not append a second one (distinct frame from the WH 'What is your name?' already-punctuated case)."
     }
   ]
 }
