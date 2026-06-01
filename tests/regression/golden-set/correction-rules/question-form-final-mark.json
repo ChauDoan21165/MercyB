@@ -62,6 +62,22 @@
       "expectedCorrection": "The cat is black.",
       "expectedRuleFired": null,
       "notes": "FP-stress (trigger word mid-sentence): 'is' is not sentence-initial, so this declarative must not become a question."
+    },
+    {
+      "id": "qfm-neg-004",
+      "input": "I wonder what time it is.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I wonder what time it is.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (embedded question): the wh-clause is embedded under 'I wonder ...'; the sentence is declarative and not wh-initial, so no '?' is appended."
+    },
+    {
+      "id": "qfm-neg-005",
+      "input": "Tell me where you are.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Tell me where you are.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (embedded question under an imperative): 'Tell me ...' is not question-initial, so no '?' is appended."
     }
   ]
 }
