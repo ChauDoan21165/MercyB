@@ -70,6 +70,22 @@
       "expectedCorrection": "My mother is old.",
       "expectedRuleFired": null,
       "notes": "No concrete owned object, so rule abstains."
+    },
+    {
+      "id": "possessive-s-neg-conf-006",
+      "input": "His teacher training is hard.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "His teacher training is hard.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: 'teacher training' is a fixed compound on the exclusion list, not owner+object possession."
+    },
+    {
+      "id": "possessive-s-neg-conf-007",
+      "input": "My friend John is tall.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "My friend John is tall.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: appositive ('my friend John') — 'John' is not a concrete-object-whitelist noun, so the rule abstains."
     }
   ]
 }

@@ -55,6 +55,22 @@
       "expectedCorrection": "He waits tables.",
       "expectedRuleFired": null,
       "notes": "Wait tables idiom stays unchanged."
+    },
+    {
+      "id": "wait-for-person-object-neg-conf-005",
+      "input": "Wait with me.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Wait with me.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: comitative 'with me' — 'wait' is not directly followed by a bare object pronoun, so no 'for' is inserted."
+    },
+    {
+      "id": "wait-for-person-object-neg-conf-006",
+      "input": "Wait, you forgot something.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Wait, you forgot something.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: parenthetical imperative — the comma after 'Wait' breaks the 'wait + pronoun' adjacency, so the rule abstains."
     }
   ]
 }
