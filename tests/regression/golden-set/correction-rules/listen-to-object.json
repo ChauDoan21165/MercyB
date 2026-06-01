@@ -65,6 +65,22 @@
       "expectedCorrection": "She hears music.",
       "expectedRuleFired": null,
       "notes": "Different verb stays unchanged."
+    },
+    {
+      "id": "listen-to-object-neg-conf-005",
+      "input": "Listen with me.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Listen with me.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: comitative 'with me' — 'listen' is not directly followed by a bare object, so no 'to' is inserted."
+    },
+    {
+      "id": "listen-to-object-neg-conf-006",
+      "input": "Listen up everyone.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Listen up everyone.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: phrasal 'listen up' — particle 'up' is not a whitelisted object, so the rule abstains."
     }
   ]
 }
