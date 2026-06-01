@@ -136,3 +136,57 @@ _(Also stage `Where did you go yesterday?` as `-neg-lock-wh-question` once the g
   "notes": "Lock (verb-sense guard): 'book' is the verb (to book a room), not a quantified noun; quantity-plural must not pluralize it. LOW severity / low-plausibility surface — folds into the shared verb-sense guard (#1/#2)."
 }
 ```
+
+---
+
+## 11. en-hat-biking-summer-runon → pass-through locks (RETIREMENT dependency)
+
+**Different kind of lock — a RETIREMENT pass-through, not a guard.** See
+`docs/ops/stub-rule-generalize-or-retire.md`: this rule has a broad keyword
+matcher with **canned, fabricating** output (a bike input becomes a hat
+sentence). Recommendation there is **RETIRE**. These three inputs each fire
+**only** `en-hat-biking-summer-runon` today (verified live) and currently get
+fabricated output; after retirement they must **pass through unchanged**.
+
+**Dependency:** commit these only once **Lane A retires `en-hat-biking-summer-runon`**
+(per the !324 decision). Until then they fire and would fail the suite.
+
+**Target fixture — note the schema caveat:** there is no existing
+`hat-biking-summer-runon.json`, and a *retired* rule has **no positives**, so it
+can't form a standard rule-centric golden fixture (which requires ≥3 positive).
+Place these as a **pass-through regression** instead: either a small
+`tests/regression/.../*.test.ts` asserting each input is returned unchanged, or a
+dedicated retirement fixture if the harness grows a "retired-rule pass-through"
+shape. Do **not** force them into a rule-centric fixture. Re-probe each post-
+retirement to confirm no *other* rule now fires (today only hat-biking does).
+
+```json
+{
+  "id": "hat-biking-retire-lock-bike-summer",
+  "input": "I bought a bike yesterday, summer is hot.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I bought a bike yesterday, summer is hot.",
+  "expectedRuleFired": null,
+  "notes": "Retirement pass-through: today fabricates 'I bought a HAT ...summer is coming, ...very sunny.' (bike->hat). After retiring en-hat-biking-summer-runon, must pass through unchanged."
+}
+```
+```json
+{
+  "id": "hat-biking-retire-lock-bicycle-canada",
+  "input": "They bought a bicycle yesterday in Canada.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "They bought a bicycle yesterday in Canada.",
+  "expectedRuleFired": null,
+  "notes": "Retirement pass-through: today fabricates 'I bought a HAT ...very sunny in Canada.' (wrong subject they->I, wrong object bicycle->hat). After retirement, unchanged."
+}
+```
+```json
+{
+  "id": "hat-biking-retire-lock-hat-sunny",
+  "input": "I bought a hat yesterday because it is sunny.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I bought a hat yesterday because it is sunny.",
+  "expectedRuleFired": null,
+  "notes": "Retirement pass-through: a plausible, grammatical learner sentence (not a run-on) that today gets fabricated content ('summer is coming'). After retirement, must pass through unchanged."
+}
+```
