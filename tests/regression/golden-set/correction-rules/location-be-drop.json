@@ -78,6 +78,30 @@
       "expectedCorrection": "The class on Monday is hard.",
       "expectedRuleFired": null,
       "notes": "Noun-postmodifier surface with existing finite verb must not be rewritten."
+    },
+    {
+      "id": "location-be-drop-neg-conf-intervening",
+      "input": "I really at home.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I really at home.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: 'really' between subject and location breaks the anchored '^pronoun + location$' shape, so the rule abstains."
+    },
+    {
+      "id": "location-be-drop-neg-conf-trailing",
+      "input": "he at the office now.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He at the office now.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: trailing 'now' breaks the full-string anchor, so the rule abstains (under-correction, not a rewrite)."
+    },
+    {
+      "id": "location-be-drop-neg-conf-nonwhitelist",
+      "input": "I at the gym.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I at the gym.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: 'the gym' is not in the location whitelist, so the rule abstains."
     }
   ]
 }
