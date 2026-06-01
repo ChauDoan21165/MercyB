@@ -23,6 +23,7 @@ trigger.
 | 7 | en-calque-take-medicine | whitelist ambiguity | TRIM |
 | 8 | en-step6-look-at-pronoun | fixed idiom | GUARD |
 | 9 | en-step6-at-clock-time | over-broad anchor (edge) | TRIM — optional, **LOWEST** severity |
+| 10 | en-l4-quantity-plural-s | verb-sense (quantity+noun) | GUARD (shared, verb-sense) — **LOW** (wave 2) |
 
 ---
 
@@ -165,6 +166,58 @@ as-a-following-verb" guard closes both.
   room` is the same concrete-place calque inside a question and `enter the room`
   is the **correct** fix. Output is grammatical → not an FP, not staged. Recorded
   so the audit knows it was checked.
+
+---
+
+## Second wave — verb-transforming guard-gap map
+
+Read-only inspection of **every** rule in `src/lib/tutor/correctionRules/en.ts`
+on two axes, with live-engine probes for each flagged rule. Result: **no new
+high-severity gap** — the 9 above cover the real ones. One marginal new
+over-fire (low-plausibility) + a confirmed breadth on #3.
+
+### Axis 1 — do-support / question gap (verb-form rewrite inside a question)
+
+| Rule | Question guard? | Probe | Verdict |
+|------|-----------------|-------|---------|
+| en-yesterday-irregular-beginner-past | ❌ none | `Did you eat yesterday?` → `Did you ate yesterday?` | **FP — already #3** (see breadth note) |
+| en-step5-subject-verb-agreement | ✅ `!isQuestionLike` | `Does he go?` untouched | safe |
+| en-third-person-daily-go-eat-have | ✅ `!isQuestionLike` (!304) | `Does she go every day?` untouched | safe |
+| en-third-person-school-routine | ✅ `!isQuestionLike` (!304) | `Did she go to school?` untouched | safe |
+| en-be-verb-omission | ✅ `!isBeAuxInvertedQuestion` | — | safe |
+| en-step6-location-be-drop / past-marker-recall | ✅ `isQuestionLike` guard | — | safe |
+| calques (discuss-about, marry-with, open/close-appliance, take-medicine, say-with-person), preposition-pattern, enter-concrete-place | ❌ none | `Did you discuss about it?` → `Did you discuss it?` ; `Did you open the light?` → `Did you turn on the light?` | **NOT FP** — the calque error exists in questions too; output is correct |
+| morning-routine / runon-punctuation | exact `^…$` anchor | — | safe |
+
+**Breadth note on #3:** `en-yesterday-irregular-beginner-past` breaks on **every
+verb in its set** inside a `do`-question, not just `go`:
+`Did you eat yesterday?` → `…ate`, `Did you buy yesterday?` → `…bought`,
+`Did you have lunch yesterday?` → `…had`, `Did you do it yesterday?` → `…did`.
+The single `isQuestionLike` guard (verdict #3) fixes all of them.
+
+### Axis 2 — verb-sense (transforms on a verb/noun-ambiguous token)
+
+| Rule | Token | Probe | Verdict |
+|------|-------|-------|---------|
+| en-step6-possessive-s | object whitelist (phone/book/bike) | — | **FP — already #1** |
+| en-l4-missing-singular-article | noun whitelist (book) | — | **FP — already #2** |
+| en-l4-quantity-plural-s | `book`/`word` after a quantity | `I want some book a room.` → `I want some books a room.` | **NEW — #10, LOW** (see below) |
+| en-step6-listen-to-object | object whitelist | `Listen story.` → `Listen to story.` (correct) | safe |
+| en-step6-profession-article | profession (nurse/driver/doctor) | `She is nurse.` → `She is a nurse.` (correct) | safe — `He is/She is <prof>` forces the noun reading |
+| en-step6-past-marker-recall | verbs eat/go/move | `Last summer I move to Canada.` → `…moved` (correct) | safe — slot wants a verb |
+
+### 10. en-l4-quantity-plural-s — verb-sense (LOW / low-plausibility)
+
+| Input | Wrong output | Note |
+|-------|--------------|------|
+| `I want some book a room.` | `I want some books a room.` | `book` is the verb (to book), but `(some\|two\|…)\s+book` pluralizes it |
+
+- **Trigger:** `/\b(two\|three\|many\|some\|several)\s+(…\|book\|…\|word)\b/i` — no
+  guard against the quantity-adjacent noun being a following verb.
+- **Verdict:** GUARD (verb-sense family, same shared predicate as #1/#2) — **LOW
+  severity**: a quantity determiner almost always forces the noun reading, so a
+  natural learner surface for this is rare. The reproducing input is contrived.
+  Folds into the shared verb-sense guard for free; not worth its own change.
 
 ---
 
