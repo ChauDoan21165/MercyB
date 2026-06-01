@@ -33,6 +33,7 @@
 
 stages:
   - test
+  - deploy
   - backup
 
 # ── Global CI tuning (Lane C: faster feedback) ─────────────────────────
@@ -576,6 +577,20 @@ check-new-orphans:shared-fallback:
     GIT_DEPTH: "0"
   cache: {}
   script: *orphan_guard_script
+
+# ── Manual production frontend deploy ─────────────────────────────────
+
+deploy-netlify-publish-only:
+  <<: [*node_job, *local_runner]
+  stage: deploy
+  allow_failure: true
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: manual
+    - when: never
+  script:
+    - npm run build
+    - npx --yes netlify-cli deploy --prod --dir=dist --no-build --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN"
 
 # ── `backup` stage (unchanged from prior version) ──────────────────────
 
