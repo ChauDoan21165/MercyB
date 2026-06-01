@@ -70,6 +70,30 @@
       "expectedCorrection": "He is happy.",
       "expectedRuleFired": null,
       "notes": "FP-stress (adjective, not a count noun): 'happy' is not a noun; rule must abstain."
+    },
+    {
+      "id": "missing-article-neg-conf-proper",
+      "input": "I want Apple.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I want Apple.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: capitalized 'Apple' is treated as a proper noun (isProperNounArticleMatch), so the rule abstains."
+    },
+    {
+      "id": "missing-article-neg-conf-plural",
+      "input": "I bought books.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I bought books.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: plural 'books' is not a bare singular count noun, so the rule abstains."
+    },
+    {
+      "id": "missing-article-neg-conf-intervening",
+      "input": "I really want apple.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I really want apple.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: adverb 'really' between subject and verb breaks the 'I want <noun>' adjacency, so the rule abstains."
     }
   ]
 }

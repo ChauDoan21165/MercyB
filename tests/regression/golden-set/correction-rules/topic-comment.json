@@ -150,6 +150,22 @@
       "expectedCorrection": "Because I was tired, I slept early.",
       "expectedRuleFired": null,
       "notes": "Subordinate-clause (because-clause) fronting."
+    },
+    {
+      "id": "topic-comment-neg-conf-verb-nearmiss",
+      "input": "This book I love.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "This book I love.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: anchor near-miss — verb 'love' differs from the exact 'this book i like' surface, so the rule abstains."
+    },
+    {
+      "id": "topic-comment-neg-conf-extra-words",
+      "input": "This book I like a lot.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "This book I like a lot.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: trailing 'a lot' breaks the exact full-string anchor, so the rule abstains."
     }
   ]
 }
