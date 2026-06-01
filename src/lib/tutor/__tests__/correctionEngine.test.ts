@@ -172,6 +172,25 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    "Does she eat every day?",
+    "Does he eat every day?",
+    "Does she have breakfast every day?",
+    "Does he go to school?",
+    "Do they go to school?",
+    "Does she go to school every day?",
+    "Why does she eat every day?",
+    "When does he go to school?",
+  ])("does not apply routine third-person corrections inside questions: %s", (input) => {
+    const result = correctWithTutorRules(input, "en");
+
+    expect(result).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+    expect(result.corrected).not.toMatch(/\b(?:eats|has|goes)\b/i);
+  });
+
+  it.each([
     ["He go on Monday.", "He go on Monday."],
     ["He go in 2024.", "He go in 2024."],
     ["She work an hour ago.", "She work an hour ago."],

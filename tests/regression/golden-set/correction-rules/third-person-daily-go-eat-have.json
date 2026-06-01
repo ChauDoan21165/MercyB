@@ -70,6 +70,38 @@
       "expectedCorrection": "Does she eat?",
       "expectedRuleFired": null,
       "notes": "FP guard (question, no habitual marker): without 'every day' the rule abstains, so the 'does she eat' question stays unchanged."
+    },
+    {
+      "id": "tpd-neg-006",
+      "input": "Does she eat every day?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Does she eat every day?",
+      "expectedRuleFired": null,
+      "notes": "FP guard: do/does questions must not be conjugated inside the auxiliary frame."
+    },
+    {
+      "id": "tpd-neg-007",
+      "input": "Does he eat every day?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Does he eat every day?",
+      "expectedRuleFired": null,
+      "notes": "FP guard: third-person subject inside a does question stays base-form."
+    },
+    {
+      "id": "tpd-neg-008",
+      "input": "Does she have breakfast every day?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Does she have breakfast every day?",
+      "expectedRuleFired": null,
+      "notes": "FP guard: have must not become has after does."
+    },
+    {
+      "id": "tpd-neg-009",
+      "input": "Why does she eat every day?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Why does she eat every day?",
+      "expectedRuleFired": null,
+      "notes": "FP guard: wh-question with does keeps the lexical verb in base form."
     }
   ]
 }

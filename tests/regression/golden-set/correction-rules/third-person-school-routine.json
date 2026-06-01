@@ -70,6 +70,38 @@
       "expectedCorrection": "Does he go?",
       "expectedRuleFired": null,
       "notes": "FP guard (question, no 'to school'): the routine rule needs 'go to school'; bare 'go' in a question stays unchanged."
+    },
+    {
+      "id": "tps-neg-006",
+      "input": "Does he go to school?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Does he go to school?",
+      "expectedRuleFired": null,
+      "notes": "FP guard: does question must keep go as base-form."
+    },
+    {
+      "id": "tps-neg-007",
+      "input": "Do they go to school?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Do they go to school?",
+      "expectedRuleFired": null,
+      "notes": "FP guard: plural do question is outside third-person singular correction."
+    },
+    {
+      "id": "tps-neg-008",
+      "input": "Does she go to school every day?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Does she go to school every day?",
+      "expectedRuleFired": null,
+      "notes": "FP guard: question-like input must block the school routine rule even with every day present."
+    },
+    {
+      "id": "tps-neg-009",
+      "input": "When does he go to school?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "When does he go to school?",
+      "expectedRuleFired": null,
+      "notes": "FP guard: wh-question with does keeps go in base form."
     }
   ]
 }
