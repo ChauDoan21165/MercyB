@@ -1,0 +1,211 @@
+{
+  "flow": "vi-de",
+  "total": 101,
+  "byReason": {
+    "DUP_ID": 99,
+    "FRONT_EQUALS_BACK": 1,
+    "LENGTH_OUT_OF_RANGE": 1
+  },
+  "samples": [
+    {
+      "id": "vi-de:vocab:hom-qua",
+      "front": "hôm qua",
+      "back": "gestern",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:ngay-mai",
+      "front": "ngày mai",
+      "back": "morgen",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:van-phong",
+      "front": "văn phòng",
+      "back": "das Büro",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:lam-viec",
+      "front": "làm việc",
+      "back": "arbeiten",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:e-xuat",
+      "front": "đề xuất",
+      "back": "vorschlagen",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:ong-y",
+      "front": "đồng ý",
+      "back": "einverstanden",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:so-yeu-ly-lich",
+      "front": "sơ yếu lý lịch",
+      "back": "der Lebenslauf",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:bat-au",
+      "front": "bắt đầu",
+      "back": "anfangen",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:cang-thang",
+      "front": "căng thẳng",
+      "back": "der Stress",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:met",
+      "front": "mệt",
+      "back": "müde",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:sentence:cai-nay-gia-bao-nhieu",
+      "front": "Cái này giá bao nhiêu?",
+      "back": "Wie viel kostet es?",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:gui",
+      "front": "gửi",
+      "back": "schicken",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:sot",
+      "front": "sốt",
+      "back": "das Fieber",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:au",
+      "front": "đau",
+      "back": "wehtun",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:om",
+      "front": "ốm",
+      "back": "krank",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:thuoc",
+      "front": "thuốc",
+      "back": "das Medikament",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:cuoc-hen",
+      "front": "cuộc hẹn",
+      "back": "der Termin",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:gio",
+      "front": "giờ",
+      "back": "die Uhrzeit",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:mua",
+      "front": "mua",
+      "back": "kaufen",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:ga-tau",
+      "front": "ga tàu",
+      "back": "der Bahnhof",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:tau-ien-ngam",
+      "front": "tàu điện ngầm",
+      "back": "die U-Bahn",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:tang",
+      "front": "tặng",
+      "back": "schenken",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:ong-y",
+      "front": "đồng ý",
+      "back": "zustimmen",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:tu-choi",
+      "front": "từ chối",
+      "back": "ablehnen",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-de:vocab:lo-lang",
+      "front": "lo lắng",
+      "back": "die Sorge",
+      "reasons": [
+        "DUP_ID"
+      ]
+    }
+  ]
+}
