@@ -91,6 +91,22 @@
       "expectedCorrection": "He is happy.",
       "expectedRuleFired": null,
       "notes": "Adjective predicate stays unchanged."
+    },
+    {
+      "id": "profession-article-neg-conf-006",
+      "input": "He is, I think, doctor.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He is, I think, doctor.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: parenthetical 'I think' breaks the 'He is + profession' adjacency, so the rule abstains."
+    },
+    {
+      "id": "profession-article-neg-conf-007",
+      "input": "The doctor is here.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The doctor is here.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: 'doctor' as a determined subject ('The doctor'), not a 'pronoun + be + bare profession' predicate. Anchor near-miss."
     }
   ]
 }
