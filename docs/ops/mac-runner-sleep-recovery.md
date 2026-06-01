@@ -326,3 +326,110 @@ The Mac runner is healthy when all of these are true:
 - `gitlab-runner status` reports the service is running.
 - `launchctl list | rg -i 'gitlab|runner'` shows a loaded runner service.
 - A trivial Docker executor pipeline completes after the Mac has sat idle longer than the previous failure interval.
+
+---
+
+# Doubled-ref CI glitch (Tests=0 / malformed merge-request ref)
+
+A separate, intermittent failure on the same Mac runner. Documented here because
+it is a **runner/environment** problem, not a repo-config bug, and it shares the
+build-dir-corruption failure mode the sleep issue can also cause.
+
+## Symptom
+
+- A merge-request pipeline reports **`Tests=0`** (no tests run) — which **stalls
+  auto-merge**, since the merge gate never sees a green test job.
+- The job's "Getting source from Git repository" phase shows a **malformed,
+  prefix-doubled fetch ref**: `refs/heads/refs/merge-requests/N/head` (the
+  correct form is `refs/merge-requests/N/head`).
+- **Intermittent** — it bites *some* MR pipelines, not all (e.g. it hit the !316
+  pipeline). A config bug would be deterministic; intermittency points at runner
+  state.
+
+## Root cause (confirmed runner/environment — NOT `.gitlab-ci.yml`)
+
+The ref is constructed entirely inside the GitLab Runner's source-fetch phase
+(it prints `Checking out <sha> as detached HEAD (ref is refs/merge-requests/N/head)`
+*before* any `before_script` runs). Evidence the repo config is not involved:
+
+- `.gitlab-ci.yml` sets only `GIT_DEPTH: "20"` — **no** `GIT_STRATEGY`,
+  `GIT_CHECKOUT`, `GIT_CLONE_PATH`, `GIT_FETCH_EXTRA_FLAGS`, `pre_get_sources_script`,
+  or `CI_MERGE_REQUEST_REF_PATH` usage. `refs/heads` appears in zero git commands.
+- The only script-level fetch (`scripts/ci/check-new-orphans.mjs`) does
+  `git fetch origin <target-branch-name>` (a branch name, never a `refs/…` path),
+  so it cannot produce the doubled prefix.
+
+The doubled `refs/heads/` prefix is the runner mangling its own refspec — a
+runner-version / git-fetch-state issue, made likely by stale reuse of the
+`concurrent = 1` runner's build directory (an interrupted fetch — including one
+cut off by a sleep/wake boundary, see above — can leave a bad ref behind).
+
+## Recovery (immediate — re-fetches cleanly)
+
+**Retry the bitten pipeline.** A fresh run re-fetches the source and the ref
+resolves correctly (verified: !316's retried pipeline checked out
+`refs/merge-requests/316/head` normally and ran all tests). Until the root fix
+lands, **do not rely on auto-merge for the Mac runner** — when the glitch hits,
+retry the pipeline to unblock.
+
+## Root fix — update gitlab-runner + clear the stale build dir
+
+Pick the sequence matching your install. The current runner is the
+**Homebrew (Apple-Silicon) binary at `/opt/homebrew/bin/gitlab-runner`** managed
+by `~/Library/LaunchAgents/gitlab-runner.plist`. Confirm the build dir first:
+
+```bash
+# builds_dir is usually <working-directory>/builds; the launchd plist sets
+# --working-directory /Users/admin/MercyB, so builds default to:
+grep -E 'builds_dir|working-directory' ~/.gitlab-runner/config.toml ~/Library/LaunchAgents/gitlab-runner.plist
+```
+
+### A. Homebrew install
+
+```bash
+brew services stop gitlab-runner            # or: launchctl unload ~/Library/LaunchAgents/gitlab-runner.plist
+brew update && brew upgrade gitlab-runner
+rm -rf /Users/admin/MercyB/builds           # clear the stale build dir holding the bad ref
+brew services start gitlab-runner           # or: launchctl load ~/Library/LaunchAgents/gitlab-runner.plist
+gitlab-runner --version && gitlab-runner verify
+```
+
+### B. Manual-binary install
+
+```bash
+gitlab-runner stop                          # or: launchctl unload ~/Library/LaunchAgents/gitlab-runner.plist
+# Replace the binary in place (Apple Silicon = darwin-arm64; use darwin-amd64 on Intel):
+sudo curl -L --output /opt/homebrew/bin/gitlab-runner \
+  "https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-darwin-arm64"
+sudo chmod +x /opt/homebrew/bin/gitlab-runner
+rm -rf /Users/admin/MercyB/builds           # clear the stale build dir
+gitlab-runner start                         # or: launchctl load ~/Library/LaunchAgents/gitlab-runner.plist
+gitlab-runner --version && gitlab-runner verify
+```
+
+(If your manual binary lives elsewhere — e.g. `/usr/local/bin/gitlab-runner` —
+substitute that path in the `curl`/`chmod` lines.)
+
+## Stopgap (deliberate, NOT applied) — `GIT_STRATEGY: clone`
+
+If the glitch recurs before the runner can be updated, forcing a **fresh clone
+per job** sidesteps stale-build-dir refspec corruption. Add to `.gitlab-ci.yml`
+`variables:`:
+
+```yaml
+variables:
+  GIT_STRATEGY: clone   # stopgap for the doubled-ref glitch — REMOVE once the runner is fixed
+```
+
+This is a **workaround, not the root fix** — it trades pipeline speed (a full
+clone every job instead of incremental fetch) for avoiding the corrupted-fetch
+path. It is intentionally **left unapplied**; apply only if recurrence forces it,
+and remove after the runner update. Root cause remains runner/environment (Lane C
+/ infra).
+
+## Green-state check (doubled-ref glitch)
+
+- A new MR pipeline's source phase prints `ref is refs/merge-requests/N/head`
+  (single prefix, no doubled `refs/heads/`).
+- The test job runs with a non-zero test count.
+- `gitlab-runner --version` shows the updated version; `gitlab-runner verify` passes.
