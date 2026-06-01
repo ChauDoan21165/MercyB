@@ -257,7 +257,21 @@ variables:
   # packages are tiny. Only the `build` job needs Deno + the
   # registry-drift check, so the install scope is intentionally
   # limited here rather than hoisted into a shared anchor.
-  - apt-get update && apt-get install -y --no-install-recommends curl ca-certificates unzip git
+  - |
+    case "$(uname -s)" in
+      Darwin)
+        command -v curl
+        command -v unzip
+        command -v git
+        ;;
+      Linux)
+        apt-get update && apt-get install -y --no-install-recommends curl ca-certificates unzip git
+        ;;
+      *)
+        echo "Unsupported CI OS: $(uname -s)" >&2
+        exit 1
+        ;;
+    esac
   # Deno toolchain install for the edge-function check. The official
   # install.sh fetches the latest stable Deno when invoked without a
   # version arg. The repo's deno.lock is v5 → needs Deno >= 2.2; any
@@ -266,10 +280,28 @@ variables:
   # does semver-range resolution) but install.sh interprets the arg
   # as a literal release tag and 404s on a non-existent `v2.x` tag.
   # If pinning becomes necessary, use a concrete release like
-  # `v2.4.0`. DENO_INSTALL=/usr/local puts deno on PATH for the rest
-  # of the job.
-  - 'curl -fsSL https://deno.land/install.sh | DENO_INSTALL=/usr/local sh'
-  - export PATH="/usr/local/bin:$PATH"
+  # `v2.4.0`. On Linux/Docker, DENO_INSTALL=/usr/local preserves the
+  # historical CI path. On macOS shell runners, install into the user's
+  # writable home directory instead of /usr/local.
+  - |
+    if command -v deno >/dev/null 2>&1; then
+      echo "Using existing Deno: $(command -v deno)"
+    else
+      case "$(uname -s)" in
+        Darwin)
+          export DENO_INSTALL="$HOME/.deno"
+          ;;
+        Linux)
+          export DENO_INSTALL="/usr/local"
+          ;;
+        *)
+          echo "Unsupported CI OS: $(uname -s)" >&2
+          exit 1
+          ;;
+      esac
+      curl -fsSL https://deno.land/install.sh | sh
+    fi
+  - export PATH="$HOME/.deno/bin:/usr/local/bin:$PATH"
   - command -v deno
   - npm run deno:check:functions
   - npm run build
@@ -320,7 +352,19 @@ variables:
   # with `spawnSync git ENOENT` (whichever shard the files land in).
   # Only git is needed — curl/unzip/deno were build-only, not test deps.
   # `--no-install-recommends` keeps the install lean.
-  - apt-get update && apt-get install -y --no-install-recommends git
+  - |
+    case "$(uname -s)" in
+      Darwin)
+        command -v git
+        ;;
+      Linux)
+        apt-get update && apt-get install -y --no-install-recommends git
+        ;;
+      *)
+        echo "Unsupported CI OS: $(uname -s)" >&2
+        exit 1
+        ;;
+    esac
   - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL
 
 # ── `test` stage jobs ──────────────────────────────────────────────────
@@ -488,7 +532,19 @@ module-boundaries:shared-fallback:
 # always resolves; the script fail-opens if it somehow cannot. See
 # scripts/ci/check-new-orphans.mjs for the detection rules and FP guards.
 .orphan_guard_script: &orphan_guard_script
-  - apt-get update && apt-get install -y --no-install-recommends git
+  - |
+    case "$(uname -s)" in
+      Darwin)
+        command -v git
+        ;;
+      Linux)
+        apt-get update && apt-get install -y --no-install-recommends git
+        ;;
+      *)
+        echo "Unsupported CI OS: $(uname -s)" >&2
+        exit 1
+        ;;
+    esac
   - node scripts/ci/check-new-orphans.mjs
 
 .orphan_guard_mr_rules: &orphan_guard_mr_rules
