@@ -1,0 +1,229 @@
+{
+  "flow": "vi-zh",
+  "level": "B2",
+  "status": "for-review",
+  "certifiedTotal": 438,
+  "certifiedAtLevel": 195,
+  "cards": [
+    {
+      "id": "vi-zh:sentence:anh-vuong-em-co-viec-rieng-muon-bao-cao-voi-anh",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Anh Vương, em có việc riêng muốn báo cáo với anh.",
+      "back": "王经理, 我有件私事想向您汇报。",
+      "pronunciation": "Wáng jīnglǐ, wǒ yǒu jiàn sī shì xiǎng xiàng nín huìbào.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:me-em-co-van-e-suc-khoe-em-can-ve-viet-nam-o-can-12g7vh1",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Mẹ em có vấn đề sức khỏe, em cần về Việt Nam ở cạnh bà một thời gian.",
+      "back": "我母亲身体出了状况, 需要我回越南陪她一段时间。",
+      "pronunciation": "Wǒ mǔqīn shēntǐ chū le zhuàngkuàng, xūyào wǒ huí yuè nán péi tā yīduàn shíjiān.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:em-co-the-xin-nghi-phep-3-en-4-tuan-uoc-khong-em-0pal7z0",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Em có thể xin nghỉ phép 3 đến 4 tuần được không? Em sẵn sàng làm theo hình thức không lương.",
+      "back": "请问可以请三到四周的事假吗? 我愿意以无薪形式办理。",
+      "pronunciation": "Qǐng wèn kěyǐ qǐng sān dào sì zhōu de shì jià ma? Wǒ yuànyì yǐ wú xīn xíngshì bànlǐ.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:em-se-sap-xep-ban-giao-cong-viec-truoc-am-bao-kh-0dsfeiz",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Em sẽ sắp xếp bàn giao công việc trước, đảm bảo không ảnh hưởng tiến độ dự án.",
+      "back": "我会提前安排好工作交接, 确保不影响项目进度。",
+      "pronunciation": "Wǒ huì tíqián ānpái hǎo gōngzuò jiāojiē, quèbǎo bù yǐngxiǎng xiàngmù jìndù.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:em-a-gay-phien-ha-cho-anh-va-ca-team-that-su-la-1y8hdar",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Em đã gây phiền hà cho anh và cả team, thật sự là bất đắc dĩ.",
+      "back": "给您和团队添麻烦了, 实在是情非得已。",
+      "pronunciation": "Gěi nín hé tuánduì tiān máfan le, shízài shì qíng fēi dé yǐ.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:em-chao-anh-chi-em-la-nguyen-van-hai-en-phong-va-1agrb1a",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Em chào anh/chị, em là Nguyễn Văn Hải, đến phỏng vấn vị trí kỹ sư phần mềm.",
+      "back": "您好, 我是来面试软件工程师职位的阮文海。",
+      "pronunciation": "Nín hǎo, wǒ shì lái miànshì ruǎnjiàn gōngchéngshī zhíwèi de Ruǎn Wénhǎi.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:cam-on-quy-cong-ty-a-cho-em-co-hoi-phong-van-nay",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Cảm ơn quý công ty đã cho em cơ hội phỏng vấn này.",
+      "back": "感谢贵公司给我这次面试的机会。",
+      "pronunciation": "Gǎnxiè guì gōngsī gěi wǒ zhè cì miànshì de jīhuì.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:truoc-ay-em-a-thuc-tap-mot-nam-tai-chi-nhanh-vie-1cnxuuk",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Trước đây em đã thực tập một năm tại chi nhánh Việt Nam ở Hà Nội.",
+      "back": "我之前在河内的越南分公司实习了一年。",
+      "pronunciation": "Wǒ zhīqián zài Hénèi de Yuènán fēn gōngsī shíxí le yī nián.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:em-hy-vong-co-the-ong-gop-cong-suc-cho-thi-truon-03ggsn0",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Em hy vọng có thể đóng góp công sức cho thị trường Việt Nam của công ty.",
+      "back": "我希望能为公司的越南市场贡献自己的力量。",
+      "pronunciation": "Wǒ xīwàng néng wèi gōngsī de Yuènán shìchǎng gòngxiàn zìjǐ de lìliàng.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:neu-may-man-uoc-gia-nhap-quy-cong-ty-em-se-doc-t-1yttozc",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Nếu may mắn được gia nhập quý công ty, em sẽ dốc toàn lực.",
+      "back": "如果有幸加入贵公司, 我会全力以赴。",
+      "pronunciation": "Rúguǒ yǒu xìng jiārù guì gōngsī, wǒ huì quánlì yǐ fù.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:kinh-thua-cac-thay-co-em-xin-chao-cac-thay-co",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Kính thưa các thầy cô, em xin chào các thầy cô.",
+      "back": "尊敬的各位老师, 您们好。",
+      "pronunciation": "Zūnjìng de gè wèi lǎoshī, nínmen hǎo.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:em-ung-tuyen-chuong-trinh-thac-si-khoa-hoc-may-t-18kk1bo",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Em ứng tuyển chương trình Thạc sĩ Khoa học Máy tính của Đại học Thanh Hoa.",
+      "back": "我申请的是清华大学计算机科学硕士项目。",
+      "pronunciation": "Wǒ shēnqǐng de shì Qīnghuá Dàxué jìsuànjī kēxué shuòshì xiàngmù.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:huong-nghien-cuu-cua-em-la-ung-dung-tri-tue-nhan-0ak7vbb",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Hướng nghiên cứu của em là ứng dụng trí tuệ nhân tạo trong xử lý tiếng Việt.",
+      "back": "我的研究方向是人工智能在越南语处理上的应用。",
+      "pronunciation": "Wǒ de yánjiū fāngxiàng shì réngōng zhìnéng zài Yuènányǔ chǔlǐ shàng de yìngyòng.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:sau-khi-tot-nghiep-em-mong-tro-ve-viet-nam-em-nh-1bxd2qf",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Sau khi tốt nghiệp em mong trở về Việt Nam, đem những gì học được áp dụng vào sự phát triển khoa học công nghệ của đất nước.",
+      "back": "毕业后我希望回越南, 把所学应用到本国的科技发展中。",
+      "pronunciation": "Bìyè hòu wǒ xīwàng huí Yuènán, bǎ suǒ xué yìngyòng dào běnguó de kējì fāzhǎn zhōng.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:xin-cac-thay-co-cho-em-co-hoi-hoc-tap-nay-em-nha-1hln8ye",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Xin các thầy cô cho em cơ hội học tập này, em nhất định sẽ không phụ kỳ vọng.",
+      "back": "请各位老师给我这个学习的机会, 我一定不会辜负厚望。",
+      "pronunciation": "Qǐng gè wèi lǎoshī gěi wǒ zhège xuéxí de jīhuì, wǒ yīdìng bù huì gūfù hòuwàng.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:giao-su-vuong-em-muon-thao-luan-voi-thay-ve-e-ta-0wuk3u5",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Giáo sư Vương, em muốn thảo luận với thầy về đề tài luận văn tốt nghiệp của em.",
+      "back": "王教授, 我想跟您讨论一下我的毕业论文选题。",
+      "pronunciation": "Wáng jiàoshòu, wǒ xiǎng gēn nín tǎolùn yīxià wǒ de bìyè lùnwén xuǎntí.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:hien-em-ang-can-nhac-ba-huong-muon-nghe-y-kien-c-0c6nhvk",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Hiện em đang cân nhắc ba hướng, muốn nghe ý kiến của thầy.",
+      "back": "我目前考虑了三个方向, 想听听您的意见。",
+      "pronunciation": "Wǒ mùqián kǎolǜ le sān gè fāngxiàng, xiǎng tīngting nín de yìjiàn.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:huong-thu-nhat-la-nlp-tieng-viet-thu-hai-la-dich-062qoci",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Hướng thứ nhất là NLP tiếng Việt, thứ hai là dịch máy Trung-Việt, thứ ba là mô hình ngôn ngữ ít tài nguyên.",
+      "back": "第一个方向是越南语NLP, 第二个是中越机器翻译, 第三个是低资源语言模型。",
+      "pronunciation": "Dì yī gè fāngxiàng shì Yuènányǔ NLP, dì èr gè shì zhōng-yuè jīqì fānyì, dì sān gè shì dī zīyuán yǔyán móxíng.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:thay-thay-huong-nao-co-gia-tri-nghien-cuu-hon-va-1otk0zw",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Thầy thấy hướng nào có giá trị nghiên cứu hơn, và phù hợp với nền tảng của em hơn?",
+      "back": "您觉得哪个方向更有研究价值, 也更适合我的背景?",
+      "pronunciation": "Nín juéde nǎ gè fāngxiàng gèng yǒu yánjiū jiàzhí, yě gèng shìhé wǒ de bèijǐng?",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    },
+    {
+      "id": "vi-zh:sentence:em-se-thu-hep-pham-vi-theo-goi-y-cua-thay-sau-o-0laby5f",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "Em sẽ thu hẹp phạm vi theo gợi ý của thầy, sau đó bắt đầu viết đề cương.",
+      "back": "我会根据您的建议进一步缩小范围, 然后开始写开题报告。",
+      "pronunciation": "Wǒ huì gēnjù nín de jiànyì jìnyībù suōxiǎo fànwéi, ránhòu kāishǐ xiě kāití bàogào.",
+      "cefr": "B2",
+      "provenance": "adapted",
+      "source": "chinese/lessons"
+    }
+  ]
+}

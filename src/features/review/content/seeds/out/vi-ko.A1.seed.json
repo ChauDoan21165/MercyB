@@ -1,0 +1,229 @@
+{
+  "flow": "vi-ko",
+  "level": "A1",
+  "status": "for-review",
+  "certifiedTotal": 719,
+  "certifiedAtLevel": 72,
+  "cards": [
+    {
+      "id": "vi-ko:sentence:nguyen-am-a",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Nguyên âm 'a'",
+      "back": "아",
+      "pronunciation": "a",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:nguyen-am-ya",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Nguyên âm 'ya'",
+      "back": "야",
+      "pronunciation": "ya",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:nguyen-am-eo",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Nguyên âm 'eo'",
+      "back": "어",
+      "pronunciation": "eo",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:nguyen-am-o",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Nguyên âm 'ô'",
+      "back": "오",
+      "pronunciation": "o",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:nguyen-am-u",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Nguyên âm 'u'",
+      "back": "우",
+      "pronunciation": "u",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:am-tiet-ga",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Âm tiết 'ga'",
+      "back": "가",
+      "pronunciation": "ga",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:am-tiet-na",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Âm tiết 'na'",
+      "back": "나",
+      "pronunciation": "na",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:am-tiet-da",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Âm tiết 'da'",
+      "back": "다",
+      "pronunciation": "da",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:am-tiet-ma",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Âm tiết 'ma'",
+      "back": "마",
+      "pronunciation": "ma",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:am-tiet-ba",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Âm tiết 'ba'",
+      "back": "바",
+      "pronunciation": "ba",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:ga-ang-i",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Ga đang đi.",
+      "back": "가가 가요.",
+      "pronunciation": "Gaga gayo.",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:em-be-ang-ngu",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Em bé đang ngủ.",
+      "back": "아기가 자요.",
+      "pronunciation": "Agiga jayo.",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:bien-mau-xanh",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Biển màu xanh.",
+      "back": "바다가 파래요.",
+      "pronunciation": "Badaga paraeyo.",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:su-tu-ngu",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Sư tử ngủ.",
+      "back": "사자가 자요.",
+      "pronunciation": "Sajaga jayo.",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:i-ra-ngoai",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Đi ra ngoài.",
+      "back": "나가 가요.",
+      "pronunciation": "Naga gayo.",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:no-mau-en",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Nó màu đen.",
+      "back": "까만색이에요.",
+      "pronunciation": "Kkamansaegieyo.",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:no-am-ap",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Nó ấm áp.",
+      "back": "따뜻해요.",
+      "pronunciation": "Ttatteushaeyo.",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:i-nhanh",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Đi nhanh.",
+      "back": "빨리 가요.",
+      "pronunciation": "Ppalli gayo.",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:no-re",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Nó rẻ.",
+      "back": "싸요.",
+      "pronunciation": "Ssayo.",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    },
+    {
+      "id": "vi-ko:sentence:no-man",
+      "flow": "vi-ko",
+      "kind": "sentence",
+      "front": "Nó mặn.",
+      "back": "짜요.",
+      "pronunciation": "Jjayo.",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "korean/lessons"
+    }
+  ]
+}

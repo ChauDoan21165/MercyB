@@ -45,8 +45,18 @@ point a `seedSource` (reading the certified seed) gets registered in
 still returns `[]` at runtime. `status: "for-review"` on every seed enforces the
 distinction.
 
-## Status
+## Status (all for-review, none wired live)
 
-- **vi→de** — adapter + 20-card A1 seed shipped (2,024 candidates → 1,923 certified;
-  pure adaptation, zero generation). For review. Not yet wired live.
-- **vi→zh / vi→ko / vi→ja** — pending (adapt subset + generate gap; ja strictest).
+- **vi→de** — adapter + 20-card **A1** seed (2,024 candidates → 1,923 certified;
+  pure adaptation, zero generation).
+- **vi→ko** — adapter + 20-card **A1** seed (726 → 719 certified; sentences only —
+  vocab has no romaja so it can't pass the reading gate; pure adaptation).
+- **vi→zh** — adapter + 20-card **B2** seed (447 → 438 certified). FINDING:
+  Chinese A1/A2/B1 lessons carry **zero** Vietnamese glosses (all vi is B2+), so
+  an A1 vi→zh seed requires **generation** (the gap). The B2 seed is the real
+  adaptation artifact; the empty A1 seed is emitted to make the gap visible.
+- **vi→ja** — pending. No per-sentence vi/romaji in source → fully generated
+  (vi gloss via injected Translator + romaji via wanakana), strictest gate.
+- **generate/** — build-time generation seams (Translator interface, deriveRomaji,
+  round-trip checker, generateCandidates). Production MT wiring deferred (no
+  offline endpoint); seeds use authored/injected translators + the human review.

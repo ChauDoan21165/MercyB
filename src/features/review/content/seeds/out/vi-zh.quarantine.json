@@ -1,0 +1,83 @@
+{
+  "flow": "vi-zh",
+  "total": 9,
+  "byReason": {
+    "FRONT_NOT_VIETNAMESE": 1,
+    "DUP_ID": 4,
+    "PINYIN_NO_TONE": 4
+  },
+  "samples": [
+    {
+      "id": "vi-zh:sentence:mot-la-ba-ban-dich-tac-gia-chon-francois-cheng-s-187qaoa",
+      "front": "Một là, ba bản dịch tác giả chọn — François Cheng (程抱一), Sandys, và một dịch giả ẩn danh — niên đại xuất bản chênh lệch hơn năm mươi năm, nhưng tác giả chưa bàn đầy đủ về ảnh hưởng của khoảng thời gian này lên các bản dịch.",
+      "back": "其一, 作者所取之三种译本——程抱一、桑兹 (Sandys) 与一位匿名译者——在出版年代上跨度逾五十年, 然作者未充分讨论此一时间差对译本之影响。",
+      "reasons": [
+        "FRONT_NOT_VIETNAMESE"
+      ]
+    },
+    {
+      "id": "vi-zh:sentence:khi-soan-thao-tac-gia-nen-cat-ruom-ra-loai-bo-nh-1dpzjw3",
+      "front": "Khi soạn thảo, tác giả nên cắt rườm rà, loại bỏ những cách diễn đạt thừa, giữ lại phần nội dung có mật độ thông tin cao nhất, kiêng kỵ rườm rà.",
+      "back": "撰写时, 笔者宜删繁就简, 剔除冗余之表述, 保留最具信息密度之内容, 切忌冗长。",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-zh:sentence:tuy-nhien-o-tang-phuong-phap-ban-thao-con-mot-so-188icoy",
+      "front": "Tuy nhiên, ở tầng phương pháp, bản thảo còn một số điểm đáng để cải thiện, ở đây đề xuất ba gợi ý cụ thể, cung cấp cho tác giả tham khảo.",
+      "back": "然而, 在方法层面, 本稿尚有若干值得改进之处, 兹提出三点具体建议, 供作者参考。",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-zh:sentence:e-xuat-tac-gia-phan-hoi-tung-iem-mot-trong-ba-ie-0z23jux",
+      "front": "Đề xuất tác giả phản hồi từng điểm một trong ba điểm trên, và trong bản sửa đánh dấu các chỗ sửa bằng màu để thuận lợi cho việc tái duyệt.",
+      "back": "建议作者针对上述三点逐一回应, 并在修订版中以颜色标注修改之处, 以便复审。",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-zh:sentence:tong-hop-y-kien-anh-gia-ban-thao-nay-nen-chap-nh-1tez6mj",
+      "front": "Tổng hợp ý kiến đánh giá, bản thảo này nên chấp nhận tái duyệt sau sửa đổi lớn, không nên chấp nhận trực tiếp, cũng không cần lập tức bác bỏ.",
+      "back": "综合评审意见, 本稿宜接受重大修改后再审, 不宜直接接受, 亦无须立即拒稿。",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-zh:sentence:phuong-phap-sieu-viet-cua-kant-khong-hoi-x-co-un-1o3kg1c",
+      "front": "Phương pháp siêu việt của Kant không hỏi X có đúng không， mà hỏi X khả hữu trong điều kiện nào。 Cú chuyển câu hỏi này là cú nhảy từ tư duy kinh nghiệm sang tư duy triết học。",
+      "back": "康德之超越论方法，非问「X是否为真」，而问「X在何种条件下方为可能」。此一问之转换，即从经验思维到哲学思维之飞跃。",
+      "reasons": [
+        "PINYIN_NO_TONE"
+      ]
+    },
+    {
+      "id": "vi-zh:sentence:truu-tuong-khong-phai-tron-chay-hien-thuc-ma-la-191odgf",
+      "front": "Trừu tượng không phải trốn chạy hiện thực， mà là thao tác không thể thiếu để hiểu hiện thực sâu hơn bằng cách rút ra cấu trúc chung đằng sau các trường hợp cá biệt。",
+      "back": "抽象非逃避现实，而是提取个别事例背后之共通结构，以更深地理解现实之不可或缺之操作。",
+      "reasons": [
+        "PINYIN_NO_TONE"
+      ]
+    },
+    {
+      "id": "vi-zh:sentence:tu-aristotle-tro-i-nghe-thuat-thuyet-phuc-do-ba-0hsups6",
+      "front": "Từ Aristotle trở đi， nghệ thuật thuyết phục do ba cột chống đỡ： luận chứng lý tính、 phẩm cách người nói、 kêu gọi cảm xúc。 Tỷ lệ giữa ba yếu tố tùy thuộc thính chúng và trường hợp。",
+      "back": "亚里士多德以降，说服之艺术由三柱支撑：理性论证、言者品格、情感诉求。三者之配比，视听众与场合而定。",
+      "reasons": [
+        "PINYIN_NO_TONE"
+      ]
+    },
+    {
+      "id": "vi-zh:sentence:tan-tu-tu-hoc-cua-perelman-chi-ra-rang-muc-ich-l-0aaweoy",
+      "front": "Tân tu từ học của Perelman chỉ ra rằng mục đích luận chứng không phải chứng minh chân lý， mà là đạt được sự tán đồng của thính chúng。 Cho nên yếu quyết của tu từ là nhận biết điều thính chúng tin， và lấy đó làm nền kiến tạo luận chứng。",
+      "back": "佩雷尔曼之新修辞学指出，论证之目的非在证明真理，而在获得听众之认同。故修辞之要义，在认识听众之所信，并以此为基础建构论证。",
+      "reasons": [
+        "PINYIN_NO_TONE"
+      ]
+    }
+  ]
+}
