@@ -72,6 +72,13 @@ const SMOKE_AUDIO_BLOB = new Blob([new Uint8Array([0, 1, 2, 3])], {
 });
 
 const AZURE_PHONEME_EDGE_PATH = "/functions/v1/azure-phoneme";
+const DEFAULT_SMOKE_WAV_FIXTURE_PATH =
+  "src/lib/pronunciation/__fixtures__/step7-known-good-i-went-to-school-yesterday.wav";
+const LIVE_SMOKE_UTTERANCE = {
+  target: "I went to school yesterday.",
+  learner: "I went to school yesterday.",
+  expectedContour: "falling" as const,
+};
 const SAFE_EDGE_RESPONSE_FIELDS = [
   "ok",
   "use_local",
@@ -170,46 +177,14 @@ function withToneContour(
 
 async function resolveSmokeWavBlob(): Promise<Blob> {
   const path = process.env.STEP7_SMOKE_WAV_PATH;
+  const { readFile } = await import("node:fs/promises");
   if (path) {
-    const { readFile } = await import("node:fs/promises");
     const bytes = await readFile(path);
     return new Blob([bytes], { type: "audio/wav" });
   }
 
-  return new Blob([buildSilentWavPcm16k()], { type: "audio/wav" });
-}
-
-function buildSilentWavPcm16k(seconds = 0.1): ArrayBuffer {
-  const sampleRate = 16_000;
-  const bitsPerSample = 16;
-  const channels = 1;
-  const bytesPerSample = bitsPerSample / 8;
-  const sampleCount = Math.max(1, Math.round(seconds * sampleRate));
-  const dataSize = sampleCount * channels * bytesPerSample;
-  const fileSize = 36 + dataSize;
-  const buffer = new ArrayBuffer(44 + dataSize);
-  const view = new DataView(buffer);
-  const writeAscii = (offset: number, value: string) => {
-    for (let i = 0; i < value.length; i += 1) {
-      view.setUint8(offset + i, value.charCodeAt(i));
-    }
-  };
-
-  writeAscii(0, "RIFF");
-  view.setUint32(4, fileSize, true);
-  writeAscii(8, "WAVE");
-  writeAscii(12, "fmt ");
-  view.setUint32(16, 16, true);
-  view.setUint16(20, 1, true);
-  view.setUint16(22, channels, true);
-  view.setUint32(24, sampleRate, true);
-  view.setUint32(28, sampleRate * channels * bytesPerSample, true);
-  view.setUint16(32, channels * bytesPerSample, true);
-  view.setUint16(34, bitsPerSample, true);
-  writeAscii(36, "data");
-  view.setUint32(40, dataSize, true);
-
-  return buffer;
+  const bytes = await readFile(`${process.cwd()}/${DEFAULT_SMOKE_WAV_FIXTURE_PATH}`);
+  return new Blob([bytes], { type: "audio/wav" });
 }
 
 function liveFetchWithoutJsdomSignal(
@@ -767,7 +742,7 @@ describe("Step 7 Azure-path smoke harness", () => {
       smokeWavBlob,
     );
 
-    const sample = SAMPLE_UTTERANCES[2];
+    const sample = LIVE_SMOKE_UTTERANCE;
     const supabaseUrl = process.env.VITE_SUPABASE_URL?.replace(/\/+$/, "");
     expect(supabaseUrl).toBeTruthy();
     if (process.env.MERCYB_SMOKE_BASE_URL) {
