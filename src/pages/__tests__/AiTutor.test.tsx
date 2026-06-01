@@ -548,7 +548,7 @@ describe("AiTutor four-tab seed flow", () => {
     expect(followUp).not.toHaveTextContent("bằng từng âm");
   });
 
-  it("sends the natural hat-biking correction into Speak and asks an English follow-up", async () => {
+  it("sends a non-canned hat-biking correction into Speak and asks an English follow-up", async () => {
     Object.defineProperty(window, "Audio", {
       configurable: true,
       value: MockEndingAudio,
@@ -556,18 +556,18 @@ describe("AiTutor four-tab seed flow", () => {
     render(<AiTutorPage />);
 
     await correctSentence(
-      "I bought a hat yesterday because summer is coming and I will bike a lot I need a hat.",
-      "I bought a hat yesterday because I plan to bike a lot this summer.",
+      "I buy a hat yesterday because I will bike a lot.",
+      "I bought a hat yesterday because I will bike a lot.",
     );
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
 
     expect(screen.getByTestId("ai-tutor-speak-target")).toHaveTextContent(
-      "I bought a hat yesterday because I plan to bike a lot this summer.",
+      "I bought a hat yesterday because I will bike a lot.",
     );
 
     await userEvent.type(
       screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" }),
-      "I bought a hat yesterday because I plan to bike a lot this summer.",
+      "I bought a hat yesterday because I will bike a lot.",
     );
 
     const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
