@@ -8,9 +8,14 @@
 // so a server-backed store can be slotted in later with no other changes.
 
 import { InMemoryGamificationStore } from "./InMemoryGamificationStore";
+import { IndexedDbGamificationStore } from "./IndexedDbGamificationStore";
 import type { GamificationStore } from "../types";
 
 export function createGamificationStore(): GamificationStore {
-  // F5: prefer IndexedDbGamificationStore when typeof indexedDB !== "undefined".
+  // Prefer IndexedDB when present (browser); fall back to in-memory in
+  // SSR / tests where `indexedDB` is undefined.
+  if (typeof indexedDB !== "undefined") {
+    return new IndexedDbGamificationStore();
+  }
   return new InMemoryGamificationStore();
 }
