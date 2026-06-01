@@ -45,6 +45,7 @@ The runner auto-discovers every `*.json` in the fixtures directory and registers
 | `expectedStatus` | optional | `"corrected" \| "unchanged" \| "needs_ai"`. Asserted only when present. |
 | `expectedRulesFired` | optional | **Composition only.** Array of **≥2** concrete ids that must co-fire. When present and non-empty it **supersedes** `expectedRuleFired` for the positive assertion. |
 | `mustNotFire` | optional | Array of **≥1** concrete ids that must NOT appear in `appliedRuleIds`. Asserted in **both** positive and negative cases (anti-double-fire / exclusion lock). |
+| `language` | optional | Per-case override of the fixture-level `language` (runner uses `testCase.language ?? fixture.language ?? "en"`). |
 
 ### `expectedRuleFired` vs `expectedRulesFired[]` — the !289 rule
 
@@ -52,6 +53,36 @@ The runner auto-discovers every `*.json` in the fixtures directory and registers
 - **`expectedRulesFired[]` is composition-only.** The validator **requires ≥2** rule-id strings; a single-element array **fails validation**. Never use it to express "one rule fired" — that is what `expectedRuleFired` is for.
 
 (Surfaced by !289, where a single-rule calque fixture was spec'd with a one-element `expectedRulesFired[]`; corrected to `expectedRuleFired`.)
+
+### Worked examples
+
+**Composition (`expectedRulesFired[]`)** — two rules co-fire on one input; every listed id must appear (verified on the live engine):
+
+```json
+{
+  "id": "composition-pos-3sg-missing-to",
+  "input": "She go school",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "She goes to school.",
+  "expectedRuleFired": "en-step5-preposition-pattern",
+  "expectedRulesFired": ["en-step5-subject-verb-agreement", "en-step5-preposition-pattern"],
+  "notes": "3rd-sing × missing-to: both rules co-fire and compose cleanly."
+}
+```
+
+**Anti-double-fire (`mustNotFire[]`)** — one rule fires; a related rule must NOT also fire (profession-article inserts `a` without tripping the generic missing-singular-article rule — verified: `appliedRuleIds` is `["en-step6-profession-article"]` only):
+
+```json
+{
+  "id": "profession-article-pos-001",
+  "input": "He is teacher.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "He is a teacher.",
+  "expectedRuleFired": "step6ProfessionArticle",
+  "mustNotFire": ["en-l4-missing-singular-article"],
+  "notes": "Profession-article fires alone; the generic article rule must not double-fire."
+}
+```
 
 ## Validation rules (enforced by the runner)
 
