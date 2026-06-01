@@ -14,7 +14,7 @@ vi.mock('@/lib/authService', () => ({
 // Shared mutable Supabase mock state
 const supabaseMockState = {
   promoResult: { data: null },
-  quotaResult: { data: null },
+  quotaResult: { data: null as { questions_used: number } | null },
   upsertError: null as null | Error,
 };
 

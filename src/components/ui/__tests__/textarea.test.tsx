@@ -74,7 +74,7 @@ describe("ui/Textarea", () => {
   });
 
   it("forwards ref", () => {
-    const ref = { current: null } as React.RefObject<HTMLTextAreaElement>;
+    const ref = { current: null } as unknown as React.RefObject<HTMLTextAreaElement>;
     render(<Textarea ref={ref} />);
     expect(ref.current).not.toBeNull();
     expect(ref.current?.tagName).toBe("TEXTAREA");

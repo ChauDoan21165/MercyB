@@ -79,7 +79,7 @@ describe("MusicPlayerContext", () => {
   beforeEach(() => {
     installAudioMock();
     resolveMock.mockClear();
-    resolveMock.mockImplementation(async (name: string) => ({
+    resolveMock.mockImplementation(async (name) => ({
       url: `/resolved/${name}`,
       fallback: false,
     }));
