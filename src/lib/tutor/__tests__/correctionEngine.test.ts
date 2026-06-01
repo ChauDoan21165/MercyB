@@ -427,6 +427,46 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["Can you borrow me your pen?", "Can you lend me your pen?"],
+    ["Could you borrow me a book?", "Could you lend me a book?"],
+    ["Can she borrow him her phone?", "Can she lend him her phone?"],
+    ["Would they borrow us their charger?", "Would they lend us their charger?"],
+    ["Will he borrow her his notebook?", "Will he lend her his notebook?"],
+  ])("corrects approved borrow-me-object calque: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-calque-borrow-me-object"],
+    });
+  });
+
+  it.each([
+    "Can I borrow your pen?",
+    "Can I borrow a book from you?",
+    "Can you lend me your pen?",
+    "He borrowed my book.",
+    "She borrowed a phone from him.",
+    "Can you borrow me some money?",
+    "Can you borrow me your idea?",
+    "I asked him to borrow me a book.",
+    "Can you borrow me your pen from him?",
+    "Can you borrow me your pen because I need it?",
+    "Can you borrow me your pen and your book?",
+    "Borrow me your pen.",
+    "She borrowed me her book.",
+    "She borrows me her book.",
+    "Can you borrowed me your pen?",
+    "Can you borrows me your pen?",
+    "Can you borrowing me your pen?",
+    "Can we borrow them their car?",
+  ])("does not over-trigger borrow-me-object calque: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["An hour ago I eat lunch.", "An hour ago I ate lunch."],
     ["Last summer she go to Canada.", "Last summer she went to Canada."],
     ["In 2024 they move to Toronto.", "In 2024 they moved to Toronto."],
@@ -638,6 +678,7 @@ describe("correctionEngine", () => {
     ["en-calque-close-turn-off-appliance", "close appliance"],
     ["en-calque-take-medicine", "take medicine"],
     ["en-calque-say-with-person", "say with person"],
+    ["en-calque-borrow-me-object", "borrow me object"],
     ["en-step6-past-marker-recall", "past-marker recall"],
     ["en-step6-in-month-year", "in-month/year"],
     ["en-step6-enter-concrete-place", "enter concrete place"],

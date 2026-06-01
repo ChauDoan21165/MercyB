@@ -1,0 +1,195 @@
+{
+  "rule": "calqueBorrowMeObject",
+  "ruleId": "en-calque-borrow-me-object",
+  "language": "en",
+  "description": "Rewrites modal-request borrow + person-pronoun + concrete-object calques to lend + person-pronoun + concrete-object only at sentence end.",
+  "fp_risk_note": "High risk. Borrow/lend direction is easy to reverse incorrectly. V1 only rewrites modal requests with Can/Could/Would/Will + you/he/she/they + borrow + person pronoun + determiner + whitelisted concrete object at sentence end. It blocks subject I, borrowed/borrows/borrowing, imperatives, embedded clauses, from-phrases, multi-clause tails, broad borrow/lend grammar, and non-whitelisted objects.",
+  "positive": [
+    {
+      "id": "calque-borrow-me-object-pos-001",
+      "input": "Can you borrow me your pen?",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Can you lend me your pen?",
+      "expectedRuleFired": "calqueBorrowMeObject",
+      "notes": "Modal request with you + borrow + me + whitelisted concrete object."
+    },
+    {
+      "id": "calque-borrow-me-object-pos-002",
+      "input": "Could you borrow me a book?",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Could you lend me a book?",
+      "expectedRuleFired": "calqueBorrowMeObject",
+      "notes": "Could request with a whitelisted object."
+    },
+    {
+      "id": "calque-borrow-me-object-pos-003",
+      "input": "Can she borrow him her phone?",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Can she lend him her phone?",
+      "expectedRuleFired": "calqueBorrowMeObject",
+      "notes": "Third-person allowed subject with person pronoun and concrete object."
+    },
+    {
+      "id": "calque-borrow-me-object-pos-004",
+      "input": "Would they borrow us their charger?",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Would they lend us their charger?",
+      "expectedRuleFired": "calqueBorrowMeObject",
+      "notes": "They subject and charger object are allowed."
+    },
+    {
+      "id": "calque-borrow-me-object-pos-005",
+      "input": "Will he borrow her his notebook?",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Will he lend her his notebook?",
+      "expectedRuleFired": "calqueBorrowMeObject",
+      "notes": "Will request with he subject and notebook object."
+    }
+  ],
+  "negative": [
+    {
+      "id": "calque-borrow-me-object-neg-001",
+      "input": "Can I borrow your pen?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Can I borrow your pen?",
+      "expectedRuleFired": null,
+      "notes": "Subject I is explicitly out of scope."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-002",
+      "input": "Can I borrow a book from you?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Can I borrow a book from you?",
+      "expectedRuleFired": null,
+      "notes": "Correct borrow-from request."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-003",
+      "input": "Can you lend me your pen?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Can you lend me your pen?",
+      "expectedRuleFired": null,
+      "notes": "Already uses lend."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-004",
+      "input": "He borrowed my book.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He borrowed my book.",
+      "expectedRuleFired": null,
+      "notes": "Past borrow is out of v1 scope."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-005",
+      "input": "She borrowed a phone from him.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She borrowed a phone from him.",
+      "expectedRuleFired": null,
+      "notes": "Correct from-phrase and non-modal past form."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-006",
+      "input": "Can you borrow me some money?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Can you borrow me some money?",
+      "expectedRuleFired": null,
+      "notes": "Money is not a whitelisted concrete object."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-007",
+      "input": "Can you borrow me your idea?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Can you borrow me your idea?",
+      "expectedRuleFired": null,
+      "notes": "Idea is abstract and out of scope."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-008",
+      "input": "I asked him to borrow me a book.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I asked him to borrow me a book.",
+      "expectedRuleFired": null,
+      "notes": "Embedded clause is out of scope."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-009",
+      "input": "Can you borrow me your pen from him?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Can you borrow me your pen from him?",
+      "expectedRuleFired": null,
+      "notes": "Tail after object is blocked."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-010",
+      "input": "Can you borrow me your pen because I need it?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Can you borrow me your pen because I need it?",
+      "expectedRuleFired": null,
+      "notes": "Multi-clause tail is blocked."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-011",
+      "input": "Can you borrow me your pen and your book?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Can you borrow me your pen and your book?",
+      "expectedRuleFired": null,
+      "notes": "Object-list tail is blocked."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-012",
+      "input": "Borrow me your pen.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Borrow me your pen.",
+      "expectedRuleFired": null,
+      "notes": "Imperative is out of scope."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-013",
+      "input": "She borrowed me her book.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She borrowed me her book.",
+      "expectedRuleFired": null,
+      "notes": "Borrowed form is out of scope."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-014",
+      "input": "She borrows me her book.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She borrows me her book.",
+      "expectedRuleFired": null,
+      "notes": "Declarative borrows form is out of scope."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-015",
+      "input": "Can you borrowed me your pen?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Can you borrowed me your pen?",
+      "expectedRuleFired": null,
+      "notes": "Borrowed form must not be rewritten even inside a modal frame."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-016",
+      "input": "Can you borrows me your pen?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Can you borrows me your pen?",
+      "expectedRuleFired": null,
+      "notes": "Borrows form must not be rewritten."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-017",
+      "input": "Can you borrowing me your pen?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Can you borrowing me your pen?",
+      "expectedRuleFired": null,
+      "notes": "Borrowing form must not be rewritten."
+    },
+    {
+      "id": "calque-borrow-me-object-neg-018",
+      "input": "Can we borrow them their car?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Can we borrow them their car?",
+      "expectedRuleFired": null,
+      "notes": "Subject we is not allowed in v1."
+    }
+  ]
+}
