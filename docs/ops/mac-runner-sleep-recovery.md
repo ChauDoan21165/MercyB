@@ -14,7 +14,20 @@ Last verified: 2026-05-28 on `admin`'s Mac runner.
 >
 > **Config fix (merged):** `fix/ci-macos-shell-runner-setup` made the OS-package and Deno steps portable — each is now an OS-aware `case "$(uname -s)" in Darwin) command -v git … ;; Linux) apt-get install … ;;` block, and Deno is `if command -v deno; then use existing; else install per-OS; fi`. So the config is now correct on **both** a Debian docker host and a macOS shell host.
 >
-> **Runner topology (infra, not repo):** two runners share the `[local, mac, mercyb]` tag set — **`MercyB Mac shell runner`** and **`mac-runner-2`** — and jobs distribute across them **non-deterministically** (e.g. `lint`/`test 1/2` landed on `mac-runner-2` and passed while `build`/`test 2/2` landed on the Mac shell runner). Green pipelines still require, out of repo scope: the shell hosts to have **node 22 + git + deno** present on PATH, and the two runners **reconciled** to a consistent, capable executor/host. That reconciliation is an infra change (`~/.gitlab-runner/config.toml` / host provisioning), not a `.gitlab-ci.yml` edit.
+> **Runner topology (infra, not repo) — authoritative fleet (GitLab → Settings → CI/CD → Runners, 2026-06-01):** four project runners are assigned, **all macOS `shell` executor**. Jobs use the `.local_runner` anchor, which requires **all three** tags `local, mac, mercyb` (confirmed in `.gitlab-ci.yml` line 111), so a runner is eligible only if it carries the full set:
+>
+> | ID | Name | State | Tags | Eligible for `mercyb` jobs? |
+> |----|------|-------|------|------------------------------|
+> | `53441166` | MercyB Mac shell runner | online, active | `local, mac, mercyb` | ✅ yes |
+> | `53419565` | mac-runner-2 | online, active | `local, mac, mercyb` | ✅ yes |
+> | `53419663` | mac-runner-3 | online, **idle, 0 jobs** | `local, mac, ` **`mercy`** | ❌ **no — tag typo** (`mercy`, missing trailing `b`, never matches `mercyb`-tagged jobs) |
+> | `53401441` | (unnamed, former primary) | **offline**, idle, 1000+ historical jobs | `mac, mercyb, local` | ⚠️ eligible but offline (stale) |
+>
+> Three of the four report the same public IP `24.129.225.88` (same site / behind one NAT). The two that actually serve `mercyb` jobs today are `53441166` and `53419565`.
+>
+> Green pipelines still require, out of repo scope: the shell hosts to have **node 22 + git + deno** present on PATH, the `mac-runner-3` (`53419663`) **tag typo corrected** (`mercy` → `mercyb`) so it can participate, and the offline `53401441` **either brought online or de-assigned**. Those are infra changes (GitLab runner settings / `~/.gitlab-runner/config.toml` / host provisioning), not a `.gitlab-ci.yml` edit.
+>
+> **Corrected root cause (supersedes the earlier "two same-tagged runners" wording):** jobs requesting the `mercyb` tag are eligible on **multiple active shell runners** and distribute across them **non-deterministically**. Before the OS-aware install fix, every eligible runner ran the docker-era steps (`apt-get`, Deno into `/usr/local/bin`) that fail on a macOS shell host — producing `apt-get: command not found` and the `deno.zip: Permission denied` intermittently, depending on which runner happened to pick up the job. The merged config (`case "$(uname -s)"`, conditional Deno install) resolves this on **all** runners. `mac-runner-3` (`53419663`) never participated because its `mercy` tag typo excludes it from `mercyb` jobs, and the offline `53401441` is stale.
 
 ## Summary
 
