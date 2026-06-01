@@ -70,10 +70,12 @@ whole corpus — it re-bloats the ReviewApp chunk to ~230 KB gzip.
   pure adaptation, zero generation).
 - **vi→ko** — adapter + 20-card **A1** seed (726 → 719 certified; sentences only —
   vocab has no romaja so it can't pass the reading gate; pure adaptation).
-- **vi→zh** — adapter + 20-card **B2** seed (447 → 438 certified). FINDING:
-  Chinese A1/A2/B1 lessons carry **zero** Vietnamese glosses (all vi is B2+), so
-  an A1 vi→zh seed requires **generation** (the gap). The B2 seed is the real
-  adaptation artifact; the empty A1 seed is emitted to make the gap visible.
+- **vi→zh** — **B2** seed wired (adaptation, 447 → 438 certified). Chinese
+  A1/A2/B1 lessons carry zero Vietnamese glosses, so the **A1** seed is
+  **generated**: 24 hand-authored VI glosses over real A1 Chinese sentences
+  (source tone-marked pinyin kept as the reading), gated + round-tripped →
+  20-card A1 seed, `status:"for-review"`, **NOT wired** (pending a human ZH→VI
+  review pass; vi→zh stays live at B2 only).
 - **vi→ja** — 22 authored A1 items → 20-card seed (generated: vi gloss authored,
   certified through the gate incl. round-trip). **Romaji human-reviewed + corrected**
   (CEO pass): topic particle は→"wa" and all kanji transliterated (田中→tanaka,

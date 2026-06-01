@@ -41,15 +41,17 @@ describe("content-lint — committed seeds", () => {
     expect(result.statusOk, `${file}: status must be "for-review"`).toBe(true);
   });
 
-  it("covers the expected non-empty flows (de, ko, zh-B2, ja)", () => {
-    // The four flows that produced real reviewable seeds. vi-zh.A1 is
-    // intentionally empty (documents the generation gap) so it's excluded here.
-    const nonEmpty = files
+  it("covers the expected LIVE-wired seeds (de, ko, zh-B2, ja)", () => {
+    // The seeds wired into the live adapter. vi-zh.A1 is excluded: it's a
+    // generated for-review seed (not yet wired — vi-zh is live at B2 only),
+    // so it must still be gate-clean (the per-file lint above covers that) but
+    // it isn't part of the live-wired set.
+    const wired = files
       .filter((f) => f !== "vi-zh.A1.seed.json")
       .map(load)
       .filter((s) => s.cards.length > 0)
       .map((s) => `${s.flow}:${s.level}`)
       .sort();
-    expect(nonEmpty).toEqual(["vi-de:A1", "vi-ja:A1", "vi-ko:A1", "vi-zh:B2"]);
+    expect(wired).toEqual(["vi-de:A1", "vi-ja:A1", "vi-ko:A1", "vi-zh:B2"]);
   });
 });
