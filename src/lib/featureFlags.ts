@@ -104,6 +104,16 @@ export const FEATURE_FLAGS = {
    * `VITE_FEATURE_GAMIFICATION`; defaults to OFF.
    */
   FEATURE_GAMIFICATION: readEnvBool("VITE_FEATURE_GAMIFICATION", false),
+
+  /**
+   * Lane D — Spaced-repetition Review module (src/features/review/).
+   * When ON: exposes the /review routes and the header nav entry.
+   * When OFF: the module is fully dark (routes 404 to /, nav entry hidden).
+   * Reads from env `VITE_REVIEW_ENABLED`; defaults to OFF. Isolated module;
+   * ships as one deliberate release after review — see
+   * src/features/review/README.md.
+   */
+  REVIEW_ENABLED: readEnvBool("VITE_REVIEW_ENABLED", false),
 };
 
 /**
