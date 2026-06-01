@@ -6,7 +6,8 @@
 // the zod-validated JSON into the test graph).
 //
 // READ-ONLY: these are plain module-array reads + pure transforms. Nothing here
-// writes, uploads, hits Supabase, or touches the audio pipeline.
+// writes, uploads, hits Supabase, or touches the audio pipeline. Everything here
+// is still gated by FEATURE_REVIEW (default off) at the route/nav layer.
 
 import { lessons as spanishA1 } from "@/languages/spanish/lessons-a1";
 import { lessons as spanishA2 } from "@/languages/spanish/lessons-a2";
@@ -16,22 +17,33 @@ import { lessons as spanishC1 } from "@/languages/spanish/lessons-c1";
 import { lessons as spanishC2 } from "@/languages/spanish/lessons-c2";
 import { BILINGUAL_SENTENCES } from "@/data/bilingualSentencesSchema";
 
+// Gate-certified, reviewed seeds (seeds/out/). Static JSON — read-only, bundled.
+import viDeSeed from "../seeds/out/vi-de.A1.seed.json";
+import viKoSeed from "../seeds/out/vi-ko.A1.seed.json";
+import viZhSeed from "../seeds/out/vi-zh.B2.seed.json";
+
 import type { ReviewSource } from "./source";
 import { createSpanishLessonsSource } from "./spanishLessons";
 import { createBilingualSentencesSource } from "./bilingualSentences";
+import { createSeedSource, type SeedLike } from "./seedSource";
 
 /**
- * Build the live, real-content sources wired to the flows whose content shape
- * is clear today:
+ * Build the live, real-content sources.
+ *
+ * Wired flows:
  *   - en-es          ← Spanish lessons-{level}.ts corpus (vocab + sentences)
  *   - en-vi / vi-en  ← bilingual sentence library (text_en + vn_translation)
+ *   - vi-de          ← reviewed A1 seed (adapted from German lessons)
+ *   - vi-ko          ← reviewed A1 seed (adapted from Korean lessons, sentences)
+ *   - vi-zh          ← reviewed B2 seed (adapted from Chinese lessons)
  *
- * Flows with no clean source yet (vi-de, vi-ja, vi-ko, vi-zh) are intentionally
- * NOT wired here — getItems() returns [] for them (fail soft).
- *   // TODO(D3): wire vi-de source (german lessons carry no Vietnamese gloss today)
- *   // TODO(D3): wire vi-ja source (japanese lessons: confirm vi field before wiring)
- *   // TODO(D3): wire vi-ko source (korean lessons: confirm vi field before wiring)
- *   // TODO(D3): wire vi-zh source (chinese lessons: confirm vi field before wiring)
+ * Notes:
+ *   - vi-zh is **B2-only**: Chinese A1/A2/B1 lessons carry no Vietnamese gloss,
+ *     so an A1 vi-zh seed is a KNOWN GAP for a future GENERATION pass (see
+ *     content/README.md). The empty seeds/out/vi-zh.A1.seed.json marks it.
+ *   - vi-ja is intentionally NOT wired: its seed is generated and its wanakana
+ *     romaji (kanji untransliterated, は→"ha") needs a human review pass before
+ *     going live. // TODO(review): wire vi-ja after human review of its seed.
  */
 export function createDefaultSources(): ReviewSource[] {
   const allSpanish = [
@@ -46,5 +58,8 @@ export function createDefaultSources(): ReviewSource[] {
   return [
     createSpanishLessonsSource(allSpanish),
     createBilingualSentencesSource(BILINGUAL_SENTENCES),
+    createSeedSource("seed:vi-de:A1", "vi-de", viDeSeed as unknown as SeedLike),
+    createSeedSource("seed:vi-ko:A1", "vi-ko", viKoSeed as unknown as SeedLike),
+    createSeedSource("seed:vi-zh:B2", "vi-zh", viZhSeed as unknown as SeedLike),
   ];
 }
