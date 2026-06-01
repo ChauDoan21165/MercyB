@@ -42,6 +42,34 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["I buy a hat yesterday.", "I bought a hat yesterday."],
+    ["He eat rice yesterday.", "He ate rice yesterday."],
+    ["I have lunch yesterday.", "I had lunch yesterday."],
+    ["I do homework yesterday.", "I did homework yesterday."],
+    ["She go home yesterday.", "She went home yesterday."],
+  ])("preserves approved yesterday irregular past correction: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-yesterday-irregular-beginner-past"],
+    });
+  });
+
+  it.each([
+    "Did you eat yesterday?",
+    "Did you buy yesterday?",
+    "Did you have yesterday?",
+    "Did you do yesterday?",
+    "Did you go yesterday?",
+  ])("does not rewrite do-support yesterday questions: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      corrected: input,
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["I bought hat yesterday.", "I bought a hat yesterday."],
     ["I bought bicycle yesterday.", "I bought a bicycle yesterday."],
     ["I want apple.", "I want an apple."],
