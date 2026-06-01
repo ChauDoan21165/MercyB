@@ -707,6 +707,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
   {
     id: "en-yesterday-irregular-beginner-past",
     detects: (input) =>
+      !isQuestionLike(input) &&
       hasBeginnerPastCorrectionMarker(input) &&
       /\b(I|You|We|They|He|She|It)\s+(buy|do|eat|go|have)\b/i.test(input),
     apply: (input) => replaceVerbAfterSubject(input, PAST_VERBS),
