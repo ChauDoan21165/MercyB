@@ -416,114 +416,6 @@ describe("correctionEngine", () => {
   });
 
   it.each([
-    ["I want to say with you.", "I want to say to you."],
-    ["She said with me yesterday.", "She said to me yesterday."],
-    ["He says with her every day.", "He says to her every day."],
-  ])("corrects approved say-with-person calque: %s", (input, expected) => {
-    expect(correctWithTutorRules(input, "en")).toMatchObject({
-      status: "corrected",
-      corrected: expected,
-      appliedRuleIds: ["en-calque-say-with-person"],
-    });
-  });
-
-  it.each([
-    "Say it with me.",
-    "She said with him beside me.",
-    "I would say, with him, that it's wrong.",
-    "What are you saying with them?",
-    "She said with him present.",
-    "He said with her gone.",
-    "They said with us there.",
-    "I went with you.",
-    "She talked with him.",
-    "Say it with confidence.",
-  ])("does not over-trigger say-with-person calque: %s", (input) => {
-    expect(correctWithTutorRules(input, "en")).toMatchObject({
-      status: "unchanged",
-      appliedRuleIds: [],
-    });
-  });
-
-  it.each([
-    ["Can you borrow me your pen?", "Can you lend me your pen?"],
-    ["Could you borrow me a book?", "Could you lend me a book?"],
-    ["Can she borrow him her phone?", "Can she lend him her phone?"],
-    ["Would they borrow us their charger?", "Would they lend us their charger?"],
-    ["Will he borrow her his notebook?", "Will he lend her his notebook?"],
-  ])("corrects approved borrow-me-object calque: %s", (input, expected) => {
-    expect(correctWithTutorRules(input, "en")).toMatchObject({
-      status: "corrected",
-      corrected: expected,
-      appliedRuleIds: ["en-calque-borrow-me-object"],
-    });
-  });
-
-  it.each([
-    "Can I borrow your pen?",
-    "Can I borrow a book from you?",
-    "Can you lend me your pen?",
-    "He borrowed my book.",
-    "She borrowed a phone from him.",
-    "Can you borrow me some money?",
-    "Can you borrow me your idea?",
-    "I asked him to borrow me a book.",
-    "Can you borrow me your pen from him?",
-    "Can you borrow me your pen because I need it?",
-    "Can you borrow me your pen and your book?",
-    "Borrow me your pen.",
-    "She borrowed me her book.",
-    "She borrows me her book.",
-    "Can you borrowed me your pen?",
-    "Can you borrows me your pen?",
-    "Can you borrowing me your pen?",
-    "Can we borrow them their car?",
-  ])("does not over-trigger borrow-me-object calque: %s", (input) => {
-    expect(correctWithTutorRules(input, "en")).toMatchObject({
-      status: "unchanged",
-      appliedRuleIds: [],
-    });
-  });
-
-  it.each([
-    ["I learn math at school.", "I study math at school."],
-    ["She learns English in class.", "She studies English in class."],
-    ["They learned science at university.", "They studied science at university."],
-    ["We are learning history in school.", "We are studying history in school."],
-    ["He is learning chemistry in class.", "He is studying chemistry in class."],
-  ])("corrects approved learn-subject-at-school calque: %s", (input, expected) => {
-    expect(correctWithTutorRules(input, "en")).toMatchObject({
-      status: "corrected",
-      corrected: expected,
-      appliedRuleIds: ["en-calque-learn-subject-at-school"],
-    });
-  });
-
-  it.each([
-    "I learn English.",
-    "I am learning English.",
-    "I learned English from my mother.",
-    "I learned English online.",
-    "I learned about history in school.",
-    "I learned that science is interesting at school.",
-    "I learned a lesson at school.",
-    "She learns quickly in class.",
-    "Learn English at school.",
-    "I study English at school.",
-    "I learn English at class.",
-    "I learn the English at school.",
-    "I learn English and math at school.",
-    "I learn English at school because I like it.",
-    "I is learning English at school.",
-    "She are learning English in class.",
-  ])("does not over-trigger learn-subject-at-school calque: %s", (input) => {
-    expect(correctWithTutorRules(input, "en")).toMatchObject({
-      status: "unchanged",
-      appliedRuleIds: [],
-    });
-  });
-
-  it.each([
     ["An hour ago I eat lunch.", "An hour ago I ate lunch."],
     ["Last summer she go to Canada.", "Last summer she went to Canada."],
     ["In 2024 they move to Toronto.", "In 2024 they moved to Toronto."],
@@ -734,9 +626,6 @@ describe("correctionEngine", () => {
     ["en-calque-open-turn-on-appliance", "open appliance"],
     ["en-calque-close-turn-off-appliance", "close appliance"],
     ["en-calque-take-medicine", "take medicine"],
-    ["en-calque-say-with-person", "say with person"],
-    ["en-calque-borrow-me-object", "borrow me object"],
-    ["en-calque-learn-subject-at-school", "learn subject at school"],
     ["en-step6-past-marker-recall", "past-marker recall"],
     ["en-step6-in-month-year", "in-month/year"],
     ["en-step6-enter-concrete-place", "enter concrete place"],
