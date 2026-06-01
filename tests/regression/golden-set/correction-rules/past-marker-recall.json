@@ -62,6 +62,22 @@
       "expectedCorrection": "I said an hour ago I was busy.",
       "expectedRuleFired": null,
       "notes": "Multi-clause/reporting shape stays unchanged."
+    },
+    {
+      "id": "past-marker-recall-neg-conf-005",
+      "input": "In 2050 I go to Paris.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "In 2050 I go to Paris.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: 'in 2050' is a FUTURE year (isPastYear=false), so the past-recall rule correctly abstains — present tense is right."
+    },
+    {
+      "id": "past-marker-recall-neg-conf-006",
+      "input": "Two hours ago, I go home.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Two hours ago, I go home.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: the comma after the time marker triggers the clause-blocker guard, so the rule abstains."
     }
   ]
 }

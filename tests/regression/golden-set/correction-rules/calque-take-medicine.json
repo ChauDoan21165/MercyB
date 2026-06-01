@@ -70,6 +70,22 @@
       "expectedCorrection": "Eat before taking medicine.",
       "expectedRuleFired": null,
       "notes": "Eat does not directly govern a medicine object."
+    },
+    {
+      "id": "calque-take-medicine-neg-conf-006",
+      "input": "I eat candy.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I eat candy.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: 'candy' is a real edible object (not in the medicine whitelist), so 'eat' is correct and the rule abstains."
+    },
+    {
+      "id": "calque-take-medicine-neg-conf-007",
+      "input": "Eat your words.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Eat your words.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: idiom 'eat your words' — object is not a medicine noun, so the rule abstains."
     }
   ]
 }
