@@ -94,6 +94,14 @@
       "expectedCorrection": "Were they very busy?",
       "expectedRuleFired": null,
       "notes": "FP regression lock (question inversion, past): fronted 'Were' already supplies the copula. Previously fired -> 'Were they are very busy?'; fixed by Lane A. Verified no-fire on current main."
+    },
+    {
+      "id": "be-verb-neg-conf-nonwhitelist-adj",
+      "input": "You very kind to help.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "You very kind to help.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: 'kind' (with an infinitive complement) is outside the be-drop adjective whitelist, so the rule abstains rather than guessing a copula."
     }
   ]
 }

@@ -94,6 +94,30 @@
       "expectedCorrection": "She runs to school.",
       "expectedRuleFired": null,
       "notes": "FP guard (different verb): 'runs to school' is not in the go-verb set; untouched."
+    },
+    {
+      "id": "step5-prep-neg-conf-independent",
+      "input": "This is independent of that.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "This is independent of that.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: 'independent of' contains the substring 'depend' but not at a word boundary, so the depend-of sub-pattern correctly abstains."
+    },
+    {
+      "id": "step5-prep-neg-conf-with-interest",
+      "input": "He helped with interest.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He helped with interest.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: 'with interest' is not the 'interested with' error surface, so the rule abstains."
+    },
+    {
+      "id": "step5-prep-neg-conf-good-in-morning",
+      "input": "I feel good in the morning.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I feel good in the morning.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: 'good in the morning' — object is not English/math/science, so the good-in->at sub-pattern abstains."
     }
   ]
 }
