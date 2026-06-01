@@ -78,6 +78,30 @@
       "expectedCorrection": "Two hours ago, I go home.",
       "expectedRuleFired": null,
       "notes": "Confusable: the comma after the time marker triggers the clause-blocker guard, so the rule abstains."
+    },
+    {
+      "id": "past-marker-recall-neg-q-007",
+      "input": "When did you go to Canada?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "When did you go to Canada?",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (wh-question/do-support): the do-question already carries past tense on the auxiliary; the lexical verb is correctly base form and must not be rewritten to 'went'. Live-engine verified unchanged 2026-06-01."
+    },
+    {
+      "id": "past-marker-recall-neg-q-008",
+      "input": "Did you eat lunch an hour ago?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did you eat lunch an hour ago?",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (Q/do-support with past marker present): a trailing 'an hour ago' marker plus a fronted 'Did' must not trigger the fronted-marker recall; base 'eat' is correct after do-support. Live-engine verified unchanged 2026-06-01."
+    },
+    {
+      "id": "past-marker-recall-neg-q-009",
+      "input": "What did you do last summer?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "What did you do last summer?",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (wh-question/do-support + past marker): 'last summer' is a recognized past marker but the do-question is already correct; rule must not rewrite 'do'. Live-engine verified unchanged 2026-06-01."
     }
   ]
 }
