@@ -62,6 +62,38 @@
       "expectedCorrection": "I drink some water.",
       "expectedRuleFired": null,
       "notes": "FP-stress (uncountable after quantifier): 'some water' must stay singular."
+    },
+    {
+      "id": "qps-neg-004",
+      "input": "I have two children.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I have two children.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (irregular plural, non-whitelisted): 'children' is already plural and 'child' is not in the noun set; rule must abstain."
+    },
+    {
+      "id": "qps-neg-005",
+      "input": "How many books do you have?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "How many books do you have?",
+      "expectedRuleFired": null,
+      "notes": "FP guard (question, already plural): 'many books' is correct inside a wh question."
+    },
+    {
+      "id": "qps-neg-006",
+      "input": "I see few apples.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I see few apples.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (quantifier outside the set): 'few' is not in two/three/many/some/several, so even a whitelisted noun must not be re-pluralized."
+    },
+    {
+      "id": "qps-neg-007",
+      "input": "There are several mice.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "There are several mice.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (irregular plural): 'mice' is already plural and 'mouse' is not whitelisted; rule must abstain."
     }
   ]
 }
