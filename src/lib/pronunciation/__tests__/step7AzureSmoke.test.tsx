@@ -344,6 +344,19 @@ function sanitizeEdgeJson(status: number, parsed: unknown): Record<string, unkno
           : record[field];
     }
   }
+  const wordScores = Array.isArray(record.word_scores) ? record.word_scores : [];
+  const phonemeScores = Array.isArray(record.phoneme_scores) ? record.phoneme_scores : [];
+  summary.word_scores_length = wordScores.length;
+  summary.nested_phoneme_count = wordScores.reduce((count, wordScore) => {
+    if (!wordScore || typeof wordScore !== "object" || Array.isArray(wordScore)) {
+      return count;
+    }
+    const phonemes = (wordScore as Record<string, unknown>).phonemes;
+    return count + (Array.isArray(phonemes) ? phonemes.length : 0);
+  }, 0);
+  summary.phoneme_scores_length = phonemeScores.length;
+  summary.has_score = "score" in record;
+  summary.has_overall_score = "overall_score" in record;
   return summary;
 }
 
@@ -502,6 +515,22 @@ describe("Step 7 Azure-path smoke harness", () => {
         error: "provider_unavailable",
         provider: "local",
         mode: "local_sentence_match",
+        score: 81,
+        overall_score: 81,
+        word_scores: [
+          {
+            word: "private-word",
+            score: 82,
+            phonemes: [
+              { phoneme: "private-phoneme", score: 70 },
+              { phoneme: "private-phoneme-2", score: 71 },
+            ],
+          },
+          { word: "private-word-2", score: 83, phonemes: [] },
+        ],
+        phoneme_scores: [
+          { word: "private-word", phoneme: "private-phoneme", score: 70 },
+        ],
         transcript: "do not log learner transcript",
         token: "eyJabc.def.ghi",
       }),
@@ -519,16 +548,28 @@ describe("Step 7 Azure-path smoke harness", () => {
     expect(summaries[0]).toContain('"use_local":true');
     expect(summaries[0]).toContain('"reason":"azure_error"');
     expect(summaries[0]).toContain('"error":"provider_unavailable"');
+    expect(summaries[0]).toContain('"word_scores_length":2');
+    expect(summaries[0]).toContain('"nested_phoneme_count":2');
+    expect(summaries[0]).toContain('"phoneme_scores_length":1');
+    expect(summaries[0]).toContain('"has_score":true');
+    expect(summaries[0]).toContain('"has_overall_score":true');
     expect(summaries[0]).not.toContain("transcript");
     expect(summaries[0]).not.toContain("eyJabc");
+    expect(summaries[0]).not.toContain("private-word");
+    expect(summaries[0]).not.toContain("private-phoneme");
     expect(Object.keys(JSON.parse(summaries[0]) as Record<string, unknown>).sort()).toEqual([
       "error",
+      "has_overall_score",
+      "has_score",
       "mode",
+      "nested_phoneme_count",
       "ok",
+      "phoneme_scores_length",
       "provider",
       "reason",
       "status",
       "use_local",
+      "word_scores_length",
     ]);
   });
 
