@@ -124,3 +124,15 @@ _(Also stage `Where did you go yesterday?` as `-neg-lock-wh-question` once the g
   "notes": "Lock (range-bound trim): '25:00' is not a valid clock time; rule must not insert 'at'. LOWEST severity — score/ratio colon forms (3:0, 2:1, 5:4) do NOT reproduce (zero rules fired); clock-only. Optional trim, no broken-output harm; activate if Lane A range-bounds the pattern."
 }
 ```
+
+## 10. en-l4-quantity-plural-s → `correction-rules/quantity-plural-s.json` — **LOW (wave 2, verb-sense)**
+```json
+{
+  "id": "quantity-plural-neg-lock-verb-sense",
+  "input": "I want some book a room.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I want some book a room.",
+  "expectedRuleFired": null,
+  "notes": "Lock (verb-sense guard): 'book' is the verb (to book a room), not a quantified noun; quantity-plural must not pluralize it. LOW severity / low-plausibility surface — folds into the shared verb-sense guard (#1/#2)."
+}
+```
