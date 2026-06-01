@@ -1075,6 +1075,7 @@ describe("correctionEngine", () => {
     ["What is your name.", "What is your name?"],
     ["Where do you live.", "Where do you live?"],
     ["Why are you late.", "Why are you late?"],
+    ["How are you.", "How are you?"],
     ["How old are you.", "How old are you?"],
     ["Can you help me.", "Can you help me?"],
     ["Do you like English.", "Do you like English?"],

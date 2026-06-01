@@ -172,6 +172,7 @@ function hasQuestionFinalMarkCandidate(input: string): boolean {
 
   const frames = [
     `^(?:what|where|when|why)\\s+${aux}\\s+${subject}\\b`,
+    `^how\\s+${aux}\\s+${subject}\\b`,
     `^how\\s+(?:old|often|many|much)\\s+${aux}\\s+${subject}\\b`,
     `^${doAux}\\s+${subject}\\s+${lexicalVerb}\\b`,
     `^${beAux}\\s+${subject}\\b`,
