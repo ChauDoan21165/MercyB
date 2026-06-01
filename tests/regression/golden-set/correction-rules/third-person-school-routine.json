@@ -102,6 +102,14 @@
       "expectedCorrection": "When does he go to school?",
       "expectedRuleFired": null,
       "notes": "FP guard: wh-question with does keeps go in base form."
+    },
+    {
+      "id": "tps-neg-lock-did-question-school",
+      "input": "Did she go to school?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did she go to school?",
+      "expectedRuleFired": null,
+      "notes": "Lock (question/do-support guard): did-question keeps go in base form and must not rewrite to goes."
     }
   ]
 }

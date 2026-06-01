@@ -61,6 +61,7 @@ describe("correctionEngine", () => {
     "Did you have yesterday?",
     "Did you do yesterday?",
     "Did you go yesterday?",
+    "Where did you go yesterday?",
   ])("does not rewrite do-support yesterday questions: %s", (input) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "unchanged",
@@ -205,6 +206,10 @@ describe("correctionEngine", () => {
     "Does she have breakfast every day?",
     "Does he go to school?",
     "Do they go to school?",
+    "Did she eat every day?",
+    "Did he have lunch every day?",
+    "Did she go every day?",
+    "Did she go to school?",
     "Does she go to school every day?",
     "Why does she eat every day?",
     "When does he go to school?",

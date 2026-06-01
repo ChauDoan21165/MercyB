@@ -166,6 +166,54 @@
       "expectedCorrection": "Yesterday I cook rice.",
       "expectedRuleFired": null,
       "notes": "FP guard (different lemma): a past marker is present but 'cook' is outside the target verb set {buy,do,eat,go,have}, so the rule abstains."
+    },
+    {
+      "id": "yesterday-irregular-neg-lock-do-question-eat",
+      "input": "Did you eat yesterday?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did you eat yesterday?",
+      "expectedRuleFired": null,
+      "notes": "Lock (question/do-support guard): base verb is correct in a did-question; rule must not rewrite eat->ate."
+    },
+    {
+      "id": "yesterday-irregular-neg-lock-do-question-buy",
+      "input": "Did you buy yesterday?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did you buy yesterday?",
+      "expectedRuleFired": null,
+      "notes": "Lock (question/do-support guard): base verb is correct in a did-question; rule must not rewrite buy->bought."
+    },
+    {
+      "id": "yesterday-irregular-neg-lock-do-question-have",
+      "input": "Did you have yesterday?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did you have yesterday?",
+      "expectedRuleFired": null,
+      "notes": "Lock (question/do-support guard): base verb is correct in a did-question; rule must not rewrite have->had."
+    },
+    {
+      "id": "yesterday-irregular-neg-lock-do-question-do",
+      "input": "Did you do yesterday?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did you do yesterday?",
+      "expectedRuleFired": null,
+      "notes": "Lock (question/do-support guard): base verb is correct in a did-question; rule must not rewrite do->did."
+    },
+    {
+      "id": "yesterday-irregular-neg-lock-do-question-go",
+      "input": "Did you go yesterday?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did you go yesterday?",
+      "expectedRuleFired": null,
+      "notes": "Lock (question/do-support guard): base verb is correct in a did-question; rule must not rewrite go->went."
+    },
+    {
+      "id": "yesterday-irregular-neg-lock-wh-question-go",
+      "input": "Where did you go yesterday?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Where did you go yesterday?",
+      "expectedRuleFired": null,
+      "notes": "Lock (question/do-support guard): wh did-question keeps the lexical verb in base form; rule must not rewrite go->went."
     }
   ]
 }

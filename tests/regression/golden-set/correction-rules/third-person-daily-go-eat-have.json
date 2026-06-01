@@ -102,6 +102,30 @@
       "expectedCorrection": "Why does she eat every day?",
       "expectedRuleFired": null,
       "notes": "FP guard: wh-question with does keeps the lexical verb in base form."
+    },
+    {
+      "id": "tpd-neg-lock-did-question-eat",
+      "input": "Did she eat every day?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did she eat every day?",
+      "expectedRuleFired": null,
+      "notes": "Lock (question/do-support guard): did-question keeps eat in base form even with an every-day habitual marker."
+    },
+    {
+      "id": "tpd-neg-lock-did-question-have",
+      "input": "Did he have lunch every day?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did he have lunch every day?",
+      "expectedRuleFired": null,
+      "notes": "Lock (question/do-support guard): did-question keeps have in base form and must not rewrite to has."
+    },
+    {
+      "id": "tpd-neg-lock-did-question-go",
+      "input": "Did she go every day?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did she go every day?",
+      "expectedRuleFired": null,
+      "notes": "Lock (question/do-support guard): did-question keeps go in base form and must not rewrite to goes."
     }
   ]
 }
