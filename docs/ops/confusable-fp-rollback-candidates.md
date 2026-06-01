@@ -221,6 +221,58 @@ The single `isQuestionLike` guard (verdict #3) fixes all of them.
 
 ---
 
+## Fabrication class — canned/templated-output rules (a distinct class)
+
+The confusable sweep targeted over-correction on confusable surfaces. The
+hat-biking rollback exposed a separate failure mode: a rule whose `apply` returns
+a **stored/templated string** instead of a **minimal in-place edit derived from
+the learner's tokens**, so when it fires it can **substitute or invent content**
+(wrong noun/subject, fabricated clause) rather than correct.
+
+Read-only inspection of every `apply`/repair in `correctionRules/en.ts`,
+classified by whether the output is derived from input tokens:
+
+| Output style | Rules | Fabrication risk |
+|--------------|-------|------------------|
+| **Canned** (returns a fixed/templated sentence) | en-hat-biking-summer-runon; en-morning-routine-subject-carryover; en-runon-morning-routine-punctuation | only hat-biking (see below) |
+| **Derived** (`input.replace` w/ captured groups, or token reconstruction) | all ~25 others | none |
+
+**Derived rules preserve content (probed — minimal edits, learner's own words):**
+`I yesterday went to school.` → `I went to school yesterday.` (reorder),
+`English I study every day` → `I study English every day.` (reorder),
+`i very happy today` → `I am very happy today.` (insert copula),
+`She is teacher.` → `She is a teacher.` (insert `a`),
+`my mother car` → `My mother's car.` (insert `'s`),
+`I eat medicine.` → `I take medicine.` (verb swap),
+`I depend of you.` → `I depend on you.` (prep swap). None invent or substitute.
+
+### Severity ranking of the canned class
+
+1. **🔴 URGENT — en-hat-biking-summer-runon.** Canned output **+ broad keyword
+   matcher** = fabricates on plausible learner input: `I bought a bike yesterday,
+   summer is hot.` → `I bought a **hat** … summer is coming … very sunny.`
+   (bike→hat, invented clause). This is the hat-biking signature. **Already
+   surfaced for immediate Lane A rollback (see `stub-rule-generalize-or-retire.md`
+   / !324); pass-through locks staged in !326.** No new action needed here beyond
+   recording it as the canonical member of this class.
+2. **LOW — en-morning-routine-subject-carryover** and
+   **en-runon-morning-routine-punctuation.** Canned output **but exact-`^…$`
+   literal matchers** — each fires only on its one demo sentence, and the canned
+   string is the *correct* rewrite of that exact input, so meaning-divergence is
+   unreachable (no other input can match). They are inert demo stubs, already
+   recommended for **retire** in `stub-rule-generalize-or-retire.md` (!324). Not
+   fabrications in practice; no pass-through locks needed.
+
+### Conclusion
+
+The fabrication class is **fully enumerated**: the 3 canned-output rules, of
+which **only hat-biking** both fires on plausible input and diverges in meaning.
+No new urgent fabricator was found beyond the one already in flight. Every other
+rule is a content-preserving in-place edit. The class is closed by the existing
+hat-biking rollback (!324) + staged locks (!326).
+
+---
+
 _This file is the single source of truth. All six per-slice FP fragments are
 folded above and **deleted in this MR** (atomic fragment-to-canonical cutover):
 `-slice3.md`, `confusable-fp-candidates-slice2.md`, `-sliceA.md`, `-sliceB.md`,
