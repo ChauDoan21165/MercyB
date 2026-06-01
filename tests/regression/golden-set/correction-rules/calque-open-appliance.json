@@ -44,6 +44,22 @@
       "expectedCorrection": "Turn on the air conditioner.",
       "expectedRuleFired": "calqueOpenTurnOnAppliance",
       "notes": "Multi-word appliance 'air conditioner' -> turn on."
+    },
+    {
+      "id": "coa-pos-006",
+      "input": "Can you open the TV?",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Can you turn on the TV?",
+      "expectedRuleFired": "calqueOpenTurnOnAppliance",
+      "notes": "Question form; appliance 'TV' -> turn on, '?' preserved. (folded from calque-open-turn-on-appliance.json)"
+    },
+    {
+      "id": "coa-pos-007",
+      "input": "I opened the fan.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I turned on the fan.",
+      "expectedRuleFired": "calqueOpenTurnOnAppliance",
+      "notes": "Past tense 'opened' -> 'turned on' for appliance 'fan'. (folded from calque-open-turn-on-appliance.json)"
     }
   ],
   "negative": [
@@ -102,6 +118,14 @@
       "expectedCorrection": "Turn on the TV.",
       "expectedRuleFired": null,
       "notes": "Already correct: 'turn on the TV' must not be re-touched."
+    },
+    {
+      "id": "coa-neg-008",
+      "input": "Open the TV stand.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Open the TV stand.",
+      "expectedRuleFired": null,
+      "notes": "Head-noun boundary: head noun is 'stand', not the appliance 'TV'; 'open' must not become 'turn on'. (folded from calque-open-turn-on-appliance.json)"
     }
   ]
 }
