@@ -88,3 +88,6 @@ node_modules
 
 # Supabase CLI local state (machine-generated, env-specific; matches `supabase init` convention)
 supabase/.temp
+
+# Storybook build output (Lane E)
+storybook-static
