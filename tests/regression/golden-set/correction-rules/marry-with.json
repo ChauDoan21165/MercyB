@@ -48,6 +48,27 @@
       "expectedCorrection": "They went with him.",
       "expectedRuleFired": null,
       "notes": "Unrelated with phrase stays unchanged."
+    },
+    {
+      "id": "marry-with-neg-004",
+      "input": "Who did she marry with?",
+      "expectedCorrection": "Who did she marry with?",
+      "expectedRuleFired": null,
+      "notes": "FP guard (wh-object question): 'marry with' stranded in a question; rule must not drop 'with'. Stays unchanged."
+    },
+    {
+      "id": "marry-with-neg-005",
+      "input": "Did she marry him?",
+      "expectedCorrection": "Did she marry him?",
+      "expectedRuleFired": null,
+      "notes": "FP guard (yes/no question, already correct): 'marry him' is well-formed."
+    },
+    {
+      "id": "marry-with-neg-006",
+      "input": "Who is she getting married to?",
+      "expectedCorrection": "Who is she getting married to?",
+      "expectedRuleFired": null,
+      "notes": "FP guard (wh question, 'married to'): correct passive collocation, not a 'marry with' calque."
     }
   ]
 }
