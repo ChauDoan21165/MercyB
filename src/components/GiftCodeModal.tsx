@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Bilingual } from "@/components/Bilingual";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/lib/supabaseClient";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -152,14 +153,26 @@ export function GiftCodeModal({
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Gift className="h-5 w-5 text-primary" />
-            Enter Gift Code / Nhập Mã Quà Tặng
+            <Bilingual
+              as="span"
+              primary="en"
+              en="Enter Gift Code"
+              vi="Nhập Mã Quà Tặng"
+              separator={
+                <span aria-hidden className="mx-1 opacity-70">
+                  /
+                </span>
+              }
+            />
           </DialogTitle>
           <DialogDescription>
-            {targetTier
-              ? `Enter your gift code to unlock ${targetTier} access`
-              : "Enter your gift code to unlock premium access"}
+            <span lang="en">
+              {targetTier
+                ? `Enter your gift code to unlock ${targetTier} access`
+                : "Enter your gift code to unlock premium access"}
+            </span>
             <br />
-            <span className="text-muted-foreground">
+            <span lang="vi" className="text-muted-foreground">
               Nhập mã quà tặng để mở khóa quyền truy cập
             </span>
           </DialogDescription>
@@ -167,7 +180,19 @@ export function GiftCodeModal({
 
         <div className="space-y-4 py-4">
           <div className="space-y-2">
-            <Label htmlFor="gift-code">Gift Code / Mã quà tặng</Label>
+            <Label htmlFor="gift-code">
+              <Bilingual
+                as="span"
+                primary="en"
+                en="Gift Code"
+                vi="Mã quà tặng"
+                separator={
+                  <span aria-hidden className="mx-1 opacity-70">
+                    /
+                  </span>
+                }
+              />
+            </Label>
             <Input
               id="gift-code"
               placeholder="Level 3-XXXX-XXXX-XXXX"
@@ -205,7 +230,17 @@ export function GiftCodeModal({
               ) : (
                 <>
                   <Gift className="h-4 w-4 mr-2" />
-                  Redeem / Kích hoạt
+                  <Bilingual
+                    as="span"
+                    primary="en"
+                    en="Redeem"
+                    vi="Kích hoạt"
+                    separator={
+                      <span aria-hidden className="mx-1 opacity-70">
+                        /
+                      </span>
+                    }
+                  />
                 </>
               )}
             </Button>

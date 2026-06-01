@@ -41,9 +41,14 @@ type Props = {
 
 export default function LessonUiLangToggle({ value, onChange }: Props) {
   return (
+    // Single-language (Vietnamese) group label: an aria-label is one
+    // attribute string and cannot carry per-segment `lang`, so a mixed
+    // "VI / EN" value is mispronounced under the document's lang="vi"
+    // (WCAG 3.1.2, Language of Parts). Vietnamese-first is the product
+    // default; the VI / EN buttons below are self-describing.
     <div
       role="group"
-      aria-label="Ngôn ngữ giải thích / Explanation language"
+      aria-label="Ngôn ngữ giải thích"
       className="inline-flex items-center rounded-full border border-slate-200 bg-white p-0.5 text-[10px] font-semibold"
     >
       <button
