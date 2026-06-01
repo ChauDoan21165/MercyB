@@ -62,6 +62,38 @@
       "expectedCorrection": "She goes to school.",
       "expectedRuleFired": null,
       "notes": "FP-stress (third-person, already correct): 'goes to school' must not be re-touched."
+    },
+    {
+      "id": "gts-neg-004",
+      "input": "We go to the school festival.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "We go to the school festival.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (noun postmodifier): 'school' modifies 'festival' after 'go to the'; not a missing-'to' error."
+    },
+    {
+      "id": "gts-neg-005",
+      "input": "Do you go to school every day?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Do you go to school every day?",
+      "expectedRuleFired": null,
+      "notes": "FP guard (question, already correct): 'go to school' is well-formed inside a yes/no question."
+    },
+    {
+      "id": "gts-neg-006",
+      "input": "I walk to school.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I walk to school.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (different verb): the rule targets go/goes/went/going + school; 'walk to school' is untouched."
+    },
+    {
+      "id": "gts-neg-007",
+      "input": "She runs to school.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She runs to school.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (different verb): 'runs to school' is not in the go-verb set; untouched."
     }
   ]
 }
