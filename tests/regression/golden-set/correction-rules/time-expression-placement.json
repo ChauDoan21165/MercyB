@@ -102,6 +102,22 @@
       "expectedCorrection": "I yesterday went to school again.",
       "expectedRuleFired": null,
       "notes": "FP-stress (anchored verb frame): trailing 'again' makes the verb phrase 'went to school again', which is not the exact audited frame, so the rule abstains."
+    },
+    {
+      "id": "tep-neg-007",
+      "input": "I recently went to school.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I recently went to school.",
+      "expectedRuleFired": null,
+      "notes": "FP guard (non-whitelist time word): 'recently' is not in the time-expression whitelist, so the subject+time+frame pattern does not match; rule abstains."
+    },
+    {
+      "id": "tep-neg-008",
+      "input": "Did you watch TV yesterday?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did you watch TV yesterday?",
+      "expectedRuleFired": null,
+      "notes": "FP guard (question, non-pronoun-initial): the reorder rule requires a pronoun-initial frame; 'Did ...' is a question, so it abstains (and 'watch' is outside the past-verb set, so no other rule fires either)."
     }
   ]
 }
