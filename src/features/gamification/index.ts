@@ -11,6 +11,9 @@ export * from "./types";
 // ── Flag ──
 export { isGamificationEnabled } from "./flag";
 
+// ── Tuning (XP economy) ──
+export { GAMIFICATION_XP } from "./config";
+
 // ── Defaults / date helpers ──
 export {
   createDefaultState,

@@ -22,6 +22,7 @@ import type {
   XpReason,
 } from "../types";
 import { createDefaultState, toIsoDate } from "../defaults";
+import { GAMIFICATION_XP } from "../config";
 import { createGamificationStore } from "../store/createGamificationStore";
 import { streakEngine } from "../engines/streakEngine";
 import { xpEngine } from "../engines/xpEngine";
@@ -152,7 +153,11 @@ export function useGamification(): UseGamificationResult {
       };
       // Crossing the daily goal awards goal_complete XP exactly once.
       if (goalResult.completedNow) {
-        const award = xpEngine.award(working.xp, 25, "goal_complete");
+        const award = xpEngine.award(
+          working.xp,
+          GAMIFICATION_XP.goal_complete,
+          "goal_complete",
+        );
         working = { ...working, xp: award.state };
       }
       const evalResult = achievementEngine.evaluate(
