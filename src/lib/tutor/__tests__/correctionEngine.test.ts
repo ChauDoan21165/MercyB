@@ -467,6 +467,44 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["I learn math at school.", "I study math at school."],
+    ["She learns English in class.", "She studies English in class."],
+    ["They learned science at university.", "They studied science at university."],
+    ["We are learning history in school.", "We are studying history in school."],
+    ["He is learning chemistry in class.", "He is studying chemistry in class."],
+  ])("corrects approved learn-subject-at-school calque: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-calque-learn-subject-at-school"],
+    });
+  });
+
+  it.each([
+    "I learn English.",
+    "I am learning English.",
+    "I learned English from my mother.",
+    "I learned English online.",
+    "I learned about history in school.",
+    "I learned that science is interesting at school.",
+    "I learned a lesson at school.",
+    "She learns quickly in class.",
+    "Learn English at school.",
+    "I study English at school.",
+    "I learn English at class.",
+    "I learn the English at school.",
+    "I learn English and math at school.",
+    "I learn English at school because I like it.",
+    "I is learning English at school.",
+    "She are learning English in class.",
+  ])("does not over-trigger learn-subject-at-school calque: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["An hour ago I eat lunch.", "An hour ago I ate lunch."],
     ["Last summer she go to Canada.", "Last summer she went to Canada."],
     ["In 2024 they move to Toronto.", "In 2024 they moved to Toronto."],
@@ -679,6 +717,7 @@ describe("correctionEngine", () => {
     ["en-calque-take-medicine", "take medicine"],
     ["en-calque-say-with-person", "say with person"],
     ["en-calque-borrow-me-object", "borrow me object"],
+    ["en-calque-learn-subject-at-school", "learn subject at school"],
     ["en-step6-past-marker-recall", "past-marker recall"],
     ["en-step6-in-month-year", "in-month/year"],
     ["en-step6-enter-concrete-place", "enter concrete place"],

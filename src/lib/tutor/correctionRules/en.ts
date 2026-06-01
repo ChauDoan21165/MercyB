@@ -319,6 +319,18 @@ const CALQUE_SAY_WITH_PERSON_PATTERN =
   /\b(say|says|said|saying)\s+with\s+(me|you|him|her|us|them)\b/gi;
 const CALQUE_BORROW_ME_OBJECT_PATTERN =
   /\b(Can|Could|Would|Will)\s+(you|he|she|they)\s+borrow\s+(me|you|him|her|us|them)\s+(a|an|the|my|your|his|her|our|their|this|that)\s+(pen|pencil|book|phone|charger|laptop|bike|bicycle|car|umbrella|bag|notebook)(?=\s*[.?!]?$)/gi;
+const CALQUE_SCHOOL_SUBJECT_PATTERN =
+  "(?:English|math|mathematics|science|history|geography|biology|chemistry|physics|literature|Vietnamese|French|Chinese|Japanese|Korean)";
+const CALQUE_SCHOOL_LOCATION_PATTERN =
+  "(?:at school|in school|in class|at university|in university|at college|in college)";
+const CALQUE_LEARN_SUBJECT_SIMPLE_PATTERN = new RegExp(
+  `^(I|you|we|they|he|she)\\s+(learn|learns|learned)\\s+(${CALQUE_SCHOOL_SUBJECT_PATTERN})\\s+(${CALQUE_SCHOOL_LOCATION_PATTERN})([.?!]?)$`,
+  "i",
+);
+const CALQUE_LEARN_SUBJECT_PROGRESSIVE_PATTERN = new RegExp(
+  `^(I|you|we|they|he|she)\\s+(am|is|are)\\s+learning\\s+(${CALQUE_SCHOOL_SUBJECT_PATTERN})\\s+(${CALQUE_SCHOOL_LOCATION_PATTERN})([.?!]?)$`,
+  "i",
+);
 
 function repairStep6WaitFor(input: string): string {
   const pattern = new RegExp(`\\b(wait|waits|waited|waiting)\\s+(${PERSON_OBJECT_PRONOUN_PATTERN})\\b`, "gi");
@@ -486,6 +498,52 @@ function repairCalqueBorrowMeObject(input: string): string {
     (_match, modal: string, subject: string, pronoun: string, determiner: string, object: string) =>
       `${modal} ${subject} lend ${pronoun} ${determiner} ${object}`,
   );
+}
+
+function isExpectedLearningAux(subject: string, aux: string): boolean {
+  const normalizedSubject = subject.toLowerCase();
+  const normalizedAux = aux.toLowerCase();
+  if (normalizedSubject === "i") return normalizedAux === "am";
+  if (["he", "she"].includes(normalizedSubject)) return normalizedAux === "is";
+  return ["you", "we", "they"].includes(normalizedSubject) && normalizedAux === "are";
+}
+
+function hasCalqueLearnSubjectAtSchool(input: string): boolean {
+  const trimmed = input.trim();
+  if (CALQUE_LEARN_SUBJECT_SIMPLE_PATTERN.test(trimmed)) return true;
+
+  const progressiveMatch = trimmed.match(CALQUE_LEARN_SUBJECT_PROGRESSIVE_PATTERN);
+  if (!progressiveMatch) return false;
+
+  return isExpectedLearningAux(progressiveMatch[1] ?? "", progressiveMatch[2] ?? "");
+}
+
+function studyVerbForLearnSubjectCalque(verb: string): string {
+  switch (verb.toLowerCase()) {
+    case "learns":
+      return "studies";
+    case "learned":
+      return "studied";
+    default:
+      return "study";
+  }
+}
+
+function repairCalqueLearnSubjectAtSchool(input: string): string {
+  const trimmed = input.trim();
+  const simpleMatch = trimmed.match(CALQUE_LEARN_SUBJECT_SIMPLE_PATTERN);
+  if (simpleMatch) {
+    const [, subject, verb, schoolSubject, location, punctuation = ""] = simpleMatch;
+    return `${subject} ${studyVerbForLearnSubjectCalque(verb)} ${schoolSubject} ${location}${punctuation}`;
+  }
+
+  const progressiveMatch = trimmed.match(CALQUE_LEARN_SUBJECT_PROGRESSIVE_PATTERN);
+  if (!progressiveMatch) return input;
+
+  const [, subject, aux, schoolSubject, location, punctuation = ""] = progressiveMatch;
+  if (!isExpectedLearningAux(subject, aux)) return input;
+
+  return `${subject} ${aux} studying ${schoolSubject} ${location}${punctuation}`;
 }
 
 function repairStep6DiscussAbout(input: string): string {
@@ -850,6 +908,12 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: hasCalqueBorrowMeObject,
     apply: repairCalqueBorrowMeObject,
     fpRiskNote: "High risk. Borrow/lend direction is easy to reverse incorrectly. V1 only rewrites modal requests with Can/Could/Would/Will plus you/he/she/they plus borrow plus a person pronoun plus a determiner and whitelisted concrete object at sentence end. It blocks subject I, borrowed/borrows/borrowing, imperatives, embedded clauses, from-phrases, multi-clause tails, broad borrow/lend grammar, and non-whitelisted objects.",
+  },
+  {
+    id: "en-calque-learn-subject-at-school",
+    detects: hasCalqueLearnSubjectAtSchool,
+    apply: repairCalqueLearnSubjectAtSchool,
+    fpRiskNote: "High risk because learn is often correct. V1 only rewrites one simple clause with a whitelisted pronoun subject, learn/learns/learned or agreement-matched am/is/are learning, one bare whitelisted school subject, and an immediately following school/class/university/college location. It blocks bare learn-subject sentences, at class, determiners, about/that/from/online/with/by, lists, subordinate tails, imperatives, and broad learn/study grammar.",
   },
   {
     id: "en-step6-discuss-about",
