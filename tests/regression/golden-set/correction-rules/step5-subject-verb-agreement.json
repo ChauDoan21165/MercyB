@@ -70,6 +70,22 @@
       "expectedCorrection": "I go to work.",
       "expectedRuleFired": null,
       "notes": "First-person subject is correct English; the rule is He/She/It only."
+    },
+    {
+      "id": "step5-sva-neg-conf-001",
+      "input": "He always go to work.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He always go to work.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: intervening adverb 'always' breaks the 'He + verb' adjacency, so the rule abstains."
+    },
+    {
+      "id": "step5-sva-neg-conf-002",
+      "input": "He, I think, go to work.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He, I think, go to work.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: parenthetical between subject and verb breaks adjacency, so the rule abstains."
     }
   ]
 }
