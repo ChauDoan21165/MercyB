@@ -40,6 +40,7 @@ import LessonUiLangToggle, {
 // 20260524 so neither layer is the only line of defense.
 import RequireAal2 from "@/components/auth/RequireAal2";
 import { WebOnlyRoute } from "@/router/WebOnlyRoute";
+import { ReviewNavEntry } from "@/features/review";
 
 const MB_ROUTER_VERSION = "2026-04-11-app-router-room-alias-hardening";
 
@@ -97,6 +98,9 @@ const PlacementV3SkipConfirmPage = lazyWithRetry(() => import("@/pages/placement
 // with no dependencies worth code-splitting, and it must be on hand
 // to instrument every placement page's mount.
 import PlacementRouteShell from "@/pages/placement/v3/PlacementRouteShell";
+
+// Lane D — Spaced-repetition Review module (flag-gated, default off).
+const ReviewApp           = lazyWithRetry(() => import("@/features/review/ReviewApp"));
 
 const SpeechDrillPage      = lazyWithRetry(() => import("@/pages/SpeechDrillPage"));
 const PhonemeDrillPage     = lazyWithRetry(() => import("@/pages/practice/PhonemeDrillPage"));
@@ -673,6 +677,8 @@ function AppHeroShell() {
                 {/* Global VI/EN gloss-language toggle — one control for
                     the whole app, persisted via UiLanguageProvider. */}
                 <LessonUiLangToggle value={uiLang} onChange={setUiLang} />
+                {/* Lane D — self-gating; renders null when FEATURE_REVIEW off. */}
+                <ReviewNavEntry />
                 {isLoading ? (
                   <div style={authStatusPill} aria-live="polite">
                     <span style={statusDot} />
@@ -833,6 +839,18 @@ export default function AppRouter() {
           <Route path="/pricing" element={<LazyPage><Pricing /></LazyPage>} />
           <Route path="/upgrade" element={<LazyPage><Pricing /></LazyPage>} />
           <Route path="/rooms"   element={<LazyPage><AllRooms /></LazyPage>} />
+
+          {/* Lane D — Spaced-repetition Review module. Flag-gated (default
+              off); when off the route 404s to /. The feature owns its own
+              nested routing under ReviewApp. */}
+          <Route
+            path="/review/*"
+            element={
+              FEATURE_FLAGS.REVIEW_ENABLED
+                ? <LazyPage><ReviewApp /></LazyPage>
+                : <Navigate to="/" replace />
+            }
+          />
 
           {/* Public blog */}
           <Route path="/blog"        element={<LazyPage><BlogIndex /></LazyPage>} />
