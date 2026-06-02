@@ -17,6 +17,17 @@ scanned by `runCorrectionGolden.ts` (it loads only `correction-rules/*.json`).
 ---
 
 ## 4. en-step6-profession-article → `correction-rules/profession-article.json`
+
+**RECONCILIATION (live-engine probe, 2026-06-02).** The original staged entry
+below (`"He is doctor Smith."`) is **stale**: the live engine **already abstains**
+on it, AND it is **already a passing negative in the active fixture**
+(`profession-article.json` negatives include `"He is doctor Smith."`,
+`"He is Doctor Smith."`, `"She is nurse Nguyen."`). The engine already excludes a
+**capitalized** trailing token, so capitalized title+name cases do **not** fire
+today — there is no guard to wait for. **Recommend retiring this stale entry** (it
+duplicates an active baseline). Left in place pending an explicit retire nod; do
+not re-activate it as "flips-after".
+
 ```json
 {
   "id": "profession-article-neg-lock-title-propername",
@@ -24,9 +35,75 @@ scanned by `runCorrectionGolden.ts` (it loads only `correction-rules/*.json`).
   "expectedStatus": "unchanged",
   "expectedCorrection": "He is doctor Smith.",
   "expectedRuleFired": null,
-  "notes": "Lock (title guard): 'doctor Smith' is a title + proper name; no article. Rule must not insert 'a'."
+  "notes": "STALE — already abstains on the live engine AND already an active-fixture passing negative. No guard pending. Recommend retiring this staged entry."
 }
 ```
+
+### 4-breadth. FLIP negatives (flips-after) — lowercase trailing-name FP
+
+The residual FP the capitalized-token exclusion misses: a **lowercase** surname
+after a whitelisted profession noun. These **fire today** (insert the article)
+and must **abstain** once Lane A extends the guard to a trailing name token
+regardless of case. Whitelisted profession required — `professor`/`nurse` are not
+whitelisted, so `"He is professor smith."` already abstains (not a FLIP).
+
+```json
+{
+  "id": "profession-article-neg-lock-lowercase-name-strange",
+  "input": "He is doctor strange.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "He is doctor strange.",
+  "expectedRuleFired": null,
+  "notes": "FLIP (flips-after). Fires TODAY: 'He is doctor strange.' -> 'He is a doctor strange.' (en-step6-profession-article). 'strange' is a lowercase surname; the capitalized-token guard misses it. After Lane A widens the trailing-name guard to be case-insensitive, must abstain. expectedCorrection is the post-guard (unchanged) form — verify on the live engine at activation."
+}
+```
+```json
+{
+  "id": "profession-article-neg-lock-lowercase-name-lee",
+  "input": "She is doctor lee.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "She is doctor lee.",
+  "expectedRuleFired": null,
+  "notes": "FLIP (flips-after). Fires TODAY: 'She is doctor lee.' -> 'She is a doctor lee.' (en-step6-profession-article). Lowercase surname 'lee' after whitelisted 'doctor'. After the case-insensitive trailing-name guard, must abstain. Verify post-guard output at activation."
+}
+```
+
+### 4-breadth. Verify-now negatives — capitalized Strange/Lee (already correct)
+
+The `Strange`/`Lee` proper-noun-title cases the breadth note names: with a
+**capitalized** surname the engine **already abstains today** (same class as the
+active `doctor Smith`/`nurse Nguyen` negatives, distinct surnames). These are
+**verify-now** regression locks — confirmed correct on the live engine now; they
+must keep abstaining after the guard. Distinct from the active baseline (new
+surnames), so not duplicates.
+
+```json
+{
+  "id": "profession-article-neg-lock-cap-name-strange",
+  "input": "He is doctor Strange.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "He is doctor Strange.",
+  "expectedRuleFired": null,
+  "notes": "Verify-now. Abstains TODAY (live-engine confirmed) — capitalized trailing token already excluded. Lock against regression; keep abstaining post-guard. Safe to land in the active fixture's negative[] now (no guard dependency)."
+}
+```
+```json
+{
+  "id": "profession-article-neg-lock-cap-name-lee",
+  "input": "She is doctor Lee.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "She is doctor Lee.",
+  "expectedRuleFired": null,
+  "notes": "Verify-now. Abstains TODAY (live-engine confirmed). Distinct surname from the active 'Nguyen'/'Smith' negatives, so not a duplicate. No guard dependency."
+}
+```
+
+**SAFE positives (verify-now) — already locked by the active baseline.** The
+guard must keep firing on bare whitelisted professions with no trailing name:
+`"He is teacher."`, `"She is doctor."`, `"He is engineer."` (all → insert a/an,
+`en-step6-profession-article`). These already live in `profession-article.json`
+`positive[]`; re-confirmed firing on the live engine. **No new rows** — adding
+them would duplicate the active baseline.
 
 ## 5. en-step6-wait-for-person-object → `correction-rules/wait-for-person-object.json`
 
@@ -125,6 +202,13 @@ Gated on: Lane A trims `tablet` from the medicine-object whitelist (or requires 
 }
 ```
 ## 8. en-step6-look-at-pronoun → `correction-rules/look-at-pronoun.json`
+
+The `look someone in the eye(s)` idiom frame is **absent** from the active
+`look-at-pronoun.json` negatives (those cover look-for/like/up/over/down/watch) —
+so every entry below is **net-new**, not a duplicate. All FLIP negatives **fire
+today** (insert `at`, breaking the idiom) and must **abstain** after Lane A adds
+the `in the eye(s)` idiom guard.
+
 ```json
 {
   "id": "look-at-pronoun-neg-lock-idiom-eye",
@@ -132,9 +216,49 @@ Gated on: Lane A trims `tablet` from the medicine-object whitelist (or requires 
   "expectedStatus": "unchanged",
   "expectedCorrection": "Look him in the eye.",
   "expectedRuleFired": null,
-  "notes": "Lock (idiom guard): 'look someone in the eye' takes a bare object; no 'at'. Rule must not fire on the 'in the eye(s)' frame."
+  "notes": "FLIP (flips-after). Fires TODAY: 'Look him in the eye.' -> 'Look at him in the eye.' (en-step6-look-at-pronoun). 'look someone in the eye' takes a bare object; no 'at'. After the idiom guard, must abstain."
 }
 ```
+
+### 8-breadth. FLIP negatives (flips-after) — eyes-plural + declarative
+
+```json
+{
+  "id": "look-at-pronoun-neg-lock-idiom-eyes-plural",
+  "input": "Look her in the eyes.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "Look her in the eyes.",
+  "expectedRuleFired": null,
+  "notes": "FLIP (flips-after). Fires TODAY: 'Look her in the eyes.' -> 'Look at her in the eyes.' (en-step6-look-at-pronoun). Plural 'eyes' variant of the idiom; same bare-object frame. After the idiom guard, must abstain. Verify post-guard output at activation."
+}
+```
+```json
+{
+  "id": "look-at-pronoun-neg-lock-idiom-eye-them",
+  "input": "Look them in the eye.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "Look them in the eye.",
+  "expectedRuleFired": null,
+  "notes": "FLIP (flips-after). Fires TODAY: 'Look them in the eye.' -> 'Look at them in the eye.' (en-step6-look-at-pronoun). 'them' object, singular-eye idiom. After the idiom guard, must abstain."
+}
+```
+```json
+{
+  "id": "look-at-pronoun-neg-lock-idiom-eyes-declarative",
+  "input": "I looked him in the eyes.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I looked him in the eyes.",
+  "expectedRuleFired": null,
+  "notes": "FLIP (flips-after). Fires TODAY: 'I looked him in the eyes.' -> 'I looked at him in the eyes.' (en-step6-look-at-pronoun). Declarative past-tense + plural-eyes idiom (vs the imperative cases above). After the idiom guard, must abstain."
+}
+```
+
+**SAFE positives (verify-now) — already locked by the active baseline.** The
+guard must keep firing on a bare person-pronoun object with no idiom frame:
+`"Look me."` (→ 'Look at me.'), `"She looked him."` (→ 'She looked at him.'),
+`"They are looking us."` (→ 'They are looking at us.') — all `en-step6-look-at-pronoun`.
+These already live in `look-at-pronoun.json` `positive[]`; re-confirmed firing on
+the live engine. **No new rows** — adding them would duplicate the active baseline.
 
 ## 9. en-step6-at-clock-time → `correction-rules/at-clock-time.json` — **LOWEST severity (optional, do last)**
 
