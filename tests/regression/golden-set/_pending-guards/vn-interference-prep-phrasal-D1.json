@@ -1,0 +1,143 @@
+{
+  "corpus": "vn-interference-prep-phrasal-D1",
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "category": "preposition-and-phrasal-verb",
+  "status": "backlog_only_not_live_wired",
+  "schemaBasis": "tests/regression/golden-set/_pending-guards/vn-interference-corpus-wave.json",
+  "generatedBy": "D1",
+  "generatedAt": "2026-06-02",
+  "liveEngine": {
+    "entryPoint": "correctWithTutorRules(input, 'en') in src/lib/tutor/correctionEngine.ts",
+    "verifiedAt": "2026-06-02",
+    "note": "Every item below was run through the UNMODIFIED live engine. These six slices are GAPS: each positive is an authentic VN->EN learner error the engine currently ABSTAINS on (no rule fires), and every confusable negative correctly ABSTAINS. Slices already covered by the wired en-step5-preposition-pattern / en-step6-* rules (e.g. depend-of->on, good-in->at, listen-to, wait-for, discuss-about, marry-with, look-at) were deliberately EXCLUDED to avoid overlap with in-flight Lane A work."
+  },
+  "items": [
+    {
+      "rule": "afraidOfFearObject",
+      "ruleId": "en-afraid-of-fear-object",
+      "wiringStatus": "proposed_not_wired",
+      "liveCoverage": "gap",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN 'so' takes no fixed preposition, so learners attach the wrong one: afraid + from/with + <fear noun> should be afraid OF + <fear noun>.",
+      "detectorSketch": "Fire only on the adjective 'afraid' immediately followed by 'from' or 'with' and then a noun phrase naming the thing feared. Rewrite the preposition to 'of'. Do NOT fire when 'afraid' is followed by a clause ('afraid (that) I can't ...') or by 'of'.",
+      "fp_risk_note": "Medium-high. 'I'm afraid I can't come' is a politeness idiom (afraid + clause) and must never be touched. Restrict to the {from, with} -> of rewrite where the head after the preposition is a concrete/abstract fear object, not a finite clause.",
+      "positive": [
+        { "id": "d1-afraid-of-pos-001", "input": "I am afraid from dogs.", "expectedStatus": "corrected", "expectedCorrection": "I am afraid of dogs.", "expectedRuleFired": "afraidOfFearObject", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I am afraid from dogs.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today; proposed correction shown." },
+        { "id": "d1-afraid-of-pos-002", "input": "She is afraid from the dark.", "expectedStatus": "corrected", "expectedCorrection": "She is afraid of the dark.", "expectedRuleFired": "afraidOfFearObject", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "She is afraid from the dark.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today; proposed correction shown." },
+        { "id": "d1-afraid-of-pos-003", "input": "He is afraid with spiders.", "expectedStatus": "corrected", "expectedCorrection": "He is afraid of spiders.", "expectedRuleFired": "afraidOfFearObject", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "He is afraid with spiders.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today; proposed correction shown." }
+      ],
+      "negative": [
+        { "id": "d1-afraid-of-neg-001", "input": "I am afraid of dogs.", "expectedStatus": "unchanged", "expectedCorrection": "I am afraid of dogs.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I am afraid of dogs.", "appliedRuleIds": [] }, "notes": "Already-correct target form; live-engine verified abstains." },
+        { "id": "d1-afraid-of-neg-002", "input": "I am afraid of heights.", "expectedStatus": "unchanged", "expectedCorrection": "I am afraid of heights.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I am afraid of heights.", "appliedRuleIds": [] }, "notes": "Already-correct; live-engine verified abstains." },
+        { "id": "d1-afraid-of-neg-003", "input": "I'm afraid I can't come.", "expectedStatus": "unchanged", "expectedCorrection": "I'm afraid I can't come.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I'm afraid I can't come.", "appliedRuleIds": [] }, "notes": "Confusable: 'afraid + clause' politeness idiom — must stay untouched; live-engine verified abstains." }
+      ]
+    },
+    {
+      "rule": "arriveAtInPlace",
+      "ruleId": "en-arrive-at-in-place",
+      "wiringStatus": "proposed_not_wired",
+      "liveCoverage": "gap",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN 'den' (to/arrive) makes learners say 'arrive TO <place>'. English uses 'arrive at' (point/venue), 'arrive in' (city/country), and NO preposition before home/here/there.",
+      "detectorSketch": "Fire on the verb 'arrive(d)' + 'to' + place. Rewrite: 'to' -> 'at' for venues/points, 'to' -> 'in' for cities/countries, and DROP 'to' entirely before home/here/there. Do NOT fire when 'arrive' already uses at/in or has no preposition.",
+      "fp_risk_note": "High. The correct preposition is object-dependent (at venue / in city / none for home). A naive 'to'->'at' insert is wrong for 'arrive in Hanoi' and 'arrive home'. Requires a place-type classifier; ship at/in/none variants rather than a single fixed preposition.",
+      "positive": [
+        { "id": "d1-arrive-pos-001", "input": "I arrive to school at 8.", "expectedStatus": "corrected", "expectedCorrection": "I arrive at school at 8.", "expectedRuleFired": "arriveAtInPlace", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I arrive to school at 8.", "appliedRuleIds": [] }, "notes": "GAP: venue -> 'at'. Engine abstains today." },
+        { "id": "d1-arrive-pos-002", "input": "We arrived to the airport.", "expectedStatus": "corrected", "expectedCorrection": "We arrived at the airport.", "expectedRuleFired": "arriveAtInPlace", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "We arrived to the airport.", "appliedRuleIds": [] }, "notes": "GAP: venue -> 'at'. Engine abstains today." },
+        { "id": "d1-arrive-pos-003", "input": "I want to arrive to home early.", "expectedStatus": "corrected", "expectedCorrection": "I want to arrive home early.", "expectedRuleFired": "arriveAtInPlace", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I want to arrive to home early.", "appliedRuleIds": [] }, "notes": "GAP: 'home' takes NO preposition — drop 'to'. Engine abstains today." }
+      ],
+      "negative": [
+        { "id": "d1-arrive-neg-001", "input": "I arrive at school at 8.", "expectedStatus": "unchanged", "expectedCorrection": "I arrive at school at 8.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I arrive at school at 8.", "appliedRuleIds": [] }, "notes": "Already-correct 'at' venue; live-engine verified abstains." },
+        { "id": "d1-arrive-neg-002", "input": "We arrived in Hanoi.", "expectedStatus": "unchanged", "expectedCorrection": "We arrived in Hanoi.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "We arrived in Hanoi.", "appliedRuleIds": [] }, "notes": "Confusable: city correctly takes 'in', not 'at' — must not be 'corrected'; live-engine verified abstains." },
+        { "id": "d1-arrive-neg-003", "input": "The train arrived at the station.", "expectedStatus": "unchanged", "expectedCorrection": "The train arrived at the station.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "The train arrived at the station.", "appliedRuleIds": [] }, "notes": "Already-correct; live-engine verified abstains." }
+      ]
+    },
+    {
+      "rule": "explainToRecipient",
+      "ruleId": "en-explain-to-recipient",
+      "wiringStatus": "proposed_not_wired",
+      "liveCoverage": "gap",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN 'giai thich cho toi' (explain for/to me) maps to a double-object pattern learners over-apply: 'explain me the X'. English 'explain' is not ditransitive — it must be 'explain the X to me'.",
+      "detectorSketch": "Fire on 'explain' + <pronoun/person> + <noun phrase> (no 'to'). Rewrite to 'explain <noun phrase> to <pronoun/person>'. Do NOT fire when 'to' is already present, or when there is no recipient ('explain the problem').",
+      "fp_risk_note": "Medium. Must not touch the already-correct 'explain X to me' or recipient-less 'explain the problem'. Anchor on the explain + bare-recipient + object shape; verbs that ARE ditransitive (give/send/tell) must not be swept in.",
+      "positive": [
+        { "id": "d1-explain-pos-001", "input": "Please explain me the lesson.", "expectedStatus": "corrected", "expectedCorrection": "Please explain the lesson to me.", "expectedRuleFired": "explainToRecipient", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Please explain me the lesson.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today; proposed correction shown." },
+        { "id": "d1-explain-pos-002", "input": "Can you explain me this?", "expectedStatus": "corrected", "expectedCorrection": "Can you explain this to me?", "expectedRuleFired": "explainToRecipient", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Can you explain me this?", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today; proposed correction shown." },
+        { "id": "d1-explain-pos-003", "input": "He explained me the rule.", "expectedStatus": "corrected", "expectedCorrection": "He explained the rule to me.", "expectedRuleFired": "explainToRecipient", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "He explained me the rule.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today; proposed correction shown." }
+      ],
+      "negative": [
+        { "id": "d1-explain-neg-001", "input": "Please explain it to me.", "expectedStatus": "unchanged", "expectedCorrection": "Please explain it to me.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Please explain it to me.", "appliedRuleIds": [] }, "notes": "Already-correct target form; live-engine verified abstains." },
+        { "id": "d1-explain-neg-002", "input": "Can you explain the lesson to us?", "expectedStatus": "unchanged", "expectedCorrection": "Can you explain the lesson to us?", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Can you explain the lesson to us?", "appliedRuleIds": [] }, "notes": "Already-correct; live-engine verified abstains." },
+        { "id": "d1-explain-neg-003", "input": "He explained the problem.", "expectedStatus": "unchanged", "expectedCorrection": "He explained the problem.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "He explained the problem.", "appliedRuleIds": [] }, "notes": "Confusable: recipient-less 'explain X' is correct — must not insert a 'to' phrase; live-engine verified abstains." }
+      ]
+    },
+    {
+      "rule": "answerNoTo",
+      "ruleId": "en-answer-no-to",
+      "wiringStatus": "proposed_not_wired",
+      "liveCoverage": "gap",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN 'tra loi cho/voi' leads learners to over-insert 'to' after the verb 'answer': 'answer TO my question'. The transitive verb takes a direct object: 'answer my question'.",
+      "detectorSketch": "Fire on the VERB 'answer' + 'to' + <question/email/message/me/you/etc.> in the 'respond' sense; delete 'to'. Do NOT fire on the NOUN 'the answer to X', nor on the accountability idiom 'answer to your boss', nor on other verbs ('reply to' is correct).",
+      "fp_risk_note": "High. 'answer to' is valid as a noun complement ('the answer to the question') and as a phrasal verb meaning 'be accountable to' ('you answer to me now'). Requires verb-sense disambiguation; only the respond-sense transitive 'answer to <message/question/person>' should drop 'to'.",
+      "positive": [
+        { "id": "d1-answer-pos-001", "input": "Please answer to my question.", "expectedStatus": "corrected", "expectedCorrection": "Please answer my question.", "expectedRuleFired": "answerNoTo", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Please answer to my question.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today; proposed correction shown." },
+        { "id": "d1-answer-pos-002", "input": "He did not answer to my email.", "expectedStatus": "corrected", "expectedCorrection": "He did not answer my email.", "expectedRuleFired": "answerNoTo", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "He did not answer to my email.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today; proposed correction shown." },
+        { "id": "d1-answer-pos-003", "input": "Can you answer to me?", "expectedStatus": "corrected", "expectedCorrection": "Can you answer me?", "expectedRuleFired": "answerNoTo", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Can you answer to me?", "appliedRuleIds": [] }, "notes": "GAP: respond-sense; engine abstains today." }
+      ],
+      "negative": [
+        { "id": "d1-answer-neg-001", "input": "Please answer my question.", "expectedStatus": "unchanged", "expectedCorrection": "Please answer my question.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Please answer my question.", "appliedRuleIds": [] }, "notes": "Already-correct target form; live-engine verified abstains." },
+        { "id": "d1-answer-neg-002", "input": "He replied to my email.", "expectedStatus": "unchanged", "expectedCorrection": "He replied to my email.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "He replied to my email.", "appliedRuleIds": [] }, "notes": "Confusable: 'reply TO' is correct — the rule must not generalize across verbs; live-engine verified abstains." },
+        { "id": "d1-answer-neg-003", "input": "The answer to the question is wrong.", "expectedStatus": "unchanged", "expectedCorrection": "The answer to the question is wrong.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "The answer to the question is wrong.", "appliedRuleIds": [] }, "notes": "Confusable: NOUN 'answer to X' is correct — must not be touched; live-engine verified abstains." }
+      ]
+    },
+    {
+      "rule": "pickUpParticleDrop",
+      "ruleId": "en-pickup-particle-drop",
+      "wiringStatus": "proposed_not_wired",
+      "liveCoverage": "gap",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN 'don' (fetch someone) is single-word, so learners drop the particle: 'pick me at school' instead of the phrasal 'pick me up'. The transport/fetch sense requires the 'up' particle.",
+      "detectorSketch": "Fire on 'pick' + <person/pronoun object> + <at/from + place | at + time> with NO 'up'. Insert 'up' after the object: 'pick <obj> up <rest>'. Do NOT fire on 'pick' meaning select ('pick a flower/card/number') or when 'up' is already present.",
+      "fp_risk_note": "High. 'pick' also means choose ('I picked a flower', 'pick a card') and must keep no particle. Anchor strictly on the fetch-a-person frame (animate object + locative/temporal adjunct) before inserting 'up'.",
+      "positive": [
+        { "id": "d1-pickup-pos-001", "input": "I will pick you at the airport.", "expectedStatus": "corrected", "expectedCorrection": "I will pick you up at the airport.", "expectedRuleFired": "pickUpParticleDrop", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I will pick you at the airport.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today; proposed correction shown." },
+        { "id": "d1-pickup-pos-002", "input": "My mom picks me at school every day.", "expectedStatus": "corrected", "expectedCorrection": "My mom picks me up at school every day.", "expectedRuleFired": "pickUpParticleDrop", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "My mom picks me at school every day.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today; proposed correction shown." },
+        { "id": "d1-pickup-pos-003", "input": "Can you pick me at 8?", "expectedStatus": "corrected", "expectedCorrection": "Can you pick me up at 8?", "expectedRuleFired": "pickUpParticleDrop", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Can you pick me at 8?", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today; proposed correction shown." }
+      ],
+      "negative": [
+        { "id": "d1-pickup-neg-001", "input": "I will pick you up at the airport.", "expectedStatus": "unchanged", "expectedCorrection": "I will pick you up at the airport.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I will pick you up at the airport.", "appliedRuleIds": [] }, "notes": "Already-correct target form; live-engine verified abstains." },
+        { "id": "d1-pickup-neg-002", "input": "She picked up the phone.", "expectedStatus": "unchanged", "expectedCorrection": "She picked up the phone.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "She picked up the phone.", "appliedRuleIds": [] }, "notes": "Already-correct phrasal; live-engine verified abstains." },
+        { "id": "d1-pickup-neg-003", "input": "I picked a flower.", "expectedStatus": "unchanged", "expectedCorrection": "I picked a flower.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I picked a flower.", "appliedRuleIds": [] }, "notes": "Confusable: 'pick' = select takes NO particle — must not insert 'up'; live-engine verified abstains." }
+      ]
+    },
+    {
+      "rule": "getOnOffVehicle",
+      "ruleId": "en-geton-getoff-vehicle",
+      "wiringStatus": "proposed_not_wired",
+      "liveCoverage": "gap",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN 'len xe / xuong xe' (up vehicle / down vehicle) calques to 'go up/down the bus'. English boarding uses 'get on' (board) and 'get off' (alight) for public/large vehicles.",
+      "detectorSketch": "Fire on 'go up' + <vehicle> -> 'get on' + <vehicle>, and 'go down' + <vehicle> -> 'get off' + <vehicle>, restricted to a vehicle whitelist (bus, train, plane, boat, ferry, subway, tram, bike, motorbike). Do NOT fire on 'go up/down the stairs/hill/ladder/street/mountain'.",
+      "fp_risk_note": "High. 'go up/down' is correct for stairs, hills, ladders, streets, mountains. Gate strictly on a transport-noun whitelist as the direct object; never on inclines or paths. (Note: 'get in/out of' is the idiom for cars/taxis — keep cars OUT of this 'get on/off' slice.)",
+      "positive": [
+        { "id": "d1-geton-pos-001", "input": "I go up the bus at 7.", "expectedStatus": "corrected", "expectedCorrection": "I get on the bus at 7.", "expectedRuleFired": "getOnOffVehicle", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I go up the bus at 7.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today; proposed correction shown." },
+        { "id": "d1-geton-pos-002", "input": "We go up the train every morning.", "expectedStatus": "corrected", "expectedCorrection": "We get on the train every morning.", "expectedRuleFired": "getOnOffVehicle", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "We go up the train every morning.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today; proposed correction shown." },
+        { "id": "d1-geton-pos-003", "input": "She goes down the bus here.", "expectedStatus": "corrected", "expectedCorrection": "She gets off the bus here.", "expectedRuleFired": "getOnOffVehicle", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "She goes down the bus here.", "appliedRuleIds": [] }, "notes": "GAP: 'down vehicle' -> 'get off'; engine abstains today." }
+      ],
+      "negative": [
+        { "id": "d1-geton-neg-001", "input": "I get on the bus.", "expectedStatus": "unchanged", "expectedCorrection": "I get on the bus.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I get on the bus.", "appliedRuleIds": [] }, "notes": "Already-correct target form; live-engine verified abstains." },
+        { "id": "d1-geton-neg-002", "input": "Please get off the train.", "expectedStatus": "unchanged", "expectedCorrection": "Please get off the train.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Please get off the train.", "appliedRuleIds": [] }, "notes": "Already-correct; live-engine verified abstains." },
+        { "id": "d1-geton-neg-003", "input": "I go up the stairs.", "expectedStatus": "unchanged", "expectedCorrection": "I go up the stairs.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I go up the stairs.", "appliedRuleIds": [] }, "notes": "Confusable: 'go up the stairs' is correct (incline, not a vehicle) — must not become 'get on'; live-engine verified abstains." }
+      ]
+    }
+  ]
+}
