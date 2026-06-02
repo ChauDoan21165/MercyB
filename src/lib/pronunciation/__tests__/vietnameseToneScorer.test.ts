@@ -8,7 +8,7 @@ import {
   risingPitchContour,
   sparsePitchContour,
   vietnameseToneTargets,
-} from "../fixtures/vietnameseToneContourFixtures";
+} from "../__fixtures__/vietnameseToneContourFixtures";
 import {
   classifyVietnameseToneContour,
   normalizePitchContour,
