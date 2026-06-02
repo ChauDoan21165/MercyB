@@ -114,6 +114,16 @@ export const FEATURE_FLAGS = {
    * src/features/review/README.md.
    */
   REVIEW_ENABLED: readEnvBool("VITE_REVIEW_ENABLED", false),
+
+  /**
+   * Notification engine (on-device local notifications: daily reminder,
+   * evening streak-save, due-review). HIDDEN: default OFF. When OFF every
+   * public API in src/notificationEngine no-ops — no permission checks,
+   * prompts, scheduling, or listeners. The local-notifications adapter is
+   * additionally guarded by Capacitor.isNativePlatform() so web/CI no-op
+   * green. Reads env `VITE_FEATURE_NOTIFICATIONS`; defaults to OFF.
+   */
+  FEATURE_NOTIFICATIONS: readEnvBool("VITE_FEATURE_NOTIFICATIONS", false),
 };
 
 /**
