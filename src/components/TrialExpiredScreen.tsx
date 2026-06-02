@@ -14,18 +14,30 @@ export default function TrialExpiredScreen() {
           <Lock className="h-6 w-6 text-amber-600 dark:text-amber-400" aria-hidden />
         </div>
 
-        <h1 className="text-center text-lg font-semibold text-slate-900 dark:text-slate-100">
+        <h1
+          lang="vi"
+          className="text-center text-lg font-semibold text-slate-900 dark:text-slate-100"
+        >
           Hết hạn dùng thử 3 ngày
         </h1>
-        <p className="mt-1 text-center text-sm text-slate-500 dark:text-slate-400">
+        <p
+          lang="en"
+          className="mt-1 text-center text-sm text-slate-500 dark:text-slate-400"
+        >
           Your 3-day free trial has ended
         </p>
 
-        <p className="mt-4 text-center text-sm text-slate-700 dark:text-slate-300">
+        <p
+          lang="vi"
+          className="mt-4 text-center text-sm text-slate-700 dark:text-slate-300"
+        >
           Nâng cấp để tiếp tục học với Mercy và mở khóa toàn bộ phòng học, Speak,
           và Grammar.
         </p>
-        <p className="mt-1 text-center text-xs text-slate-500 dark:text-slate-400">
+        <p
+          lang="en"
+          className="mt-1 text-center text-xs text-slate-500 dark:text-slate-400"
+        >
           Upgrade to continue learning with Mercy and unlock all rooms, Speak,
           and Grammar.
         </p>
@@ -35,14 +47,18 @@ export default function TrialExpiredScreen() {
             to="/pricing"
             className="inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-400"
           >
-            Xem gói / See plans
+            <span lang="vi">Xem gói</span>
+            <span aria-hidden className="mx-1 opacity-70">/</span>
+            <span lang="en">See plans</span>
           </Link>
           <Link
             to="/rooms"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden />
-            Quay lại danh sách / Back to rooms
+            <span lang="vi">Quay lại danh sách</span>
+            <span aria-hidden className="mx-1 opacity-70">/</span>
+            <span lang="en">Back to rooms</span>
           </Link>
         </div>
       </div>

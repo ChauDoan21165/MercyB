@@ -686,7 +686,13 @@ function AppHeroShell() {
             </div>
           </div>
 
-          <div style={contentFrame}>
+          {/* Skip-link fallback target for the broad route set: pages
+              that declare their own <main id="main-content"> win (the
+              skip link finds that first); routes without one focus this
+              shell content region instead of no-op'ing. Uses a data-attr
+              (not a duplicate #main-content) to avoid id/landmark clashes
+              with pages that already have a tagged <main>. WCAG 2.4.1. */}
+          <div style={contentFrame} data-skip-fallback tabIndex={-1}>
             <Suspense fallback={<RouteFallback />}>
               <Outlet />
             </Suspense>

@@ -34,6 +34,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Bilingual } from "@/components/Bilingual";
 import { ArrowRight, Target } from "lucide-react";
 
 import type { WeaknessEntry } from "@/lib/weakness/weakness-catalog";
@@ -147,7 +148,17 @@ export default function FocusAreasMicroLessonDialog({
                   onClick={handleStart}
                   className="w-full bg-amber-500 text-white hover:bg-amber-600"
                 >
-                  Start lesson / Bắt đầu bài học
+                  <Bilingual
+                    as="span"
+                    primary="en"
+                    en="Start lesson"
+                    vi="Bắt đầu bài học"
+                    separator={
+                      <span aria-hidden className="mx-1 opacity-70">
+                        /
+                      </span>
+                    }
+                  />
                   <ArrowRight className="ml-2 h-4 w-4" aria-hidden />
                 </Button>
               ) : (
@@ -157,7 +168,17 @@ export default function FocusAreasMicroLessonDialog({
                   aria-disabled="true"
                   className="w-full cursor-not-allowed bg-slate-200 text-slate-500 hover:bg-slate-200"
                 >
-                  Lesson coming soon / Sắp có bài học
+                  <Bilingual
+                    as="span"
+                    primary="en"
+                    en="Lesson coming soon"
+                    vi="Sắp có bài học"
+                    separator={
+                      <span aria-hidden className="mx-1 opacity-70">
+                        /
+                      </span>
+                    }
+                  />
                 </Button>
               )}
               <Button
@@ -166,7 +187,17 @@ export default function FocusAreasMicroLessonDialog({
                 onClick={() => onOpenChange(false)}
                 className="w-full text-slate-500"
               >
-                Not now / Để sau
+                <Bilingual
+                  as="span"
+                  primary="en"
+                  en="Not now"
+                  vi="Để sau"
+                  separator={
+                    <span aria-hidden className="mx-1 opacity-70">
+                      /
+                    </span>
+                  }
+                />
               </Button>
             </DialogFooter>
           </>

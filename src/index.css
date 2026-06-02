@@ -272,6 +272,25 @@ body {
 }
 
 /* ===============================
+   Reduced-motion safety (WCAG 2.3.3)
+   Honors the OS "reduce motion" setting for the always-on, infinite
+   Mercy presence animations above. Mirrors src/config/a11y.ts
+   `enableReducedMotion: true`, which the stylesheet previously never
+   acted on. Decorative loops only — no functional state is conveyed by
+   motion, so disabling them is safe.
+   =============================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-mercy-breathe,
+  .animate-halo-pulse,
+  .animate-wing-flutter-left,
+  .animate-wing-flutter-right,
+  .animate-wave-expand {
+    animation: none !important;
+  }
+}
+
+/* ===============================
    GLOBAL WIDTH CLAMPS (NO OVERFLOW)
    =============================== */
 
