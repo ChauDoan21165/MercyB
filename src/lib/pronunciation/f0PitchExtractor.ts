@@ -21,10 +21,15 @@ const DEFAULT_FRAME_DURATION_MS = 40;
 const DEFAULT_HOP_DURATION_MS = 20;
 const DEFAULT_MIN_F0_HZ = 70;
 const DEFAULT_MAX_F0_HZ = 450;
-const DEFAULT_MIN_RMS = 0.015;
+const DEFAULT_MIN_RMS = 0.008;
 const MIN_DURATION_MS = 120;
 const MIN_VOICED_RATIO = 0.45;
 const MIN_FRAME_CONFIDENCE = 0.5;
+const MIN_STABLE_PITCH_RATIO = 0.62;
+const MAX_CLIPPED_SAMPLE_RATIO = 0.08;
+const CLIPPED_SAMPLE_ABS_THRESHOLD = 0.985;
+const OUTLIER_MAX_MEDIAN_RATIO = 0.42;
+const UNSTABLE_PAIR_RATIO = 0.28;
 
 export function extractF0PitchContour(input: F0PitchExtractionInput): ExtractedPitchContour {
   if (!input.enabled) {
@@ -60,9 +65,19 @@ export function extractF0PitchContour(input: F0PitchExtractionInput): ExtractedP
     };
   }
 
+  const clippedRatio = clippedSampleRatio(samples);
+  if (clippedRatio > MAX_CLIPPED_SAMPLE_RATIO) {
+    return {
+      ...emptyContour("insufficient-voicing"),
+      durationMs: round(durationMs),
+    };
+  }
+
+  const frameRmsValues = collectFrameRms(samples, frameSize, hopSize);
+  const adaptiveMinRms = Math.max(minRms, estimateNoiseAwareMinRms(frameRmsValues));
   const frames: PitchFrame[] = [];
   for (let offset = 0; offset + frameSize <= samples.length; offset += hopSize) {
-    const frame = estimateFramePitch(samples, offset, frameSize, sampleRate, minLag, maxLag, minRms);
+    const frame = estimateFramePitch(samples, offset, frameSize, sampleRate, minLag, maxLag, adaptiveMinRms);
     frames.push({
       timeMs: round(((offset + frameSize / 2) / sampleRate) * 1000),
       f0Hz: frame.f0Hz,
@@ -70,21 +85,42 @@ export function extractF0PitchContour(input: F0PitchExtractionInput): ExtractedP
     });
   }
 
-  const voicedFrames = frames.filter(
+  const rawVoicedFrames = frames.filter(
     (frame): frame is PitchFrame & { f0Hz: number } =>
       frame.f0Hz !== null && frame.confidence >= MIN_FRAME_CONFIDENCE,
   );
+  const medianRawF0Hz = rawVoicedFrames.length > 0 ? median(rawVoicedFrames.map((frame) => frame.f0Hz)) : null;
+  const stableVoicedFrames =
+    medianRawF0Hz === null
+      ? []
+      : rawVoicedFrames.filter(
+          (frame) => Math.abs(frame.f0Hz - medianRawF0Hz) / medianRawF0Hz <= OUTLIER_MAX_MEDIAN_RATIO,
+        );
+  const stableVoicedFrameKeys = new Set(stableVoicedFrames.map((frame) => `${frame.timeMs}:${frame.f0Hz}`));
+  const cleanedFrames = frames.map((frame) => {
+    if (frame.f0Hz === null || frame.confidence < MIN_FRAME_CONFIDENCE) return frame;
+    return stableVoicedFrameKeys.has(`${frame.timeMs}:${frame.f0Hz}`)
+      ? frame
+      : { ...frame, f0Hz: null, confidence: roundToTwoDecimals(frame.confidence * 0.35) };
+  });
+  const pitchStability = pitchStabilityFor(stableVoicedFrames);
+  const voicedFrames = stableVoicedFrames.filter((frame) => frame.confidence >= MIN_FRAME_CONFIDENCE);
   const voicedRatio = frames.length === 0 ? 0 : voicedFrames.length / frames.length;
   const medianF0Hz = voicedFrames.length > 0 ? median(voicedFrames.map((frame) => frame.f0Hz)) : null;
-  const extractionConfidence = extractionConfidenceFor(frames, voicedRatio);
+  const extractionConfidence = extractionConfidenceFor(cleanedFrames, voicedRatio, pitchStability);
 
   return {
-    samples: frames,
+    samples: cleanedFrames,
     durationMs: round(durationMs),
     voicedRatio: roundToTwoDecimals(voicedRatio),
     medianF0Hz: medianF0Hz === null ? null : round(medianF0Hz),
     extractionConfidence,
-    reason: voicedRatio >= MIN_VOICED_RATIO ? "ok" : "insufficient-voicing",
+    reason:
+      voicedRatio >= MIN_VOICED_RATIO &&
+      pitchStability >= MIN_STABLE_PITCH_RATIO &&
+      extractionConfidence >= MIN_FRAME_CONFIDENCE
+        ? "ok"
+        : "insufficient-voicing",
   };
 }
 
@@ -109,8 +145,8 @@ function estimateFramePitch(
     let difference = 0;
     const limit = frameSize - lag;
     for (let i = 0; i < limit; i += 1) {
-      const left = (samples[offset + i] ?? 0) - mean;
-      const right = (samples[offset + i + lag] ?? 0) - mean;
+      const left = ((samples[offset + i] ?? 0) - mean) * hann(i, frameSize);
+      const right = ((samples[offset + i + lag] ?? 0) - mean) * hann(i + lag, frameSize);
       const delta = left - right;
       difference += delta * delta;
     }
@@ -181,7 +217,55 @@ function rootMeanSquare(samples: Float32Array | readonly number[], offset: numbe
   return Math.sqrt(total / frameSize);
 }
 
-function extractionConfidenceFor(frames: PitchFrame[], voicedRatio: number): number {
+function collectFrameRms(
+  samples: Float32Array | readonly number[],
+  frameSize: number,
+  hopSize: number,
+): number[] {
+  const values: number[] = [];
+  for (let offset = 0; offset + frameSize <= samples.length; offset += hopSize) {
+    values.push(rootMeanSquare(samples, offset, frameSize));
+  }
+  return values;
+}
+
+function estimateNoiseAwareMinRms(frameRmsValues: number[]): number {
+  if (frameRmsValues.length === 0) return DEFAULT_MIN_RMS;
+  const sorted = [...frameRmsValues].sort((left, right) => left - right);
+  const lowPercentile = sorted[Math.max(0, Math.floor((sorted.length - 1) * 0.2))] ?? 0;
+  const medianRms = median(sorted);
+  const hasDistinctNoiseFloor = lowPercentile < medianRms * 0.35;
+  const noiseGate = hasDistinctNoiseFloor ? Math.max(lowPercentile * 2.4, medianRms * 0.12) : medianRms * 0.08;
+  return round(Math.min(0.08, Math.max(DEFAULT_MIN_RMS, noiseGate)));
+}
+
+function clippedSampleRatio(samples: Float32Array | readonly number[]): number {
+  let clipped = 0;
+  for (const sample of samples) {
+    if (Math.abs(sample ?? 0) >= CLIPPED_SAMPLE_ABS_THRESHOLD) clipped += 1;
+  }
+  return samples.length === 0 ? 0 : clipped / samples.length;
+}
+
+function pitchStabilityFor(voicedFrames: Array<PitchFrame & { f0Hz: number }>): number {
+  if (voicedFrames.length < 2) {
+    return voicedFrames.length === 0 ? 0 : 0.5;
+  }
+
+  let unstablePairs = 0;
+  for (let index = 1; index < voicedFrames.length; index += 1) {
+    const previous = voicedFrames[index - 1].f0Hz;
+    const current = voicedFrames[index].f0Hz;
+    const midpoint = (previous + current) / 2;
+    if (midpoint <= 0 || Math.abs(current - previous) / midpoint > UNSTABLE_PAIR_RATIO) {
+      unstablePairs += 1;
+    }
+  }
+
+  return roundToTwoDecimals(clamp01(1 - unstablePairs / (voicedFrames.length - 1)));
+}
+
+function extractionConfidenceFor(frames: PitchFrame[], voicedRatio: number, pitchStability: number): number {
   const voicedConfidence = frames
     .filter((frame) => frame.f0Hz !== null)
     .map((frame) => frame.confidence);
@@ -190,7 +274,7 @@ function extractionConfidenceFor(frames: PitchFrame[], voicedRatio: number): num
       ? 0
       : voicedConfidence.reduce((total, confidence) => total + confidence, 0) / voicedConfidence.length;
 
-  return roundToTwoDecimals(clamp01(0.55 * voicedRatio + 0.45 * meanConfidence));
+  return roundToTwoDecimals(clamp01(0.45 * voicedRatio + 0.35 * meanConfidence + 0.2 * pitchStability));
 }
 
 function emptyContour(reason: ExtractedPitchContour["reason"]): ExtractedPitchContour {
