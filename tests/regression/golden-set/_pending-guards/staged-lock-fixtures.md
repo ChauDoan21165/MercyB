@@ -16,19 +16,6 @@ scanned by `runCorrectionGolden.ts` (it loads only `correction-rules/*.json`).
 
 ---
 
-## 3. en-yesterday-irregular-beginner-past → `correction-rules/has-past-time-marker.json`
-```json
-{
-  "id": "yesterday-irregular-neg-lock-do-question",
-  "input": "Did you go yesterday?",
-  "expectedStatus": "unchanged",
-  "expectedCorrection": "Did you go yesterday?",
-  "expectedRuleFired": null,
-  "notes": "Lock (question/do-support guard, reuse !304): base verb is correct in a did-question; rule must not rewrite go->went."
-}
-```
-_(Also stage `Where did you go yesterday?` as `-neg-lock-wh-question` once the guard lands.)_
-
 ## 4. en-step6-profession-article → `correction-rules/profession-article.json`
 ```json
 {
