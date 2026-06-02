@@ -314,6 +314,9 @@ const DevAudioTest = import.meta.env.DEV
 // network calls until the explicit confirm.
 const SentrySmokeTest = lazyWithRetry(() => import("@/pages/SentrySmokeTest"));
 const AiTutorPage = lazyWithRetry(() => import("@/pages/AiTutor"));
+// Lane F — gamification module. Self-contained under src/features/gamification,
+// gated by FEATURE_FLAGS.FEATURE_GAMIFICATION (default OFF).
+const GamificationPage = lazyWithRetry(() => import("@/features/gamification/routes/GamificationPage"));
 
 declare global {
   interface Window { MB_ROUTER_VERSION?: string; }
@@ -1150,6 +1153,13 @@ export default function AppRouter() {
           <Route path="/mercy/chat"
             element={<LazyPage><MercyUnifiedPage /></LazyPage>}
           />
+
+          {/* Lane F — gamification. Hidden until FEATURE_GAMIFICATION is flipped. */}
+          {FEATURE_FLAGS.FEATURE_GAMIFICATION ? (
+            <Route path="/progress/play"
+              element={<LazyPage><GamificationPage /></LazyPage>}
+            />
+          ) : null}
 
           {/* AI Tutor shell is public; provider/runtime gates own real execution. */}
           {FEATURE_FLAGS.AI_TUTOR_UI_ENABLED ? (

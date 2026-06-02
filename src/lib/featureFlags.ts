@@ -94,6 +94,16 @@ export const FEATURE_FLAGS = {
 
   /** AI Tutor mock UI shell — behind feature flag, mock responses only. */
   AI_TUTOR_UI_ENABLED: true,
+
+  /**
+   * Lane F — client-first gamification module (streaks/XP/daily goals/
+   * achievements) under src/features/gamification/. HIDDEN: default OFF,
+   * no route or nav surface ships until this is flipped. State lives in
+   * IndexedDB behind GamificationStore — no new tables/migrations, touches
+   * nothing in A/B/C/D/billing/auth/audio. Reads env
+   * `VITE_FEATURE_GAMIFICATION`; defaults to OFF.
+   */
+  FEATURE_GAMIFICATION: readEnvBool("VITE_FEATURE_GAMIFICATION", false),
 };
 
 /**
