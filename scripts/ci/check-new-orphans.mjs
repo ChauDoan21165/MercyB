@@ -3,10 +3,13 @@
 //
 // Preventive, diff-scoped dead-code guard for merge requests. Fails the
 // pipeline when a PR *introduces* a new orphan file (a source module that
-// nothing imports) or a new unused export (an exported symbol with zero
-// references anywhere else in the tree). It is intentionally diff-scoped:
-// it only inspects what THIS MR adds, so the ~existing~ backlog of orphans
-// never fails a PR — it just stops the pile from growing.
+// nothing imports). It ALSO reports new unused exports (an exported symbol
+// with zero references anywhere else in the tree) — but those are a
+// non-failing WARNING only, not a hard fail: a freshly-exported symbol is
+// often a public-API surface, used lazily/dynamically, or wired up in a
+// follow-up MR, and the word-grep can false-positive. It is intentionally
+// diff-scoped: it only inspects what THIS MR adds, so the ~existing~ backlog
+// of orphans never fails a PR — it just stops the pile from growing.
 //
 // Design goals:
 //   - Fast (<10s): pure `git diff` + `git grep` (C-fast), no npm install,
@@ -191,26 +194,35 @@ function main() {
     if (!isReferencedElsewhere(name, file)) unusedExports.push({ file, name });
   }
 
-  if (orphans.length === 0 && unusedExports.length === 0) {
-    console.log(`✅ check-new-orphans: no new orphan files or unused exports in this MR (base ${base.slice(0, 9)}).`);
+  // Unused exports are a SOFT signal — they do not fail the pipeline. A newly
+  // exported symbol can be legitimately referenced-later (public API surface,
+  // lazy/dynamic import, a symbol wired up in a follow-up MR), and the grep is
+  // word-based so false positives are plausible. Warn, but never block on them.
+  if (unusedExports.length) {
+    console.warn("⚠️  check-new-orphans: this MR adds export(s) not yet referenced elsewhere (warning only — does NOT fail CI):");
+    for (const { file, name } of unusedExports) console.warn(`   • ${name}  (${file})`);
+    console.warn(
+      "If intentional (public API, lazy/dynamic use, or wired up in a follow-up),\n" +
+      "ignore this. Otherwise: make the symbol non-exported if it is only used\n" +
+      "locally, wire it into a consumer, or delete it.\n",
+    );
+  }
+
+  // Orphan FILES are the hard fail: a whole new source module that nothing
+  // imports is almost always an accident (dead-on-arrival code).
+  if (orphans.length === 0) {
+    const suffix = unusedExports.length ? " (unused-export warnings above are non-blocking)" : "";
+    console.log(`✅ check-new-orphans: no new orphan files in this MR (base ${base.slice(0, 9)})${suffix}.`);
     process.exit(0);
   }
 
-  console.error("❌ check-new-orphans: this MR introduces dead code.\n");
-  if (orphans.length) {
-    console.error("New orphan file(s) — added but nothing imports them:");
-    for (const f of orphans) console.error(`   • ${f}`);
-    console.error("");
-  }
-  if (unusedExports.length) {
-    console.error("New unused export(s) — exported but referenced nowhere else:");
-    for (const { file, name } of unusedExports) console.error(`   • ${name}  (${file})`);
-    console.error("");
-  }
+  console.error("\n❌ check-new-orphans: this MR introduces a new orphan file (dead module).\n");
+  console.error("New orphan file(s) — added but nothing imports them:");
+  for (const f of orphans) console.error(`   • ${f}`);
+  console.error("");
   console.error(
-    "Fix: wire the file/export into a consumer, make the symbol non-exported\n" +
-    "if it is only used locally, or delete it. This check is diff-scoped — it\n" +
-    "only flags what this MR adds, not pre-existing orphans.",
+    "Fix: wire the file into a consumer, or delete it. This check is diff-scoped —\n" +
+    "it only flags what this MR adds, not pre-existing orphans.",
   );
   process.exit(1);
 }
