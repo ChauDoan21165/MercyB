@@ -38,11 +38,14 @@ stages:
 
 # ── Global CI tuning (Lane C: faster feedback) ─────────────────────────
 #
-# The local Mac runner is `concurrent = 1`, so the four `test`-stage jobs
-# run strictly serially — every second of per-job overhead is a second of
-# pipeline wall-clock. These knobs trim the cache archive/extract tax that
-# wraps each job (a trace showed ~15s to save + ~6s to restore the
-# node_modules cache, per job):
+# The local Mac runner can run multiple jobs at once. Keep each job in a
+# job-specific checkout so concurrent get_sources/cleanup steps cannot corrupt
+# a shared worktree. The local shell runner has shown collisions even under the
+# runner-slot path, so include both pipeline and job ids. The path must stay
+# under $CI_BUILDS_DIR.
+#
+# The remaining knobs trim the cache archive/extract tax that wraps each job
+# (a trace showed ~15s to save + ~6s to restore the node_modules cache, per job):
 #   - FF_USE_FASTZIP            parallel zip impl; the large node_modules
 #                               cache (~1756 pkgs) archives far faster
 #                               than the default gzip path.
@@ -61,6 +64,7 @@ variables:
   CACHE_COMPRESSION_LEVEL: "fast"
   TRANSFER_METER_FREQUENCY: "2s"
   GIT_DEPTH: "20"
+  GIT_CLONE_PATH: "$CI_BUILDS_DIR/$CI_PIPELINE_ID/$CI_JOB_ID/$CI_PROJECT_PATH_SLUG"
 
 # ── Shared anchors for the `test` stage ────────────────────────────────
 #
@@ -106,12 +110,16 @@ variables:
 # "run untagged jobs" disabled. Shared-runner fallbacks are separate
 # manual jobs with no tags and only appear when a pipeline is started
 # with MERCYB_SHARED_RUNNER_FALLBACK=1.
+#
+# `isolated-builds` routes these jobs to the runner configured with
+# [runners.custom_build_dir] enabled, which is required for GIT_CLONE_PATH.
 
 .local_runner: &local_runner
   tags:
     - local
     - mac
     - mercyb
+    - isolated-builds
 
 # Changes that affect the full app build/test path. Docs-only changes do
 # not need the heavy build job on merge-request pipelines; protected
