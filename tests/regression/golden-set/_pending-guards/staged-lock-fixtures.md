@@ -512,3 +512,437 @@ Gated on: Lane A adds a new correction rule for VN transfer around `dong y`:
   "notes": "Corpus-wave guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; adjective 'agreeable' must not be captured by a broad be+agree prefix matcher."
 }
 ```
+
+---
+
+## D1 corpus. en-afraid-of-fear-object → target fixture TBD
+
+Source: `vn-interference-prep-phrasal-D1.json`, candidate
+`en-afraid-of-fear-object` / `afraidOfFearObject`.
+
+Gated on: Lane A adds a new correction rule for VN `so` preposition transfer:
+`afraid from/with <fear object>` → `afraid of <fear object>`.
+
+**ACTIVATION positives** (abstain today → must fire once the new rule lands):
+```json
+{
+  "id": "d1-afraid-of-pos-001",
+  "input": "I am afraid from dogs.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "I am afraid of dogs.",
+  "expectedRuleFired": "en-afraid-of-fear-object",
+  "notes": "D1 corpus candidate en-afraid-of-fear-object. ACTIVATE-AFTER: live engine 2026-06-02 abstains (unchanged, no appliedRuleIds)."
+}
+```
+```json
+{
+  "id": "d1-afraid-of-pos-002",
+  "input": "She is afraid from the dark.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "She is afraid of the dark.",
+  "expectedRuleFired": "en-afraid-of-fear-object",
+  "notes": "D1 corpus candidate en-afraid-of-fear-object. ACTIVATE-AFTER: live engine 2026-06-02 abstains; fear-object noun phrase must take 'of'."
+}
+```
+```json
+{
+  "id": "d1-afraid-of-pos-003",
+  "input": "He is afraid with spiders.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "He is afraid of spiders.",
+  "expectedRuleFired": "en-afraid-of-fear-object",
+  "notes": "D1 corpus candidate en-afraid-of-fear-object. ACTIVATE-AFTER: live engine 2026-06-02 abstains; 'with' variant must rewrite to 'of'."
+}
+```
+
+**VERIFY-NOW negatives** (already abstain; must keep abstaining after the new rule):
+```json
+{
+  "id": "d1-afraid-of-neg-001",
+  "input": "I am afraid of dogs.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I am afraid of dogs.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; already-correct target form."
+}
+```
+```json
+{
+  "id": "d1-afraid-of-neg-002",
+  "input": "I am afraid of heights.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I am afraid of heights.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; already-correct target form with abstract fear object."
+}
+```
+```json
+{
+  "id": "d1-afraid-of-neg-003",
+  "input": "I'm afraid I can't come.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I'm afraid I can't come.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; politeness idiom 'afraid + clause' must not be touched."
+}
+```
+
+## D1 corpus. en-arrive-at-in-place → target fixture TBD
+
+Source: `vn-interference-prep-phrasal-D1.json`, candidate
+`en-arrive-at-in-place` / `arriveAtInPlace`.
+
+Gated on: Lane A adds an object-sensitive arrive rule:
+`arrive(d) to <venue>` → `arrive(d) at <venue>`, and `arrive to home` → `arrive home`.
+
+**ACTIVATION positives** (abstain today → must fire once the new rule lands):
+```json
+{
+  "id": "d1-arrive-pos-001",
+  "input": "I arrive to school at 8.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "I arrive at school at 8.",
+  "expectedRuleFired": "en-arrive-at-in-place",
+  "notes": "D1 corpus candidate en-arrive-at-in-place. ACTIVATE-AFTER: live engine 2026-06-02 abstains; venue object takes 'at'."
+}
+```
+```json
+{
+  "id": "d1-arrive-pos-002",
+  "input": "We arrived to the airport.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "We arrived at the airport.",
+  "expectedRuleFired": "en-arrive-at-in-place",
+  "notes": "D1 corpus candidate en-arrive-at-in-place. ACTIVATE-AFTER: live engine 2026-06-02 abstains; venue object takes 'at'."
+}
+```
+```json
+{
+  "id": "d1-arrive-pos-003",
+  "input": "I want to arrive to home early.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "I want to arrive home early.",
+  "expectedRuleFired": "en-arrive-at-in-place",
+  "notes": "D1 corpus candidate en-arrive-at-in-place. ACTIVATE-AFTER: live engine 2026-06-02 abstains; 'home' takes no preposition."
+}
+```
+
+**VERIFY-NOW negatives** (already abstain; must keep abstaining after the new rule):
+```json
+{
+  "id": "d1-arrive-neg-001",
+  "input": "I arrive at school at 8.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I arrive at school at 8.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; already-correct 'at' venue."
+}
+```
+```json
+{
+  "id": "d1-arrive-neg-002",
+  "input": "We arrived in Hanoi.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "We arrived in Hanoi.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; city/country objects take 'in', not 'at'."
+}
+```
+```json
+{
+  "id": "d1-arrive-neg-003",
+  "input": "The train arrived at the station.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "The train arrived at the station.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; already-correct venue form."
+}
+```
+
+## D1 corpus. en-explain-to-recipient → target fixture TBD
+
+Source: `vn-interference-prep-phrasal-D1.json`, candidate
+`en-explain-to-recipient` / `explainToRecipient`.
+
+Gated on: Lane A adds a new correction rule for non-ditransitive `explain`:
+`explain <recipient> <object>` → `explain <object> to <recipient>`.
+
+**ACTIVATION positives** (abstain today → must fire once the new rule lands):
+```json
+{
+  "id": "d1-explain-pos-001",
+  "input": "Please explain me the lesson.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Please explain the lesson to me.",
+  "expectedRuleFired": "en-explain-to-recipient",
+  "notes": "D1 corpus candidate en-explain-to-recipient. ACTIVATE-AFTER: live engine 2026-06-02 abstains; bare recipient must move to a 'to' phrase."
+}
+```
+```json
+{
+  "id": "d1-explain-pos-002",
+  "input": "Can you explain me this?",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Can you explain this to me?",
+  "expectedRuleFired": "en-explain-to-recipient",
+  "notes": "D1 corpus candidate en-explain-to-recipient. ACTIVATE-AFTER: live engine 2026-06-02 abstains; question punctuation must be preserved."
+}
+```
+```json
+{
+  "id": "d1-explain-pos-003",
+  "input": "He explained me the rule.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "He explained the rule to me.",
+  "expectedRuleFired": "en-explain-to-recipient",
+  "notes": "D1 corpus candidate en-explain-to-recipient. ACTIVATE-AFTER: live engine 2026-06-02 abstains; past-tense explain variant."
+}
+```
+
+**VERIFY-NOW negatives** (already abstain; must keep abstaining after the new rule):
+```json
+{
+  "id": "d1-explain-neg-001",
+  "input": "Please explain it to me.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "Please explain it to me.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; already-correct target form."
+}
+```
+```json
+{
+  "id": "d1-explain-neg-002",
+  "input": "Can you explain the lesson to us?",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "Can you explain the lesson to us?",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; already-correct recipient phrase."
+}
+```
+```json
+{
+  "id": "d1-explain-neg-003",
+  "input": "He explained the problem.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "He explained the problem.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; recipient-less 'explain X' must not get an inserted recipient phrase."
+}
+```
+
+## D1 corpus. en-answer-no-to → target fixture TBD
+
+Source: `vn-interference-prep-phrasal-D1.json`, candidate
+`en-answer-no-to` / `answerNoTo`.
+
+Gated on: Lane A adds a verb-sense-bound rule for respond-sense `answer`:
+`answer to <question/email/person>` → `answer <question/email/person>`.
+
+**ACTIVATION positives** (abstain today → must fire once the new rule lands):
+```json
+{
+  "id": "d1-answer-pos-001",
+  "input": "Please answer to my question.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Please answer my question.",
+  "expectedRuleFired": "en-answer-no-to",
+  "notes": "D1 corpus candidate en-answer-no-to. ACTIVATE-AFTER: live engine 2026-06-02 abstains; respond-sense verb should drop 'to'."
+}
+```
+```json
+{
+  "id": "d1-answer-pos-002",
+  "input": "He did not answer to my email.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "He did not answer my email.",
+  "expectedRuleFired": "en-answer-no-to",
+  "notes": "D1 corpus candidate en-answer-no-to. ACTIVATE-AFTER: live engine 2026-06-02 abstains; negated respond-sense verb should drop 'to'."
+}
+```
+```json
+{
+  "id": "d1-answer-pos-003",
+  "input": "Can you answer to me?",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Can you answer me?",
+  "expectedRuleFired": "en-answer-no-to",
+  "notes": "D1 corpus candidate en-answer-no-to. ACTIVATE-AFTER: live engine 2026-06-02 abstains; question form must preserve punctuation."
+}
+```
+
+**VERIFY-NOW negatives** (already abstain; must keep abstaining after the new rule):
+```json
+{
+  "id": "d1-answer-neg-001",
+  "input": "Please answer my question.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "Please answer my question.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; already-correct direct object."
+}
+```
+```json
+{
+  "id": "d1-answer-neg-002",
+  "input": "He replied to my email.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "He replied to my email.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; 'reply to' is correct and must not be swept into answer-no-to."
+}
+```
+```json
+{
+  "id": "d1-answer-neg-003",
+  "input": "The answer to the question is wrong.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "The answer to the question is wrong.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; noun phrase 'answer to X' is correct."
+}
+```
+
+## D1 corpus. en-pickup-particle-drop → target fixture TBD
+
+Source: `vn-interference-prep-phrasal-D1.json`, candidate
+`en-pickup-particle-drop` / `pickUpParticleDrop`.
+
+Gated on: Lane A adds a fetch-person frame rule:
+`pick <person> at/from <place|time>` → `pick <person> up at/from <place|time>`.
+
+**ACTIVATION positives** (abstain today → must fire once the new rule lands):
+```json
+{
+  "id": "d1-pickup-pos-001",
+  "input": "I will pick you at the airport.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "I will pick you up at the airport.",
+  "expectedRuleFired": "en-pickup-particle-drop",
+  "notes": "D1 corpus candidate en-pickup-particle-drop. ACTIVATE-AFTER: live engine 2026-06-02 abstains; animate fetch object requires 'up'."
+}
+```
+```json
+{
+  "id": "d1-pickup-pos-002",
+  "input": "My mom picks me at school every day.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "My mom picks me up at school every day.",
+  "expectedRuleFired": "en-pickup-particle-drop",
+  "notes": "D1 corpus candidate en-pickup-particle-drop. ACTIVATE-AFTER: live engine 2026-06-02 abstains; third-person fetch frame requires 'up'."
+}
+```
+```json
+{
+  "id": "d1-pickup-pos-003",
+  "input": "Can you pick me at 8?",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Can you pick me up at 8?",
+  "expectedRuleFired": "en-pickup-particle-drop",
+  "notes": "D1 corpus candidate en-pickup-particle-drop. ACTIVATE-AFTER: live engine 2026-06-02 abstains; time adjunct fetch frame requires 'up'."
+}
+```
+
+**VERIFY-NOW negatives** (already abstain; must keep abstaining after the new rule):
+```json
+{
+  "id": "d1-pickup-neg-001",
+  "input": "I will pick you up at the airport.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I will pick you up at the airport.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; already-correct phrasal fetch form."
+}
+```
+```json
+{
+  "id": "d1-pickup-neg-002",
+  "input": "She picked up the phone.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "She picked up the phone.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; existing phrasal 'picked up the phone' must remain unchanged."
+}
+```
+```json
+{
+  "id": "d1-pickup-neg-003",
+  "input": "I picked a flower.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I picked a flower.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; select-sense 'pick' must not receive 'up'."
+}
+```
+
+## D1 corpus. en-geton-getoff-vehicle → target fixture TBD
+
+Source: `vn-interference-prep-phrasal-D1.json`, candidate
+`en-geton-getoff-vehicle` / `getOnOffVehicle`.
+
+Gated on: Lane A adds a vehicle-whitelist boarding/alighting rule:
+`go up <vehicle>` → `get on <vehicle>`, `go down <vehicle>` → `get off <vehicle>`.
+
+**ACTIVATION positives** (abstain today → must fire once the new rule lands):
+```json
+{
+  "id": "d1-geton-pos-001",
+  "input": "I go up the bus at 7.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "I get on the bus at 7.",
+  "expectedRuleFired": "en-geton-getoff-vehicle",
+  "notes": "D1 corpus candidate en-geton-getoff-vehicle. ACTIVATE-AFTER: live engine 2026-06-02 abstains; vehicle boarding frame should rewrite to 'get on'."
+}
+```
+```json
+{
+  "id": "d1-geton-pos-002",
+  "input": "We go up the train every morning.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "We get on the train every morning.",
+  "expectedRuleFired": "en-geton-getoff-vehicle",
+  "notes": "D1 corpus candidate en-geton-getoff-vehicle. ACTIVATE-AFTER: live engine 2026-06-02 abstains; train boarding frame should rewrite to 'get on'."
+}
+```
+```json
+{
+  "id": "d1-geton-pos-003",
+  "input": "She goes down the bus here.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "She gets off the bus here.",
+  "expectedRuleFired": "en-geton-getoff-vehicle",
+  "notes": "D1 corpus candidate en-geton-getoff-vehicle. ACTIVATE-AFTER: live engine 2026-06-02 abstains; vehicle alighting frame should rewrite to 'get off'."
+}
+```
+
+**VERIFY-NOW negatives** (already abstain; must keep abstaining after the new rule):
+```json
+{
+  "id": "d1-geton-neg-001",
+  "input": "I get on the bus.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I get on the bus.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; already-correct boarding form."
+}
+```
+```json
+{
+  "id": "d1-geton-neg-002",
+  "input": "Please get off the train.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "Please get off the train.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; already-correct alighting form."
+}
+```
+```json
+{
+  "id": "d1-geton-neg-003",
+  "input": "I go up the stairs.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I go up the stairs.",
+  "expectedRuleFired": null,
+  "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; incline/path object must not be rewritten as vehicle boarding."
+}
+```
