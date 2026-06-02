@@ -220,10 +220,21 @@ describe("correctionEngine", () => {
     "You go.",
     "He can go.",
     "She will work.",
+    "He and she go to work.",
+    "She and he work together.",
+    "It and he make noise.",
   ])("does not over-trigger approved Step 5 third-person singular: %s", (input) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "unchanged",
       appliedRuleIds: [],
+    });
+  });
+
+  it("preserves approved daily routine third-person positive", () => {
+    expect(correctWithTutorRules("She eat breakfast every day.", "en")).toMatchObject({
+      status: "corrected",
+      corrected: "She eats breakfast every day.",
+      appliedRuleIds: ["en-third-person-daily-go-eat-have"],
     });
   });
 
@@ -749,9 +760,11 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["He go to work.", "He goes to work."],
     ["he go every day", "He goes every day."],
     ["she work here", "She works here."],
     ["it make sense", "It makes sense."],
+    ["It make noise.", "It makes noise."],
   ])("corrects narrow Step 5 subject-verb agreement: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",

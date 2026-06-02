@@ -36,6 +36,14 @@
       "expectedCorrection": "It makes noise.",
       "expectedRuleFired": "step5SubjectVerbAgreement",
       "notes": "It subject; make -> makes."
+    },
+    {
+      "id": "s5sva-pos-005",
+      "input": "He go to work.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He goes to work.",
+      "expectedRuleFired": "step5SubjectVerbAgreement",
+      "notes": "Preserves simple singular-subject positive while coordinated-subject guard is active."
     }
   ],
   "negative": [
@@ -86,6 +94,30 @@
       "expectedCorrection": "He, I think, go to work.",
       "expectedRuleFired": null,
       "notes": "Confusable: parenthetical between subject and verb breaks adjacency, so the rule abstains."
+    },
+    {
+      "id": "step5-sva-neg-conf-003",
+      "input": "He and she go to work.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He and she go to work.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: coordinated compound subject takes plural agreement, so the rule must not rewrite the second conjunct."
+    },
+    {
+      "id": "step5-sva-neg-conf-004",
+      "input": "She and he work together.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She and he work together.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: coordinated compound subject with work stays unchanged."
+    },
+    {
+      "id": "step5-sva-neg-conf-005",
+      "input": "It and he make noise.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "It and he make noise.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: coordinated compound subject with make stays unchanged."
     }
   ]
 }
