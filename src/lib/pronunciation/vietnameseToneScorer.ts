@@ -1,10 +1,10 @@
-export type VietnameseToneId = "sac" | "huyen" | "ngang" | "hoi" | "nga" | "nang";
+type VietnameseToneId = "sac" | "huyen" | "ngang" | "hoi" | "nga" | "nang";
 
-export type VietnameseToneBucket = "close" | "not_close" | "unclear";
+type VietnameseToneBucket = "close" | "not_close" | "unclear";
 
-export type VietnameseObservedContour = "rising" | "falling" | "level" | "unknown";
+type VietnameseObservedContour = "rising" | "falling" | "level" | "unknown";
 
-export interface PitchContourSample {
+interface PitchContourSample {
   timeMs: number;
   f0Hz: number | null;
   confidence: number;
@@ -25,7 +25,7 @@ export interface VietnameseToneTarget {
   expectedContour: "rising" | "falling" | "level" | "unsupported";
 }
 
-export interface VietnameseToneScore {
+interface VietnameseToneScore {
   bucket: VietnameseToneBucket;
   score: number | null;
   confidence: number;
