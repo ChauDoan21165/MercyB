@@ -102,6 +102,14 @@
       "expectedCorrection": "I want book a room.",
       "expectedRuleFired": null,
       "notes": "Lock (verb-sense guard): 'book' is the verb (to book a room); article rule must not fire."
+    },
+    {
+      "id": "missing-article-neg-lock-verb-sense",
+      "input": "I want book a room.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I want book a room.",
+      "expectedRuleFired": null,
+      "notes": "Verb-sense guard (merged 242cd2d7): 'book' is the verb (to book a room); article rule must not fire."
     }
   ]
 }
