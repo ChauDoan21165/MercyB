@@ -1,0 +1,274 @@
+{
+  "corpus": "vn-interference-paired-connectors-D2",
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "author": "D2 (Lane D)",
+  "status": "proposal_not_live_wired_build_ready",
+  "schemaBasis": "tests/regression/golden-set/correction-rules/*.json",
+  "liveEngine": "src/lib/tutor/correctionEngine.ts :: correctWithTutorRules(input, 'en')",
+  "generatedAt": "2026-06-02",
+  "slice": "Paired / double connectors. Vietnamese marks subordination on BOTH clauses (vi...nen = because...so; tuy / mac du...nhung = although...but), so learners keep both members in English, which allows only one. Each pattern drops the redundant second connector and keeps the leading subordinator.",
+  "claimCheck": "Confirmed non-overlapping at generation time with: d1/vn-corpus-prep-phrasal (verb/adjective prepositions + particles), d1/vn-corpus-structural (existential there-is, dummy-it, adjective-noun order, comparatives), lane-a/vn-corpus-a3-build-queue (tense-aspect, question-form, copula-drop, intra-clause word order, topic-comment), and the A1/A4 corpora already on main (articles, plural/countability, time prepositions, make/do + lexical sense-merges, appliance/medicine calques). Inter-clausal paired connectors are claimed by none of them.",
+  "verificationMethod": "Every positive and negative below was run through the UNMODIFIED live engine (correctWithTutorRules, language 'en') on origin/main @ 52523909d. 'liveEngine.marker' = 'fires' when a proposed/related ruleId appears in appliedRuleIds, else 'abstains'. 'liveEngine.corrected' is the engine's verbatim current output. No engine code is changed by this MR; it is data-only.",
+  "coverageLegend": {
+    "gap_new_rule_needed": "Engine currently abstains on the positives; a new rule must be authored to reach expectedCorrection. Negatives confirm the engine already abstains on the confusable surface (no current false positive to guard)."
+  },
+  "patterns": [
+    {
+      "patternId": "CONN-1-because-so",
+      "category": "paired-connector",
+      "name": "because...so redundancy (drop clause-initial 'so')",
+      "vietnameseRoot": "vi...nen (vi troi mua nen toi o nha = because it rained so I stayed home)",
+      "coverage": "gap_new_rule_needed",
+      "liveRuleId": "en-paired-connector-because-so",
+      "proposedRule": "pairedConnectorBecauseSo",
+      "fp_risk_note": "Medium-high. 'so' is high-frequency: intensifier ('so tired'), result connector opening a SEPARATE main clause that has no leading 'because' ('She studied hard, so she passed.'), and purpose 'so that'. Fire ONLY on the wrap shape 'Because <clause>, so <clause>' where a sentence-initial subordinator 'because' governs clause 1 and a clause-initial 'so' opens clause 2. Must NOT touch 'because of', 'so that', or 'so' + adjective.",
+      "detectorSketch": "detect: /^\\s*because\\b[^,]*,\\s*so\\b/i AND not /\\bso that\\b/i. apply: delete the clause-initial 'so ' immediately after the first comma (Because X, so Y -> Because X, Y), preserving the rest verbatim. Anchor on sentence-initial 'because' so mid-sentence '..., so ... because ...' (CONN-1 neg-001) never matches.",
+      "positive": [
+        {
+          "id": "conn1-pos-001",
+          "input": "Because it rained, so I stayed home.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Because it rained, I stayed home.",
+          "expectedRuleFired": "pairedConnectorBecauseSo",
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Because it rained, so I stayed home.", "appliedRuleIds": [] },
+          "notes": "Gap: engine abstains. Target drops the clause-initial 'so'."
+        },
+        {
+          "id": "conn1-pos-002",
+          "input": "Because he was tired, so he slept.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Because he was tired, he slept.",
+          "expectedRuleFired": "pairedConnectorBecauseSo",
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Because he was tired, so he slept.", "appliedRuleIds": [] },
+          "notes": "Gap: engine abstains. Past-tense clause kept intact; only 'so' removed."
+        },
+        {
+          "id": "conn1-pos-003",
+          "input": "Because she is busy, so she cannot come.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Because she is busy, she cannot come.",
+          "expectedRuleFired": "pairedConnectorBecauseSo",
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Because she is busy, so she cannot come.", "appliedRuleIds": [] },
+          "notes": "Gap: engine abstains. Modal 'cannot' clause preserved."
+        }
+      ],
+      "negative": [
+        {
+          "id": "conn1-neg-001",
+          "input": "I was tired, so I went to bed because I needed rest.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "I was tired, so I went to bed because I needed rest.",
+          "expectedRuleFired": null,
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I was tired, so I went to bed because I needed rest.", "appliedRuleIds": [] },
+          "notes": "Confusable: 'so' and 'because' both present but NOT a wrap pair — 'so' opens the main clause, 'because' subordinates a trailing reason. No sentence-initial 'because...,so'. Engine verified abstains."
+        },
+        {
+          "id": "conn1-neg-002",
+          "input": "He is so tired because of work.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "He is so tired because of work.",
+          "expectedRuleFired": null,
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "He is so tired because of work.", "appliedRuleIds": [] },
+          "notes": "Confusable: 'so' = intensifier, 'because of' = preposition. Engine verified abstains."
+        },
+        {
+          "id": "conn1-neg-003",
+          "input": "She studied hard, so she passed.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "She studied hard, so she passed.",
+          "expectedRuleFired": null,
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "She studied hard, so she passed.", "appliedRuleIds": [] },
+          "notes": "Confusable: correct single result-'so' with no leading 'because'. Engine verified abstains."
+        }
+      ],
+      "qaStatus": "passed",
+      "buildQueuePlacement": "After the existing single-connector / topic-comment rules; group with CONN-2 and CONN-3 as one paired-connector rule-pack. Medium priority: high learner frequency, but needs the comma-anchored guard before locking.",
+      "proposedGoldenCandidates": [
+        "tests/regression/golden-set/correction-rules/paired-connector-because-so.json"
+      ]
+    },
+    {
+      "patternId": "CONN-2-although-but",
+      "category": "paired-connector",
+      "name": "although...but redundancy (drop clause-initial 'but')",
+      "vietnameseRoot": "tuy / mac du...nhung (tuy troi mua nhung toi van di = although it rained but I still went)",
+      "coverage": "gap_new_rule_needed",
+      "liveRuleId": "en-paired-connector-although-but",
+      "proposedRule": "pairedConnectorAlthoughBut",
+      "fp_risk_note": "Medium. 'but' is high-frequency: correct contrastive coordinator with no 'although' ('I tried, but I failed.'), and exception sense in 'nothing/anything/all but'. Fire ONLY when a sentence-initial 'although' or 'though' governs clause 1 and a clause-initial 'but' opens clause 2. Exclude the 'X but Y' coordinator with no leading subordinator, and the '<neg-quantifier> but' exception idiom. Keep token set {although, though} distinct from CONN-3's {even though}.",
+      "detectorSketch": "detect: /^\\s*(although|though)\\b[^,]*,\\s*but\\b/i AND not preceded by 'even'. apply: delete the clause-initial 'but ' after the first comma (Although X, but Y -> Although X, Y). Sentence-initial anchor keeps 'I tried, but I failed.' (no leading subordinator) and 'nothing but' (no comma + subordinator) out.",
+      "positive": [
+        {
+          "id": "conn2-pos-001",
+          "input": "Although it rained, but I still went.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Although it rained, I still went.",
+          "expectedRuleFired": "pairedConnectorAlthoughBut",
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Although it rained, but I still went.", "appliedRuleIds": [] },
+          "notes": "Gap: engine abstains. Drop the clause-initial 'but'."
+        },
+        {
+          "id": "conn2-pos-002",
+          "input": "Although he is rich, but he is not happy.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Although he is rich, he is not happy.",
+          "expectedRuleFired": "pairedConnectorAlthoughBut",
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Although he is rich, but he is not happy.", "appliedRuleIds": [] },
+          "notes": "Gap: engine abstains. Negated predicate 'is not happy' preserved."
+        },
+        {
+          "id": "conn2-pos-003",
+          "input": "Although she was sick, but she came to work.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Although she was sick, she came to work.",
+          "expectedRuleFired": "pairedConnectorAlthoughBut",
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Although she was sick, but she came to work.", "appliedRuleIds": [] },
+          "notes": "Gap: engine abstains. Past clause preserved."
+        }
+      ],
+      "negative": [
+        {
+          "id": "conn2-neg-001",
+          "input": "I tried, but I failed.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "I tried, but I failed.",
+          "expectedRuleFired": null,
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I tried, but I failed.", "appliedRuleIds": [] },
+          "notes": "Confusable: correct single contrastive 'but', no leading 'although'. Engine verified abstains."
+        },
+        {
+          "id": "conn2-neg-002",
+          "input": "Although it was hard, I finished.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "Although it was hard, I finished.",
+          "expectedRuleFired": null,
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Although it was hard, I finished.", "appliedRuleIds": [] },
+          "notes": "Confusable: correctly formed 'although' with NO redundant 'but'. Rule must leave it untouched. Engine verified abstains."
+        },
+        {
+          "id": "conn2-neg-003",
+          "input": "He said nothing but the truth.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "He said nothing but the truth.",
+          "expectedRuleFired": null,
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "He said nothing but the truth.", "appliedRuleIds": [] },
+          "notes": "Confusable: 'but' = except ('nothing but'), not a contrastive connector; no leading subordinator. Engine verified abstains."
+        }
+      ],
+      "qaStatus": "passed",
+      "buildQueuePlacement": "Group with CONN-1 / CONN-3 paired-connector rule-pack. Medium priority.",
+      "proposedGoldenCandidates": [
+        "tests/regression/golden-set/correction-rules/paired-connector-although-but.json"
+      ]
+    },
+    {
+      "patternId": "CONN-3-eventhough-but",
+      "category": "paired-connector",
+      "name": "even though / though...but redundancy (drop clause-initial 'but')",
+      "vietnameseRoot": "mac du / cho du...nhung (mac du toi hoc nhung toi truot = even though I studied but I failed)",
+      "coverage": "gap_new_rule_needed",
+      "liveRuleId": "en-paired-connector-eventhough-but",
+      "proposedRule": "pairedConnectorEvenThoughBut",
+      "fp_risk_note": "Medium. Same 'but' frequency risk as CONN-2 plus overlap risk: the subordinator 'even though' contains 'though', so this rule and CONN-2 must be mutually exclusive — match the longest subordinator first ('even though' here; bare 'although'/'though' in CONN-2). Exclude exception 'nothing/anything but' and standalone contrastive 'X but Y'.",
+      "detectorSketch": "detect: /^\\s*even though\\b[^,]*,\\s*but\\b/i (longest-match before CONN-2's bare though/although). apply: delete the clause-initial 'but ' after the first comma. Order the rule-pack so 'even though' is tested before 'though' to avoid double-fire.",
+      "positive": [
+        {
+          "id": "conn3-pos-001",
+          "input": "Even though I studied, but I failed.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Even though I studied, I failed.",
+          "expectedRuleFired": "pairedConnectorEvenThoughBut",
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Even though I studied, but I failed.", "appliedRuleIds": [] },
+          "notes": "Gap: engine abstains. Drop the clause-initial 'but'."
+        },
+        {
+          "id": "conn3-pos-002",
+          "input": "Though it was late, but she kept working.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Though it was late, she kept working.",
+          "expectedRuleFired": "pairedConnectorEvenThoughBut",
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Though it was late, but she kept working.", "appliedRuleIds": [] },
+          "notes": "Gap: engine abstains. 'Though' (bare) + 'but' wrap; covered by this pack's though-branch."
+        },
+        {
+          "id": "conn3-pos-003",
+          "input": "Even though he apologized, but she was still angry.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Even though he apologized, she was still angry.",
+          "expectedRuleFired": "pairedConnectorEvenThoughBut",
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Even though he apologized, but she was still angry.", "appliedRuleIds": [] },
+          "notes": "Gap: engine abstains. Concessive clause preserved."
+        }
+      ],
+      "negative": [
+        {
+          "id": "conn3-neg-001",
+          "input": "Even though it was raining, we went outside.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "Even though it was raining, we went outside.",
+          "expectedRuleFired": null,
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Even though it was raining, we went outside.", "appliedRuleIds": [] },
+          "notes": "Confusable: correctly formed 'even though' with NO redundant 'but'. Must stay untouched. Engine verified abstains."
+        },
+        {
+          "id": "conn3-neg-002",
+          "input": "I have nothing but a pen.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "I have nothing but a pen.",
+          "expectedRuleFired": null,
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I have nothing but a pen.", "appliedRuleIds": [] },
+          "notes": "Confusable: 'but' = except; no leading subordinator. Engine verified abstains."
+        },
+        {
+          "id": "conn3-neg-003",
+          "input": "It is not cheap but it is worth it.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "It is not cheap but it is worth it.",
+          "expectedRuleFired": null,
+          "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "It is not cheap but it is worth it.", "appliedRuleIds": [] },
+          "notes": "Confusable: single contrastive 'but', no leading 'though/even though'. Engine verified abstains."
+        }
+      ],
+      "qaStatus": "passed",
+      "buildQueuePlacement": "Group with CONN-1 / CONN-2 paired-connector rule-pack; order 'even though' before bare 'though'/'although' to avoid double-fire. Medium priority.",
+      "proposedGoldenCandidates": [
+        "tests/regression/golden-set/correction-rules/paired-connector-eventhough-but.json"
+      ]
+    }
+  ],
+  "batchQa": {
+    "generatedPatterns": 3,
+    "qaPassedPatterns": 3,
+    "totalPositives": 9,
+    "totalNegatives": 9,
+    "requirements": [
+      "3+ positives per pattern",
+      "3+ confusable negatives per pattern",
+      "FP-risk note per pattern",
+      "detector sketch per pattern",
+      "live-engine fires/abstains marked per case",
+      "proposed golden candidates listed per pattern",
+      "ranked build-queue placement listed per pattern"
+    ],
+    "liveEngineVerification": "All 18 cases probed against the unmodified engine on origin/main @ 52523909d. All 9 positives abstain (the documented gap_new_rule_needed); all 9 confusable negatives abstain (no current false positive). Recorded liveEngine blocks are verbatim engine output.",
+    "result": "passed"
+  },
+  "rankedBuildQueueDelta": [
+    {
+      "rank": 1,
+      "ruleId": "en-paired-connector-because-so",
+      "rationale": "Highest learner frequency of the three (vi...nen is the default VN causal frame); clear comma-anchored shape."
+    },
+    {
+      "rank": 2,
+      "ruleId": "en-paired-connector-although-but",
+      "rationale": "High frequency concessive; share guard infra with rank 1."
+    },
+    {
+      "rank": 3,
+      "ruleId": "en-paired-connector-eventhough-but",
+      "rationale": "Same concessive family; must be ordered before rank 2 at match time (longest subordinator first) to avoid double-fire."
+    }
+  ]
+}
