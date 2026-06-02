@@ -1,0 +1,591 @@
+{
+  "corpus": "vn-interference-corpus-wave",
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "status": "backlog_only_not_live_wired",
+  "schemaBasis": "tests/regression/golden-set/correction-rules/*.json",
+  "generatedAt": "2026-06-02",
+  "intake": {
+    "requestedSources": ["A3", "A4"],
+    "repoArtifactsFound": false,
+    "note": "No repo-local A3/A4 corpus proposal artifact was found during read-only branch search. This file normalizes A1-seeded VN->EN interference candidates into the existing golden-net data shape for later A3/A4 append/review."
+  },
+  "items": [
+    {
+      "rule": "calqueOpenTurnOnAppliance",
+      "ruleId": "en-calque-open-turn-on-appliance",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN 'mo' calque: open + electrical appliance should become turn on + appliance.",
+      "fp_risk_note": "High risk if object scope is broad. Open is correct for doors, windows, boxes, books, apps, laptops, computer cases, and many nouns. Keep a closed appliance/electrical object whitelist and require the appliance token to be the direct-object head noun.",
+      "positive": [
+        {
+          "id": "vn-corpus-open-appliance-pos-001",
+          "input": "Open the light.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Turn on the light.",
+          "expectedRuleFired": "calqueOpenTurnOnAppliance",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "Turn on the light.",
+            "appliedRuleIds": ["en-calque-open-turn-on-appliance"]
+          },
+          "notes": "Live-engine verified fires."
+        },
+        {
+          "id": "vn-corpus-open-appliance-pos-002",
+          "input": "Can you open the TV?",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Can you turn on the TV?",
+          "expectedRuleFired": "calqueOpenTurnOnAppliance",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "Can you turn on the TV?",
+            "appliedRuleIds": ["en-calque-open-turn-on-appliance"]
+          },
+          "notes": "Live-engine verified fires."
+        },
+        {
+          "id": "vn-corpus-open-appliance-pos-003",
+          "input": "I opened the fan.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "I turned on the fan.",
+          "expectedRuleFired": "calqueOpenTurnOnAppliance",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "I turned on the fan.",
+            "appliedRuleIds": ["en-calque-open-turn-on-appliance"]
+          },
+          "notes": "Live-engine verified fires."
+        }
+      ],
+      "negative": [
+        {
+          "id": "vn-corpus-open-appliance-neg-001",
+          "input": "Open the door.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "Open the door.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Open the door.",
+            "appliedRuleIds": []
+          },
+          "notes": "Confusable real open-object surface; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-open-appliance-neg-002",
+          "input": "Open the laptop.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "Open the laptop.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Open the laptop.",
+            "appliedRuleIds": []
+          },
+          "notes": "Laptop is excluded because open can mean open the lid; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-open-appliance-neg-003",
+          "input": "Open the TV stand.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "Open the TV stand.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Open the TV stand.",
+            "appliedRuleIds": []
+          },
+          "notes": "Head-noun guard: TV modifies stand; live-engine verified abstains."
+        }
+      ]
+    },
+    {
+      "rule": "calqueCloseTurnOffAppliance",
+      "ruleId": "en-calque-close-turn-off-appliance",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN 'tat/dong' calque: close + electrical appliance should become turn off + appliance.",
+      "fp_risk_note": "High risk if object scope is broad. Close is correct for doors, windows, boxes, books, laptops, files, shops, accounts, and cases. Keep a closed appliance/electrical object whitelist and require the appliance token to be the direct-object head noun.",
+      "positive": [
+        {
+          "id": "vn-corpus-close-appliance-pos-001",
+          "input": "Close the light.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Turn off the light.",
+          "expectedRuleFired": "calqueCloseTurnOffAppliance",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "Turn off the light.",
+            "appliedRuleIds": ["en-calque-close-turn-off-appliance"]
+          },
+          "notes": "Live-engine verified fires."
+        },
+        {
+          "id": "vn-corpus-close-appliance-pos-002",
+          "input": "Please close the TV.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Please turn off the TV.",
+          "expectedRuleFired": "calqueCloseTurnOffAppliance",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "Please turn off the TV.",
+            "appliedRuleIds": ["en-calque-close-turn-off-appliance"]
+          },
+          "notes": "Live-engine verified fires."
+        },
+        {
+          "id": "vn-corpus-close-appliance-pos-003",
+          "input": "She closed the fan.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "She turned off the fan.",
+          "expectedRuleFired": "calqueCloseTurnOffAppliance",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "She turned off the fan.",
+            "appliedRuleIds": ["en-calque-close-turn-off-appliance"]
+          },
+          "notes": "Live-engine verified fires."
+        }
+      ],
+      "negative": [
+        {
+          "id": "vn-corpus-close-appliance-neg-001",
+          "input": "Close the door.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "Close the door.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Close the door.",
+            "appliedRuleIds": []
+          },
+          "notes": "Real close-object surface; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-close-appliance-neg-002",
+          "input": "Close the laptop.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "Close the laptop.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Close the laptop.",
+            "appliedRuleIds": []
+          },
+          "notes": "Laptop is excluded because close can mean close the lid; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-close-appliance-neg-003",
+          "input": "Close the TV stand.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "Close the TV stand.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Close the TV stand.",
+            "appliedRuleIds": []
+          },
+          "notes": "Head-noun guard: TV modifies stand; live-engine verified abstains."
+        }
+      ]
+    },
+    {
+      "rule": "calqueTakeMedicine",
+      "ruleId": "en-calque-take-medicine",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN 'uong/an thuoc' calque: eat/drink + medicine object should become take + medicine object.",
+      "fp_risk_note": "Medium risk. Eat and drink are correct with food/liquids, and medicine sentences can include food or water plus medicine. Only rewrite eat/drink directly governing a medicine-object whitelist.",
+      "positive": [
+        {
+          "id": "vn-corpus-take-medicine-pos-001",
+          "input": "I drink medicine.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "I take medicine.",
+          "expectedRuleFired": "calqueTakeMedicine",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "I take medicine.",
+            "appliedRuleIds": ["en-calque-take-medicine"]
+          },
+          "notes": "Live-engine verified fires."
+        },
+        {
+          "id": "vn-corpus-take-medicine-pos-002",
+          "input": "She ate two pills.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "She took two pills.",
+          "expectedRuleFired": "calqueTakeMedicine",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "She took two pills.",
+            "appliedRuleIds": ["en-calque-take-medicine"]
+          },
+          "notes": "Live-engine verified fires."
+        },
+        {
+          "id": "vn-corpus-take-medicine-pos-003",
+          "input": "He drinks antibiotics every day.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "He takes antibiotics every day.",
+          "expectedRuleFired": "calqueTakeMedicine",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "He takes antibiotics every day.",
+            "appliedRuleIds": ["en-calque-take-medicine"]
+          },
+          "notes": "Live-engine verified fires."
+        }
+      ],
+      "negative": [
+        {
+          "id": "vn-corpus-take-medicine-neg-001",
+          "input": "I drink water.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "I drink water.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I drink water.",
+            "appliedRuleIds": []
+          },
+          "notes": "Food/liquid object outside medicine whitelist; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-take-medicine-neg-002",
+          "input": "She eats rice.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "She eats rice.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "She eats rice.",
+            "appliedRuleIds": []
+          },
+          "notes": "Food object outside medicine whitelist; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-take-medicine-neg-003",
+          "input": "Drink more water with medicine.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "Drink more water with medicine.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Drink more water with medicine.",
+            "appliedRuleIds": []
+          },
+          "notes": "Drink governs water, not medicine; live-engine verified abstains."
+        }
+      ]
+    },
+    {
+      "rule": "calqueSayWithPerson",
+      "ruleId": "en-calque-say-with-person",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN 'noi voi ai' calque: say with + person pronoun should become say to + person pronoun only in narrow complement frames.",
+      "fp_risk_note": "High risk. With is valid in parentheticals, absolute constructions, questions, manner phrases, and many non-calque structures. Only fire on say/says/said/saying + with + pronoun as the immediate complement with an allowlisted tail.",
+      "positive": [
+        {
+          "id": "vn-corpus-say-with-person-pos-001",
+          "input": "I want to say with you.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "I want to say to you.",
+          "expectedRuleFired": "calqueSayWithPerson",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "I want to say to you.",
+            "appliedRuleIds": ["en-calque-say-with-person"]
+          },
+          "notes": "Live-engine verified fires."
+        },
+        {
+          "id": "vn-corpus-say-with-person-pos-002",
+          "input": "She said with me yesterday.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "She said to me yesterday.",
+          "expectedRuleFired": "calqueSayWithPerson",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "She said to me yesterday.",
+            "appliedRuleIds": ["en-calque-say-with-person"]
+          },
+          "notes": "Live-engine verified fires."
+        },
+        {
+          "id": "vn-corpus-say-with-person-pos-003",
+          "input": "He says with her every day.",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "He says to her every day.",
+          "expectedRuleFired": "calqueSayWithPerson",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "He says to her every day.",
+            "appliedRuleIds": ["en-calque-say-with-person"]
+          },
+          "notes": "Live-engine verified fires."
+        }
+      ],
+      "negative": [
+        {
+          "id": "vn-corpus-say-with-person-neg-001",
+          "input": "Say it with me.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "Say it with me.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Say it with me.",
+            "appliedRuleIds": []
+          },
+          "notes": "Intervening direct object blocks rewrite; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-say-with-person-neg-002",
+          "input": "She said with him beside me.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "She said with him beside me.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "She said with him beside me.",
+            "appliedRuleIds": []
+          },
+          "notes": "Non-allowlisted absolute/small-clause tail; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-say-with-person-neg-003",
+          "input": "She talked with him.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "She talked with him.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "She talked with him.",
+            "appliedRuleIds": []
+          },
+          "notes": "Different verb; talk with is valid; live-engine verified abstains."
+        }
+      ]
+    },
+    {
+      "rule": "vietlishVeryLike",
+      "ruleId": "en-vietlish-very-like",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN 'rat thich' transfer: very like should usually become really like / like very much.",
+      "fp_risk_note": "Medium risk. Very is correct before adjectives and some participles, while like can be a verb or preposition. V1 should require pronoun/noun subject + very + like/likes + direct object and avoid adjective complements or already-natural like very much.",
+      "positive": [
+        {
+          "id": "vn-corpus-very-like-pos-001",
+          "input": "I very like English.",
+          "expectedStatus": "proposal",
+          "expectedCorrection": "I really like English.",
+          "expectedRuleFired": "vietlishVeryLike",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I very like English.",
+            "appliedRuleIds": []
+          },
+          "notes": "Backlog recall gap; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-very-like-pos-002",
+          "input": "She very likes this song.",
+          "expectedStatus": "proposal",
+          "expectedCorrection": "She really likes this song.",
+          "expectedRuleFired": "vietlishVeryLike",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "She very likes this song.",
+            "appliedRuleIds": []
+          },
+          "notes": "Backlog recall gap; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-very-like-pos-003",
+          "input": "We very like this class.",
+          "expectedStatus": "proposal",
+          "expectedCorrection": "We really like this class.",
+          "expectedRuleFired": "vietlishVeryLike",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "We very like this class.",
+            "appliedRuleIds": []
+          },
+          "notes": "Backlog recall gap; live-engine verified abstains."
+        }
+      ],
+      "negative": [
+        {
+          "id": "vn-corpus-very-like-neg-001",
+          "input": "I really like English.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "I really like English.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I really like English.",
+            "appliedRuleIds": []
+          },
+          "notes": "Already natural; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-very-like-neg-002",
+          "input": "This is very good.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "This is very good.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "This is very good.",
+            "appliedRuleIds": []
+          },
+          "notes": "Very before adjective is correct; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-very-like-neg-003",
+          "input": "I like English very much.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "I like English very much.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I like English very much.",
+            "appliedRuleIds": []
+          },
+          "notes": "Already natural alternative; live-engine verified abstains."
+        }
+      ]
+    },
+    {
+      "rule": "vietlishCopulaAgree",
+      "ruleId": "en-vietlish-copula-agree",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN transfer around dong y: be + agree should become agree/agrees without be.",
+      "fp_risk_note": "Medium risk. Agree can be a verb, while agreeable is an adjective and 'be in agreement' is valid. V1 should match only pronoun subject + be + agree + with/about object and avoid adjective forms, already-correct verb forms, and idiomatic noun phrase alternatives.",
+      "positive": [
+        {
+          "id": "vn-corpus-copula-agree-pos-001",
+          "input": "I am agree with you.",
+          "expectedStatus": "proposal",
+          "expectedCorrection": "I agree with you.",
+          "expectedRuleFired": "vietlishCopulaAgree",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I am agree with you.",
+            "appliedRuleIds": []
+          },
+          "notes": "Backlog recall gap; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-copula-agree-pos-002",
+          "input": "She is agree with the plan.",
+          "expectedStatus": "proposal",
+          "expectedCorrection": "She agrees with the plan.",
+          "expectedRuleFired": "vietlishCopulaAgree",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "She is agree with the plan.",
+            "appliedRuleIds": []
+          },
+          "notes": "Backlog recall gap; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-copula-agree-pos-003",
+          "input": "We are agree about this.",
+          "expectedStatus": "proposal",
+          "expectedCorrection": "We agree about this.",
+          "expectedRuleFired": "vietlishCopulaAgree",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "We are agree about this.",
+            "appliedRuleIds": []
+          },
+          "notes": "Backlog recall gap; live-engine verified abstains."
+        }
+      ],
+      "negative": [
+        {
+          "id": "vn-corpus-copula-agree-neg-001",
+          "input": "I agree with you.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "I agree with you.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I agree with you.",
+            "appliedRuleIds": []
+          },
+          "notes": "Already correct; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-copula-agree-neg-002",
+          "input": "She agrees with the plan.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "She agrees with the plan.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "She agrees with the plan.",
+            "appliedRuleIds": []
+          },
+          "notes": "Already correct third-person form; live-engine verified abstains."
+        },
+        {
+          "id": "vn-corpus-copula-agree-neg-003",
+          "input": "I am agreeable today.",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "I am agreeable today.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I am agreeable today.",
+            "appliedRuleIds": []
+          },
+          "notes": "Agreeable is an adjective; live-engine verified abstains."
+        }
+      ]
+    }
+  ]
+}
