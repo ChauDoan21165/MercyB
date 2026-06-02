@@ -101,54 +101,63 @@ _(Also stage `Where did you go yesterday?` as `-neg-lock-wh-question` once the g
 }
 ```
 
-## 11. en-hat-biking-summer-runon → pass-through locks (RETIREMENT dependency)
+## 11. en-hat-biking-summer-runon → **ACTIVATED** (rule retired !324/!326)
 
-**Different kind of lock — a RETIREMENT pass-through, not a guard.** See
-`docs/ops/stub-rule-generalize-or-retire.md`: this rule has a broad keyword
-matcher with **canned, fabricating** output (a bike input becomes a hat
-sentence). Recommendation there is **RETIRE**. These three inputs each fire
-**only** `en-hat-biking-summer-runon` today (verified live) and currently get
-fabricated output; after retirement they must **pass through unchanged**.
+Rule retired by Lane A (gone from `en.ts`). The three pass-through locks moved
+to a retirement test — `tests/regression/retired-rules-passthrough.test.ts` —
+which asserts each former trigger input is returned unchanged with no rule
+firing. No longer staged.
 
-**Dependency:** commit these only once **Lane A retires `en-hat-biking-summer-runon`**
-(per the !324 decision). Until then they fire and would fail the suite.
+## 12. en-step6-morning-routine-subject-carryover → pass-through lock (RETIREMENT dependency)
 
-**Target fixture — note the schema caveat:** there is no existing
-`hat-biking-summer-runon.json`, and a *retired* rule has **no positives**, so it
-can't form a standard rule-centric golden fixture (which requires ≥3 positive).
-Place these as a **pass-through regression** instead: either a small
-`tests/regression/.../*.test.ts` asserting each input is returned unchanged, or a
-dedicated retirement fixture if the harness grows a "retired-rule pass-through"
-shape. Do **not** force them into a rule-centric fixture. Re-probe each post-
-retirement to confirm no *other* rule now fires (today only hat-biking does).
+**RETIREMENT pass-through, not a guard.** Per `docs/ops/stub-rule-generalize-or-retire.md`,
+this rule is a single-literal stub (one exact `^…$` match) → **RETIRE**. The one
+demo input fires **only** `en-step6-morning-routine-subject-carryover` today
+(verified live) and gets a canned rewrite; after retirement it must pass through
+unchanged.
+
+**Dependency:** commit only once **Lane A retires
+`en-step6-morning-routine-subject-carryover`**. Until then it fires and would
+fail the suite.
+
+**Target — schema caveat (same as #11):** a retired rule has no positives, so it
+cannot be a rule-centric golden fixture. Activate by adding a `describe` block to
+`tests/regression/retired-rules-passthrough.test.ts` (re-probe first to confirm
+pass-through + that no other rule now fires).
 
 ```json
 {
-  "id": "hat-biking-retire-lock-bike-summer",
-  "input": "I bought a bike yesterday, summer is hot.",
+  "id": "morning-routine-subject-carryover-retire-lock",
+  "input": "In the morning, I wake up and they have a breakfast and coffee and then I go to my office.",
   "expectedStatus": "unchanged",
-  "expectedCorrection": "I bought a bike yesterday, summer is hot.",
+  "expectedCorrection": "In the morning, I wake up and they have a breakfast and coffee and then I go to my office.",
   "expectedRuleFired": null,
-  "notes": "Retirement pass-through: today fabricates 'I bought a HAT ...summer is coming, ...very sunny.' (bike->hat). After retiring en-hat-biking-summer-runon, must pass through unchanged."
+  "notes": "Retirement pass-through: today rewrites to 'In the morning, I wake up, have breakfast and coffee, and then go to my office.' (canned subject-carryover fix). After retirement, must pass through unchanged. Verify on the live engine at activation time."
 }
 ```
+
+## 13. en-runon-morning-routine-punctuation → pass-through lock (RETIREMENT dependency)
+
+**RETIREMENT pass-through, not a guard.** Per the same doc, a single-literal
+run-on-punctuation stub → **RETIRE**. The one demo input fires **only**
+`en-runon-morning-routine-punctuation` today (verified live); after retirement it
+must pass through unchanged.
+
+**Dependency:** commit only once **Lane A retires
+`en-runon-morning-routine-punctuation`**. Until then it fires and would fail the
+suite.
+
+**Target — schema caveat (same as #11):** add a `describe` block to
+`tests/regression/retired-rules-passthrough.test.ts` at activation (re-probe
+first).
+
 ```json
 {
-  "id": "hat-biking-retire-lock-bicycle-canada",
-  "input": "They bought a bicycle yesterday in Canada.",
+  "id": "runon-morning-routine-punctuation-retire-lock",
+  "input": "What do you usually do in the morning nice that sounds like a clear morning routine what do you do after that",
   "expectedStatus": "unchanged",
-  "expectedCorrection": "They bought a bicycle yesterday in Canada.",
+  "expectedCorrection": "What do you usually do in the morning nice that sounds like a clear morning routine what do you do after that",
   "expectedRuleFired": null,
-  "notes": "Retirement pass-through: today fabricates 'I bought a HAT ...very sunny in Canada.' (wrong subject they->I, wrong object bicycle->hat). After retirement, unchanged."
-}
-```
-```json
-{
-  "id": "hat-biking-retire-lock-hat-sunny",
-  "input": "I bought a hat yesterday because it is sunny.",
-  "expectedStatus": "unchanged",
-  "expectedCorrection": "I bought a hat yesterday because it is sunny.",
-  "expectedRuleFired": null,
-  "notes": "Retirement pass-through: a plausible, grammatical learner sentence (not a run-on) that today gets fabricated content ('summer is coming'). After retirement, must pass through unchanged."
+  "notes": "Retirement pass-through: today rewrites to 'What do you usually do in the morning? Nice, that sounds like a clear morning routine. What do you do after that?' (canned punctuation insertion). After retirement, must pass through unchanged. Verify on the live engine at activation time."
 }
 ```
