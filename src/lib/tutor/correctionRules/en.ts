@@ -84,6 +84,25 @@ const STEP6_POSSESSIVE_OBJECT_PATTERN =
 const STEP6_POSSESSIVE_COMPOUND_EXCLUSION_PATTERN =
   /\b(?:mother tongue|sister city|father figure|brother country|teacher training|boss fight)\b/i;
 
+function hasLikelyVerbSenseTail(token: string, tail: string): boolean {
+  const normalizedToken = token.toLowerCase();
+  const normalizedTail = tail.trim().toLowerCase();
+
+  if (normalizedToken === "phone") {
+    return /^(?:me|you|him|her|us|them)\b/.test(normalizedTail);
+  }
+
+  if (normalizedToken === "book") {
+    return /^(?:a|an|the)\s+room\b/.test(normalizedTail);
+  }
+
+  if (normalizedToken === "bike") {
+    return /^to\s+work\b/.test(normalizedTail);
+  }
+
+  return false;
+}
+
 function isProperNounArticleMatch(noun: string): boolean {
   return /^[A-Z]/.test(noun);
 }
@@ -201,13 +220,15 @@ function addArticleAfterVerb(input: string): string {
   );
 
   return input
-    .replace(objectPattern, (match, subject: string, verb: string, noun: string) => {
+    .replace(objectPattern, (match, subject: string, verb: string, noun: string, offset: number) => {
       if (isProperNounArticleMatch(noun)) return match;
+      if (hasLikelyVerbSenseTail(noun, input.slice(offset + match.length))) return match;
       const article = MISSING_ARTICLE_NOUNS[noun.toLowerCase()];
       return `${subject} ${verb} ${article} ${noun}`;
     })
-    .replace(bePattern, (match, subject: string, verb: string, noun: string) => {
+    .replace(bePattern, (match, subject: string, verb: string, noun: string, offset: number) => {
       if (isProperNounArticleMatch(noun)) return match;
+      if (hasLikelyVerbSenseTail(noun, input.slice(offset + match.length))) return match;
       const article = MISSING_ARTICLE_NOUNS[noun.toLowerCase()];
       return `${subject} ${verb} ${article} ${noun}`;
     });
@@ -224,7 +245,14 @@ function hasMissingCommonNounArticle(input: string): boolean {
     "gi",
   );
   const matchesCommonNoun = (pattern: RegExp) =>
-    Array.from(input.matchAll(pattern)).some((match) => !isProperNounArticleMatch(match[3] ?? ""));
+    Array.from(input.matchAll(pattern)).some((match) => {
+      const noun = match[3] ?? "";
+      const offset = match.index ?? 0;
+      return (
+        !isProperNounArticleMatch(noun) &&
+        !hasLikelyVerbSenseTail(noun, input.slice(offset + match[0].length))
+      );
+    });
 
   return matchesCommonNoun(objectPattern) || matchesCommonNoun(bePattern);
 }
@@ -247,10 +275,14 @@ function hasStep6PossessiveS(input: string): boolean {
   if (STEP6_POSSESSIVE_COMPOUND_EXCLUSION_PATTERN.test(input)) return false;
 
   const pattern = new RegExp(
-    `\\b(?:my|your|his|her|our|their)\\s+${STEP6_POSSESSIVE_OWNER_PATTERN}\\s+${STEP6_POSSESSIVE_OBJECT_PATTERN}\\b`,
-    "i",
+    `\\b(?:my|your|his|her|our|their)\\s+${STEP6_POSSESSIVE_OWNER_PATTERN}\\s+(${STEP6_POSSESSIVE_OBJECT_PATTERN})\\b`,
+    "gi",
   );
-  return pattern.test(input);
+  return Array.from(input.matchAll(pattern)).some((match) => {
+    const object = match[1] ?? "";
+    const offset = match.index ?? 0;
+    return !hasLikelyVerbSenseTail(object, input.slice(offset + match[0].length));
+  });
 }
 
 function repairStep6PossessiveS(input: string): string {
@@ -260,14 +292,28 @@ function repairStep6PossessiveS(input: string): string {
     `\\b((?:my|your|his|her|our|their)\\s+)(${STEP6_POSSESSIVE_OWNER_PATTERN})\\s+(${STEP6_POSSESSIVE_OBJECT_PATTERN})\\b`,
     "gi",
   );
-  return input.replace(pattern, "$1$2's $3");
+  return input.replace(pattern, (match, determiner: string, owner: string, object: string, offset: number) => {
+    if (hasLikelyVerbSenseTail(object, input.slice(offset + match.length))) return match;
+    return `${determiner}${owner}'s ${object}`;
+  });
 }
 
 function pluralizeAfterQuantity(input: string): string {
   const nounPattern = Object.keys(COUNTABLE_PLURAL_NOUNS).join("|");
   const pattern = new RegExp(`\\b(two|three|many|some|several)\\s+(${nounPattern})\\b`, "gi");
-  return input.replace(pattern, (_match, quantity: string, noun: string) => {
+  return input.replace(pattern, (match, quantity: string, noun: string, offset: number) => {
+    if (hasLikelyVerbSenseTail(noun, input.slice(offset + match.length))) return match;
     return `${quantity} ${COUNTABLE_PLURAL_NOUNS[noun.toLowerCase()] ?? noun}`;
+  });
+}
+
+function hasQuantityPluralS(input: string): boolean {
+  const nounPattern = Object.keys(COUNTABLE_PLURAL_NOUNS).join("|");
+  const pattern = new RegExp(`\\b(two|three|many|some|several)\\s+(${nounPattern})\\b`, "gi");
+  return Array.from(input.matchAll(pattern)).some((match) => {
+    const noun = match[2] ?? "";
+    const offset = match.index ?? 0;
+    return !hasLikelyVerbSenseTail(noun, input.slice(offset + match[0].length));
   });
 }
 
@@ -684,8 +730,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
   },
   {
     id: "en-l4-quantity-plural-s",
-    detects: (input) =>
-      /\b(two|three|many|some|several)\s+(apple|book|hat|lesson|orange|student|word)\b/i.test(input),
+    detects: hasQuantityPluralS,
     apply: pluralizeAfterQuantity,
     fpRiskNote: "Plural -s insertion is limited to regular whitelisted count nouns and intentionally skips irregulars/uncountables.",
   },

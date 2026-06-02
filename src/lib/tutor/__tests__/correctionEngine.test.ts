@@ -74,6 +74,10 @@ describe("correctionEngine", () => {
     ["I bought hat yesterday.", "I bought a hat yesterday."],
     ["I bought bicycle yesterday.", "I bought a bicycle yesterday."],
     ["I want apple.", "I want an apple."],
+    ["I need book.", "I need a book."],
+    ["She bought orange.", "She bought an orange."],
+    ["I want student.", "I want a student."],
+    ["I need teacher.", "I need a teacher."],
   ])("corrects approved Step 5 article omission for whitelisted count nouns: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",
@@ -131,6 +135,10 @@ describe("correctionEngine", () => {
     ["My mother car is old.", "My mother's car is old."],
     ["His brother phone is new.", "His brother's phone is new."],
     ["Her friend house is big.", "Her friend's house is big."],
+    ["My teacher computer is old.", "My teacher's computer is old."],
+    ["My boss office is small.", "My boss's office is small."],
+    ["My husband job is hard.", "My husband's job is hard."],
+    ["His brother bicycle is new.", "His brother's bicycle is new."],
   ])("corrects approved Step 6 possessive-s pattern: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",
@@ -156,6 +164,7 @@ describe("correctionEngine", () => {
     ["I have two book.", "I have two books."],
     ["Many student like English.", "Many students like English."],
     ["I learned several word today.", "I learned several words today."],
+    ["We have many lesson.", "We have many lessons."],
   ])("corrects approved Step 5 plural omission for whitelisted regular nouns: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",
@@ -176,6 +185,21 @@ describe("correctionEngine", () => {
       appliedRuleIds: [],
     });
     expect(result.corrected).not.toContain("childs");
+  });
+
+  it.each([
+    "My sister phone me.",
+    "My sister phone me yesterday.",
+    "My friend book a room.",
+    "My brother bike to work.",
+    "I want book a room.",
+    "I want some book a room.",
+  ])("does not over-trigger noun rules on B4 likely-verb homographs: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      corrected: input,
+      appliedRuleIds: [],
+    });
   });
 
   it("combines approved Step 5 SVA and missing-to rules for one learner sentence", () => {

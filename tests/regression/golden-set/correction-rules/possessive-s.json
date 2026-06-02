@@ -86,6 +86,30 @@
       "expectedCorrection": "My friend John is tall.",
       "expectedRuleFired": null,
       "notes": "Confusable: appositive ('my friend John') — 'John' is not a concrete-object-whitelist noun, so the rule abstains."
+    },
+    {
+      "id": "possessive-s-neg-lock-phone-verb-sense",
+      "input": "My sister phone me yesterday.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "My sister phone me yesterday.",
+      "expectedRuleFired": null,
+      "notes": "Lock (verb-sense guard): 'phone' is the verb (phoned), not a possessed object; possessive-s must not fire."
+    },
+    {
+      "id": "possessive-s-neg-lock-book-verb-sense",
+      "input": "My friend book a room.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "My friend book a room.",
+      "expectedRuleFired": null,
+      "notes": "Lock (verb-sense guard): 'book' is the verb (to book a room), not a possessed object; possessive-s must not fire."
+    },
+    {
+      "id": "possessive-s-neg-lock-bike-verb-sense",
+      "input": "My brother bike to work.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "My brother bike to work.",
+      "expectedRuleFired": null,
+      "notes": "Lock (verb-sense guard): 'bike' is the verb (to bike to work), not a possessed object; possessive-s must not fire."
     }
   ]
 }
