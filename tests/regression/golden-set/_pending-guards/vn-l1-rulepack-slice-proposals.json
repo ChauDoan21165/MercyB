@@ -1,0 +1,255 @@
+{
+  "corpus": "vn-l1-rulepack-slice-proposals",
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "status": "backlog_only_not_live_wired",
+  "sourceArtifact": "/Users/admin/MercyB/A4-VN-SLICE-PROPOSALS.md",
+  "detector": "detectL1Error",
+  "schemaBasis": "src/lib/feedback/__tests__/l1-error-detector.test.ts expectHit/expectMiss shape",
+  "generatedAt": "2026-06-02",
+  "items": [
+    {
+      "id": "ART-1",
+      "ruleId": "vi_l1_missing_article",
+      "qaStatus": "passed",
+      "description": "Dropped indefinite article before role/job noun phrase.",
+      "fp_risk_note": "Shared missing_article tag covers dropped a/an and the; keep examples explicit if later splitting teaching copy.",
+      "positive": [
+        { "userAnswer": "she is teacher", "expectedAnswer": "she is a teacher", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_missing_article" } },
+        { "userAnswer": "he is engineer", "expectedAnswer": "he is an engineer", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_missing_article" } },
+        { "userAnswer": "i want to be doctor", "expectedAnswer": "i want to be a doctor", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_missing_article" } }
+      ],
+      "negative": [
+        { "userAnswer": "she is a teacher", "expectedAnswer": "she is a teacher", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "they are teachers", "expectedAnswer": "they are teachers", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ]
+    },
+    {
+      "id": "ART-2",
+      "ruleId": "vi_l1_missing_article",
+      "qaStatus": "passed",
+      "description": "Dropped definite article before specified referent.",
+      "fp_risk_note": "Shares missing_article with indefinite article cases; safe as regression corpus but not enough to split pedagogy by itself.",
+      "positive": [
+        { "userAnswer": "please open window", "expectedAnswer": "please open the window", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_missing_article" } },
+        { "userAnswer": "close door", "expectedAnswer": "close the door", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_missing_article" } },
+        { "userAnswer": "pass me salt", "expectedAnswer": "pass me the salt", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_missing_article" } }
+      ],
+      "negative": [
+        { "userAnswer": "please open the window", "expectedAnswer": "please open the window", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "i opened my window", "expectedAnswer": "i opened my window", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ]
+    },
+    {
+      "id": "ART-3",
+      "ruleId": "vi_l1_no_article_generic",
+      "qaStatus": "passed",
+      "description": "Over-inserted the before generic mass/abstract noun.",
+      "fp_risk_note": "High risk. Deleting the is dangerous; keep list-bound and do not generalize to arbitrary nouns.",
+      "positive": [
+        { "userAnswer": "i love the music", "expectedAnswer": "i love music", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_no_article_generic" } },
+        { "userAnswer": "she likes the coffee", "expectedAnswer": "she likes coffee", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "we study the history", "expectedAnswer": "we study history", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_no_article_generic" } }
+      ],
+      "negative": [
+        { "userAnswer": "i love the song", "expectedAnswer": "i love the song", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "turn off the music", "expectedAnswer": "turn off the music", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ]
+    },
+    {
+      "id": "PLU-1",
+      "ruleId": "vi_l1_plural_s",
+      "qaStatus": "passed",
+      "description": "Missing plural -s after numeral/quantifier.",
+      "fp_risk_note": "Low risk when gated on preceding plural quantifier.",
+      "positive": [
+        { "userAnswer": "three book", "expectedAnswer": "three books", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_plural_s" } },
+        { "userAnswer": "two apple", "expectedAnswer": "two apples", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_plural_s" } },
+        { "userAnswer": "five student came", "expectedAnswer": "five students came", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_plural_s" } }
+      ],
+      "negative": [
+        { "userAnswer": "three books", "expectedAnswer": "three books", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "one book", "expectedAnswer": "one book", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ]
+    },
+    {
+      "id": "PLU-2",
+      "ruleId": "vi_l1_generic_plural",
+      "qaStatus": "passed",
+      "description": "Generic bare singular after like/love/enjoy.",
+      "fp_risk_note": "Low risk when limited to feel-verb plus singular-noun set; uncountables must abstain.",
+      "positive": [
+        { "userAnswer": "i like dog", "expectedAnswer": "i like dogs", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_generic_plural" } },
+        { "userAnswer": "they love cat", "expectedAnswer": "they love cats", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_generic_plural" } },
+        { "userAnswer": "we enjoy book", "expectedAnswer": "we enjoy books", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_generic_plural" } }
+      ],
+      "negative": [
+        { "userAnswer": "i like dogs", "expectedAnswer": "i like dogs", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "i like music", "expectedAnswer": "i like music", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ]
+    },
+    {
+      "id": "PLU-3",
+      "ruleId": "vi_l1_countable",
+      "qaStatus": "passed",
+      "description": "Plural -s or a/an on uncountable noun.",
+      "fp_risk_note": "Low risk when gated on reviewed uncountable noun set.",
+      "positive": [
+        { "userAnswer": "an advice", "expectedAnswer": "advice", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_countable" } },
+        { "userAnswer": "informations", "expectedAnswer": "information", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_countable" } },
+        { "userAnswer": "many homeworks", "expectedAnswer": "much homework", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_countable" } }
+      ],
+      "negative": [
+        { "userAnswer": "advice", "expectedAnswer": "advice", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "many books", "expectedAnswer": "many books", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ]
+    },
+    {
+      "id": "PLU-4",
+      "ruleId": "vi_l1_plural_s",
+      "qaStatus": "passed",
+      "description": "Missing plural after many/some/few.",
+      "fp_risk_note": "Low risk under existing plural_s quantifier gate; uncountables and already-plural forms must abstain.",
+      "positive": [
+        { "userAnswer": "many problem", "expectedAnswer": "many problems", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_plural_s" } },
+        { "userAnswer": "some friend", "expectedAnswer": "some friends", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_plural_s" } },
+        { "userAnswer": "few child know", "expectedAnswer": "few children know", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_plural_s" } }
+      ],
+      "negative": [
+        { "userAnswer": "many problems", "expectedAnswer": "many problems", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "some money", "expectedAnswer": "some money", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "few people know", "expectedAnswer": "few people know", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ],
+      "notes": "A4 marked 'few people know' as mislabeled; A1 kept it as a negative and added same-family 'few child know' to satisfy the 3-positive corpus gate."
+    },
+    {
+      "id": "PRE-1",
+      "ruleId": "vi_l1_time_expressions",
+      "qaStatus": "passed",
+      "description": "Wrong time preposition with day/date/year.",
+      "fp_risk_note": "Phrase position matters; non-aligned mid-sentence prepositions are a known recall gap and should not cause broad rewrites.",
+      "positive": [
+        { "userAnswer": "in monday", "expectedAnswer": "on monday", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_time_expressions" } },
+        { "userAnswer": "see you in the morning at sunday", "expectedAnswer": "see you in the morning on sunday", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "on 1990", "expectedAnswer": "in 1990", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_preposition_transfer" } }
+      ],
+      "negative": [
+        { "userAnswer": "on monday", "expectedAnswer": "on monday", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "in 1990", "expectedAnswer": "in 1990", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ]
+    },
+    {
+      "id": "PRE-2",
+      "ruleId": "vi_l1_preposition_transfer",
+      "qaStatus": "passed",
+      "description": "Over-inserted preposition after verbs such as discuss/marry/emphasize.",
+      "fp_risk_note": "Must stay verb-keyed, not blanket about/on/with deletion; talk about is the critical guard.",
+      "positive": [
+        { "userAnswer": "discuss about the plan", "expectedAnswer": "discuss the plan", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_preposition_transfer" } },
+        { "userAnswer": "married with him", "expectedAnswer": "married him", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_preposition_transfer" } },
+        { "userAnswer": "emphasize on quality", "expectedAnswer": "emphasize quality", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_preposition_transfer" } }
+      ],
+      "negative": [
+        { "userAnswer": "discuss the plan", "expectedAnswer": "discuss the plan", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "talked about the plan", "expectedAnswer": "talked about the plan", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ]
+    },
+    {
+      "id": "PRE-3",
+      "ruleId": "vi_l1_preposition_transfer",
+      "qaStatus": "passed",
+      "description": "Missing preposition after listen/wait/look.",
+      "fp_risk_note": "Low risk when insertion is verb-keyed and already-has-preposition cases abstain.",
+      "positive": [
+        { "userAnswer": "listen music", "expectedAnswer": "listen to music", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_preposition_transfer" } },
+        { "userAnswer": "waited the bus", "expectedAnswer": "waited for the bus", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_preposition_transfer" } },
+        { "userAnswer": "looked the picture", "expectedAnswer": "looked at the picture", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_preposition_transfer" } }
+      ],
+      "negative": [
+        { "userAnswer": "listen to music", "expectedAnswer": "listen to music", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "heard the music", "expectedAnswer": "heard the music", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ]
+    },
+    {
+      "id": "PRE-4",
+      "ruleId": "vi_l1_preposition_transfer",
+      "qaStatus": "passed",
+      "description": "Wrong place preposition in/at/on with place, including arrive to gap.",
+      "fp_risk_note": "Arrive to is a high-frequency VN-L1 error and low-FP if added as a lemma-bound mismatch; do not broaden place prepositions globally.",
+      "positive": [
+        { "userAnswer": "at vietnam", "expectedAnswer": "in vietnam", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_preposition_transfer" } },
+        { "userAnswer": "on hanoi", "expectedAnswer": "in hanoi", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_preposition_transfer" } },
+        { "userAnswer": "arrived to the airport", "expectedAnswer": "arrived at the airport", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ],
+      "negative": [
+        { "userAnswer": "in vietnam", "expectedAnswer": "in vietnam", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "at school", "expectedAnswer": "at school", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ]
+    },
+    {
+      "id": "VSE-1",
+      "ruleId": "vi_l1_make_vs_do",
+      "qaStatus": "passed",
+      "description": "Make/do confusion from Vietnamese lam.",
+      "fp_risk_note": "Low risk if collocation-list keyed; possessive homework is a recall gap, not a reason to broaden.",
+      "positive": [
+        { "userAnswer": "do a mistake", "expectedAnswer": "make a mistake", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_make_vs_do" } },
+        { "userAnswer": "make my homework", "expectedAnswer": "do my homework", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "did a decision", "expectedAnswer": "made a decision", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_make_vs_do" } }
+      ],
+      "negative": [
+        { "userAnswer": "make a mistake", "expectedAnswer": "make a mistake", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "do my homework", "expectedAnswer": "do my homework", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ]
+    },
+    {
+      "id": "VSE-2",
+      "ruleId": "vi_l1_look_vs_see_vs_watch",
+      "qaStatus": "passed",
+      "description": "See/watch/look confusion from xem/nhin/thay mapping.",
+      "fp_risk_note": "Low risk when collocation-list keyed; saw a bird guards legitimate perception see.",
+      "positive": [
+        { "userAnswer": "see tv", "expectedAnswer": "watch tv", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_look_vs_see_vs_watch" } },
+        { "userAnswer": "see a movie", "expectedAnswer": "watch a movie", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_look_vs_see_vs_watch" } },
+        { "userAnswer": "watch the picture", "expectedAnswer": "look at the picture", "liveEngine": { "marker": "fires", "weaknessTag": "vi_l1_look_vs_see_vs_watch" } }
+      ],
+      "negative": [
+        { "userAnswer": "watch tv", "expectedAnswer": "watch tv", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "saw a bird", "expectedAnswer": "saw a bird", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ]
+    },
+    {
+      "id": "VSE-3",
+      "ruleId": "vn-slice-say-tell-borrow-lend-bring-take",
+      "qaStatus": "passed",
+      "description": "Say/tell, borrow/lend, bring/take sense merges from Vietnamese verbs.",
+      "fp_risk_note": "Medium. Say/tell is tractable; borrow/lend and bring/take are directional/deictic and should be split into narrower sub-rules before implementation.",
+      "positive": [
+        { "userAnswer": "she said me the truth", "expectedAnswer": "she told me the truth", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "can you borrow me a pen", "expectedAnswer": "can you lend me a pen", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "i will bring it to you tomorrow when i go there", "expectedAnswer": "i will take it to you tomorrow when i go there", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ],
+      "negative": [
+        { "userAnswer": "she told me the truth", "expectedAnswer": "she told me the truth", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "she said hello", "expectedAnswer": "she said hello", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ]
+    },
+    {
+      "id": "BOK-1",
+      "ruleId": "vn-slice-book-reservation",
+      "qaStatus": "passed",
+      "description": "Book/order/buy/get reservation-object confusion from Vietnamese dat.",
+      "fp_risk_note": "High. Object-keyed, not verb-keyed. Ticket and food are FP cliffs: buy a ticket and order a pizza are correct and must abstain.",
+      "positive": [
+        { "userAnswer": "i want to order a table for two", "expectedAnswer": "i want to book a table for two", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "she bought a flight to paris", "expectedAnswer": "she booked a flight to paris", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "we ordered a hotel room", "expectedAnswer": "we booked a hotel room", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ],
+      "negative": [
+        { "userAnswer": "i want to book a table for two", "expectedAnswer": "i want to book a table for two", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "i bought a ticket", "expectedAnswer": "i bought a ticket", "liveEngine": { "marker": "abstains", "weaknessTag": null } },
+        { "userAnswer": "i ordered a pizza", "expectedAnswer": "i ordered a pizza", "liveEngine": { "marker": "abstains", "weaknessTag": null } }
+      ]
+    }
+  ]
+}
