@@ -366,3 +366,149 @@ first).
   "notes": "Retirement pass-through: today rewrites to 'What do you usually do in the morning? Nice, that sounds like a clear morning routine. What do you do after that?' (canned punctuation insertion). After retirement, must pass through unchanged. Verify on the live engine at activation time."
 }
 ```
+
+---
+
+## Corpus-wave. en-vietlish-very-like → target fixture TBD
+
+Source: `vn-interference-corpus-wave.json`, candidate
+`en-vietlish-very-like` / `vietlishVeryLike`.
+
+Gated on: Lane A adds a new correction rule for VN `rat thich` transfer:
+`very like/likes` → `really like/likes` or equivalent natural English.
+
+**ACTIVATION positives** (abstain today → must fire once the new rule lands):
+```json
+{
+  "id": "vn-corpus-very-like-pos-001",
+  "input": "I very like English.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "I really like English.",
+  "expectedRuleFired": "en-vietlish-very-like",
+  "notes": "Corpus-wave candidate en-vietlish-very-like. ACTIVATE-AFTER: live engine 2026-06-02 abstains (unchanged, no appliedRuleIds). Once Lane A ships this rule, it must correct VN 'rat thich' transfer without needing AI."
+}
+```
+```json
+{
+  "id": "vn-corpus-very-like-pos-002",
+  "input": "She very likes this song.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "She really likes this song.",
+  "expectedRuleFired": "en-vietlish-very-like",
+  "notes": "Corpus-wave candidate en-vietlish-very-like. ACTIVATE-AFTER: live engine 2026-06-02 abstains. Third-person 'likes' form must preserve agreement while moving intensifier semantics."
+}
+```
+```json
+{
+  "id": "vn-corpus-very-like-pos-003",
+  "input": "We very like this class.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "We really like this class.",
+  "expectedRuleFired": "en-vietlish-very-like",
+  "notes": "Corpus-wave candidate en-vietlish-very-like. ACTIVATE-AFTER: live engine 2026-06-02 abstains. Plural subject baseline for the new rule."
+}
+```
+
+**VERIFY-NOW negatives** (already abstain; must keep abstaining after the new rule):
+```json
+{
+  "id": "vn-corpus-very-like-neg-001",
+  "input": "I really like English.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I really like English.",
+  "expectedRuleFired": null,
+  "notes": "Corpus-wave guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; already-natural intensifier must not be rewritten by en-vietlish-very-like."
+}
+```
+```json
+{
+  "id": "vn-corpus-very-like-neg-002",
+  "input": "This is very good.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "This is very good.",
+  "expectedRuleFired": null,
+  "notes": "Corpus-wave guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; 'very' before adjective is correct and must not be captured by a broad very+word matcher."
+}
+```
+```json
+{
+  "id": "vn-corpus-very-like-neg-003",
+  "input": "I like English very much.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I like English very much.",
+  "expectedRuleFired": null,
+  "notes": "Corpus-wave guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; natural 'like ... very much' alternative must remain unchanged."
+}
+```
+
+## Corpus-wave. en-vietlish-copula-agree → target fixture TBD
+
+Source: `vn-interference-corpus-wave.json`, candidate
+`en-vietlish-copula-agree` / `vietlishCopulaAgree`.
+
+Gated on: Lane A adds a new correction rule for VN transfer around `dong y`:
+`be + agree` → finite `agree/agrees`.
+
+**ACTIVATION positives** (abstain today → must fire once the new rule lands):
+```json
+{
+  "id": "vn-corpus-copula-agree-pos-001",
+  "input": "I am agree with you.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "I agree with you.",
+  "expectedRuleFired": "en-vietlish-copula-agree",
+  "notes": "Corpus-wave candidate en-vietlish-copula-agree. ACTIVATE-AFTER: live engine 2026-06-02 abstains (unchanged, no appliedRuleIds). Once Lane A ships this rule, auxiliary 'am' must be removed."
+}
+```
+```json
+{
+  "id": "vn-corpus-copula-agree-pos-002",
+  "input": "She is agree with the plan.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "She agrees with the plan.",
+  "expectedRuleFired": "en-vietlish-copula-agree",
+  "notes": "Corpus-wave candidate en-vietlish-copula-agree. ACTIVATE-AFTER: live engine 2026-06-02 abstains. Third-person subject must become finite 'agrees', not just delete 'is'."
+}
+```
+```json
+{
+  "id": "vn-corpus-copula-agree-pos-003",
+  "input": "We are agree about this.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "We agree about this.",
+  "expectedRuleFired": "en-vietlish-copula-agree",
+  "notes": "Corpus-wave candidate en-vietlish-copula-agree. ACTIVATE-AFTER: live engine 2026-06-02 abstains. Plural subject and 'about' complement baseline for the new rule."
+}
+```
+
+**VERIFY-NOW negatives** (already abstain; must keep abstaining after the new rule):
+```json
+{
+  "id": "vn-corpus-copula-agree-neg-001",
+  "input": "I agree with you.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I agree with you.",
+  "expectedRuleFired": null,
+  "notes": "Corpus-wave guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; already-correct finite agree must not be rewritten."
+}
+```
+```json
+{
+  "id": "vn-corpus-copula-agree-neg-002",
+  "input": "She agrees with the plan.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "She agrees with the plan.",
+  "expectedRuleFired": null,
+  "notes": "Corpus-wave guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; already-correct third-person finite form must not be rewritten."
+}
+```
+```json
+{
+  "id": "vn-corpus-copula-agree-neg-003",
+  "input": "I am agreeable today.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I am agreeable today.",
+  "expectedRuleFired": null,
+  "notes": "Corpus-wave guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; adjective 'agreeable' must not be captured by a broad be+agree prefix matcher."
+}
+```
