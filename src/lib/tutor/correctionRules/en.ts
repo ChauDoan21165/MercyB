@@ -378,6 +378,9 @@ function hasStep6LookAtPronoun(input: string): boolean {
   if (new RegExp(`\\blook(?:s|ed|ing)?\\s+${PERSON_OBJECT_PRONOUN_PATTERN}\\s+${STEP6_LOOK_AT_SEPARATED_PARTICLE_PATTERN}\\b`, "i").test(input)) {
     return false;
   }
+  if (new RegExp(`\\b(?:look|looks|looked|looking)\\s+${PERSON_OBJECT_PRONOUN_PATTERN}\\s+in\\s+the\\s+eyes?\\b`, "i").test(input)) {
+    return false;
+  }
 
   return new RegExp(
     `\\b(look|looks|looked|looking)\\s+${PERSON_OBJECT_PRONOUN_PATTERN}\\b(?!\\s+${STEP6_LOOK_AT_SEPARATED_PARTICLE_PATTERN}\\b)`,

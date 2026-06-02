@@ -372,6 +372,9 @@ describe("correctionEngine", () => {
     "Look at me.",
     "I'll look you up.",
     "Look them over.",
+    "Look him in the eye.",
+    "Look her in the eyes.",
+    "Look me in the eye.",
   ])("does not over-trigger approved Step 6 look-at pronoun pattern: %s", (input) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "unchanged",
