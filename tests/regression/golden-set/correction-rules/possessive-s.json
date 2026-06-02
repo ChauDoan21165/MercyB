@@ -110,6 +110,14 @@
       "expectedCorrection": "My brother bike to work.",
       "expectedRuleFired": null,
       "notes": "Lock (verb-sense guard): 'bike' is the verb (to bike to work), not a possessed object; possessive-s must not fire."
+    },
+    {
+      "id": "possessive-s-neg-lock-verb-sense",
+      "input": "My sister phone me yesterday.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "My sister phone me yesterday.",
+      "expectedRuleFired": null,
+      "notes": "Verb-sense guard (merged 242cd2d7): 'phone' is the verb (phoned), not a possessed object; possessive-s must not fire."
     }
   ]
 }
