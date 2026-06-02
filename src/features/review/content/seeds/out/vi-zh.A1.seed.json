@@ -1,0 +1,229 @@
+{
+  "flow": "vi-zh",
+  "level": "A1",
+  "status": "for-review",
+  "certifiedTotal": 24,
+  "certifiedAtLevel": 24,
+  "cards": [
+    {
+      "id": "vi-zh:sentence:ban-khoe-khong",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "bạn khỏe không?",
+      "back": "你好吗？",
+      "pronunciation": "nǐ hǎo ma?",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:toi-khoe-cam-on",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "tôi khỏe, cảm ơn.",
+      "back": "我很好，谢谢。",
+      "pronunciation": "wǒ hěn hǎo, xiè xiè.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:tam-biet-hen-gap-lai-ngay-mai",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "tạm biệt, hẹn gặp lại ngày mai.",
+      "back": "再见，明天见。",
+      "pronunciation": "zài jiàn, míng tiān jiàn.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:chao-mung-ban-en-voi-trung-quoc",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "chào mừng bạn đến với Trung Quốc!",
+      "back": "欢迎来到中国！",
+      "pronunciation": "huān yíng lái dào zhōng guó!",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:toi-co-ba-qua-tao",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "tôi có ba quả táo.",
+      "back": "我有三个苹果。",
+      "pronunciation": "wǒ yǒu sān gè píng guǒ.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:lop-chung-toi-co-tam-hoc-sinh",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "lớp chúng tôi có tám học sinh.",
+      "back": "我们班有八个学生。",
+      "pronunciation": "wǒ men bān yǒu bā gè xué shēng.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:lam-on-cho-toi-mot-ly-nuoc",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "làm ơn cho tôi một ly nước.",
+      "back": "请给我一杯水。",
+      "pronunciation": "qǐng gěi wǒ yī bēi shuǐ.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:bo-toi-la-bac-si",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "bố tôi là bác sĩ.",
+      "back": "我爸爸是医生。",
+      "pronunciation": "wǒ bà ba shì yī shēng.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:com-me-toi-nau-rat-ngon",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "cơm mẹ tôi nấu rất ngon.",
+      "back": "我妈妈做的饭很好吃。",
+      "pronunciation": "wǒ mā ma zuò de fàn hěn hǎo chī.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:toi-co-mot-anh-trai-va-mot-em-gai",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "tôi có một anh trai và một em gái.",
+      "back": "我有一个哥哥和一个妹妹。",
+      "pronunciation": "wǒ yǒu yī gè gē ge hé yī gè mèi mei.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:con-gai-toi-nam-nay-nam-tuoi",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "con gái tôi năm nay năm tuổi.",
+      "back": "我女儿今年五岁了。",
+      "pronunciation": "wǒ nǚ ér jīn nián wǔ suì le.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:toi-thich-hoa-mau-o",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "tôi thích hoa màu đỏ.",
+      "back": "我喜欢红色的花。",
+      "pronunciation": "wǒ xǐ huān hóng sè de huā.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:bau-troi-mau-xanh-duong",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "bầu trời màu xanh dương.",
+      "back": "天空是蓝色的。",
+      "pronunciation": "tiān kōng shì lán sè de.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:co-ay-mac-mot-chiec-vay-mau-trang",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "cô ấy mặc một chiếc váy màu trắng.",
+      "back": "她穿了一件白色的裙子。",
+      "pronunciation": "tā chuān le yī jiàn bái sè de qún zi.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:toi-thich-an-mon-an-trung-quoc",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "tôi thích ăn món ăn Trung Quốc.",
+      "back": "我喜欢吃中国菜。",
+      "pronunciation": "wǒ xǐ huān chī zhōng guó cài.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:trua-nay-toi-a-an-mi",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "trưa nay tôi đã ăn mì.",
+      "back": "今天中午我吃了面条。",
+      "pronunciation": "jīn tiān zhōng wǔ wǒ chī le miàn tiáo.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:nguoi-trung-quoc-thich-uong-tra-xanh",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "người Trung Quốc thích uống trà xanh.",
+      "back": "中国人喜欢喝绿茶。",
+      "pronunciation": "zhōng guó rén xǐ huān hē lǜ chá.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:moi-sang-toi-uong-mot-ly-ca-phe",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "mỗi sáng tôi uống một ly cà phê.",
+      "back": "我每天早上喝一杯咖啡。",
+      "pronunciation": "wǒ měi tiān zǎo shang hē yī bēi kā fēi.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:hom-nay-la-thu-hai",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "hôm nay là thứ hai.",
+      "back": "今天是星期一。",
+      "pronunciation": "jīn tiān shì xīng qī yī.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    },
+    {
+      "id": "vi-zh:sentence:thu-sau-toi-co-lop-tieng-trung",
+      "flow": "vi-zh",
+      "kind": "sentence",
+      "front": "thứ sáu tôi có lớp tiếng Trung.",
+      "back": "我星期五有中文课。",
+      "pronunciation": "wǒ xīng qī wǔ yǒu zhōng wén kè.",
+      "cefr": "A1",
+      "provenance": "generated",
+      "source": "chinese/lessons-a1+authored-vi"
+    }
+  ]
+}

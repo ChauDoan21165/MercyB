@@ -1,10 +1,15 @@
 // src/features/review/content/contentAdapter.ts — D3 slice.
 //
 // The ContentAdapter (see types.ts) pulls reviewable vocab/sentences from
-// EXISTING MercyBlade content, READ-ONLY, and maps them to ReviewItem[]. It is
-// composed of independent ReviewSource modules (one per content corpus). The
-// adapter just fans a flow out to every source that supports it, concatenates,
-// and dedups by stable namespaced id.
+// EXISTING MercyBlade content, READ-ONLY, and maps them to ReviewItem[].
+//
+// Two composition modes:
+//   - LAZY (default): per-flow dynamic import() loaders (sources/lazyLoaders).
+//     A flow's content is code-split into its own chunk and fetched only when
+//     getItems(flow) is first called — so the ReviewApp bundle stays small.
+//   - SYNC (injected): pass `sources` (ReviewSource[]) to compose from eager,
+//     already-built sources. Used by tests (fakes) and any caller that already
+//     holds the data.
 //
 // Fail soft (README): an unsupported or empty flow yields [], never throws.
 
@@ -16,26 +21,37 @@ import type {
 import { isReviewFlowId } from "@/features/review/flows";
 
 import type { ReviewSource } from "./sources/source";
-import { createDefaultSources } from "./sources/defaultSources";
+import { DEFAULT_FLOW_LOADERS, type ItemsLoader } from "./sources/lazyLoaders";
 
 export interface CreateContentAdapterOptions {
   /**
-   * Sources to compose. Defaults to the real wired content sources
-   * (Spanish lessons + bilingual sentences). Tests inject fakes here so they
-   * never depend on real content files.
+   * Eager, pre-built sources to compose from. When provided, the adapter runs
+   * in SYNC mode and ignores `loaders`. Tests inject fakes here so they never
+   * pull real content.
    */
   sources?: ReviewSource[];
+  /**
+   * Per-flow lazy loaders. Defaults to DEFAULT_FLOW_LOADERS (the real wired
+   * content, code-split). Only consulted when `sources` is not provided.
+   */
+  loaders?: Partial<Record<ReviewFlowId, ItemsLoader>>;
 }
 
-export function createContentAdapter(
-  options: CreateContentAdapterOptions = {},
-): ContentAdapter {
-  // Lazily resolve the real sources only when none are injected — so a test
-  // that passes fakes never pulls the real-content import graph.
-  const sources: ReviewSource[] = options.sources ?? createDefaultSources();
+/** Dedup a flow's items by stable id, preserving order. */
+function dedup(flow: ReviewFlowId, items: readonly ReviewItem[]): ReviewItem[] {
+  const out: ReviewItem[] = [];
+  const seen = new Set<string>();
+  for (const item of items) {
+    if (!item || item.flow !== flow) continue;
+    if (seen.has(item.id)) continue;
+    seen.add(item.id);
+    out.push(item);
+  }
+  return out;
+}
 
-  // Precompute the supported-flow set from the sources, intersected with the
-  // canonical flow registry (a source can never invent a non-flow).
+/** SYNC mode — compose from eager ReviewSources (test/injection path). */
+function fromSources(sources: ReviewSource[]): ContentAdapter {
   const supported = new Set<ReviewFlowId>();
   for (const src of sources) {
     let flows: ReviewFlowId[] = [];
@@ -44,41 +60,59 @@ export function createContentAdapter(
     } catch {
       flows = [];
     }
-    for (const f of flows) {
-      if (isReviewFlowId(f)) supported.add(f);
-    }
+    for (const f of flows) if (isReviewFlowId(f)) supported.add(f);
   }
 
   return {
-    supportedFlows(): ReviewFlowId[] {
-      return [...supported];
-    },
-
+    supportedFlows: () => [...supported],
     async getItems(flow: ReviewFlowId): Promise<ReviewItem[]> {
       if (!isReviewFlowId(flow) || !supported.has(flow)) return [];
-
-      const out: ReviewItem[] = [];
-      const seen = new Set<string>();
-
+      const collected: ReviewItem[] = [];
       for (const src of sources) {
-        let items: ReviewItem[] = [];
         try {
-          // Only ask a source for a flow it claims to support.
           if (!src.flows().includes(flow)) continue;
-          items = src.items(flow) ?? [];
+          collected.push(...(src.items(flow) ?? []));
         } catch {
           // A misbehaving source must not break the deck — fail soft.
-          items = [];
-        }
-        for (const item of items) {
-          if (!item || item.flow !== flow) continue;
-          if (seen.has(item.id)) continue;
-          seen.add(item.id);
-          out.push(item);
         }
       }
-
-      return out;
+      return dedup(flow, collected);
     },
   };
+}
+
+/** LAZY mode — per-flow dynamic-import loaders (default path). */
+function fromLoaders(
+  loaders: Partial<Record<ReviewFlowId, ItemsLoader>>,
+): ContentAdapter {
+  const supported = (Object.keys(loaders) as ReviewFlowId[]).filter(isReviewFlowId);
+  const supportedSet = new Set(supported);
+  const cache = new Map<ReviewFlowId, ReviewItem[]>();
+
+  return {
+    supportedFlows: () => [...supported],
+    async getItems(flow: ReviewFlowId): Promise<ReviewItem[]> {
+      if (!isReviewFlowId(flow) || !supportedSet.has(flow)) return [];
+      const cached = cache.get(flow);
+      if (cached) return cached;
+      const loader = loaders[flow];
+      if (!loader) return [];
+      let items: ReviewItem[] = [];
+      try {
+        items = dedup(flow, (await loader()) ?? []);
+      } catch {
+        // A failed import / source must not break the deck — fail soft.
+        items = [];
+      }
+      cache.set(flow, items);
+      return items;
+    },
+  };
+}
+
+export function createContentAdapter(
+  options: CreateContentAdapterOptions = {},
+): ContentAdapter {
+  if (options.sources) return fromSources(options.sources);
+  return fromLoaders(options.loaders ?? DEFAULT_FLOW_LOADERS);
 }

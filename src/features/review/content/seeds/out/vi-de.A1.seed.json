@@ -1,0 +1,229 @@
+{
+  "flow": "vi-de",
+  "level": "A1",
+  "status": "for-review",
+  "certifiedTotal": 1923,
+  "certifiedAtLevel": 248,
+  "cards": [
+    {
+      "id": "vi-de:sentence:chao-buoi-sang-toi-ten-la-anna",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Chào buổi sáng! Tôi tên là Anna.",
+      "back": "Guten Morgen! Ich heiße Anna.",
+      "noteVi": "g → g cứng · ei → ai · ß → ss · ch-Laut nhẹ",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:rat-vui-uoc-gap-ban-lich-su",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Rất vui được gặp bạn (lịch sự).",
+      "back": "Freut mich, Sie kennenzulernen.",
+      "noteVi": "eu → oi · ch-Laut nhẹ · ie → i dài · zu → tsu",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:hom-nay-ban-khoe-khong-lich-su",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Hôm nay bạn khỏe không (lịch sự)?",
+      "back": "Wie geht es Ihnen heute?",
+      "noteVi": "ie → i dài · eh → ê · Ih viết hoa = lịch sự",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:toi-khoe-cam-on-con-ban",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Tôi khỏe, cảm ơn. Còn bạn?",
+      "back": "Mir geht es gut, danke. Und Ihnen?",
+      "noteVi": "g → g cứng · u → u dài · danke → đang-kờ",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:tam-biet-chuc-mot-ngay-tot-lanh",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Tạm biệt! Chúc một ngày tốt lành!",
+      "back": "Auf Wiedersehen! Schönen Tag noch!",
+      "noteVi": "au → ao · ie → i dài · ö → ơ tròn môi · ch → ch nhẹ",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:mot-hai-ba-ba-ly-bia-lam-on",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Một, hai, ba — ba ly bia, làm ơn.",
+      "back": "Eins, zwei, drei — drei Bier, bitte.",
+      "noteVi": "ei → ai · z → ts · dr → đ-r · ie → i dài",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:bon-nam-sau-cai-banh-pretzel",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Bốn, năm, sáu cái bánh pretzel.",
+      "back": "Vier, fünf, sechs Brezeln.",
+      "noteVi": "v → f · ü → uy · s → z · chs → x",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:bay-tam-chin-euro",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Bảy, tám, chín euro.",
+      "back": "Sieben, acht, neun Euro.",
+      "noteVi": "s → z · ie → i dài · cht → cht · eu → oi",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:muoi-muoi-mot-muoi-hai-nguoi",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Mười, mười một, mười hai người.",
+      "back": "Zehn, elf, zwölf Personen.",
+      "noteVi": "z → ts · ö → ơ tròn môi · w → v · final-f",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:muoi-ba-muoi-bon-muoi-lam-gop-chung-het-a",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Mười ba, mười bốn, mười lăm — gộp chung hết ạ?",
+      "back": "Dreizehn, vierzehn, fünfzehn — alles zusammen?",
+      "noteVi": "zehn → tsên · v → f · ü → uy · zusammen → tsu-zam-men",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:nha-ve-sinh-o-au-a",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Nhà vệ sinh ở đâu ạ?",
+      "back": "Wo ist die Toilette, bitte?",
+      "noteVi": "w → v · ie → i dài · Toilette → toa-lét-tờ",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:cai-nay-gia-bao-nhieu",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Cái này giá bao nhiêu?",
+      "back": "Wie viel kostet das?",
+      "noteVi": "v → f · ie → i dài · st → sht",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:toi-muon-mot-ve-i-berlin",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Tôi muốn một vé đi Berlin.",
+      "back": "Ich möchte ein Ticket nach Berlin.",
+      "noteVi": "ch-Laut nhẹ · ö → ơ tròn môi · ck → k",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:ban-noi-tieng-anh-khong",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Bạn nói tiếng Anh không?",
+      "back": "Sprechen Sie Englisch?",
+      "noteVi": "sch → s nặng · sp → shp · ie → i dài",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:toi-khong-hieu-ban-noi-lai-uoc-khong",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Tôi không hiểu. Bạn nói lại được không?",
+      "back": "Ich verstehe nicht. Können Sie das wiederholen?",
+      "noteVi": "v → f · st → sht · ö → ơ tròn môi · ie → i dài",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:con-cho-mau-nau-cach-1-der-chu-ngu-giong-uc",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Con chó màu nâu. (Cách 1: 'der' = chủ ngữ giống đực)",
+      "back": "Der Hund ist braun. (Nominative — chủ ngữ)",
+      "noteVi": "der → đe-a · u → u ngắn · au → ao",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:toi-nhin-thay-con-cho-cach-4-den-tan-ngu-giong-u-1ytluyt",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Tôi nhìn thấy con chó. (Cách 4: 'den' = tân ngữ giống đực)",
+      "back": "Ich sehe den Hund. (Accusative — tân ngữ)",
+      "noteVi": "den → đên · ich ch-Laut · eh → ê",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:con-meo-nho-toi-thay-con-meo-giong-cai-khong-oi",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Con mèo nhỏ. → Tôi thấy con mèo. (Giống cái không đổi)",
+      "back": "Die Katze ist klein. → Ich sehe die Katze.",
+      "noteVi": "die → đi · a → a ngắn · z → ts · ei → ai",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:ua-tre-choi-toi-thay-ua-tre-giong-trung-khong-oi",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Đứa trẻ chơi. → Tôi thấy đứa trẻ. (Giống trung không đổi)",
+      "back": "Das Kind spielt. → Ich sehe das Kind.",
+      "noteVi": "das → đát · i → i ngắn · sp → shp · ie → i dài",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    },
+    {
+      "id": "vi-de:sentence:nguoi-an-ong-ua-qua-bong-cho-con-cho",
+      "flow": "vi-de",
+      "kind": "sentence",
+      "front": "Người đàn ông đưa quả bóng cho con chó.",
+      "back": "Der Mann gibt dem Hund den Ball.",
+      "noteVi": "a → a ngắn · gibt → ghipt · dem → đêm · Ball → ban",
+      "cefr": "A1",
+      "provenance": "adapted",
+      "source": "german/lessons"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "flow": "vi-ko",
+  "total": 7,
+  "byReason": {
+    "DUP_ID": 3,
+    "FRONT_NOT_VIETNAMESE": 4
+  },
+  "samples": [
+    {
+      "id": "vi-ko:sentence:toi-an-com",
+      "front": "Tôi ăn cơm.",
+      "back": "밥을 먹어요.",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-ko:sentence:toi-oc-sach",
+      "front": "Tôi đọc sách.",
+      "back": "책을 읽어요.",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-ko:sentence:toi-la-hoc-sinh",
+      "front": "Tôi là học sinh.",
+      "back": "저는 학생이에요.",
+      "reasons": [
+        "DUP_ID"
+      ]
+    },
+    {
+      "id": "vi-ko:sentence:thay-vi-han-nguoi-viet-an-banh-chung",
+      "front": "Thay vì 떡국 Hàn, người Việt ăn bánh chưng.",
+      "back": "한국 떡국 대신 베트남에서는 반쯩(Bánh Chưng)을 먹어요.",
+      "reasons": [
+        "FRONT_NOT_VIETNAMESE"
+      ]
+    },
+    {
+      "id": "vi-ko:sentence:han-quoc-co-mot-cam-xuc-ac-biet-goi-la-jeong",
+      "front": "Hàn Quốc có một cảm xúc đặc biệt gọi là '정' (jeong).",
+      "back": "한국에는 '정'이라는 특별한 감정이 있어요.",
+      "reasons": [
+        "FRONT_NOT_VIETNAMESE"
+      ]
+    },
+    {
+      "id": "vi-ko:sentence:qua-thoi-gian-o-ben-nhau-dan-hinh-thanh",
+      "front": "Qua thời gian ở bên nhau, '정' dần hình thành.",
+      "back": "오랜 시간 함께 보내면서 서서히 정이 들었어요.",
+      "reasons": [
+        "FRONT_NOT_VIETNAMESE"
+      ]
+    },
+    {
+      "id": "vi-ko:sentence:suot-thoi-gian-qua-that-su-cam-on-anh-chi-a-co-r-0hmsf5h",
+      "front": "Suốt thời gian qua thật sự cảm ơn anh/chị. Đã có rất nhiều 정.",
+      "back": "그동안 정말 고마웠어요. 정이 많이 들었어요.",
+      "reasons": [
+        "FRONT_NOT_VIETNAMESE"
+      ]
+    }
+  ]
+}
