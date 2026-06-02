@@ -1,16 +1,24 @@
 // src/features/gamification/routes/GamificationPage.tsx
 //
 // The module's single route surface, mounted at /progress/play behind
-// FEATURE_GAMIFICATION (see src/router/AppRouter.tsx). F6 wires the streak /
-// XP / daily-goal widgets and the achievements screen, all reading through
-// useGamification().
+// FEATURE_GAMIFICATION (see src/router/AppRouter.tsx).
+//
+// Flip-safety (canonical-read-only): the streak and XP/points widgets read the
+// app's ONE canonical source, not the gamification store's parallel counters —
+//   • Streak → pointsService.getStreakDays() (+ useServerStreak for the record),
+//     so testers never see a second streak number that disagrees with the rest
+//     of the app.
+//   • XP/points → the canonical user_points total via usePoints(), mapped
+//     through the level curve for display only. Read-only: this page never
+//     emits XP, so the display shows real accruing value instead of the
+//     near-dead goal_complete-only gamification XP.
+// Daily-goal and achievements stand alone (no canonical equivalent) and keep
+// reading through useGamification().
 
 import React from "react";
 
-import { toIsoDate } from "../defaults";
-import { xpEngine } from "../engines/xpEngine";
-import { streakEngine } from "../engines/streakEngine";
 import { dailyGoalEngine } from "../engines/dailyGoalEngine";
+import { xpEngine } from "../engines/xpEngine";
 import { ACHIEVEMENTS } from "../engines/achievementEngine";
 import { useGamification } from "../hooks/useGamification";
 import StreakWidget from "../components/StreakWidget";
@@ -18,8 +26,29 @@ import XpWidget from "../components/XpWidget";
 import DailyGoalWidget from "../components/DailyGoalWidget";
 import AchievementsScreen from "../components/AchievementsScreen";
 
+import { getStreakDays } from "@/services/pointsService";
+import { useServerStreak } from "@/hooks/useServerStreak";
+import { usePoints } from "@/hooks/usePoints";
+import { FEATURE_FLAGS } from "@/lib/featureFlags";
+
 export default function GamificationPage() {
   const { state, loading } = useGamification();
+
+  // Canonical streak. useServerStreak() warms streakCache and makes this
+  // component re-render once the server value resolves, so the synchronous
+  // getStreakDays() reader returns the canonical (server-or-localStorage)
+  // number — the same one StreakBadge shows. The record (longest) only exists
+  // canonically when server-streaks are on; otherwise it's omitted.
+  const serverStreak = useServerStreak();
+  const streakCurrent = getStreakDays();
+  const streakLongest =
+    FEATURE_FLAGS.SERVER_STREAKS_ENABLED && serverStreak.longest > 0
+      ? serverStreak.longest
+      : undefined;
+
+  // Canonical points (server user_points), displayed read-only through the
+  // level curve. This page does not award XP.
+  const { totalPoints } = usePoints();
 
   return (
     <main
@@ -37,17 +66,10 @@ export default function GamificationPage() {
         </p>
       ) : (
         <div className="mt-6 flex flex-col gap-4">
-          <StreakWidget
-            current={state.streak.current}
-            longest={state.streak.longest}
-            freezesAvailable={state.streak.freezesAvailable}
-            atRisk={
-              streakEngine.status(state.streak, toIsoDate(new Date())).atRisk
-            }
-          />
+          <StreakWidget current={streakCurrent} longest={streakLongest} />
 
           {(() => {
-            const p = xpEngine.progress(state.xp.totalXp);
+            const p = xpEngine.progress(totalPoints);
             return (
               <XpWidget
                 level={p.level}
