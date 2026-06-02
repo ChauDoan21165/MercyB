@@ -57,6 +57,43 @@ describe("extractF0PitchContour", () => {
     expect(contour.medianF0Hz).toBeLessThan(215);
   });
 
+  it("handles microphone gain differences without changing contour direction", () => {
+    const quietContour = extractF0PitchContour({
+      enabled: true,
+      sampleRate: SAMPLE_RATE,
+      samples: synthTone({ startHz: 178, endHz: 232, amplitude: 0.08 }),
+    });
+    const loudContour = extractF0PitchContour({
+      enabled: true,
+      sampleRate: SAMPLE_RATE,
+      samples: synthTone({ startHz: 178, endHz: 232, amplitude: 0.82 }),
+    });
+
+    expect(quietContour.reason).toBe("ok");
+    expect(loudContour.reason).toBe("ok");
+    expect(classifyVietnameseToneContour(quietContour)).toBe("rising");
+    expect(classifyVietnameseToneContour(loudContour)).toBe("rising");
+  });
+
+  it("keeps a clean tone usable with moderate deterministic background noise", () => {
+    const contour = extractF0PitchContour({
+      enabled: true,
+      sampleRate: SAMPLE_RATE,
+      samples: synthTone({ startHz: 232, endHz: 178, noiseAmplitude: 0.018 }),
+    });
+    const score = scoreVietnameseToneAttempt({
+      contour,
+      target: TARGETS.huyen,
+    });
+
+    expect(contour.reason).toBe("ok");
+    expect(classifyVietnameseToneContour(contour)).toBe("falling");
+    expect(score).toMatchObject({
+      bucket: "close",
+      reason: "contour-match",
+    });
+  });
+
   it("meets the >=90% contour-bucket threshold on curated deterministic references", () => {
     const fixtures: Array<{ expected: SupportedContour; samples: Float32Array }> = [
       ...Array.from({ length: 8 }, (_, index) => ({
@@ -165,27 +202,104 @@ describe("extractF0PitchContour", () => {
     expect(contour.reason).toBe("too-short");
     expect(classifyVietnameseToneContour(contour)).toBe("unknown");
   });
+
+  it("abstains on silent utterances", () => {
+    const contour = extractF0PitchContour({
+      enabled: true,
+      sampleRate: SAMPLE_RATE,
+      samples: new Float32Array(Math.round(SAMPLE_RATE * DURATION_SECONDS)),
+    });
+    const score = scoreVietnameseToneAttempt({
+      contour,
+      target: TARGETS.ngang,
+    });
+
+    expect(contour.reason).toBe("insufficient-voicing");
+    expect(contour.extractionConfidence).toBeLessThan(0.5);
+    expect(classifyVietnameseToneContour(contour)).toBe("unknown");
+    expect(score.bucket).toBe("unclear");
+  });
+
+  it("abstains on heavily clipped utterances instead of trusting distorted f0", () => {
+    const contour = extractF0PitchContour({
+      enabled: true,
+      sampleRate: SAMPLE_RATE,
+      samples: synthTone({ startHz: 178, endHz: 232, amplitude: 1.8, clip: true }),
+    });
+    const score = scoreVietnameseToneAttempt({
+      contour,
+      target: TARGETS.sac,
+    });
+
+    expect(contour.samples).toHaveLength(0);
+    expect(contour.reason).toBe("insufficient-voicing");
+    expect(score.bucket).toBe("unclear");
+  });
+
+  it("abstains when voiced frames are too sparse", () => {
+    const contour = extractF0PitchContour({
+      enabled: true,
+      sampleRate: SAMPLE_RATE,
+      samples: synthSparseVoicing(),
+    });
+    const score = scoreVietnameseToneAttempt({
+      contour,
+      target: TARGETS.sac,
+    });
+
+    expect(contour.reason).toBe("insufficient-voicing");
+    expect(contour.voicedRatio).toBeLessThan(0.45);
+    expect(classifyVietnameseToneContour(contour)).toBe("unknown");
+    expect(score.bucket).toBe("unclear");
+  });
+
+  it("rejects unstable octave-jumping frames instead of returning a confident contour", () => {
+    const contour = extractF0PitchContour({
+      enabled: true,
+      sampleRate: SAMPLE_RATE,
+      samples: synthUnstablePitch(),
+    });
+    const score = scoreVietnameseToneAttempt({
+      contour,
+      target: TARGETS.sac,
+    });
+
+    expect(contour.reason).toBe("insufficient-voicing");
+    expect(contour.extractionConfidence).toBeLessThan(0.75);
+    expect(classifyVietnameseToneContour(contour)).toBe("unknown");
+    expect(score.bucket).toBe("unclear");
+  });
 });
 
 function synthTone({
   startHz,
   endHz,
   durationSeconds = DURATION_SECONDS,
+  amplitude = 0.5,
+  noiseAmplitude = 0,
+  clip = false,
 }: {
   startHz: number;
   endHz: number;
   durationSeconds?: number;
+  amplitude?: number;
+  noiseAmplitude?: number;
+  clip?: boolean;
 }): Float32Array {
   const totalSamples = Math.round(SAMPLE_RATE * durationSeconds);
   const samples = new Float32Array(totalSamples);
   let phase = 0;
+  let seed = 8675309;
 
   for (let index = 0; index < totalSamples; index += 1) {
     const progress = totalSamples <= 1 ? 0 : index / (totalSamples - 1);
     const f0Hz = startHz + (endHz - startHz) * progress;
     phase += (2 * Math.PI * f0Hz) / SAMPLE_RATE;
     const envelope = 0.25 + 0.75 * Math.sin(Math.PI * progress);
-    samples[index] = Math.sin(phase) * 0.5 * envelope;
+    seed = (1664525 * seed + 1013904223) >>> 0;
+    const noise = (seed / 0xffffffff - 0.5) * noiseAmplitude;
+    const value = Math.sin(phase) * amplitude * envelope + noise;
+    samples[index] = clip ? Math.max(-1, Math.min(1, value)) : value;
   }
 
   return samples;
@@ -200,6 +314,30 @@ function synthUnvoicedNoise(): Float32Array {
     seed = (1664525 * seed + 1013904223) >>> 0;
     const noise = seed / 0xffffffff - 0.5;
     samples[index] = noise * 0.006;
+  }
+
+  return samples;
+}
+
+function synthSparseVoicing(): Float32Array {
+  const voiced = synthTone({ startHz: 180, endHz: 230, durationSeconds: 0.16 });
+  const samples = synthUnvoicedNoise();
+  samples.set(voiced, Math.round(SAMPLE_RATE * 0.28));
+  return samples;
+}
+
+function synthUnstablePitch(): Float32Array {
+  const totalSamples = Math.round(SAMPLE_RATE * DURATION_SECONDS);
+  const samples = new Float32Array(totalSamples);
+  let phase = 0;
+
+  for (let index = 0; index < totalSamples; index += 1) {
+    const progress = totalSamples <= 1 ? 0 : index / (totalSamples - 1);
+    const segment = Math.floor(progress * 10);
+    const f0Hz = segment % 2 === 0 ? 145 : 340;
+    phase += (2 * Math.PI * f0Hz) / SAMPLE_RATE;
+    const envelope = 0.25 + 0.75 * Math.sin(Math.PI * progress);
+    samples[index] = Math.sin(phase) * 0.48 * envelope;
   }
 
   return samples;
