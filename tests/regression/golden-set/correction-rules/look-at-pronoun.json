@@ -102,6 +102,30 @@
       "expectedCorrection": "They look down on us.",
       "expectedRuleFired": null,
       "notes": "FP guard ('look down on' phrasal): 'look' is not immediately followed by a person pronoun ('down' intervenes); rule abstains."
+    },
+    {
+      "id": "look-at-pronoun-neg-010",
+      "input": "Look him in the eye.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Look him in the eye.",
+      "expectedRuleFired": null,
+      "notes": "FP guard: look someone in the eye is a valid idiom and must not become look at someone in the eye."
+    },
+    {
+      "id": "look-at-pronoun-neg-011",
+      "input": "Look her in the eyes.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Look her in the eyes.",
+      "expectedRuleFired": null,
+      "notes": "FP guard: plural eyes variant of look someone in the eye stays unchanged."
+    },
+    {
+      "id": "look-at-pronoun-neg-012",
+      "input": "Look me in the eye.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Look me in the eye.",
+      "expectedRuleFired": null,
+      "notes": "FP guard: first-person object variant of look someone in the eye stays unchanged."
     }
   ]
 }
