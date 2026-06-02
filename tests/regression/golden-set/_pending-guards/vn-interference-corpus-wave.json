@@ -7,8 +7,8 @@
   "generatedAt": "2026-06-02",
   "intake": {
     "requestedSources": ["A3", "A4"],
-    "repoArtifactsFound": false,
-    "note": "No repo-local A3/A4 corpus proposal artifact was found during read-only branch search. This file normalizes A1-seeded VN->EN interference candidates into the existing golden-net data shape for later A3/A4 append/review."
+    "repoArtifactsFound": true,
+    "note": "This file contains the initial A1-seeded VN->EN correction-engine corpus. A4's recovered feedback-rule-pack slice proposals are integrated separately in tests/regression/golden-set/_pending-guards/vn-l1-rulepack-slice-proposals.json."
   },
   "items": [
     {
