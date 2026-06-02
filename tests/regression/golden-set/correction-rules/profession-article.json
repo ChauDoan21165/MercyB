@@ -107,6 +107,30 @@
       "expectedCorrection": "The doctor is here.",
       "expectedRuleFired": null,
       "notes": "Confusable: 'doctor' as a determined subject ('The doctor'), not a 'pronoun + be + bare profession' predicate. Anchor near-miss."
+    },
+    {
+      "id": "profession-article-neg-lock-title-propername-001",
+      "input": "He is doctor Smith.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He is doctor Smith.",
+      "expectedRuleFired": null,
+      "notes": "Lock: profession word is a title before a ProperName token, so no article is inserted."
+    },
+    {
+      "id": "profession-article-neg-lock-title-propername-002",
+      "input": "She is nurse Nguyen.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She is nurse Nguyen.",
+      "expectedRuleFired": null,
+      "notes": "Lock: profession word is a title before a ProperName token, so no article is inserted."
+    },
+    {
+      "id": "profession-article-neg-lock-title-propername-003",
+      "input": "He is Doctor Smith.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He is Doctor Smith.",
+      "expectedRuleFired": null,
+      "notes": "Lock: capitalized profession/title surface before a ProperName token stays unchanged if it reaches this rule."
     }
   ]
 }

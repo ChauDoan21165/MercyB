@@ -259,13 +259,18 @@ function hasMissingCommonNounArticle(input: string): boolean {
 
 function hasStep6ProfessionArticle(input: string): boolean {
   const professionPattern = Object.keys(PROFESSION_ARTICLES).join("|");
-  return new RegExp(`\\b(?:I\\s+am|He\\s+is|She\\s+is)\\s+(?:${professionPattern})\\b`, "i").test(input);
+  const pattern = new RegExp(`\\b(?:I\\s+am|He\\s+is|She\\s+is)\\s+(${professionPattern})\\b`, "gi");
+  return Array.from(input.matchAll(pattern)).some((match) => {
+    const offset = match.index ?? 0;
+    return !/^\s+[A-Z][a-z]+\b/.test(input.slice(offset + match[0].length));
+  });
 }
 
 function repairStep6ProfessionArticle(input: string): string {
   const professionPattern = Object.keys(PROFESSION_ARTICLES).join("|");
   const pattern = new RegExp(`\\b(I\\s+am|He\\s+is|She\\s+is)\\s+(${professionPattern})\\b`, "gi");
-  return input.replace(pattern, (_match, prefix: string, profession: string) => {
+  return input.replace(pattern, (match, prefix: string, profession: string, offset: number) => {
+    if (/^\s+[A-Z][a-z]+\b/.test(input.slice(offset + match.length))) return match;
     const article = PROFESSION_ARTICLES[profession.toLowerCase()] ?? "a";
     return `${prefix} ${article} ${profession}`;
   });

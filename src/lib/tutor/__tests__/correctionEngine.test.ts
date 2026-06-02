@@ -122,6 +122,9 @@ describe("correctionEngine", () => {
     "They are teacher.",
     "He is the teacher.",
     "He is my teacher.",
+    "He is doctor Smith.",
+    "She is nurse Nguyen.",
+    "He is Doctor Smith.",
     "She is a doctor.",
     "He is happy.",
   ])("does not over-trigger approved Step 6 profession-article predicate pattern: %s", (input) => {
