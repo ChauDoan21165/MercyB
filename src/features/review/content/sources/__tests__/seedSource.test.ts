@@ -38,8 +38,8 @@ describe("createSeedSource", () => {
       noteVi: "ha-lô",
       source: "german/lessons",
     });
-    expect((items[0] as Record<string, unknown>).cefr).toBeUndefined();
-    expect((items[0] as Record<string, unknown>).provenance).toBeUndefined();
+    expect((items[0] as unknown as Record<string, unknown>).cefr).toBeUndefined();
+    expect((items[0] as unknown as Record<string, unknown>).provenance).toBeUndefined();
   });
 
   it("returns [] for any other flow", () => {
