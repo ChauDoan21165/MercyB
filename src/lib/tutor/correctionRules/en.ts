@@ -356,6 +356,12 @@ function repairStep6WaitFor(input: string): string {
   return input.replace(pattern, "$1 for $2");
 }
 
+function hasStep6WaitForPersonObject(input: string): boolean {
+  const waitPersonPattern = new RegExp(`\\b(wait|waits|waited|waiting)\\s+${PERSON_OBJECT_PRONOUN_PATTERN}\\b`, "i");
+  const waitOutPattern = new RegExp(`\\b(wait|waits|waited|waiting)\\s+${PERSON_OBJECT_PRONOUN_PATTERN}\\s+out\\b`, "i");
+  return waitPersonPattern.test(input) && !waitOutPattern.test(input);
+}
+
 function repairStep6ListenTo(input: string): string {
   const pattern = new RegExp(`\\b(listen|listens|listened|listening)\\s+(${STEP6_LISTEN_OBJECT_PATTERN})\\b`, "gi");
   return input.replace(pattern, "$1 to $2");
@@ -786,7 +792,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
   },
   {
     id: "en-step6-wait-for-person-object",
-    detects: (input) => new RegExp(`\\b(wait|waits|waited|waiting)\\s+${PERSON_OBJECT_PRONOUN_PATTERN}\\b`, "i").test(input),
+    detects: hasStep6WaitForPersonObject,
     apply: repairStep6WaitFor,
     fpRiskNote: "Medium risk. Wait can be intransitive or part of idioms; this rule only inserts for before person/pronoun objects and abstains elsewhere.",
   },

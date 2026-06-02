@@ -294,6 +294,7 @@ describe("correctionEngine", () => {
     ["I wait you.", "I wait for you."],
     ["She waited me.", "She waited for me."],
     ["They are waiting him.", "They are waiting for him."],
+    ["He waits her.", "He waits for her."],
   ])("corrects approved Step 6 wait-for person object pattern: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",
@@ -307,6 +308,9 @@ describe("correctionEngine", () => {
     "Please wait here.",
     "Wait a minute.",
     "He waits tables.",
+    "Wait them out.",
+    "We waited him out.",
+    "I will wait you out.",
   ])("does not over-trigger approved Step 6 wait-for person object pattern: %s", (input) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "unchanged",
