@@ -11,8 +11,19 @@ import { Badge } from "@/components/ui/badge";
 
 export interface StreakWidgetProps {
   current: number;
-  longest: number;
-  freezesAvailable: number;
+  /**
+   * Record streak. Optional: the canonical streak source
+   * (`pointsService.getStreakDays` / server `profiles.streak_longest`) only
+   * exposes a record when server-streaks are enabled, so the page omits it
+   * otherwise rather than surface a streakEngine-local value. Hidden when undefined.
+   */
+  longest?: number;
+  /**
+   * Streak-freeze count. A gamification-streakEngine-only concept with no
+   * canonical equivalent — omitted by the page so testers never see a second,
+   * dead counter alongside the canonical streak. Hidden when undefined.
+   */
+  freezesAvailable?: number;
   atRisk?: boolean;
 }
 
@@ -43,15 +54,22 @@ export default function StreakWidget({
               ngày
             </span>
           </div>
-          <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-            <span>
-              Kỷ lục: <strong className="text-foreground">{longest}</strong> ngày
-            </span>
-            <span>
-              Bảo vệ:{" "}
-              <strong className="text-foreground">{freezesAvailable}</strong>
-            </span>
-          </div>
+          {longest !== undefined || freezesAvailable !== undefined ? (
+            <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+              {longest !== undefined ? (
+                <span>
+                  Kỷ lục: <strong className="text-foreground">{longest}</strong>{" "}
+                  ngày
+                </span>
+              ) : null}
+              {freezesAvailable !== undefined ? (
+                <span>
+                  Bảo vệ:{" "}
+                  <strong className="text-foreground">{freezesAvailable}</strong>
+                </span>
+              ) : null}
+            </div>
+          ) : null}
           {atRisk ? (
             <Badge variant="secondary" className="mt-2">
               Học hôm nay để giữ chuỗi nhé!
