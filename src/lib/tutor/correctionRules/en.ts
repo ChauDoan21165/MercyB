@@ -148,6 +148,10 @@ function hasSvaTemporalBlocker(input: string): boolean {
   );
 }
 
+function hasStep5CoordinatedSvaSubject(input: string): boolean {
+  return /\b(?:he|she|it)\s+and\s+(?:he|she|it)\s+(?:go|make|work)\b/i.test(input);
+}
+
 function hasBeginnerPastCorrectionMarker(input: string): boolean {
   return (
     /\byesterday\b/i.test(input) ||
@@ -773,6 +777,7 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: (input) =>
       !isQuestionLike(input) &&
       !hasSvaTemporalBlocker(input) &&
+      !hasStep5CoordinatedSvaSubject(input) &&
       /\b(He|She|It)\s+(go|make|work)\b/i.test(input),
     apply: repairStep5SubjectVerbAgreement,
     fpRiskNote: "Third-person -s only covers he/she/it with whitelisted verbs and is blocked by questions, modals, and past markers.",
