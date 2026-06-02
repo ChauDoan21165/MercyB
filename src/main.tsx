@@ -95,6 +95,7 @@ const AccessibleToaster = lazyWithRetry(() =>
 import "@/index.css";
 import { supabase } from "@/lib/supabaseClient";
 import { AuthProvider } from "@/providers/AuthProvider";
+import NotificationBootstrap from "@/components/NotificationBootstrap";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@/lib/queries/client";
 import {
@@ -626,6 +627,7 @@ w.__MB_REACT_ROOT__.render(
             <AndroidBackButton />
             <NativeDeepLinkListener />
             <NativeBootstrap />
+            <NotificationBootstrap />
             <ShortcutHelpOverlay />
             <Toaster />
             <AccessibleToaster />
