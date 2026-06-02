@@ -25,6 +25,13 @@
       "expectedCorrection": "They are waiting for him.",
       "expectedRuleFired": "step6WaitForPersonObject",
       "notes": "Inserts for before object pronoun him."
+    },
+    {
+      "id": "wait-for-person-object-pos-004",
+      "input": "He waits her.",
+      "expectedCorrection": "He waits for her.",
+      "expectedRuleFired": "step6WaitForPersonObject",
+      "notes": "Preserves third-person waits positive while inserting for before object pronoun her."
     }
   ],
   "negative": [
@@ -71,6 +78,30 @@
       "expectedCorrection": "Wait, you forgot something.",
       "expectedRuleFired": null,
       "notes": "Confusable: parenthetical imperative — the comma after 'Wait' breaks the 'wait + pronoun' adjacency, so the rule abstains."
+    },
+    {
+      "id": "wait-for-person-object-neg-conf-007",
+      "input": "Wait them out.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Wait them out.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: valid wait someone out phrasal idiom stays unchanged."
+    },
+    {
+      "id": "wait-for-person-object-neg-conf-008",
+      "input": "We waited him out.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "We waited him out.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: past-tense wait someone out phrasal idiom stays unchanged."
+    },
+    {
+      "id": "wait-for-person-object-neg-conf-009",
+      "input": "I will wait you out.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I will wait you out.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: modal wait someone out phrasal idiom stays unchanged."
     }
   ]
 }
