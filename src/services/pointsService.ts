@@ -4,6 +4,7 @@
 import { supabase } from '@/lib/supabaseClient';
 import { FEATURE_FLAGS } from '@/lib/featureFlags';
 import { getCachedStreak } from '@/lib/streakCache';
+import { onFirstActionOfDay } from '@/notificationEngine';
 
 export type PointEventType =
   | 'room_open'           // 5 pts — opened a room
@@ -157,6 +158,9 @@ export function awardPoints(event: PointEventType, context?: string): number {
   if (isFirstActionToday()) {
     bonus = POINT_VALUES.daily_login;
     updateStreak();
+    // Notify the (flag-gated, no-op-when-off) notification engine that the
+    // user acted today, so it can cancel a pending streak-save warning.
+    void onFirstActionOfDay();
   }
 
   // Streak multiplier (2x for 7+ days, 1.5x for 3+ days)

@@ -201,6 +201,11 @@ export default function PushPreferencesPage() {
           Chọn loại thông báo bạn muốn nhận. Mặc định: lời nhắc luyện hằng ngày
           tắt — chỉ bật khi bạn chủ động chọn.
         </p>
+        <p className="text-xs text-black/55 mt-2">
+          Phiên bản này dùng thông báo ngay trên thiết bị (lời nhắc hằng ngày và
+          nhắc cứu chuỗi vào buổi tối) — chạy nội bộ trên máy bạn, không cần gửi
+          từ máy chủ.
+        </p>
       </header>
 
       {loading && (

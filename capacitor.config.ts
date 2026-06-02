@@ -38,6 +38,15 @@ const config: CapacitorConfig = {
       overlaysWebView: false,
       style: 'DEFAULT',
     },
+    // On-device local notifications (daily reminder + evening streak-save +
+    // due-review). smallIcon expects a monochrome Android drawable named
+    // ic_stat_mercy (added in a later native cycle); iconColor is a placeholder
+    // brand-navy hex. Native config (Info.plist / AndroidManifest / cap sync)
+    // is deferred — this block is web-safe.
+    LocalNotifications: {
+      smallIcon: 'ic_stat_mercy',
+      iconColor: '#0B1E3F',
+    },
   },
 };
 
