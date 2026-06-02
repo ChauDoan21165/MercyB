@@ -1,0 +1,1651 @@
+{
+  "corpus": "a3-vn-grammar-slice-proposals",
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "author": "A3 (VN slice: tense/aspect, copula/be-drop, word order, question formation)",
+  "status": "proposal_not_live_wired_build_ready",
+  "schemaBasis": "tests/regression/golden-set/correction-rules/*.json",
+  "liveEngine": "src/lib/tutor/correctionEngine.ts -> correctWithTutorRules(input, 'en')",
+  "generatedAt": "2026-06-02",
+  "handoff": "For A1 integration. Do NOT move to correction-rules/ until the GAP patterns have a live rule. fires-marked patterns are drop-in regression locks today; abstains-marked GAP positives would FAIL the harness (it asserts the rule fired) until A1/engine-owner wires the proposed rule.",
+  "verificationMethod": "Every positive/negative below was run through the UNMODIFIED live engine. 'liveEngine.marker' = 'fires' when the rule's ruleId appears in appliedRuleIds, else 'abstains'. 'liveEngine.corrected' is the engine's verbatim current output.",
+  "coverageLegend": {
+    "already_fires": "Live engine already corrects this. Positives fire, negatives abstain -> READY golden regression lock.",
+    "partial_extend": "Live rule exists but whitelist is narrow. Lock the firing subset now; proposedCorrection on abstaining positives is the extension target.",
+    "gap_new_rule_needed": "No live rule. ALL positives currently abstain. proposedCorrection is what a NEW rule should emit. NOT golden-lockable as a positive until wired."
+  },
+  "patterns": [
+    {
+      "patternId": "TA-1a-past-marker-irregular",
+      "category": "tense_aspect",
+      "name": "Past-time-marker + bare irregular verb (đã-drop, irregular whitelist)",
+      "vietnameseRoot": "Vietnamese marks past with the optional particle 'đã' and never inflects the verb ('Hôm qua tôi đi' = 'Yesterday I go'). Learners carry the uninflected verb into English even when a past time marker is present.",
+      "coverage": "already_fires",
+      "liveRuleId": "en-yesterday-irregular-beginner-past",
+      "fp_risk_note": "Live rule fires only for subject + {buy,do,eat,go,have} + a beginner past marker, and is blocked by question-like surfaces. Negatives stress: (1) habitual present with 'every day' (no past shift), (2) future 'tomorrow' context, (3) already-correct past form (no double-tensing).",
+      "positive": [
+        {
+          "id": "ta1a-pos-001",
+          "input": "Yesterday I go to school",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Yesterday I went to school.",
+          "expectedRuleFired": "en-yesterday-irregular-beginner-past",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "Yesterday I went to school.",
+            "appliedRuleIds": [
+              "en-yesterday-irregular-beginner-past"
+            ]
+          },
+          "notes": "go -> went. Live-engine verified fires."
+        },
+        {
+          "id": "ta1a-pos-002",
+          "input": "Yesterday I eat breakfast",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Yesterday I ate breakfast.",
+          "expectedRuleFired": "en-yesterday-irregular-beginner-past",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "Yesterday I ate breakfast.",
+            "appliedRuleIds": [
+              "en-yesterday-irregular-beginner-past"
+            ]
+          },
+          "notes": "eat -> ate. Live-engine verified fires."
+        },
+        {
+          "id": "ta1a-pos-003",
+          "input": "Yesterday I buy a book",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Yesterday I bought a book.",
+          "expectedRuleFired": "en-yesterday-irregular-beginner-past",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "Yesterday I bought a book.",
+            "appliedRuleIds": [
+              "en-yesterday-irregular-beginner-past"
+            ]
+          },
+          "notes": "buy -> bought. Live-engine verified fires."
+        },
+        {
+          "id": "ta1a-pos-004",
+          "input": "Yesterday we do the homework",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Yesterday we did the homework.",
+          "expectedRuleFired": "en-yesterday-irregular-beginner-past",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "Yesterday we did the homework.",
+            "appliedRuleIds": [
+              "en-yesterday-irregular-beginner-past"
+            ]
+          },
+          "notes": "do -> did. Live-engine verified fires."
+        }
+      ],
+      "negative": [
+        {
+          "id": "ta1a-neg-001",
+          "input": "Every day I go to school",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "Every day I go to school.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Every day I go to school.",
+            "appliedRuleIds": []
+          },
+          "notes": "Habitual present; no past marker -> must abstain. Verified abstains."
+        },
+        {
+          "id": "ta1a-neg-002",
+          "input": "Tomorrow I go to school",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "Tomorrow I go to school.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Tomorrow I go to school.",
+            "appliedRuleIds": []
+          },
+          "notes": "Future context; must not past-shift. Verified abstains."
+        },
+        {
+          "id": "ta1a-neg-003",
+          "input": "Yesterday I went to school",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "Yesterday I went to school.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Yesterday I went to school.",
+            "appliedRuleIds": []
+          },
+          "notes": "Already correct past; no double-tensing. Verified abstains."
+        }
+      ],
+      "qaStatus": "passed",
+      "buildQueuePlacement": {
+        "rankAfterCurrentQueue": 1,
+        "predecessorGate": "after current #4-through-book-a-table lane queue empties",
+        "recommendation": "land regression lock",
+        "rationale": "already fires with four positives; locks current irregular past behavior after the active #4-through-book-a-table queue"
+      },
+      "proposedGoldenCandidates": {
+        "positiveCaseIds": [
+          "ta1a-pos-001",
+          "ta1a-pos-002",
+          "ta1a-pos-003",
+          "ta1a-pos-004"
+        ],
+        "confusableNegativeCaseIds": [
+          "ta1a-neg-001",
+          "ta1a-neg-002",
+          "ta1a-neg-003"
+        ],
+        "liveEngineSummary": {
+          "positiveFires": [
+            "ta1a-pos-001",
+            "ta1a-pos-002",
+            "ta1a-pos-003",
+            "ta1a-pos-004"
+          ],
+          "positiveAbstains": [],
+          "negativeFires": [],
+          "negativeAbstains": [
+            "ta1a-neg-001",
+            "ta1a-neg-002",
+            "ta1a-neg-003"
+          ]
+        },
+        "lockReadiness": "candidate_for_future_golden_lock"
+      }
+    },
+    {
+      "patternId": "TA-1b-past-marker-regular",
+      "category": "tense_aspect",
+      "name": "Past-time-marker + bare REGULAR verb (đã-drop, -ed insertion)",
+      "vietnameseRoot": "Same đã-drop transfer, but with regular verbs needing -ed. The live irregular rule's whitelist (buy/do/eat/go/have) does not cover watch/finish/play/cook etc., so these slip through uncorrected.",
+      "coverage": "gap_new_rule_needed",
+      "proposedRuleId": "en-vn-past-marker-regular-verb",
+      "fp_risk_note": "HIGH risk. Naive '-ed on bare verb after past marker' over-fires on: (1) habitual present with frequency adverbs, (2) verbs already in past ('played'), (3) irregulars that must not take -ed ('go'->'goed'), (4) -y/-e spelling shifts (study->studied, like->liked). A safe v1 needs a regular-verb whitelist + spelling map + the same habitual/future blockers the irregular rule uses. Negatives below lock those surfaces.",
+      "positive": [
+        {
+          "id": "ta1b-pos-001",
+          "input": "Last night she watch a movie",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "Last night she watched a movie.",
+          "expectedRuleFired": "en-vn-past-marker-regular-verb",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Last night she watch a movie.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP: engine leaves uncorrected today. watch -> watched is the target."
+        },
+        {
+          "id": "ta1b-pos-002",
+          "input": "We finish the homework yesterday",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "We finished the homework yesterday.",
+          "expectedRuleFired": "en-vn-past-marker-regular-verb",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "We finish the homework yesterday.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. finish -> finished."
+        },
+        {
+          "id": "ta1b-pos-003",
+          "input": "Yesterday they play football",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "Yesterday they played football.",
+          "expectedRuleFired": "en-vn-past-marker-regular-verb",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Yesterday they play football.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. play -> played."
+        },
+        {
+          "id": "ta1b-pos-004",
+          "input": "Yesterday I cook dinner",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "Yesterday I cooked dinner.",
+          "expectedRuleFired": "en-vn-past-marker-regular-verb",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Yesterday I cook dinner.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. cook -> cooked."
+        }
+      ],
+      "negative": [
+        {
+          "id": "ta1b-neg-001",
+          "input": "Every day I cook dinner",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "Every day I cook dinner.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Every day I cook dinner.",
+            "appliedRuleIds": []
+          },
+          "notes": "Habitual present; must not -ed. Verified abstains (and must keep abstaining after wiring)."
+        },
+        {
+          "id": "ta1b-neg-002",
+          "input": "Yesterday they played football",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "Yesterday they played football.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Yesterday they played football.",
+            "appliedRuleIds": []
+          },
+          "notes": "Already past; no double-ed. Verified abstains."
+        }
+      ],
+      "qaStatus": "passed",
+      "buildQueuePlacement": {
+        "rankAfterCurrentQueue": 7,
+        "predecessorGate": "after current #4-through-book-a-table lane queue empties",
+        "recommendation": "build new guard",
+        "rationale": "regular past marker gap; constrain to explicit past-time markers and safe regular verbs"
+      },
+      "proposedGoldenCandidates": {
+        "positiveCaseIds": [
+          "ta1b-pos-001",
+          "ta1b-pos-002",
+          "ta1b-pos-003",
+          "ta1b-pos-004"
+        ],
+        "confusableNegativeCaseIds": [
+          "ta1b-neg-001",
+          "ta1b-neg-002"
+        ],
+        "liveEngineSummary": {
+          "positiveFires": [],
+          "positiveAbstains": [
+            "ta1b-pos-001",
+            "ta1b-pos-002",
+            "ta1b-pos-003",
+            "ta1b-pos-004"
+          ],
+          "negativeFires": [],
+          "negativeAbstains": [
+            "ta1b-neg-001",
+            "ta1b-neg-002"
+          ]
+        },
+        "lockReadiness": "candidate_after_guard_build"
+      }
+    },
+    {
+      "patternId": "TA-2-future-bare-verb",
+      "category": "tense_aspect",
+      "name": "Future time marker + bare verb (sẽ-drop)",
+      "vietnameseRoot": "Vietnamese future particle 'sẽ' is frequently dropped; the verb stays bare ('Ngày mai tôi đi' = 'Tomorrow I go'). Learners produce 'Tomorrow I go' for an intended future.",
+      "coverage": "gap_new_rule_needed",
+      "proposedRuleId": "en-vn-future-marker-bare-verb",
+      "fp_risk_note": "MEDIUM-HIGH risk. Future-marker + present can be a legitimate scheduled/timetable present ('Tomorrow the store opens at 9'). A safe v1 should restrict to pronoun subjects + a closed future-marker whitelist (tomorrow / next week / next month) + bare lexical verb, and insert 'will' rather than 'be going to'. Must not touch sentences that already contain will/'ll/going to. Negatives lock those.",
+      "positive": [
+        {
+          "id": "ta2-pos-001",
+          "input": "Tomorrow I go to Hanoi",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "Tomorrow I will go to Hanoi.",
+          "expectedRuleFired": "en-vn-future-marker-bare-verb",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Tomorrow I go to Hanoi.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. Insert 'will'."
+        },
+        {
+          "id": "ta2-pos-002",
+          "input": "Next week she start a new job",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "Next week she will start a new job.",
+          "expectedRuleFired": "en-vn-future-marker-bare-verb",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Next week she start a new job.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. Note: also exposes 3rd-person bare 'start' — co-fire candidate."
+        },
+        {
+          "id": "ta2-pos-003",
+          "input": "Tomorrow we meet at the cafe",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "Tomorrow we will meet at the cafe.",
+          "expectedRuleFired": "en-vn-future-marker-bare-verb",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Tomorrow we meet at the cafe.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. Insert 'will'."
+        }
+      ],
+      "negative": [
+        {
+          "id": "ta2-neg-001",
+          "input": "Tomorrow I will go to Hanoi",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "Tomorrow I will go to Hanoi.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Tomorrow I will go to Hanoi.",
+            "appliedRuleIds": []
+          },
+          "notes": "Already has 'will'; no double-modal. Verified abstains."
+        },
+        {
+          "id": "ta2-neg-002",
+          "input": "Every day I go to Hanoi",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "Every day I go to Hanoi.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Every day I go to Hanoi.",
+            "appliedRuleIds": []
+          },
+          "notes": "Habitual present, not future; must abstain. Verified abstains."
+        }
+      ],
+      "qaStatus": "passed",
+      "buildQueuePlacement": {
+        "rankAfterCurrentQueue": 9,
+        "predecessorGate": "after current #4-through-book-a-table lane queue empties",
+        "recommendation": "build new guard",
+        "rationale": "future marker gap; lower priority because modal insertion has broader FP surface"
+      },
+      "proposedGoldenCandidates": {
+        "positiveCaseIds": [
+          "ta2-pos-001",
+          "ta2-pos-002",
+          "ta2-pos-003"
+        ],
+        "confusableNegativeCaseIds": [
+          "ta2-neg-001",
+          "ta2-neg-002"
+        ],
+        "liveEngineSummary": {
+          "positiveFires": [],
+          "positiveAbstains": [
+            "ta2-pos-001",
+            "ta2-pos-002",
+            "ta2-pos-003"
+          ],
+          "negativeFires": [],
+          "negativeAbstains": [
+            "ta2-neg-001",
+            "ta2-neg-002"
+          ]
+        },
+        "lockReadiness": "candidate_after_guard_build"
+      }
+    },
+    {
+      "patternId": "TA-3-already-present-perfect",
+      "category": "tense_aspect",
+      "name": "Completive 'already' + bare verb -> present perfect (rồi-transfer)",
+      "vietnameseRoot": "Vietnamese completive 'rồi' / 'đã ... rồi' is rendered as English 'already' but the verb stays in base form ('Tôi ăn rồi' = 'I already eat'). Target is present perfect 'I have already eaten'.",
+      "coverage": "gap_new_rule_needed",
+      "proposedRuleId": "en-vn-already-present-perfect",
+      "fp_risk_note": "HIGH risk. 'already' is grammatical with simple present for stative/cognitive verbs ('I already know', 'She already has it'). A safe v1 must (1) exclude stative verbs (know/have/want/like), (2) require a dynamic lexical verb, (3) emit have/has + past participle (needs a participle map incl. irregulars), (4) skip sentences already in perfect. Negatives lock the stative + already-perfect surfaces.",
+      "positive": [
+        {
+          "id": "ta3-pos-001",
+          "input": "I already eat",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "I have already eaten.",
+          "expectedRuleFired": "en-vn-already-present-perfect",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I already eat.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. eat -> have already eaten."
+        },
+        {
+          "id": "ta3-pos-002",
+          "input": "She already finish her homework",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "She has already finished her homework.",
+          "expectedRuleFired": "en-vn-already-present-perfect",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "She already finish her homework.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. 3rd-person has + finished."
+        },
+        {
+          "id": "ta3-pos-003",
+          "input": "We already see that movie",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "We have already seen that movie.",
+          "expectedRuleFired": "en-vn-already-present-perfect",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "We already see that movie.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. see -> have already seen (irregular participle)."
+        }
+      ],
+      "negative": [
+        {
+          "id": "ta3-neg-001",
+          "input": "I already know the answer",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "I already know the answer.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I already know the answer.",
+            "appliedRuleIds": []
+          },
+          "notes": "Stative 'know' is fine with simple present + already. Must abstain. Verified abstains."
+        },
+        {
+          "id": "ta3-neg-002",
+          "input": "I have already eaten",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "I have already eaten.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I have already eaten.",
+            "appliedRuleIds": []
+          },
+          "notes": "Already perfect; no re-wrap. Verified abstains."
+        }
+      ],
+      "qaStatus": "passed",
+      "buildQueuePlacement": {
+        "rankAfterCurrentQueue": 10,
+        "predecessorGate": "after current #4-through-book-a-table lane queue empties",
+        "recommendation": "build new guard",
+        "rationale": "already/present-perfect gap; needs irregular/regular participle whitelist"
+      },
+      "proposedGoldenCandidates": {
+        "positiveCaseIds": [
+          "ta3-pos-001",
+          "ta3-pos-002",
+          "ta3-pos-003"
+        ],
+        "confusableNegativeCaseIds": [
+          "ta3-neg-001",
+          "ta3-neg-002"
+        ],
+        "liveEngineSummary": {
+          "positiveFires": [],
+          "positiveAbstains": [
+            "ta3-pos-001",
+            "ta3-pos-002",
+            "ta3-pos-003"
+          ],
+          "negativeFires": [],
+          "negativeAbstains": [
+            "ta3-neg-001",
+            "ta3-neg-002"
+          ]
+        },
+        "lockReadiness": "candidate_after_guard_build"
+      }
+    },
+    {
+      "patternId": "CB-1-adjective-copula-drop",
+      "category": "copula_be_drop",
+      "name": "Adjective predicate copula drop, no intensifier (là-only transfer)",
+      "vietnameseRoot": "Vietnamese adjectives are stative verbs needing no copula ('Tôi mệt' = 'I tired'); 'là' is used only before noun predicates. Learners drop 'be' before predicate adjectives. The live 'en-be-verb-omission' rule only fires when 'very' is present, so the bare 'I tired' form is uncovered.",
+      "coverage": "gap_new_rule_needed",
+      "proposedRuleId": "en-vn-adjective-copula-drop",
+      "relatedLiveRule": "en-be-verb-omission (requires 'very'; this proposal extends to the no-intensifier case)",
+      "fp_risk_note": "HIGH risk. 'pronoun + word' is ambiguous: the word may be a base verb ('I sleep', 'She runs') which must NOT take 'be'. A safe v1 requires the predicate to be on a closed adjective whitelist (tired/happy/sad/busy/hungry/cold/hot/sick...) disjoint from the verb lexicon, mirroring en-be-verb-omission's adjective set minus the 'very' requirement. Negatives lock the bare-verb confusables.",
+      "positive": [
+        {
+          "id": "cb1-pos-001",
+          "input": "I tired",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "I am tired.",
+          "expectedRuleFired": "en-vn-adjective-copula-drop",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I tired.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. I -> am tired."
+        },
+        {
+          "id": "cb1-pos-002",
+          "input": "She happy",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "She is happy.",
+          "expectedRuleFired": "en-vn-adjective-copula-drop",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "She happy.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. She -> is happy."
+        },
+        {
+          "id": "cb1-pos-003",
+          "input": "They busy today",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "They are busy today.",
+          "expectedRuleFired": "en-vn-adjective-copula-drop",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "They busy today.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. They -> are busy, trailing 'today' kept."
+        },
+        {
+          "id": "cb1-pos-004",
+          "input": "He sad",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "He is sad.",
+          "expectedRuleFired": "en-vn-adjective-copula-drop",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "He sad.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. He -> is sad."
+        }
+      ],
+      "negative": [
+        {
+          "id": "cb1-neg-001",
+          "input": "I sleep",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "I sleep.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I sleep.",
+            "appliedRuleIds": []
+          },
+          "notes": "'sleep' is a verb, not an adjective; inserting 'be' would be wrong. Must abstain. Verified abstains."
+        },
+        {
+          "id": "cb1-neg-002",
+          "input": "She runs",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "She runs.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "She runs.",
+            "appliedRuleIds": []
+          },
+          "notes": "Inflected verb; no copula. Must abstain. Verified abstains."
+        },
+        {
+          "id": "cb1-neg-003",
+          "input": "I am tired",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "I am tired.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I am tired.",
+            "appliedRuleIds": []
+          },
+          "notes": "Already has copula; no double-be. Verified abstains."
+        }
+      ],
+      "qaStatus": "passed",
+      "buildQueuePlacement": {
+        "rankAfterCurrentQueue": 5,
+        "predecessorGate": "after current #4-through-book-a-table lane queue empties",
+        "recommendation": "build new guard",
+        "rationale": "high-frequency VN predicate-adjective transfer; requires adjective whitelist and intensifier guard"
+      },
+      "proposedGoldenCandidates": {
+        "positiveCaseIds": [
+          "cb1-pos-001",
+          "cb1-pos-002",
+          "cb1-pos-003",
+          "cb1-pos-004"
+        ],
+        "confusableNegativeCaseIds": [
+          "cb1-neg-001",
+          "cb1-neg-002",
+          "cb1-neg-003"
+        ],
+        "liveEngineSummary": {
+          "positiveFires": [],
+          "positiveAbstains": [
+            "cb1-pos-001",
+            "cb1-pos-002",
+            "cb1-pos-003",
+            "cb1-pos-004"
+          ],
+          "negativeFires": [],
+          "negativeAbstains": [
+            "cb1-neg-001",
+            "cb1-neg-002",
+            "cb1-neg-003"
+          ]
+        },
+        "lockReadiness": "candidate_after_guard_build"
+      }
+    },
+    {
+      "patternId": "CB-2-locative-copula-drop",
+      "category": "copula_be_drop",
+      "name": "Locative copula drop (ở-transfer)",
+      "vietnameseRoot": "Vietnamese locative 'ở' carries the predicate alone ('Tôi ở nhà' = 'I at home'), so learners drop 'be' before place phrases. Live rule en-step6-location-be-drop already handles a narrow pronoun + whitelisted-place subset.",
+      "coverage": "partial_extend",
+      "liveRuleId": "en-step6-location-be-drop",
+      "fp_risk_note": "HIGH risk per the live rule's own note: be-insertion misfires on questions, noun-postmodifier fragments, and clauses with an existing finite verb. The live whitelist covers 'at home / at school / at the office' with pronoun subjects and NO trailing adverb; it abstains on 'the park', 'in the kitchen', noun subjects, and a trailing 'now'. Positives below are the FIRING subset (lockable now); the abstaining extension targets are listed in extensionTargets.",
+      "positive": [
+        {
+          "id": "cb2-pos-001",
+          "input": "She at home",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "She is at home.",
+          "expectedRuleFired": "en-step6-location-be-drop",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "She is at home.",
+            "appliedRuleIds": [
+              "en-step6-location-be-drop"
+            ]
+          },
+          "notes": "Live-engine verified fires. She -> is."
+        },
+        {
+          "id": "cb2-pos-002",
+          "input": "I at the office",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "I am at the office.",
+          "expectedRuleFired": "en-step6-location-be-drop",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "I am at the office.",
+            "appliedRuleIds": [
+              "en-step6-location-be-drop"
+            ]
+          },
+          "notes": "Live-engine verified fires. I -> am."
+        },
+        {
+          "id": "cb2-pos-003",
+          "input": "We at home",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "We are at home.",
+          "expectedRuleFired": "en-step6-location-be-drop",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "We are at home.",
+            "appliedRuleIds": [
+              "en-step6-location-be-drop"
+            ]
+          },
+          "notes": "Live-engine verified fires. We -> are."
+        }
+      ],
+      "negative": [
+        {
+          "id": "cb2-neg-001",
+          "input": "She is at home",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "She is at home.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "She is at home.",
+            "appliedRuleIds": []
+          },
+          "notes": "Already has copula; no double-be. Verified abstains."
+        },
+        {
+          "id": "cb2-neg-002",
+          "input": "I look at the book",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "I look at the book.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I look at the book.",
+            "appliedRuleIds": []
+          },
+          "notes": "Existing finite verb 'look'; 'at' is not locative-predicate here. Must abstain. Verified abstains."
+        }
+      ],
+      "extensionTargets": [
+        {
+          "input": "She at home now",
+          "currentEngineOutput": "She at home now.",
+          "proposedCorrection": "She is at home now.",
+          "liveEngine": {
+            "marker": "abstains"
+          },
+          "notes": "Trailing temporal adverb currently blocks the rule."
+        },
+        {
+          "input": "The book on the table",
+          "currentEngineOutput": "The book on the table.",
+          "proposedCorrection": "The book is on the table.",
+          "liveEngine": {
+            "marker": "abstains"
+          },
+          "notes": "Noun subject deferred by v1; HIGH-risk extension (noun-postmodifier fragment ambiguity)."
+        }
+      ],
+      "qaStatus": "passed",
+      "buildQueuePlacement": {
+        "rankAfterCurrentQueue": 3,
+        "predecessorGate": "after current #4-through-book-a-table lane queue empties",
+        "recommendation": "land firing subset",
+        "rationale": "locks the narrow live location be-drop whitelist before any extension"
+      },
+      "proposedGoldenCandidates": {
+        "positiveCaseIds": [
+          "cb2-pos-001",
+          "cb2-pos-002",
+          "cb2-pos-003"
+        ],
+        "confusableNegativeCaseIds": [
+          "cb2-neg-001",
+          "cb2-neg-002"
+        ],
+        "liveEngineSummary": {
+          "positiveFires": [
+            "cb2-pos-001",
+            "cb2-pos-002",
+            "cb2-pos-003"
+          ],
+          "positiveAbstains": [],
+          "negativeFires": [],
+          "negativeAbstains": [
+            "cb2-neg-001",
+            "cb2-neg-002"
+          ]
+        },
+        "lockReadiness": "candidate_after_guard_build"
+      }
+    },
+    {
+      "patternId": "CB-3-progressive-copula-drop",
+      "category": "copula_be_drop",
+      "name": "Progressive 'be' drop (đang-transfer)",
+      "vietnameseRoot": "Vietnamese progressive particle 'đang' attaches to the bare verb with no auxiliary ('Tôi đang làm' = 'I working'). Learners produce '-ing' with no 'be': 'I working now'.",
+      "coverage": "gap_new_rule_needed",
+      "proposedRuleId": "en-vn-progressive-be-drop",
+      "fp_risk_note": "MEDIUM-HIGH risk. A bare '-ing' word can be a gerund subject/object ('Working is hard', 'I like working') or a reduced relative ('the man working there'). A safe v1 requires pronoun subject + immediately-following present participle + no other finite verb, and inserts am/is/are by person. Negatives lock gerund and already-correct surfaces.",
+      "positive": [
+        {
+          "id": "cb3-pos-001",
+          "input": "I working now",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "I am working now.",
+          "expectedRuleFired": "en-vn-progressive-be-drop",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I working now.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. I -> am working."
+        },
+        {
+          "id": "cb3-pos-002",
+          "input": "She studying English",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "She is studying English.",
+          "expectedRuleFired": "en-vn-progressive-be-drop",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "She studying English.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. She -> is studying."
+        },
+        {
+          "id": "cb3-pos-003",
+          "input": "They playing football now",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "They are playing football now.",
+          "expectedRuleFired": "en-vn-progressive-be-drop",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "They playing football now.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. They -> are playing."
+        }
+      ],
+      "negative": [
+        {
+          "id": "cb3-neg-001",
+          "input": "I work every day",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "I work every day.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I work every day.",
+            "appliedRuleIds": []
+          },
+          "notes": "Simple present habitual; no progressive intended. Must abstain. Verified abstains."
+        },
+        {
+          "id": "cb3-neg-002",
+          "input": "I am working now",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "I am working now.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I am working now.",
+            "appliedRuleIds": []
+          },
+          "notes": "Already has auxiliary; no double-be. Verified abstains."
+        }
+      ],
+      "qaStatus": "passed",
+      "buildQueuePlacement": {
+        "rankAfterCurrentQueue": 8,
+        "predecessorGate": "after current #4-through-book-a-table lane queue empties",
+        "recommendation": "build new guard",
+        "rationale": "progressive be-drop gap; scope to subject + verb-ing surfaces"
+      },
+      "proposedGoldenCandidates": {
+        "positiveCaseIds": [
+          "cb3-pos-001",
+          "cb3-pos-002",
+          "cb3-pos-003"
+        ],
+        "confusableNegativeCaseIds": [
+          "cb3-neg-001",
+          "cb3-neg-002"
+        ],
+        "liveEngineSummary": {
+          "positiveFires": [],
+          "positiveAbstains": [
+            "cb3-pos-001",
+            "cb3-pos-002",
+            "cb3-pos-003"
+          ],
+          "negativeFires": [],
+          "negativeAbstains": [
+            "cb3-neg-001",
+            "cb3-neg-002"
+          ]
+        },
+        "lockReadiness": "candidate_after_guard_build"
+      }
+    },
+    {
+      "patternId": "WO-1-adjective-after-noun",
+      "category": "word_order",
+      "name": "Adjective placed after noun (noun+adj transfer)",
+      "vietnameseRoot": "Vietnamese is head-initial in the noun phrase: the adjective follows the noun ('áo đỏ' = 'shirt red', 'nhà to' = 'house big'). Learners produce 'a shirt red' for 'a red shirt'.",
+      "coverage": "gap_new_rule_needed",
+      "proposedRuleId": "en-vn-adjective-after-noun-order",
+      "fp_risk_note": "HIGH risk. Postnominal adjectives are valid in English ('something red', 'the people responsible', 'time available') and many noun+noun sequences are compounds, not noun+adj. A safe v1 needs both a closed colour/size adjective whitelist AND a concrete-count-noun whitelist, must require an article before the noun ('a shirt red'), and must exclude indefinite pronouns (some/any/no/every + -thing/-one). Negatives lock the postnominal-OK and already-correct surfaces.",
+      "positive": [
+        {
+          "id": "wo1-pos-001",
+          "input": "I have a shirt red",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "I have a red shirt.",
+          "expectedRuleFired": "en-vn-adjective-after-noun-order",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I have a shirt red.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. Move adj before noun."
+        },
+        {
+          "id": "wo1-pos-002",
+          "input": "She buy a car new",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "She buys a new car.",
+          "expectedRuleFired": "en-vn-adjective-after-noun-order",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "She buy a car new.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. Reorder car new -> new car (also exposes 3rd-person 'buy'->'buys' co-fire; proposedCorrection shows the fully-correct target)."
+        },
+        {
+          "id": "wo1-pos-003",
+          "input": "It is a house big",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "It is a big house.",
+          "expectedRuleFired": "en-vn-adjective-after-noun-order",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "It is a house big.",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. house big -> big house."
+        }
+      ],
+      "negative": [
+        {
+          "id": "wo1-neg-001",
+          "input": "I have a red shirt",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "I have a red shirt.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I have a red shirt.",
+            "appliedRuleIds": []
+          },
+          "notes": "Already correct adj+noun order. Must abstain. Verified abstains."
+        },
+        {
+          "id": "wo1-neg-002",
+          "input": "The shirt is red",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "The shirt is red.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "The shirt is red.",
+            "appliedRuleIds": []
+          },
+          "notes": "Predicative adjective (copula complement); NOT a misordered attributive. Must abstain. Verified abstains."
+        }
+      ],
+      "qaStatus": "passed",
+      "buildQueuePlacement": {
+        "rankAfterCurrentQueue": 11,
+        "predecessorGate": "after current #4-through-book-a-table lane queue empties",
+        "recommendation": "build new guard",
+        "rationale": "noun-adjective order gap; needs noun/adjective whitelist to avoid names/titles"
+      },
+      "proposedGoldenCandidates": {
+        "positiveCaseIds": [
+          "wo1-pos-001",
+          "wo1-pos-002",
+          "wo1-pos-003"
+        ],
+        "confusableNegativeCaseIds": [
+          "wo1-neg-001",
+          "wo1-neg-002"
+        ],
+        "liveEngineSummary": {
+          "positiveFires": [],
+          "positiveAbstains": [
+            "wo1-pos-001",
+            "wo1-pos-002",
+            "wo1-pos-003"
+          ],
+          "negativeFires": [],
+          "negativeAbstains": [
+            "wo1-neg-001",
+            "wo1-neg-002"
+          ]
+        },
+        "lockReadiness": "candidate_after_guard_build"
+      }
+    },
+    {
+      "patternId": "WO-2-topic-comment-fronting",
+      "category": "word_order",
+      "name": "Topic-comment fronting (object/topic fronted before subject)",
+      "vietnameseRoot": "Vietnamese is a topic-prominent language: the topic is fronted ('Quyển sách này tôi thích' = 'This book I like'). Learners front the object/topic in English without resumption or relativization.",
+      "coverage": "partial_extend",
+      "liveRuleId": "en-l4-topic-comment-word-order",
+      "fp_risk_note": "HIGH risk. Topicalization and fronting ARE grammatical in English ('This book, I like'; 'That, I cannot accept'). The live rule sidesteps the risk by matching only three hard-coded exact sentences ('this book i like', 'english i study every day', 'in my family, my mother i love very much') — so it is effectively un-generalizable and brittle. Lockable today ONLY for those exact strings; any generalization needs careful FP work. Positives below are the live rule's exact-match surfaces.",
+      "verifyBeforeLock": "All three exact strings captured verbatim from the live engine below; lockable as-is. Note the live regex is lowercase-literal — the engine capitalizes the first letter on output.",
+      "positive": [
+        {
+          "id": "wo2-pos-001",
+          "input": "this book i like",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "I like this book.",
+          "expectedRuleFired": "en-l4-topic-comment-word-order",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "I like this book.",
+            "appliedRuleIds": [
+              "en-l4-topic-comment-word-order"
+            ]
+          },
+          "notes": "Live-engine verified fires. Topic-fronted object restored to SVO."
+        },
+        {
+          "id": "wo2-pos-002",
+          "input": "english i study every day",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "I study English every day.",
+          "expectedRuleFired": "en-l4-topic-comment-word-order",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "I study English every day.",
+            "appliedRuleIds": [
+              "en-l4-topic-comment-word-order"
+            ]
+          },
+          "notes": "Live-engine verified fires."
+        },
+        {
+          "id": "wo2-pos-003",
+          "input": "in my family, my mother i love very much",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "In my family, I love my mother very much.",
+          "expectedRuleFired": "en-l4-topic-comment-word-order",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "In my family, I love my mother very much.",
+            "appliedRuleIds": [
+              "en-l4-topic-comment-word-order"
+            ]
+          },
+          "notes": "Live-engine verified fires."
+        }
+      ],
+      "negative": [
+        {
+          "id": "wo2-neg-001",
+          "input": "This book I like very much",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "I like this book very much.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "This book I like very much.",
+            "appliedRuleIds": []
+          },
+          "notes": "FALSE-NEGATIVE GAP: adding 'very much' falls outside the hard-coded regex, so this real interference surface is NOT corrected. Verified abstains. Flags the brittleness of the exact-match approach."
+        },
+        {
+          "id": "wo2-neg-002",
+          "input": "I like this book very much",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "I like this book very much.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "I like this book very much.",
+            "appliedRuleIds": []
+          },
+          "notes": "Canonical SVO order; must abstain. Verified abstains."
+        }
+      ],
+      "qaStatus": "passed",
+      "buildQueuePlacement": {
+        "rankAfterCurrentQueue": 4,
+        "predecessorGate": "after current #4-through-book-a-table lane queue empties",
+        "recommendation": "land exact-string lock",
+        "rationale": "captures existing exact-string behavior and documents brittleness"
+      },
+      "proposedGoldenCandidates": {
+        "positiveCaseIds": [
+          "wo2-pos-001",
+          "wo2-pos-002",
+          "wo2-pos-003"
+        ],
+        "confusableNegativeCaseIds": [
+          "wo2-neg-001",
+          "wo2-neg-002"
+        ],
+        "liveEngineSummary": {
+          "positiveFires": [
+            "wo2-pos-001",
+            "wo2-pos-002",
+            "wo2-pos-003"
+          ],
+          "positiveAbstains": [],
+          "negativeFires": [],
+          "negativeAbstains": [
+            "wo2-neg-001",
+            "wo2-neg-002"
+          ]
+        },
+        "lockReadiness": "candidate_after_guard_build"
+      }
+    },
+    {
+      "patternId": "WO-3-time-adverb-placement",
+      "category": "word_order",
+      "name": "Time adverb placed mid-sentence (between subject and verb)",
+      "vietnameseRoot": "Vietnamese time adverbs commonly sit between subject and verb ('Tôi hôm qua đi học' is acceptable ordering); learners produce 'I yesterday went to school' instead of fronting or ending the adverb.",
+      "coverage": "partial_extend",
+      "liveRuleId": "en-time-expression-placement",
+      "fp_risk_note": "MEDIUM risk per the live rule's note: it abstains on frequency adverbs, noun subjects, and multi-clause sentences, only rewriting pronoun + whitelisted time expr + single verb phrase. Observed: only 'I yesterday went...' fired; 'We yesterday played...' and 'He yesterday ate...' ABSTAINED, so the whitelist is extremely narrow (subject/verb-specific). Lock the firing subset; extension targets listed.",
+      "positive": [
+        {
+          "id": "wo3-pos-001",
+          "input": "I yesterday went to school",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "I went to school yesterday.",
+          "expectedRuleFired": "en-time-expression-placement",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "I went to school yesterday.",
+            "appliedRuleIds": [
+              "en-time-expression-placement"
+            ]
+          },
+          "notes": "Live-engine verified fires. Mid -> end placement."
+        },
+        {
+          "id": "wo3-pos-002",
+          "input": "We yesterday played football",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "We played football yesterday.",
+          "proposedRuleId": "en-time-expression-placement",
+          "liveEngine": {
+            "marker": "abstains"
+          },
+          "notes": "Promoted from extensionTargets for build-ready corpus coverage; live engine currently abstains."
+        },
+        {
+          "id": "wo3-pos-003",
+          "input": "He yesterday ate breakfast",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "He ate breakfast yesterday.",
+          "proposedRuleId": "en-time-expression-placement",
+          "liveEngine": {
+            "marker": "abstains"
+          },
+          "notes": "Promoted from extensionTargets for build-ready corpus coverage; live engine currently abstains."
+        }
+      ],
+      "negative": [
+        {
+          "id": "wo3-neg-001",
+          "input": "Yesterday I went to school",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "Yesterday I went to school.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Yesterday I went to school.",
+            "appliedRuleIds": []
+          },
+          "notes": "Fronted time adverb is fully grammatical; must abstain. Verified abstains."
+        },
+        {
+          "id": "wo3-neg-002",
+          "input": "She always is happy",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "She always is happy.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "She always is happy.",
+            "appliedRuleIds": []
+          },
+          "notes": "Frequency-adverb placement (should be 'is always') is OUT of this rule's scope by design; verified abstains. Candidate for a separate frequency-adverb-placement rule."
+        }
+      ],
+      "note_on_min_positives": "Only ONE positive fires on the live engine for this pattern (the rule whitelist is subject/verb-specific). Per golden-set MIN_POSITIVE=3, this fixture is NOT yet lockable as-is. A1 options: (a) broaden the live rule then add 2 more firing positives, or (b) keep as a single-case smoke check outside the strict golden dir.",
+      "extensionTargets": [
+        {
+          "input": "We yesterday played football",
+          "currentEngineOutput": "We yesterday played football.",
+          "proposedCorrection": "We played football yesterday.",
+          "liveEngine": {
+            "marker": "abstains"
+          }
+        },
+        {
+          "input": "He yesterday ate breakfast",
+          "currentEngineOutput": "He yesterday ate breakfast.",
+          "proposedCorrection": "He ate breakfast yesterday.",
+          "liveEngine": {
+            "marker": "abstains"
+          }
+        }
+      ],
+      "qaStatus": "passed",
+      "buildQueuePlacement": {
+        "rankAfterCurrentQueue": 12,
+        "predecessorGate": "after current #4-through-book-a-table lane queue empties",
+        "recommendation": "hold",
+        "rationale": "sub-threshold live coverage; keep as build-ready corpus proposal but do not lock until engine scope is decided"
+      },
+      "proposedGoldenCandidates": {
+        "positiveCaseIds": [
+          "wo3-pos-001",
+          "wo3-pos-002",
+          "wo3-pos-003"
+        ],
+        "confusableNegativeCaseIds": [
+          "wo3-neg-001",
+          "wo3-neg-002"
+        ],
+        "liveEngineSummary": {
+          "positiveFires": [
+            "wo3-pos-001"
+          ],
+          "positiveAbstains": [
+            "wo3-pos-002",
+            "wo3-pos-003"
+          ],
+          "negativeFires": [],
+          "negativeAbstains": [
+            "wo3-neg-001",
+            "wo3-neg-002"
+          ]
+        },
+        "lockReadiness": "candidate_after_guard_build"
+      }
+    },
+    {
+      "patternId": "QF-1-yesno-missing-do-support",
+      "category": "question_formation",
+      "name": "Yes/no question missing do-support (intonation-question transfer)",
+      "vietnameseRoot": "Vietnamese forms yes/no questions with sentence-final particles ('...không?') or rising intonation, never with subject-aux inversion or do-support. Learners produce 'You like coffee?' for 'Do you like coffee?'.",
+      "coverage": "gap_new_rule_needed",
+      "proposedRuleId": "en-vn-yesno-do-support",
+      "relatedLiveRule": "en-question-form-final-mark (only adds '?' when an aux/be already fronts the clause; does NOT insert do-support)",
+      "fp_risk_note": "HIGH risk. Inserting do/does/did requires (1) no existing auxiliary/be/modal, (2) a lexical main verb, (3) correct person/tense agreement on the inserted auxiliary AND base-form reduction of the main verb ('She have a car?' -> 'Does she have a car?'). A safe v1 should require a trailing '?' (the interference signal), a pronoun/simple-NP subject, and a non-aux lexical verb. Negatives lock already-aux questions and plain statements.",
+      "positive": [
+        {
+          "id": "qf1-pos-001",
+          "input": "You like coffee?",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "Do you like coffee?",
+          "expectedRuleFired": "en-vn-yesno-do-support",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "You like coffee?",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. Insert 'Do'."
+        },
+        {
+          "id": "qf1-pos-002",
+          "input": "She have a car?",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "Does she have a car?",
+          "expectedRuleFired": "en-vn-yesno-do-support",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "She have a car?",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. Insert 'Does' + keep base 'have' (do NOT 'has')."
+        },
+        {
+          "id": "qf1-pos-003",
+          "input": "They live in Hanoi?",
+          "expectedStatus": "corrected",
+          "proposedCorrection": "Do they live in Hanoi?",
+          "expectedRuleFired": "en-vn-yesno-do-support",
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "They live in Hanoi?",
+            "appliedRuleIds": []
+          },
+          "notes": "GAP. Insert 'Do'."
+        }
+      ],
+      "negative": [
+        {
+          "id": "qf1-neg-001",
+          "input": "Do you like coffee?",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "Do you like coffee?",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Do you like coffee?",
+            "appliedRuleIds": []
+          },
+          "notes": "Already has do-support; must abstain. Verified abstains."
+        },
+        {
+          "id": "qf1-neg-002",
+          "input": "You like coffee",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "You like coffee.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "You like coffee.",
+            "appliedRuleIds": []
+          },
+          "notes": "No '?' -> a statement, not a question. Must abstain (do not turn statements into questions). Verified abstains."
+        }
+      ],
+      "qaStatus": "passed",
+      "buildQueuePlacement": {
+        "rankAfterCurrentQueue": 6,
+        "predecessorGate": "after current #4-through-book-a-table lane queue empties",
+        "recommendation": "build new guard",
+        "rationale": "high-frequency intonation-question transfer; must stay distinct from final-question-mark rule"
+      },
+      "proposedGoldenCandidates": {
+        "positiveCaseIds": [
+          "qf1-pos-001",
+          "qf1-pos-002",
+          "qf1-pos-003"
+        ],
+        "confusableNegativeCaseIds": [
+          "qf1-neg-001",
+          "qf1-neg-002"
+        ],
+        "liveEngineSummary": {
+          "positiveFires": [],
+          "positiveAbstains": [
+            "qf1-pos-001",
+            "qf1-pos-002",
+            "qf1-pos-003"
+          ],
+          "negativeFires": [],
+          "negativeAbstains": [
+            "qf1-neg-001",
+            "qf1-neg-002"
+          ]
+        },
+        "lockReadiness": "candidate_after_guard_build"
+      }
+    },
+    {
+      "patternId": "QF-2-question-final-mark",
+      "category": "question_formation",
+      "name": "Inverted question missing final '?' (already fires)",
+      "vietnameseRoot": "Adjacent question-formation surface: when learners DO front an auxiliary/be, they often omit the '?' (Vietnamese leans on the particle, not punctuation). Live rule en-question-form-final-mark repairs this.",
+      "coverage": "already_fires",
+      "liveRuleId": "en-question-form-final-mark",
+      "fp_risk_note": "Fires for clauses fronted by a be/aux/modal (Are/Is/Do/Can...) lacking terminal '?'. 'Have you eaten' ABSTAINS (perfect aux not in the trigger set), confirming the trigger is a closed set. Negatives lock already-punctuated questions and ensure statements are not interrogated.",
+      "positive": [
+        {
+          "id": "qf2-pos-001",
+          "input": "Are you happy",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Are you happy?",
+          "expectedRuleFired": "en-question-form-final-mark",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "Are you happy?",
+            "appliedRuleIds": [
+              "en-question-form-final-mark"
+            ]
+          },
+          "notes": "Live-engine verified fires."
+        },
+        {
+          "id": "qf2-pos-002",
+          "input": "Is she a teacher",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Is she a teacher?",
+          "expectedRuleFired": "en-question-form-final-mark",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "Is she a teacher?",
+            "appliedRuleIds": [
+              "en-question-form-final-mark"
+            ]
+          },
+          "notes": "Live-engine verified fires."
+        },
+        {
+          "id": "qf2-pos-003",
+          "input": "Can you swim",
+          "expectedStatus": "corrected",
+          "expectedCorrection": "Can you swim?",
+          "expectedRuleFired": "en-question-form-final-mark",
+          "liveEngine": {
+            "marker": "fires",
+            "status": "corrected",
+            "corrected": "Can you swim?",
+            "appliedRuleIds": [
+              "en-question-form-final-mark"
+            ]
+          },
+          "notes": "Live-engine verified fires (modal-fronted)."
+        }
+      ],
+      "negative": [
+        {
+          "id": "qf2-neg-001",
+          "input": "Are you happy?",
+          "expectedStatus": "unchanged",
+          "expectedCorrection": "Are you happy?",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "Are you happy?",
+            "appliedRuleIds": []
+          },
+          "notes": "Already punctuated; must abstain. Verified abstains."
+        },
+        {
+          "id": "qf2-neg-002",
+          "input": "You like coffee",
+          "expectedStatus": "unchanged",
+          "proposedCorrection": "You like coffee.",
+          "expectedRuleFired": null,
+          "liveEngine": {
+            "marker": "abstains",
+            "status": "unchanged",
+            "corrected": "You like coffee.",
+            "appliedRuleIds": []
+          },
+          "notes": "No fronted aux/be -> a statement; must not add '?'. Verified abstains. (Cross-links QF-1: the do-support form is the real fix here.)"
+        }
+      ],
+      "qaStatus": "passed",
+      "buildQueuePlacement": {
+        "rankAfterCurrentQueue": 2,
+        "predecessorGate": "after current #4-through-book-a-table lane queue empties",
+        "recommendation": "land regression lock",
+        "rationale": "already fires with three positives; low-risk punctuation lock after TA-1a"
+      },
+      "proposedGoldenCandidates": {
+        "positiveCaseIds": [
+          "qf2-pos-001",
+          "qf2-pos-002",
+          "qf2-pos-003"
+        ],
+        "confusableNegativeCaseIds": [
+          "qf2-neg-001",
+          "qf2-neg-002"
+        ],
+        "liveEngineSummary": {
+          "positiveFires": [
+            "qf2-pos-001",
+            "qf2-pos-002",
+            "qf2-pos-003"
+          ],
+          "positiveAbstains": [],
+          "negativeFires": [],
+          "negativeAbstains": [
+            "qf2-neg-001",
+            "qf2-neg-002"
+          ]
+        },
+        "lockReadiness": "candidate_for_future_golden_lock"
+      }
+    }
+  ],
+  "integrator": "A2",
+  "mainBaseObserved": "4082b4a1de9dfa2d4b0cfa15f41c3d0219d05ba4",
+  "mainBaseHandoffExpected": "25d8535c",
+  "batchQa": {
+    "generatedPatterns": 12,
+    "qaPassedPatterns": 12,
+    "requirements": [
+      "3+ positives per pattern",
+      "2+ confusable negatives per pattern",
+      "FP-risk note per pattern",
+      "live-engine fires/abstains marked per case",
+      "proposed golden candidates listed per pattern",
+      "ranked build-queue placement listed per pattern"
+    ],
+    "liveEngineVerification": "captured from A3 unmodified-engine probe and rechecked by A2 before MR"
+  },
+  "rankedBuildQueueDelta": {
+    "activeQueuePolicy": "Do not reorder or start current #4-through-book-a-table work.",
+    "itemsAddedAfterActiveQueue": 12,
+    "activeItemsReordered": 0,
+    "order": [
+      {
+        "rankAfterCurrentQueue": 1,
+        "patternId": "TA-1a-past-marker-irregular",
+        "recommendation": "land regression lock",
+        "coverage": "already_fires",
+        "rationale": "already fires with four positives; locks current irregular past behavior after the active #4-through-book-a-table queue"
+      },
+      {
+        "rankAfterCurrentQueue": 2,
+        "patternId": "QF-2-question-final-mark",
+        "recommendation": "land regression lock",
+        "coverage": "already_fires",
+        "rationale": "already fires with three positives; low-risk punctuation lock after TA-1a"
+      },
+      {
+        "rankAfterCurrentQueue": 3,
+        "patternId": "CB-2-locative-copula-drop",
+        "recommendation": "land firing subset",
+        "coverage": "partial_extend",
+        "rationale": "locks the narrow live location be-drop whitelist before any extension"
+      },
+      {
+        "rankAfterCurrentQueue": 4,
+        "patternId": "WO-2-topic-comment-fronting",
+        "recommendation": "land exact-string lock",
+        "coverage": "partial_extend",
+        "rationale": "captures existing exact-string behavior and documents brittleness"
+      },
+      {
+        "rankAfterCurrentQueue": 5,
+        "patternId": "CB-1-adjective-copula-drop",
+        "recommendation": "build new guard",
+        "coverage": "gap_new_rule_needed",
+        "rationale": "high-frequency VN predicate-adjective transfer; requires adjective whitelist and intensifier guard"
+      },
+      {
+        "rankAfterCurrentQueue": 6,
+        "patternId": "QF-1-yesno-missing-do-support",
+        "recommendation": "build new guard",
+        "coverage": "gap_new_rule_needed",
+        "rationale": "high-frequency intonation-question transfer; must stay distinct from final-question-mark rule"
+      },
+      {
+        "rankAfterCurrentQueue": 7,
+        "patternId": "TA-1b-past-marker-regular",
+        "recommendation": "build new guard",
+        "coverage": "gap_new_rule_needed",
+        "rationale": "regular past marker gap; constrain to explicit past-time markers and safe regular verbs"
+      },
+      {
+        "rankAfterCurrentQueue": 8,
+        "patternId": "CB-3-progressive-copula-drop",
+        "recommendation": "build new guard",
+        "coverage": "gap_new_rule_needed",
+        "rationale": "progressive be-drop gap; scope to subject + verb-ing surfaces"
+      },
+      {
+        "rankAfterCurrentQueue": 9,
+        "patternId": "TA-2-future-bare-verb",
+        "recommendation": "build new guard",
+        "coverage": "gap_new_rule_needed",
+        "rationale": "future marker gap; lower priority because modal insertion has broader FP surface"
+      },
+      {
+        "rankAfterCurrentQueue": 10,
+        "patternId": "TA-3-already-present-perfect",
+        "recommendation": "build new guard",
+        "coverage": "gap_new_rule_needed",
+        "rationale": "already/present-perfect gap; needs irregular/regular participle whitelist"
+      },
+      {
+        "rankAfterCurrentQueue": 11,
+        "patternId": "WO-1-adjective-after-noun",
+        "recommendation": "build new guard",
+        "coverage": "gap_new_rule_needed",
+        "rationale": "noun-adjective order gap; needs noun/adjective whitelist to avoid names/titles"
+      },
+      {
+        "rankAfterCurrentQueue": 12,
+        "patternId": "WO-3-time-adverb-placement",
+        "recommendation": "hold",
+        "coverage": "partial_extend",
+        "rationale": "sub-threshold live coverage; keep as build-ready corpus proposal but do not lock until engine scope is decided"
+      }
+    ]
+  }
+}

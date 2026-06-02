@@ -1,0 +1,124 @@
+{
+  "corpus": "vn-build-queue-delta-a3-grammar-slice",
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "status": "proposal_not_live_wired_build_queue_delta",
+  "sourceArtifacts": [
+    "tests/regression/golden-set/_pending-guards/a3-vn-grammar-slice-proposals.json",
+    "tests/regression/golden-set/_pending-guards/a3-vn-grammar-slice-HANDOFF.md",
+    "tests/regression/golden-set/_pending-guards/vn-l1-rulepack-slice-proposals.json",
+    "tests/regression/golden-set/_pending-guards/staged-lock-fixtures.md"
+  ],
+  "base": {
+    "originMainObserved": "4082b4a1de9dfa2d4b0cfa15f41c3d0219d05ba4",
+    "handoffExpectedMain": "25d8535c"
+  },
+  "activePredecessorQueue": [
+    "#4 profession-article ProperName guard",
+    "#5 wait-for-person-object wait-out guard",
+    "#6 coordinated-subject SVA guard",
+    "#8 look-pronoun-in-eye guard",
+    "book-a-table narrow verb-sense tail expansion",
+    "#7 tablet trim",
+    "stub retirements if verified inert",
+    "#9 at-clock-time valid range trim"
+  ],
+  "policy": {
+    "noLiveEngineCode": true,
+    "noCorrectionLogic": true,
+    "noRoutingUiNetlifySupabaseLaneC": true,
+    "doNotMerge": true,
+    "queueEffect": "Adds A3 items after current active queue; no active-lane reorder."
+  },
+  "rankedBuildQueueDelta": [
+    {
+      "rankAfterCurrentQueue": 1,
+      "patternId": "TA-1a-past-marker-irregular",
+      "recommendation": "land regression lock",
+      "coverage": "already_fires",
+      "rationale": "already fires with four positives; locks current irregular past behavior after the active #4-through-book-a-table queue"
+    },
+    {
+      "rankAfterCurrentQueue": 2,
+      "patternId": "QF-2-question-final-mark",
+      "recommendation": "land regression lock",
+      "coverage": "already_fires",
+      "rationale": "already fires with three positives; low-risk punctuation lock after TA-1a"
+    },
+    {
+      "rankAfterCurrentQueue": 3,
+      "patternId": "CB-2-locative-copula-drop",
+      "recommendation": "land firing subset",
+      "coverage": "partial_extend",
+      "rationale": "locks the narrow live location be-drop whitelist before any extension"
+    },
+    {
+      "rankAfterCurrentQueue": 4,
+      "patternId": "WO-2-topic-comment-fronting",
+      "recommendation": "land exact-string lock",
+      "coverage": "partial_extend",
+      "rationale": "captures existing exact-string behavior and documents brittleness"
+    },
+    {
+      "rankAfterCurrentQueue": 5,
+      "patternId": "CB-1-adjective-copula-drop",
+      "recommendation": "build new guard",
+      "coverage": "gap_new_rule_needed",
+      "rationale": "high-frequency VN predicate-adjective transfer; requires adjective whitelist and intensifier guard"
+    },
+    {
+      "rankAfterCurrentQueue": 6,
+      "patternId": "QF-1-yesno-missing-do-support",
+      "recommendation": "build new guard",
+      "coverage": "gap_new_rule_needed",
+      "rationale": "high-frequency intonation-question transfer; must stay distinct from final-question-mark rule"
+    },
+    {
+      "rankAfterCurrentQueue": 7,
+      "patternId": "TA-1b-past-marker-regular",
+      "recommendation": "build new guard",
+      "coverage": "gap_new_rule_needed",
+      "rationale": "regular past marker gap; constrain to explicit past-time markers and safe regular verbs"
+    },
+    {
+      "rankAfterCurrentQueue": 8,
+      "patternId": "CB-3-progressive-copula-drop",
+      "recommendation": "build new guard",
+      "coverage": "gap_new_rule_needed",
+      "rationale": "progressive be-drop gap; scope to subject + verb-ing surfaces"
+    },
+    {
+      "rankAfterCurrentQueue": 9,
+      "patternId": "TA-2-future-bare-verb",
+      "recommendation": "build new guard",
+      "coverage": "gap_new_rule_needed",
+      "rationale": "future marker gap; lower priority because modal insertion has broader FP surface"
+    },
+    {
+      "rankAfterCurrentQueue": 10,
+      "patternId": "TA-3-already-present-perfect",
+      "recommendation": "build new guard",
+      "coverage": "gap_new_rule_needed",
+      "rationale": "already/present-perfect gap; needs irregular/regular participle whitelist"
+    },
+    {
+      "rankAfterCurrentQueue": 11,
+      "patternId": "WO-1-adjective-after-noun",
+      "recommendation": "build new guard",
+      "coverage": "gap_new_rule_needed",
+      "rationale": "noun-adjective order gap; needs noun/adjective whitelist to avoid names/titles"
+    },
+    {
+      "rankAfterCurrentQueue": 12,
+      "patternId": "WO-3-time-adverb-placement",
+      "recommendation": "hold",
+      "coverage": "partial_extend",
+      "rationale": "sub-threshold live coverage; keep as build-ready corpus proposal but do not lock until engine scope is decided"
+    }
+  ],
+  "a4A5CarryForward": {
+    "a4CorpusOnMain": "tests/regression/golden-set/_pending-guards/vn-l1-rulepack-slice-proposals.json",
+    "a5ActiveQueueOnMain": "tests/regression/golden-set/_pending-guards/staged-lock-fixtures.md",
+    "note": "A2 collected these as predecessor/context slices and left them unchanged in this data-only A3 batch."
+  }
+}
