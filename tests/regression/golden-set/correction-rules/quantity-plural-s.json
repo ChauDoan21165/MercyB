@@ -94,6 +94,14 @@
       "expectedCorrection": "There are several mice.",
       "expectedRuleFired": null,
       "notes": "FP guard (irregular plural): 'mice' is already plural and 'mouse' is not whitelisted; rule must abstain."
+    },
+    {
+      "id": "quantity-plural-neg-lock-book-verb-sense",
+      "input": "I want some book a room.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I want some book a room.",
+      "expectedRuleFired": null,
+      "notes": "Lock (verb-sense guard): 'book' is the verb (to book a room), not a quantified noun; quantity-plural must not pluralize it."
     }
   ]
 }

@@ -94,6 +94,14 @@
       "expectedCorrection": "I really want apple.",
       "expectedRuleFired": null,
       "notes": "Confusable: adverb 'really' between subject and verb breaks the 'I want <noun>' adjacency, so the rule abstains."
+    },
+    {
+      "id": "missing-article-neg-lock-book-verb-sense",
+      "input": "I want book a room.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I want book a room.",
+      "expectedRuleFired": null,
+      "notes": "Lock (verb-sense guard): 'book' is the verb (to book a room); article rule must not fire."
     }
   ]
 }
