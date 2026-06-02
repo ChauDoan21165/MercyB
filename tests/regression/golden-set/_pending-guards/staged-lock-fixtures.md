@@ -29,17 +29,43 @@ scanned by `runCorrectionGolden.ts` (it loads only `correction-rules/*.json`).
 ```
 
 ## 5. en-step6-wait-for-person-object → `correction-rules/wait-for-person-object.json`
+
+Gated on: Lane A adds an `up` phrasal-particle lookahead to the wait-for matcher.
+
+**NO-BUG (today):** the `out` particle ALREADY abstains on the current engine — `Wait them out.` / `Wait him out.` / `Wait us out.` all pass through unchanged (the `out` half appears already merged). The prior `Wait them out.` lock is dropped; no lock needed for `out`.
+
+**FLIPS-AFTER** (fires today → must abstain once the `up` lookahead lands):
 ```json
 {
-  "id": "wait-for-person-object-neg-lock-phrasal-out",
-  "input": "Wait them out.",
+  "id": "wait-for-person-object-neg-lock-phrasal-up",
+  "input": "Wait them up.",
   "expectedStatus": "unchanged",
-  "expectedCorrection": "Wait them out.",
+  "expectedCorrection": "Wait them up.",
   "expectedRuleFired": null,
-  "notes": "Lock (phrasal guard): 'wait them out' is a phrasal idiom; no 'for'. Rule must not fire when 'out'/'up' follows the pronoun."
+  "notes": "FLIP: 'wait them up' is phrasal; today fires en-step6-wait-for-person-object -> 'Wait for them up.'. After the up-particle guard, must abstain. (Also Wait me up. / Wait her up.)"
 }
 ```
-
+**VERIFY-NOW** (fires today, must STILL fire after the guard — guard must not over-suppress real wait-for objects):
+```json
+{
+  "id": "wait-for-person-object-pos-verify-me",
+  "input": "Wait me.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Wait for me.",
+  "expectedRuleFired": "en-step6-wait-for-person-object",
+  "notes": "VERIFY-NOW: bare object pronoun, no particle -> 'for' inserted. Must keep firing after the guard."
+}
+```
+```json
+{
+  "id": "wait-for-person-object-pos-verify-us",
+  "input": "Please wait us.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Please wait for us.",
+  "expectedRuleFired": "en-step6-wait-for-person-object",
+  "notes": "VERIFY-NOW: must keep firing after the guard."
+}
+```
 ## 6. en-step5-subject-verb-agreement → `correction-rules/step5-subject-verb-agreement.json`
 ```json
 {
@@ -53,6 +79,10 @@ scanned by `runCorrectionGolden.ts` (it loads only `correction-rules/*.json`).
 ```
 
 ## 7. en-calque-take-medicine → `correction-rules/calque-take-medicine.json`
+
+Gated on: Lane A trims `tablet` from the medicine-object whitelist (or requires medicine context).
+
+**FLIPS-AFTER** (fires today → must abstain after the trim):
 ```json
 {
   "id": "calque-take-medicine-neg-lock-tablet-confection",
@@ -60,10 +90,40 @@ scanned by `runCorrectionGolden.ts` (it loads only `correction-rules/*.json`).
   "expectedStatus": "unchanged",
   "expectedCorrection": "I eat a tablet of chocolate.",
   "expectedRuleFired": null,
-  "notes": "Lock (whitelist trim): 'tablet of chocolate' is a confection, not medicine; 'eat' is correct. Rule must not rewrite eat->take."
+  "notes": "FLIP: 'tablet of chocolate' is a confection; today fires en-calque-take-medicine -> 'I take a tablet of chocolate.'. After the whitelist trim, must abstain."
 }
 ```
-
+**VERIFY-NOW** (fires today, must STILL fire after the trim — real medicine objects):
+```json
+{
+  "id": "calque-take-medicine-pos-verify-medicine",
+  "input": "I eat medicine.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "I take medicine.",
+  "expectedRuleFired": "en-calque-take-medicine",
+  "notes": "VERIFY-NOW: real medicine object; eat->take must keep firing."
+}
+```
+```json
+{
+  "id": "calque-take-medicine-pos-verify-painkillers",
+  "input": "I eat painkillers.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "I take painkillers.",
+  "expectedRuleFired": "en-calque-take-medicine",
+  "notes": "VERIFY-NOW: must keep firing after the trim."
+}
+```
+```json
+{
+  "id": "calque-take-medicine-pos-verify-drink",
+  "input": "I drink medicine.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "I take medicine.",
+  "expectedRuleFired": "en-calque-take-medicine",
+  "notes": "VERIFY-NOW: drink medicine -> take medicine, must keep firing."
+}
+```
 ## 8. en-step6-look-at-pronoun → `correction-rules/look-at-pronoun.json`
 ```json
 {
@@ -76,18 +136,52 @@ scanned by `runCorrectionGolden.ts` (it loads only `correction-rules/*.json`).
 }
 ```
 
-## 9. en-step6-at-clock-time → `correction-rules/at-clock-time.json` — **LOWEST severity (optional)**
+## 9. en-step6-at-clock-time → `correction-rules/at-clock-time.json` — **LOWEST severity (optional, do last)**
+
+Gated on: Lane A range-bounds CLOCK_TIME_PATTERN (hours 0-23, minutes 0-59).
+
+**FLIPS-AFTER** (fires today on INVALID times → must abstain after range-bound):
 ```json
 {
-  "id": "at-clock-time-neg-lock-invalid-time",
+  "id": "at-clock-time-neg-lock-invalid-hour",
   "input": "We meet 25:00.",
   "expectedStatus": "unchanged",
   "expectedCorrection": "We meet 25:00.",
   "expectedRuleFired": null,
-  "notes": "Lock (range-bound trim): '25:00' is not a valid clock time; rule must not insert 'at'. LOWEST severity — score/ratio colon forms (3:0, 2:1, 5:4) do NOT reproduce (zero rules fired); clock-only. Optional trim, no broken-output harm; activate if Lane A range-bounds the pattern."
+  "notes": "FLIP: hour 25 invalid; today fires en-step6-at-clock-time -> 'We meet at 25:00.'. After range-bound, must abstain. (Output stays grammatical, lowest severity.)"
 }
 ```
-
+```json
+{
+  "id": "at-clock-time-neg-lock-invalid-minute",
+  "input": "We meet 19:99.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "We meet 19:99.",
+  "expectedRuleFired": null,
+  "notes": "FLIP: minute 99 invalid; today fires -> 'We meet at 19:99.'. After range-bound, must abstain."
+}
+```
+**VERIFY-NOW** (fires today on VALID times, must STILL fire after range-bound):
+```json
+{
+  "id": "at-clock-time-pos-verify-hhmm",
+  "input": "We meet 3:00.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "We meet at 3:00.",
+  "expectedRuleFired": "en-step6-at-clock-time",
+  "notes": "VERIFY-NOW: valid time 3:00 -> 'at' inserted; must keep firing."
+}
+```
+```json
+{
+  "id": "at-clock-time-pos-verify-ampm",
+  "input": "Let's meet 9 PM.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Let's meet at 9 PM.",
+  "expectedRuleFired": "en-step6-at-clock-time",
+  "notes": "VERIFY-NOW: valid 9 PM -> 'at' inserted; must keep firing."
+}
+```
 ## 11. en-hat-biking-summer-runon → **ACTIVATED** (rule retired !324/!326)
 
 Rule retired by Lane A (gone from `en.ts`). The three pass-through locks moved
