@@ -25,6 +25,13 @@
       "expectedCorrection": "We meet at 6:30.",
       "expectedRuleFired": "step6AtClockTime",
       "notes": "Inserts at before colon clock time."
+    },
+    {
+      "id": "at-clock-time-pos-004",
+      "input": "I wake up 12 o'clock.",
+      "expectedCorrection": "I wake up at 12 o'clock.",
+      "expectedRuleFired": "step6AtClockTime",
+      "notes": "Inserts at before noon clock time."
     }
   ],
   "negative": [
@@ -83,6 +90,20 @@
       "expectedCorrection": "I have an 8 o'clock class.",
       "expectedRuleFired": null,
       "notes": "FP guard (clock token as noun modifier): \"8 o'clock\" modifies 'class' and 'have' is outside the verb whitelist; rule abstains."
+    },
+    {
+      "id": "at-clock-time-neg-009",
+      "input": "I wake up 25:00.",
+      "expectedCorrection": "I wake up 25:00.",
+      "expectedRuleFired": null,
+      "notes": "Invalid clock hour 25 stays unchanged."
+    },
+    {
+      "id": "at-clock-time-neg-010",
+      "input": "She starts work 19:99.",
+      "expectedCorrection": "She starts work 19:99.",
+      "expectedRuleFired": null,
+      "notes": "Invalid clock minutes 99 stay unchanged."
     }
   ]
 }
