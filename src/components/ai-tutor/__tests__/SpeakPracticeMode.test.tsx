@@ -3,6 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 import SpeakPracticeMode, {
   type SpeakPronunciationResult,
 } from "../SpeakPracticeMode";
+import type { VietnameseToneFeedbackDisplay } from "@/lib/pronunciation/vietnameseToneFeedback";
 import { getTutorCopy } from "@/lib/tutor/tutorCopy";
 
 vi.mock("@/components/teacher-mercy/TeacherMercyVoiceControls", () => ({
@@ -337,5 +338,28 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     expect(within(detail).getByText("bought")).toBeInTheDocument();
     expect(detail).toHaveTextContent("76%");
     expect(detail).not.toHaveTextContent("/");
+  });
+
+  it("renders Vietnamese tone feedback when enabled", () => {
+    const toneFeedback: VietnameseToneFeedbackDisplay = {
+      tone: "sac",
+      toneLabelVi: "sắc",
+      directionLabelVi: "đi lên",
+      status: "correct",
+      score: 92,
+    };
+
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        vietnameseToneFeedbackEnabled
+        vietnameseToneFeedback={toneFeedback}
+        pronunciationResult={null}
+      />,
+    );
+
+    const tone = screen.getByTestId("vietnamese-tone-feedback");
+    expect(tone).toHaveTextContent("Thanh sắc đúng rồi.");
+    expect(tone).toHaveTextContent("Điểm thanh điệu khoảng 92%.");
   });
 });

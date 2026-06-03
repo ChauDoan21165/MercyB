@@ -92,6 +92,14 @@ export const FEATURE_FLAGS = {
    */
   SPEECH_PERSISTENCE_ENABLED: readEnvBool("VITE_SPEECH_PERSISTENCE_ENABLED", false),
 
+  /**
+   * Vietnamese tone pronunciation feedback MVP.
+   * When ON: the Speak flow can show a small learner-facing tone card
+   * for supported Vietnamese tones only. When OFF: no tone feedback is
+   * rendered and no tone scoring call is attempted.
+   */
+  VIETNAMESE_TONE_FEEDBACK_MVP_ENABLED: false,
+
   /** AI Tutor mock UI shell — behind feature flag, mock responses only. */
   AI_TUTOR_UI_ENABLED: true,
 

@@ -42,6 +42,7 @@ import {
   resolveExplainLanguage,
   type TutorProductMode,
 } from "@/lib/tutor/productConfigs";
+import { FEATURE_FLAGS } from "@/lib/featureFlags";
 import { isPlacementEntryRouteAvailable } from "@/lib/placement/availability";
 import { reportRouteMountPerf } from "@/lib/monitoring/routePerf";
 import {
@@ -102,6 +103,12 @@ import { adaptSpeakPronunciationResult } from "@/components/ai-tutor/speakPronun
 import LogicMode from "@/components/ai-tutor/LogicMode";
 import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
 import { scorePronunciationWithStep7Fallback } from "@/lib/pronunciation/cloudScorer";
+import { scoreTone } from "@/lib/pronunciation/scoreTone";
+import {
+  buildVietnameseToneFeedbackDisplay,
+  resolveVietnameseTonePracticeTarget,
+  type VietnameseToneFeedbackDisplay,
+} from "@/lib/pronunciation/vietnameseToneFeedback";
 
 type CorrectionResult = TutorTurn & {
   grammarTip: string;
@@ -825,6 +832,8 @@ export default function AiTutorPage() {
   const [speakRepeatInput, setSpeakRepeatInput] = useState("");
   const [speakPronunciationResult, setSpeakPronunciationResult] =
     useState<SpeakPronunciationResult | null>(null);
+  const [speakVietnameseToneFeedback, setSpeakVietnameseToneFeedback] =
+    useState<VietnameseToneFeedbackDisplay | null>(null);
   const [latestCorrectedSeed, setLatestCorrectedSeed] = useState<CorrectedSentenceSeed | null>(null);
   const [speakFollowUpSession, setSpeakFollowUpSession] = useState<SpeakFollowUpSession>({
     topicId: "",
@@ -905,6 +914,7 @@ export default function AiTutorPage() {
   const lastCommittedSttRef = useRef<string>("");
   const lastRecordedSpeakAttemptRef = useRef<string>("");
   const speakPronunciationRequestRef = useRef(0);
+  const speakVietnameseToneRequestRef = useRef(0);
   const speakPivotTurnsRef = useRef<PivotPromptTurn[]>([]);
   const wasListeningRef = useRef(false);
   const ignoreNextSttCommitRef = useRef(false);
@@ -1026,6 +1036,7 @@ export default function AiTutorPage() {
   useEffect(() => {
     if (mode !== "speak") {
       setSpeakPronunciationResult(null);
+      setSpeakVietnameseToneFeedback(null);
       return;
     }
 
@@ -1075,6 +1086,62 @@ export default function AiTutorPage() {
     session?.access_token,
     speakRepeatInput,
     tutorCopy.starterQuestions,
+  ]);
+
+  useEffect(() => {
+    if (mode !== "speak" || target !== "vi" || !FEATURE_FLAGS.VIETNAMESE_TONE_FEEDBACK_MVP_ENABLED) {
+      setSpeakVietnameseToneFeedback(null);
+      return;
+    }
+
+    const targetSyllable = resolveVietnameseTonePracticeTarget(
+      latestCorrectedSeed?.correctedSentence?.trim() ?? "",
+    );
+    if (!targetSyllable?.supported || !pronunciationRecorder.audioBlob || !session?.access_token) {
+      setSpeakVietnameseToneFeedback(null);
+      return;
+    }
+
+    const transcript = normalizeSpokenText(speakRepeatInput);
+    if (!transcript) {
+      setSpeakVietnameseToneFeedback(null);
+      return;
+    }
+
+    const requestId = speakVietnameseToneRequestRef.current + 1;
+    speakVietnameseToneRequestRef.current = requestId;
+    setSpeakVietnameseToneFeedback(null);
+    const audioBlob = pronunciationRecorder.audioBlob ?? EMPTY_SPEAK_AUDIO_BLOB;
+
+    const timerId = window.setTimeout(() => {
+      scoreTone({
+        audioBlob,
+        targetSyllable: targetSyllable.syllable,
+        userJwt: session.access_token,
+      })
+        .then((result) => {
+          if (speakVietnameseToneRequestRef.current !== requestId) return;
+          setSpeakVietnameseToneFeedback(
+            buildVietnameseToneFeedbackDisplay({
+              target: targetSyllable,
+              result,
+            }),
+          );
+        })
+        .catch(() => {
+          if (speakVietnameseToneRequestRef.current !== requestId) return;
+          setSpeakVietnameseToneFeedback(null);
+        });
+    }, 250);
+
+    return () => window.clearTimeout(timerId);
+  }, [
+    latestCorrectedSeed?.correctedSentence,
+    mode,
+    pronunciationRecorder.audioBlob,
+    session?.access_token,
+    speakRepeatInput,
+    target,
   ]);
 
   const handleMicToggle = () => {
@@ -1440,6 +1507,7 @@ export default function AiTutorPage() {
     });
     setSpeakRepeatInput("");
     setSpeakPronunciationResult(null);
+    setSpeakVietnameseToneFeedback(null);
     pronunciationRecorder.reset();
     lastRecordedSpeakAttemptRef.current = "";
     speakPivotTurnsRef.current = [];
@@ -1604,6 +1672,8 @@ export default function AiTutorPage() {
           targetSentence={latestCorrectedSeed?.correctedSentence ?? null}
           repeatInput={speakRepeatInput}
           pronunciationResult={speakPronunciationResult}
+          vietnameseToneFeedbackEnabled={FEATURE_FLAGS.VIETNAMESE_TONE_FEEDBACK_MVP_ENABLED && target === "vi"}
+          vietnameseToneFeedback={speakVietnameseToneFeedback}
           micSupported={stt.supported}
           micListening={stt.listening}
           micError={stt.error}
