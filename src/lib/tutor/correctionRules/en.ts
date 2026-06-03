@@ -207,6 +207,35 @@ function hasQuestionFinalMarkCandidate(input: string): boolean {
   return frames.some((frame) => new RegExp(frame, "i").test(trimmed));
 }
 
+const YESNO_DO_SUPPORT_SUBJECT_PATTERN = "(?:I|You|We|They|He|She|It)";
+const YESNO_DO_SUPPORT_VERB_PATTERN = "(?:like|live|have)";
+
+function normalizeYesNoDoSupportSubject(subject: string): string {
+  return subject.toLowerCase() === "i" ? "I" : subject.toLowerCase();
+}
+
+function hasVnYesNoDoSupport(input: string): boolean {
+  const trimmed = input.trim();
+  return (
+    /[?？]$/.test(trimmed) &&
+    new RegExp(`^${YESNO_DO_SUPPORT_SUBJECT_PATTERN}\\s+${YESNO_DO_SUPPORT_VERB_PATTERN}\\b`, "i").test(trimmed)
+  );
+}
+
+function repairVnYesNoDoSupport(input: string): string {
+  const pattern = new RegExp(
+    `^(${YESNO_DO_SUPPORT_SUBJECT_PATTERN})\\s+(${YESNO_DO_SUPPORT_VERB_PATTERN})\\b([\\s\\S]*?)\\?\\s*$`,
+    "i",
+  );
+
+  return input.replace(pattern, (_match, subject: string, verb: string, tail: string) => {
+    const aux = /^(?:he|she|it)$/i.test(subject) ? "Does" : "Do";
+    const normalizedSubject = normalizeYesNoDoSupportSubject(subject);
+    const normalizedTail = tail.replace(/\s+$/, "");
+    return `${aux} ${normalizedSubject} ${verb.toLowerCase()}${normalizedTail}?`;
+  });
+}
+
 function repairMorningRoutineSubjectCarryover(input: string): string {
   return input.replace(
     /^in the morning,?\s+i wake up and they have a breakfast and coffee and then i go to my office[.?!]?$/i,
@@ -923,6 +952,13 @@ export const englishCorrectionRules: CorrectionRule[] = [
       !/\byesterday\b/i.test(input),
     apply: (input) => replaceVerbAfterSubject(input, DAILY_THIRD_PERSON_VERBS),
     fpRiskNote: "School-routine third-person -s is limited to he/she/it go to school and avoids yesterday contexts.",
+  },
+  {
+    id: "en-vn-yesno-do-support",
+    detects: hasVnYesNoDoSupport,
+    apply: repairVnYesNoDoSupport,
+    fpRiskNote:
+      "High risk if generalized. Do-support is only safe here on closed pronoun-subject questions with a terminal question mark and a narrow bare-verb whitelist (like/live/have); statements, already-aux questions, and declarative WH clauses must stay untouched.",
   },
   {
     id: "en-question-form-final-mark",
