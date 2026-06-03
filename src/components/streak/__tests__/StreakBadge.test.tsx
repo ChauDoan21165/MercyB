@@ -12,8 +12,8 @@ const { mockState } = vi.hoisted(() => ({
     error: null as string | null,
   },
 }));
-vi.mock("@/hooks/useServerStreak", () => ({
-  useServerStreak: () => mockState,
+vi.mock("@/hooks/useCanonicalStreak", () => ({
+  useCanonicalStreak: () => mockState,
 }));
 
 import { StreakBadge } from "../StreakBadge";

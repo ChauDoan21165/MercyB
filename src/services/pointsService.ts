@@ -2,8 +2,7 @@
 // Simple accumulative points system for MercyBlade student effort tracking.
 
 import { supabase } from '@/lib/supabaseClient';
-import { FEATURE_FLAGS } from '@/lib/featureFlags';
-import { getCachedStreak } from '@/lib/streakCache';
+import { getCanonicalStreak } from '@/lib/streak/canonicalStreak';
 import { onFirstActionOfDay } from '@/notificationEngine';
 
 export type PointEventType =
@@ -194,16 +193,10 @@ export function getTotalPoints(): number {
 }
 
 export function getStreakDays(): number {
-  // When server-streaks are enabled, prefer the cached value populated by
-  // `useServerStreak`. If the cache is not yet warm (first paint before the
-  // hook resolves, or offline), fall back to the localStorage value to
-  // avoid a visible "0" flash. Once Chau confirms the server path is
-  // healthy, the localStorage writers can be removed entirely.
-  if (FEATURE_FLAGS.SERVER_STREAKS_ENABLED) {
-    const cached = getCachedStreak();
-    if (cached) return cached.current;
-  }
-  return getStreak();
+  // Back-compat alias for sync callers — delegates to the single canonical
+  // streak seam (server when SERVER_STREAKS_ENABLED + cache warm, else the
+  // localStorage warm fallback). See src/lib/streak/canonicalStreak.ts.
+  return getCanonicalStreak().current;
 }
 
 export function getPointsDisplay(): string {
