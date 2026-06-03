@@ -28,6 +28,14 @@
       "expectedCorrection": "He takes antibiotics every day.",
       "expectedRuleFired": "calqueTakeMedicine",
       "notes": "Drinks directly governs antibiotics and preserves the frequency phrase."
+    },
+    {
+      "id": "calque-take-medicine-pos-004",
+      "input": "I eat a tablet of medicine.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I take a tablet of medicine.",
+      "expectedRuleFired": "calqueTakeMedicine",
+      "notes": "Tablet is still treated as medicine when followed by an explicit medicine tail."
     }
   ],
   "negative": [
@@ -86,6 +94,14 @@
       "expectedCorrection": "Eat your words.",
       "expectedRuleFired": null,
       "notes": "Confusable: idiom 'eat your words' — object is not a medicine noun, so the rule abstains."
+    },
+    {
+      "id": "calque-take-medicine-neg-conf-008",
+      "input": "I eat a tablet of chocolate.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I eat a tablet of chocolate.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: tablet can be confection when followed by 'of chocolate', so the rule abstains."
     }
   ]
 }

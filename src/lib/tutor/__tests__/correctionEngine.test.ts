@@ -472,6 +472,7 @@ describe("correctionEngine", () => {
     ["I drink medicine.", "I take medicine."],
     ["She ate two pills.", "She took two pills."],
     ["He drinks antibiotics every day.", "He takes antibiotics every day."],
+    ["I eat a tablet of medicine.", "I take a tablet of medicine."],
   ])("corrects approved take medicine calque: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",
@@ -486,6 +487,7 @@ describe("correctionEngine", () => {
     "He takes medicine.",
     "Drink more water with medicine.",
     "Eat before taking medicine.",
+    "I eat a tablet of chocolate.",
   ])("does not over-trigger take medicine calque: %s", (input) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "unchanged",

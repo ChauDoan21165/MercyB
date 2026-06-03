@@ -457,6 +457,14 @@ function takeVerbForMedicineCalque(verb: string): string {
 }
 
 function hasCalqueTakeMedicine(input: string): boolean {
+  if (
+    /\b(?:eat|eats|ate|eating|drink|drinks|drank|drinking)\s+(?:(?:a|an|one|two|three|four|five|\d+)\s+)?tablets?\s+of\s+chocolate\b/i.test(
+      input,
+    )
+  ) {
+    return false;
+  }
+
   const pattern = new RegExp(
     `\\b(?:eat|eats|ate|eating|drink|drinks|drank|drinking)\\s+${CALQUE_MEDICINE_QUANTITY_PATTERN}${CALQUE_MEDICINE_OBJECT_PATTERN}\\b`,
     "i",
@@ -466,7 +474,7 @@ function hasCalqueTakeMedicine(input: string): boolean {
 
 function repairCalqueTakeMedicine(input: string): string {
   const pattern = new RegExp(
-    `\\b(eat|eats|ate|eating|drink|drinks|drank|drinking)\\s+(${CALQUE_MEDICINE_QUANTITY_PATTERN}${CALQUE_MEDICINE_OBJECT_PATTERN})\\b`,
+    `\\b(eat|eats|ate|eating|drink|drinks|drank|drinking)\\s+(${CALQUE_MEDICINE_QUANTITY_PATTERN}${CALQUE_MEDICINE_OBJECT_PATTERN})\\b(?!\\s+of\\s+chocolate\\b)`,
     "gi",
   );
   return input.replace(pattern, (_match, verb: string, object: string) => {
