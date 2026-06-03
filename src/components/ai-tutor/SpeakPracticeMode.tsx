@@ -1,4 +1,8 @@
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
+import EnglishPronunciationFeedbackCard from "@/components/ai-tutor/EnglishPronunciationFeedbackCard";
+import VietnameseToneFeedbackCard from "@/components/ai-tutor/VietnameseToneFeedbackCard";
+import type { EnglishPronunciationFeedbackDisplay } from "@/lib/pronunciation/englishPronunciationFeedback";
+import type { VietnameseToneFeedbackDisplay } from "@/lib/pronunciation/vietnameseToneFeedback";
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
 import { calculateSentenceMatchPercent } from "@/lib/tutor/speakFollowups";
 
@@ -51,6 +55,10 @@ type Props = {
   followUpIsPivot: boolean;
   followUpTtsSpeaking: boolean;
   followUpTtsPreparing: boolean;
+  englishPronunciationFeedbackEnabled?: boolean;
+  englishPronunciationFeedback?: EnglishPronunciationFeedbackDisplay | null;
+  vietnameseToneFeedbackEnabled?: boolean;
+  vietnameseToneFeedback?: VietnameseToneFeedbackDisplay | null;
   onMicToggle: () => void;
   onReadTarget: () => void;
   onReadFollowUp: () => void;
@@ -75,6 +83,10 @@ export default function SpeakPracticeMode({
   followUpIsPivot,
   followUpTtsSpeaking,
   followUpTtsPreparing,
+  englishPronunciationFeedbackEnabled = false,
+  englishPronunciationFeedback = null,
+  vietnameseToneFeedbackEnabled = false,
+  vietnameseToneFeedback = null,
   onMicToggle,
   onReadTarget,
   onReadFollowUp,
@@ -178,6 +190,16 @@ export default function SpeakPracticeMode({
               </div>
             )}
           </div>
+
+          <VietnameseToneFeedbackCard
+            enabled={vietnameseToneFeedbackEnabled}
+            feedback={vietnameseToneFeedback}
+          />
+
+          <EnglishPronunciationFeedbackCard
+            enabled={englishPronunciationFeedbackEnabled}
+            feedback={englishPronunciationFeedback}
+          />
 
           <div className="mt-4 rounded-[16px] border border-slate-200 bg-slate-50 px-4 py-4">
             <div className="text-xs font-black uppercase text-slate-500">
