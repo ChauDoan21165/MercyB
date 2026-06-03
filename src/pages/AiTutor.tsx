@@ -45,6 +45,7 @@ import {
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
 import { isPlacementEntryRouteAvailable } from "@/lib/placement/availability";
 import { reportRouteMountPerf } from "@/lib/monitoring/routePerf";
+import { captureCorrection } from "@/services/learnerCapture";
 import {
   AI_CORRECTION_REQUIRED_MESSAGE,
   correctWithTutorRules,
@@ -1328,6 +1329,19 @@ export default function AiTutorPage() {
       updatedAt: Date.now(),
     });
 
+    // Track 2 — anonymized learner-interaction capture. Fire-and-forget;
+    // flag + consent gated, never throws. The local correction is what the
+    // learner saw, so capture it here next to the existing telemetry.
+    void captureCorrection({
+      userText: trimmed,
+      correctedText: corrected,
+      status: localCorrection.status,
+      appliedRuleIds: localCorrection.appliedRuleIds,
+      targetLanguage: target,
+      explainLanguage,
+      interactionType: "correction",
+    });
+
     // Detector → chip surface (adult AI Tutor only; CorrectionMode is not
     // mounted in the Mercy Kids surface). Runs AFTER setResult so the LLM-
     // path response is on screen first; never blocks.
@@ -1457,6 +1471,21 @@ export default function AiTutorPage() {
     );
     setSpeakConversationState(nextSpeakConversationState);
     setConversationMessages((current) => [...current, mercyMessage]);
+
+    // Track 2 — capture the conversation-mode correction (fire-and-forget,
+    // flag + consent gated). `correctedText` is empty when the reply made
+    // no correction; the service maps that to an 'abstained'/'unchanged' row.
+    const conversationCorrected = mercyMessage.correctedText?.trim() ?? "";
+    void captureCorrection({
+      userText: trimmed,
+      correctedText: conversationCorrected || null,
+      status: conversationCorrected && conversationCorrected !== trimmed ? "corrected" : "unchanged",
+      appliedRuleIds: [],
+      targetLanguage: target,
+      explainLanguage,
+      interactionType: "conversation",
+    });
+
     const lessonInsight = activeTodayLesson ? diagnoseVietlishLogicWithMatch(trimmed) : null;
     setTodayLessonLogicInsight(lessonInsight?.isKnownPattern ? lessonInsight : null);
     if (activeTodayLesson && lessonInsight?.isKnownPattern) {

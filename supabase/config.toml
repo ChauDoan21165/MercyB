@@ -32,6 +32,13 @@ verify_jwt = false
 verify_jwt = false
 
 
+# Track 2 — Learner interaction capture (anonymized, consent-gated).
+# verify_jwt = true: only authenticated sessions reach the function;
+# it derives user_id from the JWT, HMACs it, and writes with service-role.
+[functions.learner-capture]
+verify_jwt = true
+
+
 # =========================
 # CHAT / AI
 # =========================
