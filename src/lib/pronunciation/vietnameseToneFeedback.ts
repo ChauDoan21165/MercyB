@@ -1,10 +1,15 @@
 import type { ToneScoreResult } from "./scoreTone";
-import type {
-  VietnameseToneTarget,
+import {
+  scoreVietnameseToneAttempt,
+  type ExtractedPitchContour,
+  type VietnameseToneTarget,
 } from "./vietnameseToneScorer";
 
 export type VietnameseToneFeedbackTone = "sac" | "huyen" | "ngang";
 type VietnameseToneId = VietnameseToneTarget["tone"];
+type SupportedVietnameseTone = VietnameseToneFeedbackTone;
+type UnsupportedVietnameseTone = "hoi" | "nga" | "nang";
+type VietnameseToneFeedbackKind = "correct" | "try_again" | "unsupported" | "unclear";
 
 export type VietnameseToneFeedbackDisplay = {
   tone: VietnameseToneFeedbackTone;
@@ -14,19 +19,22 @@ export type VietnameseToneFeedbackDisplay = {
   score: number;
 };
 
+export interface VietnameseToneFeedback {
+  kind: VietnameseToneFeedbackKind;
+  tone: VietnameseToneTarget["tone"];
+  titleVi: string;
+  bodyVi: string;
+  titleEn: string;
+  bodyEn: string;
+}
+
 type ToneParseResult = VietnameseToneTarget & {
   supported: boolean;
   toneLabelVi: "sắc" | "huyền" | "ngang" | "hỏi" | "ngã" | "nặng";
   directionLabelVi: "đi lên" | "đi xuống" | "giữ ngang";
 };
 
-const TONE_MARK_TO_TONE: Record<string, VietnameseToneId> = {
-  "\u0301": "sac",
-  "\u0300": "huyen",
-  "\u0309": "hoi",
-  "\u0303": "nga",
-  "\u0323": "nang",
-};
+const SUPPORTED_TONES = new Set<VietnameseToneId>(["sac", "huyen", "ngang"]);
 
 const TONE_LABELS: Record<VietnameseToneId, ToneParseResult["toneLabelVi"]> = {
   sac: "sắc",
@@ -37,11 +45,50 @@ const TONE_LABELS: Record<VietnameseToneId, ToneParseResult["toneLabelVi"]> = {
   nang: "nặng",
 };
 
-const DIRECTION_LABELS: Record<VietnameseToneFeedbackTone, ToneParseResult["directionLabelVi"]> = {
+const DIRECTION_LABELS: Record<SupportedVietnameseTone, ToneParseResult["directionLabelVi"]> = {
   sac: "đi lên",
   huyen: "đi xuống",
   ngang: "giữ ngang",
 };
+
+const TARGET_CONTOUR: Record<SupportedVietnameseTone, VietnameseToneTarget["expectedContour"]> = {
+  sac: "rising",
+  huyen: "falling",
+  ngang: "level",
+};
+
+const TONE_MARK_TO_TONE: Record<string, VietnameseToneId> = {
+  "\u0301": "sac",
+  "\u0300": "huyen",
+  "\u0309": "hoi",
+  "\u0303": "nga",
+  "\u0323": "nang",
+};
+
+const DIRECTION_COPY: Record<SupportedVietnameseTone, { vi: string; en: string }> = {
+  sac: {
+    vi: "Thử lại: đẩy đường giọng đi lên rõ hơn ở cuối âm.",
+    en: "Try again: let the tone shape rise more clearly at the end.",
+  },
+  huyen: {
+    vi: "Thử lại: hạ đường giọng xuống nhẹ và đều hơn.",
+    en: "Try again: let the tone shape fall gently and steadily.",
+  },
+  ngang: {
+    vi: "Thử lại: giữ đường giọng đều, đừng kéo lên hoặc rơi xuống quá rõ.",
+    en: "Try again: keep the tone shape steady, without a clear rise or fall.",
+  },
+};
+
+const MARKED_TONE_PATTERNS: Array<{ tone: Exclude<VietnameseToneId, "ngang">; pattern: RegExp }> = [
+  { tone: "sac", pattern: /[áắấéếíóốớúứýÁẮẤÉẾÍÓỐỚÚỨÝ]/u },
+  { tone: "huyen", pattern: /[àằầèềìòồờùừỳÀẰẦÈỀÌÒỒỜÙỪỲ]/u },
+  { tone: "hoi", pattern: /[ảẳẩẻểỉỏổởủửỷẢẲẨẺỂỈỎỔỞỦỬỶ]/u },
+  { tone: "nga", pattern: /[ãẵẫẽễĩõỗỡũữỹÃẴẪẼỄĨÕỖỠŨỮỸ]/u },
+  { tone: "nang", pattern: /[ạặậẹệịọộợụựỵẠẶẬẸỆỊỌỘỢỤỰỴ]/u },
+];
+
+const VIETNAMESE_BASE_PATTERN = /[ăâđêôơưĂÂĐÊÔƠƯ]/u;
 
 export function resolveVietnameseTonePracticeTarget(rawText: string): ToneParseResult | null {
   const trimmed = String(rawText ?? "").trim();
@@ -56,13 +103,13 @@ export function resolveVietnameseTonePracticeTarget(rawText: string): ToneParseR
   const syllable = tokens[0].replace(/^[^A-Za-zÀ-ỹĐđ]+|[^A-Za-zÀ-ỹĐđ]+$/gu, "");
   if (!syllable) return null;
   const tone = detectTone(syllable);
-  const supported = tone === "sac" || tone === "huyen" || tone === "ngang";
+  const supported = isSupportedTone(tone);
 
   return {
     syllable,
     tone,
     supported,
-    expectedContour: supported ? DIRECTION_TO_CONTOUR[tone] : "unsupported",
+    expectedContour: expectedContourFor(tone),
     toneLabelVi: TONE_LABELS[tone],
     directionLabelVi: supported ? DIRECTION_LABELS[tone] : "giữ ngang",
   };
@@ -77,16 +124,83 @@ export function buildVietnameseToneFeedbackDisplay(input: {
 
   const score = clampScore(input.result.score);
   const status = input.result.bucket === "retry" ? "try_again" : "correct";
-  const toneLabelVi = getSupportedToneLabel(input.target.tone);
-  const directionLabelVi = getSupportedToneDirection(input.target.tone);
 
   return {
     tone: input.target.tone,
-    toneLabelVi,
-    directionLabelVi,
+    toneLabelVi: supportedToneLabel(input.target.tone),
+    directionLabelVi: DIRECTION_LABELS[input.target.tone],
     status,
     score,
   };
+}
+
+export function inferVietnameseToneTarget(
+  text: string,
+  options: { allowUnmarkedNgang?: boolean } = {},
+): VietnameseToneTarget | null {
+  const syllable = firstToken(text);
+  if (!syllable) return null;
+
+  for (const entry of MARKED_TONE_PATTERNS) {
+    if (entry.pattern.test(syllable)) {
+      return {
+        syllable,
+        tone: entry.tone,
+        expectedContour: expectedContourFor(entry.tone),
+      };
+    }
+  }
+
+  if (options.allowUnmarkedNgang || VIETNAMESE_BASE_PATTERN.test(syllable)) {
+    return {
+      syllable,
+      tone: "ngang",
+      expectedContour: "level",
+    };
+  }
+
+  return null;
+}
+
+export function buildVietnameseToneFeedback(input: {
+  target: VietnameseToneTarget;
+  contour: ExtractedPitchContour | null | undefined;
+}): VietnameseToneFeedback {
+  const { target, contour } = input;
+
+  if (!isSupportedTone(target.tone)) {
+    return unsupportedFeedback(target.tone as UnsupportedVietnameseTone);
+  }
+
+  if (!contour) {
+    return unclearFeedback(target.tone);
+  }
+
+  const score = scoreVietnameseToneAttempt({ contour, target });
+  if (score.bucket === "close") {
+    return {
+      kind: "correct",
+      tone: target.tone,
+      titleVi: `Thanh ${TONE_LABELS[target.tone]} nghe khá đúng.`,
+      bodyVi: "Đường giọng nhìn gần với mẫu. Mình luyện thêm một lần nữa cho chắc nhé.",
+      titleEn: `${TONE_LABELS[target.tone]} tone shape looks close.`,
+      bodyEn: "The pitch contour is close to the model. Try one more slow repeat.",
+    };
+  }
+
+  if (score.bucket === "not_close") {
+    const copy = DIRECTION_COPY[target.tone];
+    return {
+      kind: "try_again",
+      tone: target.tone,
+      titleVi: `Thanh ${TONE_LABELS[target.tone]} chưa rõ.`,
+      bodyVi: copy.vi,
+      titleEn: `${TONE_LABELS[target.tone]} tone shape is not close yet.`,
+      bodyEn: copy.en,
+    };
+  }
+
+  return unclearFeedback(target.tone);
 }
 
 function detectTone(syllable: string): ToneParseResult["tone"] {
@@ -99,29 +213,51 @@ function detectTone(syllable: string): ToneParseResult["tone"] {
   return "ngang";
 }
 
-function isSupportedTone(tone: VietnameseToneId): tone is VietnameseToneFeedbackTone {
-  return tone === "sac" || tone === "huyen" || tone === "ngang";
+function expectedContourFor(tone: VietnameseToneId): VietnameseToneTarget["expectedContour"] {
+  return isSupportedTone(tone) ? TARGET_CONTOUR[tone] : "unsupported";
 }
 
-function getSupportedToneLabel(tone: VietnameseToneFeedbackTone): VietnameseToneFeedbackDisplay["toneLabelVi"] {
+function isSupportedTone(tone: VietnameseToneId): tone is SupportedVietnameseTone {
+  return SUPPORTED_TONES.has(tone);
+}
+
+function clampScore(value: number | null | undefined): number {
+  if (typeof value !== "number" || !Number.isFinite(value)) return 0;
+  return Math.max(0, Math.min(100, Math.round(value)));
+}
+
+function supportedToneLabel(tone: SupportedVietnameseTone): VietnameseToneFeedbackDisplay["toneLabelVi"] {
   if (tone === "sac") return "sắc";
   if (tone === "huyen") return "huyền";
   return "ngang";
 }
 
-function getSupportedToneDirection(tone: VietnameseToneFeedbackTone): VietnameseToneFeedbackDisplay["directionLabelVi"] {
-  if (tone === "sac") return "đi lên";
-  if (tone === "huyen") return "đi xuống";
-  return "giữ ngang";
+function unsupportedFeedback(tone: UnsupportedVietnameseTone): VietnameseToneFeedback {
+  return {
+    kind: "unsupported",
+    tone,
+    titleVi: `Mercy chưa chấm chắc thanh ${TONE_LABELS[tone]} được.`,
+    bodyVi: "Mercy chưa chấm được thanh này một cách chắc chắn. Mình luyện lại chậm hơn nhé.",
+    titleEn: `I can't assess ${TONE_LABELS[tone]} yet.`,
+    bodyEn: "I can't assess this tone yet. Let's keep practicing slowly.",
+  };
 }
 
-const DIRECTION_TO_CONTOUR: Record<VietnameseToneFeedbackTone, VietnameseToneTarget["expectedContour"]> = {
-  sac: "rising",
-  huyen: "falling",
-  ngang: "level",
-};
+function unclearFeedback(tone: VietnameseToneId): VietnameseToneFeedback {
+  return {
+    kind: "unclear",
+    tone,
+    titleVi: "Mercy chưa nghe rõ đường giọng.",
+    bodyVi: "Mình thử lại chậm hơn, rõ nguyên âm hơn nhé.",
+    titleEn: "I couldn't hear the tone shape clearly.",
+    bodyEn: "Try again more slowly with a clearer vowel.",
+  };
+}
 
-function clampScore(value: number | null | undefined): number {
-  if (typeof value !== "number" || !Number.isFinite(value)) return 0;
-  return Math.max(0, Math.min(100, Math.round(value)));
+function firstToken(text: string): string {
+  return String(text || "")
+    .normalize("NFC")
+    .split(/\s+/u)
+    .map((token) => token.replace(/^[^\p{L}]+|[^\p{L}]+$/gu, ""))
+    .find(Boolean) ?? "";
 }

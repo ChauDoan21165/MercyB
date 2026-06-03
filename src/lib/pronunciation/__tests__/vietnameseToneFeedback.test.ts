@@ -1,7 +1,13 @@
 import { describe, expect, it } from "vitest";
 
-import { buildVietnameseToneFeedbackDisplay, resolveVietnameseTonePracticeTarget } from "../vietnameseToneFeedback";
+import {
+  buildVietnameseToneFeedback,
+  buildVietnameseToneFeedbackDisplay,
+  inferVietnameseToneTarget,
+  resolveVietnameseTonePracticeTarget,
+} from "../vietnameseToneFeedback";
 import type { ToneScoreResult } from "../scoreTone";
+import type { ExtractedPitchContour, VietnameseToneTarget } from "../vietnameseToneScorer";
 
 describe("resolveVietnameseTonePracticeTarget", () => {
   it("resolves supported tones from single-syllable practice targets", () => {
@@ -105,3 +111,115 @@ describe("buildVietnameseToneFeedbackDisplay", () => {
     ).toBeNull();
   });
 });
+
+describe("inferVietnameseToneTarget", () => {
+  it("detects marked supported tones", () => {
+    expect(inferVietnameseToneTarget("má")?.tone).toBe("sac");
+    expect(inferVietnameseToneTarget("mà")?.tone).toBe("huyen");
+  });
+
+  it("detects unsupported marked tones without making them scorable", () => {
+    expect(inferVietnameseToneTarget("mả")?.expectedContour).toBe("unsupported");
+    expect(inferVietnameseToneTarget("mã")?.expectedContour).toBe("unsupported");
+    expect(inferVietnameseToneTarget("mạ")?.expectedContour).toBe("unsupported");
+  });
+
+  it("only treats unmarked text as ngang when explicitly allowed", () => {
+    expect(inferVietnameseToneTarget("ma")).toBeNull();
+    expect(inferVietnameseToneTarget("ma", { allowUnmarkedNgang: true })).toMatchObject({
+      tone: "ngang",
+      expectedContour: "level",
+    });
+  });
+});
+
+describe("buildVietnameseToneFeedback", () => {
+  it("returns correct feedback for supported tone contour matches", () => {
+    const feedback = buildVietnameseToneFeedback({
+      target: target("sac", "rising"),
+      contour: contour([180, 190, 205, 222]),
+    });
+
+    expect(feedback.kind).toBe("correct");
+    expect(feedback.titleVi).toContain("Thanh sắc");
+    expect(feedback.bodyEn).toContain("pitch contour is close");
+  });
+
+  it("returns simple direction guidance for supported tone mismatches", () => {
+    const feedback = buildVietnameseToneFeedback({
+      target: target("huyen", "falling"),
+      contour: contour([180, 195, 210, 230]),
+    });
+
+    expect(feedback.kind).toBe("try_again");
+    expect(feedback.bodyVi).toContain("hạ đường giọng");
+    expect(feedback.bodyEn).toContain("fall gently");
+  });
+
+  it("never gives confident feedback for unsupported tones", () => {
+    for (const tone of ["hoi", "nga", "nang"] as const) {
+      const feedback = buildVietnameseToneFeedback({
+        target: target(tone, "unsupported"),
+        contour: contour([180, 190, 205, 222]),
+      });
+
+      expect(feedback.kind).toBe("unsupported");
+      expect(feedback.bodyVi).toContain("chưa chấm được thanh này");
+      expect(feedback.bodyEn).toContain("can't assess this tone yet");
+    }
+  });
+
+  it("abstains when supported tone evidence is missing or unclear", () => {
+    expect(
+      buildVietnameseToneFeedback({
+        target: target("ngang", "level"),
+        contour: null,
+      }).kind,
+    ).toBe("unclear");
+
+    expect(
+      buildVietnameseToneFeedback({
+        target: target("ngang", "level"),
+        contour: {
+          ...contour([180, 181, 182, 181]),
+          extractionConfidence: 0.2,
+          reason: "insufficient-voicing",
+        },
+      }).kind,
+    ).toBe("unclear");
+  });
+});
+
+function target(
+  tone: VietnameseToneTarget["tone"],
+  expectedContour: VietnameseToneTarget["expectedContour"],
+): VietnameseToneTarget {
+  return {
+    syllable: "ma",
+    tone,
+    expectedContour,
+  };
+}
+
+function contour(values: number[]): ExtractedPitchContour {
+  return {
+    samples: values.map((f0Hz, index) => ({
+      timeMs: index * 80,
+      f0Hz,
+      confidence: 0.9,
+    })),
+    durationMs: values.length * 80,
+    voicedRatio: 1,
+    medianF0Hz: median(values),
+    extractionConfidence: 0.9,
+    reason: "ok",
+  };
+}
+
+function median(values: number[]): number {
+  const sorted = [...values].sort((left, right) => left - right);
+  const midpoint = Math.floor(sorted.length / 2);
+  return sorted.length % 2 === 0
+    ? (sorted[midpoint - 1] + sorted[midpoint]) / 2
+    : sorted[midpoint];
+}

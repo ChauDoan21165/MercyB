@@ -124,6 +124,7 @@ describe('SpeechDrill', () => {
       target: TARGET,
       recognized: 'I would like a glass of water',
     });
+    expect(screen.queryByLabelText('Vietnamese tone feedback')).toBeNull();
   });
 
   it('color-codes the overall score: 85+ green', async () => {
