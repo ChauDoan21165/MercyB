@@ -1094,6 +1094,30 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["You like coffee?", "Do you like coffee?"],
+    ["She have a car?", "Does she have a car?"],
+    ["They live in Hanoi?", "Do they live in Hanoi?"],
+  ])("inserts do-support for VN yes/no question transfer: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-vn-yesno-do-support"],
+    });
+  });
+
+  it.each([
+    ["Do you like coffee?", "Do you like coffee?"],
+    ["What do you like?", "What do you like?"],
+    ["You like coffee", "You like coffee."],
+  ])("does not over-trigger VN yes/no do-support: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      corrected: expected,
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     "What you said is true.",
     "What he did was wrong.",
     "What I need is time.",

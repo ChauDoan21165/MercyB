@@ -1,0 +1,59 @@
+{
+  "rule": "vnYesnoDoSupport",
+  "ruleId": "en-vn-yesno-do-support",
+  "language": "en",
+  "description": "VN yes/no question transfer: learners omit do-support and leave a bare lexical verb before a question mark. Rule en-vn-yesno-do-support inserts do/does for a closed pronoun-subject + bare verb surface.",
+  "fp_risk_note": "High risk if generalized. Do-support is only safe on closed pronoun-subject yes/no questions with a terminal question mark and a narrow bare-verb whitelist (like/live/have). Statements, already-aux questions, and declarative WH clauses must stay untouched.",
+  "positive": [
+    {
+      "id": "qf1-pos-001",
+      "input": "You like coffee?",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Do you like coffee?",
+      "expectedRuleFired": "vnYesnoDoSupport",
+      "notes": "Bare pronoun-subject yes/no question -> insert do-support."
+    },
+    {
+      "id": "qf1-pos-002",
+      "input": "She have a car?",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Does she have a car?",
+      "expectedRuleFired": "vnYesnoDoSupport",
+      "notes": "Third-person pronoun with bare 'have' -> insert does-support and keep base verb."
+    },
+    {
+      "id": "qf1-pos-003",
+      "input": "They live in Hanoi?",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Do they live in Hanoi?",
+      "expectedRuleFired": "vnYesnoDoSupport",
+      "notes": "Plural pronoun yes/no question -> insert do-support."
+    }
+  ],
+  "negative": [
+    {
+      "id": "qf1-neg-001",
+      "input": "Do you like coffee?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Do you like coffee?",
+      "expectedRuleFired": null,
+      "notes": "Already has do-support; must stay unchanged."
+    },
+    {
+      "id": "qf1-neg-002",
+      "input": "What do you like?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "What do you like?",
+      "expectedRuleFired": null,
+      "notes": "Wh-question is not the yes/no transfer surface."
+    },
+    {
+      "id": "qf1-neg-003",
+      "input": "You like coffee",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "You like coffee.",
+      "expectedRuleFired": null,
+      "notes": "Declarative surface without '?'; the rule must not turn statements into questions."
+    }
+  ]
+}
