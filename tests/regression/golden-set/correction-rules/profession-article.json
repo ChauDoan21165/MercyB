@@ -131,6 +131,30 @@
       "expectedCorrection": "He is Doctor Smith.",
       "expectedRuleFired": null,
       "notes": "Lock: capitalized profession/title surface before a ProperName token stays unchanged if it reaches this rule."
+    },
+    {
+      "id": "profession-article-neg-lock-title-lowercase-004",
+      "input": "He is doctor strange.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He is doctor strange.",
+      "expectedRuleFired": null,
+      "notes": "Lock: lowercase title/name surface stays unchanged instead of inserting an article before doctor."
+    },
+    {
+      "id": "profession-article-neg-lock-title-lowercase-005",
+      "input": "He is doctor lee.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He is doctor lee.",
+      "expectedRuleFired": null,
+      "notes": "Lock: lowercase surname/title surface stays unchanged instead of inserting an article before doctor."
+    },
+    {
+      "id": "profession-article-neg-lock-title-lowercase-006",
+      "input": "She is nurse nguyen.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She is nurse nguyen.",
+      "expectedRuleFired": null,
+      "notes": "Lock: lowercase surname/title surface stays unchanged instead of inserting an article before nurse."
     }
   ]
 }

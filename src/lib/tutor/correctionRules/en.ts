@@ -75,6 +75,8 @@ const PROFESSION_ARTICLES: Record<string, "a" | "an"> = {
   writer: "a",
 };
 
+const LOWERCASE_PROFESSION_TITLE_NAME_PATTERN = "(?:lee|nguyen|smith|strange)";
+
 const STEP6_POSSESSIVE_OWNER_PATTERN =
   "(?:mother|father|brother|sister|friend|teacher|boss|wife|husband)";
 
@@ -266,7 +268,7 @@ function hasStep6ProfessionArticle(input: string): boolean {
   const pattern = new RegExp(`\\b(?:I\\s+am|He\\s+is|She\\s+is)\\s+(${professionPattern})\\b`, "gi");
   return Array.from(input.matchAll(pattern)).some((match) => {
     const offset = match.index ?? 0;
-    return !/^\s+[A-Z][a-z]+\b/.test(input.slice(offset + match[0].length));
+    return !isProfessionTitleNameTail(input.slice(offset + match[0].length));
   });
 }
 
@@ -274,10 +276,14 @@ function repairStep6ProfessionArticle(input: string): string {
   const professionPattern = Object.keys(PROFESSION_ARTICLES).join("|");
   const pattern = new RegExp(`\\b(I\\s+am|He\\s+is|She\\s+is)\\s+(${professionPattern})\\b`, "gi");
   return input.replace(pattern, (match, prefix: string, profession: string, offset: number) => {
-    if (/^\s+[A-Z][a-z]+\b/.test(input.slice(offset + match.length))) return match;
+    if (isProfessionTitleNameTail(input.slice(offset + match.length))) return match;
     const article = PROFESSION_ARTICLES[profession.toLowerCase()] ?? "a";
     return `${prefix} ${article} ${profession}`;
   });
+}
+
+function isProfessionTitleNameTail(tail: string): boolean {
+  return new RegExp(`^\\s+(?:[A-Z][a-z]+|${LOWERCASE_PROFESSION_TITLE_NAME_PATTERN})\\b`).test(tail);
 }
 
 function hasStep6PossessiveS(input: string): boolean {
