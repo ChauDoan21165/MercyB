@@ -49,4 +49,15 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Local notifications (behind FEATURE_NOTIFICATIONS).
+         POST_NOTIFICATIONS = Android 13+ runtime prompt (requested only after
+         the first completed activity); RECEIVE_BOOT_COMPLETED = re-arm scheduled
+         reminders after reboot. @capacitor/local-notifications also merges these
+         (plus WAKE_LOCK and its boot receiver) from its library manifest;
+         declared here explicitly for clarity and Play review. SCHEDULE_EXACT_ALARM
+         is intentionally NOT requested — the daily reminder and evening streak-save
+         use inexact alarms, so the restricted exact-alarm permission is avoided. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 </manifest>
