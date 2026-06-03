@@ -100,6 +100,14 @@ export const FEATURE_FLAGS = {
    */
   VIETNAMESE_TONE_FEEDBACK_MVP_ENABLED: false,
 
+  /**
+   * English pronunciation feedback MVP for Vietnamese learners.
+   * When ON: the Speak flow can show a small learner-facing English
+   * sound card using Azure phoneme detail. When OFF: no English
+   * pronunciation feedback is rendered.
+   */
+  ENGLISH_PRONUNCIATION_FEEDBACK_MVP_ENABLED: false,
+
   /** AI Tutor mock UI shell — behind feature flag, mock responses only. */
   AI_TUTOR_UI_ENABLED: true,
 

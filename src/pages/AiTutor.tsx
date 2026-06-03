@@ -2,7 +2,7 @@
 // AI Tutor page orchestrator — delegates the shared Teacher Mercy frame to
 // TeacherMercyLearningShell and keeps product behavior local/mock-only.
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useAuth } from "@/providers/AuthProvider";
 import {
   putCorrection,
@@ -100,6 +100,9 @@ import SpeakPracticeMode, {
   type SpeakPronunciationResult,
 } from "@/components/ai-tutor/SpeakPracticeMode";
 import { adaptSpeakPronunciationResult } from "@/components/ai-tutor/speakPronunciationResultAdapter";
+import {
+  buildEnglishPronunciationFeedbackDisplay,
+} from "@/lib/pronunciation/englishPronunciationFeedback";
 import LogicMode from "@/components/ai-tutor/LogicMode";
 import TeacherMercyLearningShell from "@/components/teacher-mercy/TeacherMercyLearningShell";
 import { scorePronunciationWithStep7Fallback } from "@/lib/pronunciation/cloudScorer";
@@ -1167,6 +1170,33 @@ export default function AiTutorPage() {
 
   useEffect(() => { loadMemory(); }, [target]);
 
+  const englishPronunciationFeedback = useMemo(() => {
+    if (
+      mode !== "speak" ||
+      target !== "en" ||
+      !FEATURE_FLAGS.ENGLISH_PRONUNCIATION_FEEDBACK_MVP_ENABLED
+    ) {
+      return null;
+    }
+
+    const targetSentence =
+      latestCorrectedSeed?.correctedSentence.trim() ||
+      tutorCopy.starterQuestions[0] ||
+      "";
+    if (!targetSentence) return null;
+
+    return buildEnglishPronunciationFeedbackDisplay({
+      targetSentence,
+      result: speakPronunciationResult,
+    });
+  }, [
+    latestCorrectedSeed?.correctedSentence,
+    mode,
+    speakPronunciationResult,
+    target,
+    tutorCopy.starterQuestions,
+  ]);
+
   useEffect(() => {
     const shell = shellRef.current;
     if (!shell) return undefined;
@@ -1672,6 +1702,8 @@ export default function AiTutorPage() {
           targetSentence={latestCorrectedSeed?.correctedSentence ?? null}
           repeatInput={speakRepeatInput}
           pronunciationResult={speakPronunciationResult}
+          englishPronunciationFeedbackEnabled={FEATURE_FLAGS.ENGLISH_PRONUNCIATION_FEEDBACK_MVP_ENABLED && target === "en"}
+          englishPronunciationFeedback={englishPronunciationFeedback}
           vietnameseToneFeedbackEnabled={FEATURE_FLAGS.VIETNAMESE_TONE_FEEDBACK_MVP_ENABLED && target === "vi"}
           vietnameseToneFeedback={speakVietnameseToneFeedback}
           micSupported={stt.supported}
