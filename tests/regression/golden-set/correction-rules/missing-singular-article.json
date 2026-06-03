@@ -110,6 +110,30 @@
       "expectedCorrection": "I want book a room.",
       "expectedRuleFired": null,
       "notes": "Verb-sense guard (merged 242cd2d7): 'book' is the verb (to book a room); article rule must not fire."
+    },
+    {
+      "id": "missing-article-neg-lock-book-table",
+      "input": "I need book a table.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I need book a table.",
+      "expectedRuleFired": null,
+      "notes": "Reservation tail: 'book' is the verb (to book a table); article rule must not fire."
+    },
+    {
+      "id": "missing-article-neg-lock-book-flight",
+      "input": "I need book a flight.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I need book a flight.",
+      "expectedRuleFired": null,
+      "notes": "Reservation tail: 'book' is the verb (to book a flight); article rule must not fire."
+    },
+    {
+      "id": "missing-article-neg-lock-book-ticket",
+      "input": "I need book a ticket.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I need book a ticket.",
+      "expectedRuleFired": null,
+      "notes": "Reservation tail: 'book' is the verb (to book a ticket); article rule must not fire."
     }
   ]
 }

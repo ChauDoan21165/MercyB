@@ -93,6 +93,9 @@ describe("correctionEngine", () => {
     "I like music.",
     "I like dogs.",
     "I bought Apple yesterday.",
+    "I need book a table.",
+    "I need book a flight.",
+    "I need book a ticket.",
   ])("does not over-trigger approved Step 5 article omission: %s", (input) => {
     const result = correctWithTutorRules(input, "en");
     expect(result).toMatchObject({

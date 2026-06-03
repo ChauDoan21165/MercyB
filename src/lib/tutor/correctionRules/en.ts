@@ -95,7 +95,7 @@ function hasLikelyVerbSenseTail(token: string, tail: string): boolean {
   }
 
   if (normalizedToken === "book") {
-    return /^(?:a|an|the)\s+room\b/.test(normalizedTail);
+    return /^(?:a|an|the)\s+(?:room|table|flight|ticket)\b/.test(normalizedTail);
   }
 
   if (normalizedToken === "bike") {
