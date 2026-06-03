@@ -1,0 +1,101 @@
+{
+  "corpus": "vn-interference-structural-D1",
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "category": "structural-existential-order-comparative",
+  "status": "backlog_only_not_live_wired",
+  "schemaBasis": "tests/regression/golden-set/_pending-guards/vn-interference-corpus-wave.json",
+  "generatedBy": "D1",
+  "generatedAt": "2026-06-02",
+  "liveEngine": {
+    "entryPoint": "correctWithTutorRules(input, 'en') in src/lib/tutor/correctionEngine.ts",
+    "verifiedAt": "2026-06-02",
+    "note": "All four slices are GAPS verified against the UNMODIFIED engine: every positive abstains today, every confusable negative correctly abstains. Excludes already-wired structural rules (en-l4-topic-comment-word-order, en-be-verb-omission, en-question-form-final-mark) and the prep/phrasal slice already filed in vn-interference-prep-phrasal-D1.json."
+  },
+  "items": [
+    {
+      "rule": "existentialHaveThereIs",
+      "ruleId": "en-existential-have-there-is",
+      "wiringStatus": "proposed_not_wired",
+      "liveCoverage": "gap",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN 'co' (have/exist) calques existential clauses to 'have': '[place] have [NP]'. English uses 'there is/are [NP] [place]'.",
+      "detectorSketch": "Fire on a locative-fronted clause ([in/at/on/here/there] ...) whose verb is 'have/has' with NO animate possessor subject, then a noun phrase. Rewrite to 'There is/are <NP> <locative>' (number-agree is/are with the NP). Do NOT fire on possessive 'have' with a personal subject ('I/we/she have ...').",
+      "fp_risk_note": "High. 'have' is overwhelmingly correct possession ('I have a car', 'We have a meeting'). Restrict strictly to the subjectless/locative-fronted existential frame; never rewrite a clause whose subject is a person/pronoun possessor.",
+      "positive": [
+        { "id": "d1-exist-pos-001", "input": "In my city have many parks.", "expectedStatus": "corrected", "expectedCorrection": "There are many parks in my city.", "expectedRuleFired": "existentialHaveThereIs", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "In my city have many parks.", "appliedRuleIds": [] }, "notes": "GAP: plural NP -> 'there are'. Engine abstains today." },
+        { "id": "d1-exist-pos-002", "input": "In the box have a book.", "expectedStatus": "corrected", "expectedCorrection": "There is a book in the box.", "expectedRuleFired": "existentialHaveThereIs", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "In the box have a book.", "appliedRuleIds": [] }, "notes": "GAP: singular NP -> 'there is'. Engine abstains today." },
+        { "id": "d1-exist-pos-003", "input": "Here have a problem.", "expectedStatus": "corrected", "expectedCorrection": "There is a problem here.", "expectedRuleFired": "existentialHaveThereIs", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Here have a problem.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today." }
+      ],
+      "negative": [
+        { "id": "d1-exist-neg-001", "input": "I have a car.", "expectedStatus": "unchanged", "expectedCorrection": "I have a car.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I have a car.", "appliedRuleIds": [] }, "notes": "Confusable: possessive 'have' with a personal subject — must not become 'there is'; live-engine verified abstains." },
+        { "id": "d1-exist-neg-002", "input": "There are many parks in my city.", "expectedStatus": "unchanged", "expectedCorrection": "There are many parks in my city.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "There are many parks in my city.", "appliedRuleIds": [] }, "notes": "Already-correct target form; live-engine verified abstains." },
+        { "id": "d1-exist-neg-003", "input": "We have a meeting today.", "expectedStatus": "unchanged", "expectedCorrection": "We have a meeting today.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "We have a meeting today.", "appliedRuleIds": [] }, "notes": "Confusable: possessive 'have'; live-engine verified abstains." }
+      ]
+    },
+    {
+      "rule": "dummySubjectItWeather",
+      "ruleId": "en-dummy-subject-it-weather",
+      "wiringStatus": "proposed_not_wired",
+      "liveCoverage": "gap",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN is pro-drop and has no dummy subject, so ambient/weather predicates surface subjectless: '[time/place] very <adj>'. English requires the expletive 'it': 'It is very <adj> ...'.",
+      "detectorSketch": "Fire on a subjectless ambient predicate (optional time/place adjunct + 'very'/adjective, no subject NP, no verb). Insert 'It is' and reorder the adjunct: 'It is very <adj> <adjunct>'. Do NOT fire when a subject is already present ('I am cold', 'The weather is hot').",
+      "fp_risk_note": "Medium-high. Must not touch clauses that already have a subject ('I am cold', 'The weather is hot today'). Anchor on the genuinely subjectless ambient fragment; do not insert 'it' in front of an existing subject.",
+      "positive": [
+        { "id": "d1-dummyit-pos-001", "input": "Today very hot.", "expectedStatus": "corrected", "expectedCorrection": "It is very hot today.", "expectedRuleFired": "dummySubjectItWeather", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Today very hot.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today." },
+        { "id": "d1-dummyit-pos-002", "input": "Very cold in winter.", "expectedStatus": "corrected", "expectedCorrection": "It is very cold in winter.", "expectedRuleFired": "dummySubjectItWeather", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Very cold in winter.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today." },
+        { "id": "d1-dummyit-pos-003", "input": "Outside very windy now.", "expectedStatus": "corrected", "expectedCorrection": "It is very windy outside now.", "expectedRuleFired": "dummySubjectItWeather", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "Outside very windy now.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today." }
+      ],
+      "negative": [
+        { "id": "d1-dummyit-neg-001", "input": "It is very hot today.", "expectedStatus": "unchanged", "expectedCorrection": "It is very hot today.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "It is very hot today.", "appliedRuleIds": [] }, "notes": "Already-correct target form; live-engine verified abstains." },
+        { "id": "d1-dummyit-neg-002", "input": "The weather is hot today.", "expectedStatus": "unchanged", "expectedCorrection": "The weather is hot today.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "The weather is hot today.", "appliedRuleIds": [] }, "notes": "Confusable: an explicit subject is present — must not prepend 'it'; live-engine verified abstains." },
+        { "id": "d1-dummyit-neg-003", "input": "I am cold.", "expectedStatus": "unchanged", "expectedCorrection": "I am cold.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I am cold.", "appliedRuleIds": [] }, "notes": "Confusable: personal-subject experience ('I am cold' != weather 'it is cold'); live-engine verified abstains." }
+      ]
+    },
+    {
+      "rule": "adjectiveNounOrder",
+      "ruleId": "en-adjective-noun-order",
+      "wiringStatus": "proposed_not_wired",
+      "liveCoverage": "gap",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN places attributive adjectives AFTER the noun ('cho den' = dog black), so learners produce '[det] [noun] [adj]'. English is prenominal: '[det] [adj] [noun]'.",
+      "detectorSketch": "Fire on [determiner + common-noun + attributive-adjective] at a noun-phrase boundary; swap to [determiner + adjective + noun]. Do NOT fire on postnominal adjectives that are correct: indefinite pronouns ('something new', 'anything wrong') and fixed phrases ('attorney general').",
+      "fp_risk_note": "Medium-high. Postnominal adjectives ARE correct after indefinite pronouns ('something/anything/nothing + adj') and in lexicalized phrases. Gate on a [det + common-noun + adj] frame; never reorder 'something new'.",
+      "positive": [
+        { "id": "d1-adjord-pos-001", "input": "I have a dog black.", "expectedStatus": "corrected", "expectedCorrection": "I have a black dog.", "expectedRuleFired": "adjectiveNounOrder", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I have a dog black.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today." },
+        { "id": "d1-adjord-pos-002", "input": "She bought a shirt new.", "expectedStatus": "corrected", "expectedCorrection": "She bought a new shirt.", "expectedRuleFired": "adjectiveNounOrder", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "She bought a shirt new.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today." },
+        { "id": "d1-adjord-pos-003", "input": "He drives a car red.", "expectedStatus": "corrected", "expectedCorrection": "He drives a red car.", "expectedRuleFired": "adjectiveNounOrder", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "He drives a car red.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today." }
+      ],
+      "negative": [
+        { "id": "d1-adjord-neg-001", "input": "I have a black dog.", "expectedStatus": "unchanged", "expectedCorrection": "I have a black dog.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I have a black dog.", "appliedRuleIds": [] }, "notes": "Already-correct prenominal order; live-engine verified abstains." },
+        { "id": "d1-adjord-neg-002", "input": "She bought a new shirt.", "expectedStatus": "unchanged", "expectedCorrection": "She bought a new shirt.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "She bought a new shirt.", "appliedRuleIds": [] }, "notes": "Already-correct; live-engine verified abstains." },
+        { "id": "d1-adjord-neg-003", "input": "I want something new.", "expectedStatus": "unchanged", "expectedCorrection": "I want something new.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "I want something new.", "appliedRuleIds": [] }, "notes": "Confusable: postnominal adjective is REQUIRED after an indefinite pronoun — must not reorder; live-engine verified abstains." }
+      ]
+    },
+    {
+      "rule": "comparativeMoreShortAdj",
+      "ruleId": "en-comparative-more-short-adj",
+      "wiringStatus": "proposed_not_wired",
+      "liveCoverage": "gap",
+      "language": "en",
+      "qaStatus": "passed",
+      "description": "VN forms comparatives analytically ('hon' = more), so learners say 'more <short adj>' instead of the synthetic '-er': 'more tall' -> 'taller'.",
+      "detectorSketch": "Fire on 'more' + monosyllabic (or -y bisyllabic) gradable adjective + 'than'; rewrite to the synthetic '<adj>+er'. Whitelist short adjectives (tall, young, old, big, small, easy, fast, cheap, ...). Do NOT fire on 2+ syllable adjectives that REQUIRE 'more' (beautiful, difficult, interesting, expensive).",
+      "fp_risk_note": "High. 'more' is CORRECT for most multi-syllable adjectives ('more beautiful', 'more difficult', 'more expensive'). Only the short-adjective set takes '-er'; gate on a syllable/whitelist check or the rule will mangle correct long-adjective comparatives.",
+      "positive": [
+        { "id": "d1-compar-pos-001", "input": "She is more tall than me.", "expectedStatus": "corrected", "expectedCorrection": "She is taller than me.", "expectedRuleFired": "comparativeMoreShortAdj", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "She is more tall than me.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today." },
+        { "id": "d1-compar-pos-002", "input": "This is more easy than that.", "expectedStatus": "corrected", "expectedCorrection": "This is easier than that.", "expectedRuleFired": "comparativeMoreShortAdj", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "This is more easy than that.", "appliedRuleIds": [] }, "notes": "GAP: -y -> -ier. Engine abstains today." },
+        { "id": "d1-compar-pos-003", "input": "He is more young than her.", "expectedStatus": "corrected", "expectedCorrection": "He is younger than her.", "expectedRuleFired": "comparativeMoreShortAdj", "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "He is more young than her.", "appliedRuleIds": [] }, "notes": "GAP: engine abstains today." }
+      ],
+      "negative": [
+        { "id": "d1-compar-neg-001", "input": "She is taller than me.", "expectedStatus": "unchanged", "expectedCorrection": "She is taller than me.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "She is taller than me.", "appliedRuleIds": [] }, "notes": "Already-correct synthetic form; live-engine verified abstains." },
+        { "id": "d1-compar-neg-002", "input": "This is more difficult than that.", "expectedStatus": "unchanged", "expectedCorrection": "This is more difficult than that.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "This is more difficult than that.", "appliedRuleIds": [] }, "notes": "Confusable: 3-syllable adjective correctly takes 'more' — must not become 'difficulter'; live-engine verified abstains." },
+        { "id": "d1-compar-neg-003", "input": "She is more beautiful than him.", "expectedStatus": "unchanged", "expectedCorrection": "She is more beautiful than him.", "expectedRuleFired": null, "liveEngine": { "marker": "abstains", "status": "unchanged", "corrected": "She is more beautiful than him.", "appliedRuleIds": [] }, "notes": "Confusable: long adjective correctly takes 'more'; live-engine verified abstains." }
+      ]
+    }
+  ]
+}
