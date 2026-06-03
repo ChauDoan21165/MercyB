@@ -1,5 +1,8 @@
 // src/lib/analytics.ts
 
+import { supabase } from "@/lib/supabaseClient";
+import { isFlagEnabledForUser } from "@/lib/featureFlags";
+
 export type AnalyticsEventName =
   | "pricing_viewed"
   | "checkout_started"
@@ -189,4 +192,51 @@ export function track(
   payload?: AnalyticsPayload,
 ): void {
   trackEvent(eventName, payload);
+}
+
+export type FeatureOutcomeEvent = "shown" | "engaged" | "completed";
+
+/**
+ * First-party feature-outcome telemetry for the D1/D7/D30 success gate.
+ * Inserts one row into public.feature_outcome_events (read by the
+ * get_feature_outcome RPC). Distinct from trackEvent: this is product
+ * telemetry, NOT marketing — it is independent of setMarketingConsent.
+ *
+ * Gated per-user behind the DB-backed `RETENTION_OUTCOME_EVENTS` feature flag
+ * (public.feature_flags / feature_flags_public). It ships dark: with no flag
+ * row the gate returns false and nothing is emitted — flip it on per launch.
+ * Fire-and-forget; never throws (telemetry must not break a feature path).
+ */
+export async function emitFeatureOutcome(
+  featureKey: string,
+  event: FeatureOutcomeEvent,
+  payload?: AnalyticsPayload,
+): Promise<void> {
+  if (!isBrowser()) return;
+  try {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user) return; // authenticated-only emit (RLS: user_id = auth.uid())
+
+    // isFlagEnabledForUser takes a hand-rolled MinimalSupabaseClient (server
+    // shape); the real browser client is structurally wider, so cast through
+    // the parameter type. Runtime-identical — same .from().select().eq().maybeSingle().
+    const enabled = await isFlagEnabledForUser(
+      supabase as unknown as Parameters<typeof isFlagEnabledForUser>[0],
+      "RETENTION_OUTCOME_EVENTS",
+      user.id,
+    );
+    if (!enabled) return;
+
+    await supabase.from("feature_outcome_events").insert({
+      user_id: user.id,
+      feature_key: featureKey,
+      event,
+      payload: cleanPayload(payload) ?? {},
+      occurred_at: nowIso(),
+    });
+  } catch {
+    // fire-and-forget
+  }
 }

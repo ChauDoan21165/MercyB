@@ -31,6 +31,13 @@ verify_jwt = false
 [functions.parent-weekly-digest]
 verify_jwt = false
 
+# Track 1 — D1/D7/D30 cohort retention aggregator. Cron-triggered (pg_cron;
+# schedule drafted in migration 20260701120000, applied manually). Accepts
+# unauthenticated calls but enforces its own ADMIN_CRON_SECRET header check,
+# then writes cohort_retention_daily with the service-role key.
+[functions.cohort-retention-aggregator]
+verify_jwt = false
+
 
 # =========================
 # CHAT / AI
