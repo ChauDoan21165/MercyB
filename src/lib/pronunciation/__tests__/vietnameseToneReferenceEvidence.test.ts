@@ -104,7 +104,7 @@ function evaluateFixture(
 }
 
 function evaluateSynthFixture(
-  target: (typeof generatedHardToneReferences)[number]["target"],
+  target: ReturnType<typeof generatedHardToneReferences>[number]["target"],
   samples: Float32Array,
   label: string,
 ) {
