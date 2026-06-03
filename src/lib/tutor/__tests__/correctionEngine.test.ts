@@ -669,6 +669,7 @@ describe("correctionEngine", () => {
     ["I wake up 7 o'clock.", "I wake up at 7 o'clock."],
     ["She starts work 8 AM.", "She starts work at 8 AM."],
     ["We meet 6:30.", "We meet at 6:30."],
+    ["I wake up 12 o'clock.", "I wake up at 12 o'clock."],
   ])("corrects approved Step 6 at-clock-time pattern: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "corrected",
@@ -682,6 +683,8 @@ describe("correctionEngine", () => {
     "She works 8 hours.",
     "We meet tomorrow.",
     "We meet at 6:30.",
+    "I wake up 25:00.",
+    "She starts work 19:99.",
   ])("does not over-trigger approved Step 6 at-clock-time pattern: %s", (input) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "unchanged",

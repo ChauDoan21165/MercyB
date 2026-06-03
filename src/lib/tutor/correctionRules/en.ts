@@ -349,7 +349,8 @@ function repairStep5PrepositionPatterns(input: string): string {
 
 const PERSON_OBJECT_PRONOUN_PATTERN = "(?:me|you|him|her|us|them)";
 const STEP6_LISTEN_OBJECT_PATTERN = "(?:me|you|him|her|us|them|music|song|teacher|radio|podcast|lesson|story)";
-const CLOCK_TIME_PATTERN = "(?:\\d{1,2}\\s+o(?:'|\\u2019)?clock|\\d{1,2}\\s*(?:AM|PM|am|pm)|\\d{1,2}:\\d{2})";
+const CLOCK_TIME_PATTERN =
+  "(?:(?:1[0-2]|0?[1-9])\\s+o(?:'|\\u2019)?clock|(?:1[0-2]|0?[1-9])\\s*(?:AM|PM|am|pm)|(?:[01]?\\d|2[0-3]):[0-5]\\d)";
 const STEP6_LOOK_AT_BLOCKED_PARTICLE_PATTERN = "(?:for|after|up|over|around|out|like|into)";
 const STEP6_LOOK_AT_SEPARATED_PARTICLE_PATTERN = "(?:up|over|around|out)";
 const CALQUE_APPLIANCE_OBJECT_PATTERN =
