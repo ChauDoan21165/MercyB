@@ -32,6 +32,22 @@
       "expectedCorrection": "He waits for her.",
       "expectedRuleFired": "step6WaitForPersonObject",
       "notes": "Preserves third-person waits positive while inserting for before object pronoun her."
+    },
+    {
+      "id": "wait-for-person-object-pos-005",
+      "input": "Wait me.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Wait for me.",
+      "expectedRuleFired": "step6WaitForPersonObject",
+      "notes": "Bare object pronoun directly after 'wait' -> insert 'for'. (Backfill from closed !377.)"
+    },
+    {
+      "id": "wait-for-person-object-pos-006",
+      "input": "Please wait us.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Please wait for us.",
+      "expectedRuleFired": "step6WaitForPersonObject",
+      "notes": "Object pronoun 'us' after 'wait' -> insert 'for'. (Backfill from closed !377.)"
     }
   ],
   "negative": [
