@@ -102,6 +102,38 @@
       "expectedCorrection": "I will wait you out.",
       "expectedRuleFired": null,
       "notes": "Confusable: modal wait someone out phrasal idiom stays unchanged."
+    },
+    {
+      "id": "wait-for-person-object-neg-conf-010",
+      "input": "Wait them up.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Wait them up.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: valid wait someone up phrasal surface stays unchanged."
+    },
+    {
+      "id": "wait-for-person-object-neg-conf-011",
+      "input": "We waited him up.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "We waited him up.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: past-tense wait someone up phrasal surface stays unchanged."
+    },
+    {
+      "id": "wait-for-person-object-neg-conf-012",
+      "input": "I will wait you up.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I will wait you up.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: modal wait someone up phrasal surface stays unchanged."
+    },
+    {
+      "id": "wait-for-person-object-neg-conf-013",
+      "input": "They are waiting him up.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "They are waiting him up.",
+      "expectedRuleFired": null,
+      "notes": "Confusable: progressive wait someone up phrasal surface stays unchanged."
     }
   ]
 }

@@ -362,8 +362,8 @@ function repairStep6WaitFor(input: string): string {
 
 function hasStep6WaitForPersonObject(input: string): boolean {
   const waitPersonPattern = new RegExp(`\\b(wait|waits|waited|waiting)\\s+${PERSON_OBJECT_PRONOUN_PATTERN}\\b`, "i");
-  const waitOutPattern = new RegExp(`\\b(wait|waits|waited|waiting)\\s+${PERSON_OBJECT_PRONOUN_PATTERN}\\s+out\\b`, "i");
-  return waitPersonPattern.test(input) && !waitOutPattern.test(input);
+  const waitPhrasalPattern = new RegExp(`\\b(wait|waits|waited|waiting)\\s+${PERSON_OBJECT_PRONOUN_PATTERN}\\s+(?:out|up)\\b`, "i");
+  return waitPersonPattern.test(input) && !waitPhrasalPattern.test(input);
 }
 
 function repairStep6ListenTo(input: string): string {
