@@ -108,6 +108,18 @@ export const FEATURE_FLAGS = {
    */
   ENGLISH_PRONUNCIATION_FEEDBACK_MVP_ENABLED: false,
 
+  /**
+   * Track 2 — anonymized learner-interaction capture pipeline.
+   * When ON: correction-engine + pronunciation results are sent
+   * (fire-and-forget) to the learner-capture edge function, which HMACs
+   * the user id, scrubs PII, and inserts into learner_interaction_capture.
+   * Gated additionally by per-user consent (public.learning_data_consent)
+   * — both must pass before anything is captured.
+   * When OFF: every captureCorrection/capturePronunciation call is a no-op.
+   * Master kill switch. Reads env `VITE_LEARNING_CAPTURE_ENABLED`; default OFF.
+   */
+  LEARNING_CAPTURE_ENABLED: readEnvBool("VITE_LEARNING_CAPTURE_ENABLED", false),
+
   /** AI Tutor mock UI shell — behind feature flag, mock responses only. */
   AI_TUTOR_UI_ENABLED: true,
 

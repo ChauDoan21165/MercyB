@@ -22,6 +22,7 @@ import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 import { SpeechDrill } from '@/components/speech/SpeechDrill';
 import { recordSpeechAttempt } from '@/services/speechAttempts';
+import { capturePronunciation } from '@/services/learnerCapture';
 import {
   ROOM_PROGRESS_APP_ID,
   trackRoomEntry,
@@ -540,6 +541,13 @@ export default function SpeechDrillPage() {
                 await recordLessonProgress(lessonSession, currentIndex + 1);
               }
             })();
+            // Track 2 — anonymized capture (separate, consent-gated pipeline).
+            void capturePronunciation({
+              target: event.target,
+              recognized: event.recognized,
+              score: event.score,
+              targetLanguage: 'en',
+            });
           }}
           onViewHistory={() => navigate('/speech/history')}
         />

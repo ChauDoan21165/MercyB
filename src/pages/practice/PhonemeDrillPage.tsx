@@ -31,6 +31,7 @@ import { useAuth } from "@/providers/AuthProvider";
 import { reportRouteMountPerf } from "@/lib/monitoring/routePerf";
 import { SpeechDrill, type SpeechAttemptEvent } from "@/components/speech/SpeechDrill";
 import { recordSpeechAttempt } from "@/services/speechAttempts";
+import { capturePronunciation } from "@/services/learnerCapture";
 import {
   getDrillPackBySlug,
   type DrillSentence,
@@ -154,6 +155,14 @@ export default function PhonemeDrillPage() {
             drill_source: source,
           },
         },
+      });
+      // Track 2 — anonymized capture (separate, consent-gated pipeline).
+      void capturePronunciation({
+        target: event.target,
+        recognized: event.recognized,
+        score: event.score,
+        targetLanguage: "en",
+        sessionId,
       });
       trackDrillSentenceScored({
         session_id: sessionId,
