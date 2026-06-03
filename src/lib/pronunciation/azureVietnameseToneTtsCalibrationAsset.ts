@@ -2,6 +2,7 @@
 // Contains derived f0 contours and metadata only; raw audio is not persisted.
 
 import type { VietnameseToneReferenceIngestionResult } from "./vietnameseToneReferenceIngestion";
+import type { SupportedVietnameseToneCalibrationContour } from "./vietnameseToneCalibration";
 
 export const azureVietnameseToneTtsCalibrationAsset = {
   "source": "azure-tts-proxy",
@@ -2197,11 +2198,42 @@ export const azureVietnameseToneTtsCalibrationAsset = {
 export type AzureVietnameseToneTtsCalibrationAsset = typeof azureVietnameseToneTtsCalibrationAsset;
 
 export function azureVietnameseToneTtsCalibrationIngestionResult(): VietnameseToneReferenceIngestionResult {
+  const calibrationReferences = expandCalibrationReferences(azureVietnameseToneTtsCalibrationAsset.acceptedRecordings);
   return JSON.parse(JSON.stringify({
-    calibrationReferences: [...azureVietnameseToneTtsCalibrationAsset.calibrationReferences],
+    calibrationReferences,
     perToneReferenceContours: { ...azureVietnameseToneTtsCalibrationAsset.perToneReferenceContours },
     acceptedRecordings: [...azureVietnameseToneTtsCalibrationAsset.acceptedRecordings],
     droppedRecordings: [...azureVietnameseToneTtsCalibrationAsset.droppedRecordings],
     speakerMedianF0Hz: { ...azureVietnameseToneTtsCalibrationAsset.speakerMedianF0Hz },
   })) as VietnameseToneReferenceIngestionResult;
+}
+
+function expandCalibrationReferences(
+  acceptedRecordings: AzureVietnameseToneTtsCalibrationAsset["acceptedRecordings"],
+): VietnameseToneReferenceIngestionResult["calibrationReferences"] {
+  return acceptedRecordings.map((recording) => {
+    if (recording.tone === "sac" || recording.tone === "huyen" || recording.tone === "ngang") {
+      return {
+        id: `reference-${recording.id}`,
+        kind: "clean_supported",
+        target: recording.target,
+        expectedContour: recording.target.expectedContour as SupportedVietnameseToneCalibrationContour,
+        contour: cloneContour(recording.normalizedContour),
+      };
+    }
+
+    return {
+      id: `unsupported-${recording.id}`,
+      kind: "unsupported",
+      target: recording.target,
+      contour: cloneContour(recording.normalizedContour),
+    };
+  });
+}
+
+function cloneContour(contour: AzureVietnameseToneTtsCalibrationAsset["acceptedRecordings"][number]["normalizedContour"]): VietnameseToneReferenceIngestionResult["calibrationReferences"][number]["contour"] {
+  return {
+    ...contour,
+    samples: contour.samples.map((sample) => ({ ...sample })),
+  };
 }
