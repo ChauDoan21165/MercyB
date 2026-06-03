@@ -8,6 +8,7 @@
 import { supabase } from "@/lib/supabaseClient";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
 import { getStreakDays } from "@/services/pointsService";
+import { isStreakAtRisk } from "@/lib/streak/canonicalStreak";
 import {
   fetchDueCount,
   fetchNextScheduledAt,
@@ -68,11 +69,16 @@ export async function buildHabitSnapshot(
   const streakDays = getStreakDays();
   const { dueCount, nextScheduledAt } = await readDue();
 
-  const isAtRiskToday =
-    serverStreaksEnabled &&
-    streakDays > 0 &&
-    lastStudied === yesterdayLocal &&
-    lastStudied !== todayLocal;
+  // At-risk computed via the single shared rule (canonicalStreak). lastStudied
+  // is the AUTHORITATIVE server value from the profiles query above — the engine
+  // context can't rely on the React-warmed client cache, so we pass it directly.
+  const isAtRiskToday = isStreakAtRisk({
+    serverStreaksEnabled,
+    streakDays,
+    lastStudiedDate: lastStudied,
+    todayLocal,
+    yesterdayLocal,
+  });
 
   return {
     todayLocal,

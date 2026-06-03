@@ -20,7 +20,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { useServerStreak } from "@/hooks/useServerStreak";
+import { useCanonicalStreak } from "@/hooks/useCanonicalStreak";
 import {
   formatStreakTooltip,
   freezeMessage,
@@ -102,7 +102,7 @@ export function StreakBadge({
   onVacation = false,
   insuranceAvailable = 0,
 }: StreakBadgeProps) {
-  const streak = useServerStreak();
+  const streak = useCanonicalStreak();
   const [showTip, setShowTip] = useState(false);
 
   // Hide entirely while loading, on error, or when there's nothing to brag about.

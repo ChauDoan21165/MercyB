@@ -19,7 +19,7 @@
 
 import React, { useMemo } from "react";
 
-import { useServerStreak } from "@/hooks/useServerStreak";
+import { useCanonicalStreak } from "@/hooks/useCanonicalStreak";
 import {
   emptyState,
   graceMessage,
@@ -206,7 +206,7 @@ export type StreakHistoryPanelProps = {
 export function StreakHistoryPanel({
   anchorId = "streaks",
 }: StreakHistoryPanelProps) {
-  const streak = useServerStreak();
+  const streak = useCanonicalStreak();
 
   const status = useMemo<StreakStatus>(
     () => deriveStatus(streak.lastStudiedDate),
