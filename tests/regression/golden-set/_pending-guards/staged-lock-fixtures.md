@@ -946,3 +946,222 @@ Gated on: Lane A adds a vehicle-whitelist boarding/alighting rule:
   "notes": "D1 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; incline/path object must not be rewritten as vehicle boarding."
 }
 ```
+
+## D2 corpus. en-paired-connector-because-so → target fixture TBD
+
+Source: `vn-interference-paired-connectors-D2.json`, candidate
+`en-paired-connector-because-so` / `pairedConnectorBecauseSo`.
+
+Gated on: Lane A adds a paired-connector rule:
+sentence-initial `Because <clause>, so <clause>` → `Because <clause>, <clause>`.
+
+**ACTIVATION positives** (abstain today → must fire once the new rule lands):
+```json
+{
+  "id": "d2-because-so-pos-001",
+  "input": "Because it rained, so I stayed home.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Because it rained, I stayed home.",
+  "expectedRuleFired": "en-paired-connector-because-so",
+  "notes": "D2 corpus candidate en-paired-connector-because-so. ACTIVATE-AFTER: live engine 2026-06-02 abstains; drop redundant clause-initial 'so' after sentence-initial 'Because'."
+}
+```
+```json
+{
+  "id": "d2-because-so-pos-002",
+  "input": "Because he was tired, so he slept.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Because he was tired, he slept.",
+  "expectedRuleFired": "en-paired-connector-because-so",
+  "notes": "D2 corpus candidate en-paired-connector-because-so. ACTIVATE-AFTER: live engine 2026-06-02 abstains; past-tense clause must be preserved while redundant 'so' is removed."
+}
+```
+```json
+{
+  "id": "d2-because-so-pos-003",
+  "input": "Because she is busy, so she cannot come.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Because she is busy, she cannot come.",
+  "expectedRuleFired": "en-paired-connector-because-so",
+  "notes": "D2 corpus candidate en-paired-connector-because-so. ACTIVATE-AFTER: live engine 2026-06-02 abstains; modal clause must remain intact."
+}
+```
+
+**VERIFY-NOW negatives** (already abstain; must keep abstaining after the new rule):
+```json
+{
+  "id": "d2-because-so-neg-001",
+  "input": "I was tired, so I went to bed because I needed rest.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I was tired, so I went to bed because I needed rest.",
+  "expectedRuleFired": null,
+  "notes": "D2 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; 'so' opens the main result clause and 'because' trails later, not a sentence-initial because...so pair."
+}
+```
+```json
+{
+  "id": "d2-because-so-neg-002",
+  "input": "He is so tired because of work.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "He is so tired because of work.",
+  "expectedRuleFired": null,
+  "notes": "D2 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; 'so' is an intensifier and 'because of' is prepositional."
+}
+```
+```json
+{
+  "id": "d2-because-so-neg-003",
+  "input": "She studied hard, so she passed.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "She studied hard, so she passed.",
+  "expectedRuleFired": null,
+  "notes": "D2 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; correct single result-'so' with no leading 'because'."
+}
+```
+
+## D2 corpus. en-paired-connector-although-but → target fixture TBD
+
+Source: `vn-interference-paired-connectors-D2.json`, candidate
+`en-paired-connector-although-but` / `pairedConnectorAlthoughBut`.
+
+Gated on: Lane A adds a paired-connector rule:
+sentence-initial `Although/Though <clause>, but <clause>` →
+`Although/Though <clause>, <clause>`.
+
+**ACTIVATION positives** (abstain today → must fire once the new rule lands):
+```json
+{
+  "id": "d2-although-but-pos-001",
+  "input": "Although it rained, but I still went.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Although it rained, I still went.",
+  "expectedRuleFired": "en-paired-connector-although-but",
+  "notes": "D2 corpus candidate en-paired-connector-although-but. ACTIVATE-AFTER: live engine 2026-06-02 abstains; drop redundant clause-initial 'but'."
+}
+```
+```json
+{
+  "id": "d2-although-but-pos-002",
+  "input": "Although he is rich, but he is not happy.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Although he is rich, he is not happy.",
+  "expectedRuleFired": "en-paired-connector-although-but",
+  "notes": "D2 corpus candidate en-paired-connector-although-but. ACTIVATE-AFTER: live engine 2026-06-02 abstains; negated predicate must be preserved."
+}
+```
+```json
+{
+  "id": "d2-although-but-pos-003",
+  "input": "Although she was sick, but she came to work.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Although she was sick, she came to work.",
+  "expectedRuleFired": "en-paired-connector-although-but",
+  "notes": "D2 corpus candidate en-paired-connector-although-but. ACTIVATE-AFTER: live engine 2026-06-02 abstains; past-tense clause must remain intact."
+}
+```
+
+**VERIFY-NOW negatives** (already abstain; must keep abstaining after the new rule):
+```json
+{
+  "id": "d2-although-but-neg-001",
+  "input": "I tried, but I failed.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I tried, but I failed.",
+  "expectedRuleFired": null,
+  "notes": "D2 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; correct single contrastive 'but' with no leading 'although'."
+}
+```
+```json
+{
+  "id": "d2-although-but-neg-002",
+  "input": "Although it was hard, I finished.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "Although it was hard, I finished.",
+  "expectedRuleFired": null,
+  "notes": "D2 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; already-correct although clause with no redundant 'but'."
+}
+```
+```json
+{
+  "id": "d2-although-but-neg-003",
+  "input": "He said nothing but the truth.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "He said nothing but the truth.",
+  "expectedRuleFired": null,
+  "notes": "D2 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; 'but' means except, not a paired connector."
+}
+```
+
+## D2 corpus. en-paired-connector-eventhough-but → target fixture TBD
+
+Source: `vn-interference-paired-connectors-D2.json`, candidate
+`en-paired-connector-eventhough-but` / `pairedConnectorEvenThoughBut`.
+
+Gated on: Lane A adds a paired-connector rule:
+sentence-initial `Even though <clause>, but <clause>` →
+`Even though <clause>, <clause>`, ordered before the bare `though`/`although`
+rule so the longest subordinator wins.
+
+**ACTIVATION positives** (abstain today → must fire once the new rule lands):
+```json
+{
+  "id": "d2-eventhough-but-pos-001",
+  "input": "Even though I studied, but I failed.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Even though I studied, I failed.",
+  "expectedRuleFired": "en-paired-connector-eventhough-but",
+  "notes": "D2 corpus candidate en-paired-connector-eventhough-but. ACTIVATE-AFTER: live engine 2026-06-02 abstains; drop redundant clause-initial 'but'."
+}
+```
+```json
+{
+  "id": "d2-eventhough-but-pos-002",
+  "input": "Though it was late, but she kept working.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Though it was late, she kept working.",
+  "expectedRuleFired": "en-paired-connector-eventhough-but",
+  "notes": "D2 corpus candidate en-paired-connector-eventhough-but. ACTIVATE-AFTER: live engine 2026-06-02 abstains; bare though-branch of this rule-pack must remove redundant 'but'."
+}
+```
+```json
+{
+  "id": "d2-eventhough-but-pos-003",
+  "input": "Even though he apologized, but she was still angry.",
+  "expectedStatus": "corrected",
+  "expectedCorrection": "Even though he apologized, she was still angry.",
+  "expectedRuleFired": "en-paired-connector-eventhough-but",
+  "notes": "D2 corpus candidate en-paired-connector-eventhough-but. ACTIVATE-AFTER: live engine 2026-06-02 abstains; concessive clause must remain intact."
+}
+```
+
+**VERIFY-NOW negatives** (already abstain; must keep abstaining after the new rule):
+```json
+{
+  "id": "d2-eventhough-but-neg-001",
+  "input": "Even though it was raining, we went outside.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "Even though it was raining, we went outside.",
+  "expectedRuleFired": null,
+  "notes": "D2 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; already-correct even-though clause with no redundant 'but'."
+}
+```
+```json
+{
+  "id": "d2-eventhough-but-neg-002",
+  "input": "I have nothing but a pen.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "I have nothing but a pen.",
+  "expectedRuleFired": null,
+  "notes": "D2 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; 'but' means except, not a paired connector."
+}
+```
+```json
+{
+  "id": "d2-eventhough-but-neg-003",
+  "input": "It is not cheap but it is worth it.",
+  "expectedStatus": "unchanged",
+  "expectedCorrection": "It is not cheap but it is worth it.",
+  "expectedRuleFired": null,
+  "notes": "D2 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; single contrastive 'but' with no leading though/even though."
+}
+```
