@@ -91,6 +91,7 @@ import {
 } from "@/lib/ai-tutor/detectorHint";
 import { detectStep5VnEnError } from "@/lib/ai-tutor/step5VnEnDetectors";
 import { recordL1Tag } from "@/lib/stage-3a/adapters/l1TagAdapter";
+import { recordActiveDay } from "@/lib/retention/recordActiveDay";
 import type {
   ConversationMessage,
   MercyConversationMessage,
@@ -1671,6 +1672,12 @@ export default function AiTutorPage() {
       });
     }
     if (activeTodayLesson && studySessionState) {
+      // Live AI-Tutor study-completion seam: learner completed a study prompt
+      // (recordStudyPromptCompleted) inside the RENDERED CorrectionMode submit
+      // (handleSubmit → onSubmit). Distinct from the GrammarWritingTab grammar
+      // surface (different component); handlePracticeSubmit is dead (no UI), so
+      // this is the one live study seam. Direct call: dark, dedup'd per local day.
+      void recordActiveDay();
       setStudySessionState(recordStudyPromptCompleted(studySessionState, {
         safeTopicTag: lessonInsight?.patternId || activeTodayLesson.plan.nextFocus,
         suggestedNextFocus: activeTodayLesson.plan.nextFocus,
