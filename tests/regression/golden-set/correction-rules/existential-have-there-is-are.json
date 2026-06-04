@@ -54,6 +54,30 @@
       "expectedCorrection": "There are many parks in my city.",
       "expectedRuleFired": null,
       "notes": "Already-correct existential there-are surface must stay unchanged."
+    },
+    {
+      "id": "d1-exist-neg-004",
+      "input": "She has eaten lunch.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She has eaten lunch.",
+      "expectedRuleFired": null,
+      "notes": "Auxiliary perfect have (has eaten) must not be rewritten as existential there-is."
+    },
+    {
+      "id": "d1-exist-neg-005",
+      "input": "She has three children.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She has three children.",
+      "expectedRuleFired": null,
+      "notes": "Natural ownership have (personal subject + has) stays unchanged."
+    },
+    {
+      "id": "d1-exist-neg-006",
+      "input": "My city has many parks.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "My city has many parks.",
+      "expectedRuleFired": null,
+      "notes": "Boundary: real subject + has is correct English, NOT locative-fronted bare have. Rule must abstain (no over-fire)."
     }
   ]
 }
