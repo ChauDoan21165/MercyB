@@ -1,0 +1,107 @@
+{
+  "rule": "copulaBeAdjective",
+  "ruleId": "en-vn-copula-be-adjective",
+  "language": "en",
+  "description": "VN adjective-predicate copula drop (A2 build gate). Rule en-vn-copula-be-adjective inserts the missing copula in narrow bare-adjective surfaces with pronoun or single-token named subjects. It is intentionally stricter than en-be-verb-omission: this fixture locks the no-intensifier adjective gap only, not the existing 'very + adjective' rule.",
+  "fp_risk_note": "High risk. Bare adjective predicates overlap with bare verbs, noun predicates, and sentence fragments. V1 stays narrow by using a closed adjective whitelist, accepting only pronoun subjects plus a single-token capitalized name surface, rejecting common non-name sentence starters, and refusing already-correct be forms. The negative cases lock the bare-verb and noun-predicate confusables.",
+  "positive": [
+    {
+      "id": "cba-pos-001",
+      "input": "I tired.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I am tired.",
+      "expectedRuleFired": "en-vn-copula-be-adjective",
+      "notes": "Pronoun subject + adjective predicate -> inserts 'am'."
+    },
+    {
+      "id": "cba-pos-002",
+      "input": "She happy.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She is happy.",
+      "expectedRuleFired": "en-vn-copula-be-adjective",
+      "notes": "Third person singular -> inserts 'is'."
+    },
+    {
+      "id": "cba-pos-003",
+      "input": "They busy today.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They are busy today.",
+      "expectedRuleFired": "en-vn-copula-be-adjective",
+      "notes": "Plural subject -> inserts 'are' and preserves trailing time adverb."
+    },
+    {
+      "id": "cba-pos-004",
+      "input": "Anna tired yesterday.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Anna was tired yesterday.",
+      "expectedRuleFired": "en-vn-copula-be-adjective",
+      "notes": "Single-token named subject -> past marker triggers 'was'."
+    }
+  ],
+  "negative": [
+    {
+      "id": "cba-neg-001",
+      "input": "I sleep.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I sleep.",
+      "expectedRuleFired": null,
+      "notes": "Bare verb confusable; the rule must not insert 'be'."
+    },
+    {
+      "id": "cba-neg-002",
+      "input": "She runs.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She runs.",
+      "expectedRuleFired": null,
+      "notes": "Bare verb confusable; must abstain."
+    },
+    {
+      "id": "cba-neg-003",
+      "input": "He is tired.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He is tired.",
+      "expectedRuleFired": null,
+      "notes": "Already-correct copula form must stay unchanged."
+    },
+    {
+      "id": "cba-neg-004",
+      "input": "They are busy.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "They are busy.",
+      "expectedRuleFired": null,
+      "notes": "Already-correct plural copula form must stay unchanged."
+    },
+    {
+      "id": "cba-neg-005",
+      "input": "The dog tired.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The dog tired.",
+      "expectedRuleFired": null,
+      "notes": "Noun-predicate / common-noun subject surface must not be rewritten by a pronoun/name-only rule."
+    },
+    {
+      "id": "cba-neg-006",
+      "input": "Anna runs.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Anna runs.",
+      "expectedRuleFired": null,
+      "notes": "Named subject + bare verb remains outside the adjective whitelist."
+    },
+    {
+      "id": "cba-neg-007",
+      "input": "I very kind.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I very kind.",
+      "expectedRuleFired": null,
+      "notes": "A very-surface outside the existing be-drop adjective whitelist must stay unchanged; this new rule must not overlap."
+    },
+    {
+      "id": "cba-neg-008",
+      "input": "I very tired.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I am very tired.",
+      "expectedRuleFired": "en-be-verb-omission",
+      "notes": "Overlap boundary: the older 'very + adjective' rule owns this surface, so the new rule must abstain while the existing be-drop rule still fires."
+    }
+  ]
+}

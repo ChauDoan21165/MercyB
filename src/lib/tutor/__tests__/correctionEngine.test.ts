@@ -708,6 +708,35 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["I tired.", "I am tired."],
+    ["She happy.", "She is happy."],
+    ["They busy today.", "They are busy today."],
+    ["Anna tired yesterday.", "Anna was tired yesterday."],
+    ["He sad.", "He is sad."],
+  ])("corrects narrow be-drop adjective predicate: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-vn-copula-be-adjective"],
+    });
+  });
+
+  it.each([
+    "I sleep.",
+    "She runs.",
+    "He is tired.",
+    "They are busy.",
+    "The dog tired.",
+    "Anna runs.",
+    "I very kind.",
+  ])("does not over-trigger narrow be-drop adjective predicate: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["She very happy yesterday", "She was very happy yesterday."],
     ["they very happy yesterday", "They were very happy yesterday."],
     ["he very tired last night", "He was very tired last night."],
@@ -772,6 +801,7 @@ describe("correctionEngine", () => {
     ["en-step6-discuss-about", "discuss-about"],
     ["en-step6-marry-with", "marry-with"],
     ["en-step6-at-clock-time", "at-clock-time"],
+    ["en-vn-copula-be-adjective", "copula be adjective"],
   ])("keeps fp_risk_note metadata for approved correction pattern %s (%s)", (ruleId) => {
     const rule = englishCorrectionRules.find((candidate) => candidate.id === ruleId);
     expect(rule?.fpRiskNote).toEqual(expect.any(String));
