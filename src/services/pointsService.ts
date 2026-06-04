@@ -4,6 +4,7 @@
 import { supabase } from '@/lib/supabaseClient';
 import { getCanonicalStreak } from '@/lib/streak/canonicalStreak';
 import { onFirstActionOfDay } from '@/notificationEngine';
+import { emitFeatureOutcome } from '@/lib/analytics';
 
 export type PointEventType =
   | 'room_open'           // 5 pts — opened a room
@@ -160,6 +161,12 @@ export function awardPoints(event: PointEventType, context?: string): number {
     // Notify the (flag-gated, no-op-when-off) notification engine that the
     // user acted today, so it can cancel a pending streak-save warning.
     void onFirstActionOfDay();
+    // Retention-loop D1/D7 outcome signal (B's contract): one 'completed' per
+    // active local day = the qualifying-activity leg of the success gate
+    // (N=3 'completed' within 7d of first 'shown'). Fire-and-forget; emit is
+    // authenticated-only + dark behind the RETENTION_OUTCOME_EVENTS flag, so
+    // this is a no-op until that flag is flipped — it never affects awarding.
+    void emitFeatureOutcome('retention_loop', 'completed');
   }
 
   // Streak multiplier (2x for 7+ days, 1.5x for 3+ days)
