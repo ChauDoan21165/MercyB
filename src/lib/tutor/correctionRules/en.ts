@@ -674,6 +674,12 @@ const STEP6_IN_MONTH_YEAR_CONTEXT_PATTERN = "\\b(?:was born|were born|moved here
 const STEP6_IN_MONTH_YEAR_TOKEN_PATTERN = `(?:${STEP6_MONTH_NAMES}|\\d{4})`;
 const STEP6_ENTER_CONCRETE_PLACE_PATTERN =
   "(?:room|classroom|class|house|building|office|school|hospital|airport)";
+const EXISTENTIAL_HAVE_LOCATIVE_PREFIX_PATTERN =
+  "(?:here|there|(?:in|at|on)\\s+(?!(?:i|you|we|they|he|she|it)\\b)(?:[a-z][a-z']*\\s+){0,4}[a-z][a-z']*)";
+const EXISTENTIAL_HAVE_SINGULAR_HEAD_PATTERN =
+  /^(?:a|an|one|each|every|this|that|some\s+(?:water|milk|rice|money|time|food|information|advice|music|coffee|tea))\b/i;
+const EXISTENTIAL_HAVE_PLURAL_HEAD_PATTERN =
+  /^(?:many|several|few|a\s+few|two|three|four|five|six|seven|eight|nine|ten|both|these|those)\b/i;
 const BE_DROP_ADJECTIVE_PATTERN = "(?:happy|sad|tired|busy)";
 const BE_DROP_TIME_MARKER_PATTERN =
   "(?:today|yesterday|last\\s+(?:night|week|month|year|summer|spring|winter|fall|autumn)|(?:an?|one|two|three|\\d+)\\s+(?:hour|hours|day|days|week|weeks|month|months|year|years)\\s+ago)";
@@ -707,6 +713,55 @@ function repairStep6InMonthYear(input: string): string {
   const context = match[1] ?? "";
   const token = match[2] ?? "";
   return input.replace(new RegExp(`\\b${context}\\s+${token}\\b`, "i"), `${context} in ${token}`);
+}
+
+function isExistentialHavePluralTail(tail: string): boolean {
+  const normalized = tail.trim().replace(/[.?!]$/, "");
+  if (!normalized) return false;
+  if (EXISTENTIAL_HAVE_SINGULAR_HEAD_PATTERN.test(normalized)) return false;
+  if (EXISTENTIAL_HAVE_PLURAL_HEAD_PATTERN.test(normalized)) return true;
+
+  const firstToken = normalized.split(/\s+/)[0] ?? "";
+  if (/^[a-z][a-z']*s$/i.test(firstToken) && !/(?:ss|us|is)$/i.test(firstToken)) {
+    return true;
+  }
+
+  return false;
+}
+
+function getExistentialHaveThereIsAreMatch(input: string): RegExpMatchArray | null {
+  const pattern = new RegExp(
+    `^(${EXISTENTIAL_HAVE_LOCATIVE_PREFIX_PATTERN})\\s+have\\s+(.+?)([.?!]?)$`,
+    "i",
+  );
+  const match = input.trim().match(pattern);
+  if (!match) return null;
+
+  const locative = match[1] ?? "";
+  if (/^(?:here|there)$/i.test(locative)) return match;
+
+  // Guard: do not let a personal subject slip into the locative phrase.
+  if (/\b(?:i|you|we|they|he|she|it)\b/i.test(locative)) return null;
+  if (/\b(?:here|there)\b/i.test(locative)) return null;
+
+  return match;
+}
+
+function hasExistentialHaveThereIsAre(input: string): boolean {
+  return getExistentialHaveThereIsAreMatch(input) !== null;
+}
+
+function repairExistentialHaveThereIsAre(input: string): string {
+  const match = getExistentialHaveThereIsAreMatch(input);
+  if (!match) return input;
+
+  const locative = (match[1] ?? "").trim();
+  const tail = (match[2] ?? "").trim();
+  const punctuation = match[3] ?? "";
+  const copula = isExistentialHavePluralTail(tail) ? "There are" : "There is";
+  const endpoint = /^(?:here|there)$/i.test(locative) ? locative.toLowerCase() : locative.toLowerCase();
+
+  return `${copula} ${tail} ${endpoint}${punctuation}`;
 }
 
 function repairStep6EnterConcretePlace(input: string): string {
@@ -1013,6 +1068,13 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: hasStep6InMonthYear,
     apply: repairStep6InMonthYear,
     fpRiskNote: "Medium risk. Years can be quantities or noun modifiers. Rule must block year/month tokens followed by nouns and avoid broad numeric rewriting.",
+  },
+  {
+    id: "en-existential-have-there-is",
+    detects: hasExistentialHaveThereIsAre,
+    apply: repairExistentialHaveThereIsAre,
+    fpRiskNote:
+      "High risk. 'have' is overwhelmingly correct possession ('I have a car', 'We have a meeting'). Restrict strictly to a closed locative-fronted existential frame and never rewrite a clause whose subject is a person/pronoun possessor or a natural English possessive/auxiliary have surface.",
   },
   {
     id: "en-step6-enter-concrete-place",
