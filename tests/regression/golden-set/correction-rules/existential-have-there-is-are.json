@@ -1,0 +1,59 @@
+{
+  "rule": "existentialHaveThereIs",
+  "ruleId": "en-existential-have-there-is",
+  "language": "en",
+  "description": "VN existential-have calque: locative-fronted 'have' should become English there-is/there-are.",
+  "fp_risk_note": "High. 'have' is overwhelmingly correct possession ('I have a car', 'We have a meeting'). Restrict strictly to a closed locative-fronted existential frame and never rewrite possessive, auxiliary, or already-correct there-is/there-are surfaces.",
+  "positive": [
+    {
+      "id": "d1-exist-pos-001",
+      "input": "In my city have many parks.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "There are many parks in my city.",
+      "expectedRuleFired": "existentialHaveThereIs",
+      "notes": "Plural NP after locative-fronted have -> there are."
+    },
+    {
+      "id": "d1-exist-pos-002",
+      "input": "In the box have a book.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "There is a book in the box.",
+      "expectedRuleFired": "existentialHaveThereIs",
+      "notes": "Singular NP after locative-fronted have -> there is."
+    },
+    {
+      "id": "d1-exist-pos-003",
+      "input": "Here have a problem.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "There is a problem here.",
+      "expectedRuleFired": "existentialHaveThereIs",
+      "notes": "Bare locative adverb fronting -> there is ... here."
+    }
+  ],
+  "negative": [
+    {
+      "id": "d1-exist-neg-001",
+      "input": "I have a car.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I have a car.",
+      "expectedRuleFired": null,
+      "notes": "Possessive have with personal subject must not become existential there-is."
+    },
+    {
+      "id": "d1-exist-neg-002",
+      "input": "We have a meeting today.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "We have a meeting today.",
+      "expectedRuleFired": null,
+      "notes": "Natural possessive/aux-like have stays unchanged."
+    },
+    {
+      "id": "d1-exist-neg-003",
+      "input": "There are many parks in my city.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "There are many parks in my city.",
+      "expectedRuleFired": null,
+      "notes": "Already-correct existential there-are surface must stay unchanged."
+    }
+  ]
+}

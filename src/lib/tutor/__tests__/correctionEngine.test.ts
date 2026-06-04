@@ -1119,6 +1119,30 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["In my city have many parks.", "There are many parks in my city."],
+    ["In the box have a book.", "There is a book in the box."],
+    ["Here have a problem.", "There is a problem here."],
+  ])("corrects existential have to there is/there are: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-existential-have-there-is"],
+    });
+  });
+
+  it.each([
+    "I have a car.",
+    "We have a meeting today.",
+    "There are many parks in my city.",
+    "I have many parks in my city.",
+  ])("does not over-trigger existential have to there is/there are: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
     ["You like coffee?", "Do you like coffee?"],
     ["She have a car?", "Does she have a car?"],
     ["They live in Hanoi?", "Do they live in Hanoi?"],
