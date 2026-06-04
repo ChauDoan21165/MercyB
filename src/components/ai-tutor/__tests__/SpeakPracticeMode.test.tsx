@@ -369,7 +369,7 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     );
 
     const card = screen.getByTestId("english-pronunciation-feedback");
-    expect(card).toHaveTextContent("Try this sound again");
+    expect(card).toHaveTextContent("This sound is a good next practice");
     expect(card).toHaveTextContent("/th/ âm tiếng Anh");
   });
 
@@ -380,6 +380,8 @@ describe("SpeakPracticeMode pronunciation result display", () => {
       directionLabelVi: "đi lên",
       status: "correct",
       score: 92,
+      practicePromptVi: "Tốt rồi. Lặp lại một lần nữa để giữ cảm giác đường giọng.",
+      practicePromptEn: "Good. Repeat once more to keep the tone shape steady.",
     };
 
     render(

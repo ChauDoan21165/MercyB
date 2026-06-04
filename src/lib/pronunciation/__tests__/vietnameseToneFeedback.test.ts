@@ -70,6 +70,8 @@ describe("buildVietnameseToneFeedbackDisplay", () => {
       directionLabelVi: "đi lên",
       status: "correct",
       score: 91,
+      practicePromptVi: "Tốt rồi. Lặp lại một lần nữa để giữ cảm giác đường giọng.",
+      practicePromptEn: "Good. Repeat once more to keep the tone shape steady.",
     });
   });
 
@@ -88,10 +90,12 @@ describe("buildVietnameseToneFeedbackDisplay", () => {
       directionLabelVi: "đi xuống",
       status: "try_again",
       score: 42,
+      practicePromptVi: "Không sao. Thử lại chậm hơn một lần, tập trung vào hướng đường giọng.",
+      practicePromptEn: "No problem. Try once more slowly and focus on the tone direction.",
     });
   });
 
-  it("returns null for unsupported tones and unavailable results", () => {
+  it("returns practice-forward abstention displays for unsupported tones and unavailable results", () => {
     const unsupported = resolveVietnameseTonePracticeTarget("mã");
     expect(unsupported).not.toBeNull();
     expect(
@@ -99,7 +103,12 @@ describe("buildVietnameseToneFeedbackDisplay", () => {
         target: unsupported!,
         result: { bucket: "pass", score: 90, reason: null } as ToneScoreResult,
       }),
-    ).toBeNull();
+    ).toMatchObject({
+      tone: "nga",
+      toneLabelVi: "ngã",
+      status: "unsupported",
+      score: null,
+    });
 
     const supported = resolveVietnameseTonePracticeTarget("má");
     expect(supported).not.toBeNull();
@@ -108,7 +117,12 @@ describe("buildVietnameseToneFeedbackDisplay", () => {
         target: supported!,
         result: { bucket: "unavailable", score: null, reason: "timeout" } as ToneScoreResult,
       }),
-    ).toBeNull();
+    ).toMatchObject({
+      tone: "sac",
+      toneLabelVi: "sắc",
+      status: "unclear",
+      score: null,
+    });
   });
 });
 

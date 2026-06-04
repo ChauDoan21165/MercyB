@@ -28,6 +28,15 @@ export type EnglishPronunciationFeedbackItem = {
 
 export type EnglishPronunciationFeedbackDisplay = {
   items: EnglishPronunciationFeedbackItem[];
+  abstain?: {
+    reason: "no_azure_phoneme_evidence" | "no_high_confidence_feedback";
+    titleVi: string;
+    titleEn: string;
+    bodyVi: string;
+    bodyEn: string;
+    nextStepVi: string;
+    nextStepEn: string;
+  };
 };
 
 export type EnglishPronunciationWord = {
@@ -677,6 +686,38 @@ export function buildEnglishPronunciationFeedbackDisplay(input: {
 
   if (normalizedItems.length === 0) return null;
   return { items: normalizedItems.slice(0, 2) };
+}
+
+export function buildEnglishPronunciationAbstainFeedbackDisplay(
+  reason: "no_azure_phoneme_evidence" | "no_high_confidence_feedback",
+): EnglishPronunciationFeedbackDisplay {
+  if (reason === "no_high_confidence_feedback") {
+    return {
+      items: [],
+      abstain: {
+        reason,
+        titleVi: "Mercy chưa thấy điểm âm nào đủ chắc.",
+        titleEn: "I do not have a strong sound signal yet.",
+        bodyVi: "Không sao. Câu của bạn vẫn được ghi nhận, nhưng Mercy chưa nên đoán âm nào cần sửa.",
+        bodyEn: "That is okay. I recorded the attempt, but I should not guess which sound to fix.",
+        nextStepVi: "Nghe câu mẫu một lần, rồi đọc lại chậm hơn.",
+        nextStepEn: "Listen once, then repeat a little more slowly.",
+      },
+    };
+  }
+
+  return {
+    items: [],
+    abstain: {
+      reason,
+      titleVi: "Mercy đang nghe theo câu, chưa chấm từng âm.",
+      titleEn: "I am matching the sentence, not grading each sound yet.",
+      bodyVi: "Bạn vẫn có thể luyện tiếp. Khi có bằng chứng âm rõ hơn, Mercy sẽ góp ý cụ thể.",
+      bodyEn: "You can keep practicing. When sound evidence is clearer, I will give a specific tip.",
+      nextStepVi: "Đọc lại câu mẫu một lần nữa, rõ âm cuối hơn.",
+      nextStepEn: "Repeat the model sentence once more and keep the ending sounds clear.",
+    },
+  };
 }
 
 export function englishPronunciationFeedbackCopy(category: EnglishPronunciationFeedbackCategory): {
