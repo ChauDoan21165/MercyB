@@ -4,7 +4,7 @@
 import { supabase } from '@/lib/supabaseClient';
 import { getCanonicalStreak } from '@/lib/streak/canonicalStreak';
 import { onFirstActionOfDay } from '@/notificationEngine';
-import { emitFeatureOutcome } from '@/lib/analytics';
+import { recordActiveDay } from '@/lib/retention/recordActiveDay';
 
 export type PointEventType =
   | 'room_open'           // 5 pts — opened a room
@@ -161,11 +161,36 @@ async function syncToSupabase(totalPoints: number, event: PointEventType, points
   }
 }
 
+// Production learner reason-codes routed through awardPoints that count as a
+// real "active day". Gate on this ALLOWLIST, never on "any non-zero award" —
+// room_open (5pts) and audio_listen (15pts) are non-zero but PASSIVE and must
+// NOT fire recordActiveDay (that was the undercount-vs-bias trap). New passive
+// point-earners are excluded by default; add a code here only when it is a
+// genuine learner production action.
+const ACTIVE_DAY_REASON_CODES: ReadonlySet<PointEventType> = new Set([
+  'keyword_click',     // RoomRenderer keyword interaction
+  'speak_attempt',     // MercySpeakTab pronunciation attempt
+  'speak_match_low',   // …and its scored variants (awardSpeakPoints)
+  'speak_match_mid',
+  'speak_match_high',
+]);
+
 // ── Main API ─────────────────────────────────────────────────────────────────
 
 export function awardPoints(event: PointEventType, context?: string): number {
   const basePoints = POINT_VALUES[event] || 0;
   if (basePoints === 0) return 0;
+
+  // Retention active-day signal — verified-live Path A. Only PRODUCTION
+  // reason-codes (the allowlist) flow to the choke point: keyword interaction
+  // (RoomRenderer → awardPoints('keyword_click')) and pronunciation
+  // (MercySpeakTab → awardSpeakPoints → awardPoints('speak_*')). recordActiveDay
+  // owns its own once-per-local-day dedup + the dark retention_loop emit
+  // (local_day payload); fire-and-forget, never affects awarding. Passive
+  // earners (room_open, audio_listen) are deliberately NOT in the allowlist.
+  if (ACTIVE_DAY_REASON_CODES.has(event)) {
+    void recordActiveDay();
+  }
 
   // Check daily login bonus
   let bonus = 0;
@@ -175,12 +200,6 @@ export function awardPoints(event: PointEventType, context?: string): number {
     // Notify the (flag-gated, no-op-when-off) notification engine that the
     // user acted today, so it can cancel a pending streak-save warning.
     void onFirstActionOfDay();
-    // Retention-loop D1/D7 outcome signal (B's contract): one 'completed' per
-    // active local day = the qualifying-activity leg of the success gate
-    // (N=3 'completed' within 7d of first 'shown'). Fire-and-forget; emit is
-    // authenticated-only + dark behind the RETENTION_OUTCOME_EVENTS flag, so
-    // this is a no-op until that flag is flipped — it never affects awarding.
-    void emitFeatureOutcome('retention_loop', 'completed');
   }
 
   // Streak multiplier (2x for 7+ days, 1.5x for 3+ days)

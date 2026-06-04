@@ -1,9 +1,10 @@
 import { vi, describe, it, expect, beforeEach } from "vitest";
 
-const h = vi.hoisted(() => ({ emit: vi.fn(), hook: vi.fn() }));
+const h = vi.hoisted(() => ({ record: vi.fn(), hook: vi.fn() }));
 
-// B's outcome-event emitter (dark behind RETENTION_OUTCOME_EVENTS) — spy on it.
-vi.mock("@/lib/analytics", () => ({ emitFeatureOutcome: h.emit }));
+// The retention emit + dedup now live in recordActiveDay (the canonical choke
+// point); pointsService just routes through it. Spy on the choke point.
+vi.mock("@/lib/retention/recordActiveDay", () => ({ recordActiveDay: h.record }));
 vi.mock("@/notificationEngine", () => ({ onFirstActionOfDay: h.hook }));
 vi.mock("@/lib/supabaseClient", () => ({
   supabase: { auth: { getUser: async () => ({ data: { user: null } }) } },
@@ -12,28 +13,41 @@ vi.mock("@/lib/supabaseClient", () => ({
 import { awardPoints } from "@/services/pointsService";
 
 beforeEach(() => {
-  h.emit.mockClear();
+  h.record.mockClear();
   h.hook.mockClear();
-  // localStorage reset by the canonical storage mock in global setup.
 });
 
-describe("pointsService → retention-loop outcome emission", () => {
-  it("emits one 'completed' for the retention_loop on the first action of the local day", () => {
+describe("pointsService → recordActiveDay wiring (verified-live Path A: keyword + pronunciation)", () => {
+  it("routes PRODUCTION learner reason-codes through the active-day choke point", () => {
     awardPoints("keyword_click");
-    awardPoints("keyword_click");
-    expect(h.emit).toHaveBeenCalledTimes(1);
-    expect(h.emit).toHaveBeenCalledWith("retention_loop", "completed");
+    expect(h.record).toHaveBeenCalledTimes(1);
   });
 
-  it("is wired to the same first-action-of-day gate as the notification hook", () => {
+  it("records for pronunciation reason-codes (speak_*)", () => {
+    awardPoints("speak_attempt");
+    awardPoints("speak_match_high");
+    expect(h.record).toHaveBeenCalledTimes(2);
+  });
+
+  it("does NOT record an active day for zero-point events (no passive/no-op firing)", () => {
+    awardPoints("streak_bonus"); // 0 pts → returns before the seam
+    expect(h.record).not.toHaveBeenCalled();
+  });
+
+  it("does NOT record for NON-ZERO but PASSIVE earners — gate is an allowlist, not 'any non-zero'", () => {
+    // room_open (5 pts) and audio_listen (15 pts) are non-zero yet passive.
+    // Counting them was the undercount-vs-bias trap; the allowlist excludes them.
+    awardPoints("room_open");
+    awardPoints("audio_listen");
+    expect(h.record).not.toHaveBeenCalled();
+  });
+
+  it("still fires the first-action-of-day notification hook", () => {
     awardPoints("keyword_click");
     expect(h.hook).toHaveBeenCalledTimes(1);
-    expect(h.emit).toHaveBeenCalledTimes(1);
   });
 
-  it("never throws into the award path even if the emitter rejects", () => {
-    h.emit.mockImplementationOnce(() => Promise.reject(new Error("telemetry down")));
-    expect(() => awardPoints("keyword_click")).not.toThrow();
-    expect(awardPoints("keyword_click")).toBeTypeOf("number"); // awarding still works
+  it("awarding still works (returns points) alongside the active-day signal", () => {
+    expect(awardPoints("keyword_click")).toBeTypeOf("number");
   });
 });
