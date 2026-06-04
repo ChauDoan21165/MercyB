@@ -27,6 +27,16 @@ import {
   type WordScore,
   type WordStatus,
 } from '@/lib/pronunciation/scorer';
+import { FEATURE_FLAGS } from '@/lib/featureFlags';
+import {
+  buildVietnameseToneFeedback,
+  inferVietnameseToneTarget,
+  type VietnameseToneFeedback,
+} from '@/lib/pronunciation/vietnameseToneFeedback';
+import type {
+  ExtractedPitchContour,
+  VietnameseToneTarget,
+} from '@/lib/pronunciation/vietnameseToneScorer';
 import {
   speak as ttsSpeak,
   cancelSpeech as ttsCancel,
@@ -71,6 +81,16 @@ export type SpeechDrillProps = {
    * practice words still render for visual reference.
    */
   onPracticeWord?: (word: string) => void;
+  /**
+   * Optional Vietnamese tone evidence. The component never creates or stores
+   * audio; callers may pass extractor-shaped contour evidence from an existing
+   * assessment flow. Without evidence, supported-tone feedback abstains.
+   */
+  vietnameseToneAssessment?: {
+    target?: VietnameseToneTarget;
+    contour?: ExtractedPitchContour | null;
+    allowUnmarkedNgang?: boolean;
+  };
   /**
    * Called when the user taps "View your history" after a score lands.
    * Omit to hide the link — the component does no routing of its own.
@@ -262,6 +282,7 @@ export function SpeechDrill({
   onAttempt,
   onPracticeWord,
   onViewHistory,
+  vietnameseToneAssessment,
 }: SpeechDrillProps) {
   // Gate the whole UI on support detection. Run once — if the browser
   // doesn't have SpeechRecognition, the entire component body renders
@@ -273,6 +294,24 @@ export function SpeechDrill({
   const [score, setScore] = useState<ScoreResult | null>(null);
   const [errorCopy, setErrorCopy] = useState<{ en: string; vi: string } | null>(null);
   const mountedRef = useRef(true);
+  const vietnameseToneFeedbackTarget = useMemo(
+    () =>
+      vietnameseToneAssessment?.target ??
+      inferVietnameseToneTarget(targetSentence, {
+        allowUnmarkedNgang: vietnameseToneAssessment?.allowUnmarkedNgang,
+      }),
+    [targetSentence, vietnameseToneAssessment],
+  );
+  const vietnameseToneFeedback = useMemo(
+    () =>
+      FEATURE_FLAGS.VIETNAMESE_TONE_FEEDBACK_MVP_ENABLED && vietnameseToneFeedbackTarget
+        ? buildVietnameseToneFeedback({
+            target: vietnameseToneFeedbackTarget,
+            contour: vietnameseToneAssessment?.contour,
+          })
+        : null,
+    [vietnameseToneAssessment?.contour, vietnameseToneFeedbackTarget],
+  );
 
   useEffect(() => () => { mountedRef.current = false; }, []);
 
@@ -414,6 +453,7 @@ export function SpeechDrill({
           score={score}
           onPracticeWord={onPracticeWord}
           ttsAvailable={ttsAvailable}
+          vietnameseToneFeedback={vietnameseToneFeedback}
         />
       ) : null}
 
@@ -468,10 +508,12 @@ function ResultBlock({
   score,
   onPracticeWord,
   ttsAvailable,
+  vietnameseToneFeedback,
 }: {
   score: ScoreResult;
   onPracticeWord?: (word: string) => void;
   ttsAvailable: boolean;
+  vietnameseToneFeedback?: VietnameseToneFeedback | null;
 }) {
   return (
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -506,7 +548,53 @@ function ResultBlock({
           onPracticeWord={onPracticeWord}
         />
       ) : null}
+
+      {vietnameseToneFeedback ? (
+        <VietnameseToneFeedbackCard feedback={vietnameseToneFeedback} />
+      ) : null}
     </div>
+  );
+}
+
+const vietnameseToneCardStyle: React.CSSProperties = {
+  border: '1px solid rgba(15,118,110,0.22)',
+  borderRadius: 14,
+  padding: '12px 14px',
+  background: '#f0fdfa',
+  textAlign: 'left',
+};
+
+const vietnameseToneBadgeStyle: React.CSSProperties = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  borderRadius: 9999,
+  padding: '3px 9px',
+  fontSize: 11,
+  fontWeight: 900,
+  color: '#0f766e',
+  background: 'rgba(20,184,166,0.12)',
+  border: '1px solid rgba(15,118,110,0.16)',
+  marginBottom: 8,
+};
+
+function VietnameseToneFeedbackCard({ feedback }: { feedback: VietnameseToneFeedback }) {
+  return (
+    <section
+      style={vietnameseToneCardStyle}
+      aria-label="Vietnamese tone feedback"
+      data-tone-feedback-kind={feedback.kind}
+    >
+      <div style={vietnameseToneBadgeStyle}>Đường giọng · Tone shape</div>
+      <div style={{ fontSize: 14, fontWeight: 900, color: '#0f172a', lineHeight: 1.35 }}>
+        {feedback.titleVi}
+      </div>
+      <div style={{ marginTop: 4, fontSize: 13, color: '#334155', lineHeight: 1.5 }}>
+        {feedback.bodyVi}
+      </div>
+      <div style={{ marginTop: 6, fontSize: 12, color: '#64748b', lineHeight: 1.45 }}>
+        {feedback.titleEn} {feedback.bodyEn}
+      </div>
+    </section>
   );
 }
 

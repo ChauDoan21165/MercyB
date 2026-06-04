@@ -98,7 +98,7 @@ export const FEATURE_FLAGS = {
    * for supported Vietnamese tones only. When OFF: no tone feedback is
    * rendered and no tone scoring call is attempted.
    */
-  VIETNAMESE_TONE_FEEDBACK_MVP_ENABLED: false,
+  VIETNAMESE_TONE_FEEDBACK_MVP_ENABLED: readEnvBool("VITE_VIETNAMESE_TONE_FEEDBACK_MVP_ENABLED", false),
 
   /**
    * English pronunciation feedback MVP for Vietnamese learners.
