@@ -1118,6 +1118,41 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["Yesterday I walk to school.", "Yesterday I walked to school."],
+    ["Last night they clean the house.", "Last night they cleaned the house."],
+    ["Two days ago we visit grandma.", "Two days ago we visited grandma."],
+  ])("inserts -ed for VN past-marker regular-verb transfer: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-vn-past-marker-regular-verb"],
+    });
+  });
+
+  it.each([
+    ["I walk to school every day.", "I walk to school every day."],
+    ["Did you walk to school yesterday?", "Did you walk to school yesterday?"],
+    ["Yesterday I walked to school.", "Yesterday I walked to school."],
+    ["I did not walk yesterday.", "I did not walk yesterday."],
+  ])("does not over-trigger VN past-marker regular-verb: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      corrected: expected,
+      appliedRuleIds: [],
+    });
+  });
+
+  it("leaves irregular yesterday past to the irregular rule, not the regular-verb rule", () => {
+    const result = correctWithTutorRules("Yesterday I go to school.", "en");
+    expect(result).toMatchObject({
+      status: "corrected",
+      corrected: "Yesterday I went to school.",
+      appliedRuleIds: ["en-yesterday-irregular-beginner-past"],
+    });
+    expect(result.appliedRuleIds).not.toContain("en-vn-past-marker-regular-verb");
+  });
+
+  it.each([
     "What you said is true.",
     "What he did was wrong.",
     "What I need is time.",
