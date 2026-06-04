@@ -198,6 +198,12 @@ const STEP7_AZURE_BATCH_ENABLED =
     ?.VITE_AZURE_PHONEME_BATCH_ENABLED === "true";
 const EMPTY_SPEAK_AUDIO_BLOB = new Blob([], { type: "audio/webm" });
 
+function createLocalSpeakSessionId(): string {
+  const randomUuid = globalThis.crypto?.randomUUID?.();
+  if (randomUuid) return `speak-${randomUuid}`;
+  return `speak-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+}
+
 function normalizeMockPivotResult(result: MockPivotCandidateResult): { candidate?: string | null; failed?: boolean } {
   if (typeof result === "string" || result === null) return { candidate: result };
   return result;
@@ -926,6 +932,7 @@ export default function AiTutorPage() {
   const speakVietnameseToneRequestRef = useRef(0);
   const emittedEnglishPronunciationOutcomeRef = useRef<string>("");
   const emittedVietnameseToneOutcomeRef = useRef<string>("");
+  const speakPronunciationOutcomeSessionIdRef = useRef<string>("");
   const speakPivotTurnsRef = useRef<PivotPromptTurn[]>([]);
   const wasListeningRef = useRef(false);
   const ignoreNextSttCommitRef = useRef(false);
@@ -1046,6 +1053,18 @@ export default function AiTutorPage() {
 
   useEffect(() => {
     if (mode !== "speak") {
+      speakPronunciationOutcomeSessionIdRef.current = "";
+      emittedEnglishPronunciationOutcomeRef.current = "";
+      emittedVietnameseToneOutcomeRef.current = "";
+      return;
+    }
+    if (!speakPronunciationOutcomeSessionIdRef.current) {
+      speakPronunciationOutcomeSessionIdRef.current = createLocalSpeakSessionId();
+    }
+  }, [mode]);
+
+  useEffect(() => {
+    if (mode !== "speak") {
       setSpeakPronunciationResult(null);
       setSpeakVietnameseToneFeedback(null);
       return;
@@ -1125,6 +1144,7 @@ export default function AiTutorPage() {
         emittedVietnameseToneOutcomeRef.current = emitKey;
         emitPronunciationFeatureOutcome({
           featureKey: PRONUNCIATION_FEATURE_OUTCOME_KEYS.vietnameseTone,
+          sessionId: speakPronunciationOutcomeSessionIdRef.current,
           direction: "en_to_vi_tone",
           promptContext: {
             source: "ai_tutor_speak",
@@ -1163,6 +1183,7 @@ export default function AiTutorPage() {
           emittedVietnameseToneOutcomeRef.current = emitKey;
           emitPronunciationFeatureOutcome({
             featureKey: PRONUNCIATION_FEATURE_OUTCOME_KEYS.vietnameseTone,
+            sessionId: speakPronunciationOutcomeSessionIdRef.current,
             direction: "en_to_vi_tone",
             promptContext: {
               source: "ai_tutor_speak",
@@ -1222,6 +1243,7 @@ export default function AiTutorPage() {
             emittedVietnameseToneOutcomeRef.current = emitKey;
             emitPronunciationFeatureOutcome({
               featureKey: PRONUNCIATION_FEATURE_OUTCOME_KEYS.vietnameseTone,
+              sessionId: speakPronunciationOutcomeSessionIdRef.current,
               direction: "en_to_vi_tone",
               promptContext: {
                 source: "ai_tutor_speak",
@@ -1368,6 +1390,7 @@ export default function AiTutorPage() {
 
     emitPronunciationFeatureOutcome({
       featureKey: PRONUNCIATION_FEATURE_OUTCOME_KEYS.englishFeedback,
+      sessionId: speakPronunciationOutcomeSessionIdRef.current,
       direction: "vn_to_en_english_pronunciation",
       promptContext: {
         source: "ai_tutor_speak",

@@ -14,6 +14,7 @@ export type PronunciationLanguageDirection =
 
 export type PronunciationFeatureOutcomeInput = {
   featureKey: PronunciationFeatureOutcomeKey;
+  sessionId: string;
   direction: PronunciationLanguageDirection;
   promptContext: AnalyticsPayload;
   learnerInput: string;
@@ -23,19 +24,34 @@ export type PronunciationFeatureOutcomeInput = {
   learnerOutcome: string;
 };
 
+const completedSessionKeys = new Set<string>();
+
 function cleanText(value: string): string {
   return String(value ?? "").trim().slice(0, 500);
 }
 
+function cleanSessionId(value: string): string {
+  return String(value ?? "").trim().slice(0, 120);
+}
+
+export function resetPronunciationFeatureOutcomeSessionDedupeForTests(): void {
+  completedSessionKeys.clear();
+}
+
 export function emitPronunciationFeatureOutcome(input: PronunciationFeatureOutcomeInput): void {
+  const sessionId = cleanSessionId(input.sessionId);
   const basePayload: AnalyticsPayload = {
     direction: input.direction,
+    session_id: sessionId,
     prompt_context: input.promptContext,
     activity_counting_field: "feature_outcome_events.completed",
     counts_toward_d1_d7_gate: true,
   };
 
   void emitFeatureOutcome(input.featureKey, "shown", basePayload);
+  const completedSessionKey = `${input.featureKey}:${sessionId}`;
+  if (!sessionId || completedSessionKeys.has(completedSessionKey)) return;
+  completedSessionKeys.add(completedSessionKey);
   void emitFeatureOutcome(input.featureKey, "completed", {
     ...basePayload,
     learner_input: cleanText(input.learnerInput),
