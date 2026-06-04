@@ -47,14 +47,28 @@ const STORAGE_KEY = 'mb.points';
 const LAST_DAILY_KEY = 'mb.points.lastDaily';
 const STREAK_KEY = 'mb.points.streak';
 
+// Local-calendar day key (YYYY-MM-DD in the device's timezone), NOT UTC.
+// The whole daily-activity seam — streak, daily-login bonus, the dark
+// retention_loop emit, and the notification at-risk check (readModel.ts, which
+// already computes todayLocal/yesterdayLocal) — buckets by LOCAL day. A
+// VN-first product rolls the day at local midnight, not 00:00 UTC; the old
+// toISOString() here mis-bucketed early-morning activity for UTC+7 users
+// (their pre-07:00 actions counted toward the previous calendar day).
+function localDayStr(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
 function getTodayStr(): string {
-  return new Date().toISOString().split('T')[0];
+  return localDayStr(new Date());
 }
 
 function getYesterdayStr(): string {
   const d = new Date();
   d.setDate(d.getDate() - 1);
-  return d.toISOString().split('T')[0];
+  return localDayStr(d);
 }
 
 // ── Local storage helpers ────────────────────────────────────────────────────
