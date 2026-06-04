@@ -13,6 +13,28 @@ const PAST_VERBS: Record<string, string> = {
   have: "had",
 };
 
+// Regular (-ed) past-tense verbs only. Deliberately disjoint from the irregular
+// sets (PAST_VERBS, STEP6_PAST_MARKER_RECALL_VERBS) and from
+// KNOWN_UNCORRECTED_PAST_MARKER_VERBS so this rule never double-claims a surface
+// another past-tense rule already owns. Past forms are spelled explicitly to
+// avoid encoding -ed orthography rules (e.g. study -> studied, stay -> stayed).
+const REGULAR_PAST_MARKER_VERBS: Record<string, string> = {
+  call: "called",
+  clean: "cleaned",
+  finish: "finished",
+  help: "helped",
+  learn: "learned",
+  play: "played",
+  start: "started",
+  stay: "stayed",
+  study: "studied",
+  talk: "talked",
+  visit: "visited",
+  walk: "walked",
+  watch: "watched",
+  work: "worked",
+};
+
 const DAILY_THIRD_PERSON_VERBS: Record<string, string> = {
   eat: "eats",
   go: "goes",
@@ -160,6 +182,29 @@ function hasBeginnerPastCorrectionMarker(input: string): boolean {
     /\blast\s+(?:night|week|month|year|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(input) ||
     /\b(?:one|two|three|\d+)\s+(?:day|days|week|weeks|month|months|year|years)\s+ago\b/i.test(input)
   );
+}
+
+function hasRegularPastMarkerVerbBlocker(input: string): boolean {
+  return (
+    /\bnot\b/i.test(input) ||
+    /n['’]t\b/i.test(input) ||
+    /\bnever\b/i.test(input) ||
+    /\b(?:always|usually|often|sometimes|rarely)\b/i.test(input) ||
+    /\bevery\s+(?:day|week|month|year)\b/i.test(input) ||
+    STEP6_PAST_MARKER_CLAUSE_BLOCKERS.test(input)
+  );
+}
+
+function hasVnPastMarkerRegularVerb(input: string): boolean {
+  if (isQuestionLike(input)) return false;
+  if (!hasBeginnerPastCorrectionMarker(input)) return false;
+  if (hasRegularPastMarkerVerbBlocker(input)) return false;
+
+  const verbPattern = Object.keys(REGULAR_PAST_MARKER_VERBS).join("|");
+  return new RegExp(
+    `\\b(?:I|You|We|They|He|She|It)\\s+(?:${verbPattern})\\b(?!\\s+not\\b)`,
+    "i",
+  ).test(input);
 }
 
 function repairStep5SubjectVerbAgreement(input: string): string {
@@ -771,6 +816,13 @@ export const englishCorrectionRules: CorrectionRule[] = [
       hasBeginnerPastCorrectionMarker(input) &&
       /\b(I|You|We|They|He|She|It)\s+(buy|do|eat|go|have)\b/i.test(input),
     apply: (input) => replaceVerbAfterSubject(input, PAST_VERBS),
+  },
+  {
+    id: "en-vn-past-marker-regular-verb",
+    detects: hasVnPastMarkerRegularVerb,
+    apply: (input) => replaceVerbAfterSubject(input, REGULAR_PAST_MARKER_VERBS),
+    fpRiskNote:
+      "Medium risk. Vietnamese has no verb inflection, so learners leave a bare regular verb under an explicit past marker (e.g. 'Yesterday I walk to school'). V1 only rewrites a closed regular (-ed) verb whitelist after a pronoun subject when a beginner past marker (yesterday / last … / N days ago) is present. It is disjoint from the irregular past rules (it never touches go/eat/have/buy/do/move) and from the uncorrected-irregular set, so it cannot double-claim their surfaces. It abstains on questions, negation (not/never/n't), habitual/frequency adverbs (every day, usually, …), and multi-clause sentences (and/but/because/when/that/said/…). Already-inflected -ed forms never match because only base forms are whitelisted.",
   },
   {
     id: "en-step6-profession-article",
