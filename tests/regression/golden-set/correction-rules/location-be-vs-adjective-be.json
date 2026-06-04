@@ -2,8 +2,8 @@
   "rule": "locationBeDrop",
   "ruleId": "en-step6-location-be-drop",
   "language": "en",
-  "description": "Step 6 location-be drop: inserts the dropped copula for a pronoun subject + whitelisted location phrase with no finite verb ('She at school' -> 'She is at school'). This fixture focuses on DISAMBIGUATION — the rule must fire on LOCATION-be surfaces but must NOT fire on ADJECTIVE-be surfaces ('She happy') or on questions. Expectations encode the VERIFIED behaviour of correctWithTutorRules() on current main. Complements the bundled location-be-drop.json.",
-  "fp_risk_note": "Be-insertion is high-risk and must not over-trigger. This fixture stresses the location-vs-adjective boundary plus question protection: (1) adjective complements ('She happy', 'He sad', 'They tired') are NOT location phrases and must NOT receive a location-be insertion by this rule (a different rule handles copula-omission before 'very <adjective>'); (2) question forms ('Is she at school?') already carry a fronted copula and must be left untouched. The positives confirm the rule still inserts is/are for pronoun + whitelisted location with the correct number agreement.",
+  "description": "Step 6 location-be drop: inserts the dropped copula for a pronoun subject + whitelisted location phrase with no finite verb ('She at school' -> 'She is at school'). This fixture focuses on DISAMBIGUATION — the rule must fire on LOCATION-be surfaces and the separate adjective-copula rule must handle adjective predicates. Expectations encode the VERIFIED behaviour of correctWithTutorRules() on current main plus the new adjective-copula split. Complements the bundled location-be-drop.json.",
+  "fp_risk_note": "Be-insertion is high-risk and must not over-trigger. This fixture stresses the location-vs-adjective boundary plus question protection: (1) adjective complements ('She happy', 'He sad', 'They tired') are not location phrases and must be handed to the adjective-copula rule, not location-be-drop; (2) question forms ('Is she at school?') already carry a fronted copula and must be left untouched. The positives confirm the rule still inserts is/are for pronoun + whitelisted location with the correct number agreement.",
   "positive": [
     {
       "id": "lbd-pos-001",
@@ -34,26 +34,26 @@
     {
       "id": "lbd-neg-001",
       "input": "She happy",
-      "expectedStatus": "unchanged",
-      "expectedCorrection": "She happy.",
-      "expectedRuleFired": null,
-      "notes": "Disambiguation: 'happy' is an adjective complement, not a location phrase; location-be-drop must NOT fire."
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She is happy.",
+      "expectedRuleFired": "en-vn-copula-be-adjective",
+      "notes": "Disambiguation: 'happy' is an adjective complement, so location-be-drop must NOT fire; the adjective-copula rule now owns the surface."
     },
     {
       "id": "lbd-neg-002",
       "input": "He sad",
-      "expectedStatus": "unchanged",
-      "expectedCorrection": "He sad.",
-      "expectedRuleFired": null,
-      "notes": "Disambiguation: adjective-be surface; this rule must abstain (not a location)."
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He is sad.",
+      "expectedRuleFired": "en-vn-copula-be-adjective",
+      "notes": "Disambiguation: adjective-be surface; location-be-drop must abstain and the adjective-copula rule must fire."
     },
     {
       "id": "lbd-neg-003",
       "input": "They tired",
-      "expectedStatus": "unchanged",
-      "expectedCorrection": "They tired.",
-      "expectedRuleFired": null,
-      "notes": "Disambiguation: adjective complement; location-be-drop must not insert a copula here."
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They are tired.",
+      "expectedRuleFired": "en-vn-copula-be-adjective",
+      "notes": "Disambiguation: adjective complement; location-be-drop must not insert a copula here, and the adjective-copula rule now owns the surface."
     },
     {
       "id": "lbd-neg-004",

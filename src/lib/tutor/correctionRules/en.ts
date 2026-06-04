@@ -685,6 +685,40 @@ const BE_DROP_TIME_MARKER_PATTERN =
   "(?:today|yesterday|last\\s+(?:night|week|month|year|summer|spring|winter|fall|autumn)|(?:an?|one|two|three|\\d+)\\s+(?:hour|hours|day|days|week|weeks|month|months|year|years)\\s+ago)";
 const BE_DROP_ADJECTIVE_PHRASE_PATTERN =
   `very\\s+${BE_DROP_ADJECTIVE_PATTERN}(?:\\s+${BE_DROP_TIME_MARKER_PATTERN})?`;
+const COPULA_BE_ADJECTIVE_PATTERN =
+  "(?:happy|sad|tired|busy|hungry|cold|hot|sick|angry|ready|late|early|bored|kind|tall|short)";
+const COPULA_BE_NAMED_SUBJECT_BLOCKLIST = new Set([
+  "a",
+  "an",
+  "april",
+  "august",
+  "december",
+  "february",
+  "friday",
+  "january",
+  "july",
+  "june",
+  "march",
+  "may",
+  "monday",
+  "november",
+  "october",
+  "september",
+  "saturday",
+  "sunday",
+  "thursday",
+  "the",
+  "these",
+  "this",
+  "those",
+  "today",
+  "tomorrow",
+  "tuesday",
+  "wednesday",
+  "yesterday",
+]);
+const COPULA_BE_ADJECTIVE_PHRASE_PATTERN =
+  `(?:${COPULA_BE_ADJECTIVE_PATTERN})(?:\\s+(?:today|now|${BE_DROP_TIME_MARKER_PATTERN}))?`;
 const STEP6_LOCATION_PHRASE_PATTERN =
   "(?:in\\s+(?:Canada|Vietnam|school|the\\s+room|the\\s+house|the\\s+office|the\\s+hospital|the\\s+airport)|at\\s+(?:school|home|work|the\\s+room|the\\s+house|the\\s+office|the\\s+hospital|the\\s+airport))";
 
@@ -795,6 +829,41 @@ function hasUnsafeBeDropMissingToComposition(input: string): boolean {
     `\\b(?:I|He|She|It|You|We|They)\\s+very\\s+${BE_DROP_ADJECTIVE_PATTERN}\\s+(?:go|goes|went|going)\\s+school\\b(?!\\s+bus\\b)`,
     "i",
   ).test(input);
+}
+
+function isLikelyNamedCopulaSubject(subject: string): boolean {
+  return /^[A-Z][a-z]+$/.test(subject) && !COPULA_BE_NAMED_SUBJECT_BLOCKLIST.has(subject.toLowerCase());
+}
+
+function getCopulaBeAdjectiveDropMatch(input: string): RegExpMatchArray | null {
+  const pattern = new RegExp(
+    `^((?:I|You|We|They|He|She|It|[A-Z][a-z]+))\\s+(${COPULA_BE_ADJECTIVE_PHRASE_PATTERN})([.?!]?)$`,
+    "i",
+  );
+  const match = input.trim().match(pattern);
+  if (!match) return null;
+
+  const subject = match[1] ?? "";
+  if (!/^(?:I|You|We|They|He|She|It)$/i.test(subject) && !isLikelyNamedCopulaSubject(subject)) {
+    return null;
+  }
+
+  return match;
+}
+
+function hasCopulaBeAdjectiveDrop(input: string): boolean {
+  return getCopulaBeAdjectiveDropMatch(input) !== null;
+}
+
+function repairCopulaBeAdjectiveDrop(input: string): string {
+  const match = getCopulaBeAdjectiveDropMatch(input);
+  if (!match) return input;
+
+  const subject = match[1] ?? "";
+  const phrase = match[2] ?? "";
+  const punctuation = match[3] ?? "";
+  const copula = copulaForBeDropSubject(subject, input);
+  return `${subject} ${copula} ${phrase}${punctuation}`;
 }
 
 function repairBeVerbOmission(input: string): string {
@@ -962,6 +1031,16 @@ export const englishCorrectionRules: CorrectionRule[] = [
       new RegExp(`\\b(?:I|He|She|It|You|We|They)\\s+${BE_DROP_ADJECTIVE_PHRASE_PATTERN}\\b`, "i").test(input),
     apply: repairBeVerbOmission,
     fpRiskNote: "Be-drop v1 requires a pronoun plus very plus a small adjective whitelist, skips subject-aux-inverted be questions, uses was/were for explicit past markers, and abstains from unsafe be-drop plus missing-to run-on surfaces.",
+  },
+  {
+    id: "en-vn-copula-be-adjective",
+    detects: (input) =>
+      !isQuestionLike(input) &&
+      !isBeAuxInvertedQuestion(input) &&
+      hasCopulaBeAdjectiveDrop(input),
+    apply: repairCopulaBeAdjectiveDrop,
+    fpRiskNote:
+      "High risk. Bare adjective predicates overlap with bare verbs, noun predicates, and sentence fragments. V1 keeps a closed adjective whitelist, accepts only pronoun subjects plus a narrow single-token named-subject surface, blocks common non-name sentence starters, and refuses anything already containing a finite copula.",
   },
   {
     id: "en-step5-subject-verb-agreement",
