@@ -70,6 +70,14 @@
       "expectedCorrection": "I stayed home although I was tired.",
       "expectedRuleFired": null,
       "notes": "Mid-sentence although-clause is not this rule."
+    },
+    {
+      "id": "although-even-though-but-neg-005",
+      "input": "Although it rained, I went out, but I came home early.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Although it rained, I went out, but I came home early.",
+      "expectedRuleFired": null,
+      "notes": "Trickiest over-fire boundary: an although-clause followed by a separate, legitimate but-coordination. The but here is a real second clause coordinator (went out / came home early), not the redundant although...but pairing. The redundant-pairing surface requires but immediately after the first comma; here it does not, so the rule must abstain."
     }
   ]
 }
