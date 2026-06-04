@@ -28,6 +28,30 @@
       "expectedCorrection": "Yesterday they played football.",
       "expectedRuleFired": "en-vn-past-marker-regular-verb",
       "notes": "'yesterday' marker + 'play' -> 'played'."
+    },
+    {
+      "id": "vpmrv-pos-004",
+      "input": "Yesterday I walk to school.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Yesterday I walked to school.",
+      "expectedRuleFired": "en-vn-past-marker-regular-verb",
+      "notes": "Lane A boundary: 'yesterday' + 'walk' -> 'walked'. Verified firing on the live engine."
+    },
+    {
+      "id": "vpmrv-pos-005",
+      "input": "Last night they clean the house.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Last night they cleaned the house.",
+      "expectedRuleFired": "en-vn-past-marker-regular-verb",
+      "notes": "Lane A boundary: 'last night' + 'clean' -> 'cleaned'. Verified firing on the live engine."
+    },
+    {
+      "id": "vpmrv-pos-006",
+      "input": "Two days ago we visit grandma.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Two days ago we visited grandma.",
+      "expectedRuleFired": "en-vn-past-marker-regular-verb",
+      "notes": "Lane A boundary: '<n> days ago' + 'visit' -> 'visited'. Verified firing on the live engine."
     }
   ],
   "negative": [
@@ -62,6 +86,38 @@
       "expectedCorrection": "I always finish my work.",
       "expectedRuleFired": null,
       "notes": "FP-stress (frequency adverb, no marker): 'always' habitual with whitelisted 'finish' but no past marker; must not fire. Verified abstaining."
+    },
+    {
+      "id": "vpmrv-neg-005",
+      "input": "Did you walk to school yesterday?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did you walk to school yesterday?",
+      "expectedRuleFired": null,
+      "notes": "Lane A over-fire guard (do-support question): 'did … walk' is already past via the auxiliary; bare 'walk' must NOT get -ed. Verified abstaining."
+    },
+    {
+      "id": "vpmrv-neg-006",
+      "input": "I did not walk yesterday.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I did not walk yesterday.",
+      "expectedRuleFired": null,
+      "notes": "Lane A over-fire guard (negated did): 'did not walk' carries past in the auxiliary; 'walk' must stay bare. Verified abstaining."
+    },
+    {
+      "id": "vpmrv-neg-007",
+      "input": "I walk to school every day.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I walk to school every day.",
+      "expectedRuleFired": null,
+      "notes": "Lane A over-fire guard (habitual present): 'every day', no past marker; whitelisted 'walk' must not fire. Verified abstaining."
+    },
+    {
+      "id": "vpmrv-neg-008",
+      "input": "Yesterday I walked to school.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Yesterday I walked to school.",
+      "expectedRuleFired": null,
+      "notes": "Lane A over-fire guard (already past): 'walked' must not double to 'walkeded'. Verified abstaining."
     }
   ]
 }
