@@ -1,8 +1,10 @@
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
 import EnglishPronunciationFeedbackCard from "@/components/ai-tutor/EnglishPronunciationFeedbackCard";
 import VietnameseToneFeedbackCard from "@/components/ai-tutor/VietnameseToneFeedbackCard";
+import PronunciationProgressTrail from "@/components/ai-tutor/PronunciationProgressTrail";
 import type { EnglishPronunciationFeedbackDisplay } from "@/lib/pronunciation/englishPronunciationFeedback";
 import type { VietnameseToneFeedbackDisplay } from "@/lib/pronunciation/vietnameseToneFeedback";
+import type { PronunciationProgressDisplay } from "@/lib/pronunciation/pronunciationProgressTrail";
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
 import { calculateSentenceMatchPercent } from "@/lib/tutor/speakFollowups";
 
@@ -59,6 +61,8 @@ type Props = {
   englishPronunciationFeedback?: EnglishPronunciationFeedbackDisplay | null;
   vietnameseToneFeedbackEnabled?: boolean;
   vietnameseToneFeedback?: VietnameseToneFeedbackDisplay | null;
+  vietnameseToneProgress?: PronunciationProgressDisplay | null;
+  englishPronunciationProgress?: PronunciationProgressDisplay | null;
   onMicToggle: () => void;
   onReadTarget: () => void;
   onReadFollowUp: () => void;
@@ -87,6 +91,8 @@ export default function SpeakPracticeMode({
   englishPronunciationFeedback = null,
   vietnameseToneFeedbackEnabled = false,
   vietnameseToneFeedback = null,
+  vietnameseToneProgress = null,
+  englishPronunciationProgress = null,
   onMicToggle,
   onReadTarget,
   onReadFollowUp,
@@ -196,9 +202,19 @@ export default function SpeakPracticeMode({
             feedback={vietnameseToneFeedback}
           />
 
+          <PronunciationProgressTrail
+            enabled={vietnameseToneFeedbackEnabled}
+            display={vietnameseToneProgress}
+          />
+
           <EnglishPronunciationFeedbackCard
             enabled={englishPronunciationFeedbackEnabled}
             feedback={englishPronunciationFeedback}
+          />
+
+          <PronunciationProgressTrail
+            enabled={englishPronunciationFeedbackEnabled}
+            display={englishPronunciationProgress}
           />
 
           <div className="mt-4 rounded-[16px] border border-slate-200 bg-slate-50 px-4 py-4">
