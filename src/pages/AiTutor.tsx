@@ -118,6 +118,11 @@ import {
   emitPronunciationFeatureOutcome,
   PRONUNCIATION_FEATURE_OUTCOME_KEYS,
 } from "@/lib/pronunciation/pronunciationFeatureOutcome";
+import {
+  appendPronunciationProgress,
+  buildPronunciationProgressDisplay,
+  type PronunciationProgressEntry,
+} from "@/lib/pronunciation/pronunciationProgressTrail";
 
 type CorrectionResult = TutorTurn & {
   grammarTip: string;
@@ -849,6 +854,8 @@ export default function AiTutorPage() {
     useState<SpeakPronunciationResult | null>(null);
   const [speakVietnameseToneFeedback, setSpeakVietnameseToneFeedback] =
     useState<VietnameseToneFeedbackDisplay | null>(null);
+  const [speakToneProgress, setSpeakToneProgress] = useState<PronunciationProgressEntry[]>([]);
+  const [speakEnglishProgress, setSpeakEnglishProgress] = useState<PronunciationProgressEntry[]>([]);
   const [latestCorrectedSeed, setLatestCorrectedSeed] = useState<CorrectedSentenceSeed | null>(null);
   const [speakFollowUpSession, setSpeakFollowUpSession] = useState<SpeakFollowUpSession>({
     topicId: "",
@@ -1056,6 +1063,8 @@ export default function AiTutorPage() {
       speakPronunciationOutcomeSessionIdRef.current = "";
       emittedEnglishPronunciationOutcomeRef.current = "";
       emittedVietnameseToneOutcomeRef.current = "";
+      setSpeakToneProgress([]);
+      setSpeakEnglishProgress([]);
       return;
     }
     if (!speakPronunciationOutcomeSessionIdRef.current) {
@@ -1241,6 +1250,18 @@ export default function AiTutorPage() {
           ].join("|");
           if (emittedVietnameseToneOutcomeRef.current !== emitKey) {
             emittedVietnameseToneOutcomeRef.current = emitKey;
+            // Step 7: only supported, scored outcomes feed the progress trail —
+            // abstained buckets ("unavailable") and null feedback never imply progress.
+            if (feedback && (feedback.status === "correct" || feedback.status === "try_again")) {
+              const progressStatus = feedback.status;
+              const progressScore = feedback.score;
+              setSpeakToneProgress((previous) =>
+                appendPronunciationProgress(previous, {
+                  status: progressStatus,
+                  score: progressScore,
+                }),
+              );
+            }
             emitPronunciationFeatureOutcome({
               featureKey: PRONUNCIATION_FEATURE_OUTCOME_KEYS.vietnameseTone,
               sessionId: speakPronunciationOutcomeSessionIdRef.current,
@@ -1349,6 +1370,15 @@ export default function AiTutorPage() {
     tutorCopy.starterQuestions,
   ]);
 
+  const speakToneProgressDisplay = useMemo(
+    () => buildPronunciationProgressDisplay(speakToneProgress),
+    [speakToneProgress],
+  );
+  const speakEnglishProgressDisplay = useMemo(
+    () => buildPronunciationProgressDisplay(speakEnglishProgress),
+    [speakEnglishProgress],
+  );
+
   useEffect(() => {
     if (
       mode !== "speak" ||
@@ -1387,6 +1417,22 @@ export default function AiTutorPage() {
     ].join("|");
     if (emittedEnglishPronunciationOutcomeRef.current === emitKey) return;
     emittedEnglishPronunciationOutcomeRef.current = emitKey;
+
+    // Step 7: feed the progress trail only when there is visible, non-abstained
+    // feedback (at least one scored item) — abstain states never count.
+    const englishPrimaryStatus = feedbackItems[0]?.status;
+    if (englishPrimaryStatus === "correct" || englishPrimaryStatus === "try_again") {
+      const progressScore =
+        typeof speakPronunciationResult.overallScore === "number"
+          ? speakPronunciationResult.overallScore
+          : null;
+      setSpeakEnglishProgress((previous) =>
+        appendPronunciationProgress(previous, {
+          status: englishPrimaryStatus,
+          score: progressScore,
+        }),
+      );
+    }
 
     emitPronunciationFeatureOutcome({
       featureKey: PRONUNCIATION_FEATURE_OUTCOME_KEYS.englishFeedback,
@@ -1798,6 +1844,10 @@ export default function AiTutorPage() {
     setSpeakRepeatInput("");
     setSpeakPronunciationResult(null);
     setSpeakVietnameseToneFeedback(null);
+    // New corrected target = fresh practice session → reset the progress trail
+    // so attempts on different sentences are not mixed.
+    setSpeakToneProgress([]);
+    setSpeakEnglishProgress([]);
     pronunciationRecorder.reset();
     lastRecordedSpeakAttemptRef.current = "";
     speakPivotTurnsRef.current = [];
@@ -1966,6 +2016,8 @@ export default function AiTutorPage() {
           englishPronunciationFeedback={englishPronunciationFeedback}
           vietnameseToneFeedbackEnabled={FEATURE_FLAGS.VIETNAMESE_TONE_FEEDBACK_MVP_ENABLED && target === "vi"}
           vietnameseToneFeedback={speakVietnameseToneFeedback}
+          vietnameseToneProgress={speakToneProgressDisplay}
+          englishPronunciationProgress={speakEnglishProgressDisplay}
           micSupported={stt.supported}
           micListening={stt.listening}
           micError={stt.error}
