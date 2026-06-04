@@ -1,0 +1,123 @@
+{
+  "rule": "en-vn-past-marker-regular-verb",
+  "ruleId": "en-vn-past-marker-regular-verb",
+  "language": "en",
+  "description": "Vietnamese L1 'đã-drop' transfer for REGULAR verbs: a past-time marker + a bare whitelisted regular verb gets the missing -ed (watch->watched, finish->finished, play->played). Complements the irregular rule (en-yesterday-irregular-beginner-past, buy/do/eat/go/have). Expectations encode the VERIFIED behaviour of correctWithTutorRules() on current main.",
+  "fp_risk_note": "HIGH risk. Naive '-ed on a bare verb after a past marker' over-fires on: (1) habitual present with frequency adverbs ('Every day I cook', 'I always finish'); (2) verbs already in the past ('played' must not become 'playeded'); (3) irregulars that must not take -ed (handled by the irregular rule, not this one); (4) -y/-e spelling shifts. The v1 rule is whitelist-scoped, so a regular verb outside the whitelist ('cook' today) abstains. The negative cases lock surfaces (1)-(4) plus the whitelist boundary.",
+  "positive": [
+    {
+      "id": "vpmrv-pos-001",
+      "input": "Last night she watch a movie",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Last night she watched a movie.",
+      "expectedRuleFired": "en-vn-past-marker-regular-verb",
+      "notes": "'last night' marker + regular 'watch' -> 'watched'."
+    },
+    {
+      "id": "vpmrv-pos-002",
+      "input": "We finish the homework yesterday",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "We finished the homework yesterday.",
+      "expectedRuleFired": "en-vn-past-marker-regular-verb",
+      "notes": "Trailing 'yesterday' marker + 'finish' -> 'finished'."
+    },
+    {
+      "id": "vpmrv-pos-003",
+      "input": "Yesterday they play football",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Yesterday they played football.",
+      "expectedRuleFired": "en-vn-past-marker-regular-verb",
+      "notes": "'yesterday' marker + 'play' -> 'played'."
+    },
+    {
+      "id": "vpmrv-pos-004",
+      "input": "Yesterday I walk to school.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Yesterday I walked to school.",
+      "expectedRuleFired": "en-vn-past-marker-regular-verb",
+      "notes": "Lane A boundary: 'yesterday' + 'walk' -> 'walked'. Verified firing on the live engine."
+    },
+    {
+      "id": "vpmrv-pos-005",
+      "input": "Last night they clean the house.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Last night they cleaned the house.",
+      "expectedRuleFired": "en-vn-past-marker-regular-verb",
+      "notes": "Lane A boundary: 'last night' + 'clean' -> 'cleaned'. Verified firing on the live engine."
+    },
+    {
+      "id": "vpmrv-pos-006",
+      "input": "Two days ago we visit grandma.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Two days ago we visited grandma.",
+      "expectedRuleFired": "en-vn-past-marker-regular-verb",
+      "notes": "Lane A boundary: '<n> days ago' + 'visit' -> 'visited'. Verified firing on the live engine."
+    }
+  ],
+  "negative": [
+    {
+      "id": "vpmrv-neg-001",
+      "input": "Every day I cook dinner",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Every day I cook dinner.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (habitual present): frequency 'every day', no past marker; must not add -ed. Verified abstaining."
+    },
+    {
+      "id": "vpmrv-neg-002",
+      "input": "Yesterday they played football",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Yesterday they played football.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (already past): 'played' must not double to 'playeded'. Verified abstaining."
+    },
+    {
+      "id": "vpmrv-neg-003",
+      "input": "Yesterday I cook dinner",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Yesterday I cook dinner.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (whitelist boundary): past marker present but 'cook' is outside the v1 regular-verb whitelist, so the rule abstains rather than guess. Verified abstaining."
+    },
+    {
+      "id": "vpmrv-neg-004",
+      "input": "I always finish my work",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I always finish my work.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (frequency adverb, no marker): 'always' habitual with whitelisted 'finish' but no past marker; must not fire. Verified abstaining."
+    },
+    {
+      "id": "vpmrv-neg-005",
+      "input": "Did you walk to school yesterday?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did you walk to school yesterday?",
+      "expectedRuleFired": null,
+      "notes": "Lane A over-fire guard (do-support question): 'did … walk' is already past via the auxiliary; bare 'walk' must NOT get -ed. Verified abstaining."
+    },
+    {
+      "id": "vpmrv-neg-006",
+      "input": "I did not walk yesterday.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I did not walk yesterday.",
+      "expectedRuleFired": null,
+      "notes": "Lane A over-fire guard (negated did): 'did not walk' carries past in the auxiliary; 'walk' must stay bare. Verified abstaining."
+    },
+    {
+      "id": "vpmrv-neg-007",
+      "input": "I walk to school every day.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I walk to school every day.",
+      "expectedRuleFired": null,
+      "notes": "Lane A over-fire guard (habitual present): 'every day', no past marker; whitelisted 'walk' must not fire. Verified abstaining."
+    },
+    {
+      "id": "vpmrv-neg-008",
+      "input": "Yesterday I walked to school.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Yesterday I walked to school.",
+      "expectedRuleFired": null,
+      "notes": "Lane A over-fire guard (already past): 'walked' must not double to 'walkeded'. Verified abstaining."
+    }
+  ]
+}
