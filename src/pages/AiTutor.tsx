@@ -113,6 +113,10 @@ import {
   resolveVietnameseTonePracticeTarget,
   type VietnameseToneFeedbackDisplay,
 } from "@/lib/pronunciation/vietnameseToneFeedback";
+import {
+  emitPronunciationFeatureOutcome,
+  PRONUNCIATION_FEATURE_OUTCOME_KEYS,
+} from "@/lib/pronunciation/pronunciationFeatureOutcome";
 
 type CorrectionResult = TutorTurn & {
   grammarTip: string;
@@ -919,6 +923,8 @@ export default function AiTutorPage() {
   const lastRecordedSpeakAttemptRef = useRef<string>("");
   const speakPronunciationRequestRef = useRef(0);
   const speakVietnameseToneRequestRef = useRef(0);
+  const emittedEnglishPronunciationOutcomeRef = useRef<string>("");
+  const emittedVietnameseToneOutcomeRef = useRef<string>("");
   const speakPivotTurnsRef = useRef<PivotPromptTurn[]>([]);
   const wasListeningRef = useRef(false);
   const ignoreNextSttCommitRef = useRef(false);
@@ -1101,12 +1107,76 @@ export default function AiTutorPage() {
     const targetSyllable = resolveVietnameseTonePracticeTarget(
       latestCorrectedSeed?.correctedSentence?.trim() ?? "",
     );
-    if (!targetSyllable?.supported || !pronunciationRecorder.audioBlob || !session?.access_token) {
+    const transcript = normalizeSpokenText(speakRepeatInput);
+
+    if (targetSyllable && !targetSyllable.supported && transcript) {
+      const emitKey = [
+        "unsupported",
+        targetSyllable.syllable,
+        targetSyllable.tone,
+        transcript,
+      ].join("|");
+      if (emittedVietnameseToneOutcomeRef.current !== emitKey) {
+        emittedVietnameseToneOutcomeRef.current = emitKey;
+        emitPronunciationFeatureOutcome({
+          featureKey: PRONUNCIATION_FEATURE_OUTCOME_KEYS.vietnameseTone,
+          direction: "en_to_vi_tone",
+          promptContext: {
+            source: "ai_tutor_speak",
+            target_text: targetSyllable.syllable,
+            tone: targetSyllable.tone,
+            supported: false,
+          },
+          learnerInput: transcript,
+          scoredResult: {
+            tone: targetSyllable.tone,
+            supported: false,
+          },
+          abstained: true,
+          abstainReason: "unsupported_tone",
+          learnerOutcome: "cant_assess_yet",
+        });
+      }
       setSpeakVietnameseToneFeedback(null);
       return;
     }
 
-    const transcript = normalizeSpokenText(speakRepeatInput);
+    if (!targetSyllable?.supported || !pronunciationRecorder.audioBlob || !session?.access_token) {
+      if (targetSyllable?.supported && transcript) {
+        const emitKey = [
+          "missing-evidence",
+          targetSyllable.syllable,
+          targetSyllable.tone,
+          transcript,
+          Boolean(pronunciationRecorder.audioBlob),
+          Boolean(session?.access_token),
+        ].join("|");
+        if (emittedVietnameseToneOutcomeRef.current !== emitKey) {
+          emittedVietnameseToneOutcomeRef.current = emitKey;
+          emitPronunciationFeatureOutcome({
+            featureKey: PRONUNCIATION_FEATURE_OUTCOME_KEYS.vietnameseTone,
+            direction: "en_to_vi_tone",
+            promptContext: {
+              source: "ai_tutor_speak",
+              target_text: targetSyllable.syllable,
+              tone: targetSyllable.tone,
+              supported: true,
+            },
+            learnerInput: transcript,
+            scoredResult: {
+              tone: targetSyllable.tone,
+              supported: true,
+              scored: false,
+            },
+            abstained: true,
+            abstainReason: "missing_audio_or_session",
+            learnerOutcome: "no_tone_feedback_shown",
+          });
+        }
+      }
+      setSpeakVietnameseToneFeedback(null);
+      return;
+    }
     if (!transcript) {
       setSpeakVietnameseToneFeedback(null);
       return;
@@ -1125,12 +1195,47 @@ export default function AiTutorPage() {
       })
         .then((result) => {
           if (speakVietnameseToneRequestRef.current !== requestId) return;
-          setSpeakVietnameseToneFeedback(
-            buildVietnameseToneFeedbackDisplay({
-              target: targetSyllable,
-              result,
-            }),
-          );
+          const feedback = buildVietnameseToneFeedbackDisplay({
+            target: targetSyllable,
+            result,
+          });
+          setSpeakVietnameseToneFeedback(feedback);
+          const emitKey = [
+            "scored",
+            targetSyllable.syllable,
+            targetSyllable.tone,
+            transcript,
+            result.bucket,
+            result.score ?? "none",
+            result.reason ?? "none",
+          ].join("|");
+          if (emittedVietnameseToneOutcomeRef.current !== emitKey) {
+            emittedVietnameseToneOutcomeRef.current = emitKey;
+            emitPronunciationFeatureOutcome({
+              featureKey: PRONUNCIATION_FEATURE_OUTCOME_KEYS.vietnameseTone,
+              direction: "en_to_vi_tone",
+              promptContext: {
+                source: "ai_tutor_speak",
+                target_text: targetSyllable.syllable,
+                tone: targetSyllable.tone,
+                supported: true,
+              },
+              learnerInput: transcript,
+              scoredResult: {
+                tone: targetSyllable.tone,
+                bucket: result.bucket,
+                score: result.score,
+                reason: result.reason,
+              },
+              abstained: !feedback || result.bucket === "unavailable",
+              abstainReason: !feedback
+                ? result.reason ?? "no_visible_feedback"
+                : result.bucket === "unavailable"
+                  ? result.reason ?? "scoring_unavailable"
+                  : null,
+              learnerOutcome: feedback?.status ?? "no_tone_feedback_shown",
+            });
+          }
         })
         .catch(() => {
           if (speakVietnameseToneRequestRef.current !== requestId) return;
@@ -1194,6 +1299,85 @@ export default function AiTutorPage() {
     latestCorrectedSeed?.correctedSentence,
     mode,
     speakPronunciationResult,
+    target,
+    tutorCopy.starterQuestions,
+  ]);
+
+  useEffect(() => {
+    if (
+      mode !== "speak" ||
+      target !== "en" ||
+      !FEATURE_FLAGS.ENGLISH_PRONUNCIATION_FEEDBACK_MVP_ENABLED ||
+      !speakPronunciationResult
+    ) {
+      return;
+    }
+
+    const targetSentence =
+      latestCorrectedSeed?.correctedSentence.trim() ||
+      tutorCopy.starterQuestions[0] ||
+      "";
+    const transcript = normalizeSpokenText(speakRepeatInput);
+    if (!targetSentence || !transcript) return;
+
+    const feedbackItems = englishPronunciationFeedback?.items ?? [];
+    const phonemeEvidenceCount =
+      (speakPronunciationResult.phonemeScores?.length ?? 0) +
+      (speakPronunciationResult.words ?? []).reduce(
+        (count, word) => count + (word.phonemes?.length ?? 0),
+        0,
+      );
+    const isAzureDetail =
+      speakPronunciationResult.mode === "azure-batch" &&
+      speakPronunciationResult.provider === "azure" &&
+      phonemeEvidenceCount > 0;
+    const emitKey = [
+      targetSentence,
+      transcript,
+      speakPronunciationResult.mode,
+      speakPronunciationResult.provider ?? "none",
+      speakPronunciationResult.overallScore ?? "none",
+      feedbackItems.map((item) => `${item.category}:${item.status}`).join(","),
+    ].join("|");
+    if (emittedEnglishPronunciationOutcomeRef.current === emitKey) return;
+    emittedEnglishPronunciationOutcomeRef.current = emitKey;
+
+    emitPronunciationFeatureOutcome({
+      featureKey: PRONUNCIATION_FEATURE_OUTCOME_KEYS.englishFeedback,
+      direction: "vn_to_en_english_pronunciation",
+      promptContext: {
+        source: "ai_tutor_speak",
+        target_text: targetSentence,
+      },
+      learnerInput: transcript,
+      scoredResult: {
+        mode: speakPronunciationResult.mode,
+        provider: speakPronunciationResult.provider ?? null,
+        overall_score: speakPronunciationResult.overallScore ?? null,
+        phoneme_evidence_count: phonemeEvidenceCount,
+        feedback_items: feedbackItems.map((item) => ({
+          category: item.category,
+          status: item.status,
+          score: item.score,
+          target_word: item.targetWord,
+        })),
+      },
+      abstained: feedbackItems.length === 0,
+      abstainReason: feedbackItems.length === 0
+        ? isAzureDetail
+          ? "no_high_confidence_feedback"
+          : "no_azure_phoneme_evidence"
+        : null,
+      learnerOutcome: feedbackItems.length > 0
+        ? feedbackItems.map((item) => item.status).join(",")
+        : "sentence_match_only",
+    });
+  }, [
+    englishPronunciationFeedback,
+    latestCorrectedSeed?.correctedSentence,
+    mode,
+    speakPronunciationResult,
+    speakRepeatInput,
     target,
     tutorCopy.starterQuestions,
   ]);
