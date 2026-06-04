@@ -986,6 +986,31 @@ describe("correctionEngine", () => {
     });
   });
 
+  it.each([
+    ["Because I was tired, so I went home.", "Because I was tired, I went home."],
+    ["Because it was late, so we left.", "Because it was late, we left."],
+    ["Because he was sick, so he stayed home.", "Because he was sick, he stayed home."],
+    ["Because I was hungry, so I ate dinner.", "Because I was hungry, I ate dinner."],
+  ])("removes redundant because/so doubling: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-vn-because-so-doubling"],
+    });
+  });
+
+  it.each([
+    "Because I was tired, I went home.",
+    "I was tired, so I went home.",
+    "Because I was tired, therefore I went home.",
+    "I stayed home because I was tired.",
+  ])("does not over-trigger because/so doubling: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
   it("rejects unchanged wrong correction text", () => {
     expect(
       validateCorrectionChangedWhenNeeded(

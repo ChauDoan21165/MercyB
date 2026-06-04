@@ -222,6 +222,19 @@ function punctuateMorningRoutineRunOn(input: string): string {
   );
 }
 
+function hasBecauseSoDoubling(input: string): boolean {
+  const trimmed = input.trim();
+  return /^because\s+[^,]+,\s+so\s+[^.?!]+[.?!]?$/i.test(trimmed);
+}
+
+function repairBecauseSoDoubling(input: string): string {
+  return input.replace(
+    /^(because\s+[^,]+),\s+so\s+([^.?!]+)([.?!]?)$/i,
+    (_match, becauseClause: string, resultClause: string, terminal: string) =>
+      `${becauseClause}, ${resultClause}${terminal}`,
+  );
+}
+
 function punctuateQuestionForm(input: string): string {
   const trimmed = input.trim();
   if (/[?？!]$/.test(trimmed)) return trimmed;
@@ -855,6 +868,12 @@ export const englishCorrectionRules: CorrectionRule[] = [
       /^english i study every day[.?!]?$/i.test(input.trim()) ||
       /^in my family,?\s+my mother i love very much[.?!]?$/i.test(input.trim()),
     apply: repairTopicCommentOrder,
+  },
+  {
+    id: "en-vn-because-so-doubling",
+    detects: hasBecauseSoDoubling,
+    apply: repairBecauseSoDoubling,
+    fpRiskNote: "Low risk. V1 only removes the redundant so in sentence-initial because ... , so ... surfaces and leaves standalone because clauses or standalone so-result clauses unchanged.",
   },
   {
     id: "en-time-expression-placement",
