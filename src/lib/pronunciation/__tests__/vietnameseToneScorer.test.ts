@@ -9,6 +9,7 @@ import {
   sparsePitchContour,
   vietnameseToneTargets,
 } from "../__fixtures__/vietnameseToneContourFixtures";
+import { azureVietnameseToneTtsCalibrationIngestionResult } from "../azureVietnameseToneTtsCalibrationAsset";
 import {
   classifyVietnameseToneContour,
   normalizePitchContour,
@@ -163,4 +164,50 @@ describe("scoreVietnameseToneAttempt", () => {
       expect(result.score).toBeNull();
     },
   );
+
+  it.each([
+    ["hoi", risingPitchContour],
+    ["hoi", fallingPitchContour],
+    ["hoi", levelPitchContour],
+    ["nga", risingPitchContour],
+    ["nga", fallingPitchContour],
+    ["nga", levelPitchContour],
+    ["nang", risingPitchContour],
+    ["nang", fallingPitchContour],
+    ["nang", levelPitchContour],
+  ] as const)(
+    "does not promote %s from high-confidence %s contour evidence alone",
+    (tone, contour) => {
+      const result = scoreVietnameseToneAttempt({
+        contour,
+        target: vietnameseToneTargets[tone],
+      });
+
+      expect(result.bucket).toBe("unclear");
+      expect(result.reason).toBe("unsupported-tone-for-mvp");
+      expect(result.score).toBeNull();
+    },
+  );
+
+  it("keeps real unsupported calibration contours abstained even when f0 extraction is confident", () => {
+    const unsupportedReferences = azureVietnameseToneTtsCalibrationIngestionResult()
+      .calibrationReferences
+      .filter((reference) => reference.kind === "unsupported");
+
+    expect(new Set(unsupportedReferences.map((reference) => reference.target.tone))).toEqual(
+      new Set(["hoi", "nga", "nang"]),
+    );
+
+    for (const reference of unsupportedReferences) {
+      const result = scoreVietnameseToneAttempt({
+        contour: reference.contour,
+        target: reference.target,
+      });
+
+      expect(result.bucket).toBe("unclear");
+      expect(result.reason).toBe("unsupported-tone-for-mvp");
+      expect(result.score).toBeNull();
+      expect(result.confidence).toBeGreaterThanOrEqual(0.75);
+    }
+  });
 });
