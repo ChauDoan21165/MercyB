@@ -2,8 +2,12 @@ import { PROBLEM_PAIRS_STRESS } from "@/lib/pronunciation/vn-phoneme-map";
 
 export type EnglishPronunciationFeedbackCategory =
   | "final_consonant_deletion"
+  | "final_t_d_deletion"
+  | "final_k_deletion"
   | "consonant_cluster"
   | "theta_sound"
+  | "sh_s_contrast"
+  | "v_w_contrast"
   | "ending_s"
   | "ending_ed"
   | "word_stress";
@@ -95,7 +99,10 @@ const INITIAL_CLUSTER_PREFIXES = [
   "sl",
   "sm",
   "sn",
+  "sk",
+  "skw",
   "sp",
+  "squ",
   "st",
   "sw",
   "tr",
@@ -130,6 +137,14 @@ const FINAL_CLUSTER_SUFFIXES = [
   "rm",
   "lk",
 ] as const;
+
+const FINAL_T_D_PHONEMES = new Set(["t", "d"]);
+const FINAL_K_PHONEMES = new Set(["k", "g"]);
+
+const SH_PHONEMES = ["sh", "ʃ"];
+const S_PHONEMES = ["s"];
+const V_PHONEMES = ["v"];
+const W_PHONEMES = ["w"];
 
 const STRESS_PHRASE_MAP: Array<{
   needle: string;
@@ -235,6 +250,18 @@ function isInitialCluster(word: string): boolean {
 
 function isFinalCluster(word: string): boolean {
   return FINAL_CLUSTER_SUFFIXES.some((suffix) => word.endsWith(suffix));
+}
+
+function isFinalTDPhoneme(symbol: string): boolean {
+  return FINAL_T_D_PHONEMES.has(symbol.toLowerCase());
+}
+
+function isFinalKPhoneme(symbol: string): boolean {
+  return FINAL_K_PHONEMES.has(symbol.toLowerCase());
+}
+
+function hasAnyPhonemeScore(word: EnglishPronunciationWord, phonemeNames: string[]): boolean {
+  return findPhonemeScore(word, phonemeNames) !== null;
 }
 
 function createItem(input: {
@@ -345,6 +372,7 @@ function classifyWordTarget(
   const lastScore = toFiniteNumber(phonemes[phonemeCount - 1]?.accuracyScore);
   const firstTwoScores = phonemes.slice(0, 2).map((p) => toFiniteNumber(p.accuracyScore)).filter((n): n is number => n !== null);
   const finalTwoScores = phonemes.slice(-2).map((p) => toFiniteNumber(p.accuracyScore)).filter((n): n is number => n !== null);
+  const finalConsonantScore = lastPhoneme && !isVowelLikeSymbol(lastPhoneme) ? lastScore : null;
 
   const isThetaWord = /th/.test(lowerWord);
   if (isThetaWord) {
@@ -367,6 +395,91 @@ function classifyWordTarget(
       });
     }
     return null;
+  }
+
+  const shScore = findPhonemeScore(word, SH_PHONEMES);
+  if (hasAnyPhonemeScore(word, SH_PHONEMES) && /sh/.test(lowerWord)) {
+    if ((hasStrongConfidence(shScore) && score >= SCORE_MATCH_THRESHOLD) || hasLowConfidence(shScore)) {
+      return createItem({
+        category: "sh_s_contrast",
+        status: hasStrongConfidence(shScore) && score >= SCORE_MATCH_THRESHOLD ? "correct" : "try_again",
+        score: shScore ?? score,
+        targetWord,
+        titleEn: "SH sound",
+        titleVi: "Âm SH",
+        guidanceEn: hasStrongConfidence(shScore) && score >= SCORE_MATCH_THRESHOLD
+          ? "Nice — the SH sound is clear."
+          : "Try this sound again: make SH longer and softer than S.",
+        guidanceVi: hasStrongConfidence(shScore) && score >= SCORE_MATCH_THRESHOLD
+          ? "Tốt — âm SH đã rõ."
+          : "Thử lại âm này: kéo âm SH dài và mềm hơn âm S.",
+        evidence: `ph:${shScore ?? "n/a"}`,
+      });
+    }
+  }
+
+  const sScore = findPhonemeScore(word, S_PHONEMES);
+  if (
+    hasAnyPhonemeScore(word, S_PHONEMES) &&
+    lowerWord.startsWith("s") &&
+    !/sh/.test(lowerWord) &&
+    !isInitialCluster(lowerWord)
+  ) {
+    if (hasLowConfidence(sScore)) {
+      return createItem({
+        category: "sh_s_contrast",
+        status: "try_again",
+        score: sScore ?? score,
+        targetWord,
+        titleEn: "S sound",
+        titleVi: "Âm S",
+        guidanceEn: "Try this sound again: keep S short and clear, not like SH.",
+        guidanceVi: "Thử lại âm này: giữ âm S ngắn và rõ, không kéo thành SH.",
+        evidence: `ph:${sScore ?? "n/a"}`,
+      });
+    }
+  }
+
+  const vScore = findPhonemeScore(word, V_PHONEMES);
+  if (hasAnyPhonemeScore(word, V_PHONEMES) && /v/.test(lowerWord)) {
+    if ((hasStrongConfidence(vScore) && score >= SCORE_MATCH_THRESHOLD) || hasLowConfidence(vScore)) {
+      return createItem({
+        category: "v_w_contrast",
+        status: hasStrongConfidence(vScore) && score >= SCORE_MATCH_THRESHOLD ? "correct" : "try_again",
+        score: vScore ?? score,
+        targetWord,
+        titleEn: "V sound",
+        titleVi: "Âm V",
+        guidanceEn: hasStrongConfidence(vScore) && score >= SCORE_MATCH_THRESHOLD
+          ? "Nice — the V sound is clear."
+          : "Try this sound again: use your top teeth and lower lip for V.",
+        guidanceVi: hasStrongConfidence(vScore) && score >= SCORE_MATCH_THRESHOLD
+          ? "Tốt — âm V đã rõ."
+          : "Thử lại âm này: dùng răng trên chạm nhẹ môi dưới cho âm V.",
+        evidence: `ph:${vScore ?? "n/a"}`,
+      });
+    }
+  }
+
+  const wScore = findPhonemeScore(word, W_PHONEMES);
+  if (hasAnyPhonemeScore(word, W_PHONEMES) && /w/.test(lowerWord)) {
+    if ((hasStrongConfidence(wScore) && score >= SCORE_MATCH_THRESHOLD) || hasLowConfidence(wScore)) {
+      return createItem({
+        category: "v_w_contrast",
+        status: hasStrongConfidence(wScore) && score >= SCORE_MATCH_THRESHOLD ? "correct" : "try_again",
+        score: wScore ?? score,
+        targetWord,
+        titleEn: "W sound",
+        titleVi: "Âm W",
+        guidanceEn: hasStrongConfidence(wScore) && score >= SCORE_MATCH_THRESHOLD
+          ? "Nice — the W sound is clear."
+          : "Try this sound again: round your lips first for W.",
+        guidanceVi: hasStrongConfidence(wScore) && score >= SCORE_MATCH_THRESHOLD
+          ? "Tốt — âm W đã rõ."
+          : "Thử lại âm này: tròn môi trước khi phát âm W.",
+        evidence: `ph:${wScore ?? "n/a"}`,
+      });
+    }
   }
 
   if (lowerWord.endsWith("s") && !/(ss|us|is|as|os)$/.test(lowerWord)) {
@@ -413,6 +526,55 @@ function classifyWordTarget(
     return null;
   }
 
+  if (
+    finalConsonantScore !== null &&
+    isFinalTDPhoneme(lastPhoneme) &&
+    !lowerWord.endsWith("ed") &&
+    !isFinalCluster(lowerWord) &&
+    ((hasStrongConfidence(finalConsonantScore) && score >= SCORE_MATCH_THRESHOLD) ||
+      hasLowConfidence(finalConsonantScore))
+  ) {
+    return createItem({
+      category: "final_t_d_deletion",
+      status: hasStrongConfidence(finalConsonantScore) && score >= SCORE_MATCH_THRESHOLD ? "correct" : "try_again",
+      score: finalConsonantScore,
+      targetWord,
+      titleEn: "Final /t/ or /d/",
+      titleVi: "Âm /t/ hoặc /d/ cuối",
+      guidanceEn: hasStrongConfidence(finalConsonantScore) && score >= SCORE_MATCH_THRESHOLD
+        ? "Good — the final stop sound is clear."
+        : "Try this sound again: close the final /t/ or /d/ cleanly.",
+      guidanceVi: hasStrongConfidence(finalConsonantScore) && score >= SCORE_MATCH_THRESHOLD
+        ? "Tốt — âm chặn cuối đã rõ."
+        : "Thử lại âm này: khép âm /t/ hoặc /d/ cuối thật gọn.",
+      evidence: `ph:${lastPhoneme}`,
+    });
+  }
+
+  if (
+    finalConsonantScore !== null &&
+    isFinalKPhoneme(lastPhoneme) &&
+    !isFinalCluster(lowerWord) &&
+    ((hasStrongConfidence(finalConsonantScore) && score >= SCORE_MATCH_THRESHOLD) ||
+      hasLowConfidence(finalConsonantScore))
+  ) {
+    return createItem({
+      category: "final_k_deletion",
+      status: hasStrongConfidence(finalConsonantScore) && score >= SCORE_MATCH_THRESHOLD ? "correct" : "try_again",
+      score: finalConsonantScore,
+      targetWord,
+      titleEn: "Final /k/",
+      titleVi: "Âm /k/ cuối",
+      guidanceEn: hasStrongConfidence(finalConsonantScore) && score >= SCORE_MATCH_THRESHOLD
+        ? "Good — the final /k/ sound is clear."
+        : "Try this sound again: keep the final /k/ short but audible.",
+      guidanceVi: hasStrongConfidence(finalConsonantScore) && score >= SCORE_MATCH_THRESHOLD
+        ? "Tốt — âm /k/ cuối đã rõ."
+        : "Thử lại âm này: giữ âm /k/ cuối ngắn nhưng nghe được.",
+      evidence: `ph:${lastPhoneme}`,
+    });
+  }
+
   if (isInitialCluster(lowerWord) || isFinalCluster(lowerWord)) {
     const clusterScores = [
       ...phonemes.slice(0, 2).map((phoneme) => toFiniteNumber(phoneme.accuracyScore)),
@@ -435,7 +597,6 @@ function classifyWordTarget(
     return null;
   }
 
-  const finalConsonantScore = lastPhoneme && !isVowelLikeSymbol(lastPhoneme) ? lastScore : null;
   if (
     finalConsonantScore !== null &&
     (hasLowConfidence(finalConsonantScore) || hasLowConfidence(score)) &&
@@ -532,6 +693,20 @@ export function englishPronunciationFeedbackCopy(category: EnglishPronunciationF
         guidanceEn: "Put your tongue lightly between your teeth for TH.",
         guidanceVi: "Đặt đầu lưỡi nhẹ giữa hai hàm răng cho âm TH.",
       };
+    case "sh_s_contrast":
+      return {
+        titleEn: "SH / S contrast",
+        titleVi: "Phân biệt SH / S",
+        guidanceEn: "Make SH longer and softer than S; keep S short and clear.",
+        guidanceVi: "Kéo âm SH dài và mềm hơn S; giữ âm S ngắn và rõ.",
+      };
+    case "v_w_contrast":
+      return {
+        titleEn: "V / W contrast",
+        titleVi: "Phân biệt V / W",
+        guidanceEn: "Use teeth and lip for V; round your lips first for W.",
+        guidanceVi: "Âm V dùng răng và môi; âm W tròn môi trước.",
+      };
     case "ending_s":
       return {
         titleEn: "Final -s",
@@ -559,6 +734,20 @@ export function englishPronunciationFeedbackCopy(category: EnglishPronunciationF
         titleVi: "Âm cuối",
         guidanceEn: "Keep the final consonant clear.",
         guidanceVi: "Giữ âm cuối thật rõ.",
+      };
+    case "final_t_d_deletion":
+      return {
+        titleEn: "Final /t/ or /d/",
+        titleVi: "Âm /t/ hoặc /d/ cuối",
+        guidanceEn: "Close the final /t/ or /d/ cleanly.",
+        guidanceVi: "Khép âm /t/ hoặc /d/ cuối thật gọn.",
+      };
+    case "final_k_deletion":
+      return {
+        titleEn: "Final /k/",
+        titleVi: "Âm /k/ cuối",
+        guidanceEn: "Keep the final /k/ short but audible.",
+        guidanceVi: "Giữ âm /k/ cuối ngắn nhưng nghe được.",
       };
     case "word_stress":
       return {
