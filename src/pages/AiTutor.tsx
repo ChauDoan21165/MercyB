@@ -102,6 +102,7 @@ import SpeakPracticeMode, {
 } from "@/components/ai-tutor/SpeakPracticeMode";
 import { adaptSpeakPronunciationResult } from "@/components/ai-tutor/speakPronunciationResultAdapter";
 import {
+  buildEnglishPronunciationAbstainFeedbackDisplay,
   buildEnglishPronunciationFeedbackDisplay,
 } from "@/lib/pronunciation/englishPronunciationFeedback";
 import LogicMode from "@/components/ai-tutor/LogicMode";
@@ -1110,6 +1111,10 @@ export default function AiTutorPage() {
     const transcript = normalizeSpokenText(speakRepeatInput);
 
     if (targetSyllable && !targetSyllable.supported && transcript) {
+      setSpeakVietnameseToneFeedback(buildVietnameseToneFeedbackDisplay({
+        target: targetSyllable,
+        result: { bucket: "unavailable", score: null, reason: null },
+      }));
       const emitKey = [
         "unsupported",
         targetSyllable.syllable,
@@ -1137,12 +1142,15 @@ export default function AiTutorPage() {
           learnerOutcome: "cant_assess_yet",
         });
       }
-      setSpeakVietnameseToneFeedback(null);
       return;
     }
 
     if (!targetSyllable?.supported || !pronunciationRecorder.audioBlob || !session?.access_token) {
       if (targetSyllable?.supported && transcript) {
+        setSpeakVietnameseToneFeedback(buildVietnameseToneFeedbackDisplay({
+          target: targetSyllable,
+          result: { bucket: "unavailable", score: null, reason: null },
+        }));
         const emitKey = [
           "missing-evidence",
           targetSyllable.syllable,
@@ -1173,8 +1181,9 @@ export default function AiTutorPage() {
             learnerOutcome: "no_tone_feedback_shown",
           });
         }
+      } else {
+        setSpeakVietnameseToneFeedback(null);
       }
-      setSpeakVietnameseToneFeedback(null);
       return;
     }
     if (!transcript) {
@@ -1291,10 +1300,25 @@ export default function AiTutorPage() {
       "";
     if (!targetSentence) return null;
 
-    return buildEnglishPronunciationFeedbackDisplay({
+    const feedback = buildEnglishPronunciationFeedbackDisplay({
       targetSentence,
       result: speakPronunciationResult,
     });
+    if (feedback) return feedback;
+
+    const phonemeEvidenceCount =
+      (speakPronunciationResult?.phonemeScores?.length ?? 0) +
+      (speakPronunciationResult?.words ?? []).reduce(
+        (count, word) => count + (word.phonemes?.length ?? 0),
+        0,
+      );
+    const isAzureDetail =
+      speakPronunciationResult?.mode === "azure-batch" &&
+      speakPronunciationResult.provider === "azure" &&
+      phonemeEvidenceCount > 0;
+    return buildEnglishPronunciationAbstainFeedbackDisplay(
+      isAzureDetail ? "no_high_confidence_feedback" : "no_azure_phoneme_evidence",
+    );
   }, [
     latestCorrectedSeed?.correctedSentence,
     mode,

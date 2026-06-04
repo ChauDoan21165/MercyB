@@ -34,14 +34,28 @@ const correctFeedback: EnglishPronunciationFeedbackDisplay = {
   ],
 };
 
+const abstainFeedback: EnglishPronunciationFeedbackDisplay = {
+  items: [],
+  abstain: {
+    reason: "no_azure_phoneme_evidence",
+    titleVi: "Mercy đang nghe theo câu, chưa chấm từng âm.",
+    titleEn: "I am matching the sentence, not grading each sound yet.",
+    bodyVi: "Bạn vẫn có thể luyện tiếp. Khi có bằng chứng âm rõ hơn, Mercy sẽ góp ý cụ thể.",
+    bodyEn: "You can keep practicing. When sound evidence is clearer, I will give a specific tip.",
+    nextStepVi: "Đọc lại câu mẫu một lần nữa, rõ âm cuối hơn.",
+    nextStepEn: "Repeat the model sentence once more and keep the ending sounds clear.",
+  },
+};
+
 describe("EnglishPronunciationFeedbackCard", () => {
   it("renders the try-again guidance when enabled", () => {
     render(<EnglishPronunciationFeedbackCard enabled feedback={feedback} />);
 
     const card = screen.getByTestId("english-pronunciation-feedback");
-    expect(card).toHaveTextContent("Try this sound again");
+    expect(card).toHaveTextContent("This sound is a good next practice");
     expect(card).toHaveTextContent("/th/ âm tiếng Anh");
     expect(card).toHaveTextContent("Put your tongue lightly between your teeth for TH.");
+    expect(card).toHaveTextContent("Luyện chậm lại một lần nữa");
   });
 
   it("hides when disabled or empty", () => {
@@ -58,5 +72,15 @@ describe("EnglishPronunciationFeedbackCard", () => {
     const card = screen.getByTestId("english-pronunciation-feedback");
     expect(card).toHaveTextContent("Good — Final -s is coming through.");
     expect(card).toHaveTextContent("Good — the final -s is clear.");
+  });
+
+  it("renders a practice redirect when evidence is not strong enough", () => {
+    render(<EnglishPronunciationFeedbackCard enabled feedback={abstainFeedback} />);
+
+    const card = screen.getByTestId("english-pronunciation-feedback");
+    expect(card).toHaveTextContent("Mercy đang nghe theo câu, chưa chấm từng âm.");
+    expect(card).toHaveTextContent("Bạn vẫn có thể luyện tiếp.");
+    expect(card).toHaveTextContent("Đọc lại câu mẫu một lần nữa");
+    expect(card).not.toHaveTextContent("you failed");
   });
 });
