@@ -93,6 +93,85 @@ describe("buildEnglishPronunciationFeedbackDisplay", () => {
     });
   });
 
+  it("flags final /p/ deletion when Azure has explicit final-p evidence", () => {
+    const feedback = buildEnglishPronunciationFeedbackDisplay({
+      targetSentence: "Put on your cap.",
+      result: result({
+        overallScore: 81,
+        words: [
+          {
+            word: "cap",
+            accuracyScore: 68,
+            phonemes: [
+              { phoneme: "k", accuracyScore: 92 },
+              { phoneme: "ae", accuracyScore: 89 },
+              { phoneme: "p", accuracyScore: 48 },
+            ],
+          },
+        ],
+      }),
+    });
+
+    expect(feedback?.items[0]).toMatchObject({
+      category: "final_p_deletion",
+      status: "try_again",
+      targetWord: "cap",
+    });
+  });
+
+  it("flags final /b/ weakness only from explicit final-b Azure evidence", () => {
+    const feedback = buildEnglishPronunciationFeedbackDisplay({
+      targetSentence: "Open the web.",
+      result: result({
+        overallScore: 80,
+        words: [
+          {
+            word: "web",
+            accuracyScore: 69,
+            phonemes: [
+              { phoneme: "w", accuracyScore: 93 },
+              { phoneme: "eh", accuracyScore: 91 },
+              { phoneme: "b", accuracyScore: 53 },
+            ],
+          },
+        ],
+      }),
+    });
+
+    expect(feedback?.items[0]).toMatchObject({
+      category: "final_b_deletion",
+      status: "try_again",
+      targetWord: "web",
+    });
+    expect(feedback?.items[0].guidanceEn).toContain("voiced");
+  });
+
+  it("flags final /g/ deletion when Azure has explicit final-g evidence", () => {
+    const feedback = buildEnglishPronunciationFeedbackDisplay({
+      targetSentence: "Take the bag.",
+      result: result({
+        overallScore: 82,
+        words: [
+          {
+            word: "bag",
+            accuracyScore: 70,
+            phonemes: [
+              { phoneme: "b", accuracyScore: 94 },
+              { phoneme: "ae", accuracyScore: 90 },
+              { phoneme: "g", accuracyScore: 50 },
+            ],
+          },
+        ],
+      }),
+    });
+
+    expect(feedback?.items[0]).toMatchObject({
+      category: "final_g_deletion",
+      status: "try_again",
+      targetWord: "bag",
+    });
+  });
+
   it("flags consonant clusters", () => {
     const feedback = buildEnglishPronunciationFeedbackDisplay({
       targetSentence: "Please stretch the street sign.",
@@ -224,6 +303,109 @@ describe("buildEnglishPronunciationFeedbackDisplay", () => {
     });
   });
 
+  it("flags /z/ versus /s/ only with explicit target-z Azure evidence", () => {
+    const feedback = buildEnglishPronunciationFeedbackDisplay({
+      targetSentence: "The zoo is open.",
+      result: result({
+        overallScore: 82,
+        words: [
+          {
+            word: "zoo",
+            accuracyScore: 68,
+            phonemes: [
+              { phoneme: "z", accuracyScore: 52 },
+              { phoneme: "uw", accuracyScore: 91 },
+            ],
+          },
+        ],
+      }),
+    });
+
+    expect(feedback?.items[0]).toMatchObject({
+      category: "z_s_contrast",
+      status: "try_again",
+      targetWord: "zoo",
+    });
+  });
+
+  it("flags /zh/ only with explicit Azure phoneme evidence", () => {
+    const feedback = buildEnglishPronunciationFeedbackDisplay({
+      targetSentence: "I had a vision.",
+      result: result({
+        overallScore: 81,
+        words: [
+          {
+            word: "vision",
+            accuracyScore: 69,
+            phonemes: [
+              { phoneme: "v", accuracyScore: 92 },
+              { phoneme: "ih", accuracyScore: 90 },
+              { phoneme: "zh", accuracyScore: 49 },
+              { phoneme: "ah", accuracyScore: 89 },
+              { phoneme: "n", accuracyScore: 91 },
+            ],
+          },
+        ],
+      }),
+    });
+
+    expect(feedback?.items[0]).toMatchObject({
+      category: "zh_sound",
+      status: "try_again",
+      targetWord: "vision",
+    });
+  });
+
+  it("flags /r/ and /l/ only in non-cluster words with explicit phoneme evidence", () => {
+    const rFeedback = buildEnglishPronunciationFeedbackDisplay({
+      targetSentence: "Turn right.",
+      result: result({
+        overallScore: 80,
+        words: [
+          {
+            word: "right",
+            accuracyScore: 68,
+            phonemes: [
+              { phoneme: "r", accuracyScore: 51 },
+              { phoneme: "ay", accuracyScore: 92 },
+              { phoneme: "t", accuracyScore: 88 },
+            ],
+          },
+        ],
+      }),
+    });
+
+    expect(rFeedback?.items[0]).toMatchObject({
+      category: "r_l_contrast",
+      status: "try_again",
+      targetWord: "right",
+    });
+
+    const lFeedback = buildEnglishPronunciationFeedbackDisplay({
+      targetSentence: "Use the light.",
+      result: result({
+        overallScore: 82,
+        words: [
+          {
+            word: "light",
+            accuracyScore: 70,
+            phonemes: [
+              { phoneme: "l", accuracyScore: 54 },
+              { phoneme: "ay", accuracyScore: 91 },
+              { phoneme: "t", accuracyScore: 89 },
+            ],
+          },
+        ],
+      }),
+    });
+
+    expect(lFeedback?.items[0]).toMatchObject({
+      category: "r_l_contrast",
+      status: "try_again",
+      targetWord: "light",
+    });
+  });
+
   it("abstains for SH and V/W patterns when Azure phoneme evidence is missing", () => {
     expect(
       buildEnglishPronunciationFeedbackDisplay({
@@ -264,6 +446,45 @@ describe("buildEnglishPronunciationFeedbackDisplay", () => {
         }),
       }),
     ).toBeNull();
+  });
+
+  it("abstains for new VN-priority targets when Azure phoneme evidence is missing or ambiguous", () => {
+    expect(
+      buildEnglishPronunciationFeedbackDisplay({
+        targetSentence: "The zoo is open.",
+        result: result({
+          overallScore: 86,
+          words: [
+            {
+              word: "zoo",
+              accuracyScore: 72,
+              phonemes: [{ phoneme: "uw", accuracyScore: 91 }],
+            },
+          ],
+        }),
+      }),
+    ).toBeNull();
+
+    const clusterFeedback = buildEnglishPronunciationFeedbackDisplay({
+      targetSentence: "The green bag is here.",
+      result: result({
+        overallScore: 82,
+        words: [
+          {
+            word: "green",
+            accuracyScore: 69,
+            phonemes: [
+              { phoneme: "g", accuracyScore: 91 },
+              { phoneme: "r", accuracyScore: 52 },
+              { phoneme: "iy", accuracyScore: 90 },
+              { phoneme: "n", accuracyScore: 91 },
+            ],
+          },
+        ],
+      }),
+    });
+
+    expect(clusterFeedback?.items[0].category).not.toBe("r_l_contrast");
   });
 
   it("flags final -s endings", () => {
