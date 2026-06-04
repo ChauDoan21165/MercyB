@@ -76,3 +76,16 @@ export {
   validateRulePack,
   explanationsByTag,
 } from './rule-pack-types.js';
+
+// Step 11 seed — awkward-Vietlish DARK detector (flag-gated, telemetry-only).
+// Surfaced on the public API so it is discoverable and not a dead orphan; it
+// is intentionally NOT called from any learner-facing path yet (see the module
+// header + step11-vietlish-dark-seed-B-boundary-handoff.md).
+export {
+  detectVietlishDark,
+  runVietlishDarkSeed,
+  isVietlishDarkSeedEnabled,
+  type VietlishDarkSignal,
+  type VietlishDarkPatternId,
+  type VietlishDarkSeedOptions,
+} from './vietlish-dark-detector';
