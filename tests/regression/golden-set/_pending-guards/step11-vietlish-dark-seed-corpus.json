@@ -1,0 +1,103 @@
+{
+  "corpus": "step11-vietlish-dark-seed",
+  "step": 11,
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "kind": "awkward_vietlish_dark_detector",
+  "author": "A3 (Lane A)",
+  "status": "dark_seed_not_wired",
+  "detector": "src/lib/feedback/vietlish-dark-detector.ts -> detectVietlishDark / runVietlishDarkSeed",
+  "flag": { "id": "step11-vietlish-dark-seed", "env": "VITE_VIETLISH_DARK_SEED", "default": false },
+  "definition": "Grammatically POSSIBLE English that sounds unnatural due to Vietnamese L1 transfer. Distinct from (a) the correction engine, which fixes clear errors — every positive here is left UNCHANGED by correctWithTutorRules; and (b) vinglish-detector.ts, which catches literal VN code-switch tokens — every positive here is all-English with no VN tokens.",
+  "learnerFacingOutput": false,
+  "verifiedAgainst": "origin/main d895cee0 (correctWithTutorRules leaves all positives status=unchanged; detectVietlishDark fires on positives, abstains on negatives)",
+  "collisionAvoidance": "Patterns chosen to NOT overlap live Lane-A worktrees/MRs: a1/although-even-though-but, a1/because-so-doubling, lane-a/existential-have-there-is-are, lane-a/vietlish-very-like (MR !381).",
+  "generatedAt": "2026-06-04",
+  "patterns": [
+    {
+      "patternId": "vietlish-opinion-calque",
+      "name": "First-person 'according to me/us' opinion calque",
+      "vietnameseRoot": "theo tôi / theo ý kiến của tôi -> 'according to me'. Native: 'in my opinion'.",
+      "confidence": 0.8,
+      "fp_risk_note": "Only first-person 'according to me/us' is the VN marker. Third-party/source 'according to him/her/them/the report/the data/the law' is fully natural and MUST abstain.",
+      "positive": [
+        { "input": "According to me, this film is very good.", "expectedSignal": "vietlish-opinion-calque", "marker": "according to me", "engineStatus": "unchanged" },
+        { "input": "According to us, the plan is fine.", "expectedSignal": "vietlish-opinion-calque", "marker": "according to us", "engineStatus": "unchanged" },
+        { "input": "The result, according to me, is unfair.", "expectedSignal": "vietlish-opinion-calque", "marker": "according to me", "engineStatus": "unchanged" }
+      ],
+      "negative": [
+        { "input": "In my opinion, this film is very good.", "expectedSignal": null, "note": "Native form." },
+        { "input": "According to the report, sales went up.", "expectedSignal": null, "note": "Third-party source — natural." },
+        { "input": "According to her, the meeting is at five.", "expectedSignal": null, "note": "Third-person — natural." }
+      ]
+    },
+    {
+      "patternId": "vietlish-resumptive-topic",
+      "name": "Fronted NP topic + resumptive subject pronoun",
+      "vietnameseRoot": "Topic-prominent transfer: 'Quê tôi, nó rất đẹp' -> 'My hometown, it is very beautiful.' Native: 'My hometown is very beautiful.'",
+      "confidence": 0.5,
+      "fp_risk_note": "Fires only when the pre-comma chunk is a bare NP (no finite verb / no who/which/that) followed by ', it/they/he/she + be/aux'. Non-restrictive appositives and relative clauses ('My brother, who lives in Hue, is a teacher'; 'Hanoi, the capital, is crowded') MUST abstain. Anchored to sentence start.",
+      "positive": [
+        { "input": "My hometown, it is very beautiful.", "expectedSignal": "vietlish-resumptive-topic", "marker": "my hometown, it is", "engineStatus": "unchanged" },
+        { "input": "My family, they are very kind.", "expectedSignal": "vietlish-resumptive-topic", "marker": "my family, they are", "engineStatus": "unchanged" },
+        { "input": "The weather here, it was terrible yesterday.", "expectedSignal": "vietlish-resumptive-topic", "marker": "the weather here, it was", "engineStatus": "unchanged" }
+      ],
+      "negative": [
+        { "input": "My brother, who lives in Hue, is a teacher.", "expectedSignal": null, "note": "Non-restrictive relative — natural." },
+        { "input": "My hometown is very beautiful.", "expectedSignal": null, "note": "No resumptive pronoun — natural." },
+        { "input": "Hanoi, the capital, is crowded.", "expectedSignal": null, "note": "Appositive — natural." }
+      ]
+    },
+    {
+      "patternId": "vietlish-play-device",
+      "name": "'play' + electronic device/app object",
+      "vietnameseRoot": "chơi điện thoại / chơi Facebook -> 'play the phone / play Facebook'. Native: 'use my phone / scroll Facebook / be on the computer'.",
+      "confidence": 0.7,
+      "fp_risk_note": "Object is a CLOSED device/app whitelist (phone, facebook, computer, internet, tiktok, zalo, youtube, laptop, ipad). Real 'play' objects — piano/guitar/football/soccer/a game/cards/chess/music/a song — MUST abstain.",
+      "positive": [
+        { "input": "I play the phone every night before sleep.", "expectedSignal": "vietlish-play-device", "marker": "play the phone", "engineStatus": "unchanged" },
+        { "input": "She plays Facebook all day.", "expectedSignal": "vietlish-play-device", "marker": "plays facebook", "engineStatus": "unchanged" },
+        { "input": "My brother plays computer after school.", "expectedSignal": "vietlish-play-device", "marker": "plays computer", "engineStatus": "unchanged" }
+      ],
+      "negative": [
+        { "input": "I play the piano every evening.", "expectedSignal": null, "note": "Instrument — natural." },
+        { "input": "They play football on Sunday.", "expectedSignal": null, "note": "Sport — natural." },
+        { "input": "We play a game after dinner.", "expectedSignal": null, "note": "Game — natural." }
+      ]
+    },
+    {
+      "patternId": "vietlish-too-as-praise",
+      "name": "'too + praise adjective' as intensifier (quá)",
+      "vietnameseRoot": "quá ngon / quá đẹp -> 'too delicious / too beautiful' meaning 'so/really'. Native: 'so delicious'.",
+      "confidence": 0.35,
+      "fp_risk_note": "HIGHEST FP of the set — dark-only, low confidence. Guards: (a) adjective from a CLOSED positive-praise whitelist (excludes ambivalent sweet/spicy/hot/expensive/big where 'too' genuinely means excess); (b) abstains when a 'to <verb>' / 'for <obj>' complement follows ('too good to be true', 'too beautiful for words'). Residual FP remains where praise adjectives carry a real excess reading ('too sweet for me' is excluded by whitelist, but 'too nice' can occasionally mean 'excessively nice'). See B handoff.",
+      "positive": [
+        { "input": "This pho is too delicious!", "expectedSignal": "vietlish-too-as-praise", "marker": "too delicious", "engineStatus": "unchanged" },
+        { "input": "Ha Long Bay is too beautiful.", "expectedSignal": "vietlish-too-as-praise", "marker": "too beautiful", "engineStatus": "unchanged" },
+        { "input": "Your new dress is too nice.", "expectedSignal": "vietlish-too-as-praise", "marker": "too nice", "engineStatus": "unchanged" }
+      ],
+      "negative": [
+        { "input": "The coffee is too hot to drink.", "expectedSignal": null, "note": "Genuine excess + 'to'-complement." },
+        { "input": "This bag is too expensive for me.", "expectedSignal": null, "note": "Ambivalent adjective + 'for'-complement." },
+        { "input": "It was too good to be true.", "expectedSignal": null, "note": "Idiom with 'to'-complement." }
+      ]
+    },
+    {
+      "patternId": "vietlish-wish-you-greeting",
+      "name": "Subjectless sentence-initial 'Wish you ...' greeting",
+      "vietnameseRoot": "Chúc bạn một ngày tốt lành -> 'Wish you a nice day'. Native: 'I wish you ... / Have a nice day'.",
+      "confidence": 0.65,
+      "fp_risk_note": "Fires only sentence-initial and subjectless. With a subject ('I/We wish you ...') it is natural and MUST abstain. The counterfactual ellipsis 'Wish you were/had/would/could ...' ('Wish you were here') MUST abstain.",
+      "positive": [
+        { "input": "Wish you a nice day!", "expectedSignal": "vietlish-wish-you-greeting", "marker": "wish you", "engineStatus": "unchanged" },
+        { "input": "Wish you good health and happiness.", "expectedSignal": "vietlish-wish-you-greeting", "marker": "wish you", "engineStatus": "unchanged" },
+        { "input": "Wish you success in your new job.", "expectedSignal": "vietlish-wish-you-greeting", "marker": "wish you", "engineStatus": "unchanged" }
+      ],
+      "negative": [
+        { "input": "I wish you a nice day.", "expectedSignal": null, "note": "Has subject — natural." },
+        { "input": "We wish you a merry Christmas.", "expectedSignal": null, "note": "Has subject — natural." },
+        { "input": "Wish you were here with us.", "expectedSignal": null, "note": "Counterfactual ellipsis — natural." }
+      ]
+    }
+  ]
+}
