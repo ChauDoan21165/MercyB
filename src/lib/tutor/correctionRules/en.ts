@@ -431,6 +431,34 @@ function hasQuantityPluralS(input: string): boolean {
   });
 }
 
+function pluralizeAfterNumeralQuantifier(input: string): string {
+  const nounPattern = Object.keys(COUNTABLE_PLURAL_NOUNS).join("|");
+  const pattern = new RegExp(
+    `\\b(?:a\\s+few|(?:four|five|six|seven|eight|nine|ten|4|5|6|7|8|9|10))\\s+(${nounPattern})\\b(?=\\s*[.?!]?$)`,
+    "gi",
+  );
+  return input.replace(pattern, (match, noun: string, offset: number) => {
+    if (hasLikelyVerbSenseTail(noun, input.slice(offset + match.length))) return match;
+    return match.replace(
+      new RegExp(`\\b(${nounPattern})\\b`, "i"),
+      (nounMatch) => COUNTABLE_PLURAL_NOUNS[nounMatch.toLowerCase()] ?? nounMatch,
+    );
+  });
+}
+
+function hasNumeralQuantifierPlural(input: string): boolean {
+  const nounPattern = Object.keys(COUNTABLE_PLURAL_NOUNS).join("|");
+  const pattern = new RegExp(
+    `\\b(?:a\\s+few|(?:four|five|six|seven|eight|nine|ten|4|5|6|7|8|9|10))\\s+(${nounPattern})\\b(?=\\s*[.?!]?$)`,
+    "gi",
+  );
+  return Array.from(input.matchAll(pattern)).some((match) => {
+    const noun = match[1] ?? "";
+    const offset = match.index ?? 0;
+    return !hasLikelyVerbSenseTail(noun, input.slice(offset + match[0].length));
+  });
+}
+
 function repairTopicCommentOrder(input: string): string {
   return input
     .replace(/^this book i like[.?!]?$/i, "I like this book")
@@ -921,6 +949,12 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: hasMissingCommonNounArticle,
     apply: addArticleAfterVerb,
     fpRiskNote: "Article insertion is limited to whitelisted count nouns and skips capitalized proper/company names.",
+  },
+  {
+    id: "en-vn-numeral-quantifier-plural",
+    detects: hasNumeralQuantifierPlural,
+    apply: pluralizeAfterNumeralQuantifier,
+    fpRiskNote: "Low risk. V1 only pluralizes a closed count-noun whitelist after 4-10 (digits or words) or the safe quantifier a few, and it requires the surface to end at the noun so compounds and mass nouns stay untouched.",
   },
   {
     id: "en-l4-quantity-plural-s",

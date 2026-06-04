@@ -183,6 +183,32 @@ describe("correctionEngine", () => {
   });
 
   it.each([
+    ["I have 4 book.", "I have 4 books."],
+    ["She bought 9 apple.", "She bought 9 apples."],
+    ["We saw a few lesson.", "We saw a few lessons."],
+    ["They need 10 word.", "They need 10 words."],
+  ])("corrects narrow numeral/quantifier plural: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: expect.arrayContaining(["en-vn-numeral-quantifier-plural"]),
+    });
+  });
+
+  it.each([
+    "I have 4 water.",
+    "I have 4 school bus.",
+    "We saw a few water.",
+    "I have one book.",
+    "I have 3 books.",
+  ])("does not over-trigger narrow numeral/quantifier plural: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: expect.not.arrayContaining(["en-vn-numeral-quantifier-plural"]),
+    });
+  });
+
+  it.each([
     "some water",
     "much money",
     "one book",
@@ -766,6 +792,7 @@ describe("correctionEngine", () => {
     ["en-calque-take-medicine", "take medicine"],
     ["en-vn-although-even-though-but", "although/even though + but"],
     ["en-calque-say-with-person", "say with person"],
+    ["en-vn-numeral-quantifier-plural", "numeral/quantifier plural"],
     ["en-step6-past-marker-recall", "past-marker recall"],
     ["en-step6-in-month-year", "in-month/year"],
     ["en-step6-enter-concrete-place", "enter concrete place"],

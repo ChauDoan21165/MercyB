@@ -1,0 +1,83 @@
+{
+  "rule": "numeralQuantifierPlural",
+  "ruleId": "en-vn-numeral-quantifier-plural",
+  "language": "en",
+  "description": "Plural marking after numerals and the safe quantifier a few (narrow v1).",
+  "fp_risk_note": "Low risk. V1 only pluralizes a closed count-noun whitelist after 4-10 (digits or words) or the safe quantifier a few, and it requires the surface to end at the noun so compounds and mass nouns stay untouched.",
+  "positive": [
+    {
+      "id": "numeral-quantifier-plural-pos-001",
+      "input": "I have 4 book.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I have 4 books.",
+      "expectedRuleFired": "numeralQuantifierPlural",
+      "notes": "Digit numeral plus whitelisted count noun at sentence end."
+    },
+    {
+      "id": "numeral-quantifier-plural-pos-002",
+      "input": "She bought 9 apple.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She bought 9 apples.",
+      "expectedRuleFired": "numeralQuantifierPlural",
+      "notes": "Another digit numeral with a whitelisted noun."
+    },
+    {
+      "id": "numeral-quantifier-plural-pos-003",
+      "input": "We saw a few lesson.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "We saw a few lessons.",
+      "expectedRuleFired": "numeralQuantifierPlural",
+      "notes": "Safe quantifier a few with a whitelisted noun."
+    },
+    {
+      "id": "numeral-quantifier-plural-pos-004",
+      "input": "They need 10 word.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They need 10 words.",
+      "expectedRuleFired": "numeralQuantifierPlural",
+      "notes": "Digit ten with a whitelisted noun."
+    }
+  ],
+  "negative": [
+    {
+      "id": "numeral-quantifier-plural-neg-001",
+      "input": "I have 4 water.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I have 4 water.",
+      "expectedRuleFired": null,
+      "notes": "Mass noun must stay singular."
+    },
+    {
+      "id": "numeral-quantifier-plural-neg-002",
+      "input": "I have 4 school bus.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I have 4 school bus.",
+      "expectedRuleFired": null,
+      "notes": "Compound noun / head-noun ambiguity must abstain."
+    },
+    {
+      "id": "numeral-quantifier-plural-neg-003",
+      "input": "We saw a few water.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "We saw a few water.",
+      "expectedRuleFired": null,
+      "notes": "Quantifier plus mass noun is not this rule."
+    },
+    {
+      "id": "numeral-quantifier-plural-neg-004",
+      "input": "I have one book.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I have one book.",
+      "expectedRuleFired": null,
+      "notes": "Singular numeral one should not trigger pluralisation."
+    },
+    {
+      "id": "numeral-quantifier-plural-neg-005",
+      "input": "I have 3 books.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I have 3 books.",
+      "expectedRuleFired": null,
+      "notes": "Already plural noun must stay unchanged."
+    }
+  ]
+}
