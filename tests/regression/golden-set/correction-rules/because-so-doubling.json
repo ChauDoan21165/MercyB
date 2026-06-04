@@ -1,0 +1,75 @@
+{
+  "rule": "becauseSoDoubling",
+  "ruleId": "en-vn-because-so-doubling",
+  "language": "en",
+  "description": "Removes the redundant so in sentence-initial because ... , so ... surfaces.",
+  "fp_risk_note": "Low risk. V1 only removes the redundant so in sentence-initial because ... , so ... surfaces and leaves standalone because clauses or standalone so-result clauses unchanged.",
+  "positive": [
+    {
+      "id": "because-so-doubling-pos-001",
+      "input": "Because I was tired, so I went home.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Because I was tired, I went home.",
+      "expectedRuleFired": "becauseSoDoubling",
+      "notes": "Sentence-initial because-clause with redundant so; so is removed."
+    },
+    {
+      "id": "because-so-doubling-pos-002",
+      "input": "Because it was late, so we left.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Because it was late, we left.",
+      "expectedRuleFired": "becauseSoDoubling",
+      "notes": "Same double-marker shape with a different clause."
+    },
+    {
+      "id": "because-so-doubling-pos-003",
+      "input": "Because he was sick, so he stayed home.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Because he was sick, he stayed home.",
+      "expectedRuleFired": "becauseSoDoubling",
+      "notes": "Causal clause + redundant so; rule keeps the because clause."
+    },
+    {
+      "id": "because-so-doubling-pos-004",
+      "input": "Because I was hungry, so I ate dinner.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Because I was hungry, I ate dinner.",
+      "expectedRuleFired": "becauseSoDoubling",
+      "notes": "Another common VN-style double-marker surface."
+    }
+  ],
+  "negative": [
+    {
+      "id": "because-so-doubling-neg-001",
+      "input": "Because I was tired, I went home.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Because I was tired, I went home.",
+      "expectedRuleFired": null,
+      "notes": "Standalone because-clause with no redundant so must stay unchanged."
+    },
+    {
+      "id": "because-so-doubling-neg-002",
+      "input": "I was tired, so I went home.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I was tired, so I went home.",
+      "expectedRuleFired": null,
+      "notes": "Standalone so-result clause must stay unchanged."
+    },
+    {
+      "id": "because-so-doubling-neg-003",
+      "input": "Because I was tired, therefore I went home.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Because I was tired, therefore I went home.",
+      "expectedRuleFired": null,
+      "notes": "Different connector: therefore is outside the because/so doubling surface."
+    },
+    {
+      "id": "because-so-doubling-neg-004",
+      "input": "I stayed home because I was tired.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I stayed home because I was tired.",
+      "expectedRuleFired": null,
+      "notes": "Mid-sentence because-clause without redundant so is not this rule."
+    }
+  ]
+}
