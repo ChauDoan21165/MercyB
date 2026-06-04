@@ -1,0 +1,75 @@
+{
+  "rule": "althoughEvenThoughBut",
+  "ruleId": "en-vn-although-even-though-but",
+  "language": "en",
+  "description": "Removes the redundant but from sentence-initial although/even though ... , but ... surfaces.",
+  "fp_risk_note": "Low risk. V1 only removes the redundant but in sentence-initial although / even though ... , but ... surfaces and leaves standalone although/even though clauses unchanged.",
+  "positive": [
+    {
+      "id": "although-even-though-but-pos-001",
+      "input": "Although I was tired, but I went home.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Although I was tired, I went home.",
+      "expectedRuleFired": "althoughEvenThoughBut",
+      "notes": "Sentence-initial although-clause with redundant but; but is removed."
+    },
+    {
+      "id": "although-even-though-but-pos-002",
+      "input": "Even though it was late, but we stayed.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Even though it was late, we stayed.",
+      "expectedRuleFired": "althoughEvenThoughBut",
+      "notes": "Same redundancy with even though."
+    },
+    {
+      "id": "although-even-though-but-pos-003",
+      "input": "Although he was busy, but he helped me.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Although he was busy, he helped me.",
+      "expectedRuleFired": "althoughEvenThoughBut",
+      "notes": "Redundant but after a causal although-clause."
+    },
+    {
+      "id": "although-even-though-but-pos-004",
+      "input": "Even though I was hungry, but I waited.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Even though I was hungry, I waited.",
+      "expectedRuleFired": "althoughEvenThoughBut",
+      "notes": "Another common VN-style double-marker surface."
+    }
+  ],
+  "negative": [
+    {
+      "id": "although-even-though-but-neg-001",
+      "input": "Although I was tired, I went home.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Although I was tired, I went home.",
+      "expectedRuleFired": null,
+      "notes": "Standalone although-clause with no redundant but must stay unchanged."
+    },
+    {
+      "id": "although-even-though-but-neg-002",
+      "input": "I was tired, but I went home.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I was tired, but I went home.",
+      "expectedRuleFired": null,
+      "notes": "Standalone but-result clause must stay unchanged."
+    },
+    {
+      "id": "although-even-though-but-neg-003",
+      "input": "Even though I was tired, I went home.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Even though I was tired, I went home.",
+      "expectedRuleFired": null,
+      "notes": "Already-correct even though clause must stay unchanged."
+    },
+    {
+      "id": "although-even-though-but-neg-004",
+      "input": "I stayed home although I was tired.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I stayed home although I was tired.",
+      "expectedRuleFired": null,
+      "notes": "Mid-sentence although-clause is not this rule."
+    }
+  ]
+}

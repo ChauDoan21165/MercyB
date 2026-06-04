@@ -222,6 +222,18 @@ function punctuateMorningRoutineRunOn(input: string): string {
   );
 }
 
+function hasAlthoughEvenThoughBut(input: string): boolean {
+  const trimmed = input.trim();
+  return /^(?:although|even though)\s+[^,]+,\s+but\s+[^.?!]+[.?!]?$/i.test(trimmed);
+}
+
+function repairAlthoughEvenThoughBut(input: string): string {
+  return input.replace(
+    /^((?:although|even though)\s+[^,]+),\s+but\s+/i,
+    "$1, ",
+  );
+}
+
 function hasBecauseSoDoubling(input: string): boolean {
   const trimmed = input.trim();
   return /^because\s+[^,]+,\s+so\s+[^.?!]+[.?!]?$/i.test(trimmed);
@@ -868,6 +880,12 @@ export const englishCorrectionRules: CorrectionRule[] = [
       /^english i study every day[.?!]?$/i.test(input.trim()) ||
       /^in my family,?\s+my mother i love very much[.?!]?$/i.test(input.trim()),
     apply: repairTopicCommentOrder,
+  },
+  {
+    id: "en-vn-although-even-though-but",
+    detects: hasAlthoughEvenThoughBut,
+    apply: repairAlthoughEvenThoughBut,
+    fpRiskNote: "Low risk. V1 only removes the redundant but in sentence-initial although / even though ... , but ... surfaces and leaves standalone although/even though clauses unchanged.",
   },
   {
     id: "en-vn-because-so-doubling",

@@ -764,6 +764,7 @@ describe("correctionEngine", () => {
     ["en-calque-open-turn-on-appliance", "open appliance"],
     ["en-calque-close-turn-off-appliance", "close appliance"],
     ["en-calque-take-medicine", "take medicine"],
+    ["en-vn-although-even-though-but", "although/even though + but"],
     ["en-calque-say-with-person", "say with person"],
     ["en-step6-past-marker-recall", "past-marker recall"],
     ["en-step6-in-month-year", "in-month/year"],
@@ -980,6 +981,31 @@ describe("correctionEngine", () => {
     "This book, I like it.",
     "In my family, my mother loves me very much.",
   ])("does not over-trigger topic-comment word order: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["Although I was tired, but I went home.", "Although I was tired, I went home."],
+    ["Even though it was late, but we stayed.", "Even though it was late, we stayed."],
+    ["Although he was busy, but he helped me.", "Although he was busy, he helped me."],
+    ["Even though I was hungry, but I waited.", "Even though I was hungry, I waited."],
+  ])("removes redundant although/even though + but: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-vn-although-even-though-but"],
+    });
+  });
+
+  it.each([
+    "Although I was tired, I went home.",
+    "I was tired, but I went home.",
+    "Even though I was tired, I went home.",
+    "I stayed home although I was tired.",
+  ])("does not over-trigger although/even though + but: %s", (input) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "unchanged",
       appliedRuleIds: [],
