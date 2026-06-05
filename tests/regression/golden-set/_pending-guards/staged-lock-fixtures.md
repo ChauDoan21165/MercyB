@@ -1165,3 +1165,9 @@ rule so the longest subordinator wins.
   "notes": "D2 corpus guard boundary. VERIFY-NOW: live engine 2026-06-02 abstains; single contrastive 'but' with no leading though/even though."
 }
 ```
+
+---
+
+## Provenance — do-support question-guard locks (divergence note, 2026-06-04)
+
+The do-support negative locks (`has-past-time-marker.json`, `third-person-school-routine.json`, `third-person-daily-go-eat-have.json`, plus their `correctionEngine.test.ts` cases) landed on `main` via **re-application** in `74ccf4533` (the original branch had a divergent root and could not be rebased). The merge **`ed863589e`** ("Merge branch 'a1/do-support-question-guard'") is the **orphaned original** — off the shared `9acc17e5e` base, deployed to prod but never integrated into canonical `main` — carrying **byte-identical** content. The locks are active and mutation-verified on `main` (535/535 golden green); **do not re-flag `ed863589e` as a missing lock.**
