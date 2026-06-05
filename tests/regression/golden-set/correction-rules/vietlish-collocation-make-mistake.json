@@ -1,0 +1,91 @@
+{
+  "rule": "vietlishCollocationMakeMistake",
+  "ruleId": "en-vietlish-collocation-make-mistake",
+  "language": "en",
+  "description": "VN 'làm/phạm lỗi' transfer: learners say 'do a mistake / do mistakes' for 'make a mistake / make mistakes'. Rule en-vietlish-collocation-make-mistake rewrites the verb do->make (preserving tense and capitalization) ONLY when a mistake/mistakes token is the bare direct-object head noun. It abstains on mistake compounds (mistake analysis/log) and on all other do-objects.",
+  "fp_risk_note": "Medium risk. 'do' is the correct light verb for most activities (do homework, do the dishes, do a mistake analysis). Negatives lock the already-correct 'make a mistake', two genuine do-objects, and a 'mistake analysis' compound surface.",
+  "positive": [
+    {
+      "id": "make-mistake-pos-001",
+      "input": "I do a mistake.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I make a mistake.",
+      "expectedRuleFired": "en-vietlish-collocation-make-mistake",
+      "notes": "Bare do + a mistake head noun -> make a mistake."
+    },
+    {
+      "id": "make-mistake-pos-002",
+      "input": "He does a mistake sometimes.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He makes a mistake sometimes.",
+      "expectedRuleFired": "en-vietlish-collocation-make-mistake",
+      "notes": "Third-person does -> makes, trailing adverb preserved."
+    },
+    {
+      "id": "make-mistake-pos-003",
+      "input": "They did a mistake yesterday.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They made a mistake yesterday.",
+      "expectedRuleFired": "en-vietlish-collocation-make-mistake",
+      "notes": "Past did -> made; the yesterday past rule does not own 'did' so no double-fire."
+    },
+    {
+      "id": "make-mistake-pos-004",
+      "input": "I always do mistakes.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I always make mistakes.",
+      "expectedRuleFired": "en-vietlish-collocation-make-mistake",
+      "notes": "Plural mistakes with no determiner -> make mistakes."
+    }
+  ],
+  "negative": [
+    {
+      "id": "make-mistake-neg-001",
+      "input": "I make a mistake.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I make a mistake.",
+      "expectedRuleFired": null,
+      "notes": "Already-correct collocation must stay unchanged."
+    },
+    {
+      "id": "make-mistake-neg-002",
+      "input": "I do my homework.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I do my homework.",
+      "expectedRuleFired": null,
+      "notes": "'do homework' is correct: rule must not fire on a non-mistake object."
+    },
+    {
+      "id": "make-mistake-neg-003",
+      "input": "She does the dishes.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She does the dishes.",
+      "expectedRuleFired": null,
+      "notes": "'do the dishes' is correct: rule must abstain."
+    },
+    {
+      "id": "make-mistake-neg-004",
+      "input": "We did a mistake analysis.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "We did a mistake analysis.",
+      "expectedRuleFired": null,
+      "notes": "'mistake analysis' compound: mistake is a modifier, not the object head -> must abstain."
+    },
+    {
+      "id": "make-mistake-neg-005",
+      "input": "What do mistakes teach us?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "What do mistakes teach us?",
+      "expectedRuleFired": null,
+      "notes": "Auxiliary/WH 'do' inversion: 'do' is not the lexical verb governing 'mistakes' (a base verb 'teach' follows). isQuestionLike + safe-tail must both reject it. (A4 regression lock.)"
+    },
+    {
+      "id": "make-mistake-neg-006",
+      "input": "Do mistakes matter?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Do mistakes matter?",
+      "expectedRuleFired": null,
+      "notes": "Sentence-initial auxiliary 'do' question: must abstain rather than rewrite to 'Make mistakes matter'. (A4 regression lock.)"
+    }
+  ]
+}

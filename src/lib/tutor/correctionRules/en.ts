@@ -466,6 +466,83 @@ function repairTopicCommentOrder(input: string): string {
     .replace(/^in my family,?\s+my mother i love very much[.?!]?$/i, "In my family, I love my mother very much");
 }
 
+// --- Cluster: Vietlish collocation / verb-choice ---
+// VN "chụp ảnh" -> "make a photo" (should be "take a photo"); VN "làm/phạm lỗi"
+// -> "do a mistake" (should be "make a mistake"). Both rewrite ONLY the verb,
+// preserving determiner, surrounding words, and capitalization.
+//
+// Precision contract: the target noun must be the BARE direct-object head. We
+// require a safe right boundary (clause end, punctuation, or a closed time/
+// frequency adverbial) via COLLOCATION_OBJECT_TAIL. Anything else after the
+// noun -- another noun (photo ALBUM), an adjective (make a photo BIGGER), or a
+// base verb (causative "make a photo LOOK better"; aux "do mistakes HAPPEN") --
+// means the token is not the object head, so the rule abstains. This is a
+// positive whitelist boundary, not a leaky compound-blocklist.
+const COLLOCATION_OBJECT_TAIL =
+  "(?=[.?!,;:]|\\s*$|\\s+(?:today|yesterday|tonight|now|here|there|together|again|outside|inside|daily|sometimes|often|always|usually|too|also|every\\s+\\w+|this\\s+(?:morning|afternoon|evening|week|weekend|month|year)|last\\s+(?:night|week|month|year|monday|tuesday|wednesday|thursday|friday|saturday|sunday)|on\\s+(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)|at\\s+(?:home|work|school|night)))";
+
+const VIETLISH_TAKE_PHOTO_PATTERN = new RegExp(
+  `\\b(make|makes|made|making)\\s+((?:a|an|the|some|my|your|his|her|our|their|this|that|these|those|one|two|three|\\d+)\\s+)?(photo|photos|selfie|selfies)\\b${COLLOCATION_OBJECT_TAIL}`,
+  "i",
+);
+
+const TAKE_FOR_MAKE: Record<string, string> = {
+  make: "take",
+  makes: "takes",
+  made: "took",
+  making: "taking",
+};
+
+const VIETLISH_MAKE_MISTAKE_PATTERN = new RegExp(
+  `\\b(do|does|did|doing)\\s+((?:a|an|the|some|many|few|several|my|your|his|her|our|their|this|that|these|those|one|two|three|\\d+)\\s+)?(mistake|mistakes)\\b${COLLOCATION_OBJECT_TAIL}`,
+  "i",
+);
+
+const MAKE_FOR_DO: Record<string, string> = {
+  do: "make",
+  does: "makes",
+  did: "made",
+  doing: "making",
+};
+
+function matchLeadingCapitalization(source: string, replacement: string): string {
+  if (!source || !replacement) return replacement;
+  return source[0] === source[0].toUpperCase()
+    ? replacement[0].toUpperCase() + replacement.slice(1)
+    : replacement;
+}
+
+function hasVietlishTakePhoto(input: string): boolean {
+  return VIETLISH_TAKE_PHOTO_PATTERN.test(input);
+}
+
+function repairVietlishTakePhoto(input: string): string {
+  return input.replace(
+    VIETLISH_TAKE_PHOTO_PATTERN,
+    (_match, verb: string, determiner: string | undefined, noun: string) => {
+      const replacement = matchLeadingCapitalization(verb, TAKE_FOR_MAKE[verb.toLowerCase()] ?? verb);
+      return `${replacement} ${determiner ?? ""}${noun}`;
+    },
+  );
+}
+
+function hasVietlishMakeMistake(input: string): boolean {
+  // Guard out auxiliary/interrogative "do" (e.g. "Why do mistakes happen?"),
+  // where "do" is not the lexical verb governing "mistake".
+  if (isQuestionLike(input)) return false;
+  return VIETLISH_MAKE_MISTAKE_PATTERN.test(input);
+}
+
+function repairVietlishMakeMistake(input: string): string {
+  return input.replace(
+    VIETLISH_MAKE_MISTAKE_PATTERN,
+    (_match, verb: string, determiner: string | undefined, noun: string) => {
+      const replacement = matchLeadingCapitalization(verb, MAKE_FOR_DO[verb.toLowerCase()] ?? verb);
+      return `${replacement} ${determiner ?? ""}${noun}`;
+    },
+  );
+}
+
 function repairStep5PrepositionPatterns(input: string): string {
   return input
     .replace(/\b(depend|depends|depended|depending)\s+of\b/gi, "$1 on")
@@ -1223,6 +1300,20 @@ export const englishCorrectionRules: CorrectionRule[] = [
     apply: repairVnYesNoDoSupport,
     fpRiskNote:
       "High risk if generalized. Do-support is only safe here on closed pronoun-subject questions with a terminal question mark and a narrow bare-verb whitelist (like/live/have); statements, already-aux questions, and declarative WH clauses must stay untouched.",
+  },
+  {
+    id: "en-vietlish-collocation-take-photo",
+    detects: hasVietlishTakePhoto,
+    apply: repairVietlishTakePhoto,
+    fpRiskNote:
+      "Medium risk. 'make' is correct for most created objects, and 'photo' heads valid compounds (photo album/book/booth/frame). V1 rewrites make->take only when a photo/selfie token is the bare direct-object head noun and is NOT followed by a compounding noun. It deliberately never touches 'picture' (drawable/film sense) or 'photograph'.",
+  },
+  {
+    id: "en-vietlish-collocation-make-mistake",
+    detects: hasVietlishMakeMistake,
+    apply: repairVietlishMakeMistake,
+    fpRiskNote:
+      "Medium risk. 'do' is correct for most activities (do homework, do the dishes). V1 rewrites do->make only when a mistake/mistakes token is the bare direct-object head noun and is NOT followed by a compounding noun (mistake analysis/log), leaving all other do-objects untouched.",
   },
   {
     id: "en-question-form-final-mark",
