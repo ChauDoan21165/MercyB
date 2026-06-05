@@ -1,6 +1,8 @@
 # Lane C — EN→VN Vietnamese tone-contrast set: pending native validation
 
-**Status: NOT WIRED. AWAITING CHAU NATIVE VALIDATION.**
+**Status: CHAU-VALIDATED (2026-06-05). NOT WIRED.** 14 pairs KEEP as-is;
+2 replaced on Chau's call — `di/dí` → `la/lá` (above), `bà/bả` → `bò/bỏ`
+(below, listen-compare only). Audio TTS step still pending.
 
 This is a content-only handoff for the EN→VN Vietnamese tone-contrast /
 listen-compare drill extension (`src/data/tone-drill/tone-contrast-extra.ts`).
@@ -43,8 +45,8 @@ vi-VN contour will sound natural to a native ear (Northern reference).
 | quê      | huyền | quê hương                 | hometown                      | above       | no                  | nghĩa + contour |
 | co       | ngang | co lại                    | to contract / shrink          | above       | no                  | nghĩa + contour |
 | cò       | huyền | con cò / cò súng          | stork / trigger               | above       | no                  | nghĩa + contour |
-| di       | ngang | di chuyển nhẹ             | to move / shift               | above       | no                  | từ A1/A2 quen thuộc? |
-| dí       | sắc   | dí vào                    | to press / poke at            | above       | no                  | nghĩa + contour |
+| la       | ngang | la hét                    | to shout / yell               | above       | no                  | Chau KEEP (thay di/dí) |
+| lá       | sắc   | chiếc lá                  | leaf                          | above       | no                  | Chau KEEP (thay di/dí) |
 | tra      | ngang | tra từ điển               | to look up / insert           | above       | no                  | nghĩa + contour |
 | trà      | huyền | uống trà                  | tea                           | above       | no                  | nghĩa + contour |
 | giá      | sắc   | giá tiền / giá đỗ         | price / bean sprout           | above       | no                  | cặp tối thiểu thật? |
@@ -68,8 +70,8 @@ vi-VN contour will sound natural to a native ear (Northern reference).
 | của      | hỏi   | sở hữu                    | of / belonging to             | below       | yes                 | nghĩa; hỏi luôn abstained |
 | ve       | ngang | con ve                    | cicada                        | below       | yes                 | nghĩa; KHÔNG chấm điểm |
 | vẽ       | ngã   | vẽ tranh                  | to draw                       | below       | yes                 | nghĩa; ngã luôn abstained |
-| bà       | huyền | bà nội / bà ngoại         | grandmother                   | below       | yes                 | nghĩa; cặp chạm hỏi |
-| bả       | hỏi   | thuốc bả / bà ấy          | poison / her (colloquial)     | below       | yes                 | nghĩa; hỏi abstained |
+| bò       | huyền | con bò                    | cow                           | below       | yes                 | Chau KEEP (thay bà/bả); KHÔNG chấm điểm |
+| bỏ       | hỏi   | bỏ đi                     | to drop / leave / give up     | below       | yes                 | Chau KEEP (thay bà/bả); hỏi abstained |
 | củ       | hỏi   | củ khoai                  | root / tuber                  | below       | yes                 | **cặp hỏi/ngã thuần — giọng Nam gộp; KHÔNG chấm điểm** |
 | cũ       | ngã   | đồ cũ                     | old (used)                    | below       | yes                 | **cặp hỏi/ngã thuần — giọng Nam gộp; KHÔNG chấm điểm** |
 
@@ -79,7 +81,7 @@ vi-VN contour will sound natural to a native ear (Northern reference).
 
 - `cua-ngang-vs-hoi` — cua (ngang) vs của (hỏi)
 - `ve-ngang-vs-ngax` — ve (ngang) vs vẽ (ngã)
-- `ba-huyen-vs-hoi` — bà (huyền) vs bả (hỏi)
+- `bo-huyen-vs-hoi` — bò (huyền) vs bỏ (hỏi)
 - `hoi-vs-nga-cua-cux` — củ (hỏi) vs cũ (ngã) — pure hỏi/ngã, Southern-merged
 
 ### Reviewer checklist
