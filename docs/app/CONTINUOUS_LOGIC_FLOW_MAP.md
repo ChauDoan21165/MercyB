@@ -9,7 +9,6 @@ Source of truth:
 - [FLOW_COMPLIANCE_AUDIT.md](./FLOW_COMPLIANCE_AUDIT.md)
 - [TEACHER_MERCY_LEARNING_OS.md](./TEACHER_MERCY_LEARNING_OS.md)
 - [STRATEGY.md](../../STRATEGY.md)
-- [ROADMAP.md](../../ROADMAP.md)
 
 This document connects MercyB as one product logic flow: product vision -> user routes -> screens -> components -> buttons/CTAs -> engines -> memory/voice -> tests -> safety boundaries.
 

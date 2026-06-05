@@ -16,7 +16,6 @@ Read in this order:
 4. [FLOW_COMPLIANCE_AUDIT.md](./FLOW_COMPLIANCE_AUDIT.md)
 5. [TEACHER_MERCY_LEARNING_OS.md](./TEACHER_MERCY_LEARNING_OS.md)
 6. [STRATEGY.md](../../STRATEGY.md)
-7. [ROADMAP.md](../../ROADMAP.md)
 
 Before inspecting code, write down the expected product split:
 
