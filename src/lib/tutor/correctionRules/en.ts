@@ -579,13 +579,15 @@ function repairVietlishSayTellPerson(input: string): string {
 
 // VN "tôi có/được N tuổi" -> "I have N years old"; English uses BE + N years
 // old ("I am 20 years old"). Closed pronoun-subject frame: have/has is replaced
-// by the agreeing BE form (I->am, you/we/they->are, he/she/it->is) and the
-// "<number> years old" predicate is preserved (normalized to "years old").
-// The trailing "old" predicate is required, so possessive-compound
-// ("a 20-year-old son"), partitive ("20 years of experience"), and plain
-// possession ("20 books") surfaces never match.
+// by the agreeing BE form (I->am, you/we/they->are, he/she/it->is).
+//
+// Two precision guards (A4 regression locks):
+//  - "old" must be CLAUSE-FINAL (end/punctuation lookahead) so an attributive NP
+//    "I have 5 years old dog" (a noun follows) never matches and gets mangled.
+//  - Unit agreement: a count of 1 emits singular "year" ("He is 1 year old"),
+//    never the ungrammatical "1 years old".
 const VIETLISH_AGE_HAVE_BE_PATTERN =
-  /\b(I|you|we|they|he|she|it)\s+(have|has)\s+(\d{1,3})\s+years?\s+old\b/i;
+  /\b(I|you|we|they|he|she|it)\s+(have|has)\s+(\d{1,3})\s+years?\s+old\b(?=[.?!,;:]|\s*$)/i;
 
 const BE_FOR_AGE_SUBJECT: Record<string, string> = {
   i: "am",
@@ -606,7 +608,8 @@ function repairVietlishAgeHaveBe(input: string): string {
     new RegExp(VIETLISH_AGE_HAVE_BE_PATTERN.source, "gi"),
     (_match, subject: string, _have: string, number: string) => {
       const be = BE_FOR_AGE_SUBJECT[subject.toLowerCase()] ?? "is";
-      return `${subject} ${be} ${number} years old`;
+      const unit = number === "1" ? "year" : "years";
+      return `${subject} ${be} ${number} ${unit} old`;
     },
   );
 }

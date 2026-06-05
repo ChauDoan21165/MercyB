@@ -3,7 +3,7 @@
   "ruleId": "en-vietlish-age-have-be",
   "language": "en",
   "description": "VN 'tôi có/được N tuổi' transfer: learners calque to 'I have N years old' where English age uses BE ('I am N years old'). Rule en-vietlish-age-have-be replaces have/has with the agreeing BE form (I->am, you/we/they->are, he/she/it->is) ONLY in a pronoun-subject + have/has + 1-3 digit number + year(s) old frame, and normalizes the predicate to 'years old'.",
-  "fp_risk_note": "Low risk. The trailing 'old' predicate is mandatory, so possessive-compound ('a 20-year-old son'), partitive ('20 years of experience'), and plain possession ('20 books') never match. Already-correct 'I am 20 years old' is untouched because the frame requires have/has. Subject scope is the closed pronoun list, so noun subjects are out of scope.",
+  "fp_risk_note": "Low risk. 'old' must be CLAUSE-FINAL (end/punctuation lookahead), so an attributive NP ('5 years old dog') never matches and gets mangled into a broken BE-predicate. Possessive-compound ('a 20-year-old son'), partitive ('20 years of experience'), and plain possession ('20 books') never match. A count of 1 emits singular 'year' ('He is 1 year old'), never the ungrammatical '1 years old'. Already-correct 'I am 20 years old' is untouched (frame requires have/has).",
   "positive": [
     {
       "id": "age-have-be-pos-001",
@@ -33,9 +33,9 @@
       "id": "age-have-be-pos-004",
       "input": "He has 1 year old",
       "expectedStatus": "corrected",
-      "expectedCorrection": "He is 1 years old.",
+      "expectedCorrection": "He is 1 year old.",
       "expectedRuleFired": "en-vietlish-age-have-be",
-      "notes": "Singular 'year' captured and normalized to 'years old' (engine real output)."
+      "notes": "Count of 1 emits singular 'year' (not the ungrammatical '1 years old'). (A4 regression lock.)"
     }
   ],
   "negative": [
@@ -70,6 +70,14 @@
       "expectedCorrection": "I have 20 books.",
       "expectedRuleFired": null,
       "notes": "Plain possession, no age predicate -> must abstain."
+    },
+    {
+      "id": "age-have-be-neg-005",
+      "input": "I have 5 years old dog.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I have 5 years old dog.",
+      "expectedRuleFired": null,
+      "notes": "Attributive NP (a noun 'dog' follows 'old'); 'old' is not clause-final, so the lookahead guard must abstain rather than mangle it into 'I am 5 years old dog'. (A4 regression lock.)"
     }
   ]
 }
