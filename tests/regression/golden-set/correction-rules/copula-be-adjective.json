@@ -102,6 +102,14 @@
       "expectedCorrection": "I am very tired.",
       "expectedRuleFired": "en-be-verb-omission",
       "notes": "Overlap boundary: the older 'very + adjective' rule owns this surface, so the new rule must abstain while the existing be-drop rule still fires."
+    },
+    {
+      "id": "cba-neg-009",
+      "input": "We met kind people.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "We met kind people.",
+      "expectedRuleFired": null,
+      "notes": "Over-fire boundary: a whitelisted adjective ('kind') used ATTRIBUTIVELY to modify a noun ('people') needs no copula — the adjective is not the sentence-final predicate, so the rule must abstain and not insert 'are' before it."
     }
   ]
 }
