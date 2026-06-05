@@ -13,9 +13,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt ít khi kết thúc âm tiết bằng hai hoặc ba phụ âm liền nhau. Vì vậy khi nói nhanh, người học có thể giữ ý đúng nhưng làm nhẹ phần cuối của từ tiếng Anh.",
       howToHelpVi:
-        "Gia đình có thể nghe phần cuối của từ trong các cặp ngắn như test/tests hoặc ask/asked, rồi khen khi âm cuối nghe rõ hơn.",
+        "Người thân có thể nhắc lại chậm bằng mẫu tự nhiên như test/tests hoặc ask/asked, rồi vui vẻ nghe cùng người học phần âm cuối.",
       encouragementVi:
-        "Đây là điểm phát âm rất quen thuộc với người Việt mình; luyện chậm rồi tăng tốc sẽ tiến bộ rõ.",
+        "Đây là điểm phát âm rất quen thuộc với người Việt mình; mỗi lần âm cuối rõ hơn một chút là một bước tiến đáng mừng.",
       example: {
         learnerSays: "She ask me last night.",
         naturalForm: "She asked me last night.",
@@ -37,9 +37,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt có âm cuối ngắn và thường không bật mạnh. Tiếng Anh lại dựa vào độ dài nguyên âm và hơi cuối để phân biệt bad/bat hoặc bag/back.",
       howToHelpVi:
-        "Gia đình có thể cho người học nghe và lặp lại từng cặp tối thiểu, chú ý giữ nguyên âm trước âm b/d/g dài hơn một chút.",
+        "Người thân có thể đọc mẫu từng cặp như bad/bat hoặc bag/back, để người học nghe sự khác nhau rồi thử nói lại nhẹ nhàng.",
       encouragementVi:
-        "Người học không thiếu từ vựng; đây là điều chỉnh cơ miệng và tai nghe.",
+        "Khi tai nghe quen hơn, miệng cũng sẽ tự điều chỉnh dần; người học đang xây một thói quen âm thanh mới.",
       example: {
         learnerSays: "I need a back.",
         naturalForm: "I need a bag.",
@@ -60,14 +60,14 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt không có âm đặt đầu lưỡi giữa hai răng như tiếng Anh. Người học thường mượn âm gần hơn như t, d, s hoặc z để nói cho kịp.",
       howToHelpVi:
-        "Gia đình có thể luyện các từ rất ngắn: think, three, this, that; mục tiêu là thấy hơi ra nhẹ và nghe khác t/d.",
+        "Người thân có thể làm mẫu vài từ rất ngắn như think, three, this, that, rồi để người học bắt chước theo nhịp chậm.",
       encouragementVi:
-        "Âm này mới với hầu hết người Việt học tiếng Anh, luyện từng từ quen thuộc sẽ dễ hơn.",
+        "Âm này mới với hầu hết người Việt học tiếng Anh; đi từng từ quen thuộc sẽ giúp người học tự tin hơn.",
       example: {
         learnerSays: "I tink it is good.",
         naturalForm: "I think it is good.",
         glossVi:
-          "Ý là 'tôi nghĩ là tốt'; think cần âm th tiếng Anh, không phải t tiếng Việt.",
+          "Ý là 'tôi nghĩ là tốt'; think dùng âm th tiếng Anh với hơi nhẹ ở đầu lưỡi.",
       },
       validated: false,
       reviewStatus: "draft",
@@ -84,9 +84,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt không thêm hậu tố để báo số nhiều, quá khứ, hay chủ ngữ. Khi kết hợp với âm cuối khó, các đuôi nhỏ của tiếng Anh dễ bị nuốt mất.",
       howToHelpVi:
-        "Gia đình nên tách nghĩa với âm: one cat/two cats, I walk/I walked, I work/she works, rồi nghe phần cuối.",
+        "Người thân có thể nhắc lại các cặp có nghĩa rõ: one cat/two cats, I walk/I walked, I work/she works, rồi cùng nghe phần cuối.",
       encouragementVi:
-        "Điểm này thường là phát âm lẫn thói quen, không phải người học không hiểu bài.",
+        "Đây thường là chuyện phát âm và thói quen nói; người học sẽ rõ hơn khi nghe được phần đuôi trong từng cụm quen.",
       example: {
         learnerSays: "He work every day.",
         naturalForm: "He works every day.",
@@ -108,7 +108,7 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt dùng thanh điệu trên từng tiếng, không dùng trọng âm kiểu tiếng Anh để làm một âm tiết nổi lên trong cả từ.",
       howToHelpVi:
-        "Gia đình có thể đánh dấu âm mạnh bằng chữ in hoa khi luyện: in-for-MA-tion, im-POR-tant, pho-TOG-ra-pher.",
+        "Người thân có thể đọc mẫu với âm mạnh rõ hơn: in-for-MA-tion, im-POR-tant, pho-TOG-ra-pher, rồi để người học nói theo.",
       encouragementVi:
         "Khi người học nghe và bắt chước nhịp của từ, vốn từ đã biết sẽ trở nên dễ hiểu hơn nhiều.",
       example: {
@@ -131,9 +131,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Người Việt quen giữ nguyên âm ổn định trong từng tiếng. Một số nguyên âm tiếng Anh lại cần chuyển động rõ trong cùng một âm.",
       howToHelpVi:
-        "Gia đình có thể luyện chậm với mũi tên âm: face, goat, late, boat; sau đó rút ngắn dần về tốc độ tự nhiên.",
+        "Người thân có thể làm mẫu chậm các từ face, goat, late, boat, rồi nhắc lại tự nhiên hơn khi người học đã nghe được đường đi của âm.",
       encouragementVi:
-        "Đây là luyện đường đi của âm, không phải học thêm ngữ pháp khó.",
+        "Đây là luyện đường đi của âm; mỗi lần nói mềm hơn là người học đang tiến gần hơn tới âm tiếng Anh tự nhiên.",
       example: {
         learnerSays: "My fess is tired.",
         naturalForm: "My face is tired.",
@@ -154,9 +154,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Cách phát âm r, d, gi, v, l trong tiếng Việt thay đổi theo vùng, còn tiếng Anh có r, w và l cuối không khớp hẳn với thói quen đó.",
       howToHelpVi:
-        "Gia đình có thể luyện theo vị trí: red ở đầu từ, very ở giữa, feel ở cuối; mỗi nhóm chỉ vài phút.",
+        "Người thân có thể đọc mẫu theo từng vị trí: red ở đầu từ, very ở giữa, feel ở cuối; mỗi lần chỉ cần vài từ quen.",
       encouragementVi:
-        "Chẩn đoán đúng vị trí sẽ giúp luyện nhanh hơn là sửa tất cả R/L/W cùng lúc.",
+        "Tách từng vị trí nhỏ sẽ giúp người học thấy mình tiến bộ rõ hơn, thay vì phải lo hết R/L/W cùng lúc.",
       example: {
         learnerSays: "I really like lice.",
         naturalForm: "I really like rice.",
@@ -178,9 +178,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt dùng thanh điệu để phân biệt từng tiếng. Khi chuyển sang tiếng Anh, người học có thể giữ cao độ từng từ mà chưa dùng đường lên xuống của cả câu.",
       howToHelpVi:
-        "Gia đình có thể cho người học bắt chước câu ngắn trong audio, nhất là câu hỏi, lời mời, và chỗ cần nhấn ý.",
+        "Người thân có thể nghe một câu ngắn trong audio rồi nhắc lại bằng giọng tự nhiên, để người học bắt chước câu hỏi, lời mời, và chỗ nhấn ý.",
       encouragementVi:
-        "Ngữ điệu là lớp nhạc của câu; nghe nhiều và nhại lại sẽ tự nhiên dần.",
+        "Ngữ điệu là lớp nhạc của câu; nghe nhiều và nói theo sẽ tự nhiên dần.",
       example: {
         learnerSays: "You want coffee.",
         naturalForm: "Do you want coffee?",
@@ -202,9 +202,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Trong tiếng Việt, tôi đi, anh ấy đi, họ đi đều dùng một dạng động từ. Tiếng Anh hiện tại đơn lại thêm -s cho he, she, it.",
       howToHelpVi:
-        "Gia đình có thể luyện cặp đối chiếu ngắn: I work / she works, I have / he has, I go / she goes.",
+        "Người thân có thể nhắc lại bằng cặp ngắn: I work / she works, I have / he has, I go / she goes, để người học nghe mẫu tự nhiên trong câu.",
       encouragementVi:
-        "Quy tắc nhỏ nhưng cần lặp nhiều; khi thành nhịp nói, người học sẽ dùng tự nhiên hơn.",
+        "Quy tắc nhỏ này cần gặp nhiều lần; khi thành nhịp nói, người học sẽ dùng tự nhiên hơn.",
       example: {
         learnerSays: "My brother have a job.",
         naturalForm: "My brother has a job.",
@@ -225,9 +225,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt báo thời gian bằng từ như đã, hôm qua, tuần trước, nên động từ giữ nguyên. Tiếng Anh yêu cầu cụm động từ cũng mang dấu quá khứ.",
       howToHelpVi:
-        "Gia đình có thể hỏi chuyện hôm qua bằng vài động từ quen thuộc rồi nhắc lại dạng tự nhiên: went, ate, watched, studied.",
+        "Người thân có thể hỏi chuyện hôm qua bằng vài động từ quen thuộc, rồi nhắc lại bằng mẫu tự nhiên: went, ate, watched, studied.",
       encouragementVi:
-        "Người học đã biết ý thời gian; bước tiếp theo là gắn thời gian đó vào động từ tiếng Anh.",
+        "Người học đã nắm ý thời gian; thêm dấu quá khứ vào động từ là bước nhỏ tiếp theo.",
       example: {
         learnerSays: "I go to Da Nang last week.",
         naturalForm: "I went to Da Nang last week.",
@@ -248,9 +248,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Trong tiếng Việt, số đếm hoặc từ lượng đã nói rõ số nhiều, danh từ không đổi. Tiếng Anh lại đánh dấu số nhiều ngay trên danh từ đếm được.",
       howToHelpVi:
-        "Gia đình có thể luyện quanh đồ vật quen thuộc: one book/two books, one friend/many friends, one year/five years.",
+        "Người thân có thể nhắc lại quanh đồ vật quen thuộc: one book/two books, one friend/many friends, one year/five years.",
       encouragementVi:
-        "Người nghe vẫn hiểu ý; thêm -s đều hơn sẽ làm câu tiếng Anh gọn và chuẩn hơn.",
+        "Người nghe thường vẫn hiểu ý; thêm -s đều hơn sẽ làm câu tiếng Anh gọn và tự nhiên hơn.",
       example: {
         learnerSays: "I have two sister.",
         naturalForm: "I have two sisters.",
@@ -271,9 +271,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt đặt ý sở hữu bằng từ của hoặc bằng trật tự quen thuộc. Tiếng Anh có một dạng rất ngắn là 's, nên người học dễ bỏ sót khi nói nhanh.",
       howToHelpVi:
-        "Gia đình có thể luyện tên thật và đồ vật quen thuộc: Mai's bag, Dad's phone, my friend's house.",
+        "Người thân có thể dùng tên thật và đồ vật quen thuộc để đọc mẫu: Mai's bag, Dad's phone, my friend's house.",
       encouragementVi:
-        "Đây là thói quen hình thức nhỏ; luyện qua vật thật trong nhà sẽ dễ nhớ.",
+        "Đây là thói quen hình thức nhỏ; gặp trong đồ vật thật hằng ngày sẽ dễ nhớ hơn.",
       example: {
         learnerSays: "This is Nam car.",
         naturalForm: "This is Nam's car.",
@@ -294,9 +294,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt dùng một từ báo so sánh rõ ràng, còn tính từ không biến đổi. Tiếng Anh chia thành nhiều mẫu, nên người học dễ trộn more với -er.",
       howToHelpVi:
-        "Gia đình có thể luyện từng nhóm: taller/faster cho từ ngắn, more beautiful cho từ dài, the best/the most cho bậc nhất.",
+        "Người thân có thể nhắc lại từng nhóm bằng mẫu tự nhiên: taller/faster, more beautiful, the best/the most.",
       encouragementVi:
-        "Khi đã thuộc nhóm từ quen, người học sẽ ít phải nghĩ từng câu.",
+        "Khi các nhóm từ quen dần, người học sẽ chọn mẫu so sánh nhẹ nhàng hơn trong câu thật.",
       example: {
         learnerSays: "He is more taller.",
         naturalForm: "He is taller.",
@@ -318,9 +318,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Người học đã quen thêm -s cho she/he, nhưng sau trợ động từ tiếng Anh, động từ chính không nhận -s, -ed, hay to.",
       howToHelpVi:
-        "Gia đình có thể luyện một khung cố định: can + sing, will + go, should + study; giữ động từ sau đó thật đơn giản.",
+        "Người thân có thể đọc mẫu một khung cố định: can sing, will go, should study, để người học nghe động từ sau đó ở dạng gốc.",
       encouragementVi:
-        "Đây là lúc hai quy tắc tiếng Anh gặp nhau; tách khung ra luyện sẽ rất nhanh rõ.",
+        "Đây là lúc hai quy tắc tiếng Anh gặp nhau; tách thành khung nhỏ sẽ giúp người học thấy rõ nhanh hơn.",
       example: {
         learnerSays: "She can sings well.",
         naturalForm: "She can sing well.",
@@ -341,9 +341,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt để danh từ đứng tự nhiên và dựa vào ngữ cảnh, số đếm, hoặc từ chỉ định. Tiếng Anh lại cần a/an/the trước nhiều danh từ đếm được.",
       howToHelpVi:
-        "Gia đình có thể luyện với vật quen thuộc: a book, an apple, the door; nói ngắn nhưng đủ cụm danh từ.",
+        "Người thân có thể nhắc lại với vật quen thuộc: a book, an apple, the door; nói ngắn nhưng đủ cả cụm danh từ.",
       encouragementVi:
-        "A/an/the rất nhỏ nên dễ quên; càng luyện theo cụm, người học càng dùng tự động.",
+        "A/an/the rất nhỏ nên dễ trôi mất; gặp theo cụm quen nhiều lần, người học sẽ dùng tự động hơn.",
       example: {
         learnerSays: "I bought book yesterday.",
         naturalForm: "I bought a book yesterday.",
@@ -364,9 +364,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Trong tiếng Việt, chủ ngữ có thể đi thẳng với tính từ. Tiếng Anh cần động từ nối am/is/are để câu đầy đủ.",
       howToHelpVi:
-        "Gia đình có thể luyện khung ba bước: I am, she is, they are, rồi thêm tính từ quen thuộc như tired, happy, ready.",
+        "Người thân có thể đọc mẫu khung ba bước: I am, she is, they are, rồi thêm tính từ quen thuộc như tired, happy, ready.",
       encouragementVi:
-        "Chỉ cần quen đặt be vào giữa, câu tiếng Anh sẽ rõ hơn ngay.",
+        "Khi quen đặt be vào giữa, câu tiếng Anh của người học sẽ rõ và nhẹ hơn ngay.",
       example: {
         learnerSays: "I tired.",
         naturalForm: "I am tired.",
@@ -387,9 +387,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt có thể giữ trật tự câu kể rồi thêm dấu hỏi, không, à. Tiếng Anh lại đưa trợ động từ lên trước chủ ngữ trong nhiều câu hỏi.",
       howToHelpVi:
-        "Gia đình có thể luyện mẫu ngắn: Do you like..., Did you go..., Where do you live... thay vì chỉ lên giọng.",
+        "Người thân có thể nhắc lại bằng mẫu hỏi ngắn: Do you like..., Did you go..., Where do you live..., để người học có khung sẵn.",
       encouragementVi:
-        "Người học đã biết đặt ý hỏi; cần thêm khung tiếng Anh cho ý hỏi đó.",
+        "Người học đã biết đặt ý hỏi; thêm khung tiếng Anh sẽ giúp câu hỏi nghe tự nhiên hơn.",
       example: {
         learnerSays: "You like coffee?",
         naturalForm: "Do you like coffee?",
@@ -410,9 +410,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt có thể bổ nghĩa sau danh từ bằng cách rất gọn. Tiếng Anh cần từ nối quan hệ và trật tự rõ hơn để người nghe biết phần nào mô tả danh từ.",
       howToHelpVi:
-        "Gia đình có thể luyện hai khung: the person who... và the thing that..., mỗi lần chỉ một câu ngắn.",
+        "Người thân có thể nhắc lại hai khung: the person who... và the thing that..., mỗi lần chỉ một câu ngắn.",
       encouragementVi:
-        "Đây là mẫu câu dài hơn; chia thành hai khung nhỏ sẽ dễ kiểm soát.",
+        "Đây là mẫu câu dài hơn; chia thành khung nhỏ sẽ giúp người học nắm chắc từng bước.",
       example: {
         learnerSays: "The man I met him is my teacher.",
         naturalForm: "The man I met is my teacher.",
@@ -434,9 +434,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt dùng không/chưa rất ổn định, động từ không đổi. Tiếng Anh thường phải thêm trợ động từ để tạo phủ định.",
       howToHelpVi:
-        "Gia đình có thể luyện ba khung: I don't..., she doesn't..., yesterday I didn't..., rồi giữ động từ chính ở dạng gốc.",
+        "Người thân có thể đọc mẫu ba khung: I don't..., she doesn't..., yesterday I didn't..., rồi để người học nghe động từ chính ở dạng gốc.",
       encouragementVi:
-        "Khi khung phủ định đã quen, người học sẽ bớt dịch từng chữ từ tiếng Việt.",
+        "Khi khung phủ định đã quen, người học sẽ nói liền mạch hơn mà không cần dịch từng chữ.",
       example: {
         learnerSays: "She not like coffee.",
         naturalForm: "She doesn't like coffee.",
@@ -457,9 +457,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Một chữ có trong tiếng Việt có thể báo sự tồn tại, sở hữu, hoặc tình huống. Tiếng Anh chọn cấu trúc khác nhau cho từng nghĩa.",
       howToHelpVi:
-        "Gia đình có thể luyện câu nhìn thấy: There is one..., There are two..., I have..., để tách tồn tại khỏi sở hữu.",
+        "Người thân có thể nhắc lại câu nhìn thấy: There is one..., There are two..., I have..., để người học nghe từng khung theo nghĩa.",
       encouragementVi:
-        "Người học đang dùng một ý rất Việt Nam; chỉ cần chọn đúng khung tiếng Anh theo ngữ cảnh.",
+        "Người học đang dùng một ý rất Việt Nam; thêm khung tiếng Anh theo ngữ cảnh sẽ giúp câu rõ hơn.",
       example: {
         learnerSays: "In my room has a desk.",
         naturalForm: "There is a desk in my room.",
@@ -479,11 +479,11 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       parentSummaryVi:
         "Tiếng Việt hay nêu chủ đề trước rồi nhận xét; tiếng Anh thường cần chủ ngữ chính đứng đúng vị trí.",
       whyVi:
-        "Câu tiếng Việt có thể mở bằng chủ đề: món này, tôi thích lắm. Trong tiếng Anh, nếu bê nguyên trật tự đó, câu có thể nghe thiếu chủ ngữ hoặc quá Việt.",
+        "Câu tiếng Việt có thể mở bằng chủ đề: món này, tôi thích lắm. Trong tiếng Anh, nếu giữ nguyên trật tự đó, người nghe có thể chờ chủ ngữ chính rõ hơn.",
       howToHelpVi:
-        "Gia đình có thể giúp người học đổi từ mẫu chủ đề-nhận xét sang mẫu chủ ngữ-động từ: I like this dish very much.",
+        "Người thân có thể nhắc lại cùng ý bằng mẫu chủ ngữ-động từ: I like this dish very much, để người học nghe trật tự tiếng Anh tự nhiên.",
       encouragementVi:
-        "Cách nghĩ chủ đề trước rất tự nhiên trong tiếng Việt; tiếng Anh chỉ cần sắp lại để người nghe theo kịp.",
+        "Cách nghĩ chủ đề trước rất tự nhiên trong tiếng Việt; chỉ cần đổi trật tự là ý của người học sẽ sáng hơn trong tiếng Anh.",
       example: {
         learnerSays: "This dish, I like very much.",
         naturalForm: "I like this dish very much.",
@@ -505,9 +505,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Trong ngữ cảnh Việt Nam, cụm như ăn thuốc, đóng đèn, nói với rất dễ hiểu. Khi chuyển sang mã tiếng Anh, nghĩa vẫn đúng nhưng cụm tự nhiên đổi thành take medicine, turn off the light, talk to.",
       howToHelpVi:
-        "Gia đình có thể giúp bằng cách học theo cụm nguyên khối, không bắt bẻ từng chữ: take medicine, turn off the fan, talk to a friend.",
+        "Người thân có thể nhắc lại cả cụm tự nhiên như take medicine, turn off the fan, talk to a friend, thay vì đi từng chữ.",
       encouragementVi:
-        "Đây là chuyển mã theo ngữ cảnh; càng gặp nhiều cụm tiếng Anh tự nhiên, người học càng chọn đúng mã.",
+        "Đây là chuyển mã theo ngữ cảnh; càng gặp nhiều cụm tiếng Anh tự nhiên, người học càng chọn đúng mã một cách nhẹ nhàng.",
       example: {
         learnerSays: "I eat medicine after dinner.",
         naturalForm: "I take medicine after dinner.",
@@ -531,9 +531,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt dùng một từ rất linh hoạt qua nhiều tình huống. Tiếng Anh thường tách nghĩa thành nhiều từ khác nhau, nên người học cần chọn theo cụm.",
       howToHelpVi:
-        "Gia đình có thể luyện theo tình huống: do homework, make a cake, go to school, ride a bike, open a business.",
+        "Người thân có thể nhắc lại theo tình huống: do homework, make a cake, go to school, ride a bike, open a business.",
       encouragementVi:
-        "Người học có ý đúng; phần cần luyện là bản đồ từ vựng giữa hai ngôn ngữ.",
+        "Ý của người học đã rõ; thêm bản đồ cụm từ giữa hai ngôn ngữ sẽ giúp câu tiếng Anh tự nhiên hơn.",
       example: {
         learnerSays: "I do a cake.",
         naturalForm: "I make a cake.",
@@ -555,9 +555,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Một giới từ tiếng Việt bao phủ nhiều tình huống. Tiếng Anh chia nhỏ hơn: at school, in Vietnam, on the street, by bus.",
       howToHelpVi:
-        "Gia đình có thể luyện giới từ theo cả cụm địa điểm hoặc hoạt động, không học từng từ rời.",
+        "Người thân có thể nhắc lại giới từ theo cả cụm địa điểm hoặc hoạt động: at school, in Vietnam, on the street, by bus.",
       encouragementVi:
-        "Giới từ là thói quen của từng ngôn ngữ; người học sẽ nhớ tốt hơn qua ví dụ quen thuộc.",
+        "Giới từ là thói quen của từng ngôn ngữ; ví dụ quen thuộc sẽ giúp người học nhớ bằng cảm giác câu.",
       example: {
         learnerSays: "I live in 12 Le Loi Street.",
         naturalForm: "I live on Le Loi Street.",
@@ -579,9 +579,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt không ghép động từ với tiểu từ kiểu tiếng Anh để đổi nghĩa theo cách look up, give in, put off. Vì vậy người học dễ né hoặc dùng từ dài hơn.",
       howToHelpVi:
-        "Gia đình có thể luyện từng cụm qua một cảnh cụ thể: turn on the light, look after a sibling, put off a meeting.",
+        "Người thân có thể nhắc lại từng cụm trong một cảnh cụ thể: turn on the light, look after a sibling, put off a meeting.",
       encouragementVi:
-        "Dùng từ trang trọng không phải vấn đề lớn; thêm phrasal verb sẽ làm tiếng Anh tự nhiên hơn.",
+        "Người học đã có cách diễn đạt ý; thêm vài phrasal verb quen sẽ làm tiếng Anh đời thường hơn.",
       example: {
         learnerSays: "Please activate the light.",
         naturalForm: "Please turn on the light.",
@@ -603,9 +603,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt mượn nhiều từ quốc tế nhưng dùng theo nhu cầu địa phương. Khi chuyển sang tiếng Anh, từ đó có thể không mang đúng sắc thái hoặc phạm vi nghĩa.",
       howToHelpVi:
-        "Gia đình có thể hỏi người học dùng từ đó trong câu tiếng Anh thật, rồi kiểm tra cụm đi kèm thay vì đoán theo âm quen.",
+        "Người thân có thể hỏi người học muốn nói ý gì, rồi nhắc lại bằng cụm tiếng Anh tự nhiên đi cùng từ đó.",
       encouragementVi:
-        "Biết từ vay mượn là lợi thế; chỉ cần gắn thêm cách dùng tiếng Anh chuẩn.",
+        "Biết từ vay mượn là lợi thế; khi thêm cách dùng tiếng Anh tự nhiên, vốn từ của người học sẽ mở rộng rất nhanh.",
       example: {
         learnerSays: "I wear a vest to school.",
         naturalForm: "I wear a uniform to school.",
@@ -627,9 +627,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Trong tiếng Việt, thành ngữ và cách nói hình ảnh hoạt động trong ngữ cảnh Việt rất tự nhiên. Sang tiếng Anh, cùng ý đó thường cần một thành ngữ khác hoặc câu diễn giải rõ hơn.",
       howToHelpVi:
-        "Gia đình có thể giúp bằng cách hỏi 'cụm này nghĩa là gì trong tình huống này?' rồi học bản tiếng Anh tương đương cả cụm.",
+        "Người thân có thể hỏi 'ý của cụm này trong tình huống này là gì?' rồi nhắc lại bằng một câu tiếng Anh tự nhiên tương đương.",
       encouragementVi:
-        "Đây là chuyển mã văn hóa; biết cả hai cách nói là lợi thế giao tiếp của người học.",
+        "Đây là chuyển mã văn hóa; biết cả hai cách nói là lợi thế giao tiếp rất đẹp của người học.",
       example: {
         learnerSays: "He is like water breaks the bank.",
         naturalForm: "He is under a lot of pressure.",
@@ -653,9 +653,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt dùng đại từ, tên gọi, và vai vế để giữ mạch quan hệ trong câu. Tiếng Anh viết học thuật hoặc công việc thường muốn tham chiếu gọn hơn.",
       howToHelpVi:
-        "Gia đình có thể luyện đọc lại câu và hỏi: từ nào đã rõ rồi, có thể bỏ để câu tiếng Anh nhẹ hơn không?",
+        "Người thân có thể nhắc lại cùng ý bằng câu gọn hơn, ví dụ My teacher helped me, để người học nghe cách tiếng Anh lược bớt phần đã rõ.",
       encouragementVi:
-        "Người học đang cố làm rõ ý; bước tiếp theo là chọn mức rõ vừa đủ theo văn phong tiếng Anh.",
+        "Người học đang cố làm rõ ý; chọn mức rõ vừa đủ sẽ làm văn phong tiếng Anh nhẹ hơn.",
       example: {
         learnerSays: "My teacher, she helped me.",
         naturalForm: "My teacher helped me.",
@@ -677,9 +677,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt cho phép mở bằng bối cảnh, dẫn ý, rồi mới chốt. Trong nhiều bài tiếng Anh, người đọc mong luận điểm xuất hiện sớm để theo dõi.",
       howToHelpVi:
-        "Gia đình có thể hỏi người học: câu nào là ý chính? Đưa câu đó lên đầu đoạn rồi thêm lý do sau.",
+        "Người thân có thể hỏi người học câu nào là ý chính, rồi nhắc lại mẫu: ý chính trước, lý do sau.",
       encouragementVi:
-        "Đây là khác biệt về cách tổ chức văn bản; người học chỉ cần đổi bố cục theo kỳ vọng tiếng Anh.",
+        "Đây là khác biệt về cách tổ chức văn bản; đổi bố cục sẽ giúp ý hay của người học hiện ra sớm hơn.",
       example: {
         learnerSays:
           "About studying online, many things are convenient. So I think it is useful.",
@@ -699,11 +699,11 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       parentSummaryVi:
         "Người học có thể dùng nhiều moreover, however, therefore để làm bài rõ; tiếng Anh tự nhiên cần nối ý vừa đủ.",
       whyVi:
-        "Trong quá trình học viết, người học thường được dạy nhiều từ nối để bài có cấu trúc. Khi dùng quá sát nhau, đoạn tiếng Anh nghe nặng và kém tự nhiên.",
+        "Trong quá trình học viết, người học thường được dạy nhiều từ nối để bài có cấu trúc. Khi dùng quá sát nhau, đoạn tiếng Anh có thể nghe hơi nặng.",
       howToHelpVi:
-        "Gia đình có thể giúp người học đọc đoạn văn và giữ mỗi ý chính một từ nối cần thiết, bỏ từ lặp.",
+        "Người thân có thể đọc lại đoạn văn cùng người học, rồi nhắc lại phiên bản nhẹ hơn: mỗi ý chính chỉ cần một từ nối.",
       encouragementVi:
-        "Người học đang cố tạo mạch logic; tinh chỉnh số lượng từ nối sẽ làm bài trưởng thành hơn.",
+        "Người học đang cố tạo mạch logic; dùng từ nối vừa đủ sẽ làm bài sáng và trưởng thành hơn.",
       example: {
         learnerSays: "Moreover, also, I think this is important.",
         naturalForm: "Also, I think this is important.",
@@ -724,9 +724,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Tiếng Việt thường dùng từ chỉ thời gian để giữ mạch. Khi sang tiếng Anh, nếu thêm nhiều mốc thời gian cùng lúc, câu có thể dư hoặc rối thì.",
       howToHelpVi:
-        "Gia đình có thể hỏi: câu này cần mốc nào nhất? Giữ một mốc chính rồi chọn thì tiếng Anh đi cùng mốc đó.",
+        "Người thân có thể hỏi câu này cần mốc nào nhất, rồi nhắc lại bằng mẫu gọn: một mốc chính đi với một thì tiếng Anh.",
       encouragementVi:
-        "Người học đang muốn nói rõ thời gian; chỉ cần gọn lại để tiếng Anh mạch lạc hơn.",
+        "Người học đang muốn nói rõ thời gian; gọn lại một chút sẽ làm câu tiếng Anh mạch lạc hơn.",
       example: {
         learnerSays: "Yesterday I already finished it before.",
         naturalForm: "I finished it yesterday.",
@@ -748,9 +748,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Trong nhiều ngữ cảnh Việt, mở bằng bối cảnh và quan hệ giúp lời nói mềm hơn. Trong email hoặc bài nói tiếng Anh, người nghe thường chờ ý chính ngay đầu.",
       howToHelpVi:
-        "Gia đình có thể luyện mẫu: ý chính trước, lý do sau, chi tiết cuối. Mỗi email thử viết câu đầu thật rõ.",
+        "Người thân có thể nhắc lại mẫu: ý chính trước, lý do sau, chi tiết cuối, rồi giúp người học thử một câu mở đầu thật rõ.",
       encouragementVi:
-        "Đây là khác biệt kỳ vọng giao tiếp; đổi thứ tự ý sẽ giúp người học nghe chuyên nghiệp hơn.",
+        "Đây là khác biệt kỳ vọng giao tiếp; đổi thứ tự ý sẽ giúp sự lịch sự của người học được nghe rõ hơn.",
       example: {
         learnerSays:
           "Recently our team has many tasks, and the deadline is close, so maybe I need support.",
@@ -770,11 +770,11 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       parentSummaryVi:
         "Một lời nhờ ngắn có thể bình thường trong tiếng Việt; tiếng Anh cần thêm please, could you, hoặc lý do tùy quan hệ.",
       whyVi:
-        "Trong gia đình, lớp học, hoặc nơi quen biết, tiếng Việt dựa nhiều vào quan hệ và ngữ cảnh nên câu nhờ có thể rất ngắn mà vẫn lịch sự. Khi chuyển sang mã tiếng Anh, người nghe cần dấu hiệu lịch sự rõ hơn trong câu.",
+        "Trong nhà, lớp học, hoặc nơi quen biết, tiếng Việt dựa nhiều vào quan hệ và ngữ cảnh nên câu nhờ có thể rất ngắn mà vẫn lịch sự. Khi chuyển sang mã tiếng Anh, người nghe cần dấu hiệu lịch sự rõ hơn trong câu.",
       howToHelpVi:
-        "Gia đình có thể luyện ba mức: Please..., Could you please..., Would it be possible to..., rồi chọn theo người nghe.",
+        "Người thân có thể nhắc lại cùng ý bằng ba mức mềm hơn: Please..., Could you please..., Would it be possible to..., rồi chọn theo người nghe.",
       encouragementVi:
-        "Đây là chuyển mã theo ngữ cảnh xã hội; thêm mẫu lịch sự giúp ý tốt của người học được nghe đúng.",
+        "Đây là chuyển mã theo ngữ cảnh xã hội; thêm mẫu lịch sự giúp ý tốt của người học được nghe đúng và ấm hơn.",
       example: {
         learnerSays: "Send me the file.",
         naturalForm: "Could you please send me the file?",
@@ -798,9 +798,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Người Việt điều chỉnh quan hệ bằng xưng hô, kính ngữ, và cách nói theo tuổi/vai. Tiếng Anh ít vai vế hơn nhưng lại nhạy với mức trang trọng của cụm từ, lời mở, và lời kết.",
       howToHelpVi:
-        "Gia đình có thể hỏi người học đang nói với bạn bè, thầy cô, khách hàng, hay sếp, rồi chọn mẫu casual, polite, hoặc formal.",
+        "Người thân có thể hỏi người học đang nói với bạn bè, thầy cô, khách hàng, hay sếp, rồi nhắc lại một mẫu phù hợp mức quan hệ đó.",
       encouragementVi:
-        "Người học đã quen đọc ngữ cảnh quan hệ bằng tiếng Việt; chỉ cần học bộ tín hiệu tương ứng trong tiếng Anh.",
+        "Người học đã quen đọc ngữ cảnh quan hệ bằng tiếng Việt; thêm tín hiệu tiếng Anh tương ứng sẽ giúp lời nói đúng sắc thái hơn.",
       example: {
         learnerSays: "Hey teacher, give me feedback.",
         naturalForm: "Could you please give me feedback, teacher?",
@@ -824,9 +824,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Trong nhiều tình huống Việt, kể bối cảnh trước giúp người nghe hiểu và giảm căng thẳng. Trong tiếng Anh công việc, nếu giải thích trước, người nghe có thể tưởng là né trách nhiệm.",
       howToHelpVi:
-        "Gia đình có thể luyện thứ tự: I'm sorry, I take responsibility, then explain briefly, then say what will be done next.",
+        "Người thân có thể nhắc lại cùng ý theo thứ tự mềm hơn: xin lỗi trước, nhận phần mình, giải thích ngắn, rồi nói bước tiếp theo.",
       encouragementVi:
-        "Ý định vẫn là tôn trọng người nghe; đổi thứ tự sẽ giúp lời xin lỗi được hiểu đúng trong mã tiếng Anh.",
+        "Ý định vẫn là tôn trọng người nghe; đổi thứ tự sẽ giúp lời xin lỗi của người học được hiểu đúng trong mã tiếng Anh.",
       example: {
         learnerSays: "Because the traffic was bad, I came late.",
         naturalForm:
@@ -851,9 +851,9 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       whyVi:
         "Trong tiếng Việt, người nghe dựa vào ngữ cảnh, im lặng, hoặc lời vòng để hiểu lời từ chối. Trong tiếng Anh, nhất là công việc, lời từ chối cần vừa rõ vừa mềm bằng cụm cố định.",
       howToHelpVi:
-        "Gia đình có thể luyện khung: Thank you, but I'm afraid I can't..., hoặc I wish I could, but...",
+        "Người thân có thể nhắc lại cùng ý bằng khung mềm: Thank you, but I'm afraid I can't..., hoặc I wish I could, but...",
       encouragementVi:
-        "Người học đang cố giữ lịch sự; học mẫu từ chối tiếng Anh sẽ giúp vừa rõ ý vừa giữ quan hệ.",
+        "Người học đang cố giữ lịch sự; mẫu từ chối tiếng Anh sẽ giúp vừa rõ ý vừa giữ quan hệ.",
       example: {
         learnerSays: "I cannot join.",
         naturalForm: "I'm afraid I can't join this time.",
@@ -875,11 +875,11 @@ export const VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS: FamilyBridgeExplanation
       parentSummaryVi:
         "Câu hỏi thăm kiểu Việt rất thân tình; tiếng Anh có quy ước small talk riêng để tránh nghe quá riêng tư.",
       whyVi:
-        "Trong tiếng Việt, hỏi ăn cơm chưa, đi đâu đấy, hoặc hỏi chuyện gia đình có thể là cách mở lời thân mật. Khi chuyển sang tiếng Anh, vài câu tương tự cần đổi sang mẫu small talk phù hợp hơn.",
+        "Trong tiếng Việt, hỏi ăn cơm chưa, đi đâu đấy, hoặc hỏi chuyện thân quen có thể là cách mở lời thân mật. Khi chuyển sang tiếng Anh, vài câu tương tự cần đổi sang mẫu small talk phù hợp hơn.",
       howToHelpVi:
-        "Gia đình có thể luyện các câu mở an toàn: How are you?, How was your weekend?, Nice to see you, rồi thêm câu hỏi theo mức thân quen.",
+        "Người thân có thể nhắc lại bằng các câu mở an toàn: How are you?, How was your weekend?, Nice to see you, rồi thêm câu hỏi theo mức thân quen.",
       encouragementVi:
-        "Đây là khác biệt quy ước xã hội giữa hai mã ngôn ngữ; người học càng biết nhiều mẫu càng giao tiếp tự nhiên.",
+        "Đây là khác biệt quy ước xã hội giữa hai mã ngôn ngữ; càng biết nhiều mẫu, người học càng giao tiếp tự nhiên và thoải mái.",
       example: {
         learnerSays: "Have you eaten rice?",
         naturalForm: "How are you?",

@@ -42,6 +42,7 @@ describe("VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS", () => {
       { name: "direct bạn cần", pattern: /bạn cần/i },
       { name: "direct bạn nên", pattern: /bạn nên/i },
       { name: "direct bạn hãy", pattern: /bạn hãy/i },
+      { name: "family as Gia đình", pattern: /Gia đình/i },
     ];
 
     for (const entry of VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS) {
@@ -55,6 +56,35 @@ describe("VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS", () => {
       ].join("\n");
 
       for (const { name, pattern } of disallowedPatterns) {
+        expect(pattern.test(text), `${entry.tag} contains ${name}`).toBe(false);
+      }
+    }
+  });
+
+  it("keeps help copy in recast-not-correct voice", () => {
+    const graderPatterns = [
+      { name: "sửa", pattern: /(^|[^a-zà-ỹ])sửa([^a-zà-ỹ]|$)/i },
+      { name: "bắt bẻ", pattern: /bắt bẻ/i },
+      { name: "kiểm tra", pattern: /kiểm tra/i },
+      { name: "chấm", pattern: /(^|[^a-zà-ỹ])chấm([^a-zà-ỹ]|$)/i },
+      { name: "phạt", pattern: /(^|[^a-zà-ỹ])phạt([^a-zà-ỹ]|$)/i },
+      { name: "kém", pattern: /(^|[^a-zà-ỹ])kém([^a-zà-ỹ]|$)/i },
+      { name: "không phải", pattern: /không phải/i },
+    ];
+
+    for (const entry of VN_INTERFERENCE_FAMILY_BRIDGE_EXPLANATIONS) {
+      expect(entry.howToHelpVi.startsWith("Người thân có thể")).toBe(true);
+      expect(entry.howToHelpVi).toMatch(/nhắc lại|đọc mẫu|làm mẫu/);
+
+      const text = [
+        entry.parentSummaryVi,
+        entry.whyVi,
+        entry.howToHelpVi,
+        entry.encouragementVi,
+        entry.example.glossVi,
+      ].join("\n");
+
+      for (const { name, pattern } of graderPatterns) {
         expect(pattern.test(text), `${entry.tag} contains ${name}`).toBe(false);
       }
     }
