@@ -655,6 +655,77 @@ function repairStep5PrepositionPatterns(input: string): string {
     .replace(/\b(go|goes|went|going)\s+school\b(?!\s+bus\b)/gi, "$1 to school");
 }
 
+// ---------------------------------------------------------------------------
+// Vietlish B2 — intensifier / duration / comparative cluster
+// ---------------------------------------------------------------------------
+
+// Rule 1 (re-land of MR !381): sentence-initial pronoun + very + like/likes →
+// "really like/likes". 'rất thích' transfer. The "very like" adjective sense
+// (BrE "very like his father") never matches because the pattern requires the
+// pronoun to be immediately adjacent to "very" with no intervening "is".
+const VIETLISH_VERY_LIKE_PATTERN = /^(I|you|we|they|he|she|it)\s+very\s+(like|likes)\b/i;
+
+function veryLikeVerbForSubject(subject: string): "like" | "likes" {
+  return /^(he|she|it)$/i.test(subject) ? "likes" : "like";
+}
+
+function hasVietlishVeryLike(input: string): boolean {
+  return VIETLISH_VERY_LIKE_PATTERN.test(input.trim());
+}
+
+function repairVietlishVeryLike(input: string): string {
+  return input.replace(VIETLISH_VERY_LIKE_PATTERN, (_match, subject: string) => {
+    return `${subject} really ${veryLikeVerbForSubject(subject)}`;
+  });
+}
+
+// Rule 2: duration count wrongly marked with "since" (point-in-time) instead of
+// "for" (span). Matches ONLY "since <count> <duration-unit>"; a bare year
+// ("since 2020"), a day ("since Monday"), or "since last year / yesterday" never
+// match because they are not <number> + <year|month|week|day|hour> spans.
+//
+// Right-boundary guard: a trailing "ago"/"old"/"back" makes the phrase a
+// point-in-time or age expression ("since 3 years ago", "since 5 years old"),
+// where "for ..." would be ungrammatical/meaning-changed -> abstain. A leading
+// "ever" ("ever since 5 years") is an idiom that must not be split -> abstain.
+const VIETLISH_DURATION_SINCE_FOR_PATTERN =
+  /(?<!\bever\s)\bsince\s+(\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\s+(year|years|month|months|week|weeks|day|days|hour|hours)\b(?!\s+(?:ago|old|back)\b)/i;
+
+function hasVietlishDurationSinceFor(input: string): boolean {
+  return VIETLISH_DURATION_SINCE_FOR_PATTERN.test(input);
+}
+
+function repairVietlishDurationSinceFor(input: string): string {
+  return input.replace(
+    VIETLISH_DURATION_SINCE_FOR_PATTERN,
+    (_match, count: string, unit: string, offset: number) =>
+      `${offset === 0 ? "For" : "for"} ${count} ${unit}`,
+  );
+}
+
+// Rule 3: double-marked comparative — analytic "more" + synthetic "-er" on a
+// closed whitelist of irregular/short adjectives where "more" is wrong. Drops
+// "more". When the match is sentence-initial (index 0 of the already-capitalized
+// input) the new first letter is re-capitalized so "More better" → "Better".
+const VIETLISH_DOUBLE_COMPARATIVE_PATTERN =
+  /\bmore\s+(better|worse|easier|faster|slower|bigger|smaller|cheaper|harder|higher|lower|older|younger|stronger|nicer|happier|richer|safer|taller|shorter|longer|warmer|colder)\b/i;
+
+function hasVietlishDoubleComparative(input: string): boolean {
+  return VIETLISH_DOUBLE_COMPARATIVE_PATTERN.test(input);
+}
+
+function repairVietlishDoubleComparative(input: string): string {
+  return input.replace(
+    VIETLISH_DOUBLE_COMPARATIVE_PATTERN,
+    (match, comparative: string, offset: number) => {
+      if (offset === 0) {
+        return `${comparative.charAt(0).toUpperCase()}${comparative.slice(1)}`;
+      }
+      return comparative;
+    },
+  );
+}
+
 const PERSON_OBJECT_PRONOUN_PATTERN = "(?:me|you|him|her|us|them)";
 const STEP6_LISTEN_OBJECT_PATTERN = "(?:me|you|him|her|us|them|music|song|teacher|radio|podcast|lesson|story)";
 const CLOCK_TIME_PATTERN =
@@ -1460,6 +1531,27 @@ export const englishCorrectionRules: CorrectionRule[] = [
     apply: repairVietlishGoHome,
     fpRiskNote:
       "Low-medium risk. 'go to <noun place>' is correct (go to school/work). V1 drops 'to' only before a CLOSED bare-adverb whitelist (home/there/abroad/downtown/upstairs/downstairs). The pattern has no 'the', so the building sense 'go to the home (for the elderly)' is left untouched, and it does not collide with en-step5-preposition-pattern ('go school'->'go to school', the opposite direction).",
+  },
+  {
+    id: "en-vietlish-very-like",
+    detects: hasVietlishVeryLike,
+    apply: repairVietlishVeryLike,
+    fpRiskNote:
+      "Medium risk. 'very' can modify adjectives correctly, and 'like very much' is also valid English. V1 only rewrites a closed sentence-initial pronoun + very + like/likes pattern and leaves adjective uses ('He is very like his father' — 'is' between subject and 'very' breaks adjacency), 'very likely' (\\blike\\b excludes likely), and 'like very much' untouched.",
+  },
+  {
+    id: "en-vietlish-duration-since-for",
+    detects: hasVietlishDurationSinceFor,
+    apply: repairVietlishDurationSinceFor,
+    fpRiskNote:
+      "Low risk. Matches only 'since <count> <year|month|week|day|hour>' — a duration span mismarked with the point-in-time 'since'. Bare years ('since 2020'), weekdays ('since Monday'), and 'since last year / yesterday' never match (no number + duration-unit), so genuine point-in-time 'since' is preserved.",
+  },
+  {
+    id: "en-vietlish-double-comparative",
+    detects: hasVietlishDoubleComparative,
+    apply: repairVietlishDoubleComparative,
+    fpRiskNote:
+      "Low risk. Drops 'more' only before a closed whitelist of synthetic -er comparatives (better, easier, faster, …) where double-marking is ungrammatical. Analytic comparatives that REQUIRE 'more' (more careful / more beautiful / more important), 'more' + noun ('more water'), and 'the more the better' are all left untouched. Re-capitalizes the result when the match is sentence-initial.",
   },
   {
     id: "en-question-form-final-mark",

@@ -1,0 +1,83 @@
+{
+  "rule": "vietlishDoubleComparative",
+  "ruleId": "en-vietlish-double-comparative",
+  "language": "en",
+  "description": "Drops the redundant 'more' before a closed whitelist of synthetic -er comparatives (better, easier, faster, …) for Vietlish double-marking, where the analytic 'hơn' is wrongly realized as 'more' on top of an already-comparative adjective.",
+  "fp_risk_note": "Low risk. Removes 'more' only before a fixed whitelist of irregular/short comparatives where double-marking is ungrammatical. Analytic comparatives that REQUIRE 'more' (more careful / more beautiful / more important), 'more' + noun ('more water'), and 'the more the better' never match. The result is re-capitalized when the match is sentence-initial.",
+  "positive": [
+    {
+      "id": "vietlish-double-comparative-pos-001",
+      "input": "This is more better",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "This is better.",
+      "expectedRuleFired": "vietlishDoubleComparative",
+      "notes": "Double-marked irregular comparative drops the 'more'."
+    },
+    {
+      "id": "vietlish-double-comparative-pos-002",
+      "input": "It is more easier",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "It is easier.",
+      "expectedRuleFired": "vietlishDoubleComparative",
+      "notes": "Synthetic -ier comparative keeps its own ending; only 'more' is removed."
+    },
+    {
+      "id": "vietlish-double-comparative-pos-003",
+      "input": "He runs more faster",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He runs faster.",
+      "expectedRuleFired": "vietlishDoubleComparative",
+      "notes": "Mid-sentence double comparative, no re-capitalization needed."
+    },
+    {
+      "id": "vietlish-double-comparative-pos-004",
+      "input": "More better than before",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Better than before.",
+      "expectedRuleFired": "vietlishDoubleComparative",
+      "notes": "Sentence-initial match — the new first letter is re-capitalized."
+    }
+  ],
+  "negative": [
+    {
+      "id": "vietlish-double-comparative-neg-001",
+      "input": "more careful",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "More careful.",
+      "expectedRuleFired": null,
+      "notes": "Analytic comparative — 'more careful' is correct and 'carefuler' does not exist."
+    },
+    {
+      "id": "vietlish-double-comparative-neg-002",
+      "input": "This is more beautiful",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "This is more beautiful.",
+      "expectedRuleFired": null,
+      "notes": "Long adjective requires analytic 'more'; not on the -er whitelist."
+    },
+    {
+      "id": "vietlish-double-comparative-neg-003",
+      "input": "more important",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "More important.",
+      "expectedRuleFired": null,
+      "notes": "Analytic comparative that must keep 'more'."
+    },
+    {
+      "id": "vietlish-double-comparative-neg-004",
+      "input": "I want more water",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I want more water.",
+      "expectedRuleFired": null,
+      "notes": "'more' + noun (quantifier), not a comparative adjective."
+    },
+    {
+      "id": "vietlish-double-comparative-neg-005",
+      "input": "the more the better",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The more the better.",
+      "expectedRuleFired": null,
+      "notes": "Correlative construction — 'more' and 'better' are not adjacent, so no double-mark."
+    }
+  ]
+}

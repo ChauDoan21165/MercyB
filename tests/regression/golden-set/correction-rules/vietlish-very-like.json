@@ -1,0 +1,67 @@
+{
+  "rule": "vietlishVeryLike",
+  "ruleId": "en-vietlish-very-like",
+  "language": "en",
+  "description": "Rewrites sentence-initial pronoun + very + like/likes to really like/likes for Vietlish 'rất thích' transfer.",
+  "fp_risk_note": "Medium risk. 'very' is correct before adjectives and 'like very much' is a valid English alternative. V1 only rewrites a closed sentence-initial pronoun + very + like/likes pattern and leaves adjective uses (BrE 'very like his father' — 'is' between subject and 'very' breaks adjacency), 'very likely' (\\blike\\b excludes likely), and 'like very much' untouched.",
+  "positive": [
+    {
+      "id": "vietlish-very-like-pos-001",
+      "input": "I very like English.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I really like English.",
+      "expectedRuleFired": "vietlishVeryLike",
+      "notes": "Very-before-like transfer should become really like."
+    },
+    {
+      "id": "vietlish-very-like-pos-002",
+      "input": "She very likes this song.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She really likes this song.",
+      "expectedRuleFired": "vietlishVeryLike",
+      "notes": "Third-person singular preserves likes while moving the intensifier."
+    },
+    {
+      "id": "vietlish-very-like-pos-003",
+      "input": "We very like this class.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "We really like this class.",
+      "expectedRuleFired": "vietlishVeryLike",
+      "notes": "Plural subject baseline for the rule."
+    }
+  ],
+  "negative": [
+    {
+      "id": "vietlish-very-like-neg-001",
+      "input": "I really like English.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I really like English.",
+      "expectedRuleFired": null,
+      "notes": "Already-natural intensifier must stay unchanged."
+    },
+    {
+      "id": "vietlish-very-like-neg-002",
+      "input": "This is very good.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "This is very good.",
+      "expectedRuleFired": null,
+      "notes": "Very before adjective is correct English."
+    },
+    {
+      "id": "vietlish-very-like-neg-003",
+      "input": "I like English very much.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I like English very much.",
+      "expectedRuleFired": null,
+      "notes": "Natural very-much construction must not be rewritten."
+    },
+    {
+      "id": "vietlish-very-like-neg-004",
+      "input": "He is very like his father.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He is very like his father.",
+      "expectedRuleFired": null,
+      "notes": "BrE 'very like' meaning 'similar to' — 'is' between subject and 'very' breaks pronoun-adjacency so the rule abstains."
+    }
+  ]
+}
