@@ -308,6 +308,48 @@ describe("AiTutor four-tab seed flow", () => {
     expect(recentL1Tags()).toEqual([]);
   });
 
+  it("circles the same L1 weakness with a new-context follow-up, then offers to move on", async () => {
+    render(<AiTutorPage />);
+
+    // Turn 1 — a high-confidence 3rd-person-s error starts a focus and shows a
+    // same-tag follow-up in a NEW context (not the corrected sentence).
+    await correctSentence("She go to school every day.", "She goes to school every day.");
+    const followUp1 = await screen.findByTestId("ai-tutor-l1-followup");
+    expect(followUp1).toHaveTextContent("buổi sáng"); // context #1
+
+    // Next sentence, same weakness → continue the focus with a DIFFERENT context.
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu khác" }));
+    await correctSentence("He work in a bank.", "He works in a bank.");
+    const followUp2 = await screen.findByTestId("ai-tutor-l1-followup");
+    expect(followUp2).toHaveTextContent("làm nghề"); // context #2
+    expect(followUp2).not.toHaveTextContent("buổi sáng"); // never the same context twice
+
+    // A clean turn → the loop offers to move on instead of another drill.
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu khác" }));
+    await correctSentence("I like music.", "I like music.");
+    expect(await screen.findByTestId("ai-tutor-l1-moveon")).toBeInTheDocument();
+    expect(screen.queryByTestId("ai-tutor-l1-followup")).not.toBeInTheDocument();
+  });
+
+  it("shows no follow-up for clean (low-confidence) input with no active focus", async () => {
+    render(<AiTutorPage />);
+
+    await correctSentence("I like music.", "I like music.");
+
+    expect(screen.queryByTestId("ai-tutor-l1-followup")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("ai-tutor-l1-moveon")).not.toBeInTheDocument();
+  });
+
+  it("does not run the L1 follow-up loop on a non-English Correction target", async () => {
+    window.history.pushState({}, "", "/ai-tutor?target=vi");
+    render(<AiTutorPage />);
+
+    await correctSentence("She go to school every day.", "She go to school every day.");
+
+    expect(screen.queryByTestId("ai-tutor-l1-followup")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("ai-tutor-l1-moveon")).not.toBeInTheDocument();
+  });
+
   it("supports voice draft confirmation in Grammar without making mic primary", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
     render(<AiTutorPage />);
