@@ -90,6 +90,11 @@ import {
   type DetectorHintContent,
 } from "@/lib/ai-tutor/detectorHint";
 import { detectStep5VnEnError } from "@/lib/ai-tutor/step5VnEnDetectors";
+import {
+  advanceL1Focus,
+  initialL1FocusState,
+  type L1FocusState,
+} from "@/lib/ai-tutor/l1FollowUpLoop";
 import { recordL1Tag } from "@/lib/stage-3a/adapters/l1TagAdapter";
 import { recordActiveDay } from "@/lib/retention/recordActiveDay";
 import type {
@@ -891,6 +896,16 @@ export default function AiTutorPage() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<CorrectionResult | null>(null);
   const [detectorHint, setDetectorHint] = useState<DetectorHintContent | null>(null);
+  // L1 follow-up conversational loop (in-session, in-memory only). The focus
+  // state is carried across turns in a ref (no re-render, no stale closure in
+  // the async submit handler) and is never persisted — reset on clear, gone on
+  // reload. `l1LoopSurface` is the per-turn renderable decision.
+  const l1FocusRef = useRef<L1FocusState>(initialL1FocusState);
+  const [l1LoopSurface, setL1LoopSurface] = useState<
+    | { kind: "followup"; promptVi: string }
+    | { kind: "offer"; messageVi: string }
+    | null
+  >(null);
   const [error, setError] = useState<string | null>(null);
   const [practiceAnswer, setPracticeAnswer] = useState("");
   const [practiceFeedback, setPracticeFeedback] = useState<PracticeFeedback | null>(null);
@@ -1580,6 +1595,7 @@ export default function AiTutorPage() {
     setLoading(true);
     setResult(null);
     setDetectorHint(null);
+    setL1LoopSurface(null);
     setPracticeAnswer("");
     setPracticeFeedback(null);
     setGrammarVoiceDraft("");
@@ -1651,6 +1667,27 @@ export default function AiTutorPage() {
         if (hint && !hasShownHint(hint.tag)) {
           recordL1Tag(hint.tag);
           setDetectorHint(hint);
+        }
+
+        // L1 follow-up loop: circle the SAME high-confidence weakness for a few
+        // turns (a new context each turn), then offer to move on. Independent of
+        // the chip dedup above; in-session only (the focus state lives in a ref).
+        // Low confidence / no detection → converse_naturally → no follow-up.
+        const loopDecision = advanceL1Focus(l1FocusRef.current, detection);
+        l1FocusRef.current = loopDecision.nextState;
+        if (
+          (loopDecision.action === "start_focus" ||
+            loopDecision.action === "continue_focus") &&
+          loopDecision.followUp
+        ) {
+          setL1LoopSurface({
+            kind: "followup",
+            promptVi: loopDecision.followUp.promptVi,
+          });
+        } else if (loopDecision.action === "offer_move_on" && loopDecision.messageVi) {
+          setL1LoopSurface({ kind: "offer", messageVi: loopDecision.messageVi });
+        } else {
+          setL1LoopSurface(null);
         }
       } catch {
         /* detector failure is non-fatal — response already on screen */
@@ -1915,6 +1952,11 @@ export default function AiTutorPage() {
     setError(null);
     setPracticeAnswer("");
     setPracticeFeedback(null);
+    // Clear the visible surface for the next sentence, but PRESERVE the focus:
+    // "try another sentence" is the learner continuing, so the loop should keep
+    // circling the same weakness across sentences. Focus is in-session only and
+    // resets on reload (ref re-init), never persisted.
+    setL1LoopSurface(null);
   };
 
   const handleStartTodayLesson = (plan: TodayLessonPlan) => {
@@ -1999,28 +2041,48 @@ export default function AiTutorPage() {
       {mode === "journey" ? (
         <JourneyMode onStartCorrection={() => handleModeChange("grammar")} />
       ) : mode === "grammar" ? (
-        <CorrectionMode
-          input={input}
-          setInput={setInput}
-          loading={loading}
-          result={result}
-          error={error}
-          micSupported={stt.supported}
-          micListening={stt.listening}
-          voiceDraft={grammarVoiceDraft}
-          speechLang={speechLang}
-          onSubmit={handleSubmit}
-          onMicToggle={handleMicToggle}
-          onUseVoiceDraft={() => {
-            setInput(grammarVoiceDraft.slice(0, 500));
-            setGrammarVoiceDraft("");
-          }}
-          onClearVoiceDraft={() => setGrammarVoiceDraft("")}
-          onSendToSpeak={handleSendCorrectedSentenceToSpeak}
-          onClear={handleClear}
-          tutorCopy={tutorCopy}
-          detectorHint={detectorHint}
-        />
+        <>
+          <CorrectionMode
+            input={input}
+            setInput={setInput}
+            loading={loading}
+            result={result}
+            error={error}
+            micSupported={stt.supported}
+            micListening={stt.listening}
+            voiceDraft={grammarVoiceDraft}
+            speechLang={speechLang}
+            onSubmit={handleSubmit}
+            onMicToggle={handleMicToggle}
+            onUseVoiceDraft={() => {
+              setInput(grammarVoiceDraft.slice(0, 500));
+              setGrammarVoiceDraft("");
+            }}
+            onClearVoiceDraft={() => setGrammarVoiceDraft("")}
+            onSendToSpeak={handleSendCorrectedSentenceToSpeak}
+            onClear={handleClear}
+            tutorCopy={tutorCopy}
+            detectorHint={detectorHint}
+          />
+          {l1LoopSurface?.kind === "followup" ? (
+            // Vietnamese-first practice prompt only. We deliberately do NOT show
+            // the English target here — the point is for the learner to produce
+            // it themselves in this new context.
+            <div
+              data-testid="ai-tutor-l1-followup"
+              className="mt-3 rounded-2xl border border-sky-200 bg-sky-50 p-4 text-sm text-slate-700"
+            >
+              <p className="font-medium text-slate-800">{l1LoopSurface.promptVi}</p>
+            </div>
+          ) : l1LoopSurface?.kind === "offer" ? (
+            <div
+              data-testid="ai-tutor-l1-moveon"
+              className="mt-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-slate-700"
+            >
+              <p>{l1LoopSurface.messageVi}</p>
+            </div>
+          ) : null}
+        </>
       ) : mode === "speak" ? (
         <SpeakPracticeMode
           targetSentence={latestCorrectedSeed?.correctedSentence ?? null}
