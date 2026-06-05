@@ -1,0 +1,67 @@
+{
+  "rule": "vietlishDurationSinceFor",
+  "ruleId": "en-vietlish-duration-since-for",
+  "language": "en",
+  "description": "Rewrites 'since <count> <duration-unit>' (a span) to 'for <count> <duration-unit>' for Vietlish 'trong / được N năm' transfer, where learners mark a duration span with the point-in-time preposition 'since'.",
+  "fp_risk_note": "Low risk. Matches only 'since <number> <year|month|week|day|hour>'. A bare year ('since 2020'), a weekday ('since Monday'), and 'since last year / yesterday' never match because none is a number followed by a duration unit — so genuine point-in-time 'since' is always preserved.",
+  "positive": [
+    {
+      "id": "vietlish-duration-since-for-pos-001",
+      "input": "I live here since 3 years",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I live here for 3 years.",
+      "expectedRuleFired": "vietlishDurationSinceFor",
+      "notes": "Numeric duration span mismarked with 'since' becomes 'for'."
+    },
+    {
+      "id": "vietlish-duration-since-for-pos-002",
+      "input": "I studied English since two years",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I studied English for two years.",
+      "expectedRuleFired": "vietlishDurationSinceFor",
+      "notes": "Spelled-out count is also covered by the whitelist."
+    },
+    {
+      "id": "vietlish-duration-since-for-pos-003",
+      "input": "He has worked here since five months",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He has worked here for five months.",
+      "expectedRuleFired": "vietlishDurationSinceFor",
+      "notes": "Present-perfect span with a months unit."
+    }
+  ],
+  "negative": [
+    {
+      "id": "vietlish-duration-since-for-neg-001",
+      "input": "since 2020",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Since 2020.",
+      "expectedRuleFired": null,
+      "notes": "A bare year is a point in time — not a number + duration unit — so 'since' is correct."
+    },
+    {
+      "id": "vietlish-duration-since-for-neg-002",
+      "input": "since last year",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Since last year.",
+      "expectedRuleFired": null,
+      "notes": "'last year' has no numeric count so the duration pattern cannot match."
+    },
+    {
+      "id": "vietlish-duration-since-for-neg-003",
+      "input": "I haven't seen him since Monday",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I haven't seen him since Monday.",
+      "expectedRuleFired": null,
+      "notes": "A weekday is a point in time; 'since Monday' is correct and must be preserved."
+    },
+    {
+      "id": "vietlish-duration-since-for-neg-004",
+      "input": "since yesterday",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Since yesterday.",
+      "expectedRuleFired": null,
+      "notes": "'yesterday' is a point in time, not a number + duration unit."
+    }
+  ]
+}
