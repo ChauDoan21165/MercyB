@@ -548,6 +548,18 @@ variables:
         exit 1
         ;;
     esac
+  # [B3-CPU-PROBE] Behavior-neutral diagnostic (no test behavior change).
+  # Captures the core count the macOS shell runner actually exposes and the
+  # number vitest's threads pool sizes itself to (os.cpus().length), plus
+  # runner/concurrency identity — so a worker cap (--maxWorkers) can be sized
+  # to avoid oversubscription when two shards run concurrently on one Mac.
+  # Remove once the cap is sized and landed. Never fails the job.
+  - |
+    echo "[B3-CPU-PROBE] uname=$(uname -s) node=$(node -v)"
+    echo "[B3-CPU-PROBE] node_os_cpus=$(node -p 'os.cpus().length' 2>/dev/null)"
+    command -v nproc  >/dev/null 2>&1 && echo "[B3-CPU-PROBE] nproc=$(nproc)" || true
+    command -v sysctl >/dev/null 2>&1 && echo "[B3-CPU-PROBE] hw.logicalcpu=$(sysctl -n hw.logicalcpu 2>/dev/null) hw.physicalcpu=$(sysctl -n hw.physicalcpu 2>/dev/null) hw.ncpu=$(sysctl -n hw.ncpu 2>/dev/null)" || true
+    echo "[B3-CPU-PROBE] CI_NODE_INDEX=$CI_NODE_INDEX CI_NODE_TOTAL=$CI_NODE_TOTAL CI_CONCURRENT_ID=$CI_CONCURRENT_ID runner=$CI_RUNNER_DESCRIPTION tags=$CI_RUNNER_TAGS"
   - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL
 
 .ai_tutor_quality_gate_script: &ai_tutor_quality_gate_script
