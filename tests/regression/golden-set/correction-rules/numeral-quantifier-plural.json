@@ -78,6 +78,14 @@
       "expectedCorrection": "I have 3 books.",
       "expectedRuleFired": null,
       "notes": "Already plural noun must stay unchanged."
+    },
+    {
+      "id": "numeral-quantifier-plural-neg-006",
+      "input": "I have 4 books.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I have 4 books.",
+      "expectedRuleFired": null,
+      "notes": "Over-fire boundary: in-range numeral (4) with an ALREADY-plural noun must abstain — the rule keys on the singular whitelist form, so it must not double-pluralise to '4 bookss'. (neg-005 uses out-of-range '3' and never exercises the 4-10 range gate against a plural noun.)"
     }
   ]
 }
