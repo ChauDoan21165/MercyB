@@ -1,0 +1,83 @@
+{
+  "rule": "vietlishMentionAbout",
+  "ruleId": "en-vietlish-mention-about",
+  "language": "en",
+  "description": "VN 'đề cập về' transfer: learners calque 'về'=about onto the transitive verb mention ('mention about the plan'). Rule en-vietlish-mention-about drops 'about' (mirrors en-step6-discuss-about / en-vietlish-research-about) ONLY when 'mention' is a VERB. A negative lookbehind blocks determiners/quantifiers/possessives and 'make ... mention' so the NOUN sense ('a/no/the mention about', 'made mention about') is left untouched.",
+  "fp_risk_note": "Low-medium risk. 'about' is correct after the NOUN 'mention' and after other verbs (talk/think about). V1 fires only when 'about' immediately follows a finite form of the VERB 'mention'; the lookbehind locks out the noun sense. Negatives: a different verb, the noun sense with a determiner, a no-'about' sentence, and a non-mention 'about' phrase.",
+  "positive": [
+    {
+      "id": "mention-about-pos-001",
+      "input": "I want to mention about the plan.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I want to mention the plan.",
+      "expectedRuleFired": "vietlishMentionAbout",
+      "notes": "Base verb 'mention' + 'about' -> drop about."
+    },
+    {
+      "id": "mention-about-pos-002",
+      "input": "She mentioned about her trip.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She mentioned her trip.",
+      "expectedRuleFired": "vietlishMentionAbout",
+      "notes": "Past verb 'mentioned' + 'about' -> drop about."
+    },
+    {
+      "id": "mention-about-pos-003",
+      "input": "He mentions about it often.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He mentions it often.",
+      "expectedRuleFired": "vietlishMentionAbout",
+      "notes": "Third-person 'mentions' + 'about' -> drop about."
+    },
+    {
+      "id": "mention-about-pos-004",
+      "input": "They are mentioning about the problem.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They are mentioning the problem.",
+      "expectedRuleFired": "vietlishMentionAbout",
+      "notes": "Progressive 'mentioning' + 'about' -> drop about."
+    }
+  ],
+  "negative": [
+    {
+      "id": "mention-about-neg-001",
+      "input": "We talk about homework.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "We talk about homework.",
+      "expectedRuleFired": null,
+      "notes": "Different verb 'talk' (about is correct) -> must not fire."
+    },
+    {
+      "id": "mention-about-neg-002",
+      "input": "There was no mention about it.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "There was no mention about it.",
+      "expectedRuleFired": null,
+      "notes": "Noun 'mention' (lookbehind 'no') -> 'about' is correct, must abstain. (Precision lock.)"
+    },
+    {
+      "id": "mention-about-neg-003",
+      "input": "She made a brief mention about it.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She made a brief mention about it.",
+      "expectedRuleFired": null,
+      "notes": "Noun 'mention' (lookbehind 'brief') -> must abstain. (Precision lock.)"
+    },
+    {
+      "id": "mention-about-neg-004",
+      "input": "He mentioned that he was late.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He mentioned that he was late.",
+      "expectedRuleFired": null,
+      "notes": "No 'about' after the verb -> must not fire."
+    },
+    {
+      "id": "mention-about-neg-005",
+      "input": "This is a movie about war.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "This is a movie about war.",
+      "expectedRuleFired": null,
+      "notes": "No mention verb at all -> must not fire."
+    }
+  ]
+}

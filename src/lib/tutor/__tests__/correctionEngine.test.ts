@@ -694,6 +694,100 @@ describe("correctionEngine", () => {
     });
   });
 
+  // --- Vietlish Step 11 Batch 4 (MR-B) ---
+
+  it.each([
+    ["I make homework every day.", "I do homework every day."],
+    ["She made her homework.", "She did her homework."],
+    ["He makes homework at home.", "He does homework at home."],
+  ])("corrects Vietlish Batch 4 do-homework pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-vietlish-collocation-do-homework"],
+    });
+  });
+
+  it.each([
+    "The teacher makes homework fun.",
+    "She makes a cake.",
+    "I do homework every day.",
+  ])("does not over-trigger Vietlish Batch 4 do-homework pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["I want to mention about the plan.", "I want to mention the plan."],
+    ["She mentioned about her trip.", "She mentioned her trip."],
+    ["He mentions about it often.", "He mentions it often."],
+  ])("corrects Vietlish Batch 4 mention-about pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-vietlish-mention-about"],
+    });
+  });
+
+  it.each([
+    "We talk about homework.",
+    "There was no mention about it.",
+    "He mentioned that he was late.",
+  ])("does not over-trigger Vietlish Batch 4 mention-about pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["Please contact with me tomorrow.", "Please contact me tomorrow."],
+    ["I will contact with him.", "I will contact him."],
+    ["She contacted with us last week.", "She contacted us last week."],
+  ])("corrects Vietlish Batch 4 contact-with pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-vietlish-contact-with"],
+    });
+  });
+
+  it.each([
+    "I am in contact with him.",
+    "He made contact with them.",
+    "We work with them.",
+  ])("does not over-trigger Vietlish Batch 4 contact-with pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
+  it.each([
+    ["Please text to me tonight.", "Please text me tonight."],
+    ["He phoned to her yesterday.", "He phoned her yesterday."],
+    ["She phones to us every morning.", "She phones us every morning."],
+  ])("corrects Vietlish Batch 4 phone/text-to pattern: %s", (input, expected) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "corrected",
+      corrected: expected,
+      appliedRuleIds: ["en-vietlish-phone-text-to"],
+    });
+  });
+
+  it.each([
+    "Please send a text to me.",
+    "I phoned to confirm the time.",
+    "I will call to him.",
+  ])("does not over-trigger Vietlish Batch 4 phone/text-to pattern: %s", (input) => {
+    expect(correctWithTutorRules(input, "en")).toMatchObject({
+      status: "unchanged",
+      appliedRuleIds: [],
+    });
+  });
+
   it.each([
     ["I wake up 7 o'clock.", "I wake up at 7 o'clock."],
     ["She starts work 8 AM.", "She starts work at 8 AM."],
@@ -829,6 +923,10 @@ describe("correctionEngine", () => {
     ["en-step6-marry-with", "marry-with"],
     ["en-step6-at-clock-time", "at-clock-time"],
     ["en-vn-copula-be-adjective", "copula be adjective"],
+    ["en-vietlish-collocation-do-homework", "do homework"],
+    ["en-vietlish-mention-about", "mention about"],
+    ["en-vietlish-contact-with", "contact with"],
+    ["en-vietlish-phone-text-to", "phone/text to"],
   ])("keeps fp_risk_note metadata for approved correction pattern %s (%s)", (ruleId) => {
     const rule = englishCorrectionRules.find((candidate) => candidate.id === ruleId);
     expect(rule?.fpRiskNote).toEqual(expect.any(String));
