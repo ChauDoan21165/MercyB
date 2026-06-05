@@ -142,7 +142,9 @@ done | sort -rn
 
 ## Cross-reference: docs by L0–L7 layer
 
-> Parallel to !99's restructured `ROADMAP.md`. The flat file list
+> The L0–L7 layer model below formerly lived in `ROADMAP.md`
+> (removed 2026-06-05 — superseded by the V3 `STRATEGY.md`; the layer
+> model itself remains in git history). The flat file list
 > above tells you *what exists*. This section tells you *which
 > docs sit in which layer of the L0–L7 model*, so you can find
 > the right doc when you know the layer you're working in.
@@ -160,7 +162,7 @@ done | sort -rn
 ### L0 — Foundation
 
 Platform substrate: auth, deploy, security hardening, native
-identity, release gates. See [`ROADMAP.md` §L0](../ROADMAP.md#l0--foundation).
+identity, release gates. See `ROADMAP.md` §L0 (git history).
 
 | Path | Covers what (re: L0) |
 |---|---|
@@ -177,7 +179,7 @@ identity, release gates. See [`ROADMAP.md` §L0](../ROADMAP.md#l0--foundation).
 
 VI/EN parity, shame-language guardrails, local-only behavioral
 signal, no surveillance, no streaks/XP/badges. Substrate, never
-"finished." See [`ROADMAP.md` §L1](../ROADMAP.md#l1--bilingual--privacy-substrate).
+"finished." See `ROADMAP.md` §L1 (git history).
 
 | Path | Covers what (re: L1) |
 |---|---|
@@ -189,7 +191,7 @@ signal, no surveillance, no streaks/XP/badges. Substrate, never
 
 Rooms, AI Tutor, placement v3, L1 detector consumption,
 pronunciation boundaries. Active / stabilizing.
-See [`ROADMAP.md` §L2](../ROADMAP.md#l2--learning-os).
+See `ROADMAP.md` §L2 (git history).
 
 | Path | Covers what (re: L2) |
 |---|---|
@@ -204,7 +206,7 @@ See [`ROADMAP.md` §L2](../ROADMAP.md#l2--learning-os).
 
 Stage 3A Local Weakness Map + Stage 3B Suggested Practice.
 Shipped passive; closes ~30% of the diagnostic loop. See
-[`ROADMAP.md` §L3](../ROADMAP.md#l3--diagnostic-signal-layer).
+`ROADMAP.md` §L3 (git history).
 
 | Path | Covers what (re: L3) |
 |---|---|
@@ -216,7 +218,7 @@ Shipped passive; closes ~30% of the diagnostic loop. See
 
 The planner that biases what the learner SEES NEXT based on weakness
 signals. **NEXT engineering target.** See
-[`ROADMAP.md` §L4](../ROADMAP.md#l4--diagnostic-intervention-layer).
+`ROADMAP.md` §L4 (git history).
 
 | Path | Covers what (re: L4) |
 |---|---|
@@ -226,7 +228,7 @@ signals. **NEXT engineering target.** See
 
 Curriculum, sequencing, SRS policy, L1-transfer-aware scheduling,
 motivation-aware pacing. Research-required, owner-decision-heavy.
-See [`ROADMAP.md` §L5](../ROADMAP.md#l5--pedagogy-layer).
+See `ROADMAP.md` §L5 (git history).
 
 **No dedicated docs — see ROADMAP §L5.** Expected (the layer is
 research-blocked, not engineering-blocked) but a real gap: when
@@ -242,9 +244,9 @@ adviser commits to a position.
 
 Diaspora-parent diagnostic transparency. Parallel-track candidate
 (not sequential successor to L5). See
-[`ROADMAP.md` §L6](../ROADMAP.md#l6--parent--teacher--family-intelligence)
+`ROADMAP.md` §L6 (git history)
 and the preserved Stage 5 Parent/Teacher View detail in
-[`ROADMAP.md` § Layer detail: L6](../ROADMAP.md#layer-detail-l6--parent--teacher--family-intelligence).
+`ROADMAP.md` § Layer detail: L6 (git history).
 
 **No dedicated docs — see ROADMAP §L6.** Flagged as a real gap:
 this is the highest-differentiation-per-effort layer in the
@@ -258,7 +260,7 @@ status from day one.
 
 Positional identity ("the product MercyBlade IS"), not comparative.
 Emerges from L4+L5+L6; not directly buildable. See
-[`ROADMAP.md` §L7](../ROADMAP.md#l7--differentiation).
+`ROADMAP.md` §L7 (git history).
 
 **No dedicated docs — see ROADMAP §L7.** NOT a gap: this layer is
 emergent by design. Documenting it standalone would be a category
@@ -277,7 +279,6 @@ rather than repeated under every L0–L7 entry above.
 | `CLAUDE.md` | Project mission, the five non-negotiables, operating discipline, architecture pointers. |
 | `STRATEGY.md` *(repo root)* | The canonical living strategy doc — pair matrix (§4), product strategy (§5), Definition of Done (§15), Duolingo competition strategy (§12). |
 | `PRINCIPLES.md` | 19 collaboration principles — apply to every layer's work. |
-| `ROADMAP.md` *(repo root)* | The L0–L7 layer model itself + cross-cutting constraints (Study OS boundaries, local-only posture, §15 relationship, Rule). |
 | `README.md` | Product README — bilingual-first product framing + tech stack table. |
 | `docs/architecture/system-overview.md` | Reference map of every major system in `src/` + the Supabase surface. Cross-layer index. |
 | `docs/onboarding/README.md` | First stop for a new contributor — cross-layer reading order. |

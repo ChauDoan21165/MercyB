@@ -105,32 +105,28 @@ through the docs in this order. Each builds on the previous one.
 3. **[`CLAUDE.md`](../../CLAUDE.md)** — Architecture invariants,
    audio-resolver doctrine, Mercy Speak-tab dual invariant, traps
    the repo has recently hit. **You will reach for this often.**
-4. **[`ROADMAP.md`](../../ROADMAP.md)** — Long-term vision (the
-   "ladder" from Stage 1 Lesson App to Stage 11 AI Legacy System),
-   the Stage 3 Study OS sequence (3A → 3B → 3C → 3D), and the
-   strict local-only posture for Stage 3.
-5. **[`README.md`](../../README.md)** at the repo root — concise
+4. **[`README.md`](../../README.md)** at the repo root — concise
    stack summary + canonical commands. Use as a daily reference.
-6. **[`SETUP.md`](../../SETUP.md)** — Hand-written setup notes,
+5. **[`SETUP.md`](../../SETUP.md)** — Hand-written setup notes,
    pre-commit hooks, room JSON conventions, troubleshooting.
-7. **[`ROOM_GUIDE.md`](../../ROOM_GUIDE.md)** — Canonical reference
+6. **[`ROOM_GUIDE.md`](../../ROOM_GUIDE.md)** — Canonical reference
    for the room JSON format (the ~488 lesson files under
    `public/data/*.json`).
-8. **[`SECURITY.md`](../../SECURITY.md)** + **[`docs/SECURITY_HARDENING_2025.md`](../SECURITY_HARDENING_2025.md)**
+7. **[`SECURITY.md`](../../SECURITY.md)** + **[`docs/SECURITY_HARDENING_2025.md`](../SECURITY_HARDENING_2025.md)**
    — Security monitoring + the canonical env-var list.
-9. **[`docs/architecture/system-overview.md`](../architecture/system-overview.md)**
+8. **[`docs/architecture/system-overview.md`](../architecture/system-overview.md)**
    — The map of every major system (~24 sections). Read once
    end-to-end so you know where things are; come back to specific
    sections later.
-10. **[`docs/architecture/data-flow.md`](../architecture/data-flow.md)**
+9. **[`docs/architecture/data-flow.md`](../architecture/data-flow.md)**
     — How learner signal moves through the app (anonymous →
     Stage 3A → Stage 3B → practice route), the Supabase boundary
     contract, the entitlement derivation rule.
-11. **[`docs/contributing/agent-handoff.md`](../contributing/agent-handoff.md)**
+10. **[`docs/contributing/agent-handoff.md`](../contributing/agent-handoff.md)**
     — Lane map (A-side / C-side / Kids / Platform), skill index,
     parallel-agent etiquette. Whether you're an AI agent or a
     human, this short doc is worth reading.
-12. **[`docs/architecture/systems/`](../architecture/systems/)** —
+11. **[`docs/architecture/systems/`](../architecture/systems/)** —
     Nine deep-dives, one per system. Read the one for the system
     you're changing, not all nine at once.
 
