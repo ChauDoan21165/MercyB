@@ -1,3 +1,6 @@
+type _InterferenceExplanationsModule =
+  typeof import("./interference-explanations");
+
 /**
  * Family-Bridge explainer content — schema (Stage 5 / L6 content authoring).
  *
