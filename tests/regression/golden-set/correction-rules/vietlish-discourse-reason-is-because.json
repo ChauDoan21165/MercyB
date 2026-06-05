@@ -1,0 +1,67 @@
+{
+  "rule": "vietlishDiscourseReasonIsBecause",
+  "ruleId": "en-vietlish-discourse-reason-is-because",
+  "language": "en",
+  "description": "VN redundancy 'lý do là vì' transfer: learners write 'the reason is because', which is circular in English ('the reason ... is that'). Rule en-vietlish-discourse-reason-is-because rewrites 'is/was because' to 'is/was that' ONLY when anchored to a preceding 'the reason' in the same clause, and never before 'because of' (a preposition).",
+  "fp_risk_note": "Medium risk. 'is because' is perfectly valid without a 'the reason' anchor ('This is because it rained'), and 'the reason is because of X' takes a prepositional phrase, not a clause. Negatives lock the unanchored 'is because', a bare 'because' clause, the 'because of' preposition, and a reason-less sentence.",
+  "positive": [
+    {
+      "id": "reason-pos-001",
+      "input": "The reason is because I was tired.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "The reason is that I was tired.",
+      "expectedRuleFired": "en-vietlish-discourse-reason-is-because",
+      "notes": "Adjacent 'reason is because' -> 'reason is that'."
+    },
+    {
+      "id": "reason-pos-002",
+      "input": "The reason why he left is because he was bored.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "The reason why he left is that he was bored.",
+      "expectedRuleFired": "en-vietlish-discourse-reason-is-because",
+      "notes": "Intervening 'why he left' clause preserved; only 'is because' -> 'is that'."
+    },
+    {
+      "id": "reason-pos-003",
+      "input": "The reason was because nobody told me.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "The reason was that nobody told me.",
+      "expectedRuleFired": "en-vietlish-discourse-reason-is-because",
+      "notes": "Past copula 'was because' -> 'was that'."
+    }
+  ],
+  "negative": [
+    {
+      "id": "reason-neg-001",
+      "input": "This is because it rained all day.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "This is because it rained all day.",
+      "expectedRuleFired": null,
+      "notes": "No 'the reason' anchor: bare 'is because' is correct -> must abstain."
+    },
+    {
+      "id": "reason-neg-002",
+      "input": "I left early because I was tired.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I left early because I was tired.",
+      "expectedRuleFired": null,
+      "notes": "Bare 'because' clause, no 'is because' and no 'the reason' -> must abstain."
+    },
+    {
+      "id": "reason-neg-003",
+      "input": "The reason is because of the rain.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The reason is because of the rain.",
+      "expectedRuleFired": null,
+      "notes": "'because of' is a preposition; rewriting to 'is that of the rain' would be ungrammatical -> must abstain."
+    },
+    {
+      "id": "reason-neg-004",
+      "input": "The reason is clear to everyone.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The reason is clear to everyone.",
+      "expectedRuleFired": null,
+      "notes": "'the reason is' with no 'because' -> nothing to rewrite, must abstain."
+    }
+  ]
+}

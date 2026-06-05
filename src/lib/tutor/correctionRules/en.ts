@@ -543,6 +543,41 @@ function repairVietlishMakeMistake(input: string): string {
   );
 }
 
+// --- Cluster: Vietlish discourse / phrasing ---
+// VN "theo tôi / theo ý kiến của tôi" -> "according to me / according to my
+// opinion" (should be "in my opinion"); VN redundancy "lý do là vì" -> "the
+// reason is because" (should be "the reason is that"). Both rewrite a closed,
+// unambiguous surface and preserve capitalization.
+//
+// 'according to' is correct for external sources (according to the report / to
+// him); V1 only rewrites the first-person "me / my opinion" object and abstains
+// when a coordinator follows ("according to me and my team"). 'is because' is
+// only rewritten when anchored to a preceding "the reason" within the same
+// clause, and never before "because of" (a preposition, not a clause).
+const VIETLISH_ACCORDING_TO_ME_PATTERN =
+  /\baccording to (?:me|my opinion|my personal opinion)\b(?!\s+(?:and|or|nor|plus))/i;
+
+const VIETLISH_REASON_IS_BECAUSE_PATTERN =
+  /\b(the reason\b[^.?!]*?\b(?:is|was) )because\b(?!\s+of\b)/i;
+
+function hasVietlishAccordingToMe(input: string): boolean {
+  return VIETLISH_ACCORDING_TO_ME_PATTERN.test(input);
+}
+
+function repairVietlishAccordingToMe(input: string): string {
+  return input.replace(VIETLISH_ACCORDING_TO_ME_PATTERN, (match) =>
+    match.charAt(0) === "A" ? "In my opinion" : "in my opinion",
+  );
+}
+
+function hasVietlishReasonIsBecause(input: string): boolean {
+  return VIETLISH_REASON_IS_BECAUSE_PATTERN.test(input);
+}
+
+function repairVietlishReasonIsBecause(input: string): string {
+  return input.replace(VIETLISH_REASON_IS_BECAUSE_PATTERN, "$1that");
+}
+
 function repairStep5PrepositionPatterns(input: string): string {
   return input
     .replace(/\b(depend|depends|depended|depending)\s+of\b/gi, "$1 on")
@@ -1314,6 +1349,20 @@ export const englishCorrectionRules: CorrectionRule[] = [
     apply: repairVietlishMakeMistake,
     fpRiskNote:
       "Medium risk. 'do' is correct for most activities (do homework, do the dishes). V1 rewrites do->make only when a mistake/mistakes token is the bare direct-object head noun and is NOT followed by a compounding noun (mistake analysis/log), leaving all other do-objects untouched.",
+  },
+  {
+    id: "en-vietlish-discourse-according-to-me",
+    detects: hasVietlishAccordingToMe,
+    apply: repairVietlishAccordingToMe,
+    fpRiskNote:
+      "Medium risk. 'according to' is correct for external sources (according to the report / to him / to scientists). V1 only rewrites the first-person 'me / my opinion' object to 'in my opinion', preserves leading capitalization, and abstains when a coordinator (and/or/nor/plus) follows so 'according to me and my team' is left untouched.",
+  },
+  {
+    id: "en-vietlish-discourse-reason-is-because",
+    detects: hasVietlishReasonIsBecause,
+    apply: repairVietlishReasonIsBecause,
+    fpRiskNote:
+      "Medium risk. 'is because' is valid on its own ('This is because it rained'). V1 only rewrites 'is/was because' to 'is/was that' when anchored to a preceding 'the reason' inside the same clause, and never before 'because of' (a preposition). Bare 'because' clauses and reason-less sentences are untouched.",
   },
   {
     id: "en-question-form-final-mark",
