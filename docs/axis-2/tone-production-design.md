@@ -15,7 +15,7 @@ implementation lands in a follow-up PR after owner review.
 
 ## 1. Goal and posture
 
-Per `STRATEGY.md` §15 Axis 2 Bar #2 (lines 626-633):
+Per `CURRENT-STATE.md` §15 Axis 2 Bar #2:
 
 > The EN→VN track ships a coaching surface for the six Northern (or
 > five Southern) Vietnamese tones — at minimum, a drill that asks the
@@ -31,8 +31,8 @@ flight via #1184; Bar #3 = classifier explainer in flight via
 authoring effort per `STRATEGY.md:104`, but the bar is binding: §15
 gates second-pair work, and Axis 2 has zero ticks today (`STRATEGY.md:732`).
 
-Same local-only posture as Stage 3 brick design (`ROADMAP.md`
-*Local-Only Posture*, lines 107-111):
+Same local-only posture as Stage 3 brick design (`layer-model.md`
+*Local-Only Posture*):
 
 - No Supabase write of recordings, transcripts, or scores.
 - No external analytics on attempts.
@@ -409,7 +409,7 @@ The drill is Axis 2 only by design — the navigation gate uses
   but adds bundle weight; revisit if learners ask for it via
   FeedbackBar.
 - Streak / progress / "tones mastered" counter. Forbidden by
-  `voice-guidelines-vn.md` Rule 1 and by `ROADMAP.md` Local-Only
+  `voice-guidelines-vn.md` Rule 1 and by `layer-model.md` Local-Only
   Posture.
 - Multi-syllable tone-sandhi work (e.g. tone changes in `số một`,
   `bốn năm`). Bar #2 is single-syllable production; sandhi is a

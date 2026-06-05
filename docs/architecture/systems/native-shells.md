@@ -41,7 +41,7 @@ The native shells:
 
 Why it matters strategically:
 
-- **ROADMAP Step 1 (iOS + Android in Stores — ~60%).** The native
+- **`layer-model.md` Step 1 (iOS + Android in Stores — ~60%).** The native
   shells are the gating work. Last builds: Apple Build 8 (April 25)
   and Google Play Build 4 (April 25). `STRATEGY.md` §6 explicitly
   marks no fresh upload since.

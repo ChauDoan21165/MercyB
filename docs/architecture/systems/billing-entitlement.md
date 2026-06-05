@@ -488,8 +488,8 @@ for testing — you will eventually ship that to prod.
   provider-event-matrix, schema-audit, schema-debt-after-patch.
 - **`CLAUDE.md`** — non-negotiable #5 (no VIP tier); operating
   discipline (one owner per function, separate layers before fixing).
-- **`STRATEGY.md`** — §7 Step 9 (Monetization Depth phases); §15 Axis
-  rules (the flagship Definition of Done that pricing decisions
+- **`STRATEGY.md`** — §7 Step 9 (Monetization Depth phases);
+  `CURRENT-STATE.md` §15 Axis rules (the flagship Definition of Done that pricing decisions
   reference).
 - **Sibling deep-dives:**
   - [`study-os-stage-3.md`](./study-os-stage-3.md) — Stage 3 reads

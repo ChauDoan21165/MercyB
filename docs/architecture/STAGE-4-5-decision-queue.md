@@ -273,5 +273,5 @@ decisions above:
 - `docs/architecture/L4-diagnostic-intervention-layer.md` (!131) — L4 design; source of 10 entries.
 - `docs/architecture/L5-pedagogy-decision-record.md` (!126 + this MR's backfill) — source of 11 entries (6 deferred + 5 open).
 - `docs/architecture/L6-parent-teacher-family-layer.md` (!122) — L6 design; source of 10 entries.
-- `ROADMAP.md` §L4 / §L5 / §L6 — canonical layer model.
+- `layer-model.md` §L4 / §L5 / §L6 — canonical layer model.
 - `docs/INDEX.md` § Cross-reference: docs by L0–L7 layer — parent doc that flagged this gap.

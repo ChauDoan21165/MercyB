@@ -28,7 +28,7 @@ entries still use them. See memory: `feedback_universal_report_prefix`
 and `feedback_all_agents_report_prefix`.
 
 ### Definition of Done (DoD)
-The §15 section of `STRATEGY.md` — a checklist of artefacts that
+The §15 section of `CURRENT-STATE.md` — a checklist of artefacts that
 must land on `origin/main` before the flagship is "done enough to
 start serious work on a second pair". Each criterion is testable,
 not vibes. Currently 9 of 13 boxes ticked.
@@ -42,7 +42,7 @@ A docstring at the top of a load-bearing file that explains
 "doctrine" alone often refers to the rule the block encodes.
 
 ### Duolingo competition strategy
-The §12 section of `STRATEGY.md` — the positioning thesis that
+The Competitive thesis in `STRATEGY.md` (V3) — the positioning thesis that
 MercyBlade wins over Duolingo for Vietnamese↔English by depth,
 real teacher persona, L1 awareness, and honest outcomes — NOT by
 matching Duolingo on gamification. The competitive thesis: *"what
@@ -58,7 +58,7 @@ learning pairs. The "matrix" is the product surface; the "pair"
 is one cell. See `STRATEGY.md` §4 ("The Learning-Pair Matrix").
 
 ### Stage 3 (3A / 3B / 3C / 3D)
-The four-brick **Study OS** sequence in `ROADMAP.md`. 3A = Local
+The four-brick **Study OS** sequence in `layer-model.md`. 3A = Local
 Weakness Map ("What I'm Weak At"). 3B = Suggested Practice (soft,
 dismissible suggestions). 3C = Review Queue (local spaced
 repetition). 3D = Mastery Map (deferred). All four operate
@@ -150,7 +150,8 @@ transfer errors in English output. Produces `L1WeaknessTag`
 strings; eval baseline at `evals/.baseline.json`.
 
 ### Directional writeback contract
-The rule from `STRATEGY.md` §12 that **only the placement engine
+The rule (the **Placement Writeback Boundary** in `placement-v3.md`)
+that **only the placement engine
 itself** may write to `profiles.placement_*` /
 `placement_sessions` / `placement_responses`. Stage 3A's
 placement snapshot adapter is a *read-side mirror only* — it
@@ -216,7 +217,7 @@ metadata).
 See "A-side, C-side" above.
 
 ### Local-only posture
-The strategic constraint from `ROADMAP.md` §"Local-Only Posture"
+The strategic constraint from `layer-model.md` §"Local-Only Posture"
 that Stage 3 reads + writes only `localStorage`, never Supabase.
 "Broken only when a *named, high-value reason* emerges — not when
 it feels ready, not when it would be convenient."
@@ -257,8 +258,8 @@ A Supabase table that stores **semantic person memory** — what
 Mercy remembers about a learner *as a person* (name, goals,
 ongoing context). Owned by the teacher-mercy engine. **Not the
 same as Stage 3A's behavioral signal** (which is local-only and
-never syncs into this table). See `STRATEGY.md` §12 "Study OS
-Summary Boundary".
+never syncs into this table). See the **Study OS Summary Boundary**
+in `study-os-stage-3.md`.
 
 ### Mock provider
 The deterministic test-double provider for the dark AI Tutor
@@ -431,7 +432,7 @@ deliverables, constraints, gates, push authorization. See
 `docs/contributing/agent-handoff.md` §6.
 
 ### Bar (Bar #1, Bar #6, …)
-A criterion in `STRATEGY.md` §15 (Definition of Done). E.g. Bar
+A criterion in `CURRENT-STATE.md` §15 (Definition of Done). E.g. Bar
 #1 = "L1 grammar coverage gap closed"; Bar #6 = "Native crash
 telemetry confirmed on-device". Each tick requires a named
 artefact on `origin/main`.
@@ -532,7 +533,7 @@ worktree isolation mandatory for parallel agent work.
 - **DI** — Dependency Injection. The placement v3 kernel is
   DI-pure (every dependency passed in; no module-level imports of
   Deno globals or Supabase clients).
-- **DoD** — Definition of Done (`STRATEGY.md` §15).
+- **DoD** — Definition of Done (`CURRENT-STATE.md` §15).
 - **DSN** — Data Source Name. The Sentry config URL.
 - **EAP** — Expected A Posteriori estimator. One of the θ
   estimators in placement v3.

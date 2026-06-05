@@ -82,7 +82,7 @@ Why it matters strategically:
   The chunked `speakViaTTS` + `chunkForTTS` helper exists in
   `MercySpeakTab.tsx` to work around Chrome quirks (utterances > 180
   chars get silently dropped).
-- **`STRATEGY.md` §12 "AI chat" item** — the panel exists with a
+- **`STRATEGY.md` (V3 — Competitive thesis) "AI chat" item** — the panel exists with a
   specific job (ask / fix / speak / suggest / context). It is not a
   generic chatbot. Adding free-form "chat with Mercy" capability
   without a specific learning job is on the explicit NOT-doing list.
@@ -398,7 +398,7 @@ referral message). **Never bypass.** This guard was lost once in PR
 
 ### No Mercy chat without a learning job
 
-`STRATEGY.md` §12 explicit NOT-doing item. The Guide exists with
+`STRATEGY.md` (V3 — Competitive thesis) explicit NOT-doing item. The Guide exists with
 specific intents (ask / fix / speak / suggest / context). Adding a
 generic "free chat" intent is a strategy edit, not a feature add.
 
@@ -524,9 +524,9 @@ Mercy engine
 A PR that adds `setMercyMemory` to this hook is a strategy edit. The
 semantic-memory writer lives at `src/lib/teacher-mercy/memory.ts`.
 Calling that from the Guide path would couple two surfaces that
-`STRATEGY.md` §12 keeps deliberately separated (semantic person
+`study-os-stage-3.md` "Study OS Summary Boundary" keeps deliberately separated (semantic person
 memory vs. behavioral signal layer; see `study-os-stage-3.md` for
-the §12 boundary).
+the Study OS Summary Boundary).
 
 ### The rate limit is per-IP, not per-user
 
@@ -621,7 +621,7 @@ When you add a new tab, intent, or reply path:
 
 ### Modifying the tier-depth gate
 
-1. The mapping is in `guide-assistant/index.ts`. Read `STRATEGY.md`
+1. The mapping is in `guide-assistant/index.ts`. Read `CURRENT-STATE.md`
    §15 + `./billing-entitlement.md` before changing it — tier
    semantics changes are billing/strategy edits.
 2. The client side reads `tier` from the request body. Do not

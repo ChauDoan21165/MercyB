@@ -70,7 +70,7 @@ Legend:
 | `vercel.json` | No direct GitHub reference found | No | None | Leave; Vercel project settings still need manual audit |
 | `supabase/config.toml` | No direct GitHub reference found | No | None | Leave |
 | `STRATEGY.md` | No direct GitHub reference found in tracked current file | No | None | Leave |
-| `ROADMAP.md` | No direct GitHub reference found | No | None | Leave |
+| `ROADMAP.md` (deleted; now `layer-model.md`) | No direct GitHub reference found | No | None | Leave |
 | `.dependency-cruiser.cjs` | comments referencing `.github/workflows/ci.yml` | Yes | migrated GitLab CI job path/name | Wait |
 | `.github/workflows/*.yml` | GitHub Actions syntax, actions, `${{ github.* }}`, `GITHUB_TOKEN`, `$GITHUB_OUTPUT`, `$GITHUB_STEP_SUMMARY` | Yes | `.gitlab-ci.yml` stages/jobs/rules/artifacts/API calls | Wait |
 | `.github/workflows/DEPLOYMENT.md` | GitHub Actions and Vercel GitHub integration deployment model | Yes | GitLab CI deployment model and Vercel GitLab integration | Wait |

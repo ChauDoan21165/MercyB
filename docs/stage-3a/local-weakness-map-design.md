@@ -8,14 +8,14 @@
 
 This document is the design artifact for the first PR of Stage 3A —
 the *"What I'm Weak At"* / Local Weakness Map screen described in
-`ROADMAP.md` §3A. **No implementation is shipped in this PR.** The
+`layer-model.md` §3A. **No implementation is shipped in this PR.** The
 implementation lands in a follow-up PR after owner review.
 
 ---
 
 ## 1. Goal and posture
 
-Per `ROADMAP.md` §3A (lines 39-45):
+Per `layer-model.md` §3A:
 
 > Read-only, local-only, descriptive. Surfaces top Vietnamese↔English
 > weakness patterns from L1 detector + Placement + pronunciation
@@ -27,8 +27,8 @@ Per `ROADMAP.md` §3A (lines 39-45):
 > tells Vietnamese learners why they keep making the same English
 > mistake."*
 
-Per `ROADMAP.md` *Local-Only Posture* (lines 107-111) and *Stage 3
-Study OS Boundaries* (lines 85-105):
+Per `layer-model.md` *Local-Only Posture* and *Stage 3
+Study OS Boundaries*:
 
 - No Supabase sync, no Supabase read of progress/event tables.
 - No external analytics.
@@ -37,7 +37,7 @@ Study OS Boundaries* (lines 85-105):
 - Safe local event summaries only — counts, booleans, timestamps; no
   raw learner content, no full transcripts, no raw audio, no PII.
 
-Per `STRATEGY.md` §15 Axis 1 Bar #1 (now ticked via PR #1194), the
+Per `CURRENT-STATE.md` §15 Axis 1 Bar #1 (now ticked via PR #1194), the
 detector layer that this screen reads from is complete: all 15
 grammar families in `docs/l1-taxonomies/vi-grammar.md` are reachable
 by a detector rule in `src/lib/feedback/l1-error-detector.ts`. The
@@ -259,7 +259,7 @@ One screen. No navigation, no tabs, no "drill down". Mobile-first
 │                                          │
 │  Duolingo tells you to keep a streak.    │  ← demo sentence
 │  MercyBlade tells you why you keep       │     (owner's exact wording,
-│  making the same English mistake.        │      verbatim from ROADMAP)
+│  making the same English mistake.        │      verbatim from layer-model.md)
 │                                          │
 │  ─────────────────────────────────────   │
 │                                          │

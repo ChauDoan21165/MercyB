@@ -1,14 +1,14 @@
 # L4 — Diagnostic Intervention Layer
 
-> **Layer source:** `ROADMAP.md` §L4 (Diagnostic Intervention Layer) —
+> **Layer source:** `layer-model.md` §L4 (Diagnostic Intervention Layer) —
 > *the planner that turns L3 signal into L5/Stage-3B behavior change.*
 > Marked **NEXT engineering target** and the layer that closes ~70%
 > of the diagnostic loop.
 >
-> **Strategic anchor:** `STRATEGY.md` §12 — Placement Writeback
-> Boundary + Study OS Summary Boundary. L4 reads local signals,
-> writes local action-suggestions; it does not loosen either
-> boundary.
+> **Strategic anchor:** `placement-v3.md` — Placement Writeback
+> Boundary + `study-os-stage-3.md` — Study OS Summary Boundary. L4
+> reads local signals, writes local action-suggestions; it does not
+> loosen either boundary.
 >
 > **Why this doc exists:** !113's L0–L7 cross-reference and !122's L6
 > design both flagged L4 as the remaining design gap that must land
@@ -127,10 +127,10 @@ loud:
   with a fixed input → fixed output.
 - **Not a placement writeback path.** L4 reads
   `placementSnapshotAdapter`; it does not write `profiles.placement_*`.
-  The Placement Writeback Boundary (`STRATEGY.md` §12) holds.
+  The Placement Writeback Boundary (`placement-v3.md`) holds.
 - **Not a Study OS summary writer.** L4 does not push device-local
   history to `mercy_user_facts` or any remote table. The Study OS
-  Summary Boundary (same §) holds.
+  Summary Boundary (`study-os-stage-3.md`) holds.
 - **Not a streak / gamification surface.** L4's outputs are
   diagnostic actions, not motivational nudges. CLAUDE.md
   non-negotiable #4 — outcomes over engagement.
@@ -375,7 +375,7 @@ priority), parent-view suggestion stream (L6-blocked).
 
 ## What this doc is not
 
-Not a roadmap (sequencing lives in `ROADMAP.md` §L4). Not an
+Not a roadmap (sequencing lives in `layer-model.md` §L4). Not an
 implementation spec (the function signatures, file layout, and test
 shape live in the Stage 4 author's eventual implementation MR). Not
 a launch plan. This is the **starting point** for Stage 4 authoring
@@ -383,10 +383,10 @@ when it begins.
 
 ## Cross-references
 
-- `ROADMAP.md` §L4 — the layer model + the *"closes ~70% of the
+- `layer-model.md` §L4 — the layer model + the *"closes ~70% of the
   diagnostic loop"* framing.
-- `STRATEGY.md` §12 — Placement Writeback Boundary + Study OS
-  Summary Boundary (L4 must not loosen either).
+- `placement-v3.md` — Placement Writeback Boundary + `study-os-stage-3.md`
+  — Study OS Summary Boundary (L4 must not loosen either).
 - `CLAUDE.md` non-negotiables #2 (Kids mode sacred) and #4
   (outcomes over engagement).
 - `docs/architecture/systems/study-os-stage-3.md` — L3 deep-dive

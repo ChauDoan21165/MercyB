@@ -984,7 +984,7 @@ runbook) that pairs with this doc.
 ### §7.4 The "STRATEGY.md scope diff" test
 
 Run `git log --since="3 months ago" -- STRATEGY.md` and read every
-commit. For each strategic addition (new ROADMAP step, new §15 bar,
+commit. For each strategic addition (new `layer-model.md` step, new §15 bar,
 new product surface): is there a critical-path dependency this
 runbook doesn't mention yet? If yes, add the row to §1 + write the
 §2.x recovery.

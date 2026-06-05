@@ -1,7 +1,7 @@
 # Stage 3B — Marketing Screenshot Spec
 
 Operational spec for capturing the Stage 3B *Suggested Practice*
-launch screenshot. ROADMAP §3B names the next-step suggestion list
+launch screenshot. `layer-model.md` §3B names the next-step suggestion list
 as the marketing-visible artifact for this stage — the screen below
 the Local Weakness Map that turns *"here is what's still rough"* into
 *"here are three things to practice next."*
@@ -216,7 +216,7 @@ caption + tags shift.
 
 ## 7. References
 
-- ROADMAP §3B — *Suggested Practice* — describes the prescriptive surface that turns the Stage 3A diagnostic into a "what to do next" list.
+- `layer-model.md` §3B — *Suggested Practice* — describes the prescriptive surface that turns the Stage 3A diagnostic into a "what to do next" list.
 - `docs/stage-3a/marketing-screenshot-spec.md` — companion spec for the diagnostic-frame screenshot.
 - `src/stage-3b/suggestedPractice.ts` — the ranking engine (pure, one-per-kind cap, head element per source).
 - `src/stage-3b/types.ts` — `SuggestedPracticeItem` shape (what each row renders from).

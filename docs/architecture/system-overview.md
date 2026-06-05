@@ -29,8 +29,8 @@
     #2). Offline-first, no login, no monetization CTAs.
   - **Platform** — *cross-cutting infra* (auth, billing, observability,
     routing, caching, dev server) shared by every lane.
-- **Strategic priority** = the bar in `STRATEGY.md` §15 (or the
-  ROADMAP stage) the system is currently held against. "—" means the
+- **Strategic priority** = the bar in `CURRENT-STATE.md` §15 (or the
+  `layer-model.md` stage) the system is currently held against. "—" means the
   system is mature enough that it isn't gating an open §15 bar.
 - **Key files** are anchors, not exhaustive lists. Grep + `git log -p`
   for the full surface.
@@ -141,7 +141,7 @@ profile, PR #1131).
 
 **Don't break.** `mercy_user_facts` = semantic person memory. Study OS
 event summaries are a separate behavioral signal layer (see §6 below
-and `STRATEGY.md` §12 "Study OS Summary Boundary"). Do not merge,
+and `study-os-stage-3.md` "Study OS Summary Boundary"). Do not merge,
 sync, or write between the two. The Speak-tab TTS chunking logic
 (`speakViaTTS` + `chunkForTTS`) handles Chrome `speechSynthesis`
 quirks — see `CLAUDE.md` "Mercy character / Speak tab dual invariant".
@@ -220,7 +220,7 @@ missing.
 **Strategic priority.** §15 Axis 1 Bar #4 (closed). Axis 2 Bar #2
 (Vietnamese tone production) is **open** — Option A scorer failed
 empirical adjacent-tone verification; Option B local-pitch design
-failed production-scoring viability. See `STRATEGY.md` §15 for the
+failed production-scoring viability. See `CURRENT-STATE.md` §15 for the
 current honest state.
 
 **Don't break.** Cloud scorer requires a JWT (anonymous or signed-in).
@@ -248,14 +248,14 @@ without any server round-trip, sync, or analytics.
 - `docs/stage-3a/local-weakness-map-design.md` (and the rest of
   `docs/stage-3a/`) — canonical design.
 
-**Owner-lane.** A-side (Stage 3A is the §6 / ROADMAP step in flight).
-**Strategic priority.** ROADMAP Stage 3 — Study OS Sequence brick A.
+**Owner-lane.** A-side (Stage 3A is the §6 / `layer-model.md` step in flight).
+**Strategic priority.** `layer-model.md` Stage 3 — Study OS Sequence brick A.
 Adapters are landed; the screen itself is not implemented yet
 (see `STRATEGY.md` §6).
 
 **Don't break.** The adapters enforce: no Supabase writes, no network,
 no `mercy_user_facts` touch, no placement-state writeback (per
-`STRATEGY.md` §12 "Placement Writeback Boundary"). They tolerate
+`placement-v3.md` "Placement Writeback Boundary"). They tolerate
 absent `localStorage` (SSR / private mode) without throwing. Tag
 names are the public contract with §4's detector — keep stable.
 
@@ -325,7 +325,7 @@ room. Server-side 2PL IRT engine; the learner-facing flow lives at
 E2E, closed via PR #1143).
 
 **Don't break.** "No placement writeback" is a **directional**
-contract, not a no-writes contract (`STRATEGY.md` §12). The placement
+contract, not a no-writes contract (`placement-v3.md` "Placement Writeback Boundary"). The placement
 edge function writes its own results to `profiles.placement_*`. No
 other surface (Study OS, `mercy_user_facts`, AI Tutor, Kids, etc.)
 may write to placement state.
@@ -457,7 +457,7 @@ flow-through + corporate seats. Powers every gate in the app.
   per provider.
 
 **Owner-lane.** Platform.
-**Strategic priority.** ROADMAP Step 9 (Monetization Depth) — Phase A
+**Strategic priority.** `layer-model.md` Step 9 (Monetization Depth) — Phase A
 merged (`_shared/entitlement.ts`, gates reading entitlement instead of
 stale `profiles.tier`).
 
@@ -559,7 +559,7 @@ attribution). Bilingual landing per the 2026-05-18 audit.
 
 **Owner-lane.** Platform / A-side (Vietnamese marketing copy is the
 primary surface).
-**Strategic priority.** ROADMAP Step 5 (Marketing Infrastructure ~70%).
+**Strategic priority.** `layer-model.md` Step 5 (Marketing Infrastructure ~70%).
 
 **Don't break.** Tracking consent ≠ email consent (memory:
 [[project_marketing_consent_is_tracking]]). Never conflate. The
@@ -619,7 +619,7 @@ admin digest, mercy-builder, test.
 - `email_campaigns`, `email_events` tables (admin-gated, `get_admin_level >= 9`).
 
 **Owner-lane.** Platform.
-**Strategic priority.** ROADMAP Step 4 (Retention Engine ~85%).
+**Strategic priority.** `layer-model.md` Step 4 (Retention Engine ~85%).
 
 **Don't break.** Unsubscribe system is still being built — no
 `email_unsubscribes` table, no footer in campaign templates. **Do
@@ -698,7 +698,7 @@ Android publish to their respective stores.
   (April 25) — both pre-this-session per `STRATEGY.md` §6.
 
 **Owner-lane.** Platform.
-**Strategic priority.** ROADMAP Step 1 (iOS + Android in Stores ~60%).
+**Strategic priority.** `layer-model.md` Step 1 (iOS + Android in Stores ~60%).
 
 **Don't break.** "Web-only today; do only zero-decision `src/`-pure
 native PRs now, defer store-coupled native-file work to ~2-4wk
@@ -811,8 +811,8 @@ Bar #2, closed).
 
 **Streaks / XP / Leaderboards.** `src/lib/streaks/`, `src/lib/xp/`,
 `src/lib/leaderboard/`, `src/components/streak/`, `src/components/xp/`,
-`src/components/leaderboard/`. ROADMAP Step 4. Per
-`STRATEGY.md` §12, streaks must not be the **primary** retention
+`src/components/leaderboard/`. `layer-model.md` Step 4. Per
+`STRATEGY.md` (V3 — Competitive thesis), streaks must not be the **primary** retention
 mechanic; per §10 they are not a tracked KPI.
 
 **Family / Groups / Community / Referral / Gift / Corporate.**

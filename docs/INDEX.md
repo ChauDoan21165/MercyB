@@ -142,9 +142,11 @@ done | sort -rn
 
 ## Cross-reference: docs by L0–L7 layer
 
-> The L0–L7 layer model below formerly lived in `ROADMAP.md`
-> (removed 2026-06-05 — superseded by the V3 `STRATEGY.md`; the layer
-> model itself remains in git history). The flat file list
+> The L0–L7 layer model below now lives in
+> [`architecture/layer-model.md`](architecture/layer-model.md)
+> (rehomed 2026-06-05 from the removed `ROADMAP.md`; superseded the
+> V1 strategy doc, the model itself is preserved verbatim there).
+> The flat file list
 > above tells you *what exists*. This section tells you *which
 > docs sit in which layer of the L0–L7 model*, so you can find
 > the right doc when you know the layer you're working in.
@@ -155,14 +157,14 @@ done | sort -rn
 > § Cross-cutting at the bottom rather than repeated.
 >
 > Layers without a dedicated doc carry an explicit
-> *"No dedicated docs — see ROADMAP §<layer>"* line. Those are
+> *"No dedicated docs — see `layer-model.md` §<layer>"* line. Those are
 > either expected (L7 is emergent by design) or real gaps flagged
 > for future authoring (L4, L5, L6).
 
 ### L0 — Foundation
 
 Platform substrate: auth, deploy, security hardening, native
-identity, release gates. See `ROADMAP.md` §L0 (git history).
+identity, release gates. See `layer-model.md` §L0.
 
 | Path | Covers what (re: L0) |
 |---|---|
@@ -179,7 +181,7 @@ identity, release gates. See `ROADMAP.md` §L0 (git history).
 
 VI/EN parity, shame-language guardrails, local-only behavioral
 signal, no surveillance, no streaks/XP/badges. Substrate, never
-"finished." See `ROADMAP.md` §L1 (git history).
+"finished." See `layer-model.md` §L1.
 
 | Path | Covers what (re: L1) |
 |---|---|
@@ -191,7 +193,7 @@ signal, no surveillance, no streaks/XP/badges. Substrate, never
 
 Rooms, AI Tutor, placement v3, L1 detector consumption,
 pronunciation boundaries. Active / stabilizing.
-See `ROADMAP.md` §L2 (git history).
+See `layer-model.md` §L2.
 
 | Path | Covers what (re: L2) |
 |---|---|
@@ -206,7 +208,7 @@ See `ROADMAP.md` §L2 (git history).
 
 Stage 3A Local Weakness Map + Stage 3B Suggested Practice.
 Shipped passive; closes ~30% of the diagnostic loop. See
-`ROADMAP.md` §L3 (git history).
+`layer-model.md` §L3.
 
 | Path | Covers what (re: L3) |
 |---|---|
@@ -218,7 +220,7 @@ Shipped passive; closes ~30% of the diagnostic loop. See
 
 The planner that biases what the learner SEES NEXT based on weakness
 signals. **NEXT engineering target.** See
-`ROADMAP.md` §L4 (git history).
+`layer-model.md` §L4.
 
 | Path | Covers what (re: L4) |
 |---|---|
@@ -228,9 +230,9 @@ signals. **NEXT engineering target.** See
 
 Curriculum, sequencing, SRS policy, L1-transfer-aware scheduling,
 motivation-aware pacing. Research-required, owner-decision-heavy.
-See `ROADMAP.md` §L5 (git history).
+See `layer-model.md` §L5.
 
-**No dedicated docs — see ROADMAP §L5.** Expected (the layer is
+**No dedicated docs — see `layer-model.md` §L5.** Expected (the layer is
 research-blocked, not engineering-blocked) but a real gap: when
 pedagogy decisions land, they need a decision-record artifact
 (*"what is the success metric for good planning?"*, *"what does a
@@ -244,11 +246,11 @@ adviser commits to a position.
 
 Diaspora-parent diagnostic transparency. Parallel-track candidate
 (not sequential successor to L5). See
-`ROADMAP.md` §L6 (git history)
+`layer-model.md` §L6
 and the preserved Stage 5 Parent/Teacher View detail in
-`ROADMAP.md` § Layer detail: L6 (git history).
+`layer-model.md` § Layer detail: L6.
 
-**No dedicated docs — see ROADMAP §L6.** Flagged as a real gap:
+**No dedicated docs — see `layer-model.md` §L6.** Flagged as a real gap:
 this is the highest-differentiation-per-effort layer in the
 roadmap, but no design doc, market sketch, or copy spec exists.
 A first L6 doc would be a candidate for "Likely should be tracked"
@@ -260,12 +262,12 @@ status from day one.
 
 Positional identity ("the product MercyBlade IS"), not comparative.
 Emerges from L4+L5+L6; not directly buildable. See
-`ROADMAP.md` §L7 (git history).
+`layer-model.md` §L7.
 
-**No dedicated docs — see ROADMAP §L7.** NOT a gap: this layer is
+**No dedicated docs — see `layer-model.md` §L7.** NOT a gap: this layer is
 emergent by design. Documenting it standalone would be a category
 error — there is no L7 *system* to deep-dive. The three positional
-statements live in the ROADMAP and surface through L2/L3/L4/L6
+statements live in `layer-model.md` and surface through L2/L3/L4/L6
 docs as those layers ship.
 
 ### Cross-cutting (apply across L0–L7)
@@ -277,7 +279,7 @@ rather than repeated under every L0–L7 entry above.
 | Path | Why cross-cutting |
 |---|---|
 | `CLAUDE.md` | Project mission, the five non-negotiables, operating discipline, architecture pointers. |
-| `STRATEGY.md` *(repo root)* | The canonical living strategy doc — pair matrix (§4), product strategy (§5), Definition of Done (§15), Duolingo competition strategy (§12). |
+| `STRATEGY.md` *(repo root)* | The canonical living strategy doc (V3) — pair matrix, product strategy, the Competitive thesis (Duolingo positioning). The Definition of Done now lives in [`../CURRENT-STATE.md`](../CURRENT-STATE.md) §15. |
 | `PRINCIPLES.md` | 19 collaboration principles — apply to every layer's work. |
 | `README.md` | Product README — bilingual-first product framing + tech stack table. |
 | `docs/architecture/system-overview.md` | Reference map of every major system in `src/` + the Supabase surface. Cross-layer index. |

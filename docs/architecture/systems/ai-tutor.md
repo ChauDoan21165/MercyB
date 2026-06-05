@@ -54,7 +54,7 @@ Why it matters strategically:
 - **`CLAUDE.md` non-negotiable #2 (Kids mode is sacred).** Kids do
   **not** see AI Tutor — PR #1205 removed the entry from the
   launcher modal. The tutor surface is *adults only*.
-- **`STRATEGY.md` §12 "AI chat" item** — *"Add 'AI chat' without a
+- **`STRATEGY.md` (V3 — Competitive thesis) "AI chat" item** — *"Add 'AI chat' without a
   specific learning job to do"* is on the explicit NOT-doing list.
   The tutor exists with a specific job (ask / fix / speak / resume /
   direct), not as a generic chatbot.
@@ -484,7 +484,7 @@ the kids launcher.** It is a `CLAUDE.md` non-negotiable.
 
 ### 6a. The L1 injection ships, but Bar #3 closure means *code*, not *behavior*
 
-`STRATEGY.md` §15 Axis 1 Bar #3 is ticked because PR #1131 landed the
+`CURRENT-STATE.md` §15 Axis 1 Bar #3 is ticked because PR #1131 landed the
 L1 injection in `promptAssembly.ts`. **But the live tutor today does
 not use `promptAssembly.ts`** — it uses the inline prompt assembly in
 `guide-assistant/index.ts`, which has its own (older) injection.
@@ -611,8 +611,9 @@ today. The flip should be paired with an explicit cost-budget review.
   notes.
 - **`CLAUDE.md`** — Mercy character / Speak tab dual invariant (chunking
   for Chrome `speechSynthesis`).
-- **`STRATEGY.md`** §5 item 2 (consistent AI teacher), §12 (no
-  generic AI chat), §15 Axis 1 Bar #3 (L1 injection).
+- **`STRATEGY.md`** §5 item 2 (consistent AI teacher),
+  `STRATEGY.md` (V3 — Competitive thesis) (no generic AI chat);
+  `CURRENT-STATE.md` §15 Axis 1 Bar #3 (L1 injection).
 - **Sibling deep-dives:**
   - [`billing-entitlement.md`](./billing-entitlement.md) — tutor tier
     derives from entitlement; budget rails depend on the same status

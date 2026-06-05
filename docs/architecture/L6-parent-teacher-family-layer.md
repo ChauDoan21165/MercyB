@@ -1,11 +1,11 @@
 # L6 — Parent / Teacher / Family Layer
 
-> **Layer source:** `ROADMAP.md` §L6 (Parent / Teacher / Family
+> **Layer source:** `layer-model.md` §L6 (Parent / Teacher / Family
 > Intelligence) — *parallel-track candidate, not sequential
 > successor to L5*.
 >
-> **Strategic anchor:** `STRATEGY.md` §12 — diagnostic
-> transparency, not gamified motivation. Vietnamese diaspora +
+> **Strategic anchor:** `STRATEGY.md` (V3 — Competitive thesis) —
+> diagnostic transparency, not gamified motivation. Vietnamese diaspora +
 > in-country parent market is *"large, sticky, pays, refers."*
 >
 > **Why this doc exists:** !113's L0–L7 cross-reference flagged
@@ -28,8 +28,8 @@ speak, without shame, gamification, or behind-framing.
 > not just to you."*
 
 For the Vietnamese diaspora, learning is heavily parent-mediated.
-The competitive function (per `STRATEGY.md` §12 + the Duolingo
-Competition Strategy table) is **diagnostic transparency, not
+The competitive function (per `STRATEGY.md` (V3 — Competitive thesis)
++ the Duolingo Competition Strategy table) is **diagnostic transparency, not
 gamified motivation** — *"Here is what this learner actually
 struggles with"* — which Duolingo cannot offer because they do
 not have a mastery model.
@@ -91,8 +91,8 @@ class-tracking tools.
 ## What L6 is NOT
 
 Bright lines, per `CLAUDE.md` non-negotiable #2 (Kids mode
-sacred) + `STRATEGY.md` §12 (Study OS Summary Boundary +
-Placement Writeback Boundary) + L1's substrate posture:
+sacred) + `study-os-stage-3.md` (Study OS Summary Boundary) +
+`placement-v3.md` (Placement Writeback Boundary) + L1's substrate posture:
 
 - **Not a gamified parent dashboard.** No leaderboards, streak
   comparisons, or XP totals visible to the parent.
@@ -142,7 +142,7 @@ Some signals exist today; some don't.
 
 L6 first-build can ship on L3 aggregates alone, framed
 descriptively. The full *"Mercy plans → Mercy explains"* thesis
-(`ROADMAP.md` §L7) needs L4 + L5.
+(`layer-model.md` §L7) needs L4 + L5.
 
 ---
 
@@ -413,17 +413,18 @@ Smaller than Stage 3A's Local Weakness Map, deliberately.
 
 ## What this doc is not
 
-Not a roadmap (sequencing lives in `ROADMAP.md`). Not a launch
+Not a roadmap (sequencing lives in `layer-model.md`). Not a launch
 plan (marketing / pricing rollout in `STRATEGY.md` §8–9). Not the
 final L6 spec — this is the **starting point** for the
 implementation deep-dive when Stage 5 authoring begins.
 
 ## Cross-references
 
-- `ROADMAP.md` §L6 + § Layer detail: L6 — the layer model + the
+- `layer-model.md` §L6 + § Layer detail: L6 — the layer model + the
   preserved Stage 5 substance.
-- `STRATEGY.md` §12 — Duolingo Competition Strategy + Study OS
-  Summary Boundary + Placement Writeback Boundary.
+- `STRATEGY.md` (V3 — Competitive thesis) — Duolingo Competition
+  Strategy; `study-os-stage-3.md` — Study OS Summary Boundary;
+  `placement-v3.md` — Placement Writeback Boundary.
 - `CLAUDE.md` non-negotiables #2 (Kids mode sacred) and #4
   (outcomes over engagement).
 - `docs/architecture/systems/study-os-stage-3.md` — L3 deep-dive

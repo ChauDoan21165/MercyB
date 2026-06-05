@@ -91,11 +91,15 @@ through the docs in this order. Each builds on the previous one.
 
 1. **[`STRATEGY.md`](../../STRATEGY.md)** at the repo root — *why*
    MercyBlade exists, who it serves, how it positions against
-   Duolingo, what "done" looks like for the Vietnamese flagship
-   (§15). Sections 4 (the pair matrix), 5 (product strategy), 12
-   (Study OS and Placement boundaries), 14 (the decision
-   framework), and 15 (Definition of Done) are the load-bearing
-   ones.
+   Duolingo (the V3 Competitive thesis). For what "done" looks like
+   for the Vietnamese flagship, see
+   [`CURRENT-STATE.md`](../../CURRENT-STATE.md) §15 (Definition of
+   Done). The Study OS and Placement boundaries now live in
+   [`../architecture/systems/study-os-stage-3.md`](../architecture/systems/study-os-stage-3.md)
+   and
+   [`../architecture/systems/placement-v3.md`](../architecture/systems/placement-v3.md).
+   STRATEGY.md's pair matrix, product strategy, and decision
+   framework remain the load-bearing strategic sections.
 2. **[`PRINCIPLES.md`](../../PRINCIPLES.md)** — 19 principles for
    how Chau, Claude, and any agent (A1, A2, A3…) collaborate. The
    spreadsheet-as-source-of-truth rule (§19), the parallel-worktrees

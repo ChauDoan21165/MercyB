@@ -1,9 +1,9 @@
-# Study OS (ROADMAP Stage 3) — Deep Dive
+# Study OS (Stage 3) — Deep Dive
 
 > **Sibling of** [system-overview.md §6](../system-overview.md#6-stage-3a--local-weakness-map-study-os)
 > **and §7** [(weakness recommender)](../system-overview.md#7-weakness-recommendation-engine-study-os-v1-surface).
 >
-> Stage 3 in `ROADMAP.md` is *four bricks, sequenced* — 3A → 3B → 3C
+> Stage 3 in `layer-model.md` is *four bricks, sequenced* — 3A → 3B → 3C
 > → 3D. The bricks were designed under hard local-only posture
 > constraints; the data they read is detector / placement /
 > pronunciation signal; their job is to make the Vietnamese learner
@@ -12,9 +12,9 @@
 > feat-branched, and what is paper-only.
 >
 > **Read first:**
-> - `ROADMAP.md` §3A / §3B / §3C / §3D
-> - `STRATEGY.md` §12 ("Study OS Summary Boundary" + "Placement
->   Writeback Boundary")
+> - `layer-model.md` §3A / §3B / §3C / §3D
+> - the **Study OS Summary Boundary** section below (this doc) +
+>   the **Placement Writeback Boundary** in `placement-v3.md`
 > - `docs/stage-3a/local-weakness-map-design.md` (the canonical 3A
 >   design)
 > - The three adapter files in `src/lib/stage-3a/adapters/` (file-head
@@ -41,12 +41,13 @@ Why it matters strategically:
   affordance. Without it, the detector / placement / pronunciation
   signals exist but never reach the learner as a *thesis* — "here is
   what your L1 keeps doing to your English."
-- **Competitive thesis.** `STRATEGY.md` §12: *"Duolingo tells you to
+- **Competitive thesis.** `STRATEGY.md` (V3 — Competitive thesis):
+  *"Duolingo tells you to
   keep a streak. MercyBlade tells Vietnamese learners why they keep
   making the same English mistake."* That is the one-sentence pitch
   for Stage 3A's marketing artifact. The whole Stage 3 sequence
   hardens that pitch.
-- **§12 Study OS Summary Boundary.** The strategic reason Stage 3 is
+- **Study OS Summary Boundary.** The strategic reason Stage 3 is
   *local-only* is not technical — it's that the boundary is what
   protects `mercy_user_facts` (semantic person memory) from becoming
   an indirect sync layer for behavioral state. Lose that boundary and
@@ -55,14 +56,14 @@ Why it matters strategically:
 
 Strategic anchors:
 
-- **`ROADMAP.md` §"Stage 3 — Study OS Sequence"** — four bricks,
+- **`layer-model.md` §"Stage 3 — Study OS Sequence"** — four bricks,
   sequenced, each with its own safety rule encoded in the name.
-- **`STRATEGY.md` §15 Axis 1 Bar #1** — closed (`vi_l1_*` detectors
+- **`CURRENT-STATE.md` §15 Axis 1 Bar #1** — closed (`vi_l1_*` detectors
   shipped, eval baseline 65/65). The Stage 3A hard prereq is met.
 - **`STRATEGY.md` §6 status snapshot** — *"Stage 3A is designed and
   adapter-prepped, but the screen implementation has not started"*
   (as of 2026-05-26).
-- **`STRATEGY.md` §12 Placement Writeback Boundary** — Stage 3A's
+- **`placement-v3.md` Placement Writeback Boundary** — Stage 3A's
   placement adapter is a **read-side mirror**, not a writeback.
 
 ---
@@ -76,9 +77,9 @@ both planning failures.
 | Brick | Owner-lane | Designed | Adapters live | Screen live | Notes |
 |-------|------------|----------|---------------|-------------|-------|
 | **3A — Local Weakness Map** | A-side | ✓ `docs/stage-3a/` | ✓ 3 adapters (PRs #1201, #1202, #1203) | ✗ | Hard prereq Bar #1 closed; screen impl not started. |
-| **3B — Suggested Practice** | A-side | ✓ `ROADMAP.md` §3B | ✗ engine not on main | ✗ | `feat/stage-3b-suggested-practice-engine`, `feat/stage-3b-suggested-practice-ui`, `feat/stage-3b-perf-and-counter` exist as feat branches. |
-| **3C — Review Queue** | A-side | ✓ `ROADMAP.md` §3C | ✗ | ✗ | Paper-only. |
-| **3D — Mastery Map** | A-side | ✓ `ROADMAP.md` §3D | ✗ | ✗ | Deferred per `ROADMAP.md` — *"Hardest brick of the four; depends on the others producing signal first."* |
+| **3B — Suggested Practice** | A-side | ✓ `layer-model.md` §3B | ✗ engine not on main | ✗ | `feat/stage-3b-suggested-practice-engine`, `feat/stage-3b-suggested-practice-ui`, `feat/stage-3b-perf-and-counter` exist as feat branches. |
+| **3C — Review Queue** | A-side | ✓ `layer-model.md` §3C | ✗ | ✗ | Paper-only. |
+| **3D — Mastery Map** | A-side | ✓ `layer-model.md` §3D | ✗ | ✗ | Deferred per `layer-model.md` — *"Hardest brick of the four; depends on the others producing signal first."* |
 | **v1 weakness recommender** (parallel surface) | A-side | ✓ (predates 3A) | ✓ `src/lib/weakness/` on main | ✓ (Home card, Focus Areas, daily challenge) | NOT a Stage 3 brick — server-state reader; lives next to Stage 3 until 3A's screen lands. |
 
 The v1 surface (`src/lib/weakness/`) is **not** Stage 3. It reads
@@ -274,23 +275,23 @@ on the returned recommendation.
   on all three adapters. The `profiles.placement_*` row is the source
   of truth; the local mirror is descriptive only.
 - **Never read from Supabase to render Stage 3A.** Local-only posture
-  (`ROADMAP.md` §"Local-Only Posture"). The screen reads
+  (`layer-model.md` §"Local-Only Posture"). The screen reads
   `localStorage` and the in-process `WEAKNESS_CATALOG`; nothing else.
 - **Never write to `mercy_user_facts` from Stage 3A.** Semantic
   person memory and behavioral signal are distinct stores
-  (`STRATEGY.md` §12 "Study OS Summary Boundary").
+  (the **Study OS Summary Boundary** section below, this doc).
 - **Never store learner text.** Tags, timestamps, axes — yes. Raw
   user input, corrected sentences, transcripts, audio — **no**. Per
-  `ROADMAP.md` §"Stage 3 Study OS Boundaries".
+  `layer-model.md` §"Stage 3 Study OS Boundaries".
 - **Never write back to placement state.** Stage 3A reads
   `profiles.placement_*` (via the snapshot mirror) but does **not**
   write it; the placement engine is the only writer
-  (`STRATEGY.md` §12 "Placement Writeback Boundary").
+  (`placement-v3.md` "Placement Writeback Boundary").
 - **Never throw from an adapter.** The Speak tab / tutor turn / room
   flow is the primary path; an adapter write failure must be a
   silent no-op so the primary path stays alive.
 
-### 5b. The Stage 3B "never" list (per `ROADMAP.md` §3B)
+### 5b. The Stage 3B "never" list (per `layer-model.md` §3B)
 
 When 3B lands:
 
@@ -422,7 +423,7 @@ the same anti-pattern as a fake streak number.
 
 ### 6f. Stage 3B trigger is `(c+)` — read carefully
 
-Per `ROADMAP.md` §3B: *"Trigger semantics (c+): context-triggered
+Per `layer-model.md` §3B: *"Trigger semantics (c+): context-triggered
 AND learner-controllable."* That is:
 
 - **Context-triggered** — only when fresh local evidence is available
@@ -461,10 +462,10 @@ per attempt.
 - **[data-flow.md §1](../data-flow.md#1-learner-signal-flow-anon--stage-3a--stage-3b--practice)** — the signal flow diagram.
 - **`docs/stage-3a/local-weakness-map-design.md`** — canonical
   design doc.
-- **`ROADMAP.md`** §"Stage 3 — Study OS Sequence" — the four-brick
+- **`layer-model.md`** §"Stage 3 — Study OS Sequence" — the four-brick
   spec.
-- **`STRATEGY.md`** §12 — Study OS Summary Boundary, Placement
-  Writeback Boundary.
+- **Study OS Summary Boundary** (this doc, section below) +
+  **Placement Writeback Boundary** (`placement-v3.md`).
 - **Sibling deep-dives:**
   - [`billing-entitlement.md`](./billing-entitlement.md) — Stage 3
     surfaces gate on entitlement via the same hook
@@ -544,10 +545,10 @@ These are paper-only as of this audit. Before starting either:
 
 - [ ] Confirm with Chau that the prior brick produced enough signal.
       3D depends on 3A–C; 3C depends on 3A.
-- [ ] Re-read `ROADMAP.md` §3C / §3D — they exist as named bricks
+- [ ] Re-read `layer-model.md` §3C / §3D — they exist as named bricks
       with explicit non-negotiables (no XP, no streak pressure).
 - [ ] If the design requires a server write, the entire posture
-      changes — that is a `STRATEGY.md` §12 "Local-Only Posture"
+      changes — that is a `layer-model.md` §"Local-Only Posture"
       break and requires explicit owner sign-off, not implicit by
       implementation.
 
@@ -581,3 +582,20 @@ When Stage 3B is live and proven, the v1 recommender at
 > from behavioral signal.
 
 If you ever need to explain Stage 3 in two sentences, those are them.
+
+---
+
+## Strategic invariant: Study OS Summary Boundary (migrated from STRATEGY.md §12)
+
+> **Migrated 2026-06-05 (V3 forward-fix), verbatim from `STRATEGY.md@d73f91674^` §12.**
+> This is the canonical home for the Study OS Summary Boundary. References that
+> formerly read "`STRATEGY.md` §12 — Study OS Summary Boundary" now point here.
+
+### Study OS Summary Boundary
+
+Study OS needs safe behavioral signals, but those signals are not the same thing as Mercy's semantic memory.
+
+- `mercy_user_facts` / episodic memory = semantic person memory: what Mercy remembers about the learner/person.
+- Study OS event summaries = local, time-windowed behavioral summaries: what the learner has been doing recently in study flows.
+
+Study OS event summaries may be derived from #1109 safe local learning events only as counts, booleans, timestamps, and other safe aggregates. They must not contain raw learner text, corrected sentence text, full transcripts, raw audio, PII, child identity, Placement result/status/writeback, Supabase sync, or external analytics.
