@@ -543,6 +543,74 @@ function repairVietlishMakeMistake(input: string): string {
   );
 }
 
+// --- Cluster: Vietlish verb-object / lexical (Step 11 Batch 3) ---
+// VN "nói (với) tôi" — *nói* maps to both say & tell, but English ditransitive
+// reporting to a person needs "tell + indirect object" ("say me the news" ->
+// "tell me the news"). Scoped TIGHTLY to the unambiguous object pronouns
+// me / us only. you/him/her/them/it are excluded on purpose: "say you are
+// right" (embedded subject), "say her name" (possessive), "just say them"
+// (utter-object) are all valid English. "say with me" is owned by
+// en-calque-say-with-person (a 'with' sits between, so this never matches it),
+// and fronted what/which questions abstain (mirrors say-with's guard).
+const VIETLISH_SAY_TELL_PERSON_PATTERN = /\b(say|says|said|saying)\s+(me|us)\b/i;
+
+const TELL_FOR_SAY: Record<string, string> = {
+  say: "tell",
+  says: "tells",
+  said: "told",
+  saying: "telling",
+};
+
+function hasVietlishSayTellPerson(input: string): boolean {
+  if (/^(?:what|which)\b/i.test(input.trim())) return false;
+  return VIETLISH_SAY_TELL_PERSON_PATTERN.test(input);
+}
+
+function repairVietlishSayTellPerson(input: string): string {
+  if (!hasVietlishSayTellPerson(input)) return input;
+  return input.replace(
+    /\b(say|says|said|saying)\s+(me|us)\b/gi,
+    (_match, verb: string, pronoun: string) => {
+      const replacement = matchLeadingCapitalization(verb, TELL_FOR_SAY[verb.toLowerCase()] ?? verb);
+      return `${replacement} ${pronoun}`;
+    },
+  );
+}
+
+// VN "tôi có/được N tuổi" -> "I have N years old"; English uses BE + N years
+// old ("I am 20 years old"). Closed pronoun-subject frame: have/has is replaced
+// by the agreeing BE form (I->am, you/we/they->are, he/she/it->is) and the
+// "<number> years old" predicate is preserved (normalized to "years old").
+// The trailing "old" predicate is required, so possessive-compound
+// ("a 20-year-old son"), partitive ("20 years of experience"), and plain
+// possession ("20 books") surfaces never match.
+const VIETLISH_AGE_HAVE_BE_PATTERN =
+  /\b(I|you|we|they|he|she|it)\s+(have|has)\s+(\d{1,3})\s+years?\s+old\b/i;
+
+const BE_FOR_AGE_SUBJECT: Record<string, string> = {
+  i: "am",
+  you: "are",
+  we: "are",
+  they: "are",
+  he: "is",
+  she: "is",
+  it: "is",
+};
+
+function hasVietlishAgeHaveBe(input: string): boolean {
+  return VIETLISH_AGE_HAVE_BE_PATTERN.test(input);
+}
+
+function repairVietlishAgeHaveBe(input: string): string {
+  return input.replace(
+    new RegExp(VIETLISH_AGE_HAVE_BE_PATTERN.source, "gi"),
+    (_match, subject: string, _have: string, number: string) => {
+      const be = BE_FOR_AGE_SUBJECT[subject.toLowerCase()] ?? "is";
+      return `${subject} ${be} ${number} years old`;
+    },
+  );
+}
+
 // --- Cluster: Vietlish discourse / phrasing ---
 // VN "theo tôi / theo ý kiến của tôi" -> "according to me / according to my
 // opinion" (should be "in my opinion"); VN redundancy "lý do là vì" -> "the
@@ -1552,6 +1620,20 @@ export const englishCorrectionRules: CorrectionRule[] = [
     apply: repairVietlishDoubleComparative,
     fpRiskNote:
       "Low risk. Drops 'more' only before a closed whitelist of synthetic -er comparatives (better, easier, faster, …) where double-marking is ungrammatical. Analytic comparatives that REQUIRE 'more' (more careful / more beautiful / more important), 'more' + noun ('more water'), and 'the more the better' are all left untouched. Re-capitalizes the result when the match is sentence-initial.",
+  },
+  {
+    id: "en-vietlish-say-tell-person",
+    detects: hasVietlishSayTellPerson,
+    apply: repairVietlishSayTellPerson,
+    fpRiskNote:
+      "Low-medium risk. VN 'nói' collapses say/tell, so learners write 'say me the news' for 'tell me the news'. V1 maps say/says/said/saying -> tell/tells/told/telling ONLY before the unambiguous object pronouns me/us (preserving case), and abstains on fronted what/which questions. you/him/her/them/it are deliberately excluded (embedded subject 'say you are right', possessive 'say her name', utter-object 'just say them'). 'say with me' is owned by en-calque-say-with-person ('with' between the verb and pronoun means this never matches it), and 'say to me' is already correct (the 'to' breaks adjacency).",
+  },
+  {
+    id: "en-vietlish-age-have-be",
+    detects: hasVietlishAgeHaveBe,
+    apply: repairVietlishAgeHaveBe,
+    fpRiskNote:
+      "Low risk. VN 'tôi có N tuổi' calques to 'I have N years old'; English needs BE. V1 replaces have/has with the agreeing BE form (I->am, you/we/they->are, he/she/it->is) ONLY in a pronoun-subject + have/has + <1-3 digit number> + year(s) old frame, and normalizes to 'years old'. The trailing 'old' predicate is mandatory, so possessive-compound ('a 20-year-old son'), partitive ('20 years of experience'), and plain possession ('20 books') never match, and already-correct 'I am 20 years old' is untouched.",
   },
   {
     id: "en-question-form-final-mark",

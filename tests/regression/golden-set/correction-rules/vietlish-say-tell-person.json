@@ -1,0 +1,100 @@
+{
+  "rule": "vietlishSayTellPerson",
+  "ruleId": "en-vietlish-say-tell-person",
+  "language": "en",
+  "description": "VN 'nói (với) tôi' transfer: Vietnamese 'nói' collapses say & tell, so learners write 'say me the news' where English ditransitive reporting to a person needs 'tell + indirect object' ('tell me the news'). Rule en-vietlish-say-tell-person maps say/says/said/saying -> tell/tells/told/telling ONLY before the unambiguous object pronouns me/us, preserving case, and abstains on fronted what/which questions.",
+  "fp_risk_note": "Low-medium risk. Object scope is locked to me/us only. you/him/her/them/it are deliberately excluded because they yield valid English: embedded subject ('say you are right'), possessive ('say her name'), utter-object ('just say them'). 'say with me' is owned by en-calque-say-with-person (a 'with' between the verb and pronoun means this rule never matches it); 'say to me' is already correct (the 'to' breaks adjacency); fronted 'What did you say?' has no indirect object and abstains; 'Say hello' has no pronoun IO.",
+  "positive": [
+    {
+      "id": "say-tell-pos-001",
+      "input": "He said me the news",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He told me the news.",
+      "expectedRuleFired": "en-vietlish-say-tell-person",
+      "notes": "Past 'said me' -> 'told me' (case-preserving verb map)."
+    },
+    {
+      "id": "say-tell-pos-002",
+      "input": "Please say me the truth",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Please tell me the truth.",
+      "expectedRuleFired": "en-vietlish-say-tell-person",
+      "notes": "Imperative 'say me' -> 'tell me'."
+    },
+    {
+      "id": "say-tell-pos-003",
+      "input": "Don't say me lies",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Don't tell me lies.",
+      "expectedRuleFired": "en-vietlish-say-tell-person",
+      "notes": "Negative imperative 'say me' -> 'tell me'."
+    },
+    {
+      "id": "say-tell-pos-004",
+      "input": "Can you say me the answer",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Can you tell me the answer?",
+      "expectedRuleFired": "en-vietlish-say-tell-person",
+      "notes": "Question 'say me' -> 'tell me'; co-fires with en-question-form-final-mark for the '?'."
+    }
+  ],
+  "negative": [
+    {
+      "id": "say-tell-neg-001",
+      "input": "say to me",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Say to me.",
+      "expectedRuleFired": null,
+      "notes": "Already correct: 'to' between verb and pronoun breaks adjacency -> must abstain."
+    },
+    {
+      "id": "say-tell-neg-002",
+      "input": "What did you say?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "What did you say?",
+      "expectedRuleFired": null,
+      "notes": "Fronted what-question, no indirect object; mirrors say-with's what/which guard -> must abstain."
+    },
+    {
+      "id": "say-tell-neg-003",
+      "input": "Say hello",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Say hello.",
+      "expectedRuleFired": null,
+      "notes": "No pronoun indirect object ('hello' is the utterance) -> must abstain."
+    },
+    {
+      "id": "say-tell-neg-004",
+      "input": "say with me",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Say to me.",
+      "expectedRuleFired": null,
+      "notes": "Owned by en-calque-say-with-person ('with' between verb and pronoun); this rule must NOT fire. Engine still corrects via the calque rule.",
+      "mustNotFire": ["en-vietlish-say-tell-person"]
+    },
+    {
+      "id": "say-tell-neg-005",
+      "input": "I say you are right",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I say you are right.",
+      "expectedRuleFired": null,
+      "notes": "'you' excluded (embedded clause subject, not an indirect object) -> must abstain."
+    },
+    {
+      "id": "say-tell-neg-006",
+      "input": "Say her name",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Say her name.",
+      "expectedRuleFired": null,
+      "notes": "'her' excluded (possessive determiner, not an indirect object) -> must abstain."
+    },
+    {
+      "id": "say-tell-neg-007",
+      "input": "Just say them",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Just say them.",
+      "expectedRuleFired": null,
+      "notes": "'them' excluded (utter-object: 'say the words') -> must abstain."
+    }
+  ]
+}
