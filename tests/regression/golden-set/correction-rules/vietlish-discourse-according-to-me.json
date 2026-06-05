@@ -1,0 +1,67 @@
+{
+  "rule": "vietlishDiscourseAccordingToMe",
+  "ruleId": "en-vietlish-discourse-according-to-me",
+  "language": "en",
+  "description": "VN 'theo tôi / theo ý kiến của tôi' transfer: learners write 'according to me / according to my opinion' where idiomatic English uses 'in my opinion'. Rule en-vietlish-discourse-according-to-me rewrites only the first-person object, preserving leading capitalization, and abstains on every external-source 'according to' (the report / him / scientists) and on coordinator tails.",
+  "fp_risk_note": "Medium risk. 'according to' is correct and common for citing external sources; only the first-person 'me / my opinion' object is the Vietlish tell. Negatives lock external-source objects (the report / him / scientists) and the coordinator tail 'according to me and my team'.",
+  "positive": [
+    {
+      "id": "according-pos-001",
+      "input": "According to me, English is hard.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "In my opinion, English is hard.",
+      "expectedRuleFired": "en-vietlish-discourse-according-to-me",
+      "notes": "Sentence-initial 'According to me,' -> 'In my opinion,' with capitalization preserved."
+    },
+    {
+      "id": "according-pos-002",
+      "input": "According to my opinion, we should wait.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "In my opinion, we should wait.",
+      "expectedRuleFired": "en-vietlish-discourse-according-to-me",
+      "notes": "'according to my opinion' is doubly redundant -> 'in my opinion'."
+    },
+    {
+      "id": "according-pos-003",
+      "input": "The plan is good according to me.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "The plan is good in my opinion.",
+      "expectedRuleFired": "en-vietlish-discourse-according-to-me",
+      "notes": "Mid/end-sentence 'according to me' (lowercase) -> 'in my opinion'."
+    }
+  ],
+  "negative": [
+    {
+      "id": "according-neg-001",
+      "input": "According to the report, sales rose.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "According to the report, sales rose.",
+      "expectedRuleFired": null,
+      "notes": "External source 'the report' is correct -> must abstain."
+    },
+    {
+      "id": "according-neg-002",
+      "input": "According to him, the bus is late.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "According to him, the bus is late.",
+      "expectedRuleFired": null,
+      "notes": "Third-person source is correct -> must abstain."
+    },
+    {
+      "id": "according-neg-003",
+      "input": "According to scientists, the earth is warming.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "According to scientists, the earth is warming.",
+      "expectedRuleFired": null,
+      "notes": "Authority source is correct -> must abstain."
+    },
+    {
+      "id": "according-neg-004",
+      "input": "According to me and my team, it works.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "According to me and my team, it works.",
+      "expectedRuleFired": null,
+      "notes": "Coordinator 'and' after 'me' means a compound source; 'in my opinion and my team' would be ungrammatical -> must abstain."
+    }
+  ]
+}
