@@ -1,0 +1,83 @@
+{
+  "rule": "vietlishDoubleSuperlativeMostEst",
+  "ruleId": "en-vietlish-double-superlative-most-est",
+  "language": "en",
+  "description": "VN superlative is the single particle 'nhất'; learners double-mark it as analytic 'most' + synthetic '-est'. Drops 'most' before a closed -est whitelist (tallest, biggest, fastest, …), keeping the synthetic superlative (a preceding 'the' stays). Re-capitalizes when the match is sentence-initial.",
+  "fp_risk_note": "Low risk. Fires only before a fixed -est whitelist where 'most …-est' is ungrammatical. Analytic superlatives that REQUIRE 'most' ('the most beautiful', 'the most important thing'), 'most' + noun ('most people'), an already-correct synthetic superlative ('the tallest'), and 'almost' (the \\bmost\\b word boundary excludes it) all abstain — the negatives stress each surface, including the 'almost' boundary.",
+  "positive": [
+    {
+      "id": "vietlish-double-superlative-most-est-pos-001",
+      "input": "He is the most tallest",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He is the tallest.",
+      "expectedRuleFired": "vietlishDoubleSuperlativeMostEst",
+      "notes": "Double-marked superlative drops 'most'; the preceding 'the' is kept."
+    },
+    {
+      "id": "vietlish-double-superlative-most-est-pos-002",
+      "input": "It is the most biggest city",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "It is the biggest city.",
+      "expectedRuleFired": "vietlishDoubleSuperlativeMostEst",
+      "notes": "Mid-sentence, attributive — only 'most' removed, head noun preserved."
+    },
+    {
+      "id": "vietlish-double-superlative-most-est-pos-003",
+      "input": "I want the most fastest car",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I want the fastest car.",
+      "expectedRuleFired": "vietlishDoubleSuperlativeMostEst",
+      "notes": "Mid-sentence double superlative, no re-capitalization needed."
+    },
+    {
+      "id": "vietlish-double-superlative-most-est-pos-004",
+      "input": "Most biggest is best",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Biggest is best.",
+      "expectedRuleFired": "vietlishDoubleSuperlativeMostEst",
+      "notes": "Sentence-initial match — the new first letter is re-capitalized ('Most biggest' -> 'Biggest')."
+    }
+  ],
+  "negative": [
+    {
+      "id": "vietlish-double-superlative-most-est-neg-001",
+      "input": "the most beautiful",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The most beautiful.",
+      "expectedRuleFired": null,
+      "notes": "Analytic superlative — 'most beautiful' is correct; 'beautifulest' does not exist; not on the -est whitelist."
+    },
+    {
+      "id": "vietlish-double-superlative-most-est-neg-002",
+      "input": "most people",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Most people.",
+      "expectedRuleFired": null,
+      "notes": "'most' + noun (quantifier), not a superlative adjective."
+    },
+    {
+      "id": "vietlish-double-superlative-most-est-neg-003",
+      "input": "the tallest",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The tallest.",
+      "expectedRuleFired": null,
+      "notes": "Already-correct synthetic superlative with no 'most' — nothing to drop."
+    },
+    {
+      "id": "vietlish-double-superlative-most-est-neg-004",
+      "input": "the most important thing",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The most important thing.",
+      "expectedRuleFired": null,
+      "notes": "Analytic superlative that must keep 'most'; 'important' not on the -est whitelist."
+    },
+    {
+      "id": "vietlish-double-superlative-most-est-neg-005",
+      "input": "almost biggest",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Almost biggest.",
+      "expectedRuleFired": null,
+      "notes": "Word-boundary guard: \\bmost\\b must NOT match inside 'almost' — abstain."
+    }
+  ]
+}

@@ -797,6 +797,54 @@ function repairVietlishDoubleComparative(input: string): string {
   );
 }
 
+// Rule 4 (Vietlish B3 — intensifier/degree): VN "rất" premodifies verbs
+// (rất muốn/thích "really want/like"), but English "very" cannot modify a
+// finite verb -> "really". This extends en-vietlish-very-like to a CLOSED verb
+// whitelist that EXCLUDES like/likes (those stay owned by en-vietlish-very-like,
+// no overlap). Requires the subject pronoun immediately adjacent to "very" so
+// "very much want" (with "much" between) and adjective uses ("is very tired")
+// never match. "very" is never at offset 0 here (a subject precedes it), so no
+// re-capitalization is needed.
+const VIETLISH_VERY_VERB_REALLY_PATTERN =
+  /\b(I|you|we|they|he|she|it)\s+very\s+(want|wants|love|loves|need|needs|enjoy|enjoys|hope|hopes|miss|misses)\b/i;
+
+function hasVietlishVeryVerbReally(input: string): boolean {
+  return VIETLISH_VERY_VERB_REALLY_PATTERN.test(input);
+}
+
+function repairVietlishVeryVerbReally(input: string): string {
+  return input.replace(
+    VIETLISH_VERY_VERB_REALLY_PATTERN,
+    (_match, subject: string, verb: string) => `${subject} really ${verb}`,
+  );
+}
+
+// Rule 5 (Vietlish B3 — intensifier/degree): VN superlative is the single
+// particle "nhất"; learners double-mark it as analytic "most" + synthetic
+// "-est". Drops "most" before a CLOSED -est whitelist, leaving the synthetic
+// superlative (a preceding "the" stays). The word boundary on "most" keeps it
+// from matching inside "almost". When the match is sentence-initial (offset 0
+// of the already-capitalized engine input) the new first letter is
+// re-capitalized so "Most biggest" -> "Biggest".
+const VIETLISH_DOUBLE_SUPERLATIVE_PATTERN =
+  /\bmost\s+(tallest|biggest|fastest|shortest|longest|smallest|oldest|youngest|hottest|coldest|nicest|happiest|richest|cheapest|easiest|highest|lowest|strongest|hardest)\b/i;
+
+function hasVietlishDoubleSuperlative(input: string): boolean {
+  return VIETLISH_DOUBLE_SUPERLATIVE_PATTERN.test(input);
+}
+
+function repairVietlishDoubleSuperlative(input: string): string {
+  return input.replace(
+    VIETLISH_DOUBLE_SUPERLATIVE_PATTERN,
+    (_match, superlative: string, offset: number) => {
+      if (offset === 0) {
+        return `${superlative.charAt(0).toUpperCase()}${superlative.slice(1)}`;
+      }
+      return superlative;
+    },
+  );
+}
+
 const PERSON_OBJECT_PRONOUN_PATTERN = "(?:me|you|him|her|us|them)";
 const STEP6_LISTEN_OBJECT_PATTERN = "(?:me|you|him|her|us|them|music|song|teacher|radio|podcast|lesson|story)";
 const CLOCK_TIME_PATTERN =
@@ -1637,6 +1685,20 @@ export const englishCorrectionRules: CorrectionRule[] = [
     apply: repairVietlishAgeHaveBe,
     fpRiskNote:
       "Low risk. VN 'tôi có N tuổi' calques to 'I have N years old'; English needs BE. V1 replaces have/has with the agreeing BE form (I->am, you/we/they->are, he/she/it->is) ONLY in a pronoun-subject + have/has + <1-3 digit number> + year(s) old frame, and normalizes to 'years old'. The trailing 'old' predicate is mandatory, so possessive-compound ('a 20-year-old son'), partitive ('20 years of experience'), and plain possession ('20 books') never match, and already-correct 'I am 20 years old' is untouched.",
+  },
+  {
+    id: "en-vietlish-very-verb-really",
+    detects: hasVietlishVeryVerbReally,
+    apply: repairVietlishVeryVerbReally,
+    fpRiskNote:
+      "Low-medium risk. VN 'rất' premodifies verbs, but English 'very' cannot modify a finite verb (rất muốn -> 'really want', not 'very want'). V1 replaces 'very' with 'really' only on a CLOSED pronoun + very + verb-whitelist (want/love/need/enjoy/hope/miss + -s forms), EXCLUDING like/likes (owned by en-vietlish-very-like). Adjective uses ('is very tired', 'very good'), adverbs ('very quickly'), and 'very much want' (the intervening 'much' breaks adjacency) never match.",
+  },
+  {
+    id: "en-vietlish-double-superlative-most-est",
+    detects: hasVietlishDoubleSuperlative,
+    apply: repairVietlishDoubleSuperlative,
+    fpRiskNote:
+      "Low risk. Drops 'most' only before a CLOSED whitelist of synthetic -est superlatives (tallest, biggest, fastest, …) where double-marking 'most …-est' is ungrammatical for the single VN particle 'nhất'. Analytic superlatives that REQUIRE 'most' ('the most beautiful', 'the most important'), 'most' + noun/quantifier ('most people'), and 'almost' (the \\bmost\\b boundary excludes it) never match. The result is re-capitalized when the match is sentence-initial.",
   },
   {
     id: "en-question-form-final-mark",

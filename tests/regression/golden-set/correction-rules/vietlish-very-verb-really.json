@@ -1,0 +1,84 @@
+{
+  "rule": "vietlishVeryVerbReally",
+  "ruleId": "en-vietlish-very-verb-really",
+  "language": "en",
+  "description": "VN 'rất' premodifies verbs (rất muốn/thích), but English 'very' cannot modify a finite verb; the intensifier must be 'really'. Replaces 'very' with 'really' on a closed pronoun + very + verb-whitelist (want/love/need/enjoy/hope/miss + -s forms), EXCLUDING like/likes which stay owned by en-vietlish-very-like.",
+  "fp_risk_note": "Low-medium risk. Fires only on a pronoun immediately adjacent to 'very' followed by a closed verb whitelist. Adjective uses ('is very tired', 'very good'), adverbs ('very quickly'), the 'very much want' pattern (intervening 'much' breaks adjacency), and 'very like/likes' (owned by en-vietlish-very-like) all abstain — the negatives stress each of these FP surfaces.",
+  "positive": [
+    {
+      "id": "vietlish-very-verb-really-pos-001",
+      "input": "I very want to go",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I really want to go.",
+      "expectedRuleFired": "vietlishVeryVerbReally",
+      "notes": "rất muốn -> 'really want'; 'very' cannot modify the finite verb 'want'."
+    },
+    {
+      "id": "vietlish-very-verb-really-pos-002",
+      "input": "She very loves this song",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She really loves this song.",
+      "expectedRuleFired": "vietlishVeryVerbReally",
+      "notes": "Third-person -s verb form ('loves') is on the whitelist; subject preserved."
+    },
+    {
+      "id": "vietlish-very-verb-really-pos-003",
+      "input": "We very need help",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "We really need help.",
+      "expectedRuleFired": "vietlishVeryVerbReally",
+      "notes": "Plural subject + base verb 'need'."
+    },
+    {
+      "id": "vietlish-very-verb-really-pos-004",
+      "input": "I very miss you",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I really miss you.",
+      "expectedRuleFired": "vietlishVeryVerbReally",
+      "notes": "'miss' on the whitelist; rất nhớ -> 'really miss'."
+    }
+  ],
+  "negative": [
+    {
+      "id": "vietlish-very-verb-really-neg-001",
+      "input": "This is very good",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "This is very good.",
+      "expectedRuleFired": null,
+      "notes": "'very' correctly modifies the adjective 'good' — no verb match."
+    },
+    {
+      "id": "vietlish-very-verb-really-neg-002",
+      "input": "I very much want it",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I very much want it.",
+      "expectedRuleFired": null,
+      "notes": "The intervening 'much' breaks pronoun + very + verb adjacency — abstain."
+    },
+    {
+      "id": "vietlish-very-verb-really-neg-003",
+      "input": "I very like English",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I really like English.",
+      "expectedRuleFired": null,
+      "mustNotFire": ["en-vietlish-very-verb-really"],
+      "notes": "'like' is EXCLUDED from this rule's whitelist; en-vietlish-very-like owns it. This rule must not fire (verified via mustNotFire); the engine still corrects via the other rule."
+    },
+    {
+      "id": "vietlish-very-verb-really-neg-004",
+      "input": "very quickly",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Very quickly.",
+      "expectedRuleFired": null,
+      "notes": "Adverb modification ('very quickly') with no subject pronoun — no match."
+    },
+    {
+      "id": "vietlish-very-verb-really-neg-005",
+      "input": "She is very tired",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She is very tired.",
+      "expectedRuleFired": null,
+      "notes": "'is' between subject and 'very' breaks adjacency; 'very tired' is a correct adjective phrase."
+    }
+  ]
+}
