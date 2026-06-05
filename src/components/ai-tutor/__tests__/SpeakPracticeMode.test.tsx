@@ -439,6 +439,9 @@ describe("SpeakPracticeMode pronunciation result display", () => {
 
     const tone = screen.getByTestId("vietnamese-tone-feedback");
     expect(tone).toHaveTextContent("Thanh sắc đúng rồi.");
-    expect(tone).toHaveTextContent("Điểm thanh điệu khoảng 92%.");
+    // Qualitative cue only — no fabricated tone-score percent until the contour
+    // scorer is native-validated (lane-c-vn-tone-validation-pending).
+    expect(tone).not.toHaveTextContent("Điểm thanh điệu khoảng");
+    expect(tone.textContent).not.toMatch(/\d+%/);
   });
 });
