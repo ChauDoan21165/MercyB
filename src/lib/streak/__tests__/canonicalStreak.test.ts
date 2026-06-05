@@ -22,9 +22,15 @@ beforeEach(() => {
 describe("canonicalStreak — the single read seam", () => {
   it("flag OFF → reads localStorage; getStreakDays delegates to the same value", () => {
     // Seed a continuing streak: yesterday active at 5 days.
-    const yesterday = new Date(Date.now() - 86_400_000)
-      .toISOString()
-      .slice(0, 10);
+    // Local-calendar yesterday — MUST mirror pointsService's local-day seam
+    // (getYesterdayStr → localDayStr: getFullYear/getMonth/getDate, NOT UTC
+    // toISOString). Since 379c20ef0 the streak buckets by LOCAL day; a UTC
+    // toISOString() seed disagrees with the writer on non-UTC runners (UTC
+    // "yesterday" can equal the local "today"), so the continued-streak
+    // increment is missed and the read returns 5 instead of 6.
+    const y = new Date();
+    y.setDate(y.getDate() - 1);
+    const yesterday = `${y.getFullYear()}-${String(y.getMonth() + 1).padStart(2, "0")}-${String(y.getDate()).padStart(2, "0")}`;
     localStorage.setItem("mb.points.streak", "5");
     localStorage.setItem("mb.points.lastDaily", yesterday);
 
