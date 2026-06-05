@@ -94,6 +94,18 @@ describe("extractF0PitchContour", () => {
     });
   });
 
+  // CI-stability note (B3, 2026-06-05): this case runs the real YIN extractor
+  // 24× and is the single CPU-heaviest test in the file (~1.4s alone locally).
+  // In the `test 2/2` CI shard it shares oversubscribed cores with the heavy
+  // ai-tutor + supabase-function suites; the whole file stretched to ~38.5s and
+  // this case to ~28.8s (pipeline 2579827242, MR 431), tripping the 15s default
+  // `testTimeout` — a TIMEOUT, not an assertion failure. The computation is
+  // fully deterministic (seeded synthTone, no RNG/Date/timers) and every fixture
+  // classifies with a wide margin (≥0.042 to the nearest decision boundary), so
+  // the ≥90% trust floor and all fixtures are kept verbatim. We only widen the
+  // per-test timeout to absorb the documented ~20× CI contention slowdown. Do
+  // NOT lower the 90% bar or trim fixtures to "speed it up" — that weakens the
+  // contour-classifier trust floor; the slowness is shard load, not the assertion.
   it("meets the >=90% contour-bucket threshold on curated deterministic references", () => {
     const fixtures: Array<{ expected: SupportedContour; samples: Float32Array }> = [
       ...Array.from({ length: 8 }, (_, index) => ({
@@ -138,7 +150,7 @@ describe("extractF0PitchContour", () => {
       ]),
     );
     expect(results.every((result) => result.confidence >= 0.75)).toBe(true);
-  });
+  }, 60_000);
 
   it("feeds the existing Vietnamese tone scorer without changing its contract", () => {
     const risingContour = extractF0PitchContour({
