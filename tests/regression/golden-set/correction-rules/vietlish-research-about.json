@@ -1,0 +1,75 @@
+{
+  "rule": "vietlishResearchAbout",
+  "ruleId": "en-vietlish-research-about",
+  "language": "en",
+  "description": "VN 'nghiên cứu về' transfer: learners calque 've'=about onto the transitive verb research ('research about cancer'). Rule en-vietlish-research-about drops 'about' (mirrors en-step6-discuss-about) ONLY when research is a VERB. A negative lookbehind blocks do-support and determiners/quantifiers/possessives so the noun sense ('do research about X', 'some research about X') is left untouched.",
+  "fp_risk_note": "Low-medium risk. 'about' is correct when research is a NOUN. V1 fires only when research is a VERB; the negative lookbehind locks the noun sense. Negatives: already-correct 'I research cancer', a non-research 'about' phrase, a different verb ('read about'), and the do-support noun case 'I do research about cancer' (must abstain -> would otherwise wrongly become 'do research it').",
+  "positive": [
+    {
+      "id": "research-about-pos-001",
+      "input": "I research about cancer",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I research cancer.",
+      "expectedRuleFired": "en-vietlish-research-about",
+      "notes": "Verb 'research' + 'about' -> drop about."
+    },
+    {
+      "id": "research-about-pos-002",
+      "input": "She researched about this topic",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She researched this topic.",
+      "expectedRuleFired": "en-vietlish-research-about",
+      "notes": "Past verb 'researched' + 'about' -> drop about."
+    },
+    {
+      "id": "research-about-pos-003",
+      "input": "We are researching about it",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "We are researching it.",
+      "expectedRuleFired": "en-vietlish-research-about",
+      "notes": "Progressive 'researching' + 'about' -> drop about."
+    }
+  ],
+  "negative": [
+    {
+      "id": "research-about-neg-001",
+      "input": "I research cancer",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I research cancer.",
+      "expectedRuleFired": null,
+      "notes": "Already correct (no 'about') -> must abstain."
+    },
+    {
+      "id": "research-about-neg-002",
+      "input": "a documentary about whales",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "A documentary about whales.",
+      "expectedRuleFired": null,
+      "notes": "No research verb at all -> must not fire."
+    },
+    {
+      "id": "research-about-neg-003",
+      "input": "I read about it",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I read about it.",
+      "expectedRuleFired": null,
+      "notes": "Different verb 'read' (about is correct) -> must not fire."
+    },
+    {
+      "id": "research-about-neg-004",
+      "input": "I do research about cancer",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I do research about cancer.",
+      "expectedRuleFired": null,
+      "notes": "do-support: 'research' is a NOUN here, 'about' is correct. Lookbehind must block; otherwise the rule would wrongly produce 'do research cancer'. (Precision lock.)"
+    },
+    {
+      "id": "research-about-neg-005",
+      "input": "I will do research about it",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I will do research about it.",
+      "expectedRuleFired": null,
+      "notes": "do-support noun sense again -> must abstain."
+    }
+  ]
+}

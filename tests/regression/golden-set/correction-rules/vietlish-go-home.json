@@ -1,0 +1,83 @@
+{
+  "rule": "vietlishGoHome",
+  "ruleId": "en-vietlish-go-home",
+  "language": "en",
+  "description": "VN 'về nhà / ra đó' transfer: learners overgeneralize 'to' before adverbial destinations ('go to home', 'went to there'). Rule en-vietlish-go-home drops 'to' before a CLOSED bare-adverb whitelist (home/there/abroad/downtown/upstairs/downstairs). The pattern has no 'the', so the building sense 'go to the home (for the elderly)' is left untouched; it does not collide with en-step5-preposition-pattern ('go school'->'go to school').",
+  "fp_risk_note": "Low-medium risk. 'go to <noun place>' is correct (go to school/work). V1 drops 'to' only before the closed bare-adverb whitelist. Negatives lock: already-correct 'I go home', the building sense 'go to the home for the elderly', a non-whitelisted noun place 'go to school', 'go to work', and a he/she routine 'goes to school' (proves no interaction with en-step5-preposition-pattern).",
+  "positive": [
+    {
+      "id": "go-home-pos-001",
+      "input": "I go to home",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I go home.",
+      "expectedRuleFired": "en-vietlish-go-home",
+      "notes": "Bare adverb 'home' -> drop to."
+    },
+    {
+      "id": "go-home-pos-002",
+      "input": "She goes to home",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She goes home.",
+      "expectedRuleFired": "en-vietlish-go-home",
+      "notes": "3rd-singular 'goes to home' -> goes home."
+    },
+    {
+      "id": "go-home-pos-003",
+      "input": "I want to go to home",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I want to go home.",
+      "expectedRuleFired": "en-vietlish-go-home",
+      "notes": "Infinitive 'to go to home': only the second 'to' (before home) is dropped."
+    },
+    {
+      "id": "go-home-pos-004",
+      "input": "He went to there",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He went there.",
+      "expectedRuleFired": "en-vietlish-go-home",
+      "notes": "Past 'went to there' + whitelisted adverb 'there' -> went there."
+    }
+  ],
+  "negative": [
+    {
+      "id": "go-home-neg-001",
+      "input": "I go home",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I go home.",
+      "expectedRuleFired": null,
+      "notes": "Already correct (no 'to') -> must abstain."
+    },
+    {
+      "id": "go-home-neg-002",
+      "input": "I go to the home for the elderly",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I go to the home for the elderly.",
+      "expectedRuleFired": null,
+      "notes": "'go to the home' = the building sense; pattern has no 'the' so it must abstain. (Precision lock.)"
+    },
+    {
+      "id": "go-home-neg-003",
+      "input": "I go to school",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I go to school.",
+      "expectedRuleFired": null,
+      "notes": "'school' is a noun place, not in the adverb whitelist; correct as-is -> must not fire."
+    },
+    {
+      "id": "go-home-neg-004",
+      "input": "go to work",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Go to work.",
+      "expectedRuleFired": null,
+      "notes": "'work' not whitelisted; 'go to work' is correct -> must abstain."
+    },
+    {
+      "id": "go-home-neg-005",
+      "input": "He goes to school every day",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He goes to school every day.",
+      "expectedRuleFired": null,
+      "notes": "Proves no interaction with en-step5-preposition-pattern ('go school'->'go to school' is the opposite direction); must abstain."
+    }
+  ]
+}

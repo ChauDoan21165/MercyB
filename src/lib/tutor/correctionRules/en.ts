@@ -578,6 +578,75 @@ function repairVietlishReasonIsBecause(input: string): string {
   return input.replace(VIETLISH_REASON_IS_BECAUSE_PATTERN, "$1that");
 }
 
+// --- Cluster: Vietlish verb-object / collocation (B2) ---
+// Four high-precision VN->EN transfers, each rewriting a single closed surface
+// and preserving capitalization:
+//   1. "Tôi đồng ý" -> "I am agree" (đồng ý is a verb, not an adjective; drop
+//      the inserted copula). Scoped to first/second-person + plural subjects;
+//      he/she/it is OUT of scope (would need "agrees").
+//   2. "giải thích cho tôi" -> "explain me" (dropped dative "to"; insert it).
+//   3. "nghiên cứu về" -> "research about" (calqued "về"=about onto a
+//      transitive verb; drop "about"). Fires only when research is a VERB, never
+//      the noun ("do research about").
+//   4. "về nhà / ra đó" -> "go to home / went to there" (overgeneralized "to"
+//      before adverbial destinations; drop "to" before a CLOSED adverb
+//      whitelist). Never matches "go to the home" (the building sense).
+
+// Matches both the spaced copula ("I am agree", "we are agree") and the
+// contracted copula attached to the subject ("I'm agree", "we're agree"). The
+// (?!d|ment|able) tail abstains on agreed/agreement/agreeable. Scoped to
+// first/second-person + plural subjects only; he/she/it is out of scope.
+const VIETLISH_BE_AGREE_PATTERN =
+  /\b(I|you|we|they)(?:\s+(?:am|are)|'m|'re)\s+agree\b(?!d|ment|able)/i;
+
+function hasVietlishBeAgree(input: string): boolean {
+  return VIETLISH_BE_AGREE_PATTERN.test(input);
+}
+
+function repairVietlishBeAgree(input: string): string {
+  return input.replace(VIETLISH_BE_AGREE_PATTERN, "$1 agree");
+}
+
+const VIETLISH_EXPLAIN_TO_ME_PATTERN =
+  /\b(explain|explains|explained|explaining)\s+(me|him|her|us|them|you)\b/i;
+
+function hasVietlishExplainToMe(input: string): boolean {
+  return VIETLISH_EXPLAIN_TO_ME_PATTERN.test(input);
+}
+
+function repairVietlishExplainToMe(input: string): string {
+  return input.replace(VIETLISH_EXPLAIN_TO_ME_PATTERN, "$1 to $2");
+}
+
+// "research" must be the VERB. A leading determiner/quantifier/possessive or a
+// do-support verb makes it the NOUN ("I do research about X", "some research
+// about X"), where "about" is correct -> abstain. The negative lookbehind locks
+// this; without it the rule would wrongly produce "I do research it".
+const VIETLISH_RESEARCH_ABOUT_PATTERN =
+  /(?<!\b(?:do|did|does|doing|some|the|my|your|his|her|our|their|this|that|more|a|any|much|little|no)\s)\b(research|researches|researched|researching)\s+about\s+(?=\S)/i;
+
+function hasVietlishResearchAbout(input: string): boolean {
+  return VIETLISH_RESEARCH_ABOUT_PATTERN.test(input);
+}
+
+function repairVietlishResearchAbout(input: string): string {
+  return input.replace(VIETLISH_RESEARCH_ABOUT_PATTERN, "$1 ");
+}
+
+// Closed adverb whitelist: bare destination adverbials that take no "to". The
+// absence of "the" in the pattern is load-bearing -- "go to the home (for the
+// elderly)" is the building sense and must stay untouched.
+const VIETLISH_GO_HOME_PATTERN =
+  /\b(go|goes|going|went)\s+to\s+(home|there|abroad|downtown|upstairs|downstairs)\b/i;
+
+function hasVietlishGoHome(input: string): boolean {
+  return VIETLISH_GO_HOME_PATTERN.test(input);
+}
+
+function repairVietlishGoHome(input: string): string {
+  return input.replace(VIETLISH_GO_HOME_PATTERN, "$1 $2");
+}
+
 function repairStep5PrepositionPatterns(input: string): string {
   return input
     .replace(/\b(depend|depends|depended|depending)\s+of\b/gi, "$1 on")
@@ -1363,6 +1432,34 @@ export const englishCorrectionRules: CorrectionRule[] = [
     apply: repairVietlishReasonIsBecause,
     fpRiskNote:
       "Medium risk. 'is because' is valid on its own ('This is because it rained'). V1 only rewrites 'is/was because' to 'is/was that' when anchored to a preceding 'the reason' inside the same clause, and never before 'because of' (a preposition). Bare 'because' clauses and reason-less sentences are untouched.",
+  },
+  {
+    id: "en-vietlish-be-agree",
+    detects: hasVietlishBeAgree,
+    apply: repairVietlishBeAgree,
+    fpRiskNote:
+      "Low risk. 'agree' is a verb, not an adjective; learners insert a copula by analogy with VN 'đồng ý'. V1 only drops am/are/'m/'re after first/second-person + plural subjects (I/you/we/they) directly before bare 'agree', and abstains on he/she/it (out of scope; needs 'agrees'), 'agreed/agreement/agreeable', and any non-'agree' surface.",
+  },
+  {
+    id: "en-vietlish-explain-to-me",
+    detects: hasVietlishExplainToMe,
+    apply: repairVietlishExplainToMe,
+    fpRiskNote:
+      "Low risk. Inserting the dative 'to' after explain + a pronoun object is always grammatical (explain to me / to him). Fires only when a form of explain directly governs a pronoun object; non-pronoun objects ('explain the rule') and already-correct 'explain to me' are untouched.",
+  },
+  {
+    id: "en-vietlish-research-about",
+    detects: hasVietlishResearchAbout,
+    apply: repairVietlishResearchAbout,
+    fpRiskNote:
+      "Low-medium risk. 'about' is correct when research is a NOUN ('do research about X', 'some research about X'). V1 fires only when research is a VERB (negative lookbehind blocks do-support and determiners/quantifiers/possessives) and 'about' immediately follows, mirroring en-step6-discuss-about.",
+  },
+  {
+    id: "en-vietlish-go-home",
+    detects: hasVietlishGoHome,
+    apply: repairVietlishGoHome,
+    fpRiskNote:
+      "Low-medium risk. 'go to <noun place>' is correct (go to school/work). V1 drops 'to' only before a CLOSED bare-adverb whitelist (home/there/abroad/downtown/upstairs/downstairs). The pattern has no 'the', so the building sense 'go to the home (for the elderly)' is left untouched, and it does not collide with en-step5-preposition-pattern ('go school'->'go to school', the opposite direction).",
   },
   {
     id: "en-question-form-final-mark",
