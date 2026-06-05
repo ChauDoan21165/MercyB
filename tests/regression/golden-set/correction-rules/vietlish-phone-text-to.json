@@ -1,0 +1,83 @@
+{
+  "rule": "vietlishPhoneTextTo",
+  "ruleId": "en-vietlish-phone-text-to",
+  "language": "en",
+  "description": "VN 'gọi/nhắn cho' transfer: learners calque 'cho'=to onto the transitive verbs phone/text ('phone to me', 'text to him'). Rule en-vietlish-phone-text-to drops 'to' ONLY when the VERB phone/text is immediately followed by 'to' + a person pronoun. 'call' is EXCLUDED (held). A negative lookbehind blocks the NOUN 'text' ('send/read a text to me'); the pronoun-object requirement blocks the infinitive ('phone to confirm').",
+  "fp_risk_note": "Low-medium risk. 'to' is correct after the NOUN 'text' (send/read a text to me) and in purpose infinitives ('phone to confirm'). V1 fires only on the VERB phone/text + 'to' + person pronoun. Negatives: the noun 'text' with a determiner, an infinitive 'to confirm', the EXCLUDED verb 'call', and an already-correct no-'to' sentence.",
+  "positive": [
+    {
+      "id": "phone-text-to-pos-001",
+      "input": "Please text to me tonight.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Please text me tonight.",
+      "expectedRuleFired": "vietlishPhoneTextTo",
+      "notes": "Verb 'text' + 'to me' -> drop to."
+    },
+    {
+      "id": "phone-text-to-pos-002",
+      "input": "He phoned to her yesterday.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He phoned her yesterday.",
+      "expectedRuleFired": "vietlishPhoneTextTo",
+      "notes": "Past verb 'phoned' + 'to her' -> drop to."
+    },
+    {
+      "id": "phone-text-to-pos-003",
+      "input": "I will text to them later.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I will text them later.",
+      "expectedRuleFired": "vietlishPhoneTextTo",
+      "notes": "Modal + base verb 'text' + 'to them' -> drop to."
+    },
+    {
+      "id": "phone-text-to-pos-004",
+      "input": "She phones to us every morning.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She phones us every morning.",
+      "expectedRuleFired": "vietlishPhoneTextTo",
+      "notes": "Third-person 'phones' + 'to us' -> drop to."
+    }
+  ],
+  "negative": [
+    {
+      "id": "phone-text-to-neg-001",
+      "input": "Please send a text to me.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Please send a text to me.",
+      "expectedRuleFired": null,
+      "notes": "Noun 'text' (lookbehind 'a') -> 'to' is correct, must abstain. (Precision lock.)"
+    },
+    {
+      "id": "phone-text-to-neg-002",
+      "input": "She read the text to him.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She read the text to him.",
+      "expectedRuleFired": null,
+      "notes": "Noun 'text' (lookbehind 'the') -> must abstain. (Precision lock.)"
+    },
+    {
+      "id": "phone-text-to-neg-003",
+      "input": "I phoned to confirm the time.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I phoned to confirm the time.",
+      "expectedRuleFired": null,
+      "notes": "'to confirm' is a purpose infinitive, not a person pronoun -> must not fire."
+    },
+    {
+      "id": "phone-text-to-neg-004",
+      "input": "I will call to him.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I will call to him.",
+      "expectedRuleFired": null,
+      "notes": "'call' is EXCLUDED from this rule (held: 'call to me') -> must abstain. (Hold-compliance lock.)"
+    },
+    {
+      "id": "phone-text-to-neg-005",
+      "input": "I will text him now.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I will text him now.",
+      "expectedRuleFired": null,
+      "notes": "Already correct (no 'to') -> must abstain."
+    }
+  ]
+}

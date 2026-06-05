@@ -1,0 +1,83 @@
+{
+  "rule": "vietlishDoHomework",
+  "ruleId": "en-vietlish-collocation-do-homework",
+  "language": "en",
+  "description": "VN 'làm bài tập' transfer: 'làm' = make/do, so learners say 'make homework'. English collocates 'do homework'. Rule en-vietlish-collocation-do-homework rewrites make->do (mirrors take-photo/make-mistake) ONLY when 'homework' is the bare direct-object head noun followed by the shared COLLOCATION_OBJECT_TAIL boundary. Scoped to the single noun 'homework' (exercises/work excluded — they carry a valid 'make = create' sense).",
+  "fp_risk_note": "Low risk. 'make' is correct in the CAUSATIVE 'make homework fun/difficult' (object + adjective complement) and with every non-homework object. V1 fires only on 'make homework' at a collocation boundary; the tail lookahead locks out the causative and any other continuation, and 'do homework' is already correct so it abstains.",
+  "positive": [
+    {
+      "id": "do-homework-pos-001",
+      "input": "I make homework every day.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I do homework every day.",
+      "expectedRuleFired": "vietlishDoHomework",
+      "notes": "make + homework + frequency tail -> do homework."
+    },
+    {
+      "id": "do-homework-pos-002",
+      "input": "She made her homework.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She did her homework.",
+      "expectedRuleFired": "vietlishDoHomework",
+      "notes": "Past 'made' + possessive 'her homework' at sentence end -> did homework."
+    },
+    {
+      "id": "do-homework-pos-003",
+      "input": "We are making homework now.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "We are doing homework now.",
+      "expectedRuleFired": "vietlishDoHomework",
+      "notes": "Progressive 'making' -> doing homework."
+    },
+    {
+      "id": "do-homework-pos-004",
+      "input": "He makes homework at home.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He does homework at home.",
+      "expectedRuleFired": "vietlishDoHomework",
+      "notes": "Third-person 'makes' + 'at home' tail -> does homework."
+    }
+  ],
+  "negative": [
+    {
+      "id": "do-homework-neg-001",
+      "input": "The teacher makes homework fun.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The teacher makes homework fun.",
+      "expectedRuleFired": null,
+      "notes": "Causative 'make homework fun' (object + adjective). 'fun' is not a collocation boundary -> must abstain. (Precision lock.)"
+    },
+    {
+      "id": "do-homework-neg-002",
+      "input": "She makes homework difficult for us.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She makes homework difficult for us.",
+      "expectedRuleFired": null,
+      "notes": "Causative again ('make X difficult') -> must abstain. (Precision lock.)"
+    },
+    {
+      "id": "do-homework-neg-003",
+      "input": "I do homework every day.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I do homework every day.",
+      "expectedRuleFired": null,
+      "notes": "Already the correct collocation 'do homework' -> must abstain."
+    },
+    {
+      "id": "do-homework-neg-004",
+      "input": "She makes a cake.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She makes a cake.",
+      "expectedRuleFired": null,
+      "notes": "Non-homework object; 'make a cake' is correct -> must not fire."
+    },
+    {
+      "id": "do-homework-neg-005",
+      "input": "We make a decision today.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "We make a decision today.",
+      "expectedRuleFired": null,
+      "notes": "'make a decision' is a correct make-collocation -> must not fire."
+    }
+  ]
+}

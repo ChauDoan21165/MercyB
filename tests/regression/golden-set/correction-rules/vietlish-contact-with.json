@@ -1,0 +1,83 @@
+{
+  "rule": "vietlishContactWith",
+  "ruleId": "en-vietlish-contact-with",
+  "language": "en",
+  "description": "VN 'liên hệ với' transfer: learners calque 'với'=with onto the transitive verb contact ('contact with me'). Rule en-vietlish-contact-with drops 'with' (mirrors en-step6-marry-with) ONLY when 'contact' is a VERB immediately followed by 'with' + a person pronoun. A negative lookbehind blocks the NOUN sense ('in/keep/lose/make contact with him'), where 'with' is correct.",
+  "fp_risk_note": "Low-medium risk. 'with' is correct after the NOUN 'contact' (in/keep/lose/make contact with) and with non-person objects. V1 fires only on a finite VERB form of 'contact' + 'with' + person pronoun; the lookbehind locks out every noun reading. Negatives: the 'in contact with' noun phrase, 'made contact with', a no-'with' sentence, and a non-contact verb.",
+  "positive": [
+    {
+      "id": "contact-with-pos-001",
+      "input": "Please contact with me tomorrow.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Please contact me tomorrow.",
+      "expectedRuleFired": "vietlishContactWith",
+      "notes": "Imperative verb 'contact' + 'with me' -> drop with."
+    },
+    {
+      "id": "contact-with-pos-002",
+      "input": "I will contact with him.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I will contact him.",
+      "expectedRuleFired": "vietlishContactWith",
+      "notes": "Modal + base verb 'contact' + 'with him' -> drop with."
+    },
+    {
+      "id": "contact-with-pos-003",
+      "input": "She contacted with us last week.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She contacted us last week.",
+      "expectedRuleFired": "vietlishContactWith",
+      "notes": "Past verb 'contacted' + 'with us' -> drop with."
+    },
+    {
+      "id": "contact-with-pos-004",
+      "input": "We are contacting with them now.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "We are contacting them now.",
+      "expectedRuleFired": "vietlishContactWith",
+      "notes": "Progressive 'contacting' + 'with them' -> drop with."
+    }
+  ],
+  "negative": [
+    {
+      "id": "contact-with-neg-001",
+      "input": "I am in contact with him.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I am in contact with him.",
+      "expectedRuleFired": null,
+      "notes": "Noun 'contact' (lookbehind 'in') -> 'with' is correct, must abstain. (Precision lock.)"
+    },
+    {
+      "id": "contact-with-neg-002",
+      "input": "He made contact with them.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He made contact with them.",
+      "expectedRuleFired": null,
+      "notes": "Noun 'contact' (lookbehind 'made') -> must abstain. (Precision lock.)"
+    },
+    {
+      "id": "contact-with-neg-003",
+      "input": "Please keep in contact with me.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Please keep in contact with me.",
+      "expectedRuleFired": null,
+      "notes": "Noun 'contact' (immediate lookbehind 'in') -> must abstain."
+    },
+    {
+      "id": "contact-with-neg-004",
+      "input": "I will contact the office.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I will contact the office.",
+      "expectedRuleFired": null,
+      "notes": "Verb 'contact' but no 'with' -> must not fire."
+    },
+    {
+      "id": "contact-with-neg-005",
+      "input": "We work with them.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "We work with them.",
+      "expectedRuleFired": null,
+      "notes": "No contact verb (work + with is correct) -> must not fire."
+    }
+  ]
+}

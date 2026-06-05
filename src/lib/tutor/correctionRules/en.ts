@@ -543,6 +543,87 @@ function repairVietlishMakeMistake(input: string): string {
   );
 }
 
+// --- Cluster: Vietlish verb-object / collocation (Step 11 Batch 4, MR-B) ---
+// Four high-precision VN-interference repairs, each gated to a CLOSED surface so
+// they abstain on the grammatical English reading. No broad verb-choice rewrites.
+
+// (1) VN "làm bài tập" -> English uses *do* homework, never *make*. Same shape
+// as take-photo/make-mistake: a closed object whitelist (homework only — kept to
+// one noun because "make exercises" has a valid create-sense) plus the shared
+// COLLOCATION_OBJECT_TAIL boundary, so the CAUSATIVE "make homework fun" (object
+// + adjective complement) and any non-boundary tail never match.
+const DO_FOR_MAKE: Record<string, string> = {
+  make: "do",
+  makes: "does",
+  made: "did",
+  making: "doing",
+};
+
+const VIETLISH_DO_HOMEWORK_PATTERN = new RegExp(
+  `\\b(make|makes|made|making)\\s+((?:my|your|his|her|our|their|the|some|a|an|this|that|these|those)\\s+)?(homework)\\b${COLLOCATION_OBJECT_TAIL}`,
+  "i",
+);
+
+function hasVietlishDoHomework(input: string): boolean {
+  // Guard auxiliary/interrogative "make" is N/A here, but a leading question can
+  // still carry the calque ("Do you make homework?") — keep it correctable.
+  return VIETLISH_DO_HOMEWORK_PATTERN.test(input);
+}
+
+function repairVietlishDoHomework(input: string): string {
+  return input.replace(
+    VIETLISH_DO_HOMEWORK_PATTERN,
+    (_match, verb: string, determiner: string | undefined, noun: string) => {
+      const replacement = matchLeadingCapitalization(verb, DO_FOR_MAKE[verb.toLowerCase()] ?? verb);
+      return `${replacement} ${determiner ?? ""}${noun}`;
+    },
+  );
+}
+
+// (2) VN "đề cập về" -> "mention about X" drops the preposition: "mention X".
+// Mirrors research-about: the negative lookbehind blocks the NOUN reading
+// ("a/no/the mention about", "made mention about") where "about" is correct.
+const VIETLISH_MENTION_ABOUT_PATTERN =
+  /(?<!\b(?:a|an|the|any|no|some|my|your|his|her|our|their|this|that|make|makes|made|making|brief|passing|honorable)\s)\b(mention|mentions|mentioned|mentioning)\s+about\s+(?=\S)/i;
+
+function hasVietlishMentionAbout(input: string): boolean {
+  return VIETLISH_MENTION_ABOUT_PATTERN.test(input);
+}
+
+function repairVietlishMentionAbout(input: string): string {
+  return input.replace(VIETLISH_MENTION_ABOUT_PATTERN, "$1 ");
+}
+
+// (3) VN "liên hệ với" -> "contact with X" drops the preposition: "contact X".
+// VERB only: the negative lookbehind blocks the NOUN "(in/keep/lose/make/...)
+// contact with him", where "with" is correct. Object restricted to a person
+// pronoun to stay high-precision.
+const VIETLISH_CONTACT_WITH_PATTERN =
+  /(?<!\b(?:in|into|keep|keeps|kept|keeping|lose|loses|lost|losing|make|makes|made|making|get|gets|got|getting|stay|stays|stayed|staying|the|a|an|my|your|his|her|our|their|no|any|first|close|direct|eye|business|personal)\s)\b(contact|contacts|contacted|contacting)\s+with\s+(me|you|him|her|us|them)\b/i;
+
+function hasVietlishContactWith(input: string): boolean {
+  return VIETLISH_CONTACT_WITH_PATTERN.test(input);
+}
+
+function repairVietlishContactWith(input: string): string {
+  return input.replace(VIETLISH_CONTACT_WITH_PATTERN, "$1 $2");
+}
+
+// (4) VN "gọi/nhắn cho" -> "phone/text to me" drops the preposition: "phone/text
+// me". VERB phone/text only — "call" is EXCLUDED (held: "call to me"). The
+// negative lookbehind blocks the NOUN reading ("send/read a text to me"); the
+// pronoun-object requirement blocks the infinitive ("phone to confirm").
+const VIETLISH_PHONE_TEXT_TO_PATTERN =
+  /(?<!\b(?:a|an|the|my|your|his|her|our|their|this|that|these|those|one|some|any|no|send|sends|sent|sending|write|writes|wrote|writing|written|read|reads|reading|leave|leaves|left|leaving|get|gets|got|getting|delete|deletes|deleted|answer|answers|answered)\s)\b(phone|phones|phoned|phoning|text|texts|texted|texting)\s+to\s+(me|you|him|her|us|them)\b/i;
+
+function hasVietlishPhoneTextTo(input: string): boolean {
+  return VIETLISH_PHONE_TEXT_TO_PATTERN.test(input);
+}
+
+function repairVietlishPhoneTextTo(input: string): string {
+  return input.replace(VIETLISH_PHONE_TEXT_TO_PATTERN, "$1 $2");
+}
+
 // --- Cluster: Vietlish verb-object / lexical (Step 11 Batch 3) ---
 // VN "nói (với) tôi" — *nói* maps to both say & tell, but English ditransitive
 // reporting to a person needs "tell + indirect object" ("say me the news" ->
@@ -1608,6 +1689,34 @@ export const englishCorrectionRules: CorrectionRule[] = [
     apply: repairVietlishMakeMistake,
     fpRiskNote:
       "Medium risk. 'do' is correct for most activities (do homework, do the dishes). V1 rewrites do->make only when a mistake/mistakes token is the bare direct-object head noun and is NOT followed by a compounding noun (mistake analysis/log), leaving all other do-objects untouched.",
+  },
+  {
+    id: "en-vietlish-collocation-do-homework",
+    detects: hasVietlishDoHomework,
+    apply: repairVietlishDoHomework,
+    fpRiskNote:
+      "Low risk. Scoped to the single noun 'homework' (exercises/work excluded — they have a valid 'make = create' sense). V1 rewrites make->do only when 'homework' is the bare direct-object head noun followed by the shared collocation boundary, so the CAUSATIVE 'make homework fun' (object + adjective complement) and any other tail abstain.",
+  },
+  {
+    id: "en-vietlish-mention-about",
+    detects: hasVietlishMentionAbout,
+    apply: repairVietlishMentionAbout,
+    fpRiskNote:
+      "Low-medium risk. 'about' is correct after the NOUN 'mention' (a/no/the mention about, made mention about) and after other verbs (talk/think about). V1 drops 'about' only when it immediately follows a finite form of the VERB 'mention'; the negative lookbehind blocks the noun reading.",
+  },
+  {
+    id: "en-vietlish-contact-with",
+    detects: hasVietlishContactWith,
+    apply: repairVietlishContactWith,
+    fpRiskNote:
+      "Low-medium risk. 'with' is correct after the NOUN 'contact' (in/keep/lose/make contact with him) and with non-person objects. V1 drops 'with' only when a finite form of the VERB 'contact' is immediately followed by 'with' + a person pronoun; the negative lookbehind blocks every noun reading.",
+  },
+  {
+    id: "en-vietlish-phone-text-to",
+    detects: hasVietlishPhoneTextTo,
+    apply: repairVietlishPhoneTextTo,
+    fpRiskNote:
+      "Low-medium risk. 'to' is correct after the NOUN 'text' (send/read a text to me) and in infinitives ('phone to confirm'). V1 drops 'to' only when the VERB phone/text is immediately followed by 'to' + a person pronoun; 'call' is EXCLUDED, the pronoun-object requirement blocks infinitives, and the lookbehind blocks the noun reading.",
   },
   {
     id: "en-vietlish-discourse-according-to-me",
