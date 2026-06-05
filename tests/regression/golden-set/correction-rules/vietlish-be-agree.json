@@ -1,0 +1,83 @@
+{
+  "rule": "vietlishBeAgree",
+  "ruleId": "en-vietlish-be-agree",
+  "language": "en",
+  "description": "VN 'Tôi đồng ý' transfer: learners treat đồng ý (a verb) as an adjective and insert a copula ('I am agree'). Rule en-vietlish-be-agree drops the inserted copula (am/are/'m/'re) for first/second-person + plural subjects (I/you/we/they) directly before bare 'agree', preserving subject casing. He/she/it is OUT of scope (would need 'agrees').",
+  "fp_risk_note": "Low risk. 'agree' is a verb, not an adjective. V1 only drops am/are/'m/'re after I/you/we/they directly before bare 'agree'. Negatives lock: already-correct 'I agree', the out-of-scope 3rd-singular 'He is agree', the boundary tokens agreed/agreement, and a non-'agree' surface ('a great fan').",
+  "positive": [
+    {
+      "id": "be-agree-pos-001",
+      "input": "I am agree with you",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I agree with you.",
+      "expectedRuleFired": "en-vietlish-be-agree",
+      "notes": "Spaced copula 'am' dropped after first-person subject."
+    },
+    {
+      "id": "be-agree-pos-002",
+      "input": "I'm agree",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I agree.",
+      "expectedRuleFired": "en-vietlish-be-agree",
+      "notes": "Contracted copula 'm attached to subject is dropped -> I agree."
+    },
+    {
+      "id": "be-agree-pos-003",
+      "input": "We are agree with him",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "We agree with him.",
+      "expectedRuleFired": "en-vietlish-be-agree",
+      "notes": "Plural subject 'we are' -> we agree."
+    },
+    {
+      "id": "be-agree-pos-004",
+      "input": "They are agree",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "They agree.",
+      "expectedRuleFired": "en-vietlish-be-agree",
+      "notes": "Plural subject 'they are' -> they agree."
+    }
+  ],
+  "negative": [
+    {
+      "id": "be-agree-neg-001",
+      "input": "I agree with you",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I agree with you.",
+      "expectedRuleFired": null,
+      "notes": "Already correct (no copula) -> must abstain."
+    },
+    {
+      "id": "be-agree-neg-002",
+      "input": "He is agree with me",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He is agree with me.",
+      "expectedRuleFired": null,
+      "notes": "3rd-singular is OUT of scope (correction would need 'agrees') -> must not fire."
+    },
+    {
+      "id": "be-agree-neg-003",
+      "input": "I am agreed to the terms",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I am agreed to the terms.",
+      "expectedRuleFired": null,
+      "notes": "'agreed' boundary: (?!d) tail must reject the past-participle surface."
+    },
+    {
+      "id": "be-agree-neg-004",
+      "input": "The agreement is ready",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The agreement is ready.",
+      "expectedRuleFired": null,
+      "notes": "'agreement' boundary: (?!ment) tail must reject the noun."
+    },
+    {
+      "id": "be-agree-neg-005",
+      "input": "I am a great fan",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I am a great fan.",
+      "expectedRuleFired": null,
+      "notes": "No 'agree' token at all -> must abstain."
+    }
+  ]
+}

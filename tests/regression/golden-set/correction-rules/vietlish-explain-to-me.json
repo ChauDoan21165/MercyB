@@ -1,0 +1,67 @@
+{
+  "rule": "vietlishExplainToMe",
+  "ruleId": "en-vietlish-explain-to-me",
+  "language": "en",
+  "description": "VN 'giải thích cho tôi' transfer: learners drop the dative 'to' ('explain me this'). Rule en-vietlish-explain-to-me inserts 'to' between a form of explain and a directly-governed pronoun object (me/him/her/us/them/you). Inserting 'to' is always grammatical, so this is a safe insertion.",
+  "fp_risk_note": "Low risk. Inserting the dative 'to' after explain + a pronoun object is always grammatical. V1 fires only when a form of explain directly governs a pronoun object. Negatives lock: already-correct 'explain to me', non-pronoun objects ('explain the rule', 'the plan'), and an already-correct 'explained it to her'.",
+  "positive": [
+    {
+      "id": "explain-to-me-pos-001",
+      "input": "Please explain me this",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Please explain to me this.",
+      "expectedRuleFired": "en-vietlish-explain-to-me",
+      "notes": "Base 'explain' + pronoun 'me' -> explain to me."
+    },
+    {
+      "id": "explain-to-me-pos-002",
+      "input": "Can you explain me how",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Can you explain to me how?",
+      "expectedRuleFired": "en-vietlish-explain-to-me",
+      "notes": "Insert 'to'; engine also adds the terminal question mark (en-question-form-final-mark)."
+    },
+    {
+      "id": "explain-to-me-pos-003",
+      "input": "He explained me the rule",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He explained to me the rule.",
+      "expectedRuleFired": "en-vietlish-explain-to-me",
+      "notes": "Past 'explained' + pronoun 'me' -> explained to me."
+    }
+  ],
+  "negative": [
+    {
+      "id": "explain-to-me-neg-001",
+      "input": "explain to me how",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Explain to me how.",
+      "expectedRuleFired": null,
+      "notes": "Already correct ('to' present) -> must abstain (capitalization-only is not a rule firing)."
+    },
+    {
+      "id": "explain-to-me-neg-002",
+      "input": "explain the rule",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Explain the rule.",
+      "expectedRuleFired": null,
+      "notes": "Non-pronoun object 'the rule' -> must not fire."
+    },
+    {
+      "id": "explain-to-me-neg-003",
+      "input": "I explained it to her",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I explained it to her.",
+      "expectedRuleFired": null,
+      "notes": "Object 'it' separates explain from the pronoun; already correct -> must abstain."
+    },
+    {
+      "id": "explain-to-me-neg-004",
+      "input": "She explained the plan",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She explained the plan.",
+      "expectedRuleFired": null,
+      "notes": "Non-pronoun object 'the plan' -> must not fire."
+    }
+  ]
+}
