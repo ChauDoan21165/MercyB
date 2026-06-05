@@ -1,7 +1,7 @@
 # Stage 3A — Marketing Screenshot Spec
 
 Operational spec for capturing the Stage 3A *"What I'm Weak At"*
-launch screenshot. ROADMAP §3A names this as the marketing-visible
+launch screenshot. `layer-model.md` §3A names this as the marketing-visible
 demo artifact:
 
 > *"Duolingo tells you to keep a streak. MercyBlade tells Vietnamese
@@ -165,7 +165,7 @@ For each platform, the asset is the same screenshot — only the caption + tags 
 
 ## 7. References
 
-- ROADMAP §3A — *"What I'm Weak At" / Local Weakness Map* — describes the marketing-visible demo artifact requirement.
+- `layer-model.md` §3A — *"What I'm Weak At" / Local Weakness Map* — describes the marketing-visible demo artifact requirement.
 - `docs/stage-3a/local-weakness-map-design.md` — full design doc for the component.
 - `docs/stage-3b/marketing-screenshot-spec.md` — companion spec for the prescriptive-frame screenshot (`SuggestedPracticeList` below LWM); use the two as a pair when both diagnostic and prescriptive stories belong in the same post.
 - `src/components/stage-3a/LocalWeaknessMap.tsx` — the component being captured.

@@ -709,7 +709,7 @@ relationship as `placement-vn-l1-interference-taxonomy.md` →
 
 ## Anchors and references
 
-- `STRATEGY.md` §12 — "deep enough to fix adult Vietlish" is the winning
+- `STRATEGY.md` (V3 — Competitive thesis) — "deep enough to fix adult Vietlish" is the winning
   sentence this document operationalises for the writing surface.
 - `PRINCIPLES.md` §7 — honest uncertainty markers (`needs_review`,
   `TODO: verify`) belong in every entry whose VN-side claim isn't

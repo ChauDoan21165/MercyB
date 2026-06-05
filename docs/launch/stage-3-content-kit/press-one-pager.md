@@ -89,7 +89,7 @@ This section is deliberately included so a journalist reading the page does not 
 - **No IELTS / TOEIC / VSTEP score promise.** Test-prep surfaces exist as separate modules in the app; the `/weak-at` surface does not promise a specific score.
 - **No claim about being better than [named competitor].** No competitor is named in any MercyBlade marketing language for this launch.
 - **No claim of having paying users in [city / country].** Paying-user counts are not disclosed and are not a launch metric for Stage 3.
-- **No named-learner success story.** Until a real Vietnamese learner publicly credits MercyBlade for an outcome, no testimonial is published. This is an intentional integrity gate (`STRATEGY.md` §15 Bar #7).
+- **No named-learner success story.** Until a real Vietnamese learner publicly credits MercyBlade for an outcome, no testimonial is published. This is an intentional integrity gate (`CURRENT-STATE.md` §15 Bar #7).
 
 If a journalist wants to write a story that requires any of the above claims, MercyBlade cannot supply them today — and would prefer the story did not run with fabricated numbers.
 

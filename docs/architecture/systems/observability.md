@@ -102,7 +102,7 @@ Capacitor.isNativePlatform() === false → @sentry/react directly (no Capacitor 
 
 `Capacitor.getPlatform()` is read at runtime and surfaced as a
 **dashboard tag** so the Sentry UI can filter `platform: web | ios |
-android`. This is the only path that makes `STRATEGY.md` §15 Bar #6
+android`. This is the only path that makes `CURRENT-STATE.md` §15 Bar #6
 actually possible — without the fork, native crashes would never make
 it to the dashboard.
 
@@ -633,7 +633,7 @@ Alert rules live in the **Sentry dashboard**, not in the repo.
       `chau-doan/mercyblade-web` with `platform: ios`.
 - [ ] Same for a physical Android device. Confirm `platform: android`.
 - [ ] Pin the Sentry issue IDs in the §15 Bar #6 row of
-      `STRATEGY.md`.
+      `CURRENT-STATE.md`.
 - [ ] Tick the bar.
 
 ---

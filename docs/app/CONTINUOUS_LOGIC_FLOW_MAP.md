@@ -252,7 +252,7 @@ Ownership rule: learning events are local-only summary signals. #1109 added the 
 - `docs/app/STUDY_FLOW_PSYCHOLOGY_PLAYBOOK.md` if present
 - `docs/app/TEACHER_MERCY_LEARNING_OS.md`
 - `STRATEGY.md`
-- `ROADMAP.md`
+- `docs/architecture/layer-model.md`
 
 Ownership rule: docs define product boundaries before code expands. If code and docs disagree, open an audit/fix PR rather than widening product scope silently.
 

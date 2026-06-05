@@ -72,7 +72,8 @@ Why it matters strategically:
 - **§15 Axis 1 Bar #5 — CLOSED.** Placement → lesson routing E2E
   shipped via PR #1143. The recommender + `cefrToRoom` are the
   bridge.
-- **`STRATEGY.md` §12 "Placement Writeback Boundary".** Placement is
+- **Placement Writeback Boundary (this doc — see the
+  **Placement Writeback Boundary** section below).** Placement is
   the **only** writer of `profiles.placement_cefr` /
   `profiles.placement_weaknesses` / `profiles.placement_completed_at`.
   No other surface (Stage 3A, AI Tutor, Mercy memory, Kids, …)
@@ -380,7 +381,8 @@ interface Recommendation {
 
 ### "No placement writeback" is *directional*, not "no writes"
 
-`STRATEGY.md` §12. The placement edge function itself writes
+See the **Placement Writeback Boundary** section below (this doc).
+The placement edge function itself writes
 `profiles.placement_*`. No OTHER surface (Stage 3A, AI Tutor,
 Mercy memory, Kids, recommender re-rank, …) may write to those
 columns. Misreading this as "no writes at all" would block
@@ -579,8 +581,8 @@ with different shapes.
 - **`docs/placement-v3-integration-*.md`** — integration audit + bug
   log + PR body history (multiple files).
 - **`docs/placement-test-wireframes.md`** — UI wireframes.
-- **`STRATEGY.md` §12 "Placement Writeback Boundary"** — the canonical
-  one-way-writeback rule.
+- **Placement Writeback Boundary** (this doc — section below) — the
+  canonical one-way-writeback rule.
 - **`CLAUDE.md` "Don't break" section** under §8 in
   `system-overview.md` — the short reference.
 
@@ -605,7 +607,8 @@ with different shapes.
 
 ### Tuning the precision / stop rule
 
-1. Read `STRATEGY.md` §12 + run the design-team check first. Stop
+1. Read the **Placement Writeback Boundary** section below (this
+   doc) + run the design-team check first. Stop
    rule changes affect every learner's experience.
 2. The threshold lives in `engine/config.ts` (`MIN_PRECISION_SE`)
    + the hard-quota counts.
@@ -668,3 +671,22 @@ are the directional writeback boundary (only the engine writes
 `profiles.placement_*`), kernel determinism (everything DI), the
 writing-sample exclusion, and the owner-per-function phase-edge
 discipline.
+
+---
+
+## Strategic invariant: Placement Writeback Boundary (migrated from STRATEGY.md §12)
+
+> **Migrated 2026-06-05 (V3 forward-fix), verbatim from `STRATEGY.md@d73f91674^` §12.**
+> This is the canonical home for the Placement Writeback Boundary. References that
+> formerly read "`STRATEGY.md` §12 — Placement Writeback Boundary" now point here.
+
+### Placement Writeback Boundary
+
+The "no Placement writeback" invariant is a **directional contract**, not a no-writes contract. It governs *who is allowed to write to placement state*, not *whether placement state is ever written*.
+
+- ✅ **Permitted:** the placement edge function ITSELF writing to `profiles.placement_*` columns on its own completion (`placement_cefr`, `placement_starting_room`, `placement_completed_at`, `placement_weaknesses`, `placement_history`). This is part of the placement flow's own lifecycle — the engine recording the result of the session it just ran.
+- ❌ **Prohibited:** writebacks FROM other surfaces INTO placement state. Study OS, `mercy_user_facts`, episodic memory, AI Tutor, Mercy Kids, safe learning events — none of these may write to `profiles.placement_*`, `placement_sessions`, or `placement_responses`. Inferring a placement level or weakness from observed behaviour and then patching placement state is exactly the cross-surface coupling this invariant exists to prevent.
+
+The placement engine is the authoritative writer of its own results; everything else reads them.
+
+Future Study OS UI may map those local signals into progress, momentum, weak-topic, or next-focus displays. It must not merge them into `mercy_user_facts`, use them as an indirect memory sync layer, or send them to an admin dashboard unless a separate privacy-reviewed design explicitly approves that change.

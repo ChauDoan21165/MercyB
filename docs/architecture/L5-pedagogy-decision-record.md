@@ -2,7 +2,7 @@
 
 > **Decision record stub.** Real decisions land here as they are
 > made. **Do NOT pre-fill decisions before the data justifies
-> them.** L5 is research-required per `ROADMAP.md` §L5 — it is
+> them.** L5 is research-required per `layer-model.md` §L5 — it is
 > blocked on pedagogy input and learner-data signal, not on
 > engineering bandwidth.
 >
@@ -19,7 +19,7 @@
 ## What L5 is
 
 The pedagogy layer between L4 (Diagnostic Intervention) and L6
-(Parent / Teacher / Family). Per `ROADMAP.md` §L5:
+(Parent / Teacher / Family). Per `layer-model.md` §L5:
 
 > Curriculum decisions, sequencing rules, spaced-repetition
 > policy, L1-transfer-aware scheduling, motivation-aware pacing.
@@ -29,7 +29,7 @@ The pedagogy layer between L4 (Diagnostic Intervention) and L6
 
 - **L4 needs L5** to ground the intervention engine. Without L5,
   L4's bias-what-the-learner-sees-next logic falls back to
-  default heuristics that work-but-don't-shine (`ROADMAP.md`
+  default heuristics that work-but-don't-shine (`layer-model.md`
   §L4: *"L4 will be too aggressive or too random until L5
   decisions exist."*).
 - **L6 needs L5** to make weekly parent-view claims meaningful.
@@ -97,7 +97,7 @@ dispatch:
   most-fired pattern until count drops) vs *coverage-first*
   (rotate across the §15 Bar #1 detector families to ensure
   breadth). The choice shapes L4's planner output and L6's
-  parent-view weekly story. `ROADMAP.md` §L5 frames this as
+  parent-view weekly story. `layer-model.md` §L5 frames this as
   *"How should L1-transfer-aware scheduling weight a known
   weakness vs. a new pattern the learner hasn't seen?"*
 - **Decision:** [PENDING]
@@ -256,7 +256,7 @@ Decision-record protocol:
 ## Open questions blocking L5 design
 
 The questions that need pedagogical / product input before any
-of the three deferred decisions can be made. Per `ROADMAP.md`
+of the three deferred decisions can be made. Per `layer-model.md`
 §L5 + !122 §Data dependencies (L5-blocked):
 
 - **Success metric for "good planning."** Is it competency-on-
@@ -300,14 +300,14 @@ to § Decisions made following the protocol above.
 
 ## Cross-references
 
-- `ROADMAP.md` §L5 — the canonical layer description this doc
+- `layer-model.md` §L5 — the canonical layer description this doc
   records decisions for.
 - `docs/architecture/L6-parent-teacher-family-layer.md` (!122)
   — the L6 doc whose §Data dependencies + §Open questions
   surface the three deferred decisions.
 - `docs/INDEX.md` §L5 — points readers here from the layer
   cross-reference.
-- `STRATEGY.md` §15 — the Vietnamese flagship Definition of
+- `CURRENT-STATE.md` §15 — the Vietnamese flagship Definition of
   Done, which any L5 success-metric decision must stay
   consistent with.
 - `docs/architecture/systems/study-os-stage-3.md` — L3

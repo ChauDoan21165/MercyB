@@ -5,10 +5,12 @@
 >
 > Other docs to read in order:
 >
-> 1. `STRATEGY.md` — *why* this product exists, who it serves, what the
->    flagship Definition of Done is. Sections 4 (matrix), 5 (product),
->    15 (DoD), 12 (Duolingo strategy + Study OS / Placement
->    boundaries).
+> 1. `STRATEGY.md` — *why* this product exists, who it serves (V3 —
+>    matrix, product strategy, the Competitive thesis / Duolingo
+>    positioning). The flagship Definition of Done now lives in
+>    `CURRENT-STATE.md` §15; the Study OS / Placement boundaries live
+>    in `docs/architecture/systems/study-os-stage-3.md` and
+>    `docs/architecture/systems/placement-v3.md`.
 > 2. `PRINCIPLES.md` — *how* agents and humans collaborate. All 19
 >    principles. The "spreadsheet is source of truth" + "free agent =
 >    immediate next dispatch" + "verify memory file claims" rules are
@@ -134,8 +136,9 @@ style preferences.
   bucket. Re-localizing re-bloats the bundle past Google Play's 200 MB
   cap. See `src/lib/roomAudioResolver.ts:9–16` and CLAUDE.md.
 - **`mercy_user_facts` ≠ Study OS event summaries.** Semantic person
-  memory vs. behavioral signal. Do not cross-write. See
-  `STRATEGY.md` §12.
+  memory vs. behavioral signal. Do not cross-write. See the **Study
+  OS Summary Boundary** in
+  `docs/architecture/systems/study-os-stage-3.md`.
 - **Placement writeback is directional.** Only the placement edge
   function may write `profiles.placement_*` / `placement_sessions` /
   `placement_responses`. Other surfaces read.

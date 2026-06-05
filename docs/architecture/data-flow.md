@@ -18,8 +18,8 @@
 
 ## 1. Learner-signal flow: anon → Stage 3A → Stage 3B → practice
 
-This is the spine of the Study OS sequence (ROADMAP Stage 3). It is
-designed local-only (`STRATEGY.md` §12 "Study OS Summary Boundary"),
+This is the spine of the Study OS sequence (`layer-model.md` Stage 3). It is
+designed local-only (`study-os-stage-3.md` "Study OS Summary Boundary"),
 which means every hop until the final practice route operates on
 device state, not backend state.
 
@@ -116,7 +116,7 @@ downstream readers.
 Stage 3B reads Stage 3A's local buffers, applies the `(c+)` trigger
 semantics (context-triggered AND learner-controllable), and surfaces
 **one** soft suggestion when there's fresh evidence + a useful next
-action. Operational rules from `ROADMAP.md` §"3B":
+action. Operational rules from `layer-model.md` §"3B":
 
 ```text
                 ┌──────────────────────────────────┐
@@ -141,7 +141,7 @@ action. Operational rules from `ROADMAP.md` §"3B":
                        /practice/<area>/<focus>
 ```
 
-**Strategic guardrails (`ROADMAP.md` §"3B" + `STRATEGY.md` §12):**
+**Strategic guardrails (`layer-model.md` §"3B" + `STRATEGY.md` (V3 — Competitive thesis)):**
 
 - No daily requirement / no streak language / no XP loop.
 - No shame or guilt copy.
@@ -183,8 +183,8 @@ loop.
 
 The repo has one explicit invariant about what crosses the boundary
 and what does not. Get this wrong and you either break the local-only
-posture (`ROADMAP.md` §"Local-Only Posture"), leak PII, or accidentally
-create cross-surface coupling (`STRATEGY.md` §12).
+posture (`layer-model.md` §"Local-Only Posture"), leak PII, or accidentally
+create cross-surface coupling (`STRATEGY.md` (V3 — Competitive thesis)).
 
 ### 2a. What stays local-only
 
@@ -228,7 +228,7 @@ to a static `index.html`.
 
 ### 2c. Placement writeback boundary (directional contract)
 
-The most-misunderstood rule. From `STRATEGY.md` §12 and the
+The most-misunderstood rule. From `placement-v3.md` "Placement Writeback Boundary" and the
 in-file doctrine in the Stage 3A adapters:
 
 > *"The 'no Placement writeback' invariant is a directional contract,
