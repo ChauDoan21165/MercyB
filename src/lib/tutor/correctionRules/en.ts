@@ -683,15 +683,24 @@ function repairVietlishVeryLike(input: string): string {
 // "for" (span). Matches ONLY "since <count> <duration-unit>"; a bare year
 // ("since 2020"), a day ("since Monday"), or "since last year / yesterday" never
 // match because they are not <number> + <year|month|week|day|hour> spans.
+//
+// Right-boundary guard: a trailing "ago"/"old"/"back" makes the phrase a
+// point-in-time or age expression ("since 3 years ago", "since 5 years old"),
+// where "for ..." would be ungrammatical/meaning-changed -> abstain. A leading
+// "ever" ("ever since 5 years") is an idiom that must not be split -> abstain.
 const VIETLISH_DURATION_SINCE_FOR_PATTERN =
-  /\bsince\s+(\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\s+(year|years|month|months|week|weeks|day|days|hour|hours)\b/i;
+  /(?<!\bever\s)\bsince\s+(\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\s+(year|years|month|months|week|weeks|day|days|hour|hours)\b(?!\s+(?:ago|old|back)\b)/i;
 
 function hasVietlishDurationSinceFor(input: string): boolean {
   return VIETLISH_DURATION_SINCE_FOR_PATTERN.test(input);
 }
 
 function repairVietlishDurationSinceFor(input: string): string {
-  return input.replace(VIETLISH_DURATION_SINCE_FOR_PATTERN, "for $1 $2");
+  return input.replace(
+    VIETLISH_DURATION_SINCE_FOR_PATTERN,
+    (_match, count: string, unit: string, offset: number) =>
+      `${offset === 0 ? "For" : "for"} ${count} ${unit}`,
+  );
 }
 
 // Rule 3: double-marked comparative — analytic "more" + synthetic "-er" on a

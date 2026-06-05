@@ -3,7 +3,7 @@
   "ruleId": "en-vietlish-duration-since-for",
   "language": "en",
   "description": "Rewrites 'since <count> <duration-unit>' (a span) to 'for <count> <duration-unit>' for Vietlish 'trong / được N năm' transfer, where learners mark a duration span with the point-in-time preposition 'since'.",
-  "fp_risk_note": "Low risk. Matches only 'since <number> <year|month|week|day|hour>'. A bare year ('since 2020'), a weekday ('since Monday'), and 'since last year / yesterday' never match because none is a number followed by a duration unit — so genuine point-in-time 'since' is always preserved.",
+  "fp_risk_note": "Low risk. Matches only 'since <number> <year|month|week|day|hour>'. A bare year ('since 2020'), a weekday ('since Monday'), and 'since last year / yesterday' never match. A trailing 'ago'/'old'/'back' (point-in-time or age: 'since 3 years ago', 'since 5 years old') and a leading 'ever' ('ever since 5 years', an idiom) are excluded by boundary guards so 'for ...' is never produced where it would be ungrammatical or change meaning. Sentence-initial 'Since' re-capitalizes to 'For'.",
   "positive": [
     {
       "id": "vietlish-duration-since-for-pos-001",
@@ -12,6 +12,14 @@
       "expectedCorrection": "I live here for 3 years.",
       "expectedRuleFired": "vietlishDurationSinceFor",
       "notes": "Numeric duration span mismarked with 'since' becomes 'for'."
+    },
+    {
+      "id": "vietlish-duration-since-for-pos-004",
+      "input": "Since 3 years I live here",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "For 3 years I live here.",
+      "expectedRuleFired": "vietlishDurationSinceFor",
+      "notes": "Sentence-initial 'Since' must re-capitalize to 'For' (offset-0 guard)."
     },
     {
       "id": "vietlish-duration-since-for-pos-002",
@@ -62,6 +70,30 @@
       "expectedCorrection": "Since yesterday.",
       "expectedRuleFired": null,
       "notes": "'yesterday' is a point in time, not a number + duration unit."
+    },
+    {
+      "id": "vietlish-duration-since-for-neg-005",
+      "input": "He was happy since 5 years old.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He was happy since 5 years old.",
+      "expectedRuleFired": null,
+      "notes": "Age expression 'since 5 years old' (= since age 5); 'for 5 years old' would be ungrammatical -> 'old' boundary guard abstains. (A4 regression lock.)"
+    },
+    {
+      "id": "vietlish-duration-since-for-neg-006",
+      "input": "I met him since 3 years ago.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I met him since 3 years ago.",
+      "expectedRuleFired": null,
+      "notes": "Point-in-time 'since N years ago'; 'for N years ago' is never valid -> 'ago' boundary guard abstains. (A4 regression lock.)"
+    },
+    {
+      "id": "vietlish-duration-since-for-neg-007",
+      "input": "We have been friends ever since 5 years.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "We have been friends ever since 5 years.",
+      "expectedRuleFired": null,
+      "notes": "'ever since' is an idiom; splitting it ('ever for 5 years') is nonsense -> leading 'ever' lookbehind abstains. (A4 regression lock.)"
     }
   ]
 }
