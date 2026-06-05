@@ -1,0 +1,99 @@
+{
+  "rule": "vietlishCollocationTakePhoto",
+  "ruleId": "en-vietlish-collocation-take-photo",
+  "language": "en",
+  "description": "VN 'chụp ảnh' transfer: learners say 'make a photo/selfie' for 'take a photo/selfie'. Rule en-vietlish-collocation-take-photo rewrites the verb make->take (preserving tense and capitalization) ONLY when a photo/selfie token is the bare direct-object head noun. It abstains on photo compounds (photo album/book/booth) and never touches 'picture' or 'photograph'.",
+  "fp_risk_note": "Medium risk. 'make' is correct for most created objects; 'photo' heads valid compounds (photo album/book/booth/frame), and 'make a picture' (draw/film) and 'make a photocopy'/'photograph' are legitimate. Negatives lock the compound surfaces, the already-correct 'take a photo', a non-photo object, and the photocopy token boundary.",
+  "positive": [
+    {
+      "id": "take-photo-pos-001",
+      "input": "I make a photo.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I take a photo.",
+      "expectedRuleFired": "en-vietlish-collocation-take-photo",
+      "notes": "Bare make + a photo head noun -> take a photo."
+    },
+    {
+      "id": "take-photo-pos-002",
+      "input": "She made a photo yesterday.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She took a photo yesterday.",
+      "expectedRuleFired": "en-vietlish-collocation-take-photo",
+      "notes": "Past tense made -> took, trailing time adverb preserved."
+    },
+    {
+      "id": "take-photo-pos-003",
+      "input": "We make photos every weekend.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "We take photos every weekend.",
+      "expectedRuleFired": "en-vietlish-collocation-take-photo",
+      "notes": "Plural photos with no determiner -> take photos."
+    },
+    {
+      "id": "take-photo-pos-004",
+      "input": "He is making a selfie.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He is taking a selfie.",
+      "expectedRuleFired": "en-vietlish-collocation-take-photo",
+      "notes": "Progressive making + selfie head -> taking a selfie."
+    }
+  ],
+  "negative": [
+    {
+      "id": "take-photo-neg-001",
+      "input": "I make a photo album.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I make a photo album.",
+      "expectedRuleFired": null,
+      "notes": "'photo album' is a valid compound; photo is a modifier, not the object head -> must abstain."
+    },
+    {
+      "id": "take-photo-neg-002",
+      "input": "We make a photo book for grandma.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "We make a photo book for grandma.",
+      "expectedRuleFired": null,
+      "notes": "'photo book' compound -> must abstain."
+    },
+    {
+      "id": "take-photo-neg-003",
+      "input": "I take a photo.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I take a photo.",
+      "expectedRuleFired": null,
+      "notes": "Already-correct collocation must stay unchanged."
+    },
+    {
+      "id": "take-photo-neg-004",
+      "input": "She makes a cake.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She makes a cake.",
+      "expectedRuleFired": null,
+      "notes": "Non-photo object: make is correct, must not fire."
+    },
+    {
+      "id": "take-photo-neg-005",
+      "input": "I made a photocopy.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I made a photocopy.",
+      "expectedRuleFired": null,
+      "notes": "'photocopy' is one token; the photo\\b boundary must not match inside it."
+    },
+    {
+      "id": "take-photo-neg-006",
+      "input": "Make a photo look better.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Make a photo look better.",
+      "expectedRuleFired": null,
+      "notes": "Causative 'make X look Y' — photo is the causee, not the bare object head; a base verb follows, so the safe-tail boundary must reject it. (A4 regression lock.)"
+    },
+    {
+      "id": "take-photo-neg-007",
+      "input": "I want to make a photo essay.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I want to make a photo essay.",
+      "expectedRuleFired": null,
+      "notes": "Unlisted photo compound ('photo essay'): a noun follows photo, so the safe-tail boundary must reject it without relying on a compound blocklist. (A4 regression lock.)"
+    }
+  ]
+}
