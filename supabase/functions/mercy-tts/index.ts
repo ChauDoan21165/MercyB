@@ -1,9 +1,11 @@
 // PATH: supabase/functions/mercy-tts/index.ts
 //
-// Cloud text-to-speech for Teacher Mercy. Google Cloud TTS is preferred when
-// google_tts is enabled and configured; ElevenLabs remains the secondary
-// provider when elevenlabs_tts is enabled and configured. Browser TTS stays as
-// the client fallback path inside src/lib/teacher-mercy/voiceEngine.ts.
+// Cloud text-to-speech for Teacher Mercy. Azure Cognitive Services TTS is the
+// PRIMARY provider when azure_tts is enabled and configured (native VN neural
+// voice; shares the AZURE_SPEECH_* secrets that already power VN pronunciation).
+// ElevenLabs remains the fallback when elevenlabs_tts is enabled and configured,
+// so a single provider failure cannot 502. Browser TTS stays as the client
+// fallback path inside src/lib/teacher-mercy/voiceEngine.ts.
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient, SupabaseClient } from "https://esm.sh/@supabase/supabase-js@2";
@@ -13,9 +15,9 @@ import {
   type LatencyStatus,
 } from "../_shared/latencyTelemetry.ts";
 import {
-  googleLanguageCodeFor,
-  synthesizeGoogleTts,
-} from "./googleProvider.ts";
+  azureVoiceFor,
+  synthesizeAzureTts,
+} from "./azureProvider.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -39,7 +41,7 @@ interface MercyTtsRequest {
   language?: string;
 }
 
-type TtsProvider = "google" | "elevenlabs";
+type TtsProvider = "azure" | "elevenlabs";
 
 function jsonResponse(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
@@ -72,12 +74,6 @@ function audioDataUrl(bytes: Uint8Array): string {
 function normalizeLanguage(raw: unknown): string {
   const base = String(raw || "en").trim().toLowerCase().split("-")[0];
   return ["en", "fr", "zh", "de", "ja", "ko", "es", "vi"].includes(base) ? base : "en";
-}
-
-function googleApiKey(): string {
-  return Deno.env.get("GOOGLE_TTS_API_KEY")
-    ?? Deno.env.get("GOOGLE_CLOUD_TTS_API_KEY")
-    ?? "";
 }
 
 async function isFlagOn(
@@ -157,9 +153,10 @@ serve(async (req) => {
       return jsonResponse({ error: `text exceeds ${MAX_TEXT_LENGTH} chars` }, 400);
     }
 
-    const googleFlagOn = await isFlagOn(service, "google_tts", userId);
+    const azureFlagOn = await isFlagOn(service, "azure_tts", userId);
     const elevenLabsFlagOn = await isFlagOn(service, "elevenlabs_tts", userId);
-    const googleKey = googleApiKey();
+    const azureKey = Deno.env.get("AZURE_SPEECH_KEY") ?? "";
+    const azureRegion = Deno.env.get("AZURE_SPEECH_REGION") ?? "";
     const elevenLabsKey = Deno.env.get("ELEVENLABS_API_KEY") ?? "";
     const fallbackReasons: string[] = [];
 
@@ -180,36 +177,34 @@ serve(async (req) => {
     let textHash = "";
     let usageVoiceId = "";
 
-    if (googleFlagOn && googleKey) {
-      const googleStartedAt = performance.now();
+    if (azureFlagOn && azureKey && azureRegion) {
+      const azureStartedAt = performance.now();
+      const azureVoice = azureVoiceFor(language);
       try {
-        const googleResp = await synthesizeGoogleTts(fetch, googleKey, text, language);
-        trackLatencyMs("mercy-tts.google-call", performance.now() - googleStartedAt, {
-          status: googleResp.ok ? "success" : "error",
-          metadata: { upstream_status: googleResp.status, language_code: googleLanguageCodeFor(language) },
+        const azureResp = await synthesizeAzureTts(fetch, azureKey, azureRegion, text, language);
+        trackLatencyMs("mercy-tts.azure-call", performance.now() - azureStartedAt, {
+          status: azureResp.ok ? "success" : "error",
+          metadata: { upstream_status: azureResp.status, voice: azureVoice.name },
         });
-        if (googleResp.ok) {
-          const payload = await googleResp.json().catch(() => null) as { audioContent?: string } | null;
-          if (payload?.audioContent) {
-            audioBuf = Uint8Array.from(atob(payload.audioContent), (char) => char.charCodeAt(0));
-            provider = "google";
-            usageVoiceId = `google:${googleLanguageCodeFor(language)}`;
-            textHash = await sha256Hex(`${usageVoiceId}|${language}|${text}`);
-          } else {
-            fallbackReasons.push("google_empty_audio");
-          }
+        if (azureResp.ok) {
+          audioBuf = new Uint8Array(await azureResp.arrayBuffer());
+          provider = "azure";
+          usageVoiceId = `azure:${azureVoice.name}`;
+          textHash = await sha256Hex(`azure|${azureVoice.name}|${language}|${text}`);
         } else {
-          const detail = await googleResp.text().catch(() => "");
-          console.error("[mercy-tts] Google TTS error", googleResp.status, detail.slice(0, 200));
-          fallbackReasons.push(`google_${googleResp.status}`);
+          const detail = await azureResp.text().catch(() => "");
+          console.error("[mercy-tts] Azure TTS error", azureResp.status, detail.slice(0, 200));
+          fallbackReasons.push(`azure_${azureResp.status}`);
         }
       } catch (err) {
-        trackLatencyMs("mercy-tts.google-call", performance.now() - googleStartedAt, { status: "error" });
-        console.error("[mercy-tts] Google TTS threw", err);
-        fallbackReasons.push("google_error");
+        trackLatencyMs("mercy-tts.azure-call", performance.now() - azureStartedAt, { status: "error" });
+        console.error("[mercy-tts] Azure TTS threw", err);
+        fallbackReasons.push("azure_error");
       }
     } else {
-      fallbackReasons.push(!googleFlagOn ? "google_tts_flag_off" : "google_tts_key_missing");
+      if (!azureFlagOn) fallbackReasons.push("azure_tts_flag_off");
+      else if (!azureKey) fallbackReasons.push("azure_key_missing");
+      else fallbackReasons.push("azure_region_missing");
     }
 
     if (!audioBuf && elevenLabsFlagOn && elevenLabsKey && voiceId) {

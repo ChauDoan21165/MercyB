@@ -24,7 +24,7 @@ describe("fetchCloudTtsUrl", () => {
       data: {
         audioUrl: "data:audio/mpeg;base64,AAAA",
         cached: false,
-        provider: "google",
+        provider: "azure",
       },
       error: null,
     });
@@ -34,7 +34,7 @@ describe("fetchCloudTtsUrl", () => {
     expect(result).toMatchObject({
       audioUrl: "data:audio/mpeg;base64,AAAA",
       cached: false,
-      provider: "google",
+      provider: "azure",
     });
     expect(invoke).toHaveBeenCalledWith("mercy-tts", {
       body: {
@@ -51,7 +51,7 @@ describe("fetchCloudTtsUrl", () => {
       data: {
         error: "Cloud TTS unavailable",
         code: "provider_unavailable",
-        fallback_reason: "google_tts_flag_off,elevenlabs_flag_off",
+        fallback_reason: "azure_tts_flag_off,elevenlabs_flag_off",
         provider: null,
       },
       error: null,
