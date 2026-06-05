@@ -333,8 +333,10 @@ describe("AiTutor four-tab seed flow", () => {
     expect(screen.getByTestId("ai-tutor-speak-target")).toHaveTextContent("I bought a hat yesterday.");
     await speakCurrentTarget("I bought a hat yesterday.");
 
-    expect(await screen.findByTestId("ai-tutor-speak-score")).toHaveTextContent("Bạn nói giống câu mẫu khoảng 100%.");
-    expect(screen.getByTestId("ai-tutor-speak-score")).toHaveTextContent("Mercy đang nghe theo từ. Sẽ chấm phát âm chi tiết hơn sau.");
+    const honestScore = await screen.findByTestId("ai-tutor-speak-score");
+    expect(honestScore).toHaveTextContent("Đang nghe, chấm điểm chi tiết sẽ có sau.");
+    expect(honestScore).not.toHaveTextContent("Bạn nói giống câu mẫu");
+    expect(honestScore.textContent ?? "").not.toMatch(/\d+%/);
     expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
     expect(screen.queryByText(/pronunciation score|phát âm score/i)).not.toBeInTheDocument();
   });
@@ -539,13 +541,36 @@ describe("AiTutor four-tab seed flow", () => {
     );
 
     const score = await screen.findByTestId("ai-tutor-speak-score");
-    expect(score).toHaveTextContent("Bạn nói giống câu mẫu khoảng 100%.");
-    expect(score).toHaveTextContent("Mercy đang nghe theo từ. Sẽ chấm phát âm chi tiết hơn sau.");
+    expect(score).toHaveTextContent("Đang nghe, chấm điểm chi tiết sẽ có sau.");
+    expect(score).not.toHaveTextContent("Bạn nói giống câu mẫu");
+    expect(score.textContent ?? "").not.toMatch(/\d+%/);
     expect(score).not.toHaveTextContent("Mercy đã chấm phát âm chi tiết hơn bằng từng âm.");
 
     const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
     expect(followUp).toHaveTextContent("Where did you buy it?");
     expect(followUp).not.toHaveTextContent("bằng từng âm");
+  });
+
+  it("offers a deterministic follow-up in Speak even without a corrected sentence", async () => {
+    render(<AiTutorPage />);
+
+    // Reach Speak directly — no grammar correction, so there is no seed.
+    await openTab("Luyện nói");
+    expect(screen.getByTestId("ai-tutor-speak-generic-prompt")).toBeInTheDocument();
+
+    await userEvent.type(
+      screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" }),
+      "I had dinner with my family.",
+    );
+
+    // The round must not silently end: a follow-up question appears.
+    const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+    expect(followUp).toHaveTextContent("What did you eat?");
+
+    // And still no fake audio percent on the no-seed path.
+    const score = screen.getByTestId("ai-tutor-speak-score");
+    expect(score).toHaveTextContent("Đang nghe, chấm điểm chi tiết sẽ có sau.");
+    expect(score.textContent ?? "").not.toMatch(/\d+%/);
   });
 
   it("sends a non-canned hat-biking correction into Speak and asks an English follow-up", async () => {
@@ -636,7 +661,8 @@ describe("AiTutor four-tab seed flow", () => {
     );
 
     const score = await screen.findByTestId("ai-tutor-speak-score");
-    expect(score).toHaveTextContent("Bạn nói giống câu mẫu khoảng");
+    expect(score).toHaveTextContent("Đang nghe, chấm điểm chi tiết sẽ có sau.");
+    expect(score.textContent ?? "").not.toMatch(/\d+%/);
 
     const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
     expect(followUp).toHaveTextContent("What did you eat?");

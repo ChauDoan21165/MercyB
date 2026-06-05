@@ -946,7 +946,14 @@ export default function AiTutorPage() {
   const ignoreNextSttCommitRef = useRef(false);
 
   const recordSpeakRepeatAttempt = (spokenText: string) => {
-    const targetSentence = latestCorrectedSeed?.correctedSentence.trim();
+    // Deterministic one-question-then-offer flow: even when the learner reached
+    // Speak without a corrected sentence, fall back to the practice target (the
+    // same fallback the scorer uses) so a follow-up / "another sentence?" offer
+    // is always produced. The round must never silently end.
+    const targetSentence =
+      latestCorrectedSeed?.correctedSentence.trim() ||
+      tutorCopy.starterQuestions[0]?.trim() ||
+      "";
     const spoken = normalizeSpokenText(spokenText);
     if (!targetSentence || !spoken || spoken === lastRecordedSpeakAttemptRef.current) return;
     lastRecordedSpeakAttemptRef.current = spoken;

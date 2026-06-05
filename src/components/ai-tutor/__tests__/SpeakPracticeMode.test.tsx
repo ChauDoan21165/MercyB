@@ -199,18 +199,61 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     expect(onRepeatInputChange).toHaveBeenCalledWith("I bought a hat yesterday.");
   });
 
-  it("shows Step 3 fallback wording only for local scoring", () => {
+  it("shows only the honest no-number line for local (non-Azure) scoring", () => {
     renderSpeak({ mode: "local-fallback", provider: "local" });
 
     const score = screen.getByTestId("ai-tutor-speak-score");
-    expect(score).toHaveTextContent("Bạn nói giống câu mẫu khoảng 100%.");
-    expect(score).toHaveTextContent(
-      "Mercy đang nghe theo từ. Sẽ chấm phát âm chi tiết hơn sau.",
-    );
+    expect(score).toHaveTextContent("Đang nghe, chấm điểm chi tiết sẽ có sau.");
+    // No fake percent, no text-match confidence presented as an audio score.
+    expect(score).not.toHaveTextContent("Bạn nói giống câu mẫu");
+    expect(score.textContent ?? "").not.toMatch(/\d+%/);
     expect(score).not.toHaveTextContent(
       "Mercy đã chấm phát âm chi tiết hơn bằng từng âm.",
     );
     expect(screen.queryByTestId("ai-tutor-speak-word-detail")).not.toBeInTheDocument();
+  });
+
+  it("does not show any percent for typed text with no audio-gated result", () => {
+    // Learner typed the target verbatim — a 100% text overlap — but with no
+    // Azure result the surface must never present a number.
+    renderSpeak(null, "I bought a hat yesterday.");
+
+    expect(screen.queryByTestId("ai-tutor-speak-score")).not.toBeInTheDocument();
+    expect(screen.queryByText(/Bạn nói giống câu mẫu/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/\d+%/)).not.toBeInTheDocument();
+  });
+
+  it("does not surface a score card from stale/typed repeatInput alone", () => {
+    // Stale transcript text in the box, but no scorer result has landed.
+    renderSpeak(undefined, "I buy a hat");
+
+    expect(screen.queryByTestId("ai-tutor-speak-score")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("ai-tutor-speak-listening-note")).not.toBeInTheDocument();
+    expect(screen.queryByText(/\d+%/)).not.toBeInTheDocument();
+  });
+
+  it("renders the parent-supplied 'another sentence' offer as a pivot round", () => {
+    // The deterministic second-round offer is owned by the parent (AiTutor);
+    // the component must render it as a pivot ("Đổi câu luyện") offer.
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        repeatInput="I bought a hat yesterday."
+        followUpPrompt="Bạn muốn luyện thêm một câu nữa không?"
+        followUpIsPivot
+        pronunciationResult={{ mode: "local-fallback", provider: "local" }}
+      />,
+    );
+
+    const followUp = screen.getByTestId("ai-tutor-speak-follow-up");
+    expect(followUp).toHaveTextContent("Bạn muốn luyện thêm một câu nữa không?");
+    expect(followUp).toHaveTextContent("Đổi câu luyện");
+  });
+
+  it("does not render a follow-up section when the parent supplies none", () => {
+    renderSpeak(null, "");
+
+    expect(screen.queryByTestId("ai-tutor-speak-follow-up")).not.toBeInTheDocument();
   });
 
   it("shows Step 7 wording and detail only for Azure batch phoneme evidence", () => {
@@ -263,7 +306,8 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     });
 
     const score = screen.getByTestId("ai-tutor-speak-score");
-    expect(score).toHaveTextContent("Bạn nói giống câu mẫu khoảng 100%.");
+    expect(score).toHaveTextContent("Đang nghe, chấm điểm chi tiết sẽ có sau.");
+    expect(score.textContent ?? "").not.toMatch(/\d+%/);
     expect(score).not.toHaveTextContent("bằng từng âm");
     expect(score).not.toHaveTextContent("/b/");
     expect(screen.queryByTestId("ai-tutor-speak-word-detail")).not.toBeInTheDocument();

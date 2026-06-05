@@ -681,10 +681,11 @@ describe("Step 7 Azure-path smoke harness", () => {
 
         expect(screen.getAllByTestId("ai-tutor-speak-score")).toHaveLength(1);
         const score = screen.getByTestId("ai-tutor-speak-score");
-        expect(score).toHaveTextContent("Bạn nói giống câu mẫu khoảng");
-        expect(score).toHaveTextContent(
-          "Mercy đang nghe theo từ. Sẽ chấm phát âm chi tiết hơn sau.",
-        );
+        // No-Azure fallback shows only the honest no-number line — never a
+        // text-match percent presented as an audio measurement.
+        expect(score).toHaveTextContent("Đang nghe, chấm điểm chi tiết sẽ có sau.");
+        expect(score).not.toHaveTextContent("Bạn nói giống câu mẫu");
+        expect(score.textContent ?? "").not.toMatch(/\d+%/);
         expect(screen.getByTestId("ai-tutor-speak-transcript")).toHaveTextContent(
           sample.learner,
         );
@@ -721,7 +722,8 @@ describe("Step 7 Azure-path smoke harness", () => {
     renderSpeakSmoke(SAMPLE_UTTERANCES[1].target, SAMPLE_UTTERANCES[1].learner, displayResult);
 
     const score = screen.getByTestId("ai-tutor-speak-score");
-    expect(score).toHaveTextContent("Bạn nói giống câu mẫu khoảng");
+    expect(score).toHaveTextContent("Đang nghe, chấm điểm chi tiết sẽ có sau.");
+    expect(score.textContent ?? "").not.toMatch(/\d+%/);
     expect(score).not.toHaveTextContent("bằng từng âm");
     expect(screen.queryByTestId("ai-tutor-speak-word-detail")).not.toBeInTheDocument();
     expect(screen.queryByTestId("ai-tutor-speak-tone-contour")).not.toBeInTheDocument();

@@ -6,7 +6,6 @@ import type { EnglishPronunciationFeedbackDisplay } from "@/lib/pronunciation/en
 import type { VietnameseToneFeedbackDisplay } from "@/lib/pronunciation/vietnameseToneFeedback";
 import type { PronunciationProgressDisplay } from "@/lib/pronunciation/pronunciationProgressTrail";
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
-import { calculateSentenceMatchPercent } from "@/lib/tutor/speakFollowups";
 
 const VIETNAMESE_LETTER_PATTERN = /[ăâđêôơưàáạảãằắặẳẵầấậẩẫèéẹẻẽềếệểễìíịỉĩòóọỏõồốộổỗờớợởỡùúụủũừứựửữỳýỵỷỹ]/i;
 
@@ -102,9 +101,6 @@ export default function SpeakPracticeMode({
   const fallbackTarget = tutorCopy.starterQuestions[0] ?? "What do you usually do in the morning?";
   const practiceTarget = targetSentence?.trim() || fallbackTarget;
   const hasCorrectedTarget = Boolean(targetSentence?.trim());
-  const localScore = practiceTarget && repeatInput.trim()
-    ? calculateSentenceMatchPercent(repeatInput, practiceTarget)
-    : null;
   const hasAzureBatchResult =
     pronunciationResult?.mode === "azure-batch" &&
     pronunciationResult.provider === "azure";
@@ -120,7 +116,14 @@ export default function SpeakPracticeMode({
   const azureWords = hasAzureBatchResult
     ? (pronunciationResult.words ?? []).filter((word) => word.word.trim())
     : [];
-  const score = hasAzureBatchResult ? azureOverallScore : localScore;
+  // Honest gating: a numeric percent is shown ONLY for an audio-gated Azure
+  // batch result. The local/text path never produces a displayed score — typed
+  // or stale transcript text must never read as a real audio measurement.
+  const score = hasAzureBatchResult ? azureOverallScore : null;
+  // The feedback card appears only once a real scorer result lands (set by the
+  // parent solely when fresh audio/transcript produced it). Typed/stale text in
+  // the textarea alone can never surface the card.
+  const showFeedbackCard = Boolean(pronunciationResult);
   const toneContour = pronunciationResult?.toneContour;
   const toneContourDirection =
     toneContour?.expectedContour === "rising" ? "đi lên" : "đi xuống";
@@ -267,7 +270,7 @@ export default function SpeakPracticeMode({
             />
           </div>
 
-          {(score !== null || hasAzureBatchResult || toneContour) && (
+          {showFeedbackCard && (
             <div data-testid="ai-tutor-speak-score" className="mt-4 rounded-[16px] border border-indigo-100 bg-indigo-50 px-4 py-4">
               {hasAzureBatchResult ? (
                 <>
@@ -321,14 +324,12 @@ export default function SpeakPracticeMode({
                   )}
                 </>
               ) : (
-                <>
-                  <p className="text-sm font-black leading-6 text-indigo-950">
-                    Bạn nói giống câu mẫu khoảng {score}%.
-                  </p>
-                  <p className="mt-1 text-sm font-semibold leading-6 text-indigo-900">
-                    Mercy đang nghe theo từ. Sẽ chấm phát âm chi tiết hơn sau.
-                  </p>
-                </>
+                <p
+                  data-testid="ai-tutor-speak-listening-note"
+                  className="text-sm font-black leading-6 text-indigo-950"
+                >
+                  Đang nghe, chấm điểm chi tiết sẽ có sau.
+                </p>
               )}
               {toneContour && (
                 <div
