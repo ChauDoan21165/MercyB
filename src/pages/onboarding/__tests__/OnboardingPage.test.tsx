@@ -57,6 +57,22 @@ vi.mock("react-router-dom", async () => {
   };
 });
 
+// Stub the SR live-region helper. On every step transition OnboardingPage
+// calls `announce(headingText)`, which mirrors the new step's <h1> text into
+// `<div id="live-region-polite">` after a 100ms setTimeout. In the slow full
+// suite that timer fires before a synchronous `getByText(/heading/)` runs, so
+// the query matches BOTH the <h1> and the live region → getMultipleElements-
+// FoundError (passes in isolation, flakes in the shard). No test here asserts
+// on announcement behaviour, so a no-op kills the race at its source. The
+// production a11y path is unchanged.
+vi.mock("@/lib/a11y/announcements", () => ({
+  announce: vi.fn(),
+  announceLoading: vi.fn(),
+  announceSuccess: vi.fn(),
+  announceError: vi.fn(),
+  announcePageChange: vi.fn(),
+}));
+
 // Import the page AFTER mocks are registered.
 import OnboardingPage from "../OnboardingPage";
 
