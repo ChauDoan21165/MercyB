@@ -34,6 +34,7 @@ import {
   pickTodaysChallenge,
 } from "@/lib/challenges/dailyChallenge";
 import type { DailyChallenge } from "@/data/pronunciation-challenges";
+import { recordActiveDay } from "@/lib/retention/recordActiveDay";
 
 type SaveState = "idle" | "saving" | "saved" | "error";
 
@@ -104,6 +105,9 @@ export default function DailyChallengePage() {
       score: pendingScore,
     });
     if (result.ok) {
+      // Live production surface: learner completed the daily pronunciation
+      // challenge. Active-day choke point (dark, dedup'd per local day).
+      void recordActiveDay();
       setSaveState("saved");
       setCompletion({
         challenge_id: challenge.id,

@@ -32,6 +32,7 @@ import {
 } from "@/lib/writing/feedbackClient";
 import { recordSubmission } from "@/lib/writing/submissions";
 import { MercyAnswerFeedback } from "@/components/feedback/MercyAnswerFeedback";
+import { recordActiveDay } from "@/lib/retention/recordActiveDay";
 
 const AUTO_SAVE_INTERVAL_MS = 5_000;
 
@@ -136,6 +137,9 @@ export default function WritingPracticeSessionPage() {
         userJwt: jwt,
       });
       setFeedback(result);
+      // Live production surface: learner submitted a writing piece for feedback.
+      // Active-day choke point (dark, dedup'd per local day).
+      void recordActiveDay();
       // Persist to Supabase. Fire and forget — UI shouldn't block on this.
       void recordSubmission({
         userId,

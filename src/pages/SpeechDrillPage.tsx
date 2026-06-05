@@ -22,6 +22,7 @@ import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 import { SpeechDrill } from '@/components/speech/SpeechDrill';
 import { recordSpeechAttempt } from '@/services/speechAttempts';
+import { recordActiveDay } from '@/lib/retention/recordActiveDay';
 import { capturePronunciation } from '@/services/learnerCapture';
 import {
   ROOM_PROGRESS_APP_ID,
@@ -517,6 +518,9 @@ export default function SpeechDrillPage() {
           }}
           onPracticeWord={(word) => setPracticeOverride(word)}
           onAttempt={(event) => {
+            // Live production surface: learner made a pronunciation attempt in
+            // the speech drill. Active-day choke point (dark, dedup'd per day).
+            void recordActiveDay();
             // Fire-and-forget. The service is feature-flag gated and
             // never throws — it's safe to ignore the returned promise
             // from the React event handler.

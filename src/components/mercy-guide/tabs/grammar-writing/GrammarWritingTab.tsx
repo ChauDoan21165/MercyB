@@ -37,6 +37,7 @@ import { installStage4SignalHook } from '@/lib/stage-4/signalHook';
 import Stage4SuggestionPanel from '@/components/stage-4/Stage4SuggestionPanel';
 import type { L1WeaknessTag } from '@/lib/feedback/l1-error-detector';
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
+import { recordActiveDay } from '@/lib/retention/recordActiveDay';
 
 type LearningSupportMode = 'gentle' | 'guided' | 'immersion';
 
@@ -814,6 +815,10 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
   async function handleAnalyze() {
     const text = draft.trim();
     if (!text) return;
+
+    // Live production surface: learner submitted text for grammar analysis.
+    // Active-day choke point (dark, dedup'd per local day).
+    void recordActiveDay();
 
     setIsLoading(true);
     setError(null);
