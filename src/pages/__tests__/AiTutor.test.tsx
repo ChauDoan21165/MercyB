@@ -117,6 +117,19 @@ class MockSpeechRecognition extends EventTarget implements SpeechRecognitionLike
       ],
     } as unknown as Parameters<NonNullable<SpeechRecognitionLike["onresult"]>>[0]);
   }
+
+  emitInterimTranscript(text: string) {
+    this.onresult?.({
+      resultIndex: 0,
+      results: [
+        {
+          isFinal: false,
+          length: 1,
+          0: { transcript: text },
+        },
+      ],
+    } as unknown as Parameters<NonNullable<SpeechRecognitionLike["onresult"]>>[0]);
+  }
 }
 
 vi.mock("@/providers/AuthProvider", () => ({
@@ -189,6 +202,20 @@ async function speakCurrentTarget(transcript: string) {
   await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói|Đọc câu thay vì gõ/i }));
   act(() => {
     MockSpeechRecognition.last?.emitFinalTranscript(transcript);
+    MockSpeechRecognition.last?.stop();
+  });
+}
+
+// A realistic single voice attempt: the mic streams interim partials while
+// listening, then commits one final transcript on stop. Interim partials must
+// NOT each count as a practice round (regression: they inflated turnsOnTopic).
+async function speakWithInterims(interims: string[], finalTranscript: string) {
+  await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói|Đọc câu thay vì gõ/i }));
+  act(() => {
+    for (const partial of interims) {
+      MockSpeechRecognition.last?.emitInterimTranscript(partial);
+    }
+    MockSpeechRecognition.last?.emitFinalTranscript(finalTranscript);
     MockSpeechRecognition.last?.stop();
   });
 }
@@ -381,6 +408,68 @@ describe("AiTutor four-tab seed flow", () => {
     expect(honestScore.textContent ?? "").not.toMatch(/\d+%/);
     expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
     expect(screen.queryByText(/pronunciation score|phát âm score/i)).not.toBeInTheDocument();
+  });
+
+  it("counts a voice attempt with interim transcripts as a SINGLE round (no premature 'another sentence?')", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    // One spoken sentence the mic streams as growing partials over a few seconds,
+    // with gaps wider than the 350ms record debounce (as a real browser does).
+    // Before the fix, each partial was recorded as its own round, so a single
+    // sentence raced to the cap and offered "another sentence?" after one round.
+    await userEvent.click(
+      screen.getByRole("button", { name: /Nhập bằng giọng nói|Đọc câu thay vì gõ/i }),
+    );
+    act(() => MockSpeechRecognition.last?.emitInterimTranscript("I bought a"));
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 400));
+    });
+    act(() => MockSpeechRecognition.last?.emitInterimTranscript("I bought a hat yester"));
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 400));
+    });
+    act(() => {
+      MockSpeechRecognition.last?.emitFinalTranscript("I bought a hat yesterday.");
+      MockSpeechRecognition.last?.stop();
+    });
+
+    const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+    // Round 1 — the FIRST topic question, never a later question or the pivot.
+    expect(followUp).toHaveTextContent("Where did you buy it?");
+    expect(followUp).not.toHaveTextContent("Do you want to practice another sentence?");
+  });
+
+  it("continues for multiple rounds and only offers another sentence after the round cap", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    // Round 1 — first topic question.
+    await speakCurrentTarget("I bought a hat yesterday.");
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+
+    // Round 2 — a NEW topic question, still not the pivot (regression made this
+    // jump straight to "another sentence?").
+    await speakCurrentTarget("I bought it at the market downtown.");
+    await waitFor(() => {
+      const followUp = screen.getByTestId("ai-tutor-speak-follow-up");
+      expect(followUp).not.toHaveTextContent("Where did you buy it?");
+      expect(followUp).not.toHaveTextContent("Do you want to practice another sentence?");
+    });
+
+    // Round 3 — still a question, not the pivot.
+    await speakCurrentTarget("I need it for the sunny summer days.");
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent(
+        "Do you want to practice another sentence?",
+      );
+    });
   });
 
   it("keeps deterministic Step 8 Speak follow-up when no salience is found", async () => {
