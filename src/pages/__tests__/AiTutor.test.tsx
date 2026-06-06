@@ -6,6 +6,10 @@ import AiTutorPage from "../AiTutor";
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 import { hasShownHint } from "@/lib/ai-tutor/detectorHint";
 import { readL1RecentTags } from "@/lib/stage-3a/adapters/l1TagAdapter";
+import {
+  readAndClearPendingReflection,
+  writePendingReflection,
+} from "@/lib/ai-tutor/teacherMercyHandoff";
 import type { SpeechRecognitionLike } from "@/types/speech-recognition";
 
 const FORBIDDEN_STANCE_WORDING = /diagnosis|depressed|anxiety|trauma|therapy|mental health|clinical|disorder/i;
@@ -393,6 +397,28 @@ describe("AiTutor four-tab seed flow", () => {
 
     expect(screen.queryByTestId("ai-tutor-l1-followup")).not.toBeInTheDocument();
     expect(screen.queryByTestId("ai-tutor-l1-moveon")).not.toBeInTheDocument();
+  });
+
+  it("prefills the Correction input from a Teacher Mercy room hand-off and consumes it", () => {
+    writePendingReflection({
+      roomId: "english_a1_intro",
+      roomTitle: "Intro / Giới thiệu",
+      keyword: "hello",
+      reflectionText: "Today I learn about my family.",
+    });
+
+    render(<AiTutorPage />);
+
+    // Lands in Correction (grammar) mode with the reflection pre-filled.
+    expect(screen.getByRole("textbox")).toHaveValue("Today I learn about my family.");
+    // Single-use: the bridge is cleared on mount, so a later mount won't re-prefill.
+    expect(readAndClearPendingReflection()).toBeNull();
+  });
+
+  it("shows an empty Correction input when there is no Teacher Mercy hand-off", () => {
+    render(<AiTutorPage />);
+
+    expect(screen.getByRole("textbox")).toHaveValue("");
   });
 
   it("keeps L1 focus in-session only — it does not persist across a remount (invariant 5)", async () => {

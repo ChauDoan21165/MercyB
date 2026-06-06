@@ -70,6 +70,7 @@ import { normalizeTier } from "@/lib/constants/tiers";
 import { tierFromRoomId } from "@/lib/tierFromRoomId";
 import { canAccessTier } from "@/security/typeGuards";
 import { toAudioKey } from "@/lib/roomAudioResolver";
+import { writePendingReflection } from "@/lib/ai-tutor/teacherMercyHandoff";
 
 import {
   ActiveEntry,
@@ -1519,31 +1520,34 @@ export default function RoomRenderer({
     const saved = saveReflection();
     if (!saved) return;
 
+    // Hand the reflection to AiTutor via a single-use in-session bridge, then
+    // navigate there. (The old CustomEvent had no listener — AiTutor is not
+    // mounted on /room, so the event could never cross the route boundary.)
+    writePendingReflection({
+      roomId: effectiveRoomId,
+      roomTitle: roomTitleBilingual,
+      keyword: activeKeyword ? String(activeKeyword).trim() : null,
+      reflectionText: text,
+    });
+
+    // Clipboard is a best-effort fallback; only claim "Copied" when it truly
+    // succeeds, so the label never lies on browsers that block clipboard.
+    let copiedToClipboard = false;
     try {
       if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
         await navigator.clipboard.writeText(text);
+        copiedToClipboard = true;
       }
     } catch {
-      // fail silently as requested
+      copiedToClipboard = false;
     }
+    if (copiedToClipboard) setCompletionStatus("copied");
 
     try {
-      window.dispatchEvent(
-        new CustomEvent("mb:teacher-mercy-reflection", {
-          detail: {
-            roomId: effectiveRoomId,
-            roomTitle: roomTitleBilingual,
-            keyword: activeKeyword ? String(activeKeyword).trim() : null,
-            reflectionText: text,
-            copiedAt: new Date().toISOString(),
-          },
-        }),
-      );
+      window.location.assign("/ai-tutor");
     } catch {
-      // ignore
+      // Navigation is best-effort; the reflection is already saved + handed off.
     }
-
-    setCompletionStatus("copied");
   }, [completionText, effectiveRoomId, roomTitleBilingual, activeKeyword, saveReflection]);
 
   const canComplete = !isLocked && !!activeEntry;

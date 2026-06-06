@@ -12,6 +12,7 @@ import {
 } from "@/lib/ai-tutor/learningMemory";
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
+import { readAndClearPendingReflection } from "@/lib/ai-tutor/teacherMercyHandoff";
 import { useTtsSpeaker } from "@/lib/ai-tutor/useTtsSpeaker";
 import { usePronunciationRecorder } from "@/hooks/usePronunciationRecorder";
 import {
@@ -822,6 +823,18 @@ export default function AiTutorPage() {
   const routeMountStartRef = useRef<number>(performance.now());
   useEffect(() => {
     reportRouteMountPerf("ai_tutor", performance.now() - routeMountStartRef.current);
+  }, []);
+
+  // Teacher Mercy hand-off: if the user arrived from a room's "Copy to Teacher
+  // Mercy" button, consume the single-use reflection and pre-fill the
+  // Correction input. Reading clears the bridge (see teacherMercyHandoff), so a
+  // refresh never re-prefills stale text. Storage tokens live in the helper, not
+  // here, to keep the "no storage writes" guard on this file green.
+  useEffect(() => {
+    const handoff = readAndClearPendingReflection();
+    if (!handoff) return;
+    setMode("grammar");
+    setInput(handoff.reflectionText.slice(0, 500));
   }, []);
 
   const shellRef = useRef<HTMLElement | null>(null);
