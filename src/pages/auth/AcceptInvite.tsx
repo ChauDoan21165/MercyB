@@ -51,11 +51,7 @@ export default function AcceptInvite(): React.ReactElement {
         return;
       }
       const { data, error } = await supabase
-        .from("family_invitations")
-        .select(
-          "inviter_user_id, recipient_name, template_key, custom_message, relationship, trial_bonus_days, expires_at, status",
-        )
-        .eq("invite_token", token)
+        .rpc("get_family_invitation_by_token", { p_token: token })
         .maybeSingle();
       if (cancelled) return;
       if (error || !data) {

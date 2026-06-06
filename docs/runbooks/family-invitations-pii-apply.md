@@ -8,7 +8,7 @@ If the CEO chooses to stop the anonymous table-read leak immediately, Chau can r
 REVOKE SELECT ON public.family_invitations FROM anon;
 ```
 
-Impact: this deliberately breaks the anonymous `/invite/:token` `AcceptInvite` page until the RPC migration is applied and the app switches that page from direct table SELECT to `get_family_invitation_by_token`.
+Impact: this deliberately breaks the anonymous `/invite/:token` `AcceptInvite` page until the RPC migration is applied and the app version in this MR is deployed.
 
 ## Proper Fix Order
 
@@ -19,15 +19,16 @@ Impact: this deliberately breaks the anonymous `/invite/:token` `AcceptInvite` p
    - Does not return `recipient_email`, `recipient_phone`, or `invite_token`.
    - Grants execute to `anon` and `authenticated`; revokes from `PUBLIC`.
 
-2. Ship the app client switch owned by the `AcceptInvite` lane.
-   - Replace the direct `from("family_invitations").select(...).eq("invite_token", token)` read in `src/pages/auth/AcceptInvite.tsx`.
-   - Use `rpc("get_family_invitation_by_token", { p_token: token })`.
-   - Verify `/invite/:token` works anonymously before tightening table access.
+2. Deploy the app version from this MR.
+   - `src/pages/auth/AcceptInvite.tsx` now uses `rpc("get_family_invitation_by_token", { p_token: token })`.
+   - This deploy must happen after step 1 because older databases do not have the RPC.
 
-3. Apply `20260710000000_family_invitations_tighten_anon_select.sql` only after step 2 is live and verified.
+3. Verify `/invite/:token` works anonymously.
+
+4. Apply `20260710000000_family_invitations_tighten_anon_select.sql` only after step 3 is verified.
    - Drops `family_invitations_recipient_by_token`.
    - Recreates owner SELECT as `TO authenticated`.
    - Revokes `SELECT` on `public.family_invitations` from `anon`.
    - Grants `SELECT` to `authenticated` for inviter-owned dashboard reads.
 
-Do not apply step 3 before the client switch unless the accepted product decision is to break anonymous invite landing pages to stop the PII leak immediately.
+Do not apply step 4 before the RPC-backed app is live unless the accepted product decision is to break anonymous invite landing pages to stop the PII leak immediately.
