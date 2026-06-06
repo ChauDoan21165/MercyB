@@ -9,6 +9,87 @@ import {
   selectSpeakFollowUp,
   selectSpeakFollowUpByTopicId,
 } from "@/lib/tutor/speakFollowups";
+import {
+  SPEAK_TOPIC_CORRECTION_CANDIDATES,
+  SPEAK_TOPIC_LIBRARY,
+  buildSpeakTopicCorrectionWeave,
+} from "@/lib/tutor/speakTopicLibrary";
+
+const BATCH_1_SEEDS: Array<{ id: string; seed: string }> = [
+  { id: "topic-ordering-food", seed: "I want order noodles at the restaurant." },
+  { id: "topic-family-relatives", seed: "I visited my aunt and my cousins last weekend." },
+  { id: "topic-work", seed: "I had a meeting with my manager this morning." },
+  { id: "topic-directions-travel", seed: "I need directions to the bus station." },
+  { id: "topic-shopping", seed: "I want to buy a shirt at the store." },
+  { id: "topic-doctor-health-visit", seed: "I need call my doctor about my appointment." },
+  { id: "topic-phone-calls", seed: "I need call my friend after lunch." },
+  { id: "topic-introductions", seed: "Hello, my name is Linh and I am from Vietnam." },
+  { id: "topic-daily-routine", seed: "Every morning I brush my teeth before breakfast." },
+  { id: "topic-time-appointments-waiting", seed: "I am waiting at three and my turn is late." },
+];
+
+const BATCH_1_LEARNER_TURNS: Record<string, string[]> = {
+  "topic-ordering-food": [
+    "I want order noodles.",
+    "I like the soup.",
+    "I want chili with it.",
+    "I will say thank you to the waiter.",
+  ],
+  "topic-family-relatives": [
+    "I visited my aunt.",
+    "My cousins live near me.",
+    "We ate dinner together.",
+    "My grandmother was happy.",
+  ],
+  "topic-work": [
+    "I had a meeting about the project.",
+    "My manager gave me a task.",
+    "The deadline is close.",
+    "I sent the report.",
+  ],
+  "topic-directions-travel": [
+    "I need directions to the station.",
+    "The bus is late.",
+    "I will ask the driver.",
+    "The hotel is near the airport.",
+  ],
+  "topic-shopping": [
+    "I want to buy a jacket.",
+    "The size is medium.",
+    "The price is high.",
+    "The cashier is friendly.",
+  ],
+  "topic-doctor-health-visit": [
+    "I need call my doctor.",
+    "My fever started yesterday.",
+    "I bought medicine.",
+    "The clinic opens at nine.",
+  ],
+  "topic-phone-calls": [
+    "I need call my friend.",
+    "The phone line is busy.",
+    "I will leave a message.",
+    "My friend can call me later.",
+  ],
+  "topic-introductions": [
+    "My name is Linh.",
+    "I am from Vietnam.",
+    "I work in accounting.",
+    "I want to ask about your job.",
+  ],
+  "topic-daily-routine": [
+    "Every morning I prepare breakfast.",
+    "I brush my teeth.",
+    "I eat breakfast at seven.",
+    "I go home before dinner.",
+  ],
+  "topic-time-appointments-waiting": [
+    "I have an appointment at three.",
+    "I wait you.",
+    "The doctor is late.",
+    "I will confirm the schedule.",
+  ],
+};
 
 describe("speakFollowups", () => {
   it("selects a deterministic follow-up for bought-hat sentences", () => {
@@ -183,6 +264,183 @@ describe("speakFollowups", () => {
       });
       expect(reply.isPivot).toBe(false);
       expect(reply.question).toBe("Who cooked dinner?");
+    });
+  });
+
+  describe("Speak topic library batch 1", () => {
+    it("ships exactly the approved 10 everyday topics", () => {
+      expect(SPEAK_TOPIC_LIBRARY.map((topic) => topic.labelEn)).toEqual([
+        "Ordering Food",
+        "Family And Relatives",
+        "Work",
+        "Directions And Travel",
+        "Shopping",
+        "Doctor / Health Visit",
+        "Phone Calls",
+        "Introductions",
+        "Daily Routine",
+        "Time, Appointments, And Waiting",
+      ]);
+      for (const topic of SPEAK_TOPIC_LIBRARY) {
+        expect(topic.followUps.length).toBeGreaterThanOrEqual(4);
+      }
+    });
+
+    it("matches deterministic seed inputs for all 10 topics", () => {
+      for (const { id, seed } of BATCH_1_SEEDS) {
+        expect(resolveSpeakFollowUpTopicId({ seedSentence: seed })).toBe(id);
+        expect(selectSpeakFollowUp(seed).topicId).toBe(id);
+      }
+    });
+
+    it("validates 4+ topic-aware non-pivot rounds for every topic", () => {
+      for (const { id } of BATCH_1_SEEDS) {
+        const askedQuestions: string[] = [];
+        const usedFollowUpIds: string[] = [];
+        const turns = BATCH_1_LEARNER_TURNS[id];
+
+        turns.forEach((learnerText, turnsOnTopic) => {
+          const selection = selectSpeakFollowUpByTopicId(id, {
+            askedQuestions,
+            turnsOnTopic,
+            learnerText,
+          });
+
+          expect(selection.topicId).toBe(id);
+          expect(selection.isPivot).toBe(false);
+          expect(selection.question).not.toBe(SPEAK_FOLLOW_UP_PIVOT);
+          expect(selection.followUpId).toBeTruthy();
+          expect(usedFollowUpIds).not.toContain(selection.followUpId);
+          usedFollowUpIds.push(selection.followUpId!);
+          askedQuestions.push(selection.question);
+        });
+
+        expect(new Set(usedFollowUpIds).size).toBeGreaterThanOrEqual(4);
+        const capped = selectSpeakFollowUpByTopicId(id, {
+          askedQuestions,
+          turnsOnTopic: SPEAK_FOLLOW_UP_DEPTH_CAP,
+          learnerText: "One more detail.",
+        });
+        expect(capped).toEqual({
+          topicId: id,
+          question: SPEAK_FOLLOW_UP_PIVOT,
+          isPivot: true,
+        });
+      }
+    });
+
+    it("lets arbitrary learner salience fill topic follow-up slots without leaving the topic", () => {
+      const askedQuestions: string[] = [];
+      const first = selectSpeakFollowUpByTopicId("topic-shopping", {
+        askedQuestions,
+        turnsOnTopic: 0,
+        learnerText: "I want to buy a jacket.",
+      });
+      askedQuestions.push(first.question);
+
+      const second = selectSpeakFollowUpByTopicId("topic-shopping", {
+        askedQuestions,
+        turnsOnTopic: 1,
+        learnerText: "I need shoes today.",
+      });
+
+      expect(second.topicId).toBe("topic-shopping");
+      expect(second.isPivot).toBe(false);
+      expect(second.question.toLowerCase()).toContain("shoes");
+      expect(second.question.toLowerCase()).toMatch(/size|color|shopping|works/);
+    });
+
+    it("does not pivot before 4 completed topic turns even when learner text changes", () => {
+      const askedQuestions: string[] = [];
+      for (let turnsOnTopic = 0; turnsOnTopic < SPEAK_FOLLOW_UP_DEPTH_CAP; turnsOnTopic++) {
+        const selection = selectSpeakFollowUpByTopicId("topic-directions-travel", {
+          askedQuestions,
+          turnsOnTopic,
+          learnerText: BATCH_1_LEARNER_TURNS["topic-directions-travel"][turnsOnTopic],
+        });
+        expect(selection.isPivot).toBe(false);
+        askedQuestions.push(selection.question);
+      }
+    });
+
+    it("does not regress existing scripted topics", () => {
+      expect(selectSpeakFollowUp("I bought a hat yesterday.")).toEqual({
+        topicId: "bought-hat-yesterday",
+        question: "Where did you buy it?",
+        isPivot: false,
+      });
+      expect(selectSpeakFollowUp("I had dinner with my family.")).toEqual({
+        topicId: "dinner-family",
+        question: "What did you eat?",
+        isPivot: false,
+      });
+      expect(selectSpeakFollowUpByTopicId("dinner-family", {
+        askedQuestions: ["What did you eat?"],
+        turnsOnTopic: 1,
+        learnerText: "It was very good.",
+      })).toEqual({
+        topicId: "dinner-family",
+        question: "Who cooked dinner?",
+        isPivot: false,
+      });
+      expect(resolveSpeakFollowUpTopicId({
+        seedSentence: "I bought a hat yesterday.",
+        learnerText: "My wife burned the fish.",
+        currentTopicId: "bought-hat-yesterday",
+      })).toBe("bought-hat-yesterday");
+    });
+
+    it("documents correction candidates with the required precision gate fields", () => {
+      for (const candidate of SPEAK_TOPIC_CORRECTION_CANDIDATES) {
+        expect(candidate.positives).toHaveLength(3);
+        expect(candidate.confusableNegatives).toHaveLength(2);
+        expect(candidate.fpRiskNote.length).toBeGreaterThan(20);
+        expect(["ship-safe", "hold", "abstain"]).toContain(candidate.status);
+      }
+    });
+
+    it("weaves only approved ship-safe correction signals into model-line prompts", () => {
+      const positives = [
+        "I go to work yesterday.",
+        "I want order coffee.",
+        "I need call my doctor.",
+      ];
+      for (const text of positives) {
+        const weave = buildSpeakTopicCorrectionWeave(text);
+        expect(weave?.status).toBe("ship-safe");
+        expect(weave?.promptPrefix).toMatch(/^Small model:/);
+      }
+
+      const negatives = [
+        "I go to work every day.",
+        "I will go to the doctor tomorrow.",
+        "I want to order coffee.",
+        "I ordered coffee yesterday.",
+        "I need to call my doctor.",
+        "I called my doctor yesterday.",
+      ];
+      for (const text of negatives) {
+        expect(buildSpeakTopicCorrectionWeave(text)).toBeNull();
+      }
+    });
+
+    it("abstains or holds weak correction candidates and redirects into engaging practice", () => {
+      const hold = buildSpeakTopicCorrectionWeave("I wait you.");
+      expect(hold).toEqual({
+        signalId: "speak-topic-wait-for-person",
+        status: "hold",
+        promptPrefix: "No need to fix that yet. Let's make the situation clear.",
+      });
+
+      const abstainSelection = selectSpeakFollowUpByTopicId("topic-doctor-health-visit", {
+        askedQuestions: [],
+        turnsOnTopic: 0,
+        learnerText: "I sick today.",
+      });
+      expect(abstainSelection.correctionStatus).toBe("abstain");
+      expect(abstainSelection.question).toMatch(/won't guess the correction/i);
+      expect(abstainSelection.question).toMatch(/Why do you need to see the doctor\?/);
+      expect(abstainSelection.isPivot).toBe(false);
     });
   });
 
