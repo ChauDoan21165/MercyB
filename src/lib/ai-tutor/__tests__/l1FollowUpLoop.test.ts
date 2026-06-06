@@ -102,6 +102,32 @@ describe("follow-up bank", () => {
     ).flatMap((t) => followUpsForTag(t).map((c) => c.id));
     expect(new Set(all).size).toBe(all.length);
   });
+
+  it("every follow-up prompt is Vietnamese-first (invariant 2 regression lock)", () => {
+    // Vietnamese-specific letters/diacritics. Locks the whole bank against a
+    // silent regression that swaps a VN prompt for a generic English one — the
+    // integration test only asserts two of the 3rd-person contexts, so every
+    // other context (and all six other tags) would otherwise be unguarded.
+    const VIETNAMESE_DIACRITIC =
+      /[àáảãạăắằẳẵặâấầẩẫậđèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵ]/i;
+    const focusable: L1WeaknessTag[] = [
+      "vi_l1_3rd_person_s",
+      "vi_l1_past_ed",
+      "vi_l1_plural_s",
+      "vi_l1_missing_be",
+      "vi_l1_missing_article",
+      "vi_l1_question_no_aux",
+      "vi_l1_preposition_transfer",
+    ];
+    for (const tag of focusable) {
+      for (const ctx of followUpsForTag(tag)) {
+        expect(
+          VIETNAMESE_DIACRITIC.test(ctx.promptVi),
+          `promptVi for ${ctx.id} must be Vietnamese-first; got "${ctx.promptVi}"`,
+        ).toBe(true);
+      }
+    }
+  });
 });
 
 // ── reducer: starting / low confidence ─────────────────────────────────────
