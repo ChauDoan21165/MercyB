@@ -770,6 +770,38 @@ describe("AiTutor four-tab seed flow", () => {
     expect(score.textContent ?? "").not.toMatch(/\d+%/);
   });
 
+  it("follows an arbitrary (non-bucket) Speak topic for 4 rounds using the learner's own words", async () => {
+    render(<AiTutorPage />);
+    await openTab("Luyện nói");
+
+    const box = screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" });
+    // Arbitrary, non-scripted topics; each answer introduces a new salient word.
+    const rounds: Array<{ text: string; keyword: string }> = [
+      { text: "The weather is nice today.", keyword: "weather" },
+      { text: "My garden has many flowers.", keyword: "garden" },
+      { text: "I painted the fence blue.", keyword: "fence" },
+      { text: "I sold the camera afterwards.", keyword: "camera" },
+    ];
+
+    const askedQuestions: string[] = [];
+    for (const round of rounds) {
+      await userEvent.clear(box);
+      await userEvent.type(box, round.text);
+      const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+      await waitFor(() => {
+        expect(followUp.textContent?.toLowerCase() ?? "").toContain(round.keyword);
+      });
+      const question = followUp.textContent ?? "";
+      // The conversation follows the learner — never the premature dead-end pivot.
+      expect(question).not.toMatch(/Do you want to practice another sentence/);
+      // And it does not repeat a previous follow-up.
+      expect(askedQuestions).not.toContain(question);
+      askedQuestions.push(question);
+    }
+
+    expect(new Set(askedQuestions).size).toBe(askedQuestions.length); // 4 distinct
+  });
+
   it("sends a non-canned hat-biking correction into Speak and asks an English follow-up", async () => {
     Object.defineProperty(window, "Audio", {
       configurable: true,

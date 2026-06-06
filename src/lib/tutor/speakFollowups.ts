@@ -16,14 +16,110 @@ export type SpeakFollowUpTopicInput = {
   currentTopicId?: string | null;
 };
 
-const GENERIC_FOLLOW_UPS = [
-  "Can you tell me one more detail about that?",
-  "What happened after that?",
-  "How did you feel about it?",
-] as const;
-
 export const SPEAK_FOLLOW_UP_DEPTH_CAP = 4;
 export const SPEAK_FOLLOW_UP_PIVOT = "Do you want to practice another sentence?";
+
+// ── Salience-following fallback (Path B: follow the learner's own words) ──
+//
+// When the learner's sentence doesn't match a scripted topic pattern it used to
+// fall back to GENERIC_FOLLOW_UPS ("Can you tell me one more detail about
+// that?") — a dead-end that ignored what they actually said. Instead we extract
+// the salient content word from their last answer and ask about THAT, so the
+// conversation follows the topic for the full depth cap. Deterministic, no LLM.
+// Falls back to "that" only when no concrete word is found (never worse than
+// the old generic line). Scripted pattern questions still lead, so scripted
+// topics are unchanged.
+
+const SALIENCE_DET_OR_PREP = new Set([
+  "a", "an", "the", "my", "your", "his", "her", "our", "their",
+  "at", "to", "in", "of", "on", "with", "about", "from",
+]);
+
+const SALIENCE_STOPWORDS = new Set([
+  ...SALIENCE_DET_OR_PREP,
+  "i", "you", "he", "she", "it", "we", "they", "me", "him", "us", "them",
+  "this", "that", "these", "those", "mine", "yours", "its",
+  "am", "is", "are", "was", "were", "be", "been", "being",
+  "do", "does", "did", "have", "has", "had",
+  "will", "would", "can", "could", "shall", "should", "may", "might", "must",
+  "go", "going", "went", "get", "got", "getting", "make", "made", "making",
+  "like", "liked", "want", "wanted", "need", "needed", "see", "saw", "know",
+  "knew", "think", "thought", "said", "say", "says", "tell", "told", "take",
+  "took", "buy", "bought", "come", "came", "give", "gave", "use", "used",
+  "and", "but", "or", "if", "so", "because", "when", "while", "then", "than",
+  "as", "for", "there", "here", "very", "really", "just", "also", "too",
+  "what", "where", "why", "who", "how", "which", "whose",
+  "not", "no", "yes", "okay", "ok", "please", "one", "more", "much", "many",
+  "good", "bad", "nice", "big", "small", "old", "new", "great",
+  "thing", "things", "stuff", "time", "way", "lot", "bit", "kind", "sort",
+  "today", "yesterday", "tomorrow", "now", "day", "night",
+  // Common adjectives / states — never a good topic noun ("the tired"); when a
+  // sentence has only these, the follow-up degrades to "that".
+  "tired", "happy", "sad", "busy", "hungry", "thirsty", "sick", "fine", "sure",
+  "ready", "sorry", "sunny", "rainy", "cloudy", "hot", "cold", "warm", "cool",
+  "tall", "fast", "slow", "easy", "hard", "fun", "funny", "boring", "tasty",
+  "expensive", "cheap", "beautiful", "ugly", "important", "difficult",
+  "interesting", "angry", "scared", "excited", "bored", "free", "late", "early",
+]);
+
+function salienceTokens(text: string): string[] {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z\s']/g, " ")
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+function isSalienceContent(token: string): boolean {
+  return token.length >= 3 && !SALIENCE_STOPWORDS.has(token);
+}
+
+/**
+ * Pull the salient content noun from the learner's answer. Prefers a noun
+ * directly after a determiner/preposition (a/the/at/to/… → the object), the
+ * most reliable concrete-topic signal; falls back to the last content word;
+ * returns null when nothing concrete is found.
+ */
+export function extractSalientKeyword(learnerText: string): string | null {
+  const tokens = salienceTokens(learnerText);
+  let afterDeterminer: string | null = null;
+  for (let i = 0; i < tokens.length - 1; i++) {
+    if (!SALIENCE_DET_OR_PREP.has(tokens[i])) continue;
+    for (let j = i + 1; j < tokens.length; j++) {
+      if (SALIENCE_DET_OR_PREP.has(tokens[j])) continue; // skip "at a" → "shop"
+      if (isSalienceContent(tokens[j])) afterDeterminer = tokens[j];
+      break;
+    }
+  }
+  if (afterDeterminer) return afterDeterminer;
+  for (let i = tokens.length - 1; i >= 0; i--) {
+    if (isSalienceContent(tokens[i])) return tokens[i];
+  }
+  return null;
+}
+
+const SALIENCE_FRAMES: ReadonlyArray<(ref: string) => string> = [
+  (ref) => `Tell me more about ${ref}.`,
+  (ref) => `What do you like about ${ref}?`,
+  (ref) => `Why did you choose ${ref}?`,
+  (ref) => `What did you do with ${ref} after that?`,
+  (ref) => `Can you describe ${ref} a little more?`,
+];
+
+/**
+ * Salience-following follow-up questions for the learner's last answer. Frame
+ * order rotates by `turnsOnTopic` so the style varies across rounds; combined
+ * with the changing keyword, no two rounds repeat. There are >= DEPTH_CAP
+ * frames so a topic never runs dry before the cap.
+ */
+function buildSalienceFollowUps(learnerText: string, turnsOnTopic: number): string[] {
+  const keyword = extractSalientKeyword(learnerText);
+  const ref = keyword ? `the ${keyword}` : "that";
+  const offset = ((turnsOnTopic % SALIENCE_FRAMES.length) + SALIENCE_FRAMES.length) % SALIENCE_FRAMES.length;
+  return SALIENCE_FRAMES.map(
+    (_, i) => SALIENCE_FRAMES[(i + offset) % SALIENCE_FRAMES.length](ref),
+  );
+}
 
 export const SPEAK_FOLLOW_UP_PATTERNS: readonly SpeakFollowUpPattern[] = [
   {
@@ -102,6 +198,9 @@ export function selectSpeakFollowUpByTopicId(
   options: {
     askedQuestions?: readonly string[];
     turnsOnTopic?: number;
+    /** The learner's last answer, used to follow their words when no scripted
+     * topic pattern matches (and as extra depth when one does). */
+    learnerText?: string;
   } = {},
 ): SpeakFollowUpSelection {
   const pattern = SPEAK_FOLLOW_UP_PATTERNS.find((candidate) => candidate.id === topicId);
@@ -113,7 +212,13 @@ export function selectSpeakFollowUpByTopicId(
     return { topicId: resolvedTopicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
   }
 
-  const candidates = [...(pattern?.questions ?? []), ...GENERIC_FOLLOW_UPS];
+  // Scripted pattern questions still lead (no regression for known topics);
+  // salience-following questions referencing the learner's own words replace
+  // the old generic dead-end, so arbitrary topics keep following the learner.
+  const candidates = [
+    ...(pattern?.questions ?? []),
+    ...buildSalienceFollowUps(options.learnerText ?? "", turnsOnTopic),
+  ];
   const question = candidates.find((candidate) => !asked.has(candidate.trim().toLowerCase()));
   if (!question) {
     return { topicId: resolvedTopicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
@@ -129,7 +234,10 @@ export function selectSpeakFollowUp(
     turnsOnTopic?: number;
   } = {},
 ): SpeakFollowUpSelection {
-  return selectSpeakFollowUpByTopicId(getSpeakFollowUpTopicId(sentence), options);
+  return selectSpeakFollowUpByTopicId(getSpeakFollowUpTopicId(sentence), {
+    ...options,
+    learnerText: sentence,
+  });
 }
 
 export function calculateSentenceMatchPercent(spoken: string, target: string): number {
