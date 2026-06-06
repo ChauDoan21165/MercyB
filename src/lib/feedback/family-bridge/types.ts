@@ -95,7 +95,12 @@ export interface FamilyBridgeExplanation {
   patternLabelEn: string;
 
   // ── Family-facing content (the deliverable) ──────────────────────────
-  /** ONE warm sentence for the parent-view summary slot. ≤ 160 chars. */
+  /**
+   * ONE warm, learner-facing summary sentence. ≤ 160 chars.
+   * NOTE: "parent" in the field name is legacy from the L6 design — this
+   * copy is learner-facing and is NOT shown to family. Name kept stable
+   * because E2's merged interference entries already use it.
+   */
   parentSummaryVi: string;
   /** Why a Vietnamese speaker makes this — L1 transfer reason, shame-free. */
   whyVi: string;
