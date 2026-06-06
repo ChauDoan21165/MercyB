@@ -39,9 +39,9 @@ describe("mercy-tts Azure provider", () => {
   it("posts SSML with the subscription-key, mp3 output, and region endpoint", async () => {
     const fetcher = vi.fn(async () => new Response(new Uint8Array([1, 2, 3])));
 
-    await synthesizeAzureTts(fetcher as unknown as typeof fetch, "secret key", "southeastasia", "Hello.", "en");
+    await synthesizeAzureTts(fetcher as unknown as typeof fetch, "secret key", "test-region", "Hello.", "en");
 
-    expect(fetcher).toHaveBeenCalledWith(buildAzureTtsUrl("southeastasia"), {
+    expect(fetcher).toHaveBeenCalledWith(buildAzureTtsUrl("test-region"), {
       method: "POST",
       headers: {
         "Ocp-Apim-Subscription-Key": "secret key",
@@ -51,8 +51,8 @@ describe("mercy-tts Azure provider", () => {
       },
       body: buildAzureSsml("Hello.", azureVoiceFor("en")),
     });
-    expect(buildAzureTtsUrl("southeastasia")).toBe(
-      "https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1",
+    expect(buildAzureTtsUrl("test-region")).toBe(
+      "https://test-region.tts.speech.microsoft.com/cognitiveservices/v1",
     );
     expect(AZURE_OUTPUT_FORMAT).toMatch(/mp3$/);
   });
