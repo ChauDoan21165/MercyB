@@ -938,6 +938,7 @@ export default function AiTutorPage() {
   const [todayLessonLogicInsight, setTodayLessonLogicInsight] = useState<VietlishLogicDiagnosisResult | null>(null);
   const [studySessionState, setStudySessionState] = useState<StudySessionState | null>(null);
   const [localEventSummary, setLocalEventSummary] = useState<LearningEventProgressSummary>(() => getLocalLearningEventProgressSummary());
+  const [boardResetCount, setBoardResetCount] = useState(0);
 
   const tutorCopy: TutorCopy = getTutorCopy(target, explainLanguage);
   const aiTutorTabLabels: Record<TutorMode, string> = {
@@ -1389,6 +1390,44 @@ export default function AiTutorPage() {
     stt.start();
   };
 
+  const clearSpeakBoardState = () => {
+    setSpeakRepeatInput("");
+    setSpeakPronunciationResult(null);
+    setSpeakVietnameseToneFeedback(null);
+    setSpeakToneProgress([]);
+    setSpeakEnglishProgress([]);
+    setSpeakingMessageId(null);
+    pronunciationRecorder.reset();
+    lastRecordedSpeakAttemptRef.current = "";
+    speakPivotTurnsRef.current = [];
+    setSpeakFollowUpSession({
+      topicId: "",
+      turnsOnTopic: 0,
+      askedQuestions: [],
+      currentQuestion: null,
+      currentIsPivot: false,
+    });
+  };
+
+  const clearCorrectedSentenceSeed = () => {
+    setLatestCorrectedSeed(null);
+    clearSpeakBoardState();
+    tts.stop();
+  };
+
+  const handleGrammarInputChange = (value: string) => {
+    setInput(value);
+    if (result || error || detectorHint || latestCorrectedSeed) {
+      setResult(null);
+      setError(null);
+      setDetectorHint(null);
+      setPracticeAnswer("");
+      setPracticeFeedback(null);
+      setL1LoopSurface(null);
+      clearCorrectedSentenceSeed();
+    }
+  };
+
   const loadMemory = async () => {
     try { setMemory(await getMemorySummary(TUTOR_PRODUCT, target)); } catch { /* degrade */ }
     setMemoryLoaded(true);
@@ -1669,6 +1708,7 @@ export default function AiTutorPage() {
       grammarTip: buildGrammarTip(target, localCorrection, explainLanguage),
       practicePrompt: next.practicePrompt[explainLanguage],
     });
+    clearSpeakBoardState();
     setLatestCorrectedSeed({
       correctedSentence: corrected,
       sourceText: trimmed,
@@ -1937,16 +1977,7 @@ export default function AiTutorPage() {
       sourceText: input.trim(),
       updatedAt: Date.now(),
     });
-    setSpeakRepeatInput("");
-    setSpeakPronunciationResult(null);
-    setSpeakVietnameseToneFeedback(null);
-    // New corrected target = fresh practice session → reset the progress trail
-    // so attempts on different sentences are not mixed.
-    setSpeakToneProgress([]);
-    setSpeakEnglishProgress([]);
-    pronunciationRecorder.reset();
-    lastRecordedSpeakAttemptRef.current = "";
-    speakPivotTurnsRef.current = [];
+    clearSpeakBoardState();
     setSpeakFollowUpSession({
       topicId: getSpeakFollowUpTopicId(trimmed),
       turnsOnTopic: 0,
@@ -1992,11 +2023,15 @@ export default function AiTutorPage() {
   };
 
   const handleClear = () => {
+    setBoardResetCount((count) => count + 1);
     setInput("");
+    setGrammarVoiceDraft("");
     setResult(null);
     setError(null);
+    setDetectorHint(null);
     setPracticeAnswer("");
     setPracticeFeedback(null);
+    clearCorrectedSentenceSeed();
     // Clear the visible surface for the next sentence, but PRESERVE the focus:
     // "try another sentence" is the learner continuing, so the loop should keep
     // circling the same weakness across sentences. Focus is in-session only and
@@ -2022,6 +2057,7 @@ export default function AiTutorPage() {
     setTodayLessonLogicInsight(null);
     setInput("");
     setConversationInput("");
+    clearCorrectedSentenceSeed();
     setSpeakConversationState(createSpeakConversationState());
     setResult(null);
     setError(null);
@@ -2056,6 +2092,7 @@ export default function AiTutorPage() {
     setPracticeAnswer("");
     setPracticeFeedback(null);
     setConversationInput("");
+    clearCorrectedSentenceSeed();
     setSpeakConversationState(createSpeakConversationState());
   };
 
@@ -2089,7 +2126,7 @@ export default function AiTutorPage() {
         <>
           <CorrectionMode
             input={input}
-            setInput={setInput}
+            setInput={handleGrammarInputChange}
             loading={loading}
             result={result}
             error={error}
@@ -2156,10 +2193,15 @@ export default function AiTutorPage() {
           onReadTarget={handleReadSpeakTarget}
           onReadFollowUp={handleReadSpeakFollowUp}
           onRepeatInputChange={setSpeakRepeatInput}
+          onResetBoard={handleClear}
           tutorCopy={tutorCopy}
         />
       ) : (
-        <LogicMode latestCorrectedSentence={latestCorrectedSeed?.correctedSentence ?? null} />
+        <LogicMode
+          latestCorrectedSentence={latestCorrectedSeed?.correctedSentence ?? null}
+          latestSourceSentence={latestCorrectedSeed?.sourceText ?? null}
+          boardResetCount={boardResetCount}
+        />
       )}
     </TeacherMercyLearningShell>
   );

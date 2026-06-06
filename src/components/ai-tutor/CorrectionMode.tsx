@@ -61,6 +61,7 @@ export default function CorrectionMode({
   const charCount = input.length;
   const isEmpty = !input.trim();
   const hasResult = Boolean(result && !loading);
+  const canClearBoard = Boolean(input.trim() || result || error || voiceDraft);
   const { ui } = tutorCopy;
 
   return (
@@ -177,15 +178,14 @@ export default function CorrectionMode({
               )}
             </div>
 
-            {result && !loading && (
-              <button
-                type="button"
-                onClick={onClear}
-                className="min-h-[48px] w-full rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-500 transition hover:bg-slate-50"
-              >
-                {ui.reset}
-              </button>
-            )}
+            <button
+              type="button"
+              onClick={onClear}
+              disabled={!canClearBoard || loading}
+              className="min-h-[48px] w-full rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-500 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-300"
+            >
+              {ui.reset}
+            </button>
           </div>
         </section>
 

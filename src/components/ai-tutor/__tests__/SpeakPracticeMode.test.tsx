@@ -47,6 +47,7 @@ const baseProps = {
   onReadTarget: vi.fn(),
   onReadFollowUp: vi.fn(),
   onRepeatInputChange: vi.fn(),
+  onResetBoard: vi.fn(),
   tutorCopy: getTutorCopy("en", "vi"),
 };
 
