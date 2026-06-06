@@ -377,6 +377,28 @@ describe("AiTutor four-tab seed flow", () => {
     expect(screen.queryByTestId("ai-tutor-l1-moveon")).not.toBeInTheDocument();
   });
 
+  it("keeps L1 focus in-session only — it does not persist across a remount (invariant 5)", async () => {
+    // Advance the focus within one session (context #1 → #2), then remount with
+    // a fresh component tree. Storage is NOT cleared between the two renders
+    // here (beforeEach only runs between tests), so if the loop had been
+    // regressed to persist focus cross-session (localStorage/IndexedDB/etc.),
+    // the same input would resume at context #2. An in-memory ref must reset on
+    // remount and start over at context #1.
+    const first = render(<AiTutorPage />);
+    await correctSentence("She go to school every day.", "She goes to school every day.");
+    expect(await screen.findByTestId("ai-tutor-l1-followup")).toHaveTextContent("buổi sáng");
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu khác" }));
+    await correctSentence("He work in a bank.", "He works in a bank.");
+    expect(await screen.findByTestId("ai-tutor-l1-followup")).toHaveTextContent("làm nghề");
+
+    first.unmount();
+
+    render(<AiTutorPage />);
+    await correctSentence("She go to school every day.", "She goes to school every day.");
+    // Fresh session → focus restarts at context #1, proving no cross-session write.
+    expect(await screen.findByTestId("ai-tutor-l1-followup")).toHaveTextContent("buổi sáng");
+  });
+
   it("supports voice draft confirmation in Grammar without making mic primary", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
     render(<AiTutorPage />);
