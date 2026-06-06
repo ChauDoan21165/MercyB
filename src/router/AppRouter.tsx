@@ -104,6 +104,7 @@ const ReviewApp           = lazyWithRetry(() => import("@/features/review/Review
 
 const SpeechDrillPage      = lazyWithRetry(() => import("@/pages/SpeechDrillPage"));
 const PhonemeDrillPage     = lazyWithRetry(() => import("@/pages/practice/PhonemeDrillPage"));
+const PronunciationDrillsPage = lazyWithRetry(() => import("@/pages/practice/PronunciationDrillsPage"));
 const PronunciationSRSSessionPage = lazyWithRetry(() => import("@/pages/PronunciationSRSSessionPage"));
 const VocabularyLibraryPage = lazyWithRetry(() => import("@/pages/vocabulary/Library"));
 const VocabularyReviewPage = lazyWithRetry(() => import("@/pages/vocabulary/ReviewSession"));
@@ -991,6 +992,13 @@ export default function AppRouter() {
               and renders an anon CTA when signed out. */}
           <Route path="/practice/phoneme/:phonemeSlug"
             element={<LazyPage><PhonemeDrillPage /></LazyPage>}
+          />
+
+          {/* Pronunciation / tone listen-compare drills — surfaces the Lane C
+              tone clips (room-audio/tones/*) + VN→EN minimal-pair banks. Content
+              browse only (no scoring), so it is ungated and needs no auth. */}
+          <Route path="/practice/pronunciation"
+            element={<LazyPage><PronunciationDrillsPage /></LazyPage>}
           />
 
           {/* Pronunciation SRS session (A4) — mock queue today; the
