@@ -2,6 +2,8 @@
 
 Last verified: 2026-06-04
 
+> **Related:** for the **lock posture** (auto-publish stays locked; unlocking auto-promotes the next merge to prod within seconds) and the **false-green verification sequence** that proves a deploy actually landed, see [`netlify-deploy-lock-and-verification.md`](./netlify-deploy-lock-and-verification.md). That doc is the authority on lock state and verification.
+
 Netlify builds for `mercyblade.com` are skipped by default now. Normal pushes and merge requests should not burn Netlify build credits. Production releases are published manually from GitLab.
 
 ## Exact release flow
