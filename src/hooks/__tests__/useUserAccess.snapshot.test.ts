@@ -100,8 +100,11 @@ vi.mock("@/lib/authService", () => {
     resolveEntitlementTier: vi.fn((ent: MockEntitlement) => {
       const raw = ent?.tier ?? "level0";
 
-      if (raw === "premium_month") return "premium_month";
-      if (raw === "premium_year") return "premium_year";
+      // Mirror the REAL resolveEntitlementTier (authService.ts): premium plans
+      // resolve to levelN, NOT the raw provider strings. The old mock returned
+      // the raw strings, which hid the isPremiumTier mismatch (false-green).
+      if (raw === "premium_month") return "level1";
+      if (raw === "premium_year") return "level9";
       return "level0";
     }),
     __mock: { __setEntitlement },
@@ -232,9 +235,16 @@ describe("useUserAccess snapshots - baseline", () => {
     const { result } = renderUseUserAccess();
 
     await waitFor(() => {
-      expect(result.current.tier).toBe("premium_month");
+      expect(result.current.tier).toBe("level1");
       expect(result.current.isLoading).toBe(false);
     });
+
+    // Revenue-critical guard: a real Premium subscriber must read hasPremium
+    // true so ParentView (L6) does NOT show the paywall. stableSnapshot omits
+    // hasPremium, so assert it explicitly — this is the check the old test
+    // lacked.
+    expect(result.current.hasPremium).toBe(true);
+    expect(result.current.canAccessPremium()).toBe(true);
 
     expect(stableSnapshot(result.current)).toMatchInlineSnapshot(`
       {
@@ -245,7 +255,7 @@ describe("useUserAccess snapshots - baseline", () => {
         "isHighAdmin": false,
         "isLoading": false,
         "loading": false,
-        "tier": "premium_month",
+        "tier": "level1",
       }
     `);
   });
@@ -263,9 +273,12 @@ describe("useUserAccess snapshots - baseline", () => {
     const { result } = renderUseUserAccess();
 
     await waitFor(() => {
-      expect(result.current.tier).toBe("premium_year");
+      expect(result.current.tier).toBe("level9");
       expect(result.current.isLoading).toBe(false);
     });
+
+    expect(result.current.hasPremium).toBe(true);
+    expect(result.current.canAccessPremium()).toBe(true);
 
     expect(stableSnapshot(result.current)).toMatchInlineSnapshot(`
       {
@@ -276,7 +289,7 @@ describe("useUserAccess snapshots - baseline", () => {
         "isHighAdmin": false,
         "isLoading": false,
         "loading": false,
-        "tier": "premium_year",
+        "tier": "level9",
       }
     `);
   });
@@ -458,7 +471,7 @@ describe("useUserAccess admin vs non-admin", () => {
     expect(result.current.isAdmin).toBe(false);
     expect(result.current.isHighAdmin).toBe(false);
     expect(result.current.adminLevel).toBe(0);
-    expect(result.current.tier).toBe("premium_month");
+    expect(result.current.tier).toBe("level1");
     expect(result.current.canAccessPremium()).toBe(true);
   });
 
@@ -482,7 +495,7 @@ describe("useUserAccess admin vs non-admin", () => {
     expect(result.current.isAdmin).toBe(false);
     expect(result.current.isHighAdmin).toBe(false);
     expect(result.current.adminLevel).toBe(0);
-    expect(result.current.tier).toBe("premium_year");
+    expect(result.current.tier).toBe("level9");
     expect(result.current.canAccessPremium()).toBe(true);
   });
 });
@@ -672,7 +685,7 @@ describe("useUserAccess corrupted profile rows and malformed entitlement payload
       adminLevel: 0,
       isAuthenticated: true,
       isDemoMode: false,
-      tier: "premium_month",
+      tier: "level1",
       loading: false,
       isLoading: false,
     });
@@ -707,7 +720,7 @@ describe("useUserAccess auth-loaded but partially broken downstream data", () =>
 
     expect(result.current.isAdmin).toBe(false);
     expect(result.current.adminLevel).toBe(0);
-    expect(result.current.tier).toBe("premium_year");
+    expect(result.current.tier).toBe("level9");
     expect(result.current.canAccessPremium()).toBe(true);
   });
 
@@ -781,7 +794,7 @@ describe("useUserAccess auth-loaded but partially broken downstream data", () =>
     });
 
     expect(result.current.isAuthenticated).toBe(true);
-    expect(result.current.tier).toBe("premium_month");
+    expect(result.current.tier).toBe("level1");
     expect(result.current.canAccessPremium()).toBe(true);
   });
 });

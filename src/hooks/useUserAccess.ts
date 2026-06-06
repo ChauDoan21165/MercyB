@@ -75,7 +75,20 @@ const TRIAL_ENDED_MESSAGE =
   "Your free trial has ended. Please upgrade to continue.";
 
 function isPremiumTier(tier: TierId): boolean {
-  return tier === "premium_month" || tier === "premium_year";
+  // `tier` here is the RESOLVED entitlement tier from resolveEntitlementTier
+  // (authService.ts), which maps premium_month → level1 and premium_year →
+  // level9, and returns "level0" ONLY when the entitlement is not premium
+  // (gated by entitlementIsPremium: is_premium + active status — never
+  // price_id, per the PR 700/709 derivation lock). So any non-free resolved
+  // tier means an active paid entitlement.
+  //
+  // The previous check compared against the raw "premium_month"/"premium_year"
+  // provider strings, which the live path NEVER feeds in (it always passes the
+  // resolved levelN value). That made hasPremium always false, so ParentView
+  // (L6) showed <ParentPaywallGate /> to every paying customer. See the
+  // false-green in useUserAccess.snapshot.test.ts, which mocked the resolver to
+  // return the raw strings and never asserted hasPremium.
+  return tier !== "level0";
 }
 
 function toEffectiveAccessTier(tier: TierId): TierId {
