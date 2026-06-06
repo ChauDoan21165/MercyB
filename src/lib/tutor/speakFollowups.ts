@@ -103,6 +103,59 @@ export function extractSalientKeyword(learnerText: string): string | null {
   return null;
 }
 
+// ── Speak-seed coherence gate (Issue 1: don't push a garbled sample) ──
+//
+// A grammar-only correction can leave a sentence well-formed in tense yet still
+// nonsensical ("I bought a pet yesterday bike around a lot." — only `buy→bought`
+// was fixed). Treating that as a polished model to drill is dishonest. This is a
+// DELIBERATELY narrow, high-precision detector: it flags the demonstrated
+// failure class — a bare content noun dangling right after a time adverb with no
+// connector — and defaults to `coherent` for everything else. Precision over
+// recall: a false positive nags a learner whose sentence was fine, which is the
+// worse error. Deterministic, no LLM. The caller only acts on this when BOTH the
+// seed and the learner's own words are incoherent, so well-formed input is never
+// blocked.
+
+const COHERENCE_TIME_ADVERBS = new Set(["yesterday", "today", "tomorrow", "tonight"]);
+
+// Temporal nouns that legitimately follow a time adverb ("yesterday morning").
+const COHERENCE_TIME_ADVERB_FOLLOWERS = new Set([
+  "morning", "afternoon", "evening", "night", "noon", "midnight",
+]);
+
+const COHERENCE_CONNECTORS = new Set([
+  "and", "but", "or", "so", "because", "when", "while", "then", "that", "if",
+  "before", "after", "since", "although", "though", "as", "until", "unless",
+  "whether", "which", "who", "where", "why", "how",
+]);
+
+export type SpeakCoherenceAssessment = { coherent: boolean; reason: string };
+
+/**
+ * Conservative coherence check for a Speak practice sentence. Returns
+ * `coherent: false` only when a clear word-salad signal is present (a bare
+ * content noun immediately after a time adverb with no connector — a dangling
+ * fragment). Everything else passes. See the block comment above for why this is
+ * intentionally narrow.
+ */
+export function assessSpeakSentenceCoherence(sentence: string): SpeakCoherenceAssessment {
+  const tokens = salienceTokens(sentence);
+  for (let i = 0; i < tokens.length - 1; i++) {
+    if (!COHERENCE_TIME_ADVERBS.has(tokens[i])) continue;
+    const next = tokens[i + 1];
+    if (COHERENCE_CONNECTORS.has(next)) continue;            // "...yesterday because ..."
+    if (COHERENCE_TIME_ADVERB_FOLLOWERS.has(next)) continue; // "yesterday morning"
+    if (SALIENCE_STOPWORDS.has(next)) continue;              // pronoun/aux/prep after the adverb
+    if (next.length < 3) continue;
+    if (/(?:ed|ing)$/.test(next)) continue;                  // a following verb form, not a dangling noun
+    return {
+      coherent: false,
+      reason: `dangling_token_after_time_adverb:${tokens[i]}->${next}`,
+    };
+  }
+  return { coherent: true, reason: "no_incoherence_signal" };
+}
+
 const SALIENCE_FRAMES: ReadonlyArray<(ref: string) => string> = [
   (ref) => `Tell me more about ${ref}.`,
   (ref) => `What do you like about ${ref}?`,
