@@ -66,6 +66,7 @@ type Props = {
   onReadTarget: () => void;
   onReadFollowUp: () => void;
   onRepeatInputChange: (value: string) => void;
+  onResetBoard?: () => void;
   tutorCopy: TutorCopy;
 };
 
@@ -96,6 +97,7 @@ export default function SpeakPracticeMode({
   onReadTarget,
   onReadFollowUp,
   onRepeatInputChange,
+  onResetBoard,
   tutorCopy,
 }: Props) {
   const fallbackTarget = tutorCopy.starterQuestions[0] ?? "What do you usually do in the morning?";
@@ -145,6 +147,15 @@ export default function SpeakPracticeMode({
       <h2 className="mt-1 text-xl font-black text-slate-900">
         Luyện nói câu đã sửa
       </h2>
+      {onResetBoard && (
+        <button
+          type="button"
+          onClick={onResetBoard}
+          className="mt-3 min-h-10 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-black text-slate-600 transition hover:bg-slate-50"
+        >
+          Xóa bảng để nhập câu mới
+        </button>
+      )}
 
       <>
           <div className="mt-4 rounded-[16px] border border-emerald-200 bg-emerald-50 px-4 py-4">

@@ -1252,4 +1252,51 @@ describe("AiTutor four-tab seed flow", () => {
     expect(within(logic).getByText("Câu đã sửa mới nhất")).toBeInTheDocument();
     expect(within(logic).getAllByText("I bought a hat yesterday.").length).toBeGreaterThan(0);
   });
+
+  it("updates Logic when the learner changes to a new corrected sentence", async () => {
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu khác" }));
+    await correctSentence("She go to school every day.", "She goes to school every day.");
+    await openTab("Logic");
+
+    const logic = screen.getByTestId("ai-tutor-logic-mode");
+    expect(within(logic).getByText("Câu đã sửa mới nhất")).toBeInTheDocument();
+    expect(within(logic).getByText("She goes to school every day.")).toBeInTheDocument();
+    expect(within(logic).queryByText("I bought a hat yesterday.")).not.toBeInTheDocument();
+  });
+
+  it("clears stale corrected sentence and Logic explanation on board reset", async () => {
+    render(<AiTutorPage />);
+
+    await correctSentence("She go to school every day.", "She goes to school every day.");
+    await openTab("Logic");
+    expect(screen.getByTestId("ai-tutor-logic-mode")).toHaveTextContent("She goes to school every day.");
+
+    await openTab("Sửa câu");
+    await userEvent.click(screen.getByRole("button", { name: "Làm mới" }));
+    await openTab("Logic");
+
+    const logic = screen.getByTestId("ai-tutor-logic-mode");
+    expect(within(logic).queryByText("Câu đã sửa mới nhất")).not.toBeInTheDocument();
+    expect(within(logic).queryByText("She goes to school every day.")).not.toBeInTheDocument();
+    expect(within(logic).queryByText("She go to school every day.")).not.toBeInTheDocument();
+  });
+
+  it("keeps Speak read-back text from poisoning Logic state", async () => {
+    render(<AiTutorPage />);
+
+    await correctSentence("She go to school every day.", "She goes to school every day.");
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await userEvent.type(
+      screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" }),
+      "I bought a hat yesterday.",
+    );
+    await openTab("Logic");
+
+    const logic = screen.getByTestId("ai-tutor-logic-mode");
+    expect(within(logic).getByText("She goes to school every day.")).toBeInTheDocument();
+    expect(within(logic).queryByText("I bought a hat yesterday.")).not.toBeInTheDocument();
+  });
 });
