@@ -17,7 +17,7 @@
 // Deliberately NOT here: any scorer, any percent, any threshold logic. This is
 // a content browse/practice surface only.
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 import TalkingFacePlayButton from "@/components/audio/TalkingFacePlayButton";
 import { usePronunciationRecorder } from "@/hooks/usePronunciationRecorder";
@@ -58,13 +58,35 @@ function SelfCompareRecorder() {
 
   const isRecording = status === "recording";
   const isProcessing = status === "processing";
+  const hasRecording = Boolean(lastRecordedAudioUrl) && !isRecording;
+
+  // Focus management: when a recording first appears, move focus to the
+  // "play your recording" control so keyboard / screen-reader users land on
+  // the next natural action. When the recording is cleared ("Thu lại"), move
+  // focus back to the record button. We track the previous presence of a
+  // recording so we only steal focus on the transition, never on every render.
+  const recordBtnRef = useRef<HTMLButtonElement | null>(null);
+  const playBtnRef = useRef<HTMLButtonElement | null>(null);
+  const hadRecordingRef = useRef(false);
+
+  useEffect(() => {
+    if (hasRecording && !hadRecordingRef.current) {
+      playBtnRef.current?.focus();
+    } else if (!hasRecording && hadRecordingRef.current && !isRecording) {
+      recordBtnRef.current?.focus();
+    }
+    hadRecordingRef.current = hasRecording;
+  }, [hasRecording, isRecording]);
 
   return (
     <section
       data-testid="self-compare-recorder"
+      aria-labelledby="self-compare-heading"
       className="mt-6 rounded-[16px] border border-emerald-100 bg-emerald-50/60 px-4 py-4"
     >
-      <h2 className="text-lg font-black text-slate-900">Tự thu &amp; so sánh</h2>
+      <h2 id="self-compare-heading" className="text-lg font-black text-slate-900">
+        Tự thu &amp; so sánh
+      </h2>
       <p className="mt-1 text-sm font-semibold leading-6 text-slate-600">
         Không chấm điểm — bạn tự thu giọng mình, nghe lại, rồi so sánh bằng tai
         với câu mẫu ở trên.
@@ -73,38 +95,45 @@ function SelfCompareRecorder() {
       <div className="mt-3 flex flex-wrap items-center gap-2">
         {!isRecording ? (
           <button
+            ref={recordBtnRef}
             type="button"
             data-testid="self-compare-record"
+            aria-label="Thu âm giọng của bạn"
             onClick={() => void startRecording()}
             disabled={isProcessing}
             className="inline-flex min-h-10 items-center gap-2 rounded-full bg-rose-600 px-4 py-2 text-sm font-black text-white disabled:opacity-60"
           >
-            ● Thu âm của bạn
+            <span aria-hidden="true">●</span> Thu âm của bạn
           </button>
         ) : (
           <button
             type="button"
             data-testid="self-compare-stop"
+            aria-label="Dừng thu âm"
             onClick={() => void stopRecording()}
             className="inline-flex min-h-10 items-center gap-2 rounded-full bg-slate-800 px-4 py-2 text-sm font-black text-white"
           >
-            ■ Dừng thu
+            <span aria-hidden="true">■</span> Dừng thu
           </button>
         )}
 
-        {lastRecordedAudioUrl && !isRecording && (
+        {hasRecording && (
           <>
             <button
+              ref={playBtnRef}
               type="button"
               data-testid="self-compare-play"
+              aria-label="Nghe lại giọng vừa thu của bạn"
               onClick={() => void playRecorded()}
               className="inline-flex min-h-10 items-center gap-2 rounded-full border border-indigo-200 bg-white px-4 py-2 text-sm font-black text-indigo-800"
             >
-              {isPlayingRecorded ? "Đang phát…" : "▶ Nghe lại giọng bạn"}
+              <span aria-hidden="true">▶</span>{" "}
+              {isPlayingRecorded ? "Đang phát…" : "Nghe lại giọng bạn"}
             </button>
             <button
               type="button"
               data-testid="self-compare-reset"
+              aria-label="Xoá bản thu và thu lại"
               onClick={() => clearRecordedAudio()}
               className="inline-flex min-h-10 items-center rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-black text-slate-600"
             >
@@ -114,16 +143,24 @@ function SelfCompareRecorder() {
         )}
       </div>
 
-      {isRecording && (
-        <p className="mt-2 text-xs font-bold text-rose-700" data-testid="self-compare-recording-note">
-          Đang thu… nói câu bạn muốn luyện rồi bấm “Dừng thu”.
-        </p>
-      )}
-      {error && (
-        <p className="mt-2 rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold leading-5 text-amber-900" role="status">
-          {error}
-        </p>
-      )}
+      {/* Single polite live region so screen readers announce recording start,
+          the captured-recording prompt, and any mic error without stealing
+          focus. */}
+      <div aria-live="polite" role="status">
+        {isRecording && (
+          <p
+            className="mt-2 text-xs font-bold text-rose-700"
+            data-testid="self-compare-recording-note"
+          >
+            Đang thu… nói câu bạn muốn luyện rồi bấm “Dừng thu”.
+          </p>
+        )}
+        {error && (
+          <p className="mt-2 rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold leading-5 text-amber-900">
+            {error}
+          </p>
+        )}
+      </div>
       <p className="mt-3 text-[11px] font-bold uppercase tracking-wide text-emerald-700">
         Tự nghe và so sánh — không có điểm số
       </p>
@@ -153,7 +190,14 @@ function ToneTargetRow({
           {tone} tone · {shapeEn}
         </span>
       </div>
-      <TalkingFacePlayButton src={audioKey} label={`Listen: “${syllable}”`} />
+      <TalkingFacePlayButton
+        src={audioKey}
+        label={`Listen: “${syllable}”`}
+        ariaLabel={`${syllable} — ${tone} tone (${shapeEn})`}
+        // 32 clips render at once here — fetch each clip's bytes lazily on first
+        // play instead of eagerly preloading metadata for all of them on mount.
+        preload="none"
+      />
     </div>
   );
 }

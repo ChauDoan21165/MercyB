@@ -26,6 +26,22 @@ function fmtTime(n: number) {
 type Props = {
   src: string;
   label?: string;
+  /**
+   * Optional accessible-name suffix so screen-reader users can tell multiple
+   * play buttons apart (e.g. one per tone clip). When omitted the aria-label
+   * is the plain "Play" / "Pause" / "Audio locked" as before — backward
+   * compatible. When set, it becomes "Play: <ariaLabel>" etc., which still
+   * begins with the same verb so existing accessible-name matchers keep working.
+   */
+  ariaLabel?: string;
+  /**
+   * Audio preload strategy for the underlying <audio> element. Defaults to
+   * "metadata" (unchanged for every existing caller — duration/seekbar ready
+   * up front). Pass "none" on surfaces that render many clips at once (e.g. the
+   * 32 tone clips on /practice/pronunciation) so the bytes are fetched lazily
+   * on first play instead of all at once on mount.
+   */
+  preload?: "none" | "metadata" | "auto";
   className?: string;
   fullWidthBar?: boolean;
   hostContext?: {
@@ -38,7 +54,7 @@ type Props = {
 };
 
 export default function TalkingFacePlayButton({
-  src, label, className, fullWidthBar, hostContext,
+  src, label, ariaLabel, preload = "metadata", className, fullWidthBar, hostContext,
 }: Props) {
   const uid = useId().replace(/[:]/g, "");
   const gradId     = `mbFaceGrad_${uid}`;
@@ -123,7 +139,7 @@ export default function TalkingFacePlayButton({
     startedAtRef.current = null;
     if (isLocked || !resolvedSrc) { audioRef.current = null; return; }
     const a = new Audio();
-    a.preload = "metadata";
+    a.preload = preload;
     a.src = resolvedSrc;
     audioRef.current = a;
     const onLoaded = () => { setReady(true); setDur(Number.isFinite(a.duration) ? a.duration : 0); };
@@ -150,7 +166,7 @@ export default function TalkingFacePlayButton({
       a.removeEventListener("error", onError);
       audioRef.current = null;
     };
-  }, [resolvedSrc, isLocked, refresh]);
+  }, [resolvedSrc, isLocked, refresh, preload]);
 
   const toggle = () => {
     const a = audioRef.current;
@@ -303,7 +319,10 @@ export default function TalkingFacePlayButton({
           className="mb-faceBtn"
           onClick={isLocked ? undefined : toggle}
           title={isLocked ? "Locked" : playing ? "Pause" : "Play"}
-          aria-label={isLocked ? "Audio locked" : playing ? "Pause" : "Play"}
+          aria-label={
+            (isLocked ? "Audio locked" : playing ? "Pause" : "Play") +
+            (ariaLabel ? `: ${ariaLabel}` : "")
+          }
           disabled={isLocked}
         >
           <svg width="54" height="54" viewBox="0 0 64 64" aria-hidden="true">
