@@ -71,7 +71,12 @@ function salienceTokens(text: string): string[] {
 }
 
 function isSalienceContent(token: string): boolean {
-  return token.length >= 3 && !SALIENCE_STOPWORDS.has(token);
+  if (token.length < 3 || SALIENCE_STOPWORDS.has(token)) return false;
+  // Exclude likely verbs/participles (-ed / -ing) so the keyword is a noun:
+  // "We talked …" must not yield "the talked". Loses a few real nouns
+  // (e.g. "wedding") — acceptable; it degrades to the next candidate / "that".
+  if (/(?:ed|ing)$/.test(token)) return false;
+  return true;
 }
 
 /**
@@ -212,13 +217,22 @@ export function selectSpeakFollowUpByTopicId(
     return { topicId: resolvedTopicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
   }
 
-  // Scripted pattern questions still lead (no regression for known topics);
-  // salience-following questions referencing the learner's own words replace
-  // the old generic dead-end, so arbitrary topics keep following the learner.
-  const candidates = [
-    ...(pattern?.questions ?? []),
-    ...buildSalienceFollowUps(options.learnerText ?? "", turnsOnTopic),
-  ];
+  // Ordering:
+  //  - Turn 0 (the first question, posed off the SEED sentence): scripted
+  //    pattern questions lead so a known topic opens with its strong canned
+  //    question; the generic case still gets salience.
+  //  - Turn 1+ AND the learner's latest answer yields a concrete keyword:
+  //    salience leads, so the follow-up follows the learner's OWN words rather
+  //    than marching through canned topic trivia that ignores what they said.
+  //  - Turn 1+ but no concrete keyword (e.g. "It was very good."): scripted
+  //    leads, keeping the good canned question instead of a vague "...that?".
+  const learnerText = options.learnerText ?? "";
+  const scriptedQuestions = pattern?.questions ?? [];
+  const salienceQuestions = buildSalienceFollowUps(learnerText, turnsOnTopic);
+  const followsLearner = turnsOnTopic >= 1 && extractSalientKeyword(learnerText) !== null;
+  const candidates = followsLearner
+    ? [...salienceQuestions, ...scriptedQuestions]
+    : [...scriptedQuestions, ...salienceQuestions];
   const question = candidates.find((candidate) => !asked.has(candidate.trim().toLowerCase()));
   if (!question) {
     return { topicId: resolvedTopicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };

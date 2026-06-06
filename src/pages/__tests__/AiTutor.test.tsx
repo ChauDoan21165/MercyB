@@ -720,8 +720,10 @@ describe("AiTutor four-tab seed flow", () => {
     expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("The fish burned. What did you eat instead?");
 
     await speakCurrentTarget("my wife burned the fish again");
+    // The repeated mock pivot is rejected; the deterministic fallback now
+    // follows the learner's own word ("fish") instead of reverting to the seed.
     await waitFor(() => {
-      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("fish");
     });
     expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent("The fish burned. What did you eat instead?");
   });
@@ -800,6 +802,37 @@ describe("AiTutor four-tab seed flow", () => {
     }
 
     expect(new Set(askedQuestions).size).toBe(askedQuestions.length); // 4 distinct
+  });
+
+  it("sustains a scripted-seed Speak conversation for 3+ rounds, following the learner's answers (Chau's hat scenario)", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    // Round 1 (off the seed): the scripted lead-in question.
+    await speakCurrentTarget("I bought a hat yesterday.");
+    const f1 = await screen.findByTestId("ai-tutor-speak-follow-up");
+    expect(f1).toHaveTextContent("Where did you buy it?");
+    expect(f1).not.toHaveTextContent("Do you want to practice another sentence?");
+
+    // Round 2: follows the learner's answer ("beach"), not canned hat trivia.
+    await speakCurrentTarget("I will wear it at the beach.");
+    await waitFor(() => {
+      const text = screen.getByTestId("ai-tutor-speak-follow-up").textContent ?? "";
+      expect(text.toLowerCase()).toContain("beach");
+      expect(text).not.toMatch(/Do you want to practice another sentence/);
+    });
+
+    // Round 3: still following the learner ("friends") — no premature move-on
+    // after only one or two answers.
+    await speakCurrentTarget("I will go with my friends.");
+    await waitFor(() => {
+      const text = screen.getByTestId("ai-tutor-speak-follow-up").textContent ?? "";
+      expect(text.toLowerCase()).toContain("friends");
+      expect(text).not.toMatch(/Do you want to practice another sentence/);
+    });
   });
 
   it("sends a non-canned hat-biking correction into Speak and asks an English follow-up", async () => {
@@ -910,10 +943,12 @@ describe("AiTutor four-tab seed flow", () => {
     expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
 
     await speakCurrentTarget("I bought a hat yesterday again.");
+    // Second turn follows the learner's word ("hat") and never repeats the first.
     await waitFor(() => {
-      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Why do you need the hat?");
+      const text = screen.getByTestId("ai-tutor-speak-follow-up").textContent ?? "";
+      expect(text).toContain("hat");
+      expect(text).not.toMatch(/Where did you buy it/);
     });
-    expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent("Where did you buy it?");
   });
 
   it("offers a graceful pivot after four Speak follow-up turns on the same topic", async () => {

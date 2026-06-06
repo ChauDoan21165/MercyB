@@ -139,5 +139,49 @@ describe("speakFollowups", () => {
       });
       expect(selectSpeakFollowUp("I had dinner with my family.").question).toBe("What did you eat?");
     });
+
+    it("after the first scripted question, follows the learner's OWN words across 3+ rounds (Chau's hat scenario)", () => {
+      // F1 — posed off the seed: the scripted lead-in question.
+      const f1 = selectSpeakFollowUpByTopicId("hat-biking-summer", {
+        askedQuestions: [],
+        turnsOnTopic: 0,
+        learnerText: "I bought a hat yesterday because summer is coming and it is going to be very sunny.",
+      });
+      expect(f1.isPivot).toBe(false);
+      expect(f1.question).toBe("Why do you need the hat?");
+
+      // F2 — the learner is now answering: follow THEIR word, not canned trivia.
+      const f2 = selectSpeakFollowUpByTopicId("hat-biking-summer", {
+        askedQuestions: [f1.question],
+        turnsOnTopic: 1,
+        learnerText: "I will wear it at the beach.",
+      });
+      expect(f2.isPivot).toBe(false);
+      expect(f2.question.toLowerCase()).toContain("beach");
+
+      // F3 — still following the learner.
+      const f3 = selectSpeakFollowUpByTopicId("hat-biking-summer", {
+        askedQuestions: [f1.question, f2.question],
+        turnsOnTopic: 2,
+        learnerText: "I will go with my friends.",
+      });
+      expect(f3.isPivot).toBe(false);
+      expect(f3.question.toLowerCase()).toContain("friends");
+
+      // No premature move-on, and all three are distinct.
+      const questions = [f1.question, f2.question, f3.question];
+      expect(questions).not.toContain(SPEAK_FOLLOW_UP_PIVOT);
+      expect(new Set(questions).size).toBe(3);
+    });
+
+    it("keeps the strong scripted question when the learner's answer has no concrete noun", () => {
+      const reply = selectSpeakFollowUpByTopicId("dinner-family", {
+        askedQuestions: ["What did you eat?"],
+        turnsOnTopic: 1,
+        learnerText: "It was very good.",
+      });
+      expect(reply.isPivot).toBe(false);
+      expect(reply.question).toBe("Who cooked dinner?");
+    });
   });
 });
