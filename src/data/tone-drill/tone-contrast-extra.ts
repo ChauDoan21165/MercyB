@@ -44,7 +44,45 @@ export type PendingTonePair = MinimalTonePair & {
   validationNote: string;
 };
 
-const audio = (syllable: string): string => `/audio/tones/${syllable}.mp3`;
+/**
+ * ASCII tone tag per ViTone — used in the storage-safe audio key.
+ * Supabase Storage object keys must be ASCII, so the accented `ViTone`
+ * name cannot appear in the key.
+ */
+const TONE_TAG: Record<ViTone, string> = {
+  ngang: "ngang",
+  sắc: "sac",
+  huyền: "huyen",
+  hỏi: "hoi",
+  ngã: "nga",
+  nặng: "nang",
+};
+
+/**
+ * Strip every Vietnamese diacritic (tone marks AND base-vowel marks:
+ * circumflex, breve, horn) to a plain-ASCII base, plus đ→d. NFD splits
+ * precomposed letters into base + combining marks; we drop the marks.
+ */
+function asciiBase(syllable: string): string {
+  return syllable
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D");
+}
+
+/**
+ * Storage-safe audio key: `<ascii-base>-<tone>`. Plain ASCII `[a-z0-9-]`,
+ * collision-free across this set, survives `getPublicUrl` unchanged, and
+ * keeps the accented `syllable` field as the human/display value.
+ * e.g. `xé`(sắc) → `xe-sac`, `của`(hỏi) → `cua-hoi`, `cũ`(ngã) → `cu-nga`.
+ */
+function toneAudioKey(syllable: string, tone: ViTone): string {
+  return `${asciiBase(syllable)}-${TONE_TAG[tone]}`;
+}
+
+const audio = (syllable: string, tone: ViTone): string =>
+  `/audio/tones/${toneAudioKey(syllable, tone)}.mp3`;
 
 /** Tone shape labels reused from the minimal-pairs convention. */
 const SHAPE: Record<ViTone, string> = {
@@ -60,7 +98,7 @@ const t = (syllable: string, tone: ViTone): ToneTarget => ({
   syllable,
   tone,
   shapeEn: SHAPE[tone],
-  audioPath: audio(syllable),
+  audioPath: audio(syllable, tone),
   source: "lane-c-en-vn-tone-extra",
 });
 
