@@ -20,6 +20,7 @@
 import { useMemo } from "react";
 
 import TalkingFacePlayButton from "@/components/audio/TalkingFacePlayButton";
+import { usePronunciationRecorder } from "@/hooks/usePronunciationRecorder";
 import { toAudioKey } from "@/lib/roomAudioResolver";
 import {
   TONE_CONTRAST_EXTRA,
@@ -36,6 +37,99 @@ const VN_EN_BANK_LABELS: Record<string, string> = {
   "final-consonant": "Phụ âm cuối — bag / back",
   stress: "Trọng âm từ — REcord / reCORD",
 };
+
+/**
+ * Honest self-compare loop: record your own voice, play it back, and A/B it
+ * by ear against the model clips above. The opposite of the fake score we
+ * removed — there is NO score, NO percent, NO judgment, NO server call. Pure
+ * client-side capture + playback via usePronunciationRecorder (MediaRecorder).
+ */
+function SelfCompareRecorder() {
+  const {
+    status,
+    error,
+    lastRecordedAudioUrl,
+    isPlayingRecorded,
+    startRecording,
+    stopRecording,
+    playRecorded,
+    clearRecordedAudio,
+  } = usePronunciationRecorder();
+
+  const isRecording = status === "recording";
+  const isProcessing = status === "processing";
+
+  return (
+    <section
+      data-testid="self-compare-recorder"
+      className="mt-6 rounded-[16px] border border-emerald-100 bg-emerald-50/60 px-4 py-4"
+    >
+      <h2 className="text-lg font-black text-slate-900">Tự thu &amp; so sánh</h2>
+      <p className="mt-1 text-sm font-semibold leading-6 text-slate-600">
+        Không chấm điểm — bạn tự thu giọng mình, nghe lại, rồi so sánh bằng tai
+        với câu mẫu ở trên.
+      </p>
+
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        {!isRecording ? (
+          <button
+            type="button"
+            data-testid="self-compare-record"
+            onClick={() => void startRecording()}
+            disabled={isProcessing}
+            className="inline-flex min-h-10 items-center gap-2 rounded-full bg-rose-600 px-4 py-2 text-sm font-black text-white disabled:opacity-60"
+          >
+            ● Thu âm của bạn
+          </button>
+        ) : (
+          <button
+            type="button"
+            data-testid="self-compare-stop"
+            onClick={() => void stopRecording()}
+            className="inline-flex min-h-10 items-center gap-2 rounded-full bg-slate-800 px-4 py-2 text-sm font-black text-white"
+          >
+            ■ Dừng thu
+          </button>
+        )}
+
+        {lastRecordedAudioUrl && !isRecording && (
+          <>
+            <button
+              type="button"
+              data-testid="self-compare-play"
+              onClick={() => void playRecorded()}
+              className="inline-flex min-h-10 items-center gap-2 rounded-full border border-indigo-200 bg-white px-4 py-2 text-sm font-black text-indigo-800"
+            >
+              {isPlayingRecorded ? "Đang phát…" : "▶ Nghe lại giọng bạn"}
+            </button>
+            <button
+              type="button"
+              data-testid="self-compare-reset"
+              onClick={() => clearRecordedAudio()}
+              className="inline-flex min-h-10 items-center rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-black text-slate-600"
+            >
+              Thu lại
+            </button>
+          </>
+        )}
+      </div>
+
+      {isRecording && (
+        <p className="mt-2 text-xs font-bold text-rose-700" data-testid="self-compare-recording-note">
+          Đang thu… nói câu bạn muốn luyện rồi bấm “Dừng thu”.
+        </p>
+      )}
+      {error && (
+        <p className="mt-2 rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold leading-5 text-amber-900" role="status">
+          {error}
+        </p>
+      )}
+      <p className="mt-3 text-[11px] font-bold uppercase tracking-wide text-emerald-700">
+        Tự nghe và so sánh — không có điểm số
+      </p>
+    </section>
+  );
+}
 
 function ToneTargetRow({
   syllable,
@@ -116,6 +210,8 @@ export default function PronunciationDrillsPage() {
           luyện — không chấm điểm.
         </p>
       </header>
+
+      <SelfCompareRecorder />
 
       {/* ── Vietnamese tone listen-compare ── */}
       <section className="mt-6" data-testid="tone-pairs-section">

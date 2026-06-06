@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 import PronunciationDrillsPage from "@/pages/practice/PronunciationDrillsPage";
@@ -8,6 +8,33 @@ import {
   TONE_CONTRAST_EXTRA_SYLLABLES,
 } from "@/data/tone-drill/tone-contrast-extra";
 import { VN_EN_PRONUNCIATION_DRILL_BANKS } from "@/lib/pronunciation/vnEnPronunciationDrills";
+
+// Drive the client-side recorder deterministically (jsdom has no MediaRecorder).
+// The hook is pure capture+playback; the page never scores or calls a server.
+const recorderMock = vi.hoisted(() => ({ current: null as unknown as Record<string, unknown> }));
+vi.mock("@/hooks/usePronunciationRecorder", () => ({
+  usePronunciationRecorder: () => recorderMock.current,
+}));
+const IDLE_RECORDER = {
+  status: "idle",
+  error: null,
+  audioBlob: null,
+  lastRecordedAudioUrl: null,
+  isPlayingReference: false,
+  isPlayingRecorded: false,
+  isComparing: false,
+  setError: () => {},
+  startRecording: async () => {},
+  stopRecording: async () => {},
+  reset: () => {},
+  clearRecordedAudio: () => {},
+  playReference: async () => {},
+  playRecorded: async () => {},
+  compareWithReference: async () => {},
+};
+beforeEach(() => {
+  recorderMock.current = { ...IDLE_RECORDER };
+});
 
 describe("PronunciationDrillsPage — Lane C drill consumer is reachable", () => {
   it("renders the page with both drill sections", () => {
@@ -50,5 +77,40 @@ describe("PronunciationDrillsPage — Lane C drill consumer is reachable", () =>
     }
     // 32 clip paths (16 pairs × 2) all resolve to a bucket key.
     expect(covered).toBe(TONE_CONTRAST_EXTRA.length * 2);
+  });
+});
+
+describe("PronunciationDrillsPage — honest self-compare (record & play back, no score)", () => {
+  it("renders record + self-compare controls with honest no-score copy", () => {
+    render(<PronunciationDrillsPage />);
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
+    expect(screen.getByTestId("self-compare-record")).toBeInTheDocument();
+    expect(screen.getByText(/Tự nghe và so sánh — không có điểm số/i)).toBeInTheDocument();
+  });
+
+  it("shows the play-your-recording control once a recording exists", () => {
+    recorderMock.current = { ...IDLE_RECORDER, lastRecordedAudioUrl: "blob:fake-recording" };
+    render(<PronunciationDrillsPage />);
+    expect(screen.getByTestId("self-compare-play")).toBeInTheDocument();
+    expect(screen.getByTestId("self-compare-reset")).toBeInTheDocument();
+  });
+
+  it("model clip play controls still render alongside the recorder", () => {
+    render(<PronunciationDrillsPage />);
+    const playButtons = screen.getAllByRole("button", { name: /Play|Audio locked|Pause/i });
+    expect(playButtons.length).toBeGreaterThanOrEqual(TONE_CONTRAST_EXTRA_SYLLABLES.length);
+  });
+
+  it("contains NO percent or score language anywhere on the page", () => {
+    recorderMock.current = { ...IDLE_RECORDER, lastRecordedAudioUrl: "blob:fake-recording" };
+    const { container } = render(<PronunciationDrillsPage />);
+    // Exclude <style>/<script> (the play-button embeds CSS percentages that
+    // are not user-facing text).
+    const clone = container.cloneNode(true) as HTMLElement;
+    clone.querySelectorAll("style, script").forEach((node) => node.remove());
+    const text = clone.textContent ?? "";
+    expect(text).not.toMatch(/\d+\s*%/);
+    // honest framing is present instead
+    expect(text).toMatch(/không có điểm số|không chấm điểm/i);
   });
 });
