@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
+  SPEAK_FOLLOW_UP_DEPTH_CAP,
   SPEAK_FOLLOW_UP_PIVOT,
   calculateSentenceMatchPercent,
+  extractSalientKeyword,
   resolveSpeakFollowUpTopicId,
   selectSpeakFollowUp,
   selectSpeakFollowUpByTopicId,
@@ -55,10 +57,12 @@ describe("speakFollowups", () => {
     });
   });
 
-  it("falls back gently for unmatched sentences", () => {
+  it("follows the learner's own words for unmatched sentences (no generic dead-end)", () => {
+    // NEW behavior: an unmatched ("generic") sentence no longer dead-ends on a
+    // canned "...about that?" — it references the learner's salient word.
     expect(selectSpeakFollowUp("The weather is nice today.")).toEqual({
       topicId: "generic",
-      question: "Can you tell me one more detail about that?",
+      question: "Tell me more about the weather.",
       isPivot: false,
     });
   });
@@ -78,5 +82,62 @@ describe("speakFollowups", () => {
 
   it("calculates partial sentence-match without calling it pronunciation", () => {
     expect(calculateSentenceMatchPercent("I bought a hat", "I bought a hat yesterday.")).toBe(89);
+  });
+
+  // ── Path B: topic-following via the learner's own words ───────────────────
+
+  describe("salience-following follow-ups", () => {
+    it("extracts the salient content noun, preferring the object after a det/prep", () => {
+      expect(extractSalientKeyword("I bought a hat because it is sunny.")).toBe("hat");
+      expect(extractSalientKeyword("I bought it at a shop that sells old stuff.")).toBe("shop");
+      expect(extractSalientKeyword("The weather is nice today.")).toBe("weather");
+      // No concrete content word → null (degrades to "that", never worse).
+      expect(extractSalientKeyword("I am very tired.")).toBeNull();
+    });
+
+    it("follows an arbitrary (non-bucket) topic for 4+ rounds, referencing the learner's words, no repeats, no premature pivot", () => {
+      const learnerTurns = [
+        "The weather is nice today.",
+        "My garden has many flowers.",
+        "I painted the fence blue.",
+        "The fence looks better now.",
+      ];
+      const asked: string[] = [];
+      learnerTurns.forEach((text, index) => {
+        const selection = selectSpeakFollowUpByTopicId("generic", {
+          askedQuestions: asked,
+          turnsOnTopic: index, // sameTopic "generic" → increments each round
+          learnerText: text,
+        });
+        // Never the premature dead-end pivot within the first 4 rounds.
+        expect(selection.isPivot).toBe(false);
+        expect(selection.question).not.toBe(SPEAK_FOLLOW_UP_PIVOT);
+        // Follows the learner's salient word.
+        const keyword = extractSalientKeyword(text)!;
+        expect(selection.question.toLowerCase()).toContain(keyword);
+        // No repeated question across the conversation.
+        expect(asked).not.toContain(selection.question);
+        asked.push(selection.question);
+      });
+      expect(new Set(asked).size).toBe(asked.length); // all four distinct
+
+      // Only AFTER the depth cap does it offer to move on.
+      const capped = selectSpeakFollowUpByTopicId("generic", {
+        askedQuestions: asked,
+        turnsOnTopic: SPEAK_FOLLOW_UP_DEPTH_CAP,
+        learnerText: "We will plant more next year.",
+      });
+      expect(capped.isPivot).toBe(true);
+      expect(capped.question).toBe(SPEAK_FOLLOW_UP_PIVOT);
+    });
+
+    it("does not regress scripted topics — the canned pattern question still leads", () => {
+      expect(selectSpeakFollowUp("I bought a hat yesterday.")).toEqual({
+        topicId: "bought-hat-yesterday",
+        question: "Where did you buy it?",
+        isPivot: false,
+      });
+      expect(selectSpeakFollowUp("I had dinner with my family.").question).toBe("What did you eat?");
+    });
   });
 });

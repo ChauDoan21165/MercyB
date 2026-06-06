@@ -1019,6 +1019,7 @@ export default function AiTutorPage() {
       const selection = selectSpeakFollowUpByTopicId(topicId, {
         askedQuestions,
         turnsOnTopic,
+        learnerText: spoken,
       });
       const pivotAwareSelection = resolveMockedContentAwarePivot(
         spoken,
