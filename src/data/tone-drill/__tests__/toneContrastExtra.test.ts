@@ -77,12 +77,51 @@ describe("TONE_CONTRAST_EXTRA — EN→VN tone-contrast extension", () => {
     }
   });
 
-  it("audioPath matches /audio/tones/<syllable>.mp3 for every target", () => {
+  // Supabase Storage object keys must be ASCII, so the audio key is a
+  // storage-safe `<ascii-base>-<tone>` tag, NOT the raw accented syllable.
+  const STORAGE_SAFE_AUDIO_PATH = /^\/audio\/tones\/[a-z0-9]+(?:-[a-z0-9]+)*\.mp3$/;
+
+  it("audioPath is a storage-safe ASCII tone-tag key for every target", () => {
     for (const pair of TONE_CONTRAST_EXTRA) {
       for (const target of pair.contrast) {
-        expect(target.audioPath).toBe(`/audio/tones/${target.syllable}.mp3`);
+        expect(target.audioPath).toMatch(STORAGE_SAFE_AUDIO_PATH);
       }
     }
+  });
+
+  it("audio keys are collision-free across all targets", () => {
+    const keys: string[] = [];
+    for (const pair of TONE_CONTRAST_EXTRA) {
+      for (const target of pair.contrast) {
+        keys.push(target.audioPath);
+      }
+    }
+    // dedupe by syllable first (same syllable → same clip), then assert
+    // the distinct syllables map to distinct keys (no accent-strip collision).
+    const bySyllable = new Map<string, string>();
+    for (const pair of TONE_CONTRAST_EXTRA) {
+      for (const target of pair.contrast) {
+        bySyllable.set(target.syllable, target.audioPath);
+      }
+    }
+    const distinctKeys = new Set(bySyllable.values());
+    expect(distinctKeys.size).toBe(bySyllable.size);
+  });
+
+  it("encodes a few known syllables to the agreed ASCII scheme", () => {
+    const keyOf = (syllable: string): string | undefined => {
+      for (const pair of TONE_CONTRAST_EXTRA) {
+        for (const target of pair.contrast) {
+          if (target.syllable === syllable) return target.audioPath;
+        }
+      }
+      return undefined;
+    };
+    expect(keyOf("xé")).toBe("/audio/tones/xe-sac.mp3");
+    expect(keyOf("của")).toBe("/audio/tones/cua-hoi.mp3");
+    expect(keyOf("cũ")).toBe("/audio/tones/cu-nga.mp3");
+    expect(keyOf("lọ")).toBe("/audio/tones/lo-nang.mp3");
+    expect(keyOf("cò")).toBe("/audio/tones/co-huyen.mp3");
   });
 });
 
