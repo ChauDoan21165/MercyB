@@ -36,10 +36,10 @@
  *     entirely — they capture raw text typed by the user, which is the
  *     single highest-risk source of PII leakage.
  *   - Session Replay (web only — @sentry/capacitor does not support
- *     Replay): 10% baseline session sampling, 100% on-error sampling.
- *     `maskAllText: true` and `blockAllMedia: true` are kept at the
- *     Sentry-recommended privacy defaults; loosening either requires
- *     an explicit privacy review.
+ *     Replay): 0% baseline session sampling, 5% on-error sampling
+ *     (replay quota control — see buildSentryOptions). `maskAllText: true`
+ *     and `blockAllMedia: true` are kept at the Sentry-recommended privacy
+ *     defaults; loosening either requires an explicit privacy review.
  */
 
 import { stripPII } from "@/lib/security/piiProtection";
@@ -280,7 +280,7 @@ export function initSentry(): void {
 //
 // Composes the per-platform Sentry init options so the replay wiring
 // can be unit-tested without booting the SDK. The web branch adds
-// Session Replay (10% baseline / 100% on-error sampling, all text
+// Session Replay (0% baseline / 5% on-error sampling, all text
 // masked, all media blocked); the native (Capacitor) branch leaves it
 // off because @sentry/capacitor doesn't ship a replay integration.
 
@@ -318,11 +318,14 @@ export function buildSentryOptions(args: {
 
   return {
     ...shared,
-    // 10% of regular sessions get a replay buffer; 100% of sessions
-    // that hit an error do — that's the high-value sample. Conservative
-    // baseline so we stay inside the Sentry free-tier replay quota.
-    replaysSessionSampleRate: 0.1,
-    replaysOnErrorSampleRate: 1.0,
+    // Replay quota control (over 50/mo free-tier cap at 104%). NO regular
+    // session replays — replaysSessionSampleRate: 0 — and only 5% of
+    // error sessions get a replay buffer. Error *event* tracking is
+    // untouched (that's tracesSampleRate / captureException, not Replay),
+    // so we keep the high-value error signal while staying inside quota
+    // without enabling pay-as-you-go.
+    replaysSessionSampleRate: 0,
+    replaysOnErrorSampleRate: 0.05,
     integrations: [
       replayIntegrationFactory({
         // Sentry-recommended privacy defaults. maskAllText hides every
