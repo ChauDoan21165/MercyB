@@ -27,8 +27,6 @@ function makeAccess(overrides: Partial<UserAccess>): UserAccess {
     userTier: "level0",
     entitlementTier: "level0",
     hasPremium: false,
-    hasPremiumMonthly: false,
-    hasPremiumYearly: false,
     features: {
       hasMercyGuide: true,
       hasMercyJourney: false,
@@ -76,13 +74,11 @@ const PAID_MONTHLY = makeAccess({
   tier: "premium_month",
   userTier: "level9",
   hasPremium: true,
-  hasPremiumMonthly: true,
 });
 const PAID_YEARLY = makeAccess({
   tier: "premium_year",
   userTier: "level9",
   hasPremium: true,
-  hasPremiumYearly: true,
 });
 const LEGACY_PAID = makeAccess({ tier: "level9", userTier: "level9" });
 

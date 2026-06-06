@@ -49,8 +49,6 @@ export interface UserAccess {
   entitlementTier: TierId;
 
   hasPremium: boolean;
-  hasPremiumMonthly: boolean;
-  hasPremiumYearly: boolean;
 
   features: FeatureAccess;
 
@@ -194,8 +192,6 @@ export const guestAccess = (): UserAccess => {
     userTier,
     entitlementTier,
     hasPremium: false,
-    hasPremiumMonthly: false,
-    hasPremiumYearly: false,
     features: buildFeatureAccess(entitlementTier, { unlockMercyFeatures }),
     loading: false,
     isLoading: false,
@@ -252,8 +248,6 @@ function authenticatedFreeAccess(params: {
     userTier,
     entitlementTier,
     hasPremium: false,
-    hasPremiumMonthly: false,
-    hasPremiumYearly: false,
     features: buildFeatureAccess(entitlementTier, {
       unlockMercyFeatures,
       trialExpired: isTrialExpired,
@@ -393,8 +387,6 @@ export const useUserAccess = (): UserAccess => {
         userTier,
         entitlementTier,
         hasPremium: isPremiumTier(entitlementTier),
-        hasPremiumMonthly: entitlementTier === "premium_month",
-        hasPremiumYearly: entitlementTier === "premium_year",
         features,
         loading: false,
         isLoading: false,
