@@ -128,6 +128,38 @@ describe("follow-up bank", () => {
       }
     }
   });
+
+  it("gives every context a non-empty English scaffold (exampleEn)", () => {
+    // Mirror of the promptVi non-empty check: the English target frame is the
+    // model answer the learner is steered toward — it must never ship blank.
+    const focusable: L1WeaknessTag[] = [
+      "vi_l1_3rd_person_s",
+      "vi_l1_past_ed",
+      "vi_l1_plural_s",
+      "vi_l1_missing_be",
+      "vi_l1_missing_article",
+      "vi_l1_question_no_aux",
+      "vi_l1_preposition_transfer",
+    ];
+    for (const tag of focusable) {
+      for (const c of followUpsForTag(tag)) {
+        expect(c.exampleEn.trim().length, `${c.id} exampleEn`).toBeGreaterThan(0);
+      }
+    }
+  });
+});
+
+// ── no-nag depth ceiling ────────────────────────────────────────────────────
+
+describe("L1_FOCUS_DEPTH_CAP — no-nag ceiling", () => {
+  it("stays small so the loop circles a weakness without nagging (non-negotiable #4)", () => {
+    // "A few turns" — outcomes over engagement, no streak-shaming. The reducer
+    // tests are parameterized on this constant, so they pass for ANY value;
+    // this lock pins the magnitude so the cap can be tuned but never silently
+    // grow into a nag loop.
+    expect(L1_FOCUS_DEPTH_CAP).toBeGreaterThanOrEqual(1);
+    expect(L1_FOCUS_DEPTH_CAP).toBeLessThanOrEqual(5);
+  });
 });
 
 // ── reducer: starting / low confidence ─────────────────────────────────────
