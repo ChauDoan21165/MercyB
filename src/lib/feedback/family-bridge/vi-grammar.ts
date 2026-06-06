@@ -902,4 +902,14 @@ export const VI_GRAMMAR_FAMILY_BRIDGE: FamilyBridgeExplanation[] = [
   },
 ];
 
+export function listViGrammarFamilyBridgeExplanations(): FamilyBridgeExplanation[] {
+  return VI_GRAMMAR_FAMILY_BRIDGE;
+}
+
+export function getViGrammarFamilyBridgeExplanation(
+  tag: string,
+): FamilyBridgeExplanation | null {
+  return VI_GRAMMAR_FAMILY_BRIDGE.find((entry) => entry.tag === tag) ?? null;
+}
+
 export default VI_GRAMMAR_FAMILY_BRIDGE;

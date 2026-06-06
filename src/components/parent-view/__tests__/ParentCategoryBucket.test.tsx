@@ -42,13 +42,44 @@ describe("ParentCategoryBucket", () => {
     ).toHaveTextContent("8 lần");
   });
 
-  it("expands and renders an example when an item has example copy", () => {
+  it("expands a validated item and renders the family-bridge explainer + example", () => {
     render(<ParentCategoryBucket category={categoryFixture} locale="vi" />);
 
-    expect(screen.getByText("Xem ví dụ")).toBeInTheDocument();
-    fireEvent.click(screen.getByText("Xem ví dụ"));
+    // vi_l1_3rd_person_s is a Chau-approved pilot entry, so the affordance
+    // surfaces the explainer (not a bare example).
+    expect(screen.getByText("Mercy giải thích")).toBeInTheDocument();
+    fireEvent.click(screen.getByText("Mercy giải thích"));
 
+    expect(
+      screen.getByTestId("parent-familybridge-grammar:vi_l1_3rd_person_s"),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Mercy giải thích cho con bạn")).toBeInTheDocument();
+    expect(screen.getByText("Cách gia đình có thể giúp")).toBeInTheDocument();
+    // The example still renders alongside the explainer.
     expect(screen.getAllByText("She likes music.")).toHaveLength(2);
+  });
+
+  it("never renders an explainer for an unvalidated tag", () => {
+    const pendingFixture: ParentCategory = {
+      ...categoryFixture,
+      items: [
+        {
+          // Batch-2b entry — still validated:false until Chau signs off.
+          key: "grammar:vi_l1_generic_plural",
+          qualitativeVi: "Con đang luyện danh từ số nhiều khái quát.",
+          qualitativeEn: "Your child is practising generic plurals.",
+          numeric: { count: 5, severity: "low" },
+        },
+      ],
+    };
+    render(<ParentCategoryBucket category={pendingFixture} locale="vi" />);
+
+    expect(
+      screen.queryByTestId("parent-familybridge-grammar:vi_l1_generic_plural"),
+    ).not.toBeInTheDocument();
+    // No example + no validated explainer ⇒ row is not expandable.
+    expect(screen.queryByText("Mercy giải thích")).not.toBeInTheDocument();
+    expect(screen.queryByText("Xem ví dụ")).not.toBeInTheDocument();
   });
 
   it("renders a video slot only when a category supplies a video URL", () => {

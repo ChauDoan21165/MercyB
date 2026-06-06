@@ -14,6 +14,7 @@ import type {
   ParentSummaryItem,
 } from "@/lib/parent-view/buildParentSummary";
 import type { ParentCategoryId } from "@/lib/parent-view/categories";
+import { familyBridgeForItemKey } from "@/lib/parent-view/familyBridgeForItem";
 import type { ParentLocale } from "@/lib/parent-view/parentLocale";
 
 export interface ParentCategoryBucketProps {
@@ -152,15 +153,26 @@ function CategoryItem({
 }) {
   const [open, setOpen] = useState(false);
   const hasExample = Boolean(item.exampleVi || item.exampleEn);
+  // Rich, family-facing explainer — validated entries only (the resolver
+  // filters on Chau-approval, so unsigned drafts never surface here).
+  const explainer = familyBridgeForItemKey(item.key);
+  const expandable = hasExample || Boolean(explainer);
+  const affordance = explainer
+    ? locale === "en"
+      ? "Mercy explains"
+      : "Mercy giải thích"
+    : locale === "en"
+      ? "View example"
+      : "Xem ví dụ";
 
   return (
     <li className="rounded-2xl border border-black/5 bg-white/80 px-3 py-2.5">
       <button
         type="button"
-        onClick={() => hasExample && setOpen((v) => !v)}
-        aria-expanded={hasExample ? open : undefined}
+        onClick={() => expandable && setOpen((v) => !v)}
+        aria-expanded={expandable ? open : undefined}
         className={`flex w-full items-start gap-2 text-left ${
-          hasExample ? "cursor-pointer" : "cursor-default"
+          expandable ? "cursor-pointer" : "cursor-default"
         }`}
       >
         <div className="min-w-0 flex-1">
@@ -172,13 +184,13 @@ function CategoryItem({
             enClassName="mt-0.5 text-[12px] leading-snug text-slate-500"
           />
           {showNumbers && <NumericDrillIn item={item} locale={locale} />}
-          {hasExample && (
+          {expandable && (
             <span className="mt-1 block text-[11px] font-medium text-indigo-600">
-              {locale === "en" ? "View example" : "Xem ví dụ"}
+              {affordance}
             </span>
           )}
         </div>
-        {hasExample && (
+        {expandable && (
           <span aria-hidden className="mt-0.5 text-slate-400">
             {open ? (
               <ChevronUp className="h-4 w-4" />
@@ -188,6 +200,9 @@ function CategoryItem({
           </span>
         )}
       </button>
+      {open && explainer && (
+        <FamilyBridgeDetail itemKey={item.key} explainer={explainer} locale={locale} />
+      )}
       {open && hasExample && (
         <div className="mt-2 rounded-xl border border-black/5 bg-slate-50/60 px-3 py-2">
           <Bilingual
@@ -201,6 +216,46 @@ function CategoryItem({
         </div>
       )}
     </li>
+  );
+}
+
+/**
+ * The rich, family-facing explainer panel. Content is Vietnamese-first
+ * (non-negotiable #1) — the why / how-to-help / encouragement copy is VN;
+ * only the section labels follow the parent's locale. Rendered only for a
+ * VALIDATED entry (the caller already filtered on Chau-approval).
+ */
+function FamilyBridgeDetail({
+  itemKey,
+  explainer,
+  locale,
+}: {
+  itemKey: string;
+  explainer: ReturnType<typeof familyBridgeForItemKey>;
+  locale: ParentLocale;
+}) {
+  if (!explainer) return null;
+  return (
+    <div
+      data-testid={`parent-familybridge-${itemKey}`}
+      className="mt-2 space-y-2 rounded-xl border border-indigo-100 bg-indigo-50/50 px-3 py-2.5"
+    >
+      <p className="text-[11px] font-semibold uppercase tracking-wide text-indigo-700">
+        {locale === "en"
+          ? "What Mercy explains to your child"
+          : "Mercy giải thích cho con bạn"}
+      </p>
+      <p className="text-[12px] leading-snug text-slate-700">{explainer.whyVi}</p>
+      <p className="text-[12px] leading-snug text-slate-600">
+        {explainer.encouragementVi}
+      </p>
+      <p className="pt-1 text-[11px] font-semibold uppercase tracking-wide text-indigo-700">
+        {locale === "en" ? "How your family can help" : "Cách gia đình có thể giúp"}
+      </p>
+      <p className="text-[12px] leading-snug text-slate-700">
+        {explainer.howToHelpVi}
+      </p>
+    </div>
   );
 }
 
