@@ -1073,13 +1073,21 @@ export default function AiTutorPage() {
 
   useEffect(() => {
     if (mode !== "speak") return;
+    // Do NOT record while the mic is live: STT streams interim partials
+    // ("I", "I bought", "I bought a hat") that each land in speakRepeatInput,
+    // and recording them as separate attempts inflates turnsOnTopic to the
+    // SPEAK_FOLLOW_UP_DEPTH_CAP within a single spoken sentence — which made
+    // the loop jump to "another sentence?" after one real round. The final
+    // utterance is recorded once on the STT-commit path (listening → stopped).
+    // This effect only serves the typed path, which is never `listening`.
+    if (stt.listening) return;
     const repeat = normalizeSpokenText(speakRepeatInput);
     if (!repeat) return;
     const timerId = window.setTimeout(() => {
       recordSpeakRepeatAttempt(repeat);
     }, 350);
     return () => window.clearTimeout(timerId);
-  }, [latestCorrectedSeed?.correctedSentence, mode, speakRepeatInput]);
+  }, [latestCorrectedSeed?.correctedSentence, mode, speakRepeatInput, stt.listening]);
 
   useEffect(() => {
     if (mode !== "speak") {
