@@ -101,6 +101,39 @@ variables:
     <<: *npm_cache_def
     policy: pull-push
   before_script:
+    # [B3 builds-reaper] Bound disk on the macOS shell runners. Every job gets a
+    # unique GIT_CLONE_PATH ($CI_BUILDS_DIR/$CI_PIPELINE_ID/$CI_JOB_ID/...) and the
+    # runner never auto-cleans custom build dirs, so full checkouts + their
+    # node_modules accumulate until disk fills (mac-runner-3). Prune top-level
+    # pipeline dirs older than 24h, NEVER the current pipeline. Numeric-name match
+    # scopes this to MercyB's GIT_CLONE_PATH layout (won't touch other projects'
+    # default build dirs). Runs BEFORE `npm ci`, so it can't race this job's
+    # cache-save (GitLab archives node_modules/ AFTER after_script). Darwin-only:
+    # the Linux fallback runs on an ephemeral FS. Default age is 24h; tune via
+    # REAP_MTIME (find -mtime value, in days).
+    #
+    # DRY-RUN BY DEFAULT — this is the first destructive filesystem op on CI
+    # infra, so it earns one clean dry-run: it logs CI_BUILDS_DIR + every target
+    # it WOULD remove and fires NO rm. After Chau eyeballs that CI_BUILDS_DIR
+    # resolved correctly and every target is genuinely stale, flip to live by
+    # setting the CI/CD variable REAP_LIVE=1 (or changing the default below).
+    - |
+      if [ -n "$CI_BUILDS_DIR" ] && [ "$(uname -s)" = "Darwin" ]; then
+        REAP_AGE="${REAP_MTIME:-+0}"
+        REAP_MODE="dry-run"; [ "${REAP_LIVE:-0}" = "1" ] && REAP_MODE="live"
+        echo "[B3 builds-reaper] CI_BUILDS_DIR=$CI_BUILDS_DIR current=$CI_PIPELINE_ID age=$REAP_AGE mode=$REAP_MODE runner=${CI_RUNNER_DESCRIPTION:-unknown}"
+        STALE="$(find "$CI_BUILDS_DIR" -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' ! -name "$CI_PIPELINE_ID" -mtime "$REAP_AGE" -print 2>/dev/null)"
+        if [ -z "$STALE" ]; then
+          echo "[B3 builds-reaper] no stale (>24h) pipeline build dirs found — nothing to do"
+        elif [ "$REAP_MODE" = "live" ]; then
+          echo "[B3 builds-reaper] LIVE — removing stale pipeline build dirs:"
+          echo "$STALE"
+          echo "$STALE" | while IFS= read -r d; do [ -n "$d" ] && rm -rf -- "$d"; done 2>/dev/null || true
+        else
+          echo "[B3 builds-reaper] DRY-RUN — would remove the following (NO rm fired; set REAP_LIVE=1 to enable):"
+          echo "$STALE"
+        fi
+      fi
     # `--legacy-peer-deps` mirrors the GitHub workflow's flag — the
     # repo's peer-dep tree currently requires it.
     - sleep $((RANDOM % 60))
