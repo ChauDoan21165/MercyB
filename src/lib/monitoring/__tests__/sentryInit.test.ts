@@ -768,9 +768,10 @@ describe("buildSentryOptions — Session Replay platform fork", () => {
       replayIntegrationFactory: replayFactory,
     });
 
-    // Sample rates: 10% baseline, 100% on-error.
-    expect(opts.replaysSessionSampleRate).toBe(0.1);
-    expect(opts.replaysOnErrorSampleRate).toBe(1.0);
+    // Sample rates: 0% baseline (no session replays), 5% on-error — replay
+    // quota control. Error event tracking is unaffected.
+    expect(opts.replaysSessionSampleRate).toBe(0);
+    expect(opts.replaysOnErrorSampleRate).toBe(0.05);
 
     // Replay factory called once with the safe defaults.
     expect(replayFactory).toHaveBeenCalledTimes(1);
