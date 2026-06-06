@@ -881,14 +881,22 @@ function ListenControls({
 }) {
   const longPressTimer = useRef<number | null>(null);
   const longPressTriggered = useRef(false);
+  // Local to the Listen control so a total TTS failure (cloud null AND no
+  // browser speechSynthesis) shows the learner a message instead of silently
+  // doing nothing. Kept out of the parent recognition/scoring state machine.
+  const [ttsError, setTtsError] = useState<string | null>(null);
 
   const play = useCallback(
     async (rate: number) => {
       try {
+        setTtsError(null);
         onPlaying?.(true);
         await ttsSpeak({ text, rate });
       } catch (err) {
         console.warn('[SpeechDrill] TTS playback failed:', err);
+        setTtsError(
+          'Không phát được âm thanh mẫu trên thiết bị này. / Could not play the model audio on this device.',
+        );
       } finally {
         onPlaying?.(false);
       }
@@ -966,6 +974,16 @@ function ListenControls({
       >
         Listen slowly · Nghe chậm
       </button>
+      {ttsError && (
+        <p
+          role="status"
+          aria-live="polite"
+          data-testid="tts-listen-error"
+          style={{ fontSize: 11, fontWeight: 600, color: '#b45309', marginTop: 2, textAlign: 'center' }}
+        >
+          {ttsError}
+        </p>
+      )}
     </div>
   );
 }

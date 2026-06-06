@@ -114,3 +114,55 @@ describe("PronunciationDrillsPage — honest self-compare (record & play back, n
     expect(text).toMatch(/không có điểm số|không chấm điểm/i);
   });
 });
+
+describe("PronunciationDrillsPage — accessibility (labels, live region, focus)", () => {
+  it("gives each tone-clip play button a distinguishing accessible name", () => {
+    render(<PronunciationDrillsPage />);
+    // The shared TalkingFacePlayButton now takes an ariaLabel suffix, so the
+    // accessible name carries the syllable + tone — not just a bare "Play".
+    const named = screen.getByRole("button", { name: /Play:\s*xe\b.*tone/i });
+    expect(named).toBeInTheDocument();
+    // Still begins with the "Play" verb so generic name matchers keep working.
+    expect(named.getAttribute("aria-label")).toMatch(/^Play:/);
+  });
+
+  it("labels the record / play-back / reset controls", () => {
+    recorderMock.current = { ...IDLE_RECORDER, lastRecordedAudioUrl: "blob:rec" };
+    render(<PronunciationDrillsPage />);
+    expect(
+      screen.getByRole("button", { name: /Thu âm giọng của bạn/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /Nghe lại giọng vừa thu/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /Xoá bản thu/i }),
+    ).toBeInTheDocument();
+  });
+
+  it("announces mic errors in a polite live region", () => {
+    recorderMock.current = {
+      ...IDLE_RECORDER,
+      error: "Microphone access was denied in your browser.",
+    };
+    const { container } = render(<PronunciationDrillsPage />);
+    const live = container.querySelector('[aria-live="polite"]');
+    expect(live).toBeTruthy();
+    expect(live?.textContent).toMatch(/Microphone access was denied/i);
+  });
+
+  it("moves focus to the play-back control once a recording exists", () => {
+    recorderMock.current = { ...IDLE_RECORDER, lastRecordedAudioUrl: "blob:rec" };
+    render(<PronunciationDrillsPage />);
+    expect(screen.getByTestId("self-compare-play")).toHaveFocus();
+  });
+
+  it("returns focus to the record button after the recording is cleared", () => {
+    recorderMock.current = { ...IDLE_RECORDER, lastRecordedAudioUrl: "blob:rec" };
+    const { rerender } = render(<PronunciationDrillsPage />);
+    // Simulate "Thu lại" clearing the recording.
+    recorderMock.current = { ...IDLE_RECORDER, lastRecordedAudioUrl: null };
+    rerender(<PronunciationDrillsPage />);
+    expect(screen.getByTestId("self-compare-record")).toHaveFocus();
+  });
+});

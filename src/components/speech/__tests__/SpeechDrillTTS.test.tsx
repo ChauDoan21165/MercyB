@@ -147,6 +147,17 @@ describe('SpeechDrill · Listen controls', () => {
     expect(ttsSpeak).toHaveBeenLastCalledWith({ text: 'think', rate: 0.8 });
   });
 
+  it('surfaces a user-visible message when TTS playback fails entirely (no silent failure)', async () => {
+    vi.mocked(ttsSpeak).mockRejectedValue(new Error('cloud null + no speechSynthesis'));
+    render(<SpeechDrill targetSentence={TARGET} />);
+    const btn = screen.getByTestId('tts-listen-primary');
+    fireEvent.pointerDown(btn);
+    fireEvent.pointerUp(btn);
+    // Previously this only console.warn'd — the learner saw nothing.
+    const msg = await screen.findByTestId('tts-listen-error');
+    expect(msg.textContent).toMatch(/Could not play the model audio|Không phát được/i);
+  });
+
   it('does not render per-word Listen icons when TTS is not supported', async () => {
     const user = userEvent.setup();
     vi.mocked(ttsIsSupported).mockReturnValue(false);
