@@ -358,6 +358,24 @@ describe("AiTutor four-tab seed flow", () => {
     expect(screen.queryByTestId("ai-tutor-l1-followup")).not.toBeInTheDocument();
   });
 
+  it("does not carry L1 focus across a remount (in-session only)", async () => {
+    // Focus state lives in a per-mount ref (l1FocusRef), never in storage, so a
+    // fresh mount — a new session / page reload — must RESTART the loop, not
+    // resume the prior focus. A same-tag error on the second mount must show
+    // context #1 again, not the context #2 the first mount had advanced toward.
+    const first = render(<AiTutorPage />);
+    await correctSentence("She go to school every day.", "She goes to school every day.");
+    expect(await screen.findByTestId("ai-tutor-l1-followup")).toHaveTextContent("buổi sáng"); // #1
+
+    first.unmount();
+
+    render(<AiTutorPage />);
+    await correctSentence("She go to school every day.", "She goes to school every day.");
+    const afterRemount = await screen.findByTestId("ai-tutor-l1-followup");
+    expect(afterRemount).toHaveTextContent("buổi sáng"); // context #1 AGAIN — focus reset
+    expect(afterRemount).not.toHaveTextContent("làm nghề"); // did NOT resume at context #2
+  });
+
   it("shows no follow-up for clean (low-confidence) input with no active focus", async () => {
     render(<AiTutorPage />);
 
