@@ -150,10 +150,10 @@ function ToneTargetRow({
       <div className="flex items-baseline gap-2">
         <span className="text-2xl font-black text-slate-900">{syllable}</span>
         <span className="text-xs font-bold text-indigo-700">
-          thanh {tone} · {shapeEn}
+          {tone} tone · {shapeEn}
         </span>
       </div>
-      <TalkingFacePlayButton src={audioKey} label={`Nghe “${syllable}”`} />
+      <TalkingFacePlayButton src={audioKey} label={`Listen: “${syllable}”`} />
     </div>
   );
 }
@@ -163,11 +163,14 @@ function TonePairCard({ pair }: { pair: PendingTonePair }) {
   const listenOnly = pair.listenCompareOnly;
   return (
     <li className="rounded-[16px] border border-sky-100 bg-white px-4 py-4 shadow-sm">
-      <p className="text-sm font-black leading-6 text-slate-900">{pair.glossVi}</p>
-      <p className="mt-0.5 text-xs font-semibold leading-5 text-slate-500">{pair.glossEn}</p>
+      {/* English-primary: this block teaches Vietnamese tones to English
+          speakers, so the English gloss leads; the Vietnamese gloss (tone
+          names + example words being taught) stays as the secondary line. */}
+      <p className="text-sm font-black leading-6 text-slate-900">{pair.glossEn}</p>
+      <p className="mt-0.5 text-xs font-semibold leading-5 text-slate-500">{pair.glossVi}</p>
       {listenOnly && (
         <p className="mt-2 inline-block rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-[11px] font-black text-amber-800">
-          Chỉ nghe &amp; so sánh — chưa chấm điểm
+          Listen &amp; compare only — not scored
         </p>
       )}
       <div className="mt-3 grid gap-3 sm:grid-cols-2">
@@ -215,9 +218,10 @@ export default function PronunciationDrillsPage() {
 
       {/* ── Vietnamese tone listen-compare ── */}
       <section className="mt-6" data-testid="tone-pairs-section">
-        <h2 className="text-lg font-black text-slate-900">Thanh điệu tiếng Việt</h2>
+        <h2 className="text-lg font-black text-slate-900">Vietnamese tones</h2>
         <p className="mt-1 text-sm font-semibold leading-6 text-slate-600">
-          Nghe hai thanh khác nhau trên cùng một âm.
+          Listen to the same syllable said with two different tones, then
+          compare them by ear. No score — this is listen-and-compare only.
         </p>
         <ul className="mt-3 grid gap-3">
           {tonePairs.map((pair) => (
