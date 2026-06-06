@@ -1,3 +1,9 @@
+import {
+  buildSpeakTopicCorrectionWeave,
+  getSpeakTopicLibraryEntry,
+  getSpeakTopicLibraryTopicId,
+} from "./speakTopicLibrary";
+
 export type SpeakFollowUpPattern = {
   id: string;
   test: RegExp;
@@ -8,6 +14,9 @@ export type SpeakFollowUpSelection = {
   topicId: string;
   question: string;
   isPivot: boolean;
+  followUpId?: string;
+  correctionSignalId?: string;
+  correctionStatus?: "ship-safe" | "hold" | "abstain";
 };
 
 export type SpeakFollowUpTopicInput = {
@@ -235,7 +244,8 @@ export const SPEAK_FOLLOW_UP_PATTERNS: readonly SpeakFollowUpPattern[] = [
 export function getSpeakFollowUpTopicId(sentence: string): string {
   const normalized = sentence.replace(/\s+/g, " ").trim();
   const pattern = SPEAK_FOLLOW_UP_PATTERNS.find((candidate) => candidate.test.test(normalized));
-  return pattern?.id ?? "generic";
+  if (pattern) return pattern.id;
+  return getSpeakTopicLibraryTopicId(normalized) ?? "generic";
 }
 
 export function resolveSpeakFollowUpTopicId({
@@ -244,6 +254,14 @@ export function resolveSpeakFollowUpTopicId({
   currentTopicId,
 }: SpeakFollowUpTopicInput): string {
   const learnerTopicId = learnerText ? getSpeakFollowUpTopicId(learnerText) : "generic";
+  if (
+    currentTopicId &&
+    currentTopicId !== "generic" &&
+    !currentTopicId.startsWith("topic-") &&
+    learnerTopicId.startsWith("topic-")
+  ) {
+    return currentTopicId;
+  }
   if (learnerTopicId !== "generic") return learnerTopicId;
 
   if (currentTopicId && currentTopicId !== "generic") return currentTopicId;
@@ -262,12 +280,51 @@ export function selectSpeakFollowUpByTopicId(
   } = {},
 ): SpeakFollowUpSelection {
   const pattern = SPEAK_FOLLOW_UP_PATTERNS.find((candidate) => candidate.id === topicId);
-  const resolvedTopicId = pattern?.id ?? "generic";
+  const libraryTopic = getSpeakTopicLibraryEntry(topicId);
+  const resolvedTopicId = pattern?.id ?? libraryTopic?.id ?? "generic";
   const asked = new Set((options.askedQuestions ?? []).map((question) => question.trim().toLowerCase()));
   const turnsOnTopic = options.turnsOnTopic ?? 0;
+  const learnerText = options.learnerText ?? "";
 
   if (turnsOnTopic >= SPEAK_FOLLOW_UP_DEPTH_CAP) {
     return { topicId: resolvedTopicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
+  }
+
+  if (libraryTopic) {
+    const keyword = extractSalientKeyword(learnerText);
+    const correctionWeave = buildSpeakTopicCorrectionWeave(learnerText);
+    const candidates = libraryTopic.followUps.map((followUp, index) => {
+      const slot = keyword;
+      const baseQuestion =
+        slot && followUp.salienceQuestion
+          ? followUp.salienceQuestion.replace("{slot}", slot)
+          : followUp.question;
+      const question = index === turnsOnTopic && correctionWeave
+        ? `${correctionWeave.promptPrefix} ${baseQuestion}`
+        : baseQuestion;
+      return {
+        id: followUp.id,
+        question,
+      };
+    });
+    const ordered = [
+      ...candidates.slice(turnsOnTopic),
+      ...candidates.slice(0, turnsOnTopic),
+    ];
+    const selected = ordered.find((candidate) => !asked.has(candidate.question.trim().toLowerCase()));
+
+    if (!selected) {
+      return { topicId: resolvedTopicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
+    }
+
+    return {
+      topicId: resolvedTopicId,
+      question: selected.question,
+      isPivot: false,
+      followUpId: selected.id,
+      correctionSignalId: correctionWeave?.signalId,
+      correctionStatus: correctionWeave?.status,
+    };
   }
 
   // Ordering:
@@ -279,7 +336,6 @@ export function selectSpeakFollowUpByTopicId(
   //    than marching through canned topic trivia that ignores what they said.
   //  - Turn 1+ but no concrete keyword (e.g. "It was very good."): scripted
   //    leads, keeping the good canned question instead of a vague "...that?".
-  const learnerText = options.learnerText ?? "";
   const scriptedQuestions = pattern?.questions ?? [];
   const salienceQuestions = buildSalienceFollowUps(learnerText, turnsOnTopic);
   const followsLearner = turnsOnTopic >= 1 && extractSalientKeyword(learnerText) !== null;
