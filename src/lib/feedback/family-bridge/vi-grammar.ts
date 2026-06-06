@@ -13,10 +13,10 @@
  *  - "tiếng Việt mình" phrasing kept; shame-free, identity-affirming framing.
  *
  * Status: the first 10 (A1–A2 pilot) are VOICE-LOCKED by Chau (2026-06-05) —
- * `validated:true` / `approved`, rendered in the parent view. Batch 2a (the
- * next 13 A1–A2 tags) is appended below at `validated:false` / `needs_chau`,
- * authored in the SAME locked voice, awaiting Chau's sign-off. B1–C1 batches
- * are HELD pending a CEO scope call.
+ * `validated:true` / `approved`, rendered in the parent view. Batches 2a + 2b
+ * (the remaining 26 A1–A2 tags) are appended below at `validated:false` /
+ * `needs_chau`, authored in the SAME locked voice, awaiting Chau's sign-off.
+ * B1–C1 batches are HELD pending a CEO scope call.
  *
  * CEFR note: accepted as a heuristic (no authoritative per-tag CEFR table in
  * the repo — `taxonomy.ts` carries severity, not CEFR). Uncertain bands are
@@ -578,6 +578,323 @@ export const VI_GRAMMAR_FAMILY_BRIDGE: FamilyBridgeExplanation[] = [
       naturalForm: "He doesn't like coffee.",
       glossVi:
         "“Anh ấy không thích cà phê” — tiếng Việt một chữ “không”, nên bạn dùng “don’t” cho “he”.",
+    },
+    validated: false,
+    reviewStatus: "needs_chau",
+    version: "0.1.0",
+  },
+
+  // ════════════════════════════════════════════════════════════════════
+  // BATCH 2b — final A1–A2 core (13). validated:false / needs_chau.
+  // Same locked voice as the pilot. Completes the A1–A2 band (10+13+13=36).
+  // ════════════════════════════════════════════════════════════════════
+  {
+    tag: "vi_l1_generic_plural",
+    source: "grammar_rule",
+    cefr: "A2",
+    patternNameVi: "Nói khái quát dùng danh từ số nhiều, không “the”",
+    patternLabelEn: "Generic plural",
+    parentSummaryVi:
+      "Bạn đang học rằng nói chung chung trong tiếng Anh dùng danh từ số nhiều — “I like dogs”, không phải “I like dog”.",
+    whyVi:
+      "Tiếng Việt mình nói khái quát rất gọn: “tôi thích chó” — danh từ không đổi, không cần dấu hiệu số nhiều. Tiếng Anh khi nói chung về một loại thì dùng số nhiều: “I like dogs”, “Children love sweets”. Nên bạn hay nói “I like dog”. Đây là điều rất nhiều người Việt mình gặp vì tiếng mình không buộc đánh dấu số nhiều.",
+    howToHelpVi:
+      "Khi nói sở thích chung với người thân, để ý thêm “-s”: “I like cats”, “I love books”. Nếu bạn nói “I like dog”, nhờ người thân nhắc lại tự nhiên — “oh, you like dogs!”.",
+    encouragementVi:
+      "Người nghe vẫn hiểu ngay sở thích của bạn dù thiếu “-s”. Đây là chi tiết nhỏ tự hoàn thiện khi bạn nghe nhiều.",
+    example: {
+      learnerSays: "I like dog.",
+      naturalForm: "I like dogs.",
+      glossVi:
+        "“Tôi thích chó” — tiếng Việt nói chung không đổi danh từ, nên bạn để “dog” số ít.",
+    },
+    validated: false,
+    reviewStatus: "needs_chau",
+    version: "0.1.0",
+  },
+  {
+    tag: "vi_l1_double_negative",
+    source: "grammar_rule",
+    cefr: "A2",
+    patternNameVi: "Một mệnh đề tiếng Anh chỉ dùng một phủ định",
+    patternLabelEn: "Double negative",
+    parentSummaryVi:
+      "Bạn đang học rằng tiếng Anh chỉ dùng một từ phủ định trong một câu — “I don’t have any money”, không phải “no money”.",
+    whyVi:
+      "Trong tiếng Việt, mình có thể nhấn phủ định bằng nhiều chữ — “chẳng có gì đâu”, “không có gì cả”. Mang sang tiếng Anh, bạn hay nói “I don’t have no money”. Tiếng Anh chuẩn chỉ giữ một phủ định: “I don’t have any money”. Đây là lỗi của người muốn nhấn ý cho rõ — rất tự nhiên với người Việt mình.",
+    howToHelpVi:
+      "Mẹo gọn khi luyện cùng người thân: “đã có don’t rồi thì dùng any, không dùng no”. Nếu bạn nói “don’t have no…”, nhờ người thân nhắc lại tự nhiên — “you don’t have any, right”.",
+    encouragementVi:
+      "Ý phủ định của bạn rất rõ — chỉ là tiếng Anh thích gọn một dấu hiệu thôi. Dễ chỉnh khi quen mẫu “don’t… any”.",
+    example: {
+      learnerSays: "I don't have no money.",
+      naturalForm: "I don't have any money.",
+      glossVi:
+        "“Tôi chẳng có đồng nào” — tiếng Việt nhấn phủ định nhiều lớp, nên bạn dùng cả “don’t” lẫn “no”.",
+    },
+    validated: false,
+    reviewStatus: "needs_chau",
+    version: "0.1.0",
+  },
+  {
+    tag: "vi_l1_adverb_before_subject",
+    source: "grammar_rule",
+    cefr: "A2",
+    patternNameVi: "Trạng từ tần suất (always, usually) đứng sau chủ ngữ",
+    patternLabelEn: "Frequency adverb placement",
+    parentSummaryVi:
+      "Bạn đang học đặt “always, usually, sometimes” sau chủ ngữ — “I always go”, không phải “Always I go”.",
+    whyVi:
+      "Tiếng Việt mình đặt từ chỉ tần suất khá thoải mái, hay ở đầu câu: “Lúc nào tôi cũng đi”. Mang sang tiếng Anh, bạn hay nói “Always I go”. Tiếng Anh thường đặt các trạng từ này SAU chủ ngữ: “I always go”. Đây là điểm khác về trật tự, rất nhiều người Việt mình quen dần.",
+    howToHelpVi:
+      "Một mẫu dễ nhớ khi luyện cùng người thân: “chủ ngữ trước, always sau”. Nếu bạn nói “Always I go”, nhờ người thân nhắc lại tự nhiên — “you always go, I see”.",
+    encouragementVi:
+      "Câu của bạn đủ ý, chỉ là vị trí trạng từ khác. Nghe quen vài lần là tai bạn tự thấy “I always” nghe xuôi hơn.",
+    example: {
+      learnerSays: "Always I drink tea in the morning.",
+      naturalForm: "I always drink tea in the morning.",
+      glossVi:
+        "“Lúc nào tôi cũng uống trà buổi sáng” — tiếng Việt đặt tần suất lên đầu, nên bạn để “Always” trước chủ ngữ.",
+    },
+    validated: false,
+    reviewStatus: "needs_chau",
+    version: "0.1.0",
+  },
+  {
+    tag: "vi_l1_too_vs_very",
+    source: "grammar_rule",
+    cefr: "A2",
+    patternNameVi: "“Too” nghĩa là quá mức; muốn nhấn tích cực dùng “very”",
+    patternLabelEn: "too vs very",
+    parentSummaryVi:
+      "Bạn đang học rằng “too” mang nghĩa quá mức (có vấn đề), còn để khen thì dùng “very” — “very happy”, không phải “too happy”.",
+    whyVi:
+      "Tiếng Việt mình dùng “quá” cho cả khen lẫn chê: “đẹp quá!”, “nóng quá”. Tiếng Anh tách ra: “too” nghĩa là quá mức gây khó (too hot to drink), còn khen hay nhấn tích cực thì dùng “very” (very beautiful). Nên bạn hay nói “I’m too happy to meet you”. Đây là điểm tinh tế mà nhiều người Việt mình gặp.",
+    howToHelpVi:
+      "Mẹo nhớ khi luyện cùng người thân: “too là hơi tiêu cực, very là khen”. Nếu bạn nói “too happy” khi định khen, nhờ người thân nhắc lại tự nhiên — “very happy, yes!”.",
+    encouragementVi:
+      "Đây là sắc thái nhỏ — người nghe vẫn cảm được cảm xúc của bạn. Khi quen, bạn sẽ tự thấy “very” hợp với lời khen hơn.",
+    example: {
+      learnerSays: "I am too happy today.",
+      naturalForm: "I am very happy today.",
+      glossVi:
+        "“Hôm nay tôi vui quá” — tiếng Việt một chữ “quá”, nên bạn dùng “too” cho lời khen.",
+    },
+    validated: false,
+    reviewStatus: "needs_chau",
+    version: "0.1.0",
+  },
+  {
+    tag: "vi_l1_no_article_generic",
+    source: "grammar_rule",
+    cefr: "A2",
+    patternNameVi: "Danh từ trừu tượng nói chung không dùng “the”",
+    patternLabelEn: "No 'the' with abstract/generic nouns",
+    parentSummaryVi:
+      "Bạn đang học rằng danh từ trừu tượng nói chung không cần “the” — “Life is hard”, không phải “The life is hard”.",
+    whyVi:
+      "Khi mới học mạo từ, bạn dễ thêm “the” cho chắc ở mọi danh từ. Nhưng khi nói chung về điều trừu tượng — life, love, music, happiness — tiếng Anh không dùng “the”: “Life is hard”, “I love music”. Nên bạn hay nói “The life is hard”. Đây là mặt còn lại của việc làm quen với mạo từ, rất phổ biến với người Việt mình.",
+    howToHelpVi:
+      "Khi đọc cùng người thân, để ý các câu nói chung về cuộc sống, tình yêu, âm nhạc — chúng thường không có “the”. Nếu bạn thêm “the”, nhờ người thân nhắc lại tự nhiên — “life is hard, yeah”.",
+    encouragementVi:
+      "Thêm hay thiếu “the” gần như không cản người nghe hiểu. Cảm giác khi nào cần “the” đến dần qua đọc và nghe, không cần ép.",
+    example: {
+      learnerSays: "The life is beautiful.",
+      naturalForm: "Life is beautiful.",
+      glossVi:
+        "“Cuộc sống thật đẹp” — bạn thêm “the” cho chắc, nhưng nói chung về cuộc sống thì tiếng Anh bỏ “the”.",
+    },
+    validated: false,
+    reviewStatus: "needs_chau",
+    version: "0.1.0",
+  },
+  {
+    tag: "vi_l1_superlative_the",
+    source: "grammar_rule",
+    cefr: "A2",
+    patternNameVi: "Trước cấp cao nhất gần như luôn có “the”",
+    patternLabelEn: "the + superlative",
+    parentSummaryVi:
+      "Bạn đang học rằng cấp cao nhất gần như luôn đi với “the” — “the best”, “the tallest”.",
+    whyVi:
+      "Tiếng Việt mình diễn đạt cao nhất bằng “nhất”: “học sinh giỏi nhất” — không có mạo từ. Tiếng Anh lại gắn “the” trước cấp cao nhất: “the best student”. Nên bạn hay nói “She is best student”. Đây là một quy tắc nhỏ mà nhiều người Việt mình quen dần khi dùng so sánh.",
+    howToHelpVi:
+      "Mẹo gọn khi luyện cùng người thân: “nhất thì đi với the”. Nếu bạn nói “best student”, nhờ người thân nhắc lại tự nhiên — “the best student, yes!”.",
+    encouragementVi:
+      "Bạn đã dùng được cấp cao nhất — điều đó rất tốt. Thêm “the” chỉ là chạm hoàn thiện cuối cùng.",
+    example: {
+      learnerSays: "He is best student in class.",
+      naturalForm: "He is the best student in class.",
+      glossVi:
+        "“Cậu ấy là học sinh giỏi nhất lớp” — tiếng Việt dùng “nhất” không mạo từ, nên bạn bỏ “the”.",
+    },
+    validated: false,
+    reviewStatus: "needs_chau",
+    version: "0.1.0",
+  },
+  {
+    tag: "vi_l1_subject_gender",
+    source: "grammar_rule",
+    cefr: "A2",
+    patternNameVi: "Đại từ “he / she” phải khớp giới của người vừa nhắc",
+    patternLabelEn: "Subject pronoun gender agreement",
+    parentSummaryVi:
+      "Bạn đang học chọn “he / she” khớp giới của người vừa nói tới — tiếng Việt mình gọi theo quan hệ (anh, chị, cô…), không theo giới.",
+    whyVi:
+      "Tiếng Việt mình gọi người theo quan hệ và tuổi — “anh ấy”, “chị ấy”, “cô ấy” — chứ không buộc khớp giới như tiếng Anh. Nên khi đã nhắc “mẹ tôi”, bạn hay nói tiếp “He works…”. Tiếng Anh cần “She” cho người nữ, “He” cho người nam. Đây là điều rất nhiều người Việt mình lẫn vì tiếng mình vận hành khác.",
+    howToHelpVi:
+      "Khi kể chuyện người trong nhà bằng tiếng Anh với người thân, dừng một nhịp nhỏ để nhớ người đó là nam hay nữ. Nếu bạn nói nhầm, nhờ người thân nhắc lại tự nhiên — “she works there, right?”.",
+    encouragementVi:
+      "Đây là một trong những lỗi rất Việt Nam và hoàn toàn dễ hiểu. Để ý vài lần là bạn sẽ tự khớp he/she đúng.",
+    example: {
+      learnerSays: "My mother is a nurse. He works at night.",
+      naturalForm: "My mother is a nurse. She works at night.",
+      glossVi:
+        "“Mẹ tôi là y tá. … làm ca đêm” — tiếng Việt không buộc khớp giới ở đại từ, nên bạn dùng “He” cho mẹ.",
+    },
+    validated: false,
+    reviewStatus: "needs_chau",
+    version: "0.1.0",
+  },
+  {
+    tag: "vi_l1_future_adverb_bare",
+    source: "grammar_rule",
+    cefr: "A2",
+    patternNameVi: "Nói tương lai cần “will” trước động từ",
+    patternLabelEn: "Future needs 'will'",
+    parentSummaryVi:
+      "Bạn đang học thêm “will” khi nói về tương lai — “Tomorrow I will go”, không phải “Tomorrow I go”.",
+    whyVi:
+      "Tiếng Việt mình báo tương lai chỉ bằng từ chỉ thời gian: “Mai tôi đi” — động từ giữ nguyên, “sẽ” thường có thể bỏ. Tiếng Anh cần “will” trước động từ: “Tomorrow I will go”. Nên bạn hay nói “Tomorrow I go”. Đây là họ hàng gần với việc chia thì quá khứ — rất nhiều người Việt mình gặp.",
+    howToHelpVi:
+      "Mẹo gọn khi luyện cùng người thân: “nói chuyện mai hay tuần sau thì thêm will”. Nếu bạn quên, nhờ người thân nhắc lại tự nhiên — “oh, you will go tomorrow”.",
+    encouragementVi:
+      "Câu của bạn đủ ý nhờ từ chỉ thời gian — chỉ thiếu “will”. Quen mẫu “will + động từ” vài lần là tự nhiên.",
+    example: {
+      learnerSays: "Next week I visit my grandmother.",
+      naturalForm: "Next week I will visit my grandmother.",
+      glossVi:
+        "“Tuần sau tôi thăm bà” — tiếng Việt để từ chỉ thời gian làm việc, nên bạn bỏ “will”.",
+    },
+    validated: false,
+    reviewStatus: "needs_chau",
+    version: "0.1.0",
+  },
+  {
+    tag: "vi_l1_co_transfer",
+    source: "grammar_rule",
+    cefr: "A2",
+    patternNameVi: "“Có” trong tiếng Việt không phải lúc nào cũng là “has”",
+    patternLabelEn: "Vietnamese 'có' over-mapped to 'has'",
+    parentSummaryVi:
+      "Bạn đang học rằng “có” của tiếng Việt nhiều khi là “There is/are” hoặc “is/are”, không phải “has”.",
+    whyVi:
+      "Chữ “có” trong tiếng Việt rất đa năng. Khi bạn nói một nơi “có” gì, tiếng Anh dùng “There is/There are” — không phải “has”: “In my house has three rooms” nên là “There are three rooms in my house”. Khi mô tả tính chất, dùng “is/are”: “My city has very beautiful” nên là “My city is very beautiful”. Đây là một trong những lỗi rất đặc trưng của người Việt mình.",
+    howToHelpVi:
+      "Khi luyện cùng người thân, để ý: tả nơi chốn thì mở đầu bằng “There is/are…”. Nếu bạn nói “In my house has…”, nhờ người thân nhắc lại tự nhiên — “there are three rooms, nice!”.",
+    encouragementVi:
+      "“Có” đa năng là nét hay của tiếng Việt — bạn chỉ cần học cách tiếng Anh tách nó ra. Gặp vài lần là quen.",
+    example: {
+      learnerSays: "In my house has three bedrooms.",
+      naturalForm: "There are three bedrooms in my house.",
+      glossVi:
+        "“Nhà tôi có ba phòng ngủ” — bạn dịch “có” thành “has”, nhưng tả nơi chốn tiếng Anh dùng “There are”.",
+    },
+    validated: false,
+    reviewStatus: "needs_chau",
+    version: "0.1.0",
+  },
+  {
+    tag: "vi_l1_everyone_plural",
+    source: "grammar_rule",
+    cefr: "A2",
+    patternNameVi: "“everyone, someone, nobody” đi với động từ số ít",
+    patternLabelEn: "Indefinite pronouns take singular verb",
+    parentSummaryVi:
+      "Bạn đang học rằng “everyone, someone, nobody” nghe như nhiều người nhưng đi với động từ số ít — “everyone is”, không phải “everyone are”.",
+    whyVi:
+      "Nghĩa của “everyone” là “mọi người” nên rất tự nhiên khi bạn nghĩ đó là số nhiều và dùng “are”. Nhưng trong tiếng Anh, “everyone, someone, nobody” lại đi với động từ SỐ ÍT: “Everyone is here”. Đây là điểm hơi trái cảm giác, rất nhiều người Việt mình (và cả người học khác) gặp.",
+    howToHelpVi:
+      "Mẹo nhớ khi luyện cùng người thân: “every-, some-, no- đi với is”. Nếu bạn nói “everyone are”, nhờ người thân nhắc lại tự nhiên — “everyone is here, yes”.",
+    encouragementVi:
+      "Đây là quy tắc hơi ngược trực giác, nên nhầm là rất bình thường. Vài lần nghe là bạn quen.",
+    example: {
+      learnerSays: "Everyone are happy today.",
+      naturalForm: "Everyone is happy today.",
+      glossVi:
+        "“Mọi người đều vui hôm nay” — “mọi người” nghe như số nhiều, nên bạn dùng “are”.",
+    },
+    validated: false,
+    reviewStatus: "needs_chau",
+    version: "0.1.0",
+  },
+  {
+    tag: "vi_l1_time_expressions",
+    source: "grammar_rule",
+    cefr: "A2",
+    patternNameVi: "Giới từ thời gian theo nhóm: in buổi, on ngày, at giờ",
+    patternLabelEn: "Time prepositions (in/on/at)",
+    parentSummaryVi:
+      "Bạn đang học chọn giới từ thời gian theo nhóm — “in the morning”, “on Monday”, “at 7 o’clock”.",
+    whyVi:
+      "Tiếng Việt mình dùng giới từ thời gian rất gọn, gần như chỉ “vào” hoặc “lúc”: “vào buổi sáng”, “lúc 7 giờ”. Tiếng Anh chia theo nhóm: “in” cho buổi/tháng/năm, “on” cho ngày/thứ, “at” cho giờ. Nên bạn hay nói “in Monday” hay “in 7 o’clock”. Đây là phần giới từ mà người Việt mình cần thời gian để ngấm.",
+    howToHelpVi:
+      "Một mẹo khung khi luyện cùng người thân: “in buổi – on ngày – at giờ”. Nếu bạn nói nhầm, nhờ người thân nhắc lại tự nhiên — “at 7, on Monday, got it”.",
+    encouragementVi:
+      "Giới từ thời gian sai gần như không gây hiểu lầm về lúc nào. Cứ nghe và nói nhiều, ba nhóm in/on/at sẽ tự vào nếp.",
+    example: {
+      learnerSays: "I wake up in 6 o'clock.",
+      naturalForm: "I wake up at 6 o'clock.",
+      glossVi:
+        "“Tôi dậy lúc 6 giờ” — tiếng Việt một chữ “lúc”, nên bạn chọn “in” thay vì “at”.",
+    },
+    validated: false,
+    reviewStatus: "needs_chau",
+    version: "0.1.0",
+  },
+  {
+    tag: "vi_l1_another_vs_other",
+    source: "grammar_rule",
+    cefr: "A2",
+    patternNameVi: "“another” = một cái nữa (số ít); “other” = còn lại / khác",
+    patternLabelEn: "another vs other",
+    parentSummaryVi:
+      "Bạn đang học phân biệt “another” (một cái nữa) và “other” (cái còn lại / khác) — tiếng Việt mình hay dùng chung “khác”.",
+    whyVi:
+      "Tiếng Việt mình dùng “khác” khá linh hoạt: “cái khác”, “một cái khác”. Tiếng Anh tách ra: “another” = thêm một cái nữa, số ít (another cup); “other” = những cái còn lại / khác (the other students). Nên bạn hay nói “I want other cup”. Đây là điểm nhỏ mà nhiều người Việt mình quen dần qua dùng.",
+    howToHelpVi:
+      "Mẹo gọn khi luyện cùng người thân: “thêm một cái nữa thì another”. Nếu bạn nói “other cup”, nhờ người thân nhắc lại tự nhiên — “another cup? sure”.",
+    encouragementVi:
+      "Nhầm another/other rất hiếm khi gây khó hiểu. Dùng vài lần trong câu thật là bạn tự phân biệt được.",
+    example: {
+      learnerSays: "Can I have other cup of tea?",
+      naturalForm: "Can I have another cup of tea?",
+      glossVi:
+        "“Cho tôi một tách trà khác nữa nhé?” — tiếng Việt dùng “khác”, nên bạn chọn “other” thay vì “another”.",
+    },
+    validated: false,
+    reviewStatus: "needs_chau",
+    version: "0.1.0",
+  },
+  {
+    tag: "vi_l1_by_vs_with",
+    source: "grammar_rule",
+    cefr: "A2",
+    patternNameVi: "“by” cho phương tiện/tác nhân; “with” cho công cụ/đi cùng",
+    patternLabelEn: "by vs with",
+    parentSummaryVi:
+      "Bạn đang học phân biệt “by” (phương tiện, người làm) và “with” (công cụ, đi cùng) — tiếng Việt mình hay dùng chung “bằng”.",
+    whyVi:
+      "Tiếng Việt mình dùng “bằng” cho cả hai: “đi bằng xe”, “viết bằng bút”. Tiếng Anh tách ra: “by” cho phương tiện hoặc người làm (by car, written by her), “with” cho công cụ hoặc đi cùng (written with a pen). Nên bạn hay nói “write by a pen”. Đây là cặp giới từ rất nhiều người Việt mình lẫn.",
+    howToHelpVi:
+      "Mẹo nhớ khi luyện cùng người thân: “đi lại thì by, cầm trên tay thì with”. Nếu bạn nói nhầm, nhờ người thân nhắc lại tự nhiên — “with a pen, yes”.",
+    encouragementVi:
+      "Cả hai đều dịch là “bằng” nên lẫn là chuyện thường. Gặp trong câu thật vài lần, bạn sẽ tự thấy cái nào hợp.",
+    example: {
+      learnerSays: "He wrote the letter by a pen.",
+      naturalForm: "He wrote the letter with a pen.",
+      glossVi:
+        "“Anh ấy viết thư bằng bút” — tiếng Việt một chữ “bằng”, nên bạn dùng “by” thay vì “with” cho công cụ.",
     },
     validated: false,
     reviewStatus: "needs_chau",

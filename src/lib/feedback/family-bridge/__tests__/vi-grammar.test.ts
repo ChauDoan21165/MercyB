@@ -26,8 +26,9 @@ const PILOT_APPROVED_TAGS = [
   "vi_l1_no_aux_negation",
 ] as const;
 
-/** Batch 2a — appended at validated:false, awaiting Chau's sign-off. */
-const BATCH_2A_PENDING_TAGS = [
+/** Batches 2a + 2b — appended at validated:false, awaiting Chau's sign-off. */
+const PENDING_TAGS = [
+  // 2a
   "vi_l1_there_are_singular",
   "vi_l1_a_vs_an_vowel",
   "vi_l1_possessive_gender",
@@ -41,6 +42,20 @@ const BATCH_2A_PENDING_TAGS = [
   "vi_l1_countable_much",
   "vi_l1_some_vs_any",
   "vi_l1_do_support_3ps",
+  // 2b
+  "vi_l1_generic_plural",
+  "vi_l1_double_negative",
+  "vi_l1_adverb_before_subject",
+  "vi_l1_too_vs_very",
+  "vi_l1_no_article_generic",
+  "vi_l1_superlative_the",
+  "vi_l1_subject_gender",
+  "vi_l1_future_adverb_bare",
+  "vi_l1_co_transfer",
+  "vi_l1_everyone_plural",
+  "vi_l1_time_expressions",
+  "vi_l1_another_vs_other",
+  "vi_l1_by_vs_with",
 ] as const;
 
 /** VN prose fields that must follow the locked family-bridge voice. */
@@ -81,9 +96,9 @@ describe("VI_GRAMMAR_FAMILY_BRIDGE", () => {
       expect(e?.validated).toBe(true);
       expect(e?.reviewStatus).toBe("approved");
     }
-    for (const tag of BATCH_2A_PENDING_TAGS) {
+    for (const tag of PENDING_TAGS) {
       const e = byTag(tag);
-      expect(e, `missing batch-2a tag ${tag}`).toBeDefined();
+      expect(e, `missing pending tag ${tag}`).toBeDefined();
       expect(e?.validated).toBe(false);
       expect(e?.reviewStatus).toBe("needs_chau");
     }
