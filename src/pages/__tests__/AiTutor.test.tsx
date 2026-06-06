@@ -835,6 +835,76 @@ describe("AiTutor four-tab seed flow", () => {
     });
   });
 
+  it("sustains the hat/sun scenario with Chau's exact learner answer (FU2 + FU3, never a one-answer move-on)", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    // Seed is the coherent summer sentence; only the tense was fixed.
+    await correctSentence(
+      "I buy a hat yesterday because summer is coming and it is going to be very sunny.",
+      "I bought a hat yesterday because summer is coming and it is going to be very sunny.",
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    // Follow-up 1 — the scripted lead-in off the seed.
+    await speakCurrentTarget(
+      "I bought a hat yesterday because summer is coming and it is going to be very sunny.",
+    );
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent(
+      "Why do you need the hat?",
+    );
+
+    // Learner answers with Chau's EXACT sentence → Follow-up 2, NOT a move-on
+    // and NOT the unclear-sentence clarification.
+    await speakCurrentTarget(
+      "I need a hat because in the summer the sun is very strong with sunlight so it may burn my skin",
+    );
+    await waitFor(() => {
+      const text = screen.getByTestId("ai-tutor-speak-follow-up").textContent ?? "";
+      expect(text).not.toMatch(/Do you want to practice another sentence/);
+      expect(text).not.toMatch(/That sentence is hard to follow/);
+      expect(text).not.toBe("Why do you need the hat?");
+    });
+
+    // Another answer → Follow-up 3, still not a move-on.
+    await speakCurrentTarget("I will wear it at the beach with my friends.");
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent(
+        "Do you want to practice another sentence?",
+      );
+    });
+  });
+
+  it("asks for a simpler sentence when the Speak seed is a garbled grammar-only fix (Issue 1)", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    // Only buy→bought is fixed; the corrected sample is still word-salad.
+    await correctSentence(
+      "I buy a pet yesterday bike around a lot.",
+      "I bought a pet yesterday bike around a lot.",
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    // Learner echoes the garbled model back → Mercy asks for a clearer sentence
+    // instead of drilling it with on-topic trivia.
+    await speakCurrentTarget("I bought a pet yesterday bike around a lot.");
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent(
+        "That sentence is hard to follow.",
+      );
+    });
+
+    // Escape hatch: once the learner says a CLEAR sentence, the conversation
+    // follows their words again (the gate needs BOTH seed and reply unclear).
+    await speakCurrentTarget("I bought a dog at the shop.");
+    await waitFor(() => {
+      const text = screen.getByTestId("ai-tutor-speak-follow-up").textContent ?? "";
+      expect(text).not.toMatch(/That sentence is hard to follow/);
+      expect(text.toLowerCase()).toMatch(/dog|shop/);
+    });
+  });
+
   it("sends a non-canned hat-biking correction into Speak and asks an English follow-up", async () => {
     Object.defineProperty(window, "Audio", {
       configurable: true,

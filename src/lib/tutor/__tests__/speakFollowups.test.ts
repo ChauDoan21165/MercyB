@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   SPEAK_FOLLOW_UP_DEPTH_CAP,
   SPEAK_FOLLOW_UP_PIVOT,
+  assessSpeakSentenceCoherence,
   calculateSentenceMatchPercent,
   extractSalientKeyword,
   resolveSpeakFollowUpTopicId,
@@ -182,6 +183,37 @@ describe("speakFollowups", () => {
       });
       expect(reply.isPivot).toBe(false);
       expect(reply.question).toBe("Who cooked dinner?");
+    });
+  });
+
+  // ── Issue 1: coherence gate — don't drill a garbled grammar-only fix ───────
+
+  describe("assessSpeakSentenceCoherence", () => {
+    it("flags a grammar-only fix that is still word-salad (Chau's S1 case)", () => {
+      // Only `buy→bought` was fixed; the sentence is still nonsensical: a bare
+      // noun ("bike") dangles right after the time adverb with no connector.
+      const result = assessSpeakSentenceCoherence("I bought a pet yesterday bike around a lot.");
+      expect(result.coherent).toBe(false);
+      expect(result.reason).toContain("yesterday->bike");
+    });
+
+    it("passes well-formed sentences, including legitimate time-adverb usage", () => {
+      const coherent = [
+        "I bought a hat yesterday.",
+        "I bought a hat yesterday because summer is coming and it is going to be very sunny.",
+        "I saw him yesterday morning.",
+        "We will meet tomorrow afternoon.",
+        "I went to the market yesterday and bought food.",
+        "I need a hat because in the summer the sun is very strong with sunlight so it may burn my skin.",
+        "I will wear it at the beach.",
+        "The weather is nice today.",
+      ];
+      for (const sentence of coherent) {
+        expect(assessSpeakSentenceCoherence(sentence)).toEqual({
+          coherent: true,
+          reason: "no_incoherence_signal",
+        });
+      }
     });
   });
 });

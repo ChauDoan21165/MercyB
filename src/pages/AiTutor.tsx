@@ -70,6 +70,7 @@ import {
   type LearningEventProgressSummary,
 } from "@/lib/tutor/learningEventSummary";
 import {
+  assessSpeakSentenceCoherence,
   getSpeakFollowUpTopicId,
   resolveSpeakFollowUpTopicId,
   selectSpeakFollowUpByTopicId,
@@ -204,6 +205,11 @@ const LOGIC_STARTER_PROMPTS = [
 
 const SPEAK_STANCE_ACKNOWLEDGMENT = "I hear you.";
 const SPEAK_STANCE_CLARIFICATION = "Can you say that another way?";
+// Issue 1: the corrected sentence is well-formed in tense but still nonsensical
+// (a grammar-only fix left a word-salad). Don't drill it as a good model — ask
+// for a clearer sentence instead of pretending the tense fix was enough.
+const SPEAK_STANCE_SEED_UNCLEAR =
+  "That sentence is hard to follow. Can you say what you mean in one simple sentence?";
 const SPEAK_STANCE_PAUSE = "I’m sorry that happened. Let’s pause correction for a moment. Are you okay to continue?";
 const STEP7_AZURE_BATCH_ENABLED =
   (import.meta as ImportMeta & { env?: Record<string, string> }).env
@@ -1004,6 +1010,23 @@ export default function AiTutorPage() {
         return {
           ...current,
           currentQuestion: SPEAK_STANCE_CLARIFICATION,
+          currentIsPivot: false,
+        };
+      }
+
+      // Issue 1 — coherence gate. If the practice TARGET is a grammar-only fix
+      // that is still nonsensical AND the learner only echoed it back (no
+      // clearer sentence of their own), ask for a simpler sentence instead of
+      // drilling the garbled sample with on-topic trivia. The dual condition
+      // means a coherent seed — or any coherent learner sentence — proceeds
+      // normally, so well-formed practice is never blocked.
+      if (
+        !assessSpeakSentenceCoherence(targetSentence).coherent &&
+        !assessSpeakSentenceCoherence(spoken).coherent
+      ) {
+        return {
+          ...current,
+          currentQuestion: SPEAK_STANCE_SEED_UNCLEAR,
           currentIsPivot: false,
         };
       }
