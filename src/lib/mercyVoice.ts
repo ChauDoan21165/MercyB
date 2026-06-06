@@ -23,7 +23,7 @@ interface FetchCloudTtsArgs {
 export interface CloudTtsUrl {
   audioUrl: string;
   cached: boolean;
-  provider?: "google" | "elevenlabs";
+  provider?: "azure" | "elevenlabs";
   fallbackReason?: string;
 }
 
@@ -45,7 +45,7 @@ export async function fetchCloudTtsUrl(
     const { data, error } = await supabase.functions.invoke<{
       audioUrl?: string;
       cached?: boolean;
-      provider?: "google" | "elevenlabs";
+      provider?: "azure" | "elevenlabs";
       fallback_reason?: string;
       code?: string;
       error?: string;
