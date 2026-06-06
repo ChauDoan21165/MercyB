@@ -150,7 +150,7 @@ export default function PronunciationDrillsPage() {
                   >
                     <div className="flex flex-wrap items-baseline gap-2">
                       <span className="text-base font-black text-slate-900">{p.target}</span>
-                      <span className="text-xs font-bold text-slate-400">vs</span>
+                      <span className="text-xs font-bold text-slate-500">vs</span>
                       <span className="text-base font-bold text-slate-500">{p.contrast}</span>
                     </div>
                     <p className="mt-0.5 text-xs font-semibold leading-5 text-slate-600">
