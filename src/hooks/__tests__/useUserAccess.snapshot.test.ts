@@ -87,23 +87,54 @@ vi.mock("@/lib/supabaseClient", () => {
   };
 });
 
-// ---- authService mock (tier comes from entitlement now) ----
-vi.mock("@/lib/authService", () => {
+// ---- authService mock: REAL resolveEntitlementTier / entitlementIsPremium ----
+// Un-mocked via importOriginal so entitlement STATUS flows through the real
+// premium gate. The previous status-blind mock (tier-string → levelN, ignoring
+// is_premium / status) is exactly what hid the hasPremium false-green: it could
+// never have caught an expired-premium leak. Only fetchCurrentEntitlement is
+// mocked (it does a network/Supabase call); __setEntitlement still accepts the
+// lightweight test shape and translates it into a real BackendEntitlement so the
+// real resolver runs against realistic input. is_premium derives from the named
+// premium tiers unless set explicitly, so an expired/canceled case is just
+// {tier:"premium_month", is_premium:false, status:"canceled"}.
+vi.mock("@/lib/authService", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/lib/authService")>();
+
   let entitlement: MockEntitlement = null;
 
   const __setEntitlement = (next: MockEntitlement) => {
     entitlement = next;
   };
 
-  return {
-    fetchCurrentEntitlement: vi.fn(async () => entitlement),
-    resolveEntitlementTier: vi.fn((ent: MockEntitlement) => {
-      const raw = ent?.tier ?? "level0";
+  const toBackendEntitlement = (input: MockEntitlement) => {
+    if (!input || typeof input !== "object") return null;
+    const i = input as Record<string, unknown>;
+    const tier = typeof i.tier === "string" ? i.tier : undefined;
+    const isPremium =
+      typeof i.is_premium === "boolean"
+        ? i.is_premium
+        : tier === "premium_month" || tier === "premium_year";
+    const status =
+      typeof i.status === "string" ? i.status : isPremium ? "active" : "canceled";
+    const tierId =
+      typeof i.tier_id === "string"
+        ? i.tier_id
+        : tier && tier !== "level0"
+          ? tier
+          : null;
+    return {
+      is_premium: isPremium,
+      status,
+      source: typeof i.source === "string" ? i.source : "stripe",
+      expires_at: null,
+      plan_name: typeof i.plan_name === "string" ? i.plan_name : null,
+      tier_id: tierId,
+    };
+  };
 
-      if (raw === "premium_month") return "premium_month";
-      if (raw === "premium_year") return "premium_year";
-      return "level0";
-    }),
+  return {
+    ...actual,
+    fetchCurrentEntitlement: vi.fn(async () => toBackendEntitlement(entitlement)),
     __mock: { __setEntitlement },
   };
 });
@@ -232,9 +263,16 @@ describe("useUserAccess snapshots - baseline", () => {
     const { result } = renderUseUserAccess();
 
     await waitFor(() => {
-      expect(result.current.tier).toBe("premium_month");
+      expect(result.current.tier).toBe("level1");
       expect(result.current.isLoading).toBe(false);
     });
+
+    // Revenue-critical guard: a real Premium subscriber must read hasPremium
+    // true so ParentView (L6) does NOT show the paywall. stableSnapshot omits
+    // hasPremium, so assert it explicitly — this is the check the old test
+    // lacked.
+    expect(result.current.hasPremium).toBe(true);
+    expect(result.current.canAccessPremium()).toBe(true);
 
     expect(stableSnapshot(result.current)).toMatchInlineSnapshot(`
       {
@@ -245,7 +283,7 @@ describe("useUserAccess snapshots - baseline", () => {
         "isHighAdmin": false,
         "isLoading": false,
         "loading": false,
-        "tier": "premium_month",
+        "tier": "level1",
       }
     `);
   });
@@ -263,9 +301,12 @@ describe("useUserAccess snapshots - baseline", () => {
     const { result } = renderUseUserAccess();
 
     await waitFor(() => {
-      expect(result.current.tier).toBe("premium_year");
+      expect(result.current.tier).toBe("level9");
       expect(result.current.isLoading).toBe(false);
     });
+
+    expect(result.current.hasPremium).toBe(true);
+    expect(result.current.canAccessPremium()).toBe(true);
 
     expect(stableSnapshot(result.current)).toMatchInlineSnapshot(`
       {
@@ -276,7 +317,7 @@ describe("useUserAccess snapshots - baseline", () => {
         "isHighAdmin": false,
         "isLoading": false,
         "loading": false,
-        "tier": "premium_year",
+        "tier": "level9",
       }
     `);
   });
@@ -412,6 +453,48 @@ describe("useUserAccess admin vs non-admin", () => {
     expect(result.current.isHighAdmin).toBe(false);
     expect(result.current.adminLevel).toBe(0);
     expect(result.current.tier).toBe("level0");
+    // Inverse fail-open guard: a free user must read hasPremium === false.
+    // This is the exact field ParentView (L6) gates on; the old test never
+    // asserted the negative, which let the always-false bug hide.
+    expect(result.current.hasPremium).toBe(false);
+    expect(result.current.canAccessPremium()).toBe(false);
+  });
+
+  it("expired premium (is_premium:false / canceled) reads hasPremium false — inverse fail-open guard", async () => {
+    __setAuth({
+      user: { email: "expired-premium@example.com" },
+      isLoading: false,
+    });
+
+    __setProfilesResult({
+      data: {
+        email: "expired-premium@example.com",
+        is_admin: false,
+        admin_level: 0,
+      },
+      error: null,
+    });
+
+    // A lapsed subscriber: the provider tier still says premium_month, but the
+    // entitlement is no longer premium (is_premium false / status canceled).
+    // With the resolver UN-MOCKED, this flows through the REAL gate
+    // (entitlementIsPremium: is_premium + active/trialing) and MUST resolve to
+    // level0 → hasPremium false. A status-blind mock could never catch this.
+    __setEntitlement({
+      tier: "premium_month",
+      is_premium: false,
+      status: "canceled",
+    });
+
+    const { result } = renderUseUserAccess();
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    expect(result.current.isAuthenticated).toBe(true);
+    expect(result.current.tier).toBe("level0");
+    expect(result.current.hasPremium).toBe(false);
     expect(result.current.canAccessPremium()).toBe(false);
   });
 
@@ -458,7 +541,7 @@ describe("useUserAccess admin vs non-admin", () => {
     expect(result.current.isAdmin).toBe(false);
     expect(result.current.isHighAdmin).toBe(false);
     expect(result.current.adminLevel).toBe(0);
-    expect(result.current.tier).toBe("premium_month");
+    expect(result.current.tier).toBe("level1");
     expect(result.current.canAccessPremium()).toBe(true);
   });
 
@@ -482,7 +565,7 @@ describe("useUserAccess admin vs non-admin", () => {
     expect(result.current.isAdmin).toBe(false);
     expect(result.current.isHighAdmin).toBe(false);
     expect(result.current.adminLevel).toBe(0);
-    expect(result.current.tier).toBe("premium_year");
+    expect(result.current.tier).toBe("level9");
     expect(result.current.canAccessPremium()).toBe(true);
   });
 });
@@ -672,7 +755,7 @@ describe("useUserAccess corrupted profile rows and malformed entitlement payload
       adminLevel: 0,
       isAuthenticated: true,
       isDemoMode: false,
-      tier: "premium_month",
+      tier: "level1",
       loading: false,
       isLoading: false,
     });
@@ -707,7 +790,7 @@ describe("useUserAccess auth-loaded but partially broken downstream data", () =>
 
     expect(result.current.isAdmin).toBe(false);
     expect(result.current.adminLevel).toBe(0);
-    expect(result.current.tier).toBe("premium_year");
+    expect(result.current.tier).toBe("level9");
     expect(result.current.canAccessPremium()).toBe(true);
   });
 
@@ -781,7 +864,7 @@ describe("useUserAccess auth-loaded but partially broken downstream data", () =>
     });
 
     expect(result.current.isAuthenticated).toBe(true);
-    expect(result.current.tier).toBe("premium_month");
+    expect(result.current.tier).toBe("level1");
     expect(result.current.canAccessPremium()).toBe(true);
   });
 });
