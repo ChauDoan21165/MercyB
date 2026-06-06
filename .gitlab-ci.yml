@@ -104,29 +104,47 @@ variables:
     # [B3 builds-reaper] Bound disk on the macOS shell runners. Every job gets a
     # unique GIT_CLONE_PATH ($CI_BUILDS_DIR/$CI_PIPELINE_ID/$CI_JOB_ID/...) and the
     # runner never auto-cleans custom build dirs, so full checkouts + their
-    # node_modules accumulate until disk fills (mac-runner-3). Prune top-level
-    # pipeline dirs older than 24h, NEVER the current pipeline. Numeric-name match
+    # node_modules accumulate until disk fills. Because the clone path is unique
+    # per job and never reused, a non-current pipeline dir is dead weight the
+    # moment its pipeline ends — safe to prune aggressively. Numeric-name match
     # scopes this to MercyB's GIT_CLONE_PATH layout (won't touch other projects'
-    # default build dirs). Runs BEFORE `npm ci`, so it can't race this job's
-    # cache-save (GitLab archives node_modules/ AFTER after_script). Darwin-only:
-    # the Linux fallback runs on an ephemeral FS. Default age is 24h; tune via
-    # REAP_MTIME (find -mtime value, in days).
+    # default build dirs) and we NEVER touch the current pipeline. Runs BEFORE
+    # `npm ci`, so it can't race this job's cache-save (GitLab archives
+    # node_modules/ AFTER after_script). Darwin-only: the Linux fallback runs on
+    # an ephemeral FS.
+    #
+    # Two prune triggers (a single day of pipelines filled the small-disk
+    # runner-2 / "the Air" overnight under the old 24h age — down to 119Mi free):
+    #   1. AGE — prune non-current pipeline dirs older than REAP_AGE_MIN MINUTES
+    #      (default 120 ≈ 2h). Uses `find -mmin`, so the knob is minutes, not the
+    #      old -mtime days (2h isn't expressible in -mtime). Tune via REAP_AGE_MIN.
+    #   2. DISK PRESSURE — if the builds volume is at/above REAP_FULL_PCT used%
+    #      (default 90), ignore the age floor and reap EVERY non-current pipeline
+    #      dir. Hard backstop for a fast overnight fill on a small disk.
     #
     # DRY-RUN BY DEFAULT — this is the first destructive filesystem op on CI
-    # infra, so it earns one clean dry-run: it logs CI_BUILDS_DIR + every target
-    # it WOULD remove and fires NO rm. After Chau eyeballs that CI_BUILDS_DIR
-    # resolved correctly and every target is genuinely stale, flip to live by
-    # setting the CI/CD variable REAP_LIVE=1 (or changing the default below).
+    # infra, so it earns one clean dry-run: it logs CI_BUILDS_DIR, the resolved
+    # trigger, and every target it WOULD remove, and fires NO rm. After Chau
+    # eyeballs that CI_BUILDS_DIR resolved correctly and every target is genuinely
+    # a stale/non-current pipeline dir, flip to live by setting CI/CD variable
+    # REAP_LIVE=1 (or changing the default below).
     - |
       if [ -n "$CI_BUILDS_DIR" ] && [ "$(uname -s)" = "Darwin" ]; then
-        REAP_AGE="${REAP_MTIME:-+0}"
+        REAP_AGE_MIN="${REAP_AGE_MIN:-120}"
+        REAP_FULL_PCT="${REAP_FULL_PCT:-90}"
         REAP_MODE="dry-run"; [ "${REAP_LIVE:-0}" = "1" ] && REAP_MODE="live"
-        echo "[B3 builds-reaper] CI_BUILDS_DIR=$CI_BUILDS_DIR current=$CI_PIPELINE_ID age=$REAP_AGE mode=$REAP_MODE runner=${CI_RUNNER_DESCRIPTION:-unknown}"
-        STALE="$(find "$CI_BUILDS_DIR" -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' ! -name "$CI_PIPELINE_ID" -mtime "$REAP_AGE" -print 2>/dev/null)"
+        USED_PCT="$(df -P "$CI_BUILDS_DIR" 2>/dev/null | awk 'NR==2 {gsub(/%/,"",$5); print $5}')"
+        if [ -n "$USED_PCT" ] && [ "$USED_PCT" -ge "$REAP_FULL_PCT" ]; then
+          REAP_TRIGGER="disk-pressure(${USED_PCT}%>=${REAP_FULL_PCT}%)"; FIND_AGE="-mmin +0"
+        else
+          REAP_TRIGGER="age(>${REAP_AGE_MIN}min)"; FIND_AGE="-mmin +$REAP_AGE_MIN"
+        fi
+        echo "[B3 builds-reaper] CI_BUILDS_DIR=$CI_BUILDS_DIR current=$CI_PIPELINE_ID used=${USED_PCT:-?}% trigger=$REAP_TRIGGER mode=$REAP_MODE runner=${CI_RUNNER_DESCRIPTION:-unknown}"
+        STALE="$(find "$CI_BUILDS_DIR" -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' ! -name "$CI_PIPELINE_ID" $FIND_AGE -print 2>/dev/null)"
         if [ -z "$STALE" ]; then
-          echo "[B3 builds-reaper] no stale (>24h) pipeline build dirs found — nothing to do"
+          echo "[B3 builds-reaper] no prunable pipeline build dirs (trigger=$REAP_TRIGGER) — nothing to do"
         elif [ "$REAP_MODE" = "live" ]; then
-          echo "[B3 builds-reaper] LIVE — removing stale pipeline build dirs:"
+          echo "[B3 builds-reaper] LIVE — removing pipeline build dirs (trigger=$REAP_TRIGGER):"
           echo "$STALE"
           echo "$STALE" | while IFS= read -r d; do [ -n "$d" ] && rm -rf -- "$d"; done 2>/dev/null || true
         else
