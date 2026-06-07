@@ -5,6 +5,7 @@ import {
   assessSpeakSentenceCoherence,
   calculateSentenceMatchPercent,
   extractSalientKeyword,
+  isSpeakTranscriptUnclearForFollowUp,
   resolveSpeakFollowUpTopicId,
   selectSpeakFollowUp,
   selectSpeakFollowUpByTopicId,
@@ -251,6 +252,25 @@ describe("speakFollowups", () => {
       expect(extractSalientKeyword("The weather is nice today.")).toBe("weather");
       // No concrete content word → null (degrades to "that", never worse).
       expect(extractSalientKeyword("I am very tired.")).toBeNull();
+    });
+
+    it("does not promote unsafe STT fragments into salience questions", () => {
+      expect(extractSalientKeyword("I'm going to buy a lot.")).toBeNull();
+      expect(extractSalientKeyword("I am from Canada.")).toBeNull();
+
+      const selection = selectSpeakFollowUpByTopicId("topic-shopping", {
+        askedQuestions: ["What do you want to buy?"],
+        turnsOnTopic: 1,
+        learnerText: "I bought ahead yesterday we got this summer I'm going to buy a lot",
+      });
+
+      expect(isSpeakTranscriptUnclearForFollowUp(
+        "I bought ahead yesterday we got this summer I'm going to buy a lot",
+      )).toBe(true);
+      expect(selection.question).not.toBe("Why do you want to buy the i'm?");
+      expect(selection.question).not.toBe("What size or color works for the canada?");
+      expect(selection.question.toLowerCase()).not.toContain("the i'm");
+      expect(selection.question.toLowerCase()).not.toContain("the canada");
     });
 
     it("follows an arbitrary (non-bucket) topic for 4+ rounds, referencing the learner's words, no repeats, no premature pivot", () => {

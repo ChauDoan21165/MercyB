@@ -72,6 +72,7 @@ import {
 import {
   assessSpeakSentenceCoherence,
   getSpeakFollowUpTopicId,
+  isSpeakTranscriptUnclearForFollowUp,
   resolveSpeakFollowUpTopicId,
   selectSpeakFollowUpByTopicId,
   type SpeakFollowUpSelection,
@@ -210,6 +211,8 @@ const SPEAK_STANCE_CLARIFICATION = "Can you say that another way?";
 // for a clearer sentence instead of pretending the tense fix was enough.
 const SPEAK_STANCE_SEED_UNCLEAR =
   "That sentence is hard to follow. Can you say what you mean in one simple sentence?";
+const SPEAK_TRANSCRIPT_UNCLEAR =
+  "I didn't catch that clearly. Can you say it again?";
 const SPEAK_STANCE_PAUSE = "I’m sorry that happened. Let’s pause correction for a moment. Are you okay to continue?";
 const GRAMMAR_VOICE_EMPTY_MESSAGE =
   "Mercy chưa nghe rõ. Bạn thử nói lại hoặc gõ câu vào ô nhé.";
@@ -1061,6 +1064,14 @@ export default function AiTutorPage() {
         return {
           ...current,
           currentQuestion: SPEAK_STANCE_SEED_UNCLEAR,
+          currentIsPivot: false,
+        };
+      }
+
+      if (isSpeakTranscriptUnclearForFollowUp(spoken)) {
+        return {
+          ...current,
+          currentQuestion: SPEAK_TRANSCRIPT_UNCLEAR,
           currentIsPivot: false,
         };
       }
