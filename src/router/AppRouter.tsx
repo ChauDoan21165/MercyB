@@ -41,6 +41,7 @@ import LessonUiLangToggle, {
 import RequireAal2 from "@/components/auth/RequireAal2";
 import { WebOnlyRoute } from "@/router/WebOnlyRoute";
 import { ReviewNavEntry } from "@/features/review";
+import ParentNavEntry from "@/components/parent-view/ParentNavEntry";
 
 const MB_ROUTER_VERSION = "2026-04-11-app-router-room-alias-hardening";
 
@@ -680,6 +681,9 @@ function AppHeroShell() {
                 <LessonUiLangToggle value={uiLang} onChange={setUiLang} />
                 {/* Lane D — self-gating; renders null when FEATURE_REVIEW off. */}
                 <ReviewNavEntry />
+                {/* L6 Parent view — self-gating; renders only for signed-in
+                    users. Access is paywall-gated inside ParentView. */}
+                <ParentNavEntry />
                 {isLoading ? (
                   <div style={authStatusPill} aria-live="polite">
                     <span style={statusDot} />
