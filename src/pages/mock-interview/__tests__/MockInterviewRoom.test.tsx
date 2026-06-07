@@ -18,8 +18,13 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent, waitFor, act } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 
-const { flagState, getPromptsMock, startSessionMock } = vi.hoisted(() => ({
+const { flagState, accessState, getPromptsMock, startSessionMock } = vi.hoisted(() => ({
   flagState: { enabled: false } as { enabled: boolean },
+  accessState: {
+    hasPremium: true,
+    isLoading: false,
+    loading: false,
+  } as { hasPremium: boolean; isLoading: boolean; loading: boolean },
   getPromptsMock: vi.fn(),
   startSessionMock: vi.fn(),
 }));
@@ -28,15 +33,19 @@ vi.mock("@/hooks/useFeatureFlag", () => ({
   useFeatureFlag: () => ({ enabled: flagState.enabled, loading: false }),
 }));
 
-vi.mock("@/lib/useEntitlements", () => ({
-  useEntitlements: () => ({
-    ent: { is_premium: true, status: "active" },
-    loading: false,
-  }),
+vi.mock("@/hooks/useUserAccess", () => ({
+  useUserAccess: () => accessState,
 }));
 
 vi.mock("@/lib/mock-interview/rateLimit", () => ({
-  checkGate: () => ({ allowed: true, used: 0, limit: 99, resetsAt: "" }),
+  checkGate: ({ isPaid, isTrial }: { isPaid: boolean; isTrial: boolean }) =>
+    isPaid || isTrial
+      ? { allowed: true, reason: "paid" }
+      : {
+          allowed: false,
+          reason: "free_limit_hit",
+          resetsAt: Date.now() + 7 * 24 * 60 * 60 * 1000,
+        },
   recordStart: vi.fn(),
 }));
 
@@ -73,6 +82,29 @@ vi.mock("@/lib/interviewPrompts/telemetry", () => ({
 }));
 
 import MockInterviewRoom from "../MockInterviewRoom";
+import {
+  resolveEntitlementTier,
+  type BackendEntitlement,
+} from "@/lib/authService";
+
+const entitlement = (overrides: Partial<BackendEntitlement>): BackendEntitlement => ({
+  is_premium: false,
+  source: "stripe",
+  status: "inactive",
+  expires_at: null,
+  current_period_end: null,
+  plan_name: null,
+  tier_id: null,
+  price_id: null,
+  cancel_at_period_end: null,
+  ...overrides,
+});
+
+function setAccessFromEntitlement(ent: BackendEntitlement | null) {
+  accessState.hasPremium = resolveEntitlementTier(ent) !== "level0";
+  accessState.isLoading = false;
+  accessState.loading = false;
+}
 
 function renderRoom(scenarioId = "software_junior_intro") {
   return render(
@@ -97,11 +129,48 @@ function renderRoom(scenarioId = "software_junior_intro") {
 
 beforeEach(() => {
   flagState.enabled = false;
+  setAccessFromEntitlement(entitlement({
+    is_premium: true,
+    status: "active",
+    tier_id: "premium_year",
+    current_period_end: "2027-01-01T00:00:00Z",
+    expires_at: "2027-01-01T00:00:00Z",
+  }));
   getPromptsMock.mockReset();
   startSessionMock.mockReset();
   startSessionMock.mockResolvedValue({
     kind: "allowed",
     sessionId: "session-1",
+  });
+});
+
+describe("MockInterviewRoom — entitlement gate", () => {
+  it("pro user with active subscription and future period_end is not locally gated", async () => {
+    setAccessFromEntitlement(entitlement({
+      is_premium: true,
+      status: "active",
+      tier_id: "premium_year",
+      current_period_end: "2027-01-01T00:00:00Z",
+      expires_at: "2027-01-01T00:00:00Z",
+    }));
+
+    renderRoom();
+
+    expect(await screen.findByText(/Bắt đầu phỏng vấn/)).toBeInTheDocument();
+    expect(screen.queryByText(/dùng hết phỏng vấn miễn phí/i)).not.toBeInTheDocument();
+    expect(screen.queryByTestId("mock-interview-free-tier-badge")).not.toBeInTheDocument();
+  });
+
+  it("non-pro user is locally gated", async () => {
+    setAccessFromEntitlement(entitlement({
+      is_premium: false,
+      status: "inactive",
+    }));
+
+    renderRoom();
+
+    expect(await screen.findByText(/Bạn đã dùng hết phỏng vấn miễn phí/)).toBeInTheDocument();
+    expect(screen.queryByText(/Bắt đầu phỏng vấn/)).not.toBeInTheDocument();
   });
 });
 
