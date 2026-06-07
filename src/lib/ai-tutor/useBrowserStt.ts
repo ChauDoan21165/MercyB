@@ -165,6 +165,7 @@ export function useBrowserStt(lang = "en-US"): UseBrowserSttResult {
     interimRef.current = "";
     finalSegmentsRef.current = [];
     setTranscript("");
+    setError(null);
   }, []);
 
   useEffect(() => {

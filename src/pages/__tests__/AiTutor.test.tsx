@@ -13,6 +13,8 @@ import {
 import type { SpeechRecognitionLike } from "@/types/speech-recognition";
 
 const FORBIDDEN_STANCE_WORDING = /diagnosis|depressed|anxiety|trauma|therapy|mental health|clinical|disorder/i;
+const FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE =
+  "Mercy chưa sửa chắc câu này bằng bộ quy tắc hiện tại. Bạn có thể chỉnh lại câu ngắn hơn một chút rồi bấm Sửa câu này nhé.";
 
 const EMPTY_SUMMARY: MemorySummary = {
   tutorProduct: "ai-tutor",
@@ -447,6 +449,7 @@ describe("AiTutor four-tab seed flow", () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
     render(<AiTutorPage />);
 
+    expect(screen.getByRole("button", { name: "Sửa câu này" })).toBeDisabled();
     await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
     act(() => {
       MockSpeechRecognition.last?.emitFinalTranscript("She go to school every day.");
@@ -459,8 +462,31 @@ describe("AiTutor four-tab seed flow", () => {
       );
     });
     expect(screen.queryByTestId("ai-tutor-voice-draft")).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Sửa câu này" })).toBeEnabled();
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
     expect(await screen.findByText("She goes to school every day.")).toBeInTheDocument();
+  });
+
+  it("shows friendly copy when the correction engine is unavailable and does not leave listening stuck", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
+    act(() => {
+      MockSpeechRecognition.last?.emitFinalTranscript("I run yesterday.");
+      MockSpeechRecognition.last?.stop();
+    });
+
+    expect(await screen.findByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i })).toHaveValue(
+      "I run yesterday",
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
+    expect(await screen.findByText(FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE)).toBeInTheDocument();
+    expect(screen.queryByText(/Mercy needs the AI correction engine/i)).not.toBeInTheDocument();
+    expect(screen.queryByText("Đang nghe giọng của bạn...")).not.toBeInTheDocument();
+    expect(screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i })).toHaveValue(
+      "I run yesterday",
+    );
   });
 
   it("clears stale correction errors when Grammar voice input starts", async () => {
@@ -469,11 +495,11 @@ describe("AiTutor four-tab seed flow", () => {
 
     await userEvent.type(screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i }), "I run yesterday.");
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
-    expect(await screen.findByText("Mercy needs the AI correction engine for this one.")).toBeInTheDocument();
+    expect(await screen.findByText(FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE)).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
 
-    expect(screen.queryByText("Mercy needs the AI correction engine for this one.")).not.toBeInTheDocument();
+    expect(screen.queryByText(FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE)).not.toBeInTheDocument();
   });
 
   it("shows a voice-specific message when Grammar voice input captures no transcript", async () => {
@@ -489,6 +515,30 @@ describe("AiTutor four-tab seed flow", () => {
       "Mercy chưa nghe rõ. Bạn thử nói lại hoặc gõ câu vào ô nhé.",
     );
     expect(screen.queryByText("Mercy needs the AI correction engine for this one.")).not.toBeInTheDocument();
+  });
+
+  it("reset clears Grammar voice transcript and friendly correction error", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
+    act(() => {
+      MockSpeechRecognition.last?.emitFinalTranscript("I run yesterday.");
+      MockSpeechRecognition.last?.stop();
+    });
+    expect(await screen.findByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i })).toHaveValue(
+      "I run yesterday",
+    );
+
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
+    expect(await screen.findByText(FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE)).toBeInTheDocument();
+
+    await userEvent.click(screen.getByRole("button", { name: "Làm mới" }));
+
+    expect(screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i })).toHaveValue("");
+    expect(screen.queryByText(FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE)).not.toBeInTheDocument();
+    expect(screen.queryByTestId("ai-tutor-voice-message")).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Sửa câu này" })).toBeDisabled();
   });
 
   it("moves the corrected sentence from Grammar to Speak and scores the repeated sentence honestly", async () => {
