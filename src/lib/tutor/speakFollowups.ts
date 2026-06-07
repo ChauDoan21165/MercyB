@@ -69,7 +69,15 @@ const SALIENCE_STOPWORDS = new Set([
   "tall", "fast", "slow", "easy", "hard", "fun", "funny", "boring", "tasty",
   "expensive", "cheap", "beautiful", "ugly", "important", "difficult",
   "interesting", "angry", "scared", "excited", "bored", "free", "late", "early",
+  // Proper-place nouns and STT fragments become awkward or misleading when
+  // inserted after "the" in salience templates ("the Canada", "the I'm").
+  "canada",
 ]);
+
+const SPEAK_UNCLEAR_TRANSCRIPT_PATTERNS = [
+  /\bi bought ahead\b/i,
+  /\byesterday we got this summer\b/i,
+] as const;
 
 function salienceTokens(text: string): string[] {
   return text
@@ -81,6 +89,7 @@ function salienceTokens(text: string): string[] {
 
 function isSalienceContent(token: string): boolean {
   if (token.length < 3 || SALIENCE_STOPWORDS.has(token)) return false;
+  if (!/^[a-z]+$/.test(token)) return false;
   // Exclude likely verbs/participles (-ed / -ing) so the keyword is a noun:
   // "We talked …" must not yield "the talked". Loses a few real nouns
   // (e.g. "wedding") — acceptable; it degrades to the next candidate / "that".
@@ -110,6 +119,12 @@ export function extractSalientKeyword(learnerText: string): string | null {
     if (isSalienceContent(tokens[i])) return tokens[i];
   }
   return null;
+}
+
+export function isSpeakTranscriptUnclearForFollowUp(learnerText: string): boolean {
+  const normalized = learnerText.trim();
+  if (!normalized) return true;
+  return SPEAK_UNCLEAR_TRANSCRIPT_PATTERNS.some((pattern) => pattern.test(normalized));
 }
 
 // ── Speak-seed coherence gate (Issue 1: don't push a garbled sample) ──

@@ -697,6 +697,28 @@ describe("AiTutor four-tab seed flow", () => {
     expect(window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__).not.toHaveBeenCalled();
   });
 
+  it("asks for clarification instead of inventing nonsense follow-ups for unclear STT transcripts", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
+
+    await speakCurrentTarget("I bought ahead yesterday we got this summer I'm going to buy a lot");
+
+    const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+    expect(followUp).toHaveTextContent("I didn't catch that clearly. Can you say it again?");
+    expect(followUp).not.toHaveTextContent("Why do you want to buy the i'm?");
+    expect(followUp).not.toHaveTextContent("What size or color works for the canada?");
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-speak-target")).toHaveTextContent("I bought a hat yesterday.");
+
+    const score = screen.queryByTestId("ai-tutor-speak-score");
+    expect(score?.textContent ?? "").not.toMatch(/\d+%/);
+    expect(score?.textContent ?? "").not.toMatch(/score|ML judgment/i);
+  });
+
   it("uses needs_pause wording and suppresses correction or pivot for one Speak turn", async () => {
     window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "That sounds scary. Are you safe now?");
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
@@ -880,6 +902,23 @@ describe("AiTutor four-tab seed flow", () => {
     expect(screen.queryByTestId("ai-tutor-speak-follow-up")).not.toBeInTheDocument();
     expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
     expect(screen.getByTestId("ai-tutor-speak-target")).toHaveTextContent("What do you usually do in the morning?");
+  });
+
+  it("clears an unclear-transcript clarification when the learner resets for a new sentence", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("I bought ahead yesterday we got this summer I'm going to buy a lot");
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent(
+      "I didn't catch that clearly. Can you say it again?",
+    );
+
+    await userEvent.click(screen.getByRole("button", { name: "Xóa bảng để nhập câu mới" }));
+
+    expect(screen.queryByTestId("ai-tutor-speak-follow-up")).not.toBeInTheDocument();
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
   });
 
   it("offers a deterministic follow-up in Speak even without a corrected sentence", async () => {
