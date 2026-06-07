@@ -89,6 +89,25 @@ describe("SelfCompareRecorder — record / replay / compare-by-ear / reset", () 
     expect(startRecording).toHaveBeenCalledTimes(1);
   });
 
+  it("the replay button plays ONLY the learner recording (not the compare flow)", () => {
+    recorderMock.current = { ...IDLE, lastRecordedAudioUrl: "blob:rec" };
+    render(<SelfCompareRecorder referenceText="I bought a hat yesterday." />);
+    screen.getByTestId("self-compare-play").click();
+    expect(playRecorded).toHaveBeenCalledTimes(1);
+    expect(compareWithReference).not.toHaveBeenCalled();
+  });
+
+  it("uses clear, distinct labels for replay vs compare", () => {
+    recorderMock.current = { ...IDLE, lastRecordedAudioUrl: "blob:rec" };
+    render(<SelfCompareRecorder referenceText="I bought a hat yesterday." />);
+    const replay = screen.getByTestId("self-compare-play");
+    const compare = screen.getByTestId("self-compare-by-ear");
+    expect(replay).toHaveTextContent(/Nghe bản thu của bạn/);
+    expect(compare).toHaveTextContent(/Nghe mẫu rồi nghe bạn/);
+    // The two labels are distinct (the original bug had them read alike).
+    expect(replay.textContent).not.toEqual(compare.textContent);
+  });
+
   it("surfaces a mic-denied / unsupported message in a polite live region", () => {
     recorderMock.current = {
       ...IDLE,

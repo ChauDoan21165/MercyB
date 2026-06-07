@@ -518,4 +518,31 @@ describe("SpeakPracticeMode — by-ear self-compare panel (no score)", () => {
     expect(panel.textContent ?? "").not.toMatch(/\d+\s*%/);
     expect(panel.textContent ?? "").toMatch(/không có điểm số|không chấm điểm/i);
   });
+
+  it("uses the clearer replay / compare labels", () => {
+    recorderMock.current = { ...IDLE_RECORDER, lastRecordedAudioUrl: "blob:rec" };
+    renderSpeak(null, "");
+    expect(screen.getByTestId("self-compare-play")).toHaveTextContent(
+      /Nghe bản thu của bạn/,
+    );
+    expect(screen.getByTestId("self-compare-by-ear")).toHaveTextContent(
+      /Nghe mẫu rồi nghe bạn/,
+    );
+  });
+
+  it("keeps the Speak follow-up visible alongside the recorder", () => {
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        repeatInput="I bought a hat yesterday."
+        followUpPrompt="Where did you buy it?"
+        pronunciationResult={null}
+      />,
+    );
+    // The recorder addition must not hide the follow-up flow.
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent(
+      "Where did you buy it?",
+    );
+  });
 });

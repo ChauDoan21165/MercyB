@@ -114,26 +114,26 @@ export default function SelfCompareRecorder({
               ref={playBtnRef}
               type="button"
               data-testid="self-compare-play"
-              aria-label="Nghe lại giọng vừa thu của bạn"
+              aria-label="Nghe bản thu của bạn"
               onClick={() => void playRecorded()}
               disabled={isComparing}
               className="inline-flex min-h-10 items-center gap-2 rounded-full border border-indigo-200 bg-white px-4 py-2 text-sm font-black text-indigo-800 disabled:opacity-60"
             >
               <span aria-hidden="true">▶</span>{" "}
-              {isPlayingRecorded ? "Đang phát…" : "Nghe lại giọng bạn"}
+              {isPlayingRecorded ? "Đang phát…" : "Nghe bản thu của bạn"}
             </button>
 
             {reference && (
               <button
                 type="button"
                 data-testid="self-compare-by-ear"
-                aria-label="Nghe câu mẫu rồi nghe lại giọng bạn để so sánh bằng tai"
+                aria-label="Nghe mẫu rồi nghe bạn — phát câu mẫu trước, rồi tới bản thu của bạn"
                 onClick={() => void compareWithReference(reference)}
                 disabled={isComparing}
                 className="inline-flex min-h-10 items-center gap-2 rounded-full border border-emerald-300 bg-white px-4 py-2 text-sm font-black text-emerald-800 disabled:opacity-60"
               >
                 <span aria-hidden="true">⇄</span>{" "}
-                {isComparing ? "Đang so sánh…" : "Nghe mẫu → giọng bạn"}
+                {isComparing ? "Đang so sánh…" : "Nghe mẫu rồi nghe bạn"}
               </button>
             )}
 

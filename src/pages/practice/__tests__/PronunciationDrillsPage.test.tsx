@@ -149,7 +149,7 @@ describe("PronunciationDrillsPage — accessibility (labels, live region, focus)
       screen.getByRole("button", { name: /Thu âm giọng của bạn/i }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: /Nghe lại giọng vừa thu/i }),
+      screen.getByRole("button", { name: /Nghe bản thu của bạn/i }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: /Xoá bản thu/i }),
