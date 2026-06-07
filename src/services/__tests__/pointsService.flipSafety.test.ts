@@ -12,7 +12,7 @@
 // (the allowlist) count an active day. See pointsService.ts
 // ACTIVE_DAY_REASON_CODES and the canonicalStreak read seam.
 
-import { vi, describe, it, expect, beforeEach } from "vitest";
+import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
 
 const h = vi.hoisted(() => ({
   flags: { SERVER_STREAKS_ENABLED: false as boolean },
@@ -59,6 +59,10 @@ beforeEach(() => {
   h.onFirstActionOfDay.mockClear();
   __resetStreakCacheForTests();
   localStorage.clear();
+});
+
+afterEach(() => {
+  vi.useRealTimers();
 });
 
 /** Pin streak to `streak` and mark "already acted today" so awardPoints
@@ -140,6 +144,41 @@ describe("awardPoints — daily bonus + streak increment are idempotent per loca
 
     expect(awardPoints("keyword_click")).toBe(30);
     expect(awardPoints("keyword_click")).toBe(15);
+    expect(h.onFirstActionOfDay).toHaveBeenCalledTimes(1);
+  });
+
+  it("resets instead of continuing after a missed local day", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(2026, 5, 10, 12, 0, 0)); // 2026-06-10 local
+    localStorage.setItem(STREAK_KEY, "8");
+    localStorage.setItem(LAST_DAILY_KEY, "2026-06-08"); // missed 2026-06-09
+    localStorage.setItem(POINTS_KEY, "0");
+
+    const first = awardPoints("keyword_click");
+
+    expect(first).toBe(20); // base(10) + daily(10), reset streak multiplier 1.0x
+    expect(getStreakDays()).toBe(1);
+    expect(localStorage.getItem(LAST_DAILY_KEY)).toBe("2026-06-10");
+    expect(h.onFirstActionOfDay).toHaveBeenCalledTimes(1);
+
+    const second = awardPoints("keyword_click");
+    expect(second).toBe(10);
+    expect(getStreakDays()).toBe(1);
+    expect(h.onFirstActionOfDay).toHaveBeenCalledTimes(1);
+  });
+
+  it("resets instead of continuing after a multi-day local gap", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(2026, 5, 10, 12, 0, 0)); // 2026-06-10 local
+    localStorage.setItem(STREAK_KEY, "30");
+    localStorage.setItem(LAST_DAILY_KEY, "2026-06-01");
+    localStorage.setItem(POINTS_KEY, "0");
+
+    const first = awardPoints("keyword_click");
+
+    expect(first).toBe(20);
+    expect(getStreakDays()).toBe(1);
+    expect(localStorage.getItem(LAST_DAILY_KEY)).toBe("2026-06-10");
     expect(h.onFirstActionOfDay).toHaveBeenCalledTimes(1);
   });
 });
