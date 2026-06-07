@@ -70,6 +70,7 @@ export async function synthesizeAzureTts(
   region: string,
   text: string,
   language: string,
+  signal?: AbortSignal,
 ): Promise<Response> {
   const voice = azureVoiceFor(language);
   return fetcher(buildAzureTtsUrl(region), {
@@ -82,5 +83,6 @@ export async function synthesizeAzureTts(
       "User-Agent": "mercyblade-tts",
     },
     body: buildAzureSsml(text, voice),
+    signal,
   });
 }
