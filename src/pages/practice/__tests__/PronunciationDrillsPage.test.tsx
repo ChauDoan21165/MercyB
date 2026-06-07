@@ -9,6 +9,22 @@ import {
 } from "@/data/tone-drill/tone-contrast-extra";
 import { VN_EN_PRONUNCIATION_DRILL_BANKS } from "@/lib/pronunciation/vnEnPronunciationDrills";
 
+// Lighten the render: the real TalkingFacePlayButton mounts an inline SVG
+// talking-face + a per-instance `new Audio()` effect. With 32 tone clips on
+// this page that's ~32 heavy mounts, which pushes these full-page render tests
+// over the 15s test timeout on an overloaded CI runner (they pass locally in
+// ~1s). A faithful stub keeps exactly what these tests assert — the accessible
+// name "Play[: <ariaLabel>]" and the visible label — while making each mount
+// near-instant. The real button has its own behavior; these tests verify the
+// PAGE wiring (props + one button per tone target), not the SVG/audio.
+vi.mock("@/components/audio/TalkingFacePlayButton", () => ({
+  default: ({ label, ariaLabel }: { label?: string; ariaLabel?: string }) => (
+    <button type="button" aria-label={"Play" + (ariaLabel ? `: ${ariaLabel}` : "")}>
+      {label}
+    </button>
+  ),
+}));
+
 // Drive the client-side recorder deterministically (jsdom has no MediaRecorder).
 // The hook is pure capture+playback; the page never scores or calls a server.
 const recorderMock = vi.hoisted(() => ({ current: null as unknown as Record<string, unknown> }));
