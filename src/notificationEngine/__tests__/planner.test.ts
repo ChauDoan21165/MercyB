@@ -62,13 +62,31 @@ describe("planDailyReminder (id 1001)", () => {
 
 describe("planStreakSave (id 1002) — SERVER_STREAKS gated", () => {
   it("schedules a 20:00 one-shot only when server streaks on + at risk", () => {
-    const now = new Date("2026-06-02T03:00:00Z");
+    const now = new Date(2026, 5, 2, 3, 0, 0);
     const d = planStreakSave(snap(), prefs(), GRANTED, ON, now);
     expect(d.kind).toBe("scheduleOneShot");
     if (d.kind === "scheduleOneShot") {
       expect(d.id).toBe(NOTIFICATION_IDS.streak_save);
       expect(d.at.getHours()).toBe(20); // device-local 20:00
       expect(d.title).toContain("5"); // {{streak}} interpolated
+    }
+  });
+
+  it("skips a stale same-day warning when 20:00 is already in the past", () => {
+    const now = new Date("2026-06-02T21:00:00");
+    expect(planStreakSave(snap(), prefs(), GRANTED, ON, now)).toEqual({
+      kind: "cancel",
+      id: NOTIFICATION_IDS.streak_save,
+    });
+  });
+
+  it("still schedules same-day warning when 20:00 is in the future", () => {
+    const now = new Date("2026-06-02T19:59:00");
+    const d = planStreakSave(snap(), prefs(), GRANTED, ON, now);
+    expect(d.kind).toBe("scheduleOneShot");
+    if (d.kind === "scheduleOneShot") {
+      expect(d.at.getHours()).toBe(20);
+      expect(d.at.getTime()).toBeGreaterThan(now.getTime());
     }
   });
 
@@ -104,15 +122,33 @@ describe("planDueReview (id 1003)", () => {
   });
 
   it("schedules at the soonest review when none currently due", () => {
+    const now = new Date("2026-06-02T03:00:00Z");
     const d = planDueReview(
       snap({ dueCount: 0, nextScheduledAt: "2026-06-03T01:00:00Z" }),
       GRANTED,
       ON,
+      now,
     );
     expect(d.kind).toBe("scheduleOneShot");
     if (d.kind === "scheduleOneShot") {
       expect(d.at.toISOString()).toBe("2026-06-03T01:00:00.000Z");
+      expect(d.at.getTime()).toBeGreaterThan(now.getTime());
     }
+  });
+
+  it("skips stale soonest-review timestamps that are already in the past", () => {
+    const now = new Date("2026-06-02T03:00:00Z");
+    expect(
+      planDueReview(
+        snap({ dueCount: 0, nextScheduledAt: "2026-06-02T02:59:59Z" }),
+        GRANTED,
+        ON,
+        now,
+      ),
+    ).toEqual({
+      kind: "cancel",
+      id: NOTIFICATION_IDS.due_review,
+    });
   });
 
   it("cancels when nothing due and no soonest review", () => {
