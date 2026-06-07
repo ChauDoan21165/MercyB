@@ -1,4 +1,5 @@
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
+import SelfCompareRecorder from "@/components/pronunciation/SelfCompareRecorder";
 import EnglishPronunciationFeedbackCard from "@/components/ai-tutor/EnglishPronunciationFeedbackCard";
 import VietnameseToneFeedbackCard from "@/components/ai-tutor/VietnameseToneFeedbackCard";
 import PronunciationProgressTrail from "@/components/ai-tutor/PronunciationProgressTrail";
@@ -210,6 +211,11 @@ export default function SpeakPracticeMode({
               </div>
             )}
           </div>
+
+          {/* By-ear self-compare: hear the model sentence, record your own
+              voice, replay it, compare by ear, and re-record. No score, no
+              percent, no ML — independent of the scorer path below. */}
+          <SelfCompareRecorder referenceText={practiceTarget} className="mt-4 rounded-[16px] border border-emerald-100 bg-emerald-50/60 px-4 py-4" />
 
           <VietnameseToneFeedbackCard
             enabled={vietnameseToneFeedbackEnabled}
