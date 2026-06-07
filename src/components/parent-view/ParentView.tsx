@@ -32,6 +32,7 @@ import { useUserAccess } from "@/hooks/useUserAccess";
 import { aggregateLocalWeaknesses } from "@/lib/stage-3a/aggregator";
 import {
   buildParentSummary,
+  type ParentCategory,
   type ParentSummary,
 } from "@/lib/parent-view/buildParentSummary";
 import {
@@ -98,6 +99,9 @@ export default function ParentView({
   if (!access.hasPremium) return <ParentPaywallGate />;
   if (!summary) return <ParentDataSkeleton />;
 
+  const visibleCategories = getRenderableCategories(summary);
+  const isEmpty = summary.isEmpty || visibleCategories.length === 0;
+
   return (
     <div
       data-testid="parent-view"
@@ -105,21 +109,32 @@ export default function ParentView({
       className="mx-auto w-full max-w-[560px] space-y-4 py-4"
     >
       <ParentHeadline summary={summary} locale={locale} />
-      {summary.isEmpty ? (
+      {isEmpty ? (
         <ParentEmptyState />
       ) : (
-        summary.categories
-          .filter((c) => !c.isEmpty)
-          .map((category) => (
-            <ParentCategoryBucket
-              key={category.config.id}
-              category={category}
-              locale={locale}
-            />
-          ))
+        visibleCategories.map((category) => (
+          <ParentCategoryBucket
+            key={category.config.id}
+            category={category}
+            locale={locale}
+          />
+        ))
       )}
       <ParentAskMercyCta />
       <ParentInviteFamilyCta />
     </div>
   );
+}
+
+function getRenderableCategories(summary: ParentSummary): ParentCategory[] {
+  if (!Array.isArray(summary.categories)) return [];
+  return summary.categories.filter((category): category is ParentCategory => {
+    return Boolean(
+      category &&
+        !category.isEmpty &&
+        category.config &&
+        category.config.id &&
+        Array.isArray(category.items),
+    );
+  });
 }
