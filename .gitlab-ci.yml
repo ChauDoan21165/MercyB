@@ -68,10 +68,9 @@ variables:
 
 # ── Shared anchors for the `test` stage ────────────────────────────────
 #
-# `node:22-bullseye-slim` matches `.github/workflows/ci.yml`'s pinned
-# `node-version: '22'`. Debian-slim is wider-compatibility than Alpine
-# for the project's native deps; the size cost (~150 MB) is paid once
-# per runner cache.
+# `node:24-bookworm-slim` is the GitLab CI base image. Debian-slim is
+# wider-compatibility than Alpine for the project's native deps; the
+# size cost (~150 MB) is paid once per runner cache.
 
 # Reusable npm cache definition (key + paths only). Each job picks a
 # `policy`. The key tracks package-lock.json so a lockfile change
@@ -95,7 +94,7 @@ variables:
     - .npm/
 
 .node_job: &node_job
-  image: node:22-bullseye-slim
+  image: node:24-bookworm-slim
   interruptible: true
   cache:
     <<: *npm_cache_def
@@ -300,7 +299,7 @@ variables:
 .build_script: &build_script
   - npx tsc --noEmit
   - npm run typecheck:functions
-  # node:22-bullseye-slim ships without curl, the CA bundle, unzip, or
+  # node:24-bookworm-slim ships without curl, the CA bundle, unzip, or
   # git. We need them for:
   #   - curl + ca-certificates: HTTPS fetch of the Deno install
   #     script and cert-chain validation (deno.land).
@@ -404,7 +403,7 @@ variables:
   - npm run depcruise:orphans || true
 
 .test_shard_script: &test_shard_script
-  # `node:22-bullseye-slim` ships without git. A few suites spawn it to
+  # `node:24-bookworm-slim` ships without git. A few suites spawn it to
   # build throwaway repos — scripts/__tests__/audit-local-artifacts and
   # scripts/__tests__/check-manifest-delta both `git init`. When tests
   # ran inside the `build` job they inherited that job's apt-installed
@@ -615,7 +614,7 @@ module-boundaries:shared-fallback:
 
 check-new-orphans:
   <<: [*local_runner, *orphan_guard_mr_rules]
-  image: node:22-bullseye-slim
+  image: node:24-bookworm-slim
   interruptible: true
   stage: test
   variables:
@@ -626,7 +625,7 @@ check-new-orphans:
   script: *orphan_guard_script
 
 check-new-orphans:shared-fallback:
-  image: node:22-bullseye-slim
+  image: node:24-bookworm-slim
   interruptible: true
   stage: test
   rules:
