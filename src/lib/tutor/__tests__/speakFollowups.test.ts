@@ -424,23 +424,32 @@ describe("speakFollowups", () => {
       }
     });
 
-    it("abstains or holds weak correction candidates and redirects into engaging practice", () => {
-      const hold = buildSpeakTopicCorrectionWeave("I wait you.");
-      expect(hold).toEqual({
-        signalId: "speak-topic-wait-for-person",
-        status: "hold",
-        promptPrefix: "No need to fix that yet. Let's make the situation clear.",
-      });
+    it("does not weave pulled weak correction signals", () => {
+      expect(buildSpeakTopicCorrectionWeave("I wait you.")).toBeNull();
+      expect(buildSpeakTopicCorrectionWeave("I wait here every morning.")).toBeNull();
+      expect(buildSpeakTopicCorrectionWeave("I sick today.")).toBeNull();
+      expect(buildSpeakTopicCorrectionWeave("I feel sick today.")).toBeNull();
 
-      const abstainSelection = selectSpeakFollowUpByTopicId("topic-doctor-health-visit", {
+      const waitSelection = selectSpeakFollowUpByTopicId("topic-time-appointments-waiting", {
+        askedQuestions: [],
+        turnsOnTopic: 0,
+        learnerText: "I wait you.",
+      });
+      expect(waitSelection.correctionSignalId).toBeUndefined();
+      expect(waitSelection.correctionStatus).toBeUndefined();
+      expect(waitSelection.question).not.toMatch(/No need to fix|won't guess/i);
+      expect(waitSelection.isPivot).toBe(false);
+
+      const healthSelection = selectSpeakFollowUpByTopicId("topic-doctor-health-visit", {
         askedQuestions: [],
         turnsOnTopic: 0,
         learnerText: "I sick today.",
       });
-      expect(abstainSelection.correctionStatus).toBe("abstain");
-      expect(abstainSelection.question).toMatch(/won't guess the correction/i);
-      expect(abstainSelection.question).toMatch(/Why do you need to see the doctor\?/);
-      expect(abstainSelection.isPivot).toBe(false);
+      expect(healthSelection.correctionSignalId).toBeUndefined();
+      expect(healthSelection.correctionStatus).toBeUndefined();
+      expect(healthSelection.question).not.toMatch(/won't guess the correction/i);
+      expect(healthSelection.question).toMatch(/Why do you need to see the doctor\?/);
+      expect(healthSelection.isPivot).toBe(false);
     });
   });
 

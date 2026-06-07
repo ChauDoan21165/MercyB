@@ -107,40 +107,6 @@ export const SPEAK_TOPIC_CORRECTION_CANDIDATES: readonly SpeakTopicCorrectionCan
     buildModelLine: (match) => `Small model: I need to call ${escapeModelTail(match[1])}.`,
     redirect: "Let's make the phone sentence easy to use.",
   },
-  {
-    id: "speak-topic-wait-for-person",
-    status: "hold",
-    positives: [
-      "I wait you.",
-      "I wait my friend.",
-      "I wait the doctor.",
-    ],
-    confusableNegatives: [
-      "I wait here every morning.",
-      "I waited for my friend yesterday.",
-    ],
-    fpRiskNote:
-      "Medium risk: 'wait' can be habitual, present progressive, or missing 'for'. Hold until the context detector can separate those safely.",
-    detect: /\bi wait\b/i,
-    redirect: "No need to fix that yet. Let's make the situation clear.",
-  },
-  {
-    id: "speak-topic-health-feeling",
-    status: "abstain",
-    positives: [
-      "I sick today.",
-      "I tired now.",
-      "I pain in my stomach.",
-    ],
-    confusableNegatives: [
-      "I feel sick today.",
-      "I have a pain in my stomach.",
-    ],
-    fpRiskNote:
-      "High risk: health sentences need careful meaning preservation. Abstain unless a narrower reviewed pattern is added.",
-    detect: /\b(?:sick|pain|tired|dizzy)\b/i,
-    redirect: "Health sentences matter, so I won't guess the correction. Let's practice one clear detail.",
-  },
 ] as const;
 
 export const SPEAK_TOPIC_LIBRARY: readonly SpeakTopicLibraryEntry[] = [
