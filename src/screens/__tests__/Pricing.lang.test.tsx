@@ -19,8 +19,7 @@
 
 import React from "react";
 import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
-import { render, screen, cleanup } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import { screen, cleanup, renderWithRouter } from "@/test/test-utils";
 
 vi.mock("@/providers/AuthProvider", () => ({
   useAuth: () => ({ user: null }),
@@ -72,11 +71,7 @@ afterEach(() => {
 });
 
 function renderPricing() {
-  return render(
-    <MemoryRouter initialEntries={["/pricing"]}>
-      <Pricing />
-    </MemoryRouter>,
-  );
+  return renderWithRouter(<Pricing />, { initialEntries: ["/pricing"] });
 }
 
 describe("Pricing — bilingual lang attrs (P4)", () => {
