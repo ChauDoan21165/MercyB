@@ -71,9 +71,11 @@ import {
 } from "@/lib/tutor/learningEventSummary";
 import {
   assessSpeakSentenceCoherence,
+  assessSpeakTranscriptClarity,
   getSpeakFollowUpTopicId,
   resolveSpeakFollowUpTopicId,
   selectSpeakFollowUpByTopicId,
+  SPEAK_TRANSCRIPT_ASK_TO_REPEAT,
   type SpeakFollowUpSelection,
 } from "@/lib/tutor/speakFollowups";
 import { detectBilingualSaliencePivot } from "@/lib/tutor/bilingualSalienceDetector";
@@ -1044,6 +1046,14 @@ export default function AiTutorPage() {
         return {
           ...current,
           currentQuestion: SPEAK_STANCE_CLARIFICATION,
+          currentIsPivot: false,
+        };
+      }
+
+      if (!assessSpeakTranscriptClarity(spoken).clear) {
+        return {
+          ...current,
+          currentQuestion: SPEAK_TRANSCRIPT_ASK_TO_REPEAT,
           currentIsPivot: false,
         };
       }

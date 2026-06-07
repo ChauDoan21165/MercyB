@@ -2,7 +2,9 @@ import { describe, expect, it } from "vitest";
 import {
   SPEAK_FOLLOW_UP_DEPTH_CAP,
   SPEAK_FOLLOW_UP_PIVOT,
+  SPEAK_TRANSCRIPT_ASK_TO_REPEAT,
   assessSpeakSentenceCoherence,
+  assessSpeakTranscriptClarity,
   calculateSentenceMatchPercent,
   extractSalientKeyword,
   resolveSpeakFollowUpTopicId,
@@ -245,6 +247,55 @@ describe("speakFollowups", () => {
   // ── Path B: topic-following via the learner's own words ───────────────────
 
   describe("salience-following follow-ups", () => {
+    it("asks the learner to repeat unclear Speak transcripts before generating follow-ups", () => {
+      const unclearTranscripts = [
+        "I bought ahead",
+        "I bought the i'm",
+        "for the canada",
+        "with the i'm",
+      ];
+
+      for (const learnerText of unclearTranscripts) {
+        const selection = selectSpeakFollowUpByTopicId("topic-shopping", {
+          askedQuestions: [],
+          turnsOnTopic: 1,
+          learnerText,
+        });
+
+        expect(selection).toEqual({
+          topicId: "topic-shopping",
+          question: SPEAK_TRANSCRIPT_ASK_TO_REPEAT,
+          isPivot: false,
+        });
+        expect(selection.question).toContain("Mercy chưa nghe rõ. Bạn nói lại câu đó nhé.");
+        expect(selection.question).toContain("I didn't catch that clearly. Can you say it again?");
+        expect(selection.question.toLowerCase()).not.toMatch(/\bhat\b|\bcanada\b|\bi'm\b/);
+      }
+    });
+
+    it("detects high-confidence bad-STT transcripts without treating normal learner English as unclear", () => {
+      expect(assessSpeakTranscriptClarity("I bought ahead")).toMatchObject({
+        clear: false,
+        reason: "unlikely_buy_object:ahead",
+      });
+      expect(assessSpeakTranscriptClarity("I bought the i'm").clear).toBe(false);
+      expect(assessSpeakTranscriptClarity("for the canada").clear).toBe(false);
+
+      const ordinaryLearnerSentences = [
+        "I bought a hat yesterday.",
+        "I want order noodles.",
+        "I wait you.",
+        "I am from Canada.",
+        "I need help this form.",
+      ];
+      for (const text of ordinaryLearnerSentences) {
+        expect(assessSpeakTranscriptClarity(text)).toEqual({
+          clear: true,
+          reason: "no_unclear_transcript_signal",
+        });
+      }
+    });
+
     it("extracts the salient content noun, preferring the object after a det/prep", () => {
       expect(extractSalientKeyword("I bought a hat because it is sunny.")).toBe("hat");
       expect(extractSalientKeyword("I bought it at a shop that sells old stuff.")).toBe("shop");

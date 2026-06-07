@@ -27,6 +27,8 @@ export type SpeakFollowUpTopicInput = {
 
 export const SPEAK_FOLLOW_UP_DEPTH_CAP = 4;
 export const SPEAK_FOLLOW_UP_PIVOT = "Do you want to practice another sentence?";
+export const SPEAK_TRANSCRIPT_ASK_TO_REPEAT =
+  "Mercy chưa nghe rõ. Bạn nói lại câu đó nhé. I didn't catch that clearly. Can you say it again?";
 
 // ── Salience-following fallback (Path B: follow the learner's own words) ──
 //
@@ -139,6 +141,7 @@ const COHERENCE_CONNECTORS = new Set([
 ]);
 
 export type SpeakCoherenceAssessment = { coherent: boolean; reason: string };
+export type SpeakTranscriptClarityAssessment = { clear: boolean; reason: string };
 
 /**
  * Conservative coherence check for a Speak practice sentence. Returns
@@ -163,6 +166,57 @@ export function assessSpeakSentenceCoherence(sentence: string): SpeakCoherenceAs
     };
   }
   return { coherent: true, reason: "no_incoherence_signal" };
+}
+
+const CLARITY_PREPOSITION_FRAGMENT_STARTERS = new Set([
+  "about", "after", "at", "before", "for", "from", "in", "of", "on", "to", "with",
+]);
+
+const CLARITY_UNLIKELY_BUY_OBJECTS = new Set([
+  "ahead", "again", "already", "away", "back", "behind", "here", "there", "today",
+  "tomorrow", "yesterday",
+]);
+
+const CLARITY_PROPER_PLACE_WORDS = new Set([
+  "canada", "vietnam", "america", "usa", "us", "california", "toronto", "vancouver",
+  "hanoi", "saigon",
+]);
+
+/**
+ * Guard the Speak follow-up generator from bad STT. This is not a grammar
+ * checker; it only blocks high-confidence transcript failures that would make
+ * the deterministic salience fallback invent fake objects or topics.
+ */
+export function assessSpeakTranscriptClarity(transcript: string): SpeakTranscriptClarityAssessment {
+  const tokens = salienceTokens(transcript);
+  if (tokens.length === 0) {
+    return { clear: false, reason: "empty_transcript" };
+  }
+
+  if (tokens.length <= 3 && CLARITY_PREPOSITION_FRAGMENT_STARTERS.has(tokens[0])) {
+    return { clear: false, reason: `preposition_fragment:${tokens.join("_")}` };
+  }
+
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
+    if (token.includes("'")) {
+      return { clear: false, reason: `broken_contraction_token:${token}` };
+    }
+
+    if (token === "the" && CLARITY_PROPER_PLACE_WORDS.has(tokens[i + 1] ?? "")) {
+      return { clear: false, reason: `article_before_place:${tokens[i + 1]}` };
+    }
+
+    if ((token === "buy" || token === "bought") && CLARITY_UNLIKELY_BUY_OBJECTS.has(tokens[i + 1] ?? "")) {
+      return { clear: false, reason: `unlikely_buy_object:${tokens[i + 1]}` };
+    }
+
+    if ((token === "buy" || token === "bought") && tokens[i + 1] === "the" && tokens[i + 2]?.includes("'")) {
+      return { clear: false, reason: `broken_buy_object:${tokens[i + 2]}` };
+    }
+  }
+
+  return { clear: true, reason: "no_unclear_transcript_signal" };
 }
 
 const SALIENCE_FRAMES: ReadonlyArray<(ref: string) => string> = [
@@ -285,6 +339,10 @@ export function selectSpeakFollowUpByTopicId(
   const asked = new Set((options.askedQuestions ?? []).map((question) => question.trim().toLowerCase()));
   const turnsOnTopic = options.turnsOnTopic ?? 0;
   const learnerText = options.learnerText ?? "";
+
+  if (learnerText.trim() && !assessSpeakTranscriptClarity(learnerText).clear) {
+    return { topicId: resolvedTopicId, question: SPEAK_TRANSCRIPT_ASK_TO_REPEAT, isPivot: false };
+  }
 
   if (turnsOnTopic >= SPEAK_FOLLOW_UP_DEPTH_CAP) {
     return { topicId: resolvedTopicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
