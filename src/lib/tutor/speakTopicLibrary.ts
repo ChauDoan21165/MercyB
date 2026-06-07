@@ -8,7 +8,17 @@ export type SpeakTopicCategory =
   | "phone"
   | "introductions"
   | "routine"
-  | "time";
+  | "time"
+  | "home"
+  | "money"
+  | "mail"
+  | "school"
+  | "social"
+  | "weather"
+  | "hobbies"
+  | "service"
+  | "childcare"
+  | "documents";
 
 export type SpeakTopicFollowUp = {
   id: string;
@@ -106,6 +116,70 @@ export const SPEAK_TOPIC_CORRECTION_CANDIDATES: readonly SpeakTopicCorrectionCan
     detect: /^\s*i need call ([a-z][a-z\s'-]{1,60})\.?\s*$/i,
     buildModelLine: (match) => `Small model: I need to call ${escapeModelTail(match[1])}.`,
     redirect: "Let's make the phone sentence easy to use.",
+  },
+  {
+    id: "speak-topic-pay-in-cash",
+    status: "ship-safe",
+    positives: [
+      "I pay by cash.",
+      "I want to pay by cash.",
+      "Can I pay by cash?",
+    ],
+    confusableNegatives: [
+      "I pay by card.",
+      "I pay with cash.",
+    ],
+    fpRiskNote:
+      "Low risk: only the exact phrase 'pay by cash' is corrected to 'pay in cash'. Card payments and already-natural 'pay with cash' are untouched.",
+    detect: /^\s*(i pay|i want to pay|can i pay) by cash[.?]?\s*$/i,
+    buildModelLine: (match) => {
+      const opener = match[1].toLowerCase();
+      if (opener === "can i pay") return "Small model: Can I pay in cash?";
+      if (opener === "i want to pay") return "Small model: I want to pay in cash.";
+      return "Small model: I pay in cash.";
+    },
+    redirect: "Let's make the payment sentence natural.",
+  },
+  {
+    id: "speak-topic-fill-out-form",
+    status: "ship-safe",
+    positives: [
+      "I need to fill form.",
+      "I want to fill form.",
+      "Can you help me fill form?",
+    ],
+    confusableNegatives: [
+      "I need to fill out the form.",
+      "I filled the form yesterday.",
+    ],
+    fpRiskNote:
+      "Low risk: only exact missing-particle 'fill form' frames are corrected. Past-tense and already-correct 'fill out' forms are untouched.",
+    detect: /^\s*(i need to fill|i want to fill|can you help me fill) form[.?]?\s*$/i,
+    buildModelLine: (match) => {
+      const opener = match[1].toLowerCase();
+      if (opener === "can you help me fill") return "Small model: Can you help me fill out the form?";
+      if (opener === "i want to fill") return "Small model: I want to fill out the form.";
+      return "Small model: I need to fill out the form.";
+    },
+    redirect: "Let's keep the form request clear.",
+  },
+  {
+    id: "speak-topic-need-help-with",
+    status: "ship-safe",
+    positives: [
+      "I need help this form.",
+      "I need help my homework.",
+      "I need help the package.",
+    ],
+    confusableNegatives: [
+      "I need help with this form.",
+      "I need help to carry this box.",
+    ],
+    fpRiskNote:
+      "Low risk: only first-person 'I need help' followed by a noun phrase gets 'with'. Verb frames and already-correct 'help with' are untouched.",
+    detect: /^\s*i need help ((?:this|that|my|your|the|a|an) [a-z][a-z\s'-]{1,50})\.?\s*$/i,
+    buildModelLine: (match) => `Small model: I need help with ${escapeModelTail(match[1])}.`,
+    redirect: "Let's make the help request easy to use.",
   },
 ] as const;
 
@@ -268,6 +342,166 @@ export const SPEAK_TOPIC_LIBRARY: readonly SpeakTopicLibraryEntry[] = [
       { id: "time-waiting", question: "How long have you been waiting?", salienceQuestion: "How long have you waited for the {slot}?" },
       { id: "time-delay", question: "What would you say if you are late?", salienceQuestion: "What would you say if the {slot} is delayed?" },
       { id: "time-confirm", question: "How would you confirm the appointment time?", salienceQuestion: "How would you confirm the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-home-rent-repairs",
+    labelEn: "Home, Rent, And Repairs",
+    labelVi: "Nhà ở, tiền thuê và sửa chữa",
+    category: "home",
+    seedInputs: ["My sink is leaking and I need a repair."],
+    detectionPatterns: [
+      /\b(?:rent|landlord|apartment|sink|leak|leaking|repair|broken heater|roommate|maintenance)\b/i,
+    ],
+    followUps: [
+      { id: "home-place", question: "What part of your home has the problem?", salienceQuestion: "What is happening with the {slot}?" },
+      { id: "home-problem", question: "When did the problem start?", salienceQuestion: "When did the {slot} problem start?" },
+      { id: "home-help", question: "Who do you need to contact for help?", salienceQuestion: "Who can help with the {slot}?" },
+      { id: "home-time", question: "What time would be good for a repair visit?", salienceQuestion: "What time works for the {slot} repair?" },
+    ],
+  },
+  {
+    id: "topic-banking-bills",
+    labelEn: "Banking And Bills",
+    labelVi: "Ngân hàng và hóa đơn",
+    category: "money",
+    seedInputs: ["I need to pay my electricity bill today."],
+    detectionPatterns: [
+      /\b(?:bank|banking|bill|bills|cash|card|pay in cash|pay by cash|electricity bill|fee|account balance)\b/i,
+    ],
+    followUps: [
+      { id: "banking-bill", question: "What bill or payment are you talking about?", salienceQuestion: "When do you need to pay the {slot}?" },
+      { id: "banking-amount", question: "How would you ask about the amount?", salienceQuestion: "How would you ask about the {slot} amount?" },
+      { id: "banking-method", question: "How do you want to pay?", salienceQuestion: "How would you pay for the {slot}?" },
+      { id: "banking-confirm", question: "How would you confirm the payment is finished?", salienceQuestion: "How would you confirm the {slot} is paid?" },
+    ],
+  },
+  {
+    id: "topic-mail-package-delivery",
+    labelEn: "Mail And Package Delivery",
+    labelVi: "Thư và giao hàng",
+    category: "mail",
+    seedInputs: ["The package delivery has a tracking number."],
+    detectionPatterns: [
+      /\b(?:mail|package|delivery|delivered|tracking|post office|address|pickup notice|courier)\b/i,
+    ],
+    followUps: [
+      { id: "mail-item", question: "What are you waiting for?", salienceQuestion: "What do you know about the {slot}?" },
+      { id: "mail-time", question: "When should it arrive?", salienceQuestion: "When should the {slot} arrive?" },
+      { id: "mail-problem", question: "What problem could you explain?", salienceQuestion: "What problem happened with the {slot}?" },
+      { id: "mail-action", question: "What would you ask the delivery person?", salienceQuestion: "What would you ask about the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-school-class",
+    labelEn: "School Or Class",
+    labelVi: "Trường học hoặc lớp học",
+    category: "school",
+    seedInputs: ["I have English class tonight and homework is due."],
+    detectionPatterns: [
+      /\b(?:school|class|teacher|homework|lesson|exam|student|assignment|due tonight)\b/i,
+    ],
+    followUps: [
+      { id: "school-class", question: "What class are you talking about?", salienceQuestion: "What do you do in the {slot}?" },
+      { id: "school-time", question: "When is the class or homework due?", salienceQuestion: "When is the {slot} due?" },
+      { id: "school-help", question: "What help could you ask for?", salienceQuestion: "What help do you need with the {slot}?" },
+      { id: "school-message", question: "What short message could you send the teacher?", salienceQuestion: "What would you tell the teacher about the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-social-plans-invitations",
+    labelEn: "Social Plans And Invitations",
+    labelVi: "Hẹn gặp và rủ bạn bè",
+    category: "social",
+    seedInputs: ["I want to invite my friend to meet tomorrow."],
+    detectionPatterns: [
+      /\b(?:invite|invitation|plans|coffee tomorrow|hang out|meet up|dinner tonight|free this weekend)\b/i,
+    ],
+    followUps: [
+      { id: "social-person", question: "Who do you want to invite?", salienceQuestion: "What would you say to your {slot}?" },
+      { id: "social-activity", question: "What do you want to do together?", salienceQuestion: "What would you do for {slot}?" },
+      { id: "social-time", question: "What time should you suggest?", salienceQuestion: "What time works for the {slot}?" },
+      { id: "social-confirm", question: "How would you confirm the plan politely?", salienceQuestion: "How would you confirm the {slot} plan?" },
+    ],
+  },
+  {
+    id: "topic-weather-clothes",
+    labelEn: "Weather And Clothes",
+    labelVi: "Thời tiết và quần áo",
+    category: "weather",
+    seedInputs: ["It is raining today, so I need a jacket."],
+    detectionPatterns: [
+      /\b(?:weather|raining|rainy|snowing|sunny|cold|hot|jacket|umbrella|coat|sweater)\b/i,
+    ],
+    followUps: [
+      { id: "weather-today", question: "What is the weather like today?", salienceQuestion: "How does the {slot} change your day?" },
+      { id: "weather-clothes", question: "What will you wear?", salienceQuestion: "What will you wear for the {slot}?" },
+      { id: "weather-plan", question: "Will the weather change your plan?", salienceQuestion: "Will the {slot} change your plan?" },
+      { id: "weather-advice", question: "What advice would you give someone?", salienceQuestion: "What advice would you give about the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-exercise-hobbies",
+    labelEn: "Exercise And Hobbies",
+    labelVi: "Tập thể dục và sở thích",
+    category: "hobbies",
+    seedInputs: ["I go for a walk after dinner."],
+    detectionPatterns: [
+      /\b(?:exercise|hobby|hobbies|walk|walking|gym|soccer|music|gardening|paint|painting|after dinner)\b/i,
+    ],
+    followUps: [
+      { id: "hobby-activity", question: "What activity do you enjoy?", salienceQuestion: "What do you like about {slot}?" },
+      { id: "hobby-frequency", question: "How often do you do it?", salienceQuestion: "How often do you do {slot}?" },
+      { id: "hobby-place", question: "Where do you usually do this activity?", salienceQuestion: "Where do you usually do {slot}?" },
+      { id: "hobby-feeling", question: "How do you feel after doing it?", salienceQuestion: "How do you feel after {slot}?" },
+    ],
+  },
+  {
+    id: "topic-customer-service-problems",
+    labelEn: "Customer Service Problems",
+    labelVi: "Vấn đề với dịch vụ khách hàng",
+    category: "service",
+    seedInputs: ["I bought this yesterday, but it does not work."],
+    detectionPatterns: [
+      /\b(?:customer service|refund|exchange|return this|does not work|doesn't work|wrong order|broken item|receipt)\b/i,
+    ],
+    followUps: [
+      { id: "service-item", question: "What item or service has a problem?", salienceQuestion: "What is wrong with the {slot}?" },
+      { id: "service-problem", question: "What happened?", salienceQuestion: "When did the {slot} problem happen?" },
+      { id: "service-fix", question: "What do you want them to do?", salienceQuestion: "What fix do you want for the {slot}?" },
+      { id: "service-close", question: "How would you end the request politely?", salienceQuestion: "How would you politely close the {slot} request?" },
+    ],
+  },
+  {
+    id: "topic-childcare-school-pickup",
+    labelEn: "Childcare And School Pickup",
+    labelVi: "Đón con và chăm sóc trẻ",
+    category: "childcare",
+    seedInputs: ["The daycare pickup is this afternoon."],
+    detectionPatterns: [
+      /\b(?:childcare|daycare|pick up my son|pick up my daughter|drop off|school pickup|babysitter|after school)\b/i,
+    ],
+    followUps: [
+      { id: "childcare-person", question: "Who do you need to pick up or drop off?", salienceQuestion: "Where do you need to take your {slot}?" },
+      { id: "childcare-time", question: "What time is pickup or drop-off?", salienceQuestion: "What time is pickup for your {slot}?" },
+      { id: "childcare-place", question: "Where do you need to go?", salienceQuestion: "Where is the {slot} pickup?" },
+      { id: "childcare-backup", question: "What is your backup plan if you are late?", salienceQuestion: "What is the backup plan for your {slot}?" },
+    ],
+  },
+  {
+    id: "topic-documents-forms",
+    labelEn: "Documents And Forms",
+    labelVi: "Giấy tờ và biểu mẫu",
+    category: "documents",
+    seedInputs: ["I need help this form for my application."],
+    detectionPatterns: [
+      /\b(?:document|documents|form|forms|application|signature|sign here|fill form|fill out|id card|paperwork)\b/i,
+    ],
+    followUps: [
+      { id: "documents-type", question: "What document or form are you working on?", salienceQuestion: "What do you need to do with the {slot}?" },
+      { id: "documents-problem", question: "What part is confusing?", salienceQuestion: "What is confusing about the {slot}?" },
+      { id: "documents-help", question: "Who could help you with it?", salienceQuestion: "Who could help you with the {slot}?" },
+      { id: "documents-next", question: "What is the next step after the form is ready?", salienceQuestion: "What is the next step for the {slot}?" },
     ],
   },
 ] as const;

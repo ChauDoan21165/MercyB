@@ -28,6 +28,19 @@ const BATCH_1_SEEDS: Array<{ id: string; seed: string }> = [
   { id: "topic-time-appointments-waiting", seed: "I am waiting at three and my turn is late." },
 ];
 
+const BATCH_2_SEEDS: Array<{ id: string; seed: string }> = [
+  { id: "topic-home-rent-repairs", seed: "My sink is leaking and I need a repair." },
+  { id: "topic-banking-bills", seed: "I need to pay my electricity bill today." },
+  { id: "topic-mail-package-delivery", seed: "The package delivery has a tracking number." },
+  { id: "topic-school-class", seed: "I have English class tonight and homework is due." },
+  { id: "topic-social-plans-invitations", seed: "I want to invite my friend to meet tomorrow." },
+  { id: "topic-weather-clothes", seed: "It is raining today, so I need a jacket." },
+  { id: "topic-exercise-hobbies", seed: "I go for a walk after dinner." },
+  { id: "topic-customer-service-problems", seed: "I bought this yesterday, but it does not work." },
+  { id: "topic-childcare-school-pickup", seed: "The daycare pickup is this afternoon." },
+  { id: "topic-documents-forms", seed: "I need help this form for my application." },
+];
+
 const BATCH_1_LEARNER_TURNS: Record<string, string[]> = {
   "topic-ordering-food": [
     "I want order noodles.",
@@ -91,6 +104,69 @@ const BATCH_1_LEARNER_TURNS: Record<string, string[]> = {
   ],
 };
 
+const BATCH_2_LEARNER_TURNS: Record<string, string[]> = {
+  "topic-home-rent-repairs": [
+    "The sink is leaking.",
+    "The landlord can visit tomorrow.",
+    "The apartment is quiet.",
+    "Maintenance can come after lunch.",
+  ],
+  "topic-banking-bills": [
+    "I pay by cash.",
+    "The electricity bill is due today.",
+    "My account has a fee.",
+    "The card is at home.",
+  ],
+  "topic-mail-package-delivery": [
+    "I am waiting for a package.",
+    "The delivery should arrive today.",
+    "The address is correct.",
+    "I can ask the post office.",
+  ],
+  "topic-school-class": [
+    "I have English class tonight.",
+    "The homework is difficult.",
+    "My teacher can help me.",
+    "The lesson starts at seven.",
+  ],
+  "topic-social-plans-invitations": [
+    "I want to invite my friend for coffee.",
+    "We can meet downtown.",
+    "Tomorrow afternoon is good.",
+    "I will confirm the plan.",
+  ],
+  "topic-weather-clothes": [
+    "It is raining today.",
+    "I need a jacket.",
+    "The umbrella is in my bag.",
+    "The weather may change my plan.",
+  ],
+  "topic-exercise-hobbies": [
+    "I go for a walk after dinner.",
+    "I like music.",
+    "The gym is near my home.",
+    "Gardening helps me relax.",
+  ],
+  "topic-customer-service-problems": [
+    "This item does not work.",
+    "I have the receipt.",
+    "I want a refund.",
+    "The cashier can help me.",
+  ],
+  "topic-childcare-school-pickup": [
+    "I need to pick up my son.",
+    "The school pickup is at three.",
+    "Daycare is near my work.",
+    "My sister is the backup plan.",
+  ],
+  "topic-documents-forms": [
+    "I need help this form.",
+    "The application is for school.",
+    "My signature is missing.",
+    "The paperwork is ready.",
+  ],
+};
+
 describe("speakFollowups", () => {
   it("selects a deterministic follow-up for bought-hat sentences", () => {
     expect(selectSpeakFollowUp("I bought a hat yesterday.")).toEqual({
@@ -142,9 +218,9 @@ describe("speakFollowups", () => {
   it("follows the learner's own words for unmatched sentences (no generic dead-end)", () => {
     // NEW behavior: an unmatched ("generic") sentence no longer dead-ends on a
     // canned "...about that?" — it references the learner's salient word.
-    expect(selectSpeakFollowUp("The weather is nice today.")).toEqual({
+    expect(selectSpeakFollowUp("The bookshelf is heavy today.")).toEqual({
       topicId: "generic",
-      question: "Tell me more about the weather.",
+      question: "Tell me more about the bookshelf.",
       isPivot: false,
     });
   });
@@ -268,7 +344,7 @@ describe("speakFollowups", () => {
   });
 
   describe("Speak topic library batch 1", () => {
-    it("ships exactly the approved 10 everyday topics", () => {
+    it("keeps Batch 1 topics first and appends approved Batch 2 everyday topics", () => {
       expect(SPEAK_TOPIC_LIBRARY.map((topic) => topic.labelEn)).toEqual([
         "Ordering Food",
         "Family And Relatives",
@@ -280,9 +356,62 @@ describe("speakFollowups", () => {
         "Introductions",
         "Daily Routine",
         "Time, Appointments, And Waiting",
+        "Home, Rent, And Repairs",
+        "Banking And Bills",
+        "Mail And Package Delivery",
+        "School Or Class",
+        "Social Plans And Invitations",
+        "Weather And Clothes",
+        "Exercise And Hobbies",
+        "Customer Service Problems",
+        "Childcare And School Pickup",
+        "Documents And Forms",
       ]);
       for (const topic of SPEAK_TOPIC_LIBRARY) {
         expect(topic.followUps.length).toBeGreaterThanOrEqual(4);
+      }
+    });
+
+    it("matches deterministic seed inputs for all 10 Batch 2 topics", () => {
+      for (const { id, seed } of BATCH_2_SEEDS) {
+        expect(resolveSpeakFollowUpTopicId({ seedSentence: seed })).toBe(id);
+        expect(selectSpeakFollowUp(seed).topicId).toBe(id);
+      }
+    });
+
+    it("validates 4+ topic-aware non-pivot rounds for every Batch 2 topic", () => {
+      for (const { id } of BATCH_2_SEEDS) {
+        const askedQuestions: string[] = [];
+        const usedFollowUpIds: string[] = [];
+        const turns = BATCH_2_LEARNER_TURNS[id];
+
+        turns.forEach((learnerText, turnsOnTopic) => {
+          const selection = selectSpeakFollowUpByTopicId(id, {
+            askedQuestions,
+            turnsOnTopic,
+            learnerText,
+          });
+
+          expect(selection.topicId).toBe(id);
+          expect(selection.isPivot).toBe(false);
+          expect(selection.question).not.toBe(SPEAK_FOLLOW_UP_PIVOT);
+          expect(selection.followUpId).toBeTruthy();
+          expect(usedFollowUpIds).not.toContain(selection.followUpId);
+          usedFollowUpIds.push(selection.followUpId!);
+          askedQuestions.push(selection.question);
+        });
+
+        expect(new Set(usedFollowUpIds).size).toBeGreaterThanOrEqual(4);
+        const capped = selectSpeakFollowUpByTopicId(id, {
+          askedQuestions,
+          turnsOnTopic: SPEAK_FOLLOW_UP_DEPTH_CAP,
+          learnerText: "One more detail.",
+        });
+        expect(capped).toEqual({
+          topicId: id,
+          question: SPEAK_FOLLOW_UP_PIVOT,
+          isPivot: true,
+        });
       }
     });
 
@@ -404,6 +533,15 @@ describe("speakFollowups", () => {
         "I go to work yesterday.",
         "I want order coffee.",
         "I need call my doctor.",
+        "I pay by cash.",
+        "I want to pay by cash.",
+        "Can I pay by cash?",
+        "I need to fill form.",
+        "I want to fill form.",
+        "Can you help me fill form?",
+        "I need help this form.",
+        "I need help my homework.",
+        "I need help the package.",
       ];
       for (const text of positives) {
         const weave = buildSpeakTopicCorrectionWeave(text);
@@ -418,10 +556,49 @@ describe("speakFollowups", () => {
         "I ordered coffee yesterday.",
         "I need to call my doctor.",
         "I called my doctor yesterday.",
+        "I pay by card.",
+        "I pay with cash.",
+        "I need to fill out the form.",
+        "I filled the form yesterday.",
+        "I need help with this form.",
+        "I need help to carry this box.",
       ];
       for (const text of negatives) {
         expect(buildSpeakTopicCorrectionWeave(text)).toBeNull();
       }
+    });
+
+    it("keeps held and abstained Batch 2 correction proposals out of the live weave", () => {
+      const heldOrAbstained = [
+        "I invite my friend go coffee.",
+        "I want to invite my coworker eat lunch.",
+        "I live in here.",
+        "I am waiting my friend.",
+        "I'm waiting my mom.",
+        "I sick today.",
+        "I feel sick today.",
+      ];
+      for (const text of heldOrAbstained) {
+        expect(buildSpeakTopicCorrectionWeave(text)).toBeNull();
+      }
+    });
+
+    it("uses reviewed Batch 2 correction model lines exactly", () => {
+      expect(buildSpeakTopicCorrectionWeave("I pay by cash.")).toEqual({
+        signalId: "speak-topic-pay-in-cash",
+        status: "ship-safe",
+        promptPrefix: "Small model: I pay in cash. Let's make the payment sentence natural.",
+      });
+      expect(buildSpeakTopicCorrectionWeave("Can you help me fill form?")).toEqual({
+        signalId: "speak-topic-fill-out-form",
+        status: "ship-safe",
+        promptPrefix: "Small model: Can you help me fill out the form? Let's keep the form request clear.",
+      });
+      expect(buildSpeakTopicCorrectionWeave("I need help the package.")).toEqual({
+        signalId: "speak-topic-need-help-with",
+        status: "ship-safe",
+        promptPrefix: "Small model: I need help with the package. Let's make the help request easy to use.",
+      });
     });
 
     it("does not weave pulled weak correction signals", () => {
