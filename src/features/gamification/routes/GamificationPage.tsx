@@ -20,19 +20,40 @@ import React from "react";
 import { dailyGoalEngine } from "../engines/dailyGoalEngine";
 import { xpEngine } from "../engines/xpEngine";
 import { ACHIEVEMENTS } from "../engines/achievementEngine";
+import { createDefaultState } from "../defaults";
 import { useGamification } from "../hooks/useGamification";
 import StreakWidget from "../components/StreakWidget";
 import XpWidget from "../components/XpWidget";
 import DailyGoalWidget from "../components/DailyGoalWidget";
 import AchievementsScreen from "../components/AchievementsScreen";
+import type { GamificationState } from "../types";
 
 import { getStreakDays } from "@/services/pointsService";
 import { useServerStreak } from "@/hooks/useServerStreak";
 import { usePoints } from "@/hooks/usePoints";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
 
+function hasDisplayState(value: unknown): value is GamificationState {
+  if (!value || typeof value !== "object") return false;
+  const state = value as Partial<GamificationState>;
+  return Boolean(
+    state.dailyGoal?.config &&
+      state.achievements?.unlocked &&
+      state.dailyGoal.config.metric &&
+      Number.isFinite(state.dailyGoal.config.target),
+  );
+}
+
+function safeCount(value: unknown): number {
+  return typeof value === "number" && Number.isFinite(value) && value > 0
+    ? Math.floor(value)
+    : 0;
+}
+
 export default function GamificationPage() {
   const { state, loading } = useGamification();
+  const stateReady = hasDisplayState(state);
+  const displayState = stateReady ? state : createDefaultState();
 
   // Canonical streak. useServerStreak() warms streakCache and makes this
   // component re-render once the server value resolves, so the synchronous
@@ -40,7 +61,7 @@ export default function GamificationPage() {
   // number — the same one StreakBadge shows. The record (longest) only exists
   // canonically when server-streaks are on; otherwise it's omitted.
   const serverStreak = useServerStreak();
-  const streakCurrent = getStreakDays();
+  const streakCurrent = safeCount(getStreakDays());
   const streakLongest =
     FEATURE_FLAGS.SERVER_STREAKS_ENABLED && serverStreak.longest > 0
       ? serverStreak.longest
@@ -49,6 +70,7 @@ export default function GamificationPage() {
   // Canonical points (server user_points), displayed read-only through the
   // level curve. This page does not award XP.
   const { totalPoints } = usePoints();
+  const displayPoints = safeCount(totalPoints);
 
   return (
     <main
@@ -64,12 +86,24 @@ export default function GamificationPage() {
         <p className="mt-8 text-center text-sm text-muted-foreground">
           Đang tải…
         </p>
+      ) : !stateReady ? (
+        <div
+          className="mt-6 rounded-lg border border-border bg-card p-4 text-sm text-muted-foreground"
+          data-testid="gamification-display-fallback"
+        >
+          <p className="font-medium text-foreground">
+            Tiến độ tạm thời chưa sẵn sàng
+          </p>
+          <p className="mt-1">
+            Mercy đang làm mới dữ liệu học tập của bạn. Hãy thử lại sau một lát.
+          </p>
+        </div>
       ) : (
         <div className="mt-6 flex flex-col gap-4">
           <StreakWidget current={streakCurrent} longest={streakLongest} />
 
           {(() => {
-            const p = xpEngine.progress(totalPoints);
+            const p = xpEngine.progress(displayPoints);
             return (
               <XpWidget
                 level={p.level}
@@ -81,16 +115,16 @@ export default function GamificationPage() {
           })()}
 
           <DailyGoalWidget
-            metric={state.dailyGoal.config.metric}
-            target={state.dailyGoal.config.target}
-            progress={state.dailyGoal.progress}
-            ratio={dailyGoalEngine.ratio(state.dailyGoal)}
-            completed={state.dailyGoal.completedToday}
+            metric={displayState.dailyGoal.config.metric}
+            target={displayState.dailyGoal.config.target}
+            progress={displayState.dailyGoal.progress}
+            ratio={dailyGoalEngine.ratio(displayState.dailyGoal)}
+            completed={displayState.dailyGoal.completedToday}
           />
 
           <AchievementsScreen
             definitions={ACHIEVEMENTS}
-            unlocked={state.achievements.unlocked}
+            unlocked={displayState.achievements.unlocked}
           />
         </div>
       )}
