@@ -14,7 +14,7 @@ import { planStreakSave, planAll, suppressStreakSaveForToday } from "../lifecycl
 import { NOTIFICATION_IDS } from "../types";
 import type { HabitSnapshot, NotificationPreferences } from "../types";
 
-const NOW = new Date("2026-06-02T03:00:00Z");
+const NOW = new Date(2026, 5, 2, 3, 0, 0);
 
 const prefs = (over: Partial<NotificationPreferences> = {}): NotificationPreferences => ({
   dailyReminderEnabled: true,

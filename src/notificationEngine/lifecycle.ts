@@ -113,6 +113,8 @@ export function planStreakSave(
 
   const at = new Date(now);
   at.setHours(STREAK_SAVE_HOUR, 0, 0, 0);
+  if (at.getTime() <= now.getTime()) return { kind: "cancel", id };
+
   const { title, body } = renderCopy("streak_save", lang, {
     streak: snapshot.streakDays,
   });
@@ -138,7 +140,7 @@ export function planDueReview(
   }
   if (snapshot.nextScheduledAt) {
     const at = new Date(snapshot.nextScheduledAt);
-    if (!Number.isNaN(at.getTime())) {
+    if (!Number.isNaN(at.getTime()) && at.getTime() > now.getTime()) {
       const { title, body } = renderCopy("due_review_pending", lang);
       return { kind: "scheduleOneShot", id, at, title, body };
     }
