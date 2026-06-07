@@ -489,6 +489,16 @@ describe("AiTutor four-tab seed flow", () => {
     );
   });
 
+  it("golden unsupported Grammar uncertainty never exposes the engine error to learners", async () => {
+    render(<AiTutorPage />);
+
+    await userEvent.type(screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i }), "I run yesterday.");
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
+
+    expect(await screen.findByText(FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE)).toBeInTheDocument();
+    expect(screen.queryByText("Mercy needs the AI correction engine for this one.")).not.toBeInTheDocument();
+  });
+
   it("clears stale correction errors when Grammar voice input starts", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
     render(<AiTutorPage />);
@@ -539,6 +549,37 @@ describe("AiTutor four-tab seed flow", () => {
     expect(screen.queryByText(FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE)).not.toBeInTheDocument();
     expect(screen.queryByTestId("ai-tutor-voice-message")).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Sửa câu này" })).toBeDisabled();
+  });
+
+  it("golden reset clears Grammar, Speak, and Logic learner state", async () => {
+    render(<AiTutorPage />);
+
+    await correctSentence("She go to school every day.", "She goes to school every day.");
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    expect(screen.getByTestId("ai-tutor-speak-target")).toHaveTextContent("She goes to school every day.");
+
+    await userEvent.type(
+      screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" }),
+      "I had dinner with my family.",
+    );
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("What did you eat?");
+
+    await openTab("Logic");
+    expect(screen.getByTestId("ai-tutor-logic-mode")).toHaveTextContent("She goes to school every day.");
+
+    await openTab("Sửa câu");
+    await userEvent.click(screen.getByRole("button", { name: "Làm mới" }));
+
+    expect(screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i })).toHaveValue("");
+    expect(screen.queryByText("She goes to school every day.")).not.toBeInTheDocument();
+
+    await openTab("Luyện nói");
+    expect(screen.getByTestId("ai-tutor-speak-target")).not.toHaveTextContent("She goes to school every day.");
+    expect(screen.queryByTestId("ai-tutor-speak-follow-up")).not.toBeInTheDocument();
+
+    await openTab("Logic");
+    expect(screen.getByTestId("ai-tutor-logic-empty-board")).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-logic-mode")).not.toHaveTextContent("She goes to school every day.");
   });
 
   it("moves the corrected sentence from Grammar to Speak and scores the repeated sentence honestly", async () => {
