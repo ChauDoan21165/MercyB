@@ -2069,6 +2069,32 @@ export default function AiTutorPage() {
     void tts.speak(text, ttsLang, target);
   };
 
+  // Same model-sentence playback path as "Mercy đọc", but awaitable + reports
+  // whether the model actually spoke — so the self-compare "Nghe mẫu rồi nghe
+  // bạn" can play the real Mercy audio and only then the learner recording,
+  // never a pretend comparison. C-owned audio integration; touches no scorer or
+  // follow-up generation.
+  const playSpeakTargetModel = async (): Promise<boolean> => {
+    const text = latestCorrectedSeed?.correctedSentence.trim() || tutorCopy.starterQuestions[0] || "";
+    if (!text) return false;
+    if (stt.listening) {
+      ignoreNextSttCommitRef.current = true;
+      stt.stop();
+      stt.reset();
+      sttBaseInputRef.current = "";
+      lastCommittedSttRef.current = "";
+    }
+    if (tts.speaking) {
+      tts.stop();
+    }
+    setSpeakingMessageId("speak-target");
+    try {
+      return await tts.speak(text, ttsLang, target);
+    } catch {
+      return false;
+    }
+  };
+
   const handleReadSpeakFollowUp = () => {
     const text = speakFollowUpSession.currentQuestion?.trim() || "";
     if (!isSpeakFollowUpReadAloudEligible(text)) return;
@@ -2274,6 +2300,7 @@ export default function AiTutorPage() {
           followUpTtsPreparing={speakingMessageId === "speak-follow-up" && tts.preparing}
           onMicToggle={handleMicToggle}
           onReadTarget={handleReadSpeakTarget}
+          onPlayModel={playSpeakTargetModel}
           onReadFollowUp={handleReadSpeakFollowUp}
           onRepeatInputChange={handleSpeakRepeatInputChange}
           onResetBoard={handleClear}

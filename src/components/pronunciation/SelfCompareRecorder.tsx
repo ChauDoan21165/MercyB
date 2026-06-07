@@ -1,19 +1,30 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { usePronunciationRecorder } from "@/hooks/usePronunciationRecorder";
+
+const MODEL_UNAVAILABLE_MESSAGE =
+  "Không phát được câu mẫu trên thiết bị này, nên chưa so sánh được. " +
+  "Hãy bấm “Mercy đọc” để nghe mẫu, rồi “Nghe bản thu của bạn”. / " +
+  "Could not play the model sentence on this device, so the comparison did not run.";
 
 /**
  * Honest by-ear self-compare loop, shared by the pronunciation practice page
  * and the AiTutor Speak surface.
  *
  * The learner records their own voice, plays it back, and — when a model
- * sentence is available (`referenceText`) — hears the model immediately
- * followed by their own take so they can compare BY EAR.
+ * sentence is available — hears the model immediately followed by their own
+ * take so they can compare BY EAR.
+ *
+ * Model playback for the compare step prefers `onPlayModel` — the SAME path
+ * that the surface's own model button uses (e.g. "Mercy đọc" → the Mercy cloud
+ * voice). It only falls back to the device Web Speech voice (`referenceText`)
+ * when no `onPlayModel` is supplied. Either way, if the model does NOT actually
+ * play, the compare shows a clear message and does NOT play the learner
+ * recording alone — no pretend comparison.
  *
  * The opposite of the fake score we removed: there is NO score, NO percent,
- * NO judgment, NO ML claim, NO server call. Pure client-side capture +
- * playback via `usePronunciationRecorder` (MediaRecorder + the Web Speech
- * model voice). It does not import or touch the research-gated scorer.
+ * NO judgment, NO ML claim, NO server call beyond the model voice the surface
+ * already uses. It does not import or touch the research-gated scorer.
  *
  * Mic-permission-denied and unsupported-recording both surface a clear
  * message via the hook's `error`, shown in a polite live region — never a
@@ -22,13 +33,20 @@ import { usePronunciationRecorder } from "@/hooks/usePronunciationRecorder";
  */
 export default function SelfCompareRecorder({
   referenceText,
+  onPlayModel,
   className,
 }: {
   /**
-   * Model sentence to compare against. When provided, a "compare by ear"
-   * control plays this text in the device voice, then the learner's recording.
+   * Model sentence for the device (Web Speech) compare fallback. Used only when
+   * `onPlayModel` is not supplied. Its presence also enables the compare button.
    */
   referenceText?: string;
+  /**
+   * Awaitable model playback using the surface's real model voice (same path as
+   * the surface's model button). Resolves true if the model actually played.
+   * Preferred over the Web Speech fallback when present.
+   */
+  onPlayModel?: () => Promise<boolean>;
   className?: string;
 }) {
   const {
@@ -37,6 +55,7 @@ export default function SelfCompareRecorder({
     lastRecordedAudioUrl,
     isPlayingRecorded,
     isComparing,
+    setError,
     startRecording,
     stopRecording,
     playRecorded,
@@ -44,10 +63,44 @@ export default function SelfCompareRecorder({
     compareWithReference,
   } = usePronunciationRecorder();
 
+  // Local comparing state for the onPlayModel (Mercy) path; the hook's own
+  // isComparing covers the Web Speech compareWithReference fallback.
+  const [comparingModel, setComparingModel] = useState(false);
+  const comparing = isComparing || comparingModel;
+
   const isRecording = status === "recording";
   const isProcessing = status === "processing";
   const hasRecording = Boolean(lastRecordedAudioUrl) && !isRecording;
   const reference = referenceText?.trim();
+  const canCompare = Boolean(onPlayModel) || Boolean(reference);
+
+  const handleCompare = useCallback(async () => {
+    if (onPlayModel) {
+      // Reuse the surface's real model voice (e.g. "Mercy đọc"). Play the model
+      // first; only on a confirmed play do we then play the learner recording.
+      setError(null);
+      setComparingModel(true);
+      try {
+        let spoke = false;
+        try {
+          spoke = await onPlayModel();
+        } catch {
+          spoke = false;
+        }
+        if (!spoke) {
+          setError(MODEL_UNAVAILABLE_MESSAGE);
+          return;
+        }
+        await playRecorded();
+      } finally {
+        setComparingModel(false);
+      }
+      return;
+    }
+    if (reference) {
+      await compareWithReference(reference);
+    }
+  }, [onPlayModel, reference, playRecorded, compareWithReference, setError]);
 
   // Focus management: when a recording first appears, move focus to the
   // "play your recording" control; when it's cleared, return focus to the
@@ -91,7 +144,7 @@ export default function SelfCompareRecorder({
             data-testid="self-compare-record"
             aria-label="Thu âm giọng của bạn"
             onClick={() => void startRecording()}
-            disabled={isProcessing || isComparing}
+            disabled={isProcessing || comparing}
             className="inline-flex min-h-10 items-center gap-2 rounded-full bg-rose-600 px-4 py-2 text-sm font-black text-white disabled:opacity-60"
           >
             <span aria-hidden="true">●</span> Thu âm của bạn
@@ -116,24 +169,24 @@ export default function SelfCompareRecorder({
               data-testid="self-compare-play"
               aria-label="Nghe bản thu của bạn"
               onClick={() => void playRecorded()}
-              disabled={isComparing}
+              disabled={comparing}
               className="inline-flex min-h-10 items-center gap-2 rounded-full border border-indigo-200 bg-white px-4 py-2 text-sm font-black text-indigo-800 disabled:opacity-60"
             >
               <span aria-hidden="true">▶</span>{" "}
               {isPlayingRecorded ? "Đang phát…" : "Nghe bản thu của bạn"}
             </button>
 
-            {reference && (
+            {canCompare && (
               <button
                 type="button"
                 data-testid="self-compare-by-ear"
                 aria-label="Nghe mẫu rồi nghe bạn — phát câu mẫu trước, rồi tới bản thu của bạn"
-                onClick={() => void compareWithReference(reference)}
-                disabled={isComparing}
+                onClick={() => void handleCompare()}
+                disabled={comparing}
                 className="inline-flex min-h-10 items-center gap-2 rounded-full border border-emerald-300 bg-white px-4 py-2 text-sm font-black text-emerald-800 disabled:opacity-60"
               >
                 <span aria-hidden="true">⇄</span>{" "}
-                {isComparing ? "Đang so sánh…" : "Nghe mẫu rồi nghe bạn"}
+                {comparing ? "Đang so sánh…" : "Nghe mẫu rồi nghe bạn"}
               </button>
             )}
 
@@ -142,7 +195,7 @@ export default function SelfCompareRecorder({
               data-testid="self-compare-reset"
               aria-label="Xoá bản thu và thu lại"
               onClick={() => clearRecordedAudio()}
-              disabled={isComparing}
+              disabled={comparing}
               className="inline-flex min-h-10 items-center rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-black text-slate-600 disabled:opacity-60"
             >
               Thu lại

@@ -23,6 +23,9 @@ export interface UseTtsSpeakerResult {
   preparing: boolean;
   usingBrowserFallback: boolean;
   voiceSource: "mercy" | "device" | null;
+  /** Resolves true only if the model sentence actually played (spoke). Lets the
+   *  Speak self-compare reuse this exact "Mercy đọc" path and avoid pretending a
+   *  comparison ran when the model was silent. */
   speak: (
     text: string,
     lang: string,
@@ -31,7 +34,7 @@ export interface UseTtsSpeakerResult {
       SpeakTutorTextOptions,
       "voiceStyle" | "preferCloudVoice" | "fallbackToBrowserTts"
     >,
-  ) => Promise<void>;
+  ) => Promise<boolean>;
   stop: () => void;
   error: string | null;
 }
@@ -104,10 +107,10 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
     > = {},
   ) => {
     const safeText = String(text ?? "").trim();
-    if (!safeText) return;
+    if (!safeText) return false;
     if (!supported) {
       setError(TTS_ERROR_MESSAGE);
-      return;
+      return false;
     }
 
     const requestId = requestRef.current + 1;
@@ -140,7 +143,7 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
         options.fallbackToBrowserTts ?? targetLanguage.supportsBrowserTts,
     });
 
-    if (requestRef.current !== requestId) return;
+    if (requestRef.current !== requestId) return false;
     clearPoll();
     clearAudibleFallbackTimer();
     syncFromVoiceStatus();
@@ -156,6 +159,7 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
     }
 
     void lang;
+    return Boolean(result.spoken);
   }, [clearAudibleFallbackTimer, clearPoll, supported, syncFromVoiceStatus]);
 
   useEffect(() => stop, [stop]);
