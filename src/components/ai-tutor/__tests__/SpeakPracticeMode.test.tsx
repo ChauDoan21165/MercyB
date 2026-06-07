@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi, beforeEach } from "vitest";
 import SpeakPracticeMode, {
   type SpeakPronunciationResult,
 } from "../SpeakPracticeMode";
@@ -30,6 +30,35 @@ vi.mock("@/components/teacher-mercy/TeacherMercyVoiceControls", () => ({
     )
   ),
 }));
+
+// Drive the shared SelfCompareRecorder's hook deterministically. Default is
+// idle (only a record button renders) so the existing Speak tests are
+// unaffected; individual tests override `recorderMock.current` to exercise the
+// by-ear compare flow.
+const recorderMock = vi.hoisted(() => ({
+  current: null as unknown as Record<string, unknown>,
+}));
+const compareWithReference = vi.hoisted(() => vi.fn());
+vi.mock("@/hooks/usePronunciationRecorder", () => ({
+  usePronunciationRecorder: () => recorderMock.current,
+}));
+const IDLE_RECORDER = {
+  status: "idle",
+  error: null,
+  audioBlob: null,
+  lastRecordedAudioUrl: null,
+  isPlayingReference: false,
+  isPlayingRecorded: false,
+  isComparing: false,
+  setError: () => {},
+  startRecording: vi.fn(),
+  stopRecording: vi.fn(),
+  reset: () => {},
+  clearRecordedAudio: vi.fn(),
+  playReference: async () => {},
+  playRecorded: vi.fn(),
+  compareWithReference,
+};
 
 const baseProps = {
   targetSentence: "I bought a hat yesterday.",
@@ -65,6 +94,11 @@ function renderSpeak(
     />,
   );
 }
+
+beforeEach(() => {
+  vi.clearAllMocks();
+  recorderMock.current = { ...IDLE_RECORDER };
+});
 
 describe("SpeakPracticeMode pronunciation result display", () => {
   it("renders the target sentence and existing Speak controls", () => {
@@ -441,5 +475,47 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     const tone = screen.getByTestId("vietnamese-tone-feedback");
     expect(tone).toHaveTextContent("Thanh sắc đúng rồi.");
     expect(tone).toHaveTextContent("Điểm thanh điệu khoảng 92%.");
+  });
+});
+
+describe("SpeakPracticeMode — by-ear self-compare panel (no score)", () => {
+  it("renders the self-compare recorder with a labelled record control", () => {
+    renderSpeak(null, "");
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /Thu âm giọng của bạn/i }),
+    ).toBeInTheDocument();
+  });
+
+  it("lets the learner compare by ear against the model sentence", () => {
+    // A recording exists → play-back + compare-by-ear controls appear.
+    recorderMock.current = { ...IDLE_RECORDER, lastRecordedAudioUrl: "blob:rec" };
+    renderSpeak(null, "");
+    expect(screen.getByTestId("self-compare-play")).toBeInTheDocument();
+    const byEar = screen.getByTestId("self-compare-by-ear");
+    fireEvent.click(byEar);
+    // Compares against the model sentence the learner just heard.
+    expect(compareWithReference).toHaveBeenCalledWith("I bought a hat yesterday.");
+  });
+
+  it("surfaces a mic-denied message without breaking the rest of Speak", () => {
+    recorderMock.current = {
+      ...IDLE_RECORDER,
+      error: "Microphone access was denied in your browser.",
+    };
+    renderSpeak(null, "");
+    const panel = screen.getByTestId("self-compare-recorder");
+    expect(panel.textContent).toMatch(/Microphone access was denied/i);
+    // Rest of Speak still usable: model sentence + Mercy đọc still present.
+    expect(screen.getByTestId("ai-tutor-speak-target")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Mercy đọc" })).toBeInTheDocument();
+  });
+
+  it("the self-compare panel shows no percent / score", () => {
+    recorderMock.current = { ...IDLE_RECORDER, lastRecordedAudioUrl: "blob:rec" };
+    renderSpeak(null, "");
+    const panel = screen.getByTestId("self-compare-recorder");
+    expect(panel.textContent ?? "").not.toMatch(/\d+\s*%/);
+    expect(panel.textContent ?? "").toMatch(/không có điểm số|không chấm điểm/i);
   });
 });
