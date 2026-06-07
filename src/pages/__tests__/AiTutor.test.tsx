@@ -443,19 +443,52 @@ describe("AiTutor four-tab seed flow", () => {
     expect(await screen.findByTestId("ai-tutor-l1-followup")).toHaveTextContent("buổi sáng");
   });
 
-  it("supports voice draft confirmation in Grammar without making mic primary", async () => {
+  it("commits final Grammar voice transcript into the correction input", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
     render(<AiTutorPage />);
 
     await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
     act(() => {
-      MockSpeechRecognition.last?.emitFinalTranscript("I buy a hat yesterday.");
+      MockSpeechRecognition.last?.emitFinalTranscript("She go to school every day.");
       MockSpeechRecognition.last?.stop();
     });
 
-    expect(await screen.findByTestId("ai-tutor-voice-draft")).toHaveTextContent("I buy a hat yesterday");
-    await userEvent.click(screen.getByRole("button", { name: "Dùng câu này" }));
-    expect(screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i })).toHaveValue("I buy a hat yesterday");
+    await waitFor(() => {
+      expect(screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i })).toHaveValue(
+        "She go to school every day",
+      );
+    });
+    expect(screen.queryByTestId("ai-tutor-voice-draft")).not.toBeInTheDocument();
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
+    expect(await screen.findByText("She goes to school every day.")).toBeInTheDocument();
+  });
+
+  it("clears stale correction errors when Grammar voice input starts", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await userEvent.type(screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i }), "I run yesterday.");
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
+    expect(await screen.findByText("Mercy needs the AI correction engine for this one.")).toBeInTheDocument();
+
+    await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
+
+    expect(screen.queryByText("Mercy needs the AI correction engine for this one.")).not.toBeInTheDocument();
+  });
+
+  it("shows a voice-specific message when Grammar voice input captures no transcript", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
+    act(() => {
+      MockSpeechRecognition.last?.stop();
+    });
+
+    expect(await screen.findByTestId("ai-tutor-voice-message")).toHaveTextContent(
+      "Mercy chưa nghe rõ. Bạn thử nói lại hoặc gõ câu vào ô nhé.",
+    );
+    expect(screen.queryByText("Mercy needs the AI correction engine for this one.")).not.toBeInTheDocument();
   });
 
   it("moves the corrected sentence from Grammar to Speak and scores the repeated sentence honestly", async () => {

@@ -211,6 +211,8 @@ const SPEAK_STANCE_CLARIFICATION = "Can you say that another way?";
 const SPEAK_STANCE_SEED_UNCLEAR =
   "That sentence is hard to follow. Can you say what you mean in one simple sentence?";
 const SPEAK_STANCE_PAUSE = "I’m sorry that happened. Let’s pause correction for a moment. Are you okay to continue?";
+const GRAMMAR_VOICE_EMPTY_MESSAGE =
+  "Mercy chưa nghe rõ. Bạn thử nói lại hoặc gõ câu vào ô nhé.";
 const STEP7_AZURE_BATCH_ENABLED =
   (import.meta as ImportMeta & { env?: Record<string, string> }).env
     ?.VITE_AZURE_PHONEME_BATCH_ENABLED === "true";
@@ -873,6 +875,7 @@ export default function AiTutorPage() {
   const [mode, setMode] = useState<TutorMode>("grammar");
   const [input, setInput] = useState("");
   const [grammarVoiceDraft, setGrammarVoiceDraft] = useState("");
+  const [grammarVoiceMessage, setGrammarVoiceMessage] = useState("");
   const [conversationInput, setConversationInput] = useState("");
   const [speakRepeatInput, setSpeakRepeatInput] = useState("");
   const [speakPronunciationResult, setSpeakPronunciationResult] =
@@ -1094,10 +1097,19 @@ export default function AiTutorPage() {
         sttBaseInputRef.current = "";
         return;
       }
-      if (!transcript || transcript === lastCommittedSttRef.current) return;
+      if (!transcript) {
+        if (mode === "grammar") {
+          setGrammarVoiceDraft("");
+          setGrammarVoiceMessage(GRAMMAR_VOICE_EMPTY_MESSAGE);
+        }
+        return;
+      }
+      if (transcript === lastCommittedSttRef.current) return;
       lastCommittedSttRef.current = transcript;
       if (mode === "grammar") {
-        setGrammarVoiceDraft(transcript);
+        setInput(appendCleanSpeech(sttBaseInputRef.current, transcript).slice(0, 500));
+        setGrammarVoiceDraft("");
+        setGrammarVoiceMessage("");
       } else if (mode === "speak") {
         const next = appendCleanSpeech(sttBaseInputRef.current, transcript);
         setSpeakRepeatInput(next);
@@ -1380,6 +1392,11 @@ export default function AiTutorPage() {
       void pronunciationRecorder.stopRecording();
       return;
     }
+    if (mode === "grammar") {
+      setError(null);
+      setGrammarVoiceDraft("");
+      setGrammarVoiceMessage("");
+    }
     stt.reset();
     if (mode === "speak" && STEP7_AZURE_BATCH_ENABLED && session?.access_token) {
       pronunciationRecorder.reset();
@@ -1417,6 +1434,7 @@ export default function AiTutorPage() {
 
   const handleGrammarInputChange = (value: string) => {
     setInput(value);
+    setGrammarVoiceMessage("");
     if (result || error || detectorHint || latestCorrectedSeed) {
       setResult(null);
       setError(null);
@@ -1683,6 +1701,7 @@ export default function AiTutorPage() {
     setPracticeAnswer("");
     setPracticeFeedback(null);
     setGrammarVoiceDraft("");
+    setGrammarVoiceMessage("");
 
     await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
 
@@ -2026,6 +2045,7 @@ export default function AiTutorPage() {
     setBoardResetCount((count) => count + 1);
     setInput("");
     setGrammarVoiceDraft("");
+    setGrammarVoiceMessage("");
     setResult(null);
     setError(null);
     setDetectorHint(null);
@@ -2133,14 +2153,19 @@ export default function AiTutorPage() {
             micSupported={stt.supported}
             micListening={stt.listening}
             voiceDraft={grammarVoiceDraft}
+            voiceMessage={grammarVoiceMessage || stt.error || ""}
             speechLang={speechLang}
             onSubmit={handleSubmit}
             onMicToggle={handleMicToggle}
             onUseVoiceDraft={() => {
               setInput(grammarVoiceDraft.slice(0, 500));
               setGrammarVoiceDraft("");
+              setGrammarVoiceMessage("");
             }}
-            onClearVoiceDraft={() => setGrammarVoiceDraft("")}
+            onClearVoiceDraft={() => {
+              setGrammarVoiceDraft("");
+              setGrammarVoiceMessage("");
+            }}
             onSendToSpeak={handleSendCorrectedSentenceToSpeak}
             onClear={handleClear}
             tutorCopy={tutorCopy}

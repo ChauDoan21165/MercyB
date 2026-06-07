@@ -22,6 +22,7 @@ type Props = {
   micSupported: boolean;
   micListening: boolean;
   voiceDraft: string;
+  voiceMessage: string;
   speechLang: string;
   onSubmit: () => void;
   onMicToggle: () => void;
@@ -48,6 +49,7 @@ export default function CorrectionMode({
   micSupported,
   micListening,
   voiceDraft,
+  voiceMessage,
   speechLang: _speechLang,
   onSubmit,
   onMicToggle,
@@ -147,6 +149,14 @@ export default function CorrectionMode({
                   fallbackTestId="ai-tutor-mic-fallback"
                 />
               </div>
+              {voiceMessage && (
+                <p
+                  data-testid="ai-tutor-voice-message"
+                  className="mt-3 rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-semibold leading-6 text-amber-900"
+                >
+                  {voiceMessage}
+                </p>
+              )}
               {voiceDraft && (
                 <div
                   data-testid="ai-tutor-voice-draft"
