@@ -22,6 +22,7 @@ import { ReferralLeaderboardOptInPanel } from "@/components/leaderboard/Referral
 import { exportAttemptsCsv } from "@/lib/analytics/speechProgress";
 import { useChromeLanguage } from "@/lib/i18n/chromeLanguage";
 import type { BackendEntitlement } from "@/lib/authService";
+import { useUserAccess } from "@/hooks/useUserAccess";
 
 /**
  * Loosely-shaped entitlement as consumed by this page: a partial of the
@@ -46,11 +47,6 @@ function formatDate(value: string | null | undefined): string {
 function getExpiryValue(ent: EntitlementLike): string | null {
   if (!ent) return null;
   return ent.current_period_end || ent.expires_at || ent.expiry_at || ent.period_end || null;
-}
-
-function getIsPaidStatus(ent: EntitlementLike): boolean {
-  const status = String(ent?.status ?? "").trim().toLowerCase();
-  return status === "active" || status === "trialing" || status === "past_due";
 }
 
 // ── Chrome-language label ─────────────────────────────────────────────────────
@@ -91,6 +87,7 @@ export default function AccountPage() {
   // Account chrome follows the learner's native-language choice.
   const lang = useChromeLanguage();
   const { user, isLoading, signOut } = useAuth();
+  const access = useUserAccess();
   const { ent, loading: entitlementLoading, refreshEntitlements } = useEntitlements();
   const admin = useAdminAccess();
 
@@ -127,8 +124,8 @@ export default function AccountPage() {
 
   const isPremium = useMemo(() => {
     if (entitlementLoading) return false;
-    return ent?.is_premium === true || getIsPaidStatus(ent);
-  }, [ent, entitlementLoading]);
+    return access.hasPremium;
+  }, [access.hasPremium, entitlementLoading]);
 
   const expiryText = useMemo(() => {
     if (entitlementLoading) return "—";

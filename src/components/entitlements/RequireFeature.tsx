@@ -1,5 +1,6 @@
 // src/components/entitlements/RequireFeature.tsx
 import React from "react";
+import { useUserAccess } from "@/hooks/useUserAccess";
 import { useEntitlements } from "@/lib/useEntitlements";
 
 export default function RequireFeature({
@@ -11,17 +12,16 @@ export default function RequireFeature({
   fallback?: React.ReactNode;
   children: React.ReactNode;
 }) {
+  const access = useUserAccess();
   const { loading, hasFlag, ent } = useEntitlements();
 
-  if (loading) return <>{fallback}</>;
+  if (loading || access.isLoading) return <>{fallback}</>;
   if (!ent) return <>{fallback}</>;
 
   const normalized = String(flag || "").trim().toLowerCase();
 
   if (normalized === "premium" || normalized === "is_premium") {
-    return ent.is_premium === true && ent.status === "active"
-      ? <>{children}</>
-      : <>{fallback}</>;
+    return access.hasPremium ? <>{children}</> : <>{fallback}</>;
   }
 
   const vipMatch = normalized.match(/^vip(\d+)$/);

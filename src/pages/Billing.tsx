@@ -17,6 +17,7 @@ import {
   MONTHLY_PRICE_VND,
   YEARLY_PRICE_VND,
 } from "@/lib/pricing/displayPrices";
+import { useUserAccess } from "@/hooks/useUserAccess";
 
 type PlanKey = "month" | "year";
 
@@ -244,6 +245,7 @@ async function pollEntitlementAfterBilling(): Promise<Entitlement | null> {
 
 export default function Billing() {
   const navigate = useNavigate();
+  const access = useUserAccess();
 
   // Platform gate — iOS uses Apple IAP via RevenueCat per Apple 3.1.1.
   // Stripe subscribe / manage buttons must not render on iOS.
@@ -268,7 +270,7 @@ export default function Billing() {
   const busyPlanRef   = useRef<PlanKey | null>(null);
   const manageBusyRef = useRef(false);
 
-  const isPremium      = ent?.is_premium === true;
+  const isPremium      = access.hasPremium;
   const currentPriceId = String(ent?.price_id ?? "").trim();
   const hasActiveAccess = hasActiveBillingAccess(ent?.status);
   const canceledLike   = isCanceledLike(ent?.status);

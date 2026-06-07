@@ -4,6 +4,7 @@ import React, { useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
 import { useEntitlements } from "@/lib/useEntitlements";
+import { useUserAccess } from "@/hooks/useUserAccess";
 
 type StatusLabels = { en: string; vi: string };
 
@@ -33,6 +34,7 @@ const viStyle: React.CSSProperties = {
 export default function BillingSuccessPage() {
   const nav = useNavigate();
   const { user, isLoading } = useAuth();
+  const access = useUserAccess();
   const { ent, loading: entitlementLoading, refreshEntitlements } = useEntitlements();
 
   useEffect(() => {
@@ -66,7 +68,7 @@ export default function BillingSuccessPage() {
     };
   }, [user?.id, refreshEntitlements]);
 
-  const isPremium = useMemo(() => ent?.is_premium === true, [ent]);
+  const isPremium = access.hasPremium;
 
   const statusLabels = useMemo(
     () => getStatusLabel(ent?.status),

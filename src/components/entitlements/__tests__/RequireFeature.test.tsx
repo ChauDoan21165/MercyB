@@ -24,6 +24,11 @@ vi.mock("@/lib/useEntitlements", () => ({
   useEntitlements: () => useEntitlements(),
 }));
 
+const useUserAccess = vi.fn();
+vi.mock("@/hooks/useUserAccess", () => ({
+  useUserAccess: () => useUserAccess(),
+}));
+
 import RequireFeature from "@/components/entitlements/RequireFeature";
 
 /** Minimal entitlement shape the gate reads: is_premium/status for the
@@ -41,12 +46,17 @@ function setEntitlements({
   loading = false,
   ent = makeEnt(),
   hasFlag = () => false,
+  accessLoading = false,
+  hasPremium = false,
 }: {
   loading?: boolean;
   ent?: Record<string, unknown> | null;
   hasFlag?: (key: string, fallback?: boolean) => boolean;
+  accessLoading?: boolean;
+  hasPremium?: boolean;
 }) {
   useEntitlements.mockReturnValue({ loading, ent, hasFlag });
+  useUserAccess.mockReturnValue({ isLoading: accessLoading, hasPremium });
 }
 
 const LOCKED = "Upgrade to unlock";
@@ -63,10 +73,18 @@ function renderGate(flag: string) {
 describe("RequireFeature — subscription gating UI states", () => {
   beforeEach(() => {
     useEntitlements.mockReset();
+    useUserAccess.mockReset();
   });
 
   it("shows the locked fallback while entitlements are loading", () => {
     setEntitlements({ loading: true, ent: null });
+    renderGate("premium");
+    expect(screen.getByText(LOCKED)).toBeInTheDocument();
+    expect(screen.queryByText(UNLOCKED)).not.toBeInTheDocument();
+  });
+
+  it("shows the locked fallback while canonical access is loading", () => {
+    setEntitlements({ accessLoading: true, hasPremium: true });
     renderGate("premium");
     expect(screen.getByText(LOCKED)).toBeInTheDocument();
     expect(screen.queryByText(UNLOCKED)).not.toBeInTheDocument();
@@ -92,15 +110,27 @@ describe("RequireFeature — subscription gating UI states", () => {
     it("unlocks an active premium (paid) user", () => {
       setEntitlements({
         ent: makeEnt({ is_premium: true, status: "active" }),
+        hasPremium: true,
       });
       renderGate("premium");
       expect(screen.getByText(UNLOCKED)).toBeInTheDocument();
       expect(screen.queryByText(LOCKED)).not.toBeInTheDocument();
     });
 
-    it("locks a premium user whose subscription is not active", () => {
+    it("unlocks a trialing premium user through canonical access", () => {
+      setEntitlements({
+        ent: makeEnt({ is_premium: true, status: "trialing" }),
+        hasPremium: true,
+      });
+      renderGate("premium");
+      expect(screen.getByText(UNLOCKED)).toBeInTheDocument();
+      expect(screen.queryByText(LOCKED)).not.toBeInTheDocument();
+    });
+
+    it("locks a premium-looking user whose canonical access is not premium", () => {
       setEntitlements({
         ent: makeEnt({ is_premium: true, status: "canceled" }),
+        hasPremium: false,
       });
       renderGate("is_premium");
       expect(screen.getByText(LOCKED)).toBeInTheDocument();

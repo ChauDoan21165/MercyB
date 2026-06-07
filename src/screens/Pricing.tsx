@@ -30,6 +30,7 @@ import PaywallExperiment from "@/components/pricing/PaywallExperiment";
 import SeoMeta from "@/components/seo/SeoMeta";
 import { Bilingual } from "@/components/Bilingual";
 import { useAuth } from "@/providers/AuthProvider";
+import { useUserAccess } from "@/hooks/useUserAccess";
 
 type PlanKey = "level0" | "month" | "year";
 type PaidPlanKey = "month" | "year";
@@ -148,6 +149,7 @@ function BiText({ en, vi }: { en: string; vi: string }) {
 export default function Pricing() {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const access = useUserAccess();
 
   // Platform gate — iOS uses Apple IAP via RevenueCat per Apple 3.1.1.
   // Web + Android keep the existing Stripe flow unchanged.
@@ -278,8 +280,12 @@ export default function Pricing() {
     },
   ], []);
 
-  const hasPremium      = entitlement?.is_premium === true;
+  const hasPremium      = access.hasPremium;
   const currentPriceId  = String(entitlement?.price_id ?? "").trim();
+
+  useEffect(() => {
+    if (hasPremium) setShowAlreadySubscribedPanel(true);
+  }, [hasPremium]);
 
   useEffect(() => {
     if (trackedPricingViewed.current) return;
@@ -295,7 +301,7 @@ export default function Pricing() {
         const result = await fetchMyEntitlement();
         if (!mounted) return;
         setEntitlement(result as EntitlementResponse);
-        setShowAlreadySubscribedPanel(result?.is_premium === true);
+        setShowAlreadySubscribedPanel(access.hasPremium);
       } catch {
         if (!mounted) return;
         setEntitlement(null);
@@ -326,7 +332,7 @@ export default function Pricing() {
     const latest = await fetchMyEntitlement().catch(() => null);
     if (latest) {
       setEntitlement(latest as EntitlementResponse);
-      setShowAlreadySubscribedPanel(latest.is_premium === true);
+      setShowAlreadySubscribedPanel(access.hasPremium);
     }
   }
 
