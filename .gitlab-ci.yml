@@ -225,6 +225,25 @@ variables:
   - scripts/**/*
   - .gitlab-ci.yml
 
+.ai_tutor_golden_flow_changes: &ai_tutor_golden_flow_changes
+  - package.json
+  - package-lock.json
+  - vite.config.*
+  - vitest.config.*
+  - src/lib/tutor/**/*
+  - src/lib/speak/**/*
+  - src/lib/grammar/**/*
+  - src/lib/logic/**/*
+  - src/lib/ai-tutor/**/*
+  - src/components/ai-tutor/**/*
+  - src/components/audio/TalkingFacePlayButton.tsx
+  - src/components/teacher-mercy/TeacherMercyVoiceControls.tsx
+  - src/hooks/usePronunciationRecorder.ts
+  - src/pages/practice/PronunciationDrillsPage.tsx
+  - supabase/functions/ai-tutor/**/*
+  - docs/ai-tutor/AI_TUTOR_GOLDEN_FLOW_SPEC.md
+  - .gitlab-ci.yml
+
 # Reusable rules: protected branch pushes run full validation regardless
 # of changes. Merge requests use changes filters to skip heavy work for
 # docs-only or unrelated updates.
@@ -261,6 +280,15 @@ variables:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
       changes: *module_validation_changes
 
+.ai_tutor_golden_flow_rules: &ai_tutor_golden_flow_rules
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+      changes: *ai_tutor_golden_flow_changes
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *ai_tutor_golden_flow_changes
+
 .manual_shared_app_rules: &manual_shared_app_rules
   rules:
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
@@ -291,6 +319,15 @@ variables:
       when: manual
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
       changes: *module_validation_changes
+      when: manual
+
+.manual_shared_ai_tutor_golden_flow_rules: &manual_shared_ai_tutor_golden_flow_rules
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+      changes: *ai_tutor_golden_flow_changes
+      when: manual
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *ai_tutor_golden_flow_changes
       when: manual
 
 .manual_shared_fallback: &manual_shared_fallback
@@ -426,6 +463,9 @@ variables:
     esac
   - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL
 
+.ai_tutor_quality_gate_script: &ai_tutor_quality_gate_script
+  - npm run test:ai-tutor-golden-flow
+
 # ── `test` stage jobs ──────────────────────────────────────────────────
 
 # `build` — typecheck + edge-fn typecheck + Deno check + bundle build +
@@ -484,6 +524,19 @@ test:shared-fallback:
   stage: test
   parallel: 2
   script: *test_shard_script
+
+ai-tutor-quality-gate:
+  <<: [*node_job, *local_runner, *ai_tutor_golden_flow_rules]
+  stage: test
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  script: *ai_tutor_quality_gate_script
+
+ai-tutor-quality-gate:shared-fallback:
+  <<: [*node_job, *manual_shared_fallback, *manual_shared_ai_tutor_golden_flow_rules]
+  stage: test
+  script: *ai_tutor_quality_gate_script
 
 delete-account-guard:
   <<: [*node_job, *local_runner]
