@@ -9,7 +9,10 @@ import { FEATURE_FLAGS } from "@/lib/featureFlags";
 import { NOTIFICATION_IDS } from "./types";
 import { cancel } from "./localScheduler";
 import { requestNotificationPermissionOnce } from "./permissions";
-import { refreshNotificationSchedule } from "./lifecycle";
+import {
+  refreshNotificationSchedule,
+  suppressStreakSaveForToday,
+} from "./lifecycle";
 
 export interface CompletedActivity {
   /** Where the completion came from, e.g. "room", "vocabulary", "reflection". */
@@ -20,11 +23,12 @@ export interface CompletedActivity {
 
 /**
  * Called from pointsService on the first points-earning action of the local
- * day. Cancels the pending streak-save warning (the streak is now safe) and
- * recomputes the schedule.
+ * day. Suppresses streak-save for the rest of today (durable, survives later
+ * refreshes), cancels the pending warning, and recomputes the schedule.
  */
 export function onFirstActionOfDay(): void {
   if (!FEATURE_FLAGS.FEATURE_NOTIFICATIONS) return;
+  suppressStreakSaveForToday();
   void cancel([NOTIFICATION_IDS.streak_save]);
   void refreshNotificationSchedule();
 }
