@@ -55,6 +55,13 @@ export type ScheduleDecision =
     }
   | { kind: "cancel"; id: number };
 
+type ScheduleNativeDecision = Extract<
+  ScheduleDecision,
+  { kind: "scheduleDaily" | "scheduleOneShot" }
+>;
+
+const lastScheduledDecisions = new Map<number, ScheduleNativeDecision>();
+
 function resolveCopyLang(): CopyLang {
   // Vietnamese-first product default. (Native-language read can be wired later;
   // kept deterministic here for the MVP.)
@@ -212,9 +219,45 @@ export function suppressStreakSaveForToday(now: Date = new Date()): void {
   }
 }
 
+function cloneNativeDecision(d: ScheduleNativeDecision): ScheduleNativeDecision {
+  if (d.kind === "scheduleOneShot") {
+    return { ...d, at: new Date(d.at) };
+  }
+  return { ...d };
+}
+
+function sameNativeDecision(
+  a: ScheduleNativeDecision | undefined,
+  b: ScheduleNativeDecision,
+): boolean {
+  if (!a || a.kind !== b.kind || a.id !== b.id) return false;
+  switch (b.kind) {
+    case "scheduleDaily":
+      if (a.kind !== "scheduleDaily") return false;
+      return (
+        a.hour === b.hour &&
+        a.minute === b.minute &&
+        a.title === b.title &&
+        a.body === b.body
+      );
+    case "scheduleOneShot":
+      if (a.kind !== "scheduleOneShot") return false;
+      return (
+        a.at.getTime() === b.at.getTime() &&
+        a.title === b.title &&
+        a.body === b.body
+      );
+  }
+}
+
+export function __resetDecisionDedupForTests(): void {
+  lastScheduledDecisions.clear();
+}
+
 async function applyDecision(d: ScheduleDecision): Promise<void> {
   switch (d.kind) {
     case "scheduleDaily":
+      if (sameNativeDecision(lastScheduledDecisions.get(d.id), d)) return;
       await scheduleRepeatingDaily({
         id: d.id,
         hour: d.hour,
@@ -222,17 +265,21 @@ async function applyDecision(d: ScheduleDecision): Promise<void> {
         title: d.title,
         body: d.body,
       });
+      lastScheduledDecisions.set(d.id, cloneNativeDecision(d));
       return;
     case "scheduleOneShot":
+      if (sameNativeDecision(lastScheduledDecisions.get(d.id), d)) return;
       await scheduleOneShotLocal({
         id: d.id,
         at: d.at,
         title: d.title,
         body: d.body,
       });
+      lastScheduledDecisions.set(d.id, cloneNativeDecision(d));
       return;
     case "cancel":
       await cancel([d.id]);
+      lastScheduledDecisions.delete(d.id);
       return;
   }
 }

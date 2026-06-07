@@ -10,8 +10,8 @@
 //     nothing scheduled. (refresh/boot must NEVER prompt — it only ever
 //     *checks* permission; the prompt lives solely in onFirstCompletedActivity.)
 //   - permission granted → schedules exactly the planned channels.
-//   - re-running the refresh reuses the same notification ids (replace, not
-//     duplicate) → safe to call on every foreground/background pass.
+//   - re-running an unchanged refresh dedups identical native schedule
+//     decisions, but a changed same-id decision still re-issues.
 
 import { vi, describe, it, expect, beforeEach } from "vitest";
 
@@ -31,10 +31,10 @@ const h = vi.hoisted(() => ({
     timezone: "Asia/Ho_Chi_Minh",
     streakDays: 5,
     serverStreaksEnabled: true,
-    serverLastStudiedDate: "2026-06-01",
+    serverLastStudiedDate: "2026-06-01" as string | null,
     isAtRiskToday: true,
     dueCount: 3,
-    nextScheduledAt: null,
+    nextScheduledAt: null as string | null,
   })),
   scheduleDaily: vi.fn(async (..._a: unknown[]) => {}),
   scheduleOneShot: vi.fn(async (..._a: unknown[]) => {}),
@@ -53,11 +53,38 @@ vi.mock("../localScheduler", () => ({
   cancel: h.cancel,
 }));
 
-import { refreshNotificationSchedule, planAll } from "../lifecycle";
+import {
+  refreshNotificationSchedule,
+  planAll,
+  __resetDecisionDedupForTests,
+} from "../lifecycle";
 import { NOTIFICATION_IDS } from "../types";
 import type { HabitSnapshot, NotificationPreferences } from "../types";
 
 const NOW = new Date(2026, 5, 2, 3, 0, 0);
+
+function defaultPrefs(): NotificationPreferences {
+  return {
+    dailyReminderEnabled: true,
+    dailyReminderLocalTime: "19:30",
+    streakSaveEnabled: true,
+    timezone: "Asia/Ho_Chi_Minh",
+  };
+}
+
+function defaultSnapshot(): HabitSnapshot {
+  return {
+    todayLocal: "2026-06-02",
+    yesterdayLocal: "2026-06-01",
+    timezone: "Asia/Ho_Chi_Minh",
+    streakDays: 5,
+    serverStreaksEnabled: true,
+    serverLastStudiedDate: "2026-06-01",
+    isAtRiskToday: true,
+    dueCount: 3,
+    nextScheduledAt: null,
+  };
+}
 
 function allMockClear() {
   for (const fn of [
@@ -67,10 +94,13 @@ function allMockClear() {
 }
 
 beforeEach(() => {
+  __resetDecisionDedupForTests();
+  allMockClear();
   h.flags.FEATURE_NOTIFICATIONS = true;
   h.getUser.mockResolvedValue({ data: { user: { id: "u1" } } });
   h.checkPermission.mockResolvedValue(true);
-  allMockClear();
+  h.loadPrefs.mockResolvedValue(defaultPrefs());
+  h.buildSnapshot.mockResolvedValue(defaultSnapshot());
 });
 
 describe("refreshNotificationSchedule — gate before any work", () => {
@@ -147,14 +177,47 @@ describe("refreshNotificationSchedule — granted: schedules the planned channel
     expect(cancelledIds).toContain(NOTIFICATION_IDS.streak_save);
   });
 
-  it("is idempotent across passes — reuses the same ids (replace, never duplicate)", async () => {
+  it("dedups identical native schedule decisions across refresh passes", async () => {
     await refreshNotificationSchedule(NOW);
-    const firstDailyId = (h.scheduleDaily.mock.calls[0][0] as { id: number }).id;
+    expect(h.scheduleDaily).toHaveBeenCalledTimes(1);
+    expect(h.scheduleOneShot).toHaveBeenCalledTimes(2);
     allMockClear();
 
     await refreshNotificationSchedule(NOW);
+    expect(h.scheduleDaily).not.toHaveBeenCalled();
+    expect(h.scheduleOneShot).not.toHaveBeenCalled();
+  });
+
+  it("re-issues changed same-id decisions instead of treating the id as enough", async () => {
+    await refreshNotificationSchedule(NOW);
+    allMockClear();
+
+    h.loadPrefs.mockResolvedValue({
+      ...defaultPrefs(),
+      dailyReminderLocalTime: "20:45",
+    });
+    h.buildSnapshot.mockResolvedValue({
+      ...defaultSnapshot(),
+      dueCount: 4,
+    });
+
+    await refreshNotificationSchedule(NOW);
+
     expect(h.scheduleDaily).toHaveBeenCalledTimes(1);
-    expect((h.scheduleDaily.mock.calls[0][0] as { id: number }).id).toBe(firstDailyId);
+    expect(h.scheduleDaily.mock.calls[0][0]).toMatchObject({
+      id: NOTIFICATION_IDS.daily_reminder,
+      hour: 20,
+      minute: 45,
+    });
+
+    const oneShotCalls = h.scheduleOneShot.mock.calls.map((c) => c[0] as {
+      id: number;
+      title: string;
+      body: string;
+    });
+    expect(oneShotCalls).toHaveLength(1);
+    expect(oneShotCalls[0]).toMatchObject({ id: NOTIFICATION_IDS.due_review });
+    expect(`${oneShotCalls[0].title} ${oneShotCalls[0].body}`).toContain("4");
   });
 });
 
