@@ -26,6 +26,7 @@ vi.mock("@/lib/supabaseClient", () => {
         signOut: vi.fn(async () => ({ error: null })),
         _unsubscribe: unsubscribe,
       },
+      rpc: vi.fn(async () => ({ data: null, error: null })),
       from: vi.fn(() => ({
         select: vi.fn(() => ({
           eq: vi.fn(() => ({
@@ -71,8 +72,41 @@ import { supabase } from "@/lib/supabaseClient";
 const onAuthStateChange = vi.mocked(supabase.auth.onAuthStateChange);
 const getSession = vi.mocked(supabase.auth.getSession);
 const signOut = vi.mocked(supabase.auth.signOut);
+const rpc = vi.mocked(supabase.rpc);
 const unsubscribe = (supabase.auth as unknown as { _unsubscribe: () => void })
   ._unsubscribe as ReturnType<typeof vi.fn>;
+
+function rpcSuccess<T>(data: T) {
+  return {
+    data,
+    error: null,
+    count: null,
+    status: 200,
+    statusText: "OK",
+    success: true as const,
+  };
+}
+
+function rpcFailure(message: string) {
+  const error = {
+    message,
+    details: "",
+    hint: "",
+    code: "PGRST_TEST",
+    name: "PostgrestError",
+  };
+  return {
+    data: null,
+    error: {
+      ...error,
+      toJSON: () => error,
+    },
+    count: null,
+    status: 400,
+    statusText: "Bad Request",
+    success: false as const,
+  };
+}
 
 function makeSession(over: Partial<Session["user"]> = {}): Session {
   return {
@@ -105,7 +139,10 @@ describe("AuthProvider", () => {
     getSession.mockResolvedValue({ data: { session: null }, error: null });
     signOut.mockClear();
     signOut.mockResolvedValue({ error: null });
+    rpc.mockClear();
+    rpc.mockResolvedValue(rpcSuccess(null));
     unsubscribe.mockClear();
+    sessionStorage.clear();
     vi.mocked(activateSentry).mockClear();
   });
 
@@ -135,6 +172,62 @@ describe("AuthProvider", () => {
     expect(result.current.session).not.toBeNull();
     expect(result.current.isLoading).toBe(false);
     expect(activateSentry).toHaveBeenCalledWith("auth");
+  });
+
+  it("claims a pending family invite only after verified auth and confirmed RPC success", async () => {
+    sessionStorage.setItem("mb:family-invite-token", "ABCDEF234567");
+    rpc.mockResolvedValueOnce(rpcSuccess(true));
+    const { result } = renderHook(() => useAuth(), { wrapper });
+    await waitFor(() => expect(authCallback).not.toBeNull());
+
+    act(() => authCallback!("SIGNED_IN", makeSession()));
+
+    await waitFor(() =>
+      expect(rpc).toHaveBeenCalledWith("mark_family_invite_signed_up", {
+        p_token: "ABCDEF234567",
+        p_referred_user_id: "user-1",
+      }),
+    );
+    await waitFor(() => expect(result.current.user?.id).toBe("user-1"));
+    expect(sessionStorage.getItem("mb:family-invite-token")).toBeNull();
+  });
+
+  it("does not claim a family invite for an unverified auth event", async () => {
+    sessionStorage.setItem("mb:family-invite-token", "ABCDEF234567");
+    const { result } = renderHook(() => useAuth(), { wrapper });
+    await waitFor(() => expect(authCallback).not.toBeNull());
+
+    act(() =>
+      authCallback!("SIGNED_IN", makeSession({ email_confirmed_at: undefined })),
+    );
+
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(rpc).not.toHaveBeenCalledWith(
+      "mark_family_invite_signed_up",
+      expect.anything(),
+    );
+    expect(sessionStorage.getItem("mb:family-invite-token")).toBe(
+      "ABCDEF234567",
+    );
+  });
+
+  it("keeps a pending family invite token when the claim RPC transport fails", async () => {
+    sessionStorage.setItem("mb:family-invite-token", "ABCDEF234567");
+    rpc.mockResolvedValueOnce(rpcFailure("network unavailable"));
+    renderHook(() => useAuth(), { wrapper });
+    await waitFor(() => expect(authCallback).not.toBeNull());
+
+    act(() => authCallback!("SIGNED_IN", makeSession()));
+
+    await waitFor(() =>
+      expect(rpc).toHaveBeenCalledWith("mark_family_invite_signed_up", {
+        p_token: "ABCDEF234567",
+        p_referred_user_id: "user-1",
+      }),
+    );
+    expect(sessionStorage.getItem("mb:family-invite-token")).toBe(
+      "ABCDEF234567",
+    );
   });
 
   it("treats an unverified-email session as signed-out", async () => {

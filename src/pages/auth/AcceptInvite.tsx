@@ -39,6 +39,8 @@ export default function AcceptInvite(): React.ReactElement {
   const [state, setState] = useState<
     | { kind: "loading" }
     | { kind: "expired" }
+    | { kind: "revoked" }
+    | { kind: "accepted" }
     | { kind: "not_found" }
     | { kind: "ok"; invite: InvitationRow; inviter: InviterRow }
   >({ kind: "loading" });
@@ -59,8 +61,16 @@ export default function AcceptInvite(): React.ReactElement {
         return;
       }
       const invite = data as InvitationRow;
-      if (Date.parse(invite.expires_at) <= Date.now()) {
+      if (invite.status === "revoked") {
+        setState({ kind: "revoked" });
+        return;
+      }
+      if (invite.status === "expired" || Date.parse(invite.expires_at) <= Date.now()) {
         setState({ kind: "expired" });
+        return;
+      }
+      if (invite.status === "signed_up" || invite.status === "converted") {
+        setState({ kind: "accepted" });
         return;
       }
       // Look up the inviter's display name (RLS allows a single lookup;
@@ -110,6 +120,40 @@ export default function AcceptInvite(): React.ReactElement {
       </main>
     );
   }
+  if (state.kind === "revoked") {
+    return (
+      <main className="px-4 py-12 max-w-md mx-auto text-center">
+        <h1 className="text-2xl font-bold mb-2">Lời mời không còn hiệu lực</h1>
+        <p className="text-xs italic text-black/55 mb-4">This invitation is no longer active</p>
+        <p className="text-sm text-black/75 mb-6">
+          Bạn vẫn có thể đăng ký miễn phí ở MercyBlade.
+        </p>
+        <button
+          onClick={() => navigate("/signin")}
+          className="px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold"
+        >
+          Tạo tài khoản miễn phí / Sign up free
+        </button>
+      </main>
+    );
+  }
+  if (state.kind === "accepted") {
+    return (
+      <main className="px-4 py-12 max-w-md mx-auto text-center">
+        <h1 className="text-2xl font-bold mb-2">Đã nhận lời mời</h1>
+        <p className="text-xs italic text-black/55 mb-4">Invitation accepted</p>
+        <p className="text-sm text-black/75 mb-6">
+          Tài khoản của bạn đã được ghi nhận từ lời mời này.
+        </p>
+        <button
+          onClick={() => navigate("/")}
+          className="px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold"
+        >
+          Tiếp tục / Continue
+        </button>
+      </main>
+    );
+  }
   if (state.kind === "not_found") {
     return (
       <main className="px-4 py-12 max-w-md mx-auto text-center">
@@ -138,7 +182,7 @@ export default function AcceptInvite(): React.ReactElement {
     } catch {
       // ignore
     }
-    navigate(`/signin?next=/invite/${token}/welcome`);
+    navigate(`/signin?returnTo=${encodeURIComponent(`/invite/${token}`)}`);
   };
 
   return (
