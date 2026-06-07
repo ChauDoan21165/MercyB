@@ -23,11 +23,19 @@ import {
   scheduleOneShotLocal,
   cancel,
 } from "./localScheduler";
+import { getLocalStudyDates } from "./dateMath";
 
 /** Streak-save fires at 20:00 device-local. */
 const STREAK_SAVE_HOUR = 20;
 /** Due-review one-shot fires ~15 minutes after a refresh when cards are due. */
 const DUE_REVIEW_DELAY_MS = 15 * 60 * 1000;
+// Once the learner acts today, streak-save is suppressed for the rest of THIS
+// local day — independent of when the server's streak_last_studied_date catches
+// up. Without this, onFirstActionOfDay's own refresh (and any later foreground
+// refresh) can re-arm the 20:00 reminder while the server snapshot still reads
+// "at risk", nagging someone who already practiced. Stored as an ISO instant;
+// compared on the snapshot's local-day grain.
+const STREAK_SAVE_SUPPRESSED_AT_KEY = "mb.notif.streakSaveSuppressedAt.v1";
 
 export type ScheduleDecision =
   | {
@@ -87,16 +95,20 @@ export function planStreakSave(
   featureOn: boolean,
   now: Date = new Date(),
   lang: CopyLang = "vi",
+  streakSaveSuppressedToday = false,
 ): ScheduleDecision {
   const id = NOTIFICATION_IDS.streak_save;
   // isAtRiskToday already encodes: serverStreaksEnabled && streakDays > 0 &&
   // lastStudied === yesterdayLocal && lastStudied !== todayLocal.
+  // streakSaveSuppressedToday wins even when the server snapshot still reads
+  // at-risk (propagation lag), so a learner who already practiced is not nagged.
   const eligible =
     featureOn &&
     permissionGranted &&
     snapshot.serverStreaksEnabled &&
     prefs.streakSaveEnabled &&
-    snapshot.isAtRiskToday;
+    snapshot.isAtRiskToday &&
+    !streakSaveSuppressedToday;
   if (!eligible) return { kind: "cancel", id };
 
   const at = new Date(now);
@@ -142,11 +154,60 @@ export function planAll(
   now: Date = new Date(),
   lang: CopyLang = "vi",
 ): ScheduleDecision[] {
+  const streakSaveSuppressedToday = isStreakSaveSuppressedForSnapshot(snapshot);
   return [
     planDailyReminder(prefs, permissionGranted, featureOn, lang),
-    planStreakSave(snapshot, prefs, permissionGranted, featureOn, now, lang),
+    planStreakSave(
+      snapshot,
+      prefs,
+      permissionGranted,
+      featureOn,
+      now,
+      lang,
+      streakSaveSuppressedToday,
+    ),
     planDueReview(snapshot, permissionGranted, featureOn, now, lang),
   ];
+}
+
+/** Read the stored streak-save suppression instant, or null if unset/invalid. */
+function readSuppressedAt(): Date | null {
+  try {
+    const value = localStorage.getItem(STREAK_SAVE_SUPPRESSED_AT_KEY);
+    if (!value) return null;
+    const at = new Date(value);
+    return Number.isNaN(at.getTime()) ? null : at;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * True when streak-save was suppressed on the SAME local day as the snapshot
+ * (computed in the snapshot's timezone). A suppression from a previous local
+ * day does not carry over — streak-save can fire again the next day.
+ */
+function isStreakSaveSuppressedForSnapshot(snapshot: HabitSnapshot): boolean {
+  const suppressedAt = readSuppressedAt();
+  if (!suppressedAt) return false;
+  return (
+    getLocalStudyDates(snapshot.timezone, suppressedAt).todayLocal ===
+    snapshot.todayLocal
+  );
+}
+
+/**
+ * Mark streak-save as handled for today (the learner has practiced). Called
+ * from onFirstActionOfDay alongside the direct cancel; this is the durable
+ * half — the cancel clears the pending one-shot, this stops any later refresh
+ * from re-arming it before the server snapshot catches up.
+ */
+export function suppressStreakSaveForToday(now: Date = new Date()): void {
+  try {
+    localStorage.setItem(STREAK_SAVE_SUPPRESSED_AT_KEY, now.toISOString());
+  } catch {
+    /* storage unavailable — the direct cancel still runs */
+  }
 }
 
 async function applyDecision(d: ScheduleDecision): Promise<void> {

@@ -4,12 +4,16 @@ const h = vi.hoisted(() => ({
   flags: { FEATURE_NOTIFICATIONS: true },
   cancel: vi.fn(async () => {}),
   refresh: vi.fn(async () => {}),
+  suppress: vi.fn(() => {}),
   requestOnce: vi.fn(async () => false),
 }));
 
 vi.mock("@/lib/featureFlags", () => ({ FEATURE_FLAGS: h.flags }));
 vi.mock("../localScheduler", () => ({ cancel: h.cancel }));
-vi.mock("../lifecycle", () => ({ refreshNotificationSchedule: h.refresh }));
+vi.mock("../lifecycle", () => ({
+  refreshNotificationSchedule: h.refresh,
+  suppressStreakSaveForToday: h.suppress,
+}));
 vi.mock("../permissions", () => ({
   requestNotificationPermissionOnce: h.requestOnce,
 }));
@@ -27,6 +31,7 @@ beforeEach(() => {
   h.flags.FEATURE_NOTIFICATIONS = true;
   h.cancel.mockClear();
   h.refresh.mockClear();
+  h.suppress.mockClear();
   h.requestOnce.mockClear();
 });
 
@@ -38,14 +43,16 @@ describe("activityIntegration — flag OFF makes every hook inert", () => {
     onReviewQueueChanged();
     await flush();
     expect(h.cancel).not.toHaveBeenCalled();
+    expect(h.suppress).not.toHaveBeenCalled();
     expect(h.requestOnce).not.toHaveBeenCalled();
     expect(h.refresh).not.toHaveBeenCalled();
   });
 });
 
 describe("activityIntegration — flag ON", () => {
-  it("onFirstActionOfDay cancels the streak-save (1002) and refreshes", () => {
+  it("onFirstActionOfDay suppresses today, cancels the streak-save (1002), and refreshes", () => {
     onFirstActionOfDay();
+    expect(h.suppress).toHaveBeenCalledTimes(1); // durable same-day suppression
     expect(h.cancel).toHaveBeenCalledWith([NOTIFICATION_IDS.streak_save]);
     expect(h.refresh).toHaveBeenCalledTimes(1);
   });
