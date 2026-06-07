@@ -15,7 +15,10 @@ export interface PronunciationRecorderState {
   stopRecording: () => Promise<void>;
   reset: () => void;
   clearRecordedAudio: () => void;
-  playReference: (text: string, rate?: number) => Promise<void>;
+  /** Resolves true only if the model sentence actually played (spoke), false
+   *  if speech playback was unavailable or failed. Callers (compare-by-ear)
+   *  use this to avoid pretending a comparison ran when the model was silent. */
+  playReference: (text: string, rate?: number) => Promise<boolean>;
   playRecorded: () => Promise<void>;
   compareWithReference: (
     text: string,
@@ -198,30 +201,35 @@ export function usePronunciationRecorder(): PronunciationRecorderState {
   }, [cleanupStream, lastRecordedAudioUrl, stopPlayback]);
 
   const playReference = useCallback(
-    async (text: string, rate = 0.85) => {
+    async (text: string, rate = 0.85): Promise<boolean> => {
       const phrase = String(text || '').trim();
       if (!phrase) {
         setErrorState('There is no reference phrase to play.');
-        return;
+        return false;
       }
 
       const synth = getSpeechSynthesisSafe();
       if (!synth) {
         setErrorState('Speech playback is not supported in this browser.');
-        return;
+        return false;
       }
 
       stopPlayback();
       setErrorState(null);
 
-      await new Promise<void>((resolve) => {
+      return await new Promise<boolean>((resolve) => {
         let finished = false;
+        // `spoke` stays false unless the utterance actually started/ended
+        // without error. A silent failure (no voices, engine paused, the
+        // 8s watchdog with no audio) resolves false so callers don't pretend.
+        let spoke = false;
+        let errored = false;
 
         const finish = () => {
           if (finished) return;
           finished = true;
           setIsPlayingReference(false);
-          resolve();
+          resolve(spoke);
         };
 
         try {
@@ -230,17 +238,21 @@ export function usePronunciationRecorder(): PronunciationRecorderState {
           utterance.rate = rate;
 
           utterance.onstart = () => {
+            spoke = true;
             setIsPlayingReference(true);
           };
 
           utterance.onend = () => {
+            if (!errored) spoke = true;
             finish();
           };
 
           utterance.onerror = () => {
             console.warn('Speech synthesis failed');
+            errored = true;
+            spoke = false;
             setErrorState(
-              'Reference playback is unavailable on this device right now. You can still record and compare your own audio.'
+              'Reference playback is unavailable on this device right now.'
             );
             finish();
           };
@@ -257,8 +269,10 @@ export function usePronunciationRecorder(): PronunciationRecorderState {
           }
         } catch (err) {
           console.warn('Speech synthesis crash', err);
+          errored = true;
+          spoke = false;
           setErrorState(
-            'Reference playback is unavailable on this device right now. You can still record and compare your own audio.'
+            'Reference playback is unavailable on this device right now.'
           );
           finish();
         }
@@ -325,7 +339,18 @@ export function usePronunciationRecorder(): PronunciationRecorderState {
       setIsComparing(true);
 
       try {
-        await playReference(phrase, rate);
+        const spokeModel = await playReference(phrase, rate);
+        if (!spokeModel) {
+          // The model sentence did not actually play. Do NOT fall through to
+          // playing only the learner's recording — that would pretend a
+          // comparison happened. Surface a clear message instead.
+          setErrorState(
+            'Không phát được câu mẫu trên thiết bị này, nên chưa so sánh được. ' +
+              'Hãy bấm “Mercy đọc” để nghe mẫu, rồi “Nghe bản thu của bạn”. / ' +
+              'Could not play the model sentence on this device, so the comparison did not run.'
+          );
+          return;
+        }
         await delay(gapMs);
         await playRecorded();
       } finally {
