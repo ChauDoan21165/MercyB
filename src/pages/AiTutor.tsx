@@ -1030,6 +1030,7 @@ export default function AiTutorPage() {
     const spoken = normalizeSpokenText(spokenText);
     if (!targetSentence || !spoken || spoken === lastRecordedSpeakAttemptRef.current) return;
     lastRecordedSpeakAttemptRef.current = spoken;
+    const transcriptClarity = assessSpeakTranscriptClarity(spoken);
     const salience = detectBilingualSaliencePivot(spoken);
     const stance = classifyResponseStance({
       learnerText: spoken,
@@ -1045,18 +1046,18 @@ export default function AiTutorPage() {
         };
       }
 
-      if (stance.stance === "needs_clarification") {
+      if (!transcriptClarity.clear) {
         return {
           ...current,
-          currentQuestion: SPEAK_STANCE_CLARIFICATION,
+          currentQuestion: SPEAK_TRANSCRIPT_ASK_TO_REPEAT,
           currentIsPivot: false,
         };
       }
 
-      if (!assessSpeakTranscriptClarity(spoken).clear) {
+      if (stance.stance === "needs_clarification") {
         return {
           ...current,
-          currentQuestion: SPEAK_TRANSCRIPT_ASK_TO_REPEAT,
+          currentQuestion: SPEAK_STANCE_CLARIFICATION,
           currentIsPivot: false,
         };
       }

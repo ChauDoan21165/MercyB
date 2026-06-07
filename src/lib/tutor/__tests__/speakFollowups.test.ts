@@ -7,6 +7,7 @@ import {
   assessSpeakTranscriptClarity,
   calculateSentenceMatchPercent,
   extractSalientKeyword,
+  getSpeakFollowUpTopicId,
   isSpeakTranscriptUnclearForFollowUp,
   resolveSpeakFollowUpTopicId,
   selectSpeakFollowUp,
@@ -280,6 +281,9 @@ describe("speakFollowups", () => {
         "I bought the i'm",
         "for the canada",
         "with the i'm",
+        "the some",
+        "I chose some",
+        "I need a head because summer is very sunny in Canada",
         "the and of to",
         "I bought the",
       ];
@@ -313,6 +317,18 @@ describe("speakFollowups", () => {
       });
       expect(assessSpeakTranscriptClarity("I bought the i'm").clear).toBe(false);
       expect(assessSpeakTranscriptClarity("for the canada").clear).toBe(false);
+      expect(assessSpeakTranscriptClarity("the some")).toMatchObject({
+        clear: false,
+        reason: "function_word_salad:the_some",
+      });
+      expect(assessSpeakTranscriptClarity("I need a head because summer is very sunny in Canada")).toMatchObject({
+        clear: false,
+        reason: "hat_homophone_confusion:head",
+      });
+      expect(assessSpeakTranscriptClarity("That question does not make sense.")).toMatchObject({
+        clear: false,
+        reason: "learner_reports_unclear_follow_up",
+      });
       expect(assessSpeakTranscriptClarity("the and of to")).toMatchObject({
         clear: false,
         reason: "function_word_salad:the_and_of_to",
@@ -320,9 +336,12 @@ describe("speakFollowups", () => {
 
       const ordinaryLearnerSentences = [
         "I want to buy a hat.",
+        "I bought a bicycle yesterday.",
         "I bought a hat.",
         "I want buy a hat.",
         "I bought a hat yesterday.",
+        "I need a hat because it is sunny.",
+        "I bought it at a second-hand shop.",
         "I need help with my rent.",
         "I want order noodles.",
         "I wait you.",
@@ -349,6 +368,7 @@ describe("speakFollowups", () => {
     it("does not promote unsafe STT fragments into salience questions", () => {
       expect(extractSalientKeyword("I'm going to buy a lot.")).toBeNull();
       expect(extractSalientKeyword("I am from Canada.")).toBeNull();
+      expect(extractSalientKeyword("some")).toBeNull();
 
       const selection = selectSpeakFollowUpByTopicId("topic-shopping", {
         askedQuestions: ["What do you want to buy?"],
@@ -361,8 +381,64 @@ describe("speakFollowups", () => {
       )).toBe(true);
       expect(selection.question).not.toBe("Why do you want to buy the i'm?");
       expect(selection.question).not.toBe("What size or color works for the canada?");
+      expect(selection.question).not.toBe("Why did you choose the some?");
+      expect(selection.question).not.toBe("What do you like about the head?");
       expect(selection.question.toLowerCase()).not.toContain("the i'm");
       expect(selection.question.toLowerCase()).not.toContain("the canada");
+    });
+
+    it("asks for repeat instead of generating invalid noun-target follow-ups", () => {
+      const unsafeCases = [
+        {
+          learnerText: "some",
+          forbidden: "Why did you choose the some?",
+        },
+        {
+          learnerText: "I bought ahead yesterday",
+          forbidden: "What do you like about the head?",
+        },
+        {
+          learnerText: "I need a head because summer is very sunny in Canada",
+          forbidden: "What do you like about the head?",
+        },
+        {
+          learnerText: "I want to buy the i'm",
+          forbidden: "Why do you want to buy the i'm?",
+        },
+        {
+          learnerText: "I need the Canada",
+          forbidden: "What size or color works for the canada?",
+        },
+      ];
+
+      for (const { learnerText, forbidden } of unsafeCases) {
+        const selection = selectSpeakFollowUpByTopicId("generic", {
+          askedQuestions: [],
+          turnsOnTopic: 1,
+          learnerText,
+        });
+        expect(selection.question).toBe(SPEAK_TRANSCRIPT_ASK_TO_REPEAT);
+        expect(selection.question).not.toBe(forbidden);
+      }
+    });
+
+    it("still creates normal follow-ups for clear Speak sentences", () => {
+      const clearCases = [
+        "I bought a hat yesterday.",
+        "I bought a bicycle yesterday.",
+        "I need a hat because it is sunny.",
+        "I bought it at a second-hand shop.",
+      ];
+
+      for (const learnerText of clearCases) {
+        const selection = selectSpeakFollowUpByTopicId(getSpeakFollowUpTopicId(learnerText), {
+          askedQuestions: [],
+          turnsOnTopic: 0,
+          learnerText,
+        });
+        expect(selection.question).not.toBe(SPEAK_TRANSCRIPT_ASK_TO_REPEAT);
+        expect(selection.isPivot).toBe(false);
+      }
     });
 
     it("follows an arbitrary (non-bucket) topic for 4+ rounds, referencing the learner's words, no repeats, no premature pivot", () => {

@@ -533,6 +533,32 @@ describe("SpeakPracticeMode — by-ear self-compare panel (no score)", () => {
     expect(compareWithReference).toHaveBeenCalledWith("I bought a hat yesterday.");
   });
 
+  it("does not advance or mutate the Speak follow-up when compare-by-ear is clicked", () => {
+    const onMicToggle = vi.fn();
+    const onRepeatInputChange = vi.fn();
+    const onReadFollowUp = vi.fn();
+    recorderMock.current = { ...IDLE_RECORDER, lastRecordedAudioUrl: "blob:rec" };
+
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        followUpPrompt="Where did you buy it?"
+        pronunciationResult={null}
+        onMicToggle={onMicToggle}
+        onRepeatInputChange={onRepeatInputChange}
+        onReadFollowUp={onReadFollowUp}
+      />,
+    );
+
+    fireEvent.click(screen.getByTestId("self-compare-by-ear"));
+
+    expect(compareWithReference).toHaveBeenCalledWith("I bought a hat yesterday.");
+    expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+    expect(onMicToggle).not.toHaveBeenCalled();
+    expect(onRepeatInputChange).not.toHaveBeenCalled();
+    expect(onReadFollowUp).not.toHaveBeenCalled();
+  });
+
   it("surfaces a mic-denied message without breaking the rest of Speak", () => {
     recorderMock.current = {
       ...IDLE_RECORDER,
