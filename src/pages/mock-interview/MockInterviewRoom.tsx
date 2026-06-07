@@ -7,7 +7,7 @@ import {
   type ProInterviewScenario,
   type ProVertical,
 } from "@/data/mock-interviews/professional-scenarios";
-import { useEntitlements } from "@/lib/useEntitlements";
+import { useUserAccess } from "@/hooks/useUserAccess";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import {
   getPromptsForInterview,
@@ -63,10 +63,12 @@ export default function MockInterviewRoom() {
     [scenarioId],
   );
 
-  const { ent, loading: entLoading } = useEntitlements();
-
-  const isPaid = !!ent?.is_premium && ent?.status === "active";
-  const isTrial = !!ent?.is_premium && ent?.status === "trialing";
+  const access = useUserAccess();
+  const entLoading = access.isLoading;
+  // Canonical entitlement path: hasPremium is derived by useUserAccess from
+  // resolveEntitlementTier(), which already covers active/trialing premium.
+  const isPaid = access.hasPremium;
+  const isTrial = false;
 
   const [gate, setGate] = useState<GateStatus | null>(null);
   const [phase, setPhase] = useState<Phase>("intro");

@@ -14,7 +14,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
-import { useEntitlements } from "@/lib/useEntitlements";
+import { useUserAccess } from "@/hooks/useUserAccess";
 
 import { listEarnedCertificates } from "@/lib/certificates/rpc";
 import {
@@ -55,7 +55,7 @@ export function CertificatesGalleryPage(): React.ReactElement | null {
   // Entitlements drive the soft premium nudge below. Hook lives above
   // the conditional returns so hook order stays stable across renders
   // (Rules of Hooks — same lesson PR #243 already pinned for this file).
-  const { ent: entitlement, loading: entLoading } = useEntitlements();
+  const access = useUserAccess();
 
   const [earned, setEarned] = useState<EarnedCertificate[]>([]);
   const [loading, setLoading] = useState(true);
@@ -140,8 +140,8 @@ export function CertificatesGalleryPage(): React.ReactElement | null {
       {/* Premium nudge — only shown after the user has felt the value
           (≥1 earned cert), and only to non-premium accounts after the
           entitlement load resolves so it doesn't flash for paid users. */}
-      {!entLoading &&
-        entitlement?.is_premium !== true &&
+      {!access.isLoading &&
+        !access.hasPremium &&
         earned.length > 0 ? (
         <PremiumNudge />
       ) : null}
