@@ -18,6 +18,7 @@ import {
   SPEAK_TOPIC_LIBRARY,
   buildSpeakTopicCorrectionWeave,
 } from "@/lib/tutor/speakTopicLibrary";
+import { introductionSpeakTopics } from "@/lib/tutor/speakTopics/introductions";
 
 const BATCH_1_SEEDS: Array<{ id: string; seed: string }> = [
   { id: "topic-ordering-food", seed: "I want order noodles at the restaurant." },
@@ -548,7 +549,7 @@ describe("speakFollowups", () => {
 
   describe("Speak topic library batch 1", () => {
     it("keeps Batch 1 topics first and appends approved Batch 2 everyday topics", () => {
-      expect(SPEAK_TOPIC_LIBRARY.map((topic) => topic.labelEn)).toEqual([
+      expect(SPEAK_TOPIC_LIBRARY.slice(0, 20).map((topic) => topic.labelEn)).toEqual([
         "Ordering Food",
         "Family And Relatives",
         "Work",
@@ -572,6 +573,26 @@ describe("speakFollowups", () => {
       ]);
       for (const topic of SPEAK_TOPIC_LIBRARY) {
         expect(topic.followUps.length).toBeGreaterThanOrEqual(4);
+      }
+    });
+
+    it("ships the introductions scaffold as real content with L1 notes and no correction weaving", () => {
+      const libraryIds = new Set(SPEAK_TOPIC_LIBRARY.map((topic) => topic.id));
+      expect(introductionSpeakTopics).toHaveLength(3);
+
+      for (const topic of introductionSpeakTopics) {
+        expect(libraryIds.has(topic.id)).toBe(true);
+        expect(topic.followUps.length).toBeGreaterThanOrEqual(4);
+        expect(topic.l1InterferenceNotes?.length).toBeGreaterThanOrEqual(1);
+
+        const selection = selectSpeakFollowUpByTopicId(topic.id, {
+          turnsOnTopic: 0,
+          learnerText: topic.seedInputs[0],
+        });
+        expect(selection.topicId).toBe(topic.id);
+        expect(selection.isPivot).toBe(false);
+        expect(selection.correctionSignalId).toBeUndefined();
+        expect(selection.correctionStatus).toBeUndefined();
       }
     });
 
