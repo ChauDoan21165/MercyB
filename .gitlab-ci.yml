@@ -232,16 +232,28 @@ variables:
   - vitest.config.*
   - src/lib/tutor/**/*
   - src/lib/speak/**/*
+  - src/lib/speech/**/*
   - src/lib/grammar/**/*
   - src/lib/logic/**/*
   - src/lib/ai-tutor/**/*
   - src/components/ai-tutor/**/*
+  - src/components/languages/AITutorCtaBanner.tsx
+  - src/components/languages/__tests__/AITutorCtaBanner.test.tsx
+  - src/components/mercy-guide/hooks/useAITutor.ts
+  - src/components/mercy-guide/logic/**/*
+  - src/components/mercy-guide/tabs/AITutorTab.tsx
   - src/components/audio/TalkingFacePlayButton.tsx
   - src/components/teacher-mercy/TeacherMercyVoiceControls.tsx
   - src/hooks/usePronunciationRecorder.ts
+  - src/pages/AiTutor.tsx
+  - src/pages/__tests__/AiTutor*
   - src/pages/practice/PronunciationDrillsPage.tsx
+  - src/router/AppRouter.tsx
   - supabase/functions/ai-tutor/**/*
+  - tests/regression/ai-tutor-golden-flow/**/*
+  - tests/regression/golden-flow/**/*
   - docs/ai-tutor/AI_TUTOR_GOLDEN_FLOW_SPEC.md
+  - scripts/run-ai-tutor-quality-gate.mjs
   - .gitlab-ci.yml
 
 # Reusable rules: protected branch pushes run full validation regardless
