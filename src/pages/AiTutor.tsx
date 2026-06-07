@@ -220,6 +220,34 @@ const STEP7_AZURE_BATCH_ENABLED =
     ?.VITE_AZURE_PHONEME_BATCH_ENABLED === "true";
 const EMPTY_SPEAK_AUDIO_BLOB = new Blob([], { type: "audio/webm" });
 
+function buildInitialSpeakFollowUpSession(sentence: string): SpeakFollowUpSession {
+  const trimmed = sentence.trim();
+  const topicId = trimmed ? getSpeakFollowUpTopicId(trimmed) : "";
+  if (!trimmed || !topicId) {
+    return {
+      topicId,
+      turnsOnTopic: 0,
+      askedQuestions: [],
+      currentQuestion: null,
+      currentIsPivot: false,
+    };
+  }
+
+  const selection = selectSpeakFollowUpByTopicId(topicId, {
+    askedQuestions: [],
+    turnsOnTopic: 0,
+    learnerText: trimmed,
+  });
+
+  return {
+    topicId: selection.topicId,
+    turnsOnTopic: 0,
+    askedQuestions: [],
+    currentQuestion: selection.question,
+    currentIsPivot: selection.isPivot,
+  };
+}
+
 function createLocalSpeakSessionId(): string {
   const randomUuid = globalThis.crypto?.randomUUID?.();
   if (randomUuid) return `speak-${randomUuid}`;
@@ -1998,13 +2026,7 @@ export default function AiTutorPage() {
       updatedAt: Date.now(),
     });
     clearSpeakBoardState();
-    setSpeakFollowUpSession({
-      topicId: getSpeakFollowUpTopicId(trimmed),
-      turnsOnTopic: 0,
-      askedQuestions: [],
-      currentQuestion: null,
-      currentIsPivot: false,
-    });
+    setSpeakFollowUpSession(buildInitialSpeakFollowUpSession(trimmed));
     handleModeChange("speak");
   };
 
@@ -2040,6 +2062,15 @@ export default function AiTutorPage() {
     }
     setSpeakingMessageId("speak-follow-up");
     void tts.speak(text, ttsLang, target);
+  };
+
+  const handleSpeakRepeatInputChange = (value: string) => {
+    setSpeakRepeatInput(value);
+    setSpeakFollowUpSession((current) => ({
+      ...current,
+      currentQuestion: null,
+      currentIsPivot: false,
+    }));
   };
 
   const handleClear = () => {
@@ -2222,7 +2253,7 @@ export default function AiTutorPage() {
           onMicToggle={handleMicToggle}
           onReadTarget={handleReadSpeakTarget}
           onReadFollowUp={handleReadSpeakFollowUp}
-          onRepeatInputChange={setSpeakRepeatInput}
+          onRepeatInputChange={handleSpeakRepeatInputChange}
           onResetBoard={handleClear}
           tutorCopy={tutorCopy}
         />

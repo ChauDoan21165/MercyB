@@ -833,6 +833,55 @@ describe("AiTutor four-tab seed flow", () => {
     expect(followUp).not.toHaveTextContent("bằng từng âm");
   });
 
+  it("keeps the self-compare recorder and shows the current Speak follow-up before scoring", async () => {
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    expect(screen.getByTestId("ai-tutor-speak-target")).toHaveTextContent("I bought a hat yesterday.");
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
+    expect(screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" })).toBeInTheDocument();
+
+    const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+    expect(followUp).toHaveTextContent("Câu hỏi tiếp theo");
+    expect(followUp).toHaveTextContent("Where did you buy it?");
+    expect(screen.queryByTestId("ai-tutor-speak-score")).not.toBeInTheDocument();
+    expect(screen.getByTestId("self-compare-recorder").textContent ?? "").not.toMatch(/\d+\s*%/);
+  });
+
+  it("replaces the seeded Speak follow-up for a new corrected sentence", async () => {
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+
+    await openTab("Sửa câu");
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu khác" }));
+    await correctSentence("She go to school every day.", "She goes to school every day.");
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    expect(screen.getByTestId("ai-tutor-speak-target")).toHaveTextContent("She goes to school every day.");
+    const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+    expect(followUp).not.toHaveTextContent("Where did you buy it?");
+    expect(followUp.textContent?.toLowerCase() ?? "").toMatch(/school|class/);
+  });
+
+  it("clears the old Speak follow-up when the learner resets for a new sentence", async () => {
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+
+    await userEvent.click(screen.getByRole("button", { name: "Xóa bảng để nhập câu mới" }));
+
+    expect(screen.queryByTestId("ai-tutor-speak-follow-up")).not.toBeInTheDocument();
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-speak-target")).toHaveTextContent("What do you usually do in the morning?");
+  });
+
   it("offers a deterministic follow-up in Speak even without a corrected sentence", async () => {
     render(<AiTutorPage />);
 
@@ -1217,7 +1266,7 @@ describe("AiTutor four-tab seed flow", () => {
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
-    await userEvent.click(screen.getByRole("button", { name: /Mercy đọc/ }));
+    await userEvent.click(screen.getByRole("button", { name: "Mercy đọc câu đã sửa bằng giọng AI" }));
 
     await waitFor(() => expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
       text: "I bought a hat yesterday.",
@@ -1253,9 +1302,9 @@ describe("AiTutor four-tab seed flow", () => {
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
-    await userEvent.click(screen.getByRole("button", { name: /Mercy đọc/ }));
+    await userEvent.click(screen.getByRole("button", { name: "Mercy đọc câu đã sửa bằng giọng AI" }));
     await waitFor(() => expect(browserSpeak).toHaveBeenCalledTimes(1));
-    await userEvent.click(screen.getByRole("button", { name: /Mercy đọc|Dừng đọc/ }));
+    await userEvent.click(screen.getByRole("button", { name: "Mercy đọc câu đã sửa bằng giọng AI" }));
 
     await waitFor(() => expect(browserSpeak).toHaveBeenCalledTimes(2));
     expect(cancel).toHaveBeenCalled();
@@ -1287,7 +1336,7 @@ describe("AiTutor four-tab seed flow", () => {
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
-    await userEvent.click(screen.getByRole("button", { name: /Mercy đọc/ }));
+    await userEvent.click(screen.getByRole("button", { name: "Mercy đọc câu đã sửa bằng giọng AI" }));
 
     await waitFor(() => {
       expect(screen.getByTestId("ai-tutor-speak-tts-error")).toHaveTextContent(
