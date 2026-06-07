@@ -138,6 +138,52 @@ async function processReferralOnAuth(userId: string | null): Promise<void> {
   }
 }
 
+const FAMILY_INVITE_TOKEN_KEY = "mb:family-invite-token";
+
+function readPendingFamilyInviteToken(): string | null {
+  try {
+    const token = sessionStorage.getItem(FAMILY_INVITE_TOKEN_KEY);
+    return token && /^[2-9A-HJ-NP-Z]{12}$/.test(token) ? token : null;
+  } catch {
+    return null;
+  }
+}
+
+function clearPendingFamilyInviteToken(): void {
+  try {
+    sessionStorage.removeItem(FAMILY_INVITE_TOKEN_KEY);
+  } catch {
+    /* storage unavailable */
+  }
+}
+
+async function processFamilyInviteOnAuth(userId: string | null): Promise<void> {
+  if (!userId) return;
+  const token = readPendingFamilyInviteToken();
+  if (!token) return;
+
+  try {
+    const { data, error } = await supabase.rpc("mark_family_invite_signed_up", {
+      p_token: token,
+      p_referred_user_id: userId,
+    });
+    if (error) {
+      if (import.meta.env.DEV) {
+        console.warn("[auth] family invite claim failed:", error.message);
+      }
+      return;
+    }
+    // The bonus is granted only inside the RPC transaction. Client state is
+    // cleared only after the server confirms either success or a terminal miss
+    // such as expired/revoked/already claimed.
+    if (data === true || data === false) clearPendingFamilyInviteToken();
+  } catch (err) {
+    if (import.meta.env.DEV) {
+      console.warn("[auth] processFamilyInviteOnAuth crashed:", err);
+    }
+  }
+}
+
 /**
  * Duolingo-onboarding PR 3/3 — carry the anonymous pick forward into
  * the new account so a user who chose their (native, target) pair as
@@ -376,6 +422,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             // A9 referral: apply pending ?ref= code + retry owner-side
             // reward (Day-3 gated). Both calls are idempotent.
             void processReferralOnAuth(verifiedId);
+            // Family bridge invite: after verified auth, let the server-side
+            // RPC atomically mark signup and grant trial bonus. No optimistic
+            // client-side grant.
+            void processFamilyInviteOnAuth(verifiedId);
             // Wave 2 Step 2: server-streaks boot tasks. No-op when the
             // feature flag is off. Runs per-session on verified sessions,
             // but each task is internally idempotent.
