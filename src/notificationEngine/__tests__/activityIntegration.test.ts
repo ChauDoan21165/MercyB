@@ -60,4 +60,20 @@ describe("activityIntegration — flag ON", () => {
     onReviewQueueChanged();
     expect(h.refresh).toHaveBeenCalledTimes(1);
   });
+
+  it("onFirstCompletedActivity refreshes ONLY when permission is granted", async () => {
+    h.requestOnce.mockResolvedValueOnce(true);
+    onFirstCompletedActivity({ source: "room", event: "room_completed" });
+    await flush();
+    expect(h.requestOnce).toHaveBeenCalledTimes(1);
+    expect(h.refresh).toHaveBeenCalledTimes(1); // granted → schedule
+  });
+
+  it("onFirstCompletedActivity does NOT refresh when permission is denied", async () => {
+    h.requestOnce.mockResolvedValueOnce(false);
+    onFirstCompletedActivity({ source: "room", event: "room_completed" });
+    await flush();
+    expect(h.requestOnce).toHaveBeenCalledTimes(1);
+    expect(h.refresh).not.toHaveBeenCalled(); // denied → nothing scheduled
+  });
 });
