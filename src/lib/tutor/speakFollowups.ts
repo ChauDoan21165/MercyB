@@ -42,7 +42,7 @@ export const SPEAK_TRANSCRIPT_ASK_TO_REPEAT =
 // topics are unchanged.
 
 const SALIENCE_DET_OR_PREP = new Set([
-  "a", "an", "the", "my", "your", "his", "her", "our", "their",
+  "a", "an", "the", "some", "my", "your", "his", "her", "our", "their",
   "at", "to", "in", "of", "on", "with", "about", "from",
 ]);
 
@@ -61,8 +61,10 @@ const SALIENCE_STOPWORDS = new Set([
   "as", "for", "there", "here", "very", "really", "just", "also", "too",
   "what", "where", "why", "who", "how", "which", "whose",
   "not", "no", "yes", "okay", "ok", "please", "one", "more", "much", "many",
+  "any",
   "good", "bad", "nice", "big", "small", "old", "new", "great",
   "thing", "things", "stuff", "time", "way", "lot", "bit", "kind", "sort",
+  "secondhand",
   "today", "yesterday", "tomorrow", "now", "day", "night",
   // Common adjectives / states — never a good topic noun ("the tired"); when a
   // sentence has only these, the follow-up degrades to "that".
@@ -84,6 +86,7 @@ const SPEAK_UNCLEAR_TRANSCRIPT_PATTERNS = [
 function salienceTokens(text: string): string[] {
   return text
     .toLowerCase()
+    .replace(/\bsecond[-\s]+hand\b/g, " secondhand ")
     .replace(/[^a-z\s']/g, " ")
     .split(/\s+/)
     .filter(Boolean);
@@ -112,6 +115,7 @@ export function extractSalientKeyword(learnerText: string): string | null {
     if (!SALIENCE_DET_OR_PREP.has(tokens[i])) continue;
     for (let j = i + 1; j < tokens.length; j++) {
       if (SALIENCE_DET_OR_PREP.has(tokens[j])) continue; // skip "at a" → "shop"
+      if (SALIENCE_STOPWORDS.has(tokens[j])) continue;
       if (isSalienceContent(tokens[j])) afterDeterminer = tokens[j];
       break;
     }
@@ -192,15 +196,51 @@ const CLARITY_UNLIKELY_BUY_OBJECTS = new Set([
   "tomorrow", "yesterday",
 ]);
 
+const CLARITY_COMMERCE_OR_NEED_VERBS = new Set([
+  "buy", "bought", "need", "needed", "want", "wanted", "order", "ordered", "wear", "wearing",
+]);
+
+const CLARITY_HAT_CONFUSION_CONTEXT = new Set([
+  "buy", "bought", "need", "needed", "want", "wanted", "wear", "wearing",
+  "summer", "sunny", "sun", "hot", "canada",
+]);
+
 const CLARITY_PROPER_PLACE_WORDS = new Set([
   "canada", "vietnam", "america", "usa", "us", "california", "toronto", "vancouver",
   "hanoi", "saigon",
+]);
+
+const CLARITY_INVALID_ARTICLE_TARGETS = new Set([
+  "some", "any", "i'm", "im",
 ]);
 
 const CLARITY_FUNCTION_WORDS = new Set([
   ...SALIENCE_DET_OR_PREP,
   ...COHERENCE_CONNECTORS,
 ]);
+
+function learnerReportsFollowUpIsUnclear(transcript: string): boolean {
+  const normalized = transcript.toLowerCase().replace(/[’]/g, "'").replace(/\s+/g, " ").trim();
+  return (
+    /\b(?:that|this|the)?\s*question\s+(?:does\s+not|doesn't|did\s+not|didn't)\s+make\s+sense\b/.test(normalized) ||
+    /\b(?:that|this|it)\s+(?:does\s+not|doesn't|did\s+not|didn't)\s+make\s+sense\b/.test(normalized) ||
+    /\b(?:no|not)\s+sense\b/.test(normalized)
+  );
+}
+
+function hasHatHomophoneConfusion(tokens: readonly string[]): boolean {
+  if (!tokens.includes("head") && !tokens.includes("ahead")) return false;
+  return tokens.some((token) => CLARITY_HAT_CONFUSION_CONTEXT.has(token));
+}
+
+function hasInvalidGeneratedFollowUpTarget(question: string, learnerText: string): boolean {
+  const normalizedQuestion = question.toLowerCase().replace(/[’]/g, "'").replace(/\s+/g, " ").trim();
+  if (/\bthe\s+(?:some|any|i'm|im|canada)\b/.test(normalizedQuestion)) return true;
+  if (/\bthe\s+head\b/.test(normalizedQuestion) && hasHatHomophoneConfusion(salienceTokens(learnerText))) {
+    return true;
+  }
+  return false;
+}
 
 /**
  * Guard the Speak follow-up generator from bad STT. This is not a grammar
@@ -213,11 +253,15 @@ export function assessSpeakTranscriptClarity(transcript: string): SpeakTranscrip
     return { clear: false, reason: "empty_transcript" };
   }
 
+  if (learnerReportsFollowUpIsUnclear(transcript)) {
+    return { clear: false, reason: "learner_reports_unclear_follow_up" };
+  }
+
   if (tokens.length <= 3 && CLARITY_PREPOSITION_FRAGMENT_STARTERS.has(tokens[0])) {
     return { clear: false, reason: `preposition_fragment:${tokens.join("_")}` };
   }
 
-  if (tokens.length >= 3 && tokens.every((token) => CLARITY_FUNCTION_WORDS.has(token))) {
+  if (tokens.every((token) => CLARITY_FUNCTION_WORDS.has(token))) {
     return { clear: false, reason: `function_word_salad:${tokens.join("_")}` };
   }
 
@@ -236,12 +280,25 @@ export function assessSpeakTranscriptClarity(transcript: string): SpeakTranscrip
       return { clear: false, reason: `article_before_contraction:${tokens[i + 1]}` };
     }
 
-    if ((token === "buy" || token === "bought") && CLARITY_UNLIKELY_BUY_OBJECTS.has(tokens[i + 1] ?? "")) {
+    if (token === "the" && CLARITY_INVALID_ARTICLE_TARGETS.has(tokens[i + 1] ?? "")) {
+      return { clear: false, reason: `article_before_invalid_target:${tokens[i + 1]}` };
+    }
+
+    if (CLARITY_COMMERCE_OR_NEED_VERBS.has(token) && CLARITY_UNLIKELY_BUY_OBJECTS.has(tokens[i + 1] ?? "")) {
       return { clear: false, reason: `unlikely_buy_object:${tokens[i + 1]}` };
     }
 
-    if ((token === "buy" || token === "bought") && tokens[i + 1] === "the" && tokens[i + 2]?.includes("'")) {
+    if (CLARITY_COMMERCE_OR_NEED_VERBS.has(token) && tokens[i + 1] === "the" && tokens[i + 2]?.includes("'")) {
       return { clear: false, reason: `broken_buy_object:${tokens[i + 2]}` };
+    }
+
+    if (
+      CLARITY_COMMERCE_OR_NEED_VERBS.has(token) &&
+      SALIENCE_DET_OR_PREP.has(tokens[i + 1] ?? "") &&
+      tokens[i + 2] === "head" &&
+      hasHatHomophoneConfusion(tokens)
+    ) {
+      return { clear: false, reason: "hat_homophone_confusion:head" };
     }
   }
 
@@ -404,6 +461,10 @@ export function selectSpeakFollowUpByTopicId(
       return { topicId: resolvedTopicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
     }
 
+    if (hasInvalidGeneratedFollowUpTarget(selected.question, learnerText)) {
+      return { topicId: resolvedTopicId, question: SPEAK_TRANSCRIPT_ASK_TO_REPEAT, isPivot: false };
+    }
+
     return {
       topicId: resolvedTopicId,
       question: selected.question,
@@ -432,6 +493,10 @@ export function selectSpeakFollowUpByTopicId(
   const question = candidates.find((candidate) => !asked.has(candidate.trim().toLowerCase()));
   if (!question) {
     return { topicId: resolvedTopicId, question: SPEAK_FOLLOW_UP_PIVOT, isPivot: true };
+  }
+
+  if (hasInvalidGeneratedFollowUpTarget(question, learnerText)) {
+    return { topicId: resolvedTopicId, question: SPEAK_TRANSCRIPT_ASK_TO_REPEAT, isPivot: false };
   }
 
   return { topicId: resolvedTopicId, question, isPivot: false };

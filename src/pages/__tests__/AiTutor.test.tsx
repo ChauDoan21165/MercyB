@@ -855,6 +855,48 @@ describe("AiTutor four-tab seed flow", () => {
     expect(score?.textContent ?? "").not.toMatch(/score|ML judgment/i);
   });
 
+  it("asks for a clearer repeat when the learner says the follow-up makes no sense", async () => {
+    window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "Can you say that another way?");
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("I bought a hat yesterday.");
+
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+
+    await answerFollowUpByVoice("That question does not make sense.");
+
+    const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+    expect(followUp).toHaveTextContent("Mercy chưa nghe rõ. Bạn nói lại câu đó nhé.");
+    expect(followUp).toHaveTextContent("I didn't catch that clearly. Can you say it again?");
+    expect(followUp).not.toHaveTextContent("Can you say that another way?");
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-speak-follow-up-answer")).toBeInTheDocument();
+
+    const score = screen.queryByTestId("ai-tutor-speak-score");
+    expect(score?.textContent ?? "").not.toMatch(/\d+%/);
+    expect(score?.textContent ?? "").not.toMatch(/score|ML judgment/i);
+  });
+
+  it("keeps clear Speak follow-up answers advancing the round by voice", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("I bought a hat yesterday.");
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Where did you buy it?");
+
+    await answerFollowUpByVoice("I bought it at a second-hand shop.");
+
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("What do you like about the shop?");
+    });
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
+  });
+
   it("uses needs_pause wording and suppresses correction or pivot for one Speak turn", async () => {
     window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "That sounds scary. Are you safe now?");
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
