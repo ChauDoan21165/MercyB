@@ -39,6 +39,7 @@ import {
   type ParentLocale,
 } from "@/lib/parent-view/parentLocale";
 import { ParentAskMercyCta } from "./ParentAskMercyCta";
+import { ParentInviteFamilyCta } from "./ParentInviteFamilyCta";
 import { ParentCategoryBucket } from "./ParentCategoryBucket";
 import { ParentHeadline } from "./ParentHeadline";
 import {
@@ -118,6 +119,7 @@ export default function ParentView({
           ))
       )}
       <ParentAskMercyCta />
+      <ParentInviteFamilyCta />
     </div>
   );
 }
