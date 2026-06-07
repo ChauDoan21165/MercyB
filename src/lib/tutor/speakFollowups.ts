@@ -65,6 +65,8 @@ const SALIENCE_STOPWORDS = new Set([
   "good", "bad", "nice", "big", "small", "old", "new", "great",
   "thing", "things", "stuff", "time", "way", "lot", "bit", "kind", "sort",
   "secondhand",
+  "guy", "guys", "someone", "somebody", "something", "anyone", "anybody",
+  "anything", "everyone", "everybody", "everything",
   "today", "yesterday", "tomorrow", "now", "day", "night",
   // Common adjectives / states — never a good topic noun ("the tired"); when a
   // sentence has only these, the follow-up degrades to "that".
@@ -214,9 +216,19 @@ const CLARITY_INVALID_ARTICLE_TARGETS = new Set([
   "some", "any", "i'm", "im",
 ]);
 
+const CLARITY_WEAK_NOUN_TARGETS = new Set([
+  "guy", "guys", "someone", "somebody", "something", "anyone", "anybody",
+  "anything", "everyone", "everybody", "everything",
+]);
+
 const CLARITY_FUNCTION_WORDS = new Set([
   ...SALIENCE_DET_OR_PREP,
   ...COHERENCE_CONNECTORS,
+]);
+
+const CLARITY_PRONOUN_TOKENS = new Set([
+  "i", "you", "he", "she", "it", "we", "they", "me", "him", "us", "them",
+  "this", "that", "these", "those",
 ]);
 
 function learnerReportsFollowUpIsUnclear(transcript: string): boolean {
@@ -235,7 +247,10 @@ function hasHatHomophoneConfusion(tokens: readonly string[]): boolean {
 
 function hasInvalidGeneratedFollowUpTarget(question: string, learnerText: string): boolean {
   const normalizedQuestion = question.toLowerCase().replace(/[’]/g, "'").replace(/\s+/g, " ").trim();
-  if (/\bthe\s+(?:some|any|i'm|im|canada)\b/.test(normalizedQuestion)) return true;
+  const weakTargets = Array.from(CLARITY_WEAK_NOUN_TARGETS).join("|");
+  if (new RegExp(`\\bthe\\s+(?:some|any|i'm|im|canada|${weakTargets})\\b`).test(normalizedQuestion)) {
+    return true;
+  }
   if (/\bthe\s+head\b/.test(normalizedQuestion) && hasHatHomophoneConfusion(salienceTokens(learnerText))) {
     return true;
   }
@@ -282,6 +297,22 @@ export function assessSpeakTranscriptClarity(transcript: string): SpeakTranscrip
 
     if (token === "the" && CLARITY_INVALID_ARTICLE_TARGETS.has(tokens[i + 1] ?? "")) {
       return { clear: false, reason: `article_before_invalid_target:${tokens[i + 1]}` };
+    }
+
+    if (
+      CLARITY_PREPOSITION_FRAGMENT_STARTERS.has(token) &&
+      CLARITY_PRONOUN_TOKENS.has(tokens[i + 1] ?? "") &&
+      CLARITY_WEAK_NOUN_TARGETS.has(tokens[i + 2] ?? "")
+    ) {
+      return { clear: false, reason: `weak_pronoun_target_fragment:${token}_${tokens[i + 1]}_${tokens[i + 2]}` };
+    }
+
+    if (
+      CLARITY_WEAK_NOUN_TARGETS.has(token) &&
+      tokens.some((candidate) => candidate === "sunny" || candidate === "summer") &&
+      tokens.some((candidate) => candidate === "like" || candidate === "wear")
+    ) {
+      return { clear: false, reason: `weak_context_target:${token}` };
     }
 
     if (CLARITY_COMMERCE_OR_NEED_VERBS.has(token) && CLARITY_UNLIKELY_BUY_OBJECTS.has(tokens[i + 1] ?? "")) {
