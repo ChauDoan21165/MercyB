@@ -182,6 +182,11 @@ const CLARITY_PROPER_PLACE_WORDS = new Set([
   "hanoi", "saigon",
 ]);
 
+const CLARITY_FUNCTION_WORDS = new Set([
+  ...SALIENCE_DET_OR_PREP,
+  ...COHERENCE_CONNECTORS,
+]);
+
 /**
  * Guard the Speak follow-up generator from bad STT. This is not a grammar
  * checker; it only blocks high-confidence transcript failures that would make
@@ -197,14 +202,23 @@ export function assessSpeakTranscriptClarity(transcript: string): SpeakTranscrip
     return { clear: false, reason: `preposition_fragment:${tokens.join("_")}` };
   }
 
+  if (tokens.length >= 3 && tokens.every((token) => CLARITY_FUNCTION_WORDS.has(token))) {
+    return { clear: false, reason: `function_word_salad:${tokens.join("_")}` };
+  }
+
+  const lastToken = tokens[tokens.length - 1] ?? "";
+  if (tokens.length >= 2 && SALIENCE_DET_OR_PREP.has(lastToken)) {
+    return { clear: false, reason: `dangling_function_word:${lastToken}` };
+  }
+
   for (let i = 0; i < tokens.length; i++) {
     const token = tokens[i];
-    if (token.includes("'")) {
-      return { clear: false, reason: `broken_contraction_token:${token}` };
-    }
-
     if (token === "the" && CLARITY_PROPER_PLACE_WORDS.has(tokens[i + 1] ?? "")) {
       return { clear: false, reason: `article_before_place:${tokens[i + 1]}` };
+    }
+
+    if (token === "the" && tokens[i + 1]?.includes("'")) {
+      return { clear: false, reason: `article_before_contraction:${tokens[i + 1]}` };
     }
 
     if ((token === "buy" || token === "bought") && CLARITY_UNLIKELY_BUY_OBJECTS.has(tokens[i + 1] ?? "")) {
