@@ -284,6 +284,7 @@ describe("speakFollowups", () => {
         "the some",
         "I chose some",
         "I need a head because summer is very sunny in Canada",
+        "I like the summer of you guys very sunny and I can wear short",
         "the and of to",
         "I bought the",
       ];
@@ -325,6 +326,10 @@ describe("speakFollowups", () => {
         clear: false,
         reason: "hat_homophone_confusion:head",
       });
+      expect(assessSpeakTranscriptClarity("I like the summer of you guys very sunny and I can wear short")).toMatchObject({
+        clear: false,
+        reason: "weak_pronoun_target_fragment:of_you_guys",
+      });
       expect(assessSpeakTranscriptClarity("That question does not make sense.")).toMatchObject({
         clear: false,
         reason: "learner_reports_unclear_follow_up",
@@ -335,6 +340,7 @@ describe("speakFollowups", () => {
       });
 
       const ordinaryLearnerSentences = [
+        "I like summer because it is sunny.",
         "I want to buy a hat.",
         "I bought a bicycle yesterday.",
         "I bought a hat.",
@@ -342,6 +348,7 @@ describe("speakFollowups", () => {
         "I bought a hat yesterday.",
         "I need a hat because it is sunny.",
         "I bought it at a second-hand shop.",
+        "I want to go swimming in summer.",
         "I need help with my rent.",
         "I want order noodles.",
         "I wait you.",
@@ -369,6 +376,7 @@ describe("speakFollowups", () => {
       expect(extractSalientKeyword("I'm going to buy a lot.")).toBeNull();
       expect(extractSalientKeyword("I am from Canada.")).toBeNull();
       expect(extractSalientKeyword("some")).toBeNull();
+      expect(extractSalientKeyword("I like the summer of you guys very sunny and I can wear short")).not.toBe("guys");
 
       const selection = selectSpeakFollowUpByTopicId("topic-shopping", {
         askedQuestions: ["What do you want to buy?"],
@@ -385,6 +393,7 @@ describe("speakFollowups", () => {
       expect(selection.question).not.toBe("What do you like about the head?");
       expect(selection.question.toLowerCase()).not.toContain("the i'm");
       expect(selection.question.toLowerCase()).not.toContain("the canada");
+      expect(selection.question.toLowerCase()).not.toContain("the guys");
     });
 
     it("asks for repeat instead of generating invalid noun-target follow-ups", () => {
@@ -409,6 +418,10 @@ describe("speakFollowups", () => {
           learnerText: "I need the Canada",
           forbidden: "What size or color works for the canada?",
         },
+        {
+          learnerText: "I like the summer of you guys very sunny and I can wear short",
+          forbidden: "Why did you choose the guys?",
+        },
       ];
 
       for (const { learnerText, forbidden } of unsafeCases) {
@@ -428,6 +441,8 @@ describe("speakFollowups", () => {
         "I bought a bicycle yesterday.",
         "I need a hat because it is sunny.",
         "I bought it at a second-hand shop.",
+        "I like summer because it is sunny.",
+        "I want to go swimming in summer.",
       ];
 
       for (const learnerText of clearCases) {
