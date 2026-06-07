@@ -193,8 +193,8 @@ export const INVITE_TOKEN_LENGTH = 12;
 
 /**
  * Generate an unambiguous 12-char token. Used as the recipient's
- * single-use URL slug. Pure function — Web Crypto when available,
- * Math.random fallback for vitest under Node without crypto.
+ * single-use URL slug. Web Crypto is required; callers must not fall
+ * back to Math.random for security-sensitive invite URLs.
  */
 export function generateInviteToken(length: number = INVITE_TOKEN_LENGTH): string {
   let out = "";
@@ -204,16 +204,14 @@ export function generateInviteToken(length: number = INVITE_TOKEN_LENGTH): strin
       ? globalThis.crypto
       : null;
 
-  if (cryptoLike) {
-    const buf = new Uint32Array(length);
-    cryptoLike.getRandomValues(buf);
-    for (let i = 0; i < length; i++) {
-      out += TOKEN_ALPHABET[buf[i] % TOKEN_ALPHABET.length];
-    }
-  } else {
-    for (let i = 0; i < length; i++) {
-      out += TOKEN_ALPHABET[Math.floor(Math.random() * TOKEN_ALPHABET.length)];
-    }
+  if (!cryptoLike) {
+    throw new Error("generateInviteToken requires Web Crypto getRandomValues");
+  }
+
+  const buf = new Uint32Array(length);
+  cryptoLike.getRandomValues(buf);
+  for (let i = 0; i < length; i++) {
+    out += TOKEN_ALPHABET[buf[i] % TOKEN_ALPHABET.length];
   }
   return out;
 }

@@ -1,6 +1,6 @@
 // supabase/functions/_shared/__tests__/familyInviteValidation.test.ts
 
-import { describe, it, expect } from "vitest";
+import { afterEach, describe, it, expect, vi } from "vitest";
 
 import {
   INVITE_TOKEN_LENGTH,
@@ -126,6 +126,10 @@ describe("normalizeBulk", () => {
 });
 
 describe("generateInviteToken", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it("returns a 12-char token by default", () => {
     expect(generateInviteToken()).toHaveLength(INVITE_TOKEN_LENGTH);
     expect(INVITE_TOKEN_LENGTH).toBe(12);
@@ -140,5 +144,13 @@ describe("generateInviteToken", () => {
 
   it("is highly likely to differ across calls", () => {
     expect(generateInviteToken()).not.toBe(generateInviteToken());
+  });
+
+  it("throws instead of falling back to Math.random when Web Crypto is unavailable", () => {
+    vi.spyOn(globalThis, "crypto", "get").mockReturnValue(undefined as Crypto | undefined);
+
+    expect(() => generateInviteToken()).toThrow(
+      "generateInviteToken requires Web Crypto getRandomValues",
+    );
   });
 });
