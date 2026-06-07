@@ -1,3 +1,5 @@
+import { introductionSpeakTopics } from "./speakTopics/introductions";
+
 export type SpeakTopicCategory =
   | "food"
   | "family"
@@ -26,6 +28,12 @@ export type SpeakTopicFollowUp = {
   salienceQuestion?: string;
 };
 
+export type SpeakTopicL1InterferenceNote = {
+  id: string;
+  label: string;
+  note: string;
+};
+
 export type SpeakTopicLibraryEntry = {
   id: string;
   labelEn: string;
@@ -34,6 +42,7 @@ export type SpeakTopicLibraryEntry = {
   seedInputs: readonly string[];
   detectionPatterns: readonly RegExp[];
   followUps: readonly SpeakTopicFollowUp[];
+  l1InterferenceNotes?: readonly SpeakTopicL1InterferenceNote[];
 };
 
 export type SpeakTopicCorrectionStatus = "ship-safe" | "hold" | "abstain";
@@ -504,6 +513,7 @@ export const SPEAK_TOPIC_LIBRARY: readonly SpeakTopicLibraryEntry[] = [
       { id: "documents-next", question: "What is the next step after the form is ready?", salienceQuestion: "What is the next step for the {slot}?" },
     ],
   },
+  ...introductionSpeakTopics,
 ] as const;
 
 export function getSpeakTopicLibraryEntry(topicId: string): SpeakTopicLibraryEntry | null {
