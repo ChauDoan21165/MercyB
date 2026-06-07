@@ -165,6 +165,41 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     expect(onReadFollowUp).not.toHaveBeenCalled();
   });
 
+  it("offers an answer-by-voice mic on the follow-up and routes it through onMicToggle", () => {
+    const onMicToggle = vi.fn();
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        followUpPrompt="Where did you buy it?"
+        onMicToggle={onMicToggle}
+      />,
+    );
+
+    const followUp = within(screen.getByTestId("ai-tutor-speak-follow-up"));
+    expect(screen.getByTestId("ai-tutor-speak-follow-up-answer")).toBeInTheDocument();
+    // Distinct from the model-sentence mic so the learner can answer the
+    // QUESTION by voice — the same toggle that advances the loop.
+    fireEvent.click(followUp.getByRole("button", { name: "Trả lời bằng giọng nói" }));
+    expect(onMicToggle).toHaveBeenCalledTimes(1);
+  });
+
+  it("shows a clear mic fallback on the follow-up when speech input is unsupported", () => {
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        followUpPrompt="Where did you buy it?"
+        micSupported={false}
+      />,
+    );
+
+    const followUp = within(screen.getByTestId("ai-tutor-speak-follow-up"));
+    expect(followUp.getByTestId("ai-tutor-speak-follow-up-mic-fallback-message")).toHaveTextContent(
+      "Không dùng được",
+    );
+    // Never a dead end — the typed-answer path is pointed to explicitly.
+    expect(followUp.getByText(/gõ câu trả lời/i)).toBeInTheDocument();
+  });
+
   it("shows a safe TTS fallback when device voice is unavailable", () => {
     render(
       <SpeakPracticeMode

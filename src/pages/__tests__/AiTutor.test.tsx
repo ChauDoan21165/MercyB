@@ -226,6 +226,20 @@ async function speakWithInterims(interims: string[], finalTranscript: string) {
   });
 }
 
+// Answer the CURRENT follow-up question by voice, using the mic attached to the
+// follow-up block itself (not the model-sentence mic). This is the affordance
+// that keeps the conversation moving past the first sentence.
+async function answerFollowUpByVoice(transcript: string) {
+  const followUp = within(screen.getByTestId("ai-tutor-speak-follow-up"));
+  await userEvent.click(
+    followUp.getByRole("button", { name: /Trả lời câu hỏi bằng giọng nói|Dừng nghe/i }),
+  );
+  act(() => {
+    MockSpeechRecognition.last?.emitFinalTranscript(transcript);
+    MockSpeechRecognition.last?.stop();
+  });
+}
+
 describe("AiTutor four-tab seed flow", () => {
   it("renders the Teacher Mercy shell with four tabs", () => {
     render(<AiTutorPage />);
@@ -658,6 +672,87 @@ describe("AiTutor four-tab seed flow", () => {
     await waitFor(() => {
       expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent(
         "Do you want to practice another sentence?",
+      );
+    });
+  });
+
+  // ── C1: the follow-up answer recording loop ──
+  // The learner must be able to ANSWER each follow-up by voice from the
+  // follow-up block, have that answer captured as the current spoken response,
+  // and get the NEXT follow-up — without the by-ear SelfCompareRecorder trapping
+  // Speak on the first sentence.
+  it("captures a spoken follow-up answer and advances to the next follow-up", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    // The by-ear self-compare recorder is present for the first sentence...
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
+
+    // Round 1 — first follow-up question appears.
+    await speakCurrentTarget("I bought a hat yesterday.");
+    expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent(
+      "Where did you buy it?",
+    );
+
+    // The learner answers the follow-up BY VOICE from the follow-up block.
+    await answerFollowUpByVoice("I bought it at the market downtown.");
+
+    // The spoken answer becomes the current spoken response (Speak state).
+    // (Punctuation is normalized away by the STT transcript cleaner, so match
+    // on substance, not the trailing period.)
+    await waitFor(() => {
+      const repeatBox = screen.getByTestId("ai-tutor-speak-repeat-input") as HTMLTextAreaElement;
+      expect(repeatBox.value).toContain("I bought it at the market downtown");
+    });
+
+    // ...and the next follow-up appears (no longer the first question, not the
+    // pivot — the loop did NOT stall on the first sentence).
+    await waitFor(() => {
+      const followUp = screen.getByTestId("ai-tutor-speak-follow-up");
+      expect(followUp).not.toHaveTextContent("Where did you buy it?");
+      expect(followUp).not.toHaveTextContent("Do you want to practice another sentence?");
+    });
+
+    // The self-compare recorder is still mounted/usable — never replaced.
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
+    // No score / percent / ML judgment surfaced by the follow-up answer.
+    const followUp = screen.getByTestId("ai-tutor-speak-follow-up");
+    expect(followUp.textContent ?? "").not.toMatch(/\d+%/);
+    expect(followUp).not.toHaveTextContent("Bạn nói giống câu mẫu");
+  });
+
+  it("shows a clear fallback (no stall) when speech input is unsupported and lets the learner type follow-up answers", async () => {
+    // SpeechRecognition stays undefined (unsupported), so the only way forward
+    // is the typed path — it must keep producing follow-ups, never dead-end.
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    // Round 1 via typing.
+    await userEvent.type(
+      screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" }),
+      "I bought a hat yesterday.",
+    );
+    const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+    expect(followUp).toHaveTextContent("Where did you buy it?");
+
+    // The follow-up surfaces a clear unsupported-mic message instead of a silent
+    // dead mic — and points to the typed-answer path.
+    expect(
+      within(followUp).getByTestId("ai-tutor-speak-follow-up-mic-fallback-message"),
+    ).toHaveTextContent("Không dùng được");
+
+    // Typing a follow-up answer advances to the next question.
+    const repeat = screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" });
+    await userEvent.clear(repeat);
+    await userEvent.type(repeat, "I bought it at the market downtown.");
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent(
+        "Where did you buy it?",
       );
     });
   });
