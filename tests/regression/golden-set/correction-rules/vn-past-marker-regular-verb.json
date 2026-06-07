@@ -2,8 +2,8 @@
   "rule": "en-vn-past-marker-regular-verb",
   "ruleId": "en-vn-past-marker-regular-verb",
   "language": "en",
-  "description": "Vietnamese L1 'đã-drop' transfer for REGULAR verbs: a past-time marker + a bare whitelisted regular verb gets the missing -ed (watch->watched, finish->finished, play->played). Complements the irregular rule (en-yesterday-irregular-beginner-past, buy/do/eat/go/have). Expectations encode the VERIFIED behaviour of correctWithTutorRules() on current main.",
-  "fp_risk_note": "HIGH risk. Naive '-ed on a bare verb after a past marker' over-fires on: (1) habitual present with frequency adverbs ('Every day I cook', 'I always finish'); (2) verbs already in the past ('played' must not become 'playeded'); (3) irregulars that must not take -ed (handled by the irregular rule, not this one); (4) -y/-e spelling shifts. The v1 rule is whitelist-scoped, so a regular verb outside the whitelist ('cook' today) abstains. The negative cases lock surfaces (1)-(4) plus the whitelist boundary.",
+  "description": "Vietnamese L1 'đã-drop' transfer for REGULAR verbs: a past-time marker + a bare whitelisted regular verb gets the missing -ed (watch->watched, finish->finished, play->played, invite->invited). Complements the irregular rule (en-yesterday-irregular-beginner-past, buy/do/eat/go/have). Expectations encode the VERIFIED behaviour of correctWithTutorRules().",
+  "fp_risk_note": "HIGH risk. Naive '-ed on a bare verb after a past marker' over-fires on: (1) habitual present with frequency adverbs ('Every day I cook', 'I always finish'); (2) future plans with bare present ('Tomorrow I invite...'); (3) verbs already in the past ('played' must not become 'playeded'); (4) irregulars that must not take -ed (handled by the irregular rule, not this one); (5) -y/-e spelling shifts. The v1 rule is whitelist-scoped, so a regular verb outside the whitelist ('cook' today) abstains. The negative cases lock surfaces (1)-(5), do-support questions, negated did, and the whitelist boundary.",
   "positive": [
     {
       "id": "vpmrv-pos-001",
@@ -52,6 +52,30 @@
       "expectedCorrection": "Two days ago we visited grandma.",
       "expectedRuleFired": "en-vn-past-marker-regular-verb",
       "notes": "Lane A boundary: '<n> days ago' + 'visit' -> 'visited'. Verified firing on the live engine."
+    },
+    {
+      "id": "vpmrv-pos-007",
+      "input": "Yesterday I invite my friend to dinner",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Yesterday I invited my friend to dinner.",
+      "expectedRuleFired": "en-vn-past-marker-regular-verb",
+      "notes": "Live bug guard: 'yesterday' + whitelisted regular 'invite' -> 'invited'."
+    },
+    {
+      "id": "vpmrv-pos-008",
+      "input": "Last night we invite our neighbors",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Last night we invited our neighbors.",
+      "expectedRuleFired": "en-vn-past-marker-regular-verb",
+      "notes": "'last night' + plural subject + 'invite' -> 'invited'."
+    },
+    {
+      "id": "vpmrv-pos-009",
+      "input": "Two days ago they invite us",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "Two days ago they invited us.",
+      "expectedRuleFired": "en-vn-past-marker-regular-verb",
+      "notes": "'<n> days ago' + 'invite' -> 'invited'."
     }
   ],
   "negative": [
@@ -118,6 +142,46 @@
       "expectedCorrection": "Yesterday I walked to school.",
       "expectedRuleFired": null,
       "notes": "Lane A over-fire guard (already past): 'walked' must not double to 'walkeded'. Verified abstaining."
+    },
+    {
+      "id": "vpmrv-neg-009",
+      "input": "Every day I invite my friend to dinner",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Every day I invite my friend to dinner.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (habitual present): 'every day' + invite must remain present."
+    },
+    {
+      "id": "vpmrv-neg-010",
+      "input": "Tomorrow I invite my friend to dinner",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Tomorrow I invite my friend to dinner.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (future plan): tomorrow must not trigger invite -> invited."
+    },
+    {
+      "id": "vpmrv-neg-011",
+      "input": "I will invite my friend tomorrow",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I will invite my friend tomorrow.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (future modal): will invite is already correct future grammar."
+    },
+    {
+      "id": "vpmrv-neg-012",
+      "input": "Did you invite your friend yesterday?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did you invite your friend yesterday?",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (do-support question): did carries past; invite must stay bare."
+    },
+    {
+      "id": "vpmrv-neg-013",
+      "input": "Yesterday I invited my friend to dinner",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Yesterday I invited my friend to dinner.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (already past): invited must not be touched."
     }
   ]
 }

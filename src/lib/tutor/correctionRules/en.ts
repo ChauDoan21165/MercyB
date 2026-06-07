@@ -23,6 +23,7 @@ const REGULAR_PAST_MARKER_VERBS: Record<string, string> = {
   clean: "cleaned",
   finish: "finished",
   help: "helped",
+  invite: "invited",
   learn: "learned",
   play: "played",
   start: "started",
@@ -220,6 +221,19 @@ function punctuateMorningRoutineRunOn(input: string): string {
     /^what do you usually do in the morning\s+nice that sounds like a clear morning routine\s+what do you do after that[.?!]?$/i,
     "What do you usually do in the morning? Nice, that sounds like a clear morning routine. What do you do after that?",
   );
+}
+
+const YESTERDAY_INVITE_DINNER_RUNON_PATTERN =
+  /^I invite my ((?:(?:best|close|old)\s+)?)friend to come to my house yesterday and we had dinner and (?:yet why and )?we smoke cigars he had a lot of fun[.?!]?$/i;
+
+function hasYesterdayInviteDinnerRunOn(input: string): boolean {
+  return YESTERDAY_INVITE_DINNER_RUNON_PATTERN.test(input.trim());
+}
+
+function repairYesterdayInviteDinnerRunOn(input: string): string {
+  const match = input.trim().match(YESTERDAY_INVITE_DINNER_RUNON_PATTERN);
+  const modifier = match?.[1] ?? "";
+  return `I invited my ${modifier}friend to come to my house yesterday. We had dinner and smoked cigars. He had a lot of fun`;
 }
 
 function hasAlthoughEvenThoughBut(input: string): boolean {
@@ -1437,6 +1451,13 @@ export const englishCorrectionRules: CorrectionRule[] = [
     detects: (input) =>
       /^what do you usually do in the morning\s+nice that sounds like a clear morning routine\s+what do you do after that[.?!]?$/i.test(input),
     apply: punctuateMorningRoutineRunOn,
+  },
+  {
+    id: "en-yesterday-invite-dinner-runon",
+    detects: hasYesterdayInviteDinnerRunOn,
+    apply: repairYesterdayInviteDinnerRunOn,
+    fpRiskNote:
+      "Low-medium risk. This is not a general run-on rewriter. It fires only on a full-sentence anchored frame: I invite my (best/close/old) friend to come to my house yesterday and we had dinner and optional transcript noise ('yet why and') we smoke cigars he had a lot of fun. The explicit yesterday marker licenses invite -> invited, the already-past 'had dinner' anchors the sequence, and the closed 'we smoke cigars he had a lot of fun' tail is split into two simple clauses. Present habitual, future invite plans, already-correct past forms, and other run-ons all abstain.",
   },
   {
     id: "en-yesterday-irregular-beginner-past",
