@@ -230,6 +230,34 @@ describe("AuthProvider", () => {
     );
   });
 
+  it("grants nothing on a confirmed RPC false (expired/revoked/used), and clears the token as a terminal miss", async () => {
+    // The bonus is applied ONLY inside the RPC transaction; a false return is a
+    // terminal miss — the client grants nothing (no optimistic state) and stops
+    // retrying by clearing the pending token. This complements the transport-
+    // failure case above (error → token RETAINED for retry).
+    sessionStorage.setItem("mb:family-invite-token", "ABCDEF234567");
+    rpc.mockResolvedValueOnce(rpcSuccess(false));
+    renderHook(() => useAuth(), { wrapper });
+    await waitFor(() => expect(authCallback).not.toBeNull());
+
+    act(() => authCallback!("SIGNED_IN", makeSession()));
+
+    await waitFor(() =>
+      expect(rpc).toHaveBeenCalledWith("mark_family_invite_signed_up", {
+        p_token: "ABCDEF234567",
+        p_referred_user_id: "user-1",
+      }),
+    );
+    // Terminal miss → token cleared (no retry), and the claim RPC is the ONLY
+    // mutation attempted — nothing optimistic is written client-side.
+    await waitFor(() =>
+      expect(sessionStorage.getItem("mb:family-invite-token")).toBeNull(),
+    );
+    expect(
+      rpc.mock.calls.filter((c) => c[0] === "mark_family_invite_signed_up").length,
+    ).toBe(1);
+  });
+
   it("treats an unverified-email session as signed-out", async () => {
     const { result } = renderHook(() => useAuth(), { wrapper });
     await waitFor(() => expect(authCallback).not.toBeNull());
