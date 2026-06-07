@@ -213,6 +213,8 @@ const SPEAK_STANCE_SEED_UNCLEAR =
 const SPEAK_STANCE_PAUSE = "I’m sorry that happened. Let’s pause correction for a moment. Are you okay to continue?";
 const GRAMMAR_VOICE_EMPTY_MESSAGE =
   "Mercy chưa nghe rõ. Bạn thử nói lại hoặc gõ câu vào ô nhé.";
+const GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE =
+  "Mercy chưa sửa chắc câu này bằng bộ quy tắc hiện tại. Bạn có thể chỉnh lại câu ngắn hơn một chút rồi bấm Sửa câu này nhé.";
 const STEP7_AZURE_BATCH_ENABLED =
   (import.meta as ImportMeta & { env?: Record<string, string> }).env
     ?.VITE_AZURE_PHONEME_BATCH_ENABLED === "true";
@@ -1708,9 +1710,8 @@ export default function AiTutorPage() {
     const next = MOCK_RESULTS_BY_TARGET[target];
     const localCorrection = buildLocalCorrection(trimmed, target);
     if (!localCorrection.ok) {
-      setInput("");
       setLoading(false);
-      setError(localCorrection.message);
+      setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
       return;
     }
     const corrected = localCorrection.corrected;
@@ -2042,6 +2043,10 @@ export default function AiTutorPage() {
   };
 
   const handleClear = () => {
+    if (stt.listening) stt.stop();
+    stt.reset();
+    sttBaseInputRef.current = "";
+    lastCommittedSttRef.current = "";
     setBoardResetCount((count) => count + 1);
     setInput("");
     setGrammarVoiceDraft("");
