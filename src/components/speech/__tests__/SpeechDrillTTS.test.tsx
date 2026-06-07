@@ -177,3 +177,89 @@ describe('SpeechDrill · Listen controls', () => {
     expect(row.querySelectorAll('button[data-word-listen]').length).toBe(0);
   });
 });
+
+describe('SpeechDrill · single-word mistake playback (by-ear only)', () => {
+  async function renderScored() {
+    const user = userEvent.setup();
+    vi.mocked(recognizeOnce).mockResolvedValue({
+      transcript: 'I tink se is',
+      confidence: 0.7,
+      wordTimings: [],
+      durationSec: 2,
+    });
+    vi.mocked(scorePronunciation).mockReturnValue(scoreResult());
+    render(<SpeechDrill targetSentence={TARGET} />);
+    await user.click(screen.getByRole('button', { name: /start recording/i }));
+    await screen.findByLabelText(/overall score 72/i);
+    return user;
+  }
+
+  it('still plays the FULL model sentence (tap = 0.8x)', () => {
+    render(<SpeechDrill targetSentence={TARGET} />);
+    const btn = screen.getByTestId('tts-listen-primary');
+    fireEvent.pointerDown(btn);
+    fireEvent.pointerUp(btn);
+    expect(ttsSpeak).toHaveBeenCalledWith({ text: TARGET, rate: 0.8 });
+  });
+
+  it('plays a single surfaced practice word clearly (the word the scorer flagged, nothing invented)', async () => {
+    const user = await renderScored();
+    const row = screen.getByLabelText('Word-by-word score');
+    const wordBtns = row.querySelectorAll('button[data-word-listen]');
+    // Only words the scorer surfaced as non-correct — never invented words.
+    expect(Array.from(wordBtns).map((b) => b.getAttribute('data-word-listen'))).toEqual([
+      'think',
+      'she',
+      'fine',
+    ]);
+    await user.click(wordBtns[1]);
+    // Reads exactly that single word, by ear — no scoring re-run.
+    expect(ttsSpeak).toHaveBeenLastCalledWith({ text: 'she', rate: 0.8 });
+  });
+
+  it('shows a clear message when a single-word TTS playback fails, and keeps the drill usable', async () => {
+    const user = await renderScored();
+    vi.mocked(ttsSpeak).mockRejectedValueOnce(new Error('cloud null + no speechSynthesis'));
+
+    const row = screen.getByLabelText('Word-by-word score');
+    const wordBtn = row.querySelector('button[data-word-listen]') as HTMLElement;
+    await user.click(wordBtn);
+
+    const msg = await screen.findByTestId('word-listen-error');
+    expect(msg.textContent).toMatch(/Could not play this word|Không phát được/i);
+    // Rest of the drill is still there (word row + other listen buttons usable).
+    expect(screen.getByLabelText('Word-by-word score')).toBeInTheDocument();
+    expect(row.querySelectorAll('button[data-word-listen]').length).toBe(3);
+  });
+
+  it('adds NO score / percent to the single-word playback feature', async () => {
+    const user = await renderScored();
+    // Trigger a failure too, so both the button and the message are exercised.
+    vi.mocked(ttsSpeak).mockRejectedValueOnce(new Error('fail'));
+    const row = screen.getByLabelText('Word-by-word score');
+    const wordBtns = Array.from(
+      row.querySelectorAll('button[data-word-listen]'),
+    ) as HTMLElement[];
+    for (const b of wordBtns) {
+      const name = b.getAttribute('aria-label') ?? '';
+      expect(name).toMatch(/^Listen to /); // pure by-ear label
+      expect(name).not.toMatch(/\d+\s*%/);
+      expect(name).not.toMatch(/score/i);
+    }
+    await user.click(wordBtns[0]);
+    const msg = await screen.findByTestId('word-listen-error');
+    expect(msg.textContent ?? '').not.toMatch(/\d+\s*%/);
+    expect(msg.textContent ?? '').not.toMatch(/score/i);
+  });
+
+  it('per-word playback never re-invokes the scorer (scorer/threshold untouched)', async () => {
+    const user = await renderScored();
+    const callsAfterScore = vi.mocked(scorePronunciation).mock.calls.length;
+    const row = screen.getByLabelText('Word-by-word score');
+    const wordBtn = row.querySelector('button[data-word-listen]') as HTMLElement;
+    await user.click(wordBtn);
+    // Playing a word must not run any scoring again.
+    expect(vi.mocked(scorePronunciation).mock.calls.length).toBe(callsAfterScore);
+    expect(ttsSpeak).toHaveBeenLastCalledWith({ text: 'think', rate: 0.8 });
+  });
+});

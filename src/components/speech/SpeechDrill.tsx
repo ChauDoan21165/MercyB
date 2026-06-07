@@ -768,16 +768,35 @@ function PhonemeFeedbackSection({
 }
 
 function WordRow({ words, ttsAvailable }: { words: WordScore[]; ttsAvailable: boolean }) {
+  // Per-word listen is by-ear practice only — it plays a word the scorer has
+  // ALREADY surfaced (non-correct slot); it invents nothing and makes no score
+  // / percent / phoneme / ML claim. On a total TTS failure it must message the
+  // learner instead of silently doing nothing, while leaving the rest of the
+  // drill usable. Local state, isolated from the recognition/scoring flow.
+  const [wordTtsError, setWordTtsError] = useState<string | null>(null);
+  const playWord = useCallback(async (word: string) => {
+    try {
+      setWordTtsError(null);
+      await ttsSpeak({ text: word, rate: 0.8 });
+    } catch (err) {
+      console.warn('[SpeechDrill] per-word TTS playback failed:', err);
+      setWordTtsError(
+        'Không phát được từ này trên thiết bị này. / Could not play this word on this device.',
+      );
+    }
+  }, []);
+
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: 6,
-        justifyContent: 'center',
-      }}
-      aria-label="Word-by-word score"
-    >
+    <>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 6,
+          justifyContent: 'center',
+        }}
+        aria-label="Word-by-word score"
+      >
       {words.map((w, i) => {
         const color = wordColor(w.status);
         const showStrike = w.status === 'missed';
@@ -812,7 +831,7 @@ function WordRow({ words, ttsAvailable }: { words: WordScore[]; ttsAvailable: bo
                 aria-label={`Listen to ${w.word}`}
                 onClick={(e) => {
                   e.stopPropagation();
-                  void ttsSpeak({ text: w.word, rate: 0.8 });
+                  void playWord(w.word);
                 }}
                 style={{
                   display: 'inline-flex',
@@ -834,7 +853,24 @@ function WordRow({ words, ttsAvailable }: { words: WordScore[]; ttsAvailable: bo
           </span>
         );
       })}
-    </div>
+      </div>
+      {wordTtsError && (
+        <p
+          role="status"
+          aria-live="polite"
+          data-testid="word-listen-error"
+          style={{
+            fontSize: 11,
+            fontWeight: 600,
+            color: '#b45309',
+            marginTop: 6,
+            textAlign: 'center',
+          }}
+        >
+          {wordTtsError}
+        </p>
+      )}
+    </>
   );
 }
 
