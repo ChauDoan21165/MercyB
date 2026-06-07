@@ -162,4 +162,76 @@ describe("formatLocalDate", () => {
     const d = new Date("2026-03-08T10:00:00Z");
     expect(formatLocalDate(d, "America/Los_Angeles")).toBe("2026-03-08");
   });
+
+  it("LA spring-forward keeps one local day across the skipped hour, then increments the next local day", () => {
+    const beforeShiftDay = formatLocalDate(
+      new Date("2026-03-08T09:30:00Z"), // 01:30 PST
+      "America/Los_Angeles",
+    );
+    const afterShiftDay = formatLocalDate(
+      new Date("2026-03-08T10:30:00Z"), // 03:30 PDT; 02:xx never exists
+      "America/Los_Angeles",
+    );
+    const nextLocalDay = formatLocalDate(
+      new Date("2026-03-09T07:30:00Z"), // 00:30 PDT
+      "America/Los_Angeles",
+    );
+
+    expect(beforeShiftDay).toBe("2026-03-08");
+    expect(afterShiftDay).toBe("2026-03-08");
+    expect(nextLocalDay).toBe("2026-03-09");
+
+    const first = computeNewStreakState(BUMP(4, 4, "2026-03-07"), beforeShiftDay);
+    expect(first.action).toBe("increment");
+    if (first.action !== "increment") throw new Error("expected DST first day increment");
+    expect(first.next.current).toBe(5);
+
+    expect(computeNewStreakState(first.next, afterShiftDay)).toEqual({
+      action: "noop_same_day",
+    });
+
+    const next = computeNewStreakState(first.next, nextLocalDay);
+    expect(next.action).toBe("increment");
+    if (next.action === "increment") {
+      expect(next.reason).toBe("consecutive");
+      expect(next.next.current).toBe(6);
+    }
+  });
+
+  it("New York fall-back repeated hour does not double-count the same local day", () => {
+    const firstOneThirty = formatLocalDate(
+      new Date("2026-11-01T05:30:00Z"), // 01:30 EDT
+      "America/New_York",
+    );
+    const secondOneThirty = formatLocalDate(
+      new Date("2026-11-01T06:30:00Z"), // 01:30 EST after clocks fall back
+      "America/New_York",
+    );
+
+    expect(firstOneThirty).toBe("2026-11-01");
+    expect(secondOneThirty).toBe("2026-11-01");
+    expect(
+      computeNewStreakState(BUMP(9, 9, firstOneThirty), secondOneThirty),
+    ).toEqual({ action: "noop_same_day" });
+  });
+
+  it("the same instant buckets by learner timezone without UTC-day skip or double-count", () => {
+    const instant = new Date("2026-06-01T18:30:00Z");
+    const vietnamDay = formatLocalDate(instant, "Asia/Ho_Chi_Minh");
+    const edmontonDay = formatLocalDate(instant, "America/Edmonton");
+
+    expect(vietnamDay).toBe("2026-06-02");
+    expect(edmontonDay).toBe("2026-06-01");
+
+    const vietnam = computeNewStreakState(BUMP(3, 3, "2026-06-01"), vietnamDay);
+    expect(vietnam.action).toBe("increment");
+    if (vietnam.action === "increment") {
+      expect(vietnam.reason).toBe("consecutive");
+      expect(vietnam.next.current).toBe(4);
+    }
+
+    expect(computeNewStreakState(BUMP(3, 3, "2026-06-01"), edmontonDay)).toEqual({
+      action: "noop_same_day",
+    });
+  });
 });
