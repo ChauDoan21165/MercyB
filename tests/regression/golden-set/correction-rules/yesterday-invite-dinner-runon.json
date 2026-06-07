@@ -1,0 +1,59 @@
+{
+  "rule": "yesterdayInviteDinnerRunon",
+  "ruleId": "en-yesterday-invite-dinner-runon",
+  "language": "en",
+  "description": "Tight live-bug rule for a VN learner sentence that combines an explicit yesterday marker, bare invite, and a specific dinner/cigars/fun run-on. It corrects invite -> invited, splits the sentence into three short sentences, and changes the coordinated activity to smoked cigars.",
+  "fp_risk_note": "Low-medium risk. This is not a general run-on rewriter. It fires only on a full-sentence anchored frame: I invite my (best/close/old) friend to come to my house yesterday and we had dinner and optional transcript noise ('yet why and') we smoke cigars he had a lot of fun. The explicit yesterday marker licenses invite -> invited, the already-past 'had dinner' anchors the sequence, and the closed 'we smoke cigars he had a lot of fun' tail is split into two simple clauses. Present habitual, future invite plans, already-correct past forms, and other run-ons all abstain.",
+  "positive": [
+    {
+      "id": "yidr-pos-001",
+      "input": "I invite my best friend to come to my house yesterday and we had dinner and yet why and we smoke cigars he had a lot of fun",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I invited my best friend to come to my house yesterday. We had dinner and smoked cigars. He had a lot of fun.",
+      "expectedRuleFired": "yesterdayInviteDinnerRunon",
+      "notes": "Exact live input: fixes invite -> invited and does not leave the full run-on unchanged."
+    },
+    {
+      "id": "yidr-pos-002",
+      "input": "I invite my friend to come to my house yesterday and we had dinner and we smoke cigars he had a lot of fun",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I invited my friend to come to my house yesterday. We had dinner and smoked cigars. He had a lot of fun.",
+      "expectedRuleFired": "yesterdayInviteDinnerRunon",
+      "notes": "Same anchored frame without the noisy 'yet why' transcript fragment."
+    },
+    {
+      "id": "yidr-pos-003",
+      "input": "I invite my old friend to come to my house yesterday and we had dinner and yet why and we smoke cigars he had a lot of fun",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I invited my old friend to come to my house yesterday. We had dinner and smoked cigars. He had a lot of fun.",
+      "expectedRuleFired": "yesterdayInviteDinnerRunon",
+      "notes": "Same anchored frame with a closed friend modifier; preserves the modifier."
+    }
+  ],
+  "negative": [
+    {
+      "id": "yidr-neg-001",
+      "input": "I invite my best friend to come to my house tomorrow and we had dinner and we smoke cigars he had a lot of fun",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I invite my best friend to come to my house tomorrow and we had dinner and we smoke cigars he had a lot of fun.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (future marker): tomorrow must not be rewritten as a past-tense invite."
+    },
+    {
+      "id": "yidr-neg-002",
+      "input": "Every day I invite my best friend to come to my house and we have dinner",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Every day I invite my best friend to come to my house and we have dinner.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (habitual present): no yesterday marker and no closed dinner/cigars/fun tail."
+    },
+    {
+      "id": "yidr-neg-003",
+      "input": "I invited my best friend to come to my house yesterday and we had dinner and smoked cigars. He had a lot of fun.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I invited my best friend to come to my house yesterday and we had dinner and smoked cigars. He had a lot of fun.",
+      "expectedRuleFired": null,
+      "notes": "FP-stress (already past and already partly punctuated): do not reprocess an already-corrected invite."
+    }
+  ]
+}
