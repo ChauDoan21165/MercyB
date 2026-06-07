@@ -408,6 +408,44 @@ export default function SpeakPracticeMode({
                   </button>
                 </div>
               )}
+
+              {/* Answer-by-voice for the follow-up. Without this the learner had
+                  no recording control attached to the question and would reuse
+                  the by-ear SelfCompareRecorder above (which never feeds the
+                  loop), trapping Speak on the first sentence. This shares the
+                  same mic toggle as "Bạn đọc lại": its STT commit updates the
+                  current spoken response and advances to the next follow-up. */}
+              <div className="mt-3" data-testid="ai-tutor-speak-follow-up-answer">
+                <div className="text-xs font-black uppercase text-slate-500">
+                  Trả lời câu hỏi này
+                </div>
+                <div className="mt-2">
+                  <TeacherMercyVoiceControls
+                    kind="mic"
+                    supported={micSupported}
+                    active={micListening}
+                    unavailableLabel={tutorCopy.micLabels.unavailable}
+                    inactiveLabel="Trả lời bằng giọng nói"
+                    activeLabel={tutorCopy.micLabels.listening}
+                    ariaStart="Trả lời câu hỏi bằng giọng nói"
+                    ariaStop={tutorCopy.micLabels.ariaStop}
+                    onToggle={onMicToggle}
+                    fallbackTestId="ai-tutor-speak-follow-up-mic-fallback"
+                  />
+                </div>
+                {(!micSupported || micError) && (
+                  <p
+                    className="mt-2 rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold leading-5 text-amber-900"
+                    data-testid="ai-tutor-speak-follow-up-mic-fallback-message"
+                    role="status"
+                  >
+                    {micFallbackMessage}
+                  </p>
+                )}
+                <p className="mt-2 text-[11px] font-semibold leading-5 text-slate-500">
+                  Hoặc gõ câu trả lời vào ô “Gõ câu bạn đọc lại” phía trên.
+                </p>
+              </div>
             </div>
           )}
         </>
