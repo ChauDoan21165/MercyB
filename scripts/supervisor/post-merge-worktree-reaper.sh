@@ -151,6 +151,50 @@ has_active_process_under() {
   lsof -t +D "$path" >/dev/null 2>&1
 }
 
+worktree_locked() {
+  local path="$1"
+  git -C "$path" worktree list --porcelain 2>/dev/null | awk -v path="$path" '
+    $0 == "worktree " path { in_block=1; next }
+    $1 == "worktree" && in_block { exit }
+    in_block && $1 == "locked" { found=1 }
+    END { exit found ? 0 : 1 }
+  '
+}
+
+worktree_remove() {
+  local path="$1"
+  local common_dir
+  common_dir="$(git -C "$path" rev-parse --git-common-dir 2>/dev/null || true)"
+  if [[ -n "$common_dir" ]]; then
+    git --git-dir="$common_dir" worktree remove "$path"
+  else
+    git -C "$REPO_DIR" worktree remove "$path"
+  fi
+}
+
+list_candidate_worktrees() {
+  local raw root canonical git_marker path
+
+  git -C "$REPO_DIR" worktree list --porcelain | awk '$1 == "worktree" { print substr($0, 10) }'
+
+  IFS=':' read -r -a root_parts <<< "$ROOTS"
+  for raw in "${root_parts[@]}"; do
+    [[ -n "$raw" ]] || continue
+    root="$(canonical_dir "$raw" 2>/dev/null || true)"
+    [[ -n "$root" ]] || continue
+    while IFS= read -r git_marker; do
+      path="$(dirname "$git_marker")"
+      canonical="$(canonical_dir "$path" 2>/dev/null || true)"
+      [[ -n "$canonical" ]] || continue
+      # Linked worktrees have a .git file. Standalone clones have a .git
+      # directory and are intentionally ignored by this reaper.
+      if grep -q '^gitdir:' "$git_marker" 2>/dev/null; then
+        printf '%s\n' "$canonical"
+      fi
+    done < <(find "$root" -mindepth 2 -maxdepth 4 -type f -name .git -print 2>/dev/null)
+  done | awk '!seen[$0]++'
+}
+
 print_df() {
   local label="$1"
   log "$label df -h /"
@@ -173,7 +217,8 @@ if ! git -C "$REPO_DIR" rev-parse --verify "$MERGED_REF^{commit}" >/dev/null 2>&
   exit 4
 fi
 
-current_worktree="$(canonical_dir "$(git -C "$REPO_DIR" rev-parse --show-toplevel)")"
+REPO_DIR="$(canonical_dir "$(git -C "$REPO_DIR" rev-parse --show-toplevel)")"
+current_worktree="$REPO_DIR"
 print_df "before"
 log "mode=$MODE reason=$REASON repo=$REPO_DIR merged_ref=$MERGED_REF roots=$ROOTS current=$current_worktree"
 
@@ -186,16 +231,7 @@ while IFS= read -r wt_path; do
     continue
   fi
 
-  branch_line="$(git -C "$REPO_DIR" worktree list --porcelain | awk -v path="$wt_path" '
-    $0 == "worktree " path { in_block=1; next }
-    $1 == "worktree" && in_block { exit }
-    in_block && $1 == "branch" { print $2; exit }
-  ')"
-  locked_line="$(git -C "$REPO_DIR" worktree list --porcelain | awk -v path="$wt_path" '
-    $0 == "worktree " path { in_block=1; next }
-    $1 == "worktree" && in_block { exit }
-    in_block && $1 == "locked" { print $0; exit }
-  ')"
+  branch_line="$(git -C "$canonical_path" symbolic-ref -q HEAD 2>/dev/null || true)"
   head_sha="$(git -C "$canonical_path" rev-parse --verify HEAD 2>/dev/null || true)"
 
   if [[ "$canonical_path" == "$current_worktree" ]]; then
@@ -213,12 +249,12 @@ while IFS= read -r wt_path; do
     log "SKIP outside-approved-roots path=$canonical_path"
     continue
   fi
-  if [[ -z "$branch_line" || "$branch_line" == "detached" ]]; then
+  if [[ -z "$branch_line" ]]; then
     SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
     log "SKIP no-branch path=$canonical_path head=${head_sha:-unknown}"
     continue
   fi
-  if [[ -n "$locked_line" ]]; then
+  if worktree_locked "$canonical_path"; then
     SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
     log "SKIP locked-worktree path=$canonical_path branch=$branch_line"
     continue
@@ -241,12 +277,12 @@ while IFS= read -r wt_path; do
 
   if [[ "$MODE" == "live" ]]; then
     log "REMOVE path=$canonical_path branch=$branch_line head=$head_sha safe=clean-and-merged-into-$MERGED_REF"
-    git -C "$REPO_DIR" worktree remove "$canonical_path"
+    worktree_remove "$canonical_path"
   else
     log "DRY-RUN would-remove path=$canonical_path branch=$branch_line head=$head_sha safe=clean-and-merged-into-$MERGED_REF"
   fi
   REMOVED_COUNT=$((REMOVED_COUNT + 1))
-done < <(git -C "$REPO_DIR" worktree list --porcelain | awk '$1 == "worktree" { print substr($0, 10) }')
+done < <(list_candidate_worktrees)
 
 print_df "after"
 log "summary mode=$MODE removed=$REMOVED_COUNT skipped=$SKIPPED_COUNT"
