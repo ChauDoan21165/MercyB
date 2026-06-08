@@ -28,10 +28,6 @@
   status = 200
 
 [[redirects]]
-  from = "/api/mercy-guide"
-  to = "/.netlify/functions/api-mercy-guide"
-  status = 200
-
 [context.deploy-preview]
   command = "echo skipped && exit 1"
 

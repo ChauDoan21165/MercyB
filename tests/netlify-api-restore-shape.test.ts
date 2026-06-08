@@ -16,7 +16,6 @@ describe("Netlify API restore shape", () => {
       "/api/mercy/grammar",
       "/api/mercy-ai",
       "/api/mercy-feedback",
-      "/api/mercy-guide",
     ]) {
       expect(toml).toContain(`from = "${route}"`);
     }
