@@ -1,5 +1,6 @@
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
 import SelfCompareRecorder from "@/components/pronunciation/SelfCompareRecorder";
+import { SPEAK_DETAIL_CAP_MESSAGE_VI } from "@/lib/pronunciation/speakDetailGate";
 import EnglishPronunciationFeedbackCard from "@/components/ai-tutor/EnglishPronunciationFeedbackCard";
 import VietnameseToneFeedbackCard from "@/components/ai-tutor/VietnameseToneFeedbackCard";
 import PronunciationProgressTrail from "@/components/ai-tutor/PronunciationProgressTrail";
@@ -46,6 +47,9 @@ type Props = {
   targetSentence: string | null;
   repeatInput: string;
   pronunciationResult?: SpeakPronunciationResult | null;
+  /** Premium learner has exhausted the per-session detailed-scoring cap. Shows
+   *  a warm message in place of the score; by-ear self-compare stays usable. */
+  detailScoreCapReached?: boolean;
   micSupported: boolean;
   micListening: boolean;
   micError?: string | null;
@@ -80,6 +84,7 @@ export default function SpeakPracticeMode({
   targetSentence,
   repeatInput,
   pronunciationResult,
+  detailScoreCapReached = false,
   micSupported,
   micListening,
   micError,
@@ -296,6 +301,16 @@ export default function SpeakPracticeMode({
               aria-label="Gõ câu bạn đọc lại"
             />
           </div>
+
+          {detailScoreCapReached && (
+            <div
+              data-testid="ai-tutor-speak-detail-cap"
+              role="status"
+              className="mt-4 rounded-[16px] border border-amber-200 bg-amber-50 px-4 py-4 text-sm font-bold leading-6 text-amber-900"
+            >
+              {SPEAK_DETAIL_CAP_MESSAGE_VI}
+            </div>
+          )}
 
           {showFeedbackCard && (
             <div data-testid="ai-tutor-speak-score" className="mt-4 rounded-[16px] border border-indigo-100 bg-indigo-50 px-4 py-4">

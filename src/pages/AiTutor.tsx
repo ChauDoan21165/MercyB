@@ -15,6 +15,11 @@ import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
 import { readAndClearPendingReflection } from "@/lib/ai-tutor/teacherMercyHandoff";
 import { useTtsSpeaker } from "@/lib/ai-tutor/useTtsSpeaker";
 import { usePronunciationRecorder } from "@/hooks/usePronunciationRecorder";
+import { useSpeakDetailEntitlement } from "@/hooks/useSpeakDetailEntitlement";
+import {
+  resolveSpeakDetailGate,
+  SPEAK_DETAIL_SESSION_CAP,
+} from "@/lib/pronunciation/speakDetailGate";
 import {
   MOCK_RESULTS_BY_TARGET,
   buildInputAwareCorrection,
@@ -958,6 +963,13 @@ export default function AiTutorPage() {
   const stt = useBrowserStt(speechLang);
   const tts = useTtsSpeaker();
   const pronunciationRecorder = usePronunciationRecorder();
+  // Premium/trial signal for the detailed-scoring gate (Decision 1). Provider-
+  // free + fail-closed, so it is safe inside this (un-QueryClient-wrapped) page.
+  // Gated by the flag so the default-OFF path makes no entitlement network call.
+  const isPremiumOrTrialForDetail = useSpeakDetailEntitlement(
+    session,
+    FEATURE_FLAGS.AI_TUTOR_PRONUNCIATION_PREMIUM_GATE_ENABLED,
+  );
 
   const nickname: string | undefined =
     (user?.user_metadata as Record<string, unknown> | undefined)?.nickname as string | undefined;
@@ -975,6 +987,8 @@ export default function AiTutorPage() {
     useState<VietnameseToneFeedbackDisplay | null>(null);
   const [speakToneProgress, setSpeakToneProgress] = useState<PronunciationProgressEntry[]>([]);
   const [speakEnglishProgress, setSpeakEnglishProgress] = useState<PronunciationProgressEntry[]>([]);
+  // True once a premium learner exhausts the per-session detailed-scoring cap.
+  const [speakDetailCapReached, setSpeakDetailCapReached] = useState(false);
   const [latestCorrectedSeed, setLatestCorrectedSeed] = useState<CorrectedSentenceSeed | null>(null);
   const [speakFollowUpSession, setSpeakFollowUpSession] = useState<SpeakFollowUpSession>({
     topicId: "",
@@ -1067,6 +1081,10 @@ export default function AiTutorPage() {
   const lastCommittedSttRef = useRef<string>("");
   const lastRecordedSpeakAttemptRef = useRef<string>("");
   const speakPronunciationRequestRef = useRef(0);
+  // Per-session count of Azure DETAILED results that have landed (Decision 2).
+  // A ref so it never re-triggers the scoring effect; the boolean cap-reached
+  // state below is the single render trigger when the ceiling is hit.
+  const azureDetailUsedRef = useRef(0);
   const speakVietnameseToneRequestRef = useRef(0);
   const emittedEnglishPronunciationOutcomeRef = useRef<string>("");
   const emittedVietnameseToneOutcomeRef = useRef<string>("");
@@ -1075,6 +1093,17 @@ export default function AiTutorPage() {
   const speakFollowUpRequestRef = useRef(0);
   const wasListeningRef = useRef(false);
   const ignoreNextSttCommitRef = useRef(false);
+
+  // Detailed-scoring gate (premium/trial + per-session cap). When the gate flag
+  // is OFF this is a no-op (gateAllows always true → legacy behavior). Using the
+  // cap-reached STATE (not just the ref) as the detailUsed signal makes the gate
+  // flip reactively the moment the ceiling is hit, while the ref keeps the count
+  // out of the scoring effect's dependencies.
+  const speakDetailGate = resolveSpeakDetailGate({
+    premiumGateEnabled: FEATURE_FLAGS.AI_TUTOR_PRONUNCIATION_PREMIUM_GATE_ENABLED,
+    isPremiumOrTrial: isPremiumOrTrialForDetail,
+    detailUsed: speakDetailCapReached ? SPEAK_DETAIL_SESSION_CAP : azureDetailUsedRef.current,
+  });
 
   const applySpeakFollowUpSession = (next: SpeakFollowUpSession) => {
     speakFollowUpSessionRef.current = next;
@@ -1325,6 +1354,20 @@ export default function AiTutorPage() {
       return;
     }
 
+    // Premium/trial + per-session-cap gate (Decisions 1 & 2). When the gate is
+    // enabled and blocks (free user, or premium user past the cap), we surface
+    // NO score card at all: no fake number, and no silent downgrade into a
+    // pretend "local" measurement. The free by-ear self-compare loop stays fully
+    // available (it lives in SelfCompareRecorder, independent of this path), and
+    // a capped premium learner gets the warm cap message via SpeakPracticeMode.
+    if (
+      FEATURE_FLAGS.AI_TUTOR_PRONUNCIATION_PREMIUM_GATE_ENABLED &&
+      !speakDetailGate.gateAllows
+    ) {
+      setSpeakPronunciationResult(null);
+      return;
+    }
+
     const requestId = speakPronunciationRequestRef.current + 1;
     speakPronunciationRequestRef.current = requestId;
     setSpeakPronunciationResult(null);
@@ -1344,7 +1387,19 @@ export default function AiTutorPage() {
       })
         .then((result) => {
           if (speakPronunciationRequestRef.current !== requestId) return;
-          setSpeakPronunciationResult(adaptSpeakPronunciationResult(result));
+          const adapted = adaptSpeakPronunciationResult(result);
+          setSpeakPronunciationResult(adapted);
+          // Count only real Azure detailed results against the session cap.
+          if (
+            FEATURE_FLAGS.AI_TUTOR_PRONUNCIATION_PREMIUM_GATE_ENABLED &&
+            adapted?.mode === "azure-batch" &&
+            adapted.provider === "azure"
+          ) {
+            azureDetailUsedRef.current += 1;
+            if (azureDetailUsedRef.current >= SPEAK_DETAIL_SESSION_CAP) {
+              setSpeakDetailCapReached(true);
+            }
+          }
         })
         .catch(() => {
           if (speakPronunciationRequestRef.current !== requestId) return;
@@ -1360,6 +1415,7 @@ export default function AiTutorPage() {
     session?.access_token,
     speakRepeatInput,
     tutorCopy.starterQuestions,
+    speakDetailGate.gateAllows,
   ]);
 
   useEffect(() => {
@@ -1552,7 +1608,15 @@ export default function AiTutorPage() {
       setGrammarVoiceMessage("");
     }
     stt.reset();
-    if (mode === "speak" && STEP7_AZURE_BATCH_ENABLED && session?.access_token) {
+    // Only capture audio for detailed scoring when the gate permits it — a free
+    // or capped learner is never recorded for a score they won't receive. The
+    // by-ear self-compare recorder is separate and always works.
+    if (
+      mode === "speak" &&
+      STEP7_AZURE_BATCH_ENABLED &&
+      session?.access_token &&
+      speakDetailGate.gateAllows
+    ) {
       pronunciationRecorder.reset();
       void pronunciationRecorder.startRecording();
     }
@@ -2383,6 +2447,7 @@ export default function AiTutorPage() {
           targetSentence={latestCorrectedSeed?.correctedSentence ?? null}
           repeatInput={speakRepeatInput}
           pronunciationResult={speakPronunciationResult}
+          detailScoreCapReached={FEATURE_FLAGS.AI_TUTOR_PRONUNCIATION_PREMIUM_GATE_ENABLED && speakDetailCapReached}
           englishPronunciationFeedbackEnabled={FEATURE_FLAGS.ENGLISH_PRONUNCIATION_FEEDBACK_MVP_ENABLED && target === "en"}
           englishPronunciationFeedback={englishPronunciationFeedback}
           vietnameseToneFeedbackEnabled={FEATURE_FLAGS.VIETNAMESE_TONE_FEEDBACK_MVP_ENABLED && target === "vi"}
