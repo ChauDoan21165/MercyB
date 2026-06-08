@@ -67,6 +67,7 @@ export const EXPECTED_FILES = [
   'scripts/__tests__/verify-mobile-audio.test.mjs',
 ];
 const ALLOWED_CHANGED_FILES = new Set([
+  '.gitlab-ci.yml',
   'package.json',
   'scripts/verify-mobile-audio.mjs',
   'scripts/__tests__/verify-mobile-audio.test.mjs',
@@ -202,10 +203,17 @@ export function runCommand(command, args = [], options = {}) {
 
 export function detectTestCount(output = '') {
   const text = String(output);
-  const totals = [];
-  for (const match of text.matchAll(/\((\d+)\s+tests?\)/gi)) totals.push(Number(match[1]));
-  for (const match of text.matchAll(/Tests\s+(\d+)\s+passed/gi)) totals.push(Number(match[1]));
-  for (const match of text.matchAll(/(\d+)\s+tests?\b/gi)) totals.push(Number(match[1]));
+  const summary = [...text.matchAll(/Tests\s+(\d+)\s+passed/gi)].map((match) => Number(match[1]));
+  if (summary.length) return Math.max(...summary);
+  const fileCounts = [];
+  for (const line of text.split(/\r?\n/)) {
+    if (/^\s*(?:✓|✔|PASS)\s+/.test(line)) {
+      const match = line.match(/\((\d+)\s+tests?\)/i);
+      if (match) fileCounts.push(Number(match[1]));
+    }
+  }
+  if (fileCounts.length) return fileCounts.reduce((sum, count) => sum + count, 0);
+  const totals = [...text.matchAll(/(\d+)\s+tests?\b/gi)].map((match) => Number(match[1]));
   return totals.length ? Math.max(...totals) : null;
 }
 

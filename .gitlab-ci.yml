@@ -531,7 +531,15 @@ variables:
   - npm run build
   - npm run cap:sync:ios
   - npm run cap:sync:android
-  - npm run verify:mobile-audio
+  - |
+    if [ -n "${CI_MERGE_REQUEST_DIFF_BASE_SHA:-}" ]; then
+      git fetch --depth 1 origin "+${CI_MERGE_REQUEST_DIFF_BASE_SHA}:refs/remotes/origin/mobile-audio-base"
+      MOBILE_AUDIO_VERIFY_BASE="origin/mobile-audio-base"
+    else
+      git fetch --depth 1 origin +main:refs/remotes/origin/main
+      MOBILE_AUDIO_VERIFY_BASE="origin/main"
+    fi
+  - npm run verify:mobile-audio -- --base "$MOBILE_AUDIO_VERIFY_BASE"
 
 # ── `test` stage jobs ──────────────────────────────────────────────────
 

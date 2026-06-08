@@ -212,6 +212,12 @@ describe('test count detection', () => {
   it('skipped equals total detected', () => expect(detectNotValidated('skipped=4 total=4')).toBe(true));
   it('detects vitest parenthetical count', () => expect(detectTestCount('passed (91 tests)')).toBe(91));
   it('detects tests passed count', () => expect(detectTestCount('Tests 12 passed')).toBe(12));
+  it('sums vitest file rows when captured output omits the aggregate summary', () => {
+    expect(detectTestCount(' ✓ a.test.ts (34 tests) 10ms\n ✓ b.test.tsx (20 tests) 1s')).toBe(54);
+  });
+  it('prefers vitest aggregate summary when both file rows and total exist', () => {
+    expect(detectTestCount(' ✓ a.test.ts (34 tests) 10ms\n ✓ b.test.tsx (20 tests) 1s\n Tests 54 passed')).toBe(54);
+  });
 });
 
 describe('command model checks', () => {
