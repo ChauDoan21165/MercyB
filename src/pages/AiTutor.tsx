@@ -102,6 +102,7 @@ import {
 } from "@/lib/ai-tutor/l1FollowUpLoop";
 import { recordL1Tag } from "@/lib/stage-3a/adapters/l1TagAdapter";
 import { recordActiveDay } from "@/lib/retention/recordActiveDay";
+import { resolveApiUrl } from "@/lib/apiBase";
 import type {
   ConversationMessage,
   MercyConversationMessage,
@@ -224,6 +225,61 @@ const STEP7_AZURE_BATCH_ENABLED =
   (import.meta as ImportMeta & { env?: Record<string, string> }).env
     ?.VITE_AZURE_PHONEME_BATCH_ENABLED === "true";
 const EMPTY_SPEAK_AUDIO_BLOB = new Blob([], { type: "audio/webm" });
+
+type SpeakAiFollowUpRequest = {
+  transcript: string;
+  currentTopic: string;
+  learnerLevel: string;
+  recentTurns: PivotPromptTurn[];
+  accessToken: string;
+};
+
+function normalizeAiSpeakFollowUp(value: unknown): string | null {
+  const raw = typeof value === "string"
+    ? value.replace(/^["'“”]+|["'“”]+$/g, "").replace(/\s+/g, " ").trim()
+    : "";
+  if (!raw || !raw.endsWith("?") || raw.length > 180) return null;
+  if (/\bwhy did you choose the\b/i.test(raw)) return null;
+  if (
+    /\b(?:choose|about|with|for|like)\b/i.test(raw) &&
+    /\b(?:the\s+)?(?:general|guys?|things?|stuff|some|this|that)\b/i.test(raw)
+  ) {
+    return null;
+  }
+  return raw;
+}
+
+async function fetchDeepSeekSpeakFollowUp({
+  transcript,
+  currentTopic,
+  learnerLevel,
+  recentTurns,
+  accessToken,
+}: SpeakAiFollowUpRequest): Promise<string | null> {
+  try {
+    const response = await fetch(resolveApiUrl("/api/mercy-ai"), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        mode: "speak-follow-up",
+        transcript,
+        context: {
+          learnerLevel,
+          currentTopic,
+          recentTurns: recentTurns.slice(-6),
+        },
+      }),
+    });
+    if (!response.ok) return null;
+    const data = (await response.json()) as { question?: unknown };
+    return normalizeAiSpeakFollowUp(data.question);
+  } catch {
+    return null;
+  }
+}
 
 function buildInitialSpeakFollowUpSession(sentence: string): SpeakFollowUpSession {
   const trimmed = sentence.trim();
@@ -927,6 +983,7 @@ export default function AiTutorPage() {
     currentQuestion: null,
     currentIsPivot: false,
   });
+  const speakFollowUpSessionRef = useRef(speakFollowUpSession);
   const [conversationMessages, setConversationMessages] = useState<ConversationMessage[]>(() => [
     createOpeningMessage(
       typeof window === "undefined"
@@ -1015,14 +1072,16 @@ export default function AiTutorPage() {
   const emittedVietnameseToneOutcomeRef = useRef<string>("");
   const speakPronunciationOutcomeSessionIdRef = useRef<string>("");
   const speakPivotTurnsRef = useRef<PivotPromptTurn[]>([]);
+  const speakFollowUpRequestRef = useRef(0);
   const wasListeningRef = useRef(false);
   const ignoreNextSttCommitRef = useRef(false);
 
+  const applySpeakFollowUpSession = (next: SpeakFollowUpSession) => {
+    speakFollowUpSessionRef.current = next;
+    setSpeakFollowUpSession(next);
+  };
+
   const recordSpeakRepeatAttempt = (spokenText: string) => {
-    // Deterministic one-question-then-offer flow: even when the learner reached
-    // Speak without a corrected sentence, fall back to the practice target (the
-    // same fallback the scorer uses) so a follow-up / "another sentence?" offer
-    // is always produced. The round must never silently end.
     const targetSentence =
       latestCorrectedSeed?.correctedSentence.trim() ||
       tutorCopy.starterQuestions[0]?.trim() ||
@@ -1036,70 +1095,77 @@ export default function AiTutorPage() {
       learnerText: spoken,
       salience,
     });
+    const current = speakFollowUpSessionRef.current;
 
-    setSpeakFollowUpSession((current) => {
-      if (stance.stance === "needs_pause") {
-        return {
-          ...current,
-          currentQuestion: SPEAK_STANCE_PAUSE,
-          currentIsPivot: false,
-        };
-      }
-
-      if (!transcriptClarity.clear) {
-        return {
-          ...current,
-          currentQuestion: SPEAK_TRANSCRIPT_ASK_TO_REPEAT,
-          currentIsPivot: false,
-        };
-      }
-
-      if (stance.stance === "needs_clarification") {
-        return {
-          ...current,
-          currentQuestion: SPEAK_STANCE_CLARIFICATION,
-          currentIsPivot: false,
-        };
-      }
-
-      // Issue 1 — coherence gate. If the practice TARGET is a grammar-only fix
-      // that is still nonsensical AND the learner only echoed it back (no
-      // clearer sentence of their own), ask for a simpler sentence instead of
-      // drilling the garbled sample with on-topic trivia. The dual condition
-      // means a coherent seed — or any coherent learner sentence — proceeds
-      // normally, so well-formed practice is never blocked.
-      if (
-        !assessSpeakSentenceCoherence(targetSentence).coherent &&
-        !assessSpeakSentenceCoherence(spoken).coherent
-      ) {
-        return {
-          ...current,
-          currentQuestion: SPEAK_STANCE_SEED_UNCLEAR,
-          currentIsPivot: false,
-        };
-      }
-
-      if (isSpeakTranscriptUnclearForFollowUp(spoken)) {
-        return {
-          ...current,
-          currentQuestion: SPEAK_TRANSCRIPT_UNCLEAR,
-          currentIsPivot: false,
-        };
-      }
-
-      const topicId = resolveSpeakFollowUpTopicId({
-        seedSentence: targetSentence,
-        learnerText: spoken,
-        currentTopicId: current.topicId,
+    if (stance.stance === "needs_pause") {
+      applySpeakFollowUpSession({
+        ...current,
+        currentQuestion: SPEAK_STANCE_PAUSE,
+        currentIsPivot: false,
       });
-      const sameTopic = current.topicId === topicId;
-      const turnsOnTopic = sameTopic ? current.turnsOnTopic : 0;
-      const askedQuestions = sameTopic ? current.askedQuestions : [];
-      const selection = selectSpeakFollowUpByTopicId(topicId, {
-        askedQuestions,
-        turnsOnTopic,
-        learnerText: spoken,
+      return;
+    }
+
+    if (!transcriptClarity.clear) {
+      applySpeakFollowUpSession({
+        ...current,
+        currentQuestion: SPEAK_TRANSCRIPT_ASK_TO_REPEAT,
+        currentIsPivot: false,
       });
+      return;
+    }
+
+    if (stance.stance === "needs_clarification") {
+      applySpeakFollowUpSession({
+        ...current,
+        currentQuestion: SPEAK_STANCE_CLARIFICATION,
+        currentIsPivot: false,
+      });
+      return;
+    }
+
+    // Issue 1 — coherence gate. If the practice TARGET is a grammar-only fix
+    // that is still nonsensical AND the learner only echoed it back (no
+    // clearer sentence of their own), ask for a simpler sentence instead of
+    // drilling the garbled sample with on-topic trivia. The dual condition
+    // means a coherent seed — or any coherent learner sentence — proceeds
+    // normally, so well-formed practice is never blocked.
+    if (
+      !assessSpeakSentenceCoherence(targetSentence).coherent &&
+      !assessSpeakSentenceCoherence(spoken).coherent
+    ) {
+      applySpeakFollowUpSession({
+        ...current,
+        currentQuestion: SPEAK_STANCE_SEED_UNCLEAR,
+        currentIsPivot: false,
+      });
+      return;
+    }
+
+    if (isSpeakTranscriptUnclearForFollowUp(spoken)) {
+      applySpeakFollowUpSession({
+        ...current,
+        currentQuestion: SPEAK_TRANSCRIPT_UNCLEAR,
+        currentIsPivot: false,
+      });
+      return;
+    }
+
+    const topicId = resolveSpeakFollowUpTopicId({
+      seedSentence: targetSentence,
+      learnerText: spoken,
+      currentTopicId: current.topicId,
+    });
+    const sameTopic = current.topicId === topicId;
+    const turnsOnTopic = sameTopic ? current.turnsOnTopic : 0;
+    const askedQuestions = sameTopic ? current.askedQuestions : [];
+    const selection = selectSpeakFollowUpByTopicId(topicId, {
+      askedQuestions,
+      turnsOnTopic,
+      learnerText: spoken,
+    });
+
+    if (!session?.access_token) {
       const pivotAwareSelection = resolveMockedContentAwarePivot(
         spoken,
         salience,
@@ -1115,13 +1181,49 @@ export default function AiTutorPage() {
         { role: "assistant" as const, text: pivotAwareSelection.question },
       ].slice(-8);
 
-      return {
+      applySpeakFollowUpSession({
         topicId: pivotAwareSelection.topicId,
         turnsOnTopic: turnsOnTopic + 1,
         askedQuestions: pivotAwareSelection.isPivot ? askedQuestions : [...askedQuestions, pivotAwareSelection.question],
         currentQuestion: question,
         currentIsPivot: pivotAwareSelection.isPivot,
-      };
+      });
+      return;
+    }
+
+    const requestId = speakFollowUpRequestRef.current + 1;
+    speakFollowUpRequestRef.current = requestId;
+    applySpeakFollowUpSession({
+      topicId,
+      turnsOnTopic,
+      askedQuestions,
+      currentQuestion: null,
+      currentIsPivot: false,
+    });
+    void fetchDeepSeekSpeakFollowUp({
+      transcript: spoken,
+      currentTopic: topicId,
+      learnerLevel: "beginner",
+      recentTurns: speakPivotTurnsRef.current,
+      accessToken: session.access_token,
+    }).then((aiQuestion) => {
+      if (speakFollowUpRequestRef.current !== requestId) return;
+      const question = stance.stance === "needs_acknowledgment" && aiQuestion
+        ? `${SPEAK_STANCE_ACKNOWLEDGMENT} ${aiQuestion}`
+        : aiQuestion;
+      const finalQuestion = question ?? SPEAK_TRANSCRIPT_ASK_TO_REPEAT;
+      speakPivotTurnsRef.current = [
+        ...speakPivotTurnsRef.current,
+        { role: "learner" as const, text: spoken },
+        { role: "assistant" as const, text: finalQuestion },
+      ].slice(-8);
+      applySpeakFollowUpSession({
+        topicId,
+        turnsOnTopic: turnsOnTopic + (aiQuestion ? 1 : 0),
+        askedQuestions: aiQuestion ? [...askedQuestions, aiQuestion] : askedQuestions,
+        currentQuestion: finalQuestion,
+        currentIsPivot: false,
+      });
     });
   };
 
@@ -1469,7 +1571,8 @@ export default function AiTutorPage() {
     pronunciationRecorder.reset();
     lastRecordedSpeakAttemptRef.current = "";
     speakPivotTurnsRef.current = [];
-    setSpeakFollowUpSession({
+    speakFollowUpRequestRef.current += 1;
+    applySpeakFollowUpSession({
       topicId: "",
       turnsOnTopic: 0,
       askedQuestions: [],
@@ -2048,7 +2151,7 @@ export default function AiTutorPage() {
       updatedAt: Date.now(),
     });
     clearSpeakBoardState();
-    setSpeakFollowUpSession(buildInitialSpeakFollowUpSession(trimmed));
+    applySpeakFollowUpSession(buildInitialSpeakFollowUpSession(trimmed));
     handleModeChange("speak");
   };
 
@@ -2088,11 +2191,12 @@ export default function AiTutorPage() {
 
   const handleSpeakRepeatInputChange = (value: string) => {
     setSpeakRepeatInput(value);
-    setSpeakFollowUpSession((current) => ({
+    const current = speakFollowUpSessionRef.current;
+    applySpeakFollowUpSession({
       ...current,
       currentQuestion: null,
       currentIsPivot: false,
-    }));
+    });
   };
 
   const handleClear = () => {

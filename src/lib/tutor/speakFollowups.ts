@@ -64,7 +64,8 @@ const SALIENCE_STOPWORDS = new Set([
   "any",
   "good", "bad", "nice", "big", "small", "old", "new", "great",
   "thing", "things", "stuff", "time", "way", "lot", "bit", "kind", "sort",
-  "secondhand",
+  "reason", "reasons", "idea", "ideas", "part", "parts", "case", "cases",
+  "point", "points", "context", "contexts", "general", "secondhand",
   "guy", "guys", "someone", "somebody", "something", "anyone", "anybody",
   "anything", "everyone", "everybody", "everything",
   "today", "yesterday", "tomorrow", "now", "day", "night",
@@ -221,6 +222,12 @@ const CLARITY_WEAK_NOUN_TARGETS = new Set([
   "anything", "everyone", "everybody", "everything",
 ]);
 
+const CLARITY_WEAK_ABSTRACT_TARGETS = new Set([
+  "general", "thing", "things", "stuff", "reason", "reasons", "idea", "ideas",
+  "part", "parts", "way", "ways", "case", "cases", "point", "points",
+  "context", "contexts",
+]);
+
 const CLARITY_FUNCTION_WORDS = new Set([
   ...SALIENCE_DET_OR_PREP,
   ...COHERENCE_CONNECTORS,
@@ -247,8 +254,15 @@ function hasHatHomophoneConfusion(tokens: readonly string[]): boolean {
 
 function hasInvalidGeneratedFollowUpTarget(question: string, learnerText: string): boolean {
   const normalizedQuestion = question.toLowerCase().replace(/[’]/g, "'").replace(/\s+/g, " ").trim();
-  const weakTargets = Array.from(CLARITY_WEAK_NOUN_TARGETS).join("|");
-  if (new RegExp(`\\bthe\\s+(?:some|any|i'm|im|canada|${weakTargets})\\b`).test(normalizedQuestion)) {
+  const weakTargets = [
+    ...CLARITY_WEAK_NOUN_TARGETS,
+    ...CLARITY_WEAK_ABSTRACT_TARGETS,
+  ].join("|");
+  const invalidArticleTargetPattern = new RegExp(`\\bthe\\s+(some|any|i'm|im|canada|${weakTargets})\\b`, "g");
+  for (const match of normalizedQuestion.matchAll(invalidArticleTargetPattern)) {
+    const target = match[1];
+    const afterTarget = normalizedQuestion.slice((match.index ?? 0) + match[0].length);
+    if (target === "way" && /^\s+to\b/.test(afterTarget)) continue;
     return true;
   }
   if (/\bthe\s+head\b/.test(normalizedQuestion) && hasHatHomophoneConfusion(salienceTokens(learnerText))) {
@@ -313,6 +327,22 @@ export function assessSpeakTranscriptClarity(transcript: string): SpeakTranscrip
       tokens.some((candidate) => candidate === "like" || candidate === "wear")
     ) {
       return { clear: false, reason: `weak_context_target:${token}` };
+    }
+
+    if (
+      CLARITY_WEAK_ABSTRACT_TARGETS.has(token) &&
+      tokens.some((candidate) => candidate === "sunny" || candidate === "summer" || candidate === "sunlight") &&
+      tokens.some((candidate) => candidate === "like" || candidate === "wear" || candidate === "swim")
+    ) {
+      return { clear: false, reason: `weak_abstract_context_target:${token}` };
+    }
+
+    if (token === "lie" && tokens[i + 1] === "your" && tokens[i + 2] === "sunlight") {
+      return { clear: false, reason: "broken_stt_phrase:lie_your_sunlight" };
+    }
+
+    if (token === "play" && tokens[i + 1] === "spot") {
+      return { clear: false, reason: "broken_stt_phrase:play_spot" };
     }
 
     if (CLARITY_COMMERCE_OR_NEED_VERBS.has(token) && CLARITY_UNLIKELY_BUY_OBJECTS.has(tokens[i + 1] ?? "")) {

@@ -44,14 +44,21 @@ const {
   getMemorySummary,
   markPracticed,
   fetchCloudTtsUrl,
+  useAuthMock,
 } = vi.hoisted(() => {
   type CloudTtsArgs = { text: string; language: "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi"; voiceIdOverride?: string };
   type CloudTtsResult = { audioUrl: string; cached: boolean };
+  type AuthMockValue = {
+    user: { id: string; user_metadata?: Record<string, unknown> } | null;
+    session: { access_token: string } | null;
+    isLoading: boolean;
+  };
   return {
     putCorrection: vi.fn(async () => {}),
     getMemorySummary: vi.fn(async () => ({ ...EMPTY_SUMMARY })),
     markPracticed: vi.fn(async () => {}),
     fetchCloudTtsUrl: vi.fn(async (_args: CloudTtsArgs): Promise<CloudTtsResult | null> => null),
+    useAuthMock: vi.fn<() => AuthMockValue>(() => ({ user: null, session: null, isLoading: false })),
   };
 });
 
@@ -139,7 +146,7 @@ class MockSpeechRecognition extends EventTarget implements SpeechRecognitionLike
 }
 
 vi.mock("@/providers/AuthProvider", () => ({
-  useAuth: vi.fn(() => ({ user: null, isLoading: false })),
+  useAuth: useAuthMock,
 }));
 
 vi.mock("@/lib/ai-tutor/learningMemory", () => ({
@@ -168,6 +175,8 @@ beforeEach(() => {
   (window as Window & { webkitSpeechRecognition?: unknown }).webkitSpeechRecognition = undefined;
   getMemorySummary.mockResolvedValue({ ...EMPTY_SUMMARY });
   fetchCloudTtsUrl.mockResolvedValue(null);
+  useAuthMock.mockReturnValue({ user: null, session: null, isLoading: false });
+  vi.unstubAllGlobals();
   Object.defineProperty(window, "speechSynthesis", {
     configurable: true,
     value: undefined,
@@ -853,6 +862,68 @@ describe("AiTutor four-tab seed flow", () => {
     const score = screen.queryByTestId("ai-tutor-speak-score");
     expect(score?.textContent ?? "").not.toMatch(/\d+%/);
     expect(score?.textContent ?? "").not.toMatch(/score|ML judgment/i);
+  });
+
+  it("uses the authenticated DeepSeek Speak path for clear learner transcripts", async () => {
+    useAuthMock.mockReturnValue({
+      user: { id: "user-1", user_metadata: {} },
+      session: { access_token: "session-jwt" },
+      isLoading: false,
+    });
+    const fetchMock = vi.fn(async (_url: string, init?: RequestInit) => {
+      return new Response(JSON.stringify({ question: "What do you like to do in summer?" }), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("I like summer because I can swim and wear shorts.");
+
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent(
+        "What do you like to do in summer?",
+      );
+    });
+    expect(fetchMock).toHaveBeenCalledWith("/api/mercy-ai", expect.objectContaining({ method: "POST" }));
+    const [, init] = fetchMock.mock.calls[0] as [string, RequestInit];
+    const body = JSON.parse(String(init.body ?? "{}")) as {
+      mode?: string;
+      transcript?: string;
+      context?: { currentTopic?: string; learnerLevel?: string };
+    };
+    expect(body.mode).toBe("speak-follow-up");
+    expect(body.transcript).toBe("I like summer because I can swim and wear shorts");
+    expect(body.context?.learnerLevel).toBe("beginner");
+    expect(init.headers).toMatchObject({ Authorization: "Bearer session-jwt" });
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
+  });
+
+  it("asks for clarification when the DeepSeek Speak path fails", async () => {
+    useAuthMock.mockReturnValue({
+      user: { id: "user-1", user_metadata: {} },
+      session: { access_token: "session-jwt" },
+      isLoading: false,
+    });
+    vi.stubGlobal("fetch", vi.fn(async () => new Response("{}", { status: 503 })));
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    render(<AiTutorPage />);
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("I like summer because it is sunny.");
+
+    await waitFor(() => {
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent(
+        "Mercy chưa nghe rõ. Bạn nói lại câu đó nhé.",
+      );
+    });
+    expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent("Why did you choose");
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
   });
 
   it("asks for a clearer repeat when the learner says the follow-up makes no sense", async () => {

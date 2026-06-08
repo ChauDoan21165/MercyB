@@ -378,6 +378,9 @@ describe("speakFollowups", () => {
       expect(extractSalientKeyword("I am from Canada.")).toBeNull();
       expect(extractSalientKeyword("some")).toBeNull();
       expect(extractSalientKeyword("I like the summer of you guys very sunny and I can wear short")).not.toBe("guys");
+      expect(extractSalientKeyword(
+        "don't lie your sunlight because you know I like summer in general because I can swim I can play Spot I can wear shorts and biking around",
+      )).not.toBe("general");
 
       const selection = selectSpeakFollowUpByTopicId("topic-shopping", {
         askedQuestions: ["What do you want to buy?"],
@@ -395,6 +398,7 @@ describe("speakFollowups", () => {
       expect(selection.question.toLowerCase()).not.toContain("the i'm");
       expect(selection.question.toLowerCase()).not.toContain("the canada");
       expect(selection.question.toLowerCase()).not.toContain("the guys");
+      expect(selection.question.toLowerCase()).not.toContain("the general");
     });
 
     it("asks for repeat instead of generating invalid noun-target follow-ups", () => {
@@ -423,6 +427,11 @@ describe("speakFollowups", () => {
           learnerText: "I like the summer of you guys very sunny and I can wear short",
           forbidden: "Why did you choose the guys?",
         },
+        {
+          learnerText:
+            "don't lie your sunlight because you know I like summer in general because I can swim I can play Spot I can wear shorts and biking around",
+          forbidden: "Why did you choose the general?",
+        },
       ];
 
       for (const { learnerText, forbidden } of unsafeCases) {
@@ -441,9 +450,12 @@ describe("speakFollowups", () => {
         "I bought a hat yesterday.",
         "I bought a bicycle yesterday.",
         "I need a hat because it is sunny.",
+        "I need a hat because the summer is sunny.",
         "I bought it at a second-hand shop.",
         "I like summer because it is sunny.",
+        "I like summer because I can swim and wear shorts.",
         "I want to go swimming in summer.",
+        "I like the sunlight in the morning.",
       ];
 
       for (const learnerText of clearCases) {
