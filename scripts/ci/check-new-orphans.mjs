@@ -26,7 +26,7 @@
 
 import { execFileSync } from "node:child_process";
 import { existsSync } from "node:fs";
-import { basename, dirname, extname } from "node:path";
+import { basename, dirname, extname, normalize } from "node:path";
 
 const SRC_PREFIX = "src/";
 const CODE_EXT = new Set([".ts", ".tsx"]);
@@ -125,7 +125,66 @@ function isImportedSomewhere(file) {
     "grep", "-lE", pattern, "--", ...SEARCH_GLOBS,
   ]).split("\n").map((s) => s.trim()).filter(Boolean);
   // Imported if any matching file is NOT the file itself.
-  return lines.some((f) => f !== file);
+  return lines.some((f) => f !== file) || isConsumedByImportMetaGlob(file);
+}
+
+function globPatternToRegex(pattern) {
+  let out = "^";
+  for (let i = 0; i < pattern.length; i += 1) {
+    const ch = pattern[i];
+    const next = pattern[i + 1];
+    if (ch === "*" && next === "*") {
+      out += ".*";
+      i += 1;
+      continue;
+    }
+    if (ch === "*") {
+      out += "[^/]*";
+      continue;
+    }
+    if (ch === "?") {
+      out += "[^/]";
+      continue;
+    }
+    out += ch.replace(/[|\\{}()[\]^$+?.]/g, "\\$&");
+  }
+  out += "$";
+  return new RegExp(out);
+}
+
+function resolveGlobPattern(importer, pattern) {
+  const posix = (value) => normalize(value).replace(/\\/g, "/");
+  if (pattern.startsWith("@/")) return posix(`src/${pattern.slice(2)}`);
+  if (pattern.startsWith("/src/")) return posix(pattern.slice(1));
+  if (pattern.startsWith("src/")) return posix(pattern);
+  if (pattern.startsWith("./") || pattern.startsWith("../")) {
+    return posix(`${dirname(importer)}/${pattern}`);
+  }
+  return null;
+}
+
+/**
+ * Vite auto-registers modules through static `import.meta.glob()` calls. Those
+ * files are consumed even though no literal import specifier mentions each
+ * module basename, so model simple static string glob patterns here.
+ */
+function isConsumedByImportMetaGlob(file) {
+  const globCallPattern = "import\\.meta\\.glob";
+  const importers = gitQuiet(["grep", "-lE", globCallPattern, "--", ...SEARCH_GLOBS])
+    .split("\n").map((s) => s.trim()).filter(Boolean);
+
+  for (const importer of importers) {
+    if (importer === file) continue;
+    const source = gitQuiet(["show", `HEAD:${importer}`]);
+    const globCalls = source.matchAll(/import\.meta\.glob(?:<[^>\n]+>)?\(\s*["']([^"']+)["']/g);
+    for (const match of globCalls) {
+      const resolved = resolveGlobPattern(importer, match[1]);
+      if (!resolved) continue;
+      if (globPatternToRegex(resolved).test(file)) return true;
+    }
+  }
+
+  return false;
 }
 
 /** Collect newly-added named exports from added/modified source files. */
