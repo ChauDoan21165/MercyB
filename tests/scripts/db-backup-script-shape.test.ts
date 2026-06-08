@@ -159,6 +159,8 @@ describe("scripts/db-backup/nightly-dump.sh — credential-safety shape", () => 
     expect(NIGHTLY_DUMP).toMatch(/chmod 700 "\$TEMP_GNUPGHOME"/);
     expect(NIGHTLY_DUMP).toMatch(/export GNUPGHOME="\$TEMP_GNUPGHOME"/);
     expect(NIGHTLY_DUMP).toMatch(/tr -d '\\r'/);
+    expect(NIGHTLY_DUMP).toMatch(/BEGIN PGP PUBLIC KEY BLOCK/);
+    expect(NIGHTLY_DUMP).toMatch(/END PGP PUBLIC KEY BLOCK/);
     expect(NIGHTLY_DUMP).toMatch(/gpg --batch --import "\$KEY_IMPORT_FILE"/);
     expect(NIGHTLY_DUMP).toMatch(/trap cleanup_gpg_home EXIT/);
   });
@@ -168,6 +170,7 @@ describe("scripts/db-backup/nightly-dump.sh — credential-safety shape", () => 
     // SUPABASE_DB_URL is the legacy alias.
     expect(NIGHTLY_DUMP).toMatch(/\$\{DATABASE_URL[:-]/);
     expect(NIGHTLY_DUMP).toMatch(/\$\{SUPABASE_DB_URL[:-]/);
+    expect(NIGHTLY_DUMP).toMatch(/env_value_or_file "\$\{DATABASE_URL/);
   });
 });
 
