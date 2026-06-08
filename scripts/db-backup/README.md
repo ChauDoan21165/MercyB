@@ -24,6 +24,7 @@ what's needed for that.
 |---|---|
 | `nightly-dump.sh` | Two encrypted dumps per run: a `.schema.dump.gpg` (DDL-only, fast restore) and a `.dump.gpg` (full schema + data). `pg_dump --format=custom --compress=9` piped through `gpg --encrypt`. Plaintext never touches disk. |
 | `restore.sh` | Companion decrypt + `pg_restore`. **Destructive.** 10-second guard countdown and a `--dry-run` mode. |
+| `verify-restore.sh` | Non-production restore proof. Creates a throwaway DB, streams `gpg --decrypt` into `pg_restore`, runs smoke queries, then drops the throwaway DB unless `--keep-db` is passed. |
 | `.gitlab-ci.yml` job `nightly-db-backup` | Scheduled execution at the configured cron time, uploads to object store via `rclone` into date-bucketed remote folders (`daily/`, `weekly/`, `monthly/`). |
 | `.gitlab-ci.yml` job `test-db-backup-now` | Manual UI-triggered run with identical logic — lets Chau validate the pipeline without waiting for the schedule. |
 | `tests/scripts/db-backup-script-shape.test.ts` | Vitest shape test — catches credential-leak regressions in the bash scripts at compile time. |
@@ -63,12 +64,12 @@ gpg --armor --export-secret-keys admin@mercyblade.com > mercyb-backup-priv.asc
 Under **Settings → CI/CD → Variables**, add (all protected; mask where
 the variable contents permit):
 
-| Variable | Type | Contents |
-|---|---|---|
-| `DATABASE_URL` | masked, protected | `postgresql://postgres:<password>@db.<project-ref>.supabase.co:5432/postgres` |
-| `GPG_PUBLIC_KEY_FILE` | **file** (NOT masked — armored public-key blob breaks masking) | The contents of `mercyb-backup-pub.asc` from step 1 |
-| `RCLONE_CONFIG` | **file** | Your rclone config (see step 3) |
-| `RCLONE_CONFIG_REMOTE` | not masked, protected | The rclone remote name + path, e.g. `b2:mercyb-backups/prod` |
+| Variable | GitLab type | Protected | Masked | Contents |
+|---|---|---:|---:|---|
+| `DATABASE_URL` | Variable | yes | yes | `postgresql://postgres:<password>@db.<project-ref>.supabase.co:5432/postgres?sslmode=require` for the production Supabase Postgres database. If GitLab refuses masking because of password characters, rotate the DB password until the value can be masked. |
+| `GPG_PUBLIC_KEY_FILE` | **File** | yes | no | Contents of `mercyb-backup-pub.asc` from step 1. This is a public key, but it is multi-line and must be file-type so GitLab writes it to a temp file path. |
+| `RCLONE_CONFIG` | **File** | yes | no | Contents of `~/.config/rclone/rclone.conf` for the off-Supabase object store remote. This is multi-line and secret-bearing, so use file-type. |
+| `RCLONE_CONFIG_REMOTE` | Variable | yes | no | Remote path for immutable uploads, e.g. `b2:mercyb-backups/prod`, `r2:mercyb-backups/prod`, or `s3:mercyb-backups/prod`. This is a bucket path, not a credential. |
 
 **Why `GPG_PUBLIC_KEY_FILE` is a "file" variable, not a regular one:**
 the public-key blob is multi-line and contains characters GitLab's
@@ -83,6 +84,25 @@ job so `GPG_PUBLIC_KEY_FILE` is the practical choice in CI.
 
 The dump script also accepts `SUPABASE_DB_URL` as a fallback if
 `DATABASE_URL` is unset, but new setups should use `DATABASE_URL`.
+
+### 2.1 Exact nightly GitLab schedule
+
+Chau creates this in GitLab. Do not create it from an agent session.
+
+Project page → **Build → Pipeline schedules → New schedule**:
+
+| Field | Exact value |
+|---|---|
+| Description | `nightly-db-backup (04:00 UTC)` |
+| Interval pattern | Custom |
+| Cron | `0 4 * * *` |
+| Cron timezone | `UTC` |
+| Target branch | `main` |
+| Variables | leave empty; the job reads project-level CI/CD variables |
+| Activated | checked |
+
+This schedule runs the `nightly-db-backup` job because `.gitlab-ci.yml`
+gates it to `CI_PIPELINE_SOURCE == "schedule"`.
 
 ### 3. Set up the off-Supabase object store
 
@@ -227,6 +247,42 @@ The restore script is `--clean --if-exists` by default — every object
 in the target is dropped before being restored. It prints a banner and
 counts down 10 seconds before starting; abort with Ctrl+C if anything
 looks wrong. Pass `--yes` only in automation.
+
+## One-command restore proof
+
+Once Chau has the GPG private key in his local keyring and access to a
+throwaway Postgres server, use `verify-restore.sh`. This is the preferred
+backup gate because it proves the encrypted dump decrypts and restores
+without targeting production.
+
+```bash
+# 1. Pull the encrypted full dump down from the backup remote.
+rclone copy "$RCLONE_CONFIG_REMOTE/daily/mercyb-<timestamp>-prod.dump.gpg" ./
+
+# 2. Confirm the private key exists locally. Import it from the password
+#    manager first if needed:
+#    gpg --import mercyb-backup-priv.asc
+gpg --list-secret-keys admin@mercyblade.com
+
+# 3. Restore into a throwaway DB and drop it automatically after smoke checks.
+VERIFY_RESTORE_ADMIN_DATABASE_URL="postgresql://postgres:<password>@<throwaway-host>:5432/postgres?sslmode=require" \
+  ./scripts/db-backup/verify-restore.sh ./mercyb-<timestamp>-prod.dump.gpg
+```
+
+Expected success shape:
+
+```text
+[verify-restore] creating throwaway DB mercyb_restore_verify_...
+[verify-restore] restoring encrypted dump into mercyb_restore_verify_...
+[verify-restore] running restore smoke queries
+current_database=mercyb_restore_verify_...
+public_tables=<non-zero count>
+schemas=<non-zero count>
+[verify-restore] restore verification passed; throwaway DB will be dropped
+```
+
+Use `--keep-db` only when Chau wants to inspect the restored database
+manually. The default is safer: drop the throwaway DB after proof.
 
 ## Quarterly test-restore reminder
 

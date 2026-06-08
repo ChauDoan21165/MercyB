@@ -24,6 +24,7 @@ function readScript(rel: string): string {
 
 const NIGHTLY_DUMP = readScript("scripts/db-backup/nightly-dump.sh");
 const RESTORE = readScript("scripts/db-backup/restore.sh");
+const VERIFY_RESTORE = readScript("scripts/db-backup/verify-restore.sh");
 
 // Patterns that, if found *outside* of a comment, would indicate an
 // accidental secret-leak path.
@@ -239,11 +240,65 @@ describe("scripts/db-backup/restore.sh — destructive-guard shape", () => {
   });
 });
 
+describe("scripts/db-backup/verify-restore.sh — throwaway restore proof shape", () => {
+  it("starts with the strict-bash prelude (set -euo pipefail)", () => {
+    expect(VERIFY_RESTORE).toMatch(/set -euo pipefail/);
+  });
+
+  it("creates and drops a throwaway database by default", () => {
+    expect(VERIFY_RESTORE).toMatch(/CREATE DATABASE/);
+    expect(VERIFY_RESTORE).toMatch(/DROP DATABASE IF EXISTS/);
+    expect(VERIFY_RESTORE).toMatch(/VERIFY_RESTORE_DB_NAME/);
+    expect(VERIFY_RESTORE).toMatch(/--keep-db/);
+  });
+
+  it("streams gpg decrypt into pg_restore without writing plaintext dumps", () => {
+    expect(VERIFY_RESTORE).toMatch(/gpg[\s\S]*--decrypt/);
+    expect(VERIFY_RESTORE).toMatch(/gpg[\s\S]*\|\s*pg_restore/);
+    expect(VERIFY_RESTORE).not.toMatch(/--output\s+.*\.dump/);
+  });
+
+  it("uses a separate admin URL for the maintenance connection", () => {
+    expect(VERIFY_RESTORE).toMatch(/VERIFY_RESTORE_ADMIN_DATABASE_URL/);
+    expect(VERIFY_RESTORE).not.toMatch(/DATABASE_URL \(target\)/);
+  });
+
+  it("redacts database URL userinfo before echoing", () => {
+    expect(VERIFY_RESTORE).toMatch(/redacted-user/);
+    expect(VERIFY_RESTORE).toMatch(/redact_url/);
+  });
+
+  it("never echoes raw database URL env vars", () => {
+    const code = stripCommentsAndStrings(VERIFY_RESTORE);
+    const banned = [
+      /\becho\b[^|;&]*\$\{?(VERIFY_RESTORE_ADMIN_DATABASE_URL|ADMIN_URL|TARGET_URL)\b/,
+      /\bprintf\b[^|;&]*\$\{?(VERIFY_RESTORE_ADMIN_DATABASE_URL|ADMIN_URL|TARGET_URL)\b/,
+    ];
+    for (const re of banned) {
+      expect(code, `verify-restore.sh must never echo raw DB URLs — pattern: ${re}`)
+        .not.toMatch(re);
+    }
+  });
+
+  it("does not enable shell trace (set -x)", () => {
+    expect(VERIFY_RESTORE).not.toMatch(/^\s*set\s+-x\s*$/m);
+    expect(VERIFY_RESTORE).not.toMatch(/^\s*set\s+-[a-z]*x[a-z]*\s*$/m);
+  });
+
+  it("does not embed a literal Postgres connection string", () => {
+    const stripped = stripCommentsAndStrings(VERIFY_RESTORE);
+    expect(stripped).not.toMatch(CONN_STRING_LITERAL);
+  });
+});
+
 describe("scripts are executable shell files", () => {
   it("nightly-dump.sh has a bash shebang", () => {
     expect(NIGHTLY_DUMP.startsWith("#!/usr/bin/env bash")).toBe(true);
   });
   it("restore.sh has a bash shebang", () => {
     expect(RESTORE.startsWith("#!/usr/bin/env bash")).toBe(true);
+  });
+  it("verify-restore.sh has a bash shebang", () => {
+    expect(VERIFY_RESTORE.startsWith("#!/usr/bin/env bash")).toBe(true);
   });
 });
