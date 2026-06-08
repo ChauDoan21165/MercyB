@@ -154,6 +154,15 @@ describe("scripts/db-backup/nightly-dump.sh — credential-safety shape", () => 
     expect(NIGHTLY_DUMP).toMatch(/neither GPG_PUBLIC_KEY_FILE nor GPG_RECIPIENT_KEY_ID/);
   });
 
+  it("imports CI file-type public keys into an isolated temporary GPG home", () => {
+    expect(NIGHTLY_DUMP).toMatch(/TEMP_GNUPGHOME="\$\(mktemp -d\)"/);
+    expect(NIGHTLY_DUMP).toMatch(/chmod 700 "\$TEMP_GNUPGHOME"/);
+    expect(NIGHTLY_DUMP).toMatch(/export GNUPGHOME="\$TEMP_GNUPGHOME"/);
+    expect(NIGHTLY_DUMP).toMatch(/tr -d '\\r'/);
+    expect(NIGHTLY_DUMP).toMatch(/gpg --batch --import "\$KEY_IMPORT_FILE"/);
+    expect(NIGHTLY_DUMP).toMatch(/trap cleanup_gpg_home EXIT/);
+  });
+
   it("prefers DATABASE_URL with SUPABASE_DB_URL as fallback", () => {
     // Per the dispatch refinement: DATABASE_URL is canonical;
     // SUPABASE_DB_URL is the legacy alias.
