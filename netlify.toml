@@ -1,11 +1,33 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  functions = "netlify/functions"
   # Netlify ignore command contract:
   #   exit 0 = ignore this deploy and skip the build
   #   exit 1 = continue with the build
   ignore = "bash scripts/netlify-ignore-build.sh"
 
+[[redirects]]
+  from = "/api/tts"
+  to = "/.netlify/functions/api-tts"
+  status = 200
+
+[[redirects]]
+  from = "/api/mercy/grammar"
+  to = "/.netlify/functions/api-mercy-grammar"
+  status = 200
+
+[[redirects]]
+  from = "/api/mercy-ai"
+  to = "/.netlify/functions/api-mercy-ai"
+  status = 200
+
+[[redirects]]
+  from = "/api/mercy-feedback"
+  to = "/.netlify/functions/api-mercy-feedback"
+  status = 200
+
+[[redirects]]
 [context.deploy-preview]
   command = "echo skipped && exit 1"
 
