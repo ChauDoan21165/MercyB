@@ -269,6 +269,11 @@ while IFS= read -r wt_path; do
     log "SKIP active-process path=$canonical_path branch=$branch_line"
     continue
   fi
+  if ! git -C "$REPO_DIR" cat-file -e "$head_sha^{commit}" 2>/dev/null; then
+    SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
+    log "SKIP unmerged path=$canonical_path branch=$branch_line head=$head_sha reason=commit-not-present-in-reaper-repo"
+    continue
+  fi
   if ! git -C "$REPO_DIR" merge-base --is-ancestor "$head_sha" "$MERGED_REF"; then
     SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
     log "SKIP unmerged path=$canonical_path branch=$branch_line head=$head_sha"
