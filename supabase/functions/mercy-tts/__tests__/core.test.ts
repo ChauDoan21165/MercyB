@@ -217,3 +217,138 @@ describe("mercy-tts provider fallback", () => {
     });
   });
 });
+
+describe("mercy-tts finalized-audio storage cache", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  function makeDepsWithStorage(
+    fetcher: typeof fetch,
+    storageImpl: {
+      list: ReturnType<typeof vi.fn>;
+      getPublicUrl: ReturnType<typeof vi.fn>;
+      upload: ReturnType<typeof vi.fn>;
+    },
+    flags: FlagMap = { azure_tts: true, elevenlabs_tts: true },
+  ) {
+    const insert = vi.fn(async () => ({ error: null }));
+    const createClient = vi.fn(() => ({
+      from(table: string) {
+        if (table === "feature_flags") {
+          let flagKey = "";
+          const chain: Record<string, unknown> = {
+            select: vi.fn(() => chain),
+            eq: vi.fn((_c: string, value: string) => {
+              flagKey = value;
+              return chain;
+            }),
+            maybeSingle: vi.fn(async () => ({
+              data: { is_enabled: flags[flagKey] ?? false, enabled_user_ids: [] },
+              error: null,
+            })),
+          };
+          return chain;
+        }
+        if (table === "mercy_tts_usage") {
+          const chain: Record<string, unknown> = {
+            select: vi.fn(() => chain),
+            gte: vi.fn(() => chain),
+            eq: vi.fn(() => chain),
+            insert,
+            then(resolve: (v: { count: number; error: null }) => unknown) {
+              return Promise.resolve(resolve({ count: 0, error: null }));
+            },
+          };
+          return chain;
+        }
+        throw new Error(`Unexpected table: ${table}`);
+      },
+      storage: {
+        from: vi.fn(() => storageImpl),
+      },
+    }));
+    return {
+      deps: {
+        createClient: createClient as never,
+        env: (key: string) => ({
+          SUPABASE_URL: "https://supabase.test",
+          SUPABASE_ANON_KEY: "anon",
+          SUPABASE_SERVICE_ROLE_KEY: "service",
+          AZURE_SPEECH_KEY: "azure-key",
+          AZURE_SPEECH_REGION: "westus",
+          ELEVENLABS_API_KEY: "eleven-key",
+        }[key]),
+        fetcher,
+        now: () => Date.UTC(2026, 0, 1),
+      },
+      insert,
+    };
+  }
+
+  it("serves cached audio without calling Azure (cap-proof) on a cache hit", async () => {
+    const fetcher = vi.fn(async () => audioResponse());
+    const storageImpl = {
+      list: vi.fn(async () => ({ data: [{ name: "abc.mp3" }], error: null })),
+      getPublicUrl: vi.fn(() => ({
+        data: { publicUrl: "https://cdn.test/room-audio/tts-cache/abc.mp3" },
+      })),
+      upload: vi.fn(async () => ({ data: {}, error: null })),
+    };
+    const { deps, insert } = makeDepsWithStorage(fetcher as unknown as typeof fetch, storageImpl);
+
+    const response = await handleMercyTtsRequest(jsonRequest({ language: "en" }), deps);
+    const body = await responseJson(response);
+
+    expect(response.status).toBe(200);
+    expect(body.provider).toBe("azure");
+    expect(body.cached).toBe(true);
+    expect(String(body.audioUrl)).toContain("tts-cache/");
+    // No Azure (or any provider) call, and no usage row — the cache hit is free.
+    expect(fetcher).not.toHaveBeenCalled();
+    expect(insert).not.toHaveBeenCalled();
+    expect(storageImpl.upload).not.toHaveBeenCalled();
+  });
+
+  it("synthesizes and uploads to cache on a cache miss", async () => {
+    const fetcher = vi.fn(async () => audioResponse());
+    const storageImpl = {
+      list: vi.fn(async () => ({ data: [], error: null })),
+      getPublicUrl: vi.fn(() => ({ data: { publicUrl: "https://cdn.test/x" } })),
+      upload: vi.fn(async () => ({ data: {}, error: null })),
+    };
+    const { deps, insert } = makeDepsWithStorage(fetcher as unknown as typeof fetch, storageImpl);
+
+    const response = await handleMercyTtsRequest(jsonRequest({ language: "en" }), deps);
+    const body = await responseJson(response);
+
+    expect(response.status).toBe(200);
+    expect(body.provider).toBe("azure");
+    expect(body.cached).toBe(false);
+    // Azure was called, and the fresh clip was written to the cache.
+    expect(fetcher).toHaveBeenCalledTimes(1);
+    expect(insert).toHaveBeenCalledTimes(1);
+    expect(storageImpl.upload).toHaveBeenCalledTimes(1);
+    expect(String(storageImpl.upload.mock.calls[0][0])).toContain("tts-cache/");
+  });
+
+  it("degrades to live synthesis when the cache lookup errors", async () => {
+    const fetcher = vi.fn(async () => audioResponse());
+    const storageImpl = {
+      list: vi.fn(async () => {
+        throw new Error("storage down");
+      }),
+      getPublicUrl: vi.fn(() => ({ data: { publicUrl: "" } })),
+      upload: vi.fn(async () => ({ data: {}, error: null })),
+    };
+    const { deps } = makeDepsWithStorage(fetcher as unknown as typeof fetch, storageImpl);
+
+    const response = await handleMercyTtsRequest(jsonRequest({ language: "en" }), deps);
+    const body = await responseJson(response);
+
+    // Never throws; falls through to Azure synthesis.
+    expect(response.status).toBe(200);
+    expect(body.provider).toBe("azure");
+    expect(fetcher).toHaveBeenCalledTimes(1);
+  });
+});
