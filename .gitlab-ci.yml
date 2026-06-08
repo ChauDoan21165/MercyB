@@ -290,6 +290,18 @@ variables:
   - scripts/run-ai-tutor-quality-gate.mjs
   - .gitlab-ci.yml
 
+.native_audio_smoke_changes: &native_audio_smoke_changes
+  - ios/**/*
+  - android/**/*
+  - capacitor.config.*
+  - package.json
+  - package-lock.json
+  - src/lib/speech/**/*
+  - src/hooks/usePronunciationRecorder.ts
+  - src/components/mercy-guide/**/*
+  - scripts/verify-mobile-audio.mjs
+  - .gitlab-ci.yml
+
 # Reusable rules: protected branch pushes run full validation regardless
 # of changes. Merge requests use changes filters to skip heavy work for
 # docs-only or unrelated updates.
@@ -512,6 +524,15 @@ variables:
 .ai_tutor_quality_gate_script: &ai_tutor_quality_gate_script
   - npm run test:ai-tutor-golden-flow
 
+.native_audio_smoke_script: &native_audio_smoke_script
+  - node -v
+  - |
+    node -e 'process.exit(Number(process.versions.node.split(".")[0]) === 22 ? 0 : 1)'
+  - npm run build
+  - npm run cap:sync:ios
+  - npm run cap:sync:android
+  - npm run verify:mobile-audio
+
 # ── `test` stage jobs ──────────────────────────────────────────────────
 
 # `build` — typecheck + edge-fn typecheck + Deno check + bundle build +
@@ -583,6 +604,21 @@ ai-tutor-quality-gate:shared-fallback:
   <<: [*node_job, *manual_shared_fallback, *manual_shared_ai_tutor_golden_flow_rules]
   stage: test
   script: *ai_tutor_quality_gate_script
+
+native-audio-smoke:
+  <<: [*node_job, *local_runner]
+  stage: test
+  allow_failure: true
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *native_audio_smoke_changes
+  script: *native_audio_smoke_script
 
 delete-account-guard:
   <<: [*node_job, *local_runner]
