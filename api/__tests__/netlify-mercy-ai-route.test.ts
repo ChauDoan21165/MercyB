@@ -14,6 +14,7 @@ describe("Netlify Speak API routing", () => {
     expect(toml).toContain('from = "/api/mercy-ai"');
     expect(toml).toContain('to = "/.netlify/functions/mercy-ai"');
     expect(toml).toContain('status = 200');
+    expect(toml).toContain("force = true");
 
     const functionRouteIndex = redirects.findIndex((line) =>
       line.startsWith("/api/mercy-ai ")
@@ -26,7 +27,7 @@ describe("Netlify Speak API routing", () => {
     expect(redirects[functionRouteIndex]).toContain(
       "/.netlify/functions/mercy-ai"
     );
-    expect(redirects[functionRouteIndex]).toContain("200");
+    expect(redirects[functionRouteIndex]).toContain("200!");
     expect(spaFallbackIndex).toBeGreaterThan(functionRouteIndex);
   });
 });
