@@ -15,6 +15,8 @@ MODE="dry-run"
 MERGED_REF="${MERCYB_REAPER_MERGED_REF:-origin/main}"
 ROOTS="${MERCYB_REAPER_WORKTREE_ROOTS:-/private/tmp}"
 REPO_DIR="${MERCYB_REAPER_REPO:-}"
+BUILDS_DIR="${MERCYB_REAPER_BUILDS_DIR-${CI_BUILDS_DIR:-}}"
+CURRENT_PIPELINE_ID="${CI_PIPELINE_ID:-}"
 REASON="${MERCYB_REAPER_REASON:-post-merge}"
 SKIP_PROCESS_CHECK="${MERCYB_REAPER_SKIP_PROCESS_CHECK:-0}"
 REMOVED_COUNT=0
@@ -70,6 +72,14 @@ while [[ $# -gt 0 ]]; do
       REPO_DIR="${2:-}"
       if [[ -z "$REPO_DIR" ]]; then
         err "--repo requires a repository path"
+        exit 1
+      fi
+      shift 2
+      ;;
+    --builds-dir)
+      BUILDS_DIR="${2:-}"
+      if [[ -z "$BUILDS_DIR" ]]; then
+        err "--builds-dir requires a path"
         exit 1
       fi
       shift 2
@@ -140,6 +150,14 @@ is_allowed_root() {
   return 1
 }
 
+is_approved_builds_root() {
+  local path="$1"
+  [[ "$path" != "/" ]] || return 1
+  [[ "$path" != "$HOME" ]] || return 1
+  [[ "$(basename "$path")" == "gitlab-runner-builds" || "$path" == */gitlab-runner-builds ]] || return 1
+  return 0
+}
+
 has_active_process_under() {
   local path="$1"
   if [[ "$SKIP_PROCESS_CHECK" == "1" ]]; then
@@ -203,26 +221,77 @@ print_df() {
 
 need_cmd git
 
+reap_build_dirs() {
+  local builds_root canonical_root pipeline_dir canonical_dirname
+  builds_root="$1"
+  canonical_root="$(canonical_dir "$builds_root" 2>/dev/null || true)"
+  if [[ -z "$canonical_root" ]]; then
+    log "SKIP build-dirs missing-root path=$builds_root"
+    return 0
+  fi
+  if is_protected_path "$canonical_root" || ! is_approved_builds_root "$canonical_root"; then
+    log "SKIP build-dirs unapproved-root path=$canonical_root"
+    return 0
+  fi
+
+  log "scan build-dirs root=$canonical_root current_pipeline=${CURRENT_PIPELINE_ID:-unknown}"
+  while IFS= read -r pipeline_dir; do
+    [[ -n "$pipeline_dir" ]] || continue
+    canonical_dirname="$(canonical_dir "$pipeline_dir" 2>/dev/null || true)"
+    if [[ -z "$canonical_dirname" ]]; then
+      SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
+      log "SKIP build-dir missing path=$pipeline_dir"
+      continue
+    fi
+    if ! is_under_dir "$canonical_dirname" "$canonical_root"; then
+      SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
+      log "SKIP build-dir outside-root path=$canonical_dirname"
+      continue
+    fi
+    if [[ -n "$CURRENT_PIPELINE_ID" && "$(basename "$canonical_dirname")" == "$CURRENT_PIPELINE_ID" ]]; then
+      SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
+      log "SKIP build-dir current-pipeline path=$canonical_dirname"
+      continue
+    fi
+    if has_active_process_under "$canonical_dirname"; then
+      SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
+      log "SKIP build-dir active-process path=$canonical_dirname"
+      continue
+    fi
+
+    if [[ "$MODE" == "live" ]]; then
+      log "REMOVE build-dir path=$canonical_dirname safe=non-current-runner-pipeline-dir"
+      if ! rm -rf -- "$canonical_dirname"; then
+        SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
+        log "SKIP build-dir remove-failed path=$canonical_dirname"
+        continue
+      fi
+    else
+      log "DRY-RUN would-remove build-dir path=$canonical_dirname safe=non-current-runner-pipeline-dir"
+    fi
+    REMOVED_COUNT=$((REMOVED_COUNT + 1))
+  done < <(find "$canonical_root" -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' -print 2>/dev/null | sort)
+}
+
 if [[ -z "$REPO_DIR" ]]; then
   REPO_DIR="$(pwd)"
 fi
 
 if ! git -C "$REPO_DIR" rev-parse --git-dir >/dev/null 2>&1; then
-  err "must run inside a git repository"
-  exit 3
-fi
+  print_df "before"
+  log "mode=$MODE reason=$REASON repo=$REPO_DIR repo_scan=skipped-not-git merged_ref=$MERGED_REF roots=$ROOTS builds_dir=${BUILDS_DIR:-none}"
+else
+  REPO_DIR="$(canonical_dir "$(git -C "$REPO_DIR" rev-parse --show-toplevel)")"
+  if ! git -C "$REPO_DIR" rev-parse --verify "$MERGED_REF^{commit}" >/dev/null 2>&1; then
+    err "merged ref not found: $MERGED_REF"
+    exit 4
+  fi
 
-if ! git -C "$REPO_DIR" rev-parse --verify "$MERGED_REF^{commit}" >/dev/null 2>&1; then
-  err "merged ref not found: $MERGED_REF"
-  exit 4
-fi
+  current_worktree="$REPO_DIR"
+  print_df "before"
+  log "mode=$MODE reason=$REASON repo=$REPO_DIR merged_ref=$MERGED_REF roots=$ROOTS builds_dir=${BUILDS_DIR:-none} current=$current_worktree"
 
-REPO_DIR="$(canonical_dir "$(git -C "$REPO_DIR" rev-parse --show-toplevel)")"
-current_worktree="$REPO_DIR"
-print_df "before"
-log "mode=$MODE reason=$REASON repo=$REPO_DIR merged_ref=$MERGED_REF roots=$ROOTS current=$current_worktree"
-
-while IFS= read -r wt_path; do
+  while IFS= read -r wt_path; do
   [[ -n "$wt_path" ]] || continue
   canonical_path="$(canonical_dir "$wt_path" 2>/dev/null || true)"
   if [[ -z "$canonical_path" ]]; then
@@ -287,7 +356,12 @@ while IFS= read -r wt_path; do
     log "DRY-RUN would-remove path=$canonical_path branch=$branch_line head=$head_sha safe=clean-and-merged-into-$MERGED_REF"
   fi
   REMOVED_COUNT=$((REMOVED_COUNT + 1))
-done < <(list_candidate_worktrees)
+  done < <(list_candidate_worktrees)
+fi
+
+if [[ -n "$BUILDS_DIR" ]]; then
+  reap_build_dirs "$BUILDS_DIR"
+fi
 
 print_df "after"
 log "summary mode=$MODE removed=$REMOVED_COUNT skipped=$SKIPPED_COUNT"

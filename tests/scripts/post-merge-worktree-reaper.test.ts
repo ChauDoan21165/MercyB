@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdtempSync, realpathSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, realpathSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
@@ -15,13 +15,15 @@ function git(args: string[], cwd = repo): string {
   return execFileSync("git", args, { cwd, encoding: "utf8" });
 }
 
-function runReaper(args: string[] = [], cwd = repo): string {
+function runReaper(args: string[] = [], cwd = repo, extraEnv: NodeJS.ProcessEnv = {}): string {
   return execFileSync(SCRIPT, args, {
     cwd,
     encoding: "utf8",
     env: {
       ...process.env,
       MERCYB_REAPER_SKIP_PROCESS_CHECK: "1",
+      MERCYB_REAPER_BUILDS_DIR: "",
+      ...extraEnv,
     },
   });
 }
@@ -114,5 +116,32 @@ describe("post-merge-worktree-reaper.sh", () => {
     expect(existsSync(unmergedPath)).toBe(true);
     expect(existsSync(dirtyPath)).toBe(true);
     expect(existsSync(lockedPath)).toBe(true);
+  });
+
+  it("removes non-current numeric runner build dirs but keeps the current pipeline dir", () => {
+    const buildsRoot = path.join(tmpRoot, "gitlab-runner-builds");
+    const staleOne = path.join(buildsRoot, "111");
+    const current = path.join(buildsRoot, "222");
+    const staleTwo = path.join(buildsRoot, "333");
+    mkdirSync(staleOne, { recursive: true });
+    mkdirSync(current, { recursive: true });
+    mkdirSync(staleTwo, { recursive: true });
+    writeFileSync(path.join(staleOne, "artifact.txt"), "old\n");
+    writeFileSync(path.join(current, "artifact.txt"), "current\n");
+    writeFileSync(path.join(staleTwo, "artifact.txt"), "old\n");
+
+    const out = runReaper(
+      ["--live", "--merged-ref", "main", "--roots", worktreeRoot, "--builds-dir", buildsRoot],
+      repo,
+      { CI_PIPELINE_ID: "222" },
+    );
+    const canonicalBuildsRoot = realpathSync(buildsRoot);
+
+    expect(out).toContain(`REMOVE build-dir path=${canonicalBuildsRoot}/111`);
+    expect(out).toContain(`SKIP build-dir current-pipeline path=${realpathSync(current)}`);
+    expect(out).toContain(`REMOVE build-dir path=${canonicalBuildsRoot}/333`);
+    expect(existsSync(staleOne)).toBe(false);
+    expect(existsSync(current)).toBe(true);
+    expect(existsSync(staleTwo)).toBe(false);
   });
 });
