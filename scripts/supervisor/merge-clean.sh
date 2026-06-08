@@ -38,6 +38,8 @@
 
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # ── Helpers ────────────────────────────────────────────────────────────
 
 log_err() {
@@ -201,6 +203,10 @@ while IFS= read -r mr_line; do
     if glab mr merge "$iid" --squash --yes >/dev/null 2>&1; then
       MERGED_COUNT=$((MERGED_COUNT + 1))
       log_info "!$iid  MERGED  $title"
+      if [[ "${MERCYB_POST_MERGE_REAPER:-1}" == "1" ]]; then
+        MERCYB_REAPER_REASON="merge-clean !${iid}" "$SCRIPT_DIR/post-merge-worktree-reaper.sh" --live || \
+          SKIPPED_LINES+=("!$iid  WARN  post-merge worktree reaper failed")
+      fi
     else
       SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
       SKIPPED_LINES+=("!$iid  SKIP  glab mr merge failed")
