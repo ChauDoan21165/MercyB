@@ -969,8 +969,10 @@ test-db-backup-now:
   <<: *backup_image
   stage: backup
   rules:
-    # Web (UI-triggered) pipelines only, AND manual gate.
-    - if: '$CI_PIPELINE_SOURCE == "web"'
+    # Operator-triggered main pipelines only, AND manual gate.
+    # `web` covers the GitLab UI; `api` lets maintainers run the same
+    # validation job through glab/API without waiting for the schedule.
+    - if: '$CI_COMMIT_BRANCH == "main" && ($CI_PIPELINE_SOURCE == "web" || $CI_PIPELINE_SOURCE == "api")'
       when: manual
   variables:
     BACKUP_OUTPUT_DIR: "$CI_PROJECT_DIR/_backup_out"

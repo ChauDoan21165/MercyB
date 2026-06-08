@@ -69,6 +69,12 @@ require_cmd() {
   fi
 }
 
+cleanup_gpg_home() {
+  if [[ -n "${TEMP_GNUPGHOME:-}" && -d "$TEMP_GNUPGHOME" ]]; then
+    rm -rf "$TEMP_GNUPGHOME"
+  fi
+}
+
 # Stream a pg_dump invocation (passed as the rest of the args) through
 # gpg --encrypt to a target file. Plaintext never touches disk.
 # Args: $1 = output path, $@ (rest) = pg_dump args.
@@ -123,12 +129,28 @@ if [[ -n "${GPG_PUBLIC_KEY_FILE:-}" ]]; then
     log_err "GPG_PUBLIC_KEY_FILE is set but not a readable file"
     exit 4
   fi
-  if ! gpg --batch --quiet --import "$GPG_PUBLIC_KEY_FILE" 2>/dev/null; then
-    log_err "failed to import public key from GPG_PUBLIC_KEY_FILE"
+  TEMP_GNUPGHOME="$(mktemp -d)"
+  chmod 700 "$TEMP_GNUPGHOME"
+  export GNUPGHOME="$TEMP_GNUPGHOME"
+  trap cleanup_gpg_home EXIT
+
+  KEY_IMPORT_FILE="$(mktemp)"
+  tr -d '\r' <"$GPG_PUBLIC_KEY_FILE" >"$KEY_IMPORT_FILE"
+
+  IMPORT_LOG="$(mktemp)"
+  if ! gpg --batch --import "$KEY_IMPORT_FILE" >"$IMPORT_LOG" 2>&1; then
+    import_tail="$(tail -n 5 "$IMPORT_LOG" \
+      | sed -E 's/[[:xdigit:]]{16,}/[redacted-key-id]/g' \
+      | awk '{printf "%s%s", sep, $0; sep="; "}')"
+    rm -f "$KEY_IMPORT_FILE" "$IMPORT_LOG"
+    log_err "failed to import public key from GPG_PUBLIC_KEY_FILE; gpg tail: ${import_tail}"
     exit 5
   fi
-  RECIPIENT_ID="$(gpg --with-colons --import-options show-only --import <"$GPG_PUBLIC_KEY_FILE" 2>/dev/null \
+  rm -f "$IMPORT_LOG"
+
+  RECIPIENT_ID="$(gpg --with-colons --import-options show-only --import <"$KEY_IMPORT_FILE" 2>/dev/null \
     | awk -F: '/^pub:/ {print $5; exit}')"
+  rm -f "$KEY_IMPORT_FILE"
   if [[ -z "${RECIPIENT_ID:-}" ]]; then
     log_err "failed to resolve key id from GPG_PUBLIC_KEY_FILE"
     exit 5
