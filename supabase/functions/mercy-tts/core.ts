@@ -9,6 +9,13 @@ const GLOBAL_DAILY_CAP = 1000;
 const MAX_TEXT_LENGTH = 2000;
 const AZURE_TIMEOUT_MS = 6500;
 
+// Storage cache for finalized Azure model audio. Reusing the existing PUBLIC
+// `room-audio` bucket (service-role write, no RLS/schema change) so repeated
+// finalized content — "Mercy đọc" and the self-compare "Nghe mẫu rồi nghe bạn"
+// — serves the SAME Mercy voice from cache: reliable, cap-proof, no Azure call.
+const TTS_CACHE_BUCKET = "room-audio";
+const TTS_CACHE_PREFIX = "tts-cache";
+
 const VOICE_SETTINGS = {
   stability: 0.5,
   similarity_boost: 0.75,
@@ -34,6 +41,8 @@ type LatencyStatus = "success" | "error" | "timeout";
 type SupabaseLike = {
   auth?: { getUser: () => Promise<{ data: { user?: { id?: string | null } | null } }> };
   from: (table: string) => any;
+  // Optional so test doubles without storage simply skip the cache (no-op).
+  storage?: { from: (bucket: string) => any };
 };
 
 export interface MercyTtsDeps {
@@ -157,6 +166,52 @@ async function withTimeout<T>(
   }
 }
 
+function cachePathFor(hash: string): string {
+  return `${TTS_CACHE_PREFIX}/${hash}.mp3`;
+}
+
+// Returns a public URL if finalized Azure audio for this hash is already cached.
+// Best-effort: any error (no storage, missing object, network) returns null so
+// the caller falls through to live synthesis. Never throws.
+async function getCachedAzureAudioUrl(
+  service: SupabaseLike,
+  hash: string,
+): Promise<string | null> {
+  const bucket = service.storage?.from(TTS_CACHE_BUCKET);
+  if (!bucket) return null;
+  try {
+    const { data, error } = await bucket.list(TTS_CACHE_PREFIX, {
+      search: `${hash}.mp3`,
+      limit: 1,
+    });
+    if (error || !Array.isArray(data) || data.length === 0) return null;
+    const { data: pub } = bucket.getPublicUrl(cachePathFor(hash));
+    return pub?.publicUrl ?? null;
+  } catch (err) {
+    console.warn("[mercy-tts] cache lookup failed", err);
+    return null;
+  }
+}
+
+// Best-effort write of freshly synthesized Azure audio into the cache. Never
+// throws; a failed upload just means the next request re-synthesizes.
+async function cacheAzureAudio(
+  service: SupabaseLike,
+  hash: string,
+  bytes: Uint8Array,
+): Promise<void> {
+  const bucket = service.storage?.from(TTS_CACHE_BUCKET);
+  if (!bucket) return;
+  try {
+    await bucket.upload(cachePathFor(hash), bytes, {
+      contentType: "audio/mpeg",
+      upsert: true,
+    });
+  } catch (err) {
+    console.warn("[mercy-tts] cache upload failed", err);
+  }
+}
+
 export async function handleMercyTtsRequest(req: Request, deps: MercyTtsDeps): Promise<Response> {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
   if (req.method !== "POST") return jsonResponse({ error: "Method not allowed" }, 405);
@@ -208,6 +263,24 @@ export async function handleMercyTtsRequest(req: Request, deps: MercyTtsDeps): P
     const azureRegion = deps.env("AZURE_SPEECH_REGION") ?? "";
     const elevenLabsKey = deps.env("ELEVENLABS_API_KEY") ?? "";
     const fallbackReasons: string[] = [];
+
+    // Cache lookup BEFORE caps/synthesis: a cached finalized Azure clip is
+    // served reliably even when the daily caps are reached, with no Azure call.
+    let azureCacheHash = "";
+    if (azureFlagOn && azureKey && azureRegion && service.storage) {
+      const azureVoice = azureVoiceFor(language);
+      azureCacheHash = await sha256Hex(`azure|${azureVoice.name}|${language}|${text}`);
+      const cachedUrl = await getCachedAzureAudioUrl(service, azureCacheHash);
+      if (cachedUrl) {
+        trackLatency({
+          operation: "mercy-tts.total",
+          startedAt: totalStartedAt,
+          status: "success",
+          metadata: { cache_hit: true, provider: "azure" },
+        });
+        return jsonResponse({ audioUrl: cachedUrl, cached: true, provider: "azure" });
+      }
+    }
 
     const now = deps.now?.() ?? Date.now();
     const since = new Date(now - 24 * 60 * 60 * 1000).toISOString();
@@ -335,6 +408,11 @@ export async function handleMercyTtsRequest(req: Request, deps: MercyTtsDeps): P
       text_length: text.length,
     });
     if (usageErr) console.warn("[mercy-tts] usage insert failed", usageErr.message);
+
+    // Persist finalized Azure audio so the next identical request is cap-proof.
+    if (provider === "azure" && azureCacheHash) {
+      await cacheAzureAudio(service, azureCacheHash, audioBuf);
+    }
 
     trackLatency({
       operation: "mercy-tts.total",
