@@ -75,6 +75,15 @@ cleanup_gpg_home() {
   fi
 }
 
+env_value_or_file() {
+  local raw="${1:-}"
+  if [[ -n "$raw" && -f "$raw" && -r "$raw" ]]; then
+    tr -d '\r\n' <"$raw"
+  else
+    printf '%s' "$raw"
+  fi
+}
+
 # Stream a pg_dump invocation (passed as the rest of the args) through
 # gpg --encrypt to a target file. Plaintext never touches disk.
 # Args: $1 = output path, $@ (rest) = pg_dump args.
@@ -116,7 +125,7 @@ bytes_of() {
 require_cmd pg_dump
 require_cmd gpg
 
-DB_URL="${DATABASE_URL:-${SUPABASE_DB_URL:-}}"
+DB_URL="$(env_value_or_file "${DATABASE_URL:-${SUPABASE_DB_URL:-}}")"
 if [[ -z "$DB_URL" ]]; then
   log_err "neither DATABASE_URL nor SUPABASE_DB_URL is set"
   exit 3
@@ -136,6 +145,15 @@ if [[ -n "${GPG_PUBLIC_KEY_FILE:-}" ]]; then
 
   KEY_IMPORT_FILE="$(mktemp)"
   tr -d '\r' <"$GPG_PUBLIC_KEY_FILE" >"$KEY_IMPORT_FILE"
+  if ! grep -q -- "-----BEGIN PGP PUBLIC KEY BLOCK-----" "$KEY_IMPORT_FILE"; then
+    WRAPPED_KEY_IMPORT_FILE="$(mktemp)"
+    {
+      printf '%s\n\n' "-----BEGIN PGP PUBLIC KEY BLOCK-----"
+      sed '/^[[:space:]]*$/d' "$KEY_IMPORT_FILE"
+      printf '%s\n' "-----END PGP PUBLIC KEY BLOCK-----"
+    } >"$WRAPPED_KEY_IMPORT_FILE"
+    mv "$WRAPPED_KEY_IMPORT_FILE" "$KEY_IMPORT_FILE"
+  fi
 
   IMPORT_LOG="$(mktemp)"
   if ! gpg --batch --import "$KEY_IMPORT_FILE" >"$IMPORT_LOG" 2>&1; then
