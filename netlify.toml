@@ -11,3 +11,12 @@
 
 [context.branch-deploy]
   command = "echo skipped && exit 1"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/mercy-ai"
+  to = "/.netlify/functions/mercy-ai"
+  status = 200

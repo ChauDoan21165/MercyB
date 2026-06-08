@@ -165,6 +165,22 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     expect(onReadFollowUp).not.toHaveBeenCalled();
   });
 
+  it("renders read-aloud controls for the bilingual ask-repeat clarification", () => {
+    const onReadFollowUp = vi.fn();
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        followUpPrompt="Mercy chưa nghe rõ. Bạn nói lại câu đó nhé. I didn't catch that clearly. Can you say it again?"
+        onReadFollowUp={onReadFollowUp}
+      />,
+    );
+
+    const followUp = within(screen.getByTestId("ai-tutor-speak-follow-up"));
+    fireEvent.click(followUp.getByRole("button", { name: "Mercy đọc" }));
+
+    expect(onReadFollowUp).toHaveBeenCalledTimes(1);
+  });
+
   it("offers an answer-by-voice mic on the follow-up and routes it through onMicToggle", () => {
     const onMicToggle = vi.fn();
     render(
