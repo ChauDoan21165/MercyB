@@ -65,6 +65,9 @@ type Props = {
   englishPronunciationProgress?: PronunciationProgressDisplay | null;
   onMicToggle: () => void;
   onReadTarget: () => void;
+  /** Awaitable model-sentence playback (same path as "Mercy đọc"); resolves
+   *  true if the model actually spoke. Used by the self-compare by-ear flow. */
+  onPlayModel?: () => Promise<boolean>;
   onReadFollowUp: () => void;
   onRepeatInputChange: (value: string) => void;
   onResetBoard?: () => void;
@@ -96,6 +99,7 @@ export default function SpeakPracticeMode({
   englishPronunciationProgress = null,
   onMicToggle,
   onReadTarget,
+  onPlayModel,
   onReadFollowUp,
   onRepeatInputChange,
   onResetBoard,
@@ -215,7 +219,11 @@ export default function SpeakPracticeMode({
           {/* By-ear self-compare: hear the model sentence, record your own
               voice, replay it, compare by ear, and re-record. No score, no
               percent, no ML — independent of the scorer path below. */}
-          <SelfCompareRecorder referenceText={practiceTarget} className="mt-4 rounded-[16px] border border-emerald-100 bg-emerald-50/60 px-4 py-4" />
+          <SelfCompareRecorder
+            referenceText={practiceTarget}
+            onPlayModel={onPlayModel}
+            className="mt-4 rounded-[16px] border border-emerald-100 bg-emerald-50/60 px-4 py-4"
+          />
 
           <VietnameseToneFeedbackCard
             enabled={vietnameseToneFeedbackEnabled}

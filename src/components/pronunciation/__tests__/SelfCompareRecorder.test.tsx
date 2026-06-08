@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 
 import SelfCompareRecorder from "@/components/pronunciation/SelfCompareRecorder";
 
@@ -21,6 +21,8 @@ const stopRecording = vi.fn();
 const playRecorded = vi.fn();
 const clearRecordedAudio = vi.fn();
 const compareWithReference = vi.fn();
+const setError = vi.fn();
+const callOrder: string[] = [];
 
 const IDLE = {
   status: "idle",
@@ -30,7 +32,7 @@ const IDLE = {
   isPlayingReference: false,
   isPlayingRecorded: false,
   isComparing: false,
-  setError: () => {},
+  setError,
   startRecording,
   stopRecording,
   reset: () => {},
@@ -42,6 +44,10 @@ const IDLE = {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  callOrder.length = 0;
+  playRecorded.mockImplementation(async () => {
+    callOrder.push("recorded");
+  });
   recorderMock.current = { ...IDLE };
 });
 
@@ -81,6 +87,55 @@ describe("SelfCompareRecorder — record / replay / compare-by-ear / reset", () 
     expect(byEar).toBeInTheDocument();
     byEar.click();
     expect(compareWithReference).toHaveBeenCalledWith("I bought a hat yesterday.");
+  });
+
+  it("compare uses the onPlayModel (Mercy) path: model plays, THEN learner recording", async () => {
+    const onPlayModel = vi.fn(async () => {
+      callOrder.push("model");
+      return true;
+    });
+    recorderMock.current = { ...IDLE, lastRecordedAudioUrl: "blob:rec" };
+    render(
+      <SelfCompareRecorder referenceText="I bought a hat." onPlayModel={onPlayModel} />,
+    );
+    screen.getByTestId("self-compare-by-ear").click();
+    await waitFor(() => expect(callOrder).toEqual(["model", "recorded"]));
+    expect(onPlayModel).toHaveBeenCalledTimes(1);
+    // Uses the real model path, NOT the Web Speech fallback.
+    expect(compareWithReference).not.toHaveBeenCalled();
+  });
+
+  it("compare does NOT mark the model unavailable when onPlayModel succeeds", async () => {
+    const onPlayModel = vi.fn(async () => true);
+    recorderMock.current = { ...IDLE, lastRecordedAudioUrl: "blob:rec" };
+    render(<SelfCompareRecorder onPlayModel={onPlayModel} />);
+    screen.getByTestId("self-compare-by-ear").click();
+    await waitFor(() => expect(playRecorded).toHaveBeenCalled());
+    // No "model unavailable" error is raised on success.
+    expect(setError).not.toHaveBeenCalledWith(
+      expect.stringMatching(/Could not play the model|Không phát được câu mẫu/i),
+    );
+  });
+
+  it("compare shows a clear message and does NOT play learner when the model fails", async () => {
+    const onPlayModel = vi.fn(async () => false);
+    recorderMock.current = { ...IDLE, lastRecordedAudioUrl: "blob:rec" };
+    render(<SelfCompareRecorder onPlayModel={onPlayModel} />);
+    screen.getByTestId("self-compare-by-ear").click();
+    await waitFor(() =>
+      expect(setError).toHaveBeenCalledWith(
+        expect.stringMatching(/Could not play the model sentence|Không phát được câu mẫu/i),
+      ),
+    );
+    // No pretend comparison — the learner recording is NOT played.
+    expect(callOrder).not.toContain("recorded");
+    expect(playRecorded).not.toHaveBeenCalled();
+  });
+
+  it("shows the compare control when onPlayModel is supplied even without referenceText", () => {
+    recorderMock.current = { ...IDLE, lastRecordedAudioUrl: "blob:rec" };
+    render(<SelfCompareRecorder onPlayModel={vi.fn(async () => true)} />);
+    expect(screen.getByTestId("self-compare-by-ear")).toBeInTheDocument();
   });
 
   it("the record button triggers startRecording", () => {

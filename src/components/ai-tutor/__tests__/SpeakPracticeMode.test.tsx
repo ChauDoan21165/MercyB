@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import SpeakPracticeMode, {
   type SpeakPronunciationResult,
@@ -589,6 +589,16 @@ describe("SpeakPracticeMode — by-ear self-compare panel (no score)", () => {
     expect(screen.getByTestId("self-compare-by-ear")).toHaveTextContent(
       /Nghe mẫu rồi nghe bạn/,
     );
+  });
+
+  it("wires the model playback (same path as Mercy đọc) into the compare button", async () => {
+    const onPlayModel = vi.fn(async () => true);
+    recorderMock.current = { ...IDLE_RECORDER, lastRecordedAudioUrl: "blob:rec" };
+    render(
+      <SpeakPracticeMode {...baseProps} onPlayModel={onPlayModel} pronunciationResult={null} />,
+    );
+    screen.getByTestId("self-compare-by-ear").click();
+    await waitFor(() => expect(onPlayModel).toHaveBeenCalledTimes(1));
   });
 
   it("keeps the Speak follow-up visible alongside the recorder", () => {
