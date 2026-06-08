@@ -745,7 +745,21 @@ post-merge-worktree-reaper:
       when: never
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
   script:
-    - scripts/supervisor/post-merge-worktree-reaper.sh --live --repo "$HOME/MercyB" --merged-ref origin/main --roots "${MERCYB_REAPER_WORKTREE_ROOTS:-/private/tmp}" --reason "main-push pipeline ${CI_PIPELINE_ID:-unknown}"
+    - |
+      REAPER_REPO="${MERCYB_REAPER_REPO:-}"
+      if [ -z "$REAPER_REPO" ]; then
+        for candidate in "$HOME/MercyB" /Users/admin/MercyB /Users/chaudoanm3/MercyB; do
+          if git -C "$candidate" rev-parse --git-dir >/dev/null 2>&1; then
+            REAPER_REPO="$candidate"
+            break
+          fi
+        done
+      fi
+      if [ -z "$REAPER_REPO" ]; then
+        echo "[post-merge-worktree-reaper] no canonical local repo found; set MERCYB_REAPER_REPO to enable post-merge worktree cleanup"
+        exit 1
+      fi
+      scripts/supervisor/post-merge-worktree-reaper.sh --live --repo "$REAPER_REPO" --merged-ref origin/main --roots "${MERCYB_REAPER_WORKTREE_ROOTS:-/private/tmp}" --reason "main-push pipeline ${CI_PIPELINE_ID:-unknown}"
 
 # ── Manual production frontend deploy ─────────────────────────────────
 
