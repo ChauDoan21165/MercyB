@@ -878,10 +878,13 @@ deploy-netlify-publish-only:
 
 # ── `backup` stage (unchanged from prior version) ──────────────────────
 
-# postgres:16-alpine ships pg_dump + pg_restore. We add gpg (gnupg) and
-# rclone via apk so the same image carries the whole pipeline.
+# postgres:17-alpine ships pg_dump + pg_restore. We add gpg (gnupg) and
+# rclone via apk so the same image carries the whole pipeline. The major
+# version must match (or exceed) the server: pg_dump refuses to dump a
+# newer-major server, so the prod Postgres 17.x server needs pg_dump 17.x
+# (pg_dump 16.x aborts with a version-mismatch error against a 17.6 server).
 .backup_image: &backup_image
-  image: postgres:16-alpine
+  image: postgres:17-alpine
   before_script:
     - apk add --no-cache --quiet gnupg rclone bash coreutils
     # Sanity check: the toolchain is present. Never echo env values.
