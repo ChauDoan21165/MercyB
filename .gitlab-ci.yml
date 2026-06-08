@@ -461,7 +461,7 @@ variables:
         exit 1
         ;;
     esac
-  - npx vitest run --reporter=default --reporter=./scripts/vitest-force-exit-reporter.mjs --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL
+  - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL
 
 .ai_tutor_quality_gate_script: &ai_tutor_quality_gate_script
   - npm run test:ai-tutor-golden-flow
