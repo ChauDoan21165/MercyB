@@ -203,12 +203,43 @@ describe("post-merge-worktree-reaper.sh — safety shape", () => {
     expect(POST_MERGE_REAPER).toMatch(/outside-approved-roots/);
   });
 
-  it("skips dirty, active, locked, detached, and unmerged worktrees", () => {
-    expect(POST_MERGE_REAPER).toMatch(/dirty-worktree/);
-    expect(POST_MERGE_REAPER).toMatch(/active-process/);
-    expect(POST_MERGE_REAPER).toMatch(/locked-worktree/);
+  it("falls back to direct root scanning when the configured repo path is missing", () => {
+    expect(POST_MERGE_REAPER).toMatch(/repo path is not a git repository/);
+    expect(POST_MERGE_REAPER).toMatch(/list_candidate_worktrees/);
+    expect(POST_MERGE_REAPER).toMatch(/find "\$root" -mindepth 2 -maxdepth 4 -type f -name \.git/);
+  });
+
+  it("skips detached and unmerged worktrees while removing merged branches by branch ref", () => {
     expect(POST_MERGE_REAPER).toMatch(/no-branch/);
-    expect(POST_MERGE_REAPER).toMatch(/merge-base --is-ancestor/);
+    expect(POST_MERGE_REAPER).toMatch(/merge-base --is-ancestor "\$branch_line"/);
+  });
+
+  it("checks active ownership before any merged dirty locked worktree removal", () => {
+    expect(POST_MERGE_REAPER).toMatch(/has_active_owner\(\)/);
+    expect(POST_MERGE_REAPER).toMatch(/owner_pids="\$\(lsof -t \+D "\$path" 2>\/dev\/null \|\| true\)"/);
+    expect(POST_MERGE_REAPER).toMatch(/\[\[ -n "\$owner_pids" \]\]/);
+    expect(POST_MERGE_REAPER).toMatch(/SKIP active-owner/);
+
+    const activeOwnerIdx = POST_MERGE_REAPER.indexOf('has_active_owner "$canonical_path"');
+    const mergeCheckIdx = POST_MERGE_REAPER.indexOf('merge-base --is-ancestor "$branch_line"');
+    const removeIdx = POST_MERGE_REAPER.indexOf('worktree remove --force --force "$canonical_path"');
+    expect(activeOwnerIdx).toBeGreaterThan(-1);
+    expect(mergeCheckIdx).toBeGreaterThan(-1);
+    expect(removeIdx).toBeGreaterThan(-1);
+    expect(activeOwnerIdx).toBeLessThan(mergeCheckIdx);
+    expect(activeOwnerIdx).toBeLessThan(removeIdx);
+  });
+
+  it("requires merged worktrees to be stale by mtime before removal", () => {
+    expect(POST_MERGE_REAPER).toMatch(/MERCYB_REAPER_STALE_MINUTES/);
+    expect(POST_MERGE_REAPER).toMatch(/is_stale_by_mtime/);
+    expect(POST_MERGE_REAPER).toMatch(/SKIP not-stale/);
+
+    const staleCheckIdx = POST_MERGE_REAPER.indexOf('is_stale_by_mtime "$canonical_path"');
+    const removeIdx = POST_MERGE_REAPER.indexOf('worktree remove --force --force "$canonical_path"');
+    expect(staleCheckIdx).toBeGreaterThan(-1);
+    expect(removeIdx).toBeGreaterThan(-1);
+    expect(staleCheckIdx).toBeLessThan(removeIdx);
   });
 
   it("keeps runner build-dir cleanup scoped and skips the current pipeline", () => {

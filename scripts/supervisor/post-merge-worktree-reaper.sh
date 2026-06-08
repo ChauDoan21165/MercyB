@@ -18,9 +18,10 @@ REPO_DIR="${MERCYB_REAPER_REPO:-}"
 BUILDS_DIR="${MERCYB_REAPER_BUILDS_DIR-${CI_BUILDS_DIR:-}}"
 CURRENT_PIPELINE_ID="${CI_PIPELINE_ID:-}"
 REASON="${MERCYB_REAPER_REASON:-post-merge}"
-SKIP_PROCESS_CHECK="${MERCYB_REAPER_SKIP_PROCESS_CHECK:-0}"
+STALE_MINUTES="${MERCYB_REAPER_STALE_MINUTES:-120}"
 REMOVED_COUNT=0
 SKIPPED_COUNT=0
+REPO_VALID=0
 
 log() {
   printf '[%s] %s\n' "$SCRIPT_NAME" "$1"
@@ -158,42 +159,48 @@ is_approved_builds_root() {
   return 0
 }
 
-has_active_process_under() {
+print_df() {
+  local label="$1"
+  log "$label df -h /"
+  df -h / | sed "s/^/[$SCRIPT_NAME] /"
+}
+
+mtime_epoch() {
   local path="$1"
-  if [[ "$SKIP_PROCESS_CHECK" == "1" ]]; then
-    return 1
-  fi
+  stat -f '%m' "$path" 2>/dev/null || stat -c '%Y' "$path" 2>/dev/null || printf '0\n'
+}
+
+has_active_owner() {
+  local path="$1"
+  local owner_pids
+  # Fail closed: without lsof we cannot prove the worktree is unowned.
   if ! command -v lsof >/dev/null 2>&1; then
-    return 1
+    return 0
   fi
-  lsof -t +D "$path" >/dev/null 2>&1
+  owner_pids="$(lsof -t +D "$path" 2>/dev/null || true)"
+  [[ -n "$owner_pids" ]]
 }
 
-worktree_locked() {
-  local path="$1"
-  git -C "$path" worktree list --porcelain 2>/dev/null | awk -v path="$path" '
-    $0 == "worktree " path { in_block=1; next }
-    $1 == "worktree" && in_block { exit }
-    in_block && $1 == "locked" { found=1 }
-    END { exit found ? 0 : 1 }
-  '
+has_active_process_under() {
+  has_active_owner "$1"
 }
 
-worktree_remove() {
+is_stale_by_mtime() {
   local path="$1"
-  local common_dir
-  common_dir="$(git -C "$path" rev-parse --git-common-dir 2>/dev/null || true)"
-  if [[ -n "$common_dir" ]]; then
-    git --git-dir="$common_dir" worktree remove "$path"
-  else
-    git -C "$REPO_DIR" worktree remove "$path"
-  fi
+  local mtime now age threshold
+  mtime="$(mtime_epoch "$path")"
+  now="$(date +%s)"
+  threshold=$((STALE_MINUTES * 60))
+  age=$((now - mtime))
+  [[ "$age" -ge "$threshold" ]]
 }
 
 list_candidate_worktrees() {
   local raw root canonical git_marker path
 
-  git -C "$REPO_DIR" worktree list --porcelain | awk '$1 == "worktree" { print substr($0, 10) }'
+  if [[ "$REPO_VALID" == "1" ]]; then
+    git -C "$REPO_DIR" worktree list --porcelain | awk '$1 == "worktree" { print substr($0, 10) }'
+  fi
 
   IFS=':' read -r -a root_parts <<< "$ROOTS"
   for raw in "${root_parts[@]}"; do
@@ -211,12 +218,6 @@ list_candidate_worktrees() {
       fi
     done < <(find "$root" -mindepth 2 -maxdepth 4 -type f -name .git -print 2>/dev/null)
   done | awk '!seen[$0]++'
-}
-
-print_df() {
-  local label="$1"
-  log "$label df -h /"
-  df -h / | sed "s/^/[$SCRIPT_NAME] /"
 }
 
 need_cmd git
@@ -277,21 +278,26 @@ if [[ -z "$REPO_DIR" ]]; then
   REPO_DIR="$(pwd)"
 fi
 
-if ! git -C "$REPO_DIR" rev-parse --git-dir >/dev/null 2>&1; then
-  print_df "before"
-  log "mode=$MODE reason=$REASON repo=$REPO_DIR repo_scan=skipped-not-git merged_ref=$MERGED_REF roots=$ROOTS builds_dir=${BUILDS_DIR:-none}"
-else
+if git -C "$REPO_DIR" rev-parse --git-dir >/dev/null 2>&1; then
+  REPO_VALID=1
   REPO_DIR="$(canonical_dir "$(git -C "$REPO_DIR" rev-parse --show-toplevel)")"
-  if ! git -C "$REPO_DIR" rev-parse --verify "$MERGED_REF^{commit}" >/dev/null 2>&1; then
-    err "merged ref not found: $MERGED_REF"
-    exit 4
-  fi
+else
+  log "repo path is not a git repository; falling back to direct root scan: $REPO_DIR"
+fi
 
+if [[ "$REPO_VALID" == "1" ]] && ! git -C "$REPO_DIR" rev-parse --verify "$MERGED_REF^{commit}" >/dev/null 2>&1; then
+  git -C "$REPO_DIR" fetch origin main --prune >/dev/null 2>&1 || true
+fi
+
+if [[ "$REPO_VALID" == "1" ]]; then
   current_worktree="$REPO_DIR"
-  print_df "before"
-  log "mode=$MODE reason=$REASON repo=$REPO_DIR merged_ref=$MERGED_REF roots=$ROOTS builds_dir=${BUILDS_DIR:-none} current=$current_worktree"
+else
+  current_worktree="$(canonical_dir "$(pwd)" 2>/dev/null || pwd -P)"
+fi
+print_df "before"
+log "mode=$MODE reason=$REASON repo=$REPO_DIR repo_valid=$REPO_VALID merged_ref=$MERGED_REF roots=$ROOTS builds_dir=${BUILDS_DIR:-none} current=$current_worktree"
 
-  while IFS= read -r wt_path; do
+while IFS= read -r wt_path; do
   [[ -n "$wt_path" ]] || continue
   canonical_path="$(canonical_dir "$wt_path" 2>/dev/null || true)"
   if [[ -z "$canonical_path" ]]; then
@@ -299,9 +305,6 @@ else
     log "SKIP missing-worktree path=$wt_path"
     continue
   fi
-
-  branch_line="$(git -C "$canonical_path" symbolic-ref -q HEAD 2>/dev/null || true)"
-  head_sha="$(git -C "$canonical_path" rev-parse --verify HEAD 2>/dev/null || true)"
 
   if [[ "$canonical_path" == "$current_worktree" ]]; then
     SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
@@ -318,49 +321,61 @@ else
     log "SKIP outside-approved-roots path=$canonical_path"
     continue
   fi
+  if has_active_owner "$canonical_path"; then
+    SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
+    log "SKIP active-owner path=$canonical_path"
+    continue
+  fi
+  if ! git -C "$canonical_path" rev-parse --git-dir >/dev/null 2>&1; then
+    SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
+    log "SKIP not-git-worktree path=$canonical_path"
+    continue
+  fi
+
+  branch_line="$(git -C "$canonical_path" symbolic-ref -q HEAD 2>/dev/null || true)"
+  head_sha="$(git -C "$canonical_path" rev-parse --verify HEAD 2>/dev/null || true)"
   if [[ -z "$branch_line" ]]; then
     SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
     log "SKIP no-branch path=$canonical_path head=${head_sha:-unknown}"
     continue
   fi
-  if worktree_locked "$canonical_path"; then
+
+  git -C "$canonical_path" fetch origin main --prune >/dev/null 2>&1 || true
+  if ! git -C "$canonical_path" rev-parse --verify "$MERGED_REF^{commit}" >/dev/null 2>&1; then
     SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
-    log "SKIP locked-worktree path=$canonical_path branch=$branch_line"
+    log "SKIP merged-ref-unavailable path=$canonical_path branch=$branch_line merged_ref=$MERGED_REF"
     continue
   fi
-  if [[ -n "$(git -C "$canonical_path" status --porcelain 2>/dev/null)" ]]; then
+  if ! git -C "$canonical_path" merge-base --is-ancestor "$branch_line" "$MERGED_REF"; then
     SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
-    log "SKIP dirty-worktree path=$canonical_path branch=$branch_line"
+    log "SKIP unmerged path=$canonical_path branch=$branch_line head=${head_sha:-unknown}"
     continue
   fi
-  if has_active_process_under "$canonical_path"; then
+  if ! is_stale_by_mtime "$canonical_path"; then
     SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
-    log "SKIP active-process path=$canonical_path branch=$branch_line"
-    continue
-  fi
-  if ! git -C "$REPO_DIR" cat-file -e "$head_sha^{commit}" 2>/dev/null; then
-    SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
-    log "SKIP unmerged path=$canonical_path branch=$branch_line head=$head_sha reason=commit-not-present-in-reaper-repo"
-    continue
-  fi
-  if ! git -C "$REPO_DIR" merge-base --is-ancestor "$head_sha" "$MERGED_REF"; then
-    SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
-    log "SKIP unmerged path=$canonical_path branch=$branch_line head=$head_sha"
+    log "SKIP not-stale path=$canonical_path branch=$branch_line stale_minutes=$STALE_MINUTES"
     continue
   fi
 
   if [[ "$MODE" == "live" ]]; then
-    log "REMOVE path=$canonical_path branch=$branch_line head=$head_sha safe=clean-and-merged-into-$MERGED_REF"
-    worktree_remove "$canonical_path"
+    common_dir="$(git -C "$canonical_path" rev-parse --git-common-dir 2>/dev/null || true)"
+    log "REMOVE path=$canonical_path branch=$branch_line head=${head_sha:-unknown} safe=branch-merged-into-$MERGED_REF"
+    git -C "$canonical_path" worktree remove --force --force "$canonical_path"
+    if [[ -n "$common_dir" ]]; then
+      git --git-dir="$common_dir" worktree prune -v 2>/dev/null || true
+    fi
   else
-    log "DRY-RUN would-remove path=$canonical_path branch=$branch_line head=$head_sha safe=clean-and-merged-into-$MERGED_REF"
+    log "DRY-RUN would-remove path=$canonical_path branch=$branch_line head=${head_sha:-unknown} safe=branch-merged-into-$MERGED_REF"
   fi
   REMOVED_COUNT=$((REMOVED_COUNT + 1))
-  done < <(list_candidate_worktrees)
-fi
+done < <(list_candidate_worktrees)
 
 if [[ -n "$BUILDS_DIR" ]]; then
   reap_build_dirs "$BUILDS_DIR"
+fi
+
+if [[ "$MODE" == "live" && "$REPO_VALID" == "1" ]]; then
+  git -C "$REPO_DIR" worktree prune -v
 fi
 
 print_df "after"
