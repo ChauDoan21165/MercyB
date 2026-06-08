@@ -527,7 +527,7 @@ variables:
 .native_audio_smoke_script: &native_audio_smoke_script
   - node -v
   - |
-    node -e 'process.exit(Number(process.versions.node.split(".")[0]) === 22 ? 0 : 1)'
+    node -e 'const major = Number(process.versions.node.split(".")[0]); if (![22, 24].includes(major)) { console.error(`native-audio-smoke requires Node 22 or 24, got ${process.version}`); process.exit(1); }'
   - npm run build
   - npm run cap:sync:ios
   - npm run cap:sync:android
