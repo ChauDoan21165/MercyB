@@ -1,4 +1,4 @@
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawn } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, realpathSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -21,11 +21,34 @@ function runReaper(args: string[] = [], cwd = repo, extraEnv: NodeJS.ProcessEnv 
     encoding: "utf8",
     env: {
       ...process.env,
-      MERCYB_REAPER_SKIP_PROCESS_CHECK: "1",
       MERCYB_REAPER_BUILDS_DIR: "",
+      MERCYB_REAPER_STALE_MINUTES: "0",
       ...extraEnv,
     },
   });
+}
+
+function waitForLsofOwner(worktreePath: string, pid: number): void {
+  const deadline = Date.now() + 2000;
+  while (Date.now() < deadline) {
+    try {
+      const out = execFileSync("lsof", ["-t", "+D", worktreePath], { encoding: "utf8" });
+      if (out.split(/\s+/).includes(String(pid))) {
+        return;
+      }
+    } catch (error) {
+      // lsof can print the owner PID and still exit non-zero on macOS.
+      const out =
+        error && typeof error === "object" && "stdout" in error
+          ? String((error as { stdout?: unknown }).stdout ?? "")
+          : "";
+      if (out.split(/\s+/).includes(String(pid))) {
+        return;
+      }
+    }
+    execFileSync("sleep", ["0.05"]);
+  }
+  throw new Error(`timed out waiting for lsof to report pid ${pid} under ${worktreePath}`);
 }
 
 function commitFile(cwd: string, rel: string, content: string, message: string): void {
@@ -80,11 +103,34 @@ describe("post-merge-worktree-reaper.sh", () => {
     expect(out).toContain("before df -h /");
     expect(out).toContain("after df -h /");
     expect(out).toContain(`REMOVE path=${canonicalMergedPath}`);
-    expect(out).toContain("safe=clean-and-merged-into-main");
+    expect(out).toContain("safe=branch-merged-into-main");
     expect(existsSync(mergedPath)).toBe(false);
   });
 
-  it("does not remove unmerged, dirty, or locked worktrees", () => {
+  it("falls back to direct root scanning when --repo is not a git repository", () => {
+    const mergedPath = path.join(worktreeRoot, "merged-without-repo");
+    git(["branch", "merged-without-repo-branch"]);
+    git(["worktree", "add", mergedPath, "merged-without-repo-branch"]);
+    const canonicalMergedPath = realpathSync(mergedPath);
+    commitFile(mergedPath, "merged-without-repo.txt", "merged\n", "merged without repo");
+    git(["merge", "--ff-only", "merged-without-repo-branch"]);
+
+    const out = runReaper([
+      "--live",
+      "--repo",
+      path.join(tmpRoot, "missing-repo"),
+      "--merged-ref",
+      "main",
+      "--roots",
+      worktreeRoot,
+    ]);
+
+    expect(out).toContain("repo path is not a git repository; falling back to direct root scan");
+    expect(out).toContain(`REMOVE path=${canonicalMergedPath}`);
+    expect(existsSync(mergedPath)).toBe(false);
+  });
+
+  it("removes merged dirty and locked worktrees, but keeps unmerged worktrees", () => {
     const unmergedPath = path.join(worktreeRoot, "unmerged");
     const dirtyPath = path.join(worktreeRoot, "dirty");
     const lockedPath = path.join(worktreeRoot, "locked");
@@ -111,11 +157,39 @@ describe("post-merge-worktree-reaper.sh", () => {
     const out = runReaper(["--live", "--merged-ref", "main", "--roots", worktreeRoot]);
 
     expect(out).toContain(`SKIP unmerged path=${canonicalUnmergedPath}`);
-    expect(out).toContain(`SKIP dirty-worktree path=${canonicalDirtyPath}`);
-    expect(out).toContain(`SKIP locked-worktree path=${canonicalLockedPath}`);
+    expect(out).toContain(`REMOVE path=${canonicalDirtyPath}`);
+    expect(out).toContain(`REMOVE path=${canonicalLockedPath}`);
     expect(existsSync(unmergedPath)).toBe(true);
-    expect(existsSync(dirtyPath)).toBe(true);
-    expect(existsSync(lockedPath)).toBe(true);
+    expect(existsSync(dirtyPath)).toBe(false);
+    expect(existsSync(lockedPath)).toBe(false);
+  });
+
+  it("skips a merged dirty worktree when an active process owns it", () => {
+    const dirtyPath = path.join(worktreeRoot, "dirty-active");
+
+    git(["branch", "dirty-active-branch"]);
+    git(["worktree", "add", dirtyPath, "dirty-active-branch"]);
+    const canonicalDirtyPath = realpathSync(dirtyPath);
+    commitFile(dirtyPath, "dirty-active.txt", "dirty active\n", "dirty active branch work");
+    git(["merge", "--ff-only", "dirty-active-branch"]);
+    writeFileSync(path.join(dirtyPath, "local-only.txt"), "live work must stay\n");
+
+    const owner = spawn("sleep", ["30"], {
+      cwd: dirtyPath,
+      stdio: "ignore",
+    });
+
+    try {
+      waitForLsofOwner(dirtyPath, owner.pid ?? -1);
+      const out = runReaper(["--live", "--merged-ref", "main", "--roots", worktreeRoot]);
+
+      expect(out).toContain(`SKIP active-owner path=${canonicalDirtyPath}`);
+      expect(out).not.toContain(`REMOVE path=${canonicalDirtyPath}`);
+      expect(existsSync(dirtyPath)).toBe(true);
+      expect(git(["status", "--short"], dirtyPath)).toContain("local-only.txt");
+    } finally {
+      owner.kill();
+    }
   });
 
   it("removes non-current numeric runner build dirs but keeps the current pipeline dir", () => {
