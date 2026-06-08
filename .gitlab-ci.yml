@@ -167,6 +167,7 @@ variables:
     # `--legacy-peer-deps` mirrors the GitHub workflow's flag — the
     # repo's peer-dep tree currently requires it.
     - sleep $((RANDOM % 60))
+    - rm -rf node_modules/.deno
     - npm ci --legacy-peer-deps --cache .npm --prefer-offline
 
 # Local runner jobs are explicitly tagged so the Mac runner can keep
@@ -316,6 +317,18 @@ variables:
   - tests/regression/golden-flow/**/*
   - docs/ai-tutor/AI_TUTOR_GOLDEN_FLOW_SPEC.md
   - scripts/run-ai-tutor-quality-gate.mjs
+  - .gitlab-ci.yml
+
+.native_audio_smoke_changes: &native_audio_smoke_changes
+  - ios/**/*
+  - android/**/*
+  - capacitor.config.*
+  - package.json
+  - package-lock.json
+  - src/lib/speech/**/*
+  - src/hooks/usePronunciationRecorder.ts
+  - src/components/mercy-guide/**/*
+  - scripts/verify-mobile-audio.mjs
   - .gitlab-ci.yml
 
 # Reusable rules: protected branch pushes run full validation regardless
@@ -540,6 +553,23 @@ variables:
 .ai_tutor_quality_gate_script: &ai_tutor_quality_gate_script
   - npm run test:ai-tutor-golden-flow
 
+.native_audio_smoke_script: &native_audio_smoke_script
+  - node -v
+  - |
+    node -e 'const major = Number(process.versions.node.split(".")[0]); if (![22, 24].includes(major)) { console.error(`native-audio-smoke requires Node 22 or 24, got ${process.version}`); process.exit(1); }'
+  - npm run build
+  - npm run cap:sync:ios
+  - npm run cap:sync:android
+  - |
+    if [ -n "${CI_MERGE_REQUEST_DIFF_BASE_SHA:-}" ]; then
+      git fetch --depth 1 origin "+${CI_MERGE_REQUEST_DIFF_BASE_SHA}:refs/remotes/origin/mobile-audio-base"
+      MOBILE_AUDIO_VERIFY_BASE="origin/mobile-audio-base"
+    else
+      git fetch --depth 1 origin +main:refs/remotes/origin/main
+      MOBILE_AUDIO_VERIFY_BASE="origin/main"
+    fi
+  - npm run verify:mobile-audio -- --base "$MOBILE_AUDIO_VERIFY_BASE"
+
 # ── `test` stage jobs ──────────────────────────────────────────────────
 
 # `build` — typecheck + edge-fn typecheck + Deno check + bundle build +
@@ -611,6 +641,21 @@ ai-tutor-quality-gate:shared-fallback:
   <<: [*node_job, *manual_shared_fallback, *manual_shared_ai_tutor_golden_flow_rules]
   stage: test
   script: *ai_tutor_quality_gate_script
+
+native-audio-smoke:
+  <<: [*node_job, *local_runner]
+  stage: test
+  allow_failure: true
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *native_audio_smoke_changes
+  script: *native_audio_smoke_script
 
 delete-account-guard:
   <<: [*node_job, *local_runner]
