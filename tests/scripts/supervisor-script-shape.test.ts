@@ -28,6 +28,7 @@ function readScript(rel: string): string {
 const MERGE_CLEAN = readScript("scripts/supervisor/merge-clean.sh");
 const MR_STATUS = readScript("scripts/supervisor/mr-status.sh");
 const AGENT_STATE = readScript("scripts/supervisor/agent-state.sh");
+const POST_MERGE_REAPER = readScript("scripts/supervisor/post-merge-worktree-reaper.sh");
 
 // Patterns that would indicate an accidental secret leak.
 const CONN_STRING_LITERAL = /postgres(ql)?:\/\/[A-Za-z0-9_-]+(?::[^@\s]+)?@/;
@@ -58,6 +59,7 @@ const ALL_SCRIPTS: Array<{ rel: string; src: string }> = [
   { rel: "scripts/supervisor/merge-clean.sh", src: MERGE_CLEAN },
   { rel: "scripts/supervisor/mr-status.sh", src: MR_STATUS },
   { rel: "scripts/supervisor/agent-state.sh", src: AGENT_STATE },
+  { rel: "scripts/supervisor/post-merge-worktree-reaper.sh", src: POST_MERGE_REAPER },
 ];
 
 describe("supervisor scripts — shared shape", () => {
@@ -172,6 +174,47 @@ describe("merge-clean.sh — destructive-default discipline", () => {
     expect(MERGE_CLEAN).toMatch(/Summary/);
     expect(MERGE_CLEAN).toMatch(/merged=/);
     expect(MERGE_CLEAN).toMatch(/skipped=/);
+  });
+
+  it("fires the post-merge worktree reaper after a successful merge", () => {
+    expect(MERGE_CLEAN).toMatch(/post-merge-worktree-reaper\.sh/);
+    expect(MERGE_CLEAN).toMatch(/MERCYB_POST_MERGE_REAPER:-1/);
+    expect(MERGE_CLEAN).toMatch(/MERCYB_REAPER_REASON="merge-clean !\$\{iid\}"/);
+    expect(MERGE_CLEAN).toMatch(/post-merge-worktree-reaper\.sh"\s+--live/);
+  });
+});
+
+describe("post-merge-worktree-reaper.sh — safety shape", () => {
+  it("defaults to dry-run unless --live is passed", () => {
+    expect(POST_MERGE_REAPER).toMatch(/MODE="dry-run"/);
+    expect(POST_MERGE_REAPER).toMatch(/--live\)/);
+    expect(POST_MERGE_REAPER).toMatch(/MODE="live"/);
+  });
+
+  it("hard-protects MercyB and MercyB-keystore", () => {
+    expect(POST_MERGE_REAPER).toMatch(/MercyB/);
+    expect(POST_MERGE_REAPER).toMatch(/MercyB-keystore/);
+    expect(POST_MERGE_REAPER).toMatch(/is_protected_path/);
+  });
+
+  it("requires an approved roots allowlist before removal", () => {
+    expect(POST_MERGE_REAPER).toMatch(/MERCYB_REAPER_WORKTREE_ROOTS/);
+    expect(POST_MERGE_REAPER).toMatch(/is_allowed_root/);
+    expect(POST_MERGE_REAPER).toMatch(/outside-approved-roots/);
+  });
+
+  it("skips dirty, active, locked, detached, and unmerged worktrees", () => {
+    expect(POST_MERGE_REAPER).toMatch(/dirty-worktree/);
+    expect(POST_MERGE_REAPER).toMatch(/active-process/);
+    expect(POST_MERGE_REAPER).toMatch(/locked-worktree/);
+    expect(POST_MERGE_REAPER).toMatch(/no-branch/);
+    expect(POST_MERGE_REAPER).toMatch(/merge-base --is-ancestor/);
+  });
+
+  it("logs before and after root disk space", () => {
+    expect(POST_MERGE_REAPER).toMatch(/print_df "before"/);
+    expect(POST_MERGE_REAPER).toMatch(/print_df "after"/);
+    expect(POST_MERGE_REAPER).toMatch(/df -h \//);
   });
 });
 
