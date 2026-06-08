@@ -767,6 +767,12 @@ post-merge-worktree-reaper:
   <<: [*local_runner]
   interruptible: true
   stage: test
+  tags:
+    - local
+    - mac
+    - mercyb
+    - isolated-builds
+    - post-merge-reaper
   variables:
     GIT_DEPTH: "0"
   cache: {}
