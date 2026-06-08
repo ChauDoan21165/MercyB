@@ -202,7 +202,7 @@ export function runCommand(command, args = [], options = {}) {
 }
 
 export function detectTestCount(output = '') {
-  const text = String(output);
+  const text = String(output).replace(/\x1B\[[0-?]*[ -/]*[@-~]/g, '');
   const summary = [...text.matchAll(/Tests\s+(\d+)\s+passed/gi)].map((match) => Number(match[1]));
   if (summary.length) return Math.max(...summary);
   const fileCounts = [];

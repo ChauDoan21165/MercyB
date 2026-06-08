@@ -218,6 +218,9 @@ describe('test count detection', () => {
   it('prefers vitest aggregate summary when both file rows and total exist', () => {
     expect(detectTestCount(' ✓ a.test.ts (34 tests) 10ms\n ✓ b.test.tsx (20 tests) 1s\n Tests 54 passed')).toBe(54);
   });
+  it('sums ansi-colored vitest file rows when captured output omits the aggregate summary', () => {
+    expect(detectTestCount('\u001b[32m✓\u001b[39m a.test.ts \u001b[2m(\u001b[22m34 tests\u001b[2m)\u001b[22m\n\u001b[32m✓\u001b[39m b.test.tsx \u001b[2m(\u001b[22m20 tests\u001b[2m)\u001b[22m')).toBe(54);
+  });
 });
 
 describe('command model checks', () => {
