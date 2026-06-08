@@ -198,7 +198,7 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
     ],
     followUps: [
       { id: "job-interview-left-reason", question: "What is your calm reason for leaving?", salienceQuestion: "How would you explain leaving the {slot}?" },
-      { id: "job-interview-left-positive", question: "How would you keep it positive?", salienceQuestion: "How would you stay kind about the {slot}?" },
+      { id: "job-interview-left-tone", question: "How would you keep it positive?", salienceQuestion: "How would you stay kind about the {slot}?" },
       { id: "job-interview-left-learn", question: "What did the last job give you?", salienceQuestion: "What did you gain from the {slot}?" },
       { id: "job-interview-left-next", question: "What are you looking for next?", salienceQuestion: "What do you want after the {slot}?" },
     ],
