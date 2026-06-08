@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/providers/AuthProvider";
-import { fetchCurrentEntitlement } from "@/lib/authService";
+import { useUserAccess } from "@/hooks/useUserAccess";
 
 interface CreditInfo {
   questionsUsed: number;
@@ -26,13 +26,14 @@ const DEFAULT_CREDIT_INFO: CreditInfo = {
 
 export const useCredits = () => {
   const { user, isLoading: authLoading } = useAuth();
+  const access = useUserAccess();
   const userId = user?.id ?? null;
 
   const [creditInfo, setCreditInfo] = useState<CreditInfo>(DEFAULT_CREDIT_INFO);
   const [loading, setLoading] = useState(true);
 
   const fetchCredits = useCallback(async () => {
-    if (authLoading) {
+    if (authLoading || access.isLoading) {
       setLoading(true);
       return;
     }
@@ -46,9 +47,6 @@ export const useCredits = () => {
     setLoading(true);
 
     try {
-      const ent = await fetchCurrentEntitlement(supabase);
-      const hasPremium = ent?.is_premium === true && ent.status === "active";
-
       const { data: promoRedemption } = await supabase
         .from("user_promo_redemptions")
         .select("*, promo_codes(*)")
@@ -74,7 +72,7 @@ export const useCredits = () => {
       let totalQuestionsLimit = 0;
       let promoExhausted = false;
 
-      if (hasPremium) {
+      if (access.hasPremium) {
         isUnlimited = true;
         questionsLimit = 999999;
       } else if (promoRedemption) {
@@ -106,7 +104,7 @@ export const useCredits = () => {
     } finally {
       setLoading(false);
     }
-  }, [authLoading, userId]);
+  }, [access.hasPremium, access.isLoading, authLoading, userId]);
 
   const incrementUsage = useCallback(async () => {
     if (!userId) return;

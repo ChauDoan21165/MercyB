@@ -22,6 +22,8 @@ import { ReferralLeaderboardOptInPanel } from "@/components/leaderboard/Referral
 import { exportAttemptsCsv } from "@/lib/analytics/speechProgress";
 import { useChromeLanguage } from "@/lib/i18n/chromeLanguage";
 import type { BackendEntitlement } from "@/lib/authService";
+import { useUserAccess } from "@/hooks/useUserAccess";
+import { runDeleteAccountFlow } from "./account/deleteAccountFlow";
 
 /**
  * Loosely-shaped entitlement as consumed by this page: a partial of the
@@ -46,11 +48,6 @@ function formatDate(value: string | null | undefined): string {
 function getExpiryValue(ent: EntitlementLike): string | null {
   if (!ent) return null;
   return ent.current_period_end || ent.expires_at || ent.expiry_at || ent.period_end || null;
-}
-
-function getIsPaidStatus(ent: EntitlementLike): boolean {
-  const status = String(ent?.status ?? "").trim().toLowerCase();
-  return status === "active" || status === "trialing" || status === "past_due";
 }
 
 // ── Chrome-language label ─────────────────────────────────────────────────────
@@ -91,6 +88,7 @@ export default function AccountPage() {
   // Account chrome follows the learner's native-language choice.
   const lang = useChromeLanguage();
   const { user, isLoading, signOut } = useAuth();
+  const access = useUserAccess();
   const { ent, loading: entitlementLoading, refreshEntitlements } = useEntitlements();
   const admin = useAdminAccess();
 
@@ -127,8 +125,8 @@ export default function AccountPage() {
 
   const isPremium = useMemo(() => {
     if (entitlementLoading) return false;
-    return ent?.is_premium === true || getIsPaidStatus(ent);
-  }, [ent, entitlementLoading]);
+    return access.hasPremium;
+  }, [access.hasPremium, entitlementLoading]);
 
   const expiryText = useMemo(() => {
     if (entitlementLoading) return "—";
@@ -229,49 +227,14 @@ export default function AccountPage() {
     setIsDeleting(true);
     setDeleteError(null);
     try {
-      const { data: sessionData } = await supabase.auth.getSession();
-      const token = sessionData.session?.access_token;
-      if (!token) throw new Error("Not signed in.");
-
-      const { error } = await supabase.functions.invoke("delete-account", {
-        body: {},
-        headers: { Authorization: `Bearer ${token}` },
+      await runDeleteAccountFlow({
+        getSession: () => supabase.auth.getSession(),
+        invokeDeleteAccount: (name, options) =>
+          supabase.functions.invoke(name, options),
+        signOut: () => supabase.auth.signOut(),
+        navigate: nav,
+        setDeleteError,
       });
-      if (error) {
-        // The edge function gates this irreversible action behind
-        // aal=2 when the user has a verified second factor (issue
-        // #233). Read the response body to see if that's why it
-        // failed, and if so route through the existing TOTP
-        // challenge, then back here to retry.
-        let body: { error?: string; message?: string } | null = null;
-        const ctx = (error as { context?: Response }).context;
-        if (ctx && typeof ctx.clone === "function") {
-          try {
-            body = await ctx.clone().json();
-          } catch {
-            /* non-JSON / already-consumed body — fall through */
-          }
-        }
-        if (body?.error === "aal2_required") {
-          setDeleteError(
-            "Vì xóa tài khoản là hành động không thể hoàn tác, bạn cần " +
-              "xác thực mã 2FA. Đang chuyển đến trang xác thực…",
-          );
-          nav("/auth/challenge?next=/account");
-          return;
-        }
-        if (body?.error === "aal_check_unavailable") {
-          setDeleteError(
-            body.message ??
-              "Không thể xác minh trạng thái bảo mật. Vui lòng thử lại sau.",
-          );
-          return;
-        }
-        throw error;
-      }
-
-      await supabase.auth.signOut();
-      nav("/", { replace: true });
     } catch (err) {
       setDeleteError(
         err instanceof Error ? err.message : "Unable to delete account.",

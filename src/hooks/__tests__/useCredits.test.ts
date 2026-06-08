@@ -6,9 +6,13 @@ vi.mock('@/providers/AuthProvider', () => ({
   useAuth: vi.fn(() => ({ user: { id: 'user-abc' }, isLoading: false })),
 }));
 
-// Mock authService
-vi.mock('@/lib/authService', () => ({
-  fetchCurrentEntitlement: vi.fn().mockResolvedValue(null),
+const useUserAccess = vi.fn(() => ({
+  hasPremium: false,
+  isLoading: false,
+}));
+
+vi.mock('@/hooks/useUserAccess', () => ({
+  useUserAccess: () => useUserAccess(),
 }));
 
 // Shared mutable Supabase mock state
@@ -42,15 +46,17 @@ vi.mock('@/lib/supabaseClient', () => ({
 
 import { useCredits } from '@/hooks/useCredits';
 import { useAuth } from '@/providers/AuthProvider';
-import { fetchCurrentEntitlement } from '@/lib/authService';
 
 describe('useCredits', () => {
   beforeEach(() => {
+    useUserAccess.mockReturnValue({
+      hasPremium: false,
+      isLoading: false,
+    });
     vi.mocked(useAuth).mockReturnValue({
       user: { id: 'user-abc' },
       isLoading: false,
     } as ReturnType<typeof useAuth>);
-    vi.mocked(fetchCurrentEntitlement).mockResolvedValue(null);
     supabaseMockState.promoResult = { data: null };
     supabaseMockState.quotaResult = { data: null };
     supabaseMockState.upsertError = null;
@@ -73,10 +79,7 @@ describe('useCredits', () => {
   });
 
   it('sets isUnlimited=true for premium user', async () => {
-    vi.mocked(fetchCurrentEntitlement).mockResolvedValue({
-      is_premium: true,
-      status: 'active',
-    } as Awaited<ReturnType<typeof fetchCurrentEntitlement>>);
+    useUserAccess.mockReturnValue({ hasPremium: true, isLoading: false });
     const { result } = renderHook(() => useCredits());
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
@@ -105,6 +108,12 @@ describe('useCredits', () => {
     expect(result.current.loading).toBe(true);
   });
 
+  it('stays loading while canonical access is loading', () => {
+    useUserAccess.mockReturnValue({ hasPremium: false, isLoading: true });
+    const { result } = renderHook(() => useCredits());
+    expect(result.current.loading).toBe(true);
+  });
+
   it('exposes hasCreditsRemaining, incrementUsage, refreshCredits functions', async () => {
     const { result } = renderHook(() => useCredits());
     await waitFor(() => expect(result.current.loading).toBe(false));
@@ -121,10 +130,7 @@ describe('useCredits', () => {
   });
 
   it('hasCreditsRemaining returns true when unlimited', async () => {
-    vi.mocked(fetchCurrentEntitlement).mockResolvedValue({
-      is_premium: true,
-      status: 'active',
-    } as Awaited<ReturnType<typeof fetchCurrentEntitlement>>);
+    useUserAccess.mockReturnValue({ hasPremium: true, isLoading: false });
     const { result } = renderHook(() => useCredits());
     await waitFor(() => expect(result.current.loading).toBe(false));
     expect(result.current.hasCreditsRemaining()).toBe(true);
