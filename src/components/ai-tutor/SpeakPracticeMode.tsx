@@ -9,9 +9,11 @@ import type { PronunciationProgressDisplay } from "@/lib/pronunciation/pronuncia
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
 
 const VIETNAMESE_LETTER_PATTERN = /[ăâđêôơưàáạảãằắặẳẵầấậẩẫèéẹẻẽềếệểễìíịỉĩòóọỏõồốộổỗờớợởỡùúụủũừứựửữỳýỵỷỹ]/i;
+const SPEAK_REPEAT_ENGLISH_PATTERN = /\bi didn't catch that clearly\.?\s*can you say it again\?/i;
 
 export function isSpeakFollowUpReadAloudEligible(text: string | null | undefined) {
   const trimmed = String(text ?? "").trim();
+  if (SPEAK_REPEAT_ENGLISH_PATTERN.test(trimmed)) return true;
   return /[a-z]/i.test(trimmed) && !VIETNAMESE_LETTER_PATTERN.test(trimmed);
 }
 
