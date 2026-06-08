@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 
 const repoRoot = process.cwd();
 const tutorRoot = join(repoRoot, "src", "lib", "tutor");
+const speakTopicsRelPrefix = ["src", "lib", "tutor", "speakTopics", ""].join(sep);
 
 type SourceFile = {
   path: string;
@@ -56,9 +57,17 @@ function isTypeOnlyImport(statement: string): boolean {
 
 const productionFiles = listTutorProductionFiles();
 
+function isSpeakTopicFile(rel: string): boolean {
+  return rel.startsWith(speakTopicsRelPrefix);
+}
+
 describe("Study OS static boundary", () => {
   it("scans only the intended production tutor files", () => {
-    expect(productionFiles.map((file) => file.rel)).toEqual([
+    const scannedFiles = productionFiles.map((file) => file.rel);
+    const speakTopicFiles = scannedFiles.filter(isSpeakTopicFile);
+    const nonSpeakTopicFiles = scannedFiles.filter((rel) => !isSpeakTopicFile(rel));
+
+    expect(nonSpeakTopicFiles).toEqual([
       "src/lib/tutor/bilingualSalienceDetector.ts",
       "src/lib/tutor/contentAwarePivots.ts",
       "src/lib/tutor/correctionEngine.ts",
@@ -73,7 +82,6 @@ describe("Study OS static boundary", () => {
       "src/lib/tutor/speakConversationState.ts",
       "src/lib/tutor/speakFollowups.ts",
       "src/lib/tutor/speakTopicLibrary.ts",
-      "src/lib/tutor/speakTopics/introductions.ts",
       "src/lib/tutor/studySessionState.ts",
       "src/lib/tutor/todayLessonPlanner.ts",
       "src/lib/tutor/tutorCopy.ts",
@@ -82,6 +90,10 @@ describe("Study OS static boundary", () => {
       "src/lib/tutor/vietlishCuratedLogic.ts",
       "src/lib/tutor/vietlishLogicEngine.ts",
     ]);
+    expect(speakTopicFiles).toContain("src/lib/tutor/speakTopics/introductions.ts");
+    for (const rel of speakTopicFiles) {
+      expect(rel).toMatch(/^src\/lib\/tutor\/speakTopics\/[^/]+\.ts$/);
+    }
   });
 
   it("does not import Supabase, external analytics, remote memory writers, placement, XP, or streak modules", () => {

@@ -86,3 +86,5 @@ export const introductionSpeakTopics: readonly SpeakTopic[] = [
     ],
   },
 ] as const;
+
+export const speakTopics = introductionSpeakTopics;
