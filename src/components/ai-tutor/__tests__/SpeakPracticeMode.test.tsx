@@ -318,6 +318,30 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     expect(screen.queryByText(/\d+%/)).not.toBeInTheDocument();
   });
 
+  it("shows the warm cap message (and keeps by-ear compare) when the detailed-scoring cap is reached", () => {
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        pronunciationResult={null}
+        detailScoreCapReached
+      />,
+    );
+
+    const cap = screen.getByTestId("ai-tutor-speak-detail-cap");
+    expect(cap).toHaveTextContent("Bạn đã dùng hết lượt chấm chi tiết hôm nay");
+    expect(cap).toHaveTextContent("nghe lại giọng của mình");
+    // No fake number, and the score card is not shown alongside the cap notice.
+    expect(cap.textContent ?? "").not.toMatch(/\d+%/);
+    expect(screen.queryByTestId("ai-tutor-speak-score")).not.toBeInTheDocument();
+    // The free by-ear self-compare loop stays available.
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
+  });
+
+  it("does not show the cap message by default", () => {
+    renderSpeak(null, "");
+    expect(screen.queryByTestId("ai-tutor-speak-detail-cap")).not.toBeInTheDocument();
+  });
+
   it("renders the parent-supplied 'another sentence' offer as a pivot round", () => {
     // The deterministic second-round offer is owned by the parent (AiTutor);
     // the component must render it as a pivot ("Đổi câu luyện") offer.

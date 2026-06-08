@@ -109,6 +109,19 @@ export const FEATURE_FLAGS = {
   ENGLISH_PRONUNCIATION_FEEDBACK_MVP_ENABLED: false,
 
   /**
+   * Premium/trial gate + per-session cap for Azure DETAILED pronunciation
+   * scoring (per-word/per-phoneme). Azure assessment is cost-bearing, so the
+   * detailed scorer is reserved for premium/trial users and capped per session.
+   * When ON: free users get NO detailed score (and never a fake number); a
+   * premium user who exhausts the cap sees a warm message and keeps the by-ear
+   * self-compare. When OFF: legacy behavior (detailed scoring guarded only by
+   * the Azure-batch env flag + session). The free by-ear self-compare loop is
+   * unaffected either way. Reads env `VITE_AI_TUTOR_PRON_PREMIUM_GATE_ENABLED`;
+   * default OFF.
+   */
+  AI_TUTOR_PRONUNCIATION_PREMIUM_GATE_ENABLED: readEnvBool("VITE_AI_TUTOR_PRON_PREMIUM_GATE_ENABLED", false),
+
+  /**
    * Track 2 — anonymized learner-interaction capture pipeline.
    * When ON: correction-engine + pronunciation results are sent
    * (fire-and-forget) to the learner-capture edge function, which HMACs
