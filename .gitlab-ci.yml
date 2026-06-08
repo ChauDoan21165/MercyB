@@ -874,7 +874,7 @@ deploy-netlify-publish-only:
         echo "Unlocking locked Netlify production deploy before manual publish."
         npx --yes netlify-cli api unlockDeploy --data "{\"deploy_id\":\"$LOCKED_DEPLOY_ID\"}" --auth "$NETLIFY_AUTH_TOKEN" >/dev/null
       fi
-    - npx --yes netlify-cli deploy --prod --dir=dist --no-build --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN"
+    - npx --yes netlify-cli deploy --prod --dir=dist --functions=netlify/functions --no-build --skip-functions-cache --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN"
 
 # ── `backup` stage (unchanged from prior version) ──────────────────────
 

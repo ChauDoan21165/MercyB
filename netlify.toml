@@ -27,7 +27,6 @@
   to = "/.netlify/functions/api-mercy-feedback"
   status = 200
 
-[[redirects]]
 [context.deploy-preview]
   command = "echo skipped && exit 1"
 
@@ -37,13 +36,3 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
-
-[[redirects]]
-  from = "/api/mercy-ai"
-  to = "/.netlify/functions/mercy-ai"
-  status = 200
-  force = true
-
-[[edge_functions]]
-  path = "/api/mercy-ai"
-  function = "mercy-ai-proxy"

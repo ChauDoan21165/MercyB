@@ -1,5 +1,12 @@
 import { createClient } from "@supabase/supabase-js";
 import {
+  buildDeepSeekSpeakFollowUp,
+  isRecord,
+  norm,
+  SPEAK_REPEAT_CLARIFICATION,
+  toSpeakRecentTurns,
+} from "../../api/_lib/deepseekSpeak";
+import {
   asString,
   getBearerToken,
   getIp,
@@ -11,6 +18,8 @@ import {
 } from "./_shared/http";
 
 type MercyAiBody = {
+  mode?: string;
+  transcript?: string;
   userText?: string;
   message?: string;
   text?: string;
@@ -44,7 +53,6 @@ export async function handler(event: NetlifyEvent) {
   const openAiKey = envValue("OPENAI_API_KEY");
   const supabaseUrl = envValue("SUPABASE_URL") || envValue("VITE_SUPABASE_URL");
   const supabaseAnonKey = envValue("SUPABASE_ANON_KEY") || envValue("VITE_SUPABASE_ANON_KEY");
-  if (!openAiKey) return json({ error: "Missing OPENAI_API_KEY" }, 500);
   if (!supabaseUrl || !supabaseAnonKey) {
     return json({ error: "Missing Supabase environment variables" }, 500);
   }
@@ -63,6 +71,27 @@ export async function handler(event: NetlifyEvent) {
   }
 
   const body = readJsonBody<MercyAiBody>(event);
+  if (norm(body.mode) === "speak-follow-up") {
+    const transcript = norm(body.transcript || body.userText || body.message || body.text);
+    if (!transcript) return json({ error: "Missing transcript" }, 400);
+    if (transcript.length > 1000) return json({ error: "Input too long" }, 400);
+
+    const context = isRecord(body.context) ? body.context : {};
+    const result = await buildDeepSeekSpeakFollowUp({
+      transcript,
+      learnerLevel: norm(context.learnerLevel) || "beginner",
+      currentTopic: norm(context.currentTopic),
+      recentTurns: toSpeakRecentTurns(context.recentTurns),
+    });
+    return json(result || {
+      question: SPEAK_REPEAT_CLARIFICATION,
+      provider: "local-fallback",
+      fallback: true,
+    });
+  }
+
+  if (!openAiKey) return json({ error: "Missing OPENAI_API_KEY" }, 500);
+
   const userText = asString(body.userText || body.message || body.text || body.prompt, 2000);
   const lang = body.lang === "vi" ? "vi" : "en";
   if (!userText) return json({ error: "Missing userText" }, 400);
