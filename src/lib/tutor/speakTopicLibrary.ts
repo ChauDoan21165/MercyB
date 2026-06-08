@@ -1,6 +1,4 @@
-import { introductionSpeakTopics } from "./speakTopics/introductions";
-
-export type SpeakTopicCategory =
+export type SpeakTopicKnownCategory =
   | "food"
   | "family"
   | "work"
@@ -21,6 +19,8 @@ export type SpeakTopicCategory =
   | "service"
   | "childcare"
   | "documents";
+
+export type SpeakTopicCategory = SpeakTopicKnownCategory | (string & {});
 
 export type SpeakTopicFollowUp = {
   id: string;
@@ -44,6 +44,18 @@ export type SpeakTopicLibraryEntry = {
   followUps: readonly SpeakTopicFollowUp[];
   l1InterferenceNotes?: readonly SpeakTopicL1InterferenceNote[];
 };
+
+type SpeakTopicModule = {
+  speakTopics: readonly SpeakTopicLibraryEntry[];
+};
+
+const speakTopicModules = import.meta.glob<SpeakTopicModule>("./speakTopics/*.ts", {
+  eager: true,
+});
+
+const autoRegisteredSpeakTopics: readonly SpeakTopicLibraryEntry[] = Object.entries(speakTopicModules)
+  .sort(([left], [right]) => left.localeCompare(right))
+  .flatMap(([, module]) => [...module.speakTopics]);
 
 export type SpeakTopicCorrectionStatus = "ship-safe" | "hold" | "abstain";
 
@@ -513,7 +525,7 @@ export const SPEAK_TOPIC_LIBRARY: readonly SpeakTopicLibraryEntry[] = [
       { id: "documents-next", question: "What is the next step after the form is ready?", salienceQuestion: "What is the next step for the {slot}?" },
     ],
   },
-  ...introductionSpeakTopics,
+  ...autoRegisteredSpeakTopics,
 ] as const;
 
 export function getSpeakTopicLibraryEntry(topicId: string): SpeakTopicLibraryEntry | null {

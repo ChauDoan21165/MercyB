@@ -18,7 +18,7 @@ import {
   SPEAK_TOPIC_LIBRARY,
   buildSpeakTopicCorrectionWeave,
 } from "@/lib/tutor/speakTopicLibrary";
-import { introductionSpeakTopics } from "@/lib/tutor/speakTopics/introductions";
+import { speakTopics as introductionSpeakTopics } from "@/lib/tutor/speakTopics/introductions";
 
 const BATCH_1_SEEDS: Array<{ id: string; seed: string }> = [
   { id: "topic-ordering-food", seed: "I want order noodles at the restaurant." },
@@ -605,6 +605,20 @@ describe("speakFollowups", () => {
         expect(selection.isPivot).toBe(false);
         expect(selection.correctionSignalId).toBeUndefined();
         expect(selection.correctionStatus).toBeUndefined();
+      }
+    });
+
+    it("auto-registers Speak topic files without per-theme library imports", () => {
+      const topicModules = import.meta.glob<{ speakTopics: readonly typeof SPEAK_TOPIC_LIBRARY[number][] }>(
+        "@/lib/tutor/speakTopics/*.ts",
+        { eager: true },
+      );
+      const moduleTopics = Object.values(topicModules).flatMap((module) => [...module.speakTopics]);
+      const libraryIds = new Set(SPEAK_TOPIC_LIBRARY.map((topic) => topic.id));
+
+      expect(Object.keys(topicModules)).toContain("/src/lib/tutor/speakTopics/introductions.ts");
+      for (const topic of moduleTopics) {
+        expect(libraryIds.has(topic.id), topic.id).toBe(true);
       }
     });
 
