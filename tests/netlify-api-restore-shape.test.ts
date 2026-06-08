@@ -11,6 +11,7 @@ function read(rel: string): string {
 describe("Netlify API restore shape", () => {
   it("routes all dark /api endpoints to Netlify Functions", () => {
     const toml = read("netlify.toml");
+    const redirects = read("public/_redirects");
     for (const route of [
       "/api/tts",
       "/api/mercy/grammar",
@@ -18,11 +19,19 @@ describe("Netlify API restore shape", () => {
       "/api/mercy-feedback",
     ]) {
       expect(toml).toContain(`from = "${route}"`);
+      expect(redirects).toContain(`${route}    /.netlify/functions/`);
     }
     expect(toml).toContain('functions = "netlify/functions"');
     expect(toml).toContain('to = "/.netlify/functions/api-mercy-ai"');
     expect(toml).not.toContain('to = "/.netlify/functions/mercy-ai"');
     expect(toml).not.toContain('function = "mercy-ai-proxy"');
+    expect(redirects).toContain("/api/tts    /.netlify/functions/api-tts   200!");
+    expect(redirects).toContain(
+      "/api/mercy/grammar    /.netlify/functions/api-mercy-grammar   200!",
+    );
+    expect(redirects).toContain(
+      "/api/mercy-feedback    /.netlify/functions/api-mercy-feedback   200!",
+    );
   });
 
   it("uploads Netlify Functions during manual production deploy", () => {
