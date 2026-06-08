@@ -95,7 +95,7 @@ describe("placement v4 curriculum sequencer", () => {
     expect(Math.max(...gaps)).toBeLessThanOrEqual(2);
   });
 
-  it("generates deterministic 7-day, 28-day, and 90-day plans", () => {
+  it.each([7, 28, 90] as const)("generates deterministic %i-day plans", (length) => {
     const learner = state({
       assessment: {
         ...balancedAssessment,
@@ -107,12 +107,10 @@ describe("placement v4 curriculum sequencer", () => {
       weakSkills: ["grammar", "speaking"],
     });
 
-    for (const length of [7, 28, 90] as const) {
-      const first = generateCurriculumPlan(learner, length);
-      const second = generateCurriculumPlan(learner, length);
-      expect(second).toEqual(first);
-      expect(first.days).toHaveLength(length);
-    }
+    const first = generateCurriculumPlan(learner, length);
+    const second = generateCurriculumPlan(learner, length);
+    expect(second).toEqual(first);
+    expect(first.days).toHaveLength(length);
   });
 
   it("recalibrates progression and challenge levels when learner mastery improves", () => {
