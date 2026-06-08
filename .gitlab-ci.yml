@@ -813,6 +813,22 @@ deploy-netlify-publish-only:
     - when: never
   script:
     - npm run build
+    - |
+      SITE_INFO_FILE="$(mktemp)"
+      npx --yes netlify-cli api getSite --data "{\"site_id\":\"$NETLIFY_SITE_ID\"}" --auth "$NETLIFY_AUTH_TOKEN" > "$SITE_INFO_FILE"
+      LOCKED_DEPLOY_ID="$(
+        node -e '
+          const fs = require("node:fs");
+          const site = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+          const deploy = site.published_deploy || {};
+          process.stdout.write(deploy.locked && deploy.id ? deploy.id : "");
+        ' "$SITE_INFO_FILE"
+      )"
+      rm -f "$SITE_INFO_FILE"
+      if [ -n "$LOCKED_DEPLOY_ID" ]; then
+        echo "Unlocking locked Netlify production deploy before manual publish."
+        npx --yes netlify-cli api unlockDeploy --data "{\"deploy_id\":\"$LOCKED_DEPLOY_ID\"}" --auth "$NETLIFY_AUTH_TOKEN" >/dev/null
+      fi
     - npx --yes netlify-cli deploy --prod --dir=dist --no-build --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN"
 
 # ── `backup` stage (unchanged from prior version) ──────────────────────
