@@ -167,6 +167,7 @@ variables:
     # `--legacy-peer-deps` mirrors the GitHub workflow's flag — the
     # repo's peer-dep tree currently requires it.
     - sleep $((RANDOM % 60))
+    - rm -rf node_modules/.deno
     - npm ci --legacy-peer-deps --cache .npm --prefer-offline
 
 # Local runner jobs are explicitly tagged so the Mac runner can keep
