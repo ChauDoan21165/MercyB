@@ -186,6 +186,34 @@ variables:
   hooks:
     pre_get_sources_script:
       - |
+        if [ "${MERCYB_PRECHECKOUT_REAPER_DISABLE:-0}" != "1" ] && [ "${CI_PIPELINE_SOURCE:-}" = "push" ] && [ "${CI_COMMIT_BRANCH:-}" = "main" ] && [ -n "${CI_BUILDS_DIR:-}" ] && [ "$(uname -s)" = "Darwin" ]; then
+          REAPER_ROOT="$CI_BUILDS_DIR"
+          while [ ! -d "$REAPER_ROOT" ] && [ "$REAPER_ROOT" != "/" ]; do
+            REAPER_ROOT="$(dirname "$REAPER_ROOT")"
+          done
+          if [ "$(basename "$REAPER_ROOT")" = "gitlab-runner-builds" ]; then
+            echo "[post-merge-precheckout-reaper] before df -h /"
+            df -h / | sed 's/^/[post-merge-precheckout-reaper] /'
+            echo "[post-merge-precheckout-reaper] root=$REAPER_ROOT current_pipeline=${CI_PIPELINE_ID:-unknown}"
+            find "$REAPER_ROOT" -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' -print 2>/dev/null | sort | while IFS= read -r d; do
+              [ -n "$d" ] || continue
+              if [ "$(basename "$d")" = "${CI_PIPELINE_ID:-}" ]; then
+                echo "[post-merge-precheckout-reaper] SKIP current-pipeline path=$d"
+                continue
+              fi
+              if command -v lsof >/dev/null 2>&1 && lsof -t +D "$d" >/dev/null 2>&1; then
+                echo "[post-merge-precheckout-reaper] SKIP active-process path=$d"
+                continue
+              fi
+              echo "[post-merge-precheckout-reaper] REMOVE path=$d safe=non-current-runner-pipeline-dir"
+              rm -rf -- "$d" || echo "[post-merge-precheckout-reaper] WARN remove-failed path=$d"
+            done
+            echo "[post-merge-precheckout-reaper] after df -h /"
+            df -h / | sed 's/^/[post-merge-precheckout-reaper] /'
+          else
+            echo "[post-merge-precheckout-reaper] SKIP unapproved-root path=$REAPER_ROOT"
+          fi
+        fi
         DISK_FLOOR_KB="${MERCYB_CI_MIN_FREE_KB:-5242880}"
         TARGET="${CI_BUILDS_DIR:-$PWD}"
         while [ ! -d "$TARGET" ] && [ "$TARGET" != "/" ]; do
@@ -760,12 +788,12 @@ post-merge-worktree-reaper:
         done
       fi
       if [ -z "$REAPER_REPO" ]; then
-        echo "[post-merge-worktree-reaper] no canonical local repo found; set MERCYB_REAPER_REPO to enable post-merge worktree cleanup"
-        exit 1
+        echo "[post-merge-worktree-reaper] no canonical local repo found; falling back to CI_BUILDS_DIR cleanup only"
+        REAPER_REPO="$PWD"
       fi
       echo "[post-merge-worktree-reaper] resolved repo=$REAPER_REPO"
       git -C "$REAPER_REPO" fetch origin main --prune
-      scripts/supervisor/post-merge-worktree-reaper.sh --live --repo "$REAPER_REPO" --merged-ref origin/main --roots "${MERCYB_REAPER_WORKTREE_ROOTS:-/private/tmp}" --reason "main-push pipeline ${CI_PIPELINE_ID:-unknown}"
+      scripts/supervisor/post-merge-worktree-reaper.sh --live --repo "$REAPER_REPO" --merged-ref origin/main --roots "${MERCYB_REAPER_WORKTREE_ROOTS:-/private/tmp}" --builds-dir "${MERCYB_REAPER_BUILDS_DIR:-${CI_BUILDS_DIR:-}}" --reason "main-push pipeline ${CI_PIPELINE_ID:-unknown}"
 
 # ── Manual production frontend deploy ─────────────────────────────────
 

@@ -211,6 +211,14 @@ describe("post-merge-worktree-reaper.sh — safety shape", () => {
     expect(POST_MERGE_REAPER).toMatch(/merge-base --is-ancestor/);
   });
 
+  it("keeps runner build-dir cleanup scoped and skips the current pipeline", () => {
+    expect(POST_MERGE_REAPER).toMatch(/MERCYB_REAPER_BUILDS_DIR/);
+    expect(POST_MERGE_REAPER).toMatch(/is_approved_builds_root/);
+    expect(POST_MERGE_REAPER).toMatch(/gitlab-runner-builds/);
+    expect(POST_MERGE_REAPER).toMatch(/current-pipeline/);
+    expect(POST_MERGE_REAPER).toMatch(/non-current-runner-pipeline-dir/);
+  });
+
   it("logs before and after root disk space", () => {
     expect(POST_MERGE_REAPER).toMatch(/print_df "before"/);
     expect(POST_MERGE_REAPER).toMatch(/print_df "after"/);
