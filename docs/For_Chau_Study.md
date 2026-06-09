@@ -14,6 +14,7 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 
 ## Lesson Index
 
+13. [Test runners need ownership boundaries too](#13-test-runners-need-ownership-boundaries-too)
 12. [Do not copy files in Finder inside the repo](#12-do-not-copy-files-in-finder-inside-the-repo)
 11. [Stacked Silent Failures Compound, They Don't Combine Linearly](#11-stacked-silent-failures-compound-they-dont-combine-linearly)
 6. [Fake-green tests are a failure class](#6-fake-green-tests-are-a-failure-class)
@@ -26,6 +27,18 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 3. [Restore before redesign](#3-restore-before-redesign)
 4. [Verify against current main, not stale audit notes](#4-verify-against-current-main-not-stale-audit-notes)
 5. [Silent failures cost more than loud ones](#5-silent-failures-cost-more-than-loud-ones)
+
+---
+
+## 13. Test runners need ownership boundaries too
+
+**What it is.** A test file's name and directory decide which runner owns it. Playwright and Vitest can both see TypeScript under `tests/`, but they do not execute it the same way. A Playwright file named like a normal `.spec.ts` can be collected by Vitest, where Playwright's `test()` API is invalid.
+
+**Why it matters.** A new CI lane can be correct in isolation and still break an unrelated shard. That is a confusing failure: the Playwright job passes, but the regular unit-test job fails before assertions run. The fix is not a code change to the product; it is a test ownership boundary.
+
+**MercyBlade example.** MR !641 added a dedicated Playwright performance-budget lane: route DOM interactive under 4 seconds on a throttled profile, and main entry bundle under 250 KiB gzip. The first version used `tests/perf-budget/perfBudgets.spec.ts`. Playwright passed locally and in CI, but Vitest shard `test 1/2` also collected the file because Vitest includes `**/*.{test,spec}.*`. Vitest then failed with "Playwright Test did not expect test() to be called here." Renaming the file to `perfBudgets.pw.ts` and setting Playwright `testMatch` to `*.pw.ts` made ownership explicit: Playwright still ran the budget tests, and Vitest ignored them.
+
+**Action.** When adding a new test runner lane, pick a runner-specific suffix and a dedicated config on day one. For Playwright-only specs under shared test roots, use a suffix like `.pw.ts` and set the Playwright config's `testMatch` accordingly. Always run a quick negative ownership check too, such as `npx vitest run --passWithNoTests tests/perf-budget`, to prove the wrong runner cannot collect the file.
 
 ---
 
