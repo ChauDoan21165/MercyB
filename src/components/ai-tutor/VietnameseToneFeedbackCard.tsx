@@ -56,15 +56,14 @@ export default function VietnameseToneFeedbackCard({ enabled, feedback }: Props)
       <p className={`mt-1 text-sm font-semibold leading-6 ${bodyClasses}`}>
         {guidance}
       </p>
-      {typeof feedback.score === "number" ? (
-        <p className={`mt-1 text-xs font-semibold ${isCorrect ? "text-emerald-800" : "text-amber-800"}`}>
-          Điểm thanh điệu khoảng {feedback.score}%.
-        </p>
-      ) : (
-        <p className="mt-1 text-xs font-semibold text-sky-800">
-          Không hiện điểm khi bằng chứng chưa đủ chắc.
-        </p>
-      )}
+      {/*
+        No numeric tone "score %" is shown. The contour scorer is not yet
+        native-validated (see reports/lane-c-vn-tone-validation-pending.md), so a
+        percent would imply a measured precision we cannot stand behind — and the
+        trust floor says a wrong/over-confident tone verdict is worse than none.
+        The qualitative headline + guidance above ARE the cue. When tone scoring
+        is validated, re-add a percent line keyed off feedback.score here.
+      */}
     </section>
   );
 }

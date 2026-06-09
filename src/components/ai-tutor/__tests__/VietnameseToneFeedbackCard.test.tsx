@@ -51,7 +51,10 @@ describe("VietnameseToneFeedbackCard", () => {
     const card = screen.getByTestId("vietnamese-tone-feedback");
     expect(card).toHaveTextContent("Thanh sắc đúng rồi.");
     expect(card).toHaveTextContent("Giọng của bạn đang đi lên giống câu mẫu.");
-    expect(card).toHaveTextContent("Điểm thanh điệu khoảng 91%.");
+    // No fabricated tone-score percent — the qualitative cue stands alone until
+    // the contour scorer is native-validated (lane-c-vn-tone-validation-pending).
+    expect(card).not.toHaveTextContent("Điểm thanh điệu khoảng");
+    expect(card.textContent).not.toMatch(/\d+%/);
   });
 
   it("shows try-again feedback for supported mismatches", () => {
@@ -60,7 +63,8 @@ describe("VietnameseToneFeedbackCard", () => {
     const card = screen.getByTestId("vietnamese-tone-feedback");
     expect(card).toHaveTextContent("Thanh huyền đang gần hơn rồi.");
     expect(card).toHaveTextContent("Thử thêm một lần: đi xuống rõ hơn một chút.");
-    expect(card).toHaveTextContent("Điểm thanh điệu khoảng 42%.");
+    expect(card).not.toHaveTextContent("Điểm thanh điệu khoảng");
+    expect(card.textContent).not.toMatch(/\d+%/);
   });
 
   it("redirects unsupported tones into more practice without a score", () => {
@@ -69,8 +73,8 @@ describe("VietnameseToneFeedbackCard", () => {
     const card = screen.getByTestId("vietnamese-tone-feedback");
     expect(card).toHaveTextContent("Thanh ngã: Mercy chưa chấm chắc thanh này.");
     expect(card).toHaveTextContent("chuyển sang má / mà / ma");
-    expect(card).toHaveTextContent("Không hiện điểm khi bằng chứng chưa đủ chắc.");
     expect(card).not.toHaveTextContent("Điểm thanh điệu khoảng");
+    expect(card.textContent).not.toMatch(/\d+%/);
   });
 
   it("redirects unclear supported-tone evidence into another slow attempt", () => {
@@ -80,6 +84,7 @@ describe("VietnameseToneFeedbackCard", () => {
     expect(card).toHaveTextContent("Mercy chưa nghe rõ đường giọng.");
     expect(card).toHaveTextContent("Thử lại chậm hơn");
     expect(card).not.toHaveTextContent("Điểm thanh điệu khoảng");
+    expect(card.textContent).not.toMatch(/\d+%/);
   });
 
   it("hides feedback when the feature flag is off or there is no tone data", () => {
