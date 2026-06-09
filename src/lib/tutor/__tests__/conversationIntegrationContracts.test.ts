@@ -7,7 +7,7 @@ import {
   hasCaptureConsent,
   hasCaptureConsentDecision,
   setCaptureConsent,
-} from "@/lib/tutor/captureConsent";
+} from "@/lib/conversationCapture/captureConsent";
 import { scoreConversationTurn } from "@/lib/pronunciation/conversationPronunciation";
 import { SPEAK_TOPIC_LIBRARY } from "@/lib/tutor/speakTopicLibrary";
 import { VIETLISH_CORPUS } from "@/lib/tutor/vietlishCorpus";
