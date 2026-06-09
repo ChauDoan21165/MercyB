@@ -15,6 +15,7 @@ type GrammarBody = {
 };
 
 const L1_FLAG_KEY = "feedbackL1DetectorEnabled";
+const methodNotAllowedHeaders = { Allow: "POST" };
 
 function buildSystemPrompt(level: string, isRevision: boolean): string {
   return [
@@ -63,14 +64,20 @@ async function isL1FlagEnabled(env: PagesContext["env"], userId: string): Promis
   }
 }
 
-export async function onRequest(context: PagesContext): Promise<Response> {
-  const { request, env } = context;
-  if (request.method === "OPTIONS") return optionsResponse();
+function methodNotAllowed(): Response {
+  return json({ ok: false, error: "Method not allowed" }, 405, methodNotAllowedHeaders);
+}
 
-  if (request.method !== "POST") {
-    return json({ ok: false, error: "Method not allowed" }, 405, { Allow: "POST" });
-  }
+export function onRequestOptions(): Response {
+  return optionsResponse();
+}
 
+export function onRequestGet(): Response {
+  return methodNotAllowed();
+}
+
+export async function onRequestPost(context: PagesContext): Promise<Response> {
+  const { env, request } = context;
   try {
     const body = await readJsonBody<GrammarBody>(request);
     const text = asString(body.text, 1200);

@@ -38,14 +38,20 @@ type FeedbackRequestBody = {
   items?: FeedbackItem[];
 };
 
-export async function onRequest(context: PagesContext): Promise<Response> {
-  const { request, env } = context;
-  if (request.method === "OPTIONS") return optionsResponse();
+function methodNotAllowed(): Response {
+  return json({ ok: false, acceptedCount: 0, error: "method_not_allowed" }, 405);
+}
 
-  if (request.method !== "POST") {
-    return json({ ok: false, acceptedCount: 0, error: "method_not_allowed" }, 405);
-  }
+export function onRequestOptions(): Response {
+  return optionsResponse();
+}
 
+export function onRequestGet(): Response {
+  return methodNotAllowed();
+}
+
+export async function onRequestPost(context: PagesContext): Promise<Response> {
+  const { env, request } = context;
   const supabaseUrl = envValue(env, "SUPABASE_URL") || envValue(env, "VITE_SUPABASE_URL");
   const serviceRoleKey = envValue(env, "SUPABASE_SERVICE_ROLE_KEY");
   if (!supabaseUrl || !serviceRoleKey) {
