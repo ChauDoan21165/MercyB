@@ -24,6 +24,7 @@ import { onCLS, onFCP, onINP, onLCP, onTTFB, type Metric } from "web-vitals";
 import { supabase } from "@/lib/supabaseClient";
 import { isSentryEnabled, getSentryModule } from "@/lib/monitoring/sentryInit";
 import { classifyDevice, type WebVitalName } from "@/config/perfBudget";
+import { sendWebVitalToGa4 } from "@/lib/perf/ga4WebVitals";
 
 let initialized = false;
 
@@ -54,6 +55,9 @@ export function initializeWebVitals(): void {
   if (import.meta.env.MODE === "test") return;
 
   const handler = (metric: Metric) => {
+    // GA4 RUM sink — prod only (OFF in dev), GA4-only, fail-silent. Reuses the same
+    // observer registration as the Sentry/DB sinks; no duplicate web-vitals listeners.
+    if (import.meta.env.PROD) sendWebVitalToGa4(metric);
     void recordVital(metric).catch((err) => {
       console.warn("[webVitals] record failed:", err);
     });
