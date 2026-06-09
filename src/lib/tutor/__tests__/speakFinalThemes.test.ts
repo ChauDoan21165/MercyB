@@ -46,8 +46,8 @@ describe("final speak topic themes", () => {
         expect(topic.conversationDirections.length, topic.id).toBeGreaterThanOrEqual(5);
         expect(topic.conversationDirections.length, topic.id).toBeLessThanOrEqual(8);
         expect(topic.warmthPatterns.length, topic.id).toBeGreaterThanOrEqual(3);
-        expect(topic.l1InterferenceNotes?.length, topic.id).toBeGreaterThanOrEqual(2);
-        expect(topic.followUps.length, topic.id).toBeGreaterThanOrEqual(5);
+        expect(topic.l1InterferenceNotes?.length, topic.id).toBeGreaterThanOrEqual(3);
+        expect(topic.followUps.length, topic.id).toBeGreaterThanOrEqual(6);
       }
     }
   });

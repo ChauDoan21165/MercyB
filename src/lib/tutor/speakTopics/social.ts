@@ -45,6 +45,11 @@ export const speakTopics = [
         label: "Polite exit",
         note: "A natural exit is 'It was nice talking to you. I have to go now.' This is softer than ending suddenly.",
       },
+      {
+        id: "social-neighbor-not-too-personal",
+        label: "Keep it light",
+        note: "English neighbor small talk often stays light at first. Weather, building news, or weekend plans are safer than money, age, or private family questions.",
+      },
     ],
     followUps: [
       { id: "social-neighbor-greeting", question: "How would you greet your neighbor?", salienceQuestion: "What would you say first about the {slot}?" },
@@ -52,6 +57,7 @@ export const speakTopics = [
       { id: "social-neighbor-detail", question: "What extra detail could you add?", salienceQuestion: "What detail makes the {slot} warmer?" },
       { id: "social-neighbor-ask-back", question: "How would you ask a question back?", salienceQuestion: "What question would you ask about the {slot}?" },
       { id: "social-neighbor-exit", question: "How would you end the conversation politely?", salienceQuestion: "How would you finish talking about the {slot}?" },
+      { id: "social-neighbor-boundary", question: "What topic would you avoid because it feels too personal?", salienceQuestion: "What should stay private in the {slot}?" },
     ],
   },
   {
@@ -91,6 +97,11 @@ export const speakTopics = [
         label: "No pressure",
         note: "English invitations often soften the request with 'if you are free' or 'no pressure' to sound friendly.",
       },
+      {
+        id: "social-invite-sounds-good",
+        label: "Sounds good",
+        note: "When someone accepts, 'Sounds good!' or 'That works for me' is a natural short response before confirming time and place.",
+      },
     ],
     followUps: [
       { id: "social-invite-activity", question: "What do you want to invite your friend to do?", salienceQuestion: "What activity fits the {slot}?" },
@@ -98,6 +109,7 @@ export const speakTopics = [
       { id: "social-invite-place", question: "Where should you meet?", salienceQuestion: "Where should the {slot} happen?" },
       { id: "social-invite-maybe", question: "What would you say if your friend says maybe?", salienceQuestion: "How would you adjust the {slot}?" },
       { id: "social-invite-confirm", question: "How would you confirm the plan in one message?", salienceQuestion: "How would you confirm the {slot}?" },
+      { id: "social-invite-accept", question: "How would you respond if your friend says yes?", salienceQuestion: "How would you accept the {slot} plan?" },
     ],
   },
   {
@@ -137,6 +149,11 @@ export const speakTopics = [
         label: "Short apology",
         note: "A clear English apology can be short: 'I'm sorry I'm late.' Long explanations can sound defensive.",
       },
+      {
+        id: "social-reschedule-choice",
+        label: "Offer two choices",
+        note: "When rescheduling, offering two times sounds helpful: 'Would Friday afternoon or Saturday morning work for you?'",
+      },
     ],
     followUps: [
       { id: "social-reschedule-issue", question: "What happened with the plan?", salienceQuestion: "What happened with the {slot}?" },
@@ -144,6 +161,7 @@ export const speakTopics = [
       { id: "social-reschedule-reason", question: "What short reason would you give?", salienceQuestion: "What reason connects to the {slot}?" },
       { id: "social-reschedule-new-time", question: "What new time would you suggest?", salienceQuestion: "What new time works for the {slot}?" },
       { id: "social-reschedule-confirm", question: "How would you confirm the new plan politely?", salienceQuestion: "How would you confirm the {slot}?" },
+      { id: "social-reschedule-two-options", question: "What two new times could you offer?", salienceQuestion: "What choices would work for the {slot}?" },
     ],
   },
 ] as const satisfies readonly FinalThemeSpeakTopic[];
