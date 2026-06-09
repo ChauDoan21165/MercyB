@@ -1,0 +1,28 @@
+-- D1 → Lane B handoff: proposed schema column spec for conversation turn XP.
+--
+-- No schema change is applied here. This is a migration-adjacent spec so Lane B
+-- can turn it into the owning migration after validating retention analytics
+-- needs and RLS posture.
+--
+-- Proposed additive columns:
+--
+-- 1. public.xp_events.conversation_id uuid NULL
+--    References public.mercy_conversations(id) ON DELETE SET NULL.
+--    Purpose: tie a conversation_turn XP award to the Mercy thread without
+--    storing message text or learner free-form content.
+--
+-- 2. public.xp_events.turn_number integer NULL CHECK (turn_number > 0)
+--    Purpose: support weekly progress and abuse/debug review by turn count.
+--
+-- 3. public.xp_events.correction_accepted boolean NULL
+--    Purpose: distinguish baseline conversation XP from the accepted-correction
+--    bump exposed by awardConversationTurnXP(turnNumber, correctionAccepted).
+--
+-- Suggested index:
+--   CREATE INDEX xp_events_conversation_turn_idx
+--     ON public.xp_events (user_id, event_type, occurred_at DESC)
+--     WHERE event_type = 'conversation_turn';
+--
+-- Suggested privacy rule:
+--   Do not store user message content, assistant content, correction text, or
+--   arbitrary metadata in xp_events for this lane.
