@@ -1,11 +1,39 @@
 // src/components/ai-tutor/ConversationMode.tsx
 // Chat-style Teacher Mercy practice mode. Local/mock only; no provider calls.
 
-import { Send, Square, Volume2 } from "lucide-react";
+import { Send, Square, Volume2, Lock } from "lucide-react";
 import type { TutorTurn } from "@/lib/tutor/tutorTypes";
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
 import type { VietlishLogicDiagnosisResult } from "@/lib/tutor/vietlishLogicEngine";
+import type { ConversationPronunciationResult } from "@/lib/pronunciation/conversationPronunciation";
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
+
+/**
+ * Premium gate state for the conversation engine (Steps 8-9-10).
+ * IMPORTANT (standing CEO directive): the PARENT computes `isPremium` from subscription
+ * status + current_period_end + provider — NEVER from a Stripe `price_id`. This component
+ * only renders the gate; it derives no entitlement itself.
+ * Omit the prop entirely (legacy callers) to render with no gate.
+ */
+export type ConversationEntitlement = {
+  isPremium: boolean;
+};
+
+/** 50-turn/session cost-cap surface. Engine owns the counting; UI only renders it. */
+export type ConversationTurnUsage = {
+  used: number;
+  limit: number;
+};
+
+/**
+ * Engine abstention redirect. When the engine is not confident (null pronunciation score,
+ * low-confidence interference/Vietlish call) it MUST redirect into engaging practice rather
+ * than dead-end. The component renders the engine-provided, Vietnamese-primary redirect prompt
+ * and keeps the input live so the learner can continue.
+ */
+export type ConversationAbstentionRedirect = {
+  redirectPrompt: string;
+};
 
 export type UserConversationMessage = {
   id: string;
@@ -39,6 +67,14 @@ type Props = {
   onSpeak: (message: MercyConversationMessage) => void;
   onStartCorrection?: () => void;
   tutorCopy: TutorCopy;
+  /** Engine contract (Steps 8-9-10). All optional + additive so legacy callers are unaffected. */
+  entitlement?: ConversationEntitlement;
+  turnUsage?: ConversationTurnUsage;
+  /** Per-turn pronunciation result keyed by learner message id. Only present when the learner
+   * actually recorded audio for that turn. A null/absent entry => no score is rendered. */
+  pronunciationByMessageId?: Record<string, ConversationPronunciationResult | null | undefined>;
+  abstentionRedirect?: ConversationAbstentionRedirect | null;
+  onUpgrade?: () => void;
 };
 
 export default function ConversationMode({
@@ -60,10 +96,22 @@ export default function ConversationMode({
   onSpeak,
   onStartCorrection,
   tutorCopy,
+  entitlement,
+  turnUsage,
+  pronunciationByMessageId,
+  abstentionRedirect,
+  onUpgrade,
 }: Props) {
   const isEmpty = !input.trim();
   const isLogicMode = mode === "logic";
   const { ui } = tutorCopy;
+  // Premium-only conversation engine. Gate only when the parent supplied entitlement and the
+  // learner is not premium; legacy callers (no entitlement prop) are never gated.
+  const isPremiumGated = entitlement ? !entitlement.isPremium : false;
+  // 50-turn/session cost cap. At the cap we keep the screen usable (never a dead-end) but stop
+  // new sends so we don't exceed the ~$0.01/session ceiling.
+  const atTurnCap = turnUsage ? turnUsage.used >= turnUsage.limit : false;
+  const turnsRemaining = turnUsage ? Math.max(0, turnUsage.limit - turnUsage.used) : null;
   const allowTts = mode !== "logic";
   const showMicFallback = mode === "speak" && !isLogicMode && (!micSupported || Boolean(micError));
   const micFallbackMessage = micError
@@ -135,6 +183,39 @@ export default function ConversationMode({
     );
   }
 
+  // Premium-only conversation engine. Vietnamese-primary gate, English secondary.
+  // No entitlement is derived here and no Stripe price_id is referenced.
+  if (isPremiumGated) {
+    return (
+      <section
+        className="mx-auto flex min-h-[320px] w-full max-w-3xl flex-col items-center justify-center rounded-[18px] border border-slate-200 bg-white p-8 text-center shadow-sm"
+        data-testid="ai-tutor-conversation-premium-gate"
+      >
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-50 text-indigo-600">
+          <Lock className="h-5 w-5" aria-hidden />
+        </div>
+        <h2 className="mt-4 text-xl font-black text-slate-900">
+          Trò chuyện cùng Mercy là tính năng Premium
+        </h2>
+        <p className="mt-1 text-sm font-bold leading-6 text-slate-500">
+          Premium feature — unlimited conversation practice
+        </p>
+        <p className="mt-3 max-w-md text-sm font-semibold leading-6 text-slate-600">
+          Nâng cấp Premium để luyện hội thoại tiếng Anh không giới hạn, được Mercy sửa lỗi
+          tư duy Việt → Anh và giải thích bằng tiếng Việt.
+        </p>
+        <button
+          type="button"
+          onClick={onUpgrade}
+          className="mt-5 inline-flex min-h-[44px] items-center justify-center rounded-full bg-slate-900 px-6 py-2.5 text-sm font-black text-white transition hover:bg-slate-800"
+          data-testid="ai-tutor-conversation-upgrade"
+        >
+          Nâng cấp Premium
+        </button>
+      </section>
+    );
+  }
+
   return (
     <section
       className="mx-auto flex min-h-[620px] w-full max-w-3xl flex-col rounded-[18px] border border-slate-200 bg-white shadow-sm"
@@ -150,6 +231,19 @@ export default function ConversationMode({
         <p className="mt-1 text-sm font-semibold leading-6 text-slate-500">
           {modeCopy.description}
         </p>
+        {turnUsage && (
+          <div
+            className={`mt-3 inline-flex items-center rounded-full px-3 py-1 text-[11px] font-black ${
+              atTurnCap ? "bg-amber-50 text-amber-800" : "bg-slate-100 text-slate-600"
+            }`}
+            data-testid="ai-tutor-conversation-turn-cap"
+            role="status"
+          >
+            {atTurnCap
+              ? `Bạn đã dùng hết ${turnUsage.limit} lượt cho buổi này. Hãy quay lại buổi sau nhé.`
+              : `Lượt còn lại buổi này: ${turnsRemaining}/${turnUsage.limit}`}
+          </div>
+        )}
       </div>
 
       <div className="flex-1 space-y-4 overflow-y-auto bg-slate-50/60 p-4 sm:p-5">
@@ -161,6 +255,12 @@ export default function ConversationMode({
 
         {messages.map((message) => {
           const isMercy = message.role === "mercy";
+          const pron = !isMercy ? pronunciationByMessageId?.[message.id] : undefined;
+          // Honest pronunciation surface: only ever show a number when Azure gave a real
+          // measurement. Null score / no-audio / low-confidence / shouldAskRetry => encourage a
+          // retry, never a fabricated percent. (C1 trust-floor contract.)
+          const showPronScore =
+            !!pron && pron.overallScore !== null && pron.quality === "ok" && !pron.shouldAskRetry;
           const isActiveVoice = speakingMessageId === message.id;
           const isPreparingVoice = isActiveVoice && ttsPreparing;
           const isSpeakingVoice = isActiveVoice && ttsSpeaking;
@@ -269,7 +369,24 @@ export default function ConversationMode({
                     )}
                   </div>
                 ) : (
-                  <p className="whitespace-pre-wrap text-sm font-semibold leading-6">{message.text}</p>
+                  <div className="space-y-2">
+                    <p className="whitespace-pre-wrap text-sm font-semibold leading-6">{message.text}</p>
+                    {pron && (showPronScore ? (
+                      <div
+                        className="inline-flex items-center gap-1 rounded-full bg-emerald-500/20 px-2.5 py-1 text-[11px] font-black text-emerald-100"
+                        data-testid="ai-tutor-conversation-pron-score"
+                      >
+                        Phát âm: {pron.overallScore}%
+                      </div>
+                    ) : (
+                      <div
+                        className="inline-flex items-center gap-1 rounded-full bg-white/15 px-2.5 py-1 text-[11px] font-bold text-slate-200"
+                        data-testid="ai-tutor-conversation-pron-retry"
+                      >
+                        Chưa nghe rõ — mình thử lại câu này nhé.
+                      </div>
+                    ))}
+                  </div>
                 )}
               </div>
             </article>
@@ -280,6 +397,18 @@ export default function ConversationMode({
           <div className="flex justify-start">
             <div className="rounded-full border border-indigo-100 bg-white px-4 py-2 text-sm font-bold text-indigo-700 shadow-sm">
               {tutorCopy.speakerLabels.thinking}
+            </div>
+          </div>
+        )}
+
+        {abstentionRedirect && (
+          <div className="flex justify-start">
+            <div
+              className="max-w-[88%] rounded-[16px] rounded-tl-[6px] border border-sky-100 bg-sky-50 px-4 py-3 text-sm font-bold leading-6 text-sky-900 shadow-sm"
+              data-testid="ai-tutor-conversation-abstention-redirect"
+              role="status"
+            >
+              {abstentionRedirect.redirectPrompt}
             </div>
           </div>
         )}
@@ -319,7 +448,7 @@ export default function ConversationMode({
           <button
             type="button"
             onClick={onSend}
-            disabled={isEmpty || loading}
+            disabled={isEmpty || loading || atTurnCap}
             className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-400"
           >
             <Send className="h-4 w-4" aria-hidden />
