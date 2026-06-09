@@ -1,4 +1,9 @@
-export type AiConversationScenarioId = "job-interview";
+import {
+  SPEAK_TOPIC_LIBRARY,
+  type SpeakTopicLibraryEntry,
+} from "@/lib/tutor/speakTopicLibrary";
+
+export type AiConversationScenarioId = string;
 
 export type AiConversationScenario = {
   id: AiConversationScenarioId;
@@ -7,6 +12,7 @@ export type AiConversationScenario = {
   learnerRole: string;
   aiRole: string;
   topicBoundaries: string[];
+  warmthPatterns: string[];
   l1InterferenceNotes: Array<{
     id: string;
     pattern: string;
@@ -14,51 +20,58 @@ export type AiConversationScenario = {
     correctionHintVi: string;
   }>;
   openingPrompt: string;
+  topic: SpeakTopicLibraryEntry;
 };
 
-export const AI_CONVERSATION_SCENARIOS: Record<AiConversationScenarioId, AiConversationScenario> = {
-  "job-interview": {
-    id: "job-interview",
-    title: "Job interview practice",
-    themeContext:
-      "A Vietnamese learner is practicing a realistic English job interview for an entry-level or mid-level office/service role.",
-    learnerRole:
-      "The learner is the candidate. They answer in English and may make Vietnamese-to-English transfer errors.",
-    aiRole:
-      "Mercy is the interviewer and coach. Mercy asks one interview question at a time, reacts to the learner's answer, and only corrects clear high-confidence language issues.",
-    topicBoundaries: [
-      "Stay inside job interview practice: background, strengths, teamwork, challenges, availability, and motivation.",
-      "Do not drift into general life advice, therapy, pronunciation scoring, salary negotiation details, immigration, or unrelated small talk.",
-      "For at least four learner turns, keep the scenario moving like a real interview.",
-    ],
-    l1InterferenceNotes: [
-      {
-        id: "vn-en-be-missing-role",
-        pattern: "Vietnamese often omits 'be', so learners may say 'I confident' or 'I suitable'.",
-        watchFor: "missing am/is/are before adjectives or role descriptions",
-        correctionHintVi:
-          "Tiếng Việt không cần 'to be', nhưng tiếng Anh cần 'am/is/are' trước tính từ hoặc vai trò.",
-      },
-      {
-        id: "vn-en-have-experience",
-        pattern: "Vietnamese 'có kinh nghiệm' can become 'I have experience about...' in English.",
-        watchFor: "have experience about/in + a task where 'experience with' is more natural",
-        correctionHintVi:
-          "Mẫu tự nhiên là 'experience with + việc/kỹ năng' hoặc 'experience in + lĩnh vực'.",
-      },
-      {
-        id: "vn-en-responsible-for",
-        pattern: "Vietnamese word order can produce 'I responsible for' without 'am'.",
-        watchFor: "responsible for without a form of be",
-        correctionHintVi:
-          "Trong tiếng Anh, nói 'I am responsible for...', không nói 'I responsible for...'.",
-      },
-    ],
-    openingPrompt:
-      "Let's practice a job interview. First question: tell me about yourself and the role you want.",
-  },
+type ConversationTopic = SpeakTopicLibraryEntry & {
+  scenarioDescription?: string;
+  aiRoleDefinition?: string;
+  conversationDirections?: readonly string[];
+  warmthPatterns?: readonly string[];
 };
+
+function toScenario(topic: ConversationTopic): AiConversationScenario {
+  return {
+    id: topic.id,
+    title: topic.labelEn,
+    themeContext:
+      topic.scenarioDescription ??
+      `A Vietnamese learner is practicing realistic English conversation for ${topic.labelEn}.`,
+    learnerRole:
+      `The learner answers in English inside the ${topic.labelEn} scenario and may make Vietnamese-to-English transfer errors.`,
+    aiRole:
+      topic.aiRoleDefinition ??
+      "Mercy is the conversation partner and coach. Mercy asks one question at a time, reacts to the learner's answer, and only corrects clear high-confidence language issues.",
+    topicBoundaries: [
+      ...(topic.conversationDirections ?? []),
+      "For at least four learner turns, keep the scenario moving before offering to move on.",
+    ],
+    warmthPatterns: [...(topic.warmthPatterns ?? [])],
+    l1InterferenceNotes: (topic.l1InterferenceNotes ?? []).map((note) => ({
+      id: note.id,
+      pattern: note.label,
+      watchFor: note.note,
+      correctionHintVi: note.note,
+    })),
+    openingPrompt:
+      topic.followUps[0]?.question ??
+      topic.seedInputs[0] ??
+      `Let's practice ${topic.labelEn}. What would you say first?`,
+    topic,
+  };
+}
+
+const scenarioEntries = SPEAK_TOPIC_LIBRARY.map((topic) => {
+  const scenario = toScenario(topic as ConversationTopic);
+  return [scenario.id, scenario] as const;
+});
+
+export const AI_CONVERSATION_SCENARIOS: Record<AiConversationScenarioId, AiConversationScenario> =
+  Object.fromEntries(scenarioEntries);
+
+export const DEFAULT_AI_CONVERSATION_SCENARIO_ID: AiConversationScenarioId =
+  AI_CONVERSATION_SCENARIOS["topic-work-job"] ? "topic-work-job" : scenarioEntries[0]?.[0] ?? "topic-ordering-food";
 
 export function getAiConversationScenario(id: string): AiConversationScenario {
-  return AI_CONVERSATION_SCENARIOS[id as AiConversationScenarioId] ?? AI_CONVERSATION_SCENARIOS["job-interview"];
+  return AI_CONVERSATION_SCENARIOS[id] ?? AI_CONVERSATION_SCENARIOS[DEFAULT_AI_CONVERSATION_SCENARIO_ID];
 }

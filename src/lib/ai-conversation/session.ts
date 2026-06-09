@@ -1,4 +1,7 @@
-import type { AiConversationScenarioId } from "./scenarios";
+import {
+  DEFAULT_AI_CONVERSATION_SCENARIO_ID,
+  type AiConversationScenarioId,
+} from "./scenarios";
 
 export const AI_CONVERSATION_MAX_TURNS = 50;
 
@@ -44,7 +47,7 @@ export type AiConversationSession = {
 };
 
 export function createAiConversationSession(
-  scenarioId: AiConversationScenarioId = "job-interview",
+  scenarioId: AiConversationScenarioId = DEFAULT_AI_CONVERSATION_SCENARIO_ID,
 ): AiConversationSession {
   return {
     id: `ai-conv-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
@@ -86,7 +89,7 @@ export function buildAiConversationSummary(turns: AiConversationTurn[]): AiConve
   const errorsCaught = corrections.map((correction) => correction.interferencePattern);
   return {
     practiced: [
-      "job interview answers",
+      "scenario conversation answers",
       "learner-specific follow-up questions",
       "clear Vietnamese-to-English transfer patterns",
     ],

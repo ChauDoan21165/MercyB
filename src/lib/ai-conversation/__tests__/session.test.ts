@@ -36,7 +36,7 @@ describe("AI conversation session foundation", () => {
       },
     ]);
 
-    expect(summary.practiced).toContain("job interview answers");
+    expect(summary.practiced).toContain("scenario conversation answers");
     expect(summary.errorsCaught).toEqual(["missing be from Vietnamese transfer"]);
     expect(summary.progressNote).toContain("Continue");
   });

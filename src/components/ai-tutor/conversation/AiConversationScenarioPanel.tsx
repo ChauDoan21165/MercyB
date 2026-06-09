@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Send, RotateCcw } from "lucide-react";
 import {
   addAiConversationCost,
@@ -10,17 +10,24 @@ import {
 } from "@/lib/ai-conversation/session";
 import {
   AI_CONVERSATION_SCENARIOS,
+  DEFAULT_AI_CONVERSATION_SCENARIO_ID,
   type AiConversationScenarioId,
 } from "@/lib/ai-conversation/scenarios";
 import {
   sendAiConversationTurn,
   type AiConversationTurnResponse,
 } from "@/lib/ai-conversation/client";
+import {
+  beginTelemetrySession,
+  recordTelemetryTurn,
+  type TelemetrySession,
+} from "@/lib/tutor/conversationTelemetry";
 
 type Props = {
   accessToken?: string | null;
   hasPremium: boolean;
   loadingAccess: boolean;
+  userId?: string | null;
   sendTurn?: typeof sendAiConversationTurn;
 };
 
@@ -28,18 +35,40 @@ export default function AiConversationScenarioPanel({
   accessToken,
   hasPremium,
   loadingAccess,
+  userId,
   sendTurn = sendAiConversationTurn,
 }: Props) {
-  const [scenarioId, setScenarioId] = useState<AiConversationScenarioId>("job-interview");
+  const [scenarioId, setScenarioId] = useState<AiConversationScenarioId>(DEFAULT_AI_CONVERSATION_SCENARIO_ID);
   const [session, setSession] = useState<AiConversationSession>(() =>
-    createSeededSession("job-interview"),
+    createSeededSession(DEFAULT_AI_CONVERSATION_SCENARIO_ID),
   );
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [telemetrySession, setTelemetrySession] = useState<TelemetrySession | null>(null);
 
   const scenario = AI_CONVERSATION_SCENARIOS[scenarioId];
   const canSend = Boolean(input.trim()) && !loading && canSendAiConversationTurn(session);
+
+  useEffect(() => {
+    let cancelled = false;
+    if (!hasPremium) {
+      setTelemetrySession(null);
+      return;
+    }
+    beginTelemetrySession({
+      userId,
+      scenarioId,
+      scenarioLabel: scenario.title,
+    }).then((next) => {
+      if (!cancelled) setTelemetrySession(next);
+    }).catch(() => {
+      if (!cancelled) setTelemetrySession(null);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [hasPremium, scenario.title, scenarioId, userId]);
 
   const resetSession = (nextScenarioId = scenarioId) => {
     setScenarioId(nextScenarioId);
@@ -74,6 +103,7 @@ export default function AiConversationScenarioPanel({
         history: session.turns,
         turnCount: session.learnerTurnCount,
         accessToken,
+        hasPremium,
       });
       const assistantTurn: AiConversationTurn = {
         id: `assistant-${Date.now()}`,
@@ -91,6 +121,22 @@ export default function AiConversationScenarioPanel({
         summary,
         ended: optimisticSession.learnerTurnCount >= optimisticSession.maxTurns,
       });
+      if (telemetrySession) {
+        void recordTelemetryTurn(telemetrySession, {
+          turnNumber: optimisticSession.learnerTurnCount,
+          learnerInput: learnerText,
+          aiResponse: response.reply,
+          corrections: response.correction
+            ? [{
+                accepted: true,
+                errorType: response.correction.interferencePattern,
+                learnerText: response.correction.original,
+                correctedText: response.correction.corrected,
+              }]
+            : [],
+          correctionAccepted: Boolean(response.correction),
+        });
+      }
     } catch {
       setSession(session);
       setInput(learnerText);
@@ -147,7 +193,11 @@ export default function AiConversationScenarioPanel({
             className="min-h-10 rounded-lg border border-slate-200 bg-white px-3 text-sm font-bold text-slate-700"
             aria-label="Choose conversation scenario"
           >
-            <option value="job-interview">Job interview</option>
+            {Object.values(AI_CONVERSATION_SCENARIOS).map((option) => (
+              <option key={option.id} value={option.id}>
+                {option.title}
+              </option>
+            ))}
           </select>
         </div>
         <div className="mt-3 flex flex-wrap gap-2 text-xs font-black text-slate-600">
@@ -227,7 +277,7 @@ export default function AiConversationScenarioPanel({
           </div>
         )}
         <label className="mb-2 block text-xs font-black uppercase text-slate-500">
-          Your interview answer
+          Your answer
         </label>
         <textarea
           value={input}
@@ -236,7 +286,7 @@ export default function AiConversationScenarioPanel({
           }}
           rows={3}
           className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 p-3 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 focus:border-indigo-300 focus:bg-white focus:outline-none"
-          placeholder="Answer Mercy's interview question in English..."
+          placeholder="Answer Mercy's question in English..."
           onKeyDown={(event) => {
             if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) void handleSend();
           }}

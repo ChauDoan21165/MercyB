@@ -2489,6 +2489,7 @@ export default function AiTutorPage() {
         accessToken={session?.access_token}
         hasPremium={userAccess.hasPremium || userAccess.isHighAdmin}
         loadingAccess={userAccess.isLoading}
+        userId={userAccess.userId ?? user?.id ?? null}
       />
     </TeacherMercyLearningShell>
   );
