@@ -655,6 +655,19 @@ variables:
 .ai_tutor_quality_gate_script: &ai_tutor_quality_gate_script
   - npm run test:ai-tutor-golden-flow
 
+.production_e2e_script: &production_e2e_script
+  - npx playwright install --with-deps chromium
+  - |
+    TEST_BASE_URL="${TEST_BASE_URL:-https://mercyblade.com}" \
+      npx playwright test \
+        -c playwright.smoke.config.ts \
+        tests/e2e/homepage.spec.ts \
+        tests/e2e/spa-fallback.spec.ts \
+        tests/e2e/signin.spec.ts \
+        tests/e2e/ai-tutor.spec.ts \
+        tests/e2e/deep-routes.spec.ts \
+        --project=chromium
+
 .native_audio_smoke_script: &native_audio_smoke_script
   - node -v
   - |
@@ -759,6 +772,24 @@ ai-tutor-quality-gate:shared-fallback:
   <<: [*node_job, *manual_shared_fallback, *manual_shared_ai_tutor_golden_flow_rules]
   stage: test
   script: *ai_tutor_quality_gate_script
+
+production-e2e:shared:
+  <<: [*node_job, *manual_shared_fallback]
+  stage: test
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: manual
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: manual
+    - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+      when: manual
+  script: *production_e2e_script
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths:
+      - playwright-smoke-report/
+      - test-results/
 
 native-audio-smoke:
   <<: [*node_job, *local_runner]
