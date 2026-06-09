@@ -7,6 +7,10 @@ import {
   toSpeakRecentTurns,
 } from "../../api/_lib/deepseekSpeak";
 import {
+  buildAiConversationTurn,
+  normalizeAiConversationHistory,
+} from "../../api/_lib/aiConversation";
+import {
   asString,
   getBearerToken,
   getIp,
@@ -19,6 +23,9 @@ import {
 
 type MercyAiBody = {
   mode?: string;
+  scenarioId?: string;
+  learnerText?: string;
+  turnCount?: number;
   transcript?: string;
   userText?: string;
   message?: string;
@@ -41,6 +48,29 @@ function isRateLimited(key: string, limit = 12, windowMs = 60_000): boolean {
   recent.push(now);
   requestLog.set(key, recent);
   return false;
+}
+
+async function hasPremiumAiConversationAccess(params: {
+  supabaseUrl: string;
+  supabaseAnonKey: string;
+  accessToken: string;
+}): Promise<boolean> {
+  try {
+    const response = await fetch(`${params.supabaseUrl.replace(/\/$/, "")}/functions/v1/me-entitlement`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${params.accessToken}`,
+        apikey: params.supabaseAnonKey,
+      },
+    });
+    if (!response.ok) return false;
+    const entitlement = await response.json() as { is_premium?: unknown; status?: unknown };
+    const status = typeof entitlement.status === "string" ? entitlement.status : "";
+    return entitlement.is_premium === true &&
+      ["active", "trialing", "grace_period", "past_due"].includes(status);
+  } catch {
+    return false;
+  }
 }
 
 export async function handler(event: NetlifyEvent) {
@@ -88,6 +118,26 @@ export async function handler(event: NetlifyEvent) {
       provider: "local-fallback",
       fallback: true,
     });
+  }
+
+  if (norm(body.mode) === "ai-conversation-turn") {
+    if (!(await hasPremiumAiConversationAccess({ supabaseUrl, supabaseAnonKey, accessToken }))) {
+      return json({ error: "Premium required" }, 403);
+    }
+
+    const learnerText = asString(body.learnerText || body.userText || body.message || body.text, 1200);
+    if (!learnerText) return json({ error: "Missing learnerText" }, 400);
+    const turnCount = Number(body.turnCount ?? 0);
+    if (Number.isFinite(turnCount) && turnCount >= 50) {
+      return json({ error: "Session turn cap reached" }, 400);
+    }
+    const result = await buildAiConversationTurn({
+      scenarioId: asString(body.scenarioId, 80) || "job-interview",
+      learnerText,
+      history: normalizeAiConversationHistory(body.history),
+      turnCount: Number.isFinite(turnCount) ? turnCount : 0,
+    });
+    return json(result);
   }
 
   if (!openAiKey) return json({ error: "Missing OPENAI_API_KEY" }, 500);
