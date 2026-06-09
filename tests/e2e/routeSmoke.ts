@@ -4,7 +4,7 @@ export async function expectSpaResponse(
   page: Page,
   path: string,
 ): Promise<APIResponse | null> {
-  const response = await page.goto(path, { waitUntil: "domcontentloaded" });
+  const response = await page.goto(path, { waitUntil: "commit", timeout: 15_000 });
 
   expect(response, `${path} should return a document response`).not.toBeNull();
   expect(response?.status(), `${path} should not be a CDN/server 404`).toBe(200);

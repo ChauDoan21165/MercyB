@@ -657,6 +657,9 @@ variables:
 
 .production_e2e_script: &production_e2e_script
   - npx playwright install --with-deps chromium
+  # Authenticated specs use GitLab masked CI/CD variables
+  # TEST_USER_EMAIL and TEST_USER_PASSWORD. If either is absent, the
+  # specs skip with a Playwright skip reason instead of failing CI.
   - |
     TEST_BASE_URL="${TEST_BASE_URL:-https://mercyblade.com}" \
       npx playwright test \
@@ -666,6 +669,9 @@ variables:
         tests/e2e/signin.spec.ts \
         tests/e2e/ai-tutor.spec.ts \
         tests/e2e/deep-routes.spec.ts \
+        tests/e2e/auth-signin.spec.ts \
+        tests/e2e/ai-tutor-authenticated.spec.ts \
+        tests/e2e/navigation-authenticated.spec.ts \
         --project=chromium
 
 .native_audio_smoke_script: &native_audio_smoke_script

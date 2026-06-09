@@ -56,12 +56,27 @@ export async function signInThroughUi(
   password: string,
 ): Promise<void> {
   await page.goto(`${BASE_URL}/signin`);
+
+  const passwordLink = page.getByRole("button", {
+    name: /sign in with password|đăng nhập bằng mật khẩu/i,
+  });
+  if (await passwordLink.isVisible().catch(() => false)) {
+    await passwordLink.click();
+  } else {
+    const passwordTab = page.getByRole("button", {
+      name: /^đăng nhập · sign in$|^sign in$/i,
+    });
+    if (await passwordTab.first().isVisible().catch(() => false)) {
+      await passwordTab.first().click();
+    }
+  }
+
   await page
-    .locator('input[type="email"], input[name="email"]')
+    .locator('input[autocomplete="email"], input[type="email"], input[name="email"]')
     .first()
     .fill(email);
   await page
-    .locator('input[type="password"], input[name="password"]')
+    .locator('input[type="password"], input[name="password"], input[autocomplete="current-password"]')
     .first()
     .fill(password);
   await Promise.all([
@@ -69,7 +84,7 @@ export async function signInThroughUi(
       timeout: 15_000,
     }),
     page
-      .locator('button[type="submit"]:has-text(/sign ?in|log ?in|đăng ?nhập/i)')
+      .locator('button:has-text(/sign ?in|log ?in|đăng ?nhập/i)')
       .first()
       .click(),
   ]);
