@@ -68,7 +68,7 @@ describe("check-new-orphans.mjs", () => {
       "src/lib/tutor/speakTopicLibrary.ts",
       [
         "type SpeakTopicModule = { speakTopics: readonly unknown[] };",
-        'const speakTopicModules = import.meta.glob<SpeakTopicModule>("./speakTopics/*.ts", {',
+        'const speakTopicModules = import.meta.glob<SpeakTopicModule>("./autoTopics/*.ts", {',
         "  eager: true,",
         "});",
         "export const count = Object.keys(speakTopicModules).length;",
@@ -77,7 +77,7 @@ describe("check-new-orphans.mjs", () => {
     );
     const base = commit("base glob consumer");
 
-    write("src/lib/tutor/speakTopics/foodOrdering.ts", "export const speakTopics = [] as const;\n");
+    write("src/lib/tutor/autoTopics/foodOrdering.ts", "export const speakTopics = [] as const;\n");
     commit("add auto-registered topic");
 
     const result = runCheck(base);
@@ -91,12 +91,12 @@ describe("check-new-orphans.mjs", () => {
     write("src/lib/tutor/speakTopicLibrary.ts", "export const count = 0;\n");
     const base = commit("base without consumer");
 
-    write("src/lib/tutor/speakTopics/foodOrdering.ts", "export const speakTopics = [] as const;\n");
+    write("src/lib/tutor/manualTopicOrphan.ts", "export const speakTopics = [] as const;\n");
     commit("add orphan topic");
 
     const result = runCheck(base);
 
     expect(result.status).toBe(1);
-    expect(result.output).toContain("src/lib/tutor/speakTopics/foodOrdering.ts");
+    expect(result.output).toContain("src/lib/tutor/manualTopicOrphan.ts");
   });
 });
