@@ -352,3 +352,149 @@ export async function scoreConversationTurn(
     costCap,
   };
 }
+
+// ───────────────────────── Compact prompt adapter (for Lane A) ───────────────
+//
+// `ConversationPronunciationResult` is the FULL data contract (every word, every
+// phoneme). Folding all of that into a conversation prompt is expensive and
+// noisy. Lane A should instead pass ONLY the compact summary below — a handful
+// of flagged sounds with short bilingual hints, or a plain retry directive.
+//
+// Safety guarantees this adapter enforces, by construction:
+//  • Never carries raw audio. It is a pure function of the already-audio-free
+//    result; there is no Blob/ArrayBuffer/base64 field anywhere in its output.
+//  • Poor / unclear audio → a retry directive with NO score and NO focus items
+//    (never a fabricated measurement).
+//  • Compact: only FLAGGED sounds, one focus per word, capped, hints trimmed.
+
+/** One actionable, prompt-ready sound to coach — derived from a flagged phoneme. */
+export type ConversationPronunciationFocus = {
+  word: string;
+  /** Expected sound, e.g. "/θ/ or /ð/" or "final /s/ or /z/". */
+  expected: string;
+  /** What the learner likely produced, e.g. "/t/ or /d/" or "(dropped)". */
+  heard: string;
+  /** Vietnamese interference label, null when none applies. */
+  vietnameseInterference: string | null;
+  /** Short learner-facing Vietnamese hint, trimmed for prompt budget. */
+  hint: string | null;
+};
+
+/**
+ * Minimal, prompt-ready pronunciation summary. This is the ONLY pronunciation
+ * shape Lane A should put into the conversation AI prompt.
+ */
+export type ConversationPronunciationPromptSummary = {
+  provider: "azure";
+  mode: "english-pronunciation-conversation";
+  /** Real Azure measurement, or null when we have nothing honest to report. */
+  overallScore: number | null;
+  /** True → ask the learner to repeat; focus is always empty in this case. */
+  shouldAskRetry: boolean;
+  /** Why a retry is being asked (no_audio / low_confidence / scoring_unavailable),
+   *  or null when scoring succeeded. */
+  retryReason: ConversationPronunciationQuality | null;
+  /** Compact, capped list of sounds to coach. Empty on retry or clean speech. */
+  focus: ConversationPronunciationFocus[];
+  /** Detailed-scoring attempts left this session, when known. */
+  capRemaining: number | null;
+};
+
+export type ConversationPromptSummaryOptions = {
+  /** Max number of flagged sounds to surface (default 3). */
+  maxFocus?: number;
+  /** Max characters of the bilingual hint to keep (default 120). */
+  maxHintChars?: number;
+};
+
+const DEFAULT_MAX_FOCUS = 3;
+const DEFAULT_MAX_HINT_CHARS = 120;
+
+function trimHint(hint: string | null, maxChars: number): string | null {
+  if (!hint) return null;
+  const clean = hint.replace(/\s+/g, " ").trim();
+  if (!clean) return null;
+  return clean.length <= maxChars ? clean : `${clean.slice(0, maxChars - 1).trimEnd()}…`;
+}
+
+/**
+ * Reduce the full result to the compact, prompt-safe summary Lane A injects.
+ * Pure: takes the data contract, returns a smaller view — no scoring, no audio,
+ * no network, no tone logic.
+ */
+export function toConversationPromptSummary(
+  result: ConversationPronunciationResult,
+  options: ConversationPromptSummaryOptions = {},
+): ConversationPronunciationPromptSummary {
+  const maxFocus = Math.max(0, options.maxFocus ?? DEFAULT_MAX_FOCUS);
+  const maxHintChars = Math.max(8, options.maxHintChars ?? DEFAULT_MAX_HINT_CHARS);
+  const capRemaining = result.costCap?.remaining ?? null;
+
+  // Retry / poor audio: never a number, never coaching detail — just repeat.
+  if (result.shouldAskRetry) {
+    return {
+      provider: "azure",
+      mode: "english-pronunciation-conversation",
+      overallScore: null,
+      shouldAskRetry: true,
+      retryReason: result.quality,
+      focus: [],
+      capRemaining,
+    };
+  }
+
+  // One focus per word — the worst flagged sound — worst words first, then cap.
+  const perWord: Array<{ wordScore: number; focus: ConversationPronunciationFocus }> = [];
+  for (const word of result.words) {
+    const flagged = word.phonemes.filter((p) => p.flagged);
+    if (flagged.length === 0) continue;
+    const worst = flagged.reduce((a, b) => (b.score < a.score ? b : a));
+    perWord.push({
+      wordScore: word.score,
+      focus: {
+        word: word.word,
+        expected: worst.expectedSound,
+        heard: worst.observedOrLikelySound,
+        vietnameseInterference: worst.vietnameseInterferencePattern,
+        hint: trimHint(worst.learnerFacingHint, maxHintChars),
+      },
+    });
+  }
+  perWord.sort((a, b) => a.wordScore - b.wordScore);
+  const focus = perWord.slice(0, maxFocus).map((entry) => entry.focus);
+
+  return {
+    provider: "azure",
+    mode: "english-pronunciation-conversation",
+    overallScore: result.overallScore,
+    shouldAskRetry: false,
+    retryReason: null,
+    focus,
+    capRemaining,
+  };
+}
+
+/**
+ * Render the compact summary as a short, prompt-injectable English line for the
+ * conversation model. Lane A may use this directly or build its own wording from
+ * `toConversationPromptSummary`. Audio-free and tone-free by construction.
+ */
+export function formatConversationPronunciationForPrompt(
+  summary: ConversationPronunciationPromptSummary,
+): string {
+  if (summary.shouldAskRetry) {
+    return "PRONUNCIATION: audio was unclear — ask the learner to say it again. No score.";
+  }
+  const overall =
+    typeof summary.overallScore === "number"
+      ? `overall ${Math.round(summary.overallScore)}/100`
+      : "overall n/a";
+  if (summary.focus.length === 0) {
+    return `PRONUNCIATION (${overall}): clear — no specific sound to correct.`;
+  }
+  const parts = summary.focus.map((f) => {
+    const pattern = f.vietnameseInterference ? ` [${f.vietnameseInterference}]` : "";
+    return `${f.word}: expected ${f.expected}, heard ${f.heard}${pattern}`;
+  });
+  return `PRONUNCIATION (${overall}). Focus — ${parts.join(" | ")}`;
+}
