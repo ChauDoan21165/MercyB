@@ -117,6 +117,19 @@ type KidsObjectCard = {
   aliases: string[];
 };
 
+type BrowserTtsVoice = Pick<SpeechSynthesisVoice, 'lang' | 'name'>;
+
+export function selectEnglishBrowserTtsVoice<T extends BrowserTtsVoice>(
+  voices: readonly T[],
+): T | undefined {
+  return voices.find((voice) =>
+    voice.lang === 'en-US' &&
+    ['samantha', 'karen', 'google'].some((name) => voice.name.toLowerCase().includes(name))
+  )
+    || voices.find((voice) => voice.lang === 'en-US')
+    || voices.find((voice) => voice.lang.toLowerCase().startsWith('en-'));
+}
+
 type KidsLessonCard = {
   key: string;
   label: string;
@@ -1049,9 +1062,7 @@ export function MercySpeakTab({
     synth.cancel();
 
     const voices = synth.getVoices();
-    const voice = voices.find(v =>
-      v.lang === 'en-US' && (v.name.includes('Samantha') || v.name.includes('Karen') || v.name.includes('Google'))
-    ) || voices.find(v => v.lang === 'en-US') || voices[0];
+    const voice = selectEnglishBrowserTtsVoice(voices);
 
     // Only chunk when the single utterance would exceed Chrome's silent-fail zone.
     // Short text (<=180 chars) uses the same single-utterance pattern as the working
@@ -1099,10 +1110,7 @@ export function MercySpeakTab({
       u.rate = 0.85;
       u.volume = 1.0;
       const voices = window.speechSynthesis.getVoices();
-      const voice =
-        voices.find((v) => v.lang === 'en-US' && v.name.includes('Samantha')) ||
-        voices.find((v) => v.lang === 'en-US') ||
-        voices[0];
+      const voice = selectEnglishBrowserTtsVoice(voices);
       if (voice) u.voice = voice;
       window.speechSynthesis.speak(u);
     } catch {
