@@ -19,6 +19,30 @@ export type AiConversationRequest = {
   learnerText: string;
   history: AiConversationHistoryTurn[];
   turnCount: number;
+  env?: AiConversationEnv;
+  messages?: AiConversationMessage[];
+  scenario?: AiConversationScenarioInput | null;
+  grounding?: unknown;
+  promptMetadata?: Record<string, unknown> | null;
+};
+
+export type AiConversationMessage = {
+  role?: string;
+  text?: string;
+};
+
+export type AiConversationEnv = {
+  OPENAI_API_KEY?: string;
+};
+
+export type AiConversationScenarioInput = {
+  id?: unknown;
+  title?: unknown;
+  themeContext?: unknown;
+  learnerRole?: unknown;
+  aiRole?: unknown;
+  topicBoundaries?: unknown;
+  l1InterferenceNotes?: unknown;
 };
 
 export type AiConversationResponse = {
@@ -41,7 +65,7 @@ export type AiConversationResponse = {
 };
 
 type Scenario = {
-  id: "job-interview";
+  id: string;
   title: string;
   themeContext: string;
   learnerRole: string;
@@ -168,19 +192,24 @@ export function buildAiConversationSystemPrompt(scenario: Scenario = JOB_INTERVI
 }
 
 export function buildAiConversationUserPrompt(input: AiConversationRequest): string {
+  const scenario = normalizeScenario(input.scenario, input.scenarioId);
   const history = input.history
     .slice(-8)
     .map((turn) => `${turn.role === "assistant" ? "Mercy" : "Learner"}: ${turn.text}`)
     .join("\n");
+  const developerGrounding = normalizeDeveloperGrounding(input.messages, input.grounding);
+  const promptMetadata = input.promptMetadata ? JSON.stringify(input.promptMetadata).slice(0, 1000) : "";
   return [
     `Learner turn count before this answer: ${input.turnCount}`,
     history ? `Recent conversation:\n${history}` : "Recent conversation: none",
+    developerGrounding ? `Client grounding:\n${developerGrounding}` : "",
+    promptMetadata ? `Prompt metadata: ${promptMetadata}` : "",
     `Latest learner answer: ${input.learnerText}`,
     "",
-    "Write the next Mercy turn for the job interview scenario.",
+    `Write the next Mercy turn for the ${scenario.title} scenario.`,
     "Reference the latest learner answer directly.",
     "Keep the reply 2-5 short sentences.",
-  ].join("\n");
+  ].filter(Boolean).join("\n");
 }
 
 export function buildCorrectionGatePrompt(params: {
@@ -203,12 +232,12 @@ export function buildCorrectionGatePrompt(params: {
 }
 
 export async function buildAiConversationTurn(input: AiConversationRequest): Promise<AiConversationResponse> {
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = input.env?.OPENAI_API_KEY ?? fallbackProcessEnv().OPENAI_API_KEY;
   if (!apiKey) throw new Error("Missing OPENAI_API_KEY");
   if (!input.learnerText.trim()) throw new Error("Missing learnerText");
   if (input.turnCount >= MAX_TURNS) throw new Error("Session turn cap reached");
 
-  const scenario = JOB_INTERVIEW_SCENARIO;
+  const scenario = normalizeScenario(input.scenario, input.scenarioId);
   const system = buildAiConversationSystemPrompt(scenario);
   const user = buildAiConversationUserPrompt(input);
   const draftData = await callOpenAiJson<DraftResponse>({
@@ -268,6 +297,67 @@ export async function buildAiConversationTurn(input: AiConversationRequest): Pro
     model: TURN_MODEL,
     correctionGateModel: CORRECTION_GATE_MODEL,
   };
+}
+
+function fallbackProcessEnv(): AiConversationEnv {
+  const globalWithProcess = globalThis as typeof globalThis & {
+    process?: { env?: AiConversationEnv };
+  };
+  return globalWithProcess.process?.env ?? {};
+}
+
+function normalizeScenario(value: AiConversationScenarioInput | null | undefined, scenarioId: string): Scenario {
+  const fallback = JOB_INTERVIEW_SCENARIO;
+  if (!isRecord(value)) {
+    return {
+      ...fallback,
+      id: stringValue(scenarioId, 80) || fallback.id,
+    };
+  }
+
+  const l1Notes = Array.isArray(value.l1InterferenceNotes)
+    ? value.l1InterferenceNotes.map((note) => {
+      const record = isRecord(note) ? note : {};
+      return {
+        id: stringValue(record.id, 120),
+        pattern: stringValue(record.pattern, 300),
+        watchFor: stringValue(record.watchFor, 300),
+        correctionHintVi: stringValue(record.correctionHintVi, 500),
+      };
+    }).filter((note) => note.id && note.pattern && note.watchFor && note.correctionHintVi)
+    : [];
+
+  return {
+    id: stringValue(value.id, 80) || stringValue(scenarioId, 80) || fallback.id,
+    title: stringValue(value.title, 160) || fallback.title,
+    themeContext: stringValue(value.themeContext, 1200) || fallback.themeContext,
+    learnerRole: stringValue(value.learnerRole, 600) || fallback.learnerRole,
+    aiRole: stringValue(value.aiRole, 600) || fallback.aiRole,
+    topicBoundaries: normalizeStringList(value.topicBoundaries, fallback.topicBoundaries, 8, 300),
+    l1InterferenceNotes: l1Notes.length ? l1Notes : fallback.l1InterferenceNotes,
+  };
+}
+
+function normalizeStringList(value: unknown, fallback: string[], limit: number, max: number): string[] {
+  if (!Array.isArray(value)) return fallback;
+  const normalized = value.map((item) => stringValue(item, max)).filter(Boolean).slice(0, limit);
+  return normalized.length ? normalized : fallback;
+}
+
+function normalizeDeveloperGrounding(messages: AiConversationMessage[] | undefined, grounding: unknown): string {
+  const developerMessages = Array.isArray(messages)
+    ? messages
+      .filter((message) => message?.role === "developer")
+      .map((message) => stringValue(message.text, 1600))
+      .filter(Boolean)
+      .slice(-3)
+    : [];
+  const explicitGrounding = typeof grounding === "string"
+    ? stringValue(grounding, 1600)
+    : isRecord(grounding)
+      ? JSON.stringify(grounding).slice(0, 1600)
+      : "";
+  return [...developerMessages, explicitGrounding].filter(Boolean).join("\n\n");
 }
 
 async function callOpenAiJson<T>(params: {

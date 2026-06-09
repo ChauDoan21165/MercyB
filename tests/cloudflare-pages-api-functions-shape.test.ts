@@ -76,7 +76,9 @@ describe("Cloudflare Pages API function shape", () => {
     expect(mercyAi).toContain("export async function onRequestPost");
     expect(mercyAi).not.toContain("export async function onRequest(");
     expect(mercyAi).toContain('norm(body.mode) === "speak-follow-up"');
+    expect(mercyAi).toContain('norm(body.mode) === "ai-conversation-turn"');
     expect(mercyAi).toContain("buildDeepSeekSpeakFollowUp");
+    expect(mercyAi).toContain("buildAiConversationTurn");
     expect(mercyAi).toContain("env,");
     expect(mercyAi).not.toContain("process.env");
   });

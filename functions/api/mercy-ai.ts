@@ -7,6 +7,10 @@ import {
   toSpeakRecentTurns,
 } from "../../api/_lib/deepseekSpeak";
 import {
+  buildAiConversationTurn,
+  normalizeAiConversationHistory,
+} from "../../api/_lib/aiConversation";
+import {
   asString,
   envValue,
   getBearerToken,
@@ -18,12 +22,19 @@ import {
 
 type MercyAiBody = {
   mode?: string;
+  learnerText?: string;
   transcript?: string;
   userText?: string;
   message?: string;
   text?: string;
   prompt?: string;
   lang?: string;
+  scenarioId?: string;
+  scenario?: Record<string, unknown>;
+  grounding?: unknown;
+  promptMetadata?: Record<string, unknown>;
+  messages?: Array<{ role?: string; text?: string }>;
+  turnCount?: number;
   context?: Record<string, unknown>;
   history?: Array<{ role?: string; text?: string }>;
 };
@@ -49,6 +60,32 @@ function getIp(request: Request): string {
     request.headers.get("x-forwarded-for") ||
     "";
   return forwarded.split(",")[0]?.trim() || "unknown";
+}
+
+async function hasPremiumAiConversationAccess(
+  env: PagesContext["env"],
+  accessToken: string,
+): Promise<boolean> {
+  const supabaseUrl = envValue(env, "SUPABASE_URL") || envValue(env, "VITE_SUPABASE_URL");
+  const supabaseAnonKey = envValue(env, "SUPABASE_ANON_KEY") || envValue(env, "VITE_SUPABASE_ANON_KEY");
+  if (!supabaseUrl || !supabaseAnonKey || !accessToken) return false;
+
+  try {
+    const response = await fetch(`${supabaseUrl.replace(/\/$/, "")}/functions/v1/me-entitlement`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        apikey: supabaseAnonKey,
+      },
+    });
+    if (!response.ok) return false;
+    const entitlement = await response.json() as { is_premium?: unknown; status?: unknown };
+    const status = typeof entitlement.status === "string" ? entitlement.status : "";
+    return entitlement.is_premium === true &&
+      ["active", "trialing", "grace_period", "past_due"].includes(status);
+  } catch {
+    return false;
+  }
 }
 
 export function onRequestOptions(): Response {
@@ -100,6 +137,41 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
       provider: "local-fallback",
       fallback: true,
     });
+  }
+
+  if (norm(body.mode) === "ai-conversation-turn") {
+    if (!(await hasPremiumAiConversationAccess(env, accessToken))) {
+      return json({ error: "Premium required" }, 403);
+    }
+
+    if (!openAiKey) return json({ error: "Missing OPENAI_API_KEY" }, 500);
+
+    const learnerText = asString(body.learnerText || body.userText || body.message || body.text, 1200);
+    if (!learnerText) return json({ error: "Missing learnerText" }, 400);
+
+    const turnCount = Number(body.turnCount ?? 0);
+    if (Number.isFinite(turnCount) && turnCount >= 50) {
+      return json({ error: "Session turn cap reached" }, 400);
+    }
+
+    try {
+      const result = await buildAiConversationTurn({
+        scenarioId: asString(body.scenarioId, 100) || "job-interview",
+        learnerText,
+        history: normalizeAiConversationHistory(body.history || body.messages),
+        turnCount: Number.isFinite(turnCount) ? turnCount : 0,
+        messages: Array.isArray(body.messages) ? body.messages : [],
+        scenario: isRecord(body.scenario) ? body.scenario : null,
+        grounding: body.grounding,
+        promptMetadata: isRecord(body.promptMetadata) ? body.promptMetadata : null,
+        env,
+      });
+      return json(result);
+    } catch (err) {
+      return json({
+        error: err instanceof Error ? err.message : "AI conversation failed",
+      }, 502);
+    }
   }
 
   if (!openAiKey) return json({ error: "Missing OPENAI_API_KEY" }, 500);
