@@ -17,6 +17,7 @@ import {
   SPEAK_TOPIC_CORRECTION_CANDIDATES,
   SPEAK_TOPIC_LIBRARY,
   buildSpeakTopicCorrectionWeave,
+  collectSpeakTopicsFromModules,
 } from "@/lib/tutor/speakTopicLibrary";
 import { speakTopics as introductionSpeakTopics } from "@/lib/tutor/speakTopics/introductions";
 
@@ -609,17 +610,30 @@ describe("speakFollowups", () => {
     });
 
     it("auto-registers Speak topic files without per-theme library imports", () => {
-      const topicModules = import.meta.glob<{ speakTopics: readonly typeof SPEAK_TOPIC_LIBRARY[number][] }>(
+      const topicModules = import.meta.glob<{ speakTopics?: readonly typeof SPEAK_TOPIC_LIBRARY[number][] | null }>(
         "@/lib/tutor/speakTopics/*.ts",
         { eager: true },
       );
-      const moduleTopics = Object.values(topicModules).flatMap((module) => [...module.speakTopics]);
+      const moduleTopics = Object.values(topicModules).flatMap((module) => [...(module.speakTopics ?? [])]);
       const libraryIds = new Set(SPEAK_TOPIC_LIBRARY.map((topic) => topic.id));
 
       expect(Object.keys(topicModules)).toContain("/src/lib/tutor/speakTopics/introductions.ts");
       for (const topic of moduleTopics) {
         expect(libraryIds.has(topic.id), topic.id).toBe(true);
       }
+    });
+
+    it("skips malformed Speak topic modules instead of crashing AiTutor", () => {
+      const validTopic = SPEAK_TOPIC_LIBRARY[0];
+
+      expect(
+        collectSpeakTopicsFromModules([
+          ["./speakTopics/missing.ts", {}],
+          ["./speakTopics/null.ts", { speakTopics: null }],
+          ["./speakTopics/object.ts", { speakTopics: { id: "not-an-array" } }],
+          ["./speakTopics/valid.ts", { speakTopics: [validTopic] }],
+        ]),
+      ).toEqual([validTopic]);
     });
 
     it("matches deterministic seed inputs for all 10 Batch 2 topics", () => {

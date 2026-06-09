@@ -46,16 +46,26 @@ export type SpeakTopicLibraryEntry = {
 };
 
 type SpeakTopicModule = {
-  speakTopics: readonly SpeakTopicLibraryEntry[];
+  speakTopics?: unknown;
 };
 
 const speakTopicModules = import.meta.glob<SpeakTopicModule>("./speakTopics/*.ts", {
   eager: true,
 });
 
-const autoRegisteredSpeakTopics: readonly SpeakTopicLibraryEntry[] = Object.entries(speakTopicModules)
-  .sort(([left], [right]) => left.localeCompare(right))
-  .flatMap(([, module]) => [...module.speakTopics]);
+export function collectSpeakTopicsFromModules(
+  modules: Iterable<readonly [string, SpeakTopicModule]>,
+): readonly SpeakTopicLibraryEntry[] {
+  return [...modules]
+    .sort(([left], [right]) => left.localeCompare(right))
+    .flatMap(([, module]) => (
+      Array.isArray(module.speakTopics) ? module.speakTopics : []
+    ));
+}
+
+const autoRegisteredSpeakTopics: readonly SpeakTopicLibraryEntry[] = collectSpeakTopicsFromModules(
+  Object.entries(speakTopicModules),
+);
 
 export type SpeakTopicCorrectionStatus = "ship-safe" | "hold" | "abstain";
 
