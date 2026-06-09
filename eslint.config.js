@@ -32,6 +32,10 @@ export default [
       "public/**",
       ".husky/**",
 
+      // k6 load scripts run under the k6 runtime (import "k6/http", use __ENV /
+      // __VU globals) — not node/eslint. Lint them there, not here.
+      "tests/load/**",
+
       // Agent worktrees. Sub-agents check out the whole repo under
       // .claude/worktrees/agent-*/ and run their own builds there, so
       // the entire `.claude/` tree carries other agents' dist bundles
