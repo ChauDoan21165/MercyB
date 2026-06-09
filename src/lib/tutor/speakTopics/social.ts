@@ -11,7 +11,7 @@ export const speakTopics = [
   {
     id: "topic-social-small-talk-neighbors",
     labelEn: "Small Talk With Neighbors",
-    labelVi: "Noi chuyen xa giao voi hang xom",
+    labelVi: "Nói chuyện xã giao với hàng xóm",
     category: "social",
     scenarioDescription:
       "The learner makes light conversation with a neighbor, asks simple questions, responds politely, and ends the chat naturally.",
@@ -57,7 +57,7 @@ export const speakTopics = [
   {
     id: "topic-social-inviting-friend",
     labelEn: "Inviting A Friend",
-    labelVi: "Moi ban di choi",
+    labelVi: "Mời bạn đi chơi",
     category: "social",
     scenarioDescription:
       "The learner invites a friend to meet, suggests time and place, handles yes/no/maybe answers, and confirms the plan politely.",
@@ -84,7 +84,7 @@ export const speakTopics = [
       {
         id: "social-invite-free",
         label: "Are you free?",
-        note: "'Ban co ranh khong?' maps well to 'Are you free?' Add a time: 'Are you free on Saturday afternoon?'",
+        note: "'Bạn có rảnh không?' maps well to 'Are you free?' Add a time: 'Are you free on Saturday afternoon?'",
       },
       {
         id: "social-invite-no-pressure",
@@ -103,7 +103,7 @@ export const speakTopics = [
   {
     id: "topic-social-apologizing-rescheduling",
     labelEn: "Apologizing And Rescheduling",
-    labelVi: "Xin loi va hen lai",
+    labelVi: "Xin lỗi và hẹn lại",
     category: "social",
     scenarioDescription:
       "The learner apologizes for being late, canceling, or missing a plan, gives a simple reason, and suggests a new time respectfully.",
