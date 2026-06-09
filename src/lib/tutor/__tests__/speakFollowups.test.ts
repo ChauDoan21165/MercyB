@@ -19,6 +19,7 @@ import {
   buildSpeakTopicCorrectionWeave,
   collectSpeakTopicsFromModules,
 } from "@/lib/tutor/speakTopicLibrary";
+import { speakTopics as housingDailySpeakTopics } from "@/lib/tutor/speakTopics/housingDaily";
 import { speakTopics as introductionSpeakTopics } from "@/lib/tutor/speakTopics/introductions";
 import { speakTopics as phoneCustomerServiceSpeakTopics } from "@/lib/tutor/speakTopics/phoneCustomerService";
 
@@ -629,6 +630,22 @@ describe("speakFollowups", () => {
 
       expect(phoneCustomerServiceSpeakTopics).toHaveLength(3);
       for (const topic of phoneCustomerServiceSpeakTopics) {
+        expect(libraryIds.has(topic.id), topic.id).toBe(true);
+        expect(topic.scenarioDescription?.trim().length).toBeGreaterThan(40);
+        expect(topic.aiRoleDefinition?.trim().length).toBeGreaterThan(40);
+        expect(topic.conversationDirections?.length).toBeGreaterThanOrEqual(5);
+        expect(topic.conversationDirections?.length).toBeLessThanOrEqual(8);
+        expect(topic.warmthPatterns?.length).toBeGreaterThanOrEqual(3);
+        expect(topic.l1InterferenceNotes?.length).toBeGreaterThanOrEqual(2);
+        expect(topic.followUps.length).toBeGreaterThanOrEqual(5);
+      }
+    });
+
+    it("ships the D3 housing theme with scenario metadata", () => {
+      const libraryIds = new Set(SPEAK_TOPIC_LIBRARY.map((topic) => topic.id));
+
+      expect(housingDailySpeakTopics).toHaveLength(3);
+      for (const topic of housingDailySpeakTopics) {
         expect(libraryIds.has(topic.id), topic.id).toBe(true);
         expect(topic.scenarioDescription?.trim().length).toBeGreaterThan(40);
         expect(topic.aiRoleDefinition?.trim().length).toBeGreaterThan(40);
