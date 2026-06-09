@@ -23,6 +23,8 @@ export const speakTopics = [
       "Ask about sensitive skin, broken nails, lifting, allergies, or previous product issues.",
       "Prompt the learner to explain what is possible today based on nail condition and time.",
       "Practice saying a polite recommendation without sounding pushy.",
+      "Practice politely declining a service that could damage the nail and offering a safer option instead.",
+      "Confirm how much time the client has and any hard stop, so the service fits their schedule.",
       "End by confirming the service, price range, and estimated finish time.",
     ],
     warmthPatterns: [
@@ -45,6 +47,11 @@ export const speakTopics = [
         label: "Sensitive, sore, and allergic",
         note: "Words like 'sensitive,' 'sore,' and 'allergic' are important service-safety vocabulary. Practicing 'Are your nails sensitive today?' helps prevent discomfort and complaints.",
       },
+      {
+        id: "nail-consultation-decline-kindly",
+        label: "Declining kindly",
+        note: "Vietnamese salon talk can be very direct, which may sound blunt in English. Saying 'I'd recommend a gel fill instead, so your nails stay healthy' protects both the client's nails and the relationship.",
+      },
     ],
     followUps: [
       { id: "nail-consultation-service", question: "What service does the client want today?", salienceQuestion: "How would you confirm the {slot}?" },
@@ -52,6 +59,7 @@ export const speakTopics = [
       { id: "nail-consultation-condition", question: "What nail condition should you check first?", salienceQuestion: "What should you check before the {slot}?" },
       { id: "nail-consultation-recommend", question: "How would you make a polite recommendation?", salienceQuestion: "What would you recommend for the {slot}?" },
       { id: "nail-consultation-confirm", question: "How would you confirm the plan before starting?", salienceQuestion: "How would you confirm the {slot}?" },
+      { id: "nail-consultation-timing", question: "How would you check how much time the client has?", salienceQuestion: "How long do you have for the {slot}?" },
     ],
   },
   {
@@ -69,6 +77,8 @@ export const speakTopics = [
       "Prompt a clear price estimate before the service begins.",
       "Ask how long the service will take and whether there is a wait.",
       "Practice explaining extra charges politely when the client changes the design.",
+      "Practice asking for a deposit on long or custom designs without sounding distrustful.",
+      "Confirm the payment method and whether card or cash is preferred before starting.",
       "End by confirming the final service and total price.",
     ],
     warmthPatterns: [
@@ -91,6 +101,11 @@ export const speakTopics = [
         label: "Salon service names are fixed phrases",
         note: "Vietnamese speakers may translate service names loosely, but English salons use fixed terms like 'full set,' 'fill,' 'gel removal,' and 'French tips.' These are worth practicing as whole phrases.",
       },
+      {
+        id: "nail-pricing-deposit-ask",
+        label: "Asking for a deposit politely",
+        note: "A blunt 'you pay first' can feel harsh in English. 'For a custom set we take a small deposit to hold your time' explains the reason and keeps the client comfortable.",
+      },
     ],
     followUps: [
       { id: "nail-pricing-option", question: "Which service option are you explaining?", salienceQuestion: "How would you explain the {slot}?" },
@@ -98,6 +113,7 @@ export const speakTopics = [
       { id: "nail-pricing-total", question: "How would you give the total clearly?", salienceQuestion: "What is the total for the {slot}?" },
       { id: "nail-pricing-time", question: "How would you explain the time needed?", salienceQuestion: "How long will the {slot} take?" },
       { id: "nail-pricing-confirm", question: "How would you confirm the client agrees?", salienceQuestion: "How would you confirm the {slot} before starting?" },
+      { id: "nail-pricing-payment", question: "How would you confirm the payment method?", salienceQuestion: "How would the client pay for the {slot}?" },
     ],
   },
   {
@@ -115,6 +131,8 @@ export const speakTopics = [
       "Ask follow-up questions about vacation, wedding, work, or a special event without becoming too personal.",
       "Handle a complaint by acknowledging it before explaining or fixing it.",
       "Practice offering a reasonable solution: reshape, repaint, repair, discount, manager help, or appointment follow-up.",
+      "Practice setting a gentle boundary when a personal question feels too private, then steering back to the service.",
+      "Confirm whether the client wants the fix now or a follow-up appointment if time is short.",
       "End with a calm confirmation that the client is satisfied before they leave.",
     ],
     warmthPatterns: [
@@ -137,6 +155,11 @@ export const speakTopics = [
         label: "Friendly but not too personal",
         note: "Vietnamese hospitality may include personal questions that feel normal in community settings. With clients, safer small talk uses open topics like weekend plans, events, color choices, and comfort.",
       },
+      {
+        id: "nail-smalltalk-redirect",
+        label: "Redirecting a too-personal question",
+        note: "A personal question can feel friendly in Vietnamese settings but awkward with clients. A soft redirect like 'That's kind of you to ask — would you like this shape a little shorter?' keeps it warm and professional.",
+      },
     ],
     followUps: [
       { id: "nail-smalltalk-open", question: "What friendly question would you ask first?", salienceQuestion: "How would you start with the {slot}?" },
@@ -144,6 +167,7 @@ export const speakTopics = [
       { id: "nail-complaint-ack", question: "How would you acknowledge the complaint?", salienceQuestion: "How would you acknowledge the {slot}?" },
       { id: "nail-complaint-solution", question: "What solution could you offer?", salienceQuestion: "What would fix the {slot}?" },
       { id: "nail-complaint-close", question: "How would you check that the client is satisfied?", salienceQuestion: "How would you close the {slot}?" },
+      { id: "nail-complaint-followup", question: "How would you offer a follow-up appointment if there is no time now?", salienceQuestion: "How would you schedule a fix for the {slot}?" },
     ],
   },
 ] as const satisfies readonly D4ProfessionalSpeakTopic[];
