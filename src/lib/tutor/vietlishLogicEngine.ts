@@ -1,3 +1,14 @@
+// Lane A conversation engine (ConversationMode → vietlishLogicEngine) draws on
+// the curated Vietlish seed corpus to detect and correct calques, word-order,
+// register, collocation, false-friend, and literal-translation errors. The
+// corpus is data-only; re-exported here so the engine has a single import home.
+export {
+  VIETLISH_CORPUS,
+  type VietlishCorpusEntry,
+  type VietlishCorpusCategory,
+  type VietlishCorpusFrequency,
+} from "./vietlishCorpus";
+
 export type VietlishLogicDiagnosis = {
   originalPattern: string;
   correctedExample: string;
