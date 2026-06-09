@@ -23,6 +23,8 @@ export const speakTopics = [
       "Prompt the learner to ask follow-up questions when the order is incomplete.",
       "Practice repeating the order back with quantities and special requests.",
       "Ask about timing, payment, receipt, utensils, and pickup name when relevant.",
+      "Practice asking the guest to repeat or spell a pickup name on a noisy line or busy counter.",
+      "Confirm allergies or strong preferences before sending the order, even if the guest did not mention them.",
       "End with a clear closing line before the food is prepared.",
     ],
     warmthPatterns: [
@@ -45,6 +47,11 @@ export const speakTopics = [
         label: "Repeating back is service, not doubt",
         note: "Some learners worry repetition sounds rude or slow. In English restaurants, 'Let me read that back' is professional because it prevents kitchen mistakes and protects special requests.",
       },
+      {
+        id: "restaurant-orders-spell-name",
+        label: "Asking to spell a name kindly",
+        note: "Asking 'Can you spell that for me?' can feel awkward to learners, but in English service it is normal and prevents a wrong pickup name: 'Sorry, could you spell your name for the order?'",
+      },
     ],
     followUps: [
       { id: "restaurant-orders-type", question: "Is the guest ordering for here or to go?", salienceQuestion: "How would you confirm the {slot}?" },
@@ -52,6 +59,7 @@ export const speakTopics = [
       { id: "restaurant-orders-mods", question: "What modifier or side should you ask about?", salienceQuestion: "What detail changes the {slot}?" },
       { id: "restaurant-orders-repeat", question: "How would you repeat the order back?", salienceQuestion: "How would you repeat the {slot}?" },
       { id: "restaurant-orders-close", question: "How would you close before sending the order?", salienceQuestion: "What final check does the {slot} need?" },
+      { id: "restaurant-orders-name", question: "How would you confirm the pickup name?", salienceQuestion: "How would you spell the {slot}?" },
     ],
   },
   {
@@ -69,6 +77,8 @@ export const speakTopics = [
       "Prompt the learner to ask about allergies and cross-contact without making unsafe promises.",
       "Practice saying when they need to check with the kitchen.",
       "Ask how to offer substitutions or remove ingredients.",
+      "Practice asking whether a restriction is an allergy or a preference before recommending a dish.",
+      "Confirm the safest choice out loud and offer to mark it for the kitchen.",
       "End by confirming the guest's restriction and the safest menu choice.",
     ],
     warmthPatterns: [
@@ -91,6 +101,11 @@ export const speakTopics = [
         label: "Do not promise what you do not know",
         note: "To be helpful, learners may want to answer quickly. With allergens and dietary restrictions, the professional English phrase is 'Let me check with the kitchen' before promising the dish is safe.",
       },
+      {
+        id: "restaurant-diet-mark-kitchen",
+        label: "Telling the kitchen about a restriction",
+        note: "Learners may assume saying it once is enough. In English kitchens, 'I'll mark this as a nut allergy for the kitchen' shows the guest the restriction will actually be passed on.",
+      },
     ],
     followUps: [
       { id: "restaurant-diet-dish", question: "Which dish are you explaining?", salienceQuestion: "How would you describe the {slot}?" },
@@ -98,6 +113,7 @@ export const speakTopics = [
       { id: "restaurant-diet-restriction", question: "What dietary restriction does the guest have?", salienceQuestion: "What restriction affects the {slot}?" },
       { id: "restaurant-diet-check", question: "How would you say you need to check with the kitchen?", salienceQuestion: "How would you verify the {slot}?" },
       { id: "restaurant-diet-option", question: "What safer option or substitution could you offer?", salienceQuestion: "What could replace the {slot}?" },
+      { id: "restaurant-diet-confirm-safe", question: "How would you confirm the safest choice with the guest?", salienceQuestion: "How would you confirm the {slot} is safe?" },
     ],
   },
   {
@@ -115,6 +131,8 @@ export const speakTopics = [
       "Practice explaining what can be fixed now: remake, refund, discount, missing item, manager help, or delivery follow-up.",
       "Prompt the learner to avoid blaming the guest, kitchen, driver, or coworker.",
       "Ask how long the solution will take and what the guest prefers.",
+      "Practice asking a manager for help politely when the fix is above what you can offer.",
+      "Confirm the guest's preferred solution before acting, instead of assuming a refund or remake.",
       "End by confirming the resolution and thanking the guest for their patience.",
     ],
     warmthPatterns: [
@@ -137,6 +155,11 @@ export const speakTopics = [
         label: "Avoid blame words during service recovery",
         note: "Explaining 'the kitchen made mistake' may sound like blame even if it is true. A safer professional phrase is 'Let me check what happened and make this right.'",
       },
+      {
+        id: "restaurant-complaints-ask-manager",
+        label: "Bringing in a manager without losing face",
+        note: "Learners may fear that calling a manager looks like failure. In English service it is professional: 'Let me get my manager so we can make this right for you.'",
+      },
     ],
     followUps: [
       { id: "restaurant-complaint-ack", question: "How would you acknowledge the problem?", salienceQuestion: "How would you respond to the {slot}?" },
@@ -144,6 +167,7 @@ export const speakTopics = [
       { id: "restaurant-complaint-solution", question: "What solution can you offer?", salienceQuestion: "What would solve the {slot}?" },
       { id: "restaurant-complaint-time", question: "How would you explain the wait for the solution?", salienceQuestion: "How long will the {slot} take?" },
       { id: "restaurant-complaint-close", question: "How would you close after fixing it?", salienceQuestion: "How would you close the {slot}?" },
+      { id: "restaurant-complaint-prefer", question: "How would you ask what solution the guest prefers?", salienceQuestion: "What does the guest want for the {slot}?" },
     ],
   },
 ] as const satisfies readonly D4ProfessionalSpeakTopic[];
