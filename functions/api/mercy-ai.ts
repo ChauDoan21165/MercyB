@@ -11,6 +11,10 @@ import {
   normalizeAiConversationHistory,
 } from "../../api/_lib/aiConversation";
 import {
+  readAdminLevel,
+  resolveConversationEntitlementAccess,
+} from "../../api/_lib/conversationEntitlement";
+import {
   asString,
   envValue,
   getBearerToken,
@@ -65,24 +69,47 @@ function getIp(request: Request): string {
 async function hasPremiumAiConversationAccess(
   env: PagesContext["env"],
   accessToken: string,
+  userId: string,
 ): Promise<boolean> {
   const supabaseUrl = envValue(env, "SUPABASE_URL") || envValue(env, "VITE_SUPABASE_URL");
   const supabaseAnonKey = envValue(env, "SUPABASE_ANON_KEY") || envValue(env, "VITE_SUPABASE_ANON_KEY");
-  if (!supabaseUrl || !supabaseAnonKey || !accessToken) return false;
+  if (!supabaseUrl || !supabaseAnonKey || !accessToken || !userId) return false;
 
   try {
-    const response = await fetch(`${supabaseUrl.replace(/\/$/, "")}/functions/v1/me-entitlement`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        apikey: supabaseAnonKey,
-      },
-    });
-    if (!response.ok) return false;
-    const entitlement = await response.json() as { is_premium?: unknown; status?: unknown };
-    const status = typeof entitlement.status === "string" ? entitlement.status : "";
-    return entitlement.is_premium === true &&
-      ["active", "trialing", "grace_period", "past_due"].includes(status);
+    const [entitlementResult, profileResult] = await Promise.allSettled([
+      fetch(`${supabaseUrl.replace(/\/$/, "")}/functions/v1/me-entitlement`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          apikey: supabaseAnonKey,
+        },
+      }),
+      fetch(`${supabaseUrl.replace(/\/$/, "")}/rest/v1/profiles?select=admin_level&id=eq.${encodeURIComponent(userId)}&limit=1`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          apikey: supabaseAnonKey,
+          Accept: "application/json",
+        },
+      }),
+    ]);
+
+    let entitlement: { is_premium?: unknown } | null = null;
+    const entitlementResponse =
+      entitlementResult.status === "fulfilled" ? entitlementResult.value : null;
+    if (entitlementResponse?.ok) {
+      entitlement = await entitlementResponse.json() as { is_premium?: unknown };
+    }
+
+    let adminLevel = 0;
+    const profileResponse =
+      profileResult.status === "fulfilled" ? profileResult.value : null;
+    if (profileResponse?.ok) {
+      const rows = await profileResponse.json() as Array<{ admin_level?: unknown }>;
+      adminLevel = readAdminLevel(rows[0]?.admin_level);
+    }
+
+    return resolveConversationEntitlementAccess({ entitlement, adminLevel });
   } catch {
     return false;
   }
@@ -140,7 +167,7 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
   }
 
   if (norm(body.mode) === "ai-conversation-turn") {
-    if (!(await hasPremiumAiConversationAccess(env, accessToken))) {
+    if (!(await hasPremiumAiConversationAccess(env, accessToken, user.id))) {
       return json({ error: "Premium required" }, 403);
     }
 

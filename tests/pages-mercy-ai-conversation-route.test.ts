@@ -51,6 +51,7 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
   it("handles ai-conversation-turn with job-interview fallback and A1 developer grounding", async () => {
     const fetchMock = vi.fn<typeof fetch>()
       .mockResolvedValueOnce(jsonResponse({ is_premium: true, status: "active" }))
+      .mockResolvedValueOnce(jsonResponse([{ admin_level: 0 }]))
       .mockResolvedValueOnce(jsonResponse({
         choices: [{
           message: {
@@ -89,7 +90,7 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
       correctionGateModel: "gpt-4o",
     });
 
-    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock).toHaveBeenCalledTimes(3);
     expect(String(fetchMock.mock.calls[0][0])).toBe("https://supabase.test/functions/v1/me-entitlement");
     expect(fetchMock.mock.calls[0][1]).toMatchObject({
       method: "GET",
@@ -98,8 +99,11 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
         apikey: "anon-key",
       },
     });
+    expect(String(fetchMock.mock.calls[1][0])).toBe(
+      "https://supabase.test/rest/v1/profiles?select=admin_level&id=eq.user-1&limit=1",
+    );
 
-    const openAiBody = JSON.parse(String(fetchMock.mock.calls[1][1]?.body));
+    const openAiBody = JSON.parse(String(fetchMock.mock.calls[2][1]?.body));
     expect(openAiBody.model).toBe("gpt-4o-mini");
     expect(openAiBody.messages[0].content).toContain("Job interview practice");
     expect(openAiBody.messages[1].content).toContain("Client grounding");
@@ -109,7 +113,8 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
 
   it("requires premium entitlement before calling OpenAI", async () => {
     const fetchMock = vi.fn<typeof fetch>()
-      .mockResolvedValueOnce(jsonResponse({ is_premium: false, status: "free" }));
+      .mockResolvedValueOnce(jsonResponse({ is_premium: false, status: "free" }))
+      .mockResolvedValueOnce(jsonResponse([{ admin_level: 0 }]));
     vi.stubGlobal("fetch", fetchMock);
 
     const response = await postMercyAi({
@@ -120,12 +125,13 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
 
     expect(response.status).toBe(403);
     await expect(response.json()).resolves.toEqual({ error: "Premium required" });
-    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
   it("keeps the 50-turn cap contract before calling OpenAI", async () => {
     const fetchMock = vi.fn<typeof fetch>()
-      .mockResolvedValueOnce(jsonResponse({ is_premium: true, status: "active" }));
+      .mockResolvedValueOnce(jsonResponse({ is_premium: true, status: "active" }))
+      .mockResolvedValueOnce(jsonResponse([{ admin_level: 0 }]));
     vi.stubGlobal("fetch", fetchMock);
 
     const response = await postMercyAi({
@@ -136,6 +142,6 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
 
     expect(response.status).toBe(400);
     await expect(response.json()).resolves.toEqual({ error: "Session turn cap reached" });
-    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 });

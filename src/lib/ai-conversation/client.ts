@@ -48,11 +48,24 @@ export type AiConversationTurnResponse = {
   cost: Partial<AiConversationCost>;
   provider: "openai" | "local-fallback";
   pronunciationAbstention: ReturnType<typeof abstentionRedirectFromPronunciation>;
+  entitlementGate?: boolean;
 };
 
 export async function sendAiConversationTurn(
   request: AiConversationTurnRequest,
 ): Promise<AiConversationTurnResponse> {
+  if (request.hasPremium !== true) {
+    return {
+      reply: "Premium required",
+      correction: null,
+      summary: null,
+      cost: {},
+      provider: "local-fallback",
+      pronunciationAbstention: null,
+      entitlementGate: true,
+    };
+  }
+
   const scenario = getAiConversationScenario(request.scenarioId);
   const recentAssistantQuestions = request.history
     .filter((turn) => turn.role === "assistant" && /\?/.test(turn.text))
@@ -109,7 +122,7 @@ export async function sendAiConversationTurn(
       warmthPatternCount: scenario.warmthPatterns.length,
     },
     entitlement: {
-      isPremium: request.hasPremium ?? true,
+      isPremium: true,
       status: request.entitlementStatus ?? null,
     },
     turnCap: {
