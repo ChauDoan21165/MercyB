@@ -1,5 +1,7 @@
 import { readFileSync } from "node:fs";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, render, screen, waitFor, within } from "@testing-library/react";
+import type { RenderResult } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import AiTutorPage from "../AiTutor";
@@ -163,6 +165,18 @@ vi.mock("@/lib/placement/availability", () => ({
   isPlacementEntryRouteAvailable: vi.fn(() => false),
 }));
 
+function renderAiTutor(): RenderResult {
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false }, mutations: { retry: false } },
+  });
+
+  return render(
+    <QueryClientProvider client={queryClient}>
+      <AiTutorPage />
+    </QueryClientProvider>,
+  );
+}
+
 beforeEach(() => {
   vi.clearAllMocks();
   MockSpeechRecognition.last = null;
@@ -251,7 +265,7 @@ async function answerFollowUpByVoice(transcript: string) {
 
 describe("AiTutor four-tab seed flow", () => {
   it("renders the Teacher Mercy shell with four tabs", () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     expect(screen.getByTestId("ai-tutor-shell")).toBeInTheDocument();
     const tabs = screen.getByTestId("teacher-mercy-mode-tabs");
@@ -262,7 +276,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("keeps Lộ trình static and links only to Grammar", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await openTab("Lộ trình");
     const journey = screen.getByTestId("ai-tutor-journey-path");
@@ -280,7 +294,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("keeps Sửa câu focused on writing and correction", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     const grammar = screen.getByTestId("ai-tutor-layout");
     expect(within(grammar).getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i })).toHaveFocus();
@@ -296,7 +310,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("shows a Step 5 article omission hint in Correction", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctSentence("She is teacher.", "She is a teacher.");
 
@@ -307,7 +321,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("shows a Step 5 plural omission hint in Correction", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctSentence("I have two book.", "I have two books.");
 
@@ -318,7 +332,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("keeps the existing past-tense omission hint in Correction", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
 
@@ -329,7 +343,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("does not show a Step 5 hint for safe Correction input", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctSentence("I like music.", "I like music.");
 
@@ -338,7 +352,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("does not record duplicate L1 tags for the same already-shown hint", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctSentence("She is teacher.", "She is a teacher.");
     expect(await screen.findByTestId("detector-hint-chip")).toHaveAttribute(
@@ -356,7 +370,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("does not record VN-to-EN L1 tags for non-English Correction targets", async () => {
     window.history.pushState({}, "", "/ai-tutor?target=vi");
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctSentence("She is teacher.", "She is teacher.");
 
@@ -365,7 +379,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("circles the same L1 weakness with a new-context follow-up, then offers to move on", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     // Turn 1 — a high-confidence 3rd-person-s error starts a focus and shows a
     // same-tag follow-up in a NEW context (not the corrected sentence).
@@ -392,13 +406,13 @@ describe("AiTutor four-tab seed flow", () => {
     // fresh mount — a new session / page reload — must RESTART the loop, not
     // resume the prior focus. A same-tag error on the second mount must show
     // context #1 again, not the context #2 the first mount had advanced toward.
-    const first = render(<AiTutorPage />);
+    const first = renderAiTutor();
     await correctSentence("She go to school every day.", "She goes to school every day.");
     expect(await screen.findByTestId("ai-tutor-l1-followup")).toHaveTextContent("buổi sáng"); // #1
 
     first.unmount();
 
-    render(<AiTutorPage />);
+    renderAiTutor();
     await correctSentence("She go to school every day.", "She goes to school every day.");
     const afterRemount = await screen.findByTestId("ai-tutor-l1-followup");
     expect(afterRemount).toHaveTextContent("buổi sáng"); // context #1 AGAIN — focus reset
@@ -406,7 +420,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("shows no follow-up for clean (low-confidence) input with no active focus", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctSentence("I like music.", "I like music.");
 
@@ -416,7 +430,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("does not run the L1 follow-up loop on a non-English Correction target", async () => {
     window.history.pushState({}, "", "/ai-tutor?target=vi");
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctSentence("She go to school every day.", "She go to school every day.");
 
@@ -432,7 +446,7 @@ describe("AiTutor four-tab seed flow", () => {
       reflectionText: "Today I learn about my family.",
     });
 
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     // Lands in Correction (grammar) mode with the reflection pre-filled.
     expect(screen.getByRole("textbox")).toHaveValue("Today I learn about my family.");
@@ -441,7 +455,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("shows an empty Correction input when there is no Teacher Mercy hand-off", () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     expect(screen.getByRole("textbox")).toHaveValue("");
   });
@@ -453,7 +467,7 @@ describe("AiTutor four-tab seed flow", () => {
     // regressed to persist focus cross-session (localStorage/IndexedDB/etc.),
     // the same input would resume at context #2. An in-memory ref must reset on
     // remount and start over at context #1.
-    const first = render(<AiTutorPage />);
+    const first = renderAiTutor();
     await correctSentence("She go to school every day.", "She goes to school every day.");
     expect(await screen.findByTestId("ai-tutor-l1-followup")).toHaveTextContent("buổi sáng");
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu khác" }));
@@ -462,7 +476,7 @@ describe("AiTutor four-tab seed flow", () => {
 
     first.unmount();
 
-    render(<AiTutorPage />);
+    renderAiTutor();
     await correctSentence("She go to school every day.", "She goes to school every day.");
     // Fresh session → focus restarts at context #1, proving no cross-session write.
     expect(await screen.findByTestId("ai-tutor-l1-followup")).toHaveTextContent("buổi sáng");
@@ -470,7 +484,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("commits final Grammar voice transcript into the correction input", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     expect(screen.getByRole("button", { name: "Sửa câu này" })).toBeDisabled();
     await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
@@ -492,7 +506,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("shows friendly copy when the correction engine is unavailable and does not leave listening stuck", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
     act(() => {
@@ -513,7 +527,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("golden unsupported Grammar uncertainty never exposes the engine error to learners", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await userEvent.type(screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i }), "I run yesterday.");
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
@@ -524,7 +538,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("clears stale correction errors when Grammar voice input starts", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await userEvent.type(screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i }), "I run yesterday.");
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
@@ -537,7 +551,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("shows a voice-specific message when Grammar voice input captures no transcript", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
     act(() => {
@@ -552,7 +566,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("reset clears Grammar voice transcript and friendly correction error", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await userEvent.click(screen.getByRole("button", { name: /Nhập bằng giọng nói/ }));
     act(() => {
@@ -575,7 +589,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("golden reset clears Grammar, Speak, and Logic learner state", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctSentence("She go to school every day.", "She goes to school every day.");
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -607,7 +621,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("moves the corrected sentence from Grammar to Speak and scores the repeated sentence honestly", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -625,7 +639,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("counts a voice attempt with interim transcripts as a SINGLE round (no premature 'another sentence?')", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -658,7 +672,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("continues for multiple rounds and only offers another sentence after the round cap", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -692,7 +706,7 @@ describe("AiTutor four-tab seed flow", () => {
   // Speak on the first sentence.
   it("captures a spoken follow-up answer and advances to the next follow-up", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -736,7 +750,7 @@ describe("AiTutor four-tab seed flow", () => {
   it("shows a clear fallback (no stall) when speech input is unsupported and lets the learner type follow-up answers", async () => {
     // SpeechRecognition stays undefined (unsupported), so the only way forward
     // is the typed path — it must keep producing follow-ups, never dead-end.
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -770,7 +784,7 @@ describe("AiTutor four-tab seed flow", () => {
     const mockPivot = vi.fn(() => "This should not be used. What happened?");
     window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = mockPivot;
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -783,7 +797,7 @@ describe("AiTutor four-tab seed flow", () => {
   it("uses a valid mocked content-aware pivot for English salience in Speak", async () => {
     window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "The fish burned. What did you eat instead?");
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -795,7 +809,7 @@ describe("AiTutor four-tab seed flow", () => {
   it("uses a valid mocked content-aware pivot for VN salience in Speak", async () => {
     window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "Your wife is skilled. What is she good at?");
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -807,7 +821,7 @@ describe("AiTutor four-tab seed flow", () => {
   it("keeps high-stakes Step 9 pivot behavior when Step 10 does not pause", async () => {
     window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "Losing keys is stressful. Where did you last see them?");
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -818,7 +832,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("adds brief acknowledgment wording for mild emotional Speak content without diagnosis terms", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -832,7 +846,7 @@ describe("AiTutor four-tab seed flow", () => {
   it("asks one simple clarification for unclear Speak replies", async () => {
     window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "This pivot should not be used. What happened?");
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -844,7 +858,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("asks for clarification instead of inventing nonsense follow-ups for unclear STT transcripts", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -878,7 +892,7 @@ describe("AiTutor four-tab seed flow", () => {
     });
     vi.stubGlobal("fetch", fetchMock);
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -889,8 +903,9 @@ describe("AiTutor four-tab seed flow", () => {
         "What do you like to do in summer?",
       );
     });
-    expect(fetchMock).toHaveBeenCalledWith("/api/mercy-ai", expect.objectContaining({ method: "POST" }));
-    const [, init] = fetchMock.mock.calls[0] as [string, RequestInit];
+    const apiCall = fetchMock.mock.calls.find(([url]) => url === "/api/mercy-ai");
+    expect(apiCall).toBeDefined();
+    const [, init] = apiCall as [string, RequestInit];
     const body = JSON.parse(String(init.body ?? "{}")) as {
       mode?: string;
       transcript?: string;
@@ -911,7 +926,7 @@ describe("AiTutor four-tab seed flow", () => {
     });
     vi.stubGlobal("fetch", vi.fn(async () => new Response("{}", { status: 503 })));
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -929,7 +944,7 @@ describe("AiTutor four-tab seed flow", () => {
   it("asks for a clearer repeat when the learner says the follow-up makes no sense", async () => {
     window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "Can you say that another way?");
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -953,7 +968,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("keeps clear Speak follow-up answers advancing the round by voice", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -971,7 +986,7 @@ describe("AiTutor four-tab seed flow", () => {
   it("uses needs_pause wording and suppresses correction or pivot for one Speak turn", async () => {
     window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "That sounds scary. Are you safe now?");
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -987,7 +1002,7 @@ describe("AiTutor four-tab seed flow", () => {
   it("does not let ordinary salience override the local L4 correction path in Speak", async () => {
     window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "That hard detail matters. What made it hard?");
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -999,7 +1014,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("keeps neutral Speak follow-up behavior unchanged after a paused turn", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1014,7 +1029,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("does not preserve emotional stance across remounts", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    const { unmount } = render(<AiTutorPage />);
+    const { unmount } = renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1023,7 +1038,7 @@ describe("AiTutor four-tab seed flow", () => {
 
     unmount();
     MockSpeechRecognition.last = null;
-    render(<AiTutorPage />);
+    renderAiTutor();
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
     await speakCurrentTarget("I bought a hat yesterday.");
@@ -1041,7 +1056,7 @@ describe("AiTutor four-tab seed flow", () => {
   it("falls back to deterministic Step 8 follow-up for invalid mocked pivot candidates", async () => {
     window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "Nice, the fish burned. What did you eat?");
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1054,7 +1069,7 @@ describe("AiTutor four-tab seed flow", () => {
   it("falls back to deterministic Step 8 follow-up for mocked pivot timeout or failure", async () => {
     window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => ({ failed: true }));
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1066,7 +1081,7 @@ describe("AiTutor four-tab seed flow", () => {
   it("rejects repeated mocked assistant pivots and uses deterministic Step 8 fallback", async () => {
     window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = vi.fn(() => "The fish burned. What did you eat instead?");
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1083,7 +1098,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("scores the typed Speak repeat fallback honestly without phoneme evidence", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1105,7 +1120,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("keeps the self-compare recorder and shows the current Speak follow-up before scoring", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1122,7 +1137,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("replaces the seeded Speak follow-up for a new corrected sentence", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1140,7 +1155,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("clears the old Speak follow-up when the learner resets for a new sentence", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1155,7 +1170,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("clears an unclear-transcript clarification when the learner resets for a new sentence", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1171,7 +1186,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("offers a deterministic follow-up in Speak even without a corrected sentence", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     // Reach Speak directly — no grammar correction, so there is no seed.
     await openTab("Luyện nói");
@@ -1193,7 +1208,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("follows an arbitrary (non-bucket) Speak topic for 4 rounds using the learner's own words", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
     await openTab("Luyện nói");
 
     const box = screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" });
@@ -1226,7 +1241,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("sustains a scripted-seed Speak conversation for 3+ rounds, following the learner's answers (Chau's hat scenario)", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1257,7 +1272,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("sustains the hat/sun scenario with Chau's exact learner answer (FU2 + FU3, never a one-answer move-on)", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     // Seed is the coherent summer sentence; only the tense was fixed.
     await correctSentence(
@@ -1297,7 +1312,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("asks for a simpler sentence when the Speak seed is a garbled grammar-only fix (Issue 1)", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     // Only buy→bought is fixed; the corrected sample is still word-salad.
     await correctSentence(
@@ -1330,7 +1345,7 @@ describe("AiTutor four-tab seed flow", () => {
       configurable: true,
       value: MockEndingAudio,
     });
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctSentence(
       "I buy a hat yesterday because I will bike a lot.",
@@ -1378,7 +1393,7 @@ describe("AiTutor four-tab seed flow", () => {
       configurable: true,
       value: MockEndingAudio,
     });
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1402,7 +1417,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("uses the learner's latest typed Speak topic for the next follow-up", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1424,7 +1439,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("does not repeat Speak follow-up templates for the same corrected sentence", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1443,7 +1458,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("offers a graceful pivot after four Speak follow-up turns on the same topic", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1466,7 +1481,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("uses the learner's latest spoken topic instead of drifting back to the corrected seed", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1482,7 +1497,7 @@ describe("AiTutor four-tab seed flow", () => {
 
   it("keeps dinner and family follow-ups on topic for four turns without repeated questions", async () => {
     (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1515,7 +1530,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("falls back to the generic Speak prompt when no corrected sentence exists", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await openTab("Luyện nói");
 
@@ -1550,7 +1565,7 @@ describe("AiTutor four-tab seed flow", () => {
       configurable: true,
       value: MockEndingAudio,
     });
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1586,7 +1601,7 @@ describe("AiTutor four-tab seed flow", () => {
       configurable: true,
       value: MockSpeechSynthesisUtterance,
     });
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1620,7 +1635,7 @@ describe("AiTutor four-tab seed flow", () => {
       configurable: true,
       value: MockSpeechSynthesisUtterance,
     });
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
@@ -1634,7 +1649,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("updates Speak target when Grammar corrects a new sentence", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu khác" }));
@@ -1647,7 +1662,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("renders curated Logic explanations and uses fallback only for unmatched free text", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await openTab("Logic");
     expect(screen.getByTestId("ai-tutor-logic-curated-explanation")).toHaveTextContent(
@@ -1663,7 +1678,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("lets Logic read the latest corrected sentence", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await openTab("Logic");
@@ -1674,7 +1689,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("updates Logic when the learner changes to a new corrected sentence", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu khác" }));
@@ -1688,7 +1703,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("clears stale corrected sentence and Logic explanation on board reset", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctSentence("She go to school every day.", "She goes to school every day.");
     await openTab("Logic");
@@ -1705,7 +1720,7 @@ describe("AiTutor four-tab seed flow", () => {
   });
 
   it("keeps Speak read-back text from poisoning Logic state", async () => {
-    render(<AiTutorPage />);
+    renderAiTutor();
 
     await correctSentence("She go to school every day.", "She goes to school every day.");
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));

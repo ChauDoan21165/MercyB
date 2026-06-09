@@ -3,6 +3,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -27,6 +28,18 @@ vi.mock("@/lib/placement/availability", () => ({ isPlacementEntryRouteAvailable:
 import AiTutorPage from "@/pages/AiTutor";
 import { startStudySession } from "@/lib/tutor/studySessionState";
 
+function renderAiTutor() {
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false }, mutations: { retry: false } },
+  });
+
+  return render(
+    <QueryClientProvider client={queryClient}>
+      <AiTutorPage />
+    </QueryClientProvider>,
+  );
+}
+
 beforeEach(() => {
   vi.clearAllMocks();
   window.localStorage.clear();
@@ -50,14 +63,14 @@ describe("retention guard — AiTutor study-completion seam", () => {
   it("POSITIVE (gate on): study completion with activeTodayLesson + studySessionState fires recordActiveDay once", async () => {
     // Seed a real study session — the mount effect loads it, setting BOTH gate states.
     startStudySession({ product: "ai-tutor", targetLanguage: "en" });
-    render(<AiTutorPage />);
+    renderAiTutor();
     await correctSentence("I buy a hat yesterday.", "I bought a hat yesterday.");
     await waitFor(() => expect(h.record).toHaveBeenCalledTimes(1));
   });
 
   it("GATE NEGATIVE (no study session): same submit abstains — recordActiveDay NOT fired", async () => {
     // No seeded session → loadStudySessionState returns null → gate (activeTodayLesson && studySessionState) is false.
-    render(<AiTutorPage />);
+    renderAiTutor();
     await correctSentence("I buy a hat yesterday.", "I bought a hat yesterday.");
     // give any async path a tick; assert still not called
     await new Promise((r) => setTimeout(r, 0));
