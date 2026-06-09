@@ -1,5 +1,0 @@
-/api/tts    /.netlify/functions/api-tts   200!
-/api/mercy/grammar    /.netlify/functions/api-mercy-grammar   200!
-/api/mercy-ai    /.netlify/functions/api-mercy-ai   200!
-/api/mercy-feedback    /.netlify/functions/api-mercy-feedback   200!
-/*    /index.html   200
