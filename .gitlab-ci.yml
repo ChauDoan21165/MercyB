@@ -168,7 +168,7 @@ variables:
     # repo's peer-dep tree currently requires it.
     - sleep $((RANDOM % 60))
     - rm -rf node_modules/.deno
-    - npm ci --legacy-peer-deps --cache .npm --prefer-offline
+    - npm ci --legacy-peer-deps --cache .npm --prefer-offline ${NPM_CI_EXTRA_FLAGS:-}
 
 # Local runner jobs are explicitly tagged so the Mac runner can keep
 # "run untagged jobs" disabled. Shared-runner fallbacks are separate
@@ -875,6 +875,46 @@ deploy-netlify-publish-only:
         npx --yes netlify-cli api unlockDeploy --data "{\"deploy_id\":\"$LOCKED_DEPLOY_ID\"}" --auth "$NETLIFY_AUTH_TOKEN" >/dev/null
       fi
     - npx --yes netlify-cli deploy --prod --dir=dist --functions=netlify/functions --no-build --skip-functions-cache --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN"
+
+# ── Manual Cloudflare Pages production deploy (DORMANT — not enabled) ───
+#
+# Removes the `npx wrangler` toil while KEEPING the human gate Chau set after
+# two unreviewed deploys reached prod. This job is intentionally dormant:
+#
+#   • `when: manual` — it NEVER auto-deploys on push. Auto-deploy on every main
+#     push would reverse the manual-deploy lock; full no-click auto-publish is a
+#     Chau-only decision and is deliberately NOT enabled here.
+#   • Gated behind `MERCYB_CF_DEPLOY_ENABLED == "1"` — until Chau sets that
+#     CI/CD variable the job does not even appear in the pipeline, so merging
+#     this MR does NOT enable deploys.
+#   • Production branch push only (`main`), never merge-request pipelines, and
+#     no preview deploys.
+#
+# Before enabling (Chau), ALL of these must hold:
+#   1. The supply-chain verdict is in — enabling puts the CF token on the runner.
+#   2. MR !580 (the functions/ Pages layout) is merged to main and correct.
+#   3. Create two PROTECTED + MASKED CI/CD variables:
+#        CLOUDFLARE_API_TOKEN   — scope to **Pages:Edit on the `mercyblade`
+#                                 project ONLY**, not account-wide.
+#        CLOUDFLARE_ACCOUNT_ID
+#   4. Set `MERCYB_CF_DEPLOY_ENABLED=1` to surface the manual job, then click it.
+deploy-cloudflare-pages:
+  <<: [*node_job, *local_runner]
+  stage: deploy
+  variables:
+    # This job holds CLOUDFLARE_API_TOKEN when enabled. Keep install
+    # lifecycle scripts disabled so package postinstalls cannot run with it.
+    NPM_CI_EXTRA_FLAGS: "--ignore-scripts"
+  rules:
+    - if: '$MERCYB_CF_DEPLOY_ENABLED == "1" && $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+      when: manual
+    - when: never
+  script:
+    - npm run build
+    # Belt-and-suspenders: never ship the SPA-breaking static 404.html — it
+    # makes CF Pages return 404 for deep routes instead of the SPA shell.
+    - rm -f dist/404.html
+    - npx --yes wrangler pages deploy dist --project-name mercyblade
 
 # ── `backup` stage (unchanged from prior version) ──────────────────────
 
