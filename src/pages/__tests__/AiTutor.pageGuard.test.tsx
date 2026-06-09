@@ -1,5 +1,6 @@
 // src/pages/__tests__/AiTutor.pageGuard.test.tsx
 // Prove /ai-tutor page is gated behind feature flag and auth.
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
@@ -17,22 +18,28 @@ vi.mock("@/lib/ai-tutor/learningMemory", () => ({
     lastPracticedTopic: "", lastPracticedAt: null, suggestedNextFocus: "" })),
 }));
 
-describe("AiTutor page guard", () => {
-  it("renders the page when feature flag is on", () => {
-    render(
+function renderAiTutorPage() {
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false }, mutations: { retry: false } },
+  });
+
+  return render(
+    <QueryClientProvider client={queryClient}>
       <MemoryRouter initialEntries={["/ai-tutor"]}>
         <AiTutorPage />
-      </MemoryRouter>,
-    );
+      </MemoryRouter>
+    </QueryClientProvider>,
+  );
+}
+
+describe("AiTutor page guard", () => {
+  it("renders the page when feature flag is on", () => {
+    renderAiTutorPage();
     expect(screen.getByRole("heading", { name: /Sửa tiếng Anh với Mercy/ })).toBeInTheDocument();
   });
 
   it("greeting avoids email", () => {
-    render(
-      <MemoryRouter initialEntries={["/ai-tutor"]}>
-        <AiTutorPage />
-      </MemoryRouter>,
-    );
+    renderAiTutorPage();
     const greeting = screen.getByTestId("ai-tutor-greeting");
     expect(greeting).toBeInTheDocument();
     expect(greeting.textContent).not.toMatch(/@/);

@@ -140,6 +140,8 @@ import {
   buildPronunciationProgressDisplay,
   type PronunciationProgressEntry,
 } from "@/lib/pronunciation/pronunciationProgressTrail";
+import useUserAccess from "@/hooks/useUserAccess";
+import AiConversationScenarioPanel from "@/components/ai-tutor/conversation/AiConversationScenarioPanel";
 
 type CorrectionResult = TutorTurn & {
   grammarTip: string;
@@ -945,6 +947,7 @@ export default function AiTutorPage() {
   const resumedLessonEventRef = useRef<string | null>(null);
   const nextFocusViewedEventRef = useRef<string | null>(null);
   const { user, session } = useAuth();
+  const userAccess = useUserAccess();
 
   const [target, setTarget] = useState<TutorTarget>(() =>
     typeof window === "undefined"
@@ -2482,6 +2485,11 @@ export default function AiTutorPage() {
           boardResetCount={boardResetCount}
         />
       )}
+      <AiConversationScenarioPanel
+        accessToken={session?.access_token}
+        hasPremium={userAccess.hasPremium || userAccess.isHighAdmin}
+        loadingAccess={userAccess.isLoading}
+      />
     </TeacherMercyLearningShell>
   );
 }

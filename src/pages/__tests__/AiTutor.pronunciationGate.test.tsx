@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -68,6 +69,18 @@ vi.mock("@/lib/placement/availability", () => ({
   isPlacementEntryRouteAvailable: vi.fn(() => false),
 }));
 
+function renderAiTutor() {
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false }, mutations: { retry: false } },
+  });
+
+  return render(
+    <QueryClientProvider client={queryClient}>
+      <AiTutorPage />
+    </QueryClientProvider>,
+  );
+}
+
 beforeEach(() => {
   vi.clearAllMocks();
   premiumSignal.current = false;
@@ -101,7 +114,7 @@ async function openSpeakWithTarget() {
 describe("AiTutor — detailed-scoring premium gate (flag ON)", () => {
   it("free learner sees NO detailed score card (no fake number) but keeps by-ear compare", async () => {
     premiumSignal.current = false;
-    render(<AiTutorPage />);
+    renderAiTutor();
     await openSpeakWithTarget();
 
     // The free by-ear self-compare loop is present and usable.
@@ -122,7 +135,7 @@ describe("AiTutor — detailed-scoring premium gate (flag ON)", () => {
 
   it("premium learner is allowed through the gate (honest no-number card appears)", async () => {
     premiumSignal.current = true;
-    render(<AiTutorPage />);
+    renderAiTutor();
     await openSpeakWithTarget();
 
     await userEvent.type(

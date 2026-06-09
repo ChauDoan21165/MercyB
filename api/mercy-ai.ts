@@ -13,6 +13,10 @@ import {
   SPEAK_REPEAT_CLARIFICATION,
   toSpeakRecentTurns,
 } from "./_lib/deepseekSpeak";
+import {
+  buildAiConversationTurn,
+  normalizeAiConversationHistory,
+} from "./_lib/aiConversation";
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -81,6 +85,26 @@ function getBearerToken(req: VercelRequest): string {
   if (scheme !== "Bearer" || !token) return "";
 
   return token.trim();
+}
+
+async function hasPremiumAiConversationAccess(accessToken: string): Promise<boolean> {
+  if (!supabaseUrl || !accessToken) return false;
+  try {
+    const response = await fetch(`${supabaseUrl.replace(/\/$/, "")}/functions/v1/me-entitlement`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        apikey: supabaseAnonKey,
+      },
+    });
+    if (!response.ok) return false;
+    const entitlement = await response.json() as { is_premium?: unknown; status?: unknown };
+    const status = typeof entitlement.status === "string" ? entitlement.status : "";
+    return entitlement.is_premium === true &&
+      ["active", "trialing", "grace_period", "past_due"].includes(status);
+  } catch {
+    return false;
+  }
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -156,6 +180,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           fallback: true,
         });
       }
+      return safeJson(res, 200, result);
+    }
+
+    if (mode === "ai-conversation-turn") {
+      if (!(await hasPremiumAiConversationAccess(accessToken))) {
+        return safeJson(res, 403, { error: "Premium required" });
+      }
+
+      const learnerText = norm(body.learnerText || body.userText || body.message || body.text);
+      if (!learnerText) {
+        return safeJson(res, 400, { error: "Missing learnerText" });
+      }
+      if (learnerText.length > 1200) {
+        return safeJson(res, 400, { error: "Input too long" });
+      }
+
+      const turnCount = Number(body.turnCount ?? 0);
+      if (Number.isFinite(turnCount) && turnCount >= 50) {
+        return safeJson(res, 400, { error: "Session turn cap reached" });
+      }
+
+      const result = await buildAiConversationTurn({
+        scenarioId: norm(body.scenarioId) || "job-interview",
+        learnerText,
+        history: normalizeAiConversationHistory(body.history),
+        turnCount: Number.isFinite(turnCount) ? turnCount : 0,
+      });
       return safeJson(res, 200, result);
     }
 
