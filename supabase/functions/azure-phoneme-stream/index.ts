@@ -22,10 +22,16 @@
 //   5. On `end` frame OR client disconnect, we run a final Azure pass
 //      and reply with `final`. Then close.
 //
-// Auth: JWT validated up-front. Per-user rate limit (mirroring
-// azure-phoneme). No budget check here yet — the cost of streaming is
-// proportional to the number of partial passes; a wrap-around budget
-// gate is tracked as a P1 follow-up.
+// Auth + cost controls: a single pre-connection gate runs BEFORE the
+// WebSocket upgrade (evaluateStreamGate in ./costControls.ts) — JWT
+// identity, per-user session rate limit (mirroring azure-phoneme),
+// trial/premium gate, and the shared global daily $ cap. If it denies,
+// no socket is opened, so the session runs ZERO Azure passes. During
+// the session every Azure pass is guarded (shouldRunStreamAzurePass:
+// empty/short-audio + per-session pass cap) and logged to
+// speech_analysis_logs with a `stream:` marker so streaming spend is
+// distinguishable from batch and counts against the same daily cap.
+// This closes the gap the C1 audit (invoice G163789098) flagged.
 //
 // Privacy: audio bytes are forwarded to Azure inline and discarded
 // from the server buffer immediately after the final pass. No
@@ -34,6 +40,7 @@
 // real-time evaluation pass per Microsoft's published policy.
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { rateLimit } from "../_shared/rateLimit.ts";
 import {
   MAX_ACCUMULATED_SEC,
   PARTIAL_PASS_INTERVAL_SEC,
@@ -45,15 +52,139 @@ import {
   type ServerMessage,
   type StreamingWordResult,
 } from "./protocol.ts";
+import {
+  evaluateStreamGate,
+  shouldRunStreamAzurePass,
+  streamPassCostUsd,
+  STREAM_GLOBAL_DAILY_CAP_USD_DEFAULT,
+  type StreamGateDeps,
+  type StreamGateReason,
+  type StreamProfileRow,
+} from "./costControls.ts";
 
 const supabaseUrl = Deno.env.get("SUPABASE_URL") ?? "";
 const supabaseServiceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
 const azureRegion = Deno.env.get("AZURE_SPEECH_REGION") ?? "canadacentral";
 const azureKey = Deno.env.get("AZURE_SPEECH_KEY") ?? "";
+// Shared with the batch path: one env var, one daily budget over batch +
+// stream Azure spend.
+const globalDailyCapUsd = Number(
+  Deno.env.get("AZURE_SPEECH_DAILY_CAP_USD") || String(STREAM_GLOBAL_DAILY_CAP_USD_DEFAULT),
+);
 const azureUrl =
   `https://${azureRegion}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed`;
 
 const adminClient = createClient(supabaseUrl, supabaseServiceRoleKey);
+
+// ── Telemetry + gate deps (speech_analysis_logs, shared with batch) ──────
+
+type StreamAuditStatus = "ok" | "no_speech" | "rate_limited" | "budget_exceeded" | "whisper_error";
+
+/**
+ * Best-effort write to speech_analysis_logs. `error_msg` always carries
+ * a `stream:` prefix so streaming rows are distinguishable from batch
+ * rows in the same table; rows with status `ok` and a real
+ * `openai_cost_usd` are summed by sumGlobalCostToday (batch + stream)
+ * into the shared daily cap. Never throws.
+ */
+async function auditStreamEvent(params: {
+  userId: string;
+  status: StreamAuditStatus;
+  audioSeconds?: number;
+  openaiCostUsd?: number;
+  marker: string;
+}): Promise<void> {
+  try {
+    const { error } = await adminClient.from("speech_analysis_logs").insert({
+      user_id: params.userId,
+      audio_seconds: params.audioSeconds ?? null,
+      openai_cost_usd: params.openaiCostUsd ?? null,
+      status: params.status,
+      error_msg: `stream:${params.marker}`,
+    });
+    if (error) console.error("[azure-phoneme-stream] audit insert error", error);
+  } catch (err) {
+    console.error("[azure-phoneme-stream] audit threw", err);
+  }
+}
+
+async function fetchStreamUserProfile(userId: string): Promise<StreamProfileRow | null> {
+  try {
+    const { data, error } = await adminClient
+      .from("profiles")
+      .select(
+        "trial_expires_at, trial_ends_at, trial_end, premium_status, premium_expires_at, tier",
+      )
+      .eq("id", userId)
+      .maybeSingle();
+    if (error || !data) return null;
+    const row = data as Record<string, unknown>;
+    const iso = (v: unknown): string | null =>
+      typeof v === "string" && v.trim().length > 0 ? v.trim() : null;
+    return {
+      trial_expires_at: iso(row.trial_expires_at),
+      trial_ends_at: iso(row.trial_ends_at),
+      trial_end: iso(row.trial_end),
+      premium_status:
+        typeof row.premium_status === "string" ? row.premium_status : null,
+      premium_expires_at: iso(row.premium_expires_at),
+      tier:
+        typeof row.tier === "string" || typeof row.tier === "number"
+          ? (row.tier as string | number)
+          : null,
+    };
+  } catch (err) {
+    console.error("[azure-phoneme-stream] fetchUserProfile threw", err);
+    return null;
+  }
+}
+
+async function sumGlobalCostToday(): Promise<number> {
+  try {
+    const d = new Date();
+    d.setUTCHours(0, 0, 0, 0);
+    const { data, error } = await adminClient
+      .from("speech_analysis_logs")
+      .select("openai_cost_usd")
+      .gte("created_at", d.toISOString())
+      .eq("status", "ok");
+    if (error || !Array.isArray(data)) return 0;
+    return data.reduce(
+      (acc, r) => acc + Number((r as { openai_cost_usd?: number }).openai_cost_usd ?? 0),
+      0,
+    );
+  } catch (err) {
+    console.error("[azure-phoneme-stream] sumGlobalCostToday threw", err);
+    return 0;
+  }
+}
+
+const streamGateDeps: StreamGateDeps = {
+  rateLimit: (key, max, windowMs) => rateLimit(key, max, windowMs),
+  fetchUserProfile: fetchStreamUserProfile,
+  sumGlobalCostToday,
+  globalDailyCapUsd,
+};
+
+/** Map a gate-denial reason to the HTTP status returned instead of the
+ *  101 upgrade. Any non-101 makes the client's WebSocket open fail and
+ *  fall back to the controlled batch path. */
+function gateHttpStatus(reason: StreamGateReason): number {
+  switch (reason) {
+    case "rate_limited":
+      return 429;
+    case "trial_expired":
+      return 402;
+    case "global_daily_cap_reached":
+      return 503;
+    default:
+      return 403;
+  }
+}
+
+function gateAuditStatus(reason: StreamGateReason): StreamAuditStatus {
+  return reason === "rate_limited" ? "rate_limited" : "budget_exceeded";
+}
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -163,6 +294,9 @@ type Session = {
   /** Accumulated PCM bytes (Int16 samples). */
   pcm: Uint8Array;
   finalised: boolean;
+  /** Azure passes spent this session (partials + final). Bounded by
+   *  STREAM_MAX_PASSES_PER_SESSION via shouldRunStreamAzurePass. */
+  passesUsed: number;
 };
 
 function send(socket: WebSocket, msg: ServerMessage) {
@@ -187,15 +321,37 @@ function pcmDurationSec(pcm: Uint8Array): number {
 }
 
 async function runPartialPass(session: Session) {
-  if (session.partialInFlight) return;
+  const accumulatedSec = pcmDurationSec(session.pcm);
+  // Cost-control guard: empty/short audio, in-flight, or per-session pass
+  // cap → spend no Azure pass. Partial skips are silent (the running
+  // preview just doesn't update); the final pass remains the source of
+  // truth. Never fabricate a number here.
+  const decision = shouldRunStreamAzurePass({
+    accumulatedSec,
+    passesUsed: session.passesUsed,
+    inFlight: session.partialInFlight,
+    isFinal: false,
+  });
+  if (!decision.run) return;
+
   session.partialInFlight = true;
   session.lastPartialAt = Date.now();
+  session.passesUsed += 1;
   try {
     const azureResp = await callAzure(session.pcm, session.referenceText);
     if (!azureResp || session.socket.readyState !== WebSocket.OPEN) return;
     const nbest = azureResp.NBest?.[0];
     const words = projectWordsForStreaming(nbest?.Words ?? []);
+    if (words.length === 0) return; // no real speech yet — don't send a fake 0
     const runningScore = runningScoreFromWords(words);
+    // Log the real spend so streaming counts against the shared daily cap.
+    void auditStreamEvent({
+      userId: session.userId,
+      status: "ok",
+      audioSeconds: accumulatedSec,
+      openaiCostUsd: streamPassCostUsd(accumulatedSec),
+      marker: "partial",
+    });
     send(session.socket, {
       type: "partial",
       runningScore,
@@ -212,8 +368,49 @@ async function runPartialPass(session: Session) {
 async function runFinalPass(session: Session) {
   if (session.finalised) return;
   session.finalised = true;
+
+  const accumulatedSec = pcmDurationSec(session.pcm);
+  // Cost-control guard. Empty/too-short audio or an exhausted per-session
+  // pass cap → no Azure pass and NO fabricated score. The learner is told
+  // honestly and routed to the non-streaming flow.
+  const decision = shouldRunStreamAzurePass({
+    accumulatedSec,
+    passesUsed: session.passesUsed,
+    inFlight: false,
+    isFinal: true,
+  });
+  if (!decision.run) {
+    void auditStreamEvent({
+      userId: session.userId,
+      status: decision.reason === "session_pass_cap" ? "rate_limited" : "no_speech",
+      audioSeconds: accumulatedSec,
+      marker: `final_skipped:${decision.reason}`,
+    });
+    send(session.socket, {
+      type: "error",
+      code: decision.reason === "session_pass_cap" ? "rate_limited" : "invalid_audio",
+      message:
+        decision.reason === "session_pass_cap"
+          ? "Scoring limit reached for this attempt; please use the non-streaming flow."
+          : "No speech captured; please record again or use the non-streaming flow.",
+    });
+    try {
+      session.socket.close();
+    } catch {
+      /* ignore */
+    }
+    return;
+  }
+  session.passesUsed += 1;
+
   const azureResp = await callAzure(session.pcm, session.referenceText);
   if (!azureResp || session.socket.readyState !== WebSocket.OPEN) {
+    void auditStreamEvent({
+      userId: session.userId,
+      status: "whisper_error",
+      audioSeconds: accumulatedSec,
+      marker: "final_azure_unavailable",
+    });
     send(session.socket, {
       type: "error",
       code: "azure_unavailable",
@@ -228,6 +425,28 @@ async function runFinalPass(session: Session) {
   }
   const nbest = azureResp.NBest?.[0];
   const words = projectWordsForStreaming(nbest?.Words ?? []);
+  // Poor / unintelligible audio → Azure returns no scored words. Send an
+  // honest "no match", never a fabricated score.
+  if (words.length === 0) {
+    void auditStreamEvent({
+      userId: session.userId,
+      status: "no_speech",
+      audioSeconds: accumulatedSec,
+      openaiCostUsd: streamPassCostUsd(accumulatedSec),
+      marker: "final_no_match",
+    });
+    send(session.socket, {
+      type: "error",
+      code: "invalid_audio",
+      message: "No speech detected; please record again.",
+    });
+    try {
+      session.socket.close();
+    } catch {
+      /* ignore */
+    }
+    return;
+  }
   const phonemes: Array<{ phoneme: string; score: number; word: string }> = [];
   for (const w of nbest?.Words ?? []) {
     const wordText = String(w.Word ?? "");
@@ -241,6 +460,15 @@ async function runFinalPass(session: Session) {
       });
     }
   }
+  // Real score from a real attempt — log the spend so it counts against
+  // the shared daily cap.
+  void auditStreamEvent({
+    userId: session.userId,
+    status: "ok",
+    audioSeconds: accumulatedSec,
+    openaiCostUsd: streamPassCostUsd(accumulatedSec),
+    marker: "final",
+  });
   send(session.socket, {
     type: "final",
     overallScore: typeof nbest?.AccuracyScore === "number"
@@ -292,6 +520,23 @@ Deno.serve(async (req) => {
     return new Response("auth_required", { status: 401, headers: corsHeaders });
   }
 
+  // Hard cost gate — runs BEFORE the upgrade. Rate limit → trial/premium
+  // gate → global daily $ cap. On denial we never open the socket, so
+  // the session spends ZERO Azure passes; the non-101 response makes the
+  // client fall back to the controlled batch path.
+  const gate = await evaluateStreamGate(streamGateDeps, userId);
+  if (!gate.allowed) {
+    void auditStreamEvent({
+      userId,
+      status: gateAuditStatus(gate.reason),
+      marker: `gate_blocked:${gate.reason}`,
+    });
+    return new Response(gate.reason, {
+      status: gateHttpStatus(gate.reason),
+      headers: corsHeaders,
+    });
+  }
+
   const { socket, response } = Deno.upgradeWebSocket(req);
 
   const sessionId = crypto.randomUUID();
@@ -305,6 +550,7 @@ Deno.serve(async (req) => {
     partialInFlight: false,
     pcm: new Uint8Array(0),
     finalised: false,
+    passesUsed: 0,
   };
 
   let helloReceived = false;
