@@ -14,6 +14,7 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 
 ## Lesson Index
 
+12. [Do not copy files in Finder inside the repo](#12-do-not-copy-files-in-finder-inside-the-repo)
 11. [Stacked Silent Failures Compound, They Don't Combine Linearly](#11-stacked-silent-failures-compound-they-dont-combine-linearly)
 6. [Fake-green tests are a failure class](#6-fake-green-tests-are-a-failure-class)
 7. [Schema-as-written beats schema-as-assumed](#7-schema-as-written-beats-schema-as-assumed)
@@ -25,6 +26,18 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 3. [Restore before redesign](#3-restore-before-redesign)
 4. [Verify against current main, not stale audit notes](#4-verify-against-current-main-not-stale-audit-notes)
 5. [Silent failures cost more than loud ones](#5-silent-failures-cost-more-than-loud-ones)
+
+---
+
+## 12. Do not copy files in Finder inside the repo
+
+**What it is.** Finder copy/paste creates duplicate filenames like `index 2.ts`, `file (1).png`, or even names with trailing spaces. Git tracks those as real files, not harmless desktop clutter.
+
+**Why it matters.** Duplicate files can be deployed, uploaded, or matched by broad scripts even when the app never imports them. A trailing-space filename is especially hard to see in reviews and terminals.
+
+**MercyBlade example.** The June 9 cleanup found root `index 2.ts` / `index 5.ts`, a tracked `public/guide.png ` with a trailing space, and duplicate kids media files named `p2_023_come_here (1).*`. None belonged in production source; the audio upload manifest even had duplicate `(1)` entries next to the clean filenames.
+
+**Action.** Never duplicate files in Finder inside the repo. If you need an experiment, make a branch or use `/tmp`. Before adding media, run `git status --short` and look for names ending in spaces, ` (1)`, or numbered copies.
 
 ---
 
@@ -265,4 +278,4 @@ Not worth adding:
 
 ---
 
-*Last updated: May 19, 2026 — 11 lessons total; 11 from the May 19 evening session, 6–10 from the May 19 hardening wave, 1–5 from initial creation.*
+*Last updated: June 9, 2026 — 12 lessons total; 12 from the June 9 file-cleanup pass, 11 from the May 19 evening session, 6–10 from the May 19 hardening wave, 1–5 from initial creation.*
