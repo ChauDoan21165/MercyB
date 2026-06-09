@@ -570,6 +570,22 @@ variables:
     fi
   - npm run verify:mobile-audio -- --base "$MOBILE_AUDIO_VERIFY_BASE"
 
+.playwright_perf_budget_script: &playwright_perf_budget_script
+  - |
+    case "$(uname -s)" in
+      Darwin)
+        npx playwright install chromium
+        ;;
+      Linux)
+        npx playwright install --with-deps chromium
+        ;;
+      *)
+        echo "Unsupported CI OS: $(uname -s)" >&2
+        exit 1
+        ;;
+    esac
+  - npm run test:perf-budgets
+
 # ── `test` stage jobs ──────────────────────────────────────────────────
 
 # `build` — typecheck + edge-fn typecheck + Deno check + bundle build +
@@ -656,6 +672,19 @@ native-audio-smoke:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
       changes: *native_audio_smoke_changes
   script: *native_audio_smoke_script
+
+playwright-perf-budgets:
+  <<: [*node_job, *local_runner, *app_test_rules]
+  stage: test
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  script: *playwright_perf_budget_script
+
+playwright-perf-budgets:shared-fallback:
+  <<: [*node_job, *manual_shared_fallback, *manual_shared_app_rules]
+  stage: test
+  script: *playwright_perf_budget_script
 
 delete-account-guard:
   <<: [*node_job, *local_runner]
