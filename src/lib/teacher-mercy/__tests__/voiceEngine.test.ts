@@ -245,7 +245,12 @@ describe("Teacher Mercy voiceEngine", () => {
   });
 
   it("maps target language to the correct browser voice locale", async () => {
-    const synth = installSpeechSynthesis();
+    // A matching-language voice must exist, else the engine correctly abstains rather than
+    // reading French with an English voice (same trust-floor fix as BUG3 for Vietnamese).
+    const synth = installSpeechSynthesis([
+      { lang: "en-US", name: "English" } as SpeechSynthesisVoice,
+      { lang: "fr-FR", name: "French" } as SpeechSynthesisVoice,
+    ]);
 
     await speakTutorText("Bonjour.", {
       targetLanguage: "fr",
@@ -255,6 +260,7 @@ describe("Teacher Mercy voiceEngine", () => {
 
     const utterance = synth.speak.mock.calls[0][0] as FakeUtterance;
     expect(utterance.lang).toBe("fr-FR");
+    expect(utterance.voice?.lang).toBe("fr-FR");
   });
 
   it("still attempts cloud Mercy voice first for multilingual tutor targets", async () => {
@@ -273,4 +279,90 @@ describe("Teacher Mercy voiceEngine", () => {
     expect(result.cloud).toBe(true);
     expect(result.locale).toBe("fr-FR");
   });
+
+  it("BUG3: suppresses Vietnamese speech when no Vietnamese voice exists (never an English voice)", async () => {
+    const synth = installSpeechSynthesis([{ lang: "en-US", name: "English" } as SpeechSynthesisVoice]);
+
+    const result = await speakTutorText("Hôm nay trời đẹp.", {
+      targetLanguage: "vi-VN",
+      preferCloudVoice: false,
+      fallbackToBrowserTts: true,
+    });
+
+    // Must NOT read Vietnamese text aloud with the English voice — suppress instead.
+    expect(synth.speak).not.toHaveBeenCalled();
+    expect(result.spoken).toBe(false);
+    expect(result.fallback).toBe(false);
+    // Vietnamese-primary honest message explaining the suppression.
+    expect(getVoiceStatus().message).toMatch(/giọng đọc/i);
+    expect(getVoiceStatus().status).toBe("error");
+  });
+
+  it("BUG3: selects the Vietnamese voice when available, not the first (English) voice", async () => {
+    const synth = installSpeechSynthesis([
+      { lang: "en-US", name: "English" } as SpeechSynthesisVoice,
+      { lang: "vi-VN", name: "Vietnamese" } as SpeechSynthesisVoice,
+    ]);
+
+    const result = await speakTutorText("Hôm nay trời đẹp.", {
+      targetLanguage: "vi-VN",
+      preferCloudVoice: false,
+      fallbackToBrowserTts: true,
+    });
+
+    expect(synth.speak).toHaveBeenCalledTimes(1);
+    const utterance = synth.speak.mock.calls[0][0] as FakeUtterance;
+    expect(utterance.voice?.lang).toBe("vi-VN");
+    expect(utterance.lang).toBe("vi-VN");
+    expect(result.fallback).toBe(true);
+  });
+
+  it("BUG3: matches a Vietnamese voice by language prefix even without an exact locale", async () => {
+    const synth = installSpeechSynthesis([
+      { lang: "en-US", name: "English" } as SpeechSynthesisVoice,
+      { lang: "vi", name: "Vietnamese generic" } as SpeechSynthesisVoice,
+    ]);
+
+    await speakTutorText("Hôm nay trời đẹp.", {
+      targetLanguage: "vi-VN",
+      preferCloudVoice: false,
+      fallbackToBrowserTts: true,
+    });
+
+    const utterance = synth.speak.mock.calls[0][0] as FakeUtterance;
+    expect(utterance.voice?.lang).toBe("vi");
+  });
+
+  it("BUG3 regression: English still speaks and is never suppressed", async () => {
+    const synth = installSpeechSynthesis([{ lang: "en-GB", name: "British" } as SpeechSynthesisVoice]);
+
+    const result = await speakTutorText("Good morning.", {
+      targetLanguage: "en",
+      preferCloudVoice: false,
+      fallbackToBrowserTts: true,
+    });
+
+    expect(synth.speak).toHaveBeenCalledTimes(1);
+    const utterance = synth.speak.mock.calls[0][0] as FakeUtterance;
+    // en-US locale matches the en-GB voice by prefix (no wrong-language fallback needed).
+    expect(utterance.voice?.lang).toBe("en-GB");
+    expect(result.fallback).toBe(true);
+  });
+
+  it("BUG3 regression: English is not suppressed even when no English voice exists", async () => {
+    const synth = installSpeechSynthesis([{ lang: "fr-FR", name: "French" } as SpeechSynthesisVoice]);
+
+    const result = await speakTutorText("Good morning.", {
+      targetLanguage: "en",
+      preferCloudVoice: false,
+      fallbackToBrowserTts: true,
+    });
+
+    // English keeps its prior behavior: it still speaks (browser default) rather than abstaining.
+    expect(synth.speak).toHaveBeenCalledTimes(1);
+    const utterance = synth.speak.mock.calls[0][0] as FakeUtterance;
+    expect(utterance.voice).toBeNull(); // no wrong-language voice forced onto it
+    expect(result.fallback).toBe(true);
+  });
+
 });

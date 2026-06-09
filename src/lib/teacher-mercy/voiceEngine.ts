@@ -62,6 +62,10 @@ export interface SpeakTutorTextResult {
 const PREPARING_MESSAGE = "Preparing Mercy voice…";
 const FALLBACK_MESSAGE = "Mercy voice unavailable. Using device voice.";
 const BROWSER_TTS_ERROR_MESSAGE = "Không nghe thấy? Kiểm tra âm lượng hoặc thử bấm lại.";
+// BUG3 trust floor: shown when the device has no matching-language voice (e.g. no Vietnamese
+// voice). We suppress speech rather than read the text aloud in the wrong language.
+const TARGET_VOICE_UNAVAILABLE_MESSAGE =
+  "Thiết bị này chưa có giọng đọc đúng ngôn ngữ, nên Mercy tạm bỏ qua phần đọc để không đọc sai giọng. (No matching-language voice on this device — skipping audio so the text isn't read in the wrong language.)";
 
 const DEFAULT_STATUS: VoiceEngineStatus = {
   status: "idle",
@@ -108,14 +112,20 @@ function speakableTextFor(text: string, options: SpeakTutorTextOptions): string 
   return normalized;
 }
 
+function localeLanguagePrefix(locale: string): string {
+  return String(locale || "").split("-")[0].toLowerCase();
+}
+
 function browserVoiceFor(locale: string): SpeechSynthesisVoice | null {
   if (typeof window === "undefined" || !window.speechSynthesis) return null;
   const voices = window.speechSynthesis.getVoices();
   if (!voices.length) return null;
   const exact = voices.find((voice) => voice.lang === locale);
   if (exact) return exact;
-  const languagePrefix = locale.split("-")[0];
-  return voices.find((voice) => voice.lang.startsWith(languagePrefix)) ?? voices[0] ?? null;
+  const languagePrefix = localeLanguagePrefix(locale);
+  // Only ever return a voice in the SAME language. Never fall back to voices[0] (an arbitrary,
+  // usually English voice): that is exactly how Vietnamese text ends up read aloud in English.
+  return voices.find((voice) => localeLanguagePrefix(voice.lang) === languagePrefix) ?? null;
 }
 
 function waitForBrowserVoices(): Promise<void> {
@@ -187,6 +197,23 @@ async function speakViaBrowser(text: string, locale: string, currentRequestId: n
     utterance.pitch = 1;
     utterance.volume = 1;
     const voice = browserVoiceFor(locale);
+    // BUG3: never read non-English (e.g. Vietnamese) text with a wrong-language voice. If the
+    // device has no matching-language voice, suppress speech instead of letting the browser
+    // substitute an English voice for Vietnamese text.
+    if (!voice && localeLanguagePrefix(locale) !== "en") {
+      if (requestId === currentRequestId) {
+        setStatus({
+          status: "error",
+          preparing: false,
+          speaking: false,
+          usingBrowserFallback: false,
+          lastError: TARGET_VOICE_UNAVAILABLE_MESSAGE,
+          message: TARGET_VOICE_UNAVAILABLE_MESSAGE,
+        });
+      }
+      resolve(false);
+      return;
+    }
     if (voice) utterance.voice = voice;
 
     utterance.onstart = () => {
