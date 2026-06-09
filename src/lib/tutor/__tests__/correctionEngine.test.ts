@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
   AI_CORRECTION_REQUIRED_MESSAGE,
+  SEMANTIC_IMPLAUSIBILITY_SIGNALS,
   correctWithTutorRules,
+  findSemanticImplausibility,
   validateCorrectionChangedWhenNeeded,
 } from "@/lib/tutor/correctionEngine";
 import { englishCorrectionRules } from "@/lib/tutor/correctionRules/en";
@@ -1421,5 +1423,57 @@ describe("correctionEngine", () => {
       corrected: input,
       appliedRuleIds: [],
     });
+  });
+});
+
+describe("correctionEngine — BUG1 semantic plausibility trust floor", () => {
+  it("does NOT confidently present a grammar-only fix that is still nonsense (buy a head)", () => {
+    // Grammar would fix buy->bought, but "bought a head" is still nonsense -> abstain + clarify.
+    const result = correctWithTutorRules("I buy a head yesterday.", "en");
+    expect(result.status).toBe("needs_ai");
+    expect(result.corrected).toBe("");
+    expect(result.status === "needs_ai" && result.semanticHint).toBeTruthy();
+    expect(result.status === "needs_ai" ? result.semanticHint : "").toMatch(/hat|mũ/i);
+    // Must never have surfaced the confident wrong correction.
+    expect(result.corrected).not.toBe("I bought a head yesterday.");
+  });
+
+  it("abstains on a grammatically clean but implausible sentence (bought a head)", () => {
+    const result = correctWithTutorRules("I bought a head.", "en");
+    expect(result.status).toBe("needs_ai");
+    expect(result.corrected).toBe("");
+    expect(result.status === "needs_ai" ? result.semanticHint : "").toMatch(/hat|mũ/i);
+  });
+
+  it.each([
+    "I bought a head of lettuce.",
+    "I bought a head of cabbage.",
+  ])("does NOT flag the plausible 'a head of <vegetable>' phrase: %s", (input) => {
+    const result = correctWithTutorRules(input, "en");
+    expect(result.status).not.toBe("needs_ai");
+    expect(result.corrected).toContain("head of");
+  });
+
+  it("preserves the normal hat correction (no false positive on the real word)", () => {
+    expect(correctWithTutorRules("I buy a hat yesterday.", "en")).toMatchObject({
+      status: "corrected",
+      corrected: "I bought a hat yesterday.",
+    });
+  });
+
+  it("keeps precision-gate evidence on every semantic implausibility signal", () => {
+    for (const signal of SEMANTIC_IMPLAUSIBILITY_SIGNALS) {
+      expect(signal.positives.length).toBeGreaterThanOrEqual(3);
+      expect(signal.confusableNegatives.length).toBeGreaterThanOrEqual(2);
+      expect(signal.fpRiskNote.length).toBeGreaterThan(20);
+      expect(signal.clarificationHint.trim().length).toBeGreaterThan(0);
+      // Every positive must flag; every confusable negative must not.
+      for (const positive of signal.positives) {
+        expect(findSemanticImplausibility(positive)?.id, positive).toBe(signal.id);
+      }
+      for (const negative of signal.confusableNegatives) {
+        expect(findSemanticImplausibility(negative), negative).toBeNull();
+      }
+    }
   });
 });
