@@ -1,7 +1,7 @@
 // src/components/ai-tutor/ConversationMode.tsx
 // Chat-style Teacher Mercy practice mode. Local/mock only; no provider calls.
 
-import { Send, Square, Volume2, Lock } from "lucide-react";
+import { Send, Square, Volume2, Lock, RotateCcw } from "lucide-react";
 import type { TutorTurn } from "@/lib/tutor/tutorTypes";
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
 import type { VietlishLogicDiagnosisResult } from "@/lib/tutor/vietlishLogicEngine";
@@ -75,6 +75,12 @@ type Props = {
   pronunciationByMessageId?: Record<string, ConversationPronunciationResult | null | undefined>;
   abstentionRedirect?: ConversationAbstentionRedirect | null;
   onUpgrade?: () => void;
+  /** Start-over control for speech recording. Parent clears the audio buffer + recording state
+   * so no stale recorded audio can be submitted. UI only signals intent; it holds no buffer. */
+  onClearRecording?: () => void;
+  /** True when there is recorded/in-progress audio the learner could discard. Drives the
+   * "Làm lại" control's enabled state; omit/false => enabled only when there is typed input. */
+  hasRecording?: boolean;
 };
 
 export default function ConversationMode({
@@ -101,10 +107,22 @@ export default function ConversationMode({
   pronunciationByMessageId,
   abstentionRedirect,
   onUpgrade,
+  onClearRecording,
+  hasRecording,
 }: Props) {
   const isEmpty = !input.trim();
   const isLogicMode = mode === "logic";
   const { ui } = tutorCopy;
+  // Recording start-over ("Làm lại"): only where speech recording is possible (non-logic modes)
+  // and only when there is something to discard — live recording, captured audio, or typed text.
+  // Reset never submits; it clears the parent's audio buffer + recording state and the textarea,
+  // so stale audio can never be sent.
+  const canResetRecording =
+    !isLogicMode && Boolean(onClearRecording) && (micListening || Boolean(hasRecording) || !isEmpty);
+  const handleResetRecording = () => {
+    onClearRecording?.();
+    setInput("");
+  };
   // Premium-only conversation engine. Gate only when the parent supplied entitlement and the
   // learner is not premium; legacy callers (no entitlement prop) are never gated.
   const isPremiumGated = entitlement ? !entitlement.isPremium : false;
@@ -445,15 +463,31 @@ export default function ConversationMode({
               fallbackTestId="ai-tutor-conversation-mic-fallback"
             />
           )}
-          <button
-            type="button"
-            onClick={onSend}
-            disabled={isEmpty || loading || atTurnCap}
-            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-400"
-          >
-            <Send className="h-4 w-4" aria-hidden />
-            {modeCopy.send}
-          </button>
+          <div className="flex gap-2">
+            {!isLogicMode && onClearRecording && (
+              <button
+                type="button"
+                onClick={handleResetRecording}
+                disabled={!canResetRecording || loading}
+                className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:border-slate-100 disabled:text-slate-300"
+                data-testid="ai-tutor-conversation-reset-recording"
+                aria-label="Làm lại — Start over"
+                title="Làm lại — Start over"
+              >
+                <RotateCcw className="h-4 w-4" aria-hidden />
+                Làm lại
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={onSend}
+              disabled={isEmpty || loading || atTurnCap}
+              className="inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-400"
+            >
+              <Send className="h-4 w-4" aria-hidden />
+              {modeCopy.send}
+            </button>
+          </div>
         </div>
         {showMicFallback && (
           <p

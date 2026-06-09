@@ -210,3 +210,84 @@ describe("ConversationMode — abstention redirect (never dead-end)", () => {
     expect(screen.getByRole("button", { name: tutorCopy.ui.speakSend })).not.toBeDisabled();
   });
 });
+
+describe("ConversationMode — recording clear/reset (product bug 4)", () => {
+  it("renders the Vietnamese-primary 'Làm lại' control when a clear handler + recording exist", () => {
+    render(
+      <ConversationMode
+        {...baseProps({ entitlement: { isPremium: true }, onClearRecording: vi.fn(), hasRecording: true })}
+      />,
+    );
+    const reset = screen.getByTestId("ai-tutor-conversation-reset-recording");
+    expect(reset).toBeInTheDocument();
+    expect(reset).toHaveTextContent("Làm lại"); // VN primary
+    expect(reset.getAttribute("aria-label")).toMatch(/Start over/); // EN secondary
+    expect(reset).not.toBeDisabled();
+  });
+
+  it("clears the audio buffer (parent handler) and the textarea without submitting", () => {
+    const onClearRecording = vi.fn();
+    const setInput = vi.fn();
+    const onSend = vi.fn();
+    render(
+      <ConversationMode
+        {...baseProps({
+          entitlement: { isPremium: true },
+          input: "half a sentence",
+          hasRecording: true,
+          onClearRecording,
+          setInput,
+          onSend,
+        })}
+      />,
+    );
+    fireEvent.click(screen.getByTestId("ai-tutor-conversation-reset-recording"));
+    expect(onClearRecording).toHaveBeenCalledTimes(1); // parent discards stale audio
+    expect(setInput).toHaveBeenCalledWith(""); // textarea reset
+    expect(onSend).not.toHaveBeenCalled(); // never submits stale audio
+  });
+
+  it("enables reset while mic is live so a recording can be discarded mid-capture", () => {
+    render(
+      <ConversationMode
+        {...baseProps({
+          entitlement: { isPremium: true },
+          micListening: true,
+          input: "",
+          hasRecording: false,
+          onClearRecording: vi.fn(),
+        })}
+      />,
+    );
+    expect(screen.getByTestId("ai-tutor-conversation-reset-recording")).not.toBeDisabled();
+  });
+
+  it("disables reset when there is nothing to discard (no audio, no input, mic idle)", () => {
+    render(
+      <ConversationMode
+        {...baseProps({
+          entitlement: { isPremium: true },
+          micListening: false,
+          input: "",
+          hasRecording: false,
+          onClearRecording: vi.fn(),
+        })}
+      />,
+    );
+    expect(screen.getByTestId("ai-tutor-conversation-reset-recording")).toBeDisabled();
+  });
+
+  it("does not render the reset control for legacy callers (no clear handler)", () => {
+    render(<ConversationMode {...baseProps({ entitlement: { isPremium: true }, input: "hi" })} />);
+    expect(screen.queryByTestId("ai-tutor-conversation-reset-recording")).not.toBeInTheDocument();
+  });
+
+  it("does not render the reset control in logic mode (no speech recording there)", () => {
+    render(
+      <ConversationMode
+        {...baseProps({ mode: "logic", input: "x", hasRecording: true, onClearRecording: vi.fn() })}
+      />,
+    );
+    expect(screen.queryByTestId("ai-tutor-conversation-reset-recording")).not.toBeInTheDocument();
+  });
+});
