@@ -69,7 +69,6 @@ describe("Study OS static boundary", () => {
 
     expect(nonSpeakTopicFiles).toEqual([
       "src/lib/tutor/bilingualSalienceDetector.ts",
-      "src/lib/tutor/captureConsent.ts",
       "src/lib/tutor/contentAwarePivots.ts",
       "src/lib/tutor/conversationPromptTemplates.ts",
       "src/lib/tutor/correctionEngine.ts",
@@ -191,7 +190,6 @@ describe("Study OS static boundary", () => {
       .map((file) => file.rel);
 
     expect(localStorageUsers).toEqual([
-      "src/lib/tutor/captureConsent.ts",
       "src/lib/tutor/learningEvents.ts",
       "src/lib/tutor/studySessionState.ts",
     ]);
