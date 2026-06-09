@@ -87,6 +87,7 @@ describe("Study OS static boundary", () => {
       "src/lib/tutor/tutorCopy.ts",
       "src/lib/tutor/tutorEngine.ts",
       "src/lib/tutor/tutorTypes.ts",
+      "src/lib/tutor/vietlishCorpus.ts",
       "src/lib/tutor/vietlishCuratedLogic.ts",
       "src/lib/tutor/vietlishLogicEngine.ts",
     ]);
