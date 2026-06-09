@@ -47,6 +47,13 @@ import {
   type Recommendation,
 } from "@/lib/mercy/practiceRecommendations";
 import { MercyAnswerFeedback } from "@/components/feedback/MercyAnswerFeedback";
+import { FEATURE_FLAGS } from "@/lib/featureFlags";
+import {
+  awardConversationTurnXP,
+  getCurrentGeneralStreakDays,
+  getEncouragementForTurn,
+  type ConversationEncouragement,
+} from "@/lib/retention/conversationHooks";
 
 type ViewLang = "both" | "en" | "vi";
 
@@ -127,6 +134,32 @@ const progressBadgeStyle: React.CSSProperties = {
   fontSize: 11,
   fontWeight: 700,
   textDecoration: "none",
+};
+
+const encouragementStyle: React.CSSProperties = {
+  marginTop: -6,
+  marginBottom: 12,
+  marginLeft: 4,
+  maxWidth: "80%",
+  padding: "8px 10px",
+  borderRadius: 10,
+  background: "rgba(236,253,245,0.92)",
+  border: "1px solid rgba(16,185,129,0.18)",
+};
+
+const encouragementViStyle: React.CSSProperties = {
+  fontSize: 12,
+  fontWeight: 800,
+  color: "rgba(6,95,70,0.92)",
+  lineHeight: 1.45,
+};
+
+const encouragementEnStyle: React.CSSProperties = {
+  marginTop: 2,
+  fontSize: 11,
+  fontWeight: 650,
+  color: "rgba(15,118,110,0.68)",
+  lineHeight: 1.4,
 };
 
 const viCopyStyle: React.CSSProperties = {
@@ -352,6 +385,9 @@ export function ConversationThread({ conversationId, onCleared }: ConversationTh
   const [recsByMessageId, setRecsByMessageId] = useState<Map<string, Recommendation>>(
     () => new Map(),
   );
+  const [encouragementByMessageId, setEncouragementByMessageId] = useState<
+    Map<string, ConversationEncouragement>
+  >(() => new Map());
   const scrollerRef = useRef<HTMLDivElement | null>(null);
 
   const onPracticeStart = useCallback(
@@ -456,6 +492,21 @@ export function ConversationThread({ conversationId, onCleared }: ConversationTh
 
       const mercyTurn = await appendMessage(conversationId, "mercy", en, vi);
       setMessages((prev) => [...prev, mercyTurn]);
+      if (FEATURE_FLAGS.CONVERSATION_RETENTION_HOOKS) {
+        const learnerTurnNumber =
+          messages.filter((m) => m.role === "user").length + 1;
+        awardConversationTurnXP(learnerTurnNumber, false);
+        const encouragement = getEncouragementForTurn(
+          learnerTurnNumber,
+          0,
+          getCurrentGeneralStreakDays(),
+        );
+        setEncouragementByMessageId((prev) => {
+          const next = new Map(prev);
+          next.set(mercyTurn.id, encouragement);
+          return next;
+        });
+      }
       if (progressContext) {
         setProgressAwareIds((prev) => {
           const next = new Set(prev);
@@ -488,7 +539,7 @@ export function ConversationThread({ conversationId, onCleared }: ConversationTh
     } finally {
       setPending(false);
     }
-  }, [conversationId, input, pending, user]);
+  }, [conversationId, input, messages, pending, user]);
 
   const handleClear = useCallback(async () => {
     if (!conversationId) return;
@@ -557,6 +608,8 @@ export function ConversationThread({ conversationId, onCleared }: ConversationTh
 
         {messages.map((m) => {
           const rec = m.role === "mercy" ? recsByMessageId.get(m.id) ?? null : null;
+          const encouragement =
+            m.role === "mercy" ? encouragementByMessageId.get(m.id) ?? null : null;
           return (
             <React.Fragment key={m.id}>
               <MessageBubble
@@ -575,6 +628,12 @@ export function ConversationThread({ conversationId, onCleared }: ConversationTh
                     <span aria-hidden style={{ fontSize: 14 }}>📊</span>
                     <span>Tiến độ · Progress</span>
                   </Link>
+                </div>
+              ) : null}
+              {encouragement ? (
+                <div style={encouragementStyle} data-testid="conversation-encouragement">
+                  <div style={encouragementViStyle}>{encouragement.vi}</div>
+                  <div style={encouragementEnStyle}>{encouragement.en}</div>
                 </div>
               ) : null}
               {rec ? <InlinePracticeRecCard rec={rec} onStart={onPracticeStart} /> : null}

@@ -13,7 +13,8 @@ export type XPEventType =
   | "streak_week_continued"
   | "first_time_in_category"
   | "perfect_score_lesson"
-  | "listening_clip_complete";
+  | "listening_clip_complete"
+  | "conversation_turn";
 
 export interface XPEventDef {
   type: XPEventType;
@@ -89,6 +90,13 @@ export const XP_EVENT_DEFS: ReadonlyArray<XPEventDef> = [
     requires_source_id: true,
     label_vi: "Nghe xong một clip",
     label_en: "Listening clip done",
+  },
+  {
+    type: "conversation_turn",
+    default_xp: 2,
+    requires_source_id: false,
+    label_vi: "Lượt hội thoại hữu ích",
+    label_en: "Useful conversation turn",
   },
 ];
 

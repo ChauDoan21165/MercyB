@@ -23,6 +23,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import { FEATURE_FLAGS } from "@/lib/featureFlags";
 import {
   getWeeklyProgressSummary,
   type WeeklyProgress,
@@ -69,13 +70,24 @@ export default function WeeklyProgressWidget() {
     "pronunciationScoringEnabled",
     false,
   );
+  const { enabled: retentionHooksEnabled, loading: retentionFlagLoading } =
+    useFeatureFlag(
+      "CONVERSATION_RETENTION_HOOKS",
+      FEATURE_FLAGS.CONVERSATION_RETENTION_HOOKS,
+    );
 
   const [data, setData] = useState<WeeklyProgress | null>(null);
   const [loading, setLoading] = useState(true);
   const [errored, setErrored] = useState(false);
 
   useEffect(() => {
-    if (flagLoading || !enabled || !user) {
+    if (
+      flagLoading ||
+      retentionFlagLoading ||
+      !enabled ||
+      !retentionHooksEnabled ||
+      !user
+    ) {
       setLoading(false);
       return;
     }
@@ -95,10 +107,12 @@ export default function WeeklyProgressWidget() {
     return () => {
       alive = false;
     };
-  }, [enabled, flagLoading, user]);
+  }, [enabled, flagLoading, retentionFlagLoading, retentionHooksEnabled, user]);
 
   // Hidden: not signed in, flag off, errored, or no attempts.
-  if (!user || !enabled || flagLoading) return null;
+  if (!user || !enabled || !retentionHooksEnabled || flagLoading || retentionFlagLoading) {
+    return null;
+  }
   if (errored) return null;
   if (loading) return null;
   if (!data) return null;

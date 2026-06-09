@@ -10,11 +10,12 @@ import {
 } from "../eventTypes";
 
 describe("XP_EVENT_DEFS — registry", () => {
-  it("includes all nine canonical types from the brief", () => {
+  it("includes the canonical XP types plus D1 conversation turns", () => {
     const types = XP_EVENT_DEFS.map((d) => d.type).sort();
     expect(types).toEqual(
       [
         "challenge_complete",
+        "conversation_turn",
         "drill_complete",
         "first_time_in_category",
         "lesson_complete",
@@ -37,6 +38,7 @@ describe("XP_EVENT_DEFS — registry", () => {
     expect(defaultXPFor("first_time_in_category")).toBe(20);
     expect(defaultXPFor("perfect_score_lesson")).toBe(5);
     expect(defaultXPFor("listening_clip_complete")).toBe(8);
+    expect(defaultXPFor("conversation_turn")).toBe(2);
   });
 
   it("every entry has both VI and EN labels", () => {

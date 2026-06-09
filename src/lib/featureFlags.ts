@@ -165,6 +165,17 @@ export const FEATURE_FLAGS = {
    * green. Reads env `VITE_FEATURE_NOTIFICATIONS`; defaults to OFF.
    */
   FEATURE_NOTIFICATIONS: readEnvBool("VITE_FEATURE_NOTIFICATIONS", false),
+
+  /**
+   * Lane D1 — conversation retention hooks. ON in local/dev so Lane A can
+   * integrate and QA copy/XP quickly; OFF in production builds unless an
+   * explicit deploy env opts in. The runtime DB flag with the same key can
+   * further dark-launch visible surfaces.
+   */
+  CONVERSATION_RETENTION_HOOKS: readEnvBool(
+    "VITE_CONVERSATION_RETENTION_HOOKS",
+    Boolean(import.meta.env.DEV),
+  ),
 };
 
 /**
