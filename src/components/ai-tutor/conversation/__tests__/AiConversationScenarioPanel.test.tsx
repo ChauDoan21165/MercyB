@@ -5,15 +5,90 @@ import AiConversationScenarioPanel from "../AiConversationScenarioPanel";
 
 describe("AiConversationScenarioPanel", () => {
   it("gates non-premium learners", () => {
+    const sendTurn = vi.fn();
+
     render(
       <AiConversationScenarioPanel
         accessToken="token"
         hasPremium={false}
         loadingAccess={false}
+        sendTurn={sendTurn}
       />,
     );
 
-    expect(screen.getByTestId("ai-conversation-premium-gate")).toHaveTextContent("Premium-only");
+    expect(screen.getByTestId("ai-conversation-premium-gate")).toHaveTextContent(
+      "Mở luyện hội thoại AI nhiều lượt",
+    );
+    expect(screen.getByTestId("ai-conversation-gate-turn-count")).toHaveTextContent("Turn 0/50");
+    expect(screen.queryByText("Mercy")).not.toBeInTheDocument();
+    expect(sendTurn).not.toHaveBeenCalled();
+  });
+
+  it("renders a product gate and restores turn count when entitlement fails mid-submit", async () => {
+    const sendTurn = vi.fn().mockResolvedValue({
+      reply: "Premium required",
+      correction: null,
+      summary: null,
+      cost: {},
+      provider: "local-fallback",
+      pronunciationAbstention: null,
+      entitlementGate: true,
+    });
+
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token"
+        hasPremium
+        loadingAccess={false}
+        sendTurn={sendTurn}
+      />,
+    );
+
+    await send("I want order food.");
+
+    expect(await screen.findByTestId("ai-conversation-premium-gate")).toHaveTextContent(
+      "Mở luyện hội thoại AI nhiều lượt",
+    );
+    expect(screen.getByTestId("ai-conversation-gate-turn-count")).toHaveTextContent("Turn 0/50");
+    expect(screen.queryByText(/chỉ một chỗ nhỏ|one small thing/i)).not.toBeInTheDocument();
+    expect(screen.queryByText("Premium required")).not.toBeInTheDocument();
+    expect(screen.queryByText("Mercy")).not.toBeInTheDocument();
+    expect(sendTurn).toHaveBeenCalledTimes(1);
+  });
+
+  it("lets an entitled admin or premium learner complete a corrected conversation turn", async () => {
+    const sendTurn = vi.fn().mockResolvedValue({
+      reply: "Great, you would like to order food. What drink would you like?",
+      correction: {
+        original: "I want order food.",
+        corrected: "I want to order food.",
+        explanationVi: "Tiếng Anh cần 'to' sau 'want' trước động từ.",
+        interferencePattern: "Vietnamese transfer after want",
+        confidence: "high",
+      },
+      summary: null,
+      cost: { totalTokens: 90, estimatedUsd: 0.0001 },
+      provider: "openai",
+      pronunciationAbstention: null,
+    });
+
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token"
+        hasPremium
+        loadingAccess={false}
+        sendTurn={sendTurn}
+      />,
+    );
+
+    await send("I want order food.");
+
+    expect(await screen.findByTestId("ai-conversation-correction")).toHaveTextContent(
+      "I want to order food.",
+    );
+    expect(screen.getByText("Turn 1/50")).toBeInTheDocument();
+    expect(screen.queryByTestId("ai-conversation-premium-gate")).not.toBeInTheDocument();
+    expect(sendTurn).toHaveBeenCalledTimes(1);
   });
 
   it("runs a coherent 4-turn job interview proof and renders correction plus summary", async () => {

@@ -45,6 +45,7 @@ export default function AiConversationScenarioPanel({
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [entitlementGateVisible, setEntitlementGateVisible] = useState(false);
   const [telemetrySession, setTelemetrySession] = useState<TelemetrySession | null>(null);
 
   const scenario = AI_CONVERSATION_SCENARIOS[scenarioId];
@@ -75,13 +76,21 @@ export default function AiConversationScenarioPanel({
     setSession(createSeededSession(nextScenarioId));
     setInput("");
     setError("");
+    setEntitlementGateVisible(false);
   };
 
   const handleSend = async () => {
     const learnerText = input.trim();
     if (!learnerText || !accessToken || !canSendAiConversationTurn(session)) return;
+    if (loadingAccess || !hasPremium) {
+      setLoading(false);
+      setError("");
+      setEntitlementGateVisible(true);
+      return;
+    }
     setInput("");
     setError("");
+    setEntitlementGateVisible(false);
     setLoading(true);
 
     const learnerTurn: AiConversationTurn = {
@@ -105,6 +114,12 @@ export default function AiConversationScenarioPanel({
         accessToken,
         hasPremium,
       });
+      if (response.entitlementGate) {
+        setSession(session);
+        setInput(learnerText);
+        setEntitlementGateVisible(true);
+        return;
+      }
       const assistantTurn: AiConversationTurn = {
         id: `assistant-${Date.now()}`,
         role: "assistant",
@@ -154,20 +169,9 @@ export default function AiConversationScenarioPanel({
     );
   }
 
-  if (!hasPremium) {
+  if (!hasPremium || entitlementGateVisible) {
     return (
-      <section
-        className="mx-auto mt-4 w-full max-w-3xl rounded-lg border border-amber-200 bg-amber-50 p-5"
-        data-testid="ai-conversation-premium-gate"
-      >
-        <div className="text-xs font-black uppercase text-amber-700">Premium</div>
-        <h2 className="mt-1 text-lg font-black text-slate-900">
-          AI conversation scenarios are Premium-only
-        </h2>
-        <p className="mt-2 text-sm font-semibold leading-6 text-slate-700">
-          Luyện phỏng vấn nhiều lượt với sửa lỗi tiếng Việt sang tiếng Anh chỉ mở cho Premium.
-        </p>
-      </section>
+      <PremiumConversationGate turnCount={session.learnerTurnCount} maxTurns={session.maxTurns} />
     );
   }
 
@@ -311,6 +315,49 @@ export default function AiConversationScenarioPanel({
           </button>
         </div>
       </div>
+    </section>
+  );
+}
+
+function PremiumConversationGate({
+  turnCount,
+  maxTurns,
+}: {
+  turnCount: number;
+  maxTurns: number;
+}) {
+  return (
+    <section
+      className="mx-auto mt-4 w-full max-w-3xl rounded-lg border border-amber-300 bg-amber-50 p-5 shadow-sm"
+      data-testid="ai-conversation-premium-gate"
+      aria-label="Thẻ nâng cấp Premium cho luyện hội thoại AI"
+    >
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <div className="text-xs font-black uppercase text-amber-700">Premium</div>
+          <h2 className="mt-1 text-lg font-black text-slate-950">
+            Mở luyện hội thoại AI nhiều lượt
+          </h2>
+          <p className="mt-2 text-sm font-semibold leading-6 text-slate-800">
+            Phần hội thoại AI có sửa lỗi theo ngữ cảnh chỉ dành cho Premium. Đây là thẻ nâng cấp của MercyBlade, không phải lời của Mercy.
+          </p>
+          <p className="mt-2 text-sm font-semibold leading-6 text-slate-700">
+            English: Upgrade to Premium to use multi-turn AI conversation practice.
+          </p>
+        </div>
+        <div
+          className="rounded-lg border border-amber-200 bg-white px-4 py-3 text-sm font-black text-slate-800"
+          data-testid="ai-conversation-gate-turn-count"
+        >
+          Turn {turnCount}/{maxTurns}
+        </div>
+      </div>
+      <a
+        href="/pricing"
+        className="mt-4 inline-flex min-h-[44px] items-center justify-center rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white hover:bg-slate-800"
+      >
+        Xem gói Premium
+      </a>
     </section>
   );
 }

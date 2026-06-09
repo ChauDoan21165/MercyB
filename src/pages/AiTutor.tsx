@@ -2497,7 +2497,7 @@ export default function AiTutorPage() {
       )}
       <AiConversationScenarioPanel
         accessToken={session?.access_token}
-        hasPremium={userAccess.hasPremium || userAccess.isHighAdmin}
+        hasPremium={userAccess.canAccessPremium()}
         loadingAccess={userAccess.isLoading}
         userId={userAccess.userId ?? user?.id ?? null}
       />

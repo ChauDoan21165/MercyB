@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   DEFAULT_AI_CONVERSATION_SCENARIO_ID,
 } from "@/lib/ai-conversation/scenarios";
@@ -27,6 +27,39 @@ vi.mock("@/lib/tutor/conversationAiClient", async () => {
 });
 
 describe("sendAiConversationTurn pure conversation adapter", () => {
+  beforeEach(() => {
+    vi.mocked(sendConversationAiTurn).mockClear();
+  });
+
+  it("gates non-premium before warmth, pronunciation, or provider request work", async () => {
+    const result = await sendAiConversationTurn({
+      scenarioId: DEFAULT_AI_CONVERSATION_SCENARIO_ID,
+      learnerText: "I want order food.",
+      history: [
+        {
+          id: "assistant-opening",
+          role: "assistant",
+          text: "What would you like to order?",
+        },
+      ],
+      turnCount: 0,
+      accessToken: "token",
+      hasPremium: false,
+    });
+
+    expect(result).toMatchObject({
+      provider: "local-fallback",
+      entitlementGate: true,
+      correction: null,
+      summary: null,
+      cost: {},
+    });
+    expect(result.reply).toBe("Premium required");
+    expect(result.reply).not.toMatch(/chỉ một chỗ nhỏ|one small thing/i);
+    expect(result.pronunciationAbstention).toBeNull();
+    expect(sendConversationAiTurn).not.toHaveBeenCalled();
+  });
+
   it("builds prompt, policy, entitlement, turn cap, and no-audio pronunciation contracts", async () => {
     const result = await sendAiConversationTurn({
       scenarioId: DEFAULT_AI_CONVERSATION_SCENARIO_ID,
