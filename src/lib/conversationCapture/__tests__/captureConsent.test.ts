@@ -5,7 +5,7 @@ import {
   setCaptureConsent,
   hasCaptureConsentDecision,
   getCaptureConsentKey,
-} from "@/lib/tutor/captureConsent";
+} from "@/lib/conversationCapture/captureConsent";
 
 const KEY = getCaptureConsentKey();
 

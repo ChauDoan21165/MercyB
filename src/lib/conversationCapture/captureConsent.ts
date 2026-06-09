@@ -1,7 +1,7 @@
-// src/lib/tutor/captureConsent.ts
+// src/lib/conversationCapture/captureConsent.ts
 //
 // The privacy gate for the C2 conversation data-capture pipeline
-// (src/lib/tutor/conversationCapture.ts). Lane A MUST check hasCaptureConsent()
+// (src/lib/conversationCapture/conversationCapture.ts). Lane A MUST check hasCaptureConsent()
 // before calling startSession / logTurn — capture stays dark until the learner
 // explicitly opts in via <ConsentModal />.
 //

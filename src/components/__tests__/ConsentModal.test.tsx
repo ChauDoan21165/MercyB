@@ -2,7 +2,7 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { ConsentModal } from "@/components/ConsentModal";
-import { hasCaptureConsent, hasCaptureConsentDecision } from "@/lib/tutor/captureConsent";
+import { hasCaptureConsent, hasCaptureConsentDecision } from "@/lib/conversationCapture/captureConsent";
 
 beforeEach(() => {
   window.localStorage.clear();

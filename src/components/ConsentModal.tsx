@@ -22,7 +22,7 @@ import {
   DialogTitle,
 } from "./ui/dialog";
 import { Button } from "./ui/button";
-import { setCaptureConsent } from "@/lib/tutor/captureConsent";
+import { setCaptureConsent } from "@/lib/conversationCapture/captureConsent";
 
 interface ConsentModalProps {
   open: boolean;
