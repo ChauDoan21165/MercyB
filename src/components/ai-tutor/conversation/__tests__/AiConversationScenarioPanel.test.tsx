@@ -85,7 +85,7 @@ describe("AiConversationScenarioPanel", () => {
 
 async function send(text: string) {
   await act(async () => {
-    fireEvent.change(screen.getByPlaceholderText("Answer Mercy's interview question in English..."), {
+    fireEvent.change(screen.getByPlaceholderText("Answer Mercy's question in English..."), {
       target: { value: text },
     });
     fireEvent.click(screen.getByRole("button", { name: /send answer/i }));

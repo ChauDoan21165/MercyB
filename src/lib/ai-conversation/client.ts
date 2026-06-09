@@ -1,12 +1,33 @@
-import { resolveApiUrl } from "@/lib/apiBase";
-import { supabase } from "@/lib/supabaseClient";
 import type {
   AiConversationCost,
   AiConversationCorrection,
   AiConversationSummary,
   AiConversationTurn,
 } from "./session";
-import type { AiConversationScenarioId } from "./scenarios";
+import {
+  getAiConversationScenario,
+  type AiConversationScenarioId,
+} from "./scenarios";
+import {
+  buildConversationPromptTemplate,
+} from "@/lib/tutor/conversationPromptTemplates";
+import {
+  CONVERSATION_AI_MAX_TURNS,
+  sendConversationAiTurn,
+  type ConversationAiMessage,
+  type ConversationAiResult,
+} from "@/lib/tutor/conversationAiClient";
+import {
+  decideConversationTurnPolicy,
+} from "@/lib/tutor/conversationTurnPolicy";
+import {
+  abstentionRedirectFromPronunciation,
+  buildTurnWarmth,
+} from "@/lib/tutor/conversationWarmth";
+import {
+  scoreLearnerConversationPronunciation,
+  type ConversationAudioSource,
+} from "@/lib/tutor/conversationPronunciationAdapter";
 
 export type AiConversationTurnRequest = {
   scenarioId: AiConversationScenarioId;
@@ -14,6 +35,10 @@ export type AiConversationTurnRequest = {
   history: AiConversationTurn[];
   turnCount: number;
   accessToken: string;
+  hasPremium?: boolean;
+  entitlementStatus?: string | null;
+  audioBlob?: Blob | null;
+  audioSource?: ConversationAudioSource;
 };
 
 export type AiConversationTurnResponse = {
@@ -21,64 +46,111 @@ export type AiConversationTurnResponse = {
   correction: AiConversationCorrection | null;
   summary: AiConversationSummary | null;
   cost: Partial<AiConversationCost>;
-  provider: "openai" | "supabase-fallback";
+  provider: "openai" | "local-fallback";
+  pronunciationAbstention: ReturnType<typeof abstentionRedirectFromPronunciation>;
 };
 
 export async function sendAiConversationTurn(
   request: AiConversationTurnRequest,
 ): Promise<AiConversationTurnResponse> {
-  const body = {
-    mode: "ai-conversation-turn",
-    scenarioId: request.scenarioId,
+  const scenario = getAiConversationScenario(request.scenarioId);
+  const recentAssistantQuestions = request.history
+    .filter((turn) => turn.role === "assistant" && /\?/.test(turn.text))
+    .map((turn) => turn.text);
+  const policy = decideConversationTurnPolicy({
+    learnerText: request.learnerText,
+    currentTopicId: scenario.id,
+    topicLabel: scenario.title,
+    turnsOnTopic: request.turnCount,
+    recentQuestions: recentAssistantQuestions,
+  });
+  const promptTemplate = buildConversationPromptTemplate({
+    topic: scenario.topic,
     learnerText: request.learnerText,
     turnCount: request.turnCount,
-    history: request.history.map((turn) => ({
-      role: turn.role,
-      text: turn.text,
-      correction: turn.correction ?? null,
-    })),
-  };
+    recentAiTurns: request.history
+      .filter((turn) => turn.role === "assistant")
+      .map((turn) => turn.text)
+      .slice(-6),
+  });
+  const pronunciation = await scoreLearnerConversationPronunciation({
+    audioBlob: request.audioBlob ?? null,
+    audioSource: request.audioSource ?? "text_only",
+    target: recentAssistantQuestions.at(-1) ?? scenario.openingPrompt,
+    transcript: request.learnerText,
+    step7Enabled: Boolean(request.audioBlob && request.accessToken),
+    userJwt: request.accessToken,
+  });
+  const pronunciationAbstention = abstentionRedirectFromPronunciation(pronunciation, {
+    turnIndex: request.turnCount,
+    suggestedNextPrompt:
+      request.audioSource === "learner_recording"
+        ? { vi: policy.promptInstruction, en: policy.promptInstruction }
+        : null,
+  });
+  const warmth = buildTurnWarmth({
+    warmthPatterns: scenario.warmthPatterns,
+    interferenceNote: scenario.topic.l1InterferenceNotes?.[0] ?? null,
+    outcome: "minor_slip",
+    turnIndex: request.turnCount,
+  });
 
-  try {
-    const response = await fetch(resolveApiUrl("/api/mercy-ai"), {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${request.accessToken}`,
-      },
-      body: JSON.stringify(body),
-    });
-    const contentType = response.headers.get("content-type") || "";
-    if (!response.ok || !contentType.includes("application/json")) {
-      throw new Error(`api_unavailable:${response.status}`);
-    }
-    const data = await response.json();
-    return normalizeAiConversationResponse(data, "openai");
-  } catch (error) {
-    if (!isLocalDev()) throw error;
-    const { data, error: fallbackError } = await supabase.functions.invoke("ai-tutor", {
-      body,
-      headers: { Authorization: `Bearer ${request.accessToken}` },
-    });
-    if (fallbackError) throw fallbackError;
-    return normalizeAiConversationResponse(data, "supabase-fallback");
-  }
+  const result = await sendConversationAiTurn({
+    accessToken: request.accessToken,
+    scenarioId: scenario.id,
+    learnerText: request.learnerText,
+    messages: buildMessages(request.history, promptTemplate.systemPrompt, policy.promptInstruction),
+    promptMetadata: {
+      scenarioId: scenario.id,
+      topicId: scenario.id,
+      locale: "vi",
+      promptVersion: "conversation-pure-v1",
+      vietlishExampleCount: promptTemplate.systemPrompt.match(/Vietlish:/g)?.length ?? 0,
+      warmthPatternCount: scenario.warmthPatterns.length,
+    },
+    entitlement: {
+      isPremium: request.hasPremium ?? true,
+      status: request.entitlementStatus ?? null,
+    },
+    turnCap: {
+      turnCount: request.turnCount,
+      maxTurns: CONVERSATION_AI_MAX_TURNS,
+    },
+    modelIntent: "conversation_turn",
+    qualityGate: true,
+  });
+
+  return normalizeAiConversationResult(result, warmth, pronunciationAbstention);
 }
 
-function normalizeAiConversationResponse(
-  value: unknown,
-  provider: "openai" | "supabase-fallback",
+function buildMessages(
+  history: AiConversationTurn[],
+  systemPrompt: string,
+  policyInstruction: string,
+): ConversationAiMessage[] {
+  return [
+    { role: "developer", text: systemPrompt },
+    { role: "developer", text: `Deterministic turn policy: ${policyInstruction}` },
+    ...history.map((turn) => ({
+      role: turn.role,
+      text: turn.text,
+    })),
+  ];
+}
+
+function normalizeAiConversationResult(
+  result: ConversationAiResult,
+  warmth: ReturnType<typeof buildTurnWarmth>,
+  pronunciationAbstention: ReturnType<typeof abstentionRedirectFromPronunciation>,
 ): AiConversationTurnResponse {
-  const record = value && typeof value === "object" ? value as Record<string, unknown> : {};
-  const correction = normalizeCorrection(record.correction);
+  const reply = [warmth.vi, warmth.en, result.reply].filter(Boolean).join("\n");
   return {
-    reply: typeof record.reply === "string" && record.reply.trim()
-      ? record.reply.trim()
-      : "I want to keep practicing this interview. Can you say that answer one more way?",
-    correction,
-    summary: normalizeSummary(record.summary),
-    cost: normalizeCost(record.cost),
-    provider,
+    reply,
+    correction: result.ok ? normalizeCorrection(result.correction) : null,
+    summary: result.ok ? normalizeSummary(result.summary) : null,
+    cost: result.cost,
+    provider: result.provider === "openai" ? "openai" : "local-fallback",
+    pronunciationAbstention,
   };
 }
 
@@ -127,11 +199,4 @@ function stringValue(value: unknown): string {
 function numberValue(value: unknown): number {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : 0;
-}
-
-function isLocalDev(): boolean {
-  return Boolean(
-    (import.meta as ImportMeta & { env?: Record<string, unknown> }).env?.DEV ||
-      (typeof window !== "undefined" && /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname)),
-  );
 }
