@@ -251,6 +251,26 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     expect(onReadTarget).toHaveBeenCalledTimes(1);
   });
 
+  it("shows a scoped safe TTS error for the next follow-up question", () => {
+    const onReadFollowUp = vi.fn();
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        followUpPrompt="Mercy chưa nghe rõ. Bạn nói lại câu đó nhé. I didn't catch that clearly. Can you say it again?"
+        ttsErrorScope="follow-up"
+        ttsError="Không nghe thấy? Kiểm tra âm lượng hoặc thử bấm lại."
+        onReadFollowUp={onReadFollowUp}
+      />,
+    );
+
+    const followUp = within(screen.getByTestId("ai-tutor-speak-follow-up"));
+    expect(followUp.getByTestId("ai-tutor-speak-follow-up-tts-error")).toHaveTextContent(
+      "Không nghe thấy? Kiểm tra âm lượng hoặc thử bấm lại.",
+    );
+    fireEvent.click(followUp.getByRole("button", { name: "Thử lại" }));
+    expect(onReadFollowUp).toHaveBeenCalledTimes(1);
+  });
+
   it("keeps the text repeat fallback visible when the mic is unsupported", () => {
     render(
       <SpeakPracticeMode

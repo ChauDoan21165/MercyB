@@ -232,6 +232,9 @@ const STEP7_AZURE_BATCH_ENABLED =
   (import.meta as ImportMeta & { env?: Record<string, string> }).env
     ?.VITE_AZURE_PHONEME_BATCH_ENABLED === "true";
 const EMPTY_SPEAK_AUDIO_BLOB = new Blob([], { type: "audio/webm" });
+const VIETNAMESE_SPEAK_TEXT_PATTERN =
+  /[ăâđêôơưàáạảãằắặẳẵầấậẩẫèéẹẻẽềếệểễìíịỉĩòóọỏõồốộổỗờớợởỡùúụủũừứựửữỳýỵỷỹ]/i;
+const MERCY_CLARIFICATION_PREFIX_PATTERN = /^\s*Mercy\s+chưa\s+nghe\s+rõ\b/i;
 
 type SpeakAiFollowUpRequest = {
   transcript: string;
@@ -240,6 +243,12 @@ type SpeakAiFollowUpRequest = {
   recentTurns: PivotPromptTurn[];
   accessToken: string;
 };
+
+function resolveSpeakFollowUpTtsTarget(text: string, fallbackTarget: TutorTarget): TutorTarget {
+  return VIETNAMESE_SPEAK_TEXT_PATTERN.test(text) || MERCY_CLARIFICATION_PREFIX_PATTERN.test(text)
+    ? "vi"
+    : fallbackTarget;
+}
 
 function normalizeAiSpeakFollowUp(value: unknown): string | null {
   const raw = typeof value === "string"
@@ -2267,7 +2276,8 @@ export default function AiTutorPage() {
 
   const handleReadSpeakFollowUp = () => {
     const text = speakFollowUpSession.currentQuestion?.trim() || "";
-    if (!isSpeakFollowUpReadAloudEligible(text)) return;
+    if (speakFollowUpSession.currentIsPivot || !isSpeakFollowUpReadAloudEligible(text)) return;
+    const followUpTarget = resolveSpeakFollowUpTtsTarget(text, target);
     if (stt.listening) {
       ignoreNextSttCommitRef.current = true;
       stt.stop();
@@ -2279,7 +2289,7 @@ export default function AiTutorPage() {
       tts.stop();
     }
     setSpeakingMessageId("speak-follow-up");
-    void tts.speak(text, ttsLang, target);
+    void tts.speak(text, getTtsLocale(followUpTarget), followUpTarget);
   };
 
   const handleSpeakRepeatInputChange = (value: string) => {

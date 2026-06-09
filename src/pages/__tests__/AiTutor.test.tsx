@@ -1416,6 +1416,59 @@ describe("AiTutor four-tab seed flow", () => {
     expect(browserSpeak).not.toHaveBeenCalled();
   });
 
+  it("reads the exact bilingual clarification follow-up aloud without advancing Speak state", async () => {
+    const clarification =
+      "Mercy chưa nghe rõ. Bạn nói lại câu đó nhé. I didn't catch that clearly. Can you say it again?";
+    const browserSpeak = vi.fn((utterance: MockSpeechSynthesisUtterance) => {
+      utterance.onstart?.();
+      utterance.onend?.();
+    });
+    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/clarification.mp3", cached: false });
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        speak: browserSpeak,
+        cancel: vi.fn(),
+        getVoices: vi.fn(() => [{ lang: "vi-VN" }, { lang: "en-US" }]),
+        resume: vi.fn(),
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: MockSpeechSynthesisUtterance,
+    });
+    Object.defineProperty(window, "Audio", {
+      configurable: true,
+      value: MockEndingAudio,
+    });
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    renderAiTutor();
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+    await speakCurrentTarget("I bought a hat yesterday.");
+    await answerFollowUpByVoice("That question does not make sense.");
+
+    const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
+    expect(followUp).toHaveTextContent(clarification);
+    expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-speak-follow-up-answer")).toBeInTheDocument();
+
+    await userEvent.click(within(followUp).getByRole("button", { name: "Mercy đọc câu hỏi tiếp theo" }));
+
+    await waitFor(() => expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
+      text: clarification,
+      language: "vi",
+    }));
+    expect(MockEndingAudio.last?.src).toBe("https://example.test/clarification.mp3");
+    expect(MockEndingAudio.last?.play).toHaveBeenCalledTimes(1);
+    expect(browserSpeak).not.toHaveBeenCalled();
+    expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent(clarification);
+    expect(screen.getByTestId("ai-tutor-speak-follow-up-answer")).toBeInTheDocument();
+  });
+
   it("uses the learner's latest typed Speak topic for the next follow-up", async () => {
     renderAiTutor();
 
