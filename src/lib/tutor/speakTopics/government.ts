@@ -11,7 +11,7 @@ export const speakTopics = [
   {
     id: "topic-government-service-counter",
     labelEn: "Government Service Counter",
-    labelVi: "Quay dich vu hanh chinh",
+    labelVi: "Quầy dịch vụ hành chính",
     category: "government",
     scenarioDescription:
       "The learner visits a government or municipal service counter to ask about a form, required documents, wait time, and the next step.",
@@ -43,7 +43,7 @@ export const speakTopics = [
       {
         id: "government-counter-ask-for",
         label: "Ask for help",
-        note: "'Hoi giup' can become 'ask help.' At a counter, the safer phrase is 'I need help with this form' or 'Can I ask for help?'",
+        note: "'Hỏi giúp' can become 'ask help.' At a counter, the safer phrase is 'I need help with this form' or 'Can I ask for help?'",
       },
     ],
     followUps: [
@@ -57,7 +57,7 @@ export const speakTopics = [
   {
     id: "topic-government-benefits-application",
     labelEn: "Benefits Application",
-    labelVi: "Dang ky phuc loi",
+    labelVi: "Đăng ký phúc lợi",
     category: "government",
     scenarioDescription:
       "The learner asks about applying for public benefits, support payments, childcare help, health coverage, or another assistance program.",
@@ -89,7 +89,7 @@ export const speakTopics = [
       {
         id: "government-benefits-status",
         label: "Check the status",
-        note: "'Kiem tra ho so' often maps to 'check my application.' For an office call, 'check the status of my application' is precise.",
+        note: "'Kiểm tra hồ sơ' often maps to 'check my application.' For an office call, 'check the status of my application' is precise.",
       },
     ],
     followUps: [
@@ -103,7 +103,7 @@ export const speakTopics = [
   {
     id: "topic-government-residence-address",
     labelEn: "Residence Or Address Record",
-    labelVi: "Ho so cu tru hoac dia chi",
+    labelVi: "Hồ sơ cư trú hoặc địa chỉ",
     category: "government",
     scenarioDescription:
       "The learner needs to update, confirm, or request a residence or address record for school, work, banking, immigration, or local paperwork.",

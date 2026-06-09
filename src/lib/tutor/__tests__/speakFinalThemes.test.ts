@@ -12,6 +12,18 @@ const finalThemeGroups = [
   { category: "social", topics: socialSpeakTopics },
 ] as const;
 
+const VIETNAMESE_DIACRITIC_PATTERN = /[À-ỹ]/u;
+
+const l1NotesWithVietnameseExamples = new Set([
+  "emergency-hurt-passive",
+  "emergency-medical-breathing",
+  "errands-pick-up",
+  "errands-pharmacy-ready",
+  "government-counter-ask-for",
+  "government-benefits-status",
+  "social-invite-free",
+]);
+
 describe("final speak topic themes", () => {
   it("registers the final four content themes in the speak topic library", () => {
     const libraryIds = new Set(SPEAK_TOPIC_LIBRARY.map((topic) => topic.id));
@@ -36,6 +48,20 @@ describe("final speak topic themes", () => {
         expect(topic.warmthPatterns.length, topic.id).toBeGreaterThanOrEqual(3);
         expect(topic.l1InterferenceNotes?.length, topic.id).toBeGreaterThanOrEqual(2);
         expect(topic.followUps.length, topic.id).toBeGreaterThanOrEqual(5);
+      }
+    }
+  });
+
+  it("preserves Vietnamese diacritics in learner-facing labels and L1 note examples", () => {
+    for (const { topics } of finalThemeGroups) {
+      for (const topic of topics) {
+        expect(topic.labelVi, `${topic.id} labelVi`).toMatch(VIETNAMESE_DIACRITIC_PATTERN);
+
+        for (const note of topic.l1InterferenceNotes ?? []) {
+          if (l1NotesWithVietnameseExamples.has(note.id)) {
+            expect(note.note, `${topic.id} ${note.id}`).toMatch(VIETNAMESE_DIACRITIC_PATTERN);
+          }
+        }
       }
     }
   });

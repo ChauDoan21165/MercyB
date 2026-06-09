@@ -11,7 +11,7 @@ export const speakTopics = [
   {
     id: "topic-errands-daily-list",
     labelEn: "Daily Errands List",
-    labelVi: "Danh sach viec vat hang ngay",
+    labelVi: "Danh sách việc vặt hằng ngày",
     category: "errands",
     scenarioDescription:
       "The learner plans several everyday errands, explains priorities, asks for help, and confirms timing across shops, offices, or home tasks.",
@@ -43,7 +43,7 @@ export const speakTopics = [
       {
         id: "errands-pick-up",
         label: "Pick up",
-        note: "'Lay do' often becomes just 'take.' For collecting something from a place, English usually uses 'pick up.'",
+        note: "'Lấy đồ' often becomes just 'take.' For collecting something from a place, English usually uses 'pick up.'",
       },
     ],
     followUps: [
@@ -57,7 +57,7 @@ export const speakTopics = [
   {
     id: "topic-errands-pharmacy-pickup",
     labelEn: "Pharmacy Pickup",
-    labelVi: "Lay thuoc o nha thuoc",
+    labelVi: "Lấy thuốc ở nhà thuốc",
     category: "errands",
     scenarioDescription:
       "The learner picks up medicine, asks about a prescription, confirms name and birth date, checks pickup time, and asks basic usage questions.",
@@ -89,7 +89,7 @@ export const speakTopics = [
       {
         id: "errands-pharmacy-ready",
         label: "Is it ready?",
-        note: "'Da co chua?' at a pharmacy maps naturally to 'Is it ready?' or 'Is my prescription ready?'",
+        note: "'Đã có chưa?' at a pharmacy maps naturally to 'Is it ready?' or 'Is my prescription ready?'",
       },
     ],
     followUps: [
@@ -103,7 +103,7 @@ export const speakTopics = [
   {
     id: "topic-errands-store-return",
     labelEn: "Returning An Item",
-    labelVi: "Doi tra hang",
+    labelVi: "Đổi trả hàng",
     category: "errands",
     scenarioDescription:
       "The learner returns or exchanges an item, explains the problem, shows proof of purchase, and asks about refund, store credit, or replacement.",

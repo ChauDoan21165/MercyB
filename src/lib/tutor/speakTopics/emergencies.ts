@@ -11,7 +11,7 @@ export const speakTopics = [
   {
     id: "topic-emergencies-calling-help",
     labelEn: "Calling Emergency Help",
-    labelVi: "Goi tro giup khan cap",
+    labelVi: "Gọi trợ giúp khẩn cấp",
     category: "emergencies",
     scenarioDescription:
       "The learner practices giving essential information during an emergency call: location, problem, people involved, immediate danger, and callback number.",
@@ -43,7 +43,7 @@ export const speakTopics = [
       {
         id: "emergency-hurt-passive",
         label: "Someone is hurt",
-        note: "'Co nguoi bi thuong' maps naturally to 'Someone is hurt.' Avoid long grammar under pressure.",
+        note: "'Có người bị thương' maps naturally to 'Someone is hurt.' Avoid long grammar under pressure.",
       },
     ],
     followUps: [
@@ -57,7 +57,7 @@ export const speakTopics = [
   {
     id: "topic-emergencies-medical-urgent",
     labelEn: "Urgent Medical Problem",
-    labelVi: "Van de y te khan cap",
+    labelVi: "Vấn đề y tế khẩn cấp",
     category: "emergencies",
     scenarioDescription:
       "The learner describes urgent symptoms to a clinic, dispatcher, nurse, or bystander and asks what to do next.",
@@ -89,7 +89,7 @@ export const speakTopics = [
       {
         id: "emergency-medical-breathing",
         label: "Trouble breathing",
-        note: "'Kho tho' is usually 'trouble breathing' or 'shortness of breath,' not 'hard breath.'",
+        note: "'Khó thở' is usually 'trouble breathing' or 'shortness of breath,' not 'hard breath.'",
       },
     ],
     followUps: [
@@ -103,7 +103,7 @@ export const speakTopics = [
   {
     id: "topic-emergencies-home-safety",
     labelEn: "Home Safety Emergency",
-    labelVi: "Khan cap an toan trong nha",
+    labelVi: "Khẩn cấp an toàn trong nhà",
     category: "emergencies",
     scenarioDescription:
       "The learner reports a home safety issue such as smoke, fire alarm, gas smell, break-in concern, flood, sparking outlet, or blocked exit.",
