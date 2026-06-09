@@ -51,14 +51,16 @@ function getIp(request: Request): string {
   return forwarded.split(",")[0]?.trim() || "unknown";
 }
 
-export async function onRequest(context: PagesContext): Promise<Response> {
-  const { request, env } = context;
-  if (request.method === "OPTIONS") return optionsResponse();
-  if (request.method === "GET") return json({ ok: true, hint: "POST { userText }" });
-  if (request.method !== "POST") {
-    return json({ error: "Method Not Allowed" }, 405, { Allow: "POST, GET" });
-  }
+export function onRequestOptions(): Response {
+  return optionsResponse();
+}
 
+export function onRequestGet(): Response {
+  return json({ ok: true, hint: "POST { userText }" });
+}
+
+export async function onRequestPost(context: PagesContext): Promise<Response> {
+  const { request, env } = context;
   const openAiKey = envValue(env, "OPENAI_API_KEY");
   const supabaseUrl = envValue(env, "SUPABASE_URL") || envValue(env, "VITE_SUPABASE_URL");
   const supabaseAnonKey = envValue(env, "SUPABASE_ANON_KEY") || envValue(env, "VITE_SUPABASE_ANON_KEY");
@@ -91,6 +93,7 @@ export async function onRequest(context: PagesContext): Promise<Response> {
       learnerLevel: norm(speakContext.learnerLevel) || "beginner",
       currentTopic: norm(speakContext.currentTopic),
       recentTurns: toSpeakRecentTurns(speakContext.recentTurns),
+      env,
     });
     return json(result || {
       question: SPEAK_REPEAT_CLARIFICATION,

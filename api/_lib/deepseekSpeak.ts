@@ -30,16 +30,30 @@ export function normalizeSpeakQuestion(value: unknown): string {
   return firstQuestion;
 }
 
+type SpeakEnv = {
+  DEEPSEEK_API_KEY?: string;
+  DEEPSEEK_SPEAK_MODEL?: string;
+};
+
+function fallbackProcessEnv(): SpeakEnv {
+  const globalWithProcess = globalThis as typeof globalThis & {
+    process?: { env?: SpeakEnv };
+  };
+  return globalWithProcess.process?.env ?? {};
+}
+
 export async function buildDeepSeekSpeakFollowUp(input: {
   transcript: string;
   learnerLevel: string;
   currentTopic: string;
   recentTurns: Array<{ role: "learner" | "assistant"; text: string }>;
+  env?: SpeakEnv;
 }): Promise<{ question: string; provider: "deepseek"; model: string } | null> {
-  const apiKey = process.env.DEEPSEEK_API_KEY;
+  const env = input.env ?? fallbackProcessEnv();
+  const apiKey = env.DEEPSEEK_API_KEY;
   if (!apiKey) return null;
 
-  const model = process.env.DEEPSEEK_SPEAK_MODEL || "deepseek-chat";
+  const model = env.DEEPSEEK_SPEAK_MODEL || "deepseek-chat";
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 8_000);
   const system = [

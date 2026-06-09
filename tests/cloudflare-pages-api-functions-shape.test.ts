@@ -1,6 +1,7 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
+import { onRequestPost as ttsOnRequestPost } from "../functions/api/tts";
 
 const root = process.cwd();
 
@@ -8,7 +9,25 @@ function read(rel: string): string {
   return fs.readFileSync(path.join(root, rel), "utf8");
 }
 
+function ttsContext(body: Record<string, unknown>) {
+  return {
+    request: new Request("https://example.test/api/tts", {
+      method: "POST",
+      headers: { authorization: "Bearer user-token" },
+      body: JSON.stringify(body),
+    }),
+    env: {
+      SUPABASE_URL: "https://supabase.test",
+      SUPABASE_ANON_KEY: "anon",
+    },
+  };
+}
+
 describe("Cloudflare Pages API function shape", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it("uses a root functions directory with the four live API routes", () => {
     const stat = fs.statSync(path.join(root, "functions"));
     expect(stat.isDirectory()).toBe(true);
@@ -25,8 +44,12 @@ describe("Cloudflare Pages API function shape", () => {
 
   it("keeps Pages TTS Azure-first through mercy-tts and not ElevenLabs-direct", () => {
     const tts = read("functions/api/tts.ts");
+    expect(tts).toContain("export async function onRequestPost");
+    expect(tts).not.toContain("export async function onRequest(");
     expect(tts).toContain("/functions/v1/mercy-tts");
-    expect(tts).toContain("language.toLowerCase().split");
+    expect(tts).toContain('language: upstreamLanguage');
+    expect(tts).toContain('"vi-VN-HoaiMyNeural"');
+    expect(tts).toContain('payload.provider !== "azure"');
     expect(tts).not.toContain("ELEVENLABS_API_KEY");
     expect(tts).not.toContain("api.elevenlabs.io");
   });
@@ -50,7 +73,52 @@ describe("Cloudflare Pages API function shape", () => {
 
   it("keeps speak follow-up support on the Pages mercy-ai function", () => {
     const mercyAi = read("functions/api/mercy-ai.ts");
+    expect(mercyAi).toContain("export async function onRequestPost");
+    expect(mercyAi).not.toContain("export async function onRequest(");
     expect(mercyAi).toContain('norm(body.mode) === "speak-follow-up"');
     expect(mercyAi).toContain("buildDeepSeekSpeakFollowUp");
+    expect(mercyAi).toContain("env,");
+    expect(mercyAi).not.toContain("process.env");
+  });
+
+  it("routes Vietnamese Pages TTS to Azure vi-VN and rejects non-Azure Vietnamese audio", async () => {
+    const fetchMock = vi.fn(async () =>
+      Response.json({
+        audioUrl: "data:audio/mpeg;base64,SUQzBAAA",
+        provider: "azure",
+      })
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await ttsOnRequestPost(ttsContext({
+      text: "Xin chao",
+      language: "vi",
+      voiceId: "english-legacy-voice",
+    }));
+
+    expect(response.status).toBe(200);
+    const upstreamBody = JSON.parse(fetchMock.mock.calls[0][1]?.body as string);
+    expect(upstreamBody).toMatchObject({
+      text: "Xin chao",
+      language: "vi-VN",
+      voice_id: "vi-VN-HoaiMyNeural",
+    });
+    expect(upstreamBody.voice_id).not.toBe("english-legacy-voice");
+
+    fetchMock.mockResolvedValueOnce(Response.json({
+      audioUrl: "data:audio/mpeg;base64,SUQzBAAA",
+      provider: "elevenlabs",
+    }));
+    const rejected = await ttsOnRequestPost(ttsContext({
+      text: "Xin chao",
+      language: "vi-VN",
+      voice_id: "english-legacy-voice",
+    }));
+    expect(rejected.status).toBe(502);
+    await expect(rejected.json()).resolves.toMatchObject({
+      ok: false,
+      error: "Vietnamese TTS requires Azure vi-VN",
+      provider: "elevenlabs",
+    });
   });
 });
