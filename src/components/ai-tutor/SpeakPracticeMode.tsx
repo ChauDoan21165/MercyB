@@ -10,12 +10,10 @@ import type { PronunciationProgressDisplay } from "@/lib/pronunciation/pronuncia
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
 
 const VIETNAMESE_LETTER_PATTERN = /[ăâđêôơưàáạảãằắặẳẵầấậẩẫèéẹẻẽềếệểễìíịỉĩòóọỏõồốộổỗờớợởỡùúụủũừứựửữỳýỵỷỹ]/i;
-const SPEAK_REPEAT_ENGLISH_PATTERN = /\bi didn't catch that clearly\.?\s*can you say it again\?/i;
 
 export function isSpeakFollowUpReadAloudEligible(text: string | null | undefined) {
   const trimmed = String(text ?? "").trim();
-  if (SPEAK_REPEAT_ENGLISH_PATTERN.test(trimmed)) return true;
-  return /[a-z]/i.test(trimmed) && !VIETNAMESE_LETTER_PATTERN.test(trimmed);
+  return Boolean(trimmed) && (/[a-z]/i.test(trimmed) || VIETNAMESE_LETTER_PATTERN.test(trimmed));
 }
 
 export type SpeakPronunciationResult = {
@@ -146,7 +144,7 @@ export default function SpeakPracticeMode({
     : "Không dùng được giọng nói trên thiết bị hoặc trình duyệt này. Bạn vẫn có thể luyện bằng cách nghe câu mẫu trước.";
   const targetTtsError = ttsErrorScope === "follow-up" ? null : ttsError;
   const followUpTtsError = ttsErrorScope === "follow-up" ? ttsError : null;
-  const canReadFollowUp = isSpeakFollowUpReadAloudEligible(followUpPrompt);
+  const canReadFollowUp = !followUpIsPivot && isSpeakFollowUpReadAloudEligible(followUpPrompt);
 
   return (
     <section
