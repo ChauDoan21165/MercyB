@@ -254,6 +254,11 @@ export function __resetDecisionDedupForTests(): void {
   lastScheduledDecisions.clear();
 }
 
+export function __resetLifecycleStateForTests(): void {
+  lastScheduledDecisions.clear();
+  appStateHandle = null;
+}
+
 async function applyDecision(d: ScheduleDecision): Promise<void> {
   switch (d.kind) {
     case "scheduleDaily":
