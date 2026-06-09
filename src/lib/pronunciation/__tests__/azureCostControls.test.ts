@@ -24,8 +24,11 @@ import type { NormalizedPronunciationScoreResult } from "@/lib/pronunciation/clo
  *
  * These guard the EXISTING, wired controls (the premium/trial + per-session
  * gate, the conversation real-attempt guard). The separate
- * `azure-phoneme-stream` function is intentionally NOT exercised here — it
- * currently lacks these controls and is flagged for an owner-deployed fix.
+ * `azure-phoneme-stream` function now has its OWN hard cost controls
+ * (pre-connection rate limit + trial/premium gate + shared global daily $
+ * cap, plus a per-session Azure-pass cap and empty/poor-audio skip) proven
+ * in supabase/functions/azure-phoneme-stream/__tests__/costControls.test.ts;
+ * that Deno-free suite is kept off this app-side tsconfig.
  */
 
 function realBlob(): Blob {
