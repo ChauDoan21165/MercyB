@@ -70,6 +70,7 @@ describe("Study OS static boundary", () => {
     expect(nonSpeakTopicFiles).toEqual([
       "src/lib/tutor/bilingualSalienceDetector.ts",
       "src/lib/tutor/contentAwarePivots.ts",
+      "src/lib/tutor/conversationAiClient.ts",
       "src/lib/tutor/conversationPromptTemplates.ts",
       "src/lib/tutor/conversationTelemetry.ts",
       "src/lib/tutor/conversationTurnPolicy.ts",
