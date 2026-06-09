@@ -30,7 +30,7 @@ Status legend: ✅ complete · 🟡 pending (needs Chau action) · 🔴 blocked 
 | Description (≤4000) — VI | `descriptions/vi.md` | ✅ |
 | Keywords (≤100, comma-separated, EN) | `ielts,toeic,vstep,english,vietnamese,phát âm,học tiếng anh,pronunciation,grammar,mercy,speaking` `[~98/100]` | ✅ A6 §1.5 |
 | Privacy Policy URL | `https://mercyblade.com/privacy` | ✅ existing route + this PR adds `/legal/privacy` alias |
-| Support URL | `https://mercyblade.com/support` | 🔴 A6 §1.6 — page does not exist; either build it or change the field to `https://mercyblade.com` + `mailto:admin@mercyblade.com`. **Decide before submitting.** |
+| Support URL | `https://mercyblade.com/support` | ✅ existing route renders `src/pages/Support.tsx` |
 | Marketing URL (optional) | `https://mercyblade.com` | ✅ |
 | What's New in this version | `whats-new/v1.0.0.md` | ✅ template ready |
 
@@ -113,7 +113,7 @@ Reviewer-notes paragraph (paste in App Store Connect → App Review Information 
 - [ ] Screenshots captured + caption overlays applied
 - [ ] Demo reviewer account created + credentials pasted in App Review Notes
 - [ ] Bundle-ID divergence decision made (A6 §0)
-- [ ] Support URL decision made (this checklist §2)
+- [x] Support URL decision made (this checklist §2)
 - [ ] iOS build hides web-payment routes (this checklist §7 + A6 §7 Risk 2)
 - [ ] "Restore Purchases" button visible in iOS Pricing (§7 + A6 §7 Risk 5)
 - [ ] Test deletion run end-to-end on TestFlight build (A6 §8 task 9)
