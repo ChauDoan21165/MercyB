@@ -39,6 +39,7 @@ const ENTRYPOINT_PATTERNS = [
   /(^|\/)vite-env\.d\.ts$/,
   /\.d\.ts$/, // ambient declarations
   /(^|\/)setupTests?\.[tj]sx?$/,
+  /^src\/lib\/tutor\/speakTopics\/[^/]+\.ts$/,
   /(^|\/)scripts\//, // CLI/build scripts are run (node/npm), not imported — same rationale as the root scripts/ dir
 ];
 // Test / story / fixture files are not production modules.
