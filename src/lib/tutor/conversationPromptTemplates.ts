@@ -3,6 +3,7 @@ import type {
   SpeakTopicL1InterferenceNote,
   SpeakTopicLibraryEntry,
 } from "./speakTopicLibrary";
+import { VIETLISH_CORPUS } from "./vietlishCorpus";
 
 export type ConversationPromptTopic = SpeakTopicLibraryEntry & {
   scenarioDescription?: string;
@@ -38,6 +39,9 @@ export type ConversationPromptTemplate = {
   correctionStylePrompt: string;
   grounding: ConversationPromptGrounding;
 };
+
+const MAX_CONVERSATION_TURNS = 50;
+const VIETLISH_PROMPT_EXAMPLE_LIMIT = 5;
 
 const DEFAULT_CONVERSATION_DIRECTIONS = [
   "Stay inside the selected scenario for at least the first four learner turns unless the learner clearly asks to change topic.",
@@ -85,6 +89,57 @@ function formatFollowUps(followUps: readonly SpeakTopicFollowUp[]): string {
     .join("\n");
 }
 
+function normalizeSearchText(text: string): string {
+  return text.toLocaleLowerCase("en-US");
+}
+
+function selectVietlishPromptExamples(input: {
+  topic: ConversationPromptTopic;
+  learnerText?: string | null;
+}): readonly string[] {
+  const topicText = normalizeSearchText([
+    input.topic.labelEn,
+    input.topic.labelVi,
+    input.topic.category,
+    input.topic.scenarioDescription,
+    input.topic.aiRoleDefinition,
+    input.learnerText,
+  ].filter(Boolean).join(" "));
+
+  const scoredEntries = VIETLISH_CORPUS.map((entry, index) => {
+    const entryText = normalizeSearchText([
+      entry.vietlish,
+      entry.natural,
+      entry.sourcePattern,
+      entry.category,
+      entry.context,
+    ].join(" "));
+    const scenarioMatch = entry.context
+      .split(/[\s,/.-]+/)
+      .filter((token) => token.length >= 4)
+      .some((token) => topicText.includes(normalizeSearchText(token)));
+    const learnerMatch = input.learnerText
+      ? normalizeSearchText(input.learnerText).includes(normalizeSearchText(entry.vietlish))
+      : false;
+    const frequencyScore = entry.frequency === "high" ? 3 : entry.frequency === "medium" ? 2 : 1;
+    const score =
+      frequencyScore +
+      (scenarioMatch ? 4 : 0) +
+      (learnerMatch ? 5 : 0) +
+      (entryText.includes("professional") ? 1 : 0);
+
+    return { entry, index, score };
+  });
+
+  return scoredEntries
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .slice(0, VIETLISH_PROMPT_EXAMPLE_LIMIT)
+    .map(
+      ({ entry }) =>
+        `- Vietlish: "${entry.vietlish}" -> Natural English: "${entry.natural}" (${entry.category}, ${entry.frequency}; context: ${entry.context})`,
+    );
+}
+
 export function buildConversationPromptGrounding(
   topic: ConversationPromptTopic,
 ): ConversationPromptGrounding {
@@ -115,6 +170,11 @@ export function buildConversationPromptTemplate(
   const recentAiTurns = normalizeLines(input.recentAiTurns);
   const learnerText = input.learnerText?.trim();
   const turnCount = Math.max(0, input.turnCount ?? 0);
+  const turnsRemaining = Math.max(0, MAX_CONVERSATION_TURNS - turnCount);
+  const vietlishExamples = selectVietlishPromptExamples({
+    topic: input.topic,
+    learnerText,
+  });
 
   const topicGroundingPrompt = [
     "Selected Speak scenario/topic grounding:",
@@ -131,6 +191,8 @@ export function buildConversationPromptTemplate(
     formatFollowUps(grounding.followUps),
     "VN L1 / interference context:",
     formatInterferenceNotes(grounding.l1InterferenceNotes),
+    "Compact Vietlish examples from VIETLISH_CORPUS:",
+    formatBulletList(vietlishExamples),
   ].join("\n");
 
   const correctionStylePrompt = [
@@ -141,6 +203,7 @@ export function buildConversationPromptTemplate(
     "- If confidence is low, say you are not sure in Vietnamese, then redirect into a useful next practice question.",
     "- Never invent pronunciation scores or claim an audio result from text-only input.",
     "- Do not dead-end with only 'try again' or 'skip'; always continue the scenario with one natural prompt.",
+    "- The AI conversation engine is premium-gated; do not promise free access or mention pricing. If entitlement fails, the client shows the premium gate before this prompt is used.",
     "VN-calibrated face-saving warmth patterns:",
     formatBulletList(grounding.warmthPatterns),
   ].join("\n");
@@ -149,6 +212,10 @@ export function buildConversationPromptTemplate(
     "You are MercyBlade's Vietnamese-to-English conversation tutor.",
     "Primary job: run a realistic Speak scenario conversation, not generic roleplay.",
     topicGroundingPrompt,
+    "Premium session and cost boundaries:",
+    `- This prompt is for a premium conversation session with a hard cap of ${MAX_CONVERSATION_TURNS} learner turns.`,
+    `- Turns remaining in this session: ${turnsRemaining}.`,
+    "- Keep each turn concise so the learner can complete the session inside the cap.",
     "Step 8 topic persistence:",
     `- Current learner turn count in this session: ${turnCount}.`,
     "- Stay on this selected topic for 4+ learner turns before any broad pivot.",
