@@ -5,6 +5,8 @@ import type { SpeakTopicLibraryEntry } from "../speakTopicLibrary";
 // per-turn LLM. Copy is warm, adult, and low-shame; l1InterferenceNotes name
 // genuine Vietnamese→English interference as friendly context, never as a
 // grammar correction. (category is "food-ordering" so this theme remains distinct under auto-registration.)
+// A9 batch-2 deepening: each topic carries 3 L1 interference notes and 6
+// conversation directions (followUps) within the existing schema.
 export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
   {
     id: "topic-food-ordering-cafe-coffee",
@@ -26,12 +28,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Two coffees",
         note: "Vietnamese nouns don't change for number, so 'two coffee' feels complete. The natural café form adds the -s: 'two coffees, please.' A tiny detail — no need to stress about it mid-order.",
       },
+      {
+        id: "fo-cafe-for-name",
+        label: "A name for the order",
+        note: "In many cafés the barista asks 'What name for the order?' — 'Cho tên gì?' This isn't personal; it's just to call you when it's ready. A short 'It's Linh' is all they need.",
+      },
     ],
     followUps: [
       { id: "fo-cafe-drink", question: "Which drink would you like?", salienceQuestion: "What do you like about the {slot}?" },
       { id: "fo-cafe-size", question: "What size do you want — small, medium, or large?", salienceQuestion: "What size would you pick for the {slot}?" },
       { id: "fo-cafe-custom", question: "How would you ask for less ice or less sugar?", salienceQuestion: "How would you adjust the {slot} to your taste?" },
       { id: "fo-cafe-here-go", question: "Is it for here or to go?", salienceQuestion: "Would you have the {slot} for here or to go?" },
+      { id: "fo-cafe-milk", question: "How would you ask about milk options, like oat or no milk?", salienceQuestion: "What milk would you choose for the {slot}?" },
+      { id: "fo-cafe-name", question: "How would you give your name for the order?", salienceQuestion: "How would you give your name for the {slot}?" },
     ],
   },
   {
@@ -54,12 +63,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Combo / meal idea",
         note: "'Combo' or 'meal' means the food plus a drink and side together. Learners sometimes order each part separately; asking 'Is there a combo?' is a useful shortcut.",
       },
+      {
+        id: "fo-fast-thatsit",
+        label: "Closing the order",
+        note: "When they ask 'Anything else?', a simple 'That's it, thanks' or 'That's all' ends the order cleanly — no need for a longer sentence.",
+      },
     ],
     followUps: [
       { id: "fo-fast-main", question: "What is the main item you want?", salienceQuestion: "Why did you pick the {slot}?" },
       { id: "fo-fast-getcombo", question: "Do you want it as a combo or just the item?", salienceQuestion: "Would you make the {slot} a combo?" },
       { id: "fo-fast-drink", question: "Which drink goes with it?", salienceQuestion: "What drink would you choose with the {slot}?" },
       { id: "fo-fast-here-go", question: "For here or to go?", salienceQuestion: "Would you take the {slot} to go?" },
+      { id: "fo-fast-side", question: "How would you ask to swap the fries for another side?", salienceQuestion: "What side would you choose with the {slot}?" },
+      { id: "fo-fast-done", question: "How would you say that is everything?", salienceQuestion: "How would you finish ordering the {slot}?" },
     ],
   },
   {
@@ -82,12 +98,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "One, or a piece",
         note: "'Một cái' becomes 'one' or 'a piece': 'Can I get one?' / 'Two pieces, please.' Small and friendly — the vendor will follow your hands too.",
       },
+      {
+        id: "fo-stall-cash",
+        label: "Cash and small change",
+        note: "Stalls and carts are often cash only. 'Do you take card?' is worth asking first, and having small bills ready makes the order quick.",
+      },
     ],
     followUps: [
       { id: "fo-stall-item", question: "What food do you want to try?", salienceQuestion: "What looks good about the {slot}?" },
       { id: "fo-stall-qty", question: "How many would you like?", salienceQuestion: "How many of the {slot} do you want?" },
       { id: "fo-stall-price", question: "How would you ask the price?", salienceQuestion: "How would you ask the price of the {slot}?" },
       { id: "fo-stall-extra", question: "Do you want any sauce or extra with it?", salienceQuestion: "What would you add to the {slot}?" },
+      { id: "fo-stall-pay", question: "How would you ask if they take card or cash only?", salienceQuestion: "How would you pay for the {slot}?" },
+      { id: "fo-stall-point", question: "How would you point and name the food you can't pronounce?", salienceQuestion: "How would you point out the {slot}?" },
     ],
   },
   {
@@ -110,12 +133,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Asking for a recommendation",
         note: "When the menu is all new, 'What do you recommend?' is warm and natural, and it invites the server to help instead of you guessing.",
       },
+      {
+        id: "fo-menu-portion-note",
+        label: "How big is it",
+        note: "Portion size is hard to guess from a menu. 'Is it big enough to share?' or 'How big is it?' is a practical question, especially when ordering for a group.",
+      },
     ],
     followUps: [
       { id: "fo-menu-contents", question: "How would you ask what is in a dish?", salienceQuestion: "What would you ask about the {slot}?" },
       { id: "fo-menu-askrec", question: "How would you ask for a recommendation?", salienceQuestion: "How would you ask if the {slot} is good?" },
       { id: "fo-menu-spicy", question: "How would you check if it is spicy?", salienceQuestion: "How would you ask if the {slot} is spicy?" },
       { id: "fo-menu-decide", question: "How would you say you have decided?", salienceQuestion: "How would you choose the {slot}?" },
+      { id: "fo-menu-popular", question: "How would you ask what is the most popular dish?", salienceQuestion: "How would you ask if the {slot} is popular?" },
+      { id: "fo-menu-portion", question: "How would you ask how big a dish is?", salienceQuestion: "How would you ask about the size of the {slot}?" },
     ],
   },
   {
@@ -138,12 +168,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "On the side",
         note: "'On the side' means served separately, not mixed in — useful for sauce or dressing: 'Can I have the sauce on the side?' It has no single Vietnamese word, so it's worth practicing.",
       },
+      {
+        id: "fo-custom-hold",
+        label: "Hold the…",
+        note: "Servers often say 'hold the onions' to mean 'leave out the onions.' You don't have to use it, but recognizing it helps you confirm your change was heard.",
+      },
     ],
     followUps: [
       { id: "fo-custom-remove", question: "What ingredient would you leave out?", salienceQuestion: "How would you ask to remove the {slot}?" },
       { id: "fo-custom-add", question: "What extra would you add?", salienceQuestion: "How would you ask for extra {slot}?" },
       { id: "fo-custom-level", question: "How would you ask for less sweet or less spicy?", salienceQuestion: "How would you adjust the {slot} level?" },
       { id: "fo-custom-confirm", question: "How would you confirm the change politely?", salienceQuestion: "How would you confirm the {slot} change?" },
+      { id: "fo-custom-side", question: "How would you ask for the sauce on the side?", salienceQuestion: "How would you ask for the {slot} on the side?" },
+      { id: "fo-custom-allergy", question: "How would you mention a small change is for a health reason?", salienceQuestion: "How would you explain why you changed the {slot}?" },
     ],
   },
   {
@@ -166,12 +203,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Vegetarian and no pork",
         note: "'Ăn chay' is 'I'm vegetarian'; 'không ăn thịt heo' is 'I don't eat pork.' Saying it before you order saves a lot of back-and-forth.",
       },
+      {
+        id: "fo-allergy-serious-note",
+        label: "Making it land as serious",
+        note: "For a real allergy, it's okay to be firm: 'It's a serious allergy — please make sure there are no peanuts.' Staff would rather you be clear than polite-but-vague.",
+      },
     ],
     followUps: [
       { id: "fo-allergy-state", question: "How would you say your allergy or diet?", salienceQuestion: "How would you explain the {slot} clearly?" },
       { id: "fo-allergy-check", question: "How would you ask if a dish is safe for you?", salienceQuestion: "How would you ask if the {slot} is safe?" },
       { id: "fo-allergy-sub", question: "How would you ask for a substitute?", salienceQuestion: "What could replace the {slot}?" },
       { id: "fo-allergy-confirm", question: "How would you double-check before eating?", salienceQuestion: "How would you confirm the {slot} again?" },
+      { id: "fo-allergy-serious", question: "How would you stress that it is a serious allergy?", salienceQuestion: "How would you make the {slot} sound important?" },
+      { id: "fo-allergy-kitchen", question: "How would you ask them to check with the kitchen?", salienceQuestion: "How would you ask the kitchen about the {slot}?" },
     ],
   },
   {
@@ -194,12 +238,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Asking for a bag or utensils",
         note: "It's normal to ask 'Could I get a bag?' or 'Can I have some utensils?' — small requests that learners often skip but staff expect.",
       },
+      {
+        id: "fo-takeout-wait",
+        label: "How long is the wait",
+        note: "'Mất bao lâu?' becomes 'How long is the wait?' Asking up front lets you decide whether to wait inside or come back.",
+      },
     ],
     followUps: [
       { id: "fo-takeout-say", question: "How would you say you want it to go?", salienceQuestion: "How would you ask to take the {slot} to go?" },
       { id: "fo-takeout-item", question: "What are you ordering to take away?", salienceQuestion: "What would you pack up — the {slot}?" },
       { id: "fo-takeout-extra", question: "How would you ask for a bag or utensils?", salienceQuestion: "How would you ask for a bag for the {slot}?" },
       { id: "fo-takeout-ready", question: "How would you ask when it will be ready?", salienceQuestion: "When will the {slot} be ready?" },
+      { id: "fo-takeout-name", question: "How would you give a name for the pickup order?", salienceQuestion: "How would you give your name for the {slot}?" },
+      { id: "fo-takeout-napkins", question: "How would you ask for extra napkins or sauce packets?", salienceQuestion: "What extra would you ask for with the {slot}?" },
     ],
   },
   {
@@ -222,12 +273,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "How long will it take",
         note: "'Mất bao lâu?' is 'How long will it take?' — a natural, polite thing to ask when you order. Tips and delivery fees are also common to ask about.",
       },
+      {
+        id: "fo-delivery-instructions",
+        label: "Leave-at-door instructions",
+        note: "Apps often ask for a delivery note. A short instruction like 'Please leave it at the door and text me' is normal and saves a phone call later.",
+      },
     ],
     followUps: [
       { id: "fo-delivery-items", question: "What do you want to order for delivery?", salienceQuestion: "What would you order — the {slot}?" },
       { id: "fo-delivery-giveaddress", question: "How would you give your address clearly?", salienceQuestion: "How would you describe where the {slot} should go?" },
       { id: "fo-delivery-time", question: "How would you ask how long it will take?", salienceQuestion: "How long will the {slot} take to arrive?" },
       { id: "fo-delivery-pay", question: "How would you ask about the fee or payment?", salienceQuestion: "How would you ask about paying for the {slot}?" },
+      { id: "fo-delivery-note", question: "How would you leave a note for the driver?", salienceQuestion: "What note would you leave about the {slot}?" },
+      { id: "fo-delivery-wrong", question: "How would you report a missing item after it arrives?", salienceQuestion: "How would you report a problem with the {slot}?" },
     ],
   },
   {
@@ -250,12 +308,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Under the name",
         note: "Restaurants ask for a name to hold the table: 'Under the name Linh.' When you arrive you can say 'I have a reservation under Linh.'",
       },
+      {
+        id: "fo-resv-partyof",
+        label: "Party of…",
+        note: "Staff may ask 'For how many?' or say 'a party of four.' 'Party' here just means your group — 'A party of four, please' answers it naturally.",
+      },
     ],
     followUps: [
       { id: "fo-resv-people", question: "How many people is the table for?", salienceQuestion: "How big is the table for the {slot}?" },
       { id: "fo-resv-time", question: "What day and time would you like?", salienceQuestion: "What time would you book the {slot}?" },
       { id: "fo-resv-givename", question: "How would you give your name for the booking?", salienceQuestion: "How would you give your name for the {slot}?" },
       { id: "fo-resv-request", question: "Any special request, like a quiet table?", salienceQuestion: "What would you request for the {slot}?" },
+      { id: "fo-resv-confirmcall", question: "How would you confirm the reservation when you arrive?", salienceQuestion: "How would you confirm the {slot} at the door?" },
+      { id: "fo-resv-change", question: "How would you call to change the time later?", salienceQuestion: "How would you change the time for the {slot}?" },
     ],
   },
   {
@@ -278,12 +343,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "We'll have",
         note: "Ordering for a group uses 'we': 'We'll have two of these and one of those.' It's the group version of 'I'll have.'",
       },
+      {
+        id: "fo-table-extra-plates",
+        label: "Plates to share",
+        note: "When sharing, it's normal to ask 'Could we get some small plates?' so everyone can serve themselves — a natural request English handles smoothly.",
+      },
     ],
     followUps: [
       { id: "fo-table-shared", question: "What dishes will you share for the table?", salienceQuestion: "What would you share — the {slot}?" },
       { id: "fo-table-each", question: "Is anything just for one person?", salienceQuestion: "Who is the {slot} for?" },
       { id: "fo-table-drinks", question: "What drinks for everyone?", salienceQuestion: "What drinks go with the {slot}?" },
       { id: "fo-table-more", question: "How would you ask if anyone wants more?", salienceQuestion: "How would you offer more {slot}?" },
+      { id: "fo-table-plates", question: "How would you ask for extra plates to share?", salienceQuestion: "How would you ask for plates for the {slot}?" },
+      { id: "fo-table-order-rounds", question: "How would you order more in a second round?", salienceQuestion: "How would you order more {slot}?" },
     ],
   },
   {
@@ -306,12 +378,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Splitting and tipping",
         note: "'Split the bill' means share the cost; 'separate checks' means each pays their own. Tipping is common in many countries — worth knowing before the bill arrives.",
       },
+      {
+        id: "fo-bill-together",
+        label: "Paying together",
+        note: "If you're treating, 'It's on me' or 'I'll get this one' is warm and clear. To pay as a group, 'We'll pay together' avoids confusion at the till.",
+      },
     ],
     followUps: [
       { id: "fo-bill-ask", question: "How would you ask for the bill?", salienceQuestion: "How would you ask for the {slot}?" },
       { id: "fo-bill-split", question: "Together or separate checks?", salienceQuestion: "How would you split the {slot}?" },
       { id: "fo-bill-method", question: "How would you say card or cash?", salienceQuestion: "How would you pay the {slot}?" },
       { id: "fo-bill-receipt", question: "How would you ask for a receipt?", salienceQuestion: "How would you ask for the {slot} receipt?" },
+      { id: "fo-bill-tip", question: "How would you ask if tip is included?", salienceQuestion: "How would you ask about tip on the {slot}?" },
+      { id: "fo-bill-treat", question: "How would you offer to pay for everyone?", salienceQuestion: "How would you offer to cover the {slot}?" },
     ],
   },
   {
@@ -334,12 +413,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Cold or missing",
         note: "Two common ones: 'This is a bit cold, could you warm it up?' and 'I think the fries are missing.' Simple and direct works best.",
       },
+      {
+        id: "fo-wrong-no-blame",
+        label: "Describe, don't blame",
+        note: "English handles complaints best by describing the problem, not the person: 'This came out wrong' lands softer than 'You made a mistake,' and still gets it fixed.",
+      },
     ],
     followUps: [
       { id: "fo-wrong-problem", question: "How would you describe what is wrong?", salienceQuestion: "What is wrong with the {slot}?" },
       { id: "fo-wrong-ordered", question: "How would you say what you actually ordered?", salienceQuestion: "What did you order instead of the {slot}?" },
       { id: "fo-wrong-fix", question: "How would you ask them to fix it?", salienceQuestion: "How would you ask to fix the {slot}?" },
       { id: "fo-wrong-polite", question: "How would you keep it friendly?", salienceQuestion: "How would you stay polite about the {slot}?" },
+      { id: "fo-wrong-cold", question: "How would you say a dish arrived cold?", salienceQuestion: "How would you say the {slot} is cold?" },
+      { id: "fo-wrong-remake", question: "How would you ask for a remake or a refund?", salienceQuestion: "How would you ask to redo the {slot}?" },
     ],
   },
   {
@@ -362,12 +448,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Fresh today",
         note: "A natural, friendly question is 'Is this fresh today?' or 'What's fresh?' It also helps you pick when the names are unfamiliar.",
       },
+      {
+        id: "fo-bakery-sliced-note",
+        label: "Sliced or whole",
+        note: "For bread, staff often ask 'Sliced or whole?' — 'Cắt lát hay để nguyên?' A short 'Sliced, please' is all you need.",
+      },
     ],
     followUps: [
       { id: "fo-bakery-item", question: "What would you like from the bakery?", salienceQuestion: "What would you choose — the {slot}?" },
       { id: "fo-bakery-qty", question: "How many, or a loaf, slice, or dozen?", salienceQuestion: "How much of the {slot} do you want?" },
       { id: "fo-bakery-askfresh", question: "How would you ask if it is fresh today?", salienceQuestion: "How would you ask if the {slot} is fresh?" },
       { id: "fo-bakery-pack", question: "How would you ask them to pack it to go?", salienceQuestion: "How would you pack the {slot} to go?" },
+      { id: "fo-bakery-sliced", question: "How would you answer sliced or whole?", salienceQuestion: "Would you have the {slot} sliced or whole?" },
+      { id: "fo-bakery-order-ahead", question: "How would you order a cake for a special day?", salienceQuestion: "How would you order the {slot} ahead of time?" },
     ],
   },
   {
@@ -390,12 +483,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Refill and with ice",
         note: "'A refill' means filling the same drink again (sometimes free). 'With ice / no ice' covers 'có đá / không đá.' Both are quick to ask for.",
       },
+      {
+        id: "fo-drinks-warm-water",
+        label: "Warm water is okay to ask for",
+        note: "Many Vietnamese diners prefer warm or room-temperature water. It's fine to ask: 'Could I get warm water, no ice?' Staff won't find it strange.",
+      },
     ],
     followUps: [
       { id: "fo-drinks-choose", question: "What drink would you like?", salienceQuestion: "What do you like about the {slot}?" },
       { id: "fo-drinks-water", question: "How would you ask for tap or bottled water?", salienceQuestion: "How would you ask for the {slot}?" },
       { id: "fo-drinks-askrefill", question: "How would you ask for a refill or another one?", salienceQuestion: "How would you ask for another {slot}?" },
       { id: "fo-drinks-ice", question: "How would you say with ice or no ice?", salienceQuestion: "How would you order the {slot} with or without ice?" },
+      { id: "fo-drinks-warm", question: "How would you ask for warm water, no ice?", salienceQuestion: "How would you ask for a warm {slot}?" },
+      { id: "fo-drinks-size", question: "How would you ask for a larger size?", salienceQuestion: "What size {slot} would you choose?" },
     ],
   },
 ] as const;

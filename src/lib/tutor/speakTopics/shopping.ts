@@ -1,5 +1,8 @@
 import type { SpeakTopicLibraryEntry } from "../speakTopicLibrary";
 
+// Shopping theme. Deterministic / client-side; copy is warm and low-shame.
+// A9 batch-2 deepening: each topic carries 3 L1 interference notes and 6
+// conversation directions (followUps) within the existing schema.
 export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
   {
     id: "topic-shopping-store-help",
@@ -21,12 +24,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Item first",
         note: "English store help works best when the item comes early, before a long explanation: 'I'm looking for a phone charger.'",
       },
+      {
+        id: "shopping-help-excuse-me",
+        label: "Opening with 'Excuse me'",
+        note: "'Xin lỗi' to get attention is 'Excuse me' here, not 'Sorry.' 'Excuse me, do you work here?' is a friendly way to start when you're not sure who is staff.",
+      },
     ],
     followUps: [
       { id: "shopping-help-item", question: "What item are you trying to find?", salienceQuestion: "How would you ask for help finding the {slot}?" },
       { id: "shopping-help-location", question: "Which section of the store might it be in?", salienceQuestion: "Where might the {slot} be in the store?" },
       { id: "shopping-help-detail", question: "What detail would help the staff understand?", salienceQuestion: "What detail would you add about the {slot}?" },
       { id: "shopping-help-thanks", question: "How would you thank the staff after they help?", salienceQuestion: "How would you thank someone for helping with the {slot}?" },
+      { id: "shopping-help-who", question: "How would you check if someone works there?", salienceQuestion: "How would you find staff to ask about the {slot}?" },
+      { id: "shopping-help-brand", question: "How would you describe a brand or model you want?", salienceQuestion: "How would you describe the {slot} you want?" },
     ],
   },
   {
@@ -49,12 +59,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Small softener",
         note: "Adding 'please' or a friendly tone makes the question sound calm without needing a long formal sentence.",
       },
+      {
+        id: "shopping-price-each-note",
+        label: "Each, or for two",
+        note: "Prices can be per item: 'Is that each, or for two?' clears up the 'cái này bao nhiêu một cái' question without a long sentence.",
+      },
     ],
     followUps: [
       { id: "shopping-price-item", question: "What item are you asking about?", salienceQuestion: "How would you ask the price of the {slot}?" },
       { id: "shopping-price-tag", question: "Can you see a price tag, or do you need help?", salienceQuestion: "What is unclear about the price of the {slot}?" },
       { id: "shopping-price-compare", question: "Would you compare it with another item?", salienceQuestion: "What would you compare with the {slot}?" },
       { id: "shopping-price-decision", question: "What price would feel okay for you?", salienceQuestion: "What price would make the {slot} worth buying?" },
+      { id: "shopping-price-each", question: "How would you ask if the price is each or for a set?", salienceQuestion: "How would you ask if the {slot} price is per item?" },
+      { id: "shopping-price-scan", question: "How would you ask them to scan it for the price?", salienceQuestion: "How would you ask to scan the {slot}?" },
     ],
   },
   {
@@ -77,12 +94,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Fit without embarrassment",
         note: "It is normal to say 'too tight' or 'too loose' about clothes. Keep it about the item, not the body.",
       },
+      {
+        id: "shopping-size-fitting-room",
+        label: "The fitting room",
+        note: "'Phòng thử đồ' is 'the fitting room' or 'the changing room.' 'Where's the fitting room?' is a normal question before you try things on.",
+      },
     ],
     followUps: [
       { id: "shopping-size-needed", question: "What size do you need?", salienceQuestion: "What size do you need for the {slot}?" },
       { id: "shopping-size-color", question: "What color would you ask for?", salienceQuestion: "What color would work for the {slot}?" },
       { id: "shopping-size-try", question: "How would you ask to try it on?", salienceQuestion: "How would you ask to try on the {slot}?" },
       { id: "shopping-size-fit", question: "How would you describe the fit?", salienceQuestion: "How would you describe how the {slot} fits?" },
+      { id: "shopping-size-room", question: "How would you ask where the fitting room is?", salienceQuestion: "Where would you try on the {slot}?" },
+      { id: "shopping-size-other", question: "How would you ask for the next size up or down?", salienceQuestion: "What other size would you ask for the {slot}?" },
     ],
   },
   {
@@ -105,12 +129,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Ask about timing",
         note: "A useful follow-up is 'When will it be back in stock?' rather than stopping after the first no.",
       },
+      {
+        id: "shopping-stock-other-store",
+        label: "Another branch",
+        note: "Staff can often check another store: 'Could you see if another branch has it?' keeps the search going when the shelf is empty.",
+      },
     ],
     followUps: [
       { id: "shopping-stock-item", question: "Which item is not available?", salienceQuestion: "How would you ask if the {slot} is in stock?" },
       { id: "shopping-stock-more", question: "How would you ask if they have more in the back?", salienceQuestion: "How would you ask if there is more {slot} in the back?" },
       { id: "shopping-stock-time", question: "When would you ask it might come back?", salienceQuestion: "When might the {slot} be back in stock?" },
       { id: "shopping-stock-alternative", question: "What similar item could you ask for?", salienceQuestion: "What could you buy instead of the {slot}?" },
+      { id: "shopping-stock-branch", question: "How would you ask if another branch has it?", salienceQuestion: "How would you ask another store about the {slot}?" },
+      { id: "shopping-stock-notify", question: "How would you ask them to notify you when it returns?", salienceQuestion: "How would you get a message when the {slot} is back?" },
     ],
   },
   {
@@ -133,12 +164,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Question, not demand",
         note: "A soft question helps avoid sounding like a demand: 'Is there a discount for this one?'",
       },
+      {
+        id: "shopping-discount-price-match",
+        label: "Price match",
+        note: "Some stores match a lower price elsewhere. 'Do you price match?' is a useful question that has no single Vietnamese word.",
+      },
     ],
     followUps: [
       { id: "shopping-discount-item", question: "Which item are you asking about?", salienceQuestion: "How would you ask if the {slot} is on sale?" },
       { id: "shopping-discount-coupon", question: "Do you have a coupon or membership?", salienceQuestion: "Could a coupon help with the {slot}?" },
       { id: "shopping-discount-final", question: "How would you ask for the final price?", salienceQuestion: "How would you confirm the final price for the {slot}?" },
       { id: "shopping-discount-no", question: "What would you say if there is no discount?", salienceQuestion: "What would you say if the {slot} is full price?" },
+      { id: "shopping-discount-when", question: "How would you ask when the next sale is?", salienceQuestion: "When would the {slot} go on sale?" },
+      { id: "shopping-discount-match", question: "How would you ask if they match a lower price?", salienceQuestion: "How would you ask to match the price of the {slot}?" },
     ],
   },
   {
@@ -161,12 +199,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Offer two options",
         note: "A calm cashier question is 'Can I pay by card, or do you prefer cash?' It works well in small shops.",
       },
+      {
+        id: "shopping-pay-tap-insert",
+        label: "Tap, insert, or swipe",
+        note: "Card machines prompt 'tap, insert, or swipe.' You don't have to read it perfectly — 'How do I pay — tap?' is a fine question to ask the cashier.",
+      },
     ],
     followUps: [
       { id: "shopping-pay-method", question: "How do you want to pay?", salienceQuestion: "How would you pay for the {slot}?" },
       { id: "shopping-pay-card", question: "How would you ask if cards are accepted?", salienceQuestion: "How would you ask if you can use a card for the {slot}?" },
       { id: "shopping-pay-cash", question: "How would you ask if cash is okay?", salienceQuestion: "How would you ask if cash is okay for the {slot}?" },
       { id: "shopping-pay-confirm", question: "How would you confirm the payment went through?", salienceQuestion: "How would you confirm payment for the {slot}?" },
+      { id: "shopping-pay-machine", question: "How would you ask how to use the card machine?", salienceQuestion: "How would you ask how to pay for the {slot}?" },
+      { id: "shopping-pay-change", question: "How would you check your change when paying cash?", salienceQuestion: "How would you check the change for the {slot}?" },
     ],
   },
   {
@@ -189,12 +234,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Bag request",
         note: "In many stores bags cost extra, so asking clearly about a bag avoids surprise at checkout.",
       },
+      {
+        id: "shopping-checkout-paper-plastic",
+        label: "Paper or plastic",
+        note: "Cashiers ask 'Paper or plastic?' about the bag type. A short 'Paper, please' or 'I have my own' answers it cleanly.",
+      },
     ],
     followUps: [
       { id: "shopping-checkout-bag", question: "Do you need a bag?", salienceQuestion: "Would you need a bag for the {slot}?" },
       { id: "shopping-checkout-receipt", question: "How would you ask for a receipt?", salienceQuestion: "How would you ask for a receipt for the {slot}?" },
       { id: "shopping-checkout-total", question: "How would you ask for the total?", salienceQuestion: "How would you confirm the total for the {slot}?" },
       { id: "shopping-checkout-close", question: "What would you say after paying?", salienceQuestion: "What would you say after buying the {slot}?" },
+      { id: "shopping-checkout-bagtype", question: "How would you answer paper or plastic?", salienceQuestion: "What bag would you choose for the {slot}?" },
+      { id: "shopping-checkout-email", question: "How would you answer if they offer an emailed receipt?", salienceQuestion: "How would you get a receipt for the {slot}?" },
     ],
   },
   {
@@ -217,12 +269,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Short reason",
         note: "English store staff often ask for a reason. A simple reason like 'It does not fit' or 'It is damaged' is enough.",
       },
+      {
+        id: "shopping-return-window-note",
+        label: "The return window",
+        note: "Stores allow returns for a set time, often 30 days. 'Am I still within the return window?' is a useful question if you've waited a while.",
+      },
     ],
     followUps: [
       { id: "shopping-return-item", question: "What item do you want to return?", salienceQuestion: "How would you ask to return the {slot}?" },
       { id: "shopping-return-reason", question: "What short reason would you give?", salienceQuestion: "What is the reason for returning the {slot}?" },
       { id: "shopping-return-receipt", question: "How would you mention the receipt?", salienceQuestion: "How would you show the receipt for the {slot}?" },
       { id: "shopping-return-next", question: "Would you ask for a refund or exchange?", salienceQuestion: "Would you refund or exchange the {slot}?" },
+      { id: "shopping-return-window", question: "How would you ask if it is still within the return time?", salienceQuestion: "How would you ask if the {slot} can still be returned?" },
+      { id: "shopping-return-method", question: "How would you ask how the refund comes back?", salienceQuestion: "How would you get the refund for the {slot}?" },
     ],
   },
   {
@@ -245,12 +304,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Say what you want instead",
         note: "The staff can help faster when the replacement is specific: different size, different color, or same item without damage.",
       },
+      {
+        id: "shopping-exchange-difference-note",
+        label: "Price difference",
+        note: "If the new item costs more, staff say 'pay the difference.' 'Do I pay the difference?' is a calm, clear question to ask.",
+      },
     ],
     followUps: [
       { id: "shopping-exchange-item", question: "What do you want to exchange?", salienceQuestion: "How would you ask to exchange the {slot}?" },
       { id: "shopping-exchange-size", question: "What size or color do you need instead?", salienceQuestion: "What would you need instead of the {slot}?" },
       { id: "shopping-exchange-policy", question: "How would you ask if exchanges are allowed?", salienceQuestion: "How would you ask about the exchange policy for the {slot}?" },
       { id: "shopping-exchange-thanks", question: "How would you close the conversation politely?", salienceQuestion: "How would you close after exchanging the {slot}?" },
+      { id: "shopping-exchange-difference", question: "How would you ask about a price difference?", salienceQuestion: "How would you ask if the {slot} costs more?" },
+      { id: "shopping-exchange-receipt", question: "How would you mention you have the receipt?", salienceQuestion: "How would you show the receipt for the {slot}?" },
     ],
   },
   {
@@ -273,12 +339,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Ask for help after the issue",
         note: "After naming the problem, add a calm request: 'Could you help me?' This keeps the tone respectful.",
       },
+      {
+        id: "shopping-damaged-when-note",
+        label: "When you noticed",
+        note: "Staff often ask when you found the damage. 'I noticed it when I got home' is a simple, honest answer that helps the return.",
+      },
     ],
     followUps: [
       { id: "shopping-damaged-item", question: "What item has a problem?", salienceQuestion: "How would you explain the problem with the {slot}?" },
       { id: "shopping-damaged-detail", question: "What exactly is damaged or missing?", salienceQuestion: "What detail is wrong with the {slot}?" },
       { id: "shopping-damaged-proof", question: "Would you show the receipt or photo?", salienceQuestion: "What proof would help with the {slot}?" },
       { id: "shopping-damaged-request", question: "What help do you want from the store?", salienceQuestion: "What help do you need for the {slot}?" },
+      { id: "shopping-damaged-when", question: "How would you say when you noticed the damage?", salienceQuestion: "When did you notice the problem with the {slot}?" },
+      { id: "shopping-damaged-replace", question: "How would you ask for a new one instead?", salienceQuestion: "How would you ask to replace the {slot}?" },
     ],
   },
   {
@@ -301,12 +374,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Checking on",
         note: "'Checking on my order' is a natural phrase for asking about status without sounding upset.",
       },
+      {
+        id: "shopping-online-pickup-note",
+        label: "Pickup in store",
+        note: "'Click and collect' or 'pickup order' means you buy online and collect in store. 'I'm here to pick up an online order' is the sentence at the counter.",
+      },
     ],
     followUps: [
       { id: "shopping-online-order", question: "What order are you asking about?", salienceQuestion: "How would you ask about the {slot}?" },
       { id: "shopping-online-number", question: "How would you give the order number?", salienceQuestion: "How would you connect the order number to the {slot}?" },
       { id: "shopping-online-status", question: "What status do you want to know?", salienceQuestion: "What status do you need for the {slot}?" },
       { id: "shopping-online-next", question: "What next step would you ask for?", salienceQuestion: "What should happen next with the {slot}?" },
+      { id: "shopping-online-pickup", question: "How would you say you are here to pick it up?", salienceQuestion: "How would you collect the {slot}?" },
+      { id: "shopping-online-late", question: "How would you ask why it is late?", salienceQuestion: "How would you ask why the {slot} is delayed?" },
     ],
   },
   {
@@ -329,12 +409,19 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Membership question",
         note: "Cashiers may ask about a loyalty card or phone number. Learners can answer simply: 'No, I don't have one.'",
       },
+      {
+        id: "shopping-grocery-self-checkout",
+        label: "Self-checkout help",
+        note: "At self-checkout, it's fine to wave for help: 'Could you help me? It won't scan.' Staff expect this and won't mind.",
+      },
     ],
     followUps: [
       { id: "shopping-grocery-bag", question: "Do you have your own bag?", salienceQuestion: "Would you use your own bag for the {slot}?" },
       { id: "shopping-grocery-card", question: "How would you answer about a loyalty card?", salienceQuestion: "How would you answer a membership question for the {slot}?" },
       { id: "shopping-grocery-total", question: "How would you check the total?", salienceQuestion: "How would you check the total for the {slot}?" },
       { id: "shopping-grocery-leave", question: "What would you say before leaving?", salienceQuestion: "What would you say after paying for the {slot}?" },
+      { id: "shopping-grocery-self", question: "How would you ask for help at self-checkout?", salienceQuestion: "How would you get help scanning the {slot}?" },
+      { id: "shopping-grocery-weigh", question: "How would you ask how to weigh produce?", salienceQuestion: "How would you weigh the {slot}?" },
     ],
   },
 ] as const;
