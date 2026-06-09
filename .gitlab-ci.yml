@@ -168,7 +168,7 @@ variables:
     # repo's peer-dep tree currently requires it.
     - sleep $((RANDOM % 60))
     - rm -rf node_modules/.deno
-    - npm ci --legacy-peer-deps --cache .npm --prefer-offline
+    - npm ci --legacy-peer-deps --cache .npm --prefer-offline ${NPM_CI_EXTRA_FLAGS:-}
 
 # Local runner jobs are explicitly tagged so the Mac runner can keep
 # "run untagged jobs" disabled. Shared-runner fallbacks are separate
@@ -901,6 +901,10 @@ deploy-netlify-publish-only:
 deploy-cloudflare-pages:
   <<: [*node_job, *local_runner]
   stage: deploy
+  variables:
+    # This job holds CLOUDFLARE_API_TOKEN when enabled. Keep install
+    # lifecycle scripts disabled so package postinstalls cannot run with it.
+    NPM_CI_EXTRA_FLAGS: "--ignore-scripts"
   rules:
     - if: '$MERCYB_CF_DEPLOY_ENABLED == "1" && $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
       when: manual
