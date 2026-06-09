@@ -39,7 +39,7 @@ const baseInput: SendConversationAiTurnInput = {
 
 describe("conversationAiClient", () => {
   it("posts the Lane A request shape to /api/mercy-ai and parses success", async () => {
-    const fetcher = vi.fn(async () => jsonResponse({
+    const fetcher = vi.fn<typeof fetch>(async () => jsonResponse({
       reply: "That is useful experience. What kind of customers did you help most often?",
       correction: {
         original: "I responsible",
@@ -129,6 +129,7 @@ describe("conversationAiClient", () => {
     const result = await sendConversationAiTurn({ ...baseInput, fetcher });
 
     expect(result.ok).toBe(false);
+    if (result.ok) throw new Error("expected fallback result");
     expect(result.reason).toBe("cost_cap");
     expect(result.correction).toBeNull();
     expect(result.reply).toContain("giới hạn");
