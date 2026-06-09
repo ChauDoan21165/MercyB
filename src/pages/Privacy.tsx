@@ -33,7 +33,7 @@ export default function Privacy() {
       <h1>Privacy Policy</h1>
 
       <p>
-        <strong>Last updated:</strong> May 18, 2026
+        <strong>Last updated:</strong> June 9, 2026
       </p>
 
       <p>
@@ -49,6 +49,18 @@ export default function Privacy() {
           <strong>Account information</strong>, such as your email address,
           profile details, and authentication data when you create or use an
           account.
+        </li>
+        <li>
+          <strong>Learning progress</strong>, such as completed lessons,
+          study events, notebook items, streaks, pronunciation scores,
+          placement results, and other progress signals used to personalize
+          your learning experience.
+        </li>
+        <li>
+          <strong>Pronunciation audio recordings</strong>, when you choose to
+          use microphone-based pronunciation practice. These short recordings
+          are processed to score pronunciation and are not stored by Mercy
+          Blade after scoring, as described in Section 4a.
         </li>
         <li>
           <strong>Subscription and billing information</strong>, such as
@@ -100,7 +112,8 @@ export default function Privacy() {
 
       <h2>2b. AI Processing in Teacher Mercy</h2>
       <p>
-        Teacher Mercy uses third-party artificial-intelligence services
+        Teacher Mercy uses third-party artificial-intelligence services,
+        including OpenAI,
         to generate responses to your chat messages. When you send a
         message to Teacher Mercy, the text of that message is transmitted
         to an AI provider so the provider can return a reply. Messages
@@ -146,6 +159,28 @@ export default function Privacy() {
         information if required by law, to protect users, or to protect our
         rights and systems.
       </p>
+      <p>
+        The main third-party service providers used by Mercy Blade include:
+      </p>
+      <ul>
+        <li>
+          <strong>Supabase</strong> for authentication, database storage,
+          edge functions, and storage infrastructure.
+        </li>
+        <li>
+          <strong>Microsoft Azure Speech</strong> for pronunciation audio
+          processing when you grant microphone permission and use cloud
+          pronunciation scoring.
+        </li>
+        <li>
+          <strong>OpenAI</strong> and other AI providers for Teacher Mercy and
+          AI tutor responses when you send messages to those features.
+        </li>
+        <li>
+          <strong>Sentry</strong> for crash reporting, diagnostics, and
+          limited error-session replay as described in Section 4b.
+        </li>
+      </ul>
 
       <h2>4a. Pronunciation Audio Processing (Azure)</h2>
       <p>

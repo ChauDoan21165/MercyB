@@ -54,6 +54,18 @@ describe("Privacy page", () => {
     ).toBeInTheDocument();
   });
 
+  it("covers store-required data categories and third-party providers", () => {
+    renderAt(<Privacy />);
+    expect(screen.getByText(/email address/)).toBeInTheDocument();
+    expect(screen.getByText(/Learning progress/)).toBeInTheDocument();
+    expect(screen.getByText(/Pronunciation audio recordings/)).toBeInTheDocument();
+    expect(screen.getByText("Supabase")).toBeInTheDocument();
+    expect(screen.getByText(/Microsoft Azure Speech/)).toBeInTheDocument();
+    expect(screen.getAllByText("OpenAI").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Sentry").length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Delete my account/).length).toBeGreaterThan(0);
+  });
+
   it("sets the document title via SeoMeta on mount", () => {
     renderAt(<Privacy />);
     expect(document.title).toBe("Chính sách quyền riêng tư — MercyBlade");
