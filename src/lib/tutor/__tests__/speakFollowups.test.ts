@@ -20,6 +20,7 @@ import {
   collectSpeakTopicsFromModules,
 } from "@/lib/tutor/speakTopicLibrary";
 import { speakTopics as introductionSpeakTopics } from "@/lib/tutor/speakTopics/introductions";
+import { speakTopics as phoneCustomerServiceSpeakTopics } from "@/lib/tutor/speakTopics/phoneCustomerService";
 
 const BATCH_1_SEEDS: Array<{ id: string; seed: string }> = [
   { id: "topic-ordering-food", seed: "I want order noodles at the restaurant." },
@@ -620,6 +621,22 @@ describe("speakFollowups", () => {
       expect(Object.keys(topicModules)).toContain("/src/lib/tutor/speakTopics/introductions.ts");
       for (const topic of moduleTopics) {
         expect(libraryIds.has(topic.id), topic.id).toBe(true);
+      }
+    });
+
+    it("ships the D3 phone and customer-service theme with scenario metadata", () => {
+      const libraryIds = new Set(SPEAK_TOPIC_LIBRARY.map((topic) => topic.id));
+
+      expect(phoneCustomerServiceSpeakTopics).toHaveLength(3);
+      for (const topic of phoneCustomerServiceSpeakTopics) {
+        expect(libraryIds.has(topic.id), topic.id).toBe(true);
+        expect(topic.scenarioDescription?.trim().length).toBeGreaterThan(40);
+        expect(topic.aiRoleDefinition?.trim().length).toBeGreaterThan(40);
+        expect(topic.conversationDirections?.length).toBeGreaterThanOrEqual(5);
+        expect(topic.conversationDirections?.length).toBeLessThanOrEqual(8);
+        expect(topic.warmthPatterns?.length).toBeGreaterThanOrEqual(3);
+        expect(topic.l1InterferenceNotes?.length).toBeGreaterThanOrEqual(2);
+        expect(topic.followUps.length).toBeGreaterThanOrEqual(5);
       }
     });
 
