@@ -72,6 +72,7 @@ describe("Study OS static boundary", () => {
       "src/lib/tutor/contentAwarePivots.ts",
       "src/lib/tutor/conversationAiClient.ts",
       "src/lib/tutor/conversationPromptTemplates.ts",
+      "src/lib/tutor/conversationPronunciationAdapter.ts",
       "src/lib/tutor/conversationTelemetry.ts",
       "src/lib/tutor/conversationTurnPolicy.ts",
       "src/lib/tutor/conversationWarmth.ts",
