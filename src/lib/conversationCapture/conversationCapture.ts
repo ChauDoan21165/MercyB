@@ -1,6 +1,12 @@
-// src/lib/tutor/conversationCapture.ts
+// src/lib/conversationCapture/conversationCapture.ts
 //
 // C2 — the learner-data capture pipeline, the foundation of the data flywheel.
+//
+// NOTE: this lives OUTSIDE src/lib/tutor/ on purpose. The "Study OS" tutor
+// engine is a pure, offline, no-network layer (enforced by
+// src/lib/tutor/tests/studyOsBoundary.test.ts — no Supabase, no remote writes,
+// no raw-learner-text persistence). Capture does all three, so it is a sibling
+// I/O layer here, next to conversationRetention.
 //
 // Every tutor conversation session must leave a durable record. Without this,
 // conversations vanish and the moat never compounds. This module owns the

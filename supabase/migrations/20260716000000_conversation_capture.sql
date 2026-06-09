@@ -9,7 +9,7 @@
 -- HMAC learner_hash, no raw user_id, PII-scrubbed, written only by a
 -- service-role edge function. THESE two tables are the per-learner, USER-OWNED
 -- conversation record: raw user_id + raw turn text, written by the browser
--- client (src/lib/tutor/conversationCapture.ts) under self-RLS, exactly like
+-- client (src/lib/conversationCapture/conversationCapture.ts) under self-RLS, exactly like
 -- public.feature_outcome_events. They are complementary, not duplicates: one
 -- powers cohort analytics, the other is the learner's own durable transcript
 -- and the per-conversation retention summary.
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS public.conversations (
 );
 
 COMMENT ON TABLE public.conversations IS
-  'C2 data-flywheel: one row per tutor conversation session. User-owned (self-RLS), written by the browser client (src/lib/tutor/conversationCapture.ts). Distinct from the anonymized Track-2 learner_interaction_capture lake. Consent-gating is the caller''s (Lane A) responsibility.';
+  'C2 data-flywheel: one row per tutor conversation session. User-owned (self-RLS), written by the browser client (src/lib/conversationCapture/conversationCapture.ts). Distinct from the anonymized Track-2 learner_interaction_capture lake. Consent-gating is the caller''s (Lane A) responsibility.';
 
 CREATE INDEX IF NOT EXISTS conversations_user_started_idx
   ON public.conversations (user_id, started_at);
