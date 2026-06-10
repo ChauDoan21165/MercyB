@@ -98,6 +98,7 @@ type GateResponse = {
 const TURN_MODEL = "gpt-4o-mini";
 const CORRECTION_GATE_MODEL = "gpt-4o";
 const MAX_TURNS = 50;
+const LEARNER_LED_SCENARIO_ID = "learner-led";
 
 const JOB_INTERVIEW_SCENARIO: Scenario = {
   id: "job-interview",
@@ -134,6 +135,32 @@ const JOB_INTERVIEW_SCENARIO: Scenario = {
       watchFor: "responsible for without a form of be",
       correctionHintVi:
         "Trong tiếng Anh, nói 'I am responsible for...', không nói 'I responsible for...'.",
+    },
+  ],
+};
+
+const LEARNER_LED_SCENARIO: Scenario = {
+  id: LEARNER_LED_SCENARIO_ID,
+  title: "Learner-led conversation",
+  themeContext:
+    "No preset scenario was chosen. The learner's own words define the situation, topic, and next useful follow-up.",
+  learnerRole:
+    "The learner starts with their own English sentence. Their latest message is the conversation seed.",
+  aiRole:
+    "Mercy is the conversation partner and coach. Mercy follows the learner's actual words, asks one grounded follow-up, and only corrects clear high-confidence Vietnamese-to-English transfer issues.",
+  topicBoundaries: [
+    "Do not introduce a job interview, restaurant, travel, or any other preset scenario unless the learner explicitly chose it.",
+    "Start from the learner's latest words and ask about a concrete detail they mentioned.",
+    "If the learner is vague, ask one clarifying question instead of switching to a script.",
+    "Keep the exchange useful for multi-turn English practice shaped by the learner's own topic.",
+  ],
+  l1InterferenceNotes: [
+    {
+      id: "learner-led-high-confidence-only",
+      pattern: "Learner-led mode has no preset L1 pattern; corrections must come only from clear evidence in the learner's latest words.",
+      watchFor: "high-confidence Vietnamese-to-English transfer only",
+      correctionHintVi:
+        "Chỉ sửa khi thấy lỗi chắc chắn trong chính câu của người học; nếu chưa chắc, hỏi tiếp để người học nói rõ hơn.",
     },
   ],
 };
@@ -281,8 +308,7 @@ export async function buildAiConversationTurn(input: AiConversationRequest): Pro
     }
   }
 
-  const reply = sanitizeReply(draft.reply) ||
-    `I hear that you said "${input.learnerText.slice(0, 80)}." Let's keep it practical: what is one strength you would bring to this role?`;
+  const reply = sanitizeReply(draft.reply) || buildFallbackReply(input, scenario);
   const historyWithNext: AiConversationHistoryTurn[] = [
     ...input.history,
     { role: "learner", text: input.learnerText },
@@ -291,7 +317,7 @@ export async function buildAiConversationTurn(input: AiConversationRequest): Pro
   return {
     reply,
     correction,
-    summary: input.turnCount + 1 >= 4 ? buildSummary(historyWithNext) : null,
+    summary: input.turnCount + 1 >= 4 ? buildSummary(historyWithNext, scenario) : null,
     cost: estimateCost(addUsage(draftData.usage, gateUsage)),
     provider: "openai",
     model: TURN_MODEL,
@@ -308,10 +334,12 @@ function fallbackProcessEnv(): AiConversationEnv {
 
 function normalizeScenario(value: AiConversationScenarioInput | null | undefined, scenarioId: string): Scenario {
   const fallback = JOB_INTERVIEW_SCENARIO;
+  const normalizedScenarioId = stringValue(scenarioId, 80);
   if (!isRecord(value)) {
+    if (normalizedScenarioId === LEARNER_LED_SCENARIO_ID) return LEARNER_LED_SCENARIO;
     return {
       ...fallback,
-      id: stringValue(scenarioId, 80) || fallback.id,
+      id: normalizedScenarioId || fallback.id,
     };
   }
 
@@ -328,13 +356,22 @@ function normalizeScenario(value: AiConversationScenarioInput | null | undefined
     : [];
 
   return {
-    id: stringValue(value.id, 80) || stringValue(scenarioId, 80) || fallback.id,
-    title: stringValue(value.title, 160) || fallback.title,
-    themeContext: stringValue(value.themeContext, 1200) || fallback.themeContext,
-    learnerRole: stringValue(value.learnerRole, 600) || fallback.learnerRole,
-    aiRole: stringValue(value.aiRole, 600) || fallback.aiRole,
-    topicBoundaries: normalizeStringList(value.topicBoundaries, fallback.topicBoundaries, 8, 300),
-    l1InterferenceNotes: l1Notes.length ? l1Notes : fallback.l1InterferenceNotes,
+    id: stringValue(value.id, 80) || normalizedScenarioId || fallback.id,
+    title: stringValue(value.title, 160) || (normalizedScenarioId === LEARNER_LED_SCENARIO_ID ? LEARNER_LED_SCENARIO.title : fallback.title),
+    themeContext: stringValue(value.themeContext, 1200) || (normalizedScenarioId === LEARNER_LED_SCENARIO_ID ? LEARNER_LED_SCENARIO.themeContext : fallback.themeContext),
+    learnerRole: stringValue(value.learnerRole, 600) || (normalizedScenarioId === LEARNER_LED_SCENARIO_ID ? LEARNER_LED_SCENARIO.learnerRole : fallback.learnerRole),
+    aiRole: stringValue(value.aiRole, 600) || (normalizedScenarioId === LEARNER_LED_SCENARIO_ID ? LEARNER_LED_SCENARIO.aiRole : fallback.aiRole),
+    topicBoundaries: normalizeStringList(
+      value.topicBoundaries,
+      normalizedScenarioId === LEARNER_LED_SCENARIO_ID ? LEARNER_LED_SCENARIO.topicBoundaries : fallback.topicBoundaries,
+      8,
+      300,
+    ),
+    l1InterferenceNotes: l1Notes.length
+      ? l1Notes
+      : normalizedScenarioId === LEARNER_LED_SCENARIO_ID
+        ? LEARNER_LED_SCENARIO.l1InterferenceNotes
+        : fallback.l1InterferenceNotes,
   };
 }
 
@@ -424,19 +461,30 @@ function estimateCost(usage: Usage): AiConversationResponse["cost"] {
   };
 }
 
-function buildSummary(history: AiConversationHistoryTurn[]): AiConversationResponse["summary"] {
+function buildFallbackReply(input: AiConversationRequest, scenario: Scenario): string {
+  const snippet = input.learnerText.slice(0, 80);
+  if (scenario.id === LEARNER_LED_SCENARIO_ID) {
+    return `I hear that you said "${snippet}." What happened next?`;
+  }
+  return `I hear that you said "${snippet}." Let's keep it practical: what is one strength you would bring to this role?`;
+}
+
+function buildSummary(history: AiConversationHistoryTurn[], scenario: Scenario): AiConversationResponse["summary"] {
   const corrections = history
     .map((turn) => turn.correction)
     .filter((correction): correction is AiConversationCorrection => Boolean(correction));
+  const learnerLed = scenario.id === LEARNER_LED_SCENARIO_ID;
   return {
     practiced: [
-      "job interview answers",
+      learnerLed ? "learner-led conversation turns" : "job interview answers",
       "answer-specific follow-up questions",
       "Vietnamese-to-English transfer awareness",
     ],
     errorsCaught: [...new Set(corrections.map((correction) => correction.interferencePattern))],
     progressNote:
-      "You completed a coherent interview sequence and kept building from your own answers.",
+      learnerLed
+        ? "You built a conversation from your own words and kept adding context."
+        : "You completed a coherent interview sequence and kept building from your own answers.",
   };
 }
 

@@ -44,6 +44,21 @@ export type ConversationAiPromptMetadata = {
   warmthPatternCount?: number;
 };
 
+export type ConversationAiScenarioGrounding = {
+  id: string;
+  title: string;
+  themeContext: string;
+  learnerRole: string;
+  aiRole: string;
+  topicBoundaries: readonly string[];
+  l1InterferenceNotes: readonly {
+    id: string;
+    pattern: string;
+    watchFor: string;
+    correctionHintVi: string;
+  }[];
+};
+
 export type ConversationAiEntitlementState = {
   isPremium: boolean;
   status?: string | null;
@@ -59,6 +74,7 @@ export type ConversationAiTurnCapContext = {
 export type SendConversationAiTurnInput = {
   accessToken?: string | null;
   scenarioId: string;
+  scenario?: ConversationAiScenarioGrounding | null;
   learnerText: string;
   messages: ConversationAiMessage[];
   promptMetadata: ConversationAiPromptMetadata;
@@ -159,6 +175,20 @@ export function buildConversationAiRequestBody(
       qualityGate: input.qualityGate === false ? null : CONVERSATION_AI_QUALITY_GATE_MODEL,
     },
     scenarioId: trimString(input.scenarioId),
+    scenario: input.scenario ? {
+      id: trimString(input.scenario.id),
+      title: trimString(input.scenario.title),
+      themeContext: trimString(input.scenario.themeContext),
+      learnerRole: trimString(input.scenario.learnerRole),
+      aiRole: trimString(input.scenario.aiRole),
+      topicBoundaries: input.scenario.topicBoundaries.map(trimString).filter(Boolean),
+      l1InterferenceNotes: input.scenario.l1InterferenceNotes.map((note) => ({
+        id: trimString(note.id),
+        pattern: trimString(note.pattern),
+        watchFor: trimString(note.watchFor),
+        correctionHintVi: trimString(note.correctionHintVi),
+      })).filter((note) => note.id && note.pattern && note.watchFor && note.correctionHintVi),
+    } : null,
     learnerText: trimString(input.learnerText),
     messages,
     history: messages

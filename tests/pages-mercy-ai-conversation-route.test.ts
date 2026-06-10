@@ -128,6 +128,51 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
     expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
+  it("keeps learner-led conversation grounded in the user's words, not job interview fallback", async () => {
+    const fetchMock = vi.fn<typeof fetch>()
+      .mockResolvedValueOnce(jsonResponse({ is_premium: true, status: "active" }))
+      .mockResolvedValueOnce(jsonResponse([{ admin_level: 0 }]))
+      .mockResolvedValueOnce(jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              reply: "You said your bus was late. What did you do while you waited?",
+              correctionCandidate: null,
+            }),
+          },
+        }],
+        usage: { prompt_tokens: 90, completion_tokens: 20, total_tokens: 110 },
+      }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi({
+      mode: "ai-conversation-turn",
+      scenarioId: "learner-led",
+      learnerText: "This morning my bus was late and I felt nervous.",
+      turnCount: 0,
+      messages: [],
+      promptMetadata: {
+        scenarioId: "learner-led",
+        locale: "vi",
+      },
+    });
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toMatchObject({
+      reply: expect.stringContaining("bus"),
+      provider: "openai",
+    });
+
+    const openAiBody = JSON.parse(String(fetchMock.mock.calls[2][1]?.body));
+    const promptText = openAiBody.messages
+      .map((message: { content: string }) => message.content)
+      .join("\n");
+    expect(promptText).toContain("Learner-led conversation");
+    expect(promptText).toContain("This morning my bus was late and I felt nervous.");
+    expect(promptText).not.toContain("Job interview practice");
+    expect(promptText).not.toContain("what is one strength you would bring to this role");
+  });
+
   it("allows admin_level 9 conversation access even when billing entitlement is free", async () => {
     const fetchMock = vi.fn<typeof fetch>()
       .mockResolvedValueOnce(jsonResponse({ is_premium: false, status: "free" }))
