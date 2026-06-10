@@ -45,9 +45,11 @@ describe("step11 vietlish corpus wave 2 (D4-2 review queue)", () => {
     expect(data.status).toBe("review_not_wired");
   });
 
-  it("holds exactly 200 entries and a matching count field", () => {
-    expect(data.entries).toHaveLength(200);
-    expect(data.count).toBe(200);
+  it("holds exactly 195 entries and a matching count field", () => {
+    // 200 authored; 5 cross-file duplicates removed in the 2026-06-10 A10
+    // coherence pass (4 already in wave1, 1 case-duplicate of the live corpus).
+    expect(data.entries).toHaveLength(195);
+    expect(data.count).toBe(195);
   });
 
   it("matches the VietlishCorpusEntry schema exactly (six string fields, valid enums)", () => {
