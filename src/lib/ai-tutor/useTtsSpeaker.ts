@@ -32,7 +32,7 @@ export interface UseTtsSpeakerResult {
     target?: TutorLanguageCode,
     options?: Pick<
       SpeakTutorTextOptions,
-      "voiceStyle" | "preferCloudVoice" | "fallbackToBrowserTts"
+      "voiceStyle" | "preferCloudVoice" | "fallbackToBrowserTts" | "requiredCloudProvider"
     >,
   ) => Promise<boolean>;
   stop: () => void;
@@ -103,7 +103,7 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
     target: TutorLanguageCode = "en",
     options: Pick<
       SpeakTutorTextOptions,
-      "voiceStyle" | "preferCloudVoice" | "fallbackToBrowserTts"
+      "voiceStyle" | "preferCloudVoice" | "fallbackToBrowserTts" | "requiredCloudProvider"
     > = {},
   ) => {
     const safeText = String(text ?? "").trim();
@@ -139,8 +139,12 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
       targetLanguage: targetLanguage.code,
       voiceStyle: options.voiceStyle ?? "teacher-mercy",
       preferCloudVoice: options.preferCloudVoice ?? true,
+      requiredCloudProvider:
+        options.requiredCloudProvider ??
+        (targetLanguage.code === "en" || targetLanguage.code === "vi" ? "azure" : undefined),
       fallbackToBrowserTts:
-        options.fallbackToBrowserTts ?? targetLanguage.supportsBrowserTts,
+        options.fallbackToBrowserTts ??
+        (targetLanguage.code === "en" || targetLanguage.code === "vi" ? false : targetLanguage.supportsBrowserTts),
     });
 
     if (requestRef.current !== requestId) return false;
@@ -155,7 +159,7 @@ export function useTtsSpeaker(): UseTtsSpeakerResult {
     }
 
     if (!result.spoken && safeText) {
-      setError(TTS_ERROR_MESSAGE);
+      setError(getVoiceStatus().lastError ?? TTS_ERROR_MESSAGE);
     }
 
     void lang;

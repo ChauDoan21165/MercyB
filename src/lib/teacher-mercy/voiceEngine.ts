@@ -31,6 +31,7 @@ export interface SpeakTutorTextOptions {
   voiceStyle?: TeacherMercyVoiceStyle;
   preferCloudVoice?: boolean;
   fallbackToBrowserTts?: boolean;
+  requiredCloudProvider?: "azure" | "elevenlabs";
   /**
    * Optional guard for correction flows. If the requested speech equals the raw
    * learner mistake, the engine refuses to read it aloud by default.
@@ -62,6 +63,8 @@ export interface SpeakTutorTextResult {
 const PREPARING_MESSAGE = "Preparing Mercy voice…";
 const FALLBACK_MESSAGE = "Mercy voice unavailable. Using device voice.";
 const BROWSER_TTS_ERROR_MESSAGE = "Không nghe thấy? Kiểm tra âm lượng hoặc thử bấm lại.";
+const AZURE_TTS_REQUIRED_MESSAGE =
+  "Giọng Mercy Azure chưa sẵn sàng. Bấm thử lại sau giây lát — Mercy sẽ không tự chuyển sang giọng trình duyệt.";
 // BUG3 trust floor: shown when the device has no matching-language voice (e.g. no Vietnamese
 // voice). We suppress speech rather than read the text aloud in the wrong language.
 const TARGET_VOICE_UNAVAILABLE_MESSAGE =
@@ -96,7 +99,16 @@ export function voiceLocaleForTargetLanguage(targetLanguage: TeacherMercyTargetL
 }
 
 function cloudLanguageForTarget(targetLanguage: TeacherMercyTargetLanguage = "en"): MercyLanguage {
-  return resolveTutorTargetLanguage(String(targetLanguage || "en")) as MercyLanguage;
+  const normalized = String(targetLanguage || "en").trim().toLowerCase();
+  const baseLanguage = normalized.split("-")[0];
+  return resolveTutorTargetLanguage(baseLanguage || normalized) as MercyLanguage;
+}
+
+function requiresReliableAzureVoice(targetLanguage: TeacherMercyTargetLanguage = "en"): boolean {
+  const normalized = String(targetLanguage || "en").trim().toLowerCase();
+  const baseLanguage = normalized.split("-")[0];
+  const target = resolveTutorTargetLanguage(baseLanguage || normalized);
+  return target === "en" || target === "vi";
 }
 
 function normalizeText(text: string): string {
@@ -328,9 +340,13 @@ export async function speakTutorText(
   }
 
   const preferCloudVoice = options.preferCloudVoice ?? true;
-  const fallbackToBrowserTts = options.fallbackToBrowserTts ?? true;
+  const reliableAzureRequired = requiresReliableAzureVoice(targetLanguage);
+  const requiredCloudProvider = options.requiredCloudProvider ?? (reliableAzureRequired ? "azure" : undefined);
+  const fallbackToBrowserTts = reliableAzureRequired
+    ? false
+    : options.fallbackToBrowserTts ?? true;
 
-  if (preferCloudVoice) {
+  if (preferCloudVoice || requiredCloudProvider) {
     setStatus({
       status: "preparing",
       preparing: true,
@@ -342,17 +358,30 @@ export async function speakTutorText(
     const cloud = await fetchCloudTtsUrl({
       text: speakableText,
       language: cloudLanguageForTarget(targetLanguage),
+      ...(requiredCloudProvider ? { requiredProvider: requiredCloudProvider } : {}),
     });
 
     if (requestId !== currentRequestId) {
       return { spoken: false, cloud: false, fallback: false, text: speakableText, locale };
     }
 
-    if (cloud?.audioUrl) {
+    if (cloud?.audioUrl && (!requiredCloudProvider || cloud.provider === requiredCloudProvider)) {
       const played = await playCloudAudio(cloud.audioUrl, currentRequestId);
       if (played) {
         return { spoken: true, cloud: true, fallback: false, text: speakableText, locale };
       }
+    }
+
+    if (requiredCloudProvider) {
+      setStatus({
+        status: "error",
+        preparing: false,
+        speaking: false,
+        usingBrowserFallback: false,
+        lastError: AZURE_TTS_REQUIRED_MESSAGE,
+        message: AZURE_TTS_REQUIRED_MESSAGE,
+      });
+      return { spoken: false, cloud: false, fallback: false, text: speakableText, locale };
     }
   }
 

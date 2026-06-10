@@ -49,7 +49,7 @@ const {
   useAuthMock,
 } = vi.hoisted(() => {
   type CloudTtsArgs = { text: string; language: "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi"; voiceIdOverride?: string };
-  type CloudTtsResult = { audioUrl: string; cached: boolean };
+  type CloudTtsResult = { audioUrl: string; cached: boolean; provider?: "azure" | "elevenlabs" };
   type AuthMockValue = {
     user: { id: string; user_metadata?: Record<string, unknown> } | null;
     session: { access_token: string } | null;
@@ -1373,7 +1373,7 @@ describe("AiTutor four-tab seed flow", () => {
       utterance.onstart?.();
       utterance.onend?.();
     });
-    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/follow-up.mp3", cached: false });
+    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/follow-up.mp3", cached: false, provider: "azure" });
     Object.defineProperty(window, "speechSynthesis", {
       configurable: true,
       value: {
@@ -1410,6 +1410,7 @@ describe("AiTutor four-tab seed flow", () => {
     await waitFor(() => expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
       text: "Where did you buy it?",
       language: "en",
+      requiredProvider: "azure",
     }));
     expect(MockEndingAudio.last?.src).toBe("https://example.test/follow-up.mp3");
     expect(MockEndingAudio.last?.play).toHaveBeenCalledTimes(1);
@@ -1423,7 +1424,7 @@ describe("AiTutor four-tab seed flow", () => {
       utterance.onstart?.();
       utterance.onend?.();
     });
-    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/clarification.mp3", cached: false });
+    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/clarification.mp3", cached: false, provider: "azure" });
     Object.defineProperty(window, "speechSynthesis", {
       configurable: true,
       value: {
@@ -1461,6 +1462,7 @@ describe("AiTutor four-tab seed flow", () => {
     await waitFor(() => expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
       text: clarification,
       language: "vi",
+      requiredProvider: "azure",
     }));
     expect(MockEndingAudio.last?.src).toBe("https://example.test/clarification.mp3");
     expect(MockEndingAudio.last?.play).toHaveBeenCalledTimes(1);
@@ -1598,7 +1600,7 @@ describe("AiTutor four-tab seed flow", () => {
       utterance.onstart?.();
       utterance.onend?.();
     });
-    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/target.mp3", cached: false });
+    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/target.mp3", cached: false, provider: "azure" });
     Object.defineProperty(window, "speechSynthesis", {
       configurable: true,
       value: {
@@ -1627,13 +1629,14 @@ describe("AiTutor four-tab seed flow", () => {
     await waitFor(() => expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
       text: "I bought a hat yesterday.",
       language: "en",
+      requiredProvider: "azure",
     }));
     expect(MockEndingAudio.last?.src).toBe("https://example.test/target.mp3");
     expect(MockEndingAudio.last?.play).toHaveBeenCalledTimes(1);
     expect(browserSpeak).not.toHaveBeenCalled();
   });
 
-  it("restarts Speak TTS cleanly on a second Mercy đọc click", async () => {
+  it("does not silently fall back to browser speech when Azure voice is unavailable", async () => {
     const cancel = vi.fn();
     const resume = vi.fn();
     const browserSpeak = vi.fn((utterance: MockSpeechSynthesisUtterance) => {
@@ -1659,19 +1662,28 @@ describe("AiTutor four-tab seed flow", () => {
     await correctHatSentence();
     await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
     await userEvent.click(screen.getByRole("button", { name: "Mercy đọc câu đã sửa bằng giọng AI" }));
-    await waitFor(() => expect(browserSpeak).toHaveBeenCalledTimes(1));
-    await userEvent.click(screen.getByRole("button", { name: "Mercy đọc câu đã sửa bằng giọng AI" }));
+    await waitFor(() => expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
+      text: "I bought a hat yesterday.",
+      language: "en",
+      requiredProvider: "azure",
+    }));
 
-    await waitFor(() => expect(browserSpeak).toHaveBeenCalledTimes(2));
+    expect(browserSpeak).not.toHaveBeenCalled();
     expect(cancel).toHaveBeenCalled();
-    expect(resume).toHaveBeenCalled();
-    expect(browserSpeak.mock.calls[0][0]).not.toBe(browserSpeak.mock.calls[1][0]);
-    expect((browserSpeak.mock.calls[1][0] as MockSpeechSynthesisUtterance).text).toBe("I bought a hat yesterday.");
+    expect(resume).not.toHaveBeenCalled();
+    expect(screen.getByTestId("ai-tutor-speak-tts-error")).toHaveTextContent(
+      "Mercy sẽ không tự chuyển sang giọng trình duyệt",
+    );
   });
 
-  it("shows the safe Speak TTS error when browser speech fails", async () => {
+  it("rejects non-Azure cloud audio for Speak TTS", async () => {
     const browserSpeak = vi.fn((utterance: MockSpeechSynthesisUtterance) => {
       utterance.onerror?.();
+    });
+    fetchCloudTtsUrl.mockResolvedValue({
+      audioUrl: "https://example.test/elevenlabs.mp3",
+      cached: false,
+      provider: "elevenlabs",
     });
     Object.defineProperty(window, "speechSynthesis", {
       configurable: true,
@@ -1695,8 +1707,9 @@ describe("AiTutor four-tab seed flow", () => {
     await userEvent.click(screen.getByRole("button", { name: "Mercy đọc câu đã sửa bằng giọng AI" }));
 
     await waitFor(() => {
+      expect(browserSpeak).not.toHaveBeenCalled();
       expect(screen.getByTestId("ai-tutor-speak-tts-error")).toHaveTextContent(
-        "Không nghe thấy? Kiểm tra âm lượng hoặc thử bấm lại.",
+        "Mercy sẽ không tự chuyển sang giọng trình duyệt",
       );
     });
   });

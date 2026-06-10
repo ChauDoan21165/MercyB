@@ -94,7 +94,7 @@ describe("Teacher Mercy voiceEngine", () => {
 
   it("calls cloud Mercy voice first when enabled", async () => {
     const synth = installSpeechSynthesis();
-    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/mercy.mp3", cached: false });
+    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/mercy.mp3", cached: false, provider: "azure" });
 
     const result = await speakTutorText("Mercy reads this.", {
       targetLanguage: "en",
@@ -105,18 +105,19 @@ describe("Teacher Mercy voiceEngine", () => {
     expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
       text: "Mercy reads this.",
       language: "en",
+      requiredProvider: "azure",
     });
     expect(EndingAudio.last?.src).toBe("https://example.test/mercy.mp3");
     expect(synth.speak).not.toHaveBeenCalled();
     expect(result.cloud).toBe(true);
   });
 
-  it("uses browser fallback when cloud fails", async () => {
-    const synth = installSpeechSynthesis();
+  it("uses browser fallback for non-prime tutor targets when cloud fails", async () => {
+    const synth = installSpeechSynthesis([{ lang: "fr-FR", name: "French" } as SpeechSynthesisVoice]);
     fetchCloudTtsUrl.mockResolvedValue(null);
 
-    const result = await speakTutorText("Use device voice.", {
-      targetLanguage: "en",
+    const result = await speakTutorText("Utilise la voix de l'appareil.", {
+      targetLanguage: "fr",
       preferCloudVoice: true,
       fallbackToBrowserTts: true,
     });
@@ -134,16 +135,37 @@ describe("Teacher Mercy voiceEngine", () => {
     expect(result.fallback).toBe(true);
   });
 
-  it("creates a fresh browser utterance with normal English playback settings", async () => {
+  it("requires Azure for English tutor voice and does not use browser fallback when cloud fails", async () => {
     const synth = installSpeechSynthesis();
+    fetchCloudTtsUrl.mockResolvedValue(null);
 
-    await speakTutorText("First line.", {
+    const result = await speakTutorText("Use Azure voice.", {
       targetLanguage: "en",
+      preferCloudVoice: true,
+      fallbackToBrowserTts: true,
+    });
+
+    expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
+      text: "Use Azure voice.",
+      language: "en",
+      requiredProvider: "azure",
+    });
+    expect(synth.speak).not.toHaveBeenCalled();
+    expect(result).toMatchObject({ spoken: false, cloud: false, fallback: false });
+    expect(getVoiceStatus().message).toMatch(/Azure/);
+    expect(getVoiceStatus().usingBrowserFallback).toBe(false);
+  });
+
+  it("creates a fresh browser utterance with normal non-prime playback settings", async () => {
+    const synth = installSpeechSynthesis([{ lang: "fr-FR", name: "French" } as SpeechSynthesisVoice]);
+
+    await speakTutorText("Premiere ligne.", {
+      targetLanguage: "fr",
       preferCloudVoice: false,
       fallbackToBrowserTts: true,
     });
-    await speakTutorText("Second line.", {
-      targetLanguage: "en",
+    await speakTutorText("Deuxieme ligne.", {
+      targetLanguage: "fr",
       preferCloudVoice: false,
       fallbackToBrowserTts: true,
     });
@@ -152,8 +174,8 @@ describe("Teacher Mercy voiceEngine", () => {
     const first = synth.speak.mock.calls[0][0] as FakeUtterance;
     const second = synth.speak.mock.calls[1][0] as FakeUtterance;
     expect(first).not.toBe(second);
-    expect(second.text).toBe("Second line.");
-    expect(second.lang).toBe("en-US");
+    expect(second.text).toBe("Deuxieme ligne.");
+    expect(second.lang).toBe("fr-FR");
     expect(second.volume).toBe(1);
     expect(second.rate).toBe(1);
     expect(second.pitch).toBe(1);
@@ -164,7 +186,7 @@ describe("Teacher Mercy voiceEngine", () => {
     const synth = installSpeechSynthesis(voices);
 
     const speakPromise = speakTutorText("Voice retry.", {
-      targetLanguage: "en",
+      targetLanguage: "fr",
       preferCloudVoice: false,
       fallbackToBrowserTts: true,
     });
@@ -172,7 +194,7 @@ describe("Teacher Mercy voiceEngine", () => {
     await Promise.resolve();
     expect(synth.speak).not.toHaveBeenCalled();
 
-    voices = [{ lang: "en-US", name: "Ready English" } as SpeechSynthesisVoice];
+    voices = [{ lang: "fr-FR", name: "Ready French" } as SpeechSynthesisVoice];
     window.speechSynthesis.getVoices = vi.fn(() => voices);
     window.speechSynthesis.dispatchEvent(new Event("voiceschanged"));
 
@@ -180,7 +202,7 @@ describe("Teacher Mercy voiceEngine", () => {
 
     expect(synth.speak).toHaveBeenCalledTimes(1);
     const utterance = synth.speak.mock.calls[0][0] as FakeUtterance;
-    expect(utterance.voice?.lang).toBe("en-US");
+    expect(utterance.voice?.lang).toBe("fr-FR");
   });
 
   it("sanitizes text before cloud and browser speech", async () => {
@@ -199,15 +221,15 @@ describe("Teacher Mercy voiceEngine", () => {
     expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
       text: "What do you usually do in the morning?",
       language: "en",
+      requiredProvider: "azure",
     });
-    const utterance = synth.speak.mock.calls[0][0] as FakeUtterance;
-    expect(utterance.text).toBe("What do you usually do in the morning?");
     expect(result.text).toBe("What do you usually do in the morning?");
+    expect(synth.speak).not.toHaveBeenCalled();
   });
 
   it("stop cancels playback", async () => {
     const synth = installSpeechSynthesis();
-    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/hold.mp3", cached: false });
+    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/hold.mp3", cached: false, provider: "azure" });
     Object.defineProperty(window, "Audio", {
       configurable: true,
       value: HoldingAudio,
@@ -264,7 +286,7 @@ describe("Teacher Mercy voiceEngine", () => {
   });
 
   it("still attempts cloud Mercy voice first for multilingual tutor targets", async () => {
-    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/french.mp3", cached: false });
+    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/french.mp3", cached: false, provider: "azure" });
 
     const result = await speakTutorText("Bonjour.", {
       targetLanguage: "fr",
@@ -280,61 +302,31 @@ describe("Teacher Mercy voiceEngine", () => {
     expect(result.locale).toBe("fr-FR");
   });
 
-  it("BUG3: suppresses Vietnamese speech when no Vietnamese voice exists (never an English voice)", async () => {
+  it("requires Azure for Vietnamese tutor voice and never falls back to browser speech", async () => {
     const synth = installSpeechSynthesis([{ lang: "en-US", name: "English" } as SpeechSynthesisVoice]);
+    fetchCloudTtsUrl.mockResolvedValue(null);
 
     const result = await speakTutorText("Hôm nay trời đẹp.", {
       targetLanguage: "vi-VN",
-      preferCloudVoice: false,
+      preferCloudVoice: true,
       fallbackToBrowserTts: true,
     });
 
-    // Must NOT read Vietnamese text aloud with the English voice — suppress instead.
+    expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
+      text: "Hôm nay trời đẹp.",
+      language: "vi",
+      requiredProvider: "azure",
+    });
     expect(synth.speak).not.toHaveBeenCalled();
     expect(result.spoken).toBe(false);
     expect(result.fallback).toBe(false);
-    // Vietnamese-primary honest message explaining the suppression.
-    expect(getVoiceStatus().message).toMatch(/giọng đọc/i);
+    expect(getVoiceStatus().message).toMatch(/Azure/);
     expect(getVoiceStatus().status).toBe("error");
   });
 
-  it("BUG3: selects the Vietnamese voice when available, not the first (English) voice", async () => {
-    const synth = installSpeechSynthesis([
-      { lang: "en-US", name: "English" } as SpeechSynthesisVoice,
-      { lang: "vi-VN", name: "Vietnamese" } as SpeechSynthesisVoice,
-    ]);
-
-    const result = await speakTutorText("Hôm nay trời đẹp.", {
-      targetLanguage: "vi-VN",
-      preferCloudVoice: false,
-      fallbackToBrowserTts: true,
-    });
-
-    expect(synth.speak).toHaveBeenCalledTimes(1);
-    const utterance = synth.speak.mock.calls[0][0] as FakeUtterance;
-    expect(utterance.voice?.lang).toBe("vi-VN");
-    expect(utterance.lang).toBe("vi-VN");
-    expect(result.fallback).toBe(true);
-  });
-
-  it("BUG3: matches a Vietnamese voice by language prefix even without an exact locale", async () => {
-    const synth = installSpeechSynthesis([
-      { lang: "en-US", name: "English" } as SpeechSynthesisVoice,
-      { lang: "vi", name: "Vietnamese generic" } as SpeechSynthesisVoice,
-    ]);
-
-    await speakTutorText("Hôm nay trời đẹp.", {
-      targetLanguage: "vi-VN",
-      preferCloudVoice: false,
-      fallbackToBrowserTts: true,
-    });
-
-    const utterance = synth.speak.mock.calls[0][0] as FakeUtterance;
-    expect(utterance.voice?.lang).toBe("vi");
-  });
-
-  it("BUG3 regression: English still speaks and is never suppressed", async () => {
+  it("English tutor voice also avoids browser fallback when cloud is bypassed", async () => {
     const synth = installSpeechSynthesis([{ lang: "en-GB", name: "British" } as SpeechSynthesisVoice]);
+    fetchCloudTtsUrl.mockResolvedValue(null);
 
     const result = await speakTutorText("Good morning.", {
       targetLanguage: "en",
@@ -342,27 +334,22 @@ describe("Teacher Mercy voiceEngine", () => {
       fallbackToBrowserTts: true,
     });
 
-    expect(synth.speak).toHaveBeenCalledTimes(1);
-    const utterance = synth.speak.mock.calls[0][0] as FakeUtterance;
-    // en-US locale matches the en-GB voice by prefix (no wrong-language fallback needed).
-    expect(utterance.voice?.lang).toBe("en-GB");
-    expect(result.fallback).toBe(true);
+    expect(synth.speak).not.toHaveBeenCalled();
+    expect(result.fallback).toBe(false);
   });
 
-  it("BUG3 regression: English is not suppressed even when no English voice exists", async () => {
+  it("non-prime browser fallback still avoids forcing a wrong-language voice", async () => {
     const synth = installSpeechSynthesis([{ lang: "fr-FR", name: "French" } as SpeechSynthesisVoice]);
 
-    const result = await speakTutorText("Good morning.", {
-      targetLanguage: "en",
+    const result = await speakTutorText("Guten Morgen.", {
+      targetLanguage: "de",
       preferCloudVoice: false,
       fallbackToBrowserTts: true,
     });
 
-    // English keeps its prior behavior: it still speaks (browser default) rather than abstaining.
-    expect(synth.speak).toHaveBeenCalledTimes(1);
-    const utterance = synth.speak.mock.calls[0][0] as FakeUtterance;
-    expect(utterance.voice).toBeNull(); // no wrong-language voice forced onto it
-    expect(result.fallback).toBe(true);
+    expect(synth.speak).not.toHaveBeenCalled();
+    expect(result.fallback).toBe(false);
+    expect(getVoiceStatus().message).toMatch(/No matching-language voice|không đọc sai giọng/i);
   });
 
 });

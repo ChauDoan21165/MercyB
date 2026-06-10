@@ -16,6 +16,12 @@ type TtsBody = {
   language?: string;
 };
 
+const AZURE_VI_VN_VOICE_ID = "vi-VN-HoaiMyNeural";
+
+function isVietnameseLanguage(language: string): boolean {
+  return language.toLowerCase().split("-")[0] === "vi";
+}
+
 function parseAudioDataUrl(value: unknown): Buffer | null {
   if (typeof value !== "string") return null;
   const match = value.match(/^data:audio\/[a-z0-9.+-]+;base64,([A-Za-z0-9+/=]+)$/i);
@@ -39,6 +45,8 @@ export async function handler(event: NetlifyEvent) {
   const text = asString(body.text, 2000);
   const language = asString(body.language, 20) || "en";
   const requestedVoiceId = asString(body.voice_id || body.voiceId, 100);
+  const isVietnamese = isVietnameseLanguage(language);
+  const upstreamLanguage = isVietnamese ? "vi-VN" : language;
 
   if (!text) return json({ ok: false, error: "Missing text" }, 400);
 
@@ -55,13 +63,10 @@ export async function handler(event: NetlifyEvent) {
     },
     body: JSON.stringify({
       text,
-      language,
-      // Do not forward the legacy ElevenLabs web default. The edge function
-      // is Azure-first; omitting voice_id means a missing Azure path fails
-      // closed instead of producing Vietnamese learner audio via ElevenLabs.
-      ...(requestedVoiceId && language.toLowerCase().split("-")[0] !== "vi"
-        ? { voice_id: requestedVoiceId }
-        : {}),
+      language: upstreamLanguage,
+      // Vietnamese must stay on Azure vi-VN. Never forward a legacy English
+      // voice into the Vietnamese path.
+      voice_id: isVietnamese ? AZURE_VI_VN_VOICE_ID : requestedVoiceId,
     }),
   });
 
@@ -79,6 +84,15 @@ export async function handler(event: NetlifyEvent) {
       error: payload?.error || `mercy-tts ${upstream.status}`,
       code: payload?.code,
     }, upstream.ok ? 502 : upstream.status);
+  }
+
+  if (isVietnamese && payload.provider !== "azure") {
+    return json({
+      ok: false,
+      error: "Vietnamese TTS requires Azure vi-VN",
+      provider: payload.provider,
+      fallback_reason: payload.fallback_reason,
+    }, 502);
   }
 
   const bytes = parseAudioDataUrl(payload.audioUrl);

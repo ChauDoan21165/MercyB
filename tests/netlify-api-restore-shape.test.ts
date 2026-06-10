@@ -37,7 +37,9 @@ describe("Netlify API restore shape", () => {
     const tts = read("netlify/functions/api-tts.ts");
     expect(tts).toContain("/functions/v1/mercy-tts");
     expect(tts).not.toContain("api.elevenlabs.io");
-    expect(tts).toContain("language.toLowerCase().split");
+    expect(tts).toContain('language: upstreamLanguage');
+    expect(tts).toContain('"vi-VN-HoaiMyNeural"');
+    expect(tts).toContain('payload.provider !== "azure"');
   });
 
   it("does not introduce service-role use except the feedback insert sink", () => {

@@ -18,6 +18,8 @@ interface FetchCloudTtsArgs {
   language: MercyLanguage;
   /** Override the language's configured voice ID. */
   voiceIdOverride?: string;
+  /** Refuse fallback-provider audio for surfaces that require Azure voice. */
+  requiredProvider?: CloudTtsUrl["provider"];
 }
 
 export interface CloudTtsUrl {
@@ -55,6 +57,14 @@ export async function fetchCloudTtsUrl(
     if (error || !data?.audioUrl) {
       const reason = data?.fallback_reason || data?.code || error?.message;
       if (reason) console.warn("[mercyVoice] cloud unavailable", reason);
+      return null;
+    }
+    if (args.requiredProvider && data.provider !== args.requiredProvider) {
+      console.warn("[mercyVoice] rejected non-required TTS provider", {
+        requiredProvider: args.requiredProvider,
+        provider: data.provider,
+        fallbackReason: data.fallback_reason,
+      });
       return null;
     }
     return {
