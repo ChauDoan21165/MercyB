@@ -42,7 +42,7 @@ vi.mock('@/lib/pronunciation/useStreamingPronunciation', () => ({
 }));
 
 vi.mock('@/hooks/useMercyVoice', () => ({
-  useMercyVoice: () => ({ speak: vi.fn() }),
+  useMercyVoice: () => ({ speak: vi.fn().mockResolvedValue({ cloud: true, spoken: true, error: null }) }),
 }));
 
 vi.mock('@/lib/supabaseClient', () => ({

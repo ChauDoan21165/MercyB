@@ -14,7 +14,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
 vi.mock('@/hooks/useMercyVoice', () => ({
-  useMercyVoice: () => ({ speak: vi.fn(), cancel: vi.fn() }),
+  useMercyVoice: () => ({ speak: vi.fn().mockResolvedValue({ cloud: true, spoken: true, error: null }), cancel: vi.fn() }),
 }));
 
 import PhonemePlayButton from '../PhonemePlayButton';
