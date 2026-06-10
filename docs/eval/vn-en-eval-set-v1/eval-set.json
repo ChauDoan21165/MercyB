@@ -1,0 +1,914 @@
+{
+  "name": "vn-en-eval-set-v1",
+  "description": "100 Vietnamese-learner English correction pairs for AI tutor evaluation. Each entry has an ungrammatical input sentence, the expected natural correction, error classification tags, tone/register judgment, CEFR difficulty level, and the Vietnamese source interference pattern.",
+  "version": 1,
+  "targetLearnerL1": "vi",
+  "targetLearnerL2": "en",
+  "schemaSource": "docs/eval/vn-en-eval-set-v1/types.ts -> EvalEntry",
+  "errorTagEnum": ["tense","article","plural","preposition","word_order","copula","collocation","register","pronoun","conjunction","literal_translation","redundancy","omission"],
+  "cefrLevelEnum": ["A1","A2","B1","B2","C1"],
+  "registerEnum": ["informal","neutral","formal"],
+  "count": 100,
+  "entries": [
+    {
+      "id": "eval-001",
+      "input": "I go to the market yesterday.",
+      "expected": "I went to the market yesterday.",
+      "errorTags": ["tense"],
+      "tone": { "register": "informal", "natural": true, "context": "casual conversation" },
+      "level": "A1",
+      "vietlishPattern": "hôm qua tôi đi → time word marks past tense in Vietnamese; verb root unchanged"
+    },
+    {
+      "id": "eval-002",
+      "input": "She study very hard last night.",
+      "expected": "She studied very hard last night.",
+      "errorTags": ["tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "everyday conversation" },
+      "level": "A1",
+      "vietlishPattern": "đêm qua cô ấy học → past event, verb not inflected"
+    },
+    {
+      "id": "eval-003",
+      "input": "Yesterday they play football in the park.",
+      "expected": "Yesterday they played football in the park.",
+      "errorTags": ["tense"],
+      "tone": { "register": "informal", "natural": true, "context": "casual conversation" },
+      "level": "A1",
+      "vietlishPattern": "hôm qua họ chơi → verb root unchanged with past time adverb"
+    },
+    {
+      "id": "eval-004",
+      "input": "He tell me the secret this morning.",
+      "expected": "He told me the secret this morning.",
+      "errorTags": ["tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "everyday conversation" },
+      "level": "A1",
+      "vietlishPattern": "sáng nay anh ấy nói → irregular past form 'told' not acquired"
+    },
+    {
+      "id": "eval-005",
+      "input": "I not go to school yesterday because I am sick.",
+      "expected": "I did not go to school yesterday because I was sick.",
+      "errorTags": ["tense", "copula"],
+      "tone": { "register": "neutral", "natural": true, "context": "everyday conversation" },
+      "level": "A1",
+      "vietlishPattern": "tôi không đi học hôm qua → negation without auxiliary 'did'; present copula carried into past clause"
+    },
+    {
+      "id": "eval-006",
+      "input": "We eat dinner already, thank you.",
+      "expected": "We have already eaten dinner, thank you.",
+      "errorTags": ["tense", "word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "polite declination" },
+      "level": "A2",
+      "vietlishPattern": "chúng tôi đã ăn cơm rồi → 'đã...rồi' completion marker not mapped to present perfect; 'already' placed post-verb"
+    },
+    {
+      "id": "eval-007",
+      "input": "She already finish the report.",
+      "expected": "She has already finished the report.",
+      "errorTags": ["tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "work/study update" },
+      "level": "A2",
+      "vietlishPattern": "cô ấy đã làm xong báo cáo → 'đã' perfective marker triggers simple past rather than present perfect"
+    },
+    {
+      "id": "eval-008",
+      "input": "Have you eat lunch?",
+      "expected": "Have you eaten lunch?",
+      "errorTags": ["tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "everyday conversation" },
+      "level": "A2",
+      "vietlishPattern": "bạn đã ăn trưa chưa → 'chưa' triggers perfect question structure but past participle 'eaten' not inflected"
+    },
+    {
+      "id": "eval-009",
+      "input": "Did she already left?",
+      "expected": "Has she already left?",
+      "errorTags": ["tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "everyday conversation" },
+      "level": "A2",
+      "vietlishPattern": "cô ấy đã đi rồi chưa → 'did' + past participle confusion; completion requires present perfect"
+    },
+    {
+      "id": "eval-010",
+      "input": "I know him since three years.",
+      "expected": "I have known him for three years.",
+      "errorTags": ["tense", "preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "everyday conversation" },
+      "level": "A2",
+      "vietlishPattern": "tôi quen anh ấy được ba năm → duration-from-past-to-present requires present perfect; 'since' used where 'for' (duration) needed"
+    },
+    {
+      "id": "eval-011",
+      "input": "When I arrive home, he already eat dinner.",
+      "expected": "When I arrived home, he had already eaten dinner.",
+      "errorTags": ["tense", "word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "narrating past events" },
+      "level": "A2",
+      "vietlishPattern": "khi tôi về thì anh ấy đã ăn rồi → past perfect for prior-completed event not used; verb roots unchanged"
+    },
+    {
+      "id": "eval-012",
+      "input": "I am live in Hanoi for ten years.",
+      "expected": "I have been living in Hanoi for ten years.",
+      "errorTags": ["tense", "copula"],
+      "tone": { "register": "neutral", "natural": true, "context": "introducing oneself" },
+      "level": "B1",
+      "vietlishPattern": "tôi đang sống ở Hà Nội được mười năm → progressive 'đang' mapped to 'am'; duration from past needs perfect continuous"
+    },
+    {
+      "id": "eval-013",
+      "input": "She tell me she will come, but she didn't.",
+      "expected": "She told me she would come, but she didn't.",
+      "errorTags": ["tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "recounting an event" },
+      "level": "B1",
+      "vietlishPattern": "cô ấy nói sẽ đến → reported speech: 'sẽ' (future) not backshifted to 'would'; past tense 'told' also missed"
+    },
+    {
+      "id": "eval-014",
+      "input": "By next year I will finish my degree.",
+      "expected": "By next year I will have finished my degree.",
+      "errorTags": ["tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "discussing future plans" },
+      "level": "B1",
+      "vietlishPattern": "sang năm tôi sẽ hoàn thành bằng cấp → future perfect (will + have + past participle) not distinguished from simple future"
+    },
+    {
+      "id": "eval-015",
+      "input": "He study English since he was a child.",
+      "expected": "He has studied English since he was a child.",
+      "errorTags": ["tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing someone's background" },
+      "level": "B1",
+      "vietlishPattern": "anh ấy học tiếng Anh từ nhỏ → past-to-present continuity requires present perfect; 'since' clause not cued to perfect in L1"
+    },
+    {
+      "id": "eval-016",
+      "input": "I was working here since 2020.",
+      "expected": "I have been working here since 2020.",
+      "errorTags": ["tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "work conversation" },
+      "level": "B1",
+      "vietlishPattern": "tôi làm ở đây từ năm 2020 → ongoing past-to-present activity: past progressive used instead of present perfect continuous"
+    },
+    {
+      "id": "eval-017",
+      "input": "She left before I can say goodbye.",
+      "expected": "She left before I could say goodbye.",
+      "errorTags": ["tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "recounting a past event" },
+      "level": "B1",
+      "vietlishPattern": "cô ấy đã đi trước khi tôi kịp nói lời tạm biệt → modal 'can' not backshifted to 'could' in past sequence"
+    },
+    {
+      "id": "eval-018",
+      "input": "He is go to work every day.",
+      "expected": "He goes to work every day.",
+      "errorTags": ["tense", "copula"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing someone's routine" },
+      "level": "A1",
+      "vietlishPattern": "anh ấy đi làm mỗi ngày → 'đang đi' (progressive) confused with 'is go'; habitual action needs simple present"
+    },
+    {
+      "id": "eval-019",
+      "input": "I will go to the cinema yesterday.",
+      "expected": "I went to the cinema yesterday.",
+      "errorTags": ["tense"],
+      "tone": { "register": "informal", "natural": true, "context": "casual conversation" },
+      "level": "A2",
+      "vietlishPattern": "hôm qua tôi đi xem phim → 'will' used generically for events; past tense required with past time adverb"
+    },
+    {
+      "id": "eval-020",
+      "input": "While I drove home, I thought about the problem.",
+      "expected": "While I was driving home, I thought about the problem.",
+      "errorTags": ["tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "narrating a past situation" },
+      "level": "B1",
+      "vietlishPattern": "trong khi tôi đang lái xe → background ongoing action needs past progressive; simple past suggests two completed events"
+    },
+    {
+      "id": "eval-021",
+      "input": "She is teacher at my school.",
+      "expected": "She is a teacher at my school.",
+      "errorTags": ["article"],
+      "tone": { "register": "neutral", "natural": true, "context": "introducing someone" },
+      "level": "A1",
+      "vietlishPattern": "cô ấy là giáo viên → Vietnamese has no indefinite article; profession 'giáo viên' takes no article in L1"
+    },
+    {
+      "id": "eval-022",
+      "input": "He wants to be doctor.",
+      "expected": "He wants to be a doctor.",
+      "errorTags": ["article"],
+      "tone": { "register": "neutral", "natural": true, "context": "discussing future goals" },
+      "level": "A1",
+      "vietlishPattern": "anh ấy muốn làm bác sĩ → profession after 'to be' requires indefinite article in English"
+    },
+    {
+      "id": "eval-023",
+      "input": "I have dog and two cats at home.",
+      "expected": "I have a dog and two cats at home.",
+      "errorTags": ["article"],
+      "tone": { "register": "informal", "natural": true, "context": "casual conversation" },
+      "level": "A1",
+      "vietlishPattern": "tôi có một con chó và hai con mèo → 'một' (one) is optional in Vietnamese; singular countable needs 'a' in English"
+    },
+    {
+      "id": "eval-024",
+      "input": "Can you open window please?",
+      "expected": "Can you open the window, please?",
+      "errorTags": ["article"],
+      "tone": { "register": "neutral", "natural": true, "context": "polite request" },
+      "level": "A2",
+      "vietlishPattern": "bạn mở cửa sổ được không → contextually unique referent 'cái cửa sổ' needs definite article; omitted in L1"
+    },
+    {
+      "id": "eval-025",
+      "input": "Sun rises in the east every morning.",
+      "expected": "The sun rises in the east every morning.",
+      "errorTags": ["article"],
+      "tone": { "register": "neutral", "natural": true, "context": "stating a general fact" },
+      "level": "A2",
+      "vietlishPattern": "mặt trời mọc ở hướng đông → unique natural object 'mặt trời' takes definite article in English"
+    },
+    {
+      "id": "eval-026",
+      "input": "I go to school by the bus.",
+      "expected": "I go to school by bus.",
+      "errorTags": ["article"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing a routine" },
+      "level": "A2",
+      "vietlishPattern": "tôi đi học bằng xe buýt → transport collocations 'by bus/car/train' take no article; 'bằng' triggers definite article by analogy"
+    },
+    {
+      "id": "eval-027",
+      "input": "She has a long black hair.",
+      "expected": "She has long black hair.",
+      "errorTags": ["article"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing appearance" },
+      "level": "A2",
+      "vietlishPattern": "cô ấy có mái tóc dài màu đen → 'tóc' (hair) is mass noun in Vietnamese; treated as countable in English with 'a'"
+    },
+    {
+      "id": "eval-028",
+      "input": "The life is full of surprises.",
+      "expected": "Life is full of surprises.",
+      "errorTags": ["article"],
+      "tone": { "register": "neutral", "natural": true, "context": "philosophical or general statement" },
+      "level": "B1",
+      "vietlishPattern": "cuộc sống rất bất ngờ → generic abstract noun 'cuộc sống' takes no definite article in English"
+    },
+    {
+      "id": "eval-029",
+      "input": "He is playing the football with his friends.",
+      "expected": "He is playing football with his friends.",
+      "errorTags": ["article"],
+      "tone": { "register": "informal", "natural": true, "context": "casual conversation" },
+      "level": "A2",
+      "vietlishPattern": "anh ấy đang chơi bóng đá → sport names take no article in English; definite article added by analogy"
+    },
+    {
+      "id": "eval-030",
+      "input": "Please give me a water.",
+      "expected": "Please give me some water.",
+      "errorTags": ["article"],
+      "tone": { "register": "neutral", "natural": true, "context": "making a request" },
+      "level": "A2",
+      "vietlishPattern": "cho tôi một ly nước → 'nước' (water) is uncountable; 'một' mapped to indefinite 'a'"
+    },
+    {
+      "id": "eval-031",
+      "input": "She gave me a good advice.",
+      "expected": "She gave me some good advice.",
+      "errorTags": ["article", "plural"],
+      "tone": { "register": "neutral", "natural": true, "context": "recounting helpful conversation" },
+      "level": "B1",
+      "vietlishPattern": "cô ấy cho tôi một lời khuyên hay → 'advice' is uncountable; 'một lời khuyên' maps to 'a piece of advice', not 'a advice'"
+    },
+    {
+      "id": "eval-032",
+      "input": "He is studying the medicine at university.",
+      "expected": "He is studying medicine at university.",
+      "errorTags": ["article"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing someone's studies" },
+      "level": "B1",
+      "vietlishPattern": "anh ấy đang học y khoa → academic field names take no definite article; learner adds 'the' by analogy"
+    },
+    {
+      "id": "eval-033",
+      "input": "He is an honest and a hardworking student.",
+      "expected": "He is an honest and hardworking student.",
+      "errorTags": ["article"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing someone's qualities" },
+      "level": "A2",
+      "vietlishPattern": "anh ấy là một học sinh trung thực và chăm chỉ → article not shared across coordinated adjectives; each gets 'a/an' by analogy"
+    },
+    {
+      "id": "eval-034",
+      "input": "I need the help from my teacher to understand this.",
+      "expected": "I need help from my teacher to understand this.",
+      "errorTags": ["article"],
+      "tone": { "register": "neutral", "natural": true, "context": "academic or study context" },
+      "level": "A2",
+      "vietlishPattern": "tôi cần sự giúp đỡ từ giáo viên → 'sự giúp đỡ' (noun phrase) triggers definite article; 'help' as abstract noun takes none"
+    },
+    {
+      "id": "eval-035",
+      "input": "He is working in the abroad.",
+      "expected": "He is working abroad.",
+      "errorTags": ["article", "preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "discussing someone's location" },
+      "level": "B1",
+      "vietlishPattern": "anh ấy đang làm việc ở nước ngoài → 'ở nước ngoài' → 'in the abroad'; 'abroad' is an adverb requiring no preposition or article"
+    },
+    {
+      "id": "eval-036",
+      "input": "I am very good in English.",
+      "expected": "I am very good at English.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "self-description or CV" },
+      "level": "A2",
+      "vietlishPattern": "tôi giỏi tiếng Anh → 'giỏi' (good) has no prepositional frame in L1; 'good at' collocates with skills"
+    },
+    {
+      "id": "eval-037",
+      "input": "She is waiting me at the café.",
+      "expected": "She is waiting for me at the café.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "everyday conversation" },
+      "level": "A1",
+      "vietlishPattern": "cô ấy đang đợi tôi → 'đợi' takes direct object in Vietnamese; English 'wait' requires preposition 'for'"
+    },
+    {
+      "id": "eval-038",
+      "input": "I arrived to the airport very early.",
+      "expected": "I arrived at the airport very early.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "travel narrative" },
+      "level": "A2",
+      "vietlishPattern": "tôi đến sân bay rất sớm → 'đến' (to/arrive at) mapped to 'to'; 'arrive at' for enclosed spaces"
+    },
+    {
+      "id": "eval-039",
+      "input": "He is very interested about linguistics.",
+      "expected": "He is very interested in linguistics.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing someone's passion" },
+      "level": "B1",
+      "vietlishPattern": "anh ấy rất quan tâm đến ngôn ngữ học → 'interested in' collocates with 'in'; 'about' borrowed by analogy with 'curious about'"
+    },
+    {
+      "id": "eval-040",
+      "input": "She got married with a businessman.",
+      "expected": "She got married to a businessman.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "sharing personal news" },
+      "level": "B1",
+      "vietlishPattern": "cô ấy kết hôn với một doanh nhân → 'với' means 'with'; English 'get married to' not acquired"
+    },
+    {
+      "id": "eval-041",
+      "input": "He is quite different with his brother.",
+      "expected": "He is quite different from his brother.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "comparing people" },
+      "level": "B1",
+      "vietlishPattern": "anh ấy khác với anh trai → 'với' (with/compared to) mapped to 'with'; 'different from' not in L1 frame"
+    },
+    {
+      "id": "eval-042",
+      "input": "Please explain me this grammar rule.",
+      "expected": "Please explain this grammar rule to me.",
+      "errorTags": ["preposition", "word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "classroom request" },
+      "level": "B1",
+      "vietlishPattern": "bạn giải thích cho tôi quy tắc này → 'cho tôi' (to me) placed pre-object in L1; 'explain' takes no indirect object without 'to'"
+    },
+    {
+      "id": "eval-043",
+      "input": "I discussed about the project with my boss.",
+      "expected": "I discussed the project with my boss.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "work conversation" },
+      "level": "B1",
+      "vietlishPattern": "tôi thảo luận về dự án → 'về' (about) calqued; 'discuss' is transitive in English without 'about'"
+    },
+    {
+      "id": "eval-044",
+      "input": "She apologized me for being late.",
+      "expected": "She apologized to me for being late.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "social interaction" },
+      "level": "B1",
+      "vietlishPattern": "cô ấy xin lỗi tôi vì đến muộn → 'xin lỗi' takes direct object in Vietnamese; English 'apologize to' requires 'to'"
+    },
+    {
+      "id": "eval-045",
+      "input": "I prefer coffee than tea.",
+      "expected": "I prefer coffee to tea.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "expressing preference" },
+      "level": "B1",
+      "vietlishPattern": "tôi thích cà phê hơn trà → 'hơn' (more than) mapped to 'than'; 'prefer X to Y' comparison frame not acquired"
+    },
+    {
+      "id": "eval-046",
+      "input": "I will contact with you next week.",
+      "expected": "I will contact you next week.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "business or social follow-up" },
+      "level": "B1",
+      "vietlishPattern": "tôi sẽ liên lạc với bạn → 'với' (with) translated literally; 'contact' is transitive without preposition"
+    },
+    {
+      "id": "eval-047",
+      "input": "She is bored from staying at home all day.",
+      "expected": "She is bored of staying at home all day.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "informal", "natural": true, "context": "casual conversation" },
+      "level": "A2",
+      "vietlishPattern": "cô ấy chán vì ở nhà cả ngày → 'vì' (because of/from) mapped to 'from'; 'bored of' is the standard collocation"
+    },
+    {
+      "id": "eval-048",
+      "input": "He succeeded to finish the project on time.",
+      "expected": "He succeeded in finishing the project on time.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "reporting achievement" },
+      "level": "B2",
+      "vietlishPattern": "anh ấy thành công trong việc hoàn thành → 'succeed in' + gerund; 'to' used by analogy with 'manage to finish'"
+    },
+    {
+      "id": "eval-049",
+      "input": "I am looking forward to meet you.",
+      "expected": "I am looking forward to meeting you.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "anticipatory message or email" },
+      "level": "A2",
+      "vietlishPattern": "tôi mong được gặp bạn → 'look forward to' + gerund; 'to' misread as infinitive marker → base form used"
+    },
+    {
+      "id": "eval-050",
+      "input": "She is responsible of the entire project.",
+      "expected": "She is responsible for the entire project.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "professional description" },
+      "level": "B1",
+      "vietlishPattern": "cô ấy chịu trách nhiệm về toàn bộ dự án → 'responsible for'; 'of' used by analogy with possession"
+    },
+    {
+      "id": "eval-051",
+      "input": "Why you are late today?",
+      "expected": "Why are you late today?",
+      "errorTags": ["word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "asking a direct question" },
+      "level": "A1",
+      "vietlishPattern": "tại sao hôm nay bạn đến muộn → Vietnamese questions add question word to SVO order; no subject-auxiliary inversion"
+    },
+    {
+      "id": "eval-052",
+      "input": "Where you go yesterday?",
+      "expected": "Where did you go yesterday?",
+      "errorTags": ["word_order", "tense"],
+      "tone": { "register": "informal", "natural": true, "context": "casual question" },
+      "level": "A1",
+      "vietlishPattern": "hôm qua bạn đi đâu → no inversion and no do-support; SVO order with question word prepended"
+    },
+    {
+      "id": "eval-053",
+      "input": "What means this word?",
+      "expected": "What does this word mean?",
+      "errorTags": ["word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "classroom or language learning" },
+      "level": "A1",
+      "vietlishPattern": "từ này có nghĩa là gì → no do-support or inversion; direct translation of SVO question"
+    },
+    {
+      "id": "eval-054",
+      "input": "He always is late for class.",
+      "expected": "He is always late for class.",
+      "errorTags": ["word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing a habit" },
+      "level": "A2",
+      "vietlishPattern": "anh ấy luôn luôn đi học muộn → 'luôn luôn' (always) placed before verb in L1; in English frequency adverb follows 'be'"
+    },
+    {
+      "id": "eval-055",
+      "input": "I have a new beautiful blue dress.",
+      "expected": "I have a beautiful new blue dress.",
+      "errorTags": ["word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing an item" },
+      "level": "A2",
+      "vietlishPattern": "tôi có một chiếc váy đẹp mới màu xanh → adjective ordering in English: opinion > age/newness > colour; Vietnamese order is flexible"
+    },
+    {
+      "id": "eval-056",
+      "input": "Do you know where is the post office?",
+      "expected": "Do you know where the post office is?",
+      "errorTags": ["word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "asking for directions politely" },
+      "level": "B1",
+      "vietlishPattern": "bạn có biết bưu điện ở đâu không → embedded question: direct-question inversion retained; indirect question uses statement order"
+    },
+    {
+      "id": "eval-057",
+      "input": "I love very much this country.",
+      "expected": "I love this country very much.",
+      "errorTags": ["word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "expressing sentiment" },
+      "level": "A2",
+      "vietlishPattern": "tôi rất yêu đất nước này → 'rất' (very much) placed post-verb in L1; 'very much' should follow the object in English"
+    },
+    {
+      "id": "eval-058",
+      "input": "She is a woman beautiful and intelligent.",
+      "expected": "She is a beautiful and intelligent woman.",
+      "errorTags": ["word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing someone" },
+      "level": "B1",
+      "vietlishPattern": "cô ấy là người phụ nữ đẹp và thông minh → in Vietnamese adjectives follow the noun; in English attributive adjectives precede"
+    },
+    {
+      "id": "eval-059",
+      "input": "Not only she is smart but also hardworking.",
+      "expected": "She is not only smart but also hardworking.",
+      "errorTags": ["word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing someone's qualities" },
+      "level": "B1",
+      "vietlishPattern": "không chỉ cô ấy thông minh mà còn chăm chỉ → 'không chỉ' sentence-initial placement; English 'not only' precedes the predicates, after the subject"
+    },
+    {
+      "id": "eval-060",
+      "input": "I yesterday saw your sister at the market.",
+      "expected": "I saw your sister at the market yesterday.",
+      "errorTags": ["word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "casual conversation" },
+      "level": "A1",
+      "vietlishPattern": "hôm qua tôi gặp chị bạn → time adverb sentence-initial in L1; standard English position is end of clause"
+    },
+    {
+      "id": "eval-061",
+      "input": "She very beautiful, isn't it?",
+      "expected": "She is very beautiful, isn't she?",
+      "errorTags": ["copula", "pronoun"],
+      "tone": { "register": "informal", "natural": true, "context": "casual conversation, seeking agreement" },
+      "level": "A1",
+      "vietlishPattern": "cô ấy rất đẹp phải không → copula 'is' omitted; tag 'phải không' → 'isn't it'; tag pronoun should match subject"
+    },
+    {
+      "id": "eval-062",
+      "input": "He not here today.",
+      "expected": "He is not here today.",
+      "errorTags": ["copula"],
+      "tone": { "register": "neutral", "natural": true, "context": "informing about someone's absence" },
+      "level": "A1",
+      "vietlishPattern": "anh ấy không ở đây hôm nay → Vietnamese negative 'không' + location; copula 'is' not required in L1 predicate"
+    },
+    {
+      "id": "eval-063",
+      "input": "The food delicious!",
+      "expected": "The food is delicious!",
+      "errorTags": ["copula"],
+      "tone": { "register": "informal", "natural": true, "context": "reacting to food" },
+      "level": "A1",
+      "vietlishPattern": "đồ ăn ngon quá → Vietnamese predicative adjective needs no 'là'; copula omitted"
+    },
+    {
+      "id": "eval-064",
+      "input": "I very happy to meet you.",
+      "expected": "I am very happy to meet you.",
+      "errorTags": ["copula"],
+      "tone": { "register": "neutral", "natural": true, "context": "greeting or introduction" },
+      "level": "A1",
+      "vietlishPattern": "tôi rất vui được gặp bạn → 'rất vui' adjective predicate without copula 'là' in L1"
+    },
+    {
+      "id": "eval-065",
+      "input": "She boring at the lecture.",
+      "expected": "She was bored at the lecture.",
+      "errorTags": ["copula", "collocation"],
+      "tone": { "register": "neutral", "natural": true, "context": "recounting an experience" },
+      "level": "A2",
+      "vietlishPattern": "cô ấy cảm thấy chán ở buổi giảng → participial adjective confusion: 'boring' (causes boredom) vs 'bored' (experiences it); copula missing"
+    },
+    {
+      "id": "eval-066",
+      "input": "He confuse about the new rule.",
+      "expected": "He is confused about the new rule.",
+      "errorTags": ["copula", "collocation"],
+      "tone": { "register": "neutral", "natural": true, "context": "explaining someone's state" },
+      "level": "A2",
+      "vietlishPattern": "anh ấy bối rối về quy tắc mới → 'bối rối' (confused) → base verb form 'confuse' used without copula or past participle ending"
+    },
+    {
+      "id": "eval-067",
+      "input": "The children very exciting about the trip.",
+      "expected": "The children are very excited about the trip.",
+      "errorTags": ["copula", "collocation"],
+      "tone": { "register": "neutral", "natural": true, "context": "talking about kids" },
+      "level": "A2",
+      "vietlishPattern": "các em rất hào hứng về chuyến đi → participial adjective confusion + copula omission; 'exciting' (stimulus) vs 'excited' (experiencer)"
+    },
+    {
+      "id": "eval-068",
+      "input": "He very confident when he speaks.",
+      "expected": "He is very confident when he speaks.",
+      "errorTags": ["copula"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing someone's manner" },
+      "level": "A1",
+      "vietlishPattern": "anh ấy rất tự tin khi nói → adjective predicate without copula"
+    },
+    {
+      "id": "eval-069",
+      "input": "We hungry, can we eat now?",
+      "expected": "We are hungry. Can we eat now?",
+      "errorTags": ["copula"],
+      "tone": { "register": "informal", "natural": true, "context": "casual request" },
+      "level": "A1",
+      "vietlishPattern": "chúng tôi đói, chúng tôi ăn được chưa → stative adjective predicate without 'are'"
+    },
+    {
+      "id": "eval-070",
+      "input": "He is very success in his career.",
+      "expected": "He is very successful in his career.",
+      "errorTags": ["copula", "collocation"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing someone's achievements" },
+      "level": "B1",
+      "vietlishPattern": "anh ấy rất thành công → 'thành công' (noun/adj in Vietnamese) mapped to noun 'success'; adjective 'successful' needed"
+    },
+    {
+      "id": "eval-071",
+      "input": "She has many dog at her house.",
+      "expected": "She has many dogs at her house.",
+      "errorTags": ["plural"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing a household" },
+      "level": "A1",
+      "vietlishPattern": "cô ấy có nhiều con chó → Vietnamese nouns do not inflect for number; plural -s not added"
+    },
+    {
+      "id": "eval-072",
+      "input": "He gave me three advice about the job.",
+      "expected": "He gave me three pieces of advice about the job.",
+      "errorTags": ["plural"],
+      "tone": { "register": "neutral", "natural": true, "context": "sharing feedback" },
+      "level": "A2",
+      "vietlishPattern": "anh ấy đưa ra ba lời khuyên → 'advice' is uncountable; classifier 'pieces of' required for countable use"
+    },
+    {
+      "id": "eval-073",
+      "input": "I need more informations to decide.",
+      "expected": "I need more information to decide.",
+      "errorTags": ["plural"],
+      "tone": { "register": "neutral", "natural": true, "context": "requesting more data" },
+      "level": "A2",
+      "vietlishPattern": "tôi cần thêm thông tin → 'thông tin' treated as countable noun; 'information' is uncountable mass noun in English"
+    },
+    {
+      "id": "eval-074",
+      "input": "He bought new furnitures for his apartment.",
+      "expected": "He bought new furniture for his apartment.",
+      "errorTags": ["plural"],
+      "tone": { "register": "neutral", "natural": true, "context": "talking about home" },
+      "level": "A2",
+      "vietlishPattern": "anh ấy mua đồ nội thất mới → 'đồ nội thất' treated as countable; 'furniture' is mass noun in English"
+    },
+    {
+      "id": "eval-075",
+      "input": "I learned many knowledges from this program.",
+      "expected": "I gained a lot of knowledge from this program.",
+      "errorTags": ["plural", "collocation"],
+      "tone": { "register": "neutral", "natural": true, "context": "reflecting on learning" },
+      "level": "B1",
+      "vietlishPattern": "tôi học được nhiều kiến thức → 'kiến thức' treated as countable + 'học kiến thức' → 'gain/acquire knowledge'"
+    },
+    {
+      "id": "eval-076",
+      "input": "She had many homeworks to do last night.",
+      "expected": "She had a lot of homework to do last night.",
+      "errorTags": ["plural"],
+      "tone": { "register": "neutral", "natural": true, "context": "talking about schoolwork" },
+      "level": "A2",
+      "vietlishPattern": "cô ấy có nhiều bài tập về nhà → 'homework' is uncountable; 'nhiều' → 'many' triggers plural form"
+    },
+    {
+      "id": "eval-077",
+      "input": "Can you print two papers for the meeting?",
+      "expected": "Can you print two sheets of paper for the meeting?",
+      "errorTags": ["plural"],
+      "tone": { "register": "neutral", "natural": true, "context": "office request" },
+      "level": "B1",
+      "vietlishPattern": "bạn in cho tôi hai tờ giấy → 'tờ' (sheet/classifier) dropped; 'paper' used as countable"
+    },
+    {
+      "id": "eval-078",
+      "input": "I have a good news for you.",
+      "expected": "I have some good news for you.",
+      "errorTags": ["article", "plural"],
+      "tone": { "register": "informal", "natural": true, "context": "sharing news" },
+      "level": "A2",
+      "vietlishPattern": "tôi có một tin tốt → 'một' (one) mapped to 'a'; 'news' is uncountable in English"
+    },
+    {
+      "id": "eval-079",
+      "input": "The police is looking for the suspect.",
+      "expected": "The police are looking for the suspect.",
+      "errorTags": ["plural"],
+      "tone": { "register": "neutral", "natural": true, "context": "news or official report" },
+      "level": "B1",
+      "vietlishPattern": "cảnh sát đang tìm kiếm → 'cảnh sát' is singular collective noun in L1; English 'police' is plural"
+    },
+    {
+      "id": "eval-080",
+      "input": "He ate three breads and a bowl of soup.",
+      "expected": "He ate three bread rolls and a bowl of soup.",
+      "errorTags": ["plural"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing a meal" },
+      "level": "B1",
+      "vietlishPattern": "anh ấy ăn ba cái bánh mì → 'bánh mì' (a discrete bread item) mapped to uncountable 'bread'; classifier needed in English"
+    },
+    {
+      "id": "eval-081",
+      "input": "My sister, she is a nurse at the city hospital.",
+      "expected": "My sister is a nurse at the city hospital.",
+      "errorTags": ["pronoun"],
+      "tone": { "register": "neutral", "natural": true, "context": "introducing a family member" },
+      "level": "A2",
+      "vietlishPattern": "chị tôi, chị ấy là y tá → topic-comment structure re-states topic as pronoun; redundant in English"
+    },
+    {
+      "id": "eval-082",
+      "input": "Yesterday I met him mother at the market.",
+      "expected": "Yesterday I met his mother at the market.",
+      "errorTags": ["pronoun"],
+      "tone": { "register": "neutral", "natural": true, "context": "casual conversation" },
+      "level": "A1",
+      "vietlishPattern": "hôm qua tôi gặp mẹ của anh ấy → object pronoun 'him' used as possessive; 'his' not yet acquired"
+    },
+    {
+      "id": "eval-083",
+      "input": "They enjoyed theirself a lot at the party.",
+      "expected": "They enjoyed themselves a lot at the party.",
+      "errorTags": ["pronoun"],
+      "tone": { "register": "informal", "natural": true, "context": "recounting a social event" },
+      "level": "A2",
+      "vietlishPattern": "họ rất vui → reflexive pronoun not required in L1; '-self' form over-regularized to 'theirself'"
+    },
+    {
+      "id": "eval-084",
+      "input": "I need to improve me before the exam.",
+      "expected": "I need to improve myself before the exam.",
+      "errorTags": ["pronoun"],
+      "tone": { "register": "neutral", "natural": true, "context": "study or self-improvement talk" },
+      "level": "B1",
+      "vietlishPattern": "tôi cần cải thiện bản thân → 'bản thân' (self) not mapped to reflexive pronoun"
+    },
+    {
+      "id": "eval-085",
+      "input": "She told to me that she was coming.",
+      "expected": "She told me that she was coming.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "recounting what someone said" },
+      "level": "A2",
+      "vietlishPattern": "cô ấy nói với tôi → 'với' (with/to) translated as 'to'; 'tell' is ditransitive without 'to'"
+    },
+    {
+      "id": "eval-086",
+      "input": "Please open the light, it is too dark.",
+      "expected": "Please turn on the light, it is too dark.",
+      "errorTags": ["collocation"],
+      "tone": { "register": "informal", "natural": true, "context": "household request" },
+      "level": "A2",
+      "vietlishPattern": "mở đèn lên → 'mở' (open) used for activating lights; English uses 'turn on'"
+    },
+    {
+      "id": "eval-087",
+      "input": "Can you close the fan? I am cold.",
+      "expected": "Can you turn off the fan? I am cold.",
+      "errorTags": ["collocation"],
+      "tone": { "register": "informal", "natural": true, "context": "household request" },
+      "level": "A2",
+      "vietlishPattern": "tắt quạt → 'tắt' (turn off/close off) mapped to 'close'; English uses 'turn off' for appliances"
+    },
+    {
+      "id": "eval-088",
+      "input": "I want to make my English more perfect.",
+      "expected": "I want to improve my English.",
+      "errorTags": ["collocation"],
+      "tone": { "register": "neutral", "natural": true, "context": "expressing a learning goal" },
+      "level": "B1",
+      "vietlishPattern": "tôi muốn làm tiếng Anh của mình tốt hơn → 'làm cho tốt hơn' → 'make more perfect'; 'perfect' is absolute; 'improve' is the natural verb"
+    },
+    {
+      "id": "eval-089",
+      "input": "He is a very high man.",
+      "expected": "He is a very tall man.",
+      "errorTags": ["collocation"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing physical appearance" },
+      "level": "A2",
+      "vietlishPattern": "anh ấy rất cao → 'cao' means tall (person) or high (position/height); 'high' not used for person's stature"
+    },
+    {
+      "id": "eval-090",
+      "input": "She studies very hardly.",
+      "expected": "She studies very hard.",
+      "errorTags": ["collocation"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing study habits" },
+      "level": "B1",
+      "vietlishPattern": "cô ấy học rất chăm chỉ → 'hard' is the adverb; 'hardly' means 'barely'; over-regularized with '-ly'"
+    },
+    {
+      "id": "eval-091",
+      "input": "My heart is very hurt when I heard the news.",
+      "expected": "I was deeply hurt when I heard the news.",
+      "errorTags": ["collocation", "literal_translation"],
+      "tone": { "register": "neutral", "natural": true, "context": "expressing emotional pain" },
+      "level": "B1",
+      "vietlishPattern": "trái tim tôi đau → body-part metaphor calqued; English prefers psychological subject 'I was hurt'"
+    },
+    {
+      "id": "eval-092",
+      "input": "I will try my best to handle this problem.",
+      "expected": "I will do my best to deal with this problem.",
+      "errorTags": ["collocation"],
+      "tone": { "register": "neutral", "natural": true, "context": "workplace or study commitment" },
+      "level": "B1",
+      "vietlishPattern": "tôi sẽ cố hết sức để giải quyết vấn đề → 'try one's best' acceptable but marginal; 'do one's best' + 'deal with' are stronger collocations"
+    },
+    {
+      "id": "eval-093",
+      "input": "Please kindly be informed that the meeting is cancelled.",
+      "expected": "Please note that the meeting has been cancelled.",
+      "errorTags": ["register"],
+      "tone": { "register": "neutral", "natural": true, "context": "internal workplace notification" },
+      "level": "B2",
+      "vietlishPattern": "kính báo → formal Vietnamese business opening formula; over-translated into English as 'please kindly be informed'"
+    },
+    {
+      "id": "eval-094",
+      "input": "I am writing to inquire about the possibility of obtaining your assistance.",
+      "expected": "I am writing to ask for your help.",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "formal email or official request" },
+      "level": "B2",
+      "vietlishPattern": "tôi viết thư này để nhờ sự giúp đỡ → formal Vietnamese register calqued into hyper-elevated English; plain business English preferred"
+    },
+    {
+      "id": "eval-095",
+      "input": "He speaks English very good.",
+      "expected": "He speaks English very well.",
+      "errorTags": ["collocation"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing language ability" },
+      "level": "A2",
+      "vietlishPattern": "anh ấy nói tiếng Anh rất tốt → 'tốt' (good/well) used as adjective; 'well' needed as manner adverb after verb"
+    },
+    {
+      "id": "eval-096",
+      "input": "Although she was sick, but she came to work.",
+      "expected": "Although she was sick, she came to work.",
+      "errorTags": ["conjunction"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing persistence" },
+      "level": "B1",
+      "vietlishPattern": "tuy bị bệnh nhưng cô ấy vẫn đi làm → 'tuy...nhưng' double concessive conjunction; English uses one: 'although' replaces both"
+    },
+    {
+      "id": "eval-097",
+      "input": "Even though he studied hard, but he failed the exam.",
+      "expected": "Even though he studied hard, he failed the exam.",
+      "errorTags": ["conjunction"],
+      "tone": { "register": "neutral", "natural": true, "context": "recounting an outcome" },
+      "level": "B1",
+      "vietlishPattern": "dù anh ấy học chăm chỉ nhưng vẫn trượt → 'dù...nhưng' double conjunction; one concessive word is enough in English"
+    },
+    {
+      "id": "eval-098",
+      "input": "The reason why I was late is because I missed the bus.",
+      "expected": "I was late because I missed the bus.",
+      "errorTags": ["redundancy"],
+      "tone": { "register": "neutral", "natural": true, "context": "explaining tardiness" },
+      "level": "B2",
+      "vietlishPattern": "lý do tại sao tôi đến muộn là vì → 'lý do...là vì' structure calqued; 'the reason why...is because' is redundant in standard English"
+    },
+    {
+      "id": "eval-099",
+      "input": "I am not sure that whether she will come.",
+      "expected": "I am not sure whether she will come.",
+      "errorTags": ["conjunction", "redundancy"],
+      "tone": { "register": "neutral", "natural": true, "context": "expressing uncertainty" },
+      "level": "B1",
+      "vietlishPattern": "tôi không chắc là liệu cô ấy có đến không → 'là' (that) and 'liệu' (whether) both translated; choose one complementizer"
+    },
+    {
+      "id": "eval-100",
+      "input": "Because she was tired, so she went to bed early.",
+      "expected": "Because she was tired, she went to bed early.",
+      "errorTags": ["conjunction"],
+      "tone": { "register": "neutral", "natural": true, "context": "explaining a decision" },
+      "level": "B1",
+      "vietlishPattern": "vì cô ấy mệt nên cô ấy đi ngủ sớm → 'vì...nên' double causal conjunction; English uses 'because' alone without a paired result connector"
+    }
+  ]
+}
