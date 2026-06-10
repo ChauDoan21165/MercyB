@@ -75,4 +75,55 @@ describe("fetchCloudTtsUrl", () => {
       fetchCloudTtsUrl({ text: "Hello.", language: "en", requiredProvider: "azure" }),
     ).resolves.toBeNull();
   });
+
+  it("retries once and recovers Azure after a cold-start timeout fallback", async () => {
+    invoke
+      .mockResolvedValueOnce({
+        data: {
+          audioUrl: "data:audio/mpeg;base64,ELEVEN",
+          cached: false,
+          provider: "elevenlabs",
+          fallback_reason: "azure_timeout",
+        },
+        error: null,
+      })
+      .mockResolvedValueOnce({
+        data: {
+          audioUrl: "data:audio/mpeg;base64,AZURE",
+          cached: false,
+          provider: "azure",
+        },
+        error: null,
+      });
+
+    const result = await fetchCloudTtsUrl({
+      text: "Xin chào.",
+      language: "vi",
+      requiredProvider: "azure",
+    });
+
+    expect(result).toMatchObject({ provider: "azure", audioUrl: "data:audio/mpeg;base64,AZURE" });
+    expect(invoke).toHaveBeenCalledTimes(2);
+  });
+
+  it("does not retry on a non-transient Azure fallback (cap/flag/key)", async () => {
+    invoke.mockResolvedValue({
+      data: {
+        audioUrl: "data:audio/mpeg;base64,ELEVEN",
+        cached: false,
+        provider: "elevenlabs",
+        fallback_reason: "azure_429",
+      },
+      error: null,
+    });
+
+    const result = await fetchCloudTtsUrl({
+      text: "Xin chào.",
+      language: "vi",
+      requiredProvider: "azure",
+    });
+
+    expect(result).toBeNull();
+    expect(invoke).toHaveBeenCalledTimes(1);
+  });
 });
