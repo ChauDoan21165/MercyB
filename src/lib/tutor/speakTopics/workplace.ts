@@ -5,12 +5,37 @@ import type { SpeakTopicLibraryEntry as SpeakTopic } from "../speakTopicLibrary"
 // l1InterferenceNotes name genuine Vietnamese→English interference as friendly
 // context, NEVER as a grammar correction. Vietnamese is quoted with full
 // diacritics so the learner recognises the L1 phrase behind the English.
-export const workplaceSpeakTopics: readonly SpeakTopic[] = [
+
+type D4SpeakTopic = SpeakTopic & {
+  scenarioDescription: string;
+  aiRoleDefinition: string;
+  conversationDirections: readonly string[];
+  warmthPatterns: readonly string[];
+};
+
+export const workplaceSpeakTopics: readonly D4SpeakTopic[] = [
   {
     id: "topic-workplace-calling-in-sick",
     labelEn: "Calling In Sick",
     labelVi: "Báo nghỉ ốm",
     category: "work",
+    scenarioDescription:
+      "The learner feels unwell and needs to call or message their manager to report a sick day, give a brief reason, and mention when they expect to return.",
+    aiRoleDefinition:
+      "Act as a manager who receives the sick-day message, asks how long the learner expects to be out, and confirms whether a doctor's note or urgent handover is needed.",
+    conversationDirections: [
+      "Start by letting the learner report that they are sick and cannot come in.",
+      "Ask what is wrong — a short reason like a fever or stomach pain is enough.",
+      "Prompt the learner to say which shift or day they will miss.",
+      "Ask when they think they will be able to return.",
+      "Check whether any urgent tasks need to be handed over.",
+      "End by confirming the sick-day request and wishing the learner a quick recovery.",
+    ],
+    warmthPatterns: [
+      "Stay calm and supportive: 'Thanks for letting me know — take care of yourself.'",
+      "Keep the tone practical and no-pressure about reasons.",
+      "Confirm clearly so the learner feels the message was received.",
+    ],
     seedInputs: [
       "Hi, I am not feeling well, so I can't come in today.",
       "Good morning, I've got a fever and I need to take a sick day.",
@@ -54,6 +79,23 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Requesting A Day Off",
     labelVi: "Xin nghỉ một ngày",
     category: "work",
+    scenarioDescription:
+      "The learner wants to take a day off and needs to ask their manager by naming the day, offering a brief reason, and confirming whether it is paid leave.",
+    aiRoleDefinition:
+      "Act as a manager who listens to the day-off request, checks team coverage, and either approves it, asks a clarifying question, or suggests an alternative date.",
+    conversationDirections: [
+      "Let the learner state the day they want off and frame it as a polite request.",
+      "Ask if it is a vacation day, personal day, or annual leave.",
+      "Prompt the learner to briefly explain the reason if they are comfortable.",
+      "Ask who could cover their tasks or shift while they are away.",
+      "Confirm the request — approved or pending — with a clear next step.",
+      "End by checking how far ahead the request was made and whether notice is sufficient.",
+    ],
+    warmthPatterns: [
+      "Keep the tone collegial: 'Sure, let me check the schedule.'",
+      "Normalise asking — there is no shame in using leave.",
+      "Confirm clearly so the learner knows their request was logged.",
+    ],
     seedInputs: [
       "Could I take a day off next Friday?",
       "I'd like to request two days off next month, if that works.",
@@ -97,6 +139,23 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Asking To Leave Early",
     labelVi: "Xin về sớm",
     category: "work",
+    scenarioDescription:
+      "The learner needs to leave before the end of their shift for an appointment or personal reason and must ask their manager politely, naming a time and briefly explaining why.",
+    aiRoleDefinition:
+      "Act as a manager who hears the request, asks what time the learner needs to leave and briefly why, checks task coverage, and then approves or agrees on an arrangement.",
+    conversationDirections: [
+      "Let the learner open with a polite request to leave early and give a time.",
+      "Ask what the reason is — a short phrase like 'doctor's appointment' is enough.",
+      "Prompt the learner to offer to make up the time or hand over any urgent work.",
+      "Confirm what time the learner needs to be out the door.",
+      "Ask whether the learner has already told a coworker or handled their tasks.",
+      "Close by approving the request or agreeing a plan so the learner feels clear.",
+    ],
+    warmthPatterns: [
+      "Keep the register professional but not cold: 'Of course — let me know if anything needs covering.'",
+      "Acknowledge the effort of asking rather than just leaving.",
+      "Focus on the practical: time and coverage, not the reason in detail.",
+    ],
     seedInputs: [
       "Could I leave early today? I have an appointment.",
       "Would it be okay if I left at three for a doctor's visit?",
@@ -135,6 +194,23 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Talking To Your Boss About Workload",
     labelVi: "Nói với sếp về khối lượng công việc",
     category: "work",
+    scenarioDescription:
+      "The learner feels overloaded and wants to have an honest, calm conversation with their manager about which tasks matter most so they can do good work without burning out.",
+    aiRoleDefinition:
+      "Act as a manager who listens without judgment, asks which tasks feel heaviest, helps the learner name one or two priorities for the week, and agrees on a concrete plan together.",
+    conversationDirections: [
+      "Let the learner open the conversation by naming the situation calmly.",
+      "Ask which tasks or projects feel most urgent or heavy right now.",
+      "Prompt the learner to suggest which one they should tackle first.",
+      "Practice asking to move a deadline or delegate part of a task.",
+      "Ask the learner to confirm what the plan is at the end of the conversation.",
+      "Keep the tone collaborative — problem-solving, not complaining.",
+    ],
+    warmthPatterns: [
+      "Frame it as working together: 'Let's look at the list and pick the top two.'",
+      "Normalise naming the load — it is a sign of ownership, not weakness.",
+      "Avoid any hint of blame; the goal is a plan, not a verdict.",
+    ],
     seedInputs: [
       "Could we talk about my workload this week?",
       "I've got a lot on right now — can we look at my priorities together?",
@@ -178,6 +254,23 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Asking Your Boss For Help",
     labelVi: "Nhờ sếp giúp hoặc giải thích",
     category: "work",
+    scenarioDescription:
+      "The learner is stuck on a task or part of a process and needs to ask their manager for a clear explanation or demonstration, starting with a polite opener.",
+    aiRoleDefinition:
+      "Act as a manager who invites the learner to explain what is unclear, walks through the issue step by step in plain language, and checks at the end that the learner understood.",
+    conversationDirections: [
+      "Let the learner open by asking if now is a good time to ask a question.",
+      "Prompt the learner to name the specific task or step that is unclear.",
+      "Ask the learner to say what they have already tried so far.",
+      "Walk through an explanation and ask the learner to repeat it back in their own words.",
+      "Check whether the learner needs the explanation written down or shown again.",
+      "Close by thanking the manager and confirming the next step.",
+    ],
+    warmthPatterns: [
+      "Make asking feel safe: 'Good question — let me show you.'",
+      "Invite repetition without any shame: 'Want me to go through it once more?'",
+      "Keep the pace slow enough for confidence to build.",
+    ],
     seedInputs: [
       "Could you help me understand this part?",
       "I'm a bit stuck on this — could you walk me through it?",
@@ -216,6 +309,23 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Reporting A Mistake To Your Manager",
     labelVi: "Báo lỗi với quản lý",
     category: "work",
+    scenarioDescription:
+      "The learner made a workplace mistake — wrong order, missed step, or sent the wrong file — and needs to report it early, state the key facts, and offer a plan to fix it.",
+    aiRoleDefinition:
+      "Act as a manager who receives the mistake report calmly, asks for the date, the error, and the impact, then guides the learner to think through a fix rather than blame anyone.",
+    conversationDirections: [
+      "Let the learner open by saying they need to report something that went wrong.",
+      "Ask what exactly happened — the date, task, and what the error was.",
+      "Prompt the learner to say what the impact is and how urgent the fix is.",
+      "Ask the learner's idea for fixing or correcting the mistake.",
+      "Discuss how to avoid the same mistake next time.",
+      "Close by thanking the learner for being honest and confirming the next action.",
+    ],
+    warmthPatterns: [
+      "Lead with calm: 'Thanks for telling me early — let's sort this out.'",
+      "Focus on the fix, not the fault: 'What can we do right now?'",
+      "Acknowledge that reporting takes courage and is the right move.",
+    ],
     seedInputs: [
       "I think I made a mistake and I want to tell you early.",
       "I need to let you know something went wrong with the order.",
@@ -259,6 +369,23 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Asking About Pay Or Hours",
     labelVi: "Hỏi về lương hoặc giờ làm",
     category: "work",
+    scenarioDescription:
+      "The learner wants to have a professional conversation with their manager about pay or hours — asking for more hours, discussing a raise, or clarifying their pay — framing the ask around their contribution.",
+    aiRoleDefinition:
+      "Act as a manager who listens to the pay or hours request, asks the learner's reason, and either agrees to discuss further, explains the review process, or asks for more time to check.",
+    conversationDirections: [
+      "Let the learner ask to set a time to talk about pay or hours rather than demanding immediately.",
+      "Ask whether the conversation is about a raise, more hours, fewer hours, or a paycheck question.",
+      "Prompt the learner to give one honest reason that supports their request.",
+      "Practice responding calmly if the manager says 'let me think about it.'",
+      "Ask the learner how they would close the conversation warmly regardless of the outcome.",
+      "Confirm the next step — a follow-up date, a decision, or a process to follow.",
+    ],
+    warmthPatterns: [
+      "Normalise the topic: 'It's completely fine to bring this up — let's talk.'",
+      "Keep the tone adult and calm: practical points, not emotional pressure.",
+      "Acknowledge the ask positively even if the answer is 'not yet.'",
+    ],
     seedInputs: [
       "Could we talk about my pay sometime this week?",
       "I'd like to ask about getting a few more hours.",
@@ -302,6 +429,23 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Swapping A Shift With A Coworker",
     labelVi: "Đổi ca với đồng nghiệp",
     category: "work",
+    scenarioDescription:
+      "The learner needs to change a shift and wants to ask a coworker to swap, agree on the trade, and make sure the manager or schedule system is updated.",
+    aiRoleDefinition:
+      "Act as a coworker who hears the swap request, asks which shift and which day the learner wants in return, and either agrees or suggests a different arrangement.",
+    conversationDirections: [
+      "Let the learner name the shift they want to swap and ask the coworker politely.",
+      "Ask which shift the learner is offering in return.",
+      "Prompt the learner to confirm both the date and the time clearly.",
+      "Practice what the learner would say if the coworker says no.",
+      "Ask how the learner would let the manager know about the swap.",
+      "Close by repeating the agreed arrangement so both sides are clear.",
+    ],
+    warmthPatterns: [
+      "Keep the tone friendly and reciprocal: 'I can cover yours another time — how about this?'",
+      "Make the ask easy to say yes or no to without pressure.",
+      "Confirm the swap in writing (text or app) as the natural last step.",
+    ],
     seedInputs: [
       "Could you swap shifts with me on Saturday?",
       "Any chance you could cover my Friday shift? I'll take one of yours.",
@@ -340,6 +484,23 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Giving Notice Politely",
     labelVi: "Xin nghỉ việc một cách lịch sự",
     category: "work",
+    scenarioDescription:
+      "The learner has decided to leave their job and needs to inform their manager, give the last working day, offer a smooth handover, and thank the company — leaving on good terms.",
+    aiRoleDefinition:
+      "Act as a manager who receives the resignation, asks about the last day and handover plan, responds professionally, and expresses good wishes for the learner's next step.",
+    conversationDirections: [
+      "Let the learner share the decision calmly and professionally, without over-explaining.",
+      "Ask what the last working day will be.",
+      "Prompt the learner to offer to hand over tasks or train a replacement.",
+      "Practice thanking the company for the opportunity — a short, warm phrase.",
+      "Ask if the learner would like to request a reference.",
+      "Close by confirming the handover plan and wishing each other well.",
+    ],
+    warmthPatterns: [
+      "Stay warm and professional on both sides: 'We'll miss you — all the best.'",
+      "Keep the tone matter-of-fact; no need for long explanations or justifications.",
+      "End every exchange on a positive note — good terms are the lasting impression.",
+    ],
     seedInputs: [
       "I wanted to let you know I've decided to leave the company.",
       "I'm giving my two weeks' notice — my last day would be the 20th.",
