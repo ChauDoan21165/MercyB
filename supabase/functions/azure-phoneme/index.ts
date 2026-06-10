@@ -239,7 +239,7 @@ async function trackedAzureFetch(
 async function resolveAdminLevel(userId: string): Promise<number> {
   try {
     const { data, error } = await supabase.rpc("get_admin_level", {
-      p_user_id: userId,
+      _user_id: userId,
     });
     if (error || typeof data !== "number") return 0;
     return data;
