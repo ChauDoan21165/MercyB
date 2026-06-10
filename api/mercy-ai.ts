@@ -236,6 +236,59 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return safeJson(res, 200, result);
     }
 
+    if (mode === "sentence-correction") {
+      const learnerText = norm(body.learnerText || body.userText || body.text);
+      if (!learnerText) {
+        return safeJson(res, 400, { error: "Missing learnerText" });
+      }
+      if (learnerText.length > 500) {
+        return safeJson(res, 400, { error: "Input too long" });
+      }
+      if (!process.env.OPENAI_API_KEY) {
+        return safeJson(res, 500, { error: "Missing OPENAI_API_KEY" });
+      }
+
+      const explainLang = norm(body.explainLanguage) === "en" ? "en" : "vi";
+      const viAbstain =
+        "Mercy chưa sửa chắc câu này. Bạn thử viết ngắn hơn, rõ hơn rồi gửi lại nhé.";
+      const enAbstain =
+        "Mercy could not correct this confidently. Try rewriting it more clearly.";
+      const systemPrompt = `You are Mercy, an English-language tutor for Vietnamese learners.
+Correct the learner's English sentence for grammar, tense, and natural phrasing.
+Keep the learner's original meaning — do not rewrite from scratch.
+Explain what changed and why in ${explainLang === "vi" ? "Vietnamese" : "English"} (1–2 sentences).
+Give a grammar tip in ${explainLang === "vi" ? "Vietnamese" : "English"} (one line, start with "Mẹo:" or "Tip:").
+If the input is too garbled or is not a correctable sentence, set "confident" to false.
+Respond ONLY with valid JSON:
+{"corrected":"<corrected sentence>","explanation":"<explanation>","grammarTip":"<tip>","confident":true}
+On low-confidence: {"corrected":"","explanation":"${explainLang === "vi" ? viAbstain : enAbstain}","grammarTip":"","confident":false}`;
+
+      try {
+        const completion = await client.chat.completions.create({
+          model: "gpt-4o-mini",
+          messages: [
+            { role: "developer", content: systemPrompt },
+            { role: "user", content: learnerText },
+          ],
+          temperature: 0.25,
+          max_tokens: 220,
+          response_format: { type: "json_object" },
+        });
+        const raw = completion.choices?.[0]?.message?.content ?? "{}";
+        let parsed: { corrected?: string; explanation?: string; grammarTip?: string; confident?: boolean } = {};
+        try { parsed = JSON.parse(raw); } catch { /* leave empty */ }
+        const confident = parsed.confident !== false;
+        return safeJson(res, 200, {
+          corrected: norm(parsed.corrected) || (confident ? learnerText : ""),
+          explanation: norm(parsed.explanation) || (confident ? "" : (explainLang === "vi" ? viAbstain : enAbstain)),
+          grammarTip: norm(parsed.grammarTip) || "",
+          confident,
+        });
+      } catch {
+        return safeJson(res, 500, { error: "correction_failed" });
+      }
+    }
+
     if (!process.env.OPENAI_API_KEY) {
       return safeJson(res, 500, { error: "Missing OPENAI_API_KEY" });
     }
