@@ -170,4 +170,96 @@ export const speakTopics = [
       { id: "nail-complaint-followup", question: "How would you offer a follow-up appointment if there is no time now?", salienceQuestion: "How would you schedule a fix for the {slot}?" },
     ],
   },
+  {
+    id: "topic-nail-technician-safety-sensitivity",
+    labelEn: "Cuts, Sensitivity, And Safety",
+    labelVi: "Vết xước, da nhạy cảm và an toàn",
+    category: "nail-technician-english",
+    scenarioDescription:
+      "The learner checks client comfort, handles sensitivity or minor cuts, explains sanitized tools, and gives aftercare advice.",
+    aiRoleDefinition:
+      "Act as a client with sensitive skin, discomfort, or safety questions who needs the technician to respond with care and professionalism.",
+    conversationDirections: [
+      "Ask whether anything feels uncomfortable before continuing.",
+      "Invite the client to tell you if something hurts or burns.",
+      "Ask about allergies, skin sensitivity, or product reactions.",
+      "Explain sanitized tools or hygiene steps simply.",
+      "Pause or adjust the service if discomfort appears.",
+      "Give clear aftercare advice before the client leaves.",
+    ],
+    warmthPatterns: [
+      "Treat discomfort as useful information, not an inconvenience.",
+      "Use professional hygiene vocabulary confidently.",
+      "Give aftercare in calm, practical steps.",
+    ],
+    seedInputs: ["Please tell me if anything feels uncomfortable."],
+    detectionPatterns: [
+      /\b(?:cuticle|sensitive|burning|hurts|uncomfortable|infection|sanitized|clean tools|latex allergy)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "nail-safety-uncomfortable",
+        label: "Uncomfortable is softer than pain",
+        note: "Clients may not say 'pain' until late. A warm safety question is 'Does anything feel uncomfortable?' It invites them to speak before there is a problem.",
+      },
+      {
+        id: "nail-safety-sanitation",
+        label: "Sanitized tools",
+        note: "'Clean' is everyday; 'sanitized' is the professional salon word. Vietnamese techs benefit from both: 'These tools are sanitized and ready.'",
+      },
+    ],
+    followUps: [
+      { id: "nail-safety-check", question: "How would you check if the client is comfortable?", salienceQuestion: "How would you ask about the {slot}?" },
+      { id: "nail-safety-stop", question: "How would you ask them to tell you if it hurts?", salienceQuestion: "What should they do if the {slot} hurts?" },
+      { id: "nail-safety-allergy", question: "How would you ask about allergies or sensitivity?", salienceQuestion: "How would you ask about the {slot}?" },
+      { id: "nail-safety-tools", question: "How would you explain clean or sanitized tools?", salienceQuestion: "How would you describe the {slot}?" },
+      { id: "nail-safety-care", question: "How would you give aftercare advice?", salienceQuestion: "How should they care for the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-nail-technician-appointment-timing",
+    labelEn: "Appointments And Wait Times",
+    labelVi: "Lịch hẹn và thời gian chờ",
+    category: "nail-technician-english",
+    scenarioDescription:
+      "The learner handles walk-ins, appointments, wait times, schedule delays, and booking clients for later at a busy nail salon.",
+    aiRoleDefinition:
+      "Act as a client asking when they can be seen, whether the salon is running behind, and what time they should return.",
+    conversationDirections: [
+      "Offer the next available appointment or walk-in time.",
+      "Explain the current wait time honestly.",
+      "Say the salon is running behind if the schedule is delayed.",
+      "Ask what service the client needs so timing is accurate.",
+      "Book the client for later and confirm the time.",
+      "Thank the client for waiting or being flexible.",
+    ],
+    warmthPatterns: [
+      "Give wait times clearly and early.",
+      "Thank clients for patience without over-apologizing.",
+      "Keep busy-salon language calm and organized.",
+    ],
+    seedInputs: ["We can take you in about twenty minutes."],
+    detectionPatterns: [
+      /\b(?:appointment|walk-in|wait time|twenty minutes|running behind|book you|available today|come back)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "nail-time-take-you",
+        label: "Take you means serve you",
+        note: "In salons, 'We can take you at 3' means the appointment can start then. Vietnamese speakers may hear physical taking, so practising the service meaning helps.",
+      },
+      {
+        id: "nail-time-running-behind",
+        label: "Running behind",
+        note: "'Running behind' is a polite way to say the schedule is late. It sounds more professional than 'we are late' and keeps the client informed.",
+      },
+    ],
+    followUps: [
+      { id: "nail-time-availability", question: "How would you offer the next available time?", salienceQuestion: "When is the {slot} available?" },
+      { id: "nail-time-wait", question: "How would you explain the wait time?", salienceQuestion: "How long is the {slot} wait?" },
+      { id: "nail-time-late", question: "How would you say the salon is running behind?", salienceQuestion: "How would you explain the {slot} delay?" },
+      { id: "nail-time-book", question: "How would you book the client for later?", salienceQuestion: "How would you schedule the {slot}?" },
+      { id: "nail-time-thanks", question: "How would you thank them for waiting?", salienceQuestion: "How would you thank them for the {slot}?" },
+    ],
+  },
 ] as const satisfies readonly D4ProfessionalSpeakTopic[];

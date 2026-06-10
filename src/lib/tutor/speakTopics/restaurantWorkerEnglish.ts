@@ -170,4 +170,96 @@ export const speakTopics = [
       { id: "restaurant-complaint-prefer", question: "How would you ask what solution the guest prefers?", salienceQuestion: "What does the guest want for the {slot}?" },
     ],
   },
+  {
+    id: "topic-restaurant-worker-greeting-seating",
+    labelEn: "Greeting And Seating Guests",
+    labelVi: "Chào khách và xếp bàn",
+    category: "restaurant-worker-english",
+    scenarioDescription:
+      "The learner works as a host or cashier greeting guests, asking party size, offering seating options, and explaining wait times.",
+    aiRoleDefinition:
+      "Act as a restaurant guest arriving with a group, asking about seating, wait time, booth, table, patio, or reservation details.",
+    conversationDirections: [
+      "Welcome guests in a natural restaurant voice.",
+      "Ask how many people are in the party.",
+      "Ask whether they prefer booth, table, bar, or patio if relevant.",
+      "Explain the wait time clearly.",
+      "Invite them to follow you or wait nearby.",
+      "Close with a warm seating or waiting instruction.",
+    ],
+    warmthPatterns: [
+      "Use hospitable short phrases that sound natural at the door.",
+      "Keep wait-time language honest and calm.",
+      "Make seating choices feel easy, not rushed.",
+    ],
+    seedInputs: ["Hi, welcome in. How many people are in your party?"],
+    detectionPatterns: [
+      /\b(?:welcome in|how many people|party of|table for|booth|patio|wait time|host stand)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "rest-greet-party",
+        label: "Party means group",
+        note: "Restaurant 'party' means the dining group, not a celebration. Vietnamese workers can practise 'party of two' so the host phrase feels natural.",
+      },
+      {
+        id: "rest-greet-booth",
+        label: "Booth, table, patio",
+        note: "Seat-type words are workplace vocabulary, not everyday English for many learners. A calm choice question is 'Would you prefer a booth or a table?'",
+      },
+    ],
+    followUps: [
+      { id: "rest-greet-open", question: "How would you welcome guests?", salienceQuestion: "How would you open the {slot}?" },
+      { id: "rest-greet-count", question: "How would you ask how many people?", salienceQuestion: "How many people are in the {slot}?" },
+      { id: "rest-greet-seat", question: "How would you ask about booth, table, or patio?", salienceQuestion: "Where would they like the {slot}?" },
+      { id: "rest-greet-wait", question: "How would you explain the wait time?", salienceQuestion: "How long is the {slot} wait?" },
+      { id: "rest-greet-follow", question: "How would you invite them to follow you?", salienceQuestion: "How would you guide the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-restaurant-worker-takeout-phone",
+    labelEn: "Takeout And Phone Orders",
+    labelVi: "Nhận đơn mang về qua điện thoại",
+    category: "restaurant-worker-english",
+    scenarioDescription:
+      "The learner takes a phone or counter takeout order, confirms items, asks for name and phone number, gives pickup time, and closes politely.",
+    aiRoleDefinition:
+      "Act as a takeout customer ordering by phone or at the counter who may speak quickly, change items, or ask when the order will be ready.",
+    conversationDirections: [
+      "Ask what the customer would like to order.",
+      "Clarify size, side, sauce, spice level, and special requests.",
+      "Ask for name and phone number for the order.",
+      "Repeat the order back with the total if appropriate.",
+      "Give the pickup time clearly.",
+      "Close the call or counter interaction warmly.",
+    ],
+    warmthPatterns: [
+      "Use phone clarity: repeat names, numbers, and times.",
+      "Keep takeout language efficient but friendly.",
+      "Confirm modifications before ending the order.",
+    ],
+    seedInputs: ["Can I have your name and phone number for the order?"],
+    detectionPatterns: [
+      /\b(?:takeout|to go|phone order|pickup time|name and phone number|order will be ready|delivery|carryout)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "rest-takeout-ready",
+        label: "Ready in twenty minutes",
+        note: "Vietnamese workers may say only 'twenty minutes.' A complete phone phrase is 'It will be ready in about twenty minutes.'",
+      },
+      {
+        id: "rest-takeout-name-number",
+        label: "Name and phone number",
+        note: "For takeout, asking for contact details is normal. 'Can I have your name and phone number for the order?' is direct, polite, and expected.",
+      },
+    ],
+    followUps: [
+      { id: "rest-takeout-items", question: "How would you take the customer's order?", salienceQuestion: "What is in the {slot}?" },
+      { id: "rest-takeout-name", question: "How would you ask for name and phone number?", salienceQuestion: "Whose name is on the {slot}?" },
+      { id: "rest-takeout-repeat", question: "How would you repeat the order back?", salienceQuestion: "How would you confirm the {slot}?" },
+      { id: "rest-takeout-time", question: "How would you give the pickup time?", salienceQuestion: "When is the {slot} ready?" },
+      { id: "rest-takeout-close", question: "How would you end the call warmly?", salienceQuestion: "How would you close the {slot}?" },
+    ],
+  },
 ] as const satisfies readonly D4ProfessionalSpeakTopic[];
