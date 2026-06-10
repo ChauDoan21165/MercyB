@@ -59,4 +59,20 @@ describe("fetchCloudTtsUrl", () => {
 
     await expect(fetchCloudTtsUrl({ text: "Bonjour.", language: "fr" })).resolves.toBeNull();
   });
+
+  it("returns null when the caller requires Azure but the edge function falls back", async () => {
+    invoke.mockResolvedValue({
+      data: {
+        audioUrl: "data:audio/mpeg;base64,AAAA",
+        cached: false,
+        provider: "elevenlabs",
+        fallback_reason: "azure_429",
+      },
+      error: null,
+    });
+
+    await expect(
+      fetchCloudTtsUrl({ text: "Hello.", language: "en", requiredProvider: "azure" }),
+    ).resolves.toBeNull();
+  });
 });
