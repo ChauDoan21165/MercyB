@@ -26,11 +26,21 @@ import {
 } from "@/lib/tutor/conversationTelemetry";
 import type { ConversationEncouragement } from "@/lib/retention/conversationHooks";
 
+// A 'Sửa câu' correction handed off from the grammar surface. When present we
+// seed a learner-led, live-generated conversation with the learner's own
+// corrected words — never a canned Mercy opener.
+type ConversationCorrectionSeed = {
+  correctedSentence: string;
+  sourceText?: string | null;
+  updatedAt?: number;
+};
+
 type Props = {
   accessToken?: string | null;
   hasPremium: boolean;
   loadingAccess: boolean;
   userId?: string | null;
+  correctionSeed?: ConversationCorrectionSeed | null;
   sendTurn?: typeof sendAiConversationTurn;
 };
 
@@ -39,6 +49,7 @@ export default function AiConversationScenarioPanel({
   hasPremium,
   loadingAccess,
   userId,
+  correctionSeed,
   sendTurn = sendAiConversationTurn,
 }: Props) {
   const [scenarioId, setScenarioId] = useState<AiConversationScenarioId>(DEFAULT_AI_CONVERSATION_SCENARIO_ID);
@@ -83,6 +94,25 @@ export default function AiConversationScenarioPanel({
       if (created) void endTelemetrySession(created).catch(() => {});
     };
   }, [hasPremium, scenario.title, scenarioId, userId, sessionEpoch]);
+
+  // Step 9 'Sửa câu' hand-off: a fresh correction seeds a learner-led, live
+  // conversation with the learner's corrected words pre-filled as the next turn.
+  // Mercy then follows those words (no canned opener). Keyed on the correction's
+  // timestamp so only a genuinely new correction re-seeds — typing is never
+  // clobbered mid-turn.
+  const seedSentence = correctionSeed?.correctedSentence?.trim() ?? "";
+  const seedStamp = correctionSeed?.updatedAt;
+  useEffect(() => {
+    if (!seedSentence) return;
+    setScenarioId(LEARNER_LED_AI_CONVERSATION_SCENARIO_ID);
+    setSession(createSeededSession(LEARNER_LED_AI_CONVERSATION_SCENARIO_ID));
+    setInput(seedSentence);
+    setError("");
+    setEntitlementGateVisible(false);
+    setEncouragement(null);
+    setSessionEpoch((epoch) => epoch + 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [seedSentence, seedStamp]);
 
   const resetSession = (nextScenarioId = scenarioId) => {
     setScenarioId(nextScenarioId);
@@ -240,6 +270,17 @@ export default function AiConversationScenarioPanel({
       </div>
 
       <div className="flex-1 space-y-4 overflow-y-auto bg-slate-50/70 p-4 sm:p-5">
+        {session.turns.length === 0 &&
+          scenarioId !== LEARNER_LED_AI_CONVERSATION_SCENARIO_ID &&
+          scenario.openingPrompt && (
+            <div
+              className="rounded-lg border border-indigo-100 bg-indigo-50/70 p-3 text-sm text-slate-700"
+              data-testid="ai-conversation-starter-hint"
+            >
+              <div className="text-[11px] font-black uppercase text-indigo-500">Gợi ý mở đầu</div>
+              <p className="mt-1 font-semibold leading-6">{scenario.openingPrompt}</p>
+            </div>
+          )}
         {session.turns.map((turn) => (
           <article
             key={turn.id}
@@ -400,19 +441,12 @@ function PremiumConversationGate({
   );
 }
 
+// Contract C6: Mercy's conversation turns are always live-generated. No scenario
+// seeds a canned assistant opener into the transcript — the learner speaks first
+// and Mercy's first reply comes live from the model. Preset scenarios surface
+// their opening prompt as a non-transcript starter hint instead (see the hint
+// card in the transcript region), so orientation is preserved without a scripted
+// Mercy line that would also be replayed back to the model as fake history.
 function createSeededSession(scenarioId: AiConversationScenarioId): AiConversationSession {
-  const scenario = AI_CONVERSATION_SCENARIOS[scenarioId];
-  if (scenarioId === LEARNER_LED_AI_CONVERSATION_SCENARIO_ID) {
-    return createAiConversationSession(scenarioId);
-  }
-  return {
-    ...createAiConversationSession(scenarioId),
-    turns: [
-      {
-        id: "assistant-opening",
-        role: "assistant",
-        text: scenario.openingPrompt,
-      },
-    ],
-  };
+  return createAiConversationSession(scenarioId);
 }

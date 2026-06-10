@@ -125,7 +125,7 @@ describe("AiConversationScenarioPanel", () => {
     }));
   });
 
-  it("only preloads a preset opening after the learner explicitly chooses a scenario", async () => {
+  it("shows a chosen preset scenario as a starter hint, not a canned Mercy turn, and sends live with empty history (Contract C6)", async () => {
     const sendTurn = vi.fn().mockResolvedValue({
       reply: "Good start. What role are you applying for?",
       correction: null,
@@ -151,19 +151,60 @@ describe("AiConversationScenarioPanel", () => {
     expect(screen.getByTestId("ai-conversation-scenario-panel")).toHaveTextContent(
       "Work",
     );
-    expect(screen.getByText("Mercy")).toBeInTheDocument();
+    // C6: the scenario's opening prompt is a non-transcript starter hint, never a
+    // canned Mercy assistant turn — so no "Mercy" bubble appears before the model replies.
+    expect(screen.getByTestId("ai-conversation-starter-hint")).toBeInTheDocument();
+    expect(screen.queryByText("Mercy")).not.toBeInTheDocument();
 
     await send("I want a customer service job.");
 
     expect(sendTurn).toHaveBeenCalledWith(expect.objectContaining({
       scenarioId: "topic-work",
       learnerText: "I want a customer service job.",
-      history: expect.arrayContaining([
-        expect.objectContaining({
-          role: "assistant",
-          text: expect.any(String),
-        }),
-      ]),
+      history: [],
+      turnCount: 0,
+    }));
+  });
+
+  it("seeds a learner-led live conversation from a 'Sửa câu' correction without a canned opener", async () => {
+    const sendTurn = vi.fn().mockResolvedValue({
+      reply: "Nice — you fixed that. Where do you want to go this weekend?",
+      correction: null,
+      summary: null,
+      cost: { totalTokens: 70, estimatedUsd: 0.0001 },
+      provider: "openai",
+      pronunciationAbstention: null,
+    });
+
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token"
+        hasPremium
+        loadingAccess={false}
+        correctionSeed={{
+          correctedSentence: "I want to go to the beach.",
+          sourceText: "I want go to the beach.",
+          updatedAt: 1,
+        }}
+        sendTurn={sendTurn}
+      />,
+    );
+
+    // Learner-led (no canned opener), seeded with the learner's corrected words.
+    expect(screen.getByTestId("ai-conversation-scenario-panel")).toHaveTextContent(
+      "Mercy follows your words",
+    );
+    expect(screen.queryByText("Mercy")).not.toBeInTheDocument();
+    expect(screen.getByRole("textbox")).toHaveValue("I want to go to the beach.");
+
+    await act(async () => {
+      fireEvent.click(screen.getByRole("button", { name: /send answer/i }));
+    });
+
+    expect(sendTurn).toHaveBeenCalledWith(expect.objectContaining({
+      scenarioId: "learner-led",
+      learnerText: "I want to go to the beach.",
+      history: [],
       turnCount: 0,
     }));
   });
