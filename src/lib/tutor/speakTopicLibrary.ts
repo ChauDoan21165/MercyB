@@ -392,22 +392,6 @@ export const SPEAK_TOPIC_LIBRARY: readonly SpeakTopicLibraryEntry[] = [
     ],
   },
   {
-    id: "topic-banking-bills",
-    labelEn: "Banking And Bills",
-    labelVi: "Ngân hàng và hóa đơn",
-    category: "money",
-    seedInputs: ["I need to pay my electricity bill today."],
-    detectionPatterns: [
-      /\b(?:bank|banking|bill|bills|cash|card|pay in cash|pay by cash|electricity bill|fee|account balance)\b/i,
-    ],
-    followUps: [
-      { id: "banking-bill", question: "What bill or payment are you talking about?", salienceQuestion: "When do you need to pay the {slot}?" },
-      { id: "banking-amount", question: "How would you ask about the amount?", salienceQuestion: "How would you ask about the {slot} amount?" },
-      { id: "banking-method", question: "How do you want to pay?", salienceQuestion: "How would you pay for the {slot}?" },
-      { id: "banking-confirm", question: "How would you confirm the payment is finished?", salienceQuestion: "How would you confirm the {slot} is paid?" },
-    ],
-  },
-  {
     id: "topic-mail-package-delivery",
     labelEn: "Mail And Package Delivery",
     labelVi: "Thư và giao hàng",
