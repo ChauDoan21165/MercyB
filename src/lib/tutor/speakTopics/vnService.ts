@@ -1,5 +1,8 @@
 import type { SpeakTopicLibraryEntry } from "../speakTopicLibrary";
 
+// VN-diaspora-specific service scenarios. Deterministic / client-side; warm, low-shame.
+// A9 overnight L1 pass: each topic now carries Vietnamese→English interference notes
+// (naming genuine VN interference as friendly context, never a grammar correction).
 export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
   {
     id: "topic-vn-pho-less-spicy",
@@ -9,6 +12,18 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     seedInputs: ["I want to order pho, but less spicy please."],
     detectionPatterns: [
       /\b(?:pho|phở|noodle soup|less spicy|not too spicy|fish sauce|chili|bean sprouts|restaurant)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "vn-pho-less-spicy-phrase",
+        label: "Less spicy / not too spicy",
+        note: "'Ít cay' becomes 'less spicy' or 'not too spicy' ('Can I get it not too spicy?'). 'No chili, please' works if you want none. These adjust the heat without a long sentence.",
+      },
+      {
+        id: "vn-pho-on-the-side",
+        label: "On the side",
+        note: "To keep the chili, sauce, or bean sprouts separate, English uses 'on the side': 'Can I have the chili on the side?' There's no single Vietnamese word for it, so it's worth practicing.",
+      },
     ],
     followUps: [
       { id: "vn-pho-bowl", question: "What kind of pho would you like to order?", salienceQuestion: "How would you order the {slot} clearly?" },
@@ -27,6 +42,18 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     detectionPatterns: [
       /\b(?:nail|nails|manicure|pedicure|client|customer|shape|gel color|short enough|salon)\b/i,
     ],
+    l1InterferenceNotes: [
+      {
+        id: "vn-nail-checking-question",
+        label: "Checking with the client",
+        note: "Instead of a flat 'okay?', a warm check-in sounds more natural to an English-speaking client: 'Is this length good for you?' or 'Do you like this shape?' It invites a yes/no answer kindly.",
+      },
+      {
+        id: "vn-nail-shape-words",
+        label: "Shape words",
+        note: "Clients name shapes in English: 'square,' 'round,' 'almond,' 'coffin.' Knowing these lets you confirm — 'So you'd like them square and a little shorter?' — without guessing.",
+      },
+    ],
     followUps: [
       { id: "vn-nail-shape", question: "How would you ask the client about the nail shape?", salienceQuestion: "How would you ask about the {slot} gently?" },
       { id: "vn-nail-length", question: "How would you check if the length is short enough?", salienceQuestion: "How would you check the {slot} length?" },
@@ -43,6 +70,18 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     seedInputs: ["The sink is leaking, and I need to message my landlord politely."],
     detectionPatterns: [
       /\b(?:landlord|zalo|sink|leak|leaking|water leak|repair|maintenance|apartment|rent)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "vn-leak-clear-not-over-apologize",
+        label: "Clear, not over-apologetic",
+        note: "It's fine to be direct with a landlord — reporting a leak is your right, not an imposition. 'Hi, the sink is leaking and needs a repair' is polite enough; you don't need many 'sorry's before it.",
+      },
+      {
+        id: "vn-leak-leaking-phrase",
+        label: "It's leaking",
+        note: "'Bị rò / bị dột' is 'it's leaking' / 'there's a leak.' 'The sink is leaking under the cabinet' pinpoints it. 'Water is running' sounds like a tap left on, so 'leaking' is the safer word.",
+      },
     ],
     followUps: [
       { id: "vn-leak-location", question: "Where is the leak in the apartment?", salienceQuestion: "Where is the {slot} leaking?" },
@@ -61,6 +100,18 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     detectionPatterns: [
       /\b(?:send money|remittance|transfer money|family in vietnam|exchange rate|bank fee|fee|receipt)\b/i,
     ],
+    l1InterferenceNotes: [
+      {
+        id: "vn-remit-exchange-rate",
+        label: "Exchange rate",
+        note: "'Tỷ giá' is the 'exchange rate.' 'What's the exchange rate today?' is the natural question. 'Change rate' or 'money rate' won't land — 'exchange rate' is the fixed phrase.",
+      },
+      {
+        id: "vn-remit-transfer-fee",
+        label: "Transfer fee, send money home",
+        note: "'Phí chuyển tiền' is the 'transfer fee.' 'Send money home' / 'remittance' is the service. Asking 'How much is the transfer fee?' up front avoids surprises before you send.",
+      },
+    ],
     followUps: [
       { id: "vn-remit-amount", question: "How much money do you need to send?", salienceQuestion: "How would you talk about the {slot} amount?" },
       { id: "vn-remit-fee", question: "How would you ask about the transfer fee?", salienceQuestion: "How would you ask about the {slot} fee?" },
@@ -78,6 +129,18 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     detectionPatterns: [
       /\b(?:teacher|child's teacher|pickup|pick up my son|pick up my daughter|late pickup|daycare|school)\b/i,
     ],
+    l1InterferenceNotes: [
+      {
+        id: "vn-pickup-running-late",
+        label: "Running late",
+        note: "'Đón trễ' becomes 'I'll be a little late for pickup' or 'I'm running late.' Giving a number helps: 'I'll be about 15 minutes late.' Clear timing is kinder to the teacher than just 'sorry, late.'",
+      },
+      {
+        id: "vn-pickup-light-apology",
+        label: "A light apology is enough",
+        note: "One 'Sorry for the late notice' covers it. Vietnamese politeness can pile on apologies; in an English message to a teacher, a single, warm sorry plus the plan reads as respectful and confident.",
+      },
+    ],
     followUps: [
       { id: "vn-pickup-child", question: "Who do you need to pick up?", salienceQuestion: "What should the teacher know about your {slot}?" },
       { id: "vn-pickup-delay", question: "How would you explain why you may be late?", salienceQuestion: "How would you explain the {slot} delay?" },
@@ -94,6 +157,18 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     seedInputs: ["I need to ask my manager to change my shift this week."],
     detectionPatterns: [
       /\b(?:manager|shift|change my shift|work schedule|swap shift|day off|coworker|overtime)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "vn-shift-swap-cover",
+        label: "Swap / cover a shift",
+        note: "'Đổi ca' is 'swap shifts' (you trade with someone) or 'cover' (someone works yours). 'Could I swap shifts with a coworker?' or 'Can someone cover my Friday?' are the natural workplace asks.",
+      },
+      {
+        id: "vn-shift-polite-request",
+        label: "Asking, not announcing",
+        note: "A request frame is softer than a statement: 'Would it be possible to change my shift this week?' invites a yes. It sounds more collaborative than 'I change my shift,' while still being clear.",
+      },
     ],
     followUps: [
       { id: "vn-shift-current", question: "What shift do you have now?", salienceQuestion: "What is happening with your {slot}?" },
