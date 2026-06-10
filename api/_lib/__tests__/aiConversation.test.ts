@@ -26,7 +26,10 @@ describe("AI conversation prompt template", () => {
     expect(system).toContain("Vietnamese-to-English interference notes");
     expect(system).toContain("Wrong correction is worse than no correction");
     expect(system).toContain("The next AI turn must reference something the learner actually said");
+    expect(system).toContain("Every Mercy reply must be freshly generated");
+    expect(system).toContain("Do not use canned openers");
     expect(system).toContain("Stay inside job interview practice");
+    expect(system).not.toContain("specific next interview question");
   });
 
   it("builds a focused per-turn prompt from the learner's actual previous answer", () => {
@@ -120,6 +123,51 @@ describe("AI conversation prompt template", () => {
 
     expect(result.correction).toBeNull();
     expect(result.reply).toContain("teamwork");
+  });
+
+  it("rejects empty OpenAI turn output instead of using a canned Mercy fallback", async () => {
+    const fetchMock = vi.fn().mockResolvedValueOnce(jsonResponse({
+      choices: [{
+        message: {
+          content: JSON.stringify({
+            reply: "   ",
+            correctionCandidate: null,
+          }),
+        },
+      }],
+      usage: { prompt_tokens: 50, completion_tokens: 4, total_tokens: 54 },
+    }));
+    global.fetch = fetchMock;
+
+    await expect(buildAiConversationTurn({
+      scenarioId: "job-interview",
+      learnerText: "I worked in a cafe.",
+      history: [],
+      turnCount: 0,
+    })).rejects.toThrow("OpenAI response missing generated Mercy reply");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("rejects the old canned opener/template phrase from the Mercy speech path", async () => {
+    global.fetch = vi.fn().mockResolvedValueOnce(jsonResponse({
+      choices: [{
+        message: {
+          content: JSON.stringify({
+            reply:
+              "I hear that you said \"I worked in a cafe.\" Let's keep it practical: what is one strength you would bring to this role?",
+            correctionCandidate: null,
+          }),
+        },
+      }],
+      usage: { prompt_tokens: 50, completion_tokens: 24, total_tokens: 74 },
+    }));
+
+    await expect(buildAiConversationTurn({
+      scenarioId: "job-interview",
+      learnerText: "I worked in a cafe.",
+      history: [],
+      turnCount: 0,
+    })).rejects.toThrow("OpenAI response used canned Mercy reply");
   });
 
   it("rejects a request past the 50-turn cap before calling OpenAI", async () => {

@@ -110,4 +110,42 @@ describe("Netlify /api/mercy-ai AI conversation mode", () => {
     });
     expect(fetchMock).toHaveBeenCalledTimes(2);
   });
+
+  it("fails closed when OpenAI returns no generated Mercy reply", async () => {
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify({ is_premium: true, status: "active" }), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }))
+      .mockResolvedValueOnce(new Response(JSON.stringify({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              reply: "",
+              correctionCandidate: null,
+            }),
+          },
+        }],
+        usage: { prompt_tokens: 80, completion_tokens: 2, total_tokens: 82 },
+      }), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }));
+    vi.stubGlobal("fetch", fetchMock);
+    const { handler } = await import("../api-mercy-ai");
+
+    const response = await handler(event({
+      mode: "ai-conversation-turn",
+      scenarioId: "job-interview",
+      learnerText: "I want a customer service job.",
+      turnCount: 0,
+      history: [],
+    }));
+
+    expect(response.statusCode).toBe(502);
+    expect(JSON.parse(response.body ?? "{}")).toEqual({
+      error: "OpenAI response missing generated Mercy reply",
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
 });
