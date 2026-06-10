@@ -77,6 +77,7 @@
     "typecheck:app": "tsc -p tsconfig.typecheck.json --noEmit",
     "typecheck:ci": "tsc --noEmit",
     "typecheck:functions": "tsc -p tsconfig.functions.json --noEmit",
+    "typecheck:pages": "tsc -p tsconfig.pages-functions.json --noEmit",
     "typecheck:scripts": "node -e \"const fs=require('fs'); if(!fs.existsSync('tsconfig.scripts.json')) { console.log('[skip] tsconfig.scripts.json not found'); process.exit(0);} process.exit(0);\" && tsc -p tsconfig.scripts.json --noEmit",
     "test": "vitest run",
     "audit:local-artifacts": "node scripts/audit-local-artifacts.mjs",

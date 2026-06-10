@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "types": ["node", "vite/client"]
+  },
+  "include": [
+    "functions/**/*.ts",
+    "src/pages-functions/**/*.ts",
+    "api/_lib/l1HintAdapter.ts"
+  ]
+}

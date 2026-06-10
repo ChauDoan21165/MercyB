@@ -113,7 +113,7 @@ export async function buildDeepSeekSpeakFollowUp(input: {
 
 export function toSpeakRecentTurns(value: unknown): Array<{ role: "learner" | "assistant"; text: string }> {
   return Array.isArray(value)
-    ? value.slice(-6).map((turn) => {
+    ? value.slice(-6).map((turn): { role: "learner" | "assistant"; text: string } => {
         const entry = isRecord(turn) ? turn : {};
         return {
           role: entry.role === "assistant" ? "assistant" : "learner",
