@@ -8,7 +8,7 @@ vi.mock('@/hooks/useFeatureFlag', () => ({
 
 vi.mock('@/hooks/useMercyVoice', () => ({
   useMercyVoice: () => ({
-    speak: vi.fn(),
+    speak: vi.fn().mockResolvedValue({ cloud: true, spoken: true, error: null }),
   }),
 }));
 

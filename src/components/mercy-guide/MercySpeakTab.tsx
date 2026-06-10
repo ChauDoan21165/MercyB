@@ -1042,18 +1042,22 @@ export function MercySpeakTab({
   }
 
   // Cloud-first wrapper. Tries ElevenLabs (warm Vietnamese-accented voice
-  // when the elevenlabs_tts feature flag is on) and falls back to the
-  // existing browser-TTS path (speakViaTTS below) on any failure.
-  // Speak tab plays the *target English* sentence, so language: 'en'.
-  function speakWithMercy(speechText: string) {
+  // when the elevenlabs_tts feature flag is on). Speak tab plays the *target
+  // English* sentence, so language: 'en'.
+  //
+  // C1: useMercyVoice no longer silently substitutes a browser voice — it
+  // reports { spoken, error }. On a cloud miss the Speak tab still speaks the
+  // sentence via the browser voice, but that fallback is now an EXPLICIT choice
+  // made HERE in the consumer (audible, never silent), not hidden in the hook.
+  async function speakWithMercy(speechText: string) {
     if (!speechText) return;
-    void mercyVoice.speak({
+    const res = await mercyVoice.speak({
       text: speechText,
       language: 'en',
-      browserFallback: (t) => speakViaTTS(t),
       onCloudStart: () => setIsSpeaking(true),
       onCloudEnd: () => setIsSpeaking(false),
     });
+    if (!res.spoken) speakViaTTS(speechText);
   }
 
   function speakViaTTS(speechText: string) {

@@ -21,7 +21,7 @@
 //     useMercyVoice.cancel()). Caller doesn't need to coordinate.
 
 import React, { useCallback, useRef, useState } from "react";
-import { Loader2, Play } from "lucide-react";
+import { Loader2, Play, RotateCw } from "lucide-react";
 
 import { useMercyVoice } from "@/hooks/useMercyVoice";
 
@@ -60,6 +60,10 @@ export default function PhonemePlayButton({
 }: PhonemePlayButtonProps) {
   const { speak, cancel } = useMercyVoice();
   const [state, setState] = useState<"idle" | "playing">("idle");
+  // C1: single-tap uses cloud TTS only. On a cloud miss we surface a VN error +
+  // retry instead of silently substituting a browser voice. (Double-tap keeps
+  // the deliberate slow-replay browser path.)
+  const [errored, setErrored] = useState(false);
   const lastTapAtRef = useRef<number>(0);
 
   const browserFallbackForRate = useCallback(
@@ -95,17 +99,17 @@ export default function PhonemePlayButton({
       try { window.speechSynthesis.cancel(); } catch { /* ignore */ }
     }
 
+    setErrored(false);
     setState("playing");
     try {
       if (isDoubleTap) {
         // Slow path — always browser TTS so we get the rate parameter.
         await browserFallbackForRate(0.5)(text);
       } else {
-        await speak({
-          text,
-          language,
-          browserFallback: browserFallbackForRate(0.95),
-        });
+        // C1: cloud only. If Mercy's voice didn't play, surface a retry —
+        // never quietly read the word in a robotic device voice.
+        const res = await speak({ text, language });
+        if (!res.spoken) setErrored(true);
       }
     } finally {
       setState("idle");
@@ -114,29 +118,45 @@ export default function PhonemePlayButton({
 
   const label =
     ariaLabel ?? `Phát âm "${text}" · Play "${text}"`;
+  const buttonLabel = errored
+    ? `Không phát được — bấm để thử lại · Couldn't play — tap to retry`
+    : label;
 
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-label={label}
-      title={title ?? label}
-      disabled={state === "playing"}
-      className={`relative inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-indigo-200 bg-white text-indigo-600 shadow-sm transition hover:border-indigo-300 hover:bg-indigo-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1 disabled:cursor-wait ${className}`}
-    >
-      {/* Invisible ≥44px hit area (Apple HIG / WCAG 2.5.5) — keeps the
-          dense per-phoneme circle visually 28px without shrinking the tap
-          zone. Child of the button so the click bubbles; aria-hidden so
-          it adds nothing for screen readers. */}
-      <span
-        aria-hidden
-        className="absolute left-1/2 top-1/2 h-11 w-11 -translate-x-1/2 -translate-y-1/2"
-      />
-      {state === "playing" ? (
-        <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden />
-      ) : (
-        <Play className="h-3.5 w-3.5" aria-hidden />
-      )}
-    </button>
+    <span className="inline-flex items-center gap-1">
+      <button
+        type="button"
+        onClick={onClick}
+        aria-label={buttonLabel}
+        title={title ?? buttonLabel}
+        disabled={state === "playing"}
+        className={`relative inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border bg-white shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:cursor-wait ${
+          errored
+            ? "border-rose-300 text-rose-600 hover:border-rose-400 hover:bg-rose-50 focus-visible:ring-rose-400"
+            : "border-indigo-200 text-indigo-600 hover:border-indigo-300 hover:bg-indigo-50 focus-visible:ring-indigo-400"
+        } ${className}`}
+      >
+        {/* Invisible ≥44px hit area (Apple HIG / WCAG 2.5.5) — keeps the
+            dense per-phoneme circle visually 28px without shrinking the tap
+            zone. Child of the button so the click bubbles; aria-hidden so
+            it adds nothing for screen readers. */}
+        <span
+          aria-hidden
+          className="absolute left-1/2 top-1/2 h-11 w-11 -translate-x-1/2 -translate-y-1/2"
+        />
+        {state === "playing" ? (
+          <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden />
+        ) : errored ? (
+          <RotateCw className="h-3.5 w-3.5" aria-hidden />
+        ) : (
+          <Play className="h-3.5 w-3.5" aria-hidden />
+        )}
+      </button>
+      {errored ? (
+        <span role="alert" className="whitespace-nowrap text-[10px] font-semibold text-rose-600">
+          Không phát được · bấm lại
+        </span>
+      ) : null}
+    </span>
   );
 }
