@@ -385,13 +385,13 @@ describe("conversation abstention-redirect contract", () => {
 
   it("abstains on a null or low-confidence pronunciation score but renders a solid one", () => {
     expect(
-      abstentionRedirectFromPronunciation({ overallScore: 88, quality: "ok", confidence: "high" }),
+      abstentionRedirectFromPronunciation({ overallScore: 88, quality: "ok", confidence: "ok" }),
     ).toBeNull();
 
     const nullScore = abstentionRedirectFromPronunciation({
       overallScore: null,
       quality: "ok",
-      confidence: "high",
+      confidence: "ok",
     });
     expect(nullScore?.trigger).toBe("low_confidence_pronunciation");
     expect(nullScore?.nextPrompt.vi.length).toBeGreaterThan(0);
@@ -399,7 +399,7 @@ describe("conversation abstention-redirect contract", () => {
     const noAudio = abstentionRedirectFromPronunciation({
       overallScore: null,
       quality: "no_audio",
-      confidence: "high",
+      confidence: "ok",
     });
     expect(noAudio?.trigger).toBe("no_audio");
   });
