@@ -125,7 +125,7 @@ describe("AiConversationScenarioPanel", () => {
     }));
   });
 
-  it("only preloads a preset opening after the learner explicitly chooses a scenario", async () => {
+  it("shows a chosen preset scenario as a starter hint, not a canned Mercy turn, and sends live with empty history (Contract C6)", async () => {
     const sendTurn = vi.fn().mockResolvedValue({
       reply: "Good start. What role are you applying for?",
       correction: null,
@@ -151,19 +151,17 @@ describe("AiConversationScenarioPanel", () => {
     expect(screen.getByTestId("ai-conversation-scenario-panel")).toHaveTextContent(
       "Work",
     );
-    expect(screen.getByText("Mercy")).toBeInTheDocument();
+    // C6: the scenario's opening prompt is a non-transcript starter hint, never a
+    // canned Mercy assistant turn — so no "Mercy" bubble appears before the model replies.
+    expect(screen.getByTestId("ai-conversation-starter-hint")).toBeInTheDocument();
+    expect(screen.queryByText("Mercy")).not.toBeInTheDocument();
 
     await send("I want a customer service job.");
 
     expect(sendTurn).toHaveBeenCalledWith(expect.objectContaining({
       scenarioId: "topic-work",
       learnerText: "I want a customer service job.",
-      history: expect.arrayContaining([
-        expect.objectContaining({
-          role: "assistant",
-          text: expect.any(String),
-        }),
-      ]),
+      history: [],
       turnCount: 0,
     }));
   });

@@ -270,6 +270,17 @@ export default function AiConversationScenarioPanel({
       </div>
 
       <div className="flex-1 space-y-4 overflow-y-auto bg-slate-50/70 p-4 sm:p-5">
+        {session.turns.length === 0 &&
+          scenarioId !== LEARNER_LED_AI_CONVERSATION_SCENARIO_ID &&
+          scenario.openingPrompt && (
+            <div
+              className="rounded-lg border border-indigo-100 bg-indigo-50/70 p-3 text-sm text-slate-700"
+              data-testid="ai-conversation-starter-hint"
+            >
+              <div className="text-[11px] font-black uppercase text-indigo-500">Gợi ý mở đầu</div>
+              <p className="mt-1 font-semibold leading-6">{scenario.openingPrompt}</p>
+            </div>
+          )}
         {session.turns.map((turn) => (
           <article
             key={turn.id}
@@ -430,19 +441,12 @@ function PremiumConversationGate({
   );
 }
 
+// Contract C6: Mercy's conversation turns are always live-generated. No scenario
+// seeds a canned assistant opener into the transcript — the learner speaks first
+// and Mercy's first reply comes live from the model. Preset scenarios surface
+// their opening prompt as a non-transcript starter hint instead (see the hint
+// card in the transcript region), so orientation is preserved without a scripted
+// Mercy line that would also be replayed back to the model as fake history.
 function createSeededSession(scenarioId: AiConversationScenarioId): AiConversationSession {
-  const scenario = AI_CONVERSATION_SCENARIOS[scenarioId];
-  if (scenarioId === LEARNER_LED_AI_CONVERSATION_SCENARIO_ID) {
-    return createAiConversationSession(scenarioId);
-  }
-  return {
-    ...createAiConversationSession(scenarioId),
-    turns: [
-      {
-        id: "assistant-opening",
-        role: "assistant",
-        text: scenario.openingPrompt,
-      },
-    ],
-  };
+  return createAiConversationSession(scenarioId);
 }

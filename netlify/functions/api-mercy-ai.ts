@@ -11,6 +11,10 @@ import {
   normalizeAiConversationHistory,
 } from "../../api/_lib/aiConversation";
 import {
+  readAdminLevel,
+  resolveConversationEntitlementAccess,
+} from "../../api/_lib/conversationEntitlement";
+import {
   asString,
   getBearerToken,
   getIp,
@@ -50,24 +54,54 @@ function isRateLimited(key: string, limit = 12, windowMs = 60_000): boolean {
   return false;
 }
 
+// Prod (Netlify) conversation entitlement. Routes through the canonical
+// resolveConversationEntitlementAccess so a high-admin account (admin_level >= 9)
+// reaches the live conversation even when its billing entitlement is free —
+// parity with the Vercel mirror (api/mercy-ai.ts). Premium billing OR admin
+// passes; everyone else is gated.
 async function hasPremiumAiConversationAccess(params: {
   supabaseUrl: string;
   supabaseAnonKey: string;
   accessToken: string;
+  userId: string;
 }): Promise<boolean> {
+  if (!params.supabaseUrl || !params.accessToken || !params.userId) return false;
+  const base = params.supabaseUrl.replace(/\/$/, "");
   try {
-    const response = await fetch(`${params.supabaseUrl.replace(/\/$/, "")}/functions/v1/me-entitlement`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${params.accessToken}`,
-        apikey: params.supabaseAnonKey,
-      },
-    });
-    if (!response.ok) return false;
-    const entitlement = await response.json() as { is_premium?: unknown; status?: unknown };
-    const status = typeof entitlement.status === "string" ? entitlement.status : "";
-    return entitlement.is_premium === true &&
-      ["active", "trialing", "grace_period", "past_due"].includes(status);
+    const [entitlementResult, profileResult] = await Promise.allSettled([
+      fetch(`${base}/functions/v1/me-entitlement`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${params.accessToken}`,
+          apikey: params.supabaseAnonKey,
+        },
+      }),
+      fetch(`${base}/rest/v1/profiles?select=admin_level&id=eq.${encodeURIComponent(params.userId)}&limit=1`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${params.accessToken}`,
+          apikey: params.supabaseAnonKey,
+          Accept: "application/json",
+        },
+      }),
+    ]);
+
+    let entitlement: { is_premium?: unknown } | null = null;
+    const entitlementResponse =
+      entitlementResult.status === "fulfilled" ? entitlementResult.value : null;
+    if (entitlementResponse?.ok) {
+      entitlement = await entitlementResponse.json() as { is_premium?: unknown };
+    }
+
+    let adminLevel = 0;
+    const profileResponse =
+      profileResult.status === "fulfilled" ? profileResult.value : null;
+    if (profileResponse?.ok) {
+      const rows = await profileResponse.json() as Array<{ admin_level?: unknown }>;
+      adminLevel = readAdminLevel(rows[0]?.admin_level);
+    }
+
+    return resolveConversationEntitlementAccess({ entitlement, adminLevel });
   } catch {
     return false;
   }
@@ -121,7 +155,7 @@ export async function handler(event: NetlifyEvent) {
   }
 
   if (norm(body.mode) === "ai-conversation-turn") {
-    if (!(await hasPremiumAiConversationAccess({ supabaseUrl, supabaseAnonKey, accessToken }))) {
+    if (!(await hasPremiumAiConversationAccess({ supabaseUrl, supabaseAnonKey, accessToken, userId: user.id }))) {
       return json({ error: "Premium required" }, 403);
     }
 
