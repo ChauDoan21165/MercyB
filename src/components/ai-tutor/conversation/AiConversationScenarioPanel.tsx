@@ -26,11 +26,21 @@ import {
 } from "@/lib/tutor/conversationTelemetry";
 import type { ConversationEncouragement } from "@/lib/retention/conversationHooks";
 
+// A 'Sửa câu' correction handed off from the grammar surface. When present we
+// seed a learner-led, live-generated conversation with the learner's own
+// corrected words — never a canned Mercy opener.
+type ConversationCorrectionSeed = {
+  correctedSentence: string;
+  sourceText?: string | null;
+  updatedAt?: number;
+};
+
 type Props = {
   accessToken?: string | null;
   hasPremium: boolean;
   loadingAccess: boolean;
   userId?: string | null;
+  correctionSeed?: ConversationCorrectionSeed | null;
   sendTurn?: typeof sendAiConversationTurn;
 };
 
@@ -39,6 +49,7 @@ export default function AiConversationScenarioPanel({
   hasPremium,
   loadingAccess,
   userId,
+  correctionSeed,
   sendTurn = sendAiConversationTurn,
 }: Props) {
   const [scenarioId, setScenarioId] = useState<AiConversationScenarioId>(DEFAULT_AI_CONVERSATION_SCENARIO_ID);
@@ -83,6 +94,25 @@ export default function AiConversationScenarioPanel({
       if (created) void endTelemetrySession(created).catch(() => {});
     };
   }, [hasPremium, scenario.title, scenarioId, userId, sessionEpoch]);
+
+  // Step 9 'Sửa câu' hand-off: a fresh correction seeds a learner-led, live
+  // conversation with the learner's corrected words pre-filled as the next turn.
+  // Mercy then follows those words (no canned opener). Keyed on the correction's
+  // timestamp so only a genuinely new correction re-seeds — typing is never
+  // clobbered mid-turn.
+  const seedSentence = correctionSeed?.correctedSentence?.trim() ?? "";
+  const seedStamp = correctionSeed?.updatedAt;
+  useEffect(() => {
+    if (!seedSentence) return;
+    setScenarioId(LEARNER_LED_AI_CONVERSATION_SCENARIO_ID);
+    setSession(createSeededSession(LEARNER_LED_AI_CONVERSATION_SCENARIO_ID));
+    setInput(seedSentence);
+    setError("");
+    setEntitlementGateVisible(false);
+    setEncouragement(null);
+    setSessionEpoch((epoch) => epoch + 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [seedSentence, seedStamp]);
 
   const resetSession = (nextScenarioId = scenarioId) => {
     setScenarioId(nextScenarioId);

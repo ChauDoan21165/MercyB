@@ -168,6 +168,49 @@ describe("AiConversationScenarioPanel", () => {
     }));
   });
 
+  it("seeds a learner-led live conversation from a 'Sửa câu' correction without a canned opener", async () => {
+    const sendTurn = vi.fn().mockResolvedValue({
+      reply: "Nice — you fixed that. Where do you want to go this weekend?",
+      correction: null,
+      summary: null,
+      cost: { totalTokens: 70, estimatedUsd: 0.0001 },
+      provider: "openai",
+      pronunciationAbstention: null,
+    });
+
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token"
+        hasPremium
+        loadingAccess={false}
+        correctionSeed={{
+          correctedSentence: "I want to go to the beach.",
+          sourceText: "I want go to the beach.",
+          updatedAt: 1,
+        }}
+        sendTurn={sendTurn}
+      />,
+    );
+
+    // Learner-led (no canned opener), seeded with the learner's corrected words.
+    expect(screen.getByTestId("ai-conversation-scenario-panel")).toHaveTextContent(
+      "Mercy follows your words",
+    );
+    expect(screen.queryByText("Mercy")).not.toBeInTheDocument();
+    expect(screen.getByRole("textbox")).toHaveValue("I want to go to the beach.");
+
+    await act(async () => {
+      fireEvent.click(screen.getByRole("button", { name: /send answer/i }));
+    });
+
+    expect(sendTurn).toHaveBeenCalledWith(expect.objectContaining({
+      scenarioId: "learner-led",
+      learnerText: "I want to go to the beach.",
+      history: [],
+      turnCount: 0,
+    }));
+  });
+
   it("runs a coherent 4-turn job interview proof and renders correction plus summary", async () => {
     const sendTurn = vi.fn()
       .mockResolvedValueOnce({

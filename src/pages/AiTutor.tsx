@@ -2500,6 +2500,7 @@ export default function AiTutorPage() {
         hasPremium={userAccess.canAccessPremium()}
         loadingAccess={userAccess.isLoading}
         userId={userAccess.userId ?? user?.id ?? null}
+        correctionSeed={latestCorrectedSeed}
       />
     </TeacherMercyLearningShell>
   );
