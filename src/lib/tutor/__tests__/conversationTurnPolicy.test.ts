@@ -53,6 +53,19 @@ describe("conversationTurnPolicy — learner-input pivoting (Step 9)", () => {
     expect(d.turnsOnTopic).toBe(0); // new topic starts a fresh count
     expect(d.promptInstruction).toMatch(/pivot to what the learner just introduced/i);
   });
+
+  it("pivots on the learner's new topic even after the current topic reaches the depth cap", () => {
+    const d = decideConversationTurnPolicy({
+      learnerText: "Tomorrow I need to take the bus to work.",
+      currentTopicId: "dinner",
+      turnsOnTopic: TOPIC_MIN_TURNS,
+    });
+    expect(d.action).toBe("pivot_on_learner");
+    expect(d.topicId).toBe("commute");
+    expect(d.reason).toBe("pivot_on_learner_input");
+    expect(d.promptInstruction).toMatch(/follow their own words/i);
+    expect(d.promptInstruction).not.toMatch(/offer to move on/i);
+  });
 });
 
 describe("conversationTurnPolicy — safe redirects (trust floor, never dead-end)", () => {
@@ -66,6 +79,20 @@ describe("conversationTurnPolicy — safe redirects (trust floor, never dead-end
     expect(d.action).toBe("redirect_off_topic");
     expect(d.reason).toBe("abstain_redirect_no_dead_end");
     expect(d.promptInstruction).toMatch(/never dead-end/i);
+    expect(d.promptInstruction).toMatch(/never guess/i);
+  });
+
+  it("lets abstention override an otherwise clear new-topic pivot", () => {
+    const d = decideConversationTurnPolicy({
+      learnerText: "Last night I cooked dinner with my family at home.",
+      currentTopicId: "work",
+      turnsOnTopic: 2,
+      abstain: true,
+    });
+    expect(d.action).toBe("redirect_off_topic");
+    expect(d.reason).toBe("abstain_redirect_no_dead_end");
+    expect(d.topicId).toBe("dinner");
+    expect(d.promptInstruction).toMatch(/confidence is low/i);
     expect(d.promptInstruction).toMatch(/never guess/i);
   });
 

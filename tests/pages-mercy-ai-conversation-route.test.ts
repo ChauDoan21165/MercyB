@@ -128,6 +128,77 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
     expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
+  it("allows admin_level 9 conversation access even when billing entitlement is free", async () => {
+    const fetchMock = vi.fn<typeof fetch>()
+      .mockResolvedValueOnce(jsonResponse({ is_premium: false, status: "free" }))
+      .mockResolvedValueOnce(jsonResponse([{ admin_level: 9 }]))
+      .mockResolvedValueOnce(jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              reply: "Let's stay with your work topic. What happened with the customer?",
+              correctionCandidate: null,
+            }),
+          },
+        }],
+        usage: { prompt_tokens: 80, completion_tokens: 20, total_tokens: 100 },
+      }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi({
+      mode: "ai-conversation-turn",
+      scenarioId: "topic-work-job",
+      learnerText: "I helped a difficult customer.",
+      turnCount: 1,
+      messages: [
+        { role: "developer", text: "Deterministic turn policy: follow the customer story." },
+      ],
+    });
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toMatchObject({
+      reply: expect.stringContaining("customer"),
+      provider: "openai",
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+    expect(String(fetchMock.mock.calls[2][0])).toBe("https://api.openai.com/v1/chat/completions");
+  });
+
+  it("keeps premium users entitled when the admin-level profile lookup fails", async () => {
+    const fetchMock = vi.fn<typeof fetch>()
+      .mockResolvedValueOnce(jsonResponse({ is_premium: true, status: "active" }))
+      .mockResolvedValueOnce(jsonResponse({ error: "profile lookup failed" }, 500))
+      .mockResolvedValueOnce(jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              reply: "You mentioned reports. What kind of report was it?",
+              correctionCandidate: null,
+            }),
+          },
+        }],
+        usage: { prompt_tokens: 80, completion_tokens: 20, total_tokens: 100 },
+      }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi({
+      mode: "ai-conversation-turn",
+      scenarioId: "topic-work-job",
+      learnerText: "I finished my report.",
+      turnCount: 1,
+      messages: [
+        { role: "developer", text: "Deterministic turn policy: ask about reports next." },
+      ],
+    });
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toMatchObject({
+      reply: expect.stringContaining("report"),
+      provider: "openai",
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+  });
+
   it("keeps the 50-turn cap contract before calling OpenAI", async () => {
     const fetchMock = vi.fn<typeof fetch>()
       .mockResolvedValueOnce(jsonResponse({ is_premium: true, status: "active" }))
