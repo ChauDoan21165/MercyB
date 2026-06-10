@@ -24,18 +24,17 @@ const rawSupabaseAnonKey = String(
   import.meta.env.VITE_SUPABASE_ANON_KEY ?? "",
 ).trim();
 
-// Test-environment fallback. supabase-js's `createClient` throws
-// "supabaseUrl is required" when either argument is empty, which would
-// crash every test file that transitively imports this module — even
-// tests that mock the client further down. We hand `createClient` an
-// obviously-fake URL so the singleton can be constructed. Real prod
-// behavior is preserved: the `console.warn` below still fires, and any
-// actual Supabase call against the placeholder will fail loudly.
-const FALLBACK_SUPABASE_URL = "https://placeholder.invalid.supabase.co";
-const FALLBACK_SUPABASE_ANON_KEY = "placeholder-anon-key-not-real";
+const isVitest =
+  import.meta.env.MODE === "test" || String(import.meta.env.VITEST ?? "") === "true";
 
-const supabaseUrl = rawSupabaseUrl || FALLBACK_SUPABASE_URL;
-const supabaseAnonKey = rawSupabaseAnonKey || FALLBACK_SUPABASE_ANON_KEY;
+if ((!rawSupabaseUrl || !rawSupabaseAnonKey) && !isVitest) {
+  throw new Error(
+    "[supabaseClient] Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY; refusing to initialize Supabase client.",
+  );
+}
+
+const supabaseUrl = rawSupabaseUrl || "http://127.0.0.1:54321";
+const supabaseAnonKey = rawSupabaseAnonKey || "test-anon-key";
 
 type EnvSnapshot = {
   supabaseUrl: string;
@@ -133,10 +132,8 @@ const storage: AuthStorage | undefined =
         },
       };
 
-if (!rawSupabaseUrl || !rawSupabaseAnonKey) {
-  // Warn loudly so a misconfigured prod deploy is obvious in logs,
-  // even though the fallback values keep the module load alive.
-  console.warn("[supabaseClient] Missing env vars", {
+if (isVitest && (!rawSupabaseUrl || !rawSupabaseAnonKey)) {
+  console.warn("[supabaseClient] Using local test-only Supabase env", {
     supabaseUrl: !!rawSupabaseUrl,
     supabaseAnonKey: !!rawSupabaseAnonKey,
   });

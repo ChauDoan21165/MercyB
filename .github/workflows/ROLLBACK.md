@@ -286,9 +286,12 @@ Cloudflare Pages is the third-line option per
 §2.2. Single-vendor concentration means it's emergency-only.
 
 ```bash
-# Build, then deploy to Cloudflare Pages
-npm run build
-npx wrangler pages deploy dist --project-name mercyblade
+# Build and deploy to Cloudflare Pages through the guarded canonical path.
+# Do not deploy from an agent worktree or detached checkout.
+cd /Users/admin/MercyB
+git switch main
+git pull --ff-only origin main
+npm run deploy:cf-pages:main
 ```
 
 DNS swap is the same Cloudflare dashboard step as for Vercel.
