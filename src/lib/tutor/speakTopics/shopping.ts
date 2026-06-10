@@ -3,13 +3,19 @@ import type { SpeakTopicLibraryEntry } from "../speakTopicLibrary";
 // Shopping theme. Deterministic / client-side; copy is warm and low-shame.
 // A9 batch-2 deepening: each topic carries 3 L1 interference notes and 6
 // conversation directions (followUps) within the existing schema.
+// A8 D5-B deepening: each topic now carries 4 L1 interference notes and 3
+// seed inputs (dialogue/bilingual-context variants), keeping the 6 followUps.
 export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
   {
     id: "topic-shopping-store-help",
     labelEn: "Asking For Help In A Store",
     labelVi: "Nhờ nhân viên cửa hàng giúp",
     category: "shopping",
-    seedInputs: ["Excuse me, can you help me find this item?"],
+    seedInputs: [
+      "Excuse me, can you help me find this item?",
+      "Hi, I'm looking for a phone charger — where would that be?",
+      "Excuse me, do you work here? I need help finding something.",
+    ],
     detectionPatterns: [
       /\b(?:store help|help me find|find this item|where can i find|shop assistant|staff help|looking for)\b/i,
     ],
@@ -29,6 +35,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Opening with 'Excuse me'",
         note: "'Xin lỗi' to get attention is 'Excuse me' here, not 'Sorry.' 'Excuse me, do you work here?' is a friendly way to start when you're not sure who is staff.",
       },
+      {
+        id: "shopping-help-looking-for",
+        label: "'I'm looking for', not 'I find'",
+        note: "'Tôi tìm...' often becomes 'I find a charger.' The natural store phrase is 'I'm looking for a charger.' The -ing keeps it as a polite, ongoing search.",
+      },
     ],
     followUps: [
       { id: "shopping-help-item", question: "What item are you trying to find?", salienceQuestion: "How would you ask for help finding the {slot}?" },
@@ -44,7 +55,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Checking The Price",
     labelVi: "Hỏi giá sản phẩm",
     category: "shopping",
-    seedInputs: ["How much is this, please?"],
+    seedInputs: [
+      "How much is this, please?",
+      "Sorry, how much does this one cost?",
+      "Is this the price, or is there a discount?",
+    ],
     detectionPatterns: [
       /\b(?:how much is this|price check|check the price|how much does it cost|costs how much|price tag)\b/i,
     ],
@@ -64,6 +79,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Each, or for two",
         note: "Prices can be per item: 'Is that each, or for two?' clears up the 'cái này bao nhiêu một cái' question without a long sentence.",
       },
+      {
+        id: "shopping-price-does-it-cost",
+        label: "'How much does it cost?'",
+        note: "'Cái này giá bao nhiêu' can become 'how much price?' The smooth forms are 'How much is this?' or 'How much does it cost?' — both are short and clear.",
+      },
     ],
     followUps: [
       { id: "shopping-price-item", question: "What item are you asking about?", salienceQuestion: "How would you ask the price of the {slot}?" },
@@ -79,7 +99,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Asking About Size And Fit",
     labelVi: "Hỏi size và độ vừa",
     category: "shopping",
-    seedInputs: ["Do you have this in a medium?"],
+    seedInputs: [
+      "Do you have this in a medium?",
+      "This is a bit tight — do you have the next size up?",
+      "Where's the fitting room? I'd like to try this on.",
+    ],
     detectionPatterns: [
       /\b(?:size|small|medium|large|extra large|try this on|fits me|too tight|too loose|do you have this in)\b/i,
     ],
@@ -99,6 +123,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "The fitting room",
         note: "'Phòng thử đồ' is 'the fitting room' or 'the changing room.' 'Where's the fitting room?' is a normal question before you try things on.",
       },
+      {
+        id: "shopping-size-try-it-on",
+        label: "'Try it on', not 'try it'",
+        note: "For clothes, English adds 'on': 'Can I try it on?' Vietnamese 'thử' is one word, so the 'on' is easy to drop — but it's what makes it about wearing the item.",
+      },
     ],
     followUps: [
       { id: "shopping-size-needed", question: "What size do you need?", salienceQuestion: "What size do you need for the {slot}?" },
@@ -114,7 +143,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "When An Item Is Out Of Stock",
     labelVi: "Khi hàng đã hết",
     category: "shopping",
-    seedInputs: ["Is this item out of stock?"],
+    seedInputs: [
+      "Is this item out of stock?",
+      "Do you have any of these left in the back?",
+      "When will this be back in stock?",
+    ],
     detectionPatterns: [
       /\b(?:out of stock|sold out|back in stock|have any left|do you have more|available again|restock)\b/i,
     ],
@@ -134,6 +167,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Another branch",
         note: "Staff can often check another store: 'Could you see if another branch has it?' keeps the search going when the shelf is empty.",
       },
+      {
+        id: "shopping-stock-any-left",
+        label: "'Any left' for the last few",
+        note: "'Còn cái nào không' is naturally 'Do you have any left?' The word 'left' here means remaining — a handy store word with no single Vietnamese match.",
+      },
     ],
     followUps: [
       { id: "shopping-stock-item", question: "Which item is not available?", salienceQuestion: "How would you ask if the {slot} is in stock?" },
@@ -149,7 +187,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Asking About A Sale Or Discount",
     labelVi: "Hỏi giảm giá hoặc khuyến mãi",
     category: "shopping",
-    seedInputs: ["Is this on sale today?"],
+    seedInputs: [
+      "Is this on sale today?",
+      "Do you have any discounts on this one?",
+      "Is there a student or member discount?",
+    ],
     detectionPatterns: [
       /\b(?:on sale|discount|promotion|coupon|deal|clearance|marked down|cheaper|sale price)\b/i,
     ],
@@ -169,6 +211,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Price match",
         note: "Some stores match a lower price elsewhere. 'Do you price match?' is a useful question that has no single Vietnamese word.",
       },
+      {
+        id: "shopping-discount-on-sale",
+        label: "'On sale' vs 'for sale'",
+        note: "'On sale' means a lower price; 'for sale' just means it can be bought. Vietnamese uses 'giảm giá' for the first — say 'on sale' when you mean a discount.",
+      },
     ],
     followUps: [
       { id: "shopping-discount-item", question: "Which item are you asking about?", salienceQuestion: "How would you ask if the {slot} is on sale?" },
@@ -184,7 +231,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Paying By Card Or In Cash",
     labelVi: "Thanh toán bằng thẻ hoặc tiền mặt",
     category: "shopping",
-    seedInputs: ["Can I pay by card, or do you prefer cash?"],
+    seedInputs: [
+      "Can I pay by card, or do you prefer cash?",
+      "Do you take card? I don't have much cash on me.",
+      "How do I pay — do I tap or insert?",
+    ],
     detectionPatterns: [
       /\b(?:pay by card|pay with card|pay in cash|cash only|tap my card|credit card|debit card|payment)\b/i,
     ],
@@ -204,6 +255,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Tap, insert, or swipe",
         note: "Card machines prompt 'tap, insert, or swipe.' You don't have to read it perfectly — 'How do I pay — tap?' is a fine question to ask the cashier.",
       },
+      {
+        id: "shopping-pay-do-you-take",
+        label: "'Do you take card?'",
+        note: "A quick, natural check before paying is 'Do you take card?' Learners may translate 'có nhận thẻ không' as 'you receive card?' — 'take' is the everyday verb here.",
+      },
     ],
     followUps: [
       { id: "shopping-pay-method", question: "How do you want to pay?", salienceQuestion: "How would you pay for the {slot}?" },
@@ -219,7 +275,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Checkout, Bag, And Receipt",
     labelVi: "Tính tiền, túi và hóa đơn",
     category: "shopping",
-    seedInputs: ["Could I have a bag and a receipt, please?"],
+    seedInputs: [
+      "Could I have a bag and a receipt, please?",
+      "Do I need to pay for a bag here?",
+      "Could I get the receipt by email instead?",
+    ],
     detectionPatterns: [
       /\b(?:checkout|cashier|bag|receipt|paper bag|plastic bag|do you need a bag|can i get a receipt)\b/i,
     ],
@@ -239,6 +299,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Paper or plastic",
         note: "Cashiers ask 'Paper or plastic?' about the bag type. A short 'Paper, please' or 'I have my own' answers it cleanly.",
       },
+      {
+        id: "shopping-checkout-could-i-have",
+        label: "'Could I have...' is the soft frame",
+        note: "'Cho tôi...' translates flatly to 'give me,' which can sound abrupt. 'Could I have a bag, please?' is the warm customer version cashiers expect.",
+      },
     ],
     followUps: [
       { id: "shopping-checkout-bag", question: "Do you need a bag?", salienceQuestion: "Would you need a bag for the {slot}?" },
@@ -254,7 +319,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Returning An Item",
     labelVi: "Trả lại hàng đã mua",
     category: "shopping",
-    seedInputs: ["I would like to return this item."],
+    seedInputs: [
+      "I would like to return this item.",
+      "I'd like to return this — it doesn't fit. Here's my receipt.",
+      "Am I still within the return window for this?",
+    ],
     detectionPatterns: [
       /\b(?:return this item|return an item|bring it back|refund|money back|return policy|receipt for return)\b/i,
     ],
@@ -274,6 +343,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "The return window",
         note: "Stores allow returns for a set time, often 30 days. 'Am I still within the return window?' is a useful question if you've waited a while.",
       },
+      {
+        id: "shopping-return-vs-refund",
+        label: "'Return' the item, 'refund' the money",
+        note: "'Trả hàng' covers both ideas. In English you 'return the item' and ask for a 'refund' (your money back). Naming both keeps the request clear.",
+      },
     ],
     followUps: [
       { id: "shopping-return-item", question: "What item do you want to return?", salienceQuestion: "How would you ask to return the {slot}?" },
@@ -289,7 +363,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Exchanging For Another Item",
     labelVi: "Đổi sang món khác",
     category: "shopping",
-    seedInputs: ["Can I exchange this for a different size?"],
+    seedInputs: [
+      "Can I exchange this for a different size?",
+      "I'd like to swap this for the same one in blue.",
+      "If I exchange it for a pricier one, do I pay the difference?",
+    ],
     detectionPatterns: [
       /\b(?:exchange this|different size|different color|swap it|change for another|replace this|exchange policy)\b/i,
     ],
@@ -309,6 +387,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Price difference",
         note: "If the new item costs more, staff say 'pay the difference.' 'Do I pay the difference?' is a calm, clear question to ask.",
       },
+      {
+        id: "shopping-exchange-for-preposition",
+        label: "'Exchange this for...'",
+        note: "The frame is 'exchange this for a larger size.' Learners may drop 'for' from 'đổi lấy'; the small 'for' links the old and new item smoothly.",
+      },
     ],
     followUps: [
       { id: "shopping-exchange-item", question: "What do you want to exchange?", salienceQuestion: "How would you ask to exchange the {slot}?" },
@@ -324,7 +407,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Explaining A Damaged Item",
     labelVi: "Nói món hàng bị lỗi",
     category: "shopping",
-    seedInputs: ["This item is damaged. Could you help me?"],
+    seedInputs: [
+      "This item is damaged. Could you help me?",
+      "There's a problem with this — it doesn't turn on.",
+      "I noticed a scratch when I got home. Can I get a replacement?",
+    ],
     detectionPatterns: [
       /\b(?:damaged|broken|doesn't work|not working|defective|scratched|missing piece|problem with this item)\b/i,
     ],
@@ -344,6 +431,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "When you noticed",
         note: "Staff often ask when you found the damage. 'I noticed it when I got home' is a simple, honest answer that helps the return.",
       },
+      {
+        id: "shopping-damaged-doesnt-work",
+        label: "'It doesn't work'",
+        note: "'Bị hỏng' is naturally 'it doesn't work' or 'it's not working.' Learners may say 'it is broken die'; the plain present 'doesn't work' is the clearest store phrase.",
+      },
     ],
     followUps: [
       { id: "shopping-damaged-item", question: "What item has a problem?", salienceQuestion: "How would you explain the problem with the {slot}?" },
@@ -359,7 +451,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Asking About An Online Order",
     labelVi: "Hỏi về đơn hàng online",
     category: "shopping",
-    seedInputs: ["I am checking on my online order."],
+    seedInputs: [
+      "I am checking on my online order.",
+      "Hi, I'm here to pick up an online order.",
+      "My order is late — could you check the tracking for me?",
+    ],
     detectionPatterns: [
       /\b(?:online order|order number|tracking number|delivery status|has my order arrived|pickup order|click and collect)\b/i,
     ],
@@ -379,6 +475,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Pickup in store",
         note: "'Click and collect' or 'pickup order' means you buy online and collect in store. 'I'm here to pick up an online order' is the sentence at the counter.",
       },
+      {
+        id: "shopping-online-track",
+        label: "'Track' the order",
+        note: "'Theo dõi đơn hàng' is 'track my order.' Asking 'Can you track my order?' or 'What's the tracking number?' moves the conversation forward calmly.",
+      },
     ],
     followUps: [
       { id: "shopping-online-order", question: "What order are you asking about?", salienceQuestion: "How would you ask about the {slot}?" },
@@ -394,7 +495,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Grocery Checkout",
     labelVi: "Tính tiền ở siêu thị",
     category: "shopping",
-    seedInputs: ["I have my own bag, thank you."],
+    seedInputs: [
+      "I have my own bag, thank you.",
+      "No loyalty card, thanks — just paying for these.",
+      "Could you help me? This one won't scan.",
+    ],
     detectionPatterns: [
       /\b(?:grocery|groceries|supermarket|own bag|reusable bag|loyalty card|scan this|checkout lane)\b/i,
     ],
@@ -413,6 +518,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         id: "shopping-grocery-self-checkout",
         label: "Self-checkout help",
         note: "At self-checkout, it's fine to wave for help: 'Could you help me? It won't scan.' Staff expect this and won't mind.",
+      },
+      {
+        id: "shopping-grocery-plural-groceries",
+        label: "'Groceries', always plural",
+        note: "The shopping itself is 'groceries' with an -s — there's no common singular. 'I'm buying groceries' sounds natural; 'a grocery' refers to the store, not the food.",
       },
     ],
     followUps: [
