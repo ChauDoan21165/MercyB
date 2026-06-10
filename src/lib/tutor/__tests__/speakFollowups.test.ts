@@ -569,8 +569,8 @@ describe("speakFollowups", () => {
   });
 
   describe("Speak topic library batch 1", () => {
-    it("keeps Batch 1 topics first and appends approved Batch 2 everyday topics", () => {
-      expect(SPEAK_TOPIC_LIBRARY.slice(0, 20).map((topic) => topic.labelEn)).toEqual([
+    it("keeps inline Batch 1 and approved Batch 2 everyday topics first", () => {
+      expect(SPEAK_TOPIC_LIBRARY.slice(0, 19).map((topic) => topic.labelEn)).toEqual([
         "Ordering Food",
         "Family And Relatives",
         "Work",
@@ -582,7 +582,6 @@ describe("speakFollowups", () => {
         "Daily Routine",
         "Time, Appointments, And Waiting",
         "Home, Rent, And Repairs",
-        "Banking And Bills",
         "Mail And Package Delivery",
         "School Or Class",
         "Social Plans And Invitations",
@@ -629,6 +628,20 @@ describe("speakFollowups", () => {
       for (const topic of moduleTopics) {
         expect(libraryIds.has(topic.id), topic.id).toBe(true);
       }
+    });
+
+    it("keeps Speak topic ids unique across inline and auto-registered topics", () => {
+      const seenTopicIds = new Set<string>();
+      const duplicateTopicIds = new Set<string>();
+
+      for (const topic of SPEAK_TOPIC_LIBRARY) {
+        if (seenTopicIds.has(topic.id)) {
+          duplicateTopicIds.add(topic.id);
+        }
+        seenTopicIds.add(topic.id);
+      }
+
+      expect([...duplicateTopicIds]).toEqual([]);
     });
 
     it("ships the D3 phone and customer-service theme with scenario metadata", () => {
