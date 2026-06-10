@@ -187,7 +187,7 @@ describe("conversation integration contracts", () => {
 
     expect(topicsWithWarmth.length).toBeGreaterThanOrEqual(6);
     expect(topicsWithWarmth.some((topic) => /ngân hàng|bệnh nhân|móng|nhà hàng/i.test(topic.labelVi))).toBe(true);
-    expect(VIETLISH_CORPUS.length).toBeGreaterThanOrEqual(250);
+    expect(VIETLISH_CORPUS.length).toBeGreaterThanOrEqual(350);
     expect(new Set(VIETLISH_CORPUS.map((entry) => entry.vietlish.toLowerCase())).size).toBe(
       VIETLISH_CORPUS.length,
     );
