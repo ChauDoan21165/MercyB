@@ -187,7 +187,10 @@ describe("conversation integration contracts", () => {
 
     expect(topicsWithWarmth.length).toBeGreaterThanOrEqual(6);
     expect(topicsWithWarmth.some((topic) => /ngân hàng|bệnh nhân|móng|nhà hàng/i.test(topic.labelVi))).toBe(true);
-    expect(VIETLISH_CORPUS.length).toBeGreaterThanOrEqual(150);
+    expect(VIETLISH_CORPUS.length).toBeGreaterThanOrEqual(250);
+    expect(new Set(VIETLISH_CORPUS.map((entry) => entry.vietlish.toLowerCase())).size).toBe(
+      VIETLISH_CORPUS.length,
+    );
     expect(VIETLISH_CORPUS.some((entry) => entry.frequency === "high" && entry.context.length > 0)).toBe(true);
   });
 });
