@@ -1,0 +1,237 @@
+{
+  "corpus": "f2-interference-taxonomy-wave2",
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F2",
+  "authoredAt": "2026-06-10",
+  "wave": 2,
+  "schemaBasis": "Content Factory standalone review pack; not wired to engine",
+  "description": "VN→EN interference taxonomy wave 2. Eight content patterns focused on discourse, pragmatics, collocation, and family/work scenarios. Full Vietnamese diacritics throughout. Append-only review material only.",
+  "patterns": [
+    {
+      "id": "f2w2_reason_because_double_marking",
+      "category": "clause_linking",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Reason clause double marking with because/so",
+      "l1ReasoningVi": "Tiếng Việt thường nói \"vì... nên...\" với hai dấu hiệu trong cùng một quan hệ nhân quả. Khi chuyển sang tiếng Anh, người học dễ dùng cả \"because\" và \"so\" trong một câu, dù tiếng Anh chuẩn thường chỉ cần một trục nối.",
+      "learnerSignal": "The sentence has both a because-clause and a so-clause where one connector is enough.",
+      "examples": [
+        {
+          "incorrect": "Because I was sick, so I stayed home.",
+          "natural": "Because I was sick, I stayed home.",
+          "explanationVi": "\"Because\" đã đủ đánh dấu lý do; bỏ \"so\" để câu gọn và tự nhiên."
+        },
+        {
+          "incorrect": "Because my mother was worried, so I called her.",
+          "natural": "My mother was worried, so I called her.",
+          "explanationVi": "Có thể giữ \"so\" nếu mệnh đề đầu không bắt đầu bằng \"because\"."
+        },
+        {
+          "incorrect": "Because the bus was late, so I missed the appointment.",
+          "natural": "Because the bus was late, I missed the appointment.",
+          "explanationVi": "Cấu trúc \"vì... nên...\" không dịch thành \"because... so...\" nguyên khối."
+        }
+      ],
+      "teachingMove": "Offer two templates side by side: Because X, Y. / X, so Y. Ask the learner to choose one connector, not both.",
+      "ruleTags": ["because_so", "clause_linking", "vn_l1_transfer", "vì_nên"]
+    },
+    {
+      "id": "f2w2_topic_pronoun_resume",
+      "category": "syntax_discourse",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Topic fronting with resumptive pronoun",
+      "l1ReasoningVi": "Tiếng Việt dùng cấu trúc chủ đề - bình luận rất tự nhiên: \"Ba tôi thì ông ấy...\" hoặc \"Cái việc đó, tôi...\". Trong tiếng Anh, lặp lại đại từ sau chủ đề thường làm câu dư và thiếu tự nhiên.",
+      "learnerSignal": "A noun phrase appears at the front and is repeated by he/she/it/they in the main clause.",
+      "examples": [
+        {
+          "incorrect": "My father, he works at night.",
+          "natural": "My father works at night.",
+          "explanationVi": "Không cần lặp \"he\" vì \"my father\" đã là chủ ngữ."
+        },
+        {
+          "incorrect": "This problem, it makes me tired.",
+          "natural": "This problem makes me tired.",
+          "explanationVi": "Trong tiếng Anh thường đưa chủ đề vào thẳng vị trí chủ ngữ."
+        },
+        {
+          "incorrect": "My parents, they do not understand my schedule.",
+          "natural": "My parents do not understand my schedule.",
+          "explanationVi": "Giữ một chủ ngữ rõ ràng là đủ."
+        }
+      ],
+      "teachingMove": "Tell the learner: if the first noun can do the verb, make it the subject and delete the repeated pronoun.",
+      "ruleTags": ["topic_comment", "resumptive_pronoun", "subject_cleanup", "vn_l1_discourse"]
+    },
+    {
+      "id": "f2w2_polite_refusal_over_explaining",
+      "category": "pragmatics",
+      "severity": "low",
+      "cefrLevelsObserved": ["B1", "B2", "C1"],
+      "name": "Polite refusal over-explaining",
+      "l1ReasoningVi": "Trong văn hóa gia đình và công việc Việt Nam, từ chối thường đi kèm nhiều lý do để giữ tình cảm. Sang tiếng Anh, giải thích quá dài có thể làm người nghe thấy phòng thủ hoặc thiếu dứt khoát.",
+      "learnerSignal": "A refusal includes several personal reasons before the actual no, especially in workplace or family-boundary contexts.",
+      "examples": [
+        {
+          "incorrect": "I cannot come because I am very tired and my mother called and I have many things and maybe next time if you do not mind.",
+          "natural": "I cannot make it tonight, but thank you for inviting me.",
+          "explanationVi": "Một lý do ngắn hoặc lời cảm ơn là đủ; không cần tự chứng minh quá nhiều."
+        },
+        {
+          "incorrect": "I am sorry, I cannot work Sunday because my family has many problems and I feel bad.",
+          "natural": "I am not available on Sunday because of a family commitment.",
+          "explanationVi": "Dùng \"family commitment\" để giữ riêng tư mà vẫn lịch sự."
+        },
+        {
+          "incorrect": "Maybe I cannot lend money because I also need money and my husband maybe angry.",
+          "natural": "I am sorry, I cannot lend money right now.",
+          "explanationVi": "Ranh giới tài chính nên ngắn, rõ, và không tự hạ mình."
+        }
+      ],
+      "teachingMove": "Teach a three-part refusal: appreciation + clear no + short boundary. Avoid shame language and avoid forcing personal disclosure.",
+      "ruleTags": ["polite_refusal", "pragmatics", "boundary_language", "diaspora_family"]
+    },
+    {
+      "id": "f2w2_deverbal_noun_choice_make_do",
+      "category": "collocation",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Make/do/take collocation flattening",
+      "l1ReasoningVi": "Tiếng Việt dùng động từ rất linh hoạt như \"làm\", \"đi\", \"có\", \"uống\" để diễn đạt hành động. Tiếng Anh lại có nhiều cụm cố định: make a decision, do homework, take medicine, take a shower.",
+      "learnerSignal": "The verb is understandable but not the conventional English collocation.",
+      "examples": [
+        {
+          "incorrect": "I made my homework after dinner.",
+          "natural": "I did my homework after dinner.",
+          "explanationVi": "\"Homework\" đi với \"do\", không phải \"make\"."
+        },
+        {
+          "incorrect": "She ate medicine before bed.",
+          "natural": "She took medicine before bed.",
+          "explanationVi": "Tiếng Việt nói \"uống thuốc\"; tiếng Anh dùng \"take medicine\"."
+        },
+        {
+          "incorrect": "We did a decision yesterday.",
+          "natural": "We made a decision yesterday.",
+          "explanationVi": "\"Decision\" đi với \"make\"."
+        }
+      ],
+      "teachingMove": "Group collocations by noun, not by Vietnamese verb. Give the learner mini bundles: take medicine/a shower/a break; make a decision/a plan; do homework/laundry.",
+      "ruleTags": ["collocation", "make_do_take", "vn_l1_lexical_transfer"]
+    },
+    {
+      "id": "f2w2_family_title_transfer",
+      "category": "lexis_register",
+      "severity": "low",
+      "cefrLevelsObserved": ["A1", "A2", "B1"],
+      "name": "Kinship title transfer in English address",
+      "l1ReasoningVi": "Tiếng Việt dùng vai vế gia đình như cô, chú, anh, chị, bác để xưng hô với cả người không cùng gia đình. Trong tiếng Anh, gọi người lạ là \"uncle\", \"auntie\", \"brother\" có thể gây hiểu lầm nếu không cùng cộng đồng quen dùng cách đó.",
+      "learnerSignal": "The learner uses uncle/auntie/brother/sister as direct address in mainstream English contexts.",
+      "examples": [
+        {
+          "incorrect": "Uncle, can you help me find this address?",
+          "natural": "Excuse me, could you help me find this address?",
+          "explanationVi": "Với người lạ, \"Excuse me\" an toàn hơn \"uncle\"."
+        },
+        {
+          "incorrect": "Sister, I need to book an appointment.",
+          "natural": "Hi, I need to book an appointment.",
+          "explanationVi": "Ở phòng khám hoặc dịch vụ, dùng lời chào trung tính."
+        },
+        {
+          "incorrect": "Auntie, how much is this?",
+          "natural": "Hi, how much is this?",
+          "explanationVi": "Nếu không chắc văn hóa nơi đó, không cần dịch vai vế sang tiếng Anh."
+        }
+      ],
+      "teachingMove": "Teach neutral openers for public English: Excuse me, Hi, Hello, Sir/Ma'am only when locally appropriate.",
+      "ruleTags": ["kinship_terms", "address_forms", "register", "diaspora_pragmatics"]
+    },
+    {
+      "id": "f2w2_condition_if_then_transfer",
+      "category": "clause_linking",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1"],
+      "name": "If/then double or missing conditional frame",
+      "l1ReasoningVi": "Tiếng Việt có khung \"nếu... thì...\". Người học có thể dịch thành \"if... then...\" quá máy móc, hoặc giữ trật tự tiếng Việt nhưng thiếu chủ ngữ/phụ trợ cần thiết của tiếng Anh.",
+      "learnerSignal": "Conditionals sound formulaic, double-marked, or missing English tense/auxiliary alignment.",
+      "examples": [
+        {
+          "incorrect": "If you busy, then I call later.",
+          "natural": "If you are busy, I can call later.",
+          "explanationVi": "Cần \"are\" sau \"you\" và \"can\" để lời đề nghị mềm hơn."
+        },
+        {
+          "incorrect": "If my mom knows, then she will worry too much.",
+          "natural": "If my mom finds out, she will worry too much.",
+          "explanationVi": "\"Finds out\" tự nhiên hơn \"knows\" khi nói về việc biết tin mới."
+        },
+        {
+          "incorrect": "If I have time, then I will visit you.",
+          "natural": "If I have time, I will visit you.",
+          "explanationVi": "\"Then\" không sai tuyệt đối, nhưng thường bỏ để câu tự nhiên hơn."
+        }
+      ],
+      "teachingMove": "Normalize one clean template first: If + present simple, will/can + verb. Mention that 'then' is optional and often omitted.",
+      "ruleTags": ["conditionals", "if_then", "nếu_thì", "auxiliary_alignment"]
+    },
+    {
+      "id": "f2w2_time_duration_for_since_ago",
+      "category": "tense_aspect",
+      "severity": "high",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Duration confusion with for/since/ago",
+      "l1ReasoningVi": "Tiếng Việt diễn đạt thời gian bằng cụm như \"ba năm rồi\", \"từ năm 2020\", \"cách đây hai tuần\" mà không bắt buộc đổi thì động từ. Tiếng Anh yêu cầu chọn for, since, ago và thường cần present perfect.",
+      "learnerSignal": "Duration is clear, but tense and preposition do not match English time logic.",
+      "examples": [
+        {
+          "incorrect": "I live in Calgary since 2020.",
+          "natural": "I have lived in Calgary since 2020.",
+          "explanationVi": "\"Since\" đi với mốc bắt đầu và thường dùng present perfect."
+        },
+        {
+          "incorrect": "I came to Canada for three years.",
+          "natural": "I came to Canada three years ago.",
+          "explanationVi": "Khi nói thời điểm đến, dùng \"ago\"; khi nói sống bao lâu, dùng \"for\"."
+        },
+        {
+          "incorrect": "She works here from two months.",
+          "natural": "She has worked here for two months.",
+          "explanationVi": "\"For\" dùng với khoảng thời gian; \"from\" không dùng như vậy."
+        }
+      ],
+      "teachingMove": "Teach three Vietnamese prompts: bao lâu rồi → for + duration; từ khi nào → since + start point; cách đây bao lâu → ago.",
+      "ruleTags": ["for_since_ago", "present_perfect", "duration", "vn_l1_time"]
+    },
+    {
+      "id": "f2w2_emotion_adjective_source",
+      "category": "lexis_morphology",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1"],
+      "name": "Emotion adjective -ed/-ing source confusion",
+      "l1ReasoningVi": "Tiếng Việt thường dùng một tính từ hoặc cụm cảm xúc mà không đổi hậu tố theo người cảm thấy và nguồn gây cảm xúc. Tiếng Anh phân biệt \"I am bored\" và \"This is boring\".",
+      "learnerSignal": "The learner says they are interesting/boring/exciting when they mean interested/bored/excited.",
+      "examples": [
+        {
+          "incorrect": "I am interesting in nursing.",
+          "natural": "I am interested in nursing.",
+          "explanationVi": "Người có cảm xúc dùng \"interested\"; thứ gây cảm xúc dùng \"interesting\"."
+        },
+        {
+          "incorrect": "The class was bored.",
+          "natural": "The class was boring.",
+          "explanationVi": "Nếu lớp học gây chán, dùng \"boring\"."
+        },
+        {
+          "incorrect": "My daughter is exciting about school.",
+          "natural": "My daughter is excited about school.",
+          "explanationVi": "Con gái là người cảm thấy hào hứng, nên dùng \"excited\"."
+        }
+      ],
+      "teachingMove": "Use a two-column card: person feeling = -ed; thing causing feeling = -ing. Include common family/work examples.",
+      "ruleTags": ["ed_ing_adjectives", "emotion_adjectives", "interested_interesting"]
+    }
+  ]
+}

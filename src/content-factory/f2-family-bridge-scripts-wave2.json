@@ -1,0 +1,125 @@
+{
+  "corpus": "f2-family-bridge-scripts-wave2",
+  "languagePair": "en-vi",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F2",
+  "authoredAt": "2026-06-10",
+  "wave": 2,
+  "description": "Step-13 family-bridge bilingual scripts for diaspora learners. Shame-free English-Vietnamese lines for difficult family conversations. Append-only review material only.",
+  "scripts": [
+    {
+      "id": "f2w2-family-boundary-study-time",
+      "scenario": "Asking family to protect study time",
+      "learnerNeed": "The learner wants to study English without making family feel rejected.",
+      "tone": "warm_boundary",
+      "englishScript": [
+        "I want to spend time with you, and I also need thirty quiet minutes to study English.",
+        "After that, I can help with dinner.",
+        "Please do not think I am avoiding the family. I am trying to build a better future for us."
+      ],
+      "vietnameseBridge": [
+        "Con muốn ở với gia đình, và con cũng cần ba mươi phút yên tĩnh để học tiếng Anh.",
+        "Sau đó con có thể phụ nấu cơm.",
+        "Mọi người đừng nghĩ là con né gia đình. Con đang cố gắng xây tương lai tốt hơn cho chúng ta."
+      ],
+      "coachNoteVi": "Giữ cả tình cảm lẫn ranh giới. Câu không đổ lỗi và không xin lỗi quá mức.",
+      "avoid": ["I never have time because of you.", "You always interrupt me."],
+      "step13Tags": ["study_time", "family_boundary", "shame_free", "diaspora_home"]
+    },
+    {
+      "id": "f2w2-family-money-no",
+      "scenario": "Saying no to a money request without shaming anyone",
+      "learnerNeed": "The learner cannot lend money and needs a respectful refusal.",
+      "tone": "respectful_clear",
+      "englishScript": [
+        "I am sorry, I cannot lend money right now.",
+        "I care about you, but I have to keep my budget stable this month.",
+        "I can help you think through another option if you want."
+      ],
+      "vietnameseBridge": [
+        "Con xin lỗi, hiện giờ con không thể cho mượn tiền.",
+        "Con vẫn thương và quan tâm, nhưng tháng này con phải giữ ngân sách ổn định.",
+        "Nếu muốn, con có thể cùng nghĩ cách khác."
+      ],
+      "coachNoteVi": "Không cần kể hết chuyện tài chính riêng. Một lời từ chối rõ ràng vẫn có thể tử tế.",
+      "avoid": ["I am a bad child if I say no.", "You only call me for money."],
+      "step13Tags": ["money_boundary", "family_respect", "no_without_shame"]
+    },
+    {
+      "id": "f2w2-family-career-choice",
+      "scenario": "Explaining a career choice parents do not understand",
+      "learnerNeed": "The learner wants to explain a nontraditional career path without sounding defensive.",
+      "tone": "patient_confident",
+      "englishScript": [
+        "I understand why this career sounds unfamiliar.",
+        "I have researched the training, salary range, and job market.",
+        "I am not choosing it to disappoint you. I am choosing it because it fits my skills and my future."
+      ],
+      "vietnameseBridge": [
+        "Con hiểu vì sao nghề này nghe lạ với ba mẹ.",
+        "Con đã tìm hiểu chương trình học, mức lương và thị trường việc làm.",
+        "Con không chọn nghề này để làm ba mẹ thất vọng. Con chọn vì nó hợp với kỹ năng và tương lai của con."
+      ],
+      "coachNoteVi": "Câu nói công nhận nỗi lo của gia đình trước, rồi đưa bằng chứng. Không cần tranh cãi về ai đúng ai sai.",
+      "avoid": ["You do not understand anything.", "This is my life, not yours."],
+      "step13Tags": ["career_choice", "parents", "respectful_assertion"]
+    },
+    {
+      "id": "f2w2-family-mental-health",
+      "scenario": "Telling family you need mental health support",
+      "learnerNeed": "The learner needs to ask for care without using clinical vocabulary that may trigger shame.",
+      "tone": "gentle_direct",
+      "englishScript": [
+        "I have been carrying too much stress, and I need support.",
+        "This does not mean our family failed.",
+        "It means I want to get healthier and handle life better."
+      ],
+      "vietnameseBridge": [
+        "Dạo này con chịu quá nhiều căng thẳng, và con cần được hỗ trợ.",
+        "Điều này không có nghĩa là gia đình mình thất bại.",
+        "Nó có nghĩa là con muốn khỏe hơn và xử lý cuộc sống tốt hơn."
+      ],
+      "coachNoteVi": "Tránh khung đổ lỗi. Nhấn mạnh sức khỏe và khả năng sống tốt hơn.",
+      "avoid": ["You made me like this.", "I am broken."],
+      "step13Tags": ["mental_health", "family_shame", "support_request"]
+    },
+    {
+      "id": "f2w2-family-childcare-help",
+      "scenario": "Asking relatives for childcare help with clear limits",
+      "learnerNeed": "The learner needs help but does not want the request to become open-ended.",
+      "tone": "grateful_specific",
+      "englishScript": [
+        "Could you watch the kids on Thursday from six to eight?",
+        "I will prepare dinner and their clothes before I leave.",
+        "If that time does not work, please tell me honestly. I can make another plan."
+      ],
+      "vietnameseBridge": [
+        "Thứ Năm từ sáu giờ đến tám giờ, cô/chú có thể trông mấy bé giúp con không?",
+        "Con sẽ chuẩn bị cơm tối và quần áo cho tụi nhỏ trước khi đi.",
+        "Nếu giờ đó không tiện, cô/chú nói thật với con nhé. Con có thể sắp xếp cách khác."
+      ],
+      "coachNoteVi": "Yêu cầu cụ thể giúp người thân dễ đồng ý hoặc từ chối mà không bị áp lực.",
+      "avoid": ["You must help me because we are family.", "I have nobody except you."],
+      "step13Tags": ["childcare", "specific_request", "family_help"]
+    },
+    {
+      "id": "f2w2-family-translating-for-parents",
+      "scenario": "Setting limits when translating for parents",
+      "learnerNeed": "The learner often translates documents or calls and needs a sustainable boundary.",
+      "tone": "loving_practical",
+      "englishScript": [
+        "I can help translate this letter tonight.",
+        "For phone calls during my work hours, we need another plan.",
+        "Let us write down the questions first so the call is shorter and less stressful."
+      ],
+      "vietnameseBridge": [
+        "Tối nay con có thể giúp dịch lá thư này.",
+        "Còn những cuộc gọi trong giờ làm của con thì mình cần cách khác.",
+        "Mình viết trước các câu hỏi để cuộc gọi ngắn hơn và đỡ căng thẳng hơn."
+      ],
+      "coachNoteVi": "Câu này không bỏ mặc cha mẹ; nó biến việc giúp đỡ thành một hệ thống bền vững.",
+      "avoid": ["I am tired of translating for you.", "You should know English by now."],
+      "step13Tags": ["translation_burden", "parents", "sustainable_help"]
+    }
+  ]
+}
