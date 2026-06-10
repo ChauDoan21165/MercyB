@@ -14,6 +14,7 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 
 ## Lesson Index
 
+14. [Cron files must live on main](#14-cron-files-must-live-on-main)
 13. [Test runners need ownership boundaries too](#13-test-runners-need-ownership-boundaries-too)
 12. [Do not copy files in Finder inside the repo](#12-do-not-copy-files-in-finder-inside-the-repo)
 11. [Stacked Silent Failures Compound, They Don't Combine Linearly](#11-stacked-silent-failures-compound-they-dont-combine-linearly)
@@ -27,6 +28,18 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 3. [Restore before redesign](#3-restore-before-redesign)
 4. [Verify against current main, not stale audit notes](#4-verify-against-current-main-not-stale-audit-notes)
 5. [Silent failures cost more than loud ones](#5-silent-failures-cost-more-than-loud-ones)
+
+---
+
+## 14. Cron files must live on main
+
+**What it is.** A file that a cron job, watchdog, deploy hook, or external scheduler reads must exist on the branch the scheduler actually checks out. A file that only exists in a feature branch, a local worktree, or a copied directory is invisible to the thing that runs later.
+
+**Why it matters.** This failure looks like a mystery because the file is "right there" in one terminal, but the scheduler is looking at a different checkout. Branch switching can make the file appear or disappear without deleting it. If the missing file controls a backup, reminder email, health check, or reaper, the job may fail silently or skip the exact protection it was supposed to provide.
+
+**MercyBlade example.** The June 9 operations pass depended on cron/watchdog files being present on `main`, not just in an agent branch. The dangerous version of the mistake is: an agent creates or edits a cron input file on `a3/some-fix`, verifies it locally, then Chau or another agent checks out `main` and the file vanishes. Nothing was deleted; Git simply showed the truth for that branch. Any cron that runs from `main` now cannot see the file.
+
+**Action.** Treat cron-read files like production code: land them on `main` before relying on them. When a file "disappears," first run `git branch --show-current`, `git status --short`, and `git log --all -- <path>` before recreating it. If the file exists only on another branch, merge or port it deliberately; do not copy it by hand and create a second source of truth.
 
 ---
 
@@ -291,4 +304,4 @@ Not worth adding:
 
 ---
 
-*Last updated: June 9, 2026 — 12 lessons total; 12 from the June 9 file-cleanup pass, 11 from the May 19 evening session, 6–10 from the May 19 hardening wave, 1–5 from initial creation.*
+*Last updated: June 9, 2026 — 14 lessons total; 12–14 from the June 9 operations/file-cleanup pass, 11 from the May 19 evening session, 6–10 from the May 19 hardening wave, 1–5 from initial creation.*
