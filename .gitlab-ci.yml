@@ -187,7 +187,12 @@ variables:
   hooks:
     pre_get_sources_script:
       - |
-        if [ "${MERCYB_PRECHECKOUT_REAPER_DISABLE:-0}" != "1" ] && [ "${CI_PIPELINE_SOURCE:-}" = "push" ] && [ "${CI_COMMIT_BRANCH:-}" = "main" ] && [ -n "${CI_BUILDS_DIR:-}" ] && [ "$(uname -s)" = "Darwin" ]; then
+        # Pre-checkout stale-build reaper. Runs on ALL pipelines (MR/branch/main-push),
+        # not just main-push: MR pipelines were the ones starving the runner's disk
+        # floor (see !568/!598). Safety is unchanged — it only touches numeric pipeline
+        # dirs under gitlab-runner-builds, always skips the current pipeline id, and
+        # skips any dir with a live process (lsof). Kill-switch: MERCYB_PRECHECKOUT_REAPER_DISABLE=1.
+        if [ "${MERCYB_PRECHECKOUT_REAPER_DISABLE:-0}" != "1" ] && [ -n "${CI_BUILDS_DIR:-}" ] && [ "$(uname -s)" = "Darwin" ]; then
           REAPER_ROOT="$CI_BUILDS_DIR"
           while [ ! -d "$REAPER_ROOT" ] && [ "$REAPER_ROOT" != "/" ]; do
             REAPER_ROOT="$(dirname "$REAPER_ROOT")"
