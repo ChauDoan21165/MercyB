@@ -429,6 +429,7 @@ variables:
 .build_script: &build_script
   - npx tsc --noEmit
   - npm run typecheck:functions
+  - npm run typecheck:pages
   # node:24-bookworm-slim ships without curl, the CA bundle, unzip, or
   # git. We need them for:
   #   - curl + ca-certificates: HTTPS fetch of the Deno install

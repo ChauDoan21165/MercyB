@@ -167,7 +167,7 @@ const LEARNER_LED_SCENARIO: Scenario = {
 
 export function normalizeAiConversationHistory(value: unknown): AiConversationHistoryTurn[] {
   if (!Array.isArray(value)) return [];
-  return value.slice(-12).map((turn) => {
+  return value.slice(-12).map((turn): AiConversationHistoryTurn => {
     const record = isRecord(turn) ? turn : {};
     const role = record.role === "assistant" ? "assistant" : "learner";
     return {
