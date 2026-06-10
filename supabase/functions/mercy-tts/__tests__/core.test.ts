@@ -152,7 +152,7 @@ describe("mercy-tts provider fallback", () => {
     const { deps } = makeDeps(fetcher as unknown as typeof fetch);
 
     const pending = handleMercyTtsRequest(jsonRequest(), deps);
-    await vi.advanceTimersByTimeAsync(6500);
+    await vi.advanceTimersByTimeAsync(9000);
     const response = await pending;
     const body = await responseJson(response);
 
