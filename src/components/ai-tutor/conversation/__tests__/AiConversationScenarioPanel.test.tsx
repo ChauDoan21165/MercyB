@@ -91,6 +91,39 @@ describe("AiConversationScenarioPanel", () => {
     expect(sendTurn).toHaveBeenCalledTimes(1);
   });
 
+  it("fails closed without a canned Mercy reply when the turn falls back to local-fallback (Contract C6)", async () => {
+    const sendTurn = vi.fn().mockResolvedValue({
+      // The client returns a canned local-fallback reply on transport failure;
+      // the panel must NOT render it as a Mercy turn.
+      reply: "Mercy chưa lấy được câu trả lời AI an toàn, nên mình không đoán lỗi của bạn.",
+      correction: null,
+      summary: null,
+      cost: {},
+      provider: "local-fallback",
+      pronunciationAbstention: null,
+    });
+
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token"
+        hasPremium
+        loadingAccess={false}
+        sendTurn={sendTurn}
+      />,
+    );
+
+    await send("I want order food.");
+
+    // No canned Mercy bubble; the preset reply text is never shown.
+    expect(screen.queryByText("Mercy")).not.toBeInTheDocument();
+    expect(screen.queryByText(/không đoán lỗi của bạn/)).not.toBeInTheDocument();
+    // Explicit VN-first retry surface instead, input restored, turn count unchanged.
+    expect(screen.getByText(/Mercy chưa lấy được câu trả lời\. Bạn thử lại/)).toBeInTheDocument();
+    expect(screen.getByRole("textbox")).toHaveValue("I want order food.");
+    expect(screen.getByText("Turn 0/50")).toBeInTheDocument();
+    expect(sendTurn).toHaveBeenCalledTimes(1);
+  });
+
   it("starts learner-led with no preset Mercy opening and sends the learner's words as the seed", async () => {
     const sendTurn = vi.fn().mockResolvedValue({
       reply: "You mentioned your morning commute. What happened on the bus?",

@@ -165,6 +165,17 @@ export default function AiConversationScenarioPanel({
         setEntitlementGateVisible(true);
         return;
       }
+      // Contract C6: Mercy never emits a preset reply. When the turn could not be
+      // live-generated the client returns provider "local-fallback" (network / API
+      // error / invalid response / cost cap). We fail closed — no canned Mercy bubble
+      // is appended; we restore the learner's input and surface an explicit VN-first
+      // retry instead (re-press = retry), mirroring the server's fail-closed (502).
+      if (response.provider === "local-fallback") {
+        setSession(session);
+        setInput(learnerText);
+        setError("Mercy chưa lấy được câu trả lời. Bạn thử lại sau một chút nhé.");
+        return;
+      }
       const assistantTurn: AiConversationTurn = {
         id: `assistant-${Date.now()}`,
         role: "assistant",
