@@ -30,7 +30,11 @@ export const speakTopics = [
       "Model short, reusable small-talk phrases.",
       "Make polite exits feel normal.",
     ],
-    seedInputs: ["I want to make small talk with my neighbor."],
+    seedInputs: [
+      "I want to make small talk with my neighbor.",
+      "Nice weather today, isn't it?",
+      "Have you lived in the building long?",
+    ],
     detectionPatterns: [
       /\b(?:small talk|neighbor|neighbour|say hello|weekend plans|nice weather|chat with my neighbor|building neighbor)\b/i,
     ],
@@ -49,6 +53,16 @@ export const speakTopics = [
         id: "social-neighbor-not-too-personal",
         label: "Keep it light",
         note: "English neighbor small talk often stays light at first. Weather, building news, or weekend plans are safer than money, age, or private family questions.",
+      },
+      {
+        id: "social-neighbor-vocab",
+        label: "Vocabulary",
+        note: "small talk = nói chuyện xã giao; How about you? = còn bạn thì sao?; weekend plans = kế hoạch cuối tuần. A tag like 'isn't it?' invites a friendly reply.",
+      },
+      {
+        id: "social-neighbor-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạo này anh/chị khỏe không ạ?' ↔ EN: 'How have you been lately?' A warm, light opener is enough to start.",
       },
     ],
     followUps: [
@@ -82,7 +96,11 @@ export const speakTopics = [
       "Model casual but clear planning phrases.",
       "Treat a no or maybe as normal social communication.",
     ],
-    seedInputs: ["I want to invite my friend for coffee this weekend."],
+    seedInputs: [
+      "I want to invite my friend for coffee this weekend.",
+      "Are you free this Saturday for coffee?",
+      "Want to grab lunch sometime this week?",
+    ],
     detectionPatterns: [
       /\b(?:invite my friend|meet for coffee|hang out|come with me|weekend plan|are you free|let's meet|see a movie)\b/i,
     ],
@@ -101,6 +119,16 @@ export const speakTopics = [
         id: "social-invite-sounds-good",
         label: "Sounds good",
         note: "When someone accepts, 'Sounds good!' or 'That works for me' is a natural short response before confirming time and place.",
+      },
+      {
+        id: "social-invite-vocab",
+        label: "Vocabulary",
+        note: "Are you free? = bạn có rảnh không?; hang out = đi chơi, đi cà phê; sounds good = nghe hay đấy; no pressure = không sao nếu bận.",
+      },
+      {
+        id: "social-invite-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Cuối tuần này đi cà phê không?' ↔ EN: 'Want to get coffee this weekend?' English keeps casual invitations short.",
       },
     ],
     followUps: [
@@ -134,7 +162,11 @@ export const speakTopics = [
       "Avoid making the learner sound defensive.",
       "Model repair phrases that preserve the relationship.",
     ],
-    seedInputs: ["I am sorry I need to reschedule our plan."],
+    seedInputs: [
+      "I am sorry I need to reschedule our plan.",
+      "Sorry, something came up — can we meet another time?",
+      "I'm running late, I'll be there soon.",
+    ],
     detectionPatterns: [
       /\b(?:sorry i need to reschedule|apologize|apologise|running late|i will be late|cancel our plan|missed our plan|can we reschedule)\b/i,
     ],
@@ -153,6 +185,16 @@ export const speakTopics = [
         id: "social-reschedule-choice",
         label: "Offer two choices",
         note: "When rescheduling, offering two times sounds helpful: 'Would Friday afternoon or Saturday morning work for you?'",
+      },
+      {
+        id: "social-reschedule-vocab",
+        label: "Vocabulary",
+        note: "reschedule = hẹn lại, dời lịch; something came up = có việc đột xuất; no worries = không sao đâu.",
+      },
+      {
+        id: "social-reschedule-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Xin lỗi, mình phải dời hẹn, hẹn bạn hôm khác nhé?' ↔ EN: 'Sorry, I have to reschedule — can we meet another time?'",
       },
     ],
     followUps: [
