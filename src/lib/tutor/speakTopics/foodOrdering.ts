@@ -7,13 +7,19 @@ import type { SpeakTopicLibraryEntry } from "../speakTopicLibrary";
 // grammar correction. (category is "food-ordering" so this theme remains distinct under auto-registration.)
 // A9 batch-2 deepening: each topic carries 3 L1 interference notes and 6
 // conversation directions (followUps) within the existing schema.
+// A8 D5-B deepening: each topic now carries 4 L1 interference notes and 3 seed
+// inputs (dialogue/bilingual-context variants), keeping the 6 followUps.
 export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
   {
     id: "topic-food-ordering-cafe-coffee",
     labelEn: "Ordering Coffee At A Café",
     labelVi: "Gọi cà phê ở quán",
     category: "food-ordering",
-    seedInputs: ["Can I get a small iced coffee, please?"],
+    seedInputs: [
+      "Can I get a small iced coffee, please?",
+      "Could I get a hot latte, not too sweet?",
+      "One iced coffee with less ice, please.",
+    ],
     detectionPatterns: [
       /\b(?:coffee|latte|iced coffee|cappuccino|café|cafe|cup of tea|barista|less ice|no ice)\b/i,
     ],
@@ -33,6 +39,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "A name for the order",
         note: "In many cafés the barista asks 'What name for the order?' — 'Cho tên gì?' This isn't personal; it's just to call you when it's ready. A short 'It's Linh' is all they need.",
       },
+      {
+        id: "fo-cafe-for-here-to-go",
+        label: "'For here or to go?'",
+        note: "The counter often asks 'For here or to go?' — drink in or take away. There's no single Vietnamese phrase, so listen for this pair and answer 'For here' or 'To go.'",
+      },
     ],
     followUps: [
       { id: "fo-cafe-drink", question: "Which drink would you like?", salienceQuestion: "What do you like about the {slot}?" },
@@ -48,7 +59,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Ordering At A Fast-Food Counter",
     labelVi: "Gọi món ở quầy thức ăn nhanh",
     category: "food-ordering",
-    seedInputs: ["I'll have a cheeseburger and small fries."],
+    seedInputs: [
+      "I'll have a cheeseburger and small fries.",
+      "Can I get the number three meal?",
+      "Two cheeseburgers and a large Coke, please.",
+    ],
     detectionPatterns: [
       /\b(?:burger|cheeseburger|fries|combo|value meal|drive[- ]?thru|counter|nuggets|ketchup|set meal)\b/i,
     ],
@@ -68,6 +83,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Closing the order",
         note: "When they ask 'Anything else?', a simple 'That's it, thanks' or 'That's all' ends the order cleanly — no need for a longer sentence.",
       },
+      {
+        id: "fo-fast-meal-number",
+        label: "Ordering by number",
+        note: "Many counters list meals by number: 'I'll have the number two.' Vietnamese orders by dish name; using the number is faster and the staff expect it.",
+      },
     ],
     followUps: [
       { id: "fo-fast-main", question: "What is the main item you want?", salienceQuestion: "Why did you pick the {slot}?" },
@@ -83,7 +103,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Ordering At A Food Stall",
     labelVi: "Mua đồ ăn ở quầy hoặc xe đẩy",
     category: "food-ordering",
-    seedInputs: ["How much for one spring roll?"],
+    seedInputs: [
+      "How much for one spring roll?",
+      "Two of these, please.",
+      "Can I get one with extra chili?",
+    ],
     detectionPatterns: [
       /\b(?:food stall|food truck|street food|how much|skewer|one piece|a piece|snack|vendor|cart)\b/i,
     ],
@@ -103,6 +127,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Cash and small change",
         note: "Stalls and carts are often cash only. 'Do you take card?' is worth asking first, and having small bills ready makes the order quick.",
       },
+      {
+        id: "fo-stall-these-those",
+        label: "'These' and 'those' save you",
+        note: "When you can't say the name, point and use 'these' and 'those': 'two of these, one of those.' Vietnamese 'cái này / cái kia' maps right onto them.",
+      },
     ],
     followUps: [
       { id: "fo-stall-item", question: "What food do you want to try?", salienceQuestion: "What looks good about the {slot}?" },
@@ -118,7 +147,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Asking About The Menu",
     labelVi: "Hỏi về thực đơn",
     category: "food-ordering",
-    seedInputs: ["What is in this dish?"],
+    seedInputs: [
+      "What is in this dish?",
+      "What do you recommend?",
+      "Is this dish spicy?",
+    ],
     detectionPatterns: [
       /\b(?:menu|what is in|what's in|recommend|recommendation|special|ingredients|popular dish|is it spicy)\b/i,
     ],
@@ -138,6 +171,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "How big is it",
         note: "Portion size is hard to guess from a menu. 'Is it big enough to share?' or 'How big is it?' is a practical question, especially when ordering for a group.",
       },
+      {
+        id: "fo-menu-comes-with",
+        label: "'What comes with it?'",
+        note: "'Đi kèm gì' asks about the sides included. 'What comes with it?' tells you whether rice, fries, or a salad is part of the dish before you order.",
+      },
     ],
     followUps: [
       { id: "fo-menu-contents", question: "How would you ask what is in a dish?", salienceQuestion: "What would you ask about the {slot}?" },
@@ -153,7 +191,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Customizing Your Order",
     labelVi: "Yêu cầu thay đổi món",
     category: "food-ordering",
-    seedInputs: ["Can I get it with no onions?"],
+    seedInputs: [
+      "Can I get it with no onions?",
+      "Can I have extra cheese?",
+      "Not too spicy, please.",
+    ],
     detectionPatterns: [
       /\b(?:no onions|extra cheese|less sugar|no ice|on the side|without|add extra|hold the|not too spicy)\b/i,
     ],
@@ -173,6 +215,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Hold the…",
         note: "Servers often say 'hold the onions' to mean 'leave out the onions.' You don't have to use it, but recognizing it helps you confirm your change was heard.",
       },
+      {
+        id: "fo-custom-without",
+        label: "'Without' or 'with no'",
+        note: "'Cho tôi... không có...' becomes 'with no onions' or 'without onions.' Both are natural; pick whichever comes out first — the server understands either.",
+      },
     ],
     followUps: [
       { id: "fo-custom-remove", question: "What ingredient would you leave out?", salienceQuestion: "How would you ask to remove the {slot}?" },
@@ -188,7 +235,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Telling Them About Allergies Or Diet",
     labelVi: "Nói về dị ứng hoặc ăn kiêng",
     category: "food-ordering",
-    seedInputs: ["I am allergic to peanuts."],
+    seedInputs: [
+      "I am allergic to peanuts.",
+      "I'm vegetarian — no meat, please.",
+      "Does this contain peanuts?",
+    ],
     detectionPatterns: [
       /\b(?:allergic|allergy|peanut|peanuts|gluten|vegetarian|vegan|no pork|can't eat|cannot eat)\b/i,
     ],
@@ -208,6 +259,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Making it land as serious",
         note: "For a real allergy, it's okay to be firm: 'It's a serious allergy — please make sure there are no peanuts.' Staff would rather you be clear than polite-but-vague.",
       },
+      {
+        id: "fo-allergy-contain",
+        label: "'Does this contain...?'",
+        note: "'Món này có chứa... không' is 'Does this contain peanuts?' This check asks what's inside for safety — clearer than a vague 'is there anything in it?'",
+      },
     ],
     followUps: [
       { id: "fo-allergy-state", question: "How would you say your allergy or diet?", salienceQuestion: "How would you explain the {slot} clearly?" },
@@ -223,7 +279,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Ordering Takeout",
     labelVi: "Mua mang về",
     category: "food-ordering",
-    seedInputs: ["I'd like this to go, please."],
+    seedInputs: [
+      "I'd like this to go, please.",
+      "Could I get this to go?",
+      "Can I have a bag and some chopsticks?",
+    ],
     detectionPatterns: [
       /\b(?:to go|take ?out|take ?away|pack it up|box it|for here|a bag|utensils|leftovers)\b/i,
     ],
@@ -243,6 +303,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "How long is the wait",
         note: "'Mất bao lâu?' becomes 'How long is the wait?' Asking up front lets you decide whether to wait inside or come back.",
       },
+      {
+        id: "fo-takeout-pack-up",
+        label: "'Pack it up' / 'box it up'",
+        note: "'Gói lại' lines up with 'pack it up, please' or 'box it up.' Both mean put the food in a container to carry — handy when you have leftovers, too.",
+      },
     ],
     followUps: [
       { id: "fo-takeout-say", question: "How would you say you want it to go?", salienceQuestion: "How would you ask to take the {slot} to go?" },
@@ -258,7 +323,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Food Delivery Orders",
     labelVi: "Đặt đồ ăn giao tận nơi",
     category: "food-ordering",
-    seedInputs: ["I want to order delivery to my apartment."],
+    seedInputs: [
+      "I want to order delivery to my apartment.",
+      "Could you deliver to 12 Lê Lợi?",
+      "How much is the delivery fee?",
+    ],
     detectionPatterns: [
       /\b(?:delivery|deliver|driver|delivery fee|how long will it take|my address|drop it off|order online)\b/i,
     ],
@@ -278,6 +347,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Leave-at-door instructions",
         note: "Apps often ask for a delivery note. A short instruction like 'Please leave it at the door and text me' is normal and saves a phone call later.",
       },
+      {
+        id: "fo-delivery-fee-word",
+        label: "'Delivery fee'",
+        note: "'Phí giao hàng' is the 'delivery fee' — the extra charge to bring the food. Asking 'Is there a delivery fee?' up front avoids a surprise at the door.",
+      },
     ],
     followUps: [
       { id: "fo-delivery-items", question: "What do you want to order for delivery?", salienceQuestion: "What would you order — the {slot}?" },
@@ -293,7 +367,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Making A Restaurant Reservation",
     labelVi: "Đặt bàn nhà hàng",
     category: "food-ordering",
-    seedInputs: ["I'd like to book a table for two at seven."],
+    seedInputs: [
+      "I'd like to book a table for two at seven.",
+      "Do you have a table for four tonight?",
+      "I'd like to reserve a table for Saturday at six.",
+    ],
     detectionPatterns: [
       /\b(?:reservation|reserve|book a table|table for|party of|under the name|tonight at|do you have a table)\b/i,
     ],
@@ -313,6 +391,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Party of…",
         note: "Staff may ask 'For how many?' or say 'a party of four.' 'Party' here just means your group — 'A party of four, please' answers it naturally.",
       },
+      {
+        id: "fo-resv-do-you-have",
+        label: "'Do you have a table?' vs booking ahead",
+        note: "'Còn bàn không' is 'Do you have a table?' for right now; 'I'd like to book a table' plans ahead. Listen for which one fits your moment.",
+      },
     ],
     followUps: [
       { id: "fo-resv-people", question: "How many people is the table for?", salienceQuestion: "How big is the table for the {slot}?" },
@@ -328,7 +411,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Ordering For The Whole Table",
     labelVi: "Gọi món cho cả bàn",
     category: "food-ordering",
-    seedInputs: ["We will share two dishes for the table."],
+    seedInputs: [
+      "We will share two dishes for the table.",
+      "We'll have three dishes to share.",
+      "Could we get some extra plates?",
+    ],
     detectionPatterns: [
       /\b(?:for the table|we'll have|we will have|to share|family style|for everyone|one for each|split it)\b/i,
     ],
@@ -348,6 +435,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Plates to share",
         note: "When sharing, it's normal to ask 'Could we get some small plates?' so everyone can serve themselves — a natural request English handles smoothly.",
       },
+      {
+        id: "fo-table-one-each",
+        label: "'One for each of us'",
+        note: "When a dish isn't for sharing, 'one for each of us' makes it clear: 'Could we get one for each?' Vietnamese 'mỗi người một phần' maps onto this neatly.",
+      },
     ],
     followUps: [
       { id: "fo-table-shared", question: "What dishes will you share for the table?", salienceQuestion: "What would you share — the {slot}?" },
@@ -363,7 +455,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Asking For The Bill And Paying",
     labelVi: "Xin tính tiền và thanh toán",
     category: "food-ordering",
-    seedInputs: ["Can we have the bill, please?"],
+    seedInputs: [
+      "Can we have the bill, please?",
+      "Could we get the check, please?",
+      "Can we split the bill four ways?",
+    ],
     detectionPatterns: [
       /\b(?:the bill|the check|separate checks|split the bill|card or cash|receipt|tip|pay together)\b/i,
     ],
@@ -383,6 +479,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Paying together",
         note: "If you're treating, 'It's on me' or 'I'll get this one' is warm and clear. To pay as a group, 'We'll pay together' avoids confusion at the till.",
       },
+      {
+        id: "fo-bill-split-ways",
+        label: "'Split it four ways'",
+        note: "'Chia đều' becomes 'split it four ways' — divide the cost equally among four. Say the number plus 'ways' so the server can total each share.",
+      },
     ],
     followUps: [
       { id: "fo-bill-ask", question: "How would you ask for the bill?", salienceQuestion: "How would you ask for the {slot}?" },
@@ -398,7 +499,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "When The Order Is Wrong",
     labelVi: "Khi món ăn bị sai hoặc nguội",
     category: "food-ordering",
-    seedInputs: ["Sorry, I think this is not what I ordered."],
+    seedInputs: [
+      "Sorry, I think this is not what I ordered.",
+      "Sorry, I think this is the wrong dish.",
+      "I ordered the chicken, not the beef.",
+    ],
     detectionPatterns: [
       /\b(?:wrong order|not what i ordered|this is cold|is missing|didn't order|there's a mistake|send it back)\b/i,
     ],
@@ -418,6 +523,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Describe, don't blame",
         note: "English handles complaints best by describing the problem, not the person: 'This came out wrong' lands softer than 'You made a mistake,' and still gets it fixed.",
       },
+      {
+        id: "fo-wrong-i-ordered",
+        label: "'I ordered...' (past)",
+        note: "Say what you wanted with 'I ordered the chicken.' The past 'ordered' tells the server it already happened — Vietnamese keeps the verb bare, so the -ed is the part to add.",
+      },
     ],
     followUps: [
       { id: "fo-wrong-problem", question: "How would you describe what is wrong?", salienceQuestion: "What is wrong with the {slot}?" },
@@ -433,7 +543,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "At The Bakery",
     labelVi: "Ở tiệm bánh",
     category: "food-ordering",
-    seedInputs: ["Can I get two croissants and a loaf of bread?"],
+    seedInputs: [
+      "Can I get two croissants and a loaf of bread?",
+      "Could I get half a dozen rolls?",
+      "Is the bread fresh today?",
+    ],
     detectionPatterns: [
       /\b(?:bakery|a loaf|loaf of bread|croissant|baguette|a slice|a dozen|pastry|fresh bread|cake)\b/i,
     ],
@@ -453,6 +567,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Sliced or whole",
         note: "For bread, staff often ask 'Sliced or whole?' — 'Cắt lát hay để nguyên?' A short 'Sliced, please' is all you need.",
       },
+      {
+        id: "fo-bakery-half-dozen",
+        label: "'A dozen' and 'half a dozen'",
+        note: "'A dozen' is twelve and 'half a dozen' is six. Vietnamese counts by plain number, so these set words are worth knowing: 'half a dozen rolls, please.'",
+      },
     ],
     followUps: [
       { id: "fo-bakery-item", question: "What would you like from the bakery?", salienceQuestion: "What would you choose — the {slot}?" },
@@ -468,7 +587,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Ordering Drinks And Asking For Water",
     labelVi: "Gọi nước uống và xin nước lọc",
     category: "food-ordering",
-    seedInputs: ["Could I get a glass of water, please?"],
+    seedInputs: [
+      "Could I get a glass of water, please?",
+      "Could I get a refill, please?",
+      "Still water, no ice, please.",
+    ],
     detectionPatterns: [
       /\b(?:glass of water|tap water|still or sparkling|a refill|another drink|soda|juice|with ice|bottled water)\b/i,
     ],
@@ -487,6 +610,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         id: "fo-drinks-warm-water",
         label: "Warm water is okay to ask for",
         note: "Many Vietnamese diners prefer warm or room-temperature water. It's fine to ask: 'Could I get warm water, no ice?' Staff won't find it strange.",
+      },
+      {
+        id: "fo-drinks-still-sparkling",
+        label: "'Still or sparkling?'",
+        note: "'Still or sparkling?' means flat or fizzy water. There's no single Vietnamese word, so remember 'still' for plain water and 'sparkling' for the bubbly kind.",
       },
     ],
     followUps: [
