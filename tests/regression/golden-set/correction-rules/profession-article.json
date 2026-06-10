@@ -155,6 +155,14 @@
       "expectedCorrection": "She is nurse nguyen.",
       "expectedRuleFired": null,
       "notes": "Lock: lowercase surname/title surface stays unchanged instead of inserting an article before nurse."
+    },
+    {
+      "id": "profession-article-neg-lock-lowercase-name-lee",
+      "input": "She is doctor lee.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She is doctor lee.",
+      "expectedRuleFired": null,
+      "notes": "#4 lock: lowercase surname 'lee' after whitelisted 'doctor' must abstain; verified equivalent lowercase-name guard behavior."
     }
   ]
 }
