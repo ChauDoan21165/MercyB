@@ -173,9 +173,13 @@ export function RoleplaySession({
   const [showCorrections, setShowCorrections] = useState(true);
   const [pending, setPending] = useState(false);
   const [voiceOn, setVoiceOn] = useState(true);
+  // C1: when cloud TTS is unavailable we surface this + a retry instead of
+  // silently reading the reply in a robotic browser voice.
+  const [voiceError, setVoiceError] = useState<string | null>(null);
   const [listening, setListening] = useState(false);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const lastSpokenIdRef = useRef<string | null>(null);
+  const lastSpeakTextRef = useRef<string | null>(null);
   const recognitionRef = useRef<MinimalSpeechRecognition | null>(null);
   const audioElRef = useRef<HTMLAudioElement | null>(null);
   const audioUrlRef = useRef<string | null>(null);
@@ -213,27 +217,16 @@ export function RoleplaySession({
     }
   }, []);
 
-  const speakViaSynth = useCallback(
-    (text: string) => {
-      if (!ttsAvailable || !text) return;
-      try {
-        const synth = window.speechSynthesis;
-        synth.cancel();
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.lang = "en-US";
-        utter.rate = 1;
-        utter.pitch = 1;
-        synth.speak(utter);
-      } catch {
-        /* speech is best-effort; ignore */
-      }
-    },
-    [ttsAvailable]
-  );
+  // C1: shown when the cloud (Azure) voice can't play. We do NOT substitute a
+  // browser speechSynthesis voice — the learner sees a retry instead.
+  const VOICE_UNAVAILABLE_MSG =
+    "Giọng đọc Mercy tạm thời không khả dụng. Bấm 🔁 để thử lại.";
 
   const speak = useCallback(
     (text: string) => {
       if (!voiceOn || !text) return;
+      lastSpeakTextRef.current = text;
+      setVoiceError(null);
 
       // Stop anything currently playing (synth + audio element).
       stopAudio();
@@ -312,21 +305,22 @@ export function RoleplaySession({
               /* ignore */
             }
             if (audioUrlRef.current === url) audioUrlRef.current = null;
-            // Only fall back to synth if voice is still on (sentinel intact).
+            // C1: cloud audio failed — surface a retry, never a browser voice.
             const s = audioElRef.current as unknown as { __token?: symbol } | null;
-            if (!s || s.__token === myToken) speakViaSynth(text);
+            if (!s || s.__token === myToken) setVoiceError(VOICE_UNAVAILABLE_MSG);
           };
           await audio.play();
         } catch (err) {
-          // Network / 4xx / playback rejection → fall back to browser synth,
-          // but only if the user hasn't toggled voice off in the meantime.
-          console.warn("[tts] proxy path failed — falling back to synth", err);
+          // Network / 4xx / playback rejection. C1: report + offer retry; do
+          // NOT quietly switch to a robotic browser voice. Only show if the
+          // user hasn't toggled voice off in the meantime.
+          console.warn("[tts] cloud voice unavailable", err);
           const s = audioElRef.current as unknown as { __token?: symbol } | null;
-          if (!s || s.__token === myToken) speakViaSynth(text);
+          if (!s || s.__token === myToken) setVoiceError(VOICE_UNAVAILABLE_MSG);
         }
       })();
     },
-    [voiceOn, ttsAvailable, stopAudio, speakViaSynth]
+    [voiceOn, ttsAvailable, stopAudio, VOICE_UNAVAILABLE_MSG]
   );
 
   // Auto-speak the latest Mercy reply (once per turn).
@@ -339,10 +333,12 @@ export function RoleplaySession({
     speak(last.text);
   }, [turns, voiceOn, speak]);
 
-  // When voice toggles off, stop any in-flight speech (both paths).
+  // When voice toggles off, stop any in-flight cloud audio and clear the
+  // error notice.
   useEffect(() => {
     if (voiceOn) return;
     stopAudio();
+    setVoiceError(null);
     if (!ttsAvailable) return;
     try {
       window.speechSynthesis.cancel();
@@ -561,6 +557,24 @@ export function RoleplaySession({
                 <span>{voiceOn ? "🔊" : "🔈"} Voice</span>
               </label>
             )}
+          </div>
+        )}
+        {voiceError && (
+          <div
+            role="alert"
+            className="mt-2 flex flex-wrap items-center gap-2 rounded-lg border border-rose-200 bg-rose-50 px-3 py-1.5 text-xs text-rose-800"
+          >
+            <span>{voiceError}</span>
+            <button
+              type="button"
+              onClick={() => {
+                const t = lastSpeakTextRef.current;
+                if (t) speak(t);
+              }}
+              className="rounded-full border border-rose-600 bg-white px-2.5 py-0.5 font-semibold text-rose-700 hover:bg-rose-100"
+            >
+              🔁 Thử lại
+            </button>
           </div>
         )}
       </header>
