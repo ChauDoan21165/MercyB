@@ -15,23 +15,28 @@ The five production golden flows live in
 
 | # | Flow | Needs a JWT? |
 |---|------|--------------|
-| 1 | AUTH CONFIG — signin bundle has no `placeholder.invalid`, has real Supabase host | No |
+| 1 | AUTH CONFIG — served bundle carries the real Supabase project ref | No |
 | 2 | TTS — Vietnamese returns Azure audio, never silent fallback | No |
 | 3 | FOLLOW — Mercy's opener follows learner context | **Yes — premium JWT** |
 | 4 | GATE — free account blocked (403) before processing | **Yes — free JWT** |
 | 5 | SIGNIN — auth backend is a real, reachable Supabase | No |
 
 Flows 1, 2, 5 (the **no-token smoke**) already run green with zero setup.
-This runbook activates flows 3 and 4 by minting two Supabase access
-tokens and setting them as masked GitLab CI/CD variables:
+This runbook activates flows 3 and 4. There are **two paths**:
 
-- `GOLDEN_FLOW_PREMIUM_JWT` — a logged-in **premium** user's access token.
-- `GOLDEN_FLOW_FREE_JWT` — a logged-in **free (tier-0)** user's access token.
+**Path A — durable CI (recommended, implemented in `scripts/golden-flows.sh`):**
+Set email+password pairs as masked GitLab CI/CD variables. The harness mints a
+fresh token on every run — no manual refresh ever needed.
 
-> ⚠️ **Read the "Token expiry" section before you rely on this for the
-> recurring CI gate.** A Supabase access token expires (~1 hour by
-> default). The no-token smoke is the durable always-on gate; flows 3/4
-> need a fresh-token strategy, not a paste-once value.
+- `GOLDEN_FLOW_PREMIUM_EMAIL` + `GOLDEN_FLOW_PREMIUM_PASSWORD` — credentials for the premium test user.
+- `GOLDEN_FLOW_FREE_EMAIL` + `GOLDEN_FLOW_FREE_PASSWORD` — credentials for the free test user.
+- `GOLDEN_FLOW_SUPABASE_ANON_KEY` (or `VITE_SUPABASE_ANON_KEY`) — the project anon key used to exchange credentials for tokens.
+
+**Path B — one-shot paste (short-lived, not for recurring CI):**
+Mint tokens manually and set them directly:
+
+- `GOLDEN_FLOW_PREMIUM_JWT` — a logged-in **premium** user's access token (direct override; takes priority over Path A).
+- `GOLDEN_FLOW_FREE_JWT` — a logged-in **free (tier-0)** user's access token (same).
 
 ---
 
@@ -122,28 +127,41 @@ Run the same against the free token and confirm `is_premium` is falsy.
 ## Step 3 — Set the masked GitLab CI/CD variables
 
 GitLab → project `cd12536/mercyB` → **Settings → CI/CD → Variables → Add
-variable**, twice:
+variable**.
+
+### Path A — durable (recommended)
+
+Set these 5 variables. The harness mints fresh tokens on every CI run:
 
 | Key | Value | Flags |
 |-----|-------|-------|
-| `GOLDEN_FLOW_PREMIUM_JWT` | the premium `eyJ...` token | **Masked**, **Protect** off* |
-| `GOLDEN_FLOW_FREE_JWT` | the free `eyJ...` token | **Masked**, **Protect** off* |
+| `GOLDEN_FLOW_PREMIUM_EMAIL` | `golden-premium@mercyblade.test` | **Masked**, Protect on |
+| `GOLDEN_FLOW_PREMIUM_PASSWORD` | your premium test user password | **Masked**, Protect on |
+| `GOLDEN_FLOW_FREE_EMAIL` | `golden-free@mercyblade.test` | **Masked**, Protect on |
+| `GOLDEN_FLOW_FREE_PASSWORD` | your free test user password | **Masked**, Protect on |
+| `GOLDEN_FLOW_SUPABASE_ANON_KEY` | project anon public key | **Masked**, Protect on |
 
+> `VITE_SUPABASE_ANON_KEY` is already set in CI for the build — the harness
+> falls back to it automatically, so you can skip `GOLDEN_FLOW_SUPABASE_ANON_KEY`
+> if the build var is present on the same job.
+
+### Path B — one-shot paste (short-lived, not for recurring CI)
+
+| Key | Value | Flags |
+|-----|-------|-------|
+| `GOLDEN_FLOW_PREMIUM_JWT` | the premium `eyJ...` token | **Masked**, Protect off* |
+| `GOLDEN_FLOW_FREE_JWT` | the free `eyJ...` token | **Masked**, Protect off* |
+
+When both `_JWT` vars are set they take priority over Path A (no minting
+happens). Useful for a one-off manual verification run.
+
+---
+
+Common flags for all variables:
 - Type: **Variable** (not File). Environment scope: **All (default)**.
-- **Masked:** tick it so the value never prints in job logs. JWTs are
-  base64url + dots and satisfy GitLab's masking charset; if GitLab refuses
-  to mask (older instance / charset complaint), see Troubleshooting — the
-  suite never echoes the token, so an unmasked value still does not leak
-  into logs, but masked is preferred.
-- *Protect:* the `golden-flows-prod` job runs on **main** (a protected
-  branch) and on **manual web** runs. If you tick "Protect", the variable
-  is only exposed on protected refs — that is fine for the main-push gate.
-  Leave Protect **off** only if you also want the variable available to a
-  manual run from a non-protected branch. Recommended: **Protect on** is
-  safe for the post-deploy gate; turn it off only if you hit "variable not
-  set" on a manual branch run.
-
-No code change is needed — `golden-flows-prod` already reads these names.
+- **Masked:** tick it so values never print in job logs.
+- *Protect:* Recommended **on** for the post-deploy gate on `main`. Turn off
+  only if you hit "variable not set" on a manual non-protected-branch run.
 
 ---
 
@@ -162,9 +180,9 @@ npm run verify:golden-flows          # full five-flow suite vs https://mercyblad
 - No-token smoke only (no JWTs handy): `GOLDEN_FLOW_ALLOW_MISSING_SECRETS=1
   npm run verify:golden-flows` runs flows 1/2/5 and skips 3/4.
 
-> Flow 1 (AUTH CONFIG) will be **red until production is redeployed clean**
-> — the 2026-06-10 incident bundle still serves `placeholder.invalid`.
-> That red is the detector working, not a setup error.
+> Flow 1 (AUTH CONFIG) verifies the served JS bundle contains the real
+> Supabase project ref. If production was deployed with the correct
+> `VITE_SUPABASE_URL`, it is green with zero setup.
 
 ---
 
@@ -268,10 +286,10 @@ take priority over the credential path.
   Re-check Step 1 entitlement and the verification curl in Step 2.
 - **Flow 4 (GATE) returns 200 instead of 403.** The "free" user has
   entitlement/admin. Use a genuinely tier-0 user.
-- **Flow 1 (AUTH CONFIG) red.** Production still serves a bundle containing
-  `placeholder.invalid`. This is the incident, not a token problem — it
-  clears after a guarded redeploy from `/Users/admin/MercyB` main
-  (`npm run deploy:cf-pages:main`), per DEPLOYMENT.md.
+- **Flow 1 (AUTH CONFIG) red.** The served JS bundle does not contain the
+  real Supabase project ref `buemdfxyhxunzpgdoqin`. This means production
+  was built with a missing or wrong `VITE_SUPABASE_URL`. It clears after a
+  guarded redeploy with the correct env vars set, per DEPLOYMENT.md.
 - **`golden-flows-prod` didn't run on a branch.** By design — it only runs
   on main-push and manual web pipelines, never MR pipelines.
 
