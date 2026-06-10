@@ -244,6 +244,38 @@ type SpeakAiFollowUpRequest = {
   accessToken: string;
 };
 
+type AiCorrectionResult = {
+  corrected: string;
+  explanation: string;
+  grammarTip: string;
+  confident: boolean;
+};
+
+async function callAiSentenceCorrection(
+  learnerText: string,
+  accessToken: string,
+  explainLang: ExplainLanguage,
+  tgt: TutorTarget,
+): Promise<AiCorrectionResult | null> {
+  try {
+    const res = await fetch(resolveApiUrl("/api/mercy-ai"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` },
+      body: JSON.stringify({ mode: "sentence-correction", learnerText, explainLanguage: explainLang, target: tgt }),
+    });
+    if (!res.ok) return null;
+    const data = (await res.json()) as Partial<AiCorrectionResult>;
+    return {
+      corrected: data.corrected ?? "",
+      explanation: data.explanation ?? "",
+      grammarTip: data.grammarTip ?? "",
+      confident: data.confident !== false,
+    };
+  } catch {
+    return null;
+  }
+}
+
 function resolveSpeakFollowUpTtsTarget(text: string, fallbackTarget: TutorTarget): TutorTarget {
   return VIETNAMESE_SPEAK_TEXT_PATTERN.test(text) || MERCY_CLARIFICATION_PREFIX_PATTERN.test(text)
     ? "vi"
@@ -1939,6 +1971,42 @@ export default function AiTutorPage() {
     const next = MOCK_RESULTS_BY_TARGET[target];
     const localCorrection = buildLocalCorrection(trimmed, target);
     if (!localCorrection.ok) {
+      // Rule engine abstains — call the live AI rather than showing a canned error (C6).
+      if (session?.access_token) {
+        const aiResult = await callAiSentenceCorrection(trimmed, session.access_token, explainLanguage, target);
+        setLoading(false);
+        if (aiResult?.confident && aiResult.corrected) {
+          const aiCorrected = aiResult.corrected;
+          const { turn } = buildCorrectionTurn({
+            id: `corr-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
+            targetLanguage: target,
+            explainLanguage,
+            userText: trimmed,
+            correctedText: aiCorrected,
+            explanation: aiResult.explanation,
+          });
+          setResult({
+            ...turn,
+            grammarTip: aiResult.grammarTip,
+            practicePrompt: MOCK_RESULTS_BY_TARGET[target].practicePrompt[explainLanguage],
+          });
+          clearSpeakBoardState();
+          setLatestCorrectedSeed({ correctedSentence: aiCorrected, sourceText: trimmed, updatedAt: Date.now() });
+          void captureCorrection({
+            userText: trimmed,
+            correctedText: aiCorrected,
+            status: "corrected",
+            appliedRuleIds: ["ai-correction"],
+            targetLanguage: target,
+            explainLanguage,
+            interactionType: "correction",
+          });
+          return;
+        }
+        // AI also not confident — specific abstention, not a generic canned line.
+        setError(aiResult?.explanation || GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
+        return;
+      }
       setLoading(false);
       setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
       return;
