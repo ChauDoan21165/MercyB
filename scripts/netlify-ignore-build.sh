@@ -5,8 +5,11 @@ set -euo pipefail
 #   exit 0 = ignore this deploy and skip the build
 #   exit 1 = continue with the build
 #
-# This script skips only docs/report/root-Markdown-only changes. Any app,
-# data, config, script, dependency, or deploy-config change continues the build.
+# By default, Netlify builds are disabled for mercyblade.com so ordinary pushes
+# and merge requests cannot burn build credits. A human may opt back in by
+# setting MERCYB_ALLOW_NETLIFY_BUILD=1 for a controlled recovery/diagnostic run.
+# With the override set, docs/report/root-Markdown-only changes still skip;
+# app, data, config, script, dependency, or deploy-config changes continue.
 
 log() {
   printf '[netlify-ignore] %s\n' "$*" >&2
@@ -44,6 +47,13 @@ is_docs_only_file() {
       ;;
   esac
 }
+
+context="${NETLIFY_CONTEXT:-${CONTEXT:-unknown}}"
+
+if [[ "${MERCYB_ALLOW_NETLIFY_BUILD:-}" != "1" ]]; then
+  log "netlify builds disabled by policy for mercyblade.com (context=${context}); skipping build"
+  exit 0
+fi
 
 if ! changed_output="$(get_changed_files)"; then
   exit 1

@@ -27,11 +27,20 @@
   to = "/.netlify/functions/api-mercy-feedback"
   status = 200
 
+[context.production]
+  command = "npm run build"
+  publish = "dist"
+  ignore = "bash scripts/netlify-ignore-build.sh"
+
 [context.deploy-preview]
-  command = "echo skipped && exit 1"
+  command = "npm run build"
+  publish = "dist"
+  ignore = "bash scripts/netlify-ignore-build.sh"
 
 [context.branch-deploy]
-  command = "echo skipped && exit 1"
+  command = "npm run build"
+  publish = "dist"
+  ignore = "bash scripts/netlify-ignore-build.sh"
 
 [functions]
   directory = "netlify/functions"
