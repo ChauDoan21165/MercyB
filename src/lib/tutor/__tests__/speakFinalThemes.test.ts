@@ -29,7 +29,9 @@ describe("final speak topic themes", () => {
     const libraryIds = new Set(SPEAK_TOPIC_LIBRARY.map((topic) => topic.id));
 
     for (const { category, topics } of finalThemeGroups) {
-      expect(topics, category).toHaveLength(3);
+      // 3 original FinalTheme topics + 6 salvaged per theme (canonical-file port,
+      // stale MRs !596/!597/!598/!599).
+      expect(topics, category).toHaveLength(9);
 
       for (const topic of topics) {
         expect(libraryIds.has(topic.id), topic.id).toBe(true);

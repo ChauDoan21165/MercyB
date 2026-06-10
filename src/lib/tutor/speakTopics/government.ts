@@ -206,4 +206,310 @@ export const speakTopics = [
       { id: "government-address-spell", question: "How would you spell or repeat the address carefully?", salienceQuestion: "How would you spell the {slot}?" },
     ],
   },
+  {
+    id: "topic-government-book-appointment",
+    labelEn: "Booking A Government Appointment",
+    labelVi: "Đặt lịch hẹn với cơ quan nhà nước",
+    category: "government",
+    scenarioDescription:
+      "The learner calls or visits to book a government appointment for an ID, renewal, or benefits question, gives the purpose early, and confirms the date and office.",
+    aiRoleDefinition:
+      "Act as a government booking clerk who asks what the appointment is for, offers dates and an office location, and confirms the details.",
+    conversationDirections: [
+      "Ask what service the appointment is for.",
+      "Offer a day and time, and a nearby office location.",
+      "Practice the learner stating the purpose early.",
+      "Confirm the date, time, and place together.",
+      "Remind the learner what to bring before ending.",
+    ],
+    warmthPatterns: [
+      "Keep the booking calm and step-by-step.",
+      "Reassure the learner that stating the purpose first speeds things up.",
+      "Encourage 'book an appointment' over 'make a schedule.'",
+    ],
+    seedInputs: ["I would like to book an appointment for my ID application."],
+    detectionPatterns: [
+      /\b(?:government appointment|book an appointment|schedule an appointment|id application|passport office|service center|service centre)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "government-book-dat-lich",
+        label: "Book an appointment",
+        note: "Vietnamese 'đặt lịch' can sound like 'make a schedule.' In English offices, 'book an appointment' or 'schedule an appointment' is the everyday frame.",
+      },
+      {
+        id: "government-book-purpose-first",
+        label: "Purpose early",
+        note: "Staff can help faster when the service comes early: 'for my ID application,' 'for a renewal,' or 'for a benefits question.'",
+      },
+      {
+        id: "government-book-what-bring",
+        label: "Ask what to bring",
+        note: "Before the appointment, ask 'What should I bring?' so you arrive with the right documents and avoid a second trip.",
+      },
+    ],
+    followUps: [
+      { id: "government-book-service", question: "What service do you need the appointment for?", salienceQuestion: "How would you name the {slot} when booking?" },
+      { id: "government-book-date", question: "What day or time would work for you?", salienceQuestion: "What time would you ask for the {slot}?" },
+      { id: "government-book-location", question: "Which office location is best for you?", salienceQuestion: "Which office handles the {slot}?" },
+      { id: "government-book-confirm", question: "How would you confirm the appointment details?", salienceQuestion: "How would you confirm the {slot} before ending the call?" },
+      { id: "government-book-bring", question: "How would you ask what to bring?", salienceQuestion: "What should you bring to the {slot}?" },
+      { id: "government-book-reminder", question: "How would you ask for a reminder?", salienceQuestion: "How would you get a reminder for the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-government-missing-document",
+    labelEn: "When A Document Is Missing",
+    labelVi: "Khi thiếu giấy tờ",
+    category: "government",
+    scenarioDescription:
+      "At the counter the learner realizes a required document is missing, asks what proof they already have is enough, and what to bring next time and by when.",
+    aiRoleDefinition:
+      "Act as a counter officer who explains which document is missing, what can still be accepted today, and what to bring back and by when.",
+    conversationDirections: [
+      "Ask which document might be missing.",
+      "Check what proof the learner already has with them.",
+      "Explain what to bring next time.",
+      "Practice the learner asking about the deadline.",
+      "Confirm the next step before they leave.",
+    ],
+    warmthPatterns: [
+      "Keep it reassuring; a missing paper is fixable.",
+      "Reassure the learner that asking the next step is normal.",
+      "Encourage 'documents' over 'papers' for clarity.",
+    ],
+    seedInputs: ["I think I am missing one document. What should I bring?"],
+    detectionPatterns: [
+      /\b(?:missing document|forgot a document|what should i bring|required document|proof of address|birth certificate|photo id)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "government-document-paper",
+        label: "Document, not paper",
+        note: "Vietnamese 'giấy tờ' may become 'papers.' In government English, 'documents' sounds clearer and more official.",
+      },
+      {
+        id: "government-document-what-bring",
+        label: "Ask the next step",
+        note: "If something is missing, a calm question works: 'What should I bring next time?' It keeps the conversation moving.",
+      },
+      {
+        id: "government-document-copy-ok",
+        label: "Copy or original",
+        note: "Offices may want an original or accept a copy. Asking 'Do you need the original or a copy?' saves a wasted trip.",
+      },
+    ],
+    followUps: [
+      { id: "government-missing-which", question: "Which document might be missing?", salienceQuestion: "How would you ask about the missing {slot}?" },
+      { id: "government-missing-proof", question: "What proof do you already have with you?", salienceQuestion: "What proof can support the {slot}?" },
+      { id: "government-missing-next", question: "How would you ask what to bring next time?", salienceQuestion: "What should you bring for the {slot}?" },
+      { id: "government-missing-deadline", question: "How would you ask about the deadline?", salienceQuestion: "What is the deadline for the {slot}?" },
+      { id: "government-missing-copy", question: "How would you ask if a copy is okay?", salienceQuestion: "Does the {slot} need an original?" },
+      { id: "government-missing-hold", question: "How would you ask them to hold your file?", salienceQuestion: "How would you keep the {slot} open?" },
+    ],
+  },
+  {
+    id: "topic-government-ask-for-interpreter",
+    labelEn: "Asking For An Interpreter",
+    labelVi: "Xin thông dịch viên",
+    category: "government",
+    scenarioDescription:
+      "The learner asks a public office for a Vietnamese interpreter for an appointment, says when it is needed, and checks whether phone interpretation is acceptable.",
+    aiRoleDefinition:
+      "Act as a service officer who treats the interpreter request as routine, asks the language and timing, and offers phone or in-person options.",
+    conversationDirections: [
+      "Ask which language the learner needs.",
+      "Ask when the interpreter is needed.",
+      "Offer phone interpretation as an option.",
+      "Reassure the learner that asking is normal.",
+      "Confirm the interpreter is arranged.",
+    ],
+    warmthPatterns: [
+      "Treat the request as completely normal, never a problem.",
+      "Reassure the learner that language help protects important details.",
+      "Encourage 'Could I have an interpreter?' over apologizing for English.",
+    ],
+    seedInputs: ["Could I have a Vietnamese interpreter for this appointment?"],
+    detectionPatterns: [
+      /\b(?:interpreter|translation help|vietnamese interpreter|language help|speak vietnamese|need help in vietnamese)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "government-interpreter-language-help-normal",
+        label: "Language help is normal",
+        note: "Some learners hesitate because asking for an interpreter feels embarrassing. In public services, asking is normal and protects important details.",
+      },
+      {
+        id: "government-interpreter-have-not-need",
+        label: "Could I have",
+        note: "'Could I have a Vietnamese interpreter?' sounds calm and respectful. It is stronger than apologizing for English first.",
+      },
+      {
+        id: "government-interpreter-free",
+        label: "Often free",
+        note: "Interpretation in public services is often free. Asking 'Is the interpreter free?' is reasonable and the answer is usually yes.",
+      },
+    ],
+    followUps: [
+      { id: "government-interpreter-language", question: "Which language would you ask for?", salienceQuestion: "How would you request help in {slot}?" },
+      { id: "government-interpreter-timing", question: "When do you need the interpreter?", salienceQuestion: "When would you need the {slot}?" },
+      { id: "government-interpreter-phone", question: "How would you ask if phone interpretation is okay?", salienceQuestion: "Could the {slot} happen by phone?" },
+      { id: "government-interpreter-confirm", question: "How would you confirm the interpreter is booked?", salienceQuestion: "How would you confirm the {slot} is arranged?" },
+      { id: "government-interpreter-free-q", question: "How would you ask if it costs anything?", salienceQuestion: "Is there a cost for the {slot}?" },
+      { id: "government-interpreter-family", question: "How would you say if a family member can help instead?", salienceQuestion: "Who else could help with the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-government-fill-out-form",
+    labelEn: "Filling Out A Form",
+    labelVi: "Điền đơn",
+    category: "government",
+    scenarioDescription:
+      "The learner needs help understanding part of an application form, asks about a confusing section and the name fields, and where to sign before submitting.",
+    aiRoleDefinition:
+      "Act as a helpful officer who explains a form section in plain words, clarifies first/last name boxes, and points out where to sign.",
+    conversationDirections: [
+      "Ask which part of the form is unclear.",
+      "Explain the confusing section in plain words.",
+      "Clarify first-name and last-name boxes.",
+      "Show where the signature goes.",
+      "Offer to check the form before it is submitted.",
+    ],
+    warmthPatterns: [
+      "Encourage pausing to ask before signing.",
+      "Reassure the learner that clear forms beat fast forms.",
+      "Encourage 'fill out the form' over 'fill form.'",
+    ],
+    seedInputs: ["Could you help me understand this part of the form?"],
+    detectionPatterns: [
+      /\b(?:fill out a form|fill in this form|application form|this part of the form|signature here|section of the form)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "government-form-fill-out",
+        label: "Fill out the form",
+        note: "Vietnamese learners often say 'fill form.' The everyday English phrase is 'fill out the form' or 'fill in this section.'",
+      },
+      {
+        id: "government-form-ask-before-sign",
+        label: "Ask before signing",
+        note: "It is okay to pause and ask about a line before signing. Clear forms matter more than rushing.",
+      },
+      {
+        id: "government-form-not-apply",
+        label: "When a box does not apply",
+        note: "If a box does not apply to you, ask 'Should I leave this blank?' Many forms accept 'N/A' for fields that do not fit.",
+      },
+    ],
+    followUps: [
+      { id: "government-form-section", question: "Which part of the form is unclear?", salienceQuestion: "How would you ask about this {slot}?" },
+      { id: "government-form-name", question: "How would you ask about first name and last name?", salienceQuestion: "How would you fill the {slot} line?" },
+      { id: "government-form-sign", question: "How would you ask where to sign?", salienceQuestion: "Where should you sign for the {slot}?" },
+      { id: "government-form-review", question: "How would you ask someone to check the form?", salienceQuestion: "Who could check the {slot} before you submit it?" },
+      { id: "government-form-blank", question: "How would you ask what to do with a box that does not apply?", salienceQuestion: "How would you handle a blank {slot}?" },
+      { id: "government-form-copy", question: "How would you ask for a copy of the submitted form?", salienceQuestion: "How would you keep a record of the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-government-pay-fee",
+    labelEn: "Paying A Government Fee",
+    labelVi: "Đóng lệ phí",
+    category: "government",
+    scenarioDescription:
+      "The learner asks how much a government fee is and how to pay it, checks accepted payment methods and any waiver, and asks for a receipt.",
+    aiRoleDefinition:
+      "Act as a cashier officer who states the fee, lists payment methods, mentions any waiver, and provides a receipt.",
+    conversationDirections: [
+      "State the fee amount when asked.",
+      "List the accepted payment methods.",
+      "Mention whether a waiver or help exists.",
+      "Practice the learner asking for a receipt.",
+      "Confirm the payment is complete.",
+    ],
+    warmthPatterns: [
+      "Keep money talk short and matter-of-fact.",
+      "Reassure the learner that asking for a receipt is expected.",
+      "Encourage the simple 'How much is the fee?' frame.",
+    ],
+    seedInputs: ["How much is the fee, and how can I pay it?"],
+    detectionPatterns: [
+      /\b(?:fee|application fee|renewal fee|pay the fee|service fee|payment method|receipt for the fee)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "government-fee-how-much",
+        label: "Fee question",
+        note: "A short question is enough: 'How much is the fee?' Vietnamese word order may make 'Fee how much?' feel natural in practice.",
+      },
+      {
+        id: "government-fee-receipt",
+        label: "Keep the receipt",
+        note: "Government payments often need a receipt. Asking 'Could I get a receipt?' is normal and not demanding.",
+      },
+      {
+        id: "government-fee-card-cash",
+        label: "Card or cash",
+        note: "Offices may take only certain payments. Asking 'Do you take card or only cash?' avoids being sent to a machine outside.",
+      },
+    ],
+    followUps: [
+      { id: "government-fee-amount", question: "How would you ask the amount of the fee?", salienceQuestion: "How much is the {slot}?" },
+      { id: "government-fee-method", question: "How would you ask what payment methods they accept?", salienceQuestion: "How can you pay the {slot}?" },
+      { id: "government-fee-waiver", question: "How would you ask if there is a waiver?", salienceQuestion: "Is there help with the {slot}?" },
+      { id: "government-fee-receipt-q", question: "How would you ask for a receipt?", salienceQuestion: "How would you get proof of the {slot}?" },
+      { id: "government-fee-cardcash", question: "How would you ask if they take card or cash?", salienceQuestion: "How would you pay the {slot}?" },
+      { id: "government-fee-when", question: "How would you ask when the fee is due?", salienceQuestion: "When must you pay the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-government-case-status",
+    labelEn: "Checking Case Status",
+    labelVi: "Hỏi tình trạng hồ sơ",
+    category: "government",
+    scenarioDescription:
+      "The learner calls to check the status of an application, reads a reference number clearly, asks why it may be delayed, and what happens next.",
+    aiRoleDefinition:
+      "Act as a case officer who asks for the reference number, gives the current status, explains any delay, and states the next step.",
+    conversationDirections: [
+      "Ask the learner to read the reference number slowly.",
+      "Give the current status of the application.",
+      "Explain a possible reason for any delay.",
+      "Practice the learner asking what happens next.",
+      "Confirm any action the learner must take.",
+    ],
+    warmthPatterns: [
+      "Keep it patient; reading numbers slowly is fine.",
+      "Reassure the learner that accuracy beats speed on the phone.",
+      "Encourage 'my application' or 'my case' over 'my profile.'",
+    ],
+    seedInputs: ["I am calling to check the status of my application."],
+    detectionPatterns: [
+      /\b(?:case status|application status|check the status|reference number|file number|case number|still processing)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "government-status-ho-so",
+        label: "Application or case",
+        note: "Vietnamese 'hồ sơ' can become 'my profile.' For offices, 'my application,' 'my file,' or 'my case' is usually clearer.",
+      },
+      {
+        id: "government-status-number-ready",
+        label: "Number ready",
+        note: "Having the reference number ready makes the call easier. Saying it slowly is fine; accuracy matters more than speed.",
+      },
+      {
+        id: "government-status-timeline",
+        label: "Ask the timeline",
+        note: "It is fine to ask 'How long does this usually take?' so you know whether to keep waiting or follow up later.",
+      },
+    ],
+    followUps: [
+      { id: "government-status-number", question: "What reference number would you give?", salienceQuestion: "How would you read the {slot} clearly?" },
+      { id: "government-status-question", question: "How would you ask for the current status?", salienceQuestion: "What is the status of the {slot}?" },
+      { id: "government-status-delay", question: "How would you ask why it is delayed?", salienceQuestion: "Why might the {slot} be delayed?" },
+      { id: "government-status-next", question: "How would you ask what happens next?", salienceQuestion: "What is the next step for the {slot}?" },
+      { id: "government-status-timeline-q", question: "How would you ask how long it usually takes?", salienceQuestion: "How long does the {slot} take?" },
+      { id: "government-status-contact", question: "How would you ask who to contact for updates?", salienceQuestion: "Who handles updates on the {slot}?" },
+    ],
+  },
 ] as const satisfies readonly FinalThemeSpeakTopic[];

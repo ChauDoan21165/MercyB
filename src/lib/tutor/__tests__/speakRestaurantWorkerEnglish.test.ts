@@ -6,7 +6,8 @@ describe("restaurant worker English speak topics", () => {
   it("ships D4 professional metadata and warm conversation direction", () => {
     const libraryIds = new Set(SPEAK_TOPIC_LIBRARY.map((topic) => topic.id));
 
-    expect(speakTopics).toHaveLength(3);
+    // 3 original D4 topics + 2 salvaged from stale MR !606 (canonical-file port).
+    expect(speakTopics).toHaveLength(5);
     for (const topic of speakTopics) {
       expect(libraryIds.has(topic.id), topic.id).toBe(true);
       expect(topic.scenarioDescription.trim().length).toBeGreaterThan(40);

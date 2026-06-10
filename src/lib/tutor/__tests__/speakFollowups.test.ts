@@ -647,7 +647,8 @@ describe("speakFollowups", () => {
     it("ships the D3 phone and customer-service theme with scenario metadata", () => {
       const libraryIds = new Set(SPEAK_TOPIC_LIBRARY.map((topic) => topic.id));
 
-      expect(phoneCustomerServiceSpeakTopics).toHaveLength(3);
+      // 3 original D3 topics + 6 salvaged from stale MR !556 (canonical-file port).
+      expect(phoneCustomerServiceSpeakTopics).toHaveLength(9);
       for (const topic of phoneCustomerServiceSpeakTopics) {
         expect(libraryIds.has(topic.id), topic.id).toBe(true);
         expect(topic.scenarioDescription?.trim().length).toBeGreaterThan(40);
