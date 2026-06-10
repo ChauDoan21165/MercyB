@@ -97,4 +97,28 @@ describe("sendAiConversationTurn pure conversation adapter", () => {
       text: "What do you do at work?",
     });
   });
+
+  it("keeps learner-led turns grounded in the learner seed instead of a preset scenario", async () => {
+    await sendAiConversationTurn({
+      scenarioId: "learner-led",
+      learnerText: "This morning my bus was late and I felt nervous.",
+      history: [],
+      turnCount: 0,
+      accessToken: "token",
+      hasPremium: true,
+    });
+
+    const request = vi.mocked(sendConversationAiTurn).mock.calls[0][0];
+    expect(request.scenarioId).toBe("learner-led");
+    expect(request.scenario).toMatchObject({
+      id: "learner-led",
+      title: "Mercy follows your words",
+    });
+    expect(request.messages.map((message) => message.text).join("\n")).toContain(
+      "This morning my bus was late and I felt nervous.",
+    );
+    expect(request.messages.map((message) => message.text).join("\n")).not.toContain(
+      "Job interview practice",
+    );
+  });
 });

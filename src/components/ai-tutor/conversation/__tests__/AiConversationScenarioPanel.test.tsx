@@ -91,6 +91,83 @@ describe("AiConversationScenarioPanel", () => {
     expect(sendTurn).toHaveBeenCalledTimes(1);
   });
 
+  it("starts learner-led with no preset Mercy opening and sends the learner's words as the seed", async () => {
+    const sendTurn = vi.fn().mockResolvedValue({
+      reply: "You mentioned your morning commute. What happened on the bus?",
+      correction: null,
+      summary: null,
+      cost: { totalTokens: 80, estimatedUsd: 0.0001 },
+      provider: "openai",
+      pronunciationAbstention: null,
+    });
+
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token"
+        hasPremium
+        loadingAccess={false}
+        sendTurn={sendTurn}
+      />,
+    );
+
+    expect(screen.getByTestId("ai-conversation-scenario-panel")).toHaveTextContent(
+      "Mercy follows your words",
+    );
+    expect(screen.queryByText("Mercy")).not.toBeInTheDocument();
+
+    await send("This morning my bus was late and I felt nervous.");
+
+    expect(sendTurn).toHaveBeenCalledWith(expect.objectContaining({
+      scenarioId: "learner-led",
+      learnerText: "This morning my bus was late and I felt nervous.",
+      history: [],
+      turnCount: 0,
+    }));
+  });
+
+  it("only preloads a preset opening after the learner explicitly chooses a scenario", async () => {
+    const sendTurn = vi.fn().mockResolvedValue({
+      reply: "Good start. What role are you applying for?",
+      correction: null,
+      summary: null,
+      cost: { totalTokens: 80, estimatedUsd: 0.0001 },
+      provider: "openai",
+      pronunciationAbstention: null,
+    });
+
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token"
+        hasPremium
+        loadingAccess={false}
+        sendTurn={sendTurn}
+      />,
+    );
+
+    fireEvent.change(screen.getByRole("combobox", { name: "Choose conversation scenario" }), {
+      target: { value: "topic-work" },
+    });
+
+    expect(screen.getByTestId("ai-conversation-scenario-panel")).toHaveTextContent(
+      "Work",
+    );
+    expect(screen.getByText("Mercy")).toBeInTheDocument();
+
+    await send("I want a customer service job.");
+
+    expect(sendTurn).toHaveBeenCalledWith(expect.objectContaining({
+      scenarioId: "topic-work",
+      learnerText: "I want a customer service job.",
+      history: expect.arrayContaining([
+        expect.objectContaining({
+          role: "assistant",
+          text: expect.any(String),
+        }),
+      ]),
+      turnCount: 0,
+    }));
+  });
+
   it("runs a coherent 4-turn job interview proof and renders correction plus summary", async () => {
     const sendTurn = vi.fn()
       .mockResolvedValueOnce({
@@ -160,7 +237,7 @@ describe("AiConversationScenarioPanel", () => {
 
 async function send(text: string) {
   await act(async () => {
-    fireEvent.change(screen.getByPlaceholderText("Answer Mercy's question in English..."), {
+    fireEvent.change(screen.getByRole("textbox"), {
       target: { value: text },
     });
     fireEvent.click(screen.getByRole("button", { name: /send answer/i }));

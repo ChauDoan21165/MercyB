@@ -23,6 +23,8 @@ export type AiConversationScenario = {
   topic: SpeakTopicLibraryEntry;
 };
 
+export const LEARNER_LED_AI_CONVERSATION_SCENARIO_ID = "learner-led";
+
 type ConversationTopic = SpeakTopicLibraryEntry & {
   scenarioDescription?: string;
   aiRoleDefinition?: string;
@@ -67,10 +69,53 @@ const scenarioEntries = SPEAK_TOPIC_LIBRARY.map((topic) => {
 });
 
 export const AI_CONVERSATION_SCENARIOS: Record<AiConversationScenarioId, AiConversationScenario> =
-  Object.fromEntries(scenarioEntries);
+  Object.fromEntries([
+    [
+      LEARNER_LED_AI_CONVERSATION_SCENARIO_ID,
+      {
+        id: LEARNER_LED_AI_CONVERSATION_SCENARIO_ID,
+        title: "Mercy follows your words",
+        themeContext:
+          "No preset scenario is selected. The learner's first message defines the conversation topic, situation, and next useful follow-up.",
+        learnerRole:
+          "The learner starts with their own English sentence. Mercy follows the learner's words instead of forcing a scripted roleplay.",
+        aiRole:
+          "Mercy is a warm conversation partner and coach. Mercy responds to what the learner actually said, asks one grounded follow-up, and only corrects clear high-confidence language issues.",
+        topicBoundaries: [
+          "Do not introduce a preset scenario unless the learner explicitly chooses one.",
+          "Use the learner's latest words as the conversation seed and next-turn direction.",
+          "Ask one concrete follow-up about a detail the learner already mentioned.",
+          "If the learner is vague, ask one clarifying question instead of switching to a script.",
+        ],
+        warmthPatterns: [
+          "Start from the learner's meaning, then make the next English sentence easier to say.",
+          "Keep correction low-shame and optional: respond first, correct only when confident.",
+        ],
+        l1InterferenceNotes: [],
+        openingPrompt: "",
+        topic: {
+          id: LEARNER_LED_AI_CONVERSATION_SCENARIO_ID,
+          labelEn: "Mercy follows your words",
+          labelVi: "Mercy theo lời của bạn",
+          category: "learner-led",
+          seedInputs: [],
+          detectionPatterns: [],
+          followUps: [
+            {
+              id: "learner-led-next-detail",
+              question: "What happened next?",
+              salienceQuestion: "What detail in the learner's own words should Mercy follow next?",
+            },
+          ],
+          l1InterferenceNotes: [],
+        },
+      } satisfies AiConversationScenario,
+    ],
+    ...scenarioEntries,
+  ]);
 
 export const DEFAULT_AI_CONVERSATION_SCENARIO_ID: AiConversationScenarioId =
-  AI_CONVERSATION_SCENARIOS["topic-work-job"] ? "topic-work-job" : scenarioEntries[0]?.[0] ?? "topic-ordering-food";
+  LEARNER_LED_AI_CONVERSATION_SCENARIO_ID;
 
 export function getAiConversationScenario(id: string): AiConversationScenario {
   return AI_CONVERSATION_SCENARIOS[id] ?? AI_CONVERSATION_SCENARIOS[DEFAULT_AI_CONVERSATION_SCENARIO_ID];

@@ -16,6 +16,7 @@ import {
   sendConversationAiTurn,
   type ConversationAiMessage,
   type ConversationAiResult,
+  type ConversationAiScenarioGrounding,
 } from "@/lib/tutor/conversationAiClient";
 import {
   decideConversationTurnPolicy,
@@ -111,6 +112,7 @@ export async function sendAiConversationTurn(
   const result = await sendConversationAiTurn({
     accessToken: request.accessToken,
     scenarioId: scenario.id,
+    scenario: toConversationAiScenarioGrounding(scenario),
     learnerText: request.learnerText,
     messages: buildMessages(request.history, promptTemplate.systemPrompt, policy.promptInstruction),
     promptMetadata: {
@@ -134,6 +136,20 @@ export async function sendAiConversationTurn(
   });
 
   return normalizeAiConversationResult(result, warmth, pronunciationAbstention);
+}
+
+function toConversationAiScenarioGrounding(
+  scenario: ReturnType<typeof getAiConversationScenario>,
+): ConversationAiScenarioGrounding {
+  return {
+    id: scenario.id,
+    title: scenario.title,
+    themeContext: scenario.themeContext,
+    learnerRole: scenario.learnerRole,
+    aiRole: scenario.aiRole,
+    topicBoundaries: scenario.topicBoundaries,
+    l1InterferenceNotes: scenario.l1InterferenceNotes,
+  };
 }
 
 function buildMessages(

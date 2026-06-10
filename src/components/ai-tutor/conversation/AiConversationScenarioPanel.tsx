@@ -11,6 +11,7 @@ import {
 import {
   AI_CONVERSATION_SCENARIOS,
   DEFAULT_AI_CONVERSATION_SCENARIO_ID,
+  LEARNER_LED_AI_CONVERSATION_SCENARIO_ID,
   type AiConversationScenarioId,
 } from "@/lib/ai-conversation/scenarios";
 import {
@@ -184,7 +185,9 @@ export default function AiConversationScenarioPanel({
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <div className="text-xs font-black uppercase text-indigo-600">
-              AI conversation scenario
+              {scenarioId === LEARNER_LED_AI_CONVERSATION_SCENARIO_ID
+                ? "AI conversation"
+                : "AI conversation scenario"}
             </div>
             <h2 className="mt-1 text-xl font-black text-slate-900">{scenario.title}</h2>
             <p className="mt-1 text-sm font-semibold leading-6 text-slate-500">
@@ -290,7 +293,11 @@ export default function AiConversationScenarioPanel({
           }}
           rows={3}
           className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 p-3 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 focus:border-indigo-300 focus:bg-white focus:outline-none"
-          placeholder="Answer Mercy's question in English..."
+          placeholder={
+            scenarioId === LEARNER_LED_AI_CONVERSATION_SCENARIO_ID
+              ? "Start with your own English sentence..."
+              : "Answer Mercy's question in English..."
+          }
           onKeyDown={(event) => {
             if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) void handleSend();
           }}
@@ -364,6 +371,9 @@ function PremiumConversationGate({
 
 function createSeededSession(scenarioId: AiConversationScenarioId): AiConversationSession {
   const scenario = AI_CONVERSATION_SCENARIOS[scenarioId];
+  if (scenarioId === LEARNER_LED_AI_CONVERSATION_SCENARIO_ID) {
+    return createAiConversationSession(scenarioId);
+  }
   return {
     ...createAiConversationSession(scenarioId),
     turns: [
