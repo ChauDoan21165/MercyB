@@ -52,6 +52,86 @@ function parseAudioDataUrl(value: unknown): { bytes: Buffer; mime: string } | nu
   return { mime: match[1], bytes: Buffer.from(match[2], "base64") };
 }
 
+// One classified call to mercy-tts. The Azure leg flaps (cold isolate /
+// transient ElevenLabs fallback / brief 5xx), so a single shot surfaces those
+// as a hard failure. "retryable" = worth one more attempt at warm Azure;
+// "fatal" = a 4xx (auth/validation) a retry can't fix.
+type TtsAttempt =
+  | { kind: "audio"; bytes: Buffer; mime: string; provider: string; fallbackReason?: string }
+  | { kind: "retryable"; error: string; code?: string; provider?: string; fallbackReason?: string }
+  | { kind: "fatal"; status: number; error: string; code?: string };
+
+async function callMercyTtsOnce(args: {
+  supabaseUrl: string;
+  supabaseAnonKey: string;
+  authHeader: string;
+  text: string;
+  upstreamLanguage: string;
+  voiceId: string;
+  isVietnamese: boolean;
+}): Promise<TtsAttempt> {
+  const { supabaseUrl, supabaseAnonKey, authHeader, text, upstreamLanguage, voiceId, isVietnamese } = args;
+  let upstream: Response;
+  try {
+    upstream = await fetch(`${supabaseUrl.replace(/\/$/, "")}/functions/v1/mercy-tts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        apikey: supabaseAnonKey,
+        Authorization: authHeader,
+      },
+      body: JSON.stringify({
+        text,
+        language: upstreamLanguage,
+        // Vietnamese must stay on Azure vi-VN. Never forward a legacy English
+        // voice into the Vietnamese path.
+        voice_id: voiceId,
+      }),
+    });
+  } catch (err) {
+    console.warn("[tts] mercy-tts request threw", err);
+    return { kind: "retryable", error: "mercy-tts request failed" };
+  }
+
+  const payload = (await upstream.json().catch(() => null)) as {
+    audioUrl?: unknown;
+    provider?: string;
+    fallback_reason?: string;
+    error?: string;
+    code?: string;
+  } | null;
+
+  if (!upstream.ok || !payload) {
+    const transient = !upstream.ok ? upstream.status >= 500 || upstream.status === 429 : true;
+    const error = payload?.error || `mercy-tts ${upstream.status}`;
+    return transient
+      ? { kind: "retryable", error, code: payload?.code }
+      : { kind: "fatal", status: upstream.status, error, code: payload?.code };
+  }
+
+  if (isVietnamese && payload.provider !== "azure") {
+    return {
+      kind: "retryable",
+      error: "Vietnamese TTS requires Azure vi-VN",
+      provider: payload.provider,
+      fallbackReason: payload.fallback_reason,
+    };
+  }
+
+  const decoded = parseAudioDataUrl(payload.audioUrl);
+  if (!decoded || decoded.bytes.length === 0) {
+    return {
+      kind: "retryable",
+      error: payload.error || "mercy-tts returned no playable audio",
+      provider: payload.provider,
+      fallbackReason: payload.fallback_reason,
+    };
+  }
+
+  return { kind: "audio", bytes: decoded.bytes, mime: decoded.mime, provider: payload.provider || "unknown", fallbackReason: payload.fallback_reason };
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -79,69 +159,47 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!text) return res.status(400).json({ ok: false, error: "Missing text" });
 
   const incomingAuth = asString(req.headers.authorization, 4000);
-  const authHeader = incomingAuth || `Bearer ${supabaseAnonKey}`;
+  const callArgs = {
+    supabaseUrl,
+    supabaseAnonKey,
+    authHeader: incomingAuth || `Bearer ${supabaseAnonKey}`,
+    text,
+    upstreamLanguage,
+    voiceId: isVietnamese ? AZURE_VI_VN_VOICE_ID : requestedVoiceId,
+    isVietnamese,
+  };
 
-  let upstream: Response;
   try {
-    upstream = await fetch(`${supabaseUrl.replace(/\/$/, "")}/functions/v1/mercy-tts`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        apikey: supabaseAnonKey,
-        Authorization: authHeader,
-      },
-      body: JSON.stringify({
-        text,
-        language: upstreamLanguage,
-        // Vietnamese must stay on Azure vi-VN. Never forward a legacy English
-        // voice into the Vietnamese path.
-        voice_id: isVietnamese ? AZURE_VI_VN_VOICE_ID : requestedVoiceId,
-      }),
+    // Retry once on the transient Azure/edge flap before giving up, so the prod
+    // cold-start flap recovers to a 200 instead of surfacing a hard failure.
+    let attempt = await callMercyTtsOnce(callArgs);
+    if (attempt.kind === "retryable") {
+      attempt = await callMercyTtsOnce(callArgs);
+    }
+
+    if (attempt.kind === "audio") {
+      res.setHeader("Content-Type", attempt.mime || "audio/mpeg");
+      res.setHeader("Cache-Control", "no-store");
+      res.setHeader("X-TTS-Provider", attempt.provider);
+      if (attempt.fallbackReason) res.setHeader("X-TTS-Fallback-Reason", attempt.fallbackReason);
+      return res.status(200).send(attempt.bytes);
+    }
+
+    // NEVER a raw/hard 502: a 4xx auth/validation error passes through as itself;
+    // everything else is a typed RETRYABLE 503 the client can re-press.
+    if (attempt.kind === "fatal") {
+      return res.status(attempt.status).json({ ok: false, error: attempt.error, code: attempt.code, retryable: false });
+    }
+    return res.status(503).json({
+      ok: false,
+      retryable: true,
+      error: attempt.error,
+      code: attempt.code,
+      provider: attempt.provider,
+      fallback_reason: attempt.fallbackReason,
     });
   } catch (err) {
-    console.warn("[tts] mercy-tts request threw", err);
-    return res.status(502).json({ ok: false, error: "TTS proxy failed" });
+    console.warn("[tts] handler threw", err);
+    return res.status(503).json({ ok: false, retryable: true, error: "TTS proxy failed" });
   }
-
-  const payload = (await upstream.json().catch(() => null)) as {
-    audioUrl?: unknown;
-    provider?: string;
-    fallback_reason?: string;
-    error?: string;
-    code?: string;
-  } | null;
-
-  if (!upstream.ok || !payload) {
-    return res.status(upstream.ok ? 502 : upstream.status).json({
-      ok: false,
-      error: payload?.error || `mercy-tts ${upstream.status}`,
-      code: payload?.code,
-    });
-  }
-
-  if (isVietnamese && payload.provider !== "azure") {
-    return res.status(502).json({
-      ok: false,
-      error: "Vietnamese TTS requires Azure vi-VN",
-      provider: payload.provider,
-      fallback_reason: payload.fallback_reason,
-    });
-  }
-
-  const decoded = parseAudioDataUrl(payload.audioUrl);
-  if (!decoded || decoded.bytes.length === 0) {
-    return res.status(502).json({
-      ok: false,
-      error: payload.error || "mercy-tts returned no playable audio",
-      provider: payload.provider,
-      fallback_reason: payload.fallback_reason,
-    });
-  }
-
-  res.setHeader("Content-Type", decoded.mime || "audio/mpeg");
-  res.setHeader("Cache-Control", "no-store");
-  res.setHeader("X-TTS-Provider", payload.provider || "unknown");
-  if (payload.fallback_reason) res.setHeader("X-TTS-Fallback-Reason", payload.fallback_reason);
-  return res.status(200).send(decoded.bytes);
 }

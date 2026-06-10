@@ -147,20 +147,61 @@ describe("Cloudflare Pages API function shape", () => {
     });
     expect(upstreamBody.voice_id).not.toBe("english-legacy-voice");
 
-    fetchMock.mockResolvedValueOnce(Response.json({
-      audioUrl: "data:audio/mpeg;base64,SUQzBAAA",
-      provider: "elevenlabs",
-    }));
+    // Persistent non-Azure Vietnamese audio: retry once, then NEVER a raw 502 —
+    // a typed retryable 503 the client can re-press. (Contract C1 still enforced:
+    // no ElevenLabs audio is ever played for Vietnamese.)
+    const persistentNonAzure = vi.fn(async () =>
+      Response.json({ audioUrl: "data:audio/mpeg;base64,SUQzBAAA", provider: "elevenlabs" })
+    );
+    vi.stubGlobal("fetch", persistentNonAzure);
     const rejected = await ttsOnRequestPost(ttsContext({
       text: "Xin chao",
       language: "vi-VN",
       voice_id: "english-legacy-voice",
     }));
-    expect(rejected.status).toBe(502);
+    expect(rejected.status).toBe(503);
+    expect(persistentNonAzure).toHaveBeenCalledTimes(2); // initial + one retry
     await expect(rejected.json()).resolves.toMatchObject({
       ok: false,
+      retryable: true,
       error: "Vietnamese TTS requires Azure vi-VN",
       provider: "elevenlabs",
     });
+  });
+
+  it("recovers a transient Vietnamese Azure miss on the retry (no 502)", async () => {
+    // First call falls back to ElevenLabs (cold Azure); the retry hits warm Azure.
+    const flaky = vi.fn()
+      .mockResolvedValueOnce(Response.json({ audioUrl: "data:audio/mpeg;base64,SUQzBAAA", provider: "elevenlabs" }))
+      .mockResolvedValueOnce(Response.json({ audioUrl: "data:audio/mpeg;base64,SUQzBAAA", provider: "azure" }));
+    vi.stubGlobal("fetch", flaky);
+
+    const response = await ttsOnRequestPost(ttsContext({ text: "Xin chao", language: "vi" }));
+
+    expect(response.status).toBe(200);
+    expect(flaky).toHaveBeenCalledTimes(2);
+    expect(response.headers.get("X-TTS-Provider")).toBe("azure");
+  });
+
+  it("turns an upstream 5xx into a typed retryable 503, never a raw 502", async () => {
+    const failing = vi.fn(async () => Response.json({ error: "boom" }, { status: 500 }));
+    vi.stubGlobal("fetch", failing);
+
+    const response = await ttsOnRequestPost(ttsContext({ text: "Hello", language: "en" }));
+
+    expect(response.status).toBe(503);
+    expect(failing).toHaveBeenCalledTimes(2);
+    await expect(response.json()).resolves.toMatchObject({ ok: false, retryable: true });
+  });
+
+  it("passes a 4xx auth error through without retrying (not retryable)", async () => {
+    const unauthorized = vi.fn(async () => Response.json({ error: "Invalid JWT" }, { status: 401 }));
+    vi.stubGlobal("fetch", unauthorized);
+
+    const response = await ttsOnRequestPost(ttsContext({ text: "Hello", language: "en" }));
+
+    expect(response.status).toBe(401);
+    expect(unauthorized).toHaveBeenCalledTimes(1); // no retry on a permanent 4xx
+    await expect(response.json()).resolves.toMatchObject({ ok: false, retryable: false });
   });
 });
