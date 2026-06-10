@@ -45,6 +45,11 @@ export const speakTopics = [
         label: "Pick up",
         note: "'Lấy đồ' often becomes just 'take.' For collecting something from a place, English usually uses 'pick up.'",
       },
+      {
+        id: "errands-drop-off",
+        label: "Drop off",
+        note: "The pair to 'pick up' is 'drop off.' Use it for leaving documents, packages, or a child at a place: 'I need to drop this off first.'",
+      },
     ],
     followUps: [
       { id: "errands-list-tasks", question: "What errands are on your list today?", salienceQuestion: "What do you need to do for the {slot}?" },
@@ -52,6 +57,7 @@ export const speakTopics = [
       { id: "errands-list-place", question: "Where do you need to go?", salienceQuestion: "Where do you need to go for the {slot}?" },
       { id: "errands-list-item", question: "What item or document should you bring?", salienceQuestion: "What should you bring for the {slot}?" },
       { id: "errands-list-confirm", question: "How would you confirm the plan before leaving?", salienceQuestion: "How would you confirm the {slot} plan?" },
+      { id: "errands-list-dropoff", question: "What do you need to drop off somewhere?", salienceQuestion: "Where would you drop off the {slot}?" },
     ],
   },
   {
@@ -91,6 +97,11 @@ export const speakTopics = [
         label: "Is it ready?",
         note: "'Đã có chưa?' at a pharmacy maps naturally to 'Is it ready?' or 'Is my prescription ready?'",
       },
+      {
+        id: "errands-pharmacy-refill",
+        label: "Refill",
+        note: "A repeat prescription is a 'refill.' A useful sentence is 'I need to refill my prescription' or 'Do I have any refills left?'",
+      },
     ],
     followUps: [
       { id: "errands-pharmacy-type", question: "Are you picking up a prescription or buying medicine?", salienceQuestion: "What kind of medicine is the {slot}?" },
@@ -98,6 +109,7 @@ export const speakTopics = [
       { id: "errands-pharmacy-id", question: "What identifying detail might they ask for?", salienceQuestion: "What detail connects you to the {slot}?" },
       { id: "errands-pharmacy-label", question: "How would you ask about the dosage label?", salienceQuestion: "What does the label say about the {slot}?" },
       { id: "errands-pharmacy-cost", question: "How would you ask about the price or coverage?", salienceQuestion: "What does the {slot} cost?" },
+      { id: "errands-pharmacy-refill", question: "How would you ask whether you have a refill left?", salienceQuestion: "Can you refill the {slot}?" },
     ],
   },
   {
@@ -137,6 +149,11 @@ export const speakTopics = [
         label: "It does not work",
         note: "For a broken product, 'It does not work' is clearer than 'It is not run' or 'It cannot use.'",
       },
+      {
+        id: "errands-return-store-credit",
+        label: "Store credit",
+        note: "If a refund is not available, the store may offer 'store credit.' That means money you can spend at the same store later.",
+      },
     ],
     followUps: [
       { id: "errands-return-item", question: "What item do you want to return or exchange?", salienceQuestion: "What is wrong with the {slot}?" },
@@ -144,6 +161,7 @@ export const speakTopics = [
       { id: "errands-return-proof", question: "What proof of purchase do you have?", salienceQuestion: "What proof do you have for the {slot}?" },
       { id: "errands-return-option", question: "Do you want a refund, exchange, or repair?", salienceQuestion: "What do you want for the {slot}?" },
       { id: "errands-return-policy", question: "How would you ask about the return policy?", salienceQuestion: "What policy applies to the {slot}?" },
+      { id: "errands-return-credit", question: "How would you answer if they offer store credit?", salienceQuestion: "Would store credit work for the {slot}?" },
     ],
   },
 ] as const satisfies readonly FinalThemeSpeakTopic[];

@@ -45,6 +45,11 @@ export const speakTopics = [
         label: "Someone is hurt",
         note: "'Có người bị thương' maps naturally to 'Someone is hurt.' Avoid long grammar under pressure.",
       },
+      {
+        id: "emergency-line-stay",
+        label: "Stay on the line",
+        note: "Dispatchers may say 'Stay on the line.' It means keep the call connected, even if you are scared or moving to safety.",
+      },
     ],
     followUps: [
       { id: "emergency-call-location", question: "What exact location would you give first?", salienceQuestion: "Where is the {slot} happening?" },
@@ -52,6 +57,7 @@ export const speakTopics = [
       { id: "emergency-call-injuries", question: "How would you say if someone is hurt?", salienceQuestion: "Is anyone hurt because of the {slot}?" },
       { id: "emergency-call-danger", question: "What danger should the dispatcher know now?", salienceQuestion: "What danger is connected to the {slot}?" },
       { id: "emergency-call-callback", question: "How would you give a callback number?", salienceQuestion: "What number should they use for the {slot}?" },
+      { id: "emergency-call-stay-line", question: "How would you answer if they tell you to stay on the line?", salienceQuestion: "What should you do while reporting the {slot}?" },
     ],
   },
   {
@@ -91,6 +97,11 @@ export const speakTopics = [
         label: "Trouble breathing",
         note: "'Khó thở' is usually 'trouble breathing' or 'shortness of breath,' not 'hard breath.'",
       },
+      {
+        id: "emergency-medical-allergy",
+        label: "Allergic to",
+        note: "For urgent care, use 'I'm allergic to...' or 'They are allergic to...' rather than only 'cannot eat.' The phrase signals medical risk clearly.",
+      },
     ],
     followUps: [
       { id: "emergency-medical-symptom", question: "What symptom would you say first?", salienceQuestion: "What symptom is connected to the {slot}?" },
@@ -98,6 +109,7 @@ export const speakTopics = [
       { id: "emergency-medical-severity", question: "How would you describe how serious it feels?", salienceQuestion: "How serious is the {slot}?" },
       { id: "emergency-medical-meds", question: "What medication or allergy detail might matter?", salienceQuestion: "What medicine detail matters for the {slot}?" },
       { id: "emergency-medical-next", question: "How would you ask what to do next?", salienceQuestion: "What should you do next about the {slot}?" },
+      { id: "emergency-medical-allergy", question: "How would you mention an allergy clearly?", salienceQuestion: "What allergy matters for the {slot}?" },
     ],
   },
   {
@@ -137,6 +149,11 @@ export const speakTopics = [
         label: "Everyone is outside",
         note: "For safety status, use simple complete sentences: 'Everyone is outside' or 'One person is still inside.'",
       },
+      {
+        id: "emergency-home-turn-off",
+        label: "Turn off / shut off",
+        note: "For gas, water, or power, staff may say 'turn it off' or 'shut it off.' If you are not sure, ask 'Should I turn it off?'",
+      },
     ],
     followUps: [
       { id: "emergency-home-problem", question: "What safety problem would you report first?", salienceQuestion: "What is happening with the {slot}?" },
@@ -144,6 +161,7 @@ export const speakTopics = [
       { id: "emergency-home-people", question: "How would you say if everyone is safe or outside?", salienceQuestion: "Who is safe from the {slot}?" },
       { id: "emergency-home-risk", question: "What immediate risk should they know?", salienceQuestion: "What risk comes from the {slot}?" },
       { id: "emergency-home-contact", question: "Who should you contact next?", salienceQuestion: "Who should hear about the {slot}?" },
+      { id: "emergency-home-shutoff", question: "How would you ask if you should turn something off?", salienceQuestion: "Should you shut off the {slot}?" },
     ],
   },
 ] as const satisfies readonly FinalThemeSpeakTopic[];

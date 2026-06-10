@@ -45,6 +45,11 @@ export const speakTopics = [
         label: "Ask for help",
         note: "'Hỏi giúp' can become 'ask help.' At a counter, the safer phrase is 'I need help with this form' or 'Can I ask for help?'",
       },
+      {
+        id: "government-counter-copy-original",
+        label: "Copy or original",
+        note: "Government counters often ask whether a document is an original or a copy. A useful question is 'Do you need the original, or is a copy okay?'",
+      },
     ],
     followUps: [
       { id: "government-counter-service", question: "What service do you need today?", salienceQuestion: "What service do you need for the {slot}?" },
@@ -52,6 +57,7 @@ export const speakTopics = [
       { id: "government-counter-wait", question: "How would you ask about the wait time?", salienceQuestion: "How long might the {slot} take?" },
       { id: "government-counter-clarify", question: "How would you ask them to explain the instruction again?", salienceQuestion: "What is unclear about the {slot}?" },
       { id: "government-counter-next", question: "How would you confirm the next step?", salienceQuestion: "What is the next step for the {slot}?" },
+      { id: "government-counter-copy", question: "How would you ask if they need the original or a copy?", salienceQuestion: "Which version of the {slot} do they need?" },
     ],
   },
   {
@@ -91,6 +97,11 @@ export const speakTopics = [
         label: "Check the status",
         note: "'Kiểm tra hồ sơ' often maps to 'check my application.' For an office call, 'check the status of my application' is precise.",
       },
+      {
+        id: "government-benefits-written-confirmation",
+        label: "Get it in writing",
+        note: "For deadlines or missing documents, ask for written confirmation: 'Could you send that to me in writing?' It protects you from remembering details wrong.",
+      },
     ],
     followUps: [
       { id: "government-benefits-program", question: "Which benefit or support program are you asking about?", salienceQuestion: "Which program connects to the {slot}?" },
@@ -98,6 +109,7 @@ export const speakTopics = [
       { id: "government-benefits-docs", question: "What document might they ask you to provide?", salienceQuestion: "What proof is needed for the {slot}?" },
       { id: "government-benefits-deadline", question: "How would you ask about the deadline?", salienceQuestion: "What deadline matters for the {slot}?" },
       { id: "government-benefits-status", question: "How would you ask about your application status?", salienceQuestion: "How would you check the {slot}?" },
+      { id: "government-benefits-written", question: "How would you ask for the instructions in writing?", salienceQuestion: "How would you save details about the {slot}?" },
     ],
   },
   {
@@ -137,6 +149,11 @@ export const speakTopics = [
         label: "Proof of address",
         note: "Use 'proof of address,' not 'proof for address,' when asking what documents the office accepts.",
       },
+      {
+        id: "government-address-spelling",
+        label: "Spell the street name",
+        note: "If the clerk writes the address wrong, a calm phrase is 'Could I spell the street name for you?' This fixes the record without sounding blaming.",
+      },
     ],
     followUps: [
       { id: "government-address-purpose", question: "Why do you need the address record?", salienceQuestion: "Why do you need the {slot}?" },
@@ -144,6 +161,7 @@ export const speakTopics = [
       { id: "government-address-proof", question: "How would you ask what proof of address is accepted?", salienceQuestion: "What proof is needed for the {slot}?" },
       { id: "government-address-correct", question: "How would you correct a mistake politely?", salienceQuestion: "What mistake might be in the {slot}?" },
       { id: "government-address-ready", question: "How would you ask when the record will be ready?", salienceQuestion: "When will the {slot} be ready?" },
+      { id: "government-address-spell", question: "How would you spell or repeat the address carefully?", salienceQuestion: "How would you spell the {slot}?" },
     ],
   },
 ] as const satisfies readonly FinalThemeSpeakTopic[];
