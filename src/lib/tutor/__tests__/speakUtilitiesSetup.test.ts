@@ -39,6 +39,10 @@ describe("Utilities & Internet Setup speak topics", () => {
         expect(note.label.trim().length, `${topic.id} ${note.id} label`).toBeGreaterThan(0);
         expect(note.note.trim().length, `${topic.id} ${note.id} body`).toBeGreaterThan(20);
       }
+
+      // note ids and follow-up ids must be disjoint within a topic (CEO-2 id-hygiene).
+      const overlappingIds = noteIds.filter((id) => followUpIds.includes(id));
+      expect(overlappingIds, `${topic.id} note/followUp id overlap`).toEqual([]);
     }
   });
 
