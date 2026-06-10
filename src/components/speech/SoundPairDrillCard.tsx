@@ -73,6 +73,10 @@ export function SoundPairDrillCard({
   const [index, setIndex] = useState(0);
   const [lastResult, setLastResult] = useState<PairResult | null>(null);
   const [isRecording, setIsRecording] = useState(false);
+  // C1: surface a message when model audio can't play (cloud null AND no
+  // browser speechSynthesis) instead of the old silent fire-and-forget.
+  // The play button doubles as the retry control (re-press clears + retries).
+  const [ttsFailed, setTtsFailed] = useState(false);
 
   const pair = pairs[index];
   const total = pairs.length;
@@ -88,10 +92,17 @@ export function SoundPairDrillCard({
     [drillSize],
   );
 
-  const playModel = useCallback((word: string) => {
+  const playModel = useCallback(async (word: string) => {
     if (!ttsSupported() || !word) return;
+    setTtsFailed(false);
     ttsCancel();
-    void ttsSpeak({ text: word, rate: 0.75 });
+    try {
+      const result = await ttsSpeak({ text: word, rate: 0.75 });
+      if (result.source === 'none') setTtsFailed(true);
+    } catch {
+      // Defensive net for the cloud Audio path; speak() itself no longer throws.
+      setTtsFailed(true);
+    }
   }, []);
 
   const onRecord = useCallback(async () => {
@@ -203,6 +214,16 @@ export function SoundPairDrillCard({
             {pair.contrast}
           </span>
         </p>
+        {ttsFailed && (
+          <p
+            className="text-xs text-amber-600 dark:text-amber-400 mt-3"
+            role="alert"
+            aria-live="assertive"
+            data-testid="pair-tts-error"
+          >
+            <Bi text={UI_COPY.ttsError} />
+          </p>
+        )}
       </div>
 
       <div className="mt-4 flex flex-col sm:flex-row gap-2 sm:items-center">

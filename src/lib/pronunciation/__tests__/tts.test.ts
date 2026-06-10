@@ -18,6 +18,7 @@ vi.mock('@/lib/mercyVoice', () => ({
 }));
 
 import { isSupported, speak, cancelSpeech } from '../tts';
+import { fetchCloudTtsUrl } from '@/lib/mercyVoice';
 
 type OnEnd = (() => void) | null;
 type OnErr = ((ev: { error: string }) => void) | null;
@@ -93,11 +94,15 @@ describe('isSupported', () => {
 });
 
 describe('speak', () => {
-  it('rejects when the API is not available', async () => {
-    await expect(speak({ text: 'hi' })).rejects.toThrow(/not supported/i);
+  it('reports source "none" (does not throw) when the API is not available', async () => {
+    // C1: a total failure must be OBSERVABLE, not a silent drop or a throw.
+    await expect(speak({ text: 'hi' })).resolves.toEqual({
+      source: 'none',
+      error: 'speech_synthesis_unsupported',
+    });
   });
 
-  it('resolves when the utterance ends naturally', async () => {
+  it('resolves source "browser" when the utterance ends naturally', async () => {
     const fake = installStub();
     const promise = speak({ text: 'Hello there.', rate: 0.8 });
     // Wait a tick so the promise can subscribe + voices can resolve.
@@ -109,25 +114,53 @@ describe('speak', () => {
     expect(fake.spoken[0].lang).toBe('en-US');
     // Simulate the engine finishing playback.
     fake.spoken[0].onend?.();
-    await expect(promise).resolves.toBeUndefined();
+    await expect(promise).resolves.toEqual({ source: 'browser', error: null });
   });
 
-  it('resolves on a cancel/interrupted error (not rejects)', async () => {
+  it('treats a cancel/interrupted error as a successful browser play', async () => {
     const fake = installStub();
     const promise = speak({ text: 'Hello.' });
     await Promise.resolve();
     await Promise.resolve();
     fake.spoken[0].onerror?.({ error: 'interrupted' });
-    await expect(promise).resolves.toBeUndefined();
+    await expect(promise).resolves.toEqual({ source: 'browser', error: null });
   });
 
-  it('rejects on a genuine engine error', async () => {
+  it('reports source "none" with an error string on a genuine engine error', async () => {
     const fake = installStub();
     const promise = speak({ text: 'Hello.' });
     await Promise.resolve();
     await Promise.resolve();
     fake.spoken[0].onerror?.({ error: 'synthesis-failed' });
-    await expect(promise).rejects.toThrow(/synthesis-failed/i);
+    const result = await promise;
+    expect(result.source).toBe('none');
+    expect(result.error).toMatch(/synthesis-failed/i);
+  });
+
+  it('resolves source "cloud" when the cloud path plays (no browser fallback)', async () => {
+    const fake = installStub();
+    (fetchCloudTtsUrl as unknown as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+      audioUrl: 'https://example.test/word.mp3',
+    });
+    // Stub Audio so play() resolves immediately via onended.
+    class FakeAudio {
+      onended: (() => void) | null = null;
+      onerror: (() => void) | null = null;
+      constructor(public src: string) {}
+      play() {
+        // Fire onended on the next microtask so the awaiter is subscribed.
+        Promise.resolve().then(() => this.onended?.());
+        return Promise.resolve();
+      }
+    }
+    (window as unknown as { Audio: typeof FakeAudio }).Audio = FakeAudio;
+
+    const result = await speak({ text: 'Hello.', rate: 0.8 });
+    expect(result).toEqual({ source: 'cloud', error: null });
+    // Browser synth must NOT be used when cloud succeeds.
+    expect(fake.spoken.length).toBe(0);
+
+    delete (window as unknown as { Audio?: unknown }).Audio;
   });
 
   it('clamps the rate into the 0.1–2.0 range', async () => {

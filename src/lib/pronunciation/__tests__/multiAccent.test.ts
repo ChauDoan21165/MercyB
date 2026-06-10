@@ -253,6 +253,9 @@ describe("multiAccentTTS.playReferenceAudio", () => {
     const b = await playReferenceAudio("   ", "uk");
     expect(a.source).toBe("none");
     expect(b.source).toBe("none");
+    // C1: the observable error field is set whenever nothing played.
+    expect(a.error).toBe("empty_word");
+    expect(b.error).toBe("empty_word");
   });
 
   it("falls back to browser TTS with the right BCP-47 locale per accent", async () => {

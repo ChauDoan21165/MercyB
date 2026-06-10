@@ -142,4 +142,8 @@ export const UI_COPY = {
     en: 'Live scoring isn\'t wired up yet — this is a preview score so you can see the flow.',
     vi: 'Chấm điểm trực tiếp chưa sẵn sàng — điểm bên dưới chỉ là bản xem trước.',
   } as Bilingual,
+  ttsError: {
+    en: 'Could not play the model audio on this device. Tap again to retry.',
+    vi: 'Không phát được âm thanh mẫu trên thiết bị này. Bấm lại để thử.',
+  } as Bilingual,
 };

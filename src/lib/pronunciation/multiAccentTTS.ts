@@ -39,9 +39,9 @@ export async function playReferenceAudio(
     audioFactory?: (src: string) => HTMLAudioElement;
     speakWithBrowser?: (text: string, lang: string) => void;
   },
-): Promise<{ source: "cloud" | "browser" | "none"; reason?: string }> {
+): Promise<{ source: "cloud" | "browser" | "none"; reason?: string; error: string | null }> {
   const trimmed = String(word ?? "").trim();
-  if (!trimmed) return { source: "none", reason: "empty_word" };
+  if (!trimmed) return { source: "none", reason: "empty_word", error: "empty_word" };
 
   // 1. Try the cloud path when an ElevenLabs voice is configured for
   //    this accent. When the IDs are still placeholders we skip
@@ -58,7 +58,7 @@ export async function playReferenceAudio(
           audio.onerror = () => resolve();
           audio.play().catch(() => resolve());
         });
-        return { source: "cloud" };
+        return { source: "cloud", error: null };
       } catch {
         /* fall through to browser TTS */
       }
@@ -67,22 +67,23 @@ export async function playReferenceAudio(
 
   // 2. Browser fallback. SpeechSynthesisUtterance with the BCP-47
   //    locale gives the user the best available native pronunciation.
+  //    English accent locales only — never a Vietnamese voice path.
   const locale = ACCENT_METADATA[accent]?.locale ?? "en-US";
   if (options?.speakWithBrowser) {
     options.speakWithBrowser(trimmed, locale);
-    return { source: "browser" };
+    return { source: "browser", error: null };
   }
   if (typeof window !== "undefined" && typeof window.speechSynthesis !== "undefined") {
     try {
       const utt = new SpeechSynthesisUtterance(trimmed);
       utt.lang = locale;
       window.speechSynthesis.speak(utt);
-      return { source: "browser" };
+      return { source: "browser", error: null };
     } catch {
-      return { source: "none", reason: "speech_synthesis_failed" };
+      return { source: "none", reason: "speech_synthesis_failed", error: "speech_synthesis_failed" };
     }
   }
-  return { source: "none", reason: "no_audio_path" };
+  return { source: "none", reason: "no_audio_path", error: "no_audio_path" };
 }
 
 async function getOrFetchCloudUrl(

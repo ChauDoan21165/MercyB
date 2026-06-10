@@ -35,6 +35,22 @@ export interface TTSOptions {
   voice?: VoiceLang;
 }
 
+/** Which path actually produced audio. */
+export type SpeakSource = 'cloud' | 'browser' | 'none';
+
+/**
+ * Observable result of {@link speak}. Contract C1: the browser
+ * SpeechSynthesis fallback is acceptable for these English drills, but it
+ * must NOT be SILENT — callers branch on this so they can surface an error
+ * + retry when nothing played. `error` is non-null exactly when
+ * `source === 'none'` (nothing was spoken). This module is English-only;
+ * it never routes a Vietnamese voice through the browser.
+ */
+export interface SpeakResult {
+  source: SpeakSource;
+  error: string | null;
+}
+
 const DEFAULT_RATE = 0.8;
 const DEFAULT_VOICE: VoiceLang = 'en-US';
 const MIN_RATE = 0.1;
@@ -112,22 +128,26 @@ export function cancelSpeech(): void {
 }
 
 /**
- * Speak the given text. Resolves when playback ends naturally or when
- * the caller cancels it (interruption is not an error from the caller's
- * point of view). Rejects only on genuine engine errors.
+ * Speak the given text. Resolves with a {@link SpeakResult} describing
+ * which path produced audio (`cloud` / `browser` / `none`) so the caller
+ * can surface an error + retry when nothing played. It does NOT throw or
+ * reject — a total failure resolves to `{ source: 'none', error }` (C1:
+ * the browser fallback is allowed but must be observable, never silent).
+ * Interruption (the caller cancelled or started a new utterance) counts
+ * as success, not an error.
  *
  * Must be called from a user gesture on browsers that require it
  * (mobile Safari); the caller is responsible for wiring this to a tap.
  */
-export async function speak(opts: TTSOptions): Promise<void> {
+export async function speak(opts: TTSOptions): Promise<SpeakResult> {
   const synth = getSynth();
   const Utter = getUtteranceCtor();
   if (!synth || !Utter) {
-    throw new Error('Speech synthesis not supported in this environment.');
+    return { source: 'none', error: 'speech_synthesis_unsupported' };
   }
 
   const text = String(opts.text ?? '').trim();
-  if (!text) return;
+  if (!text) return { source: 'none', error: null };
 
   const rate = clampRate(opts.rate ?? DEFAULT_RATE);
   const lang: VoiceLang = opts.voice ?? DEFAULT_VOICE;
@@ -139,6 +159,7 @@ export async function speak(opts: TTSOptions): Promise<void> {
   // Cloud path (best effort). Only attempted at the default rate, since
   // ElevenLabs has no client-side rate control — slow/long-press taps
   // still want the browser path so the rate parameter remains honored.
+  // English-only by contract (language: 'en') — never a Vietnamese voice.
   if (rate === DEFAULT_RATE) {
     try {
       const cloud = await fetchCloudTtsUrl({ text, language: 'en' });
@@ -149,17 +170,17 @@ export async function speak(opts: TTSOptions): Promise<void> {
           audio.onerror = () => reject(new Error('cloud audio playback failed'));
           audio.play().catch(reject);
         });
-        return;
+        return { source: 'cloud', error: null };
       }
     } catch (err) {
-      console.warn('[pronunciation/tts] cloud path failed, falling back', err);
+      console.warn('[pronunciation/tts] cloud path failed, falling back to browser', err);
       // fall through to browser TTS below
     }
   }
 
   await waitForVoices(synth);
 
-  return new Promise<void>((resolve, reject) => {
+  return new Promise<SpeakResult>((resolve) => {
     const utter = new Utter(text);
     utter.rate = rate;
     utter.lang = lang;
@@ -171,7 +192,7 @@ export async function speak(opts: TTSOptions): Promise<void> {
     utter.onend = () => {
       if (settled) return;
       settled = true;
-      resolve();
+      resolve({ source: 'browser', error: null });
     };
 
     utter.onerror = (ev: SpeechSynthesisErrorEvent) => {
@@ -180,12 +201,12 @@ export async function speak(opts: TTSOptions): Promise<void> {
       const err = ev?.error ?? 'unknown';
       // Cancellation isn't an error from the caller's POV — the caller
       // either called cancelSpeech() themselves or started a new speak()
-      // which implicitly cancelled.
+      // which implicitly cancelled. Treat as a successful browser play.
       if (err === 'interrupted' || err === 'canceled') {
-        resolve();
+        resolve({ source: 'browser', error: null });
         return;
       }
-      reject(new Error(`Speech synthesis error: ${err}`));
+      resolve({ source: 'none', error: `speech_synthesis_error:${err}` });
     };
 
     try {
@@ -193,7 +214,7 @@ export async function speak(opts: TTSOptions): Promise<void> {
     } catch (err) {
       if (settled) return;
       settled = true;
-      reject(err instanceof Error ? err : new Error(String(err)));
+      resolve({ source: 'none', error: err instanceof Error ? err.message : String(err) });
     }
   });
 }
