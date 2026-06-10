@@ -200,12 +200,19 @@ export const speakTopics = [
         label: "Slow address",
         note: "It is okay to say the address slowly and repeat it. Dispatchers prefer accurate, not fast.",
       },
+      {
+        id: "emergency-location-stay-line",
+        label: "Stay on the line",
+        note: "Dispatchers often say 'Stay on the line.' It is fine to keep the call open and answer their questions while help is coming.",
+      },
     ],
     followUps: [
       { id: "emergency-location-address", question: "What address or intersection would you give?", salienceQuestion: "How would you say the {slot} clearly?" },
       { id: "emergency-location-landmark", question: "What landmark is nearby?", salienceQuestion: "What landmark is near the {slot}?" },
       { id: "emergency-location-entrance", question: "Which entrance should help use?", salienceQuestion: "Where is the entrance for the {slot}?" },
       { id: "emergency-location-repeat", question: "How would you repeat the location if asked?", salienceQuestion: "How would you repeat the {slot} calmly?" },
+      { id: "emergency-location-stay", question: "How would you say you can stay on the line?", salienceQuestion: "How would you keep the line open for the {slot}?" },
+      { id: "emergency-location-floor", question: "How would you give the floor or unit number?", salienceQuestion: "Which floor or unit is the {slot}?" },
     ],
   },
   {
@@ -244,12 +251,19 @@ export const speakTopics = [
         label: "Awake and breathing",
         note: "Emergency staff may ask if the person is awake and breathing. Practicing those words gives learners a calm safety script.",
       },
+      {
+        id: "emergency-injury-dont-move",
+        label: "Do not move them",
+        note: "For a head or neck injury, staff may say 'Don't move them.' It is fine to ask 'Should I move the person?' and follow what they say.",
+      },
     ],
     followUps: [
       { id: "emergency-injury-what", question: "What happened to the person?", salienceQuestion: "How would you describe the {slot}?" },
       { id: "emergency-injury-where", question: "Where is the injury?", salienceQuestion: "Where is the {slot} on the body?" },
       { id: "emergency-injury-conscious", question: "Is the person awake and breathing?", salienceQuestion: "What is the person's condition after the {slot}?" },
       { id: "emergency-injury-bleeding", question: "How would you say whether there is bleeding?", salienceQuestion: "Is there bleeding from the {slot}?" },
+      { id: "emergency-injury-move", question: "How would you ask whether to move the person?", salienceQuestion: "Should you move the person after the {slot}?" },
+      { id: "emergency-injury-age", question: "How would you say the person's age, if asked?", salienceQuestion: "How old is the person with the {slot}?" },
     ],
   },
   {
@@ -288,12 +302,19 @@ export const speakTopics = [
         label: "Say you are leaving",
         note: "If people are evacuating, say it simply: 'We are leaving the building.' It tells responders what is happening now.",
       },
+      {
+        id: "emergency-fire-meeting-point",
+        label: "Meeting point outside",
+        note: "Buildings often have a 'meeting point' outside. Saying 'We are at the meeting point' helps responders count who is safe.",
+      },
     ],
     followUps: [
       { id: "emergency-fire-what", question: "What do you see or smell?", salienceQuestion: "How would you report the {slot}?" },
       { id: "emergency-fire-where", question: "Where is the smoke or fire?", salienceQuestion: "Where is the {slot} located?" },
       { id: "emergency-fire-people", question: "Are people still inside?", salienceQuestion: "Who is near the {slot}?" },
       { id: "emergency-fire-exit", question: "How would you say you are leaving safely?", salienceQuestion: "How would you leave the {slot} safely?" },
+      { id: "emergency-fire-meet", question: "How would you say where you are gathering outside?", salienceQuestion: "Where are people meeting after the {slot}?" },
+      { id: "emergency-fire-trapped", question: "How would you say if someone is trapped?", salienceQuestion: "Who cannot get out from the {slot}?" },
     ],
   },
   {
@@ -332,12 +353,19 @@ export const speakTopics = [
         label: "Safety before paperwork",
         note: "In an accident, say injuries and location first. Insurance and documents can wait until everyone is safe.",
       },
+      {
+        id: "emergency-accident-stay-put",
+        label: "Stay if it is safer",
+        note: "Unless there is fire or traffic danger, it is often safer to stay near the cars and wait. You can say 'We are pulled over and waiting.'",
+      },
     ],
     followUps: [
       { id: "emergency-accident-location", question: "Where did the accident happen?", salienceQuestion: "How would you locate the {slot}?" },
       { id: "emergency-accident-injury", question: "Is anyone hurt?", salienceQuestion: "Who is hurt in the {slot}?" },
       { id: "emergency-accident-vehicles", question: "How many vehicles are involved?", salienceQuestion: "How many vehicles are in the {slot}?" },
       { id: "emergency-accident-danger", question: "Is there any danger now, like traffic or fire?", salienceQuestion: "What danger remains after the {slot}?" },
+      { id: "emergency-accident-wait", question: "How would you say you are pulled over and waiting?", salienceQuestion: "Where are you waiting after the {slot}?" },
+      { id: "emergency-accident-info", question: "How would you exchange details with the other driver?", salienceQuestion: "What information do you share after the {slot}?" },
     ],
   },
   {
@@ -376,12 +404,19 @@ export const speakTopics = [
         label: "My son, my daughter",
         note: "Vietnamese family terms are richer than English. In public help requests, 'my son' or 'my daughter' is enough and clear.",
       },
+      {
+        id: "emergency-child-stay-put",
+        label: "Stay where last seen",
+        note: "Staff often say to wait where you last saw the child. Saying 'I will stay by the entrance' helps them bring the child to you.",
+      },
     ],
     followUps: [
       { id: "emergency-child-age", question: "How old is the child?", salienceQuestion: "How would you say the {slot} age?" },
       { id: "emergency-child-clothes", question: "What is the child wearing?", salienceQuestion: "How would you describe the {slot} clothing?" },
       { id: "emergency-child-last", question: "Where did you last see the child?", salienceQuestion: "Where was the {slot} last seen?" },
       { id: "emergency-child-contact", question: "How would you give your phone number?", salienceQuestion: "How would helpers reach you about the {slot}?" },
+      { id: "emergency-child-wait", question: "How would you say where you will wait?", salienceQuestion: "Where will you wait for the {slot}?" },
+      { id: "emergency-child-name", question: "How would you give the child's name?", salienceQuestion: "What is the {slot}'s name?" },
     ],
   },
   {
@@ -420,12 +455,19 @@ export const speakTopics = [
         label: "One reason first",
         note: "Say the urgent reason before details: child inside, stove on, water leaking, or someone hurt.",
       },
+      {
+        id: "emergency-neighbor-call-too",
+        label: "Ask them to call too",
+        note: "If it is serious, it is fine to ask the neighbor to call for help: 'Can you call 911 while I stay here?'",
+      },
     ],
     followUps: [
       { id: "emergency-neighbor-help", question: "What urgent help do you need?", salienceQuestion: "How would you ask for help with the {slot}?" },
       { id: "emergency-neighbor-reason", question: "What one reason would you say first?", salienceQuestion: "What makes the {slot} urgent?" },
       { id: "emergency-neighbor-action", question: "What do you need the neighbor to do?", salienceQuestion: "What action would help with the {slot}?" },
       { id: "emergency-neighbor-thanks", question: "How would you thank them after the urgent moment?", salienceQuestion: "How would you thank them for the {slot}?" },
+      { id: "emergency-neighbor-call", question: "How would you ask them to call for help?", salienceQuestion: "Who should call about the {slot}?" },
+      { id: "emergency-neighbor-tools", question: "How would you ask to borrow a tool or phone?", salienceQuestion: "What would you borrow for the {slot}?" },
     ],
   },
 ] as const satisfies readonly FinalThemeSpeakTopic[];

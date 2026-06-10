@@ -242,12 +242,19 @@ export const speakTopics = [
         label: "Purpose early",
         note: "Staff can help faster when the service comes early: 'for my ID application,' 'for a renewal,' or 'for a benefits question.'",
       },
+      {
+        id: "government-book-what-bring",
+        label: "Ask what to bring",
+        note: "Before the appointment, ask 'What should I bring?' so you arrive with the right documents and avoid a second trip.",
+      },
     ],
     followUps: [
       { id: "government-book-service", question: "What service do you need the appointment for?", salienceQuestion: "How would you name the {slot} when booking?" },
       { id: "government-book-date", question: "What day or time would work for you?", salienceQuestion: "What time would you ask for the {slot}?" },
       { id: "government-book-location", question: "Which office location is best for you?", salienceQuestion: "Which office handles the {slot}?" },
       { id: "government-book-confirm", question: "How would you confirm the appointment details?", salienceQuestion: "How would you confirm the {slot} before ending the call?" },
+      { id: "government-book-bring", question: "How would you ask what to bring?", salienceQuestion: "What should you bring to the {slot}?" },
+      { id: "government-book-reminder", question: "How would you ask for a reminder?", salienceQuestion: "How would you get a reminder for the {slot}?" },
     ],
   },
   {
@@ -286,12 +293,19 @@ export const speakTopics = [
         label: "Ask the next step",
         note: "If something is missing, a calm question works: 'What should I bring next time?' It keeps the conversation moving.",
       },
+      {
+        id: "government-document-copy-ok",
+        label: "Copy or original",
+        note: "Offices may want an original or accept a copy. Asking 'Do you need the original or a copy?' saves a wasted trip.",
+      },
     ],
     followUps: [
       { id: "government-missing-which", question: "Which document might be missing?", salienceQuestion: "How would you ask about the missing {slot}?" },
       { id: "government-missing-proof", question: "What proof do you already have with you?", salienceQuestion: "What proof can support the {slot}?" },
       { id: "government-missing-next", question: "How would you ask what to bring next time?", salienceQuestion: "What should you bring for the {slot}?" },
       { id: "government-missing-deadline", question: "How would you ask about the deadline?", salienceQuestion: "What is the deadline for the {slot}?" },
+      { id: "government-missing-copy", question: "How would you ask if a copy is okay?", salienceQuestion: "Does the {slot} need an original?" },
+      { id: "government-missing-hold", question: "How would you ask them to hold your file?", salienceQuestion: "How would you keep the {slot} open?" },
     ],
   },
   {
@@ -330,12 +344,19 @@ export const speakTopics = [
         label: "Could I have",
         note: "'Could I have a Vietnamese interpreter?' sounds calm and respectful. It is stronger than apologizing for English first.",
       },
+      {
+        id: "government-interpreter-free",
+        label: "Often free",
+        note: "Interpretation in public services is often free. Asking 'Is the interpreter free?' is reasonable and the answer is usually yes.",
+      },
     ],
     followUps: [
       { id: "government-interpreter-language", question: "Which language would you ask for?", salienceQuestion: "How would you request help in {slot}?" },
       { id: "government-interpreter-timing", question: "When do you need the interpreter?", salienceQuestion: "When would you need the {slot}?" },
       { id: "government-interpreter-phone", question: "How would you ask if phone interpretation is okay?", salienceQuestion: "Could the {slot} happen by phone?" },
       { id: "government-interpreter-confirm", question: "How would you confirm the interpreter is booked?", salienceQuestion: "How would you confirm the {slot} is arranged?" },
+      { id: "government-interpreter-free-q", question: "How would you ask if it costs anything?", salienceQuestion: "Is there a cost for the {slot}?" },
+      { id: "government-interpreter-family", question: "How would you say if a family member can help instead?", salienceQuestion: "Who else could help with the {slot}?" },
     ],
   },
   {
@@ -374,12 +395,19 @@ export const speakTopics = [
         label: "Ask before signing",
         note: "It is okay to pause and ask about a line before signing. Clear forms matter more than rushing.",
       },
+      {
+        id: "government-form-not-apply",
+        label: "When a box does not apply",
+        note: "If a box does not apply to you, ask 'Should I leave this blank?' Many forms accept 'N/A' for fields that do not fit.",
+      },
     ],
     followUps: [
       { id: "government-form-section", question: "Which part of the form is unclear?", salienceQuestion: "How would you ask about this {slot}?" },
       { id: "government-form-name", question: "How would you ask about first name and last name?", salienceQuestion: "How would you fill the {slot} line?" },
       { id: "government-form-sign", question: "How would you ask where to sign?", salienceQuestion: "Where should you sign for the {slot}?" },
       { id: "government-form-review", question: "How would you ask someone to check the form?", salienceQuestion: "Who could check the {slot} before you submit it?" },
+      { id: "government-form-blank", question: "How would you ask what to do with a box that does not apply?", salienceQuestion: "How would you handle a blank {slot}?" },
+      { id: "government-form-copy", question: "How would you ask for a copy of the submitted form?", salienceQuestion: "How would you keep a record of the {slot}?" },
     ],
   },
   {
@@ -418,12 +446,19 @@ export const speakTopics = [
         label: "Keep the receipt",
         note: "Government payments often need a receipt. Asking 'Could I get a receipt?' is normal and not demanding.",
       },
+      {
+        id: "government-fee-card-cash",
+        label: "Card or cash",
+        note: "Offices may take only certain payments. Asking 'Do you take card or only cash?' avoids being sent to a machine outside.",
+      },
     ],
     followUps: [
       { id: "government-fee-amount", question: "How would you ask the amount of the fee?", salienceQuestion: "How much is the {slot}?" },
       { id: "government-fee-method", question: "How would you ask what payment methods they accept?", salienceQuestion: "How can you pay the {slot}?" },
       { id: "government-fee-waiver", question: "How would you ask if there is a waiver?", salienceQuestion: "Is there help with the {slot}?" },
       { id: "government-fee-receipt-q", question: "How would you ask for a receipt?", salienceQuestion: "How would you get proof of the {slot}?" },
+      { id: "government-fee-cardcash", question: "How would you ask if they take card or cash?", salienceQuestion: "How would you pay the {slot}?" },
+      { id: "government-fee-when", question: "How would you ask when the fee is due?", salienceQuestion: "When must you pay the {slot}?" },
     ],
   },
   {
@@ -462,12 +497,19 @@ export const speakTopics = [
         label: "Number ready",
         note: "Having the reference number ready makes the call easier. Saying it slowly is fine; accuracy matters more than speed.",
       },
+      {
+        id: "government-status-timeline",
+        label: "Ask the timeline",
+        note: "It is fine to ask 'How long does this usually take?' so you know whether to keep waiting or follow up later.",
+      },
     ],
     followUps: [
       { id: "government-status-number", question: "What reference number would you give?", salienceQuestion: "How would you read the {slot} clearly?" },
       { id: "government-status-question", question: "How would you ask for the current status?", salienceQuestion: "What is the status of the {slot}?" },
       { id: "government-status-delay", question: "How would you ask why it is delayed?", salienceQuestion: "Why might the {slot} be delayed?" },
       { id: "government-status-next", question: "How would you ask what happens next?", salienceQuestion: "What is the next step for the {slot}?" },
+      { id: "government-status-timeline-q", question: "How would you ask how long it usually takes?", salienceQuestion: "How long does the {slot} take?" },
+      { id: "government-status-contact", question: "How would you ask who to contact for updates?", salienceQuestion: "Who handles updates on the {slot}?" },
     ],
   },
 ] as const satisfies readonly FinalThemeSpeakTopic[];

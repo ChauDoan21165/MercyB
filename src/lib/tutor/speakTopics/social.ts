@@ -242,12 +242,19 @@ export const speakTopics = [
         label: "Confirm one detail",
         note: "After accepting, it is normal to confirm time, place, or what to bring. It does not sound suspicious; it sounds prepared.",
       },
+      {
+        id: "social-accept-look-forward",
+        label: "Looking forward to it",
+        note: "A warm closer is 'I'm looking forward to it.' It sounds genuine and is easy to reuse for any invitation you accept.",
+      },
     ],
     followUps: [
       { id: "social-accept-thanks", question: "How would you thank the person for inviting you?", salienceQuestion: "How would you thank them for the {slot}?" },
       { id: "social-accept-yes", question: "How would you say yes warmly?", salienceQuestion: "How would you accept the {slot}?" },
       { id: "social-accept-detail", question: "What detail would you confirm?", salienceQuestion: "What detail matters for the {slot}?" },
       { id: "social-accept-bring", question: "How would you ask what to bring?", salienceQuestion: "What should you bring to the {slot}?" },
+      { id: "social-accept-forward", question: "How would you say you're looking forward to it?", salienceQuestion: "How would you show you're glad about the {slot}?" },
+      { id: "social-accept-who", question: "How would you ask who else is coming?", salienceQuestion: "Who else will be at the {slot}?" },
     ],
   },
   {
@@ -286,12 +293,19 @@ export const speakTopics = [
         label: "Can't make it",
         note: "'I can't make it' is a natural social phrase for not being able to attend. It sounds softer than a bare 'I can't go.'",
       },
+      {
+        id: "social-decline-no-detail",
+        label: "You don't owe a full reason",
+        note: "It is fine to keep the reason private: 'I have something on that day.' A vague but warm reason is completely acceptable.",
+      },
     ],
     followUps: [
       { id: "social-decline-thanks", question: "How would you thank them first?", salienceQuestion: "How would you thank them for the {slot}?" },
       { id: "social-decline-reason", question: "What short reason would you give?", salienceQuestion: "Why can't you make the {slot}?" },
       { id: "social-decline-next", question: "How would you leave the door open for next time?", salienceQuestion: "How would you suggest another {slot}?" },
       { id: "social-decline-tone", question: "How would you keep the tone warm?", salienceQuestion: "How would you sound kind about the {slot}?" },
+      { id: "social-decline-private", question: "How would you keep the reason private but kind?", salienceQuestion: "How would you stay vague about the {slot}?" },
+      { id: "social-decline-offer", question: "How would you offer to meet another way?", salienceQuestion: "What other {slot} could you suggest?" },
     ],
   },
   {
@@ -330,12 +344,19 @@ export const speakTopics = [
         label: "Listen then add",
         note: "Learners may worry about perfect timing. A safe move is to listen, ask one question, then add one short comment.",
       },
+      {
+        id: "social-group-agree",
+        label: "Show you agree",
+        note: "Short reactions like 'That's a good point' or 'Same here' let you join warmly without needing a long sentence.",
+      },
     ],
     followUps: [
       { id: "social-group-enter", question: "How would you ask to join the group?", salienceQuestion: "How would you join the {slot}?" },
       { id: "social-group-topic", question: "How would you ask what they are discussing?", salienceQuestion: "What is the {slot} about?" },
       { id: "social-group-comment", question: "What short comment could you add?", salienceQuestion: "What could you add about the {slot}?" },
       { id: "social-group-exit", question: "How would you step away politely?", salienceQuestion: "How would you leave the {slot} kindly?" },
+      { id: "social-group-react", question: "How would you show you agree or are interested?", salienceQuestion: "How would you react to the {slot}?" },
+      { id: "social-group-name", question: "How would you introduce yourself if needed?", salienceQuestion: "How would you join the {slot} as a new face?" },
     ],
   },
   {
@@ -374,12 +395,19 @@ export const speakTopics = [
         label: "A little more slowly",
         note: "'A little more slowly' sounds softer than 'speak slow.' It asks for help without blaming the other person.",
       },
+      {
+        id: "social-repeat-one-word",
+        label: "Ask about one word",
+        note: "You can ask about just the part you missed: 'Sorry, what does ___ mean?' It is fine to ask about a single word.",
+      },
     ],
     followUps: [
       { id: "social-repeat-ask", question: "How would you ask them to repeat?", salienceQuestion: "How would you ask again about the {slot}?" },
       { id: "social-repeat-slow", question: "How would you ask them to slow down?", salienceQuestion: "How would you slow down the {slot}?" },
       { id: "social-repeat-check", question: "How would you check your understanding?", salienceQuestion: "How would you confirm the {slot}?" },
       { id: "social-repeat-thanks", question: "How would you thank them after they repeat?", salienceQuestion: "How would you thank them for explaining the {slot}?" },
+      { id: "social-repeat-word", question: "How would you ask about one word you missed?", salienceQuestion: "How would you ask about a word in the {slot}?" },
+      { id: "social-repeat-spell", question: "How would you ask them to spell a name?", salienceQuestion: "How would you confirm a name in the {slot}?" },
     ],
   },
   {
@@ -418,12 +446,19 @@ export const speakTopics = [
         label: "Accepting kindly",
         note: "Vietnamese modesty may push learners to reject praise. In English, 'Thank you, that's kind of you' is warm and accepted.",
       },
+      {
+        id: "social-compliment-not-deflect",
+        label: "Avoid 'no, it's nothing'",
+        note: "Brushing praise away with 'no, it's nothing' can feel like disagreeing. A simple 'Thank you' keeps the moment warm.",
+      },
     ],
     followUps: [
       { id: "social-compliment-what", question: "What would you compliment?", salienceQuestion: "What would you say about the {slot}?" },
       { id: "social-compliment-specific", question: "How would you make it specific?", salienceQuestion: "What detail about the {slot} would you mention?" },
       { id: "social-compliment-reply", question: "How would you reply if someone compliments you?", salienceQuestion: "How would you accept praise about the {slot}?" },
       { id: "social-compliment-return", question: "Would you return a compliment?", salienceQuestion: "What could you say back about the {slot}?" },
+      { id: "social-compliment-simple", question: "How would you simply say thank you?", salienceQuestion: "How would you accept the {slot} graciously?" },
+      { id: "social-compliment-work", question: "How would you compliment someone's work?", salienceQuestion: "How would you praise the {slot} they did?" },
     ],
   },
   {
@@ -462,12 +497,19 @@ export const speakTopics = [
         label: "Would you like",
         note: "Vietnamese invitations can be direct and warm. English softens with 'Would you like to...' for casual social plans.",
       },
+      {
+        id: "social-plans-text-later",
+        label: "Settle details by text",
+        note: "It is normal to leave the details for later: 'I'll text you to figure out a time.' Casual plans do not need everything fixed at once.",
+      },
     ],
     followUps: [
       { id: "social-plans-invite", question: "What would you invite them to do?", salienceQuestion: "How would you invite them to the {slot}?" },
       { id: "social-plans-time", question: "What time would you suggest?", salienceQuestion: "When would the {slot} work?" },
       { id: "social-plans-place", question: "Where could you meet?", salienceQuestion: "Where would you meet for the {slot}?" },
       { id: "social-plans-confirm", question: "How would you confirm the plan later?", salienceQuestion: "How would you confirm the {slot}?" },
+      { id: "social-plans-text", question: "How would you say you'll text to settle details?", salienceQuestion: "How would you arrange the {slot} later?" },
+      { id: "social-plans-flexible", question: "How would you stay flexible if they're busy?", salienceQuestion: "How would you adjust the {slot}?" },
     ],
   },
 ] as const satisfies readonly FinalThemeSpeakTopic[];

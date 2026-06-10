@@ -200,12 +200,19 @@ export const speakTopics = [
         label: "Tracking number",
         note: "A tracking number is often important. Asking for it is normal: 'Could I get the tracking number?'",
       },
+      {
+        id: "errands-post-weight-price",
+        label: "Priced by weight and speed",
+        note: "Packages are priced by weight and how fast they go. It is fine to let them weigh it first and ask 'How much to send this?'",
+      },
     ],
     followUps: [
       { id: "errands-post-destination", question: "Where is the package going?", salienceQuestion: "How would you give the {slot} destination?" },
       { id: "errands-post-speed", question: "How fast does it need to arrive?", salienceQuestion: "How fast should the {slot} arrive?" },
       { id: "errands-post-price", question: "How would you ask the shipping price?", salienceQuestion: "How much is shipping for the {slot}?" },
       { id: "errands-post-tracking-q", question: "How would you ask for tracking?", salienceQuestion: "How would you track the {slot}?" },
+      { id: "errands-post-fragile", question: "How would you say the package is fragile?", salienceQuestion: "How would you protect the {slot}?" },
+      { id: "errands-post-insure", question: "How would you ask about insurance?", salienceQuestion: "How would you insure the {slot}?" },
     ],
   },
   {
@@ -244,12 +251,19 @@ export const speakTopics = [
         label: "ID ready",
         note: "Pickup counters often ask for ID. A calm line is 'I have my ID here.'",
       },
+      {
+        id: "errands-pickup-hours",
+        label: "Pickup hours",
+        note: "It helps to ask 'What are your pickup hours?' so you do not arrive after the counter has closed for the day.",
+      },
     ],
     followUps: [
       { id: "errands-pickup-name", question: "What name is the package under?", salienceQuestion: "What name is on the {slot}?" },
       { id: "errands-pickup-notice", question: "What pickup notice or code do you have?", salienceQuestion: "What code came with the {slot}?" },
       { id: "errands-pickup-id", question: "How would you say you have ID?", salienceQuestion: "What ID would you show for the {slot}?" },
       { id: "errands-pickup-sign", question: "How would you ask where to sign?", salienceQuestion: "Where do you sign for the {slot}?" },
+      { id: "errands-pickup-hours-q", question: "How would you ask the pickup hours?", salienceQuestion: "When can you collect the {slot}?" },
+      { id: "errands-pickup-hold", question: "How would you ask how long they hold it?", salienceQuestion: "How long will they keep the {slot}?" },
     ],
   },
   {
@@ -288,12 +302,19 @@ export const speakTopics = [
         label: "Private details",
         note: "Bank English is allowed to be short. Account numbers and balances do not need extra explanation in public.",
       },
+      {
+        id: "errands-bank-fee",
+        label: "Ask about fees",
+        note: "It is normal to ask 'Is there a fee for this?' before a transfer or withdrawal, so there is no surprise charge.",
+      },
     ],
     followUps: [
       { id: "errands-bank-action", question: "Do you need to deposit, withdraw, or ask a question?", salienceQuestion: "What do you need to do with the {slot}?" },
       { id: "errands-bank-account", question: "Which account is involved?", salienceQuestion: "Which account should receive the {slot}?" },
       { id: "errands-bank-id", question: "How would you answer if they ask for ID?", salienceQuestion: "What ID supports the {slot}?" },
       { id: "errands-bank-receipt", question: "How would you ask for a receipt?", salienceQuestion: "How would you get a receipt for the {slot}?" },
+      { id: "errands-bank-fee-q", question: "How would you ask if there is a fee?", salienceQuestion: "What fee applies to the {slot}?" },
+      { id: "errands-bank-amount", question: "How would you say the amount clearly?", salienceQuestion: "How would you confirm the {slot} amount?" },
     ],
   },
   {
@@ -332,12 +353,19 @@ export const speakTopics = [
         label: "Pointing is fine",
         note: "For stains or delicate items, pointing and saying 'this spot' or 'this shirt is delicate' is enough.",
       },
+      {
+        id: "errands-laundry-ticket",
+        label: "Keep the ticket",
+        note: "Shops give a ticket or receipt for pickup. Asking 'Do I need a ticket to pick up?' keeps the exchange smooth.",
+      },
     ],
     followUps: [
       { id: "errands-laundry-service", question: "What laundry service do you need?", salienceQuestion: "What should they do with the {slot}?" },
       { id: "errands-laundry-stain-q", question: "Is there a stain or special instruction?", salienceQuestion: "What is special about the {slot}?" },
       { id: "errands-laundry-time", question: "When do you need it ready?", salienceQuestion: "When do you need the {slot} back?" },
       { id: "errands-laundry-price", question: "How would you ask the price?", salienceQuestion: "How much will the {slot} cost?" },
+      { id: "errands-laundry-ticket-q", question: "How would you ask about a pickup ticket?", salienceQuestion: "How would you claim the {slot}?" },
+      { id: "errands-laundry-pay", question: "How would you ask when to pay?", salienceQuestion: "When do you pay for the {slot}?" },
     ],
   },
   {
@@ -376,12 +404,19 @@ export const speakTopics = [
         label: "Ask for estimate",
         note: "Before agreeing, it is normal to ask: 'How much will it cost?' and 'How long will it take?'",
       },
+      {
+        id: "errands-repair-warranty",
+        label: "Warranty on the repair",
+        note: "It is fine to ask 'Is there a warranty on the repair?' so you know if a re-fix is free if the problem comes back.",
+      },
     ],
     followUps: [
       { id: "errands-repair-problem", question: "What is wrong with the phone?", salienceQuestion: "How would you describe the {slot} problem?" },
       { id: "errands-repair-cost", question: "How would you ask for the cost?", salienceQuestion: "How much to fix the {slot}?" },
       { id: "errands-repair-time", question: "How would you ask how long it will take?", salienceQuestion: "How long will the {slot} take?" },
       { id: "errands-repair-pickup", question: "How would you ask when to pick it up?", salienceQuestion: "When can you pick up the {slot}?" },
+      { id: "errands-repair-warranty-q", question: "How would you ask about a warranty?", salienceQuestion: "What warranty covers the {slot}?" },
+      { id: "errands-repair-data", question: "How would you ask if your data is safe?", salienceQuestion: "How would you protect data during the {slot}?" },
     ],
   },
   {
@@ -420,12 +455,19 @@ export const speakTopics = [
         label: "For my family",
         note: "It is okay to ask about cards for children or family members. The desk expects these questions.",
       },
+      {
+        id: "errands-library-free",
+        label: "The card is usually free",
+        note: "Public library cards are usually free. Asking 'Is the card free?' is normal, and the answer is often yes.",
+      },
     ],
     followUps: [
       { id: "errands-library-who", question: "Who needs a library card?", salienceQuestion: "Who needs the {slot}?" },
       { id: "errands-library-docs", question: "How would you ask what documents are needed?", salienceQuestion: "What documents are needed for the {slot}?" },
       { id: "errands-library-borrow", question: "How would you ask how many books you can borrow?", salienceQuestion: "How many items can you borrow with the {slot}?" },
       { id: "errands-library-return", question: "How would you ask when to return books?", salienceQuestion: "When should you return the {slot}?" },
+      { id: "errands-library-free-q", question: "How would you ask if the card is free?", salienceQuestion: "Is there a cost for the {slot}?" },
+      { id: "errands-library-online", question: "How would you ask about online or e-book access?", salienceQuestion: "How would you use the {slot} online?" },
     ],
   },
 ] as const satisfies readonly FinalThemeSpeakTopic[];
