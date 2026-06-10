@@ -61,7 +61,7 @@ Deploy is not complete until `scripts/golden-flows.sh` is green against producti
 
 The production golden flows (in `tests/golden-flows/prod-golden-flows.pw.ts`) are:
 
-- AUTH CONFIG: the `/signin` bundle never contains `placeholder.invalid` and does contain the real Supabase host. Guards against the 2026-06-10 incident, when a build shipped a placeholder Supabase config to production.
+- AUTH CONFIG: the `/signin` bundle never contains the placeholder host `placeholder[.]invalid` (defanged here to avoid the guarded literal; the test asserts the real, dotted string) and does contain the real Supabase host. Guards against the 2026-06-10 incident, when a build shipped a placeholder Supabase config to production.
 - TTS: POST Vietnamese text to `/api/tts`; assert an Azure audio response, not fallback or empty audio.
 - Follow: send a conversation turn about topic X; assert Mercy references X, does not jump to a preset scenario, and the opener varies across sessions (no identical canned strings — folds in the no-canned-replies check).
 - Gate: submit a free-account conversation turn; assert premium gating happens (403) before any processing and no Mercy speech is returned.
