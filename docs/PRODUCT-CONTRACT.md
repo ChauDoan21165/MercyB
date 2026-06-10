@@ -57,14 +57,17 @@ Pre-written reply strings never ship as Mercy's speech.
 
 ## Golden-Flow Enforcement
 
-Deploy is not complete until `scripts/golden-flows.sh` is green against production.
+Deploy is not complete until `scripts/golden-flows.sh` is green against production. This is wired as a mandatory post-deploy CI gate — the `golden-flows-prod` job (`.gitlab-ci.yml`, `verify` stage; runs on main-push + manual) — and documented in `.github/workflows/DEPLOYMENT.md`.
 
-The production golden flows are:
+The production golden flows (in `tests/golden-flows/prod-golden-flows.pw.ts`) are:
 
+- AUTH CONFIG: the `/signin` bundle never contains `placeholder.invalid` and does contain the real Supabase host. Guards against the 2026-06-10 incident, when a build shipped a placeholder Supabase config to production.
 - TTS: POST Vietnamese text to `/api/tts`; assert an Azure audio response, not fallback or empty audio.
-- Follow: send a conversation turn about topic X; assert Mercy references X and does not jump to a preset scenario.
-- Gate: submit a free-account conversation turn; assert premium gating happens before processing.
-- No canned replies: opener varies across sessions and references learner context. This A10-owned check should fail if two generated sessions return identical canned strings.
+- Follow: send a conversation turn about topic X; assert Mercy references X, does not jump to a preset scenario, and the opener varies across sessions (no identical canned strings — folds in the no-canned-replies check).
+- Gate: submit a free-account conversation turn; assert premium gating happens (403) before any processing and no Mercy speech is returned.
+- SIGNIN: the auth backend the bundle points at is a real, reachable Supabase (GoTrue) instance, not the incident host.
+
+AUTH CONFIG, TTS, and SIGNIN need no secrets (the no-token smoke, always runnable). Follow and Gate require `GOLDEN_FLOW_PREMIUM_JWT` + `GOLDEN_FLOW_FREE_JWT`; see `reports/golden-flows-activation-runbook.md` for how to mint them and set them as masked CI/CD variables.
 
 Red golden flows mean the deploy is not done. Fix the product breach before moving to unrelated work.
 
