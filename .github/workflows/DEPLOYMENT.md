@@ -52,6 +52,33 @@ for incidents.
 
 ## Production deployment (main → prod)
 
+### 2026-06-10 incident lock: guarded deploys only
+
+Production deploys are frozen unless they use the guarded canonical
+path below. A bad deploy was built from a worktree without Supabase
+env and shipped `placeholder.invalid` in the auth bundle. The rule is
+now:
+
+1. Deploy only from `/Users/admin/MercyB`.
+2. Deploy only from local `main` exactly matching `origin/main`.
+3. `npm run build` must fail if `VITE_SUPABASE_URL` or
+   `VITE_SUPABASE_ANON_KEY` is missing.
+4. The built JS must be scanned before publish:
+   `grep -rq "placeholder.invalid" dist/assets/*.js` means **ABORT**.
+
+Canonical Cloudflare Pages command:
+
+```bash
+cd /Users/admin/MercyB
+git switch main
+git pull --ff-only origin main
+npm run deploy:cf-pages:main
+```
+
+Do not deploy from `/private/tmp/*`, agent worktrees, detached
+worktrees, or any branch-specific checkout. Merges may continue while
+this lock is active; deploys may not.
+
 ### Today (Netlify-native)
 
 Netlify is connected to the GitLab repo via Netlify's GitLab
@@ -74,11 +101,15 @@ For emergency manual deploys (e.g. Netlify's webhook is broken,
 or a quick one-off from a specific commit):
 
 ```bash
-# Build locally with prod-equivalent env
+cd /Users/admin/MercyB
+git switch main
+git pull --ff-only origin main
 npm install
 npm run build
-
-# Deploy to prod
+if grep -rq "placeholder.invalid" dist/assets/*.js; then
+  echo "ABORT: placeholder.invalid found in built JS assets" >&2
+  exit 2
+fi
 netlify deploy --prod --dir=dist --auth="$NETLIFY_AUTH_TOKEN"
 ```
 

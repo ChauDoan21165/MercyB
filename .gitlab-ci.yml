@@ -914,6 +914,11 @@ deploy-netlify-publish-only:
   script:
     - npm run build
     - |
+      if grep -rq "placeholder.invalid" dist/assets/*.js; then
+        echo "ABORT: placeholder.invalid found in built JS assets"
+        exit 2
+      fi
+    - |
       SITE_INFO_FILE="$(mktemp)"
       npx --yes netlify-cli api getSite --data "{\"site_id\":\"$NETLIFY_SITE_ID\"}" --auth "$NETLIFY_AUTH_TOKEN" > "$SITE_INFO_FILE"
       LOCKED_DEPLOY_ID="$(
@@ -965,11 +970,7 @@ deploy-cloudflare-pages:
       when: manual
     - when: never
   script:
-    - npm run build
-    # Belt-and-suspenders: never ship the SPA-breaking static 404.html — it
-    # makes CF Pages return 404 for deep routes instead of the SPA shell.
-    - rm -f dist/404.html
-    - npx --yes wrangler pages deploy dist --project-name mercyblade
+    - bash scripts/deploy-cloudflare-pages-main.sh
 
 # ── `backup` stage (unchanged from prior version) ──────────────────────
 

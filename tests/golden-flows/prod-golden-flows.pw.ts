@@ -4,6 +4,11 @@ const BASE_URL = process.env.GOLDEN_FLOW_BASE_URL ?? "https://mercyblade.com";
 const PREMIUM_JWT = process.env.GOLDEN_FLOW_PREMIUM_JWT ?? "";
 const FREE_JWT = process.env.GOLDEN_FLOW_FREE_JWT ?? "";
 const ALLOW_MISSING_SECRETS = process.env.GOLDEN_FLOW_ALLOW_MISSING_SECRETS === "1";
+const EXPECTED_SUPABASE_HOST = new URL(
+  process.env.GOLDEN_FLOW_SUPABASE_URL ||
+    process.env.VITE_SUPABASE_URL ||
+    "https://buemdfxyhxunzpgdoqin.supabase.co",
+).host;
 
 function requireToken(name: string, value: string): string {
   if (!value && !ALLOW_MISSING_SECRETS) {
@@ -22,6 +27,23 @@ function textFromJson(value: unknown): string {
 
 function normalizeForCannedCheck(value: string): string {
   return value.toLowerCase().replace(/\s+/g, " ").trim();
+}
+
+function jsAssetPathsFrom(text: string): string[] {
+  return Array.from(
+    text.matchAll(/(?:src|href)="([^"]*\/assets\/[^"]+\.js)"|["'](\.?\/?assets\/[^"']+\.js|\.\/[^"'/]+\.js)["']/g),
+    (match) => {
+      const assetPath = match[1] || match[2];
+      if (assetPath.startsWith("./")) return `assets/${assetPath.slice(2)}`;
+      if (assetPath.startsWith("/")) return assetPath.slice(1);
+      return assetPath;
+    },
+  );
+}
+
+function absoluteAssetUrl(assetPath: string): string {
+  if (assetPath.startsWith("http")) return assetPath;
+  return `${BASE_URL}${assetPath.startsWith("/") ? "" : "/"}${assetPath}`;
 }
 
 async function postLearnerLedConversationTurn(
@@ -118,5 +140,49 @@ test.describe.serial("production golden flows", () => {
     expect(message).toMatch(/premium required/i);
     expect(body).not.toHaveProperty("reply");
     expect(body).not.toHaveProperty("cost");
+  });
+
+  test("AUTH CONFIG: signin bundle points at real Supabase and never placeholder", async ({ request }) => {
+    test.setTimeout(180 * 1000);
+
+    const response = await request.get(`${BASE_URL}/signin`);
+    expect(response.status(), await response.text()).toBeLessThan(400);
+
+    const html = await response.text();
+    expect(html).not.toContain("placeholder.invalid");
+
+    const pending = [...new Set(jsAssetPathsFrom(html))];
+    const seen = new Set<string>();
+    const bundledJs: string[] = [];
+
+    expect(pending.length, "expected signin page to reference built JS assets").toBeGreaterThan(0);
+
+    while (pending.length > 0) {
+      const batch = pending.splice(0, 12).filter((assetPath) => {
+        if (seen.has(assetPath)) return false;
+        seen.add(assetPath);
+        return true;
+      });
+
+      const fetched = await Promise.all(
+        batch.map(async (assetPath) => {
+          const assetUrl = absoluteAssetUrl(assetPath);
+          const assetResponse = await request.get(assetUrl);
+          expect(assetResponse.status(), `${assetUrl}\n${await assetResponse.text()}`).toBeLessThan(400);
+          return assetResponse.text();
+        }),
+      );
+
+      for (const js of fetched) {
+        bundledJs.push(js);
+        for (const discovered of jsAssetPathsFrom(js)) {
+          if (!seen.has(discovered)) pending.push(discovered);
+        }
+      }
+    }
+
+    const joined = bundledJs.join("\n");
+    expect(joined).not.toContain("placeholder.invalid");
+    expect(joined).toContain(EXPECTED_SUPABASE_HOST);
   });
 });
