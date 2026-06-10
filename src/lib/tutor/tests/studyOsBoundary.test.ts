@@ -61,6 +61,17 @@ function isSpeakTopicFile(rel: string): boolean {
   return rel.startsWith(speakTopicsRelPrefix);
 }
 
+// The "shame/guilt mechanic" rule guards the Study OS ENGINE against shame
+// *mechanics*. speakTopics/* are CONTENT files where "shame" legitimately
+// appears in anti-shame coaching copy (MercyBlade is explicitly low-shame), so
+// the word-level scan would false-positive on the product's own values copy.
+// Only the shame WORD scan is exempted for content; every code-mechanic rule
+// (Supabase/XP/streak/writes/analytics) still applies to every file.
+function runtimeRuleAppliesToFile(label: string, rel: string): boolean {
+  if (label === "shame/guilt mechanic" && isSpeakTopicFile(rel)) return false;
+  return true;
+}
+
 describe("Study OS static boundary", () => {
   it("scans only the intended production tutor files", () => {
     const scannedFiles = productionFiles.map((file) => file.rel);
@@ -154,11 +165,28 @@ describe("Study OS static boundary", () => {
     for (const file of productionFiles) {
       const text = stripComments(file.text);
       for (const [pattern, label] of forbiddenRuntimePatterns) {
+        if (!runtimeRuleAppliesToFile(label, file.rel)) continue;
         if (pattern.test(text)) violations.push(`${file.rel}: ${label}`);
       }
     }
 
     expect(violations).toEqual([]);
+  });
+
+  it("exempts only the shame WORD rule for speakTopics content, never for engine files or other rules", () => {
+    // Content may carry anti-shame coaching copy ("without shame") — not a mechanic.
+    expect(
+      runtimeRuleAppliesToFile("shame/guilt mechanic", "src/lib/tutor/speakTopics/healthcareWorkerEnglish.ts"),
+    ).toBe(false);
+    // Engine logic mentioning shame IS a mechanic and must still fail.
+    expect(runtimeRuleAppliesToFile("shame/guilt mechanic", "src/lib/tutor/tutorEngine.ts")).toBe(true);
+    // The exemption is scoped to the shame rule only — code-mechanic rules apply everywhere.
+    expect(
+      runtimeRuleAppliesToFile("XP/streak mechanic", "src/lib/tutor/speakTopics/healthcareWorkerEnglish.ts"),
+    ).toBe(true);
+    expect(
+      runtimeRuleAppliesToFile("Supabase client usage", "src/lib/tutor/speakTopics/social.ts"),
+    ).toBe(true);
   });
 
   it("keeps raw learner text/audio out of Study OS local persistence files", () => {
