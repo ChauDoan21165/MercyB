@@ -6,8 +6,10 @@
 // VN-speaker strategies, and common mistakes. Three interactive
 // affordances:
 //   1. "Practice with audio" — uses useMercyVoice (PR #159) to TTS the
-//      script. Cloud (ElevenLabs) when the elevenlabs_tts flag is on,
-//      otherwise the browser-TTS fallback the hook provides natively.
+//      script via the ElevenLabs cloud voice. Contract C1: there is NO
+//      silent browser-TTS fallback. If the cloud voice is unavailable we
+//      show an explicit error + retry rather than read the script in a
+//      robotic device voice.
 //   2. "Take the practice test" — collapses the script + key, shows
 //      questions one at a time with text-input answers, then computes
 //      a band estimate via listeningRawToBand() at the end.
@@ -26,6 +28,11 @@ import {
 import { useMercyVoice } from "@/hooks/useMercyVoice";
 
 type Mode = "study" | "test";
+
+// Vietnamese-first. Shown when the cloud voice can't play; paired with a
+// retry control. C1 forbids silently dropping to a browser voice.
+const AUDIO_UNAVAILABLE_MESSAGE =
+  "Hiện chưa phát được giọng đọc. Vui lòng thử lại.";
 
 function answerMatches(given: string, expected: string): boolean {
   const norm = (s: string) =>
@@ -99,6 +106,7 @@ export default function ListeningItem() {
   const [mode, setMode] = useState<Mode>("study");
   const [showKey, setShowKey] = useState(false);
   const [audioActive, setAudioActive] = useState(false);
+  const [audioError, setAudioError] = useState<string | null>(null);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
 
@@ -139,27 +147,24 @@ export default function ListeningItem() {
       setAudioActive(false);
       return;
     }
+    setAudioError(null);
     setAudioActive(true);
-    try {
-      await speak({
-        text: item.audio_script,
-        language: "en",
-        // Browser-TTS fallback — used when ElevenLabs flag is OFF or
-        // cloud playback fails. Strips speaker labels (e.g. "TUTOR:")
-        // so the synth doesn't read "tutor colon".
-        browserFallback: (text) => {
-          if (typeof window === "undefined" || !window.speechSynthesis) return;
-          const cleaned = text.replace(/^[A-Z_ ]+:\s*/gm, "");
-          const utt = new SpeechSynthesisUtterance(cleaned);
-          utt.lang = "en-US";
-          utt.rate = 0.95;
-          window.speechSynthesis.cancel();
-          window.speechSynthesis.speak(utt);
-        },
-        onCloudEnd: () => setAudioActive(false),
-      });
-    } catch {
+    // C1: cloud voice only — no silent browser-TTS fallback. If cloud TTS is
+    // unavailable (flag off / no key / network / playback error) the hook
+    // returns cloud:false; surface an explicit error + retry instead of
+    // reading the script in a robotic device voice.
+    const res = await speak({
+      text: item.audio_script,
+      language: "en",
+      // No-op: the hook's browserFallback is deprecated/ignored under C1. Kept
+      // only to satisfy the current (pre-keystone) required-param signature; it
+      // never runs, so no browser voice can leak in.
+      browserFallback: () => {},
+      onCloudEnd: () => setAudioActive(false),
+    });
+    if (!res.cloud) {
       setAudioActive(false);
+      setAudioError(AUDIO_UNAVAILABLE_MESSAGE);
     }
   };
 
@@ -230,6 +235,21 @@ export default function ListeningItem() {
         <p className="mt-2 text-[11px] text-slate-500">
           Trình duyệt hiện không hỗ trợ TTS — bạn có thể đọc transcript bên dưới.
         </p>
+      ) : null}
+      {audioError ? (
+        <div
+          role="alert"
+          className="mt-2 flex flex-wrap items-center gap-2 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-xs text-rose-800"
+        >
+          <span>{audioError}</span>
+          <button
+            type="button"
+            onClick={handlePlayAudio}
+            className="rounded-full border border-rose-600 bg-white px-3 py-1 font-semibold text-rose-700 hover:bg-rose-100"
+          >
+            Thử lại · Retry
+          </button>
+        </div>
       ) : null}
 
       {/* Script — hidden when actively testing for cleaner focus */}
