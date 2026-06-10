@@ -281,4 +281,93 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
       { id: "transport-walk-route", question: "How would you ask for the best route?", salienceQuestion: "What route works for the {slot}?" },
     ],
   },
+  {
+    id: "topic-transportation-how-long-far",
+    labelEn: "Asking How Long Or How Far",
+    labelVi: "Hỏi mất bao lâu, bao xa",
+    category: "transportation",
+    seedInputs: ["How long does it take to get there?"],
+    detectionPatterns: [
+      /\b(?:how long does it|how far|how many stops|how long to get|how much time|take to get there)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "transportation-howlong-frame",
+        label: "How long does it take?",
+        note: "Vietnamese 'mất bao lâu' has no 'does/it,' so learners may say 'How long to go there?' The fuller frame 'How long does it take?' sounds natural and works anywhere.",
+      },
+      {
+        id: "transportation-howlong-article",
+        label: "How far is the station?",
+        note: "Vietnamese skips the article, so 'How far is station?' feels finished. English wants 'How far is the station?' Adding 'the' is a tiny step that smooths the question.",
+      },
+      {
+        id: "transportation-howlong-stops",
+        label: "How many stops, with -s",
+        note: "'How many stops is it?' needs the plural -s. Vietnamese does not mark plural, so 'how many stop' can slip out; 'how many' already means more than one and the -s matches it.",
+      },
+    ],
+    followUps: [
+      { id: "transportation-howlong-to", question: "Where are you measuring the time or distance to?", salienceQuestion: "How would you ask how long it takes to the {slot}?" },
+      { id: "transportation-howlong-far", question: "How would you ask how far it is?", salienceQuestion: "How would you ask how far the {slot} is?" },
+      { id: "transportation-howlong-stops-q", question: "How would you ask how many stops it is?", salienceQuestion: "How would you ask the number of stops to the {slot}?" },
+      { id: "transportation-howlong-leave", question: "How would you ask when you should leave?", salienceQuestion: "When should you leave for the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-transportation-map-next-stop",
+    labelEn: "Reading The Map Or The Next Stop",
+    labelVi: "Xem bản đồ hoặc trạm kế tiếp",
+    category: "transportation",
+    seedInputs: ["Is the next stop the one I need?"],
+    detectionPatterns: [
+      /\b(?:next stop|transit map|the map|which stop is next|where are we now|this stop|route map)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "transportation-map-next-article",
+        label: "The next stop",
+        note: "English says 'the next stop' with 'the.' Vietnamese 'trạm kế tiếp' needs no article, so 'next stop' alone can feel complete. The small 'the' makes it sound like a real announcement.",
+      },
+      {
+        id: "transportation-map-where-are-we",
+        label: "Where are we now?",
+        note: "A handy question on the map is 'Where are we now?' It is short and natural; learners may translate a longer phrase, but this simple frame is what locals say while checking a route.",
+      },
+    ],
+    followUps: [
+      { id: "transportation-map-next", question: "Which stop are you watching for?", salienceQuestion: "How would you ask if the next stop is the {slot}?" },
+      { id: "transportation-map-now", question: "How would you ask where you are right now?", salienceQuestion: "How would you ask where the {slot} is on the map?" },
+      { id: "transportation-map-count", question: "How would you ask how many stops are left?", salienceQuestion: "How many stops until the {slot}?" },
+      { id: "transportation-map-confirm", question: "How would you confirm you read the map right?", salienceQuestion: "How would you confirm the {slot} on the map?" },
+    ],
+  },
+  {
+    id: "topic-transportation-transfer-lines",
+    labelEn: "Transferring Between Lines",
+    labelVi: "Chuyển tuyến xe hoặc tàu",
+    category: "transportation",
+    seedInputs: ["Do I need to change trains to get there?"],
+    detectionPatterns: [
+      /\b(?:transfer|change trains|change buses|switch lines|connecting|do i need to change|next line)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "transportation-transfer-change-verb",
+        label: "Change trains / transfer",
+        note: "English says 'change trains' or 'transfer to the blue line.' A direct translation of 'đổi tàu' can sound unclear; 'change' and 'transfer' are the words on signs and in announcements.",
+      },
+      {
+        id: "transportation-transfer-get-off",
+        label: "Where do I get off to change?",
+        note: "A practical question mixes two phrasal verbs: 'Where do I get off to change lines?' These 'get off' and 'change' phrases have no direct Vietnamese equivalent, so saying them as a set lands clearly.",
+      },
+    ],
+    followUps: [
+      { id: "transportation-transfer-where", question: "Where do you think you need to change?", salienceQuestion: "How would you ask where to change for the {slot}?" },
+      { id: "transportation-transfer-line", question: "Which line are you trying to reach?", salienceQuestion: "How would you ask for the line to the {slot}?" },
+      { id: "transportation-transfer-confirm", question: "How would you confirm you got it right?", salienceQuestion: "How would you confirm the transfer to the {slot}?" },
+      { id: "transportation-transfer-help", question: "Who could you ask if you are unsure?", salienceQuestion: "Who could help you transfer toward the {slot}?" },
+    ],
+  },
 ];

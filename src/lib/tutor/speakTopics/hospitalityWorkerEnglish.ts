@@ -9,52 +9,6 @@ type D5SpeakTopic = SpeakTopicLibraryEntry & {
 
 export const speakTopics = [
   {
-    id: "topic-hospitality-check-in-check-out",
-    labelEn: "Hotel Check-in And Check-out",
-    labelVi: "Nhận và trả phòng khách sạn",
-    category: "hospitality-worker-english",
-    scenarioDescription:
-      "The learner works at a hotel front desk and needs to welcome guests, confirm reservations, explain deposits and IDs, issue keys, and complete check-out.",
-    aiRoleDefinition:
-      "Act as a hotel guest who asks about the reservation, payment, ID, room details, check-out time, receipt, and luggage storage.",
-    conversationDirections: [
-      "Open with a professional greeting and ask for the guest's name or reservation.",
-      "Practice confirming ID, payment method, deposit, room type, and number of nights.",
-      "Explain check-in time, check-out time, breakfast, Wi-Fi, parking, and key cards.",
-      "Ask whether the guest needs luggage storage, late check-out, or accessibility support.",
-      "Practice check-out questions about minibar, receipt, card charge, and stay feedback.",
-      "End with a warm close and clear next step.",
-    ],
-    warmthPatterns: [
-      "Use front-desk warmth that is polished, not overly personal.",
-      "Repeat important details slowly: room number, time, charge, and direction.",
-      "Balance friendliness with privacy around IDs and payment cards.",
-    ],
-    seedInputs: ["Welcome to the hotel. May I have your reservation name?"],
-    detectionPatterns: [
-      /\b(?:hotel check-in|hotel check in|check-out|check out|reservation name|key card|room number|late check-out|luggage storage)\b/i,
-    ],
-    l1InterferenceNotes: [
-      {
-        id: "hospitality-checkin-reservation-under",
-        label: "Reservation under your name",
-        note: "Hotel English often says 'Is the reservation under your name?' Learners may translate to 'reservation by your name,' but 'under' is the professional front-desk preposition.",
-      },
-      {
-        id: "hospitality-checkout-receipt",
-        label: "A receipt, not bill paper",
-        note: "Vietnamese learners may say 'bill paper' or 'red invoice' from local habits. In hotel service English, 'receipt' and 'invoice' are the useful words to separate.",
-      },
-    ],
-    followUps: [
-      { id: "hospitality-checkin-name", question: "How would you ask for the reservation name?", salienceQuestion: "What name is on the {slot}?" },
-      { id: "hospitality-checkin-id", question: "How would you ask for ID and payment politely?", salienceQuestion: "What ID or payment is needed for the {slot}?" },
-      { id: "hospitality-checkin-info", question: "What hotel details should you explain?", salienceQuestion: "What details matter for the {slot}?" },
-      { id: "hospitality-checkout-receipt", question: "How would you ask if they need a receipt?", salienceQuestion: "What receipt is needed for the {slot}?" },
-      { id: "hospitality-checkout-close", question: "How would you close the check-out warmly?", salienceQuestion: "How would you finish the {slot}?" },
-    ],
-  },
-  {
     id: "topic-hospitality-room-service-guest-requests",
     labelEn: "Room Service And Guest Requests",
     labelVi: "Dịch vụ phòng và yêu cầu của khách",
@@ -102,29 +56,28 @@ export const speakTopics = [
   },
   {
     id: "topic-hospitality-complaints-directions",
-    labelEn: "Guest Complaints And Directions",
-    labelVi: "Xử lý phàn nàn và chỉ đường",
+    labelEn: "Guest Complaints",
+    labelVi: "Xử lý phàn nàn của khách",
     category: "hospitality-worker-english",
     scenarioDescription:
-      "The learner works with hotel guests who complain about noise, cleanliness, room problems, or billing, and also asks for directions inside the hotel or nearby area.",
+      "The learner works with hotel guests who complain about noise, cleanliness, room problems, or billing, and needs to acknowledge the issue, gather details, and offer a realistic resolution.",
     aiRoleDefinition:
-      "Act as a hotel guest who is frustrated about a problem or needs clear directions to hotel facilities, transit, restaurants, parking, or nearby attractions.",
+      "Act as a hotel guest who is frustrated about a problem such as noise, a dirty room, broken AC, a missing item, or a wrong charge, and wants it taken seriously.",
     conversationDirections: [
       "Prompt the learner to acknowledge the complaint before asking details.",
       "Practice complaint vocabulary for noise, dirty room, broken AC, missing item, wrong charge, or slow service.",
       "Ask for room number, timing, and what resolution the guest wants.",
       "Offer realistic next steps such as sending maintenance, changing rooms, refund review, or manager follow-up.",
-      "Practice giving directions using lobby, elevator, hallway, front desk, parking garage, and nearby landmarks.",
-      "End by confirming the action taken or the route the guest should follow.",
+      "End by confirming the action taken and when the guest will hear back.",
     ],
     warmthPatterns: [
       "Lead with empathy and ownership: 'I'm sorry about that. Let me help.'",
       "Avoid arguing about the guest's feeling; clarify facts calmly.",
-      "Give directions in short steps and check if the guest understood.",
+      "Close the loop so the guest knows the next step and the timing.",
     ],
     seedInputs: ["I am sorry about the noise. Let me check what we can do."],
     detectionPatterns: [
-      /\b(?:guest complaint|noise complaint|dirty room|broken ac|wrong charge|give directions|front desk|elevator|parking garage|nearby restaurant)\b/i,
+      /\b(?:guest complaint|noise complaint|dirty room|broken ac|wrong charge|missing item|slow service|not happy with|wants a refund)\b/i,
     ],
     l1InterferenceNotes: [
       {
@@ -133,17 +86,16 @@ export const speakTopics = [
         note: "Vietnamese service speech may use a broad apology. In English hospitality, 'I'm sorry about the noise' names the issue and sounds more specific than 'sorry for everything.'",
       },
       {
-        id: "hospitality-directions-take-elevator",
-        label: "Take the elevator",
-        note: "Directions use fixed verbs: 'take the elevator,' 'go down the hallway,' and 'turn left at the lobby.' Learners may say 'go elevator' from Vietnamese word order.",
+        id: "hospitality-complaint-look-into",
+        label: "Look into it",
+        note: "A calm professional line is 'Let me look into that for you.' Learners may translate to 'I will see it'; 'look into it' is the service phrase that promises action without over-promising.",
       },
     ],
     followUps: [
       { id: "hospitality-complaint-issue", question: "How would you acknowledge the guest's problem?", salienceQuestion: "How would you acknowledge the {slot}?" },
       { id: "hospitality-complaint-detail", question: "What details do you need before fixing it?", salienceQuestion: "What details matter for the {slot}?" },
       { id: "hospitality-complaint-resolution", question: "What solution can you offer?", salienceQuestion: "What solution fits the {slot}?" },
-      { id: "hospitality-directions-route", question: "How would you give directions in two short steps?", salienceQuestion: "How would you direct someone to the {slot}?" },
-      { id: "hospitality-followup", question: "How would you confirm the guest is helped?", salienceQuestion: "How would you follow up on the {slot}?" },
+      { id: "hospitality-complaint-followup", question: "How would you confirm the guest is helped?", salienceQuestion: "How would you follow up on the {slot}?" },
     ],
   },
   {
@@ -190,7 +142,7 @@ export const speakTopics = [
     followUps: [
       { id: "hospitality-directions-place", question: "Where does the guest want to go?", salienceQuestion: "Where is the {slot}?" },
       { id: "hospitality-directions-elevator", question: "How would you mention the elevator or stairs?", salienceQuestion: "How do they reach the {slot}?" },
-      { id: "hospitality-directions-floor", question: "What floor or level is it on?", salienceQuestion: "Which floor has the {slot}?" },
+      { id: "hospitality-directions-floor-q", question: "What floor or level is it on?", salienceQuestion: "Which floor has the {slot}?" },
       { id: "hospitality-directions-turn", question: "What turns or hallway directions are needed?", salienceQuestion: "Which way leads to the {slot}?" },
       { id: "hospitality-directions-landmark", question: "What sign or landmark can they look for?", salienceQuestion: "What landmark helps find the {slot}?" },
       { id: "hospitality-directions-repeat", question: "How would you offer to repeat or show the way?", salienceQuestion: "How would you help with the {slot}?" },
@@ -289,8 +241,8 @@ export const speakTopics = [
     ],
     followUps: [
       { id: "hospitality-checkout-room", question: "How would you ask for the room number?", salienceQuestion: "Which room is the {slot}?" },
-      { id: "hospitality-checkout-charges", question: "How would you explain the charges?", salienceQuestion: "What charges are on the {slot}?" },
-      { id: "hospitality-checkout-receipt", question: "How would you offer a receipt?", salienceQuestion: "How should the guest receive the {slot}?" },
+      { id: "hospitality-checkout-charges-q", question: "How would you explain the charges?", salienceQuestion: "What charges are on the {slot}?" },
+      { id: "hospitality-checkout-receipt-q", question: "How would you offer a receipt?", salienceQuestion: "How should the guest receive the {slot}?" },
       { id: "hospitality-checkout-stay", question: "How would you ask about their stay?", salienceQuestion: "How was the guest's {slot}?" },
       { id: "hospitality-checkout-luggage", question: "How would you offer luggage storage?", salienceQuestion: "Where can they leave the {slot}?" },
       { id: "hospitality-checkout-goodbye", question: "How would you say goodbye professionally?", salienceQuestion: "How would you close the {slot}?" },

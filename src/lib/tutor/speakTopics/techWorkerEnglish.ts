@@ -56,29 +56,28 @@ export const speakTopics = [
   },
   {
     id: "topic-tech-worker-code-reviews-slack",
-    labelEn: "Code Reviews And Slack",
-    labelVi: "Review code và nhắn Slack",
+    labelEn: "Code Reviews",
+    labelVi: "Review code",
     category: "tech-worker-english",
     scenarioDescription:
-      "The learner is a developer writing Slack messages and code-review comments, asking for review, responding to feedback, and clarifying implementation choices.",
+      "The learner is a developer working through code-review comments: asking for a review with context, responding to feedback without sounding defensive, and explaining implementation choices.",
     aiRoleDefinition:
-      "Act as a senior teammate who reviews code, asks practical questions, and helps the learner keep written engineering communication clear and collaborative.",
+      "Act as a senior teammate who reviews code, asks practical questions, and helps the learner keep code-review communication clear and collaborative.",
     conversationDirections: [
       "Practice asking for a code review with context, link, and urgency.",
       "Prompt the learner to respond to review comments without sounding defensive.",
       "Ask them to explain why they chose an approach, library, or API.",
-      "Practice Slack updates for delays, fixes, deployments, and production issues.",
       "Use phrases for uncertainty: 'I think,' 'It looks like,' 'I need to verify.'",
       "End by confirming whether they will update code, add tests, or follow up later.",
     ],
     warmthPatterns: [
       "Model collaborative phrasing: 'Good point, I'll adjust that.'",
-      "Keep Slack messages direct but not abrupt.",
+      "Frame review comments as questions, not commands.",
       "Separate technical disagreement from personal tone.",
     ],
     seedInputs: ["Could you review my pull request when you have time?"],
     detectionPatterns: [
-      /\b(?:code review|review my pull request|review my pr|slack|feedback comment|deployment update|production issue|add tests)\b/i,
+      /\b(?:code review|review my pull request|review my pr|feedback comment|pr comment|nit|approve the pr|add tests)\b/i,
     ],
     l1InterferenceNotes: [
       {
@@ -87,16 +86,15 @@ export const speakTopics = [
         note: "Vietnamese can omit possessives naturally, but English work messages need them: 'Could you review my PR?' sounds clearer than 'review PR for me.'",
       },
       {
-        id: "tech-slack-softener",
-        label: "Direct, with a soft edge",
-        note: "A Vietnamese message may rely on relationship and tone. In Slack, one small phrase like 'when you have time' or 'no rush' carries that warmth in writing.",
+        id: "tech-review-not-defensive",
+        label: "Responding without defending",
+        note: "A reviewer suggestion is not a personal attack. 'Good point — I'll change that' or 'Could you explain the concern?' keeps the tone collaborative, not defensive.",
       },
     ],
     followUps: [
       { id: "tech-review-context", question: "What context should you include with the review request?", salienceQuestion: "What context helps with the {slot}?" },
       { id: "tech-review-feedback", question: "How would you respond to a reviewer suggestion?", salienceQuestion: "How would you respond about the {slot}?" },
       { id: "tech-review-choice", question: "How would you explain your implementation choice?", salienceQuestion: "Why did you choose the {slot}?" },
-      { id: "tech-slack-delay", question: "How would you write a short delay update in Slack?", salienceQuestion: "What is delayed with the {slot}?" },
       { id: "tech-review-next", question: "How would you confirm the next code change?", salienceQuestion: "What will you change in the {slot}?" },
     ],
   },
@@ -191,7 +189,7 @@ export const speakTopics = [
       { id: "tech-slack-context", question: "What context does your teammate need first?", salienceQuestion: "What context matters for the {slot}?" },
       { id: "tech-slack-ask", question: "What exactly are you asking for?", salienceQuestion: "What do you need about the {slot}?" },
       { id: "tech-slack-urgency", question: "How urgent is the message?", salienceQuestion: "How urgent is the {slot}?" },
-      { id: "tech-slack-delay", question: "How would you explain a delay?", salienceQuestion: "Why is the {slot} delayed?" },
+      { id: "tech-slack-delay-fu", question: "How would you explain a delay?", salienceQuestion: "Why is the {slot} delayed?" },
       { id: "tech-slack-thread", question: "How would you update the thread?", salienceQuestion: "What update belongs with the {slot}?" },
       { id: "tech-slack-next", question: "What next step would you promise?", salienceQuestion: "What happens next with the {slot}?" },
     ],
@@ -242,7 +240,7 @@ export const speakTopics = [
       { id: "tech-debug-expected", question: "What did you expect to happen?", salienceQuestion: "What should the {slot} do?" },
       { id: "tech-debug-steps", question: "What are the steps to reproduce it?", salienceQuestion: "How can someone reproduce the {slot}?" },
       { id: "tech-debug-logs", question: "What log or error message can you share?", salienceQuestion: "What evidence shows the {slot}?" },
-      { id: "tech-debug-tried", question: "What have you already tried?", salienceQuestion: "What did you try for the {slot}?" },
+      { id: "tech-debug-tried-q", question: "What have you already tried?", salienceQuestion: "What did you try for the {slot}?" },
       { id: "tech-debug-ask", question: "What specific help do you need?", salienceQuestion: "What help do you need with the {slot}?" },
     ],
   },
