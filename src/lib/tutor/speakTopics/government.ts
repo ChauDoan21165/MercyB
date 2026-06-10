@@ -30,7 +30,11 @@ export const speakTopics = [
       "Normalize asking again when a process is unclear.",
       "Protect privacy while practicing document names.",
     ],
-    seedInputs: ["I need help at the government service counter."],
+    seedInputs: [
+      "I need help at the government service counter.",
+      "Which counter do I go to for this form?",
+      "Do I need to take a queue number first?",
+    ],
     detectionPatterns: [
       /\b(?:government service|service counter|municipal office|city hall|public office|official form|queue number|processing time)\b/i,
     ],
@@ -49,6 +53,16 @@ export const speakTopics = [
         id: "government-counter-copy-original",
         label: "Copy or original",
         note: "Government counters often ask whether a document is an original or a copy. A useful question is 'Do you need the original, or is a copy okay?'",
+      },
+      {
+        id: "government-counter-vocab",
+        label: "Vocabulary",
+        note: "service counter = quầy dịch vụ; queue number = số thứ tự; processing time = thời gian xử lý; original / copy = bản gốc / bản sao.",
+      },
+      {
+        id: "government-counter-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ cho em hỏi nộp đơn này ở quầy nào ạ?' ↔ EN: 'Which counter do I submit this form at?'",
       },
     ],
     followUps: [
@@ -82,7 +96,11 @@ export const speakTopics = [
       "Avoid judgment about income, family status, or immigration status.",
       "Keep advice procedural: ask the office, read the notice, confirm in writing.",
     ],
-    seedInputs: ["I want to ask about a benefits application."],
+    seedInputs: [
+      "I want to ask about a benefits application.",
+      "Am I eligible for this benefit?",
+      "What documents do I need to apply?",
+    ],
     detectionPatterns: [
       /\b(?:benefits application|public benefits|support payment|assistance program|childcare benefit|health coverage|eligibility|application status)\b/i,
     ],
@@ -101,6 +119,16 @@ export const speakTopics = [
         id: "government-benefits-written-confirmation",
         label: "Get it in writing",
         note: "For deadlines or missing documents, ask for written confirmation: 'Could you send that to me in writing?' It protects you from remembering details wrong.",
+      },
+      {
+        id: "government-benefits-vocab",
+        label: "Vocabulary",
+        note: "benefit = phúc lợi, trợ cấp; eligible = đủ điều kiện; application status = tình trạng hồ sơ; deadline = hạn chót.",
+      },
+      {
+        id: "government-benefits-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ cho em hỏi em có đủ điều kiện nhận trợ cấp này không ạ?' ↔ EN: 'Am I eligible for this benefit?'",
       },
     ],
     followUps: [
@@ -134,7 +162,11 @@ export const speakTopics = [
       "Treat correction requests as normal and solvable.",
       "Remind the learner to avoid saying unnecessary private numbers.",
     ],
-    seedInputs: ["I need to update my address record."],
+    seedInputs: [
+      "I need to update my address record.",
+      "I moved last month — how do I change my address?",
+      "What counts as proof of address here?",
+    ],
     detectionPatterns: [
       /\b(?:address record|residence record|proof of address|update my address|change my address|current address|old address|move date)\b/i,
     ],
@@ -153,6 +185,16 @@ export const speakTopics = [
         id: "government-address-spelling",
         label: "Spell the street name",
         note: "If the clerk writes the address wrong, a calm phrase is 'Could I spell the street name for you?' This fixes the record without sounding blaming.",
+      },
+      {
+        id: "government-address-vocab",
+        label: "Vocabulary",
+        note: "proof of address = giấy tờ chứng minh địa chỉ; update = cập nhật; move date = ngày chuyển nhà; record = hồ sơ, sổ ghi.",
+      },
+      {
+        id: "government-address-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Em mới chuyển nhà, em cần cập nhật địa chỉ ạ.' ↔ EN: 'I just moved, so I need to update my address.'",
       },
     ],
     followUps: [
