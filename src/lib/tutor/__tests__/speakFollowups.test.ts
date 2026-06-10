@@ -661,7 +661,7 @@ describe("speakFollowups", () => {
     it("ships the D3 banking theme with scenario metadata", () => {
       const libraryIds = new Set(SPEAK_TOPIC_LIBRARY.map((topic) => topic.id));
 
-      expect(bankingSpeakTopics).toHaveLength(3);
+      expect(bankingSpeakTopics).toHaveLength(9);
       for (const topic of bankingSpeakTopics) {
         expect(libraryIds.has(topic.id), topic.id).toBe(true);
         expect(topic.scenarioDescription?.trim().length).toBeGreaterThan(40);
