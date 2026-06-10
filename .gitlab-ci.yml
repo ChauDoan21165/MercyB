@@ -837,6 +837,20 @@ check-new-orphans:shared-fallback:
   cache: {}
   script: *orphan_guard_script
 
+ci-job-tags-guard:
+  <<: [*local_runner]
+  image: node:24-bookworm-slim
+  interruptible: true
+  stage: test
+  cache: {}
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+  script:
+    - node scripts/ci/check-job-tags.mjs
+
 post-merge-worktree-reaper:
   <<: [*local_runner]
   interruptible: true
