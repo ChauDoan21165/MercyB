@@ -21,6 +21,16 @@ export const introductionSpeakTopics: readonly SpeakTopic[] = [
         label: "Name plus context",
         note: "A natural English introduction often gives name + situation together: 'I'm Linh. I just moved in upstairs.'",
       },
+      {
+        id: "intro-neighbor-first-name",
+        label: "First names are normal",
+        note: "With neighbors, English usually goes by first name right away: 'I'm Linh — nice to meet you.' You don't need a formal title like 'Mrs.'; offering your first name is the friendly default.",
+      },
+      {
+        id: "intro-neighbor-offer-help",
+        label: "A warm, open closing",
+        note: "'Có gì cứ gọi em' maps to 'Let me know if you ever need anything.' A small open offer like that is a natural, low-pressure way to end a first hello with a neighbor.",
+      },
     ],
     followUps: [
       { id: "intro-neighbor-name", question: "How would you say your name to the neighbor?", salienceQuestion: "How would you introduce yourself near the {slot}?" },
@@ -49,6 +59,16 @@ export const introductionSpeakTopics: readonly SpeakTopic[] = [
         label: "Role before detail",
         note: "VN learners often need practice saying role and team clearly before extra background, because English workplace introductions value quick context.",
       },
+      {
+        id: "intro-work-first-names",
+        label: "First names with colleagues",
+        note: "Vietnamese marks age and rank (anh/chị/em); most English-speaking workplaces use first names for everyone, even a manager, unless told otherwise. 'Hi, I'm Linh' to anyone on the team is normal, not rude.",
+      },
+      {
+        id: "intro-work-ask-help",
+        label: "Asking for help on day one",
+        note: "'Could you show me where...?' or 'Would you mind helping me with...?' are warm, natural day-one requests. Asking is expected of a new hire — it reads as engaged, not weak.",
+      },
     ],
     followUps: [
       { id: "intro-work-name-role", question: "How would you say your name and new role?", salienceQuestion: "How would you connect your name to the {slot}?" },
@@ -76,6 +96,16 @@ export const introductionSpeakTopics: readonly SpeakTopic[] = [
         id: "intro-teacher-politeness",
         label: "Warm but not too formal",
         note: "For school conversations, friendly English usually sounds simple: greeting, relationship, child's name, then one clear question.",
+      },
+      {
+        id: "intro-school-teacher-title",
+        label: "How to address the teacher",
+        note: "In English you usually say 'Ms./Mr.' + last name (e.g. 'Ms. Carter'), not 'Teacher' as a title the way 'cô/thầy' is used in Vietnamese. If you don't know the name yet, a simple 'Hi' is fine to start.",
+      },
+      {
+        id: "intro-school-parent-word",
+        label: "Parent / guardian",
+        note: "'Phụ huynh' is 'parent.' Schools also say 'parent or guardian' so any caregiver is included. 'I'm Minh's mother' or 'I'm Minh's guardian' both clearly say who you are.",
       },
     ],
     followUps: [
