@@ -588,7 +588,7 @@ serve(wrapHandler("ai-chat", async (req) => {
       const adminLevel = await (async () => {
         try {
           const { data, error } = await supabaseAdmin.rpc("get_admin_level", {
-            p_user_id: user.id,
+            _user_id: user.id,
           });
           if (error || typeof data !== "number") return 0;
           return data;
