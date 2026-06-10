@@ -12,7 +12,7 @@
   "definition": "Candidate Vietnamese-L1 interference items for human review before any promotion into VIETLISH_CORPUS. Each entry is a non-native English production (vietlish) paired with its natural target (natural), the VN source pattern with diacritics (sourcePattern), and a contextual sentence. A handful of entries are deliberate natural 'control' anchors (flagged in sourcePattern) so reviewers can confirm the detector abstains on natural usage.",
   "dedupedAgainst": "live 354-entry VIETLISH_CORPUS (zero string overlap), A4 d4 wave (...corpus-d4-wave-200.json, separate file), A6 !690 (selector test only)",
   "generatedFor": "2026-06-10 CEO directive D4-2",
-  "count": 200,
+  "count": 195,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -511,14 +511,6 @@
       "context": "I do not mind, it depend of you."
     },
     {
-      "vietlish": "I am good in math",
-      "natural": "I am good at math",
-      "sourcePattern": "giỏi toán -> 'good in' instead of 'good at'",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Do not worry, I am good in math."
-    },
-    {
       "vietlish": "I am afraid with dog",
       "natural": "I am afraid of dogs",
       "sourcePattern": "sợ chó -> 'afraid with' instead of 'afraid of'",
@@ -839,14 +831,6 @@
       "context": "Excuse me teacher, I would like to borrow your few minutes."
     },
     {
-      "vietlish": "wish you a nice day",
-      "natural": "have a nice day",
-      "sourcePattern": "chúc một ngày tốt lành -> 'wish you' calque to close a chat",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Thank you for helping, wish you a nice day."
-    },
-    {
       "vietlish": "best regard, Minh",
       "natural": "best regards, Minh",
       "sourcePattern": "trân trọng -> singular 'regard' in an email sign-off",
@@ -1149,14 +1133,6 @@
       "category": "literal_translation",
       "frequency": "medium",
       "context": "It is famous, in my city have many tourists."
-    },
-    {
-      "vietlish": "is very far from here",
-      "natural": "it is very far from here",
-      "sourcePattern": "dropped dummy subject 'it'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Take a taxi, is very far from here."
     },
     {
       "vietlish": "rain very big outside",
@@ -1503,14 +1479,6 @@
       "context": "I cannot work today, I am fever since last night."
     },
     {
-      "vietlish": "my stomach is not comfortable",
-      "natural": "my stomach is upset",
-      "sourcePattern": "khó chịu trong bụng -> 'not comfortable' calque",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "I ate something bad, my stomach is not comfortable."
-    },
-    {
       "vietlish": "I feel cold in my body",
       "natural": "I feel cold",
       "sourcePattern": "lạnh trong người -> redundant 'in my body'",
@@ -1583,14 +1551,6 @@
       "context": "You are right, I think so too me."
     },
     {
-      "vietlish": "she cooks very delicious",
-      "natural": "she cooks really well",
-      "sourcePattern": "nấu ngon -> 'delicious' as a manner adverb",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Visit her house, she cooks very delicious."
-    },
-    {
       "vietlish": "I will try my best to do",
       "natural": "I will try my best",
       "sourcePattern": "cố gắng hết sức -> redundant trailing 'to do'",
@@ -1622,5 +1582,6 @@
       "frequency": "medium",
       "context": "Do not wait for me, I go to there by myself."
     }
-  ]
+  ],
+  "dedupeNote": "2026-06-10 A10 coherence pass: removed 5 cross-file duplicate candidates (4 already present in wave1 step11-vietlish-corpus-d4-wave-200.json; 1 case-duplicate of the live VIETLISH_CORPUS entry 'Wish you a nice day'). Canonical copies retained in wave1 / live."
 }
