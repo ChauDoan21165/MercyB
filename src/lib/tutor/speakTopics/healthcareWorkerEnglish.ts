@@ -170,4 +170,188 @@ export const speakTopics = [
       { id: "healthcare-worker-terms-spell", question: "How would you spell a medication or clinic name to confirm it?", salienceQuestion: "How would you spell the {slot}?" },
     ],
   },
+  {
+    id: "topic-healthcare-worker-patient-intake",
+    labelEn: "Patient Intake Questions",
+    labelVi: "Hỏi thông tin ban đầu của bệnh nhân",
+    category: "healthcare-worker-english",
+    scenarioDescription:
+      "The learner checks in a patient, gathers basic symptoms, confirms identity, asks about medications and allergies, and prepares the patient for the doctor.",
+    aiRoleDefinition:
+      "Act as a patient who may be worried, unclear, or in pain, while allowing the healthcare worker to guide the intake with calm professional questions.",
+    conversationDirections: [
+      "Open by explaining that you need to ask a few intake questions.",
+      "Confirm the patient's name and date of birth before clinical details.",
+      "Ask what brought the patient in today and when it started.",
+      "Ask about allergies, medications, and relevant medical history.",
+      "Use plain language when the patient does not understand a term.",
+      "Close by explaining what will happen next.",
+    ],
+    warmthPatterns: [
+      "Use calm permission frames like 'I need to ask...' and 'Is it okay if...?'",
+      "Keep safety questions direct without sounding rushed.",
+      "Reassure with next-step language instead of vague comfort.",
+    ],
+    seedInputs: ["I need to ask you a few questions before the doctor comes in."],
+    detectionPatterns: [
+      /\b(?:patient intake|medical history|symptoms|allergies|medications|date of birth|insurance card|before the doctor)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "hcw-intake-dob",
+        label: "Date of birth, not just age",
+        note: "Vietnamese staff may ask age first because it feels natural. In clinics, 'Can you confirm your date of birth?' is a standard safety check and sounds professional, not cold.",
+      },
+      {
+        id: "hcw-intake-allergic-to",
+        label: "Allergic to medication",
+        note: "'Dị ứng thuốc' often comes out as 'you allergy medicine?' The clear clinical frame is 'Are you allergic to any medications?' Warm tone matters, but the safety word 'allergic' should be direct.",
+      },
+    ],
+    followUps: [
+      { id: "hcw-intake-open", question: "How would you explain that you need to ask intake questions?", salienceQuestion: "How would you start the {slot} kindly?" },
+      { id: "hcw-intake-id", question: "How would you confirm the patient's name and date of birth?", salienceQuestion: "How would you confirm the {slot} safely?" },
+      { id: "hcw-intake-symptoms", question: "How would you ask what brought them in today?", salienceQuestion: "How would you ask about the {slot}?" },
+      { id: "hcw-intake-meds", question: "How would you ask about allergies and medications?", salienceQuestion: "How would you ask about the {slot} clearly?" },
+      { id: "hcw-intake-close", question: "How would you tell them what happens next?", salienceQuestion: "How would you close the {slot} with reassurance?" },
+    ],
+  },
+  {
+    id: "topic-healthcare-worker-explaining-procedure",
+    labelEn: "Explaining A Simple Procedure",
+    labelVi: "Giải thích một thủ thuật đơn giản",
+    category: "healthcare-worker-english",
+    scenarioDescription:
+      "The learner explains a routine check or procedure such as blood pressure, temperature, swab, injection, or blood draw before performing it.",
+    aiRoleDefinition:
+      "Act as a patient who wants to know what will happen, how long it takes, whether it hurts, and what they should do during the procedure.",
+    conversationDirections: [
+      "Name the procedure or check before starting.",
+      "Ask permission or signal what you are about to do.",
+      "Explain the steps in simple order.",
+      "Describe what the patient may feel using words like pinch, pressure, or sting.",
+      "Tell the patient what to do with their arm, body, or breathing.",
+      "End by saying it is finished and what happens next.",
+    ],
+    warmthPatterns: [
+      "Announce touch before touching the patient.",
+      "Use short, steady sentences for nervous patients.",
+      "Balance honesty about discomfort with reassuring next steps.",
+    ],
+    seedInputs: ["I am going to check your blood pressure now."],
+    detectionPatterns: [
+      /\b(?:blood pressure|temperature|pulse|vital signs|swab|injection|draw blood|procedure|check your)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "hcw-procedure-going-to",
+        label: "Say what you will do before touching",
+        note: "In Vietnamese clinics, action plus gesture may be enough. In English care settings, 'I'm going to...' before touching a patient builds consent and trust.",
+      },
+      {
+        id: "hcw-procedure-small-pain",
+        label: "Sting, pinch, pressure",
+        note: "Words like 'sting,' 'pinch,' and 'pressure' are hard because Vietnamese may use broader 'đau.' These small words help patients know what to expect without alarming them.",
+      },
+    ],
+    followUps: [
+      { id: "hcw-procedure-name", question: "What procedure or check are you explaining?", salienceQuestion: "How would you name the {slot}?" },
+      { id: "hcw-procedure-consent", question: "How would you ask or signal permission first?", salienceQuestion: "How would you ask before the {slot}?" },
+      { id: "hcw-procedure-steps", question: "How would you explain the next two steps?", salienceQuestion: "What happens during the {slot}?" },
+      { id: "hcw-procedure-feel", question: "How would you describe what the patient may feel?", salienceQuestion: "What might the {slot} feel like?" },
+      { id: "hcw-procedure-after", question: "How would you tell them it is finished?", salienceQuestion: "How would you finish the {slot} warmly?" },
+    ],
+  },
+  {
+    id: "topic-healthcare-worker-family-update",
+    labelEn: "Updating A Family Member",
+    labelVi: "Cập nhật cho người nhà bệnh nhân",
+    category: "healthcare-worker-english",
+    scenarioDescription:
+      "The learner updates a family member in a waiting room or hallway while staying calm, accurate, and respectful of privacy rules.",
+    aiRoleDefinition:
+      "Act as a concerned family member who wants a status update, timing, and reassurance but may ask for information the worker cannot share.",
+    conversationDirections: [
+      "Give a calm status update using careful words like stable when appropriate.",
+      "Explain who will provide more detailed medical information.",
+      "Give a practical wait time or next step if known.",
+      "Handle privacy limits with a respectful boundary.",
+      "Acknowledge the family's worry without promising outcomes.",
+      "Close with where to wait or who will come next.",
+    ],
+    warmthPatterns: [
+      "Use careful reassurance without overpromising.",
+      "Set privacy boundaries in a respectful tone.",
+      "Recognize worry with short human phrases.",
+    ],
+    seedInputs: ["Your mother is stable, and the doctor will speak with you soon."],
+    detectionPatterns: [
+      /\b(?:family update|your mother|your father|stable|doctor will speak|waiting room|condition|visiting hours)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "hcw-family-stable",
+        label: "Stable is a careful word",
+        note: "Vietnamese family updates may use comforting words quickly. In English healthcare, 'stable' is useful because it reassures without promising too much.",
+      },
+      {
+        id: "hcw-family-privacy",
+        label: "Privacy limits",
+        note: "Family-centered Vietnamese culture can expect broad sharing. A warm boundary is 'I can ask the nurse what information we can share' so privacy rules stay respectful.",
+      },
+    ],
+    followUps: [
+      { id: "hcw-family-status", question: "How would you give a calm status update?", salienceQuestion: "How would you explain the {slot} calmly?" },
+      { id: "hcw-family-wait", question: "How would you explain the wait?", salienceQuestion: "How long might the {slot} take?" },
+      { id: "hcw-family-doctor", question: "How would you say the doctor will speak with them?", salienceQuestion: "Who will explain the {slot}?" },
+      { id: "hcw-family-boundary", question: "How would you handle a privacy question?", salienceQuestion: "How would you protect the {slot}?" },
+      { id: "hcw-family-comfort", question: "What warm sentence could you add?", salienceQuestion: "How would you show care about the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-healthcare-worker-call-light-safety",
+    labelEn: "Patient Safety And Call Light",
+    labelVi: "An toàn bệnh nhân và nút gọi hỗ trợ",
+    category: "healthcare-worker-english",
+    scenarioDescription:
+      "The learner explains fall prevention, call light use, walker or wheelchair support, and safety instructions to a patient in a room.",
+    aiRoleDefinition:
+      "Act as a patient who may feel independent, confused, or impatient, and needs the worker to explain safety instructions clearly and kindly.",
+    conversationDirections: [
+      "Show the patient where the call light or call bell is.",
+      "Explain when to press it and what help they can ask for.",
+      "Ask the patient to call before getting out of bed.",
+      "Explain the safety reason without blaming the patient.",
+      "Mention walker, wheelchair, socks, or bed alarm if relevant.",
+      "Confirm the patient understands the plan.",
+    ],
+    warmthPatterns: [
+      "Make safety sound caring, not controlling.",
+      "Use visible gestures with simple English.",
+      "Ask for confirmation in a low-pressure way.",
+    ],
+    seedInputs: ["Please press the call light before you get out of bed."],
+    detectionPatterns: [
+      /\b(?:call light|call bell|fall risk|get out of bed|walker|wheelchair|nonslip socks|safety)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "hcw-safety-call-light",
+        label: "Call light / call bell",
+        note: "There may be no familiar Vietnamese equivalent for 'call light.' Showing the button and saying 'Press this if you need help' makes the English practical right away.",
+      },
+      {
+        id: "hcw-safety-before",
+        label: "Before you get up",
+        note: "Patients may hear the instruction as optional politeness. 'Please call us before you get up' is warm, clear, and safety-focused without sounding angry.",
+      },
+    ],
+    followUps: [
+      { id: "hcw-safety-show", question: "How would you show the patient the call light?", salienceQuestion: "How would you explain the {slot}?" },
+      { id: "hcw-safety-reason", question: "How would you explain why it matters?", salienceQuestion: "Why is the {slot} important?" },
+      { id: "hcw-safety-before-q", question: "How would you ask them to call before getting up?", salienceQuestion: "What should happen before the {slot}?" },
+      { id: "hcw-safety-repeat", question: "How would you ask them to repeat the plan?", salienceQuestion: "How would you confirm the {slot}?" },
+      { id: "hcw-safety-warm", question: "How would you make it sound caring, not bossy?", salienceQuestion: "How would you soften the {slot}?" },
+    ],
+  },
 ] as const satisfies readonly D4ProfessionalSpeakTopic[];
