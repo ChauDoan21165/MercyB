@@ -1,15 +1,20 @@
 import type { SpeakTopicLibraryEntry } from "../speakTopicLibrary";
 
 // Phone call theme. Deterministic / client-side; copy is warm and low-shame.
-// A9 batch-2 deepening: each topic carries 3 L1 interference notes and 6
-// conversation directions (followUps) within the existing schema.
+// A9 batch-2 deepening gave each topic 3 L1 notes and 6 follow-ups; this pass
+// adds a 4th L1 note (quoting the Vietnamese source phrase with full diacritics)
+// and a second seed-input dialogue variant per topic. Notes name genuine
+// Vietnamese→English interference as friendly context, never a correction.
 export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
   {
     id: "topic-phone-call-making-appointment",
     labelEn: "Calling To Make An Appointment",
     labelVi: "Gọi điện đặt lịch hẹn",
     category: "phone-call",
-    seedInputs: ["Hi, I would like to make an appointment."],
+    seedInputs: [
+      "Hi, I would like to make an appointment.",
+      "Hello, I'm calling to book an appointment for next week.",
+    ],
     detectionPatterns: [
       /\b(?:make an appointment|book an appointment|call to book|schedule an appointment|available time)\b/i,
     ],
@@ -29,6 +34,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "First visit or returning",
         note: "Offices often ask 'Are you a new patient?' or 'Have you been here before?' A short 'It's my first time' answers it and moves the call along.",
       },
+      {
+        id: "phone-appointment-hen-not-date",
+        label: "Hẹn is 'appointment,' not 'date'",
+        note: "'Lịch hẹn' is exactly 'an appointment.' Translating 'hẹn' as 'a date' sounds romantic in English. For a clinic, office, or salon, say 'an appointment' — 'date' here only means the day on the calendar.",
+      },
     ],
     followUps: [
       { id: "phone-appointment-service", question: "What appointment do you need?", salienceQuestion: "What kind of appointment is the {slot}?" },
@@ -44,7 +54,10 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Asking To Speak To Someone",
     labelVi: "Xin gặp một người qua điện thoại",
     category: "phone-call",
-    seedInputs: ["May I speak with Ms. Lee, please?"],
+    seedInputs: [
+      "May I speak with Ms. Lee, please?",
+      "Hello, is Mr. Tran available right now?",
+    ],
     detectionPatterns: [
       /\b(?:may i speak|can i speak|speak with|speak to|is .* available|transfer me)\b/i,
     ],
@@ -64,6 +77,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Who's calling?",
         note: "The other side often asks 'Who's calling?' or 'May I ask who's calling?' A simple 'This is Linh' is the expected answer — it's not a personal question.",
       },
+      {
+        id: "phone-speak-gap-is-speak",
+        label: "Gặp on the phone is 'speak to'",
+        note: "'Cho tôi gặp anh Nam' translates literally as 'let me meet Nam,' so 'I want to meet him' can slip out. On the phone the verb is 'speak to' or 'speak with': 'May I speak to Nam?' You 'meet' in person, but 'speak to' by phone.",
+      },
     ],
     followUps: [
       { id: "phone-speak-name", question: "Who do you want to speak with?", salienceQuestion: "Who do you need for the {slot}?" },
@@ -79,7 +97,10 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Leaving A Voicemail",
     labelVi: "Để lại tin nhắn thoại",
     category: "phone-call",
-    seedInputs: ["Hi, this is Linh. Please call me back when you can."],
+    seedInputs: [
+      "Hi, this is Linh. Please call me back when you can.",
+      "Hello, this is Nam. I'm calling about my order — please call me back.",
+    ],
     detectionPatterns: [
       /\b(?:voicemail|leave a message|call me back|after the beep|missed your call|this is)\b/i,
     ],
@@ -99,6 +120,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Best time to reach you",
         note: "Adding 'You can reach me after five' helps them call back when you can answer — a small detail that saves phone tag.",
       },
+      {
+        id: "phone-voicemail-this-is",
+        label: "This is, not I am",
+        note: "'Đây là Linh' on the phone becomes 'This is Linh,' not 'I am Linh' or 'Here is Linh.' English uses 'This is ___' to say who is speaking on a call — a fixed phone phrase worth keeping ready.",
+      },
     ],
     followUps: [
       { id: "phone-message-name", question: "How would you say your name first?", salienceQuestion: "How would you start the message about the {slot}?" },
@@ -114,7 +140,10 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Handling A Wrong Number",
     labelVi: "Khi gọi nhầm số",
     category: "phone-call",
-    seedInputs: ["Sorry, I think I have the wrong number."],
+    seedInputs: [
+      "Sorry, I think I have the wrong number.",
+      "Oh, sorry to bother you — I must have dialed the wrong number.",
+    ],
     detectionPatterns: [
       /\b(?:wrong number|called the wrong|is this the right number|sorry wrong|mistake number)\b/i,
     ],
@@ -134,6 +163,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "It happens to everyone",
         note: "A wrong number isn't a language mistake. A light 'Sorry to bother you' and hanging up is completely normal — no need to over-explain.",
       },
+      {
+        id: "phone-wrong-nham-wrong",
+        label: "Nhầm is 'wrong' or 'by mistake'",
+        note: "'Gọi nhầm số' tempts 'I call mistake number' or 'I call false number.' English says 'I have the wrong number' or 'I dialed the wrong number by mistake.' 'Wrong' (not 'false' or 'mistake') is the word for the number.",
+      },
     ],
     followUps: [
       { id: "phone-wrong-check", question: "How would you check if you reached the right place?", salienceQuestion: "How would you check the {slot}?" },
@@ -149,7 +183,10 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "When The Connection Is Bad",
     labelVi: "Khi nghe điện thoại không rõ",
     category: "phone-call",
-    seedInputs: ["Sorry, the connection is bad. Could you say that again?"],
+    seedInputs: [
+      "Sorry, the connection is bad. Could you say that again?",
+      "I think you're breaking up — can you hear me okay?",
+    ],
     detectionPatterns: [
       /\b(?:bad connection|cannot hear|can't hear|say that again|breaking up|phone is cutting out|not clear)\b/i,
     ],
@@ -169,6 +206,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Move to better signal",
         note: "'Let me move to a better spot' or 'Can I call you right back?' is a natural way to fix a bad signal without ending things awkwardly.",
       },
+      {
+        id: "phone-connection-song-yeu",
+        label: "Sóng yếu is 'bad signal'",
+        note: "'Sóng yếu' or 'nghe không rõ' tempts 'the wave is weak' or 'I hear not clear.' English says 'the signal is weak,' 'bad connection,' or 'I can't hear you clearly.' 'Signal' and 'connection' are the phone words here.",
+      },
     ],
     followUps: [
       { id: "phone-connection-problem", question: "How would you say the connection is bad?", salienceQuestion: "What is hard about the {slot}?" },
@@ -184,7 +226,10 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Confirming Details On The Phone",
     labelVi: "Xác nhận thông tin qua điện thoại",
     category: "phone-call",
-    seedInputs: ["Can I confirm the address and time?"],
+    seedInputs: [
+      "Can I confirm the address and time?",
+      "Just to make sure — could you repeat the address for me?",
+    ],
     detectionPatterns: [
       /\b(?:confirm the details|confirm the address|confirm the time|spell that|repeat that|make sure)\b/i,
     ],
@@ -204,6 +249,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Read it back",
         note: "Reading the detail back — 'So that's 14 Oak Street at three?' — lets the other person catch a mistake before you hang up.",
       },
+      {
+        id: "phone-confirm-danh-van",
+        label: "Đánh vần is 'spell'",
+        note: "'Anh đánh vần giúp tôi' tempts 'Can you read each letter?' The single English verb is 'spell': 'Could you spell that for me?' For numbers, 'Could you say that digit by digit?' does the same job.",
+      },
     ],
     followUps: [
       { id: "phone-confirm-detail", question: "Which detail do you need to confirm?", salienceQuestion: "What detail matters for the {slot}?" },
@@ -219,7 +269,10 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Calling Customer Service",
     labelVi: "Gọi chăm sóc khách hàng",
     category: "phone-call",
-    seedInputs: ["Hi, I need help with my account."],
+    seedInputs: [
+      "Hi, I need help with my account.",
+      "Hello, I'm calling about a charge I don't recognize on my bill.",
+    ],
     detectionPatterns: [
       /\b(?:customer service|help with my account|account problem|support line|billing problem|service issue)\b/i,
     ],
@@ -239,6 +292,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Press 1 menus",
         note: "Automated menus ('Press 1 for billing') move fast. It's fine to say 'representative' or press 0 to reach a person if the options don't fit.",
       },
+      {
+        id: "phone-service-tai-khoan",
+        label: "Tài khoản is 'account'",
+        note: "'Tài khoản của tôi' is 'my account.' Support agents will ask for your 'account number' (số tài khoản). Recognising 'account' versus 'bill' (hóa đơn — what you owe) helps you answer the first question quickly.",
+      },
     ],
     followUps: [
       { id: "phone-service-problem", question: "What do you need help with?", salienceQuestion: "What is wrong with the {slot}?" },
@@ -254,7 +312,10 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Rescheduling By Phone",
     labelVi: "Đổi lịch qua điện thoại",
     category: "phone-call",
-    seedInputs: ["I need to reschedule my appointment."],
+    seedInputs: [
+      "I need to reschedule my appointment.",
+      "Something came up — could I move my appointment to another day?",
+    ],
     detectionPatterns: [
       /\b(?:reschedule|change my appointment|move my appointment|another time|cancel my appointment|new time)\b/i,
     ],
@@ -274,6 +335,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "A light apology is enough",
         note: "'Sorry for the short notice' covers the politeness without a long explanation. You don't owe a detailed reason for changing a time.",
       },
+      {
+        id: "phone-reschedule-huy-cancel",
+        label: "Hủy is 'cancel,' not 'reschedule'",
+        note: "'Hủy lịch' means 'cancel' (drop it), while 'đổi lịch' means 'reschedule' (move it). They're different: 'I'd like to reschedule' keeps the appointment for another time, but 'I'd like to cancel' ends it. Pick the one you mean.",
+      },
     ],
     followUps: [
       { id: "phone-reschedule-which", question: "Which appointment do you need to change?", salienceQuestion: "Which appointment is the {slot}?" },
@@ -289,7 +355,10 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Talking To A Delivery Driver",
     labelVi: "Nói chuyện với tài xế giao hàng",
     category: "phone-call",
-    seedInputs: ["Hi, I am at the front door now."],
+    seedInputs: [
+      "Hi, I am at the front door now.",
+      "Hello, I'm in apartment 3B — I'll buzz you in.",
+    ],
     detectionPatterns: [
       /\b(?:delivery driver|front door|package delivery|food delivery|where are you|apartment buzzer|gate code)\b/i,
     ],
@@ -309,6 +378,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "How far away",
         note: "'How far away are you?' or 'How many minutes?' is a normal question when you're waiting and want to be at the door in time.",
       },
+      {
+        id: "phone-delivery-chung-cu",
+        label: "Chung cư is 'apartment building'",
+        note: "'Chung cư' is an 'apartment building' (US) or 'block of flats' (UK), and 'số căn hộ' is your 'unit number.' Giving 'unit 3B, apartment building on the corner' helps the driver find you faster than 'my house.'",
+      },
     ],
     followUps: [
       { id: "phone-delivery-where", question: "Where should the driver go?", salienceQuestion: "Where is the {slot}?" },
@@ -324,7 +398,10 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Ending A Phone Call Politely",
     labelVi: "Kết thúc cuộc gọi lịch sự",
     category: "phone-call",
-    seedInputs: ["Thank you for your help. Have a good day."],
+    seedInputs: [
+      "Thank you for your help. Have a good day.",
+      "Okay, I think that's everything. Thanks so much — bye now.",
+    ],
     detectionPatterns: [
       /\b(?:end the call|thank you for your help|have a good day|anything else|goodbye|bye now)\b/i,
     ],
@@ -343,6 +420,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         id: "phone-ending-signal-note",
         label: "Signalling the end",
         note: "'Okay, I think that's everything' is a soft way to signal you're ready to hang up, so the goodbye doesn't feel sudden.",
+      },
+      {
+        id: "phone-ending-tam-biet",
+        label: "Tạm biệt is 'bye,' but warmer endings exist",
+        note: "'Tạm biệt' maps to 'goodbye,' which can feel a little formal on a friendly call. Everyday closings are 'Bye now,' 'Take care,' or 'Have a good day' — warmer than a flat 'goodbye' and easy to add.",
       },
     ],
     followUps: [
