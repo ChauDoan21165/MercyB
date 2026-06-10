@@ -775,14 +775,18 @@ function WordRow({ words, ttsAvailable }: { words: WordScore[]; ttsAvailable: bo
   // drill usable. Local state, isolated from the recognition/scoring flow.
   const [wordTtsError, setWordTtsError] = useState<string | null>(null);
   const playWord = useCallback(async (word: string) => {
+    setWordTtsError(null);
+    const failMsg =
+      'Không phát được từ này trên thiết bị này. / Could not play this word on this device.';
     try {
-      setWordTtsError(null);
-      await ttsSpeak({ text: word, rate: 0.8 });
+      // C1: speak() no longer throws — it reports source 'none' when nothing
+      // played. Branch on that; keep the catch as a defensive net for the
+      // cloud Audio path, which can still reject unexpectedly.
+      const result = await ttsSpeak({ text: word, rate: 0.8 });
+      if (result.source === 'none') setWordTtsError(failMsg);
     } catch (err) {
       console.warn('[SpeechDrill] per-word TTS playback failed:', err);
-      setWordTtsError(
-        'Không phát được từ này trên thiết bị này. / Could not play this word on this device.',
-      );
+      setWordTtsError(failMsg);
     }
   }, []);
 
@@ -924,15 +928,18 @@ function ListenControls({
 
   const play = useCallback(
     async (rate: number) => {
+      const failMsg =
+        'Không phát được âm thanh mẫu trên thiết bị này. / Could not play the model audio on this device.';
       try {
         setTtsError(null);
         onPlaying?.(true);
-        await ttsSpeak({ text, rate });
+        // C1: speak() reports source 'none' instead of throwing when nothing
+        // played; the catch stays as a net for the cloud Audio path.
+        const result = await ttsSpeak({ text, rate });
+        if (result.source === 'none') setTtsError(failMsg);
       } catch (err) {
         console.warn('[SpeechDrill] TTS playback failed:', err);
-        setTtsError(
-          'Không phát được âm thanh mẫu trên thiết bị này. / Could not play the model audio on this device.',
-        );
+        setTtsError(failMsg);
       } finally {
         onPlaying?.(false);
       }

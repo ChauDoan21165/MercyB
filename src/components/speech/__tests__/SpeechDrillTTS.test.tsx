@@ -25,7 +25,7 @@ vi.mock('@/lib/pronunciation/scorer', () => ({
 }));
 
 vi.mock('@/lib/pronunciation/tts', () => ({
-  speak: vi.fn(() => Promise.resolve()),
+  speak: vi.fn(() => Promise.resolve({ source: 'browser', error: null })),
   cancelSpeech: vi.fn(),
   isSupported: vi.fn(() => true),
 }));
@@ -62,7 +62,7 @@ beforeEach(() => {
   vi.mocked(recognizeOnce).mockReset();
   vi.mocked(scorePronunciation).mockReset();
   vi.mocked(ttsSpeak).mockReset();
-  vi.mocked(ttsSpeak).mockResolvedValue(undefined);
+  vi.mocked(ttsSpeak).mockResolvedValue({ source: 'browser', error: null });
   vi.mocked(ttsIsSupported).mockReturnValue(true);
 });
 
@@ -235,7 +235,9 @@ describe('SpeechDrill · single-word mistake playback (by-ear only)', () => {
   it('adds NO score / percent to the single-word playback feature', async () => {
     const user = await renderScored();
     // Trigger a failure too, so both the button and the message are exercised.
-    vi.mocked(ttsSpeak).mockRejectedValueOnce(new Error('fail'));
+    // C1: use the new non-throwing source:'none' signal (not a reject) to prove
+    // the observable-result path drives the error UI.
+    vi.mocked(ttsSpeak).mockResolvedValueOnce({ source: 'none', error: 'fail' });
     const row = screen.getByLabelText('Word-by-word score');
     const wordBtns = Array.from(
       row.querySelectorAll('button[data-word-listen]'),
