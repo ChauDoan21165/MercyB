@@ -288,6 +288,7 @@ describe("speakFollowups", () => {
         "with the i'm",
         "the some",
         "I chose some",
+        "I order a head",
         "I need a head because summer is very sunny in Canada",
         "I like the summer of you guys very sunny and I can wear short",
         "the and of to",
@@ -328,6 +329,10 @@ describe("speakFollowups", () => {
         reason: "function_word_salad:the_some",
       });
       expect(assessSpeakTranscriptClarity("I need a head because summer is very sunny in Canada")).toMatchObject({
+        clear: false,
+        reason: "hat_homophone_confusion:head",
+      });
+      expect(assessSpeakTranscriptClarity("I order a head")).toMatchObject({
         clear: false,
         reason: "hat_homophone_confusion:head",
       });

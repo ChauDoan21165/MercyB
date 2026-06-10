@@ -204,7 +204,7 @@ const CLARITY_COMMERCE_OR_NEED_VERBS = new Set([
 ]);
 
 const CLARITY_HAT_CONFUSION_CONTEXT = new Set([
-  "buy", "bought", "need", "needed", "want", "wanted", "wear", "wearing",
+  "buy", "bought", "need", "needed", "want", "wanted", "order", "ordered", "wear", "wearing",
   "summer", "sunny", "sun", "hot", "canada",
 ]);
 
