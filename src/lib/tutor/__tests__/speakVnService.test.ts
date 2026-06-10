@@ -35,4 +35,20 @@ describe("VN-specific speak topics", () => {
       expect(selection.followUpId).toBe(topic.followUps[0].id);
     }
   });
+
+  it("carries full D4 conversation metadata with disjoint note/followUp ids", () => {
+    for (const topic of speakTopics) {
+      expect(topic.scenarioDescription.trim().length, `${topic.id} scenarioDescription`).toBeGreaterThan(40);
+      expect(topic.aiRoleDefinition.trim().length, `${topic.id} aiRoleDefinition`).toBeGreaterThan(40);
+      expect(topic.conversationDirections.length, `${topic.id} conversationDirections`).toBeGreaterThanOrEqual(5);
+      expect(topic.conversationDirections.length, `${topic.id} conversationDirections`).toBeLessThanOrEqual(8);
+      expect(topic.warmthPatterns.length, `${topic.id} warmthPatterns`).toBeGreaterThanOrEqual(3);
+
+      const noteIds: string[] = (topic.l1InterferenceNotes ?? []).map((n) => n.id);
+      const followUpIds: string[] = topic.followUps.map((f) => f.id);
+      expect(new Set(noteIds).size, `${topic.id} unique note ids`).toBe(noteIds.length);
+      expect(new Set(followUpIds).size, `${topic.id} unique followUp ids`).toBe(followUpIds.length);
+      expect(noteIds.filter((id) => followUpIds.includes(id)), `${topic.id} note/followUp overlap`).toEqual([]);
+    }
+  });
 });
