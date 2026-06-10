@@ -39,6 +39,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "I'm starting, I started",
         note: "'Hôm nay tôi bắt đầu' is naturally 'I start today,' but English often marks it as happening now ('I'm starting today') or, once the day is over, as past ('I started on Monday'). The verb carries the time, not just the day word.",
       },
+      {
+        id: "work-first-day-vocab",
+        label: "Vocabulary",
+        note: "onboarding = quá trình nhận việc, làm quen; coworker = đồng nghiệp; check in with = trình diện, báo có mặt với.",
+      },
+      {
+        id: "work-first-day-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Chào mọi người, hôm nay là ngày đầu của em ạ.' ↔ EN: 'Hi everyone, today is my first day.' English keeps it short and uses first names.",
+      },
     ],
     followUps: [
       { id: "work-first-day-role", question: "How would you say your name and role?", salienceQuestion: "How would you introduce yourself for the {slot}?" },
@@ -81,6 +91,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         id: "work-shift-prepositions",
         label: "On Monday, at 9",
         note: "Vietnamese says the equivalent of 'Monday I start 9 o'clock,' so the small words drop out. English wants 'on Monday' and 'at 9': 'I start at 9 on Monday.' The 'on' and 'at' make the time clear.",
+      },
+      {
+        id: "work-shift-vocab",
+        label: "Vocabulary",
+        note: "shift = ca làm; schedule / roster = lịch làm việc; start time = giờ bắt đầu; finish time = giờ tan ca.",
+      },
+      {
+        id: "work-shift-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Tuần này em làm ca nào ạ?' ↔ EN: 'What's my shift this week?' English asks for the shift, not the literal 'which shift do I work.'",
       },
     ],
     followUps: [
@@ -125,6 +145,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "I'll be there",
         note: "'Tôi sẽ tới lúc 9 giờ' carries the future with 'sẽ.' English uses 'I'll' or 'I'm going to': 'I'll be there by 9.' The 'sẽ' becomes the small 'll attached to 'I.'",
       },
+      {
+        id: "work-late-vocab",
+        label: "Vocabulary",
+        note: "running late = đang bị trễ; traffic = kẹt xe; be there by = có mặt trước lúc. 'By 9:15' means at or before 9:15.",
+      },
+      {
+        id: "work-late-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Em xin lỗi, đường kẹt nên em sẽ tới trễ khoảng 10 phút ạ.' ↔ EN: 'Sorry, traffic is bad, so I'll be about ten minutes late.'",
+      },
     ],
     followUps: [
       { id: "work-late-reason", question: "What short reason would you give?", salienceQuestion: "What caused the {slot}?" },
@@ -167,6 +197,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         id: "work-manager-ask-about",
         label: "Ask about, not ask",
         note: "'Hỏi việc này' becomes 'ask this' if translated tightly. English usually adds 'about': 'I want to ask you about this task.' The 'about' points to the topic of the question.",
+      },
+      {
+        id: "work-manager-vocab",
+        label: "Vocabulary",
+        note: "manager / supervisor = quản lý, người giám sát; task = công việc, nhiệm vụ; Do you have a minute? = anh có rảnh một chút không?",
+      },
+      {
+        id: "work-manager-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Anh có rảnh một chút không, em hỏi về việc này ạ?' ↔ EN: 'Do you have a minute? I have a quick question about this task.'",
       },
     ],
     followUps: [
@@ -211,6 +251,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Was, not is",
         note: "'Cuối tuần của bạn thế nào?' has no past marker, so 'How is your weekend?' slips out for a weekend already finished. English uses 'How was your weekend?' — the 'was' shows it's already over.",
       },
+      {
+        id: "work-smalltalk-vocab",
+        label: "Vocabulary",
+        note: "small talk = nói chuyện phiếm; weekend = cuối tuần; break = giờ giải lao. 'How about you?' returns the same question politely.",
+      },
+      {
+        id: "work-smalltalk-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Cuối tuần của anh vui không?' ↔ EN: 'How was your weekend?' A short, light question is enough to start.",
+      },
     ],
     followUps: [
       { id: "work-smalltalk-open", question: "What easy question would you ask a coworker?", salienceQuestion: "How would you start small talk about the {slot}?" },
@@ -253,6 +303,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         id: "work-sick-feel-not-have",
         label: "I feel sick",
         note: "Vietnamese says 'tôi bị ốm' (literally 'I suffer sick'). English usually says 'I feel sick' or 'I'm not feeling well' — the verb is 'feel,' not 'have.' 'I have sick' isn't used.",
+      },
+      {
+        id: "work-sick-vocab",
+        label: "Vocabulary",
+        note: "sick day = ngày nghỉ ốm; fever = sốt; flu = cúm. 'Call in sick' is the fixed phrase for reporting that you're sick.",
+      },
+      {
+        id: "work-sick-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Em bị sốt, hôm nay xin nghỉ ạ.' ↔ EN: 'I have a fever, so I can't come in today.' One reason is enough.",
       },
     ],
     followUps: [
@@ -297,6 +357,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Two hours, with -s",
         note: "'Thiếu hai giờ' has no plural ending, so 'two hour is missing' slips out. English adds -s: 'two hours are missing.' The small -s and 'are' show it's more than one.",
       },
+      {
+        id: "work-paycheck-vocab",
+        label: "Vocabulary",
+        note: "paycheck = phiếu lương; timesheet = bảng chấm công; wage = tiền công theo giờ. 'My pay looks short' means it seems less than expected.",
+      },
+      {
+        id: "work-paycheck-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Hình như lương tuần này bị thiếu mấy giờ ạ.' ↔ EN: 'I think some hours are missing from this week's pay.'",
+      },
     ],
     followUps: [
       { id: "work-paycheck-issue", question: "What is the paycheck question?", salienceQuestion: "What is unclear about the {slot}?" },
@@ -339,6 +409,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         id: "work-task-explain-to-me",
         label: "Explain it to me",
         note: "'Giải thích cho tôi' maps to 'explain me' if translated word-by-word. English says 'explain it to me' or 'walk me through it' — the 'to me' is part of the phrase.",
+      },
+      {
+        id: "work-task-vocab",
+        label: "Vocabulary",
+        note: "task = công việc, nhiệm vụ; instructions = hướng dẫn; double-check = kiểm tra lại cho chắc.",
+      },
+      {
+        id: "work-task-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Em muốn chắc là mình hiểu đúng việc này ạ.' ↔ EN: 'I just want to make sure I understand this correctly.'",
       },
     ],
     followUps: [
@@ -383,6 +463,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "The customer wants",
         note: "'Khách muốn đổi hàng' has no verb ending. In English, for one customer the verb takes -s: 'The customer wants to exchange it.' The little -s matches the single person.",
       },
+      {
+        id: "work-customer-vocab",
+        label: "Vocabulary",
+        note: "return = trả lại hàng; complaint = lời khiếu nại; charge = khoản tính tiền. 'Upset' is calmer to report than 'angry.'",
+      },
+      {
+        id: "work-customer-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Có một khách đang cần hỗ trợ đổi trả hàng ạ.' ↔ EN: 'A customer needs help with a return.'",
+      },
     ],
     followUps: [
       { id: "work-customer-issue", question: "What does the customer need help with?", salienceQuestion: "What is happening with the {slot}?" },
@@ -425,6 +515,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         id: "work-timeoff-could-i",
         label: "Could I, may I",
         note: "Vietnamese softens with tone and 'ạ' at the end. English softens with the opener: 'Could I take Friday off?' sounds warmer than 'I want Friday off.' The 'Could I' carries the politeness.",
+      },
+      {
+        id: "work-timeoff-vocab",
+        label: "Vocabulary",
+        note: "time off = nghỉ phép; vacation day = ngày nghỉ; cover a shift = làm thay ca; personal day = ngày nghỉ việc riêng.",
+      },
+      {
+        id: "work-timeoff-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Em xin nghỉ thứ Sáu tuần sau được không ạ?' ↔ EN: 'Can I take next Friday off?'",
       },
     ],
     followUps: [

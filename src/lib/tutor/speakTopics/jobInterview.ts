@@ -39,6 +39,16 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
         label: "Chăm chỉ becomes a noun phrase",
         note: "'Chăm chỉ' is an adjective in Vietnamese, so 'I am chăm chỉ' maps to 'I am hardworking' (one word, adjective) or 'I'm a hard worker' (noun). Both are natural — 'I am hard work' is the one to avoid.",
       },
+      {
+        id: "job-interview-about-vocab",
+        label: "Vocabulary",
+        note: "hard worker = người chăm chỉ; experience = kinh nghiệm; background = quá trình, lý lịch của bạn. 'Background' is the friendly word for your work and study story.",
+      },
+      {
+        id: "job-interview-about-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Em xin giới thiệu một chút về bản thân ạ.' ↔ EN: 'Let me tell you a little about myself.' English opens softly, then gives one or two real facts.",
+      },
     ],
     followUps: [
       { id: "job-interview-about-open", question: "How would you start your one-minute introduction?", salienceQuestion: "How would you open your answer about the {slot}?" },
@@ -81,6 +91,16 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
         id: "job-interview-experience-uncountable",
         label: "Kinh nghiệm is uncountable",
         note: "'Nhiều kinh nghiệm' tempts 'many experiences.' When you mean work background, 'experience' has no plural: 'I have a lot of experience.' ('Experiences' exists, but it means events you lived through, like a trip.)",
+      },
+      {
+        id: "job-interview-experience-vocab",
+        label: "Vocabulary",
+        note: "previous / last job = công việc trước, công việc cũ; main tasks = nhiệm vụ chính; skills = kỹ năng. 'Used to work' signals a job you no longer hold.",
+      },
+      {
+        id: "job-interview-experience-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Trước đây em làm ở nhà máy hai năm ạ.' ↔ EN: 'Before this, I worked at a factory for two years.'",
       },
     ],
     followUps: [
@@ -125,6 +145,16 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
         label: "Giỏi về becomes 'good at + -ing'",
         note: "'Giỏi về giải quyết' tempts 'good at solve.' After 'good at,' English uses the -ing form: 'good at solving problems,' 'good at working with people.' The -ing is the small piece that completes it.",
       },
+      {
+        id: "job-interview-strengths-vocab",
+        label: "Vocabulary",
+        note: "strength = điểm mạnh; organized = ngăn nắp, có tổ chức; reliable = đáng tin cậy. 'I'm good at + -ing' (good at solving) is the natural frame.",
+      },
+      {
+        id: "job-interview-strengths-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Điểm mạnh của em là em học rất nhanh ạ.' ↔ EN: 'One of my strengths is that I learn quickly.'",
+      },
     ],
     followUps: [
       { id: "job-interview-strengths-name", question: "What is one strength you are sure about?", salienceQuestion: "How would you name the {slot} as a strength?" },
@@ -167,6 +197,16 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
         id: "job-interview-weakness-cai-thien",
         label: "Cải thiện becomes 'work on' or 'improve'",
         note: "'Đang cải thiện' maps neatly to 'working on' or 'improving': 'something I'm working on.' Both keep the warm, forward-looking tone Vietnamese 'cải thiện' carries — much softer than calling it a flaw.",
+      },
+      {
+        id: "job-interview-weakness-vocab",
+        label: "Vocabulary",
+        note: "weakness = điểm yếu; improve = cải thiện; time management = quản lý thời gian. 'Working on' = đang cố gắng cải thiện, a gentle way to name a weakness.",
+      },
+      {
+        id: "job-interview-weakness-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Em đang cố cải thiện cách quản lý thời gian ạ.' ↔ EN: 'I'm working on improving my time management.'",
       },
     ],
     followUps: [
@@ -211,6 +251,16 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
         label: "Cơ hội is 'a chance' or 'an opportunity'",
         note: "'Cơ hội phát triển' becomes 'a chance to grow' or 'an opportunity to develop.' Remember the article: 'a chance,' 'an opportunity.' 'I want opportunity' is the version to round out with the small 'an.'",
       },
+      {
+        id: "job-interview-why-vocab",
+        label: "Vocabulary",
+        note: "role = vị trí công việc; company = công ty; grow = phát triển bản thân. 'This role fits me' = vị trí này hợp với em.",
+      },
+      {
+        id: "job-interview-why-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Em muốn công việc này vì em thích cách công ty đào tạo nhân viên mới ạ.' ↔ EN: 'I want this job because I like how the company trains new staff.'",
+      },
     ],
     followUps: [
       { id: "job-interview-why-reason", question: "What is your main reason for wanting this job?", salienceQuestion: "What draws you to the {slot}?" },
@@ -253,6 +303,16 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
         id: "job-interview-left-cong-ty-cu",
         label: "Công ty cũ is 'previous,' not 'old'",
         note: "'Công ty cũ' translates word-for-word as 'old company,' but 'old' sounds like aged or out of date. The work words are 'my previous company' or 'my last/former employer.' 'Previous' is the neutral, professional choice.",
+      },
+      {
+        id: "job-interview-left-vocab",
+        label: "Vocabulary",
+        note: "last job = công việc cũ; reason for leaving = lý do nghỉ việc; opportunity / chance = cơ hội. 'Room to grow' = không gian, cơ hội phát triển.",
+      },
+      {
+        id: "job-interview-left-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Em nghỉ việc cũ để tìm cơ hội phát triển hơn ạ.' ↔ EN: 'I left my last job to look for more room to grow.'",
       },
     ],
     followUps: [
@@ -297,6 +357,16 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
         label: "Thắc mắc is 'a question'",
         note: "'Tôi có thắc mắc' often becomes 'I have a wonder' or 'I have a curious.' The everyday phrasing is 'I have a question about…' or 'I was wondering about…' — 'a question' is the safe, clear noun.",
       },
+      {
+        id: "job-interview-questions-vocab",
+        label: "Vocabulary",
+        note: "the team = nhóm làm việc; schedule = lịch làm; next steps = các bước tiếp theo. 'What a normal day looks like' = một ngày làm việc bình thường ra sao.",
+      },
+      {
+        id: "job-interview-questions-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ em có một câu hỏi về nhóm và lịch làm việc ạ.' ↔ EN: 'Yes, I have one question about the team and the schedule.'",
+      },
     ],
     followUps: [
       { id: "job-interview-questions-team", question: "What would you ask about the team?", salienceQuestion: "What would you ask about the {slot}?" },
@@ -339,6 +409,16 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
         id: "job-interview-availability-ranh",
         label: "Rảnh is 'available' at work",
         note: "'Tôi rảnh thứ Hai' becomes 'I'm free on Monday' in casual talk, but in an interview 'I'm available from Monday' sounds more professional. 'Free' is fine; 'available' is the word that fits the work setting.",
+      },
+      {
+        id: "job-interview-availability-vocab",
+        label: "Vocabulary",
+        note: "start date = ngày bắt đầu; availability = thời gian rảnh, lúc nào làm được; notice period = thời gian báo trước khi nghỉ việc cũ.",
+      },
+      {
+        id: "job-interview-availability-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Em có thể bắt đầu vào tuần sau ạ.' ↔ EN: 'I can start next week.'",
       },
     ],
     followUps: [
@@ -383,6 +463,16 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
         label: "Mức lương is 'pay' or 'salary range'",
         note: "'Mức lương' translates as 'salary level,' which tempts 'salary level' in English. Natural phrasing is 'the salary,' 'the pay,' or 'the salary range.' Asking for a 'range' is a soft, professional way to raise it.",
       },
+      {
+        id: "job-interview-salary-vocab",
+        label: "Vocabulary",
+        note: "salary = lương (tháng/năm); salary range = khoảng lương; benefits = phúc lợi; hourly rate = lương theo giờ.",
+      },
+      {
+        id: "job-interview-salary-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ cho em hỏi mức lương cho vị trí này khoảng bao nhiêu ạ?' ↔ EN: 'Could you tell me the salary range for this position?'",
+      },
     ],
     followUps: [
       { id: "job-interview-salary-ask", question: "How would you ask about pay politely?", salienceQuestion: "How would you ask about the {slot} politely?" },
@@ -425,6 +515,16 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
         id: "job-interview-hard-xu-ly",
         label: "Xử lý is 'handle' or 'deal with'",
         note: "'Xử lý tình huống' tempts 'solve the situation,' but a 'situation' is usually 'handled' or 'dealt with,' while a 'problem' is 'solved' or 'fixed.' 'I handled the situation' is the smooth, idiomatic pairing.",
+      },
+      {
+        id: "job-interview-hard-vocab",
+        label: "Vocabulary",
+        note: "difficult / hard situation = tình huống khó; stay calm = giữ bình tĩnh; solve / handle = giải quyết, xử lý; conflict = mâu thuẫn.",
+      },
+      {
+        id: "job-interview-hard-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Có lần một khách giận, em giữ bình tĩnh và xử lý xong vấn đề ạ.' ↔ EN: 'One time a customer was angry, so I stayed calm and solved the problem.'",
       },
     ],
     followUps: [
