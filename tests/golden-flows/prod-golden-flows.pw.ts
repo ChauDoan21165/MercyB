@@ -185,4 +185,36 @@ test.describe.serial("production golden flows", () => {
     expect(joined).not.toContain("placeholder.invalid");
     expect(joined).toContain(EXPECTED_SUPABASE_HOST);
   });
+
+  test("SIGNIN: auth backend is the real, reachable Supabase (never placeholder)", async ({ request }) => {
+    // Guard the test's own expectation: a misconfigured override must not
+    // let the incident host (placeholder.invalid) pass silently.
+    expect(EXPECTED_SUPABASE_HOST).not.toContain("placeholder.invalid");
+
+    const supabaseUrl = new URL(
+      process.env.GOLDEN_FLOW_SUPABASE_URL ||
+        process.env.VITE_SUPABASE_URL ||
+        "https://buemdfxyhxunzpgdoqin.supabase.co",
+    );
+    expect(supabaseUrl.host).toBe(EXPECTED_SUPABASE_HOST);
+
+    const anonKey =
+      process.env.GOLDEN_FLOW_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY || "";
+
+    // Where AUTH CONFIG proves the *bundle* points at the real Supabase host
+    // and never the placeholder, this proves that host is a live, routed
+    // GoTrue auth backend the signin flow can actually reach. The incident
+    // host (placeholder.invalid) fails DNS and never returns a routed
+    // response at all (curl HTTP 000), so any GoTrue-shaped reply is proof
+    // the signin auth target is real and up.
+    const health = await request.get(`${supabaseUrl.origin}/auth/v1/health`, {
+      headers: anonKey ? { apikey: anonKey } : {},
+    });
+    const healthBody = await health.text();
+
+    // Reachable + routed to GoTrue: 200 with the anon key, or a GoTrue 401
+    // "No API key found" without it. Either proves a real Supabase responded.
+    expect([200, 401], healthBody).toContain(health.status());
+    expect(healthBody.toLowerCase()).toMatch(/gotrue|healthy|apikey|api key/);
+  });
 });

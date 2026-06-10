@@ -85,6 +85,7 @@
     "ops:morning": "node scripts/ops-morning.mjs",
     "test:regression": "vitest run tests/regression/**",
     "test:ai-tutor-golden-flow": "node scripts/run-ai-tutor-quality-gate.mjs",
+    "verify:golden-flows": "bash scripts/golden-flows.sh",
     "test:resume": "vitest run src/pages/placement/v3/__tests__/ResultsPage.resumeSmoke.test.tsx",
     "verify:v3-placement": "node scripts/verify-v3-placement.mjs",
     "release:v3-placement": "node scripts/release-v3-placement.mjs",

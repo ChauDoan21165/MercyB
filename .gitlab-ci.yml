@@ -34,6 +34,7 @@
 stages:
   - test
   - deploy
+  - verify
   - backup
 
 # ── Global CI tuning (Lane C: faster feedback) ─────────────────────────
@@ -971,6 +972,53 @@ deploy-cloudflare-pages:
     - when: never
   script:
     - bash scripts/deploy-cloudflare-pages-main.sh
+
+# ── `verify` stage: post-deploy production golden flows (MANDATORY) ────
+#
+# Runs the production golden-flow smoke against the LIVE site. Every main
+# merge auto-publishes via the Netlify webhook, so a main-push pipeline IS
+# a post-deploy moment. This is the runtime gate behind the 2026-06-10
+# placeholder.invalid incident: the build-time env guard catches a bad
+# *build*, the pre-publish dist scan catches a bad *artifact*, and this
+# catches a bad *deploy* — a stale/wrong bundle served, an unreachable
+# auth backend, silently-degraded TTS, or a bypassed entitlement gate.
+#
+# Scope is main-push (auto) + manual web trigger ONLY — never
+# merge-request pipelines — so it verifies real production state, not an
+# MR's un-deployed code, and a still-broken prod cannot red unrelated
+# feature MRs. It carries no `needs:`, so it runs after the `test` stage
+# (and the non-blocking manual `deploy` stage); that natural delay also
+# gives the Netlify webhook publish time to land before the suite probes.
+#
+# No JWTs required to run: without GOLDEN_FLOW_PREMIUM_JWT +
+# GOLDEN_FLOW_FREE_JWT it runs the no-token smoke (AUTH CONFIG + TTS +
+# SIGNIN). Set both as masked CI/CD variables to promote it to the full
+# five-flow gate (adds FOLLOW + GATE). The tests use only Playwright's
+# `request` fixture (no browser), so no chromium install is needed.
+golden-flows-prod:
+  <<: [*node_job, *local_runner]
+  stage: verify
+  allow_failure: false
+  retry: 1
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: manual
+    - when: never
+  script:
+    - |
+      if [ -n "${GOLDEN_FLOW_PREMIUM_JWT:-}" ] && [ -n "${GOLDEN_FLOW_FREE_JWT:-}" ]; then
+        echo "Prod test JWTs present — running the full five-flow golden suite."
+        npm run verify:golden-flows
+      else
+        echo "GOLDEN_FLOW_PREMIUM_JWT / GOLDEN_FLOW_FREE_JWT not set — running the no-token smoke (AUTH CONFIG + TTS + SIGNIN); FOLLOW + GATE skip."
+        GOLDEN_FLOW_ALLOW_MISSING_SECRETS=1 npm run verify:golden-flows
+      fi
 
 # ── `backup` stage (unchanged from prior version) ──────────────────────
 
