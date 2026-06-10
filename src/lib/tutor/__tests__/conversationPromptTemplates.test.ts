@@ -59,3 +59,55 @@ describe("conversationPromptTemplates", () => {
     expect(template.correctionStylePrompt).toContain("always continue the scenario");
   });
 });
+
+// Step 11: locks the live Vietlish seeding selector that injects corpus
+// corrections into the conversation system prompt. Without these, a regression
+// in selectVietlishPromptExamples (limit, dedupe, learner-match boost) would
+// silently stop feeding the right corrections to the live tutor.
+describe("conversationPromptTemplates Vietlish seeding selector", () => {
+  function vietlishExampleLines(prompt: string): string[] {
+    return prompt
+      .split("\n")
+      .filter((line) => line.includes("Vietlish:") && line.includes("Natural English:"));
+  }
+
+  it("seeds the matching corpus correction when the learner types a literal Vietlish phrase", () => {
+    const topic = foodOrderingTopics[0];
+    const template = buildConversationPromptTemplate({
+      topic,
+      turnCount: 1,
+      learnerText: "Please open the light, it is dark here.",
+    });
+
+    const lines = vietlishExampleLines(template.topicGroundingPrompt);
+    // The literal learner phrase must surface its correction, and rank first
+    // (learner-match boost), so the live tutor is grounded on the exact repair.
+    expect(lines[0]).toContain('Vietlish: "open the light"');
+    expect(lines[0]).toContain('Natural English: "turn on the light"');
+  });
+
+  it("caps injected Vietlish examples and never repeats one", () => {
+    const topic = foodOrderingTopics[0];
+    const template = buildConversationPromptTemplate({
+      topic,
+      turnCount: 1,
+      learnerText: "Please open the light, it is dark here.",
+    });
+
+    const lines = vietlishExampleLines(template.topicGroundingPrompt);
+    expect(lines.length).toBeGreaterThan(0);
+    expect(lines.length).toBeLessThanOrEqual(5);
+    expect(new Set(lines).size).toBe(lines.length);
+  });
+
+  it("still seeds frequency-ranked examples when the learner has not spoken yet", () => {
+    const topic = foodOrderingTopics[0];
+    const template = buildConversationPromptTemplate({ topic, turnCount: 0 });
+
+    const lines = vietlishExampleLines(template.topicGroundingPrompt);
+    expect(lines.length).toBeGreaterThan(0);
+    expect(lines.length).toBeLessThanOrEqual(5);
+    // No learner text means high-frequency entries lead the seeding.
+    expect(lines[0]).toContain("high;");
+  });
+});
