@@ -16,7 +16,6 @@ const fetchCloudTtsUrlMock = vi.mocked(fetchCloudTtsUrl);
 
 // Minimal HTMLAudioElement stand-in; `behavior` decides how playback resolves.
 function stubAudio(behavior: "play" | "playError" | "elementError") {
-  const instances: any[] = [];
   class FakeAudio {
     src: string;
     onended: (() => void) | null = null;
@@ -24,7 +23,6 @@ function stubAudio(behavior: "play" | "playError" | "elementError") {
     paused = false;
     constructor(src?: string) {
       this.src = src ?? "";
-      instances.push(this);
     }
     pause() {
       this.paused = true;
@@ -41,7 +39,6 @@ function stubAudio(behavior: "play" | "playError" | "elementError") {
   }
   // @ts-expect-error test shim
   globalThis.Audio = FakeAudio;
-  return instances;
 }
 
 describe("useMercyVoice — Contract C1: no silent browser fallback", () => {
@@ -61,7 +58,7 @@ describe("useMercyVoice — Contract C1: no silent browser fallback", () => {
   });
 
   it("speaks via cloud and reports spoken:true, no error", async () => {
-    fetchCloudTtsUrlMock.mockResolvedValue({ audioUrl: "https://x/a.mp3", cached: true, provider: "elevenlabs" } as any);
+    fetchCloudTtsUrlMock.mockResolvedValue({ audioUrl: "https://x/a.mp3", cached: true, provider: "elevenlabs" });
     stubAudio("play");
 
     const { result } = renderHook(() => useMercyVoice());
@@ -89,7 +86,7 @@ describe("useMercyVoice — Contract C1: no silent browser fallback", () => {
   });
 
   it("when cloud playback rejects, reports an error and does NOT browser-fallback", async () => {
-    fetchCloudTtsUrlMock.mockResolvedValue({ audioUrl: "https://x/a.mp3", cached: false } as any);
+    fetchCloudTtsUrlMock.mockResolvedValue({ audioUrl: "https://x/a.mp3", cached: false });
     stubAudio("playError");
 
     const { result } = renderHook(() => useMercyVoice());
