@@ -79,6 +79,46 @@ Do not deploy from `/private/tmp/*`, agent worktrees, detached
 worktrees, or any branch-specific checkout. Merges may continue while
 this lock is active; deploys may not.
 
+### Post-deploy verification: golden flows (MANDATORY)
+
+A deploy is **not complete** until the production golden-flow suite
+passes against the live site. This is the runtime gate that would
+have caught the 2026-06-10 `placeholder.invalid` incident — the
+build-time env guard and the pre-publish `placeholder.invalid` scan
+catch a bad build, and this catches a bad *deploy* (wrong bundle
+served, auth backend unreachable, TTS silently degraded, entitlement
+gate bypassed).
+
+```bash
+cd /Users/admin/MercyB
+# Masked prod test tokens — see docs/runbooks/disaster-recovery.md for
+# the canonical source. Without them the suite fails closed (exit 2).
+export GOLDEN_FLOW_PREMIUM_JWT="…"   # a valid paid-tier user JWT
+export GOLDEN_FLOW_FREE_JWT="…"      # a valid free-tier (level 0) user JWT
+npm run verify:golden-flows          # → scripts/golden-flows.sh against mercyblade.com
+```
+
+The suite asserts all five golden flows:
+
+1. **AUTH CONFIG** — the `/signin` bundle never contains
+   `placeholder.invalid` and *does* contain the real Supabase host.
+2. **TTS** — Vietnamese text returns Azure audio (`x-tts-provider:
+   azure`), never a silent fallback.
+3. **FOLLOW** — Mercy's opener follows the learner's stated context
+   and is not a canned/repeated reply.
+4. **GATE** — a free account is blocked (403, "premium required")
+   *before* any processing and gets no Mercy speech.
+5. **SIGNIN** — the auth backend the bundle points at is a real,
+   reachable Supabase GoTrue instance (not the incident host).
+
+`GOLDEN_FLOW_PREMIUM_JWT` + `GOLDEN_FLOW_FREE_JWT` are required for
+the FOLLOW and GATE flows. The other three run without tokens; for a
+no-token smoke (config + TTS + signin only) set
+`GOLDEN_FLOW_ALLOW_MISSING_SECRETS=1` to skip the two gated flows
+instead of failing closed. **Never** ship a production deploy without
+at least the no-token smoke passing, and never announce a deploy as
+done until the full five-flow suite is green.
+
 ### Today (Netlify-native)
 
 Netlify is connected to the GitLab repo via Netlify's GitLab
