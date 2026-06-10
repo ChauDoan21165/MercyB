@@ -1,8 +1,8 @@
 // api/_lib/aiProvider.ts
 //
-// OpenAI → Gemini failover for Teacher Mercy AI calls (Vercel Node /
+// Ordered OpenAI / DeepSeek / Gemini failover for Teacher Mercy AI calls (Vercel Node /
 // ESM serverless runtime). Phase 1 — JSON-mode + plaintext-mode
-// completions. Both providers share the same {ok, json/raw, provider,
+// completions. Providers share the same {ok, json/raw, provider,
 // latencyMs, attempts, errorKind} envelope so callers can branch on
 // provider without changing their response handling.
 //
@@ -10,21 +10,21 @@
 //   - The grammar.ts ESM outage that triggered this work was caused by
 //     a bundled OpenAI client failing under Vercel's ESM runtime. We
 //     stay on raw fetch end-to-end to keep the failure surface small.
-//   - Both OpenAI and Gemini chat APIs are simple enough that the raw
+//   - OpenAI, DeepSeek, and Gemini chat APIs are simple enough that the raw
 //     request/response code is shorter than the integration glue would
 //     have been.
 //
 // Failover rules (intentionally narrow):
-//   Fall over only when OpenAI looks transiently broken:
+//   Fall over only when the selected provider looks transiently broken:
 //     - AbortError              (timeoutMs exceeded — default 15s)
 //     - HTTP 429                (rate limit)
 //     - HTTP 5xx                (upstream server error)
 //     - fetch threw             (network)
 //   DO NOT fall over on:
-//     - HTTP 400                (caller's fault — Gemini won't fix it)
+//     - HTTP 400                (caller's fault — another provider won't fix it)
 //     - HTTP 401 / 403          (auth — same)
 //     - JSON parse failure      (model emitted bad JSON — return ok:false)
-//   When GEMINI_API_KEY is missing we don't even attempt Gemini and
+//   When a configured provider key is missing we don't attempt that provider and
 //   surface errorKind:'no_key' to make ops failures obvious.
 //
 // Logging: every call writes one line to stdout via console.log; failover
@@ -33,7 +33,8 @@
 
 // ── Types ────────────────────────────────────────────────────────────────
 
-export type AiProvider = "openai" | "gemini" | "none";
+export type AiProvider = "openai" | "deepseek" | "gemini" | "none";
+export type ConfiguredAiProvider = Exclude<AiProvider, "none">;
 
 export type AiErrorKind =
   | "timeout"
@@ -69,7 +70,9 @@ export type ChatJsonOpts = {
   userMessage: string;
   timeoutMs?: number;
   openaiModel?: string;
+  deepseekModel?: string;
   geminiModel?: string;
+  providerOrder?: readonly ConfiguredAiProvider[] | string;
   temperature?: number;
   maxTokens?: number;
 };
@@ -80,9 +83,11 @@ export type ChatTextOpts = ChatJsonOpts;
 
 const DEFAULT_TIMEOUT_MS = 15_000;
 const DEFAULT_OPENAI_MODEL = "gpt-4o-mini";
+const DEFAULT_DEEPSEEK_MODEL = "deepseek-chat";
 const DEFAULT_GEMINI_MODEL = "gemini-2.5-flash";
 const DEFAULT_TEMPERATURE = 0.15;
 const DEFAULT_MAX_TOKENS = 800;
+const DEFAULT_PROVIDER_ORDER: readonly ConfiguredAiProvider[] = ["openai", "gemini"];
 
 // ── Internal helpers ─────────────────────────────────────────────────────
 
@@ -142,6 +147,62 @@ async function callOpenAi(
 
   try {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify(body),
+      signal,
+    });
+
+    if (!response.ok) {
+      return { kind: "fail", status: response.status };
+    }
+
+    const data = (await response.json()) as {
+      choices?: Array<{ message?: { content?: string } }>;
+    };
+    const raw = data?.choices?.[0]?.message?.content ?? "";
+    return { kind: "ok", raw };
+  } catch (err) {
+    const isAbort = err instanceof Error && err.name === "AbortError";
+    return { kind: "fail", isAbort, threw: !isAbort };
+  }
+}
+
+// ── DeepSeek calls (OpenAI-compatible JSON + text) ───────────────────────
+
+type DeepSeekOutcome =
+  | { kind: "ok"; raw: string }
+  | { kind: "fail"; status?: number; isAbort?: boolean; threw?: boolean };
+
+async function callDeepSeek(
+  opts: ChatJsonOpts,
+  jsonMode: boolean,
+  signal: AbortSignal,
+): Promise<DeepSeekOutcome> {
+  const apiKey = process.env.DEEPSEEK_API_KEY;
+  if (!apiKey) {
+    return { kind: "fail", status: 401 };
+  }
+
+  const body: Record<string, unknown> = {
+    model: opts.deepseekModel ?? DEFAULT_DEEPSEEK_MODEL,
+    temperature: opts.temperature ?? DEFAULT_TEMPERATURE,
+    max_tokens: opts.maxTokens ?? DEFAULT_MAX_TOKENS,
+    stream: false,
+    messages: [
+      { role: "system", content: opts.systemPrompt },
+      { role: "user", content: opts.userMessage },
+    ],
+  };
+  if (jsonMode) {
+    body.response_format = { type: "json_object" };
+  }
+
+  try {
+    const response = await fetch("https://api.deepseek.com/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -241,134 +302,89 @@ export async function chatJsonWithFailover(
   const startedAt = Date.now();
   const attempts: AiProvider[] = [];
   const timeoutMs = opts.timeoutMs ?? DEFAULT_TIMEOUT_MS;
+  const providerOrder = normalizeProviderOrder(opts.providerOrder);
+  let lastOutcome:
+    | OpenAiOutcome
+    | DeepSeekOutcome
+    | GeminiOutcome
+    | null = null;
+  let missingFallbackAfterFailure = false;
 
-  // OpenAI attempt with its own AbortController.
-  const openaiController = new AbortController();
-  const openaiTimeout = setTimeout(() => openaiController.abort(), timeoutMs);
-  attempts.push("openai");
-  let openaiOutcome: OpenAiOutcome;
-  try {
-    openaiOutcome = await callOpenAi(opts, true, openaiController.signal);
-  } finally {
-    clearTimeout(openaiTimeout);
-  }
+  for (const provider of providerOrder) {
+    if (!hasProviderKey(provider)) {
+      if (lastOutcome) missingFallbackAfterFailure = true;
+      continue;
+    }
+    missingFallbackAfterFailure = false;
+    if (lastOutcome) {
+      console.warn(
+        `[aiProvider] ${attempts[attempts.length - 1] ?? "provider"} failed (${describeFail(lastOutcome)}) — failing over to ${provider}`,
+      );
+    }
 
-  if (openaiOutcome.kind === "ok") {
-    const parseResult = parseJson(openaiOutcome.raw);
-    const latencyMs = Date.now() - startedAt;
-    if (parseResult.ok) {
+    attempts.push(provider);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+    let outcome: OpenAiOutcome | DeepSeekOutcome | GeminiOutcome;
+    try {
+      outcome = await callConfiguredProvider(provider, opts, true, controller.signal);
+    } finally {
+      clearTimeout(timeout);
+    }
+
+    if (outcome.kind === "ok") {
+      const parseResult = parseJson(outcome.raw);
+      const latencyMs = Date.now() - startedAt;
+      if (parseResult.ok) {
+        console.log(
+          `[aiProvider] provider=${provider} latencyMs=${latencyMs} attempts=[${attempts.join(",")}]`,
+        );
+        return {
+          ok: true,
+          json: parseResult.value,
+          raw: outcome.raw,
+          provider,
+          latencyMs,
+          attempts,
+        };
+      }
       console.log(
-        `[aiProvider] provider=openai latencyMs=${latencyMs} attempts=[${attempts.join(",")}]`,
+        `[aiProvider] provider=${provider} latencyMs=${latencyMs} attempts=[${attempts.join(",")}] errorKind=parse_error`,
       );
       return {
-        ok: true,
-        json: parseResult.value,
-        raw: openaiOutcome.raw,
-        provider: "openai",
+        ok: false,
+        json: {},
+        raw: outcome.raw,
+        provider,
         latencyMs,
         attempts,
+        errorKind: "parse_error",
       };
     }
-    // OpenAI returned 200 but the model emitted invalid JSON. Per spec
-    // we do NOT fall over (Gemini won't reliably fix that), and surface
-    // parse_error for the caller.
-    console.log(
-      `[aiProvider] provider=openai latencyMs=${latencyMs} attempts=[${attempts.join(",")}] errorKind=parse_error`,
-    );
-    return {
-      ok: false,
-      json: {},
-      raw: openaiOutcome.raw,
-      provider: "openai",
-      latencyMs,
-      attempts,
-      errorKind: "parse_error",
-    };
-  }
 
-  // OpenAI failed. Decide whether to fall over.
-  if (!shouldFailover(openaiOutcome)) {
-    const latencyMs = Date.now() - startedAt;
-    const errorKind = errorKindFor(openaiOutcome);
-    console.log(
-      `[aiProvider] provider=none latencyMs=${latencyMs} attempts=[${attempts.join(",")}] errorKind=${errorKind}`,
-    );
-    return {
-      ok: false,
-      json: {},
-      raw: "",
-      provider: "none",
-      latencyMs,
-      attempts,
-      errorKind,
-    };
-  }
-
-  // No GEMINI_API_KEY → don't attempt Gemini; surface 'no_key'.
-  if (!process.env.GEMINI_API_KEY) {
-    const latencyMs = Date.now() - startedAt;
-    console.warn(
-      `[aiProvider] failover skipped: GEMINI_API_KEY missing latencyMs=${latencyMs} attempts=[${attempts.join(",")}]`,
-    );
-    return {
-      ok: false,
-      json: {},
-      raw: "",
-      provider: "none",
-      latencyMs,
-      attempts,
-      errorKind: "no_key",
-    };
-  }
-
-  // Failover to Gemini with its own (fresh) AbortController + timeout.
-  console.warn(
-    `[aiProvider] OpenAI failed (${describeFail(openaiOutcome)}) — failing over to Gemini`,
-  );
-  const geminiController = new AbortController();
-  const geminiTimeout = setTimeout(() => geminiController.abort(), timeoutMs);
-  attempts.push("gemini");
-  let geminiOutcome: GeminiOutcome;
-  try {
-    geminiOutcome = await callGemini(opts, true, geminiController.signal);
-  } finally {
-    clearTimeout(geminiTimeout);
-  }
-
-  if (geminiOutcome.kind === "ok") {
-    const parseResult = parseJson(geminiOutcome.raw);
-    const latencyMs = Date.now() - startedAt;
-    if (parseResult.ok) {
+    lastOutcome = outcome;
+    if (!shouldFailover(outcome)) {
+      const latencyMs = Date.now() - startedAt;
+      const errorKind = errorKindFor(outcome);
       console.log(
-        `[aiProvider] provider=gemini latencyMs=${latencyMs} attempts=[${attempts.join(",")}]`,
+        `[aiProvider] provider=none latencyMs=${latencyMs} attempts=[${attempts.join(",")}] errorKind=${errorKind}`,
       );
       return {
-        ok: true,
-        json: parseResult.value,
-        raw: geminiOutcome.raw,
-        provider: "gemini",
+        ok: false,
+        json: {},
+        raw: "",
+        provider: "none",
         latencyMs,
         attempts,
+        errorKind,
       };
     }
-    console.log(
-      `[aiProvider] provider=gemini latencyMs=${latencyMs} attempts=[${attempts.join(",")}] errorKind=parse_error`,
-    );
-    return {
-      ok: false,
-      json: {},
-      raw: geminiOutcome.raw,
-      provider: "gemini",
-      latencyMs,
-      attempts,
-      errorKind: "parse_error",
-    };
   }
 
-  // Both failed. Surface the WORSE-of-the-two error kind (Gemini's, since
-  // it was the last attempt).
   const latencyMs = Date.now() - startedAt;
-  const errorKind = errorKindFor(geminiOutcome);
+  const errorKind = lastOutcome && !missingFallbackAfterFailure
+    ? errorKindFor(lastOutcome)
+    : "no_key";
   console.log(
     `[aiProvider] provider=none latencyMs=${latencyMs} attempts=[${attempts.join(",")}] errorKind=${errorKind}`,
   );
@@ -389,91 +405,72 @@ export async function chatTextWithFailover(
   const startedAt = Date.now();
   const attempts: AiProvider[] = [];
   const timeoutMs = opts.timeoutMs ?? DEFAULT_TIMEOUT_MS;
+  const providerOrder = normalizeProviderOrder(opts.providerOrder);
+  let lastOutcome:
+    | OpenAiOutcome
+    | DeepSeekOutcome
+    | GeminiOutcome
+    | null = null;
+  let missingFallbackAfterFailure = false;
 
-  const openaiController = new AbortController();
-  const openaiTimeout = setTimeout(() => openaiController.abort(), timeoutMs);
-  attempts.push("openai");
-  let openaiOutcome: OpenAiOutcome;
-  try {
-    openaiOutcome = await callOpenAi(opts, false, openaiController.signal);
-  } finally {
-    clearTimeout(openaiTimeout);
-  }
+  for (const provider of providerOrder) {
+    if (!hasProviderKey(provider)) {
+      if (lastOutcome) missingFallbackAfterFailure = true;
+      continue;
+    }
+    missingFallbackAfterFailure = false;
+    if (lastOutcome) {
+      console.warn(
+        `[aiProvider] ${attempts[attempts.length - 1] ?? "provider"} failed (${describeFail(lastOutcome)}) — failing over to ${provider}`,
+      );
+    }
 
-  if (openaiOutcome.kind === "ok") {
-    const latencyMs = Date.now() - startedAt;
-    console.log(
-      `[aiProvider] provider=openai latencyMs=${latencyMs} attempts=[${attempts.join(",")}]`,
-    );
-    return {
-      ok: true,
-      raw: openaiOutcome.raw,
-      provider: "openai",
-      latencyMs,
-      attempts,
-    };
-  }
+    attempts.push(provider);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+    let outcome: OpenAiOutcome | DeepSeekOutcome | GeminiOutcome;
+    try {
+      outcome = await callConfiguredProvider(provider, opts, false, controller.signal);
+    } finally {
+      clearTimeout(timeout);
+    }
 
-  if (!shouldFailover(openaiOutcome)) {
-    const latencyMs = Date.now() - startedAt;
-    const errorKind = errorKindFor(openaiOutcome);
-    console.log(
-      `[aiProvider] provider=none latencyMs=${latencyMs} attempts=[${attempts.join(",")}] errorKind=${errorKind}`,
-    );
-    return {
-      ok: false,
-      raw: "",
-      provider: "none",
-      latencyMs,
-      attempts,
-      errorKind,
-    };
-  }
+    if (outcome.kind === "ok") {
+      const latencyMs = Date.now() - startedAt;
+      console.log(
+        `[aiProvider] provider=${provider} latencyMs=${latencyMs} attempts=[${attempts.join(",")}]`,
+      );
+      return {
+        ok: true,
+        raw: outcome.raw,
+        provider,
+        latencyMs,
+        attempts,
+      };
+    }
 
-  if (!process.env.GEMINI_API_KEY) {
-    const latencyMs = Date.now() - startedAt;
-    console.warn(
-      `[aiProvider] failover skipped: GEMINI_API_KEY missing latencyMs=${latencyMs} attempts=[${attempts.join(",")}]`,
-    );
-    return {
-      ok: false,
-      raw: "",
-      provider: "none",
-      latencyMs,
-      attempts,
-      errorKind: "no_key",
-    };
-  }
-
-  console.warn(
-    `[aiProvider] OpenAI failed (${describeFail(openaiOutcome)}) — failing over to Gemini`,
-  );
-  const geminiController = new AbortController();
-  const geminiTimeout = setTimeout(() => geminiController.abort(), timeoutMs);
-  attempts.push("gemini");
-  let geminiOutcome: GeminiOutcome;
-  try {
-    geminiOutcome = await callGemini(opts, false, geminiController.signal);
-  } finally {
-    clearTimeout(geminiTimeout);
-  }
-
-  if (geminiOutcome.kind === "ok") {
-    const latencyMs = Date.now() - startedAt;
-    console.log(
-      `[aiProvider] provider=gemini latencyMs=${latencyMs} attempts=[${attempts.join(",")}]`,
-    );
-    return {
-      ok: true,
-      raw: geminiOutcome.raw,
-      provider: "gemini",
-      latencyMs,
-      attempts,
-    };
+    lastOutcome = outcome;
+    if (!shouldFailover(outcome)) {
+      const latencyMs = Date.now() - startedAt;
+      const errorKind = errorKindFor(outcome);
+      console.log(
+        `[aiProvider] provider=none latencyMs=${latencyMs} attempts=[${attempts.join(",")}] errorKind=${errorKind}`,
+      );
+      return {
+        ok: false,
+        raw: "",
+        provider: "none",
+        latencyMs,
+        attempts,
+        errorKind,
+      };
+    }
   }
 
   const latencyMs = Date.now() - startedAt;
-  const errorKind = errorKindFor(geminiOutcome);
+  const errorKind = lastOutcome && !missingFallbackAfterFailure
+    ? errorKindFor(lastOutcome)
+    : "no_key";
   console.log(
     `[aiProvider] provider=none latencyMs=${latencyMs} attempts=[${attempts.join(",")}] errorKind=${errorKind}`,
   );
@@ -488,6 +485,46 @@ export async function chatTextWithFailover(
 }
 
 // ── Small helpers ────────────────────────────────────────────────────────
+
+function normalizeProviderOrder(
+  value: ChatJsonOpts["providerOrder"],
+): ConfiguredAiProvider[] {
+  const raw = Array.isArray(value)
+    ? value
+    : typeof value === "string"
+      ? value.split(",")
+      : DEFAULT_PROVIDER_ORDER;
+  const seen = new Set<ConfiguredAiProvider>();
+  const order: ConfiguredAiProvider[] = [];
+  for (const entry of raw) {
+    const provider = String(entry).trim().toLowerCase();
+    if (
+      (provider === "openai" || provider === "deepseek" || provider === "gemini") &&
+      !seen.has(provider)
+    ) {
+      seen.add(provider);
+      order.push(provider);
+    }
+  }
+  return order.length ? order : [...DEFAULT_PROVIDER_ORDER];
+}
+
+function hasProviderKey(provider: ConfiguredAiProvider): boolean {
+  if (provider === "openai") return Boolean(process.env.OPENAI_API_KEY);
+  if (provider === "deepseek") return Boolean(process.env.DEEPSEEK_API_KEY);
+  return Boolean(process.env.GEMINI_API_KEY);
+}
+
+function callConfiguredProvider(
+  provider: ConfiguredAiProvider,
+  opts: ChatJsonOpts,
+  jsonMode: boolean,
+  signal: AbortSignal,
+): Promise<OpenAiOutcome | DeepSeekOutcome | GeminiOutcome> {
+  if (provider === "openai") return callOpenAi(opts, jsonMode, signal);
+  if (provider === "deepseek") return callDeepSeek(opts, jsonMode, signal);
+  return callGemini(opts, jsonMode, signal);
+}
 
 function parseJson(
   raw: string,

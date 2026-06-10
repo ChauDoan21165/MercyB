@@ -85,8 +85,8 @@ export async function handler(event: NetlifyEvent) {
     const isRevision = Boolean(body.isRevisionAttempt);
 
     if (!text) return json({ ok: false, error: "Missing text" }, 400);
-    if (!envValue("OPENAI_API_KEY")) {
-      return json({ ok: false, error: "Missing OPENAI_API_KEY" }, 503);
+    if (!envValue("OPENAI_API_KEY") && !envValue("GEMINI_API_KEY") && !envValue("DEEPSEEK_API_KEY")) {
+      return json({ ok: false, error: "Missing AI provider key" }, 503);
     }
 
     const userMessage = [
@@ -100,7 +100,10 @@ export async function handler(event: NetlifyEvent) {
       systemPrompt: buildSystemPrompt(level, isRevision),
       userMessage,
       timeoutMs: 15_000,
+      providerOrder: envValue("AI_GRAMMAR_PROVIDER_ORDER") || envValue("AI_PROVIDER_ORDER"),
       openaiModel: envValue("OPENAI_GRAMMAR_MODEL") || "gpt-4o-mini",
+      deepseekModel: envValue("DEEPSEEK_GRAMMAR_MODEL") || "deepseek-chat",
+      geminiModel: envValue("GEMINI_GRAMMAR_MODEL") || undefined,
       temperature: 0.15,
       maxTokens: 800,
     });

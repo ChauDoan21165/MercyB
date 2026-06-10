@@ -88,8 +88,8 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
     const isRevision = Boolean(body.isRevisionAttempt);
 
     if (!text) return json({ ok: false, error: "Missing text" }, 400);
-    if (!envValue(env, "OPENAI_API_KEY")) {
-      return json({ ok: false, error: "Missing OPENAI_API_KEY" }, 503);
+    if (!envValue(env, "OPENAI_API_KEY") && !envValue(env, "GEMINI_API_KEY") && !envValue(env, "DEEPSEEK_API_KEY")) {
+      return json({ ok: false, error: "Missing AI provider key" }, 503);
     }
 
     const userMessage = [
@@ -104,7 +104,10 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
       systemPrompt: buildSystemPrompt(level, isRevision),
       userMessage,
       timeoutMs: 15000,
+      providerOrder: envValue(env, "AI_GRAMMAR_PROVIDER_ORDER") || envValue(env, "AI_PROVIDER_ORDER"),
       openaiModel: envValue(env, "OPENAI_GRAMMAR_MODEL") || "gpt-4o-mini",
+      deepseekModel: envValue(env, "DEEPSEEK_GRAMMAR_MODEL") || "deepseek-chat",
+      geminiModel: envValue(env, "GEMINI_GRAMMAR_MODEL") || undefined,
       temperature: 0.15,
       maxTokens: 800,
     });

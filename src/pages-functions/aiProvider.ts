@@ -1,6 +1,7 @@
 import type { PagesEnv } from "./http";
 
-type AiProvider = "openai" | "gemini" | "none";
+type AiProvider = "openai" | "deepseek" | "gemini" | "none";
+type ConfiguredAiProvider = Exclude<AiProvider, "none">;
 type AiErrorKind = "timeout" | "rate_limit" | "upstream_error" | "parse_error" | "no_key";
 
 export type ChatJsonResult = {
@@ -19,7 +20,9 @@ export type ChatJsonOpts = {
   userMessage: string;
   timeoutMs?: number;
   openaiModel?: string;
+  deepseekModel?: string;
   geminiModel?: string;
+  providerOrder?: readonly ConfiguredAiProvider[] | string;
   temperature?: number;
   maxTokens?: number;
 };
@@ -30,9 +33,11 @@ type ProviderOutcome =
 
 const DEFAULT_TIMEOUT_MS = 15_000;
 const DEFAULT_OPENAI_MODEL = "gpt-4o-mini";
+const DEFAULT_DEEPSEEK_MODEL = "deepseek-chat";
 const DEFAULT_GEMINI_MODEL = "gemini-2.5-flash";
 const DEFAULT_TEMPERATURE = 0.15;
 const DEFAULT_MAX_TOKENS = 800;
+const DEFAULT_PROVIDER_ORDER: readonly ConfiguredAiProvider[] = ["openai", "gemini"];
 
 function shouldFailover(reason: { status?: number; isAbort?: boolean; threw?: boolean }): boolean {
   if (reason.isAbort || reason.threw) return true;
@@ -65,6 +70,45 @@ async function callOpenAi(
         temperature: opts.temperature ?? DEFAULT_TEMPERATURE,
         max_tokens: opts.maxTokens ?? DEFAULT_MAX_TOKENS,
         response_format: { type: "json_object" },
+        messages: [
+          { role: "system", content: opts.systemPrompt },
+          { role: "user", content: opts.userMessage },
+        ],
+      }),
+      signal,
+    });
+    if (!response.ok) return { kind: "fail", status: response.status };
+
+    const data = (await response.json()) as {
+      choices?: Array<{ message?: { content?: string } }>;
+    };
+    return { kind: "ok", raw: data.choices?.[0]?.message?.content ?? "" };
+  } catch (err) {
+    const isAbort = err instanceof Error && err.name === "AbortError";
+    return { kind: "fail", isAbort, threw: !isAbort };
+  }
+}
+
+async function callDeepSeek(
+  opts: ChatJsonOpts,
+  signal: AbortSignal,
+): Promise<ProviderOutcome> {
+  const apiKey = opts.env.DEEPSEEK_API_KEY;
+  if (!apiKey) return { kind: "fail", status: 401 };
+
+  try {
+    const response = await fetch("https://api.deepseek.com/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: opts.deepseekModel ?? DEFAULT_DEEPSEEK_MODEL,
+        temperature: opts.temperature ?? DEFAULT_TEMPERATURE,
+        max_tokens: opts.maxTokens ?? DEFAULT_MAX_TOKENS,
+        response_format: { type: "json_object" },
+        stream: false,
         messages: [
           { role: "system", content: opts.systemPrompt },
           { role: "user", content: opts.userMessage },
@@ -143,74 +187,93 @@ function parseJson(raw: string): { ok: true; json: Record<string, unknown> } | {
   }
 }
 
+function normalizeProviderOrder(value: ChatJsonOpts["providerOrder"]): ConfiguredAiProvider[] {
+  const raw = Array.isArray(value)
+    ? value
+    : typeof value === "string"
+      ? value.split(",")
+      : DEFAULT_PROVIDER_ORDER;
+  const seen = new Set<ConfiguredAiProvider>();
+  const order: ConfiguredAiProvider[] = [];
+  for (const entry of raw) {
+    const provider = String(entry).trim().toLowerCase();
+    if ((provider === "openai" || provider === "deepseek" || provider === "gemini") && !seen.has(provider)) {
+      seen.add(provider);
+      order.push(provider);
+    }
+  }
+  return order.length ? order : [...DEFAULT_PROVIDER_ORDER];
+}
+
+function hasProviderKey(opts: ChatJsonOpts, provider: ConfiguredAiProvider): boolean {
+  if (provider === "openai") return Boolean(opts.env.OPENAI_API_KEY);
+  if (provider === "deepseek") return Boolean(opts.env.DEEPSEEK_API_KEY);
+  return Boolean(opts.env.GEMINI_API_KEY);
+}
+
+function callConfiguredProvider(
+  provider: ConfiguredAiProvider,
+  opts: ChatJsonOpts,
+  signal: AbortSignal,
+): Promise<ProviderOutcome> {
+  if (provider === "openai") return callOpenAi(opts, signal);
+  if (provider === "deepseek") return callDeepSeek(opts, signal);
+  return callGemini(opts, signal);
+}
+
 export async function chatJsonWithFailover(opts: ChatJsonOpts): Promise<ChatJsonResult> {
   const startedAt = Date.now();
-  const attempts: AiProvider[] = ["openai"];
+  const attempts: AiProvider[] = [];
   const timeoutMs = opts.timeoutMs ?? DEFAULT_TIMEOUT_MS;
+  const providerOrder = normalizeProviderOrder(opts.providerOrder);
+  let lastOutcome: ProviderOutcome | null = null;
+  let missingFallbackAfterFailure = false;
 
-  const openaiController = new AbortController();
-  const openaiTimeout = setTimeout(() => openaiController.abort(), timeoutMs);
-  let openaiOutcome: ProviderOutcome;
-  try {
-    openaiOutcome = await callOpenAi(opts, openaiController.signal);
-  } finally {
-    clearTimeout(openaiTimeout);
-  }
-
-  if (openaiOutcome.kind === "ok") {
-    const parsed = parseJson(openaiOutcome.raw);
-    const latencyMs = Date.now() - startedAt;
-    if (parsed.ok) {
-      return { ok: true, json: parsed.json, raw: openaiOutcome.raw, provider: "openai", latencyMs, attempts };
+  for (const provider of providerOrder) {
+    if (!hasProviderKey(opts, provider)) {
+      if (lastOutcome) missingFallbackAfterFailure = true;
+      continue;
     }
-    return {
-      ok: false,
-      json: {},
-      raw: openaiOutcome.raw,
-      provider: "openai",
-      latencyMs,
-      attempts,
-      errorKind: "parse_error",
-    };
-  }
-
-  if (!shouldFailover(openaiOutcome)) {
-    return {
-      ok: false,
-      json: {},
-      raw: "",
-      provider: "openai",
-      latencyMs: Date.now() - startedAt,
-      attempts,
-      errorKind: errorKindFor(openaiOutcome),
-    };
-  }
-
-  attempts.push("gemini");
-  const geminiController = new AbortController();
-  const geminiTimeout = setTimeout(() => geminiController.abort(), timeoutMs);
-  let geminiOutcome: ProviderOutcome;
-  try {
-    geminiOutcome = await callGemini(opts, geminiController.signal);
-  } finally {
-    clearTimeout(geminiTimeout);
-  }
-
-  if (geminiOutcome.kind === "ok") {
-    const parsed = parseJson(geminiOutcome.raw);
-    const latencyMs = Date.now() - startedAt;
-    if (parsed.ok) {
-      return { ok: true, json: parsed.json, raw: geminiOutcome.raw, provider: "gemini", latencyMs, attempts };
+    missingFallbackAfterFailure = false;
+    attempts.push(provider);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+    let outcome: ProviderOutcome;
+    try {
+      outcome = await callConfiguredProvider(provider, opts, controller.signal);
+    } finally {
+      clearTimeout(timeout);
     }
-    return {
-      ok: false,
-      json: {},
-      raw: geminiOutcome.raw,
-      provider: "gemini",
-      latencyMs,
-      attempts,
-      errorKind: "parse_error",
-    };
+
+    if (outcome.kind === "ok") {
+      const parsed = parseJson(outcome.raw);
+      const latencyMs = Date.now() - startedAt;
+      if (parsed.ok) {
+        return { ok: true, json: parsed.json, raw: outcome.raw, provider, latencyMs, attempts };
+      }
+      return {
+        ok: false,
+        json: {},
+        raw: outcome.raw,
+        provider,
+        latencyMs,
+        attempts,
+        errorKind: "parse_error",
+      };
+    }
+
+    lastOutcome = outcome;
+    if (!shouldFailover(outcome)) {
+      return {
+        ok: false,
+        json: {},
+        raw: "",
+        provider: "none",
+        latencyMs: Date.now() - startedAt,
+        attempts,
+        errorKind: errorKindFor(outcome),
+      };
+    }
   }
 
   return {
@@ -220,6 +283,6 @@ export async function chatJsonWithFailover(opts: ChatJsonOpts): Promise<ChatJson
     provider: "none",
     latencyMs: Date.now() - startedAt,
     attempts,
-    errorKind: opts.env.GEMINI_API_KEY ? errorKindFor(geminiOutcome) : "no_key",
+    errorKind: lastOutcome && !missingFallbackAfterFailure ? errorKindFor(lastOutcome) : "no_key",
   };
 }
