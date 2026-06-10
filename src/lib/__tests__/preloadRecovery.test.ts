@@ -54,6 +54,15 @@ describe("attachPreloadFailureRecovery", () => {
     expect(onChunkLoad404).toHaveBeenCalledTimes(1);
   });
 
+  it("fires onChunkLoad404 and prevents default for Vite preload errors", () => {
+    const event = new Event("vite:preloadError", { cancelable: true });
+
+    window.dispatchEvent(event);
+
+    expect(onChunkLoad404).toHaveBeenCalledTimes(1);
+    expect(event.defaultPrevented).toBe(true);
+  });
+
   it("ignores <link rel='stylesheet'> errors (only modulepreload matters)", () => {
     const link = document.createElement("link");
     link.rel = "stylesheet";
@@ -82,6 +91,7 @@ describe("attachPreloadFailureRecovery", () => {
     const link = document.createElement("link");
     link.rel = "modulepreload";
     fireResourceError(link);
+    window.dispatchEvent(new Event("vite:preloadError", { cancelable: true }));
     expect(onChunkLoad404).not.toHaveBeenCalled();
   });
 });

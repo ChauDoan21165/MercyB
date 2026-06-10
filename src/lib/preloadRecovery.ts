@@ -33,7 +33,7 @@ export function attachPreloadFailureRecovery(
 ): () => void {
   if (typeof window === "undefined") return () => {};
 
-  const handler = (event: Event) => {
+  const onResourceError = (event: Event) => {
     const target = event.target;
     if (!target || target === window) return;
     if (
@@ -52,14 +52,25 @@ export function attachPreloadFailureRecovery(
     }
   };
 
+  const onVitePreloadError = (event: Event) => {
+    // Vite dispatches this cancelable event before a dynamic import
+    // rejection escapes. Preventing default keeps stale-deploy chunk
+    // misses out of React/Sentry while the existing cache-bust reload
+    // recovers the session.
+    if (typeof event.preventDefault === "function") event.preventDefault();
+    onChunkLoad404();
+  };
+
   try {
-    window.addEventListener("error", handler, true); // capture — resource errors don't bubble
+    window.addEventListener("error", onResourceError, true); // capture — resource errors don't bubble
+    window.addEventListener("vite:preloadError", onVitePreloadError);
   } catch {
     return () => {};
   }
   return () => {
     try {
-      window.removeEventListener("error", handler, true);
+      window.removeEventListener("error", onResourceError, true);
+      window.removeEventListener("vite:preloadError", onVitePreloadError);
     } catch { /* swallow */ }
   };
 }
