@@ -7,7 +7,10 @@ const ELEVENLABS_BASE = "https://api.elevenlabs.io/v1/text-to-speech";
 const PER_USER_DAILY_CAP = 50;
 const GLOBAL_DAILY_CAP = 1000;
 const MAX_TEXT_LENGTH = 2000;
-const AZURE_TIMEOUT_MS = 6500;
+// 9000ms (was 6500) — Azure Neural TTS cold starts can exceed 6.5s on the first
+// call after idle, tripping azure_timeout and the VI "chưa sẵn sàng" fallback.
+// Wider budget absorbs the cold start; warm calls return well under it.
+const AZURE_TIMEOUT_MS = 9000;
 
 // Storage cache for finalized Azure model audio. Reusing the existing PUBLIC
 // `room-audio` bucket (service-role write, no RLS/schema change) so repeated
