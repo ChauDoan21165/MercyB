@@ -164,4 +164,268 @@ export const speakTopics = [
       { id: "emergency-home-shutoff", question: "How would you ask if you should turn something off?", salienceQuestion: "Should you shut off the {slot}?" },
     ],
   },
+  {
+    id: "topic-emergencies-give-location",
+    labelEn: "Giving Your Exact Location",
+    labelVi: "Nói chính xác vị trí",
+    category: "emergencies",
+    scenarioDescription:
+      "On an emergency call the learner gives an exact location using an address, intersection, or nearby landmark, names which entrance to use, and repeats it calmly.",
+    aiRoleDefinition:
+      "Act as a calm dispatcher who asks where the learner is, presses gently for a landmark or entrance, and has them repeat the location.",
+    conversationDirections: [
+      "Ask the learner for their address or intersection.",
+      "Ask for a nearby landmark if the address is unclear.",
+      "Find out which entrance responders should use.",
+      "Have the learner repeat the location slowly.",
+      "Confirm the location is clear before moving on.",
+    ],
+    warmthPatterns: [
+      "Stay calm and steady to keep the learner steady.",
+      "Reassure the learner that slow and accurate beats fast.",
+      "Encourage landmark phrases like 'near the pharmacy.'",
+    ],
+    seedInputs: ["I am at the corner of King Street and First Avenue."],
+    detectionPatterns: [
+      /\b(?:my location|where are you|corner of|near the|address is|intersection|landmark|building entrance)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "emergency-location-near",
+        label: "Near plus landmark",
+        note: "Vietnamese directions often rely on landmarks. That helps in English too: 'near the pharmacy,' 'beside the bus stop,' or 'at the front entrance.'",
+      },
+      {
+        id: "emergency-location-say-address",
+        label: "Slow address",
+        note: "It is okay to say the address slowly and repeat it. Dispatchers prefer accurate, not fast.",
+      },
+    ],
+    followUps: [
+      { id: "emergency-location-address", question: "What address or intersection would you give?", salienceQuestion: "How would you say the {slot} clearly?" },
+      { id: "emergency-location-landmark", question: "What landmark is nearby?", salienceQuestion: "What landmark is near the {slot}?" },
+      { id: "emergency-location-entrance", question: "Which entrance should help use?", salienceQuestion: "Where is the entrance for the {slot}?" },
+      { id: "emergency-location-repeat", question: "How would you repeat the location if asked?", salienceQuestion: "How would you repeat the {slot} calmly?" },
+    ],
+  },
+  {
+    id: "topic-emergencies-describe-injury",
+    labelEn: "Describing An Injury",
+    labelVi: "Mô tả chấn thương",
+    category: "emergencies",
+    scenarioDescription:
+      "The learner describes an injury to emergency staff: who is hurt, where on the body, how serious, whether the person is awake and breathing, and if there is bleeding.",
+    aiRoleDefinition:
+      "Act as emergency staff who calmly ask what happened, where the injury is, and whether the person is awake, breathing, and bleeding.",
+    conversationDirections: [
+      "Ask what happened to the person.",
+      "Ask where the injury is on the body.",
+      "Check if the person is awake and breathing.",
+      "Ask whether there is bleeding.",
+      "Keep the learner calm while gathering facts.",
+    ],
+    warmthPatterns: [
+      "Keep questions short and steady.",
+      "Reassure the learner that imperfect words are fine.",
+      "Model the calm 'awake and breathing' safety phrase.",
+    ],
+    seedInputs: ["He fell and hit his head. He is awake but dizzy."],
+    detectionPatterns: [
+      /\b(?:fell|hit his head|hit her head|bleeding|broken arm|hurt badly|injury|dizzy|unconscious)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "emergency-injury-he-she",
+        label: "He or she under stress",
+        note: "Vietnamese pronouns work differently, so he/she can swap under pressure. The key is still clear: who is hurt, where, and how serious.",
+      },
+      {
+        id: "emergency-injury-awake-breathing",
+        label: "Awake and breathing",
+        note: "Emergency staff may ask if the person is awake and breathing. Practicing those words gives learners a calm safety script.",
+      },
+    ],
+    followUps: [
+      { id: "emergency-injury-what", question: "What happened to the person?", salienceQuestion: "How would you describe the {slot}?" },
+      { id: "emergency-injury-where", question: "Where is the injury?", salienceQuestion: "Where is the {slot} on the body?" },
+      { id: "emergency-injury-conscious", question: "Is the person awake and breathing?", salienceQuestion: "What is the person's condition after the {slot}?" },
+      { id: "emergency-injury-bleeding", question: "How would you say whether there is bleeding?", salienceQuestion: "Is there bleeding from the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-emergencies-fire-or-smoke",
+    labelEn: "Reporting Fire Or Smoke",
+    labelVi: "Báo cháy hoặc khói",
+    category: "emergencies",
+    scenarioDescription:
+      "The learner reports fire, smoke, or a gas smell, says where it is, whether people are still inside, and that they are leaving the building safely.",
+    aiRoleDefinition:
+      "Act as a fire dispatcher who asks what the learner sees or smells, where it is, who is inside, and confirms they are getting out safely.",
+    conversationDirections: [
+      "Ask what the learner sees or smells.",
+      "Find out where the fire or smoke is.",
+      "Ask whether people are still inside.",
+      "Confirm the learner is leaving safely.",
+      "Keep instructions short and calm.",
+    ],
+    warmthPatterns: [
+      "Prioritize getting out over long explanations.",
+      "Reassure the learner that leaving first is right.",
+      "Encourage 'There is smoke...' as the opening frame.",
+    ],
+    seedInputs: ["There is smoke in the hallway and we are leaving the building."],
+    detectionPatterns: [
+      /\b(?:fire|smoke|smell gas|gas leak|alarm is going off|building is on fire|hallway smoke|evacuate)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "emergency-fire-there-is",
+        label: "There is smoke",
+        note: "Vietnamese may start with the place first. English emergency reports often start with 'There is smoke' or 'There is a fire,' then the place.",
+      },
+      {
+        id: "emergency-fire-leaving",
+        label: "Say you are leaving",
+        note: "If people are evacuating, say it simply: 'We are leaving the building.' It tells responders what is happening now.",
+      },
+    ],
+    followUps: [
+      { id: "emergency-fire-what", question: "What do you see or smell?", salienceQuestion: "How would you report the {slot}?" },
+      { id: "emergency-fire-where", question: "Where is the smoke or fire?", salienceQuestion: "Where is the {slot} located?" },
+      { id: "emergency-fire-people", question: "Are people still inside?", salienceQuestion: "Who is near the {slot}?" },
+      { id: "emergency-fire-exit", question: "How would you say you are leaving safely?", salienceQuestion: "How would you leave the {slot} safely?" },
+    ],
+  },
+  {
+    id: "topic-emergencies-car-accident",
+    labelEn: "After A Car Accident",
+    labelVi: "Sau tai nạn xe",
+    category: "emergencies",
+    scenarioDescription:
+      "After a car accident the learner reports the location, whether anyone is hurt, how many vehicles are involved, and any remaining danger like traffic or fire.",
+    aiRoleDefinition:
+      "Act as a dispatcher who asks where the accident is, who is hurt, how many vehicles, and whether danger remains — safety before paperwork.",
+    conversationDirections: [
+      "Ask where the accident happened.",
+      "Ask whether anyone is hurt.",
+      "Find out how many vehicles are involved.",
+      "Check for remaining danger like traffic or fire.",
+      "Keep the learner focused on safety first.",
+    ],
+    warmthPatterns: [
+      "Put injuries and location before insurance talk.",
+      "Reassure the learner that paperwork can wait.",
+      "Encourage 'There was an accident' as the opener.",
+    ],
+    seedInputs: ["There was a car accident. Nobody is trapped, but one person is hurt."],
+    detectionPatterns: [
+      /\b(?:car accident|crash|hit my car|rear-ended|someone is hurt|traffic accident|vehicle collision|pulled over)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "emergency-accident-had-was",
+        label: "There was an accident",
+        note: "Vietnamese learners may say 'have accident here.' Emergency English usually says 'There was an accident' or 'We had an accident.'",
+      },
+      {
+        id: "emergency-accident-insurance-later",
+        label: "Safety before paperwork",
+        note: "In an accident, say injuries and location first. Insurance and documents can wait until everyone is safe.",
+      },
+    ],
+    followUps: [
+      { id: "emergency-accident-location", question: "Where did the accident happen?", salienceQuestion: "How would you locate the {slot}?" },
+      { id: "emergency-accident-injury", question: "Is anyone hurt?", salienceQuestion: "Who is hurt in the {slot}?" },
+      { id: "emergency-accident-vehicles", question: "How many vehicles are involved?", salienceQuestion: "How many vehicles are in the {slot}?" },
+      { id: "emergency-accident-danger", question: "Is there any danger now, like traffic or fire?", salienceQuestion: "What danger remains after the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-emergencies-lost-child",
+    labelEn: "A Lost Child In Public",
+    labelVi: "Trẻ bị lạc nơi công cộng",
+    category: "emergencies",
+    scenarioDescription:
+      "The learner reports a lost child to staff or security, giving the child's age, clothing, and where they were last seen, and a contact number.",
+    aiRoleDefinition:
+      "Act as calm security or staff who ask the child's age, what they are wearing, where they were last seen, and the learner's phone number.",
+    conversationDirections: [
+      "Ask how old the child is.",
+      "Ask what the child is wearing.",
+      "Find out where the child was last seen.",
+      "Get the learner's contact number.",
+      "Reassure the learner while gathering details.",
+    ],
+    warmthPatterns: [
+      "Stay calm and kind; the learner is frightened.",
+      "Reassure the learner that simple descriptions are enough.",
+      "Encourage 'my son' or 'my daughter' as clear terms.",
+    ],
+    seedInputs: ["My son is lost. He is six years old and wearing a blue jacket."],
+    detectionPatterns: [
+      /\b(?:lost child|my son is lost|my daughter is lost|can't find my child|missing child|wearing a blue|last seen)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "emergency-child-description",
+        label: "Age and clothing",
+        note: "For a lost child, English helpers need age, clothing, and last seen place. The description can be simple and imperfect.",
+      },
+      {
+        id: "emergency-child-relationship",
+        label: "My son, my daughter",
+        note: "Vietnamese family terms are richer than English. In public help requests, 'my son' or 'my daughter' is enough and clear.",
+      },
+    ],
+    followUps: [
+      { id: "emergency-child-age", question: "How old is the child?", salienceQuestion: "How would you say the {slot} age?" },
+      { id: "emergency-child-clothes", question: "What is the child wearing?", salienceQuestion: "How would you describe the {slot} clothing?" },
+      { id: "emergency-child-last", question: "Where did you last see the child?", salienceQuestion: "Where was the {slot} last seen?" },
+      { id: "emergency-child-contact", question: "How would you give your phone number?", salienceQuestion: "How would helpers reach you about the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-emergencies-neighbor-help",
+    labelEn: "Asking A Neighbor For Urgent Help",
+    labelVi: "Nhờ hàng xóm giúp gấp",
+    category: "emergencies",
+    scenarioDescription:
+      "In an urgent moment the learner asks a neighbor for immediate help, states the one urgent reason first, and says exactly what they need done.",
+    aiRoleDefinition:
+      "Act as a willing neighbor who responds to an urgent ask, listens for the one key reason, and helps with the specific action requested.",
+    conversationDirections: [
+      "Let the learner ask for help directly.",
+      "Listen for the single urgent reason.",
+      "Ask what action the learner needs.",
+      "Offer to help right away.",
+      "Accept their thanks once it is handled.",
+    ],
+    warmthPatterns: [
+      "Treat a direct urgent ask as appropriate, not rude.",
+      "Reassure the learner that one clear reason is enough.",
+      "Encourage 'Can you help me now?' in real urgency.",
+    ],
+    seedInputs: ["Can you help me? I locked myself out and my child is inside."],
+    detectionPatterns: [
+      /\b(?:urgent help|locked myself out|child is inside|neighbor help|can you help me now|emergency at home|need help quickly)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "emergency-neighbor-direct",
+        label: "Direct neighbor ask",
+        note: "In urgent moments, 'Can you help me now?' is not rude. It gives the neighbor a clear signal that this is not small talk.",
+      },
+      {
+        id: "emergency-neighbor-one-reason",
+        label: "One reason first",
+        note: "Say the urgent reason before details: child inside, stove on, water leaking, or someone hurt.",
+      },
+    ],
+    followUps: [
+      { id: "emergency-neighbor-help", question: "What urgent help do you need?", salienceQuestion: "How would you ask for help with the {slot}?" },
+      { id: "emergency-neighbor-reason", question: "What one reason would you say first?", salienceQuestion: "What makes the {slot} urgent?" },
+      { id: "emergency-neighbor-action", question: "What do you need the neighbor to do?", salienceQuestion: "What action would help with the {slot}?" },
+      { id: "emergency-neighbor-thanks", question: "How would you thank them after the urgent moment?", salienceQuestion: "How would you thank them for the {slot}?" },
+    ],
+  },
 ] as const satisfies readonly FinalThemeSpeakTopic[];

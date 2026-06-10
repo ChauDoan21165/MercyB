@@ -206,4 +206,268 @@ export const speakTopics = [
       { id: "social-reschedule-two-options", question: "What two new times could you offer?", salienceQuestion: "What choices would work for the {slot}?" },
     ],
   },
+  {
+    id: "topic-social-accept-invitation",
+    labelEn: "Accepting An Invitation",
+    labelVi: "Nhận lời mời",
+    category: "social",
+    scenarioDescription:
+      "A friend or neighbor invites the learner somewhere, and the learner accepts warmly, confirms one detail like time or place, and asks what to bring.",
+    aiRoleDefinition:
+      "Act as a friendly host who invites the learner, welcomes a warm yes, and answers questions about time, place, and what to bring.",
+    conversationDirections: [
+      "Invite the learner to an event or outing.",
+      "Welcome a warm, full acceptance, not just 'yes.'",
+      "Let the learner confirm a detail like time or place.",
+      "Answer what to bring if asked.",
+      "Close by saying you look forward to it.",
+    ],
+    warmthPatterns: [
+      "Keep the tone warm and welcoming.",
+      "Reassure the learner that confirming details sounds prepared, not rude.",
+      "Encourage 'I'd love to' over a bare 'yes.'",
+    ],
+    seedInputs: ["Thank you for inviting me. I would love to come."],
+    detectionPatterns: [
+      /\b(?:thank you for inviting me|i would love to come|accept an invitation|come to your party|join you|sounds nice)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "social-accept-love-to",
+        label: "I would love to",
+        note: "A warm English acceptance is 'I'd love to.' Vietnamese learners may answer only 'yes' because the rest feels extra.",
+      },
+      {
+        id: "social-accept-confirm-detail",
+        label: "Confirm one detail",
+        note: "After accepting, it is normal to confirm time, place, or what to bring. It does not sound suspicious; it sounds prepared.",
+      },
+    ],
+    followUps: [
+      { id: "social-accept-thanks", question: "How would you thank the person for inviting you?", salienceQuestion: "How would you thank them for the {slot}?" },
+      { id: "social-accept-yes", question: "How would you say yes warmly?", salienceQuestion: "How would you accept the {slot}?" },
+      { id: "social-accept-detail", question: "What detail would you confirm?", salienceQuestion: "What detail matters for the {slot}?" },
+      { id: "social-accept-bring", question: "How would you ask what to bring?", salienceQuestion: "What should you bring to the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-social-decline-politely",
+    labelEn: "Declining Politely",
+    labelVi: "Từ chối lịch sự",
+    category: "social",
+    scenarioDescription:
+      "The learner cannot attend something and declines kindly, thanking the person, giving a short reason, and leaving the door open for next time.",
+    aiRoleDefinition:
+      "Act as a warm friend who invites the learner and accepts a kind, short decline without pressing for a long explanation.",
+    conversationDirections: [
+      "Invite the learner to something.",
+      "Let the learner thank you first, then decline.",
+      "Accept a short reason without pressing.",
+      "Welcome a 'maybe next time' opening.",
+      "Keep the tone friendly to the end.",
+    ],
+    warmthPatterns: [
+      "Reassure the learner that a short reason is enough.",
+      "Keep the exchange free of pressure or hard feelings.",
+      "Encourage 'I can't make it' over a bare 'I can't go.'",
+    ],
+    seedInputs: ["Thank you for inviting me, but I can't make it this time."],
+    detectionPatterns: [
+      /\b(?:can't make it|decline politely|maybe next time|thank you for inviting|i have plans|sorry i can't come)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "social-decline-no-long-excuse",
+        label: "Short reason is enough",
+        note: "Vietnamese politeness may add a long explanation. English declining can stay kind and short: thanks, can't come, maybe next time.",
+      },
+      {
+        id: "social-decline-cant-make-it",
+        label: "Can't make it",
+        note: "'I can't make it' is a natural social phrase for not being able to attend. It sounds softer than a bare 'I can't go.'",
+      },
+    ],
+    followUps: [
+      { id: "social-decline-thanks", question: "How would you thank them first?", salienceQuestion: "How would you thank them for the {slot}?" },
+      { id: "social-decline-reason", question: "What short reason would you give?", salienceQuestion: "Why can't you make the {slot}?" },
+      { id: "social-decline-next", question: "How would you leave the door open for next time?", salienceQuestion: "How would you suggest another {slot}?" },
+      { id: "social-decline-tone", question: "How would you keep the tone warm?", salienceQuestion: "How would you sound kind about the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-social-join-group-conversation",
+    labelEn: "Joining A Group Conversation",
+    labelVi: "Tham gia cuộc trò chuyện nhóm",
+    category: "social",
+    scenarioDescription:
+      "The learner wants to join a small group already talking, enters with a light line, listens, asks one question, adds a short comment, and can step away politely.",
+    aiRoleDefinition:
+      "Act as a member of a friendly group who welcomes the learner in, shares the topic, and includes their question and comment.",
+    conversationDirections: [
+      "Let the learner ask to join with a light line.",
+      "Tell them what the group is talking about.",
+      "Invite one question from the learner.",
+      "Welcome one short comment they add.",
+      "Allow a polite way to step away.",
+    ],
+    warmthPatterns: [
+      "Make joining feel welcome, not awkward.",
+      "Reassure the learner that listening first is a safe move.",
+      "Encourage the simple 'Can I join you?' opener.",
+    ],
+    seedInputs: ["Can I join you? What are you talking about?"],
+    detectionPatterns: [
+      /\b(?:join the conversation|join you|what are you talking about|group chat|at the table|talking with coworkers)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "social-group-join-you",
+        label: "Can I join you",
+        note: "English groups often welcome a light entry line: 'Can I join you?' It is not too forward when said warmly.",
+      },
+      {
+        id: "social-group-listen-first",
+        label: "Listen then add",
+        note: "Learners may worry about perfect timing. A safe move is to listen, ask one question, then add one short comment.",
+      },
+    ],
+    followUps: [
+      { id: "social-group-enter", question: "How would you ask to join the group?", salienceQuestion: "How would you join the {slot}?" },
+      { id: "social-group-topic", question: "How would you ask what they are discussing?", salienceQuestion: "What is the {slot} about?" },
+      { id: "social-group-comment", question: "What short comment could you add?", salienceQuestion: "What could you add about the {slot}?" },
+      { id: "social-group-exit", question: "How would you step away politely?", salienceQuestion: "How would you leave the {slot} kindly?" },
+    ],
+  },
+  {
+    id: "topic-social-ask-again",
+    labelEn: "Asking Someone To Repeat",
+    labelVi: "Nhờ người khác nói lại",
+    category: "social",
+    scenarioDescription:
+      "The learner did not catch what someone said and asks them to repeat or slow down, then checks understanding and thanks them — all low-pressure.",
+    aiRoleDefinition:
+      "Act as a patient conversation partner who repeats and slows down willingly when the learner asks, without making it awkward.",
+    conversationDirections: [
+      "Say something the learner may not fully catch.",
+      "Let the learner ask you to repeat.",
+      "Slow down when asked.",
+      "Let the learner check their understanding.",
+      "Accept their thanks warmly.",
+    ],
+    warmthPatterns: [
+      "Keep it relaxed; asking again is completely normal.",
+      "Reassure the learner that repeating is no trouble at all.",
+      "Encourage 'A little more slowly' over 'speak slow.'",
+    ],
+    seedInputs: ["Sorry, could you say that again a little more slowly?"],
+    detectionPatterns: [
+      /\b(?:say that again|repeat that|more slowly|i didn't catch|what did you say|pardon|could you repeat)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "social-repeat-no-pressure",
+        label: "Asking again is normal",
+        note: "Many learners smile and pretend they understood. In English social life, 'Could you say that again?' is normal and low-pressure.",
+      },
+      {
+        id: "social-repeat-slowly",
+        label: "A little more slowly",
+        note: "'A little more slowly' sounds softer than 'speak slow.' It asks for help without blaming the other person.",
+      },
+    ],
+    followUps: [
+      { id: "social-repeat-ask", question: "How would you ask them to repeat?", salienceQuestion: "How would you ask again about the {slot}?" },
+      { id: "social-repeat-slow", question: "How would you ask them to slow down?", salienceQuestion: "How would you slow down the {slot}?" },
+      { id: "social-repeat-check", question: "How would you check your understanding?", salienceQuestion: "How would you confirm the {slot}?" },
+      { id: "social-repeat-thanks", question: "How would you thank them after they repeat?", salienceQuestion: "How would you thank them for explaining the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-social-compliment-and-reply",
+    labelEn: "Giving And Receiving Compliments",
+    labelVi: "Khen và đáp lại lời khen",
+    category: "social",
+    scenarioDescription:
+      "The learner gives a specific, warm compliment and practices accepting praise graciously instead of brushing it off, and returning a kind word.",
+    aiRoleDefinition:
+      "Act as a friendly peer who exchanges compliments, accepts the learner's kind word, and gently models accepting praise.",
+    conversationDirections: [
+      "Invite the learner to give a specific compliment.",
+      "Accept it warmly and compliment them back.",
+      "Let the learner practice accepting praise.",
+      "Encourage a short, gracious reply.",
+      "Keep the exchange light and kind.",
+    ],
+    warmthPatterns: [
+      "Model accepting praise without deflecting it.",
+      "Reassure the learner that 'Thank you, that's kind' is enough.",
+      "Encourage specific compliments over vague ones.",
+    ],
+    seedInputs: ["I like your jacket. The color looks great on you."],
+    detectionPatterns: [
+      /\b(?:nice jacket|i like your|compliment|looks great|thank you that's kind|you look nice|good job)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "social-compliment-specific-note",
+        label: "Specific compliment",
+        note: "A specific English compliment feels natural: 'I like your jacket' or 'You did a great job on the report.'",
+      },
+      {
+        id: "social-compliment-accept",
+        label: "Accepting kindly",
+        note: "Vietnamese modesty may push learners to reject praise. In English, 'Thank you, that's kind of you' is warm and accepted.",
+      },
+    ],
+    followUps: [
+      { id: "social-compliment-what", question: "What would you compliment?", salienceQuestion: "What would you say about the {slot}?" },
+      { id: "social-compliment-specific", question: "How would you make it specific?", salienceQuestion: "What detail about the {slot} would you mention?" },
+      { id: "social-compliment-reply", question: "How would you reply if someone compliments you?", salienceQuestion: "How would you accept praise about the {slot}?" },
+      { id: "social-compliment-return", question: "Would you return a compliment?", salienceQuestion: "What could you say back about the {slot}?" },
+    ],
+  },
+  {
+    id: "topic-social-make-plans",
+    labelEn: "Making Casual Plans",
+    labelVi: "Hẹn gặp một cách tự nhiên",
+    category: "social",
+    scenarioDescription:
+      "The learner suggests casual plans like coffee or lunch, offers a relaxed time and place, and confirms the plan later — keeping it low-pressure.",
+    aiRoleDefinition:
+      "Act as a friendly acquaintance who is open to casual plans, helps settle a time and place, and confirms warmly.",
+    conversationDirections: [
+      "Let the learner suggest a casual outing.",
+      "Be open and help pick a relaxed time.",
+      "Help settle on a place to meet.",
+      "Practice confirming the plan later.",
+      "Keep the whole thing easygoing.",
+    ],
+    warmthPatterns: [
+      "Keep plans relaxed, not over-detailed.",
+      "Reassure the learner that 'sometime next week' is fine.",
+      "Encourage the soft 'Would you like to...' opener.",
+    ],
+    seedInputs: ["Would you like to get coffee sometime next week?"],
+    detectionPatterns: [
+      /\b(?:get coffee|make plans|hang out|meet sometime|next week|free this weekend|grab lunch)\b/i,
+    ],
+    l1InterferenceNotes: [
+      {
+        id: "social-plans-sometime",
+        label: "Sometime next week",
+        note: "For casual plans, 'sometime next week' sounds relaxed. It is less intense than choosing every detail immediately.",
+      },
+      {
+        id: "social-plans-would-like",
+        label: "Would you like",
+        note: "Vietnamese invitations can be direct and warm. English softens with 'Would you like to...' for casual social plans.",
+      },
+    ],
+    followUps: [
+      { id: "social-plans-invite", question: "What would you invite them to do?", salienceQuestion: "How would you invite them to the {slot}?" },
+      { id: "social-plans-time", question: "What time would you suggest?", salienceQuestion: "When would the {slot} work?" },
+      { id: "social-plans-place", question: "Where could you meet?", salienceQuestion: "Where would you meet for the {slot}?" },
+      { id: "social-plans-confirm", question: "How would you confirm the plan later?", salienceQuestion: "How would you confirm the {slot}?" },
+    ],
+  },
 ] as const satisfies readonly FinalThemeSpeakTopic[];
