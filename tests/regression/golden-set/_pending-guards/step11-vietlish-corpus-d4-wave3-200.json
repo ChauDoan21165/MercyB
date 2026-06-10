@@ -12,7 +12,7 @@
   "definition": "Wave 3 of NEW Vietnamese L1-interference candidates matching the live VIETLISH_CORPUS entry schema EXACTLY. Staged for human review BEFORE any promotion into src/lib/tutor/vietlishCorpus.ts. Imported by no engine module. Verified disjoint from the live corpus AND from D4 wave1 (...wave-200.json, !695) AND D4 wave2 (...wave2-200.json, !693) by step11VietlishCorpusD4Wave3.test.ts.",
   "disjointFrom": "live VIETLISH_CORPUS; A4 wave1 !695; A10 wave2 !693; A6 !690 (selector test, no corpus rows).",
   "generatedAt": "2026-06-10",
-  "count": 200,
+  "count": 199,
   "entries": [
     {"vietlish":"he study English for three years already","natural":"he has studied English for three years","sourcePattern":"hoc tieng Anh ba nam roi -> duration with already, no present perfect","category":"literal_translation","frequency":"medium","context":"He study English for three years already but is still shy to speak."},
     {"vietlish":"I am go to the market now","natural":"I am going to the market now","sourcePattern":"dang di cho -> progressive marker with a base verb","category":"literal_translation","frequency":"high","context":"I am go to the market now, do you need anything?"},
@@ -103,7 +103,6 @@
     {"vietlish":"she is sensible to the cold","natural":"she is sensitive to the cold","sourcePattern":"nhay cam -> sensible borrowed for sensitive","category":"false_friend","frequency":"low","context":"Bring a jacket for her, she is sensible to the cold."},
     {"vietlish":"the movie is very touching, I am touching","natural":"the movie is very touching, I'm touched","sourcePattern":"cam dong -> -ing participle used for the experiencer","category":"false_friend","frequency":"medium","context":"The movie is very touching, I am touching at the ending."},
     {"vietlish":"my hand is paining","natural":"my hand hurts","sourcePattern":"tay dau -> pain used as a verb in the progressive","category":"false_friend","frequency":"low","context":"After lifting boxes, my hand is paining a lot."},
-    {"vietlish":"the weather is very comfortable today","natural":"the weather is very pleasant today","sourcePattern":"thoi tiet de chiu -> comfortable for pleasant","category":"false_friend","frequency":"medium","context":"Let's walk in the park, the weather is very comfortable today."},
     {"vietlish":"I am tired of waiting, very tiring","natural":"I'm tired of waiting, it's very tiring","sourcePattern":"met moi -> dropped dummy subject and be before tiring","category":"false_friend","frequency":"medium","context":"Two hours at the clinic, I am tired of waiting, very tiring."},
     {"vietlish":"this is more cheaper than online","natural":"this is cheaper than online","sourcePattern":"re hon -> more added to a comparative","category":"literal_translation","frequency":"high","context":"Buy at the shop, this is more cheaper than online."},
     {"vietlish":"she is older than me two years","natural":"she is two years older than me","sourcePattern":"lon hon toi hai tuoi -> measure phrase placed after the comparison","category":"word_order","frequency":"medium","context":"My sister she is older than me two years."},

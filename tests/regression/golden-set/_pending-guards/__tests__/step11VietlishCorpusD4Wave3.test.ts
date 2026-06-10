@@ -48,9 +48,9 @@ const entries = parsed.entries;
 const norm = (s: string) => s.toLowerCase().replace(/\s+/g, " ").trim();
 
 describe("step11 Vietlish corpus D4 wave3 (review queue)", () => {
-  it("contains exactly 200 entries and the header count agrees", () => {
-    expect(entries).toHaveLength(200);
-    expect(parsed.count).toBe(200);
+  it("contains exactly 199 entries and the header count agrees", () => {
+    expect(entries).toHaveLength(199);
+    expect(parsed.count).toBe(199);
   });
 
   it("every entry matches the VietlishCorpusEntry schema exactly", () => {
