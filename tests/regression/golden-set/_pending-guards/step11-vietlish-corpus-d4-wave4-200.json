@@ -12,7 +12,7 @@
   "definition": "Fourth-wave candidate Vietnamese-L1 interference items for human review before any promotion into VIETLISH_CORPUS. Each entry pairs a non-native English production (vietlish) with its natural target (natural), the VN source pattern with diacritics (sourcePattern), and a contextual sentence. A few deliberate natural 'control' anchors are flagged in sourcePattern so reviewers can confirm the detector abstains on natural usage. Wave 4 focuses on grammar-interference families lighter in waves 1-2: conditionals, relative clauses, reported speech, gerund/infinitive, subject-verb agreement, do-support questions, causatives, possessive 'of', passives.",
   "dedupedAgainst": "live VIETLISH_CORPUS + A4 wave1 (...corpus-d4-wave-200.json) + A10 wave2 (...wave2-200.json) — zero string overlap (749-item denylist), asserted by the guard test",
   "generatedFor": "2026-06-10 CEO directive D4 wave4 (A10)",
-  "count": 200,
+  "count": 199,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -637,14 +637,6 @@
       "category": "literal_translation",
       "frequency": "medium",
       "context": "We need more, there is little chairs here."
-    },
-    {
-      "vietlish": "the weather is very comfortable today",
-      "natural": "the weather is very nice today",
-      "sourcePattern": "dễ chịu -> 'comfortable' for pleasant weather",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Let us walk, the weather is very comfortable today."
     },
     {
       "vietlish": "he is a very economic person",
@@ -1622,5 +1614,6 @@
       "frequency": "medium",
       "context": "Bad connection, I did not hear clearly, say again please."
     }
-  ]
+  ],
+  "dedupeNote": "2026-06-10 A10: removed 1 cross-wave duplicate 'the weather is very comfortable today' (also present in merged wave3 step11-vietlish-corpus-d4-wave3-200.json); wave3 copy is canonical. 200->199."
 }
