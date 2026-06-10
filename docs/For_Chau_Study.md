@@ -14,6 +14,7 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 
 ## Lesson Index
 
+15. [When `du` and `df` disagree, look outside the repo](#15-when-du-and-df-disagree-look-outside-the-repo)
 14. [Cron files must live on main](#14-cron-files-must-live-on-main)
 13. [Test runners need ownership boundaries too](#13-test-runners-need-ownership-boundaries-too)
 12. [Do not copy files in Finder inside the repo](#12-do-not-copy-files-in-finder-inside-the-repo)
@@ -28,6 +29,18 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 3. [Restore before redesign](#3-restore-before-redesign)
 4. [Verify against current main, not stale audit notes](#4-verify-against-current-main-not-stale-audit-notes)
 5. [Silent failures cost more than loud ones](#5-silent-failures-cost-more-than-loud-ones)
+
+---
+
+## 15. When `du` and `df` disagree, look outside the repo
+
+**What it is.** `du` answers "how much space does this directory tree use?" while `df` answers "how much space is left on the whole filesystem?" If `du -sh ~` does not explain the disk pressure that `df -h` shows, the missing space is probably outside the home tree or hidden in system-managed caches.
+
+**Why it matters.** A repo cleanup can look successful while the machine is still almost full. Chasing only Git worktrees, `node_modules`, or build folders misses large Apple developer assets that live outside the project but still consume the same disk. The wrong cleanup command can also damage Xcode state.
+
+**MercyBlade example.** The June 9 disk investigation found that the home directory totals did not match the filesystem pressure. The large silent consumer was under `/Library/Developer`, especially iOS simulator runtimes and dyld caches. These can quietly accumulate 30-40 GB even when the MercyBlade repo itself is not the main source of growth.
+
+**Action.** When disk numbers do not add up, compare `df -h /` with targeted `du -sh` checks for `/Users`, `/Library/Developer`, `/Applications/Xcode.app`, and `/private/var`. For simulator runtimes, inspect with `xcrun simctl runtime list` and reclaim old unused runtimes with `xcrun simctl runtime delete <runtime-id>` or Xcode's platform manager. Never `rm -rf` simulator runtime internals by hand. Simulators can be redownloaded on demand, and App Store archive uploads do not need old local simulator runtimes.
 
 ---
 
