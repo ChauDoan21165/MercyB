@@ -12,7 +12,7 @@
   "definition": "Fourth-wave candidate Vietnamese-L1 interference items for human review before any promotion into VIETLISH_CORPUS. Each entry pairs a non-native English production (vietlish) with its natural target (natural), the VN source pattern with diacritics (sourcePattern), and a contextual sentence. A few deliberate natural 'control' anchors are flagged in sourcePattern so reviewers can confirm the detector abstains on natural usage. Wave 4 focuses on grammar-interference families lighter in waves 1-2: conditionals, relative clauses, reported speech, gerund/infinitive, subject-verb agreement, do-support questions, causatives, possessive 'of', passives.",
   "dedupedAgainst": "live VIETLISH_CORPUS + A4 wave1 (...corpus-d4-wave-200.json) + A10 wave2 (...wave2-200.json) — zero string overlap (749-item denylist), asserted by the guard test",
   "generatedFor": "2026-06-10 CEO directive D4 wave4 (A10)",
-  "count": 199,
+  "count": 182,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -22,14 +22,6 @@
     "literal_translation": "LT"
   },
   "entries": [
-    {
-      "vietlish": "if I will have money, I buy a house",
-      "natural": "if I have money, I'll buy a house",
-      "sourcePattern": "nếu ... sẽ -> 'will' in the if-clause",
-      "category": "word_order",
-      "frequency": "high",
-      "context": "Some day, if I will have money, I buy a house."
-    },
     {
       "vietlish": "if you will come, call me",
       "natural": "if you come, call me",
@@ -117,14 +109,6 @@
       "category": "word_order",
       "frequency": "medium",
       "context": "Try it, the food that I like it is spicy."
-    },
-    {
-      "vietlish": "he said me that he is tired",
-      "natural": "he told me he was tired",
-      "sourcePattern": "nói với tôi -> 'said me' + no backshift",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Let him rest, he said me that he is tired."
     },
     {
       "vietlish": "she told that she will come",
@@ -239,14 +223,6 @@
       "context": "Let us leave, I am tired of wait."
     },
     {
-      "vietlish": "thank you for invite me",
-      "natural": "thank you for inviting me",
-      "sourcePattern": "cảm ơn vì đã mời -> bare verb after 'for'",
-      "category": "collocation",
-      "frequency": "high",
-      "context": "I had a great time, thank you for invite me."
-    },
-    {
       "vietlish": "I look forward to hearing",
       "natural": "I look forward to hearing from you",
       "sourcePattern": "(control) natural gerund, abstain anchor",
@@ -261,14 +237,6 @@
       "category": "collocation",
       "frequency": "medium",
       "context": "I am annoyed, she keeps to call me."
-    },
-    {
-      "vietlish": "I want that you come early",
-      "natural": "I want you to come early",
-      "sourcePattern": "muốn bạn đến -> 'want that' clause",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "For the meeting, I want that you come early."
     },
     {
       "vietlish": "I need that he calls me back",
@@ -303,22 +271,6 @@
       "context": "Please stop, the teacher wants that we are quiet."
     },
     {
-      "vietlish": "he don't like coffee",
-      "natural": "he doesn't like coffee",
-      "sourcePattern": "no 3rd-person agreement in VN",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Make tea instead, he don't like coffee."
-    },
-    {
-      "vietlish": "my friends is coming tonight",
-      "natural": "my friends are coming tonight",
-      "sourcePattern": "no plural agreement on 'be'",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Prepare more food, my friends is coming tonight."
-    },
-    {
       "vietlish": "everyone have a smartphone now",
       "natural": "everyone has a smartphone now",
       "sourcePattern": "'everyone' takes singular but learner uses plural",
@@ -333,14 +285,6 @@
       "category": "literal_translation",
       "frequency": "medium",
       "context": "Sit down, the news are very bad today."
-    },
-    {
-      "vietlish": "she go to church on Sunday",
-      "natural": "she goes to church on Sunday",
-      "sourcePattern": "missing 3rd-person -s",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Every week she go to church on Sunday."
     },
     {
       "vietlish": "there is many problems here",
@@ -365,38 +309,6 @@
       "category": "literal_translation",
       "frequency": "medium",
       "context": "Do not worry, each student have a book."
-    },
-    {
-      "vietlish": "you like Vietnamese food",
-      "natural": "do you like Vietnamese food",
-      "sourcePattern": "VN yes/no needs no auxiliary",
-      "category": "word_order",
-      "frequency": "high",
-      "context": "Tell me honestly, you like Vietnamese food?"
-    },
-    {
-      "vietlish": "what you want to eat",
-      "natural": "what do you want to eat",
-      "sourcePattern": "missing do-support in wh-question",
-      "category": "word_order",
-      "frequency": "high",
-      "context": "It is dinner time, what you want to eat?"
-    },
-    {
-      "vietlish": "where you go yesterday",
-      "natural": "where did you go yesterday",
-      "sourcePattern": "missing did + past tense",
-      "category": "word_order",
-      "frequency": "high",
-      "context": "I called you, where you go yesterday?"
-    },
-    {
-      "vietlish": "how much it cost",
-      "natural": "how much does it cost",
-      "sourcePattern": "missing do-support + 3rd-person -s",
-      "category": "word_order",
-      "frequency": "high",
-      "context": "Excuse me, how much it cost?"
     },
     {
       "vietlish": "why he is angry",
@@ -527,14 +439,6 @@
       "context": "Save the date, the birthday of my son is in June."
     },
     {
-      "vietlish": "today is raining hard",
-      "natural": "it's raining hard today",
-      "sourcePattern": "hôm nay mưa -> 'today' as subject, dropped 'it'",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Bring a coat, today is raining hard."
-    },
-    {
       "vietlish": "is very late, go home",
       "natural": "it's very late, go home",
       "sourcePattern": "muộn rồi -> dropped dummy 'it'",
@@ -645,14 +549,6 @@
       "category": "false_friend",
       "frequency": "low",
       "context": "He saves a lot, he is a very economic person."
-    },
-    {
-      "vietlish": "I am very exciting about the trip",
-      "natural": "I am very excited about the trip",
-      "sourcePattern": "háo hức -> 'exciting' for the person's feeling",
-      "category": "false_friend",
-      "frequency": "high",
-      "context": "I cannot sleep, I am very exciting about the trip."
     },
     {
       "vietlish": "the movie was very boring, I slept",
@@ -1383,14 +1279,6 @@
       "context": "May I ask, how many years are you?"
     },
     {
-      "vietlish": "I have 30 years old",
-      "natural": "I am 30 years old",
-      "sourcePattern": "có 30 tuổi -> 'have ... years' for age",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "On the form, I have 30 years old."
-    },
-    {
       "vietlish": "my younger sister has 12 years",
       "natural": "my younger sister is 12",
       "sourcePattern": "có 12 tuổi -> 'have ... years' for age",
@@ -1413,22 +1301,6 @@
       "category": "word_order",
       "frequency": "medium",
       "context": "Quick question, you are free tonight or not?"
-    },
-    {
-      "vietlish": "I am very like your idea",
-      "natural": "I really like your idea",
-      "sourcePattern": "rất thích -> 'very like' (verb intensified by 'very')",
-      "category": "word_order",
-      "frequency": "high",
-      "context": "Good thinking, I am very like your idea."
-    },
-    {
-      "vietlish": "I very want to learn English well",
-      "natural": "I really want to learn English well",
-      "sourcePattern": "rất muốn -> 'very want' calque",
-      "category": "word_order",
-      "frequency": "high",
-      "context": "This is my goal, I very want to learn English well."
     },
     {
       "vietlish": "I am disagree with him",
@@ -1565,14 +1437,6 @@
       "category": "literal_translation",
       "frequency": "medium",
       "context": "When I know, I will inform to you later."
-    },
-    {
-      "vietlish": "can you explain me this clearly",
-      "natural": "can you explain this to me clearly",
-      "sourcePattern": "giải thích cho tôi -> 'explain me' + missing 'to'",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "I am confused, can you explain me this clearly?"
     },
     {
       "vietlish": "I will introduce you to my family next week",

@@ -48,9 +48,11 @@ const entries = parsed.entries;
 const norm = (s: string) => s.toLowerCase().replace(/\s+/g, " ").trim();
 
 describe("step11 Vietlish corpus D4 wave (review queue)", () => {
-  it("contains exactly 200 entries and the header count agrees", () => {
-    expect(entries).toHaveLength(200);
-    expect(parsed.count).toBe(200);
+  it("contains exactly 154 entries and the header count agrees", () => {
+    // 200 authored; 46 freq=high entries promoted into VIETLISH_CORPUS in the
+    // Step-11 Stage-1 promotion (2026-06-10), leaving 154.
+    expect(entries).toHaveLength(154);
+    expect(parsed.count).toBe(154);
   });
 
   it("every entry matches the VietlishCorpusEntry schema exactly", () => {
