@@ -30,7 +30,11 @@ export const speakTopics = [
       "Keep questions practical and privacy-aware.",
       "Offer repetition for forms, fees, and required documents.",
     ],
-    seedInputs: ["I would like to open a bank account."],
+    seedInputs: [
+      "I would like to open a bank account.",
+      "What do I need to bring to open an account?",
+      "Is there a monthly fee on this account?",
+    ],
     detectionPatterns: [
       /\b(?:open a bank account|new bank account|chequing account|checking account|savings account|debit card|online banking|proof of address)\b/i,
     ],
@@ -44,6 +48,21 @@ export const speakTopics = [
         id: "banking-open-preposition",
         label: "Proof of address",
         note: "'Giay to dia chi' can become 'proof for address.' In bank English, the fixed phrase is 'proof of address.'",
+      },
+      {
+        id: "banking-open-id-grammar",
+        label: "What ID do I need?",
+        note: "Vietnamese has no question helper, so learners may say 'I need what ID?' English uses do-support: 'What ID do I need to bring?'",
+      },
+      {
+        id: "banking-open-vocab",
+        label: "Vocabulary",
+        note: "chequing account = tài khoản thanh toán; savings account = tài khoản tiết kiệm; debit card = thẻ ghi nợ; monthly fee = phí hàng tháng.",
+      },
+      {
+        id: "banking-open-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ em muốn mở một tài khoản ngân hàng ạ.' ↔ EN: 'Hi, I'd like to open a bank account.'",
       },
     ],
     followUps: [
@@ -76,7 +95,11 @@ export const speakTopics = [
       "Protect privacy with clear boundaries.",
       "Use practical next-step language instead of blame.",
     ],
-    seedInputs: ["I do not recognize this transaction on my account."],
+    seedInputs: [
+      "I do not recognize this transaction on my account.",
+      "There's a charge I don't recognize.",
+      "Can you tell me what this transaction was for?",
+    ],
     detectionPatterns: [
       /\b(?:do not recognize this transaction|don't recognize this transaction|unknown transaction|bank transaction|pending transaction|money transfer|deposit|withdrawal|merchant)\b/i,
     ],
@@ -90,6 +113,21 @@ export const speakTopics = [
         id: "banking-transaction-preposition",
         label: "On my account",
         note: "'Trong tai khoan' can lead to 'in my account' for everything. For statement activity, 'a transaction on my account' is the natural collocation.",
+      },
+      {
+        id: "banking-transaction-there-is-charge",
+        label: "There's a charge",
+        note: "From 'có một khoản tính tiền,' learners may say 'Have a charge I don't know.' English uses 'there's': 'There's a charge I don't recognize.'",
+      },
+      {
+        id: "banking-transaction-vocab",
+        label: "Vocabulary",
+        note: "transaction = giao dịch; charge = khoản tính tiền; pending = đang chờ xử lý; deposit / withdrawal = tiền vào / tiền ra.",
+      },
+      {
+        id: "banking-transaction-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ em không nhận ra giao dịch này trên tài khoản của em ạ.' ↔ EN: 'I don't recognize this transaction on my account.'",
       },
     ],
     followUps: [
@@ -122,7 +160,11 @@ export const speakTopics = [
       "Use plain-language explanations before technical terms.",
       "Encourage written confirmation for rates, fees, and payment dates.",
     ],
-    seedInputs: ["I have some questions about getting a loan."],
+    seedInputs: [
+      "I have some questions about getting a loan.",
+      "What's the interest rate on this loan?",
+      "How much would the monthly payment be?",
+    ],
     detectionPatterns: [
       /\b(?:loan questions|get a loan|personal loan|car loan|mortgage|interest rate|monthly payment|loan term|credit history|pay it back)\b/i,
     ],
@@ -136,6 +178,21 @@ export const speakTopics = [
         id: "banking-loan-tense",
         label: "If I miss a payment",
         note: "Vietnamese conditionals do not mark tense the same way, so learners may say 'if I missed payment next month.' A natural future-risk question is 'What happens if I miss a payment?'",
+      },
+      {
+        id: "banking-loan-would-grammar",
+        label: "How much would it be?",
+        note: "For a hypothetical cost, English uses 'would': 'How much would the monthly payment be?' Vietnamese carries this with context, so the 'would' is the new habit.",
+      },
+      {
+        id: "banking-loan-vocab",
+        label: "Vocabulary",
+        note: "interest rate = lãi suất; loan term = thời hạn vay; monthly payment = khoản trả hàng tháng; pay it back = trả nợ.",
+      },
+      {
+        id: "banking-loan-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ cho em hỏi lãi suất của khoản vay này là bao nhiêu ạ?' ↔ EN: 'What's the interest rate on this loan?'",
       },
     ],
     followUps: [
@@ -168,7 +225,11 @@ export const speakTopics = [
       "Repeat numbers slowly when the learner asks.",
       "Use clear teller language without judging pronunciation or math slips.",
     ],
-    seedInputs: ["I want to withdraw one hundred dollars, please."],
+    seedInputs: [
+      "I want to withdraw one hundred dollars, please.",
+      "I'd like to deposit this cash, please.",
+      "Could I get a receipt for that?",
+    ],
     detectionPatterns: [
       /\b(?:deposit|withdraw|take out (?:cash|money)|put money (?:in|into)|cash out|atm|one hundred dollars)\b/i,
     ],
@@ -182,6 +243,21 @@ export const speakTopics = [
         id: "banking-deposit-withdraw-pair",
         label: "Deposit vs withdraw",
         note: "'Gửi tiền' maps to 'deposit' and 'rút tiền' maps to 'withdraw.' Practicing the pair helps avoid mixing up money going in and money coming out.",
+      },
+      {
+        id: "banking-cash-into-from",
+        label: "Into and from",
+        note: "English pairs 'deposit into' and 'withdraw from': 'deposit into my savings,' 'withdraw from my chequing.' The little prepositions show which way the money moves.",
+      },
+      {
+        id: "banking-cash-vocab",
+        label: "Vocabulary",
+        note: "deposit = gửi tiền vào; withdraw = rút tiền ra; balance = số dư; receipt = biên lai.",
+      },
+      {
+        id: "banking-cash-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ em muốn rút một trăm đô, cho em xin biên lai ạ.' ↔ EN: 'I'd like to withdraw one hundred dollars, and a receipt, please.'",
       },
     ],
     followUps: [
@@ -214,7 +290,11 @@ export const speakTopics = [
       "Use practical confirmation language after every payment step.",
       "Avoid blame if the learner is late or confused by the bill.",
     ],
-    seedInputs: ["I need to pay my electricity bill today."],
+    seedInputs: [
+      "I need to pay my electricity bill today.",
+      "How much do I owe on my phone bill?",
+      "Can I pay this bill online?",
+    ],
     detectionPatterns: [
       /\b(?:pay (?:my |the |a )?bill|electric(?:ity)? bill|water bill|phone bill|make a payment|payment went through|confirmation number)\b/i,
     ],
@@ -233,6 +313,16 @@ export const speakTopics = [
         id: "banking-pay-past-time-word",
         label: "Yesterday I paid",
         note: "A Vietnamese time word can carry the past by itself. In English, the verb changes too: 'Yesterday I paid the bill.'",
+      },
+      {
+        id: "banking-pay-vocab",
+        label: "Vocabulary",
+        note: "bill = hóa đơn; due date = ngày đến hạn; amount due = số tiền phải trả; confirmation number = mã xác nhận.",
+      },
+      {
+        id: "banking-pay-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ hôm nay em cần thanh toán hóa đơn tiền điện ạ.' ↔ EN: 'I need to pay my electricity bill today.'",
       },
     ],
     followUps: [
@@ -265,7 +355,11 @@ export const speakTopics = [
       "Use plain words before terms like recurring or automatic debit.",
       "Encourage the learner to ask how to stop autopay without embarrassment.",
     ],
-    seedInputs: ["I want to set up autopay for my bills."],
+    seedInputs: [
+      "I want to set up autopay for my bills.",
+      "Can I set up automatic payments?",
+      "How do I cancel autopay later?",
+    ],
     detectionPatterns: [
       /\b(?:autopay|auto pay|automatic payment|recurring payment|pay automatically|automatic bill pay|set up autopay)\b/i,
     ],
@@ -279,6 +373,21 @@ export const speakTopics = [
         id: "banking-autopay-plural-bills",
         label: "All my bills",
         note: "Vietnamese nouns do not change for plural meaning, so 'autopay for my bill' may mean several bills. English adds -s for 'my bills.'",
+      },
+      {
+        id: "banking-autopay-cancel-grammar",
+        label: "How do I cancel it?",
+        note: "Vietnamese has no question helper, so learners may say 'I cancel autopay how?' English uses do-support: 'How do I cancel autopay later?'",
+      },
+      {
+        id: "banking-autopay-vocab",
+        label: "Vocabulary",
+        note: "autopay / automatic payment = thanh toán tự động; recurring = lặp lại định kỳ; source account = tài khoản trích tiền; cancel = hủy.",
+      },
+      {
+        id: "banking-autopay-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ em muốn cài đặt thanh toán tự động cho các hóa đơn của em ạ.' ↔ EN: 'I'd like to set up autopay for my bills.'",
       },
     ],
     followUps: [
@@ -311,7 +420,11 @@ export const speakTopics = [
       "Offer simple options before formal banking terms.",
       "Keep security reminders calm and specific.",
     ],
-    seedInputs: ["My card was declined at the store."],
+    seedInputs: [
+      "My card was declined at the store.",
+      "My card didn't work when I tried to pay.",
+      "Can you tell me why my card was declined?",
+    ],
     detectionPatterns: [
       /\b(?:card (?:was |got )?declined|declined card|insufficient funds|not enough funds|card (?:did not|didn't|won't) work|payment failed)\b/i,
     ],
@@ -325,6 +438,21 @@ export const speakTopics = [
         id: "banking-declined-not-enough",
         label: "Insufficient funds",
         note: "The formal phrase 'insufficient funds' simply means 'not enough money.' It is fine to start with the plain phrase when talking to the bank.",
+      },
+      {
+        id: "banking-declined-didnt-work-grammar",
+        label: "Didn't work (past)",
+        note: "Vietnamese marks the past with context, so learners may say 'my card not work.' English uses 'didn't' + base verb: 'My card didn't work at the store.'",
+      },
+      {
+        id: "banking-declined-vocab",
+        label: "Vocabulary",
+        note: "declined = bị từ chối; insufficient funds = không đủ tiền; card lock = thẻ bị khóa; expired = hết hạn.",
+      },
+      {
+        id: "banking-declined-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ thẻ của em bị từ chối khi thanh toán ở cửa hàng ạ.' ↔ EN: 'My card was declined at the store.'",
       },
     ],
     followUps: [
@@ -357,7 +485,11 @@ export const speakTopics = [
       "Explain transfer fees without pressure.",
       "Encourage the learner to repeat details before money is sent.",
     ],
-    seedInputs: ["I want to transfer money to my family."],
+    seedInputs: [
+      "I want to transfer money to my family.",
+      "I'd like to send money to my family overseas.",
+      "How long will the transfer take?",
+    ],
     detectionPatterns: [
       /\b(?:transfer (?:money|funds)|send money|wire transfer|move money|remittance|exchange rate|confirmation number)\b/i,
     ],
@@ -376,6 +508,16 @@ export const speakTopics = [
         id: "banking-transfer-amount-plural",
         label: "Five hundred dollars",
         note: "Amounts above one usually take plural dollars in English. Vietnamese numbers do not force noun changes, so dropping the -s is common and understandable.",
+      },
+      {
+        id: "banking-transfer-vocab",
+        label: "Vocabulary",
+        note: "transfer = chuyển khoản; wire transfer = chuyển khoản điện tín; exchange rate = tỷ giá; recipient = người nhận; remittance = kiều hối.",
+      },
+      {
+        id: "banking-transfer-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ em muốn gửi tiền về cho gia đình ở Việt Nam ạ.' ↔ EN: 'I'd like to send money to my family in Vietnam.'",
       },
     ],
     followUps: [
@@ -408,7 +550,11 @@ export const speakTopics = [
       "Keep fee-removal requests polite but direct.",
       "Give the learner exact next steps instead of vague warnings.",
     ],
-    seedInputs: ["When is the due date for this bill?"],
+    seedInputs: [
+      "When is the due date for this bill?",
+      "I missed the due date — can you help?",
+      "Is there any way to remove this late fee?",
+    ],
     detectionPatterns: [
       /\b(?:late fee|due date|past due|overdue|missed (?:the )?(?:payment|due date)|waive the fee|remove the fee|when is (?:it|the bill) due)\b/i,
     ],
@@ -427,6 +573,16 @@ export const speakTopics = [
         id: "banking-late-fee-waive",
         label: "Waive the late fee",
         note: "'Waive the fee' means remove or cancel it. The plain request 'Can you remove the late fee?' is also clear and respectful.",
+      },
+      {
+        id: "banking-late-vocab",
+        label: "Vocabulary",
+        note: "late fee = phí trễ hạn; due date = ngày đến hạn; overdue / past due = quá hạn; waive = miễn, bỏ phí.",
+      },
+      {
+        id: "banking-late-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ em lỡ ngày đến hạn rồi, mình có thể bỏ phí trễ hạn được không ạ?' ↔ EN: 'I missed the due date — is there any way to waive the late fee?'",
       },
     ],
     followUps: [
