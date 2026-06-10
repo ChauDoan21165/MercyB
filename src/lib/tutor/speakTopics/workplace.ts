@@ -3,14 +3,18 @@ import type { SpeakTopicLibraryEntry as SpeakTopic } from "../speakTopicLibrary"
 // Workplace theme. Real-life situations a Vietnamese learner meets in English.
 // Deterministic / client-side: no per-turn LLM. Copy is warm, adult, low-shame.
 // l1InterferenceNotes name genuine Vietnamese→English interference as friendly
-// context, NEVER as a grammar correction.
+// context, NEVER as a grammar correction. Vietnamese is quoted with full
+// diacritics so the learner recognises the L1 phrase behind the English.
 export const workplaceSpeakTopics: readonly SpeakTopic[] = [
   {
     id: "topic-workplace-calling-in-sick",
     labelEn: "Calling In Sick",
     labelVi: "Báo nghỉ ốm",
     category: "work",
-    seedInputs: ["Hi, I am not feeling well, so I can't come in today."],
+    seedInputs: [
+      "Hi, I am not feeling well, so I can't come in today.",
+      "Good morning, I've got a fever and I need to take a sick day.",
+    ],
     detectionPatterns: [
       /\b(?:calling in sick|call in sick|not feeling well|can't come in|can't make it in|i am sick|i'm sick|stay home today)\b/i,
     ],
@@ -30,12 +34,19 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
         label: "Short is fine",
         note: "You do not owe a long medical story. One line is enough: 'I'm not feeling well.' Keeping it short is normal and no pressure.",
       },
+      {
+        id: "workplace-sick-feel-verb",
+        label: "I feel sick",
+        note: "Vietnamese 'tôi bị ốm' uses 'bị' (suffer), so 'I am bị sick' or 'I have sick' can slip out. English says 'I feel sick' or 'I'm not feeling well' — the verb is 'feel,' and 'well' (not 'good') is the natural partner here.",
+      },
     ],
     followUps: [
       { id: "workplace-sick-who", question: "Who do you tell first when you are sick?", salienceQuestion: "How would you reach the {slot} to say you're sick?" },
       { id: "workplace-sick-reason", question: "What would you say is wrong, briefly?", salienceQuestion: "How would you explain the {slot} in one line?" },
       { id: "workplace-sick-work", question: "What happens to your tasks while you rest?", salienceQuestion: "Who could cover the {slot} for you today?" },
       { id: "workplace-sick-return", question: "When do you think you can come back?", salienceQuestion: "How would you say when you'll return to the {slot}?" },
+      { id: "workplace-sick-note", question: "How would you ask if you need a doctor's note?", salienceQuestion: "What proof might they want for the {slot}?" },
+      { id: "workplace-sick-message", question: "How would you write this as a short message?", salienceQuestion: "How would you text in about the {slot}?" },
     ],
   },
   {
@@ -43,7 +54,10 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Requesting A Day Off",
     labelVi: "Xin nghỉ một ngày",
     category: "work",
-    seedInputs: ["Could I take a day off next Friday?"],
+    seedInputs: [
+      "Could I take a day off next Friday?",
+      "I'd like to request two days off next month, if that works.",
+    ],
     detectionPatterns: [
       /\b(?:day off|days off|take a day off|request a day off|book a day|vacation day|annual leave|time off|paid leave)\b/i,
     ],
@@ -63,12 +77,19 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
         label: "Asking, not telling",
         note: "With a boss, 'Could I take a day off?' sounds warmer than 'I want a day off.' Vietnamese often softens with tone and small words; in English the softening lives in 'Could I…' — easy to add and no pressure.",
       },
+      {
+        id: "workplace-dayoff-nghi-phep",
+        label: "Annual leave vs a day off",
+        note: "'Nghỉ phép' is your paid leave; a casual 'day off' may or may not be paid. If you mean your paid days, the clear words are 'a vacation day' or 'annual leave' — it tells your boss which kind you're using.",
+      },
     ],
     followUps: [
       { id: "workplace-dayoff-when", question: "Which day would you like to take off?", salienceQuestion: "How would you name the {slot} you want off?" },
       { id: "workplace-dayoff-reason", question: "Would you give a short reason, or keep it private?", salienceQuestion: "How much would you share about the {slot}?" },
       { id: "workplace-dayoff-cover", question: "Who could handle things while you are away?", salienceQuestion: "Who could cover the {slot} that day?" },
       { id: "workplace-dayoff-confirm", question: "How would you confirm it is approved?", salienceQuestion: "How would you check the {slot} is okay with your boss?" },
+      { id: "workplace-dayoff-notice", question: "How far ahead would you ask?", salienceQuestion: "How much notice would you give for the {slot}?" },
+      { id: "workplace-dayoff-paid", question: "How would you ask if the day is paid?", salienceQuestion: "How would you check if the {slot} is paid?" },
     ],
   },
   {
@@ -76,7 +97,10 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Asking To Leave Early",
     labelVi: "Xin về sớm",
     category: "work",
-    seedInputs: ["Could I leave early today? I have an appointment."],
+    seedInputs: [
+      "Could I leave early today? I have an appointment.",
+      "Would it be okay if I left at three for a doctor's visit?",
+    ],
     detectionPatterns: [
       /\b(?:leave early|leave early today|come in late|arrive late|go home early|finish early|step out for)\b/i,
     ],
@@ -91,12 +115,19 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
         label: "When the time word does the work",
         note: "For a future plan English still marks it: 'I'll leave at three' or 'I'm leaving early.' Vietnamese lets a time word carry the future while the verb stays bare, so 'Tomorrow I leave early' is a common habit — adding 'I'll' makes it land.",
       },
+      {
+        id: "workplace-early-ve-som",
+        label: "Leave early vs go home early",
+        note: "'Về sớm' can become 'go back early' or 'return early.' The everyday work phrase is 'leave early' (leave the workplace) or 'head out early.' 'Leave' is the verb a manager expects here.",
+      },
     ],
     followUps: [
       { id: "workplace-early-when", question: "What time would you need to leave?", salienceQuestion: "How would you say the {slot} you need to go?" },
       { id: "workplace-early-reason", question: "What short reason would you give?", salienceQuestion: "How would you mention the {slot} briefly?" },
       { id: "workplace-early-makeup", question: "Would you offer to make up the time?", salienceQuestion: "How would you offer to finish the {slot} later?" },
       { id: "workplace-early-thanks", question: "How would you thank your boss for saying yes?", salienceQuestion: "How would you thank them about the {slot}?" },
+      { id: "workplace-early-handover", question: "How would you hand off any urgent work?", salienceQuestion: "How would you pass on the {slot} before you go?" },
+      { id: "workplace-early-ask-ahead", question: "How would you ask the day before instead of last minute?", salienceQuestion: "How would you give notice about the {slot}?" },
     ],
   },
   {
@@ -104,7 +135,10 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Talking To Your Boss About Workload",
     labelVi: "Nói với sếp về khối lượng công việc",
     category: "work",
-    seedInputs: ["Could we talk about my workload this week?"],
+    seedInputs: [
+      "Could we talk about my workload this week?",
+      "I've got a lot on right now — can we look at my priorities together?",
+    ],
     detectionPatterns: [
       /\b(?:talk to my boss|talk to the manager|talk to my manager|my workload|too much work|too many tasks|my schedule|overloaded|busy week)\b/i,
     ],
@@ -124,12 +158,19 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
         label: "Naming it kindly",
         note: "You can be honest and still gentle: 'I want to make sure I do good work, and right now I have a lot on.' Naming the load is normal and not a complaint — no pressure to soften it away.",
       },
+      {
+        id: "workplace-workload-sep-boss",
+        label: "Sếp is 'my boss' or 'my manager'",
+        note: "'Sếp' covers any superior. In English you pick 'my boss' (casual) or 'my manager / supervisor' (more formal). 'My leader' is a direct translation that sounds off at work — 'my manager' is the safe word.",
+      },
     ],
     followUps: [
       { id: "workplace-workload-what", question: "What feels like too much right now?", salienceQuestion: "How would you describe the {slot} that's heavy?" },
       { id: "workplace-workload-priority", question: "Which task matters most this week?", salienceQuestion: "How would you say the {slot} comes first?" },
       { id: "workplace-workload-ask", question: "What help or change would you ask for?", salienceQuestion: "What would you ask about the {slot}?" },
       { id: "workplace-workload-plan", question: "How would you agree on a plan together?", salienceQuestion: "How would you confirm the plan for the {slot}?" },
+      { id: "workplace-workload-deadline", question: "How would you ask to move a deadline?", salienceQuestion: "How would you renegotiate the {slot} timing?" },
+      { id: "workplace-workload-tone", question: "How would you raise it without sounding negative?", salienceQuestion: "How would you keep the {slot} talk positive?" },
     ],
   },
   {
@@ -137,7 +178,10 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Asking Your Boss For Help",
     labelVi: "Nhờ sếp giúp hoặc giải thích",
     category: "work",
-    seedInputs: ["Could you help me understand this part?"],
+    seedInputs: [
+      "Could you help me understand this part?",
+      "I'm a bit stuck on this — could you walk me through it?",
+    ],
     detectionPatterns: [
       /\b(?:ask for help|need help with|help me understand|can you explain|could you clarify|i'm not sure how|i don't understand the|show me how)\b/i,
     ],
@@ -152,12 +196,19 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
         label: "Explain it to me",
         note: "English says 'Could you explain this to me?' — the 'to me' is part of the frame. Vietnamese can put the person right after the verb, so 'explain me' feels natural; 'explain it to me' is the version that sounds smooth.",
       },
+      {
+        id: "workplace-help-chi-cho",
+        label: "Show me how",
+        note: "'Chỉ cho tôi' becomes 'point for me' or 'guide me' if translated tightly. The everyday phrases are 'Could you show me how?' or 'walk me through it' — natural ways to ask someone to demonstrate.",
+      },
     ],
     followUps: [
       { id: "workplace-help-what", question: "What part is unclear to you?", salienceQuestion: "How would you point to the {slot} you don't follow?" },
       { id: "workplace-help-tried", question: "What have you already tried yourself?", salienceQuestion: "How would you say what you tried with the {slot}?" },
       { id: "workplace-help-ask", question: "How would you ask for the explanation politely?", salienceQuestion: "How would you ask about the {slot}?" },
       { id: "workplace-help-check", question: "How would you check you understood?", salienceQuestion: "How would you confirm you got the {slot}?" },
+      { id: "workplace-help-timing", question: "How would you ask if now is a good time?", salienceQuestion: "When would you bring up the {slot}?" },
+      { id: "workplace-help-thanks", question: "How would you thank them after they help?", salienceQuestion: "How would you thank them for the {slot}?" },
     ],
   },
   {
@@ -165,7 +216,10 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Reporting A Mistake To Your Manager",
     labelVi: "Báo lỗi với quản lý",
     category: "work",
-    seedInputs: ["I think I made a mistake and I want to tell you early."],
+    seedInputs: [
+      "I think I made a mistake and I want to tell you early.",
+      "I need to let you know something went wrong with the order.",
+    ],
     detectionPatterns: [
       /\b(?:made a mistake|i made a mistake|report a problem|something went wrong|there is a problem|i think i messed up|an error in|fix the mistake)\b/i,
     ],
@@ -185,12 +239,19 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
         label: "Telling early is brave",
         note: "Saying it early — 'I want to tell you before it gets bigger' — is respected in English workplaces. You can be honest without a long apology; one clear line is enough and no pressure.",
       },
+      {
+        id: "workplace-mistake-make-verb",
+        label: "Make a mistake, not 'do'",
+        note: "'Làm sai' can lead to 'I did a mistake.' English pairs 'mistake' with 'make': 'I made a mistake.' (You 'do' a task, but you 'make' a mistake — a fixed pairing worth remembering.)",
+      },
     ],
     followUps: [
       { id: "workplace-mistake-what", question: "What went wrong, in one sentence?", salienceQuestion: "How would you name the {slot} that went wrong?" },
       { id: "workplace-mistake-when", question: "When did it happen?", salienceQuestion: "How would you say when the {slot} happened?" },
       { id: "workplace-mistake-fix", question: "What is your idea to fix it?", salienceQuestion: "How would you offer to fix the {slot}?" },
       { id: "workplace-mistake-prevent", question: "How would you stop it next time?", salienceQuestion: "How would you avoid the {slot} again?" },
+      { id: "workplace-mistake-help", question: "What help would you ask for to fix it?", salienceQuestion: "What help do you need with the {slot}?" },
+      { id: "workplace-mistake-calm", question: "How would you stay calm while you explain?", salienceQuestion: "How would you keep steady about the {slot}?" },
     ],
   },
   {
@@ -198,7 +259,10 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Asking About Pay Or Hours",
     labelVi: "Hỏi về lương hoặc giờ làm",
     category: "work",
-    seedInputs: ["Could we talk about my pay sometime this week?"],
+    seedInputs: [
+      "Could we talk about my pay sometime this week?",
+      "I'd like to ask about getting a few more hours.",
+    ],
     detectionPatterns: [
       /\b(?:ask for a raise|about my pay|my salary|my hours|more hours|fewer hours|talk about pay|pay raise|get paid)\b/i,
     ],
@@ -218,12 +282,19 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
         label: "Saying why",
         note: "English often pairs the ask with a reason: 'I've taken on more, so I'd like to talk about my pay.' You don't need a speech — one honest line about your work is plenty.",
       },
+      {
+        id: "workplace-pay-tang-luong",
+        label: "A raise is 'a pay raise'",
+        note: "'Tăng lương' translates literally as 'increase salary.' The natural noun is 'a raise' (US) or 'a pay rise' (UK): 'Could we talk about a raise?' Both are clearer at work than 'increase my money.'",
+      },
     ],
     followUps: [
       { id: "workplace-pay-topic", question: "Are you asking about pay, hours, or both?", salienceQuestion: "How would you name the {slot} you want to discuss?" },
       { id: "workplace-pay-reason", question: "What reason supports your request?", salienceQuestion: "How would you explain the {slot} behind your ask?" },
       { id: "workplace-pay-timing", question: "When is a good time to bring it up?", salienceQuestion: "How would you pick a {slot} to raise it?" },
       { id: "workplace-pay-response", question: "How would you respond if they need to think?", salienceQuestion: "How would you reply about the {slot} later?" },
+      { id: "workplace-pay-prepare", question: "What would you prepare before the talk?", salienceQuestion: "How would you get ready for the {slot} chat?" },
+      { id: "workplace-pay-thanks", question: "How would you close the talk warmly?", salienceQuestion: "How would you end the {slot} conversation?" },
     ],
   },
   {
@@ -231,7 +302,10 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Swapping A Shift With A Coworker",
     labelVi: "Đổi ca với đồng nghiệp",
     category: "work",
-    seedInputs: ["Could you swap shifts with me on Saturday?"],
+    seedInputs: [
+      "Could you swap shifts with me on Saturday?",
+      "Any chance you could cover my Friday shift? I'll take one of yours.",
+    ],
     detectionPatterns: [
       /\b(?:swap shifts|swap a shift|cover my shift|cover for me|switch shifts|trade shifts|take my shift|change my shift)\b/i,
     ],
@@ -246,12 +320,19 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
         label: "Last week's swap",
         note: "Talking about a past favor uses the past tense: 'Last week you covered for me,' not 'Last week you cover for me.' Vietnamese leans on 'last week' to mark time; in English the verb takes the -ed too.",
       },
+      {
+        id: "workplace-shift-doi-ca",
+        label: "Swap or trade shifts",
+        note: "'Đổi ca' is exactly 'swap shifts' or 'trade shifts.' Both verbs work: 'Can we swap shifts?' or 'Can we trade?' Coworkers say either — 'change shift with me' is understood but a touch less natural.",
+      },
     ],
     followUps: [
       { id: "workplace-shift-which", question: "Which shift do you need to swap?", salienceQuestion: "How would you name the {slot} you want to change?" },
       { id: "workplace-shift-ask", question: "How would you ask a coworker nicely?", salienceQuestion: "How would you ask about the {slot}?" },
       { id: "workplace-shift-offer", question: "What would you offer in return?", salienceQuestion: "How would you trade for the {slot}?" },
       { id: "workplace-shift-confirm", question: "How would you make sure the boss knows?", salienceQuestion: "How would you confirm the {slot} with your manager?" },
+      { id: "workplace-shift-thanks", question: "How would you thank a coworker who says yes?", salienceQuestion: "How would you thank them for the {slot}?" },
+      { id: "workplace-shift-backup", question: "How would you ask someone else if the first says no?", salienceQuestion: "Who else could take the {slot}?" },
     ],
   },
   {
@@ -259,7 +340,10 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Giving Notice Politely",
     labelVi: "Xin nghỉ việc một cách lịch sự",
     category: "work",
-    seedInputs: ["I wanted to let you know I've decided to leave the company."],
+    seedInputs: [
+      "I wanted to let you know I've decided to leave the company.",
+      "I'm giving my two weeks' notice — my last day would be the 20th.",
+    ],
     detectionPatterns: [
       /\b(?:giving notice|give my notice|hand in my notice|i'm resigning|i am resigning|leave the company|my last day|two weeks notice|quit my job)\b/i,
     ],
@@ -274,12 +358,19 @@ export const workplaceSpeakTopics: readonly SpeakTopic[] = [
         label: "Leaving on good terms",
         note: "A kind frame is 'Thank you for the chance to work here; my last day will be…' You can give the date clearly and still sound grateful. No long explanation is needed — short and warm is enough.",
       },
+      {
+        id: "workplace-notice-nghi-viec",
+        label: "Resign, not just 'stop work'",
+        note: "'Nghỉ việc' can become 'stop work' or 'rest the job.' The work words are 'resign,' 'give notice,' or 'hand in my notice.' 'I'm resigning' or 'I'd like to give my notice' is the clear, professional phrasing.",
+      },
     ],
     followUps: [
       { id: "workplace-notice-decision", question: "How would you share your decision simply?", salienceQuestion: "How would you state the {slot} clearly?" },
       { id: "workplace-notice-lastday", question: "What would your last day be?", salienceQuestion: "How would you name the {slot} as your last day?" },
       { id: "workplace-notice-thanks", question: "How would you thank your boss?", salienceQuestion: "How would you thank them for the {slot}?" },
       { id: "workplace-notice-handover", question: "How would you offer to hand things over?", salienceQuestion: "How would you plan to pass on the {slot}?" },
+      { id: "workplace-notice-reference", question: "How would you ask for a reference?", salienceQuestion: "How would you ask about the {slot} for the future?" },
+      { id: "workplace-notice-reason", question: "How much reason would you share, if any?", salienceQuestion: "How would you frame the {slot} kindly?" },
     ],
   },
 ] as const;
