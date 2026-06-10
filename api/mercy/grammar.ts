@@ -109,8 +109,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (!text) return sendJson(res, 400, { ok: false, error: "Missing text" });
 
-    if (!process.env.OPENAI_API_KEY) {
-      return sendJson(res, 503, { ok: false, error: "Missing OPENAI_API_KEY" });
+    if (!process.env.OPENAI_API_KEY && !process.env.GEMINI_API_KEY && !process.env.DEEPSEEK_API_KEY) {
+      return sendJson(res, 503, { ok: false, error: "Missing AI provider key" });
     }
 
     const userMessage = [
@@ -124,7 +124,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       systemPrompt: buildSystemPrompt(level, isRevision),
       userMessage,
       timeoutMs: 15000,
+      providerOrder: process.env.AI_GRAMMAR_PROVIDER_ORDER || process.env.AI_PROVIDER_ORDER,
       openaiModel: process.env.OPENAI_GRAMMAR_MODEL || "gpt-4o-mini",
+      deepseekModel: process.env.DEEPSEEK_GRAMMAR_MODEL || "deepseek-chat",
+      geminiModel: process.env.GEMINI_GRAMMAR_MODEL || undefined,
       temperature: 0.15,
       maxTokens: 800,
     });
