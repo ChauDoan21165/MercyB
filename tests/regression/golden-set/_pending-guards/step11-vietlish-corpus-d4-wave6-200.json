@@ -12,7 +12,7 @@
   "definition": "Sixth-wave Vietnamese-L1 interference review candidates (human review before any promotion into VIETLISH_CORPUS). Wave 6 mines fresh territory under-covered by waves 1-5: Vietnamese greeting/social-register calques, household-chore calques, workplace/office Vietlish, daily banking & medical calques, school/study, modal+bare-infinitive errors, quantifier/determiner errors, purpose/reason connectors, proverb/idiom calques, and additional false friends. A few natural 'control' anchors are flagged in sourcePattern for abstain-checking.",
   "dedupedAgainst": "live VIETLISH_CORPUS(353) + all 5 merged wave files(993) + A4 promotion list + Stage-1 128 paste block — 1346-item denylist, zero overlap (asserted by the guard test vs live + verified at authoring vs the full denylist).",
   "generatedFor": "2026-06-10 CEO-1 FULL ROSTER dispatch [A10] wave6",
-  "count": 200,
+  "count": 199,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -765,14 +765,6 @@
       "category": "collocation",
       "frequency": "low",
       "context": "I am forgetful, please remind me about the meeting."
-    },
-    {
-      "vietlish": "i hope you to come to my party",
-      "natural": "i hope you'll come to my party",
-      "sourcePattern": "mong bạn -> 'hope sb to do'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "It will be fun, i hope you to come to my party."
     },
     {
       "vietlish": "he made me feel very welcome",

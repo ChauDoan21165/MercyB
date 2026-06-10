@@ -45,9 +45,9 @@ describe("step11 vietlish corpus wave 6 (review queue)", () => {
     expect(data.status).toBe("review_not_wired");
   });
 
-  it("holds exactly 200 entries and a matching count field", () => {
-    expect(data.entries).toHaveLength(200);
-    expect(data.count).toBe(200);
+  it("holds exactly 199 entries and a matching count field", () => {
+    expect(data.entries).toHaveLength(199);
+    expect(data.count).toBe(199);
   });
 
   it("matches the VietlishCorpusEntry schema exactly (six string fields, valid enums)", () => {
@@ -62,17 +62,19 @@ describe("step11 vietlish corpus wave 6 (review queue)", () => {
     }
   });
 
-  it("has no duplicate vietlish strings within the wave", () => {
-    const seen = new Set(data.entries.map((entry) => entry.vietlish));
+  it("has no duplicate vietlish strings within the wave (case-insensitive)", () => {
+    const seen = new Set(data.entries.map((entry) => entry.vietlish.toLowerCase()));
     expect(seen.size).toBe(data.entries.length);
   });
 
-  it("does not collide with the live VIETLISH_CORPUS", () => {
+  it("does not collide with the live VIETLISH_CORPUS (case-insensitive)", () => {
     const live = new Set(
-      (VIETLISH_CORPUS as readonly VietlishCorpusEntry[]).map((entry) => entry.vietlish),
+      (VIETLISH_CORPUS as readonly VietlishCorpusEntry[]).map((entry) =>
+        entry.vietlish.toLowerCase(),
+      ),
     );
     const collisions = data.entries
-      .map((entry) => entry.vietlish)
+      .map((entry) => entry.vietlish.toLowerCase())
       .filter((vietlish) => live.has(vietlish));
     expect(collisions).toEqual([]);
   });
