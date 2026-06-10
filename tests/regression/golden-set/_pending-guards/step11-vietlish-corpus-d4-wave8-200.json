@@ -1,0 +1,1610 @@
+{
+  "corpus": "step11-vietlish-corpus-d4-wave8",
+  "version": "1.0.0",
+  "wiredIntoEngine": false,
+  "status": "review_not_wired",
+  "count": 200,
+  "description": "A10 Wave 8 — 200 Vietlish/interference review candidates. Fresh territory: verb+preposition collocations (depend on, interested in, listen to, etc.), countable/uncountable mass nouns (information, advice, furniture), article errors (play the piano, a kind person), reported speech (said me→told me), passive form errors (write→written, build→built), emotional verb prepositions (worried for→about), conditional errors (if I will have→if I have), sports/recreation calques (play sport, practices badminton), weather calques (there have wind, today is hot weather), adverb/adjective confusion (good→well, talent→talented, success→successful), subject-verb agreement (3rd person -s), gerund/infinitive alternation (enjoy cooking, avoid making, keep talking), too-to/enough-to constructions, causative get (get fixed), make/do collocates, register calques (VN formal politeness in English), literal translation idioms (eat to your fullness, thin wallet, sweet tongue). Deduped vs live(353) + waves 1-7(1393) = 1744-item denylist. Zero collisions.",
+  "entries": [
+    {
+      "vietlish": "I depend of my parents for money",
+      "natural": "I depend on my parents for money",
+      "sourcePattern": "phụ thuộc vào (depend of → depend on)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing financial reliance on parents"
+    },
+    {
+      "vietlish": "she is interested at music",
+      "natural": "she is interested in music",
+      "sourcePattern": "thích âm nhạc (interested at → interested in)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing someone's hobby or passion"
+    },
+    {
+      "vietlish": "I listen music every day",
+      "natural": "I listen to music every day",
+      "sourcePattern": "nghe nhạc (listen music → listen to music, missing to)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a daily listening habit"
+    },
+    {
+      "vietlish": "they arrived to the airport late",
+      "natural": "they arrived at the airport late",
+      "sourcePattern": "đến sân bay (arrived to → arrived at)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a late arrival at the airport"
+    },
+    {
+      "vietlish": "she got married with her childhood friend",
+      "natural": "she got married to her childhood friend",
+      "sourcePattern": "kết hôn với (got married with → got married to)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "announcing a marriage"
+    },
+    {
+      "vietlish": "he specializes at accounting",
+      "natural": "he specializes in accounting",
+      "sourcePattern": "chuyên về kế toán (specializes at → specializes in)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "describing someone's area of expertise"
+    },
+    {
+      "vietlish": "we discussed about the plan for an hour",
+      "natural": "we discussed the plan for an hour",
+      "sourcePattern": "thảo luận về kế hoạch (discuss about → discuss, no about)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "recounting a meeting about a plan"
+    },
+    {
+      "vietlish": "she dreamed to be a doctor when she was young",
+      "natural": "she dreamed of being a doctor when she was young",
+      "sourcePattern": "mơ trở thành bác sĩ (dreamed to be → dreamed of being)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "talking about childhood ambitions"
+    },
+    {
+      "vietlish": "he succeeded on the exam",
+      "natural": "he succeeded in the exam",
+      "sourcePattern": "thành công trong kỳ thi (succeeded on → succeeded in)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "congratulating someone on a passed exam"
+    },
+    {
+      "vietlish": "I searched the answer on Google",
+      "natural": "I searched for the answer on Google",
+      "sourcePattern": "tìm câu trả lời (searched the → searched for)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "explaining how you looked something up online"
+    },
+    {
+      "vietlish": "she cares of her elderly parents",
+      "natural": "she cares for her elderly parents",
+      "sourcePattern": "chăm sóc cha mẹ già (cares of → cares for)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "describing a caregiving role at home"
+    },
+    {
+      "vietlish": "he majored at English literature in university",
+      "natural": "he majored in English literature at university",
+      "sourcePattern": "chuyên ngành văn học Anh (majored at → majored in)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "describing someone's university major"
+    },
+    {
+      "vietlish": "I need some informations about the course",
+      "natural": "I need some information about the course",
+      "sourcePattern": "thông tin (informations → information, uncountable)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "asking for details about a class or programme"
+    },
+    {
+      "vietlish": "she gave me many advices about my career",
+      "natural": "she gave me a lot of advice about my career",
+      "sourcePattern": "nhiều lời khuyên (many advices → a lot of advice, uncountable)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "thanking someone for career guidance"
+    },
+    {
+      "vietlish": "the furnitures in my new apartment are old",
+      "natural": "the furniture in my new apartment is old",
+      "sourcePattern": "đồ nội thất (furnitures → furniture, uncountable)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing the state of rented accommodation"
+    },
+    {
+      "vietlish": "please give me some feedbacks on my essay",
+      "natural": "please give me some feedback on my essay",
+      "sourcePattern": "phản hồi (feedbacks → feedback, uncountable)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "asking a teacher or colleague for comments"
+    },
+    {
+      "vietlish": "she has long black hairs",
+      "natural": "she has long black hair",
+      "sourcePattern": "tóc dài đen (hairs → hair, usually uncountable for collective mass)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing someone's appearance"
+    },
+    {
+      "vietlish": "I bought some breads and milks at the store",
+      "natural": "I bought some bread and milk at the store",
+      "sourcePattern": "bánh mì và sữa (breads/milks → bread/milk, mass nouns)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "listing grocery purchases"
+    },
+    {
+      "vietlish": "he needs more equipments for the lab",
+      "natural": "he needs more equipment for the lab",
+      "sourcePattern": "thiết bị (equipments → equipment, uncountable)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "requesting lab resources at school or work"
+    },
+    {
+      "vietlish": "she gave me a useful advice on saving money",
+      "natural": "she gave me a useful piece of advice on saving money",
+      "sourcePattern": "một lời khuyên (a useful advice → a piece of advice)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "crediting someone for helpful financial guidance"
+    },
+    {
+      "vietlish": "I play piano every night before sleep",
+      "natural": "I play the piano every night before sleep",
+      "sourcePattern": "chơi đàn piano (play piano → play the piano)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing an evening musical practice habit"
+    },
+    {
+      "vietlish": "she plays guitar really well",
+      "natural": "she plays the guitar really well",
+      "sourcePattern": "chơi đàn ghi-ta (play guitar → play the guitar)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "complimenting someone's guitar skills"
+    },
+    {
+      "vietlish": "she has beautiful voice",
+      "natural": "she has a beautiful voice",
+      "sourcePattern": "giọng hát đẹp (missing article before singular countable)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "complimenting a singer's voice"
+    },
+    {
+      "vietlish": "I had good time at the party",
+      "natural": "I had a good time at the party",
+      "sourcePattern": "vui vẻ ở bữa tiệc (missing article: had a good time)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "sharing how much you enjoyed a party"
+    },
+    {
+      "vietlish": "he is kind person",
+      "natural": "he is a kind person",
+      "sourcePattern": "anh ấy là người tốt bụng (missing article before singular count noun)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing someone's personality"
+    },
+    {
+      "vietlish": "she is doctor at the city hospital",
+      "natural": "she is a doctor at the city hospital",
+      "sourcePattern": "cô ấy là bác sĩ (missing article before profession noun)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "introducing someone's job"
+    },
+    {
+      "vietlish": "English is international language today",
+      "natural": "English is an international language today",
+      "sourcePattern": "tiếng Anh là ngôn ngữ quốc tế (missing article before singular count noun)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "discussing the global role of English"
+    },
+    {
+      "vietlish": "Internet is very useful for students",
+      "natural": "The internet is very useful for students",
+      "sourcePattern": "Internet (definite article the + lowercase: the internet)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "arguing the educational value of the internet"
+    },
+    {
+      "vietlish": "she said me that she was tired",
+      "natural": "she told me that she was tired",
+      "sourcePattern": "cô ấy nói với tôi rằng (said me → told me)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "reporting what someone said about feeling tired"
+    },
+    {
+      "vietlish": "he asked to me where I was from",
+      "natural": "he asked me where I was from",
+      "sourcePattern": "anh ấy hỏi tôi (asked to me → asked me)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "recounting an introduction conversation"
+    },
+    {
+      "vietlish": "she said to me to go home early",
+      "natural": "she told me to go home early",
+      "sourcePattern": "cô ấy bảo tôi về nhà sớm (said to me to → told me to)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "relaying a directive from someone else"
+    },
+    {
+      "vietlish": "he told that he was feeling sick",
+      "natural": "he said that he was feeling sick",
+      "sourcePattern": "anh ấy nói rằng (told that → said that, told requires an object)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "reporting someone's excuse for an absence"
+    },
+    {
+      "vietlish": "he reminded to me to call the office",
+      "natural": "he reminded me to call the office",
+      "sourcePattern": "anh ấy nhắc nhở tôi (reminded to me → reminded me)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "describing a reminder from a colleague"
+    },
+    {
+      "vietlish": "she suggested me to try the new restaurant",
+      "natural": "she suggested that I try the new restaurant",
+      "sourcePattern": "cô ấy gợi ý tôi (suggested me to → suggested I, no direct object)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "passing on a restaurant recommendation"
+    },
+    {
+      "vietlish": "he described me the problem in detail",
+      "natural": "he described the problem to me in detail",
+      "sourcePattern": "anh ấy mô tả vấn đề cho tôi (describe me → describe to me)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "recounting someone's explanation of a technical issue"
+    },
+    {
+      "vietlish": "this book was write by a famous author",
+      "natural": "this book was written by a famous author",
+      "sourcePattern": "quyển sách này được viết bởi (write → written in passive)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "citing the authorship of a well-known book"
+    },
+    {
+      "vietlish": "the old house was build in the 1920s",
+      "natural": "the old house was built in the 1920s",
+      "sourcePattern": "ngôi nhà được xây dựng (build → built in passive)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing when a historic building was constructed"
+    },
+    {
+      "vietlish": "the letter was wrote by her best friend",
+      "natural": "the letter was written by her best friend",
+      "sourcePattern": "bức thư được viết bởi (wrote → written in passive)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "identifying the author of a handwritten letter"
+    },
+    {
+      "vietlish": "he was punished of the teacher for cheating",
+      "natural": "he was punished by the teacher for cheating",
+      "sourcePattern": "bị phạt bởi (punished of → punished by for passive agent)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "describing a student being disciplined"
+    },
+    {
+      "vietlish": "she was surprised of the sudden news",
+      "natural": "she was surprised by the sudden news",
+      "sourcePattern": "ngạc nhiên với (surprised of → surprised by)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "reacting to unexpected information"
+    },
+    {
+      "vietlish": "the door was opened from the strong wind",
+      "natural": "the door was opened by the strong wind",
+      "sourcePattern": "cánh cửa được mở bởi (opened from → opened by for passive agent)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "explaining how a door blew open"
+    },
+    {
+      "vietlish": "I feel nervous for the upcoming exam",
+      "natural": "I feel nervous about the upcoming exam",
+      "sourcePattern": "lo lắng về kỳ thi (nervous for → nervous about)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "expressing anxiety before a big test"
+    },
+    {
+      "vietlish": "she is worried for her son abroad",
+      "natural": "she is worried about her son abroad",
+      "sourcePattern": "lo lắng cho con (worried for → worried about, preposition shift)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a parent's concern for a child overseas"
+    },
+    {
+      "vietlish": "I am excited for the holiday trip",
+      "natural": "I am excited about the holiday trip",
+      "sourcePattern": "hào hứng với chuyến đi (excited for → excited about)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "expressing anticipation before a vacation"
+    },
+    {
+      "vietlish": "he is angry to me because I was late",
+      "natural": "he is angry with me because I was late",
+      "sourcePattern": "tức giận với (angry to → angry with)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing someone's emotional reaction to a mistake"
+    },
+    {
+      "vietlish": "she is disappointed of her test result",
+      "natural": "she is disappointed with her test result",
+      "sourcePattern": "thất vọng với kết quả (disappointed of → disappointed with/in)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing how someone feels about a poor grade"
+    },
+    {
+      "vietlish": "I feel sorry of the mistake I made",
+      "natural": "I feel sorry about the mistake I made",
+      "sourcePattern": "xin lỗi vì lỗi lầm (sorry of → sorry about)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "apologising for an error"
+    },
+    {
+      "vietlish": "I am scared from dogs since I was a child",
+      "natural": "I am scared of dogs since I was a child",
+      "sourcePattern": "sợ chó (scared from → scared of)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "explaining a childhood fear of dogs"
+    },
+    {
+      "vietlish": "if I will have enough money, I will travel",
+      "natural": "if I have enough money, I will travel",
+      "sourcePattern": "nếu tôi có đủ tiền (if + will → if + present simple in condition)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "talking about future travel plans conditionally"
+    },
+    {
+      "vietlish": "if I would know the answer, I would tell you",
+      "natural": "if I knew the answer, I would tell you",
+      "sourcePattern": "nếu tôi biết câu trả lời (if + would → if + past simple for unreal)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "expressing an inability to help with information"
+    },
+    {
+      "vietlish": "I wish I can travel the world someday",
+      "natural": "I wish I could travel the world someday",
+      "sourcePattern": "tôi ước tôi có thể (wish + can → wish + could)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "expressing a personal dream or aspiration"
+    },
+    {
+      "vietlish": "if I will be free tomorrow, let's meet",
+      "natural": "if I am free tomorrow, let's meet",
+      "sourcePattern": "nếu tôi rảnh ngày mai (if + will → if + present in first conditional)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "making tentative plans with a friend"
+    },
+    {
+      "vietlish": "suppose you will fail, what will you do?",
+      "natural": "suppose you fail, what will you do?",
+      "sourcePattern": "giả sử bạn thất bại (suppose + will → suppose + present)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "posing a hypothetical challenge to someone"
+    },
+    {
+      "vietlish": "I play sport every day to stay healthy",
+      "natural": "I play sports every day to stay healthy",
+      "sourcePattern": "chơi thể thao (play sport → play sports, plural in general sense)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a healthy daily exercise routine"
+    },
+    {
+      "vietlish": "I do exercise every morning at 6",
+      "natural": "I exercise every morning at 6",
+      "sourcePattern": "tập thể dục (do exercise → exercise as intransitive verb, AmE)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a morning workout routine"
+    },
+    {
+      "vietlish": "she practices badminton three times a week",
+      "natural": "she plays badminton three times a week",
+      "sourcePattern": "tập cầu lông (practices → plays for recreational sport)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "describing someone's weekly sporting activity"
+    },
+    {
+      "vietlish": "he plays football very good",
+      "natural": "he plays football very well",
+      "sourcePattern": "đá bóng rất giỏi (good → well as adverb modifying verb)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "complimenting someone's football ability"
+    },
+    {
+      "vietlish": "I like go swimming on weekends",
+      "natural": "I like going swimming on weekends",
+      "sourcePattern": "thích đi bơi (like go → like going/to go, gerund needed)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a weekend leisure activity"
+    },
+    {
+      "vietlish": "she wins a medal of gold at the contest",
+      "natural": "she wins a gold medal at the contest",
+      "sourcePattern": "huy chương vàng (medal of gold → gold medal, adjective-noun order)",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "reporting a competition victory"
+    },
+    {
+      "vietlish": "today is hot weather outside",
+      "natural": "it's hot outside today",
+      "sourcePattern": "hôm nay thời tiết nóng (today is hot weather → it's hot)",
+      "category": "calque",
+      "frequency": "high",
+      "context": "commenting on the day's temperature"
+    },
+    {
+      "vietlish": "there have wind and rain today",
+      "natural": "it's windy and rainy today",
+      "sourcePattern": "có gió và mưa (there have wind → it's windy, existential calque)",
+      "category": "calque",
+      "frequency": "high",
+      "context": "describing today's unpleasant weather"
+    },
+    {
+      "vietlish": "it very cold in December",
+      "natural": "it's very cold in December",
+      "sourcePattern": "trời rất lạnh vào tháng 12 (missing copula it's)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing typical December weather"
+    },
+    {
+      "vietlish": "this year have too much rain already",
+      "natural": "this year has had too much rain already",
+      "sourcePattern": "năm nay có quá nhiều mưa (existential have calque + tense)",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "complaining about an unusually wet year"
+    },
+    {
+      "vietlish": "the sky is very cloud today",
+      "natural": "the sky is very cloudy today",
+      "sourcePattern": "bầu trời nhiều mây (cloud → cloudy, adjective needed)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "describing an overcast sky"
+    },
+    {
+      "vietlish": "yesterday the weather very hot",
+      "natural": "yesterday the weather was very hot",
+      "sourcePattern": "hôm qua thời tiết rất nóng (missing copula was)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "commenting on yesterday's weather"
+    },
+    {
+      "vietlish": "she cook very good",
+      "natural": "she cooks very well",
+      "sourcePattern": "cô ấy nấu ăn rất ngon (good → well, 3rd-person-s dropped)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "complimenting someone's cooking ability"
+    },
+    {
+      "vietlish": "he runs very fast, right?",
+      "natural": "he runs very fast, doesn't he?",
+      "sourcePattern": "anh ấy chạy rất nhanh (right? → doesn't he? for tag question)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "seeking confirmation about someone's running speed"
+    },
+    {
+      "vietlish": "the report is due at next Friday",
+      "natural": "the report is due next Friday",
+      "sourcePattern": "báo cáo đến hạn vào thứ Sáu tới (at next Friday → next Friday, no preposition)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "confirming a deadline at work or school"
+    },
+    {
+      "vietlish": "I have lived here since three years",
+      "natural": "I have lived here for three years",
+      "sourcePattern": "sống ở đây ba năm rồi (since three years → for three years, duration vs point)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "telling someone how long you've been living somewhere"
+    },
+    {
+      "vietlish": "she graduated school in two years ago",
+      "natural": "she graduated from school two years ago",
+      "sourcePattern": "tốt nghiệp hai năm trước (in two years ago → two years ago, no in)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "giving information about when someone finished school"
+    },
+    {
+      "vietlish": "I have not seen him since a long time",
+      "natural": "I haven't seen him for a long time",
+      "sourcePattern": "đã lâu không gặp (since a long time → for a long time)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "saying you've been out of touch with someone"
+    },
+    {
+      "vietlish": "I study on evening after dinner",
+      "natural": "I study in the evening after dinner",
+      "sourcePattern": "học vào buổi tối (on evening → in the evening, preposition for time of day)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing your evening study routine"
+    },
+    {
+      "vietlish": "see you in next Monday",
+      "natural": "see you next Monday",
+      "sourcePattern": "gặp vào thứ Hai tuần tới (in next Monday → next Monday, no preposition)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "saying goodbye before the next meeting"
+    },
+    {
+      "vietlish": "she called me at 10 hours last night",
+      "natural": "she called me at 10 o'clock last night",
+      "sourcePattern": "10 giờ tối qua (10 hours → 10 o'clock, giờ calque)",
+      "category": "calque",
+      "frequency": "high",
+      "context": "recounting a late-night phone call"
+    },
+    {
+      "vietlish": "the concert begins at 8 hours sharp",
+      "natural": "the concert begins at 8 o'clock sharp",
+      "sourcePattern": "buổi hòa nhạc bắt đầu lúc 8 giờ (8 hours → 8 o'clock)",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "confirming the start time of an event"
+    },
+    {
+      "vietlish": "he speak English very fluent",
+      "natural": "he speaks English very fluently",
+      "sourcePattern": "nói tiếng Anh rất trôi chảy (fluent adj → fluently adv; 3rd-s missing)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "praising someone's English ability"
+    },
+    {
+      "vietlish": "she drives very careful on the highway",
+      "natural": "she drives very carefully on the highway",
+      "sourcePattern": "lái xe cẩn thận (careful → carefully, adverb modifying verb)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "describing a cautious driver"
+    },
+    {
+      "vietlish": "he answered the question correct",
+      "natural": "he answered the question correctly",
+      "sourcePattern": "trả lời đúng (correct adj → correctly adv)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "confirming a student gave a right answer"
+    },
+    {
+      "vietlish": "they finished the project successful",
+      "natural": "they finished the project successfully",
+      "sourcePattern": "hoàn thành dự án thành công (successful → successfully)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "reporting on a completed work project"
+    },
+    {
+      "vietlish": "she sings beautiful",
+      "natural": "she sings beautifully",
+      "sourcePattern": "hát hay (beautiful → beautifully, adverb for verb)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "complimenting a singer's vocal performance"
+    },
+    {
+      "vietlish": "he work very hard every day",
+      "natural": "he works very hard every day",
+      "sourcePattern": "anh ấy làm việc rất chăm chỉ (3rd person singular -s missing)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a diligent colleague or family member"
+    },
+    {
+      "vietlish": "she come to school late every Monday",
+      "natural": "she comes to school late every Monday",
+      "sourcePattern": "cô ấy đến trường muộn (3rd-person -s missing)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "noting a student's pattern of tardiness"
+    },
+    {
+      "vietlish": "the class begin at 8 every morning",
+      "natural": "the class begins at 8 every morning",
+      "sourcePattern": "lớp học bắt đầu lúc 8 giờ sáng (begin → begins)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "confirming the daily schedule of a class"
+    },
+    {
+      "vietlish": "he don't understand what the teacher said",
+      "natural": "he doesn't understand what the teacher said",
+      "sourcePattern": "anh ấy không hiểu (don't → doesn't for 3rd person)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "explaining a student's comprehension problem"
+    },
+    {
+      "vietlish": "she have two sisters and one brother",
+      "natural": "she has two sisters and one brother",
+      "sourcePattern": "cô ấy có hai chị và một anh (have → has, 3rd person)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a sibling arrangement"
+    },
+    {
+      "vietlish": "my friend live near the school",
+      "natural": "my friend lives near the school",
+      "sourcePattern": "bạn tôi sống gần trường (live → lives, 3rd person)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "giving directions relative to a school"
+    },
+    {
+      "vietlish": "the dog want to go outside",
+      "natural": "the dog wants to go outside",
+      "sourcePattern": "con chó muốn ra ngoài (want → wants, 3rd person)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "explaining why a pet is acting restless"
+    },
+    {
+      "vietlish": "the team make a good decision together",
+      "natural": "the team makes a good decision together",
+      "sourcePattern": "nhóm đưa ra quyết định tốt (make → makes with collective noun in AmE)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "praising a collaborative decision in the workplace"
+    },
+    {
+      "vietlish": "each of the students have to submit a report",
+      "natural": "each of the students has to submit a report",
+      "sourcePattern": "mỗi học sinh (each of + plural → has/is, not have)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "announcing a class assignment requirement"
+    },
+    {
+      "vietlish": "none of the answers is correct",
+      "natural": "none of the answers are correct",
+      "sourcePattern": "không có đáp án nào (none of + plural is vs are, informal)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "telling students all their answers are wrong"
+    },
+    {
+      "vietlish": "neither of us have seen the movie",
+      "natural": "neither of us has seen the movie",
+      "sourcePattern": "không ai trong chúng tôi (neither + has, singular agreement)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "explaining why two friends can't join a movie discussion"
+    },
+    {
+      "vietlish": "she is very talent at drawing",
+      "natural": "she is very talented at drawing",
+      "sourcePattern": "cô ấy rất có tài vẽ (talent noun → talented adjective)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "praising someone's artistic ability"
+    },
+    {
+      "vietlish": "he is a very talent engineer",
+      "natural": "he is a very talented engineer",
+      "sourcePattern": "kỹ sư rất tài năng (talent → talented, adjective form)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a skilled professional"
+    },
+    {
+      "vietlish": "your presentation is very clear and logic",
+      "natural": "your presentation is very clear and logical",
+      "sourcePattern": "rõ ràng và có logic (logic noun → logical adjective)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "giving feedback on a presentation"
+    },
+    {
+      "vietlish": "the explanation is not very logic",
+      "natural": "the explanation is not very logical",
+      "sourcePattern": "giải thích không có logic (logic → logical)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "critiquing an unclear explanation"
+    },
+    {
+      "vietlish": "she has a very strong patient personality",
+      "natural": "she has a very patient personality",
+      "sourcePattern": "cô ấy có tính cách kiên nhẫn (patient noun used as adjective, meaning already in 'personality')",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "describing someone's calm, enduring character"
+    },
+    {
+      "vietlish": "I went to the barber to cut my hair",
+      "natural": "I went to the barber to get my hair cut",
+      "sourcePattern": "đi cắt tóc (to cut my hair → to get my hair cut, causative)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "saying you went to get a haircut"
+    },
+    {
+      "vietlish": "she went to the tailor to fix her dress",
+      "natural": "she went to the tailor to get her dress fixed",
+      "sourcePattern": "đi sửa váy (to fix → to get fixed, causative)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "describing taking a garment to be altered"
+    },
+    {
+      "vietlish": "I will fix my phone next week",
+      "natural": "I will get my phone fixed next week",
+      "sourcePattern": "sửa điện thoại (fix = do it yourself; get fixed = causative service)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "planning to have a device repaired professionally"
+    },
+    {
+      "vietlish": "she must to finish the report by Friday",
+      "natural": "she must finish the report by Friday",
+      "sourcePattern": "phải hoàn thành báo cáo (must + to infinitive → must + base)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "communicating an urgent deadline requirement"
+    },
+    {
+      "vietlish": "he should to rest more after surgery",
+      "natural": "he should rest more after surgery",
+      "sourcePattern": "nên nghỉ ngơi (should + to → should + base)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "advising post-operative recovery"
+    },
+    {
+      "vietlish": "you ought to to apologise to her",
+      "natural": "you ought to apologise to her",
+      "sourcePattern": "nên xin lỗi (ought to to → ought to + base, double to)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "urging someone to say sorry"
+    },
+    {
+      "vietlish": "I used to going to the market every Sunday",
+      "natural": "I used to go to the market every Sunday",
+      "sourcePattern": "tôi từng đi chợ (used to + gerund → used to + base)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a past weekly habit that has stopped"
+    },
+    {
+      "vietlish": "I look forward to see you at the conference",
+      "natural": "I look forward to seeing you at the conference",
+      "sourcePattern": "mong gặp bạn (look forward to + base → look forward to + gerund)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "closing a professional email or message"
+    },
+    {
+      "vietlish": "she is thinking of to change her job",
+      "natural": "she is thinking of changing her job",
+      "sourcePattern": "đang nghĩ đến việc thay đổi công việc (thinking of + to → thinking of + gerund)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "discussing a career change plan"
+    },
+    {
+      "vietlish": "he avoided to make eye contact",
+      "natural": "he avoided making eye contact",
+      "sourcePattern": "tránh nhìn thẳng (avoid + to → avoid + gerund)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "describing evasive body language in a conversation"
+    },
+    {
+      "vietlish": "I enjoy to cook new dishes on weekends",
+      "natural": "I enjoy cooking new dishes on weekends",
+      "sourcePattern": "thích nấu ăn (enjoy + to → enjoy + gerund)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "talking about a favourite weekend hobby"
+    },
+    {
+      "vietlish": "she kept to talk even after the bell rang",
+      "natural": "she kept talking even after the bell rang",
+      "sourcePattern": "cứ nói tiếp (keep + to → keep + gerund)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "describing a student who wouldn't stop talking"
+    },
+    {
+      "vietlish": "would you mind to open the window?",
+      "natural": "would you mind opening the window?",
+      "sourcePattern": "bạn có phiền mở cửa sổ không (mind + to → mind + gerund)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "politely asking someone to open a window"
+    },
+    {
+      "vietlish": "I can't stand to hear that song again",
+      "natural": "I can't stand hearing that song again",
+      "sourcePattern": "không chịu được (can't stand + to → can't stand + gerund)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "expressing strong dislike for hearing a repetitive song"
+    },
+    {
+      "vietlish": "he admitted to cheat on the test",
+      "natural": "he admitted cheating on the test",
+      "sourcePattern": "thừa nhận gian lận (admit + to + base → admit + gerund)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "describing a student who confessed to cheating"
+    },
+    {
+      "vietlish": "she denied to take the money",
+      "natural": "she denied taking the money",
+      "sourcePattern": "phủ nhận lấy tiền (deny + to → deny + gerund)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "describing someone denying a theft accusation"
+    },
+    {
+      "vietlish": "I practice to speak English every day",
+      "natural": "I practise speaking English every day",
+      "sourcePattern": "luyện nói tiếng Anh (practice + to → practise + gerund)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a daily language practice habit"
+    },
+    {
+      "vietlish": "she forgot to locking the door",
+      "natural": "she forgot to lock the door",
+      "sourcePattern": "quên khóa cửa (forgot to + gerund → forgot to + base)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "explaining why the door was left unlocked"
+    },
+    {
+      "vietlish": "I remember to visit my grandmother last Tết",
+      "natural": "I remember visiting my grandmother last Tết",
+      "sourcePattern": "nhớ đến thăm bà (remember + to base = remember in order to; + gerund = recall past event)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "recalling a warm Tết family memory"
+    },
+    {
+      "vietlish": "he stopped to smoke last year",
+      "natural": "he stopped smoking last year",
+      "sourcePattern": "bỏ thuốc lá (stopped + gerund = quit; stopped to + base = stopped in order to)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "saying someone quit a habit"
+    },
+    {
+      "vietlish": "the water is too hot for drink",
+      "natural": "the water is too hot to drink",
+      "sourcePattern": "nước quá nóng để uống (for drink → to drink in too-to construction)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "warning someone not to drink scalding water"
+    },
+    {
+      "vietlish": "she is smart enough for pass the exam",
+      "natural": "she is smart enough to pass the exam",
+      "sourcePattern": "thông minh đủ để qua bài thi (for pass → to pass)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "expressing confidence in a student's ability"
+    },
+    {
+      "vietlish": "I am too tired for continue working",
+      "natural": "I am too tired to continue working",
+      "sourcePattern": "quá mệt để tiếp tục làm việc (for continue → to continue)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "explaining why you need to stop working"
+    },
+    {
+      "vietlish": "she is too shy for speak in front of class",
+      "natural": "she is too shy to speak in front of the class",
+      "sourcePattern": "quá e dè để phát biểu trước lớp (for speak → to speak)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a student who struggles with public speaking"
+    },
+    {
+      "vietlish": "he is strong enough for lift the box alone",
+      "natural": "he is strong enough to lift the box alone",
+      "sourcePattern": "đủ mạnh để nhấc hộp (for lift → to lift)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "assessing whether someone can carry heavy luggage"
+    },
+    {
+      "vietlish": "I think that go to university is important",
+      "natural": "I think that going to university is important",
+      "sourcePattern": "tôi nghĩ rằng học đại học quan trọng (go → going, gerund as subject)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "expressing an opinion about the value of higher education"
+    },
+    {
+      "vietlish": "swim every day is good for your health",
+      "natural": "swimming every day is good for your health",
+      "sourcePattern": "bơi mỗi ngày tốt cho sức khỏe (swim → swimming, gerund as subject)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "advising on a daily health habit"
+    },
+    {
+      "vietlish": "study English abroad is my dream",
+      "natural": "studying English abroad is my dream",
+      "sourcePattern": "học tiếng Anh ở nước ngoài là mơ ước (study → studying, gerund as subject)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a language learning aspiration"
+    },
+    {
+      "vietlish": "I am interesting in this job offer",
+      "natural": "I am interested in this job offer",
+      "sourcePattern": "tôi quan tâm đến (interesting = causes interest; interested = feels interest)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "expressing enthusiasm for a job opportunity"
+    },
+    {
+      "vietlish": "the class was very boring, I was bored",
+      "natural": "the class was very boring, so I was bored",
+      "sourcePattern": "buổi học nhàm chán (boring = causing boredom; bored = feeling boredom — correct pair)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "explaining a dull lesson that put you to sleep"
+    },
+    {
+      "vietlish": "the news was very surprise",
+      "natural": "the news was very surprising",
+      "sourcePattern": "tin tức bất ngờ (surprise noun/verb → surprising adjective)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "reacting to an unexpected announcement"
+    },
+    {
+      "vietlish": "I was very disappoint with the service",
+      "natural": "I was very disappointed with the service",
+      "sourcePattern": "tôi rất thất vọng (disappoint verb → disappointed past participle as adj)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "complaining about poor customer service"
+    },
+    {
+      "vietlish": "the movie is very amuse",
+      "natural": "the movie is very amusing",
+      "sourcePattern": "bộ phim hài hước (amuse verb → amusing adjective)",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "recommending a light-hearted film"
+    },
+    {
+      "vietlish": "she was very confuse about the instructions",
+      "natural": "she was very confused about the instructions",
+      "sourcePattern": "cô ấy bối rối (confuse verb → confused past participle as adj)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "describing confusion when reading a manual"
+    },
+    {
+      "vietlish": "I find this topic very fascinate",
+      "natural": "I find this topic very fascinating",
+      "sourcePattern": "chủ đề hấp dẫn (fascinate verb → fascinating adjective)",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "expressing enthusiasm for an interesting subject"
+    },
+    {
+      "vietlish": "the situation is very stress",
+      "natural": "the situation is very stressful",
+      "sourcePattern": "tình huống căng thẳng (stress noun → stressful adjective)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "describing a high-pressure situation at work or school"
+    },
+    {
+      "vietlish": "I am very stress about the deadline",
+      "natural": "I am very stressed about the deadline",
+      "sourcePattern": "tôi rất căng thẳng (stress → stressed, past participle as adjective)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "expressing anxiety about an approaching deadline"
+    },
+    {
+      "vietlish": "the ending of the story was very satisfy",
+      "natural": "the ending of the story was very satisfying",
+      "sourcePattern": "kết thúc câu chuyện thỏa mãn (satisfy verb → satisfying adjective)",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "reviewing a book or film with a good ending"
+    },
+    {
+      "vietlish": "she felt very relax after the massage",
+      "natural": "she felt very relaxed after the massage",
+      "sourcePattern": "cảm thấy thư giãn (relax verb → relaxed past participle)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "describing how someone felt after a spa treatment"
+    },
+    {
+      "vietlish": "the problem is too complicate for me",
+      "natural": "the problem is too complicated for me",
+      "sourcePattern": "vấn đề quá phức tạp (complicate verb → complicated adjective)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "admitting difficulty understanding a complex problem"
+    },
+    {
+      "vietlish": "I feel very exhaust after the long flight",
+      "natural": "I feel very exhausted after the long flight",
+      "sourcePattern": "cảm thấy kiệt sức (exhaust verb → exhausted past participle)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "describing tiredness after an international journey"
+    },
+    {
+      "vietlish": "this is a very challenge task",
+      "natural": "this is a very challenging task",
+      "sourcePattern": "nhiệm vụ thử thách (challenge noun/verb → challenging adjective)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "describing a difficult assignment or project"
+    },
+    {
+      "vietlish": "the children are very amuse by the clown",
+      "natural": "the children are very amused by the clown",
+      "sourcePattern": "bọn trẻ cảm thấy vui (amuse → amused, past participle)",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "describing children's reaction to entertainment"
+    },
+    {
+      "vietlish": "I feel very comfort in this hotel",
+      "natural": "I feel very comfortable in this hotel",
+      "sourcePattern": "cảm thấy thoải mái (comfort noun → comfortable adjective)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "sharing a positive hotel experience"
+    },
+    {
+      "vietlish": "the presentation was very impress",
+      "natural": "the presentation was very impressive",
+      "sourcePattern": "bài thuyết trình ấn tượng (impress verb → impressive adjective)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "giving complimentary feedback on a presentation"
+    },
+    {
+      "vietlish": "he is very patient — he can wait without complain",
+      "natural": "he is very patient — he can wait without complaining",
+      "sourcePattern": "kiên nhẫn — chờ mà không than vãn (without + base → without + gerund)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "praising someone's calm attitude while waiting"
+    },
+    {
+      "vietlish": "she left without to say goodbye",
+      "natural": "she left without saying goodbye",
+      "sourcePattern": "ra đi mà không nói lời tạm biệt (without + to → without + gerund)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "noting that someone departed abruptly"
+    },
+    {
+      "vietlish": "instead of to go by taxi, we walked",
+      "natural": "instead of going by taxi, we walked",
+      "sourcePattern": "thay vì đi taxi (instead of + to → instead of + gerund)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "explaining an alternative transport choice"
+    },
+    {
+      "vietlish": "he is responsible of the project budget",
+      "natural": "he is responsible for the project budget",
+      "sourcePattern": "chịu trách nhiệm về ngân sách (responsible of → responsible for)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "defining someone's accountability at work"
+    },
+    {
+      "vietlish": "she is capable to do this task alone",
+      "natural": "she is capable of doing this task alone",
+      "sourcePattern": "có khả năng thực hiện (capable to → capable of + gerund)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "expressing confidence in a colleague's ability"
+    },
+    {
+      "vietlish": "he is good in math but bad in English",
+      "natural": "he is good at math but bad at English",
+      "sourcePattern": "giỏi toán nhưng kém tiếng Anh (good in/bad in → good at/bad at for skills)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a student's subject strengths and weaknesses"
+    },
+    {
+      "vietlish": "she is very strong in speaking but weak in writing",
+      "natural": "she is very strong at speaking but weak at writing",
+      "sourcePattern": "mạnh về nói nhưng yếu về viết (strong in → strong at, skill domain)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "giving a candid language ability assessment"
+    },
+    {
+      "vietlish": "I am not very good in cooking Vietnamese food",
+      "natural": "I am not very good at cooking Vietnamese food",
+      "sourcePattern": "không giỏi nấu ăn (good in → good at for skills/activities)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "modestly admitting limited cooking skill"
+    },
+    {
+      "vietlish": "she is really bad in swimming",
+      "natural": "she is really bad at swimming",
+      "sourcePattern": "kém bơi lội (bad in → bad at for activities)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "explaining why someone avoids the pool"
+    },
+    {
+      "vietlish": "I am not confidence enough to speak English",
+      "natural": "I am not confident enough to speak English",
+      "sourcePattern": "không đủ tự tin (confidence noun → confident adjective)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "expressing reluctance to practise speaking English"
+    },
+    {
+      "vietlish": "you should to be more careful next time",
+      "natural": "you should be more careful next time",
+      "sourcePattern": "bạn nên cẩn thận hơn (should + to → should + base)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "giving safety advice after a near-miss"
+    },
+    {
+      "vietlish": "I try to not be late anymore",
+      "natural": "I try not to be late anymore",
+      "sourcePattern": "cố gắng không đến muộn (try to not → try not to, negation placement)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "promising to improve punctuality"
+    },
+    {
+      "vietlish": "she decided to not attend the meeting",
+      "natural": "she decided not to attend the meeting",
+      "sourcePattern": "quyết định không dự họp (decided to not → decided not to)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "explaining why someone skipped a meeting"
+    },
+    {
+      "vietlish": "he promised to not tell anyone",
+      "natural": "he promised not to tell anyone",
+      "sourcePattern": "hứa không nói với ai (promised to not → promised not to)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "describing a secrecy pledge"
+    },
+    {
+      "vietlish": "we agreed to not use phones during dinner",
+      "natural": "we agreed not to use phones during dinner",
+      "sourcePattern": "đồng ý không dùng điện thoại (agreed to not → agreed not to)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "describing a family phone-free meal rule"
+    },
+    {
+      "vietlish": "I told him to not worry so much",
+      "natural": "I told him not to worry so much",
+      "sourcePattern": "bảo anh ấy đừng lo lắng quá (told him to not → told him not to)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "reassuring a nervous friend"
+    },
+    {
+      "vietlish": "the teacher asked us to not make noise",
+      "natural": "the teacher asked us not to make noise",
+      "sourcePattern": "thầy giáo yêu cầu chúng tôi không gây ồn (asked us to not → asked us not to)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "recalling a classroom instruction"
+    },
+    {
+      "vietlish": "I am a 20 years old student",
+      "natural": "I am a 20-year-old student",
+      "sourcePattern": "tôi là sinh viên 20 tuổi (years → year in hyphenated adjective)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "introducing yourself in an English-language setting"
+    },
+    {
+      "vietlish": "she is a 5 years old girl",
+      "natural": "she is a 5-year-old girl",
+      "sourcePattern": "cô bé 5 tuổi (years → year, hyphenated compound adjective)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a young child's age"
+    },
+    {
+      "vietlish": "he has 10 years experience in teaching",
+      "natural": "he has 10 years' experience in teaching",
+      "sourcePattern": "10 năm kinh nghiệm (possessive apostrophe: years' experience)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "writing a CV or introducing a professional"
+    },
+    {
+      "vietlish": "she has long experiences in this field",
+      "natural": "she has extensive experience in this field",
+      "sourcePattern": "kinh nghiệm lâu dài (long experiences → experience is uncountable; long → extensive)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "highlighting a senior professional's background"
+    },
+    {
+      "vietlish": "the two informations are contradicting each other",
+      "natural": "the two pieces of information contradict each other",
+      "sourcePattern": "hai thông tin mâu thuẫn (informations → pieces of information; contradicting → contradict)",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "pointing out conflicting details in a report"
+    },
+    {
+      "vietlish": "he made a research on the topic",
+      "natural": "he conducted research on the topic",
+      "sourcePattern": "nghiên cứu về chủ đề (made a research → conducted research, collocate)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing academic or professional research work"
+    },
+    {
+      "vietlish": "she made a progress in her English",
+      "natural": "she made progress in her English",
+      "sourcePattern": "đạt tiến bộ (made a progress → made progress, uncountable)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "noting improvement in a learner's language skills"
+    },
+    {
+      "vietlish": "I want to make a travel to Europe next year",
+      "natural": "I want to travel to Europe next year",
+      "sourcePattern": "đi du lịch Châu Âu (make a travel → travel, not collocate)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "expressing a European travel wish"
+    },
+    {
+      "vietlish": "she made a mistake and feel very ashame",
+      "natural": "she made a mistake and feels very ashamed",
+      "sourcePattern": "cảm thấy xấu hổ (ashame → ashamed; tense shift)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "describing remorse after an error"
+    },
+    {
+      "vietlish": "I feel ashame to ask for help",
+      "natural": "I feel ashamed to ask for help",
+      "sourcePattern": "cảm thấy xấu hổ (ashame → ashamed, past participle as adjective)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "explaining reluctance to seek assistance"
+    },
+    {
+      "vietlish": "she is a very success businesswoman",
+      "natural": "she is a very successful businesswoman",
+      "sourcePattern": "doanh nhân thành đạt (success noun → successful adjective)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "praising an accomplished female entrepreneur"
+    },
+    {
+      "vietlish": "his business is very success now",
+      "natural": "his business is very successful now",
+      "sourcePattern": "kinh doanh thành công (success → successful, adjective form)",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "commenting on a thriving enterprise"
+    },
+    {
+      "vietlish": "I need to do a decision today",
+      "natural": "I need to make a decision today",
+      "sourcePattern": "đưa ra quyết định (do a decision → make a decision, collocate)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "saying you need to decide something important today"
+    },
+    {
+      "vietlish": "she did a mistake on the report",
+      "natural": "she made a mistake on the report",
+      "sourcePattern": "mắc lỗi (did a mistake → made a mistake, collocate)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "pointing out an error in a document"
+    },
+    {
+      "vietlish": "he did a promise to come on time",
+      "natural": "he made a promise to come on time",
+      "sourcePattern": "hứa hẹn (did a promise → made a promise)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "holding someone to their word about punctuality"
+    },
+    {
+      "vietlish": "let's do a plan before we start",
+      "natural": "let's make a plan before we start",
+      "sourcePattern": "lập kế hoạch (do a plan → make a plan)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "suggesting a planning session before beginning a project"
+    },
+    {
+      "vietlish": "she did an effort to be on time",
+      "natural": "she made an effort to be on time",
+      "sourcePattern": "cố gắng đúng giờ (did an effort → made an effort)",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "crediting someone for trying to be punctual"
+    },
+    {
+      "vietlish": "we did some photos at the party",
+      "natural": "we took some photos at the party",
+      "sourcePattern": "chụp ảnh (did photos → took photos)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "sharing memories from a party or event"
+    },
+    {
+      "vietlish": "she took a shower and then go to bed",
+      "natural": "she took a shower and then went to bed",
+      "sourcePattern": "tắm và đi ngủ (tense inconsistency: go → went after past took)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "describing a bedtime routine"
+    },
+    {
+      "vietlish": "I respectfully greet you and hope you are well",
+      "natural": "Dear [Name], I hope this message finds you well",
+      "sourcePattern": "kính chào và chúc bạn sức khỏe (VN formal opener calqued word-for-word into English email)",
+      "category": "register",
+      "frequency": "high",
+      "context": "opening a professional or academic email in English"
+    },
+    {
+      "vietlish": "I dare to ask if I could have one more day",
+      "natural": "I was wondering if I could have one more day",
+      "sourcePattern": "tôi mạnh dạn hỏi (dare to ask = xin phép mạnh dạn, over-formal deference marker)",
+      "category": "register",
+      "frequency": "high",
+      "context": "requesting a deadline extension from a teacher or manager"
+    },
+    {
+      "vietlish": "I humbly request your kind understanding",
+      "natural": "I appreciate your understanding",
+      "sourcePattern": "kính nhờ sự thông cảm (humbly + kind = stacked VN politeness markers, over-formal in English)",
+      "category": "register",
+      "frequency": "high",
+      "context": "ending a request or apology email"
+    },
+    {
+      "vietlish": "please guide me to do this correctly",
+      "natural": "could you walk me through this?",
+      "sourcePattern": "xin hướng dẫn tôi (guide me = xin chỉ dẫn, VN polite-imperative calque sounds command-like in English)",
+      "category": "register",
+      "frequency": "high",
+      "context": "asking a teacher or colleague for step-by-step help"
+    },
+    {
+      "vietlish": "I invite you to please come to my house",
+      "natural": "I'd love to have you over",
+      "sourcePattern": "tôi kính mời bạn đến nhà (mời = invite, formal VN register unnecessary in casual English)",
+      "category": "register",
+      "frequency": "medium",
+      "context": "inviting a friend or classmate to your home informally"
+    },
+    {
+      "vietlish": "I report to you that the meeting is done",
+      "natural": "just wanted to let you know the meeting is done",
+      "sourcePattern": "tôi xin báo cáo (báo cáo = formal report-up, over-formal for casual workplace update)",
+      "category": "register",
+      "frequency": "medium",
+      "context": "giving a colleague a quick informal update after a meeting"
+    },
+    {
+      "vietlish": "I beg your pardon for this serious trouble",
+      "natural": "I'm really sorry for the inconvenience",
+      "sourcePattern": "kính xin tha lỗi vì sự cố (beg your pardon + serious trouble = stacked over-apology, VN formality)",
+      "category": "register",
+      "frequency": "medium",
+      "context": "apologising for a mistake or delay in a customer interaction"
+    },
+    {
+      "vietlish": "with deep respect I would like to express my opinion",
+      "natural": "I'd like to share my thoughts",
+      "sourcePattern": "với sự tôn trọng sâu sắc (deep respect opener = VN kính thưa stacked formality, odd in English opinion-sharing)",
+      "category": "register",
+      "frequency": "medium",
+      "context": "opening a class discussion or meeting contribution"
+    },
+    {
+      "vietlish": "eat to your fullness",
+      "natural": "help yourself",
+      "sourcePattern": "ăn cho no (eat to your fullness = VN hosting phrase ăn nhiều vào calqued literally)",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "urging a guest to eat more at a meal"
+    },
+    {
+      "vietlish": "let the rice sit for a while",
+      "natural": "let the rice rest",
+      "sourcePattern": "để cơm nghỉ một lát (sit vs rest — VN cooking calque for resting rice after cooking)",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "giving a cooking instruction for steamed rice"
+    },
+    {
+      "vietlish": "her face has a lot of acne come up",
+      "natural": "she has a lot of acne breaking out",
+      "sourcePattern": "mặt nổi nhiều mụn (acne come up = mụn nổi, literal translation of verb phrase)",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "describing a skin problem"
+    },
+    {
+      "vietlish": "I go to sleep late so my eyes have dark circles",
+      "natural": "I sleep late so I have dark circles under my eyes",
+      "sourcePattern": "ngủ muộn nên mắt có quầng thâm (eyes have dark circles = mắt có quầng thâm, literal)",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "explaining tired-looking eyes caused by a late bedtime"
+    },
+    {
+      "vietlish": "your mouth has a bad smell",
+      "natural": "you have bad breath",
+      "sourcePattern": "miệng có mùi hôi (your mouth has a bad smell = miệng có mùi, literal VN expression)",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "giving a health warning to a friend"
+    },
+    {
+      "vietlish": "the price is high but quality also high",
+      "natural": "it's expensive but the quality is also high",
+      "sourcePattern": "giá cao nhưng chất lượng cũng cao (adjective predicate without copula in second clause)",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "justifying a premium purchase to a friend"
+    },
+    {
+      "vietlish": "my heart is not comfortable when I hear that",
+      "natural": "I feel uneasy when I hear that",
+      "sourcePattern": "lòng tôi không thoải mái khi nghe điều đó (lòng = heart-as-feeling-organ, VN idiom calqued)",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "expressing discomfort or unease about news you heard"
+    },
+    {
+      "vietlish": "she has a white and tall appearance",
+      "natural": "she is fair-skinned and tall",
+      "sourcePattern": "có vẻ ngoài trắng và cao (white appearance = trắng trẻo, literal attribute list)",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "describing someone's physical appearance"
+    },
+    {
+      "vietlish": "his face looks very fresh today",
+      "natural": "he looks refreshed today",
+      "sourcePattern": "mặt trông tươi hôm nay (face looks fresh = trông tươi tỉnh, VN appearance idiom)",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "noting someone looks well-rested"
+    },
+    {
+      "vietlish": "the road is very far from here",
+      "natural": "it's a long way from here",
+      "sourcePattern": "đường xa (the road is far = đường xa lắm, distance as road attribute not distance to destination)",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "warning a friend how far away a destination is"
+    },
+    {
+      "vietlish": "I want to eat outside tonight",
+      "natural": "I want to eat out tonight",
+      "sourcePattern": "muốn ăn bên ngoài (eat outside = ăn bên ngoài, phrasal verb eat out)",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "suggesting going to a restaurant for dinner"
+    },
+    {
+      "vietlish": "she knows how to speak many mouths",
+      "natural": "she can speak many languages",
+      "sourcePattern": "biết nói nhiều thứ tiếng / nhiều ngôn ngữ (many mouths = VN informal nhiều miệng/tiếng joke-calque)",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "humorously describing a multilingual speaker"
+    },
+    {
+      "vietlish": "my wallet is very thin lately",
+      "natural": "I'm short on cash lately",
+      "sourcePattern": "ví mỏng (thin wallet = ví mỏng, VN idiom for being broke)",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "telling a friend you're low on money this month"
+    },
+    {
+      "vietlish": "he is a long hand person",
+      "natural": "he has a habit of stealing things",
+      "sourcePattern": "tay dài (long hand = tay dài, VN idiom for someone who steals)",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "accusing someone of being light-fingered"
+    },
+    {
+      "vietlish": "I broke my voice last night from singing",
+      "natural": "I lost my voice last night from singing",
+      "sourcePattern": "mất tiếng (broke my voice = làm vỡ giọng? → actually lost my voice = mất tiếng, calque confusion)",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "explaining why you can barely speak the next morning"
+    }
+  ]
+}
