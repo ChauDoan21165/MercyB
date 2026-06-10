@@ -48,7 +48,7 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
     });
   });
 
-  it("handles ai-conversation-turn with job-interview fallback and A1 developer grounding", async () => {
+  it("handles ai-conversation-turn with generated reply and A1 developer grounding", async () => {
     const fetchMock = vi.fn<typeof fetch>()
       .mockResolvedValueOnce(jsonResponse({ is_premium: true, status: "active" }))
       .mockResolvedValueOnce(jsonResponse([{ admin_level: 0 }]))
@@ -109,6 +109,40 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
     expect(openAiBody.messages[1].content).toContain("Client grounding");
     expect(openAiBody.messages[1].content).toContain("Deterministic turn policy");
     expect(openAiBody.messages[1].content).toContain("topic-work-job");
+  });
+
+  it("fails closed when OpenAI returns no generated Mercy reply", async () => {
+    const fetchMock = vi.fn<typeof fetch>()
+      .mockResolvedValueOnce(jsonResponse({ is_premium: true, status: "active" }))
+      .mockResolvedValueOnce(jsonResponse([{ admin_level: 0 }]))
+      .mockResolvedValueOnce(jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              reply: "",
+              correctionCandidate: null,
+            }),
+          },
+        }],
+        usage: { prompt_tokens: 80, completion_tokens: 2, total_tokens: 82 },
+      }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi({
+      mode: "ai-conversation-turn",
+      scenarioId: "topic-work-job",
+      learnerText: "I handled customer support.",
+      turnCount: 2,
+      messages: [
+        { role: "developer", text: "Deterministic turn policy: ask about customers next." },
+      ],
+    });
+
+    expect(response.status).toBe(502);
+    await expect(response.json()).resolves.toEqual({
+      error: "OpenAI response missing generated Mercy reply",
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(3);
   });
 
   it("requires premium entitlement before calling OpenAI", async () => {

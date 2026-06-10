@@ -131,13 +131,19 @@ export async function handler(event: NetlifyEvent) {
     if (Number.isFinite(turnCount) && turnCount >= 50) {
       return json({ error: "Session turn cap reached" }, 400);
     }
-    const result = await buildAiConversationTurn({
-      scenarioId: asString(body.scenarioId, 80) || "job-interview",
-      learnerText,
-      history: normalizeAiConversationHistory(body.history),
-      turnCount: Number.isFinite(turnCount) ? turnCount : 0,
-    });
-    return json(result);
+    try {
+      const result = await buildAiConversationTurn({
+        scenarioId: asString(body.scenarioId, 80) || "job-interview",
+        learnerText,
+        history: normalizeAiConversationHistory(body.history),
+        turnCount: Number.isFinite(turnCount) ? turnCount : 0,
+      });
+      return json(result);
+    } catch (err) {
+      return json({
+        error: err instanceof Error ? err.message : "AI conversation failed",
+      }, 502);
+    }
   }
 
   if (!openAiKey) return json({ error: "Missing OPENAI_API_KEY" }, 500);

@@ -204,17 +204,22 @@ export function buildAiConversationSystemPrompt(scenario: Scenario = JOB_INTERVI
     "- Respond naturally first.",
     "- Correct only one clear, high-confidence issue from the learner's latest answer.",
     "- If correcting, explain in Vietnamese and mention the Vietnamese interference pattern.",
-    "- If unsure, do not correct. Redirect into engaging practice with a specific next interview question.",
+    "- If unsure, do not correct. Redirect into engaging practice with a specific next question inside the current scenario.",
     "- Wrong correction is worse than no correction.",
     "",
     "Pivot rules:",
     "- The next AI turn must reference something the learner actually said.",
     "- No generic follow-up theater. Do not ask a question that could follow any answer.",
     "",
+    "Live generation rules:",
+    "- Every Mercy reply must be freshly generated from the latest learner answer, recent history, and provided scenario/grounding.",
+    "- Do not use canned openers, stock interview openers, reusable template phrases, or fixed fallback copy.",
+    "- Do not start with generic interview prompts or mechanical restatements of the learner's words.",
+    "",
     "Return strict JSON only:",
-    '{"reply":"natural English reply and next interview question","correctionCandidate":null}',
+    '{"reply":"generated Mercy reply grounded in the learner answer and one specific next question","correctionCandidate":null}',
     "or",
-    '{"reply":"natural English reply and next interview question","correctionCandidate":{"original":"learner phrase","corrected":"corrected phrase","explanationVi":"Vietnamese explanation","interferencePattern":"named Vietnamese interference pattern","evidence":"why this is clear"}}',
+    '{"reply":"generated Mercy reply grounded in the learner answer and one specific next question","correctionCandidate":{"original":"learner phrase","corrected":"corrected phrase","explanationVi":"Vietnamese explanation","interferencePattern":"named Vietnamese interference pattern","evidence":"why this is clear"}}',
   ].join("\n");
 }
 
@@ -308,7 +313,7 @@ export async function buildAiConversationTurn(input: AiConversationRequest): Pro
     }
   }
 
-  const reply = sanitizeReply(draft.reply) || buildFallbackReply(input, scenario);
+  const reply = requireGeneratedMercyReply(draft.reply);
   const historyWithNext: AiConversationHistoryTurn[] = [
     ...input.history,
     { role: "learner", text: input.learnerText },
@@ -461,14 +466,6 @@ function estimateCost(usage: Usage): AiConversationResponse["cost"] {
   };
 }
 
-function buildFallbackReply(input: AiConversationRequest, scenario: Scenario): string {
-  const snippet = input.learnerText.slice(0, 80);
-  if (scenario.id === LEARNER_LED_SCENARIO_ID) {
-    return `I hear that you said "${snippet}." What happened next?`;
-  }
-  return `I hear that you said "${snippet}." Let's keep it practical: what is one strength you would bring to this role?`;
-}
-
 function buildSummary(history: AiConversationHistoryTurn[], scenario: Scenario): AiConversationResponse["summary"] {
   const corrections = history
     .map((turn) => turn.correction)
@@ -512,6 +509,24 @@ function normalizeCorrection(value: unknown): AiConversationCorrection | null {
 
 function sanitizeReply(value: unknown): string {
   return typeof value === "string" ? value.trim().slice(0, 1200) : "";
+}
+
+function requireGeneratedMercyReply(value: unknown): string {
+  const reply = sanitizeReply(value);
+  if (!reply) {
+    throw new Error("OpenAI response missing generated Mercy reply");
+  }
+  if (looksLikeCannedMercyReply(reply)) {
+    throw new Error("OpenAI response used canned Mercy reply");
+  }
+  return reply;
+}
+
+function looksLikeCannedMercyReply(reply: string): boolean {
+  const normalized = reply.toLowerCase().replace(/\s+/g, " ").trim();
+  return normalized.startsWith("i hear that you said ") ||
+    normalized.includes("let's keep it practical: what is one strength you would bring to this role") ||
+    normalized.startsWith("tell me about yourself.");
 }
 
 function stringValue(value: unknown, max: number): string {
