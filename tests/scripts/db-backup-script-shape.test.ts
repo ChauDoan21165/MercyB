@@ -252,10 +252,28 @@ describe("scripts/db-backup/verify-restore.sh — throwaway restore proof shape"
     expect(VERIFY_RESTORE).toMatch(/--keep-db/);
   });
 
+  it("can fetch the newest full dump from the backup remote", () => {
+    expect(VERIFY_RESTORE).toMatch(/--from-rclone/);
+    expect(VERIFY_RESTORE).toMatch(/RCLONE_CONFIG_REMOTE/);
+    expect(VERIFY_RESTORE).toMatch(/rclone lsf/);
+    expect(VERIFY_RESTORE).toMatch(/rclone copy/);
+    expect(VERIFY_RESTORE).toContain("grep -vE '\\.schema\\.dump\\.gpg$'");
+  });
+
   it("streams gpg decrypt into pg_restore without writing plaintext dumps", () => {
     expect(VERIFY_RESTORE).toMatch(/gpg[\s\S]*--decrypt/);
     expect(VERIFY_RESTORE).toMatch(/gpg[\s\S]*\|\s*pg_restore/);
     expect(VERIFY_RESTORE).not.toMatch(/--output\s+.*\.dump/);
+  });
+
+  it("judges success by post-restore content assertions", () => {
+    expect(VERIFY_RESTORE).toMatch(/VERIFY_RESTORE_EXPECT_TABLE/);
+    expect(VERIFY_RESTORE).toMatch(/VERIFY_RESTORE_MIN_TABLES/);
+    expect(VERIFY_RESTORE).toMatch(/--expect-table/);
+    expect(VERIFY_RESTORE).toMatch(/--min-tables/);
+    expect(VERIFY_RESTORE).toMatch(/information_schema\.tables/);
+    expect(VERIFY_RESTORE).toMatch(/to_regclass\('public\.\$\{EXPECT_TABLE\}'\)/);
+    expect(VERIFY_RESTORE).toMatch(/continuing to content assertions/);
   });
 
   it("uses a separate admin URL for the maintenance connection", () => {
