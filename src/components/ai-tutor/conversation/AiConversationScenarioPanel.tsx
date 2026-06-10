@@ -20,9 +20,11 @@ import {
 } from "@/lib/ai-conversation/client";
 import {
   beginTelemetrySession,
+  endTelemetrySession,
   recordTelemetryTurn,
   type TelemetrySession,
 } from "@/lib/tutor/conversationTelemetry";
+import type { ConversationEncouragement } from "@/lib/retention/conversationHooks";
 
 type Props = {
   accessToken?: string | null;
@@ -48,12 +50,17 @@ export default function AiConversationScenarioPanel({
   const [error, setError] = useState("");
   const [entitlementGateVisible, setEntitlementGateVisible] = useState(false);
   const [telemetrySession, setTelemetrySession] = useState<TelemetrySession | null>(null);
+  const [encouragement, setEncouragement] = useState<ConversationEncouragement | null>(null);
+  // Bumped on every reset so the telemetry effect ends the prior session and
+  // begins a fresh one even when the learner restarts the same scenario.
+  const [sessionEpoch, setSessionEpoch] = useState(0);
 
   const scenario = AI_CONVERSATION_SCENARIOS[scenarioId];
   const canSend = Boolean(input.trim()) && !loading && canSendAiConversationTurn(session);
 
   useEffect(() => {
     let cancelled = false;
+    let created: TelemetrySession | null = null;
     if (!hasPremium) {
       setTelemetrySession(null);
       return;
@@ -63,14 +70,19 @@ export default function AiConversationScenarioPanel({
       scenarioId,
       scenarioLabel: scenario.title,
     }).then((next) => {
+      created = next;
       if (!cancelled) setTelemetrySession(next);
     }).catch(() => {
       if (!cancelled) setTelemetrySession(null);
     });
     return () => {
       cancelled = true;
+      // Close the capture session so the D1/D7 return-signal + summary rollup
+      // are emitted on scenario switch, "New session", premium loss, or unmount.
+      // Telemetry must never throw into React; swallow any failure.
+      if (created) void endTelemetrySession(created).catch(() => {});
     };
-  }, [hasPremium, scenario.title, scenarioId, userId]);
+  }, [hasPremium, scenario.title, scenarioId, userId, sessionEpoch]);
 
   const resetSession = (nextScenarioId = scenarioId) => {
     setScenarioId(nextScenarioId);
@@ -78,6 +90,8 @@ export default function AiConversationScenarioPanel({
     setInput("");
     setError("");
     setEntitlementGateVisible(false);
+    setEncouragement(null);
+    setSessionEpoch((epoch) => epoch + 1);
   };
 
   const handleSend = async () => {
@@ -138,20 +152,28 @@ export default function AiConversationScenarioPanel({
         ended: optimisticSession.learnerTurnCount >= optimisticSession.maxTurns,
       });
       if (telemetrySession) {
-        void recordTelemetryTurn(telemetrySession, {
-          turnNumber: optimisticSession.learnerTurnCount,
-          learnerInput: learnerText,
-          aiResponse: response.reply,
-          corrections: response.correction
-            ? [{
-                accepted: true,
-                errorType: response.correction.interferencePattern,
-                learnerText: response.correction.original,
-                correctedText: response.correction.corrected,
-              }]
-            : [],
-          correctionAccepted: Boolean(response.correction),
-        });
+        // Telemetry drives consent-gated capture + flag-gated retention (XP +
+        // encouragement). It must never break the turn, so guard it separately
+        // and surface the warm VN-first encouragement when retention is on.
+        try {
+          const telemetry = await recordTelemetryTurn(telemetrySession, {
+            turnNumber: optimisticSession.learnerTurnCount,
+            learnerInput: learnerText,
+            aiResponse: response.reply,
+            corrections: response.correction
+              ? [{
+                  accepted: true,
+                  errorType: response.correction.interferencePattern,
+                  learnerText: response.correction.original,
+                  correctedText: response.correction.corrected,
+                }]
+              : [],
+            correctionAccepted: Boolean(response.correction),
+          });
+          setEncouragement(telemetry.encouragement);
+        } catch {
+          // Retention/capture failure is non-fatal; the conversation continues.
+        }
       }
     } catch {
       setSession(session);
@@ -255,6 +277,15 @@ export default function AiConversationScenarioPanel({
         {loading && (
           <div className="inline-flex rounded-full border border-indigo-100 bg-white px-4 py-2 text-sm font-bold text-indigo-700">
             Mercy is thinking...
+          </div>
+        )}
+        {encouragement && (
+          <div
+            className="rounded-lg border border-violet-200 bg-violet-50 p-3 text-sm text-slate-800"
+            data-testid="ai-conversation-encouragement"
+          >
+            <p className="font-black text-violet-900">{encouragement.vi}</p>
+            <p className="mt-1 text-xs font-bold text-violet-700">{encouragement.en}</p>
           </div>
         )}
         {session.summary && (
