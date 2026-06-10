@@ -267,6 +267,11 @@ gpg --list-secret-keys admin@mercyblade.com
 # 3. Restore into a throwaway DB and drop it automatically after smoke checks.
 VERIFY_RESTORE_ADMIN_DATABASE_URL="postgresql://postgres:<password>@<throwaway-host>:5432/postgres?sslmode=require" \
   ./scripts/db-backup/verify-restore.sh ./mercyb-<timestamp>-prod.dump.gpg
+
+# Or fetch the newest daily full dump directly from the configured backup remote.
+VERIFY_RESTORE_ADMIN_DATABASE_URL="postgresql://postgres:<password>@<throwaway-host>:5432/postgres?sslmode=require" \
+RCLONE_CONFIG_REMOTE="b2:mercyb-backups/prod" \
+  ./scripts/db-backup/verify-restore.sh --from-rclone
 ```
 
 Expected success shape:
@@ -274,15 +279,19 @@ Expected success shape:
 ```text
 [verify-restore] creating throwaway DB mercyb_restore_verify_...
 [verify-restore] restoring encrypted dump into mercyb_restore_verify_...
-[verify-restore] running restore smoke queries
-current_database=mercyb_restore_verify_...
-public_tables=<non-zero count>
-schemas=<non-zero count>
+[verify-restore] running restore content assertions
+[verify-restore] current_database=mercyb_restore_verify_...
+[verify-restore] restored_tables=<non-zero count>
+[verify-restore] schemas=<non-zero count>
+[verify-restore] expected_table=public.profiles rows=<count>
 [verify-restore] restore verification passed; throwaway DB will be dropped
 ```
 
 Use `--keep-db` only when Chau wants to inspect the restored database
 manually. The default is safer: drop the throwaway DB after proof.
+Use `--expect-table <name>` and `--min-tables <n>` only when the scratch
+database or dump shape intentionally differs from the default `profiles`
+table check.
 
 ## Quarterly test-restore reminder
 
