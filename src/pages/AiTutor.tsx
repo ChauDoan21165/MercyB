@@ -81,6 +81,7 @@ import {
   isSpeakTranscriptUnclearForFollowUp,
   resolveSpeakFollowUpTopicId,
   selectSpeakFollowUpByTopicId,
+  SPEAK_FOLLOW_UP_PIVOT,
   SPEAK_TRANSCRIPT_ASK_TO_REPEAT,
   type SpeakFollowUpSelection,
 } from "@/lib/tutor/speakFollowups";
@@ -241,6 +242,7 @@ type SpeakAiFollowUpRequest = {
   currentTopic: string;
   learnerLevel: string;
   recentTurns: PivotPromptTurn[];
+  turnsOnTopic: number;
   accessToken: string;
 };
 
@@ -322,6 +324,7 @@ async function fetchDeepSeekSpeakFollowUp({
   currentTopic,
   learnerLevel,
   recentTurns,
+  turnsOnTopic,
   accessToken,
 }: SpeakAiFollowUpRequest): Promise<string | null | SpeakFollowUpProviderError> {
   try {
@@ -338,6 +341,7 @@ async function fetchDeepSeekSpeakFollowUp({
           learnerLevel,
           currentTopic,
           recentTurns: recentTurns.slice(-6),
+          turnsOnTopic,
         },
       }),
     });
@@ -1197,6 +1201,7 @@ export default function AiTutorPage() {
       currentTopic,
       learnerLevel: "beginner",
       recentTurns: speakPivotTurnsRef.current,
+      turnsOnTopic,
       accessToken: session.access_token,
     }).then((aiQuestion) => {
       if (speakFollowUpRequestRef.current !== requestId) return;
@@ -1347,6 +1352,7 @@ export default function AiTutorPage() {
       currentTopic: topicId,
       learnerLevel: "beginner",
       recentTurns: speakPivotTurnsRef.current,
+      turnsOnTopic,
       accessToken: session.access_token,
     }).then((aiQuestion) => {
       if (speakFollowUpRequestRef.current !== requestId) return;
@@ -2634,6 +2640,12 @@ export default function AiTutorPage() {
           onRetryFollowUp={handleRetryFollowUp}
           onRepeatInputChange={handleSpeakRepeatInputChange}
           onResetBoard={handleClear}
+          onCheckInLogicTab={() => handleModeChange("logic")}
+          onStartFreshSentence={handleClear}
+          followUpIsCloseOut={
+            speakFollowUpSession.currentIsPivot &&
+            speakFollowUpSession.currentQuestion === SPEAK_FOLLOW_UP_PIVOT
+          }
           tutorCopy={tutorCopy}
         />
       ) : (

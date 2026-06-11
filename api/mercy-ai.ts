@@ -194,11 +194,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
 
       const context = isRecord(body.context) ? body.context : {};
+      const turnsOnTopic = typeof context.turnsOnTopic === "number" ? Math.max(0, Math.floor(context.turnsOnTopic)) : 0;
       const result = await buildDeepSeekSpeakFollowUp({
         transcript,
         learnerLevel: norm(context.learnerLevel) || "beginner",
         currentTopic: norm(context.currentTopic),
         recentTurns: toSpeakRecentTurns(context.recentTurns),
+        turnsOnTopic,
       });
       if (result && "ok" in result && !(result as SpeakFollowUpError).ok) {
         // Provider infrastructure failure — surface as typed retryable error, not a canned clarification.
@@ -388,9 +390,8 @@ Rules:
 
     const text = completion.choices?.[0]?.message?.content ?? "";
     return safeJson(res, 200, { text });
-  } catch (e: any) {
-    return safeJson(res, 500, {
-      error: String(e?.message || e || "unknown_error"),
-    });
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e ?? "unknown_error");
+    return safeJson(res, 500, { error: msg });
   }
 }

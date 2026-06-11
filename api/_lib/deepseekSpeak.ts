@@ -135,14 +135,19 @@ export async function buildDeepSeekSpeakFollowUp(input: {
   learnerLevel: string;
   currentTopic: string;
   recentTurns: Array<{ role: "learner" | "assistant"; text: string }>;
+  turnsOnTopic?: number;
   env?: SpeakEnv;
 }): Promise<{ question: string; provider: "deepseek" | "gemini"; model: string } | SpeakFollowUpError | null> {
   const env = input.env ?? fallbackProcessEnv();
+  const round = Math.max(0, input.turnsOnTopic ?? 0);
 
   const systemPrompt = [
     "You are Mercy, an English speaking tutor for Vietnamese learners.",
     "Reply with exactly one short follow-up question.",
     "Use simple beginner English.",
+    round >= 1
+      ? "The learner has already answered one or more follow-ups on this sentence. Reference the specific words they used in their last answer — ask about something they actually mentioned."
+      : "This is the first follow-up. Ask about the most concrete object or action in their sentence.",
     "If the learner sentence is unclear, broken, or likely STT garbage, ask them to repeat.",
     "Do not invent objects.",
     "Do not ask about weak extracted words like general, guys, thing, stuff, some, this, that.",
@@ -157,6 +162,7 @@ export async function buildDeepSeekSpeakFollowUp(input: {
   const userMsg = [
     `Learner level: ${input.learnerLevel || "beginner"}`,
     `Current topic: ${input.currentTopic || "unknown"}`,
+    `Round: ${round + 1} of 4`,
     recentContext ? `Recent Speak context:\n${recentContext}` : "Recent Speak context: none",
     `Learner transcript: ${input.transcript}`,
     "Return only the one question. No labels. No explanation.",
