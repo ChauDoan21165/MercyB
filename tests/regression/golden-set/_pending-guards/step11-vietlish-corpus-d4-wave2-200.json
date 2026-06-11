@@ -12,7 +12,7 @@
   "definition": "Candidate Vietnamese-L1 interference items for human review before any promotion into VIETLISH_CORPUS. Each entry is a non-native English production (vietlish) paired with its natural target (natural), the VN source pattern with diacritics (sourcePattern), and a contextual sentence. A handful of entries are deliberate natural 'control' anchors (flagged in sourcePattern) so reviewers can confirm the detector abstains on natural usage.",
   "dedupedAgainst": "live 354-entry VIETLISH_CORPUS (zero string overlap), A4 d4 wave (...corpus-d4-wave-200.json, separate file), A6 !690 (selector test only)",
   "generatedFor": "2026-06-10 CEO directive D4-2",
-  "count": 195,
+  "count": 151,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -23,44 +23,12 @@
   },
   "entries": [
     {
-      "vietlish": "open the music",
-      "natural": "turn on the music",
-      "sourcePattern": "mở nhạc -> mở = open, used for activating devices/media",
-      "category": "calque",
-      "frequency": "high",
-      "context": "It is quiet, can you open the music?"
-    },
-    {
-      "vietlish": "open the TV for me",
-      "natural": "turn on the TV for me",
-      "sourcePattern": "mở TV -> mở = open is overgeneralised to switching on",
-      "category": "calque",
-      "frequency": "high",
-      "context": "Open the TV for me, the news is starting."
-    },
-    {
-      "vietlish": "close the air conditioner",
-      "natural": "turn off the air conditioner",
-      "sourcePattern": "tắt/đóng máy lạnh -> đóng = close is used for switching off",
-      "category": "calque",
-      "frequency": "high",
-      "context": "I am cold, please close the air conditioner."
-    },
-    {
       "vietlish": "close the wifi",
       "natural": "turn off the wifi",
       "sourcePattern": "tắt wifi mapped to close instead of turn off",
       "category": "calque",
       "frequency": "medium",
       "context": "Close the wifi before you sleep to save battery."
-    },
-    {
-      "vietlish": "open the phone",
-      "natural": "turn on the phone",
-      "sourcePattern": "mở điện thoại -> mở = open for powering a device on",
-      "category": "calque",
-      "frequency": "high",
-      "context": "My phone is dead, I cannot open the phone."
     },
     {
       "vietlish": "I hit my teeth every morning",
@@ -79,28 +47,12 @@
       "context": "We are tourists, can you shoot a picture for us?"
     },
     {
-      "vietlish": "I want cut hair",
-      "natural": "I want to get a haircut",
-      "sourcePattern": "cắt tóc -> bare verb + missing 'get a'",
-      "category": "calque",
-      "frequency": "high",
-      "context": "It is too long, I want cut hair this weekend."
-    },
-    {
       "vietlish": "I go up the internet to check",
       "natural": "I go online to check",
       "sourcePattern": "lên mạng -> lên = go up mapped literally",
       "category": "calque",
       "frequency": "medium",
       "context": "I go up the internet to check the price first."
-    },
-    {
-      "vietlish": "I go down the bus here",
-      "natural": "I get off the bus here",
-      "sourcePattern": "xuống xe -> xuống = go down mapped to get off",
-      "category": "calque",
-      "frequency": "high",
-      "context": "Stop please, I go down the bus here."
     },
     {
       "vietlish": "eat wedding",
@@ -119,44 +71,12 @@
       "context": "My whole family comes home to eat Tet."
     },
     {
-      "vietlish": "I go market every morning",
-      "natural": "I go to the market every morning",
-      "sourcePattern": "đi chợ -> bare 'go market', missing 'to the'",
-      "category": "calque",
-      "frequency": "high",
-      "context": "I go market every morning to buy fresh food."
-    },
-    {
       "vietlish": "I will return country next month",
       "natural": "I will go back to my country next month",
       "sourcePattern": "về nước -> 'return country' calque",
       "category": "calque",
       "frequency": "medium",
       "context": "After I finish study, I will return country next month."
-    },
-    {
-      "vietlish": "I not yet eat morning",
-      "natural": "I haven't had breakfast yet",
-      "sourcePattern": "chưa ăn sáng -> 'eat morning' + 'not yet' fronting",
-      "category": "calque",
-      "frequency": "high",
-      "context": "Wait for me, I not yet eat morning."
-    },
-    {
-      "vietlish": "I have many money",
-      "natural": "I have a lot of money",
-      "sourcePattern": "nhiều tiền -> tiền treated as countable with 'many'",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Do not worry, I have many money for the trip."
-    },
-    {
-      "vietlish": "I need some informations",
-      "natural": "I need some information",
-      "sourcePattern": "thông tin pluralised; 'information' is uncountable",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Before I decide, I need some informations about the course."
     },
     {
       "vietlish": "he gave me many advices",
@@ -173,14 +93,6 @@
       "category": "literal_translation",
       "frequency": "medium",
       "context": "We just moved, so we bought new furnitures."
-    },
-    {
-      "vietlish": "I have many homeworks tonight",
-      "natural": "I have a lot of homework tonight",
-      "sourcePattern": "bài tập pluralised; 'homework' is uncountable",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "I cannot go out, I have many homeworks tonight."
     },
     {
       "vietlish": "many persons came to the party",
@@ -215,14 +127,6 @@
       "context": "Call me, she gave me a good news today."
     },
     {
-      "vietlish": "I have many works to do",
-      "natural": "I have a lot of work to do",
-      "sourcePattern": "công việc pluralised; 'work' is uncountable here",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Sorry, I cannot rest, I have many works to do."
-    },
-    {
       "vietlish": "can I have two waters",
       "natural": "can I have two bottles of water",
       "sourcePattern": "nước counted directly; needs a unit",
@@ -247,36 +151,12 @@
       "context": "I am late because there are many traffics today."
     },
     {
-      "vietlish": "I need some advices from you",
-      "natural": "I need some advice from you",
-      "sourcePattern": "lời khuyên pluralised again, very common",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "You are experienced, I need some advices from you."
-    },
-    {
       "vietlish": "he has many experiences in cooking",
       "natural": "he has a lot of experience in cooking",
       "sourcePattern": "kinh nghiệm pluralised when meaning general experience",
       "category": "literal_translation",
       "frequency": "medium",
       "context": "Trust him, he has many experiences in cooking."
-    },
-    {
-      "vietlish": "she is doctor very good",
-      "natural": "she is a very good doctor",
-      "sourcePattern": "missing article + VN adjective-after-noun order",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Go to her, she is doctor very good."
-    },
-    {
-      "vietlish": "I want to be engineer",
-      "natural": "I want to be an engineer",
-      "sourcePattern": "làm kỹ sư -> missing article before profession",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "After university I want to be engineer."
     },
     {
       "vietlish": "I like the music",
@@ -327,36 +207,12 @@
       "context": "Everybody knows she is best student in class."
     },
     {
-      "vietlish": "I have headache since morning",
-      "natural": "I have a headache since morning",
-      "sourcePattern": "đau đầu -> missing 'a' before headache",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "I cannot focus, I have headache since morning."
-    },
-    {
       "vietlish": "the honesty is important",
       "natural": "honesty is important",
       "sourcePattern": "abstract noun with unnecessary 'the'",
       "category": "literal_translation",
       "frequency": "low",
       "context": "My mother always says the honesty is important."
-    },
-    {
-      "vietlish": "I bought new car yesterday",
-      "natural": "I bought a new car yesterday",
-      "sourcePattern": "missing article before a singular count noun",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "I am so happy, I bought new car yesterday."
-    },
-    {
-      "vietlish": "he is good father",
-      "natural": "he is a good father",
-      "sourcePattern": "missing 'a' before a singular role noun",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Everyone respects him, he is good father."
     },
     {
       "vietlish": "I want to make a party",
@@ -373,14 +229,6 @@
       "category": "collocation",
       "frequency": "medium",
       "context": "My family makes business in the market for many years."
-    },
-    {
-      "vietlish": "I must make the exam tomorrow",
-      "natural": "I must take the exam tomorrow",
-      "sourcePattern": "làm bài thi -> 'make the exam' instead of 'take'",
-      "category": "collocation",
-      "frequency": "high",
-      "context": "I am nervous, I must make the exam tomorrow."
     },
     {
       "vietlish": "can you take a photo with your phone",
@@ -439,22 +287,6 @@
       "context": "At parties I can play piano a little."
     },
     {
-      "vietlish": "I play game every night",
-      "natural": "I play games every night",
-      "sourcePattern": "chơi game -> uncountable-style 'game', missing plural",
-      "category": "collocation",
-      "frequency": "high",
-      "context": "After work I play game every night."
-    },
-    {
-      "vietlish": "I play Facebook every day",
-      "natural": "I'm on Facebook every day",
-      "sourcePattern": "chơi Facebook -> 'play' for using an app",
-      "category": "collocation",
-      "frequency": "high",
-      "context": "When I am free I play Facebook every day."
-    },
-    {
       "vietlish": "I play with my phone all day",
       "natural": "I'm on my phone all day",
       "sourcePattern": "nghịch điện thoại -> 'play with phone' for using a phone",
@@ -477,30 +309,6 @@
       "category": "collocation",
       "frequency": "medium",
       "context": "His teacher is proud, he made a big progress this year."
-    },
-    {
-      "vietlish": "I will meet you at the morning",
-      "natural": "I will meet you in the morning",
-      "sourcePattern": "buổi sáng -> 'at the morning' instead of 'in'",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Tomorrow I will meet you at the morning."
-    },
-    {
-      "vietlish": "my birthday is in Monday",
-      "natural": "my birthday is on Monday",
-      "sourcePattern": "vào thứ Hai -> 'in' instead of 'on' for a day",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Come to my house, my birthday is in Monday."
-    },
-    {
-      "vietlish": "I listen the teacher carefully",
-      "natural": "I listen to the teacher carefully",
-      "sourcePattern": "nghe cô giáo -> missing 'to' after listen",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "In class I listen the teacher carefully."
     },
     {
       "vietlish": "it depend of you",
@@ -567,14 +375,6 @@
       "context": "The door is open, I am in house, come in."
     },
     {
-      "vietlish": "I will call you at the afternoon",
-      "natural": "I will call you in the afternoon",
-      "sourcePattern": "buổi chiều -> 'at the afternoon' instead of 'in'",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "I am busy now, I will call you at the afternoon."
-    },
-    {
       "vietlish": "I am angry to my brother",
       "natural": "I am angry with my brother",
       "sourcePattern": "giận anh -> 'angry to' instead of 'angry with'",
@@ -591,22 +391,6 @@
       "context": "Now she is rich, she is married with a doctor."
     },
     {
-      "vietlish": "yesterday I meet my old friend",
-      "natural": "yesterday I met my old friend",
-      "sourcePattern": "bare verb for past; VN has no past inflection",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "What a surprise, yesterday I meet my old friend."
-    },
-    {
-      "vietlish": "tomorrow I go Da Nang",
-      "natural": "I'm going to Da Nang tomorrow",
-      "sourcePattern": "present/bare verb for a future plan",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Pack your bag, tomorrow I go Da Nang."
-    },
-    {
       "vietlish": "I am understanding you now",
       "natural": "I understand you now",
       "sourcePattern": "stative verb in continuous; VN aspect transfer",
@@ -621,14 +405,6 @@
       "category": "literal_translation",
       "frequency": "medium",
       "context": "Do not worry, I am agreeing with your plan."
-    },
-    {
-      "vietlish": "I live here since 2019",
-      "natural": "I have lived here since 2019",
-      "sourcePattern": "sống ở đây từ 2019 -> present instead of present perfect",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "I know this area well, I live here since 2019."
     },
     {
       "vietlish": "I am knowing him for ten years",
@@ -671,44 +447,12 @@
       "context": "Buy the ticket, next week I will going to Hue."
     },
     {
-      "vietlish": "you are from where",
-      "natural": "where are you from",
-      "sourcePattern": "VN keeps the question word in situ",
-      "category": "word_order",
-      "frequency": "high",
-      "context": "Nice to meet you, you are from where?"
-    },
-    {
-      "vietlish": "this is how much",
-      "natural": "how much is this",
-      "sourcePattern": "cái này bao nhiêu -> question word stays at the end",
-      "category": "word_order",
-      "frequency": "high",
-      "context": "Excuse me, this is how much?"
-    },
-    {
-      "vietlish": "why you are sad today",
-      "natural": "why are you sad today",
-      "sourcePattern": "no subject-auxiliary inversion in VN",
-      "category": "word_order",
-      "frequency": "high",
-      "context": "Tell me, why you are sad today?"
-    },
-    {
       "vietlish": "he is doing what now",
       "natural": "what is he doing now",
       "sourcePattern": "VN leaves 'what' in situ + no inversion",
       "category": "word_order",
       "frequency": "medium",
       "context": "I am curious, he is doing what now?"
-    },
-    {
-      "vietlish": "you finish your homework or not",
-      "natural": "have you finished your homework",
-      "sourcePattern": "...hay chưa -> 'or not' tag for a yes/no question",
-      "category": "word_order",
-      "frequency": "high",
-      "context": "Tell me honestly, you finish your homework or not?"
     },
     {
       "vietlish": "you are a teacher, is right",
@@ -725,14 +469,6 @@
       "category": "word_order",
       "frequency": "medium",
       "context": "Can you help, I don't know where is the station?"
-    },
-    {
-      "vietlish": "I speak English not good",
-      "natural": "I don't speak English well",
-      "sourcePattern": "VN puts negation/adverb after the verb phrase",
-      "category": "word_order",
-      "frequency": "high",
-      "context": "Please be patient, I speak English not good."
     },
     {
       "vietlish": "I go always late to work",
@@ -903,14 +639,6 @@
       "context": "Dear Anna, I write this email to ask you a favor."
     },
     {
-      "vietlish": "I am normal, thank you",
-      "natural": "I'm fine, thank you",
-      "sourcePattern": "bình thường -> 'normal' for 'fine/ok' when asked how you are",
-      "category": "false_friend",
-      "frequency": "high",
-      "context": "Do not worry about me, I am normal, thank you."
-    },
-    {
       "vietlish": "is 3pm comfortable for you",
       "natural": "is 3pm convenient for you",
       "sourcePattern": "thuận tiện -> 'comfortable' confused with 'convenient'",
@@ -975,14 +703,6 @@
       "context": "Please be quiet, he is very sensible to noise."
     },
     {
-      "vietlish": "I am boring at home all day",
-      "natural": "I am bored at home all day",
-      "sourcePattern": "chán -> 'boring' for the person's feeling",
-      "category": "false_friend",
-      "frequency": "high",
-      "context": "There is nothing to do, I am boring at home all day."
-    },
-    {
       "vietlish": "the price is very cheap, only expensive a little",
       "natural": "the price is quite low, only a little expensive",
       "sourcePattern": "rẻ/đắt mix; 'cheap' for price + odd 'expensive a little'",
@@ -1021,22 +741,6 @@
       "category": "false_friend",
       "frequency": "medium",
       "context": "It is late, I feel very sleepy, I want go bed."
-    },
-    {
-      "vietlish": "I no understand this word",
-      "natural": "I don't understand this word",
-      "sourcePattern": "không hiểu -> 'no' as a verbal negator",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Sorry teacher, I no understand this word."
-    },
-    {
-      "vietlish": "I no have time today",
-      "natural": "I don't have time today",
-      "sourcePattern": "không có -> 'no have' calque",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Maybe tomorrow, I no have time today."
     },
     {
       "vietlish": "yes, I am not busy now",
@@ -1087,44 +791,12 @@
       "context": "Everything is fine, you should not to worry."
     },
     {
-      "vietlish": "I very want to go but I busy",
-      "natural": "I really want to go but I'm busy",
-      "sourcePattern": "rất muốn -> 'very want' + dropped 'be'",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Thank you for inviting, I very want to go but I busy."
-    },
-    {
       "vietlish": "maybe he can comes late",
       "natural": "maybe he can come late",
       "sourcePattern": "extra -s after a modal",
       "category": "literal_translation",
       "frequency": "medium",
       "context": "Do not wait, maybe he can comes late."
-    },
-    {
-      "vietlish": "she very tired today",
-      "natural": "she is very tired today",
-      "sourcePattern": "cô ấy mệt -> dropped 'be' before an adjective",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Let her rest, she very tired today."
-    },
-    {
-      "vietlish": "the weather very hot now",
-      "natural": "the weather is very hot now",
-      "sourcePattern": "trời nóng -> dropped copula",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Drink water, the weather very hot now."
-    },
-    {
-      "vietlish": "have many people in the shop",
-      "natural": "there are many people in the shop",
-      "sourcePattern": "có nhiều người -> 'have' for existential 'there is/are'",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "Come back later, have many people in the shop."
     },
     {
       "vietlish": "in my city have many tourists",
@@ -1335,14 +1007,6 @@
       "context": "Wait here, I come back after 5 minutes."
     },
     {
-      "vietlish": "please give me a bill",
-      "natural": "can I have the bill, please",
-      "sourcePattern": "tính tiền -> 'give me a bill' imperative calque",
-      "category": "register",
-      "frequency": "high",
-      "context": "We finished eating, please give me a bill."
-    },
-    {
       "vietlish": "calculate money for me please",
       "natural": "can I get the check, please",
       "sourcePattern": "tính tiền -> literal 'calculate money'",
@@ -1527,14 +1191,6 @@
       "context": "Sorry, I lost my voice already, cannot talk."
     },
     {
-      "vietlish": "I very thank you",
-      "natural": "thank you very much",
-      "sourcePattern": "cảm ơn nhiều -> 'very' before the verb 'thank'",
-      "category": "literal_translation",
-      "frequency": "high",
-      "context": "You helped me a lot, I very thank you."
-    },
-    {
       "vietlish": "how to spell your name",
       "natural": "how do you spell your name",
       "sourcePattern": "đánh vần thế nào -> 'how to' for a direct question",
@@ -1565,14 +1221,6 @@
       "category": "literal_translation",
       "frequency": "medium",
       "context": "We can start, everybody are ready now."
-    },
-    {
-      "vietlish": "my english is not good much",
-      "natural": "my English isn't very good",
-      "sourcePattern": "không giỏi lắm -> 'not good much' calque of 'lắm'",
-      "category": "word_order",
-      "frequency": "high",
-      "context": "Please speak slowly, my english is not good much."
     },
     {
       "vietlish": "I go to there by myself",
