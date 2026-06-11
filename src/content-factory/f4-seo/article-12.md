@@ -1,7 +1,7 @@
 ---
 title: "Luyện IELTS Writing Task 2 cho người Việt: sửa lỗi gốc để tăng band"
 slug: "luyen-ielts-writing-task-2-cho-nguoi-viet"
-meta-description: "Luyện IELTS Writing Task 2 cho người Việt: cách viết luận điểm rõ, tránh lỗi ngữ pháp phổ biến và đạt band 6.0–7.0 trong mùa thi."
+meta-description: "Luyện IELTS Writing Task 2 cho người Việt: cách viết luận điểm rõ, tránh lỗi ngữ pháp phổ biến và cải thiện điểm Writing bền vững."
 target-query: "luyện IELTS Writing Task 2 cho người Việt"
 status: "draft-needs-chau-approval"
 ---
@@ -38,7 +38,7 @@ IELTS Writing được chấm theo bốn tiêu chí, mỗi tiêu chí chiếm 25
 
 ## 3. Cấu trúc bài viết đơn giản và hiệu quả
 
-Nhiều hướng dẫn đề xuất các cấu trúc phức tạp. Thực tế, bài đạt band 6.0–6.5 thường có cấu trúc rất rõ ràng và nhất quán:
+Nhiều hướng dẫn đề xuất các cấu trúc phức tạp. Thực tế, bài viết mạch lạc và rõ ràng thường đáp ứng tốt các tiêu chí chấm điểm hơn bài phức tạp nhưng thiếu nhất quán:
 
 **Đoạn giới thiệu (2–3 câu):**
 - Paraphrase đề bài (không chép lại nguyên văn)
