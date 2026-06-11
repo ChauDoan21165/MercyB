@@ -148,21 +148,25 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     expect(onReadTarget).not.toHaveBeenCalled();
   });
 
-  it("does not render follow-up read-aloud controls for Vietnamese helper text", () => {
+  it("does not render a TTS read-aloud button on the pivot close-out (navigation only)", () => {
     const onReadFollowUp = vi.fn();
     render(
       <SpeakPracticeMode
         {...baseProps}
-        followUpPrompt="Bạn muốn luyện thêm câu khác không?"
+        followUpPrompt="Do you want to practice another sentence?"
         followUpIsPivot
+        followUpIsCloseOut
         onReadFollowUp={onReadFollowUp}
+        onCheckInLogicTab={vi.fn()}
+        onStartFreshSentence={vi.fn()}
       />,
     );
 
     const followUp = within(screen.getByTestId("ai-tutor-speak-follow-up"));
-    expect(followUp.getByText("Bạn muốn luyện thêm câu khác không?")).toBeInTheDocument();
     expect(followUp.queryByRole("button", { name: "Mercy đọc" })).not.toBeInTheDocument();
     expect(onReadFollowUp).not.toHaveBeenCalled();
+    // Close-out block present instead.
+    expect(screen.getByTestId("ai-tutor-speak-close-out")).toBeInTheDocument();
   });
 
   it("renders read-aloud controls for the bilingual ask-repeat clarification", () => {
@@ -362,22 +366,100 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     expect(screen.queryByTestId("ai-tutor-speak-detail-cap")).not.toBeInTheDocument();
   });
 
-  it("renders the parent-supplied 'another sentence' offer as a pivot round", () => {
-    // The deterministic second-round offer is owned by the parent (AiTutor);
-    // the component must render it as a pivot ("Đổi câu luyện") offer.
+  it("renders the depth-cap close-out block (not the pivot text) when followUpIsCloseOut is true", () => {
+    // followUpIsCloseOut replaces the question + mic block with two navigation buttons.
     render(
       <SpeakPracticeMode
         {...baseProps}
         repeatInput="I bought a hat yesterday."
-        followUpPrompt="Bạn muốn luyện thêm một câu nữa không?"
+        followUpPrompt="Do you want to practice another sentence?"
         followUpIsPivot
+        followUpIsCloseOut
         pronunciationResult={{ mode: "local-fallback", provider: "local" }}
+        onCheckInLogicTab={vi.fn()}
+        onStartFreshSentence={vi.fn()}
       />,
     );
 
     const followUp = screen.getByTestId("ai-tutor-speak-follow-up");
-    expect(followUp).toHaveTextContent("Bạn muốn luyện thêm một câu nữa không?");
     expect(followUp).toHaveTextContent("Đổi câu luyện");
+    expect(screen.getByTestId("ai-tutor-speak-close-out")).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-speak-close-logic")).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-speak-close-fresh")).toBeInTheDocument();
+  });
+
+  it("shows two tappable close-out buttons when followUpIsCloseOut is true", () => {
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        followUpPrompt="Do you want to practice another sentence?"
+        followUpIsPivot
+        followUpIsCloseOut
+        pronunciationResult={{ mode: "local-fallback", provider: "local" }}
+        onCheckInLogicTab={vi.fn()}
+        onStartFreshSentence={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByTestId("ai-tutor-speak-close-out")).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-speak-close-logic")).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-speak-close-fresh")).toBeInTheDocument();
+    // Pivot close-out is a navigation affordance, not a Mercy reply — no mic.
+    expect(screen.queryByTestId("ai-tutor-speak-follow-up-answer")).not.toBeInTheDocument();
+  });
+
+  it("fires onCheckInLogicTab when the Logic tab button is clicked", () => {
+    const onCheckInLogicTab = vi.fn();
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        followUpPrompt="Do you want to practice another sentence?"
+        followUpIsPivot
+        followUpIsCloseOut
+        onCheckInLogicTab={onCheckInLogicTab}
+        onStartFreshSentence={vi.fn()}
+      />,
+    );
+
+    fireEvent.click(screen.getByTestId("ai-tutor-speak-close-logic"));
+    expect(onCheckInLogicTab).toHaveBeenCalledTimes(1);
+  });
+
+  it("fires onStartFreshSentence when the fresh sentence button is clicked", () => {
+    const onStartFreshSentence = vi.fn();
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        followUpPrompt="Do you want to practice another sentence?"
+        followUpIsPivot
+        followUpIsCloseOut
+        onCheckInLogicTab={vi.fn()}
+        onStartFreshSentence={onStartFreshSentence}
+      />,
+    );
+
+    fireEvent.click(screen.getByTestId("ai-tutor-speak-close-fresh"));
+    expect(onStartFreshSentence).toHaveBeenCalledTimes(1);
+  });
+
+  it("close-out copy contains no canned praise (C6: affordance, not a reply)", () => {
+    render(
+      <SpeakPracticeMode
+        {...baseProps}
+        followUpPrompt="Do you want to practice another sentence?"
+        followUpIsPivot
+        followUpIsCloseOut
+        onCheckInLogicTab={vi.fn()}
+        onStartFreshSentence={vi.fn()}
+      />,
+    );
+
+    const closeOut = screen.getByTestId("ai-tutor-speak-close-out");
+    const text = closeOut.textContent ?? "";
+    expect(text).not.toMatch(/great|well done|excellent|amazing|fantastic|perfect|bravo/i);
+    // VI + EN affordance copy — navigation labels, not feedback.
+    expect(closeOut).toHaveTextContent("Bắt đầu câu mới");
+    expect(closeOut).toHaveTextContent("Kiểm tra câu trong tab Logic");
   });
 
   it("does not render a follow-up section when the parent supplies none", () => {

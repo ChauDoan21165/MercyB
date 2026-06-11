@@ -152,11 +152,13 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
     if (transcript.length > 1000) return json({ error: "Input too long" }, 400);
 
     const speakContext = isRecord(body.context) ? body.context : {};
+    const turnsOnTopic = typeof speakContext.turnsOnTopic === "number" ? Math.max(0, Math.floor(speakContext.turnsOnTopic)) : 0;
     const result = await buildDeepSeekSpeakFollowUp({
       transcript,
       learnerLevel: norm(speakContext.learnerLevel) || "beginner",
       currentTopic: norm(speakContext.currentTopic),
       recentTurns: toSpeakRecentTurns(speakContext.recentTurns),
+      turnsOnTopic,
       env,
     });
     return json(result || {

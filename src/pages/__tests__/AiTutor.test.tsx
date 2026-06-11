@@ -5,6 +5,7 @@ import type { RenderResult } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import AiTutorPage from "../AiTutor";
+import { SPEAK_FOLLOW_UP_DEPTH_CAP } from "@/lib/tutor/speakFollowups";
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 import { hasShownHint } from "@/lib/ai-tutor/detectorHint";
 import { readL1RecentTags } from "@/lib/stage-3a/adapters/l1TagAdapter";
@@ -780,6 +781,94 @@ describe("AiTutor four-tab seed flow", () => {
     });
   });
 
+  // ── Depth cap + close-out UI ──
+  // The pivot fires when turnsOnTopic >= DEPTH_CAP; since the counter increments
+  // AFTER each round, the close-out appears on the (DEPTH_CAP + 1)-th round.
+  it("shows the depth-cap close-out UI after the round limit is reached via voice", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    renderAiTutor();
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    // Vary the sentence slightly each round so the same-sentence dedup guard
+    // doesn't short-circuit, but keep it hat-related to hold the same topic.
+    // DEPTH_CAP + 1 rounds needed because the counter increments AFTER each round.
+    const ROUND_SENTENCES = [
+      "I bought a hat yesterday.",
+      "I bought a red hat yesterday.",
+      "I bought a blue hat yesterday.",
+      "I bought a small hat yesterday.",
+      "I bought another hat yesterday.",
+    ];
+    for (let i = 0; i < SPEAK_FOLLOW_UP_DEPTH_CAP + 1; i++) {
+      await speakCurrentTarget(ROUND_SENTENCES[i]);
+      await screen.findByTestId("ai-tutor-speak-follow-up");
+    }
+
+    // At or past the cap, the close-out block must appear.
+    await waitFor(() => {
+      expect(screen.queryByTestId("ai-tutor-speak-close-out")).toBeInTheDocument();
+    });
+    // The mic answer block must be absent — close-out is a choice, not a round.
+    expect(screen.queryByTestId("ai-tutor-speak-follow-up-answer")).not.toBeInTheDocument();
+    // Both affordance buttons present.
+    expect(screen.getByTestId("ai-tutor-speak-close-logic")).toBeInTheDocument();
+    expect(screen.getByTestId("ai-tutor-speak-close-fresh")).toBeInTheDocument();
+  });
+
+  it("shows the depth-cap close-out UI when rounds accumulate via the typed path", async () => {
+    // Voice unavailable — typed path only. turnsOnTopic must still increment.
+    renderAiTutor();
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    const repeatBox = screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" });
+
+    const TYPED_SENTENCES = [
+      "I bought a hat yesterday.",
+      "I bought a red hat yesterday.",
+      "I bought a blue hat yesterday.",
+      "I bought a small hat yesterday.",
+      "I bought another hat yesterday.",
+    ];
+    for (let i = 0; i < SPEAK_FOLLOW_UP_DEPTH_CAP + 1; i++) {
+      await userEvent.clear(repeatBox);
+      await userEvent.type(repeatBox, TYPED_SENTENCES[i]);
+      await screen.findByTestId("ai-tutor-speak-follow-up");
+    }
+
+    await waitFor(() => {
+      expect(screen.queryByTestId("ai-tutor-speak-close-out")).toBeInTheDocument();
+    });
+  });
+
+  it("switches to Logic tab when learner taps the Logic close-out button", async () => {
+    (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+    renderAiTutor();
+
+    await correctHatSentence();
+    await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+    const LOGIC_TEST_SENTENCES = [
+      "I bought a hat yesterday.",
+      "I bought a red hat yesterday.",
+      "I bought a blue hat yesterday.",
+      "I bought a small hat yesterday.",
+      "I bought another hat yesterday.",
+    ];
+    for (let i = 0; i < SPEAK_FOLLOW_UP_DEPTH_CAP + 1; i++) {
+      await speakCurrentTarget(LOGIC_TEST_SENTENCES[i]);
+      await screen.findByTestId("ai-tutor-speak-follow-up");
+    }
+
+    await waitFor(() => expect(screen.queryByTestId("ai-tutor-speak-close-logic")).toBeInTheDocument());
+    await userEvent.click(screen.getByTestId("ai-tutor-speak-close-logic"));
+
+    expect(await screen.findByTestId("ai-tutor-logic-mode")).toBeInTheDocument();
+  });
+
   it("keeps deterministic Step 8 Speak follow-up when no salience is found", async () => {
     const mockPivot = vi.fn(() => "This should not be used. What happened?");
     window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__ = mockPivot;
@@ -1523,8 +1612,10 @@ describe("AiTutor four-tab seed flow", () => {
     await speakCurrentTarget("I bought a small hat yesterday.");
     await speakCurrentTarget("I bought another hat yesterday.");
 
+    // After the depth cap, the follow-up block becomes the close-out affordance
+    // (two navigation buttons) instead of another open-ended question.
     await waitFor(() => {
-      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Do you want to practice another sentence?");
+      expect(screen.queryByTestId("ai-tutor-speak-close-out")).toBeInTheDocument();
     });
     expect(
       within(screen.getByTestId("ai-tutor-speak-follow-up")).queryByRole("button", {
@@ -1579,7 +1670,7 @@ describe("AiTutor four-tab seed flow", () => {
 
     await speakCurrentTarget("It was a nice time.");
     await waitFor(() => {
-      expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent("Do you want to practice another sentence?");
+      expect(screen.queryByTestId("ai-tutor-speak-close-out")).toBeInTheDocument();
     });
   });
 

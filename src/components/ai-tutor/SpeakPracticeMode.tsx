@@ -77,6 +77,13 @@ type Props = {
   onRetryFollowUp?: () => void;
   onRepeatInputChange: (value: string) => void;
   onResetBoard?: () => void;
+  /** True only when the depth-cap pivot fired (not for content-aware bilingual pivots).
+   *  Renders the two-button close-out block instead of the next follow-up question. */
+  followUpIsCloseOut?: boolean;
+  /** Fires when learner taps "check this sentence in the Logic tab" at close-out. */
+  onCheckInLogicTab?: () => void;
+  /** Fires when learner taps "start a fresh sentence" at close-out. */
+  onStartFreshSentence?: () => void;
   tutorCopy: TutorCopy;
 };
 
@@ -112,6 +119,9 @@ export default function SpeakPracticeMode({
   onRetryFollowUp,
   onRepeatInputChange,
   onResetBoard,
+  followUpIsCloseOut = false,
+  onCheckInLogicTab,
+  onStartFreshSentence,
   tutorCopy,
 }: Props) {
   const fallbackTarget = tutorCopy.starterQuestions[0] ?? "What do you usually do in the morning?";
@@ -419,81 +429,120 @@ export default function SpeakPracticeMode({
               <div className="text-xs font-black uppercase text-slate-500">
                 {followUpIsPivot ? "Đổi câu luyện" : "Câu hỏi tiếp theo"}
               </div>
-              <p className="mt-1 text-sm font-black leading-6 text-slate-900">
-                {followUpPrompt}
-              </p>
-              {canReadFollowUp && ttsSupported ? (
-                <TeacherMercyVoiceControls
-                  kind="speaker"
-                  supported={ttsSupported}
-                  active={followUpTtsSpeaking}
-                  preparing={followUpTtsPreparing}
-                  unavailableLabel={tutorCopy.ui.ttsUnavailable}
-                  inactiveLabel="Mercy đọc"
-                  activeLabel="Đang đọc…"
-                  preparingLabel={tutorCopy.ui.ttsPreparing}
-                  ariaStart="Mercy đọc câu hỏi tiếp theo"
-                  ariaStop={tutorCopy.ui.ttsAriaStop}
-                  onToggle={onReadFollowUp}
-                  className="mt-3"
-                />
-              ) : canReadFollowUp ? (
-                <div className="mt-2 text-[11px] text-slate-500">{tutorCopy.ui.ttsUnavailable}</div>
-              ) : null}
-              {canReadFollowUp && followUpTtsError && (
-                <div
-                  className="mt-2 rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold leading-5 text-amber-900"
-                  data-testid="ai-tutor-speak-follow-up-tts-error"
-                  role="status"
-                >
-                  <span>{followUpTtsError}</span>
-                  <button
-                    type="button"
-                    onClick={onReadFollowUp}
-                    className="ml-2 rounded-full border border-amber-300 bg-white px-2 py-0.5 text-[11px] font-black text-amber-900"
-                  >
-                    Thử lại
-                  </button>
-                </div>
-              )}
 
-              {/* Answer-by-voice for the follow-up. Without this the learner had
-                  no recording control attached to the question and would reuse
-                  the by-ear SelfCompareRecorder above (which never feeds the
-                  loop), trapping Speak on the first sentence. This shares the
-                  same mic toggle as "Bạn đọc lại": its STT commit updates the
-                  current spoken response and advances to the next follow-up. */}
-              <div className="mt-3" data-testid="ai-tutor-speak-follow-up-answer">
-                <div className="text-xs font-black uppercase text-slate-500">
-                  Trả lời câu hỏi này
-                </div>
-                <div className="mt-2">
-                  <TeacherMercyVoiceControls
-                    kind="mic"
-                    supported={micSupported}
-                    active={micListening}
-                    unavailableLabel={tutorCopy.micLabels.unavailable}
-                    inactiveLabel="Trả lời bằng giọng nói"
-                    activeLabel={tutorCopy.micLabels.listening}
-                    ariaStart="Trả lời câu hỏi bằng giọng nói"
-                    ariaStop={tutorCopy.micLabels.ariaStop}
-                    onToggle={onMicToggle}
-                    fallbackTestId="ai-tutor-speak-follow-up-mic-fallback"
-                  />
-                </div>
-                {(!micSupported || micError) && (
-                  <p
-                    className="mt-2 rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold leading-5 text-amber-900"
-                    data-testid="ai-tutor-speak-follow-up-mic-fallback-message"
-                    role="status"
-                  >
-                    {micFallbackMessage}
+              {followUpIsCloseOut ? (
+                /* Close-out affordance: two navigation choices, not a reply from Mercy. */
+                <div data-testid="ai-tutor-speak-close-out">
+                  <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">
+                    Bạn đã luyện đủ vòng cho câu này.
                   </p>
-                )}
-                <p className="mt-2 text-[11px] font-semibold leading-5 text-slate-500">
-                  Hoặc gõ câu trả lời vào ô “Gõ câu bạn đọc lại” phía trên.
-                </p>
-              </div>
+                  <p className="text-[11px] font-semibold text-slate-500">
+                    You've completed this sentence's rounds.
+                  </p>
+                  <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+                    <button
+                      type="button"
+                      data-testid="ai-tutor-speak-close-logic"
+                      onClick={onCheckInLogicTab}
+                      className="flex-1 rounded-[12px] border border-indigo-200 bg-indigo-50 px-3 py-2 text-xs font-black text-indigo-800 transition hover:bg-indigo-100"
+                    >
+                      Kiểm tra câu trong tab Logic
+                      <span className="block text-[10px] font-semibold text-indigo-500">
+                        Check this sentence in the Logic tab
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      data-testid="ai-tutor-speak-close-fresh"
+                      onClick={onStartFreshSentence}
+                      className="flex-1 rounded-[12px] border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-black text-slate-700 transition hover:bg-slate-100"
+                    >
+                      Bắt đầu câu mới
+                      <span className="block text-[10px] font-semibold text-slate-500">
+                        Start a fresh sentence
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <p className="mt-1 text-sm font-black leading-6 text-slate-900">
+                    {followUpPrompt}
+                  </p>
+                  {canReadFollowUp && ttsSupported ? (
+                    <TeacherMercyVoiceControls
+                      kind="speaker"
+                      supported={ttsSupported}
+                      active={followUpTtsSpeaking}
+                      preparing={followUpTtsPreparing}
+                      unavailableLabel={tutorCopy.ui.ttsUnavailable}
+                      inactiveLabel="Mercy đọc"
+                      activeLabel="Đang đọc…"
+                      preparingLabel={tutorCopy.ui.ttsPreparing}
+                      ariaStart="Mercy đọc câu hỏi tiếp theo"
+                      ariaStop={tutorCopy.ui.ttsAriaStop}
+                      onToggle={onReadFollowUp}
+                      className="mt-3"
+                    />
+                  ) : canReadFollowUp ? (
+                    <div className="mt-2 text-[11px] text-slate-500">{tutorCopy.ui.ttsUnavailable}</div>
+                  ) : null}
+                  {canReadFollowUp && followUpTtsError && (
+                    <div
+                      className="mt-2 rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold leading-5 text-amber-900"
+                      data-testid="ai-tutor-speak-follow-up-tts-error"
+                      role="status"
+                    >
+                      <span>{followUpTtsError}</span>
+                      <button
+                        type="button"
+                        onClick={onReadFollowUp}
+                        className="ml-2 rounded-full border border-amber-300 bg-white px-2 py-0.5 text-[11px] font-black text-amber-900"
+                      >
+                        Thử lại
+                      </button>
+                    </div>
+                  )}
+
+                  {/* Answer-by-voice for the follow-up. Without this the learner had
+                      no recording control attached to the question and would reuse
+                      the by-ear SelfCompareRecorder above (which never feeds the
+                      loop), trapping Speak on the first sentence. This shares the
+                      same mic toggle as "Bạn đọc lại": its STT commit updates the
+                      current spoken response and advances to the next follow-up. */}
+                  <div className="mt-3" data-testid="ai-tutor-speak-follow-up-answer">
+                    <div className="text-xs font-black uppercase text-slate-500">
+                      Trả lời câu hỏi này
+                    </div>
+                    <div className="mt-2">
+                      <TeacherMercyVoiceControls
+                        kind="mic"
+                        supported={micSupported}
+                        active={micListening}
+                        unavailableLabel={tutorCopy.micLabels.unavailable}
+                        inactiveLabel="Trả lời bằng giọng nói"
+                        activeLabel={tutorCopy.micLabels.listening}
+                        ariaStart="Trả lời câu hỏi bằng giọng nói"
+                        ariaStop={tutorCopy.micLabels.ariaStop}
+                        onToggle={onMicToggle}
+                        fallbackTestId="ai-tutor-speak-follow-up-mic-fallback"
+                      />
+                    </div>
+                    {(!micSupported || micError) && (
+                      <p
+                        className="mt-2 rounded-[12px] border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold leading-5 text-amber-900"
+                        data-testid="ai-tutor-speak-follow-up-mic-fallback-message"
+                        role="status"
+                      >
+                        {micFallbackMessage}
+                      </p>
+                    )}
+                    <p className="mt-2 text-[11px] font-semibold leading-5 text-slate-500">
+                      Hoặc gõ câu trả lời vào ô "Gõ câu bạn đọc lại" phía trên.
+                    </p>
+                  </div>
+                </>
+              )}
             </div>
           )}
         </>
