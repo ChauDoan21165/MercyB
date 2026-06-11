@@ -12,7 +12,7 @@
   "definition": "Candidate Vietnamese-L1 interference items for human review before any promotion into VIETLISH_CORPUS. Each entry is a non-native English production (vietlish) paired with its natural target (natural), the VN source pattern with diacritics (sourcePattern), and a contextual sentence. A handful of entries are deliberate natural 'control' anchors (flagged in sourcePattern) so reviewers can confirm the detector abstains on natural usage.",
   "dedupedAgainst": "live 354-entry VIETLISH_CORPUS (zero string overlap), A4 d4 wave (...corpus-d4-wave-200.json, separate file), A6 !690 (selector test only)",
   "generatedFor": "2026-06-10 CEO directive D4-2",
-  "count": 125,
+  "count": 67,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -23,132 +23,12 @@
   },
   "entries": [
     {
-      "vietlish": "he gave me many advices",
-      "natural": "he gave me a lot of advice",
-      "sourcePattern": "lời khuyên pluralised; 'advice' is uncountable",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "My teacher is kind, he gave me many advices."
-    },
-    {
-      "vietlish": "we bought new furnitures",
-      "natural": "we bought new furniture",
-      "sourcePattern": "đồ đạc pluralised; 'furniture' is uncountable",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "We just moved, so we bought new furnitures."
-    },
-    {
-      "vietlish": "many persons came to the party",
-      "natural": "many people came to the party",
-      "sourcePattern": "'persons' used as the default plural of person",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "It was crowded, many persons came to the party."
-    },
-    {
-      "vietlish": "I cut my hairs",
-      "natural": "I cut my hair",
-      "sourcePattern": "tóc treated as countable; 'hair' is uncountable here",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "It was too hot, so I cut my hairs short."
-    },
-    {
-      "vietlish": "I bought two breads",
-      "natural": "I bought two loaves of bread",
-      "sourcePattern": "bánh mì counted directly; 'bread' is uncountable",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "On the way home I bought two breads."
-    },
-    {
-      "vietlish": "she gave me a good news",
-      "natural": "she gave me good news",
-      "sourcePattern": "tin tốt with article; 'news' is uncountable",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Call me, she gave me a good news today."
-    },
-    {
-      "vietlish": "can I have two waters",
-      "natural": "can I have two bottles of water",
-      "sourcePattern": "nước counted directly; needs a unit",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "We are thirsty, can I have two waters?"
-    },
-    {
       "vietlish": "I learned many knowledges",
       "natural": "I learned a lot of knowledge",
       "sourcePattern": "kiến thức pluralised; 'knowledge' is uncountable",
       "category": "literal_translation",
       "frequency": "low",
       "context": "This course is good, I learned many knowledges."
-    },
-    {
-      "vietlish": "there are many traffics today",
-      "natural": "there is a lot of traffic today",
-      "sourcePattern": "kẹt xe; 'traffic' is uncountable",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I am late because there are many traffics today."
-    },
-    {
-      "vietlish": "he has many experiences in cooking",
-      "natural": "he has a lot of experience in cooking",
-      "sourcePattern": "kinh nghiệm pluralised when meaning general experience",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Trust him, he has many experiences in cooking."
-    },
-    {
-      "vietlish": "I like the music",
-      "natural": "I like music",
-      "sourcePattern": "thích nhạc -> overuse of 'the' for a generic noun",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "In my free time I like the music."
-    },
-    {
-      "vietlish": "the life is hard here",
-      "natural": "life is hard here",
-      "sourcePattern": "cuộc sống -> 'the' added to a generic abstract noun",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "For new people, the life is hard here."
-    },
-    {
-      "vietlish": "I go to school by the bus",
-      "natural": "I go to school by bus",
-      "sourcePattern": "đi bằng xe buýt -> 'the' added in 'by + transport'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Every day I go to school by the bus."
-    },
-    {
-      "vietlish": "he plays the football every weekend",
-      "natural": "he plays football every weekend",
-      "sourcePattern": "'the' added before a sport",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "With his friends he plays the football every weekend."
-    },
-    {
-      "vietlish": "I want a rice please",
-      "natural": "I want some rice please",
-      "sourcePattern": "cơm with 'a'; rice is uncountable",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I am hungry, I want a rice please."
-    },
-    {
-      "vietlish": "she is best student in class",
-      "natural": "she is the best student in class",
-      "sourcePattern": "missing 'the' before a superlative",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Everybody knows she is best student in class."
     },
     {
       "vietlish": "the honesty is important",
@@ -173,142 +53,6 @@
       "category": "collocation",
       "frequency": "low",
       "context": "I am tired, I want to take a nap after lunch."
-    },
-    {
-      "vietlish": "it depend of you",
-      "natural": "it depends on you",
-      "sourcePattern": "tùy vào bạn -> 'depend of' instead of 'depend on' + missing -s",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I do not mind, it depend of you."
-    },
-    {
-      "vietlish": "I am afraid with dog",
-      "natural": "I am afraid of dogs",
-      "sourcePattern": "sợ chó -> 'afraid with' instead of 'afraid of'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Please hold it, I am afraid with dog."
-    },
-    {
-      "vietlish": "we arrive to the airport at 6",
-      "natural": "we arrive at the airport at 6",
-      "sourcePattern": "đến sân bay -> 'arrive to' instead of 'arrive at'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "The flight is early, we arrive to the airport at 6."
-    },
-    {
-      "vietlish": "please answer to my question",
-      "natural": "please answer my question",
-      "sourcePattern": "trả lời câu hỏi -> extra 'to' after answer",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I am confused, please answer to my question."
-    },
-    {
-      "vietlish": "I ask to him about the price",
-      "natural": "I asked him about the price",
-      "sourcePattern": "hỏi anh ấy -> extra 'to' after ask",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Before I buy, I ask to him about the price."
-    },
-    {
-      "vietlish": "my house is near to the market",
-      "natural": "my house is near the market",
-      "sourcePattern": "gần chợ -> extra 'to' after near",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "It is convenient, my house is near to the market."
-    },
-    {
-      "vietlish": "I am in the bus now",
-      "natural": "I'm on the bus now",
-      "sourcePattern": "trên xe buýt -> 'in the bus' instead of 'on'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Call me later, I am in the bus now."
-    },
-    {
-      "vietlish": "I am in house, come in",
-      "natural": "I'm at home, come in",
-      "sourcePattern": "ở nhà -> 'in house' instead of 'at home'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "The door is open, I am in house, come in."
-    },
-    {
-      "vietlish": "I am angry to my brother",
-      "natural": "I am angry with my brother",
-      "sourcePattern": "giận anh -> 'angry to' instead of 'angry with'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Do not ask me, I am angry to my brother."
-    },
-    {
-      "vietlish": "she is married with a doctor",
-      "natural": "she is married to a doctor",
-      "sourcePattern": "kết hôn với -> 'married with' instead of 'married to'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Now she is rich, she is married with a doctor."
-    },
-    {
-      "vietlish": "I am understanding you now",
-      "natural": "I understand you now",
-      "sourcePattern": "stative verb in continuous; VN aspect transfer",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Slow down, I am understanding you now."
-    },
-    {
-      "vietlish": "I am agreeing with your plan",
-      "natural": "I agree with your plan",
-      "sourcePattern": "stative 'agree' in continuous form",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Do not worry, I am agreeing with your plan."
-    },
-    {
-      "vietlish": "I am knowing him for ten years",
-      "natural": "I have known him for ten years",
-      "sourcePattern": "stative 'know' in continuous + wrong tense",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Trust me, I am knowing him for ten years."
-    },
-    {
-      "vietlish": "when I was child I very like candy",
-      "natural": "when I was a child I really liked candy",
-      "sourcePattern": "bare verb + 'very like' for past habit",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Like all kids, when I was child I very like candy."
-    },
-    {
-      "vietlish": "I work here from 3 years",
-      "natural": "I have worked here for 3 years",
-      "sourcePattern": "'from 3 years' instead of 'for 3 years' + tense",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I am not new, I work here from 3 years."
-    },
-    {
-      "vietlish": "he just go out, call later",
-      "natural": "he just went out, call later",
-      "sourcePattern": "bare verb after 'just' for recent past",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Sorry, he just go out, call later."
-    },
-    {
-      "vietlish": "next week I will going to Hue",
-      "natural": "next week I'm going to Hue",
-      "sourcePattern": "'will + going' double future marking",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Buy the ticket, next week I will going to Hue."
     },
     {
       "vietlish": "he is doing what now",
@@ -607,22 +351,6 @@
       "context": "It is late, I feel very sleepy, I want go bed."
     },
     {
-      "vietlish": "yes, I am not busy now",
-      "natural": "no, I'm not busy now",
-      "sourcePattern": "VN agreement-based 'yes' to a negative question",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "You ask if I am busy? Yes, I am not busy now."
-    },
-    {
-      "vietlish": "no, I like it very much",
-      "natural": "yes, I like it very much",
-      "sourcePattern": "VN 'no' agreeing with a negative question frame",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "You think I do not like it? No, I like it very much."
-    },
-    {
       "vietlish": "I think he will not come, isn't it",
       "natural": "I don't think he'll come, will he",
       "sourcePattern": "phải không -> frozen 'isn't it' tag",
@@ -645,70 +373,6 @@
       "category": "literal_translation",
       "frequency": "low",
       "context": "I am so sorry, I think I cannot can come tomorrow."
-    },
-    {
-      "vietlish": "you should not to worry",
-      "natural": "you shouldn't worry",
-      "sourcePattern": "extra 'to' after a modal",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Everything is fine, you should not to worry."
-    },
-    {
-      "vietlish": "maybe he can comes late",
-      "natural": "maybe he can come late",
-      "sourcePattern": "extra -s after a modal",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Do not wait, maybe he can comes late."
-    },
-    {
-      "vietlish": "in my city have many tourists",
-      "natural": "in my city there are many tourists",
-      "sourcePattern": "fronted location + existential 'have'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "It is famous, in my city have many tourists."
-    },
-    {
-      "vietlish": "rain very big outside",
-      "natural": "it's raining hard outside",
-      "sourcePattern": "mưa to -> dropped subject + 'big' for heavy rain",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Bring umbrella, rain very big outside."
-    },
-    {
-      "vietlish": "today no have class",
-      "natural": "today there's no class",
-      "sourcePattern": "hôm nay không có -> existential 'have' negated",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "You can sleep more, today no have class."
-    },
-    {
-      "vietlish": "my room not have window",
-      "natural": "my room doesn't have a window",
-      "sourcePattern": "phòng không có -> 'not have' calque",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "It is dark, my room not have window."
-    },
-    {
-      "vietlish": "here have good coffee",
-      "natural": "they have good coffee here",
-      "sourcePattern": "ở đây có -> existential 'have' fronted by place",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Let us stop, here have good coffee."
-    },
-    {
-      "vietlish": "he name is Nam",
-      "natural": "his name is Nam",
-      "sourcePattern": "tên anh ấy -> subject pronoun instead of possessive",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Let me introduce, he name is Nam."
     },
     {
       "vietlish": "this phone is more cheap than that",
@@ -799,14 +463,6 @@
       "context": "I am never late, I wake up at 6 o'clock every morning sharp."
     },
     {
-      "vietlish": "I stay here until 3 years",
-      "natural": "I have stayed here for 3 years",
-      "sourcePattern": "đến 3 năm -> 'until' for duration + tense",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I know this place, I stay here until 3 years."
-    },
-    {
       "vietlish": "see you again next time",
       "natural": "see you next time",
       "sourcePattern": "hẹn gặp lại -> redundant 'again'",
@@ -823,60 +479,12 @@
       "context": "Please wait, I will finish in 5 minutes more."
     },
     {
-      "vietlish": "two days before I called the bank",
-      "natural": "two days ago I called the bank",
-      "sourcePattern": "2 ngày trước -> 'before' for 'ago'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I already did it, two days before I called the bank."
-    },
-    {
-      "vietlish": "after one hour later I will come",
-      "natural": "I will come in an hour",
-      "sourcePattern": "một tiếng sau -> 'after ... later' doubling",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Start without me, after one hour later I will come."
-    },
-    {
-      "vietlish": "every day in the weekend I rest",
-      "natural": "every weekend I rest",
-      "sourcePattern": "cuối tuần -> 'in the weekend' + redundancy",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I am free then, every day in the weekend I rest."
-    },
-    {
-      "vietlish": "I have not seen him from long time",
-      "natural": "I haven't seen him for a long time",
-      "sourcePattern": "từ lâu -> 'from long time' calque",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I miss my friend, I have not seen him from long time."
-    },
-    {
       "vietlish": "the meeting takes 2 hours long",
       "natural": "the meeting takes 2 hours",
       "sourcePattern": "kéo dài 2 tiếng -> redundant 'long'",
       "category": "literal_translation",
       "frequency": "low",
       "context": "Bring water, the meeting takes 2 hours long."
-    },
-    {
-      "vietlish": "I come back after 5 minutes",
-      "natural": "I'll be back in 5 minutes",
-      "sourcePattern": "5 phút nữa quay lại -> 'after' for future 'in'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Wait here, I come back after 5 minutes."
-    },
-    {
-      "vietlish": "do you have other color",
-      "natural": "do you have another color",
-      "sourcePattern": "màu khác -> 'other' for singular 'another'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I do not like black, do you have other color?"
     },
     {
       "vietlish": "I want to send this to Vietnam, how much",
@@ -903,44 +511,12 @@
       "context": "I did not catch it, give me one more time, please."
     },
     {
-      "vietlish": "I am full, cannot eat more",
-      "natural": "I'm full, I can't eat any more",
-      "sourcePattern": "no rồi -> dropped subject + 'eat more'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Thank you, I am full, cannot eat more."
-    },
-    {
       "vietlish": "the food here is very famous delicious",
       "natural": "the food here is famous for being delicious",
       "sourcePattern": "nổi tiếng ngon -> stacked adjectives calque",
       "category": "word_order",
       "frequency": "low",
       "context": "You must try, the food here is very famous delicious."
-    },
-    {
-      "vietlish": "I am very stress because work",
-      "natural": "I'm very stressed because of work",
-      "sourcePattern": "căng thẳng -> 'stress' as adjective + 'because' for 'because of'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "These days I am very stress because work."
-    },
-    {
-      "vietlish": "I am fever since last night",
-      "natural": "I've had a fever since last night",
-      "sourcePattern": "bị sốt -> 'be fever' instead of 'have a fever'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I cannot work today, I am fever since last night."
-    },
-    {
-      "vietlish": "I feel cold in my body",
-      "natural": "I feel cold",
-      "sourcePattern": "lạnh trong người -> redundant 'in my body'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Close the window, I feel cold in my body."
     },
     {
       "vietlish": "I am very happy in my heart",
@@ -959,28 +535,12 @@
       "context": "Be gentle with him, he is sick in his head a little."
     },
     {
-      "vietlish": "I am hungry stomach now",
-      "natural": "I'm hungry now",
-      "sourcePattern": "đói bụng -> redundant 'stomach' calque",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Let us eat soon, I am hungry stomach now."
-    },
-    {
       "vietlish": "my eyes are tired from computer",
       "natural": "my eyes are tired from the computer",
       "sourcePattern": "mỏi mắt -> missing article; mostly natural, light VN flavour",
       "category": "literal_translation",
       "frequency": "low",
       "context": "I worked all day, my eyes are tired from computer."
-    },
-    {
-      "vietlish": "I lost my voice already, cannot talk",
-      "natural": "I've lost my voice, I can't talk",
-      "sourcePattern": "mất giọng -> 'already' + dropped subject",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Sorry, I lost my voice already, cannot talk."
     },
     {
       "vietlish": "how to spell your name",
@@ -991,36 +551,12 @@
       "context": "Sorry, how to spell your name?"
     },
     {
-      "vietlish": "I think so too me",
-      "natural": "I think so too",
-      "sourcePattern": "tôi cũng nghĩ vậy -> trailing 'me' calque of 'cũng'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "You are right, I think so too me."
-    },
-    {
       "vietlish": "I will try my best to do",
       "natural": "I will try my best",
       "sourcePattern": "cố gắng hết sức -> redundant trailing 'to do'",
       "category": "literal_translation",
       "frequency": "low",
       "context": "Do not worry boss, I will try my best to do."
-    },
-    {
-      "vietlish": "everybody are ready now",
-      "natural": "everybody is ready now",
-      "sourcePattern": "mọi người -> plural agreement with 'everybody'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "We can start, everybody are ready now."
-    },
-    {
-      "vietlish": "I go to there by myself",
-      "natural": "I'll go there by myself",
-      "sourcePattern": "đến đó -> redundant 'to' before 'there'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Do not wait for me, I go to there by myself."
     }
   ],
   "dedupeNote": "2026-06-10 A10 coherence pass: removed 5 cross-file duplicate candidates (4 already present in wave1 step11-vietlish-corpus-d4-wave-200.json; 1 case-duplicate of the live VIETLISH_CORPUS entry 'Wish you a nice day'). Canonical copies retained in wave1 / live."
