@@ -3,8 +3,8 @@
 // Shape / safety tests for scripts/host/morning-report.sh.
 //
 // Static tests always run (no external deps needed — they inspect the file).
-// Execution tests are gated on BOARD_EXISTS so they skip cleanly on CI runners
-// that don't have /Users/admin/agent-board.md.
+// Execution tests are gated on BOARD_EXISTS, !CI, and GLAB_OK so they skip
+// cleanly on CI runners (process.env.CI) or when glab is unauthenticated.
 
 import { execSync } from "node:child_process";
 import { existsSync, readFileSync, mkdirSync, appendFileSync } from "node:fs";
@@ -25,6 +25,16 @@ const SECTION_HEADERS = [
 ] as const;
 
 const BOARD_EXISTS = existsSync("/Users/admin/agent-board.md");
+const CI = Boolean(process.env.CI);
+const GLAB_OK = (() => {
+  try {
+    execSync("glab auth status", { stdio: "pipe", timeout: 5_000 });
+    return true;
+  } catch {
+    return false;
+  }
+})();
+const RUN_EXECUTION = BOARD_EXISTS && !CI && GLAB_OK;
 
 // ── Utilities ────────────────────────────────────────────────────────────────
 
@@ -127,7 +137,7 @@ describe("morning-report.sh — static shape", () => {
 
 // ── Execution tests (host-only — skip on CI) ─────────────────────────────────
 
-describe.skipIf(!BOARD_EXISTS)("morning-report.sh — execution (host only)", () => {
+describe.skipIf(!RUN_EXECUTION)("morning-report.sh — execution (host only)", () => {
   const REPORT_FILE = "/Users/admin/morning-report.txt";
   const DATED_DIR = "/Users/admin/reports/morning";
   const DISK_LAST = `${DATED_DIR}/.disk-last`;
