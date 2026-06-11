@@ -2,7 +2,10 @@ import { describe, expect, it } from "vitest";
 import {
   AI_CORRECTION_REQUIRED_MESSAGE,
   SEMANTIC_IMPLAUSIBILITY_SIGNALS,
+  STT_ABSTAIN_MESSAGE,
+  STT_GARBLE_SIGNALS,
   correctWithTutorRules,
+  findAndFixSttGarble,
   findSemanticImplausibility,
   validateCorrectionChangedWhenNeeded,
 } from "@/lib/tutor/correctionEngine";
@@ -1473,6 +1476,90 @@ describe("correctionEngine — BUG1 semantic plausibility trust floor", () => {
       }
       for (const negative of signal.confusableNegatives) {
         expect(findSemanticImplausibility(negative), negative).toBeNull();
+      }
+    }
+  });
+});
+
+// ─── STT Garble Guard ─────────────────────────────────────────────────────────
+
+describe("correctionEngine — STT garble guard", () => {
+  // Regression case: the exact sentence from the prod incident.
+  it("regression: 'it's very Sunday in the summer' is NOT approved — proposes sunny", () => {
+    const result = correctWithTutorRules("it's very Sunday in the summer", "en");
+    expect(result.status).toBe("corrected");
+    expect(result.corrected).toContain("sunny");
+    expect(result.corrected).not.toContain("Sunday");
+    expect(result.appliedRuleIds).toContain("stt-degree-sunday-to-sunny");
+  });
+
+  it.each([
+    ["The weather is so Sunday today.", "The weather is so sunny today."],
+    ["It is really Sunday outside.", "It is really sunny outside."],
+    ["It's quite Sunday today.", "It's quite sunny today."],
+    ["It's too Sunday to go out.", "It's too sunny to go out."],
+  ])("fixes degree-adverb + Sunday to sunny: %s", (input, expected) => {
+    const result = correctWithTutorRules(input, "en");
+    expect(result.status).toBe("corrected");
+    expect(result.corrected).toBe(expected);
+    expect(result.appliedRuleIds).toContain("stt-degree-sunday-to-sunny");
+  });
+
+  it.each([
+    "It's very Monday outside.",
+    "It's very Friday today.",
+  ])("abstains on degree-adverb + unknown weekday (no confident fix): %s", (input) => {
+    const result = correctWithTutorRules(input, "en");
+    expect(result.status).toBe("needs_ai");
+    expect(result.corrected).toBe("");
+    expect(result.status === "needs_ai" && result.semanticHint).toBe(STT_ABSTAIN_MESSAGE);
+  });
+
+  it.each([
+    "I feel week after the workout.",
+    "She feels so week.",
+  ])("abstains on feel-week STT confusion: %s", (input) => {
+    const result = correctWithTutorRules(input, "en");
+    expect(result.status).toBe("needs_ai");
+    expect(result.corrected).toBe("");
+    expect(result.status === "needs_ai" && result.semanticHint).toBe(STT_ABSTAIN_MESSAGE);
+  });
+
+  // No-false-positive: a real sentence containing Sunday must pass through unchanged.
+  it("no-FP: 'I love Sunday mornings.' stays approved — unchanged", () => {
+    const result = correctWithTutorRules("I love Sunday mornings.", "en");
+    expect(result.status).toBe("unchanged");
+    expect(result.corrected).toContain("Sunday");
+    expect(result.appliedRuleIds).not.toContain("stt-degree-sunday-to-sunny");
+  });
+
+  it.each([
+    "See you on Sunday.",
+    "Every Sunday I go to church.",
+    "Have a great Sunday.",
+  ])("no-FP: standalone Sunday mentions are left untouched: %s", (input) => {
+    const result = findAndFixSttGarble(input);
+    expect(result).toBeNull();
+  });
+
+  it("keeps precision-gate evidence on every STT garble signal", () => {
+    for (const signal of STT_GARBLE_SIGNALS) {
+      expect(signal.positives.length).toBeGreaterThanOrEqual(3);
+      expect(signal.confusableNegatives.length).toBeGreaterThanOrEqual(2);
+      expect(signal.fpRiskNote.length).toBeGreaterThan(20);
+      // Every positive must trigger; every confusable negative must not.
+      for (const positive of signal.positives) {
+        const garble = findAndFixSttGarble(positive);
+        expect(garble, `positive should fire: ${positive}`).not.toBeNull();
+        expect(garble?.type === "fix" ? garble.ruleId : garble?.type, positive).toBeTruthy();
+      }
+      for (const negative of signal.confusableNegatives) {
+        const garble = findAndFixSttGarble(negative);
+        if (garble !== null) {
+          // A confusable negative is allowed to return abstain for a DIFFERENT signal,
+          // but must NOT fire the signal it's guarding against.
+          expect(garble.type === "fix" ? garble.ruleId : "abstain", negative).not.toBe(signal.id);
+        }
       }
     }
   });

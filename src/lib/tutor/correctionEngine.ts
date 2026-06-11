@@ -105,6 +105,120 @@ export function findSemanticImplausibility(sentence: string): SemanticImplausibi
   return null;
 }
 
+// ─── STT Garble Detection ─────────────────────────────────────────────
+
+/**
+ * Exact abstain copy surfaced when the corrector detects a probable STT mishearing
+ * but cannot identify the intended word with confidence.
+ * Required verbatim by product spec — never alter this string.
+ */
+export const STT_ABSTAIN_MESSAGE =
+  "Mình chưa chắc bạn định nói gì — bạn gõ lại nhé?";
+
+export type SttGarbleSignal = {
+  id: string;
+  /** Detects the garble pattern in context. */
+  detect: RegExp;
+  /** Guards real uses that would otherwise fire the detect (false-positive guard). */
+  plausibleException?: RegExp;
+  /** When present: the word to find-and-replace in the corrected text. */
+  garbleRe?: RegExp;
+  /** When present: the intended replacement. Pair with garbleRe. */
+  intended?: string;
+  /** 3+ sentences that must fire. */
+  positives: readonly string[];
+  /** 2+ sentences that must NOT fire (despite surface similarity). */
+  confusableNegatives: readonly string[];
+  fpRiskNote: string;
+};
+
+type SttGarbleResult =
+  | { type: "fix"; corrected: string; ruleId: string }
+  | { type: "abstain" }
+  | null;
+
+export const STT_GARBLE_SIGNALS: readonly SttGarbleSignal[] = [
+  {
+    id: "stt-degree-sunday-to-sunny",
+    // Degree adverb immediately before "sunday" — a proper noun can never be gradable.
+    // Sunday/sunny are near-homophones; this is the most frequent STT confusion in this class.
+    detect: /\b(?:very|so|really|quite|pretty|too|extremely)\s+sunday\b/i,
+    garbleRe: /\bsunday\b/gi,
+    intended: "sunny",
+    positives: [
+      "It's very Sunday in the summer.",
+      "The weather is so Sunday today.",
+      "It is really Sunday outside.",
+    ],
+    confusableNegatives: [
+      "I love Sunday mornings.",
+      "See you on Sunday.",
+      "Every Sunday I go to church.",
+    ],
+    fpRiskNote:
+      "Only fires when 'Sunday' immediately follows a degree adverb — a syntactic position where a proper noun is impossible. Sunday/sunny are near-homophones; Vietnamese learners speaking into STT frequently produce this pair. Standalone 'Sunday' mentions (prepositional, subject, object) never match because no degree adverb precedes them.",
+  },
+  {
+    id: "stt-degree-weekday-no-known-fix",
+    // Degree adverb before any other weekday — ungrammatical, but no single clear phonetic
+    // analogue, so we abstain rather than guess. Plausible exception guards prepositional
+    // weekday phrases ("on Monday", "last Friday", "every Tuesday").
+    detect:
+      /\b(?:very|so|really|quite|pretty|too|extremely)\s+(?:monday|tuesday|wednesday|thursday|friday|saturday)\b/i,
+    plausibleException:
+      /\b(?:every|last|this|next|on|by|each)\s+(?:monday|tuesday|wednesday|thursday|friday|saturday)\b/i,
+    positives: [
+      "It's very Monday outside.",
+      "The office is so Friday.",
+      "He feels really Thursday.",
+    ],
+    confusableNegatives: [
+      "Every Monday I go to school.",
+      "On Friday we have a meeting.",
+      "Last Tuesday was busy.",
+    ],
+    fpRiskNote:
+      "Degree adverb + any weekday as a predicate adjective is always ungrammatical (weekdays are proper nouns, not gradable). Without a clear phonetically-similar adjective counterpart (unlike Sunday/sunny), we abstain rather than guess. Plausible exception guards prepositional weekday phrases.",
+  },
+  {
+    id: "stt-feel-week-to-weak",
+    // "feel week" — "weak" and "week" are homophones; "feel weak" is the intended phrase.
+    // The negative lookahead blocks "feel [determiner] week" where week is a temporal noun.
+    detect: /\bfeel(?:s|ing)?\s+(?:so\s+)?week(?!\s*-|\s+(?:is|was|will|that|to|which|when|long)\b)\b/i,
+    plausibleException: /\bfeel\s+(?:this|last|next|each|every|the)\s+week\b/i,
+    positives: [
+      "I feel week after the workout.",
+      "She feels week today.",
+      "He is feeling so week.",
+    ],
+    confusableNegatives: [
+      "I feel good this week.",
+      "She feels better every week.",
+      "I feel weak.",
+    ],
+    fpRiskNote:
+      "'Feel week' as a predicate (feel + noun) is never grammatical — 'week' cannot be a predicate adjective. 'Weak' and 'week' are homophones in most accents and a documented STT confusion pair. The negative lookahead and plausibleException block temporal uses ('feel this week', 'feel that the week...', 'feel week-long fatigue').",
+  },
+];
+
+/** Returns the first matching STT garble action for an English sentence, else null. */
+export function findAndFixSttGarble(sentence: string): SttGarbleResult {
+  const normalized = normalizeWhitespace(sentence);
+  if (!normalized) return null;
+  for (const signal of STT_GARBLE_SIGNALS) {
+    if (signal.plausibleException?.test(normalized)) continue;
+    if (!signal.detect.test(normalized)) continue;
+    if (signal.garbleRe && signal.intended !== undefined) {
+      const fixed = normalized.replace(signal.garbleRe, signal.intended);
+      if (fixed !== normalized) {
+        return { type: "fix", corrected: fixed, ruleId: signal.id };
+      }
+    }
+    return { type: "abstain" };
+  }
+  return null;
+}
+
 function rulesForLanguage(language: TutorCorrectionLanguage): CorrectionRule[] {
   switch (language) {
     case "fr":
@@ -169,6 +283,9 @@ export function correctWithTutorRules(
   // BUG1 trust floor: a grammar fix that is still semantically implausible must not be shown
   // confidently — abstain to the AI engine with an honest clarification hint instead.
   const implausible = language === "en" ? findSemanticImplausibility(corrected) : null;
+  // STT-garble guard: detect probable speech-to-text mishearings (e.g. Sunday→sunny) on the
+  // grammar-corrected text. A fix replaces the garble; an abstain routes to the AI engine.
+  const sttGarble = language === "en" ? findAndFixSttGarble(corrected) : null;
 
   if (appliedRuleIds.length > 0) {
     const validation = validateCorrectionChangedWhenNeeded(trimmed, corrected);
@@ -189,6 +306,22 @@ export function correctWithTutorRules(
         semanticHint: implausible.clarificationHint,
       };
     }
+    if (sttGarble) {
+      if (sttGarble.type === "fix") {
+        return {
+          status: "corrected",
+          corrected: sttGarble.corrected,
+          appliedRuleIds: [...appliedRuleIds, sttGarble.ruleId],
+        };
+      }
+      return {
+        status: "needs_ai",
+        corrected: "",
+        appliedRuleIds,
+        message: STT_ABSTAIN_MESSAGE,
+        semanticHint: STT_ABSTAIN_MESSAGE,
+      };
+    }
     return { status: "corrected", corrected, appliedRuleIds };
   }
 
@@ -198,6 +331,24 @@ export function correctWithTutorRules(
       corrected: "",
       appliedRuleIds: [],
       message: AI_CORRECTION_REQUIRED_MESSAGE,
+    };
+  }
+
+  // STT garble on a grammar-clean sentence: fix it directly or route to AI.
+  if (sttGarble) {
+    if (sttGarble.type === "fix") {
+      return {
+        status: "corrected",
+        corrected: sttGarble.corrected,
+        appliedRuleIds: [sttGarble.ruleId],
+      };
+    }
+    return {
+      status: "needs_ai",
+      corrected: "",
+      appliedRuleIds: [],
+      message: STT_ABSTAIN_MESSAGE,
+      semanticHint: STT_ABSTAIN_MESSAGE,
     };
   }
 
