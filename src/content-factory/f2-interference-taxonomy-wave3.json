@@ -1,0 +1,321 @@
+{
+  "corpus": "f2-interference-taxonomy-wave3",
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F2",
+  "authoredAt": "2026-06-10",
+  "wave": 3,
+  "schemaBasis": "Content Factory standalone review pack; not wired to engine",
+  "description": "VN→EN interference taxonomy wave 3. Eleven review entries focused on article choice, countability, tense/aspect, modal pragmatics, prepositions, and sentence-level transfer. Full Vietnamese diacritics throughout. Append-only review material only.",
+  "patterns": [
+    {
+      "id": "f2w3_article_zero_generic_plural",
+      "category": "articles_countability",
+      "severity": "high",
+      "cefrLevelsObserved": ["A1", "A2", "B1", "B2"],
+      "name": "Missing articles and generic plural mismatch",
+      "l1ReasoningVi": "Tiếng Việt không có hệ thống mạo từ như a, an, the và thường không bắt buộc đánh dấu số nhiều. Khi nói tiếng Anh, người học dễ bỏ mạo từ trước danh từ đếm được số ít hoặc dùng danh từ số ít cho ý chung.",
+      "learnerSignal": "A singular count noun appears bare, or a generic statement uses one singular noun without an article.",
+      "examples": [
+        {
+          "incorrect": "I need appointment with doctor.",
+          "natural": "I need an appointment with a doctor.",
+          "explanationVi": "\"Appointment\" và \"doctor\" là danh từ đếm được số ít nên cần mạo từ."
+        },
+        {
+          "incorrect": "Student should ask question in class.",
+          "natural": "Students should ask questions in class.",
+          "explanationVi": "Khi nói chung về học sinh, dùng số nhiều \"students\"; \"questions\" cũng thường là số nhiều."
+        },
+        {
+          "incorrect": "I bought car last year.",
+          "natural": "I bought a car last year.",
+          "explanationVi": "Lần đầu nhắc một chiếc xe không xác định thì dùng \"a car\"."
+        }
+      ],
+      "teachingMove": "Ask whether the noun is countable and singular. If yes, require a determiner: a/an, the, my, this, one. For general groups, model plural nouns.",
+      "ruleTags": ["articles", "generic_plural", "count_nouns", "vn_l1_transfer"]
+    },
+    {
+      "id": "f2w3_uncountable_plural_advice_information",
+      "category": "articles_countability",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Uncountable nouns treated as plural items",
+      "l1ReasoningVi": "Tiếng Việt có thể nói \"nhiều thông tin\", \"mấy lời khuyên\", \"nhiều hành lý\" mà không cần đổi hình thức danh từ. Tiếng Anh có các danh từ không đếm được như advice, information, luggage, furniture; chúng không nhận -s trong cách dùng thường.",
+      "learnerSignal": "The learner adds plural -s to common uncountable nouns or uses many with them.",
+      "examples": [
+        {
+          "incorrect": "My teacher gave me many advices.",
+          "natural": "My teacher gave me a lot of advice.",
+          "explanationVi": "\"Advice\" không thêm -s; nếu cần đếm từng ý, dùng \"pieces of advice\"."
+        },
+        {
+          "incorrect": "I need informations about the course.",
+          "natural": "I need information about the course.",
+          "explanationVi": "\"Information\" là danh từ không đếm được trong tiếng Anh."
+        },
+        {
+          "incorrect": "We have too many furnitures in this room.",
+          "natural": "We have too much furniture in this room.",
+          "explanationVi": "\"Furniture\" đi với \"much\" hoặc \"a lot of\", không dùng \"many furnitures\"."
+        }
+      ],
+      "teachingMove": "Create a short protected list of high-frequency uncountable nouns and teach countable wrappers: a piece of advice, a piece of luggage, an item of furniture.",
+      "ruleTags": ["uncountable_nouns", "plural_s", "advice_information", "countability"]
+    },
+    {
+      "id": "f2w3_present_perfect_life_experience",
+      "category": "tense_aspect",
+      "severity": "high",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Life experience stated with simple past only",
+      "l1ReasoningVi": "Tiếng Việt thường dùng từ như \"đã\", \"từng\", \"chưa từng\" để nói kinh nghiệm sống mà không cần đổi thì theo kiểu tiếng Anh. Người học dễ dùng simple past cho trải nghiệm không gắn với thời điểm cụ thể, trong khi tiếng Anh thường dùng present perfect.",
+      "learnerSignal": "The learner talks about ever/never life experience with simple past and no finished time marker.",
+      "examples": [
+        {
+          "incorrect": "I never went to Vancouver.",
+          "natural": "I have never been to Vancouver.",
+          "explanationVi": "Khi nói \"chưa từng\" trong đời, dùng present perfect: \"have never been\"."
+        },
+        {
+          "incorrect": "Did you ever tried sushi?",
+          "natural": "Have you ever tried sushi?",
+          "explanationVi": "\"Ever\" hỏi kinh nghiệm sống nên dùng \"have you ever + past participle\"."
+        },
+        {
+          "incorrect": "I already finished this training before.",
+          "natural": "I have already completed this training.",
+          "explanationVi": "Nếu không nhấn vào thời điểm đã xong, present perfect tự nhiên hơn."
+        }
+      ],
+      "teachingMove": "Separate finished-time stories from life-experience statements: yesterday/last year uses simple past; ever/never/already without a date usually uses present perfect.",
+      "ruleTags": ["present_perfect", "life_experience", "ever_never", "đã_từng"]
+    },
+    {
+      "id": "f2w3_habit_used_to_would_past",
+      "category": "tense_aspect",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Past habits flattened into simple past",
+      "l1ReasoningVi": "Tiếng Việt có thể dùng \"hồi đó\", \"ngày xưa\", \"thường\" để báo hiệu thói quen trong quá khứ. Tiếng Anh cần phân biệt một hành động đã xảy ra một lần và một thói quen cũ, thường bằng \"used to\" hoặc \"would\".",
+      "learnerSignal": "A sentence describes a repeated past routine but uses only simple past, making it sound like one event.",
+      "examples": [
+        {
+          "incorrect": "When I was small, I walked to school every day.",
+          "natural": "When I was small, I used to walk to school every day.",
+          "explanationVi": "\"Every day\" cho thấy thói quen cũ; \"used to\" làm ý rõ hơn."
+        },
+        {
+          "incorrect": "Before, my father worked night shift and slept in the morning.",
+          "natural": "My father used to work night shifts and sleep in the morning.",
+          "explanationVi": "\"Used to\" diễn tả nếp sống trước đây, nay có thể đã khác."
+        },
+        {
+          "incorrect": "In Vietnam, we ate dinner together after work.",
+          "natural": "In Vietnam, we would eat dinner together after work.",
+          "explanationVi": "\"Would\" có thể dùng cho ký ức hoặc thói quen lặp lại trong quá khứ."
+        }
+      ],
+      "teachingMove": "When the learner includes hồi đó/ngày xưa/every day, offer a habit frame: I used to + verb, or We would + verb for memory narration.",
+      "ruleTags": ["used_to", "past_habits", "would_memory", "tense_aspect"]
+    },
+    {
+      "id": "f2w3_modal_must_have_to_softening",
+      "category": "modal_pragmatics",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2", "C1"],
+      "name": "Obligation strength mismatch with must/have to/should",
+      "l1ReasoningVi": "Tiếng Việt dùng \"phải\", \"nên\", \"cần\" linh hoạt theo quan hệ và giọng nói. Khi dịch thẳng sang tiếng Anh, \"must\" có thể nghe quá mạnh, ra lệnh, hoặc mang màu phán xét trong bối cảnh dịch vụ, gia đình, và công sở.",
+      "learnerSignal": "The learner uses must for advice, workplace requests, or customer-service instructions where softer obligation is expected.",
+      "examples": [
+        {
+          "incorrect": "You must send me the schedule today.",
+          "natural": "Could you send me the schedule today?",
+          "explanationVi": "Nếu là yêu cầu lịch sự, dùng câu hỏi với \"could\" thay vì \"must\"."
+        },
+        {
+          "incorrect": "My son must choose nursing because it is stable.",
+          "natural": "I think nursing could be a stable option for my son.",
+          "explanationVi": "\"Must\" dễ nghe như ép buộc; \"could be an option\" mềm hơn."
+        },
+        {
+          "incorrect": "Customer must wait outside.",
+          "natural": "Customers need to wait outside.",
+          "explanationVi": "\"Need to\" trong thông báo dịch vụ thường tự nhiên hơn \"must\"."
+        }
+      ],
+      "teachingMove": "Map Vietnamese prompts by force: phải theo luật -> must/need to; cần theo quy trình -> need to; nên góp ý -> should/could; yêu cầu lịch sự -> could you.",
+      "ruleTags": ["modals", "must_have_to_should", "politeness", "pragmatics"]
+    },
+    {
+      "id": "f2w3_can_for_permission_request",
+      "category": "modal_pragmatics",
+      "severity": "low",
+      "cefrLevelsObserved": ["A1", "A2", "B1"],
+      "name": "Can used where a softer request is expected",
+      "l1ReasoningVi": "Người học thường học \"can\" rất sớm và dùng cho mọi tình huống nhờ vả. Trong tiếng Anh đời sống, \"can\" vẫn hiểu được, nhưng với nhân viên dịch vụ, giáo viên, hoặc sếp, \"could\", \"would it be possible\", hoặc \"may I\" có thể phù hợp hơn.",
+      "learnerSignal": "The request is understandable but sounds abrupt because every request starts with can you/can I.",
+      "examples": [
+        {
+          "incorrect": "Can you give me discount?",
+          "natural": "Is there any discount available?",
+          "explanationVi": "Hỏi về khả năng có giảm giá nghe mềm hơn yêu cầu trực tiếp."
+        },
+        {
+          "incorrect": "Can I leave early today?",
+          "natural": "Would it be possible for me to leave early today?",
+          "explanationVi": "Với quản lý, câu dài hơn một chút giúp lịch sự và chuyên nghiệp."
+        },
+        {
+          "incorrect": "Can you fix this now?",
+          "natural": "Could you take a look at this when you have a chance?",
+          "explanationVi": "\"Could\" và \"when you have a chance\" làm yêu cầu bớt gấp gáp nếu không thật sự khẩn cấp."
+        }
+      ],
+      "teachingMove": "Keep can for friends and simple permission, but give two upgrade buttons: Could you...? / Would it be possible...?",
+      "ruleTags": ["requests", "can_could", "politeness", "service_english"]
+    },
+    {
+      "id": "f2w3_preposition_home_work_school",
+      "category": "prepositions",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A1", "A2", "B1"],
+      "name": "Place preposition transfer with home/work/school",
+      "l1ReasoningVi": "Tiếng Việt dùng \"ở\", \"đi\", \"về\", \"tới\" theo hướng và bối cảnh, không có bộ giới từ bắt buộc giống tiếng Anh. Các cụm như at home, at work, at school, go home, go to work dễ bị trộn lẫn.",
+      "learnerSignal": "The learner adds to before home or uses in/on where English expects at for institutional locations.",
+      "examples": [
+        {
+          "incorrect": "I go to home after work.",
+          "natural": "I go home after work.",
+          "explanationVi": "\"Home\" là trạng từ trong cụm \"go home\", không cần \"to\"."
+        },
+        {
+          "incorrect": "My husband is in work now.",
+          "natural": "My husband is at work now.",
+          "explanationVi": "Khi nói đang ở nơi làm việc, dùng \"at work\"."
+        },
+        {
+          "incorrect": "My daughter is on school today.",
+          "natural": "My daughter is at school today.",
+          "explanationVi": "\"At school\" là cụm cố định cho việc ở trường."
+        }
+      ],
+      "teachingMove": "Teach these as fixed navigation chunks: go home, stay home, at home, go to work, at work, go to school, at school.",
+      "ruleTags": ["prepositions", "home_work_school", "fixed_chunks", "at_to"]
+    },
+    {
+      "id": "f2w3_verb_pattern_want_suggest_let",
+      "category": "verb_patterns",
+      "severity": "high",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Vietnamese verb-chain transfer into English verb patterns",
+      "l1ReasoningVi": "Tiếng Việt có thể nối động từ trực tiếp như \"muốn anh giúp\", \"đề nghị đi\", \"cho tôi xem\" mà không cần cùng một hệ thống to-infinitive, gerund, hoặc object + base verb. Tiếng Anh yêu cầu từng động từ đi với mẫu riêng.",
+      "learnerSignal": "The main verb is correct, but the following verb form is wrong: want someone do, suggest to do, let someone to do.",
+      "examples": [
+        {
+          "incorrect": "I want my son study harder.",
+          "natural": "I want my son to study harder.",
+          "explanationVi": "\"Want someone to do something\" cần \"to\" trước động từ chính."
+        },
+        {
+          "incorrect": "She suggested me to apply online.",
+          "natural": "She suggested that I apply online.",
+          "explanationVi": "\"Suggest\" không theo mẫu \"suggest someone to do\" trong tiếng Anh chuẩn."
+        },
+        {
+          "incorrect": "Please let me to check my calendar.",
+          "natural": "Please let me check my calendar.",
+          "explanationVi": "Sau \"let someone\" dùng động từ nguyên mẫu không \"to\"."
+        }
+      ],
+      "teachingMove": "Teach verb pattern cards by anchor verb: want + object + to verb; suggest + that clause / suggest + -ing; let + object + base verb.",
+      "ruleTags": ["verb_patterns", "infinitive", "gerund", "want_suggest_let"]
+    },
+    {
+      "id": "f2w3_reported_speech_backshift_optional",
+      "category": "clause_linking",
+      "severity": "medium",
+      "cefrLevelsObserved": ["B1", "B2", "C1"],
+      "name": "Reported speech tense and pronoun carryover",
+      "l1ReasoningVi": "Tiếng Việt thường tường thuật bằng cách giữ nguyên lời nói cũ và dựa vào ngữ cảnh: \"mẹ nói con phải gọi lại\". Tiếng Anh cần đổi đại từ, đôi khi đổi thì, và sắp lại mệnh đề để người nghe biết ai làm gì.",
+      "learnerSignal": "Reported speech preserves the original speaker's pronouns or tense in a way that confuses who is responsible.",
+      "examples": [
+        {
+          "incorrect": "My manager said I am late yesterday.",
+          "natural": "My manager said I was late yesterday.",
+          "explanationVi": "Khi tường thuật lời nói trong quá khứ về sự việc đã qua, \"am\" thường lùi thành \"was\"."
+        },
+        {
+          "incorrect": "My mom told me you need to call her.",
+          "natural": "My mom told me I need to call her.",
+          "explanationVi": "Nếu người cần gọi là chính người nói, phải đổi \"you\" thành \"I\"."
+        },
+        {
+          "incorrect": "The doctor said take this medicine after food.",
+          "natural": "The doctor told me to take this medicine after meals.",
+          "explanationVi": "Với lời dặn trực tiếp cho mình, dùng \"told me to\"."
+        }
+      ],
+      "teachingMove": "Ask three reporting questions: Who said it? Who must act now? Was the original situation past, present, or still true?",
+      "ruleTags": ["reported_speech", "pronoun_shift", "backshift", "told_me_to"]
+    },
+    {
+      "id": "f2w3_negative_question_answer_transfer",
+      "category": "pragmatics_discourse",
+      "severity": "high",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Answering negative questions by Vietnamese logic",
+      "l1ReasoningVi": "Trong tiếng Việt, câu trả lời với \"có/không\" thường bám vào ý đồng ý hay phủ định với câu hỏi. Tiếng Anh trả lời negative questions theo sự thật của mệnh đề: Yes, I do nghĩa là có làm; No, I do not nghĩa là không làm.",
+      "learnerSignal": "The learner answers yes/no to a negative question, but the follow-up content contradicts the answer.",
+      "examples": [
+        {
+          "incorrect": "Don't you drive? Yes, I don't drive.",
+          "natural": "Don't you drive? No, I don't drive.",
+          "explanationVi": "Trong tiếng Anh, \"No\" xác nhận sự thật là không lái xe."
+        },
+        {
+          "incorrect": "You didn't receive the email? Yes, I didn't receive it.",
+          "natural": "You didn't receive the email? No, I didn't receive it.",
+          "explanationVi": "Câu trả lời phải khớp với hành động thật: không nhận thì \"No\"."
+        },
+        {
+          "incorrect": "Isn't your son in college? No, he is in college.",
+          "natural": "Isn't your son in college? Yes, he is.",
+          "explanationVi": "Nếu sự thật là con đang học đại học, trả lời \"Yes, he is\"."
+        }
+      ],
+      "teachingMove": "Train the learner to answer the real fact first, then add a full sentence. Yes = the positive fact is true; No = the negative fact is true.",
+      "ruleTags": ["negative_questions", "yes_no_answers", "discourse", "vn_l1_logic"]
+    },
+    {
+      "id": "f2w3_relative_clause_that_who_where",
+      "category": "syntax_discourse",
+      "severity": "medium",
+      "cefrLevelsObserved": ["B1", "B2"],
+      "name": "Relative clause marker underuse or overgeneralization",
+      "l1ReasoningVi": "Tiếng Việt dùng \"mà\", \"người\", \"chỗ\", hoặc trật tự ngữ cảnh để nối ý. Tiếng Anh cần chọn who, that, which, where hoặc rút gọn đúng cách. Người học dễ bỏ dấu nối hoặc dùng where cho mọi danh từ liên quan đến nơi chốn/tình huống.",
+      "learnerSignal": "A noun is followed by a second clause without a relative marker, or where is used for a non-place noun.",
+      "examples": [
+        {
+          "incorrect": "The person helped me was very kind.",
+          "natural": "The person who helped me was very kind.",
+          "explanationVi": "Người thực hiện hành động trong mệnh đề phụ cần \"who\" hoặc \"that\"."
+        },
+        {
+          "incorrect": "I need a job where pays more.",
+          "natural": "I need a job that pays more.",
+          "explanationVi": "\"Job\" ở đây là thứ trả lương, không phải địa điểm; dùng \"that\"."
+        },
+        {
+          "incorrect": "This is the clinic I went last week.",
+          "natural": "This is the clinic I went to last week.",
+          "explanationVi": "Nếu bỏ \"where\", vẫn cần giới từ \"to\" ở cuối: \"went to\"."
+        }
+      ],
+      "teachingMove": "Use a quick role test: person doing action -> who/that; thing doing action -> that/which; real place after go/live/work -> where or verb + preposition.",
+      "ruleTags": ["relative_clauses", "who_that_where", "syntax", "mà_transfer"]
+    }
+  ]
+}
