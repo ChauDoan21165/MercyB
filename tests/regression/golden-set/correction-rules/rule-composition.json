@@ -66,6 +66,54 @@
       "expectedCorrection": "She goes to school.",
       "expectedRuleFired": null,
       "notes": "'to' already present, so only agreement ('go'->'goes') fires; this is NOT a composition. Asserts the anchor preposition rule stays OFF even though the partner rule fires."
+    },
+    {
+      "id": "composition-neg-home-no-to-needed",
+      "input": "I go home",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I go home.",
+      "expectedRuleFired": null,
+      "notes": "Motion verb + destination 'home': English does not use 'to' before 'home'; rule must NOT insert 'to home'. First-person subject means no 3sg agreement issue either."
+    },
+    {
+      "id": "composition-neg-plural-to-present",
+      "input": "They go to school every day",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "They go to school every day.",
+      "expectedRuleFired": null,
+      "notes": "'to' already present before 'school'; plural subject has no 3sg agreement issue. Anchor preposition rule must not insert a second 'to'."
+    },
+    {
+      "id": "composition-neg-already-past-to-present",
+      "input": "I went to school yesterday",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I went to school yesterday.",
+      "expectedRuleFired": null,
+      "notes": "Already-correct past tense with 'to' present. Neither past-marker rule nor preposition rule fires on a grammatically-correct past sentence."
+    },
+    {
+      "id": "composition-neg-3sg-to-present-work",
+      "input": "She go to work",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "She goes to work.",
+      "expectedRuleFired": null,
+      "notes": "'to' already present with destination 'work'; only agreement ('go'->'goes') fires. Mirrors composition-neg-only-agreement-fires with a different destination noun — anchor preposition rule must not fire."
+    },
+    {
+      "id": "composition-neg-3sg-school-in-np",
+      "input": "He go to the school near his house",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "He goes to the school near his house.",
+      "expectedRuleFired": null,
+      "notes": "'school' is part of a definite NP ('the school near his house'), not a bare object; 'to' already present. Only agreement fires. Anchor preposition rule must not insert 'to' a second time."
+    },
+    {
+      "id": "composition-neg-already-correct-with-period",
+      "input": "She goes to the market.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She goes to the market.",
+      "expectedRuleFired": null,
+      "notes": "Fully correct (3sg 'goes' + 'to' present + period). No rule fires; anchor must abstain from modifying a correctly-formed sentence."
     }
   ]
 }

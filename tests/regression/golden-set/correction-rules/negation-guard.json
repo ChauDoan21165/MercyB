@@ -54,6 +54,54 @@
       "expectedCorrection": "",
       "expectedRuleFired": null,
       "notes": "Guard core: 'we do not have' — guard blocks 'do'; no safe deterministic fix -> needs_ai."
+    },
+    {
+      "id": "ng-neg-004",
+      "input": "Yesterday she do not study for the test",
+      "expectedStatus": "needs_ai",
+      "expectedCorrection": "",
+      "expectedRuleFired": null,
+      "notes": "Guard — different pronoun (she): past marker + 'she do not study'; guard blocks the rewrite, engine escalates to needs_ai."
+    },
+    {
+      "id": "ng-neg-005",
+      "input": "Last night he do not come home",
+      "expectedStatus": "needs_ai",
+      "expectedCorrection": "",
+      "expectedRuleFired": null,
+      "notes": "Guard — different temporal marker ('last night') + third-person male pronoun: guard still blocks 'do not come' from being rewritten."
+    },
+    {
+      "id": "ng-neg-006",
+      "input": "Two days ago they do not finish the work",
+      "expectedStatus": "needs_ai",
+      "expectedCorrection": "",
+      "expectedRuleFired": null,
+      "notes": "Guard — plural subject ('they') + marker 'two days ago': negation guard holds across plural pronouns."
+    },
+    {
+      "id": "ng-neg-007",
+      "input": "Yesterday I did not go to school",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Yesterday I did not go to school.",
+      "expectedRuleFired": null,
+      "notes": "Already-correct past negation: 'did not go' is grammatically correct; the rule targets bare present verbs, so it does not match and the engine returns unchanged."
+    },
+    {
+      "id": "ng-neg-008",
+      "input": "Last week we do not see the movie",
+      "expectedStatus": "needs_ai",
+      "expectedCorrection": "",
+      "expectedRuleFired": null,
+      "notes": "Guard — 'we do not see' with 'last week' marker: guard blocks 'see' from irregular-past rewrite -> needs_ai."
+    },
+    {
+      "id": "ng-neg-009",
+      "input": "Three days ago he do not eat breakfast",
+      "expectedStatus": "needs_ai",
+      "expectedCorrection": "",
+      "expectedRuleFired": null,
+      "notes": "Guard — third-person male + 'three days ago' + 'eat': guard blocks 'do not eat' rewrite -> needs_ai. Distinct from ng-neg-001 (marker, pronoun, and verb all differ)."
     }
   ]
 }
