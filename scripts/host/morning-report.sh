@@ -66,12 +66,26 @@ trap 'rm -f "${TMPFILE}"' EXIT
            || date -u -d '24 hours ago' +%Y-%m-%dT%H:%M:%SZ 2>/dev/null \
            || echo "")
     if [[ -n "${_since}" ]]; then
-      _mr_json=$(glab api \
-        "projects/cd12536%2FmercyB/merge_requests?state=merged&updated_after=${_since}&per_page=100" \
+      # Paginate pages 1+2 (GitLab max per_page=100; team routinely exceeds 100/day)
+      _mr_p1=$(glab api \
+        "projects/cd12536%2FmercyB/merge_requests?state=merged&updated_after=${_since}&per_page=100&page=1" \
         2>/dev/null || echo "[]")
-      _mr_nums=$(printf '%s\n' "${_mr_json}" \
+      _mr_p2=$(glab api \
+        "projects/cd12536%2FmercyB/merge_requests?state=merged&updated_after=${_since}&per_page=100&page=2" \
+        2>/dev/null || echo "[]")
+      # Merge pages and filter client-side on merged_at (updated_after is a broad net).
+      _mr_filtered=$(SINCE="${_since}" python3 -c "
+import os, sys, json
+since = os.environ['SINCE']
+p1 = json.loads(sys.argv[1])
+p2 = json.loads(sys.argv[2])
+combined = p1 + p2
+out = [mr for mr in combined if (mr.get('merged_at') or '') >= since]
+print(json.dumps(out, separators=(',', ':')))
+" "${_mr_p1}" "${_mr_p2}" 2>/dev/null || printf '%s' "${_mr_p1}")
+      _mr_nums=$(printf '%s\n' "${_mr_filtered}" \
         | grep -oE '"iid":[0-9]+' | awk -F: '{printf "!%s ", $2}' | sed 's/ $//' || echo "")
-      _mr_count=$(printf '%s\n' "${_mr_json}" \
+      _mr_count=$(printf '%s\n' "${_mr_filtered}" \
         | grep -oE '"iid":[0-9]+' | wc -l | tr -d ' ' || echo 0)
       if [[ "${_mr_count}" -gt 0 ]]; then
         echo "Merged: ${_mr_count}  ${_mr_nums}"
