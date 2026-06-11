@@ -199,6 +199,30 @@ export const STT_GARBLE_SIGNALS: readonly SttGarbleSignal[] = [
     fpRiskNote:
       "'Feel week' as a predicate (feel + noun) is never grammatical — 'week' cannot be a predicate adjective. 'Weak' and 'week' are homophones in most accents and a documented STT confusion pair. The negative lookahead and plausibleException block temporal uses ('feel this week', 'feel that the week...', 'feel week-long fatigue').",
   },
+  {
+    id: "stt-dishes-this-is",
+    // "dishes" /dɪʃɪz/ and "this is" /ðɪs ɪz/ are near-homophones for STT engines.
+    // When a possessive/definite/demonstrative determiner (the/my/your/his/her/our/their/
+    // these/those) immediately precedes "this is", the construction is syntactically
+    // impossible — determiners must govern nouns, never a demonstrative + copula clause.
+    // Logged case: learner said "dishes", STT returned "this is" in "a lot of this is
+    // because"; the determiner-gated signal covers the most reliable subset.
+    detect: /\b(?:the|my|your|his|her|our|their|these|those)\s+this\s+is\b/i,
+    garbleRe: /\bthis\s+is\b/gi,
+    intended: "dishes",
+    positives: [
+      "I need to wash the this is after dinner.",
+      "Can you do the this is please?",
+      "She cleaned my this is yesterday.",
+    ],
+    confusableNegatives: [
+      "I think this is correct.",
+      "This is a good idea.",
+      "A lot of this is because of him.",
+    ],
+    fpRiskNote:
+      "Only fires when a possessive or definite/demonstrative determiner (the/my/your/his/her/our/their/these/those) immediately precedes 'this is' — a syntactically impossible construction (determiners must govern nouns, not demonstrative + copula clauses). 'dishes' /dɪʃɪz/ and 'this is' /ðɪs ɪz/ are near-homophones in STT. Standalone 'this is', clausal 'this is because', and pronoun uses such as 'a lot of this is' (where 'this' is a valid pronoun complement of 'of') are all excluded by the determiner-adjacency requirement.",
+  },
 ];
 
 /** Returns the first matching STT garble action for an English sentence, else null. */
