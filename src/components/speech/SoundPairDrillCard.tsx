@@ -1,23 +1,26 @@
 // src/components/speech/SoundPairDrillCard.tsx
 //
-// UI for the VN-EN sound-pair drill. Presentation-only:
-//   1. Pick a category (th/t, r/l, -ed, -s).
-//   2. See a shuffled set of 5 minimal pairs.
-//   3. Play the target via TTS, "record" an attempt, see a mock score.
-//   4. Read why Vietnamese speakers typically confuse this pair.
+// UI for the VN-EN sound-pair drill.
 //
-// STT wiring is deferred. `scoreFromAudio` returns a stub today; the
-// UI copy explicitly tells the user this is a preview score. The seam
-// is in place — swap the implementation in soundPairDrills.ts when the
-// vendor decision lands (see reports/a7-phoneme-runbook.md).
+// Recording → scoring flow (Step-7 wiring):
+//   1. User clicks "Record" → startRecording() via usePronunciationRecorder.
+//   2. User clicks "Stop" → stopRecording(); blob lands in recorderBlob.
+//   3. useEffect fires: engineScore(blob, pair.target) → PronunciationResult.
+//      If status === 'scoring-failed': surface explicit error + retry (C1).
+//   4. textScore({ target, recognized: transcription }) → ScoreResult.
+//   5. buildVerdict(): derives pair-level status (correct/close/wrong),
+//      whether the learner said the contrast word, and the VN interference
+//      note from phonemeFeedback[0].vnConfusion.
+//
+// C1 rules: no silent fallback; scoring-failed → explicit error + retry.
 //
 // Constraints honoured:
 //   - additive to speech/: does not touch SpeechDrill or its tests
 //   - bilingual copy centralised in soundPairCopy.ts
 //   - no new SDK deps
 
-import React, { useCallback, useMemo, useState } from 'react';
-import { ArrowLeft, ArrowRight, Mic, Volume2 } from 'lucide-react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { ArrowLeft, ArrowRight, Mic, Square, Volume2 } from 'lucide-react';
 
 import {
   speak as ttsSpeak,
@@ -27,15 +30,15 @@ import {
 import {
   DRILL_CATEGORIES,
   getDrillByCategory,
-  scoreDrillAttempt,
-  scoreFromAudio,
   type DrillCategory,
 } from '@/lib/pronunciation/soundPairDrills';
+import { scorePronunciation as engineScore } from '@/lib/pronunciation/scoringEngine';
+import { scorePronunciation as textScore } from '@/lib/pronunciation/scorer';
+import type { ScoreResult } from '@/lib/pronunciation/scorer';
 import type { ProblemPair } from '@/lib/pronunciation/vn-phoneme-map';
-import { isF5DrillItem } from '@/lib/pronunciation/f5MinimalPairAdapter';
+import { usePronunciationRecorder } from '@/hooks/usePronunciationRecorder';
 
 import {
-  bandForConfidence,
   CATEGORY_NAMES,
   CATEGORY_WHY,
   UI_COPY,
@@ -54,10 +57,44 @@ export type SoundPairDrillCardProps = {
 
 type Stage = 'pick' | 'drilling' | 'done';
 
-type PairResult = {
-  confidence: number;
-  mocked: boolean;
+type PairVerdict = {
+  status: 'correct' | 'close' | 'wrong';
+  overallScore: number;
+  /** true when the heard word matches pair.contrast (the unwanted form). */
+  heardContrast: boolean;
+  /** VN interference note from phonemeFeedback[0].vnConfusion, if present. */
+  vnInterference: string | undefined;
+  /** Bilingual hint from the word score (close/wrong slots). */
+  hint: { en: string; vi: string } | undefined;
 };
+
+export function buildVerdict(result: ScoreResult, pair: ProblemPair): PairVerdict {
+  const lower = (s: string) => s.toLowerCase().trim();
+  const mainSlot = result.wordScores.find(
+    w => lower(w.word) === lower(pair.target),
+  ) ?? result.wordScores[0];
+
+  const rawStatus = mainSlot?.status ?? 'missed';
+  const status: PairVerdict['status'] =
+    rawStatus === 'correct' ? 'correct'
+    : rawStatus === 'missed' ? 'wrong'
+    : rawStatus === 'close' ? 'close'
+    : 'wrong';
+
+  const heardContrast = result.wordScores.some(
+    w => lower(w.heard) === lower(pair.contrast),
+  );
+
+  const vnInterference = result.phonemeFeedback[0]?.vnConfusion;
+
+  return {
+    status,
+    overallScore: result.overallScore,
+    heardContrast,
+    vnInterference,
+    hint: mainSlot?.hint,
+  };
+}
 
 export function SoundPairDrillCard({
   initialCategory,
@@ -72,25 +109,70 @@ export function SoundPairDrillCard({
     initialCategory ? getDrillByCategory(initialCategory, { size: drillSize }) : [],
   );
   const [index, setIndex] = useState(0);
-  const [lastResult, setLastResult] = useState<PairResult | null>(null);
-  const [isRecording, setIsRecording] = useState(false);
+  const [verdict, setVerdict] = useState<PairVerdict | null>(null);
+  const [isScoring, setIsScoring] = useState(false);
+  const [scoringError, setScoringError] = useState<string | null>(null);
   // C1: surface a message when model audio can't play (cloud null AND no
   // browser speechSynthesis) instead of the old silent fire-and-forget.
-  // The play button doubles as the retry control (re-press clears + retries).
   const [ttsFailed, setTtsFailed] = useState(false);
+
+  const {
+    status: recorderStatus,
+    audioBlob: recorderBlob,
+    error: recorderError,
+    startRecording,
+    stopRecording,
+    reset: resetRecorder,
+  } = usePronunciationRecorder();
 
   const pair = pairs[index];
   const total = pairs.length;
 
+  // Score as soon as a fresh blob lands. recorderBlob and pair are both
+  // in deps: they change together on Next (reset clears blob, index bumps
+  // pair) so the effect exits early on the pair-change render (blob = null).
+  useEffect(() => {
+    if (!recorderBlob || !pair) return;
+
+    let cancelled = false;
+    setIsScoring(true);
+    setScoringError(null);
+    setVerdict(null);
+
+    engineScore(recorderBlob, pair.target)
+      .then(engine => {
+        if (cancelled) return;
+        if (engine.status === 'scoring-failed') {
+          // C1: no silent fallback — explicit error
+          setScoringError(UI_COPY.scoringFailed.vi);
+          setIsScoring(false);
+          return;
+        }
+        const text = textScore({ target: pair.target, recognized: engine.transcription });
+        setVerdict(buildVerdict(text, pair));
+        setIsScoring(false);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        // C1: surface all failures explicitly
+        setScoringError(UI_COPY.scoringFailed.vi);
+        setIsScoring(false);
+      });
+
+    return () => { cancelled = true; };
+  }, [recorderBlob, pair]);
+
   const pickCategory = useCallback(
     (cat: DrillCategory) => {
+      resetRecorder();
+      setVerdict(null);
+      setScoringError(null);
       setCategory(cat);
       setPairs(getDrillByCategory(cat, { size: drillSize }));
       setIndex(0);
-      setLastResult(null);
       setStage('drilling');
     },
-    [drillSize],
+    [drillSize, resetRecorder],
   );
 
   const playModel = useCallback(async (word: string) => {
@@ -101,45 +183,46 @@ export function SoundPairDrillCard({
       const result = await ttsSpeak({ text: word, rate: 0.75 });
       if (result.source === 'none') setTtsFailed(true);
     } catch {
-      // Defensive net for the cloud Audio path; speak() itself no longer throws.
       setTtsFailed(true);
     }
   }, []);
 
   const onRecord = useCallback(async () => {
-    if (!pair || isRecording) return;
-    setIsRecording(true);
-    try {
-      // STT stub — no real mic capture yet. Shape the seam so the wiring
-      // layer can drop in without changing the component.
-      const stt = await scoreFromAudio(null);
-      // Cross-check the mock transcript (empty today) against the target
-      // via the pure scorer; combined with the stub confidence, this
-      // gives a plausible preview number until vendor wiring lands.
-      const textSim = scoreDrillAttempt(pair.target, stt.transcript);
-      const blended = stt.mocked ? stt.confidence : (stt.confidence * 0.5 + textSim * 0.5);
-      setLastResult({ confidence: blended, mocked: stt.mocked });
-    } finally {
-      setIsRecording(false);
+    if (recorderStatus === 'recording') {
+      await stopRecording();
+      return;
     }
-  }, [pair, isRecording]);
+    if (recorderStatus === 'processing' || isScoring) return;
+    setVerdict(null);
+    setScoringError(null);
+    await startRecording();
+  }, [recorderStatus, isScoring, startRecording, stopRecording]);
+
+  const handleRetryScoring = useCallback(() => {
+    setScoringError(null);
+    resetRecorder();
+  }, [resetRecorder]);
 
   const next = useCallback(() => {
+    resetRecorder();
+    setVerdict(null);
+    setScoringError(null);
     if (index + 1 >= total) {
       setStage('done');
       return;
     }
     setIndex((i) => i + 1);
-    setLastResult(null);
-  }, [index, total]);
+  }, [index, total, resetRecorder]);
 
   const backToCategories = useCallback(() => {
+    resetRecorder();
     setStage('pick');
     setCategory(null);
     setPairs([]);
     setIndex(0);
-    setLastResult(null);
-  }, []);
+    setVerdict(null);
+    setScoringError(null);
+  }, [resetRecorder]);
 
   if (stage === 'pick') {
     return (
@@ -159,6 +242,9 @@ export function SoundPairDrillCard({
   }
 
   if (!pair || !category) return null;
+
+  const isRecording = recorderStatus === 'recording';
+  const isProcessing = recorderStatus === 'processing' || isScoring;
 
   return (
     <section
@@ -190,22 +276,12 @@ export function SoundPairDrillCard({
           <Bi text={UI_COPY.sayThis} />
         </p>
         <div className="flex items-center justify-between gap-3">
-          <div>
-            <span
-              className="text-3xl sm:text-4xl font-semibold"
-              data-testid="pair-target"
-            >
-              {pair.target}
-            </span>
-            {isF5DrillItem(pair) && (
-              <p
-                className="text-sm font-mono text-slate-500 mt-0.5"
-                data-testid="pair-ipa-target"
-              >
-                {pair.ipaTarget}
-              </p>
-            )}
-          </div>
+          <span
+            className="text-3xl sm:text-4xl font-semibold"
+            data-testid="pair-target"
+          >
+            {pair.target}
+          </span>
           <button
             type="button"
             onClick={() => playModel(pair.target)}
@@ -216,14 +292,6 @@ export function SoundPairDrillCard({
             <Bi text={UI_COPY.playTarget} />
           </button>
         </div>
-        {isF5DrillItem(pair) && (
-          <p
-            className="text-sm text-slate-600 dark:text-slate-300 mt-2 italic"
-            data-testid="pair-example-target"
-          >
-            "{pair.exampleTarget}"
-          </p>
-        )}
         <p className="text-xs text-slate-500 mt-3">
           <Bi text={UI_COPY.notThis} />:{' '}
           <span
@@ -232,23 +300,7 @@ export function SoundPairDrillCard({
           >
             {pair.contrast}
           </span>
-          {isF5DrillItem(pair) && (
-            <span
-              className="ml-1.5 font-mono text-xs text-slate-500 dark:text-slate-400 not-italic"
-              data-testid="pair-ipa-contrast"
-            >
-              {pair.ipaContrast}
-            </span>
-          )}
         </p>
-        {isF5DrillItem(pair) && (
-          <p
-            className="text-xs text-slate-500 dark:text-slate-400 mt-1 italic"
-            data-testid="pair-example-contrast"
-          >
-            "{pair.exampleContrast}"
-          </p>
-        )}
         {ttsFailed && (
           <p
             className="text-xs text-amber-600 dark:text-amber-400 mt-3"
@@ -261,24 +313,76 @@ export function SoundPairDrillCard({
         )}
       </div>
 
-      <div className="mt-4 flex flex-col sm:flex-row gap-2 sm:items-center">
-        <button
-          type="button"
-          onClick={onRecord}
-          disabled={isRecording}
-          className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 disabled:opacity-60 font-medium"
-          aria-label={isRecording ? 'Recording in progress' : 'Record your attempt'}
-        >
-          <Mic className="w-4 h-4" aria-hidden />
-          {isRecording ? (
-            <Bi text={UI_COPY.recording} />
-          ) : (
-            <Bi text={UI_COPY.record} />
-          )}
-        </button>
+      <div className="mt-4 flex flex-col gap-2">
+        <div className="flex flex-wrap gap-2 items-center">
+          <button
+            type="button"
+            onClick={onRecord}
+            disabled={isProcessing}
+            className={`inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-medium ${
+              isRecording
+                ? 'bg-red-600 text-white hover:bg-red-700'
+                : 'bg-emerald-600 text-white hover:bg-emerald-700 disabled:opacity-60'
+            }`}
+            aria-label={
+              isRecording ? 'Stop recording' :
+              isProcessing ? 'Scoring in progress' :
+              'Record your attempt'
+            }
+            data-testid="record-button"
+          >
+            {isRecording ? (
+              <>
+                <Square className="w-4 h-4" aria-hidden />
+                <Bi text={UI_COPY.stop} />
+              </>
+            ) : isProcessing ? (
+              <>
+                <Mic className="w-4 h-4 animate-pulse" aria-hidden />
+                <Bi text={UI_COPY.scoring} />
+              </>
+            ) : (
+              <>
+                <Mic className="w-4 h-4" aria-hidden />
+                <Bi text={UI_COPY.record} />
+              </>
+            )}
+          </button>
+        </div>
 
-        {lastResult && (
-          <ResultChip result={lastResult} />
+        {/* C1: explicit scoring error + retry, never silent */}
+        {scoringError && (
+          <div
+            className="rounded-xl p-3 bg-red-50 dark:bg-red-900/20 text-sm text-red-900 dark:text-red-100"
+            role="alert"
+            aria-live="assertive"
+            data-testid="pair-score-error"
+          >
+            <p>{scoringError}</p>
+            <button
+              type="button"
+              onClick={handleRetryScoring}
+              className="mt-2 text-xs underline hover:no-underline"
+              data-testid="retry-scoring-button"
+            >
+              <Bi text={UI_COPY.retryScoring} />
+            </button>
+          </div>
+        )}
+
+        {/* Recorder-level error (mic denied, hardware missing, etc.) */}
+        {recorderError && !scoringError && (
+          <p
+            className="text-xs text-red-600 dark:text-red-400"
+            role="alert"
+            data-testid="pair-mic-error"
+          >
+            {recorderError}
+          </p>
+        )}
+
+        {verdict && !scoringError && (
+          <VerdictChip verdict={verdict} pair={pair} />
         )}
       </div>
 
@@ -309,6 +413,61 @@ export function SoundPairDrillCard({
 // ──────────────────────────────────────────────────────────────────────
 // Sub-components
 // ──────────────────────────────────────────────────────────────────────
+
+function VerdictChip({
+  verdict,
+  pair,
+}: {
+  verdict: PairVerdict;
+  pair: ProblemPair;
+}) {
+  const { status, overallScore, heardContrast, vnInterference, hint } = verdict;
+  const isCorrect = status === 'correct';
+
+  return (
+    <div
+      className={`rounded-xl p-3 text-sm ${
+        isCorrect
+          ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-900 dark:text-emerald-100'
+          : 'bg-amber-50 dark:bg-amber-900/20 text-amber-900 dark:text-amber-100'
+      }`}
+      role="status"
+      aria-live="polite"
+      data-testid="pair-verdict"
+      data-status={status}
+    >
+      {isCorrect ? (
+        <p className="font-semibold">
+          <Bi text={UI_COPY.verdictCorrect} />
+        </p>
+      ) : (
+        <>
+          {heardContrast ? (
+            <p className="font-semibold" data-testid="verdict-contrast-msg">
+              Bạn nói &quot;{pair.contrast}&quot; — hãy nói &quot;{pair.target}&quot;.
+            </p>
+          ) : hint ? (
+            <p className="font-semibold" data-testid="verdict-hint-msg">
+              {hint.vi}
+            </p>
+          ) : (
+            <p className="font-semibold">
+              <Bi text={UI_COPY.verdictClose} />
+            </p>
+          )}
+          {vnInterference && (
+            <p className="mt-1 text-xs opacity-80" data-testid="verdict-vi-note">
+              {vnInterference}
+            </p>
+          )}
+        </>
+      )}
+      <p className="mt-1 text-xs tabular-nums opacity-70" data-testid="verdict-score">
+        {overallScore}%
+      </p>
+    </div>
+  );
+}
 
 function CategoryPicker({
   onPick,
@@ -418,41 +577,7 @@ function DoneSummary({
   );
 }
 
-function ResultChip({ result }: { result: PairResult }) {
-  const band = bandForConfidence(result.confidence);
-  const pct = Math.round(result.confidence * 100);
-  return (
-    <div
-      className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 text-sm"
-      role="status"
-      aria-live="polite"
-      data-testid="pair-result"
-      data-mocked={result.mocked ? 'true' : 'false'}
-    >
-      <span className="font-semibold tabular-nums">{pct}%</span>
-      <span className="text-slate-600 dark:text-slate-300">
-        {band.vi}
-      </span>
-      {result.mocked && (
-        <span
-          className="ml-1 text-xs italic text-amber-700 dark:text-amber-300"
-          title={UI_COPY.sttUnavailable.en}
-        >
-          ({UI_COPY.sttUnavailable.vi})
-        </span>
-      )}
-    </div>
-  );
-}
-
 function Bi({ text }: { text: BilingualPair }) {
-  // Tier-2 sweep migration to <Bilingual> — see docs/copy/bilingual-audit.md
-  // "Tier-2 backlog" section. The local `Bilingual` TYPE from
-  // ./soundPairCopy is aliased to `BilingualPair` to free the
-  // `Bilingual` identifier for the shared component import. The
-  // middle `·` separator preserves its original aria-hidden styling
-  // exactly — the muted-slate color stays on the same line as
-  // aria-hidden so the !64 contrast-test exemption applies.
   return (
     <Bilingual
       as="span"

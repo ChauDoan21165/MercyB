@@ -170,4 +170,28 @@ export const UI_COPY = {
     en: 'Could not play the model audio on this device. Tap again to retry.',
     vi: 'Không phát được âm thanh mẫu trên thiết bị này. Bấm lại để thử.',
   } as Bilingual,
+  stop: {
+    en: 'Stop',
+    vi: 'Dừng',
+  } as Bilingual,
+  scoring: {
+    en: 'Scoring…',
+    vi: 'Đang chấm…',
+  } as Bilingual,
+  verdictCorrect: {
+    en: 'Correct — that sound came through clearly.',
+    vi: 'Đúng rồi — âm đó đã rõ ràng.',
+  } as Bilingual,
+  verdictClose: {
+    en: 'Getting there — keep practising.',
+    vi: 'Gần đúng — tiếp tục luyện.',
+  } as Bilingual,
+  scoringFailed: {
+    en: 'Scoring unavailable — record again to retry.',
+    vi: 'Chưa chấm được — thu âm lại để thử.',
+  } as Bilingual,
+  retryScoring: {
+    en: 'Record again',
+    vi: 'Thu âm lại',
+  } as Bilingual,
 };
