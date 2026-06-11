@@ -82,7 +82,7 @@ describe("Netlify /api/mercy-ai Speak function", () => {
     }));
   });
 
-  it("fails safely to clarification when the DeepSeek key is missing", async () => {
+  it("returns a typed retryable error (not a canned clarification) when the DeepSeek key is missing", async () => {
     delete process.env.DEEPSEEK_API_KEY;
     const { handler } = await import("../mercy-ai");
 
@@ -92,10 +92,10 @@ describe("Netlify /api/mercy-ai Speak function", () => {
     }));
 
     expect(response.statusCode).toBe(200);
-    expect(JSON.parse(response.body)).toMatchObject({
-      question: "Mercy chưa nghe rõ. Bạn nói lại câu đó nhé. I didn't catch that clearly. Can you say it again?",
-      provider: "local-fallback",
-      fallback: true,
+    expect(JSON.parse(response.body)).toEqual({
+      ok: false,
+      retryable: true,
+      reason: "speak_followup_unavailable",
     });
     expect(fetch).not.toHaveBeenCalled();
   });
