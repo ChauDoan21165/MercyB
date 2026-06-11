@@ -26,6 +26,8 @@ import {
 } from "@/lib/tutor/conversationTelemetry";
 import type { ConversationEncouragement } from "@/lib/retention/conversationHooks";
 import { recordActiveDay } from "@/lib/retention/recordActiveDay";
+import { ConsentModal } from "@/components/ConsentModal";
+import { hasCaptureConsentDecision } from "@/lib/conversationCapture/captureConsent";
 
 // A 'Sửa câu' correction handed off from the grammar surface. When present we
 // seed a learner-led, live-generated conversation with the learner's own
@@ -75,6 +77,10 @@ export default function AiConversationScenarioPanel({
   // Bumped on every reset so the telemetry effect ends the prior session and
   // begins a fresh one even when the learner restarts the same scenario.
   const [sessionEpoch, setSessionEpoch] = useState(0);
+  // One-time consent gate: shown on the learner's first conversation turn when
+  // no prior decision is stored. Either choice (agree or decline) persists so
+  // the modal never shows again. Capture proceeds only after opt-in.
+  const [showConsentModal, setShowConsentModal] = useState(false);
 
   const scenario = AI_CONVERSATION_SCENARIOS[scenarioId];
   const canSend = Boolean(input.trim()) && !loading && canSendAiConversationTurn(session);
@@ -137,6 +143,13 @@ export default function AiConversationScenarioPanel({
   const handleSend = async () => {
     const learnerText = input.trim();
     if (!learnerText || !accessToken || !canSendAiConversationTurn(session)) return;
+    // On the first send (no prior consent decision), pause and show the modal.
+    // After any decision (agree or decline) the modal never shows again and
+    // the send proceeds. The learner's typed text stays in state so it is not lost.
+    if (!hasCaptureConsentDecision()) {
+      setShowConsentModal(true);
+      return;
+    }
     if (!loadingAccess && accessConfirmed && !hasPremium) {
       setLoading(false);
       setError("");
@@ -241,6 +254,14 @@ export default function AiConversationScenarioPanel({
     }
   };
 
+  // Called by ConsentModal after the learner makes any choice (agree or decline).
+  // Close the modal and re-run handleSend — hasCaptureConsentDecision() is now
+  // true so the consent branch is skipped and the actual turn is submitted.
+  const handleConsentDecision = () => {
+    setShowConsentModal(false);
+    void handleSend();
+  };
+
   if (loadingAccess) {
     return (
       <section className="mx-auto mt-4 w-full max-w-3xl rounded-lg border border-slate-200 bg-white p-4 text-sm font-bold text-slate-600">
@@ -256,6 +277,8 @@ export default function AiConversationScenarioPanel({
   }
 
   return (
+    <>
+    <ConsentModal open={showConsentModal} onDecision={handleConsentDecision} />
     <section
       className="mx-auto mt-4 flex min-h-[640px] w-full max-w-3xl flex-col rounded-lg border border-slate-200 bg-white shadow-sm"
       data-testid="ai-conversation-scenario-panel"
@@ -422,6 +445,7 @@ export default function AiConversationScenarioPanel({
         </div>
       </div>
     </section>
+    </>
   );
 }
 
