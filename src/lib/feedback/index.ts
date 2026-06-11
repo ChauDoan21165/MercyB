@@ -83,7 +83,7 @@ export {
   detectRegisterError,
   type RegisterDetectionInput,
   type RegisterDetectionResult,
-} from './registerDetector.js';
+} from './registerDetector';
 
 // Step 11 seed — awkward-Vietlish DARK detector (flag-gated, telemetry-only).
 // Surfaced on the public API so it is discoverable and not a dead orphan; it
