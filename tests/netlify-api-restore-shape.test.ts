@@ -1,11 +1,20 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
+import { handler as ttsHandler } from "../netlify/functions/api-tts";
 
 const root = process.cwd();
 
 function read(rel: string): string {
   return fs.readFileSync(path.join(root, rel), "utf8");
+}
+
+function ttsEvent(body: Record<string, unknown>) {
+  return {
+    httpMethod: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(body),
+  };
 }
 
 describe("Netlify API restore shape", () => {
@@ -62,5 +71,57 @@ describe("Netlify API restore shape", () => {
     const mercyAi = read("netlify/functions/api-mercy-ai.ts");
     expect(mercyAi).toContain('norm(body.mode) === "speak-follow-up"');
     expect(mercyAi).toContain("buildDeepSeekSpeakFollowUp");
+  });
+});
+
+describe("Netlify /api/tts retry + never-raw-502 (parity with Pages handler)", () => {
+  const ORIGINAL = { url: process.env.SUPABASE_URL, key: process.env.SUPABASE_ANON_KEY };
+  afterEach(() => {
+    process.env.SUPABASE_URL = ORIGINAL.url;
+    process.env.SUPABASE_ANON_KEY = ORIGINAL.key;
+    vi.unstubAllGlobals();
+    vi.clearAllMocks();
+  });
+  function withEnv() {
+    process.env.SUPABASE_URL = "https://project.supabase.co";
+    process.env.SUPABASE_ANON_KEY = "anon-key";
+  }
+
+  it("recovers a transient Vietnamese Azure miss on the retry (200, no 502)", async () => {
+    withEnv();
+    const flaky = vi.fn()
+      .mockResolvedValueOnce(Response.json({ audioUrl: "data:audio/mpeg;base64,SUQzBAAA", provider: "elevenlabs" }))
+      .mockResolvedValueOnce(Response.json({ audioUrl: "data:audio/mpeg;base64,SUQzBAAA", provider: "azure" }));
+    vi.stubGlobal("fetch", flaky);
+
+    const res = await ttsHandler(ttsEvent({ text: "Xin chao", language: "vi" }));
+
+    expect(res.statusCode).toBe(200);
+    expect(flaky).toHaveBeenCalledTimes(2);
+  });
+
+  it("returns a typed retryable 503 (never a raw 502) on persistent non-Azure Vietnamese", async () => {
+    withEnv();
+    const persistent = vi.fn(async () =>
+      Response.json({ audioUrl: "data:audio/mpeg;base64,SUQzBAAA", provider: "elevenlabs" }));
+    vi.stubGlobal("fetch", persistent);
+
+    const res = await ttsHandler(ttsEvent({ text: "Xin chao", language: "vi" }));
+
+    expect(res.statusCode).toBe(503);
+    expect(persistent).toHaveBeenCalledTimes(2);
+    expect(JSON.parse(res.body ?? "{}")).toMatchObject({ ok: false, retryable: true });
+  });
+
+  it("passes a 4xx auth error through without retrying", async () => {
+    withEnv();
+    const unauthorized = vi.fn(async () => Response.json({ error: "Invalid JWT" }, { status: 401 }));
+    vi.stubGlobal("fetch", unauthorized);
+
+    const res = await ttsHandler(ttsEvent({ text: "Hello", language: "en" }));
+
+    expect(res.statusCode).toBe(401);
+    expect(unauthorized).toHaveBeenCalledTimes(1);
+    expect(JSON.parse(res.body ?? "{}")).toMatchObject({ ok: false, retryable: false });
   });
 });
