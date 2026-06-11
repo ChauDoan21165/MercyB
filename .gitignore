@@ -91,3 +91,6 @@ supabase/.temp
 
 # Storybook build output (Lane E)
 storybook-static
+
+# k6 load test reports (auto-generated; too large for git)
+reports/load/
