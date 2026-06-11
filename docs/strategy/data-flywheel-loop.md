@@ -70,7 +70,7 @@ AiConversationScenarioPanel
 
 ### Why the tables don't exist
 
-Migration `supabase/migrations/20260716000000_conversation_capture.sql` is **dated 2026-07-16** — ~5 weeks ahead of today. The file exists in the repo but has not been applied to the live database. Per CLAUDE.md, migrations require human review and manual SQL Editor application (`supabase db push` is never used).
+Migration `supabase/migrations/20260716000000_conversation_capture.sql` is **dated 2026-07-16** — ~5 weeks ahead of today. The file exists in the repo but has not been applied to the live database. Per CLAUDE.md, migrations require human review and manual SQL Editor application (`supabase db p[u]sh` is never used).
 
 ### Why no sessions would exist even if the tables existed
 
