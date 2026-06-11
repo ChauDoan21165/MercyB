@@ -565,10 +565,16 @@ function buildGrammarExplanation(
   explainLanguage: ExplainLanguage,
 ): string {
   if (target !== "en") return MOCK_RESULTS_BY_TARGET[target].explanation[explainLanguage];
-  return buildEnglishConversationExplanation(userText, correction, explainLanguage)
-    || (explainLanguage === "vi"
-      ? "Câu của bạn đã rõ. Mercy chỉ chỉnh dấu câu hoặc cách diễn đạt cho tự nhiên hơn."
-      : "Your sentence is clear. Mercy only adjusted punctuation or phrasing.");
+  // Only show the "no changes needed" fallback when an actual correction was applied. For
+  // "unchanged" (no rules fired, input already clean), an empty explanation is correct —
+  // there is nothing to explain. The old unconditional fallback would surface "câu của bạn
+  // đã rõ" even on fragments or broken inputs that slipped past the rule engine (Q1 bug).
+  const specific = buildEnglishConversationExplanation(userText, correction, explainLanguage);
+  if (specific) return specific;
+  if (correction.status === "unchanged") return "";
+  return explainLanguage === "vi"
+    ? "Câu của bạn đã rõ. Mercy chỉ chỉnh dấu câu hoặc cách diễn đạt cho tự nhiên hơn."
+    : "Your sentence is clear. Mercy only adjusted punctuation or phrasing.";
 }
 
 function buildGrammarTip(

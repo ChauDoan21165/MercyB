@@ -324,6 +324,38 @@ export function validateCorrectionChangedWhenNeeded(
 }
 
 /**
+ * Detects article-initiated fragments: sentences that start with "a" or "an" but have no finite
+ * verb in the first clause (before any coordinating conjunction). These are almost always learner
+ * fragments rather than complete sentences.
+ *
+ * Precision gate: only triggers on article initiators — the highest-confidence signal that the
+ * learner started a noun phrase instead of a sentence. False-positive risk with "an" + verb (e.g.
+ * "An unexpected thing happened") is guarded by the finite-verb check.
+ *
+ * Positives: "a good mother yesterday and invited her", "a beautiful day and no school",
+ *   "a student in my class and very smart", "an old man yesterday and helped me"
+ * Confusable negatives (must NOT fire): "an unexpected visitor arrived",
+ *   "a dog barked", "an eagle flies high"
+ */
+function looksLikeArticleInitiatedFragment(input: string): boolean {
+  const normalized = input.replace(/\s+/g, " ").trim();
+  // Must start with bare indefinite article (article-initiated noun phrase).
+  // "The ..." is less reliable (questions, demonstratives) — only "a/an".
+  if (!/^(?:a|an)\s/i.test(normalized)) return false;
+  // The Vietlish pattern is "article NP + conjunction + predicate-without-subject".
+  // Simple noun phrases without a conjunction (e.g. "a documentary about whales") are
+  // not the pattern — they must not be routed to AI.
+  if (!/\s+(?:and|or|but|so|yet)\s+/i.test(normalized)) return false;
+  // Take the first clause (before coordinating conjunction).
+  const firstClause = normalized.split(/\s+(?:and|or|but|so|yet)\s+/i)[0];
+  // If a finite verb appears in the first clause it is NOT a fragment.
+  const finiteVerbPattern =
+    /\b(?:is|are|was|were|am|will|would|can|could|shall|should|may|might|do|does|did|have|has|had|be|been|go|goes|went|come|comes|came|want|wants|wanted|need|needs|needed|like|likes|liked|love|loves|loved|work|works|worked|speak|speaks|spoke|study|studies|studied|help|helps|helped|arrive|arrives|arrived|happen|happens|happened|become|becomes|became|look|looks|looked|seem|seems|seemed|feel|feels|felt|get|gets|got|make|makes|made|take|takes|took|give|gives|gave|know|knows|knew|see|sees|saw|think|thinks|thought|say|says|said|tell|tells|told|run|runs|ran|eat|eats|ate|drink|drinks|drank|walk|walks|walked|start|starts|started|stop|stops|stopped|try|tries|tried|ask|asks|asked|find|finds|found|show|shows|showed|move|moves|moved|live|lives|lived|play|plays|played|buy|buys|bought|sell|sells|sold|bring|brings|brought|put|puts|leave|leaves|left|sit|sits|sat|stand|stands|stood|win|wins|won|lose|loses|lost|send|sends|sent|read|reads|write|writes|wrote|open|opens|opened|close|closes|closed|call|calls|called|wait|waits|waited|turn|turns|turned|stay|stays|stayed|follow|follows|followed|pass|passes|passed|carry|carries|carried|keep|keeps|kept|hold|holds|held|cut|cuts|continue|continues|continued|drive|drives|drove)\b/i;
+  if (finiteVerbPattern.test(firstClause)) return false;
+  return true;
+}
+
+/**
  * Corrects a single, non-run-on clause through the full rule pipeline.
  * Receives a whitespace-normalised, non-empty string.
  * Internal — call `correctWithTutorRules` from outside this module.
@@ -424,6 +456,21 @@ function _correctClause(trimmed: string, language: TutorCorrectionLanguage): Cor
       appliedRuleIds: [],
       message: AI_CORRECTION_REQUIRED_MESSAGE,
       semanticHint: implausible.clarificationHint,
+    };
+  }
+
+  // Q1 trust floor: article-initiated fragments (no finite verb in the first clause) must never
+  // silently pass as "correct". Route to AI so the learner gets an honest correction or a request
+  // to rephrase — never a false-positive "câu của bạn đã rõ".
+  // Scope: only fires when no rule applied (appliedRuleIds is empty at this point) and no finite
+  // verb precedes the first coordinating conjunction (or end of clause). High-precision: article
+  // initiators ("a", "an") are rarely valid sentence starters in English.
+  if (language === "en" && looksLikeArticleInitiatedFragment(trimmed)) {
+    return {
+      status: "needs_ai",
+      corrected: "",
+      appliedRuleIds: [],
+      message: AI_CORRECTION_REQUIRED_MESSAGE,
     };
   }
 
