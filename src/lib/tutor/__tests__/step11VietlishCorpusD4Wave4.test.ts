@@ -46,13 +46,13 @@ describe("step11 vietlish corpus wave 4 (D4-2 review queue)", () => {
     expect(data.status).toBe("review_not_wired");
   });
 
-  it("holds exactly 182 entries and a matching count field", () => {
+  it("holds exactly 146 entries and a matching count field", () => {
     // 200 authored; 1 cross-wave duplicate removed in the 2026-06-10 dedup pass
     // ("the weather is very comfortable today" is canonical in merged wave3);
     // 17 freq=high entries promoted into VIETLISH_CORPUS in the Step-11 Stage-1
     // promotion (2026-06-10), leaving 182.
-    expect(data.entries).toHaveLength(182);
-    expect(data.count).toBe(182);
+    expect(data.entries).toHaveLength(146);
+    expect(data.count).toBe(146);
   });
 
   it("matches the VietlishCorpusEntry schema exactly (six string fields, valid enums)", () => {

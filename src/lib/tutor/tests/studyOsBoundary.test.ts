@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 const repoRoot = process.cwd();
 const tutorRoot = join(repoRoot, "src", "lib", "tutor");
 const speakTopicsRelPrefix = ["src", "lib", "tutor", "speakTopics", ""].join(sep);
+const vietlishCorpusRel = ["src", "lib", "tutor", "vietlishCorpus.ts"].join(sep);
 
 type SourceFile = {
   path: string;
@@ -61,14 +62,29 @@ function isSpeakTopicFile(rel: string): boolean {
   return rel.startsWith(speakTopicsRelPrefix);
 }
 
+// vietlishCorpus.ts is a pure CONTENT data file (learner example sentences for
+// the Vietlish interference engine). Like speakTopics, its strings legitimately
+// carry emotional vocabulary ("I feel ashamed to ask for help") — content, not a
+// shame mechanic. Being data, it can never hold a code mechanic, so exempting it
+// from the shame WORD scan is safe.
+function isVietlishCorpusFile(rel: string): boolean {
+  return rel === vietlishCorpusRel;
+}
+
 // The "shame/guilt mechanic" rule guards the Study OS ENGINE against shame
-// *mechanics*. speakTopics/* are CONTENT files where "shame" legitimately
-// appears in anti-shame coaching copy (MercyBlade is explicitly low-shame), so
-// the word-level scan would false-positive on the product's own values copy.
-// Only the shame WORD scan is exempted for content; every code-mechanic rule
-// (Supabase/XP/streak/writes/analytics) still applies to every file.
+// *mechanics*. speakTopics/* and vietlishCorpus.ts are CONTENT files where
+// "shame"/"ashamed" legitimately appears in anti-shame coaching copy or learner
+// vocabulary (MercyBlade is explicitly low-shame), so the word-level scan would
+// false-positive on the product's own content. Only the shame WORD scan is
+// exempted for content; every code-mechanic rule (Supabase/XP/streak/writes/
+// analytics) still applies to every file.
 function runtimeRuleAppliesToFile(label: string, rel: string): boolean {
-  if (label === "shame/guilt mechanic" && isSpeakTopicFile(rel)) return false;
+  if (
+    label === "shame/guilt mechanic" &&
+    (isSpeakTopicFile(rel) || isVietlishCorpusFile(rel))
+  ) {
+    return false;
+  }
   return true;
 }
 

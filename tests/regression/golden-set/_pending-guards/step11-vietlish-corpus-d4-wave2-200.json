@@ -12,7 +12,7 @@
   "definition": "Candidate Vietnamese-L1 interference items for human review before any promotion into VIETLISH_CORPUS. Each entry is a non-native English production (vietlish) paired with its natural target (natural), the VN source pattern with diacritics (sourcePattern), and a contextual sentence. A handful of entries are deliberate natural 'control' anchors (flagged in sourcePattern) so reviewers can confirm the detector abstains on natural usage.",
   "dedupedAgainst": "live 354-entry VIETLISH_CORPUS (zero string overlap), A4 d4 wave (...corpus-d4-wave-200.json, separate file), A6 !690 (selector test only)",
   "generatedFor": "2026-06-10 CEO directive D4-2",
-  "count": 151,
+  "count": 125,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -22,62 +22,6 @@
     "literal_translation": "LT"
   },
   "entries": [
-    {
-      "vietlish": "close the wifi",
-      "natural": "turn off the wifi",
-      "sourcePattern": "tắt wifi mapped to close instead of turn off",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "Close the wifi before you sleep to save battery."
-    },
-    {
-      "vietlish": "I hit my teeth every morning",
-      "natural": "I brush my teeth every morning",
-      "sourcePattern": "đánh răng -> đánh literally = hit/strike",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "I hit my teeth every morning before work."
-    },
-    {
-      "vietlish": "can you shoot a picture for us",
-      "natural": "can you take a picture for us",
-      "sourcePattern": "chụp hình -> chụp = shoot/snap mapped to shoot",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "We are tourists, can you shoot a picture for us?"
-    },
-    {
-      "vietlish": "I go up the internet to check",
-      "natural": "I go online to check",
-      "sourcePattern": "lên mạng -> lên = go up mapped literally",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "I go up the internet to check the price first."
-    },
-    {
-      "vietlish": "eat wedding",
-      "natural": "attend a wedding",
-      "sourcePattern": "ăn cưới -> ăn = eat in the fixed phrase for attending a wedding",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "This Sunday I must eat wedding of my cousin."
-    },
-    {
-      "vietlish": "eat Tet",
-      "natural": "celebrate Tet",
-      "sourcePattern": "ăn Tết -> ăn = eat for celebrating the Lunar New Year",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "My whole family comes home to eat Tet."
-    },
-    {
-      "vietlish": "I will return country next month",
-      "natural": "I will go back to my country next month",
-      "sourcePattern": "về nước -> 'return country' calque",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "After I finish study, I will return country next month."
-    },
     {
       "vietlish": "he gave me many advices",
       "natural": "he gave me a lot of advice",
@@ -215,22 +159,6 @@
       "context": "My mother always says the honesty is important."
     },
     {
-      "vietlish": "I want to make a party",
-      "natural": "I want to throw a party",
-      "sourcePattern": "tổ chức tiệc -> 'make' for organising a party",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "For my birthday I want to make a party."
-    },
-    {
-      "vietlish": "my family makes business in the market",
-      "natural": "my family does business in the market",
-      "sourcePattern": "làm ăn -> 'make business' instead of 'do business'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "My family makes business in the market for many years."
-    },
-    {
       "vietlish": "can you take a photo with your phone",
       "natural": "can you take a photo with your phone",
       "sourcePattern": "(control) natural collocation, keep as negative anchor",
@@ -245,70 +173,6 @@
       "category": "collocation",
       "frequency": "low",
       "context": "I am tired, I want to take a nap after lunch."
-    },
-    {
-      "vietlish": "let me take a coffee first",
-      "natural": "let me have a coffee first",
-      "sourcePattern": "uống cà phê -> 'take a coffee' for drinking",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "Before we start, let me take a coffee first."
-    },
-    {
-      "vietlish": "they will get a baby in May",
-      "natural": "they will have a baby in May",
-      "sourcePattern": "có em bé -> 'get a baby' for having a child",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "Good news, they will get a baby in May."
-    },
-    {
-      "vietlish": "do not say a lie to me",
-      "natural": "do not tell a lie to me",
-      "sourcePattern": "nói dối -> 'say a lie' instead of 'tell a lie'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "Look at me, do not say a lie to me."
-    },
-    {
-      "vietlish": "I do sport every evening",
-      "natural": "I play sports every evening",
-      "sourcePattern": "chơi thể thao -> 'do sport' for playing sports",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "To stay healthy I do sport every evening."
-    },
-    {
-      "vietlish": "I can play piano a little",
-      "natural": "I can play the piano a little",
-      "sourcePattern": "chơi piano -> missing 'the' before an instrument",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "At parties I can play piano a little."
-    },
-    {
-      "vietlish": "I play with my phone all day",
-      "natural": "I'm on my phone all day",
-      "sourcePattern": "nghịch điện thoại -> 'play with phone' for using a phone",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "My mother is angry, I play with my phone all day."
-    },
-    {
-      "vietlish": "I see movie at home on weekend",
-      "natural": "I watch movies at home on weekends",
-      "sourcePattern": "xem phim -> 'see movie' instead of 'watch'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "I do not go out, I see movie at home on weekend."
-    },
-    {
-      "vietlish": "he made a big progress this year",
-      "natural": "he made great progress this year",
-      "sourcePattern": "tiến bộ -> 'a big progress'; progress is uncountable",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "His teacher is proud, he made a big progress this year."
     },
     {
       "vietlish": "it depend of you",
@@ -1007,46 +871,6 @@
       "context": "Wait here, I come back after 5 minutes."
     },
     {
-      "vietlish": "calculate money for me please",
-      "natural": "can I get the check, please",
-      "sourcePattern": "tính tiền -> literal 'calculate money'",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "We are leaving, calculate money for me please."
-    },
-    {
-      "vietlish": "I want take away, not eat here",
-      "natural": "I'd like it to go, not to eat in",
-      "sourcePattern": "mang về -> 'take away' + 'eat here' calque",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "I am in a hurry, I want take away, not eat here."
-    },
-    {
-      "vietlish": "one more bowl, please add for me",
-      "natural": "one more bowl, please",
-      "sourcePattern": "thêm cho tôi -> 'add for me' calque",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "It is delicious, one more bowl, please add for me."
-    },
-    {
-      "vietlish": "can you make the price cheaper",
-      "natural": "can you give me a better price",
-      "sourcePattern": "bớt giá -> 'make the price cheaper' calque",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "I buy two, can you make the price cheaper?"
-    },
-    {
-      "vietlish": "I want try this clothes",
-      "natural": "I'd like to try on these clothes",
-      "sourcePattern": "thử đồ -> missing 'on' + 'clothes' number",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "Excuse me, I want try this clothes."
-    },
-    {
       "vietlish": "do you have other color",
       "natural": "do you have another color",
       "sourcePattern": "màu khác -> 'other' for singular 'another'",
@@ -1055,28 +879,12 @@
       "context": "I do not like black, do you have other color?"
     },
     {
-      "vietlish": "please wrap careful for me",
-      "natural": "could you wrap it carefully for me",
-      "sourcePattern": "gói cẩn thận -> adverb form + 'for me' calque",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "It is a gift, please wrap careful for me."
-    },
-    {
       "vietlish": "I want to send this to Vietnam, how much",
       "natural": "how much to send this to Vietnam",
       "sourcePattern": "gửi về Việt Nam -> 'how much' tag at the end",
       "category": "word_order",
       "frequency": "medium",
       "context": "At the post office: I want to send this to Vietnam, how much?"
-    },
-    {
-      "vietlish": "can you note for me the address",
-      "natural": "could you write down the address for me",
-      "sourcePattern": "ghi giúp -> 'note for me' calque",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "I will forget, can you note for me the address?"
     },
     {
       "vietlish": "I am looking, thank you",
@@ -1093,14 +901,6 @@
       "category": "register",
       "frequency": "medium",
       "context": "I did not catch it, give me one more time, please."
-    },
-    {
-      "vietlish": "can you teach me the way to the station",
-      "natural": "can you show me the way to the station",
-      "sourcePattern": "chỉ đường -> 'teach the way' instead of 'show'",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "I am lost, can you teach me the way to the station?"
     },
     {
       "vietlish": "I am full, cannot eat more",
@@ -1125,14 +925,6 @@
       "category": "literal_translation",
       "frequency": "medium",
       "context": "These days I am very stress because work."
-    },
-    {
-      "vietlish": "my head is paining",
-      "natural": "I have a headache",
-      "sourcePattern": "đau đầu -> 'paining' verb calque",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "Give me a moment, my head is paining."
     },
     {
       "vietlish": "I am fever since last night",
