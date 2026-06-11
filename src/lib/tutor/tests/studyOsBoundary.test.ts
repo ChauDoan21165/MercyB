@@ -106,9 +106,11 @@ describe("Study OS static boundary", () => {
       "src/lib/tutor/correctionEngine.ts",
       "src/lib/tutor/emotionalResponseBoundary.ts",
       "src/lib/tutor/languageRegistry.ts",
+      "src/lib/tutor/learnerHistoryProfile.ts",
       "src/lib/tutor/learningEvents.ts",
       "src/lib/tutor/learningEventSummary.ts",
       "src/lib/tutor/masteryGraph.ts",
+      "src/lib/tutor/nextLessonRecommender.ts",
       "src/lib/tutor/pivotPromptSafety.ts",
       "src/lib/tutor/productConfigs.ts",
       "src/lib/tutor/speakableText.ts",
@@ -235,10 +237,11 @@ describe("Study OS static boundary", () => {
 
   it("allows only documented safe local storage surfaces", () => {
     const localStorageUsers = productionFiles
-      .filter((file) => /\blocalStorage\b/.test(file.text))
+      .filter((file) => /\blocalStorage\b/.test(stripComments(file.text)))
       .map((file) => file.rel);
 
     expect(localStorageUsers).toEqual([
+      "src/lib/tutor/learnerHistoryProfile.ts",
       "src/lib/tutor/learningEvents.ts",
       "src/lib/tutor/studySessionState.ts",
     ]);
