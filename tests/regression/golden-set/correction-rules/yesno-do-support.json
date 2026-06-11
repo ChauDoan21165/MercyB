@@ -54,6 +54,54 @@
       "expectedCorrection": "You like coffee.",
       "expectedRuleFired": null,
       "notes": "Declarative surface without '?'; the rule must not turn statements into questions."
+    },
+    {
+      "id": "qf1-neg-004",
+      "input": "Does she have a car?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Does she have a car?",
+      "expectedRuleFired": null,
+      "notes": "3sg already has does-support; rule must not fire on an already-correct does-question."
+    },
+    {
+      "id": "qf1-neg-005",
+      "input": "Did you like coffee?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did you like coffee?",
+      "expectedRuleFired": null,
+      "notes": "Past auxiliary already present; rule targets bare present verbs only, must not touch past-aux questions."
+    },
+    {
+      "id": "qf1-neg-006",
+      "input": "Don't they live in Hanoi?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Don't they live in Hanoi?",
+      "expectedRuleFired": null,
+      "notes": "Negated do-support already present ('don't'); rule must not add a second 'do' auxiliary."
+    },
+    {
+      "id": "qf1-neg-007",
+      "input": "Will you like coffee?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Will you like coffee?",
+      "expectedRuleFired": null,
+      "notes": "Modal auxiliary already present; rule is scoped to do/does insertion only, must not fire on modal questions."
+    },
+    {
+      "id": "qf1-neg-008",
+      "input": "She likes coffee?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She likes coffee?",
+      "expectedRuleFired": null,
+      "notes": "Inflected verb form 'likes' is not in the bare-verb whitelist (like/live/have); rule must not insert does-support for an already-conjugated form."
+    },
+    {
+      "id": "qf1-neg-009",
+      "input": "You liked coffee?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "You liked coffee?",
+      "expectedRuleFired": null,
+      "notes": "Past-tense form 'liked' is not a bare present verb; rule must not apply do-support to a past-tense question surface."
     }
   ]
 }

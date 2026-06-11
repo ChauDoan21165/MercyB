@@ -62,6 +62,54 @@
       "expectedCorrection": "Do you look at them?",
       "expectedRuleFired": null,
       "notes": "Question protection: auxiliary question already correct; rule must abstain."
+    },
+    {
+      "id": "lap-neg-004",
+      "input": "I look at her every morning.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I look at her every morning.",
+      "expectedRuleFired": null,
+      "notes": "Already-correct declarative: 'at' is present; rule must not insert a second 'at'."
+    },
+    {
+      "id": "lap-neg-005",
+      "input": "She is looking at him.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She is looking at him.",
+      "expectedRuleFired": null,
+      "notes": "Progressive form already correct: 'looking at him' — 'at' present; rule must not fire on -ing form with existing preposition."
+    },
+    {
+      "id": "lap-neg-006",
+      "input": "Did she look at him?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Did she look at him?",
+      "expectedRuleFired": null,
+      "notes": "Past auxiliary question already correct: 'at' present; question-form protection holds for past-tense auxiliaries."
+    },
+    {
+      "id": "lap-neg-007",
+      "input": "Who do you look at?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Who do you look at?",
+      "expectedRuleFired": null,
+      "notes": "Wh-question with stranded particle (different wh-word from lap-neg-002): 'at' is correctly stranded at end; rule must not insert a second 'at'."
+    },
+    {
+      "id": "lap-neg-008",
+      "input": "You should look at them.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "You should look at them.",
+      "expectedRuleFired": null,
+      "notes": "Modal declarative already correct: 'should look at them' — 'at' present; rule must not fire."
+    },
+    {
+      "id": "lap-neg-009",
+      "input": "Look at the board.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Look at the board.",
+      "expectedRuleFired": null,
+      "notes": "Imperative already correct: 'at' present + non-pronoun object ('the board'); rule must not insert 'at' before a noun object."
     }
   ]
 }
