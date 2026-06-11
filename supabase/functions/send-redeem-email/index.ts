@@ -1,4 +1,11 @@
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 import { Resend } from "https://esm.sh/resend@2.0.0";
+
+import {
+  extractBearerToken,
+  isAuthorizedCaller,
+  isKnownRecipient,
+} from "./auth.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -43,10 +50,8 @@ Deno.serve(async (req) => {
   // bank-transfer-orders. Tracking: unsubscribe-fix issue #694.
   // ---------------------------------------------------------------------------
   const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-  const presentedToken = (req.headers.get("Authorization") ?? "")
-    .replace(/^Bearer\s+/i, "")
-    .trim();
-  if (!serviceRoleKey || presentedToken !== serviceRoleKey) {
+  const presentedToken = extractBearerToken(req.headers.get("Authorization"));
+  if (!isAuthorizedCaller(presentedToken, serviceRoleKey)) {
     console.warn(
       "[send-redeem-email] BLOCKED: caller not on sender allowlist " +
         "(missing/invalid service-role credential)",
@@ -76,6 +81,35 @@ Deno.serve(async (req) => {
 
     if (!email || !tier) {
       return send({ ok: false, error: "Missing email or tier" });
+    }
+
+    // ── Audience check (fail-closed relay guard) ──────────────────────
+    // Even a valid service-role caller must not send to an arbitrary
+    // address. Verify the recipient exists in auth.users before relaying.
+    const supabaseUrl = Deno.env.get("SUPABASE_URL") ?? "";
+    if (!supabaseUrl) {
+      console.error("[send-redeem-email] SUPABASE_URL not set — audience check unavailable");
+      return new Response(
+        JSON.stringify({ ok: false, error: "Forbidden: audience check unavailable" }),
+        { headers: corsHeaders, status: 403 },
+      );
+    }
+    const adminClient = createClient(supabaseUrl, serviceRoleKey!, {
+      auth: { persistSession: false },
+    });
+    const { data: usersPage, error: lookupErr } = await adminClient.auth.admin.listUsers({
+      page: 1,
+      perPage: 10000,
+    });
+    if (lookupErr || !isKnownRecipient(email, usersPage?.users ?? [])) {
+      console.warn(
+        "[send-redeem-email] BLOCKED: audience check failed — recipient not in auth.users:",
+        email,
+      );
+      return new Response(
+        JSON.stringify({ ok: false, error: "Forbidden: recipient not a known user" }),
+        { headers: corsHeaders, status: 403 },
+      );
     }
 
     console.log("[send-redeem-email] Sending email to:", email, "tier:", tier);
