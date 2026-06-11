@@ -26,6 +26,7 @@ import {
   looksLikeExternalNoise,
   looksLikeDomMutationExtensionNoise,
   looksLikeAnonymousStackOverflow,
+  looksLikeAnonymousReferenceError,
   runsInsideZaloIab,
   buildSentryOptions,
   enrichEventTags,
@@ -665,6 +666,133 @@ describe("looksLikeAnonymousStackOverflow — injected-script stack overflow dro
     expect(looksLikeAnonymousStackOverflow({})).toBe(false);
     expect(
       looksLikeAnonymousStackOverflow({ message: "Maximum call stack size exceeded" }),
+    ).toBe(false);
+  });
+});
+
+describe("looksLikeAnonymousReferenceError — injected-script ReferenceError drop", () => {
+  it("drops APP-DM shape: 'iframe is not defined' with all anonymous frames", () => {
+    expect(
+      looksLikeAnonymousReferenceError({
+        exception: {
+          values: [
+            {
+              type: "ReferenceError",
+              value: "iframe is not defined",
+              stacktrace: { frames: [{ filename: "<anonymous>" }] },
+            },
+          ],
+        },
+      }),
+    ).toBe(true);
+  });
+
+  it("drops APP-BQ shape: 'object is not defined' with all anonymous frames", () => {
+    expect(
+      looksLikeAnonymousReferenceError({
+        exception: {
+          values: [
+            {
+              type: "ReferenceError",
+              value: "object is not defined",
+              stacktrace: { frames: [{ filename: "undefined" }] },
+            },
+          ],
+        },
+      }),
+    ).toBe(true);
+  });
+
+  it("drops when there are no stacktrace frames at all (bare onerror capture)", () => {
+    expect(
+      looksLikeAnonymousReferenceError({
+        exception: {
+          values: [
+            {
+              type: "ReferenceError",
+              value: "iframe is not defined",
+            },
+          ],
+        },
+      }),
+    ).toBe(true);
+  });
+
+  it("drops when frames array is empty", () => {
+    expect(
+      looksLikeAnonymousReferenceError({
+        exception: {
+          values: [
+            {
+              type: "ReferenceError",
+              value: "iframe is not defined",
+              stacktrace: { frames: [] },
+            },
+          ],
+        },
+      }),
+    ).toBe(true);
+  });
+
+  it("does NOT drop when at least one frame names a real source", () => {
+    // A real app ReferenceError will have at least one app-bundle frame.
+    expect(
+      looksLikeAnonymousReferenceError({
+        exception: {
+          values: [
+            {
+              type: "ReferenceError",
+              value: "iframe is not defined",
+              stacktrace: {
+                frames: [
+                  { filename: "<anonymous>" },
+                  { filename: "https://app.surething.io/assets/index-abc.js" },
+                ],
+              },
+            },
+          ],
+        },
+      }),
+    ).toBe(false);
+  });
+
+  it("does NOT drop a ReferenceError whose message is not in the known list", () => {
+    // An unknown ReferenceError message must pass through — it could be a real bug.
+    expect(
+      looksLikeAnonymousReferenceError({
+        exception: {
+          values: [
+            {
+              type: "ReferenceError",
+              value: "myAppVar is not defined",
+              stacktrace: { frames: [{ filename: "<anonymous>" }] },
+            },
+          ],
+        },
+      }),
+    ).toBe(false);
+  });
+
+  it("does NOT drop a non-ReferenceError even if all frames are anonymous", () => {
+    expect(
+      looksLikeAnonymousReferenceError({
+        exception: {
+          values: [
+            {
+              type: "TypeError",
+              value: "iframe is not defined",
+              stacktrace: { frames: [{ filename: "<anonymous>" }] },
+            },
+          ],
+        },
+      }),
+    ).toBe(false);
+  });
+
+  it("returns false on events with no exception", () => {
+    expect(looksLikeAnonymousReferenceError({})).toBe(false);
+    expect(
+      looksLikeAnonymousReferenceError({ message: "iframe is not defined" }),
     ).toBe(false);
   });
 });

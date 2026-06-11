@@ -183,6 +183,11 @@ export function initSentry(): void {
           //    source. Real app recursion produces dozens of frames
           //    inside our bundle, never a single `undefined:30:70`.
           if (looksLikeAnonymousStackOverflow(scrubbed)) return null;
+          // 2d. Drop anonymous-frame ReferenceError injection noise from
+          //    browser extensions and ad-injector scripts (APP-BQ, APP-DM).
+          //    AND-gated: known injected-script message AND all frames
+          //    anonymous. Real app ReferenceErrors have at least one app frame.
+          if (looksLikeAnonymousReferenceError(scrubbed)) return null;
           // 3. Enrich with classification + context tags so the Sentry
           //    UI can sort and alert on what actually matters. Also
           //    sets event.level + event.fingerprint based on priority.
@@ -567,6 +572,52 @@ export function looksLikeAnonymousStackOverflow(
 
   // Every frame anonymous → same shape as the no-frames case but
   // Sentry surfaced a placeholder entry for the onerror line/col.
+  return frames.every(frameLooksAnonymous);
+}
+
+// Anonymous-frame ReferenceError injection noise. Browser extensions and
+// ad-injector scripts frequently reference variables (e.g. `iframe`,
+// `object`) that exist in their own injected scope but are not defined on
+// the host page at the point window.onerror fires. The resulting
+// ReferenceError is captured by the global handler with no app frame in
+// sight — every frame filename is missing, empty, or "<anonymous>".
+//
+// Confirmed noise family (all originating from /p/ route, onerror capture,
+// single Chrome browser/OS cohort, no app stack):
+//   APP-BQ  — 'object is not defined' at <anonymous>:1:27  (ddba9a1)
+//   APP-DM  — 'iframe is not defined'  at <anonymous>:1:53  (d6f777d)
+//
+// The drop is AND-gated — conservative by design:
+//   1. exception.type === 'ReferenceError', AND
+//   2. exception.value is a known injected-script message, AND
+//   3. every stack frame is anonymous (or the frame list is empty /
+//      missing) — a real app ReferenceError always has at least one
+//      frame pointing at our bundle.
+//
+// Add new entries to ANONYMOUS_REFERENCE_ERROR_VALUES only after
+// confirming the event has zero app-code frames and a single-browser
+// cohort (i.e. not a generic undefined-variable bug in our own code).
+const ANONYMOUS_REFERENCE_ERROR_VALUES: readonly RegExp[] = [
+  /\bobject is not defined\b/i,   // APP-BQ (ddba9a1) — extension/injector reference
+  /\biframe is not defined\b/i,   // APP-DM (d6f777d) — iframe-manipulator injector
+];
+
+export function looksLikeAnonymousReferenceError(
+  event: SentryEventLike,
+): boolean {
+  const ex = event.exception?.values?.[0];
+  if (!ex) return false;
+
+  if (ex.type !== "ReferenceError") return false;
+
+  const message = typeof ex.value === "string" ? ex.value : "";
+  if (!ANONYMOUS_REFERENCE_ERROR_VALUES.some((re) => re.test(message))) return false;
+
+  const frames = ex.stacktrace?.frames;
+  // No frames → global onerror with no caller info; always the injected shape.
+  if (!Array.isArray(frames) || frames.length === 0) return true;
+
+  // Every frame anonymous → injected script surfaced as a placeholder entry.
   return frames.every(frameLooksAnonymous);
 }
 
