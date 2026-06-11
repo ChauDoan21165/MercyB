@@ -2567,6 +2567,7 @@ export default function AiTutorPage() {
         accessToken={session?.access_token}
         hasPremium={userAccess.canAccessPremium()}
         loadingAccess={userAccess.isLoading}
+        accessConfirmed={userAccess.isAccessConcluded}
         userId={userAccess.userId ?? user?.id ?? null}
         correctionSeed={latestCorrectedSeed}
       />

@@ -24,6 +24,79 @@ describe("AiConversationScenarioPanel", () => {
     expect(sendTurn).not.toHaveBeenCalled();
   });
 
+  // (a) Null profile + server-200: uncertain access must NOT gate client-side.
+  // The server returned 200 → conversation proceeds, gate never shown.
+  it("(a) profile=null + server-200: conversation proceeds, no client gate", async () => {
+    const sendTurn = vi.fn().mockResolvedValue({
+      reply: "Good job! What else would you like to practice?",
+      correction: null,
+      summary: null,
+      cost: { totalTokens: 80, estimatedUsd: 0.0001 },
+      provider: "openai",
+      pronunciationAbstention: null,
+    });
+
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token"
+        hasPremium={false}
+        loadingAccess={false}
+        accessConfirmed={false}
+        sendTurn={sendTurn}
+      />,
+    );
+
+    // No gate shown — uncertain access shows conversation panel
+    expect(screen.queryByTestId("ai-conversation-premium-gate")).not.toBeInTheDocument();
+    expect(screen.getByTestId("ai-conversation-scenario-panel")).toBeInTheDocument();
+
+    await send("I want to go to the beach.");
+
+    // sendTurn was called (server reached), no gate shown
+    expect(sendTurn).toHaveBeenCalledTimes(1);
+    expect(screen.queryByTestId("ai-conversation-premium-gate")).not.toBeInTheDocument();
+    expect(await screen.findByText(/Good job!/)).toBeInTheDocument();
+  });
+
+  // (b) Confirmed free: gate shown immediately, server never called.
+  it("(b) confirmed free: gate shown on send, server untouched", async () => {
+    const sendTurn = vi.fn();
+
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token"
+        hasPremium={false}
+        loadingAccess={false}
+        accessConfirmed={true}
+        sendTurn={sendTurn}
+      />,
+    );
+
+    // Gate shows immediately on render for confirmed-free user
+    expect(screen.getByTestId("ai-conversation-premium-gate")).toBeInTheDocument();
+    expect(sendTurn).not.toHaveBeenCalled();
+  });
+
+  // (c) Loading state: no premature gate shown, loading spinner instead.
+  it("(c) loading: spinner shown, no gate fires", () => {
+    const sendTurn = vi.fn();
+
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token"
+        hasPremium={false}
+        loadingAccess={true}
+        accessConfirmed={false}
+        sendTurn={sendTurn}
+      />,
+    );
+
+    expect(screen.queryByTestId("ai-conversation-premium-gate")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("ai-conversation-scenario-panel")).not.toBeInTheDocument();
+    expect(screen.getByText(/Đang kiểm tra quyền Premium/)).toBeInTheDocument();
+    expect(sendTurn).not.toHaveBeenCalled();
+  });
+
   it("renders a product gate and restores turn count when entitlement fails mid-submit", async () => {
     const sendTurn = vi.fn().mockResolvedValue({
       reply: "Premium required",
