@@ -11,6 +11,10 @@ import {
   type TutorProduct,
 } from "@/lib/ai-tutor/learningMemory";
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
+import {
+  loadServerInterferenceTags,
+  mergeRecallMemory,
+} from "@/lib/ai-conversation/serverInterferenceMemory";
 import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
 import { readAndClearPendingReflection } from "@/lib/ai-tutor/teacherMercyHandoff";
 import { useTtsSpeaker } from "@/lib/ai-tutor/useTtsSpeaker";
@@ -1120,6 +1124,10 @@ export default function AiTutorPage() {
 
   const [memoryLoaded, setMemoryLoaded] = useState(false);
   const [memory, setMemory] = useState<MemorySummary | null>(null);
+  // Step-12 cross-device recall: top interference tags read from server capture
+  // (RLS user-scoped). Fail-soft — stays [] when there is no server history,
+  // consent, or B1 table, so recall degrades to client-only.
+  const [serverInterferenceTags, setServerInterferenceTags] = useState<string[]>([]);
   const [lastSavedId, setLastSavedId] = useState<string | null>(null);
   const [isFloatingShell, setIsFloatingShell] = useState(true);
   const [activeTodayLesson, setActiveTodayLesson] = useState<ActiveTodayLesson | null>(null);
@@ -1795,6 +1803,18 @@ export default function AiTutorPage() {
   };
 
   useEffect(() => { loadMemory(); }, [target]);
+
+  // Step-12 cross-device recall: pull the learner's server-captured interference
+  // tags so a returning learner on a different device recalls prior sessions.
+  // Fail-soft inside loadServerInterferenceTags (returns [] on any error).
+  const recallUserId = userAccess.userId ?? user?.id ?? null;
+  useEffect(() => {
+    let cancelled = false;
+    loadServerInterferenceTags(recallUserId)
+      .then((tags) => { if (!cancelled) setServerInterferenceTags(tags); })
+      .catch(() => { if (!cancelled) setServerInterferenceTags([]); });
+    return () => { cancelled = true; };
+  }, [recallUserId]);
 
   const englishPronunciationFeedback = useMemo(() => {
     if (
@@ -2664,10 +2684,7 @@ export default function AiTutorPage() {
         accessConfirmed={userAccess.isAccessConcluded}
         userId={userAccess.userId ?? user?.id ?? null}
         correctionSeed={latestCorrectedSeed}
-        learnerMemory={memory ? {
-          interferencePatterns: memory.commonMistakePatterns ?? [],
-          recentFocus: memory.lastPracticedTopic || memory.nextRecommendedFocus || null,
-        } : null}
+        learnerMemory={mergeRecallMemory(serverInterferenceTags, memory)}
       />
     </TeacherMercyLearningShell>
   );
