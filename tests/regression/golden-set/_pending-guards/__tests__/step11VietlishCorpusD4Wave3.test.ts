@@ -51,8 +51,8 @@ describe("step11 Vietlish corpus D4 wave3 (review queue)", () => {
   it("contains exactly 182 entries and the header count agrees", () => {
     // 199 prior; 17 freq=high entries promoted into VIETLISH_CORPUS in the
     // Step-11 Stage-1 promotion (2026-06-10), leaving 182.
-    expect(entries).toHaveLength(166);
-    expect(parsed.count).toBe(166);
+    expect(entries).toHaveLength(143);
+    expect(parsed.count).toBe(143);
   });
 
   it("every entry matches the VietlishCorpusEntry schema exactly", () => {
