@@ -1,14 +1,40 @@
 import type { SpeakTopicLibraryEntry } from "../speakTopicLibrary";
 
-// VN-diaspora-specific service scenarios. Deterministic / client-side; warm, low-shame.
-// A9 overnight L1 pass: each topic now carries Vietnamese→English interference notes
-// (naming genuine VN interference as friendly context, never a grammar correction).
-export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
+// VN-diaspora-specific service scenarios — deepened to full D4 metadata depth
+// (scenarioDescription, aiRoleDefinition, conversationDirections, warmthPatterns)
+// so the conversation engine has rich grounding. Plain → rich, content-additive;
+// note ids and followUp ids are disjoint within each topic. Warm, low-shame;
+// l1InterferenceNotes name genuine Vietnamese→English interference as context.
+type DeepSpeakTopic = SpeakTopicLibraryEntry & {
+  scenarioDescription: string;
+  aiRoleDefinition: string;
+  conversationDirections: readonly string[];
+  warmthPatterns: readonly string[];
+};
+
+export const speakTopics = [
   {
     id: "topic-vn-pho-less-spicy",
     labelEn: "Pho Order, Less Spicy",
     labelVi: "Gọi phở, ít cay hơn",
     category: "food",
+    scenarioDescription:
+      "The learner orders pho at a restaurant and adjusts the heat — less spicy or no chili — and asks for sauces or vegetables on the side, then confirms for here or to go.",
+    aiRoleDefinition:
+      "Act as a friendly restaurant server taking a pho order who asks about size, spice level, add-ons, and whether it is for here or to go.",
+    conversationDirections: [
+      "Ask what kind of pho the learner would like.",
+      "Check the spice level and offer 'less spicy' or 'no chili.'",
+      "Offer to put chili, sauce, or bean sprouts on the side.",
+      "Confirm any extra add-ons or sizes.",
+      "Ask whether it is for here or to go.",
+      "Repeat the order back before finishing.",
+    ],
+    warmthPatterns: [
+      "Keep the order exchange quick and friendly.",
+      "Reassure the learner that adjusting heat is normal.",
+      "Encourage 'on the side' as a reusable phrase.",
+    ],
     seedInputs: ["I want to order pho, but less spicy please."],
     detectionPatterns: [
       /\b(?:pho|phở|noodle soup|less spicy|not too spicy|fish sauce|chili|bean sprouts|restaurant)\b/i,
@@ -38,6 +64,22 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Nail Salon Client Request",
     labelVi: "Nói với khách ở tiệm nail",
     category: "service",
+    scenarioDescription:
+      "The learner works in a nail salon and checks with a client about nail shape, length, and color, handles a color change, explains a short wait, and confirms the client is happy.",
+    aiRoleDefinition:
+      "Act as a nail-salon client with preferences about shape, length, and color who answers the technician's warm check-in questions.",
+    conversationDirections: [
+      "Ask the client about the nail shape they want.",
+      "Check whether the length is short or long enough.",
+      "Handle a request for a different color.",
+      "Explain a short wait warmly if needed.",
+      "Confirm the client is happy before finishing.",
+    ],
+    warmthPatterns: [
+      "Use warm check-in questions instead of a flat 'okay?'.",
+      "Confirm shape and length so there are no surprises.",
+      "Keep the tone caring and professional.",
+    ],
     seedInputs: ["I need to ask my nail client if this shape is short enough."],
     detectionPatterns: [
       /\b(?:nail|nails|manicure|pedicure|client|customer|shape|gel color|short enough|salon)\b/i,
@@ -67,6 +109,22 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Landlord Message About A Leak",
     labelVi: "Nhắn chủ nhà về nước rò",
     category: "home",
+    scenarioDescription:
+      "The learner messages a landlord about a leaking sink, pinpointing where and when it started, offering a photo, and proposing a repair time — clear and polite without over-apologizing.",
+    aiRoleDefinition:
+      "Act as a landlord who reads the leak report, asks where and when it started, and arranges a repair time.",
+    conversationDirections: [
+      "Ask where the leak is in the apartment.",
+      "Find out when the learner first noticed it.",
+      "Offer to receive a photo of the leak.",
+      "Agree on a repair time that works.",
+      "Close the message politely and clearly.",
+    ],
+    warmthPatterns: [
+      "Reassure the learner that reporting a leak is their right.",
+      "Keep it clear and direct, not buried in apologies.",
+      "Encourage pinpointing the spot: 'under the cabinet.'",
+    ],
     seedInputs: ["The sink is leaking, and I need to message my landlord politely."],
     detectionPatterns: [
       /\b(?:landlord|zalo|sink|leak|leaking|water leak|repair|maintenance|apartment|rent)\b/i,
@@ -96,6 +154,22 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Sending Money Home",
     labelVi: "Gửi tiền về nhà",
     category: "money",
+    scenarioDescription:
+      "The learner sends money to family in Vietnam and asks about the transfer fee and exchange rate up front, confirms the recipient, and asks for a receipt before sending.",
+    aiRoleDefinition:
+      "Act as a money-transfer or bank agent who explains the fee, the exchange rate, the recipient details needed, and provides a receipt.",
+    conversationDirections: [
+      "Ask how much the learner wants to send.",
+      "State the transfer fee clearly.",
+      "Give the current exchange rate when asked.",
+      "Confirm who will receive the money.",
+      "Offer a receipt before finishing.",
+    ],
+    warmthPatterns: [
+      "Keep money talk short and matter-of-fact.",
+      "Reassure the learner that asking the fee first is smart.",
+      "Encourage the fixed phrase 'exchange rate.'",
+    ],
     seedInputs: ["I need to ask about the fee before I send money to my family in Vietnam."],
     detectionPatterns: [
       /\b(?:send money|remittance|transfer money|family in vietnam|exchange rate|bank fee|fee|receipt)\b/i,
@@ -125,6 +199,22 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Teacher Message, Late Pickup",
     labelVi: "Nhắn giáo viên khi đón con trễ",
     category: "childcare",
+    scenarioDescription:
+      "The learner messages a child's teacher or daycare that pickup may be late, gives the child's name, a clear reason and time, mentions a backup person, and keeps the apology light.",
+    aiRoleDefinition:
+      "Act as a teacher or daycare staff member who reads the late-pickup message, confirms the child, and accepts a clear plan calmly.",
+    conversationDirections: [
+      "Ask which child needs to be picked up.",
+      "Let the learner explain why they may be late.",
+      "Get an exact, updated pickup time.",
+      "Check whether a backup person could come instead.",
+      "Accept a light apology without needing more.",
+    ],
+    warmthPatterns: [
+      "Reassure the learner that one short sorry is enough.",
+      "Value a clear time over repeated apologies.",
+      "Keep the message calm and confident.",
+    ],
     seedInputs: ["I need to message my child's teacher because pickup may be late."],
     detectionPatterns: [
       /\b(?:teacher|child's teacher|pickup|pick up my son|pick up my daughter|late pickup|daycare|school)\b/i,
@@ -154,6 +244,22 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Manager Shift Change Request",
     labelVi: "Xin đổi ca làm với quản lý",
     category: "work",
+    scenarioDescription:
+      "The learner asks a manager to change or swap a shift this week, states the current and wanted shift, gives a short reason, and offers a backup option like a coworker who can cover.",
+    aiRoleDefinition:
+      "Act as a manager who hears the shift-change request, asks for the reason and a backup plan, and decides collaboratively.",
+    conversationDirections: [
+      "Ask what shift the learner currently has.",
+      "Find out which shift they want to change to.",
+      "Invite a short, honest reason.",
+      "Ask whether a coworker can swap or cover.",
+      "Confirm the decision and thank them.",
+    ],
+    warmthPatterns: [
+      "Frame the request softly: 'Would it be possible to...?'.",
+      "Reassure the learner that offering a backup helps.",
+      "Keep it collaborative, not a demand.",
+    ],
     seedInputs: ["I need to ask my manager to change my shift this week."],
     detectionPatterns: [
       /\b(?:manager|shift|change my shift|work schedule|swap shift|day off|coworker|overtime)\b/i,
@@ -178,4 +284,4 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
       { id: "vn-shift-thanks", question: "How would you thank your manager after asking?", salienceQuestion: "How would you thank your manager about the {slot}?" },
     ],
   },
-] as const;
+] as const satisfies readonly DeepSpeakTopic[];
