@@ -29,12 +29,34 @@ function parseAudioDataUrl(value: unknown): Buffer | null {
   return Buffer.from(match[1], "base64");
 }
 
+// mercy-tts returns audio as a data:audio;base64 URL (fresh synth) OR a public
+// Storage URL (https://.../room-audio/tts-cache/...mp3) for a CACHE HIT. Resolve
+// BOTH to bytes — a data-URL-only reader rejects every cache hit as "no audio".
+async function resolveAudioBytes(
+  value: unknown,
+): Promise<{ bytes: Buffer; contentType: string } | null> {
+  if (typeof value !== "string" || !value) return null;
+  if (/^https?:\/\//i.test(value)) {
+    try {
+      const res = await fetch(value);
+      if (!res.ok) return null;
+      const bytes = Buffer.from(await res.arrayBuffer());
+      if (bytes.length === 0) return null;
+      return { bytes, contentType: res.headers.get("content-type") || "audio/mpeg" };
+    } catch {
+      return null;
+    }
+  }
+  const bytes = parseAudioDataUrl(value);
+  return bytes && bytes.length > 0 ? { bytes, contentType: "audio/mpeg" } : null;
+}
+
 // One classified call to mercy-tts. The Azure leg flaps (cold isolate /
 // transient ElevenLabs fallback / brief 5xx), so a single shot surfaces those
 // as a hard failure. "retryable" = worth one more attempt at warm Azure;
 // "fatal" = a 4xx (auth/validation) a retry can't fix. Mirrors functions/api/tts.ts.
 type TtsAttempt =
-  | { kind: "audio"; bytes: Buffer; provider: string; fallbackReason?: string }
+  | { kind: "audio"; bytes: Buffer; contentType: string; provider: string; fallbackReason?: string }
   | { kind: "retryable"; error: string; code?: string; provider?: string; fallbackReason?: string }
   | { kind: "fatal"; status: number; error: string; code?: string };
 
@@ -95,8 +117,8 @@ async function callMercyTtsOnce(args: {
     };
   }
 
-  const bytes = parseAudioDataUrl(payload.audioUrl);
-  if (!bytes || bytes.length === 0) {
+  const resolved = await resolveAudioBytes(payload.audioUrl);
+  if (!resolved) {
     return {
       kind: "retryable",
       error: payload.error || "mercy-tts returned no playable audio",
@@ -105,7 +127,13 @@ async function callMercyTtsOnce(args: {
     };
   }
 
-  return { kind: "audio", bytes, provider: payload.provider || "unknown", fallbackReason: payload.fallback_reason };
+  return {
+    kind: "audio",
+    bytes: resolved.bytes,
+    contentType: resolved.contentType,
+    provider: payload.provider || "unknown",
+    fallbackReason: payload.fallback_reason,
+  };
 }
 
 export async function handler(event: NetlifyEvent) {
@@ -148,6 +176,7 @@ export async function handler(event: NetlifyEvent) {
 
     if (attempt.kind === "audio") {
       return audio(attempt.bytes, {
+        "Content-Type": attempt.contentType,
         "X-TTS-Provider": attempt.provider,
         ...(attempt.fallbackReason ? { "X-TTS-Fallback-Reason": attempt.fallbackReason } : {}),
       });

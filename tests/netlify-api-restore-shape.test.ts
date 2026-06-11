@@ -100,6 +100,27 @@ describe("Netlify /api/tts retry + never-raw-502 (parity with Pages handler)", (
     expect(flaky).toHaveBeenCalledTimes(2);
   });
 
+  it("resolves a mercy-tts CACHE-HIT https Storage audioUrl into streamed audio (not a 503)", async () => {
+    withEnv();
+    const CACHE_URL = "https://proj.supabase.co/storage/v1/object/public/room-audio/tts-cache/abc.mp3";
+    const fetchMock = vi.fn(async (url: unknown) => {
+      const u = String(url);
+      if (u.includes("/functions/v1/mercy-tts")) {
+        return Response.json({ audioUrl: CACHE_URL, provider: "azure", cached: true });
+      }
+      return new Response(new Uint8Array([0x49, 0x44, 0x33, 0x04]), {
+        status: 200,
+        headers: { "Content-Type": "audio/mpeg" },
+      });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const res = await ttsHandler(ttsEvent({ text: "Xin chao", language: "vi" }));
+
+    expect(res.statusCode).toBe(200);
+    expect(fetchMock.mock.calls.some(([u]) => String(u) === CACHE_URL)).toBe(true);
+  });
+
   it("returns a typed retryable 503 (never a raw 502) on persistent non-Azure Vietnamese", async () => {
     withEnv();
     const persistent = vi.fn(async () =>
