@@ -1,8 +1,9 @@
 // api/_lib/__tests__/deepseekSpeak.test.ts
 //
-// Verifies that buildDeepSeekSpeakFollowUp returns a typed SpeakFollowUpError
-// for infrastructure failures (missing key, API error, network error) and
-// returns null for genuine unclear-input cases (API worked, bad question).
+// Provider-fallback contract for buildDeepSeekSpeakFollowUp:
+//   - DeepSeek is primary; Gemini is fallback on missing key / 5xx / network / empty response.
+//   - Neither key → typed SpeakFollowUpError (retryable).
+//   - AI returned content but no valid question → null (genuine unclear input).
 
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { buildDeepSeekSpeakFollowUp } from "../deepseekSpeak.js";
@@ -14,7 +15,19 @@ const BASE_INPUT = {
   recentTurns: [] as Array<{ role: "learner" | "assistant"; text: string }>,
 };
 
-describe("buildDeepSeekSpeakFollowUp", () => {
+const DS_OK_BODY = JSON.stringify({ choices: [{ message: { content: "What did you buy there?" } }] });
+const GEM_OK_BODY = JSON.stringify({
+  candidates: [{ content: { parts: [{ text: "Did you go alone?" }] } }],
+});
+const OK_HEADERS = { "Content-Type": "application/json" };
+
+const DEEPSEEK_URL = "https://api.deepseek.com/chat/completions";
+
+function isDeepSeekCall(url: unknown): boolean {
+  return typeof url === "string" && url === DEEPSEEK_URL;
+}
+
+describe("buildDeepSeekSpeakFollowUp — provider fallback", () => {
   const fetchMock = vi.fn<typeof fetch>();
 
   beforeEach(() => {
@@ -25,40 +38,104 @@ describe("buildDeepSeekSpeakFollowUp", () => {
     vi.restoreAllMocks();
   });
 
-  it("returns SpeakFollowUpError when DEEPSEEK_API_KEY is missing", async () => {
+  // ── Case 1: DeepSeek key only → DeepSeek used ─────────────────────────
+  it("case1: DeepSeek key only → DeepSeek is used and answers", async () => {
+    fetchMock.mockResolvedValue(new Response(DS_OK_BODY, { status: 200, headers: OK_HEADERS }));
+    const result = await buildDeepSeekSpeakFollowUp({
+      ...BASE_INPUT,
+      env: { DEEPSEEK_API_KEY: "sk-ds-only" },
+    });
+    expect(result).toMatchObject({ question: "What did you buy there?", provider: "deepseek" });
+    expect(fetchMock).toHaveBeenCalledOnce();
+    expect(isDeepSeekCall(fetchMock.mock.calls[0]?.[0])).toBe(true);
+  });
+
+  // ── Case 2: Gemini key only → Gemini used ────────────────────────────
+  it("case2: Gemini key only → Gemini is used and answers", async () => {
+    fetchMock.mockResolvedValue(new Response(GEM_OK_BODY, { status: 200, headers: OK_HEADERS }));
+    const result = await buildDeepSeekSpeakFollowUp({
+      ...BASE_INPUT,
+      env: { GEMINI_API_KEY: "gk-only" },
+    });
+    expect(result).toMatchObject({ question: "Did you go alone?", provider: "gemini" });
+    // DeepSeek was skipped (no key), only one fetch call to Gemini
+    expect(fetchMock).toHaveBeenCalledOnce();
+    expect(isDeepSeekCall(fetchMock.mock.calls[0]?.[0])).toBe(false);
+  });
+
+  // ── Case 3a: Both keys → DeepSeek wins ───────────────────────────────
+  it("case3a: both keys, DeepSeek healthy → DeepSeek wins", async () => {
+    fetchMock.mockResolvedValue(new Response(DS_OK_BODY, { status: 200, headers: OK_HEADERS }));
+    const result = await buildDeepSeekSpeakFollowUp({
+      ...BASE_INPUT,
+      env: { DEEPSEEK_API_KEY: "sk-ds", GEMINI_API_KEY: "gk-test" },
+    });
+    expect(result).toMatchObject({ question: "What did you buy there?", provider: "deepseek" });
+    // Only DeepSeek called — Gemini not attempted
+    expect(fetchMock).toHaveBeenCalledOnce();
+    expect(isDeepSeekCall(fetchMock.mock.calls[0]?.[0])).toBe(true);
+  });
+
+  // ── Case 3b: Both keys, DeepSeek 500 → Gemini answers ─────────────────
+  it("case3b: both keys, DeepSeek 500 → falls over to Gemini", async () => {
+    fetchMock
+      .mockResolvedValueOnce(new Response("{}", { status: 500 }))          // DeepSeek 500
+      .mockResolvedValueOnce(new Response(GEM_OK_BODY, { status: 200, headers: OK_HEADERS })); // Gemini OK
+    const result = await buildDeepSeekSpeakFollowUp({
+      ...BASE_INPUT,
+      env: { DEEPSEEK_API_KEY: "sk-ds", GEMINI_API_KEY: "gk-test" },
+    });
+    expect(result).toMatchObject({ question: "Did you go alone?", provider: "gemini" });
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  // ── Case 4: Neither key → typed error intact ──────────────────────────
+  it("case4: neither key → SpeakFollowUpError (typed retryable)", async () => {
     const result = await buildDeepSeekSpeakFollowUp({ ...BASE_INPUT, env: {} });
     expect(result).toEqual({ ok: false, retryable: true, reason: "speak_followup_unavailable" });
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it("returns SpeakFollowUpError when the API returns a non-ok status", async () => {
-    fetchMock.mockResolvedValue(new Response("{}", { status: 500 }));
-    const result = await buildDeepSeekSpeakFollowUp({ ...BASE_INPUT, env: { DEEPSEEK_API_KEY: "sk-test" } });
+  // ── Regression: DeepSeek network failure → Gemini ────────────────────
+  it("DeepSeek network throw → falls over to Gemini", async () => {
+    fetchMock
+      .mockRejectedValueOnce(new Error("network failure"))
+      .mockResolvedValueOnce(new Response(GEM_OK_BODY, { status: 200, headers: OK_HEADERS }));
+    const result = await buildDeepSeekSpeakFollowUp({
+      ...BASE_INPUT,
+      env: { DEEPSEEK_API_KEY: "sk-ds", GEMINI_API_KEY: "gk-test" },
+    });
+    expect(result).toMatchObject({ provider: "gemini" });
+  });
+
+  // ── Regression: both fail → typed error ──────────────────────────────
+  it("both providers fail → SpeakFollowUpError", async () => {
+    fetchMock
+      .mockResolvedValueOnce(new Response("{}", { status: 500 }))
+      .mockResolvedValueOnce(new Response("{}", { status: 500 }));
+    const result = await buildDeepSeekSpeakFollowUp({
+      ...BASE_INPUT,
+      env: { DEEPSEEK_API_KEY: "sk-ds", GEMINI_API_KEY: "gk-test" },
+    });
     expect(result).toEqual({ ok: false, retryable: true, reason: "speak_followup_unavailable" });
   });
 
-  it("returns SpeakFollowUpError when fetch throws (network/timeout)", async () => {
-    fetchMock.mockRejectedValue(new Error("network failure"));
-    const result = await buildDeepSeekSpeakFollowUp({ ...BASE_INPUT, env: { DEEPSEEK_API_KEY: "sk-test" } });
-    expect(result).toEqual({ ok: false, retryable: true, reason: "speak_followup_unavailable" });
-  });
-
-  it("returns null (genuine unclear input) when the API responds but produces no valid question", async () => {
+  // ── Regression: DeepSeek OK but no valid question → null ─────────────
+  it("DeepSeek answers but question fails normalization → null (genuine unclear)", async () => {
     const body = JSON.stringify({ choices: [{ message: { content: "okay" } }] });
-    fetchMock.mockResolvedValue(new Response(body, { status: 200, headers: { "Content-Type": "application/json" } }));
-    const result = await buildDeepSeekSpeakFollowUp({ ...BASE_INPUT, env: { DEEPSEEK_API_KEY: "sk-test" } });
-    // "okay" has no trailing "?" so normalizeSpeakQuestion returns "" → null
+    fetchMock.mockResolvedValue(new Response(body, { status: 200, headers: OK_HEADERS }));
+    const result = await buildDeepSeekSpeakFollowUp({
+      ...BASE_INPUT,
+      env: { DEEPSEEK_API_KEY: "sk-test", GEMINI_API_KEY: "gk-test" },
+    });
+    // "okay" has no trailing "?" → normalization returns "" → null
     expect(result).toBeNull();
+    // Gemini not attempted because DeepSeek returned content (just not a valid question)
+    expect(fetchMock).toHaveBeenCalledOnce();
   });
 
-  it("returns a question when the API responds with a valid follow-up", async () => {
-    const body = JSON.stringify({ choices: [{ message: { content: "What did you buy there?" } }] });
-    fetchMock.mockResolvedValue(new Response(body, { status: 200, headers: { "Content-Type": "application/json" } }));
-    const result = await buildDeepSeekSpeakFollowUp({ ...BASE_INPUT, env: { DEEPSEEK_API_KEY: "sk-test" } });
-    expect(result).toMatchObject({ question: "What did you buy there?", provider: "deepseek" });
-  });
-
-  it("never returns SPEAK_REPEAT_CLARIFICATION for missing-key failure", async () => {
+  // ── Regression: never returns SPEAK_REPEAT_CLARIFICATION for missing key
+  it("missing key failure is never the canned clarification string", async () => {
     const result = await buildDeepSeekSpeakFollowUp({ ...BASE_INPUT, env: {} });
     expect(result).not.toBeNull();
     if (result && "question" in result) {

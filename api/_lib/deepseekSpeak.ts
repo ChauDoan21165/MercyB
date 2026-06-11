@@ -37,6 +37,8 @@ const SPEAK_FOLLOWUP_ERROR: SpeakFollowUpError = { ok: false, retryable: true, r
 type SpeakEnv = {
   DEEPSEEK_API_KEY?: string;
   DEEPSEEK_SPEAK_MODEL?: string;
+  GEMINI_API_KEY?: string;
+  GEMINI_SPEAK_MODEL?: string;
 };
 
 function fallbackProcessEnv(): SpeakEnv {
@@ -46,42 +48,19 @@ function fallbackProcessEnv(): SpeakEnv {
   return globalWithProcess.process?.env ?? {};
 }
 
-export async function buildDeepSeekSpeakFollowUp(input: {
-  transcript: string;
-  learnerLevel: string;
-  currentTopic: string;
-  recentTurns: Array<{ role: "learner" | "assistant"; text: string }>;
-  env?: SpeakEnv;
-}): Promise<{ question: string; provider: "deepseek"; model: string } | SpeakFollowUpError | null> {
-  const env = input.env ?? fallbackProcessEnv();
-  const apiKey = env.DEEPSEEK_API_KEY;
-  // Missing key = infrastructure not configured, not an unclear-input case.
-  if (!apiKey) return SPEAK_FOLLOWUP_ERROR;
+// ── Provider call helpers ─────────────────────────────────────────────────
 
-  const model = env.DEEPSEEK_SPEAK_MODEL || "deepseek-chat";
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 8_000);
-  const system = [
-    "You are Mercy, an English speaking tutor for Vietnamese learners.",
-    "Reply with exactly one short follow-up question.",
-    "Use simple beginner English.",
-    "If the learner sentence is unclear, broken, or likely STT garbage, ask them to repeat.",
-    "Do not invent objects.",
-    "Do not ask about weak extracted words like general, guys, thing, stuff, some, this, that.",
-    "Do not pretend to understand.",
-  ].join(" ");
-  const recentContext = input.recentTurns
-    .slice(-6)
-    .map((turn) => `${turn.role}: ${turn.text}`)
-    .join("\n");
-  const user = [
-    `Learner level: ${input.learnerLevel || "beginner"}`,
-    `Current topic: ${input.currentTopic || "unknown"}`,
-    recentContext ? `Recent Speak context:\n${recentContext}` : "Recent Speak context: none",
-    `Learner transcript: ${input.transcript}`,
-    "Return only the one question. No labels. No explanation.",
-  ].join("\n\n");
+type SpeakOutcome =
+  | { kind: "ok"; raw: string }
+  | { kind: "fail" };
 
+async function callDeepSeekForSpeak(
+  systemPrompt: string,
+  userMsg: string,
+  apiKey: string,
+  model: string,
+  signal: AbortSignal,
+): Promise<SpeakOutcome> {
   try {
     const response = await fetch("https://api.deepseek.com/chat/completions", {
       method: "POST",
@@ -92,31 +71,142 @@ export async function buildDeepSeekSpeakFollowUp(input: {
       body: JSON.stringify({
         model,
         messages: [
-          { role: "system", content: system },
-          { role: "user", content: user },
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userMsg },
         ],
         temperature: 0.2,
         max_tokens: 80,
         stream: false,
       }),
-      signal: controller.signal,
+      signal,
     });
-
-    // Provider returned an error status — infrastructure failure, not unclear input.
-    if (!response.ok) return SPEAK_FOLLOWUP_ERROR;
+    if (!response.ok) return { kind: "fail" };
     const data = (await response.json()) as {
       choices?: Array<{ message?: { content?: string } }>;
     };
-    const question = normalizeSpeakQuestion(data?.choices?.[0]?.message?.content);
-    // API worked but produced no usable question — genuine unclear-input case.
-    if (!question) return null;
-    return { question, provider: "deepseek", model };
+    const raw = data?.choices?.[0]?.message?.content ?? "";
+    if (!raw) return { kind: "fail" };
+    return { kind: "ok", raw };
   } catch {
-    // Network failure / timeout — infrastructure failure.
-    return SPEAK_FOLLOWUP_ERROR;
-  } finally {
-    clearTimeout(timeout);
+    return { kind: "fail" };
   }
+}
+
+async function callGeminiForSpeak(
+  systemPrompt: string,
+  userMsg: string,
+  apiKey: string,
+  model: string,
+  signal: AbortSignal,
+): Promise<SpeakOutcome> {
+  const url =
+    `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent` +
+    `?key=${encodeURIComponent(apiKey)}`;
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ role: "user", parts: [{ text: userMsg }] }],
+        systemInstruction: { parts: [{ text: systemPrompt }] },
+        generationConfig: { temperature: 0.2, maxOutputTokens: 80 },
+      }),
+      signal,
+    });
+    if (!response.ok) return { kind: "fail" };
+    const data = (await response.json()) as {
+      candidates?: Array<{
+        content?: { parts?: Array<{ text?: string }> };
+      }>;
+    };
+    const parts = data?.candidates?.[0]?.content?.parts;
+    const raw = Array.isArray(parts) ? parts.map((p) => p?.text ?? "").join("") : "";
+    if (!raw) return { kind: "fail" };
+    return { kind: "ok", raw };
+  } catch {
+    return { kind: "fail" };
+  }
+}
+
+// ── Public API ────────────────────────────────────────────────────────────
+
+export async function buildDeepSeekSpeakFollowUp(input: {
+  transcript: string;
+  learnerLevel: string;
+  currentTopic: string;
+  recentTurns: Array<{ role: "learner" | "assistant"; text: string }>;
+  env?: SpeakEnv;
+}): Promise<{ question: string; provider: "deepseek" | "gemini"; model: string } | SpeakFollowUpError | null> {
+  const env = input.env ?? fallbackProcessEnv();
+
+  const systemPrompt = [
+    "You are Mercy, an English speaking tutor for Vietnamese learners.",
+    "Reply with exactly one short follow-up question.",
+    "Use simple beginner English.",
+    "If the learner sentence is unclear, broken, or likely STT garbage, ask them to repeat.",
+    "Do not invent objects.",
+    "Do not ask about weak extracted words like general, guys, thing, stuff, some, this, that.",
+    "Do not pretend to understand.",
+  ].join(" ");
+
+  const recentContext = input.recentTurns
+    .slice(-6)
+    .map((turn) => `${turn.role}: ${turn.text}`)
+    .join("\n");
+
+  const userMsg = [
+    `Learner level: ${input.learnerLevel || "beginner"}`,
+    `Current topic: ${input.currentTopic || "unknown"}`,
+    recentContext ? `Recent Speak context:\n${recentContext}` : "Recent Speak context: none",
+    `Learner transcript: ${input.transcript}`,
+    "Return only the one question. No labels. No explanation.",
+  ].join("\n\n");
+
+  // ── DeepSeek (primary) ──────────────────────────────────────────────────
+  const deepseekKey = env.DEEPSEEK_API_KEY;
+  if (deepseekKey) {
+    const model = env.DEEPSEEK_SPEAK_MODEL || "deepseek-chat";
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8_000);
+    let outcome: SpeakOutcome;
+    try {
+      outcome = await callDeepSeekForSpeak(systemPrompt, userMsg, deepseekKey, model, controller.signal);
+    } finally {
+      clearTimeout(timeout);
+    }
+    if (outcome.kind === "ok") {
+      console.log("[deepseekSpeak] provider=deepseek model=" + model);
+      const question = normalizeSpeakQuestion(outcome.raw);
+      // AI returned content but it didn't parse as a valid question — genuine unclear input.
+      if (!question) return null;
+      return { question, provider: "deepseek", model };
+    }
+    console.warn("[deepseekSpeak] deepseek failed — falling over to gemini");
+  }
+
+  // ── Gemini (fallback) ───────────────────────────────────────────────────
+  const geminiKey = env.GEMINI_API_KEY;
+  if (geminiKey) {
+    const model = env.GEMINI_SPEAK_MODEL || "gemini-2.5-flash";
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8_000);
+    let outcome: SpeakOutcome;
+    try {
+      outcome = await callGeminiForSpeak(systemPrompt, userMsg, geminiKey, model, controller.signal);
+    } finally {
+      clearTimeout(timeout);
+    }
+    if (outcome.kind === "ok") {
+      console.log("[deepseekSpeak] provider=gemini model=" + model);
+      const question = normalizeSpeakQuestion(outcome.raw);
+      if (!question) return null;
+      return { question, provider: "gemini", model };
+    }
+    console.warn("[deepseekSpeak] gemini failed — no providers remaining");
+  }
+
+  // Neither key present or both failed — typed retryable error.
+  return SPEAK_FOLLOWUP_ERROR;
 }
 
 export function toSpeakRecentTurns(value: unknown): Array<{ role: "learner" | "assistant"; text: string }> {
