@@ -9,6 +9,12 @@ const EXPECTED_SUPABASE_HOST = new URL(
     process.env.VITE_SUPABASE_URL ||
     "https://buemdfxyhxunzpgdoqin.supabase.co",
 ).host;
+// Pinned literal (CEO-2 amendment): the real Supabase project ref for production.
+// Using a derived value (split from configured host) would let a misconfigured
+// GOLDEN_FLOW_SUPABASE_URL slip through — the literal always checks the one
+// production project regardless of env override. Check #1 asserts the PRESENCE
+// of this ref in both the configured host and the served bundle.
+const EXPECTED_PROJECT_REF = "buemdfxyhxunzpgdoqin";
 
 function requireToken(name: string, value: string): string {
   if (!value && !ALLOW_MISSING_SECRETS) {
@@ -142,14 +148,13 @@ test.describe.serial("production golden flows", () => {
     expect(body).not.toHaveProperty("cost");
   });
 
-  test("AUTH CONFIG: signin bundle points at real Supabase and never placeholder", async ({ request }) => {
+  test("AUTH CONFIG: served signin bundle carries the real Supabase project ref", async ({ request }) => {
     test.setTimeout(180 * 1000);
 
     const response = await request.get(`${BASE_URL}/signin`);
     expect(response.status(), await response.text()).toBeLessThan(400);
 
     const html = await response.text();
-    expect(html).not.toContain("placeholder.invalid");
 
     const pending = [...new Set(jsAssetPathsFrom(html))];
     const seen = new Set<string>();
@@ -182,14 +187,25 @@ test.describe.serial("production golden flows", () => {
     }
 
     const joined = bundledJs.join("\n");
-    expect(joined).not.toContain("placeholder.invalid");
-    expect(joined).toContain(EXPECTED_SUPABASE_HOST);
+    // Positive check (CEO correction): a healthy build's served JS MUST carry
+    // the real project ref and host. We do NOT assert the absence of the
+    // incident fallback host's name — that constant compiles into every build
+    // and false-alarms on healthy deploys.
+    expect(EXPECTED_PROJECT_REF, "configured Supabase host must expose a project ref").toBeTruthy();
+    expect(joined, "served bundle must contain the real Supabase project ref").toContain(
+      EXPECTED_PROJECT_REF,
+    );
+    expect(joined, "served bundle must point at the real Supabase host").toContain(
+      EXPECTED_SUPABASE_HOST,
+    );
   });
 
-  test("SIGNIN: auth backend is the real, reachable Supabase (never placeholder)", async ({ request }) => {
-    // Guard the test's own expectation: a misconfigured override must not
-    // let the incident host (placeholder.invalid) pass silently.
-    expect(EXPECTED_SUPABASE_HOST).not.toContain("placeholder.invalid");
+  test("SIGNIN: auth backend is the real, reachable Supabase project", async ({ request }) => {
+    // Guard the test's own expectation positively: the configured host must
+    // carry the real project ref, so a misconfigured override cannot pass.
+    expect(EXPECTED_SUPABASE_HOST, "configured host must carry the real project ref").toContain(
+      EXPECTED_PROJECT_REF,
+    );
 
     const supabaseUrl = new URL(
       process.env.GOLDEN_FLOW_SUPABASE_URL ||
@@ -201,12 +217,11 @@ test.describe.serial("production golden flows", () => {
     const anonKey =
       process.env.GOLDEN_FLOW_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY || "";
 
-    // Where AUTH CONFIG proves the *bundle* points at the real Supabase host
-    // and never the placeholder, this proves that host is a live, routed
-    // GoTrue auth backend the signin flow can actually reach. The incident
-    // host (placeholder.invalid) fails DNS and never returns a routed
-    // response at all (curl HTTP 000), so any GoTrue-shaped reply is proof
-    // the signin auth target is real and up.
+    // Where AUTH CONFIG proves the *bundle* carries the real Supabase project
+    // ref, this proves that host is a live, routed GoTrue auth backend the
+    // signin flow can actually reach. The incident fallback host fails DNS and
+    // never returns a routed response at all (curl HTTP 000), so any
+    // GoTrue-shaped reply is proof the signin auth target is real and up.
     const health = await request.get(`${supabaseUrl.origin}/auth/v1/health`, {
       headers: anonKey ? { apikey: anonKey } : {},
     });
