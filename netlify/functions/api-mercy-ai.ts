@@ -30,6 +30,7 @@ type MercyAiBody = {
   mode?: string;
   scenarioId?: string;
   learnerText?: string;
+  explainLanguage?: string;
   turnCount?: number;
   transcript?: string;
   userText?: string;
@@ -183,6 +184,70 @@ export async function handler(event: NetlifyEvent) {
       return json({
         error: err instanceof Error ? err.message : "AI conversation failed",
       }, 502);
+    }
+  }
+
+  if (norm(body.mode) === "sentence-correction") {
+    const learnerText = asString(body.learnerText || body.userText || body.text, 500);
+    if (!learnerText) return json({ error: "Missing learnerText" }, 400);
+    if (!openAiKey) return json({ error: "Missing OPENAI_API_KEY" }, 500);
+
+    const _runOnWords = learnerText.split(/\s+/).length;
+    const _runOnConjs = (learnerText.match(/\b(?:and|but|so|because|or|yet|then|after|before|when|while|since|unless|although|though|however|moreover|furthermore|therefore|thus|hence|meanwhile|otherwise|besides|also|additionally|consequently|nevertheless|nonetheless)\b/gi) || []).length;
+    const _runOnCommas = (learnerText.match(/,/g) || []).length;
+    const isRunOn = _runOnWords >= 12 && (_runOnConjs >= 2 || _runOnCommas >= 2);
+
+    const explainLang = norm(body.explainLanguage) === "en" ? "en" : "vi";
+    const viAbstain = "Mercy chưa sửa chắc câu này. Bạn thử viết ngắn hơn, rõ hơn rồi gửi lại nhé.";
+    const enAbstain = "Mercy could not correct this confidently. Try rewriting it more clearly.";
+    const sttAbstain = "Mình chưa chắc bạn định nói gì — bạn gõ lại nhé?";
+    const runOnInstruction = isRunOn
+      ? `\nRun-on rule: The input appears to be a run-on sentence with multiple clauses. Do NOT set "confident" to false for this reason. Instead, break the clauses into separate sentences, correct the grammar in each one, and return all corrected sentences assembled as the "corrected" value. The explanation (in ${explainLang === "vi" ? "Vietnamese" : "English"}) should note that the run-on was split into proper sentences.`
+      : "";
+    const systemPrompt = `You are Mercy, an English-language tutor for Vietnamese learners.
+Correct the learner's English sentence for grammar, tense, and natural phrasing.
+Keep the learner's original meaning — do not rewrite from scratch.
+Explain what changed and why in ${explainLang === "vi" ? "Vietnamese" : "English"} (1–2 sentences).
+Give a grammar tip in ${explainLang === "vi" ? "Vietnamese" : "English"} (one line, start with "Mẹo:" or "Tip:").
+STT-garble rule: If a content word is semantically impossible in its syntactic position — e.g. a degree adverb modifying a proper noun ("very Sunday", "so Monday") or a linking verb followed by a time noun used as an adjective ("feel week") — the word is almost certainly a speech-to-text mishearing. You MUST either (a) identify the intended word and fix it (e.g. "very Sunday" → "very sunny", "feel week" → "feel weak"), or (b) set "confident" to false with explanation "${sttAbstain}". NEVER approve such a sentence as correct.${runOnInstruction}
+Fragment rule: For sentence fragments with no finite verb (e.g. "a good mother yesterday and invited her") — reconstruct the intended complete sentence, OR set "confident" to false. NEVER return a fragment as-is with confident:true.
+If the input is genuinely garbled or incomprehensible (not merely long or multi-clause), set "confident" to false.
+Respond ONLY with valid JSON:
+{"corrected":"<corrected sentence>","explanation":"<explanation>","grammarTip":"<tip>","confident":true}
+On low-confidence: {"corrected":"","explanation":"${explainLang === "vi" ? viAbstain : enAbstain}","grammarTip":"","confident":false}`;
+
+    try {
+      const corrResponse = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${openAiKey}`,
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          messages: [
+            { role: "developer", content: systemPrompt },
+            { role: "user", content: learnerText },
+          ],
+          temperature: 0.25,
+          max_tokens: isRunOn ? 400 : 220,
+          response_format: { type: "json_object" },
+        }),
+      });
+      if (!corrResponse.ok) return json({ error: "correction_failed" }, 500);
+      const corrData = await corrResponse.json() as { choices?: Array<{ message?: { content?: string } }> };
+      const raw = corrData.choices?.[0]?.message?.content ?? "{}";
+      let parsed: { corrected?: string; explanation?: string; grammarTip?: string; confident?: boolean } = {};
+      try { parsed = JSON.parse(raw); } catch { /* leave empty */ }
+      const confident = parsed.confident !== false;
+      return json({
+        corrected: norm(parsed.corrected) || (confident ? learnerText : ""),
+        explanation: norm(parsed.explanation) || (confident ? "" : (explainLang === "vi" ? viAbstain : enAbstain)),
+        grammarTip: norm(parsed.grammarTip) || "",
+        confident,
+      });
+    } catch {
+      return json({ error: "correction_failed" }, 500);
     }
   }
 

@@ -18,7 +18,10 @@ const env = {
   OPENAI_API_KEY: "openai-key",
 };
 
-function postMercyAi(body: Record<string, unknown>): Promise<Response> {
+function postMercyAi(
+  body: Record<string, unknown>,
+  envOverride?: Record<string, string>,
+): Promise<Response> {
   return onRequestPost({
     request: new Request("https://example.test/api/mercy-ai", {
       method: "POST",
@@ -28,7 +31,7 @@ function postMercyAi(body: Record<string, unknown>): Promise<Response> {
       },
       body: JSON.stringify(body),
     }),
-    env,
+    env: envOverride ?? env,
   });
 }
 
@@ -293,5 +296,107 @@ describe("Pages /api/mercy-ai AI conversation mode", () => {
     expect(response.status).toBe(400);
     await expect(response.json()).resolves.toEqual({ error: "Session turn cap reached" });
     expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe("Pages /api/mercy-ai sentence-correction mode", () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
+    getUserMock.mockResolvedValue({
+      data: { user: { id: "user-1" } },
+      error: null,
+    });
+  });
+
+  it("returns corrected sentence, explanation, grammarTip, confident on a grammar error", async () => {
+    const fetchMock = vi.fn<typeof fetch>().mockResolvedValueOnce(
+      jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              corrected: "I go to school yesterday.",
+              explanation: "Dùng 'went' thay vì 'go' vì đây là quá khứ.",
+              grammarTip: "Mẹo: go → went (quá khứ bất quy tắc).",
+              confident: true,
+            }),
+          },
+        }],
+      })
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi({
+      mode: "sentence-correction",
+      learnerText: "I go to school yesterday.",
+    });
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toMatchObject({
+      corrected: "I go to school yesterday.",
+      explanation: "Dùng 'went' thay vì 'go' vì đây là quá khứ.",
+      grammarTip: "Mẹo: go → went (quá khứ bất quy tắc).",
+      confident: true,
+    });
+
+    // Must call OpenAI directly via raw fetch (not a Supabase or DeepSeek endpoint)
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(String(fetchMock.mock.calls[0][0])).toBe("https://api.openai.com/v1/chat/completions");
+    const body = JSON.parse(String(fetchMock.mock.calls[0][1]?.body));
+    expect(body.model).toBe("gpt-4o-mini");
+    expect(body.temperature).toBe(0.25);
+    expect(body.response_format).toEqual({ type: "json_object" });
+  });
+
+  it("returns confident:false with abstain message when the learner text is incomprehensible", async () => {
+    const fetchMock = vi.fn<typeof fetch>().mockResolvedValueOnce(
+      jsonResponse({
+        choices: [{
+          message: {
+            content: JSON.stringify({
+              corrected: "",
+              explanation: "Mercy chưa sửa chắc câu này. Bạn thử viết ngắn hơn, rõ hơn rồi gửi lại nhé.",
+              grammarTip: "",
+              confident: false,
+            }),
+          },
+        }],
+      })
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi({
+      mode: "sentence-correction",
+      learnerText: "asdfjkl qwerty zxcvbn",
+    });
+
+    expect(response.status).toBe(200);
+    const body = await response.json();
+    expect(body.confident).toBe(false);
+    expect(body.corrected).toBe("");
+  });
+
+  it("rejects missing learnerText with 400", async () => {
+    const fetchMock = vi.fn<typeof fetch>();
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi({ mode: "sentence-correction" });
+
+    expect(response.status).toBe(400);
+    await expect(response.json()).resolves.toEqual({ error: "Missing learnerText" });
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("returns 500 when OPENAI_API_KEY is absent", async () => {
+    const fetchMock = vi.fn<typeof fetch>();
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await postMercyAi(
+      { mode: "sentence-correction", learnerText: "I go to school yesterday." },
+      { ...env, OPENAI_API_KEY: "" },
+    );
+
+    expect(response.status).toBe(500);
+    await expect(response.json()).resolves.toEqual({ error: "Missing OPENAI_API_KEY" });
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 });

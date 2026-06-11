@@ -6,9 +6,16 @@ import { onRequestGet as grammarOnRequestGet } from "../functions/api/mercy/gram
 import { onRequestPost as ttsOnRequestPost } from "../functions/api/tts";
 
 const root = process.cwd();
+// Use the test file's own location so parity assertions read the repo that
+// owns this file — correct both in worktrees and after merge to main.
+const repoRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 
 function read(rel: string): string {
   return fs.readFileSync(path.join(root, rel), "utf8");
+}
+
+function readFromRepo(rel: string): string {
+  return fs.readFileSync(path.join(repoRoot, rel), "utf8");
 }
 
 function ttsContext(body: Record<string, unknown>) {
@@ -121,6 +128,33 @@ describe("Cloudflare Pages API function shape", () => {
     expect(mercyAi).toContain("buildAiConversationTurn");
     expect(mercyAi).toContain("env,");
     expect(mercyAi).not.toContain("process.env");
+  });
+
+  it("pins sentence-correction mode on CF Pages mirror with no process.env leakage", () => {
+    const mercyAi = readFromRepo("functions/api/mercy-ai.ts");
+    expect(mercyAi).toContain('norm(body.mode) === "sentence-correction"');
+    expect(mercyAi).not.toContain("process.env");
+    // Must use raw fetch (Workers runtime) not the OpenAI SDK
+    expect(mercyAi).not.toContain("new OpenAI(");
+    expect(mercyAi).toContain("api.openai.com/v1/chat/completions");
+  });
+
+  it("keeps mode parity across all three API mirrors (Vercel / CF Pages / Netlify)", () => {
+    const REQUIRED_MODES = [
+      '"speak-follow-up"',
+      '"ai-conversation-turn"',
+      '"sentence-correction"',
+    ];
+    const mirrors: Record<string, string> = {
+      "Vercel (api/mercy-ai.ts)": readFromRepo("api/mercy-ai.ts"),
+      "CF Pages (functions/api/mercy-ai.ts)": readFromRepo("functions/api/mercy-ai.ts"),
+      "Netlify (netlify/functions/api-mercy-ai.ts)": readFromRepo("netlify/functions/api-mercy-ai.ts"),
+    };
+    for (const [label, source] of Object.entries(mirrors)) {
+      for (const mode of REQUIRED_MODES) {
+        expect(source, `${label} is missing mode ${mode}`).toContain(mode);
+      }
+    }
   });
 
   it("resolves a mercy-tts CACHE-HIT https Storage audioUrl into streamed audio (not a 'no audio' 503)", async () => {
