@@ -1,0 +1,1626 @@
+{
+  "corpus": "step11-vietlish-corpus-d4-wave9",
+  "step": 11,
+  "wave": 9,
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "kind": "vietlish_interference_review_candidates",
+  "schema": "VietlishCorpusEntry (src/lib/tutor/vietlishCorpus.ts) - { vietlish, natural, sourcePattern, category, frequency, context }",
+  "author": "F1 (Content Factory)",
+  "status": "review_not_wired",
+  "wiredIntoEngine": false,
+  "definition": "Ninth-wave candidate Vietnamese-L1 interference items for human review before any promotion into VIETLISH_CORPUS. Focus areas: preposition governance, countability/articles, tense/aspect transfer, question and topic-comment word order, false friends, existential/stative calques, and service-register softening.",
+  "dedupedAgainst": "F1 local check against live VIETLISH_CORPUS, pending waves 1-5 on main, and fetched in-flight wave branches 6/7/8; case-insensitive vietlish matching.",
+  "generatedFor": "2026-06-10 F1 Step-11 corpus lane after A10 baton",
+  "count": 200,
+  "categories": {
+    "calque": "C",
+    "word_order": "W",
+    "register": "R",
+    "collocation": "CO",
+    "false_friend": "FF",
+    "literal_translation": "LT"
+  },
+  "entries": [
+    {
+      "vietlish": "apply to this job",
+      "natural": "apply for this job",
+      "sourcePattern": "nộp đơn cho công việc -> apply for a job, not apply to a job",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "Tonight I will apply to this job online."
+    },
+    {
+      "vietlish": "responsible about the inventory",
+      "natural": "responsible for the inventory",
+      "sourcePattern": "chịu trách nhiệm về -> about mapped onto responsible",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "At work I am responsible about the inventory."
+    },
+    {
+      "vietlish": "depend of my schedule",
+      "natural": "depend on my schedule",
+      "sourcePattern": "phụ thuộc vào -> of chosen after depend",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Whether I can join will depend of my schedule."
+    },
+    {
+      "vietlish": "concentrate in my work",
+      "natural": "concentrate on my work",
+      "sourcePattern": "tập trung vào -> in/on confusion after concentrate",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "It is hard to concentrate in my work when it is noisy."
+    },
+    {
+      "vietlish": "complain with the manager",
+      "natural": "complain to the manager",
+      "sourcePattern": "phàn nàn với -> with used for recipient",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I need to complain with the manager about the charge."
+    },
+    {
+      "vietlish": "apologize with my coworker",
+      "natural": "apologize to my coworker",
+      "sourcePattern": "xin lỗi với -> with used instead of to",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I will apologize with my coworker tomorrow."
+    },
+    {
+      "vietlish": "explain for me the policy",
+      "natural": "explain the policy to me",
+      "sourcePattern": "giải thích cho tôi -> for me placed after explain",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "Please explain for me the policy one more time."
+    },
+    {
+      "vietlish": "invite for her to dinner",
+      "natural": "invite her to dinner",
+      "sourcePattern": "mời cô ấy đi ăn -> for inserted after invite",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "We should invite for her to dinner."
+    },
+    {
+      "vietlish": "request for a refund",
+      "natural": "request a refund",
+      "sourcePattern": "yêu cầu hoàn tiền -> for inserted after request",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I want to request for a refund."
+    },
+    {
+      "vietlish": "enter to the password",
+      "natural": "enter the password",
+      "sourcePattern": "nhập vào mật khẩu -> to inserted after enter",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "Please enter to the password again."
+    },
+    {
+      "vietlish": "access to my account",
+      "natural": "access my account",
+      "sourcePattern": "truy cập vào -> to inserted after access as a verb",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I cannot access to my account today."
+    },
+    {
+      "vietlish": "attend in the meeting",
+      "natural": "attend the meeting",
+      "sourcePattern": "tham dự cuộc họp -> in inserted after attend",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I cannot attend in the meeting tomorrow."
+    },
+    {
+      "vietlish": "join to the class",
+      "natural": "join the class",
+      "sourcePattern": "tham gia vào lớp -> to inserted after join",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "Can I join to the class next week?"
+    },
+    {
+      "vietlish": "answer to my question",
+      "natural": "answer my question",
+      "sourcePattern": "trả lời câu hỏi -> to inserted after answer as verb",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Please answer to my question directly."
+    },
+    {
+      "vietlish": "leave from work early",
+      "natural": "leave work early",
+      "sourcePattern": "rời khỏi chỗ làm -> from inserted where English omits it",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I need to leave from work early today."
+    },
+    {
+      "vietlish": "married with a Canadian",
+      "natural": "married to a Canadian",
+      "sourcePattern": "kết hôn với -> with instead of to after married",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "She is married with a Canadian."
+    },
+    {
+      "vietlish": "similar with my old phone",
+      "natural": "similar to my old phone",
+      "sourcePattern": "giống với -> with instead of to after similar",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "This model is similar with my old phone."
+    },
+    {
+      "vietlish": "different with my country",
+      "natural": "different from my country",
+      "sourcePattern": "khác với -> with instead of from",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "The weather here is different with my country."
+    },
+    {
+      "vietlish": "afraid with dogs",
+      "natural": "afraid of dogs",
+      "sourcePattern": "sợ chó -> with chosen for object of fear",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "My daughter is afraid with dogs."
+    },
+    {
+      "vietlish": "proud about my son",
+      "natural": "proud of my son",
+      "sourcePattern": "tự hào về -> about instead of of",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I am proud about my son."
+    },
+    {
+      "vietlish": "good in English",
+      "natural": "good at English",
+      "sourcePattern": "giỏi tiếng Anh -> in instead of at",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "She is good in English now."
+    },
+    {
+      "vietlish": "bad in remembering names",
+      "natural": "bad at remembering names",
+      "sourcePattern": "dở về -> in instead of at",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I am bad in remembering names."
+    },
+    {
+      "vietlish": "interested with this course",
+      "natural": "interested in this course",
+      "sourcePattern": "quan tâm đến -> with instead of in",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I am interested with this course."
+    },
+    {
+      "vietlish": "late in the meeting",
+      "natural": "late for the meeting",
+      "sourcePattern": "trễ buổi họp -> in instead of for",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I was late in the meeting this morning."
+    },
+    {
+      "vietlish": "ready with the test",
+      "natural": "ready for the test",
+      "sourcePattern": "sẵn sàng cho -> with instead of for",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Are you ready with the test?"
+    },
+    {
+      "vietlish": "tired to wait",
+      "natural": "tired of waiting",
+      "sourcePattern": "mệt vì chờ -> to wait instead of of waiting",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I am tired to wait in this line."
+    },
+    {
+      "vietlish": "avoid to speak English",
+      "natural": "avoid speaking English",
+      "sourcePattern": "tránh nói -> to-infinitive after avoid",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "Some learners avoid to speak English."
+    },
+    {
+      "vietlish": "suggest me to call later",
+      "natural": "suggest that I call later",
+      "sourcePattern": "gợi ý tôi gọi -> suggest + object + infinitive calque",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "She suggested me to call later."
+    },
+    {
+      "vietlish": "recommend me to buy it",
+      "natural": "recommend that I buy it",
+      "sourcePattern": "khuyên tôi mua -> recommend + object + infinitive",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The clerk recommended me to buy it."
+    },
+    {
+      "vietlish": "consider to move",
+      "natural": "consider moving",
+      "sourcePattern": "cân nhắc chuyển -> to-infinitive after consider",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "We are considering to move next month."
+    },
+    {
+      "vietlish": "enjoy to cook",
+      "natural": "enjoy cooking",
+      "sourcePattern": "thích nấu ăn -> to-infinitive after enjoy",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I enjoy to cook Vietnamese food."
+    },
+    {
+      "vietlish": "finish to clean the room",
+      "natural": "finish cleaning the room",
+      "sourcePattern": "làm xong việc dọn -> to-infinitive after finish",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I finished to clean the room at ten."
+    },
+    {
+      "vietlish": "practice to pronounce this word",
+      "natural": "practice pronouncing this word",
+      "sourcePattern": "luyện phát âm -> to-infinitive after practice",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I need to practice to pronounce this word."
+    },
+    {
+      "vietlish": "I took bus to work",
+      "natural": "I took the bus to work",
+      "sourcePattern": "đi xe buýt -> missing article with bus as mode",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "This morning I took bus to work."
+    },
+    {
+      "vietlish": "I live in apartment",
+      "natural": "I live in an apartment",
+      "sourcePattern": "ở căn hộ -> missing article",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I live in apartment near downtown."
+    },
+    {
+      "vietlish": "she is nurse",
+      "natural": "she is a nurse",
+      "sourcePattern": "Vietnamese omits article before occupations",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "My aunt is nurse."
+    },
+    {
+      "vietlish": "I have fever",
+      "natural": "I have a fever",
+      "sourcePattern": "bị sốt -> missing article in symptom phrase",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I have fever and a sore throat."
+    },
+    {
+      "vietlish": "he has headache",
+      "natural": "he has a headache",
+      "sourcePattern": "đau đầu -> missing article in symptom phrase",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "He has headache after work."
+    },
+    {
+      "vietlish": "I got flu last week",
+      "natural": "I got the flu last week",
+      "sourcePattern": "bị cúm -> missing article in common illness phrase",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I got flu last week."
+    },
+    {
+      "vietlish": "I need receipt for tax",
+      "natural": "I need a receipt for tax purposes",
+      "sourcePattern": "cần biên lai -> missing article before receipt",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I need receipt for tax."
+    },
+    {
+      "vietlish": "I live here since 2020",
+      "natural": "I have lived here since 2020",
+      "sourcePattern": "đã sống từ -> present perfect required with since",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I live here since 2020."
+    },
+    {
+      "vietlish": "I know her for ten years",
+      "natural": "I have known her for ten years",
+      "sourcePattern": "biết nhau mười năm rồi -> present perfect with duration",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I know her for ten years."
+    },
+    {
+      "vietlish": "she works here since last summer",
+      "natural": "she has worked here since last summer",
+      "sourcePattern": "làm ở đây từ -> present perfect with since",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "She works here since last summer."
+    },
+    {
+      "vietlish": "I am waiting for one hour",
+      "natural": "I have been waiting for one hour",
+      "sourcePattern": "đang chờ một tiếng rồi -> present perfect progressive",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I am waiting for one hour."
+    },
+    {
+      "vietlish": "we are married for five years",
+      "natural": "we have been married for five years",
+      "sourcePattern": "kết hôn được năm năm -> present perfect state",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "We are married for five years."
+    },
+    {
+      "vietlish": "I did not see him since Monday",
+      "natural": "I have not seen him since Monday",
+      "sourcePattern": "không gặp từ thứ Hai -> present perfect negative",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I did not see him since Monday."
+    },
+    {
+      "vietlish": "yesterday I meet my old teacher",
+      "natural": "yesterday I met my old teacher",
+      "sourcePattern": "Vietnamese no tense inflection -> past marker omitted",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "Yesterday I meet my old teacher."
+    },
+    {
+      "vietlish": "last week she buy a car",
+      "natural": "last week she bought a car",
+      "sourcePattern": "Vietnamese no tense inflection -> irregular past omitted",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "Last week she buy a car."
+    },
+    {
+      "vietlish": "he come here two days ago",
+      "natural": "he came here two days ago",
+      "sourcePattern": "Vietnamese no tense inflection -> past omitted",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "He come here two days ago."
+    },
+    {
+      "vietlish": "I already finish the report",
+      "natural": "I have already finished the report",
+      "sourcePattern": "đã xong rồi -> present perfect missing auxiliary",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I already finish the report."
+    },
+    {
+      "vietlish": "she just leave",
+      "natural": "she just left",
+      "sourcePattern": "vừa mới đi -> simple past required",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "She just leave five minutes ago."
+    },
+    {
+      "vietlish": "I never went to Toronto before",
+      "natural": "I have never been to Toronto before",
+      "sourcePattern": "chưa từng đi -> experience present perfect",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I never went to Toronto before."
+    },
+    {
+      "vietlish": "have you ever eat pho",
+      "natural": "have you ever eaten pho",
+      "sourcePattern": "đã từng ăn -> past participle required",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "Have you ever eat pho?"
+    },
+    {
+      "vietlish": "I have went there twice",
+      "natural": "I have gone there twice",
+      "sourcePattern": "past participle confused with simple past",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I have went there twice."
+    },
+    {
+      "vietlish": "she has saw that movie",
+      "natural": "she has seen that movie",
+      "sourcePattern": "past participle confused with simple past",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "She has saw that movie already."
+    },
+    {
+      "vietlish": "we have did the homework",
+      "natural": "we have done the homework",
+      "sourcePattern": "past participle confused with simple past",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "We have did the homework."
+    },
+    {
+      "vietlish": "I was go to work when you called",
+      "natural": "I was going to work when you called",
+      "sourcePattern": "progressive missing -ing after be",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I was go to work when you called."
+    },
+    {
+      "vietlish": "they are play soccer outside",
+      "natural": "they are playing soccer outside",
+      "sourcePattern": "progressive missing -ing after be",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "They are play soccer outside."
+    },
+    {
+      "vietlish": "she is study English now",
+      "natural": "she is studying English now",
+      "sourcePattern": "progressive missing -ing after be",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "She is study English now."
+    },
+    {
+      "vietlish": "because I was sick, so I stayed home",
+      "natural": "because I was sick, I stayed home",
+      "sourcePattern": "vì ... nên -> double connector copied",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "Because I was sick, so I stayed home."
+    },
+    {
+      "vietlish": "although it rained, but we went out",
+      "natural": "although it rained, we went out",
+      "sourcePattern": "mặc dù ... nhưng -> double connector copied",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "Although it rained, but we went out."
+    },
+    {
+      "vietlish": "if you need help, then call me",
+      "natural": "if you need help, call me",
+      "sourcePattern": "nếu ... thì -> then overused in English",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "If you need help, then call me."
+    },
+    {
+      "vietlish": "when I arrive, then I will text you",
+      "natural": "when I arrive, I will text you",
+      "sourcePattern": "khi ... thì -> then copied into time clause",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "When I arrive, then I will text you."
+    },
+    {
+      "vietlish": "I bought new furniture yesterday",
+      "natural": "I bought some new furniture yesterday",
+      "sourcePattern": "đồ đạc treated like countable plural items",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "For the apartment, I bought new furniture yesterday."
+    },
+    {
+      "vietlish": "I need an advice from you",
+      "natural": "I need some advice from you",
+      "sourcePattern": "lời khuyên counted as one advice",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "Before I decide, I need an advice from you."
+    },
+    {
+      "vietlish": "she gave me many informations",
+      "natural": "she gave me a lot of information",
+      "sourcePattern": "thông tin treated as countable plural",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "The receptionist gave me many informations."
+    },
+    {
+      "vietlish": "I have many homeworks",
+      "natural": "I have a lot of homework",
+      "sourcePattern": "bài tập về nhà treated as countable plural",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I have many homeworks this weekend."
+    },
+    {
+      "vietlish": "I need two breads",
+      "natural": "I need two loaves of bread",
+      "sourcePattern": "bánh mì counted directly without unit",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "At the bakery I need two breads."
+    },
+    {
+      "vietlish": "give me three waters",
+      "natural": "give me three bottles of water",
+      "sourcePattern": "nước counted directly without container",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "For the table, give me three waters."
+    },
+    {
+      "vietlish": "we ordered two soups",
+      "natural": "we ordered two bowls of soup",
+      "sourcePattern": "súp counted without serving unit",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "At lunch we ordered two soups."
+    },
+    {
+      "vietlish": "I have a good health",
+      "natural": "I am in good health",
+      "sourcePattern": "sức khỏe tốt -> a good health with article",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Luckily I have a good health."
+    },
+    {
+      "vietlish": "she has a strong English",
+      "natural": "she has strong English skills",
+      "sourcePattern": "tiếng Anh tốt -> English as countable possession",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "She has a strong English now."
+    },
+    {
+      "vietlish": "the police gave me ticket",
+      "natural": "the police gave me a ticket",
+      "sourcePattern": "Vietnamese classifier omitted -> missing article",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The police gave me ticket for parking."
+    },
+    {
+      "vietlish": "please give me pen",
+      "natural": "please give me a pen",
+      "sourcePattern": "cây bút classifier omitted -> missing article",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Please give me pen to sign."
+    },
+    {
+      "vietlish": "not only she is smart but also kind",
+      "natural": "she is not only smart but also kind",
+      "sourcePattern": "không những ... mà còn -> not only placement copied",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Not only she is smart but also kind."
+    },
+    {
+      "vietlish": "I only have ten dollar",
+      "natural": "I have only ten dollars",
+      "sourcePattern": "chỉ có -> only placement and plural issue",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I only have ten dollar."
+    },
+    {
+      "vietlish": "I drank two milks",
+      "natural": "I drank two glasses of milk",
+      "sourcePattern": "sữa counted directly without measure",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "After dinner I drank two milks."
+    },
+    {
+      "vietlish": "I found a work near my house",
+      "natural": "I found a job near my house",
+      "sourcePattern": "công việc -> work used for countable job",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I found a work near my house."
+    },
+    {
+      "vietlish": "I went to hospital yesterday",
+      "natural": "I went to the hospital yesterday",
+      "sourcePattern": "Vietnamese lacks articles -> missing the for hospital visit",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I went to hospital yesterday for a checkup."
+    },
+    {
+      "vietlish": "after the work I go home",
+      "natural": "after work I go home",
+      "sourcePattern": "sau giờ làm -> extra the before work as activity",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "After the work I go home."
+    },
+    {
+      "vietlish": "why you are late",
+      "natural": "why are you late",
+      "sourcePattern": "Vietnamese question word without inversion",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Why you are late today?"
+    },
+    {
+      "vietlish": "where you live",
+      "natural": "where do you live",
+      "sourcePattern": "Vietnamese question word without do-support",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Where you live now?"
+    },
+    {
+      "vietlish": "what time you start work",
+      "natural": "what time do you start work",
+      "sourcePattern": "Vietnamese question word without auxiliary",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "What time you start work tomorrow?"
+    },
+    {
+      "vietlish": "how you go to work",
+      "natural": "how do you go to work",
+      "sourcePattern": "Vietnamese question word without do-support",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "How you go to work every day?"
+    },
+    {
+      "vietlish": "when she return home",
+      "natural": "when will she return home",
+      "sourcePattern": "khi nào cô ấy về nhà -> question word without auxiliary and tense marking",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "When she return home from work?"
+    },
+    {
+      "vietlish": "who you met yesterday",
+      "natural": "who did you meet yesterday",
+      "sourcePattern": "Vietnamese question word without do-support",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "Who you met yesterday?"
+    },
+    {
+      "vietlish": "which one you want",
+      "natural": "which one do you want",
+      "sourcePattern": "Vietnamese question word without do-support",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Which one you want?"
+    },
+    {
+      "vietlish": "how long you stay here",
+      "natural": "how long will you stay here",
+      "sourcePattern": "Vietnamese question word without auxiliary",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "How long you stay here?"
+    },
+    {
+      "vietlish": "how many people you have in family",
+      "natural": "how many people are in your family",
+      "sourcePattern": "gia đình có mấy người -> have people in family structure",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "How many people you have in family?"
+    },
+    {
+      "vietlish": "you from where",
+      "natural": "where are you from",
+      "sourcePattern": "Vietnamese wh-word can remain at end",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "You from where?"
+    },
+    {
+      "vietlish": "you go with who",
+      "natural": "who are you going with",
+      "sourcePattern": "Vietnamese wh-word final position",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "You go with who tonight?"
+    },
+    {
+      "vietlish": "this one for what",
+      "natural": "what is this one for",
+      "sourcePattern": "Vietnamese purpose question at end",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "This one for what?"
+    },
+    {
+      "vietlish": "the bathroom where",
+      "natural": "where is the bathroom",
+      "sourcePattern": "Vietnamese noun + đâu order",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Excuse me, the bathroom where?"
+    },
+    {
+      "vietlish": "your house far not",
+      "natural": "is your house far",
+      "sourcePattern": "Vietnamese yes/no particle order",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "Your house far not?"
+    },
+    {
+      "vietlish": "you have appointment not",
+      "natural": "do you have an appointment",
+      "sourcePattern": "Vietnamese có ... không question order",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "You have appointment not?"
+    },
+    {
+      "vietlish": "she can drive not",
+      "natural": "can she drive",
+      "sourcePattern": "Vietnamese yes/no final particle copied",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "She can drive not?"
+    },
+    {
+      "vietlish": "the store open already not",
+      "natural": "is the store open yet",
+      "sourcePattern": "Vietnamese rồi/chưa question copied",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The store open already not?"
+    },
+    {
+      "vietlish": "you eat lunch yet",
+      "natural": "have you had lunch yet",
+      "sourcePattern": "Vietnamese chưa question with eat lunch",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "You eat lunch yet?"
+    },
+    {
+      "vietlish": "you finish homework yet",
+      "natural": "have you finished your homework yet",
+      "sourcePattern": "Vietnamese chưa final marker",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "You finish homework yet?"
+    },
+    {
+      "vietlish": "the bus come yet",
+      "natural": "has the bus come yet",
+      "sourcePattern": "Vietnamese chưa final marker",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The bus come yet?"
+    },
+    {
+      "vietlish": "I today very tired",
+      "natural": "I am very tired today",
+      "sourcePattern": "Vietnamese time adverb after subject plus no be",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I today very tired."
+    },
+    {
+      "vietlish": "she yesterday not go school",
+      "natural": "she did not go to school yesterday",
+      "sourcePattern": "Vietnamese time + negation before verb",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "She yesterday not go school."
+    },
+    {
+      "vietlish": "we tomorrow maybe meet them",
+      "natural": "we may meet them tomorrow",
+      "sourcePattern": "Vietnamese time and modal adverb before verb",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "We tomorrow maybe meet them."
+    },
+    {
+      "vietlish": "my brother last year buy house",
+      "natural": "my brother bought a house last year",
+      "sourcePattern": "Vietnamese time phrase before verb and no tense",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "My brother last year buy house."
+    },
+    {
+      "vietlish": "in Canada winter very cold",
+      "natural": "winter is very cold in Canada",
+      "sourcePattern": "Vietnamese location-fronted topic order",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In Canada winter very cold."
+    },
+    {
+      "vietlish": "this food I cannot eat",
+      "natural": "I cannot eat this food",
+      "sourcePattern": "Vietnamese topic-fronting object",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "This food I cannot eat because it is too spicy."
+    },
+    {
+      "vietlish": "that movie I watched already",
+      "natural": "I have already watched that movie",
+      "sourcePattern": "Vietnamese object topicalization",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "That movie I watched already."
+    },
+    {
+      "vietlish": "English I learn for work",
+      "natural": "I learn English for work",
+      "sourcePattern": "Vietnamese topic-comment order",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "English I learn for work."
+    },
+    {
+      "vietlish": "the money I gave to my mom",
+      "natural": "I gave the money to my mom",
+      "sourcePattern": "Vietnamese object topic-fronting",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The money I gave to my mom."
+    },
+    {
+      "vietlish": "my phone it broke yesterday",
+      "natural": "my phone broke yesterday",
+      "sourcePattern": "Vietnamese topic-comment with resumptive pronoun",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "My phone it broke yesterday."
+    },
+    {
+      "vietlish": "this room it is too small",
+      "natural": "this room is too small",
+      "sourcePattern": "Vietnamese topic-comment with resumptive pronoun",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "This room it is too small."
+    },
+    {
+      "vietlish": "my boss he is very strict",
+      "natural": "my boss is very strict",
+      "sourcePattern": "Vietnamese topic-comment with resumptive pronoun",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "My boss he is very strict."
+    },
+    {
+      "vietlish": "the rent it increased again",
+      "natural": "the rent increased again",
+      "sourcePattern": "Vietnamese topic-comment with resumptive pronoun",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The rent it increased again."
+    },
+    {
+      "vietlish": "I also can speak Vietnamese",
+      "natural": "I can also speak Vietnamese",
+      "sourcePattern": "Vietnamese cũng before verb mapped before modal",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I also can speak Vietnamese."
+    },
+    {
+      "vietlish": "she usually is late",
+      "natural": "she is usually late",
+      "sourcePattern": "frequency adverb before be incorrectly placed",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "She usually is late for class."
+    },
+    {
+      "vietlish": "I will call you when I will arrive",
+      "natural": "I will call you when I arrive",
+      "sourcePattern": "Vietnamese future marker repeated in time clause",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I will call you when I will arrive."
+    },
+    {
+      "vietlish": "after I will finish work, I go home",
+      "natural": "after I finish work, I will go home",
+      "sourcePattern": "future marker inside after-clause",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "After I will finish work, I go home."
+    },
+    {
+      "vietlish": "before you will leave, tell me",
+      "natural": "before you leave, tell me",
+      "sourcePattern": "future marker inside before-clause",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "Before you will leave, tell me."
+    },
+    {
+      "vietlish": "if it will rain, we stay home",
+      "natural": "if it rains, we will stay home",
+      "sourcePattern": "future marker inside if-clause",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "If it will rain, we stay home."
+    },
+    {
+      "vietlish": "unless you will pay, they cancel it",
+      "natural": "unless you pay, they will cancel it",
+      "sourcePattern": "future marker inside unless-clause",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "Unless you will pay, they cancel it."
+    },
+    {
+      "vietlish": "borrow me your charger",
+      "natural": "lend me your charger",
+      "sourcePattern": "cho mượn -> borrow/lend role reversal",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "Can you borrow me your charger for ten minutes?"
+    },
+    {
+      "vietlish": "lend your car from him",
+      "natural": "borrow your car from him",
+      "sourcePattern": "mượn từ -> lend/borrow role reversal",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I need to lend your car from him this weekend."
+    },
+    {
+      "vietlish": "I am boring at home",
+      "natural": "I am bored at home",
+      "sourcePattern": "chán -> boring/bored adjective confusion",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I am boring at home on Sundays."
+    },
+    {
+      "vietlish": "this class is bored",
+      "natural": "this class is boring",
+      "sourcePattern": "chán -> bored/boring adjective confusion",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "This class is bored today."
+    },
+    {
+      "vietlish": "I am exciting for the trip",
+      "natural": "I am excited about the trip",
+      "sourcePattern": "hào hứng -> exciting/excited confusion",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I am exciting for the trip."
+    },
+    {
+      "vietlish": "the news is very excited",
+      "natural": "the news is very exciting",
+      "sourcePattern": "hào hứng -> excited/exciting confusion",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The news is very excited for everyone."
+    },
+    {
+      "vietlish": "I feel stress",
+      "natural": "I feel stressed",
+      "sourcePattern": "căng thẳng -> noun/adjective confusion",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "Before the test I feel stress."
+    },
+    {
+      "vietlish": "my work is stress",
+      "natural": "my work is stressful",
+      "sourcePattern": "căng thẳng -> stress/stressful confusion",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "My work is stress this month."
+    },
+    {
+      "vietlish": "she is confidence",
+      "natural": "she is confident",
+      "sourcePattern": "tự tin -> noun/adjective confusion",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "She is confidence when she speaks."
+    },
+    {
+      "vietlish": "I have confident to speak",
+      "natural": "I have confidence to speak",
+      "sourcePattern": "tự tin -> adjective/noun confusion",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Now I have confident to speak English."
+    },
+    {
+      "vietlish": "he is very patience",
+      "natural": "he is very patient",
+      "sourcePattern": "kiên nhẫn -> noun/adjective confusion",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "He is very patience with kids."
+    },
+    {
+      "vietlish": "please be carefully",
+      "natural": "please be careful",
+      "sourcePattern": "cẩn thận -> adjective/adverb confusion",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "Please be carefully when you drive."
+    },
+    {
+      "vietlish": "drive safe and slow",
+      "natural": "drive safely and slowly",
+      "sourcePattern": "an toàn/chậm -> adjective used as adverb",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Please drive safe and slow tonight."
+    },
+    {
+      "vietlish": "she speaks English fluent",
+      "natural": "she speaks English fluently",
+      "sourcePattern": "lưu loát -> adjective used as adverb",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "She speaks English fluent now."
+    },
+    {
+      "vietlish": "he works very hardly",
+      "natural": "he works very hard",
+      "sourcePattern": "hard/hardly false friend",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "He works very hardly every day."
+    },
+    {
+      "vietlish": "I hardly work on weekends",
+      "natural": "I work hard on weekends",
+      "sourcePattern": "hardly means almost not, not hard",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I hardly work on weekends to earn extra money."
+    },
+    {
+      "vietlish": "this is a sensible issue",
+      "natural": "this is a sensitive issue",
+      "sourcePattern": "nhạy cảm -> sensible/sensitive confusion",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Please be careful; this is a sensible issue."
+    },
+    {
+      "vietlish": "I am sensible to cold weather",
+      "natural": "I am sensitive to cold weather",
+      "sourcePattern": "nhạy cảm với -> sensible/sensitive confusion",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I am sensible to cold weather."
+    },
+    {
+      "vietlish": "the medicine has side affect",
+      "natural": "the medicine has side effects",
+      "sourcePattern": "ảnh hưởng/tác dụng phụ -> affect/effect confusion",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The medicine has side affect."
+    },
+    {
+      "vietlish": "this rule effects me",
+      "natural": "this rule affects me",
+      "sourcePattern": "ảnh hưởng -> effect/affect confusion",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "This rule effects me a lot."
+    },
+    {
+      "vietlish": "I assisted the meeting",
+      "natural": "I attended the meeting",
+      "sourcePattern": "tham dự -> assist used as attend",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Yesterday I assisted the meeting."
+    },
+    {
+      "vietlish": "I pretend to apply tomorrow",
+      "natural": "I intend to apply tomorrow",
+      "sourcePattern": "dự định -> pretend/intend confusion",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I pretend to apply tomorrow."
+    },
+    {
+      "vietlish": "I lost the bus",
+      "natural": "I missed the bus",
+      "sourcePattern": "lỡ xe -> lose/miss confusion",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "This morning I lost the bus."
+    },
+    {
+      "vietlish": "I missed my wallet",
+      "natural": "I lost my wallet",
+      "sourcePattern": "mất ví -> miss/lost confusion",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I missed my wallet at the mall."
+    },
+    {
+      "vietlish": "I forget my phone at home",
+      "natural": "I left my phone at home",
+      "sourcePattern": "quên điện thoại ở nhà -> forget vs leave",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I forget my phone at home this morning."
+    },
+    {
+      "vietlish": "I left to bring my ID",
+      "natural": "I forgot to bring my ID",
+      "sourcePattern": "quên mang -> leave/forget confusion",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I left to bring my ID."
+    },
+    {
+      "vietlish": "please remind me this word",
+      "natural": "please remind me of this word",
+      "sourcePattern": "nhắc tôi về -> remind + of",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Please remind me this word later."
+    },
+    {
+      "vietlish": "I remembered him to call me",
+      "natural": "I reminded him to call me",
+      "sourcePattern": "nhắc -> remember/remind confusion",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I remembered him to call me."
+    },
+    {
+      "vietlish": "I lost the game with my brother",
+      "natural": "I lost the game to my brother",
+      "sourcePattern": "thua ai -> lose to opponent",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I lost the game with my brother."
+    },
+    {
+      "vietlish": "our team won with them",
+      "natural": "our team beat them",
+      "sourcePattern": "thắng ai -> win against/beat",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Our team won with them yesterday."
+    },
+    {
+      "vietlish": "she is pregnant for three months",
+      "natural": "she is three months pregnant",
+      "sourcePattern": "có thai ba tháng -> duration word order",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "She is pregnant for three months."
+    },
+    {
+      "vietlish": "my stomach is painful",
+      "natural": "I have a stomachache",
+      "sourcePattern": "đau bụng -> body part as painful subject instead of symptom phrase",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "After lunch my stomach is painful."
+    },
+    {
+      "vietlish": "my hand is hurted",
+      "natural": "my hand is hurt",
+      "sourcePattern": "đau/bị thương -> overregularized hurt",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "My hand is hurted after work."
+    },
+    {
+      "vietlish": "I got accident yesterday",
+      "natural": "I had an accident yesterday",
+      "sourcePattern": "bị tai nạn -> got accident",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I got accident yesterday."
+    },
+    {
+      "vietlish": "the car has problem",
+      "natural": "there is a problem with the car",
+      "sourcePattern": "xe có vấn đề -> have problem without article",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "The car has problem again."
+    },
+    {
+      "vietlish": "I need to actualize my address",
+      "natural": "I need to update my address",
+      "sourcePattern": "cập nhật -> actualize false friend",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "I need to actualize my address online."
+    },
+    {
+      "vietlish": "my salary is enough to live",
+      "natural": "my salary is enough to live on",
+      "sourcePattern": "sống bằng lương -> live on income",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "My salary is enough to live."
+    },
+    {
+      "vietlish": "I won ten dollars from lottery",
+      "natural": "I won ten dollars in the lottery",
+      "sourcePattern": "trúng xổ số -> win in lottery collocation",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "I won ten dollars from lottery."
+    },
+    {
+      "vietlish": "can you assist to my mother",
+      "natural": "can you help my mother",
+      "sourcePattern": "giúp đỡ -> assist with unnecessary to",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "Can you assist to my mother with the form?"
+    },
+    {
+      "vietlish": "the price is economic",
+      "natural": "the price is economical",
+      "sourcePattern": "kinh tế -> economic/economical confusion",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "This car uses less gas, so the price is economic."
+    },
+    {
+      "vietlish": "I am disagree with that rule",
+      "natural": "I disagree with that rule",
+      "sourcePattern": "không đồng ý -> disagree treated like adjective with be",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I am disagree with that rule at work."
+    },
+    {
+      "vietlish": "she is understand the lesson",
+      "natural": "she understands the lesson",
+      "sourcePattern": "hiểu as state -> extra be",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "She is understand the lesson now."
+    },
+    {
+      "vietlish": "I am remember your name",
+      "natural": "I remember your name",
+      "sourcePattern": "nhớ as adjective-like state -> extra be",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I am remember your name."
+    },
+    {
+      "vietlish": "he is know the answer",
+      "natural": "he knows the answer",
+      "sourcePattern": "biết as state -> extra be",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "He is know the answer."
+    },
+    {
+      "vietlish": "I am like this song",
+      "natural": "I like this song",
+      "sourcePattern": "thích as feeling predicate -> extra be",
+      "category": "calque",
+      "frequency": "high",
+      "context": "I am like this song."
+    },
+    {
+      "vietlish": "this soup is taste good",
+      "natural": "this soup tastes good",
+      "sourcePattern": "có vị ngon -> extra be before stative verb",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "This soup is taste good."
+    },
+    {
+      "vietlish": "the flower is smell nice",
+      "natural": "the flower smells nice",
+      "sourcePattern": "có mùi thơm -> extra be before sensory verb",
+      "category": "calque",
+      "frequency": "low",
+      "context": "The flower is smell nice."
+    },
+    {
+      "vietlish": "my phone is cost too much",
+      "natural": "my phone costs too much",
+      "sourcePattern": "giá là -> extra be before cost",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "My phone is cost too much."
+    },
+    {
+      "vietlish": "the box is contain old books",
+      "natural": "the box contains old books",
+      "sourcePattern": "chứa as state -> extra be",
+      "category": "calque",
+      "frequency": "low",
+      "context": "The box is contain old books."
+    },
+    {
+      "vietlish": "this plan is include lunch",
+      "natural": "this plan includes lunch",
+      "sourcePattern": "bao gồm as state -> extra be",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "This plan is include lunch."
+    },
+    {
+      "vietlish": "have many cars on the street",
+      "natural": "there are many cars on the street",
+      "sourcePattern": "có nhiều xe -> existential have calque",
+      "category": "calque",
+      "frequency": "high",
+      "context": "Have many cars on the street today."
+    },
+    {
+      "vietlish": "have no space in the room",
+      "natural": "there is no space in the room",
+      "sourcePattern": "không có chỗ -> existential have calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Have no space in the room."
+    },
+    {
+      "vietlish": "today have strong wind",
+      "natural": "there is strong wind today",
+      "sourcePattern": "hôm nay có gió mạnh -> existential have calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Today have strong wind."
+    },
+    {
+      "vietlish": "my company have new rule",
+      "natural": "my company has a new rule",
+      "sourcePattern": "công ty có -> have without article and agreement",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "My company have new rule."
+    },
+    {
+      "vietlish": "the road have accident",
+      "natural": "there is an accident on the road",
+      "sourcePattern": "đường có tai nạn -> existential have calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "The road have accident."
+    },
+    {
+      "vietlish": "I opened the app but it not run",
+      "natural": "I opened the app but it did not run",
+      "sourcePattern": "không chạy -> not run without do-support",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I opened the app but it not run."
+    },
+    {
+      "vietlish": "close the alarm for me",
+      "natural": "turn off the alarm for me",
+      "sourcePattern": "tắt báo thức -> close used for deactivation",
+      "category": "calque",
+      "frequency": "high",
+      "context": "Can you close the alarm for me?"
+    },
+    {
+      "vietlish": "open the camera",
+      "natural": "turn on the camera",
+      "sourcePattern": "mở camera -> open used for activation",
+      "category": "calque",
+      "frequency": "high",
+      "context": "Please open the camera for the meeting."
+    },
+    {
+      "vietlish": "open the speaker louder",
+      "natural": "turn up the speaker",
+      "sourcePattern": "mở loa lớn hơn -> open used for increasing volume",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Can you open the speaker louder?"
+    },
+    {
+      "vietlish": "close the stove",
+      "natural": "turn off the stove",
+      "sourcePattern": "tắt bếp -> close used for deactivation",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Before you leave, close the stove."
+    },
+    {
+      "vietlish": "give me your name",
+      "natural": "could I have your name, please",
+      "sourcePattern": "Vietnamese direct imperative can sound abrupt in service English",
+      "category": "register",
+      "frequency": "high",
+      "context": "At reception: give me your name."
+    },
+    {
+      "vietlish": "you wait here",
+      "natural": "could you wait here, please",
+      "sourcePattern": "Vietnamese bare command needs polite modal in English",
+      "category": "register",
+      "frequency": "high",
+      "context": "At the clinic: you wait here."
+    },
+    {
+      "vietlish": "I want refund now",
+      "natural": "I would like a refund, please",
+      "sourcePattern": "direct muốn -> want now sounds demanding",
+      "category": "register",
+      "frequency": "high",
+      "context": "At customer service: I want refund now."
+    },
+    {
+      "vietlish": "you must fix this",
+      "natural": "could you please fix this",
+      "sourcePattern": "phải sửa -> must sounds accusatory in service request",
+      "category": "register",
+      "frequency": "medium",
+      "context": "To the landlord: you must fix this."
+    },
+    {
+      "vietlish": "tell me price",
+      "natural": "could you tell me the price",
+      "sourcePattern": "nói giá -> bare imperative too abrupt",
+      "category": "register",
+      "frequency": "high",
+      "context": "In a store: tell me price."
+    },
+    {
+      "vietlish": "send me receipt",
+      "natural": "could you send me the receipt",
+      "sourcePattern": "gửi cho tôi -> bare imperative too abrupt",
+      "category": "register",
+      "frequency": "medium",
+      "context": "After payment: send me receipt."
+    },
+    {
+      "vietlish": "you are wrong",
+      "natural": "I think there may be a mistake",
+      "sourcePattern": "direct sai rồi can sound harsh in English",
+      "category": "register",
+      "frequency": "high",
+      "context": "At the bank counter: you are wrong."
+    },
+    {
+      "vietlish": "what you want",
+      "natural": "how can I help you",
+      "sourcePattern": "direct muốn gì sounds rude in service English",
+      "category": "register",
+      "frequency": "high",
+      "context": "At the front desk: what you want?"
+    },
+    {
+      "vietlish": "sit down there",
+      "natural": "please have a seat over there",
+      "sourcePattern": "bare command needs polite service phrasing",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In an office: sit down there."
+    },
+    {
+      "vietlish": "wait outside",
+      "natural": "could you wait outside, please",
+      "sourcePattern": "bare command needs polite modal",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At the clinic: wait outside."
+    },
+    {
+      "vietlish": "come back tomorrow",
+      "natural": "could you come back tomorrow",
+      "sourcePattern": "bare instruction softened for service context",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At the office: come back tomorrow."
+    },
+    {
+      "vietlish": "sign here now",
+      "natural": "please sign here",
+      "sourcePattern": "now adds unnecessary pressure",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At reception: sign here now."
+    },
+    {
+      "vietlish": "give me discount",
+      "natural": "is there any discount available",
+      "sourcePattern": "direct discount request sounds abrupt",
+      "category": "register",
+      "frequency": "high",
+      "context": "In a shop: give me discount."
+    },
+    {
+      "vietlish": "I need talk manager",
+      "natural": "could I speak with the manager",
+      "sourcePattern": "direct need talk lacks polite request form",
+      "category": "register",
+      "frequency": "high",
+      "context": "At customer service: I need talk manager."
+    },
+    {
+      "vietlish": "reply me today",
+      "natural": "could you reply today if possible",
+      "sourcePattern": "direct reply me is both collocation and tone issue",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a work message: reply me today."
+    },
+    {
+      "vietlish": "you explain again",
+      "natural": "could you explain that again",
+      "sourcePattern": "bare command softened with could",
+      "category": "register",
+      "frequency": "high",
+      "context": "In class: you explain again."
+    },
+    {
+      "vietlish": "no, I do not like",
+      "natural": "no, thank you",
+      "sourcePattern": "literal refusal can be too blunt",
+      "category": "register",
+      "frequency": "high",
+      "context": "When offered food: no, I do not like."
+    },
+    {
+      "vietlish": "you forgot my order",
+      "natural": "I think my order may have been missed",
+      "sourcePattern": "direct blame softened in service complaint",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At a café: you forgot my order."
+    },
+    {
+      "vietlish": "I want another room",
+      "natural": "could I change rooms",
+      "sourcePattern": "direct want softened for hotel request",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At a hotel: I want another room."
+    },
+    {
+      "vietlish": "I cannot understand you",
+      "natural": "could you repeat that, please",
+      "sourcePattern": "direct inability can sound harsh",
+      "category": "register",
+      "frequency": "high",
+      "context": "At the counter: I cannot understand you."
+    }
+  ]
+}
