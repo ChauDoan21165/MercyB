@@ -203,3 +203,106 @@ describe("sequenceInterferencePatterns", () => {
     expect(result.entries).toHaveLength(0);
   });
 });
+
+// ── Spacing (spaced-repetition) tests ─────────────────────────────────────────
+
+import { computeNextReviewDayForLevel } from "../interferenceSequencer";
+
+const MS_PER_DAY = 24 * 60 * 60 * 1000;
+
+describe("computeNextReviewDayForLevel", () => {
+  it("untested patterns are always due (interval = 0)", () => {
+    expect(computeNextReviewDayForLevel("untested")).toBe(0);
+  });
+
+  it("struggling: interval = 1 day", () => {
+    expect(computeNextReviewDayForLevel("struggling")).toBe(1);
+  });
+
+  it("emerging: interval = 3 days", () => {
+    expect(computeNextReviewDayForLevel("emerging")).toBe(3);
+  });
+
+  it("consolidating: interval = 7 days", () => {
+    expect(computeNextReviewDayForLevel("consolidating")).toBe(7);
+  });
+
+  it("mastered: interval = 21 days", () => {
+    expect(computeNextReviewDayForLevel("mastered")).toBe(21);
+  });
+
+  it("interval increases monotonically with mastery level", () => {
+    const levels: Array<import("../types").InterferenceMasteryLevel> = [
+      "untested", "struggling", "emerging", "consolidating", "mastered",
+    ];
+    const intervals = levels.map(computeNextReviewDayForLevel);
+    for (let i = 1; i < intervals.length; i++) {
+      expect(intervals[i]).toBeGreaterThanOrEqual(intervals[i - 1]);
+    }
+  });
+});
+
+describe("sequenceInterferencePatterns — spacing (Tier 1 vs Tier 2)", () => {
+  // Profile where struggling pattern was just drilled 0.5 days ago (not yet due)
+  // and emerging pattern was last drilled 5 days ago (overdue).
+  const RECENT_TS = 1_000_000_000;
+  const HALF_DAY_AGO_TS = RECENT_TS - 0.5 * MS_PER_DAY;
+  const FIVE_DAYS_AGO_TS = RECENT_TS - 5 * MS_PER_DAY;
+
+  const SPACED_PROFILE: LearnerInterferenceProfile = {
+    learnerId: "spacing-test",
+    profileUpdatedAt: RECENT_TS,
+    masteryByPattern: {
+      // struggling, but drilled 0.5 days ago → NOT due yet (interval = 1 day)
+      final_consonant_cluster_reduction: {
+        patternId: "final_consonant_cluster_reduction",
+        level: "struggling",
+        score: 0.20,
+        attemptsCount: 5,
+        confidenceWidth: 0.12,
+        lastUpdatedAt: HALF_DAY_AGO_TS,
+      },
+      // emerging, but drilled 5 days ago → overdue (interval = 3 days)
+      missing_articles: {
+        patternId: "missing_articles",
+        level: "emerging",
+        score: 0.45,
+        attemptsCount: 3,
+        confidenceWidth: 0.15,
+        lastUpdatedAt: FIVE_DAYS_AGO_TS,
+      },
+    },
+  };
+
+  it("overdue emerging pattern comes before not-yet-due struggling pattern", () => {
+    const ids = sequenceInterferencePatterns(SPACED_PROFILE, PATTERNS, RECENT_TS).entries.map(
+      (e) => e.patternId,
+    );
+    const emergingIdx = ids.indexOf("missing_articles");
+    const strugglingIdx = ids.indexOf("final_consonant_cluster_reduction");
+    // The emerging pattern is in Tier 1 (due); struggling is in Tier 2 (not yet due)
+    expect(emergingIdx).toBeLessThan(strugglingIdx);
+  });
+
+  it("rationale for not-yet-due pattern includes 'reviewed recently' note", () => {
+    const entries = sequenceInterferencePatterns(SPACED_PROFILE, PATTERNS, RECENT_TS).entries;
+    const struggling = entries.find((e) => e.patternId === "final_consonant_cluster_reduction");
+    expect(struggling!.rationale).toContain("reviewed recently");
+  });
+
+  it("rationale for due pattern does NOT include 'reviewed recently' note", () => {
+    const entries = sequenceInterferencePatterns(SPACED_PROFILE, PATTERNS, RECENT_TS).entries;
+    const emerging = entries.find((e) => e.patternId === "missing_articles");
+    expect(emerging!.rationale).not.toContain("reviewed recently");
+  });
+
+  it("when now=0 (default), all patterns are treated as due — ordering is pure level-based", () => {
+    // now=0, all lastUpdatedAt > 0, so daysSince < 0 → isDue is true for all.
+    const result = sequenceInterferencePatterns(SPACED_PROFILE, PATTERNS);
+    const ids = result.entries.map((e) => e.patternId);
+    // With spacing disabled (now=0), struggling comes first again
+    const strugglingIdx = ids.indexOf("final_consonant_cluster_reduction");
+    const emergingIdx = ids.indexOf("missing_articles");
+    expect(strugglingIdx).toBeLessThan(emergingIdx);
+  });
+});
