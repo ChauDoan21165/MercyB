@@ -1,0 +1,275 @@
+{
+  "corpus": "f2-theme-scenarios-wave3",
+  "productLine": "theme-scenario-deepening",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F2",
+  "authoredAt": "2026-06-11",
+  "wave": 3,
+  "description": "F2 Content Factory — theme/scenario deepening wave 3. Two still-plain themes deepened to D4: housingDaily (3 new sub-scenarios: noise complaint, move-out notice, lease renewal) and introductions (3 new sub-scenarios: phone introduction, new doctor, community event). Append-only; does not duplicate wave1/wave2 scenarios or existing speakTopics TS entries.",
+  "themes": [
+    {
+      "themeId": "housingDaily",
+      "themeDescription": "Additional daily-housing scenarios for Vietnamese diaspora learners. Complements existing topics (talking to a landlord, viewing an apartment, maintenance reporting) with new real-life situations: noise complaints, moving-out notice and deposit recovery, and lease renewal negotiation.",
+      "scenarios": [
+        {
+          "id": "topic-housing-daily-noise-complaint",
+          "labelEn": "Filing A Noise Complaint",
+          "labelVi": "Phàn nàn về tiếng ồn với chủ nhà",
+          "category": "housing-daily",
+          "seedInputs": [
+            "My neighbor upstairs has been making loud noise late at night.",
+            "I need to report a noise problem in my building.",
+            "The music next door is too loud. Can you help?",
+            "There is noise every night after midnight and I can't sleep."
+          ],
+          "l1InterferenceNotes": [
+            {
+              "id": "housing-noise-polite-direct",
+              "label": "Direct but calm",
+              "note": "Tiếng Việt: khi phàn nàn, người học hay thêm nhiều lời lịch sự vòng vo để tránh xúc phạm. Trong tiếng Anh, một câu khách quan ngắn gọn sẽ được tiếp nhận tốt hơn: 'There has been loud noise from apartment 4B after midnight for three nights.' Câu thẳng không có nghĩa là thô lỗ."
+            },
+            {
+              "id": "housing-noise-timing",
+              "label": "Saying how long it has been happening",
+              "note": "'Đã mấy hôm rồi' thường được dịch là 'from many days' nhưng tiếng Anh tự nhiên là 'for the past three nights' hoặc 'for several days now.' Nêu thời gian cụ thể giúp chủ nhà đánh giá mức độ nghiêm trọng."
+            },
+            {
+              "id": "housing-noise-document",
+              "label": "Mentioning dates as evidence",
+              "note": "Khi nói 'tôi có ghi lại', tiếng Anh thường dùng: 'I have a note of the dates' hoặc 'I logged the incidents.' Cụm từ này cho thấy sự nghiêm túc mà không nghe như đe dọa."
+            },
+            {
+              "id": "housing-noise-request",
+              "label": "Making a clear request",
+              "note": "Kết thúc bằng một yêu cầu rõ ràng giúp chủ nhà biết phải làm gì: 'Could you speak with the tenant in apartment 4B?' hoặc 'Is there a quiet-hours policy I can point to?' Đừng để người nhận tự đoán bạn muốn gì."
+            }
+          ],
+          "followUps": [
+            { "id": "housing-noise-which-unit", "question": "Which apartment or unit is the noise coming from?" },
+            { "id": "housing-noise-what-time", "question": "What time of night does the noise usually happen?" },
+            { "id": "housing-noise-how-long", "question": "How long has this been a problem?" },
+            { "id": "housing-noise-what-kind", "question": "What kind of noise is it — music, voices, footsteps?" },
+            { "id": "housing-noise-what-want", "question": "What would you like the landlord to do about it?" },
+            { "id": "housing-noise-already-tried", "question": "Have you already spoken to the neighbor directly?" }
+          ]
+        },
+        {
+          "id": "topic-housing-daily-moveout-notice",
+          "labelEn": "Giving Move-Out Notice And Getting Your Deposit Back",
+          "labelVi": "Thông báo dọn ra và lấy lại tiền đặt cọc",
+          "category": "housing-daily",
+          "seedInputs": [
+            "I am planning to move out at the end of next month and I want to give you proper notice.",
+            "My lease ends soon and I need to know how to get my deposit back.",
+            "I would like to schedule a move-out walkthrough before I leave.",
+            "What steps do I need to follow to get my security deposit returned?"
+          ],
+          "l1InterferenceNotes": [
+            {
+              "id": "housing-moveout-notice-period",
+              "label": "The notice period rule",
+              "note": "Hầu hết hợp đồng thuê nhà ở Mỹ yêu cầu 'give 30-day notice' (thông báo trước 30 ngày). 'Thông báo' trong tiếng Anh là 'notice' (danh từ) và 'give notice' là cụm từ chuẩn. Câu tự nhiên: 'I am giving 30-day notice to vacate.'"
+            },
+            {
+              "id": "housing-moveout-deposit-term",
+              "label": "Security deposit vs. key money",
+              "note": "'Tiền đặt cọc' = 'security deposit.' Đây là khoản tiền giữ lại khi thuê và được hoàn trả sau khi ra nếu nhà còn nguyên vẹn. Đừng dùng 'key money' — ở Mỹ nghĩa khác và có thể gây nhầm."
+            },
+            {
+              "id": "housing-moveout-walkthrough",
+              "label": "Requesting a walkthrough",
+              "note": "Trước khi dọn ra, bạn có quyền yêu cầu 'a move-out walkthrough' (kiểm tra nhà lúc bàn giao). Câu: 'Can we schedule a move-out walkthrough?' Buổi này giúp tránh tranh chấp về khấu hao tiền cọc."
+            },
+            {
+              "id": "housing-moveout-timeline",
+              "label": "Asking about the return timeline",
+              "note": "Ở nhiều tiểu bang Mỹ, chủ nhà phải hoàn trả tiền cọc trong 14–30 ngày. Hỏi: 'How long does it take to get my deposit back?' hoặc 'What is the timeline for returning the security deposit?'"
+            }
+          ],
+          "followUps": [
+            { "id": "housing-moveout-date", "question": "What date are you planning to move out?" },
+            { "id": "housing-moveout-notice-how", "question": "How will you give notice — in writing or in person?" },
+            { "id": "housing-moveout-condition", "question": "What condition should the apartment be in when you leave?" },
+            { "id": "housing-moveout-walkthrough-ask", "question": "How would you ask to schedule a move-out inspection?" },
+            { "id": "housing-moveout-deductions", "question": "What deductions can a landlord make from your deposit?" },
+            { "id": "housing-moveout-followup", "question": "What would you do if your deposit is not returned on time?" }
+          ]
+        },
+        {
+          "id": "topic-housing-daily-lease-renewal",
+          "labelEn": "Renewing Or Negotiating Your Lease",
+          "labelVi": "Gia hạn hợp đồng thuê nhà hoặc thương lượng giá mới",
+          "category": "housing-daily",
+          "seedInputs": [
+            "My lease is ending in two months and I would like to renew.",
+            "I want to stay but the new rent is higher than I expected.",
+            "Can we negotiate the rent before I sign the new lease?",
+            "I am happy here and want to extend my lease for another year."
+          ],
+          "l1InterferenceNotes": [
+            {
+              "id": "housing-renewal-renew-term",
+              "label": "Renew vs. extend vs. sign again",
+              "note": "'Gia hạn hợp đồng' = 'renew the lease.' Cả 'renew' và 'extend' đều được dùng tự nhiên. Bạn có thể nói: 'I'd like to renew my lease' hoặc 'I'd like to extend for another year.' Tránh dùng 'resign' (có nghĩa từ chức)."
+            },
+            {
+              "id": "housing-renewal-negotiate",
+              "label": "Negotiating rent politely",
+              "note": "Người Việt đôi khi e ngại mặc cả vì sợ mất mặt hoặc bị từ chối. Trong văn hóa thuê nhà Mỹ, hỏi nhẹ nhàng là bình thường: 'Would you consider keeping the rent the same?' hoặc 'Is there any flexibility on the rate?' — lịch sự và thực tế."
+            },
+            {
+              "id": "housing-renewal-price-increase",
+              "label": "Responding to a rent increase",
+              "note": "'Giá tăng rồi' = 'the rent has gone up' hoặc 'there is a rent increase.' Để phản hồi một cách chuyên nghiệp: 'I was hoping to stay but the increase is more than I expected. Is there a way to keep it closer to the current rate?'"
+            },
+            {
+              "id": "housing-renewal-month-to-month",
+              "label": "Month-to-month option",
+              "note": "Nếu không muốn ký hợp đồng dài hạn, có thể hỏi: 'Can I go month-to-month for now?' — nghĩa là thuê theo tháng, không ràng buộc dài hạn. Tiếng Việt không có thuật ngữ trực tiếp tương đương, nên học viên cần nhớ cụm từ này."
+            }
+          ],
+          "followUps": [
+            { "id": "housing-renewal-when", "question": "How far in advance should you ask about renewing your lease?" },
+            { "id": "housing-renewal-ask", "question": "How would you tell your landlord you want to renew?" },
+            { "id": "housing-renewal-rate", "question": "How would you ask about the new rent amount?" },
+            { "id": "housing-renewal-negotiate-q", "question": "What would you say if the new rate is higher than you hoped?" },
+            { "id": "housing-renewal-terms", "question": "Are there any terms you would want to change in the new lease?" },
+            { "id": "housing-renewal-month-q", "question": "How would you ask for a month-to-month option instead?" }
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "introductions",
+      "themeDescription": "Additional introduction scenarios for Vietnamese diaspora learners. Complements existing topics (new neighbor, first day at work, parent at school) with new real-life situations: phone introductions, meeting a new doctor, and introducing yourself at a community event.",
+      "scenarios": [
+        {
+          "id": "topic-introductions-phone-call",
+          "labelEn": "Introducing Yourself On The Phone",
+          "labelVi": "Giới thiệu bản thân qua điện thoại",
+          "category": "introductions",
+          "seedInputs": [
+            "Hi, this is Linh. I am calling about an appointment.",
+            "Hello, my name is Minh and I got a message asking me to call back.",
+            "Good morning. This is Hoa speaking. I am returning your call.",
+            "Hi, I am calling because I need to speak with someone about my account."
+          ],
+          "l1InterferenceNotes": [
+            {
+              "id": "intro-phone-this-is",
+              "label": "This is, not I am",
+              "note": "Khi tự giới thiệu qua điện thoại, tiếng Anh tự nhiên là 'This is Linh' chứ không phải 'I am Linh.' Cả hai đều hiểu được, nhưng 'This is' là cách nói chuẩn trong điện thoại chuyên nghiệp và dịch vụ khách hàng."
+            },
+            {
+              "id": "intro-phone-reason",
+              "label": "State your reason early",
+              "note": "Sau khi giới thiệu tên, ngay lập tức nêu lý do gọi: 'I am calling about my appointment on Thursday.' Trong tiếng Anh điện thoại, người nghe mong đợi lý do sớm, tránh để im quá lâu sau khi giới thiệu."
+            },
+            {
+              "id": "intro-phone-return-call",
+              "label": "Returning a call",
+              "note": "'Gọi lại' = 'return your call' hoặc 'call back.' Câu tự nhiên: 'I am returning a call I received from this number.' Nếu biết tên người gọi: 'I got a message from Dr. Carter's office.'"
+            },
+            {
+              "id": "intro-phone-speak-with",
+              "label": "Asking to speak with someone",
+              "note": "'Cho tôi gặp...' = 'May I speak with...' hoặc 'Can I speak with...' Tránh dịch trực tiếp kiểu 'Let me meet...' Nếu người đó không có mặt: 'Could I leave a message?' là câu tiếp theo tự nhiên nhất."
+            }
+          ],
+          "followUps": [
+            { "id": "intro-phone-open", "question": "How would you open the call and give your name?" },
+            { "id": "intro-phone-reason-q", "question": "How would you state your reason for calling in one sentence?" },
+            { "id": "intro-phone-transfer", "question": "How would you ask to be transferred to the right person?" },
+            { "id": "intro-phone-message", "question": "What would you say if the person is not available?" },
+            { "id": "intro-phone-confirm", "question": "How would you confirm your contact details before hanging up?" },
+            { "id": "intro-phone-hold", "question": "How would you respond if they ask you to hold?" }
+          ]
+        },
+        {
+          "id": "topic-introductions-new-doctor",
+          "labelEn": "Introducing Yourself To A New Doctor",
+          "labelVi": "Giới thiệu bản thân với bác sĩ mới",
+          "category": "introductions",
+          "seedInputs": [
+            "Hi, I am a new patient here. This is my first visit.",
+            "Hello, I just moved to this area and I am looking for a primary care doctor.",
+            "I am here for my first appointment. My name is Linh Nguyen.",
+            "I was referred by my previous doctor and I am new to this clinic."
+          ],
+          "l1InterferenceNotes": [
+            {
+              "id": "intro-doctor-new-patient",
+              "label": "New patient phrase",
+              "note": "'Bệnh nhân mới' = 'new patient.' Câu mở chuẩn: 'I am a new patient.' Khi điền giấy tờ, thường thấy ô 'New patient / Returning patient' — đây là câu phân biệt đơn giản."
+            },
+            {
+              "id": "intro-doctor-referred",
+              "label": "Referral language",
+              "note": "'Bác sĩ cũ giới thiệu qua' = 'I was referred by my previous doctor.' Từ 'referred' rất quan trọng vì bảo hiểm Mỹ thường yêu cầu giấy giới thiệu ('referral') để gặp bác sĩ chuyên khoa."
+            },
+            {
+              "id": "intro-doctor-history",
+              "label": "Sharing medical history simply",
+              "note": "Bác sĩ thường hỏi 'Any pre-existing conditions?' — nghĩa là 'Bạn có bệnh nền không?' Câu trả lời đơn giản: 'I have high blood pressure' hoặc 'No known conditions.' Đừng cố dịch toàn bộ hồ sơ y tế trong lần đầu."
+            },
+            {
+              "id": "intro-doctor-insurance",
+              "label": "Mentioning insurance",
+              "note": "Phòng khám ở Mỹ thường hỏi bảo hiểm ngay khi check-in. Câu chuẩn: 'I have insurance through my employer' hoặc 'I am on Medicaid.' Nếu chưa chắc: 'Can I check what insurance you accept?'"
+            }
+          ],
+          "followUps": [
+            { "id": "intro-doctor-open", "question": "How would you introduce yourself as a new patient?" },
+            { "id": "intro-doctor-history-q", "question": "How would you mention one important health condition simply?" },
+            { "id": "intro-doctor-insurance-q", "question": "How would you tell the front desk about your insurance?" },
+            { "id": "intro-doctor-referred-q", "question": "How would you explain who referred you?" },
+            { "id": "intro-doctor-concern", "question": "What is the main health concern you want to discuss today?" },
+            { "id": "intro-doctor-followup", "question": "How would you ask when you should come back for a follow-up?" }
+          ]
+        },
+        {
+          "id": "topic-introductions-community-event",
+          "labelEn": "Introducing Yourself At A Community Event",
+          "labelVi": "Giới thiệu bản thân tại sự kiện cộng đồng",
+          "category": "introductions",
+          "seedInputs": [
+            "Hi, I just moved to the neighborhood. I am Linh.",
+            "Hello, I am new here. Is this your first time at this event too?",
+            "My name is Minh. I live on Oak Street and I heard about this event online.",
+            "Hi, I am Hoa. I came with my friend who is also new to the area."
+          ],
+          "l1InterferenceNotes": [
+            {
+              "id": "intro-event-small-talk",
+              "label": "Starting with a question",
+              "note": "Người Việt học tiếng Anh đôi khi im lặng sau khi giới thiệu tên vì chờ đợi người kia dẫn dắt. Trong sự kiện cộng đồng Mỹ, một câu hỏi nhỏ ngay sau tên rất tự nhiên: 'Is this your first time here too?' hoặc 'Do you live in this area?' — đây là cách mở cuộc trò chuyện."
+            },
+            {
+              "id": "intro-event-connection",
+              "label": "How you heard about the event",
+              "note": "'Tôi biết sự kiện này qua...' = 'I heard about this through...' Tiếng Anh tự nhiên: 'I saw it on the community board' hoặc 'A neighbor told me about it.' Lý do xuất hiện giúp người lạ tìm điểm chung."
+            },
+            {
+              "id": "intro-event-ending-nicely",
+              "label": "Ending a short conversation",
+              "note": "Kết thúc buổi trò chuyện ngắn lịch sự bằng cách báo trước: 'It was nice to meet you. I am going to grab some food' hoặc 'I'll let you get back to it.' Điều này tránh để người kia cảm thấy bị bỏ rơi đột ngột."
+            },
+            {
+              "id": "intro-event-name-repeat",
+              "label": "Asking someone to repeat their name",
+              "note": "Nếu không nghe rõ tên người kia: 'Sorry, I didn't catch your name.' hoặc 'Could you say your name again?' Đây là yêu cầu rất lịch sự và bình thường — không ai phiền."
+            }
+          ],
+          "followUps": [
+            { "id": "intro-event-open", "question": "How would you introduce yourself to a stranger at the event?" },
+            { "id": "intro-event-question", "question": "What simple question could you ask to start a conversation?" },
+            { "id": "intro-event-connection-q", "question": "How would you say how you found out about the event?" },
+            { "id": "intro-event-name-q", "question": "How would you politely ask someone to repeat their name?" },
+            { "id": "intro-event-continue", "question": "What would you say to keep the conversation going for one more turn?" },
+            { "id": "intro-event-close", "question": "How would you end the conversation politely before moving on?" }
+          ]
+        }
+      ]
+    }
+  ]
+}
