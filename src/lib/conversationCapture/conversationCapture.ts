@@ -122,6 +122,7 @@ export async function logTurn(
   aiResponse: string,
   errors: readonly CapturedError[] = [],
   corrections: readonly CapturedCorrection[] = [],
+  meta: { memoryRecalled?: boolean } = {},
 ): Promise<void> {
   if (!isBrowser()) return;
   const id = String(sessionId ?? "").trim();
@@ -139,7 +140,10 @@ export async function logTurn(
       event_type: "turn_completed",
       learner_input: learner,
       ai_response: ai,
-      error_details: null,
+      // Step-12: record the cross-session recall signal in the existing jsonb
+      // slot (no schema change) so telemetry proves the prior-session memory was
+      // surfaced on this turn.
+      error_details: meta.memoryRecalled ? { memory_recalled: true } : null,
       created_at: at,
     },
   ];

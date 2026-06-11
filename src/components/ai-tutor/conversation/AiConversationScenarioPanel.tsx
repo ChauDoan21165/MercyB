@@ -17,6 +17,7 @@ import {
 import {
   sendAiConversationTurn,
   type AiConversationTurnResponse,
+  type ConversationLearnerMemory,
 } from "@/lib/ai-conversation/client";
 import {
   beginTelemetrySession,
@@ -28,6 +29,7 @@ import type { ConversationEncouragement } from "@/lib/retention/conversationHook
 import { recordActiveDay } from "@/lib/retention/recordActiveDay";
 import { ConsentModal } from "@/components/ConsentModal";
 import { hasCaptureConsentDecision } from "@/lib/conversationCapture/captureConsent";
+import { putCorrection } from "@/lib/ai-tutor/learningMemory";
 
 // A 'Sửa câu' correction handed off from the grammar surface. When present we
 // seed a learner-led, live-generated conversation with the learner's own
@@ -52,6 +54,8 @@ type Props = {
   accessConfirmed?: boolean;
   userId?: string | null;
   correctionSeed?: ConversationCorrectionSeed | null;
+  /** Step-12: returning-learner memory (safe tags) for cross-session recall. */
+  learnerMemory?: ConversationLearnerMemory | null;
   sendTurn?: typeof sendAiConversationTurn;
 };
 
@@ -62,6 +66,7 @@ export default function AiConversationScenarioPanel({
   accessConfirmed = true,
   userId,
   correctionSeed,
+  learnerMemory,
   sendTurn = sendAiConversationTurn,
 }: Props) {
   const [scenarioId, setScenarioId] = useState<AiConversationScenarioId>(DEFAULT_AI_CONVERSATION_SCENARIO_ID);
@@ -181,6 +186,7 @@ export default function AiConversationScenarioPanel({
         turnCount: session.learnerTurnCount,
         accessToken,
         hasPremium,
+        learnerMemory,
       });
       if (response.entitlementGate) {
         setSession(session);
@@ -221,6 +227,21 @@ export default function AiConversationScenarioPanel({
       // own activity, not captured content) and dedup'd per local day inside
       // recordActiveDay. Fires only past the entitlement + local-fallback guards.
       recordActiveDay();
+      // Step-12 WRITE: persist the detected interference pattern to the
+      // device-local cross-session memory (privacy-safe — putCorrection
+      // sanitizes the tag; no raw learner text stored) so a future session can
+      // recall it. Conversation practice is English on this surface.
+      if (response.correction?.interferencePattern) {
+        void putCorrection({
+          id: `conv-${Date.now()}`,
+          topic: response.correction.interferencePattern,
+          cefr: "B1",
+          createdAt: Date.now(),
+          practiced: false,
+          tutorProduct: "ai-tutor",
+          targetLanguage: "en",
+        }).catch(() => {});
+      }
       if (telemetrySession) {
         // Telemetry drives consent-gated capture + flag-gated retention (XP +
         // encouragement). It must never break the turn, so guard it separately
@@ -239,6 +260,8 @@ export default function AiConversationScenarioPanel({
                 }]
               : [],
             correctionAccepted: Boolean(response.correction),
+            // Step-12: prove the cross-session recall in telemetry.
+            memoryRecalled: response.memoryRecalled === true,
           });
           setEncouragement(telemetry.encouragement);
         } catch {

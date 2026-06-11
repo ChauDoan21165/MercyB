@@ -88,6 +88,12 @@ export type RecordTurnInput = {
    * Defaults to true if any supplied correction is marked accepted.
    */
   correctionAccepted?: boolean;
+  /**
+   * Step-12: true when prior-session memory was injected into this turn's prompt
+   * (the opener/correction referenced the learner's stored interference profile).
+   * Recorded on the captured turn so telemetry proves the recall happened.
+   */
+  memoryRecalled?: boolean;
 };
 
 export type RecordTurnResult = {
@@ -95,6 +101,8 @@ export type RecordTurnResult = {
   encouragement: ConversationEncouragement | null;
   /** True when this turn was logged to the capture pipeline. */
   captured: boolean;
+  /** Step-12: echoes the input — true when prior-session memory was recalled this turn. */
+  memoryRecalled: boolean;
 };
 
 /** The minimal return-signal a later D1/D7 analysis needs. */
@@ -158,6 +166,8 @@ export async function recordTelemetryTurn(
 
   session.turnCount += 1;
 
+  const memoryRecalled = input.memoryRecalled === true;
+
   let captured = false;
   if (session.sessionId && hasCaptureConsent()) {
     await logTurn(
@@ -167,6 +177,7 @@ export async function recordTelemetryTurn(
       input.aiResponse,
       errors,
       corrections,
+      { memoryRecalled },
     );
     captured = true;
   }
@@ -178,7 +189,7 @@ export async function recordTelemetryTurn(
     awardConversationTurnXP(input.turnNumber, correctionAccepted);
   }
 
-  return { encouragement, captured };
+  return { encouragement, captured, memoryRecalled };
 }
 
 /**

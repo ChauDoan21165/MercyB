@@ -30,6 +30,19 @@ import {
   type ConversationAudioSource,
 } from "@/lib/tutor/conversationPronunciationAdapter";
 
+/**
+ * Step-12 cross-session memory: safe aggregate tags (never raw learner text)
+ * describing the returning learner's prior interference profile + recent focus,
+ * sourced device-locally from learningMemory. Drives the recall note injected
+ * into the system prompt so the opener/corrections reference prior sessions.
+ */
+export type ConversationLearnerMemory = {
+  /** Safe interference/mistake-pattern tags from prior sessions. */
+  interferencePatterns: string[];
+  /** Safe tag of the learner's most recent focus, or null. */
+  recentFocus: string | null;
+};
+
 export type AiConversationTurnRequest = {
   scenarioId: AiConversationScenarioId;
   learnerText: string;
@@ -40,6 +53,8 @@ export type AiConversationTurnRequest = {
   entitlementStatus?: string | null;
   audioBlob?: Blob | null;
   audioSource?: ConversationAudioSource;
+  /** Step-12: returning-learner memory; null/absent for a first-ever session. */
+  learnerMemory?: ConversationLearnerMemory | null;
 };
 
 export type AiConversationTurnResponse = {
@@ -50,7 +65,35 @@ export type AiConversationTurnResponse = {
   provider: "openai" | "local-fallback";
   pronunciationAbstention: ReturnType<typeof abstentionRedirectFromPronunciation>;
   entitlementGate?: boolean;
+  /** Step-12: true when prior-session memory was injected into this turn's prompt. */
+  memoryRecalled?: boolean;
 };
+
+/**
+ * Step-12: render the returning-learner memory as a prompt note. Returns null
+ * when there is nothing to recall (first session, or empty tags) so a first-ever
+ * learner gets no spurious "last time" reference.
+ */
+export function buildLearnerMemoryNote(
+  memory: ConversationLearnerMemory | null | undefined,
+): string | null {
+  if (!memory) return null;
+  const patterns = (memory.interferencePatterns ?? [])
+    .map((p) => (typeof p === "string" ? p.trim() : ""))
+    .filter(Boolean)
+    .slice(0, 3);
+  const recentFocus = memory.recentFocus?.trim() || "";
+  if (patterns.length === 0 && !recentFocus) return null;
+  const parts: string[] = [];
+  if (patterns.length > 0) parts.push(`recurring interference patterns: ${patterns.join("; ")}`);
+  if (recentFocus) parts.push(`most recent focus: ${recentFocus}`);
+  return (
+    "RETURNING LEARNER MEMORY — this learner has practiced with you before. " +
+    `Their ${parts.join(", ")}. When it fits naturally, reference this in your ` +
+    'opening line or a correction (e.g. "Last time we worked on …"). Never invent ' +
+    "details beyond these tags."
+  );
+}
 
 export async function sendAiConversationTurn(
   request: AiConversationTurnRequest,
@@ -109,12 +152,20 @@ export async function sendAiConversationTurn(
     turnIndex: request.turnCount,
   });
 
+  // Step-12 recall: inject the returning-learner memory note into the system
+  // prompt so the opener/corrections reference prior sessions. memoryRecalled is
+  // reported back so the surface can prove the recall in telemetry.
+  const memoryNote = buildLearnerMemoryNote(request.learnerMemory);
+  const systemPromptWithMemory = memoryNote
+    ? `${promptTemplate.systemPrompt}\n\n${memoryNote}`
+    : promptTemplate.systemPrompt;
+
   const result = await sendConversationAiTurn({
     accessToken: request.accessToken,
     scenarioId: scenario.id,
     scenario: toConversationAiScenarioGrounding(scenario),
     learnerText: request.learnerText,
-    messages: buildMessages(request.history, promptTemplate.systemPrompt, policy.promptInstruction),
+    messages: buildMessages(request.history, systemPromptWithMemory, policy.promptInstruction),
     promptMetadata: {
       scenarioId: scenario.id,
       topicId: scenario.id,
@@ -135,7 +186,10 @@ export async function sendAiConversationTurn(
     qualityGate: true,
   });
 
-  return normalizeAiConversationResult(result, warmth, pronunciationAbstention);
+  return {
+    ...normalizeAiConversationResult(result, warmth, pronunciationAbstention),
+    memoryRecalled: memoryNote !== null,
+  };
 }
 
 function toConversationAiScenarioGrounding(

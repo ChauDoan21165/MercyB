@@ -2664,6 +2664,10 @@ export default function AiTutorPage() {
         accessConfirmed={userAccess.isAccessConcluded}
         userId={userAccess.userId ?? user?.id ?? null}
         correctionSeed={latestCorrectedSeed}
+        learnerMemory={memory ? {
+          interferencePatterns: memory.commonMistakePatterns ?? [],
+          recentFocus: memory.lastPracticedTopic || memory.nextRecommendedFocus || null,
+        } : null}
       />
     </TeacherMercyLearningShell>
   );

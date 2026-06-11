@@ -7,8 +7,12 @@ import { setCaptureConsent, hasCaptureConsent, hasCaptureConsentDecision } from 
 const recordActiveDay = vi.hoisted(() => vi.fn());
 vi.mock("@/lib/retention/recordActiveDay", () => ({ recordActiveDay }));
 
+const putCorrection = vi.hoisted(() => vi.fn(async (_record: Record<string, unknown>) => {}));
+vi.mock("@/lib/ai-tutor/learningMemory", () => ({ putCorrection }));
+
 afterEach(() => {
   recordActiveDay.mockClear();
+  putCorrection.mockClear();
   window.localStorage.clear();
 });
 
@@ -177,6 +181,33 @@ describe("AiConversationScenarioPanel", () => {
     expect(sendTurn).toHaveBeenCalledTimes(1);
     // Step 10: a real conversation turn records the D1/D7 active day.
     expect(recordActiveDay).toHaveBeenCalledTimes(1);
+    // Step 12 WRITE: the detected interference pattern is persisted to cross-session memory.
+    expect(putCorrection).toHaveBeenCalledTimes(1);
+    expect(putCorrection.mock.calls[0][0]).toMatchObject({
+      topic: "Vietnamese transfer after want",
+      tutorProduct: "ai-tutor",
+      targetLanguage: "en",
+    });
+  });
+
+  it("passes learnerMemory into the turn request for cross-session recall (Step 12)", async () => {
+    const sendTurn = vi.fn().mockResolvedValue({
+      reply: "Welcome back!", correction: null, summary: null,
+      cost: {}, provider: "openai", pronunciationAbstention: null, memoryRecalled: true,
+    });
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token" hasPremium loadingAccess={false} sendTurn={sendTurn}
+        learnerMemory={{ interferencePatterns: ["article omission"], recentFocus: "tenses" }}
+      />,
+    );
+    await send("Hello again.");
+    expect(sendTurn).toHaveBeenCalledTimes(1);
+    expect(sendTurn.mock.calls[0][0]).toMatchObject({
+      learnerMemory: { interferencePatterns: ["article omission"], recentFocus: "tenses" },
+    });
+    // No correction this turn → no memory write.
+    expect(putCorrection).not.toHaveBeenCalled();
   });
 
   it("records the D1/D7 active day on a successful turn, but NOT on the entitlement gate (Step 10)", async () => {

@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   DEFAULT_AI_CONVERSATION_SCENARIO_ID,
 } from "@/lib/ai-conversation/scenarios";
-import { sendAiConversationTurn } from "@/lib/ai-conversation/client";
+import { sendAiConversationTurn, buildLearnerMemoryNote } from "@/lib/ai-conversation/client";
 import { sendConversationAiTurn } from "@/lib/tutor/conversationAiClient";
 
 vi.mock("@/lib/tutor/conversationAiClient", async () => {
@@ -120,5 +120,76 @@ describe("sendAiConversationTurn pure conversation adapter", () => {
     expect(request.messages.map((message) => message.text).join("\n")).not.toContain(
       "Job interview practice",
     );
+  });
+
+  // Step-12 cross-session memory recall.
+  it("injects the returning-learner memory note into the prompt and reports memoryRecalled", async () => {
+    const result = await sendAiConversationTurn({
+      scenarioId: DEFAULT_AI_CONVERSATION_SCENARIO_ID,
+      learnerText: "I responsible for reports.",
+      history: [{ id: "assistant-opening", role: "assistant", text: "What do you do?" }],
+      turnCount: 1,
+      accessToken: "token",
+      hasPremium: true,
+      learnerMemory: {
+        interferencePatterns: ["article omission", "missing copula"],
+        recentFocus: "present-simple",
+      },
+    });
+
+    expect(result.memoryRecalled).toBe(true);
+    const request = vi.mocked(sendConversationAiTurn).mock.calls[0][0];
+    const promptText = request.messages.map((m) => m.text).join("\n");
+    expect(promptText).toContain("RETURNING LEARNER MEMORY");
+    expect(promptText).toContain("article omission");
+    expect(promptText).toContain("present-simple");
+  });
+
+  it("adds no memory note and reports memoryRecalled=false for a first-ever session (no memory)", async () => {
+    const result = await sendAiConversationTurn({
+      scenarioId: DEFAULT_AI_CONVERSATION_SCENARIO_ID,
+      learnerText: "I responsible for reports.",
+      history: [{ id: "assistant-opening", role: "assistant", text: "What do you do?" }],
+      turnCount: 1,
+      accessToken: "token",
+      hasPremium: true,
+    });
+
+    expect(result.memoryRecalled).toBe(false);
+    const request = vi.mocked(sendConversationAiTurn).mock.calls[0][0];
+    expect(request.messages.map((m) => m.text).join("\n")).not.toContain("RETURNING LEARNER MEMORY");
+  });
+
+  it("treats empty memory (no patterns, no focus) as nothing to recall", async () => {
+    const result = await sendAiConversationTurn({
+      scenarioId: DEFAULT_AI_CONVERSATION_SCENARIO_ID,
+      learnerText: "I responsible for reports.",
+      history: [{ id: "assistant-opening", role: "assistant", text: "What do you do?" }],
+      turnCount: 1,
+      accessToken: "token",
+      hasPremium: true,
+      learnerMemory: { interferencePatterns: [], recentFocus: null },
+    });
+
+    expect(result.memoryRecalled).toBe(false);
+  });
+});
+
+describe("buildLearnerMemoryNote", () => {
+  it("returns null when there is nothing to recall", () => {
+    expect(buildLearnerMemoryNote(null)).toBeNull();
+    expect(buildLearnerMemoryNote({ interferencePatterns: [], recentFocus: null })).toBeNull();
+    expect(buildLearnerMemoryNote({ interferencePatterns: ["  "], recentFocus: "" })).toBeNull();
+  });
+
+  it("caps to the top 3 interference patterns and includes the recent focus", () => {
+    const note = buildLearnerMemoryNote({
+      interferencePatterns: ["a", "b", "c", "d"],
+      recentFocus: "tenses",
+    });
+    expect(note).toContain("a; b; c");
+    expect(note).not.toContain("; d");
+    expect(note).toContain("tenses");
+    expect(note).toContain("RETURNING LEARNER MEMORY");
   });
 });
