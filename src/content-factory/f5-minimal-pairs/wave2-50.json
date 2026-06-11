@@ -1,0 +1,460 @@
+{
+  "corpus": "f5-minimal-pairs-wave2",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F5",
+  "authoredAt": "2026-06-11",
+  "wave": 2,
+  "description": "Vietnamese-specific English minimal pairs for Step 7 pronunciation review. Content-only corpus; not wired to scoring or UI.",
+  "minimalPairs": [
+    {
+      "id": "f5w2-001",
+      "category": "final_clusters",
+      "pair": { "target": "miss", "contrast": "mist" },
+      "ipa": { "target": "/mɪs/", "contrast": "/mɪst/" },
+      "vi": "Người Việt dễ bỏ /t/ trong cụm cuối /st/, nên \"mist\" có thể bị đọc gọn thành \"miss\" nếu không giữ âm chặn cuối.",
+      "examples": { "target": "I miss my old neighborhood.", "contrast": "A light mist covered the lake." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-002",
+      "category": "final_clusters",
+      "pair": { "target": "bus", "contrast": "bust" },
+      "ipa": { "target": "/bʌs/", "contrast": "/bʌst/" },
+      "vi": "Cụm /st/ cuối trong \"bust\" cần giữ cả /s/ và /t/; nếu nuốt /t/, từ này sẽ nghe giống \"bus\".",
+      "examples": { "target": "The bus stopped near school.", "contrast": "Police planned a drug bust." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-003",
+      "category": "final_clusters",
+      "pair": { "target": "pass", "contrast": "past" },
+      "ipa": { "target": "/pæs/", "contrast": "/pæst/" },
+      "vi": "Tiếng Việt không quen kết thúc bằng hai phụ âm, nên /st/ cuối trong \"past\" dễ bị giản lược thành /s/ như \"pass\".",
+      "examples": { "target": "Please pass the salt.", "contrast": "We walked past the store." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-004",
+      "category": "final_clusters",
+      "pair": { "target": "guess", "contrast": "guest" },
+      "ipa": { "target": "/ɡɛs/", "contrast": "/ɡɛst/" },
+      "vi": "\"Guest\" cần âm /t/ cuối rất nhẹ nhưng có thật; nếu bỏ /t/, người nghe sẽ hiểu thành \"guess\".",
+      "examples": { "target": "Can you guess the answer?", "contrast": "Our guest arrived early." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-005",
+      "category": "final_clusters",
+      "pair": { "target": "mess", "contrast": "messed" },
+      "ipa": { "target": "/mɛs/", "contrast": "/mɛst/" },
+      "vi": "Đuôi quá khứ -ed sau /s/ tạo cụm /st/ trong \"messed\"; người Việt dễ bỏ /t/ và làm mất dấu quá khứ.",
+      "examples": { "target": "The kitchen is a mess.", "contrast": "He messed up the first line." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-006",
+      "category": "final_clusters",
+      "pair": { "target": "lace", "contrast": "laced" },
+      "ipa": { "target": "/leɪs/", "contrast": "/leɪst/" },
+      "vi": "Trong \"laced\", cụm /st/ cuối báo nghĩa quá khứ; nếu /t/ không được giữ, câu sẽ nghe như hiện tại hoặc danh từ \"lace\".",
+      "examples": { "target": "Her dress had white lace.", "contrast": "He laced his shoes tightly." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-007",
+      "category": "final_clusters",
+      "pair": { "target": "task", "contrast": "tack" },
+      "ipa": { "target": "/tæsk/", "contrast": "/tæk/" },
+      "vi": "Cụm /sk/ cuối trong \"task\" dễ bị rút còn /k/, làm từ này nghe gần \"tack\"; cần giữ ma sát /s/ trước /k/.",
+      "examples": { "target": "This task will take an hour.", "contrast": "Use a tack to hold the note." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-008",
+      "category": "final_clusters",
+      "pair": { "target": "mask", "contrast": "Mack" },
+      "ipa": { "target": "/mæsk/", "contrast": "/mæk/" },
+      "vi": "Nếu bỏ /s/ trong cụm /sk/ cuối, \"mask\" sẽ nghe như tên \"Mack\"; người học cần trượt từ /s/ sang /k/ rõ ràng.",
+      "examples": { "target": "Wear a mask in the lab.", "contrast": "Mack waited by the door." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-009",
+      "category": "final_clusters",
+      "pair": { "target": "risk", "contrast": "rick" },
+      "ipa": { "target": "/rɪsk/", "contrast": "/rɪk/" },
+      "vi": "Âm /s/ trong /sk/ cuối thường bị nuốt vì tiếng Việt không có cụm này ở cuối từ; \"risk\" phải khác \"rick\".",
+      "examples": { "target": "There is no risk today.", "contrast": "Rick sent the report." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-010",
+      "category": "final_clusters",
+      "pair": { "target": "desk", "contrast": "deck" },
+      "ipa": { "target": "/dɛsk/", "contrast": "/dɛk/" },
+      "vi": "Cụm /sk/ cuối trong \"desk\" cần có /s/ trước khi đóng bằng /k/; nếu mất /s/, từ sẽ giống \"deck\".",
+      "examples": { "target": "Put the folder on my desk.", "contrast": "The deck was wet after rain." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-011",
+      "category": "final_clusters",
+      "pair": { "target": "sick", "contrast": "six" },
+      "ipa": { "target": "/sɪk/", "contrast": "/sɪks/" },
+      "vi": "\"Six\" kết thúc bằng cụm /ks/, không chỉ /k/; người Việt dễ bỏ /s/ cuối và làm số sáu nghe như \"sick\".",
+      "examples": { "target": "She felt sick after lunch.", "contrast": "We need six chairs." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-012",
+      "category": "final_clusters",
+      "pair": { "target": "pick", "contrast": "picks" },
+      "ipa": { "target": "/pɪk/", "contrast": "/pɪks/" },
+      "vi": "Đuôi số nhiều hoặc ngôi ba tạo /ks/ trong \"picks\"; nếu bỏ /s/, ý nghĩa sẽ trở lại động từ gốc \"pick\".",
+      "examples": { "target": "Pick one card from the deck.", "contrast": "She picks the fastest route." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-013",
+      "category": "final_clusters",
+      "pair": { "target": "back", "contrast": "backs" },
+      "ipa": { "target": "/bæk/", "contrast": "/bæks/" },
+      "vi": "Trong \"backs\", /ks/ cuối cần đủ hai bước /k/ rồi /s/; bỏ /s/ làm mất dấu số nhiều hoặc ngôi ba.",
+      "examples": { "target": "My back hurts today.", "contrast": "The team backs the new plan." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-014",
+      "category": "final_clusters",
+      "pair": { "target": "lock", "contrast": "locks" },
+      "ipa": { "target": "/lɑːk/", "contrast": "/lɑːks/" },
+      "vi": "Người Việt thường chặn âm cuối quá sớm, nên /s/ sau /k/ trong \"locks\" dễ biến mất và nghe như \"lock\".",
+      "examples": { "target": "Lock the door at night.", "contrast": "This key opens three locks." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-015",
+      "category": "final_clusters",
+      "pair": { "target": "tax", "contrast": "tack" },
+      "ipa": { "target": "/tæks/", "contrast": "/tæk/" },
+      "vi": "\"Tax\" có /ks/ cuối, còn \"tack\" chỉ dừng ở /k/; thiếu /s/ làm mất khác biệt nghĩa rất dễ nghe trong hội thoại.",
+      "examples": { "target": "The tax is included.", "contrast": "Put one tack in the map." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-016",
+      "category": "final_consonants",
+      "pair": { "target": "ice", "contrast": "eyes" },
+      "ipa": { "target": "/aɪs/", "contrast": "/aɪz/" },
+      "vi": "Âm /z/ cuối trong \"eyes\" cần rung; nếu đọc thành /s/, người nghe sẽ hiểu thành \"ice\".",
+      "examples": { "target": "The ice melted quickly.", "contrast": "Her eyes looked tired." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-017",
+      "category": "final_consonants",
+      "pair": { "target": "price", "contrast": "prize" },
+      "ipa": { "target": "/praɪs/", "contrast": "/praɪz/" },
+      "vi": "Tiếng Việt không đối lập /s/ và /z/ ở cuối từ, nên \"prize\" dễ mất rung và nghe như \"price\".",
+      "examples": { "target": "The price is too high.", "contrast": "She won first prize." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-018",
+      "category": "final_consonants",
+      "pair": { "target": "place", "contrast": "plays" },
+      "ipa": { "target": "/pleɪs/", "contrast": "/pleɪz/" },
+      "vi": "\"Plays\" cần /z/ cuối có rung vì là đuôi ngữ pháp; nếu mất rung, nó sẽ nghe như danh từ \"place\".",
+      "examples": { "target": "This place is quiet.", "contrast": "He plays guitar every night." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-019",
+      "category": "final_consonants",
+      "pair": { "target": "face", "contrast": "phase" },
+      "ipa": { "target": "/feɪs/", "contrast": "/feɪz/" },
+      "vi": "Cặp này chỉ khác /s/ không rung và /z/ có rung ở cuối; người Việt cần giữ dây thanh hoạt động trong \"phase\".",
+      "examples": { "target": "Wash your face before bed.", "contrast": "The project entered a new phase." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-020",
+      "category": "final_consonants",
+      "pair": { "target": "loose", "contrast": "lose" },
+      "ipa": { "target": "/luːs/", "contrast": "/luːz/" },
+      "vi": "\"Loose\" và \"lose\" dễ lẫn vì chính tả và nguyên âm gần nhau; khác biệt chính là /s/ không rung với /z/ rung ở cuối.",
+      "examples": { "target": "The rope is too loose.", "contrast": "Do not lose your ticket." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-021",
+      "category": "final_consonants",
+      "pair": { "target": "use (noun)", "contrast": "use (verb)" },
+      "ipa": { "target": "/juːs/", "contrast": "/juːz/" },
+      "vi": "Cùng chữ \"use\" nhưng danh từ kết thúc /s/ và động từ kết thúc /z/; người Việt dễ đọc một kiểu cho cả hai.",
+      "examples": { "target": "This tool has one use.", "contrast": "Use this tool carefully." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-022",
+      "category": "final_consonants",
+      "pair": { "target": "cease", "contrast": "seize" },
+      "ipa": { "target": "/siːs/", "contrast": "/siːz/" },
+      "vi": "\"Seize\" phải có /z/ cuối rõ và nguyên âm hơi dài hơn; nếu không rung, nó sẽ nghe như \"cease\".",
+      "examples": { "target": "The noise will cease soon.", "contrast": "They tried to seize the ship." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-023",
+      "category": "final_consonants",
+      "pair": { "target": "advice", "contrast": "advise" },
+      "ipa": { "target": "/ədˈvaɪs/", "contrast": "/ədˈvaɪz/" },
+      "vi": "Danh từ \"advice\" kết thúc /s/, còn động từ \"advise\" kết thúc /z/; lỗi mất rung làm sai cả âm lẫn loại từ.",
+      "examples": { "target": "I need your advice.", "contrast": "Please advise the new manager." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-024",
+      "category": "final_consonants",
+      "pair": { "target": "hiss", "contrast": "his" },
+      "ipa": { "target": "/hɪs/", "contrast": "/hɪz/" },
+      "vi": "\"His\" trong tiếng Anh tự nhiên có /z/ cuối; đọc thành /s/ sẽ nghe giống \"hiss\" và làm câu kém tự nhiên.",
+      "examples": { "target": "The snake gave a loud hiss.", "contrast": "His coat is on the chair." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-025",
+      "category": "diphthongs",
+      "pair": { "target": "coat", "contrast": "caught" },
+      "ipa": { "target": "/koʊt/", "contrast": "/kɔːt/" },
+      "vi": "\"Coat\" có nguyên âm đôi /oʊ/ trượt môi, còn \"caught\" là /ɔː/ mở hơn; người Việt dễ đọc cả hai thành một âm /ô/.",
+      "examples": { "target": "Bring a warm coat.", "contrast": "The police caught the thief." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-026",
+      "category": "diphthongs",
+      "pair": { "target": "boat", "contrast": "bought" },
+      "ipa": { "target": "/boʊt/", "contrast": "/bɔːt/" },
+      "vi": "\"Boat\" cần trượt từ /o/ sang /ʊ/, trong khi \"bought\" giữ âm /ɔː/ mở; thiếu trượt làm hai từ dễ lẫn.",
+      "examples": { "target": "The boat left at six.", "contrast": "I bought a new phone." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-027",
+      "category": "diphthongs",
+      "pair": { "target": "woke", "contrast": "walk" },
+      "ipa": { "target": "/woʊk/", "contrast": "/wɔːk/" },
+      "vi": "Người Việt dễ không phân biệt /oʊ/ và /ɔː/ sau /w/; \"woke\" cần âm đôi khép môi, còn \"walk\" mở và dài hơn.",
+      "examples": { "target": "She woke before sunrise.", "contrast": "We walk to work." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-028",
+      "category": "diphthongs",
+      "pair": { "target": "low", "contrast": "law" },
+      "ipa": { "target": "/loʊ/", "contrast": "/lɔː/" },
+      "vi": "\"Low\" kết thúc bằng chuyển động /oʊ/, còn \"law\" giữ âm /ɔː/ không trượt; cần tránh đọc cả hai như \"lo\" tiếng Việt.",
+      "examples": { "target": "The shelf is too low.", "contrast": "The law changed last year." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-029",
+      "category": "diphthongs",
+      "pair": { "target": "show", "contrast": "Shaw" },
+      "ipa": { "target": "/ʃoʊ/", "contrast": "/ʃɔː/" },
+      "vi": "\"Show\" có đuôi trượt /oʊ/; tên \"Shaw\" dùng /ɔː/ mở hơn, nên môi và độ mở miệng phải khác nhau.",
+      "examples": { "target": "The show starts at eight.", "contrast": "Shaw called after dinner." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-030",
+      "category": "diphthongs",
+      "pair": { "target": "so", "contrast": "saw" },
+      "ipa": { "target": "/soʊ/", "contrast": "/sɔː/" },
+      "vi": "\"So\" không phải âm /ɔː/ phẳng; cần có chuyển động /oʊ/ để khác với \"saw\".",
+      "examples": { "target": "I was so tired.", "contrast": "I saw your message." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w2-031",
+      "category": "diphthongs",
+      "pair": { "target": "toe", "contrast": "taw" },
+      "ipa": { "target": "/toʊ/", "contrast": "/tɔː/" },
+      "vi": "Âm /oʊ/ trong \"toe\" phải khép dần môi, còn /ɔː/ trong \"taw\" mở hơn; đây là khác biệt người Việt hay làm mờ.",
+      "examples": { "target": "He hurt his big toe.", "contrast": "Taw is a word used in marbles." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-032",
+      "category": "diphthongs",
+      "pair": { "target": "road", "contrast": "roared" },
+      "ipa": { "target": "/roʊd/", "contrast": "/rɔːrd/" },
+      "vi": "\"Road\" có /oʊ/ rồi /d/, còn \"roared\" có /ɔːr/ trước /d/; người học cần giữ cả nguyên âm đôi lẫn /r/ màu rõ.",
+      "examples": { "target": "The road is closed today.", "contrast": "The crowd roared after the goal." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-033",
+      "category": "diphthongs",
+      "pair": { "target": "coat", "contrast": "cot" },
+      "ipa": { "target": "/koʊt/", "contrast": "/kɑːt/" },
+      "vi": "\"Coat\" có nguyên âm đôi dài /oʊ/, còn \"cot\" có nguyên âm mở /ɑː/; bỏ chuyển động môi sẽ làm câu khó hiểu.",
+      "examples": { "target": "Hang your coat by the door.", "contrast": "The child slept on a cot." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w2-034",
+      "category": "diphthongs",
+      "pair": { "target": "bone", "contrast": "born" },
+      "ipa": { "target": "/boʊn/", "contrast": "/bɔːrn/" },
+      "vi": "Người Việt dễ đọc /oʊ/ và /ɔːr/ gần nhau; \"bone\" phải có âm đôi và không thêm màu /r/ như \"born\".",
+      "examples": { "target": "The dog found a bone.", "contrast": "She was born in June." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-035",
+      "category": "stress_pairs",
+      "pair": { "target": "record (noun)", "contrast": "record (verb)" },
+      "ipa": { "target": "/ˈrɛkərd/", "contrast": "/rɪˈkɔːrd/" },
+      "vi": "Tiếng Việt dùng thanh điệu hơn trọng âm từ, nên cặp \"record\" dễ bị đọc cùng nhịp; danh từ nhấn âm đầu, động từ nhấn âm sau.",
+      "examples": { "target": "Keep a record of each sale.", "contrast": "Please record the meeting." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-036",
+      "category": "stress_pairs",
+      "pair": { "target": "present (noun)", "contrast": "present (verb)" },
+      "ipa": { "target": "/ˈprɛzənt/", "contrast": "/prɪˈzɛnt/" },
+      "vi": "\"Present\" đổi nghĩa theo trọng âm: danh từ nhấn âm đầu, động từ nhấn âm hai; người Việt dễ giữ nhịp đều và làm mất đối lập.",
+      "examples": { "target": "She opened the present slowly.", "contrast": "They will present the results today." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-037",
+      "category": "stress_pairs",
+      "pair": { "target": "permit (noun)", "contrast": "permit (verb)" },
+      "ipa": { "target": "/ˈpɜːrmɪt/", "contrast": "/pərˈmɪt/" },
+      "vi": "Danh từ \"permit\" nhấn đầu, động từ nhấn sau; nếu không giảm âm tiết không nhấn, người nghe khó nhận ra loại từ.",
+      "examples": { "target": "You need a parking permit.", "contrast": "They permit visitors on weekends." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-038",
+      "category": "stress_pairs",
+      "pair": { "target": "object (noun)", "contrast": "object (verb)" },
+      "ipa": { "target": "/ˈɑːbdʒɛkt/", "contrast": "/əbˈdʒɛkt/" },
+      "vi": "\"Object\" danh từ có trọng âm đầu; động từ \"object\" giảm âm đầu và nhấn âm sau, điều người Việt thường bỏ qua.",
+      "examples": { "target": "Place the object on the table.", "contrast": "I object to that decision." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-039",
+      "category": "stress_pairs",
+      "pair": { "target": "contest (noun)", "contrast": "contest (verb)" },
+      "ipa": { "target": "/ˈkɑːntɛst/", "contrast": "/kənˈtɛst/" },
+      "vi": "Trong cặp \"contest\", trọng âm quyết định danh từ hay động từ; tiếng Việt không có kiểu đổi nghĩa bằng nhấn âm này.",
+      "examples": { "target": "The contest begins tomorrow.", "contrast": "They may contest the result." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-040",
+      "category": "stress_pairs",
+      "pair": { "target": "conduct (noun)", "contrast": "conduct (verb)" },
+      "ipa": { "target": "/ˈkɑːndʌkt/", "contrast": "/kənˈdʌkt/" },
+      "vi": "\"Conduct\" danh từ nhấn âm đầu, còn động từ nhấn âm sau; người Việt cần giảm âm tiết không nhấn thay vì đọc đều.",
+      "examples": { "target": "His conduct was professional.", "contrast": "They conduct interviews every week." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-041",
+      "category": "stress_pairs",
+      "pair": { "target": "project (noun)", "contrast": "project (verb)" },
+      "ipa": { "target": "/ˈprɑːdʒɛkt/", "contrast": "/prəˈdʒɛkt/" },
+      "vi": "Danh từ \"project\" nhấn đầu, động từ \"project\" nhấn âm hai; nhịp đều kiểu tiếng Việt sẽ làm cặp này kém rõ.",
+      "examples": { "target": "The project needs more time.", "contrast": "They project growth next year." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-042",
+      "category": "stress_pairs",
+      "pair": { "target": "export (noun)", "contrast": "export (verb)" },
+      "ipa": { "target": "/ˈɛkspɔːrt/", "contrast": "/ɪkˈspɔːrt/" },
+      "vi": "\"Export\" đổi trọng âm theo loại từ; âm đầu danh từ rõ hơn, còn động từ giảm âm đầu và nhấn phần sau.",
+      "examples": { "target": "Coffee is a major export.", "contrast": "They export coffee to Canada." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-043",
+      "category": "stress_pairs",
+      "pair": { "target": "import (noun)", "contrast": "import (verb)" },
+      "ipa": { "target": "/ˈɪmpɔːrt/", "contrast": "/ɪmˈpɔːrt/" },
+      "vi": "Trọng âm đầu trong danh từ \"import\" khác với trọng âm sau trong động từ; người Việt cần tránh đọc hai âm tiết ngang nhau.",
+      "examples": { "target": "This import is expensive.", "contrast": "We import parts from Japan." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-044",
+      "category": "stress_pairs",
+      "pair": { "target": "increase (noun)", "contrast": "increase (verb)" },
+      "ipa": { "target": "/ˈɪnkriːs/", "contrast": "/ɪnˈkriːs/" },
+      "vi": "\"Increase\" danh từ nhấn đầu, động từ nhấn sau; nếu đọc đều, người nghe phải đoán nghĩa từ ngữ cảnh.",
+      "examples": { "target": "The increase surprised everyone.", "contrast": "Prices increase every summer." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-045",
+      "category": "stress_pairs",
+      "pair": { "target": "decrease (noun)", "contrast": "decrease (verb)" },
+      "ipa": { "target": "/ˈdiːkriːs/", "contrast": "/dɪˈkriːs/" },
+      "vi": "\"Decrease\" cũng đổi trọng âm theo loại từ; người Việt cần làm âm tiết không nhấn ngắn và nhẹ hơn.",
+      "examples": { "target": "The decrease was small.", "contrast": "Sales may decrease in winter." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-046",
+      "category": "stress_pairs",
+      "pair": { "target": "produce (noun)", "contrast": "produce (verb)" },
+      "ipa": { "target": "/ˈproʊduːs/", "contrast": "/prəˈduːs/" },
+      "vi": "Danh từ \"produce\" nhấn đầu và có /oʊ/, còn động từ nhấn sau; đây vừa là lỗi trọng âm vừa là lỗi nguyên âm dễ gặp.",
+      "examples": { "target": "Fresh produce is near the door.", "contrast": "The factory will produce more parts." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-047",
+      "category": "stress_pairs",
+      "pair": { "target": "rebel (noun)", "contrast": "rebel (verb)" },
+      "ipa": { "target": "/ˈrɛbəl/", "contrast": "/rɪˈbɛl/" },
+      "vi": "\"Rebel\" danh từ nhấn đầu, động từ nhấn sau; đọc sai trọng âm có thể làm người nghe hiểu nhầm vai trò của từ.",
+      "examples": { "target": "The rebel crossed the border.", "contrast": "Young people may rebel against strict rules." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-048",
+      "category": "stress_pairs",
+      "pair": { "target": "suspect (noun)", "contrast": "suspect (verb)" },
+      "ipa": { "target": "/ˈsʌspɛkt/", "contrast": "/səˈspɛkt/" },
+      "vi": "Trong \"suspect\", danh từ nhấn đầu còn động từ nhấn sau; âm tiết đầu của động từ cần nhẹ hơn, không đọc mạnh như danh từ.",
+      "examples": { "target": "The suspect left the room.", "contrast": "I suspect a simple mistake." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-049",
+      "category": "stress_pairs",
+      "pair": { "target": "insult (noun)", "contrast": "insult (verb)" },
+      "ipa": { "target": "/ˈɪnsʌlt/", "contrast": "/ɪnˈsʌlt/" },
+      "vi": "Danh từ \"insult\" nhấn âm đầu, động từ nhấn âm sau; người Việt dễ bỏ sự chênh lệch nhịp vì tiếng Việt không có trọng âm từ kiểu này.",
+      "examples": { "target": "That comment was an insult.", "contrast": "Do not insult your coworker." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w2-050",
+      "category": "stress_pairs",
+      "pair": { "target": "progress (noun)", "contrast": "progress (verb)" },
+      "ipa": { "target": "/ˈprɑːɡrɛs/", "contrast": "/prəˈɡrɛs/" },
+      "vi": "\"Progress\" danh từ nhấn đầu, động từ nhấn sau; cần giảm âm đầu của động từ để không nghe như danh từ.",
+      "examples": { "target": "Your progress is clear.", "contrast": "The talks will progress slowly." },
+      "difficulty": "hard"
+    }
+  ]
+}
