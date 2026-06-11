@@ -190,15 +190,30 @@ export function usePronunciationRecorder(): PronunciationRecorderState {
     setStatus('idle');
   }, [cleanupRecorder, cleanupStream, stopPlayback]);
 
+  // Revoke the blob URL when it changes — but do NOT call stopPlayback() here.
+  // Calling stopPlayback() on every URL change aborts any in-flight play()
+  // Promise with AbortError and leaves the Promise unresolved if the audio was
+  // already playing (onended never fires on a paused element). Both paths set
+  // the "Recorded playback failed" error message or silently hang the UI.
+  useEffect(() => {
+    const urlToRevoke = lastRecordedAudioUrl;
+    return () => {
+      if (urlToRevoke) {
+        URL.revokeObjectURL(urlToRevoke);
+      }
+    };
+  }, [lastRecordedAudioUrl]);
+
+  // Stream and playback cleanup — runs only on component unmount.
+  // cleanupStream and stopPlayback are stable (useCallback with [] deps) so
+  // this effect fires exactly once (setup) and its cleanup runs exactly once
+  // (unmount), matching the semantics of a "componentWillUnmount" guard.
   useEffect(() => {
     return () => {
       cleanupStream();
       stopPlayback();
-      if (lastRecordedAudioUrl) {
-        URL.revokeObjectURL(lastRecordedAudioUrl);
-      }
     };
-  }, [cleanupStream, lastRecordedAudioUrl, stopPlayback]);
+  }, [cleanupStream, stopPlayback]);
 
   const playReference = useCallback(
     async (text: string, rate = 0.85): Promise<boolean> => {
@@ -302,13 +317,19 @@ export function usePronunciationRecorder(): PronunciationRecorderState {
           resolve();
         };
         audio.onerror = () => {
+          console.error(
+            '[usePronunciationRecorder] playback media error',
+            'code:', audio.error?.code,
+            'msg:', audio.error?.message,
+          );
           currentAudioRef.current = null;
           setIsPlayingRecorded(false);
           setErrorState('Recorded playback failed. Please record again.');
           resolve();
         };
 
-        void audio.play().catch(() => {
+        void audio.play().catch((err: unknown) => {
+          console.error('[usePronunciationRecorder] play() rejected', err);
           currentAudioRef.current = null;
           setIsPlayingRecorded(false);
           setErrorState('Recorded playback failed. Please record again.');

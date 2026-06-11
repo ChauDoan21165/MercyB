@@ -169,7 +169,7 @@ export default function SelfCompareRecorder({
               data-testid="self-compare-play"
               aria-label="Nghe bản thu của bạn"
               onClick={() => void playRecorded()}
-              disabled={comparing}
+              disabled={comparing || isPlayingRecorded}
               className="inline-flex min-h-10 items-center gap-2 rounded-full border border-indigo-200 bg-white px-4 py-2 text-sm font-black text-indigo-800 disabled:opacity-60"
             >
               <span aria-hidden="true">▶</span>{" "}
