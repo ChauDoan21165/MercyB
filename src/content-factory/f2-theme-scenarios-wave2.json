@@ -1,0 +1,126 @@
+{
+  "corpus": "f2-theme-scenarios-wave2",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F2",
+  "authoredAt": "2026-06-10",
+  "wave": 2,
+  "description": "Theme/scenario deepening from the uncovered map. These are scenario blueprints only; they do not register speak topics or touch engine code.",
+  "themes": [
+    {
+      "id": "f2w2-scenario-parent-teacher-conference-teen",
+      "domain": "school_parent",
+      "title": "Parent-teacher conference for a teenager",
+      "whyItMattersVi": "Phụ huynh Việt ở hải ngoại thường cần nói về điểm số, thái độ, bạn bè, và kế hoạch sau trung học nhưng dễ thiếu từ vựng mềm để hỏi mà không nghe như trách con.",
+      "learnerRole": "Parent or guardian",
+      "aiRole": "Teacher or school counselor",
+      "targetOutcomes": [
+        "Ask what the student is doing well",
+        "Ask about missing assignments without blame",
+        "Discuss phone use, attendance, or social concerns",
+        "Agree on a follow-up plan"
+      ],
+      "sampleUserLines": [
+        "Can you tell me what my child is doing well this term?",
+        "I want to understand the missing assignments before I react at home.",
+        "What is one thing we can work on this month?"
+      ],
+      "l1NotesVi": [
+        "Tránh dịch \"cháu nó hư không\" thành lời quá nặng. Dùng \"I want to understand\" để hỏi mà không kết tội.",
+        "Từ \"follow-up plan\" hữu ích hơn \"punishment\" khi nói với giáo viên.",
+        "Có thể nói \"my child\" thay vì nhắc tên nhiều lần nếu muốn giữ riêng tư."
+      ],
+      "followUpPrompts": [
+        "What should we check at home each week?",
+        "How can I support without putting too much pressure on my child?",
+        "When should we meet again?"
+      ]
+    },
+    {
+      "id": "f2w2-scenario-apartment-maintenance-repeat",
+      "domain": "housing",
+      "title": "Following up on an unresolved apartment repair",
+      "whyItMattersVi": "Nhiều người học biết báo hư lần đầu nhưng khó theo dõi khi chủ nhà chưa sửa. Cần tiếng Anh lịch sự nhưng có bằng chứng và hạn rõ.",
+      "learnerRole": "Tenant",
+      "aiRole": "Property manager",
+      "targetOutcomes": [
+        "Reference the original request",
+        "Describe the continuing problem",
+        "Ask for a date and time window",
+        "Mention documentation without sounding threatening"
+      ],
+      "sampleUserLines": [
+        "I reported the leak on Monday, and it is still happening.",
+        "Could you give me a repair date and a time window?",
+        "I have photos and the previous message if you need them."
+      ],
+      "l1NotesVi": [
+        "Không cần bắt đầu bằng xin lỗi nếu lỗi không phải của mình. Có thể mở bằng \"I am following up\".",
+        "\"Time window\" nghĩa là khoảng giờ thợ có thể đến, rất hữu ích khi phải đi làm.",
+        "\"I have photos\" là bằng chứng trung tính, nhẹ hơn câu đe dọa."
+      ],
+      "followUpPrompts": [
+        "What should I do if the repair is delayed again?",
+        "Can you confirm this by email?",
+        "Is there an emergency number for after-hours issues?"
+      ]
+    },
+    {
+      "id": "f2w2-scenario-work-sick-day-boundary",
+      "domain": "workplace",
+      "title": "Calling in sick without over-explaining",
+      "whyItMattersVi": "Người Việt học tiếng Anh thường giải thích bệnh quá chi tiết vì sợ bị đánh giá. Ở nơi làm việc, lời báo bệnh nên ngắn, rõ, có trách nhiệm.",
+      "learnerRole": "Employee",
+      "aiRole": "Manager",
+      "targetOutcomes": [
+        "State illness and absence",
+        "Mention coverage or urgent tasks",
+        "Give a realistic update time",
+        "Avoid private medical details"
+      ],
+      "sampleUserLines": [
+        "I am not well enough to work today.",
+        "I have sent the urgent file to Linh and will check messages at noon.",
+        "I will update you tomorrow morning if I need another day."
+      ],
+      "l1NotesVi": [
+        "Không cần kể triệu chứng riêng tư. \"Not well enough to work\" đã đủ chuyên nghiệp.",
+        "Nêu việc đã bàn giao giúp quản lý yên tâm.",
+        "Nếu dùng \"I am sick\" thì tự nhiên; đừng dịch dài kiểu \"my body is not comfortable\"."
+      ],
+      "followUpPrompts": [
+        "Do you need a doctor's note?",
+        "Who should cover the morning meeting?",
+        "Should I use sick leave or personal leave?"
+      ]
+    },
+    {
+      "id": "f2w2-scenario-bank-card-fraud",
+      "domain": "banking",
+      "title": "Reporting suspicious card charges",
+      "whyItMattersVi": "Khi mất tiền hoặc thấy giao dịch lạ, người học cần mô tả chính xác ngày, số tiền, và yêu cầu khóa thẻ mà không hoảng.",
+      "learnerRole": "Bank customer",
+      "aiRole": "Fraud department agent",
+      "targetOutcomes": [
+        "Identify unauthorized transactions",
+        "Ask to freeze or replace the card",
+        "Confirm provisional credit or investigation timeline",
+        "Ask what documents are needed"
+      ],
+      "sampleUserLines": [
+        "I see two charges I do not recognize.",
+        "Could you freeze this card and send a replacement?",
+        "How long does the investigation usually take?"
+      ],
+      "l1NotesVi": [
+        "\"I do not recognize\" tự nhiên hơn \"I do not know this money\".",
+        "\"Freeze the card\" hoặc \"block the card\" đều dễ hiểu trong bối cảnh ngân hàng.",
+        "Ghi ngày và số tiền trước khi gọi để không bị rối."
+      ],
+      "followUpPrompts": [
+        "Will I get a temporary credit?",
+        "Should I change my online banking password?",
+        "Can you email me the case number?"
+      ]
+    }
+  ]
+}
