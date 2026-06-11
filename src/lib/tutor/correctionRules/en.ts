@@ -271,6 +271,9 @@ function punctuateQuestionForm(input: string): string {
 function hasQuestionFinalMarkCandidate(input: string): boolean {
   const trimmed = input.trim();
   if (!trimmed || /[?？!]$/.test(trimmed)) return false;
+  // If the input already contains an internal sentence boundary ("Can you...? I am cold."),
+  // the declarative portion after the boundary is NOT a question — do not add "?" to it.
+  if (/[?？!]\s+\S/.test(trimmed)) return false;
 
   const subject = "(?:i|you|we|they|he|she|it|this|that|these|those|there|[a-z]+(?:\\s+[a-z]+){0,3})";
   const lexicalVerb = "[a-z]+(?:\\s+[a-z]+)*";
@@ -776,11 +779,23 @@ function repairVietlishBeAgree(input: string): string {
 const VIETLISH_EXPLAIN_TO_ME_PATTERN =
   /\b(explain|explains|explained|explaining)\s+(me|him|her|us|them|you)\b/i;
 
+// When a determiner-led NP follows the misplaced pronoun, reorder to the canonical
+// dative form: "explain <pronoun> <NP>" → "explain <NP> to <pronoun>".
+// Uses [^\s.?!]+ for word tokens so terminal punctuation is captured separately.
+const VIETLISH_EXPLAIN_REORDER_PATTERN =
+  /\b(explain|explains|explained|explaining)\s+(me|him|her|us|them|you)\s+((?:this|that|these|those|a|an|the|my|your|his|her|its|our|their)(?:\s+[^\s.?!]+)*)([.?!]?)\s*$/i;
+
 function hasVietlishExplainToMe(input: string): boolean {
   return VIETLISH_EXPLAIN_TO_ME_PATTERN.test(input);
 }
 
 function repairVietlishExplainToMe(input: string): string {
+  const reorderMatch = input.match(VIETLISH_EXPLAIN_REORDER_PATTERN);
+  if (reorderMatch) {
+    const [fullMatch, verb, pronoun, object, punct] = reorderMatch;
+    const prefix = input.slice(0, reorderMatch.index ?? 0);
+    return `${prefix}${verb} ${object.trim()} to ${pronoun}${punct}`;
+  }
   return input.replace(VIETLISH_EXPLAIN_TO_ME_PATTERN, "$1 to $2");
 }
 
@@ -857,8 +872,23 @@ function repairVietlishVeryLike(input: string): string {
 const VIETLISH_DURATION_SINCE_FOR_PATTERN =
   /(?<!\bever\s)\bsince\s+(\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\s+(year|years|month|months|week|weeks|day|days|hour|hours)\b(?!\s+(?:ago|old|back)\b)/i;
 
+// Closed list of pure-stative verbs that cannot collocate with "for <N> <unit>"
+// in present simple — they always require present perfect for duration spans.
+// Dynamic/semi-stative verbs (live, work, study) are excluded: "I live here for
+// 3 years" is marginal but accepted and intentionally not blocked.
+const STATIVE_DURATION_VERB_BLOCKLIST =
+  /\b(?:know|knows|like|likes|love|loves|hate|hates|want|wants|need|needs|prefer|prefers|understand|understands|believe|believes|own|owns|mean|means|remember|remembers|forget|forgets)\b/i;
+
 function hasVietlishDurationSinceFor(input: string): boolean {
-  return VIETLISH_DURATION_SINCE_FOR_PATTERN.test(input);
+  if (!VIETLISH_DURATION_SINCE_FOR_PATTERN.test(input)) return false;
+  // When a pure-stative verb (know/like/love/…) appears in present simple with
+  // "since <N> <unit>", fixing only the preposition produces a still-wrong
+  // sentence (e.g. "I know him for three years." — needs present perfect
+  // "have known"). Abstain so the AI engine corrects both errors together.
+  if (!(/\b(?:have|has)\b/i.test(input)) && STATIVE_DURATION_VERB_BLOCKLIST.test(input)) {
+    return false;
+  }
+  return true;
 }
 
 function repairVietlishDurationSinceFor(input: string): string {
@@ -1849,5 +1879,18 @@ export function isClearlyWrongBeginnerEnglish(input: string): boolean {
     `\\b(I|You|We|They|He|She|It)\\s+(${KNOWN_UNCORRECTED_PAST_MARKER_VERBS.join("|")})\\b.*\\byesterday\\b`,
     "i",
   );
-  return unsupportedPastVerbPattern.test(normalized);
+  if (unsupportedPastVerbPattern.test(normalized)) return true;
+
+  // Stative verb + "since <N> <unit>" without present-perfect: the preposition-only
+  // fix would still be wrong (e.g. "I know him for three years." — needs present
+  // perfect). Route to AI so both the tense and the preposition are corrected.
+  if (
+    VIETLISH_DURATION_SINCE_FOR_PATTERN.test(normalized) &&
+    !/\b(?:have|has)\b/i.test(normalized) &&
+    STATIVE_DURATION_VERB_BLOCKLIST.test(normalized)
+  ) {
+    return true;
+  }
+
+  return false;
 }

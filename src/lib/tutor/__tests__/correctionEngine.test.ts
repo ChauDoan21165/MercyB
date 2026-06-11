@@ -1429,6 +1429,42 @@ describe("correctionEngine", () => {
       appliedRuleIds: [],
     });
   });
+
+  // ─── Eval-pair golden regressions (from a2-leniency-eval.md wrong-correction audit) ─────
+
+  // eval-010: tense guard — "since <N> <unit>" without present perfect
+  // The preposition-only fix "I know him for three years." is still wrong; engine must abstain.
+  it("eval-010: abstains on since-for when present-perfect aux is absent (tense also wrong)", () => {
+    const result = correctWithTutorRules("I know him since three years.");
+    expect(result.status).toBe("needs_ai");
+    expect(result.corrected).toBe("");
+    // Must NOT produce the partial-wrong fix
+    expect(result.status === "needs_ai" ? "" : result.corrected).not.toBe("I know him for three years.");
+  });
+
+  // Safe path: present perfect already present — only the preposition needs fixing.
+  it("eval-010 safe path: fixes since→for when present perfect is already there", () => {
+    const result = correctWithTutorRules("I have known him since three years.");
+    expect(result.status).toBe("corrected");
+    expect(result.corrected).toBe("I have known him for three years.");
+    expect(result.appliedRuleIds).toContain("en-vietlish-duration-since-for");
+  });
+
+  // eval-042: object placement — "explain me <NP>" must reorder to "explain <NP> to me"
+  it("eval-042: reorders direct object when NP follows the misplaced pronoun", () => {
+    const result = correctWithTutorRules("Please explain me this grammar rule.");
+    expect(result.status).toBe("corrected");
+    expect(result.corrected).toBe("Please explain this grammar rule to me.");
+    expect(result.appliedRuleIds).toContain("en-vietlish-explain-to-me");
+  });
+
+  // eval-087: sentence-boundary guard — declarative after "?" must not get "?" appended
+  it("eval-087: does not add ? to a declarative sentence that follows an existing ?", () => {
+    const result = correctWithTutorRules("Can you close the fan? I am cold.");
+    expect(result.status).toBe("unchanged");
+    expect(result.corrected).toBe("Can you close the fan? I am cold.");
+    expect(result.appliedRuleIds).not.toContain("en-question-form-final-mark");
+  });
 });
 
 describe("correctionEngine — BUG1 semantic plausibility trust floor", () => {
@@ -1542,6 +1578,29 @@ describe("correctionEngine — STT garble guard", () => {
   ])("no-FP: standalone Sunday mentions are left untouched: %s", (input) => {
     const result = findAndFixSttGarble(input);
     expect(result).toBeNull();
+  });
+
+  // STT garble: "dishes" ↔ "this is" (Chau's logged case — determiner-gated)
+  it.each([
+    ["I need to wash the this is after dinner.", "I need to wash the dishes after dinner."],
+    ["Can you do the this is please?", "Can you do the dishes please?"],
+    ["She cleaned my this is yesterday.", "She cleaned my dishes yesterday."],
+  ])("fixes determiner + 'this is' garble to dishes: %s", (input, expected) => {
+    const result = correctWithTutorRules(input, "en");
+    expect(result.status).toBe("corrected");
+    expect(result.corrected).toBe(expected);
+    expect(result.appliedRuleIds).toContain("stt-dishes-this-is");
+  });
+
+  it.each([
+    "I think this is correct.",
+    "This is a good idea.",
+    "A lot of this is because of him.",
+  ])("no-FP: standalone and clausal 'this is' is not flagged as dishes garble: %s", (input) => {
+    const garble = findAndFixSttGarble(input);
+    if (garble !== null) {
+      expect(garble.type === "fix" ? garble.ruleId : "abstain").not.toBe("stt-dishes-this-is");
+    }
   });
 
   it("keeps precision-gate evidence on every STT garble signal", () => {

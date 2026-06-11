@@ -9,9 +9,9 @@
       "id": "explain-to-me-pos-001",
       "input": "Please explain me this",
       "expectedStatus": "corrected",
-      "expectedCorrection": "Please explain to me this.",
+      "expectedCorrection": "Please explain this to me.",
       "expectedRuleFired": "en-vietlish-explain-to-me",
-      "notes": "Base 'explain' + pronoun 'me' -> explain to me."
+      "notes": "Base 'explain' + pronoun 'me' + determiner NP -> canonical dative order: explain <NP> to me."
     },
     {
       "id": "explain-to-me-pos-002",
@@ -25,9 +25,9 @@
       "id": "explain-to-me-pos-003",
       "input": "He explained me the rule",
       "expectedStatus": "corrected",
-      "expectedCorrection": "He explained to me the rule.",
+      "expectedCorrection": "He explained the rule to me.",
       "expectedRuleFired": "en-vietlish-explain-to-me",
-      "notes": "Past 'explained' + pronoun 'me' -> explained to me."
+      "notes": "Past 'explained' + pronoun 'me' + determiner NP -> canonical dative order: explained <NP> to me."
     }
   ],
   "negative": [
