@@ -113,6 +113,11 @@ export function usePronunciationRecorder(): PronunciationRecorderState {
   const chunksRef = useRef<BlobPart[]>([]);
   const stopPromiseResolverRef = useRef<(() => void) | null>(null);
   const currentAudioRef = useRef<HTMLAudioElement | null>(null);
+  // Resolver for the in-flight playRecorded() Promise. pause() on an
+  // HTMLAudioElement does NOT fire onended, so without this stopPlayback()
+  // would leave the awaited Promise hung — keeping isPlayingRecorded true
+  // and the UI locked. stopPlayback() calls this to settle the Promise.
+  const playRecordedResolverRef = useRef<(() => void) | null>(null);
 
   const setError = useCallback((value: string | null) => {
     setErrorState(value);
@@ -159,6 +164,11 @@ export function usePronunciationRecorder(): PronunciationRecorderState {
     setIsPlayingReference(false);
     setIsPlayingRecorded(false);
     setIsComparing(false);
+
+    // Resolve any in-flight playRecorded() Promise so its caller doesn't hang.
+    const playResolver = playRecordedResolverRef.current;
+    playRecordedResolverRef.current = null;
+    playResolver?.();
   }, []);
 
   const clearRecordedAudio = useCallback(() => {
@@ -306,6 +316,16 @@ export function usePronunciationRecorder(): PronunciationRecorderState {
     setErrorState(null);
 
     await new Promise<void>((resolve) => {
+      let settled = false;
+      const settle = () => {
+        if (settled) return;
+        settled = true;
+        playRecordedResolverRef.current = null;
+        resolve();
+      };
+
+      playRecordedResolverRef.current = settle;
+
       try {
         const audio = new Audio(lastRecordedAudioUrl);
         currentAudioRef.current = audio;
@@ -314,7 +334,7 @@ export function usePronunciationRecorder(): PronunciationRecorderState {
         audio.onended = () => {
           currentAudioRef.current = null;
           setIsPlayingRecorded(false);
-          resolve();
+          settle();
         };
         audio.onerror = () => {
           console.error(
@@ -325,7 +345,7 @@ export function usePronunciationRecorder(): PronunciationRecorderState {
           currentAudioRef.current = null;
           setIsPlayingRecorded(false);
           setErrorState('Recorded playback failed. Please record again.');
-          resolve();
+          settle();
         };
 
         void audio.play().catch((err: unknown) => {
@@ -333,12 +353,12 @@ export function usePronunciationRecorder(): PronunciationRecorderState {
           currentAudioRef.current = null;
           setIsPlayingRecorded(false);
           setErrorState('Recorded playback failed. Please record again.');
-          resolve();
+          settle();
         });
       } catch {
         setIsPlayingRecorded(false);
         setErrorState('Recorded playback failed. Please record again.');
-        resolve();
+        settle();
       }
     });
   }, [lastRecordedAudioUrl, stopPlayback]);

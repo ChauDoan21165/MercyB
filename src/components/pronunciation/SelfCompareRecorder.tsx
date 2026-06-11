@@ -144,7 +144,7 @@ export default function SelfCompareRecorder({
             data-testid="self-compare-record"
             aria-label="Thu âm giọng của bạn"
             onClick={() => void startRecording()}
-            disabled={isProcessing || comparing}
+            disabled={isProcessing || comparing || isPlayingRecorded}
             className="inline-flex min-h-10 items-center gap-2 rounded-full bg-rose-600 px-4 py-2 text-sm font-black text-white disabled:opacity-60"
           >
             <span aria-hidden="true">●</span> Thu âm của bạn
