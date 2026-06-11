@@ -15,6 +15,10 @@ import {
   resolveConversationEntitlementAccess,
 } from "../../api/_lib/conversationEntitlement";
 import {
+  logConversationTurnCost,
+  checkFreeConversationTurns,
+} from "../../api/_lib/conversationCost";
+import {
   asString,
   envValue,
   getBearerToken,
@@ -170,8 +174,17 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
   }
 
   if (norm(body.mode) === "ai-conversation-turn") {
-    if (!(await hasPremiumAiConversationAccess(env, accessToken, user.id))) {
-      return json({ error: "Premium required" }, 403);
+    const hasPremium = await hasPremiumAiConversationAccess(env, accessToken, user.id);
+    if (!hasPremium) {
+      const cfSupabaseUrl = envValue(env, "SUPABASE_URL") || envValue(env, "VITE_SUPABASE_URL") || "";
+      const cfServiceKey = envValue(env, "SUPABASE_SERVICE_ROLE_KEY") || "";
+      const freeAccess = await checkFreeConversationTurns(user.id, {
+        supabaseUrl: cfSupabaseUrl,
+        serviceKey: cfServiceKey,
+      });
+      if (!freeAccess.flagOn || !freeAccess.allowed) {
+        return json({ error: "Premium required" }, 403);
+      }
     }
 
     if (!openAiKey) return json({ error: "Missing OPENAI_API_KEY" }, 500);
@@ -196,6 +209,25 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
         promptMetadata: isRecord(body.promptMetadata) ? body.promptMetadata : null,
         env,
       });
+
+      // Cost telemetry: log every turn for cost-per-session accounting.
+      const cfSupabaseUrl = envValue(env, "SUPABASE_URL") || envValue(env, "VITE_SUPABASE_URL") || "";
+      const cfServiceKey = envValue(env, "SUPABASE_SERVICE_ROLE_KEY") || "";
+      console.log(
+        `[conversation] turn cost: $${result.cost.estimatedUsd.toFixed(6)} USD` +
+        ` tokens=${result.cost.totalTokens} uid=${user.id}`,
+      );
+      await logConversationTurnCost(
+        {
+          userId: user.id,
+          model: result.model,
+          tokensInput: result.cost.promptTokens,
+          tokensOutput: result.cost.completionTokens,
+          estimatedUsd: result.cost.estimatedUsd,
+        },
+        { supabaseUrl: cfSupabaseUrl, serviceKey: cfServiceKey },
+      );
+
       return json(result);
     } catch (err) {
       return json({

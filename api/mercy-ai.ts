@@ -22,6 +22,10 @@ import {
   readAdminLevel,
   resolveConversationEntitlementAccess,
 } from "./_lib/conversationEntitlement";
+import {
+  logConversationTurnCost,
+  checkFreeConversationTurns,
+} from "./_lib/conversationCost";
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -36,6 +40,9 @@ const supabase =
   supabaseUrl && supabaseAnonKey
     ? createClient(supabaseUrl, supabaseAnonKey)
     : null;
+
+const supabaseServiceKey =
+  process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 
 const requestLog = new Map<string, number[]>();
 
@@ -218,8 +225,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     if (mode === "ai-conversation-turn") {
-      if (!(await hasPremiumAiConversationAccess(accessToken, user.id))) {
-        return safeJson(res, 403, { error: "Premium required" });
+      const hasPremium = await hasPremiumAiConversationAccess(accessToken, user.id);
+      if (!hasPremium) {
+        // Flag path: free_conversation_turns (DEFAULT OFF).
+        // OFF → today's 403. ON → N turns/week then gate.
+        const freeAccess = await checkFreeConversationTurns(user.id, {
+          supabaseUrl,
+          serviceKey: supabaseServiceKey,
+        });
+        if (!freeAccess.flagOn || !freeAccess.allowed) {
+          return safeJson(res, 403, { error: "Premium required" });
+        }
       }
 
       const learnerText = norm(body.learnerText || body.userText || body.message || body.text);
@@ -241,6 +257,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         history: normalizeAiConversationHistory(body.history),
         turnCount: Number.isFinite(turnCount) ? turnCount : 0,
       });
+
+      // Cost telemetry: log every turn for cost-per-session accounting.
+      console.log(
+        `[conversation] turn cost: $${result.cost.estimatedUsd.toFixed(6)} USD` +
+        ` tokens=${result.cost.totalTokens} uid=${user.id}`,
+      );
+      await logConversationTurnCost(
+        {
+          userId: user.id,
+          model: result.model,
+          tokensInput: result.cost.promptTokens,
+          tokensOutput: result.cost.completionTokens,
+          estimatedUsd: result.cost.estimatedUsd,
+        },
+        { supabaseUrl, serviceKey: supabaseServiceKey },
+      );
+
       return safeJson(res, 200, result);
     }
 
