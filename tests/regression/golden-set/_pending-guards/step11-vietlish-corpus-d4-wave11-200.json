@@ -1,0 +1,1626 @@
+{
+  "corpus": "step11-vietlish-corpus-d4-wave11",
+  "step": 11,
+  "wave": 11,
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "kind": "vietlish_interference_review_candidates",
+  "schema": "VietlishCorpusEntry (src/lib/tutor/vietlishCorpus.ts) - { vietlish, natural, sourcePattern, category, frequency, context }",
+  "author": "F1 (Content Factory)",
+  "status": "review_not_wired",
+  "wiredIntoEngine": false,
+  "definition": "Eleventh-wave candidate Vietnamese-L1 interference items for human review before promotion into VIETLISH_CORPUS. Focus areas: administrative paperwork verbs, time/preposition calques, polite service-register repairs, relative-clause resumptive pronouns, question word order, and Vietnamese adjective false friends.",
+  "dedupedAgainst": "F1 local check against live VIETLISH_CORPUS (986 entries on origin/main after Stage-2 2A/2B) plus pending waves 1-10, case-insensitive vietlish matching.",
+  "generatedFor": "2026-06-11 F1 Step-11 corpus lane continuation",
+  "count": 200,
+  "categories": {
+    "calque": "C",
+    "word_order": "W",
+    "register": "R",
+    "collocation": "CO",
+    "false_friend": "FF",
+    "literal_translation": "LT"
+  },
+  "entries": [
+    {
+      "vietlish": "set a meeting with my team",
+      "natural": "schedule a meeting with my team",
+      "sourcePattern": "đặt lịch họp -> set is overgeneralized for scheduling",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I need to set a meeting with my team tomorrow."
+    },
+    {
+      "vietlish": "put a deadline for this task",
+      "natural": "set a deadline for this task",
+      "sourcePattern": "đặt hạn chót -> put is overgeneralized for setting limits",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Can you put a deadline for this task?"
+    },
+    {
+      "vietlish": "open a discussion about the budget",
+      "natural": "start a discussion about the budget",
+      "sourcePattern": "mở cuộc thảo luận -> open is used where start is natural",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "We should open a discussion about the budget."
+    },
+    {
+      "vietlish": "close the discussion by Friday",
+      "natural": "wrap up the discussion by Friday",
+      "sourcePattern": "đóng lại cuộc thảo luận -> close sounds too mechanical for ending a discussion",
+      "category": "calque",
+      "frequency": "low",
+      "context": "Let us close the discussion by Friday."
+    },
+    {
+      "vietlish": "take a decision tonight",
+      "natural": "make a decision tonight",
+      "sourcePattern": "ra quyết định -> take a decision is uncommon in this learner register",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "We need to take a decision tonight."
+    },
+    {
+      "vietlish": "give a solution for this issue",
+      "natural": "offer a solution to this issue",
+      "sourcePattern": "đưa ra giải pháp -> give solution needs natural verb/preposition",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Can you give a solution for this issue?"
+    },
+    {
+      "vietlish": "receive a new task from my boss",
+      "natural": "get a new task from my boss",
+      "sourcePattern": "nhận việc mới -> receive sounds too formal for routine work",
+      "category": "register",
+      "frequency": "medium",
+      "context": "I receive a new task from my boss this morning."
+    },
+    {
+      "vietlish": "make a contract with the client",
+      "natural": "sign a contract with the client",
+      "sourcePattern": "làm hợp đồng -> make is overgeneralized for legal signing",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "We will make a contract with the client."
+    },
+    {
+      "vietlish": "run the procedure for refund",
+      "natural": "process the refund",
+      "sourcePattern": "chạy quy trình hoàn tiền -> run procedure is too literal",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "The cashier will run the procedure for refund."
+    },
+    {
+      "vietlish": "solve the document before lunch",
+      "natural": "handle the document before lunch",
+      "sourcePattern": "xử lý giấy tờ -> solve is overgeneralized from xử lý",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I need to solve the document before lunch."
+    },
+    {
+      "vietlish": "learn the experience from this mistake",
+      "natural": "learn from this mistake",
+      "sourcePattern": "rút kinh nghiệm -> learn the experience is a noun-calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "We should learn the experience from this mistake."
+    },
+    {
+      "vietlish": "collect opinions from everyone",
+      "natural": "gather feedback from everyone",
+      "sourcePattern": "thu thập ý kiến -> opinions is less natural in workplace feedback",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "Please collect opinions from everyone after the demo."
+    },
+    {
+      "vietlish": "do the insurance for my car",
+      "natural": "buy insurance for my car",
+      "sourcePattern": "làm bảo hiểm -> do is overgeneralized for arranging insurance",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I need to do the insurance for my car."
+    },
+    {
+      "vietlish": "make the visa for my mother",
+      "natural": "apply for a visa for my mother",
+      "sourcePattern": "làm visa -> make visa is a Vietnamese calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I want to make the visa for my mother."
+    },
+    {
+      "vietlish": "register a bank account",
+      "natural": "open a bank account",
+      "sourcePattern": "đăng ký tài khoản -> register is overgeneralized for bank accounts",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I will register a bank account next week."
+    },
+    {
+      "vietlish": "cut the appointment",
+      "natural": "cancel the appointment",
+      "sourcePattern": "cắt lịch hẹn -> cut is a literal action verb",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Sorry, I have to cut the appointment today."
+    },
+    {
+      "vietlish": "raise a form online",
+      "natural": "submit a form online",
+      "sourcePattern": "nộp mẫu đơn -> raise is not natural for forms",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "Please raise a form online before Friday."
+    },
+    {
+      "vietlish": "reflect the problem to support",
+      "natural": "report the problem to support",
+      "sourcePattern": "phản ánh vấn đề -> reflect is a false friend for report",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I will reflect the problem to support."
+    },
+    {
+      "vietlish": "contribute money for the gift",
+      "natural": "chip in for the gift",
+      "sourcePattern": "góp tiền -> contribute is formal for a casual shared gift",
+      "category": "register",
+      "frequency": "medium",
+      "context": "Everyone will contribute money for the gift."
+    },
+    {
+      "vietlish": "advise me one option",
+      "natural": "recommend one option to me",
+      "sourcePattern": "tư vấn cho tôi -> advise needs object structure/register care",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "Can you advise me one option?"
+    },
+    {
+      "vietlish": "do the invoice",
+      "natural": "take care of the invoice",
+      "sourcePattern": "làm/xử lý hóa đơn -> do is too broad for administrative handling",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I need to do the invoice before Friday."
+    },
+    {
+      "vietlish": "solve the invoice",
+      "natural": "sort out the invoice",
+      "sourcePattern": "xử lý hóa đơn -> solve is overused for paperwork and logistics",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Can you help me solve the invoice?"
+    },
+    {
+      "vietlish": "make the invoice",
+      "natural": "prepare the invoice",
+      "sourcePattern": "làm hóa đơn -> make is overgeneralized for preparing documents",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I have to make the invoice tonight."
+    },
+    {
+      "vietlish": "send back the invoice for them",
+      "natural": "send the invoice back to them",
+      "sourcePattern": "gửi lại cho họ -> English object placement differs",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "Please send back the invoice for them."
+    },
+    {
+      "vietlish": "ask again the invoice with the office",
+      "natural": "follow up with the office about the invoice",
+      "sourcePattern": "hỏi lại -> ask again misses the follow-up meaning",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I will ask again the invoice with the office."
+    },
+    {
+      "vietlish": "check again the invoice for me",
+      "natural": "double-check the invoice for me",
+      "sourcePattern": "kiểm tra lại -> check again is less natural for careful review",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Could you check again the invoice for me?"
+    },
+    {
+      "vietlish": "confirm back the invoice",
+      "natural": "confirm the invoice again",
+      "sourcePattern": "xác nhận lại -> back is an unnecessary calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Please confirm back the invoice when you can."
+    },
+    {
+      "vietlish": "push the invoice faster",
+      "natural": "expedite the invoice",
+      "sourcePattern": "đẩy nhanh -> push is too literal for process speed",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Can we push the invoice faster?"
+    },
+    {
+      "vietlish": "do my apartment contract",
+      "natural": "take care of my apartment contract",
+      "sourcePattern": "làm/xử lý hợp đồng thuê nhà -> do is too broad for administrative handling",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I need to do my apartment contract before Friday."
+    },
+    {
+      "vietlish": "solve my apartment contract",
+      "natural": "sort out my apartment contract",
+      "sourcePattern": "xử lý hợp đồng thuê nhà -> solve is overused for paperwork and logistics",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Can you help me solve my apartment contract?"
+    },
+    {
+      "vietlish": "make my apartment contract",
+      "natural": "prepare my apartment contract",
+      "sourcePattern": "làm hợp đồng thuê nhà -> make is overgeneralized for preparing documents",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I have to make my apartment contract tonight."
+    },
+    {
+      "vietlish": "send back my apartment contract for them",
+      "natural": "send my apartment contract back to them",
+      "sourcePattern": "gửi lại cho họ -> English object placement differs",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "Please send back my apartment contract for them."
+    },
+    {
+      "vietlish": "ask again my apartment contract with the office",
+      "natural": "follow up with the office about my apartment contract",
+      "sourcePattern": "hỏi lại -> ask again misses the follow-up meaning",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I will ask again my apartment contract with the office."
+    },
+    {
+      "vietlish": "check again my apartment contract for me",
+      "natural": "double-check my apartment contract for me",
+      "sourcePattern": "kiểm tra lại -> check again is less natural for careful review",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Could you check again my apartment contract for me?"
+    },
+    {
+      "vietlish": "confirm back my apartment contract",
+      "natural": "confirm my apartment contract again",
+      "sourcePattern": "xác nhận lại -> back is an unnecessary calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Please confirm back my apartment contract when you can."
+    },
+    {
+      "vietlish": "push my apartment contract faster",
+      "natural": "expedite my apartment contract",
+      "sourcePattern": "đẩy nhanh -> push is too literal for process speed",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Can we push my apartment contract faster?"
+    },
+    {
+      "vietlish": "do the school form",
+      "natural": "take care of the school form",
+      "sourcePattern": "làm/xử lý mẫu đơn của trường -> do is too broad for administrative handling",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I need to do the school form before Friday."
+    },
+    {
+      "vietlish": "solve the school form",
+      "natural": "sort out the school form",
+      "sourcePattern": "xử lý mẫu đơn của trường -> solve is overused for paperwork and logistics",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Can you help me solve the school form?"
+    },
+    {
+      "vietlish": "make the school form",
+      "natural": "prepare the school form",
+      "sourcePattern": "làm mẫu đơn của trường -> make is overgeneralized for preparing documents",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I have to make the school form tonight."
+    },
+    {
+      "vietlish": "send back the school form for them",
+      "natural": "send the school form back to them",
+      "sourcePattern": "gửi lại cho họ -> English object placement differs",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "Please send back the school form for them."
+    },
+    {
+      "vietlish": "ask again the school form with the office",
+      "natural": "follow up with the office about the school form",
+      "sourcePattern": "hỏi lại -> ask again misses the follow-up meaning",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I will ask again the school form with the office."
+    },
+    {
+      "vietlish": "check again the school form for me",
+      "natural": "double-check the school form for me",
+      "sourcePattern": "kiểm tra lại -> check again is less natural for careful review",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Could you check again the school form for me?"
+    },
+    {
+      "vietlish": "confirm back the school form",
+      "natural": "confirm the school form again",
+      "sourcePattern": "xác nhận lại -> back is an unnecessary calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Please confirm back the school form when you can."
+    },
+    {
+      "vietlish": "push the school form faster",
+      "natural": "expedite the school form",
+      "sourcePattern": "đẩy nhanh -> push is too literal for process speed",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Can we push the school form faster?"
+    },
+    {
+      "vietlish": "do my tax file",
+      "natural": "take care of my tax file",
+      "sourcePattern": "làm/xử lý hồ sơ thuế -> do is too broad for administrative handling",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I need to do my tax file before Friday."
+    },
+    {
+      "vietlish": "solve my tax file",
+      "natural": "sort out my tax file",
+      "sourcePattern": "xử lý hồ sơ thuế -> solve is overused for paperwork and logistics",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Can you help me solve my tax file?"
+    },
+    {
+      "vietlish": "make my tax file",
+      "natural": "prepare my tax file",
+      "sourcePattern": "làm hồ sơ thuế -> make is overgeneralized for preparing documents",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I have to make my tax file tonight."
+    },
+    {
+      "vietlish": "send back my tax file for them",
+      "natural": "send my tax file back to them",
+      "sourcePattern": "gửi lại cho họ -> English object placement differs",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "Please send back my tax file for them."
+    },
+    {
+      "vietlish": "ask again my tax file with the office",
+      "natural": "follow up with the office about my tax file",
+      "sourcePattern": "hỏi lại -> ask again misses the follow-up meaning",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I will ask again my tax file with the office."
+    },
+    {
+      "vietlish": "check again my tax file for me",
+      "natural": "double-check my tax file for me",
+      "sourcePattern": "kiểm tra lại -> check again is less natural for careful review",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Could you check again my tax file for me?"
+    },
+    {
+      "vietlish": "confirm back my tax file",
+      "natural": "confirm my tax file again",
+      "sourcePattern": "xác nhận lại -> back is an unnecessary calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Please confirm back my tax file when you can."
+    },
+    {
+      "vietlish": "push my tax file faster",
+      "natural": "expedite my tax file",
+      "sourcePattern": "đẩy nhanh -> push is too literal for process speed",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Can we push my tax file faster?"
+    },
+    {
+      "vietlish": "do the warranty card",
+      "natural": "take care of the warranty card",
+      "sourcePattern": "làm/xử lý phiếu bảo hành -> do is too broad for administrative handling",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I need to do the warranty card before Friday."
+    },
+    {
+      "vietlish": "solve the warranty card",
+      "natural": "sort out the warranty card",
+      "sourcePattern": "xử lý phiếu bảo hành -> solve is overused for paperwork and logistics",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Can you help me solve the warranty card?"
+    },
+    {
+      "vietlish": "make the warranty card",
+      "natural": "prepare the warranty card",
+      "sourcePattern": "làm phiếu bảo hành -> make is overgeneralized for preparing documents",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I have to make the warranty card tonight."
+    },
+    {
+      "vietlish": "send back the warranty card for them",
+      "natural": "send the warranty card back to them",
+      "sourcePattern": "gửi lại cho họ -> English object placement differs",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "Please send back the warranty card for them."
+    },
+    {
+      "vietlish": "ask again the warranty card with the office",
+      "natural": "follow up with the office about the warranty card",
+      "sourcePattern": "hỏi lại -> ask again misses the follow-up meaning",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I will ask again the warranty card with the office."
+    },
+    {
+      "vietlish": "check again the warranty card for me",
+      "natural": "double-check the warranty card for me",
+      "sourcePattern": "kiểm tra lại -> check again is less natural for careful review",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Could you check again the warranty card for me?"
+    },
+    {
+      "vietlish": "confirm back the warranty card",
+      "natural": "confirm the warranty card again",
+      "sourcePattern": "xác nhận lại -> back is an unnecessary calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Please confirm back the warranty card when you can."
+    },
+    {
+      "vietlish": "push the warranty card faster",
+      "natural": "expedite the warranty card",
+      "sourcePattern": "đẩy nhanh -> push is too literal for process speed",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Can we push the warranty card faster?"
+    },
+    {
+      "vietlish": "do the clinic booking",
+      "natural": "take care of the clinic booking",
+      "sourcePattern": "làm/xử lý lịch hẹn phòng khám -> do is too broad for administrative handling",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I need to do the clinic booking before Friday."
+    },
+    {
+      "vietlish": "solve the clinic booking",
+      "natural": "sort out the clinic booking",
+      "sourcePattern": "xử lý lịch hẹn phòng khám -> solve is overused for paperwork and logistics",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Can you help me solve the clinic booking?"
+    },
+    {
+      "vietlish": "make the clinic booking",
+      "natural": "prepare the clinic booking",
+      "sourcePattern": "làm lịch hẹn phòng khám -> make is overgeneralized for preparing documents",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I have to make the clinic booking tonight."
+    },
+    {
+      "vietlish": "send back the clinic booking for them",
+      "natural": "send the clinic booking back to them",
+      "sourcePattern": "gửi lại cho họ -> English object placement differs",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "Please send back the clinic booking for them."
+    },
+    {
+      "vietlish": "ask again the clinic booking with the office",
+      "natural": "follow up with the office about the clinic booking",
+      "sourcePattern": "hỏi lại -> ask again misses the follow-up meaning",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I will ask again the clinic booking with the office."
+    },
+    {
+      "vietlish": "check again the clinic booking for me",
+      "natural": "double-check the clinic booking for me",
+      "sourcePattern": "kiểm tra lại -> check again is less natural for careful review",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Could you check again the clinic booking for me?"
+    },
+    {
+      "vietlish": "confirm back the clinic booking",
+      "natural": "confirm the clinic booking again",
+      "sourcePattern": "xác nhận lại -> back is an unnecessary calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Please confirm back the clinic booking when you can."
+    },
+    {
+      "vietlish": "push the clinic booking faster",
+      "natural": "expedite the clinic booking",
+      "sourcePattern": "đẩy nhanh -> push is too literal for process speed",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Can we push the clinic booking faster?"
+    },
+    {
+      "vietlish": "do the bank transfer",
+      "natural": "take care of the bank transfer",
+      "sourcePattern": "làm/xử lý lệnh chuyển khoản -> do is too broad for administrative handling",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I need to do the bank transfer before Friday."
+    },
+    {
+      "vietlish": "solve the bank transfer",
+      "natural": "sort out the bank transfer",
+      "sourcePattern": "xử lý lệnh chuyển khoản -> solve is overused for paperwork and logistics",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Can you help me solve the bank transfer?"
+    },
+    {
+      "vietlish": "make the bank transfer",
+      "natural": "prepare the bank transfer",
+      "sourcePattern": "làm lệnh chuyển khoản -> make is overgeneralized for preparing documents",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I have to make the bank transfer tonight."
+    },
+    {
+      "vietlish": "send back the bank transfer for them",
+      "natural": "send the bank transfer back to them",
+      "sourcePattern": "gửi lại cho họ -> English object placement differs",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "Please send back the bank transfer for them."
+    },
+    {
+      "vietlish": "ask again the bank transfer with the office",
+      "natural": "follow up with the office about the bank transfer",
+      "sourcePattern": "hỏi lại -> ask again misses the follow-up meaning",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I will ask again the bank transfer with the office."
+    },
+    {
+      "vietlish": "check again the bank transfer for me",
+      "natural": "double-check the bank transfer for me",
+      "sourcePattern": "kiểm tra lại -> check again is less natural for careful review",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Could you check again the bank transfer for me?"
+    },
+    {
+      "vietlish": "confirm back the bank transfer",
+      "natural": "confirm the bank transfer again",
+      "sourcePattern": "xác nhận lại -> back is an unnecessary calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Please confirm back the bank transfer when you can."
+    },
+    {
+      "vietlish": "push the bank transfer faster",
+      "natural": "expedite the bank transfer",
+      "sourcePattern": "đẩy nhanh -> push is too literal for process speed",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Can we push the bank transfer faster?"
+    },
+    {
+      "vietlish": "do my work permit",
+      "natural": "take care of my work permit",
+      "sourcePattern": "làm/xử lý giấy phép lao động -> do is too broad for administrative handling",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I need to do my work permit before Friday."
+    },
+    {
+      "vietlish": "solve my work permit",
+      "natural": "sort out my work permit",
+      "sourcePattern": "xử lý giấy phép lao động -> solve is overused for paperwork and logistics",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Can you help me solve my work permit?"
+    },
+    {
+      "vietlish": "make my work permit",
+      "natural": "prepare my work permit",
+      "sourcePattern": "làm giấy phép lao động -> make is overgeneralized for preparing documents",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I have to make my work permit tonight."
+    },
+    {
+      "vietlish": "send back my work permit for them",
+      "natural": "send my work permit back to them",
+      "sourcePattern": "gửi lại cho họ -> English object placement differs",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "Please send back my work permit for them."
+    },
+    {
+      "vietlish": "ask again my work permit with the office",
+      "natural": "follow up with the office about my work permit",
+      "sourcePattern": "hỏi lại -> ask again misses the follow-up meaning",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I will ask again my work permit with the office."
+    },
+    {
+      "vietlish": "check again my work permit for me",
+      "natural": "double-check my work permit for me",
+      "sourcePattern": "kiểm tra lại -> check again is less natural for careful review",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Could you check again my work permit for me?"
+    },
+    {
+      "vietlish": "confirm back my work permit",
+      "natural": "confirm my work permit again",
+      "sourcePattern": "xác nhận lại -> back is an unnecessary calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Please confirm back my work permit when you can."
+    },
+    {
+      "vietlish": "push my work permit faster",
+      "natural": "expedite my work permit",
+      "sourcePattern": "đẩy nhanh -> push is too literal for process speed",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Can we push my work permit faster?"
+    },
+    {
+      "vietlish": "do the meeting minutes",
+      "natural": "take care of the meeting minutes",
+      "sourcePattern": "làm/xử lý biên bản cuộc họp -> do is too broad for administrative handling",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I need to do the meeting minutes before Friday."
+    },
+    {
+      "vietlish": "solve the meeting minutes",
+      "natural": "sort out the meeting minutes",
+      "sourcePattern": "xử lý biên bản cuộc họp -> solve is overused for paperwork and logistics",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Can you help me solve the meeting minutes?"
+    },
+    {
+      "vietlish": "make the meeting minutes",
+      "natural": "prepare the meeting minutes",
+      "sourcePattern": "làm biên bản cuộc họp -> make is overgeneralized for preparing documents",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I have to make the meeting minutes tonight."
+    },
+    {
+      "vietlish": "send back the meeting minutes for them",
+      "natural": "send the meeting minutes back to them",
+      "sourcePattern": "gửi lại cho họ -> English object placement differs",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "Please send back the meeting minutes for them."
+    },
+    {
+      "vietlish": "ask again the meeting minutes with the office",
+      "natural": "follow up with the office about the meeting minutes",
+      "sourcePattern": "hỏi lại -> ask again misses the follow-up meaning",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I will ask again the meeting minutes with the office."
+    },
+    {
+      "vietlish": "check again the meeting minutes for me",
+      "natural": "double-check the meeting minutes for me",
+      "sourcePattern": "kiểm tra lại -> check again is less natural for careful review",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Could you check again the meeting minutes for me?"
+    },
+    {
+      "vietlish": "confirm back the meeting minutes",
+      "natural": "confirm the meeting minutes again",
+      "sourcePattern": "xác nhận lại -> back is an unnecessary calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Please confirm back the meeting minutes when you can."
+    },
+    {
+      "vietlish": "push the meeting minutes faster",
+      "natural": "expedite the meeting minutes",
+      "sourcePattern": "đẩy nhanh -> push is too literal for process speed",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Can we push the meeting minutes faster?"
+    },
+    {
+      "vietlish": "do the delivery note",
+      "natural": "take care of the delivery note",
+      "sourcePattern": "làm/xử lý phiếu giao hàng -> do is too broad for administrative handling",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I need to do the delivery note before Friday."
+    },
+    {
+      "vietlish": "solve the delivery note",
+      "natural": "sort out the delivery note",
+      "sourcePattern": "xử lý phiếu giao hàng -> solve is overused for paperwork and logistics",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Can you help me solve the delivery note?"
+    },
+    {
+      "vietlish": "make the delivery note",
+      "natural": "prepare the delivery note",
+      "sourcePattern": "làm phiếu giao hàng -> make is overgeneralized for preparing documents",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I have to make the delivery note tonight."
+    },
+    {
+      "vietlish": "send back the delivery note for them",
+      "natural": "send the delivery note back to them",
+      "sourcePattern": "gửi lại cho họ -> English object placement differs",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "Please send back the delivery note for them."
+    },
+    {
+      "vietlish": "ask again the delivery note with the office",
+      "natural": "follow up with the office about the delivery note",
+      "sourcePattern": "hỏi lại -> ask again misses the follow-up meaning",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I will ask again the delivery note with the office."
+    },
+    {
+      "vietlish": "check again the delivery note for me",
+      "natural": "double-check the delivery note for me",
+      "sourcePattern": "kiểm tra lại -> check again is less natural for careful review",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Could you check again the delivery note for me?"
+    },
+    {
+      "vietlish": "confirm back the delivery note",
+      "natural": "confirm the delivery note again",
+      "sourcePattern": "xác nhận lại -> back is an unnecessary calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Please confirm back the delivery note when you can."
+    },
+    {
+      "vietlish": "push the delivery note faster",
+      "natural": "expedite the delivery note",
+      "sourcePattern": "đẩy nhanh -> push is too literal for process speed",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Can we push the delivery note faster?"
+    },
+    {
+      "vietlish": "do the refund request",
+      "natural": "take care of the refund request",
+      "sourcePattern": "làm/xử lý yêu cầu hoàn tiền -> do is too broad for administrative handling",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I need to do the refund request before Friday."
+    },
+    {
+      "vietlish": "solve the refund request",
+      "natural": "sort out the refund request",
+      "sourcePattern": "xử lý yêu cầu hoàn tiền -> solve is overused for paperwork and logistics",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Can you help me solve the refund request?"
+    },
+    {
+      "vietlish": "make the refund request",
+      "natural": "prepare the refund request",
+      "sourcePattern": "làm yêu cầu hoàn tiền -> make is overgeneralized for preparing documents",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I have to make the refund request tonight."
+    },
+    {
+      "vietlish": "send back the refund request for them",
+      "natural": "send the refund request back to them",
+      "sourcePattern": "gửi lại cho họ -> English object placement differs",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "Please send back the refund request for them."
+    },
+    {
+      "vietlish": "ask again the refund request with the office",
+      "natural": "follow up with the office about the refund request",
+      "sourcePattern": "hỏi lại -> ask again misses the follow-up meaning",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I will ask again the refund request with the office."
+    },
+    {
+      "vietlish": "check again the refund request for me",
+      "natural": "double-check the refund request for me",
+      "sourcePattern": "kiểm tra lại -> check again is less natural for careful review",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Could you check again the refund request for me?"
+    },
+    {
+      "vietlish": "confirm back the refund request",
+      "natural": "confirm the refund request again",
+      "sourcePattern": "xác nhận lại -> back is an unnecessary calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Please confirm back the refund request when you can."
+    },
+    {
+      "vietlish": "push the refund request faster",
+      "natural": "expedite the refund request",
+      "sourcePattern": "đẩy nhanh -> push is too literal for process speed",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Can we push the refund request faster?"
+    },
+    {
+      "vietlish": "do the membership plan",
+      "natural": "take care of the membership plan",
+      "sourcePattern": "làm/xử lý gói hội viên -> do is too broad for administrative handling",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I need to do the membership plan before Friday."
+    },
+    {
+      "vietlish": "solve the membership plan",
+      "natural": "sort out the membership plan",
+      "sourcePattern": "xử lý gói hội viên -> solve is overused for paperwork and logistics",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Can you help me solve the membership plan?"
+    },
+    {
+      "vietlish": "make the membership plan",
+      "natural": "prepare the membership plan",
+      "sourcePattern": "làm gói hội viên -> make is overgeneralized for preparing documents",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I have to make the membership plan tonight."
+    },
+    {
+      "vietlish": "send back the membership plan for them",
+      "natural": "send the membership plan back to them",
+      "sourcePattern": "gửi lại cho họ -> English object placement differs",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "Please send back the membership plan for them."
+    },
+    {
+      "vietlish": "ask again the membership plan with the office",
+      "natural": "follow up with the office about the membership plan",
+      "sourcePattern": "hỏi lại -> ask again misses the follow-up meaning",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I will ask again the membership plan with the office."
+    },
+    {
+      "vietlish": "check again the membership plan for me",
+      "natural": "double-check the membership plan for me",
+      "sourcePattern": "kiểm tra lại -> check again is less natural for careful review",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Could you check again the membership plan for me?"
+    },
+    {
+      "vietlish": "confirm back the membership plan",
+      "natural": "confirm the membership plan again",
+      "sourcePattern": "xác nhận lại -> back is an unnecessary calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Please confirm back the membership plan when you can."
+    },
+    {
+      "vietlish": "push the membership plan faster",
+      "natural": "expedite the membership plan",
+      "sourcePattern": "đẩy nhanh -> push is too literal for process speed",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Can we push the membership plan faster?"
+    },
+    {
+      "vietlish": "do the training schedule",
+      "natural": "take care of the training schedule",
+      "sourcePattern": "làm/xử lý lịch đào tạo -> do is too broad for administrative handling",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I need to do the training schedule before Friday."
+    },
+    {
+      "vietlish": "solve the training schedule",
+      "natural": "sort out the training schedule",
+      "sourcePattern": "xử lý lịch đào tạo -> solve is overused for paperwork and logistics",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Can you help me solve the training schedule?"
+    },
+    {
+      "vietlish": "make the training schedule",
+      "natural": "prepare the training schedule",
+      "sourcePattern": "làm lịch đào tạo -> make is overgeneralized for preparing documents",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I have to make the training schedule tonight."
+    },
+    {
+      "vietlish": "send back the training schedule for them",
+      "natural": "send the training schedule back to them",
+      "sourcePattern": "gửi lại cho họ -> English object placement differs",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "Please send back the training schedule for them."
+    },
+    {
+      "vietlish": "after 2 days more",
+      "natural": "in two more days",
+      "sourcePattern": "sau 2 ngày nữa -> after plus more is a Vietnamese time calque",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The package will arrive after 2 days more."
+    },
+    {
+      "vietlish": "from now to Friday",
+      "natural": "between now and Friday",
+      "sourcePattern": "từ giờ đến thứ Sáu -> from now to is a direct calque",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I will finish it from now to Friday."
+    },
+    {
+      "vietlish": "in the next Monday",
+      "natural": "next Monday",
+      "sourcePattern": "vào thứ Hai tới -> unnecessary article/preposition",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "We can meet in the next Monday."
+    },
+    {
+      "vietlish": "at the end of this month later",
+      "natural": "at the end of this month",
+      "sourcePattern": "cuối tháng này sau -> later is redundant",
+      "category": "calque",
+      "frequency": "low",
+      "context": "I will pay at the end of this month later."
+    },
+    {
+      "vietlish": "until next week I will send it",
+      "natural": "I will send it by next week",
+      "sourcePattern": "đến tuần sau tôi sẽ gửi -> until/by contrast",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "Until next week I will send it."
+    },
+    {
+      "vietlish": "before two hours",
+      "natural": "two hours earlier",
+      "sourcePattern": "trước hai tiếng -> before used without reference point",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "Please come before two hours."
+    },
+    {
+      "vietlish": "late five minutes",
+      "natural": "five minutes late",
+      "sourcePattern": "trễ năm phút -> adjective placement differs",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was late five minutes today."
+    },
+    {
+      "vietlish": "from yesterday until now I wait",
+      "natural": "I have been waiting since yesterday",
+      "sourcePattern": "từ hôm qua đến giờ -> present perfect progressive needed",
+      "category": "calque",
+      "frequency": "low",
+      "context": "From yesterday until now I wait for the reply."
+    },
+    {
+      "vietlish": "every two day",
+      "natural": "every two days",
+      "sourcePattern": "mỗi hai ngày -> plural day after number",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I water the plant every two day."
+    },
+    {
+      "vietlish": "one time per two weeks",
+      "natural": "once every two weeks",
+      "sourcePattern": "một lần mỗi hai tuần -> natural frequency phrase",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "We meet one time per two weeks."
+    },
+    {
+      "vietlish": "the soonest possible time",
+      "natural": "as soon as possible",
+      "sourcePattern": "sớm nhất có thể -> wordy formal calque",
+      "category": "register",
+      "frequency": "medium",
+      "context": "Please reply at the soonest possible time."
+    },
+    {
+      "vietlish": "in the nearest time",
+      "natural": "soon",
+      "sourcePattern": "trong thời gian gần nhất -> stiff calque",
+      "category": "register",
+      "frequency": "low",
+      "context": "I hope to hear from you in the nearest time."
+    },
+    {
+      "vietlish": "around at 7pm",
+      "natural": "around 7 p.m.",
+      "sourcePattern": "khoảng lúc 7 giờ -> double preposition",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I will call around at 7pm."
+    },
+    {
+      "vietlish": "more early than yesterday",
+      "natural": "earlier than yesterday",
+      "sourcePattern": "sớm hơn hôm qua -> double comparative pattern",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "Today I woke up more early than yesterday."
+    },
+    {
+      "vietlish": "too late for register",
+      "natural": "too late to register",
+      "sourcePattern": "quá trễ để đăng ký -> for/to infinitive contrast",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "It is too late for register now."
+    },
+    {
+      "vietlish": "enough time for finish",
+      "natural": "enough time to finish",
+      "sourcePattern": "đủ thời gian để hoàn thành -> enough + infinitive",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "We have enough time for finish."
+    },
+    {
+      "vietlish": "near to my office",
+      "natural": "near my office",
+      "sourcePattern": "gần văn phòng tôi -> near usually no to in this use",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "The clinic is near to my office."
+    },
+    {
+      "vietlish": "far with my house",
+      "natural": "far from my house",
+      "sourcePattern": "xa nhà tôi -> far from, not far with",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The school is far with my house."
+    },
+    {
+      "vietlish": "same with last month",
+      "natural": "the same as last month",
+      "sourcePattern": "giống tháng trước -> same as, not same with",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The fee is same with last month."
+    },
+    {
+      "vietlish": "different with the sample",
+      "natural": "different from the sample",
+      "sourcePattern": "khác với mẫu -> different from in this register",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "The color is different with the sample."
+    },
+    {
+      "vietlish": "similar like your case",
+      "natural": "similar to your case",
+      "sourcePattern": "tương tự như -> similar to, not similar like",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "My problem is similar like your case."
+    },
+    {
+      "vietlish": "responsible about this task",
+      "natural": "responsible for this task",
+      "sourcePattern": "chịu trách nhiệm về -> responsible for",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I am responsible about this task."
+    },
+    {
+      "vietlish": "interested about join the class",
+      "natural": "interested in joining the class",
+      "sourcePattern": "quan tâm đến việc tham gia -> interested in + gerund",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "She is interested about join the class."
+    },
+    {
+      "vietlish": "good in communicate with customers",
+      "natural": "good at communicating with customers",
+      "sourcePattern": "giỏi giao tiếp -> good at + gerund",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "He is good in communicate with customers."
+    },
+    {
+      "vietlish": "afraid with speaking English",
+      "natural": "afraid of speaking English",
+      "sourcePattern": "sợ nói tiếng Anh -> afraid of",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "Many learners are afraid with speaking English."
+    },
+    {
+      "vietlish": "I request you to answer today",
+      "natural": "Could you answer today?",
+      "sourcePattern": "yêu cầu bạn -> request sounds too forceful in routine email",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a friendly email, I wrote: I request you to answer today."
+    },
+    {
+      "vietlish": "You must send me the file",
+      "natural": "Could you send me the file?",
+      "sourcePattern": "phải gửi -> must can sound like an order to peers",
+      "category": "register",
+      "frequency": "medium",
+      "context": "To my coworker, I wrote: You must send me the file."
+    },
+    {
+      "vietlish": "I need you explain now",
+      "natural": "Could you explain it now?",
+      "sourcePattern": "cần bạn giải thích -> direct need-you phrasing can sound abrupt",
+      "category": "register",
+      "frequency": "low",
+      "context": "In chat, I typed: I need you explain now."
+    },
+    {
+      "vietlish": "Please handle immediately",
+      "natural": "Could you handle this when you have a moment?",
+      "sourcePattern": "xử lý ngay -> immediately can be too sharp without context",
+      "category": "register",
+      "frequency": "high",
+      "context": "To support, I wrote: Please handle immediately."
+    },
+    {
+      "vietlish": "I wait your feedback",
+      "natural": "I look forward to your feedback",
+      "sourcePattern": "chờ phản hồi -> wait your is abrupt and ungrammatical",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At the end of my email, I wrote: I wait your feedback."
+    },
+    {
+      "vietlish": "Give me your answer soon",
+      "natural": "Could you let me know soon?",
+      "sourcePattern": "cho tôi câu trả lời -> give me can sound demanding",
+      "category": "register",
+      "frequency": "medium",
+      "context": "To a teacher, I wrote: Give me your answer soon."
+    },
+    {
+      "vietlish": "You are wrong about my bill",
+      "natural": "I think there may be an error on my bill",
+      "sourcePattern": "bạn sai -> direct wrong can sound confrontational",
+      "category": "register",
+      "frequency": "low",
+      "context": "To customer service, I wrote: You are wrong about my bill."
+    },
+    {
+      "vietlish": "Explain why you charged me",
+      "natural": "Could you explain why I was charged?",
+      "sourcePattern": "giải thích tại sao -> direct imperative needs softening",
+      "category": "register",
+      "frequency": "high",
+      "context": "In a billing email, I wrote: Explain why you charged me."
+    },
+    {
+      "vietlish": "I complain this service",
+      "natural": "I would like to complain about this service",
+      "sourcePattern": "khiếu nại dịch vụ -> complain needs about and polite framing",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At the desk, I said: I complain this service."
+    },
+    {
+      "vietlish": "You should fix fast",
+      "natural": "Could you fix this soon?",
+      "sourcePattern": "nên sửa nhanh -> should can sound judgmental",
+      "category": "register",
+      "frequency": "medium",
+      "context": "To the technician, I said: You should fix fast."
+    },
+    {
+      "vietlish": "Because it rained so I stayed home",
+      "natural": "Because it rained, I stayed home",
+      "sourcePattern": "vì...nên -> English does not need both because and so",
+      "category": "calque",
+      "frequency": "low",
+      "context": "Because it rained so I stayed home."
+    },
+    {
+      "vietlish": "Although I was tired but I joined",
+      "natural": "Although I was tired, I joined",
+      "sourcePattern": "mặc dù...nhưng -> English does not need both although and but",
+      "category": "calque",
+      "frequency": "high",
+      "context": "Although I was tired but I joined the call."
+    },
+    {
+      "vietlish": "If you need then call me",
+      "natural": "If you need anything, call me",
+      "sourcePattern": "nếu...thì -> then often unnecessary in simple conditionals",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "If you need then call me."
+    },
+    {
+      "vietlish": "When I arrive then I will message you",
+      "natural": "When I arrive, I will message you",
+      "sourcePattern": "khi...thì -> then is redundant",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "When I arrive then I will message you."
+    },
+    {
+      "vietlish": "This problem, I already told you",
+      "natural": "I already told you about this problem",
+      "sourcePattern": "topic-first Vietnamese word order",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "This problem, I already told you yesterday."
+    },
+    {
+      "vietlish": "That file, you send me again",
+      "natural": "Could you send me that file again?",
+      "sourcePattern": "topic-fronting plus missing auxiliary",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "That file, you send me again please."
+    },
+    {
+      "vietlish": "The meeting yesterday I cannot join",
+      "natural": "I could not join the meeting yesterday",
+      "sourcePattern": "Vietnamese time/topic order maps poorly to English",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The meeting yesterday I cannot join."
+    },
+    {
+      "vietlish": "I have one friend he lives in Calgary",
+      "natural": "I have a friend who lives in Calgary",
+      "sourcePattern": "relative clause marker omitted after một người bạn",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I have one friend he lives in Calgary."
+    },
+    {
+      "vietlish": "The woman she called me is my aunt",
+      "natural": "The woman who called me is my aunt",
+      "sourcePattern": "Vietnamese resumptive pronoun in relative clause",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "The woman she called me is my aunt."
+    },
+    {
+      "vietlish": "The place we met it is near here",
+      "natural": "The place where we met is near here",
+      "sourcePattern": "resumptive it from Vietnamese clause pattern",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "The place we met it is near here."
+    },
+    {
+      "vietlish": "The thing I worry it is rent",
+      "natural": "The thing I worry about is rent",
+      "sourcePattern": "about + no resumptive pronoun needed",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The thing I worry it is rent."
+    },
+    {
+      "vietlish": "Who you met yesterday?",
+      "natural": "Who did you meet yesterday?",
+      "sourcePattern": "Vietnamese question order lacks auxiliary do",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "Who you met yesterday?"
+    },
+    {
+      "vietlish": "Why you not tell me?",
+      "natural": "Why did you not tell me?",
+      "sourcePattern": "Vietnamese question order lacks do-support",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "Why you not tell me?"
+    },
+    {
+      "vietlish": "How long you stay here?",
+      "natural": "How long will you stay here?",
+      "sourcePattern": "future/modal auxiliary omitted in question",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "How long you stay here?"
+    },
+    {
+      "vietlish": "Where your office located?",
+      "natural": "Where is your office located?",
+      "sourcePattern": "be auxiliary omitted in question",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "Where your office located?"
+    },
+    {
+      "vietlish": "my younger brother very enthusiasm",
+      "natural": "my younger brother is very enthusiastic",
+      "sourcePattern": "rất nhiệt tình -> adjective form enthusiastic, needs be",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "My younger brother very enthusiasm during the meeting."
+    },
+    {
+      "vietlish": "the new intern has responsibility with work",
+      "natural": "the new intern is responsible at work",
+      "sourcePattern": "có trách nhiệm với công việc -> natural adjective structure",
+      "category": "calque",
+      "frequency": "low",
+      "context": "The new intern has responsibility with work."
+    },
+    {
+      "vietlish": "our landlord is sympathy with me",
+      "natural": "our landlord is sympathetic to me",
+      "sourcePattern": "thông cảm với tôi -> sympathy/sympathetic false friend",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "Our landlord is sympathy with me."
+    },
+    {
+      "vietlish": "the nurse talks very psychology",
+      "natural": "the nurse is very tactful",
+      "sourcePattern": "nói chuyện tâm lý -> psychology does not mean tactful",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The nurse talks very psychology with patients."
+    },
+    {
+      "vietlish": "the class monitor is easy to approach with",
+      "natural": "the class monitor is approachable",
+      "sourcePattern": "dễ gần -> adjective, no with needed",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "The class monitor is easy to approach with."
+    },
+    {
+      "vietlish": "my teammate works too principle",
+      "natural": "my teammate is too rigid about rules",
+      "sourcePattern": "nguyên tắc quá -> principle as noun misused for rigid",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "My teammate works too principle sometimes."
+    },
+    {
+      "vietlish": "the delivery driver has high spirit",
+      "natural": "the delivery driver is highly motivated",
+      "sourcePattern": "có tinh thần cao -> high spirit is a calque",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The delivery driver has high spirit in the job."
+    },
+    {
+      "vietlish": "the visa officer is careful in small things",
+      "natural": "the visa officer pays attention to details",
+      "sourcePattern": "cẩn thận trong từng việc nhỏ -> natural collocation differs",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The visa officer is careful in small things."
+    },
+    {
+      "vietlish": "my son teacher is very dedicated",
+      "natural": "my son's teacher is very dedicated",
+      "sourcePattern": "Vietnamese noun sequence omits possessive marker",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "My son teacher is very dedicated."
+    },
+    {
+      "vietlish": "the repair staff very professional",
+      "natural": "the repair staff is very professional",
+      "sourcePattern": "Vietnamese predicate adjective often maps without be",
+      "category": "word_order",
+      "frequency": "low",
+      "context": "The repair staff very professional."
+    },
+    {
+      "vietlish": "this policy is advantaged for workers",
+      "natural": "this policy benefits workers",
+      "sourcePattern": "có lợi cho -> advantaged is the wrong form/register",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "This policy is advantaged for workers."
+    },
+    {
+      "vietlish": "the plan is not convenient for our budget",
+      "natural": "the plan does not fit our budget",
+      "sourcePattern": "không tiện/không phù hợp -> convenient is overextended",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The plan is not convenient for our budget."
+    },
+    {
+      "vietlish": "I am exciting about the trip",
+      "natural": "I am excited about the trip",
+      "sourcePattern": "hào hứng -> exciting/excited adjective contrast",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I am exciting about the trip."
+    },
+    {
+      "vietlish": "the instruction is confused for me",
+      "natural": "the instruction is confusing to me",
+      "sourcePattern": "khó hiểu -> confused/confusing contrast",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "The instruction is confused for me."
+    },
+    {
+      "vietlish": "the result made me satisfy",
+      "natural": "the result satisfied me",
+      "sourcePattern": "làm tôi hài lòng -> satisfy/satisfied pattern differs",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "The result made me satisfy."
+    },
+    {
+      "vietlish": "this room has enough lightness",
+      "natural": "this room has enough light",
+      "sourcePattern": "đủ sáng/ánh sáng -> lightness is wrong noun here",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "This room has enough lightness."
+    },
+    {
+      "vietlish": "the price is very competition",
+      "natural": "the price is very competitive",
+      "sourcePattern": "cạnh tranh -> adjective form competitive",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The price is very competition."
+    },
+    {
+      "vietlish": "the class is suitable with beginners",
+      "natural": "the class is suitable for beginners",
+      "sourcePattern": "phù hợp với -> suitable for, not suitable with",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "The class is suitable with beginners."
+    },
+    {
+      "vietlish": "the medicine is effective with headaches",
+      "natural": "the medicine is effective for headaches",
+      "sourcePattern": "có hiệu quả với -> effective for in this use",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "The medicine is effective with headaches."
+    },
+    {
+      "vietlish": "the notice is valid in thirty days",
+      "natural": "the notice is valid for thirty days",
+      "sourcePattern": "có hiệu lực trong -> valid for duration",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The notice is valid in thirty days."
+    },
+    {
+      "vietlish": "I borrowed money for my friend",
+      "natural": "I borrowed money from my friend",
+      "sourcePattern": "mượn tiền của bạn -> borrow from, not for",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I borrowed money for my friend."
+    },
+    {
+      "vietlish": "I lent money from my sister",
+      "natural": "I borrowed money from my sister",
+      "sourcePattern": "mượn tiền từ chị -> lend/borrow role confusion",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "I lent money from my sister."
+    },
+    {
+      "vietlish": "I borrowed my friend money",
+      "natural": "I lent my friend money",
+      "sourcePattern": "cho bạn mượn tiền -> borrow/lend role confusion",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I borrowed my friend money."
+    },
+    {
+      "vietlish": "please borrow me your charger",
+      "natural": "please lend me your charger",
+      "sourcePattern": "cho tôi mượn -> lend me, not borrow me",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Please borrow me your charger."
+    },
+    {
+      "vietlish": "I studied by myself English",
+      "natural": "I studied English by myself",
+      "sourcePattern": "adverb placement follows object in natural English",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I studied by myself English last night."
+    },
+    {
+      "vietlish": "she explained me the rule",
+      "natural": "she explained the rule to me",
+      "sourcePattern": "giải thích cho tôi -> explain takes thing then to person",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "She explained me the rule after class."
+    },
+    {
+      "vietlish": "he suggested me to wait",
+      "natural": "he suggested that I wait",
+      "sourcePattern": "đề nghị tôi -> suggest does not take object + to-infinitive",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "He suggested me to wait outside."
+    },
+    {
+      "vietlish": "they discussed about the rent",
+      "natural": "they discussed the rent",
+      "sourcePattern": "thảo luận về -> discuss is transitive",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "They discussed about the rent yesterday."
+    },
+    {
+      "vietlish": "we mentioned about this fee",
+      "natural": "we mentioned this fee",
+      "sourcePattern": "đề cập về -> mention is transitive",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "We mentioned about this fee in the meeting."
+    },
+    {
+      "vietlish": "she entered to the room",
+      "natural": "she entered the room",
+      "sourcePattern": "vào phòng -> enter is transitive, no to",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "She entered to the room quietly."
+    }
+  ]
+}
