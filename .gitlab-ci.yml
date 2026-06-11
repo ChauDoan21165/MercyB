@@ -37,6 +37,26 @@ stages:
   - verify
   - backup
 
+# ── Pipeline auto-cancel for main-branch merge storms ──────────────────
+#
+# On a merge storm (rapid successive pushes to main) the runner can get
+# backlogged with stale test/build pipelines for commits that are already
+# superseded. `auto_cancel: on_new_commit: interruptible` cancels any job
+# that has `interruptible: true` when a newer pipeline starts on the same
+# ref, while leaving jobs with `interruptible: false` (golden-flows-prod,
+# post-merge-worktree-reaper) untouched — those must run to completion even
+# if a newer commit arrives, because they verify production state and clean
+# up host worktrees respectively.
+#
+# MR-pipeline behavior is unchanged: the `when: always` fallback rule lets
+# all other pipeline sources pass through without the auto_cancel override.
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      auto_cancel:
+        on_new_commit: interruptible
+    - when: always
+
 # ── Global CI tuning (Lane C: faster feedback) ─────────────────────────
 #
 # The local Mac runner can run multiple jobs at once. Keep each job in a
@@ -935,7 +955,7 @@ ci-job-tags-guard:
 
 post-merge-worktree-reaper:
   <<: [*local_runner]
-  interruptible: true
+  interruptible: false
   stage: test
   tags:
     - local
@@ -1066,6 +1086,7 @@ deploy-cloudflare-pages:
 # `request` fixture (no browser), so no chromium install is needed.
 golden-flows-prod:
   <<: [*node_job, *local_runner]
+  interruptible: false
   stage: verify
   allow_failure: false
   retry: 1
