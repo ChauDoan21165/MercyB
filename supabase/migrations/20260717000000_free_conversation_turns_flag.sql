@@ -7,7 +7,7 @@
 -- ai_usage_events (endpoint = 'ai-conversation-turn'), then hit a 403 gate.
 -- Admin can flip ON per-user via enabled_user_ids for staged rollout.
 --
--- Apply: SQL Editor (manual). Do NOT run `supabase db push` from CI.
+-- Apply: SQL Editor (manual). Do NOT run `supabase db-push` from CI.
 
 INSERT INTO public.feature_flags (flag_key, is_enabled, description)
 VALUES (
