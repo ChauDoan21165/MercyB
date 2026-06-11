@@ -69,6 +69,39 @@ function pronResult(over: Partial<ConversationPronunciationResult> = {}): Conver
   };
 }
 
+describe("ConversationMode — C6 no-canned-reply floor", () => {
+  it("empty panel shows hint placeholder, not a Mercy speech bubble (C6)", () => {
+    render(<ConversationMode {...baseProps()} />);
+
+    expect(screen.getByTestId("ai-tutor-conversation")).toBeInTheDocument();
+    // The empty-state copy renders as a grey hint div — not a Mercy reply bubble.
+    expect(screen.getByText(tutorCopy.ui.conversationEmpty)).toBeInTheDocument();
+    // CRITICAL: no "Teacher Mercy" speaker label appears (that label only lives
+    // inside Mercy reply bubbles); presence would mean a canned opener shipped.
+    expect(screen.queryByText(tutorCopy.speakerLabels.tutor)).not.toBeInTheDocument();
+  });
+
+  it("abstention redirect renders as a status affordance, not a canned Mercy turn (C6)", () => {
+    render(
+      <ConversationMode
+        {...baseProps({ entitlement: { isPremium: true } })}
+        abstentionRedirect={{
+          redirectPrompt:
+            "Mercy chưa chắc chắn về câu này. Thử câu tiếng Anh đơn giản hơn nhé.",
+        }}
+      />,
+    );
+
+    const redirect = screen.getByTestId("ai-tutor-conversation-abstention-redirect");
+    expect(redirect).toBeInTheDocument();
+    expect(redirect).toHaveTextContent("Mercy chưa chắc chắn");
+    // It carries role="status" (screen-reader affordance), NOT a Mercy reply article.
+    expect(redirect).toHaveAttribute("role", "status");
+    // No Mercy speech bubble — the speaker label "Teacher Mercy" must be absent.
+    expect(screen.queryByText(tutorCopy.speakerLabels.tutor)).not.toBeInTheDocument();
+  });
+});
+
 describe("ConversationMode — premium gate (Steps 8-10 conversation engine)", () => {
   it("shows a Vietnamese-primary premium gate for a non-premium learner and hides the conversation", () => {
     render(<ConversationMode {...baseProps({ entitlement: { isPremium: false } })} />);
