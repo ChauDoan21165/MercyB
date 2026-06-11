@@ -63,7 +63,7 @@ describe("Cloudflare Pages API function shape", () => {
     expect(tts).not.toContain("api.elevenlabs.io");
   });
 
-  it("limits service-role use to the feedback insert sink", () => {
+  it("limits service-role use to the two sanctioned sinks", () => {
     const apiFiles = [
       "functions/api/tts.ts",
       "functions/api/mercy/grammar.ts",
@@ -71,7 +71,14 @@ describe("Cloudflare Pages API function shape", () => {
       "functions/api/mercy-feedback.ts",
     ];
     const serviceRoleFiles = apiFiles.filter((rel) => read(rel).includes("SUPABASE_SERVICE_ROLE_KEY"));
-    expect(serviceRoleFiles).toEqual(["functions/api/mercy-feedback.ts"]);
+    // Two sanctioned uses (order matches apiFiles iteration):
+    // 1. mercy-ai: entitlement check (checkFreeConversationTurns) + cost telemetry
+    //    (logConversationTurnCost) — mirrors the admin-read pattern at api/mercy-ai.ts:45.
+    // 2. mercy-feedback: insert sink — the original single-sink use.
+    expect(serviceRoleFiles).toEqual([
+      "functions/api/mercy-ai.ts",
+      "functions/api/mercy-feedback.ts",
+    ]);
   });
 
   it("uses method-specific exports for every live Pages API route", () => {
