@@ -5,12 +5,39 @@ import type { SpeakTopicLibraryEntry as SpeakTopic } from "../speakTopicLibrary"
 // l1InterferenceNotes name genuine Vietnamese→English interference as friendly
 // context, NEVER as a grammar correction. Vietnamese is quoted with full
 // diacritics so the learner recognises the L1 phrase behind the English.
-export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
+// A2 D4 deepening: each topic now carries scenarioDescription, aiRoleDefinition,
+// conversationDirections (5–8 steps), and warmthPatterns (3+).
+
+type D4SpeakTopic = SpeakTopic & {
+  scenarioDescription: string;
+  aiRoleDefinition: string;
+  conversationDirections: readonly string[];
+  warmthPatterns: readonly string[];
+};
+
+export const jobInterviewSpeakTopics: readonly D4SpeakTopic[] = [
   {
     id: "topic-job-interview-tell-me-about-yourself",
     labelEn: "Tell Me About Yourself",
     labelVi: "Hãy giới thiệu về bản thân bạn",
     category: "work",
+    scenarioDescription:
+      "The learner is at a job interview and the interviewer has just asked them to introduce themselves. They need to give a short, confident one-minute summary of who they are, their work background, and why they are interested in this type of role.",
+    aiRoleDefinition:
+      "Act as a friendly interviewer who listens attentively, asks gentle follow-up questions to help the learner expand their answer, and wraps up by confirming one thing they found interesting about what they heard.",
+    conversationDirections: [
+      "Let the learner open their introduction however feels natural to them.",
+      "Ask one follow-up about their current or most recent role.",
+      "Prompt the learner to name one thing they are proud of or good at.",
+      "Ask how their background connects to the job they are applying for today.",
+      "Invite the learner to add anything important before moving on.",
+      "Wrap up by reflecting one thing you found interesting about their answer.",
+    ],
+    warmthPatterns: [
+      "Keep the pace calm and unhurried: 'Take your time — I'd love to hear more about that.'",
+      "Validate strengths openly: 'That sounds like really solid experience for this role.'",
+      "Avoid grilling; the goal is a natural, confidence-building flow.",
+    ],
     seedInputs: [
       "I am a hard worker and I have five years experience in sales.",
       "Let me tell you a little about myself and my background.",
@@ -64,6 +91,23 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Describing Your Work Experience",
     labelVi: "Kể về kinh nghiệm làm việc",
     category: "work",
+    scenarioDescription:
+      "The learner is asked about their past work history during an interview. They need to clearly describe where they worked, for how long, and what their main duties were, using past tense naturally.",
+    aiRoleDefinition:
+      "Act as an interviewer who asks about specific roles, listens for key details such as duration and tasks, and gently prompts the learner to name one achievement from a previous role.",
+    conversationDirections: [
+      "Let the learner describe their most recent or most relevant work experience first.",
+      "Ask how long they stayed in that role and why they chose it.",
+      "Prompt the learner to describe their daily tasks or main responsibilities.",
+      "Ask about one result or achievement they are proud of from that job.",
+      "Invite them to connect that experience to the new role they are applying for.",
+      "Close by confirming the timeline — when they started and when they left.",
+    ],
+    warmthPatterns: [
+      "Celebrate specifics: 'That's really useful experience — tell me more about that part.'",
+      "Accept imperfect tense and keep the conversation moving forward.",
+      "Signal genuine interest by repeating back what you heard: 'So you managed a team of four?'",
+    ],
     seedInputs: [
       "I work at a factory for two year before I move to the city.",
       "Before this, I spent three years in a restaurant kitchen.",
@@ -117,6 +161,22 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Talking About Your Strengths",
     labelVi: "Nói về điểm mạnh của bạn",
     category: "work",
+    scenarioDescription:
+      "The interviewer has asked 'What are your strengths?' The learner needs to name one or two genuine strengths and support each with a brief, honest example from their past work or life.",
+    aiRoleDefinition:
+      "Act as an interviewer who listens to the strengths the learner names, asks for one real example that shows each strength in action, and closes by connecting those strengths to what the role needs.",
+    conversationDirections: [
+      "Let the learner name their first strength in whatever phrasing feels natural.",
+      "Ask for a real story or example that shows that strength in action.",
+      "Invite the learner to share a second strength if they feel comfortable.",
+      "Ask how that strength would help the team or the tasks in this specific role.",
+      "Close by reflecting the strengths back and noting which one stands out most.",
+    ],
+    warmthPatterns: [
+      "Normalise self-promotion gently: 'It's good to say it clearly — I want to hear it.'",
+      "Encourage specificity over modesty: 'Can you give me one real example of that?'",
+      "Affirm confidently: 'That's exactly the kind of quality we look for here.'",
+    ],
     seedInputs: [
       "My strength is I am very careful and I learn fast.",
       "I think one of my strengths is staying calm under pressure.",
@@ -170,6 +230,22 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "A Weakness Or Something You Are Improving",
     labelVi: "Điểm yếu hoặc điều bạn đang cải thiện",
     category: "work",
+    scenarioDescription:
+      "The interviewer asks about a weakness or an area the learner is working to improve. The learner needs to give an honest, forward-looking answer that names one real area and describes the concrete steps they are taking.",
+    aiRoleDefinition:
+      "Act as an interviewer who receives the weakness answer warmly, asks what concrete step the learner is taking to improve it, and closes by acknowledging the learner's self-awareness as a positive quality.",
+    conversationDirections: [
+      "Let the learner name their area for improvement in their own words.",
+      "Ask what they have already done to work on it — a class, a habit, or a practice routine.",
+      "Prompt the learner to say what progress they have noticed so far.",
+      "Ask how being aware of this makes them a better colleague or worker.",
+      "Close by normalising the answer: every strong candidate has something they are growing in.",
+    ],
+    warmthPatterns: [
+      "Receive the answer without judgment: 'That's a really honest and self-aware answer.'",
+      "Keep the focus on the plan, not the flaw: 'So what are you doing about it?'",
+      "End on a positive note: 'The fact that you're actively working on it is exactly what matters.'",
+    ],
     seedInputs: [
       "My weakness is my English, but I am improving it every day.",
       "One thing I'm working on is asking for help sooner.",
@@ -223,6 +299,23 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Why You Want This Job",
     labelVi: "Vì sao bạn muốn công việc này",
     category: "work",
+    scenarioDescription:
+      "The interviewer asks why the learner wants to work at this company in this role. The learner needs to give at least one specific reason that connects their personal goals with what the company or role offers.",
+    aiRoleDefinition:
+      "Act as an interviewer who receives the reason, asks a follow-up about what the learner knows about the company, and invites them to say how they see themselves contributing to the team.",
+    conversationDirections: [
+      "Let the learner state their main reason for applying in their own way.",
+      "Ask what they have found out about the company before coming today.",
+      "Prompt the learner to name one thing that makes this company stand out for them.",
+      "Ask how the learner sees themselves growing in this specific role.",
+      "Invite them to say what they would contribute to the team from their first week.",
+      "Close by asking if the learner sees long-term potential here.",
+    ],
+    warmthPatterns: [
+      "Reward specificity: 'I like that you mentioned something concrete — tell me more about that.'",
+      "Stay curious and open: 'What else about us interested you when you were researching?'",
+      "Affirm the connection: 'That's a real alignment between your goals and what we do.'",
+    ],
     seedInputs: [
       "I want this job because I like the company and I want learn more.",
       "This role really fits what I want to grow into next.",
@@ -276,6 +369,22 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Why You Left Your Last Job",
     labelVi: "Vì sao bạn nghỉ việc cũ",
     category: "work",
+    scenarioDescription:
+      "The interviewer asks why the learner left or is leaving their previous job. The learner needs to give a calm, forward-looking answer that is honest without being critical of the past employer.",
+    aiRoleDefinition:
+      "Act as an interviewer who hears the reason without judgment, asks one follow-up about what the learner gained from the previous role, and closes warmly by focusing on what they are looking for next.",
+    conversationDirections: [
+      "Let the learner state their reason for leaving in their own words.",
+      "Ask a gentle follow-up: 'What did that experience give you?'",
+      "If the learner mentions something negative, prompt them to reframe it as a growth point.",
+      "Ask what they are specifically looking for in their next role.",
+      "Close by noting the natural transition from past experience to future goals.",
+    ],
+    warmthPatterns: [
+      "Receive any answer without alarm: 'That makes sense — tell me a little more.'",
+      "Redirect negativity gently: 'And what did you take away from that time?'",
+      "Keep the tone forward-looking: 'I'm really most interested in where you're heading.'",
+    ],
     seedInputs: [
       "I leave my last job because I want a new chance to grow.",
       "I left my previous job to look for more responsibility.",
@@ -329,6 +438,22 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Do You Have Any Questions For Us",
     labelVi: "Bạn có câu hỏi nào cho chúng tôi không",
     category: "work",
+    scenarioDescription:
+      "The interviewer has finished their questions and turns it back to the learner: 'Do you have any questions for us?' The learner needs to ask at least one genuine question about the role, team, or company.",
+    aiRoleDefinition:
+      "Act as an interviewer who listens to the learner's questions, answers them helpfully and in full, and encourages a natural two-way conversation at the end of the interview.",
+    conversationDirections: [
+      "Give the learner a moment to think and invite them: 'What would you most like to know?'",
+      "Let the learner ask their first question and answer it fully and warmly.",
+      "Invite a second question if the learner has one.",
+      "Encourage questions about the team, day-to-day work, or growth opportunities.",
+      "Close by thanking the learner for their thoughtful questions and explaining what happens next.",
+    ],
+    warmthPatterns: [
+      "Normalise asking: 'Please do ask — good candidates always have questions.'",
+      "Answer warmly and in full: curiosity is a genuine positive signal.",
+      "Leave the learner feeling positive about the experience: 'It was really great to meet you today.'",
+    ],
     seedInputs: [
       "Yes, I have one question about the team and the schedule.",
       "Thank you — I'd like to ask how success is measured in this role.",
@@ -382,6 +507,22 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "Availability And Start Date",
     labelVi: "Thời gian rảnh và ngày bắt đầu",
     category: "work",
+    scenarioDescription:
+      "Near the end of the interview the interviewer asks when the learner can start and what their available hours or days are. The learner needs to state a clear start date, explain any notice period, and say which shifts or hours suit them.",
+    aiRoleDefinition:
+      "Act as an interviewer who hears the start date and availability, asks a follow-up about any notice period or shift preferences, and confirms whether the proposed schedule is a workable match.",
+    conversationDirections: [
+      "Let the learner state when they could start in their own words.",
+      "Ask whether they need to give notice at their current job first.",
+      "Prompt the learner to name which days or hours they are available.",
+      "Ask whether they can be flexible if the role requires a slightly different schedule.",
+      "Confirm the start-date plan and note clearly whether it works for the team.",
+    ],
+    warmthPatterns: [
+      "Keep the tone practical and low pressure: 'No rush — when works best for you?'",
+      "Affirm flexibility where it exists: 'That sounds very workable on our side.'",
+      "Confirm clearly so the learner leaves with a concrete expectation about next steps.",
+    ],
     seedInputs: [
       "I can start next week and I am free on the weekend.",
       "I'm available to start on the first of the month.",
@@ -435,6 +576,22 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "The Salary Question",
     labelVi: "Câu hỏi về mức lương",
     category: "work",
+    scenarioDescription:
+      "The interviewer asks about salary expectations, or the learner feels this is the right moment to ask about pay. Both sides discuss the range calmly and professionally, ending with a clear shared understanding.",
+    aiRoleDefinition:
+      "Act as an interviewer who gives a salary range when asked, invites the learner to share their own expectation, and handles the back-and-forth professionally and without pressure.",
+    conversationDirections: [
+      "Let the learner open the salary topic in whatever way feels natural — asking or responding.",
+      "Share a general range when asked, and invite the learner to say what they were thinking.",
+      "Ask what benefits or conditions matter to the learner besides base pay.",
+      "Practice a calm, professional response to a range that is lower than expected.",
+      "Confirm the final expectation and note that a formal offer will come in writing.",
+    ],
+    warmthPatterns: [
+      "Normalise the topic entirely: 'It's a perfectly fair question — let's talk about it openly.'",
+      "Keep the tone collaborative: 'We want this arrangement to work well for both sides.'",
+      "Avoid pressure in either direction; confirm the next practical step after the discussion.",
+    ],
     seedInputs: [
       "May I ask what is the salary for this position?",
       "Could you tell me the pay range for this role?",
@@ -488,6 +645,23 @@ export const jobInterviewSpeakTopics: readonly SpeakTopic[] = [
     labelEn: "How You Handled A Hard Situation At Work",
     labelVi: "Cách bạn xử lý tình huống khó ở chỗ làm",
     category: "work",
+    scenarioDescription:
+      "The interviewer asks a behavioural question: 'Tell me about a time you handled a difficult situation at work.' The learner needs to tell a structured story — what happened, what they personally did, and what the outcome was.",
+    aiRoleDefinition:
+      "Act as an interviewer who listens to the story, asks follow-up questions to draw out specific actions and the final result, and closes by noting what the story reveals about the learner's character.",
+    conversationDirections: [
+      "Let the learner choose any hard situation from their work or daily life.",
+      "Ask them to explain the background: who was involved and what went wrong.",
+      "Prompt the learner to say specifically what they personally did — not what the team did.",
+      "Ask what the outcome was for the customer, team, or overall situation.",
+      "Ask what the learner would do differently, if anything, looking back.",
+      "Close by naming the strength the story revealed about the learner.",
+    ],
+    warmthPatterns: [
+      "Stay patient while the learner finds their words: 'Take your time — I want to hear the full story.'",
+      "Focus on personal actions: 'What did you specifically do in that moment?'",
+      "Celebrate the outcome warmly: 'That sounds like a really mature way to handle it.'",
+    ],
     seedInputs: [
       "One time a customer was angry, so I stay calm and I fix the problem.",
       "I once had two deadlines on the same day, so I made a plan and asked for help.",
