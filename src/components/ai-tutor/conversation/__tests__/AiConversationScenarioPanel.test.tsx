@@ -1,14 +1,22 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { act } from "react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import AiConversationScenarioPanel from "../AiConversationScenarioPanel";
+import { setCaptureConsent, hasCaptureConsent, hasCaptureConsentDecision } from "@/lib/conversationCapture/captureConsent";
 
 const recordActiveDay = vi.hoisted(() => vi.fn());
 vi.mock("@/lib/retention/recordActiveDay", () => ({ recordActiveDay }));
 
-afterEach(() => recordActiveDay.mockClear());
+afterEach(() => {
+  recordActiveDay.mockClear();
+  window.localStorage.clear();
+});
 
 describe("AiConversationScenarioPanel", () => {
+  // All tests in this block start with consent already decided (true) so the
+  // consent gate does not interrupt behaviour-under-test. Consent-gate tests
+  // live in the dedicated describe block below.
+  beforeEach(() => setCaptureConsent(true));
   it("gates non-premium learners", () => {
     const sendTurn = vi.fn();
 
@@ -399,6 +407,115 @@ describe("AiConversationScenarioPanel", () => {
     expect(sendTurn.mock.calls[1][0].history.some((turn: { text: string }) =>
       turn.text.includes("customer service role"),
     )).toBe(true);
+  });
+});
+
+// @vitest-environment jsdom
+describe("AiConversationScenarioPanel — consent gate (M19)", () => {
+  // localStorage is already cleared by the outer afterEach, so each test here
+  // starts with no stored consent decision (hasCaptureConsentDecision() === false).
+
+  it("modal is not shown on mount — only on first send attempt", () => {
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token"
+        hasPremium
+        loadingAccess={false}
+      />,
+    );
+    // No consent modal until the learner tries to send.
+    expect(screen.queryByText("Cải thiện bài học của bạn")).not.toBeInTheDocument();
+    expect(hasCaptureConsentDecision()).toBe(false);
+  });
+
+  it("modal appears on first send when no consent decision is stored", async () => {
+    const sendTurn = vi.fn();
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token"
+        hasPremium
+        loadingAccess={false}
+        sendTurn={sendTurn}
+      />,
+    );
+    await act(async () => {
+      fireEvent.change(screen.getByRole("textbox"), { target: { value: "I go to school." } });
+      fireEvent.click(screen.getByRole("button", { name: /send answer/i }));
+    });
+    // Modal is visible — Dialog marks background aria-hidden so we query by text.
+    expect(screen.getByText("Cải thiện bài học của bạn")).toBeInTheDocument();
+    // No turn was submitted yet — the gate paused the send.
+    expect(sendTurn).not.toHaveBeenCalled();
+    expect(hasCaptureConsentDecision()).toBe(false);
+  });
+
+  it("after opt-in the send proceeds and the modal does not reappear", async () => {
+    const sendTurn = vi.fn().mockResolvedValue({
+      reply: "Good job!",
+      correction: null,
+      summary: null,
+      cost: { totalTokens: 50, estimatedUsd: 0.0001 },
+      provider: "openai",
+      pronunciationAbstention: null,
+    });
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token"
+        hasPremium
+        loadingAccess={false}
+        sendTurn={sendTurn}
+      />,
+    );
+    await act(async () => {
+      fireEvent.change(screen.getByRole("textbox"), { target: { value: "I go to school." } });
+      fireEvent.click(screen.getByRole("button", { name: /send answer/i }));
+    });
+    // Modal shown — click "Đồng ý" (agree).
+    await act(async () => {
+      fireEvent.click(screen.getByText(/Đồng ý/));
+    });
+    expect(hasCaptureConsent()).toBe(true);
+    // sendTurn was called — the turn proceeded after opt-in.
+    expect(sendTurn).toHaveBeenCalledTimes(1);
+    // Modal is gone.
+    expect(screen.queryByText("Cải thiện bài học của bạn")).not.toBeInTheDocument();
+    // A second send does not re-show the modal.
+    await send("Another sentence.");
+    expect(screen.queryByText("Cải thiện bài học của bạn")).not.toBeInTheDocument();
+  });
+
+  it("after decline the send still proceeds (decline = no nag, not blocked)", async () => {
+    const sendTurn = vi.fn().mockResolvedValue({
+      reply: "Alright.",
+      correction: null,
+      summary: null,
+      cost: { totalTokens: 50, estimatedUsd: 0.0001 },
+      provider: "openai",
+      pronunciationAbstention: null,
+    });
+    render(
+      <AiConversationScenarioPanel
+        accessToken="token"
+        hasPremium
+        loadingAccess={false}
+        sendTurn={sendTurn}
+      />,
+    );
+    await act(async () => {
+      fireEvent.change(screen.getByRole("textbox"), { target: { value: "I go to school." } });
+      fireEvent.click(screen.getByRole("button", { name: /send answer/i }));
+    });
+    // Click "Không, cảm ơn" (decline).
+    await act(async () => {
+      fireEvent.click(screen.getByText(/Không, cảm ơn/));
+    });
+    expect(hasCaptureConsent()).toBe(false);
+    expect(hasCaptureConsentDecision()).toBe(true);
+    // The turn still goes through (declining ≠ blocking the conversation).
+    expect(sendTurn).toHaveBeenCalledTimes(1);
+    // A second send does not re-show the modal.
+    await send("Another sentence.");
+    expect(screen.queryByText("Cải thiện bài học của bạn")).not.toBeInTheDocument();
   });
 });
 
