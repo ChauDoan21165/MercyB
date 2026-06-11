@@ -56,6 +56,21 @@ function hasContent(json) {
   // Audio / text based rooms
   if (json.audio || json.text) return true;
 
+  // Guide-article-keyed format: top-level object keys each holding
+  // {title_en, title_vi, body_en, body_vi} — consumed by useMercyGuide.ts
+  // via normalizeArticles(), which iterates all top-level keys directly.
+  const guideArticleCount = Object.values(json).filter(
+    (v) =>
+      v &&
+      typeof v === "object" &&
+      !Array.isArray(v) &&
+      typeof v.title_en === "string" &&
+      v.title_en.length > 0 &&
+      typeof v.body_en === "string" &&
+      v.body_en.length > 0
+  ).length;
+  if (guideArticleCount > 0) return true;
+
   return false;
 }
 
