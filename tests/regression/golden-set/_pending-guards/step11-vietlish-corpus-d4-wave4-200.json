@@ -12,7 +12,7 @@
   "definition": "Fourth-wave candidate Vietnamese-L1 interference items for human review before any promotion into VIETLISH_CORPUS. Each entry pairs a non-native English production (vietlish) with its natural target (natural), the VN source pattern with diacritics (sourcePattern), and a contextual sentence. A few deliberate natural 'control' anchors are flagged in sourcePattern so reviewers can confirm the detector abstains on natural usage. Wave 4 focuses on grammar-interference families lighter in waves 1-2: conditionals, relative clauses, reported speech, gerund/infinitive, subject-verb agreement, do-support questions, causatives, possessive 'of', passives.",
   "dedupedAgainst": "live VIETLISH_CORPUS + A4 wave1 (...corpus-d4-wave-200.json) + A10 wave2 (...wave2-200.json) — zero string overlap (749-item denylist), asserted by the guard test",
   "generatedFor": "2026-06-10 CEO directive D4 wave4 (A10)",
-  "count": 182,
+  "count": 146,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -151,92 +151,12 @@
       "context": "I follow it, the doctor said me drink more water."
     },
     {
-      "vietlish": "I enjoy to swim in summer",
-      "natural": "I enjoy swimming in summer",
-      "sourcePattern": "thích bơi -> infinitive after 'enjoy'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "On hot days I enjoy to swim in summer."
-    },
-    {
-      "vietlish": "I look forward to meet you",
-      "natural": "I look forward to meeting you",
-      "sourcePattern": "mong gặp -> bare infinitive after 'look forward to'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "See you soon, I look forward to meet you."
-    },
-    {
-      "vietlish": "I am interested to learn guitar",
-      "natural": "I am interested in learning guitar",
-      "sourcePattern": "'interested to' + wrong preposition",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "This year I am interested to learn guitar."
-    },
-    {
-      "vietlish": "I finished to eat already",
-      "natural": "I finished eating already",
-      "sourcePattern": "ăn xong -> infinitive after 'finish'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "Clear the table, I finished to eat already."
-    },
-    {
-      "vietlish": "I suggest to go by taxi",
-      "natural": "I suggest going by taxi",
-      "sourcePattern": "đề nghị đi -> infinitive after 'suggest'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "It is far, I suggest to go by taxi."
-    },
-    {
-      "vietlish": "I avoid to eat too sweet",
-      "natural": "I avoid eating too much sugar",
-      "sourcePattern": "tránh ăn -> infinitive after 'avoid'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "For my health, I avoid to eat too sweet."
-    },
-    {
-      "vietlish": "I practice to speak every day",
-      "natural": "I practice speaking every day",
-      "sourcePattern": "luyện nói -> infinitive after 'practice'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "To improve, I practice to speak every day."
-    },
-    {
-      "vietlish": "I am good at cook",
-      "natural": "I am good at cooking",
-      "sourcePattern": "giỏi nấu ăn -> bare verb after a preposition",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "Come to my house, I am good at cook."
-    },
-    {
-      "vietlish": "I am tired of wait",
-      "natural": "I am tired of waiting",
-      "sourcePattern": "chán đợi -> bare verb after 'of'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "Let us leave, I am tired of wait."
-    },
-    {
       "vietlish": "I look forward to hearing",
       "natural": "I look forward to hearing from you",
       "sourcePattern": "(control) natural gerund, abstain anchor",
       "category": "collocation",
       "frequency": "low",
       "context": "Please reply, I look forward to hearing."
-    },
-    {
-      "vietlish": "she keeps to call me",
-      "natural": "she keeps calling me",
-      "sourcePattern": "cứ gọi -> infinitive after 'keep'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "I am annoyed, she keeps to call me."
     },
     {
       "vietlish": "I need that he calls me back",
@@ -341,46 +261,6 @@
       "category": "word_order",
       "frequency": "medium",
       "context": "Slow down please, you understand me or no?"
-    },
-    {
-      "vietlish": "my mother makes me to study at night",
-      "natural": "my mother makes me study at night",
-      "sourcePattern": "bắt tôi học -> 'make ... to' instead of bare infinitive",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "I am sleepy, my mother makes me to study at night."
-    },
-    {
-      "vietlish": "please let me to help you",
-      "natural": "please let me help you",
-      "sourcePattern": "'let ... to' instead of bare infinitive",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "You are tired, please let me to help you."
-    },
-    {
-      "vietlish": "I will repair my motorbike tomorrow",
-      "natural": "I'll have my motorbike repaired tomorrow",
-      "sourcePattern": "đi sửa xe -> active for a causative service",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "It is broken, I will repair my motorbike tomorrow."
-    },
-    {
-      "vietlish": "I cut my hair at the salon every month",
-      "natural": "I get my hair cut at the salon every month",
-      "sourcePattern": "đi cắt tóc -> active 'cut my hair' for a service",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "It grows fast, I cut my hair at the salon every month."
-    },
-    {
-      "vietlish": "he made me to wait one hour",
-      "natural": "he made me wait an hour",
-      "sourcePattern": "'made ... to' + article",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "I was angry, he made me to wait one hour."
     },
     {
       "vietlish": "can you help me to carry this",
@@ -623,28 +503,12 @@
       "context": "Start without him, he is absent in the meeting."
     },
     {
-      "vietlish": "please pick the phone, it is ringing",
-      "natural": "please pick up the phone, it's ringing",
-      "sourcePattern": "nghe máy -> missing 'up' particle",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "Quick, please pick the phone, it is ringing."
-    },
-    {
       "vietlish": "can you turn down a little the volume",
       "natural": "can you turn the volume down a little",
       "sourcePattern": "vặn nhỏ -> particle + adverb order",
       "category": "word_order",
       "frequency": "medium",
       "context": "It is loud, can you turn down a little the volume?"
-    },
-    {
-      "vietlish": "I will throw the rubbish now",
-      "natural": "I'll take out the rubbish now",
-      "sourcePattern": "đổ rác -> 'throw the rubbish' calque",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "Wait for me, I will throw the rubbish now."
     },
     {
       "vietlish": "who looks after your baby",
@@ -663,28 +527,12 @@
       "context": "Every day I must wake up my son at 6."
     },
     {
-      "vietlish": "turn on the volume, please",
-      "natural": "turn up the volume, please",
-      "sourcePattern": "mở to -> 'turn on' for 'turn up'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "I cannot hear, turn on the volume, please."
-    },
-    {
       "vietlish": "I will drop off you at the station",
       "natural": "I'll drop you off at the station",
       "sourcePattern": "particle placement with a pronoun object",
       "category": "word_order",
       "frequency": "medium",
       "context": "Get in, I will drop off you at the station."
-    },
-    {
-      "vietlish": "she gave up to smoke last year",
-      "natural": "she gave up smoking last year",
-      "sourcePattern": "bỏ thuốc -> infinitive after 'give up'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "She is healthier now, she gave up to smoke last year."
     },
     {
       "vietlish": "he is so tired that cannot work",
@@ -831,22 +679,6 @@
       "context": "Everyone is here, let we start the meeting."
     },
     {
-      "vietlish": "how about to go for a coffee",
-      "natural": "how about going for a coffee",
-      "sourcePattern": "infinitive after 'how about'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "I am free now, how about to go for a coffee?"
-    },
-    {
-      "vietlish": "what about we meet at 7",
-      "natural": "what about meeting at 7",
-      "sourcePattern": "clause after 'what about' instead of gerund",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "I have an idea, what about we meet at 7?"
-    },
-    {
       "vietlish": "why don't we to take a taxi",
       "natural": "why don't we take a taxi",
       "sourcePattern": "extra 'to' after 'why don't we'",
@@ -927,30 +759,6 @@
       "context": "Stay calm, the problem will solve soon."
     },
     {
-      "vietlish": "I go to cut the hair",
-      "natural": "I'm going for a haircut",
-      "sourcePattern": "đi cắt tóc -> 'cut the hair' calque",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "See you later, I go to cut the hair."
-    },
-    {
-      "vietlish": "I eat outside today",
-      "natural": "I'm eating out today",
-      "sourcePattern": "ăn ngoài -> 'eat outside' for eating out",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "Do not cook for me, I eat outside today."
-    },
-    {
-      "vietlish": "I sleep late yesterday so tired",
-      "natural": "I went to bed late yesterday, so I'm tired",
-      "sourcePattern": "ngủ trễ -> 'sleep late' for going to bed late",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "Sorry I yawn, I sleep late yesterday so tired."
-    },
-    {
       "vietlish": "I wake up early to catch the sun",
       "natural": "I wake up early to catch the sunrise",
       "sourcePattern": "đón bình minh -> 'catch the sun' calque",
@@ -959,52 +767,12 @@
       "context": "On the beach, I wake up early to catch the sun."
     },
     {
-      "vietlish": "my stomach is hungry",
-      "natural": "I'm hungry",
-      "sourcePattern": "đói bụng -> 'stomach is hungry' calque",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "Let us order, my stomach is hungry."
-    },
-    {
       "vietlish": "I drink water a lot every day",
       "natural": "I drink a lot of water every day",
       "sourcePattern": "uống nhiều nước -> 'a lot' after the object",
       "category": "word_order",
       "frequency": "medium",
       "context": "For my skin, I drink water a lot every day."
-    },
-    {
-      "vietlish": "I bath two times a day in summer",
-      "natural": "I shower twice a day in summer",
-      "sourcePattern": "tắm -> 'bath' as a verb + 'two times'",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "It is hot, I bath two times a day in summer."
-    },
-    {
-      "vietlish": "close your phone in the cinema",
-      "natural": "turn off your phone in the cinema",
-      "sourcePattern": "tắt điện thoại -> 'close' for 'turn off'",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "Please be polite, close your phone in the cinema."
-    },
-    {
-      "vietlish": "I will go to airport to receive my friend",
-      "natural": "I'll go to the airport to pick up my friend",
-      "sourcePattern": "đón -> 'receive' for 'pick up' + missing article",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "Tomorrow I will go to airport to receive my friend."
-    },
-    {
-      "vietlish": "the rice is cooked, please eat",
-      "natural": "dinner is ready, please eat",
-      "sourcePattern": "cơm chín rồi -> literal 'rice is cooked'",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "Wash your hands, the rice is cooked, please eat."
     },
     {
       "vietlish": "my homework are very difficult",
@@ -1231,44 +999,12 @@
       "context": "Where were you, I am here since two hours."
     },
     {
-      "vietlish": "we know together for five years",
-      "natural": "we've known each other for five years",
-      "sourcePattern": "quen nhau -> 'know together' calque + tense",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "We are close, we know together for five years."
-    },
-    {
-      "vietlish": "they love together very much",
-      "natural": "they love each other very much",
-      "sourcePattern": "yêu nhau -> 'love together' calque",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "What a couple, they love together very much."
-    },
-    {
-      "vietlish": "we help together when busy",
-      "natural": "we help each other when we're busy",
-      "sourcePattern": "giúp nhau -> 'help together' calque",
-      "category": "calque",
-      "frequency": "medium",
-      "context": "We are a team, we help together when busy."
-    },
-    {
       "vietlish": "my english improve day by day",
       "natural": "my English is improving day by day",
       "sourcePattern": "tiến bộ từng ngày -> bare verb + missing aspect",
       "category": "literal_translation",
       "frequency": "medium",
       "context": "I practice a lot, my english improve day by day."
-    },
-    {
-      "vietlish": "I have gone to Japan two times",
-      "natural": "I have been to Japan twice",
-      "sourcePattern": "đã đi -> 'gone to' for 'been to' + 'two times'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "I love travel, I have gone to Japan two times."
     },
     {
       "vietlish": "how many years are you",
@@ -1327,14 +1063,6 @@
       "context": "Time flies, they are married three years already."
     },
     {
-      "vietlish": "I cut down on the sweet",
-      "natural": "I'm cutting down on sweets",
-      "sourcePattern": "bớt đồ ngọt -> 'the sweet' for 'sweets'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "For my health, I cut down on the sweet."
-    },
-    {
       "vietlish": "can you wait for me a little",
       "natural": "can you wait for me a moment",
       "sourcePattern": "đợi chút -> 'a little' for time",
@@ -1365,14 +1093,6 @@
       "category": "word_order",
       "frequency": "medium",
       "context": "Follow me, this is the most easiest way."
-    },
-    {
-      "vietlish": "I prefer tea than coffee",
-      "natural": "I prefer tea to coffee",
-      "sourcePattern": "thích ... hơn -> 'than' after 'prefer'",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "In the morning, I prefer tea than coffee."
     },
     {
       "vietlish": "it is different from before a lot",
@@ -1413,14 +1133,6 @@
       "category": "register",
       "frequency": "low",
       "context": "Honestly, I think he is right, don't you think?"
-    },
-    {
-      "vietlish": "I will come back to you tomorrow",
-      "natural": "I'll get back to you tomorrow",
-      "sourcePattern": "phản hồi lại -> 'come back to you' calque",
-      "category": "collocation",
-      "frequency": "medium",
-      "context": "Let me check first, I will come back to you tomorrow."
     },
     {
       "vietlish": "please give me your idea about this",
