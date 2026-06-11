@@ -21,7 +21,7 @@ import {
   rulePeerBanToElder,
   ruleThanksWithPeerForm,
   ruleToiselfWithElder,
-} from "./detectors.js";
+} from "./detectors";
 
 export const REGISTER_RULES: L1Rule[] = [
   // Surface-detectable — fires on "Thưa bạn" / "Kính gửi bạn" etc.

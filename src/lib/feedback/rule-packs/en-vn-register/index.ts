@@ -20,7 +20,7 @@
 
 import type { L1RulePack } from "../../rule-pack-types.js";
 import { REGISTER_RULES } from "./rules.js";
-import { REGISTER_EXPLANATIONS } from "./explanations.js";
+import { REGISTER_EXPLANATIONS } from "./explanations";
 
 export const EN_VN_REGISTER_PACK: L1RulePack = {
   l1Code: "en",
@@ -35,4 +35,4 @@ export default EN_VN_REGISTER_PACK;
 export { REGISTER_RULES } from "./rules.js";
 export { REGISTER_EXPLANATIONS } from "./explanations.js";
 export { REGISTER_TAXONOMY, SURFACE_DETECTABLE_TAGS, CONTEXT_REQUIRED_TAGS } from "./taxonomy.js";
-export type { RegisterPattern, RegisterCategory, RegisterExample } from "./taxonomy.js";
+export type { RegisterPattern, RegisterCategory, RegisterExample, DetectionFeasibility } from "./taxonomy.js";
