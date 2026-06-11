@@ -12,7 +12,7 @@
   "definition": "Sixth-wave Vietnamese-L1 interference review candidates (human review before any promotion into VIETLISH_CORPUS). Wave 6 mines fresh territory under-covered by waves 1-5: Vietnamese greeting/social-register calques, household-chore calques, workplace/office Vietlish, daily banking & medical calques, school/study, modal+bare-infinitive errors, quantifier/determiner errors, purpose/reason connectors, proverb/idiom calques, and additional false friends. A few natural 'control' anchors are flagged in sourcePattern for abstain-checking.",
   "dedupedAgainst": "live VIETLISH_CORPUS(353) + all 5 merged wave files(993) + A4 promotion list + Stage-1 128 paste block — 1346-item denylist, zero overlap (asserted by the guard test vs live + verified at authoring vs the full denylist).",
   "generatedFor": "2026-06-10 CEO-1 FULL ROSTER dispatch [A10] wave6",
-  "count": 77,
+  "count": 66,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -23,54 +23,6 @@
   },
   "entries": [
     {
-      "vietlish": "where are you going there",
-      "natural": "hi, where are you off to",
-      "sourcePattern": "đi đâu đấy? -> phatic greeting, not a real question",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Passing a friend: where are you going there?"
-    },
-    {
-      "vietlish": "do you have husband yet",
-      "natural": "are you married",
-      "sourcePattern": "có chồng chưa? -> direct 'have husband yet' calque",
-      "category": "register",
-      "frequency": "medium",
-      "context": "At a first meeting: do you have husband yet?"
-    },
-    {
-      "vietlish": "how many kids you have already",
-      "natural": "do you have any children",
-      "sourcePattern": "mấy đứa con rồi? -> 'how many kids already' calque",
-      "category": "register",
-      "frequency": "medium",
-      "context": "A relative asks: how many kids you have already?"
-    },
-    {
-      "vietlish": "you look fat more than before",
-      "natural": "you look healthy / you've gained a bit",
-      "sourcePattern": "mập ra -> 'fat' as a friendly compliment in VN, rude in English",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Greeting an old friend: you look fat more than before."
-    },
-    {
-      "vietlish": "long time not meet you",
-      "natural": "long time no see",
-      "sourcePattern": "lâu rồi không gặp -> 'not meet you' calque",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Running into someone: long time not meet you!"
-    },
-    {
-      "vietlish": "eat more, do not be shy",
-      "natural": "please help yourself, don't be shy",
-      "sourcePattern": "ăn nữa đi, đừng ngại -> hosting calque",
-      "category": "register",
-      "frequency": "medium",
-      "context": "At dinner: eat more, do not be shy."
-    },
-    {
       "vietlish": "go slowly, ya",
       "natural": "take care / drive safe",
       "sourcePattern": "đi từ từ nhé -> farewell calque",
@@ -79,36 +31,12 @@
       "context": "Walking a guest out: go slowly, ya."
     },
     {
-      "vietlish": "please you go first",
-      "natural": "after you",
-      "sourcePattern": "mời anh đi trước -> 'please you go first' calque of the deference marker",
-      "category": "register",
-      "frequency": "medium",
-      "context": "At the door: please you go first."
-    },
-    {
-      "vietlish": "i am sorry to make you wait long",
-      "natural": "sorry to keep you waiting",
-      "sourcePattern": "để bạn đợi lâu -> 'make you wait long' calque",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Arriving late: i am sorry to make you wait long."
-    },
-    {
       "vietlish": "thank you, you are too kind with me",
       "natural": "thank you, you're too kind",
       "sourcePattern": "tốt với tôi quá -> 'kind with me' calque",
       "category": "register",
       "frequency": "low",
       "context": "After a favour: thank you, you are too kind with me."
-    },
-    {
-      "vietlish": "see you, take care your body",
-      "natural": "bye, take care of yourself",
-      "sourcePattern": "giữ gìn sức khỏe -> 'take care your body' calque",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Leaving: see you, take care your body."
     },
     {
       "vietlish": "iron the clothes flat",
@@ -183,14 +111,6 @@
       "context": "In an interview: i am a fresher, just graduate."
     },
     {
-      "vietlish": "please find the file in attach",
-      "natural": "please see the attached file",
-      "sourcePattern": "đính kèm -> 'in attach' calque",
-      "category": "register",
-      "frequency": "medium",
-      "context": "As discussed, please find the file in attach."
-    },
-    {
       "vietlish": "my boss is very strict with work",
       "natural": "my boss is very strict about work",
       "sourcePattern": "khó tính trong công việc -> 'strict with work'",
@@ -245,14 +165,6 @@
       "category": "literal_translation",
       "frequency": "low",
       "context": "Sorry teacher, i forgot to bring my book today."
-    },
-    {
-      "vietlish": "can teacher explain again one time",
-      "natural": "could you explain it one more time",
-      "sourcePattern": "giảng lại -> 'again one time' calque",
-      "category": "register",
-      "frequency": "medium",
-      "context": "I do not understand, can teacher explain again one time?"
     },
     {
       "vietlish": "i raise my hand to answer the question",

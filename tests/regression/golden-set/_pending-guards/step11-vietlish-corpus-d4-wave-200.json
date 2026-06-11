@@ -23,7 +23,7 @@
   "definition": "Each entry is a NEW Vietnamese L1-interference candidate matching the live VIETLISH_CORPUS entry schema EXACTLY. These are staged for human review BEFORE any promotion into src/lib/tutor/vietlishCorpus.ts. This file is imported by no engine module — review queue only. Every `vietlish` string is verified disjoint from the 354 live corpus entries by step11VietlishCorpusD4Wave.test.ts.",
   "disjointFrom": "live VIETLISH_CORPUS (src/lib/tutor/vietlishCorpus.ts); A6 !690 (selector test, no corpus rows); A10 corpus waves (different files).",
   "generatedAt": "2026-06-10",
-  "count": 36,
+  "count": 30,
   "entries": [
     {
       "vietlish": "there are many furnitures in the room",
@@ -90,60 +90,12 @@
       "context": "She is a so beautiful girl, everyone looks at her."
     },
     {
-      "vietlish": "very thank you",
-      "natural": "thank you very much",
-      "sourcePattern": "cam on rat nhieu -> degree word fronted before thank",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Very thank you for your help today."
-    },
-    {
-      "vietlish": "teacher, today I cannot go to class",
-      "natural": "Teacher, I can't come to class today",
-      "sourcePattern": "thua thay/co -> title used as address with fronted time word",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Teacher, today I cannot go to class because I am sick."
-    },
-    {
-      "vietlish": "sorry I am late, the traffic",
-      "natural": "sorry I am late because of the traffic",
-      "sourcePattern": "xin loi toi tre, ket xe -> reason given as a bare noun, no connector",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Sorry I am late, the traffic this morning was terrible."
-    },
-    {
-      "vietlish": "I think so that it will rain",
-      "natural": "I think it will rain",
-      "sourcePattern": "toi nghi rang -> rang/la doubled as so that",
-      "category": "register",
-      "frequency": "medium",
-      "context": "I think so that it will rain, bring an umbrella."
-    },
-    {
-      "vietlish": "teacher please can repeat one more time",
-      "natural": "Teacher, could you repeat that one more time",
-      "sourcePattern": "thay oi lam on nhac lai -> modal placement and dropped object",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Teacher please can repeat one more time? I did not hear."
-    },
-    {
       "vietlish": "thanks God it is Friday",
       "natural": "thank God it's Friday",
       "sourcePattern": "on troi -> fixed phrase pluralized as thanks",
       "category": "false_friend",
       "frequency": "low",
       "context": "Thanks God it is Friday, I need a rest."
-    },
-    {
-      "vietlish": "long time no see you",
-      "natural": "long time no see",
-      "sourcePattern": "lau qua khong gap -> object added to a fixed greeting",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Hi! Long time no see you, how are you?"
     },
     {
       "vietlish": "the news make me surprising",

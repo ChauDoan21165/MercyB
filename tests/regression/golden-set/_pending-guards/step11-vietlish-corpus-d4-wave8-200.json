@@ -3,17 +3,9 @@
   "version": "1.0.0",
   "wiredIntoEngine": false,
   "status": "review_not_wired",
-  "count": 14,
+  "count": 9,
   "description": "A10 Wave 8 — 200 Vietlish/interference review candidates. Fresh territory: verb+preposition collocations (depend on, interested in, listen to, etc.), countable/uncountable mass nouns (information, advice, furniture), article errors (play the piano, a kind person), reported speech (said me→told me), passive form errors (write→written, build→built), emotional verb prepositions (worried for→about), conditional errors (if I will have→if I have), sports/recreation calques (play sport, practices badminton), weather calques (there have wind, today is hot weather), adverb/adjective confusion (good→well, talent→talented, success→successful), subject-verb agreement (3rd person -s), gerund/infinitive alternation (enjoy cooking, avoid making, keep talking), too-to/enough-to constructions, causative get (get fixed), make/do collocates, register calques (VN formal politeness in English), literal translation idioms (eat to your fullness, thin wallet, sweet tongue). Deduped vs live(353) + waves 1-7(1393) = 1744-item denylist. Zero collisions.",
   "entries": [
-    {
-      "vietlish": "she wins a medal of gold at the contest",
-      "natural": "she wins a gold medal at the contest",
-      "sourcePattern": "huy chương vàng (medal of gold → gold medal, adjective-noun order)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "reporting a competition victory"
-    },
     {
       "vietlish": "she has a very strong patient personality",
       "natural": "she has a very patient personality",
@@ -61,38 +53,6 @@
       "category": "collocation",
       "frequency": "low",
       "context": "pointing out conflicting details in a report"
-    },
-    {
-      "vietlish": "I invite you to please come to my house",
-      "natural": "I'd love to have you over",
-      "sourcePattern": "tôi kính mời bạn đến nhà (mời = invite, formal VN register unnecessary in casual English)",
-      "category": "register",
-      "frequency": "medium",
-      "context": "inviting a friend or classmate to your home informally"
-    },
-    {
-      "vietlish": "I report to you that the meeting is done",
-      "natural": "just wanted to let you know the meeting is done",
-      "sourcePattern": "tôi xin báo cáo (báo cáo = formal report-up, over-formal for casual workplace update)",
-      "category": "register",
-      "frequency": "medium",
-      "context": "giving a colleague a quick informal update after a meeting"
-    },
-    {
-      "vietlish": "I beg your pardon for this serious trouble",
-      "natural": "I'm really sorry for the inconvenience",
-      "sourcePattern": "kính xin tha lỗi vì sự cố (beg your pardon + serious trouble = stacked over-apology, VN formality)",
-      "category": "register",
-      "frequency": "medium",
-      "context": "apologising for a mistake or delay in a customer interaction"
-    },
-    {
-      "vietlish": "with deep respect I would like to express my opinion",
-      "natural": "I'd like to share my thoughts",
-      "sourcePattern": "với sự tôn trọng sâu sắc (deep respect opener = VN kính thưa stacked formality, odd in English opinion-sharing)",
-      "category": "register",
-      "frequency": "medium",
-      "context": "opening a class discussion or meeting contribution"
     },
     {
       "vietlish": "let the rice sit for a while",
