@@ -1417,7 +1417,7 @@ describe("AiTutor four-tab seed flow", () => {
     expect(browserSpeak).not.toHaveBeenCalled();
   });
 
-  it("reads the exact bilingual clarification follow-up aloud without advancing Speak state", async () => {
+  it("shows the bilingual VI clarification as text only — no vi audio request (DIRECTIVE V1)", async () => {
     const clarification =
       "Mercy chưa nghe rõ. Bạn nói lại câu đó nhé. I didn't catch that clearly. Can you say it again?";
     const browserSpeak = vi.fn((utterance: MockSpeechSynthesisUtterance) => {
@@ -1457,15 +1457,14 @@ describe("AiTutor four-tab seed flow", () => {
     expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
     expect(screen.getByTestId("ai-tutor-speak-follow-up-answer")).toBeInTheDocument();
 
+    // DIRECTIVE V1: Vietnamese is TEXT-ONLY on the Speak surface. The bilingual
+    // clarification must NOT be read aloud with a Vietnamese voice — clicking the
+    // read button issues no cloud-TTS request and no browser speech.
+    fetchCloudTtsUrl.mockClear();
     await userEvent.click(within(followUp).getByRole("button", { name: "Mercy đọc câu hỏi tiếp theo" }));
 
-    await waitFor(() => expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
-      text: clarification,
-      language: "vi",
-      requiredProvider: "azure",
-    }));
-    expect(MockEndingAudio.last?.src).toBe("https://example.test/clarification.mp3");
-    expect(MockEndingAudio.last?.play).toHaveBeenCalledTimes(1);
+    await new Promise((r) => setTimeout(r, 50));
+    expect(fetchCloudTtsUrl).not.toHaveBeenCalled();
     expect(browserSpeak).not.toHaveBeenCalled();
     expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent(clarification);
     expect(screen.getByTestId("ai-tutor-speak-follow-up-answer")).toBeInTheDocument();

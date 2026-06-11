@@ -276,10 +276,24 @@ async function callAiSentenceCorrection(
   }
 }
 
-function resolveSpeakFollowUpTtsTarget(text: string, fallbackTarget: TutorTarget): TutorTarget {
-  return VIETNAMESE_SPEAK_TEXT_PATTERN.test(text) || MERCY_CLARIFICATION_PREFIX_PATTERN.test(text)
-    ? "vi"
-    : fallbackTarget;
+// DIRECTIVE V1 — Speak surface voice routing: English content is read with an
+// English Azure voice; Vietnamese is TEXT-ONLY here (no vi audio). We NEVER pick
+// a Vietnamese voice for this surface — Vietnamese content is suppressed to
+// text-only instead of being read aloud (and read aloud with the wrong voice).
+function isVietnameseSpeakTarget(target: TutorTarget): boolean {
+  return String(target || "").trim().toLowerCase().split("-")[0] === "vi";
+}
+
+// A read is Vietnamese (→ text-only) when the practice target is vi, or the
+// follow-up text is a Vietnamese clarification line. The follow-up's language is
+// not carried as a field, so a Vietnamese clarification is recognised by its
+// known shape ONLY to suppress audio — never to select a Vietnamese voice.
+function speakReadIsVietnamese(text: string, target: TutorTarget): boolean {
+  return (
+    isVietnameseSpeakTarget(target) ||
+    VIETNAMESE_SPEAK_TEXT_PATTERN.test(text) ||
+    MERCY_CLARIFICATION_PREFIX_PATTERN.test(text)
+  );
 }
 
 function normalizeAiSpeakFollowUp(value: unknown): string | null {
@@ -2312,6 +2326,7 @@ export default function AiTutorPage() {
     if (tts.speaking) {
       tts.stop();
     }
+    if (speakReadIsVietnamese(text, target)) return; // VI = text-only on the Speak surface
     setSpeakingMessageId("speak-target");
     void tts.speak(text, ttsLang, target);
   };
@@ -2334,6 +2349,7 @@ export default function AiTutorPage() {
     if (tts.speaking) {
       tts.stop();
     }
+    if (speakReadIsVietnamese(text, target)) return false; // VI = text-only on the Speak surface
     setSpeakingMessageId("speak-target");
     try {
       return await tts.speak(text, ttsLang, target);
@@ -2345,7 +2361,9 @@ export default function AiTutorPage() {
   const handleReadSpeakFollowUp = () => {
     const text = speakFollowUpSession.currentQuestion?.trim() || "";
     if (speakFollowUpSession.currentIsPivot || !isSpeakFollowUpReadAloudEligible(text)) return;
-    const followUpTarget = resolveSpeakFollowUpTtsTarget(text, target);
+    // VI clarification follow-ups are text-only; English questions read with the
+    // English voice. Never select a Vietnamese voice on this surface (DIRECTIVE V1).
+    if (speakReadIsVietnamese(text, target)) return;
     if (stt.listening) {
       ignoreNextSttCommitRef.current = true;
       stt.stop();
@@ -2357,7 +2375,7 @@ export default function AiTutorPage() {
       tts.stop();
     }
     setSpeakingMessageId("speak-follow-up");
-    void tts.speak(text, getTtsLocale(followUpTarget), followUpTarget);
+    void tts.speak(text, getTtsLocale(target), target);
   };
 
   const handleSpeakRepeatInputChange = (value: string) => {
