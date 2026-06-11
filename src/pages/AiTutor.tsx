@@ -2070,8 +2070,9 @@ export default function AiTutorPage() {
 
     const next = MOCK_RESULTS_BY_TARGET[target];
     const localCorrection = buildLocalCorrection(trimmed, target);
-    if (!localCorrection.ok) {
-      // Rule engine abstains — call the live AI rather than showing a canned error (C6).
+    if (!localCorrection.ok || localCorrection.status === "unchanged") {
+      // Rule engine abstains (needs_ai) OR found no matching rules (unchanged) —
+      // call the live AI when a session token is available.
       if (session?.access_token) {
         const aiResult = await callAiSentenceCorrection(trimmed, session.access_token, explainLanguage, target);
         setLoading(false);
@@ -2107,9 +2108,13 @@ export default function AiTutorPage() {
         setError(aiResult?.explanation || GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
         return;
       }
-      setLoading(false);
-      setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
-      return;
+      // No session + rule engine abstained: show error.
+      // No session + unchanged: fall through to local display (sentence may be correct).
+      if (!localCorrection.ok) {
+        setLoading(false);
+        setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
+        return;
+      }
     }
     const corrected = localCorrection.corrected;
     const { turn } = buildCorrectionTurn({
