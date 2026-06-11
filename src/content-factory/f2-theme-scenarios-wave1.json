@@ -1,0 +1,335 @@
+{
+  "corpus": "f2-theme-scenarios-wave1",
+  "productLine": "theme-scenario-deepening",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F2",
+  "authoredAt": "2026-06-10",
+  "wave": 1,
+  "description": "F2 Content Factory — theme/scenario deepening wave 1. New scenario cards for three existing low-depth themes: documents, services, government. Each card is promotion-ready: labelEn, labelVi, category, seedInputs, l1InterferenceNotes (VN diacritics, 2+ notes), followUps (5+). Agent note: the 'haircut' topic in services.ts is superseded by the new standalone haircutCustomer.ts — the new scenarios below target sub-domains not covered there.",
+  "themes": [
+    {
+      "themeId": "documents",
+      "themeDescription": "Deeper coverage of US document scenarios that a newly arrived or diaspora Vietnamese learner commonly faces.",
+      "scenarios": [
+        {
+          "id": "topic-documents-notary",
+          "labelEn": "Getting A Document Notarized",
+          "labelVi": "Công chứng tài liệu",
+          "category": "documents",
+          "seedInputs": [
+            "I need to get this document notarized.",
+            "Where can I find a notary public?"
+          ],
+          "l1InterferenceNotes": [
+            {
+              "id": "documents-notary-term",
+              "label": "Notary vs. notarize",
+              "note": "Tiếng Việt: 'công chứng'. Tiếng Anh: the person is a 'notary' (or 'notary public'); the action is 'to notarize' ('I need to get this notarized'). You'll see it at banks, UPS Store, and libraries — most are free or under $10."
+            },
+            {
+              "id": "documents-notary-bring",
+              "label": "What to bring",
+              "note": "Always bring a government-issued photo ID (driver's license, passport). The notary checks your identity, not the content of the document. 'I have my ID' is the first thing to say."
+            },
+            {
+              "id": "documents-notary-sign-in-front",
+              "label": "Don't sign it before you arrive",
+              "note": "'Ký trước' — a common misunderstanding: you MUST sign the document IN FRONT of the notary, not beforehand. If you already signed, they may refuse to notarize it."
+            }
+          ],
+          "followUps": [
+            { "id": "documents-notary-place-fu", "question": "Where can you get a document notarized near you?" },
+            { "id": "documents-notary-id-fu", "question": "What ID do you bring to the notary?" },
+            { "id": "documents-notary-sign-fu", "question": "When should you sign the document — before or after you arrive?" },
+            { "id": "documents-notary-cost-fu", "question": "What does notarization usually cost?" },
+            { "id": "documents-notary-types-fu", "question": "What kinds of documents often need notarization?" }
+          ]
+        },
+        {
+          "id": "topic-documents-proof-of-residence",
+          "labelEn": "Providing Proof Of Residence",
+          "labelVi": "Cung cấp bằng chứng cư trú",
+          "category": "documents",
+          "seedInputs": [
+            "I need to show proof that I live at this address.",
+            "What counts as proof of residence?"
+          ],
+          "l1InterferenceNotes": [
+            {
+              "id": "documents-por-what-counts",
+              "label": "What 'proof of residence' means",
+              "note": "Tiếng Việt: 'bằng chứng cư trú' hay 'xác nhận địa chỉ'. In English, 'proof of residence' or 'proof of address' usually means a document showing your name + address: a utility bill, bank statement, lease, or official mail. The same idea as 'hộ khẩu' but in document format."
+            },
+            {
+              "id": "documents-por-recent",
+              "label": "Must be recent",
+              "note": "Most agencies want proof from the last 30–90 days ('recent' or 'current'). A bill from a year ago is rarely accepted. 'Do you need a recent one?' is a safe question to ask."
+            },
+            {
+              "id": "documents-por-not-mail",
+              "label": "Not just any mail",
+              "note": "Junk mail and advertisements don't count. The document needs your name AND address AND an official header (bank, utility, government). 'Official letter' is the phrase to use when explaining."
+            }
+          ],
+          "followUps": [
+            { "id": "documents-por-list-fu", "question": "Name two documents that count as proof of residence." },
+            { "id": "documents-por-how-old-fu", "question": "How recent does proof of residence usually need to be?" },
+            { "id": "documents-por-ask-fu", "question": "How would you ask what documents they accept?" },
+            { "id": "documents-por-no-bills-fu", "question": "What would you say if you don't have utility bills in your name?" },
+            { "id": "documents-por-digital-fu", "question": "Can you use a digital/downloaded document or does it need to be printed?" }
+          ]
+        },
+        {
+          "id": "topic-documents-passport-renewal",
+          "labelEn": "Renewing Your Passport",
+          "labelVi": "Gia hạn hộ chiếu",
+          "category": "documents",
+          "seedInputs": [
+            "My passport is expiring soon and I need to renew it.",
+            "How do I renew my passport?"
+          ],
+          "l1InterferenceNotes": [
+            {
+              "id": "documents-passport-6month",
+              "label": "The 6-month rule",
+              "note": "Nhiều nước yêu cầu hộ chiếu còn hiệu lực ít nhất 6 tháng kể từ ngày nhập cảnh. 'My passport expires in 4 months' — you may be turned away from some countries even though it hasn't expired yet."
+            },
+            {
+              "id": "documents-passport-renew-vs-new",
+              "label": "Renew vs. apply for a new one",
+              "note": "If you have a valid or recently-expired US passport you 'renew' it (simpler form, no in-person appointment needed). If it's your first time or it was lost/stolen you 'apply' (in-person required). 'Is this a renewal or a new application?' is the first question at the post office."
+            },
+            {
+              "id": "documents-passport-photo-rules",
+              "label": "Passport photo rules",
+              "note": "Tiếng Việt: 'ảnh thẻ'. US passport photos have strict rules: white background, no glasses, neutral expression, taken within the last 6 months. Most pharmacies (CVS, Walgreens) offer the service. 'I need a passport photo' is the phrase."
+            }
+          ],
+          "followUps": [
+            { "id": "documents-passport-when-fu", "question": "How early should you renew your passport before it expires?" },
+            { "id": "documents-passport-where-fu", "question": "Where can you renew a US passport?" },
+            { "id": "documents-passport-photo-fu", "question": "What are the requirements for a passport photo?" },
+            { "id": "documents-passport-fast-fu", "question": "What would you say if you need your passport urgently?" },
+            { "id": "documents-passport-fee-fu", "question": "What does passport renewal cost, and how do you pay?" }
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "services",
+      "themeDescription": "Deeper service scenarios beyond laundry and haircut — covering alterations, package shipping, and key cutting/locksmith which are common for newcomers.",
+      "scenarios": [
+        {
+          "id": "topic-services-alterations",
+          "labelEn": "Getting Clothes Altered",
+          "labelVi": "Sửa quần áo",
+          "category": "service",
+          "seedInputs": [
+            "I need these pants taken in — they're too loose.",
+            "Can you hem these trousers for me?"
+          ],
+          "l1InterferenceNotes": [
+            {
+              "id": "services-alterations-vocab",
+              "label": "Alteration vocabulary",
+              "note": "Tiếng Việt 'sửa quần áo' = 'alterations' in English. Key words: 'hem' (gấu quần/váy), 'take in' (bóp lại cho vừa), 'let out' (nới rộng ra), 'shorten' (cắt ngắn), 'tighten the waist' (thắt lưng cho vừa). Pointing + 'Can you make it shorter/tighter/looser here?' also works."
+            },
+            {
+              "id": "services-alterations-fitting",
+              "label": "The fitting",
+              "note": "The tailor will ask you to 'try it on' (mặc thử) so they can mark the changes with chalk or pins. 'Does this look right?' or 'Is this the right length?' are safe questions."
+            },
+            {
+              "id": "services-alterations-ready",
+              "label": "When will it be ready?",
+              "note": "Common question: 'When will it be ready?' ('Bao giờ xong?'). Answer will be '2–3 days' or 'come back Thursday.' Write it down if you're unsure you caught the day correctly."
+            }
+          ],
+          "followUps": [
+            { "id": "services-alterations-what-fu", "question": "What change do you want made to the item?" },
+            { "id": "services-alterations-fit-fu", "question": "How would you describe where it feels too loose or too tight?" },
+            { "id": "services-alterations-when-fu", "question": "How would you ask when the item will be ready?" },
+            { "id": "services-alterations-price-fu", "question": "How would you ask for the price before agreeing?" },
+            { "id": "services-alterations-pickup-fu", "question": "What do you say when you come back to pick it up?" }
+          ]
+        },
+        {
+          "id": "topic-services-package-shipping",
+          "labelEn": "Sending A Package",
+          "labelVi": "Gửi bưu kiện",
+          "category": "service",
+          "seedInputs": [
+            "I want to send this box to Vietnam.",
+            "How much does it cost to mail this package?"
+          ],
+          "l1InterferenceNotes": [
+            {
+              "id": "services-shipping-mail-vs-ship",
+              "label": "Mail vs. ship",
+              "note": "Tiếng Việt: 'gửi'. Tiếng Anh: 'mail' (thư và gói nhỏ, qua bưu điện) và 'ship' (hàng lớn hơn). At a post office, 'I'd like to mail this' or 'I'd like to ship this' both work."
+            },
+            {
+              "id": "services-shipping-customs",
+              "label": "Customs declaration",
+              "note": "Khi gửi quốc tế, bạn cần điền 'customs form' (tờ khai hải quan). Staff will say 'You need to fill out a customs declaration.' The key fields: what's inside, value in USD, your name/address, receiver's name/address."
+            },
+            {
+              "id": "services-shipping-weight",
+              "label": "Weight determines the price",
+              "note": "Giá gửi phụ thuộc vào cân nặng và kích thước ('weight and dimensions'). The counter will weigh the package in front of you. 'How much would this be by regular mail vs express?' is a useful comparison question."
+            }
+          ],
+          "followUps": [
+            { "id": "services-shipping-where-fu", "question": "Where are you sending the package?" },
+            { "id": "services-shipping-options-fu", "question": "How would you ask about the different shipping speed options?" },
+            { "id": "services-shipping-contents-fu", "question": "How would you describe what's inside the package?" },
+            { "id": "services-shipping-customs-fu", "question": "What form do you need to fill out for international packages?" },
+            { "id": "services-shipping-tracking-fu", "question": "How would you ask for a tracking number?" }
+          ]
+        },
+        {
+          "id": "topic-services-key-locksmith",
+          "labelEn": "Key Cutting And Locksmith",
+          "labelVi": "Làm chìa khóa và thợ khóa",
+          "category": "service",
+          "seedInputs": [
+            "I need to make a copy of this key.",
+            "I locked myself out of my apartment."
+          ],
+          "l1InterferenceNotes": [
+            {
+              "id": "services-key-cut-copy",
+              "label": "Cut a key vs copy a key",
+              "note": "Tiếng Việt: 'cắt chìa khóa' hay 'làm chìa phụ'. Tiếng Anh: 'make a copy of my key' or 'I need a duplicate key' or 'Can you cut a key from this one?' — all work at a hardware store or locksmith."
+            },
+            {
+              "id": "services-key-lockout",
+              "label": "Locked out",
+              "note": "Bị khoá ngoài: 'I'm locked out' or 'I locked myself out.' Để gọi thợ khóa khẩn cấp: 'I need a locksmith — it's an emergency.' They will ask for proof you live there (ID with the address or a utility bill photo on your phone)."
+            },
+            {
+              "id": "services-key-landlord-first",
+              "label": "Try the landlord first",
+              "note": "If you rent, the landlord often has a spare key ('spare key' / 'backup key'). Calling them first is cheaper than a locksmith emergency fee which can be $150–$300. 'Do you have a spare key?' is the first call to make."
+            }
+          ],
+          "followUps": [
+            { "id": "services-key-type-fu", "question": "What kind of key do you need — house, car, mailbox, padlock?" },
+            { "id": "services-key-copy-fu", "question": "How do you ask for a duplicate key from the original?" },
+            { "id": "services-key-lockout-fu", "question": "What would you say if you're locked out of your home?" },
+            { "id": "services-key-time-fu", "question": "How long does key cutting usually take?" },
+            { "id": "services-key-emergency-fu", "question": "How would you find an emergency locksmith late at night?" }
+          ]
+        }
+      ]
+    },
+    {
+      "themeId": "government",
+      "themeDescription": "Deeper government-service scenarios beyond the existing topic set — covering Social Security office, translation requests, and fee waivers.",
+      "scenarios": [
+        {
+          "id": "topic-government-social-security",
+          "labelEn": "Social Security Office Visit",
+          "labelVi": "Đến văn phòng An sinh Xã hội",
+          "category": "government",
+          "seedInputs": [
+            "I need to get a Social Security card.",
+            "I need to correct my name on my Social Security card."
+          ],
+          "l1InterferenceNotes": [
+            {
+              "id": "government-ssa-what-for",
+              "label": "What the SSA office does",
+              "note": "Tiếng Việt: 'cơ quan An sinh Xã hội'. Phần lớn mọi người đến để (1) xin thẻ SSN lần đầu, (2) thay thế thẻ bị mất, (3) cập nhật tên sau khi lấy chồng/vợ, (4) hỏi về lương hưu hoặc trợ cấp. Hỏi rõ 'I'm here for [reason]' at the front desk."
+            },
+            {
+              "id": "government-ssa-appointment",
+              "label": "Appointment vs. walk-in",
+              "note": "Many SSA offices require appointments now. 'Do I need an appointment?' is the first thing to check on their website or by calling. 'Walk-in' hours are limited. Arriving without an appointment may mean waiting 2+ hours."
+            },
+            {
+              "id": "government-ssa-documents",
+              "label": "Documents to bring",
+              "note": "Thường cần: (1) immigration document (I-94, green card, visa) proving work authorization, (2) identity document (passport), (3) proof of address. 'What documents do I need to bring?' is a fair question to ask when booking the appointment."
+            }
+          ],
+          "followUps": [
+            { "id": "government-ssa-reason-fu", "question": "What is the main reason for your visit to the SSA office?" },
+            { "id": "government-ssa-appt-fu", "question": "How would you make an appointment at the Social Security office?" },
+            { "id": "government-ssa-docs-fu", "question": "What documents would you bring to apply for a Social Security card?" },
+            { "id": "government-ssa-name-fu", "question": "How would you explain that the name on your card needs to be corrected?" },
+            { "id": "government-ssa-wait-fu", "question": "What would you say at the front desk to let them know you have an appointment?" }
+          ]
+        },
+        {
+          "id": "topic-government-requesting-interpreter",
+          "labelEn": "Requesting An Interpreter",
+          "labelVi": "Yêu cầu phiên dịch",
+          "category": "government",
+          "seedInputs": [
+            "I don't speak English well. Can I have an interpreter?",
+            "Do you have a Vietnamese interpreter?"
+          ],
+          "l1InterferenceNotes": [
+            {
+              "id": "government-interpreter-right",
+              "label": "Your right to language access",
+              "note": "Tiếng Việt: 'phiên dịch'. In the US, government agencies that receive federal funding MUST provide language access for free under Title VI. 'I need language assistance' or 'Do you have interpretation services?' is a formal way to ask for this right."
+            },
+            {
+              "id": "government-interpreter-phone",
+              "label": "Phone interpreter is common",
+              "note": "Most offices use a phone or tablet interpretation service (like Language Line). The officer calls them, hands you the phone, and they interpret back and forth. It is slower but effective. 'Can we use the phone interpreter?' is the phrase."
+            },
+            {
+              "id": "government-interpreter-bring",
+              "label": "Bringing your own vs. using theirs",
+              "note": "Bạn có thể tự mang người quen đến dịch, nhưng đối với các cuộc phỏng vấn quan trọng (asylum, court, benefits) bạn nên dùng thông dịch chính thức của cơ quan để bảo vệ quyền lợi của mình."
+            }
+          ],
+          "followUps": [
+            { "id": "government-interpreter-ask-fu", "question": "How do you ask for an interpreter when you arrive?" },
+            { "id": "government-interpreter-phone-fu", "question": "How does a phone interpretation service work?" },
+            { "id": "government-interpreter-wait-fu", "question": "What would you say if the interpreter is hard to hear or unclear?" },
+            { "id": "government-interpreter-right-fu", "question": "Is language assistance at government offices free?" },
+            { "id": "government-interpreter-advance-fu", "question": "How would you request an interpreter in advance when scheduling an appointment?" }
+          ]
+        },
+        {
+          "id": "topic-government-fee-waiver",
+          "labelEn": "Asking About Fee Waivers",
+          "labelVi": "Xin miễn giảm lệ phí",
+          "category": "government",
+          "seedInputs": [
+            "I can't afford the application fee. Is there a waiver?",
+            "Do you have a low-income fee waiver?"
+          ],
+          "l1InterferenceNotes": [
+            {
+              "id": "government-waiver-what",
+              "label": "What a fee waiver is",
+              "note": "Tiếng Việt: 'miễn giảm lệ phí'. A 'fee waiver' means the agency reduces or eliminates the application fee if you meet income requirements. Common for immigration forms (USCIS Form I-912), court filings, and some government ID services."
+            },
+            {
+              "id": "government-waiver-how-to-ask",
+              "label": "How to ask without embarrassment",
+              "note": "Asking for a fee waiver is a legal right, not charity. 'Do you have a fee waiver for low-income applicants?' is a professional question. There's no shame in asking — staff process these requests every day."
+            },
+            {
+              "id": "government-waiver-docs",
+              "label": "Documents needed",
+              "note": "Usually you need to show proof of income: recent tax return, pay stubs, or proof of receiving public benefits (Medicaid, SNAP, SSI). 'What proof of income do I need for the fee waiver?' is the right question."
+            }
+          ],
+          "followUps": [
+            { "id": "government-waiver-eligible-fu", "question": "How would you ask if you qualify for a fee waiver?" },
+            { "id": "government-waiver-docs-fu", "question": "What documents do you usually need to apply for a fee waiver?" },
+            { "id": "government-waiver-form-fu", "question": "Is there a separate form to request a fee waiver, or is it part of the main application?" },
+            { "id": "government-waiver-time-fu", "question": "How long does it take to find out if your fee waiver is approved?" },
+            { "id": "government-waiver-denied-fu", "question": "What would you ask if your fee waiver is denied?" }
+          ]
+        }
+      ]
+    }
+  ]
+}

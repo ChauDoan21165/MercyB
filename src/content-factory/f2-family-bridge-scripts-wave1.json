@@ -1,0 +1,248 @@
+{
+  "corpus": "f2-family-bridge-scripts-wave1",
+  "productLine": "step13-family-bridge",
+  "status": "review_queue_needs_chau",
+  "authoredBy": "F2",
+  "authoredAt": "2026-06-10",
+  "wave": 1,
+  "description": "F2 Content Factory — Step-13 family-bridge bilingual scripts wave 1. Five shame-free EN–VN conversation scripts for Vietnamese diaspora learners navigating real family conversations. Each script is self-contained: situation, phrases the learner says in English, the family member's Vietnamese, bridge notes, and warm cultural commentary. Full Vietnamese diacritics throughout. Not engine-wired; Chau validation required before any render.",
+  "voiceContract": {
+    "learner": "Vietnamese diaspora adult who speaks English as primary language and Vietnamese at various levels of fluency. Voice is warm, natural, identity-affirming — not corrective.",
+    "familyMember": "Vietnamese-speaking parent, grandparent, or elder sibling. Voice is warm, naturally curious, not judgment-casting.",
+    "framingRule": "No learner is 'losing their Vietnamese'. They are holding TWO identities. Every script ends with connection, not shame.",
+    "languageMix": "Learner speaks primarily in English. Family member speaks primarily in Vietnamese. Bridge phrases show the natural mixing that actually happens."
+  },
+  "scripts": [
+    {
+      "id": "fb-s01-explain-job",
+      "title": "Explaining your job to Grandma",
+      "titleVi": "Kể công việc của mình với bà ngoại",
+      "situation": "You're visiting family. Your grandmother (bà ngoại) keeps asking what you do for work. You work in tech / healthcare / finance — something hard to explain in simple Vietnamese.",
+      "situationVi": "Bạn về thăm gia đình. Bà ngoại hỏi bạn làm nghề gì. Công việc của bạn khó dịch sang tiếng Việt đơn giản — ví dụ lập trình, y tá, hay phân tích tài chính.",
+      "culturalNote": "In Vietnamese family culture, asking about work is a form of love and interest, not interrogation. Bà ngoại wants to understand your life so she can talk about you proudly to her friends. Even a short answer she can repeat to others is the whole goal.",
+      "culturalNoteVi": "Hỏi 'con làm gì' là cách bà ngoại thể hiện sự quan tâm, không phải thẩm vấn. Bà muốn hiểu cuộc sống của bạn để có thể kể với hàng xóm. Một câu trả lời ngắn gọn để bà kể lại là đủ rồi.",
+      "exchanges": [
+        {
+          "family": {
+            "vi": "Con làm nghề gì vậy? Mấy chú họ cứ hỏi bà mà bà không biết trả lời.",
+            "en_gloss": "What do you do for work? Your relatives keep asking me and I don't know what to say."
+          },
+          "learner": {
+            "en": "I work with computers, Bà. I help companies fix problems with their software.",
+            "viSupport": "Con làm việc với máy tính. Con giúp các công ty sửa lỗi phần mềm.",
+            "bridgeNote": "Use the Vietnamese word 'phần mềm' (software) — it's widely understood now. 'Máy tính' is safe. Avoid technical jargon."
+          }
+        },
+        {
+          "family": {
+            "vi": "Ờ, như vậy là ngồi văn phòng hay ra ngoài?",
+            "en_gloss": "I see — so you sit in an office or go out?"
+          },
+          "learner": {
+            "en": "I mostly work from home now, Bà. On the computer all day.",
+            "viSupport": "Con làm việc ở nhà. Ngồi trước máy tính cả ngày.",
+            "bridgeNote": "'Làm việc ở nhà' is perfectly understood. You don't need to say 'work from home' in English."
+          }
+        },
+        {
+          "family": {
+            "vi": "Vậy lương cao không con? Con có đủ tiền không?",
+            "en_gloss": "Does it pay well? Are you making enough money?"
+          },
+          "learner": {
+            "en": "Yes, it pays pretty well. I'm doing okay, Bà — don't worry.",
+            "viSupport": "Dạ, con ổn rồi bà ơi. Đừng lo cho con.",
+            "bridgeNote": "The question feels personal by Western standards but is pure care. A warm reassurance closes the loop better than deflecting."
+          }
+        }
+      ],
+      "closingWarm": "Your grandmother now has two sentences to tell the neighbours: 'Con tôi làm máy tính, lương tốt lắm.' That's the whole win.",
+      "closingWarmVi": "Bà ngoại bây giờ có thể nói với hàng xóm: 'Con tôi làm máy tính, lương tốt lắm.' Đó là mục tiêu của cuộc trò chuyện này."
+    },
+    {
+      "id": "fb-s02-health-checkin",
+      "title": "Checking in on Mẹ's health",
+      "titleVi": "Hỏi thăm sức khỏe của mẹ",
+      "situation": "You call your mother (mẹ) in Vietnam on a video call. You want to ask how she's doing — her health, her daily life — but you're used to English short check-ins and she's used to longer, fuller conversations.",
+      "situationVi": "Bạn gọi video cho mẹ ở Việt Nam. Bạn muốn hỏi thăm sức khỏe và cuộc sống của mẹ nhưng bạn quen với kiểu trò chuyện ngắn gọn bằng tiếng Anh, còn mẹ quen nói chuyện dài hơn.",
+      "culturalNote": "Vietnamese check-in calls are not 5-minute affairs. Your mother will interpret a short call as you being too busy to care, or as something being wrong. Lean in — give time, not just information.",
+      "culturalNoteVi": "Gọi điện thăm hỏi gia đình Việt Nam không phải chuyện 5 phút. Mẹ bạn sẽ hiểu cuộc gọi ngắn là bạn quá bận hoặc có chuyện gì. Hãy dành thời gian, không chỉ thông tin.",
+      "exchanges": [
+        {
+          "family": {
+            "vi": "Alo con! Con khỏe không? Bận quá không gọi cho mẹ?",
+            "en_gloss": "Hello sweetheart! Are you well? Too busy to call?"
+          },
+          "learner": {
+            "en": "Hi Mẹ! I'm good. Sorry I haven't called in a while. How are you feeling?",
+            "viSupport": "Dạ con khỏe mẹ ơi. Con xin lỗi lâu không gọi. Mẹ có khoẻ không?",
+            "bridgeNote": "The apology before asking about her health is the right order — it acknowledges the gap before shifting focus to her."
+          }
+        },
+        {
+          "family": {
+            "vi": "Mẹ bình thường, lưng mẹ đau chút, con ơi. Già rồi nó vậy.",
+            "en_gloss": "I'm okay, my back hurts a little. That's just getting old."
+          },
+          "learner": {
+            "en": "Oh no, Mẹ — is it better now? Are you taking medicine for it?",
+            "viSupport": "Ôi, mẹ ơi — bây giờ đỡ hơn chưa? Mẹ có uống thuốc không?",
+            "bridgeNote": "Follow-up questions signal you're actually listening. Don't pivot to your own news yet."
+          }
+        },
+        {
+          "family": {
+            "vi": "Uống rồi. Thôi kể chuyện con đi, lâu quá không biết con sống sao.",
+            "en_gloss": "I take medicine. Enough about me — tell me about your life."
+          },
+          "learner": {
+            "en": "Work has been really busy, Mẹ. But I'm eating well and sleeping okay — don't worry.",
+            "viSupport": "Công việc bận lắm mẹ ơi. Nhưng con ăn uống đủ rồi, ngủ cũng ổn — đừng lo.",
+            "bridgeNote": "Lead with reassurance about basics — eating and sleeping — before diving into the busy-ness. That's what she's actually asking."
+          }
+        }
+      ],
+      "closingWarm": "She wanted to know you're okay. The health details are bonus. You leaving the call first is worse than not calling — let her end it.",
+      "closingWarmVi": "Mẹ muốn biết bạn ổn. Chi tiết cuộc sống là thêm. Đừng cúp máy trước mẹ — để mẹ kết thúc cuộc gọi."
+    },
+    {
+      "id": "fb-s03-apologize-cant-visit",
+      "title": "Apologizing for not being able to visit",
+      "titleVi": "Xin lỗi khi bận không thể về thăm gia đình",
+      "situation": "Tết is coming — or there's a family wedding, or a sick relative — and you genuinely cannot go. You need to tell your parents without sounding like work is more important than family.",
+      "situationVi": "Tết đến hoặc có đám cưới, người thân bệnh — và bạn thực sự không về được. Bạn cần báo với bố mẹ mà không khiến họ cảm thấy công việc quan trọng hơn gia đình.",
+      "culturalNote": "In Vietnamese family expectations, absence at significant occasions — especially Tết — can carry long emotional memory. Lead with regret, give a concrete reason, and offer an alternative before any practical logistics.",
+      "culturalNoteVi": "Trong gia đình Việt, vắng mặt dịp quan trọng — nhất là Tết — có thể để lại cảm xúc lâu dài. Hãy bày tỏ hối tiếc thật lòng, đưa ra lý do cụ thể, và đề nghị một phương án thay thế trước khi bàn đến thực tế.",
+      "exchanges": [
+        {
+          "family": {
+            "vi": "Tết này con về không? Cả nhà mong lắm.",
+            "en_gloss": "Are you coming home for Tết? The whole family is hoping."
+          },
+          "learner": {
+            "en": "Mẹ ơi — I'm so sorry. I really wanted to come but I can't this year. My work schedule doesn't allow it.",
+            "viSupport": "Mẹ ơi, con xin lỗi lắm. Con muốn về lắm nhưng năm nay con không về được. Lịch làm việc của con không cho phép.",
+            "bridgeNote": "Start with the apology AND the regret — not just the fact. 'I really wanted to come' does more work than 'I can't'."
+          }
+        },
+        {
+          "family": {
+            "vi": "Tại sao vậy con? Mấy năm rồi con chưa về.",
+            "en_gloss": "Why? It's been years since you last came home."
+          },
+          "learner": {
+            "en": "I know, Mẹ. It makes me really sad too. I have a big deadline at work right after New Year — I can't leave.",
+            "viSupport": "Con biết mẹ ơi. Con cũng buồn lắm. Con có deadline lớn ngay sau Tết — con không thể đi được.",
+            "bridgeNote": "'It makes me sad too' mirrors her feeling before explaining the reason. This prevents the explanation sounding like an excuse."
+          }
+        },
+        {
+          "family": {
+            "vi": "Thôi được rồi. Nhưng mẹ nhớ con lắm.",
+            "en_gloss": "Okay. But I miss you so much."
+          },
+          "learner": {
+            "en": "I miss you too, Mẹ. Can we do a big video call on Tết morning? I want to see everyone.",
+            "viSupport": "Con nhớ mẹ lắm. Mình có thể gọi video buổi sáng mùng một không mẹ? Con muốn nhìn thấy mọi người.",
+            "bridgeNote": "Offer the alternative immediately after the acceptance. It turns the absence into an appointment — something to look forward to."
+          }
+        }
+      ],
+      "closingWarm": "You didn't fix the absence. But you made her feel it mattered, and you gave her something to tell the rest of the family: 'Con gọi mùng một.' That's real.",
+      "closingWarmVi": "Bạn không xóa được sự vắng mặt. Nhưng bạn để mẹ biết điều đó quan trọng với bạn, và bạn trao cho mẹ một điều để kể với cả nhà: 'Con gọi mùng một.' Vậy là thật rồi."
+    },
+    {
+      "id": "fb-s04-talking-about-friends",
+      "title": "Talking about your friends and social life",
+      "titleVi": "Kể về bạn bè và cuộc sống xã hội",
+      "situation": "Your parents are curious about who you spend time with. They want to know your friends — especially if there's a significant other they haven't met. This conversation is filled with invisible values: who you're close to, whether they're Vietnamese, whether you're 'safe'.",
+      "situationVi": "Bố mẹ tò mò về những người bạn dành thời gian cùng. Họ muốn biết bạn bè của bạn — nhất là nếu có người yêu họ chưa gặp. Cuộc trò chuyện này chứa đầy các giá trị vô hình: bạn thân với ai, có phải người Việt không, bạn có 'an toàn' không.",
+      "culturalNote": "Vietnamese parents often ask about friends as a way of asking: are you safe? are you with good people? are you maintaining community? Answer these underlying questions, not just the surface ones.",
+      "culturalNoteVi": "Bố mẹ Việt hỏi về bạn bè là cách hỏi: con có an toàn không? con ở với người tốt không? con có giữ cộng đồng không? Hãy trả lời những câu hỏi ngầm này, không chỉ câu hỏi bề mặt.",
+      "exchanges": [
+        {
+          "family": {
+            "vi": "Con hay đi chơi với ai vậy? Bạn bè ở đó người ta thế nào?",
+            "en_gloss": "Who do you hang out with? What are the people there like?"
+          },
+          "learner": {
+            "en": "I have a few close friends, Bố. Some from work, some from the Vietnamese community here.",
+            "viSupport": "Con có vài người bạn thân, bố ơi. Một số từ chỗ làm, một số từ cộng đồng người Việt ở đây.",
+            "bridgeNote": "Mentioning the Vietnamese community first relieves a specific anxiety parents often carry. It signals community connection."
+          }
+        },
+        {
+          "family": {
+            "vi": "Bạn người Việt hay người Mỹ?",
+            "en_gloss": "Vietnamese friends or American friends?"
+          },
+          "learner": {
+            "en": "Both, Bố. I have Vietnamese friends and American friends. It's a good mix.",
+            "viSupport": "Cả hai bố ơi. Con có bạn Việt và bạn Mỹ. Ổn lắm.",
+            "bridgeNote": "Don't be defensive about non-Vietnamese friends — that makes them seem like a problem. Frame it as richness, not deficiency."
+          }
+        },
+        {
+          "family": {
+            "vi": "Vậy con có ai đặc biệt chưa? Bố mẹ muốn biết.",
+            "en_gloss": "Is there anyone special in your life? We want to know."
+          },
+          "learner": {
+            "en": "Not yet, Bố — but when there is, you'll be the first to know. I promise.",
+            "viSupport": "Chưa có bố ơi — nhưng khi có, bố mẹ sẽ là người đầu tiên biết. Con hứa.",
+            "bridgeNote": "The promise to tell them first is the whole reassurance. It signals they're not excluded from your life — they matter."
+          }
+        }
+      ],
+      "closingWarm": "This conversation isn't really about your friends. It's about whether they're still part of your world. The answer 'you'll be the first to know' is a gift.",
+      "closingWarmVi": "Cuộc trò chuyện này không thực sự về bạn bè của bạn. Đó là câu hỏi liệu họ có còn là một phần trong thế giới của bạn không. Câu trả lời 'bố mẹ sẽ là người đầu tiên biết' là một món quà."
+    },
+    {
+      "id": "fb-s05-asking-about-vietnam",
+      "title": "Asking about the family's life in Vietnam",
+      "titleVi": "Hỏi về cuộc sống của gia đình ở Việt Nam",
+      "situation": "You want to ask your grandparents or older relatives about their life — about the old neighbourhood, the family history, the things that happened before you were born. You're curious but nervous about what might be painful to recall.",
+      "situationVi": "Bạn muốn hỏi ông bà hoặc họ hàng lớn tuổi về cuộc sống của họ — về xóm cũ, lịch sử gia đình, những chuyện xảy ra trước khi bạn ra đời. Bạn tò mò nhưng lo sợ có thể chạm đến những ký ức đau.",
+      "culturalNote": "Older Vietnamese relatives may have lived through war, displacement, and loss. Asking about history is meaningful and respectful — it says 'your story matters to me'. But follow their lead: if they change the subject, let them. The conversation can always come back another day.",
+      "culturalNoteVi": "Ông bà người Việt có thể đã trải qua chiến tranh, ly tán, và mất mát. Hỏi về lịch sử là điều có ý nghĩa và tôn trọng — đó là cách nói 'câu chuyện của ông bà quan trọng với cháu'. Nhưng hãy theo sự dẫn dắt của họ: nếu họ chuyển sang chủ đề khác, hãy để như vậy. Cuộc trò chuyện có thể tiếp tục vào lần sau.",
+      "exchanges": [
+        {
+          "family": {
+            "vi": "Cháu về thăm ông bà lâu không?",
+            "en_gloss": "How long are you visiting us?"
+          },
+          "learner": {
+            "en": "Two weeks, Ông. I wanted to spend time with you — and I've been wanting to ask you about the old days, if that's okay.",
+            "viSupport": "Hai tuần ông ơi. Cháu muốn ở bên ông bà — và cháu muốn hỏi ông về ngày xưa, nếu ông không ngại.",
+            "bridgeNote": "'If that's okay / nếu ông không ngại' opens a door without pushing. It gives them control over whether to enter."
+          }
+        },
+        {
+          "family": {
+            "vi": "Hỏi gì cũng được, cháu ơi. Ông già rồi, kể được cái gì thì kể.",
+            "en_gloss": "You can ask anything. I'm old now — I'll tell you what I can."
+          },
+          "learner": {
+            "en": "Where did you grow up, Ông? What was the neighbourhood like?",
+            "viSupport": "Ông lớn lên ở đâu ông ơi? Xóm đó như thế nào?",
+            "bridgeNote": "Start with a geography/place question — it's the safest entry point. Place memories are warm before they get complex."
+          }
+        },
+        {
+          "family": {
+            "vi": "Ông sinh ở Quảng Nam. Cái làng nhỏ thôi, nhưng đẹp lắm cháu ơi. Bây giờ không còn nữa.",
+            "en_gloss": "I was born in Quảng Nam. A small village — but it was beautiful. It's gone now."
+          },
+          "learner": {
+            "en": "It sounds beautiful, Ông. Can you tell me more? I want to remember it too.",
+            "viSupport": "Nghe đẹp quá ông ơi. Ông kể thêm được không? Cháu muốn nhớ theo ông.",
+            "bridgeNote": "'I want to remember it too' — this phrase carries the whole weight. You're not extracting data. You're joining his memory.",
+            "bridgeNoteVi": "'Cháu muốn nhớ theo ông' — câu này mang đủ ý nghĩa. Bạn không lấy thông tin. Bạn đang tham gia vào ký ức của ông."
+          }
+        }
+      ],
+      "closingWarm": "You don't need to know the whole story in one sitting. These conversations are seeds. Come back to them. The fact that you asked at all is what matters.",
+      "closingWarmVi": "Bạn không cần biết toàn bộ câu chuyện trong một lần ngồi. Những cuộc trò chuyện này là những hạt giống. Hãy quay lại với chúng. Điều quan trọng là bạn đã hỏi."
+    }
+  ]
+}

@@ -1,0 +1,403 @@
+{
+  "corpus": "f2-interference-taxonomy-wave1",
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F2",
+  "authoredAt": "2026-06-10",
+  "wave": 1,
+  "schemaBasis": "src/data/placement/vnL1Interference.ts (VNL1Pattern)",
+  "description": "F2 Content Factory — VN→EN interference taxonomy wave 1. Twelve patterns in the semantic, aspectual, lexical, and clause-structure domains that complement the existing phonology-heavy taxonomy in vnL1Interference.ts. Full diacritics throughout. Not yet wired to the correction engine; promotion is a separate agent task.",
+  "patterns": [
+    {
+      "id": "serial_verb_go_buy_transfer",
+      "category": "syntax",
+      "name": "Serial verb construction transfer",
+      "shortDescription": "Vietnamese serial verbs (đi mua, về ăn) translate word-for-word as 'go buy', 'come eat' — missing the English infinitive marker or purposive connector.",
+      "longDescription": "Vietnamese freely chains verbs in sequence with no connector: 'đi mua rau' (go buy vegetables), 'về ngủ' (come back sleep). In English the same meanings need 'go (to) buy vegetables' or 'come home and sleep'. Vietnamese learners often drop the infinitive-to or conjoin the bare verbs because the V1-V2 serial frame feels complete. The error is invisible to the learner because the Vietnamese mental model already has a subject, two verbs, and an object.",
+      "vietnameseRoot": "Tiếng Việt ghép động từ liên tiếp mà không cần từ nối. 'Đi mua', 'về ăn', 'ra nhìn' là những cấu trúc bình thường. Tiếng Anh cần thêm 'to' hoặc 'and' giữa hai động từ tùy ngữ cảnh.",
+      "examples": [
+        {
+          "incorrect": "Let's go buy some food.",
+          "corrected": "Let's go buy some food.",
+          "gloss": "Câu này thực ra đúng — go + bare infinitive được phép sau let's",
+          "context": "Trường hợp không có lỗi"
+        },
+        {
+          "incorrect": "I go school learn English.",
+          "corrected": "I go to school to learn English.",
+          "gloss": "đi học tiếng Anh — thiếu 'to' trước school và trước learn",
+          "context": "Giải thích lý do đi học"
+        },
+        {
+          "incorrect": "Come my house eat dinner.",
+          "corrected": "Come to my house for dinner.",
+          "gloss": "về nhà tôi ăn tối — thiếu 'to' và cần 'for' thay vì liệt kê động từ",
+          "context": "Mời bạn"
+        },
+        {
+          "incorrect": "She go market buy vegetables every morning.",
+          "corrected": "She goes to the market to buy vegetables every morning.",
+          "gloss": "cô ấy đi chợ mua rau mỗi sáng — mất cả -s ngôi 3 lẫn 'to' x2",
+          "context": "Mô tả thói quen"
+        }
+      ],
+      "cefrLevelsObserved": ["A1", "A2", "B1"],
+      "severity": "medium",
+      "remediation": "Identify the purposive vs sequential distinction. Teach: go/come + to + place; go/come + to + verb (purpose). Contrast with bare infinitive after let's/make/help where it is already correct.",
+      "ruleTags": ["serial_verb", "infinitive_to", "vn_l1_syntax", "purposive_clause"]
+    },
+    {
+      "id": "aspect_marker_already_transfer",
+      "category": "morphology",
+      "name": "Aspect-over-tense priority: 'already' and 'still' overuse",
+      "shortDescription": "Vietnamese grammaticalises aspect (completion, continuity) with 'rồi' and 'vẫn/còn'; learners substitute English 'already' and 'still' in every aspectual slot, often in wrong tenses.",
+      "longDescription": "Vietnamese tense is largely contextual but aspect is lexically marked: 'rồi' (already/completion), 'vẫn / còn' (still/continuation), 'chưa' (not yet), 'đang' (in progress). English also has 'already/still/yet', but their scope and placement differ from Vietnamese. Learners over-insert 'already' in simple past ('I already go') or in future contexts ('I will already finish'). They also use 'still' where English would use 'yet' or omit the aspectual marker entirely.",
+      "vietnameseRoot": "Tiếng Việt đánh dấu trạng thái hoàn thành bằng 'rồi', liên tục bằng 'vẫn/còn', chưa xong bằng 'chưa'. Người học hay dùng 'already/still' để thay thế trực tiếp nhưng hai hệ thống không khớp nhau hoàn toàn.",
+      "examples": [
+        {
+          "incorrect": "I already eat.",
+          "corrected": "I already ate. / I have already eaten.",
+          "gloss": "tôi ăn rồi — 'rồi' báo xong, tiếng Anh cần past hoặc present perfect",
+          "context": "Trả lời khi bị hỏi có ăn chưa"
+        },
+        {
+          "incorrect": "She still not finish the report.",
+          "corrected": "She still hasn't finished the report.",
+          "gloss": "cô ấy vẫn chưa xong báo cáo — cần auxiliary have + past participle",
+          "context": "Cập nhật tiến độ công việc"
+        },
+        {
+          "incorrect": "I will already done by Friday.",
+          "corrected": "I will have finished by Friday.",
+          "gloss": "tôi sẽ xong vào thứ sáu — cần future perfect, không phải already",
+          "context": "Hứa hẹn hoàn thành"
+        }
+      ],
+      "cefrLevelsObserved": ["A2", "B1"],
+      "severity": "medium",
+      "remediation": "Teach the present-perfect / simple-past / future-perfect distinctions through the lens of Vietnamese aspect markers. Map: rồi → already + present perfect (completed relevance); vẫn → still + present continuous or perfect. Contrast 'yet' (questions/negatives) vs 'already' (statements).",
+      "ruleTags": ["aspect", "already", "still", "perfect_tense", "vn_l1_morphology", "rồi"]
+    },
+    {
+      "id": "borrow_rent_semantic_conflation",
+      "category": "lexicon",
+      "name": "Borrow / rent semantic conflation",
+      "shortDescription": "Vietnamese 'mượn' covers both 'borrow' (no fee) and some informal 'rent' contexts; learners use 'borrow' for paid rentals.",
+      "longDescription": "Vietnamese 'mượn' primarily means to use something temporarily with the owner's consent. 'Thuê' specifically means paying for temporary use (rent/hire). In casual speech, especially among family, 'mượn xe' can mean borrowing a relative's car free OR renting a car. English is strict: 'borrow' is always free; 'rent/hire' always implies payment. The error 'I want to borrow a car from the agency' is semantically correct in the learner's L1 but sounds unnatural and potentially confusing in English.",
+      "vietnameseRoot": "Tiếng Việt: 'mượn' = dùng tạm thời có sự đồng ý (thường không trả tiền). 'Thuê' = trả tiền để dùng. Ranh giới này ít rõ hơn trong ngôn ngữ thân mật. Tiếng Anh phân biệt borrow (không trả tiền) và rent/hire (có trả tiền) rất rõ.",
+      "examples": [
+        {
+          "incorrect": "I want to borrow a bike from the rental shop.",
+          "corrected": "I want to rent a bike from the rental shop.",
+          "gloss": "tôi muốn mượn/thuê xe đạp ở cửa hàng — trả tiền nên phải dùng 'rent'",
+          "context": "Nói chuyện ở cửa hàng cho thuê xe"
+        },
+        {
+          "incorrect": "Can I borrow your charger? I will give it back.",
+          "corrected": "Can I borrow your charger?",
+          "gloss": "Câu này đúng — 'borrow' đúng, 'I will give it back' thừa nhưng không sai",
+          "context": "Xin mượn đồ vật"
+        },
+        {
+          "incorrect": "She borrowed an apartment for six months.",
+          "corrected": "She rented an apartment for six months.",
+          "gloss": "cô ấy thuê căn hộ 6 tháng — không thể 'borrow' căn hộ",
+          "context": "Kể về chỗ ở"
+        }
+      ],
+      "cefrLevelsObserved": ["A2", "B1"],
+      "severity": "medium",
+      "remediation": "Explicit lexical contrast: borrow = no money, lend = give for free, rent/hire = pay for temporary use. Drill with minimal pairs: borrow a pen vs rent a car; lend me a book vs hire a driver.",
+      "ruleTags": ["lexicon", "borrow_rent", "semantic_gap", "vn_l1_lexicon", "mượn_thuê"]
+    },
+    {
+      "id": "know_knowhow_biết_biết_cách",
+      "category": "lexicon",
+      "name": "Know vs know-how confusion",
+      "shortDescription": "'Biết' covers both propositional 'know' (a fact) and procedural 'know how to' (a skill); learners use bare 'know' for ability.",
+      "longDescription": "Vietnamese 'biết' functions as both 'to know (a fact)' and 'to know how to (do something)'. English requires the procedural reading to use 'know how to + verb' or 'can + verb', while propositional 'know' takes a noun phrase or that-clause. The overextension produces 'I know cook' or 'She knows swim' — structurally possible for propositional know but semantically marked for ability.",
+      "vietnameseRoot": "Tiếng Việt: 'biết' = biết (sự việc), 'biết cách làm' = biết cách. 'Tôi biết nấu ăn' hoàn toàn tự nhiên trong tiếng Việt. Tiếng Anh: 'I know how to cook' hoặc 'I can cook' — không thể nói 'I know cook'.",
+      "examples": [
+        {
+          "incorrect": "I know cook Vietnamese food.",
+          "corrected": "I know how to cook Vietnamese food.",
+          "gloss": "tôi biết nấu ăn Việt Nam — cần 'how to' để diễn tả khả năng",
+          "context": "Giới thiệu kỹ năng"
+        },
+        {
+          "incorrect": "Do you know drive?",
+          "corrected": "Do you know how to drive? / Can you drive?",
+          "gloss": "bạn có biết lái xe không — cần 'how to' hoặc dùng 'can'",
+          "context": "Hỏi về kỹ năng"
+        },
+        {
+          "incorrect": "She knows swim very well.",
+          "corrected": "She knows how to swim very well. / She swims very well.",
+          "gloss": "cô ấy biết bơi rất giỏi — cần 'how to' giữa know và động từ",
+          "context": "Nói về kỹ năng của người khác"
+        }
+      ],
+      "cefrLevelsObserved": ["A1", "A2", "B1"],
+      "severity": "high",
+      "remediation": "Teach 'know how to + verb' as a fixed frame for procedural ability. Contrast: I know the answer (fact) vs I know how to answer (skill). Alternative: 'can' for ability where shorter phrasing is natural.",
+      "ruleTags": ["lexicon", "know_howto", "ability_modal", "vn_l1_lexicon", "biết"]
+    },
+    {
+      "id": "double_causative_làm_cho",
+      "category": "syntax",
+      "name": "Làm cho causative calque",
+      "shortDescription": "VN 'làm (cho) X + adjective/state' calques as 'make X become [state]' instead of the compact English 'make X [adjective]'.",
+      "longDescription": "Vietnamese causative 'làm' takes a result clause: 'cái này làm tôi vui' (this makes me happy). Learners often expand the result clause with an explicit stative verb ('become', 'feel', 'get'), producing over-long constructions. 'It makes me feel very happy' is natural but 'It makes me become happy' or 'It makes me to happy' are calques. The error rate is higher when the adjective in Vietnamese takes a preceding stative verb that English omits.",
+      "vietnameseRoot": "Tiếng Việt: 'làm cho tôi vui', 'làm cho anh ấy buồn'. Người học thêm động từ trạng thái như 'become' hay 'get' theo cấu trúc 'làm cho X + trạng thái'. Tiếng Anh thường rút ngắn: 'make me happy', 'make him sad'.",
+      "examples": [
+        {
+          "incorrect": "The movie makes me become very sad.",
+          "corrected": "The movie makes me very sad.",
+          "gloss": "bộ phim làm tôi rất buồn — 'become' thừa sau make + direct object",
+          "context": "Nói về cảm xúc"
+        },
+        {
+          "incorrect": "Eating well makes you to be healthy.",
+          "corrected": "Eating well makes you healthy.",
+          "gloss": "ăn uống tốt giúp bạn khoẻ — make + O + adjective, không cần 'to be'",
+          "context": "Lời khuyên về sức khỏe"
+        },
+        {
+          "incorrect": "She made me feel to embarrass.",
+          "corrected": "She made me feel embarrassed.",
+          "gloss": "cô ấy khiến tôi cảm thấy xấu hổ — cần past participle sau 'feel'",
+          "context": "Kể lại tình huống khó xử"
+        }
+      ],
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "severity": "low",
+      "remediation": "Teach 'make + object + adjective' as the compact causative. Contrast with 'make + object + feel + adjective' (emotion contexts). Avoid teaching 'become' in this frame unless the change-of-state reading is truly needed.",
+      "ruleTags": ["causative", "make_adjective", "vn_l1_syntax", "làm_cho"]
+    },
+    {
+      "id": "negative_concord_không_gì",
+      "category": "syntax",
+      "name": "Negative concord transfer",
+      "shortDescription": "Vietnamese negative concord ('không biết gì hết') translates as 'don't know nothing' — double negation banned in standard English.",
+      "longDescription": "Vietnamese is a negative-concord language: the negative marker 'không' co-occurs with indefinite pronouns like 'gì' (anything), 'ai' (anyone), 'đâu' (anywhere). The whole sentence is negative in meaning, but multiple negative elements appear. Standard English uses a single negative: 'I don't know anything' — not 'I don't know nothing'. Learners who translate directly produce double negation. Note: some English dialects accept negative concord but it is non-standard in formal, academic, or professional speech.",
+      "vietnameseRoot": "Tiếng Việt: 'Tôi không biết gì hết' — 'không' (phủ định) + 'gì' (gì đó) = tự nhiên. Tiếng Anh chuẩn chỉ phủ định một lần: 'I don't know anything'. Nhiều thổ ngữ tiếng Anh chấp nhận 'double negative' nhưng không phải tiếng Anh chuẩn.",
+      "examples": [
+        {
+          "incorrect": "I don't know nothing about it.",
+          "corrected": "I don't know anything about it.",
+          "gloss": "tôi không biết gì về chuyện đó — chỉ một phủ định trong tiếng Anh chuẩn",
+          "context": "Từ chối biết thông tin"
+        },
+        {
+          "incorrect": "She didn't say nothing to me.",
+          "corrected": "She didn't say anything to me.",
+          "gloss": "cô ấy không nói gì với tôi cả",
+          "context": "Kể về cuộc trò chuyện"
+        },
+        {
+          "incorrect": "Nobody don't like him.",
+          "corrected": "Nobody likes him.",
+          "gloss": "không ai thích anh ấy — 'nobody' đã phủ định, không cần 'don't'",
+          "context": "Nhận xét về ai đó"
+        }
+      ],
+      "cefrLevelsObserved": ["A1", "A2", "B1"],
+      "severity": "medium",
+      "remediation": "Teach the one-negative rule explicitly. Pair negative verbs with positive-form indefinites: don't + any-; positive-form indefinites (someone/somewhere) flip to no-one/nowhere only when the verb is affirmative. Drill minimal pairs.",
+      "ruleTags": ["negation", "negative_concord", "indefinite_pronoun", "vn_l1_syntax", "không_gì"]
+    },
+    {
+      "id": "intensifier_stacking_repetition",
+      "category": "morphology",
+      "name": "Intensifier stacking / adjective repetition",
+      "shortDescription": "Vietnamese intensification through adjective or intensifier repetition ('đẹp đẹp', 'rất rất') transfers as 'very very beautiful' or stacked amplifiers.",
+      "longDescription": "Vietnamese uses reduplication and repetition for intensification, gradation, and distributive meaning. 'Đẹp đẹp' (pretty pretty) means somewhat pretty or in a cute/charming way; 'rất rất đẹp' means extremely beautiful. In English, bare repetition of intensifiers ('very very very') is colloquially possible but marked; reduplication of adjectives is not standard. Learners stack 'very' or 'so' in places where English would use a strong intensifier ('extremely', 'incredibly') or emphatic stress.",
+      "vietnameseRoot": "Tiếng Việt: 'đẹp đẹp' = hơi đẹp theo nghĩa dễ thương; 'rất rất' = rất nhiều. Tiếng Anh không lặp tính từ (không nói 'beautiful beautiful') và 'very very' chỉ dùng được trong ngữ điệu thân mật, không phải văn viết.",
+      "examples": [
+        {
+          "incorrect": "The food is very very very delicious.",
+          "corrected": "The food is absolutely delicious.",
+          "gloss": "món ăn ngon lắm — dùng amplifier mạnh thay vì lặp 'very'",
+          "context": "Khen ngợi bữa ăn"
+        },
+        {
+          "incorrect": "She is beautiful beautiful, I like her style.",
+          "corrected": "She's really beautiful; I love her style.",
+          "gloss": "cô ấy đẹp lắm — tiếng Anh không lặp tính từ",
+          "context": "Nhận xét về ngoại hình"
+        },
+        {
+          "incorrect": "The problem is big big.",
+          "corrected": "The problem is really big. / It's a big problem.",
+          "gloss": "vấn đề to lắm — dùng 'really/quite/a real' thay cho lặp từ",
+          "context": "Mô tả tình huống"
+        }
+      ],
+      "cefrLevelsObserved": ["A1", "A2"],
+      "severity": "low",
+      "remediation": "Teach the English amplifier scale: very → really → extremely → absolutely → incredibly. Reduplication is a Vietnamese feature that does not transfer. Show that emphatic stress ('VERY beautiful') is the English substitute for repetition in speech.",
+      "ruleTags": ["intensifier", "reduplication", "amplifier", "vn_l1_morphology", "rất_rất"]
+    },
+    {
+      "id": "sentence_final_particle_residue",
+      "category": "pragmatics",
+      "name": "Sentence-final particle residue",
+      "shortDescription": "Vietnamese sentence-final particles (nhé, nhỉ, ạ, à, đấy, hả) have no direct English counterparts; learners add filler or tag questions in unnatural positions.",
+      "longDescription": "Vietnamese particles at sentence end carry meaning: invitation/softening (nhé), shared knowledge / solidarity (nhỉ/hả), deference (ạ/ơi), assertion softening (đấy), confirmation-seeking (à). These pack pragmatic load that English distributes across prosody, tag questions, discourse markers, and hedges. Learners with heavy particle intuition may add 'right?', 'okay?', 'huh?', or pause-fillers at sentence end, or use tag questions in every sentence, or feel that a bare English statement sounds rude. The repair is often correct English but awkward frequency.",
+      "vietnameseRoot": "Tiếng Việt có nhiều tiểu từ cuối câu mang nghĩa tình thái: nhé (mời, nhẹ nhàng), nhỉ (chúng ta biết nhau), ạ (lễ phép), đấy (nhấn mạnh), hả/à (hỏi lại xác nhận). Tiếng Anh dùng ngữ điệu, tag question, và các cụm như 'right?' / 'you know?' để thay thế.",
+      "examples": [
+        {
+          "incorrect": "Let's go now, right okay?",
+          "corrected": "Let's go now.",
+          "gloss": "đi thôi nhé — 'nhé' đã được dịch bằng 'let's' nên không cần thêm",
+          "context": "Đề nghị đi cùng nhau"
+        },
+        {
+          "incorrect": "You understand, right? Right? You know what I mean?",
+          "corrected": "Does that make sense? / You follow?",
+          "gloss": "bạn hiểu chứ nhỉ — một câu xác nhận là đủ",
+          "context": "Kiểm tra sự hiểu biết"
+        },
+        {
+          "incorrect": "She is very kind, right? She always helps, right? We like her, right?",
+          "corrected": "She's very kind and always helpful. We all like her.",
+          "gloss": "Dùng 'right?' quá nhiều — trong tiếng Việt 'nhỉ' ở mỗi câu là bình thường, tiếng Anh không",
+          "context": "Mô tả ai đó"
+        }
+      ],
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "severity": "low",
+      "remediation": "Explain that English encodes particle-like pragmatic meanings through intonation, hedges, and discourse markers rather than fixed particles. Teach selective tag use: use one tag question per conversational unit, not per sentence. Acknowledge that bare statements in English are not rude — they are neutral.",
+      "ruleTags": ["pragmatics", "particles", "tag_questions", "vn_l1_pragmatics", "nhé_nhỉ_ạ"]
+    },
+    {
+      "id": "of_possession_phrase_of_me",
+      "category": "syntax",
+      "name": "Possessive 'of me' instead of possessive pronoun",
+      "shortDescription": "Vietnamese 'của tôi' (of me) transfers directly; learners say 'the house of me' or 'friend of my' instead of 'my house' or 'my friend'.",
+      "longDescription": "Vietnamese possession is expressed with 'của + pronoun' (cuốn sách của tôi = the book of me). English has dedicated possessive pronouns (my, your, his, her) and the Saxon genitive ('s). Learners applying the Vietnamese frame produce post-nominal possession ('the book of me', 'the phone of my sister') which is grammatically possible in English in formal/literary contexts but unnatural in everyday speech. The most common error is dropping the possessive determiner entirely or using an 'of' phrase.",
+      "vietnameseRoot": "Tiếng Việt: 'cuốn sách của tôi' — cấu trúc danh từ + của + đại từ. Tiếng Anh: 'my book' — đại từ sở hữu đứng trước. Hoặc danh từ sở hữu: 'the book of hers' (trang trọng), nhưng 'my/your/his/her' là bình thường.",
+      "examples": [
+        {
+          "incorrect": "This is the house of my parents.",
+          "corrected": "This is my parents' house.",
+          "gloss": "đây là nhà của bố mẹ tôi — saxon genitive cho người sở hữu",
+          "context": "Chỉ nhà"
+        },
+        {
+          "incorrect": "I forgot the bag of me.",
+          "corrected": "I forgot my bag.",
+          "gloss": "tôi quên túi của tôi — dùng 'my' thay 'the bag of me'",
+          "context": "Kể lại việc quên đồ"
+        },
+        {
+          "incorrect": "Can I borrow the phone of your?",
+          "corrected": "Can I borrow your phone?",
+          "gloss": "tôi mượn điện thoại của bạn nhé — dùng 'your' trước danh từ",
+          "context": "Mượn đồ"
+        }
+      ],
+      "cefrLevelsObserved": ["A1", "A2"],
+      "severity": "medium",
+      "remediation": "Drill the possessive determiner slot: my/your/his/her/its/our/their before the noun. For longer noun phrases, teach the 's genitive (my sister's phone). Reserve 'of' possessive for formal writing and inanimate reference.",
+      "ruleTags": ["possessive", "determiner", "of_phrase", "vn_l1_syntax", "của"]
+    },
+    {
+      "id": "cause_result_vì_nên_double_marking",
+      "category": "discourse",
+      "name": "Vì … nên … double-connector cause-result",
+      "shortDescription": "Vietnamese pairs 'vì' (because) and 'nên' (so/therefore) in the same sentence; learners produce 'because … so …' — only one connector is needed in English.",
+      "longDescription": "Vietnamese commonly uses a correlative cause-result frame: 'Vì trời mưa nên tôi ở nhà' (Because it rains, so I stayed home). Both connectors are standard and natural. English requires choosing one: 'Because it was raining, I stayed home' OR 'It was raining, so I stayed home' — not both. The because-so combination is the single most frequent cause-result error for Vietnamese learners of English and appears at all CEFR levels because the double-marking structure is deeply ingrained.",
+      "vietnameseRoot": "Tiếng Việt: 'Vì trời mưa, nên tôi ở nhà' — hai từ kết hợp trong cùng một câu là tự nhiên và bình thường. Tiếng Anh: phải chọn một: 'Because it rained, I stayed home' HOẶC 'It rained, so I stayed home'. Không được dùng cả hai.",
+      "examples": [
+        {
+          "incorrect": "Because I was tired, so I went to bed early.",
+          "corrected": "Because I was tired, I went to bed early.",
+          "gloss": "vì tôi mệt nên tôi đi ngủ sớm — xóa 'so' khi đã có 'because'",
+          "context": "Giải thích lý do"
+        },
+        {
+          "incorrect": "Because she studied hard, so she passed the exam.",
+          "corrected": "She studied hard, so she passed the exam.",
+          "gloss": "vì cô ấy học chăm nên cô ấy đậu — xóa 'because' khi đã có 'so'",
+          "context": "Kết quả học tập"
+        },
+        {
+          "incorrect": "Because it was cold outside so we stayed indoors.",
+          "corrected": "Since it was cold outside, we stayed indoors.",
+          "gloss": "vì ngoài trời lạnh nên chúng tôi ở trong nhà — 'since' + không có 'so'",
+          "context": "Giải thích lý do ở nhà"
+        }
+      ],
+      "cefrLevelsObserved": ["A1", "A2", "B1", "B2"],
+      "severity": "high",
+      "remediation": "Teach the one-connector rule as an explicit pattern. Present both versions: [because + clause + clause] and [clause + so + clause]. Drill by having learners rewrite every because-so sentence using only one connector. This is one of the highest-frequency errors across all levels.",
+      "ruleTags": ["connector", "cause_result", "because_so", "vn_l1_discourse", "vì_nên"]
+    },
+    {
+      "id": "say_tell_ask_nói_hỏi_confusion",
+      "category": "lexicon",
+      "name": "Say / tell / ask confusion",
+      "shortDescription": "Vietnamese 'nói' covers both 'say' and 'tell'; 'hỏi' is 'ask'. Learners use 'say' where English needs 'tell' and vice versa.",
+      "longDescription": "Vietnamese 'nói' is a general verb of communication covering 'say', 'tell', and sometimes 'speak'. English 'say' is used for the content of speech without specifying addressee; 'tell' requires an explicit addressee and is used for information transfer and instructions. Learners over-generalise 'say': 'He said me to stop' (should be told), 'She said me the news' (should be told). The reverse error also appears: 'I told that it was raining' instead of 'I said that / I mentioned that'.",
+      "vietnameseRoot": "Tiếng Việt: 'nói' = nói (chung), 'nói với ai' = nói với ai đó, 'bảo ai' = bảo/yêu cầu. Tiếng Anh: 'say' dùng khi kể nội dung; 'tell' dùng khi có người nghe rõ ràng và có nội dung truyền tải; 'ask' dùng cho câu hỏi hoặc yêu cầu.",
+      "examples": [
+        {
+          "incorrect": "He said me to come early.",
+          "corrected": "He told me to come early.",
+          "gloss": "anh ấy bảo tôi đến sớm — tell + object + to-infinitive",
+          "context": "Truyền đạt yêu cầu"
+        },
+        {
+          "incorrect": "She said me the answer.",
+          "corrected": "She told me the answer.",
+          "gloss": "cô ấy nói cho tôi biết câu trả lời — tell + IO + DO",
+          "context": "Chia sẻ thông tin"
+        },
+        {
+          "incorrect": "I said her not to worry.",
+          "corrected": "I told her not to worry.",
+          "gloss": "tôi bảo cô ấy đừng lo — tell + object + not to-infinitive",
+          "context": "Trấn an ai đó"
+        }
+      ],
+      "cefrLevelsObserved": ["A2", "B1"],
+      "severity": "high",
+      "remediation": "Teach the core distinction: 'say' has no indirect object (say + content); 'tell' takes an indirect object (tell + person + content or instruction). Use frames: 'He told me (that)...' vs 'He said (that)...'; 'She asked me to...' vs 'She said to...'.",
+      "ruleTags": ["lexicon", "say_tell_ask", "reporting_verb", "vn_l1_lexicon", "nói_hỏi"]
+    },
+    {
+      "id": "complement_clause_is_transfer",
+      "category": "syntax",
+      "name": "Embedded clause 'is' transfer from VN nominal predicate",
+      "shortDescription": "VN nominal predicates with implied 'là' (is) transfer into embedded English clauses as an extra 'is': 'I think is important' instead of 'I think it is important'.",
+      "longDescription": "Vietnamese 'là' is both a copula and a discourse connector/focus marker. In subject-drop contexts, 'tôi nghĩ là quan trọng' is a natural statement: the subject of the embedded clause is recoverable from context. English requires the expletive or referential subject: 'I think it is important' or 'I think that is important'. Without the subject pronoun, 'I think is important' is an incomplete clause. The error also appears in relative clauses: 'the problem is important' → correctly formed, but 'the problem that is' → correct too; the error is in the matrix clause subject drop.",
+      "vietnameseRoot": "Tiếng Việt: 'Tôi nghĩ là quan trọng' — bỏ chủ ngữ của mệnh đề phụ vì có thể hiểu qua ngữ cảnh. Tiếng Anh: bắt buộc có chủ ngữ: 'I think it is important' hoặc 'I think that is important'.",
+      "examples": [
+        {
+          "incorrect": "I think is very important to study English.",
+          "corrected": "I think it is very important to study English.",
+          "gloss": "tôi nghĩ là rất quan trọng để học tiếng Anh — cần 'it' làm chủ ngữ hình thức",
+          "context": "Bày tỏ ý kiến"
+        },
+        {
+          "incorrect": "She knows is difficult.",
+          "corrected": "She knows it is difficult. / She knows that it is difficult.",
+          "gloss": "cô ấy biết là khó — cần 'it' hoặc 'that it'",
+          "context": "Mô tả nhận thức"
+        },
+        {
+          "incorrect": "They said is no problem.",
+          "corrected": "They said there is no problem. / They said it's no problem.",
+          "gloss": "họ nói là không có vấn đề gì — cần chủ ngữ hình thức",
+          "context": "Truyền lại lời"
+        }
+      ],
+      "cefrLevelsObserved": ["A2", "B1"],
+      "severity": "high",
+      "remediation": "Teach the expletive 'it' in extraposed clauses: 'It is + adj + to-inf / that-clause'. Teach that-clause complements always need a subject: 'I think [that IT is...]'. Point out that Vietnamese subject-drop does not transfer to English embedded clauses.",
+      "ruleTags": ["syntax", "subject_drop", "expletive_it", "complement_clause", "vn_l1_syntax", "là"]
+    }
+  ]
+}
