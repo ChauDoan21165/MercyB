@@ -31,7 +31,10 @@ import { resolveRoomAudioUrl } from '@/lib/roomAudioResolver';
 import { deriveWordChips } from './wordChips';
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
 import { useMercyVoice } from '@/hooks/useMercyVoice';
-import { scoreCloud } from '@/lib/pronunciation/cloudScorer';
+import {
+  scorePronunciationWithStep7Fallback,
+  type PronunciationScoreMode,
+} from '@/lib/pronunciation/cloudScorer';
 import { useStreamingPronunciation } from '@/lib/pronunciation/useStreamingPronunciation';
 import StreamingFeedback from '@/components/pronunciation/StreamingFeedback';
 import { breadcrumbSpeakAttempt } from '@/lib/monitoring/breadcrumbs';
@@ -733,6 +736,12 @@ export function MercySpeakTab({
   });
   const [cloudOverrideScore, setCloudOverrideScore] = useState<number | null>(null);
   const [cloudWordScores, setCloudWordScores] = useState<WordScore[]>([]);
+  // Step 7 groundwork: store the score mode so the UI can distinguish
+  // azure_phoneme_batch (phoneme/tone detail available) from
+  // local_sentence_match (word-level only). Initialises as null (no
+  // attempt yet); set together with cloudOverrideScore so they are
+  // always in sync.
+  const [cloudScoreMode, setCloudScoreMode] = useState<PronunciationScoreMode | null>(null);
   const [expandedWordIdx, setExpandedWordIdx] = useState<number | null>(null);
   const cloudAttemptKeyRef = useRef<string>('');
 
@@ -767,7 +776,10 @@ export function MercySpeakTab({
         const { data: sessionData } = await supabase.auth.getSession();
         const jwt = sessionData?.session?.access_token;
         if (!jwt) return;
-        const result = await scoreCloud({
+        // Step 7 wire-up: use the normalised wrapper so mode/labelKind
+        // metadata flows through; step7Enabled mirrors the Azure flag so
+        // behaviour is identical to the old direct scoreCloud() path.
+        const result = await scorePronunciationWithStep7Fallback({
           audioBlob: blob,
           target: practiceText,
           userJwt: jwt,
@@ -775,10 +787,12 @@ export function MercySpeakTab({
           // empty string so cloudScorer's local-fallback treats recognition
           // as empty rather than partially-populated.
           transcript: '',
+          step7Enabled: true,
         });
         if (cancelled) return;
         setCloudOverrideScore(result.overallScore);
-        setCloudWordScores(result.wordScores);
+        setCloudWordScores(result.wordScores ?? []);
+        setCloudScoreMode(result.mode);
         setExpandedWordIdx(null);
         breadcrumbSpeakAttempt('finish', {
           roomId,
@@ -1293,11 +1307,14 @@ export function MercySpeakTab({
     if (!audio) return;
     stopSpeaking();
     try {
-      // iOS Safari quirk: must reload before play if src changed
+      // iOS Safari quirk: must reload before play if src changed.
+      // Do NOT call load() when src is already correct — doing so resets
+      // the media pipeline every click, which causes "play() request was
+      // interrupted" DOMExceptions on iOS Safari.
       if (audio.src !== recordedAudioUrl) {
         audio.src = recordedAudioUrl;
+        audio.load();
       }
-      audio.load();
       audio.currentTime = 0;
       await audio.play();
       setRecordingError('');
@@ -1605,6 +1622,7 @@ export function MercySpeakTab({
   function handleResetAttempt() {
     setTranscript(''); setRecognitionError(''); setRecordingError(''); setCopySuccess(false); setMercySpeakWarning('');
     setCloudOverrideScore(null);
+    setCloudScoreMode(null);
     setCloudWordScores([]);
     setExpandedWordIdx(null);
     cloudAttemptKeyRef.current = '';
