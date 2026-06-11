@@ -196,7 +196,7 @@ export const speakTopics: readonly SpeakTopic[] = [
     ],
     followUps: [
       { id: "utilities-install-when", question: "What day works for the installation?", salienceQuestion: "When could the {slot} happen?" },
-      { id: "utilities-install-window", question: "How would you ask about the time window?", salienceQuestion: "What is the {slot} time window?" },
+      { id: "utilities-install-window-q", question: "How would you ask about the time window?", salienceQuestion: "What is the {slot} time window?" },
       { id: "utilities-install-home", question: "How would you say who will be home?", salienceQuestion: "Who will be home for the {slot}?" },
       { id: "utilities-install-prepare", question: "How would you ask what you need to do first?", salienceQuestion: "How would you prepare for the {slot}?" },
     ],
