@@ -1,0 +1,237 @@
+{
+  "corpus": "f2-interference-taxonomy-wave6",
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F2",
+  "authoredAt": "2026-06-11",
+  "wave": 6,
+  "schemaBasis": "Content Factory standalone review pack; not wired to engine",
+  "description": "VN→EN interference taxonomy wave 6. Eight append-only review entries focused on pronoun gender confusion, stative verb progressive overuse, gerund/infinitive verb complements, narrative tense inconsistency, question tag oversimplification, definite article for specific reference, phrasal verb literal translation, and causative bare-infinitive marking. Full Vietnamese diacritics throughout.",
+  "patterns": [
+    {
+      "id": "f2w6_pronoun_gender_he_she_confusion",
+      "category": "pronoun_reference",
+      "severity": "high",
+      "cefrLevelsObserved": ["A1", "A2", "B1"],
+      "name": "He and she swapped because Vietnamese pronouns encode relationship, not binary gender",
+      "l1ReasoningVi": "Tiếng Việt dùng xưng hô theo quan hệ và tuổi tác: anh, chị, em, ông, bà. Không có từ riêng cho 'he' và 'she'. Khi chuyển sang tiếng Anh, người học phải chọn giữa hai đại từ theo giới tính, và thường đoán sai hoặc nhầm lẫn, nhất là khi nói về người thứ ba không có trong cuộc trò chuyện.",
+      "learnerSignal": "The learner uses he for women or she for men, or switches gender mid-sentence when telling a story about a third person.",
+      "examples": [
+        {
+          "incorrect": "My manager called me. She told me to come early. He is very strict.",
+          "natural": "My manager called me. She told me to come early. She is very strict.",
+          "explanationVi": "Khi đã dùng 'she' cho quản lý ở câu đầu, các câu sau phải dùng 'she' nhất quán."
+        },
+        {
+          "incorrect": "I have a sister. He is a doctor.",
+          "natural": "I have a sister. She is a doctor.",
+          "explanationVi": "'Sister' là nữ nên dùng 'she', không phải 'he'."
+        },
+        {
+          "incorrect": "The teacher gave us homework. She explained it and then he left early.",
+          "natural": "The teacher gave us homework. She explained it and then she left early.",
+          "explanationVi": "Giáo viên đã được giới thiệu là nữ ('she'), nên câu tiếp theo cũng phải dùng 'she'."
+        }
+      ],
+      "teachingMove": "Build a pronoun habit: the first mention decides the pronoun, and every sentence about the same person keeps it. Ask the learner to re-read and circle all he/she, then check each against the person's gender.",
+      "ruleTags": ["pronoun_gender", "he_she", "pronoun_consistency", "vn_l1_transfer"]
+    },
+    {
+      "id": "f2w6_progressive_stative_verb_overuse",
+      "category": "aspect_verb_class",
+      "severity": "high",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Progressive -ing applied to stative verbs because Vietnamese 'đang' covers all ongoing states",
+      "l1ReasoningVi": "Tiếng Việt dùng 'đang' để chỉ hành động hoặc trạng thái đang xảy ra, không phân biệt. Tiếng Anh chia động từ thành hai nhóm: động từ hành động (action verbs) dùng được tiếp diễn, và động từ trạng thái (stative verbs) như know, like, have, understand thường không dùng dạng -ing trong hiện tại tiếp diễn.",
+      "learnerSignal": "The learner adds is/am/are + -ing to stative verbs: is knowing, am liking, is having, are understanding.",
+      "examples": [
+        {
+          "incorrect": "I am knowing the answer now.",
+          "natural": "I know the answer now.",
+          "explanationVi": "'Know' là động từ trạng thái nhận thức; không dùng dạng tiếp diễn 'am knowing'."
+        },
+        {
+          "incorrect": "She is having a headache today.",
+          "natural": "She has a headache today.",
+          "explanationVi": "'Have' khi chỉ trạng thái sở hữu hoặc cảm giác không dùng tiếp diễn."
+        },
+        {
+          "incorrect": "Are you understanding what I mean?",
+          "natural": "Do you understand what I mean?",
+          "explanationVi": "'Understand' là động từ trạng thái nhận thức; câu hỏi dùng 'do you understand'."
+        }
+      ],
+      "teachingMove": "Teach two quick mental checks: Does this word describe a state of mind, feeling, or possession rather than an active change? If yes, skip -ing and use simple present. Give a short list of common stative verbs to bookmark.",
+      "ruleTags": ["stative_verbs", "progressive", "aspect", "ing_overuse"]
+    },
+    {
+      "id": "f2w6_gerund_infinitive_verb_complement",
+      "category": "verb_complements",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Gerund or infinitive chosen by guessing because Vietnamese uses bare verb in both slots",
+      "l1ReasoningVi": "Tiếng Việt đặt động từ sau động từ mà không cần thay đổi hình thức. Tiếng Anh yêu cầu biết từng động từ thuộc nhóm nào: enjoy/avoid/finish + V-ing; want/need/decide/hope + to + verb; hoặc một số từ dùng được cả hai nhưng nghĩa thay đổi.",
+      "learnerSignal": "The learner writes enjoy to + verb, want doing, avoid to + verb, or finish to + verb after a controlling verb.",
+      "examples": [
+        {
+          "incorrect": "I enjoy to play tennis on weekends.",
+          "natural": "I enjoy playing tennis on weekends.",
+          "explanationVi": "'Enjoy' thuộc nhóm gerund: 'enjoy playing', không phải 'enjoy to play'."
+        },
+        {
+          "incorrect": "She wants going home early today.",
+          "natural": "She wants to go home early today.",
+          "explanationVi": "'Want' thuộc nhóm infinitive: 'wants to go', không phải 'wants going'."
+        },
+        {
+          "incorrect": "Please avoid to use your phone during class.",
+          "natural": "Please avoid using your phone during class.",
+          "explanationVi": "'Avoid' thuộc nhóm gerund: 'avoid using', không phải 'avoid to use'."
+        }
+      ],
+      "teachingMove": "Group verbs by slot rather than explaining grammar rules: 'enjoy/finish/avoid/consider = -ing family; want/need/decide/plan = to-family.' Have the learner memorize five verbs in each group first, then add more.",
+      "ruleTags": ["gerund", "infinitive", "verb_pattern", "verb_complement"]
+    },
+    {
+      "id": "f2w6_narrative_tense_inconsistency",
+      "category": "tense_consistency_narrative",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Tense shifts mid-story because Vietnamese relies on time words rather than verb endings",
+      "l1ReasoningVi": "Tiếng Việt dùng từ chỉ thời gian như 'hôm qua', 'lúc đó', 'rồi', 'sau đó' để xác định thời điểm, không thay đổi hình thức động từ. Khi kể chuyện bằng tiếng Anh, người học hay chuyển qua lại giữa quá khứ và hiện tại trong cùng một đoạn.",
+      "learnerSignal": "A past-tense story suddenly shifts to simple present or vice versa, usually after a time word or a pause.",
+      "examples": [
+        {
+          "incorrect": "Yesterday I went to the hospital. The doctor checks me and he says nothing is wrong.",
+          "natural": "Yesterday I went to the hospital. The doctor checked me and said nothing was wrong.",
+          "explanationVi": "Câu chuyện hôm qua phải dùng quá khứ nhất quán: 'checked', 'said'."
+        },
+        {
+          "incorrect": "Last year she started her business. Then she hires two people and the shop does well.",
+          "natural": "Last year she started her business. Then she hired two people and the shop did well.",
+          "explanationVi": "Vì đã bắt đầu bằng 'last year' và 'started', toàn bộ câu chuyện dùng quá khứ."
+        },
+        {
+          "incorrect": "I was cooking dinner when my phone rings and it is my brother.",
+          "natural": "I was cooking dinner when my phone rang and it was my brother.",
+          "explanationVi": "Khung thời gian là quá khứ: 'rang' và 'was' duy trì nhất quán với 'was cooking'."
+        }
+      ],
+      "teachingMove": "Set a tense anchor: ask the learner to circle the first main verb and label it past or present. Every verb after it stays in the same tense unless a clear time shift marker appears.",
+      "ruleTags": ["tense_consistency", "narrative_past", "time_words", "vn_l1_transfer"]
+    },
+    {
+      "id": "f2w6_question_tag_oversimplification",
+      "category": "pragmatics_interaction",
+      "severity": "low",
+      "cefrLevelsObserved": ["B1", "B2", "C1"],
+      "name": "Question tags replaced with 'right?' because Vietnamese uses 'phải không' universally",
+      "l1ReasoningVi": "Tiếng Việt dùng 'phải không' hoặc 'đúng không' cho mọi loại câu hỏi đuôi. Tiếng Anh dùng câu hỏi đuôi khớp với trợ động từ và đại từ chủ ngữ của câu chính. Dù 'right?' không sai về mặt giao tiếp, câu hỏi đuôi phù hợp nghe tự nhiên hơn và quan trọng ở ngữ cảnh chuyên nghiệp.",
+      "learnerSignal": "Every question tag is 'right?' regardless of the verb or subject in the main clause.",
+      "examples": [
+        {
+          "incorrect": "You are coming to the meeting tomorrow, right?",
+          "natural": "You are coming to the meeting tomorrow, aren't you?",
+          "explanationVi": "Câu chính dùng 'are', nên câu hỏi đuôi là 'aren't you'."
+        },
+        {
+          "incorrect": "She finished the report, right?",
+          "natural": "She finished the report, didn't she?",
+          "explanationVi": "Câu quá khứ với chủ ngữ 'she' → câu hỏi đuôi là 'didn't she'."
+        },
+        {
+          "incorrect": "We can leave at five, right?",
+          "natural": "We can leave at five, can't we?",
+          "explanationVi": "Câu có modal 'can' → câu hỏi đuôi là 'can't we'."
+        }
+      ],
+      "teachingMove": "Teach the two-step rule: (1) take the subject and auxiliary from the main clause, (2) flip polarity and put them at the end. Practice with three or four common structures before expanding.",
+      "ruleTags": ["question_tags", "phải_không", "interaction", "pragmatics"]
+    },
+    {
+      "id": "f2w6_article_the_specific_reference",
+      "category": "articles_definiteness",
+      "severity": "high",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Definite article 'the' omitted when referring to something already known or uniquely identified",
+      "l1ReasoningVi": "Tiếng Việt không có mạo từ. Khi nói đến thứ gì người nghe đã biết, tiếng Anh dùng 'the' để đánh dấu tham chiếu xác định. Người học tiếng Việt thường bỏ 'the' vì không có thói quen dùng nó, nhất là sau lần đầu giới thiệu chủ thể.",
+      "learnerSignal": "The learner drops 'the' when referring to a person, object, or place that has already been introduced or is uniquely identified by context.",
+      "examples": [
+        {
+          "incorrect": "I bought a new phone. Screen is very bright.",
+          "natural": "I bought a new phone. The screen is very bright.",
+          "explanationVi": "Sau khi giới thiệu điện thoại, 'màn hình' của nó đã xác định → dùng 'the screen'."
+        },
+        {
+          "incorrect": "Can you close door when you leave?",
+          "natural": "Can you close the door when you leave?",
+          "explanationVi": "Cánh cửa đã biết (cửa này, trong phòng này) nên dùng 'the door'."
+        },
+        {
+          "incorrect": "We met at airport and then went to hotel.",
+          "natural": "We met at the airport and then went to the hotel.",
+          "explanationVi": "Sân bay và khách sạn đã được xác định qua ngữ cảnh chuyến đi → dùng 'the'."
+        }
+      ],
+      "teachingMove": "Ask: has the listener already seen or heard about this thing? Is there only one of it in this situation? If yes to either, use the. Build the habit with two-sentence mini-stories: introduce, then refer back.",
+      "ruleTags": ["definite_article", "the", "second_mention", "specific_reference"]
+    },
+    {
+      "id": "f2w6_phrasal_verb_literal_translation",
+      "category": "lexical_pragmatics",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Phrasal verbs constructed by literal translation of Vietnamese two-part expressions",
+      "l1ReasoningVi": "Tiếng Việt có nhiều cụm động từ như 'chăm sóc', 'tìm kiếm', 'nhìn vào', mà người học dịch từng từ sang tiếng Anh. Kết quả nghe không tự nhiên hoặc sai nghĩa. Tiếng Anh có cụm động từ riêng với nghĩa được cố định theo quy ước: look after, look for, look up.",
+      "learnerSignal": "The learner uses a word-for-word verb + particle combination that does not match the standard English phrasal verb.",
+      "examples": [
+        {
+          "incorrect": "Please care for the children while I am out.",
+          "natural": "Please look after the children while I am out.",
+          "explanationVi": "Dịch 'chăm sóc' thành 'care for' không sai hoàn toàn, nhưng 'look after' là cụm tự nhiên hơn trong ngữ cảnh giữ trẻ."
+        },
+        {
+          "incorrect": "I need to find the word in the dictionary.",
+          "natural": "I need to look up the word in the dictionary.",
+          "explanationVi": "Dùng từ điển được nói là 'look up', không phải 'find' hay 'search' đơn lẻ trong ngữ cảnh này."
+        },
+        {
+          "incorrect": "She must give up the bad habit of sleeping late.",
+          "natural": "She must give up the habit of staying up late.",
+          "explanationVi": "Cụm đúng là 'give up + habit'; phần mô tả thói quen cũng cần cụm tự nhiên 'stay up late'."
+        }
+      ],
+      "teachingMove": "Teach phrasal verbs as whole chunks, not as separate words. When a learner uses a literal combination, offer the standard chunk immediately and ask them to use it in the next sentence.",
+      "ruleTags": ["phrasal_verbs", "lexical_chunks", "literal_translation", "collocation"]
+    },
+    {
+      "id": "f2w6_causative_make_have_let_bare_infinitive",
+      "category": "causative_structures",
+      "severity": "medium",
+      "cefrLevelsObserved": ["B1", "B2", "C1"],
+      "name": "To-infinitive inserted after make/have/let in causative because Vietnamese 'làm cho' uses full verb phrase",
+      "l1ReasoningVi": "Tiếng Việt dùng cấu trúc 'làm cho ai làm gì' hoặc 'khiến ai làm gì' mà không cần chia lại động từ theo sau. Tiếng Anh dùng make/have/let + object + bare infinitive (không có 'to'). Người học hay thêm 'to' vì liên hệ với cấu trúc want/ask/tell + to.",
+      "learnerSignal": "The learner adds 'to' after make, have, or let: made her to cry, let him to decide, have someone to fix.",
+      "examples": [
+        {
+          "incorrect": "The news made me to feel very sad.",
+          "natural": "The news made me feel very sad.",
+          "explanationVi": "Sau 'made + tân ngữ', dùng bare infinitive 'feel', không có 'to'."
+        },
+        {
+          "incorrect": "Please let the children to play outside.",
+          "natural": "Please let the children play outside.",
+          "explanationVi": "Sau 'let + tân ngữ', dùng bare infinitive 'play', không có 'to'."
+        },
+        {
+          "incorrect": "The manager had us to rewrite the whole report.",
+          "natural": "The manager had us rewrite the whole report.",
+          "explanationVi": "Sau 'had + tân ngữ', dùng bare infinitive 'rewrite', không có 'to'."
+        }
+      ],
+      "teachingMove": "Contrast two families: ask/tell/want/need + object + to + verb vs make/have/let + object + bare verb. One quick chart with two columns helps. Drill by asking the learner to complete five examples from each column.",
+      "ruleTags": ["causative", "make_have_let", "bare_infinitive", "to_insertion"]
+    }
+  ]
+}
