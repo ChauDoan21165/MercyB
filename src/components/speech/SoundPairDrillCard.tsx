@@ -32,6 +32,7 @@ import {
   type DrillCategory,
 } from '@/lib/pronunciation/soundPairDrills';
 import type { ProblemPair } from '@/lib/pronunciation/vn-phoneme-map';
+import { isF5DrillItem } from '@/lib/pronunciation/f5MinimalPairAdapter';
 
 import {
   bandForConfidence,
@@ -189,12 +190,22 @@ export function SoundPairDrillCard({
           <Bi text={UI_COPY.sayThis} />
         </p>
         <div className="flex items-center justify-between gap-3">
-          <span
-            className="text-3xl sm:text-4xl font-semibold"
-            data-testid="pair-target"
-          >
-            {pair.target}
-          </span>
+          <div>
+            <span
+              className="text-3xl sm:text-4xl font-semibold"
+              data-testid="pair-target"
+            >
+              {pair.target}
+            </span>
+            {isF5DrillItem(pair) && (
+              <p
+                className="text-sm font-mono text-slate-500 mt-0.5"
+                data-testid="pair-ipa-target"
+              >
+                {pair.ipaTarget}
+              </p>
+            )}
+          </div>
           <button
             type="button"
             onClick={() => playModel(pair.target)}
@@ -205,6 +216,14 @@ export function SoundPairDrillCard({
             <Bi text={UI_COPY.playTarget} />
           </button>
         </div>
+        {isF5DrillItem(pair) && (
+          <p
+            className="text-sm text-slate-600 dark:text-slate-300 mt-2 italic"
+            data-testid="pair-example-target"
+          >
+            "{pair.exampleTarget}"
+          </p>
+        )}
         <p className="text-xs text-slate-500 mt-3">
           <Bi text={UI_COPY.notThis} />:{' '}
           <span
@@ -213,7 +232,23 @@ export function SoundPairDrillCard({
           >
             {pair.contrast}
           </span>
+          {isF5DrillItem(pair) && (
+            <span
+              className="ml-1.5 font-mono text-xs text-slate-400 not-italic"
+              data-testid="pair-ipa-contrast"
+            >
+              {pair.ipaContrast}
+            </span>
+          )}
         </p>
+        {isF5DrillItem(pair) && (
+          <p
+            className="text-xs text-slate-400 dark:text-slate-500 mt-1 italic"
+            data-testid="pair-example-contrast"
+          >
+            "{pair.exampleContrast}"
+          </p>
+        )}
         {ttsFailed && (
           <p
             className="text-xs text-amber-600 dark:text-amber-400 mt-3"

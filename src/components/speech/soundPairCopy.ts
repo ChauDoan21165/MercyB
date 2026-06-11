@@ -37,6 +37,18 @@ export const CATEGORY_NAMES: Record<DrillCategory, Bilingual> = {
     en: 'Question vs statement',
     vi: 'Giai điệu câu hỏi vs câu khẳng định',
   },
+  'f5-easy': {
+    en: 'Final consonants — easy',
+    vi: 'Phụ âm cuối — dễ',
+  },
+  'f5-medium': {
+    en: 'Final clusters — medium',
+    vi: 'Cụm âm cuối — trung bình',
+  },
+  'f5-hard': {
+    en: 'Vowels & clusters — hard',
+    vi: 'Nguyên âm & cụm âm — khó',
+  },
 };
 
 export const CATEGORY_WHY: Record<DrillCategory, Bilingual> = {
@@ -63,6 +75,18 @@ export const CATEGORY_WHY: Record<DrillCategory, Bilingual> = {
   intonation: {
     en: 'Vietnamese is tonal — pitch lives on the syllable. English uses pitch on the whole sentence: rising for yes/no questions, falling for statements. Same words, different tune, different meaning.',
     vi: 'Tiếng Việt có thanh điệu trên từng âm tiết. Tiếng Anh dùng giai điệu cả câu: nâng cuối câu hỏi yes/no, hạ cuối câu khẳng định. Cùng chữ, khác giai điệu, khác nghĩa.',
+  },
+  'f5-easy': {
+    en: 'Vietnamese final consonants are unreleased — the voicing contrast (/t/ vs /d/, /k/ vs /g/) collapses. These pairs rebuild that distinction.',
+    vi: 'Phụ âm cuối tiếng Việt không bật hơi — đối lập hữu thanh (/t/ vs /d/, /k/ vs /g/) dễ mất. Bộ này luyện lại sự phân biệt đó.',
+  },
+  'f5-medium': {
+    en: 'Consonant clusters at word endings don\'t exist in Vietnamese — learners drop the second consonant. These pairs train each cluster as a single unit.',
+    vi: 'Cụm phụ âm cuối không có trong tiếng Việt — người học hay nuốt âm thứ hai. Bộ này luyện từng cụm như một đơn vị.',
+  },
+  'f5-hard': {
+    en: 'Longer vowels, mixed clusters, and pairs where both the vowel and the final consonant differ — the hardest minimal contrasts for Vietnamese ears.',
+    vi: 'Nguyên âm dài hơn, cụm âm phức tạp, và những cặp khác cả nguyên âm lẫn phụ âm cuối — thử thách khó nhất cho tai người Việt.',
   },
 };
 
