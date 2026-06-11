@@ -1890,4 +1890,124 @@ describe("AiTutor four-tab seed flow", () => {
     expect(within(logic).getByText("She goes to school every day.")).toBeInTheDocument();
     expect(within(logic).queryByText("I bought a hat yesterday.")).not.toBeInTheDocument();
   });
+
+  // ── Directive V2 regression pins (post-!807) ─────────────────────────────
+  // Explicit pins for the four invariants that !807 introduced. One describe
+  // block so future contributors know exactly what they're protecting.
+  describe("Directive V2 regression pins", () => {
+    // Run DEPTH_CAP+1 distinct voice rounds to trigger the close-out pivot.
+    const DEPTH_SENTENCES = [
+      "I bought a hat yesterday.",
+      "I bought a red hat yesterday.",
+      "I bought a blue hat yesterday.",
+      "I bought a small hat yesterday.",
+      "I bought another hat yesterday.",
+    ] as const;
+
+    async function speakToCloseOut() {
+      for (let i = 0; i < SPEAK_FOLLOW_UP_DEPTH_CAP + 1; i++) {
+        await speakCurrentTarget(DEPTH_SENTENCES[i]);
+        await screen.findByTestId("ai-tutor-speak-follow-up");
+      }
+      await waitFor(() =>
+        expect(screen.getByTestId("ai-tutor-speak-close-out")).toBeInTheDocument(),
+      );
+    }
+
+    it("[pin-a] identical final transcript does not advance turnsOnTopic a second time", async () => {
+      (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+      renderAiTutor();
+
+      await correctHatSentence();
+      await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+      // Round 1 — scripted topic question for the hat sentence.
+      await speakCurrentTarget("I bought a hat yesterday.");
+      expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent(
+        "Where did you buy it?",
+      );
+
+      // Submit the SAME final transcript a second time. The dedup guard
+      // (lastRecordedSpeakAttemptRef) must fire and keep turnsOnTopic at 1.
+      // If the counter advanced to 2, the question would shift away from the
+      // round-1 canned line — the assertion below would fail.
+      await speakCurrentTarget("I bought a hat yesterday.");
+      await waitFor(() =>
+        expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent(
+          "Where did you buy it?",
+        ),
+      );
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent(
+        "Do you want to practice another sentence?",
+      );
+    });
+
+    it("[pin-b] close-out fires at SPEAK_FOLLOW_UP_DEPTH_CAP with both tappable actions rendered", async () => {
+      (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+      renderAiTutor();
+
+      await correctHatSentence();
+      await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+      await speakToCloseOut();
+
+      // Both affordances must be rendered — neither alone satisfies the learner.
+      expect(screen.getByTestId("ai-tutor-speak-close-logic")).toBeInTheDocument();
+      expect(screen.getByTestId("ai-tutor-speak-close-fresh")).toBeInTheDocument();
+      // Close-out is a navigation choice, not a conversational round: no mic answer block.
+      expect(screen.queryByTestId("ai-tutor-speak-follow-up-answer")).not.toBeInTheDocument();
+    });
+
+    it("[pin-c] choosing 'fresh sentence' clears the board and lets the next practice start at round 1", async () => {
+      (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+      renderAiTutor();
+
+      await correctHatSentence();
+      await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+      await speakToCloseOut();
+
+      // Tap "Bắt đầu câu mới" — the 'fresh sentence' affordance.
+      await userEvent.click(screen.getByTestId("ai-tutor-speak-close-fresh"));
+
+      // Board must be clean: close-out gone, no lingering follow-up from the
+      // old session. If clearSpeakBoardState() were missing from handleClear(),
+      // currentIsPivot would stay true and the close-out block would remain.
+      expect(screen.queryByTestId("ai-tutor-speak-close-out")).not.toBeInTheDocument();
+      expect(screen.queryByTestId("ai-tutor-speak-follow-up")).not.toBeInTheDocument();
+
+      // Correct and practice a fresh sentence. The first voice round must land
+      // on the round-1 topic question — never the pivot — proving the session
+      // counter is back at zero.
+      await openTab("Sửa câu");
+      await correctHatSentence();
+      await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+      await speakCurrentTarget("I bought a hat yesterday.");
+      expect(await screen.findByTestId("ai-tutor-speak-follow-up")).toHaveTextContent(
+        "Where did you buy it?",
+      );
+      expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent(
+        "Do you want to practice another sentence?",
+      );
+    });
+
+    it("[pin-d] Logic close-out button navigates to Logic tab and carries the practiced sentence", async () => {
+      (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = MockSpeechRecognition;
+      renderAiTutor();
+
+      await correctHatSentence();
+      await userEvent.click(screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }));
+
+      await speakToCloseOut();
+
+      // Tap "Kiểm tra câu trong tab Logic".
+      await userEvent.click(screen.getByTestId("ai-tutor-speak-close-logic"));
+
+      // Logic tab must be active AND contain the sentence that was just practiced.
+      // latestCorrectedSeed is NOT cleared by handleModeChange, so it carries over.
+      expect(await screen.findByTestId("ai-tutor-logic-current-board")).toHaveTextContent(
+        "I bought a hat yesterday.",
+      );
+    });
+  });
 });
