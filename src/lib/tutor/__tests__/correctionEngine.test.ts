@@ -5,8 +5,10 @@ import {
   STT_ABSTAIN_MESSAGE,
   STT_GARBLE_SIGNALS,
   correctWithTutorRules,
+  detectRunOn,
   findAndFixSttGarble,
   findSemanticImplausibility,
+  segmentRunOn,
   validateCorrectionChangedWhenNeeded,
 } from "@/lib/tutor/correctionEngine";
 import { englishCorrectionRules } from "@/lib/tutor/correctionRules/en";
@@ -1564,3 +1566,112 @@ describe("correctionEngine — STT garble guard", () => {
     }
   });
 });
+
+// ─── Run-on Segmentation ──────────────────────────────────────────────────────
+
+describe("correctionEngine — run-on detection", () => {
+  it.each([
+    "I go to school yesterday and I eat lunch yesterday and I do homework yesterday.",
+    "She eat rice yesterday and she go to school yesterday and she do homework yesterday.",
+    "He buy a hat yesterday and he go to the park yesterday and he eat lunch yesterday.",
+    "I study every day and I practice speaking every day and I watch movie every day.",
+    "She go to school every day and she eat rice every day and she do her homework.",
+    "I have lunch yesterday, I go home yesterday, and I do my homework yesterday.",
+  ])("detects run-on: %s", (input) => {
+    expect(detectRunOn(input)).toBe(true);
+  });
+
+  it.each([
+    "I buy a hat yesterday.",
+    "She is a teacher.",
+    "It's very Monday outside.",
+    "I feel week after the workout.",
+    "He go to school every day.",
+  ])("does not flag short single-clause sentence as run-on: %s", (input) => {
+    expect(detectRunOn(input)).toBe(false);
+  });
+});
+
+describe("correctionEngine — run-on segmentation", () => {
+  it("splits 'A and B and C' into three clauses", () => {
+    const result = segmentRunOn(
+      "I go to school yesterday and I eat lunch yesterday and I do homework yesterday.",
+    );
+    expect(result).not.toBeNull();
+    expect(result!.length).toBe(3);
+  });
+
+  it("splits comma-separated clauses", () => {
+    const result = segmentRunOn(
+      "I have lunch yesterday, I go home yesterday, and I do my homework yesterday.",
+    );
+    expect(result).not.toBeNull();
+    expect(result!.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("returns null for a short, unsplittable sentence", () => {
+    expect(segmentRunOn("I buy a hat yesterday.")).toBeNull();
+  });
+
+  it("strips leading conjunctions from split segments", () => {
+    const result = segmentRunOn(
+      "She eat rice yesterday and she go to school yesterday and she do homework yesterday.",
+    );
+    expect(result).not.toBeNull();
+    for (const seg of result!) {
+      expect(seg).not.toMatch(/^(?:and|but|so|or)\s/i);
+    }
+  });
+});
+
+describe("correctionEngine — run-on: segmented+corrected, not refused", () => {
+  // These inputs are grammar-correct run-ons — no existing specific rule fires, so the
+  // generic run-on segmenter engages and the assembled output is returned as "corrected".
+  it.each([
+    "I study English every day and I practice speaking every day and I listen to music every day.",
+    "I like coffee and I like tea and I also like orange juice every morning.",
+    "I work at a company every day and I earn good money and I live in a nice city.",
+    "I want to learn English fluently and I want to speak with confidence and I want to get a good job.",
+    "I go to the park every morning and I exercise for one hour and I feel very healthy.",
+    "She studies hard every day, she practices speaking every weekend, and she reads new books monthly.",
+  ])("run-on is segmented and corrected (not refused): %s", (input) => {
+    const result = correctWithTutorRules(input, "en");
+    expect(result.status).toBe("corrected");
+    expect(result.appliedRuleIds).toContain("runon-segmented");
+    // Assembled output must differ from the original run-on form.
+    expect(result.corrected).not.toBe(normalizeInput(input));
+  });
+
+  // Abstain-still-works: STT garble on a short non-run-on input still abstains.
+  it("abstain still works: STT garble on short input is not confused with run-on", () => {
+    const result = correctWithTutorRules("It's very Monday outside.", "en");
+    expect(result.status).toBe("needs_ai");
+    expect(result.status === "needs_ai" && result.semanticHint).toBe(STT_ABSTAIN_MESSAGE);
+  });
+
+  it("abstain still works: feel-week on short input still abstains", () => {
+    const result = correctWithTutorRules("I feel week after the workout.", "en");
+    expect(result.status).toBe("needs_ai");
+    expect(result.status === "needs_ai" && result.semanticHint).toBe(STT_ABSTAIN_MESSAGE);
+  });
+
+  // No regression on short inputs.
+  it("no regression: short past-tense error still corrected normally", () => {
+    const result = correctWithTutorRules("I buy a hat yesterday.", "en");
+    expect(result.status).toBe("corrected");
+    expect(result.corrected).toBe("I bought a hat yesterday.");
+    expect(result.appliedRuleIds).not.toContain("runon-segmented");
+  });
+
+  it("no regression: short subject-verb error still corrected normally", () => {
+    const result = correctWithTutorRules("She is teacher.", "en");
+    expect(result.status).toBe("corrected");
+    expect(result.corrected).toBe("She is a teacher.");
+    expect(result.appliedRuleIds).not.toContain("runon-segmented");
+  });
+});
+
+/** Normalise for comparison the same way the engine does internally. */
+function normalizeInput(s: string): string {
+  return s.replace(/\s+/g, " ").trim();
+}
