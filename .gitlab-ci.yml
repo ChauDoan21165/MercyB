@@ -190,9 +190,13 @@ variables:
       - |
         # Pre-checkout stale-build reaper. Runs on ALL pipelines (MR/branch/main-push),
         # not just main-push: MR pipelines were the ones starving the runner's disk
-        # floor (see !568/!598). Safety is unchanged — it only touches numeric pipeline
-        # dirs under gitlab-runner-builds, always skips the current pipeline id, and
-        # skips any dir with a live process (lsof). Kill-switch: MERCYB_PRECHECKOUT_REAPER_DISABLE=1.
+        # floor (see !568/!598). Safety: only touches numeric pipeline dirs under
+        # gitlab-runner-builds; always skips the current pipeline id; skips dirs
+        # modified within MERCYB_PRECHECKOUT_REAP_AGE_MIN (default 360min=6h) so a
+        # running pipeline is never reaped between its own jobs (closes the race where
+        # lsof sees no process between pipeline stages); skips dirs with a fresh
+        # .ci-active-job marker (belt-and-suspenders); then falls back to lsof.
+        # Kill-switch: MERCYB_PRECHECKOUT_REAPER_DISABLE=1.
         if [ "${MERCYB_PRECHECKOUT_REAPER_DISABLE:-0}" != "1" ] && [ -n "${CI_BUILDS_DIR:-}" ] && [ "$(uname -s)" = "Darwin" ]; then
           REAPER_ROOT="$CI_BUILDS_DIR"
           while [ ! -d "$REAPER_ROOT" ] && [ "$REAPER_ROOT" != "/" ]; do
@@ -202,17 +206,26 @@ variables:
             echo "[post-merge-precheckout-reaper] before df -h /"
             df -h / | sed 's/^/[post-merge-precheckout-reaper] /'
             echo "[post-merge-precheckout-reaper] root=$REAPER_ROOT current_pipeline=${CI_PIPELINE_ID:-unknown}"
+            PRECHECKOUT_REAP_AGE_MIN="${MERCYB_PRECHECKOUT_REAP_AGE_MIN:-360}"
             find "$REAPER_ROOT" -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' -print 2>/dev/null | sort | while IFS= read -r d; do
               [ -n "$d" ] || continue
               if [ "$(basename "$d")" = "${CI_PIPELINE_ID:-}" ]; then
                 echo "[post-merge-precheckout-reaper] SKIP current-pipeline path=$d"
                 continue
               fi
+              if find "$d" -maxdepth 0 -mmin "-${PRECHECKOUT_REAP_AGE_MIN}" -print 2>/dev/null | grep -q .; then
+                echo "[post-merge-precheckout-reaper] SKIP recently-modified path=$d age<${PRECHECKOUT_REAP_AGE_MIN}min"
+                continue
+              fi
+              if find "$d" -mindepth 3 -maxdepth 3 -name .ci-active-job -type f -mmin "-${PRECHECKOUT_REAP_AGE_MIN}" -print -quit 2>/dev/null | grep -q .; then
+                echo "[post-merge-precheckout-reaper] SKIP active-job-marker path=$d"
+                continue
+              fi
               if command -v lsof >/dev/null 2>&1 && lsof -t +D "$d" >/dev/null 2>&1; then
                 echo "[post-merge-precheckout-reaper] SKIP active-process path=$d"
                 continue
               fi
-              echo "[post-merge-precheckout-reaper] REMOVE path=$d safe=non-current-runner-pipeline-dir"
+              echo "[post-merge-precheckout-reaper] REMOVE path=$d safe=non-current-runner-pipeline-dir age>=${PRECHECKOUT_REAP_AGE_MIN}min"
               rm -rf -- "$d" || echo "[post-merge-precheckout-reaper] WARN remove-failed path=$d"
             done
             echo "[post-merge-precheckout-reaper] after df -h /"
