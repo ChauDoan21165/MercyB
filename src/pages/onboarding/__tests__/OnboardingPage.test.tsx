@@ -546,3 +546,93 @@ describe("OnboardingPage — ?direction=vn Skip preserves intent (A32 trap)", ()
     );
   });
 });
+
+// ── Telemetry funnel ─────────────────────────────────────────────────
+// These tests verify the four events reach trackEvent (GA4 / Clarity).
+// trackEvent is mocked so tests are independent of window.gtag presence.
+
+const trackEventMock = vi.fn();
+vi.mock("@/lib/analytics", () => ({
+  trackEvent: (...args: unknown[]) => trackEventMock(...args),
+}));
+
+describe("OnboardingPage — telemetry funnel", () => {
+  beforeEach(() => {
+    trackEventMock.mockClear();
+  });
+
+  it("emits onboarding_started with direction=default on mount (vi-first flow)", () => {
+    renderPage();
+    const startedCalls = trackEventMock.mock.calls.filter(
+      ([name]: [string]) => name === "onboarding_started",
+    );
+    expect(startedCalls).toHaveLength(1);
+    expect(startedCalls[0][1]).toMatchObject({
+      entry_step: "native",
+      direction: "default",
+    });
+  });
+
+  it("emits onboarding_started with direction=vn on mount (?direction=vn flow)", () => {
+    renderPage({ direction: "vn" });
+    const startedCalls = trackEventMock.mock.calls.filter(
+      ([name]: [string]) => name === "onboarding_started",
+    );
+    expect(startedCalls).toHaveLength(1);
+    expect(startedCalls[0][1]).toMatchObject({
+      entry_step: "target",
+      direction: "vn",
+    });
+  });
+
+  it("emits onboarding_started exactly once even after a step transition", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await user.click(screen.getByRole("radio", { name: /Tiếng Việt/ }));
+    const startedCalls = trackEventMock.mock.calls.filter(
+      ([name]: [string]) => name === "onboarding_started",
+    );
+    expect(startedCalls).toHaveLength(1);
+  });
+
+  it("emits onboarding_step_complete when advancing a step", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await user.click(screen.getByRole("radio", { name: /Tiếng Việt/ }));
+    const stepCalls = trackEventMock.mock.calls.filter(
+      ([name]: [string]) => name === "onboarding_step_complete",
+    );
+    expect(stepCalls.length).toBeGreaterThanOrEqual(1);
+    expect(stepCalls[0][1]).toMatchObject({ step: "native" });
+  });
+
+  it("emits onboarding_skipped when Skip is tapped", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await user.click(
+      screen.getByRole("button", { name: /Skip onboarding|^Skip/i }),
+    );
+    const skippedCalls = trackEventMock.mock.calls.filter(
+      ([name]: [string]) => name === "onboarding_skipped",
+    );
+    expect(skippedCalls).toHaveLength(1);
+    expect(skippedCalls[0][1]).toMatchObject({ from_step: "native" });
+  });
+
+  it("emits onboarding_complete on finish (vi → en single-target path)", async () => {
+    const user = userEvent.setup();
+    renderPage();
+    await user.click(screen.getByRole("radio", { name: /Tiếng Việt/ }));
+    await user.click(
+      screen.getByRole("button", { name: /Continue|Tiếp tục/ }),
+    );
+    const completedCalls = trackEventMock.mock.calls.filter(
+      ([name]: [string]) => name === "onboarding_complete",
+    );
+    expect(completedCalls).toHaveLength(1);
+    expect(completedCalls[0][1]).toMatchObject({
+      native_language: "vi",
+      primary_target: "en",
+    });
+  });
+});
