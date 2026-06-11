@@ -1,7 +1,12 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { act } from "react";
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import AiConversationScenarioPanel from "../AiConversationScenarioPanel";
+
+const recordActiveDay = vi.hoisted(() => vi.fn());
+vi.mock("@/lib/retention/recordActiveDay", () => ({ recordActiveDay }));
+
+afterEach(() => recordActiveDay.mockClear());
 
 describe("AiConversationScenarioPanel", () => {
   it("gates non-premium learners", () => {
@@ -162,6 +167,21 @@ describe("AiConversationScenarioPanel", () => {
     expect(screen.getByText("Turn 1/50")).toBeInTheDocument();
     expect(screen.queryByTestId("ai-conversation-premium-gate")).not.toBeInTheDocument();
     expect(sendTurn).toHaveBeenCalledTimes(1);
+    // Step 10: a real conversation turn records the D1/D7 active day.
+    expect(recordActiveDay).toHaveBeenCalledTimes(1);
+  });
+
+  it("records the D1/D7 active day on a successful turn, but NOT on the entitlement gate (Step 10)", async () => {
+    const gated = vi.fn().mockResolvedValue({
+      reply: "Premium required", correction: null, summary: null, cost: {},
+      provider: "local-fallback", pronunciationAbstention: null, entitlementGate: true,
+    });
+    render(
+      <AiConversationScenarioPanel accessToken="token" hasPremium loadingAccess={false} sendTurn={gated} />,
+    );
+    await send("I want order food.");
+    // Entitlement gate fired → no engagement recorded.
+    expect(recordActiveDay).not.toHaveBeenCalled();
   });
 
   it("fails closed without a canned Mercy reply when the turn falls back to local-fallback (Contract C6)", async () => {
