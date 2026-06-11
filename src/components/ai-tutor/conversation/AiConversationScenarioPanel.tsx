@@ -25,6 +25,7 @@ import {
   type TelemetrySession,
 } from "@/lib/tutor/conversationTelemetry";
 import type { ConversationEncouragement } from "@/lib/retention/conversationHooks";
+import { recordActiveDay } from "@/lib/retention/recordActiveDay";
 
 // A 'Sửa câu' correction handed off from the grammar surface. When present we
 // seed a learner-led, live-generated conversation with the learner's own
@@ -201,6 +202,12 @@ export default function AiConversationScenarioPanel({
         summary,
         ended: optimisticSession.learnerTurnCount >= optimisticSession.maxTurns,
       });
+      // Step 10 — a real conversation turn is engagement, so it records the
+      // D1/D7 active day exactly like every other tutor surface (correction,
+      // speak, daily challenge). Consent-independent (this marks the learner's
+      // own activity, not captured content) and dedup'd per local day inside
+      // recordActiveDay. Fires only past the entitlement + local-fallback guards.
+      recordActiveDay();
       if (telemetrySession) {
         // Telemetry drives consent-gated capture + flag-gated retention (XP +
         // encouragement). It must never break the turn, so guard it separately
