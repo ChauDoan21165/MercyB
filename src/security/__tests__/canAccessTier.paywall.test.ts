@@ -37,6 +37,7 @@ function makeAccess(overrides: Partial<UserAccess>): UserAccess {
     },
     loading: false,
     isLoading: false,
+    isAccessConcluded: true,
     canAccessPremium: () => false,
     isTrialExpired: false,
   };

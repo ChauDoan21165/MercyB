@@ -55,6 +55,16 @@ export interface UserAccess {
   loading: boolean;
   isLoading: boolean;
 
+  /**
+   * True when the access check positively resolved the user's entitlement:
+   * either the entitlement is premium (no profile needed) or the profile query
+   * settled without error (even a null row means confirmed non-admin).
+   * False when the profile query errored and entitlement is free — the user
+   * might be an admin whose profile row couldn't be read. In that case the
+   * client gate must NOT fire; let sendTurn() hit the server instead.
+   */
+  isAccessConcluded: boolean;
+
   canAccessPremium: () => boolean;
 
   isTrialExpired: boolean;
@@ -195,6 +205,7 @@ export const guestAccess = (): UserAccess => {
     features: buildFeatureAccess(entitlementTier, { unlockMercyFeatures }),
     loading: false,
     isLoading: false,
+    isAccessConcluded: true,
     canAccessPremium: () => false,
     isTrialExpired: false,
     accessAnnouncement: undefined,
@@ -254,6 +265,9 @@ function authenticatedFreeAccess(params: {
     }),
     loading,
     isLoading: loading,
+    // Intermediate loading state: not yet conclusive. Profile + entitlement
+    // haven't both settled; isHighAdmin may still flip. Don't client-gate yet.
+    isAccessConcluded: false,
     canAccessPremium: () => isHighAdmin,
     isTrialExpired,
     accessAnnouncement: isTrialExpired ? TRIAL_ENDED_MESSAGE : undefined,
@@ -280,6 +294,7 @@ export const useUserAccess = (): UserAccess => {
   const profileQuery = useProfileQuery(authLoading ? null : userId);
   const profile = profileQuery.data ?? null;
   const profileLoading = Boolean(userId) && profileQuery.isLoading;
+  const profileError = profileQuery.isError;
 
   // Run counter — discard results from stale concurrent runs
   const runIdRef = useRef(0);
@@ -390,6 +405,12 @@ export const useUserAccess = (): UserAccess => {
         features,
         loading: false,
         isLoading: false,
+        // Access is conclusive when either: (a) entitlement is premium (no need
+        // to know admin level) or (b) profile query settled without error. A null
+        // row from a successful query means the user definitely has no admin row.
+        // A query error means we can't rule out a readable-but-failed admin row,
+        // so we leave it inconclusive and let the server enforce.
+        isAccessConcluded: isPremiumTier(entitlementTier) || !profileError,
         canAccessPremium: () => isPremiumTier(entitlementTier) || isHighAdmin,
         isTrialExpired: trialGating,
         accessAnnouncement: trialGating ? TRIAL_ENDED_MESSAGE : undefined,
@@ -406,7 +427,7 @@ export const useUserAccess = (): UserAccess => {
     };
 
     void run();
-  }, [authLoading, profile, profileLoading, user, userId, userEmail]);
+  }, [authLoading, profile, profileError, profileLoading, user, userId, userEmail]);
 
   return useMemo(() => access, [access]);
 };

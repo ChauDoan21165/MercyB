@@ -39,6 +39,14 @@ type Props = {
   accessToken?: string | null;
   hasPremium: boolean;
   loadingAccess: boolean;
+  /**
+   * True when the client positively resolved the user's entitlement (premium
+   * confirmed, or profile settled without error). False when uncertain — skip
+   * the client pre-check and let sendTurn() reach the server instead.
+   * Defaults to true so existing callers that only pass hasPremium/loadingAccess
+   * keep the same gate behaviour.
+   */
+  accessConfirmed?: boolean;
   userId?: string | null;
   correctionSeed?: ConversationCorrectionSeed | null;
   sendTurn?: typeof sendAiConversationTurn;
@@ -48,6 +56,7 @@ export default function AiConversationScenarioPanel({
   accessToken,
   hasPremium,
   loadingAccess,
+  accessConfirmed = true,
   userId,
   correctionSeed,
   sendTurn = sendAiConversationTurn,
@@ -127,7 +136,7 @@ export default function AiConversationScenarioPanel({
   const handleSend = async () => {
     const learnerText = input.trim();
     if (!learnerText || !accessToken || !canSendAiConversationTurn(session)) return;
-    if (loadingAccess || !hasPremium) {
+    if (!loadingAccess && accessConfirmed && !hasPremium) {
       setLoading(false);
       setError("");
       setEntitlementGateVisible(true);
@@ -233,7 +242,7 @@ export default function AiConversationScenarioPanel({
     );
   }
 
-  if (!hasPremium || entitlementGateVisible) {
+  if ((accessConfirmed && !hasPremium) || entitlementGateVisible) {
     return (
       <PremiumConversationGate turnCount={session.learnerTurnCount} maxTurns={session.maxTurns} />
     );
