@@ -234,7 +234,7 @@ export function SoundPairDrillCard({
           </span>
           {isF5DrillItem(pair) && (
             <span
-              className="ml-1.5 font-mono text-xs text-slate-400 not-italic"
+              className="ml-1.5 font-mono text-xs text-slate-500 dark:text-slate-400 not-italic"
               data-testid="pair-ipa-contrast"
             >
               {pair.ipaContrast}
@@ -243,7 +243,7 @@ export function SoundPairDrillCard({
         </p>
         {isF5DrillItem(pair) && (
           <p
-            className="text-xs text-slate-400 dark:text-slate-500 mt-1 italic"
+            className="text-xs text-slate-500 dark:text-slate-400 mt-1 italic"
             data-testid="pair-example-contrast"
           >
             "{pair.exampleContrast}"
