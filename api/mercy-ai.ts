@@ -253,11 +253,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         "Mercy chưa sửa chắc câu này. Bạn thử viết ngắn hơn, rõ hơn rồi gửi lại nhé.";
       const enAbstain =
         "Mercy could not correct this confidently. Try rewriting it more clearly.";
+      // Exact copy used when a probable STT mishearing is detected but the intended word is unclear.
+      const sttAbstain = "Mình chưa chắc bạn định nói gì — bạn gõ lại nhé?";
       const systemPrompt = `You are Mercy, an English-language tutor for Vietnamese learners.
 Correct the learner's English sentence for grammar, tense, and natural phrasing.
 Keep the learner's original meaning — do not rewrite from scratch.
 Explain what changed and why in ${explainLang === "vi" ? "Vietnamese" : "English"} (1–2 sentences).
 Give a grammar tip in ${explainLang === "vi" ? "Vietnamese" : "English"} (one line, start with "Mẹo:" or "Tip:").
+STT-garble rule: If a content word is semantically impossible in its syntactic position — e.g. a degree adverb modifying a proper noun ("very Sunday", "so Monday") or a linking verb followed by a time noun used as an adjective ("feel week") — the word is almost certainly a speech-to-text mishearing. You MUST either (a) identify the intended word and fix it (e.g. "very Sunday" → "very sunny", "feel week" → "feel weak"), or (b) set "confident" to false with explanation "${sttAbstain}". NEVER approve such a sentence as correct.
 If the input is too garbled or is not a correctable sentence, set "confident" to false.
 Respond ONLY with valid JSON:
 {"corrected":"<corrected sentence>","explanation":"<explanation>","grammarTip":"<tip>","confident":true}
