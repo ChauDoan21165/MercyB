@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { act } from "react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { setCaptureConsent } from "@/lib/conversationCapture/captureConsent";
 
 // Mock the telemetry seam so this test verifies the PANEL WIRING (does it render
 // the retention encouragement and end the capture session?) rather than the
@@ -34,7 +35,14 @@ const fakeSession = {
   now: () => new Date("2026-06-10T00:00:00.000Z"),
 };
 
+afterEach(() => {
+  window.localStorage.clear();
+});
+
 beforeEach(() => {
+  // Pre-set consent so the ConsentModal does not open during these tests, which
+  // model a returning learner (already decided) verifying telemetry wiring.
+  setCaptureConsent(true);
   telemetryMocks.begin.mockReset().mockResolvedValue(fakeSession);
   telemetryMocks.record.mockReset().mockResolvedValue({
     encouragement: {
@@ -122,5 +130,38 @@ describe("AiConversationScenarioPanel telemetry wiring", () => {
     await waitFor(() => expect(telemetryMocks.end).toHaveBeenCalledWith(fakeSession));
     // A fresh telemetry session is opened for the restarted conversation.
     await waitFor(() => expect(telemetryMocks.begin).toHaveBeenCalledTimes(2));
+  });
+
+  it("consent modal open ⇒ encouragement is deferred until the learner decides", async () => {
+    // Simulate a first-time learner: no prior consent decision stored.
+    window.localStorage.clear();
+
+    renderPanel();
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    // Attempt to send — the modal intercepts before the turn fires.
+    await act(async () => {
+      fireEvent.change(screen.getByRole("textbox"), {
+        target: { value: "This morning my bus was late." },
+      });
+      fireEvent.click(screen.getByRole("button", { name: /send answer/i }));
+    });
+
+    // Modal is visible; encouragement has not rendered yet.
+    expect(screen.getByText("Cải thiện bài học của bạn")).toBeInTheDocument();
+    expect(screen.queryByTestId("ai-conversation-encouragement")).not.toBeInTheDocument();
+    expect(telemetryMocks.record).not.toHaveBeenCalled();
+
+    // Learner consents — the deferred turn is submitted and encouragement appears.
+    await act(async () => {
+      fireEvent.click(screen.getByText(/Đồng ý/));
+    });
+
+    const block = await screen.findByTestId("ai-conversation-encouragement");
+    expect(block).toHaveTextContent("Bạn nói tốt lắm rồi");
+    expect(screen.queryByText("Cải thiện bài học của bạn")).not.toBeInTheDocument();
+    expect(telemetryMocks.record).toHaveBeenCalledTimes(1);
   });
 });
