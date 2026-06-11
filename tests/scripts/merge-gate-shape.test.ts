@@ -171,4 +171,37 @@ describe("merge-gate.sh protected_path_hits — word-boundary / false-positive g
     ].join("\n");
     expect(hits(diff)).toContain("supabaseClient.ts");
   });
+
+  // (f) similarly-named file that is NOT supabaseClient.ts → NO hit
+  it("does NOT flag src/lib/not-supabaseClient.ts (segment-anchored pattern)", () => {
+    const diff = [
+      "--- src/lib/not-supabaseClient.ts",
+      "+++ src/lib/not-supabaseClient.ts",
+      "@@ -1 +1 @@",
+      "+// unrelated file",
+    ].join("\n");
+    expect(hits(diff)).toBe("");
+  });
+
+  // (g) docs/auth/index.md → NO hit (docs dir + .md extension, excluded from pass 1b)
+  it("does NOT flag docs/auth/index.md (docs dir excluded from auth token pass)", () => {
+    const diff = [
+      "--- docs/auth/index.md",
+      "+++ docs/auth/index.md",
+      "@@ -1 +1 @@",
+      "+# Auth docs",
+    ].join("\n");
+    expect(hits(diff)).toBe("");
+  });
+
+  // (h) api/_lib/__tests__/auth/index.test.ts → NO hit (__tests__ dir excluded)
+  it("does NOT flag api/_lib/__tests__/auth/index.test.ts (__tests__ dir excluded)", () => {
+    const diff = [
+      "--- api/_lib/__tests__/auth/index.test.ts",
+      "+++ api/_lib/__tests__/auth/index.test.ts",
+      "@@ -1 +1 @@",
+      "+// test file",
+    ].join("\n");
+    expect(hits(diff)).toBe("");
+  });
 });
