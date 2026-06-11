@@ -1,0 +1,551 @@
+{
+  "name": "vn-en-eval-set-v2",
+  "description": "VN→EN correction eval set v2 — 60 pairs filling coverage gaps from v1: literal_translation, omission, register, redundancy, B2/C1 CEFR, multi-tag, formal/professional contexts",
+  "version": 2,
+  "targetLearnerL1": "vi",
+  "targetLearnerL2": "en",
+  "schemaSource": "../vn-en-eval-set-v1/types.ts",
+  "count": 60,
+  "entries": [
+    {
+      "id": "eval-v2-001",
+      "input": "Can you explain for me this word?",
+      "expected": "Can you explain this word to me?",
+      "errorTags": ["literal_translation", "word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "classroom request" },
+      "level": "A2",
+      "vietlishPattern": "giải thích cho tôi → 'explain for me' — Vietnamese bổ ngữ gián tiếp giữ 'cho' → inserted 'for' before indirect object instead of 'to' after direct object"
+    },
+    {
+      "id": "eval-v2-002",
+      "input": "I want to inform to you that the meeting is canceled.",
+      "expected": "I want to inform you that the meeting has been canceled.",
+      "errorTags": ["literal_translation", "preposition"],
+      "tone": { "register": "formal", "natural": true, "context": "workplace email" },
+      "level": "B1",
+      "vietlishPattern": "thông báo cho bạn → 'inform to you' — Vietnamese thông báo + cho mirrors French/VN indirect object marker; English 'inform' takes bare indirect object"
+    },
+    {
+      "id": "eval-v2-003",
+      "input": "Please let me know your think about this proposal.",
+      "expected": "Please let me know your thoughts on this proposal.",
+      "errorTags": ["literal_translation", "plural"],
+      "tone": { "register": "formal", "natural": true, "context": "professional communication" },
+      "level": "B1",
+      "vietlishPattern": "suy nghĩ của bạn → 'your think' — suy nghĩ is both verb and noun in Vietnamese; learner carries verb form into noun slot; 'thoughts' plural expected in English"
+    },
+    {
+      "id": "eval-v2-004",
+      "input": "I have a meeting with my boss in next Monday.",
+      "expected": "I have a meeting with my boss next Monday.",
+      "errorTags": ["literal_translation", "preposition"],
+      "tone": { "register": "neutral", "natural": true, "context": "scheduling conversation" },
+      "level": "A2",
+      "vietlishPattern": "vào thứ Hai tới → 'in next Monday' — vào signals time in Vietnamese but 'next Monday' needs no preposition in English"
+    },
+    {
+      "id": "eval-v2-005",
+      "input": "She is very boring because she has nothing to do.",
+      "expected": "She is very bored because she has nothing to do.",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "informal", "natural": true, "context": "describing someone's mood" },
+      "level": "A2",
+      "vietlishPattern": "rất chán → 'very boring' — Vietnamese chán is state (bored), not property (boring); -ed/-ing participial adjective distinction absent in Vietnamese"
+    },
+    {
+      "id": "eval-v2-006",
+      "input": "I am interesting in learning English.",
+      "expected": "I am interested in learning English.",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "neutral", "natural": true, "context": "self-introduction" },
+      "level": "A1",
+      "vietlishPattern": "tôi thích / tôi quan tâm → 'I am interesting' — -ed state vs -ing property confusion; Vietnamese không phân biệt hai dạng này"
+    },
+    {
+      "id": "eval-v2-007",
+      "input": "He suggested me to apply for that job.",
+      "expected": "He suggested that I apply for that job.",
+      "errorTags": ["literal_translation", "word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "job advice narrative" },
+      "level": "B1",
+      "vietlishPattern": "anh ấy gợi ý tôi → 'suggested me to' — Vietnamese gợi ý + object mirrors 'advise/tell + object + to-inf' pattern; 'suggest' in English requires that-clause or gerund"
+    },
+    {
+      "id": "eval-v2-008",
+      "input": "My company has three branch in Ho Chi Minh City.",
+      "expected": "My company has three branches in Ho Chi Minh City.",
+      "errorTags": ["plural"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing a company" },
+      "level": "A2",
+      "vietlishPattern": "ba chi nhánh → no plural suffix in Vietnamese; numeral already marks plurality; learner omits English -s"
+    },
+    {
+      "id": "eval-v2-009",
+      "input": "I was born in Hanoi. My family is living there for 20 years.",
+      "expected": "I was born in Hanoi. My family has been living there for 20 years.",
+      "errorTags": ["tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "personal background" },
+      "level": "B1",
+      "vietlishPattern": "đã sống ở đó 20 năm → present progressive instead of present perfect continuous; Vietnamese tense conveyed by time adverb 'đã' without aspect change in verb"
+    },
+    {
+      "id": "eval-v2-010",
+      "input": "Please reply this email when you receive it.",
+      "expected": "Please reply to this email when you receive it.",
+      "errorTags": ["preposition", "omission"],
+      "tone": { "register": "formal", "natural": true, "context": "email instruction" },
+      "level": "A2",
+      "vietlishPattern": "trả lời email này → 'reply this email' — Vietnamese phúc đáp + direct object; English 'reply' is intransitive, requires 'reply to + object'"
+    },
+    {
+      "id": "eval-v2-011",
+      "input": "He is absent today because he is sick.",
+      "expected": "He is absent today because he is sick.",
+      "errorTags": [],
+      "tone": { "register": "neutral", "natural": true, "context": "reporting absence" },
+      "level": "A1",
+      "vietlishPattern": "acceptable: common causal structure; 'because' clause grammatically complete; no correction needed"
+    },
+    {
+      "id": "eval-v2-012",
+      "input": "I need you to explain more clearly.",
+      "expected": "I need you to explain more clearly.",
+      "errorTags": [],
+      "tone": { "register": "neutral", "natural": true, "context": "requesting clarification" },
+      "level": "A2",
+      "vietlishPattern": "acceptable: 'need + object + to-inf + adverb' is grammatical; no correction needed"
+    },
+    {
+      "id": "eval-v2-013",
+      "input": "Can I borrow your pen for a moment?",
+      "expected": "Can I borrow your pen for a moment?",
+      "errorTags": [],
+      "tone": { "register": "informal", "natural": true, "context": "classroom polite request" },
+      "level": "A1",
+      "vietlishPattern": "acceptable: common polite request; correct use of 'borrow'; no correction needed"
+    },
+    {
+      "id": "eval-v2-014",
+      "input": "The weather is very hot today, isn't it?",
+      "expected": "The weather is very hot today, isn't it?",
+      "errorTags": [],
+      "tone": { "register": "informal", "natural": true, "context": "small talk" },
+      "level": "A1",
+      "vietlishPattern": "acceptable: correct tag question form; no correction needed"
+    },
+    {
+      "id": "eval-v2-015",
+      "input": "She told me that she would come back soon.",
+      "expected": "She told me that she would come back soon.",
+      "errorTags": [],
+      "tone": { "register": "neutral", "natural": true, "context": "reported speech narrative" },
+      "level": "B1",
+      "vietlishPattern": "acceptable: correct backshift in reported speech; no correction needed"
+    },
+    {
+      "id": "eval-v2-016",
+      "input": "I wish I can speak English fluently.",
+      "expected": "I wish I could speak English fluently.",
+      "errorTags": ["tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "expressing a wish" },
+      "level": "B1",
+      "vietlishPattern": "tôi ước tôi có thể → 'I wish I can' — Vietnamese ước + có thể doesn't shift modality; English subjunctive/unreal conditional requires 'could' in wish-clause"
+    },
+    {
+      "id": "eval-v2-017",
+      "input": "If I will have more time, I will study abroad.",
+      "expected": "If I had more time, I would study abroad.",
+      "errorTags": ["tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "hypothetical planning" },
+      "level": "B1",
+      "vietlishPattern": "nếu tôi có nhiều thời gian hơn → 'if I will have' — Vietnamese nếu clause uses present/future form; English counterfactual if-clause requires past tense"
+    },
+    {
+      "id": "eval-v2-018",
+      "input": "The problem was discuss in the meeting.",
+      "expected": "The problem was discussed in the meeting.",
+      "errorTags": ["tense", "copula"],
+      "tone": { "register": "formal", "natural": true, "context": "meeting summary" },
+      "level": "B1",
+      "vietlishPattern": "vấn đề được thảo luận → 'was discuss' — Vietnamese passive với 'được' + bare verb root; English passive requires past participle"
+    },
+    {
+      "id": "eval-v2-019",
+      "input": "This is the book which I told you about it.",
+      "expected": "This is the book that I told you about.",
+      "errorTags": ["redundancy", "word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "pointing out a book" },
+      "level": "B1",
+      "vietlishPattern": "quyển sách mà tôi đã nói với bạn về nó → 'about it' — Vietnamese relativization retains pronoun copy ('về nó'); English stranded preposition drops the resumptive pronoun"
+    },
+    {
+      "id": "eval-v2-020",
+      "input": "He is the person that I met him at the conference.",
+      "expected": "He is the person that I met at the conference.",
+      "errorTags": ["redundancy"],
+      "tone": { "register": "neutral", "natural": true, "context": "introducing someone" },
+      "level": "B1",
+      "vietlishPattern": "người mà tôi gặp anh ấy → resumptive pronoun 'him' kept inside relative clause; Vietnamese cho phép đại từ tóm lại; English prohibits resumptive pronouns in relative clauses"
+    },
+    {
+      "id": "eval-v2-021",
+      "input": "I have already finished the report already.",
+      "expected": "I have already finished the report.",
+      "errorTags": ["redundancy"],
+      "tone": { "register": "neutral", "natural": true, "context": "work status update" },
+      "level": "A2",
+      "vietlishPattern": "tôi đã hoàn thành báo cáo rồi → double already ('already...already' or 'đã...rồi') — Vietnamese uses 'đã' (beginning) + 'rồi' (end) to mark perfective; learner mirrors both markers"
+    },
+    {
+      "id": "eval-v2-022",
+      "input": "She return home late last night.",
+      "expected": "She returned home late last night.",
+      "errorTags": ["tense"],
+      "tone": { "register": "informal", "natural": true, "context": "family story" },
+      "level": "A1",
+      "vietlishPattern": "cô ấy về nhà muộn → bare verb in past context; 'last night' marks past but Vietnamese không biến đổi động từ"
+    },
+    {
+      "id": "eval-v2-023",
+      "input": "My mother, she works as a nurse in the hospital.",
+      "expected": "My mother works as a nurse in the hospital.",
+      "errorTags": ["redundancy"],
+      "tone": { "register": "informal", "natural": true, "context": "talking about family" },
+      "level": "A1",
+      "vietlishPattern": "mẹ tôi, bà ấy làm y tá → left-dislocation with topic pronoun — Vietnamese topic-comment structure keeps subject pronoun after topic; English drops the pronoun copy"
+    },
+    {
+      "id": "eval-v2-024",
+      "input": "The food in this restaurant, it is very delicious.",
+      "expected": "The food in this restaurant is very delicious.",
+      "errorTags": ["redundancy"],
+      "tone": { "register": "informal", "natural": true, "context": "restaurant review" },
+      "level": "A1",
+      "vietlishPattern": "đồ ăn ở đây, nó ngon lắm → topic pronoun 'it' duplicates subject; Vietnamese topic-comment keeps pronoun; English drops resumptive 'it'"
+    },
+    {
+      "id": "eval-v2-025",
+      "input": "I don't know about it.",
+      "expected": "I don't know about it.",
+      "errorTags": [],
+      "tone": { "register": "informal", "natural": true, "context": "casual conversation" },
+      "level": "A1",
+      "vietlishPattern": "acceptable variant: 'don't know about it' is standard informal English; no correction needed"
+    },
+    {
+      "id": "eval-v2-026",
+      "input": "Please write your name in this form.",
+      "expected": "Please write your name on this form.",
+      "errorTags": ["preposition"],
+      "tone": { "register": "formal", "natural": true, "context": "official instruction" },
+      "level": "A2",
+      "vietlishPattern": "điền tên trong mẫu → 'in this form' — Vietnamese 'trong' (inside) used for forms/documents; English 'on' collocates with form/paper surface"
+    },
+    {
+      "id": "eval-v2-027",
+      "input": "She is depend on her parents for money.",
+      "expected": "She depends on her parents for money.",
+      "errorTags": ["copula", "tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing a situation" },
+      "level": "A2",
+      "vietlishPattern": "cô ấy phụ thuộc → 'is depend' — copula 'is' inserted before bare verb instead of conjugated form; Vietnamese linking verb không có dạng biến đổi"
+    },
+    {
+      "id": "eval-v2-028",
+      "input": "We must to submit the report by Friday.",
+      "expected": "We must submit the report by Friday.",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "formal", "natural": true, "context": "deadline reminder" },
+      "level": "A2",
+      "vietlishPattern": "chúng ta phải nộp → 'must to submit' — Vietnamese phải + bare verb form; learner inserts 'to' treating 'must' like other modals (have to, need to, want to)"
+    },
+    {
+      "id": "eval-v2-029",
+      "input": "I suggest to take the train instead of the bus.",
+      "expected": "I suggest taking the train instead of the bus.",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "neutral", "natural": true, "context": "giving travel advice" },
+      "level": "B1",
+      "vietlishPattern": "tôi đề nghị đi tàu → 'suggest to take' — Vietnamese gợi ý/đề nghị + bare verb; English 'suggest' requires gerund or that-clause, never to-infinitive"
+    },
+    {
+      "id": "eval-v2-030",
+      "input": "He made me to feel better.",
+      "expected": "He made me feel better.",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "informal", "natural": true, "context": "emotional support story" },
+      "level": "B1",
+      "vietlishPattern": "anh ấy làm tôi cảm thấy → 'made me to feel' — causative 'make' takes bare infinitive, not to-infinitive; learner over-applies 'to' pattern from want/expect/encourage"
+    },
+    {
+      "id": "eval-v2-031",
+      "input": "I am looking forward to meet you next week.",
+      "expected": "I am looking forward to meeting you next week.",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "formal", "natural": true, "context": "professional email closing" },
+      "level": "B1",
+      "vietlishPattern": "mong được gặp bạn → 'look forward to meet' — Vietnamese mong + bare verb; 'to' in 'look forward to' is a preposition not an infinitive marker, requires gerund"
+    },
+    {
+      "id": "eval-v2-032",
+      "input": "She entered to the room quietly.",
+      "expected": "She entered the room quietly.",
+      "errorTags": ["preposition", "literal_translation"],
+      "tone": { "register": "neutral", "natural": true, "context": "narrative description" },
+      "level": "A2",
+      "vietlishPattern": "cô ấy bước vào phòng → 'entered to the room' — Vietnamese vào requires directional complement; 'enter' is transitive in English, no preposition needed"
+    },
+    {
+      "id": "eval-v2-033",
+      "input": "I need more information about the product before I make my decision.",
+      "expected": "I need more information about the product before I make my decision.",
+      "errorTags": [],
+      "tone": { "register": "formal", "natural": true, "context": "consumer inquiry" },
+      "level": "B1",
+      "vietlishPattern": "acceptable: complete, grammatical, appropriately formal sentence; no correction needed"
+    },
+    {
+      "id": "eval-v2-034",
+      "input": "He didn't mention about the issue in the report.",
+      "expected": "He didn't mention the issue in the report.",
+      "errorTags": ["preposition", "literal_translation"],
+      "tone": { "register": "formal", "natural": true, "context": "work feedback" },
+      "level": "B2",
+      "vietlishPattern": "không đề cập đến vấn đề → 'mention about' — Vietnamese đề cập + đến (directional); English 'mention' is transitive, no preposition; 'mention about' is a common non-native pattern"
+    },
+    {
+      "id": "eval-v2-035",
+      "input": "The applicant lacks of relevant experience for this role.",
+      "expected": "The applicant lacks relevant experience for this role.",
+      "errorTags": ["preposition", "literal_translation"],
+      "tone": { "register": "formal", "natural": true, "context": "HR evaluation" },
+      "level": "B2",
+      "vietlishPattern": "thiếu kinh nghiệm → 'lacks of' — Vietnamese thiếu + noun is fine; English 'lack' is transitive, no 'of'; contrasted with 'lack of' as a noun phrase"
+    },
+    {
+      "id": "eval-v2-036",
+      "input": "We need to discuss about the project timeline urgently.",
+      "expected": "We need to discuss the project timeline urgently.",
+      "errorTags": ["preposition", "literal_translation"],
+      "tone": { "register": "formal", "natural": true, "context": "project management" },
+      "level": "B1",
+      "vietlishPattern": "cần thảo luận về → 'discuss about' — Vietnamese thảo luận + về; English 'discuss' is transitive; 'about' is redundant (unlike 'talk about' which needs the preposition)"
+    },
+    {
+      "id": "eval-v2-037",
+      "input": "I hope that you will consider my application favorably.",
+      "expected": "I hope that you will consider my application favorably.",
+      "errorTags": [],
+      "tone": { "register": "formal", "natural": true, "context": "job application cover letter" },
+      "level": "B2",
+      "vietlishPattern": "acceptable: formal closing line; correct conditional structure; no correction needed"
+    },
+    {
+      "id": "eval-v2-038",
+      "input": "Please be advised that failure to comply may result consequences.",
+      "expected": "Please be advised that failure to comply may result in consequences.",
+      "errorTags": ["omission"],
+      "tone": { "register": "formal", "natural": true, "context": "legal/policy notice" },
+      "level": "B2",
+      "vietlishPattern": "dẫn đến hậu quả → 'result consequences' — 'result' is intransitive; requires 'result in'; Vietnamese dẫn đến is a transitive verb phrase, learner omits English preposition"
+    },
+    {
+      "id": "eval-v2-039",
+      "input": "I agree your point about the budget.",
+      "expected": "I agree with your point about the budget.",
+      "errorTags": ["omission"],
+      "tone": { "register": "formal", "natural": true, "context": "meeting discussion" },
+      "level": "B1",
+      "vietlishPattern": "tôi đồng ý ý kiến của bạn → 'agree your point' — Vietnamese đồng ý + noun (no preposition needed); English 'agree' is intransitive, requires 'agree with + noun'"
+    },
+    {
+      "id": "eval-v2-040",
+      "input": "She is good cooking Vietnamese food.",
+      "expected": "She is good at cooking Vietnamese food.",
+      "errorTags": ["omission"],
+      "tone": { "register": "informal", "natural": true, "context": "describing a skill" },
+      "level": "A2",
+      "vietlishPattern": "cô ấy giỏi nấu ăn → 'good cooking' — Vietnamese giỏi + bare verb/noun; English 'good at' requires preposition 'at' before gerund"
+    },
+    {
+      "id": "eval-v2-041",
+      "input": "He is responsible the project management.",
+      "expected": "He is responsible for the project management.",
+      "errorTags": ["omission"],
+      "tone": { "register": "formal", "natural": true, "context": "job description" },
+      "level": "B1",
+      "vietlishPattern": "anh ấy chịu trách nhiệm quản lý dự án → 'responsible + noun' — Vietnamese chịu trách nhiệm + bare noun; English 'responsible for' requires preposition"
+    },
+    {
+      "id": "eval-v2-042",
+      "input": "I would like to apologize the inconvenience caused.",
+      "expected": "I would like to apologize for the inconvenience caused.",
+      "errorTags": ["omission"],
+      "tone": { "register": "formal", "natural": true, "context": "customer service apology" },
+      "level": "B2",
+      "vietlishPattern": "xin lỗi sự bất tiện → 'apologize the inconvenience' — Vietnamese xin lỗi + direct object; English 'apologize for' is intransitive + 'for' preposition"
+    },
+    {
+      "id": "eval-v2-043",
+      "input": "We are looking a solution to this technical issue.",
+      "expected": "We are looking for a solution to this technical issue.",
+      "errorTags": ["omission"],
+      "tone": { "register": "formal", "natural": true, "context": "technical support communication" },
+      "level": "B1",
+      "vietlishPattern": "đang tìm giải pháp → 'looking a solution' — Vietnamese tìm kiếm + direct object; English 'look for' is a phrasal verb requiring 'for'"
+    },
+    {
+      "id": "eval-v2-044",
+      "input": "She never complains her situation and always stays positive.",
+      "expected": "She never complains about her situation and always stays positive.",
+      "errorTags": ["omission"],
+      "tone": { "register": "neutral", "natural": true, "context": "character description" },
+      "level": "B1",
+      "vietlishPattern": "không bao giờ phàn nàn về → 'complains her situation' — Vietnamese phàn nàn can take direct object colloquially; English 'complain about' requires preposition"
+    },
+    {
+      "id": "eval-v2-045",
+      "input": "He arrived at the office on time, despite the heavy traffic.",
+      "expected": "He arrived at the office on time, despite the heavy traffic.",
+      "errorTags": [],
+      "tone": { "register": "neutral", "natural": true, "context": "daily routine narrative" },
+      "level": "B1",
+      "vietlishPattern": "acceptable: correct 'despite + noun phrase'; correct 'arrived at' collocation; no correction needed"
+    },
+    {
+      "id": "eval-v2-046",
+      "input": "The manager wants everyone to attend the meeting and to be prepared.",
+      "expected": "The manager wants everyone to attend the meeting and to be prepared.",
+      "errorTags": [],
+      "tone": { "register": "formal", "natural": true, "context": "workplace instruction" },
+      "level": "B1",
+      "vietlishPattern": "acceptable: parallel infinitive construction is natural; 'to attend...and to be' both acceptable; no correction needed"
+    },
+    {
+      "id": "eval-v2-047",
+      "input": "The policy is apply to all employees without exception.",
+      "expected": "The policy applies to all employees without exception.",
+      "errorTags": ["copula", "tense"],
+      "tone": { "register": "formal", "natural": true, "context": "HR policy document" },
+      "level": "B2",
+      "vietlishPattern": "chính sách được áp dụng → 'is apply' — Vietnamese passive 'được áp dụng'; learner produces passive copula + bare verb instead of active third-person singular form"
+    },
+    {
+      "id": "eval-v2-048",
+      "input": "Under no circumstances we should accept this offer.",
+      "expected": "Under no circumstances should we accept this offer.",
+      "errorTags": ["word_order"],
+      "tone": { "register": "formal", "natural": true, "context": "business negotiation advice" },
+      "level": "C1",
+      "vietlishPattern": "trong mọi trường hợp chúng ta không nên → subject-first word order after fronted negative; English requires subject-auxiliary inversion after negative fronting ('Under no circumstances should we...')"
+    },
+    {
+      "id": "eval-v2-049",
+      "input": "Had I known the truth earlier, I would have acted differently.",
+      "expected": "Had I known the truth earlier, I would have acted differently.",
+      "errorTags": [],
+      "tone": { "register": "formal", "natural": true, "context": "reflective formal writing" },
+      "level": "C1",
+      "vietlishPattern": "acceptable: inverted conditional perfect (Had I known...) — advanced but grammatical; no correction needed"
+    },
+    {
+      "id": "eval-v2-050",
+      "input": "Not only he came late, but also he forgot the documents.",
+      "expected": "Not only did he come late, but he also forgot the documents.",
+      "errorTags": ["word_order"],
+      "tone": { "register": "formal", "natural": true, "context": "formal complaint narrative" },
+      "level": "C1",
+      "vietlishPattern": "không những anh ấy đến trễ, mà còn... → no inversion after 'not only'; English requires do-support inversion in the first clause after fronted 'not only'"
+    },
+    {
+      "id": "eval-v2-051",
+      "input": "Seldom we have seen such dedication in a new employee.",
+      "expected": "Seldom have we seen such dedication in a new employee.",
+      "errorTags": ["word_order"],
+      "tone": { "register": "formal", "natural": true, "context": "performance review formal writing" },
+      "level": "C1",
+      "vietlishPattern": "hiếm khi chúng tôi thấy → no inversion after fronted negative adverb 'seldom'; English requires auxiliary inversion: 'Seldom have we seen'"
+    },
+    {
+      "id": "eval-v2-052",
+      "input": "It was until I read the report that I understood the full picture.",
+      "expected": "It was not until I read the report that I understood the full picture.",
+      "errorTags": ["omission"],
+      "tone": { "register": "formal", "natural": true, "context": "analytical writing" },
+      "level": "C1",
+      "vietlishPattern": "mãi đến khi tôi đọc báo cáo → 'it was until' — the cleft structure requires 'It was not until...that'; Vietnamese 'mãi đến khi' carries the negative implicitly; learner omits 'not'"
+    },
+    {
+      "id": "eval-v2-053",
+      "input": "The report, which submitted last week, has been reviewed by the committee.",
+      "expected": "The report, which was submitted last week, has been reviewed by the committee.",
+      "errorTags": ["omission", "tense"],
+      "tone": { "register": "formal", "natural": true, "context": "formal administrative communication" },
+      "level": "B2",
+      "vietlishPattern": "báo cáo được nộp tuần trước → omitted auxiliary 'was' in relative clause passive; Vietnamese passive 'được nộp' uses single auxiliary; English passive requires 'was/were + past participle'"
+    },
+    {
+      "id": "eval-v2-054",
+      "input": "He spoke very professionally during the interview, which impressed the panel.",
+      "expected": "He spoke very professionally during the interview, which impressed the panel.",
+      "errorTags": [],
+      "tone": { "register": "formal", "natural": true, "context": "interview debrief" },
+      "level": "B2",
+      "vietlishPattern": "acceptable: non-restrictive relative clause 'which' correctly refers to entire clause; no correction needed"
+    },
+    {
+      "id": "eval-v2-055",
+      "input": "The feedback from customer is very important for us improve our service.",
+      "expected": "Feedback from customers is very important for us to improve our service.",
+      "errorTags": ["omission", "article", "plural"],
+      "tone": { "register": "formal", "natural": true, "context": "business presentation" },
+      "level": "B1",
+      "vietlishPattern": "phản hồi từ khách hàng quan trọng để chúng tôi cải thiện → multiple omissions: 'for us' requires 'for us to' (to-infinitive); 'feedback' usually uncountable no article; 'customer' → 'customers' (generic plural)"
+    },
+    {
+      "id": "eval-v2-056",
+      "input": "I am writing to express my dissatisfaction regarding the service I received on June 5.",
+      "expected": "I am writing to express my dissatisfaction regarding the service I received on June 5.",
+      "errorTags": [],
+      "tone": { "register": "formal", "natural": true, "context": "formal complaint letter opening" },
+      "level": "B2",
+      "vietlishPattern": "acceptable: formal complaint register; correct preposition 'regarding'; no correction needed"
+    },
+    {
+      "id": "eval-v2-057",
+      "input": "You should have told me earlier. Now it is too late to make a change.",
+      "expected": "You should have told me earlier. Now it is too late to make a change.",
+      "errorTags": [],
+      "tone": { "register": "informal", "natural": true, "context": "expressing regret in conversation" },
+      "level": "B2",
+      "vietlishPattern": "acceptable: correct past modal perfect 'should have told'; natural cause-effect structure; no correction needed"
+    },
+    {
+      "id": "eval-v2-058",
+      "input": "Despite of the difficulties, she managed to complete the project on time.",
+      "expected": "Despite the difficulties, she managed to complete the project on time.",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "formal", "natural": true, "context": "performance review" },
+      "level": "B2",
+      "vietlishPattern": "mặc dù những khó khăn → 'Despite of' — confusion with 'in spite of'; 'despite' does not take 'of'; Vietnamese 'mặc dù' + noun doesn't signal this distinction"
+    },
+    {
+      "id": "eval-v2-059",
+      "input": "The staff were informed in advance, so no one was surprise.",
+      "expected": "The staff were informed in advance, so no one was surprised.",
+      "errorTags": ["tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "event debrief" },
+      "level": "B1",
+      "vietlishPattern": "không ai ngạc nhiên → 'was surprise' — bare adjective/verb form; Vietnamese trạng thái không biến đổi; English passive adjective requires -ed form 'surprised'"
+    },
+    {
+      "id": "eval-v2-060",
+      "input": "Her presentation was so clear that even the non-technical staff could understand it.",
+      "expected": "Her presentation was so clear that even the non-technical staff could understand it.",
+      "errorTags": [],
+      "tone": { "register": "formal", "natural": true, "context": "post-presentation praise" },
+      "level": "B2",
+      "vietlishPattern": "acceptable: correct 'so...that' result clause; 'even' correctly placed before noun; no correction needed"
+    }
+  ]
+}
