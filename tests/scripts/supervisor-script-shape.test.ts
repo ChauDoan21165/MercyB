@@ -312,3 +312,58 @@ describe("supervisor scripts exist as files", () => {
     });
   }
 });
+
+// ── .gitlab-ci.yml precheckout reaper — shape ──────────────────────────
+//
+// Guards against regressions in the inline shell reaper embedded in the
+// .local_runner hook. String-level assertions only — no shell execution.
+
+const CI_YAML = readFileSync(path.join(REPO_ROOT, ".gitlab-ci.yml"), "utf8");
+
+describe(".gitlab-ci.yml precheckout reaper — shape", () => {
+  it("performs primary API active-check via CI_JOB_TOKEN + JOB-TOKEN header", () => {
+    expect(CI_YAML).toMatch(/JOB-TOKEN.*CI_JOB_TOKEN/);
+    expect(CI_YAML).toMatch(/api\/v4\/projects.*pipelines/);
+  });
+
+  it("logs each API-check verdict explicitly (status= present)", () => {
+    expect(CI_YAML).toMatch(/API-check pipeline=.*status=/);
+  });
+
+  it("emits SKIP api-active for running/pending pipelines", () => {
+    expect(CI_YAML).toMatch(/SKIP api-active/);
+    expect(CI_YAML).toMatch(/running\|pending\|created\|preparing\|waiting_for_resource/);
+  });
+
+  it("logs API-check unavailable when curl fails", () => {
+    expect(CI_YAML).toMatch(/API-check.*status=unavailable/);
+  });
+
+  it("logs API-check SKIP no-token when CI vars are absent", () => {
+    expect(CI_YAML).toMatch(/API-check SKIP no-token/);
+  });
+
+  it("mtime threshold defaults to <= 90 min (fallback only, not 360)", () => {
+    const m = CI_YAML.match(/MERCYB_PRECHECKOUT_REAP_AGE_MIN:-(\d+)/);
+    expect(m, "MERCYB_PRECHECKOUT_REAP_AGE_MIN default not found").not.toBeNull();
+    expect(parseInt(m![1], 10)).toBeLessThanOrEqual(90);
+  });
+
+  it("has a separate marker freshness threshold (MERCYB_PRECHECKOUT_MARKER_AGE_MIN)", () => {
+    expect(CI_YAML).toMatch(/MERCYB_PRECHECKOUT_MARKER_AGE_MIN/);
+    expect(CI_YAML).toMatch(/PRECHECKOUT_MARKER_AGE_MIN.*:-360/);
+  });
+
+  it("labels mtime-only skips distinctly", () => {
+    expect(CI_YAML).toMatch(/SKIP mtime-only/);
+  });
+
+  it("has emergency relief valve that fires when disk < floor and mtime-only skips exist", () => {
+    expect(CI_YAML).toMatch(/EMERGENCY-RELIEF/);
+    expect(CI_YAML).toMatch(/oldest mtime-only-skipped dir/);
+  });
+
+  it("emergency valve compares free KB against the floor constant", () => {
+    expect(CI_YAML).toMatch(/_free_now.*<.*_DISK_FLOOR_KB|_DISK_FLOOR_KB.*_free_now/);
+  });
+});

@@ -191,11 +191,20 @@ variables:
         # Pre-checkout stale-build reaper. Runs on ALL pipelines (MR/branch/main-push),
         # not just main-push: MR pipelines were the ones starving the runner's disk
         # floor (see !568/!598). Safety: only touches numeric pipeline dirs under
-        # gitlab-runner-builds; always skips the current pipeline id; skips dirs
-        # modified within MERCYB_PRECHECKOUT_REAP_AGE_MIN (default 360min=6h) so a
-        # running pipeline is never reaped between its own jobs (closes the race where
-        # lsof sees no process between pipeline stages); skips dirs with a fresh
-        # .ci-active-job marker (belt-and-suspenders); then falls back to lsof.
+        # gitlab-runner-builds; always skips the current pipeline id.
+        # Guard order per candidate dir:
+        #   1. GitLab API pipeline-status check via CI_JOB_TOKEN (primary — logs verdict
+        #      for every dir; skips if status is running/pending/created/preparing/
+        #      waiting_for_resource); falls through on curl failure/404.
+        #   2. .ci-active-job marker freshness check (belt-and-suspenders; threshold
+        #      MERCYB_PRECHECKOUT_MARKER_AGE_MIN, default 360min=CI timeout ceiling).
+        #   3. lsof open-file check.
+        #   4. mtime fallback (MERCYB_PRECHECKOUT_REAP_AGE_MIN, default 90min) — last
+        #      resort only; tracks mtime-only-skipped dirs for the emergency valve.
+        # Emergency relief valve: if after the loop disk < floor AND the only skips
+        # were mtime-gated (API/marker never fired), delete the oldest such dir with
+        # a loud EMERGENCY-RELIEF log line — a stale deleted dir beats a fail-closed
+        # fleet.
         # Kill-switch: MERCYB_PRECHECKOUT_REAPER_DISABLE=1.
         if [ "${MERCYB_PRECHECKOUT_REAPER_DISABLE:-0}" != "1" ] && [ -n "${CI_BUILDS_DIR:-}" ] && [ "$(uname -s)" = "Darwin" ]; then
           REAPER_ROOT="$CI_BUILDS_DIR"
@@ -206,28 +215,69 @@ variables:
             echo "[post-merge-precheckout-reaper] before df -h /"
             df -h / | sed 's/^/[post-merge-precheckout-reaper] /'
             echo "[post-merge-precheckout-reaper] root=$REAPER_ROOT current_pipeline=${CI_PIPELINE_ID:-unknown}"
-            PRECHECKOUT_REAP_AGE_MIN="${MERCYB_PRECHECKOUT_REAP_AGE_MIN:-360}"
+            PRECHECKOUT_REAP_AGE_MIN="${MERCYB_PRECHECKOUT_REAP_AGE_MIN:-90}"
+            PRECHECKOUT_MARKER_AGE_MIN="${MERCYB_PRECHECKOUT_MARKER_AGE_MIN:-360}"
+            _DISK_FLOOR_KB="${MERCYB_CI_MIN_FREE_KB:-5242880}"
+            _MTIME_SKIP_TMP="$(mktemp 2>/dev/null || printf '%s' "/tmp/.precheckout-reaper-mtime-$$")"
             find "$REAPER_ROOT" -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' -print 2>/dev/null | sort | while IFS= read -r d; do
               [ -n "$d" ] || continue
-              if [ "$(basename "$d")" = "${CI_PIPELINE_ID:-}" ]; then
+              _pid="$(basename "$d")"
+              if [ "$_pid" = "${CI_PIPELINE_ID:-}" ]; then
                 echo "[post-merge-precheckout-reaper] SKIP current-pipeline path=$d"
                 continue
               fi
-              if find "$d" -maxdepth 0 -mmin "-${PRECHECKOUT_REAP_AGE_MIN}" -print 2>/dev/null | grep -q .; then
-                echo "[post-merge-precheckout-reaper] SKIP recently-modified path=$d age<${PRECHECKOUT_REAP_AGE_MIN}min"
-                continue
+              # Guard 1: GitLab API pipeline-status (CI_JOB_TOKEN).
+              if [ -n "${CI_JOB_TOKEN:-}" ] && [ -n "${CI_SERVER_URL:-}" ] && [ -n "${CI_PROJECT_ID:-}" ]; then
+                _api_resp="$(curl -sf --max-time 5 \
+                  -H "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+                  "${CI_SERVER_URL}/api/v4/projects/${CI_PROJECT_ID}/pipelines/${_pid}" \
+                  2>/dev/null || true)"
+                _api_status="$(printf '%s' "$_api_resp" | grep -o '"status":"[^"]*"' | head -1 | sed 's/.*":"\([^"]*\)".*/\1/')"
+                if [ -n "$_api_status" ]; then
+                  echo "[post-merge-precheckout-reaper] API-check pipeline=${_pid} status=${_api_status} path=$d"
+                  case "$_api_status" in
+                    running|pending|created|preparing|waiting_for_resource)
+                      echo "[post-merge-precheckout-reaper] SKIP api-active pipeline=${_pid} status=${_api_status} path=$d"
+                      continue
+                      ;;
+                  esac
+                else
+                  echo "[post-merge-precheckout-reaper] API-check pipeline=${_pid} status=unavailable path=$d"
+                fi
+              else
+                echo "[post-merge-precheckout-reaper] API-check SKIP no-token path=$d"
               fi
-              if find "$d" -mindepth 3 -maxdepth 3 -name .ci-active-job -type f -mmin "-${PRECHECKOUT_REAP_AGE_MIN}" -print -quit 2>/dev/null | grep -q .; then
+              # Guard 2: .ci-active-job marker freshness.
+              if find "$d" -mindepth 3 -maxdepth 3 -name .ci-active-job -type f -mmin "-${PRECHECKOUT_MARKER_AGE_MIN}" -print -quit 2>/dev/null | grep -q .; then
                 echo "[post-merge-precheckout-reaper] SKIP active-job-marker path=$d"
                 continue
               fi
+              # Guard 3: lsof open-file check.
               if command -v lsof >/dev/null 2>&1 && lsof -t +D "$d" >/dev/null 2>&1; then
                 echo "[post-merge-precheckout-reaper] SKIP active-process path=$d"
+                continue
+              fi
+              # Guard 4: mtime fallback (last resort — tracks for emergency valve).
+              if find "$d" -maxdepth 0 -mmin "-${PRECHECKOUT_REAP_AGE_MIN}" -print 2>/dev/null | grep -q .; then
+                echo "[post-merge-precheckout-reaper] SKIP mtime-only path=$d age<${PRECHECKOUT_REAP_AGE_MIN}min"
+                printf '%s\n' "$d" >> "$_MTIME_SKIP_TMP"
                 continue
               fi
               echo "[post-merge-precheckout-reaper] REMOVE path=$d safe=non-current-runner-pipeline-dir age>=${PRECHECKOUT_REAP_AGE_MIN}min"
               rm -rf -- "$d" || echo "[post-merge-precheckout-reaper] WARN remove-failed path=$d"
             done
+            # Emergency relief valve: if mtime-only skips left disk below floor, remove oldest.
+            if [ -s "$_MTIME_SKIP_TMP" ]; then
+              _free_now="$(df -Pk "$REAPER_ROOT" 2>/dev/null | awk 'NR==2 {print $4}')"
+              if [ -n "$_free_now" ] && [ "$_free_now" -lt "$_DISK_FLOOR_KB" ]; then
+                _oldest="$(head -1 "$_MTIME_SKIP_TMP")"
+                if [ -n "$_oldest" ] && [ -d "$_oldest" ]; then
+                  echo "[post-merge-precheckout-reaper] EMERGENCY-RELIEF free=${_free_now}KB < floor=${_DISK_FLOOR_KB}KB — removing oldest mtime-only-skipped dir: $_oldest"
+                  rm -rf -- "$_oldest" || echo "[post-merge-precheckout-reaper] WARN emergency-remove-failed path=$_oldest"
+                fi
+              fi
+            fi
+            rm -f "$_MTIME_SKIP_TMP" 2>/dev/null || true
             echo "[post-merge-precheckout-reaper] after df -h /"
             df -h / | sed 's/^/[post-merge-precheckout-reaper] /'
           else
