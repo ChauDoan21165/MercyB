@@ -14,7 +14,7 @@ export function isRecord(value: unknown): value is Record<string, unknown> {
 
 export function normalizeSpeakQuestion(value: unknown): string {
   const raw = norm(value)
-    .replace(/^["'“”]+|["'“”]+$/g, "")
+    .replace(/^["'""]+|["'""]+$/g, "")
     .replace(/^(?:en|answer|question)\s*:\s*/i, "")
     .replace(/\s+/g, " ")
     .trim();
@@ -29,6 +29,10 @@ export function normalizeSpeakQuestion(value: unknown): string {
   }
   return firstQuestion;
 }
+
+export type SpeakFollowUpError = { ok: false; retryable: true; reason: "speak_followup_unavailable" };
+
+const SPEAK_FOLLOWUP_ERROR: SpeakFollowUpError = { ok: false, retryable: true, reason: "speak_followup_unavailable" };
 
 type SpeakEnv = {
   DEEPSEEK_API_KEY?: string;
@@ -48,10 +52,11 @@ export async function buildDeepSeekSpeakFollowUp(input: {
   currentTopic: string;
   recentTurns: Array<{ role: "learner" | "assistant"; text: string }>;
   env?: SpeakEnv;
-}): Promise<{ question: string; provider: "deepseek"; model: string } | null> {
+}): Promise<{ question: string; provider: "deepseek"; model: string } | SpeakFollowUpError | null> {
   const env = input.env ?? fallbackProcessEnv();
   const apiKey = env.DEEPSEEK_API_KEY;
-  if (!apiKey) return null;
+  // Missing key = infrastructure not configured, not an unclear-input case.
+  if (!apiKey) return SPEAK_FOLLOWUP_ERROR;
 
   const model = env.DEEPSEEK_SPEAK_MODEL || "deepseek-chat";
   const controller = new AbortController();
@@ -97,15 +102,18 @@ export async function buildDeepSeekSpeakFollowUp(input: {
       signal: controller.signal,
     });
 
-    if (!response.ok) return null;
+    // Provider returned an error status — infrastructure failure, not unclear input.
+    if (!response.ok) return SPEAK_FOLLOWUP_ERROR;
     const data = (await response.json()) as {
       choices?: Array<{ message?: { content?: string } }>;
     };
     const question = normalizeSpeakQuestion(data?.choices?.[0]?.message?.content);
+    // API worked but produced no usable question — genuine unclear-input case.
     if (!question) return null;
     return { question, provider: "deepseek", model };
   } catch {
-    return null;
+    // Network failure / timeout — infrastructure failure.
+    return SPEAK_FOLLOWUP_ERROR;
   } finally {
     clearTimeout(timeout);
   }

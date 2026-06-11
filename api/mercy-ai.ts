@@ -13,6 +13,7 @@ import {
   SPEAK_REPEAT_CLARIFICATION,
   toSpeakRecentTurns,
 } from "./_lib/deepseekSpeak";
+import type { SpeakFollowUpError } from "./_lib/deepseekSpeak";
 import {
   buildAiConversationTurn,
   normalizeAiConversationHistory,
@@ -199,7 +200,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         currentTopic: norm(context.currentTopic),
         recentTurns: toSpeakRecentTurns(context.recentTurns),
       });
+      if (result && "ok" in result && !(result as SpeakFollowUpError).ok) {
+        // Provider infrastructure failure — surface as typed retryable error, not a canned clarification.
+        return safeJson(res, 200, result as SpeakFollowUpError);
+      }
       if (!result) {
+        // result === null: AI worked but transcript was genuinely unclear → ask to repeat.
         return safeJson(res, 200, {
           question: SPEAK_REPEAT_CLARIFICATION,
           provider: "local-fallback",
