@@ -15,16 +15,42 @@ export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 #   - strips an OPTIONAL a/ or b/ prefix (works for glab AND raw git diff),
 #   - drops /dev/null,
 #   - de-dupes,
-#   - then matches the protected-area regex.
-# Regex is unchanged from the original gate (CEO-2 SECOND covered only the
-# parser; tightening the over-broad tokens auth/.env/deploy is a separate,
-# unapproved follow-up).
+#   - then matches via two passes (A5 word-boundary fix r2, 2026-06-11):
+#     Pass 1a (exact) — supabaseClient.ts anchored to path segment end; fires
+#       everywhere including test/doc dirs.
+#     Pass 1b (token) — /auth(/|.) segment and .env root; test/doc dirs and
+#       *.test.*, *.spec.*, *.md paths are excluded.
+#     Pass 2 (broad) — billing/stripe/payment/entitle/auth/vite.config/
+#       wrangler/deploy matched anywhere, but __tests__/, docs/, *.test.*,
+#       and *.md paths are excluded (block implementations, not test coverage).
 protected_path_hits() {
-  grep -E '^[-+]{3} ' \
-    | sed -E 's@^[-+]{3} (a/|b/)?@@' \
-    | grep -vx '/dev/null' \
-    | sort -u \
-    | grep -iE "billing|stripe|payment|entitle|auth|supabaseClient|\.env|vite\.config|wrangler|deploy"
+  local _paths
+  _paths=$(
+    grep -E '^[-+]{3} ' \
+      | sed -E 's@^[-+]{3} (a/|b/)?@@' \
+      | grep -vx '/dev/null' \
+      | sort -u
+  )
+  # Pass 1a: supabaseClient.ts exact segment match — fires even inside test/doc dirs.
+  local _anchored_exact
+  _anchored_exact=$(printf '%s\n' "$_paths" \
+    | grep -E "(^|/)supabaseClient\.ts$") || true
+  # Pass 1b: /auth(/|.) and .env tokens — implementation paths only (exclude test/doc dirs).
+  local _anchored_token
+  _anchored_token=$(printf '%s\n' "$_paths" \
+    | grep -vE "(^|/)(__tests__|docs)/|\.test\.[tj]sx?$|\.spec\.[tj]sx?$|\.md$" \
+    | grep -E "(^|/)auth(/|\.)|(^|/)\.env($| |\.)") || true
+  # Merge 1a + 1b.
+  local _anchored
+  _anchored=$(printf '%s\n' "$_anchored_exact" "$_anchored_token" \
+    | grep -v '^$' | sort -u) || true
+  # Pass 2: broad token match — implementation files only; skip test/doc contexts.
+  local _broad
+  _broad=$(printf '%s\n' "$_paths" \
+    | grep -iE "billing|stripe|payment|entitle|auth|vite\.config|wrangler|deploy" \
+    | grep -vE "(^|/)(__tests__|docs)/|\.test\.[tj]sx?$|\.spec\.[tj]sx?$|\.md$") || true
+  # Merge and de-dupe; emit nothing when both passes are empty.
+  printf '%s\n%s\n' "$_anchored" "$_broad" | grep -v '^$' | sort -u || true
 }
 
 main() {

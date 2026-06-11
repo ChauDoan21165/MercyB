@@ -115,3 +115,93 @@ describe("merge-gate.sh protected_path_hits — CHECK 2 behaviour", () => {
     expect(hits(diff)).toContain(".env");
   });
 });
+
+describe("merge-gate.sh protected_path_hits — word-boundary / false-positive guards (A5)", () => {
+  // (a) test file about entitlement → NO hit
+  it("does NOT flag a test file that merely mentions entitlement in its name", () => {
+    const diff = [
+      "--- api/_lib/__tests__/entitlementAgreement.test.ts",
+      "+++ api/_lib/__tests__/entitlementAgreement.test.ts",
+      "@@ -1 +1 @@",
+      "+// test coverage",
+    ].join("\n");
+    expect(hits(diff)).toBe("");
+  });
+
+  // (b) implementation file containing entitlement token → HIT
+  it("flags an implementation file containing an entitlement token", () => {
+    const diff = [
+      "--- api/_lib/conversationEntitlement.ts",
+      "+++ api/_lib/conversationEntitlement.ts",
+      "@@ -1 +1 @@",
+      "+export const x = 1;",
+    ].join("\n");
+    expect(hits(diff)).toContain("conversationEntitlement.ts");
+  });
+
+  // (c) docs file mentioning auth → NO hit
+  it("does NOT flag a docs file that mentions auth", () => {
+    const diff = [
+      "--- docs/auth-guide.md",
+      "+++ docs/auth-guide.md",
+      "@@ -1 +1 @@",
+      "+# Auth setup",
+    ].join("\n");
+    expect(hits(diff)).toBe("");
+  });
+
+  // (d) src/lib/supabaseClient.ts → HIT (exact match, implementation)
+  it("flags src/lib/supabaseClient.ts (exact protected file)", () => {
+    const diff = [
+      "--- src/lib/supabaseClient.ts",
+      "+++ src/lib/supabaseClient.ts",
+      "@@ -1 +1 @@",
+      "+// changed",
+    ].join("\n");
+    expect(hits(diff)).toContain("supabaseClient.ts");
+  });
+
+  // (e) deletion of a protected file → HIT via --- header
+  it("catches deletion of supabaseClient.ts (--- header, +++ is /dev/null)", () => {
+    const diff = [
+      "--- src/lib/supabaseClient.ts",
+      "+++ /dev/null",
+      "@@ -1 +0,0 @@",
+      "-export const supabase = null;",
+    ].join("\n");
+    expect(hits(diff)).toContain("supabaseClient.ts");
+  });
+
+  // (f) similarly-named file that is NOT supabaseClient.ts → NO hit
+  it("does NOT flag src/lib/not-supabaseClient.ts (segment-anchored pattern)", () => {
+    const diff = [
+      "--- src/lib/not-supabaseClient.ts",
+      "+++ src/lib/not-supabaseClient.ts",
+      "@@ -1 +1 @@",
+      "+// unrelated file",
+    ].join("\n");
+    expect(hits(diff)).toBe("");
+  });
+
+  // (g) docs/auth/index.md → NO hit (docs dir + .md extension, excluded from pass 1b)
+  it("does NOT flag docs/auth/index.md (docs dir excluded from auth token pass)", () => {
+    const diff = [
+      "--- docs/auth/index.md",
+      "+++ docs/auth/index.md",
+      "@@ -1 +1 @@",
+      "+# Auth docs",
+    ].join("\n");
+    expect(hits(diff)).toBe("");
+  });
+
+  // (h) api/_lib/__tests__/auth/index.test.ts → NO hit (__tests__ dir excluded)
+  it("does NOT flag api/_lib/__tests__/auth/index.test.ts (__tests__ dir excluded)", () => {
+    const diff = [
+      "--- api/_lib/__tests__/auth/index.test.ts",
+      "+++ api/_lib/__tests__/auth/index.test.ts",
+      "@@ -1 +1 @@",
+      "+// test file",
+    ].join("\n");
+    expect(hits(diff)).toBe("");
+  });
+});
