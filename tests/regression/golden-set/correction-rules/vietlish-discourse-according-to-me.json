@@ -62,6 +62,54 @@
       "expectedCorrection": "According to me and my team, it works.",
       "expectedRuleFired": null,
       "notes": "Coordinator 'and' after 'me' means a compound source; 'in my opinion and my team' would be ungrammatical -> must abstain."
+    },
+    {
+      "id": "according-neg-005",
+      "input": "According to my teacher, we should practice every day.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "According to my teacher, we should practice every day.",
+      "expectedRuleFired": null,
+      "notes": "Third-person possessive object 'my teacher': pattern matches only 'me', 'my opinion', or 'my personal opinion'; 'my + other-noun' must not trigger."
+    },
+    {
+      "id": "according-neg-006",
+      "input": "She acted according to her conscience.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She acted according to her conscience.",
+      "expectedRuleFired": null,
+      "notes": "Third-person possessive 'her conscience': neither 'me' nor any 'my opinion' variant; must abstain."
+    },
+    {
+      "id": "according-neg-007",
+      "input": "According to you, what is the answer?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "According to you, what is the answer?",
+      "expectedRuleFired": null,
+      "notes": "Second-person 'you': rule targets only first-person singular 'me / my opinion'; 'according to you' is correct and must not fire."
+    },
+    {
+      "id": "according-neg-008",
+      "input": "According to our data, the result is positive.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "According to our data, the result is positive.",
+      "expectedRuleFired": null,
+      "notes": "First-person plural possessive 'our data': not the target 'my opinion' surface; rule does not generalise to 'our'."
+    },
+    {
+      "id": "according-neg-009",
+      "input": "According to my experience, learning English takes time.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "According to my experience, learning English takes time.",
+      "expectedRuleFired": null,
+      "notes": "'my experience' has the possessive 'my' but the noun is not 'opinion' or 'personal opinion'; partial 'my + other-noun' must not match."
+    },
+    {
+      "id": "according-neg-010",
+      "input": "According to the latest research, sleep is important.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "According to the latest research, sleep is important.",
+      "expectedRuleFired": null,
+      "notes": "Article + noun external source: canonical correct citation usage that must stay untouched."
     }
   ]
 }
