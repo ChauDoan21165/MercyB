@@ -1,0 +1,1626 @@
+{
+  "corpus": "step11-vietlish-corpus-d4-wave10",
+  "step": 11,
+  "wave": 10,
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "kind": "vietlish_interference_review_candidates",
+  "schema": "VietlishCorpusEntry (src/lib/tutor/vietlishCorpus.ts) - { vietlish, natural, sourcePattern, category, frequency, context }",
+  "author": "F1 (Content Factory)",
+  "status": "review_not_wired",
+  "wiredIntoEngine": false,
+  "definition": "Tenth-wave candidate Vietnamese-L1 interference items for human review before promotion into VIETLISH_CORPUS. Focus areas: gerund/preposition governance, clause-chain literal translations, relative-clause word order, adjective false friends, causatives, and work/service register softening.",
+  "dedupedAgainst": "F1 local check against live VIETLISH_CORPUS, pending waves 1-5 on main, fetched in-flight waves 6/7/8, and F1 wave9 branch; case-insensitive vietlish matching.",
+  "generatedFor": "2026-06-10 F1 Step-11 corpus lane continuation",
+  "count": 200,
+  "categories": {
+    "calque": "C",
+    "word_order": "W",
+    "register": "R",
+    "collocation": "CO",
+    "false_friend": "FF",
+    "literal_translation": "LT"
+  },
+  "entries": [
+    {
+      "vietlish": "look forward to see you",
+      "natural": "look forward to seeing you",
+      "sourcePattern": "mong được gặp -> to in look forward to is preposition, needs gerund",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "In my email, I wrote: I look forward to see you."
+    },
+    {
+      "vietlish": "object to pay the fee",
+      "natural": "object to paying the fee",
+      "sourcePattern": "phản đối việc trả phí -> to after object is preposition",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Many tenants object to pay the fee."
+    },
+    {
+      "vietlish": "get used to wake up early",
+      "natural": "get used to waking up early",
+      "sourcePattern": "quen với việc dậy sớm -> to after used is preposition",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I am trying to get used to wake up early."
+    },
+    {
+      "vietlish": "be committed to improve service",
+      "natural": "be committed to improving service",
+      "sourcePattern": "cam kết cải thiện -> to after committed is preposition",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The team is committed to improve service."
+    },
+    {
+      "vietlish": "admit to make a mistake",
+      "natural": "admit to making a mistake",
+      "sourcePattern": "thừa nhận đã sai -> to after admit can take gerund",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "He admitted to make a mistake."
+    },
+    {
+      "vietlish": "confess to break the rule",
+      "natural": "confess to breaking the rule",
+      "sourcePattern": "thú nhận vi phạm -> to after confess takes gerund",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "The student confessed to break the rule."
+    },
+    {
+      "vietlish": "devote time to learn English",
+      "natural": "devote time to learning English",
+      "sourcePattern": "dành thời gian cho việc học -> to takes gerund",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I devote time to learn English every night."
+    },
+    {
+      "vietlish": "prefer tea than coffee",
+      "natural": "prefer tea to coffee",
+      "sourcePattern": "thích trà hơn cà phê -> than overused after prefer",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I prefer tea than coffee in the morning."
+    },
+    {
+      "vietlish": "superior than the old model",
+      "natural": "superior to the old model",
+      "sourcePattern": "tốt hơn -> than overused after superior",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "This phone is superior than the old model."
+    },
+    {
+      "vietlish": "inferior than expected",
+      "natural": "inferior to expected",
+      "sourcePattern": "kém hơn -> than overused after inferior",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "The quality was inferior than expected."
+    },
+    {
+      "vietlish": "senior than me",
+      "natural": "senior to me",
+      "sourcePattern": "lớn tuổi/cấp cao hơn -> than overused after senior",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "She is senior than me at work."
+    },
+    {
+      "vietlish": "junior than him",
+      "natural": "junior to him",
+      "sourcePattern": "nhỏ tuổi/cấp thấp hơn -> than overused after junior",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "I am junior than him in the company."
+    },
+    {
+      "vietlish": "capable to handle pressure",
+      "natural": "capable of handling pressure",
+      "sourcePattern": "có khả năng chịu áp lực -> capable of + gerund",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "She is capable to handle pressure."
+    },
+    {
+      "vietlish": "accused for stealing",
+      "natural": "accused of stealing",
+      "sourcePattern": "bị buộc tội ăn cắp -> of after accused",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "He was accused for stealing from the store."
+    },
+    {
+      "vietlish": "suspected for fraud",
+      "natural": "suspected of fraud",
+      "sourcePattern": "bị nghi ngờ gian lận -> of after suspected",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The account was suspected for fraud."
+    },
+    {
+      "vietlish": "convicted for theft",
+      "natural": "convicted of theft",
+      "sourcePattern": "bị kết án tội trộm -> of after convicted",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "He was convicted for theft."
+    },
+    {
+      "vietlish": "charged by speeding",
+      "natural": "charged with speeding",
+      "sourcePattern": "bị phạt/buộc tội vì chạy quá tốc độ -> with after charged",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The driver was charged by speeding."
+    },
+    {
+      "vietlish": "blamed for me",
+      "natural": "blamed me",
+      "sourcePattern": "đổ lỗi cho tôi -> direct object after blame",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "They blamed for me when the order was late."
+    },
+    {
+      "vietlish": "provide me the form",
+      "natural": "provide me with the form",
+      "sourcePattern": "cung cấp cho tôi -> provide someone with something",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The office provided me the form."
+    },
+    {
+      "vietlish": "supply us new uniforms",
+      "natural": "supply us with new uniforms",
+      "sourcePattern": "cung cấp cho chúng tôi -> supply with",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "The company supplied us new uniforms."
+    },
+    {
+      "vietlish": "present him a gift",
+      "natural": "present him with a gift",
+      "sourcePattern": "tặng cho anh ấy -> present someone with something",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "We presented him a gift."
+    },
+    {
+      "vietlish": "equip the room chairs",
+      "natural": "equip the room with chairs",
+      "sourcePattern": "trang bị phòng với -> equip with",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "They equipped the room chairs."
+    },
+    {
+      "vietlish": "fill the bottle by water",
+      "natural": "fill the bottle with water",
+      "sourcePattern": "đổ đầy bằng nước -> with for contents",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Please fill the bottle by water."
+    },
+    {
+      "vietlish": "replace this by a new one",
+      "natural": "replace this with a new one",
+      "sourcePattern": "thay bằng -> replace with",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Can you replace this by a new one?"
+    },
+    {
+      "vietlish": "exchange this to a larger size",
+      "natural": "exchange this for a larger size",
+      "sourcePattern": "đổi lấy cỡ lớn hơn -> exchange for",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I want to exchange this to a larger size."
+    },
+    {
+      "vietlish": "substitute sugar by honey",
+      "natural": "substitute sugar with honey",
+      "sourcePattern": "thay đường bằng mật ong -> substitute with",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "You can substitute sugar by honey."
+    },
+    {
+      "vietlish": "compare this phone with that one",
+      "natural": "compare this phone to that one",
+      "sourcePattern": "so sánh với -> compare to when evaluating similarity",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Can you compare this phone with that one for me?"
+    },
+    {
+      "vietlish": "distinguish A with B",
+      "natural": "distinguish A from B",
+      "sourcePattern": "phân biệt A với B -> distinguish from",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "It is hard to distinguish A with B."
+    },
+    {
+      "vietlish": "separate work with family",
+      "natural": "separate work from family",
+      "sourcePattern": "tách công việc với gia đình -> separate from",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I try to separate work with family."
+    },
+    {
+      "vietlish": "protect children with danger",
+      "natural": "protect children from danger",
+      "sourcePattern": "bảo vệ khỏi nguy hiểm -> from after protect",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Parents protect children with danger."
+    },
+    {
+      "vietlish": "prevent him to leave",
+      "natural": "prevent him from leaving",
+      "sourcePattern": "ngăn anh ấy rời đi -> prevent from + gerund",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The snow prevented him to leave."
+    },
+    {
+      "vietlish": "prohibit people to smoke",
+      "natural": "prohibit people from smoking",
+      "sourcePattern": "cấm hút thuốc -> prohibit from + gerund",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The sign prohibits people to smoke."
+    },
+    {
+      "vietlish": "discourage her to quit",
+      "natural": "discourage her from quitting",
+      "sourcePattern": "khuyên đừng bỏ -> discourage from + gerund",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "Her family discouraged her to quit school."
+    },
+    {
+      "vietlish": "stop him to drive",
+      "natural": "stop him from driving",
+      "sourcePattern": "ngăn không cho lái -> stop from + gerund",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The doctor stopped him to drive."
+    },
+    {
+      "vietlish": "thank you about your help",
+      "natural": "thank you for your help",
+      "sourcePattern": "cảm ơn về -> thank you for",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "Thank you about your help yesterday."
+    },
+    {
+      "vietlish": "congratulate you for your promotion",
+      "natural": "congratulate you on your promotion",
+      "sourcePattern": "chúc mừng về -> congratulate on",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I congratulate you for your promotion."
+    },
+    {
+      "vietlish": "insist to pay",
+      "natural": "insist on paying",
+      "sourcePattern": "khăng khăng trả tiền -> insist on + gerund",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "My uncle insisted to pay for dinner."
+    },
+    {
+      "vietlish": "rely in my parents",
+      "natural": "rely on my parents",
+      "sourcePattern": "dựa vào -> rely on",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I still rely in my parents sometimes."
+    },
+    {
+      "vietlish": "recover from the flu quickly",
+      "natural": "recover quickly from the flu",
+      "sourcePattern": "adverb placement after verb phrase is more natural here",
+      "category": "collocation",
+      "frequency": "low",
+      "context": "I recovered from the flu quickly last week."
+    },
+    {
+      "vietlish": "search my keys",
+      "natural": "search for my keys",
+      "sourcePattern": "tìm chìa khóa -> search for when object is thing sought",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I am searching my keys everywhere."
+    },
+    {
+      "vietlish": "I go to sleep late so morning cannot wake",
+      "natural": "I go to bed late, so I cannot wake up in the morning",
+      "sourcePattern": "ngủ trễ nên sáng không dậy được -> clause chaining copied",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I go to sleep late so morning cannot wake."
+    },
+    {
+      "vietlish": "eat full already, I cannot eat more",
+      "natural": "I am full, so I cannot eat any more",
+      "sourcePattern": "ăn no rồi -> eat full already literalized",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "Eat full already, I cannot eat more."
+    },
+    {
+      "vietlish": "I am missing one paper",
+      "natural": "I am missing one document",
+      "sourcePattern": "thiếu một giấy tờ -> paper used for document",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "For the application, I am missing one paper."
+    },
+    {
+      "vietlish": "please make for me one copy",
+      "natural": "please make one copy for me",
+      "sourcePattern": "làm cho tôi một bản -> for me inserted after make",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Please make for me one copy."
+    },
+    {
+      "vietlish": "I want cut hair short",
+      "natural": "I want to get my hair cut short",
+      "sourcePattern": "cắt tóc ngắn -> missing get/have causative",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "At the salon, I want cut hair short."
+    },
+    {
+      "vietlish": "I go fix my phone",
+      "natural": "I am going to get my phone fixed",
+      "sourcePattern": "đi sửa điện thoại -> go fix instead of get fixed",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Tomorrow I go fix my phone."
+    },
+    {
+      "vietlish": "my car got broken tire",
+      "natural": "my car has a flat tire",
+      "sourcePattern": "xe bị bể bánh -> got broken tire literalized",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "My car got broken tire on the highway."
+    },
+    {
+      "vietlish": "the rain is falling big",
+      "natural": "it is raining hard",
+      "sourcePattern": "mưa lớn -> rain falling big literalized",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The rain is falling big now."
+    },
+    {
+      "vietlish": "the sun is very harsh today",
+      "natural": "the sun is very strong today",
+      "sourcePattern": "nắng gắt -> harsh sun literalized",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The sun is very harsh today."
+    },
+    {
+      "vietlish": "my house is near with school",
+      "natural": "my house is near the school",
+      "sourcePattern": "gần với trường -> with added after near",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "My house is near with school."
+    },
+    {
+      "vietlish": "I go out road now",
+      "natural": "I am going out now",
+      "sourcePattern": "ra đường -> go out road literalized",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I go out road now to buy milk."
+    },
+    {
+      "vietlish": "I stand line long time",
+      "natural": "I stood in line for a long time",
+      "sourcePattern": "đứng xếp hàng lâu -> missing in line/for",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I stand line long time at the bank."
+    },
+    {
+      "vietlish": "I take number and wait call",
+      "natural": "I took a number and waited to be called",
+      "sourcePattern": "lấy số chờ gọi -> compact clause chain",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "At the clinic, I take number and wait call."
+    },
+    {
+      "vietlish": "the machine eats my card",
+      "natural": "the machine swallowed my card",
+      "sourcePattern": "máy nuốt thẻ -> eats card literalized",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The ATM machine eats my card."
+    },
+    {
+      "vietlish": "I lost electricity last night",
+      "natural": "the power went out last night",
+      "sourcePattern": "mất điện -> lost electricity literalized",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I lost electricity last night."
+    },
+    {
+      "vietlish": "the water is cut",
+      "natural": "the water is shut off",
+      "sourcePattern": "cúp nước -> water is cut literalized",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Today the water is cut in my building."
+    },
+    {
+      "vietlish": "the internet is weak",
+      "natural": "the internet connection is slow",
+      "sourcePattern": "mạng yếu -> weak internet literalized",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "The internet is weak in my room."
+    },
+    {
+      "vietlish": "my phone is out battery",
+      "natural": "my phone is out of battery",
+      "sourcePattern": "hết pin -> missing of",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "My phone is out battery."
+    },
+    {
+      "vietlish": "I charge battery for phone",
+      "natural": "I charge my phone",
+      "sourcePattern": "sạc pin cho điện thoại -> battery phrase overtranslated",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I charge battery for phone every night."
+    },
+    {
+      "vietlish": "please take for me a photo",
+      "natural": "please take a photo of me",
+      "sourcePattern": "chụp cho tôi -> take for me instead of of me",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Please take for me a photo here."
+    },
+    {
+      "vietlish": "I make lost my receipt",
+      "natural": "I lost my receipt",
+      "sourcePattern": "làm mất -> make lost literalized",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I make lost my receipt."
+    },
+    {
+      "vietlish": "she made broken the cup",
+      "natural": "she broke the cup",
+      "sourcePattern": "làm bể -> made broken literalized",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "She made broken the cup by accident."
+    },
+    {
+      "vietlish": "I was got rain yesterday",
+      "natural": "I got rained on yesterday",
+      "sourcePattern": "bị mưa -> passive got rain literalized",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I was got rain yesterday."
+    },
+    {
+      "vietlish": "my shirt was got dirty",
+      "natural": "my shirt got dirty",
+      "sourcePattern": "bị bẩn -> was got dirty over-passive",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "My shirt was got dirty at work."
+    },
+    {
+      "vietlish": "I was stolen wallet",
+      "natural": "my wallet was stolen",
+      "sourcePattern": "bị trộm ví -> wrong passive subject",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I was stolen wallet at the mall."
+    },
+    {
+      "vietlish": "she was lost phone",
+      "natural": "she lost her phone",
+      "sourcePattern": "bị mất điện thoại -> was lost phone",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "She was lost phone yesterday."
+    },
+    {
+      "vietlish": "I am cold in stomach",
+      "natural": "I have a stomach chill",
+      "sourcePattern": "lạnh bụng -> cold in stomach literalized",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "After ice cream I am cold in stomach."
+    },
+    {
+      "vietlish": "I have hot in body",
+      "natural": "I feel hot",
+      "sourcePattern": "nóng trong người -> hot in body literalized",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Today I have hot in body."
+    },
+    {
+      "vietlish": "my eye is flower",
+      "natural": "my vision is blurry",
+      "sourcePattern": "hoa mắt -> eye is flower literalized",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "When I stood up, my eye is flower."
+    },
+    {
+      "vietlish": "my head is heavy",
+      "natural": "my head feels heavy",
+      "sourcePattern": "nặng đầu -> head is heavy literalized",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "This morning my head is heavy."
+    },
+    {
+      "vietlish": "I am lack sleep",
+      "natural": "I am sleep-deprived",
+      "sourcePattern": "thiếu ngủ -> lack sleep literalized",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I am lack sleep this week."
+    },
+    {
+      "vietlish": "I am lack money this month",
+      "natural": "I am short on money this month",
+      "sourcePattern": "thiếu tiền -> lack money unnatural register",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I am lack money this month."
+    },
+    {
+      "vietlish": "I have no condition to buy it",
+      "natural": "I cannot afford to buy it",
+      "sourcePattern": "không có điều kiện -> no condition literalized",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I have no condition to buy it now."
+    },
+    {
+      "vietlish": "my English is still weak",
+      "natural": "my English still needs work",
+      "sourcePattern": "tiếng Anh còn yếu -> weak English literalized",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "My English is still weak."
+    },
+    {
+      "vietlish": "she learns very hard but slow absorb",
+      "natural": "she studies hard but learns slowly",
+      "sourcePattern": "tiếp thu chậm -> slow absorb literalized",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "She learns very hard but slow absorb."
+    },
+    {
+      "vietlish": "I am easy to get carsick",
+      "natural": "I get carsick easily",
+      "sourcePattern": "dễ bị say xe -> easy to get structure copied",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I am easy to get carsick on buses."
+    },
+    {
+      "vietlish": "this road is hard to go",
+      "natural": "this road is hard to drive on",
+      "sourcePattern": "đường khó đi -> hard to go literalized",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "This road is hard to go after snow."
+    },
+    {
+      "vietlish": "the food is hard to eat",
+      "natural": "the food is difficult to eat",
+      "sourcePattern": "khó ăn -> hard to eat literalized but needs context",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "This dry bread is hard to eat."
+    },
+    {
+      "vietlish": "I am hard to sleep",
+      "natural": "I have trouble sleeping",
+      "sourcePattern": "khó ngủ -> hard to sleep literalized",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I am hard to sleep at night."
+    },
+    {
+      "vietlish": "this problem is hard to say",
+      "natural": "this problem is hard to explain",
+      "sourcePattern": "khó nói -> hard to say over-literalized",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "This problem is hard to say in English."
+    },
+    {
+      "vietlish": "the woman I met her yesterday at the office",
+      "natural": "the woman I met yesterday at the office",
+      "sourcePattern": "người phụ nữ mà tôi gặp cô ấy -> resumptive object pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the woman I met her yesterday at the office."
+    },
+    {
+      "vietlish": "the place I work there at the office",
+      "natural": "the place where I work at the office",
+      "sourcePattern": "nơi tôi làm việc ở đó -> resumptive there in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the place I work there at the office."
+    },
+    {
+      "vietlish": "the reason why I left because I was sick at the office",
+      "natural": "the reason I left was that I was sick at the office",
+      "sourcePattern": "lý do tại sao ... bởi vì -> reason why because stacking; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the reason why I left because I was sick at the office."
+    },
+    {
+      "vietlish": "the house which I live in it at the office",
+      "natural": "the house I live in at the office",
+      "sourcePattern": "căn nhà mà tôi sống trong đó -> resumptive it after preposition; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the house which I live in it at the office."
+    },
+    {
+      "vietlish": "the person who she called me at the office",
+      "natural": "the person who called me at the office",
+      "sourcePattern": "người mà cô ấy gọi tôi -> extra subject pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the person who she called me at the office."
+    },
+    {
+      "vietlish": "the woman I met her yesterday near my school",
+      "natural": "the woman I met yesterday near my school",
+      "sourcePattern": "người phụ nữ mà tôi gặp cô ấy -> resumptive object pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the woman I met her yesterday near my school."
+    },
+    {
+      "vietlish": "the place I work there near my school",
+      "natural": "the place where I work near my school",
+      "sourcePattern": "nơi tôi làm việc ở đó -> resumptive there in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the place I work there near my school."
+    },
+    {
+      "vietlish": "the reason why I left because I was sick near my school",
+      "natural": "the reason I left was that I was sick near my school",
+      "sourcePattern": "lý do tại sao ... bởi vì -> reason why because stacking; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the reason why I left because I was sick near my school."
+    },
+    {
+      "vietlish": "the house which I live in it near my school",
+      "natural": "the house I live in near my school",
+      "sourcePattern": "căn nhà mà tôi sống trong đó -> resumptive it after preposition; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the house which I live in it near my school."
+    },
+    {
+      "vietlish": "the person who she called me near my school",
+      "natural": "the person who called me near my school",
+      "sourcePattern": "người mà cô ấy gọi tôi -> extra subject pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the person who she called me near my school."
+    },
+    {
+      "vietlish": "the woman I met her yesterday during the interview",
+      "natural": "the woman I met yesterday during the interview",
+      "sourcePattern": "người phụ nữ mà tôi gặp cô ấy -> resumptive object pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the woman I met her yesterday during the interview."
+    },
+    {
+      "vietlish": "the place I work there during the interview",
+      "natural": "the place where I work during the interview",
+      "sourcePattern": "nơi tôi làm việc ở đó -> resumptive there in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the place I work there during the interview."
+    },
+    {
+      "vietlish": "the reason why I left because I was sick during the interview",
+      "natural": "the reason I left was that I was sick during the interview",
+      "sourcePattern": "lý do tại sao ... bởi vì -> reason why because stacking; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the reason why I left because I was sick during the interview."
+    },
+    {
+      "vietlish": "the house which I live in it during the interview",
+      "natural": "the house I live in during the interview",
+      "sourcePattern": "căn nhà mà tôi sống trong đó -> resumptive it after preposition; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the house which I live in it during the interview."
+    },
+    {
+      "vietlish": "the person who she called me during the interview",
+      "natural": "the person who called me during the interview",
+      "sourcePattern": "người mà cô ấy gọi tôi -> extra subject pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the person who she called me during the interview."
+    },
+    {
+      "vietlish": "the woman I met her yesterday in my neighborhood",
+      "natural": "the woman I met yesterday in my neighborhood",
+      "sourcePattern": "người phụ nữ mà tôi gặp cô ấy -> resumptive object pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I was talking about the woman I met her yesterday in my neighborhood."
+    },
+    {
+      "vietlish": "the place I work there in my neighborhood",
+      "natural": "the place where I work in my neighborhood",
+      "sourcePattern": "nơi tôi làm việc ở đó -> resumptive there in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the place I work there in my neighborhood."
+    },
+    {
+      "vietlish": "the reason why I left because I was sick in my neighborhood",
+      "natural": "the reason I left was that I was sick in my neighborhood",
+      "sourcePattern": "lý do tại sao ... bởi vì -> reason why because stacking; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the reason why I left because I was sick in my neighborhood."
+    },
+    {
+      "vietlish": "the house which I live in it in my neighborhood",
+      "natural": "the house I live in in my neighborhood",
+      "sourcePattern": "căn nhà mà tôi sống trong đó -> resumptive it after preposition; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the house which I live in it in my neighborhood."
+    },
+    {
+      "vietlish": "the person who she called me in my neighborhood",
+      "natural": "the person who called me in my neighborhood",
+      "sourcePattern": "người mà cô ấy gọi tôi -> extra subject pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the person who she called me in my neighborhood."
+    },
+    {
+      "vietlish": "the woman I met her yesterday on the phone",
+      "natural": "the woman I met yesterday on the phone",
+      "sourcePattern": "người phụ nữ mà tôi gặp cô ấy -> resumptive object pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the woman I met her yesterday on the phone."
+    },
+    {
+      "vietlish": "the place I work there on the phone",
+      "natural": "the place where I work on the phone",
+      "sourcePattern": "nơi tôi làm việc ở đó -> resumptive there in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the place I work there on the phone."
+    },
+    {
+      "vietlish": "the reason why I left because I was sick on the phone",
+      "natural": "the reason I left was that I was sick on the phone",
+      "sourcePattern": "lý do tại sao ... bởi vì -> reason why because stacking; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the reason why I left because I was sick on the phone."
+    },
+    {
+      "vietlish": "the house which I live in it on the phone",
+      "natural": "the house I live in on the phone",
+      "sourcePattern": "căn nhà mà tôi sống trong đó -> resumptive it after preposition; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the house which I live in it on the phone."
+    },
+    {
+      "vietlish": "the person who she called me on the phone",
+      "natural": "the person who called me on the phone",
+      "sourcePattern": "người mà cô ấy gọi tôi -> extra subject pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the person who she called me on the phone."
+    },
+    {
+      "vietlish": "the woman I met her yesterday after class",
+      "natural": "the woman I met yesterday after class",
+      "sourcePattern": "người phụ nữ mà tôi gặp cô ấy -> resumptive object pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the woman I met her yesterday after class."
+    },
+    {
+      "vietlish": "the place I work there after class",
+      "natural": "the place where I work after class",
+      "sourcePattern": "nơi tôi làm việc ở đó -> resumptive there in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the place I work there after class."
+    },
+    {
+      "vietlish": "the reason why I left because I was sick after class",
+      "natural": "the reason I left was that I was sick after class",
+      "sourcePattern": "lý do tại sao ... bởi vì -> reason why because stacking; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the reason why I left because I was sick after class."
+    },
+    {
+      "vietlish": "the house which I live in it after class",
+      "natural": "the house I live in after class",
+      "sourcePattern": "căn nhà mà tôi sống trong đó -> resumptive it after preposition; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the house which I live in it after class."
+    },
+    {
+      "vietlish": "the person who she called me after class",
+      "natural": "the person who called me after class",
+      "sourcePattern": "người mà cô ấy gọi tôi -> extra subject pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the person who she called me after class."
+    },
+    {
+      "vietlish": "the woman I met her yesterday at the clinic",
+      "natural": "the woman I met yesterday at the clinic",
+      "sourcePattern": "người phụ nữ mà tôi gặp cô ấy -> resumptive object pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the woman I met her yesterday at the clinic."
+    },
+    {
+      "vietlish": "the place I work there at the clinic",
+      "natural": "the place where I work at the clinic",
+      "sourcePattern": "nơi tôi làm việc ở đó -> resumptive there in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the place I work there at the clinic."
+    },
+    {
+      "vietlish": "the reason why I left because I was sick at the clinic",
+      "natural": "the reason I left was that I was sick at the clinic",
+      "sourcePattern": "lý do tại sao ... bởi vì -> reason why because stacking; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the reason why I left because I was sick at the clinic."
+    },
+    {
+      "vietlish": "the house which I live in it at the clinic",
+      "natural": "the house I live in at the clinic",
+      "sourcePattern": "căn nhà mà tôi sống trong đó -> resumptive it after preposition; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the house which I live in it at the clinic."
+    },
+    {
+      "vietlish": "the person who she called me at the clinic",
+      "natural": "the person who called me at the clinic",
+      "sourcePattern": "người mà cô ấy gọi tôi -> extra subject pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the person who she called me at the clinic."
+    },
+    {
+      "vietlish": "the woman I met her yesterday in the bank",
+      "natural": "the woman I met yesterday in the bank",
+      "sourcePattern": "người phụ nữ mà tôi gặp cô ấy -> resumptive object pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the woman I met her yesterday in the bank."
+    },
+    {
+      "vietlish": "the place I work there in the bank",
+      "natural": "the place where I work in the bank",
+      "sourcePattern": "nơi tôi làm việc ở đó -> resumptive there in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the place I work there in the bank."
+    },
+    {
+      "vietlish": "the reason why I left because I was sick in the bank",
+      "natural": "the reason I left was that I was sick in the bank",
+      "sourcePattern": "lý do tại sao ... bởi vì -> reason why because stacking; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the reason why I left because I was sick in the bank."
+    },
+    {
+      "vietlish": "the house which I live in it in the bank",
+      "natural": "the house I live in in the bank",
+      "sourcePattern": "căn nhà mà tôi sống trong đó -> resumptive it after preposition; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the house which I live in it in the bank."
+    },
+    {
+      "vietlish": "the person who she called me in the bank",
+      "natural": "the person who called me in the bank",
+      "sourcePattern": "người mà cô ấy gọi tôi -> extra subject pronoun in relative clause; context added to keep item distinct",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I was talking about the person who she called me in the bank."
+    },
+    {
+      "vietlish": "I am very convenient to go downtown today",
+      "natural": "it is very convenient for me to go downtown today",
+      "sourcePattern": "tiện -> convenient describes situation, not person; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I am very convenient to go downtown today."
+    },
+    {
+      "vietlish": "this job is very challenge today",
+      "natural": "this job is very challenging today",
+      "sourcePattern": "thử thách -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "this job is very challenge today."
+    },
+    {
+      "vietlish": "I feel safety here today",
+      "natural": "I feel safe here today",
+      "sourcePattern": "an toàn -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I feel safety here today."
+    },
+    {
+      "vietlish": "the instruction is very confuse today",
+      "natural": "the instructions are very confusing today",
+      "sourcePattern": "rối -> confuse/confusing adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "the instruction is very confuse today."
+    },
+    {
+      "vietlish": "I am surprise about the bill today",
+      "natural": "I am surprised by the bill today",
+      "sourcePattern": "ngạc nhiên -> surprise/surprised confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I am surprise about the bill today."
+    },
+    {
+      "vietlish": "I am very convenient to go downtown at work",
+      "natural": "it is very convenient for me to go downtown at work",
+      "sourcePattern": "tiện -> convenient describes situation, not person; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I am very convenient to go downtown at work."
+    },
+    {
+      "vietlish": "this job is very challenge at work",
+      "natural": "this job is very challenging at work",
+      "sourcePattern": "thử thách -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "this job is very challenge at work."
+    },
+    {
+      "vietlish": "I feel safety here at work",
+      "natural": "I feel safe here at work",
+      "sourcePattern": "an toàn -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I feel safety here at work."
+    },
+    {
+      "vietlish": "the instruction is very confuse at work",
+      "natural": "the instructions are very confusing at work",
+      "sourcePattern": "rối -> confuse/confusing adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "the instruction is very confuse at work."
+    },
+    {
+      "vietlish": "I am surprise about the bill at work",
+      "natural": "I am surprised by the bill at work",
+      "sourcePattern": "ngạc nhiên -> surprise/surprised confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I am surprise about the bill at work."
+    },
+    {
+      "vietlish": "I am very convenient to go downtown in Canada",
+      "natural": "it is very convenient for me to go downtown in Canada",
+      "sourcePattern": "tiện -> convenient describes situation, not person; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I am very convenient to go downtown in Canada."
+    },
+    {
+      "vietlish": "this job is very challenge in Canada",
+      "natural": "this job is very challenging in Canada",
+      "sourcePattern": "thử thách -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "this job is very challenge in Canada."
+    },
+    {
+      "vietlish": "I feel safety here in Canada",
+      "natural": "I feel safe here in Canada",
+      "sourcePattern": "an toàn -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I feel safety here in Canada."
+    },
+    {
+      "vietlish": "the instruction is very confuse in Canada",
+      "natural": "the instructions are very confusing in Canada",
+      "sourcePattern": "rối -> confuse/confusing adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "the instruction is very confuse in Canada."
+    },
+    {
+      "vietlish": "I am surprise about the bill in Canada",
+      "natural": "I am surprised by the bill in Canada",
+      "sourcePattern": "ngạc nhiên -> surprise/surprised confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I am surprise about the bill in Canada."
+    },
+    {
+      "vietlish": "I am very convenient to go downtown after the change",
+      "natural": "it is very convenient for me to go downtown after the change",
+      "sourcePattern": "tiện -> convenient describes situation, not person; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I am very convenient to go downtown after the change."
+    },
+    {
+      "vietlish": "this job is very challenge after the change",
+      "natural": "this job is very challenging after the change",
+      "sourcePattern": "thử thách -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "this job is very challenge after the change."
+    },
+    {
+      "vietlish": "I feel safety here after the change",
+      "natural": "I feel safe here after the change",
+      "sourcePattern": "an toàn -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I feel safety here after the change."
+    },
+    {
+      "vietlish": "the instruction is very confuse after the change",
+      "natural": "the instructions are very confusing after the change",
+      "sourcePattern": "rối -> confuse/confusing adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "the instruction is very confuse after the change."
+    },
+    {
+      "vietlish": "I am surprise about the bill after the change",
+      "natural": "I am surprised by the bill after the change",
+      "sourcePattern": "ngạc nhiên -> surprise/surprised confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I am surprise about the bill after the change."
+    },
+    {
+      "vietlish": "I am very convenient to go downtown with this app",
+      "natural": "it is very convenient for me to go downtown with this app",
+      "sourcePattern": "tiện -> convenient describes situation, not person; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I am very convenient to go downtown with this app."
+    },
+    {
+      "vietlish": "this job is very challenge with this app",
+      "natural": "this job is very challenging with this app",
+      "sourcePattern": "thử thách -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "this job is very challenge with this app."
+    },
+    {
+      "vietlish": "I feel safety here with this app",
+      "natural": "I feel safe here with this app",
+      "sourcePattern": "an toàn -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I feel safety here with this app."
+    },
+    {
+      "vietlish": "the instruction is very confuse with this app",
+      "natural": "the instructions are very confusing with this app",
+      "sourcePattern": "rối -> confuse/confusing adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "the instruction is very confuse with this app."
+    },
+    {
+      "vietlish": "I am surprise about the bill with this app",
+      "natural": "I am surprised by the bill with this app",
+      "sourcePattern": "ngạc nhiên -> surprise/surprised confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I am surprise about the bill with this app."
+    },
+    {
+      "vietlish": "I am very convenient to go downtown during training",
+      "natural": "it is very convenient for me to go downtown during training",
+      "sourcePattern": "tiện -> convenient describes situation, not person; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I am very convenient to go downtown during training."
+    },
+    {
+      "vietlish": "this job is very challenge during training",
+      "natural": "this job is very challenging during training",
+      "sourcePattern": "thử thách -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "this job is very challenge during training."
+    },
+    {
+      "vietlish": "I feel safety here during training",
+      "natural": "I feel safe here during training",
+      "sourcePattern": "an toàn -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I feel safety here during training."
+    },
+    {
+      "vietlish": "the instruction is very confuse during training",
+      "natural": "the instructions are very confusing during training",
+      "sourcePattern": "rối -> confuse/confusing adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "the instruction is very confuse during training."
+    },
+    {
+      "vietlish": "I am surprise about the bill during training",
+      "natural": "I am surprised by the bill during training",
+      "sourcePattern": "ngạc nhiên -> surprise/surprised confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I am surprise about the bill during training."
+    },
+    {
+      "vietlish": "I am very convenient to go downtown at the new place",
+      "natural": "it is very convenient for me to go downtown at the new place",
+      "sourcePattern": "tiện -> convenient describes situation, not person; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I am very convenient to go downtown at the new place."
+    },
+    {
+      "vietlish": "this job is very challenge at the new place",
+      "natural": "this job is very challenging at the new place",
+      "sourcePattern": "thử thách -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "this job is very challenge at the new place."
+    },
+    {
+      "vietlish": "I feel safety here at the new place",
+      "natural": "I feel safe here at the new place",
+      "sourcePattern": "an toàn -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I feel safety here at the new place."
+    },
+    {
+      "vietlish": "the instruction is very confuse at the new place",
+      "natural": "the instructions are very confusing at the new place",
+      "sourcePattern": "rối -> confuse/confusing adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "the instruction is very confuse at the new place."
+    },
+    {
+      "vietlish": "I am surprise about the bill at the new place",
+      "natural": "I am surprised by the bill at the new place",
+      "sourcePattern": "ngạc nhiên -> surprise/surprised confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I am surprise about the bill at the new place."
+    },
+    {
+      "vietlish": "I am very convenient to go downtown this week",
+      "natural": "it is very convenient for me to go downtown this week",
+      "sourcePattern": "tiện -> convenient describes situation, not person; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I am very convenient to go downtown this week."
+    },
+    {
+      "vietlish": "this job is very challenge this week",
+      "natural": "this job is very challenging this week",
+      "sourcePattern": "thử thách -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "this job is very challenge this week."
+    },
+    {
+      "vietlish": "I feel safety here this week",
+      "natural": "I feel safe here this week",
+      "sourcePattern": "an toàn -> noun/adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I feel safety here this week."
+    },
+    {
+      "vietlish": "the instruction is very confuse this week",
+      "natural": "the instructions are very confusing this week",
+      "sourcePattern": "rối -> confuse/confusing adjective confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "the instruction is very confuse this week."
+    },
+    {
+      "vietlish": "I am surprise about the bill this week",
+      "natural": "I am surprised by the bill this week",
+      "sourcePattern": "ngạc nhiên -> surprise/surprised confusion; tail keeps review candidate distinct",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I am surprise about the bill this week."
+    },
+    {
+      "vietlish": "I let my son learns English",
+      "natural": "I have my son learn English",
+      "sourcePattern": "cho con học -> let/have causative confusion",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I let my son learns English on weekends."
+    },
+    {
+      "vietlish": "I make my phone repaired",
+      "natural": "I have my phone repaired",
+      "sourcePattern": "cho sửa điện thoại -> make/have causative confusion",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Tomorrow I make my phone repaired."
+    },
+    {
+      "vietlish": "I was made wait outside",
+      "natural": "I was made to wait outside",
+      "sourcePattern": "bị bắt chờ -> passive make needs to-infinitive",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "At the office I was made wait outside."
+    },
+    {
+      "vietlish": "my boss lets me to leave early",
+      "natural": "my boss lets me leave early",
+      "sourcePattern": "cho phép -> let without to",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Sometimes my boss lets me to leave early."
+    },
+    {
+      "vietlish": "my teacher made me to repeat",
+      "natural": "my teacher made me repeat",
+      "sourcePattern": "bắt/làm cho -> make without to in active causative",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "My teacher made me to repeat the sentence."
+    },
+    {
+      "vietlish": "I get my brother helps me",
+      "natural": "I get my brother to help me",
+      "sourcePattern": "nhờ em trai giúp -> get someone to do",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I get my brother helps me with forms."
+    },
+    {
+      "vietlish": "I was let to go home",
+      "natural": "I was allowed to go home",
+      "sourcePattern": "được cho về -> let passive replaced by allowed",
+      "category": "calque",
+      "frequency": "low",
+      "context": "After the test I was let to go home."
+    },
+    {
+      "vietlish": "I had the mechanic check my car yesterday already",
+      "natural": "I already had the mechanic check my car yesterday",
+      "sourcePattern": "rồi placed at sentence end -> already placement calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I had the mechanic check my car yesterday already."
+    },
+    {
+      "vietlish": "I have my hair cut yesterday",
+      "natural": "I had my hair cut yesterday",
+      "sourcePattern": "Vietnamese no tense inflection -> had in past causative",
+      "category": "calque",
+      "frequency": "high",
+      "context": "I have my hair cut yesterday."
+    },
+    {
+      "vietlish": "I will have my documents translated tomorrow already",
+      "natural": "I will have my documents translated tomorrow",
+      "sourcePattern": "rồi/đã over-added with future plan",
+      "category": "calque",
+      "frequency": "low",
+      "context": "I will have my documents translated tomorrow already."
+    },
+    {
+      "vietlish": "I make my child to sleep early",
+      "natural": "I have my child go to bed early",
+      "sourcePattern": "cho con ngủ sớm -> make/have/go to bed natural phrase",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I make my child to sleep early."
+    },
+    {
+      "vietlish": "I let the staff knows my address",
+      "natural": "I let the staff know my address",
+      "sourcePattern": "cho nhân viên biết -> let + base verb",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I let the staff knows my address."
+    },
+    {
+      "vietlish": "the form makes me confused too much",
+      "natural": "the form is very confusing",
+      "sourcePattern": "làm tôi rối quá -> make me confused overused",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "The form makes me confused too much."
+    },
+    {
+      "vietlish": "this noise makes me cannot sleep",
+      "natural": "this noise keeps me from sleeping",
+      "sourcePattern": "làm tôi không ngủ được -> make cannot sleep calque",
+      "category": "calque",
+      "frequency": "high",
+      "context": "This noise makes me cannot sleep."
+    },
+    {
+      "vietlish": "the cold weather makes me sick easy",
+      "natural": "the cold weather makes me get sick easily",
+      "sourcePattern": "dễ bệnh -> easy adverb calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "The cold weather makes me sick easy."
+    },
+    {
+      "vietlish": "the teacher lets us homework",
+      "natural": "the teacher gives us homework",
+      "sourcePattern": "cho bài tập -> lets us homework calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "The teacher lets us homework every day."
+    },
+    {
+      "vietlish": "the company gives me work overtime",
+      "natural": "the company makes me work overtime",
+      "sourcePattern": "cho/tăng ca -> gives me work overtime calque",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "The company gives me work overtime this week."
+    },
+    {
+      "vietlish": "I ask him helps me",
+      "natural": "I ask him to help me",
+      "sourcePattern": "nhờ anh ấy giúp -> ask someone to do",
+      "category": "calque",
+      "frequency": "high",
+      "context": "I ask him helps me with the lease."
+    },
+    {
+      "vietlish": "I told her comes early",
+      "natural": "I told her to come early",
+      "sourcePattern": "bảo cô ấy đến sớm -> tell someone to do",
+      "category": "calque",
+      "frequency": "high",
+      "context": "I told her comes early."
+    },
+    {
+      "vietlish": "I remind him calls me",
+      "natural": "I reminded him to call me",
+      "sourcePattern": "nhắc anh ấy gọi -> remind someone to do",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I remind him calls me tomorrow."
+    },
+    {
+      "vietlish": "answer me immediately",
+      "natural": "could you reply as soon as you can",
+      "sourcePattern": "ngay lập tức -> immediately sounds too forceful in work message",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In Slack: answer me immediately."
+    },
+    {
+      "vietlish": "why you did not reply",
+      "natural": "I wanted to follow up on my message",
+      "sourcePattern": "direct why-question can sound accusatory",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In email: why you did not reply?"
+    },
+    {
+      "vietlish": "you need to listen carefully",
+      "natural": "could we go over this carefully",
+      "sourcePattern": "direct you need can sound scolding",
+      "category": "register",
+      "frequency": "medium",
+      "context": "To a teammate: you need to listen carefully."
+    },
+    {
+      "vietlish": "I already told you",
+      "natural": "I mentioned this earlier",
+      "sourcePattern": "literal reminder sounds irritated",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At work: I already told you."
+    },
+    {
+      "vietlish": "that is wrong answer",
+      "natural": "I think that answer may need checking",
+      "sourcePattern": "direct wrong answer softened",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In class: that is wrong answer."
+    },
+    {
+      "vietlish": "you must give me reason",
+      "natural": "could you explain the reason",
+      "sourcePattern": "must demand softened",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At customer service: you must give me reason."
+    },
+    {
+      "vietlish": "I do not care",
+      "natural": "that is not a concern for me",
+      "sourcePattern": "literal refusal too blunt",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In negotiation: I do not care."
+    },
+    {
+      "vietlish": "your service is bad",
+      "natural": "I had a problem with the service",
+      "sourcePattern": "direct negative judgment softened",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a complaint: your service is bad."
+    },
+    {
+      "vietlish": "you should know this",
+      "natural": "I thought this might already be on file",
+      "sourcePattern": "direct should sounds blaming",
+      "category": "register",
+      "frequency": "low",
+      "context": "At an office: you should know this."
+    },
+    {
+      "vietlish": "I need your help now",
+      "natural": "could you help me when you have a moment",
+      "sourcePattern": "now pressure softened",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At work: I need your help now."
+    },
+    {
+      "vietlish": "fix your mistake",
+      "natural": "could you help correct this",
+      "sourcePattern": "direct blame softened",
+      "category": "register",
+      "frequency": "medium",
+      "context": "To a vendor: fix your mistake."
+    },
+    {
+      "vietlish": "give me exact answer",
+      "natural": "could you give me a clear answer",
+      "sourcePattern": "bare imperative softened",
+      "category": "register",
+      "frequency": "medium",
+      "context": "On the phone: give me exact answer."
+    },
+    {
+      "vietlish": "I cannot wait anymore",
+      "natural": "I have been waiting for a while",
+      "sourcePattern": "frustration softened for service context",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At reception: I cannot wait anymore."
+    },
+    {
+      "vietlish": "you forgot again",
+      "natural": "it looks like this may have been missed again",
+      "sourcePattern": "direct blame softened",
+      "category": "register",
+      "frequency": "low",
+      "context": "In email: you forgot again."
+    },
+    {
+      "vietlish": "this is unacceptable",
+      "natural": "I am concerned about this",
+      "sourcePattern": "strong complaint softened for first escalation",
+      "category": "register",
+      "frequency": "medium",
+      "context": "To support: this is unacceptable."
+    },
+    {
+      "vietlish": "I demand compensation",
+      "natural": "I would like to ask about compensation",
+      "sourcePattern": "demand too strong for initial request",
+      "category": "register",
+      "frequency": "low",
+      "context": "After a delay: I demand compensation."
+    },
+    {
+      "vietlish": "do it before lunch",
+      "natural": "could this be done before lunch",
+      "sourcePattern": "bare command softened",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At work: do it before lunch."
+    },
+    {
+      "vietlish": "explain why late",
+      "natural": "could you explain why it was late",
+      "sourcePattern": "clipped command softened",
+      "category": "register",
+      "frequency": "medium",
+      "context": "To delivery support: explain why late."
+    },
+    {
+      "vietlish": "I want speak boss",
+      "natural": "could I speak with a supervisor",
+      "sourcePattern": "boss too informal/direct in service escalation",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At a store: I want speak boss."
+    },
+    {
+      "vietlish": "you made me lose time",
+      "natural": "this took more time than expected",
+      "sourcePattern": "direct blame softened",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At an office: you made me lose time."
+    }
+  ]
+}
