@@ -219,6 +219,72 @@ export function findAndFixSttGarble(sentence: string): SttGarbleResult {
   return null;
 }
 
+// ─── Run-on Detection and Segmentation ───────────────────────────────────────
+
+/**
+ * English connectives that indicate a multi-clause (run-on) sentence when several appear
+ * together. The pattern is intentionally broad — false positives are cheap (we segment a
+ * slightly over-eager sentence), false negatives are expensive (run-on stays unhandled).
+ */
+const RUN_ON_SIGNAL_RE =
+  /\b(?:and|but|so|because|or|yet|then|after|before|when|while|since|unless|although|though|however|moreover|furthermore|therefore|thus|hence|meanwhile|otherwise|besides|also|additionally|consequently|nevertheless|nonetheless)\b/gi;
+
+/**
+ * Returns true when the English input is likely a run-on or multi-clause sentence.
+ * Heuristic: word count ≥ 12 AND (≥ 2 connective conjunctions OR ≥ 2 commas).
+ * English-only; never fires on short inputs.
+ */
+export function detectRunOn(text: string): boolean {
+  const normalized = normalizeWhitespace(text);
+  if (!normalized) return false;
+  const words = normalized.split(/\s+/).length;
+  if (words < 12) return false;
+  const conjunctions = (normalized.match(RUN_ON_SIGNAL_RE) || []).length;
+  const commas = (normalized.match(/,/g) || []).length;
+  return conjunctions >= 2 || commas >= 2;
+}
+
+/**
+ * Splits a run-on sentence into individual clauses.
+ *
+ * Priority: existing sentence boundaries → comma + conjunction → all commas →
+ * bare coordinating conjunction. Each returned segment has leading conjunctions
+ * stripped and is trimmed. Returns null when no split with ≥ 2 valid clauses
+ * (each ≥ 3 words) can be found — callers treat null as a segmentation failure.
+ */
+export function segmentRunOn(text: string): string[] | null {
+  const normalized = normalizeWhitespace(text);
+  if (!normalized) return null;
+
+  const MIN_CLAUSE_WORDS = 3;
+  const enoughWords = (s: string) => s.trim().split(/\s+/).length >= MIN_CLAUSE_WORDS;
+
+  // Strip a leading coordinating conjunction that became the first word after splitting.
+  const stripLeadingConj = (s: string) =>
+    s.replace(/^(?:and|but|so|or|yet|nor|then)\s+/i, "").trim();
+
+  const clean = (parts: string[]): string[] =>
+    parts.map(stripLeadingConj).filter(enoughWords);
+
+  // 1. Already has internal sentence boundaries — split there.
+  const bySentence = normalized.split(/(?<=[.!?])\s+/).map(s => s.trim()).filter(Boolean);
+  if (bySentence.length > 1) return bySentence;
+
+  // 2. Comma + coordinating conjunction: "A, and B" / "A, but C".
+  const byCommaConj = clean(normalized.split(/,\s*(?=(?:and|but|so|or|yet|nor)\s+)/i));
+  if (byCommaConj.length > 1) return byCommaConj;
+
+  // 3. All commas — each part must be a full clause (≥ MIN_CLAUSE_WORDS words).
+  const byComma = clean(normalized.split(/,\s+/));
+  if (byComma.length > 1) return byComma;
+
+  // 4. Bare coordinating conjunction between clauses: "A and B and C".
+  const byConj = clean(normalized.split(/\s+(?:and|but|so)\s+/i));
+  if (byConj.length > 1) return byConj;
+
+  return null;
+}
+
 function rulesForLanguage(language: TutorCorrectionLanguage): CorrectionRule[] {
   switch (language) {
     case "fr":
@@ -257,15 +323,12 @@ export function validateCorrectionChangedWhenNeeded(
   return { ok: true };
 }
 
-export function correctWithTutorRules(
-  input: string,
-  language: TutorCorrectionLanguage = "en",
-): CorrectionEngineResult {
-  const trimmed = normalizeWhitespace(input);
-  if (!trimmed) {
-    return { status: "unchanged", corrected: "", appliedRuleIds: [] };
-  }
-
+/**
+ * Corrects a single, non-run-on clause through the full rule pipeline.
+ * Receives a whitespace-normalised, non-empty string.
+ * Internal — call `correctWithTutorRules` from outside this module.
+ */
+function _correctClause(trimmed: string, language: TutorCorrectionLanguage): CorrectionEngineResult {
   let corrected = language === "en" ? capitalizeFirst(trimmed) : trimmed;
   const appliedRuleIds: string[] = [];
 
@@ -365,4 +428,58 @@ export function correctWithTutorRules(
   }
 
   return { status: "unchanged", corrected, appliedRuleIds: [] };
+}
+
+export function correctWithTutorRules(
+  input: string,
+  language: TutorCorrectionLanguage = "en",
+): CorrectionEngineResult {
+  const trimmed = normalizeWhitespace(input);
+  if (!trimmed) {
+    return { status: "unchanged", corrected: "", appliedRuleIds: [] };
+  }
+
+  // Run the full single-clause pipeline first. Specific rules (e.g. the morning-routine
+  // carryover rule, the dinner-invite run-on rule) must take priority over the generic
+  // run-on segmenter — they already produce the correct assembled output.
+  const clauseResult = _correctClause(trimmed, language);
+
+  // Generic run-on segmentation: only when no specific rule fired (status "unchanged"),
+  // the language is English, and the input looks like a multi-clause sentence.
+  // Per spec: abstain only when segmentation itself fails (segmentRunOn returns null).
+  if (clauseResult.status !== "unchanged" || language !== "en" || !detectRunOn(trimmed)) {
+    return clauseResult;
+  }
+
+  const segments = segmentRunOn(trimmed);
+  if (!segments) {
+    // Segmentation failed — route to AI engine.
+    return {
+      status: "needs_ai",
+      corrected: "",
+      appliedRuleIds: [],
+      message: AI_CORRECTION_REQUIRED_MESSAGE,
+    };
+  }
+
+  const correctedParts: string[] = [];
+  const allRuleIds: string[] = ["runon-segmented"];
+  for (const seg of segments) {
+    const segTrimmed = normalizeWhitespace(seg);
+    const result = _correctClause(segTrimmed, language);
+    if (result.status === "corrected") {
+      correctedParts.push(result.corrected);
+      allRuleIds.push(...result.appliedRuleIds);
+    } else {
+      // unchanged or needs_ai: add terminal punctuation and capitalise, but keep text.
+      correctedParts.push(ensureTerminalPunctuation(capitalizeFirst(segTrimmed), language));
+    }
+  }
+  const assembled = correctedParts.join(" ");
+  // If reassembling the segments produces the same text as the original (e.g. the input
+  // already had proper sentence boundaries), no real change occurred — return "unchanged".
+  if (normalizeWhitespace(assembled) === trimmed) {
+    return { status: "unchanged", corrected: assembled, appliedRuleIds: [] };
+  }
+  return { status: "corrected", corrected: assembled, appliedRuleIds: allRuleIds };
 }

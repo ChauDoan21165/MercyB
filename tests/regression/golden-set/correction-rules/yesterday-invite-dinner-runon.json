@@ -34,10 +34,10 @@
     {
       "id": "yidr-neg-001",
       "input": "I invite my best friend to come to my house tomorrow and we had dinner and we smoke cigars he had a lot of fun",
-      "expectedStatus": "unchanged",
-      "expectedCorrection": "I invite my best friend to come to my house tomorrow and we had dinner and we smoke cigars he had a lot of fun.",
+      "expectedStatus": "corrected",
+      "expectedCorrection": "I invite my best friend to come to my house tomorrow. We had dinner. We smoke cigars he had a lot of fun.",
       "expectedRuleFired": null,
-      "notes": "FP-stress (future marker): tomorrow must not be rewritten as a past-tense invite."
+      "notes": "FP-stress (future marker): the en-yesterday-invite-dinner-runon rule does not fire (no yesterday marker). The generic run-on segmenter fires instead and splits the multi-clause input into proper sentences."
     },
     {
       "id": "yidr-neg-002",
