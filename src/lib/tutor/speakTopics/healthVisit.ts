@@ -6,12 +6,39 @@ import type { SpeakTopicLibraryEntry } from "../speakTopicLibrary";
 // genuine Vietnamese→English interference as friendly context, never a mistake
 // to call out. A8 D5-B deepening: each topic carries 4 L1 interference notes,
 // 6 conversation directions (followUps), and 3 seed inputs.
-export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
+// A2 D4 deepening: each topic now carries scenarioDescription, aiRoleDefinition,
+// conversationDirections (5–8 steps), and warmthPatterns (3+).
+
+type D4SpeakTopic = SpeakTopicLibraryEntry & {
+  scenarioDescription: string;
+  aiRoleDefinition: string;
+  conversationDirections: readonly string[];
+  warmthPatterns: readonly string[];
+};
+
+export const healthVisitSpeakTopics: readonly D4SpeakTopic[] = [
   {
     id: "topic-health-visit-booking-appointment",
     labelEn: "Booking A Doctor's Appointment",
     labelVi: "Đặt lịch khám bác sĩ",
     category: "health-visit",
+    scenarioDescription:
+      "The learner needs to call or visit a medical clinic to book an appointment with a doctor. They must explain why they want to come, choose a time that works for them, and confirm the details before hanging up.",
+    aiRoleDefinition:
+      "Act as a friendly clinic receptionist who asks for the learner's name, reason for the visit, and preferred time, offers available slots, and confirms the full booking before ending the call.",
+    conversationDirections: [
+      "Let the learner open by saying they would like to book an appointment.",
+      "Ask for the learner's name and whether they are an existing or new patient.",
+      "Ask what the appointment is for — a brief reason is enough.",
+      "Offer two or three available times and let the learner choose one.",
+      "Confirm the date, time, and which doctor they will see.",
+      "Ask if they have any questions before hanging up.",
+    ],
+    warmthPatterns: [
+      "Sound calm and unhurried: 'Let me check the schedule for you.'",
+      "Confirm everything back clearly: 'So that's Tuesday at 9 — does that work for you?'",
+      "Close the call warmly: 'We'll see you then — take care.'",
+    ],
     seedInputs: [
       "I want to book a visit with the doctor next week.",
       "Hello, I'd like to make an appointment to see Dr. Tran.",
@@ -56,6 +83,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Rescheduling Or Canceling A Visit",
     labelVi: "Đổi lịch hoặc hủy lịch hẹn",
     category: "health-visit",
+    scenarioDescription:
+      "The learner needs to call the clinic to change or cancel an upcoming appointment. They must name the appointment, give a brief reason, and either set a new time or cancel it cleanly.",
+    aiRoleDefinition:
+      "Act as a clinic receptionist who finds the existing appointment by name, offers to reschedule it, and confirms any changes clearly before ending the call.",
+    conversationDirections: [
+      "Let the learner open by saying they need to change or cancel an appointment.",
+      "Ask for the learner's name and the appointment date and time.",
+      "Ask whether they want to reschedule or cancel completely.",
+      "If rescheduling, offer available slots and let the learner choose.",
+      "Confirm the change and remind the learner of any cancellation policy if needed.",
+      "Close with a warm sign-off.",
+    ],
+    warmthPatterns: [
+      "Keep it easy: 'Not a problem at all — let me find your booking.'",
+      "Be clear about options: 'Would you prefer to reschedule or just cancel for now?'",
+      "Confirm without friction: 'All sorted — see you on the new date.'",
+    ],
     seedInputs: [
       "I need to change my visit to another day.",
       "Hi, I won't be able to make my 3 p.m. appointment tomorrow.",
@@ -100,6 +144,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Checking In At Reception",
     labelVi: "Làm thủ tục ở quầy tiếp đón",
     category: "health-visit",
+    scenarioDescription:
+      "The learner has arrived at the clinic for their appointment and needs to check in at the reception desk — giving their name, confirming the appointment, showing their ID or insurance card if needed, and finding out where to wait.",
+    aiRoleDefinition:
+      "Act as a friendly receptionist who verifies the learner's name and appointment, hands over any paperwork, tells them where to wait, and answers any quick questions calmly.",
+    conversationDirections: [
+      "Let the learner open by saying they have an appointment.",
+      "Ask for their name and confirm the appointment in the system.",
+      "Ask for their ID or insurance card if needed and return it promptly.",
+      "Hand over any forms and explain briefly what needs to be filled in.",
+      "Tell the learner where to wait and roughly how long until the doctor is ready.",
+      "Invite any quick questions before they go to the waiting area.",
+    ],
+    warmthPatterns: [
+      "Sound welcoming from the start: 'Hi, good to see you — let me look you up.'",
+      "Keep the process smooth and clear: 'Everything is here — just take a seat over there.'",
+      "Be helpful about the wait: 'The doctor won't be long — maybe ten minutes.'",
+    ],
     seedInputs: [
       "I have a visit at ten and I am here to check in.",
       "Hi, I'm here for my 10 o'clock with Dr. Le.",
@@ -144,6 +205,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Describing How You Feel",
     labelVi: "Kể về tình trạng sức khỏe",
     category: "health-visit",
+    scenarioDescription:
+      "The doctor asks the learner what is wrong today. The learner needs to describe their symptoms in simple, clear English — naming the problem, using 'I have a' and 'I feel' phrases, and saying how bad or how long it has been.",
+    aiRoleDefinition:
+      "Act as a doctor who listens to the symptoms, asks one follow-up question per symptom to get more detail, and shows genuine concern without alarming the learner.",
+    conversationDirections: [
+      "Let the learner describe what feels wrong in their own words.",
+      "Ask when the symptoms started.",
+      "Probe each symptom gently: 'Can you tell me a bit more about the cough?'",
+      "Ask if any other symptoms came along with the main one.",
+      "Ask what makes the symptoms better or worse.",
+      "Summarise what you heard and ask if the learner would like to add anything.",
+    ],
+    warmthPatterns: [
+      "Stay calm and curious: 'Tell me more — what else have you noticed?'",
+      "Validate the experience without alarm: 'That does sound uncomfortable.'",
+      "Keep the pace unhurried so the learner has time to find their words.",
+    ],
     seedInputs: [
       "I have a sore throat and a cough since Monday.",
       "I've had a headache and a fever for two days.",
@@ -188,6 +266,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Saying Where It Hurts",
     labelVi: "Chỉ chỗ bị đau",
     category: "health-visit",
+    scenarioDescription:
+      "The doctor asks the learner where they are feeling pain or discomfort. The learner needs to name the body part clearly, describe the type of pain, and say when it is worst.",
+    aiRoleDefinition:
+      "Act as a doctor who listens to the learner locate the pain, asks about the quality and timing of the pain, and asks the learner to rate it on a one-to-ten scale.",
+    conversationDirections: [
+      "Ask the learner to point to or name where the pain is.",
+      "Ask whether the pain is sharp, dull, burning, or aching.",
+      "Ask when the pain is worst — morning, after eating, or during movement.",
+      "Ask the learner to rate the pain on a scale of one to ten.",
+      "Ask if the pain stays in one place or spreads to other areas.",
+      "Confirm what you heard and note it clearly for the record.",
+    ],
+    warmthPatterns: [
+      "Be specific and gentle in asking: 'Show me where — right here?'",
+      "Receive the answer without alarm: 'Okay, let me understand this a bit better.'",
+      "Encourage more detail without pressure: 'Take your time describing it.'",
+    ],
     seedInputs: [
       "My stomach hurts after I eat.",
       "I have a sharp pain in my lower back.",
@@ -232,6 +327,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Saying How Long You've Felt Unwell",
     labelVi: "Nói bị bao lâu rồi",
     category: "health-visit",
+    scenarioDescription:
+      "The doctor asks the learner how long they have been feeling unwell. The learner needs to give a clear time period, describe whether the symptom is constant or comes and goes, and say whether it has changed.",
+    aiRoleDefinition:
+      "Act as a doctor who asks about duration, pattern, and changes in symptoms, and confirms the timeline clearly before moving to the next question.",
+    conversationDirections: [
+      "Ask the learner how long they have been feeling this way.",
+      "Ask whether it came on suddenly or gradually.",
+      "Ask if the symptom is constant or comes and goes.",
+      "Ask whether it has been getting better, worse, or staying the same.",
+      "Ask if anything happened that might have triggered the symptoms.",
+      "Summarise the timeline and check that you have it right.",
+    ],
+    warmthPatterns: [
+      "Accept any answer warmly: 'That's helpful — even an approximate time is fine.'",
+      "Invite more: 'Has anything else been different since then?'",
+      "Confirm without rushing: 'So roughly three days, and it's getting worse — is that right?'",
+    ],
     seedInputs: [
       "I have felt dizzy for about three days now.",
       "It started about a week ago and hasn't gone away.",
@@ -276,6 +388,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Talking About A Sick Child",
     labelVi: "Kể về con đang bị ốm",
     category: "health-visit",
+    scenarioDescription:
+      "A parent is speaking to a doctor or clinic nurse about a child who is unwell. The parent must describe the child's symptoms, say when they started, mention any medicine already given, and explain what worries them most.",
+    aiRoleDefinition:
+      "Act as a doctor or nurse who asks about the child's age, symptoms, duration, any medicine given, and the parent's main concern — one question at a time in a calm, reassuring manner.",
+    conversationDirections: [
+      "Let the parent open by saying who is sick and what they have noticed.",
+      "Ask the child's age and approximate weight if needed.",
+      "Ask about the main symptom — fever, cough, not eating, upset stomach.",
+      "Ask when the symptom started and whether it is getting worse.",
+      "Ask whether the parent has given any medicine and what the result was.",
+      "Ask what worries the parent most and close with the clear next steps.",
+    ],
+    warmthPatterns: [
+      "Reassure the parent from the start: 'You were right to bring them in — let's have a look.'",
+      "Stay calm and practical: 'Children get these things — let's see what's going on.'",
+      "Give a clear next step: 'We'll do a quick check and then I'll explain what I see.'",
+    ],
     seedInputs: [
       "My daughter has a high temperature and won't eat.",
       "My son has had a fever since last night.",
@@ -320,6 +449,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "At The Pharmacy Counter",
     labelVi: "Ở quầy thuốc",
     category: "health-visit",
+    scenarioDescription:
+      "The learner approaches the pharmacy counter to ask the pharmacist for advice about a minor health problem. They need to describe the symptom, ask what is available, and understand the pharmacist's recommendation.",
+    aiRoleDefinition:
+      "Act as a helpful pharmacist who asks about the symptom, the learner's age, and any allergies, then recommends a suitable over-the-counter product and explains how to use it clearly.",
+    conversationDirections: [
+      "Let the learner open by describing the problem or asking for help.",
+      "Ask the learner to say which symptom is bothering them most.",
+      "Ask whether the medicine is for themselves or someone else, and their rough age.",
+      "Ask about any known allergies or other medicines they are currently taking.",
+      "Recommend a product and explain the dosage in simple, clear terms.",
+      "Ask if the learner has any questions before they go.",
+    ],
+    warmthPatterns: [
+      "Welcome the question warmly: 'Of course — let's see what I can suggest.'",
+      "Explain instructions simply: 'Take two of these in the morning and two at night with food.'",
+      "Close with care: 'If it doesn't improve in three days, do see your doctor.'",
+    ],
     seedInputs: [
       "I'd like to ask the pharmacist about something for a cold.",
       "Excuse me, do you have anything for a blocked nose?",
@@ -364,6 +510,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Asking About Over-The-Counter Remedies",
     labelVi: "Hỏi mua thuốc không cần đơn",
     category: "health-visit",
+    scenarioDescription:
+      "The learner is at a pharmacy and wants to buy medicine for a common problem without a prescription. They need to ask for a recommendation, understand the options, and ask about the correct dosage.",
+    aiRoleDefinition:
+      "Act as a pharmacist who offers two or three product options, explains the key differences in plain language, and helps the learner pick the best one for their situation and preferences.",
+    conversationDirections: [
+      "Let the learner say what they need medicine for.",
+      "Ask whether they prefer tablets, syrup, or another form.",
+      "Ask if they need to stay alert — for example, will they be driving.",
+      "Present two options and explain the key difference in simple, everyday language.",
+      "Confirm the dosage and say how many days to take it.",
+      "Ask if they have any questions and close warmly.",
+    ],
+    warmthPatterns: [
+      "Keep it practical: 'For a normal cough this one works very well — it's very popular.'",
+      "Avoid jargon: 'This one won't make you sleepy — good if you need to work or drive.'",
+      "Confirm the choice clearly: 'So two tablets, twice a day, with water — easy to remember.'",
+    ],
     seedInputs: [
       "Is there a cough syrup I can buy without a prescription?",
       "Do you have any non-drowsy cold tablets?",
@@ -408,6 +571,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Picking Up Your Medicine",
     labelVi: "Lấy thuốc đã kê",
     category: "health-visit",
+    scenarioDescription:
+      "The learner has been given a prescription and goes to the pharmacy to collect the medicine. They need to give their name and doctor's details, confirm the medicine is correct, and ask any questions about how to take it.",
+    aiRoleDefinition:
+      "Act as a pharmacy counter assistant who looks up the prescription by name, confirms the medicine with the learner, explains any key instructions, and handles the payment smoothly.",
+    conversationDirections: [
+      "Let the learner open by saying they are picking up a prescription.",
+      "Ask for the learner's name and spell it back to confirm.",
+      "Confirm which medicine is being collected and ask the learner to check it is correct.",
+      "Briefly explain any key instructions — frequency, food, and storage.",
+      "Process the payment and hand over a receipt if asked.",
+      "Ask if the learner has any questions and close with a warm sign-off.",
+    ],
+    warmthPatterns: [
+      "Sound efficient but friendly: 'Let me find that for you.'",
+      "Give instructions clearly and simply: 'Once a day, in the morning, with food.'",
+      "Invite questions at the end: 'Is there anything you'd like me to go over before you go?'",
+    ],
     seedInputs: [
       "I'm here to pick up the medicine my doctor sent over.",
       "Hi, is my prescription ready to collect?",
@@ -452,6 +632,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Understanding How To Take Your Medicine",
     labelVi: "Hiểu cách dùng thuốc",
     category: "health-visit",
+    scenarioDescription:
+      "The doctor or pharmacist has prescribed medicine and the learner needs to ask questions to be sure they understand how to take it safely — how often, with or without food, for how long, and what to do if they miss a dose.",
+    aiRoleDefinition:
+      "Act as a pharmacist who explains the dosage instructions clearly and simply, invites the learner to repeat them back, and answers follow-up questions without making the learner feel overwhelmed.",
+    conversationDirections: [
+      "Explain how many to take and how many times a day, clearly and slowly.",
+      "Say whether to take the medicine with food or on an empty stomach.",
+      "Invite the learner to repeat the instructions back in their own words.",
+      "Ask if they have any worries about remembering or timing the doses.",
+      "Explain what to do if they miss a dose.",
+      "Close by confirming the learner is comfortable with the instructions.",
+    ],
+    warmthPatterns: [
+      "Check understanding without pressure: 'Can you say that back to me — just to make sure?'",
+      "Be patient with repeating: 'Happy to go over it again — no rush at all.'",
+      "Normalise the questions: 'These are really important things to ask about.'",
+    ],
     seedInputs: [
       "How many times a day should I take this?",
       "Should I take this with food or on an empty stomach?",
@@ -496,6 +693,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Refilling A Prescription",
     labelVi: "Mua thêm thuốc theo đơn",
     category: "health-visit",
+    scenarioDescription:
+      "The learner is running low on a regular medicine and needs to contact the clinic or pharmacy to get a repeat prescription. They must name the medicine, explain they are running low, and ask what process to follow.",
+    aiRoleDefinition:
+      "Act as a pharmacy or clinic assistant who looks up the patient's record, confirms the medicine and last fill date, and explains whether the learner can collect it right away or needs to wait for doctor approval.",
+    conversationDirections: [
+      "Let the learner open by saying they need a repeat prescription or refill.",
+      "Ask for their name and confirm which medicine they want refilled.",
+      "Ask how many are left and when they are likely to run out.",
+      "Check whether the repeat is automatic or needs the doctor to approve first.",
+      "Give a clear timeline for when the medicine will be ready.",
+      "Close by gently reminding the learner to ask ahead next time.",
+    ],
+    warmthPatterns: [
+      "Keep it calm and efficient: 'Let me pull up your file right now.'",
+      "Give a clear timeline: 'It should be ready by tomorrow afternoon.'",
+      "Encourage ahead-of-time requests: 'Try to ask a few days early in future — it makes things easier.'",
+    ],
     seedInputs: [
       "I've run out of my blood pressure tablets and need more.",
       "I need a repeat prescription for my asthma inhaler.",
@@ -540,6 +754,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Asking About Side Effects And Allergies",
     labelVi: "Hỏi về tác dụng phụ và dị ứng",
     category: "health-visit",
+    scenarioDescription:
+      "The learner needs to tell the doctor or pharmacist about a known allergy before taking new medicine, or ask about possible side effects so they know what to expect and what to watch for.",
+    aiRoleDefinition:
+      "Act as a doctor or pharmacist who records the allergy clearly, asks follow-up questions about past reactions, and explains the relevant side effects and what to do if something unexpected happens.",
+    conversationDirections: [
+      "Let the learner state any known allergy or ask about side effects.",
+      "Ask what reaction they had in the past if it is an allergy.",
+      "Note the allergy and confirm it will be added to their record.",
+      "Explain the main side effects of the prescribed medicine in plain language.",
+      "Tell the learner which side effects are normal and which need an urgent call.",
+      "Ask if there is anything else they are worried about before leaving.",
+    ],
+    warmthPatterns: [
+      "Record the allergy carefully: 'Good that you mentioned that — I'll note it right now.'",
+      "Keep side effects in proportion: 'Most people don't experience these, but it's good to know.'",
+      "Give a clear action plan: 'If you get a rash or feel very unwell, call us straight away.'",
+    ],
     seedInputs: [
       "I'm allergic to penicillin, so is this one safe for me?",
       "Will this make me drowsy?",
@@ -580,3 +811,5 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     ],
   },
 ] as const;
+
+export const speakTopics = healthVisitSpeakTopics;
