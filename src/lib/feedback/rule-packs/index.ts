@@ -41,3 +41,4 @@ export function resolveRulePack(
 }
 
 export { VN_RULE_PACK } from './vi/index.js';
+export { EN_VN_REGISTER_PACK } from './en-vn-register';
