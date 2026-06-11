@@ -1,16 +1,44 @@
 import type { SpeakTopicLibraryEntry } from "../speakTopicLibrary";
 
-// Phone call theme. Deterministic / client-side; copy is warm and low-shame.
-// A9 batch-2 deepening gave each topic 3 L1 notes and 6 follow-ups; this pass
-// adds a 4th L1 note (quoting the Vietnamese source phrase with full diacritics)
-// and a second seed-input dialogue variant per topic. Notes name genuine
-// Vietnamese→English interference as friendly context, never a correction.
-export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
+// Phone call theme — deepened to full D4 metadata depth
+// (scenarioDescription, aiRoleDefinition, conversationDirections, warmthPatterns).
+// 10 topics covering the phone situations a Vietnamese learner encounters in daily life:
+// making appointments, reaching a person, leaving voicemail, wrong numbers, bad
+// connections, confirming details, customer service, rescheduling, delivery drivers,
+// and ending calls politely.
+// Copy is warm, adult, low-shame. l1InterferenceNotes include Vietnamese source phrases
+// with full diacritics — friendly context, never a grammar correction.
+
+type D4SpeakTopic = SpeakTopicLibraryEntry & {
+  scenarioDescription: string;
+  aiRoleDefinition: string;
+  conversationDirections: readonly string[];
+  warmthPatterns: readonly string[];
+};
+
+export const phoneCallSpeakTopics: readonly D4SpeakTopic[] = [
   {
     id: "topic-phone-call-making-appointment",
     labelEn: "Calling To Make An Appointment",
     labelVi: "Gọi điện đặt lịch hẹn",
     category: "phone-call",
+    scenarioDescription:
+      "The learner calls a clinic, salon, or office to book an appointment. They need to say who they are, what they need, and find a time that works — all while managing the natural pace of a real phone call.",
+    aiRoleDefinition:
+      "Act as a friendly receptionist at a medical clinic or service office. You ask for the caller's name, what the appointment is for, and offer two or three available times. You confirm the details at the end.",
+    conversationDirections: [
+      "Ask for the caller's name and whether they are a new or returning client.",
+      "Let the learner say what the appointment is for in one sentence.",
+      "Offer two available times and let the caller choose.",
+      "Let the learner practise confirming the date, time, and location.",
+      "Ask for a callback number in case of changes.",
+      "Close warmly and tell the caller what to bring or expect.",
+    ],
+    warmthPatterns: [
+      "Keep the pace relaxed — phone appointments move at the caller's speed, not the receptionist's.",
+      "If the caller hesitates, stay patient: 'Take your time — I have a few slots available.'",
+      "End with reassurance: 'You're all set — we'll see you then.'",
+    ],
     seedInputs: [
       "Hi, I would like to make an appointment.",
       "Hello, I'm calling to book an appointment for next week.",
@@ -64,6 +92,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Asking To Speak To Someone",
     labelVi: "Xin gặp một người qua điện thoại",
     category: "phone-call",
+    scenarioDescription:
+      "The learner calls a business, school, or office and needs to reach a specific person. They have to navigate the opening exchange, give their own name if asked, and handle the case where the person is unavailable.",
+    aiRoleDefinition:
+      "Act as a professional receptionist who answers the phone. You ask who is calling, check whether the person is available, and either connect the call or take a message politely.",
+    conversationDirections: [
+      "Answer the phone and ask how you can help.",
+      "Let the learner ask to speak with a specific person.",
+      "Ask 'May I ask who's calling?' and let the learner give their name.",
+      "Say the person is unavailable and offer to take a message or connect to voicemail.",
+      "Let the learner practise asking to leave a message or request a callback.",
+      "Close by confirming the message will be passed on.",
+    ],
+    warmthPatterns: [
+      "Keep the hold and transfer steps brief — phone gatekeeping shouldn't feel like an obstacle course.",
+      "If the person is unavailable, make the message option feel easy: 'I can take a message for you right now.'",
+      "Confirm the message warmly: 'I'll make sure she gets this.'",
+    ],
     seedInputs: [
       "May I speak with Ms. Lee, please?",
       "Hello, is Mr. Tran available right now?",
@@ -117,6 +162,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Leaving A Voicemail",
     labelVi: "Để lại tin nhắn thoại",
     category: "phone-call",
+    scenarioDescription:
+      "The learner calls someone and reaches voicemail. They need to leave a clear, brief message — their name, the reason for calling, their callback number, and the best time to reach them — before the tone cuts them off.",
+    aiRoleDefinition:
+      "Act as a voicemail system playing a short greeting, then going silent to let the learner record their message. After they leave the message, replay it back so they can hear how it sounds and tidy up any part.",
+    conversationDirections: [
+      "Play a short voicemail greeting and signal the beep.",
+      "Let the learner leave a complete message: name, reason, number, best time.",
+      "Replay the message and let the learner identify what worked well.",
+      "Ask the learner to try once more with the number spoken slowly.",
+      "Practise adding a polite close: 'Thank you' or 'I look forward to hearing from you.'",
+      "Confirm the key structure: name → reason → number → best time.",
+    ],
+    warmthPatterns: [
+      "Frame voicemail as a skill, not a test — everyone stumbles over it at first.",
+      "After the replay, lead with one thing they did well before suggesting an improvement.",
+      "Slow-number practice is always worth a repeat: 'Shall we do the number one more time?'",
+    ],
     seedInputs: [
       "Hi, this is Linh. Please call me back when you can.",
       "Hello, this is Nam. I'm calling about my order — please call me back.",
@@ -170,6 +232,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Handling A Wrong Number",
     labelVi: "Khi gọi nhầm số",
     category: "phone-call",
+    scenarioDescription:
+      "The learner dials a number and reaches a stranger. They need to recognise the mistake quickly, apologise briefly, check whether they have the right number if unsure, and end the call without embarrassment.",
+    aiRoleDefinition:
+      "Act as a friendly stranger who answers an unexpected call. You respond warmly, confirm that the caller has the wrong number, and let them end the call as smoothly as possible.",
+    conversationDirections: [
+      "Answer in a friendly but confused way: 'Hello? I think you may have the wrong number.'",
+      "Let the learner check: 'Is this the number for...?'",
+      "Confirm it's the wrong number and let the caller apologise briefly.",
+      "Let the learner practise a short, friendly close before hanging up.",
+      "Repeat the scenario with the learner reaching the wrong business rather than a person.",
+      "Reinforce: one short apology is enough — no need to over-explain.",
+    ],
+    warmthPatterns: [
+      "Keep the tone light — wrong numbers happen to everyone and are not a big deal.",
+      "If the learner over-apologises, gently redirect: 'Short and sweet is perfect here.'",
+      "Make it clear that the caller doesn't owe anyone an explanation.",
+    ],
     seedInputs: [
       "Sorry, I think I have the wrong number.",
       "Oh, sorry to bother you — I must have dialed the wrong number.",
@@ -223,6 +302,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "When The Connection Is Bad",
     labelVi: "Khi nghe điện thoại không rõ",
     category: "phone-call",
+    scenarioDescription:
+      "The learner is on a call where the audio keeps cutting out or the other person can't be heard clearly. They need to say what the problem is, ask for a repeat, and suggest a fix — all without losing the flow of the conversation.",
+    aiRoleDefinition:
+      "Act as a caller whose signal keeps breaking up. You speak in short bursts with occasional silence or static, give the learner opportunities to ask for repeats, and suggest moving to better signal.",
+    conversationDirections: [
+      "Start with a clear sentence, then simulate static so the learner has to ask for a repeat.",
+      "Let the learner say what is wrong with the connection.",
+      "Repeat the sentence slowly and check if the learner can hear now.",
+      "Let the learner suggest calling back or moving to better signal.",
+      "Practise asking the other person to speak more slowly.",
+      "Reconnect cleanly and let the conversation continue normally.",
+    ],
+    warmthPatterns: [
+      "Normalise asking for repeats — poor signal is a technology problem, not a learner problem.",
+      "Praise the learner for staying calm: 'That was handled really well — you kept the call going.'",
+      "Keep the suggested fix simple: 'I'll step outside and call you back.'",
+    ],
     seedInputs: [
       "Sorry, the connection is bad. Could you say that again?",
       "I think you're breaking up — can you hear me okay?",
@@ -276,6 +372,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Confirming Details On The Phone",
     labelVi: "Xác nhận thông tin qua điện thoại",
     category: "phone-call",
+    scenarioDescription:
+      "The learner is finishing a phone call and needs to confirm that they have the right address, time, name, or reference number. They read the details back, ask for spelling when needed, and make sure nothing is missed before hanging up.",
+    aiRoleDefinition:
+      "Act as a staff member who has just given the learner an address, appointment time, or reference number. You speak at a natural pace and let the learner ask for clarification, spelling, or a repeat without rushing.",
+    conversationDirections: [
+      "Give the learner an address or appointment time at a natural pace.",
+      "Let the learner ask you to repeat or spell a part they missed.",
+      "Practise the learner reading the details back to you for confirmation.",
+      "Let the learner ask for the details digit by digit if they include a number.",
+      "Confirm that everything is correct and close the call.",
+      "Reinforce: reading back before hanging up prevents costly mistakes.",
+    ],
+    warmthPatterns: [
+      "Make asking for spelling feel professional, not awkward: 'That's a smart move — let me spell it out.'",
+      "Slow down naturally when you give numbers and street names.",
+      "End with a confirmation that is warm, not robotic: 'Perfect — you've got everything you need.'",
+    ],
     seedInputs: [
       "Can I confirm the address and time?",
       "Just to make sure — could you repeat the address for me?",
@@ -329,6 +442,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Calling Customer Service",
     labelVi: "Gọi chăm sóc khách hàng",
     category: "phone-call",
+    scenarioDescription:
+      "The learner needs help from a company's support line — about a bill, a missing package, an account problem, or a service issue. They have to navigate an automated menu, reach a real person, explain the problem, and ask for a resolution.",
+    aiRoleDefinition:
+      "Act as a customer service agent who picks up after an automated menu. You greet the caller professionally, verify their account with one or two questions, listen to the problem, and walk through the next steps.",
+    conversationDirections: [
+      "Play a short automated menu message and let the learner choose an option.",
+      "Greet the caller as a live agent and ask for the account name or number.",
+      "Let the learner explain their problem in one or two sentences.",
+      "Ask a follow-up question to clarify the issue.",
+      "Offer one clear resolution or next step.",
+      "Give the learner a reference number and close the call professionally.",
+    ],
+    warmthPatterns: [
+      "Make the automated menu feel manageable: 'Press 0 at any time to reach a person.'",
+      "Validate the frustration if applicable: 'I completely understand — let's sort this out.'",
+      "Always end with the reference number: it makes the learner feel the call was worthwhile.",
+    ],
     seedInputs: [
       "Hi, I need help with my account.",
       "Hello, I'm calling about a charge I don't recognize on my bill.",
@@ -382,6 +512,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Rescheduling By Phone",
     labelVi: "Đổi lịch qua điện thoại",
     category: "phone-call",
+    scenarioDescription:
+      "Something has come up and the learner needs to change an existing appointment. They call the business, give a brief reason, and suggest or accept a new time — without making it a bigger deal than it needs to be.",
+    aiRoleDefinition:
+      "Act as a receptionist who handles rescheduling requests smoothly. You acknowledge the change politely, check the calendar, offer two or three alternative slots, and confirm the new appointment at the end.",
+    conversationDirections: [
+      "Ask which appointment the caller wants to change and under what name.",
+      "Let the learner say they need to reschedule and give a brief reason.",
+      "Offer two alternative times and let the caller choose.",
+      "Confirm the new time and ask whether the caller needs a reminder.",
+      "Let the learner practise a light apology for the short notice.",
+      "Close by confirming the change and wishing the caller well.",
+    ],
+    warmthPatterns: [
+      "Make rescheduling feel routine: 'No problem at all — let's find you a new time.'",
+      "Keep any apology brief: the learner doesn't need to justify changing a time.",
+      "End with the new details confirmed clearly: 'So we'll see you Thursday at two.'",
+    ],
     seedInputs: [
       "I need to reschedule my appointment.",
       "Something came up — could I move my appointment to another day?",
@@ -435,6 +582,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Talking To A Delivery Driver",
     labelVi: "Nói chuyện với tài xế giao hàng",
     category: "phone-call",
+    scenarioDescription:
+      "The learner gets a call or must call a delivery driver who is trying to find their building or unit. They need to give clear directions quickly, including building access codes or a landmark, so the package or food arrives at the right door.",
+    aiRoleDefinition:
+      "Act as a delivery driver who has the right street but is confused about the building entrance or unit number. You ask simple questions and let the learner guide you step by step to the right spot.",
+    conversationDirections: [
+      "Call the learner and say you are outside but can't find the entrance.",
+      "Let the learner describe the building landmark or main door clearly.",
+      "Ask for the unit number or buzzer code and let the learner provide it.",
+      "Confirm the estimated arrival time.",
+      "Ask whether to leave the package somewhere if no one answers.",
+      "Thank the learner and close the call.",
+    ],
+    warmthPatterns: [
+      "Keep the driver's questions short and realistic: 'Is there a gate code?'",
+      "Praise precise directions: 'That's great — I can see the sign now.'",
+      "Make the learner feel their directions were helpful and clear.",
+    ],
     seedInputs: [
       "Hi, I am at the front door now.",
       "Hello, I'm in apartment 3B — I'll buzz you in.",
@@ -488,6 +652,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Ending A Phone Call Politely",
     labelVi: "Kết thúc cuộc gọi lịch sự",
     category: "phone-call",
+    scenarioDescription:
+      "The learner has finished the main purpose of a call and needs to close it cleanly. They want to confirm any next steps, thank the other person warmly, and say goodbye without the call trailing off awkwardly.",
+    aiRoleDefinition:
+      "Act as the person the learner has been speaking with — a receptionist, customer service agent, or business contact. You signal that the call is wrapping up and let the learner practise the closing lines.",
+    conversationDirections: [
+      "Signal that all the main points have been covered: 'I think we've covered everything.'",
+      "Let the learner ask a final 'Is there anything else I need to do?' question.",
+      "Let the learner repeat or confirm the key next step before saying goodbye.",
+      "Introduce a warm but slightly informal closing to practise register.",
+      "Let the learner try a goodbye and signal whether it felt natural.",
+      "Reinforce: a warm close leaves a good impression and is easy to practise.",
+    ],
+    warmthPatterns: [
+      "Model a natural, unhurried close — goodbyes don't need to be abrupt.",
+      "Praise any closing that felt warm and real: 'That sounded natural and friendly.'",
+      "If the learner just says 'bye', gently add: 'You could also try 'Have a great day' — it's very common.'",
+    ],
     seedInputs: [
       "Thank you for your help. Have a good day.",
       "Okay, I think that's everything. Thanks so much — bye now.",
@@ -536,4 +717,6 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
       { id: "phone-ending-followup", question: "How would you confirm any follow-up step?", salienceQuestion: "What follow-up would you confirm for the {slot}?" },
     ],
   },
-] as const;
+] as const satisfies readonly D4SpeakTopic[];
+
+export const speakTopics = phoneCallSpeakTopics;

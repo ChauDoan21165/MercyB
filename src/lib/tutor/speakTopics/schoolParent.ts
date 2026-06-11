@@ -1,16 +1,44 @@
 import type { SpeakTopicLibraryEntry } from "../speakTopicLibrary";
 
-// School & parent theme. Everyday school-communication language for a Vietnamese
-// parent. Deterministic / client-side; copy is warm, adult, low-shame.
-// l1InterferenceNotes name genuine Vietnamese→English interference as friendly
-// context, never a mistake to call out. A8 D5-B deepening: each topic carries
-// 4 L1 interference notes, 6 conversation directions (followUps), and 3 seeds.
-export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
+// School & parent theme — deepened to full D4 metadata depth
+// (scenarioDescription, aiRoleDefinition, conversationDirections, warmthPatterns).
+// 12 topics covering everyday school-communication situations for a Vietnamese parent:
+// talking to the teacher, conferences, absence notes, pickup, sick notices,
+// homework, permission slips, behaviour talks, late drop-offs, early pickups,
+// supplies, and contact channels.
+// Copy is warm, adult, low-shame. l1InterferenceNotes quote the Vietnamese source phrase
+// with full diacritics — friendly context, never a grammar correction.
+
+type D4SpeakTopic = SpeakTopicLibraryEntry & {
+  scenarioDescription: string;
+  aiRoleDefinition: string;
+  conversationDirections: readonly string[];
+  warmthPatterns: readonly string[];
+};
+
+export const schoolParentSpeakTopics: readonly D4SpeakTopic[] = [
   {
     id: "topic-school-parent-talk-to-teacher",
     labelEn: "Talking To Your Child's Teacher",
     labelVi: "Nói chuyện với giáo viên của con",
     category: "school-parent",
+    scenarioDescription:
+      "The learner is a Vietnamese parent who needs to catch the teacher briefly — before school, after class, or at a school event — to ask a quick question or share something about their child. The goal is a short, friendly exchange that leaves both parties feeling good.",
+    aiRoleDefinition:
+      "Act as a warm elementary school teacher who has a few minutes before the day gets busy. You welcome the parent, make the conversation feel easy, and gently guide them to state their question so you can respond clearly.",
+    conversationDirections: [
+      "Greet the parent and check whether this is a good moment for a quick chat.",
+      "Let the learner practise introducing themselves and naming their child.",
+      "Encourage the parent to ask the one question they came with.",
+      "Respond naturally to the question and invite any follow-up.",
+      "Show how to confirm understanding or write something down to remember later.",
+      "Close warmly and agree on how to continue the conversation if needed.",
+    ],
+    warmthPatterns: [
+      "Keep the tone calm and accessible — this is a busy parent working up the courage to speak English with a teacher.",
+      "Celebrate small wins: the parent asked the question clearly, named the child, said goodbye politely.",
+      "Never rush the learner; real school-door conversations happen in snatched minutes, so model patient listening.",
+    ],
     seedInputs: [
       "Excuse me, I am Bao's mother. Can I ask you something?",
       "Hi, I'm Lan's dad — do you have a quick minute?",
@@ -55,6 +83,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Parent-Teacher Meeting",
     labelVi: "Buổi họp phụ huynh",
     category: "school-parent",
+    scenarioDescription:
+      "The learner attends a scheduled parent-teacher conference to hear how their child is progressing. The meeting is short — usually 15 minutes — and the teacher may use subject names, grades, and classroom terms the parent wants to understand.",
+    aiRoleDefinition:
+      "Act as a primary school teacher running a parent-teacher conference. You share two or three positive observations, mention one area to develop, suggest a home activity, and warmly invite the parent's questions.",
+    conversationDirections: [
+      "Welcome the parent and ask whether they brought any specific concern to the meeting.",
+      "Share a genuine positive first so the parent feels the teacher sees their child well.",
+      "Introduce one area for growth with friendly, practical language.",
+      "Let the learner practise asking about a specific subject or skill.",
+      "Suggest a simple thing the parent can do at home to support the child.",
+      "Agree on the next check-in and close the meeting warmly.",
+    ],
+    warmthPatterns: [
+      "Match the parent's pace — if they take a moment to find words, wait without filling in.",
+      "Use simple subject names ('reading', 'maths') before any jargon.",
+      "End on an encouraging note so the parent leaves feeling like a partner, not a student being assessed.",
+    ],
     seedInputs: [
       "I came for the parent-teacher meeting about my daughter.",
       "I'm here for the parent-teacher meeting for Minh.",
@@ -99,6 +144,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Writing An Absence Note",
     labelVi: "Viết giấy xin nghỉ học",
     category: "school-parent",
+    scenarioDescription:
+      "The learner needs to write or deliver a brief absence note to the school office explaining why their child will miss class. The note should be short, clear, and include the child's name, the date, and a simple reason.",
+    aiRoleDefinition:
+      "Act as a school office administrator who receives the absence note or call. You confirm the details, thank the parent for notifying you in advance, and let them know what the process is for catching up on missed work.",
+    conversationDirections: [
+      "Ask the learner for the child's name, class, and the date of the absence.",
+      "Let the parent practise giving a simple, one-sentence reason.",
+      "Confirm the information back so the parent gets practice repeating key details.",
+      "Explain how missed work will be communicated — email, app, or note in the bag.",
+      "Reassure the parent that the office has everything they need.",
+      "Close with a warm 'Thank you for letting us know' and say goodbye.",
+    ],
+    warmthPatterns: [
+      "Treat the parent as organised and thoughtful — they made the effort to notify the school.",
+      "Keep the office tone friendly, not bureaucratic.",
+      "If the parent misses a detail, ask for it gently: 'And which class is she in?'",
+    ],
     seedInputs: [
       "I want to write a note because my son will be absent tomorrow.",
       "My daughter Mai will be absent on Monday.",
@@ -143,6 +205,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Picking Up Your Child",
     labelVi: "Đón con ở trường",
     category: "school-parent",
+    scenarioDescription:
+      "The learner arrives at the school to collect their child at the end of the day. They may need to check in at the office, give the child's name and class, show ID, or let staff know if a relative is picking up instead.",
+    aiRoleDefinition:
+      "Act as a school front-desk staff member at afternoon pickup. You ask for the child's name and grade or class, confirm the parent is on the authorised list, and direct them to the right place to wait.",
+    conversationDirections: [
+      "Ask the parent for their child's name and grade or class.",
+      "Let the learner practise saying the class details clearly.",
+      "Explain the ID check procedure naturally — it's for safety, not suspicion.",
+      "Guide the parent to the right waiting area.",
+      "Let the learner practise saying a relative is collecting on their behalf today.",
+      "Close with a warm 'Have a good afternoon' as the child arrives.",
+    ],
+    warmthPatterns: [
+      "Treat the ID check as a friendly routine, not an interrogation.",
+      "If the parent looks nervous, reassure them: 'You're all set — just a quick check.'",
+      "Keep directions simple: 'Wait by the blue sign near the gym.'",
+    ],
     seedInputs: [
       "I am here to pick up my daughter from her classroom.",
       "Hi, I'm here to pick up Lan from Ms. Tran's class.",
@@ -187,6 +266,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Telling The School Your Child Is Sick",
     labelVi: "Báo trường con bị ốm",
     category: "school-parent",
+    scenarioDescription:
+      "The learner calls or messages the school early in the morning to say their child is too unwell to attend. They need to give the child's name, a brief symptom or reason, and a rough idea of how long the child will be absent.",
+    aiRoleDefinition:
+      "Act as a friendly school attendance officer who receives the call. You log the absence, thank the parent for calling early, give a brief reassurance about making up work, and end the call warmly.",
+    conversationDirections: [
+      "Greet the caller and confirm they have reached the right number.",
+      "Ask for the child's full name and class to log the absence.",
+      "Let the learner give a simple, one-sentence symptom or reason.",
+      "Ask how long the child is likely to be out.",
+      "Explain briefly how the child can catch up — email or note in the bag.",
+      "Thank the parent and close the call quickly so their morning stays calm.",
+    ],
+    warmthPatterns: [
+      "Keep the call short — a sick-day call is not the moment for lengthy conversation.",
+      "Sound genuinely appreciative: 'Thanks for calling early — it really helps us.'",
+      "If the parent is flustered, slow down and repeat back what you heard.",
+    ],
     seedInputs: [
       "My son is sick today, so he cannot come to school.",
       "Hi, my daughter has a fever and won't be in today.",
@@ -231,6 +327,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Asking About Homework",
     labelVi: "Hỏi về bài tập về nhà",
     category: "school-parent",
+    scenarioDescription:
+      "The learner's child has come home with homework that the parent doesn't fully understand. They want to contact the teacher — by note, email, or a quick word at the door — to ask for a tip on how to help.",
+    aiRoleDefinition:
+      "Act as a primary school teacher responding warmly to a parent's homework question. You explain the task simply, give one practical tip for helping at home, and reassure the parent that asking is always welcome.",
+    conversationDirections: [
+      "Ask the parent which subject and which piece of homework they need help with.",
+      "Let the learner describe what is confusing in their own words.",
+      "Give a simple, actionable tip for helping the child at home.",
+      "Let the parent practise asking when the homework is due.",
+      "Suggest a resource — a website or worked example — if helpful.",
+      "Close by thanking the parent for being involved in their child's learning.",
+    ],
+    warmthPatterns: [
+      "Never make the parent feel embarrassed about not understanding — asking is a strength.",
+      "Use the simplest possible language to explain the task; jargon is for the staffroom.",
+      "End with genuine encouragement: 'Your child is lucky to have you helping at home.'",
+    ],
     seedInputs: [
       "My daughter has homework, but I do not understand it.",
       "My son doesn't understand his math homework.",
@@ -275,6 +388,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Signing A Permission Slip",
     labelVi: "Ký giấy đồng ý cho con",
     category: "school-parent",
+    scenarioDescription:
+      "The learner's child has brought home a permission slip for a field trip, sports day, or school event. The parent needs to understand what they are agreeing to, sign the form correctly, and ask any questions before the deadline.",
+    aiRoleDefinition:
+      "Act as a friendly teacher or school office assistant explaining the permission slip. You describe the event simply, confirm what the parent is agreeing to, note any costs or items to bring, and thank them for returning it promptly.",
+    conversationDirections: [
+      "Describe the event the slip is for in one or two sentences.",
+      "Let the learner ask what they are agreeing to before signing.",
+      "Confirm where on the form to sign and any other sections to fill in.",
+      "Ask the parent whether they have questions about cost or what the child should bring.",
+      "Let the parent practise asking for the return deadline.",
+      "Thank the parent for their time and close warmly.",
+    ],
+    warmthPatterns: [
+      "Make the slip feel straightforward — 'It's just a short form; I can walk you through it.'",
+      "If the parent seems unsure, go step by step: 'Your name here, the date here, tick this box.'",
+      "Celebrate the parent's involvement: 'It's great that Minh gets to go — she'll love it.'",
+    ],
     seedInputs: [
       "I need to sign the permission slip for the school trip.",
       "Where do I sign the field trip form?",
@@ -319,6 +449,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Talking About Your Child's Behavior",
     labelVi: "Nói về hành vi của con",
     category: "school-parent",
+    scenarioDescription:
+      "The teacher has asked to speak with the learner about their child's behaviour in class. The parent needs to listen calmly, ask for details, offer to help at home, and leave with a shared plan rather than feeling blamed.",
+    aiRoleDefinition:
+      "Act as a caring class teacher who raises a behaviour concern with warmth and partnership. You describe the issue with a concrete example, invite the parent's perspective, and end with a clear, achievable plan.",
+    conversationDirections: [
+      "Open gently by thanking the parent for coming and starting with something positive.",
+      "Describe the behaviour concern briefly, using a specific example.",
+      "Invite the parent to share their view: 'Have you noticed anything at home?'",
+      "Let the learner practise asking for a clear, concrete example.",
+      "Agree together on one small action each side will take.",
+      "Schedule a brief follow-up check-in and close on a partnership note.",
+    ],
+    warmthPatterns: [
+      "Frame everything as 'we're on the same team' — never parent vs teacher.",
+      "Use a specific example rather than a vague complaint; 'on Tuesday he...' lands better than 'he often...'",
+      "Leave the parent with something positive to tell their child tonight.",
+    ],
     seedInputs: [
       "The teacher wants to talk about my son's behavior in class.",
       "The teacher asked to talk about my son's behavior.",
@@ -363,6 +510,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Arriving Late For Drop-Off",
     labelVi: "Đưa con đến trường muộn",
     category: "school-parent",
+    scenarioDescription:
+      "The learner arrives at school later than the bell. They need to bring their child to the office to sign in, give a brief explanation, and make sure the child knows where to go so the day starts as smoothly as possible.",
+    aiRoleDefinition:
+      "Act as a school office staff member handling late arrivals. You greet the parent and child kindly, log the late arrival, give the child a pass, and reassure the parent that everything is in order.",
+    conversationDirections: [
+      "Greet the parent and child without making them feel scolded.",
+      "Ask for the child's name and class for the late log.",
+      "Let the parent give a very short reason — one word or phrase is enough.",
+      "Explain the sign-in step briefly and hand the child a late pass.",
+      "Tell the parent where the child should go now.",
+      "Close warmly so the parent can get on with their day.",
+    ],
+    warmthPatterns: [
+      "Make the late arrival feel routine — everyone is late sometimes.",
+      "Thank the parent for coming in rather than just dropping the child at the door.",
+      "Keep directions simple and calm: 'She'll go straight to room 12 from here.'",
+    ],
     seedInputs: [
       "Sorry, we are late this morning for drop-off.",
       "Sorry we're late — the bus was delayed.",
@@ -392,6 +556,11 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Asking where to go now",
         note: "After signing in, ask 'Where should she go now?' Classes may have started, so a quick check sends your child to the right room.",
       },
+      {
+        id: "sp-late-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Xin lỗi, hôm nay chúng tôi đến muộn một chút ạ.' ↔ EN: 'Sorry, we're a little late this morning.' One sentence covers both the sorry and the fact — no long explanation needed.",
+      },
     ],
     followUps: [
       { id: "sp-late-apolog", question: "How would you give a short, warm sorry?", salienceQuestion: "How would you say sorry about the {slot}?" },
@@ -407,6 +576,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Picking Up Your Child Early",
     labelVi: "Đón con về sớm",
     category: "school-parent",
+    scenarioDescription:
+      "The learner needs to take their child out of school before the end of the day — usually for a medical appointment, a family matter, or another commitment. They check out their child at the office and make sure the process is smooth.",
+    aiRoleDefinition:
+      "Act as a school office administrator handling early pickups. You confirm the child's name, log the checkout, and let the parent know how long the child needs to be called from class.",
+    conversationDirections: [
+      "Ask for the child's name and grade.",
+      "Ask for a short reason — 'A quick reason helps us log it correctly.'",
+      "Let the parent give the expected pickup time.",
+      "Explain the check-out step: sign the register and wait for the child.",
+      "Let the learner practise giving advance notice — calling ahead to let the school know.",
+      "Close smoothly so the parent can head to the waiting area.",
+    ],
+    warmthPatterns: [
+      "Make early pickup feel managed, not disruptive.",
+      "If the parent looks rushed, move efficiently: 'Name and class first, then I'll call her.'",
+      "A light 'I hope the appointment goes well' adds warmth without prying.",
+    ],
     seedInputs: [
       "I need to pick up my son early for a doctor's appointment.",
       "I need to take my daughter out at two for an appointment.",
@@ -451,6 +637,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Asking What Your Child Needs To Bring",
     labelVi: "Hỏi con cần mang gì đến trường",
     category: "school-parent",
+    scenarioDescription:
+      "The learner wants to make sure their child has the right items for class, a special event, or the new school year. They ask the teacher or office for a list so nothing is forgotten and no money is wasted.",
+    aiRoleDefinition:
+      "Act as a helpful class teacher or office assistant who explains what students need to bring. You give a short, practical list, point to where items can be bought if needed, and thank the parent for checking ahead.",
+    conversationDirections: [
+      "Ask which class or event the parent is asking about.",
+      "Provide a short, clear list — three or four key items.",
+      "Let the learner practise asking about a special event day.",
+      "Suggest where the items can be found if the parent is unsure.",
+      "Let the parent ask whether items should be labelled with the child's name.",
+      "Close by thanking the parent for being organised.",
+    ],
+    warmthPatterns: [
+      "Treat 'asking ahead' as smart parenting, not fussing.",
+      "Keep the list short — overwhelm doesn't help anyone.",
+      "Add a friendly note if an item is optional: 'A pencil case is nice but not required.'",
+    ],
     seedInputs: [
       "What does my daughter need to bring for class tomorrow?",
       "Does my son need to bring anything special tomorrow?",
@@ -495,6 +698,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Finding The Best Way To Reach The Teacher",
     labelVi: "Hỏi cách liên lạc với giáo viên",
     category: "school-parent",
+    scenarioDescription:
+      "The learner wants to know the best channel to contact their child's teacher with a question or update — whether that's email, a school app, a note in the bag, or a quick word before class. They also want to know the expected response time.",
+    aiRoleDefinition:
+      "Act as a primary school teacher explaining your preferred communication channel. You describe the options clearly, set realistic expectations about reply time, and encourage the parent to reach out whenever they need to.",
+    conversationDirections: [
+      "Explain the two or three channels available — email, app, or a note.",
+      "Let the learner ask which is best for a quick question versus an urgent matter.",
+      "Give a realistic reply-time expectation: 'I usually reply within one school day.'",
+      "Encourage the parent to use their preferred method — not every parent is comfortable with apps.",
+      "Let the learner practise confirming they understood the channel correctly.",
+      "Close warmly and invite the parent to get in touch whenever they need to.",
+    ],
+    warmthPatterns: [
+      "Make every channel feel acceptable — there's no wrong choice.",
+      "If the parent seems unfamiliar with the app, offer to walk them through it briefly.",
+      "End with an open door: 'Please don't hesitate — I always want to hear from you.'",
+    ],
     seedInputs: [
       "What is the best way to contact you if I have a question?",
       "What's the best way to reach you during the week?",
@@ -534,4 +754,6 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
       { id: "sp-contact-language", question: "How would you ask if you can write in simple English?", salienceQuestion: "How would you keep the {slot} easy for you?" },
     ],
   },
-] as const;
+] as const satisfies readonly D4SpeakTopic[];
+
+export const speakTopics = schoolParentSpeakTopics;
