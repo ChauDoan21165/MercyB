@@ -123,6 +123,33 @@ describe("Cloudflare Pages API function shape", () => {
     expect(mercyAi).not.toContain("process.env");
   });
 
+  it("resolves a mercy-tts CACHE-HIT https Storage audioUrl into streamed audio (not a 'no audio' 503)", async () => {
+    // mercy-tts returns a public Storage URL (https) on cache hits, not a data URL.
+    // The proxy must fetch + stream it, otherwise every cache hit became 'no playable audio'.
+    const CACHE_URL = "https://proj.supabase.co/storage/v1/object/public/room-audio/tts-cache/abc.mp3";
+    const fetchMock = vi.fn(async (url: unknown) => {
+      const u = String(url);
+      if (u.includes("/functions/v1/mercy-tts")) {
+        return Response.json({ audioUrl: CACHE_URL, provider: "azure", cached: true });
+      }
+      // the Storage URL fetch
+      return new Response(new Uint8Array([0x49, 0x44, 0x33, 0x04]), {
+        status: 200,
+        headers: { "Content-Type": "audio/mpeg" },
+      });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await ttsOnRequestPost(ttsContext({ text: "Xin chao", language: "vi" }));
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("Content-Type")).toContain("audio/mpeg");
+    expect(response.headers.get("X-TTS-Provider")).toBe("azure");
+    // second fetch went to the Storage URL
+    expect(fetchMock.mock.calls.some(([u]) => String(u) === CACHE_URL)).toBe(true);
+    expect((await response.arrayBuffer()).byteLength).toBe(4);
+  });
+
   it("routes Vietnamese Pages TTS to Azure vi-VN and rejects non-Azure Vietnamese audio", async () => {
     const fetchMock = vi.fn(async () =>
       Response.json({

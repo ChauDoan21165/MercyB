@@ -52,6 +52,26 @@ function parseAudioDataUrl(value: unknown): { bytes: Buffer; mime: string } | nu
   return { mime: match[1], bytes: Buffer.from(match[2], "base64") };
 }
 
+// mercy-tts returns audio as a data:audio;base64 URL (fresh synth) OR a public
+// Storage URL (https://.../room-audio/tts-cache/...mp3) for a CACHE HIT. Resolve
+// BOTH to bytes — a data-URL-only reader rejects every cache hit as "no audio".
+async function resolveAudioBytes(value: unknown): Promise<{ bytes: Buffer; mime: string } | null> {
+  if (typeof value !== "string" || !value) return null;
+  if (/^https?:\/\//i.test(value)) {
+    try {
+      const res = await fetch(value);
+      if (!res.ok) return null;
+      const bytes = Buffer.from(await res.arrayBuffer());
+      if (bytes.length === 0) return null;
+      return { bytes, mime: res.headers.get("content-type") || "audio/mpeg" };
+    } catch {
+      return null;
+    }
+  }
+  const decoded = parseAudioDataUrl(value);
+  return decoded && decoded.bytes.length > 0 ? decoded : null;
+}
+
 // One classified call to mercy-tts. The Azure leg flaps (cold isolate /
 // transient ElevenLabs fallback / brief 5xx), so a single shot surfaces those
 // as a hard failure. "retryable" = worth one more attempt at warm Azure;
@@ -119,8 +139,8 @@ async function callMercyTtsOnce(args: {
     };
   }
 
-  const decoded = parseAudioDataUrl(payload.audioUrl);
-  if (!decoded || decoded.bytes.length === 0) {
+  const decoded = await resolveAudioBytes(payload.audioUrl);
+  if (!decoded) {
     return {
       kind: "retryable",
       error: payload.error || "mercy-tts returned no playable audio",
