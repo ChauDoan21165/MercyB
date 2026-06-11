@@ -7,192 +7,1199 @@
   "author": "A4 (D4 wave5)",
   "status": "review_queue_not_wired",
   "schemaSource": "src/lib/tutor/vietlishCorpus.ts -> VietlishCorpusEntry { vietlish, natural, sourcePattern, category, frequency, context }",
-  "categoryEnum": ["calque","word_order","register","collocation","false_friend","literal_translation"],
-  "frequencyEnum": ["high","medium","low"],
+  "categoryEnum": [
+    "calque",
+    "word_order",
+    "register",
+    "collocation",
+    "false_friend",
+    "literal_translation"
+  ],
+  "frequencyEnum": [
+    "high",
+    "medium",
+    "low"
+  ],
   "definition": "Wave 5 of NEW Vietnamese L1-interference candidates matching the live VIETLISH_CORPUS entry schema EXACTLY. Staged for human review BEFORE any promotion into src/lib/tutor/vietlishCorpus.ts. Imported by no engine module. Verified disjoint from the live corpus AND from all prior D4 waves (1,2,3,4) by step11VietlishCorpusD4Wave5.test.ts.",
   "disjointFrom": "live VIETLISH_CORPUS; A4 wave1 !695; A10 wave2 !693; A4 wave3 !714; A10 wave4 !710; A6 !690 (selector test, no corpus rows).",
   "generatedAt": "2026-06-10",
-  "count": 180,
+  "count": 147,
   "entries": [
-    {"vietlish":"I cannot find out my mistake","natural":"I can't figure out my mistake","sourcePattern":"khong tim ra loi -> find out for figure out","category":"false_friend","frequency":"medium","context":"I read it three times but I cannot find out my mistake."},
-    {"vietlish":"he gave up to smoke last year","natural":"he gave up smoking last year","sourcePattern":"bo thuoc -> to-infinitive instead of gerund after give up","category":"literal_translation","frequency":"medium","context":"For his health, he gave up to smoke last year."},
-    {"vietlish":"I will think about it and tell you back","natural":"I'll think about it and let you know","sourcePattern":"tra loi lai -> tell back for let know","category":"false_friend","frequency":"medium","context":"It is a big decision, I will think about it and tell you back."},
-    {"vietlish":"he ran out of money in the middle of trip","natural":"he ran out of money in the middle of the trip","sourcePattern":"giua chuyen di -> article dropped before trip","category":"literal_translation","frequency":"medium","context":"He had to call home, he ran out of money in the middle of trip."},
-    {"vietlish":"she broke up with her boyfriend, very sad","natural":"she broke up with her boyfriend, she's very sad","sourcePattern":"buon lam -> dropped subject and be before sad","category":"literal_translation","frequency":"medium","context":"Last week she broke up with her boyfriend, very sad these days."},
-    {"vietlish":"remind me your name again","natural":"remind me of your name again","sourcePattern":"nhac lai ten -> of dropped after remind","category":"false_friend","frequency":"medium","context":"Sorry, we met once, remind me your name again."},
-    {"vietlish":"I hope you to come to my party","natural":"I hope you'll come to my party","sourcePattern":"mong ban den -> hope + object + to-infinitive","category":"literal_translation","frequency":"medium","context":"It is on Saturday, I hope you to come to my party."},
-    {"vietlish":"I wish I can fly","natural":"I wish I could fly","sourcePattern":"uoc gi co the bay -> present can for the unreal wish","category":"literal_translation","frequency":"medium","context":"When I see birds, I wish I can fly like them."},
-    {"vietlish":"I learn at the university of Hue","natural":"I study at the University of Hue","sourcePattern":"hoc o dai hoc -> learn used for study at an institution","category":"false_friend","frequency":"medium","context":"After high school, I learn at the university of Hue."},
-    {"vietlish":"I heard the radio while driving","natural":"I listened to the radio while driving","sourcePattern":"nghe radio -> hear for the deliberate listen","category":"false_friend","frequency":"medium","context":"On the way home I heard the radio while driving."},
-    {"vietlish":"our team won the other team 3-0","natural":"our team beat the other team 3-0","sourcePattern":"thang doi kia -> win mapped to beat with an opponent object","category":"false_friend","frequency":"medium","context":"It was a great match, our team won the other team 3-0."},
-    {"vietlish":"someone robbed my phone on the bus","natural":"someone stole my phone on the bus","sourcePattern":"cuop/trom dien thoai -> rob used for steal an object","category":"false_friend","frequency":"medium","context":"Be careful, someone robbed my phone on the bus yesterday."},
-    {"vietlish":"I will remember you to bring the book","natural":"I'll remind you to bring the book","sourcePattern":"nhac ban -> remember used for remind","category":"false_friend","frequency":"medium","context":"Don't worry, I will remember you to bring the book tomorrow."},
-    {"vietlish":"can you talk me the way to the market","natural":"can you tell me the way to the market","sourcePattern":"chi duong -> talk used for tell","category":"false_friend","frequency":"medium","context":"I am new here, can you talk me the way to the market?"},
-    {"vietlish":"I am looking the menu now","natural":"I am looking at the menu now","sourcePattern":"dang xem thuc don -> look without at","category":"false_friend","frequency":"medium","context":"Give me a minute, I am looking the menu now."},
-    {"vietlish":"every students must wear uniform","natural":"every student must wear a uniform","sourcePattern":"moi hoc sinh -> every + plural plus dropped article","category":"literal_translation","frequency":"medium","context":"At my school every students must wear uniform on Monday."},
-    {"vietlish":"each of the room has a window","natural":"each of the rooms has a window","sourcePattern":"moi phong -> noun after each of without plural","category":"literal_translation","frequency":"low","context":"The house is bright, each of the room has a window."},
-    {"vietlish":"there isn't no parking here","natural":"there isn't any parking here","sourcePattern":"khong co cho dau xe -> double negative from khong","category":"literal_translation","frequency":"medium","context":"Move your bike, there isn't no parking here."},
-    {"vietlish":"all of student passed the exam","natural":"all of the students passed the exam","sourcePattern":"tat ca hoc sinh -> the dropped plus student no plural","category":"literal_translation","frequency":"medium","context":"The teacher is happy, all of student passed the exam."},
-    {"vietlish":"I have a few money left","natural":"I have a little money left","sourcePattern":"con it tien -> few used with uncountable money","category":"literal_translation","frequency":"medium","context":"After shopping I have a few money left for the bus."},
-    {"vietlish":"she drinks too much cups of coffee","natural":"she drinks too many cups of coffee","sourcePattern":"qua nhieu ly -> much with a countable cup","category":"literal_translation","frequency":"medium","context":"She cannot sleep, she drinks too much cups of coffee."},
-    {"vietlish":"most of people like music","natural":"most people like music","sourcePattern":"hau het moi nguoi -> of inserted before people","category":"literal_translation","frequency":"medium","context":"I think most of people like music of some kind."},
-    {"vietlish":"he ate the whole of cake","natural":"he ate the whole cake","sourcePattern":"ca cai banh -> of inserted after whole","category":"literal_translation","frequency":"low","context":"He was so hungry, he ate the whole of cake alone."},
-    {"vietlish":"I will go home at this weekend","natural":"I'll go home this weekend","sourcePattern":"vao cuoi tuan nay -> at inserted before this weekend","category":"literal_translation","frequency":"medium","context":"I miss my parents, I will go home at this weekend."},
-    {"vietlish":"on the last night I slept badly","natural":"last night I slept badly","sourcePattern":"vao dem qua -> on the inserted before last night","category":"literal_translation","frequency":"low","context":"On the last night I slept badly because of the heat."},
-    {"vietlish":"see you at next time","natural":"see you next time","sourcePattern":"hen lan sau -> at inserted before next time","category":"literal_translation","frequency":"medium","context":"I have to go now, see you at next time."},
-    {"vietlish":"she comes here every of Sunday","natural":"she comes here every Sunday","sourcePattern":"moi chu nhat -> of inserted after every","category":"literal_translation","frequency":"low","context":"To visit grandma, she comes here every of Sunday."},
-    {"vietlish":"we will arrive there after two hours","natural":"we'll arrive there in two hours","sourcePattern":"sau hai tieng -> after for in with future duration","category":"literal_translation","frequency":"medium","context":"Be patient, we will arrive there after two hours."},
-    {"vietlish":"I have not seen him from last year","natural":"I haven't seen him since last year","sourcePattern":"tu nam ngoai -> from for since","category":"literal_translation","frequency":"medium","context":"He moved away, I have not seen him from last year."},
-    {"vietlish":"he was born on 2000","natural":"he was born in 2000","sourcePattern":"sinh nam 2000 -> on for in with a year","category":"literal_translation","frequency":"medium","context":"My cousin he was born on 2000, the year of the dragon."},
-    {"vietlish":"the shop opens since 6am","natural":"the shop opens at 6am","sourcePattern":"mo cua tu 6 gio -> since for at with opening time","category":"literal_translation","frequency":"medium","context":"Come early, the shop opens since 6am."},
-    {"vietlish":"she has a golden heart","natural":"she has a heart of gold","sourcePattern":"trai tim vang -> adjective-noun order from Vietnamese idiom","category":"calque","frequency":"low","context":"Everyone loves her, she has a golden heart."},
-    {"vietlish":"money flies away very fast","natural":"money disappears very fast","sourcePattern":"tien bay rat nhanh -> fly away calque for disappear","category":"calque","frequency":"low","context":"In the city money flies away very fast, I cannot save."},
-    {"vietlish":"I am burning to know the result","natural":"I'm dying to know the result","sourcePattern":"nong long -> burning calque for dying to","category":"calque","frequency":"low","context":"The exam is over, I am burning to know the result."},
-    {"vietlish":"my motorbike died in the middle of the road","natural":"my motorbike broke down in the middle of the road","sourcePattern":"chet may -> die calque for break down","category":"false_friend","frequency":"medium","context":"I was late because my motorbike died in the middle of the road."},
-    {"vietlish":"the price is on the sky","natural":"the price is sky-high","sourcePattern":"gia tren troi -> on the sky calque for sky-high","category":"calque","frequency":"low","context":"I cannot buy a house now, the price is on the sky."},
-    {"vietlish":"I want to fix my motorbike, it makes strange noise","natural":"I want to fix my motorbike, it's making a strange noise","sourcePattern":"keu la -> dropped -ing and article","category":"literal_translation","frequency":"medium","context":"Can you check it, I want to fix my motorbike, it makes strange noise."},
-    {"vietlish":"the mechanic changed the oil and the brake","natural":"the mechanic changed the oil and the brakes","sourcePattern":"thay phanh -> brake without plural","category":"literal_translation","frequency":"low","context":"It runs well now, the mechanic changed the oil and the brake."},
-    {"vietlish":"I go to the internet shop to print","natural":"I go to the internet cafe to print","sourcePattern":"tiem net -> shop for cafe","category":"false_friend","frequency":"low","context":"My printer is broken, I go to the internet shop to print."},
-    {"vietlish":"the market is very crowd in the morning","natural":"the market is very crowded in the morning","sourcePattern":"dong duc -> crowd noun used as adjective without -ed","category":"false_friend","frequency":"medium","context":"Go early, the market is very crowd in the morning."},
-    {"vietlish":"she weighs the vegetable on the scale","natural":"she weighs the vegetables on the scale","sourcePattern":"can rau -> vegetable without plural","category":"literal_translation","frequency":"low","context":"At the stall she weighs the vegetable on the scale for me."},
-    {"vietlish":"my back is paining since I lifted the box","natural":"my back has been hurting since I lifted the box","sourcePattern":"dau lung -> pain as a progressive verb, no present perfect","category":"false_friend","frequency":"medium","context":"I cannot bend down, my back is paining since I lifted the box."},
-    {"vietlish":"the doctor measured my height and my weigh","natural":"the doctor measured my height and my weight","sourcePattern":"can nang -> verb weigh used for the noun weight","category":"false_friend","frequency":"low","context":"At the check-up the doctor measured my height and my weigh."},
-    {"vietlish":"I have a wound in my knee","natural":"I have a wound on my knee","sourcePattern":"vet thuong o dau goi -> in for on with a body surface","category":"literal_translation","frequency":"medium","context":"I fell off my bike, I have a wound in my knee."},
-    {"vietlish":"she has a high temperature body","natural":"she has a high temperature","sourcePattern":"nhiet do co the cao -> redundant body after temperature","category":"literal_translation","frequency":"low","context":"The child is sick, she has a high temperature body since noon."},
-    {"vietlish":"the nurse takes my blood for test","natural":"the nurse takes my blood for a test","sourcePattern":"lay mau xet nghiem -> article dropped before test","category":"literal_translation","frequency":"medium","context":"Don't eat breakfast, the nurse takes my blood for test in the morning."},
-    {"vietlish":"my eyes are tired from look at the screen","natural":"my eyes are tired from looking at the screen","sourcePattern":"nhin man hinh -> base verb after from instead of gerund","category":"literal_translation","frequency":"medium","context":"After eight hours, my eyes are tired from look at the screen."},
-    {"vietlish":"the teacher gave back the test, I got 7 mark","natural":"the teacher gave back the test, I got 7 marks","sourcePattern":"duoc 7 diem -> mark without plural","category":"literal_translation","frequency":"medium","context":"Today the teacher gave back the test, I got 7 mark."},
-    {"vietlish":"I study by heart all the vocabulary","natural":"I learn all the vocabulary by heart","sourcePattern":"hoc thuoc long -> by heart phrase placed before the object","category":"word_order","frequency":"medium","context":"Before the test I study by heart all the vocabulary."},
-    {"vietlish":"he copied my answer in the exam","natural":"he copied my answers in the exam","sourcePattern":"chep bai -> answer without plural","category":"literal_translation","frequency":"medium","context":"The teacher caught him, he copied my answer in the exam."},
-    {"vietlish":"I raise my hand to answer but teacher not see","natural":"I raised my hand to answer but the teacher didn't see me","sourcePattern":"khong thay -> no past, dropped article and object","category":"literal_translation","frequency":"medium","context":"In class I raise my hand to answer but teacher not see me."},
-    {"vietlish":"I review the lesson before sleep","natural":"I review the lesson before going to sleep","sourcePattern":"truoc khi ngu -> before + base noun instead of gerund phrase","category":"literal_translation","frequency":"medium","context":"Every night I review the lesson before sleep."},
-    {"vietlish":"I failed one subject, must learn again","natural":"I failed one subject, I have to retake it","sourcePattern":"hoc lai -> learn again for retake","category":"false_friend","frequency":"medium","context":"Bad news, I failed one subject, must learn again next term."},
-    {"vietlish":"she is jealous because I talk with other girl","natural":"she is jealous because I talked with another girl","sourcePattern":"co gai khac -> other for another plus no past","category":"literal_translation","frequency":"medium","context":"We argued, she is jealous because I talk with other girl."},
-    {"vietlish":"he is angry and not talk to me three day","natural":"he is angry and hasn't talked to me for three days","sourcePattern":"ba ngay -> for dropped plus day without plural","category":"literal_translation","frequency":"medium","context":"I forgot his birthday, he is angry and not talk to me three day."},
-    {"vietlish":"I miss my mother cooking so much","natural":"I miss my mother's cooking so much","sourcePattern":"do an me nau -> possessive 's omitted","category":"literal_translation","frequency":"medium","context":"Living abroad, I miss my mother cooking so much."},
-    {"vietlish":"she has a crush to the new boy","natural":"she has a crush on the new boy","sourcePattern":"thich ban trai moi -> to for on after crush","category":"literal_translation","frequency":"medium","context":"Everyone can tell, she has a crush to the new boy."},
-    {"vietlish":"do you have boyfriend already","natural":"do you have a boyfriend yet","sourcePattern":"co ban trai chua -> article dropped plus already for yet","category":"literal_translation","frequency":"medium","context":"You are pretty, do you have boyfriend already?"},
-    {"vietlish":"they are couple for two years","natural":"they have been a couple for two years","sourcePattern":"yeu nhau hai nam -> present plus dropped article","category":"literal_translation","frequency":"medium","context":"They look happy, they are couple for two years now."},
-    {"vietlish":"he proposed her last week","natural":"he proposed to her last week","sourcePattern":"cau hon co ay -> to dropped after propose","category":"literal_translation","frequency":"low","context":"Good news, he proposed her last week and she said yes."},
-    {"vietlish":"it is raining big outside","natural":"it's raining hard outside","sourcePattern":"mua to -> big for hard with rain","category":"false_friend","frequency":"medium","context":"Take a raincoat, it is raining big outside."},
-    {"vietlish":"the wind blows strong, close the window","natural":"the wind is blowing hard, close the window","sourcePattern":"gio thoi manh -> no -ing plus strong for hard","category":"literal_translation","frequency":"medium","context":"A storm is coming, the wind blows strong, close the window."},
-    {"vietlish":"it is very cold, my hand is frozen","natural":"it's very cold, my hands are frozen","sourcePattern":"tay lanh cong -> hand without plural and no agreement","category":"literal_translation","frequency":"medium","context":"In the north it is very cold, my hand is frozen."},
-    {"vietlish":"the flood came and took many house","natural":"the flood came and washed away many houses","sourcePattern":"cuon troi nhieu nha -> take for wash away plus no plural","category":"literal_translation","frequency":"low","context":"Last year the flood came and took many house in the village."},
-    {"vietlish":"the river rises after the big rain","natural":"the river rose after the heavy rain","sourcePattern":"mua to -> big for heavy plus no past","category":"false_friend","frequency":"low","context":"Be careful near the bank, the river rises after the big rain."},
-    {"vietlish":"the sky is dark, maybe rain soon","natural":"the sky is dark, it might rain soon","sourcePattern":"co le sap mua -> dropped dummy subject and modal","category":"literal_translation","frequency":"medium","context":"Bring the clothes in, the sky is dark, maybe rain soon."},
-    {"vietlish":"I pay deposit first, the rest later","natural":"I'll pay a deposit first and the rest later","sourcePattern":"dat coc truoc -> article dropped plus no future marker","category":"literal_translation","frequency":"medium","context":"For the furniture, I pay deposit first, the rest later."},
-    {"vietlish":"the seller cheated me money","natural":"the seller cheated me out of money","sourcePattern":"lua tien -> out of dropped after cheat","category":"calque","frequency":"low","context":"The fruit was rotten inside, the seller cheated me money."},
-    {"vietlish":"this is real or fake, I cannot tell","natural":"is this real or fake, I can't tell","sourcePattern":"that hay gia -> statement word order in a question","category":"word_order","frequency":"medium","context":"The bag is cheap, this is real or fake, I cannot tell."},
-    {"vietlish":"the ATM ate my card, no money come out","natural":"the ATM ate my card and no money came out","sourcePattern":"khong ra tien -> dropped connector plus no past","category":"literal_translation","frequency":"medium","context":"I am stuck, the ATM ate my card, no money come out."},
-    {"vietlish":"I want to send money to my family in province","natural":"I want to send money to my family in the province","sourcePattern":"duoi que / tinh -> article dropped before province","category":"literal_translation","frequency":"medium","context":"Every month I want to send money to my family in province."},
-    {"vietlish":"the shop gives one year guarantee","natural":"the shop gives a one-year guarantee","sourcePattern":"bao hanh mot nam -> article dropped before one-year","category":"literal_translation","frequency":"low","context":"Buy here, the shop gives one year guarantee for the phone."},
-    {"vietlish":"the bill is more than I think","natural":"the bill is more than I thought","sourcePattern":"nhieu hon toi nghi -> present think for past in the comparison","category":"literal_translation","frequency":"medium","context":"At the restaurant the bill is more than I think."},
-    {"vietlish":"the road is one way, cannot turn here","natural":"the road is one way, you can't turn here","sourcePattern":"duong mot chieu -> dropped subject after cannot","category":"literal_translation","frequency":"medium","context":"Driver, the road is one way, cannot turn here."},
-    {"vietlish":"we sat on the front seat of the bus","natural":"we sat in the front seat of the bus","sourcePattern":"ngoi ghe truoc -> on for in with a seat","category":"literal_translation","frequency":"low","context":"To see better, we sat on the front seat of the bus."},
-    {"vietlish":"the airplane took off late one hour","natural":"the plane took off an hour late","sourcePattern":"cat canh tre mot tieng -> measure phrase placed after late","category":"word_order","frequency":"medium","context":"Because of the rain, the airplane took off late one hour."},
-    {"vietlish":"I get motion sick on the boat","natural":"I get seasick on the boat","sourcePattern":"say song -> motion sick for seasick","category":"false_friend","frequency":"low","context":"I cannot go on the cruise, I get motion sick on the boat."},
-    {"vietlish":"please fasten your belt before the car run","natural":"please fasten your belt before the car moves","sourcePattern":"truoc khi xe chay -> run for move with a vehicle","category":"false_friend","frequency":"medium","context":"Sit down, please fasten your belt before the car run."},
-    {"vietlish":"the hotel is full, no room empty","natural":"the hotel is full, there are no empty rooms","sourcePattern":"het phong trong -> existential dropped plus adjective after noun","category":"literal_translation","frequency":"medium","context":"We have to find another place, the hotel is full, no room empty."},
-    {"vietlish":"we walked many kilometer in the old town","natural":"we walked many kilometers in the old town","sourcePattern":"nhieu cay so -> kilometer without plural","category":"literal_translation","frequency":"low","context":"My feet hurt, we walked many kilometer in the old town."},
-    {"vietlish":"the pho here is very famous, many tourist come","natural":"the pho here is very famous, a lot of tourists come","sourcePattern":"nhieu khach du lich -> tourist without plural","category":"literal_translation","frequency":"medium","context":"Try it, the pho here is very famous, many tourist come."},
-    {"vietlish":"can I have the menu with picture","natural":"can I have the menu with pictures","sourcePattern":"thuc don co hinh -> picture without plural","category":"literal_translation","frequency":"low","context":"I cannot read the names, can I have the menu with picture?"},
-    {"vietlish":"the food is cold already, please heat again","natural":"the food is cold already, please heat it up again","sourcePattern":"ham lai -> dropped object and particle after heat","category":"literal_translation","frequency":"medium","context":"Sorry, the food is cold already, please heat again for me."},
-    {"vietlish":"two beer and one juice please","natural":"two beers and one juice please","sourcePattern":"hai bia -> beer without plural unit","category":"literal_translation","frequency":"medium","context":"For the table, two beer and one juice please."},
-    {"vietlish":"this dish is the speciality of here","natural":"this dish is the specialty here","sourcePattern":"dac san o day -> of here calque for here","category":"literal_translation","frequency":"low","context":"You should try, this dish is the speciality of here."},
-    {"vietlish":"my house has three floor","natural":"my house has three floors","sourcePattern":"ba tang -> floor without plural after a number","category":"literal_translation","frequency":"medium","context":"We have enough space, my house has three floor."},
-    {"vietlish":"my grandmother tells story very good","natural":"my grandmother tells stories very well","sourcePattern":"ke chuyen hay -> story no plural plus good for well","category":"literal_translation","frequency":"medium","context":"When I was a child, my grandmother tells story very good."},
-    {"vietlish":"we hang the clothes outside to dry","natural":"we hang the clothes out to dry","sourcePattern":"phoi quan ao -> outside for the particle out","category":"literal_translation","frequency":"low","context":"When the sun is strong, we hang the clothes outside to dry."},
-    {"vietlish":"the neighbor's dog barks all the night","natural":"the neighbor's dog barks all night","sourcePattern":"ca dem -> the inserted before night","category":"literal_translation","frequency":"medium","context":"I cannot sleep, the neighbor's dog barks all the night."},
-    {"vietlish":"I sweep the floor and my sister wash dishes","natural":"I sweep the floor and my sister washes the dishes","sourcePattern":"rua chen -> no third-person -s plus dropped article","category":"literal_translation","frequency":"medium","context":"After dinner I sweep the floor and my sister wash dishes."},
-    {"vietlish":"the rent is up again this year","natural":"the rent has gone up again this year","sourcePattern":"tien thue len -> up calque without present perfect","category":"literal_translation","frequency":"medium","context":"Life is hard, the rent is up again this year."},
-    {"vietlish":"my phone screen is crack, hard to read","natural":"my phone screen is cracked, it's hard to read","sourcePattern":"bi nut -> crack without -ed plus dropped subject","category":"false_friend","frequency":"medium","context":"I dropped it, my phone screen is crack, hard to read now."},
-    {"vietlish":"I downloaded the app but it not open","natural":"I downloaded the app but it won't open","sourcePattern":"no khong mo -> not open for won't open","category":"literal_translation","frequency":"medium","context":"Something is wrong, I downloaded the app but it not open."},
-    {"vietlish":"she takes very many selfie every day","natural":"she takes a lot of selfies every day","sourcePattern":"chup nhieu hinh tu suong -> very many plus selfie no plural","category":"literal_translation","frequency":"low","context":"For her page, she takes very many selfie every day."},
-    {"vietlish":"the video is buffering, the net is lag","natural":"the video is buffering, the connection is lagging","sourcePattern":"mang lag -> net plus lag as an adjective","category":"false_friend","frequency":"medium","context":"I cannot watch, the video is buffering, the net is lag."},
-    {"vietlish":"please share me your location","natural":"please share your location with me","sourcePattern":"gui vi tri cho toi -> dropped with plus reordered object","category":"literal_translation","frequency":"medium","context":"I am lost, please share me your location."},
-    {"vietlish":"I charge my phone whole night","natural":"I charge my phone all night","sourcePattern":"sac ca dem -> whole for all with night","category":"literal_translation","frequency":"medium","context":"The battery is old, I charge my phone whole night."},
-    {"vietlish":"the link is dead, cannot open","natural":"the link is broken, I can't open it","sourcePattern":"link chet -> dead for broken plus dropped subject","category":"false_friend","frequency":"medium","context":"Send again, the link is dead, cannot open."},
-    {"vietlish":"he plays game online with foreign people","natural":"he plays games online with foreigners","sourcePattern":"choi game voi nguoi nuoc ngoai -> game no plural plus foreign people for foreigners","category":"literal_translation","frequency":"medium","context":"Every night he plays game online with foreign people."},
-    {"vietlish":"my email is full, cannot receive more","natural":"my inbox is full, I can't receive any more","sourcePattern":"hop thu day -> email for inbox plus dropped subject","category":"false_friend","frequency":"low","context":"Resend tomorrow, my email is full, cannot receive more."},
-    {"vietlish":"she works hard so that her children have good life","natural":"she works hard so that her children have a good life","sourcePattern":"co cuoc song tot -> article dropped before good life","category":"literal_translation","frequency":"medium","context":"Like every mother, she works hard so that her children have good life."},
-    {"vietlish":"the more cheap, the more I worry about quality","natural":"the cheaper it is, the more I worry about quality","sourcePattern":"cang re cang lo -> the more cheap instead of the cheaper","category":"literal_translation","frequency":"medium","context":"I don't trust very low prices, the more cheap, the more I worry about quality."},
-    {"vietlish":"I would rather to stay home tonight","natural":"I would rather stay home tonight","sourcePattern":"thich o nha hon -> to-infinitive after would rather","category":"literal_translation","frequency":"medium","context":"I am tired, I would rather to stay home tonight."},
-    {"vietlish":"it is no use to cry now","natural":"it's no use crying now","sourcePattern":"khoc cung vo ich -> to-infinitive instead of gerund after no use","category":"literal_translation","frequency":"low","context":"What is done is done, it is no use to cry now."},
-    {"vietlish":"I look forward for your reply","natural":"I look forward to your reply","sourcePattern":"mong phan hoi -> for instead of to after look forward","category":"literal_translation","frequency":"medium","context":"Thank you for reading, I look forward for your reply."},
-    {"vietlish":"she is used to wake up early","natural":"she is used to waking up early","sourcePattern":"quen day som -> base verb after used to instead of gerund","category":"literal_translation","frequency":"medium","context":"As a farmer, she is used to wake up early."},
-    {"vietlish":"he denied to take the money","natural":"he denied taking the money","sourcePattern":"phu nhan da lay -> to-infinitive instead of gerund after deny","category":"literal_translation","frequency":"low","context":"When the boss asked, he denied to take the money."},
-    {"vietlish":"the medicine has no effect to me","natural":"the medicine has no effect on me","sourcePattern":"khong co tac dung voi toi -> to for on after effect","category":"literal_translation","frequency":"medium","context":"I still have pain, the medicine has no effect to me."},
-    {"vietlish":"I am confident on my English now","natural":"I'm confident in my English now","sourcePattern":"tu tin vao -> on for in after confident","category":"literal_translation","frequency":"medium","context":"After the course I am confident on my English now."},
-    {"vietlish":"this word is difficult to pronounce for me","natural":"this word is difficult for me to pronounce","sourcePattern":"kho phat am voi toi -> for me placed after the verb","category":"word_order","frequency":"medium","context":"Please say it slowly, this word is difficult to pronounce for me."},
-    {"vietlish":"I am curious to know what happen","natural":"I'm curious to know what happened","sourcePattern":"muon biet chuyen gi -> present for past in the embedded clause","category":"literal_translation","frequency":"medium","context":"They were arguing, I am curious to know what happen."},
-    {"vietlish":"she is proud to be a Vietnamese","natural":"she is proud to be Vietnamese","sourcePattern":"tu hao la nguoi Viet -> article plus noun for the nationality adjective","category":"literal_translation","frequency":"low","context":"Wherever she goes, she is proud to be a Vietnamese."},
-    {"vietlish":"we are lack of doctors in the village","natural":"we lack doctors in the village","sourcePattern":"thieu bac si -> be lack of for the verb lack","category":"literal_translation","frequency":"low","context":"Many people are sick, we are lack of doctors in the village."},
-    {"vietlish":"I take this chance to say thank you","natural":"I'd like to take this chance to say thank you","sourcePattern":"nhan co hoi nay -> direct calque, acceptable but staged for register","category":"register","frequency":"low","context":"Before we finish, I take this chance to say thank you to everyone."},
-    {"vietlish":"eat slowly, nobody is chasing you","natural":"eat slowly, no one's chasing you","sourcePattern":"khong ai duoi -> idiom calque, acceptable but staged for review","category":"register","frequency":"low","context":"Don't rush, eat slowly, nobody is chasing you."},
-    {"vietlish":"you first, please","natural":"after you, please","sourcePattern":"moi anh truoc -> you first calque for after you","category":"register","frequency":"low","context":"At the door he said, you first, please."},
-    {"vietlish":"I queue up since 5am to buy ticket","natural":"I've been queuing since 5am to buy tickets","sourcePattern":"xep hang tu 5 gio -> present for present perfect plus ticket no plural","category":"literal_translation","frequency":"medium","context":"The concert is popular, I queue up since 5am to buy ticket."},
-    {"vietlish":"she dries her hair with the machine","natural":"she dries her hair with a hairdryer","sourcePattern":"may say toc -> machine for hairdryer plus the for a","category":"false_friend","frequency":"low","context":"After the shower she dries her hair with the machine."},
-    {"vietlish":"please wake me up at 6, I sleep deep","natural":"please wake me up at 6, I sleep deeply","sourcePattern":"ngu say -> adjective deep used as an adverb","category":"literal_translation","frequency":"medium","context":"I have an early flight, please wake me up at 6, I sleep deep."},
-    {"vietlish":"she feeds the baby and changes the diaper","natural":"she feeds the baby and changes the diapers","sourcePattern":"thay ta -> diaper without plural in a routine","category":"literal_translation","frequency":"low","context":"All day she feeds the baby and changes the diaper."},
-    {"vietlish":"I lock the gate and feed the dog before leave","natural":"I lock the gate and feed the dog before leaving","sourcePattern":"truoc khi di -> before + base verb instead of gerund","category":"literal_translation","frequency":"medium","context":"Every morning I lock the gate and feed the dog before leave."},
-    {"vietlish":"we plant vegetable in the back garden","natural":"we grow vegetables in the back garden","sourcePattern":"trong rau -> plant for grow plus vegetable no plural","category":"false_friend","frequency":"medium","context":"To save money, we plant vegetable in the back garden."},
-    {"vietlish":"honestly, from my heart, I am sorry","natural":"honestly, from the bottom of my heart, I'm sorry","sourcePattern":"that long -> from my heart calque","category":"register","frequency":"low","context":"I made a big mistake, honestly, from my heart, I am sorry."},
-    {"vietlish":"drink up, don't waste","natural":"finish your drink, don't waste it","sourcePattern":"uong het di dung phi -> drink up calque plus dropped object","category":"register","frequency":"low","context":"There is only a little left, drink up, don't waste."},
-    {"vietlish":"we will keep in our heart your kindness","natural":"we will always remember your kindness","sourcePattern":"ghi long tac da -> keep in heart calque plus reordered object","category":"calque","frequency":"low","context":"You helped us so much, we will keep in our heart your kindness."},
-    {"vietlish":"he is a stranger person, I don't know him","natural":"he's a stranger, I don't know him","sourcePattern":"nguoi la -> stranger used as an adjective before person","category":"false_friend","frequency":"low","context":"Don't open the door, he is a stranger person, I don't know him."},
-    {"vietlish":"I am studying to take the IELTS in the next month","natural":"I'm studying to take the IELTS next month","sourcePattern":"thang sau -> in the inserted before next month","category":"literal_translation","frequency":"medium","context":"I need a 6.5, I am studying to take the IELTS in the next month."},
-    {"vietlish":"the teacher is absent so we self study","natural":"the teacher is absent so we study on our own","sourcePattern":"tu hoc -> self study calque for study on our own","category":"calque","frequency":"low","context":"No substitute came, the teacher is absent so we self study."},
-    {"vietlish":"she speaks three language but write only one","natural":"she speaks three languages but writes only one","sourcePattern":"viet mot -> language no plural plus no third-person -s","category":"literal_translation","frequency":"medium","context":"She is talented, she speaks three language but write only one."},
-    {"vietlish":"please keep the change for tip","natural":"please keep the change as a tip","sourcePattern":"giu lai tien thua -> for instead of as plus dropped article","category":"literal_translation","frequency":"low","context":"The service was good, please keep the change for tip."},
-    {"vietlish":"I am afraid of high, cannot climb","natural":"I'm afraid of heights, I can't climb","sourcePattern":"so do cao -> high for heights plus dropped subject","category":"false_friend","frequency":"medium","context":"You go first, I am afraid of high, cannot climb the ladder."},
-    {"vietlish":"he is good in heart but bad in temper","natural":"he is good-hearted but bad-tempered","sourcePattern":"tot bung nhung nong tinh -> good in heart calque","category":"calque","frequency":"low","context":"People misunderstand him, he is good in heart but bad in temper."},
-    {"vietlish":"she gave me a lift to home","natural":"she gave me a lift home","sourcePattern":"cho ve nha -> to inserted before home","category":"literal_translation","frequency":"low","context":"It was raining, she gave me a lift to home after work."},
-    {"vietlish":"I am very tired but cannot fall asleep","natural":"I'm very tired but I can't fall asleep","sourcePattern":"khong ngu duoc -> dropped subject after but","category":"literal_translation","frequency":"medium","context":"After the long flight I am very tired but cannot fall asleep."},
-    {"vietlish":"he gets up at 5 and exercises a bit","natural":"he gets up at 5 and exercises a bit","sourcePattern":"tap mot chut -> direct calque, acceptable but staged for review","category":"register","frequency":"low","context":"Even on weekends he gets up at 5 and exercises a bit."},
-    {"vietlish":"I want to take a picture but my phone is full memory","natural":"I want to take a picture but my phone is out of memory","sourcePattern":"day bo nho -> full memory for out of memory","category":"false_friend","frequency":"medium","context":"Such a nice view, I want to take a picture but my phone is full memory."},
-    {"vietlish":"she always says good things behind my back","natural":"she always says good things about me when I'm not around","sourcePattern":"noi sau lung -> behind my back used with a positive meaning","category":"false_friend","frequency":"low","context":"She is loyal, she always says good things behind my back."},
-    {"vietlish":"the soup is hot, blow it before eat","natural":"the soup is hot, blow on it before eating","sourcePattern":"thoi cho nguoi -> blow without on plus base verb after before","category":"literal_translation","frequency":"low","context":"Careful with the child, the soup is hot, blow it before eat."},
-    {"vietlish":"he earns enough to live, not more","natural":"he earns enough to get by, no more","sourcePattern":"du song -> enough to live calque for get by","category":"calque","frequency":"low","context":"He is not rich, he earns enough to live, not more."},
-    {"vietlish":"she is on diet, eats only vegetable","natural":"she is on a diet and eats only vegetables","sourcePattern":"an kieng -> article dropped plus vegetable no plural","category":"literal_translation","frequency":"medium","context":"For the wedding she is on diet, eats only vegetable."},
-    {"vietlish":"I will introduce my hometown to you","natural":"I'll tell you about my hometown","sourcePattern":"gioi thieu que -> introduce calque for tell about","category":"calque","frequency":"low","context":"If you have time, I will introduce my hometown to you."},
-    {"vietlish":"the baby is teething, cries a lot at night","natural":"the baby is teething and cries a lot at night","sourcePattern":"moc rang -> dropped connector between clauses","category":"literal_translation","frequency":"low","context":"We are tired, the baby is teething, cries a lot at night."},
-    {"vietlish":"he speaks English with American accent","natural":"he speaks English with an American accent","sourcePattern":"giong My -> article dropped before American accent","category":"literal_translation","frequency":"medium","context":"After five years abroad, he speaks English with American accent."},
-    {"vietlish":"I save money to buy house in the future","natural":"I'm saving money to buy a house in the future","sourcePattern":"mua nha -> article dropped before house","category":"literal_translation","frequency":"medium","context":"Every month I save money to buy house in the future."},
-    {"vietlish":"she is afraid her parents know about it","natural":"she's afraid her parents will find out about it","sourcePattern":"so bo me biet -> know for find out","category":"false_friend","frequency":"medium","context":"She hides the result, she is afraid her parents know about it."},
-    {"vietlish":"the ticket is sold out, no more left","natural":"the tickets are sold out, there are none left","sourcePattern":"het ve -> ticket no plural plus existential dropped","category":"literal_translation","frequency":"medium","context":"We came too late, the ticket is sold out, no more left."},
-    {"vietlish":"I caught the bus just in time, lucky me","natural":"I caught the bus just in time, lucky me","sourcePattern":"may qua -> direct calque, acceptable but staged for register","category":"register","frequency":"low","context":"It was about to leave, I caught the bus just in time, lucky me."},
-    {"vietlish":"she has good hands, cooks and sews very well","natural":"she's very skillful, she cooks and sews very well","sourcePattern":"kheo tay -> good hands calque for skillful","category":"calque","frequency":"low","context":"Her family is lucky, she has good hands, cooks and sews very well."},
-    {"vietlish":"he talks big but does nothing","natural":"he talks big but does nothing","sourcePattern":"noi phet -> idiom calque, acceptable but staged for review","category":"register","frequency":"low","context":"Don't believe his promises, he talks big but does nothing."},
-    {"vietlish":"I want to open a bank account but no time to go","natural":"I want to open a bank account but I have no time to go","sourcePattern":"khong co thoi gian -> dropped subject and verb after but","category":"literal_translation","frequency":"medium","context":"Maybe next week, I want to open a bank account but no time to go."},
-    {"vietlish":"she is younger than me but more mature","natural":"she is younger than me but more mature","sourcePattern":"chin chan hon -> direct calque, acceptable but staged for review","category":"register","frequency":"low","context":"I admire her, she is younger than me but more mature."},
-    {"vietlish":"I get used with the new job slowly","natural":"I'm getting used to the new job slowly","sourcePattern":"quen voi -> with for to after get used","category":"literal_translation","frequency":"medium","context":"It was hard at first, but I get used with the new job slowly."},
-    {"vietlish":"the rice field is green, very beautiful in my eyes","natural":"the rice fields are green, very beautiful to my eyes","sourcePattern":"trong mat toi -> in my eyes calque plus field no plural","category":"calque","frequency":"low","context":"Coming home, the rice field is green, very beautiful in my eyes."},
-    {"vietlish":"he failed the test but he is not sad, strange","natural":"he failed the test but he isn't sad, which is strange","sourcePattern":"la that -> dropped relative plus comment word","category":"literal_translation","frequency":"low","context":"I worry about him, he failed the test but he is not sad, strange."},
-    {"vietlish":"please give me back when you finish reading","natural":"please give it back to me when you finish reading","sourcePattern":"tra lai khi nao xong -> dropped object and to-phrase","category":"literal_translation","frequency":"medium","context":"You can borrow my book, please give me back when you finish reading."},
-    {"vietlish":"she cried a river when she heard the news","natural":"she cried a lot when she heard the news","sourcePattern":"khoc nhu mua -> cry a river calque for cry a lot","category":"calque","frequency":"low","context":"It was very sad, she cried a river when she heard the news."},
-    {"vietlish":"I have to save face in front of my friends","natural":"I have to save face in front of my friends","sourcePattern":"giu the dien -> idiom calque, acceptable but staged for review","category":"register","frequency":"low","context":"I could not say no, I have to save face in front of my friends."},
-    {"vietlish":"the bus is so full, I stand all the way","natural":"the bus was so full that I stood the whole way","sourcePattern":"dung suot -> so...that reduced plus no past plus all the way","category":"literal_translation","frequency":"medium","context":"This morning the bus is so full, I stand all the way to work."},
-    {"vietlish":"he is the breadwinner, the whole family depends him","natural":"he is the breadwinner, the whole family depends on him","sourcePattern":"phu thuoc vao -> on dropped after depend","category":"literal_translation","frequency":"medium","context":"His job is important, he is the breadwinner, the whole family depends him."},
-    {"vietlish":"she goes to the temple to burn incense","natural":"she goes to the temple to burn incense","sourcePattern":"thap huong -> direct calque, acceptable but staged for review","category":"register","frequency":"low","context":"On the first day of the month she goes to the temple to burn incense."},
-    {"vietlish":"the old house is selling, do you want to see","natural":"the old house is for sale, do you want to see it","sourcePattern":"dang ban -> is selling for is for sale plus dropped object","category":"false_friend","frequency":"low","context":"Good location, the old house is selling, do you want to see?"},
-    {"vietlish":"I will repair the roof before the rainy season comes","natural":"I'll repair the roof before the rainy season comes","sourcePattern":"mua mua -> direct calque, acceptable but staged for review","category":"register","frequency":"low","context":"The leak is getting worse, I will repair the roof before the rainy season comes."},
-    {"vietlish":"she is in the period of looking for a job","natural":"she is in the middle of looking for a job","sourcePattern":"trong giai doan -> period for the middle phase","category":"false_friend","frequency":"low","context":"Please be patient with her, she is in the period of looking for a job."},
-    {"vietlish":"the kids are growing, the clothes are short already","natural":"the kids are growing, their clothes are too small already","sourcePattern":"do ngan roi -> short for too small with clothes","category":"false_friend","frequency":"low","context":"I must buy new ones, the kids are growing, the clothes are short already."},
-    {"vietlish":"he came back from abroad with a lot of experience","natural":"he came back from abroad with a lot of experience","sourcePattern":"ve nuoc -> direct calque, acceptable but staged for review","category":"register","frequency":"low","context":"Now he is a manager, he came back from abroad with a lot of experience."},
-    {"vietlish":"I will pay back you next month, I promise","natural":"I'll pay you back next month, I promise","sourcePattern":"tra lai ban -> particle back before the object","category":"word_order","frequency":"medium","context":"Thank you for helping me, I will pay back you next month, I promise."},
-    {"vietlish":"she sings on the stage, everybody claps her","natural":"she sings on the stage and everybody claps for her","sourcePattern":"vo tay cho -> clap with a direct object instead of for","category":"literal_translation","frequency":"low","context":"She is talented, she sings on the stage, everybody claps her."},
-    {"vietlish":"I tried my best but the result is not as I expect","natural":"I tried my best but the result wasn't what I expected","sourcePattern":"khong nhu mong doi -> as for what plus present for past","category":"literal_translation","frequency":"medium","context":"It is disappointing, I tried my best but the result is not as I expect."},
-    {"vietlish":"the medicine is bitter but it is good for health","natural":"the medicine is bitter but it's good for your health","sourcePattern":"tot cho suc khoe -> your dropped before health","category":"literal_translation","frequency":"low","context":"Drink it all, the medicine is bitter but it is good for health."},
-    {"vietlish":"I am worried for my son, he plays too much game","natural":"I'm worried about my son, he plays too many games","sourcePattern":"lo cho con -> for instead of about plus game no plural","category":"literal_translation","frequency":"medium","context":"He doesn't study, I am worried for my son, he plays too much game."},
-    {"vietlish":"she dresses very beautiful to go to the party","natural":"she dressed very beautifully to go to the party","sourcePattern":"mac dep -> adjective for adverb plus no past","category":"literal_translation","frequency":"medium","context":"Everyone looked at her, she dresses very beautiful to go to the party."},
-    {"vietlish":"he is the youngest but the most clever in the family","natural":"he is the youngest but the cleverest in the family","sourcePattern":"thong minh nhat -> most + clever instead of cleverest","category":"literal_translation","frequency":"medium","context":"Everyone agrees, he is the youngest but the most clever in the family."},
-    {"vietlish":"I want to thank to my parents for everything","natural":"I want to thank my parents for everything","sourcePattern":"cam on bo me -> extra to after thank","category":"literal_translation","frequency":"medium","context":"In my speech, I want to thank to my parents for everything."},
-    {"vietlish":"the festival is very lively, many games and food","natural":"the festival is very lively, with many games and lots of food","sourcePattern":"nhieu tro choi va do an -> dropped with plus food no quantifier","category":"literal_translation","frequency":"low","context":"Come with us, the festival is very lively, many games and food."},
-    {"vietlish":"she keeps her promise, I trust her absolutely","natural":"she keeps her promises, I trust her completely","sourcePattern":"giu loi hua -> promise no plural plus absolutely for completely","category":"false_friend","frequency":"low","context":"You can count on her, she keeps her promise, I trust her absolutely."},
-    {"vietlish":"I am studying English by myself at home","natural":"I'm studying English by myself at home","sourcePattern":"tu hoc o nha -> direct calque, acceptable but staged for review","category":"register","frequency":"low","context":"I cannot afford a class, I am studying English by myself at home."},
-    {"vietlish":"the shop assistant followed me everywhere, annoying","natural":"the shop assistant followed me everywhere, which was annoying","sourcePattern":"kho chiu -> dropped relative and be before annoying","category":"literal_translation","frequency":"low","context":"I left quickly, the shop assistant followed me everywhere, annoying."},
-    {"vietlish":"she works in a factory far from home, very hard","natural":"she works in a factory far from home, it's very hard","sourcePattern":"vat va lam -> dropped dummy subject and be before hard","category":"literal_translation","frequency":"medium","context":"She sends money every month, she works in a factory far from home, very hard."},
-    {"vietlish":"he asked me to lend him until end of month","natural":"he asked me to lend him money until the end of the month","sourcePattern":"cho muon den cuoi thang -> dropped object plus article","category":"literal_translation","frequency":"medium","context":"I felt sorry for him, he asked me to lend him until end of month."},
-    {"vietlish":"she scolded her son for play truant","natural":"she scolded her son for playing truant","sourcePattern":"mang con vi tron hoc -> for + base verb instead of gerund","category":"literal_translation","frequency":"low","context":"The teacher called home, she scolded her son for play truant."}
+    {
+      "vietlish": "I cannot find out my mistake",
+      "natural": "I can't figure out my mistake",
+      "sourcePattern": "khong tim ra loi -> find out for figure out",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I read it three times but I cannot find out my mistake."
+    },
+    {
+      "vietlish": "I will think about it and tell you back",
+      "natural": "I'll think about it and let you know",
+      "sourcePattern": "tra loi lai -> tell back for let know",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "It is a big decision, I will think about it and tell you back."
+    },
+    {
+      "vietlish": "remind me your name again",
+      "natural": "remind me of your name again",
+      "sourcePattern": "nhac lai ten -> of dropped after remind",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Sorry, we met once, remind me your name again."
+    },
+    {
+      "vietlish": "I learn at the university of Hue",
+      "natural": "I study at the University of Hue",
+      "sourcePattern": "hoc o dai hoc -> learn used for study at an institution",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "After high school, I learn at the university of Hue."
+    },
+    {
+      "vietlish": "I heard the radio while driving",
+      "natural": "I listened to the radio while driving",
+      "sourcePattern": "nghe radio -> hear for the deliberate listen",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "On the way home I heard the radio while driving."
+    },
+    {
+      "vietlish": "our team won the other team 3-0",
+      "natural": "our team beat the other team 3-0",
+      "sourcePattern": "thang doi kia -> win mapped to beat with an opponent object",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "It was a great match, our team won the other team 3-0."
+    },
+    {
+      "vietlish": "someone robbed my phone on the bus",
+      "natural": "someone stole my phone on the bus",
+      "sourcePattern": "cuop/trom dien thoai -> rob used for steal an object",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Be careful, someone robbed my phone on the bus yesterday."
+    },
+    {
+      "vietlish": "I will remember you to bring the book",
+      "natural": "I'll remind you to bring the book",
+      "sourcePattern": "nhac ban -> remember used for remind",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Don't worry, I will remember you to bring the book tomorrow."
+    },
+    {
+      "vietlish": "can you talk me the way to the market",
+      "natural": "can you tell me the way to the market",
+      "sourcePattern": "chi duong -> talk used for tell",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I am new here, can you talk me the way to the market?"
+    },
+    {
+      "vietlish": "I am looking the menu now",
+      "natural": "I am looking at the menu now",
+      "sourcePattern": "dang xem thuc don -> look without at",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Give me a minute, I am looking the menu now."
+    },
+    {
+      "vietlish": "each of the room has a window",
+      "natural": "each of the rooms has a window",
+      "sourcePattern": "moi phong -> noun after each of without plural",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "The house is bright, each of the room has a window."
+    },
+    {
+      "vietlish": "he ate the whole of cake",
+      "natural": "he ate the whole cake",
+      "sourcePattern": "ca cai banh -> of inserted after whole",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "He was so hungry, he ate the whole of cake alone."
+    },
+    {
+      "vietlish": "on the last night I slept badly",
+      "natural": "last night I slept badly",
+      "sourcePattern": "vao dem qua -> on the inserted before last night",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "On the last night I slept badly because of the heat."
+    },
+    {
+      "vietlish": "she comes here every of Sunday",
+      "natural": "she comes here every Sunday",
+      "sourcePattern": "moi chu nhat -> of inserted after every",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "To visit grandma, she comes here every of Sunday."
+    },
+    {
+      "vietlish": "she has a golden heart",
+      "natural": "she has a heart of gold",
+      "sourcePattern": "trai tim vang -> adjective-noun order from Vietnamese idiom",
+      "category": "calque",
+      "frequency": "low",
+      "context": "Everyone loves her, she has a golden heart."
+    },
+    {
+      "vietlish": "money flies away very fast",
+      "natural": "money disappears very fast",
+      "sourcePattern": "tien bay rat nhanh -> fly away calque for disappear",
+      "category": "calque",
+      "frequency": "low",
+      "context": "In the city money flies away very fast, I cannot save."
+    },
+    {
+      "vietlish": "I am burning to know the result",
+      "natural": "I'm dying to know the result",
+      "sourcePattern": "nong long -> burning calque for dying to",
+      "category": "calque",
+      "frequency": "low",
+      "context": "The exam is over, I am burning to know the result."
+    },
+    {
+      "vietlish": "my motorbike died in the middle of the road",
+      "natural": "my motorbike broke down in the middle of the road",
+      "sourcePattern": "chet may -> die calque for break down",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I was late because my motorbike died in the middle of the road."
+    },
+    {
+      "vietlish": "the price is on the sky",
+      "natural": "the price is sky-high",
+      "sourcePattern": "gia tren troi -> on the sky calque for sky-high",
+      "category": "calque",
+      "frequency": "low",
+      "context": "I cannot buy a house now, the price is on the sky."
+    },
+    {
+      "vietlish": "the mechanic changed the oil and the brake",
+      "natural": "the mechanic changed the oil and the brakes",
+      "sourcePattern": "thay phanh -> brake without plural",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "It runs well now, the mechanic changed the oil and the brake."
+    },
+    {
+      "vietlish": "I go to the internet shop to print",
+      "natural": "I go to the internet cafe to print",
+      "sourcePattern": "tiem net -> shop for cafe",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "My printer is broken, I go to the internet shop to print."
+    },
+    {
+      "vietlish": "the market is very crowd in the morning",
+      "natural": "the market is very crowded in the morning",
+      "sourcePattern": "dong duc -> crowd noun used as adjective without -ed",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Go early, the market is very crowd in the morning."
+    },
+    {
+      "vietlish": "she weighs the vegetable on the scale",
+      "natural": "she weighs the vegetables on the scale",
+      "sourcePattern": "can rau -> vegetable without plural",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "At the stall she weighs the vegetable on the scale for me."
+    },
+    {
+      "vietlish": "my back is paining since I lifted the box",
+      "natural": "my back has been hurting since I lifted the box",
+      "sourcePattern": "dau lung -> pain as a progressive verb, no present perfect",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I cannot bend down, my back is paining since I lifted the box."
+    },
+    {
+      "vietlish": "the doctor measured my height and my weigh",
+      "natural": "the doctor measured my height and my weight",
+      "sourcePattern": "can nang -> verb weigh used for the noun weight",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "At the check-up the doctor measured my height and my weigh."
+    },
+    {
+      "vietlish": "she has a high temperature body",
+      "natural": "she has a high temperature",
+      "sourcePattern": "nhiet do co the cao -> redundant body after temperature",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "The child is sick, she has a high temperature body since noon."
+    },
+    {
+      "vietlish": "I study by heart all the vocabulary",
+      "natural": "I learn all the vocabulary by heart",
+      "sourcePattern": "hoc thuoc long -> by heart phrase placed before the object",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "Before the test I study by heart all the vocabulary."
+    },
+    {
+      "vietlish": "I failed one subject, must learn again",
+      "natural": "I failed one subject, I have to retake it",
+      "sourcePattern": "hoc lai -> learn again for retake",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Bad news, I failed one subject, must learn again next term."
+    },
+    {
+      "vietlish": "he proposed her last week",
+      "natural": "he proposed to her last week",
+      "sourcePattern": "cau hon co ay -> to dropped after propose",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Good news, he proposed her last week and she said yes."
+    },
+    {
+      "vietlish": "it is raining big outside",
+      "natural": "it's raining hard outside",
+      "sourcePattern": "mua to -> big for hard with rain",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Take a raincoat, it is raining big outside."
+    },
+    {
+      "vietlish": "the flood came and took many house",
+      "natural": "the flood came and washed away many houses",
+      "sourcePattern": "cuon troi nhieu nha -> take for wash away plus no plural",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Last year the flood came and took many house in the village."
+    },
+    {
+      "vietlish": "the river rises after the big rain",
+      "natural": "the river rose after the heavy rain",
+      "sourcePattern": "mua to -> big for heavy plus no past",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "Be careful near the bank, the river rises after the big rain."
+    },
+    {
+      "vietlish": "the sky is dark, maybe rain soon",
+      "natural": "the sky is dark, it might rain soon",
+      "sourcePattern": "co le sap mua -> dropped dummy subject and modal",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Bring the clothes in, the sky is dark, maybe rain soon."
+    },
+    {
+      "vietlish": "I pay deposit first, the rest later",
+      "natural": "I'll pay a deposit first and the rest later",
+      "sourcePattern": "dat coc truoc -> article dropped plus no future marker",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "For the furniture, I pay deposit first, the rest later."
+    },
+    {
+      "vietlish": "the seller cheated me money",
+      "natural": "the seller cheated me out of money",
+      "sourcePattern": "lua tien -> out of dropped after cheat",
+      "category": "calque",
+      "frequency": "low",
+      "context": "The fruit was rotten inside, the seller cheated me money."
+    },
+    {
+      "vietlish": "this is real or fake, I cannot tell",
+      "natural": "is this real or fake, I can't tell",
+      "sourcePattern": "that hay gia -> statement word order in a question",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The bag is cheap, this is real or fake, I cannot tell."
+    },
+    {
+      "vietlish": "the ATM ate my card, no money come out",
+      "natural": "the ATM ate my card and no money came out",
+      "sourcePattern": "khong ra tien -> dropped connector plus no past",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I am stuck, the ATM ate my card, no money come out."
+    },
+    {
+      "vietlish": "I want to send money to my family in province",
+      "natural": "I want to send money to my family in the province",
+      "sourcePattern": "duoi que / tinh -> article dropped before province",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Every month I want to send money to my family in province."
+    },
+    {
+      "vietlish": "the shop gives one year guarantee",
+      "natural": "the shop gives a one-year guarantee",
+      "sourcePattern": "bao hanh mot nam -> article dropped before one-year",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Buy here, the shop gives one year guarantee for the phone."
+    },
+    {
+      "vietlish": "the bill is more than I think",
+      "natural": "the bill is more than I thought",
+      "sourcePattern": "nhieu hon toi nghi -> present think for past in the comparison",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "At the restaurant the bill is more than I think."
+    },
+    {
+      "vietlish": "the road is one way, cannot turn here",
+      "natural": "the road is one way, you can't turn here",
+      "sourcePattern": "duong mot chieu -> dropped subject after cannot",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Driver, the road is one way, cannot turn here."
+    },
+    {
+      "vietlish": "we sat on the front seat of the bus",
+      "natural": "we sat in the front seat of the bus",
+      "sourcePattern": "ngoi ghe truoc -> on for in with a seat",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "To see better, we sat on the front seat of the bus."
+    },
+    {
+      "vietlish": "the airplane took off late one hour",
+      "natural": "the plane took off an hour late",
+      "sourcePattern": "cat canh tre mot tieng -> measure phrase placed after late",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "Because of the rain, the airplane took off late one hour."
+    },
+    {
+      "vietlish": "I get motion sick on the boat",
+      "natural": "I get seasick on the boat",
+      "sourcePattern": "say song -> motion sick for seasick",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "I cannot go on the cruise, I get motion sick on the boat."
+    },
+    {
+      "vietlish": "please fasten your belt before the car run",
+      "natural": "please fasten your belt before the car moves",
+      "sourcePattern": "truoc khi xe chay -> run for move with a vehicle",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Sit down, please fasten your belt before the car run."
+    },
+    {
+      "vietlish": "the hotel is full, no room empty",
+      "natural": "the hotel is full, there are no empty rooms",
+      "sourcePattern": "het phong trong -> existential dropped plus adjective after noun",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "We have to find another place, the hotel is full, no room empty."
+    },
+    {
+      "vietlish": "we walked many kilometer in the old town",
+      "natural": "we walked many kilometers in the old town",
+      "sourcePattern": "nhieu cay so -> kilometer without plural",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "My feet hurt, we walked many kilometer in the old town."
+    },
+    {
+      "vietlish": "the pho here is very famous, many tourist come",
+      "natural": "the pho here is very famous, a lot of tourists come",
+      "sourcePattern": "nhieu khach du lich -> tourist without plural",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Try it, the pho here is very famous, many tourist come."
+    },
+    {
+      "vietlish": "can I have the menu with picture",
+      "natural": "can I have the menu with pictures",
+      "sourcePattern": "thuc don co hinh -> picture without plural",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "I cannot read the names, can I have the menu with picture?"
+    },
+    {
+      "vietlish": "the food is cold already, please heat again",
+      "natural": "the food is cold already, please heat it up again",
+      "sourcePattern": "ham lai -> dropped object and particle after heat",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Sorry, the food is cold already, please heat again for me."
+    },
+    {
+      "vietlish": "two beer and one juice please",
+      "natural": "two beers and one juice please",
+      "sourcePattern": "hai bia -> beer without plural unit",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "For the table, two beer and one juice please."
+    },
+    {
+      "vietlish": "this dish is the speciality of here",
+      "natural": "this dish is the specialty here",
+      "sourcePattern": "dac san o day -> of here calque for here",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "You should try, this dish is the speciality of here."
+    },
+    {
+      "vietlish": "my house has three floor",
+      "natural": "my house has three floors",
+      "sourcePattern": "ba tang -> floor without plural after a number",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "We have enough space, my house has three floor."
+    },
+    {
+      "vietlish": "my grandmother tells story very good",
+      "natural": "my grandmother tells stories very well",
+      "sourcePattern": "ke chuyen hay -> story no plural plus good for well",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "When I was a child, my grandmother tells story very good."
+    },
+    {
+      "vietlish": "we hang the clothes outside to dry",
+      "natural": "we hang the clothes out to dry",
+      "sourcePattern": "phoi quan ao -> outside for the particle out",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "When the sun is strong, we hang the clothes outside to dry."
+    },
+    {
+      "vietlish": "the neighbor's dog barks all the night",
+      "natural": "the neighbor's dog barks all night",
+      "sourcePattern": "ca dem -> the inserted before night",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I cannot sleep, the neighbor's dog barks all the night."
+    },
+    {
+      "vietlish": "I sweep the floor and my sister wash dishes",
+      "natural": "I sweep the floor and my sister washes the dishes",
+      "sourcePattern": "rua chen -> no third-person -s plus dropped article",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "After dinner I sweep the floor and my sister wash dishes."
+    },
+    {
+      "vietlish": "the rent is up again this year",
+      "natural": "the rent has gone up again this year",
+      "sourcePattern": "tien thue len -> up calque without present perfect",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Life is hard, the rent is up again this year."
+    },
+    {
+      "vietlish": "my phone screen is crack, hard to read",
+      "natural": "my phone screen is cracked, it's hard to read",
+      "sourcePattern": "bi nut -> crack without -ed plus dropped subject",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I dropped it, my phone screen is crack, hard to read now."
+    },
+    {
+      "vietlish": "I downloaded the app but it not open",
+      "natural": "I downloaded the app but it won't open",
+      "sourcePattern": "no khong mo -> not open for won't open",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Something is wrong, I downloaded the app but it not open."
+    },
+    {
+      "vietlish": "she takes very many selfie every day",
+      "natural": "she takes a lot of selfies every day",
+      "sourcePattern": "chup nhieu hinh tu suong -> very many plus selfie no plural",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "For her page, she takes very many selfie every day."
+    },
+    {
+      "vietlish": "the video is buffering, the net is lag",
+      "natural": "the video is buffering, the connection is lagging",
+      "sourcePattern": "mang lag -> net plus lag as an adjective",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I cannot watch, the video is buffering, the net is lag."
+    },
+    {
+      "vietlish": "please share me your location",
+      "natural": "please share your location with me",
+      "sourcePattern": "gui vi tri cho toi -> dropped with plus reordered object",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I am lost, please share me your location."
+    },
+    {
+      "vietlish": "I charge my phone whole night",
+      "natural": "I charge my phone all night",
+      "sourcePattern": "sac ca dem -> whole for all with night",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The battery is old, I charge my phone whole night."
+    },
+    {
+      "vietlish": "the link is dead, cannot open",
+      "natural": "the link is broken, I can't open it",
+      "sourcePattern": "link chet -> dead for broken plus dropped subject",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Send again, the link is dead, cannot open."
+    },
+    {
+      "vietlish": "he plays game online with foreign people",
+      "natural": "he plays games online with foreigners",
+      "sourcePattern": "choi game voi nguoi nuoc ngoai -> game no plural plus foreign people for foreigners",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Every night he plays game online with foreign people."
+    },
+    {
+      "vietlish": "my email is full, cannot receive more",
+      "natural": "my inbox is full, I can't receive any more",
+      "sourcePattern": "hop thu day -> email for inbox plus dropped subject",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "Resend tomorrow, my email is full, cannot receive more."
+    },
+    {
+      "vietlish": "she works hard so that her children have good life",
+      "natural": "she works hard so that her children have a good life",
+      "sourcePattern": "co cuoc song tot -> article dropped before good life",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Like every mother, she works hard so that her children have good life."
+    },
+    {
+      "vietlish": "the more cheap, the more I worry about quality",
+      "natural": "the cheaper it is, the more I worry about quality",
+      "sourcePattern": "cang re cang lo -> the more cheap instead of the cheaper",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I don't trust very low prices, the more cheap, the more I worry about quality."
+    },
+    {
+      "vietlish": "I would rather to stay home tonight",
+      "natural": "I would rather stay home tonight",
+      "sourcePattern": "thich o nha hon -> to-infinitive after would rather",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I am tired, I would rather to stay home tonight."
+    },
+    {
+      "vietlish": "it is no use to cry now",
+      "natural": "it's no use crying now",
+      "sourcePattern": "khoc cung vo ich -> to-infinitive instead of gerund after no use",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "What is done is done, it is no use to cry now."
+    },
+    {
+      "vietlish": "I look forward for your reply",
+      "natural": "I look forward to your reply",
+      "sourcePattern": "mong phan hoi -> for instead of to after look forward",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Thank you for reading, I look forward for your reply."
+    },
+    {
+      "vietlish": "she is used to wake up early",
+      "natural": "she is used to waking up early",
+      "sourcePattern": "quen day som -> base verb after used to instead of gerund",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "As a farmer, she is used to wake up early."
+    },
+    {
+      "vietlish": "he denied to take the money",
+      "natural": "he denied taking the money",
+      "sourcePattern": "phu nhan da lay -> to-infinitive instead of gerund after deny",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "When the boss asked, he denied to take the money."
+    },
+    {
+      "vietlish": "the medicine has no effect to me",
+      "natural": "the medicine has no effect on me",
+      "sourcePattern": "khong co tac dung voi toi -> to for on after effect",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I still have pain, the medicine has no effect to me."
+    },
+    {
+      "vietlish": "I am confident on my English now",
+      "natural": "I'm confident in my English now",
+      "sourcePattern": "tu tin vao -> on for in after confident",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "After the course I am confident on my English now."
+    },
+    {
+      "vietlish": "this word is difficult to pronounce for me",
+      "natural": "this word is difficult for me to pronounce",
+      "sourcePattern": "kho phat am voi toi -> for me placed after the verb",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "Please say it slowly, this word is difficult to pronounce for me."
+    },
+    {
+      "vietlish": "I am curious to know what happen",
+      "natural": "I'm curious to know what happened",
+      "sourcePattern": "muon biet chuyen gi -> present for past in the embedded clause",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "They were arguing, I am curious to know what happen."
+    },
+    {
+      "vietlish": "she is proud to be a Vietnamese",
+      "natural": "she is proud to be Vietnamese",
+      "sourcePattern": "tu hao la nguoi Viet -> article plus noun for the nationality adjective",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Wherever she goes, she is proud to be a Vietnamese."
+    },
+    {
+      "vietlish": "we are lack of doctors in the village",
+      "natural": "we lack doctors in the village",
+      "sourcePattern": "thieu bac si -> be lack of for the verb lack",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Many people are sick, we are lack of doctors in the village."
+    },
+    {
+      "vietlish": "I take this chance to say thank you",
+      "natural": "I'd like to take this chance to say thank you",
+      "sourcePattern": "nhan co hoi nay -> direct calque, acceptable but staged for register",
+      "category": "register",
+      "frequency": "low",
+      "context": "Before we finish, I take this chance to say thank you to everyone."
+    },
+    {
+      "vietlish": "eat slowly, nobody is chasing you",
+      "natural": "eat slowly, no one's chasing you",
+      "sourcePattern": "khong ai duoi -> idiom calque, acceptable but staged for review",
+      "category": "register",
+      "frequency": "low",
+      "context": "Don't rush, eat slowly, nobody is chasing you."
+    },
+    {
+      "vietlish": "you first, please",
+      "natural": "after you, please",
+      "sourcePattern": "moi anh truoc -> you first calque for after you",
+      "category": "register",
+      "frequency": "low",
+      "context": "At the door he said, you first, please."
+    },
+    {
+      "vietlish": "I queue up since 5am to buy ticket",
+      "natural": "I've been queuing since 5am to buy tickets",
+      "sourcePattern": "xep hang tu 5 gio -> present for present perfect plus ticket no plural",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The concert is popular, I queue up since 5am to buy ticket."
+    },
+    {
+      "vietlish": "she dries her hair with the machine",
+      "natural": "she dries her hair with a hairdryer",
+      "sourcePattern": "may say toc -> machine for hairdryer plus the for a",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "After the shower she dries her hair with the machine."
+    },
+    {
+      "vietlish": "please wake me up at 6, I sleep deep",
+      "natural": "please wake me up at 6, I sleep deeply",
+      "sourcePattern": "ngu say -> adjective deep used as an adverb",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I have an early flight, please wake me up at 6, I sleep deep."
+    },
+    {
+      "vietlish": "she feeds the baby and changes the diaper",
+      "natural": "she feeds the baby and changes the diapers",
+      "sourcePattern": "thay ta -> diaper without plural in a routine",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "All day she feeds the baby and changes the diaper."
+    },
+    {
+      "vietlish": "I lock the gate and feed the dog before leave",
+      "natural": "I lock the gate and feed the dog before leaving",
+      "sourcePattern": "truoc khi di -> before + base verb instead of gerund",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Every morning I lock the gate and feed the dog before leave."
+    },
+    {
+      "vietlish": "we plant vegetable in the back garden",
+      "natural": "we grow vegetables in the back garden",
+      "sourcePattern": "trong rau -> plant for grow plus vegetable no plural",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "To save money, we plant vegetable in the back garden."
+    },
+    {
+      "vietlish": "honestly, from my heart, I am sorry",
+      "natural": "honestly, from the bottom of my heart, I'm sorry",
+      "sourcePattern": "that long -> from my heart calque",
+      "category": "register",
+      "frequency": "low",
+      "context": "I made a big mistake, honestly, from my heart, I am sorry."
+    },
+    {
+      "vietlish": "drink up, don't waste",
+      "natural": "finish your drink, don't waste it",
+      "sourcePattern": "uong het di dung phi -> drink up calque plus dropped object",
+      "category": "register",
+      "frequency": "low",
+      "context": "There is only a little left, drink up, don't waste."
+    },
+    {
+      "vietlish": "we will keep in our heart your kindness",
+      "natural": "we will always remember your kindness",
+      "sourcePattern": "ghi long tac da -> keep in heart calque plus reordered object",
+      "category": "calque",
+      "frequency": "low",
+      "context": "You helped us so much, we will keep in our heart your kindness."
+    },
+    {
+      "vietlish": "he is a stranger person, I don't know him",
+      "natural": "he's a stranger, I don't know him",
+      "sourcePattern": "nguoi la -> stranger used as an adjective before person",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "Don't open the door, he is a stranger person, I don't know him."
+    },
+    {
+      "vietlish": "I am studying to take the IELTS in the next month",
+      "natural": "I'm studying to take the IELTS next month",
+      "sourcePattern": "thang sau -> in the inserted before next month",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I need a 6.5, I am studying to take the IELTS in the next month."
+    },
+    {
+      "vietlish": "the teacher is absent so we self study",
+      "natural": "the teacher is absent so we study on our own",
+      "sourcePattern": "tu hoc -> self study calque for study on our own",
+      "category": "calque",
+      "frequency": "low",
+      "context": "No substitute came, the teacher is absent so we self study."
+    },
+    {
+      "vietlish": "she speaks three language but write only one",
+      "natural": "she speaks three languages but writes only one",
+      "sourcePattern": "viet mot -> language no plural plus no third-person -s",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "She is talented, she speaks three language but write only one."
+    },
+    {
+      "vietlish": "please keep the change for tip",
+      "natural": "please keep the change as a tip",
+      "sourcePattern": "giu lai tien thua -> for instead of as plus dropped article",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "The service was good, please keep the change for tip."
+    },
+    {
+      "vietlish": "I am afraid of high, cannot climb",
+      "natural": "I'm afraid of heights, I can't climb",
+      "sourcePattern": "so do cao -> high for heights plus dropped subject",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "You go first, I am afraid of high, cannot climb the ladder."
+    },
+    {
+      "vietlish": "he is good in heart but bad in temper",
+      "natural": "he is good-hearted but bad-tempered",
+      "sourcePattern": "tot bung nhung nong tinh -> good in heart calque",
+      "category": "calque",
+      "frequency": "low",
+      "context": "People misunderstand him, he is good in heart but bad in temper."
+    },
+    {
+      "vietlish": "she gave me a lift to home",
+      "natural": "she gave me a lift home",
+      "sourcePattern": "cho ve nha -> to inserted before home",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "It was raining, she gave me a lift to home after work."
+    },
+    {
+      "vietlish": "I am very tired but cannot fall asleep",
+      "natural": "I'm very tired but I can't fall asleep",
+      "sourcePattern": "khong ngu duoc -> dropped subject after but",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "After the long flight I am very tired but cannot fall asleep."
+    },
+    {
+      "vietlish": "he gets up at 5 and exercises a bit",
+      "natural": "he gets up at 5 and exercises a bit",
+      "sourcePattern": "tap mot chut -> direct calque, acceptable but staged for review",
+      "category": "register",
+      "frequency": "low",
+      "context": "Even on weekends he gets up at 5 and exercises a bit."
+    },
+    {
+      "vietlish": "I want to take a picture but my phone is full memory",
+      "natural": "I want to take a picture but my phone is out of memory",
+      "sourcePattern": "day bo nho -> full memory for out of memory",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Such a nice view, I want to take a picture but my phone is full memory."
+    },
+    {
+      "vietlish": "she always says good things behind my back",
+      "natural": "she always says good things about me when I'm not around",
+      "sourcePattern": "noi sau lung -> behind my back used with a positive meaning",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "She is loyal, she always says good things behind my back."
+    },
+    {
+      "vietlish": "the soup is hot, blow it before eat",
+      "natural": "the soup is hot, blow on it before eating",
+      "sourcePattern": "thoi cho nguoi -> blow without on plus base verb after before",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Careful with the child, the soup is hot, blow it before eat."
+    },
+    {
+      "vietlish": "he earns enough to live, not more",
+      "natural": "he earns enough to get by, no more",
+      "sourcePattern": "du song -> enough to live calque for get by",
+      "category": "calque",
+      "frequency": "low",
+      "context": "He is not rich, he earns enough to live, not more."
+    },
+    {
+      "vietlish": "she is on diet, eats only vegetable",
+      "natural": "she is on a diet and eats only vegetables",
+      "sourcePattern": "an kieng -> article dropped plus vegetable no plural",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "For the wedding she is on diet, eats only vegetable."
+    },
+    {
+      "vietlish": "I will introduce my hometown to you",
+      "natural": "I'll tell you about my hometown",
+      "sourcePattern": "gioi thieu que -> introduce calque for tell about",
+      "category": "calque",
+      "frequency": "low",
+      "context": "If you have time, I will introduce my hometown to you."
+    },
+    {
+      "vietlish": "the baby is teething, cries a lot at night",
+      "natural": "the baby is teething and cries a lot at night",
+      "sourcePattern": "moc rang -> dropped connector between clauses",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "We are tired, the baby is teething, cries a lot at night."
+    },
+    {
+      "vietlish": "he speaks English with American accent",
+      "natural": "he speaks English with an American accent",
+      "sourcePattern": "giong My -> article dropped before American accent",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "After five years abroad, he speaks English with American accent."
+    },
+    {
+      "vietlish": "I save money to buy house in the future",
+      "natural": "I'm saving money to buy a house in the future",
+      "sourcePattern": "mua nha -> article dropped before house",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Every month I save money to buy house in the future."
+    },
+    {
+      "vietlish": "she is afraid her parents know about it",
+      "natural": "she's afraid her parents will find out about it",
+      "sourcePattern": "so bo me biet -> know for find out",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "She hides the result, she is afraid her parents know about it."
+    },
+    {
+      "vietlish": "the ticket is sold out, no more left",
+      "natural": "the tickets are sold out, there are none left",
+      "sourcePattern": "het ve -> ticket no plural plus existential dropped",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "We came too late, the ticket is sold out, no more left."
+    },
+    {
+      "vietlish": "I caught the bus just in time, lucky me",
+      "natural": "I caught the bus just in time, lucky me",
+      "sourcePattern": "may qua -> direct calque, acceptable but staged for register",
+      "category": "register",
+      "frequency": "low",
+      "context": "It was about to leave, I caught the bus just in time, lucky me."
+    },
+    {
+      "vietlish": "she has good hands, cooks and sews very well",
+      "natural": "she's very skillful, she cooks and sews very well",
+      "sourcePattern": "kheo tay -> good hands calque for skillful",
+      "category": "calque",
+      "frequency": "low",
+      "context": "Her family is lucky, she has good hands, cooks and sews very well."
+    },
+    {
+      "vietlish": "he talks big but does nothing",
+      "natural": "he talks big but does nothing",
+      "sourcePattern": "noi phet -> idiom calque, acceptable but staged for review",
+      "category": "register",
+      "frequency": "low",
+      "context": "Don't believe his promises, he talks big but does nothing."
+    },
+    {
+      "vietlish": "I want to open a bank account but no time to go",
+      "natural": "I want to open a bank account but I have no time to go",
+      "sourcePattern": "khong co thoi gian -> dropped subject and verb after but",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Maybe next week, I want to open a bank account but no time to go."
+    },
+    {
+      "vietlish": "she is younger than me but more mature",
+      "natural": "she is younger than me but more mature",
+      "sourcePattern": "chin chan hon -> direct calque, acceptable but staged for review",
+      "category": "register",
+      "frequency": "low",
+      "context": "I admire her, she is younger than me but more mature."
+    },
+    {
+      "vietlish": "I get used with the new job slowly",
+      "natural": "I'm getting used to the new job slowly",
+      "sourcePattern": "quen voi -> with for to after get used",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "It was hard at first, but I get used with the new job slowly."
+    },
+    {
+      "vietlish": "the rice field is green, very beautiful in my eyes",
+      "natural": "the rice fields are green, very beautiful to my eyes",
+      "sourcePattern": "trong mat toi -> in my eyes calque plus field no plural",
+      "category": "calque",
+      "frequency": "low",
+      "context": "Coming home, the rice field is green, very beautiful in my eyes."
+    },
+    {
+      "vietlish": "he failed the test but he is not sad, strange",
+      "natural": "he failed the test but he isn't sad, which is strange",
+      "sourcePattern": "la that -> dropped relative plus comment word",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "I worry about him, he failed the test but he is not sad, strange."
+    },
+    {
+      "vietlish": "please give me back when you finish reading",
+      "natural": "please give it back to me when you finish reading",
+      "sourcePattern": "tra lai khi nao xong -> dropped object and to-phrase",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "You can borrow my book, please give me back when you finish reading."
+    },
+    {
+      "vietlish": "she cried a river when she heard the news",
+      "natural": "she cried a lot when she heard the news",
+      "sourcePattern": "khoc nhu mua -> cry a river calque for cry a lot",
+      "category": "calque",
+      "frequency": "low",
+      "context": "It was very sad, she cried a river when she heard the news."
+    },
+    {
+      "vietlish": "I have to save face in front of my friends",
+      "natural": "I have to save face in front of my friends",
+      "sourcePattern": "giu the dien -> idiom calque, acceptable but staged for review",
+      "category": "register",
+      "frequency": "low",
+      "context": "I could not say no, I have to save face in front of my friends."
+    },
+    {
+      "vietlish": "the bus is so full, I stand all the way",
+      "natural": "the bus was so full that I stood the whole way",
+      "sourcePattern": "dung suot -> so...that reduced plus no past plus all the way",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "This morning the bus is so full, I stand all the way to work."
+    },
+    {
+      "vietlish": "he is the breadwinner, the whole family depends him",
+      "natural": "he is the breadwinner, the whole family depends on him",
+      "sourcePattern": "phu thuoc vao -> on dropped after depend",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "His job is important, he is the breadwinner, the whole family depends him."
+    },
+    {
+      "vietlish": "she goes to the temple to burn incense",
+      "natural": "she goes to the temple to burn incense",
+      "sourcePattern": "thap huong -> direct calque, acceptable but staged for review",
+      "category": "register",
+      "frequency": "low",
+      "context": "On the first day of the month she goes to the temple to burn incense."
+    },
+    {
+      "vietlish": "the old house is selling, do you want to see",
+      "natural": "the old house is for sale, do you want to see it",
+      "sourcePattern": "dang ban -> is selling for is for sale plus dropped object",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "Good location, the old house is selling, do you want to see?"
+    },
+    {
+      "vietlish": "I will repair the roof before the rainy season comes",
+      "natural": "I'll repair the roof before the rainy season comes",
+      "sourcePattern": "mua mua -> direct calque, acceptable but staged for review",
+      "category": "register",
+      "frequency": "low",
+      "context": "The leak is getting worse, I will repair the roof before the rainy season comes."
+    },
+    {
+      "vietlish": "she is in the period of looking for a job",
+      "natural": "she is in the middle of looking for a job",
+      "sourcePattern": "trong giai doan -> period for the middle phase",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "Please be patient with her, she is in the period of looking for a job."
+    },
+    {
+      "vietlish": "the kids are growing, the clothes are short already",
+      "natural": "the kids are growing, their clothes are too small already",
+      "sourcePattern": "do ngan roi -> short for too small with clothes",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "I must buy new ones, the kids are growing, the clothes are short already."
+    },
+    {
+      "vietlish": "he came back from abroad with a lot of experience",
+      "natural": "he came back from abroad with a lot of experience",
+      "sourcePattern": "ve nuoc -> direct calque, acceptable but staged for review",
+      "category": "register",
+      "frequency": "low",
+      "context": "Now he is a manager, he came back from abroad with a lot of experience."
+    },
+    {
+      "vietlish": "I will pay back you next month, I promise",
+      "natural": "I'll pay you back next month, I promise",
+      "sourcePattern": "tra lai ban -> particle back before the object",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "Thank you for helping me, I will pay back you next month, I promise."
+    },
+    {
+      "vietlish": "she sings on the stage, everybody claps her",
+      "natural": "she sings on the stage and everybody claps for her",
+      "sourcePattern": "vo tay cho -> clap with a direct object instead of for",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "She is talented, she sings on the stage, everybody claps her."
+    },
+    {
+      "vietlish": "I tried my best but the result is not as I expect",
+      "natural": "I tried my best but the result wasn't what I expected",
+      "sourcePattern": "khong nhu mong doi -> as for what plus present for past",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "It is disappointing, I tried my best but the result is not as I expect."
+    },
+    {
+      "vietlish": "the medicine is bitter but it is good for health",
+      "natural": "the medicine is bitter but it's good for your health",
+      "sourcePattern": "tot cho suc khoe -> your dropped before health",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Drink it all, the medicine is bitter but it is good for health."
+    },
+    {
+      "vietlish": "I am worried for my son, he plays too much game",
+      "natural": "I'm worried about my son, he plays too many games",
+      "sourcePattern": "lo cho con -> for instead of about plus game no plural",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "He doesn't study, I am worried for my son, he plays too much game."
+    },
+    {
+      "vietlish": "she dresses very beautiful to go to the party",
+      "natural": "she dressed very beautifully to go to the party",
+      "sourcePattern": "mac dep -> adjective for adverb plus no past",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Everyone looked at her, she dresses very beautiful to go to the party."
+    },
+    {
+      "vietlish": "he is the youngest but the most clever in the family",
+      "natural": "he is the youngest but the cleverest in the family",
+      "sourcePattern": "thong minh nhat -> most + clever instead of cleverest",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Everyone agrees, he is the youngest but the most clever in the family."
+    },
+    {
+      "vietlish": "I want to thank to my parents for everything",
+      "natural": "I want to thank my parents for everything",
+      "sourcePattern": "cam on bo me -> extra to after thank",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In my speech, I want to thank to my parents for everything."
+    },
+    {
+      "vietlish": "the festival is very lively, many games and food",
+      "natural": "the festival is very lively, with many games and lots of food",
+      "sourcePattern": "nhieu tro choi va do an -> dropped with plus food no quantifier",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "Come with us, the festival is very lively, many games and food."
+    },
+    {
+      "vietlish": "she keeps her promise, I trust her absolutely",
+      "natural": "she keeps her promises, I trust her completely",
+      "sourcePattern": "giu loi hua -> promise no plural plus absolutely for completely",
+      "category": "false_friend",
+      "frequency": "low",
+      "context": "You can count on her, she keeps her promise, I trust her absolutely."
+    },
+    {
+      "vietlish": "I am studying English by myself at home",
+      "natural": "I'm studying English by myself at home",
+      "sourcePattern": "tu hoc o nha -> direct calque, acceptable but staged for review",
+      "category": "register",
+      "frequency": "low",
+      "context": "I cannot afford a class, I am studying English by myself at home."
+    },
+    {
+      "vietlish": "the shop assistant followed me everywhere, annoying",
+      "natural": "the shop assistant followed me everywhere, which was annoying",
+      "sourcePattern": "kho chiu -> dropped relative and be before annoying",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "I left quickly, the shop assistant followed me everywhere, annoying."
+    },
+    {
+      "vietlish": "she works in a factory far from home, very hard",
+      "natural": "she works in a factory far from home, it's very hard",
+      "sourcePattern": "vat va lam -> dropped dummy subject and be before hard",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "She sends money every month, she works in a factory far from home, very hard."
+    },
+    {
+      "vietlish": "he asked me to lend him until end of month",
+      "natural": "he asked me to lend him money until the end of the month",
+      "sourcePattern": "cho muon den cuoi thang -> dropped object plus article",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I felt sorry for him, he asked me to lend him until end of month."
+    },
+    {
+      "vietlish": "she scolded her son for play truant",
+      "natural": "she scolded her son for playing truant",
+      "sourcePattern": "mang con vi tron hoc -> for + base verb instead of gerund",
+      "category": "literal_translation",
+      "frequency": "low",
+      "context": "The teacher called home, she scolded her son for play truant."
+    }
   ]
 }
