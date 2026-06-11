@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
 import { supabase } from "@/lib/supabaseClient";
 import { useProfileQuery } from "@/lib/queries/useProfileQuery";
+import { PROGRESS_SHARE_COPY } from "@/lib/feedback/family-bridge/content-pack";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Download, Share2, Copy } from "lucide-react";
@@ -163,7 +164,7 @@ export default function ShareProgressPage(): React.ReactElement {
   const displayName = stats.display_name?.trim() || stats.username || "Mercy Learner";
 
   return (
-    <main className="mx-auto max-w-md px-4 py-6">
+    <main className="mx-auto max-w-md space-y-4 px-4 py-6">
       <Card>
         <CardContent className="space-y-4 p-4">
           <header>
@@ -220,7 +221,79 @@ export default function ShareProgressPage(): React.ReactElement {
           </p>
         </CardContent>
       </Card>
+
+      <FamilyShareSection streak={stats.streak_current} />
     </main>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Family-share section — parent-mode variant of the share card.
+// Copy templates from the Step-13 content pack for sending to family.
+// Exported for isolated unit tests.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function FamilyShareSection({
+  streak,
+}: {
+  streak: number;
+}): React.ReactElement {
+  const { toast } = useToast();
+
+  function interpolate(template: string): string {
+    return template.replace("{streak}", String(streak));
+  }
+
+  function copyMessage(message: string): void {
+    if (typeof navigator === "undefined" || !navigator.clipboard) return;
+    void navigator.clipboard.writeText(interpolate(message)).then(() => {
+      toast({ title: "Đã sao chép / Copied" });
+    });
+  }
+
+  // Show parent template always; streak template only when streak is active.
+  const templates = PROGRESS_SHARE_COPY.filter(
+    (t) =>
+      t.id === "family-share-parent" ||
+      (t.id === "family-share-streak" && streak > 0),
+  );
+
+  return (
+    <Card>
+      <CardContent className="space-y-4 p-4">
+        <header>
+          <h2 className="text-base font-semibold text-slate-900" lang="vi">
+            Gửi cho gia đình
+          </h2>
+          <p className="text-sm text-slate-500" lang="vi">
+            Sao chép tin nhắn để gửi cho ba mẹ hoặc người thân.
+          </p>
+        </header>
+        <ul className="space-y-3">
+          {templates.map((t) => (
+            <li
+              key={t.id}
+              data-testid={`family-share-template-${t.id}`}
+              className="rounded-lg border border-amber-100 bg-amber-50 p-3"
+            >
+              <p className="text-sm leading-relaxed text-slate-700" lang="vi">
+                {interpolate(t.learnerMessageVi)}
+              </p>
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                className="mt-2"
+                onClick={() => copyMessage(t.learnerMessageVi)}
+              >
+                <Copy className="mr-1 h-3 w-3" aria-hidden />
+                <span lang="vi">{t.labelVi}</span>
+              </Button>
+            </li>
+          ))}
+        </ul>
+      </CardContent>
+    </Card>
   );
 }
 
