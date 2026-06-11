@@ -342,6 +342,10 @@ function looksLikeArticleInitiatedFragment(input: string): boolean {
   // Must start with bare indefinite article (article-initiated noun phrase).
   // "The ..." is less reliable (questions, demonstratives) — only "a/an".
   if (!/^(?:a|an)\s/i.test(normalized)) return false;
+  // The Vietlish pattern is "article NP + conjunction + predicate-without-subject".
+  // Simple noun phrases without a conjunction (e.g. "a documentary about whales") are
+  // not the pattern — they must not be routed to AI.
+  if (!/\s+(?:and|or|but|so|yet)\s+/i.test(normalized)) return false;
   // Take the first clause (before coordinating conjunction).
   const firstClause = normalized.split(/\s+(?:and|or|but|so|yet)\s+/i)[0];
   // If a finite verb appears in the first clause it is NOT a fragment.
