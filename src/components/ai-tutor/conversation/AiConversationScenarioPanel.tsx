@@ -30,6 +30,7 @@ import { recordActiveDay } from "@/lib/retention/recordActiveDay";
 import { ConsentModal } from "@/components/ConsentModal";
 import { hasCaptureConsentDecision } from "@/lib/conversationCapture/captureConsent";
 import { putCorrection } from "@/lib/ai-tutor/learningMemory";
+import { emitFeatureOutcome } from "@/lib/analytics";
 
 // A 'Sửa câu' correction handed off from the grammar surface. When present we
 // seed a learner-led, live-generated conversation with the learner's own
@@ -132,6 +133,11 @@ export default function AiConversationScenarioPanel({
     setEntitlementGateVisible(false);
     setEncouragement(null);
     setSessionEpoch((epoch) => epoch + 1);
+    // Step 9 telemetry: record each correction→conversation hand-off.
+    // Gated by auth + RETENTION_OUTCOME_EVENTS flag (ships dark until flipped).
+    void emitFeatureOutcome("correction_seed_handoff", "engaged", {
+      scenario: LEARNER_LED_AI_CONVERSATION_SCENARIO_ID,
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seedSentence, seedStamp]);
 

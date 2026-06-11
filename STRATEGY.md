@@ -310,7 +310,7 @@ enough not to lose. Status: CLOSED · FRONTIER · PLANNED.
 | 6 | 10+ interference patterns, precision held | MOAT (deepest) | CLOSED |
 | 7 | Real signal-level phoneme + tone grading (both directions) | MOAT | FRONTIER |
 | 8 | Conversation stays on topic 4+ turns, no repetition | PARITY | PLANNED |
-| 9 | Conversation pivots on what the learner said | PARITY core / MOAT twist | PLANNED |
+| 9 | Conversation pivots on what the learner said | PARITY core / MOAT twist | CLOSED |
 | 10 | Notices emotional state, adjusts (VN-calibrated warmth) | PARITY core / MOAT twist | PLANNED |
 | 11 | Catches awkward Vietlish — correct but unnatural | MOAT (sharpest) | PLANNED (seeding) |
 | 12 | Cross-session memory of the specific learner | PARITY | PLANNED |
