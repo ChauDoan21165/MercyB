@@ -1,0 +1,125 @@
+{
+  "corpus": "f2-family-bridge-scripts-wave5",
+  "languagePair": "en-vi",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F2",
+  "authoredAt": "2026-06-11",
+  "wave": 5,
+  "description": "Step-13 family-bridge bilingual scripts wave 5. Six shame-free English-Vietnamese scripts for diaspora learners talking with Vietnamese-speaking family about privacy, school systems, grief, boundaries, caregiving, and language identity. Append-only review material only; not wired to the engine.",
+  "scripts": [
+    {
+      "id": "f2w5-family-privacy-with-love",
+      "scenario": "Asking relatives not to share personal news before you are ready",
+      "learnerNeed": "The learner wants privacy without making family feel excluded or untrusted.",
+      "tone": "warm_clear",
+      "englishScript": [
+        "I want to tell the family myself when I am ready.",
+        "Please keep this private for now, even if people ask.",
+        "I am not hiding from everyone. I just need time to choose my words."
+      ],
+      "vietnameseBridge": [
+        "Con muốn tự nói với gia đình khi con sẵn sàng.",
+        "Bây giờ cô/chú giữ riêng chuyện này giúp con nhé, dù có ai hỏi.",
+        "Con không giấu mọi người. Con chỉ cần thời gian để chọn cách nói."
+      ],
+      "coachNoteVi": "Trong gia đình đông người, tin tức lan nhanh vì quan tâm. Câu này không buộc tội ai nhiều chuyện; nó giao một việc cụ thể là giữ riêng.",
+      "avoid": ["You always gossip about me.", "Nobody in this family respects privacy."],
+      "step13Tags": ["privacy", "family_news", "trust", "gentle_boundary"]
+    },
+    {
+      "id": "f2w5-family-school-system-explain",
+      "scenario": "Explaining a child's school support plan to grandparents",
+      "learnerNeed": "The learner needs to explain tutoring, learning support, or an IEP without letting elders hear it as shame.",
+      "tone": "reassuring_informative",
+      "englishScript": [
+        "The school is giving extra support so the child can learn in the best way.",
+        "This does not mean the child is lazy or bad.",
+        "It means the adults are making the path clearer."
+      ],
+      "vietnameseBridge": [
+        "Nhà trường đang hỗ trợ thêm để bé học theo cách phù hợp nhất.",
+        "Điều này không có nghĩa là bé lười hay hư.",
+        "Nó có nghĩa là người lớn đang làm con đường học rõ hơn cho bé."
+      ],
+      "coachNoteVi": "Nhiều ông bà nghe hỗ trợ học tập như một nhãn xấu. Đặt khung là người lớn điều chỉnh môi trường, không phải trẻ bị chê.",
+      "avoid": ["The child has a problem.", "You do not understand schools here."],
+      "step13Tags": ["school_support", "grandparents", "child_learning", "no_shame"]
+    },
+    {
+      "id": "f2w5-family-grief-call",
+      "scenario": "Calling family after a death when your Vietnamese feels limited",
+      "learnerNeed": "The learner wants to show grief and presence even if they cannot say everything in Vietnamese.",
+      "tone": "tender_present",
+      "englishScript": [
+        "I do not have all the Vietnamese words, but I am here with you.",
+        "I loved them too, and I am so sorry.",
+        "Can we stay on the phone for a little while, even if we are quiet?"
+      ],
+      "vietnameseBridge": [
+        "Con không có đủ hết từ tiếng Việt, nhưng con đang ở đây với gia đình.",
+        "Con cũng thương người đó, và con buồn lắm.",
+        "Mình giữ điện thoại thêm một chút được không, dù mình im lặng cũng được?"
+      ],
+      "coachNoteVi": "Khi có mất mát, sự hiện diện quan trọng hơn câu hoàn hảo. Cho phép im lặng giúp người học không biến nỗi buồn thành bài kiểm tra ngôn ngữ.",
+      "avoid": ["I do not know what to say, so I will call later.", "My Vietnamese is too bad for this."],
+      "step13Tags": ["grief", "condolence", "limited_vietnamese", "presence"]
+    },
+    {
+      "id": "f2w5-family-home-visit-boundary",
+      "scenario": "Setting limits during a long family visit",
+      "learnerNeed": "The learner wants to rest or work during a visit without seeming cold or Westernized.",
+      "tone": "grateful_structured",
+      "englishScript": [
+        "I am really happy to be here with everyone.",
+        "I need two quiet hours this afternoon to rest and answer work messages.",
+        "After that, I will come back out and spend time with the family."
+      ],
+      "vietnameseBridge": [
+        "Con rất vui được về ở với mọi người.",
+        "Chiều nay con cần hai tiếng yên tĩnh để nghỉ và trả lời tin nhắn công việc.",
+        "Sau đó con sẽ ra ngồi chơi với gia đình tiếp."
+      ],
+      "coachNoteVi": "Ranh giới nghe ấm hơn khi có giờ bắt đầu và giờ quay lại. Gia đình nghe được rằng bạn vẫn chọn ở bên họ.",
+      "avoid": ["I need space from all of you.", "Family visits are exhausting."],
+      "step13Tags": ["home_visit", "rest_boundary", "work_messages", "family_time"]
+    },
+    {
+      "id": "f2w5-family-medical-translation-choice",
+      "scenario": "Asking a parent to use a professional interpreter for medical care",
+      "learnerNeed": "The learner wants accurate medical communication without rejecting the role of helping parents.",
+      "tone": "protective_respectful",
+      "englishScript": [
+        "I will go with you because I care about you.",
+        "For the medical details, I want a professional interpreter there too.",
+        "That way nothing important depends only on my memory or my Vietnamese."
+      ],
+      "vietnameseBridge": [
+        "Con sẽ đi với ba/mẹ vì con thương ba/mẹ.",
+        "Những chi tiết y tế thì con muốn có thông dịch viên chuyên nghiệp ở đó nữa.",
+        "Như vậy không có chuyện quan trọng nào chỉ dựa vào trí nhớ hoặc tiếng Việt của con."
+      ],
+      "coachNoteVi": "Câu này bảo vệ cha mẹ và bảo vệ người con khỏi trách nhiệm quá nặng. Thông dịch viên không thay thế tình thương; họ giảm rủi ro.",
+      "avoid": ["I cannot translate for you anymore.", "Your medical words are too hard for me."],
+      "step13Tags": ["medical_interpreter", "parents", "translation_boundary", "caregiving"]
+    },
+    {
+      "id": "f2w5-family-language-identity",
+      "scenario": "Explaining that English feels easier without rejecting Vietnamese identity",
+      "learnerNeed": "The learner wants family to understand why English comes out first while still valuing Vietnamese.",
+      "tone": "identity_affirming",
+      "englishScript": [
+        "English comes out faster for me because I use it every day.",
+        "That does not mean Vietnamese is not part of me.",
+        "Please be patient while I find the words. I still want to connect."
+      ],
+      "vietnameseBridge": [
+        "Tiếng Anh ra nhanh hơn với con vì con dùng mỗi ngày.",
+        "Điều đó không có nghĩa là tiếng Việt không còn là một phần của con.",
+        "Mọi người kiên nhẫn với con khi con tìm từ nhé. Con vẫn muốn kết nối."
+      ],
+      "coachNoteVi": "Câu này tách khả năng nói nhanh khỏi lòng yêu gia đình. Người học không cần chứng minh căn tính bằng sự hoàn hảo.",
+      "avoid": ["Vietnamese is useless to me now.", "I am not really Vietnamese anymore."],
+      "step13Tags": ["language_identity", "english_dominant", "heritage_language", "connection"]
+    }
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "corpus": "f2-interference-taxonomy-wave5",
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F2",
+  "authoredAt": "2026-06-11",
+  "wave": 5,
+  "schemaBasis": "Content Factory standalone review pack; not wired to engine",
+  "description": "VN→EN interference taxonomy wave 5. Eight append-only review entries focused on subject recovery, be/do support, plural marking after numerals, enough/too placement, although/despite frames, since/when starting points, verb tense after time expressions, and relationship-safe disagreement. Full Vietnamese diacritics throughout.",
+  "patterns": [
+    {
+      "id": "f2w5_subject_recovery_from_context",
+      "category": "sentence_completeness",
+      "severity": "high",
+      "cefrLevelsObserved": ["A1", "A2", "B1"],
+      "name": "Subject dropped because context makes it clear in Vietnamese",
+      "l1ReasoningVi": "Tiếng Việt có thể bỏ chủ ngữ khi người nghe đã hiểu ai đang làm gì. Tiếng Anh thường cần chủ ngữ rõ, nhất là trong câu độc lập, tin nhắn công việc, và câu trả lời trong lớp.",
+      "learnerSignal": "The learner starts a sentence with a verb or adjective and expects context to supply I, it, she, or they.",
+      "examples": [
+        {
+          "incorrect": "Need submit the form today.",
+          "natural": "I need to submit the form today.",
+          "explanationVi": "Tiếng Anh cần chủ ngữ \"I\" và mẫu \"need to + verb\"."
+        },
+        {
+          "incorrect": "Is very cold outside.",
+          "natural": "It is very cold outside.",
+          "explanationVi": "Với thời tiết, tiếng Anh dùng chủ ngữ giả \"it\"."
+        },
+        {
+          "incorrect": "Cannot come to class because sick.",
+          "natural": "I cannot come to class because I am sick.",
+          "explanationVi": "Cần nói rõ ai không đến lớp và ai bị bệnh."
+        }
+      ],
+      "teachingMove": "Ask the learner to point to the hidden actor or hidden thing. Then rebuild the sentence with a visible subject before correcting anything else.",
+      "ruleTags": ["subject_drop", "sentence_completeness", "dummy_it", "vn_l1_transfer"]
+    },
+    {
+      "id": "f2w5_be_do_support_missing",
+      "category": "auxiliaries_questions_negatives",
+      "severity": "high",
+      "cefrLevelsObserved": ["A1", "A2", "B1"],
+      "name": "Be and do support omitted in questions and negatives",
+      "l1ReasoningVi": "Tiếng Việt tạo câu hỏi bằng từ hỏi hoặc giọng, và phủ định bằng \"không\" trước động từ/tính từ. Tiếng Anh cần trợ động từ khác nhau: be cho tính từ/trạng thái, do/does/did cho động từ thường.",
+      "learnerSignal": "The learner writes questions or negatives without is/are/do/does/did, especially with adjectives and daily verbs.",
+      "examples": [
+        {
+          "incorrect": "Why you late today?",
+          "natural": "Why are you late today?",
+          "explanationVi": "\"Late\" là tính từ nên cần \"are\" trong câu hỏi."
+        },
+        {
+          "incorrect": "I not understand this word.",
+          "natural": "I do not understand this word.",
+          "explanationVi": "Với động từ thường \"understand\", câu phủ định cần \"do not\"."
+        },
+        {
+          "incorrect": "She work tomorrow?",
+          "natural": "Does she work tomorrow?",
+          "explanationVi": "Câu hỏi hiện tại với \"she\" cần trợ động từ \"does\"."
+        }
+      ],
+      "teachingMove": "Sort the sentence into two tracks: be track for adjective/place/state; do track for action verbs. Correct the helper before correcting word choice.",
+      "ruleTags": ["auxiliaries", "do_support", "be_verb", "questions_negatives"]
+    },
+    {
+      "id": "f2w5_plural_after_numbers_classifiers",
+      "category": "number_marking",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A1", "A2", "B1"],
+      "name": "Plural -s missing after numbers because Vietnamese uses classifiers",
+      "l1ReasoningVi": "Tiếng Việt dùng số + loại từ + danh từ, như \"ba cái bàn\", và danh từ không đổi hình thức. Tiếng Anh thường cần danh từ số nhiều sau số lớn hơn một.",
+      "learnerSignal": "A count noun after two, three, many, several, or a specific number stays singular.",
+      "examples": [
+        {
+          "incorrect": "I have two appointment next week.",
+          "natural": "I have two appointments next week.",
+          "explanationVi": "Sau \"two\", danh từ đếm được cần số nhiều: \"appointments\"."
+        },
+        {
+          "incorrect": "There are five student in the group.",
+          "natural": "There are five students in the group.",
+          "explanationVi": "\"Five\" báo số nhiều nên thêm -s vào \"students\"."
+        },
+        {
+          "incorrect": "She bought three ticket for us.",
+          "natural": "She bought three tickets for us.",
+          "explanationVi": "\"Ticket\" là danh từ đếm được; sau \"three\" cần \"tickets\"."
+        }
+      ],
+      "teachingMove": "Use a number alarm: if the learner says a number bigger than one, pause and check whether the next count noun needs plural -s.",
+      "ruleTags": ["plural_s", "numbers", "classifiers", "count_nouns"]
+    },
+    {
+      "id": "f2w5_enough_too_word_order",
+      "category": "degree_adverbs",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Enough and too placed by Vietnamese degree-word logic",
+      "l1ReasoningVi": "Tiếng Việt đặt \"đủ\" và \"quá\" linh hoạt quanh tính từ hoặc động từ theo nghĩa. Tiếng Anh có mẫu cố định: adjective + enough, too + adjective, enough + noun.",
+      "learnerSignal": "The learner writes enough before an adjective, too after an adjective, or uses enough with a noun in the wrong position.",
+      "examples": [
+        {
+          "incorrect": "This room is enough big for our family.",
+          "natural": "This room is big enough for our family.",
+          "explanationVi": "Với tính từ, \"enough\" đứng sau: \"big enough\"."
+        },
+        {
+          "incorrect": "The soup is hot too for the baby.",
+          "natural": "The soup is too hot for the baby.",
+          "explanationVi": "\"Too\" đứng trước tính từ: \"too hot\"."
+        },
+        {
+          "incorrect": "We do not have chairs enough.",
+          "natural": "We do not have enough chairs.",
+          "explanationVi": "Với danh từ, \"enough\" đứng trước: \"enough chairs\"."
+        }
+      ],
+      "teachingMove": "Teach three fixed frames on one card: too + adjective; adjective + enough; enough + noun. Then ask if the sentence means 'too much' or 'sufficient'.",
+      "ruleTags": ["enough", "too", "word_order", "degree_adverbs"]
+    },
+    {
+      "id": "f2w5_although_despite_double_frame",
+      "category": "contrast_linking",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Although/despite contrast frame mixed with but or full clauses",
+      "l1ReasoningVi": "Tiếng Việt có thể dùng cặp \"mặc dù... nhưng...\" rất tự nhiên. Tiếng Anh thường không dùng \"although\" và \"but\" cho cùng một quan hệ, và \"despite\" cần danh từ hoặc V-ing chứ không cần mệnh đề đầy đủ.",
+      "learnerSignal": "The learner writes although...but, despite + subject + verb, or in spite of with a full clause.",
+      "examples": [
+        {
+          "incorrect": "Although I was tired, but I went to work.",
+          "natural": "Although I was tired, I went to work.",
+          "explanationVi": "Tiếng Anh chỉ cần \"although\" hoặc \"but\", không dùng cả hai trong cùng một khung."
+        },
+        {
+          "incorrect": "Despite it rained, we went outside.",
+          "natural": "Despite the rain, we went outside.",
+          "explanationVi": "\"Despite\" đi với danh từ hoặc V-ing, không đi trực tiếp với mệnh đề \"it rained\"."
+        },
+        {
+          "incorrect": "In spite of she was busy, she called me.",
+          "natural": "Even though she was busy, she called me.",
+          "explanationVi": "Nếu muốn dùng mệnh đề đầy đủ, chọn \"even though\" hoặc \"although\"."
+        }
+      ],
+      "teachingMove": "Give two safe choices: although/even though + full clause, or despite/in spite of + noun/V-ing. Remove the extra but unless the sentence starts fresh.",
+      "ruleTags": ["although_but", "despite", "contrast", "connectors"]
+    },
+    {
+      "id": "f2w5_since_when_starting_point",
+      "category": "time_reference",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Since and when used without English starting-point logic",
+      "l1ReasoningVi": "Tiếng Việt dùng \"từ\", \"khi\", \"hồi\" để chỉ mốc thời gian linh hoạt. Tiếng Anh tách \"since\" cho điểm bắt đầu kéo dài đến hiện tại và \"when\" cho thời điểm trong câu chuyện.",
+      "learnerSignal": "The learner uses since with a duration, or when where present perfect plus since would be clearer.",
+      "examples": [
+        {
+          "incorrect": "I live here since five years.",
+          "natural": "I have lived here for five years.",
+          "explanationVi": "\"Five years\" là khoảng thời gian nên dùng \"for\", không dùng \"since\"."
+        },
+        {
+          "incorrect": "I know her when I was in college.",
+          "natural": "I have known her since college.",
+          "explanationVi": "Nếu quen từ hồi đại học đến bây giờ, dùng \"have known\" + \"since\"."
+        },
+        {
+          "incorrect": "Since I was child, I like drawing.",
+          "natural": "Since I was a child, I have liked drawing.",
+          "explanationVi": "Ý kéo dài từ nhỏ đến nay nên dùng present perfect: \"have liked\"."
+        }
+      ],
+      "teachingMove": "Ask whether the time continues to now. If yes, use have/has + past participle with since + starting point or for + duration.",
+      "ruleTags": ["since_for", "present_perfect", "time_reference", "starting_point"]
+    },
+    {
+      "id": "f2w5_future_after_when_if",
+      "category": "time_condition_clauses",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Will repeated after when/if/before for future time",
+      "l1ReasoningVi": "Tiếng Việt có thể đánh dấu tương lai bằng \"sẽ\" ở cả hai vế. Trong tiếng Anh, mệnh đề thời gian hoặc điều kiện sau when, if, before, after thường dùng hiện tại đơn cho ý tương lai.",
+      "learnerSignal": "The learner writes will in both clauses: when I will, if she will, before we will.",
+      "examples": [
+        {
+          "incorrect": "When I will finish work, I will call you.",
+          "natural": "When I finish work, I will call you.",
+          "explanationVi": "Sau \"when\" chỉ thời gian tương lai, dùng hiện tại đơn: \"when I finish\"."
+        },
+        {
+          "incorrect": "If she will come early, we can eat together.",
+          "natural": "If she comes early, we can eat together.",
+          "explanationVi": "Sau \"if\" trong điều kiện thật, dùng hiện tại đơn: \"if she comes\"."
+        },
+        {
+          "incorrect": "Before we will leave, we should check the tickets.",
+          "natural": "Before we leave, we should check the tickets.",
+          "explanationVi": "Sau \"before\" cũng dùng hiện tại đơn cho ý tương lai."
+        }
+      ],
+      "teachingMove": "Teach the one-will rule for future time clauses: put will in the main result clause, not inside when/if/before/after.",
+      "ruleTags": ["future_time_clauses", "will", "if_when", "conditionals"]
+    },
+    {
+      "id": "f2w5_disagreement_softening_family_work",
+      "category": "register_pragmatics",
+      "severity": "low",
+      "cefrLevelsObserved": ["B1", "B2", "C1"],
+      "name": "Direct disagreement translated without relationship cushion",
+      "l1ReasoningVi": "Tiếng Việt có nhiều cách làm mềm bất đồng qua xưng hô, vòng vo, hoặc nhường mặt mũi. Khi chuyển sang tiếng Anh, người học có thể nói đúng ý nhưng nghe cứng, nhất là với gia đình, giáo viên, khách hàng, hoặc sếp.",
+      "learnerSignal": "The sentence is grammatically correct but starts with a bare no, you are wrong, or I disagree in a sensitive relationship.",
+      "examples": [
+        {
+          "incorrect": "No, you are wrong about my schedule.",
+          "natural": "I think there may be a small misunderstanding about my schedule.",
+          "explanationVi": "Câu mới giữ ý bất đồng nhưng mở bằng khả năng hiểu nhầm, nghe mềm hơn."
+        },
+        {
+          "incorrect": "I disagree with your plan for my child.",
+          "natural": "I see why you suggest that, but I would like to try a different plan for my child.",
+          "explanationVi": "Công nhận ý của người nghe trước giúp ranh giới dễ được nhận hơn."
+        },
+        {
+          "incorrect": "That is not true, Mom.",
+          "natural": "I understand why it looks that way, Mẹ, but that is not what happened.",
+          "explanationVi": "Với gia đình, thêm một câu công nhận cảm nhận trước khi sửa thông tin."
+        }
+      ],
+      "teachingMove": "Keep the truth, add a cushion: I see why..., I understand..., There may be a misunderstanding..., then state the correction clearly.",
+      "ruleTags": ["disagreement", "softening", "register", "family_work_pragmatics"]
+    }
+  ]
+}
