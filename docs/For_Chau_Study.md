@@ -14,6 +14,7 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 
 ## Lesson Index
 
+16. [The FOLLOW-403 class — manual grants are invisible until they match the resolver's exact decision input](#16-the-follow-403-class--manual-grants-are-invisible-until-they-match-the-resolvers-exact-decision-input)
 15. [When `du` and `df` disagree, look outside the repo](#15-when-du-and-df-disagree-look-outside-the-repo)
 14. [Cron files must live on main](#14-cron-files-must-live-on-main)
 13. [Test runners need ownership boundaries too](#13-test-runners-need-ownership-boundaries-too)
@@ -29,6 +30,30 @@ A living reference of important lessons surfaced while building MercyBlade. New 
 3. [Restore before redesign](#3-restore-before-redesign)
 4. [Verify against current main, not stale audit notes](#4-verify-against-current-main-not-stale-audit-notes)
 5. [Silent failures cost more than loud ones](#5-silent-failures-cost-more-than-loud-ones)
+
+---
+
+## 16. The FOLLOW-403 class — manual grants are invisible until they match the resolver's exact decision input
+
+**What it is.** A 403 that looks like a permissions bug is sometimes correct behavior on an empty set. The entitlement resolver returns `is_premium:false` when the `subscriptions` table has zero matching rows — not because the gate is misconfigured, but because there is literally nothing to evaluate. If the grant row was never inserted, the correct answer IS false. The gate did nothing wrong.
+
+**Why it matters.** "The grant exists" is a belief, not evidence. A manual grant applied via SQL can fail silently on any one of: wrong table, wrong `user_id`, wrong `app_id`, wrong `status` value, a `current_period_end` that is NULL, missing NOT NULL columns, or a column name typo (`subscription_id` vs `provider_subscription_id`). The resolver doesn't care how confident the brief was — it runs the query and returns what the query returns.
+
+**MercyBlade example (FOLLOW-403 incident, 2026-06-11).** Test account `golden-premium@mercyblade.test` was supposed to have a paid subscription. It hit a 403 on the Mercy AI endpoint. The first theory was a buggy gate or a caching layer. A3 ran a service-role read and found **zero rows** in `subscriptions`, `user_subscriptions`, and `entitlements` (captured in `/Users/admin/reports/a3-follow403r2b-1445.json`). The resolver (`_shared/entitlement.ts:327–333`) hit the empty-set branch by design and returned `{"is_premium":false,"status":"inactive"}`. The 403 at `netlify/functions/api-mercy-ai.ts:164–166` (gate: `is_premium===true` OR `adminLevel>=9`) was firing correctly — there was nothing wrong with the gate. The v2 grant SQL had simply never landed in prod.
+
+The first fix attempt also carried a hidden failure: it used the nullable `provider_subscription_id` instead of the required `subscription_id`, and omitted four NOT NULL columns — `customer_id`, `subscription_id`, `metadata`, `provider_metadata`. Postgres would have rejected the insert before any entitlement changed. Schema was verified via OpenAPI before the corrected SQL was produced:
+
+```sql
+INSERT INTO public.subscriptions
+  (user_id, app_id, provider, customer_id, subscription_id, provider_subscription_id,
+   status, current_period_end, metadata, provider_metadata, environment)
+VALUES
+  ('a1be10da-d601-46b3-ab08-a11d189aac19', 'mercy_blade', 'stripe',
+   'cus_golden_test', 'sub_golden_test_2030', 'sub_golden_test_2030',
+   'active', '2030-01-01 00:00:00+00', '{}'::jsonb, '{}'::jsonb, 'sandbox');
+```
+
+**Action.** Before diagnosing a 403 as "the gate is broken," confirm the grant actually exists. Capture **two** artifacts first: (1) the deployed resolver's actual query — file name and line number, not the brief's description of it; (2) the live decision input — the API's JSON response and the raw rows in the exact table the resolver queries. If the decision input is empty, the 403 is correct; fix the data, not the code. When writing a manual grant INSERT, cross-check every column against the current schema (OpenAPI or migration files) before running it — NOT NULL columns with no default will silently reject the whole row and leave the user unchanged.
 
 ---
 
@@ -317,4 +342,4 @@ Not worth adding:
 
 ---
 
-*Last updated: June 9, 2026 — 14 lessons total; 12–14 from the June 9 operations/file-cleanup pass, 11 from the May 19 evening session, 6–10 from the May 19 hardening wave, 1–5 from initial creation.*
+*Last updated: June 11, 2026 — 16 lessons total; 16 from the June 11 FOLLOW-403 investigation, 12–15 from the June 9 operations/file-cleanup pass, 11 from the May 19 evening session, 6–10 from the May 19 hardening wave, 1–5 from initial creation.*
