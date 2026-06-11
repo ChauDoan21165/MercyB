@@ -186,40 +186,69 @@ npm run verify:golden-flows          # full five-flow suite vs https://mercyblad
 
 ---
 
-## ⚠️ Token expiry — the one thing that will bite
+## ✅ Token expiry — resolved (Option 3 implemented)
 
-A Supabase **access token expires** (default ~1 hour; set under Dashboard →
-Authentication → Sessions / "Access token expiry"). `getUser()` rejects an
-expired token with 401, which would make flows 3/4 fail.
+A Supabase **access token expires** (~1 hour by default). Option 3 from the
+original runbook — mint a fresh token at run time using stored credentials —
+is now implemented in `scripts/golden-flows.sh` (A4 MR). The gate never
+holds a stale token; it always mints fresh before running Playwright.
 
-What this means in practice:
+### How it works
 
-- **Local / immediate verification (Step 4):** mint, then run within the
-  hour. Totally fine.
-- **One-off manual CI run:** mint fresh, set the variables, trigger the
-  manual `golden-flows-prod` job within the hour. Fine.
-- **Recurring auto gate on every main push:** a paste-once token value
-  **will expire** and then flows 3/4 start 401-ing on later merges. The
-  no-token smoke (1/2/5) keeps protecting you; 3/4 silently degrade to
-  "stale token" unless refreshed.
+`scripts/golden-flows.sh` resolves each JWT in priority order:
 
-**Pick one:**
+1. **`GOLDEN_FLOW_PREMIUM_JWT` / `GOLDEN_FLOW_FREE_JWT` set** → used as-is
+   (manual override; useful for fast local runs or one-off debugging).
+2. **`GOLDEN_FLOW_PREMIUM_EMAIL` + `GOLDEN_FLOW_PREMIUM_PASSWORD`** (and
+   free equivalents) **set** → script mints a fresh access token at run
+   time via the Supabase password grant. Token never touches a file or log.
+3. **Neither** + `GOLDEN_FLOW_ALLOW_MISSING_SECRETS=1` → dry-run (flows
+   3/4 skip, as before).
+4. **Neither** + no escape hatch → exit 2 (hard fail, as before).
 
-1. **Smoke-only as the standing gate (no action, recommended short-term).**
-   Leave the JWT variables unset. Flows 1/2/5 run on every deploy forever
-   with zero maintenance. Run the full five manually (Step 4) when you want
-   the conversation/entitlement assurance. This is the honest steady state
-   until option 3 lands.
-2. **Raise the access-token TTL** for the project (Dashboard → Auth →
-   Sessions). Buys a longer window but is a **global security setting** that
-   affects all users — not recommended just for tests.
-3. **Durable fix (separate follow-up task, ~small):** store the test users'
-   email+password (or refresh tokens) as masked CI vars instead of raw
-   access tokens, and have `scripts/golden-flows.sh` exchange them for a
-   fresh access token at run time (the same password-grant curl as Step 2).
-   Then the full five run green on every deploy with no manual refresh.
-   This needs a code change to `golden-flows.sh`, so it is out of scope for
-   this docs-only runbook — flagged for A2/next.
+### Step 3b — Set the durable credentials (replaces Step 3)
+
+> **Do this instead of setting `GOLDEN_FLOW_PREMIUM_JWT` /
+> `GOLDEN_FLOW_FREE_JWT`.** The credential vars never expire; the script
+> exchanges them for a fresh JWT on every run.
+
+GitLab → project `cd12536/mercyB` → **Settings → CI/CD → Variables → Add
+variable**, four times:
+
+| Key | Value | Flags |
+|-----|-------|-------|
+| `GOLDEN_FLOW_PREMIUM_EMAIL` | e.g. `golden-premium@mercyblade.test` | **Masked**, Protect on |
+| `GOLDEN_FLOW_PREMIUM_PASSWORD` | the premium test account password | **Masked**, Protect on |
+| `GOLDEN_FLOW_FREE_EMAIL` | e.g. `golden-free@mercyblade.test` | **Masked**, Protect on |
+| `GOLDEN_FLOW_FREE_PASSWORD` | the free test account password | **Masked**, Protect on |
+
+**Anon key:** `scripts/golden-flows.sh` reads `GOLDEN_FLOW_ANON_KEY` first,
+then falls back to `VITE_SUPABASE_ANON_KEY`. If `VITE_SUPABASE_ANON_KEY` is
+already a CI variable for your build (it is, since it ships in the bundle),
+no separate anon-key variable is needed. If not, add:
+
+| Key | Value | Flags |
+|-----|-------|-------|
+| `GOLDEN_FLOW_ANON_KEY` | the project `anon` `public` key | Masked |
+
+Once these four (or five) variables are set the `golden-flows-prod` job
+automatically promotes to the full five-flow suite on every `main` push —
+no manual refresh, no expiry.
+
+The old `GOLDEN_FLOW_PREMIUM_JWT` / `GOLDEN_FLOW_FREE_JWT` variables (if
+you previously set them) can be left in place — they act as overrides and
+take priority over the credential path.
+
+---
+
+### Historical options (for reference)
+
+1. ~~**Smoke-only as the standing gate.**~~ Still valid if you want the
+   minimal-maintenance posture; leave all credential vars unset.
+2. ~~**Raise the access-token TTL.**~~ Global security setting, not
+   recommended.
+3. **Durable fix — IMPLEMENTED** (this runbook, A4 MR): credentials stored
+   as masked CI vars; script mints fresh JWTs at run time.
 
 ---
 
@@ -229,9 +258,11 @@ What this means in practice:
   value has disallowed characters or is too short. JWTs should be fine; if
   not, you can save it unmasked (the suite/tests never print the token) or
   use a "Masked and hidden" variable if your GitLab version offers it.
-- **Flow 3/4 returns 401 (`Unauthorized` / `Missing bearer token`).** The
-  token is expired or malformed. Re-mint (Step 2). Confirm you stored the
-  `access_token`, not the `refresh_token` or the anon key.
+- **Flow 3/4 returns 401 (`Unauthorized` / `Missing bearer token`).** With
+  the credential path: the mint call failed silently (check CI job logs for
+  `failed to mint … JWT — HTTP …`). Verify the test account password in
+  Supabase Dashboard. With the override path: the JWT is expired or malformed
+  — re-mint manually (Step 2) and update the `*_JWT` CI variable.
 - **Flow 3 (FOLLOW) returns 403 `Premium required`.** The "premium" user is
   not actually premium — `me-entitlement` is returning `is_premium:false`.
   Re-check Step 1 entitlement and the verification curl in Step 2.
@@ -251,9 +282,22 @@ What this means in practice:
 ```
 Project:   buemdfxyhxunzpgdoqin.supabase.co
 Mint:      POST /auth/v1/token?grant_type=password  (apikey: <ANON_KEY>)
-Vars:      GOLDEN_FLOW_PREMIUM_JWT, GOLDEN_FLOW_FREE_JWT  (GitLab → Settings → CI/CD → Variables, Masked)
-Local:     npm run verify:golden-flows         (full 5 with both JWTs)
+
+Durable CI vars (set once, never expire):
+  GOLDEN_FLOW_PREMIUM_EMAIL     premium test account email    (Masked, Protect on)
+  GOLDEN_FLOW_PREMIUM_PASSWORD  premium test account password (Masked, Protect on)
+  GOLDEN_FLOW_FREE_EMAIL        free test account email       (Masked, Protect on)
+  GOLDEN_FLOW_FREE_PASSWORD     free test account password    (Masked, Protect on)
+  GOLDEN_FLOW_ANON_KEY          Supabase anon key             (Masked; omit if
+                                                               VITE_SUPABASE_ANON_KEY
+                                                               is already a CI var)
+
+Override vars (optional, direct JWT — bypasses mint; useful for local one-offs):
+  GOLDEN_FLOW_PREMIUM_JWT       premium user access token     (Masked)
+  GOLDEN_FLOW_FREE_JWT          free user access token        (Masked)
+
+Local:     npm run verify:golden-flows         (full 5 — with creds or override JWTs)
 Smoke:     GOLDEN_FLOW_ALLOW_MISSING_SECRETS=1 npm run verify:golden-flows   (flows 1/2/5)
 CI job:    golden-flows-prod  (.gitlab-ci.yml, verify stage, main-push + manual)
-Caveat:    access tokens expire ~1h → see "Token expiry"
+Expiry:    none — script mints a fresh token on every run (see "Token expiry")
 ```
