@@ -1,0 +1,460 @@
+{
+  "corpus": "f5-minimal-pairs-wave4",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F5",
+  "authoredAt": "2026-06-11",
+  "wave": 4,
+  "description": "Vietnamese-specific English minimal pairs for Step 7 pronunciation review. Covers /p/-/f/ confusions, /tʃ/-/ʃ/ confusions, nasal finals (-n/-ng/-m class), and weak-form vowels (schwa). Content-only corpus; not wired to scoring or UI.",
+  "minimalPairs": [
+    {
+      "id": "f5w4-001",
+      "category": "p_f_confusions",
+      "pair": { "target": "pan", "contrast": "fan" },
+      "ipa": { "target": "/pæn/", "contrast": "/fæn/" },
+      "vi": "Âm /p/ đầu \"pan\" bật hơi mạnh (hai môi), còn /f/ đầu \"fan\" là ma sát môi-răng; người Việt đôi khi nhầm vì chữ \"ph\" tiếng Việt đọc là /f/, nên \"pan\" và \"fan\" dễ lẫn khi nghe nhanh.",
+      "examples": { "target": "Heat the pan before you add oil.", "contrast": "Turn on the fan — it is too hot." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-002",
+      "category": "p_f_confusions",
+      "pair": { "target": "pin", "contrast": "fin" },
+      "ipa": { "target": "/pɪn/", "contrast": "/fɪn/" },
+      "vi": "/p/ bật hơi trong \"pin\" khác hoàn toàn với /f/ ma sát trong \"fin\"; người Việt cần đặt răng trên lên môi dưới trước khi nói \"fin\" thay vì đóng cả hai môi như \"pin\".",
+      "examples": { "target": "Use a pin to hold the fabric.", "contrast": "The shark had a large fin." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-003",
+      "category": "p_f_confusions",
+      "pair": { "target": "pit", "contrast": "fit" },
+      "ipa": { "target": "/pɪt/", "contrast": "/fɪt/" },
+      "vi": "\"pit\" bắt đầu bằng /p/ bật hơi; \"fit\" bắt đầu bằng /f/ ma sát; người Việt cần đặt môi-răng trước khi nói \"fit\" thay vì đóng hai môi như \"pit\".",
+      "examples": { "target": "Watch out for the pit near the road.", "contrast": "These shoes do not fit me." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-004",
+      "category": "p_f_confusions",
+      "pair": { "target": "pale", "contrast": "fail" },
+      "ipa": { "target": "/peɪl/", "contrast": "/feɪl/" },
+      "vi": "\"pale\" cần /p/ bật hơi, \"fail\" cần /f/ ma sát môi-răng; hai âm đầu này thường bị nhập vì người học không phân biệt vị trí phát âm khi nghe nhanh.",
+      "examples": { "target": "Her face looked pale after the news.", "contrast": "Do not fail the final test." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-005",
+      "category": "p_f_confusions",
+      "pair": { "target": "past", "contrast": "fast" },
+      "ipa": { "target": "/pæst/", "contrast": "/fæst/" },
+      "vi": "Âm /p/ bật trong \"past\" và /f/ ma sát trong \"fast\" cần phân biệt rõ ở đầu từ; nếu không đặt răng lên môi cho \"fast\", câu có thể bị hiểu nhầm hoàn toàn.",
+      "examples": { "target": "The train drove past the station.", "contrast": "He spoke too fast to follow." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-006",
+      "category": "p_f_confusions",
+      "pair": { "target": "pour", "contrast": "four" },
+      "ipa": { "target": "/pɔːr/", "contrast": "/fɔːr/" },
+      "vi": "\"pour\" và \"four\" khác nhau chỉ ở âm đầu /p/ (bật hai môi) và /f/ (ma sát môi-răng); nguyên âm và âm cuối giống nhau, nên người nghe dựa hoàn toàn vào âm đầu để hiểu nghĩa.",
+      "examples": { "target": "Please pour the water carefully.", "contrast": "I need four more chairs." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-007",
+      "category": "p_f_confusions",
+      "pair": { "target": "pine", "contrast": "fine" },
+      "ipa": { "target": "/paɪn/", "contrast": "/faɪn/" },
+      "vi": "\"pine\" và \"fine\" chỉ khác âm đầu /p/ và /f/; người Việt cần đặt răng trên lên môi dưới và thổi hơi để tạo /f/ trong \"fine\" thay vì bật môi như \"pine\".",
+      "examples": { "target": "A tall pine tree stood by the path.", "contrast": "The weather is fine today." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-008",
+      "category": "p_f_confusions",
+      "pair": { "target": "port", "contrast": "fort" },
+      "ipa": { "target": "/pɔːrt/", "contrast": "/fɔːrt/" },
+      "vi": "\"port\" (cảng) và \"fort\" (pháo đài) chỉ khác âm /p/ và /f/ đầu từ; trong giao tiếp thực tế, nhầm hai từ này dễ gây hiểu lầm nghiêm trọng.",
+      "examples": { "target": "The ship entered the port at noon.", "contrast": "The old fort sat on the hilltop." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-009",
+      "category": "p_f_confusions",
+      "pair": { "target": "cup", "contrast": "cuff" },
+      "ipa": { "target": "/kʌp/", "contrast": "/kʌf/" },
+      "vi": "Âm cuối /p/ trong \"cup\" đóng hai môi, còn /f/ trong \"cuff\" là ma sát môi-răng; người Việt thường chặn âm cuối quá kín và bỏ qua sự khác biệt này.",
+      "examples": { "target": "Fill my cup with tea.", "contrast": "Roll up your sleeve past the cuff." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-010",
+      "category": "p_f_confusions",
+      "pair": { "target": "nap", "contrast": "naff" },
+      "ipa": { "target": "/næp/", "contrast": "/næf/" },
+      "vi": "Âm cuối /p/ và /f/ đều khó phân biệt khi đứng ở cuối từ; \"nap\" đóng môi, \"naff\" thổi hơi qua răng; người Việt thường đóng cả hai kiểu như nhau.",
+      "examples": { "target": "I took a short nap after lunch.", "contrast": "That colour combination looks naff." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w4-011",
+      "category": "p_f_confusions",
+      "pair": { "target": "tip", "contrast": "tiff" },
+      "ipa": { "target": "/tɪp/", "contrast": "/tɪf/" },
+      "vi": "\"tip\" và \"tiff\" khác nhau ở âm cuối /p/ và /f/; âm cuối tiếng Anh quyết định nghĩa, nhưng tiếng Việt thường không thả hơi rõ ở đây.",
+      "examples": { "target": "Leave a tip for the waiter.", "contrast": "They had a small tiff over money." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w4-012",
+      "category": "p_f_confusions",
+      "pair": { "target": "supper", "contrast": "suffer" },
+      "ipa": { "target": "/ˈsʌpər/", "contrast": "/ˈsʌfər/" },
+      "vi": "Ở giữa từ, /p/ trong \"supper\" đóng hai môi trong khi /f/ trong \"suffer\" giữ ma sát môi-răng; nguyên âm và nhịp điệu giống nhau nên âm giữa là điểm phân biệt duy nhất.",
+      "examples": { "target": "We had supper at seven.", "contrast": "Cold weather can make your joints suffer." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w4-013",
+      "category": "tsh_sh_confusions",
+      "pair": { "target": "chin", "contrast": "shin" },
+      "ipa": { "target": "/tʃɪn/", "contrast": "/ʃɪn/" },
+      "vi": "\"chin\" bắt đầu bằng /tʃ/ — âm tắc-xát — còn \"shin\" bắt đầu bằng /ʃ/ thuần ma sát; người Việt dùng \"ch\" tiếng Việt (/tɕ/) gần với /tʃ/ nhưng dễ bỏ phần bật đầu khi nghe.",
+      "examples": { "target": "He has a small scar on his chin.", "contrast": "She hit her shin on the table." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-014",
+      "category": "tsh_sh_confusions",
+      "pair": { "target": "chop", "contrast": "shop" },
+      "ipa": { "target": "/tʃɒp/", "contrast": "/ʃɒp/" },
+      "vi": "\"chop\" cần âm bật-xát /tʃ/ trước nguyên âm, còn \"shop\" chỉ cần ma sát /ʃ/; người Việt dễ mất phần bật đầu của /tʃ/ và làm hai từ nghe giống nhau.",
+      "examples": { "target": "Chop the vegetables into small pieces.", "contrast": "I went to the shop for milk." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-015",
+      "category": "tsh_sh_confusions",
+      "pair": { "target": "choose", "contrast": "shoes" },
+      "ipa": { "target": "/tʃuːz/", "contrast": "/ʃuːz/" },
+      "vi": "\"choose\" có /tʃ/ bật-xát, còn \"shoes\" bắt đầu bằng /ʃ/ thuần; vì tiếng Việt không có /ʃ/, người học dễ nhập cả hai thành âm gần \"ch\" tiếng Việt.",
+      "examples": { "target": "Please choose one option from the list.", "contrast": "Take off your shoes at the door." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-016",
+      "category": "tsh_sh_confusions",
+      "pair": { "target": "chair", "contrast": "share" },
+      "ipa": { "target": "/tʃer/", "contrast": "/ʃer/" },
+      "vi": "\"chair\" cần lưỡi chặn vòm miệng rồi thả hơi (/tʃ/), còn \"share\" thả hơi liên tục (/ʃ/); nhầm hai từ này trong câu hội thoại có thể gây hiểu lầm đáng kể.",
+      "examples": { "target": "Take a seat in the chair.", "contrast": "Please share your thoughts with us." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-017",
+      "category": "tsh_sh_confusions",
+      "pair": { "target": "cheap", "contrast": "sheep" },
+      "ipa": { "target": "/tʃiːp/", "contrast": "/ʃiːp/" },
+      "vi": "Nguyên âm /iː/ và âm cuối /p/ giống nhau; khác biệt duy nhất là /tʃ/ có phần chặn ở đầu, còn /ʃ/ chỉ là ma sát; người Việt dễ thêm hoặc bỏ phần bật này.",
+      "examples": { "target": "This market is very cheap.", "contrast": "A white sheep stood in the field." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-018",
+      "category": "tsh_sh_confusions",
+      "pair": { "target": "cheer", "contrast": "sheer" },
+      "ipa": { "target": "/tʃɪr/", "contrast": "/ʃɪr/" },
+      "vi": "/tʃ/ trong \"cheer\" cần lưỡi chặn vòm miệng trước, còn /ʃ/ trong \"sheer\" chỉ cần lưỡi nâng gần vòm; bỏ phần chặn làm \"cheer\" nghe thành \"sheer\".",
+      "examples": { "target": "The crowd gave a loud cheer.", "contrast": "The cliff was a sheer drop." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-019",
+      "category": "tsh_sh_confusions",
+      "pair": { "target": "catch", "contrast": "cash" },
+      "ipa": { "target": "/kætʃ/", "contrast": "/kæʃ/" },
+      "vi": "Âm cuối /tʃ/ trong \"catch\" cần chặn lưỡi trước khi thả, còn /ʃ/ trong \"cash\" thả hơi liên tục; người Việt dễ bỏ phần chặn cuối vì tiếng Việt không có /tʃ/ ở cuối từ.",
+      "examples": { "target": "Catch the ball before it hits the ground.", "contrast": "I paid for it in cash." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-020",
+      "category": "tsh_sh_confusions",
+      "pair": { "target": "much", "contrast": "mush" },
+      "ipa": { "target": "/mʌtʃ/", "contrast": "/mʌʃ/" },
+      "vi": "Cuối \"much\" cần chặn rồi bật (/tʃ/), còn \"mush\" kết thúc bằng /ʃ/ trôi chảy; người Việt thường không giữ phần chặn âm cuối nên hai từ dễ nhập.",
+      "examples": { "target": "Do not eat too much at once.", "contrast": "The snow turned to mush." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-021",
+      "category": "tsh_sh_confusions",
+      "pair": { "target": "watch", "contrast": "wash" },
+      "ipa": { "target": "/wɒtʃ/", "contrast": "/wɒʃ/" },
+      "vi": "\"watch\" cần /tʃ/ ở cuối — chặn rồi bật — còn \"wash\" kết thúc bằng /ʃ/ thuần; rất hay nhầm vì nguyên âm và âm đầu giống nhau.",
+      "examples": { "target": "Check your watch for the time.", "contrast": "Wash your hands before eating." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-022",
+      "category": "tsh_sh_confusions",
+      "pair": { "target": "witch", "contrast": "wish" },
+      "ipa": { "target": "/wɪtʃ/", "contrast": "/wɪʃ/" },
+      "vi": "Nguyên âm và âm đầu đều giống nhau; khác biệt ở âm cuối /tʃ/ (có chặn) và /ʃ/ (không chặn); người Việt dễ làm \"witch\" thành \"wish\" khi bỏ phần bật cuối.",
+      "examples": { "target": "The witch cast a spell in the story.", "contrast": "I wish you good luck." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-023",
+      "category": "tsh_sh_confusions",
+      "pair": { "target": "ditch", "contrast": "dish" },
+      "ipa": { "target": "/dɪtʃ/", "contrast": "/dɪʃ/" },
+      "vi": "\"ditch\" kết thúc bằng /tʃ/ và \"dish\" kết thúc bằng /ʃ/; tiếng Việt không có âm tắc-xát cuối này, nên /tʃ/ dễ bị giản lược thành /ʃ/.",
+      "examples": { "target": "He fell into the ditch by the road.", "contrast": "Wash every dish after dinner." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-024",
+      "category": "tsh_sh_confusions",
+      "pair": { "target": "march", "contrast": "marsh" },
+      "ipa": { "target": "/mɑːrtʃ/", "contrast": "/mɑːrʃ/" },
+      "vi": "\"march\" cần chặn và bật /tʃ/ sau /r/, còn \"marsh\" kết thúc bằng /ʃ/ trôi; cụm /rtʃ/ ở cuối rất khó và người Việt thường giản lược thành /rʃ/ hoặc bỏ âm cuối.",
+      "examples": { "target": "The soldiers had to march five miles.", "contrast": "A heron stood quietly in the marsh." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w4-025",
+      "category": "nasal_finals",
+      "pair": { "target": "sin", "contrast": "sing" },
+      "ipa": { "target": "/sɪn/", "contrast": "/sɪŋ/" },
+      "vi": "\"sin\" kết thúc bằng /n/ đầu lưỡi, còn \"sing\" kết thúc bằng /ŋ/ cuống lưỡi; không bật /g/ thêm sau /ŋ/ — đây là lỗi phổ biến vì chữ \"ng\" trong tiếng Việt thường đi kèm với /g/ trong một số phương ngữ.",
+      "examples": { "target": "It is not a sin to make mistakes.", "contrast": "They sing together every morning." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-026",
+      "category": "nasal_finals",
+      "pair": { "target": "win", "contrast": "wing" },
+      "ipa": { "target": "/wɪn/", "contrast": "/wɪŋ/" },
+      "vi": "\"win\" đóng bằng đầu lưỡi /n/, còn \"wing\" đóng bằng cuống lưỡi /ŋ/ không có /g/ bật ra thêm; người Việt học cần tránh thêm âm /g/ sau /ŋ/ cuối từ.",
+      "examples": { "target": "Our team needs to win this match.", "contrast": "The bird injured its wing." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-027",
+      "category": "nasal_finals",
+      "pair": { "target": "run", "contrast": "rung" },
+      "ipa": { "target": "/rʌn/", "contrast": "/rʌŋ/" },
+      "vi": "\"run\" và \"rung\" khác chỉ ở âm cuối mũi; /n/ trong \"run\" dùng đầu lưỡi, /ŋ/ trong \"rung\" dùng cuống lưỡi; không bật /g/ thêm sau /ŋ/.",
+      "examples": { "target": "I run to work on Fridays.", "contrast": "The bell had already rung." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-028",
+      "category": "nasal_finals",
+      "pair": { "target": "sun", "contrast": "sung" },
+      "ipa": { "target": "/sʌn/", "contrast": "/sʌŋ/" },
+      "vi": "\"sun\" đóng bằng /n/ trước, còn \"sung\" đóng bằng /ŋ/ cuống; người Việt cần lưỡi lùi hẳn về phía sau hàm ếch mềm và không bật /g/ ra sau.",
+      "examples": { "target": "The sun rose at six this morning.", "contrast": "The children have sung that song before." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-029",
+      "category": "nasal_finals",
+      "pair": { "target": "ban", "contrast": "bang" },
+      "ipa": { "target": "/bæn/", "contrast": "/bæŋ/" },
+      "vi": "Chỉ khác âm mũi cuối /n/ và /ŋ/; \"bang\" cần lưỡi lùi về cuống họng để đóng đúng /ŋ/, không thêm /g/ bật như nhiều người Việt vẫn làm.",
+      "examples": { "target": "There is a ban on phones in here.", "contrast": "I heard a loud bang outside." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-030",
+      "category": "nasal_finals",
+      "pair": { "target": "fan", "contrast": "fang" },
+      "ipa": { "target": "/fæn/", "contrast": "/fæŋ/" },
+      "vi": "\"fan\" kết thúc /n/ và \"fang\" kết thúc /ŋ/; người Việt dễ thêm /g/ vào cuối \"fang\" vì quen với cụm phụ âm trong một số ngôn ngữ khác — nhưng /ŋ/ trong tiếng Anh đứng độc lập không bật.",
+      "examples": { "target": "She is a big fan of jazz music.", "contrast": "The snake showed its fang." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-031",
+      "category": "nasal_finals",
+      "pair": { "target": "done", "contrast": "dung" },
+      "ipa": { "target": "/dʌn/", "contrast": "/dʌŋ/" },
+      "vi": "\"done\" đóng bằng đầu lưỡi /n/, còn \"dung\" đóng bằng cuống lưỡi /ŋ/; lưỡi phải lùi hẳn về phía sau hàm ếch mềm để tạo /ŋ/ đúng cách.",
+      "examples": { "target": "The cooking is done — come to the table.", "contrast": "Cow dung is used as fertiliser." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-032",
+      "category": "nasal_finals",
+      "pair": { "target": "thin", "contrast": "thing" },
+      "ipa": { "target": "/θɪn/", "contrast": "/θɪŋ/" },
+      "vi": "Cặp này có cả /θ/ khó lẫn âm mũi cuối khác nhau; \"thin\" đóng bằng /n/, còn \"thing\" đóng bằng /ŋ/; người Việt phải xử lý cùng lúc hai điểm khó.",
+      "examples": { "target": "The wall is very thin here.", "contrast": "That is a good thing to know." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-033",
+      "category": "nasal_finals",
+      "pair": { "target": "sum", "contrast": "sun" },
+      "ipa": { "target": "/sʌm/", "contrast": "/sʌn/" },
+      "vi": "\"sum\" đóng bằng /m/ hai môi, còn \"sun\" đóng bằng /n/ đầu lưỡi; cả hai đều là âm mũi sau /ʌ/ nên dễ nhầm khi nghe nhanh nếu không để ý vị trí đóng miệng.",
+      "examples": { "target": "Please add up the total sum.", "contrast": "The sun is very bright today." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-034",
+      "category": "nasal_finals",
+      "pair": { "target": "ram", "contrast": "ran" },
+      "ipa": { "target": "/ræm/", "contrast": "/ræn/" },
+      "vi": "\"ram\" đóng bằng /m/ hai môi, còn \"ran\" đóng bằng /n/ đầu lưỡi; khi nghe nhanh, cả hai âm mũi cuối này sau /æ/ dễ bị nghe nhầm nếu không chú ý vị trí miệng.",
+      "examples": { "target": "The ram led the rest of the flock.", "contrast": "She ran to catch the last bus." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-035",
+      "category": "nasal_finals",
+      "pair": { "target": "dim", "contrast": "din" },
+      "ipa": { "target": "/dɪm/", "contrast": "/dɪn/" },
+      "vi": "\"dim\" kết thúc bằng /m/ (đóng môi), còn \"din\" kết thúc bằng /n/ (lưỡi chạm lợi); người Việt cần cảm nhận vị trí đóng miệng để phân biệt hai từ.",
+      "examples": { "target": "The light in here is too dim.", "contrast": "The din from the street was very loud." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-036",
+      "category": "nasal_finals",
+      "pair": { "target": "gum", "contrast": "gun" },
+      "ipa": { "target": "/ɡʌm/", "contrast": "/ɡʌn/" },
+      "vi": "\"gum\" đóng bằng /m/ hai môi, còn \"gun\" đóng bằng /n/ đầu lưỡi; cả hai ngắn và dễ mất cuối từ nếu không chú ý tư thế miệng.",
+      "examples": { "target": "I like mint-flavoured gum.", "contrast": "The officer carried a gun." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w4-037",
+      "category": "nasal_finals",
+      "pair": { "target": "sum", "contrast": "sung" },
+      "ipa": { "target": "/sʌm/", "contrast": "/sʌŋ/" },
+      "vi": "\"sum\" đóng bằng /m/ (môi), còn \"sung\" đóng bằng /ŋ/ (cuống lưỡi); cặp này kiểm tra cả /m/-/ŋ/ lẫn khả năng không thêm /g/ sau /ŋ/ cuối từ.",
+      "examples": { "target": "What is the total sum of these numbers?", "contrast": "Has anyone sung that song before?" },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-038",
+      "category": "weak_form_vowels",
+      "pair": { "target": "than", "contrast": "then" },
+      "ipa": { "target": "/ðən/", "contrast": "/ðɛn/" },
+      "vi": "\"than\" trong câu so sánh thường là âm yếu /ðən/ với schwa, còn \"then\" là từ nội dung với /ɛ/ đầy đủ; người Việt thường đọc mạnh cả hai, làm \"than\" nghe như \"then\" và câu mất nhịp tự nhiên.",
+      "examples": { "target": "She runs faster than me.", "contrast": "First read it, then answer the question." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-039",
+      "category": "weak_form_vowels",
+      "pair": { "target": "for", "contrast": "fur" },
+      "ipa": { "target": "/fər/", "contrast": "/fɜːr/" },
+      "vi": "\"for\" trong câu thường rút về dạng yếu /fər/ với schwa ngắn; nếu đọc mạnh và kéo dài, nó sẽ gần giống \"fur\" /fɜːr/; người Việt thường đọc /fɔː/ và làm câu nghe thiếu tự nhiên.",
+      "examples": { "target": "This gift is for you.", "contrast": "The fox had very thick fur." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-040",
+      "category": "weak_form_vowels",
+      "pair": { "target": "would", "contrast": "wood" },
+      "ipa": { "target": "/wəd/", "contrast": "/wʊd/" },
+      "vi": "\"would\" ở dạng yếu trong câu là /wəd/ với schwa; nếu đọc mạnh thành /wʊd/, nó nghe giống \"wood\"; người Việt hay nhấn mạnh modal trợ và làm câu nghe lạ.",
+      "examples": { "target": "I would like a glass of water.", "contrast": "The table is made of solid wood." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-041",
+      "category": "weak_form_vowels",
+      "pair": { "target": "could", "contrast": "cod" },
+      "ipa": { "target": "/kəd/", "contrast": "/kɒd/" },
+      "vi": "\"could\" ở dạng yếu là /kəd/ với schwa; nếu nguyên âm bị đọc đầy đủ và tròn, nó sẽ nghe gần \"cod\" /kɒd/; người Việt cần làm nhẹ modal trợ này để câu chảy tự nhiên.",
+      "examples": { "target": "Could you pass the salt, please?", "contrast": "Cod is a very popular fish in Europe." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w4-042",
+      "category": "weak_form_vowels",
+      "pair": { "target": "can", "contrast": "con" },
+      "ipa": { "target": "/kən/", "contrast": "/kɒn/" },
+      "vi": "\"can\" trong câu khẳng định thường rút về /kən/ với schwa; đọc mạnh /kæn/ nghe như nhấn mạnh hoặc câu phủ định bị đảo ngược; đọc quá tròn sẽ gần \"con\" /kɒn/.",
+      "examples": { "target": "I can help you with that task.", "contrast": "The salesman tried to con the tourists." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-043",
+      "category": "weak_form_vowels",
+      "pair": { "target": "affect", "contrast": "effect" },
+      "ipa": { "target": "/əˈfɛkt/", "contrast": "/ɪˈfɛkt/" },
+      "vi": "\"affect\" bắt đầu bằng tiền tố /ə/ (schwa), còn \"effect\" bắt đầu bằng /ɪ/; người Việt thường đọc cả hai với nguyên âm đầy đủ (/a/ hoặc /ɛ/), làm mờ sự phân biệt nghĩa quan trọng.",
+      "examples": { "target": "Stress can affect your overall health.", "contrast": "The medicine had a positive effect." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-044",
+      "category": "weak_form_vowels",
+      "pair": { "target": "accept", "contrast": "except" },
+      "ipa": { "target": "/əkˈsɛpt/", "contrast": "/ɪkˈsɛpt/" },
+      "vi": "\"accept\" tiền tố là /ə/ schwa, còn \"except\" là /ɪ/; cả hai dễ bị người Việt đọc như /ɛk-/ với nguyên âm mạnh, làm hai từ nghe như một dù nghĩa khác nhau.",
+      "examples": { "target": "They did not accept the new offer.", "contrast": "Everyone arrived on time except Jan." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w4-045",
+      "category": "weak_form_vowels",
+      "pair": { "target": "does", "contrast": "doss" },
+      "ipa": { "target": "/dəz/", "contrast": "/dɒs/" },
+      "vi": "\"does\" dạng yếu trong câu là /dəz/ với schwa; đọc quá mạnh và tròn sẽ gần \"doss\" /dɒs/ (tiếng lóng: ngủ vùi); người Việt cần làm nhẹ trợ động từ này trong câu.",
+      "examples": { "target": "Does she study English every day?", "contrast": "He likes to doss on the sofa all day." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w4-046",
+      "category": "weak_form_vowels",
+      "pair": { "target": "of", "contrast": "off" },
+      "ipa": { "target": "/əv/", "contrast": "/ɒf/" },
+      "vi": "\"of\" trong câu là âm yếu /əv/ — schwa + /v/; người Việt thường đọc mạnh hơn hoặc nhầm /v/ với /f/, khiến \"of\" nghe gần \"off\" và câu mất tự nhiên.",
+      "examples": { "target": "Give me a cup of tea, please.", "contrast": "Turn off the lights before you leave." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-047",
+      "category": "weak_form_vowels",
+      "pair": { "target": "must", "contrast": "mast" },
+      "ipa": { "target": "/məst/", "contrast": "/mɑːst/" },
+      "vi": "\"must\" dạng yếu là /məst/ với schwa; đọc quá tròn và dài sẽ gần \"mast\" /mɑːst/; người Việt cần làm nhẹ nguyên âm của modal này trong câu bình thường.",
+      "examples": { "target": "You must call ahead before arriving.", "contrast": "The sail tied to the mast broke in the storm." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w4-048",
+      "category": "weak_form_vowels",
+      "pair": { "target": "should", "contrast": "shod" },
+      "ipa": { "target": "/ʃəd/", "contrast": "/ʃɒd/" },
+      "vi": "\"should\" dạng yếu là /ʃəd/; nếu nguyên âm bị kéo dài và tròn hơn, nó có thể nghe gần \"shod\" /ʃɒd/ (quá khứ của \"shoe\"); người Việt cần làm nhẹ schwa ở giữa.",
+      "examples": { "target": "You should rest more often.", "contrast": "The horse was shod before the long race." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w4-049",
+      "category": "weak_form_vowels",
+      "pair": { "target": "butter", "contrast": "batter" },
+      "ipa": { "target": "/ˈbʌtər/", "contrast": "/ˈbætər/" },
+      "vi": "Cả hai từ đều có âm cuối schwa /ər/ không nhấn; khác biệt nằm ở nguyên âm chính: /ʌ/ trong \"butter\" (trung tâm thấp) và /æ/ trong \"batter\" (mở miệng hơn); người Việt dễ dùng một âm \"a\" chung.",
+      "examples": { "target": "Spread butter on the toast first.", "contrast": "Mix the batter until it is smooth." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w4-050",
+      "category": "weak_form_vowels",
+      "pair": { "target": "summer", "contrast": "simmer" },
+      "ipa": { "target": "/ˈsʌmər/", "contrast": "/ˈsɪmər/" },
+      "vi": "\"summer\" và \"simmer\" đều có âm cuối schwa /ər/ và âm đôi môi /m/ ở giữa; khác biệt là /ʌ/ mở hơn trong \"summer\" và /ɪ/ ngắn lỏng hơn trong \"simmer\"; người Việt dễ đọc cả hai với một nguyên âm \"i/ơ\" chung.",
+      "examples": { "target": "We stayed at home last summer.", "contrast": "Let the soup simmer for ten minutes." },
+      "difficulty": "medium"
+    }
+  ]
+}
