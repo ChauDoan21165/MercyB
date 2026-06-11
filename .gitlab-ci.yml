@@ -1224,3 +1224,70 @@ test-db-backup-now:
     expire_in: 7 days
     paths:
       - _backup_out/*.dump.gpg
+
+# ── Flywheel mining cycle ──────────────────────────────────────────────
+#
+# Queries conversation_events (service-role, read-only) for uncovered
+# VN→EN interference patterns and emits a wave-candidate artifact +
+# board-postable markdown summary.
+#
+# This is NOT a deploy. It reads telemetry, mines candidates, writes
+# artifacts — that is its entire scope.
+#
+# Activation (one-time setup by Chau):
+#   1. Add a GitLab Scheduled Pipeline (Settings → CI/CD → Schedules)
+#      targeting main, cron e.g. "0 6 1 * *" (first day of month, 06:00 UTC).
+#   2. Set CI/CD variable MERCYB_FLYWHEEL_MINE_ENABLED=1 on that schedule
+#      (or as a project-level protected variable).
+#   3. Ensure VITE_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are set
+#      as protected/masked project-level CI variables (already used by
+#      scripts/check-delete-account-coverage.mjs for the same pattern).
+#
+# Manual trigger: run from the GitLab UI (web) with
+#   MERCYB_FLYWHEEL_MINE_ENABLED=1 on any main pipeline.
+#
+# Abstain contract: if conversation_events is empty or below the minimum
+# threshold, the script exits 0 with an ABSTAIN artifact — the job stays
+# green; no false failure on early-cycle thin data.
+#
+# Required CI variables (job skips cleanly if absent):
+#   VITE_SUPABASE_URL         masked, protected
+#   SUPABASE_SERVICE_ROLE_KEY masked, protected
+#
+# Gate variable (must be 1 for job to run):
+#   MERCYB_FLYWHEEL_MINE_ENABLED  set on the schedule or as project var
+
+flywheel-mine:
+  image: node:24-bookworm-slim
+  # Pinned to local Mac runners per fleet convention.
+  # No isolated-builds tag — this job does not use GIT_CLONE_PATH.
+  tags:
+    - local
+    - mac
+    - mercyb
+  stage: backup
+  interruptible: false
+  # No node_modules needed — script uses only Node.js built-in APIs
+  # (fs, path, child_process, global fetch). npm ci is intentionally
+  # omitted to keep the job lean and avoid the node_modules cache tax.
+  cache: {}
+  rules:
+    # Schedule-triggered + gate variable set
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $MERCYB_FLYWHEEL_MINE_ENABLED == "1"'
+    # Manual web trigger + gate variable set (lets Chau run ad-hoc)
+    - if: '$CI_PIPELINE_SOURCE == "web" && $MERCYB_FLYWHEEL_MINE_ENABLED == "1"'
+      when: manual
+    - when: never
+  variables:
+    # Node.js 18+ ships with global fetch; 24 is fine.
+    NODE_OPTIONS: "--no-warnings"
+  script:
+    - node --version
+    - node scripts/flywheel/mine-candidates.mjs
+  artifacts:
+    # Keep artifacts for 90 days — covers the full monthly mining history
+    # so adjacent cycles can be compared without re-running.
+    when: always
+    expire_in: 90 days
+    paths:
+      - _flywheel_out/
