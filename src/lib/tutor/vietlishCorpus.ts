@@ -7922,6 +7922,7 @@ export const VIETLISH_CORPUS = [
   },
 
   // Stage-2C slice-1 — medium literal_translation, waves 1–5 (entries 0–149)
+  // wave1 (69 entries)
   {
     vietlish: "we wait here since one hour",
     natural: "we have been waiting here for an hour",
@@ -9123,5 +9124,5 @@ export const VIETLISH_CORPUS = [
     category: "literal_translation",
     frequency: "medium",
     context: "My aunt she is good for cooking traditional food.",
-  }
+  },
 ] as const satisfies readonly VietlishCorpusEntry[];
