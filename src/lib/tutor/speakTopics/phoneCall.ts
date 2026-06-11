@@ -39,6 +39,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Hẹn is 'appointment,' not 'date'",
         note: "'Lịch hẹn' is exactly 'an appointment.' Translating 'hẹn' as 'a date' sounds romantic in English. For a clinic, office, or salon, say 'an appointment' — 'date' here only means the day on the calendar.",
       },
+      {
+        id: "phone-appointment-vocab",
+        label: "Vocabulary",
+        note: "appointment = lịch hẹn; available = còn trống, còn chỗ; new patient = bệnh nhân mới. 'Book a time' = đặt một giờ hẹn.",
+      },
+      {
+        id: "phone-appointment-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ em muốn đặt lịch hẹn ạ.' ↔ EN: 'Hi, I'd like to make an appointment.' English gives the reason in the first sentence.",
+      },
     ],
     followUps: [
       { id: "phone-appointment-service", question: "What appointment do you need?", salienceQuestion: "What kind of appointment is the {slot}?" },
@@ -81,6 +91,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         id: "phone-speak-gap-is-speak",
         label: "Gặp on the phone is 'speak to'",
         note: "'Cho tôi gặp anh Nam' translates literally as 'let me meet Nam,' so 'I want to meet him' can slip out. On the phone the verb is 'speak to' or 'speak with': 'May I speak to Nam?' You 'meet' in person, but 'speak to' by phone.",
+      },
+      {
+        id: "phone-speak-vocab",
+        label: "Vocabulary",
+        note: "speak with = nói chuyện với; available = có mặt, rảnh; put me through / transfer = chuyển máy; leave a message = để lại lời nhắn.",
+      },
+      {
+        id: "phone-speak-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ cho em gặp chị Lee được không ạ?' ↔ EN: 'May I speak with Ms. Lee, please?'",
       },
     ],
     followUps: [
@@ -125,6 +145,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "This is, not I am",
         note: "'Đây là Linh' on the phone becomes 'This is Linh,' not 'I am Linh' or 'Here is Linh.' English uses 'This is ___' to say who is speaking on a call — a fixed phone phrase worth keeping ready.",
       },
+      {
+        id: "phone-voicemail-vocab",
+        label: "Vocabulary",
+        note: "voicemail = hộp thư thoại; call back = gọi lại; reach me = liên lạc được với tôi; at your convenience = khi nào tiện.",
+      },
+      {
+        id: "phone-voicemail-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ em là Linh, anh gọi lại cho em khi rảnh nhé ạ.' ↔ EN: 'Hi, this is Linh — please call me back when you can.'",
+      },
     ],
     followUps: [
       { id: "phone-message-name", question: "How would you say your name first?", salienceQuestion: "How would you start the message about the {slot}?" },
@@ -167,6 +197,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         id: "phone-wrong-nham-wrong",
         label: "Nhầm is 'wrong' or 'by mistake'",
         note: "'Gọi nhầm số' tempts 'I call mistake number' or 'I call false number.' English says 'I have the wrong number' or 'I dialed the wrong number by mistake.' 'Wrong' (not 'false' or 'mistake') is the word for the number.",
+      },
+      {
+        id: "phone-wrong-vocab",
+        label: "Vocabulary",
+        note: "wrong number = nhầm số; dial = bấm số gọi; sorry to bother you = xin lỗi đã làm phiền. 'I must have dialed wrong' = chắc em bấm nhầm.",
+      },
+      {
+        id: "phone-wrong-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Xin lỗi, hình như em gọi nhầm số ạ.' ↔ EN: 'Sorry, I think I have the wrong number.'",
       },
     ],
     followUps: [
@@ -211,6 +251,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Sóng yếu is 'bad signal'",
         note: "'Sóng yếu' or 'nghe không rõ' tempts 'the wave is weak' or 'I hear not clear.' English says 'the signal is weak,' 'bad connection,' or 'I can't hear you clearly.' 'Signal' and 'connection' are the phone words here.",
       },
+      {
+        id: "phone-connection-vocab",
+        label: "Vocabulary",
+        note: "connection = kết nối; breaking up = bị ngắt quãng, nghe chập chờn; signal = sóng; cut out = mất tiếng giữa chừng.",
+      },
+      {
+        id: "phone-connection-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Xin lỗi, sóng yếu quá, anh nói lại giúp em được không ạ?' ↔ EN: 'Sorry, the connection is bad — could you say that again?'",
+      },
     ],
     followUps: [
       { id: "phone-connection-problem", question: "How would you say the connection is bad?", salienceQuestion: "What is hard about the {slot}?" },
@@ -253,6 +303,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         id: "phone-confirm-danh-van",
         label: "Đánh vần is 'spell'",
         note: "'Anh đánh vần giúp tôi' tempts 'Can you read each letter?' The single English verb is 'spell': 'Could you spell that for me?' For numbers, 'Could you say that digit by digit?' does the same job.",
+      },
+      {
+        id: "phone-confirm-vocab",
+        label: "Vocabulary",
+        note: "confirm = xác nhận; spell = đánh vần; read back = đọc lại để kiểm tra; address = địa chỉ.",
+      },
+      {
+        id: "phone-confirm-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Cho em xác nhận lại địa chỉ và giờ hẹn nhé ạ.' ↔ EN: 'Can I confirm the address and the time?'",
       },
     ],
     followUps: [
@@ -297,6 +357,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Tài khoản is 'account'",
         note: "'Tài khoản của tôi' is 'my account.' Support agents will ask for your 'account number' (số tài khoản). Recognising 'account' versus 'bill' (hóa đơn — what you owe) helps you answer the first question quickly.",
       },
+      {
+        id: "phone-service-vocab",
+        label: "Vocabulary",
+        note: "customer service = chăm sóc khách hàng; account = tài khoản; billing = hóa đơn, thanh toán; representative = nhân viên hỗ trợ.",
+      },
+      {
+        id: "phone-service-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ em cần hỗ trợ về tài khoản của em ạ.' ↔ EN: 'Hi, I need help with my account.'",
+      },
     ],
     followUps: [
       { id: "phone-service-problem", question: "What do you need help with?", salienceQuestion: "What is wrong with the {slot}?" },
@@ -339,6 +409,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         id: "phone-reschedule-huy-cancel",
         label: "Hủy is 'cancel,' not 'reschedule'",
         note: "'Hủy lịch' means 'cancel' (drop it), while 'đổi lịch' means 'reschedule' (move it). They're different: 'I'd like to reschedule' keeps the appointment for another time, but 'I'd like to cancel' ends it. Pick the one you mean.",
+      },
+      {
+        id: "phone-reschedule-vocab",
+        label: "Vocabulary",
+        note: "reschedule = đổi lịch hẹn; short notice = báo gấp, báo sát giờ; cancellation fee = phí hủy hẹn; move it = dời lịch.",
+      },
+      {
+        id: "phone-reschedule-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ em cần đổi lịch hẹn, xin lỗi vì báo gấp ạ.' ↔ EN: 'I need to reschedule my appointment — sorry for the short notice.'",
       },
     ],
     followUps: [
@@ -383,6 +463,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         label: "Chung cư is 'apartment building'",
         note: "'Chung cư' is an 'apartment building' (US) or 'block of flats' (UK), and 'số căn hộ' is your 'unit number.' Giving 'unit 3B, apartment building on the corner' helps the driver find you faster than 'my house.'",
       },
+      {
+        id: "phone-delivery-vocab",
+        label: "Vocabulary",
+        note: "lobby = sảnh, khu vực sảnh; buzzer = chuông cửa; unit number = số căn hộ; gate code = mã cổng.",
+      },
+      {
+        id: "phone-delivery-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Dạ em đang ở cửa trước đây ạ.' ↔ EN: 'Hi, I'm at the front door now.'",
+      },
     ],
     followUps: [
       { id: "phone-delivery-where", question: "Where should the driver go?", salienceQuestion: "Where is the {slot}?" },
@@ -425,6 +515,16 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
         id: "phone-ending-tam-biet",
         label: "Tạm biệt is 'bye,' but warmer endings exist",
         note: "'Tạm biệt' maps to 'goodbye,' which can feel a little formal on a friendly call. Everyday closings are 'Bye now,' 'Take care,' or 'Have a good day' — warmer than a flat 'goodbye' and easy to add.",
+      },
+      {
+        id: "phone-ending-vocab",
+        label: "Vocabulary",
+        note: "anything else = còn gì nữa không; take care = giữ gìn sức khỏe, bảo trọng; that's everything = vậy là xong hết rồi.",
+      },
+      {
+        id: "phone-ending-mirror",
+        label: "Bilingual mirror",
+        note: "VN: 'Cảm ơn anh đã giúp, chúc anh một ngày tốt lành ạ.' ↔ EN: 'Thank you for your help. Have a good day.'",
       },
     ],
     followUps: [
