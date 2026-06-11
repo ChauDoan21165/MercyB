@@ -27,6 +27,8 @@ import {
   type WordStatus,
 } from "./scorer";
 import type { Accent } from "@/data/pronunciation/multiAccentReferences";
+import { trackEvent } from "@/lib/analytics";
+import { isMarketingTrackingEnabled } from "@/services/behaviorTrackingFlag";
 
 /** Public input shape — matches the Day 2 spec literally. */
 export type CloudScoreInput = {
@@ -142,6 +144,17 @@ function logTelemetry(
     "ms",
     reason ? `reason=${reason}` : "",
   );
+  // Fan out to GA4 / Clarity only when marketing consent is on. The same
+  // isMarketingTrackingEnabled() check is used by initMarketingTracking()
+  // before it loads gtag; checking it here makes the consent guard explicit
+  // and testable independent of window.gtag presence.
+  if (isMarketingTrackingEnabled()) {
+    trackEvent("pronunciation_scored", {
+      provider,
+      latency_ms: Math.round(latencyMs),
+      ...(reason ? { reason } : {}),
+    });
+  }
 }
 
 function resolveSupabaseUrl(override?: string): string | null {

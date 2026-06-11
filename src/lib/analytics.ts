@@ -11,6 +11,7 @@ export type AnalyticsEventName =
   | "l1_hint_learn_more_clicked"
   | "room_pronunciation_practice_opened"
   | "room_pronunciation_practice_closed"
+  | "pronunciation_scored"
   | `paywall_shown_${string}`
   // Onboarding funnel — `onboarding_step_complete`,
   // `onboarding_complete`, `onboarding_skipped`. Template-literal

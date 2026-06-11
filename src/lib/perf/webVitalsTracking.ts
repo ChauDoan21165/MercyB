@@ -25,6 +25,8 @@ import { supabase } from "@/lib/supabaseClient";
 import { isSentryEnabled, getSentryModule } from "@/lib/monitoring/sentryInit";
 import { classifyDevice, type WebVitalName } from "@/config/perfBudget";
 import { sendWebVitalToGa4 } from "@/lib/perf/ga4WebVitals";
+import { FEATURE_FLAGS } from "@/lib/featureFlags";
+import { isMarketingTrackingEnabled } from "@/services/behaviorTrackingFlag";
 
 let initialized = false;
 
@@ -55,9 +57,14 @@ export function initializeWebVitals(): void {
   if (import.meta.env.MODE === "test") return;
 
   const handler = (metric: Metric) => {
-    // GA4 RUM sink — prod only (OFF in dev), GA4-only, fail-silent. Reuses the same
-    // observer registration as the Sentry/DB sinks; no duplicate web-vitals listeners.
-    if (import.meta.env.PROD) sendWebVitalToGa4(metric);
+    // GA4 RUM sink — flag-gated + consent-gated. FEATURE_FLAGS.WEB_VITALS_GA4_ENABLED
+    // defaults to true (overridable via VITE_WEB_VITALS_GA4_ENABLED env var at
+    // deploy time). isMarketingTrackingEnabled() is the same synchronous consent
+    // check that gates Pixel + GA4 loading; no gtag event is sent when the user
+    // has opted out. Fail-silent and reuses the same observer as the Sentry/DB sinks.
+    if (FEATURE_FLAGS.WEB_VITALS_GA4_ENABLED && isMarketingTrackingEnabled()) {
+      sendWebVitalToGa4(metric);
+    }
     void recordVital(metric).catch((err) => {
       console.warn("[webVitals] record failed:", err);
     });
