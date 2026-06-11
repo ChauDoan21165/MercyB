@@ -1,0 +1,460 @@
+{
+  "corpus": "f5-minimal-pairs-wave3",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F5",
+  "authoredAt": "2026-06-11",
+  "wave": 3,
+  "description": "Vietnamese-specific English minimal pairs for Step 7 pronunciation review. Content-only corpus; not wired to scoring or UI.",
+  "minimalPairs": [
+    {
+      "id": "f5w3-001",
+      "category": "final_consonants",
+      "pair": { "target": "cat", "contrast": "cad" },
+      "ipa": { "target": "/kæt/", "contrast": "/kæd/" },
+      "vi": "Người Việt dễ chặn phụ âm cuối quá ngắn, nên /t/ vô thanh trong \"cat\" và /d/ có rung trong \"cad\" có thể nhập lại nếu không giữ độ rung cuối.",
+      "examples": { "target": "The cat slept on the chair.", "contrast": "The engineer opened the CAD file." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w3-002",
+      "category": "final_consonants",
+      "pair": { "target": "mat", "contrast": "mad" },
+      "ipa": { "target": "/mæt/", "contrast": "/mæd/" },
+      "vi": "Vì tiếng Việt không dùng độ rung phụ âm cuối để đổi nghĩa theo cách tiếng Anh, \"mat\" và \"mad\" dễ nghe giống nhau nếu /d/ cuối bị tắt rung.",
+      "examples": { "target": "Wipe your shoes on the mat.", "contrast": "She was mad about the delay." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w3-003",
+      "category": "final_consonants",
+      "pair": { "target": "cup", "contrast": "cub" },
+      "ipa": { "target": "/kʌp/", "contrast": "/kʌb/" },
+      "vi": "Âm /b/ cuối không quen trong tiếng Việt, nên \"cub\" dễ mất rung và nghe như \"cup\" nếu môi đóng lại mà không giữ tiếng hữu thanh.",
+      "examples": { "target": "This cup is still warm.", "contrast": "A bear cub followed its mother." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w3-004",
+      "category": "final_consonants",
+      "pair": { "target": "lap", "contrast": "lab" },
+      "ipa": { "target": "/læp/", "contrast": "/læb/" },
+      "vi": "Người Việt thường không thả rõ /p/ và /b/ ở cuối từ, nên \"lap\" và \"lab\" cần khác nhau ở độ rung và độ dài nguyên âm trước âm cuối.",
+      "examples": { "target": "The book fell into her lap.", "contrast": "The lab closes at five." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w3-005",
+      "category": "final_consonants",
+      "pair": { "target": "leak", "contrast": "league" },
+      "ipa": { "target": "/liːk/", "contrast": "/liːɡ/" },
+      "vi": "Âm cuối /k/ và /ɡ/ đều dễ bị giữ kín trong miệng, nên \"league\" cần có rung nhẹ ở cuối thay vì đóng cứng như \"leak\".",
+      "examples": { "target": "There is a leak under the sink.", "contrast": "Our team joined a new league." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-006",
+      "category": "final_consonants",
+      "pair": { "target": "buck", "contrast": "bug" },
+      "ipa": { "target": "/bʌk/", "contrast": "/bʌɡ/" },
+      "vi": "Khi phụ âm cuối không được bật nhẹ, /k/ trong \"buck\" và /ɡ/ trong \"bug\" dễ mất đối lập hữu thanh, làm người nghe khó nhận ra từ.",
+      "examples": { "target": "It costs one buck today.", "contrast": "A small bug landed on the screen." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w3-007",
+      "category": "final_consonants",
+      "pair": { "target": "lock", "contrast": "log" },
+      "ipa": { "target": "/lɑːk/", "contrast": "/lɑːɡ/" },
+      "vi": "Tiếng Việt không có thói quen phân biệt /k/ và /ɡ/ cuối bằng rung cổ họng, nên \"log\" dễ bị đọc cứng thành \"lock\".",
+      "examples": { "target": "Lock the door before you leave.", "contrast": "Write the error in the log." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-008",
+      "category": "final_consonants",
+      "pair": { "target": "mop", "contrast": "mob" },
+      "ipa": { "target": "/mɑːp/", "contrast": "/mɑːb/" },
+      "vi": "Âm /b/ cuối trong \"mob\" cần rung và nguyên âm thường dài hơn; nếu đóng môi không rung, từ này sẽ nghe gần \"mop\".",
+      "examples": { "target": "Use a mop on the wet floor.", "contrast": "A mob gathered near the gate." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-009",
+      "category": "final_consonants",
+      "pair": { "target": "right", "contrast": "ride" },
+      "ipa": { "target": "/raɪt/", "contrast": "/raɪd/" },
+      "vi": "Người Việt dễ bỏ dấu rung cuối và dựa quá nhiều vào nguyên âm, nên \"ride\" cần /d/ hữu thanh rõ hơn \"right\".",
+      "examples": { "target": "Turn right at the light.", "contrast": "We ride the bus to work." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-010",
+      "category": "final_consonants",
+      "pair": { "target": "proof", "contrast": "prove" },
+      "ipa": { "target": "/pruːf/", "contrast": "/pruːv/" },
+      "vi": "Âm /v/ cuối không có trong nhiều thói quen phát âm tiếng Việt, nên \"prove\" dễ bị vô thanh thành /f/ và nghe như \"proof\".",
+      "examples": { "target": "Show me the proof first.", "contrast": "The test will prove the idea." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-011",
+      "category": "final_consonants",
+      "pair": { "target": "half", "contrast": "have" },
+      "ipa": { "target": "/hæf/", "contrast": "/hæv/" },
+      "vi": "Người Việt dễ đọc /v/ cuối thành /f/, nên \"have\" phải giữ môi-răng có rung chứ không chỉ thổi hơi như \"half\".",
+      "examples": { "target": "Cut the apple in half.", "contrast": "I have two questions." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-012",
+      "category": "final_consonants",
+      "pair": { "target": "wreath", "contrast": "wreathe" },
+      "ipa": { "target": "/riːθ/", "contrast": "/riːð/" },
+      "vi": "Cả /θ/ và /ð/ ở cuối từ đều lạ với người Việt, nên \"wreathe\" dễ mất rung và trở thành \"wreath\" nếu không giữ lưỡi giữa răng cùng tiếng hữu thanh.",
+      "examples": { "target": "A green wreath hung on the door.", "contrast": "We wreathe the frame with flowers." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w3-013",
+      "category": "final_consonants",
+      "pair": { "target": "bat", "contrast": "bad" },
+      "ipa": { "target": "/bæt/", "contrast": "/bæd/" },
+      "vi": "Nếu /d/ cuối bị chặn không rung, \"bad\" sẽ nghe như \"bat\"; người học cần giữ nguyên âm hơi dài hơn trước phụ âm hữu thanh.",
+      "examples": { "target": "He swung the bat hard.", "contrast": "That was a bad idea." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w3-014",
+      "category": "final_consonants",
+      "pair": { "target": "root", "contrast": "rude" },
+      "ipa": { "target": "/ruːt/", "contrast": "/ruːd/" },
+      "vi": "Đối lập /t/ và /d/ cuối sau nguyên âm dài /uː/ dễ bị mất vì tiếng Việt thường đóng âm cuối ngắn; \"rude\" cần rung cuối rõ.",
+      "examples": { "target": "The root is deep in the soil.", "contrast": "Do not be rude to the guest." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-015",
+      "category": "th_pairs",
+      "pair": { "target": "thorn", "contrast": "torn" },
+      "ipa": { "target": "/θɔːrn/", "contrast": "/tɔːrn/" },
+      "vi": "Âm /θ/ không có trong tiếng Việt nên thường bị đổi thành /t/; \"thorn\" cần đầu lưỡi giữa răng, không đóng mạnh như \"torn\".",
+      "examples": { "target": "A thorn scratched my finger.", "contrast": "The paper was torn in half." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-016",
+      "category": "th_pairs",
+      "pair": { "target": "thaw", "contrast": "taw" },
+      "ipa": { "target": "/θɔː/", "contrast": "/tɔː/" },
+      "vi": "Người Việt dễ thay /θ/ bằng /t/, nên \"thaw\" phải có luồng hơi qua lưỡi-răng thay vì âm chặn đầu lưỡi như \"taw\".",
+      "examples": { "target": "Let the soup thaw slowly.", "contrast": "The old game used a marble called a taw." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w3-017",
+      "category": "th_pairs",
+      "pair": { "target": "thigh", "contrast": "tie" },
+      "ipa": { "target": "/θaɪ/", "contrast": "/taɪ/" },
+      "vi": "Vì /θ/ vô thanh thường bị Việt hóa thành /t/, \"thigh\" dễ nghe như \"tie\" nếu lưỡi không đặt giữa hai hàm răng.",
+      "examples": { "target": "My thigh hurt after the run.", "contrast": "Please tie your shoes." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-018",
+      "category": "th_pairs",
+      "pair": { "target": "theme", "contrast": "team" },
+      "ipa": { "target": "/θiːm/", "contrast": "/tiːm/" },
+      "vi": "Âm /θ/ trong \"theme\" cần ma sát nhẹ, nhưng người Việt hay đóng thành /t/ như \"team\", làm đổi nghĩa trong lớp học hoặc công việc.",
+      "examples": { "target": "The theme is travel.", "contrast": "Our team won the match." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-019",
+      "category": "th_pairs",
+      "pair": { "target": "ether", "contrast": "eater" },
+      "ipa": { "target": "/ˈiːθər/", "contrast": "/ˈiːtər/" },
+      "vi": "Ở giữa từ, /θ/ cũng dễ bị thay bằng /t/ vì tiếng Việt không có âm lưỡi-răng này; \"ether\" cần hơi thoát liên tục hơn \"eater\".",
+      "examples": { "target": "The old lab stored ether carefully.", "contrast": "He is a slow eater." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w3-020",
+      "category": "th_pairs",
+      "pair": { "target": "author", "contrast": "otter" },
+      "ipa": { "target": "/ˈɔːθər/", "contrast": "/ˈɑːtər/" },
+      "vi": "Người Việt thường nghe /θ/ giữa từ như /t/, nên \"author\" cần âm ma sát lưỡi-răng để không rơi thành \"otter\".",
+      "examples": { "target": "The author signed my book.", "contrast": "An otter swam under the bridge." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w3-021",
+      "category": "th_pairs",
+      "pair": { "target": "both", "contrast": "boat" },
+      "ipa": { "target": "/boʊθ/", "contrast": "/boʊt/" },
+      "vi": "Âm /θ/ cuối trong \"both\" thường bị đổi thành /t/ hoặc bỏ mất; cần giữ lưỡi giữa răng để khác \"boat\".",
+      "examples": { "target": "Both answers are correct.", "contrast": "The boat left at noon." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-022",
+      "category": "th_pairs",
+      "pair": { "target": "worth", "contrast": "worse" },
+      "ipa": { "target": "/wɜːrθ/", "contrast": "/wɜːrs/" },
+      "vi": "Cuối từ /rθ/ rất khó vì tiếng Việt không có cụm này; nếu /θ/ thành /s/, \"worth\" sẽ nghe gần \"worse\".",
+      "examples": { "target": "This lesson is worth the time.", "contrast": "The traffic is worse today." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w3-023",
+      "category": "th_pairs",
+      "pair": { "target": "there", "contrast": "dare" },
+      "ipa": { "target": "/ðer/", "contrast": "/der/" },
+      "vi": "Âm /ð/ hữu thanh thường bị thay bằng /d/ vì tiếng Việt không có âm th hữu thanh; \"there\" cần lưỡi-răng có rung, không đóng như \"dare\".",
+      "examples": { "target": "Put the bag over there.", "contrast": "I dare you to try it." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-024",
+      "category": "th_pairs",
+      "pair": { "target": "though", "contrast": "dough" },
+      "ipa": { "target": "/ðoʊ/", "contrast": "/doʊ/" },
+      "vi": "Người Việt hay đổi /ð/ đầu từ thành /d/, nên \"though\" cần rung qua khe lưỡi-răng thay vì đóng đầu lưỡi như \"dough\".",
+      "examples": { "target": "It was cold, though sunny.", "contrast": "Roll the dough into a circle." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-025",
+      "category": "th_pairs",
+      "pair": { "target": "this", "contrast": "diss" },
+      "ipa": { "target": "/ðɪs/", "contrast": "/dɪs/" },
+      "vi": "Âm /ð/ trong \"this\" dễ bị nói thành /d/ vì người Việt quen âm đầu đóng; cần cho hơi và rung đi qua đầu lưỡi.",
+      "examples": { "target": "This cup is mine.", "contrast": "Do not diss your classmates." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w3-026",
+      "category": "th_pairs",
+      "pair": { "target": "other", "contrast": "udder" },
+      "ipa": { "target": "/ˈʌðər/", "contrast": "/ˈʌdər/" },
+      "vi": "Ở giữa từ, /ð/ thường bị người Việt thay bằng /d/; \"other\" phải giữ ma sát có rung để không nghe như \"udder\".",
+      "examples": { "target": "Choose the other door.", "contrast": "The calf drank near the udder." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w3-027",
+      "category": "initial_clusters",
+      "pair": { "target": "scam", "contrast": "cam" },
+      "ipa": { "target": "/skæm/", "contrast": "/kæm/" },
+      "vi": "Tiếng Việt không bắt đầu từ bằng cụm /sk/, nên người học dễ bỏ /s/ đầu và làm \"scam\" nghe như \"cam\".",
+      "examples": { "target": "That email is a scam.", "contrast": "The cam controls the machine." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w3-028",
+      "category": "initial_clusters",
+      "pair": { "target": "school", "contrast": "cool" },
+      "ipa": { "target": "/skuːl/", "contrast": "/kuːl/" },
+      "vi": "Cụm /sk/ đầu từ thường bị rút còn /k/ vì tiếng Việt không có kiểu mở đầu này; \"school\" cần giữ /s/ trước /k/.",
+      "examples": { "target": "School starts at eight.", "contrast": "The water feels cool." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-029",
+      "category": "initial_clusters",
+      "pair": { "target": "skip", "contrast": "kip" },
+      "ipa": { "target": "/skɪp/", "contrast": "/kɪp/" },
+      "vi": "Nếu /s/ đầu trong cụm /sk/ bị bỏ, \"skip\" sẽ nghe như \"kip\"; người Việt cần luyện trượt /s/ sang /k/ không thêm nguyên âm.",
+      "examples": { "target": "Do not skip breakfast.", "contrast": "He took a short kip after lunch." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w3-030",
+      "category": "initial_clusters",
+      "pair": { "target": "slate", "contrast": "late" },
+      "ipa": { "target": "/sleɪt/", "contrast": "/leɪt/" },
+      "vi": "Cụm /sl/ đầu từ dễ bị giản lược còn /l/, nên \"slate\" cần bắt đầu bằng /s/ rõ trước khi chuyển sang /l/.",
+      "examples": { "target": "The slate roof looked gray.", "contrast": "I was late for class." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-031",
+      "category": "initial_clusters",
+      "pair": { "target": "snow", "contrast": "no" },
+      "ipa": { "target": "/snoʊ/", "contrast": "/noʊ/" },
+      "vi": "Người Việt có thể bỏ /s/ trong cụm /sn/ vì đầu từ hai phụ âm không quen, làm \"snow\" nghe thành \"no\".",
+      "examples": { "target": "Snow covered the road.", "contrast": "No one answered the phone." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w3-032",
+      "category": "initial_clusters",
+      "pair": { "target": "smell", "contrast": "mell" },
+      "ipa": { "target": "/smɛl/", "contrast": "/mɛl/" },
+      "vi": "Cụm /sm/ đầu từ dễ mất /s/ vì tiếng Việt thường chỉ có một phụ âm đầu; \"smell\" cần giữ tiếng xì trước /m/.",
+      "examples": { "target": "I smell fresh bread.", "contrast": "Mell is a short name for Melanie." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w3-033",
+      "category": "initial_clusters",
+      "pair": { "target": "small", "contrast": "mall" },
+      "ipa": { "target": "/smɔːl/", "contrast": "/mɔːl/" },
+      "vi": "Nếu bỏ /s/ đầu trong /sm/, \"small\" sẽ thành \"mall\"; cần nối /s/ và /m/ liền nhau, không chèn âm đệm.",
+      "examples": { "target": "This is a small room.", "contrast": "The mall opens at ten." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-034",
+      "category": "initial_clusters",
+      "pair": { "target": "sweep", "contrast": "weep" },
+      "ipa": { "target": "/swiːp/", "contrast": "/wiːp/" },
+      "vi": "Cụm /sw/ không có trong tiếng Việt, nên /s/ đầu dễ rơi mất và \"sweep\" nghe như \"weep\".",
+      "examples": { "target": "Please sweep the floor.", "contrast": "Do not weep over the mistake." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-035",
+      "category": "initial_clusters",
+      "pair": { "target": "twin", "contrast": "win" },
+      "ipa": { "target": "/twɪn/", "contrast": "/wɪn/" },
+      "vi": "Cụm /tw/ đầu từ dễ bị rút còn /w/ vì tiếng Việt không quen bật /t/ ngay trước /w/; \"twin\" cần âm chặn rất ngắn ở đầu.",
+      "examples": { "target": "My twin brother lives nearby.", "contrast": "We can win this game." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-036",
+      "category": "initial_clusters",
+      "pair": { "target": "clean", "contrast": "keen" },
+      "ipa": { "target": "/kliːn/", "contrast": "/kiːn/" },
+      "vi": "Người Việt dễ bỏ /l/ trong cụm /kl/ hoặc chèn nguyên âm đệm; \"clean\" phải giữ /k/ rồi /l/ liền nhau để khác \"keen\".",
+      "examples": { "target": "Keep the desk clean.", "contrast": "She is keen to learn." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-037",
+      "category": "initial_clusters",
+      "pair": { "target": "grow", "contrast": "go" },
+      "ipa": { "target": "/ɡroʊ/", "contrast": "/ɡoʊ/" },
+      "vi": "Cụm /ɡr/ đầu từ dễ mất /r/ vì tiếng Việt không nối hai phụ âm đầu theo kiểu này; \"grow\" cần uốn /r/ sau /ɡ/.",
+      "examples": { "target": "Plants grow faster in spring.", "contrast": "Go home before dark." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-038",
+      "category": "initial_clusters",
+      "pair": { "target": "blue", "contrast": "boo" },
+      "ipa": { "target": "/bluː/", "contrast": "/buː/" },
+      "vi": "Trong cụm /bl/, /l/ dễ bị bỏ hoặc tách bằng nguyên âm đệm; \"blue\" cần /b/ và /l/ đi liền để không nghe như \"boo\".",
+      "examples": { "target": "The blue shirt is mine.", "contrast": "The crowd began to boo." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-039",
+      "category": "vowel_contrasts",
+      "pair": { "target": "cheap", "contrast": "chip" },
+      "ipa": { "target": "/tʃiːp/", "contrast": "/tʃɪp/" },
+      "vi": "Người Việt dễ dùng một âm \"i\" cho cả /iː/ và /ɪ/, nên \"cheap\" cần kéo dài và căng hơn \"chip\".",
+      "examples": { "target": "This phone case is cheap.", "contrast": "There is a chip in the glass." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w3-040",
+      "category": "vowel_contrasts",
+      "pair": { "target": "feel", "contrast": "fill" },
+      "ipa": { "target": "/fiːl/", "contrast": "/fɪl/" },
+      "vi": "Tiếng Việt không đối lập /iː/ dài căng với /ɪ/ ngắn lỏng, nên \"feel\" và \"fill\" dễ bị đọc cùng một âm nếu không kiểm soát độ dài.",
+      "examples": { "target": "I feel better today.", "contrast": "Please fill this form." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w3-041",
+      "category": "vowel_contrasts",
+      "pair": { "target": "wheel", "contrast": "will" },
+      "ipa": { "target": "/wiːl/", "contrast": "/wɪl/" },
+      "vi": "Người Việt hay nghe /iː/ và /ɪ/ như cùng một nguyên âm, nên \"wheel\" phải dài và căng hơn \"will\".",
+      "examples": { "target": "The wheel needs air.", "contrast": "I will call you later." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-042",
+      "category": "vowel_contrasts",
+      "pair": { "target": "meal", "contrast": "mill" },
+      "ipa": { "target": "/miːl/", "contrast": "/mɪl/" },
+      "vi": "Nếu /iː/ không đủ dài và /ɪ/ không đủ ngắn, \"meal\" và \"mill\" sẽ nhập lại; đây là lỗi phổ biến với người Việt.",
+      "examples": { "target": "We shared a meal together.", "contrast": "The old mill is near the river." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-043",
+      "category": "vowel_contrasts",
+      "pair": { "target": "least", "contrast": "list" },
+      "ipa": { "target": "/liːst/", "contrast": "/lɪst/" },
+      "vi": "Cụm cuối giống nhau làm người học dễ bỏ qua độ dài nguyên âm; \"least\" cần /iː/ dài hơn rõ rệt so với /ɪ/ trong \"list\".",
+      "examples": { "target": "Choose the least expensive option.", "contrast": "Add milk to the list." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-044",
+      "category": "vowel_contrasts",
+      "pair": { "target": "feet", "contrast": "fit" },
+      "ipa": { "target": "/fiːt/", "contrast": "/fɪt/" },
+      "vi": "Người Việt thường dùng một nguyên âm gần /i/ cho cả hai từ, nên \"feet\" phải dài và căng hơn \"fit\" để tránh đổi nghĩa.",
+      "examples": { "target": "My feet are tired.", "contrast": "These shoes fit well." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w3-045",
+      "category": "vowel_contrasts",
+      "pair": { "target": "boot", "contrast": "book" },
+      "ipa": { "target": "/buːt/", "contrast": "/bʊk/" },
+      "vi": "Âm /uː/ dài căng và /ʊ/ ngắn lỏng thường bị nhập trong phát âm của người Việt; cần làm \"boot\" dài và tròn môi hơn \"book\".",
+      "examples": { "target": "One boot was muddy.", "contrast": "Put the book on the shelf." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-046",
+      "category": "vowel_contrasts",
+      "pair": { "target": "suit", "contrast": "soot" },
+      "ipa": { "target": "/suːt/", "contrast": "/sʊt/" },
+      "vi": "Người Việt dễ kéo /ʊ/ quá dài hoặc làm /uː/ quá ngắn, nên \"suit\" và \"soot\" cần tách bằng độ căng và độ dài nguyên âm.",
+      "examples": { "target": "Wear a suit to the meeting.", "contrast": "Soot covered the old chimney." },
+      "difficulty": "hard"
+    },
+    {
+      "id": "f5w3-047",
+      "category": "vowel_contrasts",
+      "pair": { "target": "man", "contrast": "men" },
+      "ipa": { "target": "/mæn/", "contrast": "/mɛn/" },
+      "vi": "Âm /æ/ trong \"man\" cần mở miệng thấp hơn /ɛ/ trong \"men\"; người Việt dễ đọc cả hai gần âm \"e\" tiếng Việt.",
+      "examples": { "target": "A man waited outside.", "contrast": "Three men entered the room." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w3-048",
+      "category": "vowel_contrasts",
+      "pair": { "target": "pan", "contrast": "pen" },
+      "ipa": { "target": "/pæn/", "contrast": "/pɛn/" },
+      "vi": "Vì /æ/ không có tương đương trực tiếp trong tiếng Việt, \"pan\" dễ bị nâng lên thành /ɛ/ và nghe như \"pen\".",
+      "examples": { "target": "Heat the pan first.", "contrast": "Sign your name with a pen." },
+      "difficulty": "easy"
+    },
+    {
+      "id": "f5w3-049",
+      "category": "vowel_contrasts",
+      "pair": { "target": "luck", "contrast": "lock" },
+      "ipa": { "target": "/lʌk/", "contrast": "/lɑːk/" },
+      "vi": "Người Việt dễ dùng một âm \"ă/a\" cho /ʌ/ và /ɑː/, nên \"luck\" phải ngắn và trung tâm hơn \"lock\".",
+      "examples": { "target": "Good luck on the test.", "contrast": "Lock the cabinet tonight." },
+      "difficulty": "medium"
+    },
+    {
+      "id": "f5w3-050",
+      "category": "vowel_contrasts",
+      "pair": { "target": "pen", "contrast": "pain" },
+      "ipa": { "target": "/pɛn/", "contrast": "/peɪn/" },
+      "vi": "Nguyên âm đôi /eɪ/ trong \"pain\" dễ bị làm phẳng thành /ɛ/ như \"pen\"; cần trượt từ /e/ sang /ɪ/ rõ ràng.",
+      "examples": { "target": "The pen is on the desk.", "contrast": "She felt pain in her knee." },
+      "difficulty": "medium"
+    }
+  ]
+}
