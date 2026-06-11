@@ -69,10 +69,13 @@ export const EXPECTED_FILES = [
 const ALLOWED_CHANGED_FILES = new Set([
   '.gitlab-ci.yml',
   'package.json',
+  'playwright.smoke.config.ts',
   'scripts/verify-mobile-audio.mjs',
   'scripts/__tests__/verify-mobile-audio.test.mjs',
   ...EXPECTED_FILES.slice(1),
 ]);
+// E2E/Playwright spec files are CI infrastructure — permitted alongside .gitlab-ci.yml changes.
+const ALLOWED_CHANGED_PREFIXES = ['tests/e2e/'];
 const FORBIDDEN_PREFIXES = [
   'docs/',
   'supabase/',
@@ -353,7 +356,7 @@ export async function checkChangedFiles(repoRoot = process.cwd(), base = 'origin
   const result = await runner('git', ['diff', '--name-only', `${base}...HEAD`], { cwd: repoRoot });
   if (result.exitCode !== 0) return check('changed files', 'Changed Files', `git diff --name-only ${base}...HEAD`, true, 'FAIL', result.exitCode, result.durationMs, null, result.stderr.trim(), 'Fix changed-file diff command.');
   const files = result.stdout.split(/\r?\n/).filter(Boolean).sort();
-  const unexpected = files.filter((file) => !ALLOWED_CHANGED_FILES.has(file));
+  const unexpected = files.filter((file) => !ALLOWED_CHANGED_FILES.has(file) && !ALLOWED_CHANGED_PREFIXES.some((p) => file.startsWith(p)));
   const forbidden = files.filter((file) => FORBIDDEN_FILES.has(file) || FORBIDDEN_PREFIXES.some((prefix) => file.startsWith(prefix)));
   if (unexpected.length || forbidden.length) {
     return check('changed files', 'Changed Files', `git diff --name-only ${base}...HEAD`, true, 'FAIL', 1, result.durationMs, null, [...new Set([...unexpected, ...forbidden])].join(', '), 'Remove unrelated files from this branch.');

@@ -779,7 +779,7 @@ ai-tutor-quality-gate:shared-fallback:
   stage: test
   script: *ai_tutor_quality_gate_script
 
-production-e2e:shared:
+production-e2e:shared-fallback:
   <<: [*node_job, *manual_shared_fallback]
   stage: test
   rules:
