@@ -116,10 +116,10 @@ function injectDiagnostics() {
       };
 
       const OrigAudio = window.Audio;
-      // @ts-ignore
+      // @ts-expect-error -- reassign window.Audio for test instrumentation
       window.Audio = class extends OrigAudio {
         constructor(src?: string) {
-          // @ts-ignore
+          // @ts-expect-error -- optional src not in HTMLAudioElement constructor typing
           super(src ?? "");
           if (src) {
             this.addEventListener("error", () => {
