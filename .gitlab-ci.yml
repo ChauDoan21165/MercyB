@@ -1079,11 +1079,12 @@ deploy-cloudflare-pages:
 # (and the non-blocking manual `deploy` stage); that natural delay also
 # gives the Netlify webhook publish time to land before the suite probes.
 #
-# No JWTs required to run: without GOLDEN_FLOW_PREMIUM_JWT +
-# GOLDEN_FLOW_FREE_JWT it runs the no-token smoke (AUTH CONFIG + TTS +
-# SIGNIN). Set both as masked CI/CD variables to promote it to the full
-# five-flow gate (adds FOLLOW + GATE). The tests use only Playwright's
-# `request` fixture (no browser), so no chromium install is needed.
+# Full five-flow gate when either:
+#   a) GOLDEN_FLOW_PREMIUM_JWT + GOLDEN_FLOW_FREE_JWT are set (direct override), OR
+#   b) GOLDEN_FLOW_PREMIUM_EMAIL/PASSWORD + GOLDEN_FLOW_FREE_EMAIL/PASSWORD are set
+#      — scripts/golden-flows.sh mints fresh JWTs at runtime (durable, no expiry).
+# Without any of the above, falls back to the no-token smoke (flows 1/2/5 only).
+# The tests use only Playwright's `request` fixture (no browser).
 golden-flows-prod:
   <<: [*node_job, *local_runner]
   interruptible: false
@@ -1103,10 +1104,13 @@ golden-flows-prod:
   script:
     - |
       if [ -n "${GOLDEN_FLOW_PREMIUM_JWT:-}" ] && [ -n "${GOLDEN_FLOW_FREE_JWT:-}" ]; then
-        echo "Prod test JWTs present — running the full five-flow golden suite."
+        echo "Prod test JWTs present (override) — running the full five-flow golden suite."
+        npm run verify:golden-flows
+      elif [ -n "${GOLDEN_FLOW_PREMIUM_EMAIL:-}" ] && [ -n "${GOLDEN_FLOW_FREE_EMAIL:-}" ]; then
+        echo "Prod test credentials present — minting fresh JWTs and running the full five-flow golden suite."
         npm run verify:golden-flows
       else
-        echo "GOLDEN_FLOW_PREMIUM_JWT / GOLDEN_FLOW_FREE_JWT not set — running the no-token smoke (AUTH CONFIG + TTS + SIGNIN); FOLLOW + GATE skip."
+        echo "No prod test tokens or credentials set — running the no-token smoke (AUTH CONFIG + TTS + SIGNIN); FOLLOW + GATE skip."
         GOLDEN_FLOW_ALLOW_MISSING_SECRETS=1 npm run verify:golden-flows
       fi
 
