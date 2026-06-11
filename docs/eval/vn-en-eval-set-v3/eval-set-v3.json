@@ -1,0 +1,371 @@
+{
+  "name": "vn-en-eval-set-v3",
+  "description": "VN→EN correction eval set v3 — 40 pairs targeting Stage-2 live categories: false-friend, calque, and medium-freq collocation (B1/B2 CEFR weighted). Zero duplicate inputs vs v1+v2 (case-insensitive).",
+  "version": 3,
+  "targetLearnerL1": "vi",
+  "targetLearnerL2": "en",
+  "schemaSource": "../vn-en-eval-set-v1/types.ts",
+  "count": 40,
+  "entries": [
+    {
+      "id": "eval-v3-001",
+      "input": "She is very sensible to other people's opinions and often gets upset.",
+      "expected": "She is very sensitive to other people's opinions and often gets upset.",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing someone's character" },
+      "level": "B1",
+      "vietlishPattern": "nhạy cảm → 'sensible' false-friend — Vietnamese 'nhạy cảm' = easily affected emotionally; English 'sensible' = having good practical judgment; 'sensitive' = easily affected; learner maps the L1 state adjective to the more familiar-looking English cognate"
+    },
+    {
+      "id": "eval-v3-002",
+      "input": "He is a very considerable supervisor who always thinks about his team's wellbeing.",
+      "expected": "He is a very considerate supervisor who always thinks about his team's wellbeing.",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "formal", "natural": true, "context": "workplace character description" },
+      "level": "B2",
+      "vietlishPattern": "chu đáo/ân cần → 'considerable' false-friend — 'considerable' = large in amount or extent; 'considerate' = thoughtful toward others; Vietnamese 'chu đáo' has no exact cognate anchor so learner defaults to the longer-looking English adjective with the shared root"
+    },
+    {
+      "id": "eval-v3-003",
+      "input": "She is the most industrial student I have ever taught.",
+      "expected": "She is the most industrious student I have ever taught.",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "formal", "natural": true, "context": "teacher's assessment" },
+      "level": "B2",
+      "vietlishPattern": "chăm chỉ/cần cù → 'industrial' false-friend — 'industrial' = relating to industry or manufacturing; 'industrious' = hardworking; the shared root 'industri-' traps learners who already know 'industrial revolution' and over-generalise the form to the person-adjective"
+    },
+    {
+      "id": "eval-v3-004",
+      "input": "The city council made a historical decision to ban all single-use plastics.",
+      "expected": "The city council made a historic decision to ban all single-use plastics.",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "formal", "natural": true, "context": "news or public announcement" },
+      "level": "B2",
+      "vietlishPattern": "quyết định lịch sử → 'historical' false-friend — 'historical' = relating to or about history; 'historic' = important or famous enough to be recorded in history; Vietnamese 'lịch sử' underdifferentiates the two; learners default to the longer, more common adjective form"
+    },
+    {
+      "id": "eval-v3-005",
+      "input": "Can you tell me your actual phone number? I may have saved the old one.",
+      "expected": "Can you tell me your current phone number? I may have saved the old one.",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "informal", "natural": true, "context": "casual conversation" },
+      "level": "B1",
+      "vietlishPattern": "số điện thoại hiện tại → 'actual phone number' false-friend — Vietnamese 'hiện tại' = current/present; English 'actual' = real/genuine (not current); 'current' or 'present' is required to express the time sense; widespread false-friend in VN business and academic English"
+    },
+    {
+      "id": "eval-v3-006",
+      "input": "My father is very economic and he always plans his expenses carefully.",
+      "expected": "My father is very economical and he always plans his expenses carefully.",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "informal", "natural": true, "context": "describing a family member" },
+      "level": "B2",
+      "vietlishPattern": "tiết kiệm/kinh tế → 'economic' false-friend — 'economic' = relating to the economy; 'economical' = cost-efficient or thrifty; Vietnamese 'kinh tế' can describe a frugal person; learner maps to the shorter, higher-frequency adjective rather than the person-quality form"
+    },
+    {
+      "id": "eval-v3-007",
+      "input": "Can I lend your dictionary until tomorrow morning?",
+      "expected": "Can I borrow your dictionary until tomorrow morning?",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "informal", "natural": true, "context": "classroom or office request" },
+      "level": "A2",
+      "vietlishPattern": "mượn → 'lend' vs 'borrow' false-friend — Vietnamese 'mượn' = take temporarily (borrow); English direction is reversed: 'lend' = give temporarily (what the owner does); 'borrow' = receive temporarily (what the requester does); directionality is absent in the L1 word"
+    },
+    {
+      "id": "eval-v3-008",
+      "input": "I feel very sympathy for the children who lost their parents in the disaster.",
+      "expected": "I feel deep sympathy for the children who lost their parents in the disaster.",
+      "errorTags": ["literal_translation", "collocation"],
+      "tone": { "register": "formal", "natural": true, "context": "expressing compassion" },
+      "level": "B1",
+      "vietlishPattern": "rất đồng cảm → 'very sympathy' — Vietnamese 'đồng cảm' functions as adjective and noun; English 'sympathy' is a noun modified by adjectives like 'deep/great', not the adverb 'very'; false-friend between the noun and the adjectival sense; collocation: 'feel deep sympathy for'"
+    },
+    {
+      "id": "eval-v3-009",
+      "input": "How do you call the small tool you use to open a bottle of wine?",
+      "expected": "What do you call the small tool you use to open a bottle of wine?",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "informal", "natural": true, "context": "asking for vocabulary help" },
+      "level": "A2",
+      "vietlishPattern": "cái này gọi là gì → 'how do you call' — Vietnamese question 'gọi là gì' (call is what); learner maps 'gì' (what) to 'how' by analogy with 'How do you say...?'; English naming question is 'What do you call...?' not 'How do you call...?'"
+    },
+    {
+      "id": "eval-v3-010",
+      "input": "I always want to remind this rule when I write formal emails.",
+      "expected": "I always want to remember this rule when I write formal emails.",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "neutral", "natural": true, "context": "self-study reflection" },
+      "level": "B1",
+      "vietlishPattern": "nhắc nhở/nhớ → 'remind' used for self-recall — Vietnamese 'nhớ' covers both 'remember' (self-directed recall) and 'remind' (directing another person's attention); English 'remind' requires an external person object ('remind someone of something'); for self-directed recall, 'remember' is the correct verb"
+    },
+    {
+      "id": "eval-v3-011",
+      "input": "She doesn't know to drive a car, so she always uses public transport.",
+      "expected": "She doesn't know how to drive a car, so she always uses public transport.",
+      "errorTags": ["literal_translation", "omission"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing someone's abilities" },
+      "level": "A2",
+      "vietlishPattern": "không biết lái xe → 'know to drive' calque — Vietnamese 'biết + bare verb' (không biết lái); English requires 'know how to + verb'; 'how' is omitted in the direct calque because L1 'biết' immediately precedes the activity"
+    },
+    {
+      "id": "eval-v3-012",
+      "input": "Do you know to make the traditional Vietnamese rice cake?",
+      "expected": "Do you know how to make the traditional Vietnamese rice cake?",
+      "errorTags": ["literal_translation", "omission"],
+      "tone": { "register": "informal", "natural": true, "context": "cultural conversation" },
+      "level": "A2",
+      "vietlishPattern": "bạn có biết làm bánh chưng không → 'know to make' calque — same 'biết + verb' structure as above; 'know how to' is required; this is among the highest-frequency calques produced by Vietnamese learners at A2–B1"
+    },
+    {
+      "id": "eval-v3-013",
+      "input": "There is rain outside, you should take an umbrella with you.",
+      "expected": "It is raining outside; you should take an umbrella with you.",
+      "errorTags": ["literal_translation", "copula"],
+      "tone": { "register": "informal", "natural": true, "context": "household advice" },
+      "level": "A2",
+      "vietlishPattern": "ngoài trời có mưa → 'there is rain' calque — Vietnamese existential 'có' + weather noun describes atmospheric conditions; English weather uses impersonal 'it' as dummy subject with progressive aspect ('it's raining'); 'there is rain' is a direct structural calque of the existential"
+    },
+    {
+      "id": "eval-v3-014",
+      "input": "I feel not comfortable speaking in front of a large group of people.",
+      "expected": "I don't feel comfortable speaking in front of a large group of people.",
+      "errorTags": ["literal_translation", "word_order"],
+      "tone": { "register": "informal", "natural": true, "context": "describing a personal difficulty" },
+      "level": "A2",
+      "vietlishPattern": "tôi cảm thấy không thoải mái → 'feel not comfortable' — Vietnamese negation 'không' is placed after the verb ('cảm thấy không'); English negation requires auxiliary 'don't' before the main verb; post-verbal 'not' is a direct calque of the L1 word order"
+    },
+    {
+      "id": "eval-v3-015",
+      "input": "I have twenty-two years old and I am in my first year at university.",
+      "expected": "I am twenty-two years old and I am in my first year at university.",
+      "errorTags": ["literal_translation", "copula"],
+      "tone": { "register": "informal", "natural": true, "context": "personal introduction" },
+      "level": "A1",
+      "vietlishPattern": "tôi có hai mươi hai tuổi → 'have X years old' calque — Vietnamese possession verb 'có' (have) + number of years; English uses the copula 'be' for stating age ('I am'); one of the highest-frequency calques produced by Vietnamese beginners across all contexts"
+    },
+    {
+      "id": "eval-v3-016",
+      "input": "His harsh words hurt in my heart and I felt very sad all day.",
+      "expected": "His harsh words hurt me deeply and I felt very sad all day.",
+      "errorTags": ["literal_translation", "collocation"],
+      "tone": { "register": "informal", "natural": true, "context": "emotional personal narrative" },
+      "level": "B1",
+      "vietlishPattern": "lời nói cay nghiệt của anh ấy làm đau lòng tôi → 'hurt in my heart' — Vietnamese 'đau lòng' (lòng = heart/inner feelings) is a fixed emotional expression; calqued as an anatomical location; English expresses this with a psychological subject and manner adverb: 'hurt me deeply'; body-part calque is a Stage-2B target"
+    },
+    {
+      "id": "eval-v3-017",
+      "input": "How long you have been studying at this school?",
+      "expected": "How long have you been studying at this school?",
+      "errorTags": ["literal_translation", "word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "getting to know someone" },
+      "level": "A2",
+      "vietlishPattern": "bạn học trường này bao lâu rồi → no subject-auxiliary inversion after 'how long' — Vietnamese appends 'bao lâu' at the end without structural change; English WH-question with present perfect requires auxiliary-subject inversion ('How long have you been...')"
+    },
+    {
+      "id": "eval-v3-018",
+      "input": "He can able to communicate in English, French, and Japanese.",
+      "expected": "He can communicate in English, French, and Japanese.",
+      "errorTags": ["literal_translation", "redundancy"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing language abilities" },
+      "level": "B1",
+      "vietlishPattern": "có thể → 'can able to' double modal — Vietnamese 'có thể' translates to both 'can' and 'be able to'; learner stacks both translations simultaneously; only one is needed: 'can communicate' or 'is able to communicate'"
+    },
+    {
+      "id": "eval-v3-019",
+      "input": "He always must to check his messages before starting work in the morning.",
+      "expected": "He must always check his messages before starting work in the morning.",
+      "errorTags": ["literal_translation", "word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing a work routine" },
+      "level": "A2",
+      "vietlishPattern": "anh ấy luôn phải kiểm tra → 'always must to' — Vietnamese 'phải' (must) directly precedes the verb in L1; learner inserts 'to' by analogy with 'have to/need to'; also places 'always' before 'must' (L1 adverb position); English: frequency adverb follows 'must'"
+    },
+    {
+      "id": "eval-v3-020",
+      "input": "I want to make my English more better, so I practise every day.",
+      "expected": "I want to improve my English, so I practise every day.",
+      "errorTags": ["literal_translation", "redundancy"],
+      "tone": { "register": "informal", "natural": true, "context": "describing a learning habit" },
+      "level": "A2",
+      "vietlishPattern": "muốn làm tiếng Anh của tôi tốt hơn → 'make more better' — double comparative calque of 'tốt hơn' (more good); and 'làm X tốt hơn' SVOC calque; 'more better' is redundant (double comparative); English lexically encodes the improvement: 'improve my English'"
+    },
+    {
+      "id": "eval-v3-021",
+      "input": "She is eating medicine three times a day as the doctor recommended.",
+      "expected": "She is taking medicine three times a day as the doctor recommended.",
+      "errorTags": ["collocation"],
+      "tone": { "register": "neutral", "natural": true, "context": "reporting medical treatment" },
+      "level": "A2",
+      "vietlishPattern": "ăn thuốc → 'eating medicine' — Vietnamese 'ăn thuốc' uses the eating verb for pills; 'uống thuốc' uses the drinking verb for liquids; English 'take medicine/tablets' is the fixed collocation regardless of form (pills, syrup, injection)"
+    },
+    {
+      "id": "eval-v3-022",
+      "input": "He did a terrible mistake and had to apologise to the whole team.",
+      "expected": "He made a terrible mistake and had to apologise to the whole team.",
+      "errorTags": ["collocation"],
+      "tone": { "register": "neutral", "natural": true, "context": "workplace incident narrative" },
+      "level": "A2",
+      "vietlishPattern": "làm lỗi → 'did a mistake' — 'làm' (do/make) used for mistakes in Vietnamese; English fixed collocation: 'make a mistake', not 'do a mistake'; among the most frequent collocation errors in VN learner English corpora and a Stage-2A target"
+    },
+    {
+      "id": "eval-v3-023",
+      "input": "All candidates must make the written exam before the practical test.",
+      "expected": "All candidates must take the written exam before the practical test.",
+      "errorTags": ["collocation"],
+      "tone": { "register": "formal", "natural": true, "context": "examination instructions" },
+      "level": "B1",
+      "vietlishPattern": "dự thi/làm bài thi → 'make the exam' — Vietnamese 'làm bài thi' (do the exam paper) or 'dự thi' (attend the exam); English: candidates 'take' (sit) an exam; 'make' implies creating or constructing, not sitting; 'take an exam/test' is the standard collocation"
+    },
+    {
+      "id": "eval-v3-024",
+      "input": "She gave birth a healthy baby girl this morning.",
+      "expected": "She gave birth to a healthy baby girl this morning.",
+      "errorTags": ["collocation", "omission"],
+      "tone": { "register": "informal", "natural": true, "context": "sharing personal news" },
+      "level": "B1",
+      "vietlishPattern": "sinh một bé gái khoẻ mạnh → 'give birth a baby' — Vietnamese 'sinh + object' is transitive with no preposition needed; English 'give birth to' is a fixed phrasal collocation requiring 'to' before the noun; omitting 'to' produces an ungrammatical string"
+    },
+    {
+      "id": "eval-v3-025",
+      "input": "I have a very strong headache and cannot focus on my work at all.",
+      "expected": "I have a very bad headache and cannot focus on my work at all.",
+      "errorTags": ["collocation"],
+      "tone": { "register": "informal", "natural": true, "context": "describing physical discomfort" },
+      "level": "A2",
+      "vietlishPattern": "đau đầu rất mạnh → 'strong headache' — Vietnamese 'mạnh' (strong/intense) intensifies pain; English collocates pain and ache with 'bad/terrible/splitting/severe', not 'strong'; 'strong' collocates with sensory intensity (strong smell) or physical force, not bodily pain"
+    },
+    {
+      "id": "eval-v3-026",
+      "input": "We lost a lot of time stuck in traffic and missed the opening of the show.",
+      "expected": "We wasted a lot of time stuck in traffic and missed the opening of the show.",
+      "errorTags": ["collocation", "literal_translation"],
+      "tone": { "register": "informal", "natural": true, "context": "describing an inconvenient experience" },
+      "level": "B1",
+      "vietlishPattern": "mất nhiều thời gian → 'lost time' — Vietnamese 'mất' covers both 'lose' (be deprived of) and 'waste' (spend poorly); English distinguishes: 'lose time' = time taken away uncontrollably; 'waste time' = time spent unproductively; being stuck in traffic is 'wasting', not 'losing'"
+    },
+    {
+      "id": "eval-v3-027",
+      "input": "He works very hard and wins a lot of money from his business every year.",
+      "expected": "He works very hard and earns a lot of money from his business every year.",
+      "errorTags": ["collocation", "literal_translation"],
+      "tone": { "register": "neutral", "natural": true, "context": "describing someone's professional success" },
+      "level": "B1",
+      "vietlishPattern": "kiếm được nhiều tiền → 'wins money' — Vietnamese 'được tiền' (get/receive money) or 'kiếm tiền' (earn money); English 'win' applies to competitions with an opponent; regular income or profit from business is always 'earned', not 'won'"
+    },
+    {
+      "id": "eval-v3-028",
+      "input": "Please make your best to complete this task before five o'clock.",
+      "expected": "Please do your best to complete this task before five o'clock.",
+      "errorTags": ["collocation"],
+      "tone": { "register": "formal", "natural": true, "context": "workplace instruction" },
+      "level": "B1",
+      "vietlishPattern": "cố hết sức → 'make your best' — Vietnamese 'làm hết sức' (make/do all effort); English fixed idiom is 'do your best' (not 'make your best'); cf. 'make an effort' and 'do your best' require different verbs; 'make' and 'do' collocations are a high-yield correction target"
+    },
+    {
+      "id": "eval-v3-029",
+      "input": "They made a research on the buying behaviour of young consumers last year.",
+      "expected": "They conducted research on the buying behaviour of young consumers last year.",
+      "errorTags": ["collocation", "article"],
+      "tone": { "register": "formal", "natural": true, "context": "academic or business report context" },
+      "level": "B2",
+      "vietlishPattern": "làm/tiến hành nghiên cứu → 'made a research' — 'research' is uncountable; 'a research' is ungrammatical; standard collocations: 'conduct/carry out/do research' with no article; 'làm nghiên cứu' produces 'make + a + research' by analogy with countable task nouns"
+    },
+    {
+      "id": "eval-v3-030",
+      "input": "All staff members must do a health check every six months.",
+      "expected": "All staff members must have a health check every six months.",
+      "errorTags": ["collocation"],
+      "tone": { "register": "formal", "natural": true, "context": "workplace health policy" },
+      "level": "B2",
+      "vietlishPattern": "khám sức khoẻ → 'do a health check' — Vietnamese 'làm/đi khám' (do/go for a check); English: the patient 'has/undergoes' a medical check (receives it as a service); the doctor or clinic 'does/performs' it; learner assigns the active role to the wrong party"
+    },
+    {
+      "id": "eval-v3-031",
+      "input": "She opened her eyes big when she heard the news.",
+      "expected": "She opened her eyes wide when she heard the news.",
+      "errorTags": ["collocation"],
+      "tone": { "register": "informal", "natural": true, "context": "narrative description" },
+      "level": "B1",
+      "vietlishPattern": "mắt mở to → 'opened eyes big' — Vietnamese 'to' (big/large) is the correct modifier for widely-opened eyes in L1; English collocates 'open + eyes + wide'; 'wide' is the fixed manner adverb for aperture ('wide open', 'eyes wide', 'gaping wide')"
+    },
+    {
+      "id": "eval-v3-032",
+      "input": "There is a heavy problem with the new software that we need to fix urgently.",
+      "expected": "There is a serious problem with the new software that we need to fix urgently.",
+      "errorTags": ["collocation"],
+      "tone": { "register": "formal", "natural": true, "context": "technical issue report" },
+      "level": "B1",
+      "vietlishPattern": "vấn đề nặng/nghiêm trọng → 'heavy problem' — Vietnamese 'nặng' (heavy/grave) modifies serious situations; English 'heavy' collocates with physical weight, traffic ('heavy traffic'), or rain ('heavy rain'); 'problem/issue' takes 'serious/major/significant', not 'heavy'"
+    },
+    {
+      "id": "eval-v3-033",
+      "input": "She studied English for two hours before going to bed last night.",
+      "expected": "She studied English for two hours before going to bed last night.",
+      "errorTags": [],
+      "tone": { "register": "neutral", "natural": true, "context": "describing a study routine" },
+      "level": "A2",
+      "vietlishPattern": "acceptable: 'for + duration' in past context is correct; 'before going to bed' is a natural adjunct; no correction needed"
+    },
+    {
+      "id": "eval-v3-034",
+      "input": "I would appreciate it if you could send me the updated file by tomorrow.",
+      "expected": "I would appreciate it if you could send me the updated file by tomorrow.",
+      "errorTags": [],
+      "tone": { "register": "formal", "natural": true, "context": "professional email request" },
+      "level": "B2",
+      "vietlishPattern": "acceptable: 'would appreciate it if you could' is a correct formal hedged request; 'by tomorrow' correctly marks a deadline; no correction needed"
+    },
+    {
+      "id": "eval-v3-035",
+      "input": "He not only passed the exam but also achieved the highest score in the class.",
+      "expected": "He not only passed the exam but also achieved the highest score in the class.",
+      "errorTags": [],
+      "tone": { "register": "neutral", "natural": true, "context": "reporting an academic achievement" },
+      "level": "B1",
+      "vietlishPattern": "acceptable: 'not only...but also' without fronting is grammatical when the subject precedes 'not only'; no auxiliary inversion needed here; no correction needed"
+    },
+    {
+      "id": "eval-v3-036",
+      "input": "Despite the heavy workload, she managed to submit all her assignments on time.",
+      "expected": "Despite the heavy workload, she managed to submit all her assignments on time.",
+      "errorTags": [],
+      "tone": { "register": "formal", "natural": true, "context": "performance review" },
+      "level": "B2",
+      "vietlishPattern": "acceptable: 'despite + noun phrase' (not 'despite of'); 'managed to + infinitive' is correctly formed; 'heavy workload' is a natural collocation; no correction needed"
+    },
+    {
+      "id": "eval-v3-037",
+      "input": "She is very talent and can draw beautiful portraits in just one hour.",
+      "expected": "She is very talented and can draw beautiful portraits in just one hour.",
+      "errorTags": ["literal_translation"],
+      "tone": { "register": "informal", "natural": true, "context": "complimenting someone's ability" },
+      "level": "A2",
+      "vietlishPattern": "rất tài năng → 'very talent' false-friend — Vietnamese 'tài năng' functions as both noun and adjective; English 'talent' is a noun only; the adjective form is 'talented' (past-participial adjective); learner uses the noun in the adjective slot, a sub-type of the noun/adjective false-friend pattern"
+    },
+    {
+      "id": "eval-v3-038",
+      "input": "He drinks very much beer every evening and it is affecting his health.",
+      "expected": "He drinks a lot of beer every evening and it is affecting his health.",
+      "errorTags": ["collocation", "literal_translation"],
+      "tone": { "register": "informal", "natural": true, "context": "expressing concern about someone" },
+      "level": "A2",
+      "vietlishPattern": "uống rất nhiều bia → 'drinks very much beer' — Vietnamese 'rất nhiều' (very many/much) maps directly to 'very much'; English 'very much' modifies verbs ('thank you very much') or predicates, not nouns; 'a lot of' is the standard informal quantifier for large quantities before nouns"
+    },
+    {
+      "id": "eval-v3-039",
+      "input": "The team made a very big progress during the last quarter.",
+      "expected": "The team made very good progress during the last quarter.",
+      "errorTags": ["collocation", "article"],
+      "tone": { "register": "formal", "natural": true, "context": "quarterly business review" },
+      "level": "B2",
+      "vietlishPattern": "tiến bộ rất lớn → 'a very big progress' — 'progress' is uncountable; 'a progress' is ungrammatical; also 'big' is not the standard collocate: English uses 'good/significant/remarkable/considerable progress'; learner applies the Vietnamese size modifier 'lớn' (big/large) directly"
+    },
+    {
+      "id": "eval-v3-040",
+      "input": "The company must catch more customers if it wants to grow in this competitive market.",
+      "expected": "The company must attract more customers if it wants to grow in this competitive market.",
+      "errorTags": ["collocation", "literal_translation"],
+      "tone": { "register": "formal", "natural": true, "context": "business strategy discussion" },
+      "level": "B2",
+      "vietlishPattern": "thu hút/bắt khách hàng → 'catch customers' — Vietnamese 'bắt' (catch/grab) or 'thu hút' (attract/draw in); English 'catch' collocates with fish, balls, buses, or illnesses — not customers; standard business collocations: 'attract/win/gain customers'"
+    }
+  ]
+}
