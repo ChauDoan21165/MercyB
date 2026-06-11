@@ -24,8 +24,18 @@ import {
   PROBLEM_PAIRS_TH_T,
   type ProblemPair,
 } from './vn-phoneme-map';
+import { pickF5ByDifficulty } from './f5MinimalPairPicker';
 
-export type DrillCategory = 'th-t' | 'r-l' | 'ed' | 's' | 'stress' | 'intonation';
+export type DrillCategory =
+  | 'th-t'
+  | 'r-l'
+  | 'ed'
+  | 's'
+  | 'stress'
+  | 'intonation'
+  | 'f5-easy'
+  | 'f5-medium'
+  | 'f5-hard';
 
 export const DRILL_CATEGORIES: readonly DrillCategory[] = [
   'th-t',
@@ -34,9 +44,13 @@ export const DRILL_CATEGORIES: readonly DrillCategory[] = [
   's',
   'stress',
   'intonation',
+  'f5-easy',
+  'f5-medium',
+  'f5-hard',
 ] as const;
 
-const CATEGORY_POOLS: Record<DrillCategory, ProblemPair[]> = {
+// F5 categories delegate to the picker; static pools for legacy categories.
+const STATIC_POOLS: Partial<Record<DrillCategory, ProblemPair[]>> = {
   'th-t': PROBLEM_PAIRS_TH_T,
   'r-l': PROBLEM_PAIRS_R_L,
   ed: PROBLEM_PAIRS_ED_ENDINGS,
@@ -58,12 +72,20 @@ export type DrillOptions = {
 /**
  * Return a shuffled slice of the category's pool. Never mutates the
  * underlying PROBLEM_PAIRS_* arrays.
+ *
+ * F5 categories ('f5-easy', 'f5-medium', 'f5-hard') delegate to the
+ * f5MinimalPairPicker so they draw from the live corpus without a static
+ * pool copy.
  */
 export function getDrillByCategory(
   cat: DrillCategory,
   opts?: DrillOptions,
 ): ProblemPair[] {
-  const pool = CATEGORY_POOLS[cat];
+  if (cat === 'f5-easy') return pickF5ByDifficulty('easy', opts);
+  if (cat === 'f5-medium') return pickF5ByDifficulty('medium', opts);
+  if (cat === 'f5-hard') return pickF5ByDifficulty('hard', opts);
+
+  const pool = STATIC_POOLS[cat];
   if (!pool || pool.length === 0) return [];
   const size = Math.max(1, Math.min(opts?.size ?? 5, pool.length));
   const rand = opts?.seed === undefined ? Math.random : mulberry32(opts.seed);

@@ -23,9 +23,10 @@ import {
 } from '../vn-phoneme-map';
 
 describe('DRILL_CATEGORIES', () => {
-  it('exposes the six expected categories in a stable order', () => {
+  it('exposes the nine expected categories in a stable order', () => {
     expect([...DRILL_CATEGORIES]).toEqual([
       'th-t', 'r-l', 'ed', 's', 'stress', 'intonation',
+      'f5-easy', 'f5-medium', 'f5-hard',
     ]);
   });
 });
