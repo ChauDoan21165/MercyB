@@ -1,0 +1,237 @@
+{
+  "corpus": "f2-interference-taxonomy-wave4",
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F2",
+  "authoredAt": "2026-06-11",
+  "wave": 4,
+  "schemaBasis": "Content Factory standalone review pack; not wired to engine",
+  "description": "VN→EN interference taxonomy wave 4. Eight append-only review entries continuing after wave 3, focused on comparison, quantifiers, question formation, passive voice, adjective order, preposition-collocation, clause compression, and academic/workplace register. Full Vietnamese diacritics throughout.",
+  "patterns": [
+    {
+      "id": "f2w4_comparative_more_than_transfer",
+      "category": "adjectives_comparison",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Comparative frame overuse with more and than",
+      "l1ReasoningVi": "Tiếng Việt dùng khung \"hơn\" rất đều: đẹp hơn, mắc hơn, tốt hơn. Khi sang tiếng Anh, người học dễ thêm \"more\" trước mọi tính từ, kể cả tính từ ngắn đã cần hậu tố -er, hoặc thiếu đối tượng so sánh sau \"than\".",
+      "learnerSignal": "The learner writes more + short adjective, double comparative, or a comparison without a clear than-phrase.",
+      "examples": [
+        {
+          "incorrect": "This apartment is more cheap than that one.",
+          "natural": "This apartment is cheaper than that one.",
+          "explanationVi": "Tính từ ngắn như \"cheap\" thường dùng \"-er\": \"cheaper\"."
+        },
+        {
+          "incorrect": "My new schedule is more better for my family.",
+          "natural": "My new schedule is better for my family.",
+          "explanationVi": "\"Better\" đã là dạng so sánh hơn của \"good\", không thêm \"more\"."
+        },
+        {
+          "incorrect": "This school is better because near my house.",
+          "natural": "This school is better because it is near my house.",
+          "explanationVi": "Sau \"because\" cần một mệnh đề đầy đủ: chủ ngữ + động từ."
+        }
+      ],
+      "teachingMove": "Teach three lanes: short adjective + -er; long adjective + more; irregular forms like good -> better. Then ask, 'better than what?' when the comparison is unclear.",
+      "ruleTags": ["comparatives", "more_than", "adjective_forms", "vn_l1_transfer"]
+    },
+    {
+      "id": "f2w4_quantifier_many_much_a_lot_of",
+      "category": "quantifiers_countability",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A1", "A2", "B1"],
+      "name": "Many/much/a lot of flattened into one quantity word",
+      "l1ReasoningVi": "Tiếng Việt dùng \"nhiều\" cho cả danh từ đếm được và không đếm được. Tiếng Anh tách \"many\" cho danh từ đếm được số nhiều, \"much\" cho danh từ không đếm được, và \"a lot of\" dùng rộng hơn trong lời nói tự nhiên.",
+      "learnerSignal": "The learner uses much with plural count nouns, many with mass nouns, or avoids a lot of in casual speech.",
+      "examples": [
+        {
+          "incorrect": "I have much questions about the form.",
+          "natural": "I have many questions about the form.",
+          "explanationVi": "\"Questions\" đếm được và số nhiều nên dùng \"many\"."
+        },
+        {
+          "incorrect": "There are many traffic today.",
+          "natural": "There is a lot of traffic today.",
+          "explanationVi": "\"Traffic\" là danh từ không đếm được; trong lời nói thường dùng \"a lot of traffic\"."
+        },
+        {
+          "incorrect": "My aunt has much friends in this city.",
+          "natural": "My aunt has many friends in this city.",
+          "explanationVi": "\"Friends\" là danh từ đếm được số nhiều nên đi với \"many\"."
+        }
+      ],
+      "teachingMove": "Use a quick noun test: can you count one/two/three? If yes, many + plural. If no, much in questions/negatives or a lot of in everyday statements.",
+      "ruleTags": ["quantifiers", "many_much", "countability", "nhiều"]
+    },
+    {
+      "id": "f2w4_embedded_question_word_order",
+      "category": "question_formation",
+      "severity": "high",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Embedded questions kept in direct-question order",
+      "l1ReasoningVi": "Tiếng Việt không đảo trợ động từ như tiếng Anh khi chuyển câu hỏi vào trong mệnh đề: \"bạn biết nó ở đâu không\" giữ trật tự gần giống câu hỏi thường. Tiếng Anh cần đổi về trật tự câu trần thuật trong embedded questions.",
+      "learnerSignal": "After can you tell me, do you know, I wonder, or I am not sure, the learner keeps do/does/did before the subject.",
+      "examples": [
+        {
+          "incorrect": "Can you tell me where is the clinic?",
+          "natural": "Can you tell me where the clinic is?",
+          "explanationVi": "Trong câu hỏi gián tiếp, dùng trật tự \"where + subject + verb\"."
+        },
+        {
+          "incorrect": "I don't know why did she cancel.",
+          "natural": "I don't know why she canceled.",
+          "explanationVi": "Sau \"I don't know why\", không dùng \"did\" như câu hỏi trực tiếp."
+        },
+        {
+          "incorrect": "Do you know what time does the bus come?",
+          "natural": "Do you know what time the bus comes?",
+          "explanationVi": "\"Do you know\" đã là câu hỏi chính; phần bên trong giữ trật tự câu thường."
+        }
+      ],
+      "teachingMove": "Teach the shell rule: the outside clause asks the question; the inside clause becomes a statement. Pattern: Do you know + wh-word + subject + verb.",
+      "ruleTags": ["embedded_questions", "word_order", "indirect_questions", "question_formation"]
+    },
+    {
+      "id": "f2w4_passive_agent_by_overuse",
+      "category": "voice_information_structure",
+      "severity": "medium",
+      "cefrLevelsObserved": ["B1", "B2", "C1"],
+      "name": "Passive voice agent overuse or missing passive marking",
+      "l1ReasoningVi": "Tiếng Việt dùng \"bị\", \"được\" để đánh dấu trải nghiệm tốt/xấu hoặc bị tác động, nhưng cũng có thể bỏ tác nhân nếu đã rõ. Tiếng Anh cần be + past participle cho passive, và thường bỏ by-agent nếu người gây ra không quan trọng.",
+      "learnerSignal": "The learner writes a passive meaning without be + participle, or adds by someone when English would omit it.",
+      "examples": [
+        {
+          "incorrect": "My phone stolen yesterday.",
+          "natural": "My phone was stolen yesterday.",
+          "explanationVi": "Passive cần \"was\" + past participle: \"was stolen\"."
+        },
+        {
+          "incorrect": "The meeting was canceled by the company yesterday.",
+          "natural": "The meeting was canceled yesterday.",
+          "explanationVi": "Nếu tác nhân không quan trọng, tiếng Anh thường bỏ \"by the company\"."
+        },
+        {
+          "incorrect": "I was helped by my cousin to fill the form.",
+          "natural": "My cousin helped me fill out the form.",
+          "explanationVi": "Khi người giúp là thông tin chính, câu chủ động tự nhiên hơn."
+        }
+      ],
+      "teachingMove": "Ask what the sentence wants to spotlight: the event/result -> passive; the helper/actor -> active. Use by-agent only when it adds real information.",
+      "ruleTags": ["passive_voice", "by_agent", "bị_được", "information_structure"]
+    },
+    {
+      "id": "f2w4_adjective_order_vietnamese_noun_first",
+      "category": "noun_phrases",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A1", "A2", "B1"],
+      "name": "Vietnamese noun-first adjective order transferred to English",
+      "l1ReasoningVi": "Tiếng Việt đặt tính từ sau danh từ: nhà đẹp, áo trắng, người tốt. Tiếng Anh thường đặt tính từ trước danh từ: a beautiful house, a white shirt, a kind person. Người học dễ giữ thứ tự tiếng Việt trong cụm danh từ.",
+      "learnerSignal": "A noun phrase appears as noun + adjective where English expects adjective + noun.",
+      "examples": [
+        {
+          "incorrect": "I bought a shirt white for the interview.",
+          "natural": "I bought a white shirt for the interview.",
+          "explanationVi": "Trong tiếng Anh, màu sắc đứng trước danh từ: \"white shirt\"."
+        },
+        {
+          "incorrect": "She is a person very kind.",
+          "natural": "She is a very kind person.",
+          "explanationVi": "Tính từ \"kind\" đứng trước \"person\"; \"very\" đứng trước tính từ."
+        },
+        {
+          "incorrect": "We found a restaurant good near the station.",
+          "natural": "We found a good restaurant near the station.",
+          "explanationVi": "\"Good\" đứng trước \"restaurant\" trong cụm danh từ."
+        }
+      ],
+      "teachingMove": "Use a noun-phrase rebuild: adjective first, noun second. Then add extra place/time information after the noun phrase.",
+      "ruleTags": ["adjective_order", "noun_phrases", "word_order", "vn_l1_syntax"]
+    },
+    {
+      "id": "f2w4_preposition_collocation_discuss_wait_apply",
+      "category": "prepositions_collocation",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Preposition carried over after English verbs that do not take it",
+      "l1ReasoningVi": "Tiếng Việt dùng các động từ như \"thảo luận về\", \"chờ đợi\", \"nộp đơn cho/vào\" với giới từ hoặc tiểu từ theo nghĩa. Tiếng Anh có các cụm cố định riêng: discuss something, wait for someone, apply for a job, apply to a school.",
+      "learnerSignal": "The learner adds about after discuss, omits for after wait, or mixes apply for/apply to.",
+      "examples": [
+        {
+          "incorrect": "We discussed about my schedule.",
+          "natural": "We discussed my schedule.",
+          "explanationVi": "\"Discuss\" đã mang nghĩa \"thảo luận về\", không cần \"about\"."
+        },
+        {
+          "incorrect": "I am waiting my sister outside.",
+          "natural": "I am waiting for my sister outside.",
+          "explanationVi": "\"Wait\" cần \"for\" khi nói chờ ai."
+        },
+        {
+          "incorrect": "She applied to a nursing job.",
+          "natural": "She applied for a nursing job.",
+          "explanationVi": "Nộp đơn xin việc dùng \"apply for a job\"; nộp vào trường dùng \"apply to a school\"."
+        }
+      ],
+      "teachingMove": "Teach verb-preposition chunks as whole units, not word-by-word translation: discuss + object; wait for + person/thing; apply for + job/program; apply to + school/company.",
+      "ruleTags": ["prepositions", "verb_collocations", "discuss_about", "apply_for_to"]
+    },
+    {
+      "id": "f2w4_clause_compression_after_before_when",
+      "category": "clause_linking",
+      "severity": "medium",
+      "cefrLevelsObserved": ["A2", "B1", "B2"],
+      "name": "Time clauses compressed without subject or verb",
+      "l1ReasoningVi": "Tiếng Việt có thể nói ngắn gọn \"sau khi ăn\", \"trước khi đi\", \"khi nhỏ\" mà chủ ngữ và động từ được hiểu theo ngữ cảnh. Tiếng Anh cần gerund phrase hoặc mệnh đề đầy đủ, nếu không câu nghe thiếu.",
+      "learnerSignal": "After/before/when is followed by a bare noun, adjective, or verb form that does not make a valid clause.",
+      "examples": [
+        {
+          "incorrect": "After eat dinner, I study English.",
+          "natural": "After eating dinner, I study English.",
+          "explanationVi": "Sau \"after\" có thể dùng V-ing: \"after eating\"."
+        },
+        {
+          "incorrect": "Before go work, I call my mom.",
+          "natural": "Before I go to work, I call my mom.",
+          "explanationVi": "Cần mệnh đề đầy đủ: \"I go to work\"."
+        },
+        {
+          "incorrect": "When small, I lived with my grandparents.",
+          "natural": "When I was small, I lived with my grandparents.",
+          "explanationVi": "Tiếng Anh cần chủ ngữ và \"was\" trong cụm \"when I was small\"."
+        }
+      ],
+      "teachingMove": "Offer two safe shapes: after/before + V-ing, or after/before/when + subject + verb. Use the full clause when the subject changes.",
+      "ruleTags": ["time_clauses", "after_before_when", "gerund", "clause_completion"]
+    },
+    {
+      "id": "f2w4_register_direct_translation_respect",
+      "category": "register_pragmatics",
+      "severity": "low",
+      "cefrLevelsObserved": ["B1", "B2", "C1"],
+      "name": "Respect translated as formal distance in warm English contexts",
+      "l1ReasoningVi": "Tiếng Việt thể hiện kính trọng bằng xưng hô, dạ/thưa, và cách nói vòng. Khi chuyển sang tiếng Anh, người học có thể làm câu quá trang trọng hoặc xa cách trong bối cảnh đáng lẽ thân mật, như nhắn giáo viên của con, đồng nghiệp quen, hoặc người thân.",
+      "learnerSignal": "The sentence is grammatically correct but sounds stiff, ceremonial, or emotionally distant for the relationship.",
+      "examples": [
+        {
+          "incorrect": "Dear Teacher, I humbly request your permission for my son to be absent tomorrow.",
+          "natural": "Hi Ms. Lee, my son will be absent tomorrow because of a family appointment.",
+          "explanationVi": "Với giáo viên ở Bắc Mỹ, lịch sự nhưng đơn giản thường tự nhiên hơn."
+        },
+        {
+          "incorrect": "I respectfully inform you that I cannot join dinner with our family.",
+          "natural": "I'm sorry, I can't make it to dinner tonight.",
+          "explanationVi": "Trong gia đình, câu quá trang trọng có thể nghe xa cách."
+        },
+        {
+          "incorrect": "Please kindly advise me at your earliest convenience.",
+          "natural": "Could you let me know what you think when you have a chance?",
+          "explanationVi": "\"Please kindly\" và \"earliest convenience\" dễ quá công thức; câu mềm hơn vẫn lịch sự."
+        }
+      ],
+      "teachingMove": "Separate respect from stiffness. Teach warm-professional phrasing: Hi + name, clear message, thank you. For family, lead with feeling before logistics.",
+      "ruleTags": ["register", "politeness", "respect", "diaspora_pragmatics"]
+    }
+  ]
+}

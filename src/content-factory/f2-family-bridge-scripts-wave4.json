@@ -1,0 +1,125 @@
+{
+  "corpus": "f2-family-bridge-scripts-wave4",
+  "languagePair": "en-vi",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F2",
+  "authoredAt": "2026-06-11",
+  "wave": 4,
+  "description": "Step-13 family-bridge bilingual scripts wave 4. Six shame-free English-Vietnamese scripts for diaspora learners talking with Vietnamese-speaking family about language, care, money, kids, dating, and aging. Append-only review material only; not wired to the engine.",
+  "scripts": [
+    {
+      "id": "f2w4-family-accent-pronunciation",
+      "scenario": "Responding when family teases your Vietnamese accent",
+      "learnerNeed": "The learner wants to keep trying Vietnamese without feeling mocked or shutting down.",
+      "tone": "warm_self_protective",
+      "englishScript": [
+        "I know my Vietnamese sounds different, but I am trying because I want to stay close to everyone.",
+        "Please correct me gently, not by laughing first.",
+        "If I feel safe, I will speak more."
+      ],
+      "vietnameseBridge": [
+        "Con biết tiếng Việt của con nghe khác, nhưng con đang cố vì con muốn gần gia đình hơn.",
+        "Mọi người sửa cho con nhẹ nhàng thôi, đừng cười con trước.",
+        "Nếu con thấy an toàn, con sẽ nói nhiều hơn."
+      ],
+      "coachNoteVi": "Câu này không trách gia đình và cũng không tự hạ mình. Nó đặt điều kiện để người học tiếp tục mở miệng.",
+      "avoid": ["Fine, I will never speak Vietnamese again.", "You always make fun of me."],
+      "step13Tags": ["accent_shame", "heritage_language", "gentle_correction", "family_safety"]
+    },
+    {
+      "id": "f2w4-family-remittance-expectation",
+      "scenario": "Talking about sending money home with a realistic budget",
+      "learnerNeed": "The learner wants to help family financially while setting a predictable limit.",
+      "tone": "loving_clear",
+      "englishScript": [
+        "I want to help, and I also need to be honest about what I can afford.",
+        "This month I can send two hundred dollars, but I cannot send more without hurting my rent and bills.",
+        "Let us plan around that number instead of waiting until there is an emergency."
+      ],
+      "vietnameseBridge": [
+        "Con muốn giúp gia đình, và con cũng cần nói thật về khả năng của con.",
+        "Tháng này con có thể gửi hai trăm đô, nhưng con không thể gửi thêm nếu không ảnh hưởng tiền nhà và hóa đơn.",
+        "Mình tính theo số đó trước, đừng chờ đến lúc khẩn cấp mới lo."
+      ],
+      "coachNoteVi": "Ranh giới tiền bạc nên cụ thể bằng con số. Cụ thể không có nghĩa là lạnh lùng; nó giúp mọi người bớt hy vọng mơ hồ.",
+      "avoid": ["You do not understand how expensive my life is.", "I guess I have to suffer because I am overseas."],
+      "step13Tags": ["remittance", "money_boundary", "budget", "family_responsibility"]
+    },
+    {
+      "id": "f2w4-family-kids-vietnamese",
+      "scenario": "Asking elders to help children learn Vietnamese without pressure",
+      "learnerNeed": "The learner wants children to hear Vietnamese from grandparents, but does not want shame if the kids answer in English.",
+      "tone": "hopeful_practical",
+      "englishScript": [
+        "I want the kids to understand more Vietnamese, and your voice helps them.",
+        "If they answer in English, please keep speaking Vietnamese gently.",
+        "We are building the connection slowly, not testing them."
+      ],
+      "vietnameseBridge": [
+        "Con muốn mấy bé hiểu tiếng Việt nhiều hơn, và giọng của ông bà giúp tụi nhỏ lắm.",
+        "Nếu tụi nhỏ trả lời bằng tiếng Anh, ông bà cứ nói tiếng Việt nhẹ nhàng với tụi nhỏ.",
+        "Mình đang xây sự kết nối từ từ, không phải đang kiểm tra tụi nhỏ."
+      ],
+      "coachNoteVi": "Trẻ em cần nghe ngôn ngữ trong tình thương, không phải trong kỳ thi. Nhờ ông bà giữ giọng nhẹ giúp tiếng Việt gắn với an toàn.",
+      "avoid": ["The kids are losing their culture.", "You have to force them to speak Vietnamese."],
+      "step13Tags": ["kids_vietnamese", "grandparents", "heritage_language", "no_shame_learning"]
+    },
+    {
+      "id": "f2w4-family-dating-marriage-pressure",
+      "scenario": "Answering marriage questions without rejecting family values",
+      "learnerNeed": "The learner needs a respectful answer when relatives ask why they are not married yet.",
+      "tone": "patient_boundary",
+      "englishScript": [
+        "I know you ask because you want me to have a good life.",
+        "I also want love and stability, but I do not want to rush into the wrong relationship.",
+        "When there is someone serious, I will tell you."
+      ],
+      "vietnameseBridge": [
+        "Con biết mọi người hỏi vì muốn con có cuộc sống tốt.",
+        "Con cũng muốn có tình yêu và sự ổn định, nhưng con không muốn vội vào một mối quan hệ không đúng.",
+        "Khi nào có người nghiêm túc, con sẽ nói với mọi người."
+      ],
+      "coachNoteVi": "Câu đầu công nhận ý tốt của gia đình. Sau đó mới đặt ranh giới, nên người nghe ít cảm thấy bị gạt ra ngoài.",
+      "avoid": ["Stop asking about my life.", "Marriage is an old idea."],
+      "step13Tags": ["marriage_pressure", "dating", "family_values", "respectful_boundary"]
+    },
+    {
+      "id": "f2w4-family-food-health-boundary",
+      "scenario": "Saying no to more food without rejecting care",
+      "learnerNeed": "The learner wants to stop eating when full while honoring food as love.",
+      "tone": "grateful_gentle",
+      "englishScript": [
+        "It is so good, and I can tell you made it with love.",
+        "I am full now, so I will save some for later.",
+        "Please do not think I do not like it. I really do."
+      ],
+      "vietnameseBridge": [
+        "Ngon lắm, con biết cô/chú nấu bằng tình thương.",
+        "Bây giờ con no rồi, nên con để dành ăn sau nhé.",
+        "Đừng nghĩ là con không thích. Con thích thật mà."
+      ],
+      "coachNoteVi": "Từ chối thêm đồ ăn cần giữ lại thông điệp chính: món ăn được trân trọng. Đưa ra phương án 'để dành' thường mềm hơn 'không ăn nữa'.",
+      "avoid": ["I cannot eat this food.", "You always force me to eat too much."],
+      "step13Tags": ["food_as_love", "health_boundary", "gratitude", "family_meals"]
+    },
+    {
+      "id": "f2w4-family-elder-care-planning",
+      "scenario": "Starting a gentle elder-care planning conversation",
+      "learnerNeed": "The learner needs to discuss future care, appointments, and paperwork without making parents feel like a burden.",
+      "tone": "respectful_planning",
+      "englishScript": [
+        "I am not bringing this up because you are a burden.",
+        "I want us to plan early so you have more choices and less stress later.",
+        "Can we write down your doctors, medicines, and the person you want us to call in an emergency?"
+      ],
+      "vietnameseBridge": [
+        "Con nói chuyện này không phải vì ba mẹ là gánh nặng.",
+        "Con muốn mình chuẩn bị sớm để sau này ba mẹ có nhiều lựa chọn hơn và ít căng thẳng hơn.",
+        "Mình có thể ghi lại bác sĩ, thuốc men, và người ba mẹ muốn tụi con gọi khi khẩn cấp không?"
+      ],
+      "coachNoteVi": "Người lớn tuổi có thể nghe chuyện chăm sóc như mất quyền tự chủ. Nhấn mạnh lựa chọn và giảm căng thẳng trước khi hỏi giấy tờ.",
+      "avoid": ["You are getting old, so I need to control everything.", "If you do not plan, it will be your fault."],
+      "step13Tags": ["elder_care", "health_planning", "parents", "dignity"]
+    }
+  ]
+}
