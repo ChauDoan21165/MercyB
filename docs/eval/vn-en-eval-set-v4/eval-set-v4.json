@@ -1,0 +1,311 @@
+{
+  "name": "vn-en-eval-set-v4",
+  "description": "VN→EN correction eval set v4 — 30 pairs targeting REGISTER errors (Step-18 taxonomy: politeness tiers, formal/casual mismatch). Each entry carries a taxonomyPatternId referencing one of the 10 patterns in src/lib/feedback/rule-packs/en-vn-register/taxonomy.ts. Zero duplicate inputs vs v1–v3.",
+  "version": 4,
+  "targetLearnerL1": "vi",
+  "targetLearnerL2": "en",
+  "schemaSource": "docs/eval/vn-en-eval-set-v4/types.ts -> EvalEntryV4",
+  "count": 30,
+  "entries": [
+    {
+      "id": "eval-v4-001",
+      "input": "Respectfully and humbly, I beg to notify you that the document has been completed.",
+      "expected": "I would like to inform you that the document is ready.",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "workplace email to manager" },
+      "level": "B2",
+      "vietlishPattern": "kính trình → 'respectfully and humbly I beg to notify' — Vietnamese kính trình (formal upward report) calqued word-for-word; English business writing uses plain 'I would like to inform you'",
+      "taxonomyPatternId": "formal_opener_peer_ban"
+    },
+    {
+      "id": "eval-v4-002",
+      "input": "Dear Most Respected and Esteemed Professor, I write this letter to ask for your profound guidance.",
+      "expected": "Dear Professor [Name], I am writing to ask for your guidance.",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "student email to professor" },
+      "level": "B1",
+      "vietlishPattern": "kính gửi thầy/cô kính mến → 'Most Respected and Esteemed' — Vietnamese email salutation stacks multiple respectful modifiers; English uses a single title with no intensifiers",
+      "taxonomyPatternId": "formal_opener_peer_ban"
+    },
+    {
+      "id": "eval-v4-003",
+      "input": "Honourable Sir/Madam, accept my humble greetings and respects before I inquire about the schedule.",
+      "expected": "Dear Sir or Madam, I am writing to ask about the schedule.",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "formal inquiry email" },
+      "level": "B2",
+      "vietlishPattern": "kính chào + kính trọng → elaborate greeting-and-respect formula calqued; English formal openers are direct and brief — no preliminary deference passage before the question",
+      "taxonomyPatternId": "formal_opener_peer_ban"
+    },
+    {
+      "id": "eval-v4-004",
+      "input": "Hey teacher, do you have time to explain this for me?",
+      "expected": "Excuse me, would you have time to explain this to me?",
+      "errorTags": ["register"],
+      "tone": { "register": "neutral", "natural": true, "context": "student addressing a teacher" },
+      "level": "A2",
+      "vietlishPattern": "bạn ơi / ơi → 'hey' — Vietnamese peer-register opener 'ơi' calqued as casual 'hey'; the correct English register for a superior omits the casual opener and uses 'Excuse me'",
+      "taxonomyPatternId": "peer_ban_to_elder"
+    },
+    {
+      "id": "eval-v4-005",
+      "input": "Boss, you can check my report today?",
+      "expected": "Could you please review my report today?",
+      "errorTags": ["register", "collocation"],
+      "tone": { "register": "neutral", "natural": true, "context": "employee to manager" },
+      "level": "A2",
+      "vietlishPattern": "sếp, bạn có thể kiểm tra không? → direct title + casual 'you can…?' — peer-register yes/no question applied to a superior; English raises 'can' to 'could' and adds 'please'",
+      "taxonomyPatternId": "peer_ban_to_elder"
+    },
+    {
+      "id": "eval-v4-006",
+      "input": "Hi doctor, is my health OK? You think I need medicine?",
+      "expected": "Hello, Doctor. Is my health all right? Do you think I need medication?",
+      "errorTags": ["register"],
+      "tone": { "register": "neutral", "natural": true, "context": "patient consulting a doctor" },
+      "level": "A2",
+      "vietlishPattern": "bạn nghĩ → 'you think?' — peer-register tag question directed at a doctor; register mismatch from applying casual VN 'bạn' address ('you') to a professional without modal hedging",
+      "taxonomyPatternId": "peer_ban_to_elder"
+    },
+    {
+      "id": "eval-v4-007",
+      "input": "The undersigned hereby requests the provision of the above-mentioned document.",
+      "expected": "Could I please get a copy of the document we discussed?",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "internal document request" },
+      "level": "C1",
+      "vietlishPattern": "kẻ dưới / tôi → 'the undersigned' — Vietnamese bureaucratic self-reference calqued; modern English requests use first-person 'I' or 'Could I…' even in formal contexts",
+      "taxonomyPatternId": "toi_self_with_elder"
+    },
+    {
+      "id": "eval-v4-008",
+      "input": "This person wishes to apologize for the delay in responding.",
+      "expected": "I apologize for my delayed response.",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "formal written apology" },
+      "level": "B2",
+      "vietlishPattern": "người này muốn → 'this person wishes' — formal distancing self-reference 'người này' calqued; English always uses direct first-person 'I' in written apologies",
+      "taxonomyPatternId": "toi_self_with_elder"
+    },
+    {
+      "id": "eval-v4-009",
+      "input": "It is this humble employee who made the error and takes full responsibility.",
+      "expected": "I made the error and I take full responsibility.",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "workplace accountability statement" },
+      "level": "B2",
+      "vietlishPattern": "kẻ hèn mọn / nhân viên này → 'this humble employee' — formal Vietnamese self-deprecation calqued; English professional accountability uses plain 'I', not a third-person self-reference",
+      "taxonomyPatternId": "toi_self_with_elder"
+    },
+    {
+      "id": "eval-v4-010",
+      "input": "I received your email. I will fix it.",
+      "expected": "Thank you for your email. I will look into it right away.",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "email reply to manager" },
+      "level": "B1",
+      "vietlishPattern": "Vâng, em đã nhận được → terse acknowledgment without opening thanks; 'ạ' softening omitted — English email to a superior requires an opening 'Thank you for…' as the minimal politeness marker",
+      "taxonomyPatternId": "missing_a_particle_to_superior"
+    },
+    {
+      "id": "eval-v4-011",
+      "input": "Yes, I understand. I will submit it tomorrow.",
+      "expected": "Yes, I understand. I will make sure to submit it by tomorrow.",
+      "errorTags": ["register"],
+      "tone": { "register": "neutral", "natural": true, "context": "student confirming a deadline to a teacher" },
+      "level": "B1",
+      "vietlishPattern": "Vâng, em hiểu rồi → acknowledgment without commitment strengthener; 'ạ' hedging omitted — polite English confirmation adds 'make sure to' or 'certainly' to reinforce deference",
+      "taxonomyPatternId": "missing_a_particle_to_superior"
+    },
+    {
+      "id": "eval-v4-012",
+      "input": "I got your message. The report is done. I send it now.",
+      "expected": "I received your message. The report is ready — I will send it to you right away.",
+      "errorTags": ["register", "tense"],
+      "tone": { "register": "neutral", "natural": true, "context": "work reply to senior colleague" },
+      "level": "A2",
+      "vietlishPattern": "Em đã nhận được → blunt three-sentence reply without softening transitions or tense upgrade; 'ạ' register markers have no English equivalent in the learner's output",
+      "taxonomyPatternId": "missing_a_particle_to_superior"
+    },
+    {
+      "id": "eval-v4-013",
+      "input": "Please explain to me the homework again.",
+      "expected": "Could you please go over the homework assignment again?",
+      "errorTags": ["register", "word_order"],
+      "tone": { "register": "neutral", "natural": true, "context": "student addressing a teacher" },
+      "level": "A2",
+      "vietlishPattern": "Cho tôi hiểu lại bài tập → 'please explain to me' — 'Please + imperative' is the learner's only softener; 'Could you please' is the standard English modal for requests to a superior",
+      "taxonomyPatternId": "blunt_request_to_superior"
+    },
+    {
+      "id": "eval-v4-014",
+      "input": "Give me more time to finish this task.",
+      "expected": "Would it be possible to have a little more time to finish this task?",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "employee requesting an extension from a manager" },
+      "level": "B1",
+      "vietlishPattern": "Cho tôi thêm thời gian → bare imperative 'give me' — Vietnamese 'cho + tôi' calqued directly; English requests to superiors require modal hedging ('Would it be possible to…')",
+      "taxonomyPatternId": "blunt_request_to_superior"
+    },
+    {
+      "id": "eval-v4-015",
+      "input": "Tell me what I should do about this problem.",
+      "expected": "Could you advise me on how to handle this problem?",
+      "errorTags": ["register"],
+      "tone": { "register": "neutral", "natural": true, "context": "junior employee asking a senior for guidance" },
+      "level": "B1",
+      "vietlishPattern": "Nói cho tôi biết → 'tell me' — bare imperative 'Nói' calqued; English reframes the request with a modal and a softer verb ('advise', 'let me know') when addressing a superior",
+      "taxonomyPatternId": "blunt_request_to_superior"
+    },
+    {
+      "id": "eval-v4-016",
+      "input": "No, I cannot attend the meeting tomorrow.",
+      "expected": "I'm afraid I won't be able to attend the meeting tomorrow.",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "declining a manager's meeting invitation" },
+      "level": "B1",
+      "vietlishPattern": "Không, tôi không thể → bare 'No, I cannot' — Vietnamese softened refusal phrases 'tiếc là / e rằng' not transferred; English professional decline leads with 'I'm afraid' or 'Unfortunately'",
+      "taxonomyPatternId": "bare_refusal_to_superior"
+    },
+    {
+      "id": "eval-v4-017",
+      "input": "I don't want to join the project.",
+      "expected": "Thank you for the opportunity, but I would prefer not to join this project.",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "declining a project offer from a senior colleague" },
+      "level": "B2",
+      "vietlishPattern": "Tôi không muốn → blunt 'I don't want to' — bare Vietnamese refusal 'không muốn' calqued; English declines a superior's offer with a thank-you and a hedged negative ('I would prefer not to')",
+      "taxonomyPatternId": "bare_refusal_to_superior"
+    },
+    {
+      "id": "eval-v4-018",
+      "input": "I cannot do this. Too much work.",
+      "expected": "I'm sorry, but I have too much on my plate at the moment and I wouldn't be able to take this on.",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "declining an additional task from a manager" },
+      "level": "B1",
+      "vietlishPattern": "Không được. Quá nhiều việc → fragmented blunt refusal — Vietnamese spoken brevity calqued; English professional register requires a complete, apologetic explanation with a softener",
+      "taxonomyPatternId": "bare_refusal_to_superior"
+    },
+    {
+      "id": "eval-v4-019",
+      "input": "Thanks for your help, teacher.",
+      "expected": "Thank you very much for your help.",
+      "errorTags": ["register"],
+      "tone": { "register": "neutral", "natural": true, "context": "student thanking a teacher after class" },
+      "level": "A2",
+      "vietlishPattern": "Cảm ơn bạn / cô → 'Thanks' (shortened) — peer-register abbreviated form; thanking a teacher in English requires 'Thank you very much' rather than the casual 'Thanks'",
+      "taxonomyPatternId": "thanks_with_peer_form_to_superior"
+    },
+    {
+      "id": "eval-v4-020",
+      "input": "Thank you, bye.",
+      "expected": "Thank you very much. Have a good day.",
+      "errorTags": ["register"],
+      "tone": { "register": "neutral", "natural": true, "context": "ending a conversation with a teacher or senior" },
+      "level": "A1",
+      "vietlishPattern": "Cảm ơn nhé / cảm ơn rồi tạm biệt → abrupt combined thanks-farewell — Vietnamese casual peer closing calqued; English formal register separates thanks and farewell, expands 'thank you' to 'thank you very much'",
+      "taxonomyPatternId": "thanks_with_peer_form_to_superior"
+    },
+    {
+      "id": "eval-v4-021",
+      "input": "OK thanks. I will check it.",
+      "expected": "Thank you. I will review it.",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "email reply to a manager" },
+      "level": "A2",
+      "vietlishPattern": "OK cảm ơn → informal 'OK thanks' — peer-register casual opener 'OK' combined with shortened 'thanks'; business email to a superior omits 'OK' and uses 'Thank you' as a standalone opener with a more formal verb ('review' not 'check')",
+      "taxonomyPatternId": "thanks_with_peer_form_to_superior"
+    },
+    {
+      "id": "eval-v4-022",
+      "input": "Sorry for the late reply.",
+      "expected": "I apologize for my late reply.",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "formal email reply to a manager" },
+      "level": "A2",
+      "vietlishPattern": "Xin lỗi bạn vì trả lời muộn → 'sorry' (informal) — casual 'Xin lỗi' calqued; formal English email to a superior uses 'I apologize for' or 'Please accept my apologies for'",
+      "taxonomyPatternId": "apology_with_peer_form_to_superior"
+    },
+    {
+      "id": "eval-v4-023",
+      "input": "My bad, I forgot the deadline.",
+      "expected": "I sincerely apologize for missing the deadline.",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "professional apology to a manager" },
+      "level": "B1",
+      "vietlishPattern": "Lỗi của tôi / xin lỗi → 'my bad' — colloquial spoken apology transferred without register adjustment; professional English requires 'I sincerely apologize' when addressing a superior",
+      "taxonomyPatternId": "apology_with_peer_form_to_superior"
+    },
+    {
+      "id": "eval-v4-024",
+      "input": "Oh sorry, I misunderstood what you said.",
+      "expected": "I apologize for the misunderstanding.",
+      "errorTags": ["register"],
+      "tone": { "register": "neutral", "natural": true, "context": "apologizing to a senior colleague for a miscommunication" },
+      "level": "A2",
+      "vietlishPattern": "Ồ xin lỗi → 'Oh sorry' — casual spoken VN apology with interjection calqued; English professional register drops 'Oh' and uses 'I apologize for' — attributing the misunderstanding to yourself rather than the other speaker",
+      "taxonomyPatternId": "apology_with_peer_form_to_superior"
+    },
+    {
+      "id": "eval-v4-025",
+      "input": "Can you send me the file?",
+      "expected": "Could you please send me the file?",
+      "errorTags": ["register"],
+      "tone": { "register": "neutral", "natural": true, "context": "colleague requesting a file from a senior" },
+      "level": "A2",
+      "vietlishPattern": "Bạn có thể gửi file cho tôi không? → 'can you' — direct modal calqued from 'có thể'; 'could' + 'please' is the polite English form for a workplace request to someone senior",
+      "taxonomyPatternId": "favor_request_no_softener"
+    },
+    {
+      "id": "eval-v4-026",
+      "input": "I need you to help me with this presentation.",
+      "expected": "I was hoping you might be able to help me with this presentation.",
+      "errorTags": ["register"],
+      "tone": { "register": "neutral", "natural": true, "context": "junior employee asking a senior for help" },
+      "level": "B2",
+      "vietlishPattern": "Tôi cần bạn giúp → 'I need you to' — Vietnamese 'cần + person + giúp' calqued directly; English softens a favour request with 'I was hoping you might…' or 'Would you mind…'",
+      "taxonomyPatternId": "favor_request_no_softener"
+    },
+    {
+      "id": "eval-v4-027",
+      "input": "Can you look at my essay and give me feedback?",
+      "expected": "Would you be able to look at my essay and give me some feedback?",
+      "errorTags": ["register"],
+      "tone": { "register": "neutral", "natural": true, "context": "student requesting feedback from a teacher" },
+      "level": "B1",
+      "vietlishPattern": "Bạn có thể xem bài và cho tôi phản hồi không? → 'can you' without 'please' or 'would' — direct modal question without politeness upgrade; English academic favour requests raise 'can' to 'would be able to'",
+      "taxonomyPatternId": "favor_request_no_softener"
+    },
+    {
+      "id": "eval-v4-028",
+      "input": "Wait for me a moment, I will bring the document.",
+      "expected": "Please give me a moment — I will bring the document right away.",
+      "errorTags": ["register"],
+      "tone": { "register": "neutral", "natural": true, "context": "junior employee asking a superior to wait briefly" },
+      "level": "A2",
+      "vietlishPattern": "Đợi tôi một chút → 'wait for me' — bare imperative to a superior; Vietnamese spoken 'đợi tôi' calqued; English requires 'please' or a softened frame ('Could you give me a moment…') when asking a superior to wait",
+      "taxonomyPatternId": "direct_command_to_elder"
+    },
+    {
+      "id": "eval-v4-029",
+      "input": "Read this first, then give me your opinion.",
+      "expected": "Could you please read this and let me know your thoughts?",
+      "errorTags": ["register"],
+      "tone": { "register": "neutral", "natural": true, "context": "junior employee directing a senior colleague" },
+      "level": "B1",
+      "vietlishPattern": "Đọc cái này trước rồi cho tôi biết ý kiến → sequential bare imperatives 'read… give' — VN spoken instruction calqued; English reframes a request to a superior as a modal question",
+      "taxonomyPatternId": "direct_command_to_elder"
+    },
+    {
+      "id": "eval-v4-030",
+      "input": "Sign here and return it to me by Friday.",
+      "expected": "Could you please sign here and return it to me by Friday?",
+      "errorTags": ["register"],
+      "tone": { "register": "formal", "natural": true, "context": "junior employee directing a manager to sign a document" },
+      "level": "B1",
+      "vietlishPattern": "Ký vào đây và trả lại cho tôi → bare sequential imperatives 'sign… return' — Vietnamese instruction style calqued; English wraps the entire request in 'Could you please' when the recipient is a superior",
+      "taxonomyPatternId": "direct_command_to_elder"
+    }
+  ]
+}
