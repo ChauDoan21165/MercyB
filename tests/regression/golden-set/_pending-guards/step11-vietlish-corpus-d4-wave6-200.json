@@ -12,7 +12,7 @@
   "definition": "Sixth-wave Vietnamese-L1 interference review candidates (human review before any promotion into VIETLISH_CORPUS). Wave 6 mines fresh territory under-covered by waves 1-5: Vietnamese greeting/social-register calques, household-chore calques, workplace/office Vietlish, daily banking & medical calques, school/study, modal+bare-infinitive errors, quantifier/determiner errors, purpose/reason connectors, proverb/idiom calques, and additional false friends. A few natural 'control' anchors are flagged in sourcePattern for abstain-checking.",
   "dedupedAgainst": "live VIETLISH_CORPUS(353) + all 5 merged wave files(993) + A4 promotion list + Stage-1 128 paste block — 1346-item denylist, zero overlap (asserted by the guard test vs live + verified at authoring vs the full denylist).",
   "generatedFor": "2026-06-10 CEO-1 FULL ROSTER dispatch [A10] wave6",
-  "count": 106,
+  "count": 77,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -159,14 +159,6 @@
       "context": "Email reply: i am on leave today, back Monday."
     },
     {
-      "vietlish": "i will hand over the work to her",
-      "natural": "i'll hand the work over to her",
-      "sourcePattern": "bàn giao -> particle/order",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Before i leave, i will hand over the work to her."
-    },
-    {
       "vietlish": "the deadline is very tight",
       "natural": "the deadline is very tight",
       "sourcePattern": "(control) natural, abstain anchor",
@@ -279,14 +271,6 @@
       "context": "While the teacher talks, i copy the lesson into my notebook."
     },
     {
-      "vietlish": "they recommended me a good restaurant",
-      "natural": "they recommended a good restaurant to me",
-      "sourcePattern": "giới thiệu -> 'recommend sb sth' wrong order",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "For dinner, they recommended me a good restaurant."
-    },
-    {
       "vietlish": "please remind me about the meeting",
       "natural": "please remind me about the meeting",
       "sourcePattern": "(control) natural; abstain anchor",
@@ -311,140 +295,12 @@
       "context": "Because of stress, the doctor advised me to rest more."
     },
     {
-      "vietlish": "all of student must wear uniform",
-      "natural": "all students must wear a uniform",
-      "sourcePattern": "tất cả học sinh -> 'all of student' + no plural",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "School rule: all of student must wear uniform."
-    },
-    {
-      "vietlish": "most of people like coffee here",
-      "natural": "most people like coffee here",
-      "sourcePattern": "đa số mọi người -> 'most of people'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "In this town, most of people like coffee here."
-    },
-    {
-      "vietlish": "some of money is missing",
-      "natural": "some of the money is missing",
-      "sourcePattern": "một số tiền -> 'some of money' missing 'the'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Count again, some of money is missing."
-    },
-    {
-      "vietlish": "one of my friend lives in canada",
-      "natural": "one of my friends lives in Canada",
-      "sourcePattern": "một trong những bạn -> 'one of my friend' no plural",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Far away, one of my friend lives in canada."
-    },
-    {
-      "vietlish": "both of my parent are teachers",
-      "natural": "both of my parents are teachers",
-      "sourcePattern": "cả hai -> 'parent' no plural",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "At home, both of my parent are teachers."
-    },
-    {
-      "vietlish": "there is too many homework",
-      "natural": "there is too much homework",
-      "sourcePattern": "quá nhiều -> 'many' with uncountable",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I cannot sleep, there is too many homework."
-    },
-    {
-      "vietlish": "a few of the water spilled",
-      "natural": "some of the water spilled",
-      "sourcePattern": "một ít nước -> 'a few' with uncountable",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Be careful, a few of the water spilled."
-    },
-    {
       "vietlish": "most of the time i stay home",
       "natural": "most of the time i stay home",
       "sourcePattern": "(control) natural; abstain anchor",
       "category": "word_order",
       "frequency": "low",
       "context": "On weekends, most of the time i stay home."
-    },
-    {
-      "vietlish": "almost people use smartphone now",
-      "natural": "almost everyone uses a smartphone now",
-      "sourcePattern": "hầu hết -> 'almost people' calque",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "These days almost people use smartphone now."
-    },
-    {
-      "vietlish": "a half of the class was absent",
-      "natural": "half of the class was absent",
-      "sourcePattern": "một nửa -> 'a half of' calque",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "It was flu season, a half of the class was absent."
-    },
-    {
-      "vietlish": "the most of my friends are married",
-      "natural": "most of my friends are married",
-      "sourcePattern": "'the most of' calque for 'most of'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "At my age, the most of my friends are married."
-    },
-    {
-      "vietlish": "i have enough of money for it",
-      "natural": "i have enough money for it",
-      "sourcePattern": "đủ tiền -> 'enough of money'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Do not worry, i have enough of money for it."
-    },
-    {
-      "vietlish": "i came here for to learn english",
-      "natural": "i came here to learn English",
-      "sourcePattern": "để học -> 'for to' purpose calque",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "This is my goal, i came here for to learn english."
-    },
-    {
-      "vietlish": "because of i was sick, i stayed home",
-      "natural": "because i was sick, i stayed home",
-      "sourcePattern": "vì -> 'because of' + clause",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Sorry i missed it, because of i was sick, i stayed home."
-    },
-    {
-      "vietlish": "due to the rain so we cancelled",
-      "natural": "due to the rain, we cancelled",
-      "sourcePattern": "do ... nên -> 'so' doubling after 'due to'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Bad luck, due to the rain so we cancelled."
-    },
-    {
-      "vietlish": "although it was late but he came",
-      "natural": "although it was late, he came",
-      "sourcePattern": "tuy ... nhưng -> 'although ... but' doubling",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "We were glad, although it was late but he came."
-    },
-    {
-      "vietlish": "in spite of busy, she helped me",
-      "natural": "in spite of being busy, she helped me",
-      "sourcePattern": "mặc dù bận -> 'in spite of' + adjective",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "She is kind, in spite of busy, she helped me."
     },
     {
       "vietlish": "so that i can pass, i study hard",
@@ -455,36 +311,12 @@
       "context": "My exam is near, so that i can pass, i study hard."
     },
     {
-      "vietlish": "i was tired so that i slept early",
-      "natural": "i was tired, so i slept early",
-      "sourcePattern": "nên -> 'so that' for plain 'so'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "After the trip, i was tired so that i slept early."
-    },
-    {
-      "vietlish": "the reason is because it was broken",
-      "natural": "the reason is that it was broken",
-      "sourcePattern": "lý do là vì -> 'reason is because' redundancy",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I returned it, the reason is because it was broken."
-    },
-    {
       "vietlish": "for that, you need a visa first",
       "natural": "for that, you need a visa first",
       "sourcePattern": "(control) natural; abstain anchor",
       "category": "word_order",
       "frequency": "low",
       "context": "To work abroad, for that, you need a visa first."
-    },
-    {
-      "vietlish": "thanks to you so i finished on time",
-      "natural": "thanks to you, i finished on time",
-      "sourcePattern": "nhờ ... nên -> 'so' doubling after 'thanks to'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I owe you, thanks to you so i finished on time."
     },
     {
       "vietlish": "the library sells many books",
@@ -607,14 +439,6 @@
       "context": "Do not forget, i will remember you to bring it."
     },
     {
-      "vietlish": "please fill the form in and sign",
-      "natural": "please fill in the form and sign",
-      "sourcePattern": "điền đơn -> particle/order",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "At the desk, please fill the form in and sign."
-    },
-    {
       "vietlish": "the meeting was put off to friday",
       "natural": "the meeting was put off to Friday",
       "sourcePattern": "(control) natural; abstain anchor",
@@ -629,14 +453,6 @@
       "category": "collocation",
       "frequency": "low",
       "context": "At five, i will pick the kids up from school."
-    },
-    {
-      "vietlish": "turn the volume down please, too loud",
-      "natural": "turn the volume down please, it's too loud",
-      "sourcePattern": "vặn nhỏ -> dropped subject in reason clause",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "My ears hurt, turn the volume down please, too loud."
     },
     {
       "vietlish": "let us set off early to avoid traffic",
@@ -685,14 +501,6 @@
       "category": "false_friend",
       "frequency": "medium",
       "context": "He grew fast, my son is high one meter forty."
-    },
-    {
-      "vietlish": "i will be back in fifteen minutes more",
-      "natural": "i'll be back in fifteen minutes",
-      "sourcePattern": "mười lăm phút nữa -> 'more' after the noun",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Wait here, i will be back in fifteen minutes more."
     },
     {
       "vietlish": "slow but sure wins",
@@ -815,14 +623,6 @@
       "context": "Slow down, the traffic light is red, please stop."
     },
     {
-      "vietlish": "the rice is not yet cooked",
-      "natural": "the rice isn't cooked yet",
-      "sourcePattern": "chưa chín -> 'not yet' fronting",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Wait a bit, the rice is not yet cooked."
-    },
-    {
       "vietlish": "the internet is very lag today",
       "natural": "the internet is very laggy today",
       "sourcePattern": "mạng lag -> 'very lag' as adjective",
@@ -837,38 +637,6 @@
       "category": "false_friend",
       "frequency": "medium",
       "context": "It is hot, please on the air conditioner a bit."
-    },
-    {
-      "vietlish": "where you go so early",
-      "natural": "where are you off to so early",
-      "sourcePattern": "đi đâu sớm thế -> in-situ question + dropped auxiliary, phatic",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Bumping into a friend at dawn: where you go so early?"
-    },
-    {
-      "vietlish": "the weather is so hot i cannot sleep",
-      "natural": "it's so hot i can't sleep",
-      "sourcePattern": "nóng quá không ngủ được -> dropped subject in result clause",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "All night long, the weather is so hot i cannot sleep."
-    },
-    {
-      "vietlish": "my legs are tired from walking much",
-      "natural": "my legs are tired from walking so much",
-      "sourcePattern": "mỏi chân -> 'walking much' for 'so much'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "We toured all day, my legs are tired from walking much."
-    },
-    {
-      "vietlish": "do you know cook vietnamese food",
-      "natural": "do you know how to cook Vietnamese food",
-      "sourcePattern": "biết nấu không -> missing 'how to'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I am curious, do you know cook vietnamese food?"
     }
   ]
 }

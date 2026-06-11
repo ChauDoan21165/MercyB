@@ -12,7 +12,7 @@
   "definition": "Candidate Vietnamese-L1 interference items for human review before any promotion into VIETLISH_CORPUS. Each entry is a non-native English production (vietlish) paired with its natural target (natural), the VN source pattern with diacritics (sourcePattern), and a contextual sentence. A handful of entries are deliberate natural 'control' anchors (flagged in sourcePattern) so reviewers can confirm the detector abstains on natural usage.",
   "dedupedAgainst": "live 354-entry VIETLISH_CORPUS (zero string overlap), A4 d4 wave (...corpus-d4-wave-200.json, separate file), A6 !690 (selector test only)",
   "generatedFor": "2026-06-10 CEO directive D4-2",
-  "count": 67,
+  "count": 46,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -53,70 +53,6 @@
       "category": "collocation",
       "frequency": "low",
       "context": "I am tired, I want to take a nap after lunch."
-    },
-    {
-      "vietlish": "he is doing what now",
-      "natural": "what is he doing now",
-      "sourcePattern": "VN leaves 'what' in situ + no inversion",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I am curious, he is doing what now?"
-    },
-    {
-      "vietlish": "you are a teacher, is right",
-      "natural": "you're a teacher, right",
-      "sourcePattern": "đúng không -> 'is right' tag calque",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I remember you, you are a teacher, is right?"
-    },
-    {
-      "vietlish": "I don't know where is the station",
-      "natural": "I don't know where the station is",
-      "sourcePattern": "embedded question keeps inverted order",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Can you help, I don't know where is the station?"
-    },
-    {
-      "vietlish": "I go always late to work",
-      "natural": "I'm always late to work",
-      "sourcePattern": "frequency adverb placed after the verb",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Sorry boss, I go always late to work."
-    },
-    {
-      "vietlish": "she has a dress beautiful",
-      "natural": "she has a beautiful dress",
-      "sourcePattern": "VN adjective follows the noun",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Look there, she has a dress beautiful."
-    },
-    {
-      "vietlish": "I want the car red, not blue",
-      "natural": "I want the red car, not blue",
-      "sourcePattern": "xe màu đỏ -> adjective after noun",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "At the shop I want the car red, not blue."
-    },
-    {
-      "vietlish": "he is enough tall for the team",
-      "natural": "he is tall enough for the team",
-      "sourcePattern": "đủ cao -> 'enough' before the adjective",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Do not worry, he is enough tall for the team."
-    },
-    {
-      "vietlish": "it is too much beautiful here",
-      "natural": "it is so beautiful here",
-      "sourcePattern": "đẹp quá -> 'too much' for intensifying a positive",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Take a photo, it is too much beautiful here."
     },
     {
       "vietlish": "how old are you this year",
@@ -351,22 +287,6 @@
       "context": "It is late, I feel very sleepy, I want go bed."
     },
     {
-      "vietlish": "I think he will not come, isn't it",
-      "natural": "I don't think he'll come, will he",
-      "sourcePattern": "phải không -> frozen 'isn't it' tag",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "The weather is bad, I think he will not come, isn't it?"
-    },
-    {
-      "vietlish": "must I pay now or later",
-      "natural": "do I have to pay now or later",
-      "sourcePattern": "VN modal fronting without 'do'-support",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Excuse me, must I pay now or later?"
-    },
-    {
       "vietlish": "I think I cannot can come tomorrow",
       "natural": "I don't think I can come tomorrow",
       "sourcePattern": "double modal from VN 'không thể'",
@@ -375,76 +295,12 @@
       "context": "I am so sorry, I think I cannot can come tomorrow."
     },
     {
-      "vietlish": "this phone is more cheap than that",
-      "natural": "this phone is cheaper than that",
-      "sourcePattern": "rẻ hơn -> 'more cheap' instead of -er",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Buy this one, this phone is more cheap than that."
-    },
-    {
-      "vietlish": "she is more tall than me",
-      "natural": "she is taller than me",
-      "sourcePattern": "cao hơn -> 'more tall' for a short adjective",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Look, she is more tall than me now."
-    },
-    {
-      "vietlish": "today is the most hot day",
-      "natural": "today is the hottest day",
-      "sourcePattern": "nóng nhất -> 'most hot' instead of -est",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Stay inside, today is the most hot day."
-    },
-    {
-      "vietlish": "he runs more fast than his brother",
-      "natural": "he runs faster than his brother",
-      "sourcePattern": "nhanh hơn -> 'more fast' adverb",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Watch him, he runs more fast than his brother."
-    },
-    {
       "vietlish": "I have less money than you",
       "natural": "I have less money than you",
       "sourcePattern": "(control) natural, negative anchor",
       "category": "word_order",
       "frequency": "low",
       "context": "Let us split, I have less money than you."
-    },
-    {
-      "vietlish": "this is more better for health",
-      "natural": "this is better for health",
-      "sourcePattern": "tốt hơn -> double comparative 'more better'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Choose green tea, this is more better for health."
-    },
-    {
-      "vietlish": "my house is the same with yours",
-      "natural": "my house is the same as yours",
-      "sourcePattern": "giống với -> 'same with' instead of 'same as'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "We are neighbours, my house is the same with yours."
-    },
-    {
-      "vietlish": "there are too many noise here",
-      "natural": "there is too much noise here",
-      "sourcePattern": "ồn quá -> 'many' with the uncountable 'noise'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I cannot study, there are too many noise here."
-    },
-    {
-      "vietlish": "I drink too much coffees",
-      "natural": "I drink too much coffee",
-      "sourcePattern": "nhiều cà phê -> 'much' + wrong plural",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I cannot sleep, I drink too much coffees."
     },
     {
       "vietlish": "he is the more clever in the group",
@@ -471,28 +327,12 @@
       "context": "Thank you for coming, see you again next time."
     },
     {
-      "vietlish": "I will finish in 5 minutes more",
-      "natural": "I'll finish in 5 more minutes",
-      "sourcePattern": "5 phút nữa -> 'more' placed after the noun",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Please wait, I will finish in 5 minutes more."
-    },
-    {
       "vietlish": "the meeting takes 2 hours long",
       "natural": "the meeting takes 2 hours",
       "sourcePattern": "kéo dài 2 tiếng -> redundant 'long'",
       "category": "literal_translation",
       "frequency": "low",
       "context": "Bring water, the meeting takes 2 hours long."
-    },
-    {
-      "vietlish": "I want to send this to Vietnam, how much",
-      "natural": "how much to send this to Vietnam",
-      "sourcePattern": "gửi về Việt Nam -> 'how much' tag at the end",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "At the post office: I want to send this to Vietnam, how much?"
     },
     {
       "vietlish": "I am looking, thank you",
@@ -541,14 +381,6 @@
       "category": "literal_translation",
       "frequency": "low",
       "context": "I worked all day, my eyes are tired from computer."
-    },
-    {
-      "vietlish": "how to spell your name",
-      "natural": "how do you spell your name",
-      "sourcePattern": "đánh vần thế nào -> 'how to' for a direct question",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Sorry, how to spell your name?"
     },
     {
       "vietlish": "I will try my best to do",

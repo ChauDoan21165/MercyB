@@ -12,7 +12,7 @@
   "definition": "Fourth-wave candidate Vietnamese-L1 interference items for human review before any promotion into VIETLISH_CORPUS. Each entry pairs a non-native English production (vietlish) with its natural target (natural), the VN source pattern with diacritics (sourcePattern), and a contextual sentence. A few deliberate natural 'control' anchors are flagged in sourcePattern so reviewers can confirm the detector abstains on natural usage. Wave 4 focuses on grammar-interference families lighter in waves 1-2: conditionals, relative clauses, reported speech, gerund/infinitive, subject-verb agreement, do-support questions, causatives, possessive 'of', passives.",
   "dedupedAgainst": "live VIETLISH_CORPUS + A4 wave1 (...corpus-d4-wave-200.json) + A10 wave2 (...wave2-200.json) — zero string overlap (749-item denylist), asserted by the guard test",
   "generatedFor": "2026-06-10 CEO directive D4 wave4 (A10)",
-  "count": 93,
+  "count": 47,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -23,116 +23,12 @@
   },
   "entries": [
     {
-      "vietlish": "if you will come, call me",
-      "natural": "if you come, call me",
-      "sourcePattern": "future marker pushed into the condition",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Tonight, if you will come, call me first."
-    },
-    {
-      "vietlish": "when I will be free, I help you",
-      "natural": "when I'm free, I'll help you",
-      "sourcePattern": "khi nào rảnh -> future after 'when'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Do not worry, when I will be free, I help you."
-    },
-    {
-      "vietlish": "the man which sells pho is my uncle",
-      "natural": "the man who sells pho is my uncle",
-      "sourcePattern": "người mà -> 'which' for a person",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Over there, the man which sells pho is my uncle."
-    },
-    {
-      "vietlish": "the book who I read is good",
-      "natural": "the book that I read is good",
-      "sourcePattern": "'who' used for a thing",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Borrow it, the book who I read is good."
-    },
-    {
-      "vietlish": "this is the house that I grew up in it",
-      "natural": "this is the house that I grew up in",
-      "sourcePattern": "resumptive pronoun 'it' inside the relative clause",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Let me show you, this is the house that I grew up in it."
-    },
-    {
-      "vietlish": "she is the teacher teach me English",
-      "natural": "she is the teacher who teaches me English",
-      "sourcePattern": "missing relativiser + bare verb",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I respect her, she is the teacher teach me English."
-    },
-    {
-      "vietlish": "the place where I work there is far",
-      "natural": "the place where I work is far",
-      "sourcePattern": "resumptive 'there' after a where-clause",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I wake up early, the place where I work there is far."
-    },
-    {
-      "vietlish": "the food that I like it is spicy",
-      "natural": "the food that I like is spicy",
-      "sourcePattern": "resumptive 'it' object inside the clause",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Try it, the food that I like it is spicy."
-    },
-    {
-      "vietlish": "he asked me where do I live",
-      "natural": "he asked me where I live",
-      "sourcePattern": "embedded question keeps do-support and inversion",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "A stranger came, he asked me where do I live."
-    },
-    {
       "vietlish": "I look forward to hearing",
       "natural": "I look forward to hearing from you",
       "sourcePattern": "(control) natural gerund, abstain anchor",
       "category": "collocation",
       "frequency": "low",
       "context": "Please reply, I look forward to hearing."
-    },
-    {
-      "vietlish": "why he is angry",
-      "natural": "why is he angry",
-      "sourcePattern": "no subject-auxiliary inversion",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Be careful, why he is angry?"
-    },
-    {
-      "vietlish": "how long you stay in Hanoi",
-      "natural": "how long did you stay in Hanoi",
-      "sourcePattern": "missing did + bare verb",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I am curious, how long you stay in Hanoi?"
-    },
-    {
-      "vietlish": "when she come back",
-      "natural": "when does she come back",
-      "sourcePattern": "missing do-support",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I will wait, when she come back?"
-    },
-    {
-      "vietlish": "you understand me or no",
-      "natural": "do you understand me",
-      "sourcePattern": "...hay không -> 'or no' yes/no tag",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Slow down please, you understand me or no?"
     },
     {
       "vietlish": "can you help me to carry this",
@@ -143,52 +39,12 @@
       "context": "It is heavy, can you help me to carry this?"
     },
     {
-      "vietlish": "the car of my father is old",
-      "natural": "my father's car is old",
-      "sourcePattern": "xe của bố -> 'of' periphrasis for possession",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Do not laugh, the car of my father is old."
-    },
-    {
-      "vietlish": "the leg of the table is broken",
-      "natural": "the table leg is broken",
-      "sourcePattern": "chân bàn -> 'of' instead of a noun compound",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Be careful, the leg of the table is broken."
-    },
-    {
       "vietlish": "what is the name of this street",
       "natural": "what's this street's name",
       "sourcePattern": "tên đường này -> heavy 'of' phrasing",
       "category": "word_order",
       "frequency": "low",
       "context": "I am lost, what is the name of this street?"
-    },
-    {
-      "vietlish": "the door of the room cannot close",
-      "natural": "the room door won't close",
-      "sourcePattern": "cửa phòng -> 'of' instead of compound",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "It is stuck, the door of the room cannot close."
-    },
-    {
-      "vietlish": "the house of my friend is big",
-      "natural": "my friend's house is big",
-      "sourcePattern": "nhà của bạn -> 'of' periphrasis",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "We had a party, the house of my friend is big."
-    },
-    {
-      "vietlish": "the birthday of my son is in June",
-      "natural": "my son's birthday is in June",
-      "sourcePattern": "sinh nhật của con -> 'of' periphrasis",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Save the date, the birthday of my son is in June."
     },
     {
       "vietlish": "yesterday was very cold",
@@ -279,14 +135,6 @@
       "context": "Start without him, he is absent in the meeting."
     },
     {
-      "vietlish": "can you turn down a little the volume",
-      "natural": "can you turn the volume down a little",
-      "sourcePattern": "vặn nhỏ -> particle + adverb order",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "It is loud, can you turn down a little the volume?"
-    },
-    {
       "vietlish": "who looks after your baby",
       "natural": "who looks after your baby",
       "sourcePattern": "(control) natural phrasal verb, abstain anchor",
@@ -301,62 +149,6 @@
       "category": "collocation",
       "frequency": "low",
       "context": "Every day I must wake up my son at 6."
-    },
-    {
-      "vietlish": "I will drop off you at the station",
-      "natural": "I'll drop you off at the station",
-      "sourcePattern": "particle placement with a pronoun object",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Get in, I will drop off you at the station."
-    },
-    {
-      "vietlish": "he is so tired that cannot work",
-      "natural": "he is so tired that he can't work",
-      "sourcePattern": "mệt đến nỗi -> dropped subject in the result clause",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Let him sleep, he is so tired that cannot work."
-    },
-    {
-      "vietlish": "it is a such good idea",
-      "natural": "it is such a good idea",
-      "sourcePattern": "article placement after 'such'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I agree, it is a such good idea."
-    },
-    {
-      "vietlish": "she is tall as her mother",
-      "natural": "she is as tall as her mother",
-      "sourcePattern": "cao bằng -> missing first 'as'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Look how she grew, she is tall as her mother."
-    },
-    {
-      "vietlish": "this coffee is too strong for me to drink it",
-      "natural": "this coffee is too strong for me to drink",
-      "sourcePattern": "resumptive 'it' after a too...to clause",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Add water, this coffee is too strong for me to drink it."
-    },
-    {
-      "vietlish": "the box is too heavy for I carry",
-      "natural": "the box is too heavy for me to carry",
-      "sourcePattern": "wrong pronoun case + missing 'to'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Help me, the box is too heavy for I carry."
-    },
-    {
-      "vietlish": "he is not enough old to drive",
-      "natural": "he is not old enough to drive",
-      "sourcePattern": "'enough' before the adjective",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Be patient, he is not enough old to drive."
     },
     {
       "vietlish": "I am 25 years old age",
@@ -423,30 +215,6 @@
       "context": "Goodbye for now, take care your health."
     },
     {
-      "vietlish": "let's us go to the cinema",
-      "natural": "let's go to the cinema",
-      "sourcePattern": "redundant 'us' after 'let's'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I am free tonight, let's us go to the cinema."
-    },
-    {
-      "vietlish": "let we start the meeting",
-      "natural": "let's start the meeting",
-      "sourcePattern": "'let we' instead of 'let's'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Everyone is here, let we start the meeting."
-    },
-    {
-      "vietlish": "why don't we to take a taxi",
-      "natural": "why don't we take a taxi",
-      "sourcePattern": "extra 'to' after 'why don't we'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "It is far, why don't we to take a taxi?"
-    },
-    {
       "vietlish": "shall we to order now",
       "natural": "shall we order now",
       "sourcePattern": "extra 'to' after 'shall we'",
@@ -477,22 +245,6 @@
       "category": "calque",
       "frequency": "low",
       "context": "On the beach, I wake up early to catch the sun."
-    },
-    {
-      "vietlish": "I drink water a lot every day",
-      "natural": "I drink a lot of water every day",
-      "sourcePattern": "uống nhiều nước -> 'a lot' after the object",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "For my skin, I drink water a lot every day."
-    },
-    {
-      "vietlish": "he is a 5 years old boy",
-      "natural": "he is a five-year-old boy",
-      "sourcePattern": "5 tuổi -> plural in the attributive compound",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "So cute, he is a 5 years old boy."
     },
     {
       "vietlish": "many fishes in the pond",
@@ -591,132 +343,12 @@
       "context": "I want to quit, I am boring with this job."
     },
     {
-      "vietlish": "he speaks English very fluent",
-      "natural": "he speaks English very fluently",
-      "sourcePattern": "trôi chảy -> adjective for an adverb",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I admire him, he speaks English very fluent."
-    },
-    {
-      "vietlish": "she sings very beautiful",
-      "natural": "she sings very beautifully",
-      "sourcePattern": "hát hay -> adjective for an adverb",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Listen now, she sings very beautiful."
-    },
-    {
-      "vietlish": "drive careful, the road is wet",
-      "natural": "drive carefully, the road is wet",
-      "sourcePattern": "lái cẩn thận -> adjective for an adverb",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Please drive careful, the road is wet."
-    },
-    {
-      "vietlish": "I work very hardly every day",
-      "natural": "I work very hard every day",
-      "sourcePattern": "'hardly' wrongly formed from 'hard'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "To support my family, I work very hardly every day."
-    },
-    {
-      "vietlish": "he runs very quick",
-      "natural": "he runs very quickly",
-      "sourcePattern": "nhanh -> adjective for an adverb",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Catch him, he runs very quick."
-    },
-    {
-      "vietlish": "I can speak a little English only",
-      "natural": "I can only speak a little English",
-      "sourcePattern": "'only' placed at the end VN-style",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Please be patient, I can speak a little English only."
-    },
-    {
-      "vietlish": "I have just only ten dollar",
-      "natural": "I only have ten dollars",
-      "sourcePattern": "chỉ có -> 'just only' doubling + no plural",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I cannot buy it, I have just only ten dollar."
-    },
-    {
-      "vietlish": "everyday I take the same bus",
-      "natural": "every day I take the same bus",
-      "sourcePattern": "'everyday' adjective used as the adverb 'every day'",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "It is a routine, everyday I take the same bus."
-    },
-    {
-      "vietlish": "the room has air conditioner or not",
-      "natural": "does the room have air conditioning",
-      "sourcePattern": "...không -> 'or not' tag + countability",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Before I book, the room has air conditioner or not?"
-    },
-    {
-      "vietlish": "you are free tonight or not",
-      "natural": "are you free tonight",
-      "sourcePattern": "rảnh không -> 'or not' yes/no tag",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Quick question, you are free tonight or not?"
-    },
-    {
-      "vietlish": "I am not sure he comes or not",
-      "natural": "I'm not sure whether he's coming",
-      "sourcePattern": "...hay không -> 'or not' embedded",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Do not wait, I am not sure he comes or not."
-    },
-    {
       "vietlish": "can you wait for me a little",
       "natural": "can you wait for me a moment",
       "sourcePattern": "đợi chút -> 'a little' for time",
       "category": "false_friend",
       "frequency": "medium",
       "context": "I am almost ready, can you wait for me a little?"
-    },
-    {
-      "vietlish": "he is taller more than me",
-      "natural": "he is much taller than me",
-      "sourcePattern": "cao hơn nhiều -> 'taller more' calque",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Stand together, he is taller more than me."
-    },
-    {
-      "vietlish": "this is the most easiest way",
-      "natural": "this is the easiest way",
-      "sourcePattern": "dễ nhất -> double superlative",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Follow me, this is the most easiest way."
-    },
-    {
-      "vietlish": "it is different from before a lot",
-      "natural": "it is very different from before",
-      "sourcePattern": "khác nhiều -> 'a lot' placement",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "I cannot recognise it, it is different from before a lot."
-    },
-    {
-      "vietlish": "I look like my father very much",
-      "natural": "I look a lot like my father",
-      "sourcePattern": "giống bố nhiều -> 'very much' placement",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Everyone says I look like my father very much."
     },
     {
       "vietlish": "I think he is right, don't you think",

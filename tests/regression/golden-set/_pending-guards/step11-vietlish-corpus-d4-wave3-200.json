@@ -23,16 +23,8 @@
   "definition": "Wave 3 of NEW Vietnamese L1-interference candidates matching the live VIETLISH_CORPUS entry schema EXACTLY. Staged for human review BEFORE any promotion into src/lib/tutor/vietlishCorpus.ts. Imported by no engine module. Verified disjoint from the live corpus AND from D4 wave1 (...wave-200.json, !695) AND D4 wave2 (...wave2-200.json, !693) by step11VietlishCorpusD4Wave3.test.ts.",
   "disjointFrom": "live VIETLISH_CORPUS; A4 wave1 !695; A10 wave2 !693; A6 !690 (selector test, no corpus rows).",
   "generatedAt": "2026-06-10",
-  "count": 79,
+  "count": 62,
   "entries": [
-    {
-      "vietlish": "he go out just now",
-      "natural": "he just went out",
-      "sourcePattern": "vua moi ra ngoai -> time phrase placed at the end, no past",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "He go out just now, maybe you can catch him outside."
-    },
     {
       "vietlish": "I am knowing the answer",
       "natural": "I know the answer",
@@ -162,70 +154,6 @@
       "context": "At the cinema we make a queue to buy ticket."
     },
     {
-      "vietlish": "what is your favorite food Vietnamese",
-      "natural": "what is your favorite Vietnamese food",
-      "sourcePattern": "mon an Viet Nam -> nationality adjective placed after the noun",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "What is your favorite food Vietnamese, pho or banh mi?"
-    },
-    {
-      "vietlish": "tell me why are you sad",
-      "natural": "tell me why you are sad",
-      "sourcePattern": "tai sao buon -> inversion kept after tell me",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "You can trust me, tell me why are you sad."
-    },
-    {
-      "vietlish": "I want to know how much does it cost",
-      "natural": "I want to know how much it costs",
-      "sourcePattern": "gia bao nhieu -> do-support kept in the embedded clause",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Before I decide, I want to know how much does it cost."
-    },
-    {
-      "vietlish": "she asked me where do I live",
-      "natural": "she asked me where I live",
-      "sourcePattern": "hoi toi song o dau -> inversion kept in reported speech",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "At the party she asked me where do I live."
-    },
-    {
-      "vietlish": "always he forgets his keys",
-      "natural": "he always forgets his keys",
-      "sourcePattern": "luc nao cung -> frequency adverb fronted before the subject",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Always he forgets his keys at the office."
-    },
-    {
-      "vietlish": "I both like coffee and tea",
-      "natural": "I like both coffee and tea",
-      "sourcePattern": "ca...lan -> both placed before the verb",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "In the morning I both like coffee and tea."
-    },
-    {
-      "vietlish": "yesterday what did you do",
-      "natural": "what did you do yesterday",
-      "sourcePattern": "hom qua ban lam gi -> time word fronted before the wh-word",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Yesterday what did you do after class?"
-    },
-    {
-      "vietlish": "you want which one",
-      "natural": "which one do you want",
-      "sourcePattern": "ban muon cai nao -> wh-word kept in situ at the end",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "There are two sizes, you want which one?"
-    },
-    {
       "vietlish": "teacher, can I go to toilet",
       "natural": "Teacher, may I go to the toilet",
       "sourcePattern": "thua co cho em di -> title address plus article dropped",
@@ -330,14 +258,6 @@
       "context": "Two hours at the clinic, I am tired of waiting, very tiring."
     },
     {
-      "vietlish": "she is older than me two years",
-      "natural": "she is two years older than me",
-      "sourcePattern": "lon hon toi hai tuoi -> measure phrase placed after the comparison",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "My sister she is older than me two years."
-    },
-    {
       "vietlish": "this bag is as the same as that one",
       "natural": "this bag is the same as that one",
       "sourcePattern": "giong nhu -> as inserted before the same",
@@ -354,44 +274,12 @@
       "context": "In the new job he earns double than me."
     },
     {
-      "vietlish": "this restaurant, the food very good but expensive",
-      "natural": "at this restaurant, the food is very good but expensive",
-      "sourcePattern": "nha hang nay, do an ngon -> topic fronting plus dropped be",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "This restaurant, the food very good but expensive for me."
-    },
-    {
-      "vietlish": "my old school, I miss it very much",
-      "natural": "I miss my old school very much",
-      "sourcePattern": "truong cu cua toi -> topic NP fronted with resumptive it",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "My old school, I miss it very much since I graduated."
-    },
-    {
       "vietlish": "the meeting is online or offline",
       "natural": "is the meeting online or in person",
       "sourcePattern": "truc tiep -> offline calqued for in person",
       "category": "false_friend",
       "frequency": "medium",
       "context": "Please tell me, the meeting is online or offline tomorrow?"
-    },
-    {
-      "vietlish": "the hotel has free breakfast or not",
-      "natural": "does the hotel have free breakfast",
-      "sourcePattern": "khach san co an sang mien phi khong -> no do-support, A-not-A tag",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Before I book, the hotel has free breakfast or not?"
-    },
-    {
-      "vietlish": "do you have room more cheap",
-      "natural": "do you have a cheaper room",
-      "sourcePattern": "phong re hon -> more cheap plus adjective after noun",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "This is over my budget, do you have room more cheap?"
     },
     {
       "vietlish": "my blood pressure is up today",
@@ -482,28 +370,12 @@
       "context": "He studies all night, he is afraid that he will fail again."
     },
     {
-      "vietlish": "he is enough old to drive",
-      "natural": "he is old enough to drive",
-      "sourcePattern": "du lon -> enough placed before the adjective",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "He is eighteen now, he is enough old to drive."
-    },
-    {
       "vietlish": "the children grow up very fast",
       "natural": "the children grow up very fast",
       "sourcePattern": "lon nhanh -> direct calque, acceptable but staged for review",
       "category": "register",
       "frequency": "low",
       "context": "I haven't seen them in a year, the children grow up very fast."
-    },
-    {
-      "vietlish": "I am interested in this job very much",
-      "natural": "I'm very interested in this job",
-      "sourcePattern": "rat thich -> intensifier very much placed at the end",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Please consider me, I am interested in this job very much."
     },
     {
       "vietlish": "the teacher made us memorize all the lesson",
@@ -568,14 +440,6 @@
       "category": "literal_translation",
       "frequency": "low",
       "context": "Before I leave, I want to say thank to everybody here."
-    },
-    {
-      "vietlish": "she looks after very well the old man",
-      "natural": "she looks after the old man very well",
-      "sourcePattern": "cham soc tot -> adverb placed before the object",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "The family trusts her, she looks after very well the old man."
     },
     {
       "vietlish": "we will meet again in some day",

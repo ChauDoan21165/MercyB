@@ -23,7 +23,7 @@
   "definition": "Wave 5 of NEW Vietnamese L1-interference candidates matching the live VIETLISH_CORPUS entry schema EXACTLY. Staged for human review BEFORE any promotion into src/lib/tutor/vietlishCorpus.ts. Imported by no engine module. Verified disjoint from the live corpus AND from all prior D4 waves (1,2,3,4) by step11VietlishCorpusD4Wave5.test.ts.",
   "disjointFrom": "live VIETLISH_CORPUS; A4 wave1 !695; A10 wave2 !693; A4 wave3 !714; A10 wave4 !710; A6 !690 (selector test, no corpus rows).",
   "generatedAt": "2026-06-10",
-  "count": 98,
+  "count": 93,
   "entries": [
     {
       "vietlish": "I cannot find out my mistake",
@@ -234,14 +234,6 @@
       "context": "The child is sick, she has a high temperature body since noon."
     },
     {
-      "vietlish": "I study by heart all the vocabulary",
-      "natural": "I learn all the vocabulary by heart",
-      "sourcePattern": "hoc thuoc long -> by heart phrase placed before the object",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Before the test I study by heart all the vocabulary."
-    },
-    {
       "vietlish": "I failed one subject, must learn again",
       "natural": "I failed one subject, I have to retake it",
       "sourcePattern": "hoc lai -> learn again for retake",
@@ -290,14 +282,6 @@
       "context": "The fruit was rotten inside, the seller cheated me money."
     },
     {
-      "vietlish": "this is real or fake, I cannot tell",
-      "natural": "is this real or fake, I can't tell",
-      "sourcePattern": "that hay gia -> statement word order in a question",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "The bag is cheap, this is real or fake, I cannot tell."
-    },
-    {
       "vietlish": "the shop gives one year guarantee",
       "natural": "the shop gives a one-year guarantee",
       "sourcePattern": "bao hanh mot nam -> article dropped before one-year",
@@ -312,14 +296,6 @@
       "category": "literal_translation",
       "frequency": "low",
       "context": "To see better, we sat on the front seat of the bus."
-    },
-    {
-      "vietlish": "the airplane took off late one hour",
-      "natural": "the plane took off an hour late",
-      "sourcePattern": "cat canh tre mot tieng -> measure phrase placed after late",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Because of the rain, the airplane took off late one hour."
     },
     {
       "vietlish": "I get motion sick on the boat",
@@ -424,14 +400,6 @@
       "category": "literal_translation",
       "frequency": "low",
       "context": "When the boss asked, he denied to take the money."
-    },
-    {
-      "vietlish": "this word is difficult to pronounce for me",
-      "natural": "this word is difficult for me to pronounce",
-      "sourcePattern": "kho phat am voi toi -> for me placed after the verb",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Please say it slowly, this word is difficult to pronounce for me."
     },
     {
       "vietlish": "she is proud to be a Vietnamese",
@@ -744,14 +712,6 @@
       "category": "register",
       "frequency": "low",
       "context": "Now he is a manager, he came back from abroad with a lot of experience."
-    },
-    {
-      "vietlish": "I will pay back you next month, I promise",
-      "natural": "I'll pay you back next month, I promise",
-      "sourcePattern": "tra lai ban -> particle back before the object",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "Thank you for helping me, I will pay back you next month, I promise."
     },
     {
       "vietlish": "she sings on the stage, everybody claps her",
