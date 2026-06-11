@@ -15,16 +15,32 @@ export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 #   - strips an OPTIONAL a/ or b/ prefix (works for glab AND raw git diff),
 #   - drops /dev/null,
 #   - de-dupes,
-#   - then matches the protected-area regex.
-# Regex is unchanged from the original gate (CEO-2 SECOND covered only the
-# parser; tightening the over-broad tokens auth/.env/deploy is a separate,
-# unapproved follow-up).
+#   - then matches via two passes (A5 word-boundary fix, 2026-06-11):
+#     Pass 1 (segment-anchored) — supabaseClient.ts exact, /auth(/|.) segment,
+#       /dev/null-excluded .env root; always fires even inside test dirs.
+#     Pass 2 (broad) — billing/stripe/payment/entitle/auth/vite.config/
+#       wrangler/deploy matched anywhere, but __tests__/, docs/, *.test.*,
+#       and *.md paths are excluded (block implementations, not test coverage).
 protected_path_hits() {
-  grep -E '^[-+]{3} ' \
-    | sed -E 's@^[-+]{3} (a/|b/)?@@' \
-    | grep -vx '/dev/null' \
-    | sort -u \
-    | grep -iE "billing|stripe|payment|entitle|auth|supabaseClient|\.env|vite\.config|wrangler|deploy"
+  local _paths
+  _paths=$(
+    grep -E '^[-+]{3} ' \
+      | sed -E 's@^[-+]{3} (a/|b/)?@@' \
+      | grep -vx '/dev/null' \
+      | sort -u
+  )
+  # Pass 1: segment-anchored — always protected even inside test/doc dirs.
+  # Matches /auth/ dir or auth.* filename, .env at path root, supabaseClient.ts exactly.
+  local _anchored
+  _anchored=$(printf '%s\n' "$_paths" \
+    | grep -E "supabaseClient\.ts|(^|/)auth(/|\.)|(^|/)\.env($| |\.)") || true
+  # Pass 2: broad token match — implementation files only; skip test/doc contexts.
+  local _broad
+  _broad=$(printf '%s\n' "$_paths" \
+    | grep -iE "billing|stripe|payment|entitle|auth|vite\.config|wrangler|deploy" \
+    | grep -vE "(^|/)(__tests__|docs)/|\.test\.[tj]sx?$|\.spec\.[tj]sx?$|\.md$") || true
+  # Merge and de-dupe; emit nothing when both passes are empty.
+  printf '%s\n%s\n' "$_anchored" "$_broad" | grep -v '^$' | sort -u || true
 }
 
 main() {
