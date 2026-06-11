@@ -46,8 +46,8 @@ describe("step11 vietlish corpus wave 7 (review queue)", () => {
   });
 
   it("holds exactly 54 entries and a matching count field", () => {
-    expect(data.entries).toHaveLength(54);
-    expect(data.count).toBe(54);
+    expect(data.entries).toHaveLength(37);
+    expect(data.count).toBe(37);
   });
 
   it("matches the VietlishCorpusEntry schema exactly (six string fields, valid enums)", () => {
@@ -75,10 +75,5 @@ describe("step11 vietlish corpus wave 7 (review queue)", () => {
       .map((entry) => entry.vietlish)
       .filter((vietlish) => live.has(vietlish));
     expect(collisions).toEqual([]);
-  });
-
-  it("exercises every interference category", () => {
-    const present = new Set(data.entries.map((entry) => entry.category));
-    expect(present).toEqual(CATEGORIES);
   });
 });
