@@ -59,6 +59,7 @@ type Props = {
   ttsErrorScope?: "target" | "follow-up" | null;
   followUpPrompt: string | null;
   followUpIsPivot: boolean;
+  followUpProviderError?: boolean;
   followUpTtsSpeaking: boolean;
   followUpTtsPreparing: boolean;
   englishPronunciationFeedbackEnabled?: boolean;
@@ -73,6 +74,7 @@ type Props = {
    *  true if the model actually spoke. Used by the self-compare by-ear flow. */
   onPlayModel?: () => Promise<boolean>;
   onReadFollowUp: () => void;
+  onRetryFollowUp?: () => void;
   onRepeatInputChange: (value: string) => void;
   onResetBoard?: () => void;
   tutorCopy: TutorCopy;
@@ -94,6 +96,7 @@ export default function SpeakPracticeMode({
   ttsErrorScope,
   followUpPrompt,
   followUpIsPivot,
+  followUpProviderError = false,
   followUpTtsSpeaking,
   followUpTtsPreparing,
   englishPronunciationFeedbackEnabled = false,
@@ -106,6 +109,7 @@ export default function SpeakPracticeMode({
   onReadTarget,
   onPlayModel,
   onReadFollowUp,
+  onRetryFollowUp,
   onRepeatInputChange,
   onResetBoard,
   tutorCopy,
@@ -385,6 +389,27 @@ export default function SpeakPracticeMode({
                     Mercy chỉ đang xem đường giọng, không thay thế nhận xét âm riêng lẻ.
                   </p>
                 </div>
+              )}
+            </div>
+          )}
+
+          {!followUpPrompt && followUpProviderError && (
+            <div
+              data-testid="ai-tutor-speak-follow-up-error"
+              className="mt-4 rounded-[16px] border border-amber-200 bg-amber-50 px-4 py-4"
+              role="status"
+            >
+              <p className="text-sm font-bold leading-6 text-amber-900">
+                Mercy chưa lấy được câu hỏi tiếp theo. Bấm thử lại nhé.
+              </p>
+              {onRetryFollowUp && (
+                <button
+                  type="button"
+                  onClick={onRetryFollowUp}
+                  className="mt-2 rounded-full border border-amber-300 bg-white px-3 py-1 text-xs font-black text-amber-900"
+                >
+                  Thử lại
+                </button>
               )}
             </div>
           )}

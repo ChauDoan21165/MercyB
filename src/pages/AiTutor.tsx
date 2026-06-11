@@ -311,13 +311,19 @@ function normalizeAiSpeakFollowUp(value: unknown): string | null {
   return raw;
 }
 
+type SpeakFollowUpProviderError = { ok: false; retryable: true; reason: string };
+
+function isSpeakFollowUpProviderError(v: unknown): v is SpeakFollowUpProviderError {
+  return typeof v === "object" && v !== null && "ok" in v && (v as SpeakFollowUpProviderError).ok === false;
+}
+
 async function fetchDeepSeekSpeakFollowUp({
   transcript,
   currentTopic,
   learnerLevel,
   recentTurns,
   accessToken,
-}: SpeakAiFollowUpRequest): Promise<string | null> {
+}: SpeakAiFollowUpRequest): Promise<string | null | SpeakFollowUpProviderError> {
   try {
     const response = await fetch(resolveApiUrl("/api/mercy-ai"), {
       method: "POST",
@@ -336,7 +342,10 @@ async function fetchDeepSeekSpeakFollowUp({
       }),
     });
     if (!response.ok) return null;
-    const data = (await response.json()) as { question?: unknown };
+    const data = (await response.json()) as { question?: unknown; ok?: unknown; retryable?: unknown; reason?: unknown };
+    if (data.ok === false && data.retryable === true && typeof data.reason === "string") {
+      return { ok: false, retryable: true, reason: data.reason };
+    }
     return normalizeAiSpeakFollowUp(data.question);
   } catch {
     return null;
@@ -1056,6 +1065,8 @@ export default function AiTutorPage() {
     currentIsPivot: false,
   });
   const speakFollowUpSessionRef = useRef(speakFollowUpSession);
+  const [speakFollowUpProviderError, setSpeakFollowUpProviderError] = useState(false);
+  const lastSpeakFollowUpParamsRef = useRef<{ transcript: string; currentTopic: string; turnsOnTopic: number; askedQuestions: string[] } | null>(null);
   const [conversationMessages, setConversationMessages] = useState<ConversationMessage[]>(() => [
     createOpeningMessage(
       typeof window === "undefined"
@@ -1166,6 +1177,42 @@ export default function AiTutorPage() {
   const applySpeakFollowUpSession = (next: SpeakFollowUpSession) => {
     speakFollowUpSessionRef.current = next;
     setSpeakFollowUpSession(next);
+  };
+
+  const handleRetryFollowUp = () => {
+    if (!session || !lastSpeakFollowUpParamsRef.current) return;
+    const { transcript, currentTopic, turnsOnTopic, askedQuestions } = lastSpeakFollowUpParamsRef.current;
+    const requestId = speakFollowUpRequestRef.current + 1;
+    speakFollowUpRequestRef.current = requestId;
+    setSpeakFollowUpProviderError(false);
+    applySpeakFollowUpSession({ topicId: currentTopic, turnsOnTopic, askedQuestions, currentQuestion: null, currentIsPivot: false });
+    void fetchDeepSeekSpeakFollowUp({
+      transcript,
+      currentTopic,
+      learnerLevel: "beginner",
+      recentTurns: speakPivotTurnsRef.current,
+      accessToken: session.access_token,
+    }).then((aiQuestion) => {
+      if (speakFollowUpRequestRef.current !== requestId) return;
+      if (isSpeakFollowUpProviderError(aiQuestion)) {
+        setSpeakFollowUpProviderError(true);
+        return;
+      }
+      setSpeakFollowUpProviderError(false);
+      const finalQuestion = aiQuestion ?? SPEAK_TRANSCRIPT_ASK_TO_REPEAT;
+      speakPivotTurnsRef.current = [
+        ...speakPivotTurnsRef.current,
+        { role: "learner" as const, text: transcript },
+        { role: "assistant" as const, text: finalQuestion },
+      ].slice(-8);
+      applySpeakFollowUpSession({
+        topicId: currentTopic,
+        turnsOnTopic: turnsOnTopic + (aiQuestion ? 1 : 0),
+        askedQuestions: aiQuestion ? [...askedQuestions, aiQuestion] : askedQuestions,
+        currentQuestion: finalQuestion,
+        currentIsPivot: false,
+      });
+    });
   };
 
   const recordSpeakRepeatAttempt = (spokenText: string) => {
@@ -1280,6 +1327,8 @@ export default function AiTutorPage() {
 
     const requestId = speakFollowUpRequestRef.current + 1;
     speakFollowUpRequestRef.current = requestId;
+    lastSpeakFollowUpParamsRef.current = { transcript: spoken, currentTopic: topicId, turnsOnTopic, askedQuestions };
+    setSpeakFollowUpProviderError(false);
     applySpeakFollowUpSession({
       topicId,
       turnsOnTopic,
@@ -1295,6 +1344,11 @@ export default function AiTutorPage() {
       accessToken: session.access_token,
     }).then((aiQuestion) => {
       if (speakFollowUpRequestRef.current !== requestId) return;
+      if (isSpeakFollowUpProviderError(aiQuestion)) {
+        setSpeakFollowUpProviderError(true);
+        return;
+      }
+      setSpeakFollowUpProviderError(false);
       const question = stance.stance === "needs_acknowledgment" && aiQuestion
         ? `${SPEAK_STANCE_ACKNOWLEDGMENT} ${aiQuestion}`
         : aiQuestion;
@@ -2564,12 +2618,14 @@ export default function AiTutorPage() {
           ttsErrorScope={speakingMessageId === "speak-follow-up" ? "follow-up" : "target"}
           followUpPrompt={speakFollowUpSession.currentQuestion}
           followUpIsPivot={speakFollowUpSession.currentIsPivot}
+          followUpProviderError={speakFollowUpProviderError}
           followUpTtsSpeaking={speakingMessageId === "speak-follow-up" && tts.speaking}
           followUpTtsPreparing={speakingMessageId === "speak-follow-up" && tts.preparing}
           onMicToggle={handleMicToggle}
           onReadTarget={handleReadSpeakTarget}
           onPlayModel={playSpeakTargetModel}
           onReadFollowUp={handleReadSpeakFollowUp}
+          onRetryFollowUp={handleRetryFollowUp}
           onRepeatInputChange={handleSpeakRepeatInputChange}
           onResetBoard={handleClear}
           tutorCopy={tutorCopy}

@@ -6,6 +6,7 @@ import {
   SPEAK_REPEAT_CLARIFICATION,
   toSpeakRecentTurns,
 } from "../../api/_lib/deepseekSpeak";
+import type { SpeakFollowUpError } from "../../api/_lib/deepseekSpeak";
 import {
   buildAiConversationTurn,
   normalizeAiConversationHistory,
@@ -147,7 +148,12 @@ export async function handler(event: NetlifyEvent) {
       currentTopic: norm(context.currentTopic),
       recentTurns: toSpeakRecentTurns(context.recentTurns),
     });
+    if (result && "ok" in result && !(result as SpeakFollowUpError).ok) {
+      // Provider infrastructure failure — surface as typed retryable error, not a canned clarification.
+      return json(result as SpeakFollowUpError);
+    }
     return json(result || {
+      // result === null: AI worked but transcript was genuinely unclear → ask to repeat.
       question: SPEAK_REPEAT_CLARIFICATION,
       provider: "local-fallback",
       fallback: true,
