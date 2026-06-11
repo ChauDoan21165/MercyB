@@ -42,6 +42,7 @@ import {
 import { ParentAskMercyCta } from "./ParentAskMercyCta";
 import { ParentInviteFamilyCta } from "./ParentInviteFamilyCta";
 import { ParentCategoryBucket } from "./ParentCategoryBucket";
+import { ParentFamilyBridgeSection } from "./ParentFamilyBridgeSection";
 import { ParentHeadline } from "./ParentHeadline";
 import {
   ParentAccessSkeleton,
@@ -122,6 +123,7 @@ export default function ParentView({
       )}
       <ParentAskMercyCta />
       <ParentInviteFamilyCta />
+      <ParentFamilyBridgeSection />
     </div>
   );
 }
