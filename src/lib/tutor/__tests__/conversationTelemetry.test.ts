@@ -113,6 +113,20 @@ describe("recordTelemetryTurn — capture gating", () => {
     expect(logTurn).toHaveBeenCalledTimes(1);
     expect(second.captured).toBe(false);
   });
+
+  // Step-12: recall signal threads through to the result and the capture meta.
+  it("threads memoryRecalled into the result and the logTurn meta", async () => {
+    const session = await beginTelemetrySession({ userId: "user-1", now: FIXED_NOW });
+    const result = await recordTelemetryTurn(session, turnInput({ turnNumber: 1, memoryRecalled: true }));
+    expect(result.memoryRecalled).toBe(true);
+    expect(vi.mocked(logTurn).mock.calls[0].at(-1)).toMatchObject({ memoryRecalled: true });
+  });
+
+  it("defaults memoryRecalled to false when absent", async () => {
+    const session = await beginTelemetrySession({ userId: "user-1", now: FIXED_NOW });
+    const result = await recordTelemetryTurn(session, turnInput({ turnNumber: 1 }));
+    expect(result.memoryRecalled).toBe(false);
+  });
 });
 
 describe("recordTelemetryTurn — retention gating", () => {
