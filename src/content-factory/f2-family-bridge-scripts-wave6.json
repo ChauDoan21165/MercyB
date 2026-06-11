@@ -1,0 +1,125 @@
+{
+  "corpus": "f2-family-bridge-scripts-wave6",
+  "languagePair": "en-vi",
+  "status": "review_queue_not_wired",
+  "authoredBy": "F2",
+  "authoredAt": "2026-06-11",
+  "wave": 6,
+  "description": "Step-13 family-bridge bilingual scripts wave 6. Six shame-free English-Vietnamese scripts for diaspora learners navigating family questions about housing choices, remote work, unsolicited parenting opinions, sibling comparison pressure, non-traditional education paths, and technology safety for elders. Append-only review material only; not wired to the engine.",
+  "scripts": [
+    {
+      "id": "f2w6-family-housing-renting",
+      "scenario": "Responding to family pressure about why you are still renting instead of buying",
+      "learnerNeed": "The learner wants to hold their own financial boundary without sounding defensive or ungrateful.",
+      "tone": "grounded_calm",
+      "englishScript": [
+        "Renting is the right choice for our situation right now.",
+        "We are saving carefully and we will make the move when the time is right for us.",
+        "I appreciate the concern, and I want to make this decision for our family, not against anyone's wishes."
+      ],
+      "vietnameseBridge": [
+        "Thuê nhà là lựa chọn phù hợp cho hoàn cảnh của chúng con lúc này.",
+        "Chúng con đang dành dụm cẩn thận và sẽ quyết định khi thời điểm đúng với chúng con.",
+        "Con cảm ơn sự quan tâm, và con muốn đưa ra quyết định này cho gia đình nhỏ của con, không phải để chống lại mong muốn của ai."
+      ],
+      "coachNoteVi": "Câu mở khẳng định quyết định thay vì xin lỗi về nó. Cụm 'cho gia đình nhỏ của con' nhắc khéo rằng đây là quyết định của một đơn vị gia đình riêng.",
+      "avoid": ["It is none of your business.", "You do not understand how expensive things are here."],
+      "step13Tags": ["housing", "financial_boundary", "renting", "family_pressure"]
+    },
+    {
+      "id": "f2w6-family-remote-work-explain",
+      "scenario": "Explaining to relatives why you are home during the day but are working",
+      "learnerNeed": "The learner needs family to understand work-from-home without seeming unemployed or lazy.",
+      "tone": "informative_warm",
+      "englishScript": [
+        "I work from home, which means I do my job at my desk here instead of going to an office.",
+        "When my door is closed or I am on a call, I am in a meeting just like in an office.",
+        "I am still fully employed and working full hours, just in a different place."
+      ],
+      "vietnameseBridge": [
+        "Con làm việc ở nhà, nghĩa là con làm việc tại bàn ở đây thay vì đến văn phòng.",
+        "Khi cửa phòng con đóng hoặc con đang gọi điện, con đang họp giống như ở văn phòng.",
+        "Con vẫn đi làm đầy đủ và làm đủ giờ, chỉ là ở một nơi khác thôi."
+      ],
+      "coachNoteVi": "Gia đình từ thế hệ trước thường ghép 'ở nhà' với 'không có việc'. Câu ba tách rõ: vị trí khác, tình trạng công việc không đổi.",
+      "avoid": ["Stop asking if I am working. I am always working.", "I cannot explain my job to you."],
+      "step13Tags": ["remote_work", "work_from_home", "boundaries", "family_misunderstanding"]
+    },
+    {
+      "id": "f2w6-family-parenting-opinions",
+      "scenario": "Responding gracefully when relatives offer strong opinions about how to raise your child",
+      "learnerNeed": "The learner wants to receive advice without either dismissing the elder or abandoning their own parenting values.",
+      "tone": "respectful_firm",
+      "englishScript": [
+        "Thank you for sharing what worked for you. I hear you.",
+        "We are trying a few different approaches to see what fits our child best.",
+        "If it does not go well, I will definitely ask for more of your experience."
+      ],
+      "vietnameseBridge": [
+        "Cảm ơn cô/chú/bà đã chia sẻ những gì phù hợp hồi trước. Con/cháu lắng nghe.",
+        "Chúng con đang thử một vài cách khác nhau để xem cái nào phù hợp nhất với bé.",
+        "Nếu không ổn, con/cháu chắc chắn sẽ hỏi thêm kinh nghiệm của cô/chú/bà."
+      ],
+      "coachNoteVi": "Câu một công nhận kinh nghiệm của người lớn tuổi mà không cam kết làm theo. Câu ba mở cánh cửa tư vấn trong tương lai, giúp người lớn không cảm thấy bị bác bỏ.",
+      "avoid": ["That is old-fashioned.", "We know what we are doing. Please stop interfering."],
+      "step13Tags": ["parenting", "unsolicited_advice", "elder_respect", "gentle_redirect"]
+    },
+    {
+      "id": "f2w6-family-sibling-comparison",
+      "scenario": "Addressing family comparisons between you and a sibling or cousin who seems more successful",
+      "learnerNeed": "The learner wants to stop the comparison loop without attacking the sibling or shaming themselves.",
+      "tone": "calm_self_assured",
+      "englishScript": [
+        "I am happy for my cousin and I am proud of what I am building too.",
+        "We are on different paths and that is okay.",
+        "I would love your support for my path, the same way you support theirs."
+      ],
+      "vietnameseBridge": [
+        "Con vui cho anh/chị/em họ và con cũng tự hào về những gì con đang xây dựng.",
+        "Chúng con đang đi hai con đường khác nhau và điều đó bình thường.",
+        "Con rất muốn được gia đình ủng hộ con đường của con, giống như ủng hộ đường của anh/chị/em ấy."
+      ],
+      "coachNoteVi": "Câu một kép: khen người kia và giữ phẩm giá bản thân trong cùng một hơi thở. Câu ba chuyển từ phòng thủ sang yêu cầu cụ thể: sự ủng hộ bình đẳng.",
+      "avoid": ["Why do you always compare us?", "My cousin is not better than me."],
+      "step13Tags": ["sibling_comparison", "family_pressure", "self_worth", "parallel_path"]
+    },
+    {
+      "id": "f2w6-family-gap-year-non-traditional-study",
+      "scenario": "Explaining a gap year, part-time study, or unconventional education path to concerned parents or relatives",
+      "learnerNeed": "The learner wants family to understand the choice without hearing it as laziness or failure.",
+      "tone": "forward_looking_clear",
+      "englishScript": [
+        "I am taking time to get the most out of my education, not to avoid it.",
+        "This plan gives me a chance to gain real experience and figure out exactly what I want to study.",
+        "I have set a clear timeline and I will share updates so you can see the progress."
+      ],
+      "vietnameseBridge": [
+        "Con đang dành thời gian để tận dụng tốt nhất việc học của mình, không phải để trốn tránh nó.",
+        "Kế hoạch này cho con cơ hội tích lũy kinh nghiệm thực tế và xác định rõ mình muốn học gì.",
+        "Con đã đặt ra một mốc thời gian rõ ràng và sẽ cập nhật để gia đình thấy được tiến trình."
+      ],
+      "coachNoteVi": "Câu ba là điểm mấu chốt: bằng chứng là lịch trình và cập nhật định kỳ. Gia đình thường lo âu vì mất tầm nhìn vào kế hoạch con cái, không phải vì phán xét sai.",
+      "avoid": ["University is overrated anyway.", "I do not need a degree to be successful."],
+      "step13Tags": ["gap_year", "non_traditional_education", "family_expectation", "transparency"]
+    },
+    {
+      "id": "f2w6-family-elder-online-safety",
+      "scenario": "Teaching an elder relative about online scams or unsafe digital habits without embarrassing them",
+      "learnerNeed": "The learner wants to protect an elder from digital fraud while keeping their confidence and dignity intact.",
+      "tone": "protective_matter_of_fact",
+      "englishScript": [
+        "There are people online who look very trustworthy but are trying to steal money or personal information.",
+        "If someone asks for money, a password, or a code sent to your phone, please call me before you reply.",
+        "This happens to very smart people too. Asking me first is not embarrassing — it is the safe step."
+      ],
+      "vietnameseBridge": [
+        "Trên mạng có những người trông rất đáng tin nhưng thực ra đang cố lấy tiền hoặc thông tin cá nhân.",
+        "Nếu ai đó yêu cầu tiền, mật khẩu, hoặc mã được gửi về điện thoại, bà/ông/cô/chú hãy gọi cho con trước khi trả lời.",
+        "Điều này xảy ra với cả những người rất thông minh. Hỏi con trước không phải là xấu hổ — đó là bước an toàn."
+      ],
+      "coachNoteVi": "Câu ba giải phóng người lớn tuổi khỏi xấu hổ. Đóng khung hỏi ý kiến là 'bước an toàn' thay vì 'dấu hiệu không biết gì' giúp họ thực sự làm theo.",
+      "avoid": ["Do not use the internet if you do not understand it.", "You always fall for these things."],
+      "step13Tags": ["online_safety", "elder_digital_literacy", "scam_prevention", "dignity_preserving"]
+    }
+  ]
+}
