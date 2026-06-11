@@ -62,6 +62,54 @@
       "expectedCorrection": "She explained the plan.",
       "expectedRuleFired": null,
       "notes": "Non-pronoun object 'the plan' -> must not fire."
+    },
+    {
+      "id": "explain-to-me-neg-005",
+      "input": "Please explain to him the rules of the game.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Please explain to him the rules of the game.",
+      "expectedRuleFired": null,
+      "notes": "Already-correct dative: 'to' present between verb and pronoun; pattern matches 'explain [pronoun]' (no 'to'), so the 'to' breaks adjacency and must not fire."
+    },
+    {
+      "id": "explain-to-me-neg-006",
+      "input": "Can you explain it to us?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Can you explain it to us?",
+      "expectedRuleFired": null,
+      "notes": "Object 'it' follows 'explain' directly; 'it' is not in the trigger pronoun list (me/him/her/us/them/you), so the rule must not fire."
+    },
+    {
+      "id": "explain-to-me-neg-007",
+      "input": "She described me the problem clearly.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "She described me the problem clearly.",
+      "expectedRuleFired": null,
+      "notes": "Different verb 'described': rule is scoped exclusively to forms of 'explain'; 'describe' must not trigger."
+    },
+    {
+      "id": "explain-to-me-neg-008",
+      "input": "He explained that he would be late.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He explained that he would be late.",
+      "expectedRuleFired": null,
+      "notes": "Complementiser 'that' follows 'explained'; 'that' is not in the trigger pronoun list, so no dative insertion fires."
+    },
+    {
+      "id": "explain-to-me-neg-009",
+      "input": "Please explain yourself to the teacher.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Please explain yourself to the teacher.",
+      "expectedRuleFired": null,
+      "notes": "Reflexive 'yourself' follows 'explain' directly; reflexive pronouns are not in the trigger list (me/him/her/us/them/you), so the rule must not fire."
+    },
+    {
+      "id": "explain-to-me-neg-010",
+      "input": "The explanation was very clear to everyone.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The explanation was very clear to everyone.",
+      "expectedRuleFired": null,
+      "notes": "Noun form 'explanation': rule matches only the verb forms (explain/explains/explained/explaining); the derived noun 'explanation' is not in the pattern."
     }
   ]
 }

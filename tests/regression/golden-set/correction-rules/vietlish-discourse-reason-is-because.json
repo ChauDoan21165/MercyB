@@ -62,6 +62,54 @@
       "expectedCorrection": "The reason is clear to everyone.",
       "expectedRuleFired": null,
       "notes": "'the reason is' with no 'because' -> nothing to rewrite, must abstain."
+    },
+    {
+      "id": "reason-neg-005",
+      "input": "The reason was that I was too tired.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The reason was that I was too tired.",
+      "expectedRuleFired": null,
+      "notes": "Already-correct form: 'the reason was that' has no 'because' to rewrite; must stay unchanged."
+    },
+    {
+      "id": "reason-neg-006",
+      "input": "A reason he gave was because he was bored.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "A reason he gave was because he was bored.",
+      "expectedRuleFired": null,
+      "notes": "Indefinite article 'a reason': pattern anchors on 'the reason' (definite); 'a reason' must not trigger."
+    },
+    {
+      "id": "reason-neg-007",
+      "input": "The reasons were because they were too tired.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The reasons were because they were too tired.",
+      "expectedRuleFired": null,
+      "notes": "Plural 'reasons': \\b after 'reason' requires a non-word char; 'reasons' has 's' next, breaking the word boundary; must not match."
+    },
+    {
+      "id": "reason-neg-008",
+      "input": "Is the reason because you were late?",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Is the reason because you were late?",
+      "expectedRuleFired": null,
+      "notes": "Inverted question: the copula 'is' comes before 'the reason' in the string; the pattern needs 'the reason ... is/was because' order so the inverted form falls outside scope."
+    },
+    {
+      "id": "reason-neg-009",
+      "input": "The reason for her absence was not because of laziness.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "The reason for her absence was not because of laziness.",
+      "expectedRuleFired": null,
+      "notes": "'was not because': 'not' intervenes between 'was ' and 'because', breaking the required 'was [space] because' adjacency; must abstain."
+    },
+    {
+      "id": "reason-neg-010",
+      "input": "That is because it was raining heavily.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "That is because it was raining heavily.",
+      "expectedRuleFired": null,
+      "notes": "No 'the reason' anchor — 'That is because' is a different demonstrative surface; must abstain."
     }
   ]
 }

@@ -62,6 +62,54 @@
       "expectedCorrection": "He is very like his father.",
       "expectedRuleFired": null,
       "notes": "BrE 'very like' meaning 'similar to' — 'is' between subject and 'very' breaks pronoun-adjacency so the rule abstains."
+    },
+    {
+      "id": "vietlish-very-like-neg-005",
+      "input": "My friend very likes this movie.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "My friend very likes this movie.",
+      "expectedRuleFired": null,
+      "notes": "Non-pronoun subject 'My friend': pattern anchors at sentence start with a closed pronoun list (I/you/we/they/he/she/it); a noun phrase subject must not fire."
+    },
+    {
+      "id": "vietlish-very-like-neg-006",
+      "input": "I do very like English.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I do very like English.",
+      "expectedRuleFired": null,
+      "notes": "Auxiliary 'do' between pronoun and 'very': pattern requires pronoun immediately followed by 'very'; 'do' breaks the required adjacency."
+    },
+    {
+      "id": "vietlish-very-like-neg-007",
+      "input": "They very likely made a mistake.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "They very likely made a mistake.",
+      "expectedRuleFired": null,
+      "notes": "Adverb 'likely' not verb 'like': pattern uses \\blike\\b which requires a word boundary after 'like'; 'likely' has 'l' next, breaking the boundary."
+    },
+    {
+      "id": "vietlish-very-like-neg-008",
+      "input": "He very much likes this song.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "He very much likes this song.",
+      "expectedRuleFired": null,
+      "notes": "'much' between 'very' and 'likes': pattern requires 'very' immediately before 'like/likes'; the intervening 'much' breaks adjacency."
+    },
+    {
+      "id": "vietlish-very-like-neg-009",
+      "input": "I'd very like to see her again.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I'd very like to see her again.",
+      "expectedRuleFired": null,
+      "notes": "Contracted 'I'd': pattern anchors with '^(I|you|...)\\s+'; the apostrophe in 'I'd' is not whitespace so the sentence-initial pronoun-space adjacency fails."
+    },
+    {
+      "id": "vietlish-very-like-neg-010",
+      "input": "I think I very like this.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "I think I very like this.",
+      "expectedRuleFired": null,
+      "notes": "Non-sentence-initial 'very like': pattern is anchored with '^'; the embedded clause 'I very like' is not at position 0 so the rule must not fire."
     }
   ]
 }

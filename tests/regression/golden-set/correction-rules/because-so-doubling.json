@@ -70,6 +70,54 @@
       "expectedCorrection": "I stayed home because I was tired.",
       "expectedRuleFired": null,
       "notes": "Mid-sentence because-clause without redundant so is not this rule."
+    },
+    {
+      "id": "because-so-doubling-neg-005",
+      "input": "Since I was late, so I ran to school.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Since I was late, so I ran to school.",
+      "expectedRuleFired": null,
+      "notes": "Different causal connector: rule anchors on sentence-initial 'because', not 'since'; the redundant 'so' is outside V1 scope."
+    },
+    {
+      "id": "because-so-doubling-neg-006",
+      "input": "Because I was tired, and so I went home early.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Because I was tired, and so I went home early.",
+      "expectedRuleFired": null,
+      "notes": "Coordinator 'and' between the comma and 'so' breaks the required comma-space-so adjacency; rule does not match."
+    },
+    {
+      "id": "because-so-doubling-neg-007",
+      "input": "Because I was tired, I went home so I could rest.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Because I was tired, I went home so I could rest.",
+      "expectedRuleFired": null,
+      "notes": "'so' appears in the result clause, not immediately after the because-comma boundary; pattern requires comma then bare 'so' next."
+    },
+    {
+      "id": "because-so-doubling-neg-008",
+      "input": "Because I was tired, hungry, and cold, so I stayed home.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Because I was tired, hungry, and cold, so I stayed home.",
+      "expectedRuleFired": null,
+      "notes": "Multiple commas inside the because-clause: the first comma ends [^,]+ at 'tired', then 'hungry' ≠ 'so', so the pattern fails to match."
+    },
+    {
+      "id": "because-so-doubling-neg-009",
+      "input": "Because I was late, but I still attended the meeting.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Because I was late, but I still attended the meeting.",
+      "expectedRuleFired": null,
+      "notes": "Adversative 'but' after comma, not 'so'; the pattern requires comma-space-so and does not match 'but'."
+    },
+    {
+      "id": "because-so-doubling-neg-010",
+      "input": "Although I was tired, so I went home anyway.",
+      "expectedStatus": "unchanged",
+      "expectedCorrection": "Although I was tired, so I went home anyway.",
+      "expectedRuleFired": null,
+      "notes": "Sentence-initial 'although' not 'because': V1 is anchored to '^because'; although+so doubling is owned by en-vn-although-even-though-but."
     }
   ]
 }
