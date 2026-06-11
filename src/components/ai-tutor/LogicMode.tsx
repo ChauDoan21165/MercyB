@@ -10,6 +10,8 @@ type Props = {
   latestCorrectedSentence: string | null;
   latestSourceSentence?: string | null;
   boardResetCount?: number;
+  analysisError?: string | null;
+  onRetry?: () => void;
 };
 
 type LogicExplanation = Omit<VietlishCuratedPattern, "id" | "match"> & {
@@ -17,7 +19,7 @@ type LogicExplanation = Omit<VietlishCuratedPattern, "id" | "match"> & {
   match?: RegExp;
 };
 
-export default function LogicMode({ latestCorrectedSentence, latestSourceSentence = null, boardResetCount = 0 }: Props) {
+export default function LogicMode({ latestCorrectedSentence, latestSourceSentence = null, boardResetCount = 0, analysisError = null, onRetry }: Props) {
   const [selectedId, setSelectedId] = useState(VIETLISH_CURATED_PATTERNS[0]?.id ?? "");
   const [freeText, setFreeText] = useState("");
   const [fallbackSentence, setFallbackSentence] = useState("");
@@ -77,7 +79,28 @@ export default function LogicMode({ latestCorrectedSentence, latestSourceSentenc
         Hiểu vì sao tiếng Anh nói vậy
       </h2>
 
-      {currentSentence ? (
+      {analysisError && !currentSentence ? (
+        <div
+          className="mt-4 rounded-[14px] border border-red-200 bg-red-50 px-4 py-3"
+          data-testid="ai-tutor-logic-analysis-error"
+        >
+          <div className="text-xs font-black uppercase text-red-700">
+            Lỗi phân tích
+          </div>
+          <p className="mt-1 text-sm font-bold leading-6 text-red-950">
+            {analysisError}
+          </p>
+          {onRetry && (
+            <button
+              type="button"
+              onClick={onRetry}
+              className="mt-3 min-h-[44px] rounded-full bg-red-700 px-5 py-2 text-sm font-black text-white transition hover:bg-red-800"
+            >
+              Thử lại
+            </button>
+          )}
+        </div>
+      ) : currentSentence ? (
         <div
           className="mt-4 rounded-[14px] border border-emerald-100 bg-emerald-50 px-4 py-3"
           data-testid="ai-tutor-logic-current-board"

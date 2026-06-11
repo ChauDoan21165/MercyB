@@ -2635,6 +2635,8 @@ export default function AiTutorPage() {
           latestCorrectedSentence={latestCorrectedSeed?.correctedSentence ?? null}
           latestSourceSentence={latestCorrectedSeed?.sourceText ?? null}
           boardResetCount={boardResetCount}
+          analysisError={error}
+          onRetry={() => setError(null)}
         />
       )}
       <AiConversationScenarioPanel
