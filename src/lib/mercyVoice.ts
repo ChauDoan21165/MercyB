@@ -12,6 +12,10 @@
 
 import { supabase } from "@/lib/supabaseClient";
 import { voiceIdFor, type MercyLanguage } from "@/config/mercyVoices";
+import {
+  englishTextForTts,
+  hasVietnameseDiacritics,
+} from "@/lib/tutor/englishOnlyTts";
 
 interface FetchCloudTtsArgs {
   text: string;
@@ -48,10 +52,14 @@ const COLD_START_RETRY_DELAY_MS = 600;
 export async function fetchCloudTtsUrl(
   args: FetchCloudTtsArgs,
 ): Promise<CloudTtsUrl | null> {
-  const text = String(args?.text ?? "").trim();
+  // TODO(structured-fields): interim guard for direct cloud callers that still
+  // hand bilingual display strings to the speech layer.
+  const text = englishTextForTts(String(args?.text ?? ""));
   if (!text) return null;
 
-  const language = normalizeCloudLanguage(args.language);
+  const language = hasVietnameseDiacritics(String(args.text ?? ""))
+    ? "en"
+    : normalizeCloudLanguage(args.language);
   const voice_id = args.voiceIdOverride || voiceIdFor(language);
 
   const attempt = async (): Promise<{

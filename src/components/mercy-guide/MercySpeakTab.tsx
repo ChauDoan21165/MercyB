@@ -24,6 +24,7 @@ import {
 import { recordPronunciationPhonemes } from '@/lib/stage-3a/adapters/pronunciationAdapter';
 import { captureWaveform, type Waveform } from '@/lib/pronunciation/audioComparison';
 import { fetchCloudTtsUrl } from '@/lib/mercyVoice';
+import { englishTextForTts } from '@/lib/tutor/englishOnlyTts';
 import { isVoiceConfigured } from '@/config/mercyVoices';
 import { loadKidsLessonByKey } from './kidsDataLoader';
 import { awardSpeakPoints } from '@/services/pointsService';
@@ -1064,18 +1065,24 @@ export function MercySpeakTab({
   // sentence via the browser voice, but that fallback is now an EXPLICIT choice
   // made HERE in the consumer (audible, never silent), not hidden in the hook.
   async function speakWithMercy(speechText: string) {
-    if (!speechText) return;
+    // TODO(structured-fields): interim extraction for legacy bilingual strings
+    // passed through MercySpeakTab's speech path.
+    const englishSpeechText = englishTextForTts(speechText);
+    if (!englishSpeechText) return;
     const res = await mercyVoice.speak({
-      text: speechText,
+      text: englishSpeechText,
       language: 'en',
       onCloudStart: () => setIsSpeaking(true),
       onCloudEnd: () => setIsSpeaking(false),
     });
-    if (!res.spoken) speakViaTTS(speechText);
+    if (!res.spoken) speakViaTTS(englishSpeechText);
   }
 
   function speakViaTTS(speechText: string) {
-    if (!speechText || !supportsSpeechSynthesis || typeof window === 'undefined') return;
+    // TODO(structured-fields): interim extraction for legacy bilingual strings
+    // passed directly to browser TTS.
+    const englishSpeechText = englishTextForTts(speechText);
+    if (!englishSpeechText || !supportsSpeechSynthesis || typeof window === 'undefined') return;
     const synth = window.speechSynthesis;
     synth.cancel();
 
@@ -1085,7 +1092,7 @@ export function MercySpeakTab({
     // Only chunk when the single utterance would exceed Chrome's silent-fail zone.
     // Short text (<=180 chars) uses the same single-utterance pattern as the working
     // panel greeting button — that's known to work in this codebase.
-    const parts = speechText.length > 180 ? chunkForTTS(speechText) : [speechText];
+    const parts = englishSpeechText.length > 180 ? chunkForTTS(englishSpeechText) : [englishSpeechText];
 
     parts.forEach((part, i) => {
       const u = new SpeechSynthesisUtterance(part);
@@ -1116,7 +1123,7 @@ export function MercySpeakTab({
   // button itself (disabled prop in the JSX below) to prevent the chip
   // TTS from echoing into the mic stream.
   function speakWordChip(word: string) {
-    const text = cleanText(word);
+    const text = englishTextForTts(cleanText(word));
     if (!text || typeof window === 'undefined') return;
     try {
       if (kidsAudioRef.current) {
@@ -1168,7 +1175,12 @@ export function MercySpeakTab({
     }
 
     // Reference side — check cache, otherwise fetch from cloud TTS.
-    const cached = referenceCacheRef.current.get(practiceText);
+    const referenceText = englishTextForTts(practiceText);
+    if (!referenceText) {
+      setComparisonError('Mercy chỉ đọc phần tiếng Anh · Mercy reads English only');
+      return;
+    }
+    const cached = referenceCacheRef.current.get(referenceText);
     if (cached) {
       setReferenceWaveform(cached.waveform);
       setReferenceAudioUrl(cached.audioUrl);
@@ -1179,7 +1191,7 @@ export function MercySpeakTab({
     setComparisonLoading(true);
     setComparisonError(null);
     try {
-      const cloud = await fetchCloudTtsUrl({ text: practiceText, language: 'en' });
+      const cloud = await fetchCloudTtsUrl({ text: referenceText, language: 'en' });
       if (!cloud?.audioUrl) {
         setComparisonError(
           'Mercy chưa sẵn sàng tạo giọng so sánh · Mercy reference unavailable',
@@ -1199,7 +1211,7 @@ export function MercySpeakTab({
         );
         return;
       }
-      referenceCacheRef.current.set(practiceText, {
+      referenceCacheRef.current.set(referenceText, {
         waveform: refWave,
         audioUrl: cloud.audioUrl,
       });
@@ -1228,7 +1240,7 @@ export function MercySpeakTab({
 
   async function handleSpeak(textOverride?: string) {
     const speechText =
-      cleanText(textOverride) || enhancedText || correctedText || practiceText;
+      englishTextForTts(cleanText(textOverride) || enhancedText || correctedText || practiceText);
     if (!speechText || typeof window === 'undefined') return;
 
     // Adult guard: don't let Mercy read raw user-typed custom text aloud,

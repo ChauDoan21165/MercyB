@@ -46,6 +46,40 @@ describe("fetchCloudTtsUrl", () => {
     expect(JSON.stringify(invoke.mock.calls)).not.toMatch(/GOOGLE|ELEVEN|API_KEY|secret/i);
   });
 
+  it("extracts English from bilingual display text before invoking cloud TTS", async () => {
+    invoke.mockResolvedValue({
+      data: {
+        audioUrl: "data:audio/mpeg;base64,AAAA",
+        cached: false,
+        provider: "azure",
+      },
+      error: null,
+    });
+
+    await fetchCloudTtsUrl({
+      text: "Mercy chưa nghe rõ. Bạn nói lại nhé. I didn't catch that clearly. Can you say it again?",
+      language: "vi",
+      requiredProvider: "azure",
+    });
+
+    expect(invoke).toHaveBeenCalledWith("mercy-tts", {
+      body: {
+        text: "I didn't catch that clearly. Can you say it again?",
+        language: "en",
+        voice_id: expect.any(String),
+      },
+    });
+    expect(JSON.stringify(invoke.mock.calls)).not.toMatch(
+      /[ăâđêôơưàáạảãằắặẳẵầấậẩẫèéẹẻẽềếệểễìíịỉĩòóọỏõồốộổỗờớợởỡùúụủũừứựửữỳýỵỷỹ]/i,
+    );
+  });
+
+  it("does not invoke cloud TTS for Vietnamese-only text", async () => {
+    await expect(fetchCloudTtsUrl({ text: "Hôm nay trời đẹp.", language: "vi" })).resolves.toBeNull();
+
+    expect(invoke).not.toHaveBeenCalled();
+  });
+
   it("returns null when cloud TTS reports a provider fallback", async () => {
     invoke.mockResolvedValue({
       data: {
@@ -97,8 +131,8 @@ describe("fetchCloudTtsUrl", () => {
       });
 
     const result = await fetchCloudTtsUrl({
-      text: "Xin chào.",
-      language: "vi",
+      text: "Hello.",
+      language: "en",
       requiredProvider: "azure",
     });
 
@@ -118,8 +152,8 @@ describe("fetchCloudTtsUrl", () => {
     });
 
     const result = await fetchCloudTtsUrl({
-      text: "Xin chào.",
-      language: "vi",
+      text: "Hello.",
+      language: "en",
       requiredProvider: "azure",
     });
 

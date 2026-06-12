@@ -40,6 +40,7 @@ import {
 } from "@/lib/ai-tutor/tutorUiCopy";
 import { getTutorCopy, type TutorCopy, type TutorTarget } from "@/lib/tutor/tutorCopy";
 import { getSpeechLocale, getTtsLocale } from "@/lib/tutor/languageRegistry";
+import { bilingualText, speechTextFromBilingual, type BilingualText } from "@/lib/tutor/englishOnlyTts";
 import type { ExplainLanguage } from "@/lib/ai-tutor/tutorUiCopy";
 import {
   buildConversationTurn,
@@ -92,7 +93,6 @@ import {
   resolveSpeakFollowUpTopicId,
   selectSpeakFollowUpByTopicId,
   SPEAK_FOLLOW_UP_PIVOT,
-  SPEAK_TRANSCRIPT_ASK_TO_REPEAT,
   type SpeakFollowUpSelection,
 } from "@/lib/tutor/speakFollowups";
 import { detectBilingualSaliencePivot } from "@/lib/tutor/bilingualSalienceDetector";
@@ -182,7 +182,7 @@ type SpeakFollowUpSession = {
   topicId: string;
   turnsOnTopic: number;
   askedQuestions: string[];
-  currentQuestion: string | null;
+  currentQuestion: BilingualText | null;
   currentIsPivot: boolean;
 };
 
@@ -227,15 +227,30 @@ const LOGIC_STARTER_PROMPTS = [
 ] as const;
 
 const SPEAK_STANCE_ACKNOWLEDGMENT = "I hear you.";
-const SPEAK_STANCE_CLARIFICATION = "Can you say that another way?";
+const SPEAK_STANCE_ACKNOWLEDGMENT_VI = "Mercy nghe rồi.";
+const SPEAK_STANCE_CLARIFICATION = bilingualText(
+  "Bạn nói cách khác được không?",
+  "Can you say that another way?",
+);
 // Issue 1: the corrected sentence is well-formed in tense but still nonsensical
 // (a grammar-only fix left a word-salad). Don't drill it as a good model — ask
 // for a clearer sentence instead of pretending the tense fix was enough.
-const SPEAK_STANCE_SEED_UNCLEAR =
-  "That sentence is hard to follow. Can you say what you mean in one simple sentence?";
-const SPEAK_TRANSCRIPT_UNCLEAR =
-  "I didn't catch that clearly. Can you say it again?";
-const SPEAK_STANCE_PAUSE = "I’m sorry that happened. Let’s pause correction for a moment. Are you okay to continue?";
+const SPEAK_STANCE_SEED_UNCLEAR = bilingualText(
+  "Câu này hơi khó hiểu. Bạn nói ý đó bằng một câu đơn giản được không?",
+  "That sentence is hard to follow. Can you say what you mean in one simple sentence?",
+);
+const SPEAK_TRANSCRIPT_UNCLEAR = bilingualText(
+  "Mercy chưa nghe rõ. Bạn nói lại nhé.",
+  "I didn't catch that clearly. Can you say it again?",
+);
+const SPEAK_TRANSCRIPT_ASK_TO_REPEAT_TEXT = bilingualText(
+  "Mercy chưa nghe rõ. Bạn nói lại câu đó nhé.",
+  "I didn't catch that clearly. Can you say it again?",
+);
+const SPEAK_STANCE_PAUSE = bilingualText(
+  "Mercy rất tiếc chuyện đó xảy ra. Mình tạm dừng sửa câu nhé. Bạn có muốn tiếp tục không?",
+  "I’m sorry that happened. Let’s pause correction for a moment. Are you okay to continue?",
+);
 const GRAMMAR_VOICE_EMPTY_MESSAGE =
   "Mercy chưa nghe rõ. Bạn thử nói lại hoặc gõ câu vào ô nhé.";
 const GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE =
@@ -293,21 +308,11 @@ async function callAiSentenceCorrection(
   }
 }
 
-// DIRECTIVE V1 — Speak surface voice routing: English content is read with an
-// English Azure voice; Vietnamese is TEXT-ONLY here (no vi audio). We NEVER pick
-// a Vietnamese voice for this surface — Vietnamese content is suppressed to
-// text-only instead of being read aloud (and read aloud with the wrong voice).
-function isVietnameseSpeakTarget(target: TutorTarget): boolean {
-  return String(target || "").trim().toLowerCase().split("-")[0] === "vi";
-}
-
-// A read is Vietnamese (→ text-only) when the practice target is vi, or the
-// follow-up text is a Vietnamese clarification line. The follow-up's language is
-// not carried as a field, so a Vietnamese clarification is recognised by its
-// known shape ONLY to suppress audio — never to select a Vietnamese voice.
+// A read is Vietnamese (→ text-only) when the speech string itself contains
+// Vietnamese diacritics or matches a legacy Vietnamese clarification line.
 function speakReadIsVietnamese(text: string, target: TutorTarget): boolean {
+  void target;
   return (
-    isVietnameseSpeakTarget(target) ||
     VIETNAMESE_SPEAK_TEXT_PATTERN.test(text) ||
     MERCY_CLARIFICATION_PREFIX_PATTERN.test(text)
   );
@@ -326,6 +331,17 @@ function normalizeAiSpeakFollowUp(value: unknown): string | null {
     return null;
   }
   return raw;
+}
+
+function speakFollowUpQuestion(en: string): BilingualText {
+  if (en === SPEAK_FOLLOW_UP_PIVOT) {
+    return bilingualText("Bạn muốn luyện câu khác không?", SPEAK_FOLLOW_UP_PIVOT);
+  }
+  return bilingualText("Trả lời bằng tiếng Anh:", en);
+}
+
+function combineSpeakFollowUp(prefix: BilingualText, question: BilingualText): BilingualText {
+  return bilingualText(`${prefix.vi} ${question.vi}`, `${prefix.en} ${question.en}`);
 }
 
 type SpeakFollowUpProviderError = { ok: false; retryable: true; reason: string };
@@ -396,7 +412,7 @@ function buildInitialSpeakFollowUpSession(sentence: string): SpeakFollowUpSessio
     topicId: selection.topicId,
     turnsOnTopic: 0,
     askedQuestions: [],
-    currentQuestion: selection.question,
+    currentQuestion: speakFollowUpQuestion(selection.question),
     currentIsPivot: selection.isPivot,
   };
 }
@@ -1130,8 +1146,8 @@ export default function AiTutorPage() {
   // reload. `l1LoopSurface` is the per-turn renderable decision.
   const l1FocusRef = useRef<L1FocusState>(initialL1FocusState);
   const [l1LoopSurface, setL1LoopSurface] = useState<
-    | { kind: "followup"; promptVi: string }
-    | { kind: "offer"; messageVi: string }
+    | { kind: "followup"; prompt: BilingualText }
+    | { kind: "offer"; message: BilingualText }
     | null
   >(null);
   const [error, setError] = useState<string | null>(null);
@@ -1236,11 +1252,11 @@ export default function AiTutorPage() {
         return;
       }
       setSpeakFollowUpProviderError(false);
-      const finalQuestion = aiQuestion ?? SPEAK_TRANSCRIPT_ASK_TO_REPEAT;
+      const finalQuestion = aiQuestion ? speakFollowUpQuestion(aiQuestion) : SPEAK_TRANSCRIPT_ASK_TO_REPEAT_TEXT;
       speakPivotTurnsRef.current = [
         ...speakPivotTurnsRef.current,
         { role: "learner" as const, text: transcript },
-        { role: "assistant" as const, text: finalQuestion },
+        { role: "assistant" as const, text: finalQuestion.en },
       ].slice(-8);
       applySpeakFollowUpSession({
         topicId: currentTopic,
@@ -1301,7 +1317,7 @@ export default function AiTutorPage() {
     if (!transcriptClarity.clear) {
       applySpeakFollowUpSession({
         ...current,
-        currentQuestion: SPEAK_TRANSCRIPT_ASK_TO_REPEAT,
+        currentQuestion: SPEAK_TRANSCRIPT_ASK_TO_REPEAT_TEXT,
         currentIsPivot: false,
       });
       return;
@@ -1365,8 +1381,11 @@ export default function AiTutorPage() {
         speakPivotTurnsRef.current,
       );
       const question = stance.stance === "needs_acknowledgment"
-        ? `${SPEAK_STANCE_ACKNOWLEDGMENT} ${pivotAwareSelection.question}`
-        : pivotAwareSelection.question;
+        ? bilingualText(
+            `${SPEAK_STANCE_ACKNOWLEDGMENT_VI} ${speakFollowUpQuestion(pivotAwareSelection.question).vi}`,
+            `${SPEAK_STANCE_ACKNOWLEDGMENT} ${pivotAwareSelection.question}`,
+          )
+        : speakFollowUpQuestion(pivotAwareSelection.question);
       speakPivotTurnsRef.current = [
         ...speakPivotTurnsRef.current,
         { role: "learner" as const, text: spoken },
@@ -1410,13 +1429,18 @@ export default function AiTutorPage() {
       }
       setSpeakFollowUpProviderError(false);
       const question = stance.stance === "needs_acknowledgment" && aiQuestion
-        ? `${SPEAK_STANCE_ACKNOWLEDGMENT} ${aiQuestion}`
-        : aiQuestion;
-      const finalQuestion = question ?? SPEAK_TRANSCRIPT_ASK_TO_REPEAT;
+        ? combineSpeakFollowUp(
+            bilingualText(SPEAK_STANCE_ACKNOWLEDGMENT_VI, SPEAK_STANCE_ACKNOWLEDGMENT),
+            speakFollowUpQuestion(aiQuestion),
+          )
+        : aiQuestion
+          ? speakFollowUpQuestion(aiQuestion)
+          : null;
+      const finalQuestion = question ?? SPEAK_TRANSCRIPT_ASK_TO_REPEAT_TEXT;
       speakPivotTurnsRef.current = [
         ...speakPivotTurnsRef.current,
         { role: "learner" as const, text: spoken },
-        { role: "assistant" as const, text: finalQuestion },
+        { role: "assistant" as const, text: finalQuestion.en },
       ].slice(-8);
       applySpeakFollowUpSession({
         topicId,
@@ -2289,10 +2313,16 @@ export default function AiTutorPage() {
         ) {
           setL1LoopSurface({
             kind: "followup",
-            promptVi: loopDecision.followUp.promptVi,
+            prompt: bilingualText(loopDecision.followUp.promptVi, loopDecision.followUp.exampleEn),
           });
         } else if (loopDecision.action === "offer_move_on" && loopDecision.messageVi) {
-          setL1LoopSurface({ kind: "offer", messageVi: loopDecision.messageVi });
+          setL1LoopSurface({
+            kind: "offer",
+            message: bilingualText(
+              loopDecision.messageVi,
+              "You've practiced this pattern well. Do you want to move to a new sentence, or try one more?",
+            ),
+          });
         } else {
           setL1LoopSurface(null);
         }
@@ -2550,10 +2580,10 @@ export default function AiTutorPage() {
   };
 
   const handleReadSpeakFollowUp = () => {
-    const text = speakFollowUpSession.currentQuestion?.trim() || "";
+    const text = speechTextFromBilingual(speakFollowUpSession.currentQuestion);
     if (speakFollowUpSession.currentIsPivot || !isSpeakFollowUpReadAloudEligible(text)) return;
-    // VI clarification follow-ups are text-only; English questions read with the
-    // English voice. Never select a Vietnamese voice on this surface (DIRECTIVE V1).
+    // Bilingual display stays on screen, but Mercy reads only the structured
+    // English segment. Never select a Vietnamese voice on this surface.
     if (speakReadIsVietnamese(text, target)) return;
     if (stt.listening) {
       ignoreNextSttCommitRef.current = true;
@@ -2721,14 +2751,15 @@ export default function AiTutorPage() {
               data-testid="ai-tutor-l1-followup"
               className="mt-3 rounded-2xl border border-sky-200 bg-sky-50 p-4 text-sm text-slate-700"
             >
-              <p className="font-medium text-slate-800">{l1LoopSurface.promptVi}</p>
+              <p className="font-medium text-slate-800">{l1LoopSurface.prompt.vi}</p>
             </div>
           ) : l1LoopSurface?.kind === "offer" ? (
             <div
               data-testid="ai-tutor-l1-moveon"
               className="mt-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-slate-700"
             >
-              <p>{l1LoopSurface.messageVi}</p>
+              <p>{l1LoopSurface.message.vi}</p>
+              <p className="mt-1 text-xs font-semibold text-slate-600">{l1LoopSurface.message.en}</p>
             </div>
           ) : null}
         </>
@@ -2769,7 +2800,7 @@ export default function AiTutorPage() {
           onStartFreshSentence={handleClear}
           followUpIsCloseOut={
             speakFollowUpSession.currentIsPivot &&
-            speakFollowUpSession.currentQuestion === SPEAK_FOLLOW_UP_PIVOT
+            speakFollowUpSession.currentQuestion?.en === SPEAK_FOLLOW_UP_PIVOT
           }
           tutorCopy={tutorCopy}
         />

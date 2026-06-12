@@ -22,6 +22,7 @@
 import { useCallback, useRef } from "react";
 import { fetchCloudTtsUrl } from "@/lib/mercyVoice";
 import type { MercyLanguage } from "@/config/mercyVoices";
+import { englishTextForTts } from "@/lib/tutor/englishOnlyTts";
 
 // Vietnamese-first, kept identical to voiceEngine.BROWSER_TTS_ERROR_MESSAGE so
 // the retry copy is consistent across every voice surface.
@@ -92,7 +93,9 @@ export function useMercyVoice(): UseMercyVoice {
       onCloudStart,
       onCloudEnd,
     }: SpeakArgs): Promise<SpeakResult> => {
-      const safeText = String(text ?? "").trim();
+      // TODO(structured-fields): interim extraction for callers that still pass
+      // bilingual display strings instead of a structured `{ vi, en }` value.
+      const safeText = englishTextForTts(String(text ?? ""));
       if (!safeText) return { cloud: false, spoken: false, error: null };
 
       const cloud = await fetchCloudTtsUrl({

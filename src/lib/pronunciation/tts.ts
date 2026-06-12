@@ -24,6 +24,7 @@
 // The fallback path is intentionally untouched.
 
 import { fetchCloudTtsUrl } from "@/lib/mercyVoice";
+import { englishTextForTts } from "@/lib/tutor/englishOnlyTts";
 
 export type VoiceLang = 'en-US' | 'en-GB' | 'en-AU';
 
@@ -146,7 +147,9 @@ export async function speak(opts: TTSOptions): Promise<SpeakResult> {
     return { source: 'none', error: 'speech_synthesis_unsupported' };
   }
 
-  const text = String(opts.text ?? '').trim();
+  // TODO(structured-fields): pronunciation callers are English-only; extract
+  // the English segment if legacy bilingual display copy reaches this wrapper.
+  const text = englishTextForTts(String(opts.text ?? ''));
   if (!text) return { source: 'none', error: null };
 
   const rate = clampRate(opts.rate ?? DEFAULT_RATE);

@@ -8,6 +8,7 @@ import type { EnglishPronunciationFeedbackDisplay } from "@/lib/pronunciation/en
 import type { VietnameseToneFeedbackDisplay } from "@/lib/pronunciation/vietnameseToneFeedback";
 import type { PronunciationProgressDisplay } from "@/lib/pronunciation/pronunciationProgressTrail";
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
+import type { BilingualText } from "@/lib/tutor/englishOnlyTts";
 
 const VIETNAMESE_LETTER_PATTERN = /[ăâđêôơưàáạảãằắặẳẵầấậẩẫèéẹẻẽềếệểễìíịỉĩòóọỏõồốộổỗờớợởỡùúụủũừứựửữỳýỵỷỹ]/i;
 
@@ -57,7 +58,7 @@ type Props = {
   ttsVoiceSource?: "mercy" | "device" | null;
   ttsError?: string | null;
   ttsErrorScope?: "target" | "follow-up" | null;
-  followUpPrompt: string | null;
+  followUpPrompt: BilingualText | null;
   followUpIsPivot: boolean;
   followUpProviderError?: boolean;
   followUpTtsSpeaking: boolean;
@@ -158,7 +159,7 @@ export default function SpeakPracticeMode({
     : "Không dùng được giọng nói trên thiết bị hoặc trình duyệt này. Bạn vẫn có thể luyện bằng cách nghe câu mẫu trước.";
   const targetTtsError = ttsErrorScope === "follow-up" ? null : ttsError;
   const followUpTtsError = ttsErrorScope === "follow-up" ? ttsError : null;
-  const canReadFollowUp = !followUpIsPivot && isSpeakFollowUpReadAloudEligible(followUpPrompt);
+  const canReadFollowUp = !followUpIsPivot && isSpeakFollowUpReadAloudEligible(followUpPrompt?.en);
 
   return (
     <section
@@ -467,7 +468,10 @@ export default function SpeakPracticeMode({
               ) : (
                 <>
                   <p className="mt-1 text-sm font-black leading-6 text-slate-900">
-                    {followUpPrompt}
+                    {followUpPrompt.vi}
+                  </p>
+                  <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">
+                    {followUpPrompt.en}
                   </p>
                   {canReadFollowUp && ttsSupported ? (
                     <TeacherMercyVoiceControls

@@ -117,6 +117,23 @@ describe('speak', () => {
     await expect(promise).resolves.toEqual({ source: 'browser', error: null });
   });
 
+  it('extracts English from bilingual display text before browser TTS', async () => {
+    const fake = installStub();
+    const promise = speak({
+      text: "Mercy chưa nghe rõ. Bạn nói lại nhé. I didn't catch that clearly. Can you say it again?",
+      rate: 1,
+    });
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(fake.spoken[0].text).toBe("I didn't catch that clearly. Can you say it again?");
+    expect(fake.spoken[0].text).not.toMatch(
+      /[ăâđêôơưàáạảãằắặẳẵầấậẩẫèéẹẻẽềếệểễìíịỉĩòóọỏõồốộổỗờớợởỡùúụủũừứựửữỳýỵỷỹ]/i,
+    );
+    fake.spoken[0].onend?.();
+    await expect(promise).resolves.toEqual({ source: 'browser', error: null });
+  });
+
   it('treats a cancel/interrupted error as a successful browser play', async () => {
     const fake = installStub();
     const promise = speak({ text: 'Hello.' });
