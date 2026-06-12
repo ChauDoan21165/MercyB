@@ -6,14 +6,10 @@ import { MemoryRouter, useLocation } from "react-router-dom";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { getLearningEvents } from "@/lib/tutor/learningEvents";
 
-const { isPlacementEntryRouteAvailable } = vi.hoisted(() => ({
+const { isPlacementEntryRouteAvailable, useAuthMock, useUserAccessMock } = vi.hoisted(() => ({
   isPlacementEntryRouteAvailable: vi.fn(() => false),
-}));
-
-const { authState } = vi.hoisted(() => ({
-  authState: {
-    user: null as { id: string; email?: string } | null,
-  },
+  useAuthMock: vi.fn(),
+  useUserAccessMock: vi.fn(),
 }));
 
 const { featureFlagState } = vi.hoisted(() => ({
@@ -35,18 +31,11 @@ vi.mock("@/lib/lazyWithRetry", () => ({
 }));
 
 vi.mock("@/hooks/useUserAccess", () => ({
-  useUserAccess: () => ({
-    accessAnnouncement: "",
-    features: new Set(["mercy-guide"]),
-    hasMercyGuide: true,
-    isAuthenticated: Boolean(authState.user),
-    isTrialExpired: false,
-    loading: false,
-  }),
+  useUserAccess: useUserAccessMock,
 }));
 
 vi.mock("@/providers/AuthProvider", () => ({
-  useAuth: () => ({ user: authState.user, isLoading: false }),
+  useAuth: useAuthMock,
 }));
 
 vi.mock("@/hooks/useFeatureFlag", () => ({
@@ -112,12 +101,36 @@ function renderHome() {
   );
 }
 
-describe("Home placement CTA gating", () => {
+function mockSignedOutAccess() {
+  useAuthMock.mockReturnValue({ user: null, isLoading: false });
+  useUserAccessMock.mockReturnValue({
+    accessAnnouncement: "",
+    features: new Set(["mercy-guide"]),
+    hasMercyGuide: true,
+    isAuthenticated: false,
+    isTrialExpired: false,
+    loading: false,
+  });
+}
+
+function mockSignedInAccess() {
+  useAuthMock.mockReturnValue({ user: { id: "user-1" }, isLoading: false });
+  useUserAccessMock.mockReturnValue({
+    accessAnnouncement: "",
+    features: new Set(["mercy-guide"]),
+    hasMercyGuide: true,
+    isAuthenticated: true,
+    isTrialExpired: false,
+    loading: false,
+  });
+}
+
+describe("Home placement CTA", () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    authState.user = null;
     featureFlagState.calls = [];
     isPlacementEntryRouteAvailable.mockReturnValue(false);
+    mockSignedOutAccess();
     window.localStorage.clear();
     window.sessionStorage.clear();
     window.history.pushState({}, "", "/");
@@ -135,20 +148,31 @@ describe("Home placement CTA gating", () => {
     });
   });
 
-  it("does not show the Placement CTA when the placement route is disabled", async () => {
+  it("shows the Placement CTA with Vietnamese copy when the placement route flag is disabled", async () => {
     renderHome();
 
-    expect(screen.queryByRole("button", { name: "Placement test" })).not.toBeInTheDocument();
+    // Chau superseded the old product contract: the Home card is always visible;
+    // PlacementV3Gate owns any flag-off handling at the /placement route.
+    expect(screen.getByRole("button", { name: "Placement test" })).toBeInTheDocument();
+    expect(screen.getByText("Kiểm tra trình độ")).toBeInTheDocument();
     expect(screen.queryByText("Take Placement Test")).not.toBeInTheDocument();
   });
 
-  it("shows the Placement CTA and routes to /placement when placement is enabled", async () => {
+  it("shows the Placement CTA for authenticated learners", async () => {
+    mockSignedInAccess();
+    renderHome();
+
+    expect(screen.getByRole("button", { name: "Placement test" })).toBeInTheDocument();
+    expect(screen.getByText("Kiểm tra trình độ")).toBeInTheDocument();
+  });
+
+  it("routes to /placement and records telemetry when clicked", async () => {
     isPlacementEntryRouteAvailable.mockReturnValue(true);
     renderHome();
 
     await userEvent.click(screen.getByRole("button", { name: "Placement test" }));
 
-    expect(screen.getByText("Take Placement Test")).toBeInTheDocument();
+    expect(screen.getByText("Kiểm tra trình độ")).toBeInTheDocument();
     expect(screen.getByTestId("pathname")).toHaveTextContent("/placement");
     expect(getLearningEvents({ eventType: "placement_cta_clicked" })).toEqual([
       expect.objectContaining({
@@ -161,7 +185,18 @@ describe("Home placement CTA gating", () => {
   });
 
   it("shows the parent progress card for signed-in users and routes to ParentView with runtime flags off", async () => {
-    authState.user = { id: "user-parent", email: "parent@example.test" };
+    useAuthMock.mockReturnValue({
+      user: { id: "user-parent", email: "parent@example.test" },
+      isLoading: false,
+    });
+    useUserAccessMock.mockReturnValue({
+      accessAnnouncement: "",
+      features: new Set(["mercy-guide"]),
+      hasMercyGuide: true,
+      isAuthenticated: true,
+      isTrialExpired: false,
+      loading: false,
+    });
     renderHome();
 
     await userEvent.click(screen.getByTestId("parent-progress-home-card"));
