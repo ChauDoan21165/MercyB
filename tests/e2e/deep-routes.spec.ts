@@ -1,7 +1,7 @@
 import { test } from "@playwright/test";
 import { expectSpaResponse } from "./routeSmoke";
 
-const deepRoutes = ["/pricing", "/progress", "/account"] as const;
+const deepRoutes = ["/pricing", "/progress", "/account", "/ai-tutor"] as const;
 
 test.describe("deep routes", () => {
   for (const route of deepRoutes) {
