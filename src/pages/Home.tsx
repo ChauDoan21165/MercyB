@@ -5,7 +5,7 @@
 
 import React, { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BookOpen, ChevronRight, Compass, GraduationCap, LibraryBig, Mic } from "lucide-react";
+import { BookOpen, ChevronRight, Compass, GraduationCap, LibraryBig, Mic, UsersRound } from "lucide-react";
 
 import BottomMusicBar from "@/components/audio/BottomMusicBar";
 import { lazyWithRetry } from "@/lib/lazyWithRetry";
@@ -871,6 +871,79 @@ export default function Home() {
     </button>
   );
 
+  // ── Parent progress card ──────────────────────────────────────────────────
+  // ParentView is intentionally reachable for every signed-in account; the
+  // Premium access decision remains inside ParentView via useUserAccess.
+  const parentProgressCard = (
+    <button
+      type="button"
+      onClick={() => nav("/parent/me")}
+      aria-label="Phụ huynh — theo dõi tiến bộ của con"
+      data-testid="parent-progress-home-card"
+      style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}
+    >
+      <div
+        style={{
+          borderRadius: 20,
+          padding: isPhone ? "16px 18px" : "18px 20px",
+          background:
+            "linear-gradient(150deg, rgba(255,247,237,0.96) 0%, rgba(240,253,250,0.94) 100%)",
+          border: "1px solid rgba(180,83,9,0.16)",
+          boxShadow: "0 10px 28px rgba(180,83,9,0.09)",
+          display: "flex",
+          alignItems: "center",
+          gap: 16,
+          textAlign: "left",
+        }}
+      >
+        <div
+          style={{
+            width: secIconSize,
+            height: secIconSize,
+            borderRadius: 9999,
+            background: "linear-gradient(180deg, #F59E0B 0%, #0F766E 100%)",
+            display: "grid",
+            placeItems: "center",
+            boxShadow: isPhone ? "0 4px 12px rgba(180,83,9,0.15)" : "0 8px 20px rgba(180,83,9,0.20)",
+            flexShrink: 0,
+          }}
+        >
+          <UsersRound size={isPhone ? 20 : 24} color="white" />
+        </div>
+
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <div
+            style={{
+              fontSize: secTitleSize,
+              fontWeight: 900,
+              color: "rgba(120,53,15,0.94)",
+              letterSpacing: -0.3,
+            }}
+          >
+            Góc phụ huynh
+          </div>
+          {!isPhone && (
+            <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(15,118,110,0.58)", marginTop: 2 }}>
+              Theo dõi tiến bộ của con
+            </div>
+          )}
+          <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
+            {isPhone ? "Xem con đang tiến bộ ở đâu, không tạo áp lực." : "Xem con đang tiến bộ ở đâu và cần luyện gì tiếp theo."}
+          </div>
+          {!isPhone && (
+            <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
+              Tóm tắt trung thực, dễ hiểu cho gia đình — không xếp hạng, không gây áp lực.
+            </div>
+          )}
+        </div>
+
+        <div style={{ color: "rgba(180,83,9,0.70)", flexShrink: 0 }}>
+          <ChevronRight size={22} />
+        </div>
+      </div>
+    </button>
+  );
+
   // Pair-aware Home routing (Duolingo onboarding PR 3). Reuses the
   // profile already fetched for the onboarding gate above — no extra
   // query. A NON-English primary target gets its own focused track
@@ -1076,6 +1149,20 @@ export default function Home() {
           >
             {vstepCard}
           </ProgressiveDisclosureCard>
+          {user && (
+            <ProgressiveDisclosureCard
+              cardId="parent-progress"
+              title="Góc phụ huynh"
+              shortLine="Theo dõi tiến bộ của con"
+              accentColor="#B45309"
+              iconBg="rgba(255,247,237,0.96)"
+              iconEl={<UsersRound size={isPhone ? 20 : 24} color="white" />}
+              onStart={() => nav("/parent/me")}
+              startLabel="Mở góc phụ huynh →"
+            >
+              {parentProgressCard}
+            </ProgressiveDisclosureCard>
+          )}
 
           {/* ── Intent group: "Explore & improve" ────────────────────
               Browsing, practice, and discovery. Everything below this
