@@ -238,6 +238,8 @@ const GRAMMAR_VOICE_EMPTY_MESSAGE =
   "Mercy chưa nghe rõ. Bạn thử nói lại hoặc gõ câu vào ô nhé.";
 const GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE =
   "Mercy chưa sửa chắc câu này bằng bộ quy tắc hiện tại. Bạn có thể chỉnh lại câu ngắn hơn một chút rồi bấm Sửa câu này nhé.";
+const CANNOT_CORRECT_NO_SESSION_MESSAGE =
+  "Mercy cần đăng nhập để kiểm tra câu này. Bạn thử đăng nhập nhé.";
 const STEP7_AZURE_BATCH_ENABLED =
   (import.meta as ImportMeta & { env?: Record<string, string> }).env
     ?.VITE_AZURE_PHONEME_BATCH_ENABLED === "true";
@@ -2102,8 +2104,12 @@ export default function AiTutorPage() {
     if (!localCorrection.ok || localCorrection.status === "unchanged") {
       // Rule engine abstains (needs_ai) OR found no matching rules (unchanged) —
       // call the live AI when a session token is available.
-      if (session?.access_token) {
-        const aiResult = await callAiSentenceCorrection(trimmed, session.access_token, explainLanguage, target);
+      // Resolve at submit time via getSession() to avoid a hydration race where React state
+      // hasn't been populated yet after a hard refresh (Chau's reported bug).
+      const { data: freshSessionData } = await supabase.auth.getSession();
+      const accessToken = freshSessionData?.session?.access_token ?? session?.access_token;
+      if (accessToken) {
+        const aiResult = await callAiSentenceCorrection(trimmed, accessToken, explainLanguage, target);
         setLoading(false);
         if (aiResult?.confident && aiResult.corrected) {
           const aiCorrected = aiResult.corrected;
@@ -2137,13 +2143,17 @@ export default function AiTutorPage() {
         setError(aiResult?.explanation || GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
         return;
       }
-      // No session + rule engine abstained: show error.
-      // No session + unchanged: fall through to local display (sentence may be correct).
+      // No token — rule engine abstained: show error.
       if (!localCorrection.ok) {
         setLoading(false);
         setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
         return;
       }
+      // No token + unchanged: the sentence may be correct but AI cannot verify it.
+      // Never show a correction card in this state — that would echo the input as a "correction".
+      setLoading(false);
+      setError(CANNOT_CORRECT_NO_SESSION_MESSAGE);
+      return;
     }
     const corrected = localCorrection.corrected;
     const { turn } = buildCorrectionTurn({
