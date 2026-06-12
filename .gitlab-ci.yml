@@ -506,6 +506,40 @@ variables:
       changes: *ai_tutor_golden_flow_changes
       when: manual
 
+# ── Hotfix fast-lane: rules anchor and combined variants ───────────────
+#
+# Label an MR `hotfix` to skip the full Vitest shards, playwright-perf-
+# budgets, and native-audio-smoke; test:targeted replaces them (related
+# files only, ~30–120 s). typecheck:ci runs on ALL MRs regardless of label.
+# nightly-full-suite (schedule) restores complete coverage each night.
+# See reports/hotfix-fast-lane-design.md.
+.hotfix-skip: &hotfix-skip
+  rules:
+    - if: '$CI_MERGE_REQUEST_LABELS =~ /(^|,)hotfix(,|$)/'
+      when: never
+
+# `*app_test_rules` with hotfix-skip prepended.
+.app_test_rules_hotfix_lane: &app_test_rules_hotfix_lane
+  rules:
+    - if: '$CI_MERGE_REQUEST_LABELS =~ /(^|,)hotfix(,|$)/'
+      when: never
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *app_validation_changes
+
+# `*manual_shared_app_rules` with hotfix-skip prepended.
+.manual_shared_app_rules_hotfix_lane: &manual_shared_app_rules_hotfix_lane
+  rules:
+    - if: '$CI_MERGE_REQUEST_LABELS =~ /(^|,)hotfix(,|$)/'
+      when: never
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+      when: manual
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+      changes: *app_validation_changes
+      when: manual
+
 .manual_shared_fallback: &manual_shared_fallback
   allow_failure: false
 
@@ -752,7 +786,7 @@ build:shared-fallback:
 # Cache CONSUMER (pull-only): shards share the node_modules cache the
 # `build` producer seeds and never re-archive it. See `.npm_cache_def`.
 test:
-  <<: [*node_job, *local_runner, *app_test_rules]
+  <<: [*node_job, *local_runner, *app_test_rules_hotfix_lane]
   stage: test
   parallel: 2
   cache:
@@ -761,10 +795,72 @@ test:
   script: *test_shard_script
 
 test:shared-fallback:
-  <<: [*node_job, *manual_shared_fallback, *manual_shared_app_rules]
+  <<: [*node_job, *manual_shared_fallback, *manual_shared_app_rules_hotfix_lane]
   stage: test
   parallel: 2
   script: *test_shard_script
+
+# `typecheck:ci` — bare `tsc --noEmit` against the root tsconfig.json.
+# Runs on ALL MR pipelines (not just hotfix) — cheap ~80 s and catches
+# type errors that `npm run typecheck` misses because it uses the narrower
+# tsconfig.typecheck.json. Also runs on main/develop/release pushes.
+typecheck:ci:
+  <<: [*node_job, *local_runner]
+  stage: test
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+  script:
+    - npm run typecheck:ci
+
+# `test:targeted` — hotfix fast-lane vitest run.
+# Only active on MRs with the `hotfix` label. Runs `vitest related` over
+# the files changed vs origin/main, which covers: test files in the diff
+# (run directly) and source files (vitest resolves importing test files).
+# Empty-diff case exits 0 cleanly. Known limitation: tests coupled via
+# mocks/fixtures without direct imports may be missed — the ai-tutor
+# golden gate is the floor; nightly-full-suite catches the tail.
+test:targeted:
+  <<: [*node_job, *local_runner]
+  stage: test
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_LABELS =~ /(^|,)hotfix(,|$)/'
+  script:
+    - |
+      case "$(uname -s)" in
+        Darwin)
+          command -v git
+          ;;
+        Linux)
+          apt-get update && apt-get install -y --no-install-recommends git
+          ;;
+        *)
+          echo "Unsupported CI OS: $(uname -s)" >&2
+          exit 1
+          ;;
+      esac
+    - git fetch origin main
+    - |
+      CHANGED=$(git diff --name-only origin/main...HEAD)
+      if [ -z "$CHANGED" ]; then
+        echo "[test:targeted] empty diff vs origin/main — nothing to run, skipping"
+        exit 0
+      fi
+      echo "[test:targeted] changed files:"
+      echo "$CHANGED"
+      CHANGED_SPACE=$(printf '%s' "$CHANGED" | tr '\n' ' ')
+      echo "[test:targeted] running vitest related --run $CHANGED_SPACE"
+      npx vitest related --run $CHANGED_SPACE
 
 ai-tutor-quality-gate:
   <<: [*node_job, *local_runner, *ai_tutor_golden_flow_rules]
@@ -808,6 +904,8 @@ native-audio-smoke:
     <<: *npm_cache_def
     policy: pull
   rules:
+    - if: '$CI_MERGE_REQUEST_LABELS =~ /(^|,)hotfix(,|$)/'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
@@ -816,7 +914,7 @@ native-audio-smoke:
   script: *native_audio_smoke_script
 
 playwright-perf-budgets:
-  <<: [*node_job, *local_runner, *app_test_rules]
+  <<: [*node_job, *local_runner, *app_test_rules_hotfix_lane]
   stage: test
   cache:
     <<: *npm_cache_def
@@ -824,9 +922,63 @@ playwright-perf-budgets:
   script: *playwright_perf_budget_script
 
 playwright-perf-budgets:shared-fallback:
-  <<: [*node_job, *manual_shared_fallback, *manual_shared_app_rules]
+  <<: [*node_job, *manual_shared_fallback, *manual_shared_app_rules_hotfix_lane]
   stage: test
   script: *playwright_perf_budget_script
+
+# `nightly-full-suite` — safety-net coverage that hotfix MRs defer.
+# Runs full Vitest suite (non-sharded) + playwright perf-budgets on main
+# every night via schedule pipeline. Hotfixes merge to main and are covered
+# the same night. Create (or reuse) a GitLab CI schedule (Settings → CI/CD
+# → Schedules) targeting main, e.g. "0 2 * * *" (02:00 UTC), to activate
+# this job. The S19 nightly harness schedule can be reused if its cron
+# already points at main.
+nightly-full-suite:
+  <<: [*node_job, *local_runner]
+  stage: test
+  interruptible: false
+  timeout: 60 minutes
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $CI_COMMIT_BRANCH == "main"'
+    - when: never
+  script:
+    - |
+      case "$(uname -s)" in
+        Darwin)
+          command -v git
+          ;;
+        Linux)
+          apt-get update && apt-get install -y --no-install-recommends git
+          ;;
+        *)
+          echo "Unsupported CI OS: $(uname -s)" >&2
+          exit 1
+          ;;
+      esac
+    - npx vitest run
+    - |
+      case "$(uname -s)" in
+        Darwin)
+          npx playwright install chromium
+          ;;
+        Linux)
+          npx playwright install --with-deps chromium
+          ;;
+        *)
+          echo "Unsupported CI OS: $(uname -s)" >&2
+          exit 1
+          ;;
+      esac
+    - npm run test:perf-budgets
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths:
+      - playwright-smoke-report/
+      - test-results/
 
 delete-account-guard:
   <<: [*node_job, *local_runner]
