@@ -23,6 +23,13 @@ const { featureFlagState } = vi.hoisted(() => ({
   },
 }));
 
+const { profileQueryState } = vi.hoisted(() => ({
+  profileQueryState: {
+    data: undefined as unknown,
+    isLoading: true,
+  },
+}));
+
 vi.mock("@/lib/placement/availability", () => ({
   isPlacementEntryRouteAvailable,
 }));
@@ -47,7 +54,7 @@ vi.mock("@/hooks/useFeatureFlag", () => ({
 }));
 
 vi.mock("@/lib/queries/useProfileQuery", () => ({
-  useProfileQuery: () => ({ data: undefined }),
+  useProfileQuery: () => profileQueryState,
 }));
 
 vi.mock("@/pages/home/LanguageTrackHome", () => ({
@@ -188,6 +195,14 @@ function renderHome(): RenderResult {
   );
 }
 
+function pinViewportWidth(width: number) {
+  Object.defineProperty(window, "innerWidth", {
+    configurable: true,
+    value: width,
+  });
+  window.dispatchEvent(new Event("resize"));
+}
+
 function mockSignedOutAccess() {
   useAuthMock.mockReturnValue({ user: null, isLoading: false });
   useUserAccessMock.mockReturnValue({
@@ -217,7 +232,10 @@ describe("Home placement CTA", () => {
     cleanup?.();
     document.body.innerHTML = "";
     vi.clearAllMocks();
+    vi.useRealTimers();
     featureFlagState.calls = [];
+    profileQueryState.data = undefined;
+    profileQueryState.isLoading = true;
     isPlacementEntryRouteAvailable.mockReturnValue(false);
     mockSignedOutAccess();
     await importFreshHomeHarness();
@@ -288,6 +306,22 @@ describe("Home placement CTA", () => {
       defaultValue: false,
       enabled: false,
     });
+    expect(screen.getByTestId("pathname")).toHaveTextContent("/parent/me");
+  });
+
+  it("routes the mobile parent start action synchronously while profile resolution is still pending", async () => {
+    mockSignedInAccess();
+    pinViewportWidth(390);
+    renderHome();
+
+    expect(screen.getByTestId("pathname")).toHaveTextContent("/");
+
+    await userEvent.click(
+      screen.getByRole("button", { name: "Góc phụ huynh. Preview details" }),
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Mở góc phụ huynh →" }));
+
+    expect(screen.getByText("Góc phụ huynh")).toBeInTheDocument();
     expect(screen.getByTestId("pathname")).toHaveTextContent("/parent/me");
   });
 });

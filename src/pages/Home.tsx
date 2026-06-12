@@ -1173,7 +1173,7 @@ export default function Home() {
               accentColor="#B45309"
               iconBg="rgba(255,247,237,0.96)"
               iconEl={<UsersRound size={isPhone ? 20 : 24} color="white" />}
-              onStart={() => handleParentProgress()}
+              onStart={handleParentProgress}
               startLabel="Mở góc phụ huynh →"
             >
               {parentProgressCard}
