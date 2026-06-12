@@ -2,11 +2,14 @@
 // Input and correction result display.
 // Extracted from AiTutor.tsx for reuse across modes.
 
+import { useEffect } from "react";
 import type { TutorTurn } from "@/lib/tutor/tutorTypes";
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
 import TeacherMercyVoiceControls from "@/components/teacher-mercy/TeacherMercyVoiceControls";
 import DetectorHintChip from "@/components/ai-tutor/DetectorHintChip";
 import type { DetectorHintContent } from "@/lib/ai-tutor/detectorHint";
+import { detectRegisterError } from "@/lib/feedback";
+import { trackEvent } from "@/lib/analytics";
 
 type CorrectionResult = TutorTurn & {
   grammarTip: string;
@@ -65,6 +68,18 @@ export default function CorrectionMode({
   const hasResult = Boolean(result && !loading);
   const canClearBoard = Boolean(input.trim() || result || error || voiceDraft);
   const { ui } = tutorCopy;
+
+  // Step-18: once the correction engine has confirmed the sentence is wrong,
+  // run the surface-detectable register-error detector (sync, <1ms). On a match
+  // we add a Vietnamese-first register explanation block; on ABSTAIN we show
+  // nothing extra and the grammar feedback stands (trust-floor / C6).
+  const register = result ? detectRegisterError({ learnerText: result.userText }) : { matched: false as const };
+  const registerTag = register.matched ? register.tag : null;
+  useEffect(() => {
+    // Telemetry: emit register_correction_shown with the tag so the team can
+    // measure how often each surface-detectable register pattern fires in prod.
+    if (registerTag) trackEvent("register_correction_shown", { tag: registerTag });
+  }, [registerTag]);
 
   return (
     <div
@@ -254,6 +269,24 @@ export default function CorrectionMode({
               {result.explanation}
             </p>
           </div>
+
+          {register.matched && (
+            <div
+              data-testid="ai-tutor-register-explanation"
+              data-register-tag={register.tag}
+              className="rounded-[16px] border border-amber-200 bg-amber-50/60 p-5"
+            >
+              <div className="mb-2 text-xs font-black uppercase text-amber-600">
+                Sắc thái &amp; phép lịch sự
+              </div>
+              <p className="text-sm font-semibold leading-6 text-amber-900">
+                {register.explanationVi}
+              </p>
+              <p className="mt-1.5 text-xs font-medium leading-5 text-amber-700">
+                {register.explanationEn}
+              </p>
+            </div>
+          )}
 
           <div className="rounded-[16px] border border-indigo-100 bg-indigo-50/50 p-5">
             <div className="mb-2 text-xs font-black uppercase text-indigo-500">
