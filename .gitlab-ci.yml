@@ -706,6 +706,7 @@ variables:
         tests/e2e/auth-signin.spec.ts \
         tests/e2e/ai-tutor-authenticated.spec.ts \
         tests/e2e/navigation-authenticated.spec.ts \
+        tests/e2e/csp-media-src.spec.ts \
         --project=chromium
 
 .native_audio_smoke_script: &native_audio_smoke_script
