@@ -4249,7 +4249,7 @@ export const lessons: KoreanLesson[] =         [
         },
         {
           "korean": "조금 더 현실적인 범위로 다시 제안해 주시면 좋겠습니다.",
-          "romanized": "Jogeum deo hyeonsiljeogin beomwiro dasi jeanhae jusimyeon jotseumnida.",
+          "romanized": "Jogeum deo hyeonsiljeogin beomwiro dasi jeanhae jusimyeon joketseumnida.",
           "en": "It would be better if you could propose again within a more realistic range.",
           "vi": "Sẽ tốt hơn nếu anh/chị đề xuất lại trong một phạm vi thực tế hơn.",
           "pronunciation_focus": [
@@ -4265,7 +4265,7 @@ export const lessons: KoreanLesson[] =         [
         },
         {
           "korean": "장기적으로 협력하려면 서로 부담이 없는 수준이 좋습니다.",
-          "romanized": "Janggijeogeuro hyeobryeokharamyeon seoro budami eomneun sujuni johseumnida.",
+          "romanized": "Janggijeogeuro hyeobryeokharamyeon seoro budami eomneun sujuni joseumnida.",
           "en": "If we want to cooperate long term, a level that is not burdensome for either side is best.",
           "vi": "Nếu muốn hợp tác lâu dài thì mức không gây gánh nặng cho cả hai bên sẽ tốt hơn.",
           "pronunciation_focus": [
@@ -8846,7 +8846,7 @@ export const lessons: KoreanLesson[] =         [
         {
           "idiom": "아, 좋은 질문이세요",
           "literal": "à, đó là câu hỏi tốt",
-          "literal_en": "ah, that's a good question (a, joheun jilmuniseyo)",
+          "literal_en": "ah, that's a good question (a, joeun jilmuniseyo)",
           "meaning": "(해요체, 팟캐스트) cụm chuyển ý chuẩn — thừa nhận host đặt câu hay rồi vào nội dung",
           "meaning_en": "A standard transition — acknowledges the host's good question, then into content. (haeyo-che, podcast)",
           "example": "아, 좋은 질문이세요. 말씀드리자면 — 저희 연구는 〜를 다뤄요.",
