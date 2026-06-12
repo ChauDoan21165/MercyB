@@ -2,17 +2,16 @@
 //
 // Regression test for the SERVER side of #745 / A12.
 //
-// THE BUG THIS PINS (it shipped, silently, for months):
+// THE CONTRACT THIS PINS:
 //   api/mercy-feedback.ts builds its Supabase client at module load:
-//       const supabase = url && serviceRoleKey ? createClient(...) : null
-//   SUPABASE_SERVICE_ROLE_KEY was never set on the deployment, so
-//   `supabase` was null, so every POST returned HTTP 500
-//   `supabase_not_configured` and ZERO rows reached mercy_feedback_events.
-//   Nobody noticed because the failure was a 500 on a fire-and-forget
-//   telemetry call. #745 added the split env check + named-var error.
+//       const supabase = url && anonKey ? createClient(...) : null
+//   !906 moved this insert sink to the anon key because RLS now grants
+//   anon/authenticated inserts into mercy_feedback_events. If that key is
+//   absent, every POST returns HTTP 500 `supabase_not_configured` and ZERO
+//   rows reach mercy_feedback_events.
 //
 // This file locks BOTH halves of the contract:
-//   1. The exact failure: service-role key missing -> 500
+//   1. The exact failure: anon key missing -> 500
 //      supabase_not_configured, and the error names the missing var
 //      (so a future env regression is diagnosable, not a blind park).
 //   2. The proof it would have succeeded with correct env: a
@@ -115,7 +114,8 @@ function buildClientEnvelope() {
 const ENV_KEYS = [
   "SUPABASE_URL",
   "VITE_SUPABASE_URL",
-  "SUPABASE_SERVICE_ROLE_KEY",
+  "SUPABASE_ANON_KEY",
+  "VITE_SUPABASE_ANON_KEY",
 ] as const;
 
 let savedEnv: Record<string, string | undefined> = {};
@@ -146,12 +146,11 @@ async function importHandler(): Promise<Handler> {
 }
 
 describe("api/mercy-feedback — #745/A12 server contract", () => {
-  it("REGRESSION: missing SUPABASE_SERVICE_ROLE_KEY → 500 supabase_not_configured naming the var", async () => {
-    // This is the literal production state that ran silently for
-    // months: URL present (the #691 VITE_ fallback was fine all
-    // along), service-role key absent.
+  it("REGRESSION: missing SUPABASE_ANON_KEY → 500 supabase_not_configured naming the var", async () => {
+    // URL present (the #691 VITE_ fallback was fine all along),
+    // anon key absent.
     process.env.SUPABASE_URL = "https://proj.supabase.co";
-    // SUPABASE_SERVICE_ROLE_KEY intentionally NOT set.
+    // SUPABASE_ANON_KEY intentionally NOT set.
 
     const handler = await importHandler();
     const res = makeRes();
@@ -169,7 +168,7 @@ describe("api/mercy-feedback — #745/A12 server contract", () => {
     // The whole point of #745: the error must NAME the missing var so
     // the next env regression is a 30-second read, not a blind park.
     expect(String(res.body?.details)).toContain(
-      "SUPABASE_SERVICE_ROLE_KEY",
+      "SUPABASE_ANON_KEY/VITE_SUPABASE_ANON_KEY",
     );
     expect(String(res.body?.details)).not.toContain(
       "SUPABASE_URL/VITE_SUPABASE_URL",
@@ -178,7 +177,7 @@ describe("api/mercy-feedback — #745/A12 server contract", () => {
 
   it("PROOF: with correct env, a well-formed envelope inserts a column-mapped row (the call WOULD have succeeded)", async () => {
     process.env.SUPABASE_URL = "https://proj.supabase.co";
-    process.env.SUPABASE_SERVICE_ROLE_KEY = "service-role-test-key";
+    process.env.SUPABASE_ANON_KEY = "anon-test-key";
 
     const insertSpy = vi.fn().mockResolvedValue({ error: null });
     const fromSpy = vi.fn(() => ({ insert: insertSpy }));
@@ -194,10 +193,10 @@ describe("api/mercy-feedback — #745/A12 server contract", () => {
       res,
     );
 
-    // Client built with the *server* secret, not the anon key.
+    // Client built with the anon key, matching the RLS-backed insert contract.
     expect(createClientSpy).toHaveBeenCalledWith(
       "https://proj.supabase.co",
-      "service-role-test-key",
+      "anon-test-key",
     );
     expect(res.statusCode).toBe(200);
     expect(res.body).toEqual({ ok: true, acceptedCount: 1 });
@@ -229,7 +228,7 @@ describe("api/mercy-feedback — #745/A12 server contract", () => {
 
   it("surfaces a Supabase insert failure as 500 supabase_insert_failed (not a silent 200)", async () => {
     process.env.SUPABASE_URL = "https://proj.supabase.co";
-    process.env.SUPABASE_SERVICE_ROLE_KEY = "service-role-test-key";
+    process.env.SUPABASE_ANON_KEY = "anon-test-key";
 
     const insertSpy = vi
       .fn()
@@ -257,7 +256,7 @@ describe("api/mercy-feedback — #745/A12 server contract", () => {
 
   it("rejects non-POST with 405 and answers the CORS preflight with 204", async () => {
     process.env.SUPABASE_URL = "https://proj.supabase.co";
-    process.env.SUPABASE_SERVICE_ROLE_KEY = "service-role-test-key";
+    process.env.SUPABASE_ANON_KEY = "anon-test-key";
     vi.doMock("@supabase/supabase-js", () => ({
       createClient: vi.fn(() => ({
         from: vi.fn(() => ({ insert: vi.fn() })),
