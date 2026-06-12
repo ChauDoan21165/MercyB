@@ -15,6 +15,7 @@
 import { supabase } from "@/lib/supabaseClient";
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 import type { ConversationLearnerMemory } from "@/lib/ai-conversation/client";
+import type { ServerProfileInput } from "@/lib/tutor/learnerProfileBuilder";
 
 /** Events whose error_details may carry an interference tag. */
 const TAGGED_EVENT_TYPES = ["error_detected", "correction_accepted", "correction_rejected"] as const;
@@ -84,4 +85,42 @@ export function mergeRecallMemory(
   const recentFocus = summary?.lastPracticedTopic || summary?.nextRecommendedFocus || null;
   if (interferencePatterns.length === 0 && !recentFocus) return null;
   return { interferencePatterns, recentFocus };
+}
+
+/**
+ * Step-14 wiring helper: fetch the learner's server-side aggregate profile input
+ * (interference tag counts + session count) for the pure learnerProfileBuilder.
+ * RLS scopes both reads to the caller's own rows. FAIL-SOFT — returns the
+ * safe-empty `{ {}, 0 }` on no user or any error, so the profile builder falls
+ * back to the device-local profile and the learner never sees an error.
+ */
+export async function fetchServerProfileInput(
+  userId: string | null | undefined,
+  client: typeof supabase = supabase,
+): Promise<ServerProfileInput> {
+  if (!userId) return { interferenceTagCounts: {}, sessionCount: 0 };
+  try {
+    const [eventsRes, countRes] = await Promise.all([
+      client
+        .from("conversation_events")
+        .select("error_details, created_at")
+        .in("event_type", TAGGED_EVENT_TYPES as unknown as string[])
+        .not("error_details", "is", null)
+        .order("created_at", { ascending: false })
+        .limit(200),
+      client
+        .from("conversations")
+        .select("*", { count: "exact", head: true })
+        .eq("user_id", userId),
+    ]);
+    const interferenceTagCounts: Record<string, number> = {};
+    for (const row of (eventsRes as { data?: Array<{ error_details?: unknown }> }).data ?? []) {
+      const tag = extractTag(row.error_details);
+      if (tag) interferenceTagCounts[tag] = (interferenceTagCounts[tag] ?? 0) + 1;
+    }
+    const sessionCount = Math.max(0, (countRes as { count?: number | null }).count ?? 0);
+    return { interferenceTagCounts, sessionCount };
+  } catch {
+    return { interferenceTagCounts: {}, sessionCount: 0 };
+  }
 }
