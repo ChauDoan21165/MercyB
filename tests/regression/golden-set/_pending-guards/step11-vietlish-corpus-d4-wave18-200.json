@@ -1,0 +1,1615 @@
+{
+  "corpus": "step11-vietlish-corpus-d4-wave18",
+  "step": 11,
+  "wave": 18,
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "kind": "vietlish_interference_review_candidates",
+  "schema": "VietlishCorpusEntry (src/lib/tutor/vietlishCorpus.ts) - { vietlish, natural, sourcePattern, category, frequency, context }",
+  "author": "A4 (Content Factory wave 18)",
+  "status": "review_not_wired",
+  "wiredIntoEngine": false,
+  "count": 200,
+  "entries": [
+    {
+      "vietlish": "install an appointment for the visa office",
+      "natural": "schedule an appointment with the visa office",
+      "sourcePattern": "đặt lịch hẹn -> install/place a schedule; English uses schedule/book an appointment",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "My cousin tried to install an appointment for the visa office before Tet."
+    },
+    {
+      "vietlish": "raise a complaint to the bank app",
+      "natural": "file a complaint through the bank app",
+      "sourcePattern": "gửi khiếu nại -> raise/send complaint; English service collocation uses file a complaint",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "After the double charge, she decided to raise a complaint to the bank app."
+    },
+    {
+      "vietlish": "run a refund request",
+      "natural": "submit a refund request",
+      "sourcePattern": "chạy/gửi yêu cầu -> run request; English uses submit/file a request",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The customer asked us to run a refund request for the canceled class."
+    },
+    {
+      "vietlish": "catch a delivery slot tonight",
+      "natural": "book a delivery slot tonight",
+      "sourcePattern": "bắt/đặt khung giờ -> catch a slot; English uses book/reserve a slot",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I opened the grocery app early to catch a delivery slot tonight."
+    },
+    {
+      "vietlish": "open a warranty case for my laptop",
+      "natural": "start a warranty claim for my laptop",
+      "sourcePattern": "mở hồ sơ bảo hành -> open a case is possible, but warranty collocates with claim",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The keyboard failed, so I need to open a warranty case for my laptop."
+    },
+    {
+      "vietlish": "close the insurance payment monthly",
+      "natural": "pay the insurance premium monthly",
+      "sourcePattern": "đóng bảo hiểm -> close insurance; English uses pay premiums",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "My aunt uses auto-pay to close the insurance payment monthly."
+    },
+    {
+      "vietlish": "eat a traffic fine online",
+      "natural": "pay a traffic fine online",
+      "sourcePattern": "đóng/nộp phạt -> eat/pay confusion from colloquial chịu phạt; English uses pay a fine",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "He forgot the deadline and had to eat a traffic fine online."
+    },
+    {
+      "vietlish": "make a hotel booking on the app",
+      "natural": "reserve a hotel room on the app",
+      "sourcePattern": "đặt phòng -> make booking is understandable; natural travel English often uses reserve/book a room",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "We will make a hotel booking on the app after comparing prices."
+    },
+    {
+      "vietlish": "give a presentation slide deck",
+      "natural": "give a presentation",
+      "sourcePattern": "thuyết trình + slide -> over-attaches slide deck to the verb phrase",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Tomorrow Mai has to give a presentation slide deck about recycling."
+    },
+    {
+      "vietlish": "take a language certificate exam",
+      "natural": "sit for a language certificate exam",
+      "sourcePattern": "thi chứng chỉ -> take/sit for exam; this item targets formal exam collocation",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "He plans to take a language certificate exam in December."
+    },
+    {
+      "vietlish": "do a bank transfer for the deposit",
+      "natural": "make a bank transfer for the deposit",
+      "sourcePattern": "chuyển khoản -> do transfer; English collocates make/send a transfer",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Please do a bank transfer for the deposit before Friday."
+    },
+    {
+      "vietlish": "solve the broken payment link",
+      "natural": "fix the broken payment link",
+      "sourcePattern": "sửa lỗi -> solve a link; English uses fix a broken link",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The admin team must solve the broken payment link before enrollment opens."
+    },
+    {
+      "vietlish": "join a queue number at the clinic",
+      "natural": "take a queue number at the clinic",
+      "sourcePattern": "lấy số thứ tự -> join a number; English uses take/get a number",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "At 7 a.m., patients can join a queue number at the clinic."
+    },
+    {
+      "vietlish": "send a sick leave to HR",
+      "natural": "submit a sick leave request to HR",
+      "sourcePattern": "gửi đơn nghỉ bệnh -> send sick leave; English uses submit a leave request",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Lan had a fever, so she needed to send a sick leave to HR."
+    },
+    {
+      "vietlish": "open a savings book online",
+      "natural": "open a savings account online",
+      "sourcePattern": "mở sổ tiết kiệm -> savings book; digital banking English usually uses savings account",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "My father wants to open a savings book online for the higher rate."
+    },
+    {
+      "vietlish": "make a parking ticket at the machine",
+      "natural": "pay for a parking ticket at the machine",
+      "sourcePattern": "làm/vé gửi xe -> make ticket; English uses pay for/get a ticket depending on context",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Visitors can make a parking ticket at the machine near the lobby."
+    },
+    {
+      "vietlish": "receive a vaccination shot next week",
+      "natural": "get a vaccination shot next week",
+      "sourcePattern": "tiêm vắc-xin -> receive is formal; everyday English uses get a shot",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The clinic told my son he will receive a vaccination shot next week."
+    },
+    {
+      "vietlish": "hold a meeting with the landlord",
+      "natural": "have a meeting with the landlord",
+      "sourcePattern": "họp/gặp -> hold meeting can mean organize; learner often means have/meet",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "We need to hold a meeting with the landlord about the leak."
+    },
+    {
+      "vietlish": "write an online form for the scholarship",
+      "natural": "fill out an online form for the scholarship",
+      "sourcePattern": "điền đơn -> write a form; English uses fill out a form",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Students must write an online form for the scholarship by Monday."
+    },
+    {
+      "vietlish": "lift a support ticket",
+      "natural": "raise a support ticket",
+      "sourcePattern": "tạo/gửi ticket -> lift/raise confusion; English tech support uses raise/open a ticket",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "If the camera fails again, lift a support ticket with IT."
+    },
+    {
+      "vietlish": "make a password again",
+      "natural": "reset the password",
+      "sourcePattern": "đặt lại mật khẩu -> make again; English uses reset a password",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I forgot my login and had to make a password again."
+    },
+    {
+      "vietlish": "open mobile data on the phone",
+      "natural": "turn on mobile data on the phone",
+      "sourcePattern": "mở dữ liệu di động -> open data; English uses turn on mobile data",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "When the Wi-Fi stopped, I had to open mobile data on the phone."
+    },
+    {
+      "vietlish": "close location sharing after the ride",
+      "natural": "turn off location sharing after the ride",
+      "sourcePattern": "tắt chia sẻ vị trí -> close sharing; English uses turn off/disable",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "For privacy, she will close location sharing after the ride."
+    },
+    {
+      "vietlish": "take a receipt from the app",
+      "natural": "download a receipt from the app",
+      "sourcePattern": "lấy hóa đơn -> take receipt; app context uses download/get a receipt",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The accountant asked me to take a receipt from the app."
+    },
+    {
+      "vietlish": "build a study habit every night",
+      "natural": "develop a study habit every night",
+      "sourcePattern": "xây dựng thói quen -> build is possible, but develop/form is more natural for habit",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "He is trying to build a study habit every night."
+    },
+    {
+      "vietlish": "run a survey for the parents",
+      "natural": "conduct a survey of the parents",
+      "sourcePattern": "làm khảo sát -> run is possible; formal reporting often uses conduct a survey",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The school will run a survey for the parents this month."
+    },
+    {
+      "vietlish": "make a room reservation by phone",
+      "natural": "reserve a room by phone",
+      "sourcePattern": "đặt phòng -> make reservation; natural concise travel English uses reserve/book",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "My uncle prefers to make a room reservation by phone."
+    },
+    {
+      "vietlish": "hit the monthly sales target",
+      "natural": "meet the monthly sales target",
+      "sourcePattern": "đạt chỉ tiêu -> hit is informal; workplace report target uses meet/reach",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "Our branch hopes to hit the monthly sales target before the holiday."
+    },
+    {
+      "vietlish": "drink a vitamin supplement every morning",
+      "natural": "take a vitamin supplement every morning",
+      "sourcePattern": "uống vitamin -> drink vitamin; English uses take supplements",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "My mother tells me to drink a vitamin supplement every morning."
+    },
+    {
+      "vietlish": "share a feedback after the course",
+      "natural": "give feedback after the course",
+      "sourcePattern": "chia sẻ góp ý -> share feedback is possible in some contexts; target collocation is give feedback",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Students can share a feedback after the course ends."
+    },
+    {
+      "vietlish": "repair my pronunciation mistake",
+      "natural": "correct my pronunciation mistake",
+      "sourcePattern": "sửa lỗi phát âm -> repair a mistake; English uses correct/fix a mistake",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The tutor helped repair my pronunciation mistake during practice."
+    },
+    {
+      "vietlish": "take a taxi bill from the driver",
+      "natural": "get a taxi receipt from the driver",
+      "sourcePattern": "lấy hóa đơn -> take bill; English ride context uses get a receipt",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "For reimbursement, I need to take a taxi bill from the driver."
+    },
+    {
+      "vietlish": "submit a leave day for Friday",
+      "natural": "request a day off for Friday",
+      "sourcePattern": "xin nghỉ một ngày -> submit a leave day; English uses request a day off",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Because of the appointment, Nam will submit a leave day for Friday."
+    },
+    {
+      "vietlish": "open a membership card at the gym",
+      "natural": "sign up for a gym membership",
+      "sourcePattern": "mở thẻ hội viên -> open a card; English uses sign up for membership",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "She wants to open a membership card at the gym near work."
+    },
+    {
+      "vietlish": "get the bus down at the market",
+      "natural": "get off the bus at the market",
+      "sourcePattern": "xuống xe buýt -> get the bus down; English phrasal verb is get off",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "You should get the bus down at the market and walk two blocks."
+    },
+    {
+      "vietlish": "turn a document to PDF",
+      "natural": "convert a document to PDF",
+      "sourcePattern": "chuyển sang PDF -> turn to PDF; English uses convert",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Before emailing it, turn a document to PDF."
+    },
+    {
+      "vietlish": "make a backup for the photos",
+      "natural": "back up the photos",
+      "sourcePattern": "sao lưu -> make a backup; natural verb phrase is back up",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Please make a backup for the photos before changing phones."
+    },
+    {
+      "vietlish": "take a replacement class on Saturday",
+      "natural": "attend a make-up class on Saturday",
+      "sourcePattern": "học bù -> replacement class; English course context uses make-up class",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The students will take a replacement class on Saturday morning."
+    },
+    {
+      "vietlish": "set a reminder alarm for medicine",
+      "natural": "set a reminder to take medicine",
+      "sourcePattern": "đặt báo thức nhắc uống thuốc -> reminder alarm; English says set a reminder to do something",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I set a reminder alarm for medicine because I forget easily."
+    },
+    {
+      "vietlish": "clear the invoice by bank transfer",
+      "natural": "settle the invoice by bank transfer",
+      "sourcePattern": "thanh toán hóa đơn -> clear invoice is finance-specific; general business uses settle/pay",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The company will clear the invoice by bank transfer tomorrow."
+    },
+    {
+      "vietlish": "the bus goes very smooth today",
+      "natural": "the bus ride is very smooth today",
+      "sourcePattern": "xe chạy êm -> vehicle goes smooth; English describes the ride as smooth",
+      "category": "calque",
+      "frequency": "high",
+      "context": "Because traffic is light, the bus goes very smooth today."
+    },
+    {
+      "vietlish": "my phone is out of battery very fast",
+      "natural": "my phone battery drains very fast",
+      "sourcePattern": "hết pin -> out of battery; English often uses battery drains",
+      "category": "calque",
+      "frequency": "high",
+      "context": "After the update, my phone is out of battery very fast."
+    },
+    {
+      "vietlish": "the lesson has many new words",
+      "natural": "the lesson includes many new words",
+      "sourcePattern": "bài học có -> has; English can use includes/contains for lesson content",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The lesson has many new words about health insurance."
+    },
+    {
+      "vietlish": "this app eats too much data",
+      "natural": "this app uses too much data",
+      "sourcePattern": "ăn dữ liệu -> eats data; English uses uses/consumes data",
+      "category": "calque",
+      "frequency": "high",
+      "context": "When videos autoplay, this app eats too much data."
+    },
+    {
+      "vietlish": "the road is repairing near my house",
+      "natural": "the road is being repaired near my house",
+      "sourcePattern": "đường đang sửa -> road is repairing; English needs passive",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The road is repairing near my house, so buses are slow."
+    },
+    {
+      "vietlish": "the document lacks one signature",
+      "natural": "one signature is missing from the document",
+      "sourcePattern": "thiếu chữ ký -> lacks signature; natural English often uses missing",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The document lacks one signature, so the clerk returned it."
+    },
+    {
+      "vietlish": "my company has policy work from home",
+      "natural": "my company has a work-from-home policy",
+      "sourcePattern": "có chính sách làm ở nhà -> has policy work from home; English uses compound noun phrase",
+      "category": "calque",
+      "frequency": "high",
+      "context": "My company has policy work from home two days a week."
+    },
+    {
+      "vietlish": "the elevator is spoiled again",
+      "natural": "the elevator is broken again",
+      "sourcePattern": "hỏng -> spoiled; English uses broken for machines",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The elevator is spoiled again, so we used the stairs."
+    },
+    {
+      "vietlish": "the air in this room is stuffy too much",
+      "natural": "the air in this room is too stuffy",
+      "sourcePattern": "quá ngột ngạt -> too much after adjective; English puts too before adjective",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The air in this room is stuffy too much during meetings."
+    },
+    {
+      "vietlish": "the rain is bigger now",
+      "natural": "the rain is heavier now",
+      "sourcePattern": "mưa lớn hơn -> rain bigger; English uses heavier",
+      "category": "calque",
+      "frequency": "high",
+      "context": "We should wait because the rain is bigger now."
+    },
+    {
+      "vietlish": "the medicine is hot for my stomach",
+      "natural": "the medicine upsets my stomach",
+      "sourcePattern": "nóng bụng -> hot stomach; English says upsets/irritates stomach",
+      "category": "calque",
+      "frequency": "high",
+      "context": "I stopped because the medicine is hot for my stomach."
+    },
+    {
+      "vietlish": "this shirt is not fit with me",
+      "natural": "this shirt does not fit me",
+      "sourcePattern": "không hợp/vừa với tôi -> not fit with me; English omits with",
+      "category": "calque",
+      "frequency": "high",
+      "context": "This shirt is not fit with me, so I need a smaller size."
+    },
+    {
+      "vietlish": "the price goes up strongly",
+      "natural": "the price rises sharply",
+      "sourcePattern": "tăng mạnh -> go up strongly; English collocates rise sharply",
+      "category": "calque",
+      "frequency": "high",
+      "context": "Before the holiday, the price goes up strongly."
+    },
+    {
+      "vietlish": "her English is more and more good",
+      "natural": "her English is getting better and better",
+      "sourcePattern": "ngày càng tốt -> more and more good; English uses better and better",
+      "category": "calque",
+      "frequency": "high",
+      "context": "After six months, her English is more and more good."
+    },
+    {
+      "vietlish": "the shop has promotion buy two get one",
+      "natural": "the shop has a buy-two-get-one promotion",
+      "sourcePattern": "có khuyến mãi mua hai tặng một -> calqued noun order",
+      "category": "calque",
+      "frequency": "high",
+      "context": "This week the shop has promotion buy two get one."
+    },
+    {
+      "vietlish": "my work is very pressure",
+      "natural": "my job is very stressful",
+      "sourcePattern": "áp lực -> pressure as noun; English uses stressful for the job",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "At the end of quarter, my work is very pressure."
+    },
+    {
+      "vietlish": "the teacher gives homework many",
+      "natural": "the teacher gives a lot of homework",
+      "sourcePattern": "cho bài tập nhiều -> many after noun; English uses a lot of before uncountable homework",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Before exams, the teacher gives homework many."
+    },
+    {
+      "vietlish": "this street is easy flooding",
+      "natural": "this street floods easily",
+      "sourcePattern": "dễ ngập -> easy flooding; English uses verb + easily",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "During heavy rain, this street is easy flooding."
+    },
+    {
+      "vietlish": "the room has smell of paint",
+      "natural": "the room smells like paint",
+      "sourcePattern": "có mùi sơn -> has smell of; English often uses smells like",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "After renovation, the room has smell of paint."
+    },
+    {
+      "vietlish": "the battery is weak signal",
+      "natural": "the battery indicator is low",
+      "sourcePattern": "yếu/thấp -> weak signal transfer; English distinguishes battery level",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "My laptop warned that the battery is weak signal."
+    },
+    {
+      "vietlish": "the meeting is stretched too long",
+      "natural": "the meeting is dragging on too long",
+      "sourcePattern": "kéo dài -> stretched; English uses drag on for overlong meetings",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Everyone was tired because the meeting is stretched too long."
+    },
+    {
+      "vietlish": "the class opens at seven",
+      "natural": "the class starts at seven",
+      "sourcePattern": "mở lớp/bắt đầu -> opens; English uses starts for a class session",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Because of the new schedule, the class opens at seven every Monday."
+    },
+    {
+      "vietlish": "the clinic receives patients until five",
+      "natural": "the clinic sees patients until five",
+      "sourcePattern": "nhận bệnh -> receives patients; English clinic collocation uses sees patients",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "The clinic receives patients until five on weekdays."
+    },
+    {
+      "vietlish": "my bank card is swallowed by the ATM",
+      "natural": "the ATM kept my bank card",
+      "sourcePattern": "ATM nuốt thẻ -> swallowed; English customer-service phrasing often says kept/retained",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Yesterday my bank card is swallowed by the ATM."
+    },
+    {
+      "vietlish": "the coffee shop is full table",
+      "natural": "all the tables at the coffee shop are full",
+      "sourcePattern": "hết bàn/có đầy bàn -> full table; English marks all tables",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "At lunch time, the coffee shop is full table."
+    },
+    {
+      "vietlish": "the internet is flickering tonight",
+      "natural": "the internet connection is unstable tonight",
+      "sourcePattern": "mạng chập chờn -> flickering; English uses unstable/intermittent",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "I cannot join the call because the internet is flickering tonight."
+    },
+    {
+      "vietlish": "this exercise is not out answer",
+      "natural": "this exercise has no answer key",
+      "sourcePattern": "không ra đáp án/không có đáp án -> out answer; English uses answer key",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "For self-study, this exercise is not out answer."
+    },
+    {
+      "vietlish": "the printer is eating paper",
+      "natural": "the printer is jamming",
+      "sourcePattern": "máy in ăn giấy -> eating paper; English uses jamming",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Again, the printer is eating paper before the deadline."
+    },
+    {
+      "vietlish": "the bus is late thirty minutes",
+      "natural": "the bus is thirty minutes late",
+      "sourcePattern": "trễ ba mươi phút -> late thirty minutes; English places duration before late",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Because of the storm, the bus is late thirty minutes."
+    },
+    {
+      "vietlish": "my eyes are sleepy after screen time",
+      "natural": "my eyes are tired after screen time",
+      "sourcePattern": "buồn ngủ/mỏi mắt -> sleepy eyes; English uses tired eyes",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "My eyes are sleepy after screen time, so I need a break."
+    },
+    {
+      "vietlish": "the app cannot enter",
+      "natural": "I cannot log in to the app",
+      "sourcePattern": "không vào được app -> app cannot enter; English names the user action log in",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Since this morning, the app cannot enter on my phone."
+    },
+    {
+      "vietlish": "the bill jumps high in summer",
+      "natural": "the bill increases a lot in summer",
+      "sourcePattern": "hóa đơn nhảy cao -> jumps high; English uses increases a lot",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "When we use air conditioning, the bill jumps high in summer."
+    },
+    {
+      "vietlish": "the suitcase is over weight",
+      "natural": "the suitcase is overweight",
+      "sourcePattern": "quá cân -> over weight as two words; English adjective is overweight",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "At the airport, the suitcase is over weight by two kilos."
+    },
+    {
+      "vietlish": "the course runs too heavy",
+      "natural": "the course load is too heavy",
+      "sourcePattern": "chương trình nặng -> runs heavy; English uses course load",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "For new learners, the course runs too heavy in the first month."
+    },
+    {
+      "vietlish": "my face is allergy with seafood",
+      "natural": "I am allergic to seafood",
+      "sourcePattern": "dị ứng với -> allergy with; English uses allergic to",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "My face is allergy with seafood, so I avoid shrimp."
+    },
+    {
+      "vietlish": "I yesterday submitted the housing form",
+      "natural": "I submitted the housing form yesterday",
+      "sourcePattern": "Vietnamese time adverb can appear early; English usually places yesterday after verb phrase",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I yesterday submitted the housing form before the office closed."
+    },
+    {
+      "vietlish": "She in the morning checks her blood sugar",
+      "natural": "She checks her blood sugar in the morning",
+      "sourcePattern": "Vietnamese time phrase fronting transferred into middle position",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "She in the morning checks her blood sugar with a home device."
+    },
+    {
+      "vietlish": "We with the landlord discussed the deposit",
+      "natural": "We discussed the deposit with the landlord",
+      "sourcePattern": "Vietnamese prepositional phrase position transferred before main verb",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "We with the landlord discussed the deposit after viewing the apartment."
+    },
+    {
+      "vietlish": "They for the refund waited two weeks",
+      "natural": "They waited two weeks for the refund",
+      "sourcePattern": "Vietnamese purpose phrase can precede duration; English keeps waited + duration + for",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "They for the refund waited two weeks after canceling the ticket."
+    },
+    {
+      "vietlish": "The clinic for children opens on Sunday",
+      "natural": "The children's clinic opens on Sunday",
+      "sourcePattern": "Vietnamese noun modifier after noun; English uses possessive/compound before noun",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "The clinic for children opens on Sunday during flu season."
+    },
+    {
+      "vietlish": "The card of membership expires tomorrow",
+      "natural": "The membership card expires tomorrow",
+      "sourcePattern": "Vietnamese của phrase maps to of; English uses compound noun",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "The card of membership expires tomorrow, so I must renew it."
+    },
+    {
+      "vietlish": "A room meeting is available upstairs",
+      "natural": "A meeting room is available upstairs",
+      "sourcePattern": "Vietnamese noun order phòng họp -> room meeting; English compound is meeting room",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "A room meeting is available upstairs for the workshop."
+    },
+    {
+      "vietlish": "I very need the receipt today",
+      "natural": "I really need the receipt today",
+      "sourcePattern": "rất cần -> very need; English uses really with verbs",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I very need the receipt today for reimbursement."
+    },
+    {
+      "vietlish": "He already sent for me the file",
+      "natural": "He has already sent me the file",
+      "sourcePattern": "Vietnamese dative phrase can follow preposition; English ditransitive order differs",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "He already sent for me the file with the updated contract."
+    },
+    {
+      "vietlish": "Please tell again the instructions",
+      "natural": "Please repeat the instructions",
+      "sourcePattern": "nói lại hướng dẫn -> tell again; English verb repeat carries again",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Please tell again the instructions because the room was noisy."
+    },
+    {
+      "vietlish": "The teacher explained for us the rule",
+      "natural": "The teacher explained the rule to us",
+      "sourcePattern": "giải thích cho chúng tôi -> explain for us; English explain something to someone",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "The teacher explained for us the rule about articles."
+    },
+    {
+      "vietlish": "I bought for my mother a warm coat",
+      "natural": "I bought a warm coat for my mother",
+      "sourcePattern": "Vietnamese recipient phrase may come before object; English places object first with for",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I bought for my mother a warm coat before her trip."
+    },
+    {
+      "vietlish": "The driver asked again my address",
+      "natural": "The driver asked for my address again",
+      "sourcePattern": "hỏi lại địa chỉ -> asked again address; English needs ask for + object",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "The driver asked again my address when he reached the gate."
+    },
+    {
+      "vietlish": "We at the counter paid the fee",
+      "natural": "We paid the fee at the counter",
+      "sourcePattern": "Vietnamese location phrase can appear before verb; English neutral order places it after object",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "We at the counter paid the fee and received a receipt."
+    },
+    {
+      "vietlish": "The system automatically for me saves drafts",
+      "natural": "The system automatically saves drafts for me",
+      "sourcePattern": "Vietnamese beneficiary phrase inserted early; English keeps verb-object together",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "The system automatically for me saves drafts every minute."
+    },
+    {
+      "vietlish": "My sister on the app booked a ride",
+      "natural": "My sister booked a ride on the app",
+      "sourcePattern": "Vietnamese location/tool phrase before verb; English places app phrase after object",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "My sister on the app booked a ride to the airport."
+    },
+    {
+      "vietlish": "The bank last month changed the fee",
+      "natural": "The bank changed the fee last month",
+      "sourcePattern": "Time phrase transferred before main verb; English neutral order after object",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "The bank last month changed the fee for international transfers."
+    },
+    {
+      "vietlish": "I still not receive the confirmation",
+      "natural": "I still have not received the confirmation",
+      "sourcePattern": "Vietnamese chưa/vẫn chưa -> still not + bare verb; English needs auxiliary perfect",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I still not receive the confirmation after paying online."
+    },
+    {
+      "vietlish": "She only yesterday knew the result",
+      "natural": "She only found out the result yesterday",
+      "sourcePattern": "Vietnamese mới hôm qua biết -> only yesterday knew; English uses found out",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "She only yesterday knew the result of the scholarship application."
+    },
+    {
+      "vietlish": "The office next week will move",
+      "natural": "The office will move next week",
+      "sourcePattern": "Vietnamese time phrase between subject and modal; English keeps modal after subject",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The office next week will move to a larger building."
+    },
+    {
+      "vietlish": "I have not enough documents",
+      "natural": "I do not have enough documents",
+      "sourcePattern": "không có đủ -> have not enough; English uses do-support for possession",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I have not enough documents for the visa appointment."
+    },
+    {
+      "vietlish": "There is not any seat left",
+      "natural": "There are no seats left",
+      "sourcePattern": "Vietnamese singular existential transferred; English plural agreement with seats",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "There is not any seat left on the evening bus."
+    },
+    {
+      "vietlish": "The form online is confusing",
+      "natural": "The online form is confusing",
+      "sourcePattern": "Vietnamese adjective/modifier after noun; English modifier before noun",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The form online is confusing for first-time users."
+    },
+    {
+      "vietlish": "A policy new starts in July",
+      "natural": "A new policy starts in July",
+      "sourcePattern": "Vietnamese adjective after noun; English adjective before noun",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "A policy new starts in July for remote work."
+    },
+    {
+      "vietlish": "The class English for nurses is full",
+      "natural": "The English class for nurses is full",
+      "sourcePattern": "Vietnamese class + subject order; English puts subject adjective before class",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The class English for nurses is full until August."
+    },
+    {
+      "vietlish": "I need one ticket more",
+      "natural": "I need one more ticket",
+      "sourcePattern": "Vietnamese thêm after noun; English more before noun",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I need one ticket more for my younger brother."
+    },
+    {
+      "vietlish": "The package small arrived first",
+      "natural": "The small package arrived first",
+      "sourcePattern": "Vietnamese adjective after noun; English adjective before noun",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The package small arrived first, but the large box is missing."
+    },
+    {
+      "vietlish": "He works at home two days each week",
+      "natural": "He works from home two days each week",
+      "sourcePattern": "Vietnamese ở nhà -> at home; English remote-work phrase is from home",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "He works at home two days each week under the new policy."
+    },
+    {
+      "vietlish": "The doctor for me wrote a note",
+      "natural": "The doctor wrote me a note",
+      "sourcePattern": "Vietnamese cho tôi placement before verb phrase; English object order differs",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The doctor for me wrote a note for my employer."
+    },
+    {
+      "vietlish": "We have meeting project every Monday",
+      "natural": "We have a project meeting every Monday",
+      "sourcePattern": "Vietnamese noun order họp dự án; English compound adjective before meeting",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "We have meeting project every Monday after lunch."
+    },
+    {
+      "vietlish": "The app Vietnamese version is easier",
+      "natural": "The Vietnamese version of the app is easier",
+      "sourcePattern": "Vietnamese app phiên bản tiếng Việt order; English requires version of",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The app Vietnamese version is easier for my parents."
+    },
+    {
+      "vietlish": "I sent to HR the medical paper",
+      "natural": "I sent the medical certificate to HR",
+      "sourcePattern": "Vietnamese prepositional recipient before object; English sends object before recipient",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I sent to HR the medical paper after my appointment."
+    },
+    {
+      "vietlish": "She has a bag very heavy",
+      "natural": "She has a very heavy bag",
+      "sourcePattern": "Vietnamese adjective phrase after noun; English adjective phrase before noun",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "She has a bag very heavy for the train ride."
+    },
+    {
+      "vietlish": "The receipt paper I lost yesterday",
+      "natural": "I lost the paper receipt yesterday",
+      "sourcePattern": "Vietnamese topic-fronting; English neutral sentence keeps object after verb",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The receipt paper I lost yesterday, so I downloaded another copy."
+    },
+    {
+      "vietlish": "The fee service is included",
+      "natural": "The service fee is included",
+      "sourcePattern": "Vietnamese noun order phí dịch vụ; English compound is service fee",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The fee service is included in the final price."
+    },
+    {
+      "vietlish": "I am actual living in Calgary",
+      "natural": "I am currently living in Calgary",
+      "sourcePattern": "actual resembles Vietnamese hiện tại/current; English actual means real",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I am actual living in Calgary while studying online."
+    },
+    {
+      "vietlish": "The menu is very various",
+      "natural": "The menu is very varied",
+      "sourcePattern": "various is a determiner-like adjective; varied/diverse describes range",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "The menu is very various, with dishes from many regions."
+    },
+    {
+      "vietlish": "This evidence is very convinced",
+      "natural": "This evidence is very convincing",
+      "sourcePattern": "convinced describes a person; convincing describes evidence",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "This evidence is very convinced for the insurance claim."
+    },
+    {
+      "vietlish": "The staff was very enthusiastic to my problem",
+      "natural": "The staff was very helpful with my problem",
+      "sourcePattern": "enthusiastic maps from nhiệt tình; service English often uses helpful",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "The staff was very enthusiastic to my problem at the counter."
+    },
+    {
+      "vietlish": "The plan is not economic for students",
+      "natural": "The plan is not economical for students",
+      "sourcePattern": "economic relates to the economy; economical means cost-saving",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "The plan is not economic for students who travel daily."
+    },
+    {
+      "vietlish": "I will borrow you my charger",
+      "natural": "I will lend you my charger",
+      "sourcePattern": "borrow/lend direction error from Vietnamese mượn/cho mượn",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "If your phone is low, I will borrow you my charger."
+    },
+    {
+      "vietlish": "Can you borrow me your notes",
+      "natural": "Can you lend me your notes",
+      "sourcePattern": "borrow/lend direction error; speaker receives, so lend me",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "Can you borrow me your notes before the exam?"
+    },
+    {
+      "vietlish": "The recipe is very sensible to salt",
+      "natural": "The recipe is very sensitive to salt",
+      "sourcePattern": "sensible means practical; sensitive means easily affected",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "The recipe is very sensible to salt, so add a little at a time."
+    },
+    {
+      "vietlish": "My schedule is flexible for overtime",
+      "natural": "My schedule allows overtime",
+      "sourcePattern": "flexible may be overused for availability; natural workplace English names availability",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "My schedule is flexible for overtime during the product launch."
+    },
+    {
+      "vietlish": "The lecture was very comprehensive for beginners",
+      "natural": "The lecture was very easy to understand for beginners",
+      "sourcePattern": "comprehensive means complete, not necessarily understandable",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "The lecture was very comprehensive for beginners in the first week."
+    },
+    {
+      "vietlish": "I assisted the workshop yesterday",
+      "natural": "I attended the workshop yesterday",
+      "sourcePattern": "assist means help; French-like/loan false friend for attend appears in learner English",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I assisted the workshop yesterday about workplace safety."
+    },
+    {
+      "vietlish": "The room is convenient for thirty people",
+      "natural": "The room can accommodate thirty people",
+      "sourcePattern": "convenient means easy/useful, not capacity-suitable",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "The room is convenient for thirty people if we add chairs."
+    },
+    {
+      "vietlish": "This medicine is effective to headache",
+      "natural": "This medicine is effective for headaches",
+      "sourcePattern": "effective to is a preposition false friend; English uses effective for/against",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "This medicine is effective to headache when I take it early."
+    },
+    {
+      "vietlish": "The answer is relative to the context",
+      "natural": "The answer depends on the context",
+      "sourcePattern": "relative to is technical; learners may mean depends on",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "The answer is relative to the context in this grammar question."
+    },
+    {
+      "vietlish": "My boss is very sympathetic",
+      "natural": "My boss is very likable",
+      "sourcePattern": "sympathetic means showing sympathy; Vietnamese dễ thương may be overmapped",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "My boss is very sympathetic and easy to talk to."
+    },
+    {
+      "vietlish": "The restaurant is familiar with tourists",
+      "natural": "The restaurant is popular with tourists",
+      "sourcePattern": "familiar with means known to someone; popular with means liked by a group",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The restaurant is familiar with tourists because of its river view."
+    },
+    {
+      "vietlish": "This solution is eventual",
+      "natural": "This solution is temporary",
+      "sourcePattern": "eventual means final after time, not possible/temporary; false friend from eventual/possible usage",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "This solution is eventual until the technician arrives."
+    },
+    {
+      "vietlish": "The course is adapted for nurses",
+      "natural": "The course is suitable for nurses",
+      "sourcePattern": "adapted means modified; suitable means appropriate",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The course is adapted for nurses who need medical English."
+    },
+    {
+      "vietlish": "The signal is sensible to weather",
+      "natural": "The signal is sensitive to weather",
+      "sourcePattern": "sensible/sensitive confusion",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The signal is sensible to weather in the mountain area."
+    },
+    {
+      "vietlish": "She is very confident with computers",
+      "natural": "She is very comfortable with computers",
+      "sourcePattern": "confident can fit ability; comfortable is natural for ease using tools",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "She is very confident with computers after the training."
+    },
+    {
+      "vietlish": "This app is actual for new users",
+      "natural": "This app is up to date for new users",
+      "sourcePattern": "actual does not mean current/up-to-date in English",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "This app is actual for new users after the redesign."
+    },
+    {
+      "vietlish": "The manager controlled my report",
+      "natural": "The manager checked my report",
+      "sourcePattern": "control can mean manage; Vietnamese kiểm tra maps to check, not control",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Before submission, the manager controlled my report."
+    },
+    {
+      "vietlish": "I passed the pharmacy to buy medicine",
+      "natural": "I stopped by the pharmacy to buy medicine",
+      "sourcePattern": "pass by means go past; ghé qua maps to stop by",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "On the way home, I passed the pharmacy to buy medicine."
+    },
+    {
+      "vietlish": "The class is reserved for children under ten",
+      "natural": "The class is designed for children under ten",
+      "sourcePattern": "reserved means set aside; learner may mean designed/intended",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The class is reserved for children under ten who are new to English."
+    },
+    {
+      "vietlish": "My colleague is very responsible to deadlines",
+      "natural": "My colleague is very reliable with deadlines",
+      "sourcePattern": "responsible to someone differs from reliable about deadlines",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "My colleague is very responsible to deadlines on shared projects."
+    },
+    {
+      "vietlish": "This city is animated at night",
+      "natural": "This city is lively at night",
+      "sourcePattern": "animated usually means film/movement; lively describes a place",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "This city is animated at night during the festival."
+    },
+    {
+      "vietlish": "The bank requires an original copy",
+      "natural": "The bank requires the original document",
+      "sourcePattern": "original copy is contradictory in English when original document is meant",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The bank requires an original copy of my passport."
+    },
+    {
+      "vietlish": "The service is adequate for elderly users",
+      "natural": "The service is suitable for elderly users",
+      "sourcePattern": "adequate means barely enough; Vietnamese phù hợp maps better to suitable",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The service is adequate for elderly users who need larger text."
+    },
+    {
+      "vietlish": "I am interested about the refund policy",
+      "natural": "I am interested in the refund policy",
+      "sourcePattern": "interested takes in, not about",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Before I book, I am interested about the refund policy."
+    },
+    {
+      "vietlish": "The problem is consequent from the update",
+      "natural": "The problem results from the update",
+      "sourcePattern": "consequent is uncommon adjective; result from is natural",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The problem is consequent from the update released last night."
+    },
+    {
+      "vietlish": "The certificate is valuable for two years",
+      "natural": "The certificate is valid for two years",
+      "sourcePattern": "valuable means worth money/important; valid means legally accepted",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The certificate is valuable for two years after the test date."
+    },
+    {
+      "vietlish": "The teacher noticed us about the change",
+      "natural": "The teacher notified us about the change",
+      "sourcePattern": "notice as verb means observe; notify means inform",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The teacher noticed us about the change in classroom."
+    },
+    {
+      "vietlish": "The contract will expire in next month",
+      "natural": "The contract will expire next month",
+      "sourcePattern": "in next month is a preposition false friend; English omits in before next month",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The contract will expire in next month, so we must renew it."
+    },
+    {
+      "vietlish": "This chair is very comfort",
+      "natural": "This chair is very comfortable",
+      "sourcePattern": "comfort is noun/verb; comfortable is adjective",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "This chair is very comfort for long online lessons."
+    },
+    {
+      "vietlish": "The airport procedure is complicated to elders",
+      "natural": "The airport procedure is complicated for older adults",
+      "sourcePattern": "to elders is unnatural; for older adults is respectful and idiomatic",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The airport procedure is complicated to elders who travel alone."
+    },
+    {
+      "vietlish": "I lost the appointment because I slept over time",
+      "natural": "I missed the appointment because I overslept",
+      "sourcePattern": "ngủ quá giờ -> sleep over time; English uses overslept",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I lost the appointment because I slept over time this morning."
+    },
+    {
+      "vietlish": "Please keep place for my bag",
+      "natural": "Please save a place for my bag",
+      "sourcePattern": "giữ chỗ -> keep place; English uses save a place/seat",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "Please keep place for my bag while I buy water."
+    },
+    {
+      "vietlish": "He said small with the receptionist",
+      "natural": "He spoke quietly to the receptionist",
+      "sourcePattern": "nói nhỏ -> said small; English uses speak quietly",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "He said small with the receptionist because the clinic was quiet."
+    },
+    {
+      "vietlish": "I go first to the counter",
+      "natural": "I will go to the counter first",
+      "sourcePattern": "đi trước/đi trước tiên -> go first; English places first after destination or uses will",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I go first to the counter while you park the car."
+    },
+    {
+      "vietlish": "The doctor lets me rest three days",
+      "natural": "The doctor told me to rest for three days",
+      "sourcePattern": "cho nghỉ -> lets rest; English medical advice uses told/advised",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "The doctor lets me rest three days after the surgery."
+    },
+    {
+      "vietlish": "The company cuts my lunch money",
+      "natural": "The company deducts money for lunch",
+      "sourcePattern": "trừ tiền ăn -> cuts money; English payroll uses deducts",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "The company cuts my lunch money from my monthly pay."
+    },
+    {
+      "vietlish": "I have a stomach wind after milk",
+      "natural": "I feel bloated after drinking milk",
+      "sourcePattern": "đầy hơi -> stomach wind; English says bloated/gassy",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I have a stomach wind after milk, so I avoid it before class."
+    },
+    {
+      "vietlish": "She changed wind by moving to a new city",
+      "natural": "She got a change of scenery by moving to a new city",
+      "sourcePattern": "đổi gió -> change wind; English idiom is change of scenery",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "After burnout, she changed wind by moving to a new city."
+    },
+    {
+      "vietlish": "The lesson goes into my head slowly",
+      "natural": "I understand the lesson slowly",
+      "sourcePattern": "vào đầu -> go into head; English says understand/absorb",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "The lesson goes into my head slowly when I study at night."
+    },
+    {
+      "vietlish": "I hold the phone for you",
+      "natural": "I will stay on the phone for you",
+      "sourcePattern": "giữ máy -> hold phone; English phone phrase is stay on the line",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I hold the phone for you while the agent checks the booking."
+    },
+    {
+      "vietlish": "We should take experience from this mistake",
+      "natural": "We should learn from this mistake",
+      "sourcePattern": "rút kinh nghiệm -> take/draw experience; English uses learn from",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "We should take experience from this mistake before the next launch."
+    },
+    {
+      "vietlish": "The store hangs price wrong",
+      "natural": "The store displayed the wrong price",
+      "sourcePattern": "treo giá -> hang price; English uses display/post a price",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "The store hangs price wrong on the shelf label."
+    },
+    {
+      "vietlish": "I was caught rain on the way home",
+      "natural": "I got caught in the rain on the way home",
+      "sourcePattern": "bị mắc mưa -> caught rain; English uses caught in the rain",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I was caught rain on the way home and missed the call."
+    },
+    {
+      "vietlish": "Please eat less words in the report",
+      "natural": "Please use fewer words in the report",
+      "sourcePattern": "bớt chữ -> eat/less words; English uses fewer words/shorten",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Please eat less words in the report so it fits one page."
+    },
+    {
+      "vietlish": "The bus eats the road slowly",
+      "natural": "The bus moves slowly along the road",
+      "sourcePattern": "ăn đường is not literal in English; movement uses moves/travels",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "During rush hour, the bus eats the road slowly."
+    },
+    {
+      "vietlish": "I ran the paper to many offices",
+      "natural": "I took the paperwork to many offices",
+      "sourcePattern": "chạy giấy tờ -> run paperwork; English says take/process paperwork",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Last week I ran the paper to many offices for the permit."
+    },
+    {
+      "vietlish": "The price is soft for students",
+      "natural": "The price is affordable for students",
+      "sourcePattern": "giá mềm -> soft price; English uses affordable/reasonable",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The price is soft for students who register early."
+    },
+    {
+      "vietlish": "He has a hot temper mouth",
+      "natural": "He speaks harshly when angry",
+      "sourcePattern": "nóng tính/nặng lời -> hot temper mouth; English separates temper and speech",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "He has a hot temper mouth during stressful meetings."
+    },
+    {
+      "vietlish": "My head is running numbers",
+      "natural": "Numbers are running through my head",
+      "sourcePattern": "đầu chạy số -> head runs numbers; English idiom reverses structure",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Before the budget meeting, my head is running numbers."
+    },
+    {
+      "vietlish": "The file lies in my download folder",
+      "natural": "The file is in my download folder",
+      "sourcePattern": "nằm trong thư mục -> lies in folder; English simply says is in",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The file lies in my download folder after the browser saved it."
+    },
+    {
+      "vietlish": "The shop kills price today",
+      "natural": "The shop is cutting prices today",
+      "sourcePattern": "giết giá/chém giá can vary; English sales phrase is cut prices",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "For clearance, the shop kills price today on winter coats."
+    },
+    {
+      "vietlish": "I go to ask road at the station",
+      "natural": "I will ask for directions at the station",
+      "sourcePattern": "hỏi đường -> ask road; English uses ask for directions",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "If the map fails, I go to ask road at the station."
+    },
+    {
+      "vietlish": "The cashier counts money lacking",
+      "natural": "The cashier gave me too little change",
+      "sourcePattern": "đếm thiếu tiền -> count money lacking; English names the change outcome",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The cashier counts money lacking, so I checked the receipt."
+    },
+    {
+      "vietlish": "I drank the parking ticket",
+      "natural": "I paid the parking ticket",
+      "sourcePattern": "uống/ăn phạt is figurative in Vietnamese; English says pay a ticket",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Because I parked late, I drank the parking ticket online."
+    },
+    {
+      "vietlish": "The child is hard eating vegetables",
+      "natural": "The child is picky about eating vegetables",
+      "sourcePattern": "khó ăn -> hard eating; English uses picky about food",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The child is hard eating vegetables at school lunch."
+    },
+    {
+      "vietlish": "The room catches sun in the afternoon",
+      "natural": "The room gets afternoon sun",
+      "sourcePattern": "bắt nắng -> catches sun; English uses gets sun",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The room catches sun in the afternoon and becomes hot."
+    },
+    {
+      "vietlish": "I broke money for the taxi",
+      "natural": "I broke a bill for the taxi",
+      "sourcePattern": "đổi tiền lẻ -> break money; English says break a bill",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I broke money for the taxi because the driver had no change."
+    },
+    {
+      "vietlish": "She saved face for the team",
+      "natural": "She helped the team avoid embarrassment",
+      "sourcePattern": "giữ thể diện -> save face; idiom exists, but plain workplace English may prefer avoid embarrassment",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "By explaining the error calmly, she saved face for the team."
+    },
+    {
+      "vietlish": "The lesson opens my eyes about tax",
+      "natural": "The lesson helped me understand tax better",
+      "sourcePattern": "mở mắt -> open eyes; English idiom exists but may be too dramatic for routine learning",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The lesson opens my eyes about tax for part-time workers."
+    },
+    {
+      "vietlish": "I put question to the teacher",
+      "natural": "I asked the teacher a question",
+      "sourcePattern": "đặt câu hỏi -> put/place question; English uses ask",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "After class, I put question to the teacher about pronunciation."
+    },
+    {
+      "vietlish": "The policy ties hands of managers",
+      "natural": "The policy limits what managers can do",
+      "sourcePattern": "trói tay -> tie hands; idiom exists but may be too informal for policy summary",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The policy ties hands of managers when schedules change."
+    },
+    {
+      "vietlish": "The customer made noise at the counter",
+      "natural": "The customer complained loudly at the counter",
+      "sourcePattern": "làm ồn/làm um -> make noise; service context often means complain loudly",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The customer made noise at the counter about the refund."
+    },
+    {
+      "vietlish": "I kept stomach empty for the blood test",
+      "natural": "I fasted for the blood test",
+      "sourcePattern": "nhịn ăn -> keep stomach empty; English medical term is fast",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I kept stomach empty for the blood test this morning."
+    },
+    {
+      "vietlish": "The message fell into spam",
+      "natural": "The message went to spam",
+      "sourcePattern": "rơi vào thư rác -> fell into spam; English says went to spam",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The message fell into spam, so I missed the deadline."
+    },
+    {
+      "vietlish": "He took heart to speak English",
+      "natural": "He found the courage to speak English",
+      "sourcePattern": "lấy can đảm -> take heart; English uses find courage/take heart differently",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "At the meeting, he took heart to speak English with clients."
+    },
+    {
+      "vietlish": "Give me your passport now",
+      "natural": "Could I see your passport, please?",
+      "sourcePattern": "Direct Vietnamese imperative can sound too abrupt in service English",
+      "category": "register",
+      "frequency": "high",
+      "context": "At the hotel desk, the clerk said, \"Give me your passport now.\""
+    },
+    {
+      "vietlish": "You must wait outside",
+      "natural": "Could you please wait outside?",
+      "sourcePattern": "Direct obligation sounds harsh when making a polite request",
+      "category": "register",
+      "frequency": "high",
+      "context": "The receptionist told the patient, \"You must wait outside.\""
+    },
+    {
+      "vietlish": "I want you to fix this immediately",
+      "natural": "Could you help me fix this as soon as possible?",
+      "sourcePattern": "Customer complaint transferred as command; English service requests soften demand",
+      "category": "register",
+      "frequency": "high",
+      "context": "In the support chat, I wrote, \"I want you to fix this immediately.\""
+    },
+    {
+      "vietlish": "Tell me your name again",
+      "natural": "Could you repeat your name, please?",
+      "sourcePattern": "Direct tell me can sound abrupt; repeat is the polite service verb",
+      "category": "register",
+      "frequency": "high",
+      "context": "On the phone, the agent said, \"Tell me your name again.\""
+    },
+    {
+      "vietlish": "This bill is your mistake",
+      "natural": "I think there may be a mistake on this bill",
+      "sourcePattern": "Direct blame can escalate; English customer service often frames the issue as a possible mistake",
+      "category": "register",
+      "frequency": "high",
+      "context": "At the counter, I said, \"This bill is your mistake.\""
+    },
+    {
+      "vietlish": "I demand a room change",
+      "natural": "Could I request a room change?",
+      "sourcePattern": "Demand is too forceful for a normal hotel request",
+      "category": "register",
+      "frequency": "high",
+      "context": "Because of the noise, the guest said, \"I demand a room change.\""
+    },
+    {
+      "vietlish": "Send me the contract today",
+      "natural": "Could you send me the contract today?",
+      "sourcePattern": "Bare imperative is abrupt in business email",
+      "category": "register",
+      "frequency": "high",
+      "context": "In an email to the supplier, Minh wrote, \"Send me the contract today.\""
+    },
+    {
+      "vietlish": "Explain me why the fee is high",
+      "natural": "Could you explain why the fee is high?",
+      "sourcePattern": "Explain me is grammar plus directness issue; polite question fits service context",
+      "category": "register",
+      "frequency": "high",
+      "context": "During the call, I asked, \"Explain me why the fee is high.\""
+    },
+    {
+      "vietlish": "I don't accept this answer",
+      "natural": "I'm not sure this answers my question",
+      "sourcePattern": "Direct rejection can sound confrontational; softened disagreement is safer",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In class feedback, a student wrote, \"I don't accept this answer.\""
+    },
+    {
+      "vietlish": "You forgot my appointment",
+      "natural": "It looks like my appointment may not be in the system",
+      "sourcePattern": "Direct blame vs neutral problem statement",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At reception, he said, \"You forgot my appointment.\""
+    },
+    {
+      "vietlish": "Give discount for me",
+      "natural": "Is there any discount available?",
+      "sourcePattern": "Commanding a discount sounds abrupt; English asks about availability",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At the gym, I asked, \"Give discount for me.\""
+    },
+    {
+      "vietlish": "Reply me soon",
+      "natural": "Please reply when you have a chance",
+      "sourcePattern": "Direct imperative plus reply me; polite email closing is better",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At the end of the email, she wrote, \"Reply me soon.\""
+    },
+    {
+      "vietlish": "You need to answer faster",
+      "natural": "Could you respond a little faster next time?",
+      "sourcePattern": "Direct criticism softened for workplace feedback",
+      "category": "register",
+      "frequency": "medium",
+      "context": "After the project delay, the manager said, \"You need to answer faster.\""
+    },
+    {
+      "vietlish": "I require your help",
+      "natural": "Could you help me?",
+      "sourcePattern": "Require sounds legalistic/demanding in ordinary requests",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a chat message, the new student wrote, \"I require your help.\""
+    },
+    {
+      "vietlish": "Don't talk while I explain",
+      "natural": "Please hold questions until I finish explaining",
+      "sourcePattern": "Negative command can sound sharp; classroom instruction can be specific and polite",
+      "category": "register",
+      "frequency": "medium",
+      "context": "During training, the speaker said, \"Don't talk while I explain.\""
+    },
+    {
+      "vietlish": "The service here is too poor",
+      "natural": "I had a problem with the service here",
+      "sourcePattern": "Blunt evaluation can be replaced by specific issue framing",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In the review form, the customer wrote, \"The service here is too poor.\""
+    },
+    {
+      "vietlish": "I need your stamp here",
+      "natural": "Could you stamp this here, please?",
+      "sourcePattern": "Direct need statement can sound like an order at an office counter",
+      "category": "register",
+      "frequency": "medium",
+      "context": "At the office, I said, \"I need your stamp here.\""
+    },
+    {
+      "vietlish": "Move your car now",
+      "natural": "Could you move your car, please?",
+      "sourcePattern": "Urgent imperative may be needed in danger, but normal parking request should be softened",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In the apartment lot, the neighbor said, \"Move your car now.\""
+    },
+    {
+      "vietlish": "You should check better",
+      "natural": "Could you double-check this?",
+      "sourcePattern": "You should can sound accusatory in service correction",
+      "category": "register",
+      "frequency": "medium",
+      "context": "When the receipt was wrong, I said, \"You should check better.\""
+    },
+    {
+      "vietlish": "Let me know quick",
+      "natural": "Please let me know when you can",
+      "sourcePattern": "quick is abrupt/informal; polite business English uses when you can",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a message to HR, I wrote, \"Let me know quick.\""
+    }
+  ]
+}
