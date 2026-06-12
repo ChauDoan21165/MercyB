@@ -31,13 +31,14 @@ export function ReadingTaskCard({ task, value, onChange }: Props) {
               className="rounded-full text-xs"
               onClick={() => setShowVi((next) => !next)}
               aria-pressed={showVi}
+              aria-label={showVi ? "Hide Vietnamese passage translation" : "Show Vietnamese passage translation"}
             >
               {showVi ? "Hide VI" : "Show VI"}
             </Button>
           </div>
           <p className="mt-4 text-[15px] leading-7 text-slate-800">{task.passage.en}</p>
           {showVi ? (
-            <p className="mt-3 text-sm leading-6 text-slate-500">{task.passage.vi}</p>
+            <p lang="vi" className="mt-3 text-sm leading-6 text-slate-500">{task.passage.vi}</p>
           ) : null}
         </section>
       ) : null}
@@ -53,6 +54,7 @@ export function ReadingTaskCard({ task, value, onChange }: Props) {
                   type="button"
                   role="radio"
                   aria-checked={selected}
+                  aria-label={`Option ${option.id}: ${option.label.en}. ${option.label.vi}${selected ? ". Selected." : ""}`}
                   onClick={() => onChange(option.id)}
                   className={`flex min-h-[64px] items-center gap-3 rounded-[14px] border p-4 text-left transition ${
                     selected

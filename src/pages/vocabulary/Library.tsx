@@ -76,7 +76,9 @@ export default function VocabularyLibraryPage() {
     return (
       <div style={pageStyle}>
         <Header />
-        <p style={emptyStyle}>Đang tải… · Loading…</p>
+        <p role="status" aria-live="polite" style={emptyStyle}>
+          <span lang="vi">Đang tải…</span> · <span lang="en">Loading…</span>
+        </p>
       </div>
     );
   }
@@ -143,11 +145,12 @@ export default function VocabularyLibraryPage() {
       ) : null}
 
       <p style={footerNoteStyle}>
-        Tổng cộng {entries.length} từ · {entries.length} words total
+        <span lang="vi">Tổng cộng {entries.length} từ</span> ·{" "}
+        <span lang="en">{entries.length} words total</span>
       </p>
 
       <Link to="/vocabulary/review" style={primaryBtnStyle}>
-        Bắt đầu ôn · Start review
+        <span lang="vi">Bắt đầu ôn</span> · <span lang="en">Start review</span>
       </Link>
     </div>
   );
@@ -186,11 +189,11 @@ function Header() {
   return (
     <header style={headerStyle}>
       <Link to="/" style={backLinkStyle}>
-        ← Trang chủ
+        <span lang="vi">← Trang chủ</span>
       </Link>
       <div style={{ textAlign: "right" }}>
-        <div style={titleViStyle}>Thư viện từ vựng</div>
-        <div style={titleEnStyle}>Vocabulary library</div>
+        <div lang="vi" style={titleViStyle}>Thư viện từ vựng</div>
+        <div lang="en" style={titleEnStyle}>Vocabulary library</div>
       </div>
     </header>
   );
@@ -209,7 +212,7 @@ function SearchBox({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder="Tìm từ… · Search words…"
-      aria-label="Tìm từ"
+      aria-label="Tìm từ vựng · Search vocabulary words"
       style={searchStyle}
       data-testid="vocab-search"
     />
@@ -230,14 +233,14 @@ function BucketSection({
   showDays: boolean;
 }) {
   return (
-    <section style={sectionStyle} aria-label={`${vi} · ${en}`}>
+    <section style={sectionStyle} aria-labelledby={`${vi}-${en}`.replace(/\W+/g, "-").toLowerCase()}>
       <header style={sectionHeaderStyle}>
         <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
           <span aria-hidden style={{ ...accentDotStyle, background: accent }} />
-          <h2 style={sectionTitleViStyle}>{vi}</h2>
-          <span style={sectionCountStyle}>{rows.length}</span>
+          <h2 id={`${vi}-${en}`.replace(/\W+/g, "-").toLowerCase()} lang="vi" style={sectionTitleViStyle}>{vi}</h2>
+          <span aria-label={`${rows.length} words`} style={sectionCountStyle}>{rows.length}</span>
         </div>
-        <span style={sectionTitleEnStyle}>{en}</span>
+        <span lang="en" style={sectionTitleEnStyle}>{en}</span>
       </header>
       <ul style={rowListStyle}>
         {rows.map((row) => (
@@ -260,11 +263,11 @@ function Row({
     <li style={rowStyle}>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={rowWordStyle}>
-          <span style={rowWordTextStyle}>{entry.word}</span>
+          <span lang="en" style={rowWordTextStyle}>{entry.word}</span>
           {entry.ipa ? <span style={rowIpaStyle}>{entry.ipa}</span> : null}
         </div>
         {entry.definition_vi ? (
-          <div style={rowDefStyle}>{entry.definition_vi}</div>
+          <div lang="vi" style={rowDefStyle}>{entry.definition_vi}</div>
         ) : null}
         {entry.source ? (
           <span style={rowSourceStyle} title="Nguồn · source">
@@ -273,7 +276,7 @@ function Row({
         ) : null}
       </div>
       {showDays ? (
-        <span style={rowDaysStyle}>
+        <span aria-label={days === 0 ? "Due in less than one day" : `Due in ${days} days`} style={rowDaysStyle}>
           {days === 0 ? "<1d" : `${days}d`}
         </span>
       ) : null}

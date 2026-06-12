@@ -107,6 +107,23 @@ html {
   overflow-x: hidden;
 }
 
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible,
+[role="radio"]:focus-visible,
+[role="checkbox"]:focus-visible {
+  outline: 3px solid #0f766e;
+  outline-offset: 3px;
+}
+
+.mb-a11y-card-button:focus-visible,
+.mb-a11y-chip:focus-visible {
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.28) !important;
+}
+
 body {
   margin: 0;
   background: var(--mb-bg);

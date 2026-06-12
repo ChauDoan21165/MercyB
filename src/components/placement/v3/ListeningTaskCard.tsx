@@ -41,6 +41,7 @@ export function ListeningTaskCard({ task, value, onChange }: Props) {
                 type="button"
                 role="radio"
                 aria-checked={selected}
+                aria-label={`Option ${option.id}: ${option.label.en}. ${option.label.vi}${selected ? ". Selected." : ""}`}
                 onClick={() => onChange(option.id)}
                 className={`flex min-h-[64px] items-center gap-3 rounded-[14px] border p-4 text-left transition ${
                   selected

@@ -84,6 +84,21 @@ function chipStyle(active: boolean): React.CSSProperties {
   };
 }
 
+function categoryAriaLabel(category: CategoryFilter, active: boolean): string {
+  const label = category === "all" ? "Tất cả · All" : `${CATEGORY_LABEL[category].vi} · ${CATEGORY_LABEL[category].en}`;
+  return `${label}${active ? " — đang chọn · selected" : ""}`;
+}
+
+function difficultyAriaLabel(difficulty: DifficultyFilter, active: boolean): string {
+  const label = difficulty === "all" ? "Tất cả mức · All levels" : `${DIFFICULTY_LABEL[difficulty].vi} · ${DIFFICULTY_LABEL[difficulty].en}`;
+  return `${label}${active ? " — đang chọn · selected" : ""}`;
+}
+
+function accentAriaLabel(accent: AccentFilter, active: boolean): string {
+  const label = accent === "all" ? "Tất cả giọng · All accents" : `${accent.toUpperCase()} accent`;
+  return `${label}${active ? " — đang chọn · selected" : ""}`;
+}
+
 function ClipCard({
   clip,
   completed,
@@ -96,6 +111,7 @@ function ClipCard({
     <Link
       to={`/listening/${clip.id}`}
       data-testid={`listening-clip-${clip.id}`}
+      aria-label={`${clip.title_vi} · ${clip.title_en}. ${difficulty.vi} · ${difficulty.en}. ${clip.duration_seconds} seconds.${completed ? " Completed." : ""}`}
       style={{
         ...cardStyle,
         textDecoration: "none",
@@ -121,7 +137,7 @@ function ClipCard({
         <span style={{ fontWeight: 600 }}>{clip.duration_seconds}s</span>
         {completed ? (
           <span
-            aria-label="Completed"
+            aria-label="Đã hoàn thành · Completed"
             data-testid="listening-clip-completed"
             style={{ marginLeft: "auto", color: "#059669", fontSize: 13, fontWeight: 800 }}
           >
@@ -172,7 +188,9 @@ export default function Library(): React.ReactElement {
   if (authLoading) {
     return (
       <div style={wrap}>
-        <p style={{ color: "#64748b", fontSize: 13 }}>Đang tải… · Loading…</p>
+        <p role="status" aria-live="polite" style={{ color: "#64748b", fontSize: 13 }}>
+          <span lang="vi">Đang tải…</span> · <span lang="en">Loading…</span>
+        </p>
       </div>
     );
   }
@@ -185,7 +203,7 @@ export default function Library(): React.ReactElement {
           <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             <Headphones size={22} className="text-sky-700" />
             <h1 style={{ fontSize: 24, fontWeight: 950, margin: 0, color: "rgba(10,10,10,0.94)" }}>
-              Thư viện nghe · Listening Library
+              <span lang="vi">Thư viện nghe</span> · <span lang="en">Listening Library</span>
             </h1>
           </div>
           <p style={{ fontSize: 14, color: "#475569", marginTop: 6 }}>
@@ -200,12 +218,15 @@ export default function Library(): React.ReactElement {
         </header>
 
         {/* Category filter */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+        <div role="group" aria-label="Lọc theo chủ đề · Filter by category" style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
           {(["all", "restaurant", "doctor", "customer-service", "job-interview", "casual", "shopping", "transportation"] as CategoryFilter[]).map((c) => (
             <button
               key={c}
               type="button"
               onClick={() => setCategoryFilter(c)}
+              aria-pressed={categoryFilter === c}
+              aria-label={categoryAriaLabel(c, categoryFilter === c)}
+              className="mb-a11y-chip"
               data-testid={`listening-category-${c}`}
               style={chipStyle(categoryFilter === c)}
             >
@@ -216,7 +237,7 @@ export default function Library(): React.ReactElement {
 
         {/* Difficulty + accent filters */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
-          <div style={{ display: "flex", gap: 6 }}>
+          <div role="group" aria-label="Lọc theo mức · Filter by level" style={{ display: "flex", gap: 6 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#64748b", alignSelf: "center" }}>
               Mức · Level:
             </span>
@@ -225,6 +246,9 @@ export default function Library(): React.ReactElement {
                 key={d}
                 type="button"
                 onClick={() => setDifficultyFilter(d)}
+                aria-pressed={difficultyFilter === d}
+                aria-label={difficultyAriaLabel(d, difficultyFilter === d)}
+                className="mb-a11y-chip"
                 data-testid={`listening-difficulty-${d}`}
                 style={chipStyle(difficultyFilter === d)}
               >
@@ -232,7 +256,7 @@ export default function Library(): React.ReactElement {
               </button>
             ))}
           </div>
-          <div style={{ display: "flex", gap: 6 }}>
+          <div role="group" aria-label="Lọc theo giọng · Filter by accent" style={{ display: "flex", gap: 6 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#64748b", alignSelf: "center" }}>
               Giọng · Accent:
             </span>
@@ -241,6 +265,9 @@ export default function Library(): React.ReactElement {
                 key={a}
                 type="button"
                 onClick={() => setAccentFilter(a)}
+                aria-pressed={accentFilter === a}
+                aria-label={accentAriaLabel(a, accentFilter === a)}
+                className="mb-a11y-chip"
                 data-testid={`listening-accent-${a}`}
                 style={chipStyle(accentFilter === a)}
               >
@@ -250,7 +277,7 @@ export default function Library(): React.ReactElement {
           </div>
         </div>
 
-        <div style={{ fontSize: 12, color: "#64748b" }}>
+        <div role="status" aria-live="polite" aria-atomic="true" style={{ fontSize: 12, color: "#64748b" }}>
           Hiển thị {visibleClips.length} / {LISTENING_CLIPS.length} đoạn
         </div>
 

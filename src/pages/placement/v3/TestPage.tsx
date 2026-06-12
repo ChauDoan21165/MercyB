@@ -148,6 +148,7 @@ export default function TestPage() {
             variant="ghost"
             className="rounded-full text-slate-500"
             onClick={() => setAbandonOpen(true)}
+            aria-label="Leave placement test · Rời bài kiểm tra trình độ"
           >
             Leave test · Rời bài
           </Button>
@@ -214,6 +215,7 @@ export default function TestPage() {
           type="button"
           disabled={!canSubmit || submitter.submitting}
           onClick={handleSubmit}
+          aria-label={submitter.submitting ? "Submitting answer · Đang gửi câu trả lời" : "Submit answer · Gửi câu trả lời"}
           className="mx-auto flex min-h-12 w-full max-w-[620px] rounded-full text-base font-black"
         >
           {submitter.submitting ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : null}

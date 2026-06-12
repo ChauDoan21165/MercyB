@@ -33,7 +33,7 @@ type AuthNotice = { tone: NoticeTone; message: string } | null;
 function MercyRightBrandOverlayInline() {
   return (
     <div
-      aria-label="Mercy brand overlay"
+      aria-hidden="true"
       style={{
         position: "absolute",
         top: 18,
@@ -529,6 +529,9 @@ export default function LoginPage() {
             <div
               ref={noticeRef}
               tabIndex={-1}
+              role={notice.tone === "error" ? "alert" : "status"}
+              aria-live={notice.tone === "error" ? "assertive" : "polite"}
+              aria-atomic="true"
               style={
                 notice.tone === "error"
                   ? {
@@ -621,6 +624,8 @@ export default function LoginPage() {
               type="button"
               onClick={() => setTopMode("email")}
               disabled={busy}
+              aria-pressed={topMode === "email"}
+              aria-label={t({ vi: "Đăng nhập bằng email", en: "Sign in with email" })}
               style={UI.segBtn(topMode === "email", busy)}
             >
               ✉️ Email
@@ -629,6 +634,8 @@ export default function LoginPage() {
               type="button"
               onClick={() => setTopMode("phone")}
               disabled={busy}
+              aria-pressed={topMode === "phone"}
+              aria-label={t({ vi: "Đăng nhập bằng số điện thoại", en: "Sign in with phone" })}
               style={UI.segBtn(topMode === "phone", busy)}
             >
               {t({ vi: "📱 Số điện thoại", en: "📱 Phone" })}

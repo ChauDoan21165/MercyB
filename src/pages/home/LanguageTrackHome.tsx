@@ -70,7 +70,10 @@ export function TargetSwitcher({
             key={t}
             type="button"
             onClick={() => onPick(t)}
+            aria-label={`${active ? "Current language" : "Switch to"} ${targetLabel(t, "en")} · ${active ? "Ngôn ngữ hiện tại" : "Chuyển sang"} ${targetLabel(t, "vi")}`}
             aria-current={active ? "true" : undefined}
+            aria-pressed={active}
+            className="mb-a11y-chip"
             style={{
               flexShrink: 0,
               display: "inline-flex",
@@ -133,6 +136,7 @@ export default function LanguageTrackHome({
       <div style={{ maxWidth: 560, margin: "0 auto", padding: "24px 16px 96px" }}>
         <section aria-label="Homepage hero" style={{ textAlign: "center" }}>
           <h1
+            lang="en"
             style={{
               margin: 0,
               fontSize: 30,
@@ -146,6 +150,7 @@ export default function LanguageTrackHome({
             <span style={{ color: "rgba(180,83,9,0.95)" }}>Real Progress.</span>
           </h1>
           <div
+            lang="en"
             style={{
               marginTop: 8,
               fontSize: 16,
@@ -165,6 +170,7 @@ export default function LanguageTrackHome({
             type="button"
             onClick={() => nav(`/languages/${slug}`)}
             aria-label={`Open ${meta?.labelEn} track`}
+            className="mb-a11y-card-button"
             style={{
               marginTop: 26,
               width: "100%",
@@ -193,8 +199,8 @@ export default function LanguageTrackHome({
                 }}
               >
                 {lang === "en"
-                  ? `Learn ${primaryTarget ? targetLabel(primaryTarget, "en") : ""}`
-                  : `Học ${primaryTarget ? targetLabel(primaryTarget, "vi") : ""}`}
+                  ? <span lang="en">{`Learn ${primaryTarget ? targetLabel(primaryTarget, "en") : ""}`}</span>
+                  : <span lang="vi">{`Học ${primaryTarget ? targetLabel(primaryTarget, "vi") : ""}`}</span>}
               </span>
               <span
                 style={{
@@ -206,8 +212,8 @@ export default function LanguageTrackHome({
                 }}
               >
                 {lang === "en"
-                  ? "Continue your learning path"
-                  : "Tiếp tục lộ trình của bạn"}
+                  ? <span lang="en">Continue your learning path</span>
+                  : <span lang="vi">Tiếp tục lộ trình của bạn</span>}
               </span>
             </span>
             <ChevronRight size={22} color="rgba(180,60,100,0.75)" />
@@ -216,6 +222,7 @@ export default function LanguageTrackHome({
           <button
             type="button"
             onClick={() => nav("/")}
+            className="mb-a11y-chip"
             style={{
               marginTop: 26,
               width: "100%",
@@ -230,7 +237,7 @@ export default function LanguageTrackHome({
               cursor: "pointer",
             }}
           >
-            {lang === "en" ? "Go home" : "Về trang chính"}
+            {lang === "en" ? <span lang="en">Go home</span> : <span lang="vi">Về trang chính</span>}
           </button>
         )}
 
@@ -245,8 +252,8 @@ export default function LanguageTrackHome({
           }}
         >
           {lang === "en"
-            ? "Change your languages anytime in Settings."
-            : "Bạn có thể đổi ngôn ngữ bất cứ lúc nào trong phần Cài đặt."}
+            ? <span lang="en">Change your languages anytime in Settings.</span>
+            : <span lang="vi">Bạn có thể đổi ngôn ngữ bất cứ lúc nào trong phần Cài đặt.</span>}
         </p>
       </div>
     </div>
