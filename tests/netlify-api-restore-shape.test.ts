@@ -9,6 +9,21 @@ function read(rel: string): string {
   return fs.readFileSync(path.join(root, rel), "utf8");
 }
 
+function jobBlock(ci: string, jobName: string): string {
+  const lines = ci.split("\n");
+  const start = lines.findIndex((line) => line === `${jobName}:`);
+  if (start === -1) throw new Error(`Missing CI job ${jobName}`);
+
+  let end = lines.length;
+  for (let i = start + 1; i < lines.length; i += 1) {
+    if (/^[A-Za-z0-9_.:-]+:$/.test(lines[i])) {
+      end = i;
+      break;
+    }
+  }
+  return lines.slice(start, end).join("\n");
+}
+
 function ttsEvent(body: Record<string, unknown>) {
   return {
     httpMethod: "POST",
@@ -34,12 +49,24 @@ describe("Netlify API restore shape", () => {
     expect(toml).not.toContain('function = "mercy-ai-proxy"');
   });
 
-  it("uploads Netlify Functions during manual production deploy", () => {
+  it("retires the dead Netlify production deploy job in favor of Cloudflare Pages", () => {
     const ci = read(".gitlab-ci.yml");
-    expect(ci).toContain("netlify-cli deploy");
-    expect(ci).toContain("--dir=dist");
-    expect(ci).toContain("--functions=netlify/functions");
-    expect(ci).toContain("--skip-functions-cache");
+    expect(ci).not.toContain(["netlify-cli", "deploy"].join(" "));
+    expect(ci).not.toContain(["--functions", "netlify/functions"].join("="));
+    expect(ci).toContain("deploy-cloudflare-pages:");
+    expect(ci).toContain("scripts/deploy-cloudflare-pages-main.sh");
+    expect(ci).toContain("golden-flows-prod:");
+  });
+
+  it("keeps production golden flows schedule/manual on main without MR blocking", () => {
+    const block = jobBlock(read(".gitlab-ci.yml"), "golden-flows-prod");
+
+    expect(block).toContain('$CI_PIPELINE_SOURCE == "schedule" && $CI_COMMIT_BRANCH == "main"');
+    expect(block).toContain('$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"');
+    expect(block).toContain('$CI_PIPELINE_SOURCE == "web" && $CI_COMMIT_BRANCH == "main"');
+    expect(block).toContain("when: manual");
+    expect(block).toContain("allow_failure: true");
+    expect(block).not.toContain("merge_request_event");
   });
 
   it("restores /api/tts through Azure-first mercy-tts instead of direct ElevenLabs", () => {
