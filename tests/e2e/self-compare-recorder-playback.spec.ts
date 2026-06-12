@@ -1,5 +1,5 @@
 /**
- * A3 regression spec: SelfCompareRecorder record → play flow.
+ * Regression spec: SelfCompareRecorder record → play flow.
  *
  * Evidence base (local Playwright run, 2026-06-11):
  *   blob type:  audio/webm;codecs=opus
@@ -8,7 +8,7 @@
  *   audio element errors: 0  (Chrome decoded the blob fine ✓)
  *   play() rejections: 0  (no autoplay block ✓)
  *
- * Root cause of "Recorded playback failed" on prod (compare path):
+ * Root cause of "Recorded playback failed" on prod (A3 !799 fix covered):
  *   usePronunciationRecorder.ts had a single useEffect with deps
  *   [cleanupStream, lastRecordedAudioUrl, stopPlayback].  Whenever
  *   lastRecordedAudioUrl changed (new recording made while audio was
@@ -18,16 +18,21 @@
  *   Even after play() resolved, pausing left onended unfire, permanently
  *   hanging the await-new-Promise wrapper and leaving the UI stuck.
  *
- * Fix: split the single useEffect into two:
- *   1. URL-only effect (deps:[lastRecordedAudioUrl]) — revokes old URL,
- *      does NOT call stopPlayback().
- *   2. Unmount-only effect (deps:[cleanupStream, stopPlayback]) — runs
- *      stream + playback cleanup only when the component unmounts.
+ * Root cause of "Recorded playback failed" on prod (A4 fix — this PR):
+ *   SelfCompareRecorder record button was missing `|| isPlayingRecorded`
+ *   in its disabled prop, so the user could tap record mid-play.
+ *   startRecording() → stopPlayback() paused the audio element.
+ *   onended never fires on a paused element, so the playRecorded() Promise
+ *   hung forever (UI stuck showing "Đang phát…").  When recorder.onstop
+ *   later called clearRecordedAudio() → URL.revokeObjectURL(blobUrl),
+ *   onerror fired on the paused audio → "Recorded playback failed."
  *
  * Regression test coverage:
  *   T1 — simple record → play: no error, blob > 0 bytes, URL not revoked.
  *   T2 — record → delayed play (≥1 s): play still succeeds after a delay
  *        that simulates the compare path's await onPlayModel() window.
+ *   T3 — record button must be disabled while playback is in progress
+ *        (the missing guard that was the root cause of the A4 bug).
  */
 
 import { test, expect } from "@playwright/test";
@@ -184,9 +189,12 @@ test("T1: record → direct play — blob valid, no error", async ({ page }) => 
   await page.waitForTimeout(2_000);
 
   const diagAfter = await page.evaluate(() => window.__mb_diag!);
+  // Use an explicit short timeout: in the happy path there is no <p> inside
+  // [aria-live="polite"] so without a timeout the locator waits until the
+  // full test timeout fires.
   const errorText = await page
     .locator('[aria-live="polite"] p')
-    .textContent()
+    .textContent({ timeout: 2_000 })
     .catch(() => null);
 
   console.log("\n══ A3 T1 EVIDENCE ══");
@@ -233,7 +241,7 @@ test("T2: record → 1.5 s delay → play — still succeeds (simulates compare 
   const diagAfter = await page.evaluate(() => window.__mb_diag!);
   const errorText = await page
     .locator('[aria-live="polite"] p')
-    .textContent()
+    .textContent({ timeout: 2_000 })
     .catch(() => null);
 
   console.log("\n══ A3 T2 EVIDENCE ══");
@@ -249,4 +257,23 @@ test("T2: record → 1.5 s delay → play — still succeeds (simulates compare 
     diagAfter.playRejections,
     "play() must not reject (AbortError = stopPlayback raced with play)"
   ).toHaveLength(0);
+});
+
+test("T3: record button is disabled while playback is in progress", async ({
+  page,
+}) => {
+  await injectDiagnostics()({ page });
+
+  await page.goto("/practice/pronunciation");
+  const playBtn = await recordOneSec(page);
+  const recordBtn = page.getByTestId("self-compare-record");
+
+  await playBtn.click();
+
+  // The record button must be disabled while isPlayingRecorded=true.
+  // Without the fix, it was enabled: clicking it called startRecording() →
+  // stopPlayback() → audio.pause().  onended never fires on a paused element,
+  // so the playRecorded() Promise hung.  When recorder.onstop later revoked
+  // the blob URL, onerror fired → "Recorded playback failed."
+  await expect(recordBtn).toBeDisabled({ timeout: 2_000 });
 });
