@@ -49,16 +49,16 @@ type FeedbackRequestBody = {
 };
 
 // SUPABASE_URL is the canonical server-side name; fall back to VITE_SUPABASE_URL
-// so this function matches api/mercy-ai.ts + api/mercy/grammar.ts and works when
-// only the (browser-safe) VITE_ URL is set in the Vercel project. There is
-// deliberately no VITE_ fallback for the service-role key — it must never ship
-// to the browser bundle, so it has to be set explicitly as a server secret.
+// so this function matches api/mercy-ai.ts + api/mercy/grammar.ts.
+// Uses the anon key (not service-role) — RLS INSERT policy on mercy_feedback_events
+// grants anon/authenticated insert (migration 20260718000000).
 const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
-const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const supabaseAnonKey =
+  process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
 
 const supabase =
-  supabaseUrl && supabaseServiceRoleKey
-    ? createClient(supabaseUrl, supabaseServiceRoleKey)
+  supabaseUrl && supabaseAnonKey
+    ? createClient(supabaseUrl, supabaseAnonKey)
     : null;
 
 export default async function handler(
@@ -79,15 +79,9 @@ export default async function handler(
   }
 
   if (!supabase) {
-    // Name the *exact* missing var. The old combined message
-    // ("Missing …URL… or SUPABASE_SERVICE_ROLE_KEY") could not say which
-    // half was unset, so this failure stayed undiagnosed across cycles:
-    // the URL fallback (#691) was fine all along — only the server-only
-    // SUPABASE_SERVICE_ROLE_KEY was never set on the deployment. Splitting
-    // the check + logging it turns a blind park into a 30-second read.
     const missing = [
       supabaseUrl ? null : "SUPABASE_URL/VITE_SUPABASE_URL",
-      supabaseServiceRoleKey ? null : "SUPABASE_SERVICE_ROLE_KEY",
+      supabaseAnonKey ? null : "SUPABASE_ANON_KEY/VITE_SUPABASE_ANON_KEY",
     ].filter(Boolean);
     console.error(
       "[mercy-feedback] supabase_not_configured — missing env:",
