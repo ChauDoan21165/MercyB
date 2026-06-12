@@ -8,8 +8,8 @@
  */
 
 export const streakTooltip = {
-  en: "You're on a {{count}}-day streak! Keep it going 🔥",
-  vi: "Bạn đang có chuỗi {{count}} ngày! Cố lên nhé 🔥",
+  en: "{{count}} days in a row. Nice steady practice.",
+  vi: "Bạn đã học {{count}} ngày liên tiếp. Nhịp học đang đều.",
 };
 
 export const labels = {
@@ -27,7 +27,7 @@ export const statusPills = {
   // name the kindness, not the absence of it. See
   // reports/streak-shame-audit-2026-04-26.md § F-1.
   warning: "Grace day open · Còn ngày ân hạn",
-  reset:   "Reset · Đã reset",
+  reset:   "Restarted · Bắt đầu lại",
 };
 
 export const graceMessage = {
@@ -41,7 +41,7 @@ export const graceMessage = {
 
 export const emptyState = {
   en: "Start learning today to build your streak!",
-  vi: "Học hôm nay để bắt đầu xây dựng chuỗi của bạn nhé!",
+  vi: "Học một chút hôm nay để bắt đầu nhịp học của bạn nhé.",
 };
 
 /**

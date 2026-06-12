@@ -14,7 +14,7 @@ export const IELTS_COPY = {
   },
   premiumOnlyBody: {
     vi:
-      "Luyện thi IELTS đầy đủ chỉ có trong gói Premium. Nâng cấp để mở Speaking, Writing, Listening, Reading + ước lượng band điểm.",
+      "Toàn bộ phần luyện thi IELTS nằm trong gói Premium. Nâng cấp để mở Speaking, Writing, Listening, Reading và công cụ ước lượng band điểm.",
     en:
       "Full IELTS prep is part of the Premium plan. Upgrade to unlock Speaking, Writing, Listening, Reading + band estimator.",
   },
@@ -29,7 +29,7 @@ export const IELTS_COPY = {
   startCta: { vi: "Bắt đầu luyện", en: "Start practising" },
   estimatorCta: { vi: "Ước lượng band điểm", en: "Estimate your band" },
   // Writing
-  writingTitle: { vi: "Bài Viết", en: "Writing" },
+  writingTitle: { vi: "Kỹ năng Viết", en: "Writing" },
   writingTask1Heading: {
     vi: "Task 1 — Mô tả biểu đồ (≥ 150 từ, 20 phút)",
     en: "Task 1 — Describe a chart (≥ 150 words, 20 min)",
@@ -61,13 +61,13 @@ export const IELTS_COPY = {
     en: "Your response is below the minimum word count — the estimated band may be inaccurate.",
   },
   // Speaking
-  speakingTitle: { vi: "Bài Nói", en: "Speaking" },
+  speakingTitle: { vi: "Kỹ năng Nói", en: "Speaking" },
   speakingPart1: { vi: "Part 1 — Giới thiệu", en: "Part 1 — Introduction" },
   speakingPart2: { vi: "Part 2 — Bài nói dài", en: "Part 2 — Long turn" },
   speakingPart3: { vi: "Part 3 — Thảo luận", en: "Part 3 — Discussion" },
   speakingMicShellHint: {
     vi:
-      "Phần ghi âm và đánh giá tự động sẽ ra mắt trong cập nhật ban ngày. Hiện tại bạn có thể luyện tập bằng cách đọc to và bấm giờ.",
+      "Phần ghi âm và đánh giá tự động sẽ có trong bản cập nhật sắp tới. Hiện tại bạn có thể luyện bằng cách đọc to và bấm giờ.",
     en:
       "Microphone capture + automatic scoring will land in a daytime update. For now, practise by reading aloud and timing yourself.",
   },
@@ -88,16 +88,16 @@ export const IELTS_COPY = {
     en: "Speaking (1–2 minutes)",
   },
   // Listening
-  listeningTitle: { vi: "Bài Nghe", en: "Listening" },
+  listeningTitle: { vi: "Kỹ năng Nghe", en: "Listening" },
   listeningAudioPlaceholder: {
     vi:
-      "File âm thanh đang được chuẩn bị. Hiện tại bạn có thể đọc transcript để luyện vocabulary.",
+      "File âm thanh đang được chuẩn bị. Hiện tại bạn có thể đọc transcript để luyện từ vựng.",
     en:
       "Audio is in preparation. For now, study the transcript below to build vocabulary.",
   },
   listeningTranscriptLabel: { vi: "Transcript", en: "Transcript" },
   // Reading
-  readingTitle: { vi: "Bài Đọc", en: "Reading" },
+  readingTitle: { vi: "Kỹ năng Đọc", en: "Reading" },
   // Estimator
   estimatorTitle: { vi: "Ước lượng band IELTS", en: "IELTS band estimator" },
   estimatorIntro: {

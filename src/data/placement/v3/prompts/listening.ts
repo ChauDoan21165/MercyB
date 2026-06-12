@@ -43,11 +43,11 @@ export const LISTENING_PLACEMENT_PROMPTS = [
     title: "Takeaway Order",
     titleVi: "Gọi đồ mang đi",
     promptText: "Listen to a customer ordering food and answer the questions.",
-    promptTextVi: "Nghe một khách gọi đồ ăn và trả lời câu hỏi.",
+    promptTextVi: "Nghe một khách hàng gọi đồ ăn và trả lời câu hỏi.",
     audioScript:
       "Customer: Hi, I'd like one chicken banh mi and an iced tea, please. Server: Sure. Anything else? Customer: No, that's all. Can I pick it up in ten minutes?",
     audioScriptVi:
-      "Khách: Chào, cho tôi một bánh mì gà và một trà đá. Nhân viên: Vâng. Còn gì nữa không? Khách: Không, vậy thôi. Tôi có thể lấy sau mười phút không?",
+      "Khách: Chào bạn, cho tôi một bánh mì gà và một ly trà đá. Nhân viên: Vâng. Còn gì nữa không ạ? Khách: Không, vậy thôi. Tôi có thể lấy sau mười phút không?",
     expectedDurationSec: 120,
     minResponseLength: 3,
     rubricFocus: ["transactional_listening", "food_vocab", "polite_requests", "time_detail"],
@@ -81,7 +81,7 @@ export const LISTENING_PLACEMENT_PROMPTS = [
     audioScript:
       "Teacher: Mai is doing well in reading, but she is quiet during speaking activities. Parent: She practices at home, but she is afraid of making mistakes. Teacher: That's normal. I will pair her with a patient partner next week.",
     audioScriptVi:
-      "Giáo viên: Mai đọc tốt, nhưng khá im lặng trong hoạt động nói. Phụ huynh: Ở nhà cháu có luyện tập, nhưng sợ mắc lỗi. Giáo viên: Điều đó bình thường. Tuần tới tôi sẽ ghép cháu với một bạn kiên nhẫn.",
+      "Giáo viên: Mai đọc tốt, nhưng khá im lặng trong các hoạt động nói. Phụ huynh: Ở nhà cháu có luyện tập, nhưng cháu sợ mắc lỗi. Giáo viên: Điều đó bình thường. Tuần tới tôi sẽ ghép cháu với một bạn kiên nhẫn.",
     expectedDurationSec: 150,
     minResponseLength: 4,
     rubricFocus: ["problem_identification", "contrast", "emotion_recognition", "school_vocab"],

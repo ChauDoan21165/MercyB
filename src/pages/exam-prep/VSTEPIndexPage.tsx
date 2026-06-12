@@ -11,8 +11,8 @@ const SECTION_CARDS = [
   {
     to: "/exam/vstep/speaking",
     icon: <Mic size={22} />,
-    labelVi: "Nói · Speaking",
-    descVi: "30 chủ đề B1 + B2, mẹo riêng cho người Việt, từ vựng theo trình độ.",
+    labelVi: "Kỹ năng Nói · Speaking",
+    descVi: "30 chủ đề B1 và B2, mẹo riêng cho người Việt, từ vựng theo trình độ.",
     color: "rgba(185,28,28,0.10)",
     border: "rgba(185,28,28,0.18)",
     text: "rgba(127,29,29,0.94)",
@@ -20,8 +20,8 @@ const SECTION_CARDS = [
   {
     to: "/exam/vstep/listening",
     icon: <Headphones size={22} />,
-    labelVi: "Nghe · Listening",
-    descVi: "12 bài nghe B1 + B2 — hội thoại, thông báo, bài giảng, tin tức.",
+    labelVi: "Kỹ năng Nghe · Listening",
+    descVi: "12 bài nghe B1 và B2 — hội thoại, thông báo, bài giảng, tin tức.",
     color: "rgba(14,116,144,0.10)",
     border: "rgba(14,116,144,0.18)",
     text: "rgba(8,75,90,0.94)",
@@ -29,8 +29,8 @@ const SECTION_CARDS = [
   {
     to: "/exam/vstep/reading",
     icon: <BookOpen size={22} />,
-    labelVi: "Đọc · Reading",
-    descVi: "12 bài đọc B1 + B2 — email, thông báo, bài báo, đoạn luận.",
+    labelVi: "Kỹ năng Đọc · Reading",
+    descVi: "12 bài đọc B1 và B2 — email, thông báo, bài báo, đoạn luận.",
     color: "rgba(20,184,166,0.10)",
     border: "rgba(20,184,166,0.18)",
     text: "rgba(6,95,70,0.94)",
@@ -38,8 +38,8 @@ const SECTION_CARDS = [
   {
     to: "/exam/vstep/writing",
     icon: <PenLine size={22} />,
-    labelVi: "Viết · Writing",
-    descVi: "8 đề viết B1 + B2 — email, thư khiếu nại, bài luận ngắn.",
+    labelVi: "Kỹ năng Viết · Writing",
+    descVi: "8 đề viết B1 và B2 — email, thư khiếu nại, bài luận ngắn.",
     color: "rgba(99,102,241,0.10)",
     border: "rgba(99,102,241,0.18)",
     text: "rgba(55,48,163,0.94)",
@@ -62,7 +62,7 @@ export default function VSTEPIndexPage() {
           VSTEP · Kỳ thi năng lực ngoại ngữ Việt Nam
         </h1>
         <p style={{ marginTop: 8, fontSize: 14, lineHeight: 1.55, color: "rgba(0,0,0,0.66)" }}>
-          Luyện thi VSTEP B1 + B2 theo định dạng Bộ Giáo dục và Đào tạo
+          Luyện thi VSTEP B1 và B2 theo định dạng Bộ Giáo dục và Đào tạo
           (Thông tư 23/2017/TT-BGDĐT). Bốn kỹ năng: Nghe, Nói, Đọc, Viết.
         </p>
       </header>
@@ -122,13 +122,13 @@ export default function VSTEPIndexPage() {
         <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "rgba(0,0,0,0.72)" }}>
           VSTEP (Vietnamese Standardized Test of English Proficiency) là kỳ thi
           đánh giá năng lực tiếng Anh theo khung 6 bậc của Bộ Giáo dục và Đào
-          tạo. Bài thi kiểm tra 4 kỹ năng: Nghe, Nói, Đọc, Viết. B1 là chuẩn
-          đầu ra đại học; B2 là yêu cầu cho cao học và một số vị trí viên chức.
+          tạo. Bài thi kiểm tra 4 kỹ năng: Nghe, Nói, Đọc, Viết. B1 thường là
+          chuẩn đầu ra đại học; B2 thường dùng cho cao học và một số vị trí viên chức.
         </p>
         <div style={{ marginTop: 12, display: "flex", flexWrap: "wrap", gap: 8 }}>
           {[
-            { label: "B1", desc: "Sơ cấp — tốt nghiệp đại học" },
-            { label: "B2", desc: "Trung cấp — cao học, viên chức" },
+            { label: "B1", desc: "Bậc 3 — chuẩn đầu ra đại học" },
+            { label: "B2", desc: "Bậc 4 — cao học, viên chức" },
           ].map((b) => (
             <span key={b.label} style={{ padding: "4px 12px", borderRadius: 9999, background: "white", border: "1px solid #fde68a", fontSize: 12, fontWeight: 800, color: "rgba(127,29,29,0.88)" }}>
               {b.label}: {b.desc}

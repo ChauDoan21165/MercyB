@@ -9,7 +9,7 @@ export type BilingualText = { vi: string; en: string };
 
 export const REFERRAL_COPY = {
   cardHeading: {
-    vi: "Mời bạn bè",
+    vi: "Mời người thân hoặc bạn bè",
     en: "Invite friends",
   },
   cardSubheading: {
@@ -41,7 +41,7 @@ export const REFERRAL_COPY = {
     en: "Share to Zalo",
   },
   usesCount: (n: number): BilingualText => ({
-    vi: `${n} bạn đã dùng mã của bạn`,
+    vi: `${n} người đã dùng mã của bạn`,
     en: `${n} friends used your code`,
   }),
   loadingCode: {
@@ -85,7 +85,7 @@ export const REFERRAL_COPY = {
     en: "Something went wrong. Try again.",
   },
   shareMessage: (code: string, url: string): BilingualText => ({
-    vi: `Mình đang học tiếng Anh trên MercyBlade — bạn dùng mã ${code} để cả hai cùng được 7 ngày miễn phí: ${url}`,
+    vi: `Mình đang học tiếng Anh trên MercyBlade. Bạn dùng mã ${code} thì cả hai cùng được 7 ngày miễn phí: ${url}`,
     en: `I'm learning English on MercyBlade — use code ${code} so we both get 7 free days: ${url}`,
   }),
 } as const;

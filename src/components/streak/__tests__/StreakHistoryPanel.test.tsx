@@ -118,8 +118,8 @@ describe("StreakHistoryPanel — status pill (lock-step with SQL trigger)", () =
     setStreak({ lastStudiedDate: "2026-04-19" });
     render(<StreakHistoryPanel />);
     const txt = screen.getByTestId("streak-status-pill").textContent ?? "";
-    expect(txt).toContain("Reset");
-    expect(txt).toContain("Đã reset");
+    expect(txt).toContain("Restarted");
+    expect(txt).toContain("Bắt đầu lại");
   });
 
   it("UNKNOWN — null lastStudiedDate (shouldn't happen if current>0)", () => {
@@ -192,7 +192,7 @@ describe("StreakHistoryPanel — empty state (current === 0)", () => {
       "Start learning today to build your streak!",
     );
     expect(empty.textContent).toContain(
-      "Học hôm nay để bắt đầu xây dựng chuỗi của bạn nhé!",
+      "Học một chút hôm nay để bắt đầu nhịp học của bạn nhé.",
     );
   });
 

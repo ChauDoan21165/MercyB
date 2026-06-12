@@ -13,7 +13,7 @@ export const READING_PLACEMENT_PROMPTS = [
     passageText:
       "New students can get a library card at the front desk. Please bring your student ID and one photo. The library is open from 8 a.m. to 5 p.m. Monday to Friday.",
     passageTextVi:
-      "Sinh viên mới có thể lấy thẻ thư viện tại quầy lễ tân. Vui lòng mang thẻ sinh viên và một ảnh. Thư viện mở cửa từ 8 giờ sáng đến 5 giờ chiều, thứ Hai đến thứ Sáu.",
+      "Sinh viên mới có thể làm thẻ thư viện tại quầy lễ tân. Vui lòng mang thẻ sinh viên và một ảnh. Thư viện mở cửa từ 8 giờ sáng đến 5 giờ chiều, từ thứ Hai đến thứ Sáu.",
     expectedDurationSec: 120,
     minResponseLength: 2,
     rubricFocus: ["scanning", "time_words", "school_vocab", "literal_comprehension"],
@@ -213,7 +213,7 @@ export const READING_PLACEMENT_PROMPTS = [
     passageText:
       "Private English tutoring has become almost normal in many Vietnamese cities. Supporters argue that extra classes help students receive individual attention that crowded schools cannot provide. Critics, however, warn that tutoring can widen inequality because wealthier families can buy more practice and better feedback. The issue is not simply whether tutoring is good or bad, but whether schools can offer enough quality support so that tutoring becomes a choice rather than a necessity.",
     passageTextVi:
-      "Học thêm tiếng Anh đã trở nên gần như bình thường ở nhiều thành phố Việt Nam. Người ủng hộ cho rằng lớp học thêm giúp học sinh nhận được sự chú ý cá nhân mà trường đông học sinh khó cung cấp. Tuy nhiên, người phê bình cảnh báo rằng học thêm có thể làm tăng bất bình đẳng vì gia đình khá giả mua được nhiều luyện tập và phản hồi tốt hơn. Vấn đề không chỉ là học thêm tốt hay xấu, mà là liệu nhà trường có thể cung cấp đủ hỗ trợ chất lượng để học thêm trở thành lựa chọn thay vì nhu cầu bắt buộc.",
+      "Học thêm tiếng Anh đã trở nên gần như bình thường ở nhiều thành phố Việt Nam. Người ủng hộ cho rằng lớp học thêm giúp học sinh nhận được sự hỗ trợ cá nhân mà trường đông học sinh khó cung cấp. Tuy nhiên, người phê bình cảnh báo rằng học thêm có thể làm tăng bất bình đẳng vì gia đình khá giả mua được nhiều thời gian luyện tập và phản hồi tốt hơn. Vấn đề không chỉ là học thêm tốt hay xấu, mà là liệu nhà trường có thể cung cấp đủ hỗ trợ chất lượng để học thêm trở thành lựa chọn thay vì nhu cầu bắt buộc.",
     expectedDurationSec: 300,
     minResponseLength: 5,
     rubricFocus: ["argument_recognition", "contrast", "implicit_claim", "education_vocab"],
