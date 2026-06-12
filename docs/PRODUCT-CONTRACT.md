@@ -57,7 +57,7 @@ Pre-written reply strings never ship as Mercy's speech.
 
 ## Golden-Flow Enforcement
 
-Deploy is not complete until `scripts/golden-flows.sh` is green against production. This is wired as a mandatory post-deploy CI gate — the `golden-flows-prod` job (`.gitlab-ci.yml`, `verify` stage; runs on main-push + manual) — and documented in `.github/workflows/DEPLOYMENT.md`.
+Deploy is not complete until `scripts/golden-flows.sh` is green against production. This is wired as the post-Cloudflare-deploy smoke — the `golden-flows-prod` job (`.gitlab-ci.yml`, `verify` stage; scheduled on main and manually triggerable from main pipelines after `deploy-cloudflare-pages`) — and documented in `.github/workflows/DEPLOYMENT.md`.
 
 The production golden flows (in `tests/golden-flows/prod-golden-flows.pw.ts`) are:
 

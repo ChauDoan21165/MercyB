@@ -1,11 +1,9 @@
 # Deployment Configuration Guide
 
-> **2026-05-27 — post-migration rewrite.** Production hosting moved from
-> **Vercel** to **Netlify** during the May 26–27 incident cascade (see
-> `docs/runbooks/disaster-recovery.md` §0 and §2.2 for the authoritative
-> incident log). The repository simultaneously moved from GitHub to
-> **GitLab** (`gitlab.com:cd12536/mercyB`). This file is being kept up
-> to date with the new ground truth. The original Vercel-centric copy
+> **2026-06-12 — Cloudflare Pages guarded path.** Production deploys now use
+> the guarded Cloudflare Pages flow in GitLab CI (`deploy-cloudflare-pages`)
+> and `scripts/deploy-cloudflare-pages-main.sh`. Netlify deploy publish is
+> retired because it targets the dead origin. The original Vercel/Netlify copy
 > is preserved in git history if needed.
 
 ---
@@ -15,23 +13,18 @@
 - **Repository:** GitLab — `gitlab.com:cd12536/mercyB`. The
   GitHub remote is retained read-only as `old-origin` for forensics.
   Use `glab mr create`, not `gh pr create`.
-- **Hosting (production):** **Netlify**. The site at
-  `mercyblade.com` is served from Netlify with Cloudflare DNS in
-  front of it. Sentry's deploy-environment tag is read from
-  `NETLIFY_CONTEXT` (`production` / `deploy-preview` / `branch-deploy`)
-  per commit `952d3e9e3 fix(sentry): map deploy environment from
-  Netlify CONTEXT, not stale VERCEL_ENV`.
-- **Hosting (recovery / fallback):** **Vercel** is now the
-  *recovery* host. `vercel.json` still ships in the repo and the
-  Vercel project is preserved as the documented emergency landing
-  pad. Memory: [[project_vercel_prod_deploy]] (now stale on
-  "primary" — Vercel is recovery-only post-migration). See
-  `docs/runbooks/disaster-recovery.md` §2.2 for the swap procedure.
-- **CI/CD:** GitLab CI (`.gitlab-ci.yml`). Today the only scheduled
-  job is the nightly Postgres backup (`nightly-db-backup`). MR-time
-  gates (typecheck, lint, test, validate-rooms) are not yet ported
-  from the legacy GitHub Actions workflows — that work is its own
-  migration track per the GitLab-CI consolidation MR.
+- **Hosting (production):** **Cloudflare Pages**. The guarded GitLab job
+  `deploy-cloudflare-pages` shells through `scripts/deploy-cloudflare-pages-main.sh`,
+  which refuses non-main, dirty, stale, or non-canonical checkouts before
+  invoking Wrangler.
+- **Hosting (recovery / fallback):** **Vercel** and historical Netlify assets are
+  recovery context only. `vercel.json` and Netlify config remain in the repo for
+  disaster-recovery posture and API mirror tests, not for the routine production
+  publish path. See `docs/runbooks/disaster-recovery.md` §2.2 for swap procedure.
+- **CI/CD:** GitLab CI (`.gitlab-ci.yml`). The production flow is manual
+  `deploy-cloudflare-pages` on main followed by `golden-flows-prod`. Scheduled
+  `golden-flows-prod` runs remain production canaries; merge-request pipelines
+  never run production golden flows.
 - **Legacy GitHub Actions:** the `.github/workflows/*.yml` files
   (`production-deploy.yml`, `preview-deployment.yml`,
   `deploy-edge-functions.yml`, `sync-lessons.yml`, etc.) are
@@ -119,43 +112,24 @@ instead of failing closed. **Never** ship a production deploy without
 at least the no-token smoke passing, and never announce a deploy as
 done until the full five-flow suite is green.
 
-### Today (Netlify-native)
+### Today (Cloudflare Pages guarded deploy)
 
-Netlify is connected to the GitLab repo via Netlify's GitLab
-integration. The connection is configured in the Netlify dashboard,
-not in this repo. On every push to `main`, Netlify:
-
-1. Detects the push via the GitLab webhook.
-2. Pulls the source.
-3. Runs `npm install` and `npm run build`.
-4. Publishes the `dist/` output to the production site at
-   `mercyblade.com`.
-
-There is **no GitLab CI deploy job** today — Netlify's webhook
-integration is the trigger. If a deploy goes wrong, the Netlify
-dashboard's deploy log is the first thing to check.
-
-### Manual production deploy (rare)
-
-For emergency manual deploys (e.g. Netlify's webhook is broken,
-or a quick one-off from a specific commit):
+Production deploys are manual, main-only, and guarded:
 
 ```bash
 cd /Users/admin/MercyB
 git switch main
 git pull --ff-only origin main
-npm install
-npm run build
-if grep -rq "placeholder.invalid" dist/assets/*.js; then
-  echo "ABORT: placeholder.invalid found in built JS assets" >&2
-  exit 2
-fi
-netlify deploy --prod --dir=dist --auth="$NETLIFY_AUTH_TOKEN"
+npm run deploy:cf-pages:main
 ```
 
-`NETLIFY_AUTH_TOKEN` is stored in macOS Keychain — see
-[`docs/runbooks/disaster-recovery.md`](../../docs/runbooks/disaster-recovery.md)
-§5.5 for the pre-staged form.
+In GitLab, the equivalent operator flow is:
+
+1. Merge the change you want to ship into `main`.
+2. Wait for the main pipeline's required gates to pass.
+3. Click **Play** on `deploy-cloudflare-pages` when `MERCYB_CF_DEPLOY_ENABLED=1`.
+4. After the Wrangler deploy finishes, click **Play** on `golden-flows-prod`.
+5. Do not call the deploy complete until the golden flows pass against production.
 
 ### Recovery deploy (Netlify down, Vercel as fallback)
 

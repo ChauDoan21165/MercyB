@@ -2,7 +2,7 @@
 
 Last verified: 2026-06-06
 
-Companion to [`netlify-ship-to-prod.md`](./netlify-ship-to-prod.md), which owns the **routine** manual release flow (merge → green `main` pipeline → Play `deploy-netlify-publish-only`). This document owns three things that runbook does not: the **lock posture**, the **verification discipline** that proves a deploy actually landed, and the **2026-06-06 incident** that motivated both. When the two disagree, this document is the authority on lock state and verification.
+Companion to [`netlify-ship-to-prod.md`](./netlify-ship-to-prod.md), which is now stale. This document remains historical context for the old Netlify lock posture, the verification discipline that proves a deploy actually landed, and the 2026-06-06 incident that motivated both. Current production deploys use the guarded Cloudflare Pages job plus `golden-flows-prod`.
 
 ---
 
@@ -20,8 +20,8 @@ Companion to [`netlify-ship-to-prod.md`](./netlify-ship-to-prod.md), which owns 
 ### The intended posture
 
 - The Netlify **production context is kept LOCKED**. A locked production context refuses every deploy except a deliberate publish, and pins prod to whatever build is currently published.
-- Releases ship through the GitLab manual job **`deploy-netlify-publish-only`** (`.gitlab-ci.yml`, stage `deploy`, `when: manual`, rule `$CI_COMMIT_BRANCH == "main"`). It runs `npm run build` in CI off the pipeline's `main` SHA, then `netlify-cli deploy --prod --dir=dist --no-build`. **It builds from `origin/main` in CI — never from anyone's local checkout.**
-- A deploy is *intentional* only when a human triggers that job on a chosen green `main` pipeline.
+- Historical Netlify releases shipped through a GitLab manual publish job that built from the pipeline SHA. That job is retired because it targets the dead origin.
+- Current releases ship through the guarded Cloudflare Pages job (`deploy-cloudflare-pages`) on a chosen green `main` pipeline, followed by `golden-flows-prod`.
 
 ### What unlocking does (the auto-promote)
 
@@ -42,11 +42,11 @@ On 2026-06-06 the production context was unlocked for ~30 minutes to retry a stu
   The correct response is: unlock in the dashboard (admin-only), then **retry the same job** (so it stays pinned to the intended SHA), then re-lock.
 - **Do not create a new pipeline to deploy** (`glab ci run -b main`). An API/web-sourced pipeline does not match the push/MR rules of the test jobs and can come up empty/jobless. To fire the manual deploy, **trigger the existing push pipeline's manual job in place**:
   ```bash
-  glab ci trigger deploy-netlify-publish-only -p <PIPELINE_ID>   # pins to that pipeline's SHA
+  glab ci trigger deploy-cloudflare-pages -p <PIPELINE_ID>   # pins to that pipeline's SHA
   # or retry a specific failed/finished job instance (keeps the same SHA):
   glab ci retry <JOB_ID>
   ```
-  The job name is `deploy-netlify-publish-only` — **not** `deploy-netlify`.
+  The job name is `deploy-cloudflare-pages`.
 
 ---
 
@@ -120,7 +120,7 @@ Within ~18 hours, four distinct builds were in play for one ship. `version.json`
 | Build (short SHA) | What it was | How it got there | Live? | How we knew |
 |---|---|---|---|---|
 | **`40bb5b0`** | Pre-fix stale prod (merge `lane-e/family-bridge-grammar-2b`, built `2026-06-06T01:01Z`) | Last build before the incident | Initially **yes**, then superseded | `version.json.hash=40bb5b0`; served chunk had **OLD** `isPremiumTier` (`==="premium_month"||==="premium_year"`) → confirmed the MR 455 fix was NOT live |
-| **`feff731`** (`feff731b0`, pipeline #949) | Intended ship — contains the MR 455 ParentView fix | Manual `deploy-netlify-publish-only` retry after unlock, published `19:21Z` | **Yes**, briefly | `version.json.hash=feff731`; served chunk showed **FIXED** `isPremiumTier` (`!=="level0"`) |
+| **`feff731`** (`feff731b0`, pipeline #949) | Intended ship — contains the MR 455 ParentView fix | Manual Netlify publish retry after unlock, published `19:21Z` | **Yes**, briefly | `version.json.hash=feff731`; served chunk showed **FIXED** `isPremiumTier` (`!=="level0"`) |
 | **`935ca26`** (`935ca264f`, pipeline #950) | Newer HEAD at the time (added the public `/practice/pronunciation` self-compare) | Netlify **built** it (build record at the merge time) but it was **never published** | **No** — build-only | It never appeared as the served `version.json.hash`; prod read `feff731`, then `f30f045`. A build row in the dashboard was mistaken for a publish — it wasn't. |
 | **`f30f045`** (`f30f045c3`, current HEAD) | `935ca26` + `fix/speak-followup-depth-and-coherence` | **Auto-promoted**: merged `19:50:50Z`, auto-published `19:51:10Z` during the unlock window | **Yes** (current, locked) | `version.json.hash=f30f045`, `buildTime=19:51:10Z`; served entry chunk changed and the route table still mounted `/practice/pronunciation` |
 
@@ -142,4 +142,4 @@ Before saying "it's deployed":
 - [ ] `buildTime` is recent and expected (not an older or surprise build).
 - [ ] A served chunk greps to the **new** code, not the old.
 - [ ] If you unlocked: re-lock now, and check no *other* merge auto-promoted during the window.
-- [ ] You triggered/retried an existing pipeline's `deploy-netlify-publish-only` (not `glab ci run`, not `--prod-if-unlocked`).
+- [ ] You triggered the existing pipeline's guarded Cloudflare Pages deploy job and then `golden-flows-prod`.

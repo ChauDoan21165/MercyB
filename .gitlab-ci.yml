@@ -1183,41 +1183,6 @@ post-merge-worktree-reaper:
       git -C "$REAPER_REPO" fetch origin main --prune
       scripts/supervisor/post-merge-worktree-reaper.sh --live --repo "$REAPER_REPO" --merged-ref origin/main --roots "${MERCYB_REAPER_WORKTREE_ROOTS:-/private/tmp}" --builds-dir "${MERCYB_REAPER_BUILDS_DIR:-${CI_BUILDS_DIR:-}}" --reason "main-push pipeline ${CI_PIPELINE_ID:-unknown}"
 
-# ── Manual production frontend deploy ─────────────────────────────────
-
-deploy-netlify-publish-only:
-  <<: [*node_job, *local_runner]
-  stage: deploy
-  allow_failure: true
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "main"'
-      when: manual
-    - when: never
-  script:
-    - npm run build
-    - |
-      if grep -rq "placeholder.invalid" dist/assets/*.js; then
-        echo "ABORT: placeholder.invalid found in built JS assets"
-        exit 2
-      fi
-    - |
-      SITE_INFO_FILE="$(mktemp)"
-      npx --yes netlify-cli api getSite --data "{\"site_id\":\"$NETLIFY_SITE_ID\"}" --auth "$NETLIFY_AUTH_TOKEN" > "$SITE_INFO_FILE"
-      LOCKED_DEPLOY_ID="$(
-        node -e '
-          const fs = require("node:fs");
-          const site = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
-          const deploy = site.published_deploy || {};
-          process.stdout.write(deploy.locked && deploy.id ? deploy.id : "");
-        ' "$SITE_INFO_FILE"
-      )"
-      rm -f "$SITE_INFO_FILE"
-      if [ -n "$LOCKED_DEPLOY_ID" ]; then
-        echo "Unlocking locked Netlify production deploy before manual publish."
-        npx --yes netlify-cli api unlockDeploy --data "{\"deploy_id\":\"$LOCKED_DEPLOY_ID\"}" --auth "$NETLIFY_AUTH_TOKEN" >/dev/null
-      fi
-    - npx --yes netlify-cli deploy --prod --dir=dist --functions=netlify/functions --no-build --skip-functions-cache --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN"
-
 # ── Manual Cloudflare Pages production deploy (DORMANT — not enabled) ───
 #
 # Removes the `npx wrangler` toil while KEEPING the human gate Chau set after
@@ -1254,22 +1219,19 @@ deploy-cloudflare-pages:
   script:
     - bash scripts/deploy-cloudflare-pages-main.sh
 
-# ── `verify` stage: post-deploy production golden flows (MANDATORY) ────
+# ── `verify` stage: post-deploy production golden flows ────────────────
 #
-# Runs the production golden-flow smoke against the LIVE site. Every main
-# merge auto-publishes via the Netlify webhook, so a main-push pipeline IS
-# a post-deploy moment. This is the runtime gate behind the 2026-06-10
-# placeholder.invalid incident: the build-time env guard catches a bad
-# *build*, the pre-publish dist scan catches a bad *artifact*, and this
-# catches a bad *deploy* — a stale/wrong bundle served, an unreachable
-# auth backend, silently-degraded TTS, or a bypassed entitlement gate.
+# Runs the production golden-flow smoke against the LIVE Cloudflare Pages
+# site. A main push is no longer assumed to be a deploy; Chau or an operator
+# runs the manual Cloudflare Pages deploy job first, then clicks this manual
+# verify job from the same main pipeline. Scheduled main pipelines can still
+# run the smoke automatically as a production canary.
 #
-# Scope is main-push (auto) + manual web trigger ONLY — never
-# merge-request pipelines — so it verifies real production state, not an
-# MR's un-deployed code, and a still-broken prod cannot red unrelated
-# feature MRs. It carries no `needs:`, so it runs after the `test` stage
-# (and the non-blocking manual `deploy` stage); that natural delay also
-# gives the Netlify webhook publish time to land before the suite probes.
+# Scope is main schedule + manual main pipelines ONLY — never merge-request
+# pipelines and never automatic main-push gating. This preserves the lesson
+# from the production-e2e incident: production smoke must be triggerable after
+# a real deploy, but a stale or broken prod state must not red unrelated MRs or
+# block ordinary pipeline progression before a deploy has even happened.
 #
 # Full five-flow gate when either:
 #   a) GOLDEN_FLOW_PREMIUM_JWT + GOLDEN_FLOW_FREE_JWT are set (direct override), OR
@@ -1289,9 +1251,13 @@ golden-flows-prod:
   rules:
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $CI_COMMIT_BRANCH == "main"'
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
-    - if: '$CI_PIPELINE_SOURCE == "web"'
       when: manual
+      allow_failure: true
+    - if: '$CI_PIPELINE_SOURCE == "web" && $CI_COMMIT_BRANCH == "main"'
+      when: manual
+      allow_failure: true
     - when: never
   script:
     - |
