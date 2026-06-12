@@ -3783,6 +3783,18 @@ export const lessons: KoreanLesson[] =     [
         {
           "hangul": "논지 전개 (論旨展開)",
           "meaning": "triển khai luận điểm"
+        },
+        {
+          "hangul": "근거 제시 (根據提示)",
+          "meaning": "trình bày căn cứ / presenting evidence"
+        },
+        {
+          "hangul": "단락 구성 (段落構成)",
+          "meaning": "cấu trúc đoạn văn / paragraph structure"
+        },
+        {
+          "hangul": "초안 수정 (草案修正)",
+          "meaning": "chỉnh sửa bản nháp / revising a draft"
         }
       ],
       "sentences": [
@@ -3793,13 +3805,106 @@ export const lessons: KoreanLesson[] =     [
           "vi": "Một tiểu luận học thuật tốt được đánh giá không phải bởi tính mới lạ của kết luận, mà bởi tính minh bạch của lập luận dẫn đến kết luận."
         },
         {
+          "korean": "기존 논의를 요약하는 데 그치면 에세이는 독립적인 논증이 아니라 독서 보고서에 머문다.",
+          "romanized": "Gijon nonuireul yoyak-haneun de geuchimyeon eseineun dongnipjeogin nonjeungi anira dokseo bogoseo-e meomunda.",
+          "en": "If it stops at summarising prior discussion, the essay remains a reading report rather than an independent argument.",
+          "vi": "Nếu chỉ dừng ở việc tóm tắt các thảo luận có sẵn, tiểu luận chỉ còn là báo cáo đọc sách chứ không phải một lập luận độc lập."
+        },
+        {
+          "korean": "반론을 먼저 설정하고 그 반론이 어디까지 타당한지 인정한 뒤, 남는 쟁점을 중심으로 자신의 주장을 좁혀야 한다.",
+          "romanized": "Balloneul meonjeo seoljeong-hago geu balloni eodikkaji tadang-hanji injeong-han dwi, namneun jaengjeomeul jungsimeuro jasin-ui jujangeul jopyeoya handa.",
+          "en": "You should first set up the counterargument, acknowledge how far it is valid, and then narrow your claim around the remaining issue.",
+          "vi": "Trước hết cần đặt ra phản luận, thừa nhận phản luận đó đúng đến đâu, rồi thu hẹp luận điểm của mình quanh phần vấn đề còn lại."
+        },
+        {
+          "korean": "각 단락의 첫 문장은 주장, 중간 문장은 근거, 마지막 문장은 다음 단락으로 넘어가는 연결 고리를 맡아야 한다.",
+          "romanized": "Gak dallagui cheot munjangeun jujang, junggan munjangeun geungeo, majimak munjangeun daeum dallageuro neomeoganeun yeongyeol gorireul mataya handa.",
+          "en": "The first sentence of each paragraph should carry the claim, the middle sentences the evidence, and the last sentence the link to the next paragraph.",
+          "vi": "Câu đầu mỗi đoạn nên gánh luận điểm, các câu giữa gánh căn cứ, và câu cuối làm mắt nối sang đoạn tiếp theo."
+        },
+        {
           "korean": "자기 논증의 한계를 스스로 지적하는 '유보'는, 약점이 아니라 비판적 사고의 징표다.",
           "romanized": "Jagi nonjeung-ui hangyereul seuseuro jijeok-haneun 'yubo'neun, yakjeom-i anira bipanjeok sago-ui jingpyo-da.",
           "en": "The 'qualification' that points out the limits of one's own argument is not a weakness but a sign of critical thinking.",
           "vi": "Sự 'bảo lưu' tự chỉ ra giới hạn của lập luận mình không phải là điểm yếu, mà là dấu hiệu của tư duy phê phán."
         }
       ],
-      "dialogue": [],
+      "dialogue": [
+        {
+          "speaker": "지도교수",
+          "hangul": "초안은 성실하지만 아직 요약에 가깝습니다. 본인의 문제 제기가 어디에 있습니까?",
+          "meaning": "The draft is diligent, but it is still close to a summary. Where is your own problem statement?",
+          "text_vi": "Bản nháp chăm chỉ, nhưng vẫn gần với tóm tắt. Phần đặt vấn đề của chính em nằm ở đâu?"
+        },
+        {
+          "speaker": "학생",
+          "hangul": "선행 논의의 공백을 먼저 한 단락으로 정리하고, 그 뒤에 제 논지를 좁혀 보겠습니다.",
+          "meaning": "I will first summarise the gap in prior discussion in one paragraph, then narrow my own argument.",
+          "text_vi": "Em sẽ trước hết tóm lại khoảng trống của thảo luận trước đó trong một đoạn, rồi thu hẹp luận điểm của mình."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "학생",
+          "hangul": "교수님, 학술 에세이 초안을 가져왔습니다. 읽어 보니 자료는 많은데 논지가 약한 것 같습니다.",
+          "meaning": "Professor, I brought the academic-essay draft. Reading it again, I think it has many sources but a weak thesis.",
+          "vi": "Thưa Giáo sư, em mang bản nháp tiểu luận học thuật. Đọc lại thì em thấy tài liệu nhiều nhưng luận điểm còn yếu."
+        },
+        {
+          "speaker": "지도교수",
+          "hangul": "맞습니다. 지금 글은 '누가 무엇을 말했다'가 중심입니다. C2 에세이는 '그 말들이 어떤 긴장을 만들고, 필자가 어디에 개입하는가'를 보여주어야 합니다.",
+          "meaning": "Correct. The present text centres on 'who said what.' A C2 essay must show what tension those statements create and where the writer intervenes.",
+          "vi": "Đúng vậy. Bài hiện tại xoay quanh 'ai đã nói gì'. Tiểu luận C2 phải cho thấy các phát biểu đó tạo ra căng thẳng nào, và người viết can thiệp vào đâu."
+        },
+        {
+          "speaker": "학생",
+          "hangul": "그러면 서론에서 연구사를 길게 정리하기보다, 두 입장의 충돌을 먼저 제시하는 편이 낫겠습니까?",
+          "meaning": "Then would it be better to present the conflict between two positions first, rather than summarising the research history at length in the introduction?",
+          "vi": "Vậy trong mở bài, thay vì tóm dài lịch sử nghiên cứu, em nên đưa xung đột giữa hai lập trường lên trước phải không ạ?"
+        },
+        {
+          "speaker": "지도교수",
+          "hangul": "그렇습니다. 서론은 배경 설명이 아니라 읽기의 방향을 정하는 장치입니다. 마지막 문장에는 반드시 자신의 논지를 압축해서 쓰세요.",
+          "meaning": "Yes. The introduction is not background explanation but a device that sets the direction of reading. In the last sentence, compress your own thesis clearly.",
+          "vi": "Đúng vậy. Mở bài không phải là giải thích bối cảnh, mà là thiết bị định hướng cách đọc. Câu cuối phải nén rõ luận điểm của chính em."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn viết mở bài cho một 학술 에세이 về văn học hiện đại Hàn. Dùng cấu trúc: 기존 논의 A → 기존 논의 B → 두 입장의 긴장 → 본 에세이의 논지.",
+        "Bạn nhận phản hồi '요약은 좋지만 주장이 없다'. Viết 3 câu sửa chữa: thừa nhận vấn đề, nêu lại 문제 제기, cam kết chỉnh 단락 첫 문장 thành 주장.",
+        "Bạn cần đưa 반론 vào đoạn thân bài. Viết một đoạn 4 câu: 반론 제시 → 부분 인정 → 한계 지적 → 자신의 논지 강화."
+      ],
+      "roleplay_prompts_en": [
+        "Write an introduction for a 학술 에세이 on modern Korean literature. Use the structure: prior position A → prior position B → tension between the two → this essay's thesis.",
+        "You receive feedback: 'the summary is good, but there is no claim.' Write three repair sentences: acknowledge the issue, restate the problem statement, and commit to making each paragraph's first sentence a claim.",
+        "You need to include a counterargument in a body paragraph. Write a four-sentence paragraph: present the counterargument → partially acknowledge it → point out its limit → strengthen your own thesis."
+      ],
+      "register_notes": "C2 학술 에세이 register: văn viết 〜다체. Không viết '제 생각에는' hoặc '느낌상' trong thân bài; thay bằng '〜로 볼 수 있다', '〜로 읽힌다', '〜라는 점에서'. Luận điểm phải hedge đúng mức: quá chắc nghe giáo điều, quá mềm nghe thiếu trách nhiệm. Công thức hữu dụng: 'A라는 반론은 타당하지만, B라는 점에서는 여전히 한계를 갖는다.'",
+      "register_notes_en": "Register: a C2 academic essay uses written 〜다체. Avoid '제 생각에는' (in my opinion) and '느낌상' (it feels like); use '〜로 볼 수 있다' (can be seen as), '〜로 읽힌다' (can be read as), and '〜라는 점에서' (in that respect). Hedge enough to be rigorous, but not so much that the claim disappears.",
+      "idiom_glosses": [
+        {
+          "idiom": "문제 제기",
+          "literal": "đặt ra vấn đề",
+          "literal_en": "raising the problem",
+          "meaning": "(학술) phần biến đề tài rộng thành câu hỏi có thể tranh luận",
+          "meaning_en": "The move that turns a broad topic into a debatable question. (academic)",
+          "example": "본 에세이의 문제 제기는 번역의 충실성이 아니라 번역이 생산하는 새로운 의미에 있다.",
+          "example_en": "This essay's problem statement lies not in the fidelity of translation but in the new meaning produced by translation."
+        },
+        {
+          "idiom": "논지 전개",
+          "literal": "triển khai luận điểm",
+          "literal_en": "development of the thesis",
+          "meaning": "(학술) cách một claim được mở rộng qua từng đoạn bằng căn cứ và phản luận",
+          "meaning_en": "The way a claim is expanded paragraph by paragraph through evidence and counterargument. (academic)",
+          "example": "논지 전개가 명확하려면 각 단락의 기능이 서로 달라야 한다.",
+          "example_en": "For thesis development to be clear, each paragraph must have a distinct function."
+        }
+      ],
+      "cultural_notes_vi": "TIỂU LUẬN HỌC THUẬT HÀN: (1) 대학원 세미나에서 에세이는 논문보다 짧지만, 논증의 책임은 가볍지 않다. (2) Giáo sư Hàn thường phản hồi vào cấu trúc: 서론이 너무 길다, 논지가 늦게 나온다, 반론이 없다. (3) Dẫn nguồn cần tiết chế: trích quá nhiều học giả mà không can thiệp sẽ bị đọc là 요약문. (4) Bài tốt thường bắt đầu từ một 긴장: hai cách đọc đều có lý nhưng không thể cùng đúng hoàn toàn. (5) Người Việt dễ viết kiểu diễn giải dài; C2 Hàn đòi hỏi mỗi đoạn có chức năng rõ.",
+      "cultural_notes_en": "KOREAN ACADEMIC ESSAYS: (1) In graduate seminars, an essay is shorter than a thesis, but its argumentative responsibility is not light. (2) Korean professors often comment on structure: the introduction is too long, the thesis appears too late, or no counterargument is present. (3) Citation must be restrained: quoting many scholars without intervention reads as a summary. (4) A strong essay often starts from a tension: two readings are both plausible but cannot both be fully right. (5) Vietnamese learners often write long exposition; C2 Korean writing expects every paragraph to have a clear function.",
+      "tip_advice_vi": "Quy trình sửa 학술 에세이: (1) Gạch chân câu đầu mỗi đoạn; nếu không phải 주장, viết lại. (2) Đánh dấu mỗi nguồn trích dẫn: nó là 근거, 반론, hay 배경? Nếu không rõ, bỏ. (3) Thêm một câu 유보 trước kết luận để cho thấy tự phê phán. (4) Kiểm tra câu cuối 서론: nó phải trả lời 'bài này sẽ chứng minh gì?'. (5) Đừng kết bằng 요약 thuần túy; kết luận phải cho thấy sau lập luận, vấn đề được nhìn khác đi thế nào.",
+      "tip_advice_en": "Revision routine for a 학술 에세이: (1) Underline the first sentence of each paragraph; if it is not a claim, rewrite it. (2) Label every citation: is it evidence, counterargument, or background? If unclear, cut it. (3) Add one qualification before the conclusion to show self-critique. (4) Check the last sentence of the introduction: it must answer 'what will this essay prove?' (5) Do not end with pure summary; the conclusion should show how the problem looks different after the argument.",
       "exercises": [
         {
           "type": "fill-blank",
@@ -3827,6 +3932,11 @@ export const lessons: KoreanLesson[] =     [
             }
           ],
           "instruction": "Nối thuật ngữ"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Nếu chỉ dừng ở việc tóm tắt các thảo luận có sẵn, tiểu luận chỉ còn là báo cáo đọc sách chứ không phải một lập luận độc lập.",
+          "hangul": "기존 논의를 요약하는 데 그치면 에세이는 독립적인 논증이 아니라 독서 보고서에 머문다."
         }
       ]
     },
@@ -3856,6 +3966,26 @@ export const lessons: KoreanLesson[] =     [
         {
           "hangul": "한계 인정 (限界認定)",
           "meaning": "thừa nhận giới hạn"
+        },
+        {
+          "hangul": "논리적 일관성 (論理的一貫性)",
+          "meaning": "tính nhất quán logic"
+        },
+        {
+          "hangul": "방법론적 선택 (方法論的選擇)",
+          "meaning": "lựa chọn phương pháp luận"
+        },
+        {
+          "hangul": "수정 요구 (修正要求)",
+          "meaning": "yêu cầu chỉnh sửa"
+        },
+        {
+          "hangul": "최종본 제출 (最終本提出)",
+          "meaning": "nộp bản cuối"
+        },
+        {
+          "hangul": "학위 논문 (學位論文)",
+          "meaning": "luận văn / luận án học vị"
         }
       ],
       "sentences": [
@@ -3866,13 +3996,106 @@ export const lessons: KoreanLesson[] =     [
           "vi": "Mục đích của thi vấn đáp không phải là đẩy thí sinh vào tình thế khó, mà là cùng nhau kiểm chứng logic của luận văn."
         },
         {
+          "korean": "심사위원의 질문은 대개 약점을 공격하기보다, 연구자가 자신의 방법론적 선택을 얼마나 의식적으로 설명할 수 있는지를 확인한다.",
+          "romanized": "Simsa-wiwon-ui jilmuneun daegae yakjeomeul gonggyeok-hagiboda, yeongujaga jasin-ui bangbeomnonjeok seontaeg-eul eolmana uisikjeogeuro seolmyeong-hal su inneunjireul hwagin-handa.",
+          "en": "Committee questions usually check how consciously the researcher can explain methodological choices, rather than simply attacking weaknesses.",
+          "vi": "Câu hỏi của hội đồng thường kiểm tra việc người nghiên cứu có thể giải thích có ý thức các lựa chọn phương pháp luận đến đâu, hơn là chỉ tấn công điểm yếu."
+        },
+        {
+          "korean": "연구 윤리에 관한 질문을 받았을 때에는 절차, 승인 번호, 자료 보관 방식까지 구체적으로 답해야 한다.",
+          "romanized": "Yeongu yullie gwanhan jilmuneul badat-seul ttae-eneun jeolcha, seungin beonho, jaryo bogwan bangsikkaji guchejeogeuro daphaeya handa.",
+          "en": "When asked about research ethics, you must answer concretely down to procedure, approval number, and data-storage method.",
+          "vi": "Khi nhận câu hỏi về đạo đức nghiên cứu, cần trả lời cụ thể đến quy trình, số phê duyệt, và cách lưu trữ dữ liệu."
+        },
+        {
+          "korean": "한계를 인정하는 답변은 방어가 아니라 신뢰의 출발점이다. 다만 그 한계가 결론 전체를 무너뜨리는지 여부를 함께 설명해야 한다.",
+          "romanized": "Hangyereul injeong-haneun dapbyeoneun bangeoga anira sinroe-ui chulbaljeom-ida. Daman geu hangye-ga gyeollon jeonchereul muneotteurineunji yeobureul hamkke seolmyeong-haeya handa.",
+          "en": "An answer that acknowledges a limitation is not a retreat but a starting point for trust. However, you must also explain whether that limitation undermines the whole conclusion.",
+          "vi": "Câu trả lời thừa nhận giới hạn không phải là phòng thủ, mà là điểm bắt đầu của sự tin cậy. Tuy nhiên cũng phải giải thích liệu giới hạn đó có làm sụp toàn bộ kết luận hay không."
+        },
+        {
           "korean": "'모르겠습니다'라고 답하는 것은 부끄러운 일이 아니다. 모르는 것을 아는 체하는 것이야말로 학문의 정신에 반한다.",
           "romanized": "'Moreugetseumnida'rago dap-haneun geoseun bukkeureoun iri anida. Moreuneun geoseul aneun che-haneun geosiyamallo hangmunui jeongsine banhanda.",
           "en": "Answering 'I don't know' is not shameful. Pretending to know what one does not know is what goes against the spirit of scholarship.",
           "vi": "Trả lời 'tôi không biết' không phải là điều đáng xấu hổ. Giả vờ biết điều mình không biết mới là điều phản lại tinh thần học thuật."
         }
       ],
-      "dialogue": [],
+      "dialogue": [
+        {
+          "speaker": "심사위원",
+          "hangul": "이 표본 규모로 일반화가 가능하다고 보십니까?",
+          "meaning": "Do you think generalization is possible with this sample size?",
+          "text_vi": "Với quy mô mẫu này, anh/chị có cho rằng có thể khái quát hóa không?"
+        },
+        {
+          "speaker": "응시자",
+          "hangul": "전면적 일반화에는 한계가 있습니다. 다만 본 연구는 일반화보다 특정 맥락에서의 기제 설명을 목표로 하였습니다.",
+          "meaning": "There is a limit to full generalization. However, this study aimed to explain a mechanism in a specific context rather than to generalize broadly.",
+          "text_vi": "Việc khái quát hóa toàn diện có giới hạn. Tuy nhiên nghiên cứu này nhắm tới giải thích cơ chế trong một bối cảnh cụ thể hơn là khái quát rộng."
+        }
+      ],
+      "dialogue_long": [
+        {
+          "speaker": "응시자",
+          "hangul": "안녕하십니까. 오늘 논문 구술 심사를 받게 된 응웬 민지입니다. 먼저 귀한 시간을 내 주신 심사위원님들께 감사드립니다.",
+          "meaning": "Good day. I am Nguyen Minji, here for today's thesis oral defense. First, I thank the committee members for their valuable time.",
+          "vi": "Kính chào hội đồng. Em là Nguyễn Minji, hôm nay tham gia bảo vệ luận văn. Trước hết em xin cảm ơn các thầy cô trong hội đồng đã dành thời gian quý báu."
+        },
+        {
+          "speaker": "심사위원장",
+          "hangul": "발표는 15분 이내로 해 주시고, 이후 질의응답을 진행하겠습니다.",
+          "meaning": "Please keep the presentation within 15 minutes; we will then proceed to Q&A.",
+          "vi": "Phần trình bày xin giữ trong 15 phút, sau đó chúng ta sẽ tiến hành hỏi đáp."
+        },
+        {
+          "speaker": "심사위원",
+          "hangul": "연구 질문과 결론 사이의 연결은 분명합니다. 다만 방법론 선택의 이유를 조금 더 구체적으로 설명해 주시겠습니까?",
+          "meaning": "The link between the research question and conclusion is clear. However, could you explain the reason for your methodological choice more concretely?",
+          "vi": "Liên kết giữa câu hỏi nghiên cứu và kết luận rõ. Tuy nhiên anh/chị có thể giải thích cụ thể hơn lý do lựa chọn phương pháp luận không?"
+        },
+        {
+          "speaker": "응시자",
+          "hangul": "예, 말씀드리겠습니다. 본 연구의 자료가 시간에 따른 변화를 포함하지 않기 때문에 종단 분석보다 사례 내 비교가 더 적절하다고 판단하였습니다.",
+          "meaning": "Yes, I will explain. Because this study's data do not include change over time, I judged within-case comparison more appropriate than longitudinal analysis.",
+          "vi": "Vâng, em xin trình bày. Vì dữ liệu của nghiên cứu này không bao gồm biến đổi theo thời gian, em cho rằng so sánh trong cùng trường hợp phù hợp hơn phân tích dọc."
+        }
+      ],
+      "roleplay_prompts": [
+        "Bạn bị hỏi về 한계 인정: '표본이 너무 작은 것 아닙니까?' Trả lời 4 lớp: 인정 → 연구 목적 재확인 → 결론 범위 제한 → 후속 연구 제안.",
+        "Bạn bị hỏi về 연구 윤리. Trả lời bằng 하십시오체, nêu IRB/승인 절차, 익명화, 자료 보관, 삭제 계획.",
+        "Bạn không biết câu trả lời. Soạn câu thành thật nhưng chuyên nghiệp: 모르겠습니다 → 추측하지 않겠습니다 → 추가 검토 후 답변드리겠습니다."
+      ],
+      "roleplay_prompts_en": [
+        "You are asked about limitation acknowledgment: 'Isn't the sample too small?' Answer in four layers: acknowledge → restate the research aim → limit the scope of the conclusion → propose follow-up research.",
+        "You are asked about research ethics. Answer in 하십시오체, mentioning IRB/approval procedure, anonymization, data storage, and deletion plan.",
+        "You do not know the answer. Compose a professional honest answer: I do not know → I will not guess → I will review further and respond."
+      ],
+      "register_notes": "논문 구술 심사 register: 하십시오체가 기본이다. 심사위원에게는 '위원님께서 지적하신 부분'처럼 높임을 유지한다. 답변 구조는 감사/인정 → 핵심 답변 → 근거 → 필요 시 수정 약속. 피해야 할 표현: '그건 아닌데요', '아마도', '제 생각에는 그냥'. 모르면 '현재로서는 정확히 답변드리기 어렵습니다'라고 말하고 추후 확인을 약속한다.",
+      "register_notes_en": "Register: a thesis defense uses 하십시오체 as the default. Maintain honorific framing toward committee members, e.g. '위원님께서 지적하신 부분' (the point the committee member raised). Strong answer structure: thanks/acknowledgment → core answer → evidence → revision promise if needed. If you do not know, say you cannot answer accurately at present and commit to checking.",
+      "idiom_glosses": [
+        {
+          "idiom": "한계가 있습니다",
+          "literal": "có giới hạn",
+          "literal_en": "there is a limitation",
+          "meaning": "(심사) thừa nhận phạm vi mà không tự phá luận văn",
+          "meaning_en": "A way to acknowledge scope without destroying the thesis. (defense)",
+          "example": "전면적 일반화에는 한계가 있습니다.",
+          "example_en": "There is a limit to full generalization."
+        },
+        {
+          "idiom": "추가로 검토하겠습니다",
+          "literal": "sẽ xem xét thêm",
+          "literal_en": "I will review it further",
+          "meaning": "(심사) câu thoát chuyên nghiệp khi không thể trả lời chắc tại chỗ",
+          "meaning_en": "A professional escape phrase when you cannot answer with certainty on the spot. (defense)",
+          "example": "그 부분은 추가로 검토한 뒤 최종본에 반영하겠습니다.",
+          "example_en": "I will review that part further and reflect it in the final version."
+        }
+      ],
+      "cultural_notes_vi": "BẢO VỆ LUẬN VĂN Ở HÀN: (1) 석사/박사 구술 심사는 thường có 3-5 심사위원, không khí trang trọng nhưng thiên về kiểm chứng học thuật hơn nghi lễ. (2) 심사위원장 điều phối thời gian; ứng viên không cắt ngang. (3) Câu hỏi khó không nhất thiết là 공격; nhiều khi là cơ hội để chỉ ra phạm vi và đóng góp. (4) Sau khi pass thường vẫn có 수정 요구 trước 최종본 제출. (5) Thừa nhận giới hạn được đánh giá tốt nếu đi kèm giải thích phạm vi kết luận. (6) Bẫy cho người Việt: phòng thủ quá nhanh, nói vòng vo, hoặc trả lời 'em nghĩ vậy' mà không đưa 근거.",
+      "cultural_notes_en": "KOREAN THESIS DEFENSES: (1) A master's or doctoral oral defense usually has 3–5 committee members; the atmosphere is formal but more about scholarly verification than ceremony. (2) The committee chair controls time; the candidate does not interrupt. (3) A hard question is not necessarily an attack; it can be a chance to define scope and contribution. (4) Even after passing, revision requests before final submission are common. (5) Acknowledging limitations is evaluated positively when paired with a clear explanation of the conclusion's scope. (6) Vietnamese learners often err by becoming defensive too quickly, talking around the question, or saying 'I think so' without evidence.",
+      "tip_advice_vi": "Chuẩn bị 구술 심사: (1) Soạn 10 câu hỏi khó nhất, đặc biệt về 방법론, 표본, 연구 윤리, 일반화. (2) Với mỗi câu, chuẩn bị 답변 60초: 인정 1 câu, 핵심 답변 2 câu, 근거 1 câu. (3) Mang danh sách sửa lỗi có thể chấp nhận: '최종본에서 반영하겠습니다' chỉ nói khi thật sự có thể sửa. (4) Tập nói chậm; câu trả lời dài làm hội đồng mất kiên nhẫn. (5) Kết thúc bằng 감사: '귀한 지적 감사드립니다.'",
+      "tip_advice_en": "Preparing for a 구술 심사: (1) Draft the 10 hardest questions, especially on methodology, sample, research ethics, and generalization. (2) For each, prepare a 60-second answer: one acknowledgment sentence, two core-answer sentences, one evidence sentence. (3) Bring a list of fixable revisions; say 'I will reflect it in the final version' only when you can actually do it. (4) Practise speaking slowly; long answers make committees impatient. (5) Close with thanks: '귀한 지적 감사드립니다' (thank you for the valuable point).",
       "exercises": [
         {
           "type": "fill-blank",
@@ -3900,6 +4123,11 @@ export const lessons: KoreanLesson[] =     [
             }
           ],
           "instruction": "Nối thuật ngữ"
+        },
+        {
+          "type": "translation",
+          "vietnamese": "Việc khái quát hóa toàn diện có giới hạn. Tuy nhiên nghiên cứu này nhắm tới giải thích cơ chế trong một bối cảnh cụ thể.",
+          "hangul": "전면적 일반화에는 한계가 있습니다. 다만 본 연구는 특정 맥락에서의 기제 설명을 목표로 하였습니다."
         }
       ]
     },
