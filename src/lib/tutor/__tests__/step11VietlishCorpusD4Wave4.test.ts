@@ -46,13 +46,11 @@ describe("step11 vietlish corpus wave 4 (D4-2 review queue)", () => {
     expect(data.status).toBe("review_not_wired");
   });
 
-  it("holds exactly 146 entries and a matching count field", () => {
-    // 200 authored; 1 cross-wave duplicate removed in the 2026-06-10 dedup pass
-    // ("the weather is very comfortable today" is canonical in merged wave3);
-    // 17 freq=high entries promoted into VIETLISH_CORPUS in the Step-11 Stage-1
-    // promotion (2026-06-10), leaving 182.
-    expect(data.entries).toHaveLength(20);
-    expect(data.count).toBe(20);
+  it("holds exactly 0 entries and a matching count field", () => {
+    // Promotions through Stage-2 and Stage-3 removed candidates cumulatively;
+    // this pending guard now keeps only entries not promoted into VIETLISH_CORPUS.
+    expect(data.entries).toHaveLength(0);
+    expect(data.count).toBe(0);
   });
 
   it("matches the VietlishCorpusEntry schema exactly (six string fields, valid enums)", () => {
@@ -82,8 +80,8 @@ describe("step11 vietlish corpus wave 4 (D4-2 review queue)", () => {
     expect(collisions).toEqual([]);
   });
 
-  it("exercises every interference category", () => {
+  it("uses only valid interference categories", () => {
     const present = new Set(data.entries.map((entry) => entry.category));
-    expect(present).toEqual(CATEGORIES);
+    for (const c of present) expect(CATEGORIES.has(c)).toBe(true);
   });
 });

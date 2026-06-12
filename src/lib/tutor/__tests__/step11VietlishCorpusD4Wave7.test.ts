@@ -45,9 +45,11 @@ describe("step11 vietlish corpus wave 7 (review queue)", () => {
     expect(data.status).toBe("review_not_wired");
   });
 
-  it("holds exactly 54 entries and a matching count field", () => {
-    expect(data.entries).toHaveLength(3);
-    expect(data.count).toBe(3);
+  it("holds exactly 0 entries and a matching count field", () => {
+    // Promotions through Stage-2 and Stage-3 removed candidates cumulatively;
+    // this pending guard now keeps only entries not promoted into VIETLISH_CORPUS.
+    expect(data.entries).toHaveLength(0);
+    expect(data.count).toBe(0);
   });
 
   it("matches the VietlishCorpusEntry schema exactly (six string fields, valid enums)", () => {

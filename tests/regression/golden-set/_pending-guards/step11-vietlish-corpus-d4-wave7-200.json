@@ -3,32 +3,7 @@
   "version": "1.0.0",
   "wiredIntoEngine": false,
   "status": "review_not_wired",
-  "count": 3,
+  "count": 0,
   "description": "A10 Wave 7 — 200 Vietlish/interference review candidates. Fresh territory: question formation, existential 'have', time/date expressions, digital-life calques, food & dining, shopping, transportation, comparison & degree, numbers & quantities, direction & movement, negation, politeness & discourse, professional/academic register, false friends, kinship & address terms, redundancy patterns, connector/gerund errors. Deduped vs live(481) + waves 1-6(1065) = 1546-item denylist. Zero collisions.",
-  "entries": [
-    {
-      "vietlish": "inside the box have a gift",
-      "natural": "there's a gift inside the box",
-      "sourcePattern": "bên trong hộp có quà (existential calque)",
-      "category": "calque",
-      "frequency": "low",
-      "context": "describing the contents of a box"
-    },
-    {
-      "vietlish": "this video has too many like",
-      "natural": "this video has too many likes",
-      "sourcePattern": "lượt thích (count noun missing plural -s)",
-      "category": "collocation",
-      "frequency": "low",
-      "context": "commenting on a popular video's engagement"
-    },
-    {
-      "vietlish": "advance prepare for the presentation",
-      "natural": "prepare in advance for the presentation",
-      "sourcePattern": "chuẩn bị trước cho buổi thuyết trình (adverb-adjective placement calque)",
-      "category": "word_order",
-      "frequency": "low",
-      "context": "planning ahead for a presentation"
-    }
-  ]
+  "entries": []
 }
