@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "wiredIntoEngine": false,
   "status": "review_not_wired",
-  "count": 22,
+  "count": 14,
   "description": "A10 Wave 8 — 200 Vietlish/interference review candidates. Fresh territory: verb+preposition collocations (depend on, interested in, listen to, etc.), countable/uncountable mass nouns (information, advice, furniture), article errors (play the piano, a kind person), reported speech (said me→told me), passive form errors (write→written, build→built), emotional verb prepositions (worried for→about), conditional errors (if I will have→if I have), sports/recreation calques (play sport, practices badminton), weather calques (there have wind, today is hot weather), adverb/adjective confusion (good→well, talent→talented, success→successful), subject-verb agreement (3rd person -s), gerund/infinitive alternation (enjoy cooking, avoid making, keep talking), too-to/enough-to constructions, causative get (get fixed), make/do collocates, register calques (VN formal politeness in English), literal translation idioms (eat to your fullness, thin wallet, sweet tongue). Deduped vs live(353) + waves 1-7(1393) = 1744-item denylist. Zero collisions.",
   "entries": [
     {
@@ -103,54 +103,6 @@
       "context": "giving a cooking instruction for steamed rice"
     },
     {
-      "vietlish": "her face has a lot of acne come up",
-      "natural": "she has a lot of acne breaking out",
-      "sourcePattern": "mặt nổi nhiều mụn (acne come up = mụn nổi, literal translation of verb phrase)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "describing a skin problem"
-    },
-    {
-      "vietlish": "I go to sleep late so my eyes have dark circles",
-      "natural": "I sleep late so I have dark circles under my eyes",
-      "sourcePattern": "ngủ muộn nên mắt có quầng thâm (eyes have dark circles = mắt có quầng thâm, literal)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "explaining tired-looking eyes caused by a late bedtime"
-    },
-    {
-      "vietlish": "your mouth has a bad smell",
-      "natural": "you have bad breath",
-      "sourcePattern": "miệng có mùi hôi (your mouth has a bad smell = miệng có mùi, literal VN expression)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "giving a health warning to a friend"
-    },
-    {
-      "vietlish": "my heart is not comfortable when I hear that",
-      "natural": "I feel uneasy when I hear that",
-      "sourcePattern": "lòng tôi không thoải mái khi nghe điều đó (lòng = heart-as-feeling-organ, VN idiom calqued)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "expressing discomfort or unease about news you heard"
-    },
-    {
-      "vietlish": "she has a white and tall appearance",
-      "natural": "she is fair-skinned and tall",
-      "sourcePattern": "có vẻ ngoài trắng và cao (white appearance = trắng trẻo, literal attribute list)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "describing someone's physical appearance"
-    },
-    {
-      "vietlish": "his face looks very fresh today",
-      "natural": "he looks refreshed today",
-      "sourcePattern": "mặt trông tươi hôm nay (face looks fresh = trông tươi tỉnh, VN appearance idiom)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "noting someone looks well-rested"
-    },
-    {
       "vietlish": "she knows how to speak many mouths",
       "natural": "she can speak many languages",
       "sourcePattern": "biết nói nhiều thứ tiếng / nhiều ngôn ngữ (many mouths = VN informal nhiều miệng/tiếng joke-calque)",
@@ -159,28 +111,12 @@
       "context": "humorously describing a multilingual speaker"
     },
     {
-      "vietlish": "my wallet is very thin lately",
-      "natural": "I'm short on cash lately",
-      "sourcePattern": "ví mỏng (thin wallet = ví mỏng, VN idiom for being broke)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "telling a friend you're low on money this month"
-    },
-    {
       "vietlish": "he is a long hand person",
       "natural": "he has a habit of stealing things",
       "sourcePattern": "tay dài (long hand = tay dài, VN idiom for someone who steals)",
       "category": "literal_translation",
       "frequency": "low",
       "context": "accusing someone of being light-fingered"
-    },
-    {
-      "vietlish": "I broke my voice last night from singing",
-      "natural": "I lost my voice last night from singing",
-      "sourcePattern": "mất tiếng (broke my voice = làm vỡ giọng? → actually lost my voice = mất tiếng, calque confusion)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "explaining why you can barely speak the next morning"
     }
   ]
 }

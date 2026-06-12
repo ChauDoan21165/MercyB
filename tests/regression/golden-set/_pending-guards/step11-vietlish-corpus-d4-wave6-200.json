@@ -12,7 +12,7 @@
   "definition": "Sixth-wave Vietnamese-L1 interference review candidates (human review before any promotion into VIETLISH_CORPUS). Wave 6 mines fresh territory under-covered by waves 1-5: Vietnamese greeting/social-register calques, household-chore calques, workplace/office Vietlish, daily banking & medical calques, school/study, modal+bare-infinitive errors, quantifier/determiner errors, purpose/reason connectors, proverb/idiom calques, and additional false friends. A few natural 'control' anchors are flagged in sourcePattern for abstain-checking.",
   "dedupedAgainst": "live VIETLISH_CORPUS(353) + all 5 merged wave files(993) + A4 promotion list + Stage-1 128 paste block — 1346-item denylist, zero overlap (asserted by the guard test vs live + verified at authoring vs the full denylist).",
   "generatedFor": "2026-06-10 CEO-1 FULL ROSTER dispatch [A10] wave6",
-  "count": 140,
+  "count": 106,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -159,14 +159,6 @@
       "context": "Email reply: i am on leave today, back Monday."
     },
     {
-      "vietlish": "please reply soon when you free",
-      "natural": "please reply when you're free",
-      "sourcePattern": "rảnh -> 'when you free' dropped copula",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "It is urgent, please reply soon when you free."
-    },
-    {
       "vietlish": "i will hand over the work to her",
       "natural": "i'll hand the work over to her",
       "sourcePattern": "bàn giao -> particle/order",
@@ -181,14 +173,6 @@
       "category": "collocation",
       "frequency": "low",
       "context": "We must hurry, the deadline is very tight."
-    },
-    {
-      "vietlish": "i submit the report to boss already",
-      "natural": "i've submitted the report",
-      "sourcePattern": "nộp báo cáo -> dropped article + 'already' aspect",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Do not worry, i submit the report to boss already."
     },
     {
       "vietlish": "can you join the meeting at 2",
@@ -207,28 +191,12 @@
       "context": "In an interview: i am a fresher, just graduate."
     },
     {
-      "vietlish": "i have three years experience already",
-      "natural": "i have three years of experience",
-      "sourcePattern": "ba năm kinh nghiệm -> missing 'of' + 'already'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "On my CV: i have three years experience already."
-    },
-    {
       "vietlish": "please find the file in attach",
       "natural": "please see the attached file",
       "sourcePattern": "đính kèm -> 'in attach' calque",
       "category": "register",
       "frequency": "medium",
       "context": "As discussed, please find the file in attach."
-    },
-    {
-      "vietlish": "i will update to you later",
-      "natural": "i'll update you later",
-      "sourcePattern": "cập nhật -> extra 'to' after update",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "When i know more, i will update to you later."
     },
     {
       "vietlish": "my boss is very strict with work",
@@ -239,52 +207,12 @@
       "context": "Be careful, my boss is very strict with work."
     },
     {
-      "vietlish": "i take half day this afternoon",
-      "natural": "i'm taking a half day this afternoon",
-      "sourcePattern": "nghỉ nửa ngày -> 'take half day' missing article",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "For the doctor, i take half day this afternoon."
-    },
-    {
       "vietlish": "we will discuss it in the meeting tomorrow",
       "natural": "we'll discuss it in tomorrow's meeting",
       "sourcePattern": "(near-control) natural; abstain anchor",
       "category": "collocation",
       "frequency": "low",
       "context": "It can wait, we will discuss it in the meeting tomorrow."
-    },
-    {
-      "vietlish": "how much is the interest for one year",
-      "natural": "what's the interest rate for one year",
-      "sourcePattern": "lãi suất -> 'interest for one year' phrasing",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Before i deposit, how much is the interest for one year?"
-    },
-    {
-      "vietlish": "my account has no money left already",
-      "natural": "my account is empty",
-      "sourcePattern": "hết tiền -> 'no money left already' calque",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Wait until payday, my account has no money left already."
-    },
-    {
-      "vietlish": "i forgot the password of my card",
-      "natural": "i forgot my card's PIN",
-      "sourcePattern": "quên mật khẩu thẻ -> 'password of card' + PIN/password mix",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Please help, i forgot the password of my card."
-    },
-    {
-      "vietlish": "i transfer money to wrong account",
-      "natural": "i transferred money to the wrong account",
-      "sourcePattern": "chuyển nhầm -> bare verb + missing article",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "It was an accident, i transfer money to wrong account."
     },
     {
       "vietlish": "the fee is too high for me",
@@ -311,52 +239,12 @@
       "context": "Wear a hat, i have a sun hit at the beach."
     },
     {
-      "vietlish": "i am suffering fever two days",
-      "natural": "i've had a fever for two days",
-      "sourcePattern": "bị sốt -> 'suffering fever' + missing 'from'/'for'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I cannot work, i am suffering fever two days."
-    },
-    {
       "vietlish": "i am allergic to the weather changing",
       "natural": "i react badly when the weather changes",
       "sourcePattern": "dị ứng thời tiết -> 'allergic to the weather' calque",
       "category": "false_friend",
       "frequency": "medium",
       "context": "I sneeze a lot, i am allergic to the weather changing."
-    },
-    {
-      "vietlish": "drink a lot of water to be quick better",
-      "natural": "drink lots of water to get better faster",
-      "sourcePattern": "mau khỏe -> 'be quick better' calque",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Rest well and drink a lot of water to be quick better."
-    },
-    {
-      "vietlish": "i am studying in grade ten",
-      "natural": "i'm in grade ten",
-      "sourcePattern": "học lớp 10 -> 'studying in grade' calque",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "This year i am studying in grade ten."
-    },
-    {
-      "vietlish": "i passed the exam with high score",
-      "natural": "i passed the exam with a high score",
-      "sourcePattern": "đậu/qua môn -> missing article",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Good news, i passed the exam with high score."
-    },
-    {
-      "vietlish": "the teacher gave us many exercise",
-      "natural": "the teacher gave us a lot of exercises",
-      "sourcePattern": "bài tập -> 'many exercise' uncountable + plural",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Tonight is busy, the teacher gave us many exercise."
     },
     {
       "vietlish": "i forgot to bring my book today",
@@ -389,30 +277,6 @@
       "category": "collocation",
       "frequency": "low",
       "context": "While the teacher talks, i copy the lesson into my notebook."
-    },
-    {
-      "vietlish": "you should to see a doctor",
-      "natural": "you should see a doctor",
-      "sourcePattern": "nên -> 'should to' after modal",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "You look pale, you should to see a doctor."
-    },
-    {
-      "vietlish": "i will can come tomorrow",
-      "natural": "i'll be able to come tomorrow",
-      "sourcePattern": "sẽ có thể -> 'will can' double modal",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Let me check, i will can come tomorrow."
-    },
-    {
-      "vietlish": "he explained me the rule clearly",
-      "natural": "he explained the rule to me clearly",
-      "sourcePattern": "giải thích cho tôi -> 'explain me'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Now i get it, he explained me the rule clearly."
     },
     {
       "vietlish": "they recommended me a good restaurant",
@@ -477,22 +341,6 @@
       "category": "word_order",
       "frequency": "medium",
       "context": "Far away, one of my friend lives in canada."
-    },
-    {
-      "vietlish": "every students have a tablet",
-      "natural": "every student has a tablet",
-      "sourcePattern": "mỗi -> 'every' + plural + wrong agreement",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "At this school, every students have a tablet."
-    },
-    {
-      "vietlish": "each of us have a task",
-      "natural": "each of us has a task",
-      "sourcePattern": "mỗi người -> 'each of us have' agreement",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "To be fair, each of us have a task."
     },
     {
       "vietlish": "both of my parent are teachers",
@@ -791,52 +639,12 @@
       "context": "My ears hurt, turn the volume down please, too loud."
     },
     {
-      "vietlish": "i ran out money before payday",
-      "natural": "i ran out of money before payday",
-      "sourcePattern": "hết tiền -> missing 'of' after 'ran out'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "It was a hard month, i ran out money before payday."
-    },
-    {
-      "vietlish": "she takes after to her mother",
-      "natural": "she takes after her mother",
-      "sourcePattern": "giống mẹ -> extra 'to' in 'take after'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Same smile, she takes after to her mother."
-    },
-    {
       "vietlish": "let us set off early to avoid traffic",
       "natural": "let's set off early to avoid traffic",
       "sourcePattern": "(control) natural; abstain anchor",
       "category": "collocation",
       "frequency": "low",
       "context": "It is far, let us set off early to avoid traffic."
-    },
-    {
-      "vietlish": "i cannot put up with the noise more",
-      "natural": "i can't put up with the noise any more",
-      "sourcePattern": "chịu đựng -> 'more' for 'any more'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I will move out, i cannot put up with the noise more."
-    },
-    {
-      "vietlish": "please look after of my dog this weekend",
-      "natural": "please look after my dog this weekend",
-      "sourcePattern": "trông giúp -> extra 'of' in 'look after'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I travel a lot, please look after of my dog this weekend."
-    },
-    {
-      "vietlish": "we should carry on the plan as before",
-      "natural": "we should carry on with the plan",
-      "sourcePattern": "tiếp tục -> missing 'with' after 'carry on'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Nothing changed, we should carry on the plan as before."
     },
     {
       "vietlish": "i need to back up my photos tonight",
@@ -855,36 +663,12 @@
       "context": "Come quick, the shop is giving away free samples."
     },
     {
-      "vietlish": "i have ten thousands dong only",
-      "natural": "i only have ten thousand dong",
-      "sourcePattern": "mười nghìn -> pluralised 'thousands'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I cannot buy much, i have ten thousands dong only."
-    },
-    {
-      "vietlish": "there were five hundreds people",
-      "natural": "there were five hundred people",
-      "sourcePattern": "năm trăm -> pluralised 'hundreds'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "It was crowded, there were five hundreds people."
-    },
-    {
       "vietlish": "i was born in the year 1995",
       "natural": "i was born in 1995",
       "sourcePattern": "năm 1995 -> 'in the year' redundancy",
       "category": "literal_translation",
       "frequency": "low",
       "context": "On my form, i was born in the year 1995."
-    },
-    {
-      "vietlish": "the meeting is on the day 15",
-      "natural": "the meeting is on the 15th",
-      "sourcePattern": "ngày 15 -> 'the day 15' for an ordinal",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Mark it, the meeting is on the day 15."
     },
     {
       "vietlish": "it costs around two hundred thousand dong",
@@ -895,36 +679,12 @@
       "context": "Not cheap, it costs around two hundred thousand dong."
     },
     {
-      "vietlish": "i wait you about thirty minutes already",
-      "natural": "i've been waiting about thirty minutes",
-      "sourcePattern": "đợi 30 phút rồi -> 'wait you' + 'already' tense",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Where are you, i wait you about thirty minutes already?"
-    },
-    {
       "vietlish": "my son is high one meter forty",
       "natural": "my son is one metre forty tall",
       "sourcePattern": "cao một mét bốn -> 'high' for 'tall'",
       "category": "false_friend",
       "frequency": "medium",
       "context": "He grew fast, my son is high one meter forty."
-    },
-    {
-      "vietlish": "the box weighs three kilo only",
-      "natural": "the box weighs only three kilos",
-      "sourcePattern": "ba ký -> missing plural + 'only' placement",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "It is light, the box weighs three kilo only."
-    },
-    {
-      "vietlish": "give me two kilo of orange",
-      "natural": "give me two kilos of oranges",
-      "sourcePattern": "hai ký cam -> no plural on unit or noun",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "At the market, give me two kilo of orange."
     },
     {
       "vietlish": "i will be back in fifteen minutes more",
@@ -1015,22 +775,6 @@
       "context": "It is unfair, the buffalo plows, the horse eats."
     },
     {
-      "vietlish": "it took me long time to understand",
-      "natural": "it took me a long time to understand",
-      "sourcePattern": "mất nhiều thời gian -> missing 'a'",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "It was hard, it took me long time to understand."
-    },
-    {
-      "vietlish": "she is married since five years",
-      "natural": "she has been married for five years",
-      "sourcePattern": "cưới 5 năm -> 'since' for duration + tense",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Time flies, she is married since five years."
-    },
-    {
       "vietlish": "i am bored of doing the same thing",
       "natural": "i'm bored with doing the same thing",
       "sourcePattern": "chán -> 'bored of' (common; flagged)",
@@ -1087,14 +831,6 @@
       "context": "I cannot join the call, the internet is very lag today."
     },
     {
-      "vietlish": "i save the file already, do not worry",
-      "natural": "i've saved the file, don't worry",
-      "sourcePattern": "lưu rồi -> bare verb + 'already' tense",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "It is safe, i save the file already, do not worry."
-    },
-    {
       "vietlish": "please on the air conditioner a bit",
       "natural": "please turn the air conditioner on a bit",
       "sourcePattern": "mở máy lạnh -> 'on' used as a verb",
@@ -1125,14 +861,6 @@
       "category": "word_order",
       "frequency": "medium",
       "context": "We toured all day, my legs are tired from walking much."
-    },
-    {
-      "vietlish": "i miss home country very much",
-      "natural": "i miss my home country very much",
-      "sourcePattern": "nhớ quê hương -> missing possessive",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Living abroad, i miss home country very much."
     },
     {
       "vietlish": "do you know cook vietnamese food",

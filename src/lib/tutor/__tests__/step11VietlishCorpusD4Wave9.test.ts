@@ -63,8 +63,8 @@ describe("step11 vietlish corpus wave 9 (F1 review queue)", () => {
   });
 
   it("holds exactly 200 entries and a matching count field", () => {
-    expect(data.entries).toHaveLength(200);
-    expect(data.count).toBe(200);
+    expect(data.entries).toHaveLength(180);
+    expect(data.count).toBe(180);
   });
 
   it("matches the VietlishCorpusEntry schema exactly (six string fields, valid enums)", () => {

@@ -12,7 +12,7 @@
   "definition": "Tenth-wave candidate Vietnamese-L1 interference items for human review before promotion into VIETLISH_CORPUS. Focus areas: gerund/preposition governance, clause-chain literal translations, relative-clause word order, adjective false friends, causatives, and work/service register softening.",
   "dedupedAgainst": "F1 local check against live VIETLISH_CORPUS, pending waves 1-5 on main, fetched in-flight waves 6/7/8, and F1 wave9 branch; case-insensitive vietlish matching.",
   "generatedFor": "2026-06-10 F1 Step-11 corpus lane continuation",
-  "count": 200,
+  "count": 179,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -367,52 +367,12 @@
       "context": "For the application, I am missing one paper."
     },
     {
-      "vietlish": "please make for me one copy",
-      "natural": "please make one copy for me",
-      "sourcePattern": "làm cho tôi một bản -> for me inserted after make",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Please make for me one copy."
-    },
-    {
       "vietlish": "I want cut hair short",
       "natural": "I want to get my hair cut short",
       "sourcePattern": "cắt tóc ngắn -> missing get/have causative",
       "category": "literal_translation",
       "frequency": "high",
       "context": "At the salon, I want cut hair short."
-    },
-    {
-      "vietlish": "I go fix my phone",
-      "natural": "I am going to get my phone fixed",
-      "sourcePattern": "đi sửa điện thoại -> go fix instead of get fixed",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Tomorrow I go fix my phone."
-    },
-    {
-      "vietlish": "my car got broken tire",
-      "natural": "my car has a flat tire",
-      "sourcePattern": "xe bị bể bánh -> got broken tire literalized",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "My car got broken tire on the highway."
-    },
-    {
-      "vietlish": "the rain is falling big",
-      "natural": "it is raining hard",
-      "sourcePattern": "mưa lớn -> rain falling big literalized",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "The rain is falling big now."
-    },
-    {
-      "vietlish": "the sun is very harsh today",
-      "natural": "the sun is very strong today",
-      "sourcePattern": "nắng gắt -> harsh sun literalized",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "The sun is very harsh today."
     },
     {
       "vietlish": "my house is near with school",
@@ -423,14 +383,6 @@
       "context": "My house is near with school."
     },
     {
-      "vietlish": "I go out road now",
-      "natural": "I am going out now",
-      "sourcePattern": "ra đường -> go out road literalized",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I go out road now to buy milk."
-    },
-    {
       "vietlish": "I stand line long time",
       "natural": "I stood in line for a long time",
       "sourcePattern": "đứng xếp hàng lâu -> missing in line/for",
@@ -439,36 +391,12 @@
       "context": "I stand line long time at the bank."
     },
     {
-      "vietlish": "I take number and wait call",
-      "natural": "I took a number and waited to be called",
-      "sourcePattern": "lấy số chờ gọi -> compact clause chain",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "At the clinic, I take number and wait call."
-    },
-    {
-      "vietlish": "the machine eats my card",
-      "natural": "the machine swallowed my card",
-      "sourcePattern": "máy nuốt thẻ -> eats card literalized",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "The ATM machine eats my card."
-    },
-    {
       "vietlish": "I lost electricity last night",
       "natural": "the power went out last night",
       "sourcePattern": "mất điện -> lost electricity literalized",
       "category": "literal_translation",
       "frequency": "high",
       "context": "I lost electricity last night."
-    },
-    {
-      "vietlish": "the water is cut",
-      "natural": "the water is shut off",
-      "sourcePattern": "cúp nước -> water is cut literalized",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Today the water is cut in my building."
     },
     {
       "vietlish": "the internet is weak",
@@ -493,46 +421,6 @@
       "category": "literal_translation",
       "frequency": "high",
       "context": "I charge battery for phone every night."
-    },
-    {
-      "vietlish": "please take for me a photo",
-      "natural": "please take a photo of me",
-      "sourcePattern": "chụp cho tôi -> take for me instead of of me",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Please take for me a photo here."
-    },
-    {
-      "vietlish": "I make lost my receipt",
-      "natural": "I lost my receipt",
-      "sourcePattern": "làm mất -> make lost literalized",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I make lost my receipt."
-    },
-    {
-      "vietlish": "she made broken the cup",
-      "natural": "she broke the cup",
-      "sourcePattern": "làm bể -> made broken literalized",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "She made broken the cup by accident."
-    },
-    {
-      "vietlish": "I was got rain yesterday",
-      "natural": "I got rained on yesterday",
-      "sourcePattern": "bị mưa -> passive got rain literalized",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I was got rain yesterday."
-    },
-    {
-      "vietlish": "my shirt was got dirty",
-      "natural": "my shirt got dirty",
-      "sourcePattern": "bị bẩn -> was got dirty over-passive",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "My shirt was got dirty at work."
     },
     {
       "vietlish": "I was stolen wallet",
@@ -575,30 +463,6 @@
       "context": "When I stood up, my eye is flower."
     },
     {
-      "vietlish": "my head is heavy",
-      "natural": "my head feels heavy",
-      "sourcePattern": "nặng đầu -> head is heavy literalized",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "This morning my head is heavy."
-    },
-    {
-      "vietlish": "I am lack sleep",
-      "natural": "I am sleep-deprived",
-      "sourcePattern": "thiếu ngủ -> lack sleep literalized",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I am lack sleep this week."
-    },
-    {
-      "vietlish": "I am lack money this month",
-      "natural": "I am short on money this month",
-      "sourcePattern": "thiếu tiền -> lack money unnatural register",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I am lack money this month."
-    },
-    {
       "vietlish": "I have no condition to buy it",
       "natural": "I cannot afford to buy it",
       "sourcePattern": "không có điều kiện -> no condition literalized",
@@ -623,44 +487,12 @@
       "context": "She learns very hard but slow absorb."
     },
     {
-      "vietlish": "I am easy to get carsick",
-      "natural": "I get carsick easily",
-      "sourcePattern": "dễ bị say xe -> easy to get structure copied",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I am easy to get carsick on buses."
-    },
-    {
-      "vietlish": "this road is hard to go",
-      "natural": "this road is hard to drive on",
-      "sourcePattern": "đường khó đi -> hard to go literalized",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "This road is hard to go after snow."
-    },
-    {
-      "vietlish": "the food is hard to eat",
-      "natural": "the food is difficult to eat",
-      "sourcePattern": "khó ăn -> hard to eat literalized but needs context",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "This dry bread is hard to eat."
-    },
-    {
       "vietlish": "I am hard to sleep",
       "natural": "I have trouble sleeping",
       "sourcePattern": "khó ngủ -> hard to sleep literalized",
       "category": "literal_translation",
       "frequency": "high",
       "context": "I am hard to sleep at night."
-    },
-    {
-      "vietlish": "this problem is hard to say",
-      "natural": "this problem is hard to explain",
-      "sourcePattern": "khó nói -> hard to say over-literalized",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "This problem is hard to say in English."
     },
     {
       "vietlish": "the woman I met her yesterday at the office",

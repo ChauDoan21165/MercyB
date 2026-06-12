@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "wiredIntoEngine": false,
   "status": "review_not_wired",
-  "count": 54,
+  "count": 37,
   "description": "A10 Wave 7 — 200 Vietlish/interference review candidates. Fresh territory: question formation, existential 'have', time/date expressions, digital-life calques, food & dining, shopping, transportation, comparison & degree, numbers & quantities, direction & movement, negation, politeness & discourse, professional/academic register, false friends, kinship & address terms, redundancy patterns, connector/gerund errors. Deduped vs live(481) + waves 1-6(1065) = 1546-item denylist. Zero collisions.",
   "entries": [
     {
@@ -55,22 +55,6 @@
       "context": "describing the contents of a box"
     },
     {
-      "vietlish": "from morning until night I work",
-      "natural": "I work from morning to night",
-      "sourcePattern": "từ sáng đến tối (until vs to for continuous range)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "describing a long work day"
-    },
-    {
-      "vietlish": "I will go on the day 15",
-      "natural": "I'll go on the 15th",
-      "sourcePattern": "ngày 15 (literal day + number without ordinal)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "giving a departure date"
-    },
-    {
       "vietlish": "every 2 day I exercise",
       "natural": "I exercise every 2 days",
       "sourcePattern": "cứ 2 ngày lại tập (frequency expression word order)",
@@ -119,60 +103,12 @@
       "context": "commenting on an oily or greasy dish"
     },
     {
-      "vietlish": "pack the food to bring home",
-      "natural": "pack the food to go",
-      "sourcePattern": "đóng gói mang về (literal translation of takeout request)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "asking for a takeaway box at a restaurant"
-    },
-    {
-      "vietlish": "the food here is delicious to die",
-      "natural": "the food here is absolutely delicious",
-      "sourcePattern": "ngon muốn chết (hyperbolic VN intensifier calque)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "enthusiastically praising restaurant food"
-    },
-    {
-      "vietlish": "I am full rice already",
-      "natural": "I'm already full",
-      "sourcePattern": "no cơm rồi (full + rice classifier calque)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "saying you've eaten and are full"
-    },
-    {
-      "vietlish": "separate the bill for each person",
-      "natural": "split the bill",
-      "sourcePattern": "chia tiền mỗi người (literal translation of splitting a bill)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "asking to split a restaurant bill equally"
-    },
-    {
-      "vietlish": "reduce the price for me a little",
-      "natural": "can you give me a small discount?",
-      "sourcePattern": "giảm giá cho tôi một chút (literal price negotiation)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "bargaining for a lower price"
-    },
-    {
       "vietlish": "buy 2 get free 1",
       "natural": "buy 2, get 1 free",
       "sourcePattern": "mua 2 tặng 1 (word order calque)",
       "category": "word_order",
       "frequency": "medium",
       "context": "describing a promotional deal"
-    },
-    {
-      "vietlish": "can wrap as gift for me",
-      "natural": "can you gift-wrap this for me?",
-      "sourcePattern": "gói thành quà cho tôi (wrap as gift literal)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "asking for gift wrapping at a shop"
     },
     {
       "vietlish": "this bag is genuine or fake?",
@@ -191,14 +127,6 @@
       "context": "reserving an airline seat"
     },
     {
-      "vietlish": "go straight then turn right hand",
-      "natural": "go straight then turn right",
-      "sourcePattern": "rẽ phải (tay phải = right hand, literal directional calque)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "giving directions to someone"
-    },
-    {
       "vietlish": "very very delicious",
       "natural": "absolutely delicious",
       "sourcePattern": "ngon lắm lắm (VN adverb reduplication pattern)",
@@ -215,60 +143,12 @@
       "context": "stating an age difference"
     },
     {
-      "vietlish": "too spicy for me to can eat",
-      "natural": "too spicy for me to eat",
-      "sourcePattern": "cay quá tôi không ăn được (too + adj + for + to + can + infinitive)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "saying food is too spicy to eat"
-    },
-    {
       "vietlish": "this bag is more expensive so much",
       "natural": "this bag is much more expensive",
       "sourcePattern": "đắt hơn rất nhiều (degree adverb placement after comparative)",
       "category": "word_order",
       "frequency": "medium",
       "context": "emphasising that something costs much more"
-    },
-    {
-      "vietlish": "one kilogram rice",
-      "natural": "one kilogram of rice",
-      "sourcePattern": "một ký gạo (classifier structure missing 'of')",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "buying rice at a market stall"
-    },
-    {
-      "vietlish": "up the stair to second floor",
-      "natural": "go upstairs to the second floor",
-      "sourcePattern": "lên cầu thang lên tầng 2 (up + stair literal calque)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "giving directions inside a building"
-    },
-    {
-      "vietlish": "nobody don't like her",
-      "natural": "nobody likes her",
-      "sourcePattern": "không ai không thích (double negation calque)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "saying everyone dislikes someone"
-    },
-    {
-      "vietlish": "I never don't forget you",
-      "natural": "I will never forget you",
-      "sourcePattern": "tôi không bao giờ quên bạn (never + don't = double negation)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "making a promise to always remember someone"
-    },
-    {
-      "vietlish": "please give face for me",
-      "natural": "please don't embarrass me",
-      "sourcePattern": "xin cho tôi thể diện (give face = save face calque)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "asking someone not to humiliate you in public"
     },
     {
       "vietlish": "I dare to ask you one question",
@@ -413,22 +293,6 @@
       "category": "register",
       "frequency": "medium",
       "context": "commenting on hot weather"
-    },
-    {
-      "vietlish": "I love this song so much until I can't stop",
-      "natural": "I love this song so much I can't stop listening",
-      "sourcePattern": "thích bài này quá không thể dừng được (until vs so much that)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "enthusiastically sharing love for a song"
-    },
-    {
-      "vietlish": "I just go home arrive",
-      "natural": "I just got home",
-      "sourcePattern": "tôi vừa về đến nhà (go + arrive calque of về đến)",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "announcing you have just arrived home"
     },
     {
       "vietlish": "I sympathize with your situation",

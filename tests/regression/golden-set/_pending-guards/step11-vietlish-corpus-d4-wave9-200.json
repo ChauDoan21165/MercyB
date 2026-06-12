@@ -12,7 +12,7 @@
   "definition": "Ninth-wave candidate Vietnamese-L1 interference items for human review before any promotion into VIETLISH_CORPUS. Focus areas: preposition governance, countability/articles, tense/aspect transfer, question and topic-comment word order, false friends, existential/stative calques, and service-register softening.",
   "dedupedAgainst": "F1 local check against live VIETLISH_CORPUS, pending waves 1-5 on main, and fetched in-flight wave branches 6/7/8; case-insensitive vietlish matching.",
   "generatedFor": "2026-06-10 F1 Step-11 corpus lane after A10 baton",
-  "count": 200,
+  "count": 180,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -367,30 +367,6 @@
       "context": "She works here since last summer."
     },
     {
-      "vietlish": "I am waiting for one hour",
-      "natural": "I have been waiting for one hour",
-      "sourcePattern": "đang chờ một tiếng rồi -> present perfect progressive",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I am waiting for one hour."
-    },
-    {
-      "vietlish": "we are married for five years",
-      "natural": "we have been married for five years",
-      "sourcePattern": "kết hôn được năm năm -> present perfect state",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "We are married for five years."
-    },
-    {
-      "vietlish": "I did not see him since Monday",
-      "natural": "I have not seen him since Monday",
-      "sourcePattern": "không gặp từ thứ Hai -> present perfect negative",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I did not see him since Monday."
-    },
-    {
       "vietlish": "yesterday I meet my old teacher",
       "natural": "yesterday I met my old teacher",
       "sourcePattern": "Vietnamese no tense inflection -> past marker omitted",
@@ -423,60 +399,12 @@
       "context": "I already finish the report."
     },
     {
-      "vietlish": "she just leave",
-      "natural": "she just left",
-      "sourcePattern": "vừa mới đi -> simple past required",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "She just leave five minutes ago."
-    },
-    {
-      "vietlish": "I never went to Toronto before",
-      "natural": "I have never been to Toronto before",
-      "sourcePattern": "chưa từng đi -> experience present perfect",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I never went to Toronto before."
-    },
-    {
       "vietlish": "have you ever eat pho",
       "natural": "have you ever eaten pho",
       "sourcePattern": "đã từng ăn -> past participle required",
       "category": "literal_translation",
       "frequency": "high",
       "context": "Have you ever eat pho?"
-    },
-    {
-      "vietlish": "I have went there twice",
-      "natural": "I have gone there twice",
-      "sourcePattern": "past participle confused with simple past",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I have went there twice."
-    },
-    {
-      "vietlish": "she has saw that movie",
-      "natural": "she has seen that movie",
-      "sourcePattern": "past participle confused with simple past",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "She has saw that movie already."
-    },
-    {
-      "vietlish": "we have did the homework",
-      "natural": "we have done the homework",
-      "sourcePattern": "past participle confused with simple past",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "We have did the homework."
-    },
-    {
-      "vietlish": "I was go to work when you called",
-      "natural": "I was going to work when you called",
-      "sourcePattern": "progressive missing -ing after be",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I was go to work when you called."
     },
     {
       "vietlish": "they are play soccer outside",
@@ -511,30 +439,6 @@
       "context": "Although it rained, but we went out."
     },
     {
-      "vietlish": "if you need help, then call me",
-      "natural": "if you need help, call me",
-      "sourcePattern": "nếu ... thì -> then overused in English",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "If you need help, then call me."
-    },
-    {
-      "vietlish": "when I arrive, then I will text you",
-      "natural": "when I arrive, I will text you",
-      "sourcePattern": "khi ... thì -> then copied into time clause",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "When I arrive, then I will text you."
-    },
-    {
-      "vietlish": "I bought new furniture yesterday",
-      "natural": "I bought some new furniture yesterday",
-      "sourcePattern": "đồ đạc treated like countable plural items",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "For the apartment, I bought new furniture yesterday."
-    },
-    {
       "vietlish": "I need an advice from you",
       "natural": "I need some advice from you",
       "sourcePattern": "lời khuyên counted as one advice",
@@ -559,14 +463,6 @@
       "context": "I have many homeworks this weekend."
     },
     {
-      "vietlish": "I need two breads",
-      "natural": "I need two loaves of bread",
-      "sourcePattern": "bánh mì counted directly without unit",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "At the bakery I need two breads."
-    },
-    {
       "vietlish": "give me three waters",
       "natural": "give me three bottles of water",
       "sourcePattern": "nước counted directly without container",
@@ -575,60 +471,12 @@
       "context": "For the table, give me three waters."
     },
     {
-      "vietlish": "we ordered two soups",
-      "natural": "we ordered two bowls of soup",
-      "sourcePattern": "súp counted without serving unit",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "At lunch we ordered two soups."
-    },
-    {
-      "vietlish": "I have a good health",
-      "natural": "I am in good health",
-      "sourcePattern": "sức khỏe tốt -> a good health with article",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Luckily I have a good health."
-    },
-    {
-      "vietlish": "she has a strong English",
-      "natural": "she has strong English skills",
-      "sourcePattern": "tiếng Anh tốt -> English as countable possession",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "She has a strong English now."
-    },
-    {
-      "vietlish": "the police gave me ticket",
-      "natural": "the police gave me a ticket",
-      "sourcePattern": "Vietnamese classifier omitted -> missing article",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "The police gave me ticket for parking."
-    },
-    {
-      "vietlish": "please give me pen",
-      "natural": "please give me a pen",
-      "sourcePattern": "cây bút classifier omitted -> missing article",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "Please give me pen to sign."
-    },
-    {
       "vietlish": "not only she is smart but also kind",
       "natural": "she is not only smart but also kind",
       "sourcePattern": "không những ... mà còn -> not only placement copied",
       "category": "literal_translation",
       "frequency": "low",
       "context": "Not only she is smart but also kind."
-    },
-    {
-      "vietlish": "I only have ten dollar",
-      "natural": "I have only ten dollars",
-      "sourcePattern": "chỉ có -> only placement and plural issue",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "I only have ten dollar."
     },
     {
       "vietlish": "I drank two milks",
@@ -653,14 +501,6 @@
       "category": "literal_translation",
       "frequency": "high",
       "context": "I went to hospital yesterday for a checkup."
-    },
-    {
-      "vietlish": "after the work I go home",
-      "natural": "after work I go home",
-      "sourcePattern": "sau giờ làm -> extra the before work as activity",
-      "category": "literal_translation",
-      "frequency": "medium",
-      "context": "After the work I go home."
     },
     {
       "vietlish": "why you are late",
