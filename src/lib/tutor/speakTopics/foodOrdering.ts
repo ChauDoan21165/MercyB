@@ -1,20 +1,44 @@
 import type { SpeakTopicLibraryEntry } from "../speakTopicLibrary";
 
-// Food & ordering theme (D1). Real-life situations a Vietnamese learner meets
-// when ordering food and drinks in English. Deterministic / client-side: no
-// per-turn LLM. Copy is warm, adult, and low-shame; l1InterferenceNotes name
-// genuine Vietnamese→English interference as friendly context, never as a
-// grammar correction. (category is "food-ordering" so this theme remains distinct under auto-registration.)
-// A9 batch-2 deepening: each topic carries 3 L1 interference notes and 6
-// conversation directions (followUps) within the existing schema.
-// A8 D5-B deepening: each topic now carries 4 L1 interference notes and 3 seed
-// inputs (dialogue/bilingual-context variants), keeping the 6 followUps.
-export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
+// Food & ordering theme — deepened to full D4 metadata depth
+// (scenarioDescription, aiRoleDefinition, conversationDirections, warmthPatterns).
+// 14 topics covering the real ordering situations a Vietnamese learner meets:
+// cafés, fast food, food stalls, menu questions, customizing, allergies,
+// takeout, delivery, reservations, group meals, the bill, wrong orders,
+// bakeries, and drinks. Copy is warm, adult, and low-shame.
+// l1InterferenceNotes quote Vietnamese source phrases with full diacritics
+// as friendly context, never corrections.
+
+type D4SpeakTopic = SpeakTopicLibraryEntry & {
+  scenarioDescription: string;
+  aiRoleDefinition: string;
+  conversationDirections: readonly string[];
+  warmthPatterns: readonly string[];
+};
+
+export const foodOrderingSpeakTopics: readonly D4SpeakTopic[] = [
   {
     id: "topic-food-ordering-cafe-coffee",
     labelEn: "Ordering Coffee At A Café",
     labelVi: "Gọi cà phê ở quán",
     category: "food-ordering",
+    scenarioDescription:
+      "The learner walks up to a café counter or places an order at the till. They need to name their drink, customise it (ice level, sweetness, size, milk), pay, and give a name for the order.",
+    aiRoleDefinition:
+      "Act as a friendly barista who takes the order step-by-step, asks about size and ice, asks whether it's for here or to go, and asks for a name on the order.",
+    conversationDirections: [
+      "Greet the customer and open with 'What can I get for you today?'",
+      "Ask the size: small, medium, or large.",
+      "Ask about ice or sweetness if the order calls for it.",
+      "Ask 'For here or to go?' before finalising.",
+      "Ask for a name to call when it's ready.",
+      "Repeat the order back and confirm the total.",
+    ],
+    warmthPatterns: [
+      "Keep the tone relaxed and unhurried — café ordering is casual.",
+      "Mirror the learner's choice without judgement ('great choice').",
+      "If a preference is unclear, ask simply: 'With ice or without?'",
+    ],
     seedInputs: [
       "Can I get a small iced coffee, please?",
       "Could I get a hot latte, not too sweet?",
@@ -59,6 +83,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Ordering At A Fast-Food Counter",
     labelVi: "Gọi món ở quầy thức ăn nhanh",
     category: "food-ordering",
+    scenarioDescription:
+      "The learner steps up to a fast-food counter to order a meal. The exchange is quick: naming the item or number, choosing a combo, picking a side or drink, and saying whether it's for here or to go.",
+    aiRoleDefinition:
+      "Act as a fast-food counter staff who confirms the order number or item, offers a combo upgrade, asks about the drink, checks for here or to go, and asks if anything else is needed.",
+    conversationDirections: [
+      "Open with 'What can I get for you?' and let the learner order first.",
+      "Offer to upsize or make it a combo if they ordered a single item.",
+      "Ask which drink they'd like with the combo.",
+      "Ask 'For here or to go?'",
+      "Ask 'Anything else?' to close the order.",
+      "State the total and move to payment.",
+    ],
+    warmthPatterns: [
+      "Keep the pace brisk but friendly — fast food is casual and efficient.",
+      "Frame the combo offer as helpful, not pushy.",
+      "A simple 'Got it' or 'Sure' after each choice keeps momentum.",
+    ],
     seedInputs: [
       "I'll have a cheeseburger and small fries.",
       "Can I get the number three meal?",
@@ -103,6 +144,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Ordering At A Food Stall",
     labelVi: "Mua đồ ăn ở quầy hoặc xe đẩy",
     category: "food-ordering",
+    scenarioDescription:
+      "The learner approaches an outdoor food stall or cart to buy a snack or meal. The items may be unfamiliar by name, so pointing and simple quantity phrases are useful.",
+    aiRoleDefinition:
+      "Act as a friendly food-stall vendor who asks how many the learner wants, quotes the price, asks about extras like chili or sauce, and accepts cash.",
+    conversationDirections: [
+      "Greet the learner and gesture at the items with 'What would you like?'",
+      "Ask how many — using a number or 'How many would you like?'",
+      "State the price simply: 'That's two dollars.'",
+      "Offer extras: 'Would you like chili sauce with that?'",
+      "Handle payment and hand over the food.",
+      "Thank the learner warmly as they leave.",
+    ],
+    warmthPatterns: [
+      "Keep the tone relaxed and unintimidating — stall vendors are used to mixed-language customers.",
+      "Use gestures and pointing in descriptions to ease the pressure.",
+      "Be patient if the learner uses 'this' or 'that' instead of the item name.",
+    ],
     seedInputs: [
       "How much for one spring roll?",
       "Two of these, please.",
@@ -147,6 +205,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Asking About The Menu",
     labelVi: "Hỏi về thực đơn",
     category: "food-ordering",
+    scenarioDescription:
+      "The learner is at a restaurant or café and the menu is unfamiliar. They need to ask about dish contents, spice level, portion size, and recommendations before deciding what to order.",
+    aiRoleDefinition:
+      "Act as a helpful server who describes dishes, recommends popular ones, answers questions about ingredients or spice, and invites the learner to take their time deciding.",
+    conversationDirections: [
+      "Open by asking if the learner has any questions about the menu.",
+      "Describe a dish if asked: ingredients, how it's cooked, and whether it's spicy.",
+      "Offer a recommendation when the learner seems unsure.",
+      "Answer 'What comes with it?' with sides, sauces, or drinks included.",
+      "Confirm the portion size if asked — 'It's a generous portion, enough for two.'",
+      "Invite the learner to decide: 'Take your time — I'll come back in a moment.'",
+    ],
+    warmthPatterns: [
+      "Keep descriptions short and appetising, not a lecture.",
+      "Frame recommendations as personal favourites, not upsells.",
+      "Never rush the learner — a relaxed server makes ordering easier.",
+    ],
     seedInputs: [
       "What is in this dish?",
       "What do you recommend?",
@@ -191,6 +266,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Customizing Your Order",
     labelVi: "Yêu cầu thay đổi món",
     category: "food-ordering",
+    scenarioDescription:
+      "The learner wants to modify a standard menu item — removing an ingredient, adding extra, or asking for something on the side. They need short, polite phrases to make changes without a long explanation.",
+    aiRoleDefinition:
+      "Act as a server who confirms each modification clearly, asks if there are any other changes, and reads the full customised order back before submitting it.",
+    conversationDirections: [
+      "Acknowledge each modification with a brief confirmation: 'No onions — got it.'",
+      "Ask 'Any other changes?' after the first request.",
+      "If a substitution is not possible, offer an alternative: 'We don't have oat milk but we have almond.'",
+      "Read the full order back before moving on: 'So that's the burger, no onions, extra cheese — is that right?'",
+      "Confirm there are no allergy concerns if the change sounds health-related.",
+      "Close by confirming the order is submitted.",
+    ],
+    warmthPatterns: [
+      "Treat every modification as a normal, expected request — never make the learner feel awkward.",
+      "Mirror each change clearly so the learner feels heard.",
+      "Use 'Of course' or 'No problem' to keep the tone warm.",
+    ],
     seedInputs: [
       "Can I get it with no onions?",
       "Can I have extra cheese?",
@@ -235,6 +327,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Telling Them About Allergies Or Diet",
     labelVi: "Nói về dị ứng hoặc ăn kiêng",
     category: "food-ordering",
+    scenarioDescription:
+      "The learner needs to communicate a food allergy or dietary restriction clearly before ordering. The stakes are high for real allergies, so calm and direct language is important.",
+    aiRoleDefinition:
+      "Act as an attentive server who takes the allergy or diet note seriously, confirms what is safe on the menu, offers to check with the kitchen, and never minimises the request.",
+    conversationDirections: [
+      "Take the allergy note seriously from the first sentence — no casual dismissal.",
+      "Ask which specific ingredient to avoid: 'Is it peanuts, or peanut oil as well?'",
+      "Offer to check with the kitchen: 'Let me double-check that with the chef.'",
+      "Suggest safe alternatives if the requested dish is not suitable.",
+      "Confirm the final order is allergy-safe before submitting.",
+      "Remind the learner to mention it again at the table if a different server brings the food.",
+    ],
+    warmthPatterns: [
+      "Treat any allergy or diet note as a priority, not an inconvenience.",
+      "Avoid alarm — keep the tone matter-of-fact and reassuring.",
+      "Offer a positive alternative whenever a dish is off the table.",
+    ],
     seedInputs: [
       "I am allergic to peanuts.",
       "I'm vegetarian — no meat, please.",
@@ -279,6 +388,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Ordering Takeout",
     labelVi: "Mua mang về",
     category: "food-ordering",
+    scenarioDescription:
+      "The learner orders food at a counter or by phone and wants it packed to take away. They need to request packaging, ask about the wait time, give a name, and sometimes ask for extras like napkins or utensils.",
+    aiRoleDefinition:
+      "Act as a counter staff who confirms the takeout order, gives a wait time, asks for a name, and confirms any extras like bags or utensils.",
+    conversationDirections: [
+      "Confirm the order is for takeout: 'So that's to go — is that right?'",
+      "Give a realistic wait time: 'That'll be about 10 minutes.'",
+      "Ask for a name to call when the order is ready.",
+      "Ask if they need a bag, utensils, or extra napkins.",
+      "Call the name clearly when the order is ready.",
+      "Thank the customer as they take the order.",
+    ],
+    warmthPatterns: [
+      "Keep the takeout flow efficient — learners feel reassured when the steps are clear.",
+      "Mention the wait time early so the learner knows what to expect.",
+      "A warm 'Enjoy!' or 'Have a good one' at handover ends the exchange positively.",
+    ],
     seedInputs: [
       "I'd like this to go, please.",
       "Could I get this to go?",
@@ -323,6 +449,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Food Delivery Orders",
     labelVi: "Đặt đồ ăn giao tận nơi",
     category: "food-ordering",
+    scenarioDescription:
+      "The learner orders food for delivery — by app, website, or phone call. They need to give a clear address, ask about timing and fees, and leave instructions for the driver.",
+    aiRoleDefinition:
+      "Act as a phone order-taker or delivery app's chat agent who confirms the address, quotes a delivery time and fee, asks for any delivery notes, and confirms the full order.",
+    conversationDirections: [
+      "Ask for the delivery address in full: street, unit, any landmark.",
+      "Give the estimated delivery time: 'That should be about 30 to 40 minutes.'",
+      "State the delivery fee clearly so there are no surprises.",
+      "Ask if there are any delivery notes: 'Is there a gate code or special instructions?'",
+      "Confirm the payment method — card, cash, or app.",
+      "Repeat the order summary before closing the call.",
+    ],
+    warmthPatterns: [
+      "Keep the address step patient — addresses are details where clarity matters more than speed.",
+      "Frame the fee and timing as helpful information, not a disclaimer.",
+      "End with a warm 'Your food will be there soon' so the learner feels looked after.",
+    ],
     seedInputs: [
       "I want to order delivery to my apartment.",
       "Could you deliver to 12 Lê Lợi?",
@@ -367,6 +510,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Making A Restaurant Reservation",
     labelVi: "Đặt bàn nhà hàng",
     category: "food-ordering",
+    scenarioDescription:
+      "The learner calls or walks in to reserve a table at a restaurant. They need to give the date, time, number of guests, name, and any special requests like a quiet table or a birthday setup.",
+    aiRoleDefinition:
+      "Act as a friendly restaurant host who takes the booking details, confirms availability, asks for a name, mentions any special requests, and reads the reservation back.",
+    conversationDirections: [
+      "Ask for the date and time: 'What day and time were you thinking?'",
+      "Ask for the party size: 'How many guests will be joining you?'",
+      "Confirm availability or offer the nearest alternative if fully booked.",
+      "Ask for a name and contact number to hold the table.",
+      "Ask about special requests: 'Any dietary needs or special occasion?'",
+      "Read the full booking back to confirm: 'So that's a table for four on Saturday at seven, under Linh.'",
+    ],
+    warmthPatterns: [
+      "Keep the tone welcoming — a reservation call sets the tone for the whole dining experience.",
+      "If a time is unavailable, offer an alternative promptly so the learner does not feel turned away.",
+      "Repeat the name clearly to avoid a mispronunciation at the door.",
+    ],
     seedInputs: [
       "I'd like to book a table for two at seven.",
       "Do you have a table for four tonight?",
@@ -411,6 +571,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Ordering For The Whole Table",
     labelVi: "Gọi món cho cả bàn",
     category: "food-ordering",
+    scenarioDescription:
+      "The learner is ordering on behalf of a group, using the sharing style typical in Vietnamese dining. They need to order multiple dishes, ask for extra plates, and communicate the group's preferences.",
+    aiRoleDefinition:
+      "Act as a server who acknowledges the group, asks how many dishes the table would like, confirms shared plates, offers utensil upgrades, and checks for dietary needs at the table.",
+    conversationDirections: [
+      "Welcome the group warmly and confirm the party size.",
+      "Ask if they'd like to order all at once or in rounds.",
+      "Suggest a couple of popular shared plates if the learner seems unsure.",
+      "Ask if anyone at the table has allergies or dietary needs.",
+      "Offer extra plates or rice bowls for sharing.",
+      "Read the full table order back before leaving to submit it.",
+    ],
+    warmthPatterns: [
+      "Match the group energy — shared-meal ordering is relaxed and social.",
+      "Never rush the order — taking time for a group is expected.",
+      "Treat the learner as the spokesperson for the whole table.",
+    ],
     seedInputs: [
       "We will share two dishes for the table.",
       "We'll have three dishes to share.",
@@ -455,6 +632,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Asking For The Bill And Paying",
     labelVi: "Xin tính tiền và thanh toán",
     category: "food-ordering",
+    scenarioDescription:
+      "The learner's meal is over and they need to signal for the bill, choose how to pay, decide whether to split or pay together, and optionally ask about the tip.",
+    aiRoleDefinition:
+      "Act as a server who brings the bill promptly, explains what's included, confirms the payment method, handles splitting if requested, and thanks the group warmly at the end.",
+    conversationDirections: [
+      "Bring the bill when asked, or offer it proactively after a pause.",
+      "Explain what's included: 'That includes the service charge.'",
+      "Ask for the payment method: 'Will you be paying by card or cash?'",
+      "Handle a split calmly: 'How many ways would you like to split it?'",
+      "Process the payment and confirm the total.",
+      "Thank the guests and invite them to return.",
+    ],
+    warmthPatterns: [
+      "Keep the payment step warm and efficient — no one likes a long wait at the end.",
+      "Handle splits without any hint of frustration.",
+      "A sincere 'Thank you, hope to see you again' ends the experience well.",
+    ],
     seedInputs: [
       "Can we have the bill, please?",
       "Could we get the check, please?",
@@ -499,6 +693,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "When The Order Is Wrong",
     labelVi: "Khi món ăn bị sai hoặc nguội",
     category: "food-ordering",
+    scenarioDescription:
+      "The learner receives a dish that is wrong, cold, or has a missing item. They need to raise the issue politely and clearly so it gets fixed without an uncomfortable confrontation.",
+    aiRoleDefinition:
+      "Act as a server who hears the complaint calmly, apologises briefly, clarifies the problem, and offers to correct or replace the dish without blaming anyone.",
+    conversationDirections: [
+      "Listen without interrupting and acknowledge the problem: 'Oh, I'm sorry about that.'",
+      "Ask a quick clarifying question: 'What did you order — the chicken or the beef?'",
+      "Offer to fix it: 'I'll get that sorted right away.'",
+      "If the wait will be long, offer a small consolation: 'I'll bring some bread while you wait.'",
+      "Return with the corrected dish and confirm it is right this time.",
+      "Apologise once more and thank the guest for their patience.",
+    ],
+    warmthPatterns: [
+      "Stay calm and professional — the learner needs a model of a helpful server, not a defensive one.",
+      "Validate the complaint quickly; extended excuses slow down the fix.",
+      "Make the resolution feel seamless, not a big deal.",
+    ],
     seedInputs: [
       "Sorry, I think this is not what I ordered.",
       "Sorry, I think this is the wrong dish.",
@@ -511,7 +722,7 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
       {
         id: "fo-wrong-soft",
         label: "Polite but clear",
-        note: "It's okay to speak up. A warm, natural frame is 'Sorry, I think there's a mix-up' or 'I think this isn't what I ordered.' You're being helpful, not rude — staff want to fix it.",
+        note: "'Hình như có nhầm lẫn' — 'I think there's a mix-up' or 'I think this isn't what I ordered.' You're being helpful, not rude — staff want to fix it.",
       },
       {
         id: "fo-wrong-cold-missing",
@@ -543,6 +754,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "At The Bakery",
     labelVi: "Ở tiệm bánh",
     category: "food-ordering",
+    scenarioDescription:
+      "The learner visits a bakery to buy bread, pastries, or a cake. They need to name items, use measure words (a loaf, a dozen, a slice), ask about freshness, and request slicing or special packaging.",
+    aiRoleDefinition:
+      "Act as a friendly bakery staff who answers questions about fresh items, helps with quantities, asks about sliced or whole, and handles pre-orders for special cakes.",
+    conversationDirections: [
+      "Greet the learner and ask 'What can I help you with today?'",
+      "Answer freshness questions honestly: 'The sourdough came out of the oven an hour ago.'",
+      "Ask for the quantity using the right measure: 'How many loaves / slices / dozen?'",
+      "Ask 'Sliced or whole?' for bread loaves.",
+      "Take a special-order cake request with date and any message details.",
+      "Pack the items neatly and state the total.",
+    ],
+    warmthPatterns: [
+      "Bakery staff are often chatty and proud of their products — match that warmth.",
+      "Use sensory words when describing fresh items: 'It's still warm.'",
+      "Frame special orders as something you're happy to do, not a burden.",
+    ],
     seedInputs: [
       "Can I get two croissants and a loaf of bread?",
       "Could I get half a dozen rolls?",
@@ -587,6 +815,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Ordering Drinks And Asking For Water",
     labelVi: "Gọi nước uống và xin nước lọc",
     category: "food-ordering",
+    scenarioDescription:
+      "The learner orders a drink at a restaurant or asks for water. They need to handle 'still or sparkling,' ask for ice preferences, request a refill, and order warm water if preferred.",
+    aiRoleDefinition:
+      "Act as a server who takes the drink order, asks about ice, offers still or sparkling water, checks for refills during the meal, and responds warmly to non-standard requests like warm water.",
+    conversationDirections: [
+      "Ask 'What can I get you to drink?' as the opening.",
+      "Offer the water choice: 'Still or sparkling?'",
+      "Ask about ice if the learner orders a cold drink.",
+      "Check in for refills during the meal: 'Can I get anyone a refill?'",
+      "Handle a warm water request with no fuss: 'Of course — I'll bring that right away.'",
+      "Confirm the drink order before leaving the table.",
+    ],
+    warmthPatterns: [
+      "Treat warm-water requests as completely normal — many guests have different preferences.",
+      "Make refill checks feel attentive, not intrusive.",
+      "Keep drink language simple and menu-driven.",
+    ],
     seedInputs: [
       "Could I get a glass of water, please?",
       "Could I get a refill, please?",
@@ -627,3 +872,5 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     ],
   },
 ] as const;
+
+export const speakTopics = foodOrderingSpeakTopics;

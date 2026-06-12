@@ -2,9 +2,24 @@ import { describe, expect, it } from "vitest";
 import {
   buildConversationPromptGrounding,
   buildConversationPromptTemplate,
+  type ConversationPromptTopic,
 } from "@/lib/tutor/conversationPromptTemplates";
 import { speakTopics as foodOrderingTopics } from "@/lib/tutor/speakTopics/foodOrdering";
 import { speakTopics as nailTechnicianTopics } from "@/lib/tutor/speakTopics/nailTechnicianEnglish";
+
+// Minimal D2 topic: has required SpeakTopicLibraryEntry fields but none of the
+// optional D4 rich-prompt fields (scenarioDescription, aiRoleDefinition, etc.).
+// Used to lock the "falls back safely" behaviour without depending on any real
+// topic staying shallow.
+const SPARSE_TOPIC: ConversationPromptTopic = {
+  id: "topic-test-sparse-fixture",
+  labelEn: "Sparse Fixture",
+  labelVi: "Chủ đề thử nghiệm",
+  category: "general",
+  seedInputs: ["Hello, can I help you?"],
+  detectionPatterns: [/sparse-fixture/i],
+  followUps: [{ id: "sf-1", question: "What do you need?" }],
+};
 
 describe("conversationPromptTemplates", () => {
   it("grounds a core Speak topic with Step 8 persistence and Vietnamese-first correction style", () => {
@@ -47,7 +62,7 @@ describe("conversationPromptTemplates", () => {
   });
 
   it("falls back safely when richer prompt fields are absent", () => {
-    const topic = foodOrderingTopics[1];
+    const topic = SPARSE_TOPIC;
     const grounding = buildConversationPromptGrounding(topic);
     const template = buildConversationPromptTemplate({ topic });
 
