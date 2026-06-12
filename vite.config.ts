@@ -37,6 +37,7 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { sentryVitePlugin } from '@sentry/vite-plugin';
+import { execSync } from 'child_process';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { OFFLINE_PRECACHE_LESSONS } from './src/lib/offline/precacheManifest';
@@ -93,8 +94,17 @@ function getSentryReleaseName(): string | undefined {
   );
 }
 
+function getBundleBuildHash(): string {
+  try {
+    return execSync('git rev-parse --short HEAD', { encoding: 'utf8' }).trim();
+  } catch {
+    return sentryReleaseName?.slice(0, 7) ?? '';
+  }
+}
+
 const sentryReleaseName = getSentryReleaseName();
 const sentryDeployEnvironment = getSentryDeployEnvironment();
+const bundleBuildHash = getBundleBuildHash();
 
 if (process.env.CONTEXT || process.env.COMMIT_REF) {
   console.info(
@@ -503,6 +513,7 @@ export default defineConfig({
     'import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA': JSON.stringify(
       sentryReleaseName ?? '',
     ),
+    'import.meta.env.VITE_MERCYB_BUILD_HASH': JSON.stringify(bundleBuildHash),
   },
 
   resolve: {
