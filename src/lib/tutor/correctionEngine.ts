@@ -498,7 +498,9 @@ function _correctClause(trimmed: string, language: TutorCorrectionLanguage): Cor
     };
   }
 
-  return { status: "unchanged", corrected, appliedRuleIds: [] };
+  // Contract: status==='unchanged' means no rules fired — corrected MUST equal the
+  // original input verbatim so callers can trust it as a safe echo (no silent mutation).
+  return { status: "unchanged", corrected: trimmed, appliedRuleIds: [] };
 }
 
 export function correctWithTutorRules(
@@ -550,7 +552,8 @@ export function correctWithTutorRules(
   // If reassembling the segments produces the same text as the original (e.g. the input
   // already had proper sentence boundaries), no real change occurred — return "unchanged".
   if (normalizeWhitespace(assembled) === trimmed) {
-    return { status: "unchanged", corrected: assembled, appliedRuleIds: [] };
+    // Contract: unchanged → corrected === original input (no silent mutation).
+    return { status: "unchanged", corrected: trimmed, appliedRuleIds: [] };
   }
   return { status: "corrected", corrected: assembled, appliedRuleIds: allRuleIds };
 }

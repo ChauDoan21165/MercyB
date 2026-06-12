@@ -881,7 +881,8 @@ describe("correctionEngine", () => {
 
     expect(result).toMatchObject({
       status: "unchanged",
-      corrected: "He very happy go school.",
+      // unchanged contract: corrected === trimmed(input), no silent capitalisation or punct.
+      corrected: "he very happy go school",
       appliedRuleIds: [],
     });
     expect(result.corrected).not.toBe("He is very happy go to school.");
@@ -1345,7 +1346,8 @@ describe("correctionEngine", () => {
   it.each([
     ["Do you like coffee?", "Do you like coffee?"],
     ["What do you like?", "What do you like?"],
-    ["You like coffee", "You like coffee."],
+    // unchanged contract: corrected === trimmed(input), no silent punctuation appended.
+    ["You like coffee", "You like coffee"],
   ])("does not over-trigger VN yes/no do-support: %s", (input, expected) => {
     expect(correctWithTutorRules(input, "en")).toMatchObject({
       status: "unchanged",
@@ -1465,6 +1467,75 @@ describe("correctionEngine", () => {
     expect(result.corrected).toBe("Can you close the fan? I am cold.");
     expect(result.appliedRuleIds).not.toContain("en-question-form-final-mark");
   });
+});
+
+// ─── Unchanged-contract: corrected must equal input verbatim (fix: silent punctuation/case mutation) ─
+
+describe("correctionEngine — unchanged contract: corrected === input, no silent mutation", () => {
+  // Exact fixture from the prod incident brief: input ends with `?"` (closing quote after ?).
+  // The old code appended `.` via ensureTerminalPunctuation because `"` is not terminal punct.
+  it('prod fixture: Where you go yesterday?" — corrected equals input verbatim (no . appended)', () => {
+    const input = 'Where you go yesterday?"';
+    const result = correctWithTutorRules(input, "en");
+    expect(result.status).toBe("unchanged");
+    expect(result.corrected).toBe(input);
+    expect(result.appliedRuleIds).toHaveLength(0);
+  });
+
+  // Input with lowercase first letter and no terminal punctuation.
+  // Old code silently capitalised + appended `.` even on unchanged status.
+  it.each([
+    "i went to school yesterday",
+    "did you go there",
+    "she likes reading books",
+  ])("lowercase / no-punct input: corrected equals trimmed input, not a mutated version: %s", (input) => {
+    const result = correctWithTutorRules(input, "en");
+    if (result.status === "unchanged") {
+      expect(result.corrected).toBe(input.trim());
+    }
+  });
+
+  // Sanity check: a sentence that genuinely changes gets a DIFFERENT corrected value.
+  it("corrected sentences still differ from input (no regression on corrected path)", () => {
+    const result = correctWithTutorRules("I buy a hat yesterday.", "en");
+    expect(result.status).toBe("corrected");
+    expect(result.corrected).not.toBe("I buy a hat yesterday.");
+    expect(result.corrected).toBe("I bought a hat yesterday.");
+  });
+});
+
+// ─── Golden correction gate: corrected must differ from input in letters, not just punctuation ─
+
+describe("correctionEngine — golden gate: correction must change letters, not only punctuation", () => {
+  // These inputs are genuinely corrected (status=corrected).
+  // Verify that the corrected form differs from the input in at least one LETTER (not just a
+  // punctuation append), and that every such pair has a non-empty appliedRuleIds list.
+  const GOLDEN_PAIRS: [string, string][] = [
+    ["I buy a hat yesterday.", "I bought a hat yesterday."],
+    ["She go to school every day.", "She goes to school every day."],
+    ["He eat rice yesterday.", "He ate rice yesterday."],
+    ["I have lunch yesterday.", "I had lunch yesterday."],
+    ["She bought orange.", "She bought an orange."],
+    ["She is teacher.", "She is a teacher."],
+    ["Many student like English.", "Many students like English."],
+    ["She very happy.", "She is very happy."],
+  ];
+
+  it.each(GOLDEN_PAIRS)(
+    "corrected form differs from input in letters (not only punctuation): %s",
+    (input, expectedCorrected) => {
+      const result = correctWithTutorRules(input, "en");
+      expect(result.status).toBe("corrected");
+      expect(result.corrected).toBe(expectedCorrected);
+
+      // Punctuation-masked echo check: strip all non-letter chars and compare.
+      const lettersOnly = (s: string) => s.replace(/[^a-z]/gi, "").toLowerCase();
+      expect(lettersOnly(result.corrected)).not.toBe(lettersOnly(input));
+
+      // A real correction must have at least one rule ID.
+      expect(result.appliedRuleIds.length).toBeGreaterThan(0);
+    },
+  );
 });
 
 describe("correctionEngine — BUG1 semantic plausibility trust floor", () => {

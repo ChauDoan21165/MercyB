@@ -18,6 +18,8 @@ import type { SpeechRecognitionLike } from "@/types/speech-recognition";
 const FORBIDDEN_STANCE_WORDING = /diagnosis|depressed|anxiety|trauma|therapy|mental health|clinical|disorder/i;
 const FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE =
   "Mercy chưa sửa chắc câu này bằng bộ quy tắc hiện tại. Bạn có thể chỉnh lại câu ngắn hơn một chút rồi bấm Sửa câu này nhé.";
+const CANNOT_CORRECT_NO_SESSION_MESSAGE =
+  "Mercy cần đăng nhập để kiểm tra câu này. Bạn thử đăng nhập nhé.";
 
 const EMPTY_SUMMARY: MemorySummary = {
   tutorProduct: "ai-tutor",
@@ -346,7 +348,10 @@ describe("AiTutor four-tab seed flow", () => {
   it("does not show a Step 5 hint for safe Correction input", async () => {
     renderAiTutor();
 
-    await correctSentence("I like music.", "I like music.");
+    // Punctuation-only correction (missing ?) triggers no L1 error tag → low-confidence
+    // detection → no detector hint chip. Replaces the old "I like music." unchanged echo test;
+    // unchanged sentences without a session now show an honest message instead of a correction card.
+    await correctSentence("Where did you go yesterday", "Where did you go yesterday?");
 
     expect(screen.queryByTestId("detector-hint-chip")).not.toBeInTheDocument();
     expect(recentL1Tags()).toEqual([]);
@@ -395,9 +400,11 @@ describe("AiTutor four-tab seed flow", () => {
     expect(followUp2).toHaveTextContent("làm nghề"); // context #2
     expect(followUp2).not.toHaveTextContent("buổi sáng"); // never the same context twice
 
-    // A clean turn → the loop offers to move on instead of another drill.
+    // A clean turn: punctuation-only correction → detector fires low-confidence for the
+    // vi_l1_3rd_person_s focus tag → loop offers to move on. Replaces the old "I like music."
+    // echo test; unchanged sentences without a session no longer produce a correction card.
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu khác" }));
-    await correctSentence("I like music.", "I like music.");
+    await correctSentence("Where did you go yesterday", "Where did you go yesterday?");
     expect(await screen.findByTestId("ai-tutor-l1-moveon")).toBeInTheDocument();
     expect(screen.queryByTestId("ai-tutor-l1-followup")).not.toBeInTheDocument();
   });
@@ -423,7 +430,8 @@ describe("AiTutor four-tab seed flow", () => {
   it("shows no follow-up for clean (low-confidence) input with no active focus", async () => {
     renderAiTutor();
 
-    await correctSentence("I like music.", "I like music.");
+    // Punctuation-only correction → low-confidence L1 detection → no follow-up or move-on.
+    await correctSentence("Where did you go yesterday", "Where did you go yesterday?");
 
     expect(screen.queryByTestId("ai-tutor-l1-followup")).not.toBeInTheDocument();
     expect(screen.queryByTestId("ai-tutor-l1-moveon")).not.toBeInTheDocument();
@@ -973,7 +981,7 @@ describe("AiTutor four-tab seed flow", () => {
       session: { access_token: "session-jwt" },
       isLoading: false,
     });
-    const fetchMock = vi.fn(async (_url: string, init?: RequestInit) => {
+    const fetchMock = vi.fn<typeof fetch>(async (_url, init) => {
       return new Response(JSON.stringify({ question: "What do you like to do in summer?" }), {
         status: 200,
         headers: { "Content-Type": "application/json" },
@@ -993,8 +1001,13 @@ describe("AiTutor four-tab seed flow", () => {
       );
     });
     const apiCall = fetchMock.mock.calls.find(([url]) => url === "/api/mercy-ai");
-    expect(apiCall).toBeDefined();
-    const [, init] = apiCall as [string, RequestInit];
+    if (!apiCall) {
+      throw new Error("Expected /api/mercy-ai fetch call");
+    }
+    const [, init] = apiCall;
+    if (!init) {
+      throw new Error("Expected /api/mercy-ai fetch init");
+    }
     const body = JSON.parse(String(init.body ?? "{}")) as {
       mode?: string;
       transcript?: string;
@@ -2009,5 +2022,64 @@ describe("AiTutor four-tab seed flow", () => {
         "I bought a hat yesterday.",
       );
     });
+  });
+});
+
+// ─── Bug fix: unchanged-echo correction and session-hydration race ────────────
+
+describe("AiTutor Grammar submit — unchanged sentence + session handling", () => {
+  it("[fix-b] no token + unchanged sentence: shows honest message, never renders correction card", async () => {
+    // Default: useAuthMock returns session: null (no token). supabase.auth.getSession()
+    // also returns null (jsdom localStorage is empty). Submitting a grammatically correct
+    // sentence (unchanged by the engine) must NOT show a correction card — only the
+    // honest cannot-verify message.
+    renderAiTutor();
+
+    await userEvent.type(
+      screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i }),
+      "I went to school.",
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
+
+    expect(await screen.findByText(CANNOT_CORRECT_NO_SESSION_MESSAGE)).toBeInTheDocument();
+    // No correction card: "Sửa câu khác" button only appears after a successful correction.
+    expect(screen.queryByRole("button", { name: "Sửa câu khác" })).not.toBeInTheDocument();
+  });
+
+  it("[fix-c] with token + unchanged sentence: AI path is called (not local echo)", async () => {
+    // With a session token, the AI API must be invoked for unchanged sentences.
+    // The ?? fallback picks up session.access_token from useAuthMock because
+    // supabase.auth.getSession() returns null from jsdom localStorage.
+    useAuthMock.mockReturnValue({
+      user: { id: "user-1", user_metadata: {} },
+      session: { access_token: "session-jwt" },
+      isLoading: false,
+    });
+    const fetchMock = vi.fn<typeof fetch>(async () =>
+      new Response(
+        JSON.stringify({ confident: false, corrected: "", explanation: "câu đúng rồi", grammarTip: "" }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      ),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+    renderAiTutor();
+
+    await userEvent.type(
+      screen.getByRole("textbox", { name: /Gõ câu tiếng Anh của bạn/i }),
+      "I went to school.",
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
+
+    await waitFor(() => {
+      const aiCall = fetchMock.mock.calls.find(([url]) => String(url).includes("/api/mercy-ai"));
+      expect(aiCall).toBeDefined();
+    });
+    // AI is called with the session token in the Authorization header.
+    const aiCall = fetchMock.mock.calls.find(([url]) => String(url).includes("/api/mercy-ai"));
+    if (!aiCall) {
+      throw new Error("Expected /api/mercy-ai fetch call");
+    }
+    const [, init] = aiCall;
+    expect(init?.headers).toMatchObject({ Authorization: "Bearer session-jwt" });
   });
 });
