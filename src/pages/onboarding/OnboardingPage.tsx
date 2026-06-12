@@ -68,8 +68,9 @@
 // `authenticated` role (verified in PR 1: not among the #578 frozen
 // columns).
 //
-// Telemetry: each step transition emits a console.log line prefixed
-// [onboarding-telemetry] (no event_log table in this schema yet).
+// Telemetry: funnel events (onboarding_started / onboarding_step_complete /
+// onboarding_complete / onboarding_skipped) fan out to GA4 + Clarity via
+// the shared trackEvent dispatcher in src/lib/analytics.ts.
 //
 // Tone discipline: VI primary, EN secondary in lighter weight. No
 // shame language. Mercy's voice — encouraging, like a kind teacher.
@@ -591,6 +592,17 @@ export default function OnboardingPage() {
   useEffect(() => {
     setStepStartedAt(Date.now());
   }, [step]);
+
+  // Funnel denominator: fires once on mount so GA4 can compute
+  // onboarding_started → onboarding_complete / onboarding_skipped rates.
+  useEffect(() => {
+    logTelemetry("onboarding_started", {
+      entry_step: directionVn ? "target" : "native",
+      direction: directionVn ? "vn" : "default",
+    });
+    // Empty dep array: run once on mount only.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const currentIndex = ONBOARDING_STEPS.indexOf(step);
   const isEntryStep = step === entryStepRef.current;
