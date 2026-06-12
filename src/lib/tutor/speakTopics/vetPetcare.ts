@@ -1,16 +1,42 @@
 import type { SpeakTopicLibraryEntry } from "../speakTopicLibrary";
 
-// Veterinary / pet-care theme. Everyday English for a Vietnamese learner
-// taking their pet to the vet — booking, symptoms, vaccinations, diagnosis,
-// medication, emergency, billing. Copy is warm, low-shame, and focuses on
-// communication, never medical advice. l1InterferenceNotes surface genuine
-// Vietnamese→English interference as friendly context.
-export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
+// Veterinary / pet-care theme — deepened to full D4 metadata depth
+// (scenarioDescription, aiRoleDefinition, conversationDirections, warmthPatterns).
+// 7 topics: booking, describing symptoms, vaccinations, understanding diagnosis,
+// pet medication, emergency vet visit, paying the vet bill.
+// Copy is warm, low-shame, and focuses on communication — never medical advice.
+// l1InterferenceNotes surface genuine Vietnamese→English interference as friendly context.
+
+type D4SpeakTopic = SpeakTopicLibraryEntry & {
+  scenarioDescription: string;
+  aiRoleDefinition: string;
+  conversationDirections: readonly string[];
+  warmthPatterns: readonly string[];
+};
+
+export const vetPetcareSpeakTopics: readonly D4SpeakTopic[] = [
   {
     id: "topic-vet-petcare-booking",
     labelEn: "Booking A Vet Appointment",
     labelVi: "Đặt lịch khám thú y cho thú cưng",
     category: "vet-petcare",
+    scenarioDescription:
+      "The learner needs to call a veterinary clinic to book a routine wellness check-up for their pet, give the pet's name and species, select a convenient time slot, and confirm the appointment before arriving.",
+    aiRoleDefinition:
+      "Act as a friendly veterinary receptionist who greets the caller warmly, asks for the pet's name and type of animal, offers two or three available time slots, and confirms the appointment with all the key details before saying goodbye.",
+    conversationDirections: [
+      "Greet the caller warmly and ask how you can help — let the learner state the reason for calling.",
+      "Ask for the pet's name, species, and whether it is a new patient at the clinic.",
+      "Offer two or three appointment options across different days and times.",
+      "Let the learner choose a time and ask any follow-up questions about what to bring.",
+      "Ask whether the learner would like to mention the pet's sex, breed, or age to put in the file.",
+      "Confirm the appointment date, time, and the clinic's address before closing.",
+    ],
+    warmthPatterns: [
+      "Use the pet's name throughout once the learner gives it — 'Great, we'll see Luna on Thursday!'",
+      "Treat new patients warmly: 'It's wonderful that you're getting Max started with us — first visits are really important.'",
+      "If the learner is unsure about the reason for the visit, prompt gently: 'Is it a routine check-up or is something bothering your pet?'",
+    ],
     seedInputs: [
       "I'd like to make an appointment for my dog.",
       "Hi, can I schedule a check-up for my cat this week?",
@@ -55,6 +81,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Describing Your Pet's Symptoms",
     labelVi: "Mô tả triệu chứng của thú cưng",
     category: "vet-petcare",
+    scenarioDescription:
+      "The learner is at the vet's office and needs to describe what they have noticed — changes in eating, energy, movement, or behaviour — so the vet can assess the pet accurately without the learner feeling they have to use medical vocabulary.",
+    aiRoleDefinition:
+      "Act as a calm, attentive veterinarian who puts the learner at ease, asks clear follow-up questions about duration and severity, and gently helps them find the right words when they are unsure how to describe what they observed.",
+    conversationDirections: [
+      "Open by asking the learner what brought them in today — let them describe the issue in their own words.",
+      "Follow up on duration: 'How long has this been going on?' and 'Has it been getting better or worse?'",
+      "Ask about eating, drinking, and bathroom habits to build a complete symptom picture.",
+      "Let the learner describe energy levels and any changes in movement or behaviour.",
+      "Ask whether the pet has had this problem before or whether anything happened recently that might explain it.",
+      "Close by summarising what you heard back to the learner to confirm understanding.",
+    ],
+    warmthPatterns: [
+      "Never make the learner feel bad for using simple words — if they say 'she doesn't feel good,' accept it and build on it with a follow-up question.",
+      "Use the pet's name and gender throughout to keep the conversation warm and personal.",
+      "When the learner hesitates, offer options: 'Would you say she's eating less, or not eating at all?'",
+    ],
     seedInputs: [
       "My dog hasn't been eating for two days.",
       "She keeps scratching her ear and shaking her head.",
@@ -99,6 +142,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Vaccinations And Preventive Care",
     labelVi: "Tiêm phòng và chăm sóc sức khỏe định kỳ",
     category: "vet-petcare",
+    scenarioDescription:
+      "The learner brings their pet in for its annual vaccines and preventive care — asking which shots are due, understanding the difference between core and non-core vaccines, requesting the vaccination record, and asking about flea, tick, or heartworm prevention.",
+    aiRoleDefinition:
+      "Act as a veterinarian or vet tech who reviews the pet's vaccination history, explains which vaccines are due and why, offers options for preventive care like heartworm or flea treatment, and provides the updated vaccination record at the end of the visit.",
+    conversationDirections: [
+      "Open by reviewing the pet's vaccination history and telling the learner which shots are due.",
+      "Explain the difference between core vaccines (required for all pets) and non-core vaccines (based on lifestyle).",
+      "Let the learner ask about possible reactions to a vaccine and what to watch for at home.",
+      "Discuss flea, tick, and heartworm prevention options — monthly treatments, topical, oral, or collar.",
+      "Let the learner ask about the cost of the vaccines and preventive treatments.",
+      "Close by updating the vaccination record and confirming when the next round of shots is due.",
+    ],
+    warmthPatterns: [
+      "Use 'she's all up to date' and 'this one is just a booster' to keep the tone reassuring rather than clinical.",
+      "When the learner asks about reactions, normalize it: 'It's totally normal to ask — most pets feel fine; occasionally they're a little sleepy the first day.'",
+      "Hand over the updated record proactively: 'Here's the updated vaccination card — you'll need this if she ever goes to a boarding facility.'",
+    ],
     seedInputs: [
       "My cat is due for her annual shots.",
       "Can you tell me which vaccines my dog needs this year?",
@@ -143,6 +203,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Understanding The Vet's Diagnosis",
     labelVi: "Hiểu kết quả chẩn đoán của bác sĩ thú y",
     category: "vet-petcare",
+    scenarioDescription:
+      "The vet has examined the learner's pet and is explaining a diagnosis. The learner needs to ask follow-up questions to understand what the condition means, how serious it is, what treatment options exist, and what to do if they are unsure or want a second opinion.",
+    aiRoleDefinition:
+      "Act as a compassionate veterinarian who delivers a diagnosis in plain, non-alarming language, pauses to check understanding, welcomes questions, and explains treatment options with realistic outcomes — never rushing the learner through difficult information.",
+    conversationDirections: [
+      "Deliver the diagnosis clearly but gently — give the name and a one-sentence plain-language explanation.",
+      "Pause and ask: 'Does that make sense so far? Do you have any questions?'",
+      "Let the learner ask how serious the condition is and what the prognosis is.",
+      "Walk through the treatment options — including what happens if the learner decides to wait or not treat.",
+      "Let the learner ask to have the diagnosis written down or spelled out.",
+      "Close by offering to schedule a follow-up and mentioning that getting a second opinion is completely normal.",
+    ],
+    warmthPatterns: [
+      "Slow down when delivering bad news — speak in shorter sentences and pause more than usual.",
+      "When the learner asks to repeat something, rephrase it differently rather than just repeating word for word.",
+      "Treat a request for a second opinion as normal: 'That's a completely reasonable thing to do — here's how to transfer the records.'",
+    ],
     seedInputs: [
       "Can you explain what that means for my dog?",
       "I'm not sure I understood — could you go over the diagnosis again?",
@@ -187,6 +264,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Getting Your Pet's Medication",
     labelVi: "Nhận thuốc và hướng dẫn dùng thuốc cho thú cưng",
     category: "vet-petcare",
+    scenarioDescription:
+      "The learner is picking up prescribed medication for their pet and needs to understand the dosage instructions, ask about administration tips (especially if the pet refuses pills), find out about possible side effects, and learn how to request a refill.",
+    aiRoleDefinition:
+      "Act as a helpful veterinary pharmacist or vet tech who explains the medication clearly — dosage, frequency, food instructions — offers practical tips for pilling a reluctant pet, and tells the learner what side effects to watch for and when to call the clinic.",
+    conversationDirections: [
+      "Start by confirming the medication name and which pet it's for, then explain the dosage in plain terms.",
+      "Walk through the administration instructions: how much, how often, and whether to give with food.",
+      "Let the learner ask what to do if the pet spits out the pill or refuses to eat it.",
+      "Explain possible side effects briefly and tell the learner when a side effect warrants a call to the clinic.",
+      "Let the learner ask about storage and how many days the medication lasts.",
+      "Close by explaining how to request a refill and whether a recheck appointment is needed first.",
+    ],
+    warmthPatterns: [
+      "Normalise pilling difficulties immediately: 'Most cats and some dogs fight pills — here are a few tricks that really work.'",
+      "Give dosage instructions in two formats: 'Once a day means every 24 hours — morning is easiest for most people to remember.'",
+      "When the learner asks about side effects, be reassuring but specific: 'A little drowsiness is normal; vomiting or not eating after two days — call us.'",
+    ],
     seedInputs: [
       "How do I give this medicine to my cat?",
       "Can I get a refill of my dog's prescription?",
@@ -231,6 +325,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Emergency Vet Visit",
     labelVi: "Đưa thú cưng đi cấp cứu",
     category: "vet-petcare",
+    scenarioDescription:
+      "The learner's pet has a sudden, serious health crisis — swallowed something toxic, is breathing abnormally, or was injured. The learner must communicate urgency clearly, describe the emergency concisely, and navigate an after-hours emergency animal hospital if the regular vet is closed.",
+    aiRoleDefinition:
+      "Act as an emergency veterinary receptionist who prioritises quickly, asks the most important triage questions (what happened, when, symptoms right now), gives the learner an immediate instruction, and guides them calmly through checking in at the emergency clinic.",
+    conversationDirections: [
+      "Answer urgently and ask the learner to describe what happened in one or two sentences.",
+      "Ask the two most critical triage questions: 'Is your pet conscious?' and 'Is your pet breathing normally?'",
+      "If this is a poison or ingestion case, ask what was swallowed and approximately how long ago.",
+      "Give the learner one clear instruction — come in immediately, call poison control, or monitor at home.",
+      "Let the learner ask for the emergency clinic address and parking instructions.",
+      "Close by telling the learner to call ahead from the car so the team can prepare on arrival.",
+    ],
+    warmthPatterns: [
+      "Open with calm urgency: 'I hear you — let's move quickly. What happened?'",
+      "In a true emergency, keep your questions to two or three maximum — the learner is stressed and needs clear direction, not a long intake form.",
+      "If the situation is not immediately life-threatening, say so: 'This sounds serious but not immediately life-threatening — come in as soon as you can.'",
+    ],
     seedInputs: [
       "My dog just ate something he shouldn't have.",
       "My cat is breathing really fast and won't move — it's an emergency.",
@@ -275,6 +386,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Paying The Vet Bill",
     labelVi: "Thanh toán hóa đơn thú y",
     category: "vet-petcare",
+    scenarioDescription:
+      "The learner is at the checkout desk after a vet visit and needs to understand what each charge on the bill is for, ask whether their pet insurance covers any of it, and discuss a payment plan if the total is higher than expected.",
+    aiRoleDefinition:
+      "Act as a friendly veterinary receptionist handling checkout — explaining the itemized charges clearly, confirming which services pet insurance might reimburse, and calmly walking the learner through payment plan options or CareCredit if the bill is a financial strain.",
+    conversationDirections: [
+      "Present the total clearly and offer to go through each line item without waiting for the learner to ask.",
+      "Let the learner ask about any charge they don't recognise — explain it in plain terms.",
+      "Ask whether the learner has pet insurance and explain how the reimbursement process works.",
+      "If the total is a surprise, proactively mention the payment plan or CareCredit option.",
+      "Let the learner ask for a receipt or an itemized invoice for their insurance claim.",
+      "Close by confirming the payment method and reminding the learner of the next scheduled visit.",
+    ],
+    warmthPatterns: [
+      "When the bill is higher than expected, acknowledge it warmly: 'I know this is a lot — let me walk you through it so nothing is a surprise.'",
+      "Never make the learner feel awkward for asking about payment plans: 'A lot of our clients use this option — it's completely normal.'",
+      "Offer the receipt proactively: 'Here's your itemized receipt — you'll need this if you're submitting a pet insurance claim.'",
+    ],
     seedInputs: [
       "Can you explain what's on this bill?",
       "Do you offer a payment plan for a large bill?",
@@ -315,3 +443,5 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     ],
   },
 ];
+
+export const speakTopics = vetPetcareSpeakTopics;

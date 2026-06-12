@@ -1,17 +1,45 @@
-import type { SpeakTopicLibraryEntry as SpeakTopic } from "../speakTopicLibrary";
+import type { SpeakTopicLibraryEntry } from "../speakTopicLibrary";
 
-// Insurance customer English theme. Covers the everyday situations a Vietnamese
-// newcomer faces when buying or using insurance in the US: enrolling in health
-// insurance, understanding a health plan, using auto insurance after an accident,
-// getting a home/renters quote, filing a claim, and reading an explanation of
-// benefits. L1 notes quote the Vietnamese source phrase with full diacritics.
-// note-ids and followUp-ids are disjoint (followUp ids always end with -fu).
-export const speakTopics: readonly SpeakTopic[] = [
+// Insurance customer English theme — deepened to full D4 metadata depth
+// (scenarioDescription, aiRoleDefinition, conversationDirections, warmthPatterns).
+// 6 topics covering the real situations a Vietnamese newcomer faces when buying
+// or using insurance in the US: enrolling in health insurance, understanding a
+// health plan, using auto insurance after an accident, getting a home/renters quote,
+// filing a claim, and disputing a medical bill.
+// L1 notes quote the Vietnamese source phrase with full diacritics — friendly context,
+// never a grammar correction. note-ids and followUp-ids are disjoint (followUp ids
+// always end with -fu).
+
+type D4SpeakTopic = SpeakTopicLibraryEntry & {
+  scenarioDescription: string;
+  aiRoleDefinition: string;
+  conversationDirections: readonly string[];
+  warmthPatterns: readonly string[];
+};
+
+export const insuranceCustomerSpeakTopics: readonly D4SpeakTopic[] = [
   {
     id: "topic-insurance-enroll-health",
     labelEn: "Enrolling In Health Insurance",
     labelVi: "Đăng ký bảo hiểm sức khỏe",
     category: "insurance-customer",
+    scenarioDescription:
+      "The learner needs to enroll in health insurance for the first time — either through their employer's open enrollment window or the government marketplace — and must ask about plan options, costs, and coverage before making a decision.",
+    aiRoleDefinition:
+      "Act as a knowledgeable but friendly HR benefits coordinator or insurance marketplace guide who explains plan options clearly, defines key terms like premium, deductible, and copay without jargon, and helps the learner ask the right questions before enrolling.",
+    conversationDirections: [
+      "Open by asking what type of coverage the learner is looking for — employer plan or marketplace.",
+      "Explain the difference between premium, deductible, and copay in plain language using a simple example.",
+      "Let the learner ask about in-network doctors or whether their current doctor is covered.",
+      "Guide the learner to ask about the enrollment deadline and how to submit their application.",
+      "Let the learner compare two plan options by asking about cost versus coverage trade-offs.",
+      "Close by confirming which plan the learner wants to enroll in and what documents they need.",
+    ],
+    warmthPatterns: [
+      "Use short, jargon-free sentences — every insurance term should come with a one-sentence plain-language definition.",
+      "Treat questions about cost and coverage as completely normal — never make the learner feel they're asking for too much.",
+      "If the learner seems confused by a comparison, offer a concrete example: 'If you visit the doctor once a month, Plan A would cost you about X per year.'",
+    ],
     seedInputs: ["I need to sign up for health insurance. What are my options?"],
     detectionPatterns: [
       /\b(?:sign up for (?:health )?insurance|enroll (?:in )?(?:health )?insurance|open enrollment|health plan|marketplace plan|employer (?:health )?plan|coverage options)\b/i,
@@ -46,6 +74,23 @@ export const speakTopics: readonly SpeakTopic[] = [
     labelEn: "Understanding Your Health Plan",
     labelVi: "Hiểu kế hoạch bảo hiểm sức khỏe của bạn",
     category: "insurance-customer",
+    scenarioDescription:
+      "The learner has just received their insurance card and needs to understand how to use it at a clinic — including showing the card, understanding co-insurance and referrals, and reading the Explanation of Benefits (EOB) document they receive after a visit.",
+    aiRoleDefinition:
+      "Act as a patient services representative at a medical clinic who helps the learner understand how their insurance works in practice: how to present their card, what referrals mean, and how to read the EOB document without panicking.",
+    conversationDirections: [
+      "Start by asking the learner to present their insurance card and confirm which plan they're on.",
+      "Explain what 'in-network' versus 'out-of-network' means with a concrete cost difference example.",
+      "Let the learner ask whether a referral is needed to see a specialist.",
+      "Walk the learner through the EOB document — what it is, why it isn't a bill, and what each section means.",
+      "Let the learner ask about their out-of-pocket maximum for the year.",
+      "Close by confirming the learner knows their copay amount and how to pay at checkout.",
+    ],
+    warmthPatterns: [
+      "When the learner seems confused by the EOB, say clearly: 'This is not a bill — it's just an explanation of what insurance paid.'",
+      "Use comparison phrases to make abstract terms concrete: 'Your in-network copay is lower than your out-of-network cost.'",
+      "Celebrate small wins: if the learner successfully reads a section of the EOB, acknowledge it warmly.",
+    ],
     seedInputs: ["I got my insurance card. How do I use it at the doctor?"],
     detectionPatterns: [
       /\b(?:insurance card|use my insurance|in-network|out-of-network|referral|prior authorization|co-insurance|out of pocket (?:max|maximum))\b/i,
@@ -80,6 +125,23 @@ export const speakTopics: readonly SpeakTopic[] = [
     labelEn: "Using Auto Insurance After An Accident",
     labelVi: "Sử dụng bảo hiểm xe hơi sau tai nạn",
     category: "insurance-customer",
+    scenarioDescription:
+      "The learner has just had a minor car accident and needs to file a claim with their auto insurer — from the first phone call to understanding what the adjuster will do, what their deductible covers, and how to get their car repaired.",
+    aiRoleDefinition:
+      "Act as a calm, efficient auto insurance claims agent who helps the learner report the accident, explains the next steps in the claims process, and answers questions about deductibles, rental car coverage, and repair timelines without making the learner feel overwhelmed.",
+    conversationDirections: [
+      "Open by asking the learner to describe what happened — date, location, and whether anyone was injured.",
+      "Explain what 'filing a claim' involves and what information the learner will need to provide.",
+      "Let the learner ask about fault and what they should or should not say at the scene.",
+      "Walk through the deductible: how much the learner owes before insurance pays the rest.",
+      "Let the learner ask whether rental car coverage is included in their policy.",
+      "Close by giving the learner the claim number and explaining when the adjuster will contact them.",
+    ],
+    warmthPatterns: [
+      "Stay calm and reassuring — the learner may be stressed after an accident; start with 'I'm glad you're safe.'",
+      "Be clear about fault: 'Do not admit fault at the scene — determining fault is the insurance company's job.'",
+      "Give a concrete timeline: 'You should hear from the adjuster within two to three business days.'",
+    ],
     seedInputs: ["I just had a minor accident. What do I do now with my insurance?"],
     detectionPatterns: [
       /\b(?:auto insurance|car insurance|file a claim|accident report|fender bender|fault|liability|collision|comprehensive|rental car coverage)\b/i,
@@ -114,6 +176,23 @@ export const speakTopics: readonly SpeakTopic[] = [
     labelEn: "Getting Renters Or Home Insurance",
     labelVi: "Mua bảo hiểm nhà thuê hoặc bảo hiểm nhà ở",
     category: "insurance-customer",
+    scenarioDescription:
+      "The learner's landlord requires renters insurance as a condition of the lease and they need to get a quote, understand what personal property and liability coverage means, and show proof of insurance before moving in.",
+    aiRoleDefinition:
+      "Act as a friendly insurance agent who helps the learner understand what renters insurance covers, gets them a quick quote over the phone, explains liability and personal property limits in plain language, and sends them proof of insurance for their landlord.",
+    conversationDirections: [
+      "Open by asking the learner what type of insurance they need and whether their landlord has a minimum coverage requirement.",
+      "Explain personal property coverage: what it protects and how to estimate the value of their belongings.",
+      "Let the learner ask about liability coverage and what it means if someone is injured in their home.",
+      "Walk through the quote — monthly premium, deductible, and coverage limits — without jargon.",
+      "Let the learner ask how quickly they can get proof of insurance to show their landlord.",
+      "Close by confirming the start date and how to pay the first month's premium.",
+    ],
+    warmthPatterns: [
+      "Acknowledge unfamiliarity warmly: 'A lot of people haven't dealt with renters insurance before — let me break it down simply.'",
+      "Make the value concrete: 'If your laptop, phone, and clothes are worth about two thousand dollars, that's the coverage you'd want.'",
+      "Offer the proof of insurance document immediately: 'I can email that to you right now so you can send it to your landlord today.'",
+    ],
     seedInputs: ["My landlord says I need renters insurance. How do I get it?"],
     detectionPatterns: [
       /\b(?:renters insurance|homeowners insurance|liability coverage|personal property|replace (?:my )?belongings|coverage amount|home insurance quote)\b/i,
@@ -148,6 +227,23 @@ export const speakTopics: readonly SpeakTopic[] = [
     labelEn: "Filing An Insurance Claim",
     labelVi: "Nộp yêu cầu bồi thường bảo hiểm",
     category: "insurance-customer",
+    scenarioDescription:
+      "The learner's apartment was broken into and items were stolen. They need to file a claim with their renters insurance — reporting the theft, providing documentation, working with the adjuster, and following up on the settlement.",
+    aiRoleDefinition:
+      "Act as an insurance claims representative who guides the learner through the entire claims process: opening the claim, explaining what documentation is needed, when the adjuster will contact them, and what to expect from the settlement timeline.",
+    conversationDirections: [
+      "Open by expressing concern and asking the learner to describe what happened and when.",
+      "Explain the steps to open a claim — policy number, description of loss, police report if applicable.",
+      "Let the learner ask what documentation or evidence they need to submit.",
+      "Walk through the adjuster's role — what they evaluate and when the learner will hear from them.",
+      "Let the learner ask how to check the status of their claim after submission.",
+      "Close by giving the claim number and a realistic timeline for when they can expect a decision.",
+    ],
+    warmthPatterns: [
+      "Lead with empathy: 'I'm sorry this happened — let's get this sorted out as quickly as possible.'",
+      "Make documentation feel manageable: 'A few photos and a list of the stolen items is a great start — you don't need receipts for everything.'",
+      "Give the claim number clearly and suggest writing it down: 'This is your reference number — keep it handy for all future calls about this claim.'",
+    ],
     seedInputs: ["Something was stolen from my apartment. How do I file a claim?"],
     detectionPatterns: [
       /\b(?:file a claim|insurance claim|claim number|claims department|adjuster|settlement|payout|stolen|damaged property|claim status)\b/i,
@@ -182,6 +278,23 @@ export const speakTopics: readonly SpeakTopic[] = [
     labelEn: "Disputing A Medical Bill Or Insurance Decision",
     labelVi: "Tranh chấp hóa đơn y tế hoặc quyết định bảo hiểm",
     category: "insurance-customer",
+    scenarioDescription:
+      "The learner received an unexpectedly large medical bill after a visit covered by insurance and suspects there is a billing error or an unfair denial. They need to request an itemized bill, understand their right to appeal, and navigate the dispute process confidently.",
+    aiRoleDefinition:
+      "Act as either a hospital billing advocate or an insurance member services representative who helps the learner understand the bill, identify potential errors, and walk through the formal appeal process step by step without intimidating them.",
+    conversationDirections: [
+      "Open by asking the learner to describe the bill — how much it is, which service it is for, and whether they received an EOB first.",
+      "Explain the difference between a billing error and an insurance denial and which department handles each.",
+      "Let the learner request an itemized bill and walk through what each line item means.",
+      "Guide the learner to file a formal appeal — what to write, what documentation to attach, and where to submit it.",
+      "Let the learner ask about balance billing and whether it applies in their state.",
+      "Close by giving the learner a realistic timeline and telling them what to do if the appeal is denied.",
+    ],
+    warmthPatterns: [
+      "Open with reassurance: 'Billing errors are very common — asking for an itemized bill is a completely normal first step.'",
+      "Normalize the appeal: 'Many initial insurance denials are overturned on appeal — it is absolutely worth doing.'",
+      "Proactively mention financial options: 'You can also ask about a payment plan or financial assistance while the appeal is in progress.'",
+    ],
     seedInputs: ["I got a big medical bill even though I have insurance. Can I dispute it?"],
     detectionPatterns: [
       /\b(?:dispute (?:a )?(?:medical )?bill|appeal (?:a )?(?:claim )?denial|insurance denial|appeal process|balance billing|surprise bill|itemized bill|billing error)\b/i,
@@ -212,3 +325,5 @@ export const speakTopics: readonly SpeakTopic[] = [
     ],
   },
 ];
+
+export const speakTopics = insuranceCustomerSpeakTopics;
