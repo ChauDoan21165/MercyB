@@ -199,14 +199,8 @@ variables:
 # `isolated-builds` routes these jobs to the runner configured with
 # [runners.custom_build_dir] enabled, which is required for GIT_CLONE_PATH.
 
-.local_runner: &local_runner
-  tags:
-    - local
-    - mac
-    - mercyb
-    - isolated-builds
-  hooks:
-    pre_get_sources_script:
+.mac_pre_get_sources_hooks: &mac_pre_get_sources_hooks
+  pre_get_sources_script:
       - |
         # Pre-checkout stale-build reaper. Runs on ALL pipelines (MR/branch/main-push),
         # not just main-push: MR pipelines were the ones starving the runner's disk
@@ -237,7 +231,7 @@ variables:
             echo "[post-merge-precheckout-reaper] root=$REAPER_ROOT current_pipeline=${CI_PIPELINE_ID:-unknown}"
             PRECHECKOUT_REAP_AGE_MIN="${MERCYB_PRECHECKOUT_REAP_AGE_MIN:-90}"
             PRECHECKOUT_MARKER_AGE_MIN="${MERCYB_PRECHECKOUT_MARKER_AGE_MIN:-360}"
-            _DISK_FLOOR_KB="${MERCYB_CI_MIN_FREE_KB:-5242880}"
+            _DISK_FLOOR_KB="20971520"
             _MTIME_SKIP_TMP="$(mktemp 2>/dev/null || printf '%s' "/tmp/.precheckout-reaper-mtime-$$")"
             find "$REAPER_ROOT" -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' -print 2>/dev/null | sort | while IFS= read -r d; do
               [ -n "$d" ] || continue
@@ -304,24 +298,30 @@ variables:
             echo "[post-merge-precheckout-reaper] SKIP unapproved-root path=$REAPER_ROOT"
           fi
         fi
-        DISK_FLOOR_KB="${MERCYB_CI_MIN_FREE_KB:-5242880}"
+        DISK_FLOOR_KB="20971520"
         TARGET="${CI_BUILDS_DIR:-$PWD}"
         while [ ! -d "$TARGET" ] && [ "$TARGET" != "/" ]; do
           TARGET="$(dirname "$TARGET")"
         done
         FREE_KB="$(df -Pk "$TARGET" 2>/dev/null | awk 'NR==2 {print $4}')"
         if [ -z "$FREE_KB" ]; then
-          echo "ERROR: insufficient-disk guard could not read free space for build volume target '$TARGET'." >&2
-          exit 1
-        fi
-        if [ "$FREE_KB" -lt "$DISK_FLOOR_KB" ]; then
-          FREE_GB="$(awk "BEGIN {printf \"%.2f\", $FREE_KB/1048576}")"
-          FLOOR_GB="$(awk "BEGIN {printf \"%.2f\", $DISK_FLOOR_KB/1048576}")"
-          echo "ERROR: insufficient disk before git checkout on '$TARGET': ${FREE_GB}GiB free, floor is ${FLOOR_GB}GiB. Aborting before sources are fetched to avoid mid-checkout failure." >&2
+          echo "DISK_GATE: unknownGB < 20GB floor — job refused (could not read build volume target '$TARGET')" >&2
           exit 1
         fi
         FREE_GB="$(awk "BEGIN {printf \"%.2f\", $FREE_KB/1048576}")"
-        echo "Disk guard OK before git checkout: ${FREE_GB}GiB free on '$TARGET'."
+        if [ "$FREE_KB" -lt "$DISK_FLOOR_KB" ]; then
+          echo "DISK_GATE: ${FREE_GB}GB < 20GB floor — job refused (target=$TARGET runner=${CI_RUNNER_DESCRIPTION:-unknown})" >&2
+          exit 1
+        fi
+        echo "DISK_GATE: ${FREE_GB}GB >= 20GB floor — job accepted (target=$TARGET runner=${CI_RUNNER_DESCRIPTION:-unknown})"
+
+.local_runner: &local_runner
+  tags:
+    - local
+    - mac
+    - mercyb
+    - isolated-builds
+  hooks: *mac_pre_get_sources_hooks
 
 # Changes that affect the full app build/test path. Docs-only changes do
 # not need the heavy build job on merge-request pipelines; protected
@@ -1349,6 +1349,7 @@ flywheel-mine:
     - local
     - mac
     - mercyb
+  hooks: *mac_pre_get_sources_hooks
   stage: backup
   interruptible: false
   # No node_modules needed — script uses only Node.js built-in APIs
