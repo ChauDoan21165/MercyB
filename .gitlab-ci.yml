@@ -257,6 +257,11 @@ variables:
                       echo "[post-merge-precheckout-reaper] SKIP api-active pipeline=${_pid} status=${_api_status} path=$d"
                       continue
                       ;;
+                    success|failed|canceled|skipped|manual)
+                      echo "[post-merge-precheckout-reaper] REMOVE path=$d safe=api-terminal pipeline=${_pid} status=${_api_status}"
+                      rm -rf -- "$d" || echo "[post-merge-precheckout-reaper] WARN remove-failed path=$d"
+                      continue
+                      ;;
                   esac
                 else
                   echo "[post-merge-precheckout-reaper] API-check pipeline=${_pid} status=unavailable path=$d"
