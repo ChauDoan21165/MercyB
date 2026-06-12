@@ -779,10 +779,14 @@ ai-tutor-quality-gate:shared-fallback:
   stage: test
   script: *ai_tutor_quality_gate_script
 
-production-e2e:shared-fallback:
-  <<: [*node_job, *manual_shared_fallback]
+production-e2e:
+  <<: [*node_job, *local_runner]
   stage: test
+  interruptible: false
+  timeout: 30 minutes
   rules:
+    - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
+      when: never
     - if: '$CI_PIPELINE_SOURCE == "web"'
       when: manual
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
