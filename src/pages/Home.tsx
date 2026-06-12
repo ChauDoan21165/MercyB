@@ -370,7 +370,8 @@ export default function Home() {
         role="button"
         tabIndex={0}
         aria-expanded={isExpanded}
-        aria-label={title}
+        aria-label={`${title}. ${isExpanded ? "Collapse details" : "Preview details"}`}
+        className="mb-a11y-card-button"
         onClick={toggle}
         onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } }}
         style={{
@@ -472,7 +473,8 @@ export default function Home() {
         <button
           type="button"
           onClick={handleTeacherMercy}
-          aria-label="Open Teacher Mercy"
+          aria-label="Open AI Tutor with Teacher Mercy · Mở AI Tutor với Giáo viên Mercy"
+          className="mb-a11y-card-button"
           style={{ display: "block", width: "100%", background: "none", border: "none", padding: 0, margin: 0, cursor: "pointer", textAlign: "center", font: "inherit", color: "inherit" }}
         >
         {/* Avatar */}
@@ -531,6 +533,7 @@ export default function Home() {
             type="button"
             aria-label="Try pronunciation now — no signup needed"
             onClick={handleTryOneWord}
+            className="mb-a11y-chip"
             style={{
               display: "inline-block",
               marginTop: 12,
@@ -567,7 +570,8 @@ export default function Home() {
     <button
       type="button"
       onClick={handleTryOneWord}
-      aria-label="Try one word — no signup needed"
+      aria-label="Try pronunciation — no signup needed · Thử phát âm — không cần đăng nhập"
+      className="mb-a11y-card-button"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}
     >
       <div
@@ -626,7 +630,8 @@ export default function Home() {
 
   // ── Library secondary card ─────────────────────────────────────────────────
   const libraryCard = (
-    <button type="button" onClick={handleLibrary} aria-label="Library"
+    <button type="button" onClick={handleLibrary} aria-label="Open library · Mở thư viện"
+      className="mb-a11y-card-button"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}>
       <div style={{
         borderRadius: 20, padding: isPhone ? "16px 18px" : "18px 20px",
@@ -666,7 +671,8 @@ export default function Home() {
   // shows the 30-item pack (no auth, no paywall). The premium-gated
   // timed-practice mode at /exam/toeic is unaffected.
   const toeicCard = (
-    <button type="button" onClick={() => nav("/exam-prep/toeic")} aria-label="TOEIC practice pack"
+    <button type="button" onClick={() => nav("/exam-prep/toeic")} aria-label="Open TOEIC practice pack · Mở gói luyện TOEIC"
+      className="mb-a11y-card-button"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}>
       <div style={{
         borderRadius: 20, padding: isPhone ? "16px 18px" : "18px 20px",
@@ -711,7 +717,8 @@ export default function Home() {
   // band + band-7/band-5 sample answers. Closes the IELTS revenue funnel
   // alongside Writing (PR #174), Listening, and Reading sections.
   const ieltsSpeakingCard = (
-    <button type="button" onClick={() => nav("/exam-prep/ielts/speaking")} aria-label="IELTS Speaking content pack"
+    <button type="button" onClick={() => nav("/exam-prep/ielts/speaking")} aria-label="Open IELTS Speaking content pack · Mở gói IELTS Speaking"
+      className="mb-a11y-card-button"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}>
       <div style={{
         borderRadius: 20, padding: isPhone ? "16px 18px" : "18px 20px",
@@ -764,6 +771,7 @@ export default function Home() {
       });
       nav("/placement");
     }} aria-label="Placement test"
+      className="mb-a11y-card-button"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}>
       <div style={{
         borderRadius: 20, padding: isPhone ? "16px 18px" : "18px 20px",
@@ -806,7 +814,8 @@ export default function Home() {
     <button
       type="button"
       onClick={() => nav("/exam/vstep")}
-      aria-label="VSTEP — Vietnamese national English exam prep"
+      aria-label="Open VSTEP Vietnamese national English exam prep · Mở luyện thi VSTEP"
+      className="mb-a11y-card-button"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}
     >
       <div
@@ -880,6 +889,7 @@ export default function Home() {
       onClick={() => nav(PARENT_VIEW_ROUTE)}
       aria-label="Phụ huynh — theo dõi tiến bộ của con"
       data-testid="parent-progress-home-card"
+      className="mb-a11y-card-button"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}
     >
       <div
@@ -1053,7 +1063,8 @@ export default function Home() {
             <button
               type="button"
               onClick={handleTryOneWord}
-              aria-label="Try pronunciation — no signup"
+              aria-label="Try pronunciation — no signup · Thử phát âm — không cần đăng nhập"
+              className="mb-a11y-card-button"
               style={{
                 width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer",
                 marginTop: -2,
@@ -1198,7 +1209,8 @@ export default function Home() {
             type="button"
             data-testid="home-weak-at-link"
             onClick={() => nav("/weak-at")}
-            className="w-full rounded-[20px] border border-slate-200 bg-white px-5 py-4 text-left shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-400"
+            aria-label="Xem điểm bạn cần luyện · See what you are working on"
+            className="mb-a11y-card-button w-full rounded-[20px] border border-slate-200 bg-white px-5 py-4 text-left shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition hover:border-slate-300"
           >
             <div className="flex items-center justify-between gap-3">
               <div className="min-w-0">
@@ -1226,7 +1238,8 @@ export default function Home() {
           <button
             type="button"
             onClick={() => nav("/languages")}
-            aria-label="Explore other languages"
+            aria-label="Khám phá ngôn ngữ khác · Explore other languages"
+            className="mb-a11y-card-button"
             style={{
               marginTop: 4,
               width: "100%",

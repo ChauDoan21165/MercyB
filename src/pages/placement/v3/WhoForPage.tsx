@@ -19,7 +19,7 @@ export default function WhoForPage() {
   };
 
   return (
-    <main className="mx-auto min-h-[calc(100vh-72px)] w-full max-w-[760px] px-4 py-8">
+    <main id="main-content" tabIndex={-1} className="mx-auto min-h-[calc(100vh-72px)] w-full max-w-[760px] px-4 py-8">
       <BackButton onClick={() => navigate("/placement")} />
       <BilingualLabel
         as="h1"
@@ -34,6 +34,7 @@ export default function WhoForPage() {
           type="button"
           onClick={startAdult}
           disabled={loading}
+          aria-label={user ? "Me, an adult learner · Mình — người lớn đang học" : "Sign in to take the test · Đăng nhập để làm bài test"}
           className="min-h-[150px] rounded-[18px] border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:border-emerald-300 hover:bg-emerald-50 disabled:cursor-wait disabled:opacity-60"
         >
           <UserRound className="h-8 w-8 text-emerald-700" aria-hidden />
@@ -61,6 +62,7 @@ export default function WhoForPage() {
         <button
           type="button"
           onClick={() => navigate("/room/alphabet_adventure_kids_l1")}
+          aria-label="My child, ages 4 to 10 · Con của mình, 4 đến 10 tuổi"
           className="min-h-[150px] rounded-[18px] border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:border-amber-300 hover:bg-amber-50"
         >
           <Baby className="h-8 w-8 text-amber-700" aria-hidden />

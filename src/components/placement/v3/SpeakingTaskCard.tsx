@@ -46,9 +46,9 @@ export function SpeakingTaskCard({
           </div>
         </div>
 
-        <div className="mt-4 grid grid-cols-2 gap-2">
+        <div className="mt-4 grid grid-cols-2 gap-2" role="group" aria-label="Recording controls · Điều khiển ghi âm">
           {isRecording ? (
-            <Button type="button" onClick={onStop} className="rounded-full bg-rose-600 hover:bg-rose-700">
+            <Button type="button" onClick={onStop} aria-label="Stop recording · Dừng ghi âm" className="rounded-full bg-rose-600 hover:bg-rose-700">
               <Square className="h-4 w-4" aria-hidden />
               Stop · Dừng
             </Button>
@@ -56,6 +56,7 @@ export function SpeakingTaskCard({
             <Button
               type="button"
               onClick={onStart}
+              aria-label="Start recording · Bắt đầu ghi âm"
               className="rounded-full"
               disabled={fallback}
             >
@@ -63,7 +64,7 @@ export function SpeakingTaskCard({
               Record · Ghi âm
             </Button>
           )}
-          <Button type="button" variant="outline" onClick={onRetake} className="rounded-full">
+          <Button type="button" variant="outline" onClick={onRetake} aria-label="Retake answer · Làm lại câu trả lời" className="rounded-full">
             <RotateCcw className="h-4 w-4" aria-hidden />
             Retake · Làm lại
           </Button>

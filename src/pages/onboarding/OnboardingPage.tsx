@@ -234,12 +234,14 @@ function ChoiceGrid<T extends string>({
             type="button"
             role="radio"
             aria-checked={isSelected}
+            aria-label={`${pickChrome(c.label, lang)}${isSelected ? " — đang chọn · selected" : ""}`}
             onClick={() => onSelect(c.value)}
+            className="mb-a11y-card-button"
             style={cardBase(isSelected)}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               {c.icon ? (
-                <span style={{ fontSize: 24, lineHeight: 1, flexShrink: 0 }}>
+                <span aria-hidden style={{ fontSize: 24, lineHeight: 1, flexShrink: 0 }}>
                   {c.icon}
                 </span>
               ) : null}
@@ -312,11 +314,13 @@ function TargetGrid({
             type="button"
             role="checkbox"
             aria-checked={isSelected}
+            aria-label={`${targetLabel(item.value, lang)}${isSelected ? " — đang chọn · selected" : ""}`}
             onClick={() => onToggle(item.value)}
+            className="mb-a11y-card-button"
             style={cardBase(isSelected)}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <span style={{ fontSize: 24, lineHeight: 1, flexShrink: 0 }}>
+              <span aria-hidden style={{ fontSize: 24, lineHeight: 1, flexShrink: 0 }}>
                 {meta.flag}
               </span>
               <div style={{ flex: 1, minWidth: 0 }}>
@@ -880,7 +884,8 @@ export default function OnboardingPage() {
             <button
               type="button"
               onClick={goBack}
-              aria-label="Back"
+              aria-label="Back · Quay lại"
+              className="mb-a11y-chip"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -902,8 +907,9 @@ export default function OnboardingPage() {
           <button
             type="button"
             onClick={handleSkip}
-            aria-label="Skip onboarding"
+            aria-label="Skip onboarding · Bỏ qua phần chọn ngôn ngữ"
             disabled={submitting}
+            className="mb-a11y-chip"
             style={{
               background: "none",
               border: "none",
@@ -926,6 +932,7 @@ export default function OnboardingPage() {
           aria-valuemin={0}
           aria-valuemax={ONBOARDING_STEPS.length}
           aria-valuenow={currentIndex + 1}
+          aria-valuetext={`${currentIndex + 1} of ${ONBOARDING_STEPS.length} · Bước ${currentIndex + 1} trên ${ONBOARDING_STEPS.length}`}
           role="progressbar"
           style={{
             display: "grid",

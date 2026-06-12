@@ -19,8 +19,8 @@ export function BilingualLabel({
 }: Props) {
   return (
     <Tag className={className}>
-      <span className={cn("block", enClassName)}>{text.en}</span>
-      <span className={cn("mt-1 block text-slate-500", viClassName)}>{text.vi}</span>
+      <span lang="en" className={cn("block", enClassName)}>{text.en}</span>
+      <span lang="vi" className={cn("mt-1 block text-slate-500", viClassName)}>{text.vi}</span>
     </Tag>
   );
 }

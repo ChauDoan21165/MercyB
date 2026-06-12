@@ -26,17 +26,18 @@ export function WritingTaskCard({ task, value, onChange }: Props) {
         id="placement-writing-answer"
         value={value}
         onChange={(event) => onChange(event.target.value)}
+        aria-describedby="placement-writing-word-count placement-writing-minimum"
         className="min-h-[180px] resize-y rounded-[14px] border-slate-200 text-base leading-relaxed"
         placeholder="Write your answer here... / Viết câu trả lời tại đây..."
       />
       <div className="mt-3 flex items-center justify-between gap-3 text-sm">
-        <span className={enough ? "font-bold text-emerald-700" : "font-bold text-slate-600"}>
+        <span id="placement-writing-word-count" aria-live="polite" className={enough ? "font-bold text-emerald-700" : "font-bold text-slate-600"}>
           {words} words
           <span className="block text-xs font-medium text-slate-500">
             {words} từ
           </span>
         </span>
-        <span className="text-right text-xs font-medium text-slate-500">
+        <span id="placement-writing-minimum" className="text-right text-xs font-medium text-slate-500">
           Minimum {min} words
           <span className="block">Tối thiểu {min} từ</span>
         </span>
