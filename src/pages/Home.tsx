@@ -339,6 +339,11 @@ export default function Home() {
     nav("/ai-tutor");
   };
 
+  const handleParentProgress = (event?: React.MouseEvent) => {
+    event?.stopPropagation();
+    nav(PARENT_VIEW_ROUTE);
+  };
+
   // ── Progressive disclosure wrapper for secondary cards ──────────────────
   // On mobile: collapsed by default (title + short line + "Preview" chip).
   // Tap once to expand (shows full detail + "Start" CTA inside the card).
@@ -886,7 +891,7 @@ export default function Home() {
   const parentProgressCard = (
     <button
       type="button"
-      onClick={() => nav(PARENT_VIEW_ROUTE)}
+      onClick={handleParentProgress}
       aria-label="Phụ huynh — theo dõi tiến bộ của con"
       data-testid="parent-progress-home-card"
       className="mb-a11y-card-button"
@@ -1168,7 +1173,7 @@ export default function Home() {
               accentColor="#B45309"
               iconBg="rgba(255,247,237,0.96)"
               iconEl={<UsersRound size={isPhone ? 20 : 24} color="white" />}
-              onStart={() => nav(PARENT_VIEW_ROUTE)}
+              onStart={() => handleParentProgress()}
               startLabel="Mở góc phụ huynh →"
             >
               {parentProgressCard}

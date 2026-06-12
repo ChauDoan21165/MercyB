@@ -1,10 +1,11 @@
 // @vitest-environment jsdom
 
-import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter, useLocation } from "react-router-dom";
-import { beforeEach, describe, expect, it, vi } from "vitest";
-import { getLearningEvents } from "@/lib/tutor/learningEvents";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import type { RenderResult, screen as Screen } from "@testing-library/react";
+import type { ComponentType, ReactElement } from "react";
+import type { MemoryRouter as MemoryRouterType, useLocation as useLocationType } from "react-router-dom";
+import type { LearningEvent, LearningEventFilter } from "@/lib/tutor/learningEvents";
 
 const { isPlacementEntryRouteAvailable, useAuthMock, useUserAccessMock } = vi.hoisted(() => ({
   isPlacementEntryRouteAvailable: vi.fn(() => false),
@@ -85,19 +86,105 @@ vi.mock("@/components/xp/XPBadge", () => ({
   XPBadge: () => null,
 }));
 
-import Home from "@/pages/Home";
+type ReactModule = typeof import("react");
+type Render = typeof import("@testing-library/react").render;
+type Cleanup = typeof import("@testing-library/react").cleanup;
+type ScreenApi = typeof Screen;
+type MemoryRouterComponent = typeof MemoryRouterType;
+type UseLocation = typeof useLocationType;
+type GetLearningEvents = (filter?: LearningEventFilter) => LearningEvent[];
+
+let React: ReactModule;
+let render: Render;
+let cleanup: Cleanup | null = null;
+let screen: ScreenApi;
+let Home: ComponentType;
+let MemoryRouter: MemoryRouterComponent;
+let useLocation: UseLocation;
+let getLearningEvents: GetLearningEvents;
+
+function createMemoryStorage(): Storage {
+  const entries = new Map<string, string>();
+  return {
+    get length() {
+      return entries.size;
+    },
+    clear: vi.fn(() => {
+      entries.clear();
+    }),
+    getItem: vi.fn((key: string) => entries.get(key) ?? null),
+    key: vi.fn((index: number) => Array.from(entries.keys())[index] ?? null),
+    removeItem: vi.fn((key: string) => {
+      entries.delete(key);
+    }),
+    setItem: vi.fn((key: string, value: string) => {
+      entries.set(key, String(value));
+    }),
+  };
+}
+
+function installPinnedBrowserState() {
+  Object.defineProperty(window, "localStorage", {
+    configurable: true,
+    value: createMemoryStorage(),
+  });
+  Object.defineProperty(window, "sessionStorage", {
+    configurable: true,
+    value: createMemoryStorage(),
+  });
+  window.history.replaceState({}, "", "/");
+  Object.defineProperty(window, "innerWidth", {
+    configurable: true,
+    value: 1024,
+  });
+  Object.defineProperty(window, "matchMedia", {
+    configurable: true,
+    value: vi.fn(() => ({
+      matches: false,
+      media: "",
+      onchange: null,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      dispatchEvent: vi.fn(() => false),
+    })),
+  });
+}
+
+async function importFreshHomeHarness() {
+  vi.resetModules();
+  installPinnedBrowserState();
+  const [reactModule, testingLibrary, router, learningEvents, homeModule] = await Promise.all([
+    import("react"),
+    import("@testing-library/react"),
+    import("react-router-dom"),
+    import("@/lib/tutor/learningEvents"),
+    import("@/pages/Home"),
+  ]);
+  React = reactModule;
+  render = testingLibrary.render;
+  cleanup = testingLibrary.cleanup;
+  screen = testingLibrary.screen;
+  MemoryRouter = router.MemoryRouter;
+  useLocation = router.useLocation;
+  getLearningEvents = learningEvents.getLearningEvents;
+  Home = homeModule.default;
+}
 
 function LocationProbe() {
   const location = useLocation();
-  return <div data-testid="pathname">{location.pathname}</div>;
+  return React.createElement("div", { "data-testid": "pathname" }, location.pathname);
 }
 
-function renderHome() {
+function renderHome(): RenderResult {
   return render(
-    <MemoryRouter>
-      <LocationProbe />
-      <Home />
-    </MemoryRouter>,
+    React.createElement(
+      MemoryRouter,
+      { initialEntries: ["/"] },
+      React.createElement(LocationProbe),
+      React.createElement(Home),
+    ) as ReactElement,
   );
 }
 
@@ -126,26 +213,19 @@ function mockSignedInAccess() {
 }
 
 describe("Home placement CTA", () => {
-  beforeEach(() => {
+  beforeEach(async () => {
+    cleanup?.();
+    document.body.innerHTML = "";
     vi.clearAllMocks();
     featureFlagState.calls = [];
     isPlacementEntryRouteAvailable.mockReturnValue(false);
     mockSignedOutAccess();
-    window.localStorage.clear();
-    window.sessionStorage.clear();
-    window.history.pushState({}, "", "/");
-    Object.defineProperty(window, "innerWidth", {
-      configurable: true,
-      value: 1024,
-    });
-    Object.defineProperty(window, "matchMedia", {
-      configurable: true,
-      value: vi.fn(() => ({
-        matches: false,
-        addEventListener: vi.fn(),
-        removeEventListener: vi.fn(),
-      })),
-    });
+    await importFreshHomeHarness();
+  });
+
+  afterEach(() => {
+    cleanup?.();
+    document.body.innerHTML = "";
   });
 
   it("shows the Placement CTA with Vietnamese copy when the placement route flag is disabled", async () => {
