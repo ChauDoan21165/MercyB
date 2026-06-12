@@ -15466,12 +15466,12 @@ export const VIETLISH_CORPUS = [
       context: "Sorry teacher, i forgot to bring my book today.",
     },
   {
-      vietlish: "i raise my hand to answer the question",
-      natural: "i raised my hand to answer",
-      sourcePattern: "giơ tay -> bare verb tense",
+      vietlish: "i put up my hand to answer the question",
+      natural: "I put my hand up to answer",
+      sourcePattern: "giơ tay phát biểu -> put up my hand phrasing",
       category: "literal_translation",
       frequency: "low",
-      context: "In class i raise my hand to answer the question.",
+      context: "In class i put up my hand to answer the question.",
     },
   {
       vietlish: "i was born in the year 1995",
