@@ -1,12 +1,11 @@
 // Placement v3 persistence contracts.
 //
-// Mirrors the additive placement_v3_* tables. Keep this browser-safe: do not
-// import Supabase edge-function modules from here.
+// Mirrors the additive placement_v3_* tables. Keep this browser-safe: only
+// type-only imports from server-shared modules are allowed here.
 
-// TODO(A22 merge): replace this local union with a re-export from
-// supabase/functions/_shared/cefr/types once that server shared module exists
-// on main and has a browser-safe mirror/export path.
-export type CEFRLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
+import type { CEFRLevel } from "../../supabase/functions/_shared/cefr/types";
+
+export type { CEFRLevel };
 
 export type PlacementV3Modality =
   | "writing"
