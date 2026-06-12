@@ -412,11 +412,10 @@ serverless-function surface, but **does not contain anything
 Stripe-related**. The "Vercel function under `api/*`" claim
 conflated the two surfaces.
 
-**Known noise file:** a stray `upabase/functions/stripe-webhook.ts`
-exists at the repo root (typo'd path — missing the leading `s`).
-It is dead code: `supabase functions deploy` only scans
-`supabase/functions/`, and the file is not registered in any
-config. Flagged for cleanup, not edited.
+**Retired noise file:** the former stray
+`upabase/functions/stripe-webhook.ts` root-level typo path was dead
+code and has been removed. Keep Stripe webhook changes under the
+registered `supabase/functions/stripe-webhook/` edge-function directory.
 
 When debugging "Stripe event didn't update my entitlement", check:
 
