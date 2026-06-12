@@ -20,7 +20,7 @@
  *   TEST_ADMIN_EMAIL / TEST_ADMIN_PASSWORD
  *                              — pre-seeded level-9+ admin account for
  *                                admin-flag-control.spec.
- *   TEST_BASE_URL              — override the default 127.0.0.1:3107.
+ *   TEST_BASE_URL              — override the default production origin.
  *
  * All env vars are read at import time. Specs should call
  * `requireEnv("TEST_SUPABASE_URL")` from within a beforeAll if they need
@@ -28,7 +28,7 @@
  */
 
 export const BASE_URL =
-  process.env.TEST_BASE_URL ?? "http://127.0.0.1:3107";
+  process.env.TEST_BASE_URL ?? "https://mercyblade.com";
 
 export const TEST_SUPABASE_URL = process.env.TEST_SUPABASE_URL ?? "";
 export const TEST_SUPABASE_ANON_KEY = process.env.TEST_SUPABASE_ANON_KEY ?? "";
