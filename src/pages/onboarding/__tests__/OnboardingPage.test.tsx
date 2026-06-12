@@ -564,7 +564,7 @@ describe("OnboardingPage — telemetry funnel", () => {
   it("emits onboarding_started with direction=default on mount (vi-first flow)", () => {
     renderPage();
     const startedCalls = trackEventMock.mock.calls.filter(
-      ([name]: [string]) => name === "onboarding_started",
+      ([name]: unknown[]) => name === "onboarding_started",
     );
     expect(startedCalls).toHaveLength(1);
     expect(startedCalls[0][1]).toMatchObject({
@@ -576,7 +576,7 @@ describe("OnboardingPage — telemetry funnel", () => {
   it("emits onboarding_started with direction=vn on mount (?direction=vn flow)", () => {
     renderPage({ direction: "vn" });
     const startedCalls = trackEventMock.mock.calls.filter(
-      ([name]: [string]) => name === "onboarding_started",
+      ([name]: unknown[]) => name === "onboarding_started",
     );
     expect(startedCalls).toHaveLength(1);
     expect(startedCalls[0][1]).toMatchObject({
@@ -590,7 +590,7 @@ describe("OnboardingPage — telemetry funnel", () => {
     renderPage();
     await user.click(screen.getByRole("radio", { name: /Tiếng Việt/ }));
     const startedCalls = trackEventMock.mock.calls.filter(
-      ([name]: [string]) => name === "onboarding_started",
+      ([name]: unknown[]) => name === "onboarding_started",
     );
     expect(startedCalls).toHaveLength(1);
   });
@@ -600,7 +600,7 @@ describe("OnboardingPage — telemetry funnel", () => {
     renderPage();
     await user.click(screen.getByRole("radio", { name: /Tiếng Việt/ }));
     const stepCalls = trackEventMock.mock.calls.filter(
-      ([name]: [string]) => name === "onboarding_step_complete",
+      ([name]: unknown[]) => name === "onboarding_step_complete",
     );
     expect(stepCalls.length).toBeGreaterThanOrEqual(1);
     expect(stepCalls[0][1]).toMatchObject({ step: "native" });
@@ -613,7 +613,7 @@ describe("OnboardingPage — telemetry funnel", () => {
       screen.getByRole("button", { name: /Skip onboarding|^Skip/i }),
     );
     const skippedCalls = trackEventMock.mock.calls.filter(
-      ([name]: [string]) => name === "onboarding_skipped",
+      ([name]: unknown[]) => name === "onboarding_skipped",
     );
     expect(skippedCalls).toHaveLength(1);
     expect(skippedCalls[0][1]).toMatchObject({ from_step: "native" });
@@ -627,7 +627,7 @@ describe("OnboardingPage — telemetry funnel", () => {
       screen.getByRole("button", { name: /Continue|Tiếp tục/ }),
     );
     const completedCalls = trackEventMock.mock.calls.filter(
-      ([name]: [string]) => name === "onboarding_complete",
+      ([name]: unknown[]) => name === "onboarding_complete",
     );
     expect(completedCalls).toHaveLength(1);
     expect(completedCalls[0][1]).toMatchObject({
