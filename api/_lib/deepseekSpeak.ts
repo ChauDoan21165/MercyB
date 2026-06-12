@@ -136,10 +136,20 @@ export async function buildDeepSeekSpeakFollowUp(input: {
   currentTopic: string;
   recentTurns: Array<{ role: "learner" | "assistant"; text: string }>;
   turnsOnTopic?: number;
+  /**
+   * Tokens the learner's transcript may have misheard (browser STT), flagged by
+   * transcriptSanity FREE-ANSWER mode. The follow-up must not predicate on them
+   * (abstain-over-guess; S18 standard). Optional/empty → no effect.
+   */
+  avoidTokens?: string[];
   env?: SpeakEnv;
 }): Promise<{ question: string; provider: "deepseek" | "gemini"; model: string } | SpeakFollowUpError | null> {
   const env = input.env ?? fallbackProcessEnv();
   const round = Math.max(0, input.turnsOnTopic ?? 0);
+
+  const avoidTokens = (input.avoidTokens ?? [])
+    .map((token) => (typeof token === "string" ? token.trim() : ""))
+    .filter(Boolean);
 
   const systemPrompt = [
     "You are Mercy, an English speaking tutor for Vietnamese learners.",
@@ -152,6 +162,11 @@ export async function buildDeepSeekSpeakFollowUp(input: {
     "Do not invent objects.",
     "Do not ask about weak extracted words like general, guys, thing, stuff, some, this, that.",
     "Do not pretend to understand.",
+    ...(avoidTokens.length > 0
+      ? [
+          `The learner's transcript may contain speech-to-text errors. Do NOT predicate a follow-up question on these possibly-misheard words: ${avoidTokens.join(", ")}.`,
+        ]
+      : []),
   ].join(" ");
 
   const recentContext = input.recentTurns

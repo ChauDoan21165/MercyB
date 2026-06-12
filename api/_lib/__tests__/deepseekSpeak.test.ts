@@ -50,6 +50,35 @@ describe("buildDeepSeekSpeakFollowUp — provider fallback", () => {
     expect(isDeepSeekCall(fetchMock.mock.calls[0]?.[0])).toBe(true);
   });
 
+  // ── Free-answer abstain: avoidTokens → system prompt ──────────────────
+  it("injects the avoid-tokens abstain instruction into the system prompt", async () => {
+    fetchMock.mockResolvedValue(new Response(DS_OK_BODY, { status: 200, headers: OK_HEADERS }));
+    await buildDeepSeekSpeakFollowUp({
+      ...BASE_INPUT,
+      avoidTokens: ["head", "summer"],
+      env: { DEEPSEEK_API_KEY: "sk-ds-only" },
+    });
+    const body = JSON.parse(String(fetchMock.mock.calls[0]?.[1]?.body ?? "{}")) as {
+      messages?: Array<{ content?: string }>;
+    };
+    expect(body.messages?.[0]?.content ?? "").toContain(
+      "Do NOT predicate a follow-up question on these possibly-misheard words: head, summer",
+    );
+  });
+
+  it("omits the abstain instruction when avoidTokens is empty", async () => {
+    fetchMock.mockResolvedValue(new Response(DS_OK_BODY, { status: 200, headers: OK_HEADERS }));
+    await buildDeepSeekSpeakFollowUp({
+      ...BASE_INPUT,
+      avoidTokens: [],
+      env: { DEEPSEEK_API_KEY: "sk-ds-only" },
+    });
+    const body = JSON.parse(String(fetchMock.mock.calls[0]?.[1]?.body ?? "{}")) as {
+      messages?: Array<{ content?: string }>;
+    };
+    expect(body.messages?.[0]?.content ?? "").not.toContain("possibly-misheard words");
+  });
+
   // ── Case 2: Gemini key only → Gemini used ────────────────────────────
   it("case2: Gemini key only → Gemini is used and answers", async () => {
     fetchMock.mockResolvedValue(new Response(GEM_OK_BODY, { status: 200, headers: OK_HEADERS }));
