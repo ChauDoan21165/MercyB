@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { SPEAK_TOPIC_LIBRARY } from "@/lib/tutor/speakTopicLibrary";
-import { speakTopics } from "@/lib/tutor/speakTopics/vetPetcare";
+import { vetPetcareSpeakTopics, speakTopics } from "@/lib/tutor/speakTopics/vetPetcare";
 
 const VIETNAMESE_DIACRITIC_PATTERN = /[À-ỹ]/u;
 
@@ -56,6 +56,22 @@ describe("Veterinary / pet care speak topics", () => {
       for (const fid of followUpIds) {
         expect(noteIds.has(fid), `${topic.id}: followUp id "${fid}" collides with a note id`).toBe(false);
       }
+    }
+  });
+
+  it("D4: each topic has scenarioDescription, aiRoleDefinition, conversationDirections (5-8), and warmthPatterns (≥3)", () => {
+    for (const topic of vetPetcareSpeakTopics) {
+      const t = topic as typeof topic & {
+        scenarioDescription?: string;
+        aiRoleDefinition?: string;
+        conversationDirections?: readonly string[];
+        warmthPatterns?: readonly string[];
+      };
+      expect(t.scenarioDescription?.trim().length ?? 0, `${topic.id} scenarioDescription`).toBeGreaterThan(40);
+      expect(t.aiRoleDefinition?.trim().length ?? 0, `${topic.id} aiRoleDefinition`).toBeGreaterThan(40);
+      expect(t.conversationDirections?.length ?? 0, `${topic.id} conversationDirections min`).toBeGreaterThanOrEqual(5);
+      expect(t.conversationDirections?.length ?? 8, `${topic.id} conversationDirections max`).toBeLessThanOrEqual(8);
+      expect(t.warmthPatterns?.length ?? 0, `${topic.id} warmthPatterns`).toBeGreaterThanOrEqual(3);
     }
   });
 });
