@@ -1206,6 +1206,50 @@ nightly-db-backup:
 # script and the same CI/CD variables as the scheduled job, so a green
 # manual run means the schedule will also work.
 
+# ── Step-19 — Nightly Tutor Self-Eval Harness ─────────────────────────
+#
+# Deterministic measurement of AI tutor engine quality over time.
+# Runs eval-sets v1–v4 + golden-flow correction assertions against the
+# CURRENT engine code (correction-rules golden set + goldenFlowRegression).
+#
+# Scoring is 100% programmatic: rule-engine output comparison.
+# No LLM-judge step. Ambiguous items score ABSTAIN (excluded from pass-rate).
+#
+# Activation (Chau one-time):
+#   Create a Scheduled Pipeline on main, cron `0 2 * * *`,
+#   set variable MERCYB_SELF_EVAL_ENABLED=1.
+#   (No new secrets needed — the job uses no Supabase/API keys.)
+#
+# Artifacts:
+#   _eval_out/trend.json       append-only run history
+#   _eval_out/scoreboard.md    rendered scoreboard
+#   _eval_out/run-latest.json  current run detail
+#
+# On regression (pass rate drop > 5pp OR new golden-flow failure):
+#   job exits red + board-postable block printed to stderr.
+
+tutor-self-eval:
+  <<: [*node_job, *local_runner]
+  stage: backup
+  interruptible: false
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule" && $MERCYB_SELF_EVAL_ENABLED == "1"'
+    - if: '$CI_COMMIT_BRANCH == "main" && ($CI_PIPELINE_SOURCE == "web" || $CI_PIPELINE_SOURCE == "api") && $MERCYB_SELF_EVAL_ENABLED == "1"'
+      when: manual
+    - when: never
+  script:
+    - npx tsx scripts/eval/tutor-self-eval.ts
+  artifacts:
+    when: always
+    expire_in: 90 days
+    paths:
+      - _eval_out/trend.json
+      - _eval_out/scoreboard.md
+      - _eval_out/run-latest.json
+
 test-db-backup-now:
   <<: *backup_image
   stage: backup
