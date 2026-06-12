@@ -3,49 +3,9 @@
   "version": "1.0.0",
   "wiredIntoEngine": false,
   "status": "review_not_wired",
-  "count": 37,
+  "count": 26,
   "description": "A10 Wave 7 — 200 Vietlish/interference review candidates. Fresh territory: question formation, existential 'have', time/date expressions, digital-life calques, food & dining, shopping, transportation, comparison & degree, numbers & quantities, direction & movement, negation, politeness & discourse, professional/academic register, false friends, kinship & address terms, redundancy patterns, connector/gerund errors. Deduped vs live(481) + waves 1-6(1065) = 1546-item denylist. Zero collisions.",
   "entries": [
-    {
-      "vietlish": "you like eat what?",
-      "natural": "what do you like to eat?",
-      "sourcePattern": "thích ăn gì (question word at end)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "asking about food preferences"
-    },
-    {
-      "vietlish": "problem is where?",
-      "natural": "where is the problem?",
-      "sourcePattern": "vấn đề ở đâu (question word at end)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "troubleshooting a technical issue"
-    },
-    {
-      "vietlish": "you do this with who?",
-      "natural": "who are you doing this with?",
-      "sourcePattern": "làm cái này với ai (question word at end)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "asking about who someone is working with"
-    },
-    {
-      "vietlish": "weather today is how?",
-      "natural": "how's the weather today?",
-      "sourcePattern": "hôm nay thời tiết thế nào (adjective question at end)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "asking about today's weather"
-    },
-    {
-      "vietlish": "the flight departs at what time?",
-      "natural": "what time does the flight depart?",
-      "sourcePattern": "chuyến bay khởi hành lúc mấy giờ (question word at end)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "asking about a flight departure time"
-    },
     {
       "vietlish": "inside the box have a gift",
       "natural": "there's a gift inside the box",
@@ -55,36 +15,12 @@
       "context": "describing the contents of a box"
     },
     {
-      "vietlish": "every 2 day I exercise",
-      "natural": "I exercise every 2 days",
-      "sourcePattern": "cứ 2 ngày lại tập (frequency expression word order)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "describing an exercise routine"
-    },
-    {
       "vietlish": "I will inbox you",
       "natural": "I'll send you a DM",
       "sourcePattern": "tôi sẽ nhắn tin qua inbox (inbox used as a verb)",
       "category": "register",
       "frequency": "medium",
       "context": "promising to send a private message"
-    },
-    {
-      "vietlish": "I will call video you tonight",
-      "natural": "I'll video-call you tonight",
-      "sourcePattern": "gọi video cho bạn tối nay (calquing gọi video structure)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "arranging a video call"
-    },
-    {
-      "vietlish": "share for me that link",
-      "natural": "share that link with me",
-      "sourcePattern": "chia sẻ cái link đó cho tôi (word order calque)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "asking for a link to be shared"
     },
     {
       "vietlish": "this video has too many like",
@@ -101,14 +37,6 @@
       "category": "false_friend",
       "frequency": "medium",
       "context": "commenting on an oily or greasy dish"
-    },
-    {
-      "vietlish": "buy 2 get free 1",
-      "natural": "buy 2, get 1 free",
-      "sourcePattern": "mua 2 tặng 1 (word order calque)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "describing a promotional deal"
     },
     {
       "vietlish": "this bag is genuine or fake?",
@@ -133,22 +61,6 @@
       "category": "register",
       "frequency": "medium",
       "context": "enthusiastically praising food"
-    },
-    {
-      "vietlish": "I am older 3 years than him",
-      "natural": "I am 3 years older than him",
-      "sourcePattern": "lớn hơn anh ấy 3 tuổi (degree measure placement calque)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "stating an age difference"
-    },
-    {
-      "vietlish": "this bag is more expensive so much",
-      "natural": "this bag is much more expensive",
-      "sourcePattern": "đắt hơn rất nhiều (degree adverb placement after comparative)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "emphasising that something costs much more"
     },
     {
       "vietlish": "I dare to ask you one question",
