@@ -1,0 +1,1615 @@
+{
+  "corpus": "step11-vietlish-corpus-d4-wave19",
+  "step": 11,
+  "wave": 19,
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "kind": "vietlish_interference_review_candidates",
+  "schema": "VietlishCorpusEntry (src/lib/tutor/vietlishCorpus.ts) - { vietlish, natural, sourcePattern, category, frequency, context }",
+  "author": "A4 (Content Factory wave 19)",
+  "status": "review_not_wired",
+  "wiredIntoEngine": false,
+  "count": 200,
+  "entries": [
+    {
+      "vietlish": "make a vaccine appointment",
+      "natural": "book a vaccine appointment",
+      "sourcePattern": "đặt lịch -> make appointment; English healthcare booking uses book/schedule",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "In a customer service chat, the learner wrote, \"make a vaccine appointment.\""
+    },
+    {
+      "vietlish": "send a prescription refill",
+      "natural": "request a prescription refill",
+      "sourcePattern": "lấy thêm thuốc -> send refill; English pharmacy English uses request/refill",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"send a prescription refill.\""
+    },
+    {
+      "vietlish": "open a savings plan",
+      "natural": "set up a savings plan",
+      "sourcePattern": "mở kế hoạch -> open plan; English uses set up/start a plan",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"open a savings plan.\""
+    },
+    {
+      "vietlish": "take a queue number online",
+      "natural": "get a queue number online",
+      "sourcePattern": "lấy số thứ tự -> take number; service English often uses get a number",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "In a customer service chat, the learner wrote, \"take a queue number online.\""
+    },
+    {
+      "vietlish": "make a parking reservation",
+      "natural": "reserve a parking spot",
+      "sourcePattern": "đặt chỗ đậu xe -> make reservation; English uses reserve a spot",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"make a parking reservation.\""
+    },
+    {
+      "vietlish": "close the electricity bill",
+      "natural": "pay the electricity bill",
+      "sourcePattern": "đóng tiền điện -> close bill; English uses pay a bill",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "In a customer service chat, the learner wrote, \"close the electricity bill.\""
+    },
+    {
+      "vietlish": "raise a support ticket to IT",
+      "natural": "open a support ticket with IT",
+      "sourcePattern": "gửi phiếu hỗ trợ -> raise ticket; English office collocation uses open/file",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"raise a support ticket to IT.\""
+    },
+    {
+      "vietlish": "give feedback into the survey",
+      "natural": "leave feedback in the survey",
+      "sourcePattern": "góp ý vào khảo sát -> give into; English uses leave/provide feedback",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"give feedback into the survey.\""
+    },
+    {
+      "vietlish": "run a tenant background check",
+      "natural": "conduct a tenant background check",
+      "sourcePattern": "kiểm tra lý lịch -> run check is informal; formal English uses conduct",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"run a tenant background check.\""
+    },
+    {
+      "vietlish": "do the online check-in",
+      "natural": "check in online",
+      "sourcePattern": "làm thủ tục trực tuyến -> do check-in; English uses check in as a verb",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "In a customer service chat, the learner wrote, \"do the online check-in.\""
+    },
+    {
+      "vietlish": "make an insurance claim",
+      "natural": "file an insurance claim",
+      "sourcePattern": "làm hồ sơ bồi thường -> make claim; insurance English uses file a claim",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"make an insurance claim.\""
+    },
+    {
+      "vietlish": "catch a bus ticket",
+      "natural": "book a bus ticket",
+      "sourcePattern": "đặt vé -> catch ticket; English uses book/buy a ticket",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"catch a bus ticket.\""
+    },
+    {
+      "vietlish": "create a doctor note",
+      "natural": "get a doctor's note",
+      "sourcePattern": "xin giấy bác sĩ -> create note; English uses get/obtain a note",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"create a doctor note.\""
+    },
+    {
+      "vietlish": "take a loan on the app",
+      "natural": "take out a loan on the app",
+      "sourcePattern": "vay tiền -> take loan; English uses take out a loan",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"take a loan on the app.\""
+    },
+    {
+      "vietlish": "send a complaint form",
+      "natural": "submit a complaint form",
+      "sourcePattern": "gửi mẫu khiếu nại -> send form; formal English uses submit",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"send a complaint form.\""
+    },
+    {
+      "vietlish": "make a police report",
+      "natural": "file a police report",
+      "sourcePattern": "làm đơn trình báo -> make report; legal English uses file a report",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"make a police report.\""
+    },
+    {
+      "vietlish": "start a subscription payment",
+      "natural": "set up a subscription payment",
+      "sourcePattern": "bắt đầu trả định kỳ -> start payment; billing English uses set up",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"start a subscription payment.\""
+    },
+    {
+      "vietlish": "take a room deposit",
+      "natural": "pay a room deposit",
+      "sourcePattern": "đóng tiền cọc -> take deposit; tenant English uses pay a deposit",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "In a customer service chat, the learner wrote, \"take a room deposit.\""
+    },
+    {
+      "vietlish": "release a refund",
+      "natural": "issue a refund",
+      "sourcePattern": "hoàn tiền -> release refund; merchant English uses issue a refund",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"release a refund.\""
+    },
+    {
+      "vietlish": "make a video call to support",
+      "natural": "start a video call with support",
+      "sourcePattern": "gọi video -> make call; support workflow often says start/place a call",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"make a video call to support.\""
+    },
+    {
+      "vietlish": "do a visa extension request",
+      "natural": "submit a visa extension request",
+      "sourcePattern": "làm đơn gia hạn -> do request; English uses submit/file a request",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"do a visa extension request.\""
+    },
+    {
+      "vietlish": "hold a training course",
+      "natural": "run a training course",
+      "sourcePattern": "tổ chức khóa đào tạo -> hold course; operational English often uses run",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"hold a training course.\""
+    },
+    {
+      "vietlish": "make a repair booking",
+      "natural": "book a repair appointment",
+      "sourcePattern": "đặt lịch sửa -> make booking; service English uses book an appointment",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"make a repair booking.\""
+    },
+    {
+      "vietlish": "eat a late fee",
+      "natural": "pay a late fee",
+      "sourcePattern": "chịu phí trễ -> eat fee; English uses pay a fee",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"eat a late fee.\""
+    },
+    {
+      "vietlish": "take a blood test appointment",
+      "natural": "book a blood test appointment",
+      "sourcePattern": "đặt lịch xét nghiệm -> take appointment; English uses book/schedule",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "In a customer service chat, the learner wrote, \"take a blood test appointment.\""
+    },
+    {
+      "vietlish": "open a card dispute",
+      "natural": "file a card dispute",
+      "sourcePattern": "mở tranh chấp -> open dispute; banking workflow uses file a dispute",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"open a card dispute.\""
+    },
+    {
+      "vietlish": "run an address change",
+      "natural": "process an address change",
+      "sourcePattern": "cập nhật thay đổi -> run change; admin English uses process/update",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"run an address change.\""
+    },
+    {
+      "vietlish": "send a tax return",
+      "natural": "file a tax return",
+      "sourcePattern": "nộp tờ khai thuế -> send return; tax English uses file",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"send a tax return.\""
+    },
+    {
+      "vietlish": "make a museum ticket reservation",
+      "natural": "reserve museum tickets",
+      "sourcePattern": "đặt vé -> make reservation; natural English uses reserve/book tickets",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"make a museum ticket reservation.\""
+    },
+    {
+      "vietlish": "close the water bill",
+      "natural": "pay the water bill",
+      "sourcePattern": "đóng tiền nước -> close bill; English uses pay a bill",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "In a customer service chat, the learner wrote, \"close the water bill.\""
+    },
+    {
+      "vietlish": "open a class registration",
+      "natural": "register for a class",
+      "sourcePattern": "đăng ký lớp -> open registration; learner action is register for",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"open a class registration.\""
+    },
+    {
+      "vietlish": "make a maintenance request",
+      "natural": "submit a maintenance request",
+      "sourcePattern": "gửi yêu cầu sửa chữa -> make request; property English uses submit/file",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"make a maintenance request.\""
+    },
+    {
+      "vietlish": "take an eye exam schedule",
+      "natural": "schedule an eye exam",
+      "sourcePattern": "đặt lịch khám mắt -> take schedule; English uses schedule/book",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"take an eye exam schedule.\""
+    },
+    {
+      "vietlish": "give a deposit transfer",
+      "natural": "send a deposit transfer",
+      "sourcePattern": "chuyển tiền cọc -> give transfer; payment English uses send/make",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "In a customer service chat, the learner wrote, \"give a deposit transfer.\""
+    },
+    {
+      "vietlish": "I go to receive the room tomorrow",
+      "natural": "I am going to check in tomorrow",
+      "sourcePattern": "nhận phòng -> receive room; English hotel English uses check in",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "In a daily-life message, the learner wrote, \"I go to receive the room tomorrow.\""
+    },
+    {
+      "vietlish": "my phone is out of money",
+      "natural": "my phone has no credit left",
+      "sourcePattern": "hết tiền điện thoại -> out of money; prepaid phone English uses no credit",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "In a daily-life message, the learner wrote, \"my phone is out of money.\""
+    },
+    {
+      "vietlish": "the app ate my money",
+      "natural": "the app charged me incorrectly",
+      "sourcePattern": "ứng dụng ăn tiền -> ate money; support English says charged incorrectly",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"the app ate my money.\""
+    },
+    {
+      "vietlish": "I lost the network on the train",
+      "natural": "I lost signal on the train",
+      "sourcePattern": "mất mạng -> lost network; mobile English uses lost signal",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "In a daily-life message, the learner wrote, \"I lost the network on the train.\""
+    },
+    {
+      "vietlish": "the shop cuts bill for students",
+      "natural": "the shop gives students a discount",
+      "sourcePattern": "giảm giá -> cut bill; English uses give/offer a discount",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"the shop cuts bill for students.\""
+    },
+    {
+      "vietlish": "the ATM swallowed money",
+      "natural": "the ATM charged me but gave no cash",
+      "sourcePattern": "nuốt tiền -> swallowed money; English describes the failed withdrawal",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"the ATM swallowed money.\""
+    },
+    {
+      "vietlish": "I need to make paper for my child",
+      "natural": "I need to prepare documents for my child",
+      "sourcePattern": "làm giấy tờ -> make paper; English uses prepare documents",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "In a daily-life message, the learner wrote, \"I need to make paper for my child.\""
+    },
+    {
+      "vietlish": "the office keeps my profile",
+      "natural": "the office keeps my file",
+      "sourcePattern": "giữ hồ sơ -> profile; admin English uses file/records",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"the office keeps my profile.\""
+    },
+    {
+      "vietlish": "I learn driving car",
+      "natural": "I am learning to drive",
+      "sourcePattern": "học lái xe -> learn driving car; English uses learn to drive",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "In a daily-life message, the learner wrote, \"I learn driving car.\""
+    },
+    {
+      "vietlish": "please see the schedule again",
+      "natural": "please check the schedule again",
+      "sourcePattern": "xem lại -> see again; English uses check/review",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "In a daily-life message, the learner wrote, \"please see the schedule again.\""
+    },
+    {
+      "vietlish": "the website runs very lag",
+      "natural": "the website is very laggy",
+      "sourcePattern": "chạy lag -> runs lag; English adjective is laggy/slow",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"the website runs very lag.\""
+    },
+    {
+      "vietlish": "I borrow money through the app",
+      "natural": "I took out a loan through the app",
+      "sourcePattern": "vay tiền -> borrow money; fintech English often says take out a loan",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"I borrow money through the app.\""
+    },
+    {
+      "vietlish": "the bank holds my money back",
+      "natural": "the bank put a hold on my money",
+      "sourcePattern": "giữ tiền -> hold money; banking English uses put a hold on funds",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"the bank holds my money back.\""
+    },
+    {
+      "vietlish": "I want to change new address",
+      "natural": "I want to update my address",
+      "sourcePattern": "đổi địa chỉ mới -> change new address; English uses update address",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "In a daily-life message, the learner wrote, \"I want to change new address.\""
+    },
+    {
+      "vietlish": "the teacher caught my mistake",
+      "natural": "the teacher noticed my mistake",
+      "sourcePattern": "bắt lỗi -> catch mistake; English feedback uses notice/point out",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"the teacher caught my mistake.\""
+    },
+    {
+      "vietlish": "I joined insurance for my family",
+      "natural": "I bought insurance for my family",
+      "sourcePattern": "tham gia bảo hiểm -> join insurance; English uses buy/get insurance",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"I joined insurance for my family.\""
+    },
+    {
+      "vietlish": "the clinic returns result tomorrow",
+      "natural": "the clinic will send the results tomorrow",
+      "sourcePattern": "trả kết quả -> return result; English uses send/provide results",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"the clinic returns result tomorrow.\""
+    },
+    {
+      "vietlish": "I make health check every year",
+      "natural": "I get a health checkup every year",
+      "sourcePattern": "khám sức khỏe -> make health check; English uses get/have a checkup",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "In a daily-life message, the learner wrote, \"I make health check every year.\""
+    },
+    {
+      "vietlish": "the bus caught me late",
+      "natural": "I missed the bus and was late",
+      "sourcePattern": "bị trễ vì xe buýt -> bus caught me late; English states missed bus",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"the bus caught me late.\""
+    },
+    {
+      "vietlish": "I put my signature into the form",
+      "natural": "I signed the form",
+      "sourcePattern": "ký vào mẫu -> put signature into; English simply uses sign",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "In a daily-life message, the learner wrote, \"I put my signature into the form.\""
+    },
+    {
+      "vietlish": "the medicine makes hot in stomach",
+      "natural": "the medicine upsets my stomach",
+      "sourcePattern": "nóng bụng -> hot in stomach; English symptom phrase is upsets my stomach",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"the medicine makes hot in stomach.\""
+    },
+    {
+      "vietlish": "I go to see house for rent",
+      "natural": "I am going to view a rental home",
+      "sourcePattern": "đi xem nhà thuê -> see house; property English uses view a rental",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"I go to see house for rent.\""
+    },
+    {
+      "vietlish": "the form asks my born day",
+      "natural": "the form asks for my date of birth",
+      "sourcePattern": "ngày sinh -> born day; English form field is date of birth",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "In a daily-life message, the learner wrote, \"the form asks my born day.\""
+    },
+    {
+      "vietlish": "the power disappeared at my apartment",
+      "natural": "the power went out at my apartment",
+      "sourcePattern": "mất điện -> power disappeared; English uses the power went out",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "In a daily-life message, the learner wrote, \"the power disappeared at my apartment.\""
+    },
+    {
+      "vietlish": "I have disease of allergy",
+      "natural": "I have allergies",
+      "sourcePattern": "bị dị ứng -> disease of allergy; English uses allergies",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"I have disease of allergy.\""
+    },
+    {
+      "vietlish": "the police made working record",
+      "natural": "the police filed a report",
+      "sourcePattern": "lập biên bản -> make working record; legal English uses file a report",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"the police made working record.\""
+    },
+    {
+      "vietlish": "I will go birth certificate",
+      "natural": "I will get a birth certificate",
+      "sourcePattern": "làm giấy khai sinh -> go certificate; English uses get/apply for",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"I will go birth certificate.\""
+    },
+    {
+      "vietlish": "my salary jumps account today",
+      "natural": "my salary is deposited today",
+      "sourcePattern": "lương nhảy tài khoản -> jumps account; payroll English uses is deposited",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"my salary jumps account today.\""
+    },
+    {
+      "vietlish": "the doctor gave me rest paper",
+      "natural": "the doctor gave me a medical leave note",
+      "sourcePattern": "giấy nghỉ bệnh -> rest paper; English uses medical leave note",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"the doctor gave me rest paper.\""
+    },
+    {
+      "vietlish": "the machine reports error red light",
+      "natural": "the machine shows a red error light",
+      "sourcePattern": "báo lỗi đèn đỏ -> reports error red light; English uses shows",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"the machine reports error red light.\""
+    },
+    {
+      "vietlish": "I wait the result comes out",
+      "natural": "I am waiting for the result to come out",
+      "sourcePattern": "chờ kết quả ra -> wait result; English uses wait for",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "In a daily-life message, the learner wrote, \"I wait the result comes out.\""
+    },
+    {
+      "vietlish": "the company eats my overtime",
+      "natural": "the company did not pay my overtime",
+      "sourcePattern": "ăn tiền tăng ca -> eats overtime; labor complaint says did not pay",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"the company eats my overtime.\""
+    },
+    {
+      "vietlish": "I need to cut the contract",
+      "natural": "I need to cancel the contract",
+      "sourcePattern": "cắt hợp đồng -> cut contract; English uses cancel/terminate",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "In a daily-life message, the learner wrote, \"I need to cut the contract.\""
+    },
+    {
+      "vietlish": "my child has runny nose water",
+      "natural": "my child has a runny nose",
+      "sourcePattern": "chảy nước mũi -> nose water; English symptom phrase is runny nose",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "In a daily-life message, the learner wrote, \"my child has runny nose water.\""
+    },
+    {
+      "vietlish": "you tomorrow can come early",
+      "natural": "can you come early tomorrow",
+      "sourcePattern": "Vietnamese time adverb placement differs; English modal question order comes first",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"you tomorrow can come early.\""
+    },
+    {
+      "vietlish": "this form I already submitted",
+      "natural": "I already submitted this form",
+      "sourcePattern": "Vietnamese topic-fronting moves the object first; English default is subject-verb-object",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"this form I already submitted.\""
+    },
+    {
+      "vietlish": "the package when will arrive",
+      "natural": "when will the package arrive",
+      "sourcePattern": "Vietnamese question word can stay later; English fronts when",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"the package when will arrive.\""
+    },
+    {
+      "vietlish": "she in Canada has lived five years",
+      "natural": "she has lived in Canada for five years",
+      "sourcePattern": "Vietnamese place phrase can precede tense marker; English perfect verb comes first",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"she in Canada has lived five years.\""
+    },
+    {
+      "vietlish": "my appointment next week is at which room",
+      "natural": "which room is my appointment in next week",
+      "sourcePattern": "Vietnamese question phrase can remain in position; English fronts which room",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"my appointment next week is at which room.\""
+    },
+    {
+      "vietlish": "I only yesterday received the email",
+      "natural": "I received the email only yesterday",
+      "sourcePattern": "Vietnamese focus adverb placement differs; English places only near the focused time",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"I only yesterday received the email.\""
+    },
+    {
+      "vietlish": "the refund they still not send",
+      "natural": "they still have not sent the refund",
+      "sourcePattern": "Vietnamese topic-fronting plus chưa; English keeps subject before perfect verb",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"the refund they still not send.\""
+    },
+    {
+      "vietlish": "why the machine cannot print receipt",
+      "natural": "why can't the machine print a receipt",
+      "sourcePattern": "Vietnamese why question may keep statement order; English inverts modal and subject",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"why the machine cannot print receipt.\""
+    },
+    {
+      "vietlish": "how much this service monthly cost",
+      "natural": "how much does this service cost per month",
+      "sourcePattern": "Vietnamese price question order differs; English uses does before subject",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"how much this service monthly cost.\""
+    },
+    {
+      "vietlish": "I to the manager already spoke",
+      "natural": "I already spoke to the manager",
+      "sourcePattern": "Vietnamese prepositional phrase can appear earlier; English keeps verb before to-phrase",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"I to the manager already spoke.\""
+    },
+    {
+      "vietlish": "the doctor tomorrow will call me back",
+      "natural": "the doctor will call me back tomorrow",
+      "sourcePattern": "Vietnamese time phrase often appears before verb; English often places tomorrow at end",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"the doctor tomorrow will call me back.\""
+    },
+    {
+      "vietlish": "you have before used this app",
+      "natural": "have you used this app before",
+      "sourcePattern": "Vietnamese yes/no question can use statement order; English perfect question inverts have",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"you have before used this app.\""
+    },
+    {
+      "vietlish": "which bus I should take",
+      "natural": "which bus should I take",
+      "sourcePattern": "Vietnamese modal order maps directly; English question inverts should and subject",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"which bus I should take.\""
+    },
+    {
+      "vietlish": "the contract I not yet sign",
+      "natural": "I have not signed the contract yet",
+      "sourcePattern": "Vietnamese object-fronting and chưa; English perfect negative order differs",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"the contract I not yet sign.\""
+    },
+    {
+      "vietlish": "where your office located",
+      "natural": "where is your office located",
+      "sourcePattern": "Vietnamese question may omit be/inversion; English needs is",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"where your office located.\""
+    },
+    {
+      "vietlish": "my password why not working",
+      "natural": "why is my password not working",
+      "sourcePattern": "Vietnamese why can remain after topic; English fronts why and uses be",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"my password why not working.\""
+    },
+    {
+      "vietlish": "this medicine how many times take",
+      "natural": "how many times should I take this medicine",
+      "sourcePattern": "Vietnamese object-fronting plus omitted modal; English question begins with how many times",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"this medicine how many times take.\""
+    },
+    {
+      "vietlish": "the class starts at what time",
+      "natural": "what time does the class start",
+      "sourcePattern": "Vietnamese question phrase stays at the end; English fronts what time",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"the class starts at what time.\""
+    },
+    {
+      "vietlish": "I with my landlord have problem",
+      "natural": "I have a problem with my landlord",
+      "sourcePattern": "Vietnamese with-phrase can precede noun; English uses have a problem with",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"I with my landlord have problem.\""
+    },
+    {
+      "vietlish": "your ID card can I see",
+      "natural": "can I see your ID card",
+      "sourcePattern": "Vietnamese object topicalization can sound abrupt; English request starts with modal",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"your ID card can I see.\""
+    },
+    {
+      "vietlish": "the meeting about what topic is",
+      "natural": "what topic is the meeting about",
+      "sourcePattern": "Vietnamese topic question can stay later; English fronts what topic",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"the meeting about what topic is.\""
+    },
+    {
+      "vietlish": "I at 3 p.m. have dentist appointment",
+      "natural": "I have a dentist appointment at 3 p.m.",
+      "sourcePattern": "Vietnamese time phrase can appear before verb; English common order is verb-object-time",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"I at 3 p.m. have dentist appointment.\""
+    },
+    {
+      "vietlish": "this fee why so expensive",
+      "natural": "why is this fee so expensive",
+      "sourcePattern": "Vietnamese adjective question may omit be; English uses why is",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"this fee why so expensive.\""
+    },
+    {
+      "vietlish": "the documents where should submit",
+      "natural": "where should I submit the documents",
+      "sourcePattern": "Vietnamese object topic plus later question word; English fronts where",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"the documents where should submit.\""
+    },
+    {
+      "vietlish": "she to customer service called already",
+      "natural": "she already called customer service",
+      "sourcePattern": "Vietnamese preposition/object order maps awkwardly; English call is transitive",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"she to customer service called already.\""
+    },
+    {
+      "vietlish": "how long you need to repair it",
+      "natural": "how long do you need to repair it",
+      "sourcePattern": "Vietnamese wh-question may keep statement order; English adds do support",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"how long you need to repair it.\""
+    },
+    {
+      "vietlish": "the receipt can send to my email",
+      "natural": "can you send the receipt to my email",
+      "sourcePattern": "Vietnamese omitted subject and object-fronting; English request needs can you",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"the receipt can send to my email.\""
+    },
+    {
+      "vietlish": "I every month pay insurance premium",
+      "natural": "I pay the insurance premium every month",
+      "sourcePattern": "Vietnamese frequency phrase can precede verb; English often places it after object",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"I every month pay insurance premium.\""
+    },
+    {
+      "vietlish": "the result when I can get",
+      "natural": "when can I get the result",
+      "sourcePattern": "Vietnamese object topic plus question phrase later; English fronts when",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"the result when I can get.\""
+    },
+    {
+      "vietlish": "you for me check this file",
+      "natural": "can you check this file for me",
+      "sourcePattern": "Vietnamese cho tôi maps before verb; English places for me after object",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "In a question to support, the learner wrote, \"you for me check this file.\""
+    },
+    {
+      "vietlish": "the gym membership can cancel online",
+      "natural": "can I cancel the gym membership online",
+      "sourcePattern": "Vietnamese omitted subject can sound passive; English asks with can I",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"the gym membership can cancel online.\""
+    },
+    {
+      "vietlish": "why your price different with website",
+      "natural": "why is your price different from the website",
+      "sourcePattern": "Vietnamese adjective question order and với; English uses is and different from",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"why your price different with website.\""
+    },
+    {
+      "vietlish": "this address I need update where",
+      "natural": "where do I need to update this address",
+      "sourcePattern": "Vietnamese object-fronting and final where; English fronts where with do support",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "In a question to support, the learner wrote, \"this address I need update where.\""
+    },
+    {
+      "vietlish": "I need to refresh my address in the system",
+      "natural": "I need to update my address in the system",
+      "sourcePattern": "refresh is for reloading data; cập nhật địa chỉ maps to update address",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"I need to refresh my address in the system.\""
+    },
+    {
+      "vietlish": "the chef is very sympathetic",
+      "natural": "the chef is very friendly",
+      "sourcePattern": "sympathetic means understanding, not generally likable; dễ mến maps to friendly",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"the chef is very sympathetic.\""
+    },
+    {
+      "vietlish": "my boss is sensible with staff",
+      "natural": "my boss is sensitive to staff concerns",
+      "sourcePattern": "sensible means practical; sensitive means responsive to feelings",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"my boss is sensible with staff.\""
+    },
+    {
+      "vietlish": "this medicine is economic",
+      "natural": "this medicine is affordable",
+      "sourcePattern": "economic relates to the economy; affordable fits price",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"this medicine is economic.\""
+    },
+    {
+      "vietlish": "I assisted the seminar yesterday",
+      "natural": "I attended the seminar yesterday",
+      "sourcePattern": "assist means help; attend means be present at an event",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "In a learner note, the learner wrote, \"I assisted the seminar yesterday.\""
+    },
+    {
+      "vietlish": "the professor is comprehensive",
+      "natural": "the professor is understanding",
+      "sourcePattern": "comprehensive means complete; understanding means empathetic",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"the professor is comprehensive.\""
+    },
+    {
+      "vietlish": "please control your email",
+      "natural": "please check your email",
+      "sourcePattern": "control means manage/direct; check means look at",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "In a learner note, the learner wrote, \"please control your email.\""
+    },
+    {
+      "vietlish": "the room is actually occupied",
+      "natural": "the room is currently occupied",
+      "sourcePattern": "actually corrects expectation; currently means at this time",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "In a learner note, the learner wrote, \"the room is actually occupied.\""
+    },
+    {
+      "vietlish": "I pretend to apply next month",
+      "natural": "I intend to apply next month",
+      "sourcePattern": "pretend means fake; intend means plan",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "In a learner note, the learner wrote, \"I pretend to apply next month.\""
+    },
+    {
+      "vietlish": "this folder contains important informations",
+      "natural": "this folder contains important information",
+      "sourcePattern": "information is uncountable in English; thông tin may feel plural",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "In a learner note, the learner wrote, \"this folder contains important informations.\""
+    },
+    {
+      "vietlish": "my parents are exigent about grades",
+      "natural": "my parents are demanding about grades",
+      "sourcePattern": "exigent means urgent; demanding describes strict expectations",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"my parents are exigent about grades.\""
+    },
+    {
+      "vietlish": "the manager reclaimed my report",
+      "natural": "the manager complained about my report",
+      "sourcePattern": "reclaim means take back; complain means express dissatisfaction",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"the manager reclaimed my report.\""
+    },
+    {
+      "vietlish": "I will demand a new passport",
+      "natural": "I will apply for a new passport",
+      "sourcePattern": "demand is forceful request; apply for is the administrative action",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "In a learner note, the learner wrote, \"I will demand a new passport.\""
+    },
+    {
+      "vietlish": "she is very confident with strangers",
+      "natural": "she is very comfortable with strangers",
+      "sourcePattern": "confident means self-assured; comfortable means at ease",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"she is very confident with strangers.\""
+    },
+    {
+      "vietlish": "the lecture was eventual",
+      "natural": "the lecture was occasional",
+      "sourcePattern": "eventual means final outcome; occasional means happening sometimes",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"the lecture was eventual.\""
+    },
+    {
+      "vietlish": "I compromised to pay by Friday",
+      "natural": "I committed to pay by Friday",
+      "sourcePattern": "compromise means settle by concession; commit means promise",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"I compromised to pay by Friday.\""
+    },
+    {
+      "vietlish": "the company fabricated my ID card",
+      "natural": "the company produced my ID card",
+      "sourcePattern": "fabricate can mean invent falsely; produce/make is neutral",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"the company fabricated my ID card.\""
+    },
+    {
+      "vietlish": "I conserved the receipt",
+      "natural": "I kept the receipt",
+      "sourcePattern": "conserve means protect from waste; keep is natural for receipts",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "In a learner note, the learner wrote, \"I conserved the receipt.\""
+    },
+    {
+      "vietlish": "the school formed my child well",
+      "natural": "the school educated my child well",
+      "sourcePattern": "form as educate is uncommon in modern English; educate/teach is natural",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"the school formed my child well.\""
+    },
+    {
+      "vietlish": "I solicit your signature",
+      "natural": "I request your signature",
+      "sourcePattern": "solicit can sound legal/commercial; request is normal office English",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"I solicit your signature.\""
+    },
+    {
+      "vietlish": "the hotel proposed breakfast",
+      "natural": "the hotel offered breakfast",
+      "sourcePattern": "propose suggests a plan; offer means provide as an option",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"the hotel proposed breakfast.\""
+    },
+    {
+      "vietlish": "my uncle is retired from function",
+      "natural": "my uncle is retired from his position",
+      "sourcePattern": "function is not used for job role in this phrase; position/role fits",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"my uncle is retired from function.\""
+    },
+    {
+      "vietlish": "I deposited a demand to the city",
+      "natural": "I submitted a request to the city",
+      "sourcePattern": "demand is too forceful/legal; request is normal for municipal forms",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"I deposited a demand to the city.\""
+    },
+    {
+      "vietlish": "the document is conform",
+      "natural": "the document is compliant",
+      "sourcePattern": "conform is a verb; compliant/valid is the adjective",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"the document is conform.\""
+    },
+    {
+      "vietlish": "I passed an exam of driving",
+      "natural": "I took a driving test",
+      "sourcePattern": "pass means succeed; take/sit describes doing the test",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "In a learner note, the learner wrote, \"I passed an exam of driving.\""
+    },
+    {
+      "vietlish": "the medicine has secondary effects",
+      "natural": "the medicine has side effects",
+      "sourcePattern": "secondary effects is unnatural for common medical English; side effects is standard",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "In a learner note, the learner wrote, \"the medicine has secondary effects.\""
+    },
+    {
+      "vietlish": "I want to enlarge my visa",
+      "natural": "I want to extend my visa",
+      "sourcePattern": "enlarge means make bigger physically; extend means lengthen time",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "In a learner note, the learner wrote, \"I want to enlarge my visa.\""
+    },
+    {
+      "vietlish": "the office convoked me for interview",
+      "natural": "the office called me in for an interview",
+      "sourcePattern": "convoked is rare/formal; called me in is natural",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"the office convoked me for interview.\""
+    },
+    {
+      "vietlish": "I have a delay of payment",
+      "natural": "I have a late payment",
+      "sourcePattern": "delay is an event; late payment is the account status",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"I have a delay of payment.\""
+    },
+    {
+      "vietlish": "the plan is realizable",
+      "natural": "the plan is realistic",
+      "sourcePattern": "realizable is uncommon here; realistic is natural",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"the plan is realizable.\""
+    },
+    {
+      "vietlish": "I need a justificative paper",
+      "natural": "I need supporting documentation",
+      "sourcePattern": "justificative is rare; supporting documentation/proof is natural",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"I need a justificative paper.\""
+    },
+    {
+      "vietlish": "the service is deceiving",
+      "natural": "the service is disappointing",
+      "sourcePattern": "deceiving means misleading; disappointing means not satisfactory",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"the service is deceiving.\""
+    },
+    {
+      "vietlish": "I will regulate the bill tomorrow",
+      "natural": "I will settle the bill tomorrow",
+      "sourcePattern": "regulate means control by rule; settle/pay fits a bill",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "In a learner note, the learner wrote, \"I will regulate the bill tomorrow.\""
+    },
+    {
+      "vietlish": "I registered learning English online",
+      "natural": "I registered for an online English course",
+      "sourcePattern": "đăng ký học -> register learning; English uses register for a course",
+      "category": "calque",
+      "frequency": "high",
+      "context": "In a planning message, the learner wrote, \"I registered learning English online.\""
+    },
+    {
+      "vietlish": "she has condition to study abroad",
+      "natural": "she has the opportunity to study abroad",
+      "sourcePattern": "có điều kiện -> has condition; English meaning here is opportunity/resources",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"she has condition to study abroad.\""
+    },
+    {
+      "vietlish": "I am in the case cannot attend",
+      "natural": "I cannot attend",
+      "sourcePattern": "trong trường hợp không thể -> in the case cannot; English states the inability directly",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"I am in the case cannot attend.\""
+    },
+    {
+      "vietlish": "the price goes according to season",
+      "natural": "the price depends on the season",
+      "sourcePattern": "theo mùa -> according to season; English uses depends on/varies by",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"the price goes according to season.\""
+    },
+    {
+      "vietlish": "I take care for my profile online",
+      "natural": "I manage my online profile",
+      "sourcePattern": "quản lý hồ sơ -> take care for profile; English uses manage profile",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"I take care for my profile online.\""
+    },
+    {
+      "vietlish": "we need to grasp the customer psychology",
+      "natural": "we need to understand customer behavior",
+      "sourcePattern": "nắm tâm lý -> grasp psychology; business English uses understand behavior",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"we need to grasp the customer psychology.\""
+    },
+    {
+      "vietlish": "this plan is not suitable with my budget",
+      "natural": "this plan does not fit my budget",
+      "sourcePattern": "phù hợp với -> suitable with; English uses suitable for or fit",
+      "category": "calque",
+      "frequency": "high",
+      "context": "In a planning message, the learner wrote, \"this plan is not suitable with my budget.\""
+    },
+    {
+      "vietlish": "I have demand to rent a studio",
+      "natural": "I need to rent a studio",
+      "sourcePattern": "có nhu cầu -> have demand; English uses need/want",
+      "category": "calque",
+      "frequency": "high",
+      "context": "In a planning message, the learner wrote, \"I have demand to rent a studio.\""
+    },
+    {
+      "vietlish": "the company supports about transport fee",
+      "natural": "the company helps with transportation costs",
+      "sourcePattern": "hỗ trợ về -> support about; English uses help with/cover costs",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"the company supports about transport fee.\""
+    },
+    {
+      "vietlish": "I make acquaintance with the new system",
+      "natural": "I get familiar with the new system",
+      "sourcePattern": "làm quen với -> make acquaintance with; English uses get familiar with",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"I make acquaintance with the new system.\""
+    },
+    {
+      "vietlish": "the teacher gave me direction to improve",
+      "natural": "the teacher gave me guidance on how to improve",
+      "sourcePattern": "hướng dẫn -> direction; feedback English uses guidance on",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"the teacher gave me direction to improve.\""
+    },
+    {
+      "vietlish": "I want to exchange about the contract",
+      "natural": "I want to discuss the contract",
+      "sourcePattern": "trao đổi về -> exchange about; English uses discuss/talk about",
+      "category": "calque",
+      "frequency": "high",
+      "context": "In a planning message, the learner wrote, \"I want to exchange about the contract.\""
+    },
+    {
+      "vietlish": "this app creates convenience for users",
+      "natural": "this app is convenient for users",
+      "sourcePattern": "tạo sự tiện lợi -> creates convenience; English commonly uses convenient",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"this app creates convenience for users.\""
+    },
+    {
+      "vietlish": "the bank solves my loan fast",
+      "natural": "the bank processes my loan quickly",
+      "sourcePattern": "giải quyết hồ sơ -> solve loan; banking English uses process an application",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"the bank solves my loan fast.\""
+    },
+    {
+      "vietlish": "I contact with the visa office",
+      "natural": "I contact the visa office",
+      "sourcePattern": "liên hệ với -> contact with; English contact is transitive",
+      "category": "calque",
+      "frequency": "high",
+      "context": "In a planning message, the learner wrote, \"I contact with the visa office.\""
+    },
+    {
+      "vietlish": "we discuss together about the schedule",
+      "natural": "we discuss the schedule together",
+      "sourcePattern": "thảo luận về -> discuss about; English discuss takes a direct object",
+      "category": "calque",
+      "frequency": "high",
+      "context": "In a planning message, the learner wrote, \"we discuss together about the schedule.\""
+    },
+    {
+      "vietlish": "I am lack of one document",
+      "natural": "I am missing one document",
+      "sourcePattern": "thiếu -> lack of; paperwork English uses be missing",
+      "category": "calque",
+      "frequency": "high",
+      "context": "In a planning message, the learner wrote, \"I am lack of one document.\""
+    },
+    {
+      "vietlish": "the office guides for me the process",
+      "natural": "the office guides me through the process",
+      "sourcePattern": "hướng dẫn cho tôi -> guide for me; English uses guide me through",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"the office guides for me the process.\""
+    },
+    {
+      "vietlish": "I cannot catch up the information",
+      "natural": "I cannot keep up with the information",
+      "sourcePattern": "theo kịp -> catch up; English phrasal verb needs with for information flow",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"I cannot catch up the information.\""
+    },
+    {
+      "vietlish": "this mistake affects to my score",
+      "natural": "this mistake affects my score",
+      "sourcePattern": "ảnh hưởng đến -> affect to; English affect is transitive",
+      "category": "calque",
+      "frequency": "high",
+      "context": "In a planning message, the learner wrote, \"this mistake affects to my score.\""
+    },
+    {
+      "vietlish": "I depend on the bus to go work",
+      "natural": "I rely on the bus to get to work",
+      "sourcePattern": "phụ thuộc vào -> depend on; transport English uses rely on/get to work",
+      "category": "calque",
+      "frequency": "high",
+      "context": "In a planning message, the learner wrote, \"I depend on the bus to go work.\""
+    },
+    {
+      "vietlish": "the clinic receives examination from 8",
+      "natural": "the clinic starts seeing patients at 8",
+      "sourcePattern": "nhận khám -> receive examination; clinic English uses starts seeing patients",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"the clinic receives examination from 8.\""
+    },
+    {
+      "vietlish": "I want to reflect with the manager",
+      "natural": "I want to give feedback to the manager",
+      "sourcePattern": "phản ánh với -> reflect with; English uses give feedback/report an issue",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"I want to reflect with the manager.\""
+    },
+    {
+      "vietlish": "the app has error about payment",
+      "natural": "the app has a payment error",
+      "sourcePattern": "lỗi về thanh toán -> error about payment; English uses payment error",
+      "category": "calque",
+      "frequency": "high",
+      "context": "In a planning message, the learner wrote, \"the app has error about payment.\""
+    },
+    {
+      "vietlish": "the course equips for me many skills",
+      "natural": "the course gives me many skills",
+      "sourcePattern": "trang bị cho -> equip for; English uses equip me with/give me",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"the course equips for me many skills.\""
+    },
+    {
+      "vietlish": "I am convenient to meet after 5",
+      "natural": "it is convenient for me to meet after 5",
+      "sourcePattern": "tôi tiện -> I am convenient; English makes the time/situation convenient",
+      "category": "calque",
+      "frequency": "high",
+      "context": "In a planning message, the learner wrote, \"I am convenient to meet after 5.\""
+    },
+    {
+      "vietlish": "the landlord creates difficulty for us",
+      "natural": "the landlord makes things difficult for us",
+      "sourcePattern": "gây khó khăn -> creates difficulty; English idiom uses makes things difficult",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"the landlord creates difficulty for us.\""
+    },
+    {
+      "vietlish": "we need to calculate again the fee",
+      "natural": "we need to recalculate the fee",
+      "sourcePattern": "tính lại -> calculate again; English uses recalculate",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"we need to calculate again the fee.\""
+    },
+    {
+      "vietlish": "the app announces for me new message",
+      "natural": "the app notifies me of a new message",
+      "sourcePattern": "thông báo cho tôi -> announce for me; English uses notify me of",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"the app announces for me new message.\""
+    },
+    {
+      "vietlish": "I want to learn more deeply this topic",
+      "natural": "I want to study this topic in more depth",
+      "sourcePattern": "học sâu hơn -> learn more deeply; English uses in more depth",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"I want to learn more deeply this topic.\""
+    },
+    {
+      "vietlish": "this plan answers my need",
+      "natural": "this plan meets my needs",
+      "sourcePattern": "đáp ứng nhu cầu -> answers need; English uses meet needs",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"this plan answers my need.\""
+    },
+    {
+      "vietlish": "I will research about the neighborhood",
+      "natural": "I will research the neighborhood",
+      "sourcePattern": "tìm hiểu về -> research about; English research is transitive",
+      "category": "calque",
+      "frequency": "high",
+      "context": "In a planning message, the learner wrote, \"I will research about the neighborhood.\""
+    },
+    {
+      "vietlish": "the school organizes for students internship",
+      "natural": "the school arranges internships for students",
+      "sourcePattern": "tổ chức cho -> organizes for; English uses arrange internships for",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "In a planning message, the learner wrote, \"the school organizes for students internship.\""
+    },
+    {
+      "vietlish": "Send me the receipt now",
+      "natural": "Could you send me the receipt when you have a moment?",
+      "sourcePattern": "Direct imperative can sound abrupt; soften with could you/when you have a moment",
+      "category": "register",
+      "frequency": "high",
+      "context": "In a email, the learner wrote, \"Send me the receipt now.\""
+    },
+    {
+      "vietlish": "I want discount",
+      "natural": "Is there any discount available?",
+      "sourcePattern": "Bare want statement sounds demanding; customer service English asks about availability",
+      "category": "register",
+      "frequency": "high",
+      "context": "In a email, the learner wrote, \"I want discount.\""
+    },
+    {
+      "vietlish": "You explain too slow",
+      "natural": "Could you explain that a little more quickly?",
+      "sourcePattern": "Direct criticism sounds rude; polite feedback uses could you and a specific request",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"You explain too slow.\""
+    },
+    {
+      "vietlish": "Give me answer today",
+      "natural": "Could you let me know by today?",
+      "sourcePattern": "Imperative give me answer is abrupt; deadline request uses could you let me know",
+      "category": "register",
+      "frequency": "high",
+      "context": "In a email, the learner wrote, \"Give me answer today.\""
+    },
+    {
+      "vietlish": "I require you fix this",
+      "natural": "Could you help fix this?",
+      "sourcePattern": "Require you is too forceful for ordinary support; polite request uses could you help",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"I require you fix this.\""
+    },
+    {
+      "vietlish": "Your counter service is careless",
+      "natural": "I had a problem with the counter service",
+      "sourcePattern": "Blunt judgment can escalate; issue-focused phrasing is more professional",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"Your counter service is careless.\""
+    },
+    {
+      "vietlish": "Reply immediately",
+      "natural": "Please reply as soon as you can",
+      "sourcePattern": "Immediate command is harsh; polite email closing uses please/as soon as you can",
+      "category": "register",
+      "frequency": "high",
+      "context": "In a email, the learner wrote, \"Reply immediately.\""
+    },
+    {
+      "vietlish": "You must stamp this",
+      "natural": "Could you stamp this, please?",
+      "sourcePattern": "Must can sound like an order; could you/please softens the request",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"You must stamp this.\""
+    },
+    {
+      "vietlish": "Move faster",
+      "natural": "Could we move a little faster?",
+      "sourcePattern": "Bare command can sound rude; inclusive phrasing is softer",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"Move faster.\""
+    },
+    {
+      "vietlish": "I need your answer quickly",
+      "natural": "Could you reply when you have a chance?",
+      "sourcePattern": "Need plus quickly can sound pushy; polite request uses could you/when you can",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"I need your answer quickly.\""
+    },
+    {
+      "vietlish": "You are wrong in the bill",
+      "natural": "I think there may be an error on the bill",
+      "sourcePattern": "Direct you are wrong assigns blame; uncertainty framing is more polite",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"You are wrong in the bill.\""
+    },
+    {
+      "vietlish": "Check it again for me",
+      "natural": "Could you double-check it for me?",
+      "sourcePattern": "Command form sounds demanding; could you makes it a request",
+      "category": "register",
+      "frequency": "high",
+      "context": "In a email, the learner wrote, \"Check it again for me.\""
+    },
+    {
+      "vietlish": "I don't accept this price",
+      "natural": "Is there any flexibility on the price?",
+      "sourcePattern": "Direct refusal can sound confrontational; negotiation English asks about flexibility",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"I don't accept this price.\""
+    },
+    {
+      "vietlish": "You need to call me back",
+      "natural": "Could you call me back when possible?",
+      "sourcePattern": "You need to can sound bossy; could you/when possible is more polite",
+      "category": "register",
+      "frequency": "high",
+      "context": "In a email, the learner wrote, \"You need to call me back.\""
+    },
+    {
+      "vietlish": "Explain clearly",
+      "natural": "Could you clarify that, please?",
+      "sourcePattern": "Imperative explain clearly can sound accusatory; clarify frames the need politely",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"Explain clearly.\""
+    },
+    {
+      "vietlish": "I want to meet your boss",
+      "natural": "Could I speak with a manager?",
+      "sourcePattern": "Want to meet your boss sounds blunt; service English asks to speak with a manager",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"I want to meet your boss.\""
+    },
+    {
+      "vietlish": "You ignored my order",
+      "natural": "I think my order may have been missed",
+      "sourcePattern": "Direct blame can escalate; passive/uncertain phrasing is more polite",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"You ignored my order.\""
+    },
+    {
+      "vietlish": "Make it cheaper",
+      "natural": "Is there a cheaper option?",
+      "sourcePattern": "Commanding a lower price is abrupt; asking for options is polite",
+      "category": "register",
+      "frequency": "high",
+      "context": "In a email, the learner wrote, \"Make it cheaper.\""
+    },
+    {
+      "vietlish": "Tell me your name",
+      "natural": "Could I have your name, please?",
+      "sourcePattern": "Bare command can sound rude; customer service uses could I have",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"Tell me your name.\""
+    },
+    {
+      "vietlish": "I need this now",
+      "natural": "Could this be done today?",
+      "sourcePattern": "Need this now pressures the listener; polite request asks about timeline",
+      "category": "register",
+      "frequency": "high",
+      "context": "In a email, the learner wrote, \"I need this now.\""
+    },
+    {
+      "vietlish": "Your answer is not enough",
+      "natural": "Could you provide a bit more detail?",
+      "sourcePattern": "Direct negative evaluation can sound harsh; request more detail instead",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"Your answer is not enough.\""
+    },
+    {
+      "vietlish": "Don't make mistake again",
+      "natural": "Please double-check next time",
+      "sourcePattern": "Negative command is harsh; specific process request is more constructive",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"Don't make mistake again.\""
+    },
+    {
+      "vietlish": "I command refund",
+      "natural": "I would like to request a refund",
+      "sourcePattern": "Command refund is not idiomatic and sounds aggressive; request a refund is standard",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"I command refund.\""
+    },
+    {
+      "vietlish": "You must give reason",
+      "natural": "Could you explain the reason?",
+      "sourcePattern": "Must give reason sounds accusatory; could you explain is neutral",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"You must give reason.\""
+    },
+    {
+      "vietlish": "Stop talking and listen",
+      "natural": "Could we pause for a moment?",
+      "sourcePattern": "Direct stop talking is confrontational; pause for a moment is softer",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"Stop talking and listen.\""
+    },
+    {
+      "vietlish": "I wait your fast response",
+      "natural": "I look forward to your response",
+      "sourcePattern": "Fast response demand is pushy; standard email closing is look forward to your response",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"I wait your fast response.\""
+    },
+    {
+      "vietlish": "You make me confused",
+      "natural": "I am a little confused",
+      "sourcePattern": "You make me assigns blame; I-statement is more polite",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"You make me confused.\""
+    },
+    {
+      "vietlish": "Give me another staff",
+      "natural": "Could I speak with someone else?",
+      "sourcePattern": "Demanding another staff is abrupt and ungrammatical; ask for someone else",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"Give me another staff.\""
+    },
+    {
+      "vietlish": "Your app is terrible",
+      "natural": "I had trouble using the app",
+      "sourcePattern": "Blunt insult is unproductive; issue-focused phrasing is better",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"Your app is terrible.\""
+    },
+    {
+      "vietlish": "I need you approve today",
+      "natural": "Could you approve this by today if possible?",
+      "sourcePattern": "Need you approve sounds demanding; if possible softens deadline request",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"I need you approve today.\""
+    },
+    {
+      "vietlish": "You must already know my file",
+      "natural": "I thought my file might already be in the system",
+      "sourcePattern": "You must already know sounds accusatory; neutral system-focused phrasing is safer",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"You must already know my file.\""
+    },
+    {
+      "vietlish": "Give me your private phone",
+      "natural": "Could you share the best contact number?",
+      "sourcePattern": "Private phone is intrusive; best contact number is more professional",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"Give me your private phone.\""
+    },
+    {
+      "vietlish": "You did not care my case",
+      "natural": "I feel my case has not been fully addressed",
+      "sourcePattern": "Direct accusation can escalate; I feel plus specific issue is more diplomatic",
+      "category": "register",
+      "frequency": "medium",
+      "context": "In a email, the learner wrote, \"You did not care my case.\""
+    }
+  ]
+}
