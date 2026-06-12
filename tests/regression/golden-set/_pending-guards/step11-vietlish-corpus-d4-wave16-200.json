@@ -1,0 +1,1615 @@
+{
+  "corpus": "step11-vietlish-corpus-d4-wave16",
+  "step": 11,
+  "wave": 16,
+  "language": "en",
+  "targetLearnerL1": "vi",
+  "kind": "vietlish_interference_review_candidates",
+  "schema": "VietlishCorpusEntry (src/lib/tutor/vietlishCorpus.ts) - { vietlish, natural, sourcePattern, category, frequency, context }",
+  "author": "A4 (Content Factory wave 16)",
+  "status": "review_not_wired",
+  "wiredIntoEngine": false,
+  "count": 200,
+  "entries": [
+    {
+      "vietlish": "lose the exam because I did not study",
+      "natural": "fail the exam because I did not study",
+      "sourcePattern": "thi rớt -> lose calqued from VN; English uses fail for exams",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I think I will lose the exam because I did not study at all last night."
+    },
+    {
+      "vietlish": "win the exam and get a scholarship",
+      "natural": "pass the exam and get a scholarship",
+      "sourcePattern": "đậu kỳ thi -> win calqued from thi đậu; English uses pass for exams",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "She worked very hard and managed to win the exam and get a scholarship."
+    },
+    {
+      "vietlish": "tell advice to new employees",
+      "natural": "give advice to new employees",
+      "sourcePattern": "đưa ra lời khuyên -> tell used instead of give; English collocates give+advice",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "The manager always tries to tell advice to new employees during their first week."
+    },
+    {
+      "vietlish": "present the presentation in front of the board",
+      "natural": "give a presentation in front of the board",
+      "sourcePattern": "thuyết trình -> present + presentation is redundant; English uses give a presentation",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I was nervous when I had to present the presentation in front of the board."
+    },
+    {
+      "vietlish": "open the alarm for six in the morning",
+      "natural": "set an alarm for six in the morning",
+      "sourcePattern": "đặt báo thức -> open calqued from mở; English uses set for alarm clocks",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I always open the alarm for six in the morning so I can exercise before work."
+    },
+    {
+      "vietlish": "open the website to check the price",
+      "natural": "visit the website to check the price",
+      "sourcePattern": "mở trang web -> open calqued from mở; English uses go to/visit for websites",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I tried to open the website to check the price but the page kept loading very slowly."
+    },
+    {
+      "vietlish": "make assignment by myself without help",
+      "natural": "do my assignment by myself without help",
+      "sourcePattern": "làm bài tập -> make calqued from làm; English uses do for assignments",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "The teacher told us to make assignment by myself without help from classmates."
+    },
+    {
+      "vietlish": "do a speech at the graduation ceremony",
+      "natural": "give a speech at the graduation ceremony",
+      "sourcePattern": "phát biểu -> do calqued from làm; English uses give for speeches",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "She was chosen to do a speech at the graduation ceremony in front of all the parents."
+    },
+    {
+      "vietlish": "register to the university by the deadline",
+      "natural": "apply to the university by the deadline",
+      "sourcePattern": "đăng ký vào đại học -> register calqued from đăng ký; English uses apply for university admission",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "He has to register to the university by the deadline or his application will not be considered."
+    },
+    {
+      "vietlish": "spend money for new clothes every month",
+      "natural": "spend money on new clothes every month",
+      "sourcePattern": "chi tiền cho quần áo -> for calqued from cho; English uses spend money on something",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "She tends to spend money for new clothes every month and has little left for savings."
+    },
+    {
+      "vietlish": "spend a lot for the holiday trip",
+      "natural": "spend a lot on the holiday trip",
+      "sourcePattern": "chi nhiều tiền cho chuyến đi -> for calqued from cho; English uses on with spend",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "They decided to spend a lot for the holiday trip and booked a five-star hotel."
+    },
+    {
+      "vietlish": "get fever after standing in the rain",
+      "natural": "have a fever after standing in the rain",
+      "sourcePattern": "bị sốt -> get calqued from bị; English typically uses have a fever (article required)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "She went home early because she started to get fever after standing in the rain."
+    },
+    {
+      "vietlish": "do the bed before leaving the house",
+      "natural": "make the bed before leaving the house",
+      "sourcePattern": "dọn giường -> do calqued from làm/dọn; English uses make the bed",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "My mother always taught me to do the bed before leaving the house each morning."
+    },
+    {
+      "vietlish": "arrange the room before the guests arrive",
+      "natural": "tidy up the room before the guests arrive",
+      "sourcePattern": "dọn phòng -> arrange calqued from sắp xếp; English uses tidy up for room cleaning",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "We need to arrange the room before the guests arrive this afternoon."
+    },
+    {
+      "vietlish": "wash hands before eat dinner",
+      "natural": "wash your hands before eating dinner",
+      "sourcePattern": "rửa tay trước khi ăn -> wash hands (no possessive) + before eat (bare verb)",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "Mom told the children to wash hands before eat dinner every single night."
+    },
+    {
+      "vietlish": "do haircut at the salon near my house",
+      "natural": "get a haircut at the salon near my house",
+      "sourcePattern": "cắt tóc -> do calqued from làm; English uses get a haircut",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I plan to do haircut at the salon near my house before the Tet holiday."
+    },
+    {
+      "vietlish": "cook water for the instant noodles",
+      "natural": "boil water for the instant noodles",
+      "sourcePattern": "đun nước -> cook calqued from nấu; English uses boil for heating water",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I will cook water for the instant noodles while you get the bowls ready."
+    },
+    {
+      "vietlish": "attend for the company seminar on Friday",
+      "natural": "attend the company seminar on Friday",
+      "sourcePattern": "tham dự cuộc hội thảo -> attend for adds extra for; English attend takes a direct object",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "All staff must attend for the company seminar on Friday afternoon."
+    },
+    {
+      "vietlish": "join for the English conversation club",
+      "natural": "join the English conversation club",
+      "sourcePattern": "tham gia câu lạc bộ -> join for adds extra for; English join takes a direct object",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "I want to join for the English conversation club that meets on Tuesday evenings."
+    },
+    {
+      "vietlish": "register for the job vacancy at the bank",
+      "natural": "apply for the job vacancy at the bank",
+      "sourcePattern": "đăng ký xin việc -> register calqued from đăng ký; English uses apply for jobs",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "He decided to register for the job vacancy at the bank before the closing date."
+    },
+    {
+      "vietlish": "gain salary at the end of each month",
+      "natural": "receive a salary at the end of each month",
+      "sourcePattern": "nhận lương -> gain calqued from được; English uses receive or earn for salary",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "She starts her new job next week and will gain salary at the end of each month."
+    },
+    {
+      "vietlish": "ask question to the professor after class",
+      "natural": "ask the professor a question after class",
+      "sourcePattern": "hỏi câu hỏi cho thầy -> ask question to calqued from hỏi cho; English uses ask + IO + DO",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "I was too shy to ask question to the professor after class about the assignment."
+    },
+    {
+      "vietlish": "increase vocabulary by reading every day",
+      "natural": "build vocabulary by reading every day",
+      "sourcePattern": "tăng vốn từ -> increase calqued from tăng; English uses build/expand/grow for vocabulary",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "The best way to increase vocabulary by reading every day is to write new words in a notebook."
+    },
+    {
+      "vietlish": "win scholarship this semester",
+      "natural": "receive a scholarship this semester",
+      "sourcePattern": "được học bổng -> win + no article; English uses receive or win a scholarship with article",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "She studied very hard and managed to win scholarship this semester."
+    },
+    {
+      "vietlish": "raise the hand when you have a question",
+      "natural": "raise your hand when you have a question",
+      "sourcePattern": "giơ tay -> raise the hand; English uses possessive pronoun, not definite article",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "The teacher asked students to raise the hand when you have a question."
+    },
+    {
+      "vietlish": "transfer my greetings to your family",
+      "natural": "please give my regards to your family",
+      "sourcePattern": "chuyển lời chào -> transfer calqued from chuyển; English uses give/pass on/send regards",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Before she hung up, she said please transfer my greetings to your family from me."
+    },
+    {
+      "vietlish": "climb mountain on the long weekend",
+      "natural": "go hiking in the mountains on the long weekend",
+      "sourcePattern": "leo núi -> climb mountain (no article, wrong frame); English uses go hiking or climb a mountain",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "Our group decided to climb mountain on the long weekend to enjoy the fresh air."
+    },
+    {
+      "vietlish": "study piano for the last two years",
+      "natural": "learn to play the piano for the last two years",
+      "sourcePattern": "học đàn -> study piano calqued from học; English uses learn to play the piano",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "She has been trying to study piano for the last two years with a private teacher."
+    },
+    {
+      "vietlish": "rise a child alone after her husband left",
+      "natural": "raise a child alone after her husband left",
+      "sourcePattern": "nuôi con -> rise calqued from mọc/lớn; English uses raise for bringing up children",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "She had to rise a child alone after her husband left for work overseas."
+    },
+    {
+      "vietlish": "paint the painting for the art exhibition",
+      "natural": "create a painting for the art exhibition",
+      "sourcePattern": "vẽ tranh -> paint + painting is redundant; English uses create/make a painting or just paint",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "She spent three months to paint the painting for the art exhibition at the cultural center."
+    },
+    {
+      "vietlish": "take photo of the graduation class",
+      "natural": "take a photo of the graduation class",
+      "sourcePattern": "chụp ảnh -> take photo (no article); English requires take a photo",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "The teacher asked everyone to gather together so she could take photo of the graduation class."
+    },
+    {
+      "vietlish": "beat the deadline by submitting a week early",
+      "natural": "meet the deadline by submitting a week early",
+      "sourcePattern": "đáp ứng deadline -> beat misapplied; English uses meet the deadline",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "She managed to beat the deadline by submitting a week early to avoid last-minute stress."
+    },
+    {
+      "vietlish": "hold examination for all first-year students",
+      "natural": "hold an examination for all first-year students",
+      "sourcePattern": "tổ chức kỳ thi -> hold examination (no article); English requires hold an examination",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The faculty decided to hold examination for all first-year students at the end of January."
+    },
+    {
+      "vietlish": "answer the interview at three in the afternoon",
+      "natural": "attend an interview at three in the afternoon",
+      "sourcePattern": "dự phỏng vấn -> answer calqued from trả lời; English uses attend or have an interview",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "She is very nervous because she has to answer the interview at three in the afternoon."
+    },
+    {
+      "vietlish": "do a mistake during the important presentation",
+      "natural": "make a mistake during the important presentation",
+      "sourcePattern": "phạm lỗi -> do calqued from làm; English uses make a mistake, not do",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "It is very easy to do a mistake during the important presentation if you have not practised."
+    },
+    {
+      "vietlish": "develop skill through regular practice",
+      "natural": "build skills through regular practice",
+      "sourcePattern": "phát triển kỹ năng -> develop calqued from phát triển; English more naturally uses build/improve skills",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The coach said the best way to develop skill through regular practice is to set daily goals."
+    },
+    {
+      "vietlish": "receive the exam result next Friday",
+      "natural": "get the exam results next Friday",
+      "sourcePattern": "nhận kết quả thi -> receive calqued from nhận; English more naturally uses get for receiving results",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "We should all receive the exam result next Friday according to the professor's announcement."
+    },
+    {
+      "vietlish": "gain knowledge through reading classic books",
+      "natural": "acquire knowledge through reading classic books",
+      "sourcePattern": "thu thập kiến thức -> gain calqued from thu được; acquire is more formal for systematic knowledge-building",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "The professor encouraged students to gain knowledge through reading classic books outside of class."
+    },
+    {
+      "vietlish": "exercise the body three times per week",
+      "natural": "exercise three times per week",
+      "sourcePattern": "tập thể dục -> exercise the body (the body is unidiomatic); English exercise is used without body as object",
+      "category": "collocation",
+      "frequency": "high",
+      "context": "The doctor advised him to exercise the body three times per week to improve his heart health."
+    },
+    {
+      "vietlish": "make a salary working at the coffee shop",
+      "natural": "earn a salary working at the coffee shop",
+      "sourcePattern": "kiếm lương -> make calqued from làm/kiếm; English uses earn a salary",
+      "category": "collocation",
+      "frequency": "medium",
+      "context": "She manages to make a salary working at the coffee shop while finishing her degree."
+    },
+    {
+      "vietlish": "the internet is broken again today",
+      "natural": "the internet is down again today",
+      "sourcePattern": "internet hỏng -> broken calqued from hỏng; English uses down for service outages",
+      "category": "calque",
+      "frequency": "high",
+      "context": "I cannot send the email because the internet is broken again today."
+    },
+    {
+      "vietlish": "my phone out of battery, need to charge",
+      "natural": "my phone is dead, I need to charge it",
+      "sourcePattern": "hết pin rồi -> out of battery; copula dropped; English typically says my phone is dead/dying",
+      "category": "calque",
+      "frequency": "high",
+      "context": "I cannot call you right now because my phone out of battery, need to charge."
+    },
+    {
+      "vietlish": "upload picture up to the group chat",
+      "natural": "upload a picture to the group chat",
+      "sourcePattern": "đăng ảnh lên -> up is a redundant direction calqued from lên; English upload already implies upward movement",
+      "category": "calque",
+      "frequency": "high",
+      "context": "She tried to upload picture up to the group chat but the file was too large."
+    },
+    {
+      "vietlish": "phone memory full, cannot download the app",
+      "natural": "phone storage is full, I cannot download the app",
+      "sourcePattern": "bộ nhớ điện thoại đầy -> phone memory calqued; English uses storage for device capacity",
+      "category": "calque",
+      "frequency": "high",
+      "context": "Phone memory full, cannot download the app I need for the class."
+    },
+    {
+      "vietlish": "add friend on the app to stay in touch",
+      "natural": "send a friend request on the app to stay in touch",
+      "sourcePattern": "thêm bạn -> add friend omits the full social-network action of sending a request",
+      "category": "calque",
+      "frequency": "high",
+      "context": "She told me to add friend on the app to stay in touch after we move to different cities."
+    },
+    {
+      "vietlish": "I done the report, send it now or tomorrow",
+      "natural": "I have finished the report, should I send it now or tomorrow",
+      "sourcePattern": "Tôi xong báo cáo rồi -> I done; have auxiliary dropped; VN completion marker transferred",
+      "category": "calque",
+      "frequency": "high",
+      "context": "I done the report, send it now or tomorrow? Please tell me before the end of today."
+    },
+    {
+      "vietlish": "still not arrive yet, the train is late",
+      "natural": "she still hasn't arrived yet, the train must be late",
+      "sourcePattern": "vẫn chưa đến -> still not...yet stack calqued from Vietnamese; redundant negation",
+      "category": "calque",
+      "frequency": "high",
+      "context": "Still not arrive yet, the train is late and everyone is waiting at the station."
+    },
+    {
+      "vietlish": "the soup go cold, reheat it please",
+      "natural": "the soup has gone cold, please reheat it",
+      "sourcePattern": "canh nguội rồi -> go cold with no present perfect; completion marker dropped",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The soup go cold, reheat it please before Dad sits down to eat."
+    },
+    {
+      "vietlish": "too interesting, I forgot to sleep last night",
+      "natural": "so interesting that I forgot to sleep last night",
+      "sourcePattern": "thú vị quá -> too used as intensifier; VN quá = too/very/so; English too implies excess",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The book was too interesting, I forgot to sleep last night and finished the whole thing."
+    },
+    {
+      "vietlish": "too funny, I almost fall from my chair",
+      "natural": "so funny that I almost fell off my chair",
+      "sourcePattern": "buồn cười quá -> too used as intensifier not excess; VN quá = intensifier in positive contexts",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The comedy show was too funny, I almost fall from my chair laughing with my friends."
+    },
+    {
+      "vietlish": "she study hard hard to get the scholarship",
+      "natural": "she studied really hard to get the scholarship",
+      "sourcePattern": "học chăm lắm -> reduplication intensifier calqued from Vietnamese",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Everyone knows she study hard hard to get the scholarship and she deserves it."
+    },
+    {
+      "vietlish": "tomorrow have big exam, very nervous tonight",
+      "natural": "there is a big exam tomorrow, I am very nervous tonight",
+      "sourcePattern": "mai có thi lớn -> tomorrow have; existential copula and subject dropped",
+      "category": "calque",
+      "frequency": "high",
+      "context": "Tomorrow have big exam, very nervous tonight and cannot focus on reviewing my notes."
+    },
+    {
+      "vietlish": "make research on the effects of air pollution",
+      "natural": "conduct research on the effects of air pollution",
+      "sourcePattern": "làm nghiên cứu -> make calqued from làm; academic English uses conduct research",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The university team will make research on the effects of air pollution on children's health."
+    },
+    {
+      "vietlish": "the essay tells about the impact of social media",
+      "natural": "the essay discusses the impact of social media",
+      "sourcePattern": "bài văn nói về -> tells about calqued from nói về; academic English uses discuss/explore/examine",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The essay tells about the impact of social media on the mental health of teenagers."
+    },
+    {
+      "vietlish": "write thesis alone without any guidance",
+      "natural": "write a thesis alone without any guidance",
+      "sourcePattern": "viết luận văn -> no article; VN does not use articles before nouns",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "She decided to write thesis alone without any guidance because her supervisor was abroad."
+    },
+    {
+      "vietlish": "practice gym four times a week to stay fit",
+      "natural": "go to the gym four times a week to stay fit",
+      "sourcePattern": "tập gym -> practice calqued from tập; English uses go to the gym or work out",
+      "category": "calque",
+      "frequency": "high",
+      "context": "My brother tries to practice gym four times a week to stay fit for the football season."
+    },
+    {
+      "vietlish": "lift weight every morning before the school run",
+      "natural": "lift weights every morning before the school run",
+      "sourcePattern": "tập tạ -> lift weight (singular); English uses lift weights (plural)",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "He gets up at five every morning to lift weight every morning before the school run."
+    },
+    {
+      "vietlish": "go run with my dog in the evening",
+      "natural": "go running with my dog in the evening",
+      "sourcePattern": "đi chạy -> go run (bare infinitive); English requires gerund: go running",
+      "category": "calque",
+      "frequency": "high",
+      "context": "After work I like to go run with my dog in the evening around the park near my house."
+    },
+    {
+      "vietlish": "cut the orange equal so everyone gets a fair share",
+      "natural": "cut the orange into equal pieces so everyone gets a fair share",
+      "sourcePattern": "cắt cam bằng nhau -> cut equal; resultative complement calqued without into + noun phrase",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Dad always makes sure to cut the orange equal so everyone gets a fair share at the table."
+    },
+    {
+      "vietlish": "I go home eat dinner with my family tonight",
+      "natural": "I am going home to have dinner with my family tonight",
+      "sourcePattern": "về nhà ăn tối -> go eat; serial verb chain calqued; no preposition or infinitive between them",
+      "category": "calque",
+      "frequency": "high",
+      "context": "I go home eat dinner with my family tonight so I need to leave the office by six."
+    },
+    {
+      "vietlish": "come eat together, the food is getting cold",
+      "natural": "come and eat together, the food is getting cold",
+      "sourcePattern": "lại ăn cùng nhau -> serial verb calqued without and; English requires a conjunction",
+      "category": "calque",
+      "frequency": "high",
+      "context": "She called everyone to come eat together, the food is getting cold so please hurry."
+    },
+    {
+      "vietlish": "she marry already and move to a new city",
+      "natural": "she is already married and has moved to a new city",
+      "sourcePattern": "cô ấy lấy chồng rồi -> marry already; completion marker rồi calqued as already; copula dropped",
+      "category": "calque",
+      "frequency": "high",
+      "context": "I heard that she marry already and move to a new city last year."
+    },
+    {
+      "vietlish": "the room small but very comfortable and bright",
+      "natural": "the room is small but very comfortable and bright",
+      "sourcePattern": "phòng nhỏ nhưng tiện nghi -> copula dropped; VN predicative adj does not need is",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The room small but very comfortable and bright, which is all I need during the trip."
+    },
+    {
+      "vietlish": "today not have any lecture, so I sleep in",
+      "natural": "there are no lectures today, so I slept in",
+      "sourcePattern": "hôm nay không có buổi học -> today not have; existential negative calqued",
+      "category": "calque",
+      "frequency": "high",
+      "context": "Today not have any lecture, so I sleep in until ten and then had a slow breakfast."
+    },
+    {
+      "vietlish": "the ceremony finish already, we can go home",
+      "natural": "the ceremony has ended, we can go home now",
+      "sourcePattern": "lễ xong rồi -> finish already; completion marker rồi calqued",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The ceremony finish already, we can go home and the children are getting very sleepy."
+    },
+    {
+      "vietlish": "I happy when hear you will come to visit",
+      "natural": "I am happy to hear that you will come to visit",
+      "sourcePattern": "Tôi vui khi nghe -> I happy when hear; copula and conjunction dropped",
+      "category": "calque",
+      "frequency": "high",
+      "context": "I happy when hear you will come to visit next month, it has been too long."
+    },
+    {
+      "vietlish": "yesterday not study because feel too tired",
+      "natural": "I didn't study yesterday because I felt too tired",
+      "sourcePattern": "hôm qua không học vì mệt -> yesterday not study; subject, do-negation, and past tense all dropped",
+      "category": "calque",
+      "frequency": "high",
+      "context": "Yesterday not study because feel too tired after the long day at work and the gym."
+    },
+    {
+      "vietlish": "class dismiss already, I am waiting outside",
+      "natural": "class has been dismissed, I am waiting outside",
+      "sourcePattern": "tan học rồi -> class dismiss already; passive and present perfect both dropped",
+      "category": "calque",
+      "frequency": "high",
+      "context": "Class dismiss already, I am waiting outside the building for you to come pick me up."
+    },
+    {
+      "vietlish": "I stay home when rain outside",
+      "natural": "I stay home when it rains outside",
+      "sourcePattern": "tôi ở nhà khi mưa -> when rain; dummy subject it and third-person inflection both omitted",
+      "category": "calque",
+      "frequency": "high",
+      "context": "I stay home when rain outside instead of going to the market on a Saturday like this."
+    },
+    {
+      "vietlish": "she laugh not stop after hearing the story",
+      "natural": "she could not stop laughing after hearing the story",
+      "sourcePattern": "cô ấy cười không dứt -> laugh not stop; serial negation calqued from Vietnamese structure",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "She laugh not stop after hearing the story and had to cover her mouth to calm down."
+    },
+    {
+      "vietlish": "he still not answer my message after two days",
+      "natural": "he still hasn't answered my message after two days",
+      "sourcePattern": "vẫn chưa trả lời -> still not + base form; present perfect dropped",
+      "category": "calque",
+      "frequency": "high",
+      "context": "He still not answer my message after two days and I am starting to feel worried."
+    },
+    {
+      "vietlish": "the exam result come out next Monday for sure",
+      "natural": "the exam results will come out next Monday for sure",
+      "sourcePattern": "kết quả thi ra thứ hai -> result come out; future tense not marked",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The exam result come out next Monday for sure so we just have to wait and stay calm."
+    },
+    {
+      "vietlish": "let we go to the beach this Saturday together",
+      "natural": "let us go to the beach this Saturday together",
+      "sourcePattern": "chúng ta đi biển -> let we; subjective pronoun we used instead of us",
+      "category": "calque",
+      "frequency": "medium",
+      "context": "Let we go to the beach this Saturday together and forget about work for one day."
+    },
+    {
+      "vietlish": "I not feel comfortable with loud music at night",
+      "natural": "I don't feel comfortable with loud music at night",
+      "sourcePattern": "Tôi không cảm thấy thoải mái -> I not feel; do-negation dropped",
+      "category": "calque",
+      "frequency": "high",
+      "context": "I not feel comfortable with loud music at night and always ask my neighbors politely."
+    },
+    {
+      "vietlish": "the weather today very hot, better stay inside",
+      "natural": "the weather is very hot today, we had better stay inside",
+      "sourcePattern": "thời tiết hôm nay rất nóng -> copula dropped; adverb today precedes adjective calqued",
+      "category": "calque",
+      "frequency": "high",
+      "context": "The weather today very hot, better stay inside and drink plenty of cold water."
+    },
+    {
+      "vietlish": "where you go after work every day",
+      "natural": "where do you go after work every day",
+      "sourcePattern": "bạn đi đâu sau khi làm -> where you go; do-support and subject-aux inversion omitted",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I am curious — where you go after work every day, you always leave so quickly."
+    },
+    {
+      "vietlish": "why she not come to the party yesterday",
+      "natural": "why didn't she come to the party yesterday",
+      "sourcePattern": "tại sao cô ấy không đến -> why she not come; do-support and inversion both omitted",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Why she not come to the party yesterday? She said she would be there for sure."
+    },
+    {
+      "vietlish": "how long you wait for the result",
+      "natural": "how long have you been waiting for the result",
+      "sourcePattern": "bạn chờ bao lâu rồi -> how long you wait; perfect aspect and inversion dropped",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "How long you wait for the result? It has been almost three weeks since the interview."
+    },
+    {
+      "vietlish": "you know what time the pharmacy close today",
+      "natural": "do you know what time the pharmacy closes today",
+      "sourcePattern": "bạn biết mấy giờ nhà thuốc đóng cửa -> embedded question with no do-support frame",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Excuse me, you know what time the pharmacy close today? I need to get there before dinner."
+    },
+    {
+      "vietlish": "what mean this word in English",
+      "natural": "what does this word mean in English",
+      "sourcePattern": "từ này có nghĩa là gì -> what mean; do-support and inversion omitted in wh-question",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Can you help me? What mean this word in English? I saw it in the book but cannot find it."
+    },
+    {
+      "vietlish": "she made me to feel very embarrassed",
+      "natural": "she made me feel very embarrassed",
+      "sourcePattern": "cô ấy khiến tôi cảm thấy xấu hổ -> made + to + infinitive; causative takes bare infinitive",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "She made me to feel very embarrassed in front of everyone when she said that."
+    },
+    {
+      "vietlish": "I want you help me write the introduction",
+      "natural": "I want you to help me write the introduction",
+      "sourcePattern": "tôi muốn bạn giúp tôi -> want + you + bare verb; infinitive marker to omitted",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I want you help me write the introduction to my report because I always struggle with openings."
+    },
+    {
+      "vietlish": "I suggest us to leave the venue early",
+      "natural": "I suggest we leave the venue early",
+      "sourcePattern": "tôi đề nghị chúng ta rời đi -> suggest + us + to + infinitive; suggest takes that-clause or bare gerund",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I suggest us to leave the venue early so we can avoid the traffic jam after the concert."
+    },
+    {
+      "vietlish": "they let her to choose her own schedule",
+      "natural": "they let her choose her own schedule",
+      "sourcePattern": "họ để cô ấy tự chọn -> let + her + to + infinitive; let takes bare infinitive not to-infinitive",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "The new company is very flexible and they let her to choose her own schedule each week."
+    },
+    {
+      "vietlish": "the man stand at the door is our new director",
+      "natural": "the man standing at the door is our new director",
+      "sourcePattern": "người đàn ông đứng ở cửa -> stand used as attributive verb without participial -ing form",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Look over there — the man stand at the door is our new director who just flew in."
+    },
+    {
+      "vietlish": "the student who yesterday received the prize is very humble",
+      "natural": "the student who received the prize yesterday is very humble",
+      "sourcePattern": "học sinh ngày hôm qua nhận giải -> time adverb placed inside relative clause before verb",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The student who yesterday received the prize is very humble and donated it to charity."
+    },
+    {
+      "vietlish": "I have a problem want to discuss with you",
+      "natural": "I have a problem I want to discuss with you",
+      "sourcePattern": "tôi có một vấn đề muốn nói với bạn -> relative clause without pronoun who/that",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I have a problem want to discuss with you after the meeting if you have a moment."
+    },
+    {
+      "vietlish": "she told me not come before eight",
+      "natural": "she told me not to come before eight",
+      "sourcePattern": "cô ấy bảo tôi đừng đến trước tám giờ -> negative infinitive not come; to required",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "She told me not come before eight because she will not be home until then."
+    },
+    {
+      "vietlish": "she is taller as her older sister",
+      "natural": "she is taller than her older sister",
+      "sourcePattern": "cô ấy cao hơn chị gái -> taller as; hơn -> as by analogy with so...as constructions",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Everyone is surprised that she is taller as her older sister by almost five centimetres."
+    },
+    {
+      "vietlish": "he is the most hard-working person in the office",
+      "natural": "he is the hardest-working person in the office",
+      "sourcePattern": "anh ấy là người chăm chỉ nhất -> most + compound adjective; -est suffix required instead",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "Everyone agrees that he is the most hard-working person in the office and deserves a bonus."
+    },
+    {
+      "vietlish": "between you and I, she is planning to resign",
+      "natural": "between you and me, she is planning to resign",
+      "sourcePattern": "giữa bạn và tôi -> between + subjective pronoun I; object pronoun me required after preposition",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "Between you and I, she is planning to resign next month and they don't know yet."
+    },
+    {
+      "vietlish": "he told to me the news about the new project",
+      "natural": "he told me the news about the new project",
+      "sourcePattern": "anh ấy nói với tôi -> told to me; tell takes indirect object without to",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "He told to me the news about the new project but asked me to keep it confidential."
+    },
+    {
+      "vietlish": "please remind me bring my umbrella tomorrow",
+      "natural": "please remind me to bring my umbrella tomorrow",
+      "sourcePattern": "nhắc tôi mang ô ngày mai -> remind + me + bare verb; remind requires to-infinitive",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Please remind me bring my umbrella tomorrow because the forecast says heavy rain."
+    },
+    {
+      "vietlish": "I saw her ran very fast past the security gate",
+      "natural": "I saw her run very fast past the security gate",
+      "sourcePattern": "tôi thấy cô ấy chạy -> perception verb + past tense form; bare infinitive required after see",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I saw her ran very fast past the security gate and thought something must be wrong."
+    },
+    {
+      "vietlish": "she asked me how old am I when we first met",
+      "natural": "she asked me how old I was when we first met",
+      "sourcePattern": "cô ấy hỏi tôi bao nhiêu tuổi -> indirect question retains interrogative word order",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "She asked me how old am I when we first met at the language exchange event."
+    },
+    {
+      "vietlish": "can you tell me where is the nearest bus stop",
+      "natural": "can you tell me where the nearest bus stop is",
+      "sourcePattern": "bạn có thể cho tôi biết trạm xe buýt gần nhất ở đâu -> embedded question retains inversion",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Excuse me, can you tell me where is the nearest bus stop? I am new to this area."
+    },
+    {
+      "vietlish": "do you know when will the next class begin",
+      "natural": "do you know when the next class will begin",
+      "sourcePattern": "bạn có biết lớp học tiếp theo bắt đầu khi nào -> embedded question retains subject-aux inversion",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Do you know when will the next class begin? I lost track of the schedule this week."
+    },
+    {
+      "vietlish": "I wonder how does she always look so calm",
+      "natural": "I wonder how she always looks so calm",
+      "sourcePattern": "tôi tự hỏi cô ấy làm thế nào luôn trông bình tĩnh -> embedded question retains inversion after wonder",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "I wonder how does she always look so calm even during the most stressful presentations."
+    },
+    {
+      "vietlish": "please tell me what should I write in the subject line",
+      "natural": "please tell me what I should write in the subject line",
+      "sourcePattern": "cho tôi biết tôi nên viết gì -> embedded question retains interrogative word order after tell",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Please tell me what should I write in the subject line when sending an email to the client."
+    },
+    {
+      "vietlish": "we will tomorrow announce the winner of the contest",
+      "natural": "we will announce the winner of the contest tomorrow",
+      "sourcePattern": "chúng ta sẽ thông báo ngày mai -> adverb tomorrow placed between aux and main verb",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "We will tomorrow announce the winner of the contest, so please check your email in the morning."
+    },
+    {
+      "vietlish": "she already has submitted the report to her supervisor",
+      "natural": "she has already submitted the report to her supervisor",
+      "sourcePattern": "cô ấy đã nộp báo cáo rồi -> already placed before has; adverb should follow auxiliary",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "She already has submitted the report to her supervisor before the official deadline."
+    },
+    {
+      "vietlish": "I always am available to help my classmates",
+      "natural": "I am always available to help my classmates",
+      "sourcePattern": "tôi luôn luôn sẵn sàng -> frequency adverb always placed before be instead of after",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "I always am available to help my classmates with their studies if they need extra support."
+    },
+    {
+      "vietlish": "never I have tasted such delicious pho as this one",
+      "natural": "I have never tasted such delicious pho as this one",
+      "sourcePattern": "chưa bao giờ tôi ăn -> negative adverb never at sentence start without subject-aux inversion",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "Never I have tasted such delicious pho as this one, it is better than any restaurant I know."
+    },
+    {
+      "vietlish": "the report which I yesterday sent to you needs corrections",
+      "natural": "the report that I sent to you yesterday needs corrections",
+      "sourcePattern": "báo cáo mà tôi hôm qua gửi -> adverb yesterday placed inside relative clause before verb",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "The report which I yesterday sent to you needs corrections in the second chapter."
+    },
+    {
+      "vietlish": "it is very difficult the advanced grammar to understand",
+      "natural": "it is very difficult to understand the advanced grammar",
+      "sourcePattern": "nó rất khó để hiểu ngữ pháp -> extraposition error; to-infinitive phrase displaced",
+      "category": "word_order",
+      "frequency": "medium",
+      "context": "For most beginners, it is very difficult the advanced grammar to understand without a good teacher."
+    },
+    {
+      "vietlish": "she kind and very helpful so all her colleagues love her",
+      "natural": "she is kind and very helpful so all her colleagues love her",
+      "sourcePattern": "cô ấy tốt bụng và hữu ích -> copula is dropped; predicate adjective used without be",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "She kind and very helpful so all her colleagues love her and come to her for advice."
+    },
+    {
+      "vietlish": "how much cost this leather jacket in the sale",
+      "natural": "how much does this leather jacket cost in the sale",
+      "sourcePattern": "cái áo khoác này giá bao nhiêu -> how much cost; do-support and inversion omitted",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Excuse me, how much cost this leather jacket in the sale? The tag seems to be missing."
+    },
+    {
+      "vietlish": "my pronunciation not enough good to get a high score",
+      "natural": "my pronunciation is not good enough to get a high score",
+      "sourcePattern": "phát âm không đủ tốt -> not enough good; enough placed before adjective; English requires adj + enough",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "My pronunciation not enough good to get a high score, so I practise every single morning."
+    },
+    {
+      "vietlish": "let her to make her own decision about the future",
+      "natural": "let her make her own decision about the future",
+      "sourcePattern": "để cô ấy tự quyết định -> let + her + to + infinitive; let takes bare infinitive",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "Her parents decided to let her to make her own decision about the future career path."
+    },
+    {
+      "vietlish": "she feel bore sitting at home with nothing to do",
+      "natural": "she feels bored sitting at home with nothing to do",
+      "sourcePattern": "cô ấy cảm thấy chán -> feel bore; participial adjective bored reduced to bare base form",
+      "category": "word_order",
+      "frequency": "high",
+      "context": "She feel bore sitting at home with nothing to do during the long holiday break."
+    },
+    {
+      "vietlish": "are you convenient to meet on Thursday afternoon",
+      "natural": "are you free to meet on Thursday afternoon",
+      "sourcePattern": "bạn có rảnh không -> are you convenient; rảnh = free/available; convenient applies to things not people",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "Hi, are you convenient to meet on Thursday afternoon to discuss the project?"
+    },
+    {
+      "vietlish": "an advice from my mother changed my life",
+      "natural": "a piece of advice from my mother changed my life",
+      "sourcePattern": "một lời khuyên -> an advice; advice is uncountable in English; requires a piece of advice",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "An advice from my mother changed my life when I was deciding which career to pursue."
+    },
+    {
+      "vietlish": "a furniture was delivered to the new apartment",
+      "natural": "a piece of furniture was delivered to the new apartment",
+      "sourcePattern": "một món đồ nội thất -> a furniture; furniture is uncountable; requires a piece of furniture",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "A furniture was delivered to the new apartment but the delivery team left without assembling it."
+    },
+    {
+      "vietlish": "an important information was shared in the meeting",
+      "natural": "important information was shared in the meeting",
+      "sourcePattern": "một thông tin quan trọng -> an important information; information is uncountable",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "An important information was shared in the meeting but not everyone was present to hear it."
+    },
+    {
+      "vietlish": "he accepted to participate in the workshop",
+      "natural": "he agreed to participate in the workshop",
+      "sourcePattern": "anh ấy đồng ý -> accepted to; đồng ý = agree; accept + to-infinitive is unidiomatic in this sense",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "He accepted to participate in the workshop after the organiser explained the benefits."
+    },
+    {
+      "vietlish": "she is very sympathy toward people who struggle",
+      "natural": "she is very sympathetic toward people who struggle",
+      "sourcePattern": "cô ấy rất đồng cảm -> is very sympathy; sympathy is a noun; sympathetic is the adjective form",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "She is very sympathy toward people who struggle, which is why she became a social worker."
+    },
+    {
+      "vietlish": "he is very economic when it comes to spending",
+      "natural": "he is very economical when it comes to spending",
+      "sourcePattern": "anh ấy rất tiết kiệm -> is very economic; economic relates to the economy; economical means thrifty",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "He is very economic when it comes to spending and always compares prices before buying anything."
+    },
+    {
+      "vietlish": "the historic novel was set during the French colonial era",
+      "natural": "the historical novel was set during the French colonial era",
+      "sourcePattern": "cuốn tiểu thuyết lịch sử -> historic novel; historical describes things relating to history; historic = of great significance",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The historic novel was set during the French colonial era and won a major national prize."
+    },
+    {
+      "vietlish": "she make a progress every time she practises speaking",
+      "natural": "she makes progress every time she practises speaking",
+      "sourcePattern": "cô ấy tạo ra sự tiến bộ -> make a progress; progress is uncountable; requires make progress",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "She make a progress every time she practises speaking English with her foreign friends."
+    },
+    {
+      "vietlish": "a homework is due first thing Monday morning",
+      "natural": "homework is due first thing Monday morning",
+      "sourcePattern": "một bài tập -> a homework; homework is an uncountable noun in English",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "A homework is due first thing Monday morning so I have to finish it before the weekend ends."
+    },
+    {
+      "vietlish": "an equipment is needed to complete the experiment",
+      "natural": "a piece of equipment is needed to complete the experiment",
+      "sourcePattern": "một thiết bị -> an equipment; equipment is uncountable; requires a piece of equipment",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "An equipment is needed to complete the experiment but the lab does not have one available."
+    },
+    {
+      "vietlish": "she arrived at the airport with a lot of luggages",
+      "natural": "she arrived at the airport with a lot of luggage",
+      "sourcePattern": "nhiều hành lý -> a lot of luggages; luggage is uncountable; no plural form",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "She arrived at the airport with a lot of luggages and had to pay an overweight fee."
+    },
+    {
+      "vietlish": "the researches show that sleep affects memory",
+      "natural": "research shows that sleep affects memory",
+      "sourcePattern": "những nghiên cứu -> the researches; research is uncountable in this collective sense",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "The researches show that sleep affects memory and concentration during the school day."
+    },
+    {
+      "vietlish": "I received a good news from the embassy today",
+      "natural": "I received good news from the embassy today",
+      "sourcePattern": "một tin vui -> a good news; news is uncountable in English",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I received a good news from the embassy today — my visa application has been approved!"
+    },
+    {
+      "vietlish": "can you give me an advice about the job offer",
+      "natural": "can you give me some advice about the job offer",
+      "sourcePattern": "cho tôi một lời khuyên -> an advice; advice is uncountable; some advice or a piece of advice",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "Can you give me an advice about the job offer? I cannot decide between the two positions."
+    },
+    {
+      "vietlish": "she has a great knowledge of traditional medicine",
+      "natural": "she has great knowledge of traditional medicine",
+      "sourcePattern": "cô ấy có kiến thức sâu rộng -> a great knowledge; knowledge in this generic sense is uncountable",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "She has a great knowledge of traditional medicine thanks to years of studying with local healers."
+    },
+    {
+      "vietlish": "my uncle has a great experience in project management",
+      "natural": "my uncle has extensive experience in project management",
+      "sourcePattern": "chú tôi có kinh nghiệm phong phú -> a great experience; experience as accumulated skill is uncountable",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "My uncle has a great experience in project management so I always ask him for guidance."
+    },
+    {
+      "vietlish": "we need a permission to access the restricted area",
+      "natural": "we need permission to access the restricted area",
+      "sourcePattern": "chúng ta cần sự cho phép -> a permission; permission in the general sense is uncountable",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "We need a permission to access the restricted area so let me email the security office."
+    },
+    {
+      "vietlish": "she does a travel every summer to recharge",
+      "natural": "she takes a trip every summer to recharge",
+      "sourcePattern": "cô ấy đi du lịch -> does a travel; travel in this sense is a verb or uncountable noun; trip is the count noun",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "She does a travel every summer to recharge and comes back full of new energy."
+    },
+    {
+      "vietlish": "I need a training before I can use the new system",
+      "natural": "I need training before I can use the new system",
+      "sourcePattern": "tôi cần khóa đào tạo -> a training; training as a skill-building process is uncountable",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I need a training before I can use the new system so please schedule it as soon as possible."
+    },
+    {
+      "vietlish": "he shared his knowledges with the whole team",
+      "natural": "he shared his knowledge with the whole team",
+      "sourcePattern": "anh ấy chia sẻ kiến thức -> his knowledges; knowledge is uncountable and has no plural form",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "He shared his knowledges with the whole team during the Friday afternoon workshop."
+    },
+    {
+      "vietlish": "we need some specific trainings for the new hires",
+      "natural": "we need specific training sessions for the new hires",
+      "sourcePattern": "chúng ta cần một số đợt đào tạo -> some trainings; training is uncountable; training sessions required",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "We need some specific trainings for the new hires before they start on the front desk."
+    },
+    {
+      "vietlish": "I have many progresses in my IELTS preparation",
+      "natural": "I have made a lot of progress in my IELTS preparation",
+      "sourcePattern": "tôi có nhiều tiến bộ -> many progresses; progress is uncountable; no plural form",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I have many progresses in my IELTS preparation this month and scored six in the last mock test."
+    },
+    {
+      "vietlish": "please be sensible when discussing emotional topics in class",
+      "natural": "please be sensitive when discussing emotional topics in class",
+      "sourcePattern": "hãy nhạy cảm -> be sensible; nhạy cảm = sensitive; sensible means practical/reasonable, not emotionally aware",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "The counsellor asked everyone to please be sensible when discussing emotional topics in class."
+    },
+    {
+      "vietlish": "the teacher used an imaginary approach to explain grammar",
+      "natural": "the teacher used an imaginative approach to explain grammar",
+      "sourcePattern": "phương pháp sáng tạo -> imaginary approach; imaginary = not real; imaginative = creative",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The students loved it because the teacher used an imaginary approach to explain grammar using stories."
+    },
+    {
+      "vietlish": "can you give a comprehensive explanation for beginners",
+      "natural": "can you give a comprehensible explanation for beginners",
+      "sourcePattern": "giải thích dễ hiểu -> comprehensive explanation; comprehensive = thorough; comprehensible = understandable",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "Can you give a comprehensive explanation for beginners? They find your technical terms confusing."
+    },
+    {
+      "vietlish": "she listens to classic music to relax after work",
+      "natural": "she listens to classical music to relax after work",
+      "sourcePattern": "nhạc cổ điển -> classic music; classical = of the formal Western tradition; classic = timeless/enduring",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "She listens to classic music to relax after work and says it helps her sleep better."
+    },
+    {
+      "vietlish": "the nervous winner walked up to receive the trophy",
+      "natural": "the excited winner walked up to receive the trophy",
+      "sourcePattern": "hồi hộp -> nervous; VN hồi hộp covers both nervous and excited; positive anticipation context here",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "The nervous winner walked up to receive the trophy with a huge smile on her face."
+    },
+    {
+      "vietlish": "I will do an improvement to the draft before sending",
+      "natural": "I will make an improvement to the draft before sending",
+      "sourcePattern": "làm cải tiến -> do an improvement; English collocates make with improvement, not do",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "I will do an improvement to the draft before sending it to the manager for approval."
+    },
+    {
+      "vietlish": "the lab ordered new equipments for the biology department",
+      "natural": "the lab ordered new equipment for the biology department",
+      "sourcePattern": "thiết bị mới -> new equipments; equipment is uncountable and has no plural form",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The lab ordered new equipments for the biology department to run the latest experiments."
+    },
+    {
+      "vietlish": "the company accepted our proposal without any changes",
+      "natural": "the company approved our proposal without any changes",
+      "sourcePattern": "công ty chấp thuận -> accepted; chấp thuận = approve; accept here would mean receive, approve means formally endorse",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The company accepted our proposal without any changes so we can begin the project next week."
+    },
+    {
+      "vietlish": "I need a feedback from you before I finalise the report",
+      "natural": "I need some feedback from you before I finalise the report",
+      "sourcePattern": "tôi cần phản hồi -> a feedback; feedback is uncountable; requires some feedback or feedback",
+      "category": "false_friend",
+      "frequency": "high",
+      "context": "I need a feedback from you before I finalise the report so please review it tonight."
+    },
+    {
+      "vietlish": "the workshop will eventually finish at five as planned",
+      "natural": "the workshop will finally finish at five as planned",
+      "sourcePattern": "cuối cùng -> eventually; eventually implies gradual/unexpected; finally signals the anticipated end",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "The workshop will eventually finish at five as planned, so please do not leave early."
+    },
+    {
+      "vietlish": "she is very sensitive about saving electricity at home",
+      "natural": "she is very careful about saving electricity at home",
+      "sourcePattern": "cô ấy rất chú ý tiết kiệm điện -> sensitive about saving; sensitive here is a false calque; careful/conscious is more natural",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "She is very sensitive about saving electricity at home and always unplugs all devices before leaving."
+    },
+    {
+      "vietlish": "a luggage was accidentally left on the overnight train",
+      "natural": "a piece of luggage was accidentally left on the overnight train",
+      "sourcePattern": "một kiện hành lý -> a luggage; luggage is uncountable; a piece of luggage or a bag",
+      "category": "false_friend",
+      "frequency": "medium",
+      "context": "A luggage was accidentally left on the overnight train and the owner had to report it to lost property."
+    },
+    {
+      "vietlish": "play computer at home all evening",
+      "natural": "use the computer at home all evening",
+      "sourcePattern": "chơi máy tính -> play computer; chơi = play, but play applies to games, not devices in English",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "He spent the whole time to play computer at home all evening instead of doing his homework."
+    },
+    {
+      "vietlish": "say bad mouth about the manager behind her back",
+      "natural": "talk badly about the manager behind her back",
+      "sourcePattern": "nói xấu -> say bad mouth; nói xấu = say bad things; English uses talk badly about or badmouth",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "It is very unprofessional to say bad mouth about the manager behind her back at work."
+    },
+    {
+      "vietlish": "drink sweet water after running in the heat",
+      "natural": "have a soft drink after running in the heat",
+      "sourcePattern": "uống nước ngọt -> drink sweet water; nước ngọt = soft drink/soda; literal word-for-word translation",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "She likes to drink sweet water after running in the heat even though it is not that healthy."
+    },
+    {
+      "vietlish": "I finish eat, now I will wash the dishes",
+      "natural": "I have finished eating, now I will wash the dishes",
+      "sourcePattern": "tôi ăn xong rồi -> finish eat; xong = completion; present perfect and gerund both dropped",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I finish eat, now I will wash the dishes and then we can watch a film together."
+    },
+    {
+      "vietlish": "push bicycle to school every single morning",
+      "natural": "ride a bicycle to school every single morning",
+      "sourcePattern": "đạp xe -> push bicycle; đạp = to pedal/kick; learners translate đạp as push rather than ride",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "She used to push bicycle to school every single morning before her family bought a motorbike."
+    },
+    {
+      "vietlish": "I feel happy in heart when I hear that news",
+      "natural": "I feel joy in my heart when I hear that news",
+      "sourcePattern": "vui trong lòng -> happy in heart; lòng = heart/chest; possessive dropped",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "I feel happy in heart when I hear that news about her recovery, truly wonderful."
+    },
+    {
+      "vietlish": "his mind is too narrow to accept new ideas",
+      "natural": "he is too narrow-minded to accept new ideas",
+      "sourcePattern": "đầu óc hẹp hòi -> his mind is narrow; narrow-mindedness is a compound adjective in English",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "His mind is too narrow to accept new ideas so the team finds it hard to innovate."
+    },
+    {
+      "vietlish": "she made him lose his face in front of colleagues",
+      "natural": "she made him lose face in front of his colleagues",
+      "sourcePattern": "làm anh ấy mất mặt -> lose his face; lose face is an established phrase; his is the transfer error",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "She made him lose his face in front of colleagues by correcting him harshly in the meeting."
+    },
+    {
+      "vietlish": "her mouth is too sweet, everyone loves talking to her",
+      "natural": "she is a sweet talker, everyone loves talking to her",
+      "sourcePattern": "miệng ngọt -> mouth is sweet; miệng ngọt = flattering/charming speech; literally transferred",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "Her mouth is too sweet, everyone loves talking to her and she always knows what to say."
+    },
+    {
+      "vietlish": "cut the paper to small pieces for the art project",
+      "natural": "cut the paper into small pieces for the art project",
+      "sourcePattern": "cắt giấy thành từng mảnh nhỏ -> cut to small pieces; thành = into; resultative complement with wrong preposition",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "The teacher asked everyone to cut the paper to small pieces for the art project this afternoon."
+    },
+    {
+      "vietlish": "if it will rain tomorrow, I stay at home",
+      "natural": "if it rains tomorrow, I will stay at home",
+      "sourcePattern": "nếu trời mưa ngày mai -> if + will; VN does not distinguish conditional mood; will appears in both clauses",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "If it will rain tomorrow, I stay at home and catch up on the reading I missed this week."
+    },
+    {
+      "vietlish": "after finish the assignment I go to the gym",
+      "natural": "after finishing the assignment I will go to the gym",
+      "sourcePattern": "sau khi làm xong bài tập -> after finish; VN temporal clause uses bare verb after sau khi",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "After finish the assignment I go to the gym and meet up with my friends for dinner."
+    },
+    {
+      "vietlish": "when arrive at the station, send me a message",
+      "natural": "when you arrive at the station, send me a message",
+      "sourcePattern": "khi đến ga -> when arrive; VN omits explicit subject in subordinate clauses",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "When arrive at the station, send me a message and I will come down to meet you outside."
+    },
+    {
+      "vietlish": "before leave the office, turn off the computer",
+      "natural": "before you leave the office, turn off the computer",
+      "sourcePattern": "trước khi rời văn phòng -> before leave; VN omits subject in subordinate temporal clauses",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "The last person should before leave the office, turn off the computer and lock the door."
+    },
+    {
+      "vietlish": "the bigger the house, the expensive the monthly rent",
+      "natural": "the bigger the house, the more expensive the monthly rent",
+      "sourcePattern": "nhà càng to tiền thuê càng đắt -> the bigger...the expensive; parallel comparative requires more + adj",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The bigger the house, the expensive the monthly rent, so choose wisely based on your budget."
+    },
+    {
+      "vietlish": "fill the blank with the correct verb form",
+      "natural": "fill in the blank with the correct verb form",
+      "sourcePattern": "điền vào chỗ trống -> fill the blank; vào = into; English requires the particle in: fill in the blank",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "The teacher asked us to fill the blank with the correct verb form in each sentence."
+    },
+    {
+      "vietlish": "she explains the topic very detail for all students",
+      "natural": "she explains the topic in great detail for all students",
+      "sourcePattern": "giải thích rất chi tiết -> very detail; chi tiết = detail (noun); English uses in detail or in great detail",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "She explains the topic very detail for all students so that even beginners can understand."
+    },
+    {
+      "vietlish": "she speaks English very smooth without hesitation",
+      "natural": "she speaks English very smoothly without hesitation",
+      "sourcePattern": "nói tiếng Anh rất trơn tru -> very smooth; trơn tru = smooth (adj); adverb form smoothly required",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "She speaks English very smooth without hesitation, which really impresses her foreign colleagues."
+    },
+    {
+      "vietlish": "I am very anger because of what he said",
+      "natural": "I am very angry because of what he said",
+      "sourcePattern": "tôi rất tức giận -> am very anger; tức giận = anger (noun); adjective angry required",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I am very anger because of what he said in the meeting in front of all the other staff."
+    },
+    {
+      "vietlish": "he is very tired physical after the long flight",
+      "natural": "he is very physically tired after the long flight",
+      "sourcePattern": "anh ấy mệt thể chất -> tired physical; thể chất = physical (adj); adverb physically required",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "He is very tired physical after the long flight and needs at least one full day to recover."
+    },
+    {
+      "vietlish": "the new policy is announce on the company website",
+      "natural": "the new policy was announced on the company website",
+      "sourcePattern": "chính sách mới được thông báo -> is announce; passive formed with base verb instead of past participle",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "The new policy is announce on the company website and all staff must read it carefully."
+    },
+    {
+      "vietlish": "I am very satisfy with the service at this hotel",
+      "natural": "I am very satisfied with the service at this hotel",
+      "sourcePattern": "tôi rất hài lòng -> am very satisfy; hài lòng mapped to satisfy (base form); satisfied is required",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I am very satisfy with the service at this hotel and will definitely recommend it to my friends."
+    },
+    {
+      "vietlish": "the project is delay because of bad weather conditions",
+      "natural": "the project is delayed because of bad weather conditions",
+      "sourcePattern": "dự án bị trì hoãn -> is delay; passive formed with base verb; past participle delayed required",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "The project is delay because of bad weather conditions and will not resume until next month."
+    },
+    {
+      "vietlish": "I am very confuse about the new exam format",
+      "natural": "I am very confused about the new exam format",
+      "sourcePattern": "tôi rất bối rối -> am very confuse; confuse is the verb; confused is the participial adjective",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I am very confuse about the new exam format and need the teacher to explain it one more time."
+    },
+    {
+      "vietlish": "the meeting is postpone to next Tuesday morning",
+      "natural": "the meeting is postponed to next Tuesday morning",
+      "sourcePattern": "cuộc họp bị hoãn -> is postpone; passive needs past participle postponed not base form",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "The meeting is postpone to next Tuesday morning because the director is travelling overseas."
+    },
+    {
+      "vietlish": "she is very motivate to study after the inspiring talk",
+      "natural": "she is very motivated to study after the inspiring talk",
+      "sourcePattern": "cô ấy rất có động lực -> is very motivate; motivate is the verb; motivated is the past participial adjective",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "She is very motivate to study after the inspiring talk from the successful alumni last week."
+    },
+    {
+      "vietlish": "he is frustrate because he cannot solve the problem",
+      "natural": "he is frustrated because he cannot solve the problem",
+      "sourcePattern": "anh ấy thất vọng/bực bội -> is frustrate; frustrate is the verb; frustrated is the participial adjective",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "He is frustrate because he cannot solve the problem and has been stuck on it for two hours."
+    },
+    {
+      "vietlish": "they are excite about going on the school camping trip",
+      "natural": "they are excited about going on the school camping trip",
+      "sourcePattern": "các em rất hứng thú -> are excite; excite is the verb; excited is the participial adjective",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "They are excite about going on the school camping trip scheduled for the end of this month."
+    },
+    {
+      "vietlish": "I am please with the progress you have made",
+      "natural": "I am pleased with the progress you have made",
+      "sourcePattern": "tôi hài lòng -> am please; please is the verb; pleased is the participial adjective",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I am please with the progress you have made and look forward to the final result."
+    },
+    {
+      "vietlish": "the room is organize in a very efficient way",
+      "natural": "the room is organized in a very efficient way",
+      "sourcePattern": "phòng được sắp xếp -> is organize; passive requires past participle organized",
+      "category": "literal_translation",
+      "frequency": "medium",
+      "context": "The room is organize in a very efficient way and every item has its own labelled place."
+    },
+    {
+      "vietlish": "the news is shock for the whole community",
+      "natural": "the news is shocking for the whole community",
+      "sourcePattern": "tin tức gây sốc -> is shock; shock is the verb; shocking is the present participial adjective",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "The news is shock for the whole community and many people gathered to discuss it."
+    },
+    {
+      "vietlish": "she is tire after a long day of teaching",
+      "natural": "she is tired after a long day of teaching",
+      "sourcePattern": "cô ấy mệt -> is tire; tire is the verb; tired is the past participial adjective",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "She is tire after a long day of teaching and went straight to bed when she got home."
+    },
+    {
+      "vietlish": "I am very amaze at how fast she improved",
+      "natural": "I am very amazed at how fast she improved",
+      "sourcePattern": "tôi rất kinh ngạc -> am very amaze; amaze is the verb; amazed is the participial adjective",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "I am very amaze at how fast she improved her English after only six months of practice."
+    },
+    {
+      "vietlish": "the audience is bore with the long and slow lecture",
+      "natural": "the audience is bored with the long and slow lecture",
+      "sourcePattern": "khán giả chán -> is bore; bore is the verb; bored is the participial adjective",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "The audience is bore with the long and slow lecture and many people started checking their phones."
+    },
+    {
+      "vietlish": "she feel very bore during the three-hour waiting time",
+      "natural": "she felt very bored during the three-hour waiting time",
+      "sourcePattern": "cô ấy cảm thấy rất chán -> feel very bore; bore is the verb; bored is the participial adjective",
+      "category": "literal_translation",
+      "frequency": "high",
+      "context": "She feel very bore during the three-hour waiting time at the airport and finished two chapters of her book."
+    },
+    {
+      "vietlish": "please revert to me at your earliest convenience",
+      "natural": "please get back to me when you can",
+      "sourcePattern": "vui lòng phản hồi sớm -> revert to me; Southeast Asian business-English calque; revert = reply only in this usage",
+      "category": "register",
+      "frequency": "high",
+      "context": "Please revert to me at your earliest convenience regarding the meeting schedule for next week."
+    },
+    {
+      "vietlish": "I take this opportunity to sincerely thank you",
+      "natural": "thank you so much for your help",
+      "sourcePattern": "nhân dịp này tôi xin chân thành cảm ơn -> Confucian ceremonial opener transferred into casual email",
+      "category": "register",
+      "frequency": "high",
+      "context": "I take this opportunity to sincerely thank you for all the support during my time here."
+    },
+    {
+      "vietlish": "good morning teacher, how are you today",
+      "natural": "good morning everyone",
+      "sourcePattern": "Chào thầy/cô -> teacher used as a direct address form in English; English uses name or role title",
+      "category": "register",
+      "frequency": "high",
+      "context": "As she walked into the room she said good morning teacher, how are you today to the whole class."
+    },
+    {
+      "vietlish": "dear teacher, I write to ask about the homework",
+      "natural": "hi [Name], I wanted to ask about the homework",
+      "sourcePattern": "Kính thầy/cô -> formal letter opening used in a casual email; register-channel mismatch",
+      "category": "register",
+      "frequency": "high",
+      "context": "Dear teacher, I write to ask about the homework. Is it due this Friday or next Monday?"
+    },
+    {
+      "vietlish": "I beg your kind understanding and forgiveness for the delay",
+      "natural": "I apologise for the delay",
+      "sourcePattern": "kính mong thầy cô thông cảm và tha lỗi -> Confucian deference register transferred; over-apologetic in EN",
+      "category": "register",
+      "frequency": "medium",
+      "context": "I beg your kind understanding and forgiveness for the delay in submitting my assignment."
+    },
+    {
+      "vietlish": "please kindly assist me in completing this official form",
+      "natural": "could you help me complete this form",
+      "sourcePattern": "xin vui lòng hỗ trợ tôi -> kindly + assist creates double formality layer; natural EN uses could you",
+      "category": "register",
+      "frequency": "high",
+      "context": "Please kindly assist me in completing this official form as I am not sure about several fields."
+    },
+    {
+      "vietlish": "I respectfully submit my final report for your careful review",
+      "natural": "please find my final report attached",
+      "sourcePattern": "kính trình -> over-formal submission phrase from VN official language transferred to casual email",
+      "category": "register",
+      "frequency": "medium",
+      "context": "I respectfully submit my final report for your careful review. Please let me know your thoughts."
+    },
+    {
+      "vietlish": "thank you for your valuable time in reading this",
+      "natural": "thank you for reading this",
+      "sourcePattern": "cảm ơn bạn đã dành thời gian quý báu -> formal phrase from written VN overused in casual contexts",
+      "category": "register",
+      "frequency": "high",
+      "context": "She ended every text message with thank you for your valuable time in reading this."
+    },
+    {
+      "vietlish": "I am regret to inform you that I cannot attend",
+      "natural": "I am sorry to inform you that I cannot attend",
+      "sourcePattern": "tôi tiếc phải thông báo -> am regret; regret used as adjective; English requires I regret or I am sorry",
+      "category": "register",
+      "frequency": "high",
+      "context": "I am regret to inform you that I cannot attend the conference due to a prior commitment."
+    },
+    {
+      "vietlish": "I hope you have been doing well since our last meeting",
+      "natural": "how have you been",
+      "sourcePattern": "mong bạn mạnh khoẻ -> formal opener from Vietnamese letter-writing overused in every email",
+      "category": "register",
+      "frequency": "high",
+      "context": "She begins every email with I hope you have been doing well since our last meeting."
+    },
+    {
+      "vietlish": "please rest assured that I will correct this error",
+      "natural": "I will fix this right away",
+      "sourcePattern": "xin yên tâm -> formal written-VN assurance phrase transferred to a casual chat message",
+      "category": "register",
+      "frequency": "medium",
+      "context": "Please rest assured that I will correct this error by end of business today without fail."
+    },
+    {
+      "vietlish": "with due respect, I would like to offer a different view",
+      "natural": "I respectfully disagree",
+      "sourcePattern": "với sự tôn trọng đầy đủ -> with due respect is awkward calque; I respectfully disagree is idiomatic",
+      "category": "register",
+      "frequency": "medium",
+      "context": "With due respect, I would like to offer a different view on the solution proposed yesterday."
+    },
+    {
+      "vietlish": "I would like to express my sincere gratitude for your support",
+      "natural": "thank you so much for your support",
+      "sourcePattern": "tôi muốn bày tỏ lòng biết ơn chân thành -> written-formal VN phrase inappropriate in a casual chat",
+      "category": "register",
+      "frequency": "high",
+      "context": "She typed I would like to express my sincere gratitude for your support in the team chat."
+    },
+    {
+      "vietlish": "please do not hesitate to approach me for any assistance",
+      "natural": "feel free to ask if you need anything",
+      "sourcePattern": "đừng ngại liên hệ với tôi -> over-formal phrase from Vietnamese business letter used in casual messages",
+      "category": "register",
+      "frequency": "high",
+      "context": "She ended her class announcement with please do not hesitate to approach me for any assistance."
+    },
+    {
+      "vietlish": "dear boss, I wish to request one day of annual leave tomorrow",
+      "natural": "hi [Name], could I take tomorrow off",
+      "sourcePattern": "kính gửi sếp -> formal letter register used in a workplace messaging app",
+      "category": "register",
+      "frequency": "high",
+      "context": "Dear boss, I wish to request one day of annual leave tomorrow for a personal matter."
+    },
+    {
+      "vietlish": "the late submission was not my intention at all",
+      "natural": "I didn't mean to submit it late",
+      "sourcePattern": "việc nộp muộn không phải là ý định của tôi -> abstract nominalisation from written VN in casual apology",
+      "category": "register",
+      "frequency": "medium",
+      "context": "The late submission was not my intention at all; my computer crashed the night before."
+    },
+    {
+      "vietlish": "I am writing to seek your valuable advice regarding my career",
+      "natural": "could I ask your advice about my career",
+      "sourcePattern": "tôi viết để xin lời khuyên -> formal letter opening used in a direct verbal request to a friend",
+      "category": "register",
+      "frequency": "medium",
+      "context": "I am writing to seek your valuable advice regarding my career prospects in marketing."
+    },
+    {
+      "vietlish": "enclosed please find the completed application form",
+      "natural": "I have attached the completed application form",
+      "sourcePattern": "đính kèm theo đây -> archaic British business letter phrase still used by VN learners",
+      "category": "register",
+      "frequency": "medium",
+      "context": "Enclosed please find the completed application form as requested in your earlier email."
+    },
+    {
+      "vietlish": "I should be most grateful if you could reply by Friday",
+      "natural": "could you please reply by Friday",
+      "sourcePattern": "tôi sẽ rất biết ơn nếu bạn có thể -> over-formal conditional from Victorian English; use direct request",
+      "category": "register",
+      "frequency": "low",
+      "context": "I should be most grateful if you could reply by Friday so that we can confirm the venue."
+    },
+    {
+      "vietlish": "thanking you in anticipation of your kind cooperation",
+      "natural": "thanks in advance",
+      "sourcePattern": "xin cảm ơn trước sự hợp tác của bạn -> formulaic closing from formal VN letters used in informal messages",
+      "category": "register",
+      "frequency": "medium",
+      "context": "She always closes her emails with thanking you in anticipation of your kind cooperation."
+    }
+  ]
+}
