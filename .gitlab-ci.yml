@@ -52,6 +52,9 @@ stages:
 # all other pipeline sources pass through without the auto_cancel override.
 workflow:
   rules:
+    - if: '$CI_PIPELINE_SOURCE == "trigger" && $RESERVOIR == "1"'
+      auto_cancel:
+        on_new_commit: interruptible
     - if: '$CI_COMMIT_BRANCH == "main"'
       auto_cancel:
         on_new_commit: interruptible
@@ -444,6 +447,8 @@ variables:
 
 .app_test_rules: &app_test_rules
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
@@ -452,6 +457,8 @@ variables:
 
 .lint_test_rules: &lint_test_rules
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
@@ -460,6 +467,8 @@ variables:
 
 .room_test_rules: &room_test_rules
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
@@ -468,6 +477,8 @@ variables:
 
 .module_test_rules: &module_test_rules
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
@@ -476,6 +487,8 @@ variables:
 
 .ai_tutor_golden_flow_rules: &ai_tutor_golden_flow_rules
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
@@ -485,6 +498,8 @@ variables:
 
 .manual_shared_app_rules: &manual_shared_app_rules
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
       when: manual
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
@@ -493,6 +508,8 @@ variables:
 
 .manual_shared_lint_rules: &manual_shared_lint_rules
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
       when: manual
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
@@ -501,6 +518,8 @@ variables:
 
 .manual_shared_room_rules: &manual_shared_room_rules
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
       when: manual
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
@@ -509,6 +528,8 @@ variables:
 
 .manual_shared_module_rules: &manual_shared_module_rules
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
       when: manual
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
@@ -517,6 +538,8 @@ variables:
 
 .manual_shared_ai_tutor_golden_flow_rules: &manual_shared_ai_tutor_golden_flow_rules
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
       changes: *ai_tutor_golden_flow_changes
       when: manual
@@ -533,12 +556,16 @@ variables:
 # See reports/hotfix-fast-lane-design.md.
 .hotfix-skip: &hotfix-skip
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$CI_MERGE_REQUEST_LABELS =~ /(^|,)hotfix(,|$)/'
       when: never
 
 # `*app_test_rules` with hotfix-skip prepended.
 .app_test_rules_hotfix_lane: &app_test_rules_hotfix_lane
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$CI_MERGE_REQUEST_LABELS =~ /(^|,)hotfix(,|$)/'
       when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
@@ -550,6 +577,8 @@ variables:
 # `*manual_shared_app_rules` with hotfix-skip prepended.
 .manual_shared_app_rules_hotfix_lane: &manual_shared_app_rules_hotfix_lane
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$CI_MERGE_REQUEST_LABELS =~ /(^|,)hotfix(,|$)/'
       when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
@@ -760,7 +789,133 @@ variables:
     esac
   - npm run test:perf-budgets
 
+.reservoir_rules: &reservoir_rules
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "trigger" && $RESERVOIR == "1"'
+    - when: never
+
+.reservoir_install_playwright_script: &reservoir_install_playwright_script
+  - |
+    case "$(uname -s)" in
+      Darwin)
+        npx playwright install chromium
+        ;;
+      Linux)
+        npx playwright install --with-deps chromium
+        ;;
+      *)
+        echo "Unsupported CI OS: $(uname -s)" >&2
+        exit 1
+        ;;
+    esac
+
+.reservoir_start_preview_script: &reservoir_start_preview_script
+  - |
+    PREVIEW_PORT="${RESERVOIR_PREVIEW_PORT:-4173}"
+    npx vite preview --host 127.0.0.1 --port "$PREVIEW_PORT" --strictPort > /tmp/reservoir-preview.log 2>&1 &
+    PREVIEW_PID="$!"
+    trap 'kill "$PREVIEW_PID" 2>/dev/null || true' EXIT
+    for attempt in $(seq 1 60); do
+      if node -e "fetch('http://127.0.0.1:${PREVIEW_PORT}/').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"; then
+        break
+      fi
+      if ! kill -0 "$PREVIEW_PID" 2>/dev/null; then
+        echo "Preview server exited before becoming ready" >&2
+        cat /tmp/reservoir-preview.log >&2 || true
+        exit 1
+      fi
+      sleep 1
+    done
+    node -e "fetch('http://127.0.0.1:${PREVIEW_PORT}/').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+
 # ── `test` stage jobs ──────────────────────────────────────────────────
+
+reservoir:test-shard:
+  <<: [*node_job, *local_runner, *reservoir_rules]
+  stage: test
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  script:
+    - |
+      SHARD="${SHARD:-1}"
+      SHARD_TOTAL="${SHARD_TOTAL:-2}"
+      npx vitest run --shard="$SHARD/$SHARD_TOTAL"
+
+reservoir:corpus-validate:
+  <<: [*node_job, *local_runner, *reservoir_rules]
+  stage: test
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  script:
+    - |
+      npx vitest run \
+        src/lib/tutor/__tests__/step11VietlishCorpusD4Wave*.test.ts \
+        tests/regression/golden-set/_pending-guards/__tests__/step11VietlishCorpusD4Wave*.test.ts
+
+reservoir:e2e-shard:
+  <<: [*node_job, *local_runner, *reservoir_rules]
+  stage: test
+  timeout: 30 minutes
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  script:
+    - *reservoir_install_playwright_script
+    - npm run build
+    - *reservoir_start_preview_script
+    - |
+      SHARD="${SHARD:-1}"
+      SHARD_TOTAL="${SHARD_TOTAL:-2}"
+      TEST_BASE_URL="http://127.0.0.1:${RESERVOIR_PREVIEW_PORT:-4173}" \
+        npx playwright test \
+          -c playwright.smoke.config.ts \
+          tests/e2e/homepage.spec.ts \
+          tests/e2e/spa-fallback.spec.ts \
+          tests/e2e/signin.spec.ts \
+          tests/e2e/ai-tutor.spec.ts \
+          tests/e2e/deep-routes.spec.ts \
+          --project=chromium \
+          --shard="$SHARD/$SHARD_TOTAL"
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths:
+      - playwright-smoke-report/
+      - test-results/
+
+reservoir:golden-flows-local:
+  <<: [*node_job, *local_runner, *reservoir_rules]
+  stage: test
+  timeout: 30 minutes
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  variables:
+    RESERVOIR_PREVIEW_PORT: "4174"
+  script:
+    - *reservoir_install_playwright_script
+    - npm run build
+    - *reservoir_start_preview_script
+    - |
+      GOLDEN_FLOW_BASE_URL="http://127.0.0.1:${RESERVOIR_PREVIEW_PORT:-4174}" \
+        GOLDEN_FLOW_ALLOW_MISSING_SECRETS=1 \
+        npm run verify:golden-flows
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths:
+      - test-results/
+
+reservoir:type-sweep:
+  <<: [*node_job, *local_runner, *reservoir_rules]
+  stage: test
+  cache:
+    <<: *npm_cache_def
+    policy: pull
+  script:
+    - npx tsc --noEmit
 
 # `build` — typecheck + edge-fn typecheck + Deno check + bundle build +
 # data/registry validators. The Vitest suite used to run here as a final
@@ -830,6 +985,8 @@ typecheck:ci:
     <<: *npm_cache_def
     policy: pull
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_LABELS =~ /(^|,)hotfix(,|$)/'
@@ -850,6 +1007,8 @@ test:targeted:
     <<: *npm_cache_def
     policy: pull
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_LABELS =~ /(^|,)hotfix(,|$)/'
@@ -899,6 +1058,8 @@ production-e2e:
   interruptible: false
   timeout: 30 minutes
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$RUN_PROD_E2E == "true"'
@@ -922,6 +1083,8 @@ native-audio-smoke:
     <<: *npm_cache_def
     policy: pull
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$CI_MERGE_REQUEST_LABELS =~ /(^|,)hotfix(,|$)/'
       when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
@@ -960,6 +1123,8 @@ nightly-full-suite:
     <<: *npm_cache_def
     policy: pull
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$CI_PIPELINE_SOURCE == "schedule" && $CI_COMMIT_BRANCH == "main"'
     - when: never
   script:
@@ -1005,6 +1170,8 @@ delete-account-guard:
     <<: *npm_cache_def
     policy: pull
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
@@ -1018,6 +1185,8 @@ delete-account-guard:shared-fallback:
   <<: [*node_job, *manual_shared_fallback]
   stage: test
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "merge_request_event"'
       when: manual
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
@@ -1030,6 +1199,8 @@ delete-account-live:
   stage: test
   allow_failure: true
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_DELETE_ACCOUNT_LIVE_GUARD == "1" && $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
       when: manual
     - if: '$MERCYB_DELETE_ACCOUNT_LIVE_GUARD == "1" && $CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
@@ -1123,6 +1294,8 @@ module-boundaries:shared-fallback:
 
 .orphan_guard_mr_rules: &orphan_guard_mr_rules
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
@@ -1145,6 +1318,8 @@ check-new-orphans:shared-fallback:
   interruptible: true
   stage: test
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1" && $CI_PIPELINE_SOURCE == "merge_request_event"'
       when: manual
   variables:
@@ -1159,6 +1334,8 @@ ci-job-tags-guard:
   stage: test
   cache: {}
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
@@ -1182,6 +1359,8 @@ post-merge-worktree-reaper:
     GIT_DEPTH: "0"
   cache: {}
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
@@ -1236,6 +1415,8 @@ deploy-cloudflare-pages:
     # lifecycle scripts disabled so package postinstalls cannot run with it.
     NPM_CI_EXTRA_FLAGS: "--ignore-scripts"
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_CF_DEPLOY_ENABLED == "1" && $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
       when: manual
     - when: never
@@ -1272,6 +1453,8 @@ golden-flows-prod:
     <<: *npm_cache_def
     policy: pull
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "schedule" && $CI_COMMIT_BRANCH == "main"'
@@ -1366,6 +1549,8 @@ nightly-db-backup:
   stage: backup
   needs: []
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     # Schedule-only. Never runs on merge requests, pushes, or tags.
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
   variables:
@@ -1418,6 +1603,8 @@ tutor-self-eval:
     <<: *npm_cache_def
     policy: pull
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     - if: '$CI_PIPELINE_SOURCE == "schedule" && $MERCYB_SELF_EVAL_ENABLED == "1"'
     - if: '$CI_COMMIT_BRANCH == "main" && ($CI_PIPELINE_SOURCE == "web" || $CI_PIPELINE_SOURCE == "api") && $MERCYB_SELF_EVAL_ENABLED == "1"'
       when: manual
@@ -1436,6 +1623,8 @@ test-db-backup-now:
   <<: *backup_image
   stage: backup
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     # Operator-triggered main pipelines only, AND manual gate.
     # `web` covers the GitLab UI; `api` lets maintainers run the same
     # validation job through glab/API without waiting for the schedule.
@@ -1499,6 +1688,8 @@ flywheel-mine:
   # omitted to keep the job lean and avoid the node_modules cache tax.
   cache: {}
   rules:
+    - if: '$RESERVOIR == "1"'
+      when: never
     # Schedule-triggered + gate variable set
     - if: '$CI_PIPELINE_SOURCE == "schedule" && $MERCYB_FLYWHEEL_MINE_ENABLED == "1"'
     # Manual web trigger + gate variable set (lets Chau run ad-hoc)
