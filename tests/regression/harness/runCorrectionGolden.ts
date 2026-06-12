@@ -213,7 +213,11 @@ function registerCase(
     if (testCase.expectedStatus) {
       expect(result.status, `status mismatch for ${testCase.id}`).toBe(testCase.expectedStatus);
     }
-    expect(result.corrected, `corrected mismatch for ${testCase.id}`).toBe(testCase.expectedCorrection);
+    const expectedCorrection =
+      category === "negative" && testCase.expectedStatus === "unchanged"
+        ? testCase.input
+        : testCase.expectedCorrection;
+    expect(result.corrected, `corrected mismatch for ${testCase.id}`).toBe(expectedCorrection);
 
     // Anti-double-fire contract: none of these rule ids may have fired.
     for (const id of testCase.mustNotFire ?? []) {
