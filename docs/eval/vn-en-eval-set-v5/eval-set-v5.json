@@ -1,0 +1,581 @@
+{
+  "name": "vn-en-eval-set-v5",
+  "description": "Thirty Vietnamese L1 to English eval pairs covering STT mishear sanity, contextual register errors, and thin-data forecast abstention.",
+  "version": 5,
+  "targetLearnerL1": "vi",
+  "targetLearnerL2": "en",
+  "schemaSource": "docs/eval/vn-en-eval-set-v5/types.ts -> EvalEntryV5",
+  "count": 30,
+  "entries": [
+    {
+      "id": "eval-v5-001",
+      "category": "stt_mishear_sanity",
+      "input": "Read-back prompt target: I need a hat. STT transcript: I need a head.",
+      "expected": "Flag likely STT or pronunciation minimal-pair mismatch and ask the learner to reread; do not grade this as a lexical choice error.",
+      "errorTags": ["stt_mishear", "minimal_pair", "read_back"],
+      "tone": "neutral",
+      "level": "A1",
+      "vietlishPattern": "Vietnamese final /t/ and /d/ contrast can be weak in read-back audio.",
+      "stt": {
+        "mode": "read_back",
+        "targetPhrase": "I need a hat.",
+        "transcript": "I need a head.",
+        "minimalPair": ["hat", "head"],
+        "vnFinalConsonantClass": "final_t_d_voicing",
+        "expectedBehavior": "flag_mishear_and_ask_reread",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-002",
+      "category": "stt_mishear_sanity",
+      "input": "Free answer transcript: I bought a head yesterday.",
+      "expected": "Abstain from correction without a target phrase or audio evidence; ask for clarification instead of assuming the learner meant hat.",
+      "errorTags": ["stt_mishear", "minimal_pair", "free_answer", "abstain"],
+      "tone": "neutral",
+      "level": "A1",
+      "vietlishPattern": "Hat/head minimal pair is suspicious, but free answers need context before correction.",
+      "stt": {
+        "mode": "free_answer",
+        "targetPhrase": "",
+        "transcript": "I bought a head yesterday.",
+        "minimalPair": ["hat", "head"],
+        "vnFinalConsonantClass": "final_t_d_voicing",
+        "expectedBehavior": "abstain_no_correction",
+        "shouldAbstain": true
+      }
+    },
+    {
+      "id": "eval-v5-003",
+      "category": "stt_mishear_sanity",
+      "input": "Read-back prompt target: The ship is big. STT transcript: The sheep is big.",
+      "expected": "Flag the ship/sheep read-back mismatch and ask for another read; do not teach a vocabulary replacement.",
+      "errorTags": ["stt_mishear", "minimal_pair", "read_back"],
+      "tone": "neutral",
+      "level": "A1",
+      "vietlishPattern": "Vietnamese learners may collapse English short i and long ee contrasts.",
+      "stt": {
+        "mode": "read_back",
+        "targetPhrase": "The ship is big.",
+        "transcript": "The sheep is big.",
+        "minimalPair": ["ship", "sheep"],
+        "vnFinalConsonantClass": "vowel_length_i_short_i",
+        "expectedBehavior": "flag_mishear_and_ask_reread",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-004",
+      "category": "stt_mishear_sanity",
+      "input": "Free answer transcript: The sheep is late.",
+      "expected": "Abstain from rewriting sheep to ship unless the task supplied a read-back target or topic evidence.",
+      "errorTags": ["stt_mishear", "minimal_pair", "free_answer", "abstain"],
+      "tone": "neutral",
+      "level": "A1",
+      "vietlishPattern": "Ship/sheep is a high-risk STT pair, but free-answer correction needs evidence.",
+      "stt": {
+        "mode": "free_answer",
+        "targetPhrase": "",
+        "transcript": "The sheep is late.",
+        "minimalPair": ["ship", "sheep"],
+        "vnFinalConsonantClass": "vowel_length_i_short_i",
+        "expectedBehavior": "abstain_no_correction",
+        "shouldAbstain": true
+      }
+    },
+    {
+      "id": "eval-v5-005",
+      "category": "stt_mishear_sanity",
+      "input": "Read-back prompt target: Put on your cap. STT transcript: Put on your cab.",
+      "expected": "Treat cap/cab as a read-back pronunciation or STT sanity case and ask for reread.",
+      "errorTags": ["stt_mishear", "minimal_pair", "read_back"],
+      "tone": "neutral",
+      "level": "A1",
+      "vietlishPattern": "Vietnamese final unreleased stops can blur English /p/ and /b/ endings.",
+      "stt": {
+        "mode": "read_back",
+        "targetPhrase": "Put on your cap.",
+        "transcript": "Put on your cab.",
+        "minimalPair": ["cap", "cab"],
+        "vnFinalConsonantClass": "final_p_b_voicing",
+        "expectedBehavior": "flag_mishear_and_ask_reread",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-006",
+      "category": "stt_mishear_sanity",
+      "input": "Read-back prompt target: Please go back. STT transcript: Please go bag.",
+      "expected": "Flag back/bag as a final consonant read-back mismatch and request another read.",
+      "errorTags": ["stt_mishear", "minimal_pair", "read_back"],
+      "tone": "neutral",
+      "level": "A1",
+      "vietlishPattern": "Vietnamese final /k/ may be unreleased and misheard as /g/ in English STT.",
+      "stt": {
+        "mode": "read_back",
+        "targetPhrase": "Please go back.",
+        "transcript": "Please go bag.",
+        "minimalPair": ["back", "bag"],
+        "vnFinalConsonantClass": "final_k_g_voicing",
+        "expectedBehavior": "flag_mishear_and_ask_reread",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-007",
+      "category": "stt_mishear_sanity",
+      "input": "Read-back prompt target: I want rice. STT transcript: I want rise.",
+      "expected": "Flag rice/rise as a final s/z read-back mismatch and ask for reread before any grammar feedback.",
+      "errorTags": ["stt_mishear", "minimal_pair", "read_back"],
+      "tone": "neutral",
+      "level": "A1",
+      "vietlishPattern": "Final fricative voicing can be unstable for Vietnamese L1 learners.",
+      "stt": {
+        "mode": "read_back",
+        "targetPhrase": "I want rice.",
+        "transcript": "I want rise.",
+        "minimalPair": ["rice", "rise"],
+        "vnFinalConsonantClass": "final_s_z_voicing",
+        "expectedBehavior": "flag_mishear_and_ask_reread",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-008",
+      "category": "stt_mishear_sanity",
+      "input": "Read-back prompt target: Take a seat. STT transcript: Take a seed.",
+      "expected": "Treat seat/seed as a read-back final consonant sanity issue and ask for another read.",
+      "errorTags": ["stt_mishear", "minimal_pair", "read_back"],
+      "tone": "neutral",
+      "level": "A1",
+      "vietlishPattern": "Final /t/ versus /d/ is a common Vietnamese L1 English perception and production risk.",
+      "stt": {
+        "mode": "read_back",
+        "targetPhrase": "Take a seat.",
+        "transcript": "Take a seed.",
+        "minimalPair": ["seat", "seed"],
+        "vnFinalConsonantClass": "final_t_d_voicing",
+        "expectedBehavior": "flag_mishear_and_ask_reread",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-009",
+      "category": "stt_mishear_sanity",
+      "input": "Free answer transcript: I paid with my cart.",
+      "expected": "Abstain from correcting cart to card without task context; ask a clarification question if meaning matters.",
+      "errorTags": ["stt_mishear", "minimal_pair", "free_answer", "abstain"],
+      "tone": "neutral",
+      "level": "A1",
+      "vietlishPattern": "Cart/card final /t/ and /d/ contrast is suspicious but not enough evidence in a free answer.",
+      "stt": {
+        "mode": "free_answer",
+        "targetPhrase": "",
+        "transcript": "I paid with my cart.",
+        "minimalPair": ["cart", "card"],
+        "vnFinalConsonantClass": "final_t_d_voicing",
+        "expectedBehavior": "abstain_no_correction",
+        "shouldAbstain": true
+      }
+    },
+    {
+      "id": "eval-v5-010",
+      "category": "stt_mishear_sanity",
+      "input": "Read-back prompt target: Pick the red one. STT transcript: Pig the red one.",
+      "expected": "Flag pick/pig as a final consonant read-back mismatch and ask the learner to reread.",
+      "errorTags": ["stt_mishear", "minimal_pair", "read_back"],
+      "tone": "neutral",
+      "level": "A1",
+      "vietlishPattern": "Final /k/ versus /g/ can be blurred in Vietnamese L1 English speech and STT transcripts.",
+      "stt": {
+        "mode": "read_back",
+        "targetPhrase": "Pick the red one.",
+        "transcript": "Pig the red one.",
+        "minimalPair": ["pick", "pig"],
+        "vnFinalConsonantClass": "final_k_g_voicing",
+        "expectedBehavior": "flag_mishear_and_ask_reread",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-011",
+      "category": "register_error_contextual",
+      "input": "Student to professor after a deadline: Give me more time for the assignment.",
+      "expected": "Would it be possible for me to have a little more time for the assignment?",
+      "errorTags": ["register_error", "blunt_request", "superior_addressee"],
+      "tone": "formal",
+      "level": "A2",
+      "vietlishPattern": "Direct imperative-like request is too flat for a professor context.",
+      "register": {
+        "taxonomyPatternId": "blunt_request_to_superior",
+        "contextProvided": true,
+        "addresseeContext": "learner is a student writing to a professor",
+        "expectedBehavior": "flag_register_error",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-012",
+      "category": "register_error_contextual",
+      "input": "Employee to manager about a required meeting: No, I cannot join the meeting.",
+      "expected": "I'm sorry, but I will not be able to join the meeting.",
+      "errorTags": ["register_error", "bare_refusal", "superior_addressee"],
+      "tone": "formal",
+      "level": "A2",
+      "vietlishPattern": "Bare refusal to a manager needs softening and reason or apology.",
+      "register": {
+        "taxonomyPatternId": "bare_refusal_to_superior",
+        "contextProvided": true,
+        "addresseeContext": "learner is an employee responding to a manager",
+        "expectedBehavior": "flag_register_error",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-013",
+      "category": "register_error_contextual",
+      "input": "Patient to doctor at reception: Hey doctor, you check this for me?",
+      "expected": "Hello, Doctor. Could you please check this for me?",
+      "errorTags": ["register_error", "peer_opener", "professional_addressee"],
+      "tone": "formal",
+      "level": "A2",
+      "vietlishPattern": "Casual opener and bare request are too peer-like for a doctor context.",
+      "register": {
+        "taxonomyPatternId": "formal_opener_peer_ban",
+        "contextProvided": true,
+        "addresseeContext": "learner is a patient addressing a doctor",
+        "expectedBehavior": "flag_register_error",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-014",
+      "category": "register_error_contextual",
+      "input": "Junior employee to senior colleague: Tell me what to do.",
+      "expected": "Could you please advise me on what I should do?",
+      "errorTags": ["register_error", "direct_command", "elder_or_senior_addressee"],
+      "tone": "formal",
+      "level": "A2",
+      "vietlishPattern": "Command form to a senior colleague needs modal request framing.",
+      "register": {
+        "taxonomyPatternId": "direct_command_to_elder",
+        "contextProvided": true,
+        "addresseeContext": "learner is a junior employee speaking to a senior colleague",
+        "expectedBehavior": "flag_register_error",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-015",
+      "category": "register_error_contextual",
+      "input": "Student to teacher after feedback: Thanks teacher.",
+      "expected": "Thank you very much for your feedback, teacher.",
+      "errorTags": ["register_error", "thanks_peer_form", "teacher_addressee"],
+      "tone": "formal",
+      "level": "A1",
+      "vietlishPattern": "Short peer-like thanks is under-marked for a teacher context.",
+      "register": {
+        "taxonomyPatternId": "thanks_with_peer_form_to_superior",
+        "contextProvided": true,
+        "addresseeContext": "learner is a student replying to a teacher",
+        "expectedBehavior": "flag_register_error",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-016",
+      "category": "register_error_contextual",
+      "input": "Employee to director: My bad, I forgot the report.",
+      "expected": "I apologize; I forgot to send the report.",
+      "errorTags": ["register_error", "casual_apology", "superior_addressee"],
+      "tone": "formal",
+      "level": "A2",
+      "vietlishPattern": "Peer-style apology is too casual for a director.",
+      "register": {
+        "taxonomyPatternId": "apology_with_peer_form_to_superior",
+        "contextProvided": true,
+        "addresseeContext": "learner is an employee apologizing to a director",
+        "expectedBehavior": "flag_register_error",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-017",
+      "category": "register_error_contextual",
+      "input": "Intern to manager after receiving instructions: I got your message. I will do it.",
+      "expected": "Thank you for your message. I will take care of it.",
+      "errorTags": ["register_error", "missing_polite_particle", "manager_addressee"],
+      "tone": "formal",
+      "level": "A2",
+      "vietlishPattern": "The reply is semantically fine but lacks the polite acknowledgement expected for a manager.",
+      "register": {
+        "taxonomyPatternId": "missing_a_particle_to_superior",
+        "contextProvided": true,
+        "addresseeContext": "learner is an intern replying to a manager",
+        "expectedBehavior": "flag_register_error",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-018",
+      "category": "register_error_contextual",
+      "input": "Applicant to admissions officer: I want you to send me the result.",
+      "expected": "Could you please send me the result when it is available?",
+      "errorTags": ["register_error", "favor_request_no_softener", "official_addressee"],
+      "tone": "formal",
+      "level": "A2",
+      "vietlishPattern": "Want you to is too demanding for an official request.",
+      "register": {
+        "taxonomyPatternId": "favor_request_no_softener",
+        "contextProvided": true,
+        "addresseeContext": "learner is an applicant writing to an admissions officer",
+        "expectedBehavior": "flag_register_error",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-019",
+      "category": "register_error_contextual",
+      "input": "Student to professor: I don't want to attend your office hour.",
+      "expected": "I'm sorry, but I will not be able to attend your office hour.",
+      "errorTags": ["register_error", "bare_refusal", "professor_addressee"],
+      "tone": "formal",
+      "level": "A2",
+      "vietlishPattern": "Direct refusal to a professor needs apology and softer framing.",
+      "register": {
+        "taxonomyPatternId": "bare_refusal_to_superior",
+        "contextProvided": true,
+        "addresseeContext": "learner is a student replying to a professor",
+        "expectedBehavior": "flag_register_error",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-020",
+      "category": "register_error_contextual",
+      "input": "Employee to manager near a deadline: Check my file now.",
+      "expected": "Could you please check my file when you have a chance?",
+      "errorTags": ["register_error", "direct_command", "manager_addressee"],
+      "tone": "formal",
+      "level": "A2",
+      "vietlishPattern": "Bare command to a manager should become a polite modal request.",
+      "register": {
+        "taxonomyPatternId": "direct_command_to_elder",
+        "contextProvided": true,
+        "addresseeContext": "learner is an employee asking a manager for review",
+        "expectedBehavior": "flag_register_error",
+        "shouldAbstain": false
+      }
+    },
+    {
+      "id": "eval-v5-021",
+      "category": "forecast_abstain_thin_data",
+      "input": "Forecast request for missing_articles with 0 observations.",
+      "expected": "NO_FORECAST",
+      "errorTags": ["forecast_abstain", "untested"],
+      "tone": "neutral",
+      "level": "untested",
+      "vietlishPattern": "Missing English articles cannot be forecast from no observations.",
+      "forecast": {
+        "patternId": "missing_articles",
+        "attemptsCount": 0,
+        "level": "untested",
+        "score": null,
+        "confidenceWidth": 0.5,
+        "expectedBehavior": "abstain_no_forecast",
+        "shouldAbstain": true,
+        "reasonCode": "untested",
+        "minAttemptsRequired": 3
+      }
+    },
+    {
+      "id": "eval-v5-022",
+      "category": "forecast_abstain_thin_data",
+      "input": "Forecast request for past_tense_unmarked with 1 observation.",
+      "expected": "NO_FORECAST",
+      "errorTags": ["forecast_abstain", "thin_data"],
+      "tone": "neutral",
+      "level": "emerging",
+      "vietlishPattern": "Past tense transfer needs more than a single evidence point before forecasting.",
+      "forecast": {
+        "patternId": "past_tense_unmarked",
+        "attemptsCount": 1,
+        "level": "emerging",
+        "score": 0.42,
+        "confidenceWidth": 0.38,
+        "expectedBehavior": "abstain_no_forecast",
+        "shouldAbstain": true,
+        "reasonCode": "thin_data",
+        "minAttemptsRequired": 3
+      }
+    },
+    {
+      "id": "eval-v5-023",
+      "category": "forecast_abstain_thin_data",
+      "input": "Forecast request for final_consonant_deletion with 2 observations.",
+      "expected": "NO_FORECAST",
+      "errorTags": ["forecast_abstain", "thin_data"],
+      "tone": "neutral",
+      "level": "struggling",
+      "vietlishPattern": "Final consonant deletion needs at least three measured attempts before trajectory language.",
+      "forecast": {
+        "patternId": "final_consonant_deletion",
+        "attemptsCount": 2,
+        "level": "struggling",
+        "score": 0.24,
+        "confidenceWidth": 0.34,
+        "expectedBehavior": "abstain_no_forecast",
+        "shouldAbstain": true,
+        "reasonCode": "thin_data",
+        "minAttemptsRequired": 3
+      }
+    },
+    {
+      "id": "eval-v5-024",
+      "category": "forecast_abstain_thin_data",
+      "input": "Forecast request for question_word_order with 1 observation.",
+      "expected": "NO_FORECAST",
+      "errorTags": ["forecast_abstain", "thin_data"],
+      "tone": "neutral",
+      "level": "emerging",
+      "vietlishPattern": "Question word order needs more evidence before a learner-specific forecast.",
+      "forecast": {
+        "patternId": "question_word_order",
+        "attemptsCount": 1,
+        "level": "emerging",
+        "score": 0.5,
+        "confidenceWidth": 0.36,
+        "expectedBehavior": "abstain_no_forecast",
+        "shouldAbstain": true,
+        "reasonCode": "thin_data",
+        "minAttemptsRequired": 3
+      }
+    },
+    {
+      "id": "eval-v5-025",
+      "category": "forecast_abstain_thin_data",
+      "input": "Forecast request for register_flattening with 2 observations.",
+      "expected": "NO_FORECAST",
+      "errorTags": ["forecast_abstain", "thin_data"],
+      "tone": "neutral",
+      "level": "struggling",
+      "vietlishPattern": "Register flattening needs repeated contextual evidence before forecast claims.",
+      "forecast": {
+        "patternId": "register_flattening",
+        "attemptsCount": 2,
+        "level": "struggling",
+        "score": 0.31,
+        "confidenceWidth": 0.33,
+        "expectedBehavior": "abstain_no_forecast",
+        "shouldAbstain": true,
+        "reasonCode": "thin_data",
+        "minAttemptsRequired": 3
+      }
+    },
+    {
+      "id": "eval-v5-026",
+      "category": "forecast_abstain_thin_data",
+      "input": "Forecast request for plural_s_omission with 0 observations.",
+      "expected": "NO_FORECAST",
+      "errorTags": ["forecast_abstain", "untested"],
+      "tone": "neutral",
+      "level": "untested",
+      "vietlishPattern": "Plural -s omission has no learner-specific evidence yet.",
+      "forecast": {
+        "patternId": "plural_s_omission",
+        "attemptsCount": 0,
+        "level": "untested",
+        "score": null,
+        "confidenceWidth": 0.5,
+        "expectedBehavior": "abstain_no_forecast",
+        "shouldAbstain": true,
+        "reasonCode": "untested",
+        "minAttemptsRequired": 3
+      }
+    },
+    {
+      "id": "eval-v5-027",
+      "category": "forecast_abstain_thin_data",
+      "input": "Forecast request for preposition_transfer with 2 observations.",
+      "expected": "NO_FORECAST",
+      "errorTags": ["forecast_abstain", "thin_data"],
+      "tone": "neutral",
+      "level": "emerging",
+      "vietlishPattern": "Vietnamese preposition transfer is present but too thin for prediction.",
+      "forecast": {
+        "patternId": "preposition_transfer",
+        "attemptsCount": 2,
+        "level": "emerging",
+        "score": 0.45,
+        "confidenceWidth": 0.3,
+        "expectedBehavior": "abstain_no_forecast",
+        "shouldAbstain": true,
+        "reasonCode": "thin_data",
+        "minAttemptsRequired": 3
+      }
+    },
+    {
+      "id": "eval-v5-028",
+      "category": "forecast_abstain_thin_data",
+      "input": "Forecast request for word_family_confusion with 1 observation.",
+      "expected": "NO_FORECAST",
+      "errorTags": ["forecast_abstain", "thin_data"],
+      "tone": "neutral",
+      "level": "emerging",
+      "vietlishPattern": "Word-family confusion has only one signal, so trajectory language is not warranted.",
+      "forecast": {
+        "patternId": "word_family_confusion",
+        "attemptsCount": 1,
+        "level": "emerging",
+        "score": 0.48,
+        "confidenceWidth": 0.37,
+        "expectedBehavior": "abstain_no_forecast",
+        "shouldAbstain": true,
+        "reasonCode": "thin_data",
+        "minAttemptsRequired": 3
+      }
+    },
+    {
+      "id": "eval-v5-029",
+      "category": "forecast_abstain_thin_data",
+      "input": "Forecast request for collocation_transfer with 2 observations.",
+      "expected": "NO_FORECAST",
+      "errorTags": ["forecast_abstain", "thin_data"],
+      "tone": "neutral",
+      "level": "struggling",
+      "vietlishPattern": "Collocation transfer cannot be forecast confidently from two observations.",
+      "forecast": {
+        "patternId": "collocation_transfer",
+        "attemptsCount": 2,
+        "level": "struggling",
+        "score": 0.28,
+        "confidenceWidth": 0.35,
+        "expectedBehavior": "abstain_no_forecast",
+        "shouldAbstain": true,
+        "reasonCode": "thin_data",
+        "minAttemptsRequired": 3
+      }
+    },
+    {
+      "id": "eval-v5-030",
+      "category": "forecast_abstain_thin_data",
+      "input": "Forecast request for pronoun_gender_confusion with 0 observations.",
+      "expected": "NO_FORECAST",
+      "errorTags": ["forecast_abstain", "untested"],
+      "tone": "neutral",
+      "level": "untested",
+      "vietlishPattern": "Pronoun gender confusion is untested for this learner.",
+      "forecast": {
+        "patternId": "pronoun_gender_confusion",
+        "attemptsCount": 0,
+        "level": "untested",
+        "score": null,
+        "confidenceWidth": 0.5,
+        "expectedBehavior": "abstain_no_forecast",
+        "shouldAbstain": true,
+        "reasonCode": "untested",
+        "minAttemptsRequired": 3
+      }
+    }
+  ]
+}
