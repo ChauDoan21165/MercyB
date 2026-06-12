@@ -12,7 +12,7 @@
   "definition": "Candidate Vietnamese-L1 interference items for human review before any promotion into VIETLISH_CORPUS. Each entry is a non-native English production (vietlish) paired with its natural target (natural), the VN source pattern with diacritics (sourcePattern), and a contextual sentence. A handful of entries are deliberate natural 'control' anchors (flagged in sourcePattern) so reviewers can confirm the detector abstains on natural usage.",
   "dedupedAgainst": "live 354-entry VIETLISH_CORPUS (zero string overlap), A4 d4 wave (...corpus-d4-wave-200.json, separate file), A6 !690 (selector test only)",
   "generatedFor": "2026-06-10 CEO directive D4-2",
-  "count": 33,
+  "count": 23,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -95,38 +95,6 @@
       "context": "Dear Anna, I write this email to ask you a favor."
     },
     {
-      "vietlish": "is 3pm comfortable for you",
-      "natural": "is 3pm convenient for you",
-      "sourcePattern": "thuận tiện -> 'comfortable' confused with 'convenient'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Let us meet, is 3pm comfortable for you?"
-    },
-    {
-      "vietlish": "my brother is very fun",
-      "natural": "my brother is a lot of fun",
-      "sourcePattern": "vui -> 'fun' used as a personality adjective",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "You should meet him, my brother is very fun."
-    },
-    {
-      "vietlish": "please remember me to lock the door",
-      "natural": "please remind me to lock the door",
-      "sourcePattern": "nhắc tôi -> 'remember me' instead of 'remind me'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I always forget, please remember me to lock the door."
-    },
-    {
-      "vietlish": "I had a nice travel to Sapa",
-      "natural": "I had a nice trip to Sapa",
-      "sourcePattern": "chuyến đi -> 'travel' as a countable noun for a trip",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Last month I had a nice travel to Sapa."
-    },
-    {
       "vietlish": "I have many stuff to do today",
       "natural": "I have a lot of stuff to do today",
       "sourcePattern": "(near-control) 'stuff' is fine but watch staff/stuff mix",
@@ -143,60 +111,12 @@
       "context": "Try this place, the staff is very delicious."
     },
     {
-      "vietlish": "you are a delicious cook",
-      "natural": "you're a great cook",
-      "sourcePattern": "nấu ngon -> 'delicious' applied to the person",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I love your food, you are a delicious cook."
-    },
-    {
-      "vietlish": "he is very sensible to noise",
-      "natural": "he is very sensitive to noise",
-      "sourcePattern": "nhạy cảm -> 'sensible' confused with 'sensitive'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Please be quiet, he is very sensible to noise."
-    },
-    {
       "vietlish": "the price is very cheap, only expensive a little",
       "natural": "the price is quite low, only a little expensive",
       "sourcePattern": "rẻ/đắt mix; 'cheap' for price + odd 'expensive a little'",
       "category": "false_friend",
       "frequency": "low",
       "context": "Do not worry, the price is very cheap, only expensive a little."
-    },
-    {
-      "vietlish": "my salary is very high than before",
-      "natural": "my salary is much higher than before",
-      "sourcePattern": "cao hơn -> missing comparative -er + 'very' for comparison",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I am happy now, my salary is very high than before."
-    },
-    {
-      "vietlish": "can you on the fan",
-      "natural": "can you turn on the fan",
-      "sourcePattern": "bật quạt -> 'on' used as a verb",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "It is hot, can you on the fan?"
-    },
-    {
-      "vietlish": "please off the light when you leave",
-      "natural": "please turn off the light when you leave",
-      "sourcePattern": "tắt đèn -> 'off' used as a verb",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Save power, please off the light when you leave."
-    },
-    {
-      "vietlish": "I feel very sleepy, I want go bed",
-      "natural": "I feel very sleepy, I want to go to bed",
-      "sourcePattern": "buồn ngủ -> missing 'to' + 'go bed'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "It is late, I feel very sleepy, I want go bed."
     },
     {
       "vietlish": "I think I cannot can come tomorrow",

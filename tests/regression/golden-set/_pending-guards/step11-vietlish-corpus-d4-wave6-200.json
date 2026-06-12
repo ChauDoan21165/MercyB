@@ -12,7 +12,7 @@
   "definition": "Sixth-wave Vietnamese-L1 interference review candidates (human review before any promotion into VIETLISH_CORPUS). Wave 6 mines fresh territory under-covered by waves 1-5: Vietnamese greeting/social-register calques, household-chore calques, workplace/office Vietlish, daily banking & medical calques, school/study, modal+bare-infinitive errors, quantifier/determiner errors, purpose/reason connectors, proverb/idiom calques, and additional false friends. A few natural 'control' anchors are flagged in sourcePattern for abstain-checking.",
   "dedupedAgainst": "live VIETLISH_CORPUS(353) + all 5 merged wave files(993) + A4 promotion list + Stage-1 128 paste block — 1346-item denylist, zero overlap (asserted by the guard test vs live + verified at authoring vs the full denylist).",
   "generatedFor": "2026-06-10 CEO-1 FULL ROSTER dispatch [A10] wave6",
-  "count": 66,
+  "count": 49,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -103,22 +103,6 @@
       "context": "Quick sync: can you join the meeting at 2?"
     },
     {
-      "vietlish": "i am a fresher, just graduate",
-      "natural": "i'm a new grad, i just graduated",
-      "sourcePattern": "sinh viên mới ra trường -> 'fresher' + 'just graduate'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "In an interview: i am a fresher, just graduate."
-    },
-    {
-      "vietlish": "my boss is very strict with work",
-      "natural": "my boss is very strict about work",
-      "sourcePattern": "khó tính trong công việc -> 'strict with work'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Be careful, my boss is very strict with work."
-    },
-    {
       "vietlish": "we will discuss it in the meeting tomorrow",
       "natural": "we'll discuss it in tomorrow's meeting",
       "sourcePattern": "(near-control) natural; abstain anchor",
@@ -135,28 +119,12 @@
       "context": "I cannot afford that, the fee is too high for me."
     },
     {
-      "vietlish": "i am car sick on long trips",
-      "natural": "i get carsick on long trips",
-      "sourcePattern": "say xe -> 'car sick' (acceptable; flagged for VN frequency)",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Give me the front seat, i am car sick on long trips."
-    },
-    {
       "vietlish": "i have a sun hit at the beach",
       "natural": "i got sunstroke at the beach",
       "sourcePattern": "say nắng -> 'sun hit' calque",
       "category": "calque",
       "frequency": "low",
       "context": "Wear a hat, i have a sun hit at the beach."
-    },
-    {
-      "vietlish": "i am allergic to the weather changing",
-      "natural": "i react badly when the weather changes",
-      "sourcePattern": "dị ứng thời tiết -> 'allergic to the weather' calque",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I sneeze a lot, i am allergic to the weather changing."
     },
     {
       "vietlish": "i forgot to bring my book today",
@@ -231,52 +199,12 @@
       "context": "To work abroad, for that, you need a visa first."
     },
     {
-      "vietlish": "the library sells many books",
-      "natural": "the bookstore sells many books",
-      "sourcePattern": "nhà sách -> 'library' for 'bookstore'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Near my school, the library sells many books."
-    },
-    {
-      "vietlish": "i must assist the meeting tomorrow",
-      "natural": "i must attend the meeting tomorrow",
-      "sourcePattern": "tham dự -> 'assist' (false friend) for 'attend'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "It is required, i must assist the meeting tomorrow."
-    },
-    {
-      "vietlish": "i did not realize the project yet",
-      "natural": "i haven't carried out the project yet",
-      "sourcePattern": "thực hiện -> 'realize' for 'carry out'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "We are behind, i did not realize the project yet."
-    },
-    {
-      "vietlish": "he pretends to be a doctor in the film",
-      "natural": "he plays a doctor in the film",
-      "sourcePattern": "đóng vai -> 'pretend' for 'play a role'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "It is a good role, he pretends to be a doctor in the film."
-    },
-    {
       "vietlish": "i am very concerned about you, are you ok",
       "natural": "i'm worried about you, are you ok",
       "sourcePattern": "lo lắng -> 'concerned' fine but VN often over-uses",
       "category": "false_friend",
       "frequency": "low",
       "context": "You look sad, i am very concerned about you, are you ok?"
-    },
-    {
-      "vietlish": "the company supports my study fee",
-      "natural": "the company covers my tuition",
-      "sourcePattern": "hỗ trợ -> 'support ... fee' calque",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I am lucky, the company supports my study fee."
     },
     {
       "vietlish": "eventually i will move to the city",
@@ -295,22 +223,6 @@
       "context": "Everyone buys it, this medicine is very actual now."
     },
     {
-      "vietlish": "she is very sympathetic and helpful",
-      "natural": "she is very nice and helpful",
-      "sourcePattern": "thông cảm/dễ thương -> 'sympathetic' for 'nice'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "You will like her, she is very sympathetic and helpful."
-    },
-    {
-      "vietlish": "i have a doubt about the homework",
-      "natural": "i have a question about the homework",
-      "sourcePattern": "thắc mắc -> 'doubt' for 'question'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Excuse me teacher, i have a doubt about the homework."
-    },
-    {
       "vietlish": "he passed away the exam easily",
       "natural": "he passed the exam easily",
       "sourcePattern": "'passed away' confused with 'passed'",
@@ -325,30 +237,6 @@
       "category": "false_friend",
       "frequency": "low",
       "context": "You should buy it, the price is reasonable and cheap."
-    },
-    {
-      "vietlish": "i am free this Sunday, are you convenient",
-      "natural": "i'm free this Sunday, does that work for you",
-      "sourcePattern": "tiện không -> 'are you convenient' calque",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Let us meet, i am free this Sunday, are you convenient?"
-    },
-    {
-      "vietlish": "please borrow me your charger a moment",
-      "natural": "please lend me your charger a moment",
-      "sourcePattern": "cho mượn -> 'borrow me' for 'lend me'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "My phone died, please borrow me your charger a moment."
-    },
-    {
-      "vietlish": "i will remember you to bring it",
-      "natural": "i'll remind you to bring it",
-      "sourcePattern": "nhắc -> 'remember you' for 'remind you'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Do not forget, i will remember you to bring it."
     },
     {
       "vietlish": "the meeting was put off to friday",
@@ -405,14 +293,6 @@
       "category": "literal_translation",
       "frequency": "low",
       "context": "Not cheap, it costs around two hundred thousand dong."
-    },
-    {
-      "vietlish": "my son is high one meter forty",
-      "natural": "my son is one metre forty tall",
-      "sourcePattern": "cao một mét bốn -> 'high' for 'tall'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "He grew fast, my son is high one meter forty."
     },
     {
       "vietlish": "slow but sure wins",
@@ -533,22 +413,6 @@
       "category": "calque",
       "frequency": "low",
       "context": "Slow down, the traffic light is red, please stop."
-    },
-    {
-      "vietlish": "the internet is very lag today",
-      "natural": "the internet is very laggy today",
-      "sourcePattern": "mạng lag -> 'very lag' as adjective",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I cannot join the call, the internet is very lag today."
-    },
-    {
-      "vietlish": "please on the air conditioner a bit",
-      "natural": "please turn the air conditioner on a bit",
-      "sourcePattern": "mở máy lạnh -> 'on' used as a verb",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "It is hot, please on the air conditioner a bit."
     }
   ]
 }

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "wiredIntoEngine": false,
   "status": "review_not_wired",
-  "count": 8,
+  "count": 3,
   "description": "A10 Wave 7 — 200 Vietlish/interference review candidates. Fresh territory: question formation, existential 'have', time/date expressions, digital-life calques, food & dining, shopping, transportation, comparison & degree, numbers & quantities, direction & movement, negation, politeness & discourse, professional/academic register, false friends, kinship & address terms, redundancy patterns, connector/gerund errors. Deduped vs live(481) + waves 1-6(1065) = 1546-item denylist. Zero collisions.",
   "entries": [
     {
@@ -21,46 +21,6 @@
       "category": "collocation",
       "frequency": "low",
       "context": "commenting on a popular video's engagement"
-    },
-    {
-      "vietlish": "this dish is too fat",
-      "natural": "this dish is too greasy",
-      "sourcePattern": "béo = fatty/greasy (false friend with 'fat' as food adjective)",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "commenting on an oily or greasy dish"
-    },
-    {
-      "vietlish": "book a chair on the plane",
-      "natural": "book a seat on the plane",
-      "sourcePattern": "đặt ghế trên máy bay (ghế = chair/seat false friend)",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "reserving an airline seat"
-    },
-    {
-      "vietlish": "how strange! I didn't know that",
-      "natural": "how surprising! / I had no idea!",
-      "sourcePattern": "lạ thật = 'strange' but conveys 'surprising/unexpected'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "reacting to unexpected news with surprise"
-    },
-    {
-      "vietlish": "please eat fast or we will be late",
-      "natural": "please eat quickly or we'll be late",
-      "sourcePattern": "ăn nhanh lên (nhanh = fast, but 'quickly' collocates with eat)",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "urging someone to eat faster"
-    },
-    {
-      "vietlish": "he is very active",
-      "natural": "he is very energetic / enthusiastic",
-      "sourcePattern": "năng động = active/energetic (active implies physical movement only in English)",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "describing a dynamic, enthusiastic person"
     },
     {
       "vietlish": "advance prepare for the presentation",

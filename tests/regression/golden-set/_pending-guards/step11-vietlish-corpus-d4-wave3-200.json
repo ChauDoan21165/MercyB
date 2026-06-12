@@ -23,7 +23,7 @@
   "definition": "Wave 3 of NEW Vietnamese L1-interference candidates matching the live VIETLISH_CORPUS entry schema EXACTLY. Staged for human review BEFORE any promotion into src/lib/tutor/vietlishCorpus.ts. Imported by no engine module. Verified disjoint from the live corpus AND from D4 wave1 (...wave-200.json, !695) AND D4 wave2 (...wave2-200.json, !693) by step11VietlishCorpusD4Wave3.test.ts.",
   "disjointFrom": "live VIETLISH_CORPUS; A4 wave1 !695; A10 wave2 !693; A6 !690 (selector test, no corpus rows).",
   "generatedAt": "2026-06-10",
-  "count": 57,
+  "count": 45,
   "entries": [
     {
       "vietlish": "I am knowing the answer",
@@ -98,36 +98,12 @@
       "context": "After studying hard, he succeeded to pass the exam."
     },
     {
-      "vietlish": "can you bring me to the airport tomorrow",
-      "natural": "can you take me to the airport tomorrow",
-      "sourcePattern": "dua ra san bay -> dua = bring/take overgeneralized",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "My flight is early, can you bring me to the airport tomorrow?"
-    },
-    {
       "vietlish": "she wears a ring on her hand",
       "natural": "she wears a ring on her finger",
       "sourcePattern": "deo nhan o tay -> tay = hand/arm covers finger too",
       "category": "false_friend",
       "frequency": "low",
       "context": "She wears a ring on her hand, maybe she is engaged."
-    },
-    {
-      "vietlish": "he drives a bicycle to school",
-      "natural": "he rides a bicycle to school",
-      "sourcePattern": "di xe dap -> drive for ride with a bicycle",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "He drives a bicycle to school every morning."
-    },
-    {
-      "vietlish": "she rides a car to work",
-      "natural": "she drives a car to work",
-      "sourcePattern": "di o to -> ride for drive with a car",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "She rides a car to work because the office is far."
     },
     {
       "vietlish": "please help me to take down the box",
@@ -170,22 +146,6 @@
       "context": "She is pregnant now, she eats for two persons."
     },
     {
-      "vietlish": "this shirt is very fit to me",
-      "natural": "this shirt fits me very well",
-      "sourcePattern": "vua voi toi -> be + fit as adjective plus to instead of object",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I will buy it, this shirt is very fit to me."
-    },
-    {
-      "vietlish": "the price is reasonable, I am satisfy",
-      "natural": "the price is reasonable, I'm satisfied",
-      "sourcePattern": "hai long -> satisfy without -ed participle for the experiencer",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "The price is reasonable, I am satisfy with the deal."
-    },
-    {
       "vietlish": "she is sensible to the cold",
       "natural": "she is sensitive to the cold",
       "sourcePattern": "nhay cam -> sensible borrowed for sensitive",
@@ -194,28 +154,12 @@
       "context": "Bring a jacket for her, she is sensible to the cold."
     },
     {
-      "vietlish": "the movie is very touching, I am touching",
-      "natural": "the movie is very touching, I'm touched",
-      "sourcePattern": "cam dong -> -ing participle used for the experiencer",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "The movie is very touching, I am touching at the ending."
-    },
-    {
       "vietlish": "my hand is paining",
       "natural": "my hand hurts",
       "sourcePattern": "tay dau -> pain used as a verb in the progressive",
       "category": "false_friend",
       "frequency": "low",
       "context": "After lifting boxes, my hand is paining a lot."
-    },
-    {
-      "vietlish": "I am tired of waiting, very tiring",
-      "natural": "I'm tired of waiting, it's very tiring",
-      "sourcePattern": "met moi -> dropped dummy subject and be before tiring",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Two hours at the clinic, I am tired of waiting, very tiring."
     },
     {
       "vietlish": "this bag is as the same as that one",
@@ -232,14 +176,6 @@
       "category": "literal_translation",
       "frequency": "low",
       "context": "In the new job he earns double than me."
-    },
-    {
-      "vietlish": "the meeting is online or offline",
-      "natural": "is the meeting online or in person",
-      "sourcePattern": "truc tiep -> offline calqued for in person",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Please tell me, the meeting is online or offline tomorrow?"
     },
     {
       "vietlish": "my blood pressure is up today",
@@ -272,14 +208,6 @@
       "category": "register",
       "frequency": "low",
       "context": "I am free after five, call me when you finish work."
-    },
-    {
-      "vietlish": "he earns money to feed the whole family",
-      "natural": "he earns money to support the whole family",
-      "sourcePattern": "nuoi ca gia dinh -> feed calqued for financially support",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "He works two jobs, he earns money to feed the whole family."
     },
     {
       "vietlish": "she is doing thin these days",
@@ -346,28 +274,12 @@
       "context": "Before the test, the teacher made us memorize all the lesson."
     },
     {
-      "vietlish": "I cannot wait to meet you, so exciting",
-      "natural": "I can't wait to meet you, it's so exciting",
-      "sourcePattern": "hao hung qua -> dropped dummy subject and be plus -ing for the event",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "We will see each other next week, I cannot wait to meet you, so exciting."
-    },
-    {
       "vietlish": "she is the same height with her sister",
       "natural": "she is the same height as her sister",
       "sourcePattern": "cao bang -> with instead of as for same height",
       "category": "literal_translation",
       "frequency": "low",
       "context": "People mix them up, she is the same height with her sister."
-    },
-    {
-      "vietlish": "the result makes me disappointing",
-      "natural": "the result makes me disappointed",
-      "sourcePattern": "that vong -> -ing participle for the affected person",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I studied hard, the result makes me disappointing."
     },
     {
       "vietlish": "please water on the plants tonight",
@@ -408,14 +320,6 @@
       "category": "literal_translation",
       "frequency": "low",
       "context": "Goodbye for now, we will meet again in some day."
-    },
-    {
-      "vietlish": "he speaks too small, I cannot hear",
-      "natural": "he speaks too quietly, I can't hear him",
-      "sourcePattern": "noi nho -> small for quiet plus dropped object",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "On the phone he speaks too small, I cannot hear clearly."
     },
     {
       "vietlish": "I am studying to become a teacher in the future",

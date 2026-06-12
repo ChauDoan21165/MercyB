@@ -12,7 +12,7 @@
   "definition": "Fourth-wave candidate Vietnamese-L1 interference items for human review before any promotion into VIETLISH_CORPUS. Each entry pairs a non-native English production (vietlish) with its natural target (natural), the VN source pattern with diacritics (sourcePattern), and a contextual sentence. A few deliberate natural 'control' anchors are flagged in sourcePattern so reviewers can confirm the detector abstains on natural usage. Wave 4 focuses on grammar-interference families lighter in waves 1-2: conditionals, relative clauses, reported speech, gerund/infinitive, subject-verb agreement, do-support questions, causatives, possessive 'of', passives.",
   "dedupedAgainst": "live VIETLISH_CORPUS + A4 wave1 (...corpus-d4-wave-200.json) + A10 wave2 (...wave2-200.json) — zero string overlap (749-item denylist), asserted by the guard test",
   "generatedFor": "2026-06-10 CEO directive D4 wave4 (A10)",
-  "count": 32,
+  "count": 20,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -61,78 +61,6 @@
       "category": "false_friend",
       "frequency": "low",
       "context": "He saves a lot, he is a very economic person."
-    },
-    {
-      "vietlish": "the movie was very boring, I slept",
-      "natural": "the movie was very boring, I fell asleep",
-      "sourcePattern": "VN 'ngủ gật' -> 'slept' for 'fell asleep'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Do not watch it, the movie was very boring, I slept."
-    },
-    {
-      "vietlish": "my hand phone is out of battery",
-      "natural": "my cell phone is dead",
-      "sourcePattern": "điện thoại di động -> 'hand phone' + 'out of battery'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Call my friend, my hand phone is out of battery."
-    },
-    {
-      "vietlish": "can you give me a tissue paper",
-      "natural": "can you pass me a tissue",
-      "sourcePattern": "giấy ăn -> 'tissue paper' calque",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I sneezed, can you give me a tissue paper?"
-    },
-    {
-      "vietlish": "I want to take a rest a little",
-      "natural": "I want to take a short rest",
-      "sourcePattern": "nghỉ một chút -> 'a little' for 'short'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I am tired, I want to take a rest a little."
-    },
-    {
-      "vietlish": "she is very lovely with children",
-      "natural": "she is very kind to children",
-      "sourcePattern": "dễ thương/tốt -> 'lovely with' calque",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Trust her, she is very lovely with children."
-    },
-    {
-      "vietlish": "I am very confident to pass the exam",
-      "natural": "I am confident I'll pass the exam",
-      "sourcePattern": "tự tin -> 'confident to' + structure",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Do not worry, I am very confident to pass the exam."
-    },
-    {
-      "vietlish": "this shirt fits with me",
-      "natural": "this shirt fits me",
-      "sourcePattern": "vừa với tôi -> extra 'with' after 'fit'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I will buy it, this shirt fits with me."
-    },
-    {
-      "vietlish": "the soup is lack of salt",
-      "natural": "the soup needs more salt",
-      "sourcePattern": "thiếu muối -> 'lack of' as a predicate",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Taste it, the soup is lack of salt."
-    },
-    {
-      "vietlish": "he is absent in the meeting",
-      "natural": "he is absent from the meeting",
-      "sourcePattern": "vắng mặt -> 'absent in' instead of 'from'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Start without him, he is absent in the meeting."
     },
     {
       "vietlish": "who looks after your baby",
@@ -231,36 +159,12 @@
       "context": "I am new here, nice to meet you, please take care me."
     },
     {
-      "vietlish": "I am boring with this job",
-      "natural": "I'm bored with this job",
-      "sourcePattern": "chán việc -> 'boring' for the feeling + 'with'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I want to quit, I am boring with this job."
-    },
-    {
-      "vietlish": "can you wait for me a little",
-      "natural": "can you wait for me a moment",
-      "sourcePattern": "đợi chút -> 'a little' for time",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I am almost ready, can you wait for me a little?"
-    },
-    {
       "vietlish": "I think he is right, don't you think",
       "natural": "I think he's right, don't you think so",
       "sourcePattern": "phải không -> dropped 'so' in the tag",
       "category": "register",
       "frequency": "low",
       "context": "Honestly, I think he is right, don't you think?"
-    },
-    {
-      "vietlish": "please give me your idea about this",
-      "natural": "please give me your opinion on this",
-      "sourcePattern": "cho ý kiến -> 'idea' for 'opinion'",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Before we decide, please give me your idea about this."
     },
     {
       "vietlish": "I will introduce you to my family next week",

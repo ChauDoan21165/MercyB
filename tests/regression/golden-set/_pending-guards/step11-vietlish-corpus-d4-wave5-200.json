@@ -23,88 +23,8 @@
   "definition": "Wave 5 of NEW Vietnamese L1-interference candidates matching the live VIETLISH_CORPUS entry schema EXACTLY. Staged for human review BEFORE any promotion into src/lib/tutor/vietlishCorpus.ts. Imported by no engine module. Verified disjoint from the live corpus AND from all prior D4 waves (1,2,3,4) by step11VietlishCorpusD4Wave5.test.ts.",
   "disjointFrom": "live VIETLISH_CORPUS; A4 wave1 !695; A10 wave2 !693; A4 wave3 !714; A10 wave4 !710; A6 !690 (selector test, no corpus rows).",
   "generatedAt": "2026-06-10",
-  "count": 93,
+  "count": 70,
   "entries": [
-    {
-      "vietlish": "I cannot find out my mistake",
-      "natural": "I can't figure out my mistake",
-      "sourcePattern": "khong tim ra loi -> find out for figure out",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I read it three times but I cannot find out my mistake."
-    },
-    {
-      "vietlish": "I will think about it and tell you back",
-      "natural": "I'll think about it and let you know",
-      "sourcePattern": "tra loi lai -> tell back for let know",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "It is a big decision, I will think about it and tell you back."
-    },
-    {
-      "vietlish": "remind me your name again",
-      "natural": "remind me of your name again",
-      "sourcePattern": "nhac lai ten -> of dropped after remind",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Sorry, we met once, remind me your name again."
-    },
-    {
-      "vietlish": "I learn at the university of Hue",
-      "natural": "I study at the University of Hue",
-      "sourcePattern": "hoc o dai hoc -> learn used for study at an institution",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "After high school, I learn at the university of Hue."
-    },
-    {
-      "vietlish": "I heard the radio while driving",
-      "natural": "I listened to the radio while driving",
-      "sourcePattern": "nghe radio -> hear for the deliberate listen",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "On the way home I heard the radio while driving."
-    },
-    {
-      "vietlish": "our team won the other team 3-0",
-      "natural": "our team beat the other team 3-0",
-      "sourcePattern": "thang doi kia -> win mapped to beat with an opponent object",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "It was a great match, our team won the other team 3-0."
-    },
-    {
-      "vietlish": "someone robbed my phone on the bus",
-      "natural": "someone stole my phone on the bus",
-      "sourcePattern": "cuop/trom dien thoai -> rob used for steal an object",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Be careful, someone robbed my phone on the bus yesterday."
-    },
-    {
-      "vietlish": "I will remember you to bring the book",
-      "natural": "I'll remind you to bring the book",
-      "sourcePattern": "nhac ban -> remember used for remind",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Don't worry, I will remember you to bring the book tomorrow."
-    },
-    {
-      "vietlish": "can you talk me the way to the market",
-      "natural": "can you tell me the way to the market",
-      "sourcePattern": "chi duong -> talk used for tell",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I am new here, can you talk me the way to the market?"
-    },
-    {
-      "vietlish": "I am looking the menu now",
-      "natural": "I am looking at the menu now",
-      "sourcePattern": "dang xem thuc don -> look without at",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Give me a minute, I am looking the menu now."
-    },
     {
       "vietlish": "each of the room has a window",
       "natural": "each of the rooms has a window",
@@ -162,14 +82,6 @@
       "context": "The exam is over, I am burning to know the result."
     },
     {
-      "vietlish": "my motorbike died in the middle of the road",
-      "natural": "my motorbike broke down in the middle of the road",
-      "sourcePattern": "chet may -> die calque for break down",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I was late because my motorbike died in the middle of the road."
-    },
-    {
       "vietlish": "the price is on the sky",
       "natural": "the price is sky-high",
       "sourcePattern": "gia tren troi -> on the sky calque for sky-high",
@@ -194,28 +106,12 @@
       "context": "My printer is broken, I go to the internet shop to print."
     },
     {
-      "vietlish": "the market is very crowd in the morning",
-      "natural": "the market is very crowded in the morning",
-      "sourcePattern": "dong duc -> crowd noun used as adjective without -ed",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Go early, the market is very crowd in the morning."
-    },
-    {
       "vietlish": "she weighs the vegetable on the scale",
       "natural": "she weighs the vegetables on the scale",
       "sourcePattern": "can rau -> vegetable without plural",
       "category": "literal_translation",
       "frequency": "low",
       "context": "At the stall she weighs the vegetable on the scale for me."
-    },
-    {
-      "vietlish": "my back is paining since I lifted the box",
-      "natural": "my back has been hurting since I lifted the box",
-      "sourcePattern": "dau lung -> pain as a progressive verb, no present perfect",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I cannot bend down, my back is paining since I lifted the box."
     },
     {
       "vietlish": "the doctor measured my height and my weigh",
@@ -234,28 +130,12 @@
       "context": "The child is sick, she has a high temperature body since noon."
     },
     {
-      "vietlish": "I failed one subject, must learn again",
-      "natural": "I failed one subject, I have to retake it",
-      "sourcePattern": "hoc lai -> learn again for retake",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Bad news, I failed one subject, must learn again next term."
-    },
-    {
       "vietlish": "he proposed her last week",
       "natural": "he proposed to her last week",
       "sourcePattern": "cau hon co ay -> to dropped after propose",
       "category": "literal_translation",
       "frequency": "low",
       "context": "Good news, he proposed her last week and she said yes."
-    },
-    {
-      "vietlish": "it is raining big outside",
-      "natural": "it's raining hard outside",
-      "sourcePattern": "mua to -> big for hard with rain",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Take a raincoat, it is raining big outside."
     },
     {
       "vietlish": "the flood came and took many house",
@@ -306,14 +186,6 @@
       "context": "I cannot go on the cruise, I get motion sick on the boat."
     },
     {
-      "vietlish": "please fasten your belt before the car run",
-      "natural": "please fasten your belt before the car moves",
-      "sourcePattern": "truoc khi xe chay -> run for move with a vehicle",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Sit down, please fasten your belt before the car run."
-    },
-    {
       "vietlish": "we walked many kilometer in the old town",
       "natural": "we walked many kilometers in the old town",
       "sourcePattern": "nhieu cay so -> kilometer without plural",
@@ -346,36 +218,12 @@
       "context": "When the sun is strong, we hang the clothes outside to dry."
     },
     {
-      "vietlish": "my phone screen is crack, hard to read",
-      "natural": "my phone screen is cracked, it's hard to read",
-      "sourcePattern": "bi nut -> crack without -ed plus dropped subject",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I dropped it, my phone screen is crack, hard to read now."
-    },
-    {
       "vietlish": "she takes very many selfie every day",
       "natural": "she takes a lot of selfies every day",
       "sourcePattern": "chup nhieu hinh tu suong -> very many plus selfie no plural",
       "category": "literal_translation",
       "frequency": "low",
       "context": "For her page, she takes very many selfie every day."
-    },
-    {
-      "vietlish": "the video is buffering, the net is lag",
-      "natural": "the video is buffering, the connection is lagging",
-      "sourcePattern": "mang lag -> net plus lag as an adjective",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I cannot watch, the video is buffering, the net is lag."
-    },
-    {
-      "vietlish": "the link is dead, cannot open",
-      "natural": "the link is broken, I can't open it",
-      "sourcePattern": "link chet -> dead for broken plus dropped subject",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Send again, the link is dead, cannot open."
     },
     {
       "vietlish": "my email is full, cannot receive more",
@@ -458,14 +306,6 @@
       "context": "All day she feeds the baby and changes the diaper."
     },
     {
-      "vietlish": "we plant vegetable in the back garden",
-      "natural": "we grow vegetables in the back garden",
-      "sourcePattern": "trong rau -> plant for grow plus vegetable no plural",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "To save money, we plant vegetable in the back garden."
-    },
-    {
       "vietlish": "honestly, from my heart, I am sorry",
       "natural": "honestly, from the bottom of my heart, I'm sorry",
       "sourcePattern": "that long -> from my heart calque",
@@ -514,14 +354,6 @@
       "context": "The service was good, please keep the change for tip."
     },
     {
-      "vietlish": "I am afraid of high, cannot climb",
-      "natural": "I'm afraid of heights, I can't climb",
-      "sourcePattern": "so do cao -> high for heights plus dropped subject",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "You go first, I am afraid of high, cannot climb the ladder."
-    },
-    {
       "vietlish": "he is good in heart but bad in temper",
       "natural": "he is good-hearted but bad-tempered",
       "sourcePattern": "tot bung nhung nong tinh -> good in heart calque",
@@ -544,14 +376,6 @@
       "category": "register",
       "frequency": "low",
       "context": "Even on weekends he gets up at 5 and exercises a bit."
-    },
-    {
-      "vietlish": "I want to take a picture but my phone is full memory",
-      "natural": "I want to take a picture but my phone is out of memory",
-      "sourcePattern": "day bo nho -> full memory for out of memory",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Such a nice view, I want to take a picture but my phone is full memory."
     },
     {
       "vietlish": "she always says good things behind my back",
@@ -592,14 +416,6 @@
       "category": "literal_translation",
       "frequency": "low",
       "context": "We are tired, the baby is teething, cries a lot at night."
-    },
-    {
-      "vietlish": "she is afraid her parents know about it",
-      "natural": "she's afraid her parents will find out about it",
-      "sourcePattern": "so bo me biet -> know for find out",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "She hides the result, she is afraid her parents know about it."
     },
     {
       "vietlish": "I caught the bus just in time, lucky me",

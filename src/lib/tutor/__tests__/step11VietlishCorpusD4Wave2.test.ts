@@ -50,8 +50,8 @@ describe("step11 vietlish corpus wave 2 (D4-2 review queue)", () => {
     // coherence pass (4 already in wave1, 1 case-duplicate of the live corpus);
     // 44 freq=high entries promoted into VIETLISH_CORPUS in the Step-11 Stage-1
     // promotion (2026-06-10), leaving 151.
-    expect(data.entries).toHaveLength(33);
-    expect(data.count).toBe(33);
+    expect(data.entries).toHaveLength(23);
+    expect(data.count).toBe(23);
   });
 
   it("matches the VietlishCorpusEntry schema exactly (six string fields, valid enums)", () => {

@@ -23,7 +23,7 @@
   "definition": "Each entry is a NEW Vietnamese L1-interference candidate matching the live VIETLISH_CORPUS entry schema EXACTLY. These are staged for human review BEFORE any promotion into src/lib/tutor/vietlishCorpus.ts. This file is imported by no engine module — review queue only. Every `vietlish` string is verified disjoint from the 354 live corpus entries by step11VietlishCorpusD4Wave.test.ts.",
   "disjointFrom": "live VIETLISH_CORPUS (src/lib/tutor/vietlishCorpus.ts); A6 !690 (selector test, no corpus rows); A10 corpus waves (different files).",
   "generatedAt": "2026-06-10",
-  "count": 30,
+  "count": 22,
   "entries": [
     {
       "vietlish": "there are many furnitures in the room",
@@ -32,14 +32,6 @@
       "category": "literal_translation",
       "frequency": "low",
       "context": "There are many furnitures in the room, it feels crowded."
-    },
-    {
-      "vietlish": "the childrens are playing",
-      "natural": "the children are playing",
-      "sourcePattern": "tre con -> irregular plural double-marked with -s",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "The childrens are playing in the yard after school."
     },
     {
       "vietlish": "she was born in 1995 in March",
@@ -98,28 +90,12 @@
       "context": "Thanks God it is Friday, I need a rest."
     },
     {
-      "vietlish": "the news make me surprising",
-      "natural": "the news made me surprised",
-      "sourcePattern": "ngac nhien -> -ing participle for the affected person",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "The news make me surprising, I did not expect it."
-    },
-    {
       "vietlish": "she is very sympathetic and beautiful",
       "natural": "she is very sweet and beautiful",
       "sourcePattern": "de thuong -> sympathetic borrowed for likeable/cute",
       "category": "false_friend",
       "frequency": "low",
       "context": "She is very sympathetic and beautiful, everyone likes her."
-    },
-    {
-      "vietlish": "my salary is low, only enough",
-      "natural": "my salary is low, barely enough",
-      "sourcePattern": "chi du -> enough used alone for barely enough",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "My salary is low, only enough for rent and food."
     },
     {
       "vietlish": "the doctor injected me a medicine",
@@ -130,36 +106,12 @@
       "context": "The doctor injected me a medicine for the pain."
     },
     {
-      "vietlish": "my stomach is not comfortable",
-      "natural": "I have an upset stomach",
-      "sourcePattern": "bung kho chiu -> kho chiu calqued as not comfortable",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I cannot eat much, my stomach is not comfortable today."
-    },
-    {
-      "vietlish": "my computer is hang",
-      "natural": "my computer froze",
-      "sourcePattern": "treo may -> hang as a stative adjective for froze",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "My computer is hang, I cannot open any program."
-    },
-    {
       "vietlish": "the printer is run out of ink",
       "natural": "the printer has run out of ink",
       "sourcePattern": "het muc -> be inserted before run out, no present perfect",
       "category": "literal_translation",
       "frequency": "low",
       "context": "The printer is run out of ink, I need a new one."
-    },
-    {
-      "vietlish": "this one is broken, I want change other",
-      "natural": "this one is broken, I want to exchange it for another",
-      "sourcePattern": "doi cai khac -> change for exchange, other without one",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "This one is broken, I want change other please."
     },
     {
       "vietlish": "please drop me at the corner front",
@@ -184,14 +136,6 @@
       "category": "word_order",
       "frequency": "low",
       "context": "Driver, stop here is ok for me, thank you."
-    },
-    {
-      "vietlish": "I want to take a day leave tomorrow",
-      "natural": "I want to take a day off tomorrow",
-      "sourcePattern": "xin nghi mot ngay -> leave for day off, wrong noun",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "I want to take a day leave tomorrow for a family event."
     },
     {
       "vietlish": "she has a sweet voice very",
@@ -248,14 +192,6 @@
       "category": "false_friend",
       "frequency": "low",
       "context": "To my house, please turn left at the next light."
-    },
-    {
-      "vietlish": "my English is still weak, sorry",
-      "natural": "my English is still poor, sorry",
-      "sourcePattern": "tieng Anh con yeu -> weak calqued for poor ability",
-      "category": "false_friend",
-      "frequency": "medium",
-      "context": "Please speak slowly, my English is still weak, sorry."
     },
     {
       "vietlish": "she is doing the master in London",
