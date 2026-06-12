@@ -250,7 +250,7 @@ describe("Home placement CTA", () => {
     renderHome();
 
     // Chau superseded the old product contract: the Home card is always visible;
-    // PlacementV3Gate owns any flag-off handling at the /placement route.
+    // /placement itself is always mounted regardless of build-time flags.
     expect(screen.getByRole("button", { name: "Placement test" })).toBeInTheDocument();
     expect(screen.getByText("Kiểm tra trình độ")).toBeInTheDocument();
     expect(screen.queryByText("Take Placement Test")).not.toBeInTheDocument();
@@ -264,8 +264,7 @@ describe("Home placement CTA", () => {
     expect(screen.getByText("Kiểm tra trình độ")).toBeInTheDocument();
   });
 
-  it("routes to /placement and records telemetry when clicked", async () => {
-    isPlacementEntryRouteAvailable.mockReturnValue(true);
+  it("routes the Placement card to /placement with placement flags off and records telemetry", async () => {
     renderHome();
 
     await userEvent.click(screen.getByRole("button", { name: "Placement test" }));

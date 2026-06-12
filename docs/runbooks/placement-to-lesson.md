@@ -160,15 +160,13 @@ These cases are already covered or deliberately deferred:
 ## Running the spec locally
 
 ```sh
-# v3 placement is compile-time gated. Both flags must be on.
-E2E_PLACEMENT_V3_ENABLED=true VITE_PLACEMENT_TEST_ENABLED=true \
-  npx playwright test \
+npx playwright test \
   --config playwright.smoke.config.ts \
   placement-to-first-lesson.spec.ts
 ```
 
-Without those flags the spec auto-skips, mirroring the existing v3
-spec's pattern (`tests/e2e/placement-v3.spec.ts:5–14`).
+Placement routes are always mounted per Chau's June 12 product decision;
+the spec does not require placement build-time flags.
 
 ## Update protocol
 

@@ -6,10 +6,6 @@
 import React, { Suspense, useEffect, useRef } from "react";
 import { lazyWithRetry } from "@/lib/lazyWithRetry";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
-import {
-  isPlacementEntryRouteAvailable,
-  isPlacementV3RouteAvailable,
-} from "@/lib/placement/availability";
 import { AnonymousOnboardingGate } from "@/router/AnonymousOnboardingGate";
 import {
   Routes,
@@ -516,14 +512,6 @@ function AuthRedirect() {
   return <Navigate to={target} replace />;
 }
 
-function PlacementV3Gate({ children }: { children: React.ReactNode }) {
-  return (
-    <RequireAuth>
-      {isPlacementV3RouteAvailable() ? children : <Navigate to="/" replace />}
-    </RequireAuth>
-  );
-}
-
 // ── Shell ─────────────────────────────────────────────────────────────────────
 
 function AppHeroShell() {
@@ -898,87 +886,62 @@ export default function AppRouter() {
           <Route path="/dev/api"
             element={<LazyPage><DeveloperPortalPage /></LazyPage>} />
 
-          {/* Placement test — gated by FEATURE_FLAGS.PLACEMENT_TEST_ENABLED
-              (default false; see featureFlags.ts). Flag OFF → every
-              /placement* path redirects to home BEFORE any lazy mount
-              (engine never renders, no placement analytics/Sentry). Flag
-              ON → v3 multimodal session under PlacementV3Gate. v2 was
-              retired in PR-A (chore/c4-v2-retirement-pr-a); v3 has owned
-              the path since #1159 wired the profiles writeback. */}
+          {/* Placement test — always mounted per Chau's June 12 product
+              decision: placement must be reachable at all times for
+              everyone. Build-time flags remain defined for other consumers,
+              but no longer gate /placement routes. v2 was retired in PR-A
+              (chore/c4-v2-retirement-pr-a); v3 has owned the path since
+              #1159 wired the profiles writeback. */}
           <Route path="/placement"
             element={
-              <PlacementV3Gate>
-                <PlacementRouteShell routeName="placement_welcome">
-                  <LazyPage><PlacementV3WelcomePage /></LazyPage>
-                </PlacementRouteShell>
-              </PlacementV3Gate>
+              <PlacementRouteShell routeName="placement_welcome">
+                <LazyPage><PlacementV3WelcomePage /></LazyPage>
+              </PlacementRouteShell>
             }
           />
           <Route path="/placement/who"
             element={
-              <PlacementV3Gate>
-                <PlacementRouteShell routeName="placement_who_for">
-                  <LazyPage><PlacementV3WhoForPage /></LazyPage>
-                </PlacementRouteShell>
-              </PlacementV3Gate>
+              <PlacementRouteShell routeName="placement_who_for">
+                <LazyPage><PlacementV3WhoForPage /></LazyPage>
+              </PlacementRouteShell>
             }
           />
           <Route path="/placement/test"
             element={
-              <PlacementV3Gate>
-                {isPlacementEntryRouteAvailable() ? (
-                  <Navigate to="/placement" replace />
-                ) : (
-                  <Navigate to="/" replace />
-                )}
-              </PlacementV3Gate>
+              <Navigate to="/placement" replace />
             }
           />
           <Route path="/placement/results"
             element={
-              <PlacementV3Gate>
-                {isPlacementEntryRouteAvailable() ? (
-                  <Navigate to="/placement" replace />
-                ) : (
-                  <Navigate to="/" replace />
-                )}
-              </PlacementV3Gate>
+              <Navigate to="/placement" replace />
             }
           />
           <Route path="/placement/test/:sessionId"
             element={
-              <PlacementV3Gate>
-                <PlacementRouteShell routeName="placement_test">
-                  <LazyPage><PlacementV3TestPage /></LazyPage>
-                </PlacementRouteShell>
-              </PlacementV3Gate>
+              <PlacementRouteShell routeName="placement_test">
+                <LazyPage><PlacementV3TestPage /></LazyPage>
+              </PlacementRouteShell>
             }
           />
           <Route path="/placement/results/:sessionId"
             element={
-              <PlacementV3Gate>
-                <PlacementRouteShell routeName="placement_results">
-                  <LazyPage><PlacementV3ResultsPage /></LazyPage>
-                </PlacementRouteShell>
-              </PlacementV3Gate>
+              <PlacementRouteShell routeName="placement_results">
+                <LazyPage><PlacementV3ResultsPage /></LazyPage>
+              </PlacementRouteShell>
             }
           />
           <Route path="/placement/resume"
             element={
-              <PlacementV3Gate>
-                <PlacementRouteShell routeName="placement_resume">
-                  <LazyPage><PlacementV3ResumePage /></LazyPage>
-                </PlacementRouteShell>
-              </PlacementV3Gate>
+              <PlacementRouteShell routeName="placement_resume">
+                <LazyPage><PlacementV3ResumePage /></LazyPage>
+              </PlacementRouteShell>
             }
           />
           <Route path="/placement/skip"
             element={
-              <PlacementV3Gate>
-                <PlacementRouteShell routeName="placement_skip_confirm">
-                  <LazyPage><PlacementV3SkipConfirmPage /></LazyPage>
-                </PlacementRouteShell>
-              </PlacementV3Gate>
+              <PlacementRouteShell routeName="placement_skip_confirm">
+                <LazyPage><PlacementV3SkipConfirmPage /></LazyPage>
+              </PlacementRouteShell>
             }
           />
 

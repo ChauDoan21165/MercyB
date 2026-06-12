@@ -16,16 +16,7 @@
 import { test, expect } from "./fixtures/test";
 import { BASE_URL } from "./fixtures/env";
 
-const placementV3Enabled =
-  process.env.E2E_PLACEMENT_V3_ENABLED === "true" ||
-  process.env.VITE_PLACEMENT_TEST_ENABLED === "true";
-
 test.describe("placement → first lesson (anon happy path)", () => {
-  test.skip(
-    !placementV3Enabled,
-    "Placement v3 routes are compile-time gated off by default. Run with a build that enables PLACEMENT_TEST_ENABLED and PLACEMENT_V3_UI_ENABLED.",
-  );
-
   test("anon Home CTA → placement → Results → first lesson room URL", async ({ page }) => {
     // Step 1 + 2 — anon Home renders the Placement test CTA; click it.
     await page.goto(`${BASE_URL}/`);

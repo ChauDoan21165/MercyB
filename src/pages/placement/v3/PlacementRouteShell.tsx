@@ -2,14 +2,12 @@
 //
 // Single top-level shell that owns the route-mount lifecycle for
 // each /placement v3 page (Welcome / WhoFor / Test / Results /
-// Resume / SkipConfirm). The shell mounts INSIDE the existing
-// PlacementV3Gate so:
+// Resume / SkipConfirm). The shell mounts directly in each route so:
 //
-//   - The availability + auth gates run first (unchanged behavior).
-//   - When the gate redirects to "/" (flag off, or unauthenticated),
-//     the shell never mounts and the perf signal stays quiet.
-//   - When the gate passes, the shell mounts once and emits a single
-//     mount-perf breadcrumb via `reportRouteMountPerf`.
+//   - /placement route availability matches Chau's June 12 product
+//     decision: always reachable for everyone.
+//   - Each placement route emits a single mount-perf breadcrumb via
+//     `reportRouteMountPerf`.
 //
 // Observer-only contract: the shell renders its children verbatim
 // (`<>{children}</>`) and adds exactly one `useEffect([routeName])`

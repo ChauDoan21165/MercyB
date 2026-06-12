@@ -5,13 +5,13 @@ import {
 } from "@/lib/placement/availability";
 
 describe("placement route availability", () => {
-  it("matches the /placement entry gate", () => {
+  it("keeps /placement reachable regardless of legacy build-time flags", () => {
     expect(
       isPlacementEntryRouteAvailable({
         PLACEMENT_TEST_ENABLED: false,
         PLACEMENT_V3_UI_ENABLED: false,
       }),
-    ).toBe(false);
+    ).toBe(true);
     expect(
       isPlacementEntryRouteAvailable({
         PLACEMENT_TEST_ENABLED: true,
@@ -26,13 +26,13 @@ describe("placement route availability", () => {
     ).toBe(true);
   });
 
-  it("post-v2-retirement: V3 route availability can be enabled by either placement flag", () => {
+  it("keeps V3 routes always available per Chau's June 12 product decision", () => {
     expect(
       isPlacementV3RouteAvailable({
         PLACEMENT_TEST_ENABLED: false,
         PLACEMENT_V3_UI_ENABLED: false,
       }),
-    ).toBe(false);
+    ).toBe(true);
     expect(
       isPlacementV3RouteAvailable({
         PLACEMENT_TEST_ENABLED: true,
