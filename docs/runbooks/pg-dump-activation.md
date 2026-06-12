@@ -44,12 +44,10 @@ After completing every step below, the following will be true:
    alternatives in §3) exists with a dedicated bucket and a
    per-app application key.
 3. The four required GitLab CI/CD variables are set:
-   `SUPABASE_DB_URL`, `GPG_RECIPIENT_KEY`, `RCLONE_CONFIG`,
-   `RCLONE_REMOTE`. Names exactly as the dispatch specifies (the
-   dispatch brief used slight name variants like `DATABASE_URL` and
-   `RCLONE_CONFIG_REMOTE`; the **actual variable names the pipeline
-   reads** are these four — they're what `.gitlab-ci.yml` references,
-   so use them verbatim).
+   `DATABASE_URL`, `GPG_PUBLIC_KEY_FILE`, `RCLONE_CONFIG`,
+   `RCLONE_CONFIG_REMOTE`. Names exactly as `.gitlab-ci.yml` and
+   `scripts/db-backup/nightly-dump.sh` read them, so use them
+   verbatim.
 4. The scheduled `nightly-db-backup` pipeline runs at 04:00 UTC and
    writes a fresh `mercyb-<timestamp>-prod.dump.gpg` to your bucket.
 5. The `nightly-db-backup-now` manual job is greenwhen you trigger
@@ -148,13 +146,10 @@ multi-line values. A **regular** variable would either fail to save
 or save unmasked.
 
 A **file** variable solves both: GitLab writes the contents to a
-temporary path, and `nightly-dump.sh` auto-detects when
-`GPG_RECIPIENT_KEY_ID` points at a readable file and imports it on
-the fly (`scripts/db-backup/nightly-dump.sh` lines 67–84). The
-`.gitlab-ci.yml` jobs set `GPG_RECIPIENT_KEY_ID="$GPG_RECIPIENT_KEY"`
-— the variable expansion gives the path.
+temporary path, and `nightly-dump.sh` reads `GPG_PUBLIC_KEY_FILE` as
+that path and imports the public key on the fly.
 
-**Therefore: use type "File" for `GPG_RECIPIENT_KEY`, not type
+**Therefore: use type "File" for `GPG_PUBLIC_KEY_FILE`, not type
 "Variable."**
 
 ---
@@ -252,7 +247,7 @@ Walkthrough — each prompt → answer:
 | Prompt | Answer |
 |---|---|
 | `n/s/q>` | `n` (new remote) |
-| `name>` | `b2` (must match what you'll use in `RCLONE_REMOTE`; if you change it, adjust accordingly throughout) |
+| `name>` | `b2` (must match what you'll use in `RCLONE_CONFIG_REMOTE`; if you change it, adjust accordingly throughout) |
 | `Storage>` (list of provider numbers) | type `b2` or the number next to `Backblaze B2`. |
 | `Application Key ID> account>` | paste your `keyID` from §3.2. |
 | `Application Key> key>` | paste your `applicationKey` from §3.2. |
@@ -301,7 +296,7 @@ file including the `[b2]` header.
 
 ## §5 Find your Supabase `DATABASE_URL`
 
-The pipeline's `SUPABASE_DB_URL` is the direct-Postgres connection
+The pipeline's `DATABASE_URL` is the direct-Postgres connection
 string for the prod database. **Not** the public API URL; **not**
 the connection-pooler URL.
 
@@ -365,10 +360,10 @@ checkboxes are what make the pipeline secure.
 
 | Key | Type | Value | Protected | Masked | Notes |
 |---|---|---|---|---|---|
-| `SUPABASE_DB_URL` | Variable | `postgresql://postgres:<password>@db.buemdfxyhxunzpgdoqin.supabase.co:5432/postgres` | ✓ | ✓ | The password contains characters GitLab's masking accepts (no whitespace). If GitLab refuses to mask it, regenerate the Supabase password until it accepts. |
-| `GPG_RECIPIENT_KEY` | **File** | Contents of `mercyb-backup-pub.asc` from §2.2 | ✓ | (cannot mask file vars) | Multi-line; masking is not applicable. GitLab writes the contents to a temp file in the runner and exposes the file path as the variable value. |
-| `RCLONE_CONFIG` | **File** | Contents of `~/.config/rclone/rclone.conf` from §4.4 | ✓ | (cannot mask file vars) | Same shape as `GPG_RECIPIENT_KEY` — multi-line config file. |
-| `RCLONE_REMOTE` | Variable | `b2:mercyb-backups/prod` | ✓ | ✗ (no need to mask — this is just a bucket path, not a secret) | The path inside the bucket where dumps go. `b2:` must match the `[b2]` section name in your `RCLONE_CONFIG`. |
+| `DATABASE_URL` | **File** | `postgresql://postgres:<password>@db.buemdfxyhxunzpgdoqin.supabase.co:5432/postgres` | ✓ | ✓ | File type is accepted because the dump script dereferences file-backed env values before connecting. |
+| `GPG_PUBLIC_KEY_FILE` | **File** | Contents of `mercyb-backup-pub.asc` from §2.2 | ✓ | (cannot mask file vars) | Multi-line; masking is not applicable. GitLab writes the contents to a temp file in the runner and exposes the file path as the variable value. |
+| `RCLONE_CONFIG` | **File** | Contents of `~/.config/rclone/rclone.conf` from §4.4 | ✓ | (cannot mask file vars) | Same shape as `GPG_PUBLIC_KEY_FILE` — multi-line config file. |
+| `RCLONE_CONFIG_REMOTE` | Variable | `b2:mercyb-backups/prod` | ✓ | ✗ (no need to mask — this is just a bucket path, not a secret) | The path inside the bucket where dumps go. `b2:` must match the `[b2]` section name in your `RCLONE_CONFIG`. |
 
 ### §6.3 Sanity check via verification script
 
@@ -492,10 +487,10 @@ Example output (mid-setup):
 [verify-pg-dump-setup] GitLab project: cd12536/mercyB
 
   CI/CD variables
-    [GREEN]  SUPABASE_DB_URL    present
-    [GREEN]  GPG_RECIPIENT_KEY  present (file type)
-    [RED  ]  RCLONE_CONFIG      NOT FOUND in project variables
-    [RED  ]  RCLONE_REMOTE      NOT FOUND in project variables
+    [GREEN]  DATABASE_URL  present (file type)
+    [GREEN]  GPG_PUBLIC_KEY_FILE  present (file type)
+    [RED  ]  RCLONE_CONFIG  NOT FOUND in project variables
+    [RED  ]  RCLONE_CONFIG_REMOTE  NOT FOUND in project variables
 
   Pipeline schedules
     [YELLOW] nightly-db-backup schedule  NOT FOUND (run §7 of pg-dump-activation.md)
@@ -509,15 +504,16 @@ When fully set up:
 [verify-pg-dump-setup] GitLab project: cd12536/mercyB
 
   CI/CD variables
-    [GREEN]  SUPABASE_DB_URL    present
-    [GREEN]  GPG_RECIPIENT_KEY  present (file type)
-    [GREEN]  RCLONE_CONFIG      present (file type)
-    [GREEN]  RCLONE_REMOTE      present
+    [GREEN]  DATABASE_URL  present (file type)
+    [GREEN]  GPG_PUBLIC_KEY_FILE  present (file type)
+    [GREEN]  RCLONE_CONFIG  present (file type)
+    [GREEN]  RCLONE_CONFIG_REMOTE  present
 
   Pipeline schedules
     [GREEN]  nightly-db-backup schedule  present (next run: 2026-05-28T04:00:00Z)
+    [GREEN]  nightly-db-backup schedule  cron matches 0 4 * * * UTC
 
-Summary: 5 GREEN, 0 YELLOW, 0 RED
+Summary: 6 GREEN, 0 YELLOW, 0 RED
 ```
 
 ### §9.2 Prerequisites for the script
@@ -541,11 +537,11 @@ glab auth login   # follow the OAuth-or-token prompts
 
 ### §10.1 The manual job fails at `gpg --encrypt`
 
-Likely cause: `GPG_RECIPIENT_KEY` was uploaded as type **Variable**
+Likely cause: `GPG_PUBLIC_KEY_FILE` was uploaded as type **Variable**
 instead of type **File**. The pipeline expects a file path and got
 the literal armored key.
 
-Fix: re-create `GPG_RECIPIENT_KEY` with type **File**.
+Fix: re-create `GPG_PUBLIC_KEY_FILE` with type **File**.
 
 ### §10.2 The manual job fails at `rclone copy`
 
@@ -553,8 +549,8 @@ Likely causes:
 
 - `RCLONE_CONFIG` is type Variable instead of File.
 - The `[b2]` remote name in `rclone.conf` doesn't match the prefix
-  in `RCLONE_REMOTE` (e.g. `RCLONE_REMOTE=b2:...` but the config
-  has `[backblaze]` not `[b2]`).
+  in `RCLONE_CONFIG_REMOTE` (e.g. `RCLONE_CONFIG_REMOTE=b2:...` but
+  the config has `[backblaze]` not `[b2]`).
 - The Backblaze application key was revoked or has wrong scope.
 
 Fix: re-verify §4 locally (`rclone lsf b2:` from your laptop). If
@@ -562,11 +558,11 @@ local works, the GitLab `RCLONE_CONFIG` content is wrong; re-paste.
 
 ### §10.3 The manual job fails at `pg_dump` with "FATAL: password authentication failed"
 
-The `SUPABASE_DB_URL` password is wrong, or it was rotated since
+The `DATABASE_URL` password is wrong, or it was rotated since
 last set.
 
 Fix: §5.1 → reset the Supabase database password → update
-`SUPABASE_DB_URL` in GitLab CI/CD variables (use **Update value**,
+`DATABASE_URL` in GitLab CI/CD variables (use **Update value**,
 don't add a duplicate).
 
 ### §10.4 The verification script reports YELLOW for the schedule

@@ -8,14 +8,16 @@
 # This script confirms — WITHOUT ever reading secret values and WITHOUT
 # ever running the actual pg_dump — that:
 #   1. The four required GitLab CI/CD variables exist in the project
-#      (SUPABASE_DB_URL, GPG_RECIPIENT_KEY, RCLONE_CONFIG, RCLONE_REMOTE).
-#   2. A pipeline schedule for `nightly-db-backup` exists.
+#      (DATABASE_URL, GPG_PUBLIC_KEY_FILE, RCLONE_CONFIG,
+#      RCLONE_CONFIG_REMOTE).
+#   2. A pipeline schedule for `nightly-db-backup` exists and matches
+#      the expected 04:00 UTC cron (`0 4 * * *`, timezone UTC).
 #
 # Run it after each step of `docs/runbooks/pg-dump-activation.md` to
 # confirm progress. Exit 0 = all checks GREEN; exit 1 = at least one
 # RED finding (action required). YELLOW findings are warnings (e.g.
-# the schedule isn't created yet but variables are; that's expected
-# mid-setup) and do NOT fail the exit code on their own.
+# the schedule isn't created yet, or the schedule exists but its cron
+# drifted) and do NOT fail the exit code on their own.
 #
 # Why this exists:
 #   - Setting up the pipeline involves seven independent CI/CD variables
@@ -30,7 +32,7 @@
 #     `nightly-db-backup-now` manual job per §8 of the activation
 #     runbook.
 #   - Validate that the variable VALUES are correct (e.g. that the
-#     SUPABASE_DB_URL points at the real prod DB). Only presence is
+#     DATABASE_URL points at the real prod DB). Only presence is
 #     checked. Value validity is verified by §8's manual job.
 #   - Modify any GitLab state. Read-only inspection via `glab variable
 #     list` and `glab schedule list`. If `glab` is missing, the script
@@ -66,6 +68,9 @@ fi
 GREEN_COUNT=0
 YELLOW_COUNT=0
 RED_COUNT=0
+
+EXPECTED_BACKUP_CRON="0 4 * * *"
+EXPECTED_BACKUP_CRON_TIMEZONE="UTC"
 
 mark_green()  { GREEN_COUNT=$((GREEN_COUNT + 1));  printf '    %s[GREEN]%s  %s\n' "$C_GREEN"  "$C_RESET" "$1"; }
 mark_yellow() { YELLOW_COUNT=$((YELLOW_COUNT + 1)); printf '    %s[YELLOW]%s %s\n' "$C_YELLOW" "$C_RESET" "$1"; }
@@ -130,6 +135,10 @@ check_variable_presence() {
     return
   fi
 
+  if [[ "$actual_type" == "env_var" ]]; then
+    actual_type="variable"
+  fi
+
   if [[ "$actual_type" == "$expected_type" ]]; then
     if [[ "$expected_type" == "file" ]]; then
       mark_green "$var_name  present (file type)"
@@ -141,10 +150,10 @@ check_variable_presence() {
   fi
 }
 
-check_variable_presence "SUPABASE_DB_URL"     "variable"
-check_variable_presence "GPG_RECIPIENT_KEY"   "file"
-check_variable_presence "RCLONE_CONFIG"       "file"
-check_variable_presence "RCLONE_REMOTE"       "variable"
+check_variable_presence "DATABASE_URL"         "file"
+check_variable_presence "GPG_PUBLIC_KEY_FILE"  "file"
+check_variable_presence "RCLONE_CONFIG"        "file"
+check_variable_presence "RCLONE_CONFIG_REMOTE" "variable"
 
 printf '\n'
 
@@ -178,11 +187,20 @@ if [[ -n "$SCHEDULES_JSON" ]]; then
   if ! printf '%s' "$SCHEDULES_JSON" | jq -e 'type == "array"' >/dev/null 2>&1; then
     mark_yellow "schedule list returned non-array JSON; presence check skipped"
   else
-    NEXT_RUN="$(printf '%s' "$SCHEDULES_JSON" \
-      | jq -r '.[] | select((.description // "") | test("nightly[-_]db[-_]backup"; "i")) | (.next_run_at // .nextRunAt // empty)' \
+    BACKUP_SCHEDULE_JSON="$(printf '%s' "$SCHEDULES_JSON" \
+      | jq -c '.[] | select((.description // "") | test("nightly[-_]db[-_]backup"; "i"))' \
       | head -n 1)"
+    NEXT_RUN="$(printf '%s' "$BACKUP_SCHEDULE_JSON" | jq -r '(.next_run_at // .nextRunAt // empty)')"
     if [[ -n "$NEXT_RUN" ]]; then
       mark_green "nightly-db-backup schedule  present (next run: $NEXT_RUN)"
+
+      ACTUAL_CRON="$(printf '%s' "$BACKUP_SCHEDULE_JSON" | jq -r '(.cron // empty)')"
+      ACTUAL_CRON_TIMEZONE="$(printf '%s' "$BACKUP_SCHEDULE_JSON" | jq -r '(.cron_timezone // .cronTimezone // empty)')"
+      if [[ "$ACTUAL_CRON" == "$EXPECTED_BACKUP_CRON" && "$ACTUAL_CRON_TIMEZONE" == "$EXPECTED_BACKUP_CRON_TIMEZONE" ]]; then
+        mark_green "nightly-db-backup schedule  cron matches ${EXPECTED_BACKUP_CRON} ${EXPECTED_BACKUP_CRON_TIMEZONE}"
+      else
+        mark_yellow "nightly-db-backup schedule  cron is '${ACTUAL_CRON:-unknown}' timezone '${ACTUAL_CRON_TIMEZONE:-unknown}', expected '${EXPECTED_BACKUP_CRON}' '${EXPECTED_BACKUP_CRON_TIMEZONE}'"
+      fi
     else
       # Schedule may exist but lack next_run_at (deactivated).
       DESCRIPTION_HIT="$(printf '%s' "$SCHEDULES_JSON" \

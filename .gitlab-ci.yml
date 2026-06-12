@@ -930,7 +930,7 @@ playwright-perf-budgets:shared-fallback:
 # Runs full Vitest suite (non-sharded) + playwright perf-budgets on main
 # every night via schedule pipeline. Hotfixes merge to main and are covered
 # the same night. Create (or reuse) a GitLab CI schedule (Settings → CI/CD
-# → Schedules) targeting main, e.g. "0 2 * * *" (02:00 UTC), to activate
+# → Schedules) targeting main, e.g. "0 4 * * *" (04:00 UTC), to activate
 # this job. The S19 nightly harness schedule can be reused if its cron
 # already points at main.
 nightly-full-suite:
@@ -1409,7 +1409,7 @@ nightly-db-backup:
 # No LLM-judge step. Ambiguous items score ABSTAIN (excluded from pass-rate).
 #
 # Activation (Chau one-time):
-#   Create a Scheduled Pipeline on main, cron `0 2 * * *`,
+#   Create a Scheduled Pipeline on main, cron `0 4 * * *`,
 #   set variable MERCYB_SELF_EVAL_ENABLED=1.
 #   (No new secrets needed — the job uses no Supabase/API keys.)
 #
