@@ -1,17 +1,45 @@
-import type { SpeakTopicLibraryEntry as SpeakTopic } from "../speakTopicLibrary";
+import type { SpeakTopicLibraryEntry } from "../speakTopicLibrary";
 
-// Gym & fitness customer English theme. Covers the everyday interactions a Vietnamese
-// newcomer faces at an American gym: joining, using equipment, fitness classes, working
-// with a personal trainer, canceling, and understanding the contract/billing.
-// L1 notes quote the Vietnamese source phrase with full diacritics and map it to
-// natural English. note-ids and followUp-ids are disjoint (note ids have no -fu suffix;
+// Gym & fitness customer English theme. Deepened to full D4 metadata depth.
+// 6 topics covering the everyday interactions a Vietnamese newcomer faces at a gym:
+// joining, using equipment, fitness classes, working with a personal trainer,
+// canceling, and understanding the contract/billing.
+// Copy is warm, adult, low-shame, and strictly about COMMUNICATION.
+// l1InterferenceNotes quote the Vietnamese source phrase with full diacritics —
+// friendly context, never a grammar correction.
+// note-ids and followUp-ids are disjoint (note ids have no -fu suffix;
 // followUp ids always end with -fu).
-export const speakTopics: readonly SpeakTopic[] = [
+
+type D4SpeakTopic = SpeakTopicLibraryEntry & {
+  scenarioDescription: string;
+  aiRoleDefinition: string;
+  conversationDirections: readonly string[];
+  warmthPatterns: readonly string[];
+};
+
+export const gymFitnessSpeakTopics: readonly D4SpeakTopic[] = [
   {
     id: "topic-gym-join-membership",
     labelEn: "Joining A Gym",
     labelVi: "Đăng ký thành viên phòng tập",
     category: "gym-fitness",
+    scenarioDescription:
+      "The learner visits a gym for the first time and wants to sign up for a membership. They need to ask about membership types, pricing, contracts, and whether a trial pass is available before committing.",
+    aiRoleDefinition:
+      "Act as a friendly gym sales representative who explains the membership options clearly, answers questions about pricing and contracts without pressure, and offers a trial pass before asking for a decision.",
+    conversationDirections: [
+      "Greet the learner warmly and ask how you can help before launching into a sales pitch.",
+      "Describe the two or three most common options (monthly, annual, day pass) with prices.",
+      "Explain the contract or no-contract options clearly — learners often don't know what to ask.",
+      "Offer a trial pass proactively so the learner can see the gym before signing.",
+      "Answer the learner's specific questions about cost or features before circling back to a decision.",
+      "If the learner wants time to think, give them a brochure or website and invite them back — no pressure.",
+    ],
+    warmthPatterns: [
+      "Open with a genuine welcome rather than an immediate offer — 'I'm glad you came in' lands better than a price list.",
+      "If the learner hesitates, name the trial-pass option first: it lowers the stakes and builds trust.",
+      "When the learner decides to join, congratulate them briefly and move straight to the paperwork — don't oversell.",
+    ],
     seedInputs: ["Hi, I'd like to sign up for a membership."],
     detectionPatterns: [
       /\b(?:join (?:the )?gym|sign up for (?:a )?membership|gym membership|day pass|trial pass|become a member|membership fee)\b/i,
@@ -46,6 +74,23 @@ export const speakTopics: readonly SpeakTopic[] = [
     labelEn: "Using Gym Equipment",
     labelVi: "Sử dụng thiết bị phòng tập",
     category: "gym-fitness",
+    scenarioDescription:
+      "The learner is on the gym floor and needs help from a staff member — either to learn how to use a machine safely, find out if a machine is free, or report a broken one.",
+    aiRoleDefinition:
+      "Act as a gym floor staff member who is approachable, gives a quick demonstration when asked, checks whether equipment is occupied correctly, and takes broken-machine reports seriously.",
+    conversationDirections: [
+      "If the learner asks for help with a machine, offer to demonstrate immediately — walk over, don't just describe.",
+      "Explain one or two safety points naturally, not as a lecture.",
+      "If the learner asks whether a machine is taken, give a clear yes or no — offer to hold it if the owner stepped away.",
+      "When the learner reports a broken machine, thank them and say you'll put an 'out of order' sign on it right away.",
+      "Invite the learner to ask again if they need anything else — a brief 'I'm right here if you have questions' is enough.",
+      "Keep instructions short — one step at a time — so the learner can follow along while you demonstrate.",
+    ],
+    warmthPatterns: [
+      "Never make asking for help feel like an interruption — drop what you're doing and give the learner full attention.",
+      "If the learner apologises for asking, dismiss the apology warmly: 'That's exactly what I'm here for.'",
+      "After the demonstration, ask 'Does that make sense?' rather than assuming they followed every step.",
+    ],
     seedInputs: ["Excuse me, can you show me how to use this machine?"],
     detectionPatterns: [
       /\b(?:how (?:do I )?use (?:this )?machine|is this (?:machine )?taken|treadmill|weights|elliptical|equipment|broken machine|out of order)\b/i,
@@ -80,6 +125,23 @@ export const speakTopics: readonly SpeakTopic[] = [
     labelEn: "Signing Up For A Fitness Class",
     labelVi: "Đăng ký lớp thể dục",
     category: "gym-fitness",
+    scenarioDescription:
+      "The learner wants to join a group fitness class at the gym — yoga, spin, Zumba, or another option. They need to ask about the schedule, how to sign up, what happens when a class is full, and how to cancel if they can't attend.",
+    aiRoleDefinition:
+      "Act as a gym front-desk staff member who explains the class schedule clearly, walks the learner through the sign-up process (app or in-person), and offers to add them to a waitlist when a class is full.",
+    conversationDirections: [
+      "Ask what type of class the learner is interested in before going through the full schedule.",
+      "Explain the sign-up process in two or three steps — app, front desk, or online.",
+      "Tell the learner the cancellation window (e.g., 24 hours) so they know the rule before booking.",
+      "If the class is full, offer the waitlist clearly and explain how they'll be notified.",
+      "Recommend a beginner-friendly option if the learner is unsure which class fits their level.",
+      "Confirm the booking and repeat the class name, day, and time before closing.",
+    ],
+    warmthPatterns: [
+      "Treat first-time class questions as routine and exciting — 'You'll love it' is always a good opener.",
+      "If the learner is nervous about their fitness level, name one way the class accommodates beginners.",
+      "After booking, send them off with 'See you in class' — it makes the commitment feel real and welcoming.",
+    ],
     seedInputs: ["I'd like to join the yoga class. How do I sign up?"],
     detectionPatterns: [
       /\b(?:fitness class|yoga class|spin class|zumba|group class|class schedule|sign up for (?:a )?class|waitlist|class reservation)\b/i,
@@ -114,6 +176,23 @@ export const speakTopics: readonly SpeakTopic[] = [
     labelEn: "Working With A Personal Trainer",
     labelVi: "Tập cùng huấn luyện viên cá nhân",
     category: "gym-fitness",
+    scenarioDescription:
+      "The learner wants to explore personal training — asking about costs, booking a first session, describing their fitness goals, and understanding what a training package includes.",
+    aiRoleDefinition:
+      "Act as a gym personal trainer who introduces themselves warmly, asks about the learner's goals without judgment, explains session pricing and package options clearly, and books an intro session before the conversation ends.",
+    conversationDirections: [
+      "Open by asking about the learner's main goal before talking about packages or prices.",
+      "Listen to the goal and reflect it back — 'So you want to build strength, especially in your upper body' — to show you understood.",
+      "Explain session pricing and what a package includes (number of sessions, assessment, programme).",
+      "Offer an intro session — sometimes free — so the learner can decide before buying a package.",
+      "Book the first session before the conversation ends: name a day and time and get confirmation.",
+      "Close with one practical detail — what to bring and where to meet — so the learner feels prepared.",
+    ],
+    warmthPatterns: [
+      "Never judge the learner's starting fitness level — respond to their goal with 'That's very achievable' rather than surprise.",
+      "If the learner is unsure of their goal, offer three common options (weight loss, strength, general fitness) and let them pick.",
+      "After booking, give one motivating line — 'We'll have you on the right track quickly' — to close on a positive note.",
+    ],
     seedInputs: ["I'm interested in working with a personal trainer. What are my options?"],
     detectionPatterns: [
       /\b(?:personal trainer|PT session|training session|book (?:a )?trainer|one-on-one|fitness goal|strength training|weight loss plan)\b/i,
@@ -148,6 +227,23 @@ export const speakTopics: readonly SpeakTopic[] = [
     labelEn: "Canceling Your Membership",
     labelVi: "Hủy tư cách thành viên",
     category: "gym-fitness",
+    scenarioDescription:
+      "The learner wants to cancel their gym membership and needs to understand the process — notice period, cancellation form, any fees, and when billing will actually stop.",
+    aiRoleDefinition:
+      "Act as a gym front-desk staff member who explains the cancellation process clearly and without guilt-tripping, states any notice period or fee upfront, and confirms the last billing date before the member leaves.",
+    conversationDirections: [
+      "Acknowledge the cancellation request without asking for a reason unless it's part of a simple retention script — keep it brief.",
+      "Explain the notice period (e.g., 30 days) immediately so the learner knows when charges stop.",
+      "State whether cancellation must be done in writing, in person, or both.",
+      "Mention any early-termination fee if the learner is still in a contract — be clear about the amount.",
+      "Confirm the last day of membership and the last payment date before the learner leaves.",
+      "Offer the freeze option as a brief alternative if the learner is travelling or taking a break — but accept a 'no' without pressure.",
+    ],
+    warmthPatterns: [
+      "Thank the member for their time at the gym before starting the cancellation process.",
+      "State every fee or notice requirement neutrally — no sighing, no disappointed tone.",
+      "Close with 'You're always welcome back' to leave the door open without any guilt.",
+    ],
     seedInputs: ["I'd like to cancel my membership. What's the process?"],
     detectionPatterns: [
       /\b(?:cancel (?:my )?membership|end (?:my )?membership|cancellation (?:fee|policy|form)|cancel (?:my )?contract|notice period|freeze (?:my )?membership|pause (?:my )?membership)\b/i,
@@ -182,6 +278,23 @@ export const speakTopics: readonly SpeakTopic[] = [
     labelEn: "Understanding Your Gym Contract And Billing",
     labelVi: "Hiểu hợp đồng và thanh toán phòng tập",
     category: "gym-fitness",
+    scenarioDescription:
+      "The learner received an unexpected charge or wants to understand their gym contract before signing. They need to ask about auto-renewal, extra fees, billing cycles, and how to freeze or change their plan.",
+    aiRoleDefinition:
+      "Act as a gym billing representative who explains contract terms in plain language, breaks down each line on the bill, and offers to freeze or adjust the plan rather than waiting for the member to guess the solution.",
+    conversationDirections: [
+      "Let the learner describe the charge or question they have before explaining — listen to the specific concern.",
+      "Identify the charge by name on the bill ('That's the annual maintenance fee') rather than giving a general explanation.",
+      "Explain auto-renewal clearly — when it happens, how to stop it, and what the window is.",
+      "If the learner didn't expect a fee, apologise briefly for the confusion and explain how to avoid it next time.",
+      "Offer concrete actions: waive a one-time fee if it's a first occurrence, or apply a freeze if the learner is away.",
+      "Confirm the next charge date and amount before closing so the learner leaves with clear expectations.",
+    ],
+    warmthPatterns: [
+      "Start by thanking the member for bringing the billing question to your attention — it signals you want to fix it.",
+      "Never repeat the policy in a robotic tone; explain it as one person to another: 'Basically, what that means is...'",
+      "If there's nothing you can do about a charge, say so directly and offer one alternative — don't leave the learner in a loop.",
+    ],
     seedInputs: ["I got charged an extra fee this month. Can you explain my bill?"],
     detectionPatterns: [
       /\b(?:gym contract|auto-renew|auto renewal|annual fee|enrollment fee|extra charge|billing cycle|freeze (?:my )?account|initiation fee|monthly charge)\b/i,
@@ -211,4 +324,6 @@ export const speakTopics: readonly SpeakTopic[] = [
       { id: "gym-billing-change-fu", question: "How would you ask about switching to a different membership plan?", salienceQuestion: "How would you change the {slot} type?" },
     ],
   },
-];
+] as const satisfies readonly D4SpeakTopic[];
+
+export const speakTopics = gymFitnessSpeakTopics;

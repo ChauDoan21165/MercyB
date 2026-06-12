@@ -1,17 +1,43 @@
 import type { SpeakTopicLibraryEntry } from "../speakTopicLibrary";
 
-// Haircut / barber / salon — customer side. The real situations a Vietnamese
-// newcomer handles as a customer: booking, describing what they want, giving
-// feedback during the cut, asking about services, and paying. Distinct from
-// nailTechnicianEnglish (the worker side). Deterministic / client-side; copy
-// is warm, adult, low-shame. l1InterferenceNotes quote the Vietnamese source
-// phrase with full diacritics — friendly context, never a grammar correction.
-export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
+// Haircut / barber / salon — customer side. Deepened to full D4 metadata depth.
+// 5 topics covering the real situations a Vietnamese newcomer handles as a customer:
+// booking, describing the style, giving feedback during the cut, asking about extras,
+// and paying. Distinct from nailTechnicianEnglish (the worker side).
+// Copy is warm, adult, low-shame, and strictly about COMMUNICATION.
+// l1InterferenceNotes quote the Vietnamese source phrase with full diacritics —
+// friendly context, never a grammar correction.
+
+type D4SpeakTopic = SpeakTopicLibraryEntry & {
+  scenarioDescription: string;
+  aiRoleDefinition: string;
+  conversationDirections: readonly string[];
+  warmthPatterns: readonly string[];
+};
+
+export const haircutCustomerSpeakTopics: readonly D4SpeakTopic[] = [
   {
     id: "topic-haircut-booking",
     labelEn: "Booking A Haircut",
     labelVi: "Đặt lịch cắt tóc",
     category: "haircut-customer",
+    scenarioDescription:
+      "The learner wants to make a haircut appointment — either by phone or in person. They need to ask about availability, give their preferred day and time, confirm the booking, and find out basic details like walk-in policy and appointment length.",
+    aiRoleDefinition:
+      "Act as a friendly salon receptionist who greets the caller, checks the schedule, asks for a preferred day and time, confirms the appointment, and gives a brief run-down of what to expect.",
+    conversationDirections: [
+      "Let the learner open by saying they want to book — wait for their full opener before asking questions.",
+      "Ask for their preferred day or time to show the schedule.",
+      "If their first choice isn't available, offer two alternatives rather than just saying no.",
+      "Ask whether they have a preferred stylist or are happy with anyone available.",
+      "Confirm the booking clearly — day, time, and stylist name — before closing.",
+      "Mention the walk-in option briefly so the learner knows both paths exist.",
+    ],
+    warmthPatterns: [
+      "Thank the caller for choosing the salon before asking any questions.",
+      "Treat 'I'm not sure which day yet' as a perfectly fine answer — suggest the soonest open slot instead.",
+      "Close every booking with a warm 'See you then' so the learner feels the appointment is real and secure.",
+    ],
     seedInputs: [
       "Hi, I'd like to book a haircut for Saturday morning.",
       "Do you have any openings this week?",
@@ -50,6 +76,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Describing The Style You Want",
     labelVi: "Mô tả kiểu tóc mình muốn",
     category: "haircut-customer",
+    scenarioDescription:
+      "The learner sits down in the chair and needs to explain to the stylist exactly what they want — length, shape, layers, and any specific preferences — clearly enough that the result matches their idea.",
+    aiRoleDefinition:
+      "Act as an experienced stylist who listens attentively, asks one or two helpful clarifying questions (length, texture, layers), and confirms they understand before reaching for the scissors.",
+    conversationDirections: [
+      "Let the learner describe their vision before offering any opinions — listen fully first.",
+      "Ask one focused clarifying question about the most important detail (length or shape).",
+      "Mirror back what you heard in stylist language to confirm understanding.",
+      "If the learner shows a photo, welcome it warmly — say you can work with that.",
+      "Gently flag any concern (e.g., hair condition, major change) with one sentence, then let the learner decide.",
+      "End the consultation by saying 'Let's get started' so the learner knows you're ready.",
+    ],
+    warmthPatterns: [
+      "Receive every photo or description with genuine enthusiasm — never make the learner feel their idea is unusual.",
+      "If the learner hesitates on a detail, name two common options to help them choose rather than leaving silence.",
+      "Reassure the learner that mid-cut adjustments are always welcome — no need to stay quiet.",
+    ],
     seedInputs: [
       "I'd like a trim — just a little off the ends.",
       "Can I show you a photo of what I'm looking for?",
@@ -88,6 +131,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Giving Feedback During The Cut",
     labelVi: "Phản hồi trong khi cắt tóc",
     category: "haircut-customer",
+    scenarioDescription:
+      "The haircut is underway and the learner needs to speak up — whether to ask for a small adjustment, say they're happy with how it's going, or ask to check an area they can't see clearly.",
+    aiRoleDefinition:
+      "Act as a stylist who is mid-cut and pauses naturally at key moments — after the first section, before trimming the other side, and before the final pass — to invite feedback.",
+    conversationDirections: [
+      "Pause after finishing one side and ask the learner what they think so far.",
+      "If the learner asks for a change, accept it calmly — make the adjustment and confirm it's better.",
+      "Hold up a mirror to show the back when you finish the shape, and invite the learner to comment.",
+      "If the learner says it's good, confirm you'll stop and move to the finishing step.",
+      "Invite the learner to speak up at any time — make it feel safe to ask for changes.",
+      "Close the feedback loop with 'Happy with that?' before moving to paying.",
+    ],
+    warmthPatterns: [
+      "Treat every feedback request as routine — never show irritation or surprise at a request for a small change.",
+      "If the learner stays quiet, gently prompt them: 'Does that look right to you?' so they feel included.",
+      "When the learner says it's good, echo it warmly — 'Great, looking good' — to confirm you heard them.",
+    ],
     seedInputs: [
       "Could you go a little shorter on the left side?",
       "That's good — don't take any more off.",
@@ -126,6 +186,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Asking About Extra Services",
     labelVi: "Hỏi về các dịch vụ thêm",
     category: "haircut-customer",
+    scenarioDescription:
+      "Before sitting down or while paying, the learner wants to find out what additional services — wash, blow-dry, colour, beard trim — the salon offers and how much they cost.",
+    aiRoleDefinition:
+      "Act as a salon receptionist or stylist who knows the full service menu well, gives clear prices and time estimates, and makes it easy for the learner to add or skip extras without pressure.",
+    conversationDirections: [
+      "Let the learner ask first — don't push extras before they bring them up.",
+      "When they ask about an extra, state clearly whether it's included or costs more.",
+      "Give a brief price range for colour or other costly services so the learner can decide.",
+      "Offer to book a separate appointment for a big service if the learner wants time to think.",
+      "If the learner declines an extra, accept it without repeating the offer.",
+      "Summarise the final service list once — 'So that's a cut and blow-dry' — before heading to the chair.",
+    ],
+    warmthPatterns: [
+      "Name the price proactively when discussing extras — learners shouldn't have to drag it out of you.",
+      "If a service takes extra time, say so naturally: 'Colour takes about ninety minutes — shall I block that out?'",
+      "Never make the learner feel obligated to add anything; a warm 'No problem, just the cut then' goes a long way.",
+    ],
     seedInputs: [
       "Do you also do beard trims here?",
       "Is a wash and blow-dry included?",
@@ -164,6 +241,23 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
     labelEn: "Paying And Tipping",
     labelVi: "Thanh toán và tiền tip",
     category: "haircut-customer",
+    scenarioDescription:
+      "The cut is done and the learner needs to handle payment — ask the total, choose a payment method, add a tip if they want, and ask for a receipt or rebook before leaving.",
+    aiRoleDefinition:
+      "Act as a friendly salon receptionist at the front desk who processes payment smoothly, names the total clearly, explains the tip options (cash or card), and invites the learner to book their next visit.",
+    conversationDirections: [
+      "State the total amount clearly as soon as the learner approaches the desk.",
+      "Tell them whether the card reader allows a tip to be added or whether tips are cash only.",
+      "If the learner asks about tipping, give a brief local norm without pressure — 'Ten to fifteen percent is common, but it's always your choice.'",
+      "Offer a receipt without being asked — many learners want one but won't ask.",
+      "Invite them to rebook before they leave — 'Would you like to book your next appointment now?'",
+      "Thank them genuinely and use their name if you have it.",
+    ],
+    warmthPatterns: [
+      "Never make the learner feel rushed at the till — give them a moment to find their card or cash without sighing.",
+      "If they decline to tip, accept it with a smile — 'No problem at all, thank you for coming in.'",
+      "Send them off with a compliment on the result: 'It looks great — enjoy it!'",
+    ],
     seedInputs: [
       "How much do I owe?",
       "Do you accept card, or is it cash only?",
@@ -197,4 +291,6 @@ export const speakTopics: readonly SpeakTopicLibraryEntry[] = [
       { id: "haircut-tip-rebook", question: "How would you say you'd like to book again before leaving?", salienceQuestion: "How would you rebook the {slot}?" },
     ],
   },
-] as const;
+] as const satisfies readonly D4SpeakTopic[];
+
+export const speakTopics = haircutCustomerSpeakTopics;
