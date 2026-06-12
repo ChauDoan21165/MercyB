@@ -19,12 +19,16 @@ Evidence:
 
 ### Placement Routes
 
-#942 adds the Placement V3 route block safely:
+Historical audit result before Chau's June 12 product decision:
 
 - `/placement` and `/placement/who` mount V3 pages only when `PLACEMENT_V3_UI_ENABLED` is true.
-- `/placement/test/:sessionId`, `/placement/results/:sessionId`, `/placement/resume`, and `/placement/skip` are wrapped in `PlacementV3Gate`.
+- `/placement/test/:sessionId`, `/placement/results/:sessionId`, `/placement/resume`, and `/placement/skip` were wrapped in the former placement route gate.
 - Legacy v2 fallback remains behind `PLACEMENT_TEST_ENABLED`.
 - With both flags default false, `/placement*` paths still fail closed.
+
+Superseded June 12: `/placement` routes now mount regardless of
+`PLACEMENT_TEST_ENABLED` or `PLACEMENT_V3_UI_ENABLED`; the flags remain
+defined for non-route consumers.
 
 ### Admin Drift Route
 
@@ -48,4 +52,3 @@ Route and flag state is safe if merge order is respected:
 1. Merge #942 first.
 2. Merge/rebase #943 onto #942.
 3. Merge/rebase #944 onto #942.
-

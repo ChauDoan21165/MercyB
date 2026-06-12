@@ -1,16 +1,7 @@
 import { test, expect } from "./fixtures/test";
 import { BASE_URL } from "./fixtures/env";
 
-const placementV3Enabled =
-  process.env.E2E_PLACEMENT_V3_ENABLED === "true" ||
-  process.env.VITE_PLACEMENT_TEST_ENABLED === "true";
-
 test.describe("placement v3 multimodal UI", () => {
-  test.skip(
-    !placementV3Enabled,
-    "Placement v3 routes are compile-time gated off by default. Run with a build that enables PLACEMENT_TEST_ENABLED and PLACEMENT_V3_UI_ENABLED.",
-  );
-
   for (const locale of ["en", "vi"] as const) {
     test(`happy path: welcome to writing to results (${locale})`, async ({ page }) => {
       await page.goto(`${BASE_URL}/placement`);

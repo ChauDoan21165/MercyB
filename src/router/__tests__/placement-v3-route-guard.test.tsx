@@ -96,7 +96,7 @@ async function renderRoute(
   );
 }
 
-describe("Placement V3 route guard", () => {
+describe("Placement V3 route availability", () => {
   beforeEach(() => {
     authState.user = { id: "test-user", email: "test@mercyblade.local" };
     authState.isLoading = false;
@@ -116,23 +116,30 @@ describe("Placement V3 route guard", () => {
     expect(FEATURE_FLAGS.PLACEMENT_V3_UI_ENABLED).toBe(false);
   });
 
-  it("disabled flags block learner entry to /placement before V3 UI can mount", async () => {
+  it("mounts /placement with zero placement env flags set", async () => {
+    authState.user = null;
+
     await renderRoute("/placement");
 
-    expect(await screen.findByTestId("home-page")).toBeInTheDocument();
-    expect(screen.getByTestId("pathname")).toHaveTextContent("/");
-    expect(screen.queryByTestId("placement-v3-welcome")).not.toBeInTheDocument();
+    expect(await screen.findByTestId("placement-v3-welcome")).toBeInTheDocument();
+    expect(screen.getByTestId("pathname")).toHaveTextContent("/placement");
+    expect(screen.queryByTestId("home-page")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("signin-page")).not.toBeInTheDocument();
   });
 
-  it("handles direct guarded Placement V3 URLs safely when flags are disabled", async () => {
+  it("mounts direct Placement V3 URLs when flags are disabled", async () => {
+    authState.user = null;
+
     await renderRoute("/placement/results/session-123");
 
-    expect(await screen.findByTestId("home-page")).toBeInTheDocument();
-    expect(screen.getByTestId("pathname")).toHaveTextContent("/");
-    expect(screen.queryByTestId("placement-v3-results")).not.toBeInTheDocument();
+    expect(await screen.findByTestId("placement-v3-results")).toBeInTheDocument();
+    expect(screen.getByTestId("pathname")).toHaveTextContent("/placement/results/session-123");
+    expect(screen.queryByTestId("home-page")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("signin-page")).not.toBeInTheDocument();
   });
 
-  it("redirects safely on refresh of a guarded Placement V3 route", async () => {
+  it("mounts resume on refresh with flags disabled", async () => {
+    authState.user = null;
     window.localStorage.setItem(
       "mb.placement.v3.stub.session",
       JSON.stringify({ sessionId: "session-123", status: "in_progress" }),
@@ -140,19 +147,23 @@ describe("Placement V3 route guard", () => {
 
     await renderRoute("/placement/resume");
 
-    expect(await screen.findByTestId("home-page")).toBeInTheDocument();
-    expect(screen.getByTestId("pathname")).toHaveTextContent("/");
-    expect(screen.queryByTestId("placement-v3-resume")).not.toBeInTheDocument();
+    expect(await screen.findByTestId("placement-v3-resume")).toBeInTheDocument();
+    expect(screen.getByTestId("pathname")).toHaveTextContent("/placement/resume");
+    expect(screen.queryByTestId("home-page")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("signin-page")).not.toBeInTheDocument();
   });
 
-  it("keeps Placement V3 unreachable when only the legacy test flag is disabled and V3 UI is disabled", async () => {
+  it("keeps Placement V3 reachable when both placement flags are disabled", async () => {
+    authState.user = null;
+
     await renderRoute("/placement", {
       placementTestEnabled: false,
       placementV3UiEnabled: false,
     });
 
-    expect(await screen.findByTestId("home-page")).toBeInTheDocument();
-    expect(screen.queryByTestId("placement-v3-welcome")).not.toBeInTheDocument();
+    expect(await screen.findByTestId("placement-v3-welcome")).toBeInTheDocument();
+    expect(screen.getByTestId("pathname")).toHaveTextContent("/placement");
+    expect(screen.queryByTestId("signin-page")).not.toBeInTheDocument();
   });
 
   it("allows the mocked Placement V3 flow when the V3 UI flag is enabled", async () => {
@@ -183,7 +194,7 @@ describe("Placement V3 route guard", () => {
     expect(screen.queryByTestId("signin-page")).not.toBeInTheDocument();
   });
 
-  it("enabled test flags still require auth for direct Placement V3 routes", async () => {
+  it("does not require auth for direct Placement V3 routes", async () => {
     authState.user = null;
 
     await renderRoute("/placement/test/session-123", {
@@ -191,22 +202,20 @@ describe("Placement V3 route guard", () => {
       placementV3UiEnabled: true,
     });
 
-    expect(await screen.findByTestId("signin-page")).toBeInTheDocument();
-    expect(screen.getByTestId("pathname")).toHaveTextContent("/signin");
-    expect(screen.queryByTestId("placement-v3-test")).not.toBeInTheDocument();
+    expect(await screen.findByTestId("placement-v3-test")).toBeInTheDocument();
+    expect(screen.getByTestId("pathname")).toHaveTextContent("/placement/test/session-123");
+    expect(screen.queryByTestId("signin-page")).not.toBeInTheDocument();
   });
 
-  it("redirects logged-out /placement/who to sign-in with returnTo preserved", async () => {
+  it("mounts logged-out /placement/who directly", async () => {
     authState.user = null;
 
     await renderRoute("/placement/who");
 
-    expect(await screen.findByTestId("signin-page")).toBeInTheDocument();
-    expect(screen.getByTestId("pathname")).toHaveTextContent("/signin");
-    expect(screen.getByTestId("search")).toHaveTextContent(
-      "?returnTo=%2Fplacement%2Fwho",
-    );
+    expect(await screen.findByTestId("placement-v3-who")).toBeInTheDocument();
+    expect(screen.getByTestId("pathname")).toHaveTextContent("/placement/who");
+    expect(screen.getByTestId("search")).toHaveTextContent("");
     expect(screen.queryByTestId("home-page")).not.toBeInTheDocument();
-    expect(screen.queryByTestId("placement-v3-who")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("signin-page")).not.toBeInTheDocument();
   });
 });

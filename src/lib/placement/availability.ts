@@ -6,15 +6,15 @@ type PlacementAvailabilityFlags = Pick<
 >;
 
 export function isPlacementEntryRouteAvailable(
-  flags: PlacementAvailabilityFlags = FEATURE_FLAGS,
+  _flags: PlacementAvailabilityFlags = FEATURE_FLAGS,
 ): boolean {
-  return flags.PLACEMENT_TEST_ENABLED || flags.PLACEMENT_V3_UI_ENABLED;
+  return true;
 }
 
 /**
- * Post-v2-retirement: v3 IS the placement path. Either the legacy
- * placement-test flag or the V3 UI flag may expose the route, so
- * production can enable V3 without reviving old v2 assumptions.
+ * Chau's June 12 product decision: placement must be reachable at all
+ * times for everyone. These helpers intentionally ignore the legacy
+ * build-time flags; the flags remain defined for non-route consumers.
  */
 export function isPlacementV3RouteAvailable(
   flags: PlacementAvailabilityFlags = FEATURE_FLAGS,
