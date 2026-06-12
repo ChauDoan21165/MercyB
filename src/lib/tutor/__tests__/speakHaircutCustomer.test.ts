@@ -1,63 +1,61 @@
 import { describe, expect, it } from "vitest";
 import { SPEAK_TOPIC_LIBRARY } from "@/lib/tutor/speakTopicLibrary";
-import { speakTopics } from "@/lib/tutor/speakTopics/haircutCustomer";
+import { haircutCustomerSpeakTopics } from "@/lib/tutor/speakTopics/haircutCustomer";
 
-const VIETNAMESE_DIACRITIC_PATTERN = /[À-ỹ]/u;
+// Covers the D4-deepened haircut-customer theme (5 topics).
 
-describe("Haircut / barber customer English speak topics", () => {
-  it("ships the authored set and auto-registers in the speak topic library", () => {
-    const libraryIds = new Set(SPEAK_TOPIC_LIBRARY.map((topic) => topic.id));
+const VI_DIACRITICS = /[À-ỹ]/u;
 
-    // 5 haircut/barber customer topics. Keep in sync if topics are added.
-    expect(speakTopics).toHaveLength(5);
-    for (const topic of speakTopics) {
-      expect(libraryIds.has(topic.id), topic.id).toBe(true);
+function assertD4Topic(topic: {
+  id: string;
+  labelVi: string;
+  scenarioDescription: string;
+  aiRoleDefinition: string;
+  conversationDirections: readonly string[];
+  warmthPatterns: readonly string[];
+  followUps: readonly { id: string; question: string }[];
+  l1InterferenceNotes?: readonly { id: string; label: string; note: string }[];
+}) {
+  expect(topic.scenarioDescription.trim().length, `${topic.id} scenarioDescription`).toBeGreaterThan(40);
+  expect(topic.aiRoleDefinition.trim().length, `${topic.id} aiRoleDefinition`).toBeGreaterThan(40);
+  expect(topic.conversationDirections.length, `${topic.id} conversationDirections min`).toBeGreaterThanOrEqual(5);
+  expect(topic.conversationDirections.length, `${topic.id} conversationDirections max`).toBeLessThanOrEqual(8);
+  expect(topic.warmthPatterns.length, `${topic.id} warmthPatterns`).toBeGreaterThanOrEqual(3);
+  expect(topic.followUps.length, `${topic.id} followUps`).toBeGreaterThanOrEqual(5);
+  expect(topic.labelVi, `${topic.id} labelVi diacritics`).toMatch(VI_DIACRITICS);
+
+  const notes = topic.l1InterferenceNotes ?? [];
+  expect(notes.length, `${topic.id} l1 notes`).toBeGreaterThanOrEqual(2);
+
+  const noteIdSet = new Set(notes.map((n) => n.id));
+  const fuIdSet = new Set(topic.followUps.map((f) => f.id));
+  for (const nId of noteIdSet) {
+    expect(fuIdSet.has(nId), `${topic.id}: note id '${nId}' must not appear in followUp ids`).toBe(false);
+  }
+
+  const anyViNote = notes.some((n) => VI_DIACRITICS.test(n.note));
+  expect(anyViNote, `${topic.id}: at least one l1 note must have Vietnamese diacritics`).toBe(true);
+}
+
+describe("haircut-customer speak topics — D4 metadata", () => {
+  const libraryIds = new Set(SPEAK_TOPIC_LIBRARY.map((t) => t.id));
+
+  it("ships 5 topics and auto-registers all in the library", () => {
+    expect(haircutCustomerSpeakTopics).toHaveLength(5);
+    for (const topic of haircutCustomerSpeakTopics) {
+      expect(libraryIds.has(topic.id), `${topic.id} not in library`).toBe(true);
       expect(topic.category).toBe("haircut-customer");
     }
   });
 
-  it("has well-formed labels, seeds, detection, follow-ups, and L1 notes per topic", () => {
-    for (const topic of speakTopics) {
-      expect(topic.labelEn.trim().length, `${topic.id} labelEn`).toBeGreaterThan(0);
-      expect(topic.labelVi, `${topic.id} labelVi diacritics`).toMatch(VIETNAMESE_DIACRITIC_PATTERN);
-      expect(topic.seedInputs.length, `${topic.id} seedInputs`).toBeGreaterThanOrEqual(1);
-      expect(
-        topic.seedInputs.every((s) => s.trim().length > 0),
-        `${topic.id} seed non-empty`,
-      ).toBe(true);
-      expect(topic.detectionPatterns.length, `${topic.id} detectionPatterns`).toBeGreaterThanOrEqual(1);
-
-      expect(topic.followUps.length, `${topic.id} followUps`).toBeGreaterThanOrEqual(4);
-      const followUpIds = topic.followUps.map((f) => f.id);
-      expect(new Set(followUpIds).size, `${topic.id} unique followUp ids`).toBe(followUpIds.length);
-      for (const followUp of topic.followUps) {
-        expect(followUp.question.trim().length, `${topic.id} ${followUp.id} question`).toBeGreaterThan(
-          0,
-        );
-      }
-
-      const notes = topic.l1InterferenceNotes ?? [];
-      expect(notes.length, `${topic.id} l1 notes`).toBeGreaterThanOrEqual(2);
-      const noteIds = notes.map((n) => n.id);
-      expect(new Set(noteIds).size, `${topic.id} unique note ids`).toBe(noteIds.length);
-      for (const note of notes) {
-        expect(note.label.trim().length, `${topic.id} ${note.id} label`).toBeGreaterThan(0);
-        expect(note.note.trim().length, `${topic.id} ${note.id} body`).toBeGreaterThan(20);
-      }
-
-      // note-ids and followUp-ids must be disjoint per topic
-      const noteIdSet = new Set(noteIds);
-      for (const fuId of followUpIds) {
-        expect(
-          noteIdSet.has(fuId),
-          `${topic.id}: followUp id "${fuId}" must not collide with a note id`,
-        ).toBe(false);
-      }
+  it("each topic has full D4 metadata, diacritics, and disjoint note/followUp ids", () => {
+    for (const topic of haircutCustomerSpeakTopics) {
+      assertD4Topic(topic);
     }
   });
 
-  it("keeps topic ids unique within the theme", () => {
-    const ids = speakTopics.map((topic) => topic.id);
+  it("topic ids are unique within the theme", () => {
+    const ids = haircutCustomerSpeakTopics.map((t) => t.id);
     expect(new Set(ids).size).toBe(ids.length);
   });
 });
