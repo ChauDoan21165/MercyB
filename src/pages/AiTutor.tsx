@@ -14,7 +14,11 @@ import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 import {
   loadServerInterferenceTags,
   mergeRecallMemory,
+  fetchServerProfileInput,
 } from "@/lib/ai-conversation/serverInterferenceMemory";
+import { supabase } from "@/lib/supabaseClient";
+import { syncProfileWithServerData } from "@/lib/tutor/learnerProfileBuilder";
+import { recommendNextLessons } from "@/lib/tutor/nextLessonRecommender";
 import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
 import { readAndClearPendingReflection } from "@/lib/ai-tutor/teacherMercyHandoff";
 import { useTtsSpeaker } from "@/lib/ai-tutor/useTtsSpeaker";
@@ -1815,6 +1819,30 @@ export default function AiTutorPage() {
       .catch(() => { if (!cancelled) setServerInterferenceTags([]); });
     return () => { cancelled = true; };
   }, [recallUserId]);
+
+  // Step-14: build the learner history profile from server telemetry + device-
+  // local data, recommend the next focus, and surface it in the memory card.
+  // Fully fail-soft (fetchServerProfileInput → {}/0 on error; syncProfile never
+  // throws; abstain guard). Keyed on user + target so it runs once auth resolves.
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const serverInput = await fetchServerProfileInput(recallUserId, supabase);
+        const profile = syncProfileWithServerData(TUTOR_PRODUCT, target, serverInput);
+        const recs = recommendNextLessons(profile);
+        const top = recs[0];
+        if (!cancelled && top && top.ruleFired !== "cold-start:abstain") {
+          setMemory((prev) =>
+            prev
+              ? { ...prev, nextRecommendedFocus: top.lessonTitle, suggestedNextFocus: top.lessonTitle }
+              : prev,
+          );
+        }
+      } catch { /* fail-soft: device-local memory stands */ }
+    })();
+    return () => { cancelled = true; };
+  }, [recallUserId, target]);
 
   const englishPronunciationFeedback = useMemo(() => {
     if (
