@@ -9,6 +9,7 @@ export type AnalyticsEventName =
   | "checkout_completed"
   | "entitlement_success"
   | "l1_hint_learn_more_clicked"
+  | "register_correction_shown"
   | "room_pronunciation_practice_opened"
   | "room_pronunciation_practice_closed"
   | "pronunciation_scored"
