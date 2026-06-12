@@ -10,6 +10,12 @@ const { isPlacementEntryRouteAvailable } = vi.hoisted(() => ({
   isPlacementEntryRouteAvailable: vi.fn(() => false),
 }));
 
+const { authState } = vi.hoisted(() => ({
+  authState: {
+    user: null as { id: string; email?: string } | null,
+  },
+}));
+
 vi.mock("@/lib/placement/availability", () => ({
   isPlacementEntryRouteAvailable,
 }));
@@ -23,14 +29,14 @@ vi.mock("@/hooks/useUserAccess", () => ({
     accessAnnouncement: "",
     features: new Set(["mercy-guide"]),
     hasMercyGuide: true,
-    isAuthenticated: false,
+    isAuthenticated: Boolean(authState.user),
     isTrialExpired: false,
     loading: false,
   }),
 }));
 
 vi.mock("@/providers/AuthProvider", () => ({
-  useAuth: () => ({ user: null, isLoading: false }),
+  useAuth: () => ({ user: authState.user, isLoading: false }),
 }));
 
 vi.mock("@/hooks/useFeatureFlag", () => ({
@@ -96,6 +102,7 @@ function renderHome() {
 describe("Home placement CTA gating", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    authState.user = null;
     isPlacementEntryRouteAvailable.mockReturnValue(false);
     window.localStorage.clear();
     window.sessionStorage.clear();
@@ -137,5 +144,16 @@ describe("Home placement CTA gating", () => {
         safeTopicTag: "placement",
       }),
     ]);
+  });
+
+  it("shows the parent progress card for signed-in users and routes to ParentView", async () => {
+    authState.user = { id: "user-parent", email: "parent@example.test" };
+    renderHome();
+
+    await userEvent.click(screen.getByTestId("parent-progress-home-card"));
+
+    expect(screen.getByText("Góc phụ huynh")).toBeInTheDocument();
+    expect(screen.getByText("Theo dõi tiến bộ của con")).toBeInTheDocument();
+    expect(screen.getByTestId("pathname")).toHaveTextContent("/parent/me");
   });
 });
