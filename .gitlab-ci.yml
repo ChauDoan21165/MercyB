@@ -418,7 +418,6 @@ variables:
   - src/hooks/usePronunciationRecorder.ts
   - src/components/mercy-guide/**/*
   - scripts/verify-mobile-audio.mjs
-  - .gitlab-ci.yml
 
 # Reusable rules: protected branch pushes run full validation regardless
 # of changes. Merge requests use changes filters to skip heavy work for
@@ -909,7 +908,7 @@ native-audio-smoke:
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/)'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && ($CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^release(\/|$)/) && $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /mobile.audio/'
       changes: *native_audio_smoke_changes
   script: *native_audio_smoke_script
 
