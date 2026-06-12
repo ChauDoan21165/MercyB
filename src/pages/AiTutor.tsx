@@ -20,6 +20,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { syncProfileWithServerData } from "@/lib/tutor/learnerProfileBuilder";
 import { recommendNextLessons } from "@/lib/tutor/nextLessonRecommender";
 import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
+import { transcriptSanity } from "@/lib/ai-tutor/transcriptSanity";
 import { transcribeWithAzure } from "@/lib/ai-tutor/freeFormStt";
 import { readAndClearPendingReflection } from "@/lib/ai-tutor/teacherMercyHandoff";
 import { useTtsSpeaker } from "@/lib/ai-tutor/useTtsSpeaker";
@@ -1249,7 +1250,17 @@ export default function AiTutorPage() {
       latestCorrectedSeed?.correctedSentence.trim() ||
       tutorCopy.starterQuestions[0]?.trim() ||
       "";
-    const spoken = normalizeSpokenText(spokenText);
+    // Transcript sanity (READ-BACK): the browser STT transcript mishears
+    // phonetically-close words ('hat' -> 'head'); correct them toward the known
+    // target before the follow-up predicates on them. Engine-agnostic (no
+    // acoustic biasing); transcriptSanity abstains cleanly when there is no
+    // target, so this is a no-op on the starter path.
+    const rawSpoken = normalizeSpokenText(spokenText);
+    // Only swap in the sanitized transcript when it actually corrected a
+    // phonetic mishear — readBackSanity normalizes case while tokenizing, so for
+    // a clean transcript (no correction) we keep the raw form to preserve casing.
+    const sanity = targetSentence ? transcriptSanity(rawSpoken, { targetSentence }) : null;
+    const spoken = sanity && sanity.corrections.length > 0 ? sanity.sanitizedTranscript : rawSpoken;
     if (!targetSentence || !spoken || spoken === lastRecordedSpeakAttemptRef.current) return;
     lastRecordedSpeakAttemptRef.current = spoken;
     const transcriptClarity = assessSpeakTranscriptClarity(spoken);
