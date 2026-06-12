@@ -20,6 +20,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { syncProfileWithServerData } from "@/lib/tutor/learnerProfileBuilder";
 import { recommendNextLessons } from "@/lib/tutor/nextLessonRecommender";
 import { useBrowserStt } from "@/lib/ai-tutor/useBrowserStt";
+import { transcribeWithAzure } from "@/lib/ai-tutor/freeFormStt";
 import { readAndClearPendingReflection } from "@/lib/ai-tutor/teacherMercyHandoff";
 import { useTtsSpeaker } from "@/lib/ai-tutor/useTtsSpeaker";
 import { usePronunciationRecorder } from "@/hooks/usePronunciationRecorder";
@@ -1049,6 +1050,10 @@ export default function AiTutorPage() {
   const stt = useBrowserStt(speechLang);
   const tts = useTtsSpeaker();
   const pronunciationRecorder = usePronunciationRecorder();
+  // Step (free-form STT): true while a free-answer (grammar) mic capture is
+  // awaiting Azure refinement of the browser transcript. Gates the audioBlob
+  // effect below so it never fires on the speak-mode scoring recordings.
+  const freeAnswerAzureRef = useRef(false);
   // Premium/trial signal for the detailed-scoring gate (Decision 1). Provider-
   // free + fail-closed, so it is safe inside this (un-QueryClient-wrapped) page.
   // Gated by the flag so the default-OFF path makes no entitlement network call.
@@ -1757,10 +1762,38 @@ export default function AiTutorPage() {
       pronunciationRecorder.reset();
       void pronunciationRecorder.startRecording();
     }
+    // Free-answer (grammar) mic: also capture audio so we can refine the
+    // browser transcript with Azure free-form STT on stop. The browser STT runs
+    // live as the instant fallback; Azure only replaces it when it returns a
+    // better transcript. Authenticated learners only (the endpoint is JWT-gated).
+    if (mode === "grammar" && session?.access_token) {
+      freeAnswerAzureRef.current = true;
+      pronunciationRecorder.reset();
+      void pronunciationRecorder.startRecording();
+    } else {
+      freeAnswerAzureRef.current = false;
+    }
     sttBaseInputRef.current = mode === "grammar" ? input : mode === "speak" ? "" : conversationInput;
     lastCommittedSttRef.current = "";
     stt.start();
   };
+
+  // Free-answer free-form STT: when the grammar-mic capture finishes (audioBlob
+  // lands after stopRecording), refine the live browser transcript with Azure.
+  // Fail-soft — transcribeWithAzure returns null on any error / use_local, so the
+  // browser STT result already in the input stands. The ref gate ensures this
+  // never fires on the speak-mode scoring recordings.
+  useEffect(() => {
+    if (!freeAnswerAzureRef.current) return;
+    const blob = pronunciationRecorder.audioBlob;
+    if (!blob) return;
+    freeAnswerAzureRef.current = false;
+    let cancelled = false;
+    void transcribeWithAzure(blob, speechLang, session?.access_token ?? null).then((azureText) => {
+      if (!cancelled && azureText) setInput(azureText.slice(0, 500));
+    });
+    return () => { cancelled = true; };
+  }, [pronunciationRecorder.audioBlob, speechLang, session?.access_token]);
 
   const clearSpeakBoardState = () => {
     setSpeakRepeatInput("");
