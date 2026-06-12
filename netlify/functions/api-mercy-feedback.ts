@@ -51,11 +51,11 @@ export async function handler(event: NetlifyEvent) {
   }
 
   const supabaseUrl = envValue("SUPABASE_URL") || envValue("VITE_SUPABASE_URL");
-  const serviceRoleKey = envValue("SUPABASE_SERVICE_ROLE_KEY");
-  if (!supabaseUrl || !serviceRoleKey) {
+  const anonKey = envValue("SUPABASE_ANON_KEY") || envValue("VITE_SUPABASE_ANON_KEY");
+  if (!supabaseUrl || !anonKey) {
     const missing = [
       supabaseUrl ? null : "SUPABASE_URL/VITE_SUPABASE_URL",
-      serviceRoleKey ? null : "SUPABASE_SERVICE_ROLE_KEY",
+      anonKey ? null : "SUPABASE_ANON_KEY/VITE_SUPABASE_ANON_KEY",
     ].filter(Boolean);
     return json({
       ok: false,
@@ -103,7 +103,7 @@ export async function handler(event: NetlifyEvent) {
       raw_item: item,
     }));
 
-    const supabase = createClient(supabaseUrl, serviceRoleKey, {
+    const supabase = createClient(supabaseUrl, anonKey, {
       auth: { persistSession: false, autoRefreshToken: false },
     });
     const { error } = await supabase.from("mercy_feedback_events").insert(rows);
