@@ -16,6 +16,16 @@ const { authState } = vi.hoisted(() => ({
   },
 }));
 
+const { featureFlagState } = vi.hoisted(() => ({
+  featureFlagState: {
+    calls: [] as Array<{
+      key: string;
+      defaultValue: boolean;
+      enabled: boolean;
+    }>,
+  },
+}));
+
 vi.mock("@/lib/placement/availability", () => ({
   isPlacementEntryRouteAvailable,
 }));
@@ -40,7 +50,10 @@ vi.mock("@/providers/AuthProvider", () => ({
 }));
 
 vi.mock("@/hooks/useFeatureFlag", () => ({
-  useFeatureFlag: () => ({ enabled: false, loading: false }),
+  useFeatureFlag: (key: string, defaultValue = false) => {
+    featureFlagState.calls.push({ key, defaultValue, enabled: false });
+    return { enabled: false, loading: false };
+  },
 }));
 
 vi.mock("@/lib/queries/useProfileQuery", () => ({
@@ -103,6 +116,7 @@ describe("Home placement CTA gating", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     authState.user = null;
+    featureFlagState.calls = [];
     isPlacementEntryRouteAvailable.mockReturnValue(false);
     window.localStorage.clear();
     window.sessionStorage.clear();
@@ -146,7 +160,7 @@ describe("Home placement CTA gating", () => {
     ]);
   });
 
-  it("shows the parent progress card for signed-in users and routes to ParentView", async () => {
+  it("shows the parent progress card for signed-in users and routes to ParentView with runtime flags off", async () => {
     authState.user = { id: "user-parent", email: "parent@example.test" };
     renderHome();
 
@@ -154,6 +168,11 @@ describe("Home placement CTA gating", () => {
 
     expect(screen.getByText("Góc phụ huynh")).toBeInTheDocument();
     expect(screen.getByText("Theo dõi tiến bộ của con")).toBeInTheDocument();
+    expect(featureFlagState.calls).toContainEqual({
+      key: "mercyblade_leaderboard_enabled",
+      defaultValue: false,
+      enabled: false,
+    });
     expect(screen.getByTestId("pathname")).toHaveTextContent("/parent/me");
   });
 });

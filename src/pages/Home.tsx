@@ -42,6 +42,7 @@ const PAGE_MAX = 980;
 const LS_ZOOM  = "mb.ui.zoom";
 const DEFAULT_ZOOM = 100;
 const DEFAULT_TRIAL_ENDED_MESSAGE = "Your free trial has ended. Please upgrade to continue.";
+const PARENT_VIEW_ROUTE = "/parent/me";
 
 const MERCY_GUIDE_BUBBLE_STORAGE_KEY = "mercy-guide-bubble-position-v2";
 const GUIDE_BOX_BUBBLE_STORAGE_KEY   = "guide-box-bubble-position-v8-left";
@@ -877,7 +878,7 @@ export default function Home() {
   const parentProgressCard = (
     <button
       type="button"
-      onClick={() => nav("/parent/me")}
+      onClick={() => nav(PARENT_VIEW_ROUTE)}
       aria-label="Phụ huynh — theo dõi tiến bộ của con"
       data-testid="parent-progress-home-card"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}
@@ -1157,7 +1158,7 @@ export default function Home() {
               accentColor="#B45309"
               iconBg="rgba(255,247,237,0.96)"
               iconEl={<UsersRound size={isPhone ? 20 : 24} color="white" />}
-              onStart={() => nav("/parent/me")}
+              onStart={() => nav(PARENT_VIEW_ROUTE)}
               startLabel="Mở góc phụ huynh →"
             >
               {parentProgressCard}
