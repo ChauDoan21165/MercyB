@@ -13,7 +13,6 @@ import { reportRouteMountPerf } from "@/lib/monitoring/routePerf";
 import { useUserAccess } from "@/hooks/useUserAccess";
 import { useAuth } from "@/providers/AuthProvider";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
-import { isPlacementEntryRouteAvailable } from "@/lib/placement/availability";
 import { recordLearningEvent } from "@/lib/tutor/learningEvents";
 import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 import LanguageTrackHome, {
@@ -778,10 +777,10 @@ export default function Home() {
         </div>
 
         <div style={{ minWidth: 0, flex: 1 }}>
-          <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(7,89,133,0.92)", letterSpacing: -0.3 }}>Take Placement Test</div>
-          {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(7,89,133,0.55)", marginTop: 2 }}>Kiểm tra trình độ</div>}
+          <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(7,89,133,0.92)", letterSpacing: -0.3 }}>Kiểm tra trình độ</div>
+          {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(7,89,133,0.55)", marginTop: 2 }}>Biết bắt đầu từ đâu</div>}
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            {isPhone ? "Biết chính xác trình độ của bạn — 6 phút." : "Biết chính xác trình độ thật của bạn. 6–9 phút."}
+            {isPhone ? "Biết bắt đầu từ đâu — 6 phút." : "Biết chính xác trình độ thật của bạn. 6–9 phút."}
           </div>
           {!isPhone && (
             <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
@@ -1045,7 +1044,7 @@ export default function Home() {
               pill preserved inside the card. */}
           {teacherCard}
 
-          {isPlacementEntryRouteAvailable() && placementCard}
+          {placementCard}
 
           {/* Try one word — no signup. On desktop: standalone card.
               On mobile: compact chip nested under Teacher Mercy so the
