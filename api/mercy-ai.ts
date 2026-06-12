@@ -202,12 +202,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       const context = isRecord(body.context) ? body.context : {};
       const turnsOnTopic = typeof context.turnsOnTopic === "number" ? Math.max(0, Math.floor(context.turnsOnTopic)) : 0;
+      // Tokens flagged as possible STT mishears (transcriptSanity FREE-ANSWER);
+      // the follow-up generator abstains from predicating on them.
+      const avoidTokens = Array.isArray(context.avoidTokens)
+        ? context.avoidTokens.filter((t): t is string => typeof t === "string").slice(0, 12)
+        : [];
       const result = await buildDeepSeekSpeakFollowUp({
         transcript,
         learnerLevel: norm(context.learnerLevel) || "beginner",
         currentTopic: norm(context.currentTopic),
         recentTurns: toSpeakRecentTurns(context.recentTurns),
         turnsOnTopic,
+        avoidTokens,
       });
       if (result && "ok" in result && !(result as SpeakFollowUpError).ok) {
         // Provider infrastructure failure — surface as typed retryable error, not a canned clarification.

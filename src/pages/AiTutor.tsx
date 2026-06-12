@@ -257,6 +257,8 @@ type SpeakAiFollowUpRequest = {
   recentTurns: PivotPromptTurn[];
   turnsOnTopic: number;
   accessToken: string;
+  /** Possibly-misheard tokens (transcriptSanity); the follow-up abstains on them. */
+  avoidTokens?: string[];
 };
 
 type AiCorrectionResult = {
@@ -339,6 +341,7 @@ async function fetchDeepSeekSpeakFollowUp({
   recentTurns,
   turnsOnTopic,
   accessToken,
+  avoidTokens,
 }: SpeakAiFollowUpRequest): Promise<string | null | SpeakFollowUpProviderError> {
   try {
     const response = await fetch(resolveApiUrl("/api/mercy-ai"), {
@@ -355,6 +358,7 @@ async function fetchDeepSeekSpeakFollowUp({
           currentTopic,
           recentTurns: recentTurns.slice(-6),
           turnsOnTopic,
+          ...(avoidTokens && avoidTokens.length > 0 ? { avoidTokens } : {}),
         },
       }),
     });
@@ -1224,6 +1228,7 @@ export default function AiTutorPage() {
       recentTurns: speakPivotTurnsRef.current,
       turnsOnTopic,
       accessToken: session.access_token,
+      avoidTokens: computeSpeakAvoidTokens(transcript, turnsOnTopic),
     }).then((aiQuestion) => {
       if (speakFollowUpRequestRef.current !== requestId) return;
       if (isSpeakFollowUpProviderError(aiQuestion)) {
@@ -1245,6 +1250,17 @@ export default function AiTutorPage() {
         currentIsPivot: false,
       });
     });
+  };
+
+  // Free-answer abstain: on OPEN follow-up answers (turn > 0; turn 0 is the seed
+  // read-back which has a target), flag tokens the browser STT may have misheard
+  // (phonetically confusable with recent vocab) so the follow-up generator does
+  // not predicate its next question on them. Empty recentVocab → no tokens (safe).
+  const computeSpeakAvoidTokens = (transcript: string, turnsOnTopic: number): string[] => {
+    if (turnsOnTopic <= 0) return [];
+    const recentVocab = speakPivotTurnsRef.current.flatMap((turn) => turn.text.split(/\s+/)).filter(Boolean);
+    if (recentVocab.length === 0) return [];
+    return transcriptSanity(transcript, { recentVocab }).lowConfidenceTokens.map((t) => t.token);
   };
 
   const recordSpeakRepeatAttempt = (spokenText: string) => {
@@ -1385,6 +1401,7 @@ export default function AiTutorPage() {
       recentTurns: speakPivotTurnsRef.current,
       turnsOnTopic,
       accessToken: session.access_token,
+      avoidTokens: computeSpeakAvoidTokens(spoken, turnsOnTopic),
     }).then((aiQuestion) => {
       if (speakFollowUpRequestRef.current !== requestId) return;
       if (isSpeakFollowUpProviderError(aiQuestion)) {
