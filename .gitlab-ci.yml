@@ -1375,6 +1375,7 @@ golden-flows-prod:
 nightly-db-backup:
   <<: *backup_image
   stage: backup
+  needs: []
   rules:
     # Schedule-only. Never runs on merge requests, pushes, or tags.
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
