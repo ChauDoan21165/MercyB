@@ -419,6 +419,25 @@ variables:
   - src/components/mercy-guide/**/*
   - scripts/verify-mobile-audio.mjs
 
+.delete_account_guard_changes: &delete_account_guard_changes
+  - package.json
+  - package-lock.json
+  - scripts/check-delete-account-coverage.mjs
+  - scripts/check-delete-account-live.mjs
+  - supabase/functions/delete-account/**/*
+  - src/pages/__tests__/deleteAccountFlow.test.ts
+  - .gitlab-ci.yml
+
+.orphan_guard_changes: &orphan_guard_changes
+  - src/**/*.ts
+  - src/**/*.tsx
+  - scripts/ci/check-new-orphans.mjs
+  - .gitlab-ci.yml
+
+.ci_guard_changes: &ci_guard_changes
+  - .gitlab-ci.yml
+  - scripts/ci/check-job-tags.mjs
+
 # Reusable rules: protected branch pushes run full validation regardless
 # of changes. Merge requests use changes filters to skip heavy work for
 # docs-only or unrelated updates.
@@ -801,9 +820,9 @@ test:shared-fallback:
   script: *test_shard_script
 
 # `typecheck:ci` — bare `tsc --noEmit` against the root tsconfig.json.
-# Runs on ALL MR pipelines (not just hotfix) — cheap ~80 s and catches
-# type errors that `npm run typecheck` misses because it uses the narrower
-# tsconfig.typecheck.json. Also runs on main/develop/release pushes.
+# The normal `build` job already runs this same root typecheck before
+# function/page checks and bundle build. Keep the standalone job for the
+# hotfix lane, where the full build job is intentionally skipped.
 typecheck:ci:
   <<: [*node_job, *local_runner]
   stage: test
@@ -813,8 +832,7 @@ typecheck:ci:
   rules:
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-    - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_LABELS =~ /(^|,)hotfix(,|$)/'
   script:
     - npm run typecheck:ci
 
@@ -990,7 +1008,9 @@ delete-account-guard:
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      changes: *delete_account_guard_changes
     - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+      changes: *delete_account_guard_changes
   script:
     - npm run check:delete-account-guard
 
@@ -1106,6 +1126,7 @@ module-boundaries:shared-fallback:
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      changes: *orphan_guard_changes
 
 check-new-orphans:
   <<: [*local_runner, *orphan_guard_mr_rules]
@@ -1141,7 +1162,9 @@ ci-job-tags-guard:
     - if: '$MERCYB_SHARED_RUNNER_FALLBACK == "1"'
       when: never
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      changes: *ci_guard_changes
     - if: '$CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "develop" || $CI_COMMIT_BRANCH =~ /^release(\/|$)/)'
+      changes: *ci_guard_changes
   script:
     - node scripts/ci/check-job-tags.mjs
 
