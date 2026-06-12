@@ -2752,7 +2752,6 @@ export default function AiTutorPage() {
               className="mt-3 rounded-2xl border border-sky-200 bg-sky-50 p-4 text-sm text-slate-700"
             >
               <p className="font-medium text-slate-800">{l1LoopSurface.prompt.vi}</p>
-              <p className="mt-1 text-xs font-semibold text-slate-600">{l1LoopSurface.prompt.en}</p>
             </div>
           ) : l1LoopSurface?.kind === "offer" ? (
             <div

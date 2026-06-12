@@ -1519,9 +1519,9 @@ describe("AiTutor four-tab seed flow", () => {
     expect(browserSpeak).not.toHaveBeenCalled();
   });
 
-  it("shows the bilingual VI clarification as text only — no vi audio request (DIRECTIVE V1)", async () => {
-    const clarification =
-      "Mercy chưa nghe rõ. Bạn nói lại câu đó nhé. I didn't catch that clearly. Can you say it again?";
+  it("shows the bilingual VI clarification but reads only the English segment", async () => {
+    const clarificationVi = "Mercy chưa nghe rõ. Bạn nói lại câu đó nhé.";
+    const clarificationEn = "I didn't catch that clearly. Can you say it again?";
     const browserSpeak = vi.fn((utterance: MockSpeechSynthesisUtterance) => {
       utterance.onstart?.();
       utterance.onend?.();
@@ -1555,20 +1555,23 @@ describe("AiTutor four-tab seed flow", () => {
     await answerFollowUpByVoice("That question does not make sense.");
 
     const followUp = await screen.findByTestId("ai-tutor-speak-follow-up");
-    expect(followUp).toHaveTextContent(clarification);
+    expect(within(followUp).getByText(clarificationVi)).toBeInTheDocument();
+    expect(within(followUp).getByText(clarificationEn)).toBeInTheDocument();
     expect(screen.getByTestId("self-compare-recorder")).toBeInTheDocument();
     expect(screen.getByTestId("ai-tutor-speak-follow-up-answer")).toBeInTheDocument();
 
-    // DIRECTIVE V1: Vietnamese is TEXT-ONLY on the Speak surface. The bilingual
-    // clarification must NOT be read aloud with a Vietnamese voice — clicking the
-    // read button issues no cloud-TTS request and no browser speech.
+    // Bilingual display stays visible, but the speech path must receive English only.
     fetchCloudTtsUrl.mockClear();
     await userEvent.click(within(followUp).getByRole("button", { name: "Mercy đọc câu hỏi tiếp theo" }));
 
-    await new Promise((r) => setTimeout(r, 50));
-    expect(fetchCloudTtsUrl).not.toHaveBeenCalled();
+    await waitFor(() => expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
+      text: clarificationEn,
+      language: "en",
+      requiredProvider: "azure",
+    }));
     expect(browserSpeak).not.toHaveBeenCalled();
-    expect(screen.getByTestId("ai-tutor-speak-follow-up")).toHaveTextContent(clarification);
+    expect(within(screen.getByTestId("ai-tutor-speak-follow-up")).getByText(clarificationVi)).toBeInTheDocument();
+    expect(within(screen.getByTestId("ai-tutor-speak-follow-up")).getByText(clarificationEn)).toBeInTheDocument();
     expect(screen.getByTestId("ai-tutor-speak-follow-up-answer")).toBeInTheDocument();
   });
 
