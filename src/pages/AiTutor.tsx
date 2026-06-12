@@ -151,6 +151,7 @@ import {
 } from "@/lib/pronunciation/pronunciationProgressTrail";
 import useUserAccess from "@/hooks/useUserAccess";
 import AiConversationScenarioPanel from "@/components/ai-tutor/conversation/AiConversationScenarioPanel";
+import StudyPathCard from "@/components/ai-tutor/StudyPathCard";
 
 type CorrectionResult = TutorTurn & {
   grammarTip: string;
@@ -2719,6 +2720,8 @@ export default function AiTutorPage() {
         correctionSeed={latestCorrectedSeed}
         learnerMemory={mergeRecallMemory(serverInterferenceTags, memory)}
       />
+      {/* Step-15: advisory study path — ordered interference patterns to work on next. */}
+      <StudyPathCard product={TUTOR_PRODUCT} targetLanguage={target} />
     </TeacherMercyLearningShell>
   );
 }
