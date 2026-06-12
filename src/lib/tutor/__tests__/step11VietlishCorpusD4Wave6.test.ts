@@ -45,9 +45,11 @@ describe("step11 vietlish corpus wave 6 (review queue)", () => {
     expect(data.status).toBe("review_not_wired");
   });
 
-  it("holds exactly 140 entries and a matching count field", () => {
-    expect(data.entries).toHaveLength(49);
-    expect(data.count).toBe(49);
+  it("holds exactly 0 entries and a matching count field", () => {
+    // Promotions through Stage-2 and Stage-3 removed candidates cumulatively;
+    // this pending guard now keeps only entries not promoted into VIETLISH_CORPUS.
+    expect(data.entries).toHaveLength(0);
+    expect(data.count).toBe(0);
   });
 
   it("matches the VietlishCorpusEntry schema exactly (six string fields, valid enums)", () => {
@@ -79,8 +81,8 @@ describe("step11 vietlish corpus wave 6 (review queue)", () => {
     expect(collisions).toEqual([]);
   });
 
-  it("exercises every interference category", () => {
+  it("uses only valid interference categories", () => {
     const present = new Set(data.entries.map((entry) => entry.category));
-    expect(present).toEqual(CATEGORIES);
+    for (const c of present) expect(CATEGORIES.has(c)).toBe(true);
   });
 });

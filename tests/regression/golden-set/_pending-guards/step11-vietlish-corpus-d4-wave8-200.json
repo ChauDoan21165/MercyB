@@ -3,48 +3,7 @@
   "version": "1.0.0",
   "wiredIntoEngine": false,
   "status": "review_not_wired",
-  "count": 5,
+  "count": 0,
   "description": "A10 Wave 8 — 200 Vietlish/interference review candidates. Fresh territory: verb+preposition collocations (depend on, interested in, listen to, etc.), countable/uncountable mass nouns (information, advice, furniture), article errors (play the piano, a kind person), reported speech (said me→told me), passive form errors (write→written, build→built), emotional verb prepositions (worried for→about), conditional errors (if I will have→if I have), sports/recreation calques (play sport, practices badminton), weather calques (there have wind, today is hot weather), adverb/adjective confusion (good→well, talent→talented, success→successful), subject-verb agreement (3rd person -s), gerund/infinitive alternation (enjoy cooking, avoid making, keep talking), too-to/enough-to constructions, causative get (get fixed), make/do collocates, register calques (VN formal politeness in English), literal translation idioms (eat to your fullness, thin wallet, sweet tongue). Deduped vs live(353) + waves 1-7(1393) = 1744-item denylist. Zero collisions.",
-  "entries": [
-    {
-      "vietlish": "she has a very strong patient personality",
-      "natural": "she has a very patient personality",
-      "sourcePattern": "cô ấy có tính cách kiên nhẫn (patient noun used as adjective, meaning already in 'personality')",
-      "category": "collocation",
-      "frequency": "low",
-      "context": "describing someone's calm, enduring character"
-    },
-    {
-      "vietlish": "the two informations are contradicting each other",
-      "natural": "the two pieces of information contradict each other",
-      "sourcePattern": "hai thông tin mâu thuẫn (informations → pieces of information; contradicting → contradict)",
-      "category": "collocation",
-      "frequency": "low",
-      "context": "pointing out conflicting details in a report"
-    },
-    {
-      "vietlish": "let the rice sit for a while",
-      "natural": "let the rice rest",
-      "sourcePattern": "để cơm nghỉ một lát (sit vs rest — VN cooking calque for resting rice after cooking)",
-      "category": "literal_translation",
-      "frequency": "low",
-      "context": "giving a cooking instruction for steamed rice"
-    },
-    {
-      "vietlish": "she knows how to speak many mouths",
-      "natural": "she can speak many languages",
-      "sourcePattern": "biết nói nhiều thứ tiếng / nhiều ngôn ngữ (many mouths = VN informal nhiều miệng/tiếng joke-calque)",
-      "category": "literal_translation",
-      "frequency": "low",
-      "context": "humorously describing a multilingual speaker"
-    },
-    {
-      "vietlish": "he is a long hand person",
-      "natural": "he has a habit of stealing things",
-      "sourcePattern": "tay dài (long hand = tay dài, VN idiom for someone who steals)",
-      "category": "literal_translation",
-      "frequency": "low",
-      "context": "accusing someone of being light-fingered"
-    }
-  ]
+  "entries": []
 }
