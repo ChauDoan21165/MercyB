@@ -23,3 +23,8 @@ supabase/functions/
 ios/App/App/public/
 android/app/src/main/assets/public/
 android/app/build/
+
+# Playwright trace/report artifacts.
+playwright-smoke-report/
+playwright-report/
+test-results/
