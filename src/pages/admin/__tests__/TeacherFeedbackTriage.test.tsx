@@ -1,13 +1,16 @@
 // TeacherFeedbackTriage tests — admin actions on teacher feedback.
 
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, it, vi, type MockInstance } from "vitest";
+import { cleanup, render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 
 import TeacherFeedbackTriage from "../TeacherFeedbackTriage";
 
 const fromMock = vi.fn();
 const invokeMock = vi.fn();
+let warnSpy: MockInstance<typeof console.warn> | null = null;
+let errorSpy: MockInstance<typeof console.error> | null = null;
+let promptSpy: MockInstance<typeof window.prompt> | null = null;
 
 vi.mock("@/lib/supabaseClient", () => ({
   supabase: {
@@ -76,14 +79,23 @@ const sampleRow: FeedbackRow = {
 };
 
 beforeEach(() => {
-  vi.clearAllMocks();
-  vi.spyOn(console, "warn").mockImplementation(() => {});
-  vi.spyOn(console, "error").mockImplementation(() => {});
+  fromMock.mockReset();
+  invokeMock.mockReset();
+  warnSpy?.mockRestore();
+  errorSpy?.mockRestore();
+  warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+  errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
   invokeMock.mockResolvedValue({ data: {}, error: null });
 });
 
 afterEach(() => {
-  vi.restoreAllMocks();
+  cleanup();
+  promptSpy?.mockRestore();
+  promptSpy = null;
+  warnSpy?.mockRestore();
+  warnSpy = null;
+  errorSpy?.mockRestore();
+  errorSpy = null;
 });
 
 function renderTriage() {
@@ -111,7 +123,7 @@ describe("TeacherFeedbackTriage", () => {
     });
 
     // Stub window.prompt — return null (admin canceled).
-    const promptSpy = vi.spyOn(window, "prompt").mockReturnValue(null);
+    promptSpy = vi.spyOn(window, "prompt").mockReturnValue(null);
 
     renderTriage();
 
@@ -136,7 +148,9 @@ describe("TeacherFeedbackTriage", () => {
       throw new Error(`unexpected from(${table}) on call ${call}`);
     });
 
-    vi.spyOn(window, "prompt").mockReturnValue("Phản hồi không đúng — nội dung gốc đúng rồi");
+    promptSpy = vi
+      .spyOn(window, "prompt")
+      .mockReturnValue("Phản hồi không đúng — nội dung gốc đúng rồi");
 
     renderTriage();
 
