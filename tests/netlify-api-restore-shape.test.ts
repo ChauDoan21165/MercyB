@@ -51,14 +51,15 @@ describe("Netlify API restore shape", () => {
     expect(tts).toContain('payload.provider !== "azure"');
   });
 
-  it("does not introduce service-role use except the feedback insert sink", () => {
+  it("does not introduce service-role use in Netlify API mirrors", () => {
     const files = fs
       .readdirSync(path.join(root, "netlify/functions"))
       .filter((name) => name.endsWith(".ts"));
     const serviceRoleFiles = files.filter((name) =>
       read(`netlify/functions/${name}`).includes("SUPABASE_SERVICE_ROLE_KEY"),
     );
-    expect(serviceRoleFiles).toEqual(["api-mercy-feedback.ts"]);
+    // !906 removed service-role from the feedback mirror; Netlify API mirrors must have zero users.
+    expect(serviceRoleFiles).toEqual([]);
   });
 
   it("keeps grammar flag lookup on the masked public view", () => {
