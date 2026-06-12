@@ -17,7 +17,7 @@ export const TOEFL_COPY = {
   },
   premiumOnlyBody: {
     vi:
-      "Luyện thi TOEFL iBT đầy đủ chỉ có trong gói Premium. Nâng cấp để mở Reading, Listening, Speaking, Writing + ước lượng điểm.",
+      "Toàn bộ phần luyện thi TOEFL iBT nằm trong gói Premium. Nâng cấp để mở Reading, Listening, Speaking, Writing và công cụ ước lượng điểm.",
     en:
       "Full TOEFL iBT prep is part of the Premium plan. Upgrade to unlock Reading, Listening, Speaking, Writing + score estimator.",
   },
@@ -33,10 +33,10 @@ export const TOEFL_COPY = {
   estimatorCta: { vi: "Ước lượng điểm TOEFL", en: "Estimate your score" },
 
   // Section labels
-  readingTitle: { vi: "Bài Đọc", en: "Reading" },
-  listeningTitle: { vi: "Bài Nghe", en: "Listening" },
-  speakingTitle: { vi: "Bài Nói", en: "Speaking" },
-  writingTitle: { vi: "Bài Viết", en: "Writing" },
+  readingTitle: { vi: "Kỹ năng Đọc", en: "Reading" },
+  listeningTitle: { vi: "Kỹ năng Nghe", en: "Listening" },
+  speakingTitle: { vi: "Kỹ năng Nói", en: "Speaking" },
+  writingTitle: { vi: "Kỹ năng Viết", en: "Writing" },
 
   // TODO(TOEFL): Add per-skill copy as pages are built
   //   - Listening transcript labels

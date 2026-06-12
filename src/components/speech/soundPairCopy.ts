@@ -35,7 +35,7 @@ export const CATEGORY_NAMES: Record<DrillCategory, Bilingual> = {
   },
   intonation: {
     en: 'Question vs statement',
-    vi: 'Giai điệu câu hỏi vs câu khẳng định',
+    vi: 'Giai điệu câu hỏi và câu khẳng định',
   },
   'f5-easy': {
     en: 'Final consonants — easy',
@@ -54,19 +54,19 @@ export const CATEGORY_NAMES: Record<DrillCategory, Bilingual> = {
 export const CATEGORY_WHY: Record<DrillCategory, Bilingual> = {
   'th-t': {
     en: 'Vietnamese has no "th" sound, so learners often swap it for "t". Fixing this one contrast unlocks dozens of common words.',
-    vi: 'Tiếng Việt không có âm "th", nên người học thường thay thành "t". Chỉnh được cặp âm này là mở khoá hàng chục từ thường dùng.',
+    vi: 'Tiếng Việt không có âm "th", nên người học thường đọc gần thành "t". Luyện rõ cặp âm này giúp bạn nói đúng hơn nhiều từ thường gặp.',
   },
   'r-l': {
     en: 'Some Vietnamese regions flip "r" and "l", and the English "r" is different from the Vietnamese one. Minimal pairs train the distinction.',
-    vi: 'Một số vùng Việt Nam đổi "r" ↔ "l", và âm "r" tiếng Anh khác âm "r" tiếng Việt. Luyện cặp tối thiểu để tách biệt.',
+    vi: 'Một số vùng ở Việt Nam dễ lẫn "r" và "l"; âm "r" tiếng Anh cũng khác âm "r" tiếng Việt. Luyện cặp tối thiểu giúp tai và miệng tách rõ hai âm.',
   },
   ed: {
     en: 'Vietnamese doesn\'t add sounds to mark tense — so learners often drop the "-ed" and the past tense disappears.',
-    vi: 'Tiếng Việt không thêm âm để đánh dấu thì, nên người học hay bỏ "-ed" và thì quá khứ biến mất.',
+    vi: 'Tiếng Việt không thêm âm để đánh dấu thì, nên người học dễ bỏ "-ed" và làm mất tín hiệu quá khứ.',
   },
   s: {
     en: 'Final consonants are weak in Vietnamese — the plural "-s" and "-es" are easy to drop, and the meaning shifts with it.',
-    vi: 'Phụ âm cuối yếu trong tiếng Việt — "-s" và "-es" số nhiều dễ bị bỏ, và nghĩa thay đổi theo.',
+    vi: 'Phụ âm cuối trong tiếng Việt thường nhẹ, nên "-s" và "-es" số nhiều dễ bị bỏ. Khi bỏ âm này, nghĩa cũng có thể đổi.',
   },
   stress: {
     en: 'Vietnamese is syllable-timed — every syllable gets equal weight. English moves stress to change meaning (REcord/reCORD, GREENhouse/green HOUSE). Train the contrast and meaning follows.',
@@ -82,7 +82,7 @@ export const CATEGORY_WHY: Record<DrillCategory, Bilingual> = {
   },
   'f5-medium': {
     en: 'Consonant clusters at word endings don\'t exist in Vietnamese — learners drop the second consonant. These pairs train each cluster as a single unit.',
-    vi: 'Cụm phụ âm cuối không có trong tiếng Việt — người học hay nuốt âm thứ hai. Bộ này luyện từng cụm như một đơn vị.',
+    vi: 'Tiếng Việt không có nhiều cụm phụ âm cuối như tiếng Anh, nên âm thứ hai dễ bị rơi mất. Bộ này luyện từng cụm như một đơn vị.',
   },
   'f5-hard': {
     en: 'Longer vowels, mixed clusters, and pairs where both the vowel and the final consonant differ — the hardest minimal contrasts for Vietnamese ears.',
@@ -101,7 +101,7 @@ export const SCORE_BANDS = {
   } as Bilingual,
   close: {
     en: 'Close — try rounding the sound a bit more.',
-    vi: 'Gần đúng — thử phát âm rõ hơn một chút.',
+    vi: 'Gần rồi — thử nói chậm và rõ hơn một chút.',
   } as Bilingual,
   retry: {
     en: 'Let\'s try again — listen to the model first.',
@@ -120,11 +120,11 @@ export function bandForConfidence(c: number): Bilingual {
 export const UI_COPY = {
   title: {
     en: 'Sound-pair drill',
-    vi: 'Luyện cặp âm',
+    vi: 'Luyện cặp âm tối thiểu',
   } as Bilingual,
   chooseCategory: {
     en: 'Choose a sound to practise',
-    vi: 'Chọn một âm để luyện',
+    vi: 'Chọn nhóm âm để luyện',
   } as Bilingual,
   sayThis: {
     en: 'Say this word',
@@ -140,15 +140,15 @@ export const UI_COPY = {
   } as Bilingual,
   record: {
     en: 'Record your attempt',
-    vi: 'Thu âm thử',
+    vi: 'Thu âm lượt đọc của bạn',
   } as Bilingual,
   recording: {
     en: 'Listening…',
-    vi: 'Đang nghe…',
+    vi: 'Đang ghi âm…',
   } as Bilingual,
   whyConfused: {
     en: 'Why Vietnamese speakers confuse this',
-    vi: 'Vì sao người Việt hay nhầm',
+    vi: 'Vì sao người Việt dễ nhầm',
   } as Bilingual,
   nextPair: {
     en: 'Next pair',
@@ -184,7 +184,7 @@ export const UI_COPY = {
   } as Bilingual,
   verdictClose: {
     en: 'Getting there — keep practising.',
-    vi: 'Gần đúng — tiếp tục luyện.',
+    vi: 'Gần rồi — luyện thêm một lượt nhé.',
   } as Bilingual,
   scoringFailed: {
     en: 'Scoring unavailable — record again to retry.',

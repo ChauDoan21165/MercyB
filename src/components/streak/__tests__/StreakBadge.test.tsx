@@ -74,8 +74,8 @@ describe("StreakBadge", () => {
     expect(screen.queryByTestId("streak-badge-tooltip")).toBeNull();
     fireEvent.mouseEnter(screen.getByTestId("streak-badge-wrap"));
     const tip = screen.getByTestId("streak-badge-tooltip");
-    expect(tip.textContent).toContain("You're on a 12-day streak! Keep it going 🔥");
-    expect(tip.textContent).toContain("Bạn đang có chuỗi 12 ngày! Cố lên nhé 🔥");
+    expect(tip.textContent).toContain("12 days in a row. Nice steady practice.");
+    expect(tip.textContent).toContain("Bạn đã học 12 ngày liên tiếp. Nhịp học đang đều.");
   });
 
   it("hides itself when streak_current is 0", () => {

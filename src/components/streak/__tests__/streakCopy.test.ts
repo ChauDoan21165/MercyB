@@ -19,10 +19,10 @@ import {
 describe("streakCopy — exact strings (Chau-approved)", () => {
   it("streakTooltip.en / vi match the PR #32 review", () => {
     expect(streakTooltip.en).toBe(
-      "You're on a {{count}}-day streak! Keep it going 🔥",
+      "{{count}} days in a row. Nice steady practice.",
     );
     expect(streakTooltip.vi).toBe(
-      "Bạn đang có chuỗi {{count}} ngày! Cố lên nhé 🔥",
+      "Bạn đã học {{count}} ngày liên tiếp. Nhịp học đang đều.",
     );
   });
 
@@ -40,7 +40,7 @@ describe("streakCopy — exact strings (Chau-approved)", () => {
     // warning pill renamed away from the "Almost lost / Sắp mất chuỗi"
     // loss frame to a non-loss frame.
     expect(statusPills.warning).toBe("Grace day open · Còn ngày ân hạn");
-    expect(statusPills.reset).toBe("Reset · Đã reset");
+    expect(statusPills.reset).toBe("Restarted · Bắt đầu lại");
   });
 
   it("warning pill never volunteers loss-framing words", () => {
@@ -74,7 +74,7 @@ describe("streakCopy — exact strings (Chau-approved)", () => {
   it("emptyState matches the dictionary", () => {
     expect(emptyState.en).toBe("Start learning today to build your streak!");
     expect(emptyState.vi).toBe(
-      "Học hôm nay để bắt đầu xây dựng chuỗi của bạn nhé!",
+      "Học một chút hôm nay để bắt đầu nhịp học của bạn nhé.",
     );
   });
 });
@@ -82,12 +82,12 @@ describe("streakCopy — exact strings (Chau-approved)", () => {
 describe("formatStreakTooltip", () => {
   it("interpolates {{count}} on both sides", () => {
     const r = formatStreakTooltip(7);
-    expect(r.en).toBe("You're on a 7-day streak! Keep it going 🔥");
-    expect(r.vi).toBe("Bạn đang có chuỗi 7 ngày! Cố lên nhé 🔥");
+    expect(r.en).toBe("7 days in a row. Nice steady practice.");
+    expect(r.vi).toBe("Bạn đã học 7 ngày liên tiếp. Nhịp học đang đều.");
   });
 
   it("coerces non-integer counts via String()", () => {
-    expect(formatStreakTooltip(0).en).toContain("0-day");
+    expect(formatStreakTooltip(0).en).toContain("0 days");
     expect(formatStreakTooltip(100).vi).toContain("100 ngày");
   });
 });

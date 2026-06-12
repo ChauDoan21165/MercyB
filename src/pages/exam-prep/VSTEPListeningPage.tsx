@@ -32,7 +32,7 @@ function ItemCard({ item }: { item: VstepListeningItem }) {
       {open && (
         <div style={{ padding: "0 16px 16px", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
           <div style={{ marginTop: 12, padding: "10px 14px", borderRadius: 12, background: "rgba(245,158,11,0.08)", border: "1px solid rgba(245,158,11,0.20)", fontSize: 13, fontWeight: 700, color: "rgba(146,64,14,0.85)", textAlign: "center" }}>
-            🔊 Audio đang được chuẩn bị · Audio coming soon (Tui 3b)
+            🔊 Âm thanh đang được chuẩn bị · Audio coming soon
           </div>
           <pre style={{ margin: "12px 0 0", padding: 12, borderRadius: 10, background: "rgba(248,250,252,0.95)", border: "1px solid rgba(0,0,0,0.06)", whiteSpace: "pre-wrap", fontFamily: "inherit", fontSize: 13, lineHeight: 1.6, color: "rgba(15,23,42,0.92)" }}>
             {item.transcript}
@@ -81,9 +81,9 @@ export default function VSTEPListeningPage() {
         </Link>
         <h1 style={{ margin: 0, fontSize: 28, fontWeight: 950, letterSpacing: -0.5, color: "rgba(15,23,42,0.94)" }}>
           <Headphones size={22} style={{ verticalAlign: "middle", marginRight: 6 }} />
-          VSTEP Listening · Luyện nghe
+          VSTEP Listening · Kỹ năng Nghe
         </h1>
-        <p style={{ marginTop: 6, fontSize: 13, fontWeight: 600, color: "rgba(0,0,0,0.50)" }}>12 bài nghe B1 + B2 — hội thoại, thông báo, bài giảng, tin tức</p>
+        <p style={{ marginTop: 6, fontSize: 13, fontWeight: 600, color: "rgba(0,0,0,0.50)" }}>12 bài nghe B1 và B2 — hội thoại, thông báo, bài giảng, tin tức</p>
       </header>
 
       <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>

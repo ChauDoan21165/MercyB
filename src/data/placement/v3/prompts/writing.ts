@@ -46,7 +46,7 @@ export const WRITING_PLACEMENT_PROMPTS = [
     promptText:
       "Write 5-6 sentences about what you did yesterday after school or work. Include one time and one place.",
     promptTextVi:
-      "Viết 5-6 câu về việc bạn đã làm hôm qua sau giờ học hoặc giờ làm. Nhắc đến một thời gian và một địa điểm.",
+      "Viết 5-6 câu về việc bạn đã làm hôm qua sau giờ học hoặc giờ làm. Nhắc đến một mốc thời gian và một địa điểm.",
     expectedDurationSec: 240,
     minResponseLength: 45,
     rubricFocus: ["past_simple", "time_expressions", "basic_sequence", "everyday_vocab"],
@@ -100,7 +100,7 @@ export const WRITING_PLACEMENT_PROMPTS = [
     promptText:
       "Write a forum post asking for advice about one English problem you have, such as pronunciation, listening, or speaking confidence. Explain what you have tried and what help you need.",
     promptTextVi:
-      "Viết một bài đăng diễn đàn để xin lời khuyên về một vấn đề tiếng Anh của bạn, ví dụ phát âm, nghe, hoặc thiếu tự tin khi nói. Giải thích bạn đã thử gì và cần được giúp gì.",
+      "Viết một bài đăng trên diễn đàn để xin lời khuyên về một vấn đề tiếng Anh của bạn, ví dụ phát âm, nghe, hoặc thiếu tự tin khi nói. Giải thích bạn đã thử cách nào và cần được giúp gì.",
     expectedDurationSec: 420,
     minResponseLength: 90,
     rubricFocus: ["problem_explanation", "present_perfect", "advice_requests", "paragraphing"],
@@ -154,7 +154,7 @@ export const WRITING_PLACEMENT_PROMPTS = [
     promptText:
       "Many Vietnamese students study English to migrate abroad. Others stay and use English locally. What are the trade-offs of each path? Argue for one. Write about 150 words.",
     promptTextVi:
-      "Nhiều học sinh Việt học tiếng Anh để đi nước ngoài. Một số ở lại và dùng tiếng Anh trong nước. Phân tích đánh đổi của mỗi lựa chọn. Lập luận cho một bên. Viết khoảng 150 từ.",
+      "Nhiều người Việt học tiếng Anh để đi nước ngoài. Một số ở lại và dùng tiếng Anh trong nước. Phân tích đánh đổi của mỗi lựa chọn. Lập luận cho một bên. Viết khoảng 150 từ.",
     expectedDurationSec: 600,
     minResponseLength: 120,
     rubricFocus: ["complex_argumentation", "hedging", "register_formal", "nuanced_vocab"],
@@ -172,7 +172,7 @@ export const WRITING_PLACEMENT_PROMPTS = [
     promptText:
       "AI tutors can give Vietnamese learners affordable feedback, but they may also make mistakes or reduce human interaction. Evaluate the risks and benefits, then propose safeguards.",
     promptTextVi:
-      "Gia sư AI có thể giúp người học Việt nhận phản hồi với chi phí thấp, nhưng cũng có thể mắc lỗi hoặc làm giảm tương tác với con người. Đánh giá lợi ích và rủi ro, rồi đề xuất biện pháp bảo vệ.",
+      "Gia sư AI có thể giúp người học Việt nhận phản hồi với chi phí thấp, nhưng cũng có thể mắc lỗi hoặc làm giảm tương tác giữa người với người. Đánh giá lợi ích và rủi ro, rồi đề xuất biện pháp bảo vệ.",
     expectedDurationSec: 660,
     minResponseLength: 140,
     rubricFocus: ["evaluation", "risk_benefit_analysis", "hedging", "abstract_vocab"],

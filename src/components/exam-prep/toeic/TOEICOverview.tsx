@@ -26,7 +26,7 @@ export default function TOEICOverview() {
             color: "rgba(15,23,42,0.94)",
           }}
         >
-          TOEIC prep · Luyện thi TOEIC
+          Luyện thi TOEIC · TOEIC prep
         </h1>
         <p
           style={{
@@ -36,12 +36,12 @@ export default function TOEICOverview() {
             color: "rgba(0,0,0,0.66)",
           }}
         >
-          7 sections, {TOEIC_TOTAL_QUESTIONS} questions, ~
-          {TOEIC_TOTAL_TIME_MINUTES} minutes — same shape as the real exam.
+          7 phần, {TOEIC_TOTAL_QUESTIONS} câu, khoảng {TOEIC_TOTAL_TIME_MINUTES} phút
+          — cùng cấu trúc với bài thi thật.
         </p>
         <p style={{ marginTop: 2, fontSize: 12, color: "rgba(0,0,0,0.45)" }}>
-          7 phần, {TOEIC_TOTAL_QUESTIONS} câu, ~{TOEIC_TOTAL_TIME_MINUTES} phút
-          — cùng cấu trúc với đề thi thật.
+          7 sections, {TOEIC_TOTAL_QUESTIONS} questions, about {TOEIC_TOTAL_TIME_MINUTES} minutes
+          — the same shape as the real exam.
         </p>
       </header>
 
@@ -50,12 +50,12 @@ export default function TOEICOverview() {
         className="inline-flex items-center gap-2 rounded-full border border-indigo-300 bg-indigo-50 px-4 py-2 text-[13px] font-bold text-indigo-700 hover:bg-indigo-100"
         style={{ marginBottom: 24 }}
       >
-        <Target size={14} aria-hidden /> Estimate my score · Ước tính điểm
+        <Target size={14} aria-hidden /> Ước tính điểm · Estimate my score
         <ChevronRight size={14} aria-hidden />
       </Link>
 
       <SectionGroup
-        title_en="Listening · Nghe"
+        title_en="Kỹ năng Nghe · Listening"
         icon={<Headphones size={18} aria-hidden />}
         sections={TOEIC_LISTENING_SECTIONS}
       />
@@ -63,7 +63,7 @@ export default function TOEICOverview() {
       <div style={{ height: 18 }} />
 
       <SectionGroup
-        title_en="Reading · Đọc"
+        title_en="Kỹ năng Đọc · Reading"
         icon={<BookOpen size={18} aria-hidden />}
         sections={TOEIC_READING_SECTIONS}
       />

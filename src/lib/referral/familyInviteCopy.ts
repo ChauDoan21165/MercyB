@@ -88,7 +88,7 @@ export const FAMILY_INVITE_TEMPLATES: ReadonlyArray<FamilyInviteTemplate> = Obje
     label_vi: "Mời gia đình",
     label_en: "Invite family",
     body_vi:
-      "{{inviter_self}} mời {{recipient_address}} thử MercyBlade — học tiếng Anh có phản hồi tiếng Việt. {{inviter_self}} đang dùng và thấy hợp với người Việt mình. Bấm vào link để bắt đầu — phần thưởng: 14 ngày dùng miễn phí cho {{recipient_address}}.",
+      "{{inviter_self}} mời {{recipient_address}} thử MercyBlade — học tiếng Anh có phản hồi bằng tiếng Việt. {{inviter_self}} đang dùng và thấy hợp với cách người Việt học tiếng Anh. Bấm vào link để bắt đầu; {{recipient_address}} sẽ có 14 ngày dùng miễn phí.",
     body_en:
       "I'm inviting you to try MercyBlade — English learning with Vietnamese feedback. I've been using it and it really fits the way Vietnamese speakers learn. Click to start — your bonus: 14 days free.",
   },
@@ -97,7 +97,7 @@ export const FAMILY_INVITE_TEMPLATES: ReadonlyArray<FamilyInviteTemplate> = Obje
     label_vi: "Mời bạn bè",
     label_en: "Invite friends",
     body_vi:
-      "Mình đang dùng MercyBlade luyện tiếng Anh, có phản hồi bằng tiếng Việt nên dễ hiểu cho bọn mình. {{recipient_address}} thử cùng nhé — link bên dưới, có 14 ngày miễn phí cho {{recipient_address}}.",
+      "Mình đang dùng MercyBlade để luyện tiếng Anh. Phản hồi có tiếng Việt nên dễ hiểu hơn với người Việt mình. {{recipient_address}} thử cùng nhé — link bên dưới có 14 ngày miễn phí cho {{recipient_address}}.",
     body_en:
       "I've been using MercyBlade to practice English — feedback is in Vietnamese so it really clicks for us. Try it with me — 14 days free for you on this link.",
   },
@@ -106,7 +106,7 @@ export const FAMILY_INVITE_TEMPLATES: ReadonlyArray<FamilyInviteTemplate> = Obje
     label_vi: "Mời đồng nghiệp",
     label_en: "Invite colleagues",
     body_vi:
-      "Em/Mình thấy MercyBlade phù hợp cho người đi làm muốn luyện tiếng Anh giao tiếp. Có phản hồi tiếng Việt và phòng phỏng vấn thử rất sát thực tế. Mời {{recipient_address}} thử — link miễn phí 14 ngày.",
+      "{{inviter_self}} thấy MercyBlade phù hợp cho người đi làm muốn luyện tiếng Anh giao tiếp. Có phản hồi tiếng Việt và phòng phỏng vấn thử sát thực tế. Mời {{recipient_address}} thử — link này có 14 ngày miễn phí.",
     body_en:
       "MercyBlade is genuinely useful for working professionals practicing English — Vietnamese feedback plus a realistic mock-interview room. 14-day free trial on this link.",
   },

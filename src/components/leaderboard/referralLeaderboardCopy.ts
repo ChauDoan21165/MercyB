@@ -25,8 +25,8 @@ export const REFERRAL_LB_COPY = {
   conversions: { vi: "Đã tham gia", en: "Joined" },
   empty: {
     vi:
-      "Chưa có ai trên bảng tháng này. Mời bạn bè và đặt mình lên đầu nhé!",
-    en: "No one on the board yet this month — invite a friend and lead the way.",
+      "Chưa có ai trên bảng tháng này. Mời một người bạn học cùng và bắt đầu từ đây nhé.",
+    en: "No one is on the board yet this month — invite a friend and start here.",
   },
   notOnBoard: {
     vi:
@@ -35,7 +35,7 @@ export const REFERRAL_LB_COPY = {
       "You're not on the referral leaderboard yet. Toggle it on in Account.",
   },
   yourRank: (rank: number): BilingualText => ({
-    vi: `Bạn đang hạng #${rank} tháng này`,
+    vi: `Tháng này bạn đang ở hạng #${rank}`,
     en: `You're #${rank} this month`,
   }),
   yourRow: { vi: "Bạn", en: "You" },

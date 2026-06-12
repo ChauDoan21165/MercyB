@@ -63,8 +63,8 @@ export default function VSTEPReadingPage() {
     <div style={{ maxWidth: 880, margin: "0 auto", padding: "20px 16px 60px" }}>
       <header style={{ marginBottom: 18 }}>
         <Link to="/exam/vstep" style={{ display: "inline-flex", alignItems: "center", gap: 4, color: "rgba(0,0,0,0.50)", fontSize: 12, fontWeight: 700, textDecoration: "none", marginBottom: 10 }}><ChevronLeft size={14} />VSTEP · Quay lại</Link>
-        <h1 style={{ margin: 0, fontSize: 28, fontWeight: 950, letterSpacing: -0.5, color: "rgba(15,23,42,0.94)" }}><BookOpen size={22} style={{ verticalAlign: "middle", marginRight: 6 }} />VSTEP Reading · Luyện đọc</h1>
-        <p style={{ marginTop: 6, fontSize: 13, fontWeight: 600, color: "rgba(0,0,0,0.50)" }}>12 bài đọc B1 + B2 — email, thông báo, bài báo, đoạn luận</p>
+        <h1 style={{ margin: 0, fontSize: 28, fontWeight: 950, letterSpacing: -0.5, color: "rgba(15,23,42,0.94)" }}><BookOpen size={22} style={{ verticalAlign: "middle", marginRight: 6 }} />VSTEP Reading · Kỹ năng Đọc</h1>
+        <p style={{ marginTop: 6, fontSize: 13, fontWeight: 600, color: "rgba(0,0,0,0.50)" }}>12 bài đọc B1 và B2 — email, thông báo, bài báo, đoạn luận</p>
       </header>
       <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
         {(["all", "B1", "B2"] as const).map((l) => (

@@ -25,8 +25,8 @@ export const NOTIFICATION_COPY: Record<
 > = {
   daily_reminder: {
     vi: {
-      title: "Mercy đợi bạn 5 phút",
-      body: "Một bài luyện ngắn là đủ giữ thói quen. Mở MercyBlade khi bạn rảnh nhé.",
+      title: "Mercy có bài luyện 5 phút cho bạn",
+      body: "Một bài ngắn là đủ giữ nhịp học. Mở MercyBlade khi bạn rảnh nhé.",
     },
     en: {
       title: "Mercy is waiting — 5 minutes",
@@ -35,12 +35,12 @@ export const NOTIFICATION_COPY: Record<
   },
   streak_save: {
     vi: {
-      title: "Còn vài giờ để giữ chuỗi {{streak}} ngày",
-      body: "Làm một câu là chuỗi của bạn vẫn nguyên vẹn. Mở MercyBlade trước khi hết ngày nhé.",
+      title: "Bạn còn một lượt học nhẹ cho chuỗi {{streak}} ngày",
+      body: "Một câu ngắn là đủ ghi nhận hôm nay. Mở MercyBlade khi bạn có vài phút nhé.",
     },
     en: {
-      title: "A few hours to save your {{streak}}-day streak",
-      body: "One sentence keeps it alive. Open MercyBlade before the day ends.",
+      title: "A light check-in for your {{streak}}-day streak",
+      body: "One short sentence is enough to count today. Open MercyBlade when you have a few minutes.",
     },
   },
   due_review_count: {

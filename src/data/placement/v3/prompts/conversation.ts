@@ -45,7 +45,7 @@ export const CONVERSATION_PLACEMENT_PROMPTS = [
     promptText:
       "Mercy asks about your English goal for the next three months. Explain your goal, one obstacle, and what help you want from Mercy.",
     promptTextVi:
-      "Mercy hỏi mục tiêu tiếng Anh của bạn trong ba tháng tới. Hãy giải thích mục tiêu, một trở ngại, và bạn muốn Mercy giúp gì.",
+      "Mercy hỏi mục tiêu tiếng Anh của bạn trong ba tháng tới. Hãy giải thích mục tiêu, một trở ngại, và phần bạn muốn Mercy hỗ trợ.",
     expectedDurationSec: 90,
     minResponseLength: 55,
     rubricFocus: ["goal_setting", "future_forms", "problem_explanation", "request_language"],
@@ -81,7 +81,7 @@ export const CONVERSATION_PLACEMENT_PROMPTS = [
     promptText:
       "Mercy challenges your answer and says it may be too simple. Defend your point politely, refine it, and ask Mercy what evidence would make it stronger.",
     promptTextVi:
-      "Mercy phản biện câu trả lời của bạn và nói nó có thể quá đơn giản. Hãy bảo vệ quan điểm một cách lịch sự, chỉnh lại cho sắc thái hơn, và hỏi Mercy bằng chứng nào sẽ làm nó mạnh hơn.",
+      "Mercy phản biện câu trả lời của bạn và nói rằng câu trả lời có thể còn quá đơn giản. Hãy bảo vệ quan điểm một cách lịch sự, chỉnh lại cho có sắc thái hơn, và hỏi Mercy bằng chứng nào sẽ làm lập luận mạnh hơn.",
     expectedDurationSec: 150,
     minResponseLength: 90,
     rubricFocus: ["polite_disagreement", "self_revision", "evidence_request", "discourse_control"],
