@@ -981,7 +981,7 @@ describe("AiTutor four-tab seed flow", () => {
       session: { access_token: "session-jwt" },
       isLoading: false,
     });
-    const fetchMock = vi.fn(async (_url: string, init?: RequestInit) => {
+    const fetchMock = vi.fn<typeof fetch>(async (_url, init) => {
       return new Response(JSON.stringify({ question: "What do you like to do in summer?" }), {
         status: 200,
         headers: { "Content-Type": "application/json" },
@@ -1001,8 +1001,13 @@ describe("AiTutor four-tab seed flow", () => {
       );
     });
     const apiCall = fetchMock.mock.calls.find(([url]) => url === "/api/mercy-ai");
-    expect(apiCall).toBeDefined();
-    const [, init] = apiCall as [string, RequestInit];
+    if (!apiCall) {
+      throw new Error("Expected /api/mercy-ai fetch call");
+    }
+    const [, init] = apiCall;
+    if (!init) {
+      throw new Error("Expected /api/mercy-ai fetch init");
+    }
     const body = JSON.parse(String(init.body ?? "{}")) as {
       mode?: string;
       transcript?: string;
@@ -2050,7 +2055,7 @@ describe("AiTutor Grammar submit — unchanged sentence + session handling", () 
       session: { access_token: "session-jwt" },
       isLoading: false,
     });
-    const fetchMock = vi.fn(async () =>
+    const fetchMock = vi.fn<typeof fetch>(async () =>
       new Response(
         JSON.stringify({ confident: false, corrected: "", explanation: "câu đúng rồi", grammarTip: "" }),
         { status: 200, headers: { "Content-Type": "application/json" } },
@@ -2071,7 +2076,10 @@ describe("AiTutor Grammar submit — unchanged sentence + session handling", () 
     });
     // AI is called with the session token in the Authorization header.
     const aiCall = fetchMock.mock.calls.find(([url]) => String(url).includes("/api/mercy-ai"));
-    const [, init] = aiCall as [string, RequestInit];
+    if (!aiCall) {
+      throw new Error("Expected /api/mercy-ai fetch call");
+    }
+    const [, init] = aiCall;
     expect(init?.headers).toMatchObject({ Authorization: "Bearer session-jwt" });
   });
 });
