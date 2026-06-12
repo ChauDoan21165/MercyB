@@ -556,7 +556,8 @@ export default defineConfig({
             !dep.includes('mercy-grammar-tab') &&
             !dep.includes('mercy-logic-tab') &&
             !dep.includes('mercy-french-tab') &&
-            !dep.includes('mercy-german-tab'),
+            !dep.includes('mercy-german-tab') &&
+            !dep.includes('ai-tutor-'),
         );
       },
     },
@@ -646,6 +647,31 @@ export default defineConfig({
           if (s.includes('/node_modules/sonner/')) return 'vendor-sonner';
           if (s.includes('/node_modules/date-fns/')) return 'vendor-datefns';
           if (s.includes('/node_modules/')) return 'vendor';
+
+          // AiTutor route foundation split. The page itself stays a
+          // React.lazy route, but its static local graph had grown into a
+          // single ~1.9 MB minified chunk. Keep the route import boundary
+          // intact and carve its heavy feature domains into stable chunks so
+          // slow mobile clients can fetch/cache smaller files.
+          if (s.includes('/src/components/ai-tutor/')) return 'ai-tutor-ui';
+          if (s.includes('/src/components/teacher-mercy/')) return 'ai-tutor-teacher-shell';
+          if (
+            s.includes('/src/lib/tutor/speakTopics/')
+          ) {
+            const m = s.match(/\/src\/lib\/tutor\/speakTopics\/([^/]+)\.ts$/);
+            return m ? `ai-tutor-topic-${m[1]}` : 'ai-tutor-speak-content';
+          }
+          if (
+            s.includes('/src/lib/tutor/vietlishCorpus') ||
+            s.includes('/src/lib/tutor/vietlishLogicEngine') ||
+            s.includes('/src/lib/tutor/vietlishCuratedLogic')
+          ) {
+            return 'ai-tutor-vietlish-content';
+          }
+          if (s.includes('/src/lib/feedback/')) return 'ai-tutor-feedback';
+          if (s.includes('/src/lib/pronunciation/')) return 'ai-tutor-pronunciation';
+          if (s.includes('/src/lib/ai-tutor/')) return 'ai-tutor-core';
+          if (s.includes('/src/lib/tutor/')) return 'ai-tutor-engine';
 
           // Kids data files — split into separate chunk
           if (s.includes('/mercy-guide/kids/kidPage')) return 'kids-data';
