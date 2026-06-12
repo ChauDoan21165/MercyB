@@ -94,3 +94,6 @@ storybook-static
 
 # k6 load test reports (auto-generated; too large for git)
 reports/load/
+
+# Step-19 self-eval harness outputs (produced at runtime; CI artifact, not tracked)
+_eval_out/
