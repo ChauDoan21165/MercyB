@@ -227,6 +227,29 @@ describe("Teacher Mercy voiceEngine", () => {
     expect(synth.speak).not.toHaveBeenCalled();
   });
 
+  it("extracts the English segment from bilingual text before any TTS call", async () => {
+    const synth = installSpeechSynthesis();
+    fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/en.mp3", cached: false, provider: "azure" });
+
+    const result = await speakTutorText(
+      "Mercy chưa nghe rõ. Bạn nói lại câu đó nhé. I didn't catch that clearly. Can you say it again?",
+      {
+        targetLanguage: "vi",
+        preferCloudVoice: true,
+        fallbackToBrowserTts: true,
+      },
+    );
+
+    expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
+      text: "I didn't catch that clearly. Can you say it again?",
+      language: "en",
+      requiredProvider: "azure",
+    });
+    expect(synth.speak).not.toHaveBeenCalled();
+    expect(result.text).toBe("I didn't catch that clearly. Can you say it again?");
+    expect(result.locale).toBe("en-US");
+  });
+
   it("stop cancels playback", async () => {
     const synth = installSpeechSynthesis();
     fetchCloudTtsUrl.mockResolvedValue({ audioUrl: "https://example.test/hold.mp3", cached: false, provider: "azure" });
@@ -302,7 +325,7 @@ describe("Teacher Mercy voiceEngine", () => {
     expect(result.locale).toBe("fr-FR");
   });
 
-  it("requires Azure for Vietnamese tutor voice and never falls back to browser speech", async () => {
+  it("refuses Vietnamese-only text instead of sending it to any TTS call", async () => {
     const synth = installSpeechSynthesis([{ lang: "en-US", name: "English" } as SpeechSynthesisVoice]);
     fetchCloudTtsUrl.mockResolvedValue(null);
 
@@ -312,16 +335,10 @@ describe("Teacher Mercy voiceEngine", () => {
       fallbackToBrowserTts: true,
     });
 
-    expect(fetchCloudTtsUrl).toHaveBeenCalledWith({
-      text: "Hôm nay trời đẹp.",
-      language: "vi",
-      requiredProvider: "azure",
-    });
+    expect(fetchCloudTtsUrl).not.toHaveBeenCalled();
     expect(synth.speak).not.toHaveBeenCalled();
     expect(result.spoken).toBe(false);
     expect(result.fallback).toBe(false);
-    expect(getVoiceStatus().message).toMatch(/Azure/);
-    expect(getVoiceStatus().status).toBe("error");
   });
 
   it("English tutor voice also avoids browser fallback when cloud is bypassed", async () => {

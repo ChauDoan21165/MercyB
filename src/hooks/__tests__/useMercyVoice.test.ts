@@ -70,13 +70,33 @@ describe("useMercyVoice — Contract C1: no silent browser fallback", () => {
     expect(speechSpeak).not.toHaveBeenCalled();
   });
 
+  it("passes only the English segment to cloud TTS for bilingual display text", async () => {
+    fetchCloudTtsUrlMock.mockResolvedValue({ audioUrl: "https://x/a.mp3", cached: true, provider: "azure" });
+    stubAudio("play");
+
+    const { result } = renderHook(() => useMercyVoice());
+    await result.current.speak({
+      text: "Mercy chưa nghe rõ. Bạn nói lại nhé. I didn't catch that clearly. Can you say it again?",
+      language: "vi",
+    });
+
+    expect(fetchCloudTtsUrlMock).toHaveBeenCalledWith({
+      text: "I didn't catch that clearly. Can you say it again?",
+      language: "vi",
+      voiceIdOverride: undefined,
+    });
+    expect(JSON.stringify(fetchCloudTtsUrlMock.mock.calls)).not.toMatch(
+      /[ăâđêôơưàáạảãằắặẳẵầấậẩẫèéẹẻẽềếệểễìíịỉĩòóọỏõồốộổỗờớợởỡùúụủũừứựửữỳýỵỷỹ]/i,
+    );
+  });
+
   it("when cloud is unavailable, reports an error and does NOT browser-fallback", async () => {
     fetchCloudTtsUrlMock.mockResolvedValue(null);
     stubAudio("play");
 
     const { result } = renderHook(() => useMercyVoice());
     const browserFallback = vi.fn();
-    const res = await result.current.speak({ text: "xin chào", language: "vi", browserFallback });
+    const res = await result.current.speak({ text: "hello", language: "en", browserFallback });
 
     expect(res.spoken).toBe(false);
     expect(res.cloud).toBe(false);

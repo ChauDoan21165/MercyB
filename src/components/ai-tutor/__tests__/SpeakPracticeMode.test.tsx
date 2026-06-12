@@ -80,6 +80,10 @@ const baseProps = {
   tutorCopy: getTutorCopy("en", "vi"),
 };
 
+function followUpPrompt(en: string, vi = "Trả lời bằng tiếng Anh:") {
+  return { vi, en };
+}
+
 function renderSpeak(
   pronunciationResult?: SpeakPronunciationResult | null,
   repeatInput = baseProps.repeatInput,
@@ -134,7 +138,7 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     render(
       <SpeakPracticeMode
         {...baseProps}
-        followUpPrompt="Where did you buy it?"
+        followUpPrompt={followUpPrompt("Where did you buy it?")}
         onReadTarget={onReadTarget}
         onReadFollowUp={onReadFollowUp}
       />,
@@ -153,7 +157,7 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     render(
       <SpeakPracticeMode
         {...baseProps}
-        followUpPrompt="Do you want to practice another sentence?"
+        followUpPrompt={followUpPrompt("Do you want to practice another sentence?", "Bạn muốn luyện câu khác không?")}
         followUpIsPivot
         followUpIsCloseOut
         onReadFollowUp={onReadFollowUp}
@@ -174,7 +178,10 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     render(
       <SpeakPracticeMode
         {...baseProps}
-        followUpPrompt="Mercy chưa nghe rõ. Bạn nói lại câu đó nhé. I didn't catch that clearly. Can you say it again?"
+        followUpPrompt={followUpPrompt(
+          "I didn't catch that clearly. Can you say it again?",
+          "Mercy chưa nghe rõ. Bạn nói lại câu đó nhé.",
+        )}
         onReadFollowUp={onReadFollowUp}
       />,
     );
@@ -190,7 +197,7 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     render(
       <SpeakPracticeMode
         {...baseProps}
-        followUpPrompt="Where did you buy it?"
+        followUpPrompt={followUpPrompt("Where did you buy it?")}
         onMicToggle={onMicToggle}
       />,
     );
@@ -207,7 +214,7 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     render(
       <SpeakPracticeMode
         {...baseProps}
-        followUpPrompt="Where did you buy it?"
+        followUpPrompt={followUpPrompt("Where did you buy it?")}
         micSupported={false}
       />,
     );
@@ -260,7 +267,10 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     render(
       <SpeakPracticeMode
         {...baseProps}
-        followUpPrompt="Mercy chưa nghe rõ. Bạn nói lại câu đó nhé. I didn't catch that clearly. Can you say it again?"
+        followUpPrompt={followUpPrompt(
+          "I didn't catch that clearly. Can you say it again?",
+          "Mercy chưa nghe rõ. Bạn nói lại câu đó nhé.",
+        )}
         ttsErrorScope="follow-up"
         ttsError="Không nghe thấy? Kiểm tra âm lượng hoặc thử bấm lại."
         onReadFollowUp={onReadFollowUp}
@@ -372,7 +382,7 @@ describe("SpeakPracticeMode pronunciation result display", () => {
       <SpeakPracticeMode
         {...baseProps}
         repeatInput="I bought a hat yesterday."
-        followUpPrompt="Do you want to practice another sentence?"
+        followUpPrompt={followUpPrompt("Do you want to practice another sentence?", "Bạn muốn luyện câu khác không?")}
         followUpIsPivot
         followUpIsCloseOut
         pronunciationResult={{ mode: "local-fallback", provider: "local" }}
@@ -392,7 +402,7 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     render(
       <SpeakPracticeMode
         {...baseProps}
-        followUpPrompt="Do you want to practice another sentence?"
+        followUpPrompt={followUpPrompt("Do you want to practice another sentence?", "Bạn muốn luyện câu khác không?")}
         followUpIsPivot
         followUpIsCloseOut
         pronunciationResult={{ mode: "local-fallback", provider: "local" }}
@@ -413,7 +423,7 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     render(
       <SpeakPracticeMode
         {...baseProps}
-        followUpPrompt="Do you want to practice another sentence?"
+        followUpPrompt={followUpPrompt("Do you want to practice another sentence?", "Bạn muốn luyện câu khác không?")}
         followUpIsPivot
         followUpIsCloseOut
         onCheckInLogicTab={onCheckInLogicTab}
@@ -430,7 +440,7 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     render(
       <SpeakPracticeMode
         {...baseProps}
-        followUpPrompt="Do you want to practice another sentence?"
+        followUpPrompt={followUpPrompt("Do you want to practice another sentence?", "Bạn muốn luyện câu khác không?")}
         followUpIsPivot
         followUpIsCloseOut
         onCheckInLogicTab={vi.fn()}
@@ -446,7 +456,7 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     render(
       <SpeakPracticeMode
         {...baseProps}
-        followUpPrompt="Do you want to practice another sentence?"
+        followUpPrompt={followUpPrompt("Do you want to practice another sentence?", "Bạn muốn luyện câu khác không?")}
         followUpIsPivot
         followUpIsCloseOut
         onCheckInLogicTab={vi.fn()}
@@ -687,7 +697,7 @@ describe("SpeakPracticeMode — by-ear self-compare panel (no score)", () => {
     render(
       <SpeakPracticeMode
         {...baseProps}
-        followUpPrompt="Where did you buy it?"
+        followUpPrompt={followUpPrompt("Where did you buy it?")}
         pronunciationResult={null}
         onMicToggle={onMicToggle}
         onRepeatInputChange={onRepeatInputChange}
@@ -751,7 +761,7 @@ describe("SpeakPracticeMode — by-ear self-compare panel (no score)", () => {
       <SpeakPracticeMode
         {...baseProps}
         repeatInput="I bought a hat yesterday."
-        followUpPrompt="Where did you buy it?"
+        followUpPrompt={followUpPrompt("Where did you buy it?")}
         pronunciationResult={null}
       />,
     );

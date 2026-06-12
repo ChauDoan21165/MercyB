@@ -5,6 +5,10 @@ import {
   resolveTutorTargetLanguage,
 } from "@/lib/tutor/languageRegistry";
 import { sanitizeSpeakableText } from "@/lib/tutor/speakableText";
+import {
+  englishTextForTts,
+  hasVietnameseDiacritics,
+} from "@/lib/tutor/englishOnlyTts";
 
 export type TeacherMercyVoiceStyle = "teacher-mercy" | "kid-friendly" | "neutral";
 
@@ -117,11 +121,14 @@ function normalizeText(text: string): string {
 
 function speakableTextFor(text: string, options: SpeakTutorTextOptions): string {
   const normalized = sanitizeSpeakableText(text);
+  // TODO(structured-fields): interim guard for legacy display strings that still
+  // concatenate Vietnamese and English before reaching the speech path.
+  const englishOnly = englishTextForTts(normalized);
   const raw = normalizeText(options.rawUserInput ?? "");
-  if (raw && normalized === raw && !options.allowRawUserInput) {
+  if (raw && englishOnly === raw && !options.allowRawUserInput) {
     return "";
   }
-  return normalized;
+  return englishOnly;
 }
 
 function localeLanguagePrefix(locale: string): string {
@@ -313,10 +320,14 @@ export async function speakTutorText(
   text: string,
   options: SpeakTutorTextOptions = {},
 ): Promise<SpeakTutorTextResult> {
-  const targetLanguage = options.targetLanguage ?? "en";
-  const locale = voiceLocaleForTargetLanguage(targetLanguage);
+  const requestedTargetLanguage = options.targetLanguage ?? "en";
   const voiceStyle = options.voiceStyle ?? "teacher-mercy";
   const speakableText = speakableTextFor(text, options);
+  const targetLanguage =
+    hasVietnameseDiacritics(String(text ?? "")) && speakableText
+      ? "en"
+      : requestedTargetLanguage;
+  const locale = voiceLocaleForTargetLanguage(targetLanguage);
   const currentRequestId = requestId + 1;
   requestId = currentRequestId;
 
