@@ -3,7 +3,8 @@
 // Shape / safety test for scripts/supervisor/verify-pg-dump-setup.sh.
 //
 // The verification script confirms the four GitLab CI/CD variables
-// (SUPABASE_DB_URL, GPG_RECIPIENT_KEY, RCLONE_CONFIG, RCLONE_REMOTE)
+// (DATABASE_URL, GPG_PUBLIC_KEY_FILE, RCLONE_CONFIG,
+// RCLONE_CONFIG_REMOTE)
 // are present + a pipeline schedule exists, by name only. **It must
 // never read variable VALUES**, must never run the actual pg_dump,
 // and must use `glab` (the read-only inspection CLI) rather than
@@ -97,10 +98,10 @@ describe("scripts/supervisor/verify-pg-dump-setup.sh — file shape", () => {
 
 describe("scripts/supervisor/verify-pg-dump-setup.sh — variable name coverage", () => {
   for (const name of [
-    "SUPABASE_DB_URL",
-    "GPG_RECIPIENT_KEY",
+    "DATABASE_URL",
+    "GPG_PUBLIC_KEY_FILE",
     "RCLONE_CONFIG",
-    "RCLONE_REMOTE",
+    "RCLONE_CONFIG_REMOTE",
   ]) {
     it(`references the CI/CD variable name '${name}'`, () => {
       // Match the literal name as a whole token (avoids matching a
@@ -180,20 +181,22 @@ describe("scripts/supervisor/verify-pg-dump-setup.sh — safety shape", () => {
   });
 
   it("does not echo or printf any of the protected variable names with $-expansion", () => {
-    // If the script accidentally does `echo "$SUPABASE_DB_URL"`, the
+    // If the script accidentally does `echo "$DATABASE_URL"`, the
     // variable value ends up in stdout. The strip-strings step removes
-    // the quoted-string CONTENTS (so `"...$SUPABASE_DB_URL..."` becomes
+    // the quoted-string CONTENTS (so `"...$DATABASE_URL..."` becomes
     // `""`), which is the right shape for catching real leaks —
     // anything still matching after the strip is an unquoted reference
     // that absolutely would print the value.
     const code = stripCommentsAndStrings(VERIFY);
     const banned = [
-      /\becho\b[^|;&]*\$\{?SUPABASE_DB_URL\b/,
-      /\bprintf\b[^|;&]*\$\{?SUPABASE_DB_URL\b/,
-      /\becho\b[^|;&]*\$\{?GPG_RECIPIENT_KEY\b/,
-      /\bprintf\b[^|;&]*\$\{?GPG_RECIPIENT_KEY\b/,
+      /\becho\b[^|;&]*\$\{?DATABASE_URL\b/,
+      /\bprintf\b[^|;&]*\$\{?DATABASE_URL\b/,
+      /\becho\b[^|;&]*\$\{?GPG_PUBLIC_KEY_FILE\b/,
+      /\bprintf\b[^|;&]*\$\{?GPG_PUBLIC_KEY_FILE\b/,
       /\becho\b[^|;&]*\$\{?RCLONE_CONFIG\b/,
       /\bprintf\b[^|;&]*\$\{?RCLONE_CONFIG\b/,
+      /\becho\b[^|;&]*\$\{?RCLONE_CONFIG_REMOTE\b/,
+      /\bprintf\b[^|;&]*\$\{?RCLONE_CONFIG_REMOTE\b/,
     ];
     for (const re of banned) {
       expect(
