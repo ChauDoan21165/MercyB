@@ -51,8 +51,8 @@ describe("step11 vietlish corpus wave 4 (D4-2 review queue)", () => {
     // ("the weather is very comfortable today" is canonical in merged wave3);
     // 17 freq=high entries promoted into VIETLISH_CORPUS in the Step-11 Stage-1
     // promotion (2026-06-10), leaving 182.
-    expect(data.entries).toHaveLength(47);
-    expect(data.count).toBe(47);
+    expect(data.entries).toHaveLength(32);
+    expect(data.count).toBe(32);
   });
 
   it("matches the VietlishCorpusEntry schema exactly (six string fields, valid enums)", () => {

@@ -23,7 +23,7 @@
   "definition": "Wave 3 of NEW Vietnamese L1-interference candidates matching the live VIETLISH_CORPUS entry schema EXACTLY. Staged for human review BEFORE any promotion into src/lib/tutor/vietlishCorpus.ts. Imported by no engine module. Verified disjoint from the live corpus AND from D4 wave1 (...wave-200.json, !695) AND D4 wave2 (...wave2-200.json, !693) by step11VietlishCorpusD4Wave3.test.ts.",
   "disjointFrom": "live VIETLISH_CORPUS; A4 wave1 !695; A10 wave2 !693; A6 !690 (selector test, no corpus rows).",
   "generatedAt": "2026-06-10",
-  "count": 62,
+  "count": 57,
   "entries": [
     {
       "vietlish": "I am knowing the answer",
@@ -152,46 +152,6 @@
       "category": "collocation",
       "frequency": "low",
       "context": "At the cinema we make a queue to buy ticket."
-    },
-    {
-      "vietlish": "teacher, can I go to toilet",
-      "natural": "Teacher, may I go to the toilet",
-      "sourcePattern": "thua co cho em di -> title address plus article dropped",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Teacher, can I go to toilet for a minute?"
-    },
-    {
-      "vietlish": "boss, I want to ask for leave tomorrow",
-      "natural": "I'd like to request leave tomorrow",
-      "sourcePattern": "sep oi xin nghi -> title address plus xin = ask for",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Boss, I want to ask for leave tomorrow for a family matter."
-    },
-    {
-      "vietlish": "uncle, how much is this",
-      "natural": "excuse me, how much is this",
-      "sourcePattern": "chu oi bao nhieu -> kinship term used to address a stranger",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Uncle, how much is this watermelon?"
-    },
-    {
-      "vietlish": "eat more, don't be shy",
-      "natural": "help yourself to more, don't be shy",
-      "sourcePattern": "an nhieu vao dung ngai -> host's invitation calque",
-      "category": "register",
-      "frequency": "medium",
-      "context": "There is plenty of food, eat more, don't be shy."
-    },
-    {
-      "vietlish": "I take my leave first",
-      "natural": "I'll head off first",
-      "sourcePattern": "xin phep ve truoc -> formal leave-taking calque",
-      "category": "register",
-      "frequency": "medium",
-      "context": "It is getting late, I take my leave first, see you tomorrow."
     },
     {
       "vietlish": "I am very confident to pass",

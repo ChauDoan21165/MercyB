@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "wiredIntoEngine": false,
   "status": "review_not_wired",
-  "count": 26,
+  "count": 8,
   "description": "A10 Wave 7 — 200 Vietlish/interference review candidates. Fresh territory: question formation, existential 'have', time/date expressions, digital-life calques, food & dining, shopping, transportation, comparison & degree, numbers & quantities, direction & movement, negation, politeness & discourse, professional/academic register, false friends, kinship & address terms, redundancy patterns, connector/gerund errors. Deduped vs live(481) + waves 1-6(1065) = 1546-item denylist. Zero collisions.",
   "entries": [
     {
@@ -13,14 +13,6 @@
       "category": "calque",
       "frequency": "low",
       "context": "describing the contents of a box"
-    },
-    {
-      "vietlish": "I will inbox you",
-      "natural": "I'll send you a DM",
-      "sourcePattern": "tôi sẽ nhắn tin qua inbox (inbox used as a verb)",
-      "category": "register",
-      "frequency": "medium",
-      "context": "promising to send a private message"
     },
     {
       "vietlish": "this video has too many like",
@@ -39,124 +31,12 @@
       "context": "commenting on an oily or greasy dish"
     },
     {
-      "vietlish": "this bag is genuine or fake?",
-      "natural": "is this bag authentic or a fake?",
-      "sourcePattern": "thật hay giả (genuine vs authentic in product contexts)",
-      "category": "register",
-      "frequency": "medium",
-      "context": "verifying a designer item's authenticity"
-    },
-    {
       "vietlish": "book a chair on the plane",
       "natural": "book a seat on the plane",
       "sourcePattern": "đặt ghế trên máy bay (ghế = chair/seat false friend)",
       "category": "false_friend",
       "frequency": "medium",
       "context": "reserving an airline seat"
-    },
-    {
-      "vietlish": "very very delicious",
-      "natural": "absolutely delicious",
-      "sourcePattern": "ngon lắm lắm (VN adverb reduplication pattern)",
-      "category": "register",
-      "frequency": "medium",
-      "context": "enthusiastically praising food"
-    },
-    {
-      "vietlish": "I dare to ask you one question",
-      "natural": "may I ask you a question?",
-      "sourcePattern": "con/em dám hỏi (self-deprecating honorific calque)",
-      "category": "register",
-      "frequency": "medium",
-      "context": "politely addressing a question to a senior"
-    },
-    {
-      "vietlish": "I hope you will not mind",
-      "natural": "I hope you don't mind",
-      "sourcePattern": "tôi hy vọng bạn sẽ không phiền (will not vs don't in polite request)",
-      "category": "register",
-      "frequency": "medium",
-      "context": "politely seeking permission for something"
-    },
-    {
-      "vietlish": "uncle teacher please explain this for us",
-      "natural": "teacher, could you please explain this for us?",
-      "sourcePattern": "thầy ơi = kinship address title calqued into English",
-      "category": "register",
-      "frequency": "medium",
-      "context": "addressing a teacher respectfully in class"
-    },
-    {
-      "vietlish": "older sister, where is the bathroom?",
-      "natural": "excuse me, where is the bathroom?",
-      "sourcePattern": "chị ơi = addressing a female stranger as older sister",
-      "category": "register",
-      "frequency": "medium",
-      "context": "asking a stranger politely for directions"
-    },
-    {
-      "vietlish": "big brother come help me",
-      "natural": "excuse me, could you come help me?",
-      "sourcePattern": "anh ơi = calling a male stranger big brother",
-      "category": "register",
-      "frequency": "medium",
-      "context": "asking a stranger for assistance"
-    },
-    {
-      "vietlish": "my older brother him works in Hanoi",
-      "natural": "my older brother works in Hanoi",
-      "sourcePattern": "anh tôi ảnh làm việc ở Hà Nội (resumptive pronoun calque)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "talking about a sibling's job"
-    },
-    {
-      "vietlish": "my husband him is very hardworking",
-      "natural": "my husband is very hardworking",
-      "sourcePattern": "chồng tôi ổng rất chăm chỉ (resumptive pronoun)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "praising a spouse's work ethic"
-    },
-    {
-      "vietlish": "my mother she likes cooking very much",
-      "natural": "my mother likes cooking very much",
-      "sourcePattern": "mẹ tôi bà ấy thích nấu ăn (resumptive pronoun calque)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "describing a parent's hobby"
-    },
-    {
-      "vietlish": "please take care of health",
-      "natural": "please take care of yourself",
-      "sourcePattern": "xin giữ gìn sức khỏe (VN closing formula calqued literally)",
-      "category": "register",
-      "frequency": "medium",
-      "context": "closing a formal message or letter"
-    },
-    {
-      "vietlish": "my grandfather him is 80 years old",
-      "natural": "my grandfather is 80 years old",
-      "sourcePattern": "ông tôi ổng 80 tuổi (resumptive pronoun)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "talking about an elderly relative's age"
-    },
-    {
-      "vietlish": "the researcher did the experiment",
-      "natural": "the researcher conducted the experiment",
-      "sourcePattern": "làm thí nghiệm vs conduct (register calque in academic writing)",
-      "category": "register",
-      "frequency": "medium",
-      "context": "describing scientific work in an academic paper"
-    },
-    {
-      "vietlish": "the data proves clearly that",
-      "natural": "the data clearly shows that",
-      "sourcePattern": "dữ liệu chứng minh rõ ràng rằng (proves vs shows in data contexts)",
-      "category": "register",
-      "frequency": "medium",
-      "context": "supporting a claim with evidence in a report"
     },
     {
       "vietlish": "how strange! I didn't know that",
@@ -183,36 +63,12 @@
       "context": "describing a dynamic, enthusiastic person"
     },
     {
-      "vietlish": "the price is including tax already",
-      "natural": "the price already includes tax",
-      "sourcePattern": "giá đã bao gồm thuế rồi (progressive form + word order)",
-      "category": "word_order",
-      "frequency": "medium",
-      "context": "clarifying that a quoted price is tax-inclusive"
-    },
-    {
       "vietlish": "advance prepare for the presentation",
       "natural": "prepare in advance for the presentation",
       "sourcePattern": "chuẩn bị trước cho buổi thuyết trình (adverb-adjective placement calque)",
       "category": "word_order",
       "frequency": "low",
       "context": "planning ahead for a presentation"
-    },
-    {
-      "vietlish": "the outside temperature is very hot",
-      "natural": "it's very hot outside",
-      "sourcePattern": "nhiệt độ bên ngoài nóng lắm (formal temperature noun structure where simple 'it' sentence is natural)",
-      "category": "register",
-      "frequency": "medium",
-      "context": "commenting on hot weather"
-    },
-    {
-      "vietlish": "I sympathize with your situation",
-      "natural": "I understand your situation",
-      "sourcePattern": "tôi thông cảm với hoàn cảnh của bạn (thông cảm = sympathize/understand, over-formal calque)",
-      "category": "register",
-      "frequency": "medium",
-      "context": "expressing understanding and empathy"
     }
   ]
 }

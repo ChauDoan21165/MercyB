@@ -12,7 +12,7 @@
   "definition": "Fourth-wave candidate Vietnamese-L1 interference items for human review before any promotion into VIETLISH_CORPUS. Each entry pairs a non-native English production (vietlish) with its natural target (natural), the VN source pattern with diacritics (sourcePattern), and a contextual sentence. A few deliberate natural 'control' anchors are flagged in sourcePattern so reviewers can confirm the detector abstains on natural usage. Wave 4 focuses on grammar-interference families lighter in waves 1-2: conditionals, relative clauses, reported speech, gerund/infinitive, subject-verb agreement, do-support questions, causatives, possessive 'of', passives.",
   "dedupedAgainst": "live VIETLISH_CORPUS + A4 wave1 (...corpus-d4-wave-200.json) + A10 wave2 (...wave2-200.json) — zero string overlap (749-item denylist), asserted by the guard test",
   "generatedFor": "2026-06-10 CEO directive D4 wave4 (A10)",
-  "count": 47,
+  "count": 32,
   "categories": {
     "calque": "C",
     "word_order": "W",
@@ -167,54 +167,6 @@
       "context": "He starts school, my son is 6 years old this year, age 6."
     },
     {
-      "vietlish": "who are you, please",
-      "natural": "who's calling, please",
-      "sourcePattern": "ai đấy -> 'who are you' on the phone",
-      "category": "register",
-      "frequency": "medium",
-      "context": "On the phone: who are you, please?"
-    },
-    {
-      "vietlish": "hello, I am Nam, can I meet Lan",
-      "natural": "hello, this is Nam, can I speak to Lan",
-      "sourcePattern": "tôi là Nam -> 'I am' + 'meet' on a call",
-      "category": "register",
-      "frequency": "medium",
-      "context": "On the phone: hello, I am Nam, can I meet Lan?"
-    },
-    {
-      "vietlish": "wait a minute, do not hang up",
-      "natural": "hold on a minute, don't hang up",
-      "sourcePattern": "đợi chút -> 'wait a minute' on a call",
-      "category": "register",
-      "frequency": "medium",
-      "context": "On the phone: wait a minute, do not hang up."
-    },
-    {
-      "vietlish": "what is your job",
-      "natural": "what do you do",
-      "sourcePattern": "làm nghề gì -> 'what is your job' direct calque",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Nice to meet you, what is your job?"
-    },
-    {
-      "vietlish": "how is your health these days",
-      "natural": "how have you been these days",
-      "sourcePattern": "sức khỏe thế nào -> 'how is your health' calque",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Long time no see, how is your health these days?"
-    },
-    {
-      "vietlish": "take care your health",
-      "natural": "take care of your health",
-      "sourcePattern": "giữ gìn sức khỏe -> missing 'of'",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Goodbye for now, take care your health."
-    },
-    {
       "vietlish": "shall we to order now",
       "natural": "shall we order now",
       "sourcePattern": "extra 'to' after 'shall we'",
@@ -255,68 +207,12 @@
       "context": "Look down, many fishes in the pond."
     },
     {
-      "vietlish": "dear teacher, I want to absent tomorrow",
-      "natural": "dear teacher, I'd like to take tomorrow off",
-      "sourcePattern": "xin nghỉ -> 'want to absent' calque",
-      "category": "register",
-      "frequency": "medium",
-      "context": "In an email: dear teacher, I want to absent tomorrow."
-    },
-    {
-      "vietlish": "I am writing for ask about the schedule",
-      "natural": "I'm writing to ask about the schedule",
-      "sourcePattern": "'for ask' instead of 'to ask'",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Hello, I am writing for ask about the schedule."
-    },
-    {
-      "vietlish": "hope to receive your soon reply",
-      "natural": "hoping to hear from you soon",
-      "sourcePattern": "mong hồi âm sớm -> 'your soon reply' calque",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Thank you. Hope to receive your soon reply."
-    },
-    {
       "vietlish": "I am very happy to be knowledge with you",
       "natural": "I'm very happy to get to know you",
       "sourcePattern": "làm quen -> 'be knowledge with' calque",
       "category": "register",
       "frequency": "low",
       "context": "Welcome to the team, I am very happy to be knowledge with you."
-    },
-    {
-      "vietlish": "please you don't worry about it",
-      "natural": "please don't worry about it",
-      "sourcePattern": "'please you' calque of the polite imperative",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Everything is fine, please you don't worry about it."
-    },
-    {
-      "vietlish": "I am sorry for my bad English",
-      "natural": "sorry, my English isn't very good",
-      "sourcePattern": "'sorry for my bad English' over-apology",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Please be patient, I am sorry for my bad English."
-    },
-    {
-      "vietlish": "can I ask you a small question",
-      "natural": "can I ask you a quick question",
-      "sourcePattern": "hỏi một chút -> 'small question' calque",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Excuse me, can I ask you a small question?"
-    },
-    {
-      "vietlish": "thank you for your kindly help",
-      "natural": "thank you for your kind help",
-      "sourcePattern": "'kindly' adjective slot",
-      "category": "register",
-      "frequency": "medium",
-      "context": "It means a lot, thank you for your kindly help."
     },
     {
       "vietlish": "I wish you success in your work",
@@ -381,22 +277,6 @@
       "category": "register",
       "frequency": "low",
       "context": "If it continues, I will mention this to the manager."
-    },
-    {
-      "vietlish": "please repeat again your name",
-      "natural": "could you repeat your name",
-      "sourcePattern": "nhắc lại -> 'repeat again' + word order",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Sorry, please repeat again your name."
-    },
-    {
-      "vietlish": "I did not hear clearly, say again please",
-      "natural": "sorry, could you say that again",
-      "sourcePattern": "nói lại -> 'say again' bare imperative",
-      "category": "register",
-      "frequency": "medium",
-      "context": "Bad connection, I did not hear clearly, say again please."
     }
   ],
   "dedupeNote": "2026-06-10 A10: removed 1 cross-wave duplicate 'the weather is very comfortable today' (also present in merged wave3 step11-vietlish-corpus-d4-wave3-200.json); wave3 copy is canonical. 200->199."
