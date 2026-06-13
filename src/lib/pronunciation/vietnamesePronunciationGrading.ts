@@ -189,7 +189,11 @@ export function buildVietnamesePronunciationGrade(input: {
   const syllables = segmentVietnameseTarget(input.targetText);
   const alignmentCertain = isScriptedTargetAligned(input.azure, syllables);
   const toneGrades = syllables.map((syllable) =>
-    gradeToneForSyllable(syllable, input.syllableContours?.[syllable.normalized], alignmentCertain),
+    gradeToneForSyllable(
+      syllable,
+      resolveSyllableContour(syllable, syllables, input.syllableContours),
+      alignmentCertain,
+    ),
   );
 
   return {
@@ -276,9 +280,42 @@ export function isScriptedTargetAligned(
   syllables: VietnameseTargetSyllable[],
 ): boolean {
   if (azure.words.length === 0 || syllables.length === 0) return false;
-  const expectedWords = new Set(syllables.map((syllable) => syllable.wordIndex));
-  if (azure.words.length !== expectedWords.size) return false;
-  return azure.words.every((word) => word.accuracy >= 45 && word.errorType !== "Omission");
+  const expectedWords = groupTargetWords(syllables);
+  if (azure.words.length !== expectedWords.length) return false;
+  return azure.words.every((word, index) => {
+    if (word.accuracy < 45 || word.errorType === "Omission") return false;
+    return normalizeAlignmentWord(word.word) === normalizeAlignmentWord(expectedWords[index]);
+  });
+}
+
+function groupTargetWords(syllables: VietnameseTargetSyllable[]): string[] {
+  const words: string[] = [];
+  syllables.forEach((syllable) => {
+    words[syllable.wordIndex] = [words[syllable.wordIndex], syllable.syllable].filter(Boolean).join("-");
+  });
+  return words.filter(Boolean);
+}
+
+function resolveSyllableContour(
+  syllable: VietnameseTargetSyllable,
+  allSyllables: VietnameseTargetSyllable[],
+  contours: Partial<Record<string, ExtractedPitchContour>> | undefined,
+): ExtractedPitchContour | undefined {
+  if (!contours) return undefined;
+
+  const explicitKeys = [
+    `syllable:${syllable.syllableIndex}`,
+    `${syllable.wordIndex}:${syllable.syllableIndex}`,
+    syllable.syllable,
+  ];
+  for (const key of explicitKeys) {
+    const contour = contours[key];
+    if (contour) return contour;
+  }
+
+  const normalizedIsUnique =
+    allSyllables.filter((candidate) => candidate.normalized === syllable.normalized).length === 1;
+  return normalizedIsUnique ? contours[syllable.normalized] : undefined;
 }
 
 function gradeToneForSyllable(
@@ -342,6 +379,14 @@ function normalizeVietnameseSyllable(syllable: string): string {
     .normalize("NFD")
     .replace(/[\u0300\u0301\u0309\u0303\u0323]/g, "")
     .normalize("NFC");
+}
+
+function normalizeAlignmentWord(word: string): string {
+  return word
+    .trim()
+    .toLowerCase()
+    .normalize("NFC")
+    .replace(/^[^\p{L}\p{M}]+|[^\p{L}\p{M}]+$/gu, "");
 }
 
 function suppressed(

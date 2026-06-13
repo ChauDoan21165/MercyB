@@ -150,7 +150,9 @@ describe("Vietnamese tone precision gate", () => {
       targetText: "mả mã mạ",
       azure: unsupportedAzure,
       syllableContours: {
-        ma: fallingPitchContour,
+        "syllable:0": fallingPitchContour,
+        "syllable:1": fallingPitchContour,
+        "syllable:2": fallingPitchContour,
       },
     });
 
@@ -160,6 +162,65 @@ describe("Vietnamese tone precision gate", () => {
       "native_ear_validation_required",
     ]);
     expect(result.toneGrades.every((grade) => grade.toneScore === null)).toBe(true);
+  });
+
+  it("uses explicit syllable contour keys so minimal-tone targets do not collide", () => {
+    const twoToneAzure = normalizeAzureVietnamesePronunciation(
+      {
+        RecognitionStatus: "Success",
+        NBest: [
+          {
+            AccuracyScore: 90,
+            Words: [
+              { Word: "ma", AccuracyScore: 92 },
+              { Word: "má", AccuracyScore: 92 },
+            ],
+          },
+        ],
+      },
+      "ma má",
+    );
+
+    const result = buildVietnamesePronunciationGrade({
+      targetText: "ma má",
+      azure: twoToneAzure,
+      syllableContours: {
+        "syllable:0": levelPitchContour,
+        "syllable:1": risingPitchContour,
+      },
+    });
+
+    expect(result.toneGrades.map((grade) => grade.reason)).toEqual(["contour_match", "contour_match"]);
+    expect(result.toneGrades.map((grade) => grade.correct)).toEqual([true, true]);
+  });
+
+  it("does not use an accent-stripped contour key when multiple marked target syllables share the same base", () => {
+    const twoToneAzure = normalizeAzureVietnamesePronunciation(
+      {
+        RecognitionStatus: "Success",
+        NBest: [
+          {
+            AccuracyScore: 90,
+            Words: [
+              { Word: "má", AccuracyScore: 92 },
+              { Word: "mà", AccuracyScore: 92 },
+            ],
+          },
+        ],
+      },
+      "má mà",
+    );
+
+    const result = buildVietnamesePronunciationGrade({
+      targetText: "má mà",
+      azure: twoToneAzure,
+      syllableContours: { ma: risingPitchContour },
+    });
+
+    expect(result.toneGrades.map((grade) => grade.reason)).toEqual([
+      "missing_pitch_contour",
+      "missing_pitch_contour",
+    ]);
   });
 });
 
@@ -191,6 +252,36 @@ describe("scripted target alignment", () => {
       "alignment_uncertain",
       "alignment_uncertain",
     ]);
+  });
+
+  it("rejects tone grading when Azure returns a different Vietnamese tone mark", () => {
+    const syllables = segmentVietnameseTarget("má");
+    const azure = normalizeAzureVietnamesePronunciation(
+      {
+        RecognitionStatus: "Success",
+        NBest: [
+          {
+            AccuracyScore: 91,
+            Words: [{ Word: "mã", AccuracyScore: 94 }],
+          },
+        ],
+      },
+      "má",
+    );
+
+    expect(isScriptedTargetAligned(azure, syllables)).toBe(false);
+
+    const result = buildVietnamesePronunciationGrade({
+      targetText: "má",
+      azure,
+      syllableContours: { ma: risingPitchContour },
+    });
+
+    expect(result.toneGrades[0]).toMatchObject({
+      toneScore: null,
+      correct: null,
+      reason: "alignment_uncertain",
+    });
   });
 });
 
