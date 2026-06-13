@@ -1,5 +1,6 @@
 import type { NormalizedPronunciationScoreResult } from "@/lib/pronunciation/cloudScorer";
 import type { SpeakPronunciationResult } from "./SpeakPracticeMode";
+import { hasDisplayableReadBackWordAccuracy } from "./readBackWordScores";
 
 type ToneContourCandidate = {
   bucket?: unknown;
@@ -90,6 +91,8 @@ export function adaptSpeakPronunciationResult(
         .map((wordScore) => {
           const word = textValue(wordScore.word);
           if (!word) return null;
+          const wordAccuracyScore = finiteScore(wordScore.score);
+          if (!hasDisplayableReadBackWordAccuracy(wordAccuracyScore)) return null;
 
           const phonemes = Array.isArray(wordScore.phonemes)
             ? wordScore.phonemes
@@ -104,7 +107,7 @@ export function adaptSpeakPronunciationResult(
 
           return {
             word,
-            accuracyScore: finiteScore(wordScore.score),
+            accuracyScore: wordAccuracyScore,
             ...(phonemes && phonemes.length > 0 ? { phonemes } : {}),
           };
         })

@@ -9,6 +9,7 @@ import type { VietnameseToneFeedbackDisplay } from "@/lib/pronunciation/vietname
 import type { PronunciationProgressDisplay } from "@/lib/pronunciation/pronunciationProgressTrail";
 import type { TutorCopy } from "@/lib/tutor/tutorCopy";
 import type { BilingualText } from "@/lib/tutor/englishOnlyTts";
+import { hasDisplayableReadBackWordAccuracy } from "./readBackWordScores";
 
 const VIETNAMESE_LETTER_PATTERN = /[ăâđêôơưàáạảãằắặẳẵầấậẩẫèéẹẻẽềếệểễìíịỉĩòóọỏõồốộổỗờớợởỡùúụủũừứựửữỳýỵỷỹ]/i;
 
@@ -41,6 +42,16 @@ export type SpeakPronunciationResult = {
     }>;
   }>;
 };
+
+type DisplayableAzureWord = NonNullable<SpeakPronunciationResult["words"]>[number] & {
+  accuracyScore: number;
+};
+
+function isDisplayableAzureWord(
+  word: NonNullable<SpeakPronunciationResult["words"]>[number],
+): word is DisplayableAzureWord {
+  return word.word.trim() !== "" && hasDisplayableReadBackWordAccuracy(word.accuracyScore);
+}
 
 type Props = {
   targetSentence: string | null;
@@ -141,7 +152,7 @@ export default function SpeakPracticeMode({
       ? Math.max(0, Math.min(100, Math.round(pronunciationResult.overallScore)))
       : null;
   const azureWords = hasAzureBatchResult
-    ? (pronunciationResult.words ?? []).filter((word) => word.word.trim())
+    ? (pronunciationResult.words ?? []).filter(isDisplayableAzureWord)
     : [];
   // Honest gating: a numeric percent is shown ONLY for an audio-gated Azure
   // batch result. The local/text path never produces a displayed score — typed
@@ -344,38 +355,47 @@ export default function SpeakPracticeMode({
                     </p>
                   )}
                   {azureWords.length > 0 && (
-                    <ul data-testid="ai-tutor-speak-word-detail" className="mt-3 space-y-2">
-                      {azureWords.map((word, wordIndex) => (
-                        <li
-                          key={`${word.word}-${wordIndex}`}
-                          className="rounded-[12px] border border-indigo-100 bg-white px-3 py-2 text-sm font-semibold leading-6 text-slate-800"
-                        >
-                          <div className="flex flex-wrap items-center gap-2">
-                            <span className="font-black text-slate-950">{word.word}</span>
-                            {typeof word.accuracyScore === "number" && (
+                    <div
+                      data-testid="ai-tutor-speak-word-detail"
+                      className="mt-3 rounded-[14px] border border-indigo-100 bg-white px-3 py-3"
+                    >
+                      <div className="text-xs font-black uppercase text-indigo-700">
+                        Độ rõ theo từng từ
+                      </div>
+                      <p className="mt-1 text-xs font-semibold leading-5 text-indigo-900">
+                        Chỉ hiện những từ Azure đo đủ tin cậy.
+                      </p>
+                      <ul className="mt-3 space-y-2">
+                        {azureWords.map((word, wordIndex) => (
+                          <li
+                            key={`${word.word}-${wordIndex}`}
+                            className="rounded-[12px] border border-indigo-100 bg-indigo-50/50 px-3 py-2 text-sm font-semibold leading-6 text-slate-800"
+                          >
+                            <div className="flex flex-wrap items-center gap-2">
+                              <span className="font-black text-slate-950">{word.word}</span>
                               <span className="text-xs font-black text-indigo-700">
                                 {Math.round(word.accuracyScore)}%
                               </span>
-                            )}
-                          </div>
-                          {hasAzurePhonemeEvidence && word.phonemes && word.phonemes.length > 0 && (
-                            <div className="mt-1 flex flex-wrap gap-1.5">
-                              {word.phonemes.map((phoneme, phonemeIndex) => (
-                                <span
-                                  key={`${word.word}-${phoneme.phoneme}-${phonemeIndex}`}
-                                  className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-bold text-slate-700"
-                                >
-                                  /{phoneme.phoneme}/
-                                  {typeof phoneme.accuracyScore === "number"
-                                    ? ` ${Math.round(phoneme.accuracyScore)}%`
-                                    : ""}
-                                </span>
-                              ))}
                             </div>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
+                            {hasAzurePhonemeEvidence && word.phonemes && word.phonemes.length > 0 && (
+                              <div className="mt-1 flex flex-wrap gap-1.5">
+                                {word.phonemes.map((phoneme, phonemeIndex) => (
+                                  <span
+                                    key={`${word.word}-${phoneme.phoneme}-${phonemeIndex}`}
+                                    className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-bold text-slate-700"
+                                  >
+                                    /{phoneme.phoneme}/
+                                    {typeof phoneme.accuracyScore === "number"
+                                      ? ` ${Math.round(phoneme.accuracyScore)}%`
+                                      : ""}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   )}
                 </>
               ) : (

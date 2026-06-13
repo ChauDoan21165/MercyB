@@ -514,6 +514,30 @@ describe("SpeakPracticeMode pronunciation result display", () => {
     expect(detail).toHaveTextContent("/ɔ/ 74%");
   });
 
+  it("abstains from word-level read-back rendering below the confidence floor", () => {
+    renderSpeak({
+      mode: "azure-batch",
+      provider: "azure",
+      overallScore: 72,
+      phonemeScores: [
+        { phoneme: "b", accuracyScore: 94, word: "bought" },
+      ],
+      words: [
+        {
+          word: "bought",
+          accuracyScore: 49,
+          phonemes: [{ phoneme: "b", accuracyScore: 94 }],
+        },
+      ],
+    });
+
+    const score = screen.getByTestId("ai-tutor-speak-score");
+    expect(score).toHaveTextContent("Mercy đã chấm phát âm chi tiết hơn bằng từng âm.");
+    expect(score).toHaveTextContent("Điểm tổng thể khoảng 72%.");
+    expect(screen.queryByTestId("ai-tutor-speak-word-detail")).not.toBeInTheDocument();
+    expect(score.textContent ?? "").not.toMatch(/great|well done|excellent|amazing|fantastic|perfect|bravo/i);
+  });
+
   it("does not show phoneme detail when fallback result includes unsupported detail", () => {
     renderSpeak({
       mode: "local-fallback",

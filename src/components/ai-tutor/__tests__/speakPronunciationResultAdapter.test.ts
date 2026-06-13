@@ -183,6 +183,42 @@ describe("adaptSpeakPronunciationResult", () => {
     expect(result?.phonemeScores?.[0].accuracyScore).toBe(63.25);
   });
 
+  it("drops Azure word accuracy below the read-back confidence floor", () => {
+    const result = adaptSpeakPronunciationResult(
+      azureResult({
+        wordScores: [
+          {
+            word: "bought",
+            heard: "bought",
+            score: 49.9,
+            status: "wrong",
+            phonemes: [{ phoneme: "b", score: 96 }],
+          },
+          {
+            word: "hat",
+            heard: "hat",
+            score: 50,
+            status: "close",
+            phonemes: [{ phoneme: "h", score: 91 }],
+          },
+        ],
+        phonemeScores: [
+          { word: "bought", phoneme: "b", score: 96 },
+          { word: "hat", phoneme: "h", score: 91 },
+        ],
+      }),
+    );
+
+    expect(result?.mode).toBe("azure-batch");
+    expect(result?.words).toEqual([
+      {
+        word: "hat",
+        accuracyScore: 50,
+        phonemes: [{ phoneme: "h", accuracyScore: 91 }],
+      },
+    ]);
+  });
+
   it("does not create fake phoneme scores from word scores", () => {
     const result = adaptSpeakPronunciationResult(
       azureResult({
