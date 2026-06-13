@@ -19,6 +19,11 @@ import {
   type AiConversationTurnResponse,
   type ConversationLearnerMemory,
 } from "@/lib/ai-conversation/client";
+import type { NextLessonRecommendation } from "@/lib/tutor/nextLessonRecommender";
+import {
+  recordConversationTurnMasteryEvidence,
+  type ConversationMasteryEvidence,
+} from "@/lib/ai-conversation/learnerEvidence";
 import {
   beginTelemetrySession,
   endTelemetrySession,
@@ -57,6 +62,8 @@ type Props = {
   correctionSeed?: ConversationCorrectionSeed | null;
   /** Step-12: returning-learner memory (safe tags) for cross-session recall. */
   learnerMemory?: ConversationLearnerMemory | null;
+  targetLanguage?: string;
+  onRecommendationChange?: (recommendation: NextLessonRecommendation) => void;
   sendTurn?: typeof sendAiConversationTurn;
 };
 
@@ -68,6 +75,8 @@ export default function AiConversationScenarioPanel({
   userId,
   correctionSeed,
   learnerMemory,
+  targetLanguage = "en",
+  onRecommendationChange,
   sendTurn = sendAiConversationTurn,
 }: Props) {
   const [scenarioId, setScenarioId] = useState<AiConversationScenarioId>(DEFAULT_AI_CONVERSATION_SCENARIO_ID);
@@ -211,6 +220,17 @@ export default function AiConversationScenarioPanel({
         setError("Mercy chưa lấy được câu trả lời. Bạn thử lại sau một chút nhé.");
         return;
       }
+      const masteryEvidence: ConversationMasteryEvidence = recordConversationTurnMasteryEvidence({
+        product: "ai-tutor",
+        targetLanguage,
+        scenarioId,
+        provider: response.provider,
+        correction: response.correction,
+        pronunciation: response.pronunciationEvidence ?? null,
+      });
+      if (masteryEvidence.recommendation) {
+        onRecommendationChange?.(masteryEvidence.recommendation);
+      }
       const assistantTurn: AiConversationTurn = {
         id: `assistant-${Date.now()}`,
         role: "assistant",
@@ -268,6 +288,8 @@ export default function AiConversationScenarioPanel({
             correctionAccepted: Boolean(response.correction),
             // Step-12: prove the cross-session recall in telemetry.
             memoryRecalled: response.memoryRecalled === true,
+            pronunciationEvidence: response.pronunciationEvidence ?? null,
+            masteryEvidence,
           });
           setEncouragement(telemetry.encouragement);
         } catch {

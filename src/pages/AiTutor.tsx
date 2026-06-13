@@ -2821,6 +2821,18 @@ export default function AiTutorPage() {
         userId={userAccess.userId ?? user?.id ?? null}
         correctionSeed={latestCorrectedSeed}
         learnerMemory={mergeRecallMemory(serverInterferenceTags, memory)}
+        targetLanguage={target}
+        onRecommendationChange={(recommendation) => {
+          setMemory((prev) =>
+            prev
+              ? {
+                  ...prev,
+                  nextRecommendedFocus: recommendation.lessonTitle,
+                  suggestedNextFocus: recommendation.lessonTitle,
+                }
+              : prev,
+          );
+        }}
       />
       {/* Step-15: advisory study path — ordered interference patterns to work on next. */}
       <StudyPathCard product={TUTOR_PRODUCT} targetLanguage={target} />

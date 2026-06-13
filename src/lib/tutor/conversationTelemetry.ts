@@ -14,6 +14,11 @@ import {
   type ConversationEncouragement,
 } from "@/lib/retention/conversationHooks";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
+import type { ConversationPronunciationPromptSummary } from "@/lib/pronunciation/conversationPronunciation";
+import type {
+  ConversationMasteryEvidence,
+  ConversationToneEvidence,
+} from "@/lib/ai-conversation/learnerEvidence";
 
 /**
  * Lane A telemetry adapter — the single seam between the conversation engine
@@ -94,6 +99,9 @@ export type RecordTurnInput = {
    * Recorded on the captured turn so telemetry proves the recall happened.
    */
   memoryRecalled?: boolean;
+  pronunciationEvidence?: ConversationPronunciationPromptSummary | null;
+  toneEvidence?: ConversationToneEvidence | null;
+  masteryEvidence?: ConversationMasteryEvidence | null;
 };
 
 export type RecordTurnResult = {
@@ -177,7 +185,20 @@ export async function recordTelemetryTurn(
       input.aiResponse,
       errors,
       corrections,
-      { memoryRecalled },
+      {
+        memoryRecalled,
+        pronunciationEvidence: input.pronunciationEvidence ?? null,
+        toneEvidence: input.toneEvidence ?? null,
+        masteryEvidence: input.masteryEvidence
+          ? {
+              interactions: input.masteryEvidence.interactions,
+              topicMastery: input.masteryEvidence.topicMastery,
+              abstainedReason: input.masteryEvidence.abstainedReason,
+              recommendationRule: input.masteryEvidence.recommendation?.ruleFired ?? null,
+              recommendationTarget: input.masteryEvidence.recommendation?.targetSkill ?? null,
+            }
+          : null,
+      },
     );
     captured = true;
   }

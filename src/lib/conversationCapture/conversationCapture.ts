@@ -122,7 +122,7 @@ export async function logTurn(
   aiResponse: string,
   errors: readonly CapturedError[] = [],
   corrections: readonly CapturedCorrection[] = [],
-  meta: { memoryRecalled?: boolean } = {},
+  meta: Record<string, unknown> = {},
 ): Promise<void> {
   if (!isBrowser()) return;
   const id = String(sessionId ?? "").trim();
@@ -143,7 +143,7 @@ export async function logTurn(
       // Step-12: record the cross-session recall signal in the existing jsonb
       // slot (no schema change) so telemetry proves the prior-session memory was
       // surfaced on this turn.
-      error_details: meta.memoryRecalled ? { memory_recalled: true } : null,
+      error_details: toMetaDetails(meta),
       created_at: at,
     },
   ];
@@ -256,4 +256,13 @@ function normalizeCount(value: unknown): number {
 function toDetails(value: unknown): Record<string, unknown> | null {
   if (!value || typeof value !== "object") return null;
   return value as Record<string, unknown>;
+}
+
+function toMetaDetails(meta: Record<string, unknown>): Record<string, unknown> | null {
+  const details: Record<string, unknown> = {};
+  if (meta.memoryRecalled === true) details.memory_recalled = true;
+  if (meta.pronunciationEvidence) details.pronunciation_evidence = meta.pronunciationEvidence;
+  if (meta.toneEvidence) details.tone_evidence = meta.toneEvidence;
+  if (meta.masteryEvidence) details.mastery_evidence = meta.masteryEvidence;
+  return Object.keys(details).length > 0 ? details : null;
 }
