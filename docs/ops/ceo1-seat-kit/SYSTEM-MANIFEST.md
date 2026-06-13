@@ -48,3 +48,12 @@ Current cap policy:
 | `mac-runner-3` (`53419663`) | full capacity not measured in this repo/session | <=2 until measured |
 
 Any change above `concurrent = 2` requires updating `docs/ops/mac-runner-node-modules-cache.md` with fresh per-host math in the same MR/change record.
+
+## Application Learning Components
+
+### Adaptive mastery engine V1
+
+- Repo implementation: `src/lib/mastery/`.
+- Design note: `docs/design/adaptive-mastery-engine.md`.
+- Purpose: pure engine for per-skill BKT mastery state, `ts-fsrs` review scheduling, and ranked next-item selection with stable reason codes.
+- Status: architecture/V1 selector only; parameter tuning remains post-data after real learner histories exist.
