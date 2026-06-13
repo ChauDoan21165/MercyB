@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   buildAdaptiveMasteryPlan,
   buildDefaultMasteryCatalog,
+  estimateSkillMastery,
   type LearnerInteraction,
   type MasteryCatalog,
 } from "@/lib/mastery";
@@ -71,6 +72,50 @@ describe("adaptive mastery engine", () => {
     expect(ranked.map((item) => item.reasonCode)).toContain("weak_skill");
     expect(ranked[0].reviewState?.dueAt).toBeLessThanOrEqual(now.getTime());
     expect(ranked.some((item) => item.reasonCode === "confidence_limited")).toBe(true);
+  });
+
+  it("does not rank non-reviewable items as FSRS due work", () => {
+    const catalog = compactCatalog();
+    catalog.items = catalog.items.map((item) =>
+      item.id === "family-grammar-practice-1" ? { ...item, reviewable: false } : item,
+    );
+    const interactions: LearnerInteraction[] = [
+      {
+        itemId: "family-grammar-practice-1",
+        outcome: "incorrect",
+        occurredAt: "2026-06-10T12:00:00Z",
+        fsrsRating: "again",
+      },
+    ];
+
+    const ranked = buildAdaptiveMasteryPlan({
+      catalog,
+      interactions,
+      now,
+      limit: 12,
+    });
+    const nonReviewable = ranked.find((item) => item.item.id === "family-grammar-practice-1");
+
+    expect(nonReviewable?.reviewState?.dueAt).toBeLessThanOrEqual(now.getTime());
+    expect(nonReviewable?.reasonCode).not.toBe("review_due");
+  });
+
+  it("ignores telemetry for out-of-catalog skills", () => {
+    const catalog = compactCatalog();
+    const states = estimateSkillMastery(catalog, [
+      {
+        itemId: "food-vocabulary-practice-1",
+        skillId: "not-a-catalog-skill",
+        outcome: "incorrect",
+        occurredAt: "2026-06-10T12:00:00Z",
+      },
+    ]);
+
+    expect(states.has("not-a-catalog-skill")).toBe(false);
+    expect(states.get("food:vocabulary")).toMatchObject({
+      evidenceCount: 0,
+      probabilityKnown: 0.25,
+    });
   });
 
   it("selects weakest confident skills when review pressure is absent", () => {

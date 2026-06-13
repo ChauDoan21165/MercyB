@@ -17,9 +17,10 @@ export function estimateSkillMastery(
   const itemById = new Map(catalog.items.map((item) => [item.id, item]));
 
   for (const interaction of [...interactions].sort(compareInteractionTime)) {
-    const skillIds = interaction.skillId
+    const skillIds = (interaction.skillId
       ? [interaction.skillId]
-      : itemById.get(interaction.itemId)?.skillIds ?? [];
+      : itemById.get(interaction.itemId)?.skillIds ?? []
+    ).filter((skillId) => states.has(skillId));
 
     for (const skillId of skillIds) {
       const current = states.get(skillId) ?? createInitialSkillState(skillId);

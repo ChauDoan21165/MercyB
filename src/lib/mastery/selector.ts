@@ -39,7 +39,7 @@ function rankItem(
   hasBeenSeen: boolean,
   now: number,
 ): RankedMasteryItem {
-  if (reviewState && !reviewState.suspended && reviewState.dueAt <= now) {
+  if (item.reviewable !== false && reviewState && !reviewState.suspended && reviewState.dueAt <= now) {
     const overdueDays = Math.max(0, (now - reviewState.dueAt) / 86_400_000);
     return {
       item,
