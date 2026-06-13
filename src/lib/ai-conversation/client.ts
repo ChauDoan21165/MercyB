@@ -29,6 +29,10 @@ import {
   scoreLearnerConversationPronunciation,
   type ConversationAudioSource,
 } from "@/lib/tutor/conversationPronunciationAdapter";
+import {
+  toConversationPromptSummary,
+  type ConversationPronunciationPromptSummary,
+} from "@/lib/pronunciation/conversationPronunciation";
 
 /**
  * Step-12 cross-session memory: safe aggregate tags (never raw learner text)
@@ -64,6 +68,7 @@ export type AiConversationTurnResponse = {
   cost: Partial<AiConversationCost>;
   provider: "openai" | "local-fallback";
   pronunciationAbstention: ReturnType<typeof abstentionRedirectFromPronunciation>;
+  pronunciationEvidence?: ConversationPronunciationPromptSummary | null;
   entitlementGate?: boolean;
   /** Step-12: true when prior-session memory was injected into this turn's prompt. */
   memoryRecalled?: boolean;
@@ -106,6 +111,7 @@ export async function sendAiConversationTurn(
       cost: {},
       provider: "local-fallback",
       pronunciationAbstention: null,
+      pronunciationEvidence: null,
       entitlementGate: true,
     };
   }
@@ -187,7 +193,12 @@ export async function sendAiConversationTurn(
   });
 
   return {
-    ...normalizeAiConversationResult(result, warmth, pronunciationAbstention),
+    ...normalizeAiConversationResult(
+      result,
+      warmth,
+      pronunciationAbstention,
+      toConversationPromptSummary(pronunciation),
+    ),
     memoryRecalled: memoryNote !== null,
   };
 }
@@ -225,6 +236,7 @@ function normalizeAiConversationResult(
   result: ConversationAiResult,
   warmth: ReturnType<typeof buildTurnWarmth>,
   pronunciationAbstention: ReturnType<typeof abstentionRedirectFromPronunciation>,
+  pronunciationEvidence: ConversationPronunciationPromptSummary | null,
 ): AiConversationTurnResponse {
   const reply = [warmth.vi, warmth.en, result.reply].filter(Boolean).join("\n");
   return {
@@ -234,6 +246,7 @@ function normalizeAiConversationResult(
     cost: result.cost,
     provider: result.provider === "openai" ? "openai" : "local-fallback",
     pronunciationAbstention,
+    pronunciationEvidence,
   };
 }
 
