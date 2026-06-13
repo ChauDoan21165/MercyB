@@ -816,7 +816,19 @@ variables:
 
 .reservoir_start_preview_script: &reservoir_start_preview_script
   - |
-    PREVIEW_PORT="${RESERVOIR_PREVIEW_PORT:-4173}"
+    if [ -z "${RESERVOIR_PREVIEW_PORT:-}" ]; then
+      PREVIEW_PORT=$((4100 + (${CI_JOB_ID:-0} % 1000)))
+    else
+      PREVIEW_PORT="$RESERVOIR_PREVIEW_PORT"
+    fi
+    export RESERVOIR_PREVIEW_PORT="$PREVIEW_PORT"
+    echo "Starting reservoir preview on 127.0.0.1:${PREVIEW_PORT} (job=${CI_JOB_ID:-unknown})"
+    if command -v lsof >/dev/null 2>&1; then
+      PREVIEW_PORT_PIDS="$(lsof -ti tcp:"$PREVIEW_PORT" -sTCP:LISTEN 2>/dev/null || true)"
+      if [ -n "$PREVIEW_PORT_PIDS" ]; then
+        kill $PREVIEW_PORT_PIDS 2>/dev/null || true
+      fi
+    fi
     npx vite preview --host 127.0.0.1 --port "$PREVIEW_PORT" --strictPort > /tmp/reservoir-preview.log 2>&1 &
     PREVIEW_PID="$!"
     trap 'kill "$PREVIEW_PID" 2>/dev/null || true' EXIT
@@ -897,8 +909,6 @@ reservoir:golden-flows-local:
   cache:
     <<: *npm_cache_def
     policy: pull
-  variables:
-    RESERVOIR_PREVIEW_PORT: "4174"
   script:
     - *reservoir_install_playwright_script
     - npm run build
