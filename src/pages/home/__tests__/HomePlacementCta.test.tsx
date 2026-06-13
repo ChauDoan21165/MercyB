@@ -96,6 +96,8 @@ vi.mock("@/components/xp/XPBadge", () => ({
 type ReactModule = typeof import("react");
 type Render = typeof import("@testing-library/react").render;
 type Cleanup = typeof import("@testing-library/react").cleanup;
+type FireEvent = typeof import("@testing-library/react").fireEvent;
+type WaitFor = typeof import("@testing-library/react").waitFor;
 type ScreenApi = typeof Screen;
 type MemoryRouterComponent = typeof MemoryRouterType;
 type UseLocation = typeof useLocationType;
@@ -104,6 +106,8 @@ type GetLearningEvents = (filter?: LearningEventFilter) => LearningEvent[];
 let React: ReactModule;
 let render: Render;
 let cleanup: Cleanup | null = null;
+let fireEvent: FireEvent;
+let waitFor: WaitFor;
 let screen: ScreenApi;
 let Home: ComponentType;
 let MemoryRouter: MemoryRouterComponent;
@@ -172,6 +176,8 @@ async function importFreshHomeHarness() {
   React = reactModule;
   render = testingLibrary.render;
   cleanup = testingLibrary.cleanup;
+  fireEvent = testingLibrary.fireEvent;
+  waitFor = testingLibrary.waitFor;
   screen = testingLibrary.screen;
   MemoryRouter = router.MemoryRouter;
   useLocation = router.useLocation;
@@ -296,7 +302,7 @@ describe("Home placement CTA", () => {
     });
     renderHome();
 
-    await userEvent.click(screen.getByTestId("parent-progress-home-card"));
+    fireEvent.click(screen.getByTestId("parent-progress-home-card"));
 
     expect(screen.getByText("Góc phụ huynh")).toBeInTheDocument();
     expect(screen.getByText("Theo dõi tiến bộ của con")).toBeInTheDocument();
@@ -305,7 +311,9 @@ describe("Home placement CTA", () => {
       defaultValue: false,
       enabled: false,
     });
-    expect(screen.getByTestId("pathname")).toHaveTextContent("/parent/me");
+    await waitFor(() => {
+      expect(screen.getByTestId("pathname")).toHaveTextContent("/parent/me");
+    });
   });
 
   it("routes the mobile parent start action synchronously while profile resolution is still pending", async () => {
