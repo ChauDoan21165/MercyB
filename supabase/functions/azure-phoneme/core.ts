@@ -140,6 +140,9 @@ export type UnifiedWordScore = {
   heard: string;
   score: number;
   status: "correct" | "close" | "wrong";
+  error_type?: string | null;
+  offset?: number | null;
+  duration?: number | null;
   phonemes: { phoneme: string; score: number }[];
 };
 
@@ -155,6 +158,8 @@ export type SuccessResponse = {
   mode: "batch";
   score: number;
   overall_score: number;
+  fluency_score?: number | null;
+  prosody_score?: number | null;
   word_scores: UnifiedWordScore[];
   phoneme_scores: UnifiedPhonemeScore[];
   audio_seconds: number;
@@ -234,6 +239,8 @@ type AzureWord = {
 type AzureNBest = {
   Display?: string;
   AccuracyScore?: number;
+  FluencyScore?: number;
+  ProsodyScore?: number;
   Words?: AzureWord[];
 };
 export type AzureResponse = {
@@ -822,6 +829,8 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
       mode: "batch",
       score: projection.overallScore,
       overall_score: projection.overallScore,
+      fluency_score: projection.fluencyScore,
+      prosody_score: projection.prosodyScore,
       word_scores: projection.wordScores,
       phoneme_scores: projection.phonemeScores,
       audio_seconds: Number(audioSeconds.toFixed(2)),
@@ -932,12 +941,16 @@ export function computeCostUsd(seconds: number): number {
 
 export function projectAzureResponse(body: AzureResponse): {
   overallScore: number;
+  fluencyScore: number | null;
+  prosodyScore: number | null;
   wordScores: UnifiedWordScore[];
   phonemeScores: UnifiedPhonemeScore[];
 } {
   const nbest = body.NBest?.[0];
   const overallRaw = nbest?.AccuracyScore ?? 0;
   const overallScore = clampScore(overallRaw);
+  const fluencyScore = nullableScore(nbest?.FluencyScore);
+  const prosodyScore = nullableScore(nbest?.ProsodyScore);
 
   const phonemeScores: UnifiedPhonemeScore[] = [];
   const wordScores: UnifiedWordScore[] = (nbest?.Words ?? []).map((w) => {
@@ -960,12 +973,17 @@ export function projectAzureResponse(body: AzureResponse): {
       heard: wordText,
       score: wordScore,
       status: scoreToStatus(wordScore),
+      error_type: w.ErrorType ? String(w.ErrorType) : null,
+      offset: azureTicksToMs(w.Offset),
+      duration: azureTicksToMs(w.Duration),
       phonemes,
     };
   });
 
   return {
     overallScore,
+    fluencyScore,
+    prosodyScore,
     wordScores,
     phonemeScores,
   };
@@ -984,6 +1002,14 @@ export function scoreToStatus(score: number): "correct" | "close" | "wrong" {
 
 function truncate(s: string, max: number): string {
   return s.length <= max ? s : s.slice(0, max);
+}
+
+function nullableScore(raw: unknown): number | null {
+  return typeof raw === "number" && Number.isFinite(raw) ? clampScore(raw) : null;
+}
+
+function azureTicksToMs(raw: unknown): number | null {
+  return typeof raw === "number" && Number.isFinite(raw) ? Math.round(raw / 10_000) : null;
 }
 
 /**
