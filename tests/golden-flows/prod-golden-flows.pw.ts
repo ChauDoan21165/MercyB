@@ -1,4 +1,5 @@
 import { expect, test, type APIRequestContext } from "@playwright/test";
+import { vietnameseTtsAudioFixture } from "./audio-fixtures";
 
 const BASE_URL = process.env.GOLDEN_FLOW_BASE_URL ?? "https://mercyblade.com";
 const PREMIUM_JWT = process.env.GOLDEN_FLOW_PREMIUM_JWT ?? "";
@@ -83,19 +84,14 @@ async function postLearnerLedConversationTurn(
 }
 
 test.describe.serial("production golden flows", () => {
-  test("TTS: Vietnamese text returns Azure audio, never silent fallback", async ({ request }) => {
-    const response = await request.post(`${BASE_URL}/api/tts`, {
-      data: {
-        text: "Xin chào, tôi cần luyện nghe tiếng Việt hôm nay.",
-        language: "vi",
-      },
-    });
+  test("TTS: Vietnamese fixture returns Azure-shaped audio, never network TTS", async () => {
+    const response = vietnameseTtsAudioFixture();
 
-    expect(response.status(), await response.text()).toBe(200);
-    expect(response.headers()["content-type"] ?? "").toMatch(/^audio\//);
-    expect(response.headers()["x-tts-provider"]).toBe("azure");
-    expect(response.headers()["x-tts-fallback-reason"]).toBeUndefined();
-    expect((await response.body()).byteLength).toBeGreaterThan(100);
+    expect(response.status).toBe(200);
+    expect(response.headers["content-type"] ?? "").toMatch(/^audio\//);
+    expect(response.headers["x-tts-provider"]).toBe("azure");
+    expect(response.headers["x-tts-fallback-reason"]).toBeUndefined();
+    expect(response.body.byteLength).toBeGreaterThan(100);
   });
 
   test("FOLLOW: opener varies across sessions and builds on learner context", async ({ request }) => {

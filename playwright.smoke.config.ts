@@ -14,6 +14,8 @@ const baseURL = process.env.TEST_BASE_URL ?? "https://mercyblade.com";
 const shouldStartLocalServer =
   baseURL.startsWith("http://127.0.0.1:") ||
   baseURL.startsWith("http://localhost:");
+const reuseExistingServer =
+  process.env.PLAYWRIGHT_REUSE_EXISTING_SERVER === "1" || !process.env.CI;
 
 export default defineConfig({
   testDir: "./tests/e2e",
@@ -53,7 +55,7 @@ export default defineConfig({
     ? {
         command: "npm run dev:frontend",
         url: baseURL,
-        reuseExistingServer: !process.env.CI,
+        reuseExistingServer,
         timeout: 180 * 1000,
         stdout: "ignore",
         stderr: "pipe",
