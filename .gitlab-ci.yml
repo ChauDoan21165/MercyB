@@ -96,25 +96,16 @@ variables:
 # wider-compatibility than Alpine for the project's native deps; the
 # size cost (~150 MB) is paid once per runner cache.
 
-# Reusable npm cache definition (key + paths only). Each job picks a
-# `policy`. The key tracks package-lock.json so a lockfile change
-# invalidates the cache and forces a fresh install.
-#
-# Producer/consumer split: `build` runs first and is the cache PRODUCER
-# (`pull-push`). The lighter jobs (lint / validate-rooms /
-# module-boundaries) are CONSUMERS (`pull`) — they still run `npm ci`, so
-# a cache miss is always safe; they simply stop re-archiving an identical
-# node_modules (~15s each, per the trace). On a `concurrent = 1` runner
-# those three saves are pure serial dead time, so dropping them comes off
-# the pipeline wall-clock directly. Shared-runner fallback jobs keep
-# `pull-push` (the anchor default) because they run on a different runner
-# with its own cold local cache and must seed it themselves.
+# Reusable npm cache definition (key + paths only). GitLab's archive cache
+# keeps the npm download cache only; macOS shell jobs restore `node_modules`
+# from a lockfile-keyed host-local APFS clone cache in the shared
+# `.node_job` before_script. That avoids re-zipping a logical 1 GiB tree per
+# job while preserving the isolated checkout model.
 .npm_cache_def: &npm_cache_def
   key:
     files:
       - package-lock.json
   paths:
-    - node_modules/
     - .npm/
 
 .node_job: &node_job
@@ -191,8 +182,7 @@ variables:
     # `--legacy-peer-deps` mirrors the GitHub workflow's flag — the
     # repo's peer-dep tree currently requires it.
     - sleep $((RANDOM % 60))
-    - rm -rf node_modules/.deno
-    - npm ci --legacy-peer-deps --cache .npm --prefer-offline ${NPM_CI_EXTRA_FLAGS:-}
+    - bash scripts/ci/restore-npm-node-modules-cache.sh
 
 # Local runner jobs are explicitly tagged so the Mac runner can keep
 # "run untagged jobs" disabled. Shared-runner fallbacks are separate
