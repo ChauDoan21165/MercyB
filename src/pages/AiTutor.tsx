@@ -72,6 +72,7 @@ import {
   type VietlishLogicDiagnosisResult,
 } from "@/lib/tutor/vietlishLogicEngine";
 import type { TodayLessonPlan } from "@/lib/tutor/todayLessonPlanner";
+import type { NextLessonRecommendation } from "@/lib/tutor/nextLessonRecommender";
 import {
   clearStudySessionState,
   loadStudySessionState,
@@ -154,6 +155,7 @@ import {
 import useUserAccess from "@/hooks/useUserAccess";
 import AiConversationScenarioPanel from "@/components/ai-tutor/conversation/AiConversationScenarioPanel";
 import StudyPathCard from "@/components/ai-tutor/StudyPathCard";
+import { TutorTodayLessonCard } from "@/components/ai-tutor/TutorMemoryCard";
 
 type CorrectionResult = TutorTurn & {
   grammarTip: string;
@@ -876,6 +878,25 @@ function buildTodayLessonPrompt(plan: TodayLessonPlan, target: TutorTarget): str
   return `Write one short ${target.toUpperCase()} sentence about ${plan.nextFocus}.`;
 }
 
+function buildRecommendedTodayLessonPlan(recommendation: NextLessonRecommendation): TodayLessonPlan {
+  const estimatedMinutes = recommendation.suggestedMode === "journey" ? 8 : 7;
+  return {
+    lessonTitle: recommendation.lessonTitle,
+    targetSkill: recommendation.targetSkill,
+    reason: recommendation.reason,
+    steps: [
+      "Fix one sentence.",
+      "Review Mercy's correction or explanation.",
+      "Retry the mistake once.",
+      "Apply one pattern in a new example.",
+      "Save the next focus.",
+    ],
+    estimatedMinutes,
+    suggestedMode: recommendation.suggestedMode,
+    nextFocus: recommendation.targetSkill,
+  };
+}
+
 function displaySafeTopic(topicId: string): string {
   return topicId.replace(/-/g, " ").trim() || "starter sentence";
 }
@@ -1163,6 +1184,7 @@ export default function AiTutorPage() {
   const [serverInterferenceTags, setServerInterferenceTags] = useState<string[]>([]);
   const [lastSavedId, setLastSavedId] = useState<string | null>(null);
   const [isFloatingShell, setIsFloatingShell] = useState(true);
+  const [recommendedTodayLessonPlan, setRecommendedTodayLessonPlan] = useState<TodayLessonPlan | null>(null);
   const [activeTodayLesson, setActiveTodayLesson] = useState<ActiveTodayLesson | null>(null);
   const [todayLessonLogicInsight, setTodayLessonLogicInsight] = useState<VietlishLogicDiagnosisResult | null>(null);
   const [studySessionState, setStudySessionState] = useState<StudySessionState | null>(null);
@@ -1909,11 +1931,13 @@ export default function AiTutorPage() {
   }, [recallUserId]);
 
   // Step-14: build the learner history profile from server telemetry + device-
-  // local data, recommend the next focus, and surface it in the memory card.
+  // local data, recommend the next focus, and drive the first visible lesson
+  // card. Cold-start explicitly abstains so the card keeps the default path.
   // Fully fail-soft (fetchServerProfileInput → {}/0 on error; syncProfile never
   // throws; abstain guard). Keyed on user + target so it runs once auth resolves.
   useEffect(() => {
     let cancelled = false;
+    setRecommendedTodayLessonPlan(null);
     (async () => {
       try {
         const serverInput = await fetchServerProfileInput(recallUserId, supabase);
@@ -1921,6 +1945,7 @@ export default function AiTutorPage() {
         const recs = recommendNextLessons(profile);
         const top = recs[0];
         if (!cancelled && top && top.ruleFired !== "cold-start:abstain") {
+          setRecommendedTodayLessonPlan(buildRecommendedTodayLessonPlan(top));
           setMemory((prev) =>
             prev
               ? { ...prev, nextRecommendedFocus: top.lessonTitle, suggestedNextFocus: top.lessonTitle }
@@ -2712,6 +2737,14 @@ export default function AiTutorPage() {
       onModeChange={handleModeChange}
       footer={`${tutorCopy.ui.footer} ${getSafetyLabel(aiTutorConfig)}.`}
     >
+      {!activeTodayLesson && (
+        <TutorTodayLessonCard
+          memoryLoaded={memoryLoaded}
+          memory={memory}
+          onStartLesson={handleStartTodayLesson}
+          planOverride={recommendedTodayLessonPlan}
+        />
+      )}
       {mode === "journey" ? (
         <JourneyMode onStartCorrection={() => handleModeChange("grammar")} />
       ) : mode === "grammar" ? (

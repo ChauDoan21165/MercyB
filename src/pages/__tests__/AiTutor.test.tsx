@@ -49,6 +49,8 @@ const {
   getMemorySummary,
   markPracticed,
   fetchCloudTtsUrl,
+  fetchServerProfileInput,
+  loadServerInterferenceTags,
   useAuthMock,
 } = vi.hoisted(() => {
   type CloudTtsArgs = { text: string; language: "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi"; voiceIdOverride?: string };
@@ -63,6 +65,8 @@ const {
     getMemorySummary: vi.fn(async () => ({ ...EMPTY_SUMMARY })),
     markPracticed: vi.fn(async () => {}),
     fetchCloudTtsUrl: vi.fn(async (_args: CloudTtsArgs): Promise<CloudTtsResult | null> => null),
+    fetchServerProfileInput: vi.fn(async () => ({ interferenceTagCounts: {}, sessionCount: 0 })),
+    loadServerInterferenceTags: vi.fn(async () => [] as string[]),
     useAuthMock: vi.fn<() => AuthMockValue>(() => ({ user: null, session: null, isLoading: false })),
   };
 });
@@ -160,6 +164,18 @@ vi.mock("@/lib/ai-tutor/learningMemory", () => ({
   markPracticed,
 }));
 
+vi.mock("@/lib/ai-conversation/serverInterferenceMemory", () => ({
+  fetchServerProfileInput,
+  loadServerInterferenceTags,
+  mergeRecallMemory: (serverTags: string[], summary: MemorySummary | null) => {
+    const clientTags = summary?.commonMistakePatterns ?? [];
+    const interferencePatterns = [...new Set([...serverTags, ...clientTags].filter(Boolean))].slice(0, 3);
+    const recentFocus = summary?.lastPracticedTopic || summary?.nextRecommendedFocus || null;
+    if (interferencePatterns.length === 0 && !recentFocus) return null;
+    return { interferencePatterns, recentFocus };
+  },
+}));
+
 vi.mock("@/lib/mercyVoice", () => ({
   fetchCloudTtsUrl,
 }));
@@ -191,6 +207,8 @@ beforeEach(() => {
   (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = undefined;
   (window as Window & { webkitSpeechRecognition?: unknown }).webkitSpeechRecognition = undefined;
   getMemorySummary.mockResolvedValue({ ...EMPTY_SUMMARY });
+  fetchServerProfileInput.mockResolvedValue({ interferenceTagCounts: {}, sessionCount: 0 });
+  loadServerInterferenceTags.mockResolvedValue([]);
   fetchCloudTtsUrl.mockResolvedValue(null);
   useAuthMock.mockReturnValue({ user: null, session: null, isLoading: false });
   vi.unstubAllGlobals();
@@ -267,6 +285,33 @@ async function answerFollowUpByVoice(transcript: string) {
 }
 
 describe("AiTutor four-tab seed flow", () => {
+  it("renders the recommender top result as the first bootstrap lesson card", async () => {
+    useAuthMock.mockReturnValue({
+      user: { id: "550e8400-e29b-41d4-a716-446655440014" },
+      session: { access_token: "test-token" },
+      isLoading: false,
+    });
+    fetchServerProfileInput.mockResolvedValue({
+      interferenceTagCounts: {
+        "missing-article": 5,
+        "tense-omission": 3,
+        "subj-verb-agreement": 1,
+      },
+      sessionCount: 12,
+    });
+
+    renderAiTutor();
+
+    const card = await screen.findByTestId("ai-tutor-today-lesson");
+    await waitFor(() => {
+      expect(within(card).getByTestId("ai-tutor-today-lesson-title")).toHaveTextContent(
+        "Master English articles: a, an, and the",
+      );
+    });
+    expect(within(card).getByText(/missing-article/)).toBeInTheDocument();
+    expect(fetchServerProfileInput).toHaveBeenCalled();
+  });
+
   it("renders the Teacher Mercy shell with four tabs", () => {
     renderAiTutor();
 

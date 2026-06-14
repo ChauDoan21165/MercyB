@@ -14,6 +14,7 @@ type Props = {
 type TodayLessonProps = Props & {
   onStartLesson?: (plan: TodayLessonPlan) => void;
   startLabel?: string;
+  planOverride?: TodayLessonPlan | null;
 };
 
 type MomentumProps = {
@@ -98,9 +99,15 @@ export default function TutorMemoryCard({ memoryLoaded, memory }: Props) {
   );
 }
 
-export function TutorTodayLessonCard({ memoryLoaded, memory, onStartLesson, startLabel = "Bắt đầu" }: TodayLessonProps) {
+export function TutorTodayLessonCard({
+  memoryLoaded,
+  memory,
+  onStartLesson,
+  startLabel = "Bắt đầu",
+  planOverride,
+}: TodayLessonProps) {
   if (!memoryLoaded) return null;
-  const plan = planTodayLesson(memory);
+  const plan = planOverride ?? planTodayLesson(memory);
   const modeLabel = {
     journey: "Lộ trình",
     grammar: "Sửa câu",
@@ -121,6 +128,13 @@ export function TutorTodayLessonCard({ memoryLoaded, memory, onStartLesson, star
             <span className="text-emerald-700">· {plan.estimatedMinutes} phút</span>
             <span className="text-emerald-700">· {plan.nextFocus || "Sửa lỗi thường gặp"}</span>
           </div>
+          <h2
+            data-testid="ai-tutor-today-lesson-title"
+            className="mt-1 text-base font-black leading-6 text-slate-950"
+            style={{ overflowWrap: "break-word" }}
+          >
+            {plan.lessonTitle}
+          </h2>
           <details className="mt-1">
             <summary className="cursor-pointer text-xs font-bold text-emerald-800">
               Xem kế hoạch

@@ -119,4 +119,22 @@ describe("getMemorySummary", () => {
     expect(serialized).not.toContain("550e8400-e29b-41d4-a716-446655440000");
     expect(serialized).not.toContain("My email is");
   });
+
+  it("A7-T5: sentence-like raw learner text and JWTs collapse to a safe aggregate tag", () => {
+    const summary = summarizeCorrections([
+      makeRecord({
+        topic: "I bought a private ticket yesterday.",
+      }),
+      makeRecord({
+        id: "jwt",
+        topic: "past tense eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIn0.signature",
+      }),
+    ]);
+
+    const serialized = JSON.stringify(summary);
+    expect(summary.commonMistakePatterns).toEqual(["general"]);
+    expect(serialized).not.toContain("I bought a private ticket yesterday");
+    expect(serialized).not.toContain("eyJhbGci");
+    expect(serialized).not.toContain("signature");
+  });
 });

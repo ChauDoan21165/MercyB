@@ -206,7 +206,12 @@ export async function recordTelemetryTurn(
   let encouragement: ConversationEncouragement | null = null;
   if (session.retentionEnabled) {
     const streak = getCurrentGeneralStreakDays();
-    encouragement = getEncouragementForTurn(input.turnNumber, errors.length, streak);
+    encouragement = getEncouragementForTurn(
+      input.turnNumber,
+      errors.length,
+      streak,
+      input.masteryEvidence,
+    );
     awardConversationTurnXP(input.turnNumber, correctionAccepted);
   }
 

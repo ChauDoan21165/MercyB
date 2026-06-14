@@ -161,12 +161,24 @@ async function withStore<T>(
 
 function sanitizeMemoryTag(value: string): string {
   const withoutEmail = value.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "").trim();
-  const withoutIds = withoutEmail
+  const withoutTokens = withoutEmail
+    .replace(/\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\b/g, "")
+    .replace(/\bBearer\s+[A-Za-z0-9._-]+\b/gi, "")
+    .trim();
+  const withoutIds = withoutTokens
     .replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi, "")
     .replace(/\b\d{6,}\b/g, "")
     .trim();
   const normalized = withoutIds.replace(/[^\p{L}\p{N}\s._:-]/gu, "").replace(/\s+/g, " ").trim();
-  return (normalized || "general").slice(0, 60);
+  if (!normalized) return "general";
+  const wordCount = normalized.split(/\s+/).filter(Boolean).length;
+  const hasRawSentencePronoun = /\b(?:i|me|my|mine|we|our|ours|you|your|yours|he|him|she|her|they|them|their)\b/i.test(normalized);
+  const hasPrivacyNoun = /\b(?:audio|recording|transcript|conversation history|raw text|jwt|bearer|password|secret|email|phone)\b/i.test(normalized);
+  const hasSentencePunctuation = /[?!.]/.test(value);
+  if (hasPrivacyNoun || hasSentencePunctuation || wordCount > 5 || (hasRawSentencePronoun && wordCount > 3)) {
+    return "general";
+  }
+  return normalized.slice(0, 60);
 }
 
 function sortTopicEntries(topicCounts: Record<string, number>): Array<[string, number]> {

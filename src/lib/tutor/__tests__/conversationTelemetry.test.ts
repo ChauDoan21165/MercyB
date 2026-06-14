@@ -137,7 +137,7 @@ describe("recordTelemetryTurn — retention gating", () => {
       turnInput({ turnNumber: 3, corrections: [{ accepted: true }] }),
     );
     expect(result.encouragement).not.toBeNull();
-    expect(getEncouragementForTurn).toHaveBeenCalledWith(3, 0, 4);
+    expect(getEncouragementForTurn).toHaveBeenCalledWith(3, 0, 4, undefined);
     expect(awardConversationTurnXP).toHaveBeenCalledWith(3, true);
   });
 
@@ -165,7 +165,34 @@ describe("recordTelemetryTurn — retention gating", () => {
       session,
       turnInput({ turnNumber: 4, errors: [{ errorType: "tense" }, { errorType: "article" }] }),
     );
-    expect(getEncouragementForTurn).toHaveBeenCalledWith(4, 2, 4);
+    expect(getEncouragementForTurn).toHaveBeenCalledWith(4, 2, 4, undefined);
+  });
+
+  it("passes mastery evidence to the encourage-vs-challenge selector", async () => {
+    const session = await beginTelemetrySession({ userId: "user-1", now: FIXED_NOW });
+    const masteryEvidence = {
+      interactions: [
+        {
+          itemId: "food-grammar-practice-1",
+          skillId: "food:grammar",
+          outcome: "correct" as const,
+          occurredAt: "2026-06-09T10:00:00.000Z",
+        },
+        {
+          itemId: "food-speaking-practice-1",
+          skillId: "food:speaking",
+          outcome: "correct" as const,
+          occurredAt: "2026-06-09T10:01:00.000Z",
+        },
+      ],
+      topicMastery: { food: 88 },
+      recommendation: null,
+      abstainedReason: null,
+    };
+
+    await recordTelemetryTurn(session, turnInput({ turnNumber: 4, masteryEvidence }));
+
+    expect(getEncouragementForTurn).toHaveBeenCalledWith(4, 0, 4, masteryEvidence);
   });
 });
 

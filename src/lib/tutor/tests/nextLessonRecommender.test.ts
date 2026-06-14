@@ -132,6 +132,39 @@ describe("recommendNextLessons — ranked list", () => {
     expect(masteryRec.targetSkill).toBe("past-tense");
   });
 
+  it("ranks interference before history preference before mastery review", () => {
+    const profile: LearnerHistoryProfile = {
+      ...FIXTURE_VN_LEARNER_NEW,
+      sessionCount: 8,
+      preferredMode: "speak",
+      topicMastery: { "past-tense": 28 },
+      interferencePatterns: [
+        { tag: "tense-omission" as const, observedCount: 2, lastSeenAt: 0 },
+      ],
+    };
+
+    expect(recommendNextLessons(profile).map((rec) => rec.ruleFired)).toEqual([
+      "viet-interference:tense-omission",
+      "preference:mode-promotion",
+      "mastery:lowest-topic-review",
+    ]);
+  });
+
+  it("breaks equal mastery ties by topic id for deterministic output", () => {
+    const profile: LearnerHistoryProfile = {
+      ...FIXTURE_VN_LEARNER_NEW,
+      sessionCount: 6,
+      topicMastery: { "word-order": 30, "past-tense": 30 },
+      interferencePatterns: [],
+    };
+
+    const masteryRec = recommendNextLessons(profile).find(
+      (rec) => rec.ruleFired === "mastery:lowest-topic-review",
+    )!;
+
+    expect(masteryRec.targetSkill).toBe("past-tense");
+  });
+
   it("fires preference:mode-promotion when preferredMode is set and sessionCount >= 5", () => {
     const profile: LearnerHistoryProfile = {
       ...FIXTURE_VN_LEARNER_B1_12_SESSIONS,
