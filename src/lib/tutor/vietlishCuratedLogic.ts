@@ -115,7 +115,7 @@ export const VIETLISH_CURATED_PATTERNS: readonly VietlishCuratedPattern[] = [
     correctExample: "She told me the truth.",
     trapExample: "She said me the truth.",
     memoryAid: "Tell + person; say + to + person.",
-    match: /\b(?:say|says|said|saying)\s+(?:me|you|him|her|us|them)\b/i,
+    match: /\b(?:say|says|said|saying)\s+(?:me|us)\b/i,
   },
   {
     id: "contact-with",

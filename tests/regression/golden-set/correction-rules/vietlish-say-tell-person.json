@@ -3,7 +3,7 @@
   "ruleId": "en-vietlish-say-tell-person",
   "language": "en",
   "description": "VN 'nói (với) tôi' transfer: Vietnamese 'nói' collapses say & tell, so learners write 'say me the news' where English ditransitive reporting to a person needs 'tell + indirect object' ('tell me the news'). Rule en-vietlish-say-tell-person maps say/says/said/saying -> tell/tells/told/telling ONLY before the unambiguous object pronouns me/us, preserving case, and abstains on fronted what/which questions.",
-  "fp_risk_note": "Low-medium risk. Object scope is locked to me/us only. you/him/her/them/it are deliberately excluded because they yield valid English: embedded subject ('say you are right'), possessive ('say her name'), utter-object ('just say them'). 'say with me' is owned by en-calque-say-with-person (a 'with' between the verb and pronoun means this rule never matches it); 'say to me' is already correct (the 'to' breaks adjacency); fronted 'What did you say?' has no indirect object and abstains; 'Say hello' has no pronoun IO.",
+  "fp_risk_note": "Low-medium risk. Object scope is locked to me/us only. you/him/her/them/it are deliberately excluded because they yield valid English: reported-clause subjects ('say you understand', 'say you agree', 'say you are right'), possessive ('say her name'), utter-object ('just say them'). 'say with me' is owned by en-calque-say-with-person (a 'with' between the verb and pronoun means this rule never matches it); 'say to me' is already correct (the 'to' breaks adjacency); fronted 'What did you say?' and 'say what you mean' have no indirect object and abstain; 'Say hello' has no pronoun IO.",
   "positive": [
     {
       "id": "say-tell-pos-001",
