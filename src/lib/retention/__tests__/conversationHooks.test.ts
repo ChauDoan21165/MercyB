@@ -46,6 +46,49 @@ describe("conversationHooks encouragement copy", () => {
     expect(copy.tone).toBe("streak");
     expect(copy.vi).toContain("Chuỗi 3 ngày");
   });
+
+  it("chooses a challenge from high mastery and low recent error evidence", () => {
+    const copy = getEncouragementForTurn(4, 0, 0, {
+      topicMastery: { food: 86 },
+      interactions: [
+        { outcome: "correct" },
+        { outcome: "correct" },
+        { outcome: "correct" },
+      ],
+    });
+
+    expect(copy.tone).toBe("challenge");
+    expect(copy.vi).toContain("Thử trả lời dài hơn");
+    expect(copy.en).toContain("Try a harder answer");
+  });
+
+  it("keeps repair warmth ahead of challenge evidence when the turn has errors", () => {
+    const copy = getEncouragementForTurn(4, 1, 0, {
+      topicMastery: { food: 92 },
+      interactions: [
+        { outcome: "correct" },
+        { outcome: "correct" },
+        { outcome: "correct" },
+      ],
+    });
+
+    expect(copy.tone).toBe("repair");
+    expect(copy.vi).toContain("bắt được 1");
+  });
+
+  it("does not challenge without high mastery evidence", () => {
+    const copy = getEncouragementForTurn(4, 0, 0, {
+      topicMastery: { food: 79 },
+      interactions: [
+        { outcome: "correct" },
+        { outcome: "correct" },
+        { outcome: "correct" },
+      ],
+    });
+
+    expect(copy.tone).toBe("momentum");
+    expect(copy.en).toContain("answering with your own meaning");
+  });
 });
 
 describe("awardConversationTurnXP", () => {

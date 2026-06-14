@@ -10,6 +10,7 @@ import { awardXPEventBackground } from "@/lib/xp/awardXPEvent";
 export type ConversationEncouragementTone =
   | "first_turn"
   | "repair"
+  | "challenge"
   | "momentum"
   | "milestone"
   | "streak";
@@ -19,6 +20,17 @@ export type ConversationEncouragement = {
   vi: string;
   en: string;
 };
+
+export type ConversationChallengeEvidence = {
+  interactions?: readonly {
+    outcome?: string | null;
+  }[];
+  topicMastery?: Record<string, number | null | undefined> | null;
+};
+
+const CHALLENGE_MASTERY_THRESHOLD = 80;
+const CHALLENGE_MAX_RECENT_ERROR_RATE = 0.2;
+const CHALLENGE_MIN_RECENT_INTERACTIONS = 2;
 
 function clampInt(value: unknown): number {
   return typeof value === "number" && Number.isFinite(value) && value > 0
@@ -34,6 +46,7 @@ export function getEncouragementForTurn(
   turnNumber: number,
   errorsThisTurn: number,
   streakDays: number,
+  challengeEvidence?: ConversationChallengeEvidence | null,
 ): ConversationEncouragement {
   const turn = clampInt(turnNumber);
   const errors = clampInt(errorsThisTurn);
@@ -52,6 +65,14 @@ export function getEncouragementForTurn(
       tone: "repair",
       vi: `Bạn vừa bắt được ${errors} điểm cần sửa. Đó là cách nói tự nhiên hơn từng lượt.`,
       en: `You caught ${errors} thing${errors === 1 ? "" : "s"} to fix. That is how each turn gets more natural.`,
+    };
+  }
+
+  if (shouldChallengeLearner(turn, errors, challengeEvidence)) {
+    return {
+      tone: "challenge",
+      vi: "Bạn đang vững phần này rồi. Thử trả lời dài hơn: thêm một lý do và một chi tiết cụ thể.",
+      en: "You look steady here. Try a harder answer: add one reason and one specific detail.",
     };
   }
 
@@ -98,4 +119,25 @@ export function awardConversationTurnXP(
 
 export function getCurrentGeneralStreakDays(): number {
   return getCanonicalStreak().current;
+}
+
+function shouldChallengeLearner(
+  turn: number,
+  errorsThisTurn: number,
+  evidence?: ConversationChallengeEvidence | null,
+): boolean {
+  if (turn <= 1 || errorsThisTurn > 0 || !evidence) return false;
+
+  const masteryValues = Object.values(evidence.topicMastery ?? {})
+    .filter((value): value is number => typeof value === "number" && Number.isFinite(value));
+  const hasHighMastery = masteryValues.some((value) => value >= CHALLENGE_MASTERY_THRESHOLD);
+  if (!hasHighMastery) return false;
+
+  const recent = (evidence.interactions ?? [])
+    .filter((interaction) => interaction?.outcome === "correct" || interaction?.outcome === "incorrect")
+    .slice(-6);
+  if (recent.length < CHALLENGE_MIN_RECENT_INTERACTIONS) return false;
+
+  const incorrect = recent.filter((interaction) => interaction.outcome === "incorrect").length;
+  return incorrect / recent.length <= CHALLENGE_MAX_RECENT_ERROR_RATE;
 }

@@ -1397,18 +1397,14 @@ describe("correctionEngine", () => {
     expect(result.appliedRuleIds).not.toContain("en-vn-past-marker-regular-verb");
   });
 
-  it("fixes the live yesterday invite dinner run-on without leaving the full sentence unchanged", () => {
+  it("does not fabricate canned story content for the yesterday invite run-on", () => {
     const input =
       "I invite my best friend to come to my house yesterday and we had dinner and yet why and we smoke cigars he had a lot of fun";
     const result = correctWithTutorRules(input, "en");
 
-    expect(result).toMatchObject({
-      status: "corrected",
-      corrected: "I invited my best friend to come to my house yesterday. We had dinner and smoked cigars. He had a lot of fun.",
-      appliedRuleIds: ["en-yesterday-invite-dinner-runon"],
-    });
-    expect(result.corrected).not.toBe(`${input}.`);
-    expect(result.corrected).toContain("invited");
+    expect(result.appliedRuleIds).not.toContain("en-yesterday-invite-dinner-runon");
+    expect(result.corrected).not.toContain("We had dinner and smoked cigars.");
+    expect(result.corrected).not.toContain("He had a lot of fun.");
   });
 
   it.each([

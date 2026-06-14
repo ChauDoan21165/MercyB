@@ -353,7 +353,10 @@ function getLowestMasteryTopic(profile: LearnerHistoryProfile): MasteryEntry | n
   if (entries.length === 0) return null;
   const below = entries
     .filter(([, score]) => score < 50)
-    .sort(([, a], [, b]) => a - b);
+    .sort(
+      ([topicA, scoreA], [topicB, scoreB]) =>
+        scoreA - scoreB || topicA.localeCompare(topicB),
+    );
   if (below.length === 0) return null;
   const [topic, score] = below[0];
   return { topic, score };

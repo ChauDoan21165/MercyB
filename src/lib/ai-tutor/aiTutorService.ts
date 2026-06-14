@@ -55,6 +55,9 @@ import {
   estimateTokens,
   createCostLogEntry,
 } from "./costLimits";
+import {
+  applyEmotionalStateToTutorResponse,
+} from "./emotionalResponse";
 
 // ─── Local Types ──────────────────────────────────────────────────────
 
@@ -268,7 +271,12 @@ export function executeTutorTurn(req: TutorTurnRequest): TutorTurnResult {
     return errorResult(req, "output_moderation_blocked", startMs, metrics);
   }
   metrics.moderationPassed = true;
-  const finalResponse = moderationResult.response;
+  const emotionalResponse = applyEmotionalStateToTutorResponse({
+    learnerText: cleanedInput,
+    response: moderationResult.response,
+    turnIndex: req.session.messages.length,
+  });
+  const finalResponse = emotionalResponse.response;
 
   // ─── 9. Cost calculation ───────────────────────────────────────────
 

@@ -194,6 +194,73 @@ describe("executeTutorTurn — determinism", () => {
   });
 });
 
+// ─── Step 10: Emotional state classifiers affect live replies ───────
+
+describe("executeTutorTurn — emotional warmth live path", () => {
+  it("keeps neutral turns on the normal tutor response path", () => {
+    const result = executeTutorTurn(baseRequest({
+      userMessage: "we ate fish and rice",
+      mockProvider: createMockProvider({ seed: 42, errorRate: 0 }),
+      requestId: "emotion-neutral",
+    }));
+
+    expect(result.response?.vi.length).toBeGreaterThan(10);
+    expect(result.response?.vi).not.toContain("Bạn nói tốt lắm rồi");
+    expect(result.response?.vi).not.toContain("Mình chưa rõ phần nào");
+    expect(result.response?.vi).not.toContain("Mình dừng phần sửa lỗi một chút");
+
+    const mercyMsg = result.session.messages.find((message) => message.role === "mercy");
+    expect(mercyMsg?.role === "mercy" ? mercyMsg.response.vi : "").toBe(result.response?.vi);
+  });
+
+  it("prefixes mild affect with VN-calibrated acknowledgment warmth", () => {
+    const result = executeTutorTurn(baseRequest({
+      userMessage: "I feel tired today",
+      mockProvider: createMockProvider({ seed: 42, errorRate: 0 }),
+      requestId: "emotion-acknowledge",
+    }));
+
+    expect(result.response?.vi).toContain("Bạn nói tốt lắm rồi");
+    expect(result.response?.vi.split("\n").length).toBeGreaterThan(1);
+    expect(result.response?.en).toContain("Nice work");
+
+    const mercyMsg = result.session.messages.find((message) => message.role === "mercy");
+    expect(mercyMsg?.role === "mercy" ? mercyMsg.response.vi : "").toBe(result.response?.vi);
+  });
+
+  it("turns uncertainty into a live clarification reply before continuing", () => {
+    const result = executeTutorTurn(baseRequest({
+      userMessage: "I don't understand",
+      mockProvider: createMockProvider({ seed: 42, errorRate: 0 }),
+      requestId: "emotion-clarify",
+    }));
+
+    expect(result.response?.vi).toContain("Mình chưa rõ phần nào");
+    expect(result.response?.vi).not.toContain("Câu hỏi hay đấy!");
+    expect(result.response?.nextSteps[0]?.labelVi).toBe("Gửi một câu");
+
+    const mercyMsg = result.session.messages.find((message) => message.role === "mercy");
+    expect(mercyMsg?.role === "mercy" ? mercyMsg.response.vi : "").toBe(result.response?.vi);
+  });
+
+  it("turns distress into a live pause reply and does not continue correction", () => {
+    const result = executeTutorTurn(baseRequest({
+      userMessage: "fix this sentence: my father died",
+      entryPoint: "fix_grammar",
+      mockProvider: createMockProvider({ seed: 42, errorRate: 0 }),
+      requestId: "emotion-pause",
+    }));
+
+    expect(result.response?.vi).toContain("Mình dừng phần sửa lỗi một chút");
+    expect(result.response?.vi).not.toContain("🔍 Bạn viết");
+    expect(result.response?.correctedSentence).toBeUndefined();
+    expect(result.response?.nextSteps[0]?.labelVi).toBe("Viết một câu ngắn");
+
+    const mercyMsg = result.session.messages.find((message) => message.role === "mercy");
+    expect(mercyMsg?.role === "mercy" ? mercyMsg.response.vi : "").toBe(result.response?.vi);
+  });
+});
+
 // ─── PB5-T14: All 5 tutor modes covered ─────────────────────────────
 
 describe("executeTutorTurn — mode coverage", () => {
