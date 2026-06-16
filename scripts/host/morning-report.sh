@@ -153,6 +153,5 @@ cp "${TMPFILE}" "${REPORT_FILE}"
 # Append dated copy
 cat "${TMPFILE}" >> "${DATED_COPY}"
 
-# Audio notification (best-effort — may be silent in headless cron)
-say "Good morning Chau, your MercyBlade report is ready" 2>/dev/null || true
-afplay /System/Library/Sounds/Glass.aiff 2>/dev/null || true
+# Silent by policy: routine morning reports must not speak or play sounds.
+# Emergency voice only via ~/bin/emergency-alert.sh.
