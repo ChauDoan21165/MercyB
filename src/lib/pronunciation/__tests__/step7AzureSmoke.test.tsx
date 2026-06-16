@@ -791,6 +791,17 @@ describe("Step 7 Azure-path smoke harness", () => {
     expect(result.phonemeScores?.length).toBeGreaterThan(0);
     expect(displayResult?.mode).toBe("azure-batch");
     expect(displayResult?.phonemeScores?.length).toBeGreaterThan(0);
+
+    console.log("[step7-live-smoke-evidence]", {
+      provider: result.provider,
+      mode: result.mode,
+      displayMode: displayResult?.mode,
+      labelKind: result.labelKind,
+      overallScore: result.overallScore,
+      phonemeScoresLength: result.phonemeScores?.length ?? 0,
+      displayPhonemeScoresLength: displayResult?.phonemeScores?.length ?? 0,
+    });
+
     expect(score).toHaveTextContent("Điểm tổng thể khoảng");
     expect(screen.getByTestId("ai-tutor-speak-word-detail")).toBeInTheDocument();
 
