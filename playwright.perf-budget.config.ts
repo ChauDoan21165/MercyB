@@ -4,6 +4,7 @@ const ciJobId = Number(process.env.CI_JOB_ID);
 const defaultPort = Number.isFinite(ciJobId) ? 3_200 + (ciJobId % 1_000) : 4_173;
 const port = Number(process.env.PERF_BUDGET_PORT) || defaultPort;
 const baseURL = process.env.TEST_BASE_URL ?? `http://127.0.0.1:${port}`;
+const webServerTimeoutMs = Number(process.env.PERF_BUDGET_WEB_SERVER_TIMEOUT_MS) || 480 * 1000;
 
 export default defineConfig({
   testDir: "./tests/perf-budget",
@@ -43,7 +44,7 @@ export default defineConfig({
     command: `npm run build && npx vite preview --host 127.0.0.1 --port ${port} --strictPort`,
     url: baseURL,
     reuseExistingServer: !process.env.CI,
-    timeout: 240 * 1000,
+    timeout: webServerTimeoutMs,
     stdout: "ignore",
     stderr: "pipe",
   },
