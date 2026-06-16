@@ -295,6 +295,21 @@ describe("advanceL1Focus — stickiness and purity", () => {
     }
     expect(used.length).toBeGreaterThan(0);
   });
+
+  it("starts a new in-session state without carrying the prior focus", () => {
+    const priorSessionStart = advanceL1Focus(
+      initialL1FocusState,
+      highHit("vi_l1_past_ed"),
+    );
+    expect(priorSessionStart.action).toBe("start_focus");
+    expect(priorSessionStart.nextState.focusTag).toBe("vi_l1_past_ed");
+
+    const newSessionDecision = advanceL1Focus(initialL1FocusState, noHit);
+    expect(newSessionDecision.action).toBe("converse_naturally");
+    expect(newSessionDecision.focusTag).toBeNull();
+    expect(newSessionDecision.followUp).toBeNull();
+    expect(newSessionDecision.nextState).toEqual(initialL1FocusState);
+  });
 });
 
 describe("buildMoveOnMessageVi", () => {
