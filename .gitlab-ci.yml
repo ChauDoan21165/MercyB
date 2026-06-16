@@ -1312,6 +1312,7 @@ check-new-orphans:
   image: node:24-bookworm-slim
   interruptible: true
   stage: test
+  timeout: 10 minutes
   variables:
     # Full history so `git merge-base` against the MR target resolves even on
     # branches that diverged past the default shallow GIT_DEPTH.
@@ -1323,6 +1324,7 @@ check-new-orphans:shared-fallback:
   image: node:24-bookworm-slim
   interruptible: true
   stage: test
+  timeout: 10 minutes
   rules:
     - if: '$RESERVOIR == "1"'
       when: never
@@ -1338,6 +1340,7 @@ ci-job-tags-guard:
   image: node:24-bookworm-slim
   interruptible: true
   stage: test
+  timeout: 5 minutes
   cache: {}
   rules:
     - if: '$RESERVOIR == "1"'
