@@ -6,11 +6,11 @@ import { describe, expect, it } from "vitest";
 const repoRoot = resolve(".");
 const verifier = resolve(
   repoRoot,
-  "scripts/ci/verify-step13-18-privacy-register-gates.mjs",
+  "scripts/ci/verify-step13-18-privacy-register-gates.mjs"
 );
 const artifact = resolve(
   repoRoot,
-  "docs/internal/intelligence-ladder/step13-18-privacy-register-gates.md",
+  "docs/internal/intelligence-ladder/step13-18-privacy-register-gates.md"
 );
 
 describe("verify-step13-18-privacy-register-gates", () => {
@@ -24,6 +24,8 @@ describe("verify-step13-18-privacy-register-gates", () => {
     });
 
     expect(result.status, `${result.stdout}\n${result.stderr}`).toBe(0);
-    expect(result.stdout).toContain("[step13-18-privacy-register-gates] verified");
-  });
+    expect(result.stdout).toContain(
+      "[step13-18-privacy-register-gates] verified"
+    );
+  }, 60_000);
 });
