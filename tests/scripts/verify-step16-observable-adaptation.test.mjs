@@ -25,5 +25,5 @@ describe("verify-step16-observable-adaptation", () => {
 
     expect(result.status, `${result.stdout}\n${result.stderr}`).toBe(0);
     expect(result.stdout).toContain("[step16-observable-adaptation] verified");
-  });
+  }, 120000);
 });

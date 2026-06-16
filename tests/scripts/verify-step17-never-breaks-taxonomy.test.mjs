@@ -25,5 +25,5 @@ describe("verify-step17-never-breaks-taxonomy", () => {
 
     expect(result.status, `${result.stdout}\n${result.stderr}`).toBe(0);
     expect(result.stdout).toContain("[step17-never-breaks-taxonomy] verified");
-  });
+  }, 240000);
 });

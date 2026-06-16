@@ -1,0 +1,2 @@
+case_id,target_text,audio_artifact,azure_mode,azure_provider,azure_overall_score,azure_phoneme_count,native_reviewer_id,native_reviewer_role,review_date_utc,native_overall_1_5,feedback_accuracy_1_5,register_politeness_1_5,learner_safety_1_5,verdict,notes
+S7-001,I went to school yesterday.,ATTACH_REDACTED_AUDIO_OR_REFERENCE,ATTACH_FROM_LIVE_AZURE_LOG,ATTACH_FROM_LIVE_AZURE_LOG,ATTACH,ATTACH,REVIEWER_ID,native English reviewer,YYYY-MM-DDTHH:MM:SSZ,,,,,pending,Do not fill until a real reviewer scores the case.
