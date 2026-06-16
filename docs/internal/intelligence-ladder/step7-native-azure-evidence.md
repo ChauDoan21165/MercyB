@@ -1,6 +1,6 @@
 # Step 7 Native Azure Evidence Ledger
 
-Date: 2026-06-15
+Date: 2026-06-16
 Job: L7-step7-native-azure-evidence
 Scope: Step 7 pronunciation evidence closeout only
 
@@ -14,9 +14,9 @@ Step 7 is not fully evidence-closed because this repository currently has readin
 
 | Evidence class | Status | Current evidence | Closeout meaning |
 | --- | --- | --- | --- |
-| Real Azure evidence | Missing / unproven | `reports/ladder/step7-evidence/step7-2026-06-15T-current-turn/live-azure-smoke.log` says the live Azure smoke was blocked because preflight was not ready. `manifest.json` records `liveAzureSmokeStatus=blocked_missing_preconditions` and `liveAzurePreconditionsReady=false`. | Not proof. No request was sent, and no Azure provider result, mode, or phoneme count was captured. |
-| Synthetic evidence | Present as readiness-only evidence | `reports/ladder/step7-evidence/step7-2026-06-15T-current-turn/manifest.json` records `localSmokePassed=true`. The smoke harness and unit tests cover local fallback, mocked/sanitized response shape, and safety behavior. | Useful CI signal only. It must not be presented as native-ear proof or real Azure proof. |
-| Native-ear validation | Missing / unproven | `reports/ladder/step7-evidence/step7-2026-06-15T-current-turn/native-ear-scores.csv` is still a template with `pending` and placeholder reviewer fields. | Not proof. No real reviewer verdicts, scores, dates, or notes are attached. |
+| Real Azure evidence | Missing / unproven | `reports/ladder/step7-evidence/real-run-2026-06-16T092729997Z/live-azure-smoke.log` says the live Azure smoke was blocked because preflight was not ready. `manifest.json` records `liveAzureSmokeStatus=blocked_missing_preconditions` and `liveAzurePreconditionsReady=false`. | Not proof. No request was sent, and no Azure provider result, mode, or phoneme count was captured. |
+| Synthetic evidence | Present as readiness-only evidence | `reports/ladder/step7-evidence/real-run-2026-06-16T092729997Z/manifest.json` records `localSmokePassed=true`. The smoke harness and unit tests cover local fallback, mocked/sanitized response shape, and safety behavior. | Useful CI signal only. It must not be presented as native-ear proof or real Azure proof. |
+| Native-ear validation | Missing / unproven | `reports/ladder/step7-evidence/real-run-2026-06-16T092729997Z/native-ear-scores.csv` is still a template with `pending` and placeholder reviewer fields. | Not proof. No real reviewer verdicts, scores, dates, or notes are attached. |
 | Missing / unproven evidence | Open blockers | Real Azure run, native-ear reviewers, completed scoring CSV, and owner acceptance are absent. | Step 7 cannot be called fully closed. |
 
 ## Real Azure Evidence
@@ -32,9 +32,9 @@ Required closeout proof:
 
 Current repository evidence:
 
-- `reports/ladder/step7-evidence/step7-2026-06-15T-current-turn/preflight.json` records all live Azure preconditions as absent on this run: `STEP7_LIVE_AZURE_SMOKE`, `VITE_AZURE_PHONEME_BATCH_ENABLED`, `VITE_SUPABASE_URL`, smoke auth, and Supabase anon key are not present.
-- `reports/ladder/step7-evidence/step7-2026-06-15T-current-turn/live-azure-smoke.log` records: live Azure smoke was requested, but preflight was not ready, so no live request was sent.
-- `reports/ladder/step7-evidence/step7-2026-06-15T-current-turn/manifest.json` records `liveAzureSmokeStatus=blocked_missing_preconditions`.
+- `reports/ladder/step7-evidence/real-run-2026-06-16T092729997Z/preflight.json` records all live Azure preconditions as absent on this run: `STEP7_LIVE_AZURE_SMOKE`, `VITE_AZURE_PHONEME_BATCH_ENABLED`, `VITE_SUPABASE_URL`, smoke auth, and Supabase anon key are not present.
+- `reports/ladder/step7-evidence/real-run-2026-06-16T092729997Z/live-azure-smoke.log` records: live Azure smoke was requested, but preflight was not ready, so no live request was sent.
+- `reports/ladder/step7-evidence/real-run-2026-06-16T092729997Z/manifest.json` records `liveAzureSmokeStatus=blocked_missing_preconditions`.
 
 Conclusion: real Azure evidence is missing / unproven. There is no Azure-native result to close Step 7.
 
@@ -43,7 +43,7 @@ Conclusion: real Azure evidence is missing / unproven. There is no Azure-native 
 Synthetic and local evidence currently present:
 
 - `src/lib/pronunciation/__tests__/step7AzureSmoke.test.tsx` validates no-Azure fallback behavior in CI and defines an opt-in live Azure shape smoke.
-- `reports/ladder/step7-evidence/step7-2026-06-15T-current-turn/manifest.json` records `localSmokePassed=true`.
+- `reports/ladder/step7-evidence/real-run-2026-06-16T092729997Z/manifest.json` records `localSmokePassed=true`.
 - The fixture `src/lib/pronunciation/__fixtures__/step7-known-good-i-went-to-school-yesterday.wav` exists and was used as readiness input.
 - Unit coverage validates safety behavior such as sanitized logs and no fabricated phoneme output.
 
@@ -60,7 +60,7 @@ Required closeout proof:
 
 Current repository evidence:
 
-- `reports/ladder/step7-evidence/step7-2026-06-15T-current-turn/native-ear-scores.csv` is a template only.
+- `reports/ladder/step7-evidence/real-run-2026-06-16T092729997Z/native-ear-scores.csv` is a template only.
 - The only recorded row has placeholder reviewer fields and `verdict=pending`.
 - No completed reviewer score, reviewer date, reviewer note, or pass verdict is attached.
 
