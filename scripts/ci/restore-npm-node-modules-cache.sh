@@ -53,7 +53,11 @@ restore_cache() {
   BEFORE_KB="$(free_kb || true)"
   START_SECONDS="$(date +%s)"
   rm -rf node_modules
-  cp -cR "$CACHE_DIR/node_modules" node_modules
+  if ! cp -cR "$CACHE_DIR/node_modules" node_modules; then
+    echo "[node-modules-cache] restore copy failed; falling back to npm ci"
+    rm -rf node_modules
+    return 1
+  fi
   rm -rf node_modules/.deno
   if [ ! -x node_modules/.bin/vite ] || [ ! -x node_modules/.bin/tsc ]; then
     echo "[node-modules-cache] restore validation failed; falling back to npm ci"
