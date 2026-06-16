@@ -1,24 +1,31 @@
-# Step 7 Owner Acceptance
+# Step 7 Owner Acceptance — Azure Evidence
 
-validation_id=real-run-2026-06-16T174426104Z
-generated_at=2026-06-16T17:44:26.105Z
-status=blocked-by-owner
+validation_id: real-run-2026-06-16T174426104Z  
+owner: Chau Doan  
+date_utc: 2026-06-16  
+status: owner-approved Azure evidence; native-ear review waived/deferred
 
-## Non-Closure Statement
+## Approved Evidence
 
-Step 7 is not closed by this artifact unless all required evidence below is attached and accepted by the owner.
+Owner approves this pack as valid Step 7 live Azure technical evidence.
 
-## Required Evidence Before Acceptance
+Confirmed evidence:
+- liveAzureSmokeStatus=passed
+- provider=azure
+- mode=azure_phoneme_batch
+- displayMode=azure-batch
+- overallScore=99
+- phonemeScoresLength=19
+- exitCode=0
 
-- [ ] `manifest.json` reports `liveAzureSmokeStatus=passed`.
-- [ ] `live-azure-smoke.log` proves the real Azure path ran with provider=azure, mode=azure_phoneme_batch, and nonzero phoneme evidence.
-- [ ] `native-ear-scores.csv` is completed by real native-ear reviewer(s), not generated or inferred.
-- [ ] Reviewer disagreements, unsafe wording, or overclaims are fixed or explicitly waived.
-- [ ] Owner signs off on this exact validation ID.
+## Native-Ear Review Status
 
-## Current Acceptance
+Owner explicitly waives/defer native-ear reviewer CSV completion for this checkpoint.
 
-owner_acceptance_status=not_accepted
-owner_name=
-owner_acceptance_date_utc=
-owner_notes=Blocked until real Azure evidence and real native-ear review are attached.
+This waiver means Step 7 may be treated as Azure-evidence approved, but it must not be represented as fully native-ear evidence-closed.
+
+## Final Owner Decision
+
+Approved for ladder progress as: partially closed / Azure technical gate closed.
+
+Not approved as: fully native-ear evidence-closed.
