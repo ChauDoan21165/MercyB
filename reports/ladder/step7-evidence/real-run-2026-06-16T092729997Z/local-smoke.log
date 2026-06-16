@@ -1,0 +1,33 @@
+npx vitest run src/lib/pronunciation/__tests__/step7AzureSmoke.test.tsx -t "keeps no-Azure fallback scoring, tone, and Speak display safe"
+exitCode=0
+
+STDOUT
+
+ RUN  v3.2.4 /Users/admin/MercyB
+
+stdout | src/lib/pronunciation/__tests__/step7AzureSmoke.test.tsx
+[MB] Debug hooks attached {
+  supabaseUrl: 'https://buemdfxyhxunzpgdoqin.supabase.co',
+  projectId: 'buemdfxyhxunzpgdoqin',
+  storageKey: 'mb-supabase-auth-buemdfxyhxunzpgdoqin',
+  hasAnonKey: true,
+  anonKeyPrefix: '[redacted]',
+  isDev: true,
+  devtools: [
+    'window.__MB_SUPABASE__',
+    'window.__MB_ENV__?.()',
+    'await window.__MB_JWT__?.()',
+    'await window.__MB_SESSION__?.()'
+  ]
+}
+
+ ✓ src/lib/pronunciation/__tests__/step7AzureSmoke.test.tsx (9 tests | 8 skipped) 17ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed | 8 skipped (9)
+   Start at  03:27:30
+   Duration  839ms (transform 134ms, setup 53ms, collect 203ms, tests 17ms, environment 285ms, prepare 27ms)
+
+
+
+STDERR

@@ -1,0 +1,2 @@
+run_id,scenario_id,system_label_blinded,rater_id,rater_role,rater_vietnamese_proficiency,rater_english_proficiency,rated_at_utc,pedagogical_correctness_1_to_5,vn_en_specificity_1_to_5,communicative_usefulness_1_to_5,tutor_warmth_1_to_5,safety_honesty_1_to_5,real_session_continuity_1_to_5,privacy_consent_issue_yes_no,register_politeness_issue_yes_no,critical_failure_yes_no,critical_failure_type,verdict_pass_partial_fail_critical_fail,notes,evidence_ref
+,,,,,,,,,,,,,,,,,,,,
