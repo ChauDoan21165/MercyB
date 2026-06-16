@@ -1,0 +1,56 @@
+npx vitest run src/lib/pronunciation/__tests__/step7AzureSmoke.test.tsx -t "validates live Azure result shape and Speak rendering when local/dev env opts in"
+exitCode=0
+
+STDOUT
+
+ RUN  v3.2.4 /Users/admin/MercyB
+
+stdout | src/lib/pronunciation/__tests__/step7AzureSmoke.test.tsx
+[MB] Debug hooks attached {
+  supabaseUrl: [32m'https://buemdfxyhxunzpgdoqin.supabase.co'[39m,
+  projectId: [32m'buemdfxyhxunzpgdoqin'[39m,
+  storageKey: [32m'mb-supabase-auth-buemdfxyhxunzpgdoqin'[39m,
+  hasAnonKey: [33mtrue[39m,
+  anonKeyPrefix: [32m'eyJhbGciOiJIUzI1Ni…'[39m,
+  isDev: [33mtrue[39m,
+  devtools: [
+    [32m'window.__MB_SUPABASE__'[39m,
+    [32m'window.__MB_ENV__?.()'[39m,
+    [32m'await window.__MB_JWT__?.()'[39m,
+    [32m'await window.__MB_SESSION__?.()'[39m
+  ]
+}
+
+stdout | src/lib/pronunciation/__tests__/step7AzureSmoke.test.tsx > Step 7 Azure-path smoke harness > validates live Azure result shape and Speak rendering when local/dev env opts in
+[step7Smoke] tokenSource=runtime_mint; tokenLength=734
+
+stdout | src/lib/pronunciation/__tests__/step7AzureSmoke.test.tsx > Step 7 Azure-path smoke harness > validates live Azure result shape and Speak rendering when local/dev env opts in
+[cloudScorer] provider= azure latency= [33m7461[39m ms 
+[analytics] {
+  event: [32m'pronunciation_scored'[39m,
+  payload: { provider: [32m'azure'[39m, latency_ms: [33m7461[39m },
+  timestamp: [32m'2026-06-16T17:44:37.277Z'[39m
+}
+
+stdout | src/lib/pronunciation/__tests__/step7AzureSmoke.test.tsx > Step 7 Azure-path smoke harness > validates live Azure result shape and Speak rendering when local/dev env opts in
+[step7-live-smoke-evidence] {
+  provider: [32m'azure'[39m,
+  mode: [32m'azure_phoneme_batch'[39m,
+  displayMode: [32m'azure-batch'[39m,
+  labelKind: [32m'pronunciation_detail'[39m,
+  overallScore: [33m99[39m,
+  phonemeScoresLength: [33m19[39m,
+  displayPhonemeScoresLength: [33m19[39m
+}
+
+ ✓ src/lib/pronunciation/__tests__/step7AzureSmoke.test.tsx (9 tests | 8 skipped) 12503ms
+   ✓ Step 7 Azure-path smoke harness > validates live Azure result shape and Speak rendering when local/dev env opts in  12502ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed | 8 skipped (9)
+   Start at  11:44:28
+   Duration  13.16s (transform 132ms, setup 33ms, collect 181ms, tests 12.50s, environment 174ms, prepare 24ms)
+
+
+
+STDERR

@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-06-16T17:44:26.105Z",
+  "validationId": "real-run-2026-06-16T174426104Z",
+  "wavFixture": {
+    "path": "/Users/admin/MercyB/src/lib/pronunciation/__fixtures__/step7-known-good-i-went-to-school-yesterday.wav",
+    "exists": true,
+    "bytes": 50806
+  },
+  "envPresence": [
+    {
+      "name": "STEP7_LIVE_AZURE_SMOKE",
+      "present": true
+    },
+    {
+      "name": "VITE_AZURE_PHONEME_BATCH_ENABLED",
+      "present": true
+    },
+    {
+      "name": "VITE_SUPABASE_URL",
+      "present": true
+    },
+    {
+      "name": "STEP7_SMOKE_USER_JWT",
+      "present": false
+    },
+    {
+      "name": "STEP7_SMOKE_USER_EMAIL",
+      "present": true
+    },
+    {
+      "name": "STEP7_SMOKE_USER_PASSWORD",
+      "present": true
+    },
+    {
+      "name": "VITE_SUPABASE_ANON_KEY",
+      "present": true
+    },
+    {
+      "name": "SUPABASE_ANON_KEY",
+      "present": false
+    },
+    {
+      "name": "STEP7_SMOKE_WAV_PATH",
+      "present": false
+    }
+  ],
+  "liveAzurePreconditionsReady": true,
+  "authReady": true,
+  "notes": [
+    "Presence only. Values are intentionally not written.",
+    "A passing local smoke is readiness evidence only; it is not real Azure or native-ear evidence."
+  ]
+}

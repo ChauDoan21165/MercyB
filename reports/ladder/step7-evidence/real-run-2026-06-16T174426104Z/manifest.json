@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "validationId": "real-run-2026-06-16T174426104Z",
+  "generatedAt": "2026-06-16T17:44:26.105Z",
+  "status": "azure_evidence_captured_review_required",
+  "artifacts": {
+    "preflight": "preflight.json",
+    "localSmokeLog": "local-smoke.log",
+    "liveAzureSmokeLog": "live-azure-smoke.log",
+    "nativeEarPacket": "native-ear-review-packet.md",
+    "nativeEarScoringCsv": "native-ear-scores.csv",
+    "ownerAcceptance": "owner-acceptance.md",
+    "operatorChecklist": "operator-checklist.md"
+  },
+  "validationStatus": {
+    "localSmokePassed": true,
+    "liveAzureSmokeRequested": true,
+    "liveAzurePreconditionsReady": true,
+    "liveAzureSmokeStatus": "passed",
+    "nativeEarEvidenceAttached": false,
+    "step7Complete": false
+  },
+  "blockers": [
+    "blocked-by-owner: native-ear validation evidence is not yet attached; provide reviewer assignments and completed reviewer scores.",
+    "blocked-by-owner: human owner acceptance is still required before any Step 7 completion claim."
+  ]
+}
