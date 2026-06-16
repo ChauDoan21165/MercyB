@@ -1,0 +1,18 @@
+generated_at=2026-06-16T09:27:29.998Z
+requested_command=node scripts/step7-evidence-pack.mjs --run-live-azure --local-smoke
+result=blocked_missing_preconditions
+BLOCKED: live Azure smoke was requested, but preflight liveAzurePreconditionsReady=false. No live request was sent.
+
+Preflight presence snapshot; values are intentionally not written:
+STEP7_LIVE_AZURE_SMOKE=missing
+VITE_AZURE_PHONEME_BATCH_ENABLED=missing
+VITE_SUPABASE_URL=missing
+STEP7_SMOKE_USER_JWT=missing
+STEP7_SMOKE_USER_EMAIL=missing
+STEP7_SMOKE_USER_PASSWORD=missing
+VITE_SUPABASE_ANON_KEY=missing
+SUPABASE_ANON_KEY=missing
+STEP7_SMOKE_WAV_PATH=missing
+authReady=false
+wavFixtureExists=true
+wavFixtureBytes=50806
