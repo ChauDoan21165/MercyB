@@ -77,7 +77,7 @@ function renderAiTutor() {
   return render(
     <QueryClientProvider client={queryClient}>
       <AiTutorPage />
-    </QueryClientProvider>,
+    </QueryClientProvider>
   );
 }
 
@@ -101,13 +101,15 @@ async function openSpeakWithTarget() {
   await userEvent.type(screen.getByRole("textbox"), "I buy a hat yesterday.");
   await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
   await waitFor(() =>
-    expect(screen.getByText("I bought a hat yesterday.")).toBeInTheDocument(),
+    expect(
+      screen.getAllByText("I bought a hat yesterday.").length
+    ).toBeGreaterThan(0)
   );
   await userEvent.click(
-    screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" }),
+    screen.getByRole("button", { name: "Đưa câu này sang Luyện nói" })
   );
   expect(screen.getByTestId("ai-tutor-speak-target")).toHaveTextContent(
-    "I bought a hat yesterday.",
+    "I bought a hat yesterday."
   );
 }
 
@@ -123,13 +125,15 @@ describe("AiTutor — detailed-scoring premium gate (flag ON)", () => {
     // Type a spoken-back attempt — this would normally drive the scorer.
     await userEvent.type(
       screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" }),
-      "I bought a hat yesterday.",
+      "I bought a hat yesterday."
     );
     // Wait past the scorer debounce; the gate must suppress the card entirely.
     await act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 400));
     });
-    expect(screen.queryByTestId("ai-tutor-speak-score")).not.toBeInTheDocument();
+    expect(
+      screen.queryByTestId("ai-tutor-speak-score")
+    ).not.toBeInTheDocument();
     expect(screen.queryByText(/\d+%/)).not.toBeInTheDocument();
   });
 
@@ -140,7 +144,7 @@ describe("AiTutor — detailed-scoring premium gate (flag ON)", () => {
 
     await userEvent.type(
       screen.getByRole("textbox", { name: "Gõ câu bạn đọc lại" }),
-      "I bought a hat yesterday.",
+      "I bought a hat yesterday."
     );
 
     // Gate allows → the scorer runs; with no Azure batch in test it lands the
@@ -148,6 +152,8 @@ describe("AiTutor — detailed-scoring premium gate (flag ON)", () => {
     const card = await screen.findByTestId("ai-tutor-speak-score");
     expect(card).toHaveTextContent("Đang nghe, chấm điểm chi tiết sẽ có sau.");
     expect(card.textContent ?? "").not.toMatch(/\d+%/);
-    expect(screen.queryByTestId("ai-tutor-speak-detail-cap")).not.toBeInTheDocument();
+    expect(
+      screen.queryByTestId("ai-tutor-speak-detail-cap")
+    ).not.toBeInTheDocument();
   });
 });
