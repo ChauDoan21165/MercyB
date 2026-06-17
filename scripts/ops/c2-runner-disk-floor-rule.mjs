@@ -4,15 +4,18 @@ export const C2_DISK_FLOOR_RULE = {
   machine: "C2",
   targetPath: "/Users/chaudoanm3/gitlab-runner-builds",
   floorGb: 14,
-  tracePattern: /DISK_GATE:\s+([0-9]+(?:\.[0-9]+)?)GB\s+<\s+([0-9]+(?:\.[0-9]+)?)GB floor/i,
+  diskGatePattern: /DISK_GATE/i,
+  floorPattern: /([0-9]+(?:\.[0-9]+)?)GB\s+<\s+(14(?:\.0+)?)GB floor/i,
+  classification: "runner_disk_floor",
 };
 
 export function classifyDiskFloorFailure(trace, options = {}) {
   const rule = { ...C2_DISK_FLOOR_RULE, ...options };
   const text = String(trace || "");
-  const match = text.match(rule.tracePattern);
+  const floorMatch = text.match(rule.floorPattern);
+  const matched = rule.diskGatePattern.test(text) || Boolean(floorMatch);
 
-  if (!match) {
+  if (!matched) {
     return {
       matched: false,
       classification: "unknown",
@@ -22,16 +25,13 @@ export function classifyDiskFloorFailure(trace, options = {}) {
     };
   }
 
-  const freeGb = Number(match[1]);
-  const floorGb = Number(match[2]);
-
   return {
     matched: true,
-    classification: "runner_infrastructure_disk_floor",
+    classification: rule.classification,
     productCodeFailure: false,
     successStreakCanAdvance: false,
-    freeGb,
-    floorGb,
+    freeGb: floorMatch ? Number(floorMatch[1]) : null,
+    floorGb: floorMatch ? Number(floorMatch[2]) : rule.floorGb,
     machine: rule.machine,
     targetPath: rule.targetPath,
     actions: [
