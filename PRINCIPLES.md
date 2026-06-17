@@ -157,6 +157,8 @@ Worktrees are independent working directories sharing the same git object databa
 
 This is the planner-Claude's responsibility to put in every parallel-dispatch prompt. The maintainer should not have to remember it.
 
+See `.claude/skills/agent-dispatch/SKILL.md` for the full pre-flight checklist (worktree label uniqueness, surface declaration, smoke-testing, soft-then-hard gate rollout, classifier-block handling) that every dispatch brief should walk through before sending.
+
 ---
 
 ## 14. READ THE REPO FIRST — STRATEGY BEFORE ADVICE
