@@ -1,0 +1,48 @@
+name: PR Template Compliance (observe)
+
+# WHY THIS EXISTS — PR #890 added the real-device verification gate
+# to .github/PULL_REQUEST_TEMPLATE.md. This workflow watches whether
+# new PRs actually fill the gates in before we promote the gate to a
+# hard fail. Phase 1 (this file) is observe-only: continue-on-error
+# is true, the check is NOT in the required-checks ruleset, and the
+# observer script (scripts/check-pr-template.mjs) hard-codes
+# EXIT_ON_NONCOMPLIANT = false.
+#
+# Phase 2 (separate dispatch + PR, after 1 week of >80% compliance):
+#   - Flip EXIT_ON_NONCOMPLIANT to true in the observer script
+#   - Drop "(observe)" from the job name
+#   - Add to the required-checks ruleset on main
+# See reports/PR-TEMPLATE-OBSERVABILITY-baseline-A16.md for the
+# rollout plan and exit criteria.
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+    branches: [main]
+
+# Auto-cancel superseded runs on the same PR — keeps CI minutes low,
+# consistent with the #626 quota discipline.
+concurrency:
+  group: pr-template-observe-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  pull-requests: write
+  contents: read
+  issues: write
+
+jobs:
+  observe:
+    name: PR Template Compliance (observe)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run template observer
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: node scripts/check-pr-template.mjs
