@@ -17,7 +17,7 @@ const HERO_VI = "Practical language learning";
 // De-narrowed: the hub serves every audience at once and has no single
 // target language, so the audience qualifier is dropped outright
 // (rather than uiLang-conditional, which the per-language pages use).
-const HERO_EN = "Real-life lessons in Korean, Japanese, Chinese, French, German, Portuguese & more";
+const HERO_EN = "Real-life lessons in Korean, Japanese, Chinese, French, German, Portuguese, Hindi, Urdu & more";
 const SUBTITLE_VI =
   "Learn useful phrases, pronunciation, and context. Most courses explain other languages for Vietnamese speakers; Vietnamese is a small survival-speaking MVP for foreigners in Vietnam.";
 // EN-mode subtitle. SUBTITLE_VI narrows the audience ("for Vietnamese
@@ -27,7 +27,7 @@ const SUBTITLE_VI =
 // decision (uiLang-conditional, rewrite EN only, VI untouched); closes
 // the residue #518/#519 deferred on the hub.
 const SUBTITLE_EN =
-  "Learn useful phrases, pronunciation, and real-world context across Korean, Japanese, Chinese, French, German, Spanish, Portuguese, and survival Vietnamese.";
+  "Learn useful phrases, pronunciation, and real-world context across Korean, Japanese, Chinese, French, German, Spanish, Portuguese, Hindi, Urdu, and survival Vietnamese.";
 
 type Card = {
   slug: string;
@@ -41,7 +41,7 @@ type Card = {
   // either mode).
   blurb_en: string;
   href: string;
-  accent: "blue" | "red" | "crimson" | "amber" | "violet" | "green" | "rose" | "emerald" | "orange";
+  accent: "blue" | "red" | "crimson" | "amber" | "violet" | "green" | "rose" | "emerald" | "orange" | "cyan" | "indigo";
 };
 
 const CARDS: Card[] = [
@@ -153,6 +153,30 @@ const CARDS: Card[] = [
     href: "/languages/arabic",
     accent: "orange",
   },
+  {
+    slug: "hindi",
+    title_vi: "Tiếng Hindi",
+    title_en: "Hindi",
+    flag: "🇮🇳",
+    blurb_vi:
+      "31 bài Hindi cục bộ: chữ Devanagari, chào hỏi, sinh hoạt, mua sắm, công việc, truyền thông và văn phong học thuật — A1 → C2.",
+    blurb_en:
+      "31 local Hindi lessons: Devanagari, greetings, daily life, shopping, work, media, and academic register — A1 → C2.",
+    href: "/languages/hindi",
+    accent: "indigo",
+  },
+  {
+    slug: "urdu",
+    title_vi: "Tiếng Urdu",
+    title_en: "Urdu",
+    flag: "اردو",
+    blurb_vi:
+      "31 bài Urdu cục bộ: chữ phải-sang-trái, lịch sự, sinh hoạt, dịch vụ công, truyền thông và văn phong trang trọng — A1 → C2.",
+    blurb_en:
+      "31 local Urdu lessons: right-to-left script, politeness, daily life, public services, media, and formal register — A1 → C2.",
+    href: "/languages/urdu",
+    accent: "cyan",
+  },
 ];
 
 const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string }> = {
@@ -200,6 +224,16 @@ const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string 
     border: "border-orange-200",
     bg: "bg-gradient-to-br from-orange-50 via-amber-50 to-stone-50",
     icon: "text-orange-700",
+  },
+  indigo: {
+    border: "border-indigo-200",
+    bg: "bg-gradient-to-br from-indigo-50 via-sky-50 to-slate-50",
+    icon: "text-indigo-700",
+  },
+  cyan: {
+    border: "border-cyan-200",
+    bg: "bg-gradient-to-br from-cyan-50 via-teal-50 to-slate-50",
+    icon: "text-cyan-700",
   },
 };
 
