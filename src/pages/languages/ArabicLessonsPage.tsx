@@ -365,7 +365,7 @@ function VocabularySection({
               {uiLanguage === "en" ? entry.en : entry.vi}
             </p>
             {entry.pos && (
-              <p className="mt-1 text-[11px] uppercase tracking-wide text-slate-400">
+              <p className="mt-1 text-[11px] uppercase tracking-wide text-slate-600">
                 {entry.pos}
               </p>
             )}
