@@ -134,6 +134,8 @@ const VietnameseLessonsPage = lazyWithRetry(() => import("@/pages/languages/Viet
 const SpanishLessonsPage    = lazyWithRetry(() => import("@/pages/languages/SpanishLessonsPage"));
 const PortugueseLessonsPage = lazyWithRetry(() => import("@/pages/languages/PortugueseLessonsPage"));
 const ArabicLessonsPage     = lazyWithRetry(() => import("@/pages/languages/ArabicLessonsPage"));
+const HindiLessonsPage      = lazyWithRetry(() => import("@/pages/languages/HindiLessonsPage"));
+const UrduLessonsPage       = lazyWithRetry(() => import("@/pages/languages/UrduLessonsPage"));
 const ViKidsEnglishTutorPage = lazyWithRetry(() => import("@/pages/kids/ViKidsEnglishTutorPage"));
 
 // Mercy v2 — multi-turn conversation thread page (auth-required).
@@ -1133,6 +1135,12 @@ export default function AppRouter() {
           />
           <Route path="/languages/arabic"
             element={<LazyPage><ArabicLessonsPage /></LazyPage>}
+          />
+          <Route path="/languages/hindi"
+            element={<LazyPage><HindiLessonsPage /></LazyPage>}
+          />
+          <Route path="/languages/urdu"
+            element={<LazyPage><UrduLessonsPage /></LazyPage>}
           />
           <Route path="/kids/vi-english"
             element={<LazyPage><ViKidsEnglishTutorPage /></LazyPage>}
