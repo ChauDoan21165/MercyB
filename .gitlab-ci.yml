@@ -726,7 +726,7 @@ variables:
     command -v nproc  >/dev/null 2>&1 && echo "[B3-CPU-PROBE] nproc=$(nproc)" || true
     command -v sysctl >/dev/null 2>&1 && echo "[B3-CPU-PROBE] hw.logicalcpu=$(sysctl -n hw.logicalcpu 2>/dev/null) hw.physicalcpu=$(sysctl -n hw.physicalcpu 2>/dev/null) hw.ncpu=$(sysctl -n hw.ncpu 2>/dev/null)" || true
     echo "[B3-CPU-PROBE] CI_NODE_INDEX=$CI_NODE_INDEX CI_NODE_TOTAL=$CI_NODE_TOTAL CI_CONCURRENT_ID=$CI_CONCURRENT_ID runner=$CI_RUNNER_DESCRIPTION tags=$CI_RUNNER_TAGS"
-  - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL
+  - npx vitest run --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL --maxWorkers=4
 
 .ai_tutor_quality_gate_script: &ai_tutor_quality_gate_script
   - npm run test:ai-tutor-golden-flow
@@ -847,7 +847,7 @@ reservoir:test-shard:
     - |
       SHARD="${SHARD:-1}"
       SHARD_TOTAL="${SHARD_TOTAL:-2}"
-      npx vitest run --shard="$SHARD/$SHARD_TOTAL"
+      npx vitest run --shard="$SHARD/$SHARD_TOTAL" --maxWorkers=4
 
 reservoir:corpus-validate:
   <<: [*node_job, *local_runner, *reservoir_rules]
