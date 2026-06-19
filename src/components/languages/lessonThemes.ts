@@ -15,6 +15,7 @@ export const lessonThemes: Record<string, LessonTheme> = {
   vietnamese: { accent: "#16A34A" }, // green-600
   spanish:    { accent: "#E11D48" }, // rose-600 (Spanish-for-English-speakers vertical)
   portuguese: { accent: "#047857" }, // emerald-700 (Brazilian Portuguese)
+  arabic:     { accent: "#C2410C" }, // orange-700 (Modern Standard Arabic)
 };
 
 export const cefrPillColors: Record<string, string> = {

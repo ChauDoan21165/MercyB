@@ -41,7 +41,7 @@ type Card = {
   // either mode).
   blurb_en: string;
   href: string;
-  accent: "blue" | "red" | "crimson" | "amber" | "violet" | "green" | "rose" | "emerald";
+  accent: "blue" | "red" | "crimson" | "amber" | "violet" | "green" | "rose" | "emerald" | "orange";
 };
 
 const CARDS: Card[] = [
@@ -141,6 +141,18 @@ const CARDS: Card[] = [
     href: "/languages/portuguese",
     accent: "emerald",
   },
+  {
+    slug: "arabic",
+    title_vi: "Tiếng Ả Rập",
+    title_en: "Arabic",
+    flag: "🇸🇦",
+    blurb_vi:
+      "30 bài tiếng Ả Rập chuẩn hiện đại: chữ viết phải-sang-trái, chào hỏi, sinh hoạt, công việc, học thuật và văn phong trang trọng — A1 → C2.",
+    blurb_en:
+      "30 Modern Standard Arabic lessons: right-to-left script, greetings, daily life, work, academic language, and formal register — A1 → C2.",
+    href: "/languages/arabic",
+    accent: "orange",
+  },
 ];
 
 const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string }> = {
@@ -183,6 +195,11 @@ const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string 
     border: "border-emerald-200",
     bg: "bg-gradient-to-br from-emerald-50 via-green-50 to-red-50",
     icon: "text-emerald-700",
+  },
+  orange: {
+    border: "border-orange-200",
+    bg: "bg-gradient-to-br from-orange-50 via-amber-50 to-stone-50",
+    icon: "text-orange-700",
   },
 };
 
