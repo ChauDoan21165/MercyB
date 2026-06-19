@@ -17,7 +17,7 @@ const HERO_VI = "Practical language learning";
 // De-narrowed: the hub serves every audience at once and has no single
 // target language, so the audience qualifier is dropped outright
 // (rather than uiLang-conditional, which the per-language pages use).
-const HERO_EN = "Real-life lessons in Korean, Japanese, Chinese, French, German & more";
+const HERO_EN = "Real-life lessons in Korean, Japanese, Chinese, French, German, Portuguese & more";
 const SUBTITLE_VI =
   "Learn useful phrases, pronunciation, and context. Most courses explain other languages for Vietnamese speakers; Vietnamese is a small survival-speaking MVP for foreigners in Vietnam.";
 // EN-mode subtitle. SUBTITLE_VI narrows the audience ("for Vietnamese
@@ -27,7 +27,7 @@ const SUBTITLE_VI =
 // decision (uiLang-conditional, rewrite EN only, VI untouched); closes
 // the residue #518/#519 deferred on the hub.
 const SUBTITLE_EN =
-  "Learn useful phrases, pronunciation, and real-world context across Korean, Japanese, Chinese, French, German, Spanish, and survival Vietnamese.";
+  "Learn useful phrases, pronunciation, and real-world context across Korean, Japanese, Chinese, French, German, Spanish, Portuguese, and survival Vietnamese.";
 
 type Card = {
   slug: string;
@@ -41,7 +41,7 @@ type Card = {
   // either mode).
   blurb_en: string;
   href: string;
-  accent: "blue" | "red" | "crimson" | "amber" | "violet" | "green" | "rose";
+  accent: "blue" | "red" | "crimson" | "amber" | "violet" | "green" | "rose" | "emerald";
 };
 
 const CARDS: Card[] = [
@@ -129,6 +129,18 @@ const CARDS: Card[] = [
     href: "/languages/spanish",
     accent: "rose",
   },
+  {
+    slug: "portuguese",
+    title_vi: "Tiếng Bồ Đào Nha Brazil",
+    title_en: "Brazilian Portuguese",
+    flag: "🇧🇷",
+    blurb_vi:
+      "30 bài đã kiểm chứng: chào hỏi, mua sắm, công việc, thức giả định, tranh luận, văn học và diễn ngôn học thuật — A1 → C2.",
+    blurb_en:
+      "30 validated lessons: greetings, shopping, work, subjunctive, debate, literature, and academic discourse — A1 → C2.",
+    href: "/languages/portuguese",
+    accent: "emerald",
+  },
 ];
 
 const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string }> = {
@@ -166,6 +178,11 @@ const ACCENT_CLASSES: Record<string, { border: string; bg: string; icon: string 
     border: "border-rose-200",
     bg: "bg-gradient-to-br from-rose-50 via-red-50 to-amber-50",
     icon: "text-rose-600",
+  },
+  emerald: {
+    border: "border-emerald-200",
+    bg: "bg-gradient-to-br from-emerald-50 via-green-50 to-red-50",
+    icon: "text-emerald-700",
   },
 };
 
