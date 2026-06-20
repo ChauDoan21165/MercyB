@@ -1,0 +1,19 @@
+{
+  "_meta": {
+    "agent": "A15 (RLS docs track — distinct from A15 raw-payload-backfill)",
+    "branch": "docs/A15-rls-canonical-reference",
+    "snapshot_taken_at": "2026-05-19T00:00:00Z",
+    "source": "Supabase SQL Editor — read-only SELECT against pg_policies on project buemdfxyhxunzpgdoqin",
+    "headlines_per_chau": {
+      "total_policies": 226,
+      "rls_enabled_tables": 236,
+      "public_tables_without_rls": 0,
+      "existing_policy_comments": 0
+    },
+    "_TODO_CHAU": "Chau reported the JSON dump was saved but the file body was not attached. Paste the result of reports/RLS-pgpolicies-dump-query.sql (single JSON cell) over this entire file before the gate flips to enforcing mode. Until then the gate runs in headline-validation mode only."
+  },
+  "policies": [],
+  "tables_with_rls_enabled": [],
+  "public_tables_without_rls": [],
+  "existing_policy_comments": []
+}
