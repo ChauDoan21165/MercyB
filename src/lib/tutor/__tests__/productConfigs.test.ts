@@ -11,8 +11,8 @@ import {
 } from "../productConfigs";
 
 describe("tutor product configs", () => {
-  it("aiTutor allows French, Chinese, and English targets", () => {
-    expect(aiTutor.allowedTargetLanguages).toEqual(expect.arrayContaining(["fr", "zh", "en"]));
+  it("aiTutor allows French, Chinese, English, and Turkish targets", () => {
+    expect(aiTutor.allowedTargetLanguages).toEqual(expect.arrayContaining(["fr", "zh", "en", "tr"]));
     expect(aiTutor.modes).toEqual(["journey", "grammar", "speak", "logic"]);
   });
 
@@ -42,8 +42,14 @@ describe("tutor product configs", () => {
     expect(viKidsEnglish.tone).toBe("kids-safe");
     expect(viKidsEnglish.allowedTargetLanguages).toEqual(["en"]);
     expect(aiTutor.productId).toBe("aiTutor");
-    expect(aiTutor.allowedTargetLanguages).toEqual(expect.arrayContaining(["en", "fr", "zh"]));
+    expect(aiTutor.allowedTargetLanguages).toEqual(expect.arrayContaining(["en", "fr", "zh", "tr"]));
     expect(viKidsEnglish).not.toBe(aiTutor);
+  });
+
+  it("resolves Turkish and keeps invalid AI Tutor targets on the safe default", () => {
+    expect(resolveTargetLanguage(aiTutor, "tr")).toBe("tr");
+    expect(resolveTargetLanguage(aiTutor, "?target=tr")).toBe("tr");
+    expect(resolveTargetLanguage(aiTutor, "not-real")).toBe("en");
   });
 
   it("viKidsEnglish explains Vietnamese-first", () => {

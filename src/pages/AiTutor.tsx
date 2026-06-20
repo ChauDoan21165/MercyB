@@ -220,6 +220,7 @@ const MEMORY_TOPIC_BY_TARGET: Record<TutorTarget, string> = {
   ko: "korean-correction",
   es: "spanish-correction",
   vi: "vietnamese-correction",
+  tr: "turkish-correction",
 };
 
 const LOGIC_STARTER_PROMPTS = [

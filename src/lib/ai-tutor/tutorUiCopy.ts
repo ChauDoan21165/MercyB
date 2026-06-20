@@ -177,6 +177,25 @@ export const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
       nextStep: "Thử viết câu với 'sáng nay' hoặc 'tuần trước'.",
     },
   },
+  tr: {
+    explanation: {
+      vi: "Câu tiếng Thổ Nhĩ Kỳ cần dùng thì quá khứ khi có từ chỉ thời gian 'dün'.",
+      en: "The Turkish sentence needs past tense when it uses the past-time word 'dün'.",
+    },
+    grammarTip: {
+      vi: "Với hành động đã xảy ra hôm qua, dùng dạng quá khứ như 'gittim' thay vì hiện tại 'gidiyorum'.",
+      en: "For an action completed yesterday, use a past form such as 'gittim' instead of present 'gidiyorum'.",
+    },
+    practicePrompt: {
+      vi: "Viết một câu tiếng Thổ Nhĩ Kỳ khác về việc bạn đã làm hôm qua.",
+      en: "Write another Turkish sentence about something you did yesterday.",
+    },
+    feedback: {
+      encouragement: "Tốt! Bạn đã luyện cách nói hành động đã xảy ra trong tiếng Thổ Nhĩ Kỳ.",
+      tip: "Từ 'dün' thường kéo câu về thì quá khứ.",
+      nextStep: "Thử viết thêm một câu với 'geçen hafta'.",
+    },
+  },
 };
 
 // ─── Text helpers ──────────────────────────────────────────────────────
@@ -314,6 +333,13 @@ export function buildInputAwareCorrection(input: string, target: TutorTarget): s
       const corrected = capitalizeFirst(trimmed)
         .replace(/\bYo fui al mercado ayer\b/i, "Fui al mercado ayer")
         .replace(/\byo fui\b/i, "Fui");
+      return ensureTerminalPunctuation(corrected, target);
+    }
+    case "tr": {
+      const corrected = capitalizeFirst(trimmed)
+        .replace(/\bDün pazara gidiyorum\b/i, "Dün pazara gittim")
+        .replace(/\bdün pazara gidiyorum\b/i, "Dün pazara gittim")
+        .replace(/\bgidiyorum\b/gi, "gittim");
       return ensureTerminalPunctuation(corrected, target);
     }
     case "en":

@@ -7,6 +7,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useLessonUiLang } from "@/components/LessonUiLangToggle";
+import AITutorCtaBanner from "@/components/languages/AITutorCtaBanner";
 import { LessonRenderer } from "@/components/languages/LessonRenderer";
 import type { LessonTheme } from "@/components/languages/LessonRenderer.types";
 import {
@@ -72,6 +73,7 @@ export default function TurkishLessonsPage() {
             Xem ngôn ngữ khác / View other languages
           </Link>
         </p>
+        <AITutorCtaBanner uiLang={uiLang} target="tr" />
       </header>
 
       <nav
