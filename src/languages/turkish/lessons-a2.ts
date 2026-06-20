@@ -1,0 +1,125 @@
+// src/languages/turkish/lessons-a2.ts
+
+import type { TurkishLesson } from "./lessons";
+
+export const lessons: TurkishLesson[] = [
+  {
+    id: "turkish_a2_daily_routine_present",
+    level: "A2",
+    category: "daily_life",
+    title_vi: "Một ngày bình thường với thì hiện tại",
+    title_en: "A normal day with the present tense",
+    intro_vi: "Dùng -iyor để nói việc đang làm hoặc thói quen gần hiện tại.",
+    intro_en: "Use -iyor for actions happening now and many everyday routines.",
+    sentences: [
+      { tr: "Sabah yedide kalkıyorum.", en: "I get up at seven in the morning.", vi: "Tôi thức dậy lúc bảy giờ sáng.", pronunciation_focus: ["kalkıyorum → kal-kư-YO-rum", "ı và u đều không phải i"], pronunciation_focus_en: ["-ıyorum means I am doing", "ı is a central uh sound"] },
+      { tr: "İşe otobüsle gidiyorum.", en: "I go to work by bus.", vi: "Tôi đi làm bằng xe buýt.", pronunciation_focus: ["işe → i-SHE", "otobüsle → o-to-BUS-le", "-le nghĩa là bằng/với"], pronunciation_focus_en: ["ş is sh", "-le/-la means by or with"] },
+    ],
+    cultural_notes_vi: "Hậu tố -le/-la bám vào danh từ: otobüsle, arabayla. Chọn e/a theo hài hòa nguyên âm.",
+    cultural_notes_en: "The -le/-la suffix attaches to a noun: otobüsle, arabayla. Vowel harmony chooses e or a.",
+    tip_advice_vi: "Đừng tách hậu tố thành từ riêng. Tiếng Thổ ghép thông tin vào cuối từ.",
+    tip_advice_en: "Do not write the suffix as a separate word. Turkish stacks meaning at the end.",
+    vocabulary: [
+      { word: "kalkmak", en: "to get up", vi: "thức dậy", pos: "verb", pronunciation_vi: "kalk-MAK", pronunciation_en: "kahlk-MAHK" },
+      { word: "iş", en: "work", vi: "công việc", pos: "noun", pronunciation_vi: "ish", pronunciation_en: "eesh" },
+      { word: "otobüs", en: "bus", vi: "xe buýt", pos: "noun", pronunciation_vi: "o-to-BUS", pronunciation_en: "oh-toh-BUES" },
+    ],
+    exercises: [{ type: "fill_blank", question: "İşe otobüs__ gidiyorum.", answer: "le", hint_vi: "Hậu tố bằng/với sau otobüs.", hint_en: "The by/with suffix after otobüs." }],
+  },
+  {
+    id: "turkish_a2_shopping_prices_sizes",
+    level: "A2",
+    category: "shopping",
+    title_vi: "Mua sắm: giá, cỡ và trả lại hàng",
+    title_en: "Shopping: prices, sizes, and returns",
+    intro_vi: "Hỏi giá, xin cỡ khác và nói món hàng đắt/quá nhỏ.",
+    intro_en: "Ask prices, request another size, and say an item is expensive or too small.",
+    sentences: [
+      { tr: "Bu ne kadar?", en: "How much is this?", vi: "Cái này bao nhiêu tiền?", pronunciation_focus: ["bu → cái này", "ne kadar → bao nhiêu", "r cuối nhẹ"], pronunciation_focus_en: ["ne kadar means how much", "final r is light"] },
+      { tr: "Bir beden büyük var mı?", en: "Is there one size larger?", vi: "Có cỡ lớn hơn một chút không?", pronunciation_focus: ["beden → be-DEN", "büyük → bu-YUK", "var mı → có không"], pronunciation_focus_en: ["büyük has rounded vowels", "var mı asks whether something exists"] },
+    ],
+    cultural_notes_vi: "Ở chợ có thể mặc cả nhẹ; trong trung tâm thương mại giá thường cố định. Pahalı nghĩa là đắt.",
+    cultural_notes_en: "Light bargaining is possible in markets; mall prices are usually fixed. Pahalı means expensive.",
+    tip_advice_vi: "Cấu trúc var mı? rất hữu dụng: X var mı? = Có X không?",
+    tip_advice_en: "The pattern X var mı? is extremely useful: Is there X? / Do you have X?",
+    vocabulary: [
+      { word: "fiyat", en: "price", vi: "giá", pos: "noun", pronunciation_vi: "fi-YAT", pronunciation_en: "fee-YAHT" },
+      { word: "beden", en: "size", vi: "cỡ", pos: "noun", pronunciation_vi: "be-DEN", pronunciation_en: "beh-DEN" },
+      { word: "pahalı", en: "expensive", vi: "đắt", pos: "adjective", pronunciation_vi: "pa-ha-LƯ", pronunciation_en: "pah-hah-LUH" },
+    ],
+    dialogue: [
+      { speaker: "Alıcı", text: "Bu ne kadar?", vi: "Cái này bao nhiêu?", en: "How much is this?" },
+      { speaker: "Satıcı", text: "Üç yüz lira.", vi: "Ba trăm lira.", en: "Three hundred lira." },
+    ],
+  },
+  {
+    id: "turkish_a2_directions_city",
+    level: "A2",
+    category: "directions",
+    title_vi: "Hỏi đường trong thành phố",
+    title_en: "Asking directions in the city",
+    intro_vi: "Dùng sağ, sol, düz để hỏi đường đến ga, bến xe hoặc bệnh viện.",
+    intro_en: "Use sağ, sol, and düz to ask for stations, bus stops, or hospitals.",
+    sentences: [
+      { tr: "Metro istasyonu nerede?", en: "Where is the metro station?", vi: "Ga metro ở đâu?", pronunciation_focus: ["istasyon → is-ta-SYON", "nerede → NE-re-de", "d luôn rõ"], pronunciation_focus_en: ["istasyon is a loanword", "nerede means where"] },
+      { tr: "Düz gidin, sonra sağa dönün.", en: "Go straight, then turn right.", vi: "Đi thẳng, sau đó rẽ phải.", pronunciation_focus: ["düz → duz", "sağa → sa-a", "ğ kéo dài nguyên âm"], pronunciation_focus_en: ["ğ often lengthens the vowel", "dönün is polite imperative"] },
+    ],
+    cultural_notes_vi: "Dạng mệnh lệnh lịch sự thường có -in/-ın/-ün: gidin, dönün, bekleyin.",
+    cultural_notes_en: "Polite commands often use -in/-ın/-ün: gidin, dönün, bekleyin.",
+    tip_advice_vi: "Chữ ğ không đọc g cứng; nó thường làm nguyên âm trước dài hơn.",
+    tip_advice_en: "The letter ğ is not a hard g. It usually lengthens the previous vowel.",
+    vocabulary: [
+      { word: "sağ", en: "right", vi: "bên phải", pos: "noun/adjective", pronunciation_vi: "sa-a", pronunciation_en: "sahh" },
+      { word: "sol", en: "left", vi: "bên trái", pos: "noun/adjective", pronunciation_vi: "sol", pronunciation_en: "sohl" },
+      { word: "düz", en: "straight", vi: "thẳng", pos: "adverb", pronunciation_vi: "duz", pronunciation_en: "duez" },
+    ],
+    exercises: [{ type: "translation", vietnamese: "Đi thẳng, rồi rẽ phải.", english: "Go straight, then turn right.", turkish: "Düz gidin, sonra sağa dönün." }],
+  },
+  {
+    id: "turkish_a2_home_family_possession",
+    level: "A2",
+    category: "home_family",
+    title_vi: "Nhà cửa, gia đình và sở hữu",
+    title_en: "Home, family, and possession",
+    intro_vi: "Nói nhà của tôi, anh trai của cô ấy và phòng của chúng tôi bằng hậu tố sở hữu.",
+    intro_en: "Say my house, her older brother, and our room with possessive suffixes.",
+    sentences: [
+      { tr: "Evim küçük ama rahat.", en: "My home is small but comfortable.", vi: "Nhà tôi nhỏ nhưng thoải mái.", pronunciation_focus: ["evim → ev-im", "küçük → ku-CHUK", "rahat → ra-HAT"], pronunciation_focus_en: ["-im means my", "ç is ch", "rahat means comfortable"] },
+      { tr: "Kardeşim Ankara'da yaşıyor.", en: "My sibling lives in Ankara.", vi: "Anh/chị/em tôi sống ở Ankara.", pronunciation_focus: ["kardeşim → kar-de-SHIM", "Ankara'da có dấu nháy", "yaşıyor → ya-SHƯ-yor"], pronunciation_focus_en: ["kardeş can mean sibling", "proper names take apostrophe before suffixes"] },
+    ],
+    cultural_notes_vi: "Kardeş không bắt buộc phân biệt anh/chị/em. Nếu cần rõ, dùng abi, abla, erkek kardeş, kız kardeş.",
+    cultural_notes_en: "Kardeş can mean sibling without specifying age or gender. Use abi, abla, erkek kardeş, or kız kardeş when needed.",
+    tip_advice_vi: "Sở hữu nằm ở cuối danh từ: evim, evin, evi, evimiz.",
+    tip_advice_en: "Possession sits at the end of the noun: evim, evin, evi, evimiz.",
+    vocabulary: [
+      { word: "ev", en: "home / house", vi: "nhà", pos: "noun", pronunciation_vi: "ev", pronunciation_en: "ev" },
+      { word: "kardeş", en: "sibling", vi: "anh/chị/em", pos: "noun", pronunciation_vi: "kar-DESH", pronunciation_en: "kar-DESH" },
+      { word: "rahat", en: "comfortable", vi: "thoải mái", pos: "adjective", pronunciation_vi: "ra-HAT", pronunciation_en: "rah-HAHT" },
+    ],
+  },
+  {
+    id: "turkish_a2_travel_ticket_hotel",
+    level: "A2",
+    category: "travel",
+    title_vi: "Vé, khách sạn và du lịch ngắn ngày",
+    title_en: "Tickets, hotels, and short travel",
+    intro_vi: "Xử lý vé một chiều, đặt phòng và câu hỏi đi lại cơ bản.",
+    intro_en: "Handle one-way tickets, room bookings, and basic travel questions.",
+    sentences: [
+      { tr: "İstanbul'a bir bilet istiyorum.", en: "I want one ticket to Istanbul.", vi: "Tôi muốn một vé đi Istanbul.", pronunciation_focus: ["İstanbul'a → is-TAN-bul-a", "bilet → bi-LET", "istiyorum → is-ti-YO-rum"], pronunciation_focus_en: ["-a marks direction to", "istiyorum means I want"] },
+      { tr: "Rezervasyonum var.", en: "I have a reservation.", vi: "Tôi có đặt phòng/đặt chỗ.", pronunciation_focus: ["rezervasyon → re-zer-vas-YON", "var → có", "m trong rezervasyonum = của tôi"], pronunciation_focus_en: ["rezervasyonum means my reservation", "var means exists/have"] },
+    ],
+    cultural_notes_vi: "Với tên thành phố, hậu tố hướng đến là -a/-e và viết sau dấu nháy: Ankara'ya, İzmir'e.",
+    cultural_notes_en: "With city names, the direction suffix -a/-e follows an apostrophe: Ankara'ya, İzmir'e.",
+    tip_advice_vi: "Muốn nói tôi có, dùng var; muốn nói tôi không có, dùng yok.",
+    tip_advice_en: "Use var for I have/there is, and yok for I do not have/there is not.",
+    vocabulary: [
+      { word: "bilet", en: "ticket", vi: "vé", pos: "noun", pronunciation_vi: "bi-LET", pronunciation_en: "bee-LET" },
+      { word: "rezervasyon", en: "reservation", vi: "đặt chỗ", pos: "noun", pronunciation_vi: "re-zer-vas-YON", pronunciation_en: "reh-zehr-vah-SYON" },
+      { word: "otel", en: "hotel", vi: "khách sạn", pos: "noun", pronunciation_vi: "o-TEL", pronunciation_en: "oh-TEL" },
+    ],
+    exercises: [{ type: "fill_blank", question: "Rezervasyonum ____.", answer: "var", hint_vi: "Tôi có đặt chỗ.", hint_en: "I have a reservation." }],
+  },
+];
+
+export default lessons;

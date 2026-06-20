@@ -18,7 +18,7 @@ const HERO_VI = "Practical language learning";
 // De-narrowed: the hub serves every audience at once and has no single
 // target language, so the audience qualifier is dropped outright
 // (rather than uiLang-conditional, which the per-language pages use).
-const HERO_EN = "Real-life lessons in Korean, Japanese, Chinese, French, German, Portuguese, Indonesian, Hindi, Urdu & more";
+const HERO_EN = "Real-life lessons in Korean, Japanese, Chinese, French, German, Portuguese, Indonesian, Turkish, Hindi, Urdu & more";
 const SUBTITLE_VI =
   "Learn useful phrases, pronunciation, and context. Most courses explain other languages for Vietnamese speakers; Vietnamese is a small survival-speaking MVP for foreigners in Vietnam.";
 // EN-mode subtitle. SUBTITLE_VI narrows the audience ("for Vietnamese
@@ -28,7 +28,7 @@ const SUBTITLE_VI =
 // decision (uiLang-conditional, rewrite EN only, VI untouched); closes
 // the residue #518/#519 deferred on the hub.
 const SUBTITLE_EN =
-  "Learn useful phrases, pronunciation, and real-world context across Korean, Japanese, Chinese, French, German, Spanish, Portuguese, Indonesian, Hindi, Urdu, and survival Vietnamese.";
+  "Learn useful phrases, pronunciation, and real-world context across Korean, Japanese, Chinese, French, German, Spanish, Portuguese, Indonesian, Turkish, Hindi, Urdu, and survival Vietnamese.";
 
 type Card = {
   slug: string;
@@ -152,6 +152,18 @@ const CARDS: Card[] = [
     blurb_en:
       "30 local Indonesian lessons: daily life, shopping, work, healthcare, media, formal register, and academic language — A1 → C2.",
     href: "/languages/indonesian",
+    accent: "red",
+  },
+  {
+    slug: "turkish",
+    title_vi: "Tiếng Thổ Nhĩ Kỳ",
+    title_en: "Turkish",
+    flag: "🇹🇷",
+    blurb_vi:
+      "30 bài tiếng Thổ Nhĩ Kỳ cục bộ: chào hỏi, hài hòa nguyên âm, các cách, sinh hoạt, mua sắm, công việc, y tế, truyền thông, tranh luận và học thuật — A1 → C2.",
+    blurb_en:
+      "30 local Turkish lessons: greetings, vowel harmony, cases, daily life, shopping, work, healthcare, media, debate, and academic language — A1 → C2.",
+    href: "/languages/turkish",
     accent: "red",
   },
   {

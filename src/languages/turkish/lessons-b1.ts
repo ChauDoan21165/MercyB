@@ -1,0 +1,126 @@
+// src/languages/turkish/lessons-b1.ts
+
+import type { TurkishLesson } from "./lessons";
+
+export const lessons: TurkishLesson[] = [
+  {
+    id: "turkish_b1_cases_core",
+    level: "B1",
+    category: "cases",
+    title_vi: "Các cách cốt lõi: ở, đến, từ, của",
+    title_en: "Core cases: in, to, from, and of",
+    intro_vi: "Nắm -de, -e, -den, -(n)in để hiểu phần lớn câu thực tế.",
+    intro_en: "Master -de, -e, -den, and -(n)in to unlock most everyday sentences.",
+    sentences: [
+      { tr: "Toplantı ofiste saat dokuzda.", en: "The meeting is in the office at nine.", vi: "Cuộc họp ở văn phòng lúc chín giờ.", pronunciation_focus: ["ofiste → o-FIS-te", "dokuzda → do-KUZ-da", "-de/-da = ở/lúc"], pronunciation_focus_en: ["-de/-da marks location or time", "consonant harmony changes d to t after voiceless sounds"] },
+      { tr: "Müdürden e-posta bekliyorum.", en: "I am waiting for an email from the manager.", vi: "Tôi đang chờ email từ quản lý.", pronunciation_focus: ["müdürden → mu-DUR-den", "bekliyorum → bek-li-YO-rum", "-den = từ"], pronunciation_focus_en: ["-den/-dan means from", "müdür is manager"] },
+    ],
+    cultural_notes_vi: "Cách trong tiếng Thổ là hậu tố, không phải giới từ đứng trước như tiếng Anh. Người Việt nên học theo cụm nguyên khối.",
+    cultural_notes_en: "Turkish cases are suffixes, not prepositions before the noun. Learn them as whole chunks.",
+    tip_advice_vi: "Viết bảng nhỏ: evde, eve, evden, evin. Sau đó đổi ev thành ofis, okul, hastane.",
+    tip_advice_en: "Build a tiny grid: evde, eve, evden, evin. Then swap in office, school, hospital.",
+    vocabulary: [
+      { word: "ofis", en: "office", vi: "văn phòng", pos: "noun", pronunciation_vi: "o-FIS", pronunciation_en: "oh-FEES" },
+      { word: "toplantı", en: "meeting", vi: "cuộc họp", pos: "noun", pronunciation_vi: "top-LAN-tư", pronunciation_en: "tohp-LAHN-tuh" },
+      { word: "müdür", en: "manager", vi: "quản lý", pos: "noun", pronunciation_vi: "mu-DUR", pronunciation_en: "mue-DUER" },
+    ],
+    exercises: [{ type: "matching", instruction_vi: "Ghép hậu tố với nghĩa.", instruction_en: "Match each suffix to its meaning.", pairs: [{ a: "-de/-da", b: "in / at" }, { a: "-den/-dan", b: "from" }, { a: "-e/-a", b: "to" }] }],
+  },
+  {
+    id: "turkish_b1_work_email_deadlines",
+    level: "B1",
+    category: "work",
+    title_vi: "Email công việc và hạn chót",
+    title_en: "Work email and deadlines",
+    intro_vi: "Viết ngắn gọn về tiến độ, tài liệu và thời hạn bằng văn phong công sở.",
+    intro_en: "Write concise updates about progress, documents, and deadlines in workplace Turkish.",
+    sentences: [
+      { tr: "Raporu bugün göndereceğim.", en: "I will send the report today.", vi: "Hôm nay tôi sẽ gửi báo cáo.", pronunciation_focus: ["raporu → ra-PO-ru", "göndereceğim → gon-de-re-je-im", "ğ không đọc g cứng"], pronunciation_focus_en: ["-ecek/-acak marks future", "ğ softens or lengthens"] },
+      { tr: "Son teslim tarihi cuma günü.", en: "The deadline is Friday.", vi: "Hạn nộp là thứ Sáu.", pronunciation_focus: ["son teslim tarihi → hạn chót", "cuma → ju-MA", "c đọc j"], pronunciation_focus_en: ["c sounds like English j", "son teslim tarihi means deadline"] },
+    ],
+    cultural_notes_vi: "Trong email, Merhaba hoặc Sayın + tên/họ đều phổ biến. Saygılarımla là kết thư trang trọng.",
+    cultural_notes_en: "Merhaba works in many emails; Sayın plus name/surname is more formal. Saygılarımla is a formal closing.",
+    tip_advice_vi: "Dùng -eceğim/-acağım cho tôi sẽ. Hài hòa nguyên âm và phụ âm quyết định dạng chính xác.",
+    tip_advice_en: "Use -eceğim/-acağım for I will. Vowel and consonant harmony decide the exact form.",
+    vocabulary: [
+      { word: "rapor", en: "report", vi: "báo cáo", pos: "noun", pronunciation_vi: "ra-POR", pronunciation_en: "rah-POHR" },
+      { word: "göndermek", en: "to send", vi: "gửi", pos: "verb", pronunciation_vi: "gon-der-MEK", pronunciation_en: "goen-dehr-MEK" },
+      { word: "son teslim tarihi", en: "deadline", vi: "hạn chót", pos: "phrase", pronunciation_vi: "son tes-LIM ta-ri-HI", pronunciation_en: "sohn tes-LEEM tah-ree-HEE" },
+    ],
+    dialogue: [
+      { speaker: "Ayşe", text: "Rapor hazır mı?", vi: "Báo cáo sẵn sàng chưa?", en: "Is the report ready?" },
+      { speaker: "Linh", text: "Evet, bugün göndereceğim.", vi: "Vâng, hôm nay tôi sẽ gửi.", en: "Yes, I will send it today." },
+    ],
+  },
+  {
+    id: "turkish_b1_past_future_plans",
+    level: "B1",
+    category: "past_future",
+    title_vi: "Kể quá khứ và nói kế hoạch",
+    title_en: "Narrating the past and future plans",
+    intro_vi: "Kết hợp quá khứ -di với tương lai -ecek để kể việc đã làm và việc sắp làm.",
+    intro_en: "Combine past -di with future -ecek to say what happened and what will happen next.",
+    sentences: [
+      { tr: "Dün doktora gittim.", en: "I went to the doctor yesterday.", vi: "Hôm qua tôi đi bác sĩ.", pronunciation_focus: ["dün → dun", "doktora → dok-to-RA", "gittim → GIT-tim"], pronunciation_focus_en: ["-dim/-tim marks witnessed past", "doktora means to the doctor"] },
+      { tr: "Yarın tekrar arayacağım.", en: "I will call again tomorrow.", vi: "Ngày mai tôi sẽ gọi lại.", pronunciation_focus: ["yarın → ya-RƯN", "tekrar → tek-RAR", "arayacağım → a-ra-ya-ja-ưm"], pronunciation_focus_en: ["tekrar means again", "arayacağım means I will call"] },
+    ],
+    cultural_notes_vi: "Tiếng Thổ phân biệt quá khứ chứng kiến -di và quá khứ nghe kể -miş. B1 chỉ cần dùng -di cho việc mình biết trực tiếp.",
+    cultural_notes_en: "Turkish distinguishes witnessed past -di and reported/inferred past -miş. At B1, use -di for things you directly know.",
+    tip_advice_vi: "Gốc git đổi thành gittim với phụ âm đôi. Học các động từ thường dùng theo cụm hoàn chỉnh.",
+    tip_advice_en: "Git becomes gittim with doubled t. Learn common verbs as full chunks.",
+    vocabulary: [
+      { word: "dün", en: "yesterday", vi: "hôm qua", pos: "adverb", pronunciation_vi: "dun", pronunciation_en: "duen" },
+      { word: "yarın", en: "tomorrow", vi: "ngày mai", pos: "adverb", pronunciation_vi: "ya-RƯN", pronunciation_en: "yah-RUHN" },
+      { word: "aramak", en: "to call", vi: "gọi điện", pos: "verb", pronunciation_vi: "a-ra-MAK", pronunciation_en: "ah-rah-MAHK" },
+    ],
+    exercises: [{ type: "translation", vietnamese: "Ngày mai tôi sẽ gọi lại.", english: "I will call again tomorrow.", turkish: "Yarın tekrar arayacağım." }],
+  },
+  {
+    id: "turkish_b1_healthcare_clinic",
+    level: "B1",
+    category: "healthcare",
+    title_vi: "Ở phòng khám: triệu chứng và lịch hẹn",
+    title_en: "At the clinic: symptoms and appointments",
+    intro_vi: "Nói đau ở đâu, sốt bao lâu và cần đặt lịch với bác sĩ.",
+    intro_en: "Say where it hurts, how long you have had a fever, and that you need an appointment.",
+    sentences: [
+      { tr: "İki gündür ateşim var.", en: "I have had a fever for two days.", vi: "Tôi bị sốt hai ngày rồi.", pronunciation_focus: ["iki gündür → hai ngày nay", "ateşim → a-te-SHIM", "var → có"], pronunciation_focus_en: ["-dür marks duration", "ateşim var literally my fever exists"] },
+      { tr: "Randevu almak istiyorum.", en: "I want to make an appointment.", vi: "Tôi muốn đặt lịch hẹn.", pronunciation_focus: ["randevu → ran-de-VU", "almak → al-MAK", "istiyorum → is-ti-YO-rum"], pronunciation_focus_en: ["randevu is appointment", "almak istiyorum means I want to take/make"] },
+    ],
+    cultural_notes_vi: "Ở Thổ Nhĩ Kỳ, randevu dùng cho lịch khám, lịch công sở và lịch dịch vụ. Nói acil nếu là khẩn cấp.",
+    cultural_notes_en: "Randevu is used for medical, office, and service appointments. Use acil for urgent/emergency.",
+    tip_advice_vi: "Mẫu X ağrıyor = X đau. Başım ağrıyor, boğazım ağrıyor, karnım ağrıyor.",
+    tip_advice_en: "The pattern X ağrıyor means X hurts: head, throat, stomach, and so on.",
+    vocabulary: [
+      { word: "ateş", en: "fever", vi: "sốt", pos: "noun", pronunciation_vi: "a-TESH", pronunciation_en: "ah-TESH" },
+      { word: "randevu", en: "appointment", vi: "lịch hẹn", pos: "noun", pronunciation_vi: "ran-de-VU", pronunciation_en: "rahn-deh-VOO" },
+      { word: "acil", en: "urgent", vi: "khẩn cấp", pos: "adjective", pronunciation_vi: "a-JIL", pronunciation_en: "ah-JEEL" },
+    ],
+  },
+  {
+    id: "turkish_b1_formal_register_requests",
+    level: "B1",
+    category: "formal_register",
+    title_vi: "Yêu cầu lịch sự và văn phong trang trọng",
+    title_en: "Polite requests and formal register",
+    intro_vi: "Chuyển câu trực tiếp thành câu mềm hơn khi nói với cơ quan, giáo viên hoặc quản lý.",
+    intro_en: "Turn direct requests into softer language for offices, teachers, or managers.",
+    sentences: [
+      { tr: "Yardımcı olabilir misiniz?", en: "Could you help?", vi: "Anh/chị có thể giúp được không?", pronunciation_focus: ["yardımcı → yar-dưm-JƯ", "olabilir misiniz → o-la-bi-LIR mi-si-niz"], pronunciation_focus_en: ["cı sounds juh with dotless ı", "misiniz marks polite question"] },
+      { tr: "Mümkünse bugün görüşebilir miyiz?", en: "If possible, could we meet today?", vi: "Nếu có thể, hôm nay chúng ta gặp được không?", pronunciation_focus: ["mümkünse → mum-KUN-se", "görüşebilir miyiz → có thể gặp không", "miyiz = chúng ta hỏi"], pronunciation_focus_en: ["mümkünse means if possible", "-ebilir marks ability/possibility"] },
+    ],
+    cultural_notes_vi: "Turkish politeness often uses plural/polite -siniz and possibility -ebilir. It is less about long titles, more about suffix choice.",
+    cultural_notes_en: "Turkish politeness often comes from plural/polite -siniz and possibility -ebilir. Suffix choice matters more than long honorifics.",
+    tip_advice_vi: "Thêm mümkünse trước yêu cầu để câu mềm hơn nhiều.",
+    tip_advice_en: "Add mümkünse before a request to make it much softer.",
+    vocabulary: [
+      { word: "yardımcı olmak", en: "to help", vi: "giúp đỡ", pos: "verb phrase", pronunciation_vi: "yar-dưm-JƯ ol-MAK", pronunciation_en: "yahr-duhm-JUH ohl-MAHK" },
+      { word: "mümkünse", en: "if possible", vi: "nếu có thể", pos: "adverb", pronunciation_vi: "mum-KUN-se", pronunciation_en: "muem-KUEN-seh" },
+      { word: "görüşmek", en: "to meet / discuss", vi: "gặp / trao đổi", pos: "verb", pronunciation_vi: "go-rush-MEK", pronunciation_en: "goe-roosh-MEK" },
+    ],
+    register_notes: "Dùng misiniz/miyiz và mümkünse để tránh nghe như ra lệnh.",
+    register_notes_en: "Use misiniz/miyiz and mümkünse to avoid sounding like you are giving an order.",
+  },
+];
+
+export default lessons;

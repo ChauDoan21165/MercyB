@@ -134,6 +134,7 @@ const VietnameseLessonsPage = lazyWithRetry(() => import("@/pages/languages/Viet
 const SpanishLessonsPage    = lazyWithRetry(() => import("@/pages/languages/SpanishLessonsPage"));
 const PortugueseLessonsPage = lazyWithRetry(() => import("@/pages/languages/PortugueseLessonsPage"));
 const IndonesianLessonsPage = lazyWithRetry(() => import("@/pages/languages/IndonesianLessonsPage"));
+const TurkishLessonsPage    = lazyWithRetry(() => import("@/pages/languages/TurkishLessonsPage"));
 const ArabicLessonsPage     = lazyWithRetry(() => import("@/pages/languages/ArabicLessonsPage"));
 const HindiLessonsPage      = lazyWithRetry(() => import("@/pages/languages/HindiLessonsPage"));
 const UrduLessonsPage       = lazyWithRetry(() => import("@/pages/languages/UrduLessonsPage"));
@@ -1136,6 +1137,9 @@ export default function AppRouter() {
           />
           <Route path="/languages/indonesian"
             element={<LazyPage><IndonesianLessonsPage /></LazyPage>}
+          />
+          <Route path="/languages/turkish"
+            element={<LazyPage><TurkishLessonsPage /></LazyPage>}
           />
           <Route path="/languages/arabic"
             element={<LazyPage><ArabicLessonsPage /></LazyPage>}

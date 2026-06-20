@@ -586,7 +586,7 @@ variables:
   allow_failure: false
 
 .build_script: &build_script
-  - npx tsc --noEmit
+  - NODE_OPTIONS="${NODE_OPTIONS:-} --max-old-space-size=4096" npx tsc --noEmit
   - npm run typecheck:functions
   - npm run typecheck:pages
   # node:24-bookworm-slim ships without curl, the CA bundle, unzip, or
@@ -921,7 +921,7 @@ reservoir:type-sweep:
     <<: *npm_cache_def
     policy: pull
   script:
-    - npx tsc --noEmit
+    - NODE_OPTIONS="${NODE_OPTIONS:-} --max-old-space-size=4096" npx tsc --noEmit
 
 # `build` — typecheck + edge-fn typecheck + Deno check + bundle build +
 # data/registry validators. The Vitest suite used to run here as a final

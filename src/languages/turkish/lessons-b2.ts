@@ -1,0 +1,126 @@
+// src/languages/turkish/lessons-b2.ts
+
+import type { TurkishLesson } from "./lessons";
+
+export const lessons: TurkishLesson[] = [
+  {
+    id: "turkish_b2_media_news_summary",
+    level: "B2",
+    category: "media",
+    title_vi: "Tóm tắt tin tức trung lập",
+    title_en: "Neutral news summaries",
+    intro_vi: "Tóm tắt một bản tin mà không thêm cảm xúc hoặc kết luận quá mạnh.",
+    intro_en: "Summarize a news item without adding emotional or overly strong conclusions.",
+    sentences: [
+      { tr: "Habere göre, yeni düzenleme gelecek ay yürürlüğe girecek.", en: "According to the news, the new regulation will take effect next month.", vi: "Theo bản tin, quy định mới sẽ có hiệu lực vào tháng tới.", pronunciation_focus: ["habere göre → theo tin", "düzenleme → du-zen-le-ME", "yürürlüğe → yu-ru-lu-e"], pronunciation_focus_en: ["göre means according to", "ğ lengthens the vowel", "yürürlüğe girmek means take effect"] },
+      { tr: "Yetkililer kararın geçici olduğunu belirtti.", en: "Officials stated that the decision is temporary.", vi: "Các quan chức cho biết quyết định này là tạm thời.", pronunciation_focus: ["yetkililer → yet-ki-li-LER", "geçici → ge-CHI-ji", "belirtti → be-LIR-ti"], pronunciation_focus_en: ["c is j, ç is ch", "belirtmek means to state"] },
+    ],
+    cultural_notes_vi: "Trong tin tức, göre, belirtti, açıkladı giúp giữ giọng trung lập và quy nguồn thông tin.",
+    cultural_notes_en: "In news language, göre, belirtti, and açıkladı keep the tone neutral and attribute information.",
+    tip_advice_vi: "Tránh bence trong tóm tắt tin. Dùng kaynağa göre hoặc habere göre.",
+    tip_advice_en: "Avoid bence in a news summary. Use kaynağa göre or habere göre instead.",
+    vocabulary: [
+      { word: "haber", en: "news", vi: "tin tức", pos: "noun", pronunciation_vi: "ha-BER", pronunciation_en: "hah-BEHR" },
+      { word: "düzenleme", en: "regulation / arrangement", vi: "quy định / sắp xếp", pos: "noun", pronunciation_vi: "du-zen-le-ME", pronunciation_en: "due-zen-leh-MEH" },
+      { word: "yetkili", en: "official", vi: "quan chức / người có thẩm quyền", pos: "noun", pronunciation_vi: "yet-ki-LI", pronunciation_en: "yet-kee-LEE" },
+    ],
+    exercises: [{ type: "fill_blank", question: "Habere ____, karar geçici.", answer: "göre", hint_vi: "Theo bản tin.", hint_en: "According to the news." }],
+  },
+  {
+    id: "turkish_b2_polite_complaints",
+    level: "B2",
+    category: "complaints",
+    title_vi: "Khiếu nại lịch sự nhưng rõ ràng",
+    title_en: "Polite but clear complaints",
+    intro_vi: "Nói vấn đề, bằng chứng và yêu cầu sửa chữa mà không quá gay gắt.",
+    intro_en: "State the problem, evidence, and desired fix without sounding aggressive.",
+    sentences: [
+      { tr: "Ürünü dün aldım, ancak fişte farklı bir fiyat yazıyor.", en: "I bought the product yesterday, but the receipt shows a different price.", vi: "Tôi mua sản phẩm hôm qua, nhưng trên hóa đơn ghi giá khác.", pronunciation_focus: ["ürünü → u-ru-NU", "ancak → AN-jak", "fişte → FISH-te"], pronunciation_focus_en: ["ancak is formal but/however", "fiş means receipt"] },
+      { tr: "Bu konuda yardımcı olmanızı rica ediyorum.", en: "I kindly ask you to help with this matter.", vi: "Tôi mong anh/chị hỗ trợ vấn đề này.", pronunciation_focus: ["bu konuda → về việc này", "olmanızı → ol-ma-nư-zư", "rica ediyorum → ri-JA e-di-YO-rum"], pronunciation_focus_en: ["rica ediyorum softens a request", "konu means matter/topic"] },
+    ],
+    cultural_notes_vi: "Rica ediyorum và yardımcı olmanızı tạo văn phong khiếu nại chuyên nghiệp, nhất là qua email.",
+    cultural_notes_en: "Rica ediyorum and yardımcı olmanızı create a professional complaint tone, especially in email.",
+    tip_advice_vi: "Mẫu tốt: sorunu nói rõ, sonra bằng chứng, cuối cùng yêu cầu cụ thể.",
+    tip_advice_en: "Good pattern: state the issue, then evidence, then a specific requested action.",
+    vocabulary: [
+      { word: "ürün", en: "product", vi: "sản phẩm", pos: "noun", pronunciation_vi: "u-RUN", pronunciation_en: "ue-RUEN" },
+      { word: "fiş", en: "receipt", vi: "hóa đơn bán lẻ", pos: "noun", pronunciation_vi: "fish", pronunciation_en: "feesh" },
+      { word: "rica etmek", en: "to kindly request", vi: "đề nghị lịch sự", pos: "verb", pronunciation_vi: "ri-JA et-MEK", pronunciation_en: "ree-JAH et-MEK" },
+    ],
+    dialogue: [
+      { speaker: "Müşteri", text: "Fiyat fişte farklı görünüyor.", vi: "Giá trên hóa đơn có vẻ khác.", en: "The price appears different on the receipt." },
+      { speaker: "Görevli", text: "Kontrol edelim, yardımcı olalım.", vi: "Chúng tôi kiểm tra và hỗ trợ nhé.", en: "Let's check and help." },
+    ],
+  },
+  {
+    id: "turkish_b2_reported_speech_evidence",
+    level: "B2",
+    category: "reported_speech",
+    title_vi: "Tường thuật lời nói và nguồn tin",
+    title_en: "Reported speech and sources",
+    intro_vi: "Dùng dedi, söyledi, belirtti để tường thuật mà không làm sai sắc thái.",
+    intro_en: "Use dedi, söyledi, and belirtti to report speech without distorting tone.",
+    sentences: [
+      { tr: "Bakan, sürecin şeffaf olacağını söyledi.", en: "The minister said the process would be transparent.", vi: "Bộ trưởng nói rằng quy trình sẽ minh bạch.", pronunciation_focus: ["bakan → ba-KAN", "süreç → su-RECH", "şeffaf → shef-FAF"], pronunciation_focus_en: ["ş is sh", "ç is ch", "süreç means process"] },
+      { tr: "Şirket, gecikmenin teknik nedenlerden kaynaklandığını belirtti.", en: "The company stated that the delay was due to technical reasons.", vi: "Công ty cho biết sự chậm trễ xuất phát từ lý do kỹ thuật.", pronunciation_focus: ["gecikme → ge-jik-ME", "nedenlerden → ne-den-LER-den", "kaynaklandığını → kay-nak-lan-dư-ư-nư"], pronunciation_focus_en: ["kaynaklanmak means to stem from", "belirtti is formal stated"] },
+    ],
+    cultural_notes_vi: "Belirtti trang trọng hơn dedi. Trong báo chí và báo cáo, nó giúp câu nghe khách quan.",
+    cultural_notes_en: "Belirtti is more formal than dedi. In journalism and reports, it sounds more objective.",
+    tip_advice_vi: "Khi chưa chắc, dùng söyledi/belirtti thay vì tự kết luận.",
+    tip_advice_en: "When uncertain, use söyledi/belirtti instead of drawing your own conclusion.",
+    vocabulary: [
+      { word: "söylemek", en: "to say", vi: "nói", pos: "verb", pronunciation_vi: "so-yle-MEK", pronunciation_en: "soe-yleh-MEK" },
+      { word: "belirtmek", en: "to state", vi: "nêu rõ", pos: "verb", pronunciation_vi: "be-lirt-MEK", pronunciation_en: "beh-leert-MEK" },
+      { word: "kaynaklanmak", en: "to result from", vi: "xuất phát từ", pos: "verb", pronunciation_vi: "kay-nak-lan-MAK", pronunciation_en: "kai-nahk-lahn-MAHK" },
+    ],
+  },
+  {
+    id: "turkish_b2_debate_contrast",
+    level: "B2",
+    category: "debate",
+    title_vi: "Tranh luận: nhượng bộ rồi phản biện",
+    title_en: "Debate: concede, then counter",
+    intro_vi: "Dùng haklısınız, ancak để công nhận một điểm trước khi phản biện.",
+    intro_en: "Use haklısınız, ancak to acknowledge a point before countering it.",
+    sentences: [
+      { tr: "Bu noktada haklısınız, ancak maliyetleri de düşünmeliyiz.", en: "You are right on this point, but we should also consider the costs.", vi: "Ở điểm này anh/chị đúng, nhưng chúng ta cũng nên cân nhắc chi phí.", pronunciation_focus: ["haklısınız → hak-lư-sư-nưz", "maliyetleri → ma-li-yet-le-RI", "düşünmeliyiz → du-shun-me-li-yiz"], pronunciation_focus_en: ["haklı means right/correct", "ancak is however", "-meliyiz means we should"] },
+      { tr: "Veriler bu görüşü tamamen desteklemiyor.", en: "The data does not fully support this view.", vi: "Dữ liệu không hoàn toàn ủng hộ quan điểm này.", pronunciation_focus: ["veriler → ve-ri-LER", "görüşü → go-ru-SHU", "desteklemiyor → des-tek-le-MI-yor"], pronunciation_focus_en: ["görüş means view/opinion", "desteklemek means support"] },
+    ],
+    cultural_notes_vi: "Trong tranh luận tiếng Thổ, công nhận một phần bằng haklısınız làm giọng mềm và chuyên nghiệp hơn.",
+    cultural_notes_en: "In Turkish debate, partial acknowledgement with haklısınız makes the tone softer and more professional.",
+    tip_advice_vi: "Cặp câu hữu dụng: Haklısınız, ancak... / Buna ek olarak...",
+    tip_advice_en: "Useful pair: Haklısınız, ancak... / Buna ek olarak...",
+    vocabulary: [
+      { word: "haklı", en: "right / justified", vi: "đúng / có lý", pos: "adjective", pronunciation_vi: "HAK-lư", pronunciation_en: "HAHK-luh" },
+      { word: "ancak", en: "however", vi: "tuy nhiên", pos: "connector", pronunciation_vi: "AN-jak", pronunciation_en: "AHN-jahk" },
+      { word: "veri", en: "data", vi: "dữ liệu", pos: "noun", pronunciation_vi: "ve-RI", pronunciation_en: "veh-REE" },
+    ],
+    exercises: [{ type: "translation", vietnamese: "Anh/chị đúng, nhưng chúng ta nên cân nhắc chi phí.", english: "You are right, but we should consider the costs.", turkish: "Haklısınız, ancak maliyetleri düşünmeliyiz." }],
+  },
+  {
+    id: "turkish_b2_workplace_feedback",
+    level: "B2",
+    category: "workplace",
+    title_vi: "Phản hồi công sở không gây mất mặt",
+    title_en: "Workplace feedback without blame",
+    intro_vi: "Nói về lỗi, rủi ro và cách sửa bằng giọng hợp tác.",
+    intro_en: "Discuss errors, risks, and fixes in a collaborative tone.",
+    sentences: [
+      { tr: "Bu bölüm biraz daha netleştirilebilir.", en: "This section could be clarified a little more.", vi: "Phần này có thể được làm rõ thêm một chút.", pronunciation_focus: ["bölüm → bo-LUM", "netleştirilebilir → net-lesh-ti-ri-le-bi-LIR", "bị động + khả năng"], pronunciation_focus_en: ["-ilebilir means can be", "netleştirmek means clarify"] },
+      { tr: "Birlikte üzerinden geçelim mi?", en: "Shall we go over it together?", vi: "Chúng ta cùng rà lại nhé?", pronunciation_focus: ["birlikte → bir-lik-TE", "üzerinden geçmek → rà qua", "geçelim mi → ta làm nhé?"], pronunciation_focus_en: ["birlikte means together", "geçelim mi softens the suggestion"] },
+    ],
+    cultural_notes_vi: "Dạng bị động + khả năng như netleştirilebilir giúp tránh đổ lỗi trực tiếp cho người viết.",
+    cultural_notes_en: "Passive plus possibility, as in netleştirilebilir, avoids blaming the writer directly.",
+    tip_advice_vi: "Đổi Sen yanlış yazdın thành Bu bölüm netleştirilebilir để chuyên nghiệp hơn.",
+    tip_advice_en: "Replace You wrote this wrong with This section could be clarified.",
+    vocabulary: [
+      { word: "netleştirmek", en: "to clarify", vi: "làm rõ", pos: "verb", pronunciation_vi: "net-lesh-tir-MEK", pronunciation_en: "net-lesh-teer-MEK" },
+      { word: "birlikte", en: "together", vi: "cùng nhau", pos: "adverb", pronunciation_vi: "bir-lik-TE", pronunciation_en: "beer-leek-TEH" },
+      { word: "üzerinden geçmek", en: "to review / go over", vi: "rà lại", pos: "verb phrase", pronunciation_vi: "u-ze-rin-den gech-MEK", pronunciation_en: "ue-zeh-reen-den gech-MEK" },
+    ],
+    register_notes: "Câu bị động và khả năng là công cụ lịch sự quan trọng trong phản hồi công việc.",
+    register_notes_en: "Passive and possibility forms are key politeness tools in workplace feedback.",
+  },
+];
+
+export default lessons;
