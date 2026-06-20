@@ -1,0 +1,122 @@
+// src/languages/turkish/lessons-c1.ts
+
+import type { TurkishLesson } from "./lessons";
+
+export const lessons: TurkishLesson[] = [
+  {
+    id: "turkish_c1_academic_claims",
+    level: "C1",
+    category: "academic",
+    title_vi: "Luận điểm học thuật và mức độ chắc chắn",
+    title_en: "Academic claims and degrees of certainty",
+    intro_vi: "Viết luận điểm bằng có vẻ, cho thấy, có thể được diễn giải thay vì khẳng định tuyệt đối.",
+    intro_en: "Frame claims with appears, indicates, and can be interpreted instead of absolute certainty.",
+    sentences: [
+      { tr: "Bulgular, değişkenler arasında anlamlı bir ilişki olduğunu göstermektedir.", en: "The findings indicate a meaningful relationship between the variables.", vi: "Các phát hiện cho thấy có mối quan hệ có ý nghĩa giữa các biến.", pronunciation_focus: ["bulgular → bul-gu-LAR", "değişkenler → de-ish-ken-LER", "göstermektedir → trang trọng"], pronunciation_focus_en: ["bulgu means finding", "göstermektedir is formal indicates"] },
+      { tr: "Bu sonuç, daha geniş bir bağlamda yorumlanmalıdır.", en: "This result should be interpreted in a broader context.", vi: "Kết quả này nên được diễn giải trong bối cảnh rộng hơn.", pronunciation_focus: ["sonuç → so-NUCH", "bağlamda → ba-lam-da", "yorumlanmalıdır → nên được diễn giải"], pronunciation_focus_en: ["bağlam means context", "-malıdır means should/must"] },
+    ],
+    cultural_notes_vi: "Văn phong học thuật tiếng Thổ ưa danh từ hóa và bị động, nhưng vẫn cần rõ chủ thể phương pháp và dữ liệu.",
+    cultural_notes_en: "Academic Turkish favors nominalization and passive structures, while still requiring clear method and data references.",
+    tip_advice_vi: "Dùng göstermektedir, ortaya koymaktadır, yorumlanmalıdır để tăng độ học thuật.",
+    tip_advice_en: "Use göstermektedir, ortaya koymaktadır, and yorumlanmalıdır for academic register.",
+    vocabulary: [
+      { word: "bulgu", en: "finding", vi: "phát hiện", pos: "noun", pronunciation_vi: "bul-GU", pronunciation_en: "bool-GOO" },
+      { word: "değişken", en: "variable", vi: "biến số", pos: "noun", pronunciation_vi: "de-ish-KEN", pronunciation_en: "deh-eesh-KEN" },
+      { word: "bağlam", en: "context", vi: "bối cảnh", pos: "noun", pronunciation_vi: "ba-LAM", pronunciation_en: "bah-LAHM" },
+    ],
+    exercises: [{ type: "translation", vietnamese: "Các phát hiện cho thấy một mối quan hệ có ý nghĩa.", english: "The findings indicate a meaningful relationship.", turkish: "Bulgular anlamlı bir ilişki olduğunu göstermektedir." }],
+  },
+  {
+    id: "turkish_c1_policy_social_change",
+    level: "C1",
+    category: "policy",
+    title_vi: "Chính sách công và thay đổi xã hội",
+    title_en: "Public policy and social change",
+    intro_vi: "Nói về tác động, nhóm liên quan và hệ quả ngoài dự kiến của chính sách.",
+    intro_en: "Discuss impact, stakeholders, and unintended consequences of policy.",
+    sentences: [
+      { tr: "Politikanın kısa vadeli etkileri olumlu görünse de uzun vadeli sonuçları belirsizdir.", en: "Although the policy's short-term effects appear positive, its long-term outcomes are uncertain.", vi: "Dù tác động ngắn hạn của chính sách có vẻ tích cực, kết quả dài hạn vẫn chưa chắc chắn.", pronunciation_focus: ["kısa vadeli → ngắn hạn", "olumlu → tích cực", "belirsizdir → không chắc chắn"], pronunciation_focus_en: ["-se de means although/even if", "belirsizdir is formal uncertain"] },
+      { tr: "Karar alma sürecine yerel paydaşlar da dahil edilmelidir.", en: "Local stakeholders should also be included in the decision-making process.", vi: "Các bên liên quan địa phương cũng nên được đưa vào quy trình ra quyết định.", pronunciation_focus: ["paydaşlar → các bên liên quan", "dahil edilmelidir → nên được bao gồm", "süreç → quy trình"], pronunciation_focus_en: ["paydaş means stakeholder", "edilmelidir is formal should be done"] },
+    ],
+    cultural_notes_vi: "Trong thảo luận chính sách, paydaş, etki, sonuç, süreç là từ khóa trung lập và hữu dụng.",
+    cultural_notes_en: "In policy discussion, paydaş, etki, sonuç, and süreç are neutral high-value terms.",
+    tip_advice_vi: "Mẫu -se de giúp nhượng bộ học thuật: olumlu görünse de...",
+    tip_advice_en: "The -se de pattern gives academic concession: olumlu görünse de...",
+    vocabulary: [
+      { word: "politika", en: "policy", vi: "chính sách", pos: "noun", pronunciation_vi: "po-li-ti-KA", pronunciation_en: "poh-lee-tee-KAH" },
+      { word: "paydaş", en: "stakeholder", vi: "bên liên quan", pos: "noun", pronunciation_vi: "pay-DASH", pronunciation_en: "pie-DAHSH" },
+      { word: "belirsiz", en: "uncertain", vi: "không chắc chắn", pos: "adjective", pronunciation_vi: "be-lir-SIZ", pronunciation_en: "beh-leer-SEEZ" },
+    ],
+  },
+  {
+    id: "turkish_c1_literary_voice",
+    level: "C1",
+    category: "literature",
+    title_vi: "Giọng kể và hình ảnh trong văn học",
+    title_en: "Narrative voice and imagery in literature",
+    intro_vi: "Miêu tả người kể, nhịp câu và hình ảnh mà không chỉ kể lại nội dung.",
+    intro_en: "Describe narrator, sentence rhythm, and imagery instead of only retelling plot.",
+    sentences: [
+      { tr: "Anlatıcı, okuru doğrudan yönlendirmek yerine belirsizlik içinde bırakır.", en: "The narrator leaves the reader in uncertainty rather than guiding them directly.", vi: "Người kể đặt độc giả trong sự mơ hồ thay vì dẫn dắt trực tiếp.", pronunciation_focus: ["anlatıcı → người kể", "okur → độc giả", "belirsizlik → sự bất định"], pronunciation_focus_en: ["anlatıcı means narrator", "okur is reader", "yerine means rather than"] },
+      { tr: "Metindeki imgeler, karakterin iç çatışmasını görünür kılar.", en: "The imagery in the text makes the character's inner conflict visible.", vi: "Hình ảnh trong văn bản làm rõ xung đột nội tâm của nhân vật.", pronunciation_focus: ["imge → hình ảnh", "iç çatışma → xung đột nội tâm", "görünür kılar → làm thấy được"], pronunciation_focus_en: ["imge means image/imagery", "iç means inner", "kılmak is literary make/render"] },
+    ],
+    cultural_notes_vi: "Phân tích văn học tiếng Thổ hay dùng anlatıcı, okur, metin, imge, çatışma.",
+    cultural_notes_en: "Turkish literary analysis often uses anlatıcı, okur, metin, imge, and çatışma.",
+    tip_advice_vi: "Đừng viết sadece hikaye. Hãy nêu anlatıcı nasıl etkiliyor?",
+    tip_advice_en: "Do not only summarize the story. Ask how the narrator shapes the reader's response.",
+    vocabulary: [
+      { word: "anlatıcı", en: "narrator", vi: "người kể", pos: "noun", pronunciation_vi: "an-la-tư-JƯ", pronunciation_en: "ahn-lah-tuh-JUH" },
+      { word: "imge", en: "image / imagery", vi: "hình ảnh", pos: "noun", pronunciation_vi: "IM-ge", pronunciation_en: "EEM-geh" },
+      { word: "çatışma", en: "conflict", vi: "xung đột", pos: "noun", pronunciation_vi: "cha-TƯSH-ma", pronunciation_en: "chah-TUHSH-mah" },
+    ],
+    idiom_glosses: [{ idiom: "satır aralarını okumak", literal: "đọc giữa các dòng", literal_en: "to read between the lines", meaning: "hiểu hàm ý", meaning_en: "to infer unstated meaning", example: "Bu metinde satır aralarını okumak gerekir.", example_en: "In this text, one must read between the lines." }],
+  },
+  {
+    id: "turkish_c1_presentations_qa",
+    level: "C1",
+    category: "presentations",
+    title_vi: "Thuyết trình và xử lý câu hỏi khó",
+    title_en: "Presentations and handling hard questions",
+    intro_vi: "Chuyển ý, giới hạn phạm vi và trả lời câu hỏi khi chưa có dữ liệu đầy đủ.",
+    intro_en: "Transition, limit scope, and answer questions when the data is incomplete.",
+    sentences: [
+      { tr: "Bu soruya mevcut veriler ışığında cevap verebilirim.", en: "I can answer this question in light of the current data.", vi: "Tôi có thể trả lời câu hỏi này dựa trên dữ liệu hiện có.", pronunciation_focus: ["mevcut veriler → dữ liệu hiện có", "ışığında → dưới ánh sáng/dựa trên", "cevap verebilirim → có thể trả lời"], pronunciation_focus_en: ["ışığında means in light of", "cevap vermek means answer"] },
+      { tr: "Kapsamı netleştirmek için iki noktayı ayırmak isterim.", en: "To clarify the scope, I would like to separate two points.", vi: "Để làm rõ phạm vi, tôi muốn tách hai điểm.", pronunciation_focus: ["kapsam → phạm vi", "netleştirmek → làm rõ", "ayırmak → tách"], pronunciation_focus_en: ["kapsam is scope", "ayırmak means separate"] },
+    ],
+    cultural_notes_vi: "Trong Q&A trang trọng, mevcut veriler ışığında giúp tránh hứa quá mức.",
+    cultural_notes_en: "In formal Q&A, mevcut veriler ışığında helps avoid overclaiming.",
+    tip_advice_vi: "Nếu chưa biết, nói Bu konuda daha fazla veriye ihtiyaç var thay vì đoán.",
+    tip_advice_en: "If you do not know, say more data is needed rather than guessing.",
+    vocabulary: [
+      { word: "kapsam", en: "scope", vi: "phạm vi", pos: "noun", pronunciation_vi: "kap-SAM", pronunciation_en: "kahp-SAHM" },
+      { word: "mevcut", en: "current / existing", vi: "hiện có", pos: "adjective", pronunciation_vi: "mev-JUT", pronunciation_en: "mev-JOOT" },
+      { word: "veriler ışığında", en: "in light of the data", vi: "dựa trên dữ liệu", pos: "phrase", pronunciation_vi: "ve-ri-ler ư-shư-ưn-da", pronunciation_en: "veh-ree-lehr uh-shuh-uhn-dah" },
+    ],
+  },
+  {
+    id: "turkish_c1_nuanced_argument",
+    level: "C1",
+    category: "nuance",
+    title_vi: "Sắc thái: không hoàn toàn đồng ý",
+    title_en: "Nuance: not fully agreeing",
+    intro_vi: "Diễn đạt đồng ý một phần, nghi ngờ có cơ sở và phản biện mềm.",
+    intro_en: "Express partial agreement, grounded doubt, and soft counterargument.",
+    sentences: [
+      { tr: "Bu yoruma kısmen katılıyorum; yine de bazı varsayımlar tartışmaya açıktır.", en: "I partly agree with this interpretation; nevertheless, some assumptions are debatable.", vi: "Tôi đồng ý một phần với cách diễn giải này; tuy vậy, một số giả định vẫn cần bàn thêm.", pronunciation_focus: ["kısmen → một phần", "varsayımlar → giả định", "tartışmaya açıktır → còn có thể tranh luận"], pronunciation_focus_en: ["kısmen means partly", "varsayım is assumption", "açıktır is formal is open"] },
+      { tr: "Karşı argüman güçlü olsa da kanıtların kapsamı sınırlıdır.", en: "Although the counterargument is strong, the scope of evidence is limited.", vi: "Dù phản biện mạnh, phạm vi bằng chứng còn hạn chế.", pronunciation_focus: ["karşı argüman → phản biện", "kanıtlar → bằng chứng", "sınırlıdır → bị giới hạn"], pronunciation_focus_en: ["karşı means counter/opposing", "kanıt means evidence"] },
+    ],
+    cultural_notes_vi: "C1 cần tránh hai cực: quá chắc hoặc quá mơ hồ. Kısmen, yine de, sınırlı giúp cân bằng.",
+    cultural_notes_en: "C1 Turkish should avoid both overcertainty and vagueness. Kısmen, yine de, and sınırlı create balance.",
+    tip_advice_vi: "Dùng kısmen katılıyorum khi bạn muốn phản biện mà vẫn giữ quan hệ.",
+    tip_advice_en: "Use kısmen katılıyorum when you need to disagree while preserving rapport.",
+    vocabulary: [
+      { word: "kısmen", en: "partly", vi: "một phần", pos: "adverb", pronunciation_vi: "kưs-MEN", pronunciation_en: "kuhs-MEN" },
+      { word: "varsayım", en: "assumption", vi: "giả định", pos: "noun", pronunciation_vi: "var-sa-YƯM", pronunciation_en: "vahr-sah-YUHM" },
+      { word: "kanıt", en: "evidence", vi: "bằng chứng", pos: "noun", pronunciation_vi: "ka-NƯT", pronunciation_en: "kah-NUHT" },
+    ],
+    register_notes: "Kısmen katılıyorum trang trọng và mềm hơn Katılmıyorum.",
+    register_notes_en: "Kısmen katılıyorum is more formal and softer than Katılmıyorum.",
+  },
+];
+
+export default lessons;
