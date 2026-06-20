@@ -15,6 +15,7 @@ export const lessonThemes: Record<string, LessonTheme> = {
   vietnamese: { accent: "#16A34A" }, // green-600
   spanish:    { accent: "#E11D48" }, // rose-600 (Spanish-for-English-speakers vertical)
   portuguese: { accent: "#047857" }, // emerald-700 (Brazilian Portuguese)
+  indonesian: { accent: "#B91C1C" }, // red-700 (Bahasa Indonesia)
   arabic:     { accent: "#C2410C" }, // orange-700 (Modern Standard Arabic)
   hindi:      { accent: "#4338CA" }, // indigo-700 (Hindi Devanagari)
   urdu:       { accent: "#0E7490" }, // cyan-700 (Urdu RTL)
