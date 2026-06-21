@@ -97,3 +97,12 @@ export { default as b2CoreLessons } from "./lessons-b2-core";
 export { default as c1AcademicLessons } from "./lessons-c1-academic";
 export { default as c2DiscourseLessons } from "./lessons-c2-discourse";
 export { default as survivalLessons } from "./lessons-survival";
+
+// Conventional-name compatibility barrels — re-export the same data under
+// the standard `lessons-{level}.ts` names so coverage scouts and level-pack
+// integrators discover Thai content without knowing the suffix convention.
+export { default as a2Lessons } from "./lessons-a2";
+export { default as b1Lessons } from "./lessons-b1";
+export { default as b2Lessons } from "./lessons-b2";
+export { default as c1Lessons } from "./lessons-c1";
+export { default as c2Lessons } from "./lessons-c2";
