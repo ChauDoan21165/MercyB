@@ -131,6 +131,8 @@ describe("Study OS static boundary", () => {
       "src/lib/tutor/vietlishCorpus.ts",
       "src/lib/tutor/vietlishCuratedLogic.ts",
       "src/lib/tutor/vietlishLogicEngine.ts",
+      "src/lib/tutor/vietnameseInterferenceExplanation.ts",
+      "src/lib/tutor/weaknessMemoryTags.ts",
     ]);
     expect(speakTopicFiles).toContain("src/lib/tutor/speakTopics/introductions.ts");
     for (const rel of speakTopicFiles) {
