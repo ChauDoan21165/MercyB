@@ -120,6 +120,7 @@ describe("Study OS static boundary", () => {
       "src/lib/tutor/speakFollowups.ts",
       "src/lib/tutor/speakTopicLibrary.ts",
       "src/lib/tutor/studySessionState.ts",
+      "src/lib/tutor/teacherMercyContract.ts",
       "src/lib/tutor/todayLessonPlanner.ts",
       "src/lib/tutor/tutorCopy.ts",
       "src/lib/tutor/tutorEngine.ts",
