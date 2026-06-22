@@ -68,6 +68,13 @@ import {
   correctWithTutorRules,
 } from "@/lib/tutor/correctionEngine";
 import {
+  correctWithTimingAwareness,
+  createDeferredCorrectionQueue,
+  buildSuppressMessage,
+  buildDeferredSurfacingMessage,
+  type DeferredCorrectionQueue,
+} from "@/lib/tutor/correctionTimingIntegration";
+import {
   diagnoseVietlishLogicWithMatch,
   type VietlishLogicDiagnosisResult,
 } from "@/lib/tutor/vietlishLogicEngine";
@@ -1236,6 +1243,13 @@ export default function AiTutorPage() {
   const speakFollowUpRequestRef = useRef(0);
   const wasListeningRef = useRef(false);
   const ignoreNextSttCommitRef = useRef(false);
+  // Step 013 — deferred correction queue: holds corrections whose timing
+  // says DELAYED/FOLLOW_UP_FIRST. Advanced on each conversation turn.
+  const deferredQueueRef = useRef<DeferredCorrectionQueue>(
+    createDeferredCorrectionQueue(),
+  );
+  // Count corrections surfaced this session for timing-gate context.
+  const surfacedCorrectionsRef = useRef(0);
 
   // Detailed-scoring gate (premium/trial + per-session cap). When the gate flag
   // is OFF this is a no-op (gateAllows always true → legacy behavior). Using the
@@ -2266,6 +2280,41 @@ export default function AiTutorPage() {
       setError(CANNOT_CORRECT_NO_SESSION_MESSAGE);
       return;
     }
+    // Step 013 — check correction timing before showing the result.
+    const timingResult = correctWithTimingAwareness({
+      learnerText: trimmed,
+      targetLanguage: "en",
+      cefrLevel: null,
+      isCurrentLessonTarget: activeTodayLesson?.plan?.targetSkill
+        ? trimmed.toLowerCase().includes(activeTodayLesson.plan.targetSkill.toLowerCase())
+        : false,
+      previousCorrectionsThisSession: surfacedCorrectionsRef.current,
+    });
+
+    // SUPPRESS: the error is minor / learner context says not to interrupt.
+    if (timingResult.shouldSuppress) {
+      setLoading(false);
+      setError(buildSuppressMessage(timingResult.timing, explainLanguage));
+      return;
+    }
+
+    // DELAYED / FOLLOW_UP_FIRST: defer the correction to a future turn.
+    if (timingResult.shouldDefer && timingResult.correction.status === "corrected") {
+      deferredQueueRef.current.enqueue({
+        learnerText: trimmed,
+        correctedText: timingResult.correction.corrected,
+        timing: timingResult.timing,
+        remainingTurns: timingResult.timing.delayTurns ?? 1,
+      });
+      setLoading(false);
+      setError(
+        explainLanguage === "vi"
+          ? "Mercy ghi nhận câu này và sẽ gợi ý sau nhé."
+          : "Got it — I'll share a small tip in a moment.",
+      );
+      return;
+    }
+
     const corrected = localCorrection.corrected;
     const { turn } = buildCorrectionTurn({
       id: `corr-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
@@ -2280,6 +2329,9 @@ export default function AiTutorPage() {
       grammarTip: buildGrammarTip(target, localCorrection, explainLanguage),
       practicePrompt: next.practicePrompt[explainLanguage],
     });
+    // Step 013 — correction was shown (IMMEDIATE/EXPLAIN_PATTERN path).
+    surfacedCorrectionsRef.current += 1;
+
     clearSpeakBoardState();
     setLatestCorrectedSeed({
       correctedSentence: corrected,
@@ -2447,6 +2499,28 @@ export default function AiTutorPage() {
     };
     setConversationMessages((current) => [...current, userMessage]);
     setConversationInput("");
+
+    // Step 013 — advance the deferred correction queue on each conversation turn.
+    // Surface any due deferred corrections as gentle messages in the chat.
+    const dueDeferred = deferredQueueRef.current.advanceTurn();
+    if (dueDeferred.length > 0) {
+      const suffixMessages: ConversationMessage[] = dueDeferred.map((dc) => {
+        const deferredText = buildDeferredSurfacingMessage(dc.correctedText, explainLanguage);
+        const { turn } = buildConversationTurn({
+          id: `deferred-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
+          targetLanguage: target,
+          explainLanguage,
+          userText: dc.learnerText,
+          correctedText: dc.correctedText,
+          explanation: "",
+          naturalReply: deferredText,
+          nextQuestion: "",
+        });
+        return { ...turn, role: "mercy" as const };
+      });
+      setConversationMessages((current) => [...current, ...suffixMessages]);
+    }
+
     setConversationLoading(true);
 
     await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
@@ -2650,6 +2724,9 @@ export default function AiTutorPage() {
     setPracticeAnswer("");
     setPracticeFeedback(null);
     clearCorrectedSentenceSeed();
+    // Step 013 — reset deferred queue on board clear.
+    deferredQueueRef.current.clear();
+    surfacedCorrectionsRef.current = 0;
     // Clear the visible surface for the next sentence, but PRESERVE the focus:
     // "try another sentence" is the learner continuing, so the loop should keep
     // circling the same weakness across sentences. Focus is in-session only and
