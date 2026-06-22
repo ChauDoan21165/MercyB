@@ -50,6 +50,23 @@ curl -X POST https://buemdfxyhxunzpgdoqin.supabase.co/functions/v1/email-automat
   -d '{"action": "run_daily"}'
 ```
 
+## Cloudflare Email Routing — test sender caveat
+
+`admin@mercyblade.com` is routed via Cloudflare Email Routing. When testing
+delivery to this address:
+
+- **Do NOT test from `cd12536@gmail.com`** if that Gmail account is the
+  routing destination inbox. Gmail deduplicates the routed copy (same
+  Message-ID already present in the inbox), so the email appears "missing"
+  even though it was received — this is Gmail behavior, not an app failure.
+- Use a different external sender (another Gmail, iCloud, Outlook, etc.).
+- Verify each path independently:
+  - External sender → `admin@mercyblade.com` arrives
+  - App outbound email → `admin@mercyblade.com` arrives
+  - Local safety forced emails still go only to `admin@mercyblade.com`
+- Only investigate production email code if a **different-sender** test
+  also fails. Same-Gmail "missing" emails are a test-method issue.
+
 ## Remove Cron Job
 
 ```sql
