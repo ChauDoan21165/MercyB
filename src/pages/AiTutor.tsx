@@ -105,6 +105,8 @@ import {
   type SpeakFollowUpSelection,
 } from "@/lib/tutor/speakFollowups";
 import { auditCorrectionQuick } from "@/lib/tutor/teacherMercyAuditGate";
+import { enrichCorrectionExperience } from "@/lib/tutor/correctionExperienceEnricher";
+import { getInterferenceCategoryExplanation } from "@/lib/tutor/vietnameseInterferenceExplanation";
 import { detectBilingualSaliencePivot } from "@/lib/tutor/bilingualSalienceDetector";
 import type { BilingualSaliencePivot } from "@/lib/tutor/bilingualSalienceDetector";
 import { classifyResponseStance } from "@/lib/tutor/emotionalResponseBoundary";
@@ -607,6 +609,39 @@ function buildConversationExplanation(
   return MOCK_RESULTS_BY_TARGET[target].explanation[explainLanguage];
 }
 
+/**
+ * Build a brief Vietnamese root-cause interference note for the correction.
+ *
+ * Maps the applied rule IDs through the correction experience enricher to
+ * identify whether the error has a clear VN→EN L1 transfer pattern. When it
+ * does, returns a short mental-model shift hint that helps the learner
+ * understand WHY the error happens, not just WHAT to fix.
+ *
+ * Returns empty string when:
+ *   - No rules applied (unchanged)
+ *   - No clear VN→EN interference pattern detected
+ *   - explainLanguage is "en" (non-Vietnamese learners)
+ *   - The learner text is too short to meaningfully classify
+ */
+function buildVnInterferenceNote(
+  correction: Extract<ReturnType<typeof buildLocalCorrection>, { ok: true }>,
+  explainLanguage: ExplainLanguage,
+): string {
+  if (explainLanguage !== "vi") return "";
+  if (correction.appliedRuleIds.length === 0) return "";
+  if (correction.status === "unchanged") return "";
+
+  const enriched = enrichCorrectionExperience(
+    correction.appliedRuleIds,
+    correction.corrected,
+  );
+  if (!enriched.interferenceCategory) return "";
+
+  const explanation = getInterferenceCategoryExplanation(enriched.interferenceCategory);
+  // Use the mental-model shift as a brief, non-shaming insight.
+  return `\n\n💡 ${explanation.mentalModelShift}`;
+}
+
 function buildGrammarExplanation(
   userText: string,
   target: TutorTarget,
@@ -619,11 +654,12 @@ function buildGrammarExplanation(
   // there is nothing to explain. The old unconditional fallback would surface "câu của bạn
   // đã rõ" even on fragments or broken inputs that slipped past the rule engine (Q1 bug).
   const specific = buildEnglishConversationExplanation(userText, correction, explainLanguage);
-  if (specific) return specific;
+  const interferenceNote = buildVnInterferenceNote(correction, explainLanguage);
+  if (specific) return specific + interferenceNote;
   if (correction.status === "unchanged") return "";
-  return explainLanguage === "vi"
+  return (explainLanguage === "vi"
     ? "Câu của bạn đã rõ. Mercy chỉ chỉnh dấu câu hoặc cách diễn đạt cho tự nhiên hơn."
-    : "Your sentence is clear. Mercy only adjusted punctuation or phrasing.";
+    : "Your sentence is clear. Mercy only adjusted punctuation or phrasing.") + interferenceNote;
 }
 
 function buildGrammarTip(

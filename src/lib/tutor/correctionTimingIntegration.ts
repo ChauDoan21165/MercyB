@@ -25,6 +25,7 @@ import {
   type CorrectionTimingResult,
   type ErrorSeverity,
 } from "./teacherMercyCorrectionTiming";
+import { enrichCorrectionExperience, type EnrichedCorrectionContext } from "./correctionExperienceEnricher";
 
 // ─── Severity Inference ────────────────────────────────────────────────────
 
@@ -202,6 +203,12 @@ export type TimingIntegrationResult = {
   shouldDefer: boolean;
   /** Whether the correction should be suppressed entirely. */
   shouldSuppress: boolean;
+  /**
+   * Teacher-quality enrichment context: weakness memory tags and
+   * Vietnamese interference category derived from the applied rules.
+   * null when no rules fired (unchanged/needs_ai without rule matches).
+   */
+  enrichment: EnrichedCorrectionContext | null;
 };
 
 // ─── Core Integration ──────────────────────────────────────────────────────
@@ -238,6 +245,17 @@ export function correctWithTimingAwareness(
 
   const timing = decideCorrectionMode(timingInput);
 
+  // Enrich the correction with weakness memory tags and Vietnamese interference
+  // context. Only enrich when rules actually fired and produced a correction —
+  // unchanged/needs_ai results get null enrichment (no patterns to tag).
+  const enrichment =
+    correction.status === "corrected" && correction.appliedRuleIds.length > 0
+      ? enrichCorrectionExperience(
+          correction.appliedRuleIds,
+          correction.corrected,
+        )
+      : null;
+
   return {
     correction,
     timing,
@@ -246,6 +264,7 @@ export function correctWithTimingAwareness(
     shouldDefer:
       timing.mode === "DELAYED" || timing.mode === "FOLLOW_UP_FIRST",
     shouldSuppress: timing.mode === "SUPPRESS",
+    enrichment,
   };
 }
 
