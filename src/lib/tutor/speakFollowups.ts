@@ -3,6 +3,7 @@ import {
   getSpeakTopicLibraryEntry,
   getSpeakTopicLibraryTopicId,
 } from "./speakTopicLibrary";
+import { isAcceptableFollowUp } from "./followUpIntelligence";
 
 export type SpeakFollowUpPattern = {
   id: string;
@@ -276,6 +277,28 @@ function hasInvalidGeneratedFollowUpTarget(question: string, learnerText: string
  * checker; it only blocks high-confidence transcript failures that would make
  * the deterministic salience fallback invent fake objects or topics.
  */
+/**
+ * Quality-gate an AI-generated follow-up question before showing it to the learner.
+ *
+ * Uses Teacher Mercy's follow-up intelligence layer (followUpIntelligence.ts) to
+ * reject dead-end, off-topic, too-hard, or too-many follow-ups. Only follow-ups
+ * rated "acceptable" or better pass through; poor ones are dropped so the caller
+ * falls back to a safe generic prompt (ask-to-repeat / pivot).
+ *
+ * Pure function — deterministic, no I/O, no side effects.
+ *
+ * @param learnerText — what the learner just said/wrote (used to assess connection)
+ * @param aiQuestion  — the AI-generated follow-up question (already normalized)
+ * @returns the question string if acceptable, null if rejected
+ */
+export function validateAiSpeakFollowUp(
+  learnerText: string,
+  aiQuestion: string,
+): string | null {
+  if (!aiQuestion) return null;
+  return isAcceptableFollowUp(learnerText, aiQuestion) ? aiQuestion : null;
+}
+
 export function assessSpeakTranscriptClarity(transcript: string): SpeakTranscriptClarityAssessment {
   const tokens = salienceTokens(transcript);
   if (tokens.length === 0) {

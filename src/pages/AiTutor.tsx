@@ -101,6 +101,7 @@ import {
   resolveSpeakFollowUpTopicId,
   selectSpeakFollowUpByTopicId,
   SPEAK_FOLLOW_UP_PIVOT,
+  validateAiSpeakFollowUp,
   type SpeakFollowUpSelection,
 } from "@/lib/tutor/speakFollowups";
 import { detectBilingualSaliencePivot } from "@/lib/tutor/bilingualSalienceDetector";
@@ -1289,7 +1290,11 @@ export default function AiTutorPage() {
         return;
       }
       setSpeakFollowUpProviderError(false);
-      const finalQuestion = aiQuestion ? speakFollowUpQuestion(aiQuestion) : SPEAK_TRANSCRIPT_ASK_TO_REPEAT_TEXT;
+      // Quality-gate: reject dead-end, off-topic, too-hard, or too-many AI follow-ups
+      const validatedQuestion = aiQuestion
+        ? validateAiSpeakFollowUp(transcript, aiQuestion)
+        : null;
+      const finalQuestion = validatedQuestion ? speakFollowUpQuestion(validatedQuestion) : SPEAK_TRANSCRIPT_ASK_TO_REPEAT_TEXT;
       speakPivotTurnsRef.current = [
         ...speakPivotTurnsRef.current,
         { role: "learner" as const, text: transcript },
@@ -1297,8 +1302,8 @@ export default function AiTutorPage() {
       ].slice(-8);
       applySpeakFollowUpSession({
         topicId: currentTopic,
-        turnsOnTopic: turnsOnTopic + (aiQuestion ? 1 : 0),
-        askedQuestions: aiQuestion ? [...askedQuestions, aiQuestion] : askedQuestions,
+        turnsOnTopic: turnsOnTopic + (validatedQuestion ? 1 : 0),
+        askedQuestions: validatedQuestion ? [...askedQuestions, validatedQuestion] : askedQuestions,
         currentQuestion: finalQuestion,
         currentIsPivot: false,
       });
@@ -1465,13 +1470,17 @@ export default function AiTutorPage() {
         return;
       }
       setSpeakFollowUpProviderError(false);
-      const question = stance.stance === "needs_acknowledgment" && aiQuestion
+      // Quality-gate: reject dead-end, off-topic, too-hard, or too-many AI follow-ups
+      const validatedQuestion = aiQuestion
+        ? validateAiSpeakFollowUp(spoken, aiQuestion)
+        : null;
+      const question = stance.stance === "needs_acknowledgment" && validatedQuestion
         ? combineSpeakFollowUp(
             bilingualText(SPEAK_STANCE_ACKNOWLEDGMENT_VI, SPEAK_STANCE_ACKNOWLEDGMENT),
-            speakFollowUpQuestion(aiQuestion),
+            speakFollowUpQuestion(validatedQuestion),
           )
-        : aiQuestion
-          ? speakFollowUpQuestion(aiQuestion)
+        : validatedQuestion
+          ? speakFollowUpQuestion(validatedQuestion)
           : null;
       const finalQuestion = question ?? SPEAK_TRANSCRIPT_ASK_TO_REPEAT_TEXT;
       speakPivotTurnsRef.current = [
@@ -1481,8 +1490,8 @@ export default function AiTutorPage() {
       ].slice(-8);
       applySpeakFollowUpSession({
         topicId,
-        turnsOnTopic: turnsOnTopic + (aiQuestion ? 1 : 0),
-        askedQuestions: aiQuestion ? [...askedQuestions, aiQuestion] : askedQuestions,
+        turnsOnTopic: turnsOnTopic + (validatedQuestion ? 1 : 0),
+        askedQuestions: validatedQuestion ? [...askedQuestions, validatedQuestion] : askedQuestions,
         currentQuestion: finalQuestion,
         currentIsPivot: false,
       });
