@@ -698,6 +698,82 @@ describe("buildDeferredSurfacingMessage", () => {
   });
 });
 
+// ─── Runtime Wiring Proof: weaknessMemoryTags via enrichment ────────────────
+//
+// This section proves that weaknessMemoryTags.ts is loaded and consulted at
+// RUNTIME — not just via `import type`. The chain:
+//   correctionTimingIntegration.correctWithTimingAwareness()
+//     → correctionExperienceEnricher.enrichCorrectionExperience()
+//       → WEAKNESS_MEMORY_TAGS_CATALOG (VALUE import, line 46, used at line 418)
+//         → concrete weaknessLabelVi / weaknessLabelEn in the enrichment output.
+//
+// A type-only import would be erased by the TypeScript compiler and produce
+// no runtime output. The assertions below prove catalog lookup actually happened.
+
+describe("weaknessMemoryTags runtime wiring via enrichment", () => {
+  it("enrichment carries concrete weaknessLabelVi from WEAKNESS_MEMORY_TAGS_CATALOG", () => {
+    const result = correctWithTimingAwareness(
+      defaultInput({ learnerText: "I buy a hat yesterday." }),
+    );
+
+    expect(result.enrichment).not.toBeNull();
+    expect(result.enrichment!.weaknessLabelVi).not.toBeNull();
+    expect(result.enrichment!.weaknessLabelEn).not.toBeNull();
+
+    // Past-tense rule "en-yesterday-irregular-beginner-past" maps to
+    // "tense-omission" whose catalog labelVi is "thiếu thì (quá khứ / hiện tại / tương lai)"
+    // The label MUST contain Vietnamese diacritics — this proves the catalog
+    // lookup actually ran (not a hardcoded fallback in the enricher).
+    expect(result.enrichment!.weaknessLabelVi).toContain("thiếu");
+    expect(result.enrichment!.weaknessLabelVi).toMatch(/[àáảãạâầấẩẫậăằắẳẵặèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđĐ]/);
+    expect(result.enrichment!.weaknessLabelEn).toBe("tense omission");
+    expect(result.enrichment!.isL1TransferError).toBe(true);
+    expect(result.enrichment!.interferenceCategory).toBe("verb_form");
+  });
+
+  it("enrichment carries Vietnamese diacritics for article weakness", () => {
+    // "I bought hat" triggers en-l4-missing-singular-article → "missing-article"
+    // whose catalog labelVi = "thiếu mạo từ (a/an/the)"
+    const result = correctWithTimingAwareness(
+      defaultInput({ learnerText: "I bought hat" }),
+    );
+
+    expect(result.enrichment).not.toBeNull();
+    expect(result.enrichment!.weaknessLabelVi).not.toBeNull();
+    expect(result.enrichment!.weaknessLabelVi).toContain("mạo từ");
+    expect(result.enrichment!.weaknessLabelVi).toMatch(/[àáảãạâầấẩẫậăằắẳẵặèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđĐ]/);
+    expect(result.enrichment!.weaknessLabelEn).toBe("missing articles");
+  });
+
+  it("enrichment is null when no rules fire (unchanged text)", () => {
+    const result = correctWithTimingAwareness(
+      defaultInput({ learnerText: "I went to school." }),
+    );
+
+    // Grammatically correct — no correction rules fire
+    expect(result.enrichment).toBeNull();
+  });
+
+  it("enrichment has null weakness fields for punctuation-only corrections", () => {
+    const result = correctWithTimingAwareness(
+      defaultInput({
+        learnerText: "what do you usually do in the morning",
+        cefrLevel: "B1",
+      }),
+    );
+
+    // Punctuation rules fire but are intentionally not mapped to weakness
+    // categories. The enrichment object is returned (status="corrected" and
+    // appliedRuleIds is non-empty), but all weakness-tagging fields are null
+    // because question-form-final-mark has no weakness category mapping.
+    expect(result.enrichment).not.toBeNull();
+    expect(result.enrichment!.weaknessInput).toBeNull();
+    expect(result.enrichment!.weaknessLabelVi).toBeNull();
+    expect(result.enrichment!.weaknessLabelEn).toBeNull();
+    expect(result.enrichment!.interferenceCategory).toBeNull();
+  });
+});
+
 // ─── Severity inference is exhaustive over all known rule prefixes ─────────
 
 describe("inferErrorSeverity — covers all known rule ID families", () => {
