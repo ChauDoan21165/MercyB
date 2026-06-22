@@ -107,6 +107,7 @@ describe("Study OS static boundary", () => {
       "src/lib/tutor/emotionalResponseBoundary.ts",
       "src/lib/tutor/englishOnlyTts.ts",
       "src/lib/tutor/followUpIntelligence.ts",
+      "src/lib/tutor/goldenConversationSimulations.ts",
       "src/lib/tutor/languageRegistry.ts",
       "src/lib/tutor/learnerHistoryProfile.ts",
       "src/lib/tutor/learnerProfileBuilder.ts",
