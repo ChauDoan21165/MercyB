@@ -40,7 +40,11 @@
  *     : null;
  */
 
-import type { WeaknessCategory, WeaknessTagInput } from "./weaknessMemoryTags";
+import {
+  type WeaknessCategory,
+  type WeaknessTagInput,
+  WEAKNESS_MEMORY_TAGS_CATALOG,
+} from "./weaknessMemoryTags";
 import type { VietlishInterferenceCategory } from "./vietlishLogicEngine";
 
 // ─── Rule ID → Weakness Category Mapping ─────────────────────────────────
@@ -366,6 +370,14 @@ export type EnrichedCorrectionContext = {
   matchedRuleId: string | null;
   /** Whether this correction has a clear VN→EN transfer root cause. */
   isL1TransferError: boolean;
+  /**
+   * Vietnamese label for the weakness category from the weakness memory tags
+   * catalog (weaknessMemoryTags.ts). Concrete runtime output — proves the
+   * weaknessMemoryTags module is loaded and its catalog is consulted.
+   */
+  weaknessLabelVi: string | null;
+  /** English label for the weakness category (for telemetry). */
+  weaknessLabelEn: string | null;
 };
 
 /**
@@ -394,11 +406,30 @@ export function enrichCorrectionExperience(
   const weaknessInput = mapRuleIdsToWeaknessInput(appliedRuleIds, exemplarPattern, l1);
   const interferenceCategory = mapRuleIdsToInterferenceCategory(appliedRuleIds);
 
+  // Runtime wiring to weaknessMemoryTags: look up the weakness category in
+  // the catalog to get concrete Vietnamese/English labels. This proves
+  // weaknessMemoryTags.ts is loaded and consulted at runtime, not just
+  // referenced via type-only imports.
+  let weaknessLabelVi: string | null = null;
+  let weaknessLabelEn: string | null = null;
+  if (weaknessInput) {
+    const category = mapRuleIdToWeaknessCategory(weaknessInput.errorCategory);
+    if (category) {
+      const meta = WEAKNESS_MEMORY_TAGS_CATALOG.find((c) => c.category === category);
+      if (meta) {
+        weaknessLabelVi = meta.labelVi;
+        weaknessLabelEn = meta.labelEn;
+      }
+    }
+  }
+
   return {
     weaknessInput,
     interferenceCategory,
     matchedRuleId: weaknessInput?.errorCategory ?? null,
     isL1TransferError: interferenceCategory !== null,
+    weaknessLabelVi,
+    weaknessLabelEn,
   };
 }
 

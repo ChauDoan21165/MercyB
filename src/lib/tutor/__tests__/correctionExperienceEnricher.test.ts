@@ -348,6 +348,9 @@ describe("enrichCorrectionExperience — full enrichment", () => {
     expect(result.interferenceCategory).toBe("verb_form");
     expect(result.matchedRuleId).toBe("en-yesterday-irregular-beginner-past");
     expect(result.isL1TransferError).toBe(true);
+    // Runtime wiring to weaknessMemoryTags catalog
+    expect(result.weaknessLabelVi).toBe("thiếu thì (quá khứ / hiện tại / tương lai)");
+    expect(result.weaknessLabelEn).toBe("tense omission");
   });
 
   it("enriches article correction with weakness + interference", () => {
@@ -358,6 +361,9 @@ describe("enrichCorrectionExperience — full enrichment", () => {
     expect(result.weaknessInput).not.toBeNull();
     expect(result.interferenceCategory).toBe("missing_word");
     expect(result.isL1TransferError).toBe(true);
+    // Runtime wiring to weaknessMemoryTags catalog
+    expect(result.weaknessLabelVi).toBe("thiếu mạo từ (a/an/the)");
+    expect(result.weaknessLabelEn).toBe("missing articles");
   });
 
   it("enriches calque correction with weakness + interference", () => {
@@ -399,6 +405,8 @@ describe("enrichCorrectionExperience — full enrichment", () => {
     expect(result.interferenceCategory).toBeNull();
     expect(result.matchedRuleId).toBeNull();
     expect(result.isL1TransferError).toBe(false);
+    expect(result.weaknessLabelVi).toBeNull();
+    expect(result.weaknessLabelEn).toBeNull();
   });
 
   it("handles empty rule ID array", () => {
@@ -407,6 +415,8 @@ describe("enrichCorrectionExperience — full enrichment", () => {
     expect(result.interferenceCategory).toBeNull();
     expect(result.matchedRuleId).toBeNull();
     expect(result.isL1TransferError).toBe(false);
+    expect(result.weaknessLabelVi).toBeNull();
+    expect(result.weaknessLabelEn).toBeNull();
   });
 
   it("uses first match when multiple rule IDs are present", () => {
@@ -426,6 +436,59 @@ describe("enrichCorrectionExperience — full enrichment", () => {
       "fr",
     );
     expect(result.weaknessInput!.l1).toBe("fr");
+  });
+});
+
+// ─── Runtime Wiring Proof: weaknessMemoryTags catalog → enrichment output ───
+
+describe("weaknessMemoryTags runtime wiring — concrete catalog labels in enrichment", () => {
+  it("produces Vietnamese catalog label for every known weakness category", () => {
+    const testCases: Array<{ ruleId: string; expectedLabelVi: string; expectedLabelEn: string }> = [
+      { ruleId: "en-l4-missing-singular-article", expectedLabelVi: "thiếu mạo từ (a/an/the)", expectedLabelEn: "missing articles" },
+      { ruleId: "en-yesterday-irregular-beginner-past", expectedLabelVi: "thiếu thì (quá khứ / hiện tại / tương lai)", expectedLabelEn: "tense omission" },
+      { ruleId: "en-step5-subject-verb-agreement", expectedLabelVi: "thiếu hợp nhất chủ-động từ", expectedLabelEn: "subject-verb agreement" },
+      { ruleId: "en-be-verb-omission", expectedLabelVi: "thiếu động từ 'to be'", expectedLabelEn: "missing copula" },
+      { ruleId: "en-step5-preposition-pattern", expectedLabelVi: "sai giới từ (in/on/at)", expectedLabelEn: "preposition errors" },
+      { ruleId: "en-l4-topic-comment-word-order", expectedLabelVi: "sai trật tự từ", expectedLabelEn: "word order errors" },
+      { ruleId: "en-step6-discuss-about", expectedLabelVi: "chọn từ chưa chuẩn", expectedLabelEn: "word choice" },
+      { ruleId: "en-calque-open-turn-on-appliance", expectedLabelVi: "chọn từ chưa chuẩn", expectedLabelEn: "word choice" },
+      { ruleId: "en-vietlish-collocation-do-homework", expectedLabelVi: "chọn từ chưa chuẩn", expectedLabelEn: "word choice" },
+      { ruleId: "en-vn-although-even-though-but", expectedLabelVi: "cấu trúc câu lủng củng", expectedLabelEn: "awkward sentence structure" },
+    ];
+
+    for (const { ruleId, expectedLabelVi, expectedLabelEn } of testCases) {
+      const result = enrichCorrectionExperience([ruleId], "input → corrected");
+      expect(result.weaknessLabelVi, `ruleId "${ruleId}" → weaknessLabelVi`).toBe(expectedLabelVi);
+      expect(result.weaknessLabelEn, `ruleId "${ruleId}" → weaknessLabelEn`).toBe(expectedLabelEn);
+    }
+  });
+
+  it("returns null labels when no weakness category matches", () => {
+    const result = enrichCorrectionExperience(["en-question-form-final-mark"], "what → What?");
+    expect(result.weaknessInput).toBeNull();
+    expect(result.weaknessLabelVi).toBeNull();
+    expect(result.weaknessLabelEn).toBeNull();
+  });
+
+  it("labels come from weaknessMemoryTags catalog, not hardcoded in enricher", async () => {
+    // Dynamically import the catalog to verify the enrichment output matches
+    // the canonical source-of-truth in weaknessMemoryTags.ts.
+    const { WEAKNESS_MEMORY_TAGS_CATALOG } = await import("../weaknessMemoryTags");
+
+    const result = enrichCorrectionExperience(
+      ["en-yesterday-irregular-beginner-past"],
+      "I go → I went",
+    );
+
+    const catalogEntry = WEAKNESS_MEMORY_TAGS_CATALOG.find(
+      (c) => c.category === "tense-omission",
+    );
+    expect(catalogEntry).toBeDefined();
+    expect(result.weaknessLabelVi).toBe(catalogEntry!.labelVi);
+    expect(result.weaknessLabelEn).toBe(catalogEntry!.labelEn);
+
+    // Also verify the whyVi field exists (proves the full catalog entry is there)
+    expect(catalogEntry!.whyVi.toLowerCase()).toContain("tiếng việt");
   });
 });
 
