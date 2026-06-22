@@ -548,6 +548,7 @@ async function processSubscriptionLikeEvent(params: {
     supabase: params.supabase,
     userId,
     event: params.event,
+    environment: params.environment,
     shouldRecomputeBeforeFinalMark: result.shouldRecomputeBeforeFinalMark,
   });
 
@@ -876,6 +877,7 @@ export async function handleInvoicePaid({
     supabase,
     userId,
     event,
+    environment,
     shouldRecomputeBeforeFinalMark: result.shouldRecomputeBeforeFinalMark,
   });
 
@@ -1060,6 +1062,7 @@ export async function handleInvoicePaymentFailed({
     supabase,
     userId,
     event,
+    environment,
     shouldRecomputeBeforeFinalMark: result.shouldRecomputeBeforeFinalMark,
   });
 
