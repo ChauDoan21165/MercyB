@@ -104,6 +104,7 @@ import {
   validateAiSpeakFollowUp,
   type SpeakFollowUpSelection,
 } from "@/lib/tutor/speakFollowups";
+import { auditCorrectionQuick } from "@/lib/tutor/teacherMercyAuditGate";
 import { detectBilingualSaliencePivot } from "@/lib/tutor/bilingualSalienceDetector";
 import type { BilingualSaliencePivot } from "@/lib/tutor/bilingualSalienceDetector";
 import { classifyResponseStance } from "@/lib/tutor/emotionalResponseBoundary";
@@ -2262,6 +2263,8 @@ export default function AiTutorPage() {
           });
           clearSpeakBoardState();
           setLatestCorrectedSeed({ correctedSentence: aiCorrected, sourceText: trimmed, updatedAt: Date.now() });
+          // Audit gate — runs contract + rubric audit on the AI correction response.
+          void auditCorrectionQuick(trimmed, turn.explanation, aiCorrected);
           void captureCorrection({
             userText: trimmed,
             correctedText: aiCorrected,
@@ -2347,6 +2350,12 @@ export default function AiTutorPage() {
       sourceText: trimmed,
       updatedAt: Date.now(),
     });
+
+    // Audit gate — run Teacher Mercy contract + rubric as a quality guard.
+    // Non-blocking audit level: logs violations via console.warn, never blocks
+    // the correction from reaching the learner. Upgrade to "block_unsafe" once
+    // the contract rules have enough runtime confidence.
+    void auditCorrectionQuick(trimmed, turn.explanation, corrected);
 
     // Track 2 — anonymized learner-interaction capture. Fire-and-forget;
     // flag + consent gated, never throws. The local correction is what the
