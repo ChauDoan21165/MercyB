@@ -112,6 +112,7 @@ describe("Study OS static boundary", () => {
       "src/lib/tutor/learnerProfileBuilder.ts",
       "src/lib/tutor/learningEvents.ts",
       "src/lib/tutor/learningEventSummary.ts",
+      "src/lib/tutor/lessonRecommendationIntelligence.ts",
       "src/lib/tutor/masteryGraph.ts",
       "src/lib/tutor/nextLessonRecommender.ts",
       "src/lib/tutor/pivotPromptSafety.ts",
