@@ -22,14 +22,17 @@ const EXPECTED_PILOT_TAGS = [
   "vi_l1_3rd_person_s",
   "vi_l1_past_ed",
   "vi_l1_missing_be",
+  "id_l1_present_perfect_vs_past",
+  "id_l1_conditional_unreal",
+  "id_l1_reported_speech",
 ] as const;
 
 describe("rich-lessons-pilot.json shape", () => {
-  it("ships exactly the 3 expected pilot lessons", () => {
+  it("ships exactly the 6 expected pilot lessons (3 A1/A2 VI + 3 B2 ID)", () => {
     expect([...RICH_LESSON_PILOT_TAGS].sort()).toEqual(
       [...EXPECTED_PILOT_TAGS].sort(),
     );
-    expect(RICH_LESSONS_PILOT.length).toBe(3);
+    expect(RICH_LESSONS_PILOT.length).toBe(6);
   });
 
   it("every pilot lesson tag exists in WEAKNESS_CATALOG", () => {
@@ -132,5 +135,67 @@ describe("getRichLessonPilot", () => {
     expect(getRichLessonPilot("vi_l1_plural_s")).toBeNull();
     expect(getRichLessonPilot("vi_l1_ghost_tag")).toBeNull();
     expect(getRichLessonPilot("")).toBeNull();
+  });
+});
+
+describe("rich-lessons-pilot — B2 Indonesian-native English content", () => {
+  const B2_ID_TAGS = [
+    "id_l1_present_perfect_vs_past",
+    "id_l1_conditional_unreal",
+    "id_l1_reported_speech",
+  ];
+
+  it("every B2 id_l1_* lesson has non-empty ID in all sections", () => {
+    const sectionNames = ["hook", "why", "pattern", "practice", "takeaway"] as const;
+    for (const tag of B2_ID_TAGS) {
+      const lesson = getRichLessonPilot(tag);
+      expect(lesson, `${tag} lesson missing`).not.toBeNull();
+      for (const name of sectionNames) {
+        const section = lesson!.sections[name];
+        expect(
+          section.id?.trim().length,
+          `${tag}.sections.${name}.id empty`,
+        ).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("every B2 id_l1_* quiz question has ID question text", () => {
+    for (const tag of B2_ID_TAGS) {
+      const lesson = getRichLessonPilot(tag);
+      expect(lesson, `${tag} lesson missing`).not.toBeNull();
+      lesson!.quiz.forEach((q, i) => {
+        expect(
+          q.question.id?.trim().length,
+          `${tag} quiz[${i}].question.id empty`,
+        ).toBeGreaterThan(0);
+      });
+    }
+  });
+
+  it("every B2 id_l1_* quiz question with explanation has ID explanation", () => {
+    for (const tag of B2_ID_TAGS) {
+      const lesson = getRichLessonPilot(tag);
+      expect(lesson, `${tag} lesson missing`).not.toBeNull();
+      lesson!.quiz.forEach((q, i) => {
+        if (q.explanation) {
+          expect(
+            q.explanation.id?.trim().length,
+            `${tag} quiz[${i}].explanation.id empty`,
+          ).toBeGreaterThan(0);
+        }
+      });
+    }
+  });
+
+  it("every B2 id_l1_* lesson title has ID", () => {
+    for (const tag of B2_ID_TAGS) {
+      const lesson = getRichLessonPilot(tag);
+      expect(lesson, `${tag} lesson missing`).not.toBeNull();
+      expect(
+        lesson!.title.id?.trim().length,
+        `${tag}.title.id empty`,
+      ).toBeGreaterThan(0);
+    }
   });
 });
