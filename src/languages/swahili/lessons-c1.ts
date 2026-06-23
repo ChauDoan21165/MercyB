@@ -1,952 +1,2037 @@
 // src/languages/swahili/lessons-c1.ts
 //
-// Swahili C1 (Advanced) lessons — adapted from A5-authoring room JSONs
-// (swahili_c1_c101 through swahili_c1_c114).
+// Swahili C1 (Advanced) lessons — adapted from A5-authored room JSONs
+// (swahili_c1_c101 through swahili_c1_c114, 2026-06-23).
 //
-// 14 lessons covering: complex sentences, verb extensions, relative clauses,
-// idioms/proverbs, register, noun class agreement, narrative, academic/abstract,
-// debate, business/presentations, literary, conditional, cultural nuances, opinions.
+// 14 lessons covering all existing C1 categories. Each lesson preserves
+// the bilingual Vietnamese + English pedagogy from the source rooms:
+// every sentence carries sw + en + vi, syllable-broken pronunciation
+// guides, noun-class-annotated vocabulary, and cultural context.
 //
 // Vietnamese-first pedagogy with English companion fields.
 
 import type { SwahiliLesson } from "./lessons";
 
-export const lessons: SwahiliLesson[] = [
-  // C1-01 — Advanced Swahili Sentence Building
+const lessons: SwahiliLesson[] = [
+  // ══════════════════════════════════════════════════════════════════
+  // C1-01 — Complex Sentences
+  // ══════════════════════════════════════════════════════════════════
   {
-    id: 'swahili_c1_complex_sentences',
-    level: 'C1',
-    category: 'complex_sentences',
-    title_vi: 'C1-01 — Xây Dựng Câu Phức Trong Tiếng Swahili',
-    title_en: 'C1-01 — Advanced Swahili Sentence Building',
-    intro_vi: 'Phòng này dạy bạn xây dựng câu Swahili phức tạp với nhiều mệnh đề. Bạn sẽ học cách nối ý bằng liên từ, lồng mệnh đề phụ, và duy trì sự hòa hợp danh từ xuyên suốt câu dài.',
-    intro_en: 'This room teaches you to build complex Swahili sentences with multiple clauses. You will learn how to connect ideas using conjunctions, embed subordinate clauses, and maintain correct noun class agreement across long sentences.',
+    id: "swahili_c1_complex_sentences",
+    level: "C1",
+    category: "complex_sentences",
+    title_vi: "Xây dựng câu phức trong tiếng Swahili",
+    title_en: "Advanced Swahili Sentence Building",
+    intro_vi:
+      "Học cách xây dựng câu Swahili phức tạp với nhiều mệnh đề. " +
+      "Bạn sẽ nối ý bằng liên từ (na, lakini, au, kwa hivyo), lồng " +
+      "mệnh đề phụ (kwamba, kwa sababu, ili), và duy trì hòa hợp " +
+      "danh từ xuyên suốt câu dài.",
+    intro_en:
+      "Learn to build complex Swahili sentences with multiple clauses. " +
+      "Connect ideas with conjunctions (na, lakini, au, kwa hivyo), " +
+      "embed subordinate clauses (kwamba, kwa sababu, ili), and keep " +
+      "noun class agreement correct across long sentences.",
     sentences: [
       {
-        sw: 'Nilikwenda sokoni na nilinunua matunda',
-        en: 'I went to the market and I bought fruit',
-        vi: 'Tôi đã đi chợ và tôi đã mua trái cây',
-        pronunciation_focus: ['Nilikwenda → nilikwenda', 'sokoni → sokoni', 'nilinunua → nilinunua', 'matunda → matunda'],
-        pronunciation_focus_en: ['Nilikwenda = nilikwenda', 'sokoni = sokoni', 'nilinunua = nilinunua', 'matunda = matunda']
+        sw: "Nilikwenda sokoni na nilinunua matunda.",
+        en: "I went to the market and I bought fruit.",
+        vi: "Tôi đã đi chợ và tôi đã mua trái cây.",
+        pronunciation_focus: [
+          "ni-li-KWEN-da = tôi đã đi",
+          "so-KO-ni = ở chợ (locative -ni)",
+          "na ni-li-NU-nu-a = và tôi đã mua",
+          "ma-TUN-da = trái cây (lớp 6)",
+        ],
+        pronunciation_focus_en: [
+          "nilikwenda = I went",
+          "sokoni = at the market (locative -ni)",
+          "na nilinunua = and I bought",
+          "matunda = fruit (class 6)",
+        ],
       },
       {
-        sw: 'Alijaribu kufika mapema lakini basi lilichelewa',
-        en: 'He tried to arrive early but the bus was late',
-        vi: 'Tôi đã đi chợ và tôi đã mua trái cây',
-        pronunciation_focus: ['Alijaribu → alijaribu', 'kufika → kufika', 'mapema → mapema', 'lakini → lakini'],
-        pronunciation_focus_en: ['Alijaribu = alijaribu', 'kufika = kufika', 'mapema = mapema', 'lakini = lakini']
+        sw: "Alijaribu kufika mapema lakini basi lilichelewa.",
+        en: "He tried to arrive early but the bus was late.",
+        vi: "Anh ấy đã cố đến sớm nhưng xe buýt bị trễ.",
+        pronunciation_focus: [
+          "a-li-JA-ri-bu = anh ấy đã cố",
+          "ku-FI-ka = đến nơi",
+          "ma-PE-ma = sớm",
+          "la-KI-ni = nhưng",
+          "BA-si li-li-che-LE-wa = xe buýt bị trễ (lớp 5)",
+        ],
+        pronunciation_focus_en: [
+          "alijaribu = he tried",
+          "kufika = to arrive",
+          "mapema = early",
+          "lakini = but",
+          "basi lilichelewa = the bus was late (class 5)",
+        ],
       },
       {
-        sw: 'Ninaamini kwamba elimu ni muhimu',
-        en: 'I believe that education is important',
-        vi: 'Tôi tin rằng giáo dục là quan trọng',
-        pronunciation_focus: ['Ninaamini → ninaamini', 'kwamba → kwamba', 'elimu → elimu', 'muhimu → muhimu'],
-        pronunciation_focus_en: ['Ninaamini = ninaamini', 'kwamba = kwamba', 'elimu = elimu', 'muhimu = muhimu']
+        sw: "Ninaamini kwamba elimu ni muhimu.",
+        en: "I believe that education is important.",
+        vi: "Tôi tin rằng giáo dục là quan trọng.",
+        pronunciation_focus: [
+          "ni-na-A-mi-ni = tôi tin",
+          "KWA-mba = rằng (liên từ phụ thuộc)",
+          "e-LI-mu = giáo dục",
+          "mu-HI-mu = quan trọng",
+        ],
+        pronunciation_focus_en: [
+          "ninaamini = I believe",
+          "kwamba = that (subordinator)",
+          "elimu = education",
+          "muhimu = important",
+        ],
       },
       {
-        sw: 'Najua kwamba umefika salama',
-        en: 'I know that you arrived safely',
-        vi: 'Tôi tin rằng giáo dục là quan trọng',
-        pronunciation_focus: ['Najua → najua', 'kwamba → kwamba', 'umefika → umefika', 'salama → salama'],
-        pronunciation_focus_en: ['Najua = najua', 'kwamba = kwamba', 'umefika = umefika', 'salama = salama']
+        sw: "Nilichelewa kwa sababu gari langu liliharibika.",
+        en: "I was late because my car broke down.",
+        vi: "Tôi đến trễ vì xe tôi bị hỏng.",
+        pronunciation_focus: [
+          "ni-li-che-LE-wa = tôi bị trễ",
+          "kwa SA-BA-bu = bởi vì",
+          "GA-ri LAN-gu = xe của tôi (lớp 5)",
+          "li-li-ha-RI-bi-ka = nó bị hỏng (stative -ik-)",
+        ],
+        pronunciation_focus_en: [
+          "nilichelewa = I was late",
+          "kwa sababu = because",
+          "gari langu = my car (class 5)",
+          "liliharibika = it broke down (stative -ik-)",
+        ],
       },
       {
-        sw: 'Tulipika chakula, kisha tukala pamoja',
-        en: 'We cooked food, then we ate together',
-        vi: 'Chúng tôi nấu đồ ăn, rồi cùng ăn với nhau',
-        pronunciation_focus: ['Tulipika → tulipika', 'chakula → chakula', 'kisha → kisha', 'tukala → tukala'],
-        pronunciation_focus_en: ['Tulipika = tulipika', 'chakula = chakula', 'kisha = kisha', 'tukala = tukala']
+        sw: "Tulipika chakula, kisha tukala pamoja.",
+        en: "We cooked food, then we ate together.",
+        vi: "Chúng tôi nấu đồ ăn, rồi cùng ăn với nhau.",
+        pronunciation_focus: [
+          "tu-li-PI-ka = chúng tôi đã nấu",
+          "cha-KU-la = đồ ăn (lớp 7)",
+          "KI-sha = rồi thì",
+          "tu-KA-la = rồi chúng tôi ăn (thì -ka- kể chuyện)",
+        ],
+        pronunciation_focus_en: [
+          "tulipika = we cooked",
+          "chakula = food (class 7)",
+          "kisha = then",
+          "tukala = then we ate (-ka- narrative tense)",
+        ],
       },
       {
-        sw: 'Alimaliza kazi yake, halafu akaenda nyumbani',
-        en: 'She finished her work, then went home',
-        vi: 'Chúng tôi nấu đồ ăn, rồi cùng ăn với nhau',
-        pronunciation_focus: ['Alimaliza → alimaliza', 'kazi → kazi', 'yake → yake', 'halafu → halafu'],
-        pronunciation_focus_en: ['Alimaliza = alimaliza', 'kazi = kazi', 'yake = yake', 'halafu = halafu']
+        sw: "Ninasoma kwa bidii ili nifaulu mtihani.",
+        en: "I study hard so that I pass the exam.",
+        vi: "Tôi học chăm chỉ để thi đậu.",
+        pronunciation_focus: [
+          "ni-na-SO-ma = tôi học",
+          "kwa bi-DI-i = chăm chỉ",
+          "I-li = để mà (liên từ chỉ mục đích)",
+          "ni-FA-u-lu = tôi đậu (giả định, đuôi -e)",
+        ],
+        pronunciation_focus_en: [
+          "ninasoma = I study",
+          "kwa bidii = diligently",
+          "ili = so that (purpose)",
+          "nifaulu = I pass (subjunctive -e)",
+        ],
       },
       {
-        sw: 'Ninasoma kwa bidii ili nifaulu mtihani',
-        en: 'I study hard so that I pass the exam',
-        vi: 'Tôi học chăm để thi đậu',
-        pronunciation_focus: ['Ninasoma → ninasoma', 'kwa → kwa', 'bidii → bidii', 'ili → ili'],
-        pronunciation_focus_en: ['Ninasoma = ninasoma', 'kwa = kwa', 'bidii = bidii', 'ili = ili']
+        sw: "Ingawa mvua ilinyesha, tuliendelea na safari.",
+        en: "Although it rained, we continued with the journey.",
+        vi: "Mặc dù trời mưa, chúng tôi vẫn tiếp tục chuyến đi.",
+        pronunciation_focus: [
+          "i-NGA-wa = mặc dù",
+          "MVU-a i-li-NYE-sha = mưa đã rơi",
+          "tu-li-en-de-LE-a = chúng tôi tiếp tục",
+          "sa-FA-ri = chuyến đi",
+        ],
+        pronunciation_focus_en: [
+          "ingawa = although",
+          "mvua ilinyesha = it rained",
+          "tuliendelea = we continued",
+          "safari = journey",
+        ],
       },
     ],
-    cultural_notes_vi: 'Phòng này dạy bạn xây dựng câu Swahili phức tạp với nhiều mệnh đề. Bạn sẽ học cách nối ý bằng liên từ, lồng mệnh đề phụ, và duy trì sự hòa hợp danh từ xuyên suốt câu dài. Các mục tập trung vào những mẫu cấu trúc giúp tiếng Swahili của bạn nghe tự nhiên và tinh tế ở trình độ nâng cao.',
-    cultural_notes_en: 'This room teaches you to build complex Swahili sentences with multiple clauses. You will learn how to connect ideas using conjunctions, embed subordinate clauses, and maintain correct noun class agreement across long sentences. These entries focus on the structural patterns that make Swahili sound natural and sophisticated at an advanced level.',
-    tip_advice_vi: 'Bài luyện hàng ngày: Lấy hai câu đơn và nối chúng bằng na, lakini, kwa sababu, hoặc ili. Ví dụ: Niliamka asubuhi + Nilikunywa chai → Niliamka asubuhi na nilikunywa chai (Tôi thức dậy buổi sáng và tôi uống trà). Rồi thêm ý thứ ba: Niliamka asubuhi, nilikunywa chai, kisha nikaanza kufanya kazi (Tôi thức dậy, uống trà, rồi bắt đầu làm việc). Xây từ ha',
-    tip_advice_en: 'Daily drill: Take two simple sentences and join them with na, lakini, kwa sababu, or ili. Example: Niliamka asubuhi + Nilikunywa chai → Niliamka asubuhi na nilikunywa chai. Then add a third idea: Niliamka asubuhi, nilikunywa chai, kisha nikaanza kufanya kazi. Build from two clauses to three. This daily practice trains your mind for natural complex',
     vocabulary: [
-      { word: 'compound', en: 'compound', vi: 'câu ghép', pos: 'noun', pronunciation_vi: 'COMPOUND', pronunciation_en: 'compound' },
-      { word: 'conjunctions', en: 'conjunctions', vi: 'liên từ', pos: 'noun', pronunciation_vi: 'CONJUNCTIONS', pronunciation_en: 'conjunctions' },
-      { word: 'subordinate', en: 'subordinate', vi: 'mệnh đề phụ', pos: 'noun', pronunciation_vi: 'SUBORDINATE', pronunciation_en: 'subordinate' },
-      { word: 'kwamba', en: 'kwamba', vi: 'kwamba', pos: 'noun', pronunciation_vi: 'KWAMBA', pronunciation_en: 'kwamba' },
-      { word: 'sequence', en: 'sequence', vi: 'trình tự', pos: 'noun', pronunciation_vi: 'SEQUENCE', pronunciation_en: 'sequence' },
-      { word: 'then', en: 'then', vi: 'rồi thì', pos: 'noun', pronunciation_vi: 'THEN', pronunciation_en: 'then' },
-      { word: 'purpose', en: 'purpose', vi: 'mục đích', pos: 'noun', pronunciation_vi: 'PURPOSE', pronunciation_en: 'purpose' },
+      { word: "na", en: "and", vi: "và", pos: "conjunction" },
+      { word: "lakini", en: "but", vi: "nhưng", pos: "conjunction" },
+      { word: "kwa sababu", en: "because", vi: "bởi vì", pos: "conjunction" },
+      { word: "kwamba", en: "that (subordinator)", vi: "rằng", pos: "conjunction" },
+      { word: "kisha", en: "then, afterwards", vi: "rồi thì", pos: "adverb" },
+      { word: "ili", en: "so that, in order to", vi: "để mà", pos: "conjunction" },
+      { word: "ingawa", en: "although", vi: "mặc dù", pos: "conjunction" },
+      { word: "ijapokuwa", en: "even though", vi: "mặc dù, dẫu rằng", pos: "conjunction" },
     ],
+    cultural_notes_vi:
+      "Người Tanzania và Kenya thường dùng câu dài nhiều mệnh đề trong " +
+      "hội thoại hàng ngày. Thì -ka- (như trong 'tukala') là dấu hiệu " +
+      "của người kể chuyện có kinh nghiệm — nó nối các hành động liên " +
+      "tiếp mà không cần lặp chủ ngữ. Khi dùng 'ili' (để mà), động từ " +
+      "sau nó luôn ở dạng giả định tận cùng -e.",
+    cultural_notes_en:
+      "Tanzanians and Kenyans often speak in long multi-clause sentences. " +
+      "The -ka- tense (as in 'tukala') is a marker of an experienced " +
+      "storyteller — it chains consecutive actions without repeating the " +
+      "subject. After 'ili' (so that), the verb always takes the " +
+      "subjunctive ending -e.",
+    tip_advice_vi:
+      "Bài luyện: Lấy 2 câu đơn, nối bằng na/lakini/kwa sababu/ili. " +
+      "Rồi thêm ý thứ ba với kisha. Ví dụ: Niliamka asubuhi + Nilikunywa " +
+      "chai → Niliamka asubuhi na nilikunywa chai, kisha nikaanza kufanya " +
+      "kazi. Tập xây từ 2 lên 3 mệnh đề mỗi ngày.",
+    tip_advice_en:
+      "Daily drill: Join 2 simple sentences with na/lakini/kwa sababu/ili. " +
+      "Add a 3rd idea with kisha. Example: Niliamka asubuhi + Nilikunywa " +
+      "chai → Niliamka asubuhi na nilikunywa chai, kisha nikaanza kufanya " +
+      "kazi. Build from 2 clauses to 3 daily.",
   },
-  // C1-02 — Mastering Verb Extensions in Swahili
+
+  // ══════════════════════════════════════════════════════════════════
+  // C1-02 — Verb Extensions
+  // ══════════════════════════════════════════════════════════════════
   {
-    id: 'swahili_c1_verb_extensions',
-    level: 'C1',
-    category: 'verb_extensions',
-    title_vi: 'C1-02 — Làm Chủ Các Dạng Mở Rộng Động Từ Trong Tiếng Swahili',
-    title_en: 'C1-02 — Mastering Verb Extensions in Swahili',
-    intro_vi: 'Phòng này khám phá hệ thống mở rộng động từ phong phú trong tiếng Swahili — dạng ứng dụng, sai khiến, bị động, hỗ tương, và trạng thái. Bạn sẽ học cách thêm một tiếp tố duy nhất có thể biến đổi ý nghĩa, và cách kết hợp nhiều đuôi mở rộng trong cùng một động từ.',
-    intro_en: 'This room explores the rich system of verb extensions in Swahili — applicative, causative, passive, reciprocal, and stative forms. You will learn how adding a single infix can transform meaning, and how to combine multiple extensions in one verb.',
+    id: "swahili_c1_verb_extensions",
+    level: "C1",
+    category: "verb_extensions",
+    title_vi: "Làm chủ các dạng mở rộng động từ",
+    title_en: "Mastering Verb Extensions in Swahili",
+    intro_vi:
+      "Khám phá hệ thống đuôi mở rộng động từ — ứng dụng (-i-/-e-), " +
+      "sai khiến (-sh-/-z-), bị động (-w-/-liw-), hỗ tương (-an-), " +
+      "và trạng thái (-ik-). Học cách chồng nhiều đuôi trên cùng một " +
+      "động từ — dấu hiệu của tiếng Swahili nâng cao thực thụ.",
+    intro_en:
+      "Explore verb extensions — applicative (-i-/-e-), causative " +
+      "(-sh-/-z-), passive (-w-/-liw-), reciprocal (-an-), and stative " +
+      "(-ik-). Learn to stack multiple extensions on one verb — a " +
+      "hallmark of true advanced Swahili.",
     sentences: [
       {
-        sw: 'Ninapika chakula',
-        en: 'I cook food',
-        vi: 'Tôi nấu đồ ăn',
-        pronunciation_focus: ['Ninapika → ninapika', 'chakula → chakula'],
-        pronunciation_focus_en: ['Ninapika = ninapika', 'chakula = chakula']
+        sw: "Ninapikia watoto chakula.",
+        en: "I cook food for the children.",
+        vi: "Tôi nấu đồ ăn cho bọn trẻ.",
+        pronunciation_focus: [
+          "ni-na-PI-ki-a = tôi nấu cho (ứng dụng -i-)",
+          "wa-TO-to = trẻ em (lớp 2)",
+          "cha-KU-la = đồ ăn (lớp 7)",
+        ],
+        pronunciation_focus_en: [
+          "ninapikia = I cook for (applicative -i-)",
+          "watoto = children (class 2)",
+          "chakula = food (class 7)",
+        ],
       },
       {
-        sw: 'Ninapikia watoto chakula',
-        en: 'I cook food for the children',
-        vi: 'Tôi nấu đồ ăn',
-        pronunciation_focus: ['Ninapikia → ninapikia', 'watoto → watoto', 'chakula → chakula'],
-        pronunciation_focus_en: ['Ninapikia = ninapikia', 'watoto = watoto', 'chakula = chakula']
+        sw: "Walimu wanafundisha wanafunzi shuleni.",
+        en: "Teachers teach students at school.",
+        vi: "Thầy cô dạy học sinh ở trường.",
+        pronunciation_focus: [
+          "wa-LI-mu = thầy cô (lớp 2)",
+          "wa-na-FUN-di-sha = họ dạy (sai khiến -sh-, gốc -fund-)",
+          "wa-na-FUN-zi = học sinh",
+          "shu-LE-ni = ở trường",
+        ],
+        pronunciation_focus_en: [
+          "walimu = teachers (class 2)",
+          "wanafundisha = they teach (causative -sh- from -fund-)",
+          "wanafunzi = students",
+          "shuleni = at school",
+        ],
       },
       {
-        sw: 'Walimu wanafundisha wanafunzi shuleni',
-        en: 'Teachers teach students at school',
-        vi: 'Teachers teach students at school',
-        pronunciation_focus: ['Walimu → walimu', 'wanafundisha → wanafundisha', 'wanafunzi → wanafunzi', 'shuleni → shuleni'],
-        pronunciation_focus_en: ['Walimu = walimu', 'wanafundisha = wanafundisha', 'wanafunzi = wanafunzi', 'shuleni = shuleni']
+        sw: "Somo linafundishwa na mwalimu.",
+        en: "The lesson is taught by the teacher.",
+        vi: "Bài học được dạy bởi thầy giáo.",
+        pronunciation_focus: [
+          "SO-mo = bài học (lớp 5)",
+          "li-na-fun-DI-shwa = nó được dạy (bị động -w-)",
+          "na mwa-LI-mu = bởi thầy giáo",
+        ],
+        pronunciation_focus_en: [
+          "somo = lesson (class 5)",
+          "linafundishwa = it is taught (passive -w-)",
+          "na mwalimu = by the teacher",
+        ],
       },
       {
-        sw: 'Mwalimu anafundisha somo',
-        en: 'The teacher teaches the lesson',
-        vi: 'Bài học được dạy bởi thầy giáo',
-        pronunciation_focus: ['Mwalimu → mwalimu', 'anafundisha → anafundisha', 'somo → somo'],
-        pronunciation_focus_en: ['Mwalimu = mwalimu', 'anafundisha = anafundisha', 'somo = somo']
+        sw: "Wanafunzi wanasaidiana darasani.",
+        en: "The students help each other in class.",
+        vi: "Học sinh giúp đỡ lẫn nhau trong lớp.",
+        pronunciation_focus: [
+          "wa-na-fun-zi = học sinh (lớp 2)",
+          "wa-na-sa-i-di-A-na = họ giúp nhau (hỗ tương -an-)",
+          "da-ra-SA-ni = trong lớp học",
+        ],
+        pronunciation_focus_en: [
+          "wanafunzi = students (class 2)",
+          "wanasaidiana = they help each other (reciprocal -an-)",
+          "darasani = in the classroom",
+        ],
       },
       {
-        sw: 'Somo linafundishwa na mwalimu',
-        en: 'The lesson is taught by the teacher',
-        vi: 'Bài học được dạy bởi thầy giáo',
-        pronunciation_focus: ['Somo → somo', 'linafundishwa → linafundishwa', 'mwalimu → mwalimu'],
-        pronunciation_focus_en: ['Somo = somo', 'linafundishwa = linafundishwa', 'mwalimu = mwalimu']
+        sw: "Nilimsomea binti yangu kitabu.",
+        en: "I read a book to my daughter.",
+        vi: "Tôi đọc sách cho con gái tôi.",
+        pronunciation_focus: [
+          "ni-li-m-so-ME-a = tôi đọc cho cô ấy (ứng dụng -e-)",
+          "BI-nti YAN-gu = con gái của tôi",
+          "ki-TA-bu = sách (lớp 7)",
+        ],
+        pronunciation_focus_en: [
+          "nilimsomea = I read to her (applicative -e-)",
+          "binti yangu = my daughter",
+          "kitabu = book (class 7)",
+        ],
       },
       {
-        sw: 'Wanajenga nyumba',
-        en: 'They are building the house',
-        vi: 'Bài học được dạy bởi thầy giáo',
-        pronunciation_focus: ['Wanajenga → wanajenga', 'nyumba → nyumba'],
-        pronunciation_focus_en: ['Wanajenga = wanajenga', 'nyumba = nyumba']
-      },
-      {
-        sw: 'Nyumba inajengwa',
-        en: 'The house is being built',
-        vi: 'Bài học được dạy bởi thầy giáo',
-        pronunciation_focus: ['Nyumba → nyumba', 'inajengwa → inajengwa'],
-        pronunciation_focus_en: ['Nyumba = nyumba', 'inajengwa = inajengwa']
+        sw: "Nilimsomeshewa binti yangu kitabu na mwalimu.",
+        en: "The teacher made me read a book to my daughter.",
+        vi: "Thầy giáo bắt tôi đọc sách cho con gái tôi.",
+        pronunciation_focus: [
+          "ni-li-m-so-me-SHE-wa = tôi bị bắt đọc cho cô ấy",
+          "gốc -som- + ứng dụng -e- + sai khiến -sh- + bị động -w-",
+        ],
+        pronunciation_focus_en: [
+          "nilimsomeshewa = I was made to read to her",
+          "root -som- + applic -e- + caus -sh- + pass -w-",
+        ],
       },
     ],
-    cultural_notes_vi: 'Phòng này khám phá hệ thống mở rộng động từ phong phú trong tiếng Swahili — dạng ứng dụng, sai khiến, bị động, hỗ tương, và trạng thái. Bạn sẽ học cách thêm một tiếp tố duy nhất có thể biến đổi ý nghĩa, và cách kết hợp nhiều đuôi mở rộng trong cùng một động từ. Làm chủ những mẫu này là điều cần thiết để nói tiếng Swahili nâng cao tự nhiên.',
-    cultural_notes_en: 'This room explores the rich system of verb extensions in Swahili — applicative, causative, passive, reciprocal, and stative forms. You will learn how adding a single infix can transform meaning, and how to combine multiple extensions in one verb. Mastering these patterns is essential for advanced, natural Swahili.',
-    tip_advice_vi: 'Bài luyện hàng ngày: Lấy một động từ gốc và áp dụng từng đuôi mở rộng theo thứ tự. Gốc: -som- (đọc/học). 1. Nasoma — Tôi đọc. 2. Ninasomea — Tôi đọc cho ai. 3. Ninasomesha — Tôi dạy (khiến đọc). 4. Ninasomwa — Tôi được đọc cho. 5. Tunasomana — Chúng tôi đọc cho nhau. 6. Ninasomeshewa — Tôi bị bắt đọc cho ai. Hãy luyện chuỗi này với các gốc từ khác',
-    tip_advice_en: 'Daily drill: Take one root verb and apply each extension in sequence. Root: -som- (read/study). 1. Nasoma — I read. 2. Ninasomea — I read for someone. 3. Ninasomesha — I teach (cause to read). 4. Ninasomwa — I am read to. 5. Tunasomana — We read to each other. 6. Ninasomeshewa — I am made to read for someone. Practice this chain with different root',
     vocabulary: [
-      { word: 'applicative', en: 'applicative', vi: 'ứng dụng', pos: 'noun', pronunciation_vi: 'APPLICATIVE', pronunciation_en: 'applicative' },
-      { word: 'benefactive', en: 'benefactive', vi: 'có lợi', pos: 'noun', pronunciation_vi: 'BENEFACTIVE', pronunciation_en: 'benefactive' },
-      { word: 'causative', en: 'causative', vi: 'sai khiến', pos: 'noun', pronunciation_vi: 'CAUSATIVE', pronunciation_en: 'causative' },
-      { word: 'make', en: 'make', vi: 'làm cho', pos: 'noun', pronunciation_vi: 'MAKE', pronunciation_en: 'make' },
-      { word: 'passive', en: 'passive', vi: 'bị động', pos: 'noun', pronunciation_vi: 'PASSIVE', pronunciation_en: 'passive' },
-      { word: 'voice', en: 'voice', vi: 'thể', pos: 'noun', pronunciation_vi: 'VOICE', pronunciation_en: 'voice' },
-      { word: 'reciprocal', en: 'reciprocal', vi: 'hỗ tương', pos: 'noun', pronunciation_vi: 'RECIPROCAL', pronunciation_en: 'reciprocal' },
+      { word: "kupikia", en: "to cook for", vi: "nấu cho", pos: "verb", ngeli: "applic -i-/-e-" },
+      { word: "kufundisha", en: "to teach", vi: "dạy", pos: "verb", ngeli: "caus -sh-" },
+      { word: "kulaza", en: "to put to bed", vi: "cho đi ngủ", pos: "verb", ngeli: "caus -z-" },
+      { word: "kujengwa", en: "to be built", vi: "được xây", pos: "verb", ngeli: "pass -w-" },
+      { word: "kusaidiana", en: "to help each other", vi: "giúp nhau", pos: "verb", ngeli: "recip -an-" },
+      { word: "kuharibika", en: "to break down / spoil", vi: "bị hỏng", pos: "verb", ngeli: "stat -ik-" },
+      { word: "kulisha", en: "to feed (cause to eat)", vi: "cho ăn", pos: "verb", ngeli: "caus -sh-" },
+      { word: "kupendana", en: "to love each other", vi: "yêu nhau", pos: "verb", ngeli: "recip -an-" },
     ],
+    cultural_notes_vi:
+      "Hệ thống đuôi mở rộng là một trong những đặc điểm độc đáo nhất của " +
+      "Swahili. Người bản xứ chồng 3–4 đuôi trên cùng một động từ. Dùng " +
+      "đúng dạng ứng dụng khi nói về người hưởng lợi là dấu hiệu của người " +
+      "nói có học thức. Dạng hỗ tương (-an-) rất phổ biến trong giao tiếp " +
+      "xã hội hàng ngày.",
+    cultural_notes_en:
+      "The verb extension system is one of Swahili's most distinctive " +
+      "features. Native speakers stack 3–4 extensions on one verb. Correct " +
+      "use of the applicative for beneficiaries marks educated speech. The " +
+      "reciprocal (-an-) is ubiquitous in daily social interaction.",
+    tip_advice_vi:
+      "Luyện hàng ngày: lấy gốc -som-, áp dụng từng đuôi theo chuỗi: " +
+      "Nasoma → Ninasomea → Ninasomesha → Ninasomwa → Tunasomana → " +
+      "Ninasomeshewa. Làm với 2–3 gốc khác mỗi ngày để thấm nhuần hệ thống.",
+    tip_advice_en:
+      "Daily drill: take root -som-, apply each extension in chain: " +
+      "Nasoma → Ninasomea → Ninasomesha → Ninasomwa → Tunasomana → " +
+      "Ninasomeshewa. Do this with 2–3 roots daily to internalize the system.",
   },
-  // C1-03 — Relative Clauses in Depth
+
+  // ══════════════════════════════════════════════════════════════════
+  // C1-03 — Relative Clauses
+  // ══════════════════════════════════════════════════════════════════
   {
-    id: 'swahili_c1_relative_clauses',
-    level: 'C1',
-    category: 'relative_clauses',
-    title_vi: 'C1-03 — Mệnh Đề Quan Hệ Chuyên Sâu',
-    title_en: 'C1-03 — Relative Clauses in Depth',
-    intro_vi: 'Phòng này dạy bạn hai cách chính để tạo mệnh đề quan hệ trong tiếng Swahili — phương pháp amba- và phương pháp tiếp tố. Bạn sẽ học khi nào dùng mỗi cách, cách khớp dấu hiệu quan hệ với đúng lớp danh từ, và cách lồng mệnh đề quan hệ một cách tự nhiên trong lời nói hàng ngày.',
-    intro_en: 'This room teaches you the two main ways to form relative clauses in Swahili — the amba- method and the infix method. You will learn when to use each, how to match the relative marker to the correct noun class, and how to embed relative clauses naturally in everyday speech.',
+    id: "swahili_c1_relative_clauses",
+    level: "C1",
+    category: "relative_clauses",
+    title_vi: "Mệnh đề quan hệ chuyên sâu",
+    title_en: "Relative Clauses in Depth",
+    intro_vi:
+      "Học hai cách tạo mệnh đề quan hệ: phương pháp amba- (rõ ràng, " +
+      "trang trọng) và phương pháp tiếp tố (gọn, tự nhiên). Nắm vững " +
+      "cách khớp dấu hiệu quan hệ với từng lớp danh từ, và kỹ thuật " +
+      "lồng mệnh đề quan hệ trong mệnh đề quan hệ — dấu hiệu C1 thực thụ.",
+    intro_en:
+      "Learn two ways to form relative clauses: the amba- method (clear, " +
+      "formal) and the infix method (compact, natural). Master how to " +
+      "match relative markers to each noun class, and how to embed " +
+      "relative clauses inside relative clauses — a true C1 marker.",
     sentences: [
       {
-        sw: 'Mtu ambaye anaimba ni dada yangu',
-        en: 'The person who is singing is my sister',
-        vi: 'Người đang hát là chị tôi',
-        pronunciation_focus: ['Mtu → mtu', 'ambaye → ambaye', 'anaimba → anaimba', 'dada → dada'],
-        pronunciation_focus_en: ['Mtu = mtu', 'ambaye = ambaye', 'anaimba = anaimba', 'dada = dada']
+        sw: "Mtu ambaye anaimba ni dada yangu.",
+        en: "The person who is singing is my sister.",
+        vi: "Người đang hát là chị tôi.",
+        pronunciation_focus: [
+          "Mtu = người (lớp 1)",
+          "a-MBA-ye = người mà (amba- lớp 1)",
+          "a-na-I-mba = đang hát",
+          "DA-da YAN-gu = chị của tôi",
+        ],
+        pronunciation_focus_en: [
+          "Mtu = person (class 1)",
+          "ambaye = who (amba- class 1)",
+          "anaimba = is singing",
+          "dada yangu = my sister",
+        ],
       },
       {
-        sw: 'Vitabu ambavyo viko mezani ni vyangu',
-        en: 'The books which are on the table are mine',
-        vi: 'Người đang hát là chị tôi',
-        pronunciation_focus: ['Vitabu → vitabu', 'ambavyo → ambavyo', 'viko → viko', 'mezani → mezani'],
-        pronunciation_focus_en: ['Vitabu = vitabu', 'ambavyo = ambavyo', 'viko = viko', 'mezani = mezani']
+        sw: "Vitabu ambavyo viko mezani ni vyangu.",
+        en: "The books which are on the table are mine.",
+        vi: "Những quyển sách ở trên bàn là của tôi.",
+        pronunciation_focus: [
+          "vi-TA-bu = sách (lớp 8)",
+          "a-MBA-vyo = những cái mà (amba- lớp 8)",
+          "VI-ko me-ZA-ni = ở trên bàn",
+          "VYAN-gu = của tôi (lớp 8)",
+        ],
+        pronunciation_focus_en: [
+          "vitabu = books (class 8)",
+          "ambavyo = which (amba- class 8)",
+          "viko mezani = are on the table",
+          "vyangu = mine (class 8)",
+        ],
       },
       {
-        sw: 'Mtoto anayecheza ni wangu',
-        en: 'The child who is playing is mine (instead of Mtoto ambaye anacheza…)',
-        vi: 'Món tôi thích là cơm (thay vì Chakula ambacho ninakipenda',
-        pronunciation_focus: ['Mtoto → mtoto', 'anayecheza → anayecheza', 'wangu → wangu'],
-        pronunciation_focus_en: ['Mtoto = mtoto', 'anayecheza = anayecheza', 'wangu = wangu']
+        sw: "Mtoto anayecheza ni wangu.",
+        en: "The child who is playing is mine.",
+        vi: "Đứa trẻ đang chơi là của tôi.",
+        pronunciation_focus: [
+          "M-TO-to = đứa trẻ (lớp 1)",
+          "a-NA-ye-che-za = đứa đang chơi (tiếp tố -ye- lớp 1)",
+          "WAN-gu = của tôi (lớp 1)",
+        ],
+        pronunciation_focus_en: [
+          "mtoto = child (class 1)",
+          "anayecheza = who is playing (infix -ye- class 1)",
+          "wangu = mine (class 1)",
+        ],
       },
       {
-        sw: 'Chakula ninachokipenda ni wali',
-        en: 'The food that I like is rice (instead of Chakula ambacho ninakipenda…)',
-        vi: 'Món tôi thích là cơm (thay vì Chakula ambacho ninakipenda',
-        pronunciation_focus: ['Chakula → chakula', 'ninachokipenda → ninachokipenda', 'wali → wali'],
-        pronunciation_focus_en: ['Chakula = chakula', 'ninachokipenda = ninachokipenda', 'wali = wali']
+        sw: "Chakula ninachokipenda ni wali.",
+        en: "The food that I like is rice.",
+        vi: "Món tôi thích là cơm.",
+        pronunciation_focus: [
+          "cha-KU-la = đồ ăn (lớp 7)",
+          "ni-NA-cho-ki-PEN-da = cái mà tôi thích (tiếp tố -cho- lớp 7)",
+          "WA-li = cơm",
+        ],
+        pronunciation_focus_en: [
+          "chakula = food (class 7)",
+          "ninachokipenda = that I like (infix -cho- class 7)",
+          "wali = rice",
+        ],
+      },
+      {
+        sw: "Mwanafunzi ambaye alipata alama za juu zaidi atazawadiwa.",
+        en: "The student who got the highest marks will be rewarded.",
+        vi: "Học sinh đạt điểm cao nhất sẽ được thưởng.",
+        pronunciation_focus: [
+          "mwa-na-FUN-zi = học sinh (lớp 1)",
+          "a-MBA-ye a-li-PA-ta = người mà đã đạt",
+          "a-LA-ma za JU-u = điểm cao",
+          "a-ta-za-wa-DI-wa = sẽ được thưởng",
+        ],
+        pronunciation_focus_en: [
+          "mwanafunzi = student (class 1)",
+          "ambaye alipata = who got",
+          "alama za juu = high marks",
+          "atazawadiwa = will be rewarded",
+        ],
+      },
+      {
+        sw: "Mtu ninayemjua ambaye anafanya kazi hospitalini ni daktari.",
+        en: "The person I know who works at the hospital is a doctor.",
+        vi: "Người tôi quen, làm ở bệnh viện, là bác sĩ.",
+        pronunciation_focus: [
+          "ni-NA-ye-m-JU-a = người mà tôi biết (tiếp tố -ye-)",
+          "a-MBA-ye a-na-FA-nya = người mà làm (amba-)",
+          "ho-spi-ta-LI-ni = ở bệnh viện",
+          "dak-TA-ri = bác sĩ",
+        ],
+        pronunciation_focus_en: [
+          "ninayemjua = whom I know (infix -ye-)",
+          "ambaye anafanya = who works (amba-)",
+          "hospitalini = at the hospital",
+          "daktari = doctor",
+        ],
       },
     ],
-    cultural_notes_vi: 'Phòng này dạy bạn hai cách chính để tạo mệnh đề quan hệ trong tiếng Swahili — phương pháp amba- và phương pháp tiếp tố. Bạn sẽ học khi nào dùng mỗi cách, cách khớp dấu hiệu quan hệ với đúng lớp danh từ, và cách lồng mệnh đề quan hệ một cách tự nhiên trong lời nói hàng ngày.',
-    cultural_notes_en: 'This room teaches you the two main ways to form relative clauses in Swahili — the amba- method and the infix method. You will learn when to use each, how to match the relative marker to the correct noun class, and how to embed relative clauses naturally in everyday speech.',
-    tip_advice_vi: 'Bài luyện hàng ngày: Chọn một danh từ và tạo ba câu quan hệ — một với amba-, một với tiếp tố, một lồng ghép. Ví dụ: daktari (bác sĩ). 1. Daktari ambaye alinitibu ni mzuri sana — Bác sĩ đã chữa cho tôi rất giỏi. 2. Daktari aliyenitibu ni mzuri sana. 3. Daktari ninayemjua ambaye alinitibu jana ni mzuri sana. Làm vậy với 3 danh từ khác nhau mỗi ngày q',
-    tip_advice_en: 'Daily drill: Pick a noun and make three relative sentences — one with amba-, one with infix, one embedded. Example: daktari (doctor). 1. Daktari ambaye alinitibu ni mzuri sana. 2. Daktari aliyenitibu ni mzuri sana. 3. Daktari ninayemjua ambaye alinitibu jana ni mzuri sana. Do this with 3 different nouns daily across different noun classes. Your rel',
     vocabulary: [
-      { word: 'amba', en: 'amba', vi: 'amba', pos: 'noun', pronunciation_vi: 'AMBA', pronunciation_en: 'amba' },
-      { word: 'relative', en: 'relative', vi: 'quan hệ', pos: 'noun', pronunciation_vi: 'RELATIVE', pronunciation_en: 'relative' },
-      { word: 'infix', en: 'infix', vi: 'tiếp tố', pos: 'noun', pronunciation_vi: 'INFIX', pronunciation_en: 'infix' },
-      { word: 'compact', en: 'compact', vi: 'gọn', pos: 'noun', pronunciation_vi: 'COMPACT', pronunciation_en: 'compact' },
-      { word: 'agreement', en: 'agreement', vi: 'hòa hợp', pos: 'noun', pronunciation_vi: 'AGREEMENT', pronunciation_en: 'agreement' },
-      { word: 'noun class', en: 'noun class', vi: 'lớp danh từ', pos: 'noun', pronunciation_vi: 'NOUN CLASS', pronunciation_en: 'noun class' },
-      { word: 'choice', en: 'choice', vi: 'lựa chọn', pos: 'noun', pronunciation_vi: 'CHOICE', pronunciation_en: 'choice' },
+      { word: "ambaye", en: "who (class 1 sg)", vi: "người mà (lớp 1)", pos: "rel. pronoun", ngeli: "1" },
+      { word: "ambao", en: "who (class 2 pl)", vi: "những người mà (lớp 2)", pos: "rel. pronoun", ngeli: "2" },
+      { word: "ambacho", en: "which (class 7)", vi: "cái mà (lớp 7)", pos: "rel. pronoun", ngeli: "7" },
+      { word: "ambavyo", en: "which (class 8)", vi: "những cái mà (lớp 8)", pos: "rel. pronoun", ngeli: "8" },
+      { word: "ambayo", en: "which (classes 4/6/9)", vi: "cái mà (lớp 4/6/9)", pos: "rel. pronoun", ngeli: "4/6/9" },
+      { word: "ambalo", en: "which (class 5)", vi: "cái mà (lớp 5)", pos: "rel. pronoun", ngeli: "5" },
+      { word: "-ye-", en: "class 1 relative infix", vi: "tiếp tố quan hệ lớp 1", pos: "infix", ngeli: "1" },
+      { word: "-cho-", en: "class 7 relative infix", vi: "tiếp tố quan hệ lớp 7", pos: "infix", ngeli: "7" },
     ],
+    cultural_notes_vi:
+      "Trong văn nói hàng ngày, người Swahili ưa dùng tiếp tố (gọn, tự " +
+      "nhiên). Amba- xuất hiện nhiều trong văn viết và phát biểu trang " +
+      "trọng. Người nói nâng cao biết chọn cách nào dựa trên ngữ cảnh. " +
+      "Lồng mệnh đề quan hệ (dùng cả tiếp tố lẫn amba- trong một câu) là " +
+      "dấu hiệu bạn đang tư duy bằng tiếng Swahili.",
+    cultural_notes_en:
+      "In everyday speech, Swahili speakers prefer the infix (compact, " +
+      "natural). Amba- appears more in writing and formal speeches. " +
+      "Advanced speakers choose based on context. Embedding relatives " +
+      "(using both infix and amba- in one sentence) shows you are " +
+      "thinking in Swahili.",
+    tip_advice_vi:
+      "Chọn một danh từ, tạo 3 câu: (1) amba-, (2) tiếp tố, (3) lồng " +
+      "ghép. Ví dụ: daktari → Daktari ambaye alinitibu ni mzuri. / " +
+      "Daktari aliyenitibu ni mzuri. / Daktari ninayemjua ambaye alinitibu " +
+      "jana ni mzuri sana. Làm với 3 danh từ mỗi ngày.",
+    tip_advice_en:
+      "Pick a noun, make 3 sentences: (1) amba-, (2) infix, (3) embedded. " +
+      "Example: daktari → Daktari ambaye alinitibu ni mzuri. / Daktari " +
+      "aliyenitibu ni mzuri. / Daktari ninayemjua ambaye alinitibu jana " +
+      "ni mzuri sana. Do with 3 nouns daily.",
   },
-  // C1-04 — Swahili Proverbs and Wisdom Sayings
+
+  // ══════════════════════════════════════════════════════════════════
+  // C1-04 — Idioms & Proverbs
+  // ══════════════════════════════════════════════════════════════════
   {
-    id: 'swahili_c1_idioms_proverbs',
-    level: 'C1',
-    category: 'idioms_proverbs',
-    title_vi: 'C1-04 — Tục Ngữ và Thành Ngữ Swahili',
-    title_en: 'C1-04 — Swahili Proverbs and Wisdom Sayings',
-    intro_vi: 'Phòng này giới thiệu bạn với thế giới phong phú của tục ngữ Swahili (methali) và thành ngữ. Tục ngữ là trung tâm của văn hóa Swahili và được dùng hàng ngày trong hội thoại, diễn thuyết, và văn viết.',
-    intro_en: 'This room introduces you to the rich world of Swahili proverbs (methali) and idiomatic expressions. Proverbs are central to Swahili culture and are used daily in conversations, speeches, and writing.',
+    id: "swahili_c1_idioms_proverbs",
+    level: "C1",
+    category: "idioms_proverbs",
+    title_vi: "Tục ngữ và thành ngữ Swahili",
+    title_en: "Swahili Proverbs and Wisdom Sayings",
+    intro_vi:
+      "Khám phá thế giới tục ngữ Swahili (methali) và thành ngữ hiện đại. " +
+      "Tục ngữ là trung tâm của văn hóa Swahili — được dùng hàng ngày " +
+      "trong hội thoại, họp hành, và cả tin nhắn. Học chúng để tiếng " +
+      "Swahili của bạn nghe khôn ngoan và gắn kết văn hóa sâu sắc.",
+    intro_en:
+      "Discover Swahili proverbs (methali) and modern idioms. Proverbs " +
+      "are central to Swahili culture — used daily in conversation, " +
+      "meetings, and even text messages. Learning them makes your Swahili " +
+      "sound wise and culturally connected.",
     sentences: [
       {
-        sw: 'Haraka haraka haina baraka',
-        en: 'Hurry hurry has no blessing (haste makes waste)',
-        vi: 'Kiên nhẫn kéo phước về',
-        pronunciation_focus: ['Haraka → haraka', 'haraka → haraka', 'haina → haina', 'baraka → baraka'],
-        pronunciation_focus_en: ['Haraka = haraka', 'haraka = haraka', 'haina = haina', 'baraka = baraka']
+        sw: "Haraka haraka haina baraka.",
+        en: "Hurry hurry has no blessing. (Haste makes waste.)",
+        vi: "Vội vã không có phước. (Dục tốc bất đạt.)",
+        pronunciation_focus: [
+          "ha-RA-ka = vội vàng",
+          "ha-I-na = nó không có",
+          "ba-RA-ka = phước lành",
+        ],
+        pronunciation_focus_en: [
+          "haraka = hurry",
+          "haina = it has no",
+          "baraka = blessing",
+        ],
       },
       {
-        sw: 'Polepole ndiyo mwendo',
-        en: 'Slowly is indeed the way (slow and steady wins)',
-        vi: 'Kiên nhẫn kéo phước về',
-        pronunciation_focus: ['Polepole → polepole', 'ndiyo → ndiyo', 'mwendo → mwendo'],
-        pronunciation_focus_en: ['Polepole = polepole', 'ndiyo = ndiyo', 'mwendo = mwendo']
+        sw: "Polepole ndiyo mwendo.",
+        en: "Slowly is indeed the way. (Slow and steady wins.)",
+        vi: "Chậm rãi mới đúng là cách đi.",
+        pronunciation_focus: [
+          "po-LE-po-LE = từ từ, chậm rãi",
+          "NDI-yo = quả thật là",
+          "MWEN-do = cách đi, hành trình",
+        ],
+        pronunciation_focus_en: [
+          "polepole = slowly",
+          "ndiyo = indeed is",
+          "mwendo = way / pace",
+        ],
       },
       {
-        sw: 'Subira huvuta heri',
-        en: 'Patience brings blessings',
-        vi: 'Kiên nhẫn kéo phước về',
-        pronunciation_focus: ['Subira → subira', 'huvuta → huvuta', 'heri → heri'],
-        pronunciation_focus_en: ['Subira = subira', 'huvuta = huvuta', 'heri = heri']
+        sw: "Umoja ni nguvu, utengano ni udhaifu.",
+        en: "Unity is strength, division is weakness.",
+        vi: "Đoàn kết là sức mạnh, chia rẽ là yếu đuối.",
+        pronunciation_focus: [
+          "u-MO-ja = sự đoàn kết (lớp 14)",
+          "NGU-vu = sức mạnh",
+          "u-te-NGA-no = sự chia rẽ (lớp 14)",
+          "u-dha-I-fu = sự yếu đuối (lớp 14)",
+        ],
+        pronunciation_focus_en: [
+          "umoja = unity (class 14)",
+          "nguvu = strength",
+          "utengano = division (class 14)",
+          "udhaifu = weakness (class 14)",
+        ],
       },
       {
-        sw: 'Mvumilivu hula mbivu',
-        en: 'The patient one eats ripe fruit',
-        vi: 'Kiên nhẫn kéo phước về',
-        pronunciation_focus: ['Mvumilivu → mvumilivu', 'hula → hula', 'mbivu → mbivu'],
-        pronunciation_focus_en: ['Mvumilivu = mvumilivu', 'hula = hula', 'mbivu = mbivu']
+        sw: "Kidole kimoja hakivunji chawa.",
+        en: "One finger does not crush a louse. (You need others.)",
+        vi: "Một ngón tay không bóp chết được con rận.",
+        pronunciation_focus: [
+          "ki-DO-le = ngón tay (lớp 7)",
+          "ki-MO-ja = một (lớp 7)",
+          "ha-ki-VUN-ji = nó không bóp vỡ",
+          "CHA-wa = con rận",
+        ],
+        pronunciation_focus_en: [
+          "kidole = finger (class 7)",
+          "kimoja = one (class 7)",
+          "hakivunji = it does not crush",
+          "chawa = louse",
+        ],
       },
       {
-        sw: 'Kidole kimoja hakivunji chawa',
-        en: 'One finger does not crush a louse (you need others)',
-        vi: 'Đoàn kết là sức mạnh, chia rẽ là yếu đuối',
-        pronunciation_focus: ['Kidole → kidole', 'kimoja → kimoja', 'hakivunji → hakivunji', 'chawa → chawa'],
-        pronunciation_focus_en: ['Kidole = kidole', 'kimoja = kimoja', 'hakivunji = hakivunji', 'chawa = chawa']
+        sw: "Subira huvuta heri.",
+        en: "Patience pulls blessings.",
+        vi: "Kiên nhẫn kéo phước về.",
+        pronunciation_focus: [
+          "su-BI-ra = kiên nhẫn",
+          "hu-VU-ta = nó kéo (thói quen, hu-)",
+          "HE-ri = phước lành, điều tốt",
+        ],
+        pronunciation_focus_en: [
+          "subira = patience",
+          "huvuta = it pulls (habitual hu-)",
+          "heri = blessings / good things",
+        ],
       },
       {
-        sw: 'Asiye na mengi ana machache',
-        en: 'One who has no many words has few (listen more, speak less)',
-        vi: 'Người không nói nhiều có được ít lời (nghe nhiều, nói ít)',
-        pronunciation_focus: ['Asiye → asiye', 'mengi → mengi', 'ana → ana', 'machache → machache'],
-        pronunciation_focus_en: ['Asiye = asiye', 'mengi = mengi', 'ana = ana', 'machache = machache']
+        sw: "Mvumilivu hula mbivu.",
+        en: "The patient one eats ripe fruit.",
+        vi: "Người kiên nhẫn ăn quả chín.",
+        pronunciation_focus: [
+          "m-vu-mi-LI-vu = người kiên nhẫn (lớp 1)",
+          "HU-la = ăn (thói quen)",
+          "MBI-vu = quả chín",
+        ],
+        pronunciation_focus_en: [
+          "mvumilivu = patient person (class 1)",
+          "hula = eats (habitual)",
+          "mbivu = ripe fruit",
+        ],
       },
       {
-        sw: 'Maneno matamu humtoa nyoka pangoni',
-        en: 'Sweet words draw the snake out of its hole',
-        vi: 'Người không nói nhiều có được ít lời (nghe nhiều, nói ít)',
-        pronunciation_focus: ['Maneno → maneno', 'matamu → matamu', 'humtoa → humtoa', 'nyoka → nyoka'],
-        pronunciation_focus_en: ['Maneno = maneno', 'matamu = matamu', 'humtoa = humtoa', 'nyoka = nyoka']
+        sw: "Ana mkono mrefu.",
+        en: "He has a long hand. (He is a thief / corrupt.)",
+        vi: "Anh ta có tay dài. (Kẻ trộm / tham nhũng.)",
+        pronunciation_focus: [
+          "A-na = anh ấy có",
+          "m-KO-no = bàn tay",
+          "m-RE-fu = dài",
+        ],
+        pronunciation_focus_en: [
+          "ana = he has",
+          "mkono = hand",
+          "mrefu = long",
+        ],
       },
     ],
-    cultural_notes_vi: 'Phòng này giới thiệu bạn với thế giới phong phú của tục ngữ Swahili (methali) và thành ngữ. Tục ngữ là trung tâm của văn hóa Swahili và được dùng hàng ngày trong hội thoại, diễn thuyết, và văn viết. Học chúng sẽ làm sâu sắc thêm hiểu biết văn hóa của bạn và khiến tiếng Swahili của bạn nghe khôn ngoan, tự nhiên, và gắn kết sâu sắc với truyền thống Đông Phi.',
-    cultural_notes_en: 'This room introduces you to the rich world of Swahili proverbs (methali) and idiomatic expressions. Proverbs are central to Swahili culture and are used daily in conversations, speeches, and writing. Learning them will deepen your cultural understanding and make your Swahili sound wise, natural, and deeply connected to East African tradition.',
-    tip_advice_vi: 'Luyện tập hàng ngày: Học một câu tục ngữ mỗi ngày. Đọc to lên. Viết một tình huống ngắn mà bạn sẽ dùng câu đó. Rồi nói cả cụm: tục ngữ + liên kết. Ví dụ (thứ Hai): Haraka haraka haina baraka. → \'Nilikuwa na haraka ya kumaliza kazi, lakini nilifanya makosa. Kweli, haraka haraka haina baraka.\' (Tôi đã vội hoàn thành công việc, nhưng tôi đã mắc lỗi. Q',
-    tip_advice_en: 'Daily practice: Learn one proverb per day. Speak it aloud. Write a short situation where you would use it. Then say the whole thing: proverb + connection. Example (Monday): Haraka haraka haina baraka. → \'Nilikuwa na haraka ya kumaliza kazi, lakini nilifanya makosa. Kweli, haraka haraka haina baraka.\' In one month, you will carry 30 proverbs into re',
     vocabulary: [
-      { word: 'patience', en: 'patience', vi: 'kiên nhẫn', pos: 'noun', pronunciation_vi: 'PATIENCE', pronunciation_en: 'patience' },
-      { word: 'perseverance', en: 'perseverance', vi: 'bền bỉ', pos: 'noun', pronunciation_vi: 'PERSEVERANCE', pronunciation_en: 'perseverance' },
-      { word: 'unity', en: 'unity', vi: 'đoàn kết', pos: 'noun', pronunciation_vi: 'UNITY', pronunciation_en: 'unity' },
-      { word: 'community', en: 'community', vi: 'cộng đồng', pos: 'noun', pronunciation_vi: 'COMMUNITY', pronunciation_en: 'community' },
-      { word: 'wisdom', en: 'wisdom', vi: 'khôn ngoan', pos: 'noun', pronunciation_vi: 'WISDOM', pronunciation_en: 'wisdom' },
-      { word: 'caution', en: 'caution', vi: 'thận trọng', pos: 'noun', pronunciation_vi: 'CAUTION', pronunciation_en: 'caution' },
-      { word: 'conversation', en: 'conversation', vi: 'hội thoại', pos: 'noun', pronunciation_vi: 'CONVERSATION', pronunciation_en: 'conversation' },
+      { word: "methali", en: "proverb", vi: "tục ngữ", pos: "noun", ngeli: "9/10" },
+      { word: "haraka", en: "hurry / speed", vi: "sự vội vã", pos: "noun", ngeli: "9" },
+      { word: "baraka", en: "blessing", vi: "phước lành", pos: "noun", ngeli: "9/10" },
+      { word: "subira", en: "patience", vi: "sự kiên nhẫn", pos: "noun", ngeli: "9" },
+      { word: "umoja", en: "unity", vi: "sự đoàn kết", pos: "noun", ngeli: "14" },
+      { word: "nguvu", en: "strength / power", vi: "sức mạnh", pos: "noun", ngeli: "9/10" },
+      { word: "polepole", en: "slowly", vi: "từ từ, chậm rãi", pos: "adverb" },
+      { word: "mkono mrefu", en: "long hand (idiom: thief)", vi: "tay dài (kẻ trộm)", pos: "idiom" },
     ],
+    idiom_glosses: [
+      {
+        idiom: "Haraka haraka haina baraka",
+        literal: "Hurry hurry has no blessing",
+        meaning: "Haste makes waste — rushing leads to mistakes",
+        example: "Nilifanya makosa kwa sababu ya haraka. Kweli, haraka haraka haina baraka.",
+        example_en: "I made mistakes because of rushing. Truly, haste makes waste.",
+      },
+      {
+        idiom: "Kidole kimoja hakivunji chawa",
+        literal: "One finger does not crush a louse",
+        meaning: "You cannot do everything alone; cooperation is essential",
+        example: "Tushirikiane, maana kidole kimoja hakivunji chawa.",
+        example_en: "Let us cooperate, because one finger cannot crush a louse.",
+      },
+      {
+        idiom: "Mvumilivu hula mbivu",
+        literal: "The patient one eats ripe fruit",
+        meaning: "Patience is rewarded; good things come to those who wait",
+        example: "Usiwe na haraka. Mvumilivu hula mbivu.",
+        example_en: "Don't be in a hurry. The patient one eats ripe fruit.",
+      },
+      {
+        idiom: "Ana mkono mrefu",
+        literal: "He has a long hand",
+        meaning: "He is a thief or corrupt — reaches where he shouldn't",
+        example: "Mkurugenzi huyo ana mkono mrefu — fedha zote zimepotea.",
+        example_en: "That director has a long hand — all the money has disappeared.",
+      },
+    ],
+    cultural_notes_vi:
+      "Tục ngữ Swahili không phải là ngôn ngữ cổ — chúng được dùng sống " +
+      "động hàng ngày ở Đông Phi. Mẫu chung: nêu tục ngữ, rồi liên kết " +
+      "với tình huống hiện tại. Người Tanzania dẫn tục ngữ trong họp hành, " +
+      "tranh luận, và cả tin nhắn WhatsApp. Đây là nghệ thuật giao tiếp " +
+      "được trọng vọng.",
+    cultural_notes_en:
+      "Swahili proverbs are not archaic — they are used daily across East " +
+      "Africa. The common pattern: state the proverb, then connect it to " +
+      "the current situation. Tanzanians quote proverbs in meetings, " +
+      "debates, and even WhatsApp messages. This is a respected art.",
+    tip_advice_vi:
+      "Học 1 câu tục ngữ mỗi ngày. Đọc to, viết tình huống dùng nó, rồi " +
+      "nói cả cụm: tục ngữ + liên kết. Sau 1 tháng bạn có 30 câu để dùng " +
+      "trong hội thoại thực tế.",
+    tip_advice_en:
+      "Learn 1 proverb per day. Say it aloud, write a situation for it, " +
+      "then speak: proverb + connection. In 1 month you'll have 30 proverbs " +
+      "ready for real conversation.",
   },
-  // C1-05 — Formal and Informal Swahili Register
+
+  // ══════════════════════════════════════════════════════════════════
+  // C1-05 — Register
+  // ══════════════════════════════════════════════════════════════════
   {
-    id: 'swahili_c1_register',
-    level: 'C1',
-    category: 'register',
-    title_vi: 'C1-05 — Phong Cách Trang Trọng và Thân Mật Trong Tiếng Swahili',
-    title_en: 'C1-05 — Formal and Informal Swahili Register',
-    intro_vi: 'Phòng này dạy bạn chuyển đổi giữa phong cách trang trọng và thân mật trong tiếng Swahili. Bạn sẽ học khi nào dùng dạng kính trọng, cách xưng hô với người lớn tuổi và quan chức, và cách điều chỉnh giọng điệu cho các bối cảnh xã hội khác nhau.',
-    intro_en: 'This room teaches you to navigate between formal and informal Swahili registers. You will learn when to use respectful forms, how to address elders and officials, and how to shift your tone for different social settings. Register control is a key marker of advanced proficiency.',
+    id: "swahili_c1_register",
+    level: "C1",
+    category: "register",
+    title_vi: "Phong cách trang trọng và thân mật",
+    title_en: "Formal and Informal Swahili Register",
+    intro_vi:
+      "Học cách chuyển đổi giữa phong cách trang trọng và thân mật. " +
+      "Nắm vững Shikamoo/Marahaba cho người lớn tuổi, danh xưng " +
+      "Bwana/Bibi/Mheshimiwa cho môi trường chuyên nghiệp, và tiếng " +
+      "lóng thân mật Mambo/Poa/Safi cho bạn bè.",
+    intro_en:
+      "Learn to shift between formal and informal registers. Master " +
+      "Shikamoo/Marahaba for elders, titles Bwana/Bibi/Mheshimiwa for " +
+      "professional settings, and casual Mambo/Poa/Safi for friends.",
     sentences: [
       {
-        sw: 'Marahaba, mwanangu',
-        en: 'I greet you with respect, elder',
-        vi: 'I greet you with respect, elder',
-        pronunciation_focus: ['Marahaba → marahaba', 'mwanangu → mwanangu'],
-        pronunciation_focus_en: ['Marahaba = marahaba', 'mwanangu = mwanangu']
+        sw: "Shikamoo, mzee.",
+        en: "I greet you with respect, elder.",
+        vi: "Cháu kính chào bác.",
+        pronunciation_focus: [
+          "shi-ka-MO-o = con ôm chân ngài (kính trọng)",
+          "MZE-e = người lớn tuổi",
+        ],
+        pronunciation_focus_en: [
+          "Shikamoo = I hold your feet (respect greeting)",
+          "mzee = elder",
+        ],
       },
       {
-        sw: 'Mheshimiwa Waziri, asante kwa wito wako',
-        en: 'Honorable Minister, thank you for your invitation',
-        vi: 'Kính thưa, dành cho quan chức)',
-        pronunciation_focus: ['Mheshimiwa → mheshimiwa', 'Waziri → waziri', 'asante → asante', 'kwa → kwa'],
-        pronunciation_focus_en: ['Mheshimiwa = mheshimiwa', 'Waziri = waziri', 'asante = asante', 'kwa = kwa']
+        sw: "Marahaba, mwanangu.",
+        en: "I accept your respect, my child.",
+        vi: "Ta nhận sự kính trọng của con.",
+        pronunciation_focus: [
+          "ma-ra-HA-ba = ta nhận (đáp Shikamoo)",
+          "mwa-NA-ngu = con của ta",
+        ],
+        pronunciation_focus_en: [
+          "Marahaba = I accept (response to Shikamoo)",
+          "mwanangu = my child",
+        ],
       },
       {
-        sw: 'Ombi limepokelewa',
-        en: 'The request has been received',
-        vi: 'Đơn đã được tiếp nhận',
-        pronunciation_focus: ['Ombi → ombi', 'limepokelewa → limepokelewa'],
-        pronunciation_focus_en: ['Ombi = ombi', 'limepokelewa = limepokelewa']
+        sw: "Bwana Mkurugenzi, nina ombi.",
+        en: "Mr. Director, I have a request.",
+        vi: "Thưa Ông Giám đốc, tôi có một thỉnh cầu.",
+        pronunciation_focus: [
+          "BWA-na = Ông / Ngài",
+          "m-ku-ru-GEN-zi = giám đốc",
+          "OM-bi = thỉnh cầu (lớp 5)",
+        ],
+        pronunciation_focus_en: [
+          "Bwana = Mr. / Sir",
+          "mkurugenzi = director",
+          "ombi = request (class 5)",
+        ],
+      },
+      {
+        sw: "Mheshimiwa Waziri, asante kwa wito wako.",
+        en: "Honorable Minister, thank you for your invitation.",
+        vi: "Kính thưa Bộ trưởng, cảm ơn lời mời của ngài.",
+        pronunciation_focus: [
+          "m-he-shi-MI-wa = Kính thưa (quan chức)",
+          "wa-ZI-ri = bộ trưởng",
+          "WI-to = lời mời",
+        ],
+        pronunciation_focus_en: [
+          "Mheshimiwa = Honorable (official title)",
+          "Waziri = Minister",
+          "wito = invitation",
+        ],
+      },
+      {
+        sw: "Mambo, vipi leo? — Poa, safi.",
+        en: "What's up, how's today? — Cool, fine.",
+        vi: "Ê bạn, hôm nay sao? — Ổn, ngon.",
+        pronunciation_focus: [
+          "MAM-bo = có gì không? (thân mật)",
+          "VI-pi = như thế nào?",
+          "PO-a = ngầu / ổn (thân mật)",
+          "SA-fi = sạch / ổn (thân mật)",
+        ],
+        pronunciation_focus_en: [
+          "Mambo = what's up? (informal)",
+          "vipi = how?",
+          "Poa = cool (informal)",
+          "Safi = fine (informal)",
+        ],
+      },
+      {
+        sw: "Ndugu, tunapenda kukujulisha kwamba ombi lako limepokelewa.",
+        en: "Dear Sir/Madam, we wish to inform you that your request has been received.",
+        vi: "Kính gửi quý vị, chúng tôi xin thông báo đơn của quý vị đã được tiếp nhận.",
+        pronunciation_focus: [
+          "NDU-gu = kính gửi (trang trọng trung tính)",
+          "tu-na-PEN-da = chúng tôi mong muốn",
+          "li-me-po-ke-LE-wa = đã được tiếp nhận (bị động)",
+        ],
+        pronunciation_focus_en: [
+          "Ndugu = Dear (formal neutral)",
+          "tunapenda = we wish to",
+          "limepokelewa = it has been received (passive)",
+        ],
       },
     ],
-    cultural_notes_vi: 'Phòng này dạy bạn chuyển đổi giữa phong cách trang trọng và thân mật trong tiếng Swahili. Bạn sẽ học khi nào dùng dạng kính trọng, cách xưng hô với người lớn tuổi và quan chức, và cách điều chỉnh giọng điệu cho các bối cảnh xã hội khác nhau. Kiểm soát phong cách là dấu hiệu quan trọng của trình độ nâng cao.',
-    cultural_notes_en: 'This room teaches you to navigate between formal and informal Swahili registers. You will learn when to use respectful forms, how to address elders and officials, and how to shift your tone for different social settings. Register control is a key marker of advanced proficiency.',
-    tip_advice_vi: 'Bài luyện hàng ngày: Diễn đạt cùng một nội dung bằng ba phong cách. Nội dung: \'Tôi cần bạn giúp.\' (1) Trang trọng với người lớn: Shikamoo mzee. Naomba msaada wako tafadhali. (2) Trang trọng với người ngang hàng: Ndugu, ningehitaji msaada wako. (3) Thân mật với bạn: Bro, naomba mkono tafadhali. Hãy luyện mẫu ba phong cách này với 5 nội dung phổ biến',
-    tip_advice_en: 'Daily drill: Express the same message in three registers. Message: \'I need your help.\' (1) Formal to elder: Shikamoo mzee. Naomba msaada wako tafadhali. (2) Formal to equal: Ndugu, ningehitaji msaada wako. (3) Informal to friend: Bro, naomba mkono tafadhali. Practice this three-register pattern with 5 common messages daily. Register flexibility mak',
     vocabulary: [
-      { word: 'respect', en: 'respect', vi: 'kính trọng', pos: 'noun', pronunciation_vi: 'RESPECT', pronunciation_en: 'respect' },
-      { word: 'greetings', en: 'greetings', vi: 'chào hỏi', pos: 'noun', pronunciation_vi: 'GREETINGS', pronunciation_en: 'greetings' },
-      { word: 'formal', en: 'formal', vi: 'trang trọng', pos: 'noun', pronunciation_vi: 'FORMAL', pronunciation_en: 'formal' },
-      { word: 'titles', en: 'titles', vi: 'danh xưng', pos: 'noun', pronunciation_vi: 'TITLES', pronunciation_en: 'titles' },
-      { word: 'informal', en: 'informal', vi: 'thân mật', pos: 'noun', pronunciation_vi: 'INFORMAL', pronunciation_en: 'informal' },
-      { word: 'peers', en: 'peers', vi: 'bạn bè', pos: 'noun', pronunciation_vi: 'PEERS', pronunciation_en: 'peers' },
-      { word: 'shifting', en: 'shifting', vi: 'chuyển đổi', pos: 'noun', pronunciation_vi: 'SHIFTING', pronunciation_en: 'shifting' },
+      { word: "Shikamoo", en: "respect greeting (elder)", vi: "kính chào người lớn", pos: "greeting" },
+      { word: "Marahaba", en: "acceptance of respect", vi: "nhận sự kính trọng", pos: "response" },
+      { word: "Bwana", en: "Mr. / Sir", vi: "Ông / Ngài", pos: "title" },
+      { word: "Bibi", en: "Mrs. / Madam", vi: "Bà / Quý bà", pos: "title" },
+      { word: "Ndugu", en: "Comrade / Dear (neutral)", vi: "Kính gửi (trung tính)", pos: "title" },
+      { word: "Mheshimiwa", en: "Honorable (official)", vi: "Kính thưa (quan chức)", pos: "title" },
+      { word: "Mambo", en: "what's up? (informal)", vi: "có gì không? (thân mật)", pos: "greeting" },
+      { word: "Poa", en: "cool / fine (informal)", vi: "ổn / ngầu (thân mật)", pos: "response" },
     ],
+    register_notes_vi:
+      "Shikamoo TUYỆT ĐỐI không dùng với người cùng trang lứa hoặc trẻ " +
+      "hơn — chỉ dành cho người lớn tuổi. Trong môi trường chuyên nghiệp, " +
+      "luôn dùng Bwana/Bibi/Ndugu + chức danh. Với bạn bè, Swahili rút " +
+      "gọn nhanh, gọn, thoải mái. Chuyển đổi linh hoạt giữa các phong " +
+      "cách trong cùng cuộc trò chuyện là dấu hiệu nâng cao thực thụ.",
+    register_notes_en:
+      "Shikamoo is NEVER used with peers or younger people — only for " +
+      "elders. In professional settings, always use Bwana/Bibi/Ndugu + " +
+      "title. With friends, Swahili drops to fast, clipped, relaxed forms. " +
+      "Fluid shifting between registers in one conversation is the mark " +
+      "of a truly advanced speaker.",
+    tip_advice_vi:
+      "Diễn đạt cùng 1 ý bằng 3 phong cách: (1) kính trọng người lớn, " +
+      "(2) trang trọng ngang hàng, (3) thân mật bạn bè. Ví dụ 'Tôi cần " +
+      "bạn giúp' → Shikamoo mzee, naomba msaada wako. / Ndugu, ningehitaji " +
+      "msaada wako. / Bro, naomba mkono tafadhali. Luyện 5 ý mỗi ngày.",
+    tip_advice_en:
+      "Express the same idea in 3 registers: (1) respectful to elder, " +
+      "(2) formal to equal, (3) informal to friend. Example 'I need your " +
+      "help' → Shikamoo mzee, naomba msaada wako. / Ndugu, ningehitaji " +
+      "msaada wako. / Bro, naomba mkono tafadhali. Practice with 5 ideas daily.",
   },
-  // C1-06 — Advanced Noun Class Agreement
+
+  // ══════════════════════════════════════════════════════════════════
+  // C1-06 — Noun Classes
+  // ══════════════════════════════════════════════════════════════════
   {
-    id: 'swahili_c1_noun_classes',
-    level: 'C1',
-    category: 'noun_classes',
-    title_vi: 'C1-06 — Hòa Hợp Lớp Danh Từ Nâng Cao',
-    title_en: 'C1-06 — Advanced Noun Class Agreement',
-    intro_vi: 'Phòng này nâng cao khả năng làm chủ hòa hợp lớp danh từ tiếng Swahili trên mọi thành phần câu. Bạn sẽ luyện hòa hợp với tính từ, sở hữu, chỉ định từ, và động từ trong câu phức. Hòa hợp hoàn hảo là điều phân biệt người nói nâng cao với người trung cấp.',
-    intro_en: 'This room deepens your command of Swahili noun class agreement across all parts of speech. You will practice agreement with adjectives, possessives, demonstratives, and verbs in complex sentences. Perfect agreement is what separates advanced speakers from intermediate ones.',
+    id: "swahili_c1_noun_classes",
+    level: "C1",
+    category: "noun_classes",
+    title_vi: "Hòa hợp lớp danh từ nâng cao",
+    title_en: "Advanced Noun Class Agreement",
+    intro_vi:
+      "Nâng cao khả năng hòa hợp lớp danh từ (ngeli) trên mọi thành " +
+      "phần câu: tính từ, sở hữu, chỉ định từ, và động từ. Hòa hợp " +
+      "hoàn hảo là điều phân biệt người nói nâng cao với trung cấp.",
+    intro_en:
+      "Deepen noun class agreement (ngeli) across all parts of speech: " +
+      "adjectives, possessives, demonstratives, and verbs. Perfect " +
+      "agreement is what separates advanced speakers from intermediate.",
     sentences: [
       {
-        sw: 'Hiki kitabu ni changu, kile ni chako',
-        en: 'This book is mine, that one is yours',
-        vi: 'Quyển sách này là của tôi, quyển kia là của bạn',
-        pronunciation_focus: ['Hiki → hiki', 'kitabu → kitabu', 'changu → changu', 'kile → kile'],
-        pronunciation_focus_en: ['Hiki = hiki', 'kitabu = kitabu', 'changu = changu', 'kile = kile']
+        sw: "Mtu mzuri, watu wazuri.",
+        en: "A good person, good people.",
+        vi: "Người tốt, những người tốt.",
+        pronunciation_focus: [
+          "Mtu MZU-ri = người tốt (lớp 1, tính từ m-)",
+          "Watu wa-ZU-ri = người tốt (lớp 2, tính từ wa-)",
+        ],
+        pronunciation_focus_en: [
+          "mtu mzuri = good person (class 1 adj m-)",
+          "watu wazuri = good people (class 2 adj wa-)",
+        ],
       },
       {
-        sw: 'Kitabu nilichokisoma kinazungumzia historia',
-        en: 'The book that I read discusses history',
-        vi: 'Quyển sách tôi đã đọc bàn về lịch sử',
-        pronunciation_focus: ['Kitabu → kitabu', 'nilichokisoma → nilichokisoma', 'kinazungumzia → kinazungumzia', 'historia → historia'],
-        pronunciation_focus_en: ['Kitabu = kitabu', 'nilichokisoma = nilichokisoma', 'kinazungumzia = kinazungumzia', 'historia = historia']
+        sw: "Gari langu kubwa lile linaenda.",
+        en: "That big car of mine is going.",
+        vi: "Chiếc xe lớn đó của tôi đang chạy.",
+        pronunciation_focus: [
+          "GA-ri LAN-gu = xe của tôi (sở hữu la-, lớp 5)",
+          "KU-bwa = lớn (tính từ, lớp 5)",
+          "LI-le = cái đó (chỉ định xa, lớp 5)",
+          "li-na-EN-da = đang đi (chủ ngữ li-, lớp 5)",
+        ],
+        pronunciation_focus_en: [
+          "gari langu = my car (poss la-, class 5)",
+          "kubwa = big (adj, class 5)",
+          "lile = that (far dem, class 5)",
+          "linaenda = is going (subj li-, class 5)",
+        ],
       },
       {
-        sw: 'Watu wanaokaa hapa wanapenda muziki',
-        en: 'The people who live here like music — both verbs agree with watu (class 2)',
-        vi: 'Quyển sách tôi đã đọc bàn về lịch sử',
-        pronunciation_focus: ['Watu → watu', 'wanaokaa → wanaokaa', 'hapa → hapa', 'wanapenda → wanapenda'],
-        pronunciation_focus_en: ['Watu = watu', 'wanaokaa = wanaokaa', 'hapa = hapa', 'wanapenda = wanapenda']
+        sw: "Kitabu changu kizuri hiki kinazungumzia historia.",
+        en: "This good book of mine discusses history.",
+        vi: "Quyển sách hay này của tôi bàn về lịch sử.",
+        pronunciation_focus: [
+          "ki-TA-bu CHAN-gu = sách của tôi (sở hữu cha-, lớp 7)",
+          "ki-ZU-ri = hay (tính từ ki-, lớp 7)",
+          "HI-ki = cái này (chỉ định gần, lớp 7)",
+          "ki-na-zu-ngu-MZI-a = bàn về (chủ ngữ ki-, lớp 7)",
+        ],
+        pronunciation_focus_en: [
+          "kitabu changu = my book (poss cha-, class 7)",
+          "kizuri = good (adj ki-, class 7)",
+          "hiki = this (near dem, class 7)",
+          "kinazungumzia = discusses (subj ki-, class 7)",
+        ],
       },
       {
-        sw: 'Nilimwona jana',
-        en: 'I saw him yesterday',
-        vi: 'Tôi đọc một quyển sách (chung chung) vs',
-        pronunciation_focus: ['Nilimwona → nilimwona', 'jana → jana'],
-        pronunciation_focus_en: ['Nilimwona = nilimwona', 'jana = jana']
+        sw: "Nilimwona jana.",
+        en: "I saw him yesterday.",
+        vi: "Tôi đã thấy anh ấy hôm qua.",
+        pronunciation_focus: [
+          "ni-li-MWO-na = tôi thấy anh ấy (tân ngữ -m-, lớp 1)",
+          "JA-na = hôm qua",
+        ],
+        pronunciation_focus_en: [
+          "nilimwona = I saw him (obj infix -m-, class 1)",
+          "jana = yesterday",
+        ],
       },
       {
-        sw: 'Nilisoma kitabu',
-        en: 'I read a book (general) vs',
-        vi: 'Tôi đọc một quyển sách (chung chung) vs',
-        pronunciation_focus: ['Nilisoma → nilisoma', 'kitabu → kitabu'],
-        pronunciation_focus_en: ['Nilisoma = nilisoma', 'kitabu = kitabu']
+        sw: "Tutakinunua kitabu.",
+        en: "We will buy the book.",
+        vi: "Chúng tôi sẽ mua quyển sách đó.",
+        pronunciation_focus: [
+          "tu-ta-KI-nu-NU-a = chúng tôi sẽ mua nó",
+          "-ki- = tiếp tố tân ngữ lớp 7 (kitabu)",
+        ],
+        pronunciation_focus_en: [
+          "tutakinunua = we will buy it",
+          "-ki- = object infix class 7 (for kitabu)",
+        ],
       },
       {
-        sw: 'Nilikisoma kitabu',
-        en: 'I read the book (specific, with object infix -ki- for class 7)',
-        vi: 'Tôi đọc một quyển sách (chung chung) vs',
-        pronunciation_focus: ['Nilikisoma → nilikisoma', 'kitabu → kitabu'],
-        pronunciation_focus_en: ['Nilikisoma = nilikisoma', 'kitabu = kitabu']
-      },
-      {
-        sw: 'Tutaionunua nyumba',
-        en: 'We will buy the house',
-        vi: 'Tôi đọc một quyển sách (chung chung) vs',
-        pronunciation_focus: ['Tutaionunua → tutaionunua', 'nyumba → nyumba'],
-        pronunciation_focus_en: ['Tutaionunua = tutaionunua', 'nyumba = nyumba']
+        sw: "Hiki kitabu ni changu, kile ni chako.",
+        en: "This book is mine, that one is yours.",
+        vi: "Quyển sách này của tôi, quyển kia của bạn.",
+        pronunciation_focus: [
+          "HI-ki ki-TA-bu = sách này (lớp 7)",
+          "CHAN-gu = của tôi (lớp 7)",
+          "KI-le = cái kia (lớp 7)",
+          "CHA-ko = của bạn (lớp 7)",
+        ],
+        pronunciation_focus_en: [
+          "hiki kitabu = this book (class 7)",
+          "changu = mine (class 7)",
+          "kile = that one (class 7)",
+          "chako = yours (class 7)",
+        ],
       },
     ],
-    cultural_notes_vi: 'Phòng này nâng cao khả năng làm chủ hòa hợp lớp danh từ tiếng Swahili trên mọi thành phần câu. Bạn sẽ luyện hòa hợp với tính từ, sở hữu, chỉ định từ, và động từ trong câu phức. Hòa hợp hoàn hảo là điều phân biệt người nói nâng cao với người trung cấp.',
-    cultural_notes_en: 'This room deepens your command of Swahili noun class agreement across all parts of speech. You will practice agreement with adjectives, possessives, demonstratives, and verbs in complex sentences. Perfect agreement is what separates advanced speakers from intermediate ones.',
-    tip_advice_vi: 'Bài luyện hàng ngày: Xây chuỗi hòa hợp. Bắt đầu với danh từ + tính từ, thêm sở hữu, rồi chỉ định từ, rồi động từ. Ví dụ: gari (lớp 5) → gari kubwa langu hili linaenda — chiếc xe lớn này của tôi đang chạy. kitabu (lớp 7) → kitabu kizuri changu hiki kinazungumzia historia — quyển sách hay này của tôi bàn về lịch sử. Xây một chuỗi cho mỗi lớp danh từ',
-    tip_advice_en: 'Daily drill: Build an agreement chain. Start with a noun + adjective, add possessive, then demonstrative, then verb. Example: gari (class 5) → gari kubwa langu hili linaenda / this big car of mine is going. kitabu (class 7) → kitabu kizuri changu hiki kinazungumzia historia / this good book of mine discusses history. Build one chain for each noun c',
     vocabulary: [
-      { word: 'adjective', en: 'adjective', vi: 'tính từ', pos: 'noun', pronunciation_vi: 'ADJECTIVE', pronunciation_en: 'adjective' },
-      { word: 'agreement', en: 'agreement', vi: 'hòa hợp', pos: 'noun', pronunciation_vi: 'AGREEMENT', pronunciation_en: 'agreement' },
-      { word: 'possessive', en: 'possessive', vi: 'sở hữu', pos: 'noun', pronunciation_vi: 'POSSESSIVE', pronunciation_en: 'possessive' },
-      { word: 'demonstrative', en: 'demonstrative', vi: 'chỉ định', pos: 'noun', pronunciation_vi: 'DEMONSTRATIVE', pronunciation_en: 'demonstrative' },
-      { word: 'this that', en: 'this that', vi: 'này kia', pos: 'noun', pronunciation_vi: 'THIS THAT', pronunciation_en: 'this that' },
-      { word: 'subject', en: 'subject', vi: 'chủ ngữ', pos: 'noun', pronunciation_vi: 'SUBJECT', pronunciation_en: 'subject' },
-      { word: 'verb agreement', en: 'verb agreement', vi: 'hòa hợp động từ', pos: 'noun', pronunciation_vi: 'VERB AGREEMENT', pronunciation_en: 'verb agreement' },
+      { word: "huyu", en: "this (class 1)", vi: "người này (lớp 1)", pos: "demonstrative", ngeli: "1" },
+      { word: "hawa", en: "these (class 2)", vi: "những người này (lớp 2)", pos: "demonstrative", ngeli: "2" },
+      { word: "hili", en: "this (class 5)", vi: "cái này (lớp 5)", pos: "demonstrative", ngeli: "5" },
+      { word: "hiki", en: "this (class 7)", vi: "cái này (lớp 7)", pos: "demonstrative", ngeli: "7" },
+      { word: "hii", en: "this (class 9)", vi: "cái này (lớp 9)", pos: "demonstrative", ngeli: "9" },
+      { word: "yule", en: "that (class 1)", vi: "người kia (lớp 1)", pos: "demonstrative", ngeli: "1" },
+      { word: "lile", en: "that (class 5)", vi: "cái kia (lớp 5)", pos: "demonstrative", ngeli: "5" },
+      { word: "kile", en: "that (class 7)", vi: "cái kia (lớp 7)", pos: "demonstrative", ngeli: "7" },
     ],
+    cultural_notes_vi:
+      "Hòa hợp lớp danh từ (ngeli) là 'trái tim' của ngữ pháp Swahili. " +
+      "Người bản xứ cảm nhận lỗi hòa hợp ngay lập tức. Ở C1, hòa hợp " +
+      "phải thành phản xạ tự động. Tiếp tố tân ngữ (-m-, -ki-, -li-, " +
+      "v.v.) làm Swahili nghe chính xác và như người bản xứ — thiếu " +
+      "chúng là dấu hiệu rõ nhất của người học.",
+    cultural_notes_en:
+      "Noun class agreement (ngeli) is the 'heart' of Swahili grammar. " +
+      "Native speakers feel agreement errors immediately. At C1, " +
+      "agreement must be automatic. Object infixes (-m-, -ki-, -li-, " +
+      "etc.) make Swahili sound precise and native-like — missing them " +
+      "is the clearest learner marker.",
+    tip_advice_vi:
+      "Xây chuỗi hòa hợp mỗi ngày: danh từ + tính từ + sở hữu + chỉ định " +
+      "từ + động từ. Ví dụ: gari → gari kubwa langu hili linaenda. " +
+      "Làm 1 chuỗi cho mỗi lớp danh từ.",
+    tip_advice_en:
+      "Build an agreement chain daily: noun + adjective + possessive + " +
+      "demonstrative + verb. Example: gari → gari kubwa langu hili " +
+      "linaenda. Do one chain per noun class.",
   },
-  // C1-07 — Narrative and Storytelling in Swahili
+
+  // ══════════════════════════════════════════════════════════════════
+  // C1-07 — Narrative
+  // ══════════════════════════════════════════════════════════════════
   {
-    id: 'swahili_c1_narrative',
-    level: 'C1',
-    category: 'narrative',
-    title_vi: 'C1-07 — Kể Chuyện và Tường Thuật Trong Tiếng Swahili',
-    title_en: 'C1-07 — Narrative and Storytelling in Swahili',
-    intro_vi: 'Phòng này dạy bạn nghệ thuật kể chuyện trong tiếng Swahili. Bạn sẽ học các thì kể chuyện, dấu hiệu liên tiếp -ka-, cụm từ đặt bối cảnh thời gian, và ngôn ngữ sống động làm câu chuyện trở nên sinh động.',
-    intro_en: 'This room teaches you the art of storytelling in Swahili. You will learn narrative tenses, the -ka- consecutive marker, time-setting phrases, and the vivid language that brings stories to life.',
+    id: "swahili_c1_narrative",
+    level: "C1",
+    category: "narrative",
+    title_vi: "Kể chuyện và tường thuật",
+    title_en: "Narrative and Storytelling in Swahili",
+    intro_vi:
+      "Học nghệ thuật kể chuyện bằng tiếng Swahili: mở đầu với -li-, " +
+      "chuỗi hành động với -ka-, đối thoại trực tiếp, cao trào với " +
+      "ghafla, và kết thúc với mwishowe/hatimaye. Văn hóa Swahili rất " +
+      "coi trọng truyền miệng — người kể chuyện giỏi được kính trọng.",
+    intro_en:
+      "Learn the art of Swahili storytelling: open with -li-, chain " +
+      "actions with -ka-, use direct dialogue, climax with ghafla, and " +
+      "resolve with mwishowe/hatimaye. Swahili culture is deeply oral — " +
+      "good storytellers are respected in every community.",
     sentences: [
       {
-        sw: 'Jua lilikuwa linachomoza',
-        en: 'The sun was rising',
-        vi: 'Ngày xửa ngày xưa, có',
-        pronunciation_focus: ['Jua → jua', 'lilikuwa → lilikuwa', 'linachomoza → linachomoza'],
-        pronunciation_focus_en: ['Jua = jua', 'lilikuwa = lilikuwa', 'linachomoza = linachomoza']
+        sw: "Hapo zamani za kale, palikuwa na mzee mmoja.",
+        en: "Once upon a time, long ago, there was an old man.",
+        vi: "Ngày xửa ngày xưa, có một ông già.",
+        pronunciation_focus: [
+          "HA-po za-MA-ni za KA-le = ngày xửa ngày xưa",
+          "pa-li-KU-wa = có (lớp 16, -li- quá khứ)",
+          "MZE-e MMO-ja = một ông già",
+        ],
+        pronunciation_focus_en: [
+          "Hapo zamani za kale = once upon a time",
+          "palikuwa = there was (class 16, -li- past)",
+          "mzee mmoja = one old man",
+        ],
       },
       {
-        sw: 'Upepo ulivuma polepole',
-        en: 'The wind blew gently',
-        vi: 'Ngày xửa ngày xưa, có',
-        pronunciation_focus: ['Upepo → upepo', 'ulivuma → ulivuma', 'polepole → polepole'],
-        pronunciation_focus_en: ['Upepo = upepo', 'ulivuma = ulivuma', 'polepole = polepole']
+        sw: "Alamka asubuhi, akaoga, akavaa nguo, akaenda shambani.",
+        en: "He woke up, bathed, dressed, and went to the farm.",
+        vi: "Ông thức dậy, tắm rửa, mặc đồ, rồi ra ruộng.",
+        pronunciation_focus: [
+          "a-LA-m-ka = ông thức dậy (-li- mở đầu)",
+          "a-KA-o-ga = rồi tắm (-ka- liên tiếp)",
+          "a-KA-va-a = rồi mặc",
+          "a-KA-en-da sham-BA-ni = rồi ra ruộng",
+        ],
+        pronunciation_focus_en: [
+          "alamka = he woke (-li- opening)",
+          "akaoga = then bathed (-ka- consecutive)",
+          "akavaa = then dressed",
+          "akaenda shambani = then went to the farm",
+        ],
       },
       {
-        sw: 'Aliamka, akaoga, akavaa nguo, akakunywa chai, kisha akaenda shambani',
-        en: 'He woke up, bathed, dressed, drank tea, then went to the farm',
-        vi: 'Anh ấy thức dậy, tắm rửa, mặc quần áo, uống trà, rồi ra đồng',
-        pronunciation_focus: ['Aliamka → aliamka', 'akaoga → akaoga', 'akavaa → akavaa', 'nguo → nguo'],
-        pronunciation_focus_en: ['Aliamka = aliamka', 'akaoga = akaoga', 'akavaa = akavaa', 'nguo = nguo']
+        sw: "Akasema, 'Mimi nimechoka sana leo.'",
+        en: "He said, 'I am very tired today.'",
+        vi: "Ông nói, 'Hôm nay tôi mệt quá.'",
+        pronunciation_focus: [
+          "a-KA-SE-ma = rồi ông nói (-ka- dẫn lời)",
+          "ni-me-CHO-ka = tôi đã mệt (hiện tại hoàn thành)",
+          "SA-na = rất",
+        ],
+        pronunciation_focus_en: [
+          "akasema = then he said (-ka- introduces speech)",
+          "nimechoka = I am tired (present perfect)",
+          "sana = very",
+        ],
       },
       {
-        sw: 'Ghafla, akasikia sauti kubwa',
-        en: 'Suddenly, he heard a loud sound',
-        vi: 'Suddenly, he heard a loud sound',
-        pronunciation_focus: ['Ghafla → ghafla', 'akasikia → akasikia', 'sauti → sauti', 'kubwa → kubwa'],
-        pronunciation_focus_en: ['Ghafla = ghafla', 'akasikia = akasikia', 'sauti = sauti', 'kubwa = kubwa']
+        sw: "Ghafla, akasikia sauti kubwa nyuma yake!",
+        en: "Suddenly, he heard a loud voice behind him!",
+        vi: "Bỗng nhiên, ông nghe một giọng lớn sau lưng!",
+        pronunciation_focus: [
+          "GHA-fla = bỗng nhiên (cao trào)",
+          "a-ka-si-KI-a = rồi ông nghe",
+          "sa-U-ti KU-bwa = giọng lớn",
+          "NYU-ma YA-ke = sau lưng ông",
+        ],
+        pronunciation_focus_en: [
+          "ghafla = suddenly (climax)",
+          "akasikia = then he heard",
+          "sauti kubwa = loud voice",
+          "nyuma yake = behind him",
+        ],
       },
       {
-        sw: 'Hatimaye, walifika salama nyumbani',
-        en: 'Finally, they arrived safely home',
-        vi: 'Finally, they arrived safely home',
-        pronunciation_focus: ['Hatimaye → hatimaye', 'walifika → walifika', 'salama → salama', 'nyumbani → nyumbani'],
-        pronunciation_focus_en: ['Hatimaye = hatimaye', 'walifika = walifika', 'salama = salama', 'nyumbani = nyumbani']
-      },
-      {
-        sw: 'Jana, niliamka asubuhi',
-        en: 'Yesterday, I woke up in the morning',
-        vi: 'Hôm qua, tôi thức dậy buổi sáng',
-        pronunciation_focus: ['Jana → jana', 'niliamka → niliamka', 'asubuhi → asubuhi'],
-        pronunciation_focus_en: ['Jana = jana', 'niliamka = niliamka', 'asubuhi = asubuhi']
-      },
-      {
-        sw: 'Nikaoga, nikavaa, nikala kiamsha kinywa',
-        en: 'I bathed, dressed, ate breakfast',
-        vi: 'Hôm qua, tôi thức dậy buổi sáng',
-        pronunciation_focus: ['Nikaoga → nikaoga', 'nikavaa → nikavaa', 'nikala → nikala', 'kiamsha → kiamsha'],
-        pronunciation_focus_en: ['Nikaoga = nikaoga', 'nikavaa = nikavaa', 'nikala = nikala', 'kiamsha = kiamsha']
+        sw: "Mwishowe, alirudi nyumbani akiwa na furaha.",
+        en: "Finally, he returned home with joy.",
+        vi: "Cuối cùng, ông trở về nhà với niềm vui.",
+        pronunciation_focus: [
+          "mwi-SHO-we = cuối cùng (kết)",
+          "a-li-RU-di = ông trở về",
+          "a-KI-wa na fu-RA-ha = trong niềm vui (-ki- trạng thái)",
+        ],
+        pronunciation_focus_en: [
+          "mwishowe = finally (resolution)",
+          "alirudi = he returned",
+          "akiwa na furaha = with joy (-ki- state)",
+        ],
       },
     ],
-    cultural_notes_vi: 'Phòng này dạy bạn nghệ thuật kể chuyện trong tiếng Swahili. Bạn sẽ học các thì kể chuyện, dấu hiệu liên tiếp -ka-, cụm từ đặt bối cảnh thời gian, và ngôn ngữ sống động làm câu chuyện trở nên sinh động. Văn hóa Swahili rất coi trọng truyền miệng, và người kể chuyện hay được kính trọng trong mọi cộng đồng.',
-    cultural_notes_en: 'This room teaches you the art of storytelling in Swahili. You will learn narrative tenses, the -ka- consecutive marker, time-setting phrases, and the vivid language that brings stories to life. Swahili culture is deeply oral, and good storytellers are respected in every community.',
-    tip_advice_vi: 'Bài luyện hàng ngày: Kể to một câu chuyện ngắn bằng Swahili. Cấu trúc: (1) Thời gian và bối cảnh với -li-. (2) 4-6 hành động liên tiếp với -ka-. (3) Một đoạn đối thoại. (4) Một khoảnh khắc ghafla. (5) Kết thúc hatimaye. Dàn ý ví dụ: Jana, niliamka asubuhi — Hôm qua, tôi thức dậy buổi sáng. Nikaoga, nikavaa, nikala kiamsha kinywa — Tôi tắm, mặc đồ,',
-    tip_advice_en: 'Daily drill: Tell one short story aloud in Swahili. Structure: (1) Time and setting with -li-. (2) 4-6 consecutive actions with -ka-. (3) One piece of dialogue. (4) One ghafla moment. (5) Hatimaye resolution. Example story outline: Jana, niliamka asubuhi / Yesterday, I woke up in the morning. Nikaoga, nikavaa, nikala kiamsha kinywa / I bathed, dres',
     vocabulary: [
-      { word: 'narrative', en: 'narrative', vi: 'kể chuyện', pos: 'noun', pronunciation_vi: 'NARRATIVE', pronunciation_en: 'narrative' },
-      { word: 'past tense', en: 'past tense', vi: 'quá khứ', pos: 'noun', pronunciation_vi: 'PAST TENSE', pronunciation_en: 'past tense' },
-      { word: 'ka tense', en: 'ka tense', vi: 'thì ka', pos: 'noun', pronunciation_vi: 'KA TENSE', pronunciation_en: 'ka tense' },
-      { word: 'consecutive', en: 'consecutive', vi: 'liên tiếp', pos: 'noun', pronunciation_vi: 'CONSECUTIVE', pronunciation_en: 'consecutive' },
-      { word: 'dialogue', en: 'dialogue', vi: 'đối thoại', pos: 'noun', pronunciation_vi: 'DIALOGUE', pronunciation_en: 'dialogue' },
-      { word: 'direct speech', en: 'direct speech', vi: 'lời nói trực tiếp', pos: 'noun', pronunciation_vi: 'DIRECT SPEECH', pronunciation_en: 'direct speech' },
-      { word: 'climax', en: 'climax', vi: 'cao trào', pos: 'noun', pronunciation_vi: 'CLIMAX', pronunciation_en: 'climax' },
+      { word: "hapo zamani", en: "once upon a time", vi: "ngày xửa ngày xưa", pos: "phrase" },
+      { word: "ghafla", en: "suddenly", vi: "bỗng nhiên", pos: "adverb" },
+      { word: "hatimaye", en: "finally / at last", vi: "cuối cùng", pos: "adverb" },
+      { word: "mwishowe", en: "in the end", vi: "cuối cùng", pos: "adverb" },
+      { word: "akasema", en: "then he/she said", vi: "rồi nói", pos: "verb (-ka-)" },
+      { word: "akamjibu", en: "then answered him/her", vi: "rồi trả lời", pos: "verb (-ka-)" },
+      { word: "kusimulia", en: "to narrate", vi: "kể chuyện", pos: "verb" },
+      { word: "hadithi", en: "story", vi: "câu chuyện", pos: "noun", ngeli: "9/10" },
     ],
+    cultural_notes_vi:
+      "Kể chuyện (kusimulia hadithi) là nghệ thuật được kính trọng trong " +
+      "văn hóa Swahili. Thì -ka- là 'động cơ' của câu chuyện — nó cho " +
+      "phép kể hàng loạt hành động mà không lặp chủ ngữ. Người nghe Đông " +
+      "Phi mong đợi: mở đầu rõ ràng, chuỗi -ka-, đối thoại, một khoảnh " +
+      "khắc ghafla, và bài học ở cuối.",
+    cultural_notes_en:
+      "Storytelling (kusimulia hadithi) is a respected art in Swahili " +
+      "culture. -ka- is the 'engine' of the story — it chains actions " +
+      "without repeating the subject. East African listeners expect: " +
+      "clear setting, -ka- chain, dialogue, a ghafla moment, and a lesson.",
+    tip_advice_vi:
+      "Kể 1 câu chuyện ngắn mỗi ngày: (1) bối cảnh -li-, (2) 4–6 hành " +
+      "động -ka-, (3) 1 câu đối thoại, (4) 1 khoảnh khắc ghafla, (5) kết " +
+      "mwishowe/hatimaye. Tập kể to thành tiếng.",
+    tip_advice_en:
+      "Tell a short story daily: (1) -li- setting, (2) 4–6 -ka- actions, " +
+      "(3) 1 line of dialogue, (4) a ghafla moment, (5) mwishowe/hatimaye " +
+      "resolution. Speak it aloud.",
   },
-  // C1-08 — Expressing Abstract Concepts in Swahili
+
+  // ══════════════════════════════════════════════════════════════════
+  // C1-08 — Academic / Abstract Concepts
+  // ══════════════════════════════════════════════════════════════════
   {
-    id: 'swahili_c1_academic',
-    level: 'C1',
-    category: 'academic',
-    title_vi: 'C1-08 — Diễn Đạt Khái Niệm Trừu Tượng Trong Tiếng Swahili',
-    title_en: 'C1-08 — Expressing Abstract Concepts in Swahili',
-    intro_vi: 'Phòng này giúp bạn diễn đạt ý tưởng trừu tượng trong tiếng Swahili — các khái niệm như công lý, tự do, bản sắc, thay đổi, và đạo đức. Từ vựng trừu tượng trong Swahili rút ra nhiều từ lớp danh từ 14 (danh từ trừu tượng u-) và từ mượn Ả Rập.',
-    intro_en: 'This room helps you express abstract ideas in Swahili — concepts like justice, freedom, identity, change, and morality. Abstract vocabulary in Swahili draws heavily from noun class 14 (u- abstract nouns) and Arabic loanwords.',
+    id: "swahili_c1_academic",
+    level: "C1",
+    category: "academic",
+    title_vi: "Diễn đạt khái niệm trừu tượng",
+    title_en: "Expressing Abstract Concepts in Swahili",
+    intro_vi:
+      "Học cách diễn đạt ý niệm trừu tượng: công lý, tự do, bình đẳng, " +
+      "sự thay đổi, đạo đức. Từ vựng trừu tượng dựa vào lớp danh từ 14 " +
+      "(u-: uhuru, usawa, umoja) và từ mượn Ả Rập (haki, dhana, sheria).",
+    intro_en:
+      "Learn to express abstract ideas: justice, freedom, equality, change, " +
+      "morality. Abstract vocabulary draws on noun class 14 (u-: uhuru, " +
+      "usawa, umoja) and Arabic loanwords (haki, dhana, sheria).",
     sentences: [
       {
-        sw: 'Jamii yetu inabadilika haraka',
-        en: 'Our society is changing fast',
-        vi: 'Chúng ta cần thay đổi hệ thống giáo dục',
-        pronunciation_focus: ['Jamii → jamii', 'yetu → yetu', 'inabadilika → inabadilika', 'haraka → haraka'],
-        pronunciation_focus_en: ['Jamii = jamii', 'yetu = yetu', 'inabadilika = inabadilika', 'haraka = haraka']
+        sw: "Uhuru ni haki ya kila mtu.",
+        en: "Freedom is the right of every person.",
+        vi: "Tự do là quyền của mỗi con người.",
+        pronunciation_focus: [
+          "u-HU-ru = tự do (lớp 14, trừu tượng)",
+          "HA-ki = quyền / công lý (từ Ả Rập)",
+          "KI-la MTU = mỗi người",
+        ],
+        pronunciation_focus_en: [
+          "uhuru = freedom (class 14, abstract)",
+          "haki = right / justice (Arabic loan)",
+          "kila mtu = every person",
+        ],
       },
       {
-        sw: 'Tunahitaji kubadilisha mfumo wetu wa elimu',
-        en: 'We need to change our education system',
-        vi: 'Chúng ta cần thay đổi hệ thống giáo dục',
-        pronunciation_focus: ['Tunahitaji → tunahitaji', 'kubadilisha → kubadilisha', 'mfumo → mfumo', 'wetu → wetu'],
-        pronunciation_focus_en: ['Tunahitaji = tunahitaji', 'kubadilisha = kubadilisha', 'mfumo = mfumo', 'wetu = wetu']
+        sw: "Mabadiliko ya tabianchi yanaathiri kila kona ya dunia.",
+        en: "Climate change affects every corner of the world.",
+        vi: "Biến đổi khí hậu ảnh hưởng mọi ngóc ngách thế giới.",
+        pronunciation_focus: [
+          "ma-ba-di-LI-ko = biến đổi (lớp 6)",
+          "ta-bi-AN-chi = khí hậu (từ Ả Rập)",
+          "ya-na-a-THI-ri = chúng ảnh hưởng",
+          "du-NI-a = thế giới",
+        ],
+        pronunciation_focus_en: [
+          "mabadiliko = changes (class 6)",
+          "tabianchi = climate (Arabic loan)",
+          "yanaathiri = they affect",
+          "dunia = world",
+        ],
       },
       {
-        sw: 'Kila mtu ana haki ya kuishi',
-        en: 'Every person has the right to live',
-        vi: 'Chúng ta nên tuân theo đạo đức tốt',
-        pronunciation_focus: ['Kila → kila', 'mtu → mtu', 'ana → ana', 'haki → haki'],
-        pronunciation_focus_en: ['Kila = kila', 'mtu = mtu', 'ana = ana', 'haki = haki']
+        sw: "Hali ya hewa inabadilika haraka sana.",
+        en: "The climate is changing very rapidly. (intransitive)",
+        vi: "Khí hậu đang tự thay đổi rất nhanh. (tự thân)",
+        pronunciation_focus: [
+          "HA-li ya HE-wa = khí hậu",
+          "i-na-ba-di-LI-ka = tự thay đổi (stative -ik-)",
+          "ha-RA-ka SA-na = rất nhanh",
+        ],
+        pronunciation_focus_en: [
+          "hali ya hewa = climate",
+          "inabadilika = it is changing (stative -ik-)",
+          "haraka sana = very fast",
+        ],
       },
       {
-        sw: 'Tunapaswa kufuata maadili mema',
-        en: 'We should follow good morals',
-        vi: 'Chúng ta nên tuân theo đạo đức tốt',
-        pronunciation_focus: ['Tunapaswa → tunapaswa', 'kufuata → kufuata', 'maadili → maadili', 'mema → mema'],
-        pronunciation_focus_en: ['Tunapaswa = tunapaswa', 'kufuata = kufuata', 'maadili = maadili', 'mema = mema']
+        sw: "Watu wanabadilisha mazingira kwa shughuli zao.",
+        en: "People are changing the environment through their activities.",
+        vi: "Con người đang làm thay đổi môi trường qua hoạt động.",
+        pronunciation_focus: [
+          "wa-na-ba-di-LI-sha = họ làm thay đổi (transitive -sh-)",
+          "ma-zi-NGI-ra = môi trường",
+          "shu-GHU-li = hoạt động",
+        ],
+        pronunciation_focus_en: [
+          "wanabadilisha = they are changing (transitive -sh-)",
+          "mazingira = environment",
+          "shughuli = activities",
+        ],
       },
       {
-        sw: 'Mtu akifa, huwa ameacha urithi',
-        en: 'When a person dies, they leave an inheritance (general truth pattern with hu-)',
-        vi: 'Khi một người chết, người ấy để lại di sản (mẫu chân lý chung với hu-)',
-        pronunciation_focus: ['Mtu → mtu', 'akifa → akifa', 'huwa → huwa', 'ameacha → ameacha'],
-        pronunciation_focus_en: ['Mtu = mtu', 'akifa = akifa', 'huwa = huwa', 'ameacha = ameacha']
-      },
-      {
-        sw: 'Kama tungejua kesho, tusingefanya makosa',
-        en: 'If we knew tomorrow, we would not make mistakes',
-        vi: 'Khi một người chết, người ấy để lại di sản (mẫu chân lý chung với hu-)',
-        pronunciation_focus: ['Kama → kama', 'tungejua → tungejua', 'kesho → kesho', 'tusingefanya → tusingefanya'],
-        pronunciation_focus_en: ['Kama = kama', 'tungejua = tungejua', 'kesho = kesho', 'tusingefanya = tusingefanya']
-      },
-      {
-        sw: 'Uhuru ni hali ya mtu kuwa huru',
-        en: 'Freedom is the state of being free',
-        vi: 'Theo tôi, tự do thực sự đi kèm với trách nhiệm',
-        pronunciation_focus: ['Uhuru → uhuru', 'hali → hali', 'mtu → mtu', 'kuwa → kuwa'],
-        pronunciation_focus_en: ['Uhuru = uhuru', 'hali = hali', 'mtu = mtu', 'kuwa = kuwa']
+        sw: "Sheria mpya inalenga kulinda haki za wananchi wote.",
+        en: "The new law aims to protect the rights of all citizens.",
+        vi: "Luật mới nhằm bảo vệ quyền của mọi công dân.",
+        pronunciation_focus: [
+          "SHE-ri-a MPYA = luật mới",
+          "i-na-LEN-ga = nó nhằm",
+          "ku-LIN-da = bảo vệ",
+          "wa-NAN-chi = công dân",
+        ],
+        pronunciation_focus_en: [
+          "sheria mpya = new law",
+          "inalenga = it aims to",
+          "kulinda = to protect",
+          "wananchi = citizens",
+        ],
       },
     ],
-    cultural_notes_vi: 'Phòng này giúp bạn diễn đạt ý tưởng trừu tượng trong tiếng Swahili — các khái niệm như công lý, tự do, bản sắc, thay đổi, và đạo đức. Từ vựng trừu tượng trong Swahili rút ra nhiều từ lớp danh từ 14 (danh từ trừu tượng u-) và từ mượn Ả Rập. Bạn sẽ học cách thảo luận triết học, đạo đức, và những ý tưởng phức tạp một cách rõ ràng.',
-    cultural_notes_en: 'This room helps you express abstract ideas in Swahili — concepts like justice, freedom, identity, change, and morality. Abstract vocabulary in Swahili draws heavily from noun class 14 (u- abstract nouns) and Arabic loanwords. You will learn to discuss philosophy, ethics, and complex ideas with clarity.',
-    tip_advice_vi: 'Bài luyện hàng ngày: Chọn một khái niệm trừu tượng và nói về nó trong 60 giây bằng Swahili. Cấu trúc: (1) Định nghĩa khái niệm. (2) Cho một ví dụ từ cuộc sống. (3) Bày tỏ một quan điểm cá nhân. Ví dụ cho uhuru: Uhuru ni hali ya mtu kuwa huru — Tự do là trạng thái một người được tự do. Kwa mfano, uhuru wa kusema ni muhimu katika jamii — Ví dụ, tự do',
-    tip_advice_en: 'Daily drill: Pick one abstract concept and speak about it for 60 seconds in Swahili. Structure: (1) Define the concept. (2) Give one example from life. (3) Express one personal view. Example for uhuru: Uhuru ni hali ya mtu kuwa huru / Freedom is the state of being free. Kwa mfano, uhuru wa kusema ni muhimu katika jamii / For example, freedom of spe',
     vocabulary: [
-      { word: 'abstract nouns', en: 'abstract nouns', vi: 'danh từ trừu tượng', pos: 'noun', pronunciation_vi: 'ABSTRACT NOUNS', pronunciation_en: 'abstract nouns' },
-      { word: 'u-class', en: 'u-class', vi: 'lớp u', pos: 'noun', pronunciation_vi: 'U-CLASS', pronunciation_en: 'u-class' },
-      { word: 'arabic', en: 'arabic', vi: 'Ả Rập', pos: 'noun', pronunciation_vi: 'ARABIC', pronunciation_en: 'arabic' },
-      { word: 'loanwords', en: 'loanwords', vi: 'từ mượn', pos: 'noun', pronunciation_vi: 'LOANWORDS', pronunciation_en: 'loanwords' },
-      { word: 'change', en: 'change', vi: 'thay đổi', pos: 'noun', pronunciation_vi: 'CHANGE', pronunciation_en: 'change' },
-      { word: 'transformation', en: 'transformation', vi: 'biến đổi', pos: 'noun', pronunciation_vi: 'TRANSFORMATION', pronunciation_en: 'transformation' },
-      { word: 'moral', en: 'moral', vi: 'đạo đức', pos: 'noun', pronunciation_vi: 'MORAL', pronunciation_en: 'moral' },
+      { word: "uhuru", en: "freedom / independence", vi: "tự do", pos: "noun", ngeli: "14" },
+      { word: "usawa", en: "equality", vi: "sự bình đẳng", pos: "noun", ngeli: "14" },
+      { word: "umoja", en: "unity", vi: "sự đoàn kết", pos: "noun", ngeli: "14" },
+      { word: "haki", en: "justice / right", vi: "công lý / quyền", pos: "noun", ngeli: "9/10" },
+      { word: "amani", en: "peace", vi: "hòa bình", pos: "noun", ngeli: "9/10" },
+      { word: "sheria", en: "law", vi: "luật pháp", pos: "noun", ngeli: "9/10" },
+      { word: "dhana", en: "concept / idea", vi: "khái niệm", pos: "noun", ngeli: "9/10" },
+      { word: "maarifa", en: "knowledge", vi: "tri thức", pos: "noun", ngeli: "6" },
+      { word: "kubadilika", en: "to change (intransitive)", vi: "thay đổi (tự thân)", pos: "verb", ngeli: "stat -ik-" },
+      { word: "kubadilisha", en: "to change (transitive)", vi: "làm thay đổi", pos: "verb", ngeli: "caus -sh-" },
     ],
+    cultural_notes_vi:
+      "Lớp danh từ 14 (tiền tố u-) là cổng vào thế giới ý niệm: uhuru, " +
+      "usawa, umoja, uadilifu… Từ mượn Ả Rập như haki, dhana, sheria mang " +
+      "sắc thái học thuật và xuất hiện trong văn bản chính phủ, báo chí, " +
+      "giáo dục đại học. Phân biệt kubadilika (tự thay đổi) và kubadilisha " +
+      "(làm thay đổi) là điểm ngữ pháp C1 quan trọng.",
+    cultural_notes_en:
+      "Noun class 14 (u- prefix) is the gateway to abstract ideas: uhuru, " +
+      "usawa, umoja, uadilifu… Arabic loanwords like haki, dhana, sheria " +
+      "carry scholarly weight and appear in government, journalism, and " +
+      "academia. The kubadilika vs. kubadilisha distinction is a key C1 " +
+      "grammar point.",
+    tip_advice_vi:
+      "Chọn 1 khái niệm trừu tượng mỗi ngày, định nghĩa bằng Swahili, " +
+      "cho ví dụ đời sống, bày tỏ quan điểm cá nhân — tất cả trong 60 " +
+      "giây. Ví dụ: 'Uhuru ni hali ya mtu kuweza kufanya maamuzi yake " +
+      "mwenyewe.'",
+    tip_advice_en:
+      "Pick an abstract concept daily, define it in Swahili, give a life " +
+      "example, express a personal view — all in 60 seconds. Example: " +
+      "'Uhuru ni hali ya mtu kuweza kufanya maamuzi yake mwenyewe.'",
   },
-  // C1-09 — Persuasive and Argumentative Swahili
+
+  // ══════════════════════════════════════════════════════════════════
+  // C1-09 — Debate
+  // ══════════════════════════════════════════════════════════════════
   {
-    id: 'swahili_c1_debate',
-    level: 'C1',
-    category: 'debate',
-    title_vi: 'C1-09 — Tiếng Swahili Thuyết Phục và Tranh Luận',
-    title_en: 'C1-09 — Persuasive and Argumentative Swahili',
-    intro_vi: 'Phòng này trang bị cho bạn ngôn ngữ thuyết phục trong tiếng Swahili. Bạn sẽ học cách trình bày lập luận, phản bác một cách tôn trọng, dùng chiến lược tu từ, và xây dựng lập luận bằng chứng cứ. Swahili thuyết phục rất cần thiết cho tranh luận, họp hành, thuyết trình, và biện hộ.',
-    intro_en: 'This room equips you with the language of persuasion in Swahili. You will learn how to present arguments, refute points respectfully, use rhetorical strategies, and build a case with evidence. Persuasive Swahili is essential for debates, meetings, presentations, and advocacy.',
+    id: "swahili_c1_debate",
+    level: "C1",
+    category: "debate",
+    title_vi: "Tiếng Swahili thuyết phục và tranh luận",
+    title_en: "Persuasive and Argumentative Swahili",
+    intro_vi:
+      "Học ngôn ngữ thuyết phục: trình bày luận điểm 4 phần (Kwanza → " +
+      "Pili → Tatu → Kwa hivyo), phản bác tôn trọng (Ninaheshimu maoni " +
+      "yako, lakini…), câu hỏi tu từ, và dẫn chứng bằng số liệu.",
+    intro_en:
+      "Learn persuasive language: 4-part argument structure (Kwanza → " +
+      "Pili → Tatu → Kwa hivyo), respectful refutation (Ninaheshimu " +
+      "maoni yako, lakini…), rhetorical questions, and evidence.",
     sentences: [
       {
-        sw: 'Ninaheshimu wazo lako kuhusu kodi, lakini naona kwamba viwango vya chini vingesaidia wafanyabiashara wadogo',
-        en: 'I respect your idea about taxes, but I see that lower rates would help small business owners',
-        vi: 'Tôi tôn trọng ý kiến của bạn, nhưng',
-        pronunciation_focus: ['Ninaheshimu → ninaheshimu', 'wazo → wazo', 'lako → lako', 'kuhusu → kuhusu'],
-        pronunciation_focus_en: ['Ninaheshimu = ninaheshimu', 'wazo = wazo', 'lako = lako', 'kuhusu = kuhusu']
+        sw: "Kwanza, ningependa kusema kwamba elimu ni muhimu kwa maendeleo.",
+        en: "First, I would like to say that education is important for development.",
+        vi: "Trước hết, tôi xin nói rằng giáo dục quan trọng cho sự phát triển.",
+        pronunciation_focus: [
+          "KWAN-za = trước hết",
+          "ni-nge-PEN-da = tôi xin (-nge- lịch sự)",
+          "ma-en-de-LE-o = sự phát triển",
+        ],
+        pronunciation_focus_en: [
+          "kwanza = first",
+          "ningependa = I would like (-nge- polite)",
+          "maendeleo = development",
+        ],
       },
       {
-        sw: 'Kulingana na ripoti ya Benki ya Dunia, nchi zinazowekeza katika elimu ya wanawake zina maendeleo ya haraka zaidi',
-        en: 'According to the World Bank report, countries that invest in women\'s education develop faster',
-        vi: 'Theo nghiên cứu, Takwimu zinaonyesha kwamba',
-        pronunciation_focus: ['Kulingana → kulingana', 'ripoti → ripoti', 'Benki → benki', 'Dunia → dunia'],
-        pronunciation_focus_en: ['Kulingana = kulingana', 'ripoti = ripoti', 'Benki = benki', 'Dunia = dunia']
+        sw: "Kwa mfano, nchi zenye elimu bora zina uchumi imara.",
+        en: "For example, countries with good education have strong economies.",
+        vi: "Ví dụ, các nước có giáo dục tốt có nền kinh tế vững mạnh.",
+        pronunciation_focus: [
+          "Kwa MFa-no = ví dụ",
+          "NCHI ze-nye = các nước có",
+          "e-LI-mu BO-ra = giáo dục tốt",
+          "u-CHU-mi i-MA-ra = kinh tế vững mạnh",
+        ],
+        pronunciation_focus_en: [
+          "Kwa mfano = for example",
+          "nchi zenye = countries with",
+          "elimu bora = good education",
+          "uchumi imara = strong economy",
+        ],
       },
       {
-        sw: 'Tuungane kujenga taifa letu',
-        en: 'In conclusion, as our elders say, \'Unity is strength',
-        vi: 'Để kết luận, như các bậc trưởng lão của chúng ta thường nói, \'Đoàn kết là sức mạnh'
+        sw: "Ninaheshimu maoni yako, lakini nina maoni tofauti.",
+        en: "I respect your opinion, but I have a different view.",
+        vi: "Tôi tôn trọng ý kiến bạn, nhưng tôi có quan điểm khác.",
+        pronunciation_focus: [
+          "ni-na-HE-shi-mu = tôi tôn trọng",
+          "ma-O-ni YA-ko = ý kiến của bạn",
+          "ma-O-ni to-FA-u-ti = quan điểm khác",
+        ],
+        pronunciation_focus_en: [
+          "ninaheshimu = I respect",
+          "maoni yako = your opinion",
+          "maoni tofauti = different view",
+        ],
+      },
+      {
+        sw: "Je, hii ni haki?",
+        en: "Is this justice?",
+        vi: "Đây có phải là công lý không?",
+        pronunciation_focus: [
+          "Je = liệu (mở đầu câu hỏi tu từ)",
+          "HI-i = đây",
+          "HA-ki = công lý",
+        ],
+        pronunciation_focus_en: [
+          "Je = (rhetorical question marker)",
+          "hii = this",
+          "haki = justice",
+        ],
+      },
+      {
+        sw: "Kulingana na utafiti, asilimia themanini wanakubaliana.",
+        en: "According to research, eighty percent agree.",
+        vi: "Theo nghiên cứu, 80% mọi người đồng ý.",
+        pronunciation_focus: [
+          "ku-li-NGA-na na = theo như",
+          "u-ta-FI-ti = nghiên cứu",
+          "a-si-li-MI-a = phần trăm",
+          "wa-na-ku-ba-li-A-na = họ đồng ý",
+        ],
+        pronunciation_focus_en: [
+          "kulingana na = according to",
+          "utafiti = research",
+          "asilimia = percent",
+          "wanakubaliana = they agree",
+        ],
+      },
+      {
+        sw: "Kwa kumalizia, wito wangu ni tushirikiane kujenga mustakabali bora.",
+        en: "In closing, my call is let us cooperate to build a better future.",
+        vi: "Kết luận, tôi kêu gọi chúng ta hợp tác xây tương lai tốt đẹp hơn.",
+        pronunciation_focus: [
+          "Kwa ku-ma-LI-zi-a = để kết luận",
+          "WI-to WAN-gu = lời kêu gọi của tôi",
+          "tu-shi-ri-KI-a-ne = ta hợp tác",
+          "mu-sta-ka-BA-li = tương lai (từ Ả Rập)",
+        ],
+        pronunciation_focus_en: [
+          "Kwa kumalizia = in closing",
+          "wito wangu = my call",
+          "tushirikiane = let us cooperate",
+          "mustakabali = future (Arabic loan)",
+        ],
       },
     ],
-    cultural_notes_vi: 'Phòng này trang bị cho bạn ngôn ngữ thuyết phục trong tiếng Swahili. Bạn sẽ học cách trình bày lập luận, phản bác một cách tôn trọng, dùng chiến lược tu từ, và xây dựng lập luận bằng chứng cứ. Swahili thuyết phục rất cần thiết cho tranh luận, họp hành, thuyết trình, và biện hộ.',
-    cultural_notes_en: 'This room equips you with the language of persuasion in Swahili. You will learn how to present arguments, refute points respectfully, use rhetorical strategies, and build a case with evidence. Persuasive Swahili is essential for debates, meetings, presentations, and advocacy.',
-    tip_advice_vi: 'Bài luyện hàng ngày: Chọn một chủ đề và tranh luận cả hai phía bằng Swahili, mỗi phía 2 phút. Ví dụ chủ đề: Je, teknolojia inaboresha au inaharibu jamii? — Công nghệ cải thiện hay phá hủy xã hội? Phía A (2 phút): cấu trúc với kwanza, pili, tatu, kwa hivyo. Phía B (2 phút): mở đầu bằng ninaheshimu maoni tofauti, rồi phản bác bằng bằng chứng. Bài luy',
-    tip_advice_en: 'Daily drill: Pick a topic and argue both sides in Swahili for 2 minutes each. Topic example: Je, teknolojia inaboresha au inaharibu jamii? / Does technology improve or destroy society? Side A (2 min): structure with kwanza, pili, tatu, kwa hivyo. Side B (2 min): start with ninaheshimu maoni tofauti, then refute with evidence. This dual-argument pra',
     vocabulary: [
-      { word: 'argument', en: 'argument', vi: 'lập luận', pos: 'noun', pronunciation_vi: 'ARGUMENT', pronunciation_en: 'argument' },
-      { word: 'structure', en: 'structure', vi: 'cấu trúc', pos: 'noun', pronunciation_vi: 'STRUCTURE', pronunciation_en: 'structure' },
-      { word: 'refutation', en: 'refutation', vi: 'phản bác', pos: 'noun', pronunciation_vi: 'REFUTATION', pronunciation_en: 'refutation' },
-      { word: 'respect', en: 'respect', vi: 'tôn trọng', pos: 'noun', pronunciation_vi: 'RESPECT', pronunciation_en: 'respect' },
-      { word: 'rhetorical', en: 'rhetorical', vi: 'tu từ', pos: 'noun', pronunciation_vi: 'RHETORICAL', pronunciation_en: 'rhetorical' },
-      { word: 'questions', en: 'questions', vi: 'câu hỏi', pos: 'noun', pronunciation_vi: 'QUESTIONS', pronunciation_en: 'questions' },
-      { word: 'evidence', en: 'evidence', vi: 'bằng chứng', pos: 'noun', pronunciation_vi: 'EVIDENCE', pronunciation_en: 'evidence' },
+      { word: "kwanza", en: "first / firstly", vi: "trước hết", pos: "adverb" },
+      { word: "pili", en: "second / secondly", vi: "thứ hai", pos: "adverb" },
+      { word: "kwa mfano", en: "for example", vi: "ví dụ", pos: "phrase" },
+      { word: "kulingana na", en: "according to", vi: "theo như", pos: "phrase" },
+      { word: "kwa kumalizia", en: "in closing", vi: "để kết luận", pos: "phrase" },
+      { word: "kwa hivyo", en: "therefore", vi: "vì vậy", pos: "conjunction" },
+      { word: "hoja", en: "argument / point", vi: "luận điểm", pos: "noun", ngeli: "9/10" },
+      { word: "ushahidi", en: "evidence", vi: "bằng chứng", pos: "noun", ngeli: "14" },
     ],
+    cultural_notes_vi:
+      "Tranh luận Swahili đề cao tôn trọng và gián tiếp. Không bao giờ " +
+      "tấn công cá nhân — luôn phản bác ý kiến. Cụm 'Ninaheshimu maoni " +
+      "yako, lakini…' là mẫu câu bắt buộc trước mọi lời phản bác. Cấu " +
+      "trúc 4 phần (Kwanza → Pili → Tatu → Kwa hivyo) là chuẩn mực.",
+    cultural_notes_en:
+      "Swahili debate culture values respect and indirectness. Never " +
+      "attack the person — always refute the idea. 'Ninaheshimu maoni " +
+      "yako, lakini…' is mandatory before any refutation. The 4-part " +
+      "structure (Kwanza → Pili → Tatu → Kwa hivyo) is the standard.",
+    tip_advice_vi:
+      "Chọn 1 chủ đề, tranh luận cả 2 phía, mỗi bên 2 phút với cấu trúc " +
+      "4 phần. Rồi tự phản bác với 'Ninaheshimu hoja hiyo, lakini…'. " +
+      "Luyện cả 2 phía giúp tư duy linh hoạt.",
+    tip_advice_en:
+      "Pick a topic, argue both sides 2 min each using the 4-part " +
+      "structure. Then refute yourself with 'Ninaheshimu hoja hiyo, " +
+      "lakini…'. Practicing both sides builds flexible thinking.",
   },
-  // C1-10 — Professional and Business Swahili
+
+  // ══════════════════════════════════════════════════════════════════
+  // C1-10 — Business
+  // ══════════════════════════════════════════════════════════════════
   {
-    id: 'swahili_c1_business',
-    level: 'C1',
-    category: 'business',
-    title_vi: 'C1-10 — Tiếng Swahili Chuyên Nghiệp và Thương Mại',
-    title_en: 'C1-10 — Professional and Business Swahili',
-    intro_vi: 'Phòng này dạy bạn tiếng Swahili chuyên nghiệp cho nơi làm việc, kinh doanh, và môi trường trang trọng. Bạn sẽ học từ vựng họp hành, quy ước email, cụm từ đàm phán, và cách nói gián tiếp lịch sự đặc trưng của văn hóa chuyên nghiệp Đông Phi.',
-    intro_en: 'This room teaches you professional Swahili for workplace, business, and formal settings. You will learn meeting vocabulary, email conventions, negotiation phrases, and the polite indirectness that characterizes East African professional culture.',
+    id: "swahili_c1_business",
+    level: "C1",
+    category: "business",
+    title_vi: "Tiếng Swahili chuyên nghiệp và thương mại",
+    title_en: "Professional and Business Swahili",
+    intro_vi:
+      "Học tiếng Swahili cho nơi làm việc: từ vựng họp hành, quy ước " +
+      "email (Ndugu… Wako mtiifu…), câu đàm phán, và nghệ thuật từ chối " +
+      "gián tiếp lịch sự đặc trưng của văn hóa kinh doanh Đông Phi.",
+    intro_en:
+      "Learn Swahili for the workplace: meeting vocabulary, email " +
+      "conventions (Ndugu… Wako mtiifu…), negotiation phrases, and the " +
+      "polite indirectness characteristic of East African business culture.",
     sentences: [
       {
-        sw: 'Mkutano umeanza',
-        en: 'The meeting has started',
-        vi: 'Chương trình hôm nay là',
-        pronunciation_focus: ['Mkutano → mkutano', 'umeanza → umeanza'],
-        pronunciation_focus_en: ['Mkutano = mkutano', 'umeanza = umeanza']
+        sw: "Ajenda ya leo ni kujadili maendeleo ya mradi wetu.",
+        en: "Today's agenda is to discuss the progress of our project.",
+        vi: "Chương trình hôm nay là thảo luận tiến độ dự án.",
+        pronunciation_focus: [
+          "a-JEN-da = chương trình",
+          "ku-ja-DI-li = thảo luận",
+          "ma-en-de-LE-o = tiến độ",
+          "m-RA-di = dự án",
+        ],
+        pronunciation_focus_en: [
+          "ajenda = agenda",
+          "kujadili = to discuss",
+          "maendeleo = progress",
+          "mradi = project",
+        ],
       },
       {
-        sw: 'Tafadhali, tuendelee na hoja inayofuata',
-        en: 'Please, let\'s proceed to the next point',
-        vi: 'Chương trình hôm nay là',
-        pronunciation_focus: ['Tafadhali → tafadhali', 'tuendelee → tuendelee', 'hoja → hoja', 'inayofuata → inayofuata'],
-        pronunciation_focus_en: ['Tafadhali = tafadhali', 'tuendelee = tuendelee', 'hoja = hoja', 'inayofuata = inayofuata']
+        sw: "Ningependa kuchangia jambo moja.",
+        en: "I would like to contribute one point.",
+        vi: "Tôi xin đóng góp một ý.",
+        pronunciation_focus: [
+          "ni-nge-PEN-da = tôi xin (lịch sự)",
+          "ku-CHAN-gi-a = đóng góp",
+          "JAM-bo = vấn đề / điểm",
+        ],
+        pronunciation_focus_en: [
+          "ningependa = I would like (polite)",
+          "kuchangia = to contribute",
+          "jambo = point / matter",
+        ],
       },
       {
-        sw: 'Tunashukuru kwa ushirikiano wako',
-        en: 'We thank you for your cooperation',
-        vi: 'Kính gửi (trang trọng), Mpendwa',
-        pronunciation_focus: ['Tunashukuru → tunashukuru', 'kwa → kwa', 'ushirikiano → ushirikiano', 'wako → wako'],
-        pronunciation_focus_en: ['Tunashukuru = tunashukuru', 'kwa = kwa', 'ushirikiano = ushirikiano', 'wako = wako']
+        sw: "Mkutano umeahirishwa hadi Ijumaa.",
+        en: "The meeting has been postponed until Friday.",
+        vi: "Cuộc họp đã được dời đến thứ Sáu.",
+        pronunciation_focus: [
+          "m-ku-TA-no = cuộc họp",
+          "u-me-a-hi-RI-shwa = đã được hoãn (bị động)",
+          "I-ju-MA-a = thứ Sáu",
+        ],
+        pronunciation_focus_en: [
+          "mkutano = meeting",
+          "umeahirishwa = has been postponed (passive)",
+          "Ijumaa = Friday",
+        ],
       },
       {
-        sw: 'Hiyo ni ofa nzuri',
-        en: 'That is a good offer',
-        vi: 'Chúng ta có thể thảo luận về giá',
-        pronunciation_focus: ['Hiyo → hiyo', 'ofa → ofa', 'nzuri → nzuri'],
-        pronunciation_focus_en: ['Hiyo = hiyo', 'ofa = ofa', 'nzuri = nzuri']
+        sw: "Naomba punguzo kidogo, tafadhali.",
+        en: "I request a small discount, please.",
+        vi: "Tôi xin giảm giá một chút ạ.",
+        pronunciation_focus: [
+          "na-O-mba = tôi xin",
+          "pu-NGU-zo = sự giảm giá",
+          "ki-DO-go = một chút",
+          "ta-fa-DHA-li = làm ơn",
+        ],
+        pronunciation_focus_en: [
+          "naomba = I request",
+          "punguzo = discount",
+          "kidogo = a little",
+          "tafadhali = please",
+        ],
       },
       {
-        sw: 'Labda tuangalie njia nyingine',
-        en: 'Perhaps let\'s look at another way',
-        vi: 'Tôi cần suy nghĩ thêm',
-        pronunciation_focus: ['Labda → labda', 'tuangalie → tuangalie', 'njia → njia', 'nyingine → nyingine'],
-        pronunciation_focus_en: ['Labda = labda', 'tuangalie = tuangalie', 'njia = njia', 'nyingine = nyingine']
+        sw: "Labda tuangalie njia nyingine.",
+        en: "Perhaps let us look at another way. (Polite refusal)",
+        vi: "Có lẽ ta xem xét cách khác. (Từ chối lịch sự)",
+        pronunciation_focus: [
+          "LA-bda = có lẽ (từ chối gián tiếp)",
+          "tu-a-NGA-li-e = ta xem xét (giả định)",
+          "NJI-a nyi-NGI-ne = cách khác",
+        ],
+        pronunciation_focus_en: [
+          "Labda = perhaps (indirect refusal)",
+          "tuangalie = let us look (subjunctive)",
+          "njia nyingine = another way",
+        ],
       },
       {
-        sw: 'Ningehitaji kufikiria zaidi',
-        en: 'I would need to think more',
-        vi: 'Tôi cần suy nghĩ thêm',
-        pronunciation_focus: ['Ningehitaji → ningehitaji', 'kufikiria → kufikiria', 'zaidi → zaidi'],
-        pronunciation_focus_en: ['Ningehitaji = ningehitaji', 'kufikiria = kufikiria', 'zaidi = zaidi']
+        sw: "Natumaini barua pepe hii inakujia katika hali njema.",
+        en: "I hope this email finds you well.",
+        vi: "Tôi hy vọng email này đến với quý vị trong tình trạng tốt đẹp.",
+        pronunciation_focus: [
+          "na-tu-ma-I-ni = tôi hy vọng",
+          "BA-ru-a PE-pe = email",
+          "HA-li NJE-ma = tình trạng tốt",
+        ],
+        pronunciation_focus_en: [
+          "natumaini = I hope",
+          "barua pepe = email",
+          "hali njema = good condition",
+        ],
       },
     ],
-    cultural_notes_vi: 'Phòng này dạy bạn tiếng Swahili chuyên nghiệp cho nơi làm việc, kinh doanh, và môi trường trang trọng. Bạn sẽ học từ vựng họp hành, quy ước email, cụm từ đàm phán, và cách nói gián tiếp lịch sự đặc trưng của văn hóa chuyên nghiệp Đông Phi. Swahili chuyên nghiệp mở ra cánh cửa ở Tanzania, Kenya, và khắp Cộng đồng Đông Phi.',
-    cultural_notes_en: 'This room teaches you professional Swahili for workplace, business, and formal settings. You will learn meeting vocabulary, email conventions, negotiation phrases, and the polite indirectness that characterizes East African professional culture. Professional Swahili opens doors in Tanzania, Kenya, and across the East African Community.',
-    tip_advice_vi: 'Bài luyện hàng ngày: Mô phỏng một tình huống kinh doanh bằng Swahili. Ví dụ — bạn đang thuyết trình cập nhật dự án. Mở đầu: Habari za asubuhi, wenzangu. Leo nitawajulisha kuhusu maendeleo ya mradi wetu — Chào buổi sáng, các đồng nghiệp. Hôm nay tôi sẽ thông báo về tiến độ dự án của chúng ta. Thân bài: Kwanza, tumemaliza awamu ya kwanza — Thứ nhất,',
-    tip_advice_en: 'Daily drill: Simulate one business scenario in Swahili. Example — you are presenting a project update. Open: Habari za asubuhi, wenzangu. Leo nitawajulisha kuhusu maendeleo ya mradi wetu. Body: Kwanza, tumemaliza awamu ya kwanza. Pili, bajeti imetumika vizuri. Tatu, changamoto tulizokutana nazo ni… Close: Je, kuna maswali au maoni? Asanteni kwa mud',
     vocabulary: [
-      { word: 'meeting', en: 'meeting', vi: 'họp', pos: 'noun', pronunciation_vi: 'MEETING', pronunciation_en: 'meeting' },
-      { word: 'vocabulary', en: 'vocabulary', vi: 'từ vựng', pos: 'noun', pronunciation_vi: 'VOCABULARY', pronunciation_en: 'vocabulary' },
-      { word: 'email', en: 'email', vi: 'email', pos: 'noun', pronunciation_vi: 'EMAIL', pronunciation_en: 'email' },
-      { word: 'written', en: 'written', vi: 'văn viết', pos: 'noun', pronunciation_vi: 'WRITTEN', pronunciation_en: 'written' },
-      { word: 'negotiation', en: 'negotiation', vi: 'đàm phán', pos: 'noun', pronunciation_vi: 'NEGOTIATION', pronunciation_en: 'negotiation' },
-      { word: 'business', en: 'business', vi: 'kinh doanh', pos: 'noun', pronunciation_vi: 'BUSINESS', pronunciation_en: 'business' },
-      { word: 'presentation', en: 'presentation', vi: 'thuyết trình', pos: 'noun', pronunciation_vi: 'PRESENTATION', pronunciation_en: 'presentation' },
+      { word: "ajenda", en: "agenda", vi: "chương trình", pos: "noun", ngeli: "9/10" },
+      { word: "mkutano", en: "meeting", vi: "cuộc họp", pos: "noun", ngeli: "3/4" },
+      { word: "kuchangia", en: "to contribute", vi: "đóng góp", pos: "verb" },
+      { word: "kuahirisha", en: "to postpone", vi: "hoãn", pos: "verb" },
+      { word: "punguzo", en: "discount", vi: "giảm giá", pos: "noun", ngeli: "5/6" },
+      { word: "makubaliano", en: "agreement", vi: "thỏa thuận", pos: "noun", ngeli: "6" },
+      { word: "barua pepe", en: "email", vi: "thư điện tử", pos: "noun", ngeli: "9/10" },
+      { word: "mkataba", en: "contract", vi: "hợp đồng", pos: "noun", ngeli: "3/4" },
     ],
+    cultural_notes_vi:
+      "Văn hóa kinh doanh Đông Phi coi trọng quan hệ trước giao dịch. " +
+      "Từ chối trực tiếp bị coi là thô lỗ — thay vào đó dùng 'Labda " +
+      "tuangalie njia nyingine' hoặc 'Ningehitaji kufikiria zaidi'. " +
+      "Email mở đầu 'Ndugu' và kết 'Wako mtiifu' (trân trọng) hoặc " +
+      "'Salamu njema' (lời chào tốt đẹp).",
+    cultural_notes_en:
+      "East African business culture values relationship before " +
+      "transaction. Direct refusal is considered harsh — instead use " +
+      "'Labda tuangalie njia nyingine' or 'Ningehitaji kufikiria zaidi'. " +
+      "Emails open with 'Ndugu' and close with 'Wako mtiifu' (yours " +
+      "faithfully) or 'Salamu njema' (best regards).",
+    tip_advice_vi:
+      "Mỗi ngày trong tuần, mô phỏng 1 tình huống: họp (thứ Hai), email " +
+      "(thứ Ba), đàm phán (thứ Tư), thuyết trình (thứ Năm), từ chối lịch " +
+      "sự (thứ Sáu). 5 phút nói to mỗi tình huống.",
+    tip_advice_en:
+      "Each weekday, simulate one scenario: meeting (Mon), email (Tue), " +
+      "negotiation (Wed), presentation (Thu), polite refusal (Fri). " +
+      "5 minutes aloud per scenario.",
   },
-  // C1-11 — Literary and Poetic Swahili
+
+  // ══════════════════════════════════════════════════════════════════
+  // C1-11 — Literary
+  // ══════════════════════════════════════════════════════════════════
   {
-    id: 'swahili_c1_literary',
-    level: 'C1',
-    category: 'literary',
-    title_vi: 'C1-11 — Tiếng Swahili Văn Chương và Thi Ca',
-    title_en: 'C1-11 — Literary and Poetic Swahili',
-    intro_vi: 'Phòng này giới thiệu vẻ đẹp của Swahili văn chương. Bạn sẽ học các biện pháp thi ca, ngôn ngữ ẩn dụ, nhịp điệu của thơ Swahili (ushairi), và cách thưởng thức cũng như sáng tạo biểu đạt văn chương.',
-    intro_en: 'This room introduces the beauty of literary Swahili. You will learn poetic devices, metaphorical language, the rhythm of Swahili poetry (ushairi), and how to appreciate and create literary expression.',
+    id: "swahili_c1_literary",
+    level: "C1",
+    category: "literary",
+    title_vi: "Tiếng Swahili văn chương và thi ca",
+    title_en: "Literary and Poetic Swahili",
+    intro_vi:
+      "Khám phá vẻ đẹp văn chương Swahili: ẩn dụ (Maisha ni safari), " +
+      "so sánh (kama simba), nhân cách hóa (Upepo ulinong'ona), phép " +
+      "lặp, và thể thơ shairi (4 dòng, 8 âm tiết, vần nhất quán).",
+    intro_en:
+      "Discover literary Swahili: metaphor (Maisha ni safari), simile " +
+      "(kama simba), personification (Upepo ulinong'ona), repetition, " +
+      "and the shairi poetic form (4 lines, 8 syllables, consistent rhyme).",
     sentences: [
       {
-        sw: 'Moyo wake ni mweupe kama theluji',
-        en: 'His heart is white as snow',
-        vi: 'Trái tim anh trắng như tuyết',
-        pronunciation_focus: ['Moyo → moyo', 'wake → wake', 'mweupe → mweupe', 'kama → kama'],
-        pronunciation_focus_en: ['Moyo = moyo', 'wake = wake', 'mweupe = mweupe', 'kama = kama']
+        sw: "Mwenye hasira kama simba.",
+        en: "Angry like a lion.",
+        vi: "Giận dữ như sư tử.",
+        pronunciation_focus: [
+          "MWE-nye ha-SI-ra = người giận dữ",
+          "KA-ma = như (so sánh)",
+          "SIM-ba = sư tử",
+        ],
+        pronunciation_focus_en: [
+          "mwenye hasira = angry person",
+          "kama = like (simile)",
+          "simba = lion",
+        ],
       },
       {
-        sw: 'Yeye ni simba vitani',
-        en: 'He is a lion in battle',
-        vi: 'Trái tim anh trắng như tuyết',
-        pronunciation_focus: ['Yeye → yeye', 'simba → simba', 'vitani → vitani'],
-        pronunciation_focus_en: ['Yeye = yeye', 'simba = simba', 'vitani = vitani']
+        sw: "Maisha ni safari ndefu.",
+        en: "Life is a long journey.",
+        vi: "Cuộc đời là chuyến đi dài.",
+        pronunciation_focus: [
+          "ma-I-sha = cuộc đời (lớp 6)",
+          "sa-FA-ri = chuyến đi",
+          "NDE-fu = dài",
+        ],
+        pronunciation_focus_en: [
+          "maisha = life (class 6)",
+          "safari = journey",
+          "ndefu = long",
+        ],
       },
       {
-        sw: 'Mwenye hasira kama simba',
-        en: 'Angry like a lion',
-        vi: 'Trái tim anh trắng như tuyết',
-        pronunciation_focus: ['Mwenye → mwenye', 'hasira → hasira', 'kama → kama', 'simba → simba'],
-        pronunciation_focus_en: ['Mwenye = mwenye', 'hasira = hasira', 'kama = kama', 'simba = simba']
+        sw: "Upepo ulinong'ona masikioni mwangu.",
+        en: "The wind whispered in my ears.",
+        vi: "Gió thì thầm bên tai tôi.",
+        pronunciation_focus: [
+          "u-PE-po = gió (lớp 14)",
+          "u-li-NO-ng'o-na = đã thì thầm (nhân cách hóa)",
+          "ma-si-KI-o-ni = trong tai",
+        ],
+        pronunciation_focus_en: [
+          "upepo = wind (class 14)",
+          "ulinong'ona = it whispered (personification)",
+          "masikioni = in the ears",
+        ],
       },
       {
-        sw: 'Maisha ni safari',
-        en: 'Life is a journey',
-        vi: 'Trái tim anh trắng như tuyết',
-        pronunciation_focus: ['Maisha → maisha', 'safari → safari'],
-        pronunciation_focus_en: ['Maisha = maisha', 'safari = safari']
+        sw: "Kifo kilibisha hodi usiku ule.",
+        en: "Death knocked at the door that night.",
+        vi: "Cái chết gõ cửa đêm hôm đó.",
+        pronunciation_focus: [
+          "KI-fo = cái chết (lớp 7)",
+          "ki-li-BI-sha HO-di = đã gõ cửa (nhân cách hóa)",
+          "u-SI-ku U-le = đêm hôm đó",
+        ],
+        pronunciation_focus_en: [
+          "kifo = death (class 7)",
+          "kilibisha hodi = it knocked (personification)",
+          "usiku ule = that night",
+        ],
       },
       {
-        sw: 'Kifo kilibisha hodi',
-        en: 'Death knocked at the door',
-        vi: 'Gió thì thầm bên tai tôi',
-        pronunciation_focus: ['Kifo → kifo', 'kilibisha → kilibisha', 'hodi → hodi'],
-        pronunciation_focus_en: ['Kifo = kifo', 'kilibisha = kilibisha', 'hodi = hodi']
-      },
-      {
-        sw: 'Upendo ulinipofusha',
-        en: 'Love blinded me',
-        vi: 'Gió thì thầm bên tai tôi',
-        pronunciation_focus: ['Upendo → upendo', 'ulinipofusha → ulinipofusha'],
-        pronunciation_focus_en: ['Upendo = upendo', 'ulinipofusha = ulinipofusha']
-      },
-      {
-        sw: 'Upepo ulinong\'ona masikioni mwangu',
-        en: 'The wind whispered in my ears',
-        vi: 'Gió thì thầm bên tai tôi',
-        pronunciation_focus: ['Upepo → upepo', 'ulinong\'ona → ulinong\'ona', 'masikioni → masikioni', 'mwangu → mwangu'],
-        pronunciation_focus_en: ['Upepo = upepo', 'ulinong\'ona = ulinong\'ona', 'masikioni = masikioni', 'mwangu = mwangu']
+        sw: "Moyo wangu unaimba, moyo wangu unalia, moyo wangu unapenda.",
+        en: "My heart sings, my heart cries, my heart loves.",
+        vi: "Tim tôi hát, tim tôi khóc, tim tôi yêu.",
+        pronunciation_focus: [
+          "MO-yo WAN-gu = tim tôi",
+          "u-na-I-mba = nó hát (phép lặp đầu câu)",
+          "u-na-LI-a = nó khóc",
+          "u-na-PEN-da = nó yêu",
+        ],
+        pronunciation_focus_en: [
+          "moyo wangu = my heart",
+          "unaimba = it sings (anaphora)",
+          "unalia = it cries",
+          "unapenda = it loves",
+        ],
       },
     ],
-    cultural_notes_vi: 'Phòng này giới thiệu vẻ đẹp của Swahili văn chương. Bạn sẽ học các biện pháp thi ca, ngôn ngữ ẩn dụ, nhịp điệu của thơ Swahili (ushairi), và cách thưởng thức cũng như sáng tạo biểu đạt văn chương. Swahili có truyền thống thi ca phong phú kéo dài hàng thế kỷ, từ sử thi utendi cổ điển đến spoken word hiện đại.',
-    cultural_notes_en: 'This room introduces the beauty of literary Swahili. You will learn poetic devices, metaphorical language, the rhythm of Swahili poetry (ushairi), and how to appreciate and create literary expression. Swahili has a rich poetic tradition stretching back centuries, from classical utendi epics to modern spoken word.',
-    tip_advice_vi: 'Bài luyện hàng ngày: Sáng tác một khổ thơ Swahili bốn dòng (ubeti mmoja). Theo hình thức shairi: 8 âm tiết mỗi dòng, vần cuối nhất quán. Mẫu: Dòng 1 (giới thiệu chủ đề), Dòng 2 (phát triển), Dòng 3 (chuyển/tương phản), Dòng 4 (kết). Ví dụ: Nakupenda kwa dhati (8) / Wewe ndiye wangu mati (8) / Siku zote za maisha (8) / Utakaa moyoni mwangu (8). Ý ng',
-    tip_advice_en: 'Daily drill: Compose one four-line Swahili stanza (ubeti mmoja). Follow the shairi form: 8 syllables per line, consistent end rhyme. Template: Line 1 (introduce theme), Line 2 (develop), Line 3 (turn/contrast), Line 4 (resolve). Example: Nakupenda kwa dhati (8) / Wewe ndiye wangu mati (8) / Siku zote za maisha (8) / Utakaa moyoni mwangu (8). Meanin',
     vocabulary: [
-      { word: 'metaphor', en: 'metaphor', vi: 'ẩn dụ', pos: 'noun', pronunciation_vi: 'METAPHOR', pronunciation_en: 'metaphor' },
-      { word: 'simile', en: 'simile', vi: 'so sánh', pos: 'noun', pronunciation_vi: 'SIMILE', pronunciation_en: 'simile' },
-      { word: 'rhythm', en: 'rhythm', vi: 'nhịp', pos: 'noun', pronunciation_vi: 'RHYTHM', pronunciation_en: 'rhythm' },
-      { word: 'rhyme', en: 'rhyme', vi: 'vần', pos: 'noun', pronunciation_vi: 'RHYME', pronunciation_en: 'rhyme' },
-      { word: 'poetry', en: 'poetry', vi: 'thơ', pos: 'noun', pronunciation_vi: 'POETRY', pronunciation_en: 'poetry' },
-      { word: 'personification', en: 'personification', vi: 'nhân hóa', pos: 'noun', pronunciation_vi: 'PERSONIFICATION', pronunciation_en: 'personification' },
-      { word: 'imagery', en: 'imagery', vi: 'hình ảnh', pos: 'noun', pronunciation_vi: 'IMAGERY', pronunciation_en: 'imagery' },
+      { word: "ushairi", en: "poetry", vi: "thơ ca", pos: "noun", ngeli: "14" },
+      { word: "shairi", en: "poem (4-line stanza)", vi: "bài thơ", pos: "noun", ngeli: "5/6" },
+      { word: "utendi", en: "classical epic poem", vi: "sử thi cổ điển", pos: "noun", ngeli: "14" },
+      { word: "kina", en: "rhyme (in poetry)", vi: "vần thơ", pos: "noun", ngeli: "7/8" },
+      { word: "kama", en: "like / as (simile)", vi: "như, giống như", pos: "conjunction" },
+      { word: "mwandishi", en: "writer / author", vi: "nhà văn", pos: "noun", ngeli: "1/2" },
+      { word: "mhusika", en: "character (in story)", vi: "nhân vật", pos: "noun", ngeli: "1/2" },
+      { word: "dhamira", en: "theme / intention", vi: "chủ đề", pos: "noun", ngeli: "9/10" },
     ],
+    cultural_notes_vi:
+      "Thơ Swahili có quy tắc nghiêm ngặt. Thể shairi: 4 dòng/khổ, 8 âm " +
+      "tiết/dòng, vần cuối nhất quán (kina). Shaaban Robert (Tanzania), " +
+      "Euphrase Kezilahabi, Said Ahmed Mohamed là những tên tuổi lớn. " +
+      "Nhân cách hóa khái niệm trừu tượng (Cái chết gõ cửa, Gió thì thầm) " +
+      "là đặc trưng văn chương Swahili.",
+    cultural_notes_en:
+      "Swahili poetry has strict rules. The shairi form: 4 lines/stanza, " +
+      "8 syllables/line, consistent end rhyme (kina). Shaaban Robert " +
+      "(Tanzania), Euphrase Kezilahabi, Said Ahmed Mohamed are major " +
+      "figures. Personifying abstract concepts (Death knocking, Wind " +
+      "whispering) is a Swahili literary hallmark.",
+    tip_advice_vi:
+      "Sáng tác 1 khổ shairi mỗi ngày: 4 dòng, mỗi dòng 8 âm tiết, vần " +
+      "cuối nhất quán. Ví dụ: Nakupenda kwa moyo wangu / Siku zote uko " +
+      "ndani yangu / Upendo wetu ni mwanga / Unaong'aa kama jua.",
+    tip_advice_en:
+      "Compose 1 shairi stanza daily: 4 lines, 8 syllables each, " +
+      "consistent end rhyme. Example: Nakupenda kwa moyo wangu / Siku " +
+      "zote uko ndani yangu / Upendo wetu ni mwanga / Unaong'aa kama jua.",
   },
-  // C1-12 — Conditional and Hypothetical Speech
+
+  // ══════════════════════════════════════════════════════════════════
+  // C1-12 — Conditional
+  // ══════════════════════════════════════════════════════════════════
   {
-    id: 'swahili_c1_conditional',
-    level: 'C1',
-    category: 'conditional',
-    title_vi: 'C1-12 — Câu Điều Kiện và Giả Định Trong Tiếng Swahili',
-    title_en: 'C1-12 — Conditional and Hypothetical Speech',
-    intro_vi: 'Phòng này dạy bạn diễn đạt điều kiện, giả định, và phản thực trong tiếng Swahili. Bạn sẽ học các dấu hiệu điều kiện -nge- và -ngali-, điều kiện -ki-, và cách thảo luận về những gì đáng lẽ ra, những gì có thể, và những gì nên làm.',
-    intro_en: 'This room teaches you to express conditions, hypotheticals, and counterfactuals in Swahili. You will learn the -nge- and -ngali- conditional markers, the -ki- conditional, and how to discuss what might have been, what could be, and what should be.',
+    id: "swahili_c1_conditional",
+    level: "C1",
+    category: "conditional",
+    title_vi: "Câu điều kiện và giả định",
+    title_en: "Conditional and Hypothetical Speech",
+    intro_vi:
+      "Học ba cấp độ điều kiện: -ki- (thực tế/có khả năng), -nge- " +
+      "(giả định), -ngali- (phản thực quá khứ — điều đáng lẽ ra). " +
+      "Thêm cách diễn đạt ước muốn (Laiti…) và tiếc nuối (Inaniumiza…).",
+    intro_en:
+      "Learn three conditional tiers: -ki- (real/likely), -nge- " +
+      "(hypothetical), -ngali- (past counterfactual — what would have " +
+      "been). Plus expressing wishes (Laiti…) and regret (Inaniumiza…).",
     sentences: [
       {
-        sw: 'Ukienda sokoni, utanunua matunda',
-        en: 'If you go to the market, you will buy fruit',
-        vi: 'If you go to the market, you will buy fruit',
-        pronunciation_focus: ['Ukienda → ukienda', 'sokoni → sokoni', 'utanunua → utanunua', 'matunda → matunda'],
-        pronunciation_focus_en: ['Ukienda = ukienda', 'sokoni = sokoni', 'utanunua = utanunua', 'matunda = matunda']
+        sw: "Ukienda sokoni, utanunua matunda.",
+        en: "If you go to the market, you will buy fruit.",
+        vi: "Nếu bạn đi chợ, bạn sẽ mua trái cây.",
+        pronunciation_focus: [
+          "u-KI-en-da = nếu bạn đi (-ki- điều kiện thực)",
+          "so-KO-ni = ở chợ",
+          "u-ta-NU-nu-a = bạn sẽ mua (tương lai)",
+        ],
+        pronunciation_focus_en: [
+          "ukienda = if you go (-ki- real)",
+          "sokoni = at the market",
+          "utanunua = you will buy (future)",
+        ],
       },
       {
-        sw: 'Nikisoma kwa bidii, nitafaulu',
-        en: 'If I study hard, I will pass',
-        vi: 'If I study hard, I will pass',
-        pronunciation_focus: ['Nikisoma → nikisoma', 'kwa → kwa', 'bidii → bidii', 'nitafaulu → nitafaulu'],
-        pronunciation_focus_en: ['Nikisoma = nikisoma', 'kwa = kwa', 'bidii = bidii', 'nitafaulu = nitafaulu']
+        sw: "Ningekuwa na pesa, ningenunua nyumba.",
+        en: "If I had money, I would buy a house.",
+        vi: "Nếu tôi có tiền, tôi sẽ mua nhà.",
+        pronunciation_focus: [
+          "ni-nge-KU-wa na = nếu tôi có (-nge- giả định)",
+          "PE-sa = tiền",
+          "ni-nge-NU-nu-a = tôi sẽ mua",
+          "NYU-mba = nhà (lớp 9)",
+        ],
+        pronunciation_focus_en: [
+          "ningekuwa na = if I had (-nge- hypothetical)",
+          "pesa = money",
+          "ningenunua = I would buy",
+          "nyumba = house (class 9)",
+        ],
       },
       {
-        sw: 'Ningekuwa na pesa, ningenunua nyumba',
-        en: 'If I had money, I would buy a house',
-        vi: 'If I had money, I would buy a house',
-        pronunciation_focus: ['Ningekuwa → ningekuwa', 'pesa → pesa', 'ningenunua → ningenunua', 'nyumba → nyumba'],
-        pronunciation_focus_en: ['Ningekuwa = ningekuwa', 'pesa = pesa', 'ningenunua = ningenunua', 'nyumba = nyumba']
+        sw: "Ningalijua, ningalikuja mapema.",
+        en: "If I had known, I would have come early.",
+        vi: "Nếu tôi đã biết, tôi đã đến sớm.",
+        pronunciation_focus: [
+          "ni-nga-LI-ju-a = nếu đã biết (-ngali- phản thực)",
+          "ni-nga-LI-ku-ja = tôi đã đến",
+          "ma-PE-ma = sớm",
+        ],
+        pronunciation_focus_en: [
+          "ningalijua = if I had known (-ngali- counterfactual)",
+          "ningalikuja = I would have come",
+          "mapema = early",
+        ],
       },
       {
-        sw: 'Ungejua Kiswahili, ungeelewa',
-        en: 'If you knew Swahili, you would understand',
-        vi: 'If you knew Swahili, you would understand',
-        pronunciation_focus: ['Ungejua → ungejua', 'Kiswahili → kiswahili', 'ungeelewa → ungeelewa'],
-        pronunciation_focus_en: ['Ungejua = ungejua', 'Kiswahili = kiswahili', 'ungeelewa = ungeelewa']
+        sw: "Laiti ningekuwa na muda zaidi, ningesafiri sana.",
+        en: "If only I had more time, I would travel a lot.",
+        vi: "Ước gì tôi có nhiều thời gian hơn, tôi sẽ đi du lịch nhiều.",
+        pronunciation_focus: [
+          "La-I-ti = ước gì / giá mà",
+          "ni-nge-KU-wa na = nếu tôi có",
+          "MU-da za-I-di = thêm thời gian",
+          "ni-nge-SA-fi-ri = tôi sẽ đi du lịch",
+        ],
+        pronunciation_focus_en: [
+          "Laiti = if only / I wish",
+          "ningekuwa na = if I had",
+          "muda zaidi = more time",
+          "ningesafiri = I would travel",
+        ],
       },
       {
-        sw: 'Ningalijua, ningalikuja mapema',
-        en: 'If I had known, I would have come early',
-        vi: 'If I had known, I would have come early',
-        pronunciation_focus: ['Ningalijua → ningalijua', 'ningalikuja → ningalikuja', 'mapema → mapema'],
-        pronunciation_focus_en: ['Ningalijua = ningalijua', 'ningalikuja = ningalikuja', 'mapema = mapema']
-      },
-      {
-        sw: 'Ungalisoma, ungalifaulu',
-        en: 'If you had studied, you would have passed',
-        vi: 'If you had studied, you would have passed',
-        pronunciation_focus: ['Ungalisoma → ungalisoma', 'ungalifaulu → ungalifaulu'],
-        pronunciation_focus_en: ['Ungalisoma = ungalisoma', 'ungalifaulu = ungalifaulu']
-      },
-      {
-        sw: 'Ningalisoma utotoni, ningekuwa na kazi nzuri sasa',
-        en: 'If I had studied in childhood, I would have a good job now',
-        vi: 'If I had studied in childhood, I would have a good job now',
-        pronunciation_focus: ['Ningalisoma → ningalisoma', 'utotoni → utotoni', 'ningekuwa → ningekuwa', 'kazi → kazi'],
-        pronunciation_focus_en: ['Ningalisoma = ningalisoma', 'utotoni = utotoni', 'ningekuwa = ningekuwa', 'kazi = kazi']
+        sw: "Inaniumiza kwamba sikuja.",
+        en: "It hurts me that I did not come.",
+        vi: "Tôi đau lòng vì đã không đến.",
+        pronunciation_focus: [
+          "i-na-ni-u-MI-za = nó làm tôi đau (tiếc nuối)",
+          "KWA-mba = rằng",
+          "SI-ku-ja = tôi đã không đến",
+        ],
+        pronunciation_focus_en: [
+          "inaniumiza = it hurts me (regret)",
+          "kwamba = that",
+          "sikuja = I did not come",
+        ],
       },
     ],
-    cultural_notes_vi: 'Phòng này dạy bạn diễn đạt điều kiện, giả định, và phản thực trong tiếng Swahili. Bạn sẽ học các dấu hiệu điều kiện -nge- và -ngali-, điều kiện -ki-, và cách thảo luận về những gì đáng lẽ ra, những gì có thể, và những gì nên làm. Làm chủ câu điều kiện là điều cần thiết cho thảo luận và lập kế hoạch tinh tế.',
-    cultural_notes_en: 'This room teaches you to express conditions, hypotheticals, and counterfactuals in Swahili. You will learn the -nge- and -ngali- conditional markers, the -ki- conditional, and how to discuss what might have been, what could be, and what should be. Conditional mastery is essential for sophisticated discussion and planning.',
-    tip_advice_vi: 'Bài luyện hàng ngày: Xây chuỗi điều kiện dùng cả ba loại. Bắt đầu với điều kiện -ki-, tưởng tượng giả định -nge- từ đó, rồi suy ngẫm với -ngali-. Ví dụ chuỗi: Nikisoma Kiswahili kila siku, nitaboresha — Nếu tôi học Swahili mỗi ngày, tôi sẽ tiến bộ. Ningeboresha Kiswahili, ningeweza kufanya kazi Tanzania — Nếu tôi giỏi Swahili hơn, tôi có thể làm vi',
-    tip_advice_en: 'Daily drill: Build a conditional chain using all three types. Start with a -ki- conditional, imagine a -nge- hypothetical from it, then reflect with -ngali-. Example chain: Nikisoma Kiswahili kila siku, nitaboresha / If I study Swahili every day, I will improve. Ningeboresha Kiswahili, ningeweza kufanya kazi Tanzania / If I improved my Swahili, I c',
     vocabulary: [
-      { word: 'ki conditional', en: 'ki conditional', vi: 'điều kiện ki', pos: 'noun', pronunciation_vi: 'KI CONDITIONAL', pronunciation_en: 'ki conditional' },
-      { word: 'real', en: 'real', vi: 'thực', pos: 'noun', pronunciation_vi: 'REAL', pronunciation_en: 'real' },
-      { word: 'nge conditional', en: 'nge conditional', vi: 'điều kiện nge', pos: 'noun', pronunciation_vi: 'NGE CONDITIONAL', pronunciation_en: 'nge conditional' },
-      { word: 'hypothetical', en: 'hypothetical', vi: 'giả định', pos: 'noun', pronunciation_vi: 'HYPOTHETICAL', pronunciation_en: 'hypothetical' },
-      { word: 'ngali conditional', en: 'ngali conditional', vi: 'điều kiện ngali', pos: 'noun', pronunciation_vi: 'NGALI CONDITIONAL', pronunciation_en: 'ngali conditional' },
-      { word: 'counterfactual', en: 'counterfactual', vi: 'phản thực', pos: 'noun', pronunciation_vi: 'COUNTERFACTUAL', pronunciation_en: 'counterfactual' },
-      { word: 'mixed', en: 'mixed', vi: 'hỗn hợp', pos: 'noun', pronunciation_vi: 'MIXED', pronunciation_en: 'mixed' },
+      { word: "-ki-", en: "if (real condition)", vi: "nếu (điều kiện thực)", pos: "infix" },
+      { word: "-nge-", en: "if (hypothetical)", vi: "nếu (giả định)", pos: "infix" },
+      { word: "-ngali-", en: "if (past counterfactual)", vi: "nếu (phản thực QK)", pos: "infix" },
+      { word: "laiti", en: "if only / I wish", vi: "ước gì / giá mà", pos: "particle" },
+      { word: "labda", en: "maybe / perhaps", vi: "có lẽ", pos: "adverb" },
+      { word: "huenda", en: "it may be / possibly", vi: "có thể là", pos: "adverb" },
+      { word: "inaniumiza", en: "it hurts me", vi: "tôi đau lòng", pos: "phrase" },
+      { word: "kujuta", en: "to regret", vi: "hối tiếc", pos: "verb" },
     ],
+    cultural_notes_vi:
+      "Ba cấp độ điều kiện là kỹ năng C1 định hình. -ki- cho tình huống " +
+      "thực; -nge- cho giả định (có thể nhưng không chắc); -ngali- cho " +
+      "phản thực quá khứ — mang sắc thái tiếc nuối và suy ngẫm. 'Laiti' " +
+      "thường xuất hiện trong thơ ca và lời tâm sự.",
+    cultural_notes_en:
+      "The three conditional tiers are defining C1 skills. -ki- for real " +
+      "situations; -nge- for hypotheticals (possible but uncertain); " +
+      "-ngali- for past counterfactuals — carrying regret and reflection. " +
+      "'Laiti' is common in poetry and personal reflection.",
+    tip_advice_vi:
+      "Tạo chuỗi điều kiện: thực → giả định → phản thực. Ví dụ: (1) " +
+      "Nikisoma, nitafaulu. (2) Ningesoma, ningefaulu. (3) Ningalisoma, " +
+      "ningalifaulu. Làm với 3 động từ mỗi ngày.",
+    tip_advice_en:
+      "Build a conditional chain: real → hypothetical → counterfactual. " +
+      "Example: (1) Nikisoma, nitafaulu. (2) Ningesoma, ningefaulu. " +
+      "(3) Ningalisoma, ningalifaulu. Do with 3 verbs daily.",
   },
-  // C1-13 — Cultural Nuances in Swahili Communication
+
+  // ══════════════════════════════════════════════════════════════════
+  // C1-13 — Cultural Nuances
+  // ══════════════════════════════════════════════════════════════════
   {
-    id: 'swahili_c1_cultural_nuances',
-    level: 'C1',
-    category: 'cultural_nuances',
-    title_vi: 'C1-13 — Sắc Thái Văn Hóa Trong Giao Tiếp Swahili',
-    title_en: 'C1-13 — Cultural Nuances in Swahili Communication',
-    intro_vi: 'Phòng này khám phá những tầng văn hóa sâu sắc ẩn trong giao tiếp Swahili. Ngoài từ vựng và ngữ pháp, bạn sẽ học về cách nói gián tiếp, chiến lược giữ thể diện, vai trò của tuổi tác và địa vị, và nghệ thuật tinh tế của việc nói không mà không cần nói không.',
-    intro_en: 'This room explores the deep cultural layers embedded in Swahili communication. Beyond vocabulary and grammar, you will learn about indirect speech, face-saving strategies, the role of age and status, and the subtle art of saying no without saying no.',
+    id: "swahili_c1_cultural_nuances",
+    level: "C1",
+    category: "cultural_nuances",
+    title_vi: "Sắc thái văn hóa trong giao tiếp",
+    title_en: "Cultural Nuances in Swahili Communication",
+    intro_vi:
+      "Khám phá các lớp văn hóa sâu trong giao tiếp: nghệ thuật nói " +
+      "'không' mà không nói 'không' (Labda baadaye, Tutaona…), nghi " +
+      "thức chào hỏi, văn hóa hiếu khách, và quan hệ đùa cợt utani.",
+    intro_en:
+      "Explore deep cultural layers in communication: the art of saying " +
+      "'no' without saying 'no' (Labda baadaye, Tutaona…), greeting " +
+      "rituals, hospitality culture, and the utani joking relationship.",
     sentences: [
       {
-        sw: 'Labda baadaye',
-        en: 'Maybe later',
-        vi: 'Không) có thể bị coi là thô lỗ trong văn hóa Swahili',
-        pronunciation_focus: ['Labda → labda', 'baadaye → baadaye'],
-        pronunciation_focus_en: ['Labda = labda', 'baadaye = baadaye']
+        sw: "Labda baadaye.",
+        en: "Maybe later. (Polite refusal — means 'no')",
+        vi: "Có lẽ để sau. (Từ chối lịch sự — nghĩa là 'không')",
+        pronunciation_focus: [
+          "LA-bda = có lẽ (từ chối gián tiếp)",
+          "ba-a-DA-ye = sau này",
+        ],
+        pronunciation_focus_en: [
+          "Labda = maybe (indirect refusal)",
+          "baadaye = later",
+        ],
       },
       {
-        sw: 'Karibu chakula',
-        en: 'Welcome to the food (please eat)',
-        vi: 'đây không phải từ chối thật, mà là khiêm tốn lịch sự',
-        pronunciation_focus: ['Karibu → karibu', 'chakula → chakula'],
-        pronunciation_focus_en: ['Karibu = karibu', 'chakula = chakula']
+        sw: "Nitajaribu.",
+        en: "I will try. (Polite refusal — means 'probably not')",
+        vi: "Tôi sẽ cố. (Từ chối — nghĩa là 'chắc không')",
+        pronunciation_focus: [
+          "ni-ta-ja-RI-bu = tôi sẽ cố (thực ra: từ chối)",
+        ],
+        pronunciation_focus_en: [
+          "nitajaribu = I will try (actually: refusal)",
+        ],
       },
       {
-        sw: 'Tafadhali, usione aibu',
-        en: 'Please, don\'t be shy',
-        vi: 'đây không phải từ chối thật, mà là khiêm tốn lịch sự',
-        pronunciation_focus: ['Tafadhali → tafadhali', 'usione → usione', 'aibu → aibu'],
-        pronunciation_focus_en: ['Tafadhali = tafadhali', 'usione = usione', 'aibu = aibu']
+        sw: "Tutaona.",
+        en: "We will see. (Polite refusal — means 'unlikely')",
+        vi: "Chúng ta sẽ xem. (Từ chối — 'khó đấy')",
+        pronunciation_focus: [
+          "tu-ta-O-na = chúng ta sẽ xem (từ chối gián tiếp)",
+        ],
+        pronunciation_focus_en: [
+          "tutaona = we will see (indirect refusal)",
+        ],
       },
       {
-        sw: 'Nawashukuru sana',
-        en: 'I thank you deeply',
-        vi: 'đây không phải từ chối thật, mà là khiêm tốn lịch sự',
-        pronunciation_focus: ['Nawashukuru → nawashukuru', 'sana → sana'],
-        pronunciation_focus_en: ['Nawashukuru = nawashukuru', 'sana = sana']
+        sw: "Karibu! Tafadhali, usione aibu.",
+        en: "Welcome! Please, don't feel shy.",
+        vi: "Mời vào! Làm ơn đừng ngại.",
+        pronunciation_focus: [
+          "ka-RI-bu = chào mừng / mời vào",
+          "ta-fa-DHA-li = làm ơn",
+          "u-si-O-ne A-I-bu = đừng ngại",
+        ],
+        pronunciation_focus_en: [
+          "Karibu = welcome / come in",
+          "Tafadhali = please",
+          "usione aibu = don't feel shy",
+        ],
       },
       {
-        sw: 'Refuse once politely',
-        en: 'Ahsante, lakini nimeshiba / Thank you, but I am full',
-        vi: 'Karibu',
-        pronunciation_focus: ['Refuse → refuse', 'once → once', 'politely → politely'],
-        pronunciation_focus_en: ['Refuse = refuse', 'once = once', 'politely = politely']
-      },
-      {
-        sw: 'Tutaonana inshallah',
-        en: 'Thank you for your hospitality',
-        vi: 'Karibu',
-        pronunciation_focus: ['Tutaonana → tutaonana', 'inshallah → inshallah'],
-        pronunciation_focus_en: ['Tutaonana = tutaonana', 'inshallah = inshallah']
+        sw: "Ahsante sana, umenitesa!",
+        en: "Thank you very much, you have made me suffer! (complimenting hospitality)",
+        vi: "Cảm ơn nhiều, bạn đã hành hạ tôi! (khen hiếu khách)",
+        pronunciation_focus: [
+          "ah-SAN-te SA-na = cảm ơn rất nhiều",
+          "u-me-ni-TE-sa = bạn đã làm tôi khổ (khen hiếu khách)",
+        ],
+        pronunciation_focus_en: [
+          "ahsante sana = thank you very much",
+          "umenitesa = you made me suffer (hospitality compliment)",
+        ],
       },
     ],
-    cultural_notes_vi: 'Phòng này khám phá những tầng văn hóa sâu sắc ẩn trong giao tiếp Swahili. Ngoài từ vựng và ngữ pháp, bạn sẽ học về cách nói gián tiếp, chiến lược giữ thể diện, vai trò của tuổi tác và địa vị, và nghệ thuật tinh tế của việc nói không mà không cần nói không. Lưu loát văn hóa là điều biến người học ngôn ngữ thành người giao tiếp thực thụ.',
-    cultural_notes_en: 'This room explores the deep cultural layers embedded in Swahili communication. Beyond vocabulary and grammar, you will learn about indirect speech, face-saving strategies, the role of age and status, and the subtle art of saying no without saying no. Cultural fluency is what transforms a language learner into a true communicator.',
-    tip_advice_vi: 'Bài luyện hàng ngày: Thực hành một tình huống văn hóa hoàn chỉnh. Ví dụ — thăm nhà Swahili: (1) Chào đầy đủ: Hodi! — Cốc cốc! → Karibu! — Mời vào! → Shikamoo (với người lớn) → Marahaba. (2) Hỏi về gia đình: Habari za familia? Watoto hawajambo? (3) Nhận trà: Từ chối một lần lịch sự → Ahsante, lakini nimeshiba — Cảm ơn, nhưng tôi no rồi. → Chủ nhà nà',
-    tip_advice_en: 'Daily drill: Practice one complete cultural scenario. Example — visiting a Swahili home: (1) Greet fully: Hodi! / Knock knock! → Karibu! / Welcome! → Shikamoo (to elder) → Marahaba. (2) Ask about family: Habari za familia? Watoto hawajambo? (3) Receive tea: Refuse once politely → Ahsante, lakini nimeshiba / Thank you, but I am full. → Host insists',
     vocabulary: [
-      { word: 'indirect', en: 'indirect', vi: 'gián tiếp', pos: 'noun', pronunciation_vi: 'INDIRECT', pronunciation_en: 'indirect' },
-      { word: 'refusal', en: 'refusal', vi: 'từ chối', pos: 'noun', pronunciation_vi: 'REFUSAL', pronunciation_en: 'refusal' },
-      { word: 'age', en: 'age', vi: 'tuổi tác', pos: 'noun', pronunciation_vi: 'AGE', pronunciation_en: 'age' },
-      { word: 'status', en: 'status', vi: 'địa vị', pos: 'noun', pronunciation_vi: 'STATUS', pronunciation_en: 'status' },
-      { word: 'respect', en: 'respect', vi: 'kính trọng', pos: 'noun', pronunciation_vi: 'RESPECT', pronunciation_en: 'respect' },
-      { word: 'greetings', en: 'greetings', vi: 'chào hỏi', pos: 'noun', pronunciation_vi: 'GREETINGS', pronunciation_en: 'greetings' },
-      { word: 'small talk', en: 'small talk', vi: 'xã giao', pos: 'noun', pronunciation_vi: 'SMALL TALK', pronunciation_en: 'small talk' },
+      { word: "labda", en: "maybe (indirect no)", vi: "có lẽ (từ chối)", pos: "adverb" },
+      { word: "tutaona", en: "we will see (indirect no)", vi: "để xem (từ chối)", pos: "phrase" },
+      { word: "nitajaribu", en: "I will try (indirect no)", vi: "tôi sẽ cố (từ chối)", pos: "phrase" },
+      { word: "bado", en: "not yet (indirect no)", vi: "chưa (từ chối)", pos: "adverb" },
+      { word: "aibu", en: "shame / embarrassment", vi: "sự ngại ngùng", pos: "noun", ngeli: "9" },
+      { word: "heshima", en: "respect / honor", vi: "sự kính trọng", pos: "noun", ngeli: "9" },
+      { word: "ukarimu", en: "hospitality / generosity", vi: "lòng hiếu khách", pos: "noun", ngeli: "14" },
+      { word: "utani", en: "joking relationship", vi: "quan hệ đùa cợt", pos: "noun", ngeli: "14" },
     ],
+    cultural_notes_vi:
+      "Từ chối trực tiếp bị coi là thô lỗ trong văn hóa Swahili. 'Labda " +
+      "baadaye', 'Nitajaribu', 'Tutaona', 'Bado' — không câu nào nói " +
+      "'không' nhưng đều được hiểu là từ chối. Văn hóa hiếu khách: chủ " +
+      "nhà ép ('Tafadhali, usione aibu!'), khách từ chối vài lần trước " +
+      "khi nhận. 'Ahsante, umenitesa!' là lời khen hiếu khách cao nhất.",
+    cultural_notes_en:
+      "Direct refusal is considered rude in Swahili culture. 'Labda " +
+      "baadaye', 'Nitajaribu', 'Tutaona', 'Bado' — none says 'no' but " +
+      "all mean refusal. Hospitality rituals: host insists ('Tafadhali, " +
+      "usione aibu!'), guest politely refuses several times before " +
+      "accepting. 'Ahsante, umenitesa!' is the highest hospitality " +
+      "compliment.",
+    tip_advice_vi:
+      "Thực hành trọn vẹn 1 tình huống văn hóa mỗi ngày: ghé thăm nhà " +
+      "người Swahili, từ gõ cửa ('Hodi!') đến chào tạm biệt ('Kwaheri, " +
+      "tutaonana tena'). Tập toàn bộ chuỗi tương tác.",
+    tip_advice_en:
+      "Practice a complete cultural scenario daily: visiting a Swahili " +
+      "home, from knocking ('Hodi!') to goodbye ('Kwaheri, tutaonana " +
+      "tena'). Practice the entire interaction chain.",
   },
-  // C1-14 — Expressing Opinions with Precision
+
+  // ══════════════════════════════════════════════════════════════════
+  // C1-14 — Opinions
+  // ══════════════════════════════════════════════════════════════════
   {
-    id: 'swahili_c1_opinions',
-    level: 'C1',
-    category: 'opinions',
-    title_vi: 'C1-14 — Diễn Đạt Quan Điểm Chính Xác Trong Tiếng Swahili',
-    title_en: 'C1-14 — Expressing Opinions with Precision',
-    intro_vi: 'Phòng này giúp bạn diễn đạt quan điểm rõ ràng, lịch sự, và tinh tế trong tiếng Swahili. Ở trình độ C1, một ý kiến mạnh vẫn cần được nói ra sao cho cân bằng và thấu đáo.',
-    intro_en: 'This room helps you express opinions clearly, politely, and with nuance in Swahili. At C1 level, strong ideas must sound balanced and thoughtful. These six entries teach you how to agree, disagree, add perspective, and express uncertainty in a mature and natural way.',
+    id: "swahili_c1_opinions",
+    level: "C1",
+    category: "opinions",
+    title_vi: "Diễn đạt quan điểm chính xác",
+    title_en: "Expressing Opinions with Precision",
+    intro_vi:
+      "Học cách bày tỏ quan điểm rõ ràng, lịch sự, và có sắc thái. " +
+      "Ở C1, ý kiến mạnh phải nghe cân bằng và chín chắn. Bao gồm: " +
+      "đồng ý có bổ sung, không đồng ý lịch sự, thêm góc nhìn, diễn " +
+      "đạt sự không chắc chắn, và ý kiến mạnh mẽ nhưng bình tĩnh.",
+    intro_en:
+      "Learn to express opinions clearly, politely, and with nuance. " +
+      "At C1, strong ideas must sound balanced and thoughtful. Covers: " +
+      "agreement with added detail, polite disagreement, adding " +
+      "perspective, expressing uncertainty, and calm strong opinions.",
     sentences: [
       {
-        sw: 'Mimi naona tofauti',
-        en: 'I see it differently',
-        vi: 'Tôi thấy khác',
-        pronunciation_focus: ['Mimi → mimi', 'naona → naona', 'tofauti → tofauti'],
-        pronunciation_focus_en: ['Mimi = mimi', 'naona = naona', 'tofauti = tofauti']
+        sw: "Mimi naona tofauti kidogo.",
+        en: "I see it a little differently.",
+        vi: "Tôi thấy hơi khác một chút.",
+        pronunciation_focus: [
+          "MI-mi na-O-na = tôi thấy (ý kiến nhẹ nhàng)",
+          "to-fa-U-ti = khác biệt",
+          "ki-DO-go = một chút (làm mềm)",
+        ],
+        pronunciation_focus_en: [
+          "mimi naona = I see (soft opinion)",
+          "tofauti = different",
+          "kidogo = a little (softener)",
+        ],
       },
       {
-        sw: 'Labda kuna njia nyingine',
-        en: 'Perhaps there is another way',
-        vi: 'Tôi thấy khác',
-        pronunciation_focus: ['Labda → labda', 'kuna → kuna', 'njia → njia', 'nyingine → nyingine'],
-        pronunciation_focus_en: ['Labda = labda', 'kuna = kuna', 'njia = njia', 'nyingine = nyingine']
+        sw: "Nakubaliana na wewe, hasa kuhusu suala la elimu.",
+        en: "I agree with you, especially regarding education.",
+        vi: "Tôi đồng ý với bạn, đặc biệt về vấn đề giáo dục.",
+        pronunciation_focus: [
+          "na-ku-ba-li-A-na = tôi đồng ý",
+          "HA-sa = đặc biệt",
+          "ku-HU-su = về",
+          "su-A-la = vấn đề",
+        ],
+        pronunciation_focus_en: [
+          "nakubaliana = I agree",
+          "hasa = especially",
+          "kuhusu = regarding",
+          "suala = issue",
+        ],
       },
       {
-        sw: 'Nina wasiwasi kuhusu hoja hiyo',
-        en: 'I have a concern about that argument',
-        vi: 'Tôi hiểu điều bạn nói, nhưng',
-        pronunciation_focus: ['Nina → nina', 'wasiwasi → wasiwasi', 'kuhusu → kuhusu', 'hoja → hoja'],
-        pronunciation_focus_en: ['Nina = nina', 'wasiwasi = wasiwasi', 'kuhusu = kuhusu', 'hoja = hoja']
+        sw: "Ninaelewa unachosema, lakini nina mtazamo tofauti.",
+        en: "I understand what you're saying, but I have a different perspective.",
+        vi: "Tôi hiểu điều bạn nói, nhưng tôi có góc nhìn khác.",
+        pronunciation_focus: [
+          "ni-na-e-LE-wa = tôi hiểu",
+          "u-NA-cho-SE-ma = điều bạn đang nói",
+          "m-ta-ZA-mo = góc nhìn",
+        ],
+        pronunciation_focus_en: [
+          "ninaelewa = I understand",
+          "unachosema = what you're saying",
+          "mtazamo = perspective",
+        ],
       },
       {
-        sw: 'Bado ninafikiria jambo hili',
-        en: 'I am still thinking about this',
-        vi: 'Tôi vẫn đang suy nghĩ về việc này',
-        pronunciation_focus: ['Bado → bado', 'ninafikiria → ninafikiria', 'jambo → jambo', 'hili → hili'],
-        pronunciation_focus_en: ['Bado = bado', 'ninafikiria = ninafikiria', 'jambo = jambo', 'hili = hili']
+        sw: "Kuna mtazamo mwingine ambao ni muhimu kuzingatia.",
+        en: "There is another perspective which is important to consider.",
+        vi: "Có góc nhìn khác cũng quan trọng cần xem xét.",
+        pronunciation_focus: [
+          "KU-na = có (tồn tại)",
+          "m-ta-ZA-mo MWI-ngi-ne = góc nhìn khác",
+          "ku-ZIN-ga-ti-a = xem xét / cân nhắc",
+        ],
+        pronunciation_focus_en: [
+          "kuna = there is",
+          "mtazamo mwingine = another perspective",
+          "kuzingatia = to consider",
+        ],
       },
       {
-        sw: 'Sina uhakika kabisa',
-        en: 'I am not completely sure',
-        vi: 'Tôi vẫn đang suy nghĩ về việc này',
-        pronunciation_focus: ['Sina → sina', 'uhakika → uhakika', 'kabisa → kabisa'],
-        pronunciation_focus_en: ['Sina = sina', 'uhakika = uhakika', 'kabisa = kabisa']
+        sw: "Bado ninafikiria jambo hili. Sina uhakika kabisa.",
+        en: "I am still thinking about this. I am not completely sure.",
+        vi: "Tôi vẫn đang nghĩ về việc này. Tôi chưa hoàn toàn chắc chắn.",
+        pronunciation_focus: [
+          "BA-do = vẫn còn / chưa",
+          "ni-na-fi-KI-ri-a = tôi đang nghĩ",
+          "SI-na u-ha-KI-ka = tôi không chắc chắn",
+          "ka-BI-sa = hoàn toàn",
+        ],
+        pronunciation_focus_en: [
+          "bado = still / not yet",
+          "ninafikiria = I am thinking",
+          "sina uhakika = I am not sure",
+          "kabisa = completely",
+        ],
       },
       {
-        sw: 'Huenda nikabadilisha maoni baadaye',
-        en: 'I might change my opinion later',
-        vi: 'Tôi vẫn đang suy nghĩ về việc này',
-        pronunciation_focus: ['Huenda → huenda', 'nikabadilisha → nikabadilisha', 'maoni → maoni', 'baadaye → baadaye'],
-        pronunciation_focus_en: ['Huenda = huenda', 'nikabadilisha = nikabadilisha', 'maoni = maoni', 'baadaye = baadaye']
+        sw: "Ninaamini kwa dhati kwamba hii ndiyo njia sahihi.",
+        en: "I firmly believe that this is the right way.",
+        vi: "Tôi tin tưởng vững chắc rằng đây là con đường đúng.",
+        pronunciation_focus: [
+          "ni-na-A-mi-ni = tôi tin",
+          "kwa DHA-ti = vững chắc / chân thành",
+          "NDI-yo = quả thật là (nhấn mạnh)",
+          "NJI-a sa-HI-hi = con đường đúng",
+        ],
+        pronunciation_focus_en: [
+          "ninaamini = I believe",
+          "kwa dhati = firmly / sincerely",
+          "ndiyo = indeed (emphasis)",
+          "njia sahihi = the right way",
+        ],
       },
     ],
-    cultural_notes_vi: 'Phòng này giúp bạn diễn đạt quan điểm rõ ràng, lịch sự, và tinh tế trong tiếng Swahili. Ở trình độ C1, một ý kiến mạnh vẫn cần được nói ra sao cho cân bằng và thấu đáo. Sáu phần trong phòng hướng dẫn bạn cách đồng ý, cách phản đối, cách thêm góc nhìn và cách nói khi mình chưa chắc chắn — đều một cách tự nhiên và chín chắn.',
-    cultural_notes_en: 'This room helps you express opinions clearly, politely, and with nuance in Swahili. At C1 level, strong ideas must sound balanced and thoughtful. These six entries teach you how to agree, disagree, add perspective, and express uncertainty in a mature and natural way.',
-    tip_advice_vi: 'Khi cần đưa ra một quan điểm mạnh, hãy giữ bình tĩnh và rõ ràng. Cụm từ hữu ích: Kwa maoni yangu… — Theo ý kiến của tôi… Ninaamini kwa dhati kwamba… — Tôi tin chắc rằng… Kulingana na uzoefu wangu… — Theo kinh nghiệm của tôi… Ukweli ni kwamba… — Sự thật là… Hãy nói một lần thật tự tin. Bạn không cần lặp đi lặp lại hay ra sức bảo vệ. Trong diễn ngôn',
-    tip_advice_en: 'When you must express a strong opinion, keep it calm and clear. Useful phrases: Kwa maoni yangu… / In my opinion… Ninaamini kwa dhati kwamba… / I firmly believe that… Kulingana na uzoefu wangu… / According to my experience… Ukweli ni kwamba… / The truth is that… Say it once with confidence. You do not need to repeat or defend too much. In Swahili d',
     vocabulary: [
-      { word: 'opinions', en: 'opinions', vi: 'quan điểm', pos: 'noun', pronunciation_vi: 'OPINIONS', pronunciation_en: 'opinions' },
-      { word: 'soft tone', en: 'soft tone', vi: 'giọng mềm', pos: 'noun', pronunciation_vi: 'SOFT TONE', pronunciation_en: 'soft tone' },
-      { word: 'agreement', en: 'agreement', vi: 'đồng ý', pos: 'noun', pronunciation_vi: 'AGREEMENT', pronunciation_en: 'agreement' },
-      { word: 'balanced', en: 'balanced', vi: 'cân bằng', pos: 'noun', pronunciation_vi: 'BALANCED', pronunciation_en: 'balanced' },
-      { word: 'disagreement', en: 'disagreement', vi: 'bất đồng', pos: 'noun', pronunciation_vi: 'DISAGREEMENT', pronunciation_en: 'disagreement' },
-      { word: 'polite', en: 'polite', vi: 'lịch sự', pos: 'noun', pronunciation_vi: 'POLITE', pronunciation_en: 'polite' },
-      { word: 'perspective', en: 'perspective', vi: 'góc nhìn', pos: 'noun', pronunciation_vi: 'PERSPECTIVE', pronunciation_en: 'perspective' },
+      { word: "naona", en: "I see / in my view", vi: "tôi thấy", pos: "phrase" },
+      { word: "nakubaliana", en: "I agree", vi: "tôi đồng ý", pos: "verb" },
+      { word: "ninaelewa", en: "I understand", vi: "tôi hiểu", pos: "verb" },
+      { word: "mtazamo", en: "perspective / viewpoint", vi: "góc nhìn", pos: "noun", ngeli: "3/4" },
+      { word: "kwa dhati", en: "firmly / sincerely", vi: "vững chắc / chân thành", pos: "adverb" },
+      { word: "uhakika", en: "certainty / sureness", vi: "sự chắc chắn", pos: "noun", ngeli: "14" },
+      { word: "kuzingatia", en: "to consider", vi: "xem xét", pos: "verb" },
+      { word: "suala", en: "issue / matter", vi: "vấn đề", pos: "noun", ngeli: "5/6" },
     ],
+    cultural_notes_vi:
+      "Trong giao tiếp Swahili, mọi ý kiến nên được làm mềm để nghe tôn " +
+      "trọng — ngay cả ý kiến mạnh. Đồng ý nên thêm chi tiết (thể hiện " +
+      "lắng nghe tích cực). Không đồng ý đòi hỏi công nhận quan điểm " +
+      "người kia trước. Diễn đạt không chắc chắn ('Bado ninafikiria…') " +
+      "được coi là khiêm tốn trí tuệ, không phải yếu đuối. Ý kiến mạnh " +
+      "mẽ nhưng bình tĩnh có trọng lượng hơn ý kiến kích động.",
+    cultural_notes_en:
+      "In Swahili communication, all opinions should be softened to sound " +
+      "respectful — even strong ones. Agreement should add detail (showing " +
+      "active listening). Disagreement requires acknowledging the other's " +
+      "view first. Expressing uncertainty ('Bado ninafikiria…') is seen as " +
+      "intellectual humility, not weakness. A calm strong opinion carries " +
+      "more weight than an agitated one.",
+    tip_advice_vi:
+      "Chọn 1 chủ đề, diễn đạt 5 kiểu ý kiến: (1) đồng ý có bổ sung, " +
+      "(2) không đồng ý lịch sự, (3) thêm góc nhìn mới, (4) bày tỏ không " +
+      "chắc chắn, (5) ý kiến mạnh nhưng bình tĩnh. Mỗi kiểu 30 giây.",
+    tip_advice_en:
+      "Pick a topic, express 5 types of opinion: (1) agreement with added " +
+      "detail, (2) polite disagreement, (3) adding new perspective, " +
+      "(4) expressing uncertainty, (5) calm strong opinion. 30 seconds each.",
   },
 ];
 
