@@ -96,6 +96,7 @@ describe("Study OS static boundary", () => {
 
     expect(nonSpeakTopicFiles).toEqual([
       "src/lib/tutor/bilingualSalienceDetector.ts",
+      "src/lib/tutor/challengeTimingPolicy.ts",
       "src/lib/tutor/contentAwarePivots.ts",
       "src/lib/tutor/conversationAiClient.ts",
       "src/lib/tutor/conversationPromptTemplates.ts",
@@ -110,11 +111,14 @@ describe("Study OS static boundary", () => {
       "src/lib/tutor/emotionalResponseBoundary.ts",
       "src/lib/tutor/encouragementTimingPolicy.ts",
       "src/lib/tutor/englishOnlyTts.ts",
+      "src/lib/tutor/errorRecoveryStrategyPolicy.ts",
       "src/lib/tutor/followUpIntelligence.ts",
       "src/lib/tutor/goldenConversationSimulations.ts",
+      "src/lib/tutor/hintLadderPolicy.ts",
       "src/lib/tutor/languageRegistry.ts",
       "src/lib/tutor/learnerHistoryProfile.ts",
       "src/lib/tutor/learnerProfileBuilder.ts",
+      "src/lib/tutor/learnerReadinessPolicy.ts",
       "src/lib/tutor/learningEvents.ts",
       "src/lib/tutor/learningEventSummary.ts",
       "src/lib/tutor/lessonRecommendationIntelligence.ts",

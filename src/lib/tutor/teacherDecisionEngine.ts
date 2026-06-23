@@ -48,6 +48,12 @@ import {
   type HintLadderDecision,
   type HintLadderResult,
 } from "./hintLadderPolicy";
+import {
+  decideLearnerReadiness,
+  isLearnerReady,
+  type LearnerReadinessInput,
+  type LearnerReadinessResult,
+} from "./learnerReadinessPolicy";
 
 // ─── Decision Types ──────────────────────────────────────────────────────
 
@@ -109,6 +115,10 @@ export type TeacherDecision = {
    *  Non-null when the hint ladder recommends a hint (HINT_MINIMAL, HINT_MEDIUM, HINT_STRONG)
    *  or queues one for later (HINT_SOON). Null when NO_HINT — use direct correction/suppression. */
   hintLadder: HintLadderResult | null;
+  /** Learner readiness: whether the learner is ready for the current lesson content,
+   *  or needs prerequisite work / retry later / different approach / skip ahead.
+   *  Computed by the R1-R8 readiness gate chain. Always non-null (defaults to READY_NOW). */
+  readiness: LearnerReadinessResult;
 };
 
 /**
@@ -144,6 +154,23 @@ export type TeacherDecisionInput = {
   isShowingFrustration?: boolean;
   /** Total conversation turns in this session. Default: 0. */
   totalTurnsInSession?: number;
+  // ── Learner readiness context (optional — defaults are sensible) ──
+  /** Ratio of prerequisite skills mastered (0.0–1.0). Default: 0.85 (assumes typical readiness). */
+  prerequisiteMasteryRatio?: number;
+  /** Error rate on prerequisite patterns in recent turns (0.0–1.0). Default: 0.1. */
+  prerequisiteErrorRate?: number;
+  /** Turns since the last lesson attempt (Infinity if never). Default: Infinity. */
+  turnsSinceLastLessonAttempt?: number;
+  /** How many times this lesson has been attempted this session. Default: 0. */
+  lessonAttemptsThisSession?: number;
+  /** Estimated mastery of current lesson target (0.0–1.0). Default: 0.3. */
+  lessonTargetMasteryEstimate?: number;
+  /** Consecutive correct turns (≥0). Default: 1. */
+  consecutiveCorrectTurns?: number;
+  /** Specific prerequisite skill IDs where the learner keeps struggling. Default: []. */
+  recurringPrerequisiteStruggles?: string[];
+  /** Whether the learner showed progress on the last lesson attempt. Default: false. */
+  showedProgressOnLastAttempt?: boolean;
 };
 
 // ─── Priority Scoring ────────────────────────────────────────────────────
@@ -496,13 +523,21 @@ function generateRationaleVi(
  *   3. Severity inference — determine how serious the top error is
  *   4. Confidence inference — detect shy/normal/confident from text
  *   5. Self-correction detection — check if the learner already self-corrected
- *   6. Hint ladder decision — decide whether to use a graduated hint (H1-H8 gates)
- *   7. Timing decision — run the T1-T8 gate chain
- *   8. Action mapping — convert timing mode → UI action
- *   9. Experience enrichment — weakness tags + Vietnamese interference context
- *  10. Vietnamese rationale — learner-facing explanation
- *  11. Suppression reasoning — when action is SUPPRESS, explain which pedagogical rules justify it
- *  12. Unified decision — one object with everything the UI needs
+ *   6. Learner readiness — diagnose whether learner is ready for current lesson (R1-R8 gates)
+ *   7. Hint ladder decision — decide whether to use a graduated hint (H1-H8 gates)
+ *   8. Timing decision — run the T1-T8 gate chain
+ *   9. Action mapping — convert timing mode → UI action
+ *  10. Experience enrichment — weakness tags + Vietnamese interference context
+ *  11. Vietnamese rationale — learner-facing explanation
+ *  12. Suppression reasoning — when action is SUPPRESS, explain which pedagogical rules justify it
+ *  13. Unified decision — one object with everything the UI needs
+ *
+ * Learner readiness (step 6) runs AFTER confidence inference because it needs
+ * learnerConfidence and isShowingFrustration, but BEFORE the hint ladder because
+ * readiness may recommend prerequisite work that makes hints unnecessary.
+ * Readiness is computed even for empty/no-error/needs-ai paths — the question
+ * "is this learner ready for this content?" is independent of whether the
+ * current utterance has errors.
  *
  * Pure function — deterministic, no side effects, no I/O.
  *
@@ -527,7 +562,33 @@ export function decideTeacherAction(
     previousHintWorked = false,
     isShowingFrustration = false,
     totalTurnsInSession = 0,
+    // Learner readiness context with defaults
+    prerequisiteMasteryRatio = 0.85,
+    prerequisiteErrorRate = 0.1,
+    turnsSinceLastLessonAttempt = Infinity,
+    lessonAttemptsThisSession = 0,
+    lessonTargetMasteryEstimate = 0.3,
+    consecutiveCorrectTurns = 1,
+    recurringPrerequisiteStruggles = [],
+    showedProgressOnLastAttempt = false,
   } = input;
+
+  // Helper: compute learner readiness (used in all return paths, not just the main pipeline)
+  const readinessInput: LearnerReadinessInput = {
+    cefrLevel,
+    prerequisiteMasteryRatio,
+    prerequisiteErrorRate,
+    turnsSinceLastLessonAttempt,
+    lessonAttemptsThisSession,
+    lessonTargetMasteryEstimate,
+    consecutiveCorrectTurns,
+    recurringPrerequisiteStruggles,
+    learnerConfidence,
+    isShowingFrustration,
+    totalTurnsInSession,
+    showedProgressOnLastAttempt,
+  };
+  const readiness = decideLearnerReadiness(readinessInput);
 
   // ── Step 1: Run correction engine ──────────────────────────────────
   const correction = correctWithTutorRules(learnerText, targetLanguage);
@@ -545,6 +606,7 @@ export function decideTeacherAction(
       enrichment: null,
       suppressionDecision: null,
       hintLadder: null,
+      readiness,
     };
   }
 
@@ -561,6 +623,7 @@ export function decideTeacherAction(
       enrichment: null,
       suppressionDecision: null,
       hintLadder: null,
+      readiness,
     };
   }
 
@@ -586,6 +649,7 @@ export function decideTeacherAction(
       enrichment: null,
       suppressionDecision: null,
       hintLadder: null,
+      readiness,
     };
   }
 
@@ -599,7 +663,11 @@ export function decideTeacherAction(
   const confidenceFromText = inferLearnerConfidence(learnerText);
   const didSelfCorrect = detectSelfCorrectionInText(learnerText);
 
-  // ── Step 6: Run hint ladder decision ───────────────────────────────
+  // ── Step 6: Learner readiness already computed above (R1-R8 gates) ─
+  // (readiness is computed before the main pipeline so it's available
+  //  in all return paths — see the readinessInput const near the top)
+
+  // ── Step 7: Run hint ladder decision ───────────────────────────────
   const hintLadder = decideHintLadder({
     turnsSinceLastHint,
     hintsThisSession,
@@ -615,7 +683,7 @@ export function decideTeacherAction(
     previousHintWorked,
   });
 
-  // ── Step 7: Run timing decision engine ─────────────────────────────
+  // ── Step 8: Run timing decision engine ─────────────────────────────
   const timingInput: CorrectionTimingInput = {
     learnerText,
     cefrLevel,
@@ -629,23 +697,23 @@ export function decideTeacherAction(
 
   const timing = decideCorrectionMode(timingInput);
 
-  // ── Step 8: Map timing mode → DecisionAction ───────────────────────
+  // ── Step 9: Map timing mode → DecisionAction ───────────────────────
   const action = timingModeToAction(timing.mode);
 
-  // ── Step 9: Enrich with weakness tags + interference ────────────────
+  // ── Step 10: Enrich with weakness tags + interference ────────────────
   const enrichment = enrichCorrectionExperience(
     correction.appliedRuleIds,
     correction.corrected,
   );
 
-  // ── Step 10: Generate Vietnamese rationale ──────────────────────────
+  // ── Step 11: Generate Vietnamese rationale ──────────────────────────
   const rationaleVi = generateRationaleVi(timing, {
     cefrLevel,
     previousCorrectionsThisSession,
     sameMistakeCount,
   });
 
-  // ── Step 11: Build suppression reasoning when action is SUPPRESS ────
+  // ── Step 12: Build suppression reasoning when action is SUPPRESS ────
   let suppressionDecision: SuppressionDecision | null = null;
   if (action === "SUPPRESS") {
     const suppressionCtx = buildSuppressionContext({
@@ -661,7 +729,7 @@ export function decideTeacherAction(
     suppressionDecision = evaluateSuppressions(suppressionCtx);
   }
 
-  // ── Step 12: Build the unified decision ──────────────────────────────
+  // ── Step 13: Build the unified decision ──────────────────────────────
   const candidate: CorrectionCandidate = {
     correctedText: correction.corrected,
     appliedRuleIds: correction.appliedRuleIds,
@@ -683,6 +751,7 @@ export function decideTeacherAction(
     hintLadder: isHintRecommendedNow(hintLadder) || isHintQueued(hintLadder)
       ? hintLadder
       : null,
+    readiness,
   };
 }
 
