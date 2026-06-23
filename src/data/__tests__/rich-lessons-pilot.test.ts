@@ -18,21 +18,24 @@ import {
 } from "@/lib/weakness/richLessonSchema";
 import { isKnownWeaknessTag } from "@/lib/weakness/weakness-catalog";
 
-const EXPECTED_PILOT_TAGS = [
-  "vi_l1_3rd_person_s",
-  "vi_l1_past_ed",
-  "vi_l1_missing_be",
-  "id_l1_present_perfect_vs_past",
+const EXPECTED_PILOT_TAGS = new Set<string>([
   "id_l1_conditional_unreal",
+  "id_l1_present_perfect_vs_past",
   "id_l1_reported_speech",
-] as const;
+  "vi_l1_3rd_person_s",
+  "vi_l1_conditional_mix",
+  "vi_l1_missing_be",
+  "vi_l1_passive_missing_be",
+  "vi_l1_past_ed",
+  "vi_l1_present_perfect_vs_past",
+]);
 
 describe("rich-lessons-pilot.json shape", () => {
-  it("ships exactly the 6 expected pilot lessons (3 A1/A2 VI + 3 B2 ID)", () => {
+  it("ships exactly the 9 expected pilot lessons)", () => {
     expect([...RICH_LESSON_PILOT_TAGS].sort()).toEqual(
       [...EXPECTED_PILOT_TAGS].sort(),
     );
-    expect(RICH_LESSONS_PILOT.length).toBe(6);
+    expect(RICH_LESSONS_PILOT.length).toBe(9);
   });
 
   it("every pilot lesson tag exists in WEAKNESS_CATALOG", () => {
