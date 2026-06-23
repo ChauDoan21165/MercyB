@@ -11,8 +11,21 @@ import type { LearningEvent } from "@/lib/tutor/learningEvents";
 
 const HOUR_MS = 60 * 60 * 1000;
 const DAY_MS = 24 * HOUR_MS;
-const NOW = new Date(2026, 4, 24, 20, 30).getTime();
-const TODAY = new Date(2026, 4, 24, 9, 0).getTime();
+// Use dynamic dates relative to runtime so the 30-day prune window
+// inside recordLearningEvent() never ages out the test events.
+const realNow = Date.now();
+const NOW = new Date(
+  new Date(realNow).getFullYear(),
+  new Date(realNow).getMonth(),
+  new Date(realNow).getDate(),
+  20, 30,
+).getTime();
+const TODAY = new Date(
+  new Date(realNow).getFullYear(),
+  new Date(realNow).getMonth(),
+  new Date(realNow).getDate(),
+  9, 0,
+).getTime();
 const YESTERDAY = TODAY - DAY_MS;
 
 function event(overrides: Partial<LearningEvent>): LearningEvent {
