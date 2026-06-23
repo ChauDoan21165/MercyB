@@ -41,6 +41,13 @@ import {
   buildSuppressionContext,
   type SuppressionDecision,
 } from "./suppressionRules";
+import {
+  decideHintLadder,
+  isHintRecommendedNow,
+  isHintQueued,
+  type HintLadderDecision,
+  type HintLadderResult,
+} from "./hintLadderPolicy";
 
 // ─── Decision Types ──────────────────────────────────────────────────────
 
@@ -98,6 +105,10 @@ export type TeacherDecision = {
   enrichment: EnrichedCorrectionContext | null;
   /** Suppression reasoning: which pedagogical rules justify NOT correcting (non-null when action is SUPPRESS). */
   suppressionDecision: SuppressionDecision | null;
+  /** Hint ladder decision: whether to use a hint instead of direct correction, and at what level.
+   *  Non-null when the hint ladder recommends a hint (HINT_MINIMAL, HINT_MEDIUM, HINT_STRONG)
+   *  or queues one for later (HINT_SOON). Null when NO_HINT — use direct correction/suppression. */
+  hintLadder: HintLadderResult | null;
 };
 
 /**
@@ -120,6 +131,19 @@ export type TeacherDecisionInput = {
   previousCorrectionsThisSession: number;
   /** Optional: the current lesson focus (e.g., "past-tense") for priority boost. */
   lessonFocus?: string;
+  // ── Hint ladder context (optional — defaults are sensible) ──────────
+  /** How many turns since the last hint (Infinity if never hinted). Default: Infinity. */
+  turnsSinceLastHint?: number;
+  /** Total hints delivered this session. Default: 0. */
+  hintsThisSession?: number;
+  /** The level of the most recent hint (null if none). Default: null. */
+  lastHintLevel?: HintLadderDecision | null;
+  /** Whether the previous hint led to self-correction. Default: false. */
+  previousHintWorked?: boolean;
+  /** Whether the learner is showing frustration signals. Default: false. */
+  isShowingFrustration?: boolean;
+  /** Total conversation turns in this session. Default: 0. */
+  totalTurnsInSession?: number;
 };
 
 // ─── Priority Scoring ────────────────────────────────────────────────────
@@ -472,16 +496,17 @@ function generateRationaleVi(
  *   3. Severity inference — determine how serious the top error is
  *   4. Confidence inference — detect shy/normal/confident from text
  *   5. Self-correction detection — check if the learner already self-corrected
- *   6. Timing decision — run the T1-T8 gate chain
- *   7. Action mapping — convert timing mode → UI action
- *   8. Experience enrichment — weakness tags + Vietnamese interference context
- *   9. Vietnamese rationale — learner-facing explanation
- *  10. Suppression reasoning — when action is SUPPRESS, explain which pedagogical rules justify it
- *  11. Unified decision — one object with everything the UI needs
+ *   6. Hint ladder decision — decide whether to use a graduated hint (H1-H8 gates)
+ *   7. Timing decision — run the T1-T8 gate chain
+ *   8. Action mapping — convert timing mode → UI action
+ *   9. Experience enrichment — weakness tags + Vietnamese interference context
+ *  10. Vietnamese rationale — learner-facing explanation
+ *  11. Suppression reasoning — when action is SUPPRESS, explain which pedagogical rules justify it
+ *  12. Unified decision — one object with everything the UI needs
  *
  * Pure function — deterministic, no side effects, no I/O.
  *
- * @returns A TeacherDecision with the action, correction, rationale, and enrichment.
+ * @returns A TeacherDecision with the action, correction, rationale, enrichment, and hint ladder.
  */
 export function decideTeacherAction(
   input: TeacherDecisionInput,
@@ -495,6 +520,13 @@ export function decideTeacherAction(
     learnerConfidence,
     previousCorrectionsThisSession,
     lessonFocus,
+    // Hint ladder context with defaults
+    turnsSinceLastHint = Infinity,
+    hintsThisSession = 0,
+    lastHintLevel = null,
+    previousHintWorked = false,
+    isShowingFrustration = false,
+    totalTurnsInSession = 0,
   } = input;
 
   // ── Step 1: Run correction engine ──────────────────────────────────
@@ -512,6 +544,7 @@ export function decideTeacherAction(
       allCandidates: [],
       enrichment: null,
       suppressionDecision: null,
+      hintLadder: null,
     };
   }
 
@@ -527,6 +560,7 @@ export function decideTeacherAction(
       allCandidates: [],
       enrichment: null,
       suppressionDecision: null,
+      hintLadder: null,
     };
   }
 
@@ -551,6 +585,7 @@ export function decideTeacherAction(
       allCandidates: [],
       enrichment: null,
       suppressionDecision: null,
+      hintLadder: null,
     };
   }
 
@@ -564,7 +599,23 @@ export function decideTeacherAction(
   const confidenceFromText = inferLearnerConfidence(learnerText);
   const didSelfCorrect = detectSelfCorrectionInText(learnerText);
 
-  // ── Step 6: Run timing decision engine ─────────────────────────────
+  // ── Step 6: Run hint ladder decision ───────────────────────────────
+  const hintLadder = decideHintLadder({
+    turnsSinceLastHint,
+    hintsThisSession,
+    lastHintLevel,
+    recurringErrorCount: sameMistakeCount,
+    errorSeverity: primarySeverity,
+    cefrLevel,
+    learnerConfidence,
+    isCurrentLessonTarget,
+    hasSelfCorrectionAwareness: didSelfCorrect,
+    isShowingFrustration,
+    totalTurnsInSession,
+    previousHintWorked,
+  });
+
+  // ── Step 7: Run timing decision engine ─────────────────────────────
   const timingInput: CorrectionTimingInput = {
     learnerText,
     cefrLevel,
@@ -578,23 +629,23 @@ export function decideTeacherAction(
 
   const timing = decideCorrectionMode(timingInput);
 
-  // ── Step 7: Map timing mode → DecisionAction ───────────────────────
+  // ── Step 8: Map timing mode → DecisionAction ───────────────────────
   const action = timingModeToAction(timing.mode);
 
-  // ── Step 8: Enrich with weakness tags + interference ────────────────
+  // ── Step 9: Enrich with weakness tags + interference ────────────────
   const enrichment = enrichCorrectionExperience(
     correction.appliedRuleIds,
     correction.corrected,
   );
 
-  // ── Step 9: Generate Vietnamese rationale ──────────────────────────
+  // ── Step 10: Generate Vietnamese rationale ──────────────────────────
   const rationaleVi = generateRationaleVi(timing, {
     cefrLevel,
     previousCorrectionsThisSession,
     sameMistakeCount,
   });
 
-  // ── Step 10: Build suppression reasoning when action is SUPPRESS ────
+  // ── Step 11: Build suppression reasoning when action is SUPPRESS ────
   let suppressionDecision: SuppressionDecision | null = null;
   if (action === "SUPPRESS") {
     const suppressionCtx = buildSuppressionContext({
@@ -610,7 +661,7 @@ export function decideTeacherAction(
     suppressionDecision = evaluateSuppressions(suppressionCtx);
   }
 
-  // ── Step 11: Build the unified decision ──────────────────────────────
+  // ── Step 12: Build the unified decision ──────────────────────────────
   const candidate: CorrectionCandidate = {
     correctedText: correction.corrected,
     appliedRuleIds: correction.appliedRuleIds,
@@ -629,6 +680,9 @@ export function decideTeacherAction(
     allCandidates: [candidate],
     enrichment,
     suppressionDecision,
+    hintLadder: isHintRecommendedNow(hintLadder) || isHintQueued(hintLadder)
+      ? hintLadder
+      : null,
   };
 }
 
