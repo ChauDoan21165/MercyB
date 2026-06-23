@@ -76,7 +76,7 @@ export interface OnboardingDraft {
   english_level: OnboardingLevel | null;
 }
 
-export interface BilingualLabel { vi: string; en: string; ja?: string }
+export interface BilingualLabel { vi: string; en: string; ja?: string; id?: string }
 
 export interface BilingualCopy extends BilingualLabel {
   /** Optional one-line subhead — VI only, lighter weight. */
@@ -108,6 +108,7 @@ export const NATIVE_OPTIONS: Array<{
 }> = [
   { value: "vi", icon: "🇻🇳", label: { vi: "Tiếng Việt", en: "Vietnamese" } },
   { value: "en", icon: "🇬🇧", label: { vi: "Tiếng Anh", en: "English" } },
+  { value: "id", icon: "🇮🇩", label: { vi: "Tiếng Indonesia", en: "Indonesian" } },
 ];
 
 export interface TargetMeta {
@@ -188,6 +189,9 @@ export const TARGET_MENU: Record<NativeLang, TargetMenuItem[]> = {
   ja: [
     { value: "en", readiness: "full", recommended: true },
   ],
+  id: [
+    { value: "en", readiness: "full", recommended: true },
+  ],
 };
 
 /** Skip default + the pre-checked recommendation per native (Phase 3
@@ -196,6 +200,7 @@ export const RECOMMENDED_TARGET: Record<NativeLang, TargetLang> = {
   vi: "en",
   en: "es",
   ja: "en",
+  id: "en",
 };
 
 /** Default honesty badge by readiness (locked #7). full ⇒ none; a
