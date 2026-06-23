@@ -14,6 +14,7 @@ import { VSTEP_WRITING_TOPICS } from "@/data/exam-prep/vstep/writing-topics";
 import { DAILY_CHALLENGES } from "@/data/pronunciation-challenges";
 import { LISTENING_CLIPS } from "@/data/listening/clips";
 import { SCENARIOS } from "@/data/mock-interviews/scenarios";
+import { allSwahiliLessons } from "@/languages/swahili";
 import type { CefrLevel, IndexedLesson, LessonSource } from "./recommenderTypes";
 
 type RoomJson = {
@@ -295,6 +296,64 @@ function indexInterviews(): IndexedLesson[] {
   });
 }
 
+
+function indexSwahiliLanguagePack(): IndexedLesson[] {
+  return (allSwahiliLessons as Array<{
+    id?: string;
+    level?: string;
+    category?: string;
+    title_en?: string;
+    title_vi?: string;
+    intro_en?: string;
+    intro_vi?: string;
+    cultural_notes_en?: string;
+    cultural_notes_vi?: string;
+    tip_advice_en?: string;
+    tip_advice_vi?: string;
+    sentences?: Array<Record<string, unknown>>;
+    vocabulary?: Array<Record<string, unknown>>;
+  }>).flatMap((entry) => {
+    const rawId = String(entry.id ?? "").trim();
+    if (!rawId) return [];
+
+    const title = entry.title_en ?? rawId;
+    const titleVi = entry.title_vi;
+    const sentenceText = JSON.stringify(entry.sentences ?? []);
+    const vocabText = JSON.stringify(entry.vocabulary ?? []);
+    const text = [
+      rawId,
+      entry.level,
+      entry.category,
+      title,
+      titleVi,
+      entry.intro_en,
+      entry.intro_vi,
+      sentenceText,
+      vocabText,
+      entry.cultural_notes_en,
+      entry.cultural_notes_vi,
+      entry.tip_advice_en,
+      entry.tip_advice_vi,
+    ].join(" ");
+
+    const explicitLevel =
+      typeof entry.level === "string" && VALID_CEFR.has(entry.level)
+        ? (entry.level as CefrLevel)
+        : null;
+
+    return [
+      lesson("room", `swahili:${rawId}`, title, {
+        titleVi,
+        cefrLevel: explicitLevel ?? inferCefrFromText(text),
+        category: inferCategory([String(entry.category ?? ""), text].join(" "), "vocabulary"),
+        subskills: inferSubskills(text, ["vocabulary", "grammar"]),
+        tags: compact(["swahili", "kiswahili", entry.level, entry.category, titleVi, sentenceText, vocabText]),
+        l1InterferenceCoverage: inferL1Coverage(text),
+      }),
+    ];
+  });
+}
+
 function indexRooms(): IndexedLesson[] {
   return Object.values(roomModules).flatMap((room) => {
     const id = String(room.id ?? "").trim();
@@ -344,6 +403,7 @@ export function buildLessonIndex(): IndexedLesson[] {
     ...indexPronunciation(),
     ...indexListening(),
     ...indexInterviews(),
+    ...indexSwahiliLanguagePack(),
     ...indexRooms(),
   ]);
 }
