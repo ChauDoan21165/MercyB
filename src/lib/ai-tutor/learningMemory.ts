@@ -159,7 +159,7 @@ async function withStore<T>(
   }
 }
 
-function sanitizeMemoryTag(value: string): string {
+export function sanitizeMemoryTag(value: string): string {
   const withoutEmail = value.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "").trim();
   const withoutTokens = withoutEmail
     .replace(/\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\b/g, "")
