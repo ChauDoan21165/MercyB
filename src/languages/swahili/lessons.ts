@@ -58,6 +58,11 @@ export type SwahiliCategoryId =
   | "presentations"
   | "literary"
   | "noun_classes"
+  // C1 — advanced (C1 wave)
+  | "complex_sentences"
+  | "relative_clauses"
+  | "narrative"
+  | "cultural_nuances"
   // C2 — mastery (C2 wave)
   | "academic_discourse"
   | "advanced_grammar"
@@ -213,6 +218,11 @@ export const SWAHILI_CATEGORIES: ReadonlyArray<SwahiliCategoryMeta> = [
   { id: "presentations", title_vi: "Thuyết trình chuyên nghiệp", title_en: "Professional presentations", expected_count: 1 },
   { id: "literary", title_vi: "Ngôn ngữ văn chương", title_en: "Literary language", expected_count: 1 },
   { id: "noun_classes", title_vi: "Hệ thống lớp danh từ (ngeli)", title_en: "Noun class system (ngeli)", expected_count: 1 },
+  // C1 — advanced (C1 wave)
+  { id: "complex_sentences", title_vi: "Xây dựng câu phức", title_en: "Complex sentence building", expected_count: 1 },
+  { id: "relative_clauses", title_vi: "Mệnh đề quan hệ chuyên sâu", title_en: "Relative clauses in depth", expected_count: 1 },
+  { id: "narrative", title_vi: "Kể chuyện và tường thuật", title_en: "Narrative and storytelling", expected_count: 1 },
+  { id: "cultural_nuances", title_vi: "Sắc thái văn hóa trong giao tiếp", title_en: "Cultural nuances in communication", expected_count: 1 },
   // C2 — mastery (C2 wave)
   { id: "academic_discourse", title_vi: "Diễn ngôn học thuật", title_en: "Academic discourse", expected_count: 1 },
   { id: "advanced_grammar", title_vi: "Ngữ pháp nâng cao: chuỗi lớp danh từ", title_en: "Advanced grammar: noun class chains", expected_count: 1 },

@@ -11,12 +11,12 @@ describe("Swahili content integrity", () => {
     expect(Object.keys(SWAHILI_LESSONS_BY_LEVEL)).toEqual(levels);
   });
 
-  it("A1, A2, B1, B2, and C2 have lessons; C1 is empty", () => {
+  it("all six levels A1 through C2 have lessons", () => {
     expect(SWAHILI_LESSONS_BY_LEVEL.A1.length).toBeGreaterThan(0);
     expect(SWAHILI_LESSONS_BY_LEVEL.A2.length).toBeGreaterThan(0);
     expect(SWAHILI_LESSONS_BY_LEVEL.B1.length).toBeGreaterThan(0);
     expect(SWAHILI_LESSONS_BY_LEVEL.B2.length).toBeGreaterThan(0);
-    expect(SWAHILI_LESSONS_BY_LEVEL.C1.length).toBe(0);
+    expect(SWAHILI_LESSONS_BY_LEVEL.C1.length).toBeGreaterThan(0);
     expect(SWAHILI_LESSONS_BY_LEVEL.C2.length).toBeGreaterThan(0);
   });
 
@@ -79,6 +79,29 @@ describe("Swahili content integrity", () => {
     ]);
   });
 
+  it("has exactly 14 C1 lessons covering all C1 categories", () => {
+    const c1 = SWAHILI_LESSONS_BY_LEVEL.C1;
+    expect(c1.length).toBe(14);
+
+    const categories = c1.map((l: any) => l.category).sort();
+    expect(categories).toEqual([
+      "academic",
+      "business",
+      "complex_sentences",
+      "conditional",
+      "cultural_nuances",
+      "debate",
+      "idioms_proverbs",
+      "literary",
+      "narrative",
+      "noun_classes",
+      "opinions",
+      "register",
+      "relative_clauses",
+      "verb_extensions",
+    ]);
+  });
+
   it("has exactly 10 C2 lessons", () => {
     const c2 = SWAHILI_LESSONS_BY_LEVEL.C2;
     expect(c2.length).toBe(10);
@@ -131,8 +154,8 @@ describe("Swahili content integrity", () => {
     }
   });
 
-  it("every B1/B2/C2 sentence has sw, vi, en fields", () => {
-    for (const level of ["B1", "B2", "C2"] as const) {
+  it("every B1/B2/C1/C2 sentence has sw, vi, en fields", () => {
+    for (const level of ["B1", "B2", "C1", "C2"] as const) {
       for (const lesson of SWAHILI_LESSONS_BY_LEVEL[level]) {
         for (const s of (lesson as any).sentences) {
           expect(s.sw).toBeTruthy();
@@ -143,8 +166,8 @@ describe("Swahili content integrity", () => {
     }
   });
 
-  it("every B1/B2/C2 lesson has vocabulary", () => {
-    for (const level of ["B1", "B2", "C2"] as const) {
+  it("every B1/B2/C1/C2 lesson has vocabulary", () => {
+    for (const level of ["B1", "B2", "C1", "C2"] as const) {
       for (const lesson of SWAHILI_LESSONS_BY_LEVEL[level]) {
         const l = lesson as any;
         expect(l.vocabulary).toBeTruthy();

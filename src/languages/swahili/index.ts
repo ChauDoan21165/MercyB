@@ -11,8 +11,8 @@
 //   A2     → lessons-a2.ts (6 categories, fresh scaffold)
 //   B1 wave → lessons-b1.ts (5 categories)
 //   B2 wave → lessons-b2.ts (5 categories)
+//   C1 wave → lessons-c1.ts (14 categories, adapted from A5 room JSONs)
 //   C2 wave → lessons-c2.ts (10 categories)
-//   C1     → pending (A5 wave produced room JSON only, no lesson file)
 
 import type { CefrLevel } from "@/components/languages/LessonRenderer.types";
 import type { SwahiliLessonInput } from "./normalize";
@@ -21,9 +21,10 @@ import a1Lessons from "./lessons-a1";
 import a2Lessons from "./lessons-a2";
 import b1Lessons from "./lessons-b1";
 import b2Lessons from "./lessons-b2";
+import c1Lessons from "./lessons-c1";
 import c2Lessons from "./lessons-c2";
 
-export { a1Lessons, a2Lessons, b1Lessons, b2Lessons, c2Lessons };
+export { a1Lessons, a2Lessons, b1Lessons, b2Lessons, c1Lessons, c2Lessons };
 
 export {
   SWAHILI_CATEGORIES,
@@ -59,7 +60,6 @@ export type SwahiliLevel = Extract<
 export type SwahiliShippedLevel = SwahiliLevel;
 
 // Lessons grouped by CEFR level, in curriculum order.
-// C1 is empty — A5 wave produced room JSON only (no lesson file).
 export const SWAHILI_LESSONS_BY_LEVEL: Record<
   SwahiliShippedLevel,
   SwahiliLessonInput[]
@@ -68,7 +68,7 @@ export const SWAHILI_LESSONS_BY_LEVEL: Record<
   A2: a2Lessons as unknown as SwahiliLessonInput[],
   B1: b1Lessons as unknown as SwahiliLessonInput[],
   B2: b2Lessons as unknown as SwahiliLessonInput[],
-  C1: [],
+  C1: c1Lessons as unknown as SwahiliLessonInput[],
   C2: c2Lessons as unknown as SwahiliLessonInput[],
 };
 
