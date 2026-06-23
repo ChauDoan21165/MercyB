@@ -160,14 +160,81 @@ describe("BilingualText — ja slot", () => {
 });
 
 describe("MicroLessonText — ja slot", () => {
-  it("existing MicroLesson has no ja (legacy unchanged)", () => {
+  it("micro-lesson now has ja populated (Japanese-native English wave 1)", () => {
     const ml = MICRO_LESSONS.vi_l1_3rd_person_s!;
-    expect(ml.title.ja).toBeUndefined();
+    expect(ml.title.ja?.length).toBeGreaterThan(0);
     expect(ml.title.en.length).toBeGreaterThan(0);
     expect(ml.title.vi.length).toBeGreaterThan(0);
   });
 
-  it("all 30 micro-lessons are valid with vi/en populated", () => {
+  it("all 30 micro-lessons have vi/en populated, ja populated where added", () => {
+    for (const tag of MICRO_LESSON_TAGS) {
+      const ml = MICRO_LESSONS[tag]!;
+      expect(ml.title.en.trim().length, `${tag} title.en empty`).toBeGreaterThan(0);
+      expect(ml.title.vi.trim().length, `${tag} title.vi empty`).toBeGreaterThan(0);
+      expect(ml.concept.en.trim().length, `${tag} concept.en empty`).toBeGreaterThan(0);
+      expect(ml.concept.vi.trim().length, `${tag} concept.vi empty`).toBeGreaterThan(0);
+      expect(ml.tip.en.trim().length, `${tag} tip.en empty`).toBeGreaterThan(0);
+      expect(ml.tip.vi.trim().length, `${tag} tip.vi empty`).toBeGreaterThan(0);
+      // ja should be populated for all l1 lessons (wave 1 content)
+      expect(ml.title.ja?.trim().length, `${tag} title.ja empty`).toBeGreaterThan(0);
+      expect(ml.concept.ja?.trim().length, `${tag} concept.ja empty`).toBeGreaterThan(0);
+      expect(ml.tip.ja?.trim().length, `${tag} tip.ja empty`).toBeGreaterThan(0);
+    }
+  });
+});
+
+
+// ────────────────────────────────────────────────────────────────────────────
+// ja content — consolidated Japanese-native English (wave 1)
+// Verifies that all 30 micro-lessons have non-empty ja (from A1–C2 branches),
+// contain actual Japanese text, and that en/vi remain untouched.
+// ────────────────────────────────────────────────────────────────────────────
+
+describe("MicroLessonText — ja content (consolidated wave 1)", () => {
+  /** Quick CJK check — true if the string contains at least one Japanese-range character. */
+  function containsJapanese(text: string): boolean {
+    return /[぀-ゟ゠-ヿ一-鿿]/.test(text);
+  }
+
+  it("every micro-lesson has non-empty ja on title, concept, and tip", () => {
+    for (const tag of MICRO_LESSON_TAGS) {
+      const ml = MICRO_LESSONS[tag];
+      expect(ml, `MicroLesson missing for ${tag}`).toBeDefined();
+      expect(
+        ml!.title.ja?.trim().length,
+        `${tag} title.ja empty`,
+      ).toBeGreaterThan(0);
+      expect(
+        ml!.concept.ja?.trim().length,
+        `${tag} concept.ja empty`,
+      ).toBeGreaterThan(0);
+      expect(
+        ml!.tip.ja?.trim().length,
+        `${tag} tip.ja empty`,
+      ).toBeGreaterThan(0);
+    }
+  });
+
+  it("every ja field contains actual Japanese text (not just ASCII)", () => {
+    for (const tag of MICRO_LESSON_TAGS) {
+      const ml = MICRO_LESSONS[tag]!;
+      expect(
+        containsJapanese(ml.title.ja!),
+        `${tag} title.ja has no Japanese characters: "${ml.title.ja}"`,
+      ).toBe(true);
+      expect(
+        containsJapanese(ml.concept.ja!),
+        `${tag} concept.ja has no Japanese characters`,
+      ).toBe(true);
+      expect(
+        containsJapanese(ml.tip.ja!),
+        `${tag} tip.ja has no Japanese characters`,
+      ).toBe(true);
+    }
+  });
+
+  it("en and vi fields remain populated for all lessons", () => {
     for (const tag of MICRO_LESSON_TAGS) {
       const ml = MICRO_LESSONS[tag]!;
       expect(ml.title.en.trim().length, `${tag} title.en empty`).toBeGreaterThan(0);

@@ -68,10 +68,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Add **-s** for he/she/it",
       vi: "Thêm **-s** cho he/she/it",
+      ja: "he/she/it の動詞に **-s** をつける",
     },
     concept: {
       en: "Vietnamese verbs never change form. In English, we add **-s** (or **-es**) when the subject is he, she, or it.",
       vi: "Tiếng Việt động từ không đổi. Tiếng Anh phải thêm **-s** (hoặc **-es**) khi chủ ngữ là he, she, it.",
+      ja: "日本語の動詞も「私は行く」「彼女は行く」のように主語が変わっても動詞は変わりません。しかし英語では、主語が **he / she / it**（三人称単数）のとき、動詞の最後に **-s** または **-es** をつけます。これは日本語話者が最初につまずくポイントです。",
     },
     examples: [
       {
@@ -80,6 +82,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "**she** needs **goes**, not **go**.",
           vi: "**she** đi với **goes**, không phải **go**.",
+          ja: "主語が **she** なので、動詞は **go** ではなく **goes**。",
         },
       },
       {
@@ -92,6 +95,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "**My father** = **he** → verb adds **-s**.",
           vi: "**My father** = **he** → động từ thêm **-s**.",
+          ja: "「私の父」は **he** と同じ扱い → 動詞に **-s** をつける。",
         },
       },
       {
@@ -100,6 +104,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Verbs ending in consonant + **-y** change to **-ies**: **cry → cries**.",
           vi: "Động từ tận cùng phụ âm + **-y** đổi thành **-ies**: **cry → cries**.",
+          ja: "子音 + **-y** で終わる動詞は **-ies** に変わる：**cry → cries**。",
         },
       },
       {
@@ -108,6 +113,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Negative also follows the rule: **she / he / it → doesn't**.",
           vi: "Câu phủ định cũng vậy: **she / he / it → doesn't**.",
+          ja: "否定文も同じルール：**she / he / it → doesn't** を使い、動詞は原形のまま。",
         },
       },
     ],
@@ -123,6 +129,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "If you can replace the subject with 'he', remember to add **-s** to the verb.",
       vi: "Nếu thay chủ ngữ bằng 'he' được thì động từ phải thêm **-s**.",
+      ja: "主語を「彼は」に置き換えられるなら、動詞に **-s** をつける。",
     },
   },
 
@@ -135,10 +142,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Past tense — change the verb",
       vi: "Quá khứ — phải đổi động từ",
+      ja: "過去形 — 動詞を変える",
     },
     concept: {
       en: "Vietnamese often only needs a time word like 'hôm qua'. English **always** changes the verb for past tense.",
       vi: "Tiếng Việt mình hay chỉ cần từ chỉ thời gian như 'hôm qua'. Tiếng Anh **luôn phải đổi** động từ sang quá khứ.",
+      ja: "日本語にも「〜ました／〜た」という過去形がありますが、英語はもっと厳格です。「yesterday」などの時間を表す言葉があっても、動詞は必ず過去形に変えます。「Yesterday I work」は絶対にダメ。「Yesterday I work**ed**」です。規則動詞は **-ed**、不規則動詞（go→went, eat→ate）は暗記が必要です。",
     },
     examples: [
       {
@@ -147,6 +156,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "**yesterday** already says past — the verb still needs **-ed**.",
           vi: "**yesterday** đã chỉ quá khứ rồi — động từ vẫn phải có **-ed**.",
+          ja: "**yesterday** があっても、動詞は必ず過去形（**-ed**）に。",
         },
       },
       {
@@ -159,6 +169,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "**go** is irregular: **go → went** (not **goed**).",
           vi: "**go** bất quy tắc: **go → went** (không phải **goed**).",
+          ja: "**go** は不規則：**go → went**（**goed** ではない）。",
         },
       },
       {
@@ -167,6 +178,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Consonant + **-y** → change to **-ied**: **study → studied**.",
           vi: "Phụ âm + **-y** → đổi thành **-ied**: **study → studied**.",
+          ja: "子音 + **-y** → **-ied**：**study → studied**。",
         },
       },
       {
@@ -175,6 +187,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Irregular: **eat → ate**.",
           vi: "Bất quy tắc: **eat → ate**.",
+          ja: "不規則：**eat → ate**。",
         },
       },
     ],
@@ -190,6 +203,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Time word alone is not enough in English. Always change the verb!",
       vi: "Chỉ có từ chỉ thời gian chưa đủ. Phải đổi động từ luôn nhé!",
+      ja: "時間を表す言葉だけでは不十分。必ず動詞も過去形に。日本語の「〜ました／〜た」を付けるのと同じ習慣です。",
     },
   },
 
@@ -202,10 +216,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Plural nouns — add **-s**",
       vi: "Danh từ số nhiều — thêm **-s**",
+      ja: "複数形：名詞に **-s** — 日本語にない「数」の感覚",
     },
     concept: {
       en: "Vietnamese nouns usually stay the same. English nouns almost always add **-s** or **-es** in plural form.",
       vi: "Tiếng Việt danh từ ít khi đổi. Tiếng Anh hầu như luôn thêm **-s** hoặc **-es** khi số nhiều.",
+      ja: "日本語では名詞の形で単数・複数を区別しません。「一冊の本」も「三冊の本」も「本」は「本」のまま。一方、英語は複数であればほぼ必ず名詞に -s または -es をつけます（one book → three books）。さらに many / some / a few のような数量を表す語が前につく場合も、後ろの名詞は複数形にする必要があります。この「数を名詞の形で表す」という発想そのものが日本語にはないため、B2でも会話中に -s を落としてしまうことは非常に多いです。",
     },
     examples: [
       {
@@ -253,6 +269,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "If the number in front is more than one (or a word like **many / some / a few**), the noun needs **-s**.",
       vi: "Nếu phía trước là số nhiều hơn một (hoặc các từ như **many / some / a few**), danh từ phải có **-s**.",
+      ja: "前の数が2以上なら（または many / some / a few のような語があれば）、名詞には必ず -s。日本語の「三つのリンゴ」の「リンゴ」が three apple ではなく three apples になる。数に敏感になることが第一歩です。",
     },
   },
 
@@ -265,10 +282,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Don't forget **am / is / are**",
       vi: "Đừng quên **am / is / are**",
+      ja: "**am / is / are** を忘れずに",
     },
     concept: {
       en: "Vietnamese often drops the verb 'to be'. English nearly always needs **am, is,** or **are**.",
       vi: "Tiếng Việt mình hay bỏ động từ 'to be'. Tiếng Anh gần như luôn cần **am, is, are**.",
+      ja: "日本語も「彼女は先生です」のように「です」で文を終えますが、英語では **am / is / are** が必須の動詞として主語と補語の間に入ります。日本語の「〜は〜です」の「です」の位置に **am / is / are** が来ると考えてください。",
     },
     examples: [
       {
@@ -281,6 +300,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "**I → am**, **you / we / they → are**, **he / she / it → is**.",
           vi: "**I → am**, **you / we / they → are**, **he / she / it → is**.",
+          ja: "**I → am**、**you / we / they → are**、**he / she / it → is**。",
         },
       },
       {
@@ -293,6 +313,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Location sentences also need **be**.",
           vi: "Câu chỉ vị trí cũng cần **be**.",
+          ja: "場所を表す文にも **be** が必要。",
         },
       },
       {
@@ -312,6 +333,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Before an adjective, a noun, or a place, you almost always need **am / is / are** (or past **was / were**). If you can't hear the verb, add **be**.",
       vi: "Trước tính từ, danh từ, hay nơi chốn, gần như luôn cần **am / is / are** (hoặc quá khứ **was / were**). Nếu không nghe thấy động từ, thêm **be**.",
+      ja: "形容詞・名詞・場所の前には、ほぼ必ず **am / is / are**（過去なら **was / were**）が必要。動詞が聞こえなければ **be** を補う。",
     },
   },
 
@@ -324,10 +346,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Articles: **a / an / the**",
       vi: "Mạo từ: **a / an / the**",
+      ja: "冠詞：**a / an / the** — 日本語にない最大の壁",
     },
     concept: {
       en: "Vietnamese has no articles. English requires **a / an** (general) or **the** (specific).",
       vi: "Tiếng Việt không có mạo từ. Tiếng Anh cần **a / an** (chung chung) hoặc **the** (xác định).",
+      ja: "日本語には冠詞という概念そのものが存在しません。「本」と言えば a book なのか the book なのか、文脈で判断するしかない日本語と違い、英語はほぼ全ての単数可算名詞の前に a/an/the のどれかが必要です。これは日本人学習者にとって、B2レベルになっても会話の中で自然に使い分けるのが最も難しい文法項目の一つです。初出（聞き手が知らないもの）→ a/an、既出または特定できるもの → the、という基本ルールをまず徹底しましょう。",
     },
     examples: [
       {
@@ -379,6 +403,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "First time you mention it → **a / an**. After that, or if it's obvious which one → **the**. Before a vowel *sound*, **a** becomes **an**.",
       vi: "Lần đầu nhắc đến → **a / an**. Sau đó, hoặc khi đã rõ cái nào → **the**. Trước *âm* nguyên âm, **a** đổi thành **an**.",
+      ja: "初めて話題に出すとき → **a / an**。その後、またはどの対象か明らかなとき → **the**。母音の「音」で始まる単語の前では **a** が **an** に変わります（an apple, an hour）。ただし文字ではなく「音」で判断する点に注意 — a university（/juː/ で始まるので a）、an hour（h を発音しないので an）。",
     },
   },
 
@@ -391,10 +416,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "**to + verb** (infinitive)",
       vi: "**to + động từ**",
+      ja: "**to + 動詞**（不定詞）",
     },
     concept: {
       en: "Many English verbs must be followed by **to + verb** (want to learn, decide to go).",
       vi: "Nhiều động từ tiếng Anh phải theo sau bởi **to + V** (want to learn, decide to go).",
+      ja: "日本語には不定詞がありません。英語では **want / need / plan / decide / hope** などの動詞の後ろは **to + 動詞の原形** にします。「want go」ではなく「want **to** go」。日本語の「〜したい」「〜するつもり」のような表現の後に、英語では必ず **to** が入ると覚えましょう。",
     },
     examples: [
       {
@@ -434,6 +461,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "If you see **want / need / plan / decide / hope / try / would like**, the next verb needs **to** in front of it.",
       vi: "Thấy **want / need / plan / decide / hope / try / would like** là động từ tiếp theo cần **to** ở trước.",
+      ja: "**want / need / plan / decide / hope / try / would like** の後ろの動詞には必ず **to** を付けます。日本語にないルールなので、最初は意識して確認しましょう。",
     },
   },
 
@@ -446,10 +474,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Don't use two past tenses",
       vi: "Không dùng hai thì quá khứ cùng lúc",
+      ja: "過去形を二重に使わない",
     },
     concept: {
       en: "After 'did / was / were', use the base form of the verb (not past tense again).",
       vi: "Sau 'did / was / were', dùng dạng nguyên thể của động từ (không dùng thì quá khứ lần nữa).",
+      ja: "**did / didn't** の後ろの動詞は必ず原形です。「didn't came」ではなく「didn't **come**」。「did」が過去を表しているので、動詞まで過去形にする必要はありません。これは日本語話者が特によく間違えるポイントです。",
     },
     examples: [
       {
@@ -458,6 +488,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Use **did** for emphasis (**I did work late**) or drop it — don't double-mark the past.",
           vi: "Dùng **did** để nhấn mạnh (**I did work late**) hoặc bỏ — không đánh dấu quá khứ hai lần.",
+          ja: "**did** は強調の場合のみ（**I did work late**）で、普段は不要。過去の印を二重にしないこと。",
         },
       },
       {
@@ -489,6 +520,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "**did / didn't** already carries the past. After them, use the **base verb** (no **-ed**, no irregular past form).",
       vi: "**did / didn't** đã mang nghĩa quá khứ rồi. Sau chúng, dùng **động từ gốc** (không **-ed**, không dạng quá khứ bất quy tắc).",
+      ja: "**did / didn't** がすでに過去を表しています。その後ろは動詞の**原形**（**-ed** も不規則過去形も不要）。",
     },
   },
 
@@ -501,10 +533,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Comparatives: more / -er (not both)",
       vi: "So sánh hơn: more / -er (không dùng cả hai)",
+      ja: "比較級：more / -er（両方使わない）",
     },
     concept: {
       en: "Use either **more** or **-er**, not both at the same time.",
       vi: "Dùng **more** hoặc **-er**, không dùng cả hai cùng lúc.",
+      ja: "比較級は **more** か **-er** のどちらか一方だけ。「more better」のように両方付けるのは間違いです。短い形容詞（1〜2音節）は **-er**（big→bigger）、長い形容詞（3音節以上）は **more**（more beautiful）。日本語の「もっと」に当たる部分を二重にしないように。",
     },
     examples: [
       {
@@ -529,6 +563,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Short adjectives (1–2 syllables) use **-er**, not **more**.",
           vi: "Tính từ ngắn (1–2 âm tiết) dùng **-er**, không dùng **more**.",
+          ja: "短い形容詞（1〜2音節）は **-er**。**more** は付けません。",
         },
       },
     ],
@@ -544,6 +579,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Short adjective → **-er**. Long adjective (3+ syllables) → **more**. Pick one — **never** both in the same word.",
       vi: "Tính từ ngắn → **-er**. Tính từ dài (3+ âm tiết) → **more**. Chọn một — **không bao giờ** cả hai.",
+      ja: "短い形容詞 → **-er**。長い形容詞（3音節以上）→ **more**。どちらか一方だけ。「more better」は絶対にダメ。",
     },
   },
 
@@ -556,10 +592,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "**Everyone / Somebody** is singular",
       vi: "**Everyone / Somebody** là ngôi thứ ba số ít",
+      ja: "**Everyone / Somebody** は単数扱い",
     },
     concept: {
       en: "Words like everyone, somebody, nobody are singular in English, even though they feel plural.",
       vi: "Các từ everyone, somebody, nobody là ngôi thứ ba số ít trong tiếng Anh, dù nghe có vẻ số nhiều.",
+      ja: "日本語の「みんな」「誰か」「誰も」は意味的に複数をイメージしますが、英語の **everyone / everybody / someone / somebody / nobody** は文法的に**単数**です。動詞は **-s** を付けます：「Everyone **is** happy」（「Everyone are happy」ではない）。日本語話者もよく間違えるポイントです。",
     },
     examples: [
       {
@@ -603,6 +641,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "**Every-** and **-one / -body / -thing** words are singular. Treat them like **he / she / it** — verb takes the **-s** form.",
       vi: "Các từ **every-** và **-one / -body / -thing** đều số ít. Coi như **he / she / it** — động từ chia dạng **-s**.",
+      ja: "**every-** や **-one / -body / -thing** で終わる単語はすべて単数扱い。**he / she / it** と同じで、動詞に **-s** が付きます。「みんな」のイメージに引っ張られないように。",
     },
   },
 
@@ -615,10 +654,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "**Make** vs **Do**",
       vi: "**Make** vs **Do**",
+      ja: "**Make** と **Do** の使い分け",
     },
     concept: {
       en: "English uses **make** and **do** differently. We **make** decisions / progress, we **do** homework / exercises.",
       vi: "Tiếng Anh dùng **make** và **do** khác nhau. Thường **make** decision / progress, **do** homework / exercise.",
+      ja: "日本語ではどちらも「する」ですが、英語は **make**（作る・生み出す）と **do**（実行する・行う）を区別します。**make** = 何かを作り出す（make a cake, make a decision, make a mistake）、**do** = 活動・作業をする（do homework, do exercise, do the dishes）。日本語話者は「do a mistake」と間違えやすいので注意。",
     },
     examples: [
       {
@@ -666,6 +707,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "**Make** = build / create something new. **Do** = perform / complete an activity. When in doubt: can you *hold* what you made? → **make**.",
       vi: "**Make** = tạo ra / dựng nên. **Do** = thực hiện / hoàn thành hoạt động. Nếu do dự: cầm được thứ vừa làm không? → **make**.",
+      ja: "**Make** = 何かを作り出す・生み出す。**Do** = 活動を行う・完了する。迷ったら「作ったものが触れるか？」→ **make**。触れない活動 → **do**。",
     },
   },
 
@@ -682,10 +724,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Questions need **do / does / did**",
       vi: "Câu hỏi cần **do / does / did**",
+      ja: "疑問文には **do / does / did** が必要",
     },
     concept: {
       en: "Vietnamese turns any sentence into a question with **phải không?** or a rising tone. English puts **do**, **does**, or **did** at the front — and the main verb drops back to its plain form.",
       vi: "Tiếng Việt mình chỉ cần **phải không?** hoặc đổi ngữ điệu là thành câu hỏi. Tiếng Anh phải đặt **do / does / did** ở đầu câu, và động từ chính trở về dạng gốc.",
+      ja: "日本語は「〜ですか？」を文末につければ疑問文になります。英語では **do / does / did** を文頭に置き、動詞は原形に戻します。語順が変わるのが日本語話者にとって大きなハードルです。",
     },
     examples: [
       {
@@ -698,6 +742,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "With **she / he / it**, use **does** and drop the **-s** from the verb.",
           vi: "Với **she / he / it**, dùng **does** và bỏ **-s** khỏi động từ.",
+          ja: "**she / he / it** のときは **does** を使い、動詞の **-s** を取る。",
         },
       },
       {
@@ -706,6 +751,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Past questions use **did** + plain verb — no **-ed** on **go**.",
           vi: "Câu hỏi quá khứ dùng **did** + động từ gốc — không có **-ed** sau **go**.",
+          ja: "過去の疑問文は **did** + 動詞の原形 — **go** に **-ed** はつかない。",
         },
       },
       {
@@ -714,6 +760,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Wh-questions still need **do/does/did** after the question word.",
           vi: "Câu hỏi Wh- vẫn cần **do/does/did** sau từ để hỏi.",
+          ja: "Wh-疑問文でも疑問詞の後に **do/does/did** が必要。",
         },
       },
     ],
@@ -728,6 +775,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Present + he/she/it → **does**. Present + I/you/we/they → **do**. Past → **did**. The main verb always goes back to plain form.",
       vi: "Hiện tại + he/she/it → **does**. Hiện tại + I/you/we/they → **do**. Quá khứ → **did**. Động từ chính luôn quay về dạng gốc.",
+      ja: "現在 + he/she/it → **does**。現在 + I/you/we/they → **do**。過去 → **did**。主动詞は常に原形に戻る。",
     },
   },
 
@@ -737,10 +785,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "**His** / **her** — match the owner",
       vi: "**His** / **her** — theo người sở hữu",
+      ja: "**His** / **her** — 持ち主の性別に合わせる",
     },
     concept: {
       en: "Vietnamese **của** doesn't care about gender. In English, **his** and **her** follow the **owner's** gender, not the object's — if the owner is a man, it's **his book**, even if the book is a woman's gift.",
       vi: "Tiếng Việt mình dùng **của** không phân biệt nam nữ. Tiếng Anh chọn **his** hay **her** theo giới tính của **người sở hữu**, không phải của đồ vật — chủ là đàn ông thì luôn là **his book**.",
+      ja: "日本語の「彼の」「彼女の」と同じく、英語の **his** と **her** は**持ち主**の性別で決まります。物の性別ではありません。「彼の本」は本が何であろうと **his book** です。",
     },
     examples: [
       {
@@ -749,6 +799,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "The owner is **my mother** (female) → **her**.",
           vi: "Người sở hữu là **my mother** (nữ) → **her**.",
+          ja: "持ち主が **my mother**（女性）→ **her**。",
         },
       },
       {
@@ -757,6 +808,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "**Brother** is male → **his**, no matter what the object is.",
           vi: "**Brother** là nam → **his**, bất kể đồ vật là gì.",
+          ja: "**Brother** は男性 → 物が何でも **his**。",
         },
       },
       {
@@ -779,6 +831,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Look at the **owner**, not the thing. Man → **his**. Woman → **her**. Forget what the object is.",
       vi: "Nhìn vào **người sở hữu**, không phải đồ vật. Nam → **his**. Nữ → **her**. Kệ đồ vật là gì.",
+      ja: "物ではなく**持ち主**を見る。男性 → **his**。女性 → **her**。物は気にしない。",
     },
   },
 
@@ -788,10 +841,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "**In / on / at** — memorise, don't translate",
       vi: "**In / on / at** — học thuộc, đừng dịch",
+      ja: "**In / on / at** — 日本語の助詞で考えない",
     },
     concept: {
       en: "Vietnamese prepositions don't map one-to-one onto English. English uses **in** for large chunks (months, years, cities), **on** for surfaces and specific days, **at** for precise points (times, addresses).",
       vi: "Giới từ tiếng Việt không dịch thẳng sang tiếng Anh. Tiếng Anh dùng **in** cho đơn vị lớn (tháng, năm, thành phố), **on** cho bề mặt và ngày cụ thể, **at** cho điểm chính xác (giờ, địa chỉ).",
+      ja: "日本語の助詞（に、で、を）と英語の前置詞（in, on, at）は一対一で対応しません。特に in/on/at の使い分けは、日本語の「〜に」一語でカバーされる範囲が広いため、混乱しがちです。基本ルール：**in** は大きな時間・空間（月、年、都市、国）、**on** は面や特定の曜日・日付、**at** はピンポイントの時点や場所（時刻、住所、週末）。「月曜日に」は on Monday（× in Monday）、「7時に」は at 7 o'clock（× on 7 o'clock）。丸暗記が必要な部分もありますが、この三区分をまず体に染み込ませましょう。",
     },
     examples: [
       {
@@ -838,6 +893,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Big block (year, month, country) → **in**. Surface or specific day → **on**. Point in time (o'clock, weekend) → **at**.",
       vi: "Khối lớn (năm, tháng, quốc gia) → **in**. Bề mặt hay ngày cụ thể → **on**. Điểm thời gian (giờ, cuối tuần) → **at**.",
+      ja: "大きな塊（年、月、国）→ **in**。面や特定の日 → **on**。ピンポイントの時点 → **at**。日本語の「〜に」をそのまま訳さず、この三区分で考えてください。",
     },
   },
 
@@ -847,10 +903,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Uncountable nouns — no **-s**, no **a/an**",
       vi: "Danh từ không đếm được — không **-s**, không **a/an**",
+      ja: "不可算名詞：**-s** も **a/an** もつかない名詞たち",
     },
     concept: {
       en: "Vietnamese treats **advice**, **information**, **furniture** like any other noun. English treats them as uncountable masses — no plural **-s**, no **a** or **an**, and they take singular verbs.",
       vi: "Tiếng Việt mình coi **advice**, **information**, **furniture** như danh từ bình thường. Tiếng Anh coi chúng là khối không đếm được — không thêm **-s**, không có **a/an**, động từ số ít.",
+      ja: "日本語では可算・不可算の区別が文法化されていません。「アドバイス」も「情報」も「家具」も、普通に数えられるように感じますが、英語ではこれらは不可算名詞として扱われます。複数形の -s はつけず、a/an も使えず、動詞は単数扱い。特に advice, information, furniture, homework, news, research, equipment, luggage は日本人がよく間違える不可算名詞なので要注意です。「一つのアドバイス」は an advice ではなく a piece of advice。「多くの情報」は many informations ではなく a lot of information / much information です。",
     },
     examples: [
       {
@@ -889,6 +947,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "**Advice, information, furniture, homework, news, research, equipment, luggage** — all uncountable. No **-s**, no **a/an**, singular verb.",
       vi: "**Advice, information, furniture, homework, news, research, equipment, luggage** — đều không đếm được. Không **-s**, không **a/an**, động từ số ít.",
+      ja: "**advice, information, furniture, homework, news, research, equipment, luggage** — すべて不可算名詞。複数形の -s なし、a/an なし、動詞は単数形。数えたいときは a piece of advice / some information のように言い換えます。",
     },
   },
 
@@ -898,10 +957,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "**Can / must / should** + plain verb",
       vi: "**Can / must / should** + động từ gốc",
+      ja: "**Can / must / should** + 動詞の原形",
     },
     concept: {
       en: "Vietnamese **có thể / phải / nên** sits right before the verb with nothing extra. English modals take the plain verb — never **to** in between, and never **-s** on the verb.",
       vi: "Tiếng Việt mình **có thể / phải / nên** đứng ngay trước động từ, không thêm gì. Tiếng Anh các modal đi với động từ gốc — không có **to** ở giữa, cũng không thêm **-s**.",
+      ja: "日本語の「〜できる」「〜しなければならない」「〜すべき」は助動詞的に使いますが、英語の **can / must / should** の後ろは必ず**動詞の原形**です。「can to swim」ではなく「can **swim**」。「she should goes」ではなく「she should **go**」。**to** も **-s** も付けません。",
     },
     examples: [
       {
@@ -918,6 +979,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Even with **she**, no **-s** after a modal.",
           vi: "Dù chủ ngữ là **she**, sau modal cũng không thêm **-s**.",
+          ja: "主語が **she** でも、modal の後の動詞に **-s** は付けません。",
         },
       },
       {
@@ -936,6 +998,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Modal + **plain verb**. No **to**. No **-s**. Every time.",
       vi: "Modal + **động từ gốc**. Không **to**. Không **-s**. Luôn luôn.",
+      ja: "Modal（can / must / should / might / will）+ **動詞の原形**。**to** も **-s** も付けない。これは絶対ルールです。",
     },
   },
 
@@ -945,10 +1008,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Possessive **'s**",
       vi: "Sở hữu với **'s**",
+      ja: "所有の **'s**",
     },
     concept: {
       en: "Vietnamese shows possession with **của** between the two nouns — **sách của Lan**. English attaches **'s** to the owner and flips the order: **Lan's book**.",
       vi: "Tiếng Việt mình dùng **của** giữa hai danh từ — **sách của Lan**. Tiếng Anh thêm **'s** vào người sở hữu và đảo thứ tự: **Lan's book**.",
+      ja: "日本語の「〜の」（Langの本）は英語の所有 **'s** と語順が似ていますが、英語の方がよりコンパクトです。「the book of Lan」ではなく「**Lan's book**」。所有者に **'s** を付けて、後ろに所有物を置きます。これは日本語の語順と同じなので、比較的理解しやすいポイントです。",
     },
     examples: [
       {
@@ -983,6 +1048,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Owner first, then **'s**, then the thing. **Lan's book**, **my brother's wife**. Short and direct.",
       vi: "Người sở hữu trước, rồi **'s**, rồi đồ vật. **Lan's book**, **my brother's wife**. Ngắn gọn, trực tiếp.",
+      ja: "所有者 → **'s** → 所有物。**Lan's book**（ランの本）、**my brother's wife**（兄の妻）。日本語の「〜の」と同じ語順で覚えやすいです。",
     },
   },
 
@@ -992,10 +1058,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Adjective **before** the noun",
       vi: "Tính từ đứng **trước** danh từ",
+      ja: "形容詞は名詞の**前**に置く",
     },
     concept: {
       en: "Vietnamese places the adjective **after** the noun: **áo đỏ**. English flips it — adjective comes **before** the noun: **a red shirt**.",
       vi: "Tiếng Việt mình đặt tính từ **sau** danh từ: **áo đỏ**. Tiếng Anh đảo lại — tính từ đứng **trước** danh từ: **a red shirt**.",
+      ja: "日本語も形容詞は名詞の前に置きます（「赤いシャツ」）が、英語の語順はさらに厳格です。英語では必ず **形容詞 → 名詞** の順。「a shirt red」ではなく「a **red** shirt」。また、形容詞を重ねるときは「意見 → サイズ → 年齢 → 形 → 色 → 起源 → 素材 → 目的」の順番があり、これは日本語の「小さくて赤い車」のような自然な順序感覚とは異なるので注意が必要です。",
     },
     examples: [
       {
@@ -1012,6 +1080,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "**Expensive** starts with a vowel sound → **an** (not **a**).",
           vi: "**Expensive** bắt đầu bằng nguyên âm → **an** (không phải **a**).",
+          ja: "**Expensive** は母音で始まるので **an**（**a** ではない）。",
         },
       },
       {
@@ -1020,6 +1089,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "When you stack adjectives, opinion comes before age: **kind old man**.",
           vi: "Khi có nhiều tính từ, ý kiến đứng trước tuổi: **kind old man**.",
+          ja: "形容詞を重ねるときは「意見 → 年齢」の順：**kind old man**（親切で年老いた男性）。",
         },
       },
     ],
@@ -1034,6 +1104,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "**Red shirt**, not **shirt red**. Adjective → noun, always in that order.",
       vi: "**Red shirt**, không phải **shirt red**. Tính từ → danh từ, luôn theo thứ tự đó.",
+      ja: "**Red shirt**（赤いシャツ）。**shirt red** ではありません。形容詞 → 名詞、この順番は絶対です。日本語と同じ語順だと思うと覚えやすいですが、英語の方がより厳格です。",
     },
   },
 
@@ -1043,10 +1114,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "**Very** with adjectives, **very much** with verbs",
       vi: "**Very** với tính từ, **very much** với động từ",
+      ja: "**Very** は形容詞、**very much** は動詞と使う",
     },
     concept: {
       en: "Vietnamese **rất** sits right before any word — **rất thích**, **rất vui**. English splits: **very** goes with adjectives (**very happy**); with verbs, say **… very much** at the end (**I like it very much**).",
       vi: "Tiếng Việt **rất** đứng trước mọi từ — **rất thích**, **rất vui**. Tiếng Anh chia hai: **very** với tính từ (**very happy**); với động từ, dùng **… very much** ở cuối (**I like it very much**).",
+      ja: "日本語の「とても」は形容詞にも動詞にも使えますが、英語は区別します。形容詞の前は **very**（**very** happy）、動詞の後ろは **very much**（I like it **very much**）。「I very like coffee」は間違いで、「I like coffee **very much**」が正解です。",
     },
     examples: [
       {
@@ -1085,6 +1158,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Adjective → **very** before it. Verb → **very much** at the end. Never **very like**.",
       vi: "Tính từ → **very** đứng trước. Động từ → **very much** ở cuối. Không bao giờ **very like**.",
+      ja: "形容詞 → 前に **very**。動詞 → 文末に **very much**。「very like」は絶対にダメ。「like ... very much」です。",
     },
   },
 
@@ -1094,10 +1168,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "**There is** (one) vs **there are** (many)",
       vi: "**There is** (một) vs **there are** (nhiều)",
+      ja: "**There is**（1つ）vs **there are**（複数）",
     },
     concept: {
       en: "Vietnamese **có** stays the same for one thing or many. English switches: **there is** for singular or uncountable; **there are** for two or more countable things.",
       vi: "Tiếng Việt mình **có** dùng cho cả một hay nhiều. Tiếng Anh đổi: **there is** cho số ít hoặc không đếm được; **there are** cho hai thứ trở lên đếm được.",
+      ja: "日本語の「〜がある／いる」は数で形が変わりませんが、英語では**単数・不可算 → there is**、**複数 → there are** と使い分けます。",
     },
     examples: [
       {
@@ -1114,6 +1190,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "**Milk** is uncountable → **there is**.",
           vi: "**Milk** không đếm được → **there is**.",
+          ja: "**milk** は不可算 → **there is**。",
         },
       },
       {
@@ -1132,6 +1209,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Count the thing right after. One or uncountable → **there is**. Two or more countable → **there are**.",
       vi: "Đếm danh từ ngay sau đó. Một hay không đếm được → **there is**. Hai trở lên đếm được → **there are**.",
+      ja: "直後の名詞を数える。1つまたは不可算 → **there is**。2つ以上の可算名詞 → **there are**。",
     },
   },
 
@@ -1141,10 +1219,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Tag questions — flip the auxiliary",
       vi: "Câu hỏi đuôi — đổi trợ động từ",
+      ja: "付加疑問文 — 助動詞を反転させる",
     },
     concept: {
       en: "Vietnamese uses one invariant tag — **phải không?**. English flips the auxiliary AND the polarity: positive statement gets a negative tag (**You're Vietnamese, aren't you?**); negative gets a positive tag (**You don't smoke, do you?**).",
       vi: "Tiếng Việt mình chỉ cần **phải không?**. Tiếng Anh đổi cả trợ động từ và thể: khẳng định → đuôi phủ định (**You're Vietnamese, aren't you?**); phủ định → đuôi khẳng định (**You don't smoke, do you?**).",
+      ja: "日本語の「〜ですね」「〜でしょう」は文の形に関わらず常に同じです。英語では肯定文には否定の付加疑問（**You're Vietnamese, aren't you?**）、否定文には肯定の付加疑問（**You don't smoke, do you?**）をつけます。助動詞をコピーして肯定・否定を反転させるのがポイントです。",
     },
     examples: [
       {
@@ -1157,6 +1237,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Present with **she** → tag uses **doesn't**.",
           vi: "Thì hiện tại với **she** → đuôi dùng **doesn't**.",
+          ja: "現在形で主語が **she** の場合、付加疑問は **doesn't** を使います。日本語話者は「〜ですね」の感覚で **isn't it?** を多用しがちなので注意。",
         },
       },
       {
@@ -1165,6 +1246,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Negative statement → positive tag. Don't double the negative.",
           vi: "Câu phủ định → đuôi khẳng định. Không lặp phủ định.",
+          ja: "否定文の付加疑問は肯定形にします。日本語にはこの反転のルールがないため、否定を重ねてしまう（**didn't you?**）のは典型的なミスです。",
         },
       },
       {
@@ -1183,6 +1265,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Positive statement → negative tag. Negative statement → positive tag. Copy the auxiliary (or use **do/does/did**), then flip.",
       vi: "Khẳng định → đuôi phủ định. Phủ định → đuôi khẳng định. Lặp lại trợ động từ (hoặc dùng **do/does/did**), rồi đổi thể.",
+      ja: "肯定文→否定の付加疑問。否定文→肯定の付加疑問。助動詞をそのままコピーし（なければ **do/does/did** を使い）、肯定・否定を反転。日本語の「〜ね」のように一つの形で済ませないこと。",
     },
   },
 
@@ -1192,10 +1275,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Past perfect — **had + V3** for the earlier past",
       vi: "Quá khứ hoàn thành — **had + V3** cho việc xảy ra trước",
+      ja: "過去完了 — **had + 過去分詞** で「より前の過去」を表す",
     },
     concept: {
       en: "Vietnamese uses **trước đó** or time order to show one past event happened before another. English marks the earlier event with **had + past participle** — **I had already eaten when she called**.",
       vi: "Tiếng Việt mình dùng **trước đó** hay thứ tự thời gian. Tiếng Anh dùng **had + V3** cho việc xảy ra trước — **I had already eaten when she called** (Tôi đã ăn xong trước khi cô ấy gọi).",
+      ja: "日本語では「〜していた」「〜してしまっていた」と文脈や助詞で前後関係を示しますが、専用の時制はありません。英語は過去の出来事が二つあるとき、より前に起きた方に **had + 過去分詞** を使います — **I had already eaten when she called**（彼女が電話してきたとき、私はすでに食事を済ませていた）。日本語話者はこの時制の使い分けを省略しがちです。",
     },
     examples: [
       {
@@ -1208,6 +1293,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Earlier past event (**left**) → **had left**.",
           vi: "Việc xảy ra trước (**left**) → **had left**.",
+          ja: "より前に起きた出来事（**left**）→ **had left**。日本語では「着く前に電車は出発していた」のように「〜ていた」で表現しますが、英語では **had + 過去分詞** が必須です。",
         },
       },
       {
@@ -1220,6 +1306,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "After **had**, use V3 (past participle): **eat → eaten**.",
           vi: "Sau **had**, dùng V3 (phân từ quá khứ): **eat → eaten**.",
+          ja: "**had** の後は過去分詞形（V3）を使います：**eat → eaten**。**had eat** は文法的に誤りです。",
         },
       },
     ],
@@ -1234,6 +1321,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Two past events? The earlier one takes **had + V3**. The later one stays in simple past.",
       vi: "Hai việc quá khứ? Việc trước dùng **had + V3**. Việc sau giữ thì quá khứ đơn.",
+      ja: "過去の出来事が二つ？より前に起きた方を **had + 過去分詞**、後の方を単純過去形に。日本語の「〜していた」と違い、英語では時制の使い分けが文法上必須です。",
     },
   },
 
@@ -1243,10 +1331,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Reported speech — shift the tense back",
       vi: "Câu tường thuật — lùi thì một bậc",
+      ja: "間接話法 — 時制を一つ戻す",
     },
     concept: {
       en: "Vietnamese quotes directly or uses **nói rằng** without changing the verb. English shifts the tense one step back when reporting — present becomes past, past becomes past perfect.",
       vi: "Tiếng Việt mình nói lại lời người khác thường giữ nguyên thì, hoặc dùng **nói rằng**. Tiếng Anh lùi thì một bậc — hiện tại → quá khứ, quá khứ → quá khứ hoàn thành.",
+      ja: "日本語の間接話法（〜と言った）では、引用部分の時制を変えません。「彼女は疲れていると言った」のようにそのまま伝えます。英語では時制を一つ戻します（バックシフト）— 現在形→過去形、過去形→過去完了形。**She said she was tired**（彼女は疲れていると言った）のように、**is** が **was** になります。",
     },
     examples: [
       {
@@ -1255,6 +1345,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Present **is** → past **was** after **said**.",
           vi: "Hiện tại **is** → quá khứ **was** sau **said**.",
+          ja: "現在形 **is** は **said** の後では過去形 **was** になります。日本語では「彼女は疲れていると言った」と現在形のままなので、このバックシフトは特に注意が必要です。",
         },
       },
       {
@@ -1267,6 +1358,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "**Will** → **would**; **tomorrow** → **the next day**.",
           vi: "**Will** → **would**; **tomorrow** → **the next day**.",
+          ja: "**will** → **would**、**tomorrow** → **the next day**。時制だけでなく、時の表現も変わります。日本語の間接話法では「明日」が「翌日」に変わることはないので、この二重の変換は日本語話者にとって盲点です。",
         },
       },
       {
@@ -1285,6 +1377,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "After **said / told**, push every verb one tense backwards. **Tomorrow → the next day**, **yesterday → the day before**.",
       vi: "Sau **said / told**, lùi mọi động từ một bậc. **Tomorrow → the next day**, **yesterday → the day before**.",
+      ja: "**said / told** の後は、すべての動詞を一時制戻す。**tomorrow → the next day**、**yesterday → the day before**。日本語話者は「〜と言った」の後も元の時制を維持しがちなので、バックシフトを習慣づけること。",
     },
   },
 
@@ -1294,10 +1387,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "**Since** (a moment) vs **for** (a duration)",
       vi: "**Since** (mốc) vs **for** (khoảng)",
+      ja: "**since**（起点）vs **for**（期間）",
     },
     concept: {
       en: "Vietnamese **từ** covers both a starting point and a length of time. English splits: **since** points to a specific moment (**since 2020**, **since Monday**); **for** measures the length (**for three years**).",
       vi: "Tiếng Việt mình **từ** dùng cho cả mốc và khoảng. Tiếng Anh tách: **since** chỉ mốc (**since 2020**, **since Monday**); **for** chỉ độ dài (**for three years**).",
+      ja: "日本語の「〜から」は起点、「〜間」は期間を表します。英語も同様に **since** は起点（**since 2020**、**since Monday**）、**for** は期間の長さ（**for three years**）と明確に分かれます。ただし現在完了形との組み合わせでは、日本語にない概念なので混乱しやすいポイントです。",
     },
     examples: [
       {
@@ -1314,6 +1409,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "**A long time** is a length → **for**.",
           vi: "**A long time** là khoảng → **for**.",
+          ja: "**a long time** は期間の長さ→ **for**。日本語の「長い間」と同じ感覚で、期間を表す表現には **for** を使います。",
         },
       },
       {
@@ -1322,6 +1418,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "**Tet** is a moment → **since**.",
           vi: "**Tet** là mốc → **since**.",
+          ja: "**Tet** は特定の時点（起点）→ **since**。祝日や日付など、カレンダー上の一点には **since** を使います。",
         },
       },
     ],
@@ -1336,6 +1433,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Can you point to a moment on a calendar? → **since**. Can you count the time? → **for**.",
       vi: "Chỉ được một mốc trên lịch? → **since**. Đếm được khoảng thời gian? → **for**.",
+      ja: "カレンダー上の一点を指せる？→ **since**。時間の長さを数えられる？→ **for**。日本語の「〜から」と「〜間」の区別と同じですが、現在完了形との組み合わせでは英語独自のルールです。",
     },
   },
 
@@ -1345,10 +1443,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "**Much** with uncountable, **many** with countable",
       vi: "**Much** với không đếm được, **many** với đếm được",
+      ja: "**much** は不可算名詞、**many** は可算名詞",
     },
     concept: {
       en: "Vietnamese **nhiều** works with everything. English splits: **much** only pairs with uncountable (**much water**, **much time**); **many** pairs with plural countables (**many friends**, **many books**).",
       vi: "Tiếng Việt mình **nhiều** dùng với mọi danh từ. Tiếng Anh tách: **much** với không đếm được (**much water**, **much time**); **many** với danh từ đếm được số nhiều (**many friends**, **many books**).",
+      ja: "日本語の「多くの」は可算・不可算を区別しませんが、英語では明確に分かれます。**much** は不可算名詞（**much water**「多くの水」、**much time**「多くの時間」）、**many** は可算名詞の複数形（**many friends**「多くの友達」、**many books**「多くの本」）に使います。日本語話者は **much friends** のように混同しやすいので注意が必要です。",
     },
     examples: [
       {
@@ -1361,6 +1461,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "**Money** is uncountable → **much**.",
           vi: "**Money** không đếm được → **much**.",
+          ja: "**money**（お金）は不可算名詞→ **much**。日本語では「いくつ」と数えてしまいがちですが、英語では数えられないものとして扱います。",
         },
       },
       {
@@ -1383,6 +1484,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Can you count it? → **many**. Can't you count it (water, time, money)? → **much**.",
       vi: "Đếm được? → **many**. Không đếm được (water, time, money)? → **much**.",
+      ja: "数えられる？→ **many**。数えられない（water, time, money）？→ **much**。日本語には可算・不可算の文法カテゴリーがないため、名詞ごとに覚える必要があります。",
     },
   },
 
@@ -1392,10 +1494,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "**Some** in positives, **any** in negatives/questions",
       vi: "**Some** trong khẳng định, **any** trong phủ định/câu hỏi",
+      ja: "**some** は肯定文、**any** は否定文・疑問文",
     },
     concept: {
       en: "Vietnamese uses **một vài** or **chút** in every sentence. English switches: **some** in positive statements (**I have some questions**); **any** in negatives and most questions (**Do you have any questions?**).",
       vi: "Tiếng Việt mình dùng **một vài** hay **chút** cho mọi loại câu. Tiếng Anh đổi: **some** trong câu khẳng định (**I have some questions**); **any** trong phủ định và đa số câu hỏi (**Do you have any questions?**).",
+      ja: "日本語では「いくつか」「少し」を肯定・否定・疑問の区別なく使います。英語は文の種類によって使い分けます：肯定文では **some**（**I have some questions**「質問がいくつかあります」）、否定文とほとんどの疑問文では **any**（**Do you have any questions?**「質問はありますか」）を使います。日本語話者は **Do you have some questions?** のように肯定形を疑問文でも使ってしまう傾向があります。",
     },
     examples: [
       {
@@ -1412,6 +1516,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Positive statement → **some**.",
           vi: "Câu khẳng định → **some**.",
+          ja: "肯定文 → **some**。日本語では「本棚に本がある」のように肯定でも特に限定詞を変えませんが、英語では **some** が必要です。",
         },
       },
       {
@@ -1420,6 +1525,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Offers and polite requests use **some**, not **any**.",
           vi: "Câu mời hay đề nghị lịch sự dùng **some**, không dùng **any**.",
+          ja: "勧める・依頼するときは疑問文でも **some** を使います。日本語の「お茶はいかがですか」のように、相手に「ある」ことを前提に尋ねる場合は **any** ではなく **some** が自然です。",
         },
       },
     ],
@@ -1434,6 +1540,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Yes sentence → **some**. No / question → **any**. Offering something politely → **some** (even in a question).",
       vi: "Câu có → **some**. Câu không / câu hỏi → **any**. Lịch sự mời ai → **some** (dù là câu hỏi).",
+      ja: "肯定文 → **some**。否定・疑問文 → **any**。丁寧に勧めるとき → 疑問文でも **some**。日本語話者は「何か」の感覚で **any** を多用しがちですが、英語では「存在を前提にするかどうか」が選択基準です。",
     },
   },
 
@@ -1443,10 +1550,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Reflexive pronouns — **myself**, **yourself**, **herself**",
       vi: "Đại từ phản thân — **myself**, **yourself**, **herself**",
+      ja: "再帰代名詞 — **myself**, **yourself**, **herself**",
     },
     concept: {
       en: "Vietnamese uses **tự** before the verb: **tự học**, **tự nấu**. English puts a reflexive pronoun after the verb — **I taught myself**, **she cooks for herself**.",
       vi: "Tiếng Việt mình đặt **tự** trước động từ: **tự học**, **tự nấu**. Tiếng Anh đặt đại từ phản thân sau động từ — **I taught myself**, **she cooks for herself**.",
+      ja: "日本語では「自分で」を動詞の前に置きます：「自分で勉強する」「自分で料理する」。英語では再帰代名詞を動詞の後に置きます — **I taught myself**（自分で勉強した）、**she cooks for herself**（彼女は自分のために料理する）。主語と目的語が同一人物のとき、英語では専用の代名詞（**-self / -selves**）が必須で、目的格代名詞（**me / her / him**）だけでは不十分です。",
     },
     examples: [
       {
@@ -1459,6 +1568,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Same subject and object → reflexive. **Her** refers to someone else; **herself** refers back to the subject.",
           vi: "Chủ ngữ và tân ngữ là cùng người → phản thân. **Her** là người khác; **herself** là chính chủ ngữ.",
+          ja: "主語と目的語が同一人物 → 再帰代名詞。**her** は別の女性を指し、**herself** は主語自身を指します。日本語の「彼女は彼女を傷つけた」では主語と目的語の関係が曖昧ですが、英語は再帰代名詞で明確に区別します。",
         },
       },
       {
@@ -1467,6 +1577,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "**Enjoy** needs an object — when you mean \"have fun\", use **enjoy + yourself/ourselves**.",
           vi: "**Enjoy** cần có tân ngữ — khi muốn nói \"chơi vui\", dùng **enjoy + yourself/ourselves**.",
+          ja: "**enjoy** は目的語が必須です。「楽しむ」の意味で自動詞的に使うときは **enjoy + yourself/ourselves** と再帰代名詞を添えます。日本語の「楽しんだ」のように動詞だけで完結させられない点に注意。",
         },
       },
       {
@@ -1485,6 +1596,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Same subject and object → **-self / -selves**. **I**→**myself**, **you**→**yourself(ves)**, **he**→**himself**, **she**→**herself**, **we**→**ourselves**, **they**→**themselves**, **it**→**itself**.",
       vi: "Chủ ngữ và tân ngữ là cùng người → **-self / -selves**. **I**→**myself**, **you**→**yourself(ves)**, **he**→**himself**, **she**→**herself**, **we**→**ourselves**, **they**→**themselves**, **it**→**itself**.",
+      ja: "主語＝目的語 → **-self / -selves**。**I**→**myself**、**you**→**yourself(yourselves)**、**he**→**himself**、**she**→**herself**、**we**→**ourselves**、**they**→**themselves**、**it**→**itself**。日本語の「自分」は主語に関係なく同じ形ですが、英語は主語の人称・数に合わせて形が変わります。",
     },
   },
 
@@ -1494,10 +1606,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "**If** sentences — match the tenses",
       vi: "Câu **If** — hợp thì",
+      ja: "**if** 文 — 時制の一致",
     },
     concept: {
       en: "Vietnamese **nếu… thì…** keeps verbs unchanged. English pairs the tenses strictly: zero = **if + present, present**; first (real) = **if + present, will + V**; second (unreal) = **if + past, would + V**. Never mix past with **will**.",
       vi: "Tiếng Việt mình **nếu… thì…** không đổi động từ. Tiếng Anh ghép đôi chặt: zero = **if + hiện tại, hiện tại**; loại 1 (có thật) = **if + hiện tại, will + V**; loại 2 (không có thật) = **if + quá khứ, would + V**. Không trộn quá khứ với **will**.",
+      ja: "日本語の「〜ば」「〜たら」「〜なら」は条件を表しますが、主節の時制や助動詞は文脈任せで、文法上のペア規則はありません。英語は条件文の種類ごとに時制の組み合わせが厳密に決まっています：ゼロ条件（常に真）＝ **if + 現在形, 現在形**；ファースト条件（現実的未来）＝ **if + 現在形, will + V**；セカンド条件（非現実）＝ **if + 過去形, would + V**。過去形と **will** を混ぜるのは誤りです。日本語話者は「もしお金があれば、車を買うだろう」を **If I had money, I will buy a car** としてしまう典型的なミスに注意。",
     },
     examples: [
       {
@@ -1506,6 +1620,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Past in the **if** clause → **would** in the main clause.",
           vi: "Quá khứ ở mệnh đề **if** → **would** ở mệnh đề chính.",
+          ja: "**if** 節が過去形なら、主節は **would**。日本語の「もしお金があったら、車を買うだろう」の感覚で **will** を使ってしまうのが日本語話者の典型的なエラーです。非現実の仮定では「時制の逆戻し（バックシフト）」が必須です。",
         },
       },
       {
@@ -1518,6 +1633,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Zero conditional = always true → both present.",
           vi: "Zero conditional = chân lý luôn đúng → cả hai hiện tại.",
+          ja: "ゼロ条件（常に真実）→ 両方とも現在形。科学的事実や一般的真理には **if + 現在形, 現在形** を使います。日本語の「水が沸騰すると蒸気になる」も現在形ですが、英語でも時制を変えずにそのまま現在形で表現します。",
         },
       },
       {
@@ -1526,6 +1642,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Unreal present uses **were** for all subjects (formal/neutral).",
           vi: "Điều kiện không có thật dùng **were** cho mọi chủ ngữ (trang trọng).",
+          ja: "非現実の現在仮定では、主語に関わらず **were** を使います（フォーマル・標準）。**If I were you** は「もし私があなたなら」の定型表現。日本語の仮定法にはこのような動詞の特別な形がないため、**was** との使い分けに注意が必要です。",
         },
       },
     ],
@@ -1540,6 +1657,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Real future: **if + present, will + V**. Unreal present: **if + past, would + V**. Always true: **if + present, present**.",
       vi: "Tương lai có thật: **if + hiện tại, will + V**. Không có thật: **if + quá khứ, would + V**. Luôn đúng: **if + hiện tại, hiện tại**.",
+      ja: "現実的未来：**if + 現在形, will + V**。非現実の仮定：**if + 過去形, would + V**。常に真実：**if + 現在形, 現在形**。日本語の「〜ば」「〜たら」はすべて同じ接続で済みますが、英語は仮定の現実性によって時制の組み合わせを切り替えます。",
     },
   },
 
@@ -1549,10 +1667,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "**-ing** vs **to + verb** — which follows which?",
       vi: "**-ing** vs **to + verb** — theo động từ nào?",
+      ja: "**-ing** と **to + 動詞** — 前の動詞で決まる",
     },
     concept: {
       en: "Vietnamese uses the plain verb everywhere. English picks the shape based on the first verb: **enjoy**, **finish**, **avoid**, **mind** take **-ing** (**I enjoy swimming**); **want**, **plan**, **decide**, **hope** take **to + verb** (**I want to swim**).",
       vi: "Tiếng Việt mình chỉ dùng động từ gốc. Tiếng Anh chọn dạng theo động từ đứng trước: **enjoy**, **finish**, **avoid**, **mind** đi với **-ing** (**I enjoy swimming**); **want**, **plan**, **decide**, **hope** đi với **to + verb** (**I want to swim**).",
+      ja: "日本語では「泳ぐことを楽しむ」「泳ぎたい」のように、前の動詞によって後続の形が変わることはなく、常に動詞の原形（辞書形）を使います。英語では前の動詞によって後ろに来る動詞の形が決まります。**enjoy**、**finish**、**avoid**、**mind** の後は **-ing** 形（**I enjoy swimming**「泳ぐことを楽しむ」）。**want**、**plan**、**decide**、**hope** の後は **to + 動詞**（**I want to swim**「泳ぎたい」）。このグルーピングは理屈ではなく、動詞ごとに覚える必要があります。",
     },
     examples: [
       {
@@ -1583,6 +1703,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "**-ing** after: enjoy, finish, avoid, mind, keep, suggest. **to + V** after: want, plan, decide, hope, need, promise.",
       vi: "**-ing** sau: enjoy, finish, avoid, mind, keep, suggest. **to + V** sau: want, plan, decide, hope, need, promise.",
+      ja: "**-ing** をとる動詞：enjoy, finish, avoid, mind, keep, suggest（「楽しむ」「終える」「避ける」など、動作の完了・回避・継続を表す動詞が多い）。**to + V** をとる動詞：want, plan, decide, hope, need, promise（「〜したい」「〜するつもり」など、未来志向の動詞が多い）。日本語にはこの区別がないため、動詞ごとにペアで覚えるのが確実です。",
     },
   },
 
@@ -1592,10 +1713,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "Passive voice needs **be + V3**",
       vi: "Bị động cần **be + V3**",
+      ja: "受動態には **be + 過去分詞** が必要",
     },
     concept: {
       en: "Vietnamese marks the passive with **bị** or **được** before the verb. English needs a form of **be** (is / was / will be) plus the past participle — **The letter was written**, not **The letter written**.",
       vi: "Tiếng Việt mình dùng **bị** hoặc **được** trước động từ là thành bị động. Tiếng Anh cần **be** (is / was / will be) + V3 — **The letter was written**, không phải **The letter written**.",
+      ja: "日本語の受動態は「書かれる」「作られる」のように、動詞の語尾に「〜れる／〜られる」を付けて一語で表現します。英語の受動態は **be動詞 + 過去分詞（V3）** の二語構造が必須です — **The letter was written**（手紙が書かれた）であって、**The letter written** では不完全文です。日本語話者は **be** を落としてしまう傾向があります。これは日本語の受身が助動詞を必要としないためです。",
     },
     examples: [
       {
@@ -1616,6 +1739,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "Future passive: **will be** + V3.",
           vi: "Bị động tương lai: **will be** + V3.",
+          ja: "未来の受動態：**will be** + V3。日本語では「車は明日修理される」のように「〜される」で未来も現在も同じ受身表現を使えますが、英語では時制に応じて **be** の形を変える（**was**/**is**/**will be**）+ 過去分詞の組み合わせが必要です。",
         },
       },
     ],
@@ -1630,6 +1754,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Passive = **be** (in the right tense) + **past participle (V3)**. Missing **be**? Not a complete sentence.",
       vi: "Bị động = **be** (đúng thì) + **V3**. Thiếu **be**? Chưa thành câu hoàn chỉnh.",
+      ja: "受動態 = **be**（適切な時制で）+ **過去分詞（V3）**。**be** がないと不完全文。日本語の「〜れる／〜られる」は一語で完結するので、英語では必ず **be + 過去分詞** の二語セットで書く習慣をつけましょう。",
     },
   },
 
@@ -1639,10 +1764,12 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     title: {
       en: "**Who** for people, **which** for things",
       vi: "**Who** cho người, **which** cho vật",
+      ja: "**who** は人、**which** は物",
     },
     concept: {
       en: "Vietnamese joins clauses with **mà** for everything. English picks the pronoun by what it refers to: **who** for people, **which** for things, **that** works for both in defining clauses.",
       vi: "Tiếng Việt mình dùng **mà** nối câu cho mọi thứ. Tiếng Anh chọn theo đối tượng: **who** cho người, **which** cho vật, **that** cho cả hai ở mệnh đề xác định.",
+      ja: "日本語は関係詞を使わず、連体修飾（「〜している人」「〜した本」）で名詞を修飾します。英語では、先行詞（修飾される名詞）が人の場合は **who**、物の場合は **which**、そして限定用法では両方に **that** が使えます。日本語話者はすべてを **which** にしてしまったり、関係詞自体を省略してしまう（**The man called you is here**）傾向があります。",
     },
     examples: [
       {
@@ -1663,6 +1790,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
         note: {
           en: "**That** is the safe choice when you're not sure — it works for both people and things in defining clauses.",
           vi: "**That** là lựa chọn an toàn khi chưa chắc — dùng được cho cả người và vật ở mệnh đề xác định.",
+          ja: "**that** は人にも物にも使える安全な選択肢です。限定用法（その名詞を特定するための修飾）では **that** が最も汎用的です。日本語話者はまず **that** に慣れ、その後 **who**/**which** の使い分けを習得するのが効率的です。",
         },
       },
     ],
@@ -1677,6 +1805,7 @@ export const MICRO_LESSONS: Partial<Record<WeaknessTag, MicroLesson>> = {
     tip: {
       en: "Person → **who**. Thing → **which**. Unsure or mixed → **that**. Never **which** for a person.",
       vi: "Người → **who**. Vật → **which**. Chưa chắc hoặc lẫn lộn → **that**. Không bao giờ dùng **which** cho người.",
+      ja: "人 → **who**。物 → **which**。迷ったら → **that**。人に **which** は使わない。日本語には関係代名詞という品詞自体が存在しないため、この区別はまったく新しい概念です。まず「名詞＋説明」のパターンで文を作る感覚に慣れましょう。",
     },
   },
 };
