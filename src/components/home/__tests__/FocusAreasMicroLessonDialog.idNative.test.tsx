@@ -145,3 +145,67 @@ describe("FocusAreasMicroLessonDialog — id content renders when authored", () 
     expect(screen.getByText("Vì sao khó")).toBeDefined();
   });
 });
+
+describe("FocusAreasMicroLessonDialog — C1 id content renders when authored", () => {
+  it("renders Indonesian modal-perfect hook text in id mode", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_modal_perfect!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const whyHeading = screen.getByText("Vì sao khó");
+    const section = whyHeading.closest('[data-rich-section="why"]');
+    expect(section).toBeTruthy();
+    // Indonesian primary text
+    expect(section!.textContent).toContain("Bahasa Indonesia tidak punya struktur khusus");
+    // English secondary text
+    expect(section!.textContent).toContain("Vietnamese doesn't have a dedicated structure");
+  });
+
+  it("renders Indonesian subjunctive-were takeaway text in id mode", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_subjunctive_were!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const takeawayHeading = screen.getByText("Ghi nhớ");
+    const section = takeawayHeading.closest('[data-rich-section="takeaway"]');
+    expect(section).toBeTruthy();
+    expect(section!.textContent).toContain("Situasi tidak nyata");
+  });
+
+  it("renders Indonesian negative-inversion hook text in both mode as primary", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_negative_inversion!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const hookHeading = screen.getByText("Mở đầu");
+    const section = hookHeading.closest('[data-rich-section="hook"]');
+    expect(section).toBeTruthy();
+    expect(section!.textContent).toContain("Semua katanya bahasa Inggris");
+  });
+
+  it("renders Indonesian modal-perfect quiz content in id mode", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_modal_perfect!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    // Quiz section renders — check via dialog textContent
+    const dialog = screen.getByRole("dialog");
+    expect(dialog).toBeDefined();
+    // Quiz questions are rendered with English text
+    expect(dialog.textContent).toContain("I should ___ to her yesterday");
+  });
+
+  it("renders Indonesian negative-inversion pattern section in id mode", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_negative_inversion!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const patternHeading = screen.getByText("Quy tắc");
+    const section = patternHeading.closest('[data-rich-section="pattern"]');
+    expect(section).toBeTruthy();
+    expect(section!.textContent).toContain("Kata keterangan negatif");
+  });
+
+  it("catalog-backed id entries render without crashing in id mode", () => {
+    // vi_l1_embedded_question_order has id in catalog but no rich lesson.
+    // The dialog fallback renders en/vi catalog description; id content
+    // is available for other surfaces (HomePage focus cards, etc.).
+    const entry = WEAKNESS_CATALOG.vi_l1_embedded_question_order!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    // Dialog renders successfully with catalog-backed content
+    const dialog = screen.getByRole("dialog");
+    expect(dialog).toBeDefined();
+    // EN catalog description renders in fallback path
+    expect(dialog.textContent).toContain("A question inside another sentence");
+  });
+});
