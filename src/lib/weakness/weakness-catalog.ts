@@ -102,7 +102,11 @@ export type WeaknessTag =
   | "vi_l1_tag_polarity"
   | "vi_l1_no_article_generic"
   | "vi_l1_superlative_the"
-  | "vi_l1_if_will";
+  | "vi_l1_if_will"
+  // Indonesian-native English B2 expansion (2026-06-23)
+  | "id_l1_present_perfect_vs_past"
+  | "id_l1_conditional_unreal"
+  | "id_l1_reported_speech";
 
 export type BilingualText = {
   /** English surface — may contain `**word**` markdown bolding. */
@@ -113,7 +117,9 @@ export type BilingualText = {
   ja?: string;
   /** Indonesian-native English explanation — optional, for id-native learners. */
   id?: string;
-  th?: string;};
+  /** Thai-native English explanation — optional, for th-native learners. */
+  th?: string;
+};
 
 export type WeaknessEntry = {
   /** Machine identifier. Must match the detector / engine emission exactly. */
@@ -1123,6 +1129,63 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     },
     exampleWrong: "If I will go tomorrow, I will tell you.",
     exampleRight: "If I go tomorrow, I will tell you.",
+    linkedRoomId: null,
+  },
+
+  // ────────────────────────────────────────────────────────────────────────
+  // Indonesian-native English B2 expansion (2026-06-23)
+  // B2-level L1-transfer patterns from Indonesian (Bahasa Indonesia) to
+  // English. id field is the primary native-language slot for each entry.
+  // ────────────────────────────────────────────────────────────────────────
+
+  id_l1_present_perfect_vs_past: {
+    tag: "id_l1_present_perfect_vs_past",
+    shortLabel: {
+      en: "Present perfect vs past simple",
+      vi: "Present perfect vs past simple",
+      id: "Present perfect vs past simple",
+    },
+    longDescription: {
+      en: "Indonesian **sudah** covers both 'I ate' and 'I have eaten.' English splits them: use **past simple** when a specific past time is named (**yesterday**, **last week**, **this morning**); use **present perfect** for past actions with present relevance and no specific time.",
+      vi: "Tiếng Indonesia dùng **sudah** cho cả 'I ate' và 'I have eaten.' Tiếng Anh phân biệt: dùng **past simple** khi có thời gian cụ thể trong quá khứ; dùng **present perfect** khi hành động quá khứ còn liên quan đến hiện tại và không có thời gian cụ thể.",
+      id: "Bahasa Indonesia menggunakan **sudah** untuk 'I ate' dan 'I have eaten.' Bahasa Inggris membedakannya: gunakan **past simple** saat waktu lampau spesifik disebutkan (**yesterday**, **last week**, **this morning**); gunakan **present perfect** untuk tindakan lampau yang masih relevan sekarang tanpa waktu spesifik.",
+    },
+    exampleWrong: "I have eaten breakfast this morning.",
+    exampleRight: "I ate breakfast this morning.",
+    linkedRoomId: null,
+  },
+
+  id_l1_conditional_unreal: {
+    tag: "id_l1_conditional_unreal",
+    shortLabel: {
+      en: "Unreal conditionals (Type 2)",
+      vi: "Câu điều kiện không có thật (Type 2)",
+      id: "Pengandaian tidak nyata (Type 2)",
+    },
+    longDescription: {
+      en: "Indonesian **kalau… maka…** uses the same structure for real and unreal conditions. English marks unreal / hypothetical conditions with **If + past tense, would + base verb** — never mix past with **will**.",
+      vi: "Tiếng Indonesia **kalau… maka…** dùng cùng cấu trúc cho cả điều kiện thật và không thật. Tiếng Anh đánh dấu điều kiện không thật bằng **If + quá khứ, would + động từ gốc** — không trộn quá khứ với **will**.",
+      id: "Bahasa Indonesia menggunakan **kalau… maka…** dengan struktur yang sama untuk kondisi nyata dan tidak nyata. Bahasa Inggris menandai kondisi tidak nyata/hipotetis dengan **If + past tense, would + kata kerja dasar** — jangan campur past dengan **will**.",
+    },
+    exampleWrong: "If I had money, I will buy a car.",
+    exampleRight: "If I had money, I would buy a car.",
+    linkedRoomId: null,
+  },
+
+  id_l1_reported_speech: {
+    tag: "id_l1_reported_speech",
+    shortLabel: {
+      en: "Reported speech tense shift",
+      vi: "Lùi thì trong câu tường thuật",
+      id: "Pergeseran tenses di kalimat tidak langsung",
+    },
+    longDescription: {
+      en: "Indonesian reports speech without changing the verb tense — **Dia bilang dia lapar** keeps present tense. English backshifts the tense: **She said she was hungry**, not **she is hungry**.",
+      vi: "Tiếng Indonesia tường thuật không đổi thì động từ — **Dia bilang dia lapar** giữ nguyên thì hiện tại. Tiếng Anh lùi thì: **She said she was hungry**, không phải **she is hungry**.",
+      id: "Bahasa Indonesia melaporkan ucapan tanpa mengubah tense kata kerja — **Dia bilang dia lapar** tetap menggunakan present tense. Bahasa Inggris menggeser tense ke belakang: **She said she was hungry**, bukan **she is hungry**.",
+    },
+    exampleWrong: "She said she is tired.",
+    exampleRight: "She said she was tired.",
     linkedRoomId: null,
   },
 };

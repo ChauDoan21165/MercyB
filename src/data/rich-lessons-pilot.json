@@ -414,6 +414,402 @@
       ]
     },
     {
+      "tag": "id_l1_present_perfect_vs_past",
+      "title": {
+        "en": "**I have done** vs **I did** — picking the right past",
+        "vi": "**I have done** vs **I did** — chọn đúng thì quá khứ",
+        "id": "**I have done** vs **I did** — memilih bentuk lampau yang tepat"
+      },
+      "sections": {
+        "hook": {
+          "en": "Sound familiar? \"I have eaten breakfast this morning.\" In Indonesian logic this makes perfect sense — you use **sudah** for anything that's done. But in English, the moment you name a specific past time like \"this morning,\" you need past simple — not present perfect.",
+          "vi": "Nghe quen không? \"I have eaten breakfast this morning.\" Trong logic tiếng Indonesia điều này hoàn toàn hợp lý — bạn dùng **sudah** cho mọi thứ đã xong. Nhưng trong tiếng Anh, ngay khi bạn nêu thời gian cụ thể như \"this morning,\" bạn phải dùng past simple — không phải present perfect.",
+          "id": "Pernah dengar? \"I have eaten breakfast this morning.\" Dalam logika bahasa Indonesia ini masuk akal — kamu pakai **sudah** untuk semua yang sudah selesai. Tapi dalam bahasa Inggris, begitu kamu menyebut waktu lampau spesifik seperti \"this morning,\" kamu harus pakai past simple — bukan present perfect."
+        },
+        "why": {
+          "en": "Indonesian uses **sudah** for all completed actions — **Saya sudah makan** can mean \"I ate\" or \"I have eaten.\" English splits them: when you name a specific past time (**yesterday**, **last week**, **this morning**, **in 2020**), use past simple. When the past action still matters now and no specific time is named, use present perfect.",
+          "vi": "Tiếng Indonesia dùng **sudah** cho mọi hành động đã hoàn thành — **Saya sudah makan** có thể là \"I ate\" hoặc \"I have eaten.\" Tiếng Anh phân biệt: khi bạn nêu thời gian cụ thể trong quá khứ, dùng past simple. Khi hành động quá khứ vẫn còn liên quan đến hiện tại và không có thời gian cụ thể, dùng present perfect.",
+          "id": "Bahasa Indonesia menggunakan **sudah** untuk semua tindakan selesai — **Saya sudah makan** bisa berarti \"I ate\" atau \"I have eaten.\" Bahasa Inggris membedakannya: saat kamu menyebut waktu lampau spesifik (**yesterday**, **last week**, **this morning**, **in 2020**), gunakan past simple. Saat tindakan lampau masih relevan sekarang dan tidak ada waktu spesifik, gunakan present perfect."
+        },
+        "pattern": {
+          "en": "**Past simple** = specific past time named → verb in past form. \"I ate breakfast this morning.\" \"She called yesterday.\" **Present perfect** = result still relevant, no specific time → **have/has + V3**. \"I have eaten (so I'm not hungry now).\" \"She has lost her keys (still can't find them).\" **Key test:** can you add **yesterday / last / ago / in [year]** to the sentence? If yes → past simple, not present perfect.",
+          "vi": "**Past simple** = thời gian quá khứ cụ thể → động từ dạng quá khứ. \"I ate breakfast this morning.\" \"She called yesterday.\" **Present perfect** = kết quả vẫn còn liên quan, không có thời gian cụ thể → **have/has + V3**. \"I have eaten (nên giờ không đói).\" \"She has lost her keys (vẫn chưa tìm thấy).\" **Cách kiểm tra:** bạn có thêm được **yesterday / last / ago / in [năm]** vào câu không? Nếu có → past simple, không phải present perfect.",
+          "id": "**Past simple** = waktu lampau spesifik disebut → kata kerja bentuk lampau. \"I ate breakfast this morning.\" \"She called yesterday.\" **Present perfect** = hasil masih relevan, tidak ada waktu spesifik → **have/has + V3**. \"I have eaten (jadi sekarang tidak lapar).\" \"She has lost her keys (masih belum ketemu).\" **Tes kunci:** bisakah kamu menambahkan **yesterday / last / ago / in [tahun]** ke kalimat? Kalau bisa → past simple, bukan present perfect."
+        },
+        "practice": {
+          "en": "Say each of these out loud and feel the difference: \"I have visited Jakarta.\" (life experience, no specific time) vs \"I visited Jakarta last year.\" (specific time). \"She has finished her homework.\" (just finished, still relevant) vs \"She finished her homework an hour ago.\" (specific time). \"They have bought a new car.\" (recent, result matters) vs \"They bought a new car last month.\" (when is stated).",
+          "vi": "Nói thành tiếng và cảm nhận sự khác biệt: \"I have visited Jakarta.\" (trải nghiệm, không thời gian cụ thể) vs \"I visited Jakarta last year.\" (thời gian cụ thể). \"She has finished her homework.\" (vừa xong, vẫn liên quan) vs \"She finished her homework an hour ago.\" (thời gian cụ thể). \"They have bought a new car.\" (gần đây, kết quả quan trọng) vs \"They bought a new car last month.\" (có thời gian).",
+          "id": "Ucapkan setiap kalimat dengan keras dan rasakan bedanya: \"I have visited Jakarta.\" (pengalaman hidup, tidak ada waktu spesifik) vs \"I visited Jakarta last year.\" (waktu spesifik). \"She has finished her homework.\" (baru selesai, masih relevan) vs \"She finished her homework an hour ago.\" (waktu spesifik). \"They have bought a new car.\" (baru terjadi, hasil penting) vs \"They bought a new car last month.\" (waktu disebutkan)."
+        },
+        "takeaway": {
+          "en": "Specific past time word (yesterday, last, ago) = past simple. No time word + result still matters = present perfect.",
+          "vi": "Có từ thời gian quá khứ cụ thể = past simple. Không có từ thời gian + kết quả vẫn quan trọng = present perfect.",
+          "id": "Ada kata waktu lampau spesifik (yesterday, last, ago) = past simple. Tidak ada kata waktu + hasil masih relevan = present perfect."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "id": "Pilih kalimat yang benar:"
+          },
+          "options": [
+            "I have seen that movie last night.",
+            "I saw that movie last night.",
+            "I have saw that movie last night.",
+            "I seen that movie last night."
+          ],
+          "correctAnswer": "I saw that movie last night.",
+          "explanation": {
+            "en": "**last night** is a specific past time → past simple: **saw** (not **have seen**).",
+            "vi": "**last night** là thời gian quá khứ cụ thể → past simple: **saw** (không phải **have seen**).",
+            "id": "**last night** adalah waktu lampau spesifik → past simple: **saw** (bukan **have seen**)."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "id": "Pilih kalimat yang benar:"
+          },
+          "options": [
+            "She has visited her grandmother yesterday.",
+            "She visited her grandmother yesterday.",
+            "She have visited her grandmother yesterday.",
+            "She visits her grandmother yesterday."
+          ],
+          "correctAnswer": "She visited her grandmother yesterday.",
+          "explanation": {
+            "en": "**yesterday** signals a specific past moment → past simple, not present perfect.",
+            "vi": "**yesterday** là thời điểm quá khứ cụ thể → past simple, không phải present perfect.",
+            "id": "**yesterday** menandakan momen lampau spesifik → past simple, bukan present perfect."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "id": "Pilih kalimat yang benar:"
+          },
+          "options": [
+            "I have lost my keys. I still can't find them.",
+            "I lost my keys. I still can't find them.",
+            "I have lost my keys yesterday.",
+            "I losed my keys and still can't find them."
+          ],
+          "correctAnswer": "I have lost my keys. I still can't find them.",
+          "explanation": {
+            "en": "No specific past time + result still matters (can't find them now) → present perfect **have lost**.",
+            "vi": "Không có thời gian quá khứ cụ thể + kết quả vẫn quan trọng (giờ vẫn chưa tìm thấy) → present perfect **have lost**.",
+            "id": "Tidak ada waktu lampau spesifik + hasil masih relevan (masih belum ketemu sekarang) → present perfect **have lost**."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "id": "Pilih kalimat yang benar:"
+          },
+          "options": [
+            "He has finished university in 2022.",
+            "He finished university in 2022.",
+            "He have finished university in 2022.",
+            "He finish university in 2022."
+          ],
+          "correctAnswer": "He finished university in 2022.",
+          "explanation": {
+            "en": "**in 2022** is a specific past time → past simple: **finished**.",
+            "vi": "**in 2022** là thời gian quá khứ cụ thể → past simple: **finished**.",
+            "id": "**in 2022** adalah waktu lampau spesifik → past simple: **finished**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in: We _____ each other since we were kids.",
+            "vi": "Điền vào chỗ trống: We _____ each other since we were kids.",
+            "id": "Isi titik-titik: We _____ each other since we were kids."
+          },
+          "options": [
+            "have known",
+            "knew",
+            "known",
+            "have knew"
+          ],
+          "correctAnswer": "have known",
+          "explanation": {
+            "en": "**since** signals an ongoing period from past to now → present perfect **have known**. Irregular verb: know → knew → known.",
+            "vi": "**since** chỉ khoảng thời gian kéo dài từ quá khứ đến hiện tại → present perfect **have known**. Động từ bất quy tắc: know → knew → known.",
+            "id": "**since** menandakan periode yang berlanjut dari dulu sampai sekarang → present perfect **have known**. Kata kerja tidak beraturan: know → knew → known."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "id_l1_conditional_unreal",
+      "title": {
+        "en": "**If I were** — unreal conditions in English",
+        "vi": "**If I were** — câu điều kiện không có thật",
+        "id": "**If I were** — pengandaian tidak nyata dalam bahasa Inggris"
+      },
+      "sections": {
+        "hook": {
+          "en": "Sound familiar? \"If I have money, I would travel the world.\" In Indonesian, **kalau** works the same way whether the situation is real or imaginary — **Kalau saya punya uang, saya akan keliling dunia.** But English draws a hard line between real and unreal conditions, and mixing them sounds broken.",
+          "vi": "Nghe quen không? \"If I have money, I would travel the world.\" Trong tiếng Indonesia, **kalau** hoạt động giống nhau dù tình huống có thật hay tưởng tượng. Nhưng tiếng Anh phân biệt rạch ròi giữa điều kiện thật và không thật, trộn lẫn nghe rất sai.",
+          "id": "Pernah dengar? \"If I have money, I would travel the world.\" Dalam bahasa Indonesia, **kalau** bekerja sama baik untuk situasi nyata maupun khayalan — **Kalau saya punya uang, saya akan keliling dunia.** Tapi bahasa Inggris menarik garis tegas antara kondisi nyata dan tidak nyata, dan mencampurkannya terdengar rusak."
+        },
+        "why": {
+          "en": "Indonesian **kalau… maka…** doesn't change the verb form for unreal situations — the same structure covers both \"If it rains, I will stay home\" (real) and \"If I were rich, I would travel\" (unreal). English marks the difference: unreal / hypothetical conditions use **If + past tense, would + base verb**. Never mix past tense in the **if**-clause with **will** in the result.",
+          "vi": "Tiếng Indonesia **kalau… maka…** không đổi dạng động từ cho tình huống không thật — cùng một cấu trúc cho cả \"Nếu trời mưa, tôi sẽ ở nhà\" (thật) và \"Nếu tôi giàu, tôi sẽ đi du lịch\" (không thật). Tiếng Anh đánh dấu sự khác biệt: điều kiện không thật dùng **If + quá khứ, would + động từ gốc**. Không bao giờ trộn quá khứ trong mệnh đề **if** với **will** ở mệnh đề kết quả.",
+          "id": "Bahasa Indonesia **kalau… maka…** tidak mengubah bentuk kata kerja untuk situasi tidak nyata — struktur yang sama mencakup \"Kalau hujan, saya akan di rumah\" (nyata) dan \"Kalau saya kaya, saya akan keliling dunia\" (tidak nyata). Bahasa Inggris menandai perbedaannya: kondisi tidak nyata/hipotetis menggunakan **If + past tense, would + kata kerja dasar**. Jangan pernah mencampur past tense di klausa **if** dengan **will** di hasil."
+        },
+        "pattern": {
+          "en": "**Real condition (Type 1):** If + present simple, will + base verb. \"If it rains, I will stay home.\" **Unreal condition (Type 2):** If + past simple, would + base verb. \"If I **were** rich, I **would travel** the world.\" Note: **were** is used for ALL subjects in Type 2 (formal) — \"If I **were** you,\" not \"If I **was** you.\" The past form doesn't mean past time — it signals \"this is imaginary.\"",
+          "vi": "**Điều kiện thật (Type 1):** If + hiện tại, will + động từ gốc. \"If it rains, I will stay home.\" **Điều kiện không thật (Type 2):** If + quá khứ, would + động từ gốc. \"If I **were** rich, I **would travel** the world.\" Lưu ý: **were** dùng cho TẤT CẢ các chủ ngữ trong Type 2 (trang trọng) — \"If I **were** you,\" không phải \"If I **was** you.\" Dạng quá khứ không có nghĩa thời gian quá khứ — nó báo hiệu \"đây là tưởng tượng.\"",
+          "id": "**Kondisi nyata (Type 1):** If + present simple, will + kata kerja dasar. \"If it rains, I will stay home.\" **Kondisi tidak nyata (Type 2):** If + past simple, would + kata kerja dasar. \"If I **were** rich, I **would travel** the world.\" Catatan: **were** digunakan untuk SEMUA subjek di Type 2 (formal) — \"If I **were** you,\" bukan \"If I **was** you.\" Bentuk past tidak berarti waktu lampau — ini menandakan \"ini khayalan.\""
+        },
+        "practice": {
+          "en": "Say each pair out loud and feel the contrast: \"If I have time tomorrow, I will call you.\" (real — tomorrow is possible) vs \"If I had time, I would call you.\" (unreal — I don't have time now). \"If she studies, she will pass.\" (real — she might study) vs \"If she studied, she would pass.\" (unreal — she doesn't study). The past tense in the **if**-clause doesn't mean past — it means pretend.",
+          "vi": "Nói thành tiếng từng cặp và cảm nhận sự tương phản: \"If I have time tomorrow, I will call you.\" (thật — ngày mai có thể) vs \"If I had time, I would call you.\" (không thật — giờ không có thời gian). \"If she studies, she will pass.\" (thật — có thể học) vs \"If she studied, she would pass.\" (không thật — cô ấy không học). Thì quá khứ trong mệnh đề **if** không có nghĩa quá khứ — nó có nghĩa là giả vờ.",
+          "id": "Ucapkan setiap pasangan dengan keras dan rasakan kontrasnya: \"If I have time tomorrow, I will call you.\" (nyata — besok mungkin) vs \"If I had time, I would call you.\" (tidak nyata — sekarang tidak punya waktu). \"If she studies, she will pass.\" (nyata — dia mungkin belajar) vs \"If she studied, she would pass.\" (tidak nyata — dia tidak belajar). Past tense di klausa **if** bukan berarti waktu lampau — artinya pura-pura."
+        },
+        "takeaway": {
+          "en": "Real = present + will. Unreal / pretend = past + would. If you hear yourself say **will** after a past-tense **if**, stop and switch to **would**.",
+          "vi": "Thật = hiện tại + will. Không thật / giả vờ = quá khứ + would. Nếu bạn nghe mình nói **will** sau mệnh đề **if** ở quá khứ, dừng lại và đổi sang **would**.",
+          "id": "Nyata = present + will. Tidak nyata / pura-pura = past + would. Kalau kamu dengar diri sendiri bilang **will** setelah klausa **if** past tense, berhenti dan ganti ke **would**."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence (unreal — I don't have money):",
+            "vi": "Chọn câu đúng (không thật — tôi không có tiền):",
+            "id": "Pilih kalimat yang benar (tidak nyata — saya tidak punya uang):"
+          },
+          "options": [
+            "If I have money, I will buy a house.",
+            "If I had money, I would buy a house.",
+            "If I had money, I will buy a house.",
+            "If I have money, I would buy a house."
+          ],
+          "correctAnswer": "If I had money, I would buy a house.",
+          "explanation": {
+            "en": "Unreal condition → past tense in **if**-clause (**had**) + **would** in result.",
+            "vi": "Điều kiện không thật → quá khứ trong mệnh đề **if** (**had**) + **would** ở kết quả.",
+            "id": "Kondisi tidak nyata → past tense di klausa **if** (**had**) + **would** di hasil."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence (giving advice):",
+            "vi": "Chọn câu đúng (đưa lời khuyên):",
+            "id": "Pilih kalimat yang benar (memberi saran):"
+          },
+          "options": [
+            "If I am you, I would take the job.",
+            "If I were you, I will take the job.",
+            "If I were you, I would take the job.",
+            "If I was you, I would take the job."
+          ],
+          "correctAnswer": "If I were you, I would take the job.",
+          "explanation": {
+            "en": "**If I were you** is the standard form for giving advice — use **were** for all subjects in Type 2 conditionals.",
+            "vi": "**If I were you** là dạng chuẩn để đưa lời khuyên — dùng **were** cho mọi chủ ngữ trong câu điều kiện Type 2.",
+            "id": "**If I were you** adalah bentuk standar untuk memberi saran — gunakan **were** untuk semua subjek di conditional Type 2."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence (real — tomorrow is possible):",
+            "vi": "Chọn câu đúng (thật — ngày mai có thể):",
+            "id": "Pilih kalimat yang benar (nyata — besok mungkin terjadi):"
+          },
+          "options": [
+            "If it rains tomorrow, we would stay inside.",
+            "If it rained tomorrow, we will stay inside.",
+            "If it rains tomorrow, we will stay inside.",
+            "If it will rain tomorrow, we stay inside."
+          ],
+          "correctAnswer": "If it rains tomorrow, we will stay inside.",
+          "explanation": {
+            "en": "Real possibility → present tense in **if**-clause (**rains**) + **will** in result.",
+            "vi": "Khả năng thật → hiện tại trong mệnh đề **if** (**rains**) + **will** ở kết quả.",
+            "id": "Kemungkinan nyata → present tense di klausa **if** (**rains**) + **will** di hasil."
+          }
+        },
+        {
+          "question": {
+            "en": "Which sentence is the UNREAL version of: I don't speak French, so I don't understand this song.",
+            "vi": "Câu nào là phiên bản KHÔNG THẬT của: Tôi không nói tiếng Pháp, nên tôi không hiểu bài hát này.",
+            "id": "Kalimat mana yang versi TIDAK NYATA dari: Saya tidak bisa bahasa Prancis, jadi saya tidak mengerti lagu ini."
+          },
+          "options": [
+            "If I speak French, I will understand this song.",
+            "If I spoke French, I would understand this song.",
+            "If I spoke French, I will understand this song.",
+            "If I speak French, I would understand this song."
+          ],
+          "correctAnswer": "If I spoke French, I would understand this song.",
+          "explanation": {
+            "en": "I don't speak French (unreal now) → **spoke** (past form, unreal signal) + **would**.",
+            "vi": "Tôi không nói tiếng Pháp (không thật ở hiện tại) → **spoke** (dạng quá khứ, tín hiệu không thật) + **would**.",
+            "id": "Saya tidak bisa bahasa Prancis (tidak nyata sekarang) → **spoke** (bentuk past, sinyal tidak nyata) + **would**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in: If she _____ taller, she would play basketball.",
+            "vi": "Điền vào chỗ trống: If she _____ taller, she would play basketball.",
+            "id": "Isi titik-titik: If she _____ taller, she would play basketball."
+          },
+          "options": [
+            "is",
+            "was",
+            "were",
+            "will be"
+          ],
+          "correctAnswer": "were",
+          "explanation": {
+            "en": "Unreal condition about a permanent quality → **were** (subjunctive) for all subjects.",
+            "vi": "Điều kiện không thật về một đặc điểm cố định → **were** (giả định) cho mọi chủ ngữ.",
+            "id": "Kondisi tidak nyata tentang sifat permanen → **were** (subjunctive) untuk semua subjek."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "id_l1_reported_speech",
+      "title": {
+        "en": "**She said she was** — reporting speech in English",
+        "vi": "**She said she was** — tường thuật lời nói trong tiếng Anh",
+        "id": "**She said she was** — melaporkan ucapan dalam bahasa Inggris"
+      },
+      "sections": {
+        "hook": {
+          "en": "Sound familiar? \"She said she is tired.\" In Indonesian, this is exactly right — **Dia bilang dia capek.** You just wrap the original words in **bilang** and the verb stays the same. English doesn't work that way — when you report speech, the tense takes one step back.",
+          "vi": "Nghe quen không? \"She said she is tired.\" Trong tiếng Indonesia, câu này hoàn toàn đúng — **Dia bilang dia capek.** Bạn chỉ cần bọc lời gốc trong **bilang** và động từ giữ nguyên. Tiếng Anh không hoạt động như vậy — khi bạn tường thuật, thì của động từ lùi một bước.",
+          "id": "Pernah dengar? \"She said she is tired.\" Dalam bahasa Indonesia, ini benar — **Dia bilang dia capek.** Kamu tinggal membungkus kata-kata asli dengan **bilang** dan kata kerjanya tetap sama. Bahasa Inggris tidak bekerja seperti itu — saat kamu melaporkan ucapan, tense mundur satu langkah."
+        },
+        "why": {
+          "en": "Indonesian reports speech without changing the verb tense. **Dia bilang dia lapar** keeps present tense; **Dia bilang dia sudah makan** keeps the original form. English backshifts: if the original was present → reported becomes past; original past → reported becomes past perfect. The reporting verb **said** sets the whole sentence in the past, and the grammar follows.",
+          "vi": "Tiếng Indonesia tường thuật không đổi thì động từ. **Dia bilang dia lapar** giữ thì hiện tại; **Dia bilang dia sudah makan** giữ dạng gốc. Tiếng Anh lùi thì: gốc là hiện tại → tường thuật thành quá khứ; gốc là quá khứ → tường thuật thành quá khứ hoàn thành. Động từ tường thuật **said** đặt cả câu vào quá khứ, và ngữ pháp đi theo.",
+          "id": "Bahasa Indonesia melaporkan ucapan tanpa mengubah tense kata kerja. **Dia bilang dia lapar** tetap present tense; **Dia bilang dia sudah makan** tetap bentuk asli. Bahasa Inggris menggeser tense ke belakang: kalau aslinya present → reported jadi past; aslinya past → reported jadi past perfect. Kata kerja pelapor **said** menempatkan seluruh kalimat di masa lalu, dan tata bahasanya mengikuti."
+        },
+        "pattern": {
+          "en": "**Backshift rule:** present → past, past → past perfect, **will** → **would**, **can** → **could**. \"I am tired\" → She said she **was** tired. \"I went there\" → She said she **had gone** there. \"I will call\" → She said she **would** call. **No backshift** when: the reported fact is still true now, or the reporting verb is present tense (**she says...**).",
+          "vi": "**Quy tắc lùi thì:** hiện tại → quá khứ, quá khứ → quá khứ hoàn thành, **will** → **would**, **can** → **could**. \"I am tired\" → She said she **was** tired. \"I went there\" → She said she **had gone** there. \"I will call\" → She said she **would** call. **Không lùi thì** khi: sự thật được tường thuật vẫn đúng ở hiện tại, hoặc động từ tường thuật ở thì hiện tại (**she says...**).",
+          "id": "**Aturan pergeseran tense:** present → past, past → past perfect, **will** → **would**, **can** → **could**. \"I am tired\" → She said she **was** tired. \"I went there\" → She said she **had gone** there. \"I will call\" → She said she **would** call. **Tidak ada pergeseran** saat: fakta yang dilaporkan masih benar sekarang, atau kata kerja pelapor dalam present tense (**she says...**)."
+        },
+        "practice": {
+          "en": "Practice the backshift out loud: Original: \"I like coffee\" → Reported: \"She said she **liked** coffee.\" Original: \"I am working\" → Reported: \"He said he **was** working.\" Original: \"We saw the movie\" → Reported: \"They said they **had seen** the movie.\" Original: \"I will help you\" → Reported: \"She said she **would** help me.\" The shift happens automatically once your ear expects it.",
+          "vi": "Luyện lùi thì thành tiếng: Gốc: \"I like coffee\" → Tường thuật: \"She said she **liked** coffee.\" Gốc: \"I am working\" → Tường thuật: \"He said he **was** working.\" Gốc: \"We saw the movie\" → Tường thuật: \"They said they **had seen** the movie.\" Gốc: \"I will help you\" → Tường thuật: \"She said she **would** help me.\" Việc lùi thì diễn ra tự động khi tai bạn đã quen.",
+          "id": "Latih pergeseran tense dengan keras: Asli: \"I like coffee\" → Dilaporkan: \"She said she **liked** coffee.\" Asli: \"I am working\" → Dilaporkan: \"He said he **was** working.\" Asli: \"We saw the movie\" → Dilaporkan: \"They said they **had seen** the movie.\" Asli: \"I will help you\" → Dilaporkan: \"She said she **would** help me.\" Pergeseran terjadi otomatis begitu telingamu terbiasa."
+        },
+        "takeaway": {
+          "en": "Reporting verb in past tense (**said**, **told**) → shift everything one step back. Present becomes past. Past becomes past perfect. **Will** becomes **would**.",
+          "vi": "Động từ tường thuật ở quá khứ (**said**, **told**) → lùi mọi thứ một bước. Hiện tại thành quá khứ. Quá khứ thành quá khứ hoàn thành. **Will** thành **would**.",
+          "id": "Kata kerja pelapor dalam past tense (**said**, **told**) → geser semuanya satu langkah ke belakang. Present jadi past. Past jadi past perfect. **Will** jadi **would**."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "\"I am hungry.\" → She said she _____ hungry.",
+            "vi": "\"I am hungry.\" → She said she _____ hungry.",
+            "id": "\"I am hungry.\" → She said she _____ hungry."
+          },
+          "options": [
+            "is",
+            "was",
+            "has been",
+            "were"
+          ],
+          "correctAnswer": "was",
+          "explanation": {
+            "en": "Present **am** backshifts to past **was** in reported speech.",
+            "vi": "Hiện tại **am** lùi thành quá khứ **was** trong câu tường thuật.",
+            "id": "Present **am** bergeser ke past **was** dalam kalimat tidak langsung."
+          }
+        },
+        {
+          "question": {
+            "en": "\"I will call you tomorrow.\" → He said he _____ call me the next day.",
+            "vi": "\"I will call you tomorrow.\" → He said he _____ call me the next day.",
+            "id": "\"I will call you tomorrow.\" → He said he _____ call me the next day."
+          },
+          "options": [
+            "will",
+            "would",
+            "can",
+            "shall"
+          ],
+          "correctAnswer": "would",
+          "explanation": {
+            "en": "**will** always backshifts to **would** in reported speech with a past reporting verb.",
+            "vi": "**will** luôn lùi thành **would** trong câu tường thuật với động từ tường thuật ở quá khứ.",
+            "id": "**will** selalu bergeser ke **would** dalam kalimat tidak langsung dengan kata kerja pelapor past tense."
+          }
+        },
+        {
+          "question": {
+            "en": "\"I went to the market.\" → She said she _____ to the market.",
+            "vi": "\"I went to the market.\" → She said she _____ to the market.",
+            "id": "\"I went to the market.\" → She said she _____ to the market."
+          },
+          "options": [
+            "went",
+            "had gone",
+            "goes",
+            "has gone"
+          ],
+          "correctAnswer": "had gone",
+          "explanation": {
+            "en": "Past simple **went** backshifts to past perfect **had gone** in reported speech.",
+            "vi": "Quá khứ đơn **went** lùi thành quá khứ hoàn thành **had gone** trong câu tường thuật.",
+            "id": "Past simple **went** bergeser ke past perfect **had gone** dalam kalimat tidak langsung."
+          }
+        },
+        {
+          "question": {
+            "en": "Which is correct reported speech for: \"I can swim.\"",
+            "vi": "Câu tường thuật đúng cho: \"I can swim.\" là:",
+            "id": "Kalimat tidak langsung yang benar untuk: \"I can swim.\" adalah:"
+          },
+          "options": [
+            "She said she can swim.",
+            "She said she could swim.",
+            "She said she could swam.",
+            "She said she can swam."
+          ],
+          "correctAnswer": "She said she could swim.",
+          "explanation": {
+            "en": "**can** backshifts to **could** — the main verb **swim** stays in base form.",
+            "vi": "**can** lùi thành **could** — động từ chính **swim** giữ nguyên dạng gốc.",
+            "id": "**can** bergeser ke **could** — kata kerja utama **swim** tetap dalam bentuk dasar."
+          }
+        },
+        {
+          "question": {
+            "en": "\"I don't like vegetables.\" → The child said he _____ like vegetables.",
+            "vi": "\"I don't like vegetables.\" → The child said he _____ like vegetables.",
+            "id": "\"I don't like vegetables.\" → The child said he _____ like vegetables."
+          },
+          "options": [
+            "doesn't",
+            "didn't",
+            "don't",
+            "hadn't"
+          ],
+          "correctAnswer": "didn't",
+          "explanation": {
+            "en": "Present **don't** backshifts to past **didn't** in reported speech.",
+            "vi": "Hiện tại **don't** lùi thành quá khứ **didn't** trong câu tường thuật.",
+            "id": "Present **don't** bergeser ke past **didn't** dalam kalimat tidak langsung."
+          }
+        }
+      ]
+    },
+    {
       "tag": "vi_l1_present_perfect_vs_past",
       "title": {
         "en": "Present perfect vs past — time words decide",
@@ -454,104 +850,34 @@
       },
       "quiz": [
         {
-          "question": {
-            "en": "Which sentence is correct?",
-            "vi": "Câu nào đúng?",
-            "id": "Kalimat mana yang benar?"
-          },
-          "options": [
-            "I have eaten pho yesterday.",
-            "I ate pho yesterday.",
-            "I have ate pho yesterday.",
-            "I eaten pho yesterday."
-          ],
+          "question": { "en": "Which sentence is correct?", "vi": "Câu nào đúng?", "id": "Kalimat mana yang benar?" },
+          "options": ["I have eaten pho yesterday.", "I ate pho yesterday.", "I have ate pho yesterday.", "I eaten pho yesterday."],
           "correctAnswer": "I ate pho yesterday.",
-          "explanation": {
-            "en": "**yesterday** is a finished time → past simple (**ate**), not present perfect.",
-            "vi": "**yesterday** là thời gian đã qua → quá khứ đơn (**ate**), không dùng hiện tại hoàn thành.",
-            "ja": "**yesterday** は特定の過去時点 → 過去形（**ate**）。現在完了は使えません。",
-            "id": "**yesterday** adalah waktu yang sudah lewat → past simple (**ate**), bukan present perfect."
-          }
+          "explanation": { "en": "**yesterday** is a finished time → past simple (**ate**), not present perfect.", "vi": "**yesterday** là thời gian đã qua → quá khứ đơn (**ate**), không dùng hiện tại hoàn thành.", "ja": "**yesterday** は特定の過去時点 → 過去形（**ate**）。現在完了は使えません。", "id": "**yesterday** adalah waktu yang sudah lewat → past simple (**ate**), bukan present perfect." }
         },
         {
-          "question": {
-            "en": "Fill in the blank: She ___ to Bali three times.",
-            "vi": "Điền vào chỗ trống: She ___ to Bali three times.",
-            "id": "Isi bagian kosong: She ___ to Bali three times."
-          },
-          "options": [
-            "went",
-            "has been",
-            "goed",
-            "is going"
-          ],
+          "question": { "en": "Fill in the blank: She ___ to Bali three times.", "vi": "Điền vào chỗ trống: She ___ to Bali three times.", "id": "Isi bagian kosong: She ___ to Bali three times." },
+          "options": ["went", "has been", "goed", "is going"],
           "correctAnswer": "has been",
-          "explanation": {
-            "en": "**three times** counts experience — no specific date → present perfect (**has been**).",
-            "vi": "**three times** đếm trải nghiệm — không có ngày cụ thể → hiện tại hoàn thành (**has been**).",
-            "ja": "**three times** は経験の回数 — 特定の日付なし → 現在完了（**has been**）。",
-            "id": "**three times** menghitung pengalaman — tidak ada tanggal spesifik → present perfect (**has been**)."
-          }
+          "explanation": { "en": "**three times** counts experience — no specific date → present perfect (**has been**).", "vi": "**three times** đếm trải nghiệm — không có ngày cụ thể → hiện tại hoàn thành (**has been**).", "ja": "**three times** は経験の回数 — 特定の日付なし → 現在完了（**has been**）。", "id": "**three times** menghitung pengalaman — tidak ada tanggal spesifik → present perfect (**has been**)." }
         },
         {
-          "question": {
-            "en": "Fill in the blank: I ___ my keys. I can't find them.",
-            "vi": "Điền vào chỗ trống: I ___ my keys. I can't find them.",
-            "id": "Isi bagian kosong: I ___ my keys. I can't find them."
-          },
-          "options": [
-            "lost",
-            "have lost",
-            "losed",
-            "am losing"
-          ],
+          "question": { "en": "Fill in the blank: I ___ my keys. I can't find them.", "vi": "Điền vào chỗ trống: I ___ my keys. I can't find them.", "id": "Isi bagian kosong: I ___ my keys. I can't find them." },
+          "options": ["lost", "have lost", "losed", "am losing"],
           "correctAnswer": "have lost",
-          "explanation": {
-            "en": "Past action with a present result (still can't find them) → present perfect (**have lost**).",
-            "vi": "Hành động quá khứ ảnh hưởng đến hiện tại (vẫn chưa tìm thấy) → hiện tại hoàn thành (**have lost**).",
-            "ja": "過去の行動の結果が現在も続いている（まだ見つからない）→ 現在完了（**have lost**）。",
-            "id": "Tindakan lampau dengan hasil sekarang (masih tidak bisa menemukannya) → present perfect (**have lost**)."
-          }
+          "explanation": { "en": "Past action with a present result (still can't find them) → present perfect (**have lost**).", "vi": "Hành động quá khứ ảnh hưởng đến hiện tại (vẫn chưa tìm thấy) → hiện tại hoàn thành (**have lost**).", "ja": "過去の行動の結果が現在も続いている（まだ見つからない）→ 現在完了（**have lost**）。", "id": "Tindakan lampau dengan hasil sekarang (masih tidak bisa menemukannya) → present perfect (**have lost**)." }
         },
         {
-          "question": {
-            "en": "Which sentence is correct?",
-            "vi": "Câu nào đúng?",
-            "id": "Kalimat mana yang benar?"
-          },
-          "options": [
-            "He has finished his work two hours ago.",
-            "He finished his work two hours ago.",
-            "He have finished his work two hours ago.",
-            "He finishing his work two hours ago."
-          ],
+          "question": { "en": "Which sentence is correct?", "vi": "Câu nào đúng?", "id": "Kalimat mana yang benar?" },
+          "options": ["He has finished his work two hours ago.", "He finished his work two hours ago.", "He have finished his work two hours ago.", "He finishing his work two hours ago."],
           "correctAnswer": "He finished his work two hours ago.",
-          "explanation": {
-            "en": "**two hours ago** is a specific past time → past simple (**finished**), not **has finished**.",
-            "vi": "**two hours ago** là thời gian cụ thể trong quá khứ → quá khứ đơn (**finished**), không phải **has finished**.",
-            "ja": "**two hours ago** は特定の過去時点 → 過去形（**finished**）。**has finished** は使えません。",
-            "id": "**two hours ago** adalah waktu lampau spesifik → past simple (**finished**), bukan **has finished**."
-          }
+          "explanation": { "en": "**two hours ago** is a specific past time → past simple (**finished**), not **has finished**.", "vi": "**two hours ago** là thời gian cụ thể trong quá khứ → quá khứ đơn (**finished**), không phải **has finished**.", "ja": "**two hours ago** は特定の過去時点 → 過去形（**finished**）。**has finished** は使えません。", "id": "**two hours ago** adalah waktu lampau spesifik → past simple (**finished**), bukan **has finished**." }
         },
         {
-          "question": {
-            "en": "Fill in the blank: We ___ that movie last weekend.",
-            "vi": "Điền vào chỗ trống: We ___ that movie last weekend.",
-            "id": "Isi bagian kosong: We ___ that movie last weekend."
-          },
-          "options": [
-            "have seen",
-            "saw",
-            "seen",
-            "have saw"
-          ],
+          "question": { "en": "Fill in the blank: We ___ that movie last weekend.", "vi": "Điền vào chỗ trống: We ___ that movie last weekend.", "id": "Isi bagian kosong: We ___ that movie last weekend." },
+          "options": ["have seen", "saw", "seen", "have saw"],
           "correctAnswer": "saw",
-          "explanation": {
-            "en": "**last weekend** is a finished time → past simple (**saw**). **have seen** would need no time marker.",
-            "vi": "**last weekend** là thời gian đã qua → quá khứ đơn (**saw**). **have seen** chỉ dùng khi không có mốc thời gian.",
-            "ja": "**last weekend** は特定の過去時点 → 過去形（**saw**）。**have seen** は時間を特定しない場合のみ。",
-            "id": "**last weekend** adalah waktu yang sudah lewat → past simple (**saw**). **have seen** hanya dipakai tanpa penanda waktu."
-          }
+          "explanation": { "en": "**last weekend** is a finished time → past simple (**saw**). **have seen** would need no time marker.", "vi": "**last weekend** là thời gian đã qua → quá khứ đơn (**saw**). **have seen** chỉ dùng khi không có mốc thời gian.", "ja": "**last weekend** は特定の過去時点 → 過去形（**saw**）。**have seen** は時間を特定しない場合のみ。", "id": "**last weekend** adalah waktu yang sudah lewat → past simple (**saw**). **have seen** hanya dipakai tanpa penanda waktu." }
         }
       ]
     },
@@ -596,104 +922,34 @@
       },
       "quiz": [
         {
-          "question": {
-            "en": "Which sentence is correct?",
-            "vi": "Câu nào đúng?",
-            "id": "Kalimat mana yang benar?"
-          },
-          "options": [
-            "If I had money, I will buy a car.",
-            "If I had money, I would buy a car.",
-            "If I have money, I would buy a car.",
-            "If I had money, I buy a car."
-          ],
+          "question": { "en": "Which sentence is correct?", "vi": "Câu nào đúng?", "id": "Kalimat mana yang benar?" },
+          "options": ["If I had money, I will buy a car.", "If I had money, I would buy a car.", "If I have money, I would buy a car.", "If I had money, I buy a car."],
           "correctAnswer": "If I had money, I would buy a car.",
-          "explanation": {
-            "en": "**had** = past form → unreal → must pair with **would**, not **will**.",
-            "vi": "**had** = dạng quá khứ → không thật → phải đi với **would**, không phải **will**.",
-            "ja": "**had** = 過去形 → 非現実 → **will** ではなく **would** と組み合わせます。",
-            "id": "**had** = bentuk lampau → khayalan → harus berpasangan dengan **would**, bukan **will**."
-          }
+          "explanation": { "en": "**had** = past form → unreal → must pair with **would**, not **will**.", "vi": "**had** = dạng quá khứ → không thật → phải đi với **would**, không phải **will**.", "ja": "**had** = 過去形 → 非現実 → **will** ではなく **would** と組み合わせます。", "id": "**had** = bentuk lampau → khayalan → harus berpasangan dengan **would**, bukan **will**." }
         },
         {
-          "question": {
-            "en": "Fill in the blank: If it ___, I will take an umbrella.",
-            "vi": "Điền vào chỗ trống: If it ___, I will take an umbrella.",
-            "id": "Isi bagian kosong: If it ___, I will take an umbrella."
-          },
-          "options": [
-            "rained",
-            "rains",
-            "will rain",
-            "raining"
-          ],
+          "question": { "en": "Fill in the blank: If it ___, I will take an umbrella.", "vi": "Điền vào chỗ trống: If it ___, I will take an umbrella.", "id": "Isi bagian kosong: If it ___, I will take an umbrella." },
+          "options": ["rained", "rains", "will rain", "raining"],
           "correctAnswer": "rains",
-          "explanation": {
-            "en": "Real condition (will in main clause) → present simple (**rains**) in the if-clause.",
-            "vi": "Điều kiện có thật (will ở mệnh đề chính) → hiện tại đơn (**rains**) ở mệnh đề if.",
-            "ja": "現実的条件（主節が will）→ if節は現在形（**rains**）。",
-            "id": "Kondisi nyata (will di klausa utama) → present simple (**rains**) di klausa if."
-          }
+          "explanation": { "en": "Real condition (will in main clause) → present simple (**rains**) in the if-clause.", "vi": "Điều kiện có thật (will ở mệnh đề chính) → hiện tại đơn (**rains**) ở mệnh đề if.", "ja": "現実的条件（主節が will）→ if節は現在形（**rains**）。", "id": "Kondisi nyata (will di klausa utama) → present simple (**rains**) di klausa if." }
         },
         {
-          "question": {
-            "en": "Choose the unreal conditional:",
-            "vi": "Chọn câu điều kiện không thật:",
-            "id": "Pilih kalimat khayalan:"
-          },
-          "options": [
-            "If I am you, I will take the job.",
-            "If I were you, I would take the job.",
-            "If I will be you, I take the job.",
-            "If I am you, I would take the job."
-          ],
+          "question": { "en": "Choose the unreal conditional:", "vi": "Chọn câu điều kiện không thật:", "id": "Pilih kalimat khayalan:" },
+          "options": ["If I am you, I will take the job.", "If I were you, I would take the job.", "If I will be you, I take the job.", "If I am you, I would take the job."],
           "correctAnswer": "If I were you, I would take the job.",
-          "explanation": {
-            "en": "I can never be you → unreal → **were + would**. Note **were** for all subjects in unreal if-clauses.",
-            "vi": "Tôi không thể là bạn → không thật → **were + would**. Lưu ý **were** dùng cho mọi chủ ngữ trong câu if không thật.",
-            "ja": "私はあなたにはなれない → 非現実 → **were + would**。非現実の if節では全主語に **were** を使います。",
-            "id": "Saya tidak mungkin menjadi kamu → khayalan → **were + would**. Perhatikan **were** untuk semua subjek di klausa if khayalan."
-          }
+          "explanation": { "en": "I can never be you → unreal → **were + would**. Note **were** for all subjects in unreal if-clauses.", "vi": "Tôi không thể là bạn → không thật → **were + would**. Lưu ý **were** dùng cho mọi chủ ngữ trong câu if không thật.", "ja": "私はあなたにはなれない → 非現実 → **were + would**。非現実の if節では全主語に **were** を使います。", "id": "Saya tidak mungkin menjadi kamu → khayalan → **were + would**. Perhatikan **were** untuk semua subjek di klausa if khayalan." }
         },
         {
-          "question": {
-            "en": "Fill in the blank: If she ___ harder, she would pass the exam.",
-            "vi": "Điền vào chỗ trống: If she ___ harder, she would pass the exam.",
-            "id": "Isi bagian kosong: If she ___ harder, she would pass the exam."
-          },
-          "options": [
-            "studies",
-            "studied",
-            "will study",
-            "study"
-          ],
+          "question": { "en": "Fill in the blank: If she ___ harder, she would pass the exam.", "vi": "Điền vào chỗ trống: If she ___ harder, she would pass the exam.", "id": "Isi bagian kosong: If she ___ harder, she would pass the exam." },
+          "options": ["studies", "studied", "will study", "study"],
           "correctAnswer": "studied",
-          "explanation": {
-            "en": "**would** in the main clause signals unreal → past form (**studied**) in the if-clause.",
-            "vi": "**would** ở mệnh đề chính báo hiệu không thật → dạng quá khứ (**studied**) ở mệnh đề if.",
-            "ja": "主節の **would** が非現実を示す → if節は過去形（**studied**）。",
-            "id": "**would** di klausa utama menandakan khayalan → bentuk lampau (**studied**) di klausa if."
-          }
+          "explanation": { "en": "**would** in the main clause signals unreal → past form (**studied**) in the if-clause.", "vi": "**would** ở mệnh đề chính báo hiệu không thật → dạng quá khứ (**studied**) ở mệnh đề if.", "ja": "主節の **would** が非現実を示す → if節は過去形（**studied**）。", "id": "**would** di klausa utama menandakan khayalan → bentuk lampau (**studied**) di klausa if." }
         },
         {
-          "question": {
-            "en": "Which sentence describes a real possibility?",
-            "vi": "Câu nào diễn tả khả năng có thật?",
-            "id": "Kalimat mana yang menggambarkan kemungkinan nyata?"
-          },
-          "options": [
-            "If I were taller, I would play basketball.",
-            "If I finish early, I will call you.",
-            "If I had wings, I would fly away.",
-            "If I knew the answer, I would tell you."
-          ],
+          "question": { "en": "Which sentence describes a real possibility?", "vi": "Câu nào diễn tả khả năng có thật?", "id": "Kalimat mana yang menggambarkan kemungkinan nyata?" },
+          "options": ["If I were taller, I would play basketball.", "If I finish early, I will call you.", "If I had wings, I would fly away.", "If I knew the answer, I would tell you."],
           "correctAnswer": "If I finish early, I will call you.",
-          "explanation": {
-            "en": "**If + present, will** = real possibility. The others are all unreal (past in if-clause + would).",
-            "vi": "**If + hiện tại, will** = khả năng thật. Các câu còn lại đều không thật (quá khứ ở mệnh đề if + would).",
-            "ja": "**If + 現在形, will** = 現実的可能性。他はすべて非現実（if節が過去形 + would）。",
-            "id": "**If + present, will** = kemungkinan nyata. Yang lainnya semua khayalan (lampau di klausa if + would)."
-          }
+          "explanation": { "en": "**If + present, will** = real possibility. The others are all unreal (past in if-clause + would).", "vi": "**If + hiện tại, will** = khả năng thật. Các câu còn lại đều không thật (quá khứ ở mệnh đề if + would).", "ja": "**If + 現在形, will** = 現実的可能性。他はすべて非現実（if節が過去形 + would）。", "id": "**If + present, will** = kemungkinan nyata. Yang lainnya semua khayalan (lampau di klausa if + would)." }
         }
       ]
     },
@@ -738,104 +994,34 @@
       },
       "quiz": [
         {
-          "question": {
-            "en": "Which sentence is correct?",
-            "vi": "Câu nào đúng?",
-            "id": "Kalimat mana yang benar?"
-          },
-          "options": [
-            "The letter written yesterday.",
-            "The letter was written yesterday.",
-            "The letter wrote yesterday.",
-            "The letter is wrote yesterday."
-          ],
+          "question": { "en": "Which sentence is correct?", "vi": "Câu nào đúng?", "id": "Kalimat mana yang benar?" },
+          "options": ["The letter written yesterday.", "The letter was written yesterday.", "The letter wrote yesterday.", "The letter is wrote yesterday."],
           "correctAnswer": "The letter was written yesterday.",
-          "explanation": {
-            "en": "Passive needs **be + V3**: **was + written**.",
-            "vi": "Bị động cần **be + V3**: **was + written**.",
-            "ja": "受動態は **be + 過去分詞**：**was + written**。",
-            "id": "Pasif membutuhkan **be + V3**: **was + written**."
-          }
+          "explanation": { "en": "Passive needs **be + V3**: **was + written**.", "vi": "Bị động cần **be + V3**: **was + written**.", "ja": "受動態は **be + 過去分詞**：**was + written**。", "id": "Pasif membutuhkan **be + V3**: **was + written**." }
         },
         {
-          "question": {
-            "en": "Fill in the blank: English ___ spoken in many countries.",
-            "vi": "Điền vào chỗ trống: English ___ spoken in many countries.",
-            "id": "Isi bagian kosong: English ___ spoken in many countries."
-          },
-          "options": [
-            "are",
-            "is",
-            "be",
-            "been"
-          ],
+          "question": { "en": "Fill in the blank: English ___ spoken in many countries.", "vi": "Điền vào chỗ trống: English ___ spoken in many countries.", "id": "Isi bagian kosong: English ___ spoken in many countries." },
+          "options": ["are", "is", "be", "been"],
           "correctAnswer": "is",
-          "explanation": {
-            "en": "**English** = singular → **is + spoken** (present passive).",
-            "vi": "**English** = số ít → **is + spoken** (bị động hiện tại).",
-            "ja": "**English** = 単数 → **is + spoken**（現在の受動態）。",
-            "id": "**English** = tunggal → **is + spoken** (pasif present)."
-          }
+          "explanation": { "en": "**English** = singular → **is + spoken** (present passive).", "vi": "**English** = số ít → **is + spoken** (bị động hiện tại).", "ja": "**English** = 単数 → **is + spoken**（現在の受動態）。", "id": "**English** = tunggal → **is + spoken** (pasif present)." }
         },
         {
-          "question": {
-            "en": "Fill in the blank (past): The windows ___ broken during the storm.",
-            "vi": "Điền vào chỗ trống (quá khứ): The windows ___ broken during the storm.",
-            "id": "Isi bagian kosong (lampau): The windows ___ broken during the storm."
-          },
-          "options": [
-            "was",
-            "were",
-            "is",
-            "been"
-          ],
+          "question": { "en": "Fill in the blank (past): The windows ___ broken during the storm.", "vi": "Điền vào chỗ trống (quá khứ): The windows ___ broken during the storm.", "id": "Isi bagian kosong (lampau): The windows ___ broken during the storm." },
+          "options": ["was", "were", "is", "been"],
           "correctAnswer": "were",
-          "explanation": {
-            "en": "**windows** = plural + past → **were + broken**.",
-            "vi": "**windows** = số nhiều + quá khứ → **were + broken**.",
-            "ja": "**windows** = 複数 + 過去 → **were + broken**。",
-            "id": "**windows** = jamak + lampau → **were + broken**."
-          }
+          "explanation": { "en": "**windows** = plural + past → **were + broken**.", "vi": "**windows** = số nhiều + quá khứ → **were + broken**.", "ja": "**windows** = 複数 + 過去 → **were + broken**。", "id": "**windows** = jamak + lampau → **were + broken**." }
         },
         {
-          "question": {
-            "en": "Choose the correct passive form:",
-            "vi": "Chọn dạng bị động đúng:",
-            "id": "Pilih bentuk pasif yang benar:"
-          },
-          "options": [
-            "The food prepares fresh daily.",
-            "The food is prepared fresh daily.",
-            "The food prepared fresh daily.",
-            "The food is prepare fresh daily."
-          ],
+          "question": { "en": "Choose the correct passive form:", "vi": "Chọn dạng bị động đúng:", "id": "Pilih bentuk pasif yang benar:" },
+          "options": ["The food prepares fresh daily.", "The food is prepared fresh daily.", "The food prepared fresh daily.", "The food is prepare fresh daily."],
           "correctAnswer": "The food is prepared fresh daily.",
-          "explanation": {
-            "en": "**be (is) + prepared (V3)** = correct passive. 'Prepares' is active, 'prepare' is bare form.",
-            "vi": "**be (is) + prepared (V3)** = bị động đúng. 'Prepares' là chủ động, 'prepare' là dạng gốc.",
-            "ja": "**be (is) + prepared（過去分詞）** = 正しい受動態。'prepares' は能動態、'prepare' は原形。",
-            "id": "**be (is) + prepared (V3)** = pasif yang benar. 'Prepares' adalah aktif, 'prepare' adalah bentuk dasar."
-          }
+          "explanation": { "en": "**be (is) + prepared (V3)** = correct passive. 'Prepares' is active, 'prepare' is bare form.", "vi": "**be (is) + prepared (V3)** = bị động đúng. 'Prepares' là chủ động, 'prepare' là dạng gốc.", "ja": "**be (is) + prepared（過去分詞）** = 正しい受動態。'prepares' は能動態、'prepare' は原形。", "id": "**be (is) + prepared (V3)** = pasif yang benar. 'Prepares' adalah aktif, 'prepare' adalah bentuk dasar." }
         },
         {
-          "question": {
-            "en": "Fill in the blank (future): A new hospital ___ built next year.",
-            "vi": "Điền vào chỗ trống (tương lai): A new hospital ___ built next year.",
-            "id": "Isi bagian kosong (masa depan): A new hospital ___ built next year."
-          },
-          "options": [
-            "is",
-            "was",
-            "will be",
-            "been"
-          ],
+          "question": { "en": "Fill in the blank (future): A new hospital ___ built next year.", "vi": "Điền vào chỗ trống (tương lai): A new hospital ___ built next year.", "id": "Isi bagian kosong (masa depan): A new hospital ___ built next year." },
+          "options": ["is", "was", "will be", "been"],
           "correctAnswer": "will be",
-          "explanation": {
-            "en": "Future passive = **will be + V3**. **will be built**, not **will built**.",
-            "vi": "Bị động tương lai = **will be + V3**. **will be built**, không phải **will built**.",
-            "ja": "未来の受動態 = **will be + 過去分詞**。**will be built**、**will built** ではない。",
-            "id": "Pasif masa depan = **will be + V3**. **will be built**, bukan **will built**."
-          }
+          "explanation": { "en": "Future passive = **will be + V3**. **will be built**, not **will built**.", "vi": "Bị động tương lai = **will be + V3**. **will be built**, không phải **will built**.", "ja": "未来の受動態 = **will be + 過去分詞**。**will be built**、**will built** ではない。", "id": "Pasif masa depan = **will be + V3**. **will be built**, bukan **will built**." }
         }
       ]
     }

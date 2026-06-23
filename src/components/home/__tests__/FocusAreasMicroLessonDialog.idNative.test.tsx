@@ -257,3 +257,50 @@ describe("FocusAreasMicroLessonDialog — B2 Indonesian-native rich lessons", ()
     expect(section!.textContent).toContain("without changing the verb");
   });
 });
+
+describe("FocusAreasMicroLessonDialog — B2 id_l1_* content rendering", () => {
+  it("renders B2 present-perfect-vs-past lesson with id content", () => {
+    const entry = WEAKNESS_CATALOG.id_l1_present_perfect_vs_past!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const whyHeading = screen.getByText("Vì sao khó");
+    const section = whyHeading.closest('[data-rich-section="why"]');
+    expect(section).toBeTruthy();
+    // Indonesian primary content
+    expect(section!.textContent).toContain("Bahasa Indonesia menggunakan");
+    // English also shown in "both" mode
+    expect(section!.textContent).toContain("Indonesian uses");
+    // VI should NOT be present in id mode
+    expect(section!.textContent).not.toContain("Tiếng Indonesia dùng");
+  });
+
+  it("renders B2 conditional-unreal lesson with id content", () => {
+    const entry = WEAKNESS_CATALOG.id_l1_conditional_unreal!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const hookHeading = screen.getByText("Mở đầu");
+    const section = hookHeading.closest('[data-rich-section="hook"]');
+    expect(section).toBeTruthy();
+    // Indonesian hook text
+    expect(section!.textContent).toContain("Pernah dengar?");
+    expect(section!.textContent).toContain("kalau");
+    // English also shown
+    expect(section!.textContent).toContain("Sound familiar?");
+  });
+
+  it("renders B2 reported-speech lesson with id content", () => {
+    const entry = WEAKNESS_CATALOG.id_l1_reported_speech!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const takeawayHeading = screen.getByText("Ghi nhớ");
+    const section = takeawayHeading.closest('[data-rich-section="takeaway"]');
+    expect(section).toBeTruthy();
+    // Indonesian takeaway text
+    expect(section!.textContent).toContain("Kata kerja pelapor");
+    expect(section!.textContent).toContain("geser");
+  });
+
+  it("renders B2 lesson with ID+EN toggle in id mode", () => {
+    const entry = WEAKNESS_CATALOG.id_l1_present_perfect_vs_past!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const toggles = screen.getAllByText("ID+EN");
+    expect(toggles.length).toBeGreaterThan(0);
+  });
+});
