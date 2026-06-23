@@ -145,3 +145,115 @@ describe("FocusAreasMicroLessonDialog — id content renders when authored", () 
     expect(screen.getByText("Vì sao khó")).toBeDefined();
   });
 });
+
+describe("FocusAreasMicroLessonDialog — B2 Indonesian-native rich lessons", () => {
+  it("renders B2 present-perfect-vs-past with Indonesian content in id mode", () => {
+    // vi_l1_present_perfect_vs_past has a B2 rich lesson with full id content
+    const entry = WEAKNESS_CATALOG.vi_l1_present_perfect_vs_past!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    // The "why" section heading proves rich lesson body mounted
+    const whyHeading = screen.getByText("Vì sao khó");
+    const section = whyHeading.closest('[data-rich-section="why"]');
+    expect(section).toBeTruthy();
+    // Indonesian text rendered
+    expect(section!.textContent).toContain("Bahasa Indonesia tidak memisahkan");
+    // English also shown in "both" mode
+    expect(section!.textContent).toContain("doesn't separate");
+    // VI should NOT be present in id mode
+    expect(section!.textContent).not.toContain("Tiếng Việt không tách bạch");
+  });
+
+  it("renders B2 present-perfect-vs-past hook with Indonesian text", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_present_perfect_vs_past!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const hookHeading = screen.getByText("Mở đầu");
+    const section = hookHeading.closest('[data-rich-section="hook"]');
+    expect(section).toBeTruthy();
+    expect(section!.textContent).toContain("Kedengarannya hampir benar");
+  });
+
+  it("renders B2 present-perfect-vs-past takeaway with Indonesian text", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_present_perfect_vs_past!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const takeawayHeading = screen.getByText("Ghi nhớ");
+    const section = takeawayHeading.closest('[data-rich-section="takeaway"]');
+    expect(section).toBeTruthy();
+    expect(section!.textContent).toContain("Ada kata waktu lampau spesifik");
+  });
+
+  it("renders B2 conditional-mix with Indonesian content in id mode", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_conditional_mix!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const whyHeading = screen.getByText("Vì sao khó");
+    const section = whyHeading.closest('[data-rich-section="why"]');
+    expect(section).toBeTruthy();
+    // Indonesian why text rendered
+    expect(section!.textContent).toContain("Bahasa Indonesia menggunakan");
+    // VI should NOT be present in id mode
+    expect(section!.textContent).not.toContain("Tiếng Việt mình nếu");
+  });
+
+  it("renders B2 conditional-mix takeaway with Indonesian text", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_conditional_mix!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const takeawayHeading = screen.getByText("Ghi nhớ");
+    const section = takeawayHeading.closest('[data-rich-section="takeaway"]');
+    expect(section).toBeTruthy();
+    expect(section!.textContent).toContain("Nyata =");
+    expect(section!.textContent).toContain("Khayalan =");
+  });
+
+  it("renders B2 passive-missing-be with Indonesian content in id mode", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_passive_missing_be!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const whyHeading = screen.getByText("Vì sao khó");
+    const section = whyHeading.closest('[data-rich-section="why"]');
+    expect(section).toBeTruthy();
+    // Indonesian why text rendered
+    expect(section!.textContent).toContain("Bahasa Indonesia membentuk pasif dengan awalan");
+    // VI should NOT be present
+    expect(section!.textContent).not.toContain("Tiếng Việt mình dùng bị");
+  });
+
+  it("renders B2 passive-missing-be hook with Indonesian text", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_passive_missing_be!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const hookHeading = screen.getByText("Mở đầu");
+    const section = hookHeading.closest('[data-rich-section="hook"]');
+    expect(section).toBeTruthy();
+    expect(section!.textContent).toContain("Hampir semua pelajar Indonesia");
+  });
+
+  it("renders B2 passive-missing-be takeaway with Indonesian text", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_passive_missing_be!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const takeawayHeading = screen.getByText("Ghi nhớ");
+    const section = takeawayHeading.closest('[data-rich-section="takeaway"]');
+    expect(section).toBeTruthy();
+    expect(section!.textContent).toContain("Pasif =");
+    expect(section!.textContent).toContain("tidak pernah opsional");
+  });
+
+  it("renders B2 past-perfect-missing entry with en fallback (no rich lesson)", () => {
+    // past_perfect_missing has no rich lesson — falls back to micro-lesson en text
+    const entry = WEAKNESS_CATALOG.vi_l1_past_perfect_missing!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    // The "why" section heading is present
+    const whyHeading = screen.getByText("Vì sao khó");
+    expect(whyHeading).toBeDefined();
+    // Micro-lesson EN text renders as fallback (no id in micro-lessons yet)
+    const section = whyHeading.closest('[data-rich-section="why"]');
+    expect(section).toBeTruthy();
+    expect(section!.textContent).toContain("had + past participle");
+  });
+
+  it("renders B2 reported-speech entry with en fallback (no rich lesson)", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_reported_speech!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    const whyHeading = screen.getByText("Vì sao khó");
+    const section = whyHeading.closest('[data-rich-section="why"]');
+    expect(section).toBeTruthy();
+    // Micro-lesson EN text renders as fallback
+    expect(section!.textContent).toContain("without changing the verb");
+  });
+});
