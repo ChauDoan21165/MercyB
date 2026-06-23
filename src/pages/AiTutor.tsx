@@ -105,6 +105,7 @@ import {
   type SpeakFollowUpSelection,
 } from "@/lib/tutor/speakFollowups";
 import { auditCorrectionQuick } from "@/lib/tutor/teacherMercyAuditGate";
+import { selfAuditCorrectionQuick } from "@/lib/tutor/teacherMercySelfAuditGate";
 import { enrichCorrectionExperience } from "@/lib/tutor/correctionExperienceEnricher";
 import { getInterferenceCategoryExplanation } from "@/lib/tutor/vietnameseInterferenceExplanation";
 import { detectBilingualSaliencePivot } from "@/lib/tutor/bilingualSalienceDetector";
@@ -2292,6 +2293,19 @@ export default function AiTutorPage() {
             correctedText: aiCorrected,
             explanation: aiResult.explanation,
           });
+          // Self-audit — Teacher Mercy checks her own answer before showing it.
+          // BLOCK: hard-safety violation (fake praise, shaming) → don't show.
+          // SHOW/SHOW_WITH_CAUTION: response is safe → show to learner.
+          const selfAuditResult = selfAuditCorrectionQuick(trimmed, turn.explanation, aiCorrected);
+          if (selfAuditResult.isBlocked) {
+            console.warn("[MercySelfAudit] AI correction blocked:", selfAuditResult.summaryVi);
+            setLoading(false);
+            setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
+            return;
+          }
+          if (selfAuditResult.decision === "SHOW_WITH_CAUTION") {
+            console.warn("[MercySelfAudit] AI correction shown with caution:", selfAuditResult.summaryVi);
+          }
           setResult({
             ...turn,
             grammarTip: aiResult.grammarTip,
@@ -2299,7 +2313,7 @@ export default function AiTutorPage() {
           });
           clearSpeakBoardState();
           setLatestCorrectedSeed({ correctedSentence: aiCorrected, sourceText: trimmed, updatedAt: Date.now() });
-          // Audit gate — runs contract + rubric audit on the AI correction response.
+          // Legacy audit gate — kept for telemetry continuity (non-blocking).
           void auditCorrectionQuick(trimmed, turn.explanation, aiCorrected);
           void captureCorrection({
             userText: trimmed,
@@ -2372,6 +2386,19 @@ export default function AiTutorPage() {
       correctedText: corrected,
       explanation: buildGrammarExplanation(trimmed, target, localCorrection, explainLanguage),
     });
+    // Self-audit — Teacher Mercy checks her own answer before showing it.
+    // BLOCK: hard-safety violation (fake praise, shaming) → don't show.
+    // SHOW/SHOW_WITH_CAUTION: response is safe → show to learner.
+    const selfAuditResult = selfAuditCorrectionQuick(trimmed, turn.explanation, corrected);
+    if (selfAuditResult.isBlocked) {
+      console.warn("[MercySelfAudit] Rule correction blocked:", selfAuditResult.summaryVi);
+      setLoading(false);
+      setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
+      return;
+    }
+    if (selfAuditResult.decision === "SHOW_WITH_CAUTION") {
+      console.warn("[MercySelfAudit] Rule correction shown with caution:", selfAuditResult.summaryVi);
+    }
     setResult({
       ...turn,
       grammarTip: buildGrammarTip(target, localCorrection, explainLanguage),
@@ -2387,10 +2414,7 @@ export default function AiTutorPage() {
       updatedAt: Date.now(),
     });
 
-    // Audit gate — run Teacher Mercy contract + rubric as a quality guard.
-    // Non-blocking audit level: logs violations via console.warn, never blocks
-    // the correction from reaching the learner. Upgrade to "block_unsafe" once
-    // the contract rules have enough runtime confidence.
+    // Legacy audit gate — kept for telemetry continuity (non-blocking).
     void auditCorrectionQuick(trimmed, turn.explanation, corrected);
 
     // Track 2 — anonymized learner-interaction capture. Fire-and-forget;
