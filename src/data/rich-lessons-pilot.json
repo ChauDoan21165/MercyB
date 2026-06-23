@@ -15,27 +15,32 @@
         "hook": {
           "en": "Sound familiar? \"She go to school every day.\" Almost every Vietnamese learner says this — and the fix is one tiny letter.",
           "vi": "Nghe quen không? \"She go to school every day.\" Gần như bạn nào học tiếng Anh ban đầu cũng nói y vậy — mà cách sửa chỉ là **một chữ cái thôi**.",
-          "ja": "「She go to school every day.」と言っていませんか？日本語も動詞は主語で変化しません。「彼女は行く」も「私は行く」も同じ「行く」。だから英語の **-s** は、日本語話者にとっても盲点です。"
+          "ja": "「She go to school every day.」と言っていませんか？日本語も動詞は主語で変化しません。「彼女は行く」も「私は行く」も同じ「行く」。だから英語の **-s** は、日本語話者にとっても盲点です。",
+          "id": "Pernah dengar? \"She go to school every day.\" Hampir semua pelajar Indonesia mengatakan ini — dan perbaikannya cuma satu huruf kecil."
         },
         "why": {
           "en": "In Vietnamese, the verb never changes. \"Tôi đi\", \"cô ấy đi\", \"chúng tôi đi\" — same **đi**. So your ear doesn't expect the verb to move when the subject changes.",
           "vi": "Tiếng Việt mình động từ không bao giờ đổi. \"Tôi đi\", \"cô ấy đi\", \"chúng tôi đi\" — vẫn là **đi**. Nên tai của bạn không quen với việc động từ phải đổi khi chủ ngữ đổi.",
-          "ja": "日本語も同じです。「私は行く」「彼女は行く」「みんな行く」— 動詞「行く」は変わりません。でも英語は、主語が **he / she / it** のとき、動詞に **-s** を付けないと不自然に聞こえます。これは日本語にないルールなので、意識しないと絶対に忘れます。"
+          "ja": "日本語も同じです。「私は行く」「彼女は行く」「みんな行く」— 動詞「行く」は変わりません。でも英語は、主語が **he / she / it** のとき、動詞に **-s** を付けないと不自然に聞こえます。これは日本語にないルールなので、意識しないと絶対に忘れます。",
+          "id": "Dalam bahasa Indonesia, kata kerja tidak pernah berubah. \"Saya pergi\", \"dia pergi\", \"kami pergi\" — tetap **pergi**. Jadi telinga kamu tidak terbiasa dengan kata kerja yang berubah saat subjek berubah."
         },
         "pattern": {
           "en": "When the subject is **he**, **she**, or **it** (or anything you could replace with one of those — \"my brother\", \"the train\", \"Lan\"), add **-s** to the verb. \"He works.\" \"The train leaves.\" \"Lan watches TV.\"",
           "vi": "Khi chủ ngữ là **he**, **she**, **it** (hoặc bất cứ từ nào có thể thay bằng một trong ba — \"my brother\", \"the train\", \"Lan\"), thì thêm **-s** vào động từ. \"He works.\" \"The train leaves.\" \"Lan watches TV.\"",
-          "ja": "主語が **he / she / it**（またはそれで言い換えられるもの —「my brother」「the train」「Lan」など）のとき、動詞に **-s** を付けます。「He works.」「The train leaves.」「Lan watches TV.」語尾が **-ch, -sh, -s, -x, -o** の動詞は **-es** を付けます（watch → watches, go → goes）。**子音 + y** は **-ies** に変わります（study → studies）。"
+          "ja": "主語が **he / she / it**（またはそれで言い換えられるもの —「my brother」「the train」「Lan」など）のとき、動詞に **-s** を付けます。「He works.」「The train leaves.」「Lan watches TV.」語尾が **-ch, -sh, -s, -x, -o** の動詞は **-es** を付けます（watch → watches, go → goes）。**子音 + y** は **-ies** に変わります（study → studies）。",
+          "id": "Saat subjeknya **he**, **she**, atau **it** (atau apa pun yang bisa diganti dengan salah satunya — \"my brother\", \"the train\", \"Lan\"), tambahkan **-s** ke kata kerja. \"He works.\" \"The train leaves.\" \"Lan watches TV.\""
         },
         "practice": {
           "en": "Say each of these out loud before reading the answer — your mouth has to learn the **-s** sound at the end. \"My father drives a taxi.\" \"The baby cries a lot.\" \"She doesn't like coffee.\" Notice negatives use **doesn't**, not **don't**.",
           "vi": "Hãy nói thành tiếng từng câu sau trước khi xem đáp án — miệng phải làm quen với âm **-s** ở cuối. \"My father drives a taxi.\" \"The baby cries a lot.\" \"She doesn't like coffee.\" Để ý câu phủ định dùng **doesn't**, không phải **don't**.",
-          "ja": "声に出して練習しましょう。語尾の **-s** の音に口を慣らすのがポイントです。「My father drives a taxi.」「The baby cries a lot.」「She doesn't like coffee.」否定文では **don't** ではなく **doesn't** を使います。**doesn't** に **-s** が付いているので、動詞は原形のまま（doesn't like ✅、doesn't likes ❌）。"
+          "ja": "声に出して練習しましょう。語尾の **-s** の音に口を慣らすのがポイントです。「My father drives a taxi.」「The baby cries a lot.」「She doesn't like coffee.」否定文では **don't** ではなく **doesn't** を使います。**doesn't** に **-s** が付いているので、動詞は原形のまま（doesn't like ✅、doesn't likes ❌）。",
+          "id": "Ucapkan setiap kalimat ini dengan keras sebelum membaca jawabannya — mulut kamu harus belajar bunyi **-s** di akhir. \"My father drives a taxi.\" \"The baby cries a lot.\" \"She doesn't like coffee.\" Perhatikan kalimat negatif menggunakan **doesn't**, bukan **don't**."
         },
         "takeaway": {
           "en": "He / she / it → verb gets **-s**. Say it slowly until the **-s** lands naturally.",
           "vi": "He / she / it → động từ có **-s**. Nói chậm cho đến khi âm **-s** ra tự nhiên.",
-          "ja": "He / she / it → 動詞に **-s**。ゆっくり発音して、語尾の **-s** が自然に出るまで練習しましょう。"
+          "ja": "He / she / it → 動詞に **-s**。ゆっくり発音して、語尾の **-s** が自然に出るまで練習しましょう。",
+          "id": "He / she / it → kata kerja dapat **-s**. Ucapkan pelan-pelan sampai bunyi **-s** keluar dengan alami."
         }
       },
       "quiz": [
@@ -54,7 +59,8 @@
           "explanation": {
             "en": "Subject **She** → verb adds **-s**: **goes**.",
             "vi": "Chủ ngữ **She** → động từ thêm **-s**: **goes**.",
-            "ja": "主語が **She** → 動詞に **-s** を付けて **goes**。"
+            "ja": "主語が **She** → 動詞に **-s** を付けて **goes**。",
+            "id": "Subjek **She** → kata kerja ditambah **-s**: **goes**."
           }
         },
         {
@@ -72,7 +78,8 @@
           "explanation": {
             "en": "**My father** = **he** → **drives**.",
             "vi": "**My father** = **he** → **drives**.",
-            "ja": "**My father** = **he** → **drives**。三人称単数なので動詞に **-s**。"
+            "ja": "**My father** = **he** → **drives**。三人称単数なので動詞に **-s**。",
+            "id": "**My father** = **he** → **drives**."
           }
         },
         {
@@ -90,7 +97,8 @@
           "explanation": {
             "en": "Negative for **she** uses **doesn't** — and the main verb stays bare: **like**, not **likes**.",
             "vi": "Phủ định cho **she** dùng **doesn't** — và động từ chính giữ nguyên: **like**, không phải **likes**.",
-            "ja": "**she** の否定文は **doesn't**。**doesn't** に **-s** が付いているので、動詞は原形の **like**（**likes** ではない）。"
+            "ja": "**she** の否定文は **doesn't**。**doesn't** に **-s** が付いているので、動詞は原形の **like**（**likes** ではない）。",
+            "id": "Negatif untuk **she** menggunakan **doesn't** — dan kata kerja utama tetap bentuk dasar: **like**, bukan **likes**."
           }
         },
         {
@@ -108,7 +116,8 @@
           "explanation": {
             "en": "Consonant + **-y** → **-ies**: **cry → cries**.",
             "vi": "Phụ âm + **-y** → **-ies**: **cry → cries**.",
-            "ja": "子音 + **-y** → **-ies**：**cry → cries**。"
+            "ja": "子音 + **-y** → **-ies**：**cry → cries**。",
+            "id": "Konsonan + **-y** → **-ies**: **cry → cries**."
           }
         },
         {
@@ -126,7 +135,8 @@
           "explanation": {
             "en": "Verbs ending in **-ch** add **-es**: **teach → teaches**.",
             "vi": "Động từ tận cùng **-ch** thêm **-es**: **teach → teaches**.",
-            "ja": "語尾が **-ch** の動詞は **-es**：**teach → teaches**。"
+            "ja": "語尾が **-ch** の動詞は **-es**：**teach → teaches**。",
+            "id": "Kata kerja berakhiran **-ch** ditambah **-es**: **teach → teaches**."
           }
         }
       ]
@@ -141,27 +151,32 @@
         "hook": {
           "en": "\"Yesterday I work late.\" Sounds fine in Vietnamese logic — \"hôm qua\" already says past, right? In English that's not enough. The verb has to move too.",
           "vi": "\"Yesterday I work late.\" Nghe theo lối tiếng Việt thì hợp lý — đã có \"hôm qua\" rồi mà, đúng không? Nhưng tiếng Anh chưa đủ. Động từ phải đổi luôn.",
-          "ja": "「Yesterday I work late.」— 日本語でも「昨日」があれば過去だと分かりますよね。でも英語は「yesterday」だけでは不十分。動詞そのものを過去形に変えないと、ネイティブには不自然に聞こえます。日本語の「〜ました／〜た」を必ず付ける感覚に近いです。"
+          "ja": "「Yesterday I work late.」— 日本語でも「昨日」があれば過去だと分かりますよね。でも英語は「yesterday」だけでは不十分。動詞そのものを過去形に変えないと、ネイティブには不自然に聞こえます。日本語の「〜ました／〜た」を必ず付ける感覚に近いです。",
+          "id": "\"Yesterday I work late.\" Kedengarannya masuk akal dalam logika bahasa Indonesia — \"kemarin\" sudah menunjukkan lampau, kan? Dalam bahasa Inggris itu tidak cukup. Kata kerjanya juga harus berubah."
         },
         "why": {
           "en": "Vietnamese signals time with words like **đã**, **hôm qua**, **năm ngoái** — the verb stays the same. English forces the verb itself to carry the past tense, even when a time word is already there.",
           "vi": "Tiếng Việt mình báo thời gian bằng từ như **đã**, **hôm qua**, **năm ngoái** — động từ vẫn giữ nguyên. Tiếng Anh thì bắt động từ phải tự mang dấu hiệu quá khứ, dù đã có từ chỉ thời gian rồi.",
-          "ja": "日本語には「〜ました／〜た」という過去形がありますが、英語の過去形はさらに厳格です。日本語では「昨日、遅くまで働く」のように時間詞で示せば通じることもありますが、英語では時間詞があっても動詞は必ず過去形にします。「yesterday」＋「work」の組み合わせは絶対にダメ。「yesterday」＋「worked」が正解です。"
+          "ja": "日本語には「〜ました／〜た」という過去形がありますが、英語の過去形はさらに厳格です。日本語では「昨日、遅くまで働く」のように時間詞で示せば通じることもありますが、英語では時間詞があっても動詞は必ず過去形にします。「yesterday」＋「work」の組み合わせは絶対にダメ。「yesterday」＋「worked」が正解です。",
+          "id": "Bahasa Indonesia menandai waktu dengan kata seperti **sudah**, **kemarin**, **tahun lalu** — kata kerjanya tetap sama. Bahasa Inggris memaksa kata kerjanya sendiri yang membawa bentuk lampau, meskipun kata waktu sudah ada."
         },
         "pattern": {
           "en": "Regular verbs: add **-ed** (work → worked, call → called). Verbs ending in consonant + **-y**: change to **-ied** (study → studied). Irregular verbs you have to memorize: go → went, eat → ate, see → saw.",
           "vi": "Động từ thường: thêm **-ed** (work → worked, call → called). Phụ âm + **-y**: đổi thành **-ied** (study → studied). Bất quy tắc thì phải học thuộc: go → went, eat → ate, see → saw.",
-          "ja": "規則動詞は **-ed** を付けます（work → worked, call → called）。語尾が **子音 + y** のときは **-ied** に変わります（study → studied）。不規則動詞は暗記が必要です：go → went, eat → ate, see → saw。日本語にも「する→した」「来る→来た」のような不規則変化がありますよね。同じ感覚で覚えましょう。"
+          "ja": "規則動詞は **-ed** を付けます（work → worked, call → called）。語尾が **子音 + y** のときは **-ied** に変わります（study → studied）。不規則動詞は暗記が必要です：go → went, eat → ate, see → saw。日本語にも「する→した」「来る→来た」のような不規則変化がありますよね。同じ感覚で覚えましょう。",
+          "id": "Kata kerja beraturan: tambahkan **-ed** (work → worked, call → called). Kata kerja berakhiran konsonan + **-y**: ubah menjadi **-ied** (study → studied). Kata kerja tidak beraturan harus dihafal: go → went, eat → ate, see → saw."
         },
         "practice": {
           "en": "Try these aloud: \"Yesterday I worked late.\" \"She called me last night.\" \"We went to Hanoi last summer.\" \"He studied for three hours.\" Listen for the **-ed** sound — sometimes it's /t/ (worked), sometimes /d/ (called), sometimes /id/ (visited).",
           "vi": "Nói thành tiếng: \"Yesterday I worked late.\" \"She called me last night.\" \"We went to Hanoi last summer.\" \"He studied for three hours.\" Nghe kỹ âm **-ed** — có khi là /t/ (worked), có khi là /d/ (called), có khi là /id/ (visited).",
-          "ja": "声に出して練習：「Yesterday I worked late.」「She called me last night.」「We went to Hanoi last summer.」「He studied for three hours.」**-ed** の発音は3種類あります：/t/（worked）、/d/（called）、/ɪd/（visited）。日本語話者は最後の /ɪd/ を忘れがちなので注意。"
+          "ja": "声に出して練習：「Yesterday I worked late.」「She called me last night.」「We went to Hanoi last summer.」「He studied for three hours.」**-ed** の発音は3種類あります：/t/（worked）、/d/（called）、/ɪd/（visited）。日本語話者は最後の /ɪd/ を忘れがちなので注意。",
+          "id": "Coba ucapkan dengan keras: \"Yesterday I worked late.\" \"She called me last night.\" \"We went to Hanoi last summer.\" \"He studied for three hours.\" Dengarkan bunyi **-ed** — kadang bunyinya /t/ (worked), kadang /d/ (called), kadang /id/ (visited)."
         },
         "takeaway": {
           "en": "A time word alone is not enough. If it happened in the past, **change the verb** — every time.",
           "vi": "Có từ chỉ thời gian thôi chưa đủ. Nếu việc đã xảy ra trong quá khứ, **phải đổi động từ** — mỗi lần đều phải đổi.",
-          "ja": "時間を表す言葉だけでは不十分。過去のことを言うときは、必ず動詞も過去形に。日本語の「〜ました／〜た」を付けるのと同じ習慣で。"
+          "ja": "時間を表す言葉だけでは不十分。過去のことを言うときは、必ず動詞も過去形に。日本語の「〜ました／〜た」を付けるのと同じ習慣で。",
+          "id": "Kata waktu saja tidak cukup. Kalau kejadiannya di masa lampau, **ubah kata kerjanya** — setiap kali."
         }
       },
       "quiz": [
@@ -180,7 +195,8 @@
           "explanation": {
             "en": "Even with **yesterday** in the sentence, **work** must become **worked**.",
             "vi": "Dù có **yesterday** rồi, **work** vẫn phải đổi thành **worked**.",
-            "ja": "**yesterday** があっても、動詞 **work** は必ず **worked** に。「昨日」＋「働く」ではなく「昨日」＋「働いた」と同じ感覚です。"
+            "ja": "**yesterday** があっても、動詞 **work** は必ず **worked** に。「昨日」＋「働く」ではなく「昨日」＋「働いた」と同じ感覚です。",
+            "id": "Meskipun ada **yesterday** di kalimat, **work** harus menjadi **worked**."
           }
         },
         {
@@ -198,7 +214,8 @@
           "explanation": {
             "en": "**go** is irregular: past form is **went**, not **goed**.",
             "vi": "**go** bất quy tắc: quá khứ là **went**, không phải **goed**.",
-            "ja": "**go** は不規則動詞：過去形は **went**（**goed** ではない）。"
+            "ja": "**go** は不規則動詞：過去形は **went**（**goed** ではない）。",
+            "id": "**go** tidak beraturan: bentuk lampaunya **went**, bukan **goed**."
           }
         },
         {
@@ -216,7 +233,8 @@
           "explanation": {
             "en": "Consonant + **-y** → **-ied**: **study → studied**.",
             "vi": "Phụ âm + **-y** → **-ied**: **study → studied**.",
-            "ja": "子音 + **-y** → **-ied**：**study → studied**。"
+            "ja": "子音 + **-y** → **-ied**：**study → studied**。",
+            "id": "Konsonan + **-y** → **-ied**: **study → studied**."
           }
         },
         {
@@ -234,7 +252,8 @@
           "explanation": {
             "en": "**eat** is irregular: **eat → ate**.",
             "vi": "**eat** bất quy tắc: **eat → ate**.",
-            "ja": "**eat** は不規則動詞：**eat → ate**。"
+            "ja": "**eat** は不規則動詞：**eat → ate**。",
+            "id": "**eat** tidak beraturan: **eat → ate**."
           }
         },
         {
@@ -252,7 +271,8 @@
           "explanation": {
             "en": "Past negative uses **didn't** + bare verb: **didn't come**, not **didn't came**.",
             "vi": "Phủ định quá khứ dùng **didn't** + động từ nguyên mẫu: **didn't come**, không phải **didn't came**.",
-            "ja": "過去の否定は **didn't** + 動詞の原形：**didn't come**（**didn't came** ではない）。**didn't** が過去を表すので、動詞は原形のまま。これは日本語話者がよく間違えるポイントです。"
+            "ja": "過去の否定は **didn't** + 動詞の原形：**didn't come**（**didn't came** ではない）。**didn't** が過去を表すので、動詞は原形のまま。これは日本語話者がよく間違えるポイントです。",
+            "id": "Negatif lampau menggunakan **didn't** + kata kerja dasar: **didn't come**, bukan **didn't came**."
           }
         }
       ]
@@ -267,27 +287,32 @@
         "hook": {
           "en": "\"She a teacher.\" \"I tired.\" \"They at home.\" Every Vietnamese learner says these in their first English month. The missing word is tiny — **be** — but English insists on it.",
           "vi": "\"She a teacher.\" \"I tired.\" \"They at home.\" Bạn nào học tiếng Anh tháng đầu cũng nói vậy. Từ thiếu rất nhỏ — **be** — mà tiếng Anh thì bắt buộc phải có.",
-          "ja": "「She a teacher.」「I tired.」「They at home.」— 日本語話者も初級でよくやってしまうミスです。日本語では「彼女は先生」で文が成立しますが、英語は **be動詞** がないと文として成り立ちません。**am / is / are** は絶対に必要です。"
+          "ja": "「She a teacher.」「I tired.」「They at home.」— 日本語話者も初級でよくやってしまうミスです。日本語では「彼女は先生」で文が成立しますが、英語は **be動詞** がないと文として成り立ちません。**am / is / are** は絶対に必要です。",
+          "id": "\"She a teacher.\" \"I tired.\" \"They at home.\" Setiap pelajar Indonesia mengatakan ini di bulan pertama belajar bahasa Inggris. Kata yang hilang sangat kecil — **be** — tapi bahasa Inggris mewajibkannya."
         },
         "why": {
           "en": "Vietnamese says \"Cô ấy giáo viên\" — no verb in the middle. English doesn't allow that. Between a subject and a description (adjective, noun, place), you need **am**, **is**, or **are**.",
           "vi": "Tiếng Việt mình nói \"Cô ấy giáo viên\" — không có động từ ở giữa. Tiếng Anh không cho phép. Giữa chủ ngữ và phần mô tả (tính từ, danh từ, nơi chốn), phải có **am**, **is**, hoặc **are**.",
-          "ja": "日本語も「彼女は先生」で通じます。しかし英語では、主語と説明（形容詞・名詞・場所）の間に必ず **be動詞** が必要です。日本語の「〜です・〜だ」に近い役割ですが、英語の be動詞はもっと厳格で、省略できません。特に形容詞の前（「I am tired」—「疲れた」は日本語では動詞扱い）は忘れやすいので注意。"
+          "ja": "日本語も「彼女は先生」で通じます。しかし英語では、主語と説明（形容詞・名詞・場所）の間に必ず **be動詞** が必要です。日本語の「〜です・〜だ」に近い役割ですが、英語の be動詞はもっと厳格で、省略できません。特に形容詞の前（「I am tired」—「疲れた」は日本語では動詞扱い）は忘れやすいので注意。",
+          "id": "Bahasa Indonesia mengatakan \"Dia guru\" — tidak ada kata kerja di tengahnya. Bahasa Inggris tidak mengizinkan itu. Di antara subjek dan deskripsi (kata sifat, kata benda, tempat), kamu perlu **am**, **is**, atau **are**."
         },
         "pattern": {
           "en": "**I → am**, **you / we / they → are**, **he / she / it → is**. Past forms: **I / he / she / it → was**, **you / we / they → were**. Use them whenever there's no other action verb in the sentence.",
           "vi": "**I → am**, **you / we / they → are**, **he / she / it → is**. Quá khứ: **I / he / she / it → was**, **you / we / they → were**. Dùng khi câu không có động từ chỉ hành động nào khác.",
-          "ja": "**I → am**、**you / we / they → are**、**he / she / it → is**。過去形：**I / he / she / it → was**、**you / we / they → were**。文に他の動作動詞がないときは、必ず be動詞を入れます。「She tired.」ではなく「She **is** tired.」です。"
+          "ja": "**I → am**、**you / we / they → are**、**he / she / it → is**。過去形：**I / he / she / it → was**、**you / we / they → were**。文に他の動作動詞がないときは、必ず be動詞を入れます。「She tired.」ではなく「She **is** tired.」です。",
+          "id": "**I → am**, **you / we / they → are**, **he / she / it → is**. Bentuk lampau: **I / he / she / it → was**, **you / we / they → were**. Gunakan saat tidak ada kata kerja aksi lain di kalimat."
         },
         "practice": {
           "en": "Say each one out loud and feel the **be** sit in the middle of the sentence: \"She is a teacher.\" \"I am tired.\" \"They are at home.\" \"He was kind yesterday.\" \"My parents are at work.\"",
           "vi": "Nói thành tiếng và cảm nhận **be** nằm giữa câu: \"She is a teacher.\" \"I am tired.\" \"They are at home.\" \"He was kind yesterday.\" \"My parents are at work.\"",
-          "ja": "声に出して、be動詞が文の中心にある感覚をつかみましょう：「She is a teacher.」「I am tired.」「They are at home.」「He was kind yesterday.」「My parents are at work.」日本語の「〜です」よりも be動詞の方が文の中で重みがあります。"
+          "ja": "声に出して、be動詞が文の中心にある感覚をつかみましょう：「She is a teacher.」「I am tired.」「They are at home.」「He was kind yesterday.」「My parents are at work.」日本語の「〜です」よりも be動詞の方が文の中で重みがあります。",
+          "id": "Ucapkan setiap kalimat dengan keras dan rasakan **be** duduk di tengah kalimat: \"She is a teacher.\" \"I am tired.\" \"They are at home.\" \"He was kind yesterday.\" \"My parents are at work.\""
         },
         "takeaway": {
           "en": "If your sentence has no action verb, **be** is the verb. Add it every time.",
           "vi": "Nếu câu không có động từ chỉ hành động, **be** chính là động từ. Lần nào cũng phải thêm vào.",
-          "ja": "文に動作動詞がないときは、**be動詞** が主役の動詞です。毎回必ず入れましょう。「彼女は先生」→「She **is** a teacher.」"
+          "ja": "文に動作動詞がないときは、**be動詞** が主役の動詞です。毎回必ず入れましょう。「彼女は先生」→「She **is** a teacher.」",
+          "id": "Kalau kalimatmu tidak punya kata kerja aksi, **be** adalah kata kerjanya. Tambahkan setiap kali."
         }
       },
       "quiz": [
@@ -306,7 +331,8 @@
           "explanation": {
             "en": "Subject **she** → use **is**.",
             "vi": "Chủ ngữ **she** → dùng **is**.",
-            "ja": "主語が **she** → **is** を使います。"
+            "ja": "主語が **she** → **is** を使います。",
+            "id": "Subjek **she** → gunakan **is**."
           }
         },
         {
@@ -324,7 +350,8 @@
           "explanation": {
             "en": "**I** always pairs with **am** (in the present).",
             "vi": "**I** luôn đi với **am** (ở hiện tại).",
-            "ja": "**I** は現在形では常に **am**。"
+            "ja": "**I** は現在形では常に **am**。",
+            "id": "**I** selalu berpasangan dengan **am** (dalam present tense)."
           }
         },
         {
@@ -342,7 +369,8 @@
           "explanation": {
             "en": "**they** in the present uses **are**.",
             "vi": "**they** ở hiện tại dùng **are**.",
-            "ja": "**they** の現在形は **are**。"
+            "ja": "**they** の現在形は **are**。",
+            "id": "**they** dalam present tense menggunakan **are**."
           }
         },
         {
@@ -360,7 +388,8 @@
           "explanation": {
             "en": "**The weather** = **it** → past form is **was**.",
             "vi": "**The weather** = **it** → quá khứ là **was**.",
-            "ja": "**The weather** = **it** → 過去形は **was**。"
+            "ja": "**The weather** = **it** → 過去形は **was**。",
+            "id": "**The weather** = **it** → bentuk lampau adalah **was**."
           }
         },
         {
@@ -378,7 +407,8 @@
           "explanation": {
             "en": "Location sentences also need **be**. **My book** = **it** → **is**.",
             "vi": "Câu chỉ vị trí cũng cần **be**. **My book** = **it** → **is**.",
-            "ja": "場所を表す文も **be動詞** が必要。**My book** = **it** → **is**。"
+            "ja": "場所を表す文も **be動詞** が必要。**My book** = **it** → **is**。",
+            "id": "Kalimat lokasi juga perlu **be**. **My book** = **it** → **is**."
           }
         }
       ]

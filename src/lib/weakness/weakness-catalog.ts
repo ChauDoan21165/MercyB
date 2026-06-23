@@ -149,10 +149,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Subject-verb agreement",
       vi: "Chia động từ theo chủ ngữ",
+      id: "Kesesuaian subjek-kata kerja",
     },
     longDescription: {
       en: "Vietnamese verbs don't change form for person. English adds **-s** to the verb when the subject is **he**, **she**, or **it**.",
       vi: "Động từ tiếng Việt không thay đổi theo ngôi. Trong tiếng Anh, động từ thêm **-s** khi chủ ngữ là **he**, **she**, **it**.",
+      id: "Kata kerja bahasa Indonesia tidak berubah bentuk untuk orang. Bahasa Inggris menambahkan **-s** ke kata kerja saat subjeknya **he**, **she**, atau **it**.",
     },
     exampleWrong: "She go to school every day.",
     exampleRight: "She goes to school every day.",
@@ -164,10 +166,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Past tense with **-ed**",
       vi: "Thì quá khứ với **-ed**",
+      id: "Past tense dengan **-ed**",
     },
     longDescription: {
       en: "Vietnamese shows past time with words like **hôm qua** or **đã** — the verb doesn't change. English changes the verb itself: **work → worked**.",
       vi: "Tiếng Việt diễn tả quá khứ bằng các từ như **hôm qua** hoặc **đã**, không đổi hình thức động từ. Tiếng Anh thay đổi chính động từ: **work → worked**.",
+      id: "Bahasa Indonesia menunjukkan waktu lampau dengan kata seperti **kemarin** atau **sudah** — kata kerjanya tidak berubah. Bahasa Inggris mengubah kata kerjanya sendiri: **work → worked**.",
     },
     exampleWrong: "Yesterday I work late.",
     exampleRight: "Yesterday I worked late.",
@@ -179,10 +183,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Plural nouns with **-s**",
       vi: "Danh từ số nhiều với **-s**",
+      id: "Kata benda jamak dengan **-s**",
     },
     longDescription: {
       en: "Vietnamese nouns don't change when counting more than one — markers like **các** or **những** do the work. English adds **-s** to most nouns when there's more than one: **book → books**.",
       vi: "Danh từ tiếng Việt không đổi khi đếm nhiều hơn một — dấu hiệu số nhiều nằm ở các từ như **các** hoặc **những**. Tiếng Anh thêm **-s** vào hầu hết danh từ khi số lượng nhiều hơn một: **book → books**.",
+      id: "Kata benda bahasa Indonesia tidak berubah saat menghitung lebih dari satu — penanda seperti **para** atau **beberapa** yang melakukan tugas itu. Bahasa Inggris menambahkan **-s** ke sebagian besar kata benda saat jumlahnya lebih dari satu: **book → books**.",
     },
     exampleWrong: "I have two book.",
     exampleRight: "I have two books.",
@@ -198,10 +204,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: 'Missing "to be"',
       vi: 'Thiếu động từ "to be"',
+      id: 'Kehilangan "to be"',
     },
     longDescription: {
       en: "Vietnamese often skips the **to be** verb — **Cô ấy giáo viên** is a complete sentence. English always needs one: **She is a teacher**.",
       vi: "Tiếng Việt mình hay bỏ động từ **to be** — **Cô ấy giáo viên** là đủ câu. Tiếng Anh luôn cần có: **She is a teacher**.",
+      id: "Bahasa Indonesia sering melewatkan kata kerja **to be** — **Dia guru** adalah kalimat lengkap. Bahasa Inggris selalu membutuhkannya: **She is a teacher**.",
     },
     exampleWrong: "She a teacher.",
     exampleRight: "She is a teacher.",
@@ -213,10 +221,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Question structure",
       vi: "Cấu trúc câu hỏi",
+      id: "Struktur pertanyaan",
     },
     longDescription: {
       en: "Vietnamese turns a sentence into a question just with **phải không?** or a rising tone. English adds **do / does / did** at the front: **Do you like coffee?**",
       vi: "Tiếng Việt mình chỉ cần thêm **phải không?** hoặc đổi ngữ điệu là thành câu hỏi. Tiếng Anh phải đặt **do / does / did** ở đầu câu: **Do you like coffee?**",
+      id: "Bahasa Indonesia mengubah kalimat menjadi pertanyaan hanya dengan **kan?** atau nada naik. Bahasa Inggris menambahkan **do / does / did** di depan: **Do you like coffee?**",
     },
     exampleWrong: "You like coffee?",
     exampleRight: "Do you like coffee?",
@@ -228,10 +238,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Articles **a / an / the**",
       vi: "Mạo từ **a / an / the**",
+      id: "Artikel **a / an / the**",
     },
     longDescription: {
       en: "Vietnamese has no articles — nouns stand alone. English almost always needs **a**, **an**, or **the** before a singular countable noun.",
       vi: "Tiếng Việt mình không có mạo từ — danh từ đứng một mình là được. Tiếng Anh gần như luôn cần **a**, **an**, hoặc **the** trước danh từ đếm được số ít.",
+      id: "Bahasa Indonesia tidak memiliki artikel — kata benda berdiri sendiri. Bahasa Inggris hampir selalu membutuhkan **a**, **an**, atau **the** sebelum kata benda tunggal yang bisa dihitung.",
     },
     exampleWrong: "I have car.",
     exampleRight: "I have a car.",
