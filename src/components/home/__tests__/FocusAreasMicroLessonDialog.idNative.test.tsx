@@ -98,3 +98,50 @@ describe("FocusAreasMicroLessonDialog — vi/en/ja unchanged with id prop", () =
     expect(section!.textContent).toContain("danh từ ít khi đổi");
   });
 });
+
+describe("FocusAreasMicroLessonDialog — id content renders when authored", () => {
+  it("renders Indonesian hook text in id mode (id slot is authored)", () => {
+    // vi_l1_3rd_person_s has full id content in rich-lessons-pilot.json
+    const entry = WEAKNESS_CATALOG.vi_l1_3rd_person_s!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    // The "why" section heading proves rich lesson body mounted
+    const whyHeading = screen.getByText("Vì sao khó");
+    const section = whyHeading.closest('[data-rich-section="why"]');
+    expect(section).toBeTruthy();
+    // In "both" mode (default), the Indonesian text is shown as primary
+    expect(section!.textContent).toContain("kata kerja tidak pernah berubah");
+    // English is also shown in "both" mode
+    expect(section!.textContent).toContain("the verb never changes");
+    // VI should NOT be present in id mode
+    expect(section!.textContent).not.toContain("động từ không bao giờ đổi");
+  });
+
+  it("renders Indonesian takeaway text in id mode", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_3rd_person_s!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    // The takeaway section should contain Indonesian text
+    const takeawayHeading = screen.getByText("Ghi nhớ");
+    const section = takeawayHeading.closest('[data-rich-section="takeaway"]');
+    expect(section).toBeTruthy();
+    expect(section!.textContent).toContain("kata kerja dapat");
+  });
+
+  it("renders Indonesian hook text in both mode as primary", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_3rd_person_s!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    // Hook section in "both" mode shows Indonesian as primary
+    const hookHeading = screen.getByText("Mở đầu");
+    const section = hookHeading.closest('[data-rich-section="hook"]');
+    expect(section).toBeTruthy();
+    expect(section!.textContent).toContain("Pernah dengar?");
+  });
+
+  it("fallback still works when id slot is missing", () => {
+    // vi_l1_plural_s has no matching rich lesson in pilot JSON
+    // so the dialog falls back to showing catalog description
+    const entry = WEAKNESS_CATALOG.vi_l1_plural_s!;
+    renderDialog({ ...entry, linkedRoomId: null }, "id");
+    // Dialog still renders — the "why" section heading is present
+    expect(screen.getByText("Vì sao khó")).toBeDefined();
+  });
+});
