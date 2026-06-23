@@ -45,7 +45,7 @@ import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 const STORAGE_KEY = "mercyblade.nativeLang";
 
 function isNativeLang(raw: unknown): raw is NativeLang {
-  return raw === "vi" || raw === "en" || raw === "ja";
+  return raw === "vi" || raw === "en" || raw === "ja" || raw === "id";
 }
 
 function readStoredNativeLang(): NativeLang {

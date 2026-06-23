@@ -31,6 +31,8 @@ export interface RichLessonSection {
   vi: string;
   /** Optional Japanese-native English explanation — for ja-native learners. */
   ja?: string;
+  /** Optional Indonesian-native English explanation — for id-native learners. */
+  id?: string;
 }
 
 export interface RichLessonSections {

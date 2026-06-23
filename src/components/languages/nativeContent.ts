@@ -8,22 +8,25 @@
 // learner's *native* language — "which L1 the learner thinks in". That is a
 // distinct axis from the UI-chrome language.
 //
-// Japanese-native English pilot: this seam now supports ja while preserving
-// legacy vi/en behavior. English lesson content stays English; only the
-// explanation/pedagogy slot changes.
+// Japanese-native English pilot + Indonesian-native English schema:
+// this seam now supports ja + id while preserving legacy vi/en behavior.
+// English lesson content stays English; only the explanation/pedagogy
+// slot changes.
 
-export type NativeLang = "vi" | "en" | "ja";
+export type NativeLang = "vi" | "en" | "ja" | "id";
 
 export type NativeSlots<T> = {
   vi?: T;
   en?: T;
   ja?: T;
+  id?: T;
 };
 
 const FALLBACK_ORDER: Record<NativeLang, readonly NativeLang[]> = {
   vi: ["vi", "en"],
   en: ["en", "vi"],
   ja: ["ja", "en", "vi"],
+  id: ["id", "en", "vi"],
 };
 
 export function getNativeContent<T>(

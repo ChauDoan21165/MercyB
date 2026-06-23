@@ -111,6 +111,8 @@ export type BilingualText = {
   vi: string;
   /** Japanese-native English explanation — optional, for ja-native learners. */
   ja?: string;
+  /** Indonesian-native English explanation — optional, for id-native learners. */
+  id?: string;
 };
 
 export type WeaknessEntry = {

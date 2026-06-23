@@ -75,3 +75,11 @@ describe("parseLanguagePair — Japanese-native English pilot", () => {
     ).toEqual({ nativeLanguage: "ja", targets: ["en"], primaryTarget: "en" });
   });
 });
+
+describe("parseLanguagePair — Indonesian-native English foundation", () => {
+  it("accepts Indonesian as a native language", () => {
+    expect(
+      parseLanguagePair({ native_language: "id", target_languages: ["en"] }),
+    ).toEqual({ nativeLanguage: "id", targets: ["en"], primaryTarget: "en" });
+  });
+});
