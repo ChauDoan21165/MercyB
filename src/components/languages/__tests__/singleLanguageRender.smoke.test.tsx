@@ -29,7 +29,7 @@
 
 import React from "react";
 import { describe, it, expect, beforeEach } from "vitest";
-import { render, cleanup } from "@testing-library/react";
+import { render, cleanup, fireEvent, screen } from "@testing-library/react";
 
 import { LessonRenderer } from "@/components/languages/LessonRenderer";
 import type { NormalizedLesson } from "@/components/languages/LessonRenderer.types";
@@ -119,6 +119,28 @@ describe("LessonRenderer — single-language title", () => {
     const text = container.textContent ?? "";
     expect(text).toContain(jaLesson.title.vi);
     expect(text).not.toContain(jaLesson.title.en);
+  });
+
+  it("native=ja renders ja title when authored", () => {
+    const lessonWithJa: NormalizedLesson = {
+      ...jaLesson,
+      title: { ...jaLesson.title, ja: "英語の説明タイトル" },
+      introJa: "日本語の説明です。",
+    };
+    const { container } = render(
+      <LessonRenderer
+        lesson={lessonWithJa}
+        theme={lessonThemes.japanese}
+        uiLanguage="en"
+        nativeLanguage="ja"
+      />,
+    );
+    let text = container.textContent ?? "";
+    expect(text).toContain("英語の説明タイトル");
+
+    fireEvent.click(screen.getByRole("button", { expanded: false }));
+    text = container.textContent ?? "";
+    expect(text).toContain("日本語の説明です。");
   });
 
   it("dualTitle: shows BOTH (Vietnamese-for-foreigners guard)", () => {

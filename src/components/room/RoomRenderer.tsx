@@ -1092,7 +1092,7 @@ export default function RoomRenderer({
     }
 
     const hasReal = (kwRaw?.en?.length || 0) > 0 || (kwRaw?.vi?.length || 0) > 0;
-    const base0 = hasReal ? kwRaw : entryCount > 0 ? deriveKeywordsFromEntryList(entries) : { en: [], vi: [] };
+    const base0 = hasReal ? kwRaw : entryCount > 0 ? deriveKeywordsFromEntryList(entries) : { en: [], vi: [], ja: [] };
 
     const base = {
       en: cleanKwArr(base0.en || []),

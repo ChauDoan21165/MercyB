@@ -44,10 +44,15 @@ import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 
 const STORAGE_KEY = "mercyblade.nativeLang";
 
+function isNativeLang(raw: unknown): raw is NativeLang {
+  return raw === "vi" || raw === "en" || raw === "ja";
+}
+
 function readStoredNativeLang(): NativeLang {
   if (typeof window === "undefined") return "vi";
   try {
-    return window.localStorage.getItem(STORAGE_KEY) === "en" ? "en" : "vi";
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    return isNativeLang(stored) ? stored : "vi";
   } catch {
     return "vi";
   }
@@ -70,7 +75,7 @@ function persistNativeLang(next: NativeLang): void {
  * and the `native_language IS NULL` onboarding gate meaningful).
  */
 function normalizeNativeLang(raw: unknown): NativeLang | null {
-  return raw === "vi" || raw === "en" ? raw : null;
+  return isNativeLang(raw) ? raw : null;
 }
 
 type NativeLanguageApi = {
@@ -95,7 +100,7 @@ export function NativeLanguageProvider({
   useEffect(() => {
     function onStorage(e: StorageEvent) {
       if (e.key !== STORAGE_KEY) return;
-      setNativeLangState(e.newValue === "en" ? "en" : "vi");
+      setNativeLangState(isNativeLang(e.newValue) ? e.newValue : "vi");
     }
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);

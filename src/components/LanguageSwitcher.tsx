@@ -1,3 +1,4 @@
+import type { NativeLang } from "@/components/languages/nativeContent";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
@@ -31,10 +32,10 @@ function categoryColor(category: "european" | "asian"): string {
 
 function categoryLabel(
   category: "european" | "asian",
-  lang: "vi" | "en",
+  lang: NativeLang,
 ): string {
-  if (category === "european") return lang === "en" ? "European" : "Châu Âu";
-  return lang === "en" ? "Asian" : "Châu Á";
+  if (category === "european") return lang === "vi" ? "European" : "Châu Âu";
+  return lang === "vi" ? "Asian" : "Châu Á";
 }
 
 // ── LanguageSwitcher ────────────────────────────────────────────────────────

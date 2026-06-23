@@ -71,7 +71,7 @@ import type {
   NormalizedAudioKinds,
 } from "./LessonRenderer.types";
 import { cefrPillColors, cefrPillLabel } from "./lessonThemes";
-import { getNativeContent, isNativeFallback } from "./nativeContent";
+import { getNativeContent, isNativeFallback, type NativeLang } from "./nativeContent";
 import { LessonAudioButton } from "./LessonAudioButton";
 import {
   lessonAudioKey,
@@ -148,7 +148,7 @@ const RENDERER_LABELS = {
 
 type RendererLabels = typeof RENDERER_LABELS[keyof typeof RENDERER_LABELS];
 
-function FallbackBadge({ other }: { other: "vi" | "en" }) {
+function FallbackBadge({ other }: { other: NativeLang }) {
   return (
     <span className="ml-1.5 rounded-full bg-slate-100 px-1.5 py-0.5 text-[9px] font-medium uppercase text-slate-600">
       {other}
@@ -178,7 +178,7 @@ interface LessonRendererProps {
    * normalizer fix land in a follow-up (PR-A3b) to avoid a misleading
    * fallback badge on its English-in-`*Vi` cultural/tip content.
    */
-  nativeLanguage?: "vi" | "en";
+  nativeLanguage?: NativeLang;
   /**
    * When true, render BOTH title.vi and title.en (primary + subtitle).
    * This is NOT a bilingual UI duplication: it is for the Vietnamese-
@@ -244,16 +244,16 @@ export function LessonRenderer({
               {dualTitle
                 ? lesson.title.vi
                 : getNativeContent(
-                    { vi: lesson.title.vi, en: lesson.title.en },
+                    { vi: lesson.title.vi, ja: lesson.title.ja, en: lesson.title.en },
                     nativeLanguage,
                   )}
               {!dualTitle &&
                 isNativeFallback(
-                  { vi: lesson.title.vi, en: lesson.title.en },
+                  { vi: lesson.title.vi, ja: lesson.title.ja, en: lesson.title.en },
                   nativeLanguage,
                 ) && (
                   <FallbackBadge
-                    other={nativeLanguage === "en" ? "vi" : "en"}
+                    other={nativeLanguage === "vi" ? "en" : nativeLanguage === "en" ? "vi" : "en"}
                   />
                 )}
             </p>
@@ -325,7 +325,7 @@ export function LessonRenderer({
               no badge — it is language-agnostic by contract. */}
           {(() => {
             const picked = getNativeContent(
-              { en: lesson.introEn, vi: lesson.introVi },
+              { en: lesson.introEn, vi: lesson.introVi, ja: lesson.introJa },
               nativeLanguage,
             );
             const text = picked ?? lesson.intro;
@@ -333,7 +333,7 @@ export function LessonRenderer({
             const fallback =
               picked !== undefined &&
               isNativeFallback(
-                { en: lesson.introEn, vi: lesson.introVi },
+                { en: lesson.introEn, vi: lesson.introVi, ja: lesson.introJa },
                 nativeLanguage,
               );
             return (
@@ -342,7 +342,7 @@ export function LessonRenderer({
                   {text}
                   {fallback && (
                     <FallbackBadge
-                      other={nativeLanguage === "en" ? "vi" : "en"}
+                      other={nativeLanguage === "vi" ? "en" : nativeLanguage === "en" ? "vi" : "en"}
                     />
                   )}
                 </p>
@@ -420,7 +420,7 @@ export function LessonRenderer({
                         {focus.join(" · ")}
                         {fallback && (
                           <FallbackBadge
-                            other={nativeLanguage === "en" ? "vi" : "en"}
+                            other={nativeLanguage === "vi" ? "en" : nativeLanguage === "en" ? "vi" : "en"}
                           />
                         )}
                       </p>
@@ -581,7 +581,7 @@ export function LessonRenderer({
                   {labels.cultureHeading}
                   {fallback && (
                     <FallbackBadge
-                      other={nativeLanguage === "en" ? "vi" : "en"}
+                      other={nativeLanguage === "vi" ? "en" : nativeLanguage === "en" ? "vi" : "en"}
                     />
                   )}
                 </p>
@@ -605,7 +605,7 @@ export function LessonRenderer({
                   {labels.tipHeading}
                   {fallback && (
                     <FallbackBadge
-                      other={nativeLanguage === "en" ? "vi" : "en"}
+                      other={nativeLanguage === "vi" ? "en" : nativeLanguage === "en" ? "vi" : "en"}
                     />
                   )}
                 </p>
@@ -630,7 +630,7 @@ export function LessonRenderer({
                   {labels.registerHeading}
                   {fallback && (
                     <FallbackBadge
-                      other={nativeLanguage === "en" ? "vi" : "en"}
+                      other={nativeLanguage === "vi" ? "en" : nativeLanguage === "en" ? "vi" : "en"}
                     />
                   )}
                 </span>{" "}
@@ -656,7 +656,7 @@ export function LessonRenderer({
                   {labels.roleplayHeading}
                   {fallback && (
                     <FallbackBadge
-                      other={nativeLanguage === "en" ? "vi" : "en"}
+                      other={nativeLanguage === "vi" ? "en" : nativeLanguage === "en" ? "vi" : "en"}
                     />
                   )}
                 </p>
@@ -722,12 +722,12 @@ function ExerciseRow({
   index: number;
   labels: RendererLabels;
   // Pedagogy axis only — `labels` (chrome) is passed in separately.
-  nativeLanguage: "vi" | "en";
+  nativeLanguage: NativeLang;
 }) {
   const labelMap = labels.exerciseLabels;
 
   if (ex.kind === "fill-blank") {
-    const hint = getNativeContent({ en: ex.hintEn, vi: ex.hint }, nativeLanguage);
+    const hint = getNativeContent({ en: ex.hintEn, vi: ex.hint, ja: ex.hintJa }, nativeLanguage);
     return (
       <>
         <span className="font-semibold">
@@ -746,7 +746,7 @@ function ExerciseRow({
 
   if (ex.kind === "matching") {
     const instruction = getNativeContent(
-      { en: ex.instructionEn, vi: ex.instruction },
+      { en: ex.instructionEn, vi: ex.instruction, ja: ex.instructionJa },
       nativeLanguage,
     );
     return (
@@ -768,7 +768,7 @@ function ExerciseRow({
   }
 
   // translation
-  const prompt = getNativeContent({ en: ex.en, vi: ex.vi }, nativeLanguage);
+  const prompt = getNativeContent({ en: ex.en, vi: ex.vi, ja: ex.ja }, nativeLanguage);
   return (
     <>
       <span className="font-semibold">
@@ -802,7 +802,7 @@ function DialogueLineRows({
   lines: NormalizedDialogueLine[];
   theme: LessonTheme;
   // Pedagogy axis only — `audioAria` (chrome) is passed in separately.
-  nativeLanguage: "vi" | "en";
+  nativeLanguage: NativeLang;
   audioAria: string;
   audio?: { base: string; kinds?: NormalizedAudioKinds };
   // Badge the gloss when getNativeContent() fell back to the non-native
@@ -855,19 +855,19 @@ function DialogueLineRows({
               // getNativeContent() returns vi with no fallback, so the
               // existing language pages are unchanged.
               const gloss = getNativeContent(
-                { en: d.en, vi: d.vi },
+                { en: d.en, vi: d.vi, ja: d.ja },
                 nativeLanguage,
               );
               if (!gloss) return null;
               const fallback =
                 showFallbackBadge &&
-                isNativeFallback({ en: d.en, vi: d.vi }, nativeLanguage);
+                isNativeFallback({ en: d.en, vi: d.vi, ja: d.ja }, nativeLanguage);
               return (
                 <div className="text-slate-500 ml-5">
                   {gloss}
                   {fallback && (
                     <FallbackBadge
-                      other={nativeLanguage === "en" ? "vi" : "en"}
+                      other={nativeLanguage === "vi" ? "en" : nativeLanguage === "en" ? "vi" : "en"}
                     />
                   )}
                 </div>
@@ -893,7 +893,7 @@ function IdiomGlossList({
 }: {
   glosses: NormalizedIdiomGloss[];
   // Pedagogy axis only — `heading` (chrome) is passed in separately.
-  nativeLanguage: "vi" | "en";
+  nativeLanguage: NativeLang;
   heading: string;
 }) {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
@@ -907,19 +907,19 @@ function IdiomGlossList({
         {glosses.map((g, gi) => {
           const isOpen = openIdx === gi;
           const literal = getNativeContent(
-            { en: g.literalEn, vi: g.literal },
+            { en: g.literalEn, vi: g.literal, ja: g.literalJa },
             nativeLanguage,
           );
           const meaning = getNativeContent(
-            { en: g.meaningEn, vi: g.meaning },
+            { en: g.meaningEn, vi: g.meaning, ja: g.meaningJa },
             nativeLanguage,
           );
           const example = getNativeContent(
-            { en: g.exampleEn, vi: g.example },
+            { en: g.exampleEn, vi: g.example, ja: g.exampleJa },
             nativeLanguage,
           );
           const fallback = isNativeFallback(
-            { en: g.meaningEn, vi: g.meaning },
+            { en: g.meaningEn, vi: g.meaning, ja: g.meaningJa },
             nativeLanguage,
           );
           return (
@@ -954,7 +954,7 @@ function IdiomGlossList({
                       {meaning}
                       {fallback && (
                         <FallbackBadge
-                          other={nativeLanguage === "en" ? "vi" : "en"}
+                          other={nativeLanguage === "vi" ? "en" : nativeLanguage === "en" ? "vi" : "en"}
                         />
                       )}
                     </p>

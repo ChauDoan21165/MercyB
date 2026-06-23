@@ -29,6 +29,8 @@ export const RICH_LESSON_QUIZ_LENGTH = 5;
 export interface RichLessonSection {
   en: string;
   vi: string;
+  /** Optional Japanese-native English explanation — for ja-native learners. */
+  ja?: string;
 }
 
 export interface RichLessonSections {

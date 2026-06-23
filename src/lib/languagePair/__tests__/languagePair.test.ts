@@ -66,3 +66,12 @@ describe("LANGUAGES meta — stale lesson counts fixed (decision 5)", () => {
     ).toBe(536);
   });
 });
+
+
+describe("parseLanguagePair — Japanese-native English pilot", () => {
+  it("accepts Japanese as a native language", () => {
+    expect(
+      parseLanguagePair({ native_language: "ja", target_languages: ["en"] }),
+    ).toEqual({ nativeLanguage: "ja", targets: ["en"], primaryTarget: "en" });
+  });
+});

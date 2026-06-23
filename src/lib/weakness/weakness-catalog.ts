@@ -109,6 +109,8 @@ export type BilingualText = {
   en: string;
   /** Vietnamese surface — may contain `**word**` markdown bolding. */
   vi: string;
+  /** Japanese-native English explanation — optional, for ja-native learners. */
+  ja?: string;
 };
 
 export type WeaknessEntry = {
@@ -462,10 +464,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Past perfect (**had + V3**)",
       vi: "Quá khứ hoàn thành (**had + V3**)",
+      ja: "過去完了（**had + 過去分詞**）",
     },
     longDescription: {
       en: "Vietnamese stacks time words like **trước đó** to show one past event happened before another. English uses **had + past participle** — **I had already eaten when she called**.",
       vi: "Tiếng Việt mình dùng **trước đó** để chỉ việc nào xảy ra trước. Tiếng Anh dùng **had + V3** — **I had already eaten when she called** (Tôi đã ăn xong trước khi cô ấy gọi).",
+      ja: "日本語は「〜していた」「〜してしまっていた」に「前に」「時点で」などの語を添えて出来事の前後関係を表します。英語では、過去のある時点より前に起こったことを **had + 過去分詞** で明示します。**I had already eaten when she called**（彼女が電話してきた時には、私はすでに食事を終えていた）。",
     },
     exampleWrong: "When she called, I already ate.",
     exampleRight: "When she called, I had already eaten.",
@@ -477,10 +481,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Reported speech",
       vi: "Câu tường thuật",
+      ja: "間接話法（時制の一致）",
     },
     longDescription: {
       en: "Vietnamese often quotes directly or uses **nói rằng** without shifting the verb. English backshifts the tense: **She said she was tired** — not **she is tired**.",
       vi: "Tiếng Việt mình nói lại lời người khác thường giữ nguyên thì, hoặc dùng **nói rằng**. Tiếng Anh lùi thì một bậc: **She said she was tired**, không phải **she is tired**.",
+      ja: "日本語は「〜と言いました」とそのまま引用するか、時制を変えずに伝えることができます。英語では、伝える内容の時制を一つ過去にずらします（時制の一致）。**She said she was tired**（彼女は疲れていると言った）— 直接話法の **is** を間接話法では **was** にします。",
     },
     exampleWrong: "She said she is tired.",
     exampleRight: "She said she was tired.",
@@ -492,10 +498,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "**Since** vs **for**",
       vi: "**Since** vs **for**",
+      ja: "**since**（起点）vs **for**（期間）",
     },
     longDescription: {
       en: "Vietnamese **từ** covers both a starting point and a duration. English splits: **since** points to a moment (**since 2020**); **for** measures length (**for three years**).",
       vi: "Tiếng Việt mình **từ** dùng cho cả điểm bắt đầu lẫn khoảng thời gian. Tiếng Anh tách ra: **since** chỉ mốc (**since 2020**); **for** chỉ độ dài (**for three years**).",
+      ja: "日本語の「〜から」は起点（「3時から」）と期間（「3時間から」とは言わないが）の両方に近い用法があります。英語は厳密に区別し、**since** は特定の時点（**since 2020**「2020年から」）、**for** は期間の長さ（**for three years**「3年間」）を表します。日本語話者は「〜から」の感覚で **since three years** と言ってしまいがちです。",
     },
     exampleWrong: "I have lived here since three years.",
     exampleRight: "I have lived here for three years.",
@@ -552,10 +560,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "**If** clauses — match the tenses",
       vi: "Câu **If** — hợp thì",
+      ja: "**if**節の時制の組み合わせ",
     },
     longDescription: {
       en: "Vietnamese **nếu… thì…** keeps verbs unchanged. English matches the pattern: real = **If + present, will + V**; unreal = **If + past, would + V** — never mix past with **will**.",
       vi: "Tiếng Việt mình **nếu… thì…** không đổi động từ. Tiếng Anh ghép đôi: có thật = **If + hiện tại, will + V**; không có thật = **If + quá khứ, would + V** — không trộn quá khứ với **will**.",
+      ja: "日本語の「〜たら」「〜ば」は現実的条件でも非現実的条件でも動詞の形が変わりません。英語では、実現可能な条件は **If + 現在形, will + 動詞の原形**、現実に反する仮定は **If + 過去形, would + 動詞の原形** と時制を組み合わせます。日本語話者は「もしお金があれば買う」の感覚で **If I had money, I will buy** と時制を混ぜてしまうことが多いので注意が必要です。",
     },
     exampleWrong: "If I had money, I will buy a car.",
     exampleRight: "If I had money, I would buy a car.",
@@ -567,10 +577,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "**-ing** vs **to + verb**",
       vi: "**-ing** vs **to + verb**",
+      ja: "動名詞（**-ing**）vs 不定詞（**to + 動詞**）",
     },
     longDescription: {
       en: "Vietnamese uses the plain verb everywhere. English picks one: verbs like **enjoy**, **finish**, **avoid** take **-ing** (**I enjoy swimming**); verbs like **want**, **plan**, **decide** take **to + verb** (**I want to swim**).",
       vi: "Tiếng Việt mình chỉ dùng động từ gốc. Tiếng Anh chia hai: các verb như **enjoy**, **finish**, **avoid** đi với **-ing** (**I enjoy swimming**); **want**, **plan**, **decide** đi với **to + verb** (**I want to swim**).",
+      ja: "日本語では動詞の後ろに置く形が「〜すること」の一通りしかないため、英語の **-ing** と **to + 動詞** の使い分けは日本語話者にとって難しいポイントです。**enjoy**、**finish**、**avoid**、**mind**、**suggest** などは後ろに **-ing** のみをとり、**want**、**plan**、**decide**、**hope**、**promise** などは **to + 動詞** をとります。",
     },
     exampleWrong: "I enjoy to swim.",
     exampleRight: "I enjoy swimming.",
@@ -582,10 +594,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Passive needs **be + V3**",
       vi: "Bị động cần **be + V3**",
+      ja: "受動態には **be + 過去分詞** が必要",
     },
     longDescription: {
       en: "Vietnamese marks the passive with **bị** or **được** before the verb. English needs a form of **be** plus the past participle: **The letter was written**, not **The letter written**.",
       vi: "Tiếng Việt mình dùng **bị** hoặc **được** trước động từ là thành bị động. Tiếng Anh cần dạng **be** + V3: **The letter was written**, không phải **The letter written**.",
+      ja: "日本語の受身（「〜れる」「〜られる」）は動詞の語尾変化で表します。英語の受動態は **be動詞 + 過去分詞** の組み合わせで作り、**be動詞** を省略することはできません。**The letter was written**（その手紙は書かれた）— 日本語の「書かれた」だけの感覚で **The letter written** としてしまう誤りがよくあります。",
     },
     exampleWrong: "The letter written yesterday.",
     exampleRight: "The letter was written yesterday.",
@@ -597,10 +611,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "**Who / which / that**",
       vi: "**Who / which / that**",
+      ja: "関係代名詞 **who / which / that**",
     },
     longDescription: {
       en: "Vietnamese joins clauses with **mà** for everything. English picks the relative pronoun by what it refers to: **who** for people, **which** for things, **that** for both in defining clauses.",
       vi: "Tiếng Việt mình dùng **mà** nối câu cho mọi thứ. Tiếng Anh chọn đại từ theo đối tượng: **who** cho người, **which** cho vật, **that** cho cả hai ở mệnh đề xác định.",
+      ja: "日本語は動詞の連体形で直接名詞を修飾します（「昨日来た人」「私が買った本」）。英語は関係代名詞で節をつなぎ、**who** は人、**which** は物・動物、**that** は両方に使えます。日本語話者は「〜した人」の語順のまま **The man called you is here** と関係代名詞を落としてしまうことが多いです。",
     },
     exampleWrong: "The man which called you is here.",
     exampleRight: "The man who called you is here.",
@@ -612,10 +628,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "**Used to** vs **be used to**",
       vi: "**Used to** vs **be used to**",
+      ja: "**used to**（過去の習慣）vs **be used to**（〜に慣れている）",
     },
     longDescription: {
       en: "Two English patterns look alike but mean different things. **Used to + V** = a past habit that stopped (**I used to smoke**). **Be used to + V-ing** = now familiar with (**I'm used to waking up early**).",
       vi: "Hai cấu trúc tiếng Anh nhìn giống nhau nhưng khác nghĩa. **Used to + V** = thói quen cũ đã bỏ (**I used to smoke**). **Be used to + V-ing** = giờ đã quen với (**I'm used to waking up early**).",
+      ja: "この2つは形が似ていますが意味が異なります。**used to + 動詞の原形** は「昔は〜していた（今はもうしていない）」という過去の習慣を表します。例：**I used to smoke**（昔はタバコを吸っていた）。一方、**be used to + 動名詞（〜ing）** は「〜に慣れている」という現在の状態を表します。例：**I'm used to waking up early**（早起きに慣れている）。日本語話者はこの2つを混同しやすいので注意してください。",
     },
     exampleWrong: "I am used to smoke, but I stopped.",
     exampleRight: "I used to smoke, but I stopped.",
@@ -694,10 +712,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Present perfect vs past",
       vi: "[VI TBD — CC4]",
+      ja: "現在完了 vs 過去形",
     },
     longDescription: {
       en: "Vietnamese has no perfect aspect. When a sentence names a specific past time (**yesterday**, **last week**, **in 1990**), English requires simple past — not **have/has + past participle**.",
       vi: "[VI TBD — CC4]",
+      ja: "日本語の「〜た」は「昨日食べた」（過去の一点）も「もう食べた」（完了）も同じ形で表せます。英語では、**yesterday**、**last week**、**in 1990** など特定の過去の時点を表す語があるときは、必ず**過去形**を使い、現在完了（**have + 過去分詞**）は使えません。**I ate pho yesterday**（昨日フォーを食べた）— **I have eaten pho yesterday** とは言いません。",
     },
     exampleWrong: "I have eaten pho yesterday.",
     exampleRight: "I ate pho yesterday.",
@@ -709,10 +729,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Subjunctive **were**",
       vi: "[VI TBD — CC4]",
+      ja: "仮定法の **were**",
     },
     longDescription: {
       en: "After **if** or **wish**, English uses **were** for every subject in unreal / imagined situations — *If I **were** you*, not *If I **was** you*.",
       vi: "[VI TBD — CC4]",
+      ja: "日本語では「もし私があなたなら」のように、非現実の仮定でも動詞は変わりません。英語では、**if** や **wish** の後の現実に反する仮定では、主語に関係なく **were** を使います。**If I were you, I would take the job**（もし私があなたなら、その仕事を引き受けるのに）— 口語では **was** も使われますが、フォーマルな英語・試験では **were** が正解です。",
     },
     exampleWrong: "If I was you, I would take the job.",
     exampleRight: "If I were you, I would take the job.",
@@ -724,10 +746,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Embedded-question order",
       vi: "[VI TBD — CC4]",
+      ja: "間接疑問文の語順",
     },
     longDescription: {
       en: "A question inside another sentence drops the question word order — subject comes before the auxiliary.",
       vi: "[VI TBD — CC4]",
+      ja: "日本語では「これが何かわからない」のように、疑問の部分をそのまま文中に埋め込めます。英語では、文中に埋め込まれた疑問文（間接疑問）は**平叙文の語順**（主語 → 動詞）になります。**I don't know what this is**（これが何かわからない）— 疑問文の語順 **what is this** をそのまま埋め込めません。",
     },
     exampleWrong: "I don't know what is this.",
     exampleRight: "I don't know what this is.",
@@ -784,10 +808,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Modal + **have** + V3",
       vi: "[VI TBD — CC4]",
+      ja: "助動詞 + **have** + 過去分詞",
     },
     longDescription: {
       en: "To talk about a past possibility, regret, or conclusion with a modal, English uses **modal + have + past participle** — not the past-tense verb directly.",
       vi: "[VI TBD — CC4]",
+      ja: "日本語の「〜すべきだった」「〜したかもしれない」は、助動詞の過去形や「〜たかもしれない」で表します。英語では、過去の可能性・後悔・推量を表すときは **助動詞 + have + 過去分詞** の形を使い、動詞の過去形を直接助動詞の後ろに置くことはできません。**I should have done it**（やっておくべきだった）— **I should did it** とは言いません。",
     },
     exampleWrong: "I should did it yesterday.",
     exampleRight: "I should have done it yesterday.",
@@ -814,10 +840,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "**more** with long adjectives",
       vi: "[VI TBD — CC4]",
+      ja: "長い形容詞の比較級は **more**",
     },
     longDescription: {
       en: "Adjectives with two or more syllables take **more** — *more beautiful*, *more important* — not an **-er** ending.",
       vi: "[VI TBD — CC4]",
+      ja: "日本語の「〜より」はすべての形容詞に同じように使えます。英語では、2音節以上の長い形容詞の比較級は **-er** ではなく **more** で作ります。**more beautiful**（より美しい）、**more important**（より重要）— **beautifuler** や **importanter** とは言いません。短い形容詞（**tall → taller**、**big → bigger**）と長い形容詞でルールが異なることに注意してください。",
     },
     exampleWrong: "This is beautifuler than that one.",
     exampleRight: "This is more beautiful than that one.",
@@ -938,10 +966,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "**too** vs **very**",
       vi: "[VI TBD — CC4]",
+      ja: "**too**（〜すぎる）vs **very**（とても）",
     },
     longDescription: {
       en: "**Too** implies excess (there's a problem). For a simple strong intensifier, use **very**. *I am **very** happy to see you*, not *too happy*.",
       vi: "[VI TBD — CC4]",
+      ja: "日本語の「とても」は単純な強調にも過剰にも使えます。英語の **too** は「〜すぎる（問題がある）」という否定的な過剰を意味します。単なる「とても」の強調には **very** を使います。**I am very happy to see you**（お会いできてとても嬉しいです）— **too happy** は「嬉しすぎて問題がある」という含みになり不自然です。",
     },
     exampleWrong: "I am too happy to see you.",
     exampleRight: "I am very happy to see you.",
@@ -1013,10 +1043,12 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Tag-question polarity",
       vi: "[VI TBD — CC4]",
+      ja: "付加疑問文の極性反転",
     },
     longDescription: {
       en: "Tag questions flip polarity: positive statement → negative tag, negative statement → positive tag. *You like it, **don't you**?* — not *do you?*",
       vi: "[VI TBD — CC4]",
+      ja: "日本語の「〜ね」「〜よね」は肯定文にも否定文にも同じ形で付けられます。英語の付加疑問文は、肯定文には否定の付加疑問、否定文には肯定の付加疑問と、**極性を反転**させます。**You like it, don't you?**（好きですよね？）— **do you?** ではありません。**You don't smoke, do you?**（タバコは吸わないですよね？）— **don't you?** ではありません。",
     },
     exampleWrong: "You like it, do you?",
     exampleRight: "You like it, don't you?",
