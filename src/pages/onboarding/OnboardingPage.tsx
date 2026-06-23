@@ -1,3 +1,8 @@
+
+function nativeCopyLang(lang: "vi" | "en" | "ja"): "vi" | "en" {
+  return lang === "vi" ? "vi" : "en";
+}
+
 // src/pages/onboarding/OnboardingPage.tsx
 //
 // THE ENTRY POINT for anonymous visitors at mercyblade.com (locked #14 —
@@ -304,7 +309,7 @@ function TargetGrid({
         marginTop: 16,
       }}
     >
-      {TARGET_MENU[native].map((item) => {
+      {TARGET_MENU[nativeCopyLang(native)].map((item) => {
         const meta = TARGET_META[item.value];
         const isSelected = selected.includes(item.value);
         const badge = targetBadge(item);
@@ -651,7 +656,7 @@ export default function OnboardingPage() {
     const updated: OnboardingDraft = {
       ...draft,
       native_language: native,
-      target_languages: [RECOMMENDED_TARGET[native]],
+      target_languages: [RECOMMENDED_TARGET[nativeCopyLang(native)]],
     };
     setDraft(updated);
     advance(updated);
@@ -813,7 +818,7 @@ export default function OnboardingPage() {
     setError(null);
     const native: NativeLang = draft.native_language ?? "vi";
     const target: TargetLang =
-      draft.target_languages[0] ?? RECOMMENDED_TARGET[native];
+      draft.target_languages[0] ?? RECOMMENDED_TARGET[nativeCopyLang(native)];
     // Same as finish: persist locally so the gate can't loop an
     // anonymous visitor back into the picker (skip = a deliberate pick
     // of the recommended pair).
@@ -1005,7 +1010,7 @@ export default function OnboardingPage() {
                 choices={NATIVE_OPTIONS.map((n) => ({
                   value: n.value,
                   icon: n.icon,
-                  label: { vi: n.label[n.value], en: n.label[n.value] },
+                  label: { vi: n.label[n.value] ?? n.label.en, en: n.label[n.value] ?? n.label.en },
                 }))}
                 selected={draft.native_language}
                 onSelect={handleNativeSelect}
