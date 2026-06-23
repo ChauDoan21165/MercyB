@@ -19,6 +19,10 @@
 // so the learner can hide one language and focus on the other; default
 // shows both, Vietnamese first (Vietnamese-first non-negotiable).
 //
+// Japanese-native English support (2026-06-23): when `nativeLanguage`
+// is "ja", section text is picked via getNativeContent() with
+// ja → en → vi fallback. The per-section toggle cycles ja / en / both.
+//
 // When `entry.linkedRoomId` is null the catalog doesn't yet have a
 // matching room — the CTA flips to a disabled "coming soon" affordance
 // instead of navigating anywhere.
@@ -48,6 +52,11 @@ import {
   type RichLessonSection,
 } from "@/lib/weakness/richLessonSchema";
 import { getRichLessonPilot } from "@/data/richLessonsPilot";
+import {
+  getNativeContent,
+  isNativeFallback,
+  type NativeLang,
+} from "@/components/languages/nativeContent";
 
 interface FocusAreasMicroLessonDialogProps {
   /** null closes the dialog; non-null opens and drives content. */
@@ -55,9 +64,15 @@ interface FocusAreasMicroLessonDialogProps {
   onOpenChange: (open: boolean) => void;
   /** Current user id for analytics; optional. */
   userId?: string | null;
+  /**
+   * Native language for pedagogy content selection.
+   * "ja" enables Japanese-native English explanation rendering.
+   * Defaults to "vi" (legacy Vietnamese-first behavior unchanged).
+   */
+  nativeLanguage?: NativeLang;
 }
 
-type LessonLanguage = "both" | "vi" | "en";
+type LessonLanguage = "both" | "vi" | "en" | "ja";
 
 const SECTION_ORDER: Array<{
   key: keyof RichLesson["sections"];
@@ -83,6 +98,7 @@ export default function FocusAreasMicroLessonDialog({
   entry,
   onOpenChange,
   userId,
+  nativeLanguage = "vi",
 }: FocusAreasMicroLessonDialogProps) {
   const navigate = useNavigate();
   const open = entry !== null;
@@ -137,7 +153,7 @@ export default function FocusAreasMicroLessonDialog({
               </div>
 
               {richLesson ? (
-                <RichLessonBody lesson={richLesson} />
+                <RichLessonBody lesson={richLesson} nativeLanguage={nativeLanguage} />
               ) : null}
             </div>
 
@@ -209,9 +225,10 @@ export default function FocusAreasMicroLessonDialog({
 
 interface RichLessonBodyProps {
   lesson: RichLesson;
+  nativeLanguage: NativeLang;
 }
 
-function RichLessonBody({ lesson }: RichLessonBodyProps): React.ReactElement {
+function RichLessonBody({ lesson, nativeLanguage }: RichLessonBodyProps): React.ReactElement {
   const [langByKey, setLangByKey] = React.useState<
     Record<string, LessonLanguage>
   >({});
@@ -219,10 +236,24 @@ function RichLessonBody({ lesson }: RichLessonBodyProps): React.ReactElement {
   function toggleSectionLang(key: string): void {
     setLangByKey((prev) => {
       const current = prev[key] ?? "both";
-      const next: LessonLanguage =
-        current === "both" ? "vi" : current === "vi" ? "en" : "both";
+      let next: LessonLanguage;
+      if (nativeLanguage === "ja") {
+        next = current === "both" ? "ja" : current === "ja" ? "en" : "both";
+      } else {
+        next = current === "both" ? "vi" : current === "vi" ? "en" : "both";
+      }
       return { ...prev, [key]: next };
     });
+  }
+
+  // When nativeLanguage is ja, pick section content via nativeContent seam
+  function sectionText(section: RichLessonSection, lang: LessonLanguage): string | undefined {
+    if (lang === "both") return undefined; // both mode handled in SectionBlock
+    if (lang === "ja") {
+      return getNativeContent({ ja: section.ja, en: section.en, vi: section.vi }, "ja");
+    }
+    if (lang === "en") return section.en;
+    return section.vi;
   }
 
   return (
@@ -238,12 +269,13 @@ function RichLessonBody({ lesson }: RichLessonBodyProps): React.ReactElement {
             labelVi={labelVi}
             section={section}
             lang={lang}
+            nativeLanguage={nativeLanguage}
             onToggleLang={() => toggleSectionLang(key)}
           />
         );
       })}
 
-      <RichLessonQuiz quiz={lesson.quiz} />
+      <RichLessonQuiz quiz={lesson.quiz} nativeLanguage={nativeLanguage} />
     </div>
   );
 }
@@ -254,6 +286,7 @@ interface SectionBlockProps {
   labelVi: string;
   section: RichLessonSection;
   lang: LessonLanguage;
+  nativeLanguage: NativeLang;
   onToggleLang: () => void;
 }
 
@@ -263,10 +296,22 @@ function SectionBlock({
   labelVi,
   section,
   lang,
+  nativeLanguage,
   onToggleLang,
 }: SectionBlockProps): React.ReactElement {
   const showVi = lang === "both" || lang === "vi";
   const showEn = lang === "both" || lang === "en";
+  const showJa = lang === "both" || lang === "ja";
+
+  // Pick the ja content via nativeContent seam (ja → en → vi fallback)
+  const jaText = getNativeContent({ ja: section.ja, en: section.en, vi: section.vi }, "ja");
+  const jaFallback = isNativeFallback({ ja: section.ja, en: section.en, vi: section.vi }, "ja");
+
+  // Toggle label adapts to nativeLanguage
+  const toggleLabel =
+    nativeLanguage === "ja"
+      ? lang === "both" ? "JA+EN" : lang === "ja" ? "JA" : "EN"
+      : lang === "both" ? "VI+EN" : lang === "vi" ? "VI" : "EN";
 
   return (
     <section
@@ -283,28 +328,51 @@ function SectionBlock({
           className="rounded border border-slate-200 px-2 py-0.5 text-[10px] font-medium uppercase text-slate-500 hover:bg-slate-50"
           aria-label={`Toggle language for ${labelEn}`}
         >
-          {lang === "both" ? "VI+EN" : lang === "vi" ? "VI" : "EN"}
+          {toggleLabel}
         </button>
       </header>
-      {showVi ? (
-        <p className="mt-1 text-sm leading-relaxed text-slate-800">
-          {renderInlineBold(section.vi)}
-        </p>
-      ) : null}
-      {showEn ? (
-        <p className="mt-1 text-xs leading-relaxed text-slate-500">
-          {renderInlineBold(section.en)}
-        </p>
-      ) : null}
+      {nativeLanguage === "ja" ? (
+        <>
+          {showJa && jaText ? (
+            <p className="mt-1 text-sm leading-relaxed text-slate-800">
+              {renderInlineBold(jaText)}
+              {jaFallback && lang !== "both" && (
+                <span className="ml-1.5 rounded-full bg-slate-100 px-1.5 py-0.5 text-[9px] font-medium uppercase text-slate-600">
+                  {nativeLanguage === "ja" ? "EN" : "VI"}
+                </span>
+              )}
+            </p>
+          ) : null}
+          {showEn ? (
+            <p className="mt-1 text-xs leading-relaxed text-slate-500">
+              {renderInlineBold(section.en)}
+            </p>
+          ) : null}
+        </>
+      ) : (
+        <>
+          {showVi ? (
+            <p className="mt-1 text-sm leading-relaxed text-slate-800">
+              {renderInlineBold(section.vi)}
+            </p>
+          ) : null}
+          {showEn ? (
+            <p className="mt-1 text-xs leading-relaxed text-slate-500">
+              {renderInlineBold(section.en)}
+            </p>
+          ) : null}
+        </>
+      )}
     </section>
   );
 }
 
 interface RichLessonQuizProps {
   quiz: RichLessonQuizQuestion[];
+  nativeLanguage: NativeLang;
 }
 
-function RichLessonQuiz({ quiz }: RichLessonQuizProps): React.ReactElement {
+function RichLessonQuiz({ quiz, nativeLanguage }: RichLessonQuizProps): React.ReactElement {
   return (
     <section className="rounded-md border border-amber-200 bg-amber-50 p-3">
       <h4 className="text-xs font-semibold uppercase tracking-wide text-amber-800">
@@ -312,7 +380,7 @@ function RichLessonQuiz({ quiz }: RichLessonQuizProps): React.ReactElement {
       </h4>
       <ol className="mt-2 space-y-3 text-sm">
         {quiz.map((q, i) => (
-          <QuizItem key={i} index={i} question={q} />
+          <QuizItem key={i} index={i} question={q} nativeLanguage={nativeLanguage} />
         ))}
       </ol>
     </section>
@@ -322,17 +390,62 @@ function RichLessonQuiz({ quiz }: RichLessonQuizProps): React.ReactElement {
 interface QuizItemProps {
   index: number;
   question: RichLessonQuizQuestion;
+  nativeLanguage: NativeLang;
 }
 
-function QuizItem({ index, question }: QuizItemProps): React.ReactElement {
+function QuizItem({ index, question, nativeLanguage }: QuizItemProps): React.ReactElement {
   const [revealed, setRevealed] = React.useState(false);
+
+  // Pick question text via nativeContent seam
+  const questionText = getNativeContent(
+    { ja: question.question.ja, en: question.question.en, vi: question.question.vi },
+    nativeLanguage,
+  );
+  const questionFallback = isNativeFallback(
+    { ja: question.question.ja, en: question.question.en, vi: question.question.vi },
+    nativeLanguage,
+  );
+
+  // Pick explanation text via nativeContent seam
+  const explanationText = question.explanation
+    ? getNativeContent(
+        { ja: question.explanation.ja, en: question.explanation.en, vi: question.explanation.vi },
+        nativeLanguage,
+      )
+    : undefined;
+  const explanationFallback = question.explanation
+    ? isNativeFallback(
+        { ja: question.explanation.ja, en: question.explanation.en, vi: question.explanation.vi },
+        nativeLanguage,
+      )
+    : false;
+
+  const isJa = nativeLanguage === "ja";
 
   return (
     <li className="rounded border border-amber-100 bg-white p-2">
-      <p className="font-medium text-slate-800">
-        {index + 1}. {question.question.vi}
-      </p>
-      <p className="text-xs text-slate-500">{question.question.en}</p>
+      {isJa ? (
+        <>
+          <p className="font-medium text-slate-800">
+            {index + 1}. {renderInlineBold(questionText ?? question.question.en)}
+            {questionFallback && (
+              <span className="ml-1.5 rounded-full bg-slate-100 px-1.5 py-0.5 text-[9px] font-medium uppercase text-slate-600">
+                EN
+              </span>
+            )}
+          </p>
+          {question.question.ja && (
+            <p className="text-xs text-slate-500">{question.question.en}</p>
+          )}
+        </>
+      ) : (
+        <>
+          <p className="font-medium text-slate-800">
+            {index + 1}. {question.question.vi}
+          </p>
+          <p className="text-xs text-slate-500">{question.question.en}</p>
+        </>
+      )}
       {question.options && question.options.length > 0 ? (
         <ul className="mt-1 space-y-0.5 text-xs text-slate-600">
           {question.options.map((opt, oi) => (
@@ -358,14 +471,25 @@ function QuizItem({ index, question }: QuizItemProps): React.ReactElement {
             ✓ {question.correctAnswer}
           </p>
           {question.explanation ? (
-            <>
+            isJa ? (
               <p className="mt-1 text-slate-700">
-                {renderInlineBold(question.explanation.vi)}
+                {renderInlineBold(explanationText ?? question.explanation.en)}
+                {explanationFallback && (
+                  <span className="ml-1.5 rounded-full bg-slate-100 px-1.5 py-0.5 text-[9px] font-medium uppercase text-slate-600">
+                    EN
+                  </span>
+                )}
               </p>
-              <p className="text-slate-500">
-                {renderInlineBold(question.explanation.en)}
-              </p>
-            </>
+            ) : (
+              <>
+                <p className="mt-1 text-slate-700">
+                  {renderInlineBold(question.explanation.vi)}
+                </p>
+                <p className="text-slate-500">
+                  {renderInlineBold(question.explanation.en)}
+                </p>
+              </>
+            )
           ) : null}
         </div>
       ) : null}
