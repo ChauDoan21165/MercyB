@@ -278,7 +278,7 @@ const CSS = `
  transition:transform .04s ease,filter .15s ease;}
 .mb-ml-btn:active{transform:translateY(1px);}
 .mb-ml-btn:focus-visible{outline:3px solid #0F766E;outline-offset:3px;}
-.mb-ml-btn-primary{background:#14B8A6;color:#fff;}
+.mb-ml-btn-primary{background:#0F766E;color:#fff;}
 .mb-ml-btn-primary:hover{filter:brightness(1.05);}
 .mb-ml-btn-outline{background:#fff;color:#0F766E;
  border-color:#0F766E;font-weight:700;}
@@ -287,7 +287,7 @@ const CSS = `
 .mb-ml-trial{background:linear-gradient(180deg,#FFF7ED,#FEF3E2);
  border:1px solid rgba(180,83,9,.18);border-radius:20px;
  padding:28px 22px;text-align:center;}
-.mb-ml-btn-trial{background:#D97706;color:#fff;margin-top:18px;
+.mb-ml-btn-trial{background:#92400E;color:#fff;margin-top:18px;
  min-width:min(100%,260px);}
 .mb-ml-btn-trial:hover{filter:brightness(1.05);}
 

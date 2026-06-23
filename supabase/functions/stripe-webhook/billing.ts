@@ -454,6 +454,7 @@ async function markEntitlementEventProcessed(params: {
   supabase: DBClient;
   event: StripeWebhookEvent;
   userId: string;
+  environment: BillingEnvironment;
 }): Promise<boolean> {
   const { error } = await params.supabase.from("entitlement_events").insert({
     provider: STRIPE_PROVIDER,
@@ -470,6 +471,22 @@ async function markEntitlementEventProcessed(params: {
     console.warn(
       "stripe-webhook entitlement_events table missing; skipping processed mark",
       error,
+    );
+    return true;
+  }
+
+  // FK 23503: user_id not in profiles (e.g. orphaned sandbox subscription).
+  if (
+    params.environment === "sandbox" &&
+    (error as { code?: string } | null)?.code === "23503"
+  ) {
+    console.warn(
+      "stripe-webhook sandbox FK violation on entitlement_events; downgrading to no-op",
+      {
+        eventId: params.event.id,
+        userId: params.userId,
+        code: (error as { code?: string } | null)?.code ?? null,
+      },
     );
     return true;
   }
@@ -642,6 +659,7 @@ export async function finalizeSubscriptionProcessing(params: {
   supabase: DBClient;
   userId: string;
   event: StripeWebhookEvent;
+  environment: BillingEnvironment;
   shouldRecomputeBeforeFinalMark: boolean;
 }): Promise<boolean> {
   if (params.shouldRecomputeBeforeFinalMark) {
@@ -656,6 +674,7 @@ export async function finalizeSubscriptionProcessing(params: {
     supabase: params.supabase,
     event: params.event,
     userId: params.userId,
+    environment: params.environment,
   });
 }
 
@@ -710,6 +729,18 @@ export async function upsertSharedSubscriptionMonotonic(params: {
     });
 
     if (existing?.user_id != null && existing.user_id !== params.userId) {
+      if (params.environment === "sandbox") {
+        console.warn(
+          "stripe-webhook sandbox ownership mismatch; downgrading to no-op",
+          {
+            eventId: params.event.id,
+            providerSubscriptionId: params.providerSubscriptionId,
+            existingUserId: existing.user_id,
+            resolvedUserId: params.userId,
+          },
+        );
+        return { stateChanged: false, shouldRecomputeBeforeFinalMark: false };
+      }
       throw new Error("Stripe subscription ownership mismatch");
     }
 
@@ -839,6 +870,18 @@ export async function upsertSharedSubscriptionMonotonic(params: {
         if (!latest) continue;
 
         if (latest.user_id != null && latest.user_id !== params.userId) {
+          if (params.environment === "sandbox") {
+            console.warn(
+              "stripe-webhook sandbox ownership mismatch; downgrading to no-op",
+              {
+                eventId: params.event.id,
+                providerSubscriptionId: params.providerSubscriptionId,
+                existingUserId: latest.user_id,
+                resolvedUserId: params.userId,
+              },
+            );
+            return { stateChanged: false, shouldRecomputeBeforeFinalMark: false };
+          }
           throw new Error("Stripe subscription ownership mismatch");
         }
 
@@ -985,6 +1028,18 @@ export async function upsertSharedSubscriptionMonotonic(params: {
     }
 
     if (latest.user_id != null && latest.user_id !== params.userId) {
+      if (params.environment === "sandbox") {
+        console.warn(
+          "stripe-webhook sandbox ownership mismatch; downgrading to no-op",
+          {
+            eventId: params.event.id,
+            providerSubscriptionId: params.providerSubscriptionId,
+            existingUserId: latest.user_id,
+            resolvedUserId: params.userId,
+          },
+        );
+        return { stateChanged: false, shouldRecomputeBeforeFinalMark: false };
+      }
       throw new Error("Stripe subscription ownership mismatch");
     }
 
