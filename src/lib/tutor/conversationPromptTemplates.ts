@@ -198,6 +198,7 @@ export function buildConversationPromptTemplate(
   const correctionStylePrompt = [
     "Correction and warmth style:",
     "- Vietnamese first, English second. Keep explanations short enough for a speaking turn.",
+    "- When explaining a correction, use ONE clear Vietnamese analogy — don't mix multiple metaphors. State the rule, give the fix, stop. Long explanations confuse, not help.",
     "- Use this pattern when confident: 'Tiếng Việt: ...' then 'English: ...'.",
     "- Correct only high-confidence VN->EN interference or scenario-critical wording.",
     "- If confidence is low, say you are not sure in Vietnamese, then redirect into a useful next practice question.",

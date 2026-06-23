@@ -45,11 +45,11 @@ const EXPLANATIONS: Record<VietlishInterferenceCategory, VietnameseInterferenceE
       "bắt buộc của cấu trúc ngữ pháp. Thiếu a/an trước danh từ đếm được số ít cũng sai như " +
       "thiếu dấu trong tiếng Việt vậy.",
     teacherExplanation:
-      "Cô Mercy hay nói với học viên thế này: 'Tiếng Việt của mình giống như một bức tranh — " +
-      "mình nhìn là hiểu ngay, không cần từ nối. Nhưng tiếng Anh giống như một bản nhạc — " +
-      "mỗi nốt phải có đủ, thiếu một nốt là sai nhịp. Mấy từ nhỏ như a, an, the, to, of " +
-      "chính là mấy nốt nhạc đó. Mình phải tập thói quen mới: mỗi lần viết danh từ, tự hỏi " +
-      "\"có cần a/an/the không?\". Mỗi lần viết động từ chỉ hướng, tự hỏi \"có cần to/for/at không?\"'",
+      "Tiếng Việt mình không cần a/an/the mà câu vẫn đủ nghĩa — " +
+      "người nghe tự hiểu qua ngữ cảnh. Nhưng tiếng Anh bắt buộc phải có những từ nhỏ này: " +
+      "thiếu a/an trước danh từ đếm được cũng sai như thiếu dấu trong tiếng Việt vậy. " +
+      "Cô Mercy mách: mỗi lần viết danh từ, dừng một giây tự hỏi \"có cần a/an/the không?\" " +
+      "— lặp lại 20 lần là thành thói quen.",
     mentalModelShift:
       "Từ tư duy 'câu = ý nghĩa' (tiếng Việt) sang tư duy 'câu = cấu trúc + ý nghĩa' (tiếng Anh). " +
       "Trong tiếng Anh, cấu trúc ngữ pháp không phải là 'trang trí' — nó là một phần của nghĩa.",
@@ -79,10 +79,10 @@ const EXPLANATIONS: Record<VietlishInterferenceCategory, VietnameseInterferenceE
       "nghĩa đã trọn vẹn. Đây là một phần của 'cảm giác ngôn ngữ' (Sprachgefühl) — thứ chỉ có " +
       "được qua tiếp xúc nhiều, không thể suy luận từ tiếng Việt.",
     teacherExplanation:
-      "Cô Mercy hay nói: 'Có mấy từ tiếng Anh nó \"kén\" lắm — nó không thích có bạn đi cùng. " +
-      "Discuss là một từ như vậy. Nó tự đi một mình: discuss something. Không cần about. " +
-      "Mình phải học thuộc mấy từ \"kén\" này như học từ vựng mới vậy — " +
-      "không phải dịch, mà là nhớ cách dùng.'",
+      "Một số động từ tiếng Anh như discuss, contact, marry — chúng đi thẳng vào tân ngữ, " +
+      "không cần about/with đi kèm. Lỗi này đến từ thói quen dịch từng chữ: " +
+      "\"thảo luận về\" → \"discuss about\" (sai). Cô Mercy khuyên: học nguyên cụm " +
+      "\"discuss something\", \"contact someone\" — đừng tách từ ra rồi dịch riêng.",
     mentalModelShift:
       "Từ tư duy 'dịch từng thành phần' (động từ + giới từ riêng lẻ) sang tư duy 'học nguyên cụm' " +
       "(collocation). Không nghĩ 'discuss = thảo luận, about = về' mà nghĩ 'discuss something = thảo luận cái gì đó'.",
@@ -110,10 +110,11 @@ const EXPLANATIONS: Record<VietlishInterferenceCategory, VietnameseInterferenceE
       "đứng trước động từ chính; thời gian (in the morning, every day) đứng cuối câu. " +
       "Đây không phải là 'phong cách' — đây là quy tắc ngữ pháp cứng.",
     teacherExplanation:
-      "Cô Mercy nói: 'Tiếng Việt mình uyển chuyển như nước — mình có thể đảo qua đảo lại. " +
-      "Nhưng tiếng Anh nó như xếp hình Lego: mỗi miếng có một chỗ cố định. Chủ ngữ trước, " +
-      "động từ giữa, tân ngữ sau. Trạng từ tần suất trước động từ. Trạng từ thời gian cuối câu. " +
-      "Khi nào giỏi rồi mình mới được \"phá cách\". Còn bây giờ, cứ xếp đúng chỗ trước đã.'",
+      "Tiếng Anh có trật tự cứng: Chủ ngữ → Động từ → Tân ngữ — khác với tiếng Việt " +
+      "mình có thể đảo \"Cuốn sách này tôi thích\" mà vẫn tự nhiên. Cô Mercy nhắc: " +
+      "khi viết tiếng Anh, luôn mở đầu bằng chủ ngữ (ai làm), rồi động từ (làm gì), " +
+      "rồi mới đến các chi tiết khác. Sai trật tự là lỗi người Việt mắc nhiều nhất " +
+      "— tập đúng thứ tự này trước khi nghĩ đến chuyện \"phá cách\".",
     mentalModelShift:
       "Từ tư duy 'ý quan trọng đặt trước' (tiếng Việt) sang tư duy 'chủ ngữ + động từ + tân ngữ' " +
       "(tiếng Anh). Khi viết câu tiếng Anh, không nghĩ bằng tiếng Việt rồi dịch — " +
@@ -142,10 +143,10 @@ const EXPLANATIONS: Record<VietlishInterferenceCategory, VietnameseInterferenceE
       "go → went → have gone → had gone... Đối với người bản xứ, việc chia thì là tự động. " +
       "Đối với người Việt, đây là một 'phần mềm' hoàn toàn mới cần cài vào não.",
     teacherExplanation:
-      "Cô Mercy giải thích: 'Trong tiếng Việt, thời gian như cái áo khoác ngoài câu — mình nhìn " +
-      "hôm qua/ngày mai là biết. Trong tiếng Anh, thời gian như màu da của động từ — nó thay đổi " +
-      "HÌNH DẠNG của từ luôn. Mình phải tập phản xạ: thấy yesterday là tay tự động gõ bought " +
-      "thay vì buy. Như tập võ vậy — lặp đi lặp lại đến khi thành phản xạ.'",
+      "Tiếng Việt dùng \"hôm qua\", \"ngày mai\" để chỉ thời gian, còn động từ giữ nguyên — " +
+      "\"hôm qua đi\" và \"ngày mai đi\" cùng một từ \"đi\". Tiếng Anh thì chính động từ " +
+      "phải thay đổi: go → went, buy → bought. Cô Mercy nói: tập phản xạ như tập võ — " +
+      "thấy \"yesterday\" là tay tự động gõ \"bought\", lặp đi lặp lại đến khi không cần nghĩ.",
     mentalModelShift:
       "Từ tư duy 'thời gian = từ riêng' (tiếng Việt) sang tư duy 'thời gian = từ riêng + dạng động từ' " +
       "(tiếng Anh). Coi cặp 'yesterday + V2' như một công thức khóa-chìa không thể tách rời.",
@@ -173,11 +174,11 @@ const EXPLANATIONS: Record<VietlishInterferenceCategory, VietnameseInterferenceE
       "Mỗi từ có một 'vùng phủ sóng' riêng, và dùng sai từ có thể làm câu mất tự nhiên " +
       "hoặc sai nghĩa hoàn toàn. Người bản xứ học những phân biệt này từ nhỏ qua tiếp xúc.",
     teacherExplanation:
-      "Cô Mercy nói: 'Tiếng Việt mình tiết kiệm từ — một từ xài được nhiều chỗ. " +
-      "Nhưng tiếng Anh giống như có một bộ chìa khóa: mỗi ổ cần đúng chìa. " +
-      "Không phải cái chìa nào cũng mở được mọi ổ. Mình phải học xem từ nào đi với " +
-      "ngữ cảnh nào — giống như học cách ghép đôi vậy. Ví dụ: say đi với nội dung, " +
-      "tell đi với người nghe. Open đi với vật lý, turn on đi với thiết bị điện.'",
+      "Tiếng Việt một từ dùng được nhiều chỗ: \"mở\" vừa là open (cửa) vừa là turn on (đèn). " +
+      "Tiếng Anh phân biệt rất tinh: open the door nhưng turn on the light — mỗi từ có một " +
+      "\"vùng phủ sóng\" riêng. Cô Mercy khuyên: đừng học từ đơn lẻ, hãy học nguyên cặp " +
+      "(collocation) như \"turn on the light\", \"tell someone something\" — nhớ cả cụm thì " +
+      "không bao giờ chọn sai từ.",
     mentalModelShift:
       "Từ tư duy 'một-từ-Việt-cho-nhiều-nghĩa' sang tư duy 'học-từ-theo-cụm-và-ngữ-cảnh'. " +
       "Khi học từ mới, luôn học cả collocation (từ đi kèm) và ngữ cảnh sử dụng.",
@@ -207,12 +208,11 @@ const EXPLANATIONS: Record<VietlishInterferenceCategory, VietnameseInterferenceE
       "phải học một cách có ý thức. Đặc biệt, danh từ không đếm được trong tiếng Anh " +
       "thường là những từ mà tiếng Việt coi là đếm được (một lời khuyên = an advice → sai).",
     teacherExplanation:
-      "Cô Mercy giải thích: 'Trong tiếng Việt, danh từ như cục đất sét — mình muốn nặn một cục " +
-      "hay nhiều cục cũng cùng một chất liệu. Nhưng trong tiếng Anh, danh từ có \"hình dạng\" cố định: " +
-      "có loại đếm được (có thể có a/an và -s), có loại không đếm được (không có a/an, không có -s). " +
-      "Mình phải nhớ \"hình dạng\" của từng từ — giống như nhớ giới tính của danh từ trong tiếng Pháp vậy. " +
-      "Đặc biệt mấy từ như advice, information, furniture, homework: trong tiếng Việt mình đếm được, " +
-      "nhưng trong tiếng Anh thì KHÔNG.'",
+      "Tiếng Việt không phân biệt danh từ đếm được / không đếm được — \"một lời khuyên\" " +
+      "và \"hai lời khuyên\" dùng cùng một từ \"khuyên\". Nhưng tiếng Anh thì advice, information, " +
+      "furniture, homework là không đếm được: không có a/an, không thêm -s. Cô Mercy dặn: " +
+      "khi học một danh từ mới, luôn nhớ kèm \"đếm được hay không?\" — sai cái này là lỗi " +
+      "người Việt mắc hoài, vì tiếng mình không có khái niệm này.",
     mentalModelShift:
       "Từ tư duy 'danh từ = một khối không phân biệt' (tiếng Việt) sang tư duy 'mỗi danh từ có " +
       "một kiểu đếm riêng' (tiếng Anh). Học danh từ mới luôn kèm với: đếm được hay không? " +
@@ -241,10 +241,11 @@ const EXPLANATIONS: Record<VietlishInterferenceCategory, VietnameseInterferenceE
       "Những đặc điểm này không chỉ ảnh hưởng đến phát âm mà còn ảnh hưởng đến ngữ pháp và " +
       "cách người bản xứ hiểu câu.",
     teacherExplanation:
-      "Cô Mercy nói: 'Có những thứ trong tiếng Anh mà tiếng Việt mình không có từ tương đương. " +
-      "Giống như mình đi du lịch một nước mới, có những món ăn mình chưa từng thấy bao giờ. " +
-      "Không sao cả — mình nếm từ từ rồi sẽ quen. Quan trọng là đừng cố \"dịch\" mọi thứ " +
-      "về tiếng Việt. Có những thứ mình phải chấp nhận là \"nó là vậy\" và học cách dùng nó.'",
+      "Không phải lỗi nào cũng rơi vào một nguyên nhân rõ ràng. Nhưng hầu hết lỗi " +
+      "của người Việt học tiếng Anh đều có chung một gốc rễ: tiếng Việt thiếu thứ gì đó " +
+      "(thì, mạo từ, trật tự cứng…) → tiếng Anh bắt buộc có thứ đó. Cô Mercy khuyên: " +
+      "mỗi lần sai, đừng chỉ sửa rồi quên — dừng lại hỏi \"Tại sao tiếng Việt mình không " +
+      "có cái này?\" thì lần sau sẽ nhớ lâu hơn.",
     mentalModelShift:
       "Chấp nhận rằng một số khía cạnh của tiếng Anh không có 'bản dịch' sang cách nghĩ tiếng Việt. " +
       "Học như một đứa trẻ: tiếp nhận, bắt chước, và dần dần có 'cảm giác' đúng/sai.",
