@@ -26,6 +26,8 @@ import type { WeaknessTag } from "./weakness-catalog";
 export interface MicroLessonText {
   en: string;
   vi: string;
+  /** Optional Japanese-native English explanation — for ja-native learners. */
+  ja?: string;
 }
 
 export interface MicroLessonExample {

@@ -19,13 +19,15 @@ function isPlainObject(x: any) {
 export function resolveKeywords(room: AnyRoom) {
   const en = firstNonEmptyArray(room?.keywords_en, room?.keywords?.en, room?.meta?.keywords_en);
   const vi = firstNonEmptyArray(room?.keywords_vi, room?.keywords?.vi, room?.meta?.keywords_vi);
-  return { en, vi };
+  const ja = firstNonEmptyArray(room?.keywords_ja, room?.keywords?.ja, room?.meta?.keywords_ja);
+  return { en, vi, ja };
 }
 
 export function resolveEssay(room: AnyRoom) {
   const en = room?.essay?.en || room?.essay_en || room?.content?.essay?.en || room?.content?.essay_en || "";
   const vi = room?.essay?.vi || room?.essay_vi || room?.content?.essay?.vi || room?.content?.essay_vi || "";
-  return { en, vi };
+  const ja = room?.essay?.ja || room?.essay_ja || room?.content?.essay?.ja || room?.content?.essay_ja || "";
+  return { en, vi, ja };
 }
 
 function deepFindFirstObjectArray(root: any, maxDepth = 6): any[] {
@@ -242,7 +244,7 @@ export function extractJsonLeafEntries(room: AnyRoom) {
   return flattenToLeafEntries(tops, 6);
 }
 
-export function deriveKeywordsFromEntryList(entries: any[]): { en: string[]; vi: string[] } {
+export function deriveKeywordsFromEntryList(entries: any[]): { en: string[]; vi: string[]; ja: string[] } {
   const raw: string[] = [];
   for (const e of asArray(entries)) {
     const k = e?.keyword || e?.id || e?.slug || e?.title?.en || e?.title_en || "";
@@ -259,5 +261,5 @@ export function deriveKeywordsFromEntryList(entries: any[]): { en: string[]; vi:
     out.push(s);
   }
 
-  return { en: out, vi: out };
+  return { en: out, vi: out, ja: out };
 }

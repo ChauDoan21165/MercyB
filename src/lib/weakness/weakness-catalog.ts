@@ -109,6 +109,8 @@ export type BilingualText = {
   en: string;
   /** Vietnamese surface — may contain `**word**` markdown bolding. */
   vi: string;
+  /** Japanese-native English explanation — optional, for ja-native learners. */
+  ja?: string;
 };
 
 export type WeaknessEntry = {

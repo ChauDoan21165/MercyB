@@ -113,3 +113,69 @@ describe("isRichLesson type guard", () => {
     ).toBe(false);
   });
 });
+
+describe("RichLessonSection — ja slot (Japanese-native English schema unblock)", () => {
+  it("accepts a RichLessonSection without ja (legacy en/vi unchanged)", () => {
+    const section = { en: "Hello", vi: "Xin chào" };
+    // Should compile and pass — ja is optional
+    expect(section.en).toBe("Hello");
+    expect(section.vi).toBe("Xin chào");
+  });
+
+  it("accepts a RichLessonSection with optional ja", () => {
+    const section = { en: "Hello", vi: "Xin chào", ja: "こんにちは" };
+    expect(section.ja).toBe("こんにちは");
+    expect(section.en).toBe("Hello");
+    expect(section.vi).toBe("Xin chào");
+  });
+
+  it("RichLesson with ja in sections passes isRichLesson guard", () => {
+    const rich = fromMicroLesson(MICRO_LESSONS.vi_l1_3rd_person_s!);
+    // Add ja to one section — should still be valid
+    rich.sections.hook = { en: "Hook", vi: "Mở đầu", ja: "フック" };
+    expect(isRichLesson(rich)).toBe(true);
+  });
+});
+
+describe("BilingualText — ja slot", () => {
+  it("accepts BilingualText without ja (legacy unchanged)", () => {
+    const bt: { en: string; vi: string; ja?: string } = { en: "English", vi: "Tiếng Việt" };
+    expect(bt.en).toBe("English");
+    expect(bt.vi).toBe("Tiếng Việt");
+    expect(bt.ja).toBeUndefined();
+  });
+
+  it("accepts BilingualText with optional ja", () => {
+    const bt = { en: "English", vi: "Tiếng Việt", ja: "英語" };
+    expect(bt.ja).toBe("英語");
+  });
+
+  it("fromMicroLesson produces RichLessons with valid BilingualText (no ja by default)", () => {
+    const rich = fromMicroLesson(MICRO_LESSONS.vi_l1_3rd_person_s!);
+    expect(rich.title.ja).toBeUndefined();
+    // en/vi still populated
+    expect(rich.title.en.length).toBeGreaterThan(0);
+    expect(rich.title.vi.length).toBeGreaterThan(0);
+  });
+});
+
+describe("MicroLessonText — ja slot", () => {
+  it("existing MicroLesson has no ja (legacy unchanged)", () => {
+    const ml = MICRO_LESSONS.vi_l1_3rd_person_s!;
+    expect(ml.title.ja).toBeUndefined();
+    expect(ml.title.en.length).toBeGreaterThan(0);
+    expect(ml.title.vi.length).toBeGreaterThan(0);
+  });
+
+  it("all 30 micro-lessons are valid with vi/en populated", () => {
+    for (const tag of MICRO_LESSON_TAGS) {
+      const ml = MICRO_LESSONS[tag]!;
+      expect(ml.title.en.trim().length, `${tag} title.en empty`).toBeGreaterThan(0);
+      expect(ml.title.vi.trim().length, `${tag} title.vi empty`).toBeGreaterThan(0);
+      expect(ml.concept.en.trim().length, `${tag} concept.en empty`).toBeGreaterThan(0);
+      expect(ml.concept.vi.trim().length, `${tag} concept.vi empty`).toBeGreaterThan(0);
+      expect(ml.tip.en.trim().length, `${tag} tip.en empty`).toBeGreaterThan(0);
+      expect(ml.tip.vi.trim().length, `${tag} tip.vi empty`).toBeGreaterThan(0);
+    }
+  });
+});

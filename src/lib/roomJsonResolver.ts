@@ -112,8 +112,10 @@ export function normalizeOfflineRoom(stored: unknown): Record<string, unknown> |
     Array.isArray(room.keywords_en) && (room.keywords_en as unknown[]).length > 0;
   const hasKwVi =
     Array.isArray(room.keywords_vi) && (room.keywords_vi as unknown[]).length > 0;
+  const hasKwJa =
+    Array.isArray(room.keywords_ja) && (room.keywords_ja as unknown[]).length > 0;
 
-  if (!hasKwEn || !hasKwVi) {
+  if (!hasKwEn || !hasKwVi || !hasKwJa) {
     const collected = collectEntryKeywords(
       Array.isArray(room.entries) ? (room.entries as unknown[]) : [],
     );
@@ -123,16 +125,21 @@ export function normalizeOfflineRoom(stored: unknown): Record<string, unknown> |
     if (!hasKwVi && collected.vi.length > 0) {
       room.keywords_vi = collected.vi;
     }
+    if (!hasKwJa && collected.ja.length > 0) {
+      room.keywords_ja = collected.ja;
+    }
   }
 
   return room;
 }
 
-function collectEntryKeywords(entries: unknown[]): { en: string[]; vi: string[] } {
+function collectEntryKeywords(entries: unknown[]): { en: string[]; vi: string[]; ja: string[] } {
   const en: string[] = [];
   const vi: string[] = [];
+  const ja: string[] = [];
   const seenEn = new Set<string>();
   const seenVi = new Set<string>();
+  const seenJa = new Set<string>();
 
   for (const e of entries) {
     if (!e || typeof e !== "object") continue;
@@ -151,9 +158,16 @@ function collectEntryKeywords(entries: unknown[]): { en: string[]; vi: string[] 
       seenVi.add(s);
       vi.push(s);
     }
+    const jaArr = Array.isArray(obj.keywords_ja) ? (obj.keywords_ja as unknown[]) : [];
+    for (const v of jaArr) {
+      const s = typeof v === "string" ? v.trim() : "";
+      if (!s || seenJa.has(s)) continue;
+      seenJa.add(s);
+      ja.push(s);
+    }
   }
 
-  return { en, vi };
+  return { en, vi, ja };
 }
 
 export function resolveRoomJsonPath(roomIdRaw: string): string {
