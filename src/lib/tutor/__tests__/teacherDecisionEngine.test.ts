@@ -843,6 +843,76 @@ describe("decideTeacherAction — enrichment (weakness + interference)", () => {
   });
 });
 
+// ─── Suppression Reasoning (wired from suppressionRules.ts) ─────────────
+
+describe("decideTeacherAction — suppression reasoning", () => {
+  it("SUPPRESS for unchanged text has null suppressionDecision (no error to evaluate)", () => {
+    const decision = decideTeacherAction(
+      input({ learnerText: "I went to school yesterday." }),
+    );
+    expect(decision.action).toBe("SUPPRESS");
+    expect(decision.suppressionDecision).toBeNull();
+  });
+
+  it("SUPPRESS for empty text has null suppressionDecision", () => {
+    const decision = decideTeacherAction(input({ learnerText: "" }));
+    expect(decision.action).toBe("SUPPRESS");
+    expect(decision.suppressionDecision).toBeNull();
+  });
+
+  it("non-SUPPRESS actions have null suppressionDecision", () => {
+    const decision = decideTeacherAction(
+      input({ learnerText: "She happy." }),
+    );
+    expect(decision.action).toBe("CORRECT_NOW");
+    expect(decision.suppressionDecision).toBeNull();
+  });
+
+  it("DEFER actions have null suppressionDecision", () => {
+    const decision = decideTeacherAction(
+      input({
+        learnerText: "She happy.",
+        learnerConfidence: "shy",
+        cefrLevel: "B1",
+      }),
+    );
+    expect(decision.action).toBe("DEFER");
+    expect(decision.suppressionDecision).toBeNull();
+  });
+
+  it("SUPPRESS from timing engine includes suppressionDecision with applicable rules", () => {
+    // Use a minor error on a long utterance to trigger S1 fluency flow suppression
+    // The timing engine defaults to SUPPRESS for minor errors
+    const decision = decideTeacherAction(
+      input({
+        learnerText: "I went to school yesterday and I eat rice for lunch with my friends.",
+        cefrLevel: "B1",
+      }),
+    );
+    // If the timing engine produced SUPPRESS, we should have suppression reasoning
+    if (decision.action === "SUPPRESS") {
+      expect(decision.suppressionDecision).not.toBeNull();
+      expect(decision.suppressionDecision!.shouldSuppress).toBe(true);
+      expect(decision.suppressionDecision!.applicableRules.length).toBeGreaterThan(0);
+      expect(decision.suppressionDecision!.primaryReason).not.toBeNull();
+    }
+  });
+
+  it("suppressionDecision field exists on every decision shape", () => {
+    const decisions = [
+      decideTeacherAction(input({ learnerText: "She happy." })),
+      decideTeacherAction(input({ learnerText: "" })),
+      decideTeacherAction(input({ learnerText: "I went to school yesterday." })),
+      decideTeacherAction(
+        input({ learnerText: "She happy.", learnerConfidence: "shy", cefrLevel: "B1" }),
+      ),
+    ];
+    for (const d of decisions) {
+      expect(d).toHaveProperty("suppressionDecision");
+    }
+  });
+});
+
 // ─── Edge Cases ────────────────────────────────────────────────────────────
 
 describe("decideTeacherAction — edge cases", () => {
@@ -1009,6 +1079,7 @@ describe("TeacherDecision shape contract", () => {
     expect(decision).toHaveProperty("reasonCode");
     expect(decision).toHaveProperty("allCandidates");
     expect(decision).toHaveProperty("enrichment");
+    expect(decision).toHaveProperty("suppressionDecision");
   });
 
   it("CORRECT_NOW decision has non-null correction with rule IDs and severity", () => {

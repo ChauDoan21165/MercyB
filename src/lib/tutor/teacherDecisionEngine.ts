@@ -9,12 +9,14 @@
  *   - teacherMercyCorrectionTiming.ts — WHEN mode to use (T1-T8 gates)
  *   - correctionTimingIntegration.ts — severity/confidence/self-correction inference
  *   - correctionExperienceEnricher.ts — weakness tags + Vietnamese interference
+ *   - suppressionRules.ts — WHY a human teacher would deliberately NOT correct
  *
  * Design principles:
  *   1. One call, one decision — no manual wiring needed.
  *   2. Priority ordering — when multiple rules fire, the most important one wins.
  *   3. Vietnamese rationale — every decision includes a learner-facing VN explanation.
  *   4. Actionable output — the UI gets a single action enum, no ambiguity.
+ *   5. Suppression reasoning — every SUPPRESS decision explains WHY not correcting is the right call.
  *
  * Pure functions — no I/O, no side effects, deterministic.
  */
@@ -34,6 +36,11 @@ import {
   detectSelfCorrectionInText,
 } from "./correctionTimingIntegration";
 import { enrichCorrectionExperience, type EnrichedCorrectionContext } from "./correctionExperienceEnricher";
+import {
+  evaluateSuppressions,
+  buildSuppressionContext,
+  type SuppressionDecision,
+} from "./suppressionRules";
 
 // ─── Decision Types ──────────────────────────────────────────────────────
 
@@ -89,6 +96,8 @@ export type TeacherDecision = {
   allCandidates: CorrectionCandidate[];
   /** Enriched context: weakness tags + Vietnamese interference info. */
   enrichment: EnrichedCorrectionContext | null;
+  /** Suppression reasoning: which pedagogical rules justify NOT correcting (non-null when action is SUPPRESS). */
+  suppressionDecision: SuppressionDecision | null;
 };
 
 /**
@@ -467,7 +476,8 @@ function generateRationaleVi(
  *   7. Action mapping — convert timing mode → UI action
  *   8. Experience enrichment — weakness tags + Vietnamese interference context
  *   9. Vietnamese rationale — learner-facing explanation
- *  10. Unified decision — one object with everything the UI needs
+ *  10. Suppression reasoning — when action is SUPPRESS, explain which pedagogical rules justify it
+ *  11. Unified decision — one object with everything the UI needs
  *
  * Pure function — deterministic, no side effects, no I/O.
  *
@@ -501,6 +511,7 @@ export function decideTeacherAction(
       reasonCode: "empty_text",
       allCandidates: [],
       enrichment: null,
+      suppressionDecision: null,
     };
   }
 
@@ -515,6 +526,7 @@ export function decideTeacherAction(
       reasonCode: "no_error_detected",
       allCandidates: [],
       enrichment: null,
+      suppressionDecision: null,
     };
   }
 
@@ -538,6 +550,7 @@ export function decideTeacherAction(
       delayTurns: timingResult.delayTurns,
       allCandidates: [],
       enrichment: null,
+      suppressionDecision: null,
     };
   }
 
@@ -581,7 +594,23 @@ export function decideTeacherAction(
     sameMistakeCount,
   });
 
-  // ── Step 10: Build the unified decision ────────────────────────────
+  // ── Step 10: Build suppression reasoning when action is SUPPRESS ────
+  let suppressionDecision: SuppressionDecision | null = null;
+  if (action === "SUPPRESS") {
+    const suppressionCtx = buildSuppressionContext({
+      learnerText,
+      errorSeverity: primarySeverity,
+      cefrLevel,
+      learnerConfidence,
+      didSelfCorrect,
+      sameMistakeCount,
+      previousCorrectionsThisSession,
+      isCurrentLessonTarget,
+    });
+    suppressionDecision = evaluateSuppressions(suppressionCtx);
+  }
+
+  // ── Step 11: Build the unified decision ──────────────────────────────
   const candidate: CorrectionCandidate = {
     correctedText: correction.corrected,
     appliedRuleIds: correction.appliedRuleIds,
@@ -599,6 +628,7 @@ export function decideTeacherAction(
     patternLabel: timing.patternLabel,
     allCandidates: [candidate],
     enrichment,
+    suppressionDecision,
   };
 }
 
