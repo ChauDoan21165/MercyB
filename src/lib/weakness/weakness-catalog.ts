@@ -113,7 +113,7 @@ export type BilingualText = {
   ja?: string;
   /** Indonesian-native English explanation — optional, for id-native learners. */
   id?: string;
-};
+  th?: string;};
 
 export type WeaknessEntry = {
   /** Machine identifier. Must match the detector / engine emission exactly. */

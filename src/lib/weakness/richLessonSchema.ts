@@ -33,6 +33,8 @@ export interface RichLessonSection {
   ja?: string;
   /** Optional Indonesian-native English explanation — for id-native learners. */
   id?: string;
+  /** Optional Thai-native English explanation — for th-native learners. */
+  th?: string;
 }
 
 export interface RichLessonSections {
