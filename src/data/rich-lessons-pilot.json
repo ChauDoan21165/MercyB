@@ -1234,33 +1234,39 @@
       "title": {
         "en": "**I have done** vs **I did** — picking the right past",
         "vi": "**I have done** vs **I did** — chọn đúng thì quá khứ",
-        "id": "**I have done** vs **I did** — memilih bentuk lampau yang tepat"
+        "id": "**I have done** vs **I did** — memilih bentuk lampau yang tepat",
+        "hi": "**I have done** vs **I did** — सही past tense चुनना"
       },
       "sections": {
         "hook": {
           "en": "Sound familiar? \"I have eaten breakfast this morning.\" In Indonesian logic this makes perfect sense — you use **sudah** for anything that's done. But in English, the moment you name a specific past time like \"this morning,\" you need simple past — not present perfect.",
           "vi": "Nghe quen không? \"I have eaten breakfast this morning.\" Trong logic tiếng Indonesia điều này hoàn toàn hợp lý — bạn dùng **sudah** cho mọi thứ đã xong. Nhưng trong tiếng Anh, ngay khi bạn nêu thời gian cụ thể như \"this morning,\" bạn phải dùng simple past — không phải present perfect.",
-          "id": "Pernah dengar? \"I have eaten breakfast this morning.\" Dalam logika bahasa Indonesia ini masuk akal — kamu pakai **sudah** untuk semua yang sudah selesai. Tapi dalam bahasa Inggris, begitu kamu menyebut waktu lampau spesifik seperti \"this morning,\" kamu harus pakai simple past — bukan present perfect."
+          "id": "Pernah dengar? \"I have eaten breakfast this morning.\" Dalam logika bahasa Indonesia ini masuk akal — kamu pakai **sudah** untuk semua yang sudah selesai. Tapi dalam bahasa Inggris, begitu kamu menyebut waktu lampau spesifik seperti \"this morning,\" kamu harus pakai simple past — bukan present perfect.",
+          "hi": "जाना-पहचाना लगता है? \"I have eaten breakfast this morning.\" हिंदी के हिसाब से यह सही लगता है — आप हर खत्म हुए काम के लिए एक ही structure use करते हैं। लेकिन English में, जैसे ही आप \"this morning\" जैसा specific past time बताते हैं, आपको simple past चाहिए — present perfect नहीं।"
         },
         "why": {
           "en": "Indonesian uses **sudah** for all completed actions — **Saya sudah makan** can mean \"I ate\" or \"I have eaten.\" English splits them: when you name a specific past time (**yesterday**, **last week**, **this morning**, **in 2020**), use simple past. When the past action still matters now and no specific time is named, use present perfect.",
           "vi": "Tiếng Indonesia dùng **sudah** cho mọi hành động đã hoàn thành — **Saya sudah makan** có thể là \"I ate\" hoặc \"I have eaten.\" Tiếng Anh phân biệt: khi bạn nêu thời gian cụ thể trong quá khứ, dùng simple past. Khi hành động quá khứ vẫn còn liên quan đến hiện tại và không có thời gian cụ thể, dùng present perfect.",
-          "id": "Bahasa Indonesia menggunakan **sudah** untuk semua tindakan selesai — **Saya sudah makan** bisa berarti \"I ate\" atau \"I have eaten.\" Bahasa Inggris membedakannya: saat kamu menyebut waktu lampau spesifik (**yesterday**, **last week**, **this morning**, **in 2020**), gunakan simple past. Saat tindakan lampau masih relevan sekarang dan tidak ada waktu spesifik, gunakan present perfect."
+          "id": "Bahasa Indonesia menggunakan **sudah** untuk semua tindakan selesai — **Saya sudah makan** bisa berarti \"I ate\" atau \"I have eaten.\" Bahasa Inggris membedakannya: saat kamu menyebut waktu lampau spesifik (**yesterday**, **last week**, **this morning**, **in 2020**), gunakan simple past. Saat tindakan lampau masih relevan sekarang dan tidak ada waktu spesifik, gunakan present perfect.",
+          "hi": "हिंदी में \"मैंने खाना खा लिया\" एक ही structure \"I ate\" और \"I have eaten\" दोनों के लिए काम करता है। English इन्हें अलग करता है: जब आप specific past time बताएँ (**yesterday**, **last week**, **this morning**, **in 2020**), तब simple past। जब past action का असर अभी भी हो और कोई specific time न बताया गया हो, तब present perfect।"
         },
         "pattern": {
           "en": "**Simple past** = specific past time named → verb in past form. \"I ate breakfast this morning.\" \"She called yesterday.\" **Present perfect** = result still relevant, no specific time → **have/has + V3**. \"I have eaten (so I'm not hungry now).\" \"She has lost her keys (still can't find them).\" **Key test:** can you add **yesterday / last / ago / in [year]** to the sentence? If yes → simple past, not present perfect.",
           "vi": "**Simple past** = thời gian quá khứ cụ thể → động từ dạng quá khứ. \"I ate breakfast this morning.\" \"She called yesterday.\" **Present perfect** = kết quả vẫn còn liên quan, không có thời gian cụ thể → **have/has + V3**. \"I have eaten (nên giờ không đói).\" \"She has lost her keys (vẫn chưa tìm thấy).\" **Cách kiểm tra:** bạn có thêm được **yesterday / last / ago / in [năm]** vào câu không? Nếu có → simple past, không phải present perfect.",
-          "id": "**Simple past** = waktu lampau spesifik disebut → kata kerja bentuk lampau. \"I ate breakfast this morning.\" \"She called yesterday.\" **Present perfect** = hasil masih relevan, tidak ada waktu spesifik → **have/has + V3**. \"I have eaten (jadi sekarang tidak lapar).\" \"She has lost her keys (masih belum ketemu).\" **Tes kunci:** bisakah kamu menambahkan **yesterday / last / ago / in [tahun]** ke kalimat? Kalau bisa → simple past, bukan present perfect."
+          "id": "**Simple past** = waktu lampau spesifik disebut → kata kerja bentuk lampau. \"I ate breakfast this morning.\" \"She called yesterday.\" **Present perfect** = hasil masih relevan, tidak ada waktu spesifik → **have/has + V3**. \"I have eaten (jadi sekarang tidak lapar).\" \"She has lost her keys (masih belum ketemu).\" **Tes kunci:** bisakah kamu menambahkan **yesterday / last / ago / in [tahun]** ke kalimat? Kalau bisa → simple past, bukan present perfect.",
+          "hi": "**Simple past** = specific past time बताया गया → verb past form में। \"I ate breakfast this morning.\" \"She called yesterday.\" **Present perfect** = result अभी भी relevant, कोई specific time नहीं → **have/has + V3**। \"I have eaten (so I'm not hungry now).\" \"She has lost her keys (still can't find them).\" **मुख्य जाँच:** क्या आप वाक्य में **yesterday / last / ago / in [year]** जोड़ सकते हैं? अगर हाँ → simple past, present perfect नहीं।"
         },
         "practice": {
           "en": "Say each of these out loud and feel the difference: \"I have visited Jakarta.\" (life experience, no specific time) vs \"I visited Jakarta last year.\" (specific time). \"She has finished her homework.\" (just finished, still relevant) vs \"She finished her homework an hour ago.\" (specific time). \"They have bought a new car.\" (recent, result matters) vs \"They bought a new car last month.\" (when is stated).",
           "vi": "Nói thành tiếng và cảm nhận sự khác biệt: \"I have visited Jakarta.\" (trải nghiệm, không thời gian cụ thể) vs \"I visited Jakarta last year.\" (thời gian cụ thể). \"She has finished her homework.\" (vừa xong, vẫn liên quan) vs \"She finished her homework an hour ago.\" (thời gian cụ thể). \"They have bought a new car.\" (gần đây, kết quả quan trọng) vs \"They bought a new car last month.\" (có thời gian).",
-          "id": "Ucapkan setiap kalimat dengan keras dan rasakan bedanya: \"I have visited Jakarta.\" (pengalaman hidup, tidak ada waktu spesifik) vs \"I visited Jakarta last year.\" (waktu spesifik). \"She has finished her homework.\" (baru selesai, masih relevan) vs \"She finished her homework an hour ago.\" (waktu spesifik). \"They have bought a new car.\" (baru terjadi, hasil penting) vs \"They bought a new car last month.\" (waktu disebutkan)."
+          "id": "Ucapkan setiap kalimat dengan keras dan rasakan bedanya: \"I have visited Jakarta.\" (pengalaman hidup, tidak ada waktu spesifik) vs \"I visited Jakarta last year.\" (waktu spesifik). \"She has finished her homework.\" (baru selesai, masih relevan) vs \"She finished her homework an hour ago.\" (waktu spesifik). \"They have bought a new car.\" (baru terjadi, hasil penting) vs \"They bought a new car last month.\" (waktu disebutkan).",
+          "hi": "हर वाक्य ज़ोर से बोलें और फ़र्क महसूस करें: \"I have visited Jaipur.\" (जीवन का अनुभव, कोई specific time नहीं) vs \"I visited Jaipur last year.\" (specific time)। \"She has finished her homework.\" (अभी-अभी खत्म, अभी भी relevant) vs \"She finished her homework an hour ago.\" (specific time)। \"They have bought a new car.\" (हाल में, result मायने रखता है) vs \"They bought a new car last month.\" (time बताया गया)।"
         },
         "takeaway": {
           "en": "Specific past time word (yesterday, last, ago) = simple past. No time word + result still matters = present perfect.",
           "vi": "Có từ thời gian quá khứ cụ thể = simple past. Không có từ thời gian + kết quả vẫn quan trọng = present perfect.",
-          "id": "Ada kata waktu lampau spesifik (yesterday, last, ago) = simple past. Tidak ada kata waktu + hasil masih relevan = present perfect."
+          "id": "Ada kata waktu lampau spesifik (yesterday, last, ago) = simple past. Tidak ada kata waktu + hasil masih relevan = present perfect.",
+          "hi": "Specific past time word (yesterday, last, ago) = simple past. कोई time word नहीं + result अभी भी मायने रखता है = present perfect."
         }
       },
       "quiz": [
@@ -1268,7 +1274,8 @@
           "question": {
             "en": "Choose the correct sentence:",
             "vi": "Chọn câu đúng:",
-            "id": "Pilih kalimat yang benar:"
+            "id": "Pilih kalimat yang benar:",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "I have seen that movie last night.",
@@ -1280,14 +1287,16 @@
           "explanation": {
             "en": "**last night** is a specific past time → simple past: **saw** (not **have seen**).",
             "vi": "**last night** là thời gian quá khứ cụ thể → simple past: **saw** (không phải **have seen**).",
-            "id": "**last night** adalah waktu lampau spesifik → simple past: **saw** (bukan **have seen**)."
+            "id": "**last night** adalah waktu lampau spesifik → simple past: **saw** (bukan **have seen**).",
+            "hi": "**last night** एक specific past time है → simple past: **saw** (**have seen** नहीं)।"
           }
         },
         {
           "question": {
             "en": "Choose the correct sentence:",
             "vi": "Chọn câu đúng:",
-            "id": "Pilih kalimat yang benar:"
+            "id": "Pilih kalimat yang benar:",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "She has visited her grandmother yesterday.",
@@ -1299,14 +1308,16 @@
           "explanation": {
             "en": "**yesterday** signals a specific past moment → simple past, not present perfect.",
             "vi": "**yesterday** là thời điểm quá khứ cụ thể → simple past, không phải present perfect.",
-            "id": "**yesterday** menandakan momen lampau spesifik → simple past, bukan present perfect."
+            "id": "**yesterday** menandakan momen lampau spesifik → simple past, bukan present perfect.",
+            "hi": "**yesterday** specific past moment का संकेत है → simple past, present perfect नहीं।"
           }
         },
         {
           "question": {
             "en": "Choose the correct sentence:",
             "vi": "Chọn câu đúng:",
-            "id": "Pilih kalimat yang benar:"
+            "id": "Pilih kalimat yang benar:",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "I have lost my keys. I still can't find them.",
@@ -1318,14 +1329,16 @@
           "explanation": {
             "en": "No specific past time + result still matters (can't find them now) → present perfect **have lost**.",
             "vi": "Không có thời gian quá khứ cụ thể + kết quả vẫn quan trọng (giờ vẫn chưa tìm thấy) → present perfect **have lost**.",
-            "id": "Tidak ada waktu lampau spesifik + hasil masih relevan (masih belum ketemu sekarang) → present perfect **have lost**."
+            "id": "Tidak ada waktu lampau spesifik + hasil masih relevan (masih belum ketemu sekarang) → present perfect **have lost**.",
+            "hi": "कोई specific past time नहीं + result अभी भी मायने रखता है (अभी तक नहीं मिलीं) → present perfect **have lost**।"
           }
         },
         {
           "question": {
             "en": "Choose the correct sentence:",
             "vi": "Chọn câu đúng:",
-            "id": "Pilih kalimat yang benar:"
+            "id": "Pilih kalimat yang benar:",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "He has finished university in 2022.",
@@ -1337,14 +1350,16 @@
           "explanation": {
             "en": "**in 2022** is a specific past time → simple past: **finished**.",
             "vi": "**in 2022** là thời gian quá khứ cụ thể → simple past: **finished**.",
-            "id": "**in 2022** adalah waktu lampau spesifik → simple past: **finished**."
+            "id": "**in 2022** adalah waktu lampau spesifik → simple past: **finished**.",
+            "hi": "**in 2022** एक specific past time है → simple past: **finished**।"
           }
         },
         {
           "question": {
             "en": "Fill in: We _____ each other since we were kids.",
             "vi": "Điền vào chỗ trống: We _____ each other since we were kids.",
-            "id": "Isi titik-titik: We _____ each other since we were kids."
+            "id": "Isi titik-titik: We _____ each other since we were kids.",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "have known",
@@ -1356,7 +1371,8 @@
           "explanation": {
             "en": "**since** signals an ongoing period from past to now → present perfect **have known**. Irregular verb: know → knew → known.",
             "vi": "**since** chỉ khoảng thời gian kéo dài từ quá khứ đến hiện tại → present perfect **have known**. Động từ bất quy tắc: know → knew → known.",
-            "id": "**since** menandakan periode yang berlanjut dari dulu sampai sekarang → present perfect **have known**. Kata kerja tidak beraturan: know → knew → known."
+            "id": "**since** menandakan periode yang berlanjut dari dulu sampai sekarang → present perfect **have known**. Kata kerja tidak beraturan: know → knew → known.",
+            "hi": "**since** past से अब तक चल रहे period का संकेत है → present perfect **have known**। Irregular verb: know → knew → known।"
           }
         }
       ]
@@ -1366,33 +1382,39 @@
       "title": {
         "en": "**If I were** — unreal conditions in English",
         "vi": "**If I were** — câu điều kiện không có thật",
-        "id": "**If I were** — pengandaian tidak nyata dalam bahasa Inggris"
+        "id": "**If I were** — pengandaian tidak nyata dalam bahasa Inggris",
+        "hi": "**If I were** — English में unreal conditions"
       },
       "sections": {
         "hook": {
           "en": "Sound familiar? \"If I have money, I would travel the world.\" In Indonesian, **kalau** works the same way whether the situation is real or imaginary — **Kalau saya punya uang, saya akan keliling dunia.** But English draws a hard line between real and unreal conditions, and mixing them sounds broken.",
           "vi": "Nghe quen không? \"If I have money, I would travel the world.\" Trong tiếng Indonesia, **kalau** hoạt động giống nhau dù tình huống có thật hay tưởng tượng. Nhưng tiếng Anh phân biệt rạch ròi giữa điều kiện thật và không thật, trộn lẫn nghe rất sai.",
-          "id": "Pernah dengar? \"If I have money, I would travel the world.\" Dalam bahasa Indonesia, **kalau** bekerja sama baik untuk situasi nyata maupun khayalan — **Kalau saya punya uang, saya akan keliling dunia.** Tapi bahasa Inggris menarik garis tegas antara kondisi nyata dan tidak nyata, dan mencampurkannya terdengar rusak."
+          "id": "Pernah dengar? \"If I have money, I would travel the world.\" Dalam bahasa Indonesia, **kalau** bekerja sama baik untuk situasi nyata maupun khayalan — **Kalau saya punya uang, saya akan keliling dunia.** Tapi bahasa Inggris menarik garis tegas antara kondisi nyata dan tidak nyata, dan mencampurkannya terdengar rusak.",
+          "hi": "हिंदी में \"अगर मेरे पास पैसे होते, तो मैं कार खरीदता\" — past form use होता है पर English के जैसा would+have structure नहीं। इसलिए \"If I had money, I will buy a car\" जैसी गलतियाँ आम हैं।"
         },
         "why": {
           "en": "Indonesian **kalau… maka…** doesn't change the verb form for unreal situations — the same structure covers both \"If it rains, I will stay home\" (real) and \"If I were rich, I would travel\" (unreal). English marks the difference: unreal / hypothetical conditions use **If + past tense, would + base verb**. Never mix past tense in the **if**-clause with **will** in the result.",
           "vi": "Tiếng Indonesia **kalau… maka…** không đổi dạng động từ cho tình huống không thật — cùng một cấu trúc cho cả \"Nếu trời mưa, tôi sẽ ở nhà\" (thật) và \"Nếu tôi giàu, tôi sẽ đi du lịch\" (không thật). Tiếng Anh đánh dấu sự khác biệt: điều kiện không thật dùng **If + quá khứ, would + động từ gốc**. Không bao giờ trộn quá khứ trong mệnh đề **if** với **will** ở mệnh đề kết quả.",
-          "id": "Bahasa Indonesia **kalau… maka…** tidak mengubah bentuk kata kerja untuk situasi tidak nyata — struktur yang sama mencakup \"Kalau hujan, saya akan di rumah\" (nyata) dan \"Kalau saya kaya, saya akan keliling dunia\" (tidak nyata). Bahasa Inggris menandai perbedaannya: kondisi tidak nyata/hipotetis menggunakan **If + past tense, would + kata kerja dasar**. Jangan pernah mencampur past tense di klausa **if** dengan **will** di hasil."
+          "id": "Bahasa Indonesia **kalau… maka…** tidak mengubah bentuk kata kerja untuk situasi tidak nyata — struktur yang sama mencakup \"Kalau hujan, saya akan di rumah\" (nyata) dan \"Kalau saya kaya, saya akan keliling dunia\" (tidak nyata). Bahasa Inggris menandai perbedaannya: kondisi tidak nyata/hipotetis menggunakan **If + past tense, would + kata kerja dasar**. Jangan pernah mencampur past tense di klausa **if** dengan **will** di hasil.",
+          "hi": "हिंदी का **अगर... तो...** real और unreal दोनों conditions के लिए एक जैसा pattern रखता है। English में unreal/hypothetical conditions के लिए **If + past tense, would + base verb** अनिवार्य है — past के साथ **will** कभी न मिलाएँ।"
         },
         "pattern": {
           "en": "**Real condition (Type 1):** If + present simple, will + base verb. \"If it rains, I will stay home.\" **Unreal condition (Type 2):** If + simple past, would + base verb. \"If I **were** rich, I **would travel** the world.\" Note: **were** is used for ALL subjects in Type 2 (formal) — \"If I **were** you,\" not \"If I **was** you.\" The past form doesn't mean past time — it signals \"this is imaginary.\"",
           "vi": "**Điều kiện thật (Type 1):** If + hiện tại, will + động từ gốc. \"If it rains, I will stay home.\" **Điều kiện không thật (Type 2):** If + quá khứ, would + động từ gốc. \"If I **were** rich, I **would travel** the world.\" Lưu ý: **were** dùng cho TẤT CẢ các chủ ngữ trong Type 2 (trang trọng) — \"If I **were** you,\" không phải \"If I **was** you.\" Dạng quá khứ không có nghĩa thời gian quá khứ — nó báo hiệu \"đây là tưởng tượng.\"",
-          "id": "**Kondisi nyata (Type 1):** If + present simple, will + kata kerja dasar. \"If it rains, I will stay home.\" **Kondisi tidak nyata (Type 2):** If + simple past, would + kata kerja dasar. \"If I **were** rich, I **would travel** the world.\" Catatan: **were** digunakan untuk SEMUA subjek di Type 2 (formal) — \"If I **were** you,\" bukan \"If I **was** you.\" Bentuk past tidak berarti waktu lampau — ini menandakan \"ini khayalan.\""
+          "id": "**Kondisi nyata (Type 1):** If + present simple, will + kata kerja dasar. \"If it rains, I will stay home.\" **Kondisi tidak nyata (Type 2):** If + simple past, would + kata kerja dasar. \"If I **were** rich, I **would travel** the world.\" Catatan: **were** digunakan untuk SEMUA subjek di Type 2 (formal) — \"If I **were** you,\" bukan \"If I **was** you.\" Bentuk past tidak berarti waktu lampau — ini menandakan \"ini khayalan.\"",
+          "hi": "**Real condition** (possible): **If + present, will + base**. \"If it rains, I will stay home.\" **Unreal condition** (hypothetical / unlikely): **If + past, would + base**. \"If I had money, I would buy a car.\" **गलती का signal:** past if-clause के साथ **will** देखें तो तुरंत **would** से बदलें।"
         },
         "practice": {
           "en": "Say each pair out loud and feel the contrast: \"If I have time tomorrow, I will call you.\" (real — tomorrow is possible) vs \"If I had time, I would call you.\" (unreal — I don't have time now). \"If she studies, she will pass.\" (real — she might study) vs \"If she studied, she would pass.\" (unreal — she doesn't study). The past tense in the **if**-clause doesn't mean past — it means pretend.",
           "vi": "Nói thành tiếng từng cặp và cảm nhận sự tương phản: \"If I have time tomorrow, I will call you.\" (thật — ngày mai có thể) vs \"If I had time, I would call you.\" (không thật — giờ không có thời gian). \"If she studies, she will pass.\" (thật — có thể học) vs \"If she studied, she would pass.\" (không thật — cô ấy không học). Thì quá khứ trong mệnh đề **if** không có nghĩa quá khứ — nó có nghĩa là giả vờ.",
-          "id": "Ucapkan setiap pasangan dengan keras dan rasakan kontrasnya: \"If I have time tomorrow, I will call you.\" (nyata — besok mungkin) vs \"If I had time, I would call you.\" (tidak nyata — sekarang tidak punya waktu). \"If she studies, she will pass.\" (nyata — dia mungkin belajar) vs \"If she studied, she would pass.\" (tidak nyata — dia tidak belajar). Past tense di klausa **if** bukan berarti waktu lampau — artinya pura-pura."
+          "id": "Ucapkan setiap pasangan dengan keras dan rasakan kontrasnya: \"If I have time tomorrow, I will call you.\" (nyata — besok mungkin) vs \"If I had time, I would call you.\" (tidak nyata — sekarang tidak punya waktu). \"If she studies, she will pass.\" (nyata — dia mungkin belajar) vs \"If she studied, she would pass.\" (tidak nyata — dia tidak belajar). Past tense di klausa **if** bukan berarti waktu lampau — artinya pura-pura.",
+          "hi": "ज़ोर से बोलें और pattern की आदत डालें: \"If I knew her number, I would call her.\" \"If he studied more, he would pass the exam.\" \"If we lived closer, we would visit more often.\" \"If she were here, she would help us.\" हर बार **If + past, would** की लय पर ध्यान दें।"
         },
         "takeaway": {
           "en": "Real = present + will. Unreal / pretend = past + would. If you hear yourself say **will** after a past-tense **if**, stop and switch to **would**.",
           "vi": "Thật = hiện tại + will. Không thật / giả vờ = quá khứ + would. Nếu bạn nghe mình nói **will** sau mệnh đề **if** ở quá khứ, dừng lại và đổi sang **would**.",
-          "id": "Nyata = present + will. Tidak nyata / pura-pura = past + would. Kalau kamu dengar diri sendiri bilang **will** setelah klausa **if** past tense, berhenti dan ganti ke **would**."
+          "id": "Nyata = present + will. Tidak nyata / pura-pura = past + would. Kalau kamu dengar diri sendiri bilang **will** setelah klausa **if** past tense, berhenti dan ganti ke **would**.",
+          "hi": "Unreal / hypothetical = **If + past, would + base**. कभी भी **will** नहीं। \"If I had\" के साथ \"I would\" — हमेशा।"
         }
       },
       "quiz": [
@@ -1400,7 +1422,8 @@
           "question": {
             "en": "Choose the correct sentence (unreal — I don't have money):",
             "vi": "Chọn câu đúng (không thật — tôi không có tiền):",
-            "id": "Pilih kalimat yang benar (tidak nyata — saya tidak punya uang):"
+            "id": "Pilih kalimat yang benar (tidak nyata — saya tidak punya uang):",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "If I have money, I will buy a house.",
@@ -1412,14 +1435,16 @@
           "explanation": {
             "en": "Unreal condition → past tense in **if**-clause (**had**) + **would** in result.",
             "vi": "Điều kiện không thật → quá khứ trong mệnh đề **if** (**had**) + **would** ở kết quả.",
-            "id": "Kondisi tidak nyata → past tense di klausa **if** (**had**) + **would** di hasil."
+            "id": "Kondisi tidak nyata → past tense di klausa **if** (**had**) + **would** di hasil.",
+            "hi": "Unreal present situation → **If I had** (past) + **would travel** (would + base)।"
           }
         },
         {
           "question": {
             "en": "Choose the correct sentence (giving advice):",
             "vi": "Chọn câu đúng (đưa lời khuyên):",
-            "id": "Pilih kalimat yang benar (memberi saran):"
+            "id": "Pilih kalimat yang benar (memberi saran):",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "If I am you, I would take the job.",
@@ -1431,14 +1456,16 @@
           "explanation": {
             "en": "**If I were you** is the standard form for giving advice — use **were** for all subjects in Type 2 conditionals.",
             "vi": "**If I were you** là dạng chuẩn để đưa lời khuyên — dùng **were** cho mọi chủ ngữ trong câu điều kiện Type 2.",
-            "id": "**If I were you** adalah bentuk standar untuk memberi saran — gunakan **were** untuk semua subjek di conditional Type 2."
+            "id": "**If I were you** adalah bentuk standar untuk memberi saran — gunakan **were** untuk semua subjek di conditional Type 2.",
+            "hi": "**yesterday** = specific past → simple past \"did not go,\" unreal conditional नहीं।"
           }
         },
         {
           "question": {
             "en": "Choose the correct sentence (real — tomorrow is possible):",
             "vi": "Chọn câu đúng (thật — ngày mai có thể):",
-            "id": "Pilih kalimat yang benar (nyata — besok mungkin terjadi):"
+            "id": "Pilih kalimat yang benar (nyata — besok mungkin terjadi):",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "If it rains tomorrow, we would stay inside.",
@@ -1450,14 +1477,16 @@
           "explanation": {
             "en": "Real possibility → present tense in **if**-clause (**rains**) + **will** in result.",
             "vi": "Khả năng thật → hiện tại trong mệnh đề **if** (**rains**) + **will** ở kết quả.",
-            "id": "Kemungkinan nyata → present tense di klausa **if** (**rains**) + **will** di hasil."
+            "id": "Kemungkinan nyata → present tense di klausa **if** (**rains**) + **will** di hasil.",
+            "hi": "Hypothetical present → **If + past, would + base**। कभी **will** नहीं।"
           }
         },
         {
           "question": {
             "en": "Which sentence is the UNREAL version of: I don't speak French, so I don't understand this song.",
             "vi": "Câu nào là phiên bản KHÔNG THẬT của: Tôi không nói tiếng Pháp, nên tôi không hiểu bài hát này.",
-            "id": "Kalimat mana yang versi TIDAK NYATA dari: Saya tidak bisa bahasa Prancis, jadi saya tidak mengerti lagu ini."
+            "id": "Kalimat mana yang versi TIDAK NYATA dari: Saya tidak bisa bahasa Prancis, jadi saya tidak mengerti lagu ini.",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "If I speak French, I will understand this song.",
@@ -1469,14 +1498,16 @@
           "explanation": {
             "en": "I don't speak French (unreal now) → **spoke** (past form, unreal signal) + **would**.",
             "vi": "Tôi không nói tiếng Pháp (không thật ở hiện tại) → **spoke** (dạng quá khứ, tín hiệu không thật) + **would**.",
-            "id": "Saya tidak bisa bahasa Prancis (tidak nyata sekarang) → **spoke** (bentuk past, sinyal tidak nyata) + **would**."
+            "id": "Saya tidak bisa bahasa Prancis (tidak nyata sekarang) → **spoke** (bentuk past, sinyal tidak nyata) + **would**.",
+            "hi": "**were** सभी subjects के लिए unreal if-clause में — \"If I were,\" \"If she were,\" \"If it were.\""
           }
         },
         {
           "question": {
             "en": "Fill in: If she _____ taller, she would play basketball.",
             "vi": "Điền vào chỗ trống: If she _____ taller, she would play basketball.",
-            "id": "Isi titik-titik: If she _____ taller, she would play basketball."
+            "id": "Isi titik-titik: If she _____ taller, she would play basketball.",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "is",
@@ -1488,7 +1519,8 @@
           "explanation": {
             "en": "Unreal condition about a permanent quality → **were** (subjunctive) for all subjects.",
             "vi": "Điều kiện không thật về một đặc điểm cố định → **were** (giả định) cho mọi chủ ngữ.",
-            "id": "Kondisi tidak nyata tentang sifat permanen → **were** (subjunctive) untuk semua subjek."
+            "id": "Kondisi tidak nyata tentang sifat permanen → **were** (subjunctive) untuk semua subjek.",
+            "hi": "Unreal conditional = हमेशा **If + past, would + base**। कभी **will** नहीं।"
           }
         }
       ]
@@ -1498,33 +1530,39 @@
       "title": {
         "en": "**She said she was** — reporting speech in English",
         "vi": "**She said she was** — tường thuật lời nói trong tiếng Anh",
-        "id": "**She said she was** — melaporkan ucapan dalam bahasa Inggris"
+        "id": "**She said she was** — melaporkan ucapan dalam bahasa Inggris",
+        "hi": "**She said she was** — reported speech में tense backshift"
       },
       "sections": {
         "hook": {
           "en": "Sound familiar? \"She said she is tired.\" In Indonesian, this is exactly right — **Dia bilang dia capek.** You just wrap the original words in **bilang** and the verb stays the same. English doesn't work that way — when you report speech, the tense takes one step back.",
           "vi": "Nghe quen không? \"She said she is tired.\" Trong tiếng Indonesia, câu này hoàn toàn đúng — **Dia bilang dia capek.** Bạn chỉ cần bọc lời gốc trong **bilang** và động từ giữ nguyên. Tiếng Anh không hoạt động như vậy — khi bạn tường thuật, thì của động từ lùi một bước.",
-          "id": "Pernah dengar? \"She said she is tired.\" Dalam bahasa Indonesia, ini benar — **Dia bilang dia capek.** Kamu tinggal membungkus kata-kata asli dengan **bilang** dan kata kerjanya tetap sama. Bahasa Inggris tidak bekerja seperti itu — saat kamu melaporkan ucapan, tense mundur satu langkah."
+          "id": "Pernah dengar? \"She said she is tired.\" Dalam bahasa Indonesia, ini benar — **Dia bilang dia capek.** Kamu tinggal membungkus kata-kata asli dengan **bilang** dan kata kerjanya tetap sama. Bahasa Inggris tidak bekerja seperti itu — saat kamu melaporkan ucapan, tense mundur satu langkah.",
+          "hi": "हिंदी में \"उसने कहा कि वह बीमार है\" — reporting verb past में है पर reported speech का tense नहीं बदला। English में tense पीछे जाता है — \"She said she was sick\" (है → was)। यह हिंदी speakers की सबसे आम C1/C2 गलतियों में से एक है।"
         },
         "why": {
           "en": "Indonesian reports speech without changing the verb tense. **Dia bilang dia lapar** keeps present tense; **Dia bilang dia sudah makan** keeps the original form. English backshifts: if the original was present → reported becomes past; original past → reported becomes past perfect. The reporting verb **said** sets the whole sentence in the past, and the grammar follows.",
           "vi": "Tiếng Indonesia tường thuật không đổi thì động từ. **Dia bilang dia lapar** giữ thì hiện tại; **Dia bilang dia sudah makan** giữ dạng gốc. Tiếng Anh lùi thì: gốc là hiện tại → tường thuật thành quá khứ; gốc là quá khứ → tường thuật thành quá khứ hoàn thành. Động từ tường thuật **said** đặt cả câu vào quá khứ, và ngữ pháp đi theo.",
-          "id": "Bahasa Indonesia melaporkan ucapan tanpa mengubah tense kata kerja. **Dia bilang dia lapar** tetap present tense; **Dia bilang dia sudah makan** tetap bentuk asli. Bahasa Inggris menggeser tense ke belakang: kalau aslinya present → reported jadi past; aslinya past → reported jadi past perfect. Kata kerja pelapor **said** menempatkan seluruh kalimat di masa lalu, dan tata bahasanya mengikuti."
+          "id": "Bahasa Indonesia melaporkan ucapan tanpa mengubah tense kata kerja. **Dia bilang dia lapar** tetap present tense; **Dia bilang dia sudah makan** tetap bentuk asli. Bahasa Inggris menggeser tense ke belakang: kalau aslinya present → reported jadi past; aslinya past → reported jadi past perfect. Kata kerja pelapor **said** menempatkan seluruh kalimat di masa lalu, dan tata bahasanya mengikuti.",
+          "hi": "हिंदी में reported speech का tense जस का तस रहता है — **उसने कहा कि वह आ रही है** (present tense ही रहता है)। English में backshift अनिवार्य है: reporting verb past में हो तो reported clause का tense एक step पीछे जाता है।"
         },
         "pattern": {
           "en": "**Backshift rule:** present → past, past → past perfect, **will** → **would**, **can** → **could**. \"I am tired\" → She said she **was** tired. \"I went there\" → She said she **had gone** there. \"I will call\" → She said she **would** call. **No backshift** when: the reported fact is still true now, or the reporting verb is present tense (**she says...**).",
           "vi": "**Quy tắc lùi thì:** hiện tại → quá khứ, quá khứ → quá khứ hoàn thành, **will** → **would**, **can** → **could**. \"I am tired\" → She said she **was** tired. \"I went there\" → She said she **had gone** there. \"I will call\" → She said she **would** call. **Không lùi thì** khi: sự thật được tường thuật vẫn đúng ở hiện tại, hoặc động từ tường thuật ở thì hiện tại (**she says...**).",
-          "id": "**Aturan pergeseran tense:** present → past, past → past perfect, **will** → **would**, **can** → **could**. \"I am tired\" → She said she **was** tired. \"I went there\" → She said she **had gone** there. \"I will call\" → She said she **would** call. **Tidak ada pergeseran** saat: fakta yang dilaporkan masih benar sekarang, atau kata kerja pelapor dalam present tense (**she says...**)."
+          "id": "**Aturan pergeseran tense:** present → past, past → past perfect, **will** → **would**, **can** → **could**. \"I am tired\" → She said she **was** tired. \"I went there\" → She said she **had gone** there. \"I will call\" → She said she **would** call. **Tidak ada pergeseran** saat: fakta yang dilaporkan masih benar sekarang, atau kata kerja pelapor dalam present tense (**she says...**).",
+          "hi": "**Direct:** \"I am tired.\" → **Reported:** She said she **was** tired. **Direct:** \"I will call.\" → **Reported:** He said he **would** call. **Direct:** \"I have finished.\" → **Reported:** She said she **had** finished. **Direct:** \"I went yesterday.\" → **Reported:** He said he **had gone** the day before."
         },
         "practice": {
           "en": "Practice the backshift out loud: Original: \"I like coffee\" → Reported: \"She said she **liked** coffee.\" Original: \"I am working\" → Reported: \"He said he **was** working.\" Original: \"We saw the movie\" → Reported: \"They said they **had seen** the movie.\" Original: \"I will help you\" → Reported: \"She said she **would** help me.\" The shift happens automatically once your ear expects it.",
           "vi": "Luyện lùi thì thành tiếng: Gốc: \"I like coffee\" → Tường thuật: \"She said she **liked** coffee.\" Gốc: \"I am working\" → Tường thuật: \"He said he **was** working.\" Gốc: \"We saw the movie\" → Tường thuật: \"They said they **had seen** the movie.\" Gốc: \"I will help you\" → Tường thuật: \"She said she **would** help me.\" Việc lùi thì diễn ra tự động khi tai bạn đã quen.",
-          "id": "Latih pergeseran tense dengan keras: Asli: \"I like coffee\" → Dilaporkan: \"She said she **liked** coffee.\" Asli: \"I am working\" → Dilaporkan: \"He said he **was** working.\" Asli: \"We saw the movie\" → Dilaporkan: \"They said they **had seen** the movie.\" Asli: \"I will help you\" → Dilaporkan: \"She said she **would** help me.\" Pergeseran terjadi otomatis begitu telingamu terbiasa."
+          "id": "Latih pergeseran tense dengan keras: Asli: \"I like coffee\" → Dilaporkan: \"She said she **liked** coffee.\" Asli: \"I am working\" → Dilaporkan: \"He said he **was** working.\" Asli: \"We saw the movie\" → Dilaporkan: \"They said they **had seen** the movie.\" Asli: \"I will help you\" → Dilaporkan: \"She said she **would** help me.\" Pergeseran terjadi otomatis begitu telingamu terbiasa.",
+          "hi": "ज़ोर से बोलें और tense shift महसूस करें: \"I am busy.\" → She said she **was** busy. \"We will arrive at 5.\" → They said they **would** arrive at 5. \"I have never been there.\" → He said he **had** never been there. \"I saw her yesterday.\" → She said she **had seen** her the day before."
         },
         "takeaway": {
           "en": "Reporting verb in past tense (**said**, **told**) → shift everything one step back. Present becomes past. Past becomes past perfect. **Will** becomes **would**.",
           "vi": "Động từ tường thuật ở quá khứ (**said**, **told**) → lùi mọi thứ một bước. Hiện tại thành quá khứ. Quá khứ thành quá khứ hoàn thành. **Will** thành **would**.",
-          "id": "Kata kerja pelapor dalam past tense (**said**, **told**) → geser semuanya satu langkah ke belakang. Present jadi past. Past jadi past perfect. **Will** jadi **would**."
+          "id": "Kata kerja pelapor dalam past tense (**said**, **told**) → geser semuanya satu langkah ke belakang. Present jadi past. Past jadi past perfect. **Will** jadi **would**.",
+          "hi": "Reporting verb past में → reported clause का tense एक step पीछे। Present → Past, Will → Would, Past → Past Perfect।"
         }
       },
       "quiz": [
@@ -1532,7 +1570,8 @@
           "question": {
             "en": "\"I am hungry.\" → She said she _____ hungry.",
             "vi": "\"I am hungry.\" → She said she _____ hungry.",
-            "id": "\"I am hungry.\" → She said she _____ hungry."
+            "id": "\"I am hungry.\" → She said she _____ hungry.",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "is",
@@ -1544,14 +1583,16 @@
           "explanation": {
             "en": "Present **am** backshifts to past **was** in reported speech.",
             "vi": "Hiện tại **am** lùi thành quá khứ **was** trong câu tường thuật.",
-            "id": "Present **am** bergeser ke past **was** dalam kalimat tidak langsung."
+            "id": "Present **am** bergeser ke past **was** dalam kalimat tidak langsung.",
+            "hi": "Reporting verb \"said\" past में है → \"is\" backshift होकर \"was\" बनेगा।"
           }
         },
         {
           "question": {
             "en": "\"I will call you tomorrow.\" → He said he _____ call me the next day.",
             "vi": "\"I will call you tomorrow.\" → He said he _____ call me the next day.",
-            "id": "\"I will call you tomorrow.\" → He said he _____ call me the next day."
+            "id": "\"I will call you tomorrow.\" → He said he _____ call me the next day.",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "will",
@@ -1563,14 +1604,16 @@
           "explanation": {
             "en": "**will** always backshifts to **would** in reported speech with a past reporting verb.",
             "vi": "**will** luôn lùi thành **would** trong câu tường thuật với động từ tường thuật ở quá khứ.",
-            "id": "**will** selalu bergeser ke **would** dalam kalimat tidak langsung dengan kata kerja pelapor past tense."
+            "id": "**will** selalu bergeser ke **would** dalam kalimat tidak langsung dengan kata kerja pelapor past tense.",
+            "hi": "\"said\" past में → \"will\" backshift होकर \"would\" बनेगा।"
           }
         },
         {
           "question": {
             "en": "\"I went to the market.\" → She said she _____ to the market.",
             "vi": "\"I went to the market.\" → She said she _____ to the market.",
-            "id": "\"I went to the market.\" → She said she _____ to the market."
+            "id": "\"I went to the market.\" → She said she _____ to the market.",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "went",
@@ -1582,14 +1625,16 @@
           "explanation": {
             "en": "Simple past **went** backshifts to past perfect **had gone** in reported speech.",
             "vi": "Quá khứ đơn **went** lùi thành quá khứ hoàn thành **had gone** trong câu tường thuật.",
-            "id": "Simple past **went** bergeser ke past perfect **had gone** dalam kalimat tidak langsung."
+            "id": "Simple past **went** bergeser ke past perfect **had gone** dalam kalimat tidak langsung.",
+            "hi": "\"told me\" past में → \"has finished\" backshift होकर \"had finished\" बनेगा।"
           }
         },
         {
           "question": {
             "en": "Which is correct reported speech for: \"I can swim.\"",
             "vi": "Câu tường thuật đúng cho: \"I can swim.\" là:",
-            "id": "Kalimat tidak langsung yang benar untuk: \"I can swim.\" adalah:"
+            "id": "Kalimat tidak langsung yang benar untuk: \"I can swim.\" adalah:",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "She said she can swim.",
@@ -1601,14 +1646,16 @@
           "explanation": {
             "en": "**can** backshifts to **could** — the main verb **swim** stays in base form.",
             "vi": "**can** lùi thành **could** — động từ chính **swim** giữ nguyên dạng gốc.",
-            "id": "**can** bergeser ke **could** — kata kerja utama **swim** tetap dalam bentuk dasar."
+            "id": "**can** bergeser ke **could** — kata kerja utama **swim** tetap dalam bentuk dasar.",
+            "hi": "\"asked\" past में → \"can\" (ability) backshift होकर \"could\" बनेगा।"
           }
         },
         {
           "question": {
             "en": "\"I don't like vegetables.\" → The child said he _____ like vegetables.",
             "vi": "\"I don't like vegetables.\" → The child said he _____ like vegetables.",
-            "id": "\"I don't like vegetables.\" → The child said he _____ like vegetables."
+            "id": "\"I don't like vegetables.\" → The child said he _____ like vegetables.",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "doesn't",
@@ -1620,7 +1667,8 @@
           "explanation": {
             "en": "Present **don't** backshifts to past **didn't** in reported speech.",
             "vi": "Hiện tại **don't** lùi thành quá khứ **didn't** trong câu tường thuật.",
-            "id": "Present **don't** bergeser ke past **didn't** dalam kalimat tidak langsung."
+            "id": "Present **don't** bergeser ke past **didn't** dalam kalimat tidak langsung.",
+            "hi": "\"said\" past में → \"went\" (past) backshift होकर \"had gone\" (past perfect) बनेगा।"
           }
         }
       ]
@@ -2150,40 +2198,47 @@
       "title": {
         "en": "Inversion — flip the word order for impact",
         "vi": "Đảo ngữ — đảo trật tự từ để nhấn mạnh",
-        "id": "Inversi — balik urutan kata untuk dampak"
+        "id": "Inversi — balik urutan kata untuk dampak",
+        "hi": "**Never have I** — ज़ोर देने के लिए inversion"
       },
       "sections": {
         "hook": {
           "en": "\"Never I have seen such a beautiful view.\" Sounds almost right to an Indonesian ear — **tidak pernah saya lihat** is natural in Indonesian. But English demands the verb flip: **Never have I seen…**",
           "vi": "\"Never I have seen such a beautiful view.\" Nghe gần đúng với tai người Việt — **chưa bao giờ tôi thấy** là tự nhiên trong tiếng Việt. Nhưng tiếng Anh đòi hỏi đảo động từ: **Never have I seen…**",
-          "id": "\"Never I have seen such a beautiful view.\" Kedengarannya hampir benar di telinga orang Indonesia — **tidak pernah saya lihat** itu wajar dalam bahasa Indonesia. Tapi bahasa Inggris menuntut kata kerjanya dibalik: **Never have I seen…**"
+          "id": "\"Never I have seen such a beautiful view.\" Kedengarannya hampir benar di telinga orang Indonesia — **tidak pernah saya lihat** itu wajar dalam bahasa Indonesia. Tapi bahasa Inggris menuntut kata kerjanya dibalik: **Never have I seen…**",
+          "hi": "\"Never I have seen such dedication.\" हिंदी और English दोनों में यह natural लगता है — adverb को आगे रखो, बाकी वाक्य जस का तस। लेकिन English में negative adverb के बाद subject और auxiliary की अदला-बदली होती है: \"Never **have I** seen...\""
         },
         "why": {
           "en": "Indonesian often fronts adverbs without changing word order — **Mungkin dia sudah pergi** keeps subject-verb intact. English inverts subject and auxiliary after negative or restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. The inversion signals emphasis and formality — it's a C2-level feature that separates proficient from native-like writing.",
           "vi": "Tiếng Việt thường đưa trạng từ lên đầu câu mà không đảo trật tự từ — **Có lẽ anh ấy đã đi rồi** giữ nguyên chủ ngữ-động từ. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định hoặc hạn chế như **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — đây là kỹ năng cấp C2 phân biệt người thành thạo với người viết như bản ngữ.",
-          "id": "Bahasa Indonesia sering meletakkan kata keterangan di depan tanpa mengubah urutan kata — **Mungkin dia sudah pergi** tetap subjek-kata kerja. Bahasa Inggris membalik subjek dan kata bantu setelah kata keterangan negatif atau restriktif seperti **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversi menandakan penekanan dan formalitas — ini adalah fitur level C2 yang membedakan penulis mahir dari penulis seperti penutur asli."
+          "id": "Bahasa Indonesia sering meletakkan kata keterangan di depan tanpa mengubah urutan kata — **Mungkin dia sudah pergi** tetap subjek-kata kerja. Bahasa Inggris membalik subjek dan kata bantu setelah kata keterangan negatif atau restriktif seperti **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversi menandakan penekanan dan formalitas — ini adalah fitur level C2 yang membedakan penulis mahir dari penulis seperti penutur asli.",
+          "hi": "हिंदी में \"मैंने कभी ऐसा नहीं देखा\" — adverb आगे आने पर भी शब्द क्रम वही रहता है। English में **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances** जैसे negative/restrictive adverbials के बाद inversion (subject-auxiliary swap) अनिवार्य है।"
         },
         "pattern": {
           "en": "Negative/restrictive adverbial + auxiliary + subject + main verb. **Never** + **have** + **I** + seen. **Not only** + **did** + **she** + finish. **Rarely** + **does** + **he** + complain. **No sooner** + **had** + **we** + arrived than… **Under no circumstances** + **should** + **you** + open that door. The auxiliary matches the tense; if there's no auxiliary in the original, add **do/does/did**.",
           "vi": "Trạng từ phủ định/hạn chế + trợ động từ + chủ ngữ + động từ chính. **Never** + **have** + **I** + seen. **Not only** + **did** + **she** + finish. **Rarely** + **does** + **he** + complain. **No sooner** + **had** + **we** + arrived than… **Under no circumstances** + **should** + **you** + open that door. Trợ động từ phải hợp thì; nếu câu gốc không có trợ động từ, thêm **do/does/did**.",
-          "id": "Kata keterangan negatif/restriktif + kata bantu + subjek + kata kerja utama. **Never** + **have** + **I** + seen. **Not only** + **did** + **she** + finish. **Rarely** + **does** + **he** + complain. **No sooner** + **had** + **we** + arrived than… **Under no circumstances** + **should** + **you** + open that door. Kata bantu harus sesuai tense; kalau kalimat aslinya tidak punya kata bantu, tambahkan **do/does/did**."
+          "id": "Kata keterangan negatif/restriktif + kata bantu + subjek + kata kerja utama. **Never** + **have** + **I** + seen. **Not only** + **did** + **she** + finish. **Rarely** + **does** + **he** + complain. **No sooner** + **had** + **we** + arrived than… **Under no circumstances** + **should** + **you** + open that door. Kata bantu harus sesuai tense; kalau kalimat aslinya tidak punya kata bantu, tambahkan **do/does/did**.",
+          "hi": "**Normal:** I have never seen such beauty. → **Inverted:** Never **have I** seen such beauty. **Normal:** She rarely speaks in meetings. → **Inverted:** Rarely **does she** speak in meetings. **Normal:** He not only sings but also dances. → **Inverted:** Not only **does he** sing, but he also dances."
         },
         "practice": {
           "en": "Rewrite aloud: \"I have never seen such dedication.\" → \"Never have I seen such dedication.\" \"She not only finished early, but she also helped others.\" → \"Not only did she finish early, but she also helped others.\" \"You should open that door under no circumstances.\" → \"Under no circumstances should you open that door.\" Feel how the inversion puts weight on the first word.",
           "vi": "Viết lại thành tiếng: \"I have never seen such dedication.\" → \"Never have I seen such dedication.\" \"She not only finished early, but she also helped others.\" → \"Not only did she finish early, but she also helped others.\" \"You should open that door under no circumstances.\" → \"Under no circumstances should you open that door.\" Cảm nhận cách đảo ngữ đặt trọng lượng vào từ đầu câu.",
-          "id": "Tulis ulang dengan keras: \"I have never seen such dedication.\" → \"Never have I seen such dedication.\" \"She not only finished early, but she also helped others.\" → \"Not only did she finish early, but she also helped others.\" \"You should open that door under no circumstances.\" → \"Under no circumstances should you open that door.\" Rasakan bagaimana inversi memberi bobot pada kata pertama."
+          "id": "Tulis ulang dengan keras: \"I have never seen such dedication.\" → \"Never have I seen such dedication.\" \"She not only finished early, but she also helped others.\" → \"Not only did she finish early, but she also helped others.\" \"You should open that door under no circumstances.\" → \"Under no circumstances should you open that door.\" Rasakan bagaimana inversi memberi bobot pada kata pertama.",
+          "hi": "ज़ोर से बोलें और inversion की लय पकड़ें: \"Never **have I** felt so alive.\" \"Rarely **do we** see such talent.\" \"Not only **did she** finish early, but she also helped others.\" \"Hardly **had I** sat down when the phone rang.\" \"Under no circumstances **should you** open that door.\""
         },
         "takeaway": {
           "en": "When a negative or restrictive word opens the sentence, flip the auxiliary and subject. It's the rhythm of formal, confident English.",
           "vi": "Khi một từ phủ định hoặc hạn chế mở đầu câu, hãy đảo trợ động từ và chủ ngữ. Đó là nhịp điệu của tiếng Anh trang trọng và tự tin.",
-          "id": "Saat kata negatif atau restriktif membuka kalimat, balik kata bantu dan subjek. Itulah ritme bahasa Inggris formal yang percaya diri."
+          "id": "Saat kata negatif atau restriktif membuka kalimat, balik kata bantu dan subjek. Itulah ritme bahasa Inggris formal yang percaya diri.",
+          "hi": "Negative/restrictive adverb से शुरू होने वाले वाक्य में = auxiliary, subject, main verb का क्रम। \"Never have I...\" \"Rarely does he...\" \"Not only did she...\""
         }
       },
       "quiz": [
         {
           "question": {
             "en": "Choose the correct sentence:",
-            "vi": "Chọn câu đúng:"
+            "vi": "Chọn câu đúng:",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "Never I have been so insulted.",
@@ -2195,13 +2250,15 @@
           "explanation": {
             "en": "**Never** triggers inversion → auxiliary **have** before subject **I**.",
             "vi": "**Never** kích hoạt đảo ngữ → trợ động từ **have** trước chủ ngữ **I**.",
-            "id": "**Never** memicu inversi → kata bantu **have** sebelum subjek **I**."
+            "id": "**Never** memicu inversi → kata bantu **have** sebelum subjek **I**.",
+            "hi": "\"Never\" से शुरू → inversion ज़रूरी: \"Never have I...\" (subject-auxiliary swap)।"
           }
         },
         {
           "question": {
             "en": "Fill in the blank: Not only ___ the race, but she broke the record.",
-            "vi": "Điền vào chỗ trống: Not only ___ the race, but she broke the record."
+            "vi": "Điền vào chỗ trống: Not only ___ the race, but she broke the record.",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "she won",
@@ -2213,13 +2270,15 @@
           "explanation": {
             "en": "**Not only** requires inversion — add **did** before the subject **she**.",
             "vi": "**Not only** đòi hỏi đảo ngữ — thêm **did** trước chủ ngữ **she**.",
-            "id": "**Not only** mengharuskan inversi — tambahkan **did** sebelum subjek **she**."
+            "id": "**Not only** mengharuskan inversi — tambahkan **did** sebelum subjek **she**.",
+            "hi": "\"Rarely\" आगे → inversion: \"Rarely do we...\" न कि \"Rarely we do...\""
           }
         },
         {
           "question": {
             "en": "Fill in the blank: Rarely ___ such dedication in one so young.",
-            "vi": "Điền vào chỗ trống: Rarely ___ such dedication in one so young."
+            "vi": "Điền vào chỗ trống: Rarely ___ such dedication in one so young.",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "one sees",
@@ -2231,13 +2290,15 @@
           "explanation": {
             "en": "**Rarely** at the start → **does** + subject + bare verb. Present simple, so use **does**.",
             "vi": "**Rarely** ở đầu câu → **does** + chủ ngữ + động từ gốc. Thì hiện tại đơn nên dùng **does**.",
-            "id": "**Rarely** di awal → **does** + subjek + kata kerja dasar. Present simple, jadi pakai **does**."
+            "id": "**Rarely** di awal → **does** + subjek + kata kerja dasar. Present simple, jadi pakai **does**.",
+            "hi": "\"Not only\" से शुरू → \"Not only did she...\" (auxiliary पहले, subject बाद में)।"
           }
         },
         {
           "question": {
             "en": "Choose the correct sentence:",
-            "vi": "Chọn câu đúng:"
+            "vi": "Chọn câu đúng:",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "Under no circumstances you should lie.",
@@ -2249,13 +2310,15 @@
           "explanation": {
             "en": "**Under no circumstances** requires inversion — the modal **should** flips with the subject **you**.",
             "vi": "**Under no circumstances** đòi hỏi đảo ngữ — modal **should** đảo với chủ ngữ **you**.",
-            "id": "**Under no circumstances** mengharuskan inversi — modal **should** dibalik dengan subjek **you**."
+            "id": "**Under no circumstances** mengharuskan inversi — modal **should** dibalik dengan subjek **you**.",
+            "hi": "\"No sooner\" के बाद inversion + \"than\": \"No sooner had I arrived than...\""
           }
         },
         {
           "question": {
             "en": "Fill in the blank: No sooner ___ than the rain started.",
-            "vi": "Điền vào chỗ trống: No sooner ___ than the rain started."
+            "vi": "Điền vào chỗ trống: No sooner ___ than the rain started.",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "had we left",
@@ -2267,7 +2330,8 @@
           "explanation": {
             "en": "**No sooner** + past perfect inversion → **had** + subject + past participle. Matches **than**.",
             "vi": "**No sooner** + đảo ngữ quá khứ hoàn thành → **had** + chủ ngữ + V3. Ghép với **than**.",
-            "id": "**No sooner** + inversi past perfect → **had** + subjek + past participle. Berpasangan dengan **than**."
+            "id": "**No sooner** + inversi past perfect → **had** + subjek + past participle. Berpasangan dengan **than**.",
+            "hi": "\"Under no circumstances\" → पूरा auxiliary inversion: \"Under no circumstances should you...\""
           }
         }
       ]
@@ -2277,40 +2341,47 @@
       "title": {
         "en": "Cleft sentences — put the focus where it counts",
         "vi": "Câu chẻ — đặt trọng tâm vào đúng chỗ",
-        "id": "Kalimat cleft — letakkan fokus di tempat yang tepat"
+        "id": "Kalimat cleft — letakkan fokus di tempat yang tepat",
+        "hi": "**It was John who** — cleft sentences से focus control"
       },
       "sections": {
         "hook": {
           "en": "\"John broke the window.\" Fine. But what if you need to clear John's name? \"It wasn't John who broke the window.\" That's a cleft sentence — and it does something Indonesian's **yang** construction can't quite match.",
           "vi": "\"John broke the window.\" Ổn. Nhưng nếu bạn cần minh oan cho John thì sao? \"It wasn't John who broke the window.\" Đó là câu chẻ — và nó làm điều mà cấu trúc **chính… là…** trong tiếng Việt không làm được hoàn toàn.",
-          "id": "\"John broke the window.\" Oke. Tapi gimana kalau kamu perlu membersihkan nama John? \"It wasn't John who broke the window.\" Itu kalimat cleft — dan dia melakukan sesuatu yang konstruksi **yang** dalam bahasa Indonesia tidak bisa sepenuhnya tiru."
+          "id": "\"John broke the window.\" Oke. Tapi gimana kalau kamu perlu membersihkan nama John? \"It wasn't John who broke the window.\" Itu kalimat cleft — dan dia melakukan sesuatu yang konstruksi **yang** dalam bahasa Indonesia tidak bisa sepenuhnya tiru.",
+          "hi": "हिंदी में \"जॉन ने ही खिड़की तोड़ी\" — **ही** से focus आता है। English इसके लिए पूरा sentence structure बदलता है: \"It was John who broke the window.\" यह सिर्फ grammar नहीं — यह पाठक का ध्यान नियंत्रित करने का tool है।"
         },
         "why": {
           "en": "Indonesian uses **yang** to highlight: **Yang memecahkan jendela itu John**. English has a richer system: **It-clefts** (**It was John who broke the window**) pull one element into focus; **Wh-clefts** (**What I need is more time**) package a whole idea as the subject. At C2 level, choosing the right cleft structure lets you control exactly what the reader notices first — and that precision marks advanced, purposeful writing.",
           "vi": "Tiếng Việt dùng **chính… là…** hoặc **… là người…** để nhấn mạnh: **Chính John là người làm vỡ cửa sổ**. Tiếng Anh có hệ thống phong phú hơn: **It-cleft** (**It was John who broke the window**) kéo một yếu tố vào tiêu điểm; **Wh-cleft** (**What I need is more time**) đóng gói cả một ý thành chủ ngữ. Ở cấp C2, chọn đúng cấu trúc cleft cho phép bạn kiểm soát chính xác điều người đọc chú ý đầu tiên — và sự chính xác đó đánh dấu lối viết nâng cao, có chủ đích.",
-          "id": "Bahasa Indonesia menggunakan **yang** untuk menyoroti: **Yang memecahkan jendela itu John**. Bahasa Inggris punya sistem yang lebih kaya: **It-cleft** (**It was John who broke the window**) menarik satu elemen ke fokus; **Wh-cleft** (**What I need is more time**) mengemas seluruh ide sebagai subjek. Di level C2, memilih struktur cleft yang tepat memungkinkan kamu mengontrol persis apa yang pertama kali pembaca perhatikan — dan presisi itu menandai tulisan mahir yang punya tujuan."
+          "id": "Bahasa Indonesia menggunakan **yang** untuk menyoroti: **Yang memecahkan jendela itu John**. Bahasa Inggris punya sistem yang lebih kaya: **It-cleft** (**It was John who broke the window**) menarik satu elemen ke fokus; **Wh-cleft** (**What I need is more time**) mengemas seluruh ide sebagai subjek. Di level C2, memilih struktur cleft yang tepat memungkinkan kamu mengontrol persis apa yang pertama kali pembaca perhatikan — dan presisi itu menandai tulisan mahir yang punya tujuan.",
+          "hi": "हिंदी में **ही** या **जो... वह** ज़ोर देने के लिए इस्तेमाल होता है। English में दो मुख्य cleft structures हैं: **It-cleft** (**It was John who broke the window**) एक तत्व पर focus खींचता है; **Wh-cleft** (**What I need is more time**) पूरे विचार को subject बना देता है।"
         },
         "pattern": {
           "en": "**It-cleft**: **It + be + focused-element + who/that + rest-of-clause**. **It was the noise that woke me.** (focus = the noise). **Wh-cleft** (pseudo-cleft): **What/Where/Why/How + clause + be + focused-element**. **What bothers me is the attitude.** (focus = the attitude). **All-cleft**: **All + clause + be + focused-element**. **All I want is a chance.**",
           "vi": "**It-cleft**: **It + be + yếu-tố-nhấn + who/that + phần-còn-lại**. **It was the noise that woke me.** (nhấn = the noise). **Wh-cleft**: **What/Where/Why/How + mệnh-đề + be + yếu-tố-nhấn**. **What bothers me is the attitude.** (nhấn = the attitude). **All-cleft**: **All + mệnh-đề + be + yếu-tố-nhấn**. **All I want is a chance.**",
-          "id": "**It-cleft**: **It + be + elemen-difokuskan + who/that + sisa-klausa**. **It was the noise that woke me.** (fokus = the noise). **Wh-cleft**: **What/Where/Why/How + klausa + be + elemen-difokuskan**. **What bothers me is the attitude.** (fokus = the attitude). **All-cleft**: **All + klausa + be + elemen-difokuskan**. **All I want is a chance.**"
+          "id": "**It-cleft**: **It + be + elemen-difokuskan + who/that + sisa-klausa**. **It was the noise that woke me.** (fokus = the noise). **Wh-cleft**: **What/Where/Why/How + klausa + be + elemen-difokuskan**. **What bothers me is the attitude.** (fokus = the attitude). **All-cleft**: **All + klausa + be + elemen-difokuskan**. **All I want is a chance.**",
+          "hi": "**It-cleft:** It + be + focused element + who/that clause. \"It was **the heat** that bothered me most.\" \"It is **your attitude** that needs to change.\" **Wh-cleft:** What/Why/How clause + be + focus. \"**What** I need is more time.\" \"**Why** she left is still a mystery.\" \"**How** he did it remains unknown.\""
         },
         "practice": {
           "en": "Transform aloud: \"The disrespect made me angry.\" → \"What made me angry was the disrespect.\" \"I just want a fair chance.\" → \"All I want is a fair chance.\" \"The manager, not the team, decided this.\" → \"It was the manager who decided this, not the team.\" Notice how each version directs the spotlight differently.",
           "vi": "Biến đổi thành tiếng: \"The disrespect made me angry.\" → \"What made me angry was the disrespect.\" \"I just want a fair chance.\" → \"All I want is a fair chance.\" \"The manager, not the team, decided this.\" → \"It was the manager who decided this, not the team.\" Để ý cách mỗi phiên bản hướng ánh đèn sân khấu khác nhau.",
-          "id": "Ubah dengan keras: \"The disrespect made me angry.\" → \"What made me angry was the disrespect.\" \"I just want a fair chance.\" → \"All I want is a fair chance.\" \"The manager, not the team, decided this.\" → \"It was the manager who decided this, not the team.\" Perhatikan bagaimana setiap versi mengarahkan sorotan secara berbeda."
+          "id": "Ubah dengan keras: \"The disrespect made me angry.\" → \"What made me angry was the disrespect.\" \"I just want a fair chance.\" → \"All I want is a fair chance.\" \"The manager, not the team, decided this.\" → \"It was the manager who decided this, not the team.\" Perhatikan bagaimana setiap versi mengarahkan sorotan secara berbeda.",
+          "hi": "ज़ोर से बोलें: \"It was the noise that woke me up.\" \"It is your support that keeps me going.\" \"What I really want is a quiet evening at home.\" \"Why he resigned is none of our business.\" \"The thing that matters most is your health.\" हर बार सोचें — किस तत्व पर focus है?"
         },
         "takeaway": {
           "en": "Cleft sentences aren't decoration — they control attention. At C2, every word you place is a choice about what the reader feels first.",
           "vi": "Câu chẻ không phải để trang trí — chúng kiểm soát sự chú ý. Ở cấp C2, mỗi từ bạn đặt là một lựa chọn về điều người đọc cảm nhận đầu tiên.",
-          "id": "Kalimat cleft bukan hiasan — mereka mengontrol perhatian. Di level C2, setiap kata yang kamu tempatkan adalah pilihan tentang apa yang pembaca rasakan pertama kali."
+          "id": "Kalimat cleft bukan hiasan — mereka mengontrol perhatian. Di level C2, setiap kata yang kamu tempatkan adalah pilihan tentang apa yang pembaca rasakan pertama kali.",
+          "hi": "किसी एक चीज़ पर focus करना हो → **It was X who/that...**। पूरे idea को subject बनाना हो → **What... is...**। Subtle, powerful, C2-level control."
         }
       },
       "quiz": [
         {
           "question": {
             "en": "Choose the correct cleft sentence:",
-            "vi": "Chọn câu chẻ đúng:"
+            "vi": "Chọn câu chẻ đúng:",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "What I need is more time.",
@@ -2322,13 +2393,15 @@
           "explanation": {
             "en": "**Wh-cleft**: **What** + clause + **is** + focused element. No extra pronoun **it** needed.",
             "vi": "**Wh-cleft**: **What** + mệnh đề + **is** + yếu tố nhấn mạnh. Không cần thêm đại từ **it**.",
-            "id": "**Wh-cleft**: **What** + klausa + **is** + elemen yang difokuskan. Tidak perlu kata ganti tambahan **it**."
+            "id": "**Wh-cleft**: **What** + klausa + **is** + elemen yang difokuskan. Tidak perlu kata ganti tambahan **it**.",
+            "hi": "Cleft sentence पर focus होना चाहिए: \"It was the manager who...\" (manager पर focus)।"
           }
         },
         {
           "question": {
             "en": "Fill in the blank: It ___ the weather that ruined the trip.",
-            "vi": "Điền vào chỗ trống: It ___ the weather that ruined the trip."
+            "vi": "Điền vào chỗ trống: It ___ the weather that ruined the trip.",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "were",
@@ -2340,13 +2413,15 @@
           "explanation": {
             "en": "**It-cleft** uses **be** agreeing with the focused element. **The weather** is singular → **was**.",
             "vi": "**It-cleft** dùng **be** hòa hợp với yếu tố nhấn. **The weather** số ít → **was**.",
-            "id": "**It-cleft** menggunakan **be** yang sesuai dengan elemen fokus. **The weather** tunggal → **was**."
+            "id": "**It-cleft** menggunakan **be** yang sesuai dengan elemen fokus. **The weather** tunggal → **was**.",
+            "hi": "\"What I need is...\" — Wh-cleft structure, \"is\" के बाद focus आता है।"
           }
         },
         {
           "question": {
             "en": "Fill in the blank: ___ bothers me is his attitude, not his words.",
-            "vi": "Điền vào chỗ trống: ___ bothers me is his attitude, not his words."
+            "vi": "Điền vào chỗ trống: ___ bothers me is his attitude, not his words.",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "That",
@@ -2358,13 +2433,15 @@
           "explanation": {
             "en": "**Wh-cleft** opens with **What** when the focused element is a thing or idea.",
             "vi": "**Wh-cleft** mở đầu bằng **What** khi yếu tố nhấn mạnh là một vật hoặc ý tưởng.",
-            "id": "**Wh-cleft** dibuka dengan **What** saat elemen yang difokuskan adalah benda atau ide."
+            "id": "**Wh-cleft** dibuka dengan **What** saat elemen yang difokuskan adalah benda atau ide.",
+            "hi": "It-cleft में unnecessary pronoun नहीं: \"It was the weather that ruined...\" (extra \"it\" गलत है)।"
           }
         },
         {
           "question": {
             "en": "Choose the correct sentence:",
-            "vi": "Chọn câu đúng:"
+            "vi": "Chọn câu đúng:",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "All I want it is a fair chance.",
@@ -2376,13 +2453,15 @@
           "explanation": {
             "en": "**All-cleft**: **All** + clause (no **what**) + **be** + element. No extra pronoun.",
             "vi": "**All-cleft**: **All** + mệnh đề (không có **what**) + **be** + yếu tố. Không thêm đại từ thừa.",
-            "id": "**All-cleft**: **All** + klausa (tanpa **what**) + **be** + elemen. Tanpa kata ganti tambahan."
+            "id": "**All-cleft**: **All** + klausa (tanpa **what**) + **be** + elemen. Tanpa kata ganti tambahan.",
+            "hi": "\"What she said\" पहले से एक clause है, दोबारा \"it\" की ज़रूरत नहीं।"
           }
         },
         {
           "question": {
             "en": "Fill in the blank: It wasn't the noise ___ woke me; it was the light.",
-            "vi": "Điền vào chỗ trống: It wasn't the noise ___ woke me; it was the light."
+            "vi": "Điền vào chỗ trống: It wasn't the noise ___ woke me; it was the light.",
+            "hi": "सही विकल्प चुनें:"
           },
           "options": [
             "who",
@@ -2394,7 +2473,404 @@
           "explanation": {
             "en": "**It-cleft** with a thing → **that** (or **which** in very formal). **Who** is only for people.",
             "vi": "**It-cleft** với đồ vật → **that** (hoặc **which** trong văn rất trang trọng). **Who** chỉ dùng cho người.",
-            "id": "**It-cleft** dengan benda → **that** (atau **which** dalam gaya sangat formal). **Who** hanya untuk orang."
+            "id": "**It-cleft** dengan benda → **that** (atau **which** dalam gaya sangat formal). **Who** hanya untuk orang.",
+            "hi": "\"Why he left\" Wh-cleft का subject है, \"is\" singular verb लेता है।"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "hi_l1_missing_article",
+      "title": {
+        "en": "**a/an/the** — why you need them in English",
+        "vi": "**a/an/the** — tại sao bạn cần mạo từ trong tiếng Anh",
+        "hi": "**a/an/the** — English में articles क्यों ज़रूरी हैं"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"She is doctor and works in hospital.\" If you speak Hindi, this sentence feels complete — Hindi doesn't have words for \"a\" or \"the,\" and your brain simply doesn't expect them. But to an English speaker, something is visibly missing. Articles aren't decoration — they're grammar.",
+          "vi": "\"She is doctor and works in hospital.\" Nếu bạn nói tiếng Hindi, câu này nghe có vẻ đầy đủ — tiếng Hindi không có từ cho \"a\" hay \"the,\" và não bạn đơn giản không mong đợi chúng. Nhưng với người nói tiếng Anh, rõ ràng có thứ gì đó bị thiếu. Mạo từ không phải là trang trí — chúng là ngữ pháp.",
+          "hi": "\"She is doctor and works in hospital.\" अगर आपकी मातृभाषा हिंदी है, तो यह वाक्य आपको पूरा लगता है — हिंदी में \"a\" या \"the\" जैसे शब्द होते ही नहीं, और आपका दिमाग़ इनकी उम्मीद नहीं करता। लेकिन English speaker को साफ़ महसूस होता है कि कुछ गायब है। Articles सिर्फ़ सजावट नहीं — ये grammar का हिस्सा हैं।"
+        },
+        "why": {
+          "en": "Hindi grammar has no article category at all. **एक लड़की** (ek ladki) is complete without any article — the number **ek** (one) optionally adds specificity, but there's no grammatical requirement. English requires **a/an** before every singular countable noun when it's not specific, and **the** when it is specific or unique. Your Hindi-speaking brain doesn't have a \"slot\" for this — you have to build it consciously.",
+          "vi": "Ngữ pháp tiếng Hindi hoàn toàn không có phạm trù mạo từ. **एक लड़की** (ek ladki) là câu hoàn chỉnh không cần mạo từ — số từ **ek** (một) tùy chọn thêm tính cụ thể, nhưng không có yêu cầu ngữ pháp nào. Tiếng Anh yêu cầu **a/an** trước mọi danh từ đếm được số ít khi nó không cụ thể, và **the** khi nó cụ thể hoặc duy nhất. Não nói tiếng Hindi của bạn không có \"khe\" cho việc này — bạn phải xây dựng nó một cách có ý thức.",
+          "hi": "हिंदी व्याकरण में article जैसी कोई श्रेणी है ही नहीं। **एक लड़की** बिना किसी article के पूरा वाक्य है — **एक** (one) जोड़ना optional है, व्याकरणिक मजबूरी नहीं। English में हर singular countable noun से पहले **a/an** (अनिश्चित) या **the** (निश्चित) लगाना ज़रूरी है। आपके हिंदी-भाषी दिमाग़ में इसके लिए कोई \"खाँचा\" नहीं है — इसे जानबूझकर बनाना पड़ेगा।"
+        },
+        "pattern": {
+          "en": "**a/an** = any one, not specific, first mention. \"I saw **a** dog.\" (any dog, first time mentioning it). Use **an** before vowel sounds: **an** apple, **an** hour. **the** = specific one, already known, unique. \"I saw a dog. **The** dog was brown.\" (now we know which dog). Also **the** for unique things: **the** sun, **the** internet, **the** government. **No article** for: plural general (Dogs are loyal), uncountable general (Water is wet), proper names (India, Monday).",
+          "vi": "**a/an** = bất kỳ cái nào, không cụ thể, lần đầu nhắc đến. \"I saw **a** dog.\" (con chó nào đó, lần đầu). Dùng **an** trước nguyên âm: **an** apple, **an** hour. **the** = cái cụ thể, đã biết, duy nhất. \"I saw a dog. **The** dog was brown.\" (giờ ta biết con chó nào). **the** cho thứ duy nhất: **the** sun, **the** internet. **Không mạo từ** cho: số nhiều chung chung (Dogs are loyal), không đếm được chung chung (Water is wet), tên riêng (India, Monday).",
+          "hi": "**a/an** = कोई भी एक, अनिश्चित, पहली बार ज़िक्र। \"I saw **a** dog.\" (कोई भी कुत्ता, पहली बार बताया)। स्वर ध्वनि से पहले **an**: **an** apple, **an** hour। **the** = वही खास वाला, पहले से पता, अद्वितीय। \"I saw a dog. **The** dog was brown.\" (अब पता है कौन सा कुत्ता)। अद्वितीय चीज़ों के लिए **the**: **the** sun, **the** internet, **the** government। **बिना article**: सामान्य बहुवचन (Dogs are loyal), सामान्य uncountable (Water is wet), व्यक्तिवाचक नाम (India, Monday)।"
+        },
+        "practice": {
+          "en": "Read these aloud, noticing where articles appear — and where they don't: \"I bought **a** phone. **The** phone is blue.\" \"She is **a** teacher at **the** school near my house.\" \"**The** moon is bright tonight.\" \"I need **an** umbrella. Do you have one?\" \"He lives in Delhi. **The** Delhi metro is very convenient.\" \"Dogs are more loyal than cats.\" (no article — general plural).",
+          "vi": "Đọc thành tiếng, để ý chỗ có mạo từ — và chỗ không có: \"I bought **a** phone. **The** phone is blue.\" \"She is **a** teacher at **the** school near my house.\" \"**The** moon is bright tonight.\" \"I need **an** umbrella. Do you have one?\" \"He lives in Delhi. **The** Delhi metro is very convenient.\" \"Dogs are more loyal than cats.\" (không mạo từ — số nhiều chung chung).",
+          "hi": "ज़ोर से पढ़ें और ध्यान दें कि article कहाँ है — और कहाँ नहीं: \"I bought **a** phone. **The** phone is blue.\" \"She is **a** teacher at **the** school near my house.\" \"**The** moon is bright tonight.\" \"I need **an** umbrella. Do you have one?\" \"He lives in Delhi. **The** Delhi metro is very convenient.\" \"Dogs are more loyal than cats.\" (कोई article नहीं — सामान्य बहुवचन)।"
+        },
+        "takeaway": {
+          "en": "Every singular countable noun needs a/an or the. Ask: is it specific / already known? → **the**. First mention / any one? → **a/an**. General plural or uncountable? → nothing.",
+          "vi": "Mọi danh từ đếm được số ít cần a/an hoặc the. Hỏi: có cụ thể / đã biết chưa? → **the**. Lần đầu / bất kỳ cái nào? → **a/an**. Số nhiều chung chung hoặc không đếm được? → không mạo từ.",
+          "hi": "हर singular countable noun को a/an या the चाहिए। पूछें: क्या यह specific / पहले से ज्ञात है? → **the**। पहली बार / कोई भी एक? → **a/an**। सामान्य बहुवचन या uncountable? → कुछ नहीं।"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "hi": "सही वाक्य चुनें:"
+          },
+          "options": [
+            "She is doctor.",
+            "She is a doctor.",
+            "She is the doctor.",
+            "She doctor."
+          ],
+          "correctAnswer": "She is a doctor.",
+          "explanation": {
+            "en": "\"Doctor\" is a singular countable noun → needs **a** (first mention, not specific).",
+            "vi": "\"Doctor\" là danh từ đếm được số ít → cần **a** (lần đầu, không cụ thể).",
+            "hi": "\"Doctor\" एक singular countable noun है → **a** चाहिए (पहली बार, specific नहीं)।"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "hi": "सही वाक्य चुनें:"
+          },
+          "options": [
+            "Sun rises in east.",
+            "The sun rises in east.",
+            "The sun rises in the east.",
+            "Sun rises in the east."
+          ],
+          "correctAnswer": "The sun rises in the east.",
+          "explanation": {
+            "en": "**The sun** (unique thing) and **the east** (unique direction) — both need **the**.",
+            "vi": "**The sun** (thứ duy nhất) và **the east** (hướng duy nhất) — cả hai cần **the**.",
+            "hi": "**The sun** (अद्वितीय चीज़) और **the east** (अद्वितीय दिशा) — दोनों को **the** चाहिए।"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "hi": "सही वाक्य चुनें:"
+          },
+          "options": [
+            "I saw dog in park. Dog was brown.",
+            "I saw a dog in park. A dog was brown.",
+            "I saw a dog in the park. The dog was brown.",
+            "I saw dog in the park. Dog was brown."
+          ],
+          "correctAnswer": "I saw a dog in the park. The dog was brown.",
+          "explanation": {
+            "en": "First mention → **a** dog. Specific park → **the** park. Second mention (now known) → **the** dog.",
+            "vi": "Lần đầu → **a** dog. Công viên cụ thể → **the** park. Lần hai (đã biết) → **the** dog.",
+            "hi": "पहली बार → **a** dog। Specific park → **the** park। दूसरी बार (अब पता है) → **the** dog।"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "hi": "सही वाक्य चुनें:"
+          },
+          "options": [
+            "She needs an hour to finish.",
+            "She needs a hour to finish.",
+            "She needs an hours to finish.",
+            "She needs hour to finish."
+          ],
+          "correctAnswer": "She needs an hour to finish.",
+          "explanation": {
+            "en": "\"Hour\" starts with a vowel sound → **an** (not **a**). The 'h' is silent.",
+            "vi": "\"Hour\" bắt đầu bằng nguyên âm → **an** (không phải **a**). Chữ 'h' câm.",
+            "hi": "\"Hour\" की शुरुआत vowel sound से होती है → **an** (**a** नहीं)। 'h' silent है।"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "hi": "सही वाक्य चुनें:"
+          },
+          "options": [
+            "The honesty is the best policy.",
+            "Honesty is best policy.",
+            "Honesty is the best policy.",
+            "The honesty is best policy."
+          ],
+          "correctAnswer": "Honesty is the best policy.",
+          "explanation": {
+            "en": "\"Honesty\" is an abstract/uncountable noun used generally → no article. But \"the best\" (superlative) needs **the**.",
+            "vi": "\"Honesty\" là danh từ trừu tượng/không đếm được dùng chung chung → không mạo từ. Nhưng \"the best\" (so sánh nhất) cần **the**.",
+            "hi": "\"Honesty\" एक abstract/uncountable noun है, सामान्य अर्थ में → कोई article नहीं। लेकिन \"the best\" (superlative) के साथ **the** ज़रूरी है।"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "hi_l1_preposition_postposition",
+      "title": {
+        "en": "Prepositions — where to put them in English",
+        "vi": "Giới từ — đặt chúng ở đâu trong tiếng Anh",
+        "hi": "Prepositions — English में इन्हें कहाँ रखें"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"I am going market to.\" If this looks right to you, your Hindi brain is in charge. Hindi puts relationship words AFTER the noun — **बाज़ार को** (bazaar ko, 'market to'). English puts them BEFORE — **to the market**. The whole word order flips, and if you don't catch it, your English keeps a Hindi skeleton.",
+          "vi": "\"I am going market to.\" Nếu câu này trông đúng với bạn, não tiếng Hindi của bạn đang điều khiển. Tiếng Hindi đặt từ quan hệ SAU danh từ — **बाज़ार को** (bazaar ko, 'chợ đến'). Tiếng Anh đặt chúng TRƯỚC — **to the market**. Toàn bộ trật tự từ đảo ngược, và nếu bạn không để ý, tiếng Anh của bạn vẫn giữ khung xương tiếng Hindi.",
+          "hi": "\"I am going market to.\" अगर यह वाक्य आपको सही लगता है, तो आपका हिंदी दिमाग़ काबू में है। हिंदी में संबंध सूचक शब्द संज्ञा के बाद आते हैं — **बाज़ार को** (bazaar ko)। English में ये पहले आते हैं — **to the market**। पूरा शब्द क्रम उल्टा है, और अगर आपने ध्यान न दिया, तो आपकी English में हिंदी का ढाँचा बना रहेगा।"
+        },
+        "why": {
+          "en": "Hindi uses **postpositions** — words like **में** (mein, 'in'), **पर** (par, 'on'), **से** (se, 'from'), **को** (ko, 'to') that attach AFTER the noun: **मेज़ पर** (mez par = table on). English uses **prepositions** before the noun: **on the table**. Your L1 word order is the exact reverse. This is especially tricky in long sentences where the preposition gets separated from its noun: \"Which city do you come **from**?\" (preposition stranded at the end — natural in English, but your Hindi brain wants to put it right after the noun).",
+          "vi": "Tiếng Hindi dùng **hậu từ** — các từ như **में** (mein, 'trong'), **पर** (par, 'trên'), **से** (se, 'từ'), **को** (ko, 'đến') gắn SAU danh từ: **मेज़ पर** (mez par = bàn trên). Tiếng Anh dùng **giới từ** trước danh từ: **on the table**. Trật tự từ L1 của bạn là đảo ngược chính xác. Điều này đặc biệt khó trong câu dài khi giới từ bị tách khỏi danh từ: \"Which city do you come **from**?\" (giới từ cuối câu — tự nhiên trong tiếng Anh, nhưng não tiếng Hindi muốn đặt nó ngay sau danh từ).",
+          "hi": "हिंदी में **postpositions** का इस्तेमाल होता है — **में**, **पर**, **से**, **को** जैसे शब्द जो संज्ञा के बाद आते हैं: **मेज़ पर** (mez par = table on)। English में **prepositions** संज्ञा से पहले आते हैं: **on the table**। आपकी मातृभाषा का शब्द क्रम इसका ठीक उल्टा है। यह खासकर लंबे वाक्यों में मुश्किल हो जाता है जहाँ preposition अपने noun से अलग हो जाता है: \"Which city do you come **from**?\" (preposition आखिर में — English में natural, पर आपका हिंदी दिमाग़ इसे noun के फ़ौरन बाद रखना चाहता है)।"
+        },
+        "pattern": {
+          "en": "**Place:** on the table, in the room, at the door, under the chair, near the station. **Direction:** to the market, from Delhi, towards the bridge. **Time:** at 5pm, on Monday, in July, since morning, for two hours. **Phrasal verbs:** turn **on**, give **up**, look **after** (these are verbs with built-in prepositions — learn them as one unit). **Stranded prepositions:** \"Who are you talking **to**?\" \"What are you looking **at**?\" (preposition at end = natural English).",
+          "vi": "**Nơi chốn:** on the table, in the room, at the door, under the chair, near the station. **Hướng:** to the market, from Delhi, towards the bridge. **Thời gian:** at 5pm, on Monday, in July, since morning, for two hours. **Cụm động từ:** turn **on**, give **up**, look **after** (động từ có giới từ gắn liền — học như một đơn vị). **Giới từ cuối câu:** \"Who are you talking **to**?\" \"What are you looking **at**?\" (giới từ cuối câu = tiếng Anh tự nhiên).",
+          "hi": "**स्थान:** on the table, in the room, at the door, under the chair, near the station। **दिशा:** to the market, from Delhi, towards the bridge। **समय:** at 5pm, on Monday, in July, since morning, for two hours। **Phrasal verbs:** turn **on**, give **up**, look **after** (ये verb के साथ जुड़े prepositions हैं — एक इकाई के रूप में सीखें)। **अंत में preposition:** \"Who are you talking **to**?\" \"What are you looking **at**?\" (अंत में preposition = natural English)।"
+        },
+        "practice": {
+          "en": "Read aloud, feeling the English order: \"Put the book **on the table**.\" (not: table on). \"She walked **to the station**.\" (not: station to). \"I'm coming **from Mumbai**.\" (not: Mumbai from). \"Who are you waiting **for**?\" (preposition at end — feels wrong to you, sounds right to English ears). \"This is the house I grew up **in**.\" \"What did you want to talk **about**?\"",
+          "vi": "Đọc thành tiếng, cảm nhận trật tự tiếng Anh: \"Put the book **on the table**.\" (không phải: table on). \"She walked **to the station**.\" (không phải: station to). \"I'm coming **from Mumbai**.\" (không phải: Mumbai from). \"Who are you waiting **for**?\" (giới từ cuối câu — bạn thấy sai, nhưng tai Anh thấy đúng). \"This is the house I grew up **in**.\" \"What did you want to talk **about**?\"",
+          "hi": "ज़ोर से पढ़ें और English क्रम महसूस करें: \"Put the book **on the table**.\" (table on नहीं)। \"She walked **to the station**.\" (station to नहीं)। \"I'm coming **from Mumbai**.\" (Mumbai from नहीं)। \"Who are you waiting **for**?\" (preposition आखिर में — आपको गलत लगे, English कानों को सही)। \"This is the house I grew up **in**.\" \"What did you want to talk **about**?\""
+        },
+        "takeaway": {
+          "en": "English preposition always comes before its noun. If it's stranded at the end, that's a question or relative clause — learn to trust that pattern.",
+          "vi": "Giới từ tiếng Anh luôn đứng trước danh từ của nó. Nếu nó ở cuối câu, đó là câu hỏi hoặc mệnh đề quan hệ — hãy học cách tin tưởng mẫu đó.",
+          "hi": "English preposition हमेशा अपने noun से पहले आता है। अगर वह अंत में है, तो वह question या relative clause है — इस pattern पर भरोसा करना सीखें।"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "hi": "सही वाक्य चुनें:"
+          },
+          "options": [
+            "I am going market to.",
+            "I am going to the market.",
+            "I am going to market.",
+            "I am going the market to."
+          ],
+          "correctAnswer": "I am going to the market.",
+          "explanation": {
+            "en": "Direction uses **to** before the place: **to the market** (not: market to).",
+            "vi": "Hướng đi dùng **to** trước nơi chốn: **to the market** (không phải: market to).",
+            "hi": "दिशा के लिए **to** जगह से पहले: **to the market** (market to नहीं)।"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "hi": "सही वाक्य चुनें:"
+          },
+          "options": [
+            "The book is table on.",
+            "The book is on the table.",
+            "The book is the table on.",
+            "On the table the book is."
+          ],
+          "correctAnswer": "The book is on the table.",
+          "explanation": {
+            "en": "Place preposition **on** comes before the noun: **on the table** (Hindi postposition order: 'table on' → wrong in English).",
+            "vi": "Giới từ nơi chốn **on** đứng trước danh từ: **on the table** (trật tự hậu từ Hindi 'bàn trên' → sai trong tiếng Anh).",
+            "hi": "स्थान का preposition **on** noun से पहले: **on the table** (हिंदी का postposition क्रम 'table on' → English में गलत)।"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "hi": "सही वाक्य चुनें:"
+          },
+          "options": [
+            "Who are you talking to?",
+            "To who are you talking?",
+            "Who to are you talking?",
+            "Who are you to talking?"
+          ],
+          "correctAnswer": "Who are you talking to?",
+          "explanation": {
+            "en": "In casual English questions, the preposition is often stranded at the end: **talking to**.",
+            "vi": "Trong câu hỏi tiếng Anh thông thường, giới từ thường đứng cuối câu: **talking to**.",
+            "hi": "आम English सवालों में preposition अक्सर अंत में आता है: **talking to**।"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "hi": "सही वाक्य चुनें:"
+          },
+          "options": [
+            "She comes from Delhi.",
+            "She comes Delhi from.",
+            "She from Delhi comes.",
+            "From Delhi she comes."
+          ],
+          "correctAnswer": "She comes from Delhi.",
+          "explanation": {
+            "en": "Origin uses **from** before the place: **from Delhi** (natural English SVO order).",
+            "vi": "Nguồn gốc dùng **from** trước nơi chốn: **from Delhi** (trật tự SVO tự nhiên trong tiếng Anh).",
+            "hi": "उत्पत्ति के लिए **from** जगह से पहले: **from Delhi** (natural English SVO क्रम)।"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "hi": "सही वाक्य चुनें:"
+          },
+          "options": [
+            "This is the house I grew up in.",
+            "This is the house in I grew up.",
+            "This is the house I grew in up.",
+            "This in the house I grew up."
+          ],
+          "correctAnswer": "This is the house I grew up in.",
+          "explanation": {
+            "en": "In relative clauses, the preposition is often stranded at the end: **the house I grew up in**. Formal alternative: \"the house in which I grew up.\"",
+            "vi": "Trong mệnh đề quan hệ, giới từ thường đứng cuối câu: **the house I grew up in**. Cách trang trọng: \"the house in which I grew up.\"",
+            "hi": "Relative clause में preposition अक्सर अंत में रहता है: **the house I grew up in**। Formal विकल्प: \"the house in which I grew up.\""
+          }
+        }
+      ]
+    },
+    {
+      "tag": "hi_l1_wrong_word_order",
+      "title": {
+        "en": "English word order — subject, verb, then object",
+        "vi": "Trật tự từ tiếng Anh — chủ ngữ, động từ, rồi tân ngữ",
+        "hi": "English शब्द क्रम — subject, verb, फिर object"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"She her homework is doing.\" If you've ever written a sentence like this, you're translating Hindi word order directly into English words. Hindi is SOV — Subject-Object-Verb (**वह अपना होमवर्क कर रही है** = she her homework doing is). English is SVO — Subject-Verb-Object. The verb belongs in the middle, and until your brain accepts this, your English will carry a Hindi accent in its bones.",
+          "vi": "\"She her homework is doing.\" Nếu bạn từng viết câu như thế này, bạn đang dịch trực tiếp trật tự từ tiếng Hindi sang từ tiếng Anh. Tiếng Hindi là SOV — Chủ ngữ-Tân ngữ-Động từ (**वह अपना होमवर्क कर रही है** = cô ấy bài tập đang làm). Tiếng Anh là SVO — Chủ ngữ-Động từ-Tân ngữ. Động từ phải ở giữa, và cho đến khi não bạn chấp nhận điều này, tiếng Anh của bạn sẽ mang \"giọng\" Hindi trong cấu trúc.",
+          "hi": "\"She her homework is doing.\" अगर आपने कभी ऐसा वाक्य लिखा है, तो आप हिंदी के शब्द क्रम का सीधा अंग्रेज़ी में अनुवाद कर रहे हैं। हिंदी SOV है — Subject-Object-Verb (**वह अपना होमवर्क कर रही है** = she her homework doing is)। English SVO है — Subject-Verb-Object। Verb बीच में आता है, और जब तक आपका दिमाग़ इसे स्वीकार नहीं करता, आपकी English की हड्डियों में हिंदी का ढाँचा रहेगा।"
+        },
+        "why": {
+          "en": "Hindi, like most South Asian languages, is **SOV** (Subject-Object-Verb). The verb goes at the end. English is **SVO** (Subject-Verb-Object). The verb goes right after the subject. This is the deepest structural difference between the two languages, and it affects EVERY sentence. Questions, negatives, embedded clauses — they all build on this SVO foundation. When you're tired or speaking fast, your brain defaults to the SOV pattern it learned first.",
+          "vi": "Tiếng Hindi, như hầu hết các ngôn ngữ Nam Á, là **SOV** (Chủ ngữ-Tân ngữ-Động từ). Động từ đứng cuối. Tiếng Anh là **SVO** (Chủ ngữ-Động từ-Tân ngữ). Động từ đứng ngay sau chủ ngữ. Đây là khác biệt cấu trúc sâu nhất giữa hai ngôn ngữ, và nó ảnh hưởng đến MỌI câu. Câu hỏi, câu phủ định, mệnh đề nhúng — tất cả đều xây trên nền SVO này. Khi bạn mệt hoặc nói nhanh, não bạn mặc định quay về mẫu SOV mà nó học đầu tiên.",
+          "hi": "हिंदी, ज़्यादातर दक्षिण एशियाई भाषाओं की तरह, **SOV** (Subject-Object-Verb) है। Verb अंत में आता है। English **SVO** (Subject-Verb-Object) है। Verb, subject के फ़ौरन बाद आता है। यह दोनों भाषाओं के बीच सबसे गहरा संरचनात्मक अंतर है, और यह हर वाक्य को प्रभावित करता है। सवाल, नकारात्मक वाक्य, अंदरूनी clauses — सब इसी SVO नींव पर बनते हैं। जब आप थके हों या तेज़ बोल रहे हों, तो आपका दिमाग़ अपने पहले सीखे SOV pattern पर लौट जाता है।"
+        },
+        "pattern": {
+          "en": "**Simple sentence:** Subject → Verb → Object. \"She reads books.\" (not: She books reads). **With auxiliary:** Subject → Auxiliary → Verb → Object. \"She is reading a book.\" (not: She a book is reading). **Question:** (Question word) → Auxiliary → Subject → Verb → Object? \"What is she reading?\" (not: What she is reading?). **Negative:** Subject → Auxiliary + not → Verb → Object. \"She is not reading the book.\"",
+          "vi": "**Câu đơn:** Chủ ngữ → Động từ → Tân ngữ. \"She reads books.\" (không phải: She books reads). **Có trợ động từ:** Chủ ngữ → Trợ động từ → Động từ → Tân ngữ. \"She is reading a book.\" (không phải: She a book is reading). **Câu hỏi:** (Từ hỏi) → Trợ động từ → Chủ ngữ → Động từ → Tân ngữ? \"What is she reading?\" (không phải: What she is reading?). **Phủ định:** Chủ ngữ → Trợ động từ + not → Động từ → Tân ngữ. \"She is not reading the book.\"",
+          "hi": "**सरल वाक्य:** Subject → Verb → Object। \"She reads books.\" (She books reads नहीं)। **सहायक क्रिया के साथ:** Subject → Auxiliary → Verb → Object। \"She is reading a book.\" (She a book is reading नहीं)। **प्रश्न:** (Question word) → Auxiliary → Subject → Verb → Object? \"What is she reading?\" (What she is reading? नहीं)। **नकारात्मक:** Subject → Auxiliary + not → Verb → Object। \"She is not reading the book.\""
+        },
+        "practice": {
+          "en": "Say each aloud, feeling the SVO rhythm: \"I like coffee.\" (S-V-O). \"She bought a new dress.\" (S-V-O). \"They are watching a movie.\" (S-Aux-V-O). \"He doesn't understand the question.\" (S-Aux-not-V-O). \"What do you want for dinner?\" (Q-Aux-S-V-O). \"The man who lives next door has a cat.\" (S-[relative clause]-V-O — still SVO!).",
+          "vi": "Nói thành tiếng, cảm nhận nhịp SVO: \"I like coffee.\" (S-V-O). \"She bought a new dress.\" (S-V-O). \"They are watching a movie.\" (S-Aux-V-O). \"He doesn't understand the question.\" (S-Aux-not-V-O). \"What do you want for dinner?\" (Q-Aux-S-V-O). \"The man who lives next door has a cat.\" (S-[mệnh đề quan hệ]-V-O — vẫn là SVO!).",
+          "hi": "ज़ोर से बोलें और SVO की लय महसूस करें: \"I like coffee.\" (S-V-O)। \"She bought a new dress.\" (S-V-O)। \"They are watching a movie.\" (S-Aux-V-O)। \"He doesn't understand the question.\" (S-Aux-not-V-O)। \"What do you want for dinner?\" (Q-Aux-S-V-O)। \"The man who lives next door has a cat.\" (S-[relative clause]-V-O — फिर भी SVO!)।"
+        },
+        "takeaway": {
+          "en": "English verb goes right after the subject. Always. If your verb is at the end, you're writing Hindi with English words.",
+          "vi": "Động từ tiếng Anh đứng ngay sau chủ ngữ. Luôn luôn. Nếu động từ của bạn ở cuối câu, bạn đang viết tiếng Hindi bằng từ tiếng Anh.",
+          "hi": "English में verb हमेशा subject के ठीक बाद आता है। हमेशा। अगर आपका verb अंत में है, तो आप हिंदी को अंग्रेज़ी शब्दों में लिख रहे हैं।"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "hi": "सही वाक्य चुनें:"
+          },
+          "options": [
+            "She her homework is doing.",
+            "She is doing her homework.",
+            "She is her homework doing.",
+            "Her homework she is doing."
+          ],
+          "correctAnswer": "She is doing her homework.",
+          "explanation": {
+            "en": "SVO order: She (S) is doing (V) her homework (O). Verb goes right after auxiliary.",
+            "vi": "Trật tự SVO: She (S) is doing (V) her homework (O). Động từ đứng ngay sau trợ động từ.",
+            "hi": "SVO क्रम: She (S) is doing (V) her homework (O)। Verb, auxiliary के ठीक बाद।"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "hi": "सही वाक्य चुनें:"
+          },
+          "options": [
+            "I Hindi speak.",
+            "I speak Hindi.",
+            "I Hindi speaking.",
+            "Speak I Hindi."
+          ],
+          "correctAnswer": "I speak Hindi.",
+          "explanation": {
+            "en": "Simple SVO: I (Subject) speak (Verb) Hindi (Object). Hindi SOV 'मैं हिंदी बोलता हूँ' places verb last — don't carry that over.",
+            "vi": "SVO đơn giản: I (S) speak (V) Hindi (O). Tiếng Hindi SOV 'मैं हिंदी बोलता हूँ' đặt động từ cuối — đừng mang điều đó sang.",
+            "hi": "सरल SVO: I (Subject) speak (Verb) Hindi (Object)। हिंदी SOV 'मैं हिंदी बोलता हूँ' में verb अंत में है — इसे English में मत लाएँ।"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "hi": "सही वाक्य चुनें:"
+          },
+          "options": [
+            "What you are eating?",
+            "What are you eating?",
+            "You are eating what?",
+            "What eating are you?"
+          ],
+          "correctAnswer": "What are you eating?",
+          "explanation": {
+            "en": "Question: Q-word → Auxiliary → Subject → Verb → Object. **What are you eating?**",
+            "vi": "Câu hỏi: Từ hỏi → Trợ động từ → Chủ ngữ → Động từ → Tân ngữ. **What are you eating?**",
+            "hi": "प्रश्न: Q-word → Auxiliary → Subject → Verb → Object। **What are you eating?**"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "hi": "सही वाक्य चुनें:"
+          },
+          "options": [
+            "Yesterday I a movie watched.",
+            "Yesterday I watched a movie.",
+            "I yesterday watched a movie.",
+            "I a movie yesterday watched."
+          ],
+          "correctAnswer": "Yesterday I watched a movie.",
+          "explanation": {
+            "en": "Time expressions can go first, but SVO order stays: (Yesterday) I (S) watched (V) a movie (O).",
+            "vi": "Biểu thức thời gian có thể đứng đầu, nhưng trật tự SVO vẫn giữ: (Yesterday) I (S) watched (V) a movie (O).",
+            "hi": "Time expression पहले आ सकता है, पर SVO क्रम बना रहता है: (Yesterday) I (S) watched (V) a movie (O)।"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "hi": "सही वाक्य चुनें:"
+          },
+          "options": [
+            "The man who lives next door a cat has.",
+            "The man who lives next door has a cat.",
+            "The man has a cat who lives next door.",
+            "A cat the man who lives next door has."
+          ],
+          "correctAnswer": "The man who lives next door has a cat.",
+          "explanation": {
+            "en": "Even with a relative clause, the main sentence is still SVO: The man [who lives next door] has (V) a cat (O).",
+            "vi": "Ngay cả với mệnh đề quan hệ, câu chính vẫn là SVO: The man [who lives next door] has (V) a cat (O).",
+            "hi": "Relative clause के साथ भी, मुख्य वाक्य SVO ही रहता है: The man [who lives next door] has (V) a cat (O)।"
           }
         }
       ]

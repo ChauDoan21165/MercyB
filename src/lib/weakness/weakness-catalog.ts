@@ -111,6 +111,16 @@ export type WeaknessTag =
   | "ar_c2_register_consistency"
   | "ar_c2_hedging_academic"
   | "ar_c2_cleft_focus";
+  | "hi_l1_missing_article"
+  | "hi_l1_preposition_postposition"
+  | "hi_l1_wrong_word_order"
+  | "hi_l1_since_for_confusion"
+  | "hi_l1_continuous_overuse"
+  | "hi_l1_present_perfect_vs_simple"
+  | "hi_c2_reported_speech_tense"
+  | "hi_c2_conditional_backshift"
+  | "hi_c2_register_formality"
+  | "hi_c2_academic_hedging";
 
 export type BilingualText = {
   /** English surface — may contain `**word**` markdown bolding. */
@@ -125,6 +135,8 @@ export type BilingualText = {
   th?: string;
   /** Arabic-native English explanation — optional, for ar-native learners. */
   ar?: string;
+  /** Hindi-native English explanation — optional, for hi-native learners. */
+  hi?: string;
 };
 
 export type WeaknessEntry = {
@@ -1168,11 +1180,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
         en: "Present perfect vs past simple",
         vi: "Present perfect vs past simple",
         id: "Present perfect vs past simple",
+        hi: "Present perfect और past simple",
       },
       longDescription: {
         en: "Indonesian **sudah** covers both 'I ate' and 'I have eaten.' English splits them: use **past simple** when a specific past time is named (**yesterday**, **last week**, **this morning**); use **present perfect** for past actions with present relevance and no specific time.",
         vi: "Tiếng Indonesia dùng **sudah** cho cả 'I ate' và 'I have eaten.' Tiếng Anh phân biệt: dùng **past simple** khi có thời gian cụ thể trong quá khứ; dùng **present perfect** khi hành động quá khứ còn liên quan đến hiện tại và không có thời gian cụ thể.",
         id: "Bahasa Indonesia menggunakan **sudah** untuk 'I ate' dan 'I have eaten.' Bahasa Inggris membedakannya: gunakan **past simple** saat waktu lampau spesifik disebutkan (**yesterday**, **last week**, **this morning**); gunakan **present perfect** untuk tindakan lampau yang masih relevan sekarang tanpa waktu spesifik.",
+        hi: "हिंदी की तरह Indonesian में भी **sudah** 'I ate' और 'I have eaten' दोनों को cover करता है। English इन्हें अलग करता है: जब कोई specific past time बताया गया हो तब **past simple**; जब past action का present से संबंध हो और कोई specific time न बताया गया हो, तब **present perfect**।",
       },
       exampleWrong: "I have eaten breakfast this morning.",
       exampleRight: "I ate breakfast this morning.",
@@ -1184,11 +1198,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
         en: "Unreal conditionals (Type 2)",
         vi: "Câu điều kiện không có thật (Type 2)",
         id: "Pengandaian tidak nyata (Type 2)",
+        hi: "Unreal conditional (Type 2)",
       },
       longDescription: {
         en: "Indonesian **kalau… maka…** uses the same structure for real and unreal conditions. English marks unreal / hypothetical conditions with **If + past tense, would + base verb** — never mix past with **will**.",
         vi: "Tiếng Indonesia **kalau… maka…** dùng cùng cấu trúc cho cả điều kiện thật và không thật. Tiếng Anh đánh dấu điều kiện không thật bằng **If + quá khứ, would + động từ gốc** — không trộn quá khứ với **will**.",
         id: "Bahasa Indonesia menggunakan **kalau… maka…** dengan struktur yang sama untuk kondisi nyata dan tidak nyata. Bahasa Inggris menandai kondisi tidak nyata/hipotetis dengan **If + past tense, would + kata kerja dasar** — jangan campur past dengan **will**.",
+        hi: "हिंदी की तरह Indonesian का **kalau… maka…** real और unreal दोनों conditions के लिए एक जैसी संरचना रखता है। English में unreal/hypothetical conditions के लिए **If + past tense, would + base verb** अनिवार्य है — past के साथ **will** कभी न मिलाएँ।",
       },
       exampleWrong: "If I had money, I will buy a car.",
       exampleRight: "If I had money, I would buy a car.",
@@ -1200,11 +1216,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
         en: "Reported speech tense shift",
         vi: "Lùi thì trong câu tường thuật",
         id: "Pergeseran tenses di kalimat tidak langsung",
+        hi: "Reported speech में tense बदलना",
       },
       longDescription: {
         en: "Indonesian reports speech without changing the verb tense — **Dia bilang dia lapar** keeps present tense. English backshifts the tense: **She said she was hungry**, not **she is hungry**.",
         vi: "Tiếng Indonesia tường thuật không đổi thì động từ — **Dia bilang dia lapar** giữ nguyên thì hiện tại. Tiếng Anh lùi thì: **She said she was hungry**, không phải **she is hungry**.",
         id: "Bahasa Indonesia melaporkan ucapan tanpa mengubah tense kata kerja — **Dia bilang dia lapar** tetap menggunakan present tense. Bahasa Inggris menggeser tense ke belakang: **She said she was hungry**, bukan **she is hungry**.",
+        hi: "हिंदी की तरह Indonesian में भी reported speech में verb tense नहीं बदलता — **Dia bilang dia lapar** में present tense जस का तस रहता है। English में tense backshift ज़रूरी है: **She said she was hungry**, न कि **she is hungry**।",
       },
       exampleWrong: "She said she is tired.",
       exampleRight: "She said she was tired.",
@@ -1216,11 +1234,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
           en: "Inversion for emphasis",
           vi: "Đảo ngữ nhấn mạnh",
           id: "Inversi untuk penekanan",
+          hi: "ज़ोर देने के लिए inversion",
         },
         longDescription: {
           en: "Indonesian fronts adverbs without changing word order (**Mungkin dia sudah pergi** keeps subject-verb intact). English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversion signals emphasis and formality — a C2 feature that separates proficient from native-like writing.",
           vi: "Tiếng Việt đưa trạng từ lên đầu câu mà không đảo trật tự từ (**Có lẽ anh ấy đã đi rồi** giữ nguyên chủ ngữ-động từ). Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế như **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — kỹ năng cấp C2 phân biệt người thành thạo với người viết như bản ngữ.",
           id: "Bahasa Indonesia meletakkan kata keterangan di depan tanpa mengubah urutan kata (**Mungkin dia sudah pergi** tetap subjek-kata kerja). Bahasa Inggris membalik subjek dan kata bantu setelah kata keterangan negatif/restriktif seperti **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversi menandakan penekanan dan formalitas — fitur level C2 yang membedakan penulis mahir dari penulis seperti penutur asli.",
+          hi: "हिंदी और Indonesian दोनों में क्रिया विशेषण को आगे लाने पर शब्द क्रम नहीं बदलता। English में **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances** जैसे negative/restrictive adverbials के बाद subject और auxiliary की अदला-बदली (inversion) होती है। Inversion ज़ोर और औपचारिकता का संकेत है — यह C2 स्तर की विशेषता है।",
         },
         exampleWrong: "Never I have seen such dedication.",
         exampleRight: "Never have I seen such dedication.",
@@ -1232,11 +1252,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
           en: "Cleft sentences for focus",
           vi: "Câu chẻ nhấn mạnh",
           id: "Kalimat cleft untuk fokus",
+          hi: "फ़ोकस के लिए cleft sentences",
         },
         longDescription: {
           en: "Indonesian uses **yang** to highlight (**Yang memecahkan jendela itu John**). English has a richer system: **It-clefts** (**It was John who broke the window**) pull one element into focus; **Wh-clefts** (**What I need is more time**) package a whole idea as the subject. At C2, choosing the right cleft structure controls what the reader notices first.",
           vi: "Tiếng Việt dùng **chính… là…** để nhấn mạnh (**Chính John là người làm vỡ cửa sổ**). Tiếng Anh có hệ thống phong phú hơn: **It-cleft** (**It was John who broke the window**) kéo một yếu tố vào tiêu điểm; **Wh-cleft** (**What I need is more time**) đóng gói cả một ý thành chủ ngữ. Ở cấp C2, chọn đúng cấu trúc cleft cho phép bạn kiểm soát chính xác điều người đọc chú ý đầu tiên.",
           id: "Bahasa Indonesia menggunakan **yang** untuk menyoroti (**Yang memecahkan jendela itu John**). Bahasa Inggris punya sistem yang lebih kaya: **It-cleft** (**It was John who broke the window**) menarik satu elemen ke fokus; **Wh-cleft** (**What I need is more time**) mengemas seluruh ide sebagai subjek. Di level C2, memilih struktur cleft yang tepat memungkinkan kamu mengontrol persis apa yang pertama kali pembaca perhatikan.",
+          hi: "हिंदी में **ही** या **जो… वह** ज़ोर देने के लिए इस्तेमाल होता है। English में दो मुख्य cleft structures हैं: **It-cleft** (**It was John who broke the window**) एक तत्व पर फ़ोकस खींचता है; **Wh-cleft** (**What I need is more time**) पूरे विचार को subject बना देता है। C2 स्तर पर, सही cleft structure चुनना पाठक का ध्यान नियंत्रित करता है।",
         },
         exampleWrong: "What I need it is more time.",
         exampleRight: "What I need is more time.",
@@ -1304,75 +1326,50 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
         en: "Arabic expresses past actions with a single past tense (الماضي). English splits them: use **past simple** when a specific past time is named (**yesterday**, **last week**, **this morning**); use **present perfect** for past actions with present relevance and no specific time.",
         vi: "Tiếng Ả Rập dùng thì quá khứ (الماضي) cho mọi hành động quá khứ. Tiếng Anh phân biệt: dùng **past simple** khi có thời gian cụ thể trong quá khứ; dùng **present perfect** khi hành động quá khứ còn liên quan đến hiện tại và không có thời gian cụ thể.",
         ar: "تستخدم اللغة العربية زمن الماضي لكل الأفعال الماضية. أما الإنجليزية فتفصل بينهما: استخدم **past simple** عند وجود زمن محدد في الماضي (**yesterday**, **last week**, **this morning**)؛ واستخدم **present perfect** للأفعال الماضية المرتبطة بالحاضر دون زمن محدد.",
-      },
       exampleWrong: "I have eaten breakfast this morning.",
       exampleRight: "I ate breakfast this morning.",
       linkedRoomId: null,
     },
   ar_l1_conditional_unreal: {
       tag: "ar_l1_conditional_unreal",
-      shortLabel: {
         en: "Unreal conditionals (Type 2)",
         vi: "Câu điều kiện không có thật (Type 2)",
         ar: "الجمل الشرطية غير الحقيقية",
-      },
-      longDescription: {
         en: "Arabic uses **لو** + past for both real and unreal conditions. English marks unreal / hypothetical conditions with **If + past tense, would + base verb** — never mix past with **will**.",
         vi: "Tiếng Ả Rập dùng **لو** + quá khứ cho cả điều kiện thật và không thật. Tiếng Anh đánh dấu điều kiện không thật bằng **If + quá khứ, would + động từ gốc** — không trộn quá khứ với **will**.",
         ar: "تستخدم العربية **لو** مع الفعل الماضي للشرط الحقيقي وغير الحقيقي على حد سواء. أما الإنجليزية فتميز الشرط غير الحقيقي بـ **If + past tense, would + فعل أساسي** — ولا تخلط الماضي مع **will** أبداً.",
-      },
       exampleWrong: "If I had money, I will buy a car.",
       exampleRight: "If I had money, I would buy a car.",
-      linkedRoomId: null,
-    },
   ar_l1_reported_speech: {
       tag: "ar_l1_reported_speech",
-      shortLabel: {
         en: "Reported speech tense shift",
         vi: "Lùi thì trong câu tường thuật",
         ar: "نقل الكلام وتغيير الزمن",
-      },
-      longDescription: {
         en: "Arabic often keeps the original tense in reported speech (**قال إنه متعب** stays present). English backshifts the tense: **He said he was tired**, not **he is tired**.",
         vi: "Tiếng Ả Rập thường giữ nguyên thì trong câu tường thuật (**قال إنه متعب** giữ thì hiện tại). Tiếng Anh lùi thì: **He said he was tired**, không phải **he is tired**.",
         ar: "كثيراً ما تبقي العربية على الزمن الأصلي في الكلام المنقول (**قال إنه متعب** يبقى في الحاضر). أما الإنجليزية فتزيح الزمن إلى الماضي: **He said he was tired**، وليس **he is tired**.",
-      },
       exampleWrong: "She said she is tired.",
       exampleRight: "She said she was tired.",
-      linkedRoomId: null,
-    },
   ar_l1_relative_clauses: {
       tag: "ar_l1_relative_clauses",
-      shortLabel: {
         en: "Relative clauses (who/which/that)",
         vi: "Mệnh đề quan hệ (who/which/that)",
         ar: "جمل الوصل (who/which/that)",
-      },
-      longDescription: {
         en: "Arabic relative clauses use a resumptive pronoun that English drops: **الرجل الذي رأيته** (lit. 'the man who I saw him'). English omits the object pronoun entirely: **the man who I saw** — adding **him** is a common Arabic-speaker error.",
         vi: "Mệnh đề quan hệ tiếng Ả Rập dùng đại từ nối mà tiếng Anh lược bỏ: **الرجل الذي رأيته** (dịch sát: 'the man who I saw him'). Tiếng Anh bỏ hẳn đại từ tân ngữ: **the man who I saw** — thêm **him** là lỗi phổ biến của người học gốc Ả Rập.",
         ar: "تستخدم جمل الوصل في العربية ضميراً عائداً تحذفه الإنجليزية: **الرجل الذي رأيته** (حرفياً: 'the man who I saw him'). أما الإنجليزية فتحذف ضمير المفعول تماماً: **the man who I saw** — وإضافة **him** خطأ شائع لدى المتعلمين العرب.",
-      },
       exampleWrong: "The man who I saw him is my teacher.",
       exampleRight: "The man who I saw is my teacher.",
-      linkedRoomId: null,
-    },
   ar_l1_prepositions_in_on_at: {
       tag: "ar_l1_prepositions_in_on_at",
-      shortLabel: {
         en: "Prepositions in / on / at",
         vi: "Giới từ in / on / at",
         ar: "حروف الجر in / on / at",
-      },
-      longDescription: {
         en: "Arabic uses **في** for most spatial and temporal relations where English splits across **in** (enclosed/large), **on** (surface/day), and **at** (point/time). Arabic speakers often default to **in** for everything.",
         vi: "Tiếng Ả Rập dùng **في** cho hầu hết quan hệ không gian và thời gian, trong khi tiếng Anh chia ra **in** (không gian kín/lớn), **on** (bề mặt/ngày), và **at** (điểm/thời gian cụ thể). Người học gốc Ả Rập thường mặc định dùng **in** cho mọi thứ.",
         ar: "تستخدم العربية **في** لمعظم العلاقات المكانية والزمانية، بينما تفرق الإنجليزية بين **in** (للمساحات المغلقة/الكبيرة)، و**on** (للأسطح/الأيام)، و**at** (للنقاط/الأوقات المحددة). ويميل المتعلمون العرب لاستخدام **in** في كل الحالات.",
-      },
       exampleWrong: "I will meet you in Monday in the bus stop.",
       exampleRight: "I will meet you on Monday at the bus stop.",
-      linkedRoomId: null,
-    },
   ar_c2_inversion_emphasis: {
         tag: "ar_c2_inversion_emphasis",
         shortLabel: {
@@ -1384,59 +1381,138 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
           en: "Arabic fronts adverbials without structural change (**أبداً لم أرَ شيئاً كهذا** keeps the sentence flexible). English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversion signals emphasis and formality — a C2 feature that separates proficient from native-like writing.",
           vi: "Tiếng Ả Rập đưa trạng từ lên đầu câu mà không thay đổi cấu trúc. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế như **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — kỹ năng cấp C2.",
           ar: "تقدم العربية الظروف إلى بداية الجملة دون تغيير هيكلي (**أبداً لم أرَ شيئاً كهذا**). أما الإنجليزية فتعكس الفاعل والفعل المساعد بعد الظروف النافية/المقيدة مثل **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. العكس علامة تأكيد ورسمية — وهي مهارة مستوى C2.",
-        },
         exampleWrong: "Never I have seen such dedication.",
         exampleRight: "Never have I seen such dedication.",
         linkedRoomId: null,
-      },
   ar_c2_register_consistency: {
         tag: "ar_c2_register_consistency",
-        shortLabel: {
           en: "Register consistency",
           vi: "Nhất quán văn phong",
           ar: "اتساق المستوى اللغوي",
-        },
-        longDescription: {
           en: "Arabic moves naturally between formal (فصحى) and colloquial (عامية) registers, often within the same text. In English, mixing **gonna** with **furthermore**, or **kids** with **offspring**, in the same paragraph sounds jarring. C2 writers maintain one register throughout a text.",
           vi: "Tiếng Ả Rập chuyển đổi tự nhiên giữa văn phong trang trọng (فصحى) và thân mật (عامية), thường trong cùng một văn bản. Trong tiếng Anh, pha trộn **gonna** với **furthermore**, hoặc **kids** với **offspring**, trong cùng một đoạn nghe rất chói tai. Người viết C2 duy trì một văn phong nhất quán.",
           ar: "تنتقل العربية بطبيعتها بين الفصحى والعامية، وغالباً في النص الواحد. أما في الإنجليزية، فخلط **gonna** مع **furthermore**، أو **kids** مع **offspring**، في نفس الفقرة يبدو نشازاً. كتّاب مستوى C2 يحافظون على مستوى لغوي واحد متسق في كامل النص.",
-        },
         exampleWrong: "The aforementioned findings are super interesting and you're gonna love them.",
         exampleRight: "The aforementioned findings are highly compelling and readers will find them valuable.",
-        linkedRoomId: null,
-      },
   ar_c2_hedging_academic: {
         tag: "ar_c2_hedging_academic",
-        shortLabel: {
           en: "Academic hedging",
           vi: "Giảm nhẹ học thuật",
           ar: "التحفظ الأكاديمي",
-        },
-        longDescription: {
           en: "Arabic academic writing, especially in the humanities, often states conclusions directly (**هذا يثبت أن…**). English academic convention softens claims with hedging: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. At C2, knowing when and how to hedge is as important as knowing the grammar.",
           vi: "Văn học thuật tiếng Ả Rập thường nêu kết luận trực tiếp (**هذا يثبت أن…**). Quy ước học thuật tiếng Anh làm mềm nhận định bằng giảm nhẹ: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. Ở cấp C2, biết khi nào và cách giảm nhẹ cũng quan trọng như biết ngữ pháp.",
           ar: "كثيراً ما تذكر الكتابة الأكاديمية العربية الاستنتاجات مباشرة (**هذا يثبت أن…**). أما الأعراف الأكاديمية الإنجليزية فتلطف الادعاءات بالتحفظ: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. في مستوى C2، معرفة متى وكيف تتحفظ لا تقل أهمية عن معرفة القواعد.",
-        },
         exampleWrong: "This proves that social media causes depression in teenagers.",
         exampleRight: "This suggests that social media may contribute to depressive symptoms in some teenagers.",
-        linkedRoomId: null,
-      },
   ar_c2_cleft_focus: {
         tag: "ar_c2_cleft_focus",
-        shortLabel: {
           en: "Cleft sentences for focus",
           vi: "Câu chẻ nhấn mạnh",
           ar: "الجمل المشقوقة للبؤرة",
-        },
-        longDescription: {
           en: "Arabic uses word order and particles like **إنّ** for emphasis. English has a richer system: **It-clefts** (**It was John who broke the window**) pull one element into focus; **Wh-clefts** (**What I need is more time**) package a whole idea as the subject. At C2, choosing the right cleft structure controls what the reader notices first.",
           vi: "Tiếng Ả Rập dùng trật tự từ và tiểu từ như **إنّ** để nhấn mạnh. Tiếng Anh có hệ thống phong phú hơn: **It-cleft** (**It was John who broke the window**) kéo một yếu tố vào tiêu điểm; **Wh-cleft** (**What I need is more time**) đóng gói cả một ý thành chủ ngữ. Ở cấp C2, chọn đúng cấu trúc cleft cho phép bạn kiểm soát chính xác điều người đọc chú ý đầu tiên.",
           ar: "تستخدم العربية ترتيب الكلمات وأدوات مثل **إنّ** للتأكيد. أما الإنجليزية فتملك نظاماً أغنى: **It-cleft** (**It was John who broke the window**) تسحب عنصراً واحداً إلى البؤرة؛ و**Wh-cleft** (**What I need is more time**) تغلف فكرة كاملة كفاعل. في مستوى C2، اختيار بنية cleft الصحيحة يمكنك من التحكم في أول ما يلاحظه القارئ.",
-        },
         exampleWrong: "What I need it is more time.",
         exampleRight: "What I need is more time.",
-        linkedRoomId: null,
-      },
+  hi_l1_missing_article: {
+      tag: "hi_l1_missing_article",
+        en: "Missing articles (a/an/the)",
+        vi: "Thiếu mạo từ (a/an/the)",
+        hi: "Articles (a/an/the) का प्रयोग न करना",
+        en: "Hindi has no articles — **एक लड़की** (ek ladki, 'a girl') is grammatical without any article. In English, singular countable nouns must carry **a**, **an**, or **the**. Hindi speakers often drop articles entirely because their native grammar has no equivalent category.",
+        vi: "Tiếng Hindi không có mạo từ — **एक लड़की** (ek ladki, 'một cô gái') đúng ngữ pháp mà không cần mạo từ. Trong tiếng Anh, danh từ đếm được số ít bắt buộc có **a**, **an**, hoặc **the**. Người nói tiếng Hindi thường bỏ mạo từ hoàn toàn vì ngữ pháp mẹ đẻ không có phạm trù tương đương.",
+        hi: "हिंदी में articles (a/an/the) नहीं होते — **एक लड़की** बिना किसी article के व्याकरणिक रूप से सही है। English में singular countable noun के साथ **a**, **an**, या **the** लगाना अनिवार्य है। Hindi speakers अक्सर articles को पूरी तरह छोड़ देते हैं क्योंकि उनकी मातृभाषा के व्याकरण में यह श्रेणी मौजूद ही नहीं है।",
+      exampleWrong: "She is doctor and works in hospital.",
+      exampleRight: "She is a doctor and works in a hospital.",
+  hi_l1_preposition_postposition: {
+      tag: "hi_l1_preposition_postposition",
+        en: "Preposition vs postposition",
+        vi: "Giới từ và hậu từ",
+        hi: "Preposition और postposition का फ़र्क",
+        en: "Hindi uses **postpositions** that come after the noun — **मेज़ पर** (mez par, literally 'table on'). English uses **prepositions** before the noun — **on the table**. This reversed word order causes Hindi speakers to misplace prepositions or use the wrong one, especially in complex sentences.",
+        vi: "Tiếng Hindi dùng **hậu từ** đứng sau danh từ — **मेज़ पर** (mez par, nghĩa đen 'bàn trên'). Tiếng Anh dùng **giới từ** trước danh từ — **on the table**. Trật tự từ đảo ngược này khiến người nói tiếng Hindi đặt sai vị trí giới từ hoặc dùng sai giới từ, đặc biệt trong câu phức tạp.",
+        hi: "हिंदी में संबंध सूचक शब्द (**postpositions**) संज्ञा के बाद आते हैं — **मेज़ पर** (mez par, शाब्दिक अर्थ 'table on')। English में **prepositions** संज्ञा से पहले आते हैं — **on the table**। यह उल्टा शब्द क्रम Hindi speakers को गलत जगह preposition डालने या गलत preposition चुनने पर मजबूर कर देता है, खासकर लंबे वाक्यों में।",
+      exampleWrong: "I am going market to.",
+      exampleRight: "I am going to the market.",
+  hi_l1_wrong_word_order: {
+      tag: "hi_l1_wrong_word_order",
+        en: "Subject-Object-Verb transfer",
+        vi: "Nhầm trật tự SOV → SVO",
+        hi: "SOV से SVO क्रम की गलती",
+        en: "Hindi's basic word order is **Subject-Object-Verb** (SOV) — **मैंने खाना खाया** (I food ate). English is **Subject-Verb-Object** (SVO) — **I ate food**. Hindi speakers, especially at lower levels, may place the verb at the end of English sentences, creating structures like 'I food ate' or 'She book is reading.'",
+        vi: "Trật tự từ cơ bản của tiếng Hindi là **Chủ ngữ - Tân ngữ - Động từ** (SOV) — **मैंने खाना खाया** (tôi thức ăn đã ăn). Tiếng Anh là **Chủ ngữ - Động từ - Tân ngữ** (SVO) — **I ate food**. Người nói tiếng Hindi, đặc biệt ở trình độ thấp, thường đặt động từ cuối câu tiếng Anh, tạo ra cấu trúc như 'I food ate' hoặc 'She book is reading.'",
+        hi: "हिंदी का मूल वाक्य क्रम **Subject-Object-Verb** (SOV) है — **मैंने खाना खाया** (मैंने-खाना-खाया)। English **Subject-Verb-Object** (SVO) है — **I ate food** (मैंने-खाया-खाना)। Hindi speakers, खासकर शुरुआती स्तर पर, अक्सर English वाक्यों के अंत में verb रख देते हैं, जिससे 'I food ate' या 'She book is reading' जैसी संरचनाएँ बन जाती हैं।",
+      exampleWrong: "She her homework is doing.",
+      exampleRight: "She is doing her homework.",
+  hi_l1_since_for_confusion: {
+      tag: "hi_l1_since_for_confusion",
+        en: '"Since" vs "for" confusion',
+        vi: 'Nhầm "since" và "for"',
+        hi: '"Since" और "for" में अंतर',
+        en: "Hindi uses **से** (se) for both 'since' and 'for' — **दो घंटे से** can mean 'for two hours' or 'since two [o\'clock].' English splits this: **since** + point in time (since Monday, since 3pm), **for** + duration (for two hours, for three days). Hindi speakers often default to 'since' everywhere because it feels like the more literal translation of से.",
+        vi: "Tiếng Hindi dùng **से** (se) cho cả 'since' và 'for' — **दो घंटे से** có thể nghĩa là 'for two hours' hoặc 'since two [o\'clock].' Tiếng Anh phân biệt: **since** + mốc thời gian (since Monday, since 3pm), **for** + khoảng thời gian (for two hours, for three days). Người nói tiếng Hindi thường mặc định dùng 'since' cho mọi trường hợp vì nó cảm giác như bản dịch sát nghĩa hơn của từ से.",
+        hi: "हिंदी में **से** (se) 'since' और 'for' दोनों के लिए इस्तेमाल होता है — **दो घंटे से** का मतलब 'for two hours' या 'since two [o\'clock]' दोनों हो सकता है। English इसे अलग करता है: **since** + समय बिंदु (since Monday, since 3pm), **for** + अवधि (for two hours, for three days)। Hindi speakers अक्सर हर जगह 'since' लगा देते हैं क्योंकि यह 'से' का ज़्यादा शाब्दिक अनुवाद लगता है।",
+      exampleWrong: "I have been waiting since two hours.",
+      exampleRight: "I have been waiting for two hours.",
+  hi_l1_continuous_overuse: {
+      tag: "hi_l1_continuous_overuse",
+        en: "Continuous tense overuse",
+        vi: "Lạm dụng thì tiếp diễn",
+        hi: "Continuous tense का अति प्रयोग",
+        en: "Hindi uses continuous/progressive forms more freely than English — stative verbs like **जानना** (jaanna, 'to know') routinely appear in continuous (**मैं जान रहा हूँ**, 'I am knowing'). English restricts the continuous to dynamic actions; 'I am knowing,' 'I am understanding,' 'I am wanting' are all ungrammatical. The correct forms are **I know**, **I understand**, **I want**.",
+        vi: "Tiếng Hindi dùng thì tiếp diễn tự do hơn tiếng Anh — động từ trạng thái như **जानना** (jaanna, 'biết') thường xuyên xuất hiện ở dạng tiếp diễn (**मैं जान रहा हूँ**, 'I am knowing'). Tiếng Anh giới hạn thì tiếp diễn cho hành động động; 'I am knowing,' 'I am understanding,' 'I am wanting' đều sai ngữ pháp. Dạng đúng là **I know**, **I understand**, **I want**.",
+        hi: "हिंदी में continuous/progressive tense का प्रयोग English से कहीं ज़्यादा खुले रूप में होता है — **जानना** जैसे stative verbs भी अक्सर continuous में आते हैं (**मैं जान रहा हूँ**)। English में continuous सिर्फ dynamic actions के लिए है; 'I am knowing,' 'I am understanding,' 'I am wanting' सब अव्याकरणिक हैं। सही रूप हैं **I know**, **I understand**, **I want**।",
+      exampleWrong: "I am not understanding this problem.",
+      exampleRight: "I don't understand this problem.",
+  hi_l1_present_perfect_vs_simple: {
+      tag: "hi_l1_present_perfect_vs_simple",
+        vi: "Hiện tại hoàn thành và quá khứ đơn",
+        hi: "Present perfect और past simple का फ़र्क",
+        en: "Hindi uses a single structure (**मैंने खाना खा लिया**) that can convey both 'I ate' and 'I have eaten.' English splits them: use **past simple** when a specific past time is named (**yesterday**, **last week**, **at 3pm**); use **present perfect** for past actions with present relevance and no specific time marker.",
+        vi: "Tiếng Hindi dùng một cấu trúc duy nhất (**मैंने खाना खा लिया**) để diễn tả cả 'I ate' và 'I have eaten.' Tiếng Anh phân biệt: dùng **past simple** khi có thời gian cụ thể trong quá khứ (**yesterday**, **last week**, **at 3pm**); dùng **present perfect** khi hành động quá khứ còn liên quan đến hiện tại và không có mốc thời gian cụ thể.",
+        hi: "हिंदी में एक ही संरचना (**मैंने खाना खा लिया**) 'I ate' और 'I have eaten' दोनों का भाव दे सकती है। English इन्हें अलग करता है: जब कोई specific past time बताया गया हो (**yesterday**, **last week**, **at 3pm**) तब **past simple**; जब past action का present से संबंध हो और कोई specific time न बताया गया हो, तब **present perfect**।",
+      exampleWrong: "I have eaten breakfast at 7am this morning.",
+      exampleRight: "I ate breakfast at 7am this morning.",
+  hi_c2_reported_speech_tense: {
+      tag: "hi_c2_reported_speech_tense",
+        en: "Reported speech — no tense backshift",
+        vi: "Câu tường thuật — không lùi thì",
+        hi: "Reported speech में tense बदलना",
+        en: "Hindi keeps the original tense in reported speech — **उसने कहा कि वह बीमार है** (she said that she is sick, present tense stays present). English backshifts the tense: **She said she was sick**, not 'she is sick.' At C2, failing to backshift in formal and academic writing signals non-native proficiency.",
+        vi: "Tiếng Hindi giữ nguyên thì trong câu tường thuật — **उसने कहा कि वह बीमार है** (cô ấy nói rằng cô ấy đang ốm, thì hiện tại giữ nguyên). Tiếng Anh lùi thì: **She said she was sick**, không phải 'she is sick.' Ở cấp C2, không lùi thì trong văn viết trang trọng và học thuật là dấu hiệu của người không phải bản ngữ.",
+        hi: "हिंदी में reported speech में tense वही रहता है — **उसने कहा कि वह बीमार है** (present tense, 'है' जस का तस)। English में tense backshift होता है: **She said she was sick**, न कि 'she is sick।' C2 स्तर पर, औपचारिक और शैक्षणिक लेखन में backshift न करना non-native proficiency का संकेत है।",
+      exampleWrong: "The minister stated that the economy is improving rapidly.",
+      exampleRight: "The minister stated that the economy was improving rapidly.",
+  hi_c2_conditional_backshift: {
+      tag: "hi_c2_conditional_backshift",
+        en: "Conditional tense backshift",
+        vi: "Lùi thì trong câu điều kiện",
+        hi: "Conditional में tense backshift",
+        en: "Hindi conditionals use the same tense pattern for real and unreal conditions — **अगर मेरे पास पैसे होते, तो मैं खरीदता** (if I had money, I would buy, using past subjunctive but without the English-style would+have structure). English marks unreal conditions with **If + past tense, would + base verb** — and **never** mixes past with **will**. At C2, mixed conditionals (past condition → present result) add another layer Hindi speakers must consciously learn.",
+        vi: "Câu điều kiện tiếng Hindi dùng cùng mẫu thì cho cả điều kiện thật và không thật — **अगर मेरे पास पैसे होते, तो मैं खरीदता** (nếu tôi có tiền, tôi sẽ mua, dùng quá khứ giả định nhưng không có cấu trúc would+have kiểu tiếng Anh). Tiếng Anh đánh dấu điều kiện không thật bằng **If + quá khứ, would + động từ gốc** — và **không bao giờ** trộn quá khứ với **will**. Ở cấp C2, câu điều kiện hỗn hợp (điều kiện quá khứ → kết quả hiện tại) thêm một lớp phức tạp mà người nói tiếng Hindi phải học có ý thức.",
+        hi: "हिंदी में conditional sentences में real और unreal दोनों के लिए एक जैसा tense pattern इस्तेमाल होता है — **अगर मेरे पास पैसे होते, तो मैं खरीदता** (past subjunctive, पर English के would+have जैसी संरचना के बिना)। English में unreal conditions के लिए **If + past tense, would + base verb** का नियम है — और past के साथ **will** कभी नहीं मिलता। C2 स्तर पर, mixed conditionals (past condition → present result) एक और परत जोड़ते हैं जिसे Hindi speakers को conscious effort से सीखना पड़ता है।",
+      exampleWrong: "If I had more time, I will learn Hindi.",
+      exampleRight: "If I had more time, I would learn Hindi.",
+  hi_c2_register_formality: {
+      tag: "hi_c2_register_formality",
+        en: "Register and formality transfer",
+        vi: "Chuyển đổi văn phong trang trọng",
+        hi: "Formality और register का अंतर",
+        en: "Hindi has a three-tier formality system — **आप** (formal), **तुम** (familiar), **तू** (intimate) — all mapping to English 'you.' Hindi speakers often overcompensate in English by adding extra polite phrases (**kindly do the needful**, **please revert back**) that sound unnatural to native ears. English formality comes from sentence structure and word choice, not from stacking politeness markers.",
+        vi: "Tiếng Hindi có hệ thống ba cấp độ lịch sự — **आप** (trang trọng), **तुम** (thân mật), **तू** (thân thiết) — tất cả đều dịch thành 'you' trong tiếng Anh. Người nói tiếng Hindi thường bù đắp quá mức trong tiếng Anh bằng cách thêm các cụm từ lịch sự thừa (**kindly do the needful**, **please revert back**) nghe không tự nhiên với người bản ngữ. Sự trang trọng trong tiếng Anh đến từ cấu trúc câu và lựa chọn từ, không phải từ việc xếp chồng các dấu hiệu lịch sự.",
+        hi: "हिंदी में formality के तीन स्तर हैं — **आप** (औपचारिक), **तुम** (परिचित), **तू** (अंतरंग) — और ये सब English के 'you' में समा जाते हैं। Hindi speakers अक्सर English में ज़रूरत से ज़्यादा polite phrases जोड़कर क्षतिपूर्ति करते हैं (**kindly do the needful**, **please revert back**) जो native speakers को unnatural लगती हैं। English में formality वाक्य संरचना और शब्द चयन से आती है, politeness markers की तह लगाने से नहीं।",
+      exampleWrong: "Kindly do the needful and revert back at the earliest.",
+      exampleRight: "Please take care of this and let me know as soon as you can.",
+  hi_c2_academic_hedging: {
+      tag: "hi_c2_academic_hedging",
+        en: "Academic hedging",
+        vi: "Giảm nhẹ học thuật",
+        hi: "शैक्षणिक लेखन में hedging",
+        en: "Hindi academic tradition often states claims directly — **यह सिद्ध करता है कि…** (this proves that…). English academic convention softens claims with hedging: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. At C2, knowing when and how to hedge is essential — direct claims in English are seen as overconfident rather than authoritative.",
+        vi: "Truyền thống học thuật tiếng Hindi thường nêu nhận định trực tiếp — **यह सिद्ध करता है कि…** (điều này chứng minh rằng…). Quy ước học thuật tiếng Anh làm mềm nhận định bằng hedging: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. Ở cấp C2, biết khi nào và cách hedging là thiết yếu — nhận định trực tiếp trong tiếng Anh bị coi là quá tự tin hơn là có thẩm quyền.",
+        hi: "हिंदी की शैक्षणिक परंपरा में दावे अक्सर सीधे कहे जाते हैं — **यह सिद्ध करता है कि…** (this proves that…)। English academic convention में hedging के ज़रिए दावों को नरम किया जाता है: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**। C2 स्तर पर, कब और कैसे hedging करनी है यह जानना अनिवार्य है — English में सीधे दावे authoritative नहीं, overconfident माने जाते हैं।",
+      exampleWrong: "This proves that bilingual education improves cognitive development.",
+      exampleRight: "This suggests that bilingual education may contribute to improved cognitive development.",
 };
 
 /** Ordered list of all tags (stable for tests + exhaustiveness checks). */
