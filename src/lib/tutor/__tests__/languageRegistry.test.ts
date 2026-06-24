@@ -12,7 +12,7 @@ import {
 
 describe("tutor language registry", () => {
   it("resolves all supported AI Tutor target languages", () => {
-    expect(TUTOR_LANGUAGE_CODES).toEqual(["en", "fr", "zh", "de", "ja", "ko", "es", "vi", "tr"]);
+    expect(TUTOR_LANGUAGE_CODES).toEqual(["en", "fr", "zh", "de", "ja", "ko", "es", "vi", "tr", "ru"]);
 
     for (const code of TUTOR_LANGUAGE_CODES) {
       expect(resolveTutorTargetLanguage(code)).toBe(code);
@@ -57,4 +57,13 @@ describe("tutor language registry", () => {
       expect(getTtsLocale(code)).toBe(TUTOR_LANGUAGE_REGISTRY[code].ttsLocale);
     }
   });
+  it("resolves Russian language metadata", () => {
+    expect(resolveTutorTargetLanguage("russian")).toBe("ru");
+    expect(resolveTutorTargetLanguage("русский")).toBe("ru");
+    expect(getTutorLanguageLabel("ru", "en")).toBe("Russian");
+    expect(getTutorLanguageLabel("ru", "vi")).toBe("Tiếng Nga");
+    expect(getSpeechLocale("ru")).toBe("ru-RU");
+    expect(getTtsLocale("ru")).toBe("ru-RU");
+  });
+
 });
