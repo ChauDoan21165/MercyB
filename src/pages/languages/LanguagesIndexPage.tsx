@@ -190,6 +190,30 @@ const CARDS: Card[] = [
     href: "/languages/hindi",
     accent: "indigo",
   },
+{
+    slug: "russian",
+    title_vi: "Tiếng Russian",
+    title_en: "Russian",
+    flag: "🇮🇳",
+    blurb_vi:
+      "31 bài Russian cục bộ: chữ Cyrillic, chào hỏi, sinh hoạt, mua sắm, công việc, truyền thông và văn phong học thuật — A1 → C2.",
+    blurb_en:
+      "31 local Russian lessons: Cyrillic, greetings, daily life, shopping, work, media, and academic register — A1 → C2.",
+    href: "/languages/russian",
+    accent: "indigo",
+  },
+{
+    slug: "punjabi",
+    title_vi: "Tiếng Punjabi",
+    title_en: "Punjabi",
+    flag: "🇮🇳",
+    blurb_vi:
+      "31 bài Punjabi cục bộ: chữ Gurmukhi, chào hỏi, sinh hoạt, mua sắm, công việc, truyền thông và văn phong học thuật — A1 → C2.",
+    blurb_en:
+      "31 local Punjabi lessons: Gurmukhi, greetings, daily life, shopping, work, media, and academic register — A1 → C2.",
+    href: "/languages/punjabi",
+    accent: "indigo",
+  },
   {
     slug: "urdu",
     title_vi: "Tiếng Urdu",
