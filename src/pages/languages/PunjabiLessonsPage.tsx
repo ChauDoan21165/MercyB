@@ -21,52 +21,6 @@ function textValue(value: unknown): string | undefined {
   return undefined;
 }
 
-function chooseUiLang(api: unknown): UiLang {
-  if (api === "en" || api === "english") return "en";
-  if (api === "vi" || api === "vietnamese") return "vi";
-
-  const record = isRecord(api) ? api : {};
-  const candidates = [
-    record.uiLang,
-    record.language,
-    record.lang,
-    record.locale,
-    record.currentLanguage,
-    record.currentLocale,
-    record.selectedLanguage,
-    record.displayLanguage,
-    record.translationLanguage,
-    record.value,
-  ];
-
-  for (const candidate of candidates) {
-    const value = textValue(candidate)?.toLowerCase();
-    if (!value) continue;
-    if (value === "en" || value.startsWith("en-") || value.includes("english")) return "en";
-    if (value === "vi" || value.startsWith("vi-") || value.includes("vietnamese")) return "vi";
-  }
-
-  if (typeof window !== "undefined") {
-    const storageKeys = [
-      "uiLanguage",
-      "uiLang",
-      "language",
-      "locale",
-      "mercyblade-ui-language",
-      "mercy-ui-language",
-      "mb-ui-language",
-    ];
-
-    for (const key of storageKeys) {
-      const value = window.localStorage.getItem(key)?.toLowerCase();
-      if (!value) continue;
-      if (value === "en" || value.startsWith("en-") || value.includes("english")) return "en";
-      if (value === "vi" || value.startsWith("vi-") || value.includes("vietnamese")) return "vi";
-    }
-  }
-
-  return "vi";
-}
 
 function looksLikeLesson(value: unknown): value is LessonLike {
   if (!isRecord(value)) return false;
@@ -77,13 +31,24 @@ function looksLikeLesson(value: unknown): value is LessonLike {
     "title",
     "titleVi",
     "titleEn",
+    "title_vi",
+    "title_en",
     "name",
     "topic",
     "description",
     "descriptionVi",
     "descriptionEn",
+    "description_vi",
+    "description_en",
+    "intro",
+    "introVi",
+    "introEn",
+    "intro_vi",
+    "intro_en",
     "summary",
     "objective",
+    "sentences",
+    "examples",
     "phrases",
     "dialogue",
     "vocabulary",
@@ -123,7 +88,7 @@ function dedupeLessons(lessons: LessonLike[]): LessonLike[] {
   for (const lesson of lessons) {
     const key = pickText(
       lesson,
-      ["id", "slug", "title", "titleEn", "titleVi", "name", "topic"],
+      ["id", "slug", "title", "titleEn", "titleEn", "title_en", "titleVi", "title_vi", "name", "topic"],
       `lesson-${out.length}`,
     );
 
@@ -139,8 +104,7 @@ const COURSE_LESSONS = dedupeLessons(collectLessons(Course as Record<string, unk
 const DISPLAY_LESSONS = (COURSE_LESSONS.length > 0 ? COURSE_LESSONS : FALLBACK_LESSONS).slice(0, 80);
 
 export default function PunjabiLessonsPage() {
-  const uiApi = useUiLanguage();
-  const uiLang = chooseUiLang(uiApi);
+  const { uiLang } = useUiLanguage();
 
   const intro = uiLang === "en" ? "Practical Punjabi lessons with Gurmukhi as the primary script and Canada survival context where useful." : "Bài học Punjabi thực dụng với Gurmukhi làm chữ chính, kèm ngữ cảnh sinh tồn Canada khi phù hợp.";
   const scriptNote = uiLang === "en" ? "Gurmukhi is the primary script; romanization is only a bridge. Shahmukhi is awareness-only unless a future full track is approved." : "Gurmukhi là chữ chính; romanization chỉ là cầu đọc. Shahmukhi chỉ để nhận biết nếu chưa có track đầy đủ.";
@@ -161,12 +125,12 @@ export default function PunjabiLessonsPage() {
       <section className="mt-8 grid gap-5 md:grid-cols-2">
         {DISPLAY_LESSONS.map((lesson, index) => {
           const title = uiLang === "en"
-            ? pickText(lesson, ["titleEn", "title", "name", "topic", "slug", "id"], `Punjabi lesson`)
-            : pickText(lesson, ["titleVi", "title", "name", "topic", "slug", "id"], `Bài học Punjabi`);
+            ? pickText(lesson, ["titleEn", "title_en", "title", "name", "topic", "slug", "id"], `Punjabi lesson`)
+            : pickText(lesson, ["titleVi", "title_vi", "title", "name", "topic", "slug", "id"], `Bài học Punjabi`);
 
           const description = uiLang === "en"
-            ? pickText(lesson, ["descriptionEn", "description", "summary", "objective"], scriptNote)
-            : pickText(lesson, ["descriptionVi", "description", "summary", "objective"], scriptNote);
+            ? pickText(lesson, ["descriptionEn", "description_en", "introEn", "intro_en", "description", "intro", "summary", "objective"], scriptNote)
+            : pickText(lesson, ["descriptionVi", "description_vi", "introVi", "intro_vi", "description", "intro", "summary", "objective"], scriptNote);
 
           const level = pickText(lesson, ["level", "cefr", "tier"], "A1");
 
