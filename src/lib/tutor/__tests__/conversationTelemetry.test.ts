@@ -187,6 +187,7 @@ describe("recordTelemetryTurn — retention gating", () => {
       ],
       topicMastery: { food: 88 },
       recommendation: null,
+      intelligentRecommendation: null,
       abstainedReason: null,
     };
 

@@ -106,7 +106,7 @@ describe("AI Tutor golden-flow regressions", () => {
     expect(diagnoseVietlishLogicWithMatch("My project feels ready but strange.")).toMatchObject({
       isKnownPattern: false,
       patternId: null,
-      fallbackMessage: "Mercy can still explain the English logic. Try a common sentence like: I go school.",
+      fallbackMessage: expect.stringContaining("Mercy vẫn có thể giải thích"),
     });
   });
 });

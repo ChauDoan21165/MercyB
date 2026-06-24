@@ -68,6 +68,13 @@ import {
   correctWithTutorRules,
 } from "@/lib/tutor/correctionEngine";
 import {
+  correctWithTimingAwareness,
+  createDeferredCorrectionQueue,
+  buildSuppressMessage,
+  buildDeferredSurfacingMessage,
+  type DeferredCorrectionQueue,
+} from "@/lib/tutor/correctionTimingIntegration";
+import {
   diagnoseVietlishLogicWithMatch,
   type VietlishLogicDiagnosisResult,
 } from "@/lib/tutor/vietlishLogicEngine";
@@ -94,8 +101,13 @@ import {
   resolveSpeakFollowUpTopicId,
   selectSpeakFollowUpByTopicId,
   SPEAK_FOLLOW_UP_PIVOT,
+  validateAiSpeakFollowUp,
   type SpeakFollowUpSelection,
 } from "@/lib/tutor/speakFollowups";
+import { auditCorrectionQuick } from "@/lib/tutor/teacherMercyAuditGate";
+import { selfAuditCorrectionQuick } from "@/lib/tutor/teacherMercySelfAuditGate";
+import { enrichCorrectionExperience } from "@/lib/tutor/correctionExperienceEnricher";
+import { getInterferenceCategoryExplanation } from "@/lib/tutor/vietnameseInterferenceExplanation";
 import { detectBilingualSaliencePivot } from "@/lib/tutor/bilingualSalienceDetector";
 import type { BilingualSaliencePivot } from "@/lib/tutor/bilingualSalienceDetector";
 import { classifyResponseStance } from "@/lib/tutor/emotionalResponseBoundary";
@@ -220,6 +232,7 @@ const MEMORY_TOPIC_BY_TARGET: Record<TutorTarget, string> = {
   ko: "korean-correction",
   es: "spanish-correction",
   vi: "vietnamese-correction",
+  tr: "turkish-correction",
 };
 
 const LOGIC_STARTER_PROMPTS = [
@@ -597,6 +610,39 @@ function buildConversationExplanation(
   return MOCK_RESULTS_BY_TARGET[target].explanation[explainLanguage];
 }
 
+/**
+ * Build a brief Vietnamese root-cause interference note for the correction.
+ *
+ * Maps the applied rule IDs through the correction experience enricher to
+ * identify whether the error has a clear VN→EN L1 transfer pattern. When it
+ * does, returns a short mental-model shift hint that helps the learner
+ * understand WHY the error happens, not just WHAT to fix.
+ *
+ * Returns empty string when:
+ *   - No rules applied (unchanged)
+ *   - No clear VN→EN interference pattern detected
+ *   - explainLanguage is "en" (non-Vietnamese learners)
+ *   - The learner text is too short to meaningfully classify
+ */
+function buildVnInterferenceNote(
+  correction: Extract<ReturnType<typeof buildLocalCorrection>, { ok: true }>,
+  explainLanguage: ExplainLanguage,
+): string {
+  if (explainLanguage !== "vi") return "";
+  if (correction.appliedRuleIds.length === 0) return "";
+  if (correction.status === "unchanged") return "";
+
+  const enriched = enrichCorrectionExperience(
+    correction.appliedRuleIds,
+    correction.corrected,
+  );
+  if (!enriched.interferenceCategory) return "";
+
+  const explanation = getInterferenceCategoryExplanation(enriched.interferenceCategory);
+  // Use the mental-model shift as a brief, non-shaming insight.
+  return `\n\n💡 ${explanation.mentalModelShift}`;
+}
+
 function buildGrammarExplanation(
   userText: string,
   target: TutorTarget,
@@ -609,11 +655,12 @@ function buildGrammarExplanation(
   // there is nothing to explain. The old unconditional fallback would surface "câu của bạn
   // đã rõ" even on fragments or broken inputs that slipped past the rule engine (Q1 bug).
   const specific = buildEnglishConversationExplanation(userText, correction, explainLanguage);
-  if (specific) return specific;
+  const interferenceNote = buildVnInterferenceNote(correction, explainLanguage);
+  if (specific) return specific + interferenceNote;
   if (correction.status === "unchanged") return "";
-  return explainLanguage === "vi"
+  return (explainLanguage === "vi"
     ? "Câu của bạn đã rõ. Mercy chỉ chỉnh dấu câu hoặc cách diễn đạt cho tự nhiên hơn."
-    : "Your sentence is clear. Mercy only adjusted punctuation or phrasing.";
+    : "Your sentence is clear. Mercy only adjusted punctuation or phrasing.") + interferenceNote;
 }
 
 function buildGrammarTip(
@@ -1235,6 +1282,13 @@ export default function AiTutorPage() {
   const speakFollowUpRequestRef = useRef(0);
   const wasListeningRef = useRef(false);
   const ignoreNextSttCommitRef = useRef(false);
+  // Step 013 — deferred correction queue: holds corrections whose timing
+  // says DELAYED/FOLLOW_UP_FIRST. Advanced on each conversation turn.
+  const deferredQueueRef = useRef<DeferredCorrectionQueue>(
+    createDeferredCorrectionQueue(),
+  );
+  // Count corrections surfaced this session for timing-gate context.
+  const surfacedCorrectionsRef = useRef(0);
 
   // Detailed-scoring gate (premium/trial + per-session cap). When the gate flag
   // is OFF this is a no-op (gateAllows always true → legacy behavior). Using the
@@ -1274,7 +1328,11 @@ export default function AiTutorPage() {
         return;
       }
       setSpeakFollowUpProviderError(false);
-      const finalQuestion = aiQuestion ? speakFollowUpQuestion(aiQuestion) : SPEAK_TRANSCRIPT_ASK_TO_REPEAT_TEXT;
+      // Quality-gate: reject dead-end, off-topic, too-hard, or too-many AI follow-ups
+      const validatedQuestion = aiQuestion
+        ? validateAiSpeakFollowUp(transcript, aiQuestion)
+        : null;
+      const finalQuestion = validatedQuestion ? speakFollowUpQuestion(validatedQuestion) : SPEAK_TRANSCRIPT_ASK_TO_REPEAT_TEXT;
       speakPivotTurnsRef.current = [
         ...speakPivotTurnsRef.current,
         { role: "learner" as const, text: transcript },
@@ -1282,8 +1340,8 @@ export default function AiTutorPage() {
       ].slice(-8);
       applySpeakFollowUpSession({
         topicId: currentTopic,
-        turnsOnTopic: turnsOnTopic + (aiQuestion ? 1 : 0),
-        askedQuestions: aiQuestion ? [...askedQuestions, aiQuestion] : askedQuestions,
+        turnsOnTopic: turnsOnTopic + (validatedQuestion ? 1 : 0),
+        askedQuestions: validatedQuestion ? [...askedQuestions, validatedQuestion] : askedQuestions,
         currentQuestion: finalQuestion,
         currentIsPivot: false,
       });
@@ -1450,13 +1508,17 @@ export default function AiTutorPage() {
         return;
       }
       setSpeakFollowUpProviderError(false);
-      const question = stance.stance === "needs_acknowledgment" && aiQuestion
+      // Quality-gate: reject dead-end, off-topic, too-hard, or too-many AI follow-ups
+      const validatedQuestion = aiQuestion
+        ? validateAiSpeakFollowUp(spoken, aiQuestion)
+        : null;
+      const question = stance.stance === "needs_acknowledgment" && validatedQuestion
         ? combineSpeakFollowUp(
             bilingualText(SPEAK_STANCE_ACKNOWLEDGMENT_VI, SPEAK_STANCE_ACKNOWLEDGMENT),
-            speakFollowUpQuestion(aiQuestion),
+            speakFollowUpQuestion(validatedQuestion),
           )
-        : aiQuestion
-          ? speakFollowUpQuestion(aiQuestion)
+        : validatedQuestion
+          ? speakFollowUpQuestion(validatedQuestion)
           : null;
       const finalQuestion = question ?? SPEAK_TRANSCRIPT_ASK_TO_REPEAT_TEXT;
       speakPivotTurnsRef.current = [
@@ -1466,8 +1528,8 @@ export default function AiTutorPage() {
       ].slice(-8);
       applySpeakFollowUpSession({
         topicId,
-        turnsOnTopic: turnsOnTopic + (aiQuestion ? 1 : 0),
-        askedQuestions: aiQuestion ? [...askedQuestions, aiQuestion] : askedQuestions,
+        turnsOnTopic: turnsOnTopic + (validatedQuestion ? 1 : 0),
+        askedQuestions: validatedQuestion ? [...askedQuestions, validatedQuestion] : askedQuestions,
         currentQuestion: finalQuestion,
         currentIsPivot: false,
       });
@@ -2231,6 +2293,19 @@ export default function AiTutorPage() {
             correctedText: aiCorrected,
             explanation: aiResult.explanation,
           });
+          // Self-audit — Teacher Mercy checks her own answer before showing it.
+          // BLOCK: hard-safety violation (fake praise, shaming) → don't show.
+          // SHOW/SHOW_WITH_CAUTION: response is safe → show to learner.
+          const selfAuditResult = selfAuditCorrectionQuick(trimmed, turn.explanation, aiCorrected);
+          if (selfAuditResult.isBlocked) {
+            console.warn("[MercySelfAudit] AI correction blocked:", selfAuditResult.summaryVi);
+            setLoading(false);
+            setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
+            return;
+          }
+          if (selfAuditResult.decision === "SHOW_WITH_CAUTION") {
+            console.warn("[MercySelfAudit] AI correction shown with caution:", selfAuditResult.summaryVi);
+          }
           setResult({
             ...turn,
             grammarTip: aiResult.grammarTip,
@@ -2238,6 +2313,8 @@ export default function AiTutorPage() {
           });
           clearSpeakBoardState();
           setLatestCorrectedSeed({ correctedSentence: aiCorrected, sourceText: trimmed, updatedAt: Date.now() });
+          // Legacy audit gate — kept for telemetry continuity (non-blocking).
+          void auditCorrectionQuick(trimmed, turn.explanation, aiCorrected);
           void captureCorrection({
             userText: trimmed,
             correctedText: aiCorrected,
@@ -2265,6 +2342,41 @@ export default function AiTutorPage() {
       setError(CANNOT_CORRECT_NO_SESSION_MESSAGE);
       return;
     }
+    // Step 013 — check correction timing before showing the result.
+    const timingResult = correctWithTimingAwareness({
+      learnerText: trimmed,
+      targetLanguage: "en",
+      cefrLevel: null,
+      isCurrentLessonTarget: activeTodayLesson?.plan?.targetSkill
+        ? trimmed.toLowerCase().includes(activeTodayLesson.plan.targetSkill.toLowerCase())
+        : false,
+      previousCorrectionsThisSession: surfacedCorrectionsRef.current,
+    });
+
+    // SUPPRESS: the error is minor / learner context says not to interrupt.
+    if (timingResult.shouldSuppress) {
+      setLoading(false);
+      setError(buildSuppressMessage(timingResult.timing, explainLanguage));
+      return;
+    }
+
+    // DELAYED / FOLLOW_UP_FIRST: defer the correction to a future turn.
+    if (timingResult.shouldDefer && timingResult.correction.status === "corrected") {
+      deferredQueueRef.current.enqueue({
+        learnerText: trimmed,
+        correctedText: timingResult.correction.corrected,
+        timing: timingResult.timing,
+        remainingTurns: timingResult.timing.delayTurns ?? 1,
+      });
+      setLoading(false);
+      setError(
+        explainLanguage === "vi"
+          ? "Mercy ghi nhận câu này và sẽ gợi ý sau nhé."
+          : "Got it — I'll share a small tip in a moment.",
+      );
+      return;
+    }
+
     const corrected = localCorrection.corrected;
     const { turn } = buildCorrectionTurn({
       id: `corr-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
@@ -2274,17 +2386,36 @@ export default function AiTutorPage() {
       correctedText: corrected,
       explanation: buildGrammarExplanation(trimmed, target, localCorrection, explainLanguage),
     });
+    // Self-audit — Teacher Mercy checks her own answer before showing it.
+    // BLOCK: hard-safety violation (fake praise, shaming) → don't show.
+    // SHOW/SHOW_WITH_CAUTION: response is safe → show to learner.
+    const selfAuditResult = selfAuditCorrectionQuick(trimmed, turn.explanation, corrected);
+    if (selfAuditResult.isBlocked) {
+      console.warn("[MercySelfAudit] Rule correction blocked:", selfAuditResult.summaryVi);
+      setLoading(false);
+      setError(GRAMMAR_CORRECTION_UNAVAILABLE_MESSAGE);
+      return;
+    }
+    if (selfAuditResult.decision === "SHOW_WITH_CAUTION") {
+      console.warn("[MercySelfAudit] Rule correction shown with caution:", selfAuditResult.summaryVi);
+    }
     setResult({
       ...turn,
       grammarTip: buildGrammarTip(target, localCorrection, explainLanguage),
       practicePrompt: next.practicePrompt[explainLanguage],
     });
+    // Step 013 — correction was shown (IMMEDIATE/EXPLAIN_PATTERN path).
+    surfacedCorrectionsRef.current += 1;
+
     clearSpeakBoardState();
     setLatestCorrectedSeed({
       correctedSentence: corrected,
       sourceText: trimmed,
       updatedAt: Date.now(),
     });
+
+    // Legacy audit gate — kept for telemetry continuity (non-blocking).
+    void auditCorrectionQuick(trimmed, turn.explanation, corrected);
 
     // Track 2 — anonymized learner-interaction capture. Fire-and-forget;
     // flag + consent gated, never throws. The local correction is what the
@@ -2446,6 +2577,28 @@ export default function AiTutorPage() {
     };
     setConversationMessages((current) => [...current, userMessage]);
     setConversationInput("");
+
+    // Step 013 — advance the deferred correction queue on each conversation turn.
+    // Surface any due deferred corrections as gentle messages in the chat.
+    const dueDeferred = deferredQueueRef.current.advanceTurn();
+    if (dueDeferred.length > 0) {
+      const suffixMessages: ConversationMessage[] = dueDeferred.map((dc) => {
+        const deferredText = buildDeferredSurfacingMessage(dc.correctedText, explainLanguage);
+        const { turn } = buildConversationTurn({
+          id: `deferred-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
+          targetLanguage: target,
+          explainLanguage,
+          userText: dc.learnerText,
+          correctedText: dc.correctedText,
+          explanation: "",
+          naturalReply: deferredText,
+          nextQuestion: "",
+        });
+        return { ...turn, role: "mercy" as const };
+      });
+      setConversationMessages((current) => [...current, ...suffixMessages]);
+    }
+
     setConversationLoading(true);
 
     await new Promise((r) => setTimeout(r, MOCK_DELAY_MS));
@@ -2649,6 +2802,9 @@ export default function AiTutorPage() {
     setPracticeAnswer("");
     setPracticeFeedback(null);
     clearCorrectedSentenceSeed();
+    // Step 013 — reset deferred queue on board clear.
+    deferredQueueRef.current.clear();
+    surfacedCorrectionsRef.current = 0;
     // Clear the visible surface for the next sentence, but PRESERVE the focus:
     // "try another sentence" is the learner continuing, so the loop should keep
     // circling the same weakness across sentences. Focus is in-session only and

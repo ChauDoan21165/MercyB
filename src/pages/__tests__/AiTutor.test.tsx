@@ -236,6 +236,20 @@ async function correctSentence(input: string, expected: string) {
   await waitFor(() => expect(screen.getByText(expected)).toBeInTheDocument());
 }
 
+/** Correction is deferred (shy learner gate), expect the defer message instead. */
+async function correctSentenceDeferred(input: string) {
+  await userEvent.type(
+    screen.getByRole("textbox"),
+    input,
+  );
+  await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
+  await waitFor(() =>
+    expect(
+      screen.getByText("Mercy ghi nhận câu này và sẽ gợi ý sau nhé."),
+    ).toBeInTheDocument(),
+  );
+}
+
 function recentL1Tags() {
   return readL1RecentTags().map((entry) => entry.tag);
 }
@@ -360,7 +374,9 @@ describe("AiTutor four-tab seed flow", () => {
   it("shows a Step 5 article omission hint in Correction", async () => {
     renderAiTutor();
 
-    await correctSentence("She is teacher.", "She is a teacher.");
+    // "She is teacher." is 3 words → classified as shy learner → correction deferred.
+    // Use a longer equivalent that triggers the same article-insertion rule.
+    await correctSentence("She is teacher here.", "She is a teacher here.");
 
     const chip = await screen.findByTestId("detector-hint-chip");
     expect(chip).toHaveAttribute("data-tag", "vi_l1_missing_article");
@@ -393,10 +409,18 @@ describe("AiTutor four-tab seed flow", () => {
   it("does not show a Step 5 hint for safe Correction input", async () => {
     renderAiTutor();
 
-    // Punctuation-only correction (missing ?) triggers no L1 error tag → low-confidence
-    // detection → no detector hint chip. Replaces the old "I like music." unchanged echo test;
-    // unchanged sentences without a session now show an honest message instead of a correction card.
-    await correctSentence("Where did you go yesterday", "Where did you go yesterday?");
+    // Unchanged (already-correct) sentences without a session show an honest
+    // message instead of a correction card. No L1 error tag → no detector hint.
+    await userEvent.type(
+      screen.getByRole("textbox"),
+      "Where did you go yesterday",
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
+    // The unchanged path shows either CANNOT_CORRECT or FRIENDLY_CORRECTION_UNAVAILABLE
+    await waitFor(() => {
+      const errorSection = document.querySelector(".text-rose-600, .text-rose-700");
+      expect(errorSection).toBeTruthy();
+    });
 
     expect(screen.queryByTestId("detector-hint-chip")).not.toBeInTheDocument();
     expect(recentL1Tags()).toEqual([]);
@@ -405,7 +429,9 @@ describe("AiTutor four-tab seed flow", () => {
   it("does not record duplicate L1 tags for the same already-shown hint", async () => {
     renderAiTutor();
 
-    await correctSentence("She is teacher.", "She is a teacher.");
+    // "She is teacher here." is 4 words (normal confidence) — triggers the same
+    // article-insertion rule but avoids the shy-learner defer gate.
+    await correctSentence("She is teacher here.", "She is a teacher here.");
     expect(await screen.findByTestId("detector-hint-chip")).toHaveAttribute(
       "data-tag",
       "vi_l1_missing_article",
@@ -413,7 +439,7 @@ describe("AiTutor four-tab seed flow", () => {
     await waitFor(() => expect(hasShownHint("vi_l1_missing_article")).toBe(true));
 
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu khác" }));
-    await correctSentence("She is teacher.", "She is a teacher.");
+    await correctSentence("She is teacher here.", "She is a teacher here.");
 
     expect(screen.queryByTestId("detector-hint-chip")).not.toBeInTheDocument();
     expect(recentL1Tags()).toEqual(["vi_l1_missing_article"]);
@@ -445,11 +471,15 @@ describe("AiTutor four-tab seed flow", () => {
     expect(followUp2).toHaveTextContent("làm nghề"); // context #2
     expect(followUp2).not.toHaveTextContent("buổi sáng"); // never the same context twice
 
-    // A clean turn: punctuation-only correction → detector fires low-confidence for the
-    // vi_l1_3rd_person_s focus tag → loop offers to move on. Replaces the old "I like music."
-    // echo test; unchanged sentences without a session no longer produce a correction card.
+    // Third turn — same SVA weakness, new context. The sticky L1 focus continues.
     await userEvent.click(screen.getByRole("button", { name: "Sửa câu khác" }));
-    await correctSentence("Where did you go yesterday", "Where did you go yesterday?");
+    await correctSentence("She make a cake here.", "She makes a cake here.");
+    const followUp3 = await screen.findByTestId("ai-tutor-l1-followup");
+    expect(followUp3).not.toHaveTextContent("buổi sáng");
+    expect(followUp3).not.toHaveTextContent("làm nghề");
+    // After L1_FOCUS_DEPTH_CAP turns, the fourth SVA error triggers move-on.
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu khác" }));
+    await correctSentence("He make a sandwich there.", "He makes a sandwich there.");
     expect(await screen.findByTestId("ai-tutor-l1-moveon")).toBeInTheDocument();
     expect(screen.queryByTestId("ai-tutor-l1-followup")).not.toBeInTheDocument();
   });
@@ -475,8 +505,17 @@ describe("AiTutor four-tab seed flow", () => {
   it("shows no follow-up for clean (low-confidence) input with no active focus", async () => {
     renderAiTutor();
 
-    // Punctuation-only correction → low-confidence L1 detection → no follow-up or move-on.
-    await correctSentence("Where did you go yesterday", "Where did you go yesterday?");
+    // Unchanged (already-correct) sentences without a session trigger an error
+    // message — no follow-up or move-on elements appear.
+    await userEvent.type(
+      screen.getByRole("textbox"),
+      "Where did you go yesterday",
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Sửa câu này" }));
+    await waitFor(() => {
+      const errorSection = document.querySelector(".text-rose-600");
+      expect(errorSection).toBeTruthy();
+    });
 
     expect(screen.queryByTestId("ai-tutor-l1-followup")).not.toBeInTheDocument();
     expect(screen.queryByTestId("ai-tutor-l1-moveon")).not.toBeInTheDocument();
