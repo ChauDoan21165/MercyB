@@ -1,5 +1,5 @@
 
-function nativeCopyLang(lang: "vi" | "en" | "ja" | "id" | "th"): "vi" | "en" {
+function nativeCopyLang(lang: NativeLang): "vi" | "en" {
   return lang === "vi" ? "vi" : "en";
 }
 

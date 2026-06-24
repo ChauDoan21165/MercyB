@@ -76,10 +76,20 @@ export interface OnboardingDraft {
   english_level: OnboardingLevel | null;
 }
 
-export interface BilingualLabel { vi: string; en: string; ja?: string; id?: string;
-  th?: string;}
-
-export interface BilingualCopy extends BilingualLabel {
+export interface BilingualLabel {
+  en: string;
+  vi: string;
+  ja?: string;
+  id?: string;
+  th?: string;
+  ar?: string;
+  hi?: string;
+  ur?: string;
+  ko?: string;
+  zh?: string;
+  pt?: string;
+  tr?: string;
+}export interface BilingualCopy extends BilingualLabel {
   /** Optional one-line subhead — VI only, lighter weight. */
   vi_sub?: string;
 }
@@ -196,6 +206,63 @@ export const TARGET_MENU: Record<NativeLang, TargetMenuItem[]> = {
   th: [
     { value: "en", readiness: "full", recommended: true },
   ],
+  pt: [
+    { value: "en", readiness: "full", recommended: true },
+  ],
+  ar: [
+    { value: "es", readiness: "full", recommended: true },
+    { value: "zh", readiness: "full" },
+    { value: "fr", readiness: "full" },
+    { value: "de", readiness: "full" },
+    { value: "ja", readiness: "partial" },
+    { value: "ko", readiness: "partial" },
+    { value: "vi", readiness: "partial" },
+  ],
+  hi: [
+    { value: "es", readiness: "full", recommended: true },
+    { value: "zh", readiness: "full" },
+    { value: "fr", readiness: "full" },
+    { value: "de", readiness: "full" },
+    { value: "ja", readiness: "partial" },
+    { value: "ko", readiness: "partial" },
+    { value: "vi", readiness: "partial" },
+  ],
+  ur: [
+    { value: "es", readiness: "full", recommended: true },
+    { value: "zh", readiness: "full" },
+    { value: "fr", readiness: "full" },
+    { value: "de", readiness: "full" },
+    { value: "ja", readiness: "partial" },
+    { value: "ko", readiness: "partial" },
+    { value: "vi", readiness: "partial" },
+  ],
+  ko: [
+    { value: "es", readiness: "full", recommended: true },
+    { value: "zh", readiness: "full" },
+    { value: "fr", readiness: "full" },
+    { value: "de", readiness: "full" },
+    { value: "ja", readiness: "partial" },
+    { value: "ko", readiness: "partial" },
+    { value: "vi", readiness: "partial" },
+  ],
+  zh: [
+    { value: "es", readiness: "full", recommended: true },
+    { value: "zh", readiness: "full" },
+    { value: "fr", readiness: "full" },
+    { value: "de", readiness: "full" },
+    { value: "ja", readiness: "partial" },
+    { value: "ko", readiness: "partial" },
+    { value: "vi", readiness: "partial" },
+  ],
+  tr: [
+    { value: "es", readiness: "full", recommended: true },
+    { value: "zh", readiness: "full" },
+    { value: "fr", readiness: "full" },
+    { value: "de", readiness: "full" },
+    { value: "ja", readiness: "partial" },
+    { value: "ko", readiness: "partial" },
+    { value: "vi", readiness: "partial" },
+  ],
 };
 
 /** Skip default + the pre-checked recommendation per native (Phase 3
@@ -206,6 +273,13 @@ export const RECOMMENDED_TARGET: Record<NativeLang, TargetLang> = {
   ja: "en",
   id: "en",
   th: "en",
+  pt: "en",
+  ar: "es",
+  hi: "es",
+  ur: "es",
+  ko: "es",
+  zh: "es",
+  tr: "es",
 };
 
 /** Default honesty badge by readiness (locked #7). full ⇒ none; a
@@ -292,3 +366,12 @@ export const ONBOARDING_COPY = {
     },
   },
 } as const;
+
+// Native-English integration fallback helpers.
+export function getTargetMenuForNative(nativeLang: NativeLang): TargetMenuItem[] {
+  return TARGET_MENU[nativeLang] ?? TARGET_MENU.en ?? [];
+}
+
+export function getRecommendedTargetForNative(nativeLang: NativeLang): TargetLang {
+  return RECOMMENDED_TARGET[nativeLang] ?? RECOMMENDED_TARGET.en ?? "en";
+}

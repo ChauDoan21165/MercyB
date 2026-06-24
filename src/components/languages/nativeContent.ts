@@ -1,3 +1,4 @@
+export type NativeLang = "en" | "vi" | "ja" | "id" | "th" | "ar" | "hi" | "ur" | "ko" | "zh" | "pt" | "tr";
 // src/components/languages/nativeContent.ts
 //
 // The native-language selection seam (Phase 2 / Option C — see
@@ -13,22 +14,21 @@
 // English lesson content stays English; only the explanation/pedagogy
 // slot changes.
 
-export type NativeLang = "vi" | "en" | "ja" | "id" | "th";
-
-export type NativeSlots<T> = {
-  vi?: T;
-  en?: T;
-  ja?: T;
-  id?: T;
-  th?: T;
-};
+export type NativeSlots<T> = Partial<Record<NativeLang, T>>;
 
 const FALLBACK_ORDER: Record<NativeLang, readonly NativeLang[]> = {
-  vi: ["vi", "en"],
   en: ["en", "vi"],
+  vi: ["vi", "en"],
   ja: ["ja", "en", "vi"],
   id: ["id", "en", "vi"],
   th: ["th", "en", "vi"],
+  ar: ["ar", "en", "vi"],
+  hi: ["hi", "en", "vi"],
+  ur: ["ur", "en", "vi"],
+  ko: ["ko", "en", "vi"],
+  zh: ["zh", "en", "vi"],
+  pt: ["pt", "en", "vi"],
+  tr: ["tr", "en", "vi"],
 };
 
 export function getNativeContent<T>(

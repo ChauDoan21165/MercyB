@@ -1,10 +1,11 @@
 // src/data/__tests__/rich-lessons-pilot.test.ts
 //
-// Validates the hand-authored RichLesson pilot bundle. Seven concrete
-// lessons (3 A1 + 4 A2): vi_l1_3rd_person_s, vi_l1_past_ed,
-// vi_l1_missing_be, vi_l1_preposition_transfer, vi_l1_present_perfect_vs_past,
-// vi_l1_make_vs_do, vi_l1_adjective_order. CI guards their shape so future
-// authoring rounds can't silently drift away from the schema.
+// Validates the hand-authored RichLesson pilot bundle. CI guards their
+// shape so future authoring rounds can't silently drift away from the schema.
+// Validates the hand-authored RichLesson pilot bundle. Twenty concrete
+// lessons covering Vietnamese, Indonesian, and Turkish L1 transfer +
+// C2 mastery patterns. CI guards their shape so future authoring rounds
+// can't silently drift away from the schema.
 
 import { describe, expect, it } from "vitest";
 
@@ -20,11 +21,36 @@ import {
 import { isKnownWeaknessTag } from "@/lib/weakness/weakness-catalog";
 
 const EXPECTED_PILOT_TAGS = [
+  "ar_c2_cleft_focus",
+  "ar_c2_inversion_emphasis",
+  "ar_l1_conditional_unreal",
+  "ar_l1_present_perfect_vs_past",
+  "ar_l1_reported_speech",
+  "hi_l1_missing_article",
+  "hi_l1_preposition_postposition",
+  "hi_l1_wrong_word_order",
   "id_c2_cleft_focus",
   "id_c2_inversion_emphasis",
   "id_l1_conditional_unreal",
   "id_l1_present_perfect_vs_past",
   "id_l1_reported_speech",
+  "ja_c2_inversion_emphasis",
+  "ja_l1_article_missing",
+  "ja_l1_conditional_mix",
+  "ja_l1_present_perfect_vs_past",
+  "ja_l1_subject_omission",
+  "ko_c2_cleft_focus",
+  "ko_c2_inversion_emphasis",
+  "ko_l1_3rd_person_s",
+  "ko_l1_missing_article",
+  "ko_l1_preposition_transfer",
+  "pt_c2_cleft_focus",
+  "pt_c2_inversion_emphasis",
+  "pt_l1_double_negative",
+  "pt_l1_present_perfect_vs_past",
+  "pt_l1_subject_pronoun_drop",
+  "tr_l1_missing_article",
+  "tr_l1_missing_be",
   "vi_l1_3rd_person_s",
   "vi_l1_adjective_order",
   "vi_l1_conditional_mix",
@@ -38,6 +64,15 @@ const EXPECTED_PILOT_TAGS = [
   "vi_l1_present_perfect_vs_past",
   "vi_l1_reported_speech",
   "vi_l1_subjunctive_were",
+  "ur_l1_missing_be",
+  "ur_l1_missing_article",
+  "ur_l1_word_order",
+  // ── Chinese L1 pilot lessons ──────────────────────────────────────────
+  "zh_l1_no_articles",
+  "zh_l1_present_perfect_vs_past",
+  "zh_l1_conditional_unreal",
+  "zh_l1_reported_speech",
+  "zh_l1_he_she",
 ] as const;
 
 describe("rich-lessons-pilot.json shape", () => {

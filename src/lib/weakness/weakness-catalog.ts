@@ -101,7 +101,85 @@ export type WeaknessTag =
   | "id_c2_cleft_focus"
   | "id_c2_mixed_conditional"
   | "id_c2_register_consistency"
-  | "id_c2_hedging_academic";
+  | "id_c2_hedging_academic"
+  | "ar_l1_present_perfect_vs_past"
+  | "ar_l1_conditional_unreal"
+  | "ar_l1_reported_speech"
+  | "ar_l1_relative_clauses"
+  | "ar_l1_prepositions_in_on_at"
+  | "ar_c2_inversion_emphasis"
+  | "ar_c2_register_consistency"
+  | "ar_c2_hedging_academic"
+  | "ar_c2_cleft_focus"
+  | "hi_l1_missing_article"
+  | "hi_l1_preposition_postposition"
+  | "hi_l1_wrong_word_order"
+  | "hi_l1_since_for_confusion"
+  | "hi_l1_continuous_overuse"
+  | "hi_l1_present_perfect_vs_simple"
+  | "hi_c2_reported_speech_tense"
+  | "hi_c2_conditional_backshift"
+  | "hi_c2_register_formality"
+  | "hi_c2_academic_hedging"
+  | "ur_l1_missing_be"
+  | "ur_l1_missing_article"
+  | "ur_l1_word_order"
+  | "ur_l1_plural_s"
+  | "ur_l1_past_ed"
+  | "ur_l1_3rd_person_s"
+  | "ur_l1_preposition"
+  | "ur_l1_present_perfect_vs_past"
+  | "ur_l1_conditional_mix"
+  | "ur_c2_formal_register"
+  | "ja_l1_subject_omission"
+  | "ja_l1_article_missing"
+  | "ja_l1_plural_s"
+  | "ja_l1_third_person_s"
+  | "ja_l1_missing_be"
+  | "ja_l1_present_perfect_vs_past"
+  | "ja_l1_conditional_mix"
+  | "ja_l1_reported_speech"
+  | "ja_c2_inversion_emphasis"
+  | "ja_c2_cleft_focus"
+  | "ja_c2_register_consistency"
+  | "ja_c2_hedging_academic"
+  | "ko_l1_3rd_person_s"
+  | "ko_l1_missing_article"
+  | "ko_l1_missing_be"
+  | "ko_l1_plural_s"
+  | "ko_l1_preposition_transfer"
+  | "ko_l1_present_perfect_vs_past"
+  | "ko_c2_inversion_emphasis"
+  | "ko_c2_cleft_focus"
+  | "ko_c2_mixed_conditional"
+  | "ko_c2_register_consistency"
+  | "zh_l1_no_articles"
+  | "zh_l1_no_tense"
+  | "zh_l1_3rd_person_s"
+  | "zh_l1_he_she"
+  | "zh_l1_plural_s"
+  | "zh_l1_present_perfect_vs_past"
+  | "zh_l1_countable_uncountable"
+  | "zh_l1_preposition_confusion"
+  | "zh_l1_conditional_unreal"
+  | "zh_l1_reported_speech"
+  | "zh_l1_passive_missing_be"
+  | "zh_l1_subjunctive_were"
+  | "zh_c2_inversion_emphasis"
+  | "zh_c2_cleft_focus"
+  | "pt_l1_subject_pronoun_drop"
+  | "pt_l1_present_perfect_vs_past"
+  | "pt_l1_double_negative"
+  | "pt_c2_inversion_emphasis"
+  | "pt_c2_cleft_focus"
+  | "pt_c2_mixed_conditional"
+  | "pt_c2_register_consistency"
+  | "pt_c2_hedging_academic"
+  | "tr_l1_missing_article"
+  | "tr_l1_word_order_sov"
+  | "tr_l1_missing_be"
+  | "tr_c2_inversion_emphasis"
+  | "tr_c2_register_consistency";
 
 export type BilingualText = {
   /** English surface — may contain `**word**` markdown bolding. */
@@ -114,6 +192,13 @@ export type BilingualText = {
   id?: string;
   /** Thai-native English explanation — optional, for th-native learners. */
   th?: string;
+  ar?: string;
+  hi?: string;
+  ur?: string;
+  ko?: string;
+  zh?: string;
+  pt?: string;
+  tr?: string;
 };
 
 export type WeaknessEntry = {
@@ -1279,6 +1364,1264 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
         exampleRight: "This suggests that social media may contribute to depressive symptoms in some teenagers.",
         linkedRoomId: null,
       },
+
+  // Native-English leftover language tags integrated 2026-06-24
+  // arabic
+  ar_l1_present_perfect_vs_past: {
+      tag: "ar_l1_present_perfect_vs_past",
+      shortLabel: {
+        en: "Present perfect vs past simple",
+        vi: "Present perfect vs past simple",
+        ar: "المضارع التام مقابل الماضي البسيط",
+      },
+      longDescription: {
+        en: "Arabic expresses past actions with a single past tense (الماضي). English splits them: use **past simple** when a specific past time is named (**yesterday**, **last week**, **this morning**); use **present perfect** for past actions with present relevance and no specific time.",
+        vi: "Tiếng Ả Rập dùng thì quá khứ (الماضي) cho mọi hành động quá khứ. Tiếng Anh phân biệt: dùng **past simple** khi có thời gian cụ thể trong quá khứ; dùng **present perfect** khi hành động quá khứ còn liên quan đến hiện tại và không có thời gian cụ thể.",
+        ar: "تستخدم اللغة العربية زمن الماضي لكل الأفعال الماضية. أما الإنجليزية فتفصل بينهما: استخدم **past simple** عند وجود زمن محدد في الماضي (**yesterday**, **last week**, **this morning**)؛ واستخدم **present perfect** للأفعال الماضية المرتبطة بالحاضر دون زمن محدد.",
+      },
+      exampleWrong: "I have eaten breakfast this morning.",
+      exampleRight: "I ate breakfast this morning.",
+      linkedRoomId: null,
+    },
+  ar_l1_conditional_unreal: {
+      tag: "ar_l1_conditional_unreal",
+      shortLabel: {
+        en: "Unreal conditionals (Type 2)",
+        vi: "Câu điều kiện không có thật (Type 2)",
+        ar: "الجمل الشرطية غير الحقيقية",
+      },
+      longDescription: {
+        en: "Arabic uses **لو** + past for both real and unreal conditions. English marks unreal / hypothetical conditions with **If + past tense, would + base verb** — never mix past with **will**.",
+        vi: "Tiếng Ả Rập dùng **لو** + quá khứ cho cả điều kiện thật và không thật. Tiếng Anh đánh dấu điều kiện không thật bằng **If + quá khứ, would + động từ gốc** — không trộn quá khứ với **will**.",
+        ar: "تستخدم العربية **لو** مع الفعل الماضي للشرط الحقيقي وغير الحقيقي على حد سواء. أما الإنجليزية فتميز الشرط غير الحقيقي بـ **If + past tense, would + فعل أساسي** — ولا تخلط الماضي مع **will** أبداً.",
+      },
+      exampleWrong: "If I had money, I will buy a car.",
+      exampleRight: "If I had money, I would buy a car.",
+      linkedRoomId: null,
+    },
+  ar_l1_reported_speech: {
+      tag: "ar_l1_reported_speech",
+      shortLabel: {
+        en: "Reported speech tense shift",
+        vi: "Lùi thì trong câu tường thuật",
+        ar: "نقل الكلام وتغيير الزمن",
+      },
+      longDescription: {
+        en: "Arabic often keeps the original tense in reported speech (**قال إنه متعب** stays present). English backshifts the tense: **He said he was tired**, not **he is tired**.",
+        vi: "Tiếng Ả Rập thường giữ nguyên thì trong câu tường thuật (**قال إنه متعب** giữ thì hiện tại). Tiếng Anh lùi thì: **He said he was tired**, không phải **he is tired**.",
+        ar: "كثيراً ما تبقي العربية على الزمن الأصلي في الكلام المنقول (**قال إنه متعب** يبقى في الحاضر). أما الإنجليزية فتزيح الزمن إلى الماضي: **He said he was tired**، وليس **he is tired**.",
+      },
+      exampleWrong: "She said she is tired.",
+      exampleRight: "She said she was tired.",
+      linkedRoomId: null,
+    },
+  ar_l1_relative_clauses: {
+      tag: "ar_l1_relative_clauses",
+      shortLabel: {
+        en: "Relative clauses (who/which/that)",
+        vi: "Mệnh đề quan hệ (who/which/that)",
+        ar: "جمل الوصل (who/which/that)",
+      },
+      longDescription: {
+        en: "Arabic relative clauses use a resumptive pronoun that English drops: **الرجل الذي رأيته** (lit. 'the man who I saw him'). English omits the object pronoun entirely: **the man who I saw** — adding **him** is a common Arabic-speaker error.",
+        vi: "Mệnh đề quan hệ tiếng Ả Rập dùng đại từ nối mà tiếng Anh lược bỏ: **الرجل الذي رأيته** (dịch sát: 'the man who I saw him'). Tiếng Anh bỏ hẳn đại từ tân ngữ: **the man who I saw** — thêm **him** là lỗi phổ biến của người học gốc Ả Rập.",
+        ar: "تستخدم جمل الوصل في العربية ضميراً عائداً تحذفه الإنجليزية: **الرجل الذي رأيته** (حرفياً: 'the man who I saw him'). أما الإنجليزية فتحذف ضمير المفعول تماماً: **the man who I saw** — وإضافة **him** خطأ شائع لدى المتعلمين العرب.",
+      },
+      exampleWrong: "The man who I saw him is my teacher.",
+      exampleRight: "The man who I saw is my teacher.",
+      linkedRoomId: null,
+    },
+  ar_l1_prepositions_in_on_at: {
+      tag: "ar_l1_prepositions_in_on_at",
+      shortLabel: {
+        en: "Prepositions in / on / at",
+        vi: "Giới từ in / on / at",
+        ar: "حروف الجر in / on / at",
+      },
+      longDescription: {
+        en: "Arabic uses **في** for most spatial and temporal relations where English splits across **in** (enclosed/large), **on** (surface/day), and **at** (point/time). Arabic speakers often default to **in** for everything.",
+        vi: "Tiếng Ả Rập dùng **في** cho hầu hết quan hệ không gian và thời gian, trong khi tiếng Anh chia ra **in** (không gian kín/lớn), **on** (bề mặt/ngày), và **at** (điểm/thời gian cụ thể). Người học gốc Ả Rập thường mặc định dùng **in** cho mọi thứ.",
+        ar: "تستخدم العربية **في** لمعظم العلاقات المكانية والزمانية، بينما تفرق الإنجليزية بين **in** (للمساحات المغلقة/الكبيرة)، و**on** (للأسطح/الأيام)، و**at** (للنقاط/الأوقات المحددة). ويميل المتعلمون العرب لاستخدام **in** في كل الحالات.",
+      },
+      exampleWrong: "I will meet you in Monday in the bus stop.",
+      exampleRight: "I will meet you on Monday at the bus stop.",
+      linkedRoomId: null,
+    },
+  ar_c2_inversion_emphasis: {
+        tag: "ar_c2_inversion_emphasis",
+        shortLabel: {
+          en: "Inversion for emphasis",
+          vi: "Đảo ngữ nhấn mạnh",
+          ar: "العكس للتأكيد",
+        },
+        longDescription: {
+          en: "Arabic fronts adverbials without structural change (**أبداً لم أرَ شيئاً كهذا** keeps the sentence flexible). English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversion signals emphasis and formality — a C2 feature that separates proficient from native-like writing.",
+          vi: "Tiếng Ả Rập đưa trạng từ lên đầu câu mà không thay đổi cấu trúc. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế như **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — kỹ năng cấp C2.",
+          ar: "تقدم العربية الظروف إلى بداية الجملة دون تغيير هيكلي (**أبداً لم أرَ شيئاً كهذا**). أما الإنجليزية فتعكس الفاعل والفعل المساعد بعد الظروف النافية/المقيدة مثل **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. العكس علامة تأكيد ورسمية — وهي مهارة مستوى C2.",
+        },
+        exampleWrong: "Never I have seen such dedication.",
+        exampleRight: "Never have I seen such dedication.",
+        linkedRoomId: null,
+      },
+  ar_c2_register_consistency: {
+        tag: "ar_c2_register_consistency",
+        shortLabel: {
+          en: "Register consistency",
+          vi: "Nhất quán văn phong",
+          ar: "اتساق المستوى اللغوي",
+        },
+        longDescription: {
+          en: "Arabic moves naturally between formal (فصحى) and colloquial (عامية) registers, often within the same text. In English, mixing **gonna** with **furthermore**, or **kids** with **offspring**, in the same paragraph sounds jarring. C2 writers maintain one register throughout a text.",
+          vi: "Tiếng Ả Rập chuyển đổi tự nhiên giữa văn phong trang trọng (فصحى) và thân mật (عامية), thường trong cùng một văn bản. Trong tiếng Anh, pha trộn **gonna** với **furthermore**, hoặc **kids** với **offspring**, trong cùng một đoạn nghe rất chói tai. Người viết C2 duy trì một văn phong nhất quán.",
+          ar: "تنتقل العربية بطبيعتها بين الفصحى والعامية، وغالباً في النص الواحد. أما في الإنجليزية، فخلط **gonna** مع **furthermore**، أو **kids** مع **offspring**، في نفس الفقرة يبدو نشازاً. كتّاب مستوى C2 يحافظون على مستوى لغوي واحد متسق في كامل النص.",
+        },
+        exampleWrong: "The aforementioned findings are super interesting and you're gonna love them.",
+        exampleRight: "The aforementioned findings are highly compelling and readers will find them valuable.",
+        linkedRoomId: null,
+      },
+  ar_c2_hedging_academic: {
+        tag: "ar_c2_hedging_academic",
+        shortLabel: {
+          en: "Academic hedging",
+          vi: "Giảm nhẹ học thuật",
+          ar: "التحفظ الأكاديمي",
+        },
+        longDescription: {
+          en: "Arabic academic writing, especially in the humanities, often states conclusions directly (**هذا يثبت أن…**). English academic convention softens claims with hedging: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. At C2, knowing when and how to hedge is as important as knowing the grammar.",
+          vi: "Văn học thuật tiếng Ả Rập thường nêu kết luận trực tiếp (**هذا يثبت أن…**). Quy ước học thuật tiếng Anh làm mềm nhận định bằng giảm nhẹ: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. Ở cấp C2, biết khi nào và cách giảm nhẹ cũng quan trọng như biết ngữ pháp.",
+          ar: "كثيراً ما تذكر الكتابة الأكاديمية العربية الاستنتاجات مباشرة (**هذا يثبت أن…**). أما الأعراف الأكاديمية الإنجليزية فتلطف الادعاءات بالتحفظ: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. في مستوى C2، معرفة متى وكيف تتحفظ لا تقل أهمية عن معرفة القواعد.",
+        },
+        exampleWrong: "This proves that social media causes depression in teenagers.",
+        exampleRight: "This suggests that social media may contribute to depressive symptoms in some teenagers.",
+        linkedRoomId: null,
+      },
+  ar_c2_cleft_focus: {
+        tag: "ar_c2_cleft_focus",
+        shortLabel: {
+          en: "Cleft sentences for focus",
+          vi: "Câu chẻ nhấn mạnh",
+          ar: "الجمل المشقوقة للبؤرة",
+        },
+        longDescription: {
+          en: "Arabic uses word order and particles like **إنّ** for emphasis. English has a richer system: **It-clefts** (**It was John who broke the window**) pull one element into focus; **Wh-clefts** (**What I need is more time**) package a whole idea as the subject. At C2, choosing the right cleft structure controls what the reader notices first.",
+          vi: "Tiếng Ả Rập dùng trật tự từ và tiểu từ như **إنّ** để nhấn mạnh. Tiếng Anh có hệ thống phong phú hơn: **It-cleft** (**It was John who broke the window**) kéo một yếu tố vào tiêu điểm; **Wh-cleft** (**What I need is more time**) đóng gói cả một ý thành chủ ngữ. Ở cấp C2, chọn đúng cấu trúc cleft cho phép bạn kiểm soát chính xác điều người đọc chú ý đầu tiên.",
+          ar: "تستخدم العربية ترتيب الكلمات وأدوات مثل **إنّ** للتأكيد. أما الإنجليزية فتملك نظاماً أغنى: **It-cleft** (**It was John who broke the window**) تسحب عنصراً واحداً إلى البؤرة؛ و**Wh-cleft** (**What I need is more time**) تغلف فكرة كاملة كفاعل. في مستوى C2، اختيار بنية cleft الصحيحة يمكنك من التحكم في أول ما يلاحظه القارئ.",
+        },
+        exampleWrong: "What I need it is more time.",
+        exampleRight: "What I need is more time.",
+        linkedRoomId: null,
+      },
+  // hindi
+  hi_l1_missing_article: {
+      tag: "hi_l1_missing_article",
+      shortLabel: {
+        en: "Missing articles (a/an/the)",
+        vi: "Thiếu mạo từ (a/an/the)",
+        hi: "Articles (a/an/the) का प्रयोग न करना",
+      },
+      longDescription: {
+        en: "Hindi has no articles — **एक लड़की** (ek ladki, 'a girl') is grammatical without any article. In English, singular countable nouns must carry **a**, **an**, or **the**. Hindi speakers often drop articles entirely because their native grammar has no equivalent category.",
+        vi: "Tiếng Hindi không có mạo từ — **एक लड़की** (ek ladki, 'một cô gái') đúng ngữ pháp mà không cần mạo từ. Trong tiếng Anh, danh từ đếm được số ít bắt buộc có **a**, **an**, hoặc **the**. Người nói tiếng Hindi thường bỏ mạo từ hoàn toàn vì ngữ pháp mẹ đẻ không có phạm trù tương đương.",
+        hi: "हिंदी में articles (a/an/the) नहीं होते — **एक लड़की** बिना किसी article के व्याकरणिक रूप से सही है। English में singular countable noun के साथ **a**, **an**, या **the** लगाना अनिवार्य है। Hindi speakers अक्सर articles को पूरी तरह छोड़ देते हैं क्योंकि उनकी मातृभाषा के व्याकरण में यह श्रेणी मौजूद ही नहीं है।",
+      },
+      exampleWrong: "She is doctor and works in hospital.",
+      exampleRight: "She is a doctor and works in a hospital.",
+      linkedRoomId: null,
+    },
+  hi_l1_preposition_postposition: {
+      tag: "hi_l1_preposition_postposition",
+      shortLabel: {
+        en: "Preposition vs postposition",
+        vi: "Giới từ và hậu từ",
+        hi: "Preposition और postposition का फ़र्क",
+      },
+      longDescription: {
+        en: "Hindi uses **postpositions** that come after the noun — **मेज़ पर** (mez par, literally 'table on'). English uses **prepositions** before the noun — **on the table**. This reversed word order causes Hindi speakers to misplace prepositions or use the wrong one, especially in complex sentences.",
+        vi: "Tiếng Hindi dùng **hậu từ** đứng sau danh từ — **मेज़ पर** (mez par, nghĩa đen 'bàn trên'). Tiếng Anh dùng **giới từ** trước danh từ — **on the table**. Trật tự từ đảo ngược này khiến người nói tiếng Hindi đặt sai vị trí giới từ hoặc dùng sai giới từ, đặc biệt trong câu phức tạp.",
+        hi: "हिंदी में संबंध सूचक शब्द (**postpositions**) संज्ञा के बाद आते हैं — **मेज़ पर** (mez par, शाब्दिक अर्थ 'table on')। English में **prepositions** संज्ञा से पहले आते हैं — **on the table**। यह उल्टा शब्द क्रम Hindi speakers को गलत जगह preposition डालने या गलत preposition चुनने पर मजबूर कर देता है, खासकर लंबे वाक्यों में।",
+      },
+      exampleWrong: "I am going market to.",
+      exampleRight: "I am going to the market.",
+      linkedRoomId: null,
+    },
+  hi_l1_wrong_word_order: {
+      tag: "hi_l1_wrong_word_order",
+      shortLabel: {
+        en: "Subject-Object-Verb transfer",
+        vi: "Nhầm trật tự SOV → SVO",
+        hi: "SOV से SVO क्रम की गलती",
+      },
+      longDescription: {
+        en: "Hindi's basic word order is **Subject-Object-Verb** (SOV) — **मैंने खाना खाया** (I food ate). English is **Subject-Verb-Object** (SVO) — **I ate food**. Hindi speakers, especially at lower levels, may place the verb at the end of English sentences, creating structures like 'I food ate' or 'She book is reading.'",
+        vi: "Trật tự từ cơ bản của tiếng Hindi là **Chủ ngữ - Tân ngữ - Động từ** (SOV) — **मैंने खाना खाया** (tôi thức ăn đã ăn). Tiếng Anh là **Chủ ngữ - Động từ - Tân ngữ** (SVO) — **I ate food**. Người nói tiếng Hindi, đặc biệt ở trình độ thấp, thường đặt động từ cuối câu tiếng Anh, tạo ra cấu trúc như 'I food ate' hoặc 'She book is reading.'",
+        hi: "हिंदी का मूल वाक्य क्रम **Subject-Object-Verb** (SOV) है — **मैंने खाना खाया** (मैंने-खाना-खाया)। English **Subject-Verb-Object** (SVO) है — **I ate food** (मैंने-खाया-खाना)। Hindi speakers, खासकर शुरुआती स्तर पर, अक्सर English वाक्यों के अंत में verb रख देते हैं, जिससे 'I food ate' या 'She book is reading' जैसी संरचनाएँ बन जाती हैं।",
+      },
+      exampleWrong: "She her homework is doing.",
+      exampleRight: "She is doing her homework.",
+      linkedRoomId: null,
+    },
+  hi_l1_since_for_confusion: {
+      tag: "hi_l1_since_for_confusion",
+      shortLabel: {
+        en: '"Since" vs "for" confusion',
+        vi: 'Nhầm "since" và "for"',
+        hi: '"Since" और "for" में अंतर',
+      },
+      longDescription: {
+        en: "Hindi uses **से** (se) for both 'since' and 'for' — **दो घंटे से** can mean 'for two hours' or 'since two [o\'clock].' English splits this: **since** + point in time (since Monday, since 3pm), **for** + duration (for two hours, for three days). Hindi speakers often default to 'since' everywhere because it feels like the more literal translation of से.",
+        vi: "Tiếng Hindi dùng **से** (se) cho cả 'since' và 'for' — **दो घंटे से** có thể nghĩa là 'for two hours' hoặc 'since two [o\'clock].' Tiếng Anh phân biệt: **since** + mốc thời gian (since Monday, since 3pm), **for** + khoảng thời gian (for two hours, for three days). Người nói tiếng Hindi thường mặc định dùng 'since' cho mọi trường hợp vì nó cảm giác như bản dịch sát nghĩa hơn của từ से.",
+        hi: "हिंदी में **से** (se) 'since' और 'for' दोनों के लिए इस्तेमाल होता है — **दो घंटे से** का मतलब 'for two hours' या 'since two [o\'clock]' दोनों हो सकता है। English इसे अलग करता है: **since** + समय बिंदु (since Monday, since 3pm), **for** + अवधि (for two hours, for three days)। Hindi speakers अक्सर हर जगह 'since' लगा देते हैं क्योंकि यह 'से' का ज़्यादा शाब्दिक अनुवाद लगता है।",
+      },
+      exampleWrong: "I have been waiting since two hours.",
+      exampleRight: "I have been waiting for two hours.",
+      linkedRoomId: null,
+    },
+  hi_l1_continuous_overuse: {
+      tag: "hi_l1_continuous_overuse",
+      shortLabel: {
+        en: "Continuous tense overuse",
+        vi: "Lạm dụng thì tiếp diễn",
+        hi: "Continuous tense का अति प्रयोग",
+      },
+      longDescription: {
+        en: "Hindi uses continuous/progressive forms more freely than English — stative verbs like **जानना** (jaanna, 'to know') routinely appear in continuous (**मैं जान रहा हूँ**, 'I am knowing'). English restricts the continuous to dynamic actions; 'I am knowing,' 'I am understanding,' 'I am wanting' are all ungrammatical. The correct forms are **I know**, **I understand**, **I want**.",
+        vi: "Tiếng Hindi dùng thì tiếp diễn tự do hơn tiếng Anh — động từ trạng thái như **जानना** (jaanna, 'biết') thường xuyên xuất hiện ở dạng tiếp diễn (**मैं जान रहा हूँ**, 'I am knowing'). Tiếng Anh giới hạn thì tiếp diễn cho hành động động; 'I am knowing,' 'I am understanding,' 'I am wanting' đều sai ngữ pháp. Dạng đúng là **I know**, **I understand**, **I want**.",
+        hi: "हिंदी में continuous/progressive tense का प्रयोग English से कहीं ज़्यादा खुले रूप में होता है — **जानना** जैसे stative verbs भी अक्सर continuous में आते हैं (**मैं जान रहा हूँ**)। English में continuous सिर्फ dynamic actions के लिए है; 'I am knowing,' 'I am understanding,' 'I am wanting' सब अव्याकरणिक हैं। सही रूप हैं **I know**, **I understand**, **I want**।",
+      },
+      exampleWrong: "I am not understanding this problem.",
+      exampleRight: "I don't understand this problem.",
+      linkedRoomId: null,
+    },
+  hi_l1_present_perfect_vs_simple: {
+      tag: "hi_l1_present_perfect_vs_simple",
+      shortLabel: {
+        en: "Present perfect vs past simple",
+        vi: "Hiện tại hoàn thành và quá khứ đơn",
+        hi: "Present perfect और past simple का फ़र्क",
+      },
+      longDescription: {
+        en: "Hindi uses a single structure (**मैंने खाना खा लिया**) that can convey both 'I ate' and 'I have eaten.' English splits them: use **past simple** when a specific past time is named (**yesterday**, **last week**, **at 3pm**); use **present perfect** for past actions with present relevance and no specific time marker.",
+        vi: "Tiếng Hindi dùng một cấu trúc duy nhất (**मैंने खाना खा लिया**) để diễn tả cả 'I ate' và 'I have eaten.' Tiếng Anh phân biệt: dùng **past simple** khi có thời gian cụ thể trong quá khứ (**yesterday**, **last week**, **at 3pm**); dùng **present perfect** khi hành động quá khứ còn liên quan đến hiện tại và không có mốc thời gian cụ thể.",
+        hi: "हिंदी में एक ही संरचना (**मैंने खाना खा लिया**) 'I ate' और 'I have eaten' दोनों का भाव दे सकती है। English इन्हें अलग करता है: जब कोई specific past time बताया गया हो (**yesterday**, **last week**, **at 3pm**) तब **past simple**; जब past action का present से संबंध हो और कोई specific time न बताया गया हो, तब **present perfect**।",
+      },
+      exampleWrong: "I have eaten breakfast at 7am this morning.",
+      exampleRight: "I ate breakfast at 7am this morning.",
+      linkedRoomId: null,
+    },
+  hi_c2_reported_speech_tense: {
+      tag: "hi_c2_reported_speech_tense",
+      shortLabel: {
+        en: "Reported speech — no tense backshift",
+        vi: "Câu tường thuật — không lùi thì",
+        hi: "Reported speech में tense बदलना",
+      },
+      longDescription: {
+        en: "Hindi keeps the original tense in reported speech — **उसने कहा कि वह बीमार है** (she said that she is sick, present tense stays present). English backshifts the tense: **She said she was sick**, not 'she is sick.' At C2, failing to backshift in formal and academic writing signals non-native proficiency.",
+        vi: "Tiếng Hindi giữ nguyên thì trong câu tường thuật — **उसने कहा कि वह बीमार है** (cô ấy nói rằng cô ấy đang ốm, thì hiện tại giữ nguyên). Tiếng Anh lùi thì: **She said she was sick**, không phải 'she is sick.' Ở cấp C2, không lùi thì trong văn viết trang trọng và học thuật là dấu hiệu của người không phải bản ngữ.",
+        hi: "हिंदी में reported speech में tense वही रहता है — **उसने कहा कि वह बीमार है** (present tense, 'है' जस का तस)। English में tense backshift होता है: **She said she was sick**, न कि 'she is sick।' C2 स्तर पर, औपचारिक और शैक्षणिक लेखन में backshift न करना non-native proficiency का संकेत है।",
+      },
+      exampleWrong: "The minister stated that the economy is improving rapidly.",
+      exampleRight: "The minister stated that the economy was improving rapidly.",
+      linkedRoomId: null,
+    },
+  hi_c2_conditional_backshift: {
+      tag: "hi_c2_conditional_backshift",
+      shortLabel: {
+        en: "Conditional tense backshift",
+        vi: "Lùi thì trong câu điều kiện",
+        hi: "Conditional में tense backshift",
+      },
+      longDescription: {
+        en: "Hindi conditionals use the same tense pattern for real and unreal conditions — **अगर मेरे पास पैसे होते, तो मैं खरीदता** (if I had money, I would buy, using past subjunctive but without the English-style would+have structure). English marks unreal conditions with **If + past tense, would + base verb** — and **never** mixes past with **will**. At C2, mixed conditionals (past condition → present result) add another layer Hindi speakers must consciously learn.",
+        vi: "Câu điều kiện tiếng Hindi dùng cùng mẫu thì cho cả điều kiện thật và không thật — **अगर मेरे पास पैसे होते, तो मैं खरीदता** (nếu tôi có tiền, tôi sẽ mua, dùng quá khứ giả định nhưng không có cấu trúc would+have kiểu tiếng Anh). Tiếng Anh đánh dấu điều kiện không thật bằng **If + quá khứ, would + động từ gốc** — và **không bao giờ** trộn quá khứ với **will**. Ở cấp C2, câu điều kiện hỗn hợp (điều kiện quá khứ → kết quả hiện tại) thêm một lớp phức tạp mà người nói tiếng Hindi phải học có ý thức.",
+        hi: "हिंदी में conditional sentences में real और unreal दोनों के लिए एक जैसा tense pattern इस्तेमाल होता है — **अगर मेरे पास पैसे होते, तो मैं खरीदता** (past subjunctive, पर English के would+have जैसी संरचना के बिना)। English में unreal conditions के लिए **If + past tense, would + base verb** का नियम है — और past के साथ **will** कभी नहीं मिलता। C2 स्तर पर, mixed conditionals (past condition → present result) एक और परत जोड़ते हैं जिसे Hindi speakers को conscious effort से सीखना पड़ता है।",
+      },
+      exampleWrong: "If I had more time, I will learn Hindi.",
+      exampleRight: "If I had more time, I would learn Hindi.",
+      linkedRoomId: null,
+    },
+  hi_c2_register_formality: {
+      tag: "hi_c2_register_formality",
+      shortLabel: {
+        en: "Register and formality transfer",
+        vi: "Chuyển đổi văn phong trang trọng",
+        hi: "Formality और register का अंतर",
+      },
+      longDescription: {
+        en: "Hindi has a three-tier formality system — **आप** (formal), **तुम** (familiar), **तू** (intimate) — all mapping to English 'you.' Hindi speakers often overcompensate in English by adding extra polite phrases (**kindly do the needful**, **please revert back**) that sound unnatural to native ears. English formality comes from sentence structure and word choice, not from stacking politeness markers.",
+        vi: "Tiếng Hindi có hệ thống ba cấp độ lịch sự — **आप** (trang trọng), **तुम** (thân mật), **तू** (thân thiết) — tất cả đều dịch thành 'you' trong tiếng Anh. Người nói tiếng Hindi thường bù đắp quá mức trong tiếng Anh bằng cách thêm các cụm từ lịch sự thừa (**kindly do the needful**, **please revert back**) nghe không tự nhiên với người bản ngữ. Sự trang trọng trong tiếng Anh đến từ cấu trúc câu và lựa chọn từ, không phải từ việc xếp chồng các dấu hiệu lịch sự.",
+        hi: "हिंदी में formality के तीन स्तर हैं — **आप** (औपचारिक), **तुम** (परिचित), **तू** (अंतरंग) — और ये सब English के 'you' में समा जाते हैं। Hindi speakers अक्सर English में ज़रूरत से ज़्यादा polite phrases जोड़कर क्षतिपूर्ति करते हैं (**kindly do the needful**, **please revert back**) जो native speakers को unnatural लगती हैं। English में formality वाक्य संरचना और शब्द चयन से आती है, politeness markers की तह लगाने से नहीं।",
+      },
+      exampleWrong: "Kindly do the needful and revert back at the earliest.",
+      exampleRight: "Please take care of this and let me know as soon as you can.",
+      linkedRoomId: null,
+    },
+  hi_c2_academic_hedging: {
+      tag: "hi_c2_academic_hedging",
+      shortLabel: {
+        en: "Academic hedging",
+        vi: "Giảm nhẹ học thuật",
+        hi: "शैक्षणिक लेखन में hedging",
+      },
+      longDescription: {
+        en: "Hindi academic tradition often states claims directly — **यह सिद्ध करता है कि…** (this proves that…). English academic convention softens claims with hedging: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. At C2, knowing when and how to hedge is essential — direct claims in English are seen as overconfident rather than authoritative.",
+        vi: "Truyền thống học thuật tiếng Hindi thường nêu nhận định trực tiếp — **यह सिद्ध करता है कि…** (điều này chứng minh rằng…). Quy ước học thuật tiếng Anh làm mềm nhận định bằng hedging: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. Ở cấp C2, biết khi nào và cách hedging là thiết yếu — nhận định trực tiếp trong tiếng Anh bị coi là quá tự tin hơn là có thẩm quyền.",
+        hi: "हिंदी की शैक्षणिक परंपरा में दावे अक्सर सीधे कहे जाते हैं — **यह सिद्ध करता है कि…** (this proves that…)। English academic convention में hedging के ज़रिए दावों को नरम किया जाता है: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**। C2 स्तर पर, कब और कैसे hedging करनी है यह जानना अनिवार्य है — English में सीधे दावे authoritative नहीं, overconfident माने जाते हैं।",
+      },
+      exampleWrong: "This proves that bilingual education improves cognitive development.",
+      exampleRight: "This suggests that bilingual education may contribute to improved cognitive development.",
+      linkedRoomId: null,
+    },
+  // urdu
+  ur_l1_missing_be: {
+      tag: "ur_l1_missing_be",
+      shortLabel: {
+        en: "Missing \"to be\"",
+        vi: "Thiếu động từ \"to be\"",
+        ur: "\"to be\" کا استعمال ضروری ہے",
+      },
+      longDescription: {
+        en: "Urdu can drop the copula **hai** (**ہے**) when the meaning is clear — **میں خوش** (main khush) is common for 'I am happy.' English always needs **am**, **is**, or **are** before an adjective, noun, or location. Leaving out the verb sounds incomplete.",
+        vi: "Tiếng Urdu có thể bỏ động từ nối **hai** (**ہے**) khi nghĩa rõ ràng — **میں خوش** (main khush) là cách nói phổ biến nghĩa 'tôi vui.' Tiếng Anh luôn cần **am**, **is**, hoặc **are** trước tính từ, danh từ, hoặc địa điểm. Bỏ động từ làm câu nghe chưa hoàn chỉnh.",
+        ur: "اردو میں جب معنی واضح ہو تو فعل ناقص **ہے** کو چھوڑا جا سکتا ہے — **میں خوش** عام ہے۔ انگریزی میں ہمیشہ **am**، **is**، یا **are** صفت، اسم یا مقام سے پہلے درکار ہوتا ہے۔ فعل کا چھوڑنا جملے کو نامکمل بناتا ہے۔",
+      },
+      exampleWrong: "She very happy today.",
+      exampleRight: "She is very happy today.",
+      linkedRoomId: null,
+    },
+  ur_l1_missing_article: {
+      tag: "ur_l1_missing_article",
+      shortLabel: {
+        en: "Articles **a / an / the**",
+        vi: "Mạo từ **a / an / the**",
+        ur: "حروف تعریف **a / an / the**",
+      },
+      longDescription: {
+        en: "Urdu has no definite or indefinite articles. A noun like **کتاب** (kitaab) can mean either 'a book' or 'the book' depending on context. English almost always requires **a**, **an**, or **the** before a singular countable noun — especially the first time you mention something.",
+        vi: "Tiếng Urdu không có mạo từ xác định hay không xác định. Một danh từ như **کتاب** (kitaab) có thể mang nghĩa 'một cuốn sách' hoặc 'cuốn sách đó' tuỳ ngữ cảnh. Tiếng Anh hầu như luôn cần **a**, **an**, hoặc **the** trước danh từ đếm được số ít — đặc biệt là lần đầu nhắc đến một vật.",
+        ur: "اردو میں حروف تعریف (articles) نہیں ہوتے۔ ایک اسم جیسے **کتاب** سیاق و سباق کے مطابق 'ایک کتاب' یا 'وہ کتاب' دونوں معنی دے سکتا ہے۔ انگریزی میں تقریباً ہمیشہ واحد قابل شمار اسم سے پہلے **a**، **an**، یا **the** کی ضرورت ہوتی ہے، خاص طور پر جب پہلی بار کسی چیز کا ذکر کریں۔",
+      },
+      exampleWrong: "I bought car yesterday.",
+      exampleRight: "I bought a car yesterday.",
+      linkedRoomId: null,
+    },
+  ur_l1_word_order: {
+      tag: "ur_l1_word_order",
+      shortLabel: {
+        en: "Word order: Subject → Verb → Object",
+        vi: "Trật tự từ: Chủ ngữ → Động từ → Tân ngữ",
+        ur: "ترتیب کلمات: فاعل → فعل → مفعول",
+      },
+      longDescription: {
+        en: "Urdu is a Subject-Object-Verb (SOV) language — **میں کتاب پڑھتا ہوں** (I book read). English is Subject-Verb-Object (SVO) — **I read a book**. The verb moves before the object in English. This deep structural difference means Urdu speakers naturally place the verb at the end, which sounds wrong in English.",
+        vi: "Tiếng Urdu là ngôn ngữ Chủ ngữ-Tân ngữ-Động từ (SOV) — **میں کتاب پڑھتا ہوں** (tôi sách đọc). Tiếng Anh là Chủ ngữ-Động từ-Tân ngữ (SVO) — **I read a book**. Động từ chuyển lên trước tân ngữ trong tiếng Anh. Sự khác biệt cấu trúc sâu này khiến người nói tiếng Urdu tự nhiên đặt động từ ở cuối, và điều đó nghe sai trong tiếng Anh.",
+        ur: "اردو ایک فاعل-مفعول-فعل (SOV) زبان ہے — **میں کتاب پڑھتا ہوں**۔ انگریزی فاعل-فعل-مفعول (SVO) ہے — **I read a book**۔ فعل مفعول سے پہلے آتا ہے۔ یہ گہرا ساختی فرق اردو بولنے والوں کو فطری طور پر فعل کو آخر میں رکھنے پر مجبور کرتا ہے، جو انگریزی میں غلط لگتا ہے۔",
+      },
+      exampleWrong: "I a book read yesterday.",
+      exampleRight: "I read a book yesterday.",
+      linkedRoomId: null,
+    },
+  ur_l1_plural_s: {
+      tag: "ur_l1_plural_s",
+      shortLabel: {
+        en: "Plural nouns with **-s**",
+        vi: "Danh từ số nhiều với **-s**",
+        ur: "جمع اسماء **-s** سے",
+      },
+      longDescription: {
+        en: "Urdu marks plurals with suffixes like **-یں** (-ein), **-ات** (-aat), or internal changes — **کتابیں** (kitaabein), **مرد** → **مرد** (mard — mardon). None of these map to English's simple **-s**. English adds **-s** or **-es** to most nouns: **book → books**, **box → boxes**. A number like **two** already signals plural, so the noun must also change.",
+        vi: "Tiếng Urdu đánh dấu số nhiều bằng hậu tố như **-یں** (-ein), **-ات** (-aat), hoặc biến đổi bên trong — **کتابیں** (kitaabein). Không có cách nào khớp với **-s** đơn giản của tiếng Anh. Tiếng Anh thêm **-s** hoặc **-es** vào hầu hết danh từ: **book → books**.",
+        ur: "اردو میں جمع کے لیے لاحقے جیسے **-یں**، **-ات**، یا داخلی تبدیلیاں استعمال ہوتی ہیں — **کتابیں**، **مرد** سے **مردوں**۔ ان میں سے کوئی بھی انگریزی کے سادہ **-s** سے مطابقت نہیں رکھتا۔ انگریزی میں اکثر اسماء کے آخر میں **-s** یا **-es** لگایا جاتا ہے: **book → books**, **box → boxes**۔",
+      },
+      exampleWrong: "I have two dog.",
+      exampleRight: "I have two dogs.",
+      linkedRoomId: null,
+    },
+  ur_l1_past_ed: {
+      tag: "ur_l1_past_ed",
+      shortLabel: {
+        en: "Past tense with **-ed**",
+        vi: "Thì quá khứ với **-ed**",
+        ur: "فعل ماضی **-ed** کے ساتھ",
+      },
+      longDescription: {
+        en: "Urdu shows past time by changing the verb into a perfective participle that agrees with the subject's gender — **میں نے کام کیا** (maine kaam kiya — masculine) vs **میں نے کام کیا** (maine kaam ki — feminine). English adds **-ed** to regular verbs regardless of gender: **work → worked**. Irregular verbs must be memorised: **go → went**, **eat → ate**.",
+        vi: "Tiếng Urdu diễn tả quá khứ bằng cách chuyển động từ thành phân từ hoàn thành có chia theo giống của chủ ngữ — giống đực so với giống cái. Tiếng Anh thêm **-ed** vào động từ thường bất kể giống: **work → worked**. Động từ bất quy tắc phải học thuộc lòng: **go → went**, **eat → ate**.",
+        ur: "اردو میں ماضی کے لیے فعل کو اسم مفعول کامل میں بدلا جاتا ہے جو فاعل کی جنس سے مطابقت رکھتا ہے — **میں نے کام کیا** (مذکر) بمقابلہ **میں نے کام کیا** (مونث)۔ انگریزی میں جنس سے قطع نظر **-ed** لگایا جاتا ہے: **work → worked**۔ غیر قاعدہ افعال یاد کرنے پڑتے ہیں: **go → went**, **eat → ate**۔",
+      },
+      exampleWrong: "Yesterday I work late.",
+      exampleRight: "Yesterday I worked late.",
+      linkedRoomId: null,
+    },
+  ur_l1_3rd_person_s: {
+      tag: "ur_l1_3rd_person_s",
+      shortLabel: {
+        en: "Subject-verb agreement (he/she/it + **-s**)",
+        vi: "Chia động từ ngôi thứ ba số ít (he/she/it + **-s**)",
+        ur: "فاعل فعل مطابقت (وہ + **-s**)",
+      },
+      longDescription: {
+        en: "Urdu verbs agree with the subject's **gender and number**, not person. **وہ جاتا ہے** (woh jata hai — 'he goes') and **وہ جاتی ہے** (woh jati hai — 'she goes') differ by gender, and there is no **-s** ending for third-person singular. English adds **-s** to the verb when the subject is **he**, **she**, or **it**: **he goes**, **she runs**.",
+        vi: "Động từ tiếng Urdu chia theo **giống và số** của chủ ngữ, không theo ngôi. Không có đuôi **-s** cho ngôi thứ ba số ít. Tiếng Anh thêm **-s** vào động từ khi chủ ngữ là **he**, **she**, hoặc **it**: **he goes**, **she runs**.",
+        ur: "اردو میں فعل فاعل کی جنس اور عدد کے مطابق بدلتا ہے، شخص کے مطابق نہیں۔ **وہ جاتا ہے** اور **وہ جاتی ہے** جنس میں مختلف ہیں، اور غائب واحد کے لیے کوئی **-s** کا اضافہ نہیں ہوتا۔ انگریزی میں جب فاعل **he**، **she**، یا **it** ہو تو فعل کے آخر میں **-s** لگایا جاتا ہے: **he goes**, **she runs**۔",
+      },
+      exampleWrong: "She go to school every day.",
+      exampleRight: "She goes to school every day.",
+      linkedRoomId: null,
+    },
+  ur_l1_preposition: {
+      tag: "ur_l1_preposition",
+      shortLabel: {
+        en: "Prepositions **in / on / at**",
+        vi: "Giới từ **in / on / at**",
+        ur: "حروف جار **in / on / at**",
+      },
+      longDescription: {
+        en: "Urdu uses **postpositions** — particles that come **after** the noun: **میز پر** (meez par — table **on**), **گھر میں** (ghar **mein** — house **in**), **ساڑھے تین بجے** (saadhe teen **baje** — half three **at** ). English uses **prepositions** before the noun: **on** the table, **in** the house, **at** 3:30. The placement is flipped, and English splits the work across three words where Urdu uses different postpositions for each context.",
+        vi: "Tiếng Urdu dùng **hậu giới từ** — tiểu từ đứng **sau** danh từ: **میز پر** (meez par — bàn **trên**). Tiếng Anh dùng tiền giới từ **trước** danh từ: **on** the table. Vị trí bị đảo ngược và tiếng Anh chia ba (**in / on / at**) trong khi tiếng Urdu có các hậu giới từ riêng.",
+        ur: "اردو میں **حروف جار** اسم کے **بعد** آتے ہیں: **میز پر**، **گھر میں**، **تین بجے**۔ انگریزی میں یہ اسم سے **پہلے** آتے ہیں: **on** the table، **in** the house، **at** 3 o'clock۔ مقام الٹ ہے، اور انگریزی اس کام کو تین لفظوں میں تقسیم کرتی ہے (**in / on / at**) جبکہ اردو میں ہر سیاق کے لیے الگ حرف جار ہے۔",
+      },
+      exampleWrong: "I will meet you in Monday.",
+      exampleRight: "I will meet you on Monday.",
+      linkedRoomId: null,
+    },
+  ur_l1_present_perfect_vs_past: {
+      tag: "ur_l1_present_perfect_vs_past",
+      shortLabel: {
+        en: "Present perfect vs past simple",
+        vi: "Hiện tại hoàn thành vs quá khứ đơn",
+        ur: "ماضی قریب بمقابلہ ماضی مطلق",
+      },
+      longDescription: {
+        en: "Urdu uses the perfective aspect — **میں نے کھایا** (maine khaaya) — to talk about any completed action, whether yesterday or just now. English splits: **simple past** for actions at a specific finished time (**I ate pho yesterday**), and **present perfect** for actions with present relevance or no specific time (**I have eaten pho before**). The Urdu perfective covers both.",
+        vi: "Tiếng Urdu dùng thể hoàn thành — **میں نے کھایا** (maine khaaya) — để nói về bất kỳ hành động nào đã hoàn thành. Tiếng Anh phân chia: **quá khứ đơn** cho hành động ở thời điểm cụ thể trong quá khứ, và **hiện tại hoàn thành** cho hành động còn liên quan đến hiện tại hoặc không có thời gian cụ thể.",
+        ur: "اردو میں فعل ماضی کامل — **میں نے کھایا** — کسی بھی مکمل ہونے والی کارروائی کے لیے استعمال ہوتا ہے، چاہے وہ کل ہوئی ہو یا ابھی۔ انگریزی میں تقسیم ہے: **ماضی مطلق** ماضی کے مخصوص وقت پر، اور **ماضی قریب** حال سے تعلق رکھنے والی کارروائیوں کے لیے۔ اردو کا فعل ماضی کامل دونوں صورتوں پر محیط ہے۔",
+      },
+      exampleWrong: "I have eaten breakfast this morning.",
+      exampleRight: "I ate breakfast this morning.",
+      linkedRoomId: null,
+    },
+  ur_l1_conditional_mix: {
+      tag: "ur_l1_conditional_mix",
+      shortLabel: {
+        en: "**If** clauses — match the tenses",
+        vi: "Câu **If** — hợp thì",
+        ur: "شرطی جملے — زمانی مطابقت",
+      },
+      longDescription: {
+        en: "Urdu conditional sentences use **اگر… تو** (agar… to) and don't change the verb tense based on real vs unreal meaning. English enforces a strict pattern: real condition → **If + present, will + V**; unreal condition → **If + past, would + V**. Never mix past tense with **will** in the same sentence.",
+        vi: "Câu điều kiện tiếng Urdu dùng **اگر… تو** (agar… to) và không đổi thì động từ dựa trên nghĩa thật hay giả. Tiếng Anh có quy tắc nghiêm ngặt: điều kiện có thật → **If + hiện tại, will + V**; điều kiện không thật → **If + quá khứ, would + V**. Không bao giờ trộn quá khứ với **will** trong cùng câu.",
+        ur: "اردو میں شرطی جملے **اگر… تو** استعمال کرتے ہیں اور حقیقت یا فرض کی بنیاد پر فعل کا زمانہ نہیں بدلتے۔ انگریزی میں سخت قاعدہ ہے: حقیقت → **If + حال, will + فعل**؛ فرض → **If + ماضی, would + فعل**۔ ایک جملے میں ماضی کو **will** کے ساتھ نہ ملائیں۔",
+      },
+      exampleWrong: "If I had money, I will buy a house.",
+      exampleRight: "If I had money, I would buy a house.",
+      linkedRoomId: null,
+    },
+  ur_c2_formal_register: {
+      tag: "ur_c2_formal_register",
+      shortLabel: {
+        en: "Register consistency",
+        vi: "Nhất quán văn phong",
+        ur: "انداز بیان کی یکسانیت",
+      },
+      longDescription: {
+        en: "Urdu makes sharp distinctions between formal and informal address — **آپ** (aap, formal), **تم** (tum, familiar), **تو** (tu, intimate). Urdu speakers may carry this register-sensitivity into English, but the markers are different. English formal register avoids contractions, uses Latinate vocabulary, and maintains consistent tone. Mixing **gonna** with **furthermore** in the same paragraph feels jarring — a C2 writer keeps one register throughout.",
+        vi: "Tiếng Urdu phân biệt rõ giữa xưng hô trang trọng và thân mật — **آپ** (aap, trang trọng), **تم** (tum, thân thiết), **تو** (tu, thân mật). Người Urdu có thể mang sự nhạy cảm này sang tiếng Anh. Văn phong trang trọng tiếng Anh tránh viết tắt, dùng từ vựng gốc Latinh, và duy trì giọng điệu nhất quán.",
+        ur: "اردو میں رسمی اور غیر رسمی خطاب میں تیز فرق ہے — **آپ** (رسمی)، **تم** (مانوس)، **تو** (بے تکلف)۔ اردو بولنے والے اس حساسیت کو انگریزی میں بھی لا سکتے ہیں۔ انگریزی رسمی انداز مخففات سے گریز کرتا ہے، لاطینی نژاد الفاظ استعمال کرتا ہے، اور یکساں لہجہ برقرار رکھتا ہے — C2 مصنف پوری تحریر میں ایک ہی انداز رکھتا ہے۔",
+      },
+      exampleWrong: "The aforementioned findings are super interesting and you're gonna love them.",
+      exampleRight: "The aforementioned findings are highly compelling and readers will find them valuable.",
+      linkedRoomId: null,
+    },
+  // japanese
+  ja_l1_subject_omission: {
+      tag: "ja_l1_subject_omission",
+      shortLabel: {
+        en: "Missing subject",
+        vi: "Thiếu chủ ngữ",
+        ja: "主語の欠落",
+      },
+      longDescription: {
+        en: "Japanese routinely drops subjects when they are clear from context — 今日は学校に行く is a complete sentence. English almost always needs an explicit subject. A sentence like **Is raining** or **Went to store** is grammatically incomplete in English, even though the Japanese equivalent feels perfectly natural.",
+        vi: "Tiếng Nhật thường xuyên lược bỏ chủ ngữ khi đã rõ từ ngữ cảnh — 今日は学校に行く là một câu hoàn chỉnh. Tiếng Anh hầu như luôn cần chủ ngữ rõ ràng. Một câu như **Is raining** hoặc **Went to store** là không hoàn chỉnh về mặt ngữ pháp trong tiếng Anh, dù câu tương đương trong tiếng Nhật nghe hoàn toàn tự nhiên.",
+        ja: "日本語は文脈から明らかな主語を日常的に省略します。「今日は学校に行く」は完全な文です。しかし英語はほぼ常に明示的な主語が必要です。**Is raining** や **Went to store** のような文は英語では文法的に不完全ですが、日本語の相当表現は完全に自然に聞こえるため、日本語話者はこの誤りを犯しがちです。",
+      },
+      exampleWrong: "Is very hot today.",
+      exampleRight: "It is very hot today.",
+      linkedRoomId: null,
+    },
+  ja_l1_article_missing: {
+      tag: "ja_l1_article_missing",
+      shortLabel: {
+        en: "Articles **a / an / the**",
+        vi: "Mạo từ **a / an / the**",
+        ja: "冠詞 **a / an / the**",
+      },
+      longDescription: {
+        en: "Japanese has no articles — nouns stand alone with particle markers doing different work. English almost always needs **a**, **an**, or **the** before a singular countable noun. Japanese learners commonly drop articles entirely or use them inconsistently, because the concept of 'article as a required grammar word' doesn't exist in the native language.",
+        vi: "Tiếng Nhật không có mạo từ — danh từ đứng một mình và trợ từ đảm nhiệm vai trò khác. Tiếng Anh hầu như luôn cần **a**, **an**, hoặc **the** trước danh từ đếm được số ít. Người Nhật thường bỏ hẳn mạo từ hoặc dùng không nhất quán, vì khái niệm 'mạo từ là từ ngữ pháp bắt buộc' không tồn tại trong tiếng mẹ đẻ.",
+        ja: "日本語には冠詞がありません。名詞は単独で立ち、助詞が別の役割を担います。英語では、可算名詞の単数形の前にはほぼ常に **a**、**an**、または **the** が必要です。日本語話者は冠詞を完全に省略したり、一貫性なく使用したりすることがよくあります。母語に「冠詞が必須の文法語」という概念自体が存在しないからです。",
+      },
+      exampleWrong: "I have car. Car is red.",
+      exampleRight: "I have a car. The car is red.",
+      linkedRoomId: null,
+    },
+  ja_l1_plural_s: {
+      tag: "ja_l1_plural_s",
+      shortLabel: {
+        en: "Plural nouns with **-s**",
+        vi: "Danh từ số nhiều với **-s**",
+        ja: "複数形の **-s**",
+      },
+      longDescription: {
+        en: "Japanese nouns don't change form for quantity — 本 can mean 'book' or 'books' depending on context. Counters like 三冊 (three books) do the work. English adds **-s** to most nouns when there's more than one. Japanese learners often omit the plural **-s** because their native grammar handles number without changing the noun itself.",
+        vi: "Danh từ tiếng Nhật không thay đổi hình thức theo số lượng — 本 có thể là 'quyển sách' hoặc 'những quyển sách' tùy ngữ cảnh. Các từ đếm như 三冊 (ba quyển sách) đảm nhiệm việc đó. Tiếng Anh thêm **-s** vào hầu hết danh từ khi có nhiều hơn một. Người Nhật thường bỏ **-s** số nhiều vì ngữ pháp tiếng mẹ đẻ xử lý số lượng mà không thay đổi bản thân danh từ.",
+        ja: "日本語の名詞は数量によって形が変わりません。「本」は文脈によって「book」にも「books」にもなります。「三冊」のような助数詞が数量を表します。英語は複数ある場合、ほとんどの名詞に **-s** を付けます。日本語話者は複数の **-s** を省略しがちです。母語の文法が名詞そのものを変えずに数量を処理するからです。",
+      },
+      exampleWrong: "I have three book.",
+      exampleRight: "I have three books.",
+      linkedRoomId: null,
+    },
+  ja_l1_third_person_s: {
+      tag: "ja_l1_third_person_s",
+      shortLabel: {
+        en: "Subject-verb agreement",
+        vi: "Chia động từ theo chủ ngữ",
+        ja: "三人称単数現在の **-s**",
+      },
+      longDescription: {
+        en: "Japanese verbs don't change form for person — 食べる (taberu) is the same for 'I eat,' 'you eat,' and 'she eats.' Politeness level (食べる vs 食べます) is about register, not person. English adds **-s** to the verb when the subject is **he**, **she**, or **it** in present tense. This extra **-s** has no equivalent in Japanese grammar.",
+        vi: "Động từ tiếng Nhật không thay đổi theo ngôi — 食べる (taberu) giống nhau cho 'tôi ăn,' 'bạn ăn,' và 'cô ấy ăn.' Mức độ lịch sự (食べる vs 食べます) là về văn phong, không phải ngôi. Tiếng Anh thêm **-s** vào động từ khi chủ ngữ là **he**, **she**, hoặc **it** ở thì hiện tại. **-s** này không có tương đương trong ngữ pháp tiếng Nhật.",
+        ja: "日本語の動詞は人称によって形が変わりません。「食べる」は「I eat」「you eat」「she eats」すべてに同じ形です。丁寧体（食べる vs 食べます）は文体の違いであり、人称による変化ではありません。英語では、現在形で主語が **he**、**she**、**it** の場合、動詞に **-s** を付けます。この **-s** は日本語の文法に相当するものがないため、習得が難しいポイントです。",
+      },
+      exampleWrong: "She eat breakfast every morning.",
+      exampleRight: "She eats breakfast every morning.",
+      linkedRoomId: null,
+    },
+  ja_l1_missing_be: {
+      tag: "ja_l1_missing_be",
+      shortLabel: {
+        en: 'Missing "to be"',
+        vi: 'Thiếu động từ "to be"',
+        ja: 'be動詞の欠落',
+      },
+      longDescription: {
+        en: "Japanese uses だ or です at the end of noun+adjective sentences — but it can be dropped in casual speech (いい天気ね = 'nice weather'). English always requires **am**, **is**, or **are** in present-tense equative and descriptive sentences. Japanese learners often drop **to be** because the copula pattern works differently in Japanese, especially in casual or shorthand writing.",
+        vi: "Tiếng Nhật dùng だ hoặc です ở cuối câu danh từ+tính từ — nhưng có thể bỏ trong văn nói thân mật (いい天気ね = 'thời tiết đẹp nhỉ'). Tiếng Anh luôn cần **am**, **is**, hoặc **are** trong câu miêu tả và đồng nhất ở hiện tại. Người Nhật thường bỏ **to be** vì trợ từ trong tiếng Nhật hoạt động khác, nhất là trong văn viết thân mật hoặc viết tắt.",
+        ja: "日本語は名詞＋形容詞の文の最後に「だ」や「です」を使いますが、日常会話では省略されることがよくあります（「いい天気ね」）。英語は現在形の等位文や記述文では常に **am**、**is**、**are** が必要です。日本語話者は **to be** を省略しがちです。日本語のコピュラの働きが異なり、特にカジュアルな会話や短い書き言葉では省略が自然だからです。",
+      },
+      exampleWrong: "She very tired.",
+      exampleRight: "She is very tired.",
+      linkedRoomId: null,
+    },
+  ja_l1_present_perfect_vs_past: {
+      tag: "ja_l1_present_perfect_vs_past",
+      shortLabel: {
+        en: "Present perfect vs past simple",
+        vi: "Present perfect vs past simple",
+        ja: "現在完了 vs 過去形",
+      },
+      longDescription: {
+        en: "Japanese た-form covers both 'I ate' (過去形) and 'I have eaten' (現在完了). The distinction is expressed through context or adjuncts, not verb form. English splits them: use **past simple** when a specific past time is named; use **present perfect** for past actions with present relevance and no specific time. Japanese speakers commonly overuse present perfect for past events or use past simple when present perfect is needed.",
+        vi: "Dạng た trong tiếng Nhật bao hàm cả 'tôi đã ăn' (quá khứ) và 'tôi đã ăn' (hiện tại hoàn thành). Sự phân biệt được thể hiện qua ngữ cảnh hoặc từ bổ trợ, không phải hình thái động từ. Tiếng Anh phân biệt: dùng **past simple** khi có thời gian cụ thể; dùng **present perfect** cho hành động quá khứ còn liên quan hiện tại và không có thời gian cụ thể.",
+        ja: "日本語の「た形」は「昨日食べた」（過去形）と「もう食べた」（現在完了）の両方をカバーします。区別は文脈や副詞によって表現され、動詞の形では区別しません。英語では、特定の過去の時点が明示されている場合は **過去形**、特定の時点がなく過去の動作が現在に関連している場合は **現在完了 (have + 過去分詞)** を使い分けます。日本語話者はこの区別に苦労し、過去の出来事に現在完了を過剰に使ったり、逆に現在完了が必要な場面で過去形を使ってしまうことがよくあります。",
+      },
+      exampleWrong: "I have visited Kyoto last year.",
+      exampleRight: "I visited Kyoto last year.",
+      linkedRoomId: null,
+    },
+  ja_l1_conditional_mix: {
+      tag: "ja_l1_conditional_mix",
+      shortLabel: {
+        en: "Conditional tense mixing",
+        vi: "Trộn thì câu điều kiện",
+        ja: "条件節の時制の混同",
+      },
+      longDescription: {
+        en: "Japanese conditionals (〜たら、〜ば、〜なら、〜と) don't change verb form to distinguish real from unreal situations — the conditional marker itself carries the meaning. English marks the difference directly: real conditions use **If + present, will + verb**; unreal/hypothetical conditions use **If + past, would + verb**. Japanese speakers commonly use **will** after a past-tense **if** clause, producing errors like **If I had money, I will buy it**.",
+        vi: "Câu điều kiện tiếng Nhật (〜たら、〜ば、〜なら、〜と) không thay đổi hình thái động từ để phân biệt tình huống thật và không thật — bản thân từ nối điều kiện mang ý nghĩa. Tiếng Anh đánh dấu sự khác biệt trực tiếp: điều kiện thật dùng **If + hiện tại, will + động từ**; điều kiện không thật dùng **If + quá khứ, would + động từ**. Người Nhật thường dùng **will** sau mệnh đề **if** ở quá khứ, tạo lỗi như **If I had money, I will buy it**.",
+        ja: "日本語の条件表現（〜たら、〜ば、〜なら、〜と）は、現実の条件と非現実の仮定を動詞の形で区別しません。条件の接続詞自体が意味を担います。英語は直接的に区別します：実現可能な条件は **If + 現在形, will + 動詞の原形**、現実に反する仮定は **If + 過去形, would + 動詞の原形** です。日本語話者は、過去形の **if** 節の後に **will** を使ってしまい、「If I had money, I will buy it」のような誤りをよく犯します。これは日本語の「もしお金があったら買う」が時制混在のように聞こえないためです。",
+      },
+      exampleWrong: "If I had money, I will buy a car.",
+      exampleRight: "If I had money, I would buy a car.",
+      linkedRoomId: null,
+    },
+  ja_l1_reported_speech: {
+      tag: "ja_l1_reported_speech",
+      shortLabel: {
+        en: "Reported speech tense shift",
+        vi: "Lùi thì trong câu tường thuật",
+        ja: "間接話法の時制の一致",
+      },
+      longDescription: {
+        en: "Japanese reports speech using と言った (to itta = 'said') without changing the tense of the quoted content — 彼女は疲れていると言った keeps present tense inside. English backshifts the tense: **She said she was tired**, not **She said she is tired**. The absence of backshifting in Japanese makes this a persistent error even at B2 level.",
+        vi: "Tiếng Nhật tường thuật lời nói bằng と言った (to itta = 'đã nói') mà không thay đổi thì của nội dung được trích dẫn — 彼女は疲れていると言った giữ nguyên thì hiện tại. Tiếng Anh lùi thì: **She said she was tired**, không phải **she said she is tired**. Việc thiếu lùi thì trong tiếng Nhật khiến lỗi này kéo dài ngay cả ở trình độ B2.",
+        ja: "日本語は「と言った」を使って発言を伝える際、引用される内容の時制を変えません。「彼女は疲れていると言った」は中身の現在形を保持します。英語は時制を一つ過去にずらします（時制の一致）。**She said she was tired** が正しく、**She said she is tired** は誤りです。日本語に時制の一致の概念がないため、この誤りは B2 レベルでも続く傾向があります。",
+      },
+      exampleWrong: "She said she is tired.",
+      exampleRight: "She said she was tired.",
+      linkedRoomId: null,
+    },
+  ja_c2_inversion_emphasis: {
+      tag: "ja_c2_inversion_emphasis",
+      shortLabel: {
+        en: "Inversion for emphasis",
+        vi: "Đảo ngữ nhấn mạnh",
+        ja: "倒置による強調",
+      },
+      longDescription: {
+        en: "Japanese marks emphasis through particles (は、こそ) and word order flexibility without changing the subject-verb sequence. English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversion signals emphasis and formality — a C2 feature that separates proficient from native-like writing. Japanese learners often keep normal word order because Japanese emphasis doesn't require syntactic inversion.",
+        vi: "Tiếng Nhật đánh dấu nhấn mạnh qua trợ từ (は、こそ) và trật tự từ linh hoạt mà không thay đổi trình tự chủ ngữ-động từ. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế như **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — kỹ năng C2. Người Nhật thường giữ nguyên trật tự từ vì tiếng Nhật nhấn mạnh mà không cần đảo ngữ cú pháp.",
+        ja: "日本語は助詞（は、こそ）や語順の柔軟性によって強調を表し、主語と動詞の順序は変わりません。英語では、**never**、**rarely**、**not only**、**hardly**、**no sooner**、**under no circumstances** などの否定的・制限的な副詞が文頭に来ると、主語と助動詞を倒置します。この倒置は強調と形式張った文体を示す C2 レベルの特徴です。日本語話者は、日本語の強調が統語的倒置を必要としないため、通常の語順を維持しがちです。",
+      },
+      exampleWrong: "Never I have seen such a beautiful temple.",
+      exampleRight: "Never have I seen such a beautiful temple.",
+      linkedRoomId: null,
+    },
+  ja_c2_cleft_focus: {
+      tag: "ja_c2_cleft_focus",
+      shortLabel: {
+        en: "Cleft sentences for focus",
+        vi: "Câu chẻ nhấn mạnh",
+        ja: "分裂文による焦点化",
+      },
+      longDescription: {
+        en: "Japanese uses のは〜だ structure to highlight an element — 窓を割ったのはジョンだ (It was John who broke the window). English cleft sentences follow a different syntactic pattern: **It-clefts** (**It was John who broke the window**) and **Wh-clefts** (**What I need is more time**). While Japanese has a similar concept, the English syntax is different enough that learners produce errors like **What I need it is more time** (adding an extra pronoun).",
+        vi: "Tiếng Nhật dùng cấu trúc のは〜だ để nhấn mạnh một yếu tố — 窓を割ったのはジョンだ (Chính John là người làm vỡ cửa sổ). Câu chẻ tiếng Anh tuân theo cú pháp khác: **It-cleft** và **Wh-cleft**. Mặc dù tiếng Nhật có khái niệm tương tự, cú pháp tiếng Anh đủ khác để người học tạo ra lỗi như **What I need it is more time** (thêm đại từ thừa).",
+        ja: "日本語は「〜のは〜だ」という構造で要素を焦点化します。「窓を割ったのはジョンだ」（It was John who broke the window）。英語の分裂文は異なる構文パターンに従います。**It-cleft**（**It was John who broke the window**）と **Wh-cleft**（**What I need is more time**）です。日本語にも似た概念はありますが、英語の構文は十分に異なるため、学習者は **What I need it is more time**（余分な代名詞を挿入）のような誤りを犯します。",
+      },
+      exampleWrong: "What I need it is more time.",
+      exampleRight: "What I need is more time.",
+      linkedRoomId: null,
+    },
+  ja_c2_register_consistency: {
+      tag: "ja_c2_register_consistency",
+      shortLabel: {
+        en: "Register consistency",
+        vi: "Nhất quán văn phong",
+        ja: "文体の一貫性",
+      },
+      longDescription: {
+        en: "Japanese has clear register markers through 敬語 (honorific language) — です・ます体 vs だ体 — and speakers consciously switch between them. However, English register is more subtle: informal contractions and slang vs. formal academic vocabulary don't have clear 'shift' markers. Japanese speakers may mix registers unintentionally in English — using **gonna** in an academic essay or **moreover** in a casual text — because English lacks the explicit register-marking system Japanese has.",
+        vi: "Tiếng Nhật có dấu hiệu văn phong rõ ràng qua 敬語 (kính ngữ) — thể です・ます vs thể だ — và người nói có ý thức chuyển đổi giữa chúng. Tuy nhiên, văn phong tiếng Anh tinh tế hơn: các từ rút gọn thân mật và từ vựng học thuật trang trọng không có dấu hiệu 'chuyển đổi' rõ ràng. Người Nhật có thể pha trộn văn phong một cách vô ý trong tiếng Anh.",
+        ja: "日本語は敬語を通じて明確な文体の区別があります（です・ます体 vs だ体）。話者は意識的にこれらを切り替えます。しかし、英語の文体はより微妙です。くだけた短縮形やスラングとフォーマルな学術語彙の間には、日本語のような明確な「切り替え標識」がありません。そのため、日本語話者はアカデミックエッセイで **gonna** を使ったり、カジュアルな文章で **moreover** を使うなど、意図せず文体を混在させてしまうことがあります。",
+      },
+      exampleWrong: "The aforementioned methodology is super cool and you're gonna love it.",
+      exampleRight: "The aforementioned methodology is highly effective and yields compelling results.",
+      linkedRoomId: null,
+    },
+  ja_c2_hedging_academic: {
+      tag: "ja_c2_hedging_academic",
+      shortLabel: {
+        en: "Academic hedging",
+        vi: "Giảm nhẹ học thuật",
+        ja: "学術的緩和表現",
+      },
+      longDescription: {
+        en: "Japanese academic writing has its own hedging conventions (〜と考えられる, 〜と思われる), but the stylistic mapping to English is imprecise. Japanese speakers may state claims too directly in English academic writing, mirroring the certainty expressed by Japanese academic particles — or over-hedging by using tentative expressions too frequently. At C2, knowing when and how to hedge in English — **this suggests that…**, **it could be argued that…**, **the data appear to indicate…** — is as important as knowing the grammar.",
+        vi: "Văn học thuật tiếng Nhật có quy ước giảm nhẹ riêng (〜と考えられる, 〜と思われる), nhưng ánh xạ phong cách sang tiếng Anh không chính xác. Người Nhật có thể nêu nhận định quá trực tiếp trong văn học thuật tiếng Anh, hoặc ngược lại dùng quá nhiều biểu đạt dè dặt. Ở trình độ C2, biết khi nào và cách giảm nhẹ trong tiếng Anh cũng quan trọng như biết ngữ pháp.",
+        ja: "日本語の学術文章にも緩和表現の慣習があります（〜と考えられる、〜と思われる）が、英語への文体マッピングは正確ではありません。日本語話者は、英語の学術文章で主張を直接的に述べすぎたり（日本語の学術助詞が伝える確実性を映して）、逆に tentative な表現を過剰に使ってしまうことがあります。C2レベルでは、**this suggests that…**、**it could be argued that…**、**the data appear to indicate…** など、いつどのように緩和表現を使うかを知ることが、文法知識と同じくらい重要です。",
+      },
+      exampleWrong: "This experiment proves that the hypothesis is correct.",
+      exampleRight: "The results of this experiment suggest that the hypothesis may be correct.",
+      linkedRoomId: null,
+    },
+  // korean
+  ko_l1_3rd_person_s: {
+      tag: "ko_l1_3rd_person_s",
+      shortLabel: {
+        en: "Subject-verb agreement",
+        vi: "Chia động từ theo chủ ngữ",
+        ko: "주어-동사 수일치",
+      },
+      longDescription: {
+        en: "Korean verbs don't change form for person — **가다** stays the same for I, you, he, she. English adds **-s** when the subject is **he**, **she**, or **it**: **she goes**, **he eats**. Forgetting this **-s** is the most common A1 error for Korean learners.",
+        vi: "Động từ tiếng Hàn không thay đổi theo ngôi — **가다** giữ nguyên cho tôi, bạn, anh ấy, cô ấy. Tiếng Anh thêm **-s** khi chủ ngữ là **he**, **she**, **it**: **she goes**, **he eats**. Quên **-s** này là lỗi A1 phổ biến nhất của người Hàn.",
+        ko: "한국어 동사는 주어에 따라 형태가 변하지 않습니다 — **가다**는 나, 너, 그, 그녀 모두에 그대로 쓰입니다. 하지만 영어는 주어가 **he**, **she**, **it**일 때 동사에 **-s**를 붙입니다: **she goes**, **he eats**. 이 **-s**를 빼먹는 것이 한국인 학습자가 가장 흔히 하는 A1 수준의 실수입니다.",
+      },
+      exampleWrong: "She go to school every day.",
+      exampleRight: "She goes to school every day.",
+      linkedRoomId: null,
+    },
+  ko_l1_missing_article: {
+      tag: "ko_l1_missing_article",
+      shortLabel: {
+        en: "Articles **a / an / the**",
+        vi: "Mạo từ **a / an / the**",
+        ko: "관사 **a / an / the**",
+      },
+      longDescription: {
+        en: "Korean has no articles — **책** can mean 'book' or 'a book' or 'the book.' English almost always marks singular countable nouns with **a**, **an**, or **the**. Korean learners frequently drop them because the concept doesn't exist in the native language.",
+        vi: "Tiếng Hàn không có mạo từ — **책** có thể là 'book' hoặc 'a book' hoặc 'the book.' Tiếng Anh gần như luôn đánh dấu danh từ đếm được số ít bằng **a**, **an** hoặc **the**. Người Hàn thường bỏ mạo từ vì khái niệm này không tồn tại trong tiếng mẹ đẻ.",
+        ko: "한국어에는 관사가 없습니다 — **책** 하나로 'book', 'a book', 'the book'을 모두 표현할 수 있습니다. 하지만 영어는 셀 수 있는 단수 명사 앞에 거의 항상 **a**, **an**, **the**를 붙여야 합니다. 한국인 학습자는 모국어에 없는 개념이기 때문에 관사를 자주 빼먹습니다.",
+      },
+      exampleWrong: "I have car.",
+      exampleRight: "I have a car.",
+      linkedRoomId: null,
+    },
+  ko_l1_missing_be: {
+      tag: "ko_l1_missing_be",
+      shortLabel: {
+        en: "Missing **to be**",
+        vi: "Thiếu động từ **to be**",
+        ko: "**be동사** 누락",
+      },
+      longDescription: {
+        en: "Korean can form a complete sentence with a noun + **이다** pattern — **나는 학생** is natural without an explicit 'is.' English always needs a form of **be**: **I am a student**. Korean learners often say 'She busy' instead of 'She is busy.'",
+        vi: "Tiếng Hàn có thể tạo câu hoàn chỉnh với danh từ + **이다** — **나는 학생** là tự nhiên mà không cần 'is' rõ ràng. Tiếng Anh luôn cần một dạng của **be**: **I am a student**. Người Hàn thường nói 'She busy' thay vì 'She is busy'.",
+        ko: "한국어는 명사 + **이다** 패턴으로 완전한 문장을 만들 수 있습니다 — **나는 학생**이라고 해도 'is' 없이 자연스럽습니다. 하지만 영어는 항상 **be동사**가 필요합니다: **I am a student**. 한국인 학습자는 'She busy'처럼 **be동사**를 빼고 말하는 경우가 많습니다.",
+      },
+      exampleWrong: "She a teacher.",
+      exampleRight: "She is a teacher.",
+      linkedRoomId: null,
+    },
+  ko_l1_plural_s: {
+      tag: "ko_l1_plural_s",
+      shortLabel: {
+        en: "Plural nouns with **-s**",
+        vi: "Danh từ số nhiều với **-s**",
+        ko: "복수 명사에 **-s** 붙이기",
+      },
+      longDescription: {
+        en: "Korean doesn't require plural marking when context makes the number clear — **책 세 권** (three book) has no plural marker on the noun. English adds **-s** to most countable nouns when there's more than one: **book → books**. Korean learners often skip the plural **-s**.",
+        vi: "Tiếng Hàn không bắt buộc đánh dấu số nhiều khi ngữ cảnh đã rõ số lượng — **책 세 권** (ba sách) không có dấu số nhiều trên danh từ. Tiếng Anh thêm **-s** vào hầu hết danh từ đếm được khi nhiều hơn một: **book → books**. Người Hàn thường bỏ **-s** số nhiều.",
+        ko: "한국어는 문맥상 수가 분명하면 복수 표시를 하지 않아도 됩니다 — **책 세 권**에서 명사 '책' 자체에는 복수 표시가 없습니다. 하지만 영어는 하나 이상일 때 대부분의 셀 수 있는 명사에 **-s**를 붙입니다: **book → books**. 한국인 학습자는 이 복수 **-s**를 자주 빼먹습니다.",
+      },
+      exampleWrong: "I have two book.",
+      exampleRight: "I have two books.",
+      linkedRoomId: null,
+    },
+  ko_l1_preposition_transfer: {
+      tag: "ko_l1_preposition_transfer",
+      shortLabel: {
+        en: "Prepositions **in / on / at**",
+        vi: "Giới từ **in / on / at**",
+        ko: "전치사 **in / on / at**",
+      },
+      longDescription: {
+        en: "Korean uses particles — **에** and **에서** — attached to nouns to show location and time. English uses separate prepositions **in**, **on**, **at** with specific patterns that don't map neatly from Korean. The **에** particle alone maps to all three English prepositions depending on context, which causes confusion.",
+        vi: "Tiếng Hàn dùng tiểu từ — **에** và **에서** — gắn vào danh từ để chỉ vị trí và thời gian. Tiếng Anh dùng các giới từ riêng **in**, **on**, **at** với quy tắc cụ thể không khớp hoàn toàn với tiếng Hàn. Riêng tiểu từ **에** có thể tương ứng với cả ba giới từ tiếng Anh tùy theo ngữ cảnh, gây nhầm lẫn.",
+        ko: "한국어는 조사 — **에**와 **에서** — 를 명사에 붙여 위치와 시간을 나타냅니다. 영어는 **in**, **on**, **at**이라는 별도의 전치사를 쓰는데, 한국어 조사와 일대일로 대응되지 않습니다. 특히 조사 **에** 하나로 영어 전치사 세 개를 모두 표현할 수 있어서 한국인 학습자에게 혼란을 줍니다.",
+      },
+      exampleWrong: "I will see you in Monday.",
+      exampleRight: "I will see you on Monday.",
+      linkedRoomId: null,
+    },
+  ko_l1_present_perfect_vs_past: {
+      tag: "ko_l1_present_perfect_vs_past",
+      shortLabel: {
+        en: "Present perfect vs past simple",
+        vi: "Present perfect vs past simple",
+        ko: "현재완료 vs 과거시제",
+      },
+      longDescription: {
+        en: "Korean uses **-었다/았다** for all completed actions regardless of relevance — the same past suffix covers 'I ate' and 'I have eaten.' English splits them: use **simple past** when a specific past time is named (**yesterday**, **last week**), and **present perfect** when the past action still matters now and no specific time is given.",
+        vi: "Tiếng Hàn dùng **-었다/았다** cho mọi hành động đã hoàn thành bất kể mức độ liên quan — cùng một đuôi quá khứ cho cả 'I ate' và 'I have eaten.' Tiếng Anh phân biệt: dùng **simple past** khi có thời gian cụ thể, và **present perfect** khi hành động quá khứ vẫn còn ảnh hưởng đến hiện tại.",
+        ko: "한국어는 과거의 모든 동작을 **-었다/았다**로 표현합니다 — 'I ate'와 'I have eaten'을 구분하지 않고 같은 과거형을 씁니다. 하지만 영어는 특정 과거 시점(**yesterday**, **last week**)이 있으면 **단순과거(simple past)**를 쓰고, 과거의 일이 지금도 영향을 미치며 특정 시점이 언급되지 않으면 **현재완료(present perfect)**를 씁니다.",
+      },
+      exampleWrong: "I have eaten breakfast this morning.",
+      exampleRight: "I ate breakfast this morning.",
+      linkedRoomId: null,
+    },
+  ko_c2_inversion_emphasis: {
+      tag: "ko_c2_inversion_emphasis",
+      shortLabel: {
+        en: "Inversion for emphasis",
+        vi: "Đảo ngữ nhấn mạnh",
+        ko: "도치를 이용한 강조",
+      },
+      longDescription: {
+        en: "Korean places adverbs freely without changing word order — **결코 나는 본 적이 없다** keeps subject-verb intact. English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**. Inversion signals emphasis and formality — a C2 feature that separates proficient from native-like writing.",
+        vi: "Tiếng Hàn đặt trạng từ tự do mà không đảo trật tự từ — **결코 나는 본 적이 없다** giữ nguyên chủ ngữ-động từ. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — kỹ năng cấp C2.",
+        ko: "한국어는 부사를 자유롭게 두면서도 어순이 바뀌지 않습니다 — **결코 나는 본 적이 없다**에서 주어-동사 순서는 그대로입니다. 하지만 영어는 **never**, **rarely**, **not only** 같은 부정/제한 부사가 문두에 오면 주어와 조동사의 순서를 뒤집습니다. 이런 도치는 강조와 격식을 나타내며, 유창함과 원어민 수준의 글쓰기를 가르는 C2 수준의 기술입니다.",
+      },
+      exampleWrong: "Never I have seen such dedication.",
+      exampleRight: "Never have I seen such dedication.",
+      linkedRoomId: null,
+    },
+  ko_c2_cleft_focus: {
+      tag: "ko_c2_cleft_focus",
+      shortLabel: {
+        en: "Cleft sentences for focus",
+        vi: "Câu chẻ nhấn mạnh",
+        ko: "분열문으로 초점 맞추기",
+      },
+      longDescription: {
+        en: "Korean uses **은/는** and **이/가** particles to mark focus — **존이 창문을 깼어요** (It was John who broke the window). English uses cleft sentences: **It-clefts** (**It was John who broke the window**) and **Wh-clefts** (**What I need is more time**). At C2, choosing the right cleft structure controls what the reader notices first.",
+        vi: "Tiếng Hàn dùng tiểu từ **은/는** và **이/가** để đánh dấu trọng tâm. Tiếng Anh dùng câu chẻ: **It-cleft** và **Wh-cleft**. Ở cấp C2, chọn đúng cấu trúc cleft kiểm soát điều người đọc chú ý đầu tiên.",
+        ko: "한국어는 **은/는**과 **이/가** 조사로 초점을 표시합니다 — **존이 창문을 깼어요**에서 '존'에 초점이 있습니다. 영어는 분열문을 사용합니다: **It-cleft**(**It was John who broke the window**)와 **Wh-cleft**(**What I need is more time**). C2 수준에서 적절한 분열문을 선택하면 독자가 가장 먼저 주목하는 부분을 정확히 통제할 수 있습니다.",
+      },
+      exampleWrong: "What I need it is more time.",
+      exampleRight: "What I need is more time.",
+      linkedRoomId: null,
+    },
+  ko_c2_mixed_conditional: {
+      tag: "ko_c2_mixed_conditional",
+      shortLabel: {
+        en: "Mixed conditionals",
+        vi: "Câu điều kiện hỗn hợp",
+        ko: "혼합 가정문",
+      },
+      longDescription: {
+        en: "Korean expresses hypotheticals with **-았/었다면** without distinguishing time-mix. English mixed conditionals combine past condition with present result (**If I had studied, I would be a doctor now**) or present condition with past result (**If I were taller, I would have joined the team**). Matching the tense pair correctly is a C2 hallmark.",
+        vi: "Tiếng Hàn diễn tả giả định với **-았/었다면** mà không phân biệt hỗn hợp thời gian. Câu điều kiện hỗn hợp tiếng Anh kết hợp điều kiện quá khứ với kết quả hiện tại hoặc ngược lại. Ghép đúng cặp thì là dấu ấn C2.",
+        ko: "한국어는 **-았/었다면**으로 가정을 표현하며 시간의 혼합을 따로 구분하지 않습니다. 하지만 영어의 혼합 가정문은 과거 조건과 현재 결과(**If I had studied, I would be a doctor now**) 또는 현재 조건과 과거 결과(**If I were taller, I would have joined the team**)를 결합합니다. 시제 쌍을 정확히 맞추는 것은 C2 수준의 특징입니다.",
+      },
+      exampleWrong: "If I had studied harder at school, I will be a doctor now.",
+      exampleRight: "If I had studied harder at school, I would be a doctor now.",
+      linkedRoomId: null,
+    },
+  ko_c2_register_consistency: {
+      tag: "ko_c2_register_consistency",
+      shortLabel: {
+        en: "Register consistency",
+        vi: "Nhất quán văn phong",
+        ko: "격식체 일관성 유지",
+      },
+      longDescription: {
+        en: "Korean has a grammatically marked honorific system (해요체/해체/합쇼체) that forces register choices at every sentence. English relies on vocabulary and structure — mixing **gonna** with **furthermore**, or **kids** with **offspring**, in the same paragraph sounds jarring. C2 writers maintain one register throughout a text.",
+        vi: "Tiếng Hàn có hệ thống kính ngữ được đánh dấu ngữ pháp bắt buộc chọn văn phong từng câu. Tiếng Anh dựa vào từ vựng và cấu trúc — pha trộn **gonna** với **furthermore** trong cùng đoạn văn nghe rất chói tai. Người viết C2 duy trì một văn phong nhất quán.",
+        ko: "한국어는 문법적으로 표시되는 높임말 체계(해요체/해체/합쇼체)가 있어 모든 문장에서 격식 수준을 선택해야 합니다. 반면 영어는 어휘와 구조에 의존합니다 — 같은 문단에서 **gonna**와 **furthermore**를 섞어 쓰거나 **kids**와 **offspring**을 혼용하면 어색하게 들립니다. C2 작가는 전체 글에서 일관된 격식체를 유지합니다.",
+      },
+      exampleWrong: "The aforementioned findings are super interesting and you're gonna love them.",
+      exampleRight: "The aforementioned findings are highly compelling and readers will find them valuable.",
+      linkedRoomId: null,
+    },
+  // chinese
+  zh_l1_no_articles: {
+        tag: "zh_l1_no_articles",
+        shortLabel: {
+          en: "Articles **a / an / the**",
+          vi: "Mạo từ **a / an / the**",
+          zh: "冠词 **a / an / the**",
+        },
+        longDescription: {
+          en: "Chinese has no articles — nouns stand alone. English almost always needs **a**, **an**, or **the** before a singular countable noun. The choice depends on whether the noun is specific (use **the**) or general (use **a / an**).",
+          vi: "Tiếng Trung không có mạo từ — danh từ đứng một mình là được. Tiếng Anh gần như luôn cần **a**, **an**, hoặc **the** trước danh từ đếm được số ít. Việc chọn phụ thuộc vào danh từ cụ thể (dùng **the**) hay chung chung (dùng **a / an**).",
+          zh: "汉语没有冠词 — 名词可以单独使用。英语在单数可数名词前几乎总是需要 **a**、**an** 或 **the**。选择取决于名词是特指（用 **the**）还是泛指（用 **a / an**）。",
+        },
+        exampleWrong: "I have car.",
+        exampleRight: "I have a car.",
+        linkedRoomId: null,
+      },
+  zh_l1_no_tense: {
+        tag: "zh_l1_no_tense",
+        shortLabel: {
+          en: "Verb tense marking",
+          vi: "Thì của động từ",
+          zh: "动词时态标记",
+        },
+        longDescription: {
+          en: "Chinese shows time with words like **昨天** (yesterday) or **了** (completed action marker) — the verb never changes. English changes the verb itself: **work → worked**. You must mark tense on every main verb.",
+          vi: "Tiếng Trung diễn tả thời gian bằng các từ như **昨天** (hôm qua) hoặc **了** (đã) — động từ không bao giờ thay đổi. Tiếng Anh thay đổi chính động từ: **work → worked**. Bạn phải đánh dấu thì ở mọi động từ chính.",
+          zh: "汉语用词语如 **昨天** 或 **了** 表示时间 — 动词本身不变。英语需要改变动词本身：**work → worked**。必须在每个主要动词上标记时态。",
+        },
+        exampleWrong: "Yesterday I go to school.",
+        exampleRight: "Yesterday I went to school.",
+        linkedRoomId: null,
+      },
+  zh_l1_3rd_person_s: {
+        tag: "zh_l1_3rd_person_s",
+        shortLabel: {
+          en: "Subject-verb agreement",
+          vi: "Chia động từ theo chủ ngữ",
+          zh: "主谓一致",
+        },
+        longDescription: {
+          en: "Chinese verbs don't change form for person or number. English adds **-s** to the verb when the subject is **he**, **she**, or **it** in the present simple. This is known as third-person singular agreement.",
+          vi: "Động từ tiếng Trung không thay đổi theo ngôi và số. Trong tiếng Anh, động từ thêm **-s** khi chủ ngữ là **he**, **she**, hoặc **it** ở thì hiện tại đơn. Đây gọi là chia động từ ngôi thứ ba số ít.",
+          zh: "汉语动词不随人称或数量变化。英语在一般现在时中，当主语是 **he**、**she** 或 **it** 时，动词要加 **-s**。这称为第三人称单数一致。",
+        },
+        exampleWrong: "She go to school every day.",
+        exampleRight: "She goes to school every day.",
+        linkedRoomId: null,
+      },
+  zh_l1_he_she: {
+        tag: "zh_l1_he_she",
+        shortLabel: {
+          en: "**He** vs **she**",
+          vi: "**He** / **she**",
+          zh: "**他** vs **她** 在英语中的区分",
+        },
+        longDescription: {
+          en: "Spoken Chinese uses **tā** for both male and female. English requires **he** for men and **she** for women. This distinction is mandatory and mixing them up in a sentence confuses who you mean.",
+          vi: "Tiếng Trung nói dùng **tā** cho cả nam và nữ. Tiếng Anh cần **he** cho nam và **she** cho nữ. Phân biệt này là bắt buộc và nhầm lẫn sẽ gây khó hiểu về người được nói đến.",
+          zh: "汉语口语中 **tā** 既可用于男性也可用于女性。英语则需要 **he** 指男性，**she** 指女性。这种区分是强制性的，混用会让人搞不清你在说谁。",
+        },
+        exampleWrong: "My mother, he is a teacher.",
+        exampleRight: "My mother, she is a teacher.",
+        linkedRoomId: null,
+      },
+  zh_l1_plural_s: {
+        tag: "zh_l1_plural_s",
+        shortLabel: {
+          en: "Plural nouns with **-s**",
+          vi: "Danh từ số nhiều với **-s**",
+          zh: "名词复数加 **-s**",
+        },
+        longDescription: {
+          en: "Chinese nouns don't change when counting more than one — words like **们** (for people) or **一些** (some) are optional, and a bare noun can be singular or plural. English adds **-s** to most nouns when there's more than one: **book → books**.",
+          vi: "Danh từ tiếng Trung không đổi khi đếm nhiều hơn một — các từ như **们** (cho người) hoặc **一些** (một ít) là tùy chọn. Tiếng Anh thêm **-s** vào hầu hết danh từ khi số lượng nhiều hơn một: **book → books**.",
+          zh: "汉语名词数量超过一个时本身不变 — **们**（用于人）或 **一些** 等词是可选的，单个名词可单可复。英语在大多数名词数量超过一个时要加 **-s**：**book → books**。",
+        },
+        exampleWrong: "I have two book.",
+        exampleRight: "I have two books.",
+        linkedRoomId: null,
+      },
+  zh_l1_present_perfect_vs_past: {
+        tag: "zh_l1_present_perfect_vs_past",
+        shortLabel: {
+          en: "Present perfect vs past simple",
+          vi: "Present perfect vs past simple",
+          zh: "现在完成时 vs 一般过去时",
+        },
+        longDescription: {
+          en: "Chinese uses **了** or **过** to mark past events — there's no distinction between a past action with present relevance and a past action at a specific time. English splits these: use **past simple** when a specific past time is named (**yesterday**, **last week**); use **present perfect** when no specific time is given and the action has present relevance.",
+          vi: "Tiếng Trung dùng **了** hoặc **过** để đánh dấu quá khứ — không phân biệt giữa hành động quá khứ có liên quan hiện tại và hành động quá khứ ở thời điểm cụ thể. Tiếng Anh phân biệt: dùng **past simple** khi có thời gian cụ thể; dùng **present perfect** cho hành động quá khứ còn liên quan đến hiện tại.",
+          zh: "汉语用 **了** 或 **过** 标记过去 — 不区分与现在相关的过去动作和特定时间的过去动作。英语则区分：有具体过去时间（**yesterday**、**last week**）时用 **一般过去时**；没有具体时间而动作与现在相关时用 **现在完成时**。",
+        },
+        exampleWrong: "I have eaten breakfast this morning.",
+        exampleRight: "I ate breakfast this morning.",
+        linkedRoomId: null,
+      },
+  zh_l1_countable_uncountable: {
+        tag: "zh_l1_countable_uncountable",
+        shortLabel: {
+          en: "Countable / uncountable",
+          vi: "Đếm được / không đếm được",
+          zh: "可数名词 / 不可数名词",
+        },
+        longDescription: {
+          en: "Chinese uses the same quantifier (**很多**) for everything — **很多书** (many books) and **很多水** (much water) both use **很多**. English splits: **many** for countable nouns (**many books**), **much** for uncountable nouns (**much water**), and **a lot of** for both in informal speech.",
+          vi: "Tiếng Trung dùng cùng một từ chỉ số lượng (**很多**) cho mọi thứ — **很多书** (nhiều sách) và **很多水** (nhiều nước) đều dùng **很多**. Tiếng Anh tách ra: **many** cho danh từ đếm được, **much** cho danh từ không đếm được.",
+          zh: "汉语用同一个量词（**很多**）修饰一切 — **很多书** 和 **很多水** 都用 **很多**。英语则区分：**many** 用于可数名词（many books），**much** 用于不可数名词（much water）。",
+        },
+        exampleWrong: "I have many money.",
+        exampleRight: "I have a lot of money.",
+        linkedRoomId: null,
+      },
+  zh_l1_preposition_confusion: {
+        tag: "zh_l1_preposition_confusion",
+        shortLabel: {
+          en: "Prepositions **in / on / at**",
+          vi: "Giới từ **in / on / at**",
+          zh: "介词 **in / on / at**",
+        },
+        longDescription: {
+          en: "Chinese uses **在** for both time and location — **在星期一** (on Monday), **在六月** (in June), **在家** (at home). One word covers all these. English splits the job across three prepositions: **in** for enclosed spaces and large time periods, **on** for surfaces and days, **at** for specific points.",
+          vi: "Tiếng Trung dùng **在** cho cả thời gian và địa điểm — **在星期一** (vào thứ Hai), **在六月** (vào tháng Sáu), **在家** (ở nhà). Một từ bao phủ tất cả. Tiếng Anh chia làm ba: **in** cho không gian kín và thời gian lớn, **on** cho bề mặt và ngày, **at** cho điểm cụ thể.",
+          zh: "汉语用 **在** 表示时间和地点 — **在星期一**、**在六月**、**在家**。一个词覆盖所有情况。英语则分为三个介词：**in** 用于封闭空间和大段时间，**on** 用于表面和日期，**at** 用于具体点位。",
+        },
+        exampleWrong: "See you in Monday.",
+        exampleRight: "See you on Monday.",
+        linkedRoomId: null,
+      },
+  zh_l1_conditional_unreal: {
+        tag: "zh_l1_conditional_unreal",
+        shortLabel: {
+          en: "Unreal conditionals (Type 2)",
+          vi: "Câu điều kiện không có thật (Type 2)",
+          zh: "非真实条件句（第二类）",
+        },
+        longDescription: {
+          en: "Chinese **如果…就…** uses the same structure for real and unreal conditions — the verb never changes. English marks unreal / hypothetical conditions with **If + past tense, would + base verb** — never mix past with **will**.",
+          vi: "Tiếng Trung **如果…就…** dùng cùng cấu trúc cho cả điều kiện thật và không thật — động từ không đổi. Tiếng Anh đánh dấu điều kiện không thật bằng **If + quá khứ, would + động từ gốc** — không trộn quá khứ với **will**.",
+          zh: "汉语的 **如果…就…** 对真实和非真实条件使用相同结构 — 动词不变。英语用 **If + 过去时, would + 动词原形** 标记非真实/假设条件 — 绝不能把过去时和 **will** 混用。",
+        },
+        exampleWrong: "If I had money, I will buy a car.",
+        exampleRight: "If I had money, I would buy a car.",
+        linkedRoomId: null,
+      },
+  zh_l1_reported_speech: {
+        tag: "zh_l1_reported_speech",
+        shortLabel: {
+          en: "Reported speech tense shift",
+          vi: "Lùi thì trong câu tường thuật",
+          zh: "间接引语的时态后移",
+        },
+        longDescription: {
+          en: "Chinese reports speech without changing the verb tense — **他说他很累** (tā shuō tā hěn lèi) keeps present meaning. English backshifts the tense: **She said she was tired** — not **she is tired**.",
+          vi: "Tiếng Trung tường thuật không đổi thì động từ — **他说他很累** (tā shuō tā hěn lèi) giữ nguyên nghĩa hiện tại. Tiếng Anh lùi thì: **She said she was tired**, không phải **she is tired**.",
+          zh: "汉语转述他人话语时不改变动词时态 — **他说他很累** 保持现在含义。英语则需要将时态后移：**She said she was tired** — 而不是 **she is tired**。",
+        },
+        exampleWrong: "She said she is tired.",
+        exampleRight: "She said she was tired.",
+        linkedRoomId: null,
+      },
+  zh_l1_passive_missing_be: {
+        tag: "zh_l1_passive_missing_be",
+        shortLabel: {
+          en: "Passive needs **be + V3**",
+          vi: "Bị động cần **be + V3**",
+          zh: "被动语态需要 **be + 过去分词**",
+        },
+        longDescription: {
+          en: "Chinese marks the passive with **被** before the verb — **信被写了** (the letter was written). English needs a form of **be** plus the past participle: **The letter was written**, not **The letter written**.",
+          vi: "Tiếng Trung đánh dấu bị động với **被** trước động từ — **信被写了** (bức thư đã được viết). Tiếng Anh cần dạng **be** + V3: **The letter was written**, không phải **The letter written**.",
+          zh: "汉语用 **被** 放在动词前表示被动 — **信被写了**（信已经写了）。英语则需要 **be** 的某种形式加过去分词：**The letter was written**，而不是 **The letter written**。",
+        },
+        exampleWrong: "The letter written yesterday.",
+        exampleRight: "The letter was written yesterday.",
+        linkedRoomId: null,
+      },
+  zh_l1_subjunctive_were: {
+        tag: "zh_l1_subjunctive_were",
+        shortLabel: {
+          en: "Subjunctive **were**",
+          vi: "Giả định với **were**",
+          zh: "虚拟语气 **were**",
+        },
+        longDescription: {
+          en: "Chinese has no subjunctive mood — **如果我是你** (if I am you) uses the present form for both real and unreal. After **if** or **wish**, English uses **were** for every subject in unreal/imagined situations — *If I **were** you*, not *If I **was** you*.",
+          vi: "Tiếng Trung không có thức giả định — **如果我是你** (nếu tôi là bạn) dùng thì hiện tại cho cả thật và giả định. Sau **if** hoặc **wish**, tiếng Anh dùng **were** cho mọi chủ ngữ trong tình huống không thật — *If I **were** you*, không phải *If I **was** you*.",
+          zh: "汉语没有虚拟语气 — **如果我是你** 对真实和假设情况都使用现在时。在 **if** 或 **wish** 之后，英语在非真实/想象的情境中对所有主语都用 **were** — *If I **were** you*，而不是 *If I **was** you*。",
+        },
+        exampleWrong: "If I was you, I would take the job.",
+        exampleRight: "If I were you, I would take the job.",
+        linkedRoomId: null,
+      },
+  zh_c2_inversion_emphasis: {
+        tag: "zh_c2_inversion_emphasis",
+        shortLabel: {
+          en: "Inversion for emphasis",
+          vi: "Đảo ngữ nhấn mạnh",
+          zh: "倒装表示强调",
+        },
+        longDescription: {
+          en: "Chinese fronts adverbs without changing word order — **从来没见过** (cónglái méi jiàn guò) keeps subject-verb intact. English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**. Inversion signals emphasis and formality — a C2 feature.",
+          vi: "Tiếng Trung đưa trạng từ lên đầu câu mà không đảo trật tự từ — **从来没见过** (từ trước đến nay chưa từng thấy) giữ nguyên chủ ngữ-động từ. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — kỹ năng cấp C2.",
+          zh: "汉语把副词放在句首时不改变语序 — **从来没见过** 保持主谓完整。英语在否定/限制性副词（**never**、**rarely**、**not only**、**hardly**）之后要将主语和助动词倒装。倒装表示强调和正式 — 这是C2水平的特征。",
+        },
+        exampleWrong: "Never I have seen such dedication.",
+        exampleRight: "Never have I seen such dedication.",
+        linkedRoomId: null,
+      },
+  zh_c2_cleft_focus: {
+        tag: "zh_c2_cleft_focus",
+        shortLabel: {
+          en: "Cleft sentences for focus",
+          vi: "Câu chẻ nhấn mạnh",
+          zh: "分裂句强调",
+        },
+        longDescription: {
+          en: "Chinese uses **是…的** to highlight — **是John打破了窗户** (It was John who broke the window). English has a richer system: **It-clefts** (**It was John who broke the window**) pull one element into focus; **Wh-clefts** (**What I need is more time**) package a whole idea as the subject.",
+          vi: "Tiếng Trung dùng **是…的** để nhấn mạnh — **是John打破了窗户** (Chính John là người làm vỡ cửa sổ). Tiếng Anh có hệ thống phong phú hơn: **It-cleft** kéo một yếu tố vào tiêu điểm; **Wh-cleft** đóng gói cả một ý thành chủ ngữ.",
+          zh: "汉语用 **是…的** 强调 — **是John打破了窗户**。英语有更丰富的系统：**It-cleft**（**It was John who broke the window**）将某个元素拉到焦点；**Wh-cleft**（**What I need is more time**）将整个想法包装成主语。",
+        },
+        exampleWrong: "What I need it is more time.",
+        exampleRight: "What I need is more time.",
+        linkedRoomId: null,
+      },
+  // portuguese
+  pt_l1_subject_pronoun_drop: {
+      tag: "pt_l1_subject_pronoun_drop",
+      shortLabel: {
+        en: "Subject pronouns — don't drop them",
+        vi: "Đại từ chủ ngữ — đừng bỏ",
+        pt: "Pronomes sujeito — não os omita",
+      },
+      longDescription: {
+        en: "Portuguese drops subject pronouns freely — **Falo inglês** is a complete sentence. English always needs the subject: **I speak English**. Even when the verb ending tells you who does the action, English still requires **I**, **you**, **he**, **she**, **it**, **we**, **they**.",
+        vi: "Tiếng Bồ Đào Nha thường bỏ đại từ chủ ngữ — **Falo inglês** là câu hoàn chỉnh. Tiếng Anh luôn cần chủ ngữ: **I speak English**. Ngay cả khi đuôi động từ đã chỉ rõ người thực hiện, tiếng Anh vẫn yêu cầu **I**, **you**, **he**, **she**, **it**, **we**, **they**.",
+        pt: "O português omite pronomes sujeito livremente — **Falo inglês** é uma frase completa. O inglês sempre precisa do sujeito: **I speak English**. Mesmo quando a desinência verbal já indica quem pratica a ação, o inglês ainda exige **I**, **you**, **he**, **she**, **it**, **we**, **they**.",
+      },
+      exampleWrong: "Speak English very well.",
+      exampleRight: "I speak English very well.",
+      linkedRoomId: null,
+    },
+  pt_l1_present_perfect_vs_past: {
+      tag: "pt_l1_present_perfect_vs_past",
+      shortLabel: {
+        en: "Present perfect vs past simple",
+        vi: "Present perfect vs past simple",
+        pt: "Present perfect vs passado simples",
+      },
+      longDescription: {
+        en: "Portuguese uses **pretérito perfeito** (comprei, fiz, falei) for both simple past and present perfect contexts. English splits: use **past simple** when a specific past time is named (**yesterday**, **last week**, **in 1990**); use **present perfect** for past actions with present relevance and no specific time.",
+        vi: "Tiếng Bồ Đào Nha dùng **pretérito perfeito** (comprei, fiz, falei) cho cả quá khứ đơn và hiện tại hoàn thành. Tiếng Anh phân biệt: dùng **past simple** khi có thời gian quá khứ cụ thể (**yesterday**, **last week**, **in 1990**); dùng **present perfect** khi hành động quá khứ còn liên quan đến hiện tại và không có thời gian cụ thể.",
+        pt: "O português usa o **pretérito perfeito** (comprei, fiz, falei) tanto para o passado simples quanto para contextos de present perfect. O inglês separa os usos: use **past simple** quando um tempo passado específico é mencionado (**yesterday**, **last week**, **in 1990**); use **present perfect** para ações passadas com relevância presente e sem tempo específico.",
+      },
+      exampleWrong: "I have eaten breakfast this morning.",
+      exampleRight: "I ate breakfast this morning.",
+      linkedRoomId: null,
+    },
+  pt_l1_double_negative: {
+      tag: "pt_l1_double_negative",
+      shortLabel: {
+        en: "One negative per clause",
+        vi: "Một phủ định mỗi mệnh đề",
+        pt: "Uma negação por oração",
+      },
+      longDescription: {
+        en: "Portuguese uses double negatives naturally — **Não vi ninguém** (literally 'I didn't see nobody'). Standard English uses only **one** negative word per clause: **I didn't see anybody**, not **I didn't see nobody**.",
+        vi: "Tiếng Bồ Đào Nha dùng hai từ phủ định một cách tự nhiên — **Não vi ninguém** (nghĩa đen 'Tôi không thấy không ai'). Tiếng Anh chuẩn chỉ dùng MỘT từ phủ định mỗi mệnh đề: **I didn't see anybody**, không phải **I didn't see nobody**.",
+        pt: "O português usa dupla negação naturalmente — **Não vi ninguém**. O inglês padrão usa apenas **uma** palavra negativa por oração: **I didn't see anybody**, não **I didn't see nobody**.",
+      },
+      exampleWrong: "I don't have no money.",
+      exampleRight: "I don't have any money.",
+      linkedRoomId: null,
+    },
+  pt_c2_inversion_emphasis: {
+      tag: "pt_c2_inversion_emphasis",
+      shortLabel: {
+        en: "Inversion for emphasis",
+        vi: "Đảo ngữ nhấn mạnh",
+        pt: "Inversão para ênfase",
+      },
+      longDescription: {
+        en: "Portuguese fronts adverbs without changing word order — **Talvez ele já tenha ido** keeps subject-verb intact. English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversion signals emphasis and formality — a C2 feature that separates proficient from native-like writing.",
+        vi: "Tiếng Bồ Đào Nha đưa trạng từ lên đầu câu mà không đảo trật tự từ — **Talvez ele já tenha ido** giữ nguyên chủ ngữ-động từ. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế như **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — kỹ năng cấp C2 phân biệt người thành thạo với người viết như bản ngữ.",
+        pt: "O português coloca advérbios no início sem alterar a ordem das palavras — **Talvez ele já tenha ido** mantém sujeito-verbo intacto. O inglês inverte o sujeito e o auxiliar depois de advérbios negativos/restritivos como **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. A inversão sinaliza ênfase e formalidade — um recurso de nível C2 que separa o escritor proficiente do escritor com estilo nativo.",
+      },
+      exampleWrong: "Never I have seen such dedication.",
+      exampleRight: "Never have I seen such dedication.",
+      linkedRoomId: null,
+    },
+  pt_c2_cleft_focus: {
+      tag: "pt_c2_cleft_focus",
+      shortLabel: {
+        en: "Cleft sentences for focus",
+        vi: "Câu chẻ nhấn mạnh",
+        pt: "Orações clivadas para foco",
+      },
+      longDescription: {
+        en: "Portuguese uses **é que** for focus (**Foi o João que quebrou a janela**). English has a richer system: **It-clefts** (**It was John who broke the window**) pull one element into focus; **Wh-clefts** (**What I need is more time**) package a whole idea as the subject. At C2, choosing the right cleft structure controls what the reader notices first.",
+        vi: "Tiếng Bồ Đào Nha dùng **é que** để nhấn mạnh (**Foi o João que quebrou a janela**). Tiếng Anh có hệ thống phong phú hơn: **It-cleft** (**It was John who broke the window**) kéo một yếu tố vào tiêu điểm; **Wh-cleft** (**What I need is more time**) đóng gói cả một ý thành chủ ngữ. Ở cấp C2, chọn đúng cấu trúc cleft cho phép bạn kiểm soát điều người đọc chú ý đầu tiên.",
+        pt: "O português usa **é que** para foco (**Foi o João que quebrou a janela**). O inglês tem um sistema mais rico: **It-clefts** (**It was John who broke the window**) puxam um elemento para o foco; **Wh-clefts** (**What I need is more time**) empacotam uma ideia inteira como sujeito. No nível C2, escolher a estrutura clivada certa controla o que o leitor nota primeiro.",
+      },
+      exampleWrong: "What I need it is more time.",
+      exampleRight: "What I need is more time.",
+      linkedRoomId: null,
+    },
+  pt_c2_mixed_conditional: {
+      tag: "pt_c2_mixed_conditional",
+      shortLabel: {
+        en: "Mixed conditionals",
+        vi: "Câu điều kiện hỗn hợp",
+        pt: "Condicionais mistas",
+      },
+      longDescription: {
+        en: "Portuguese expresses hypotheticals with **se** and **se tivesse** without mixing conditional forms. English mixed conditionals combine past condition with present result (**If I had studied, I would be a doctor now**) or present condition with past result (**If I were taller, I would have joined the team**). Matching the tense pair is a C2 hallmark.",
+        vi: "Tiếng Bồ Đào Nha diễn tả giả định với **se** và **se tivesse** không cần trộn thể điều kiện. Câu điều kiện hỗn hợp trong tiếng Anh kết hợp điều kiện quá khứ với kết quả hiện tại (**If I had studied, I would be a doctor now**) hoặc điều kiện hiện tại với kết quả quá khứ (**If I were taller, I would have joined the team**). Ghép đúng cặp thì là dấu ấn của trình độ C2.",
+        pt: "O português expressa hipóteses com **se** e **se tivesse** sem misturar formas condicionais. As condicionais mistas do inglês combinam condição passada com resultado presente (**If I had studied, I would be a doctor now**) ou condição presente com resultado passado (**If I were taller, I would have joined the team**). Combinar o par de tempos verbais corretamente é uma marca do nível C2.",
+      },
+      exampleWrong: "If I had studied harder at school, I will be a doctor now.",
+      exampleRight: "If I had studied harder at school, I would be a doctor now.",
+      linkedRoomId: null,
+    },
+  pt_c2_register_consistency: {
+      tag: "pt_c2_register_consistency",
+      shortLabel: {
+        en: "Register consistency",
+        vi: "Nhất quán văn phong",
+        pt: "Consistência de registro",
+      },
+      longDescription: {
+        en: "Portuguese speakers switch between formal and informal registers more fluidly than English (**você** → **tu** mid-conversation in some regions). In English, mixing **gonna** with **furthermore**, or **kids** with **offspring**, in the same paragraph sounds jarring. C2 writers maintain one register throughout a text.",
+        vi: "Người nói tiếng Bồ Đào Nha chuyển đổi giữa văn phong trang trọng và thân mật linh hoạt hơn tiếng Anh (**você** → **tu** giữa cuộc trò chuyện). Trong tiếng Anh, pha trộn **gonna** với **furthermore**, hoặc **kids** với **offspring**, trong cùng một đoạn nghe rất chói tai. Người viết C2 duy trì một văn phong nhất quán.",
+        pt: "Falantes de português alternam entre registros formais e informais com mais fluidez que o inglês (**você** → **tu** no meio da conversa em algumas regiões). Em inglês, misturar **gonna** com **furthermore**, ou **kids** com **offspring**, no mesmo parágrafo soa estranho. Escritores de nível C2 mantêm um registro consistente em todo o texto.",
+      },
+      exampleWrong: "The aforementioned findings are super interesting and you're gonna love them.",
+      exampleRight: "The aforementioned findings are highly compelling and readers will find them valuable.",
+      linkedRoomId: null,
+    },
+  pt_c2_hedging_academic: {
+      tag: "pt_c2_hedging_academic",
+      shortLabel: {
+        en: "Academic hedging",
+        vi: "Giảm nhẹ học thuật",
+        pt: "Atenuação acadêmica",
+      },
+      longDescription: {
+        en: "Portuguese academic writing often states claims more directly than English conventions allow. English academic convention softens claims with hedging: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. At C2, knowing when and how to hedge is as important as knowing the grammar.",
+        vi: "Văn học thuật tiếng Bồ Đào Nha thường nêu nhận định trực tiếp hơn quy ước tiếng Anh cho phép. Quy ước học thuật tiếng Anh làm mềm nhận định bằng giảm nhẹ: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. Ở cấp C2, biết khi nào và cách giảm nhẹ cũng quan trọng như biết ngữ pháp.",
+        pt: "A escrita acadêmica em português frequentemente declara afirmações de forma mais direta do que as convenções do inglês permitem. A convenção acadêmica do inglês suaviza afirmações com atenuação: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. No nível C2, saber quando e como atenuar é tão importante quanto saber a gramática.",
+      },
+      exampleWrong: "This proves that social media causes depression in teenagers.",
+      exampleRight: "This suggests that social media may contribute to depressive symptoms in some teenagers.",
+      linkedRoomId: null,
+    },
+  // turkish
+  tr_l1_missing_article: {
+      tag: "tr_l1_missing_article",
+      shortLabel: {
+        en: "Articles **a / an / the**",
+        vi: "Mạo từ **a / an / the**",
+        tr: "**a / an / the** belirteçleri",
+      },
+      longDescription: {
+        en: "Turkish has no articles — **bir** means both **a** and **one**, and there is no word for **the**. English almost always needs **a**, **an**, or **the** before a singular countable noun, and Turkish speakers often drop them.",
+        vi: "Tiếng Thổ Nhĩ Kỳ không có mạo từ — **bir** vừa mang nghĩa **a** vừa mang nghĩa **one**, và không có từ nào tương đương **the**. Tiếng Anh gần như luôn cần **a**, **an**, hoặc **the** trước danh từ đếm được số ít — và người Thổ thường bỏ mất các mạo từ này.",
+        tr: "Türkçede belirteç (article) yoktur — **bir** hem **a** hem **one** anlamına gelir ve **the** için ayrı bir kelime yoktur. İngilizce neredeyse her zaman sayılabilir tekil bir isimden önce **a**, **an** veya **the** gerektirir ve Türkçe konuşanlar bunları sıklıkla atlarlar.",
+      },
+      exampleWrong: "I have car.",
+      exampleRight: "I have a car.",
+      linkedRoomId: null,
+    },
+  tr_l1_word_order_sov: {
+      tag: "tr_l1_word_order_sov",
+      shortLabel: {
+        en: "Word order (SVO)",
+        vi: "Trật tự từ (SVO)",
+        tr: "Kelime sırası (SVO)",
+      },
+      longDescription: {
+        en: "Turkish is an SOV language — the verb goes at the end: **Ben çay severim** (I tea like). English follows SVO — **I like tea**. Turkish speakers often place the verb at the end of English sentences, producing **I the film liked** instead of **I liked the film**.",
+        vi: "Tiếng Thổ Nhĩ Kỳ theo cấu trúc SOV — động từ đứng cuối câu: **Ben çay severim** (Tôi trà thích). Tiếng Anh theo cấu trúc SVO — **I like tea**. Người Thổ thường đặt động từ ở cuối câu tiếng Anh, viết **I the film liked** thay vì **I liked the film**.",
+        tr: "Türkçede fiil cümlenin sonunda gelir (Özne-Nesne-Fiil): **Ben çay severim**. İngilizce ise Özne-Fiil-Nesne sırasını takip eder: **I like tea**. Türkçe konuşanlar genellikle fiili İngilizce cümlelerin sonuna koyarak **I the film liked** gibi hatalar yaparlar.",
+      },
+      exampleWrong: "I the film liked.",
+      exampleRight: "I liked the film.",
+      linkedRoomId: null,
+    },
+  tr_l1_missing_be: {
+      tag: "tr_l1_missing_be",
+      shortLabel: {
+        en: 'Missing "to be"',
+        vi: 'Thiếu động từ "to be"',
+        tr: 'Eksik "olmak" fiili',
+      },
+      longDescription: {
+        en: "Turkish drops the copula in the present tense — **O öğretmen** (She teacher) is a complete sentence with no linking verb. English always needs **am**, **is**, or **are** between a subject and its description: **She is a teacher**.",
+        vi: "Tiếng Thổ Nhĩ Kỳ bỏ động từ nối ở thì hiện tại — **O öğretmen** (Cô ấy giáo viên) là câu hoàn chỉnh không cần động từ. Tiếng Anh luôn cần **am**, **is**, hoặc **are** giữa chủ ngữ và phần mô tả: **She is a teacher**.",
+        tr: "Türkçede şimdiki ve geniş zamanda bildirme ekleri düşer — **O öğretmen** (O bir öğretmendir) tam bir cümledir ve ayrı bir ek fiil gerektirmez. İngilizce ise özne ve yüklem arasında her zaman **am**, **is** veya **are** gerektirir: **She is a teacher**.",
+      },
+      exampleWrong: "She a teacher.",
+      exampleRight: "She is a teacher.",
+      linkedRoomId: null,
+    },
+  tr_c2_inversion_emphasis: {
+      tag: "tr_c2_inversion_emphasis",
+      shortLabel: {
+        en: "Inversion for emphasis",
+        vi: "Đảo ngữ nhấn mạnh",
+        tr: "Vurgu için devrik yapı",
+      },
+      longDescription: {
+        en: "Turkish fronts adverbs without changing word order — **Asla böyle bir manzara görmedim** keeps the subject before the verb. English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversion signals emphasis and formality — a C2 feature that separates proficient from native-like writing.",
+        vi: "Tiếng Thổ Nhĩ Kỳ đưa trạng từ lên đầu mà không đảo trật tự — **Asla böyle bir manzara görmedim** giữ nguyên chủ ngữ trước động từ. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế như **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Đây là kỹ năng C2 phân biệt người thành thạo với người viết như bản ngữ.",
+        tr: "Türkçede zarflar cümle başına geldiğinde kelime sırası değişmez — **Asla böyle bir manzara görmedim** özneyi fiilden önce tutar. İngilizcede **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances** gibi olumsuz/sınırlayıcı zarflardan sonra özne ve yardımcı fiil yer değiştirir. Devrik yapı vurgu ve resmiyet belirtir — C2 seviyesinde yetkin yazarları ayıran bir özelliktir.",
+      },
+      exampleWrong: "Never I have seen such dedication.",
+      exampleRight: "Never have I seen such dedication.",
+      linkedRoomId: null,
+    },
+  tr_c2_register_consistency: {
+      tag: "tr_c2_register_consistency",
+      shortLabel: {
+        en: "Register consistency",
+        vi: "Nhất quán văn phong",
+        tr: "Biçem tutarlılığı",
+      },
+      longDescription: {
+        en: "Turkish switches between formal and informal registers more freely than English (**siz** → **sen** mid-conversation). In English, mixing **gonna** with **furthermore**, or **kids** with **offspring**, in the same paragraph sounds jarring. C2 writers maintain one register throughout a text.",
+        vi: "Tiếng Thổ Nhĩ Kỳ chuyển giữa văn phong trang trọng và thân mật tự do hơn tiếng Anh (**siz** → **sen** giữa câu chuyện). Trong tiếng Anh, trộn **gonna** với **furthermore**, hoặc **kids** với **offspring**, trong cùng một đoạn nghe rất chói tai. Người viết C2 duy trì một văn phong nhất quán.",
+        tr: "Türkçede resmi ve gayriresmi dil arasında geçiş İngilizceden daha özgürdür (**siz** → **sen** sohbet ortasında). İngilizcede aynı paragrafta **gonna** ile **furthermore**'u veya **kids** ile **offspring**'i karıştırmak kulağa rahatsız edici gelir. C2 yazarları metin boyunca tek bir biçemi korur.",
+      },
+      exampleWrong: "The aforementioned findings are super interesting and you're gonna love them.",
+      exampleRight: "The aforementioned findings are highly compelling and readers will find them valuable.",
+      linkedRoomId: null,
+    },
 };
 
 /** Ordered list of all tags (stable for tests + exhaustiveness checks). */

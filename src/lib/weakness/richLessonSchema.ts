@@ -35,6 +35,16 @@ export interface RichLessonSection {
   id?: string;
   /** Optional Thai-native English explanation — for th-native learners. */
   th?: string;
+  /** Optional Hindi-native English explanation — for hi-native learners. */
+  hi?: string;
+  /** Optional Urdu-native English explanation — for ur-native learners. */
+  ur?: string;
+  /** Optional Korean-native English explanation — for ko-native learners. */
+  ko?: string;
+  /** Optional Chinese-native English explanation — for zh-native learners. */
+  zh?: string;
+  /** Optional Portuguese (Brazilian)-native English explanation — for pt-native learners. */
+  pt?: string;
 }
 
 export interface RichLessonSections {
