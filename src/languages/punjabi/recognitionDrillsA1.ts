@@ -1,0 +1,383 @@
+// Punjabi A1 recognition drills for Vietnamese-speaking and English-speaking learners.
+// Gurmukhi is primary; romanization is practical learner support. Native review is deferred.
+
+export type PunjabiRecognitionDrillFocus =
+  | "gurmukhi_to_meaning"
+  | "polite_phrase"
+  | "numbers_prices"
+  | "help_request"
+  | "canada_service_situation";
+
+export type PunjabiRecognitionDrillType =
+  | "match"
+  | "choose_meaning"
+  | "choose_phrase"
+  | "situation_match"
+  | "remediation"
+  | "readiness_check";
+
+export type PunjabiRecognitionQualityTag =
+  | "final_quality"
+  | "review"
+  | "remediation"
+  | "readiness";
+
+export type PunjabiRecognitionDrillA1 = {
+  id: string;
+  focus: PunjabiRecognitionDrillFocus;
+  drill_type: PunjabiRecognitionDrillType;
+  quality_tag: PunjabiRecognitionQualityTag;
+  prompt_vi: string;
+  prompt_en: string;
+  stimulus_pa: string;
+  romanization?: string;
+  options_vi?: string[];
+  options_en?: string[];
+  options_pa?: string[];
+  correct_answer_vi: string;
+  correct_answer_en: string;
+  correct_answer_pa?: string;
+  explanation_vi: string;
+  explanation_en: string;
+  remediation_vi: string;
+  remediation_en: string;
+  readiness_signal_vi: string;
+  readiness_signal_en: string;
+  review_targets: string[];
+  learner_trap?: {
+    audience: "vi" | "en" | "both";
+    vi: string;
+    en: string;
+  };
+  canada_practical?: boolean;
+};
+
+export const recognitionDrillsScriptAwareness =
+  "Gurmukhi is primary for these Punjabi A1 recognition drills. Shahmukhi is awareness only, not a full course track.";
+
+export const punjabiA1RecognitionDrills: PunjabiRecognitionDrillA1[] = [
+  {
+    id: "pa_a1_recognition_gurmukhi_001",
+    focus: "gurmukhi_to_meaning",
+    drill_type: "choose_meaning",
+    quality_tag: "review",
+    prompt_vi: "Chọn nghĩa của từ Gurmukhi.",
+    prompt_en: "Choose the meaning of the Gurmukhi word.",
+    stimulus_pa: "ਪਾਣੀ",
+    romanization: "pani",
+    options_vi: ["nước", "giúp đỡ", "mẫu đơn"],
+    options_en: ["water", "help", "form"],
+    correct_answer_vi: "nước",
+    correct_answer_en: "water",
+    correct_answer_pa: "ਪਾਣੀ",
+    explanation_vi: "ਪਾਣੀ là từ sinh tồn A1, cần nhận ra trực tiếp bằng Gurmukhi.",
+    explanation_en: "ਪਾਣੀ is an A1 survival word to recognize directly in Gurmukhi.",
+    remediation_vi: "Che romanization và chọn nghĩa từ chữ Gurmukhi trước.",
+    remediation_en: "Cover the romanization and choose from Gurmukhi first.",
+    readiness_signal_vi: "Bạn chọn đúng nghĩa mà không nhìn chữ Latin.",
+    readiness_signal_en: "You choose the meaning without looking at Latin letters.",
+    review_targets: ["pa_a1_final_gurmukhi_001", "pa_a1_recall_gurmukhi_001"],
+    learner_trap: { audience: "both", vi: "Đừng tự kiểm tra chỉ bằng romanization.", en: "Do not self-test only through romanization." },
+  },
+  {
+    id: "pa_a1_recognition_gurmukhi_002",
+    focus: "gurmukhi_to_meaning",
+    drill_type: "match",
+    quality_tag: "final_quality",
+    prompt_vi: "Nối các cụm dịch vụ với nghĩa.",
+    prompt_en: "Match service words to meanings.",
+    stimulus_pa: "ਫਾਰਮ, ਪਛਾਣ, ਅਪਾਇੰਟਮੈਂਟ",
+    romanization: "form, pachhan, appointment",
+    options_vi: ["mẫu đơn", "giấy tờ tùy thân", "lịch hẹn"],
+    options_en: ["form", "identification", "appointment"],
+    correct_answer_vi: "ਫਾਰਮ = mẫu đơn; ਪਛਾਣ = giấy tờ tùy thân; ਅਪਾਇੰਟਮੈਂਟ = lịch hẹn.",
+    correct_answer_en: "ਫਾਰਮ = form; ਪਛਾਣ = identification; ਅਪਾਇੰਟਮੈਂਟ = appointment.",
+    correct_answer_pa: "ਫਾਰਮ, ਪਛਾਣ, ਅਪਾਇੰਟਮੈਂਟ",
+    explanation_vi: "Ba từ này xuất hiện thường xuyên ở trường, phòng khám và quầy công cộng.",
+    explanation_en: "These three words often appear at schools, clinics, and public counters.",
+    remediation_vi: "Ôn mỗi từ trong bối cảnh dịch vụ Canada.",
+    remediation_en: "Review each word in a Canada service context.",
+    readiness_signal_vi: "Bạn nhận ra từ dịch vụ trước khi roleplay.",
+    readiness_signal_en: "You recognize service words before roleplay.",
+    review_targets: ["pa_a1_counter_gurmukhi_001", "pa_a1_final_gurmukhi_002"],
+    learner_trap: { audience: "both", vi: "Không chỉ học nghĩa tiếng Anh; nhìn chữ Gurmukhi.", en: "Do not learn only English meanings; look at Gurmukhi." },
+    canada_practical: true,
+  },
+  {
+    id: "pa_a1_recognition_polite_001",
+    focus: "polite_phrase",
+    drill_type: "choose_phrase",
+    quality_tag: "review",
+    prompt_vi: "Chọn câu chào lịch sự.",
+    prompt_en: "Choose the polite greeting.",
+    stimulus_pa: "ਸੇਵਾ ਕਾਊਂਟਰ",
+    options_pa: ["ਸਤ ਸ੍ਰੀ ਅਕਾਲ।", "ਪੰਜ ਡਾਲਰ।", "ਸੱਜੇ ਜਾਓ।"],
+    correct_answer_vi: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ।",
+    correct_answer_en: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ।",
+    correct_answer_pa: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ।",
+    explanation_vi: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ là lời chào; các lựa chọn khác là giá hoặc chỉ đường.",
+    explanation_en: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ is a greeting; the other options are price or direction.",
+    remediation_vi: "Ôn greeting trước khi luyện dịch vụ.",
+    remediation_en: "Review greetings before service practice.",
+    readiness_signal_vi: "Bạn nhận ra lời chào trong danh sách cụm ngắn.",
+    readiness_signal_en: "You recognize the greeting among short phrases.",
+    review_targets: ["pa_a1_counter_greeting_001", "pa_a1_final_greetings_001"],
+    learner_trap: { audience: "vi", vi: "Không thêm nguyên âm sau âm cuối của ਸਤ.", en: "Do not add a vowel after final ਤ." },
+    canada_practical: true,
+  },
+  {
+    id: "pa_a1_recognition_polite_002",
+    focus: "polite_phrase",
+    drill_type: "choose_meaning",
+    quality_tag: "readiness",
+    prompt_vi: "Chọn nghĩa của cụm lịch sự.",
+    prompt_en: "Choose the meaning of the polite phrase.",
+    stimulus_pa: "ਮਾਫ਼ ਕਰਨਾ।",
+    romanization: "maf karna",
+    options_vi: ["Xin lỗi/cho tôi hỏi.", "Cảm ơn.", "Tôi cần nước."],
+    options_en: ["Excuse me.", "Thank you.", "I need water."],
+    correct_answer_vi: "Xin lỗi/cho tôi hỏi.",
+    correct_answer_en: "Excuse me.",
+    correct_answer_pa: "ਮਾਫ਼ ਕਰਨਾ।",
+    explanation_vi: "ਮਾਫ਼ ਕਰਨਾ dùng để mở lời trước khi hỏi hoặc nhờ giúp.",
+    explanation_en: "ਮਾਫ਼ ਕਰਨਾ opens politely before asking or requesting help.",
+    remediation_vi: "So sánh ਮਾਫ਼ ਕਰਨਾ với ਧੰਨਵਾਦ.",
+    remediation_en: "Compare ਮਾਫ਼ ਕਰਨਾ with ਧੰਨਵਾਦ.",
+    readiness_signal_vi: "Bạn chọn đúng cụm lịch sự theo tình huống.",
+    readiness_signal_en: "You choose the polite phrase for the situation.",
+    review_targets: ["pa_a1_final_politeness_002", "pa_a1_journey_polite_001"],
+    canada_practical: true,
+  },
+  {
+    id: "pa_a1_recognition_numbers_001",
+    focus: "numbers_prices",
+    drill_type: "choose_meaning",
+    quality_tag: "review",
+    prompt_vi: "Chọn nghĩa của cụm giá.",
+    prompt_en: "Choose the meaning of the price phrase.",
+    stimulus_pa: "ਪੰਜ ਡਾਲਰ।",
+    romanization: "panj dollar",
+    options_vi: ["năm đô la", "hai vé", "một túi"],
+    options_en: ["five dollars", "two tickets", "one bag"],
+    correct_answer_vi: "năm đô la",
+    correct_answer_en: "five dollars",
+    correct_answer_pa: "ਪੰਜ ਡਾਲਰ।",
+    explanation_vi: "ਪੰਜ là năm; ਡਾਲਰ là đô la.",
+    explanation_en: "ਪੰਜ means five; ਡਾਲਰ means dollars.",
+    remediation_vi: "Ôn số nhỏ trước khi luyện giá.",
+    remediation_en: "Review small numbers before practicing prices.",
+    readiness_signal_vi: "Bạn nhận ra số và tiền trong cụm ngắn.",
+    readiness_signal_en: "You recognize number and money in a short phrase.",
+    review_targets: ["pa_a1_counter_price_002", "pa_a1_recall_numbers_002"],
+    learner_trap: { audience: "both", vi: "Đừng học số chỉ bằng chữ Latin.", en: "Do not learn numbers only through Latin letters." },
+    canada_practical: true,
+  },
+  {
+    id: "pa_a1_recognition_numbers_002",
+    focus: "numbers_prices",
+    drill_type: "choose_phrase",
+    quality_tag: "readiness",
+    prompt_vi: "Chọn cụm 'hai vé'.",
+    prompt_en: "Choose 'two tickets'.",
+    stimulus_pa: "ਬੱਸ ਟਿਕਟ",
+    options_pa: ["ਦੋ ਟਿਕਟਾਂ", "ਪੰਜ ਡਾਲਰ", "ਇੱਕ ਬੈਗ"],
+    correct_answer_vi: "ਦੋ ਟਿਕਟਾਂ",
+    correct_answer_en: "ਦੋ ਟਿਕਟਾਂ",
+    correct_answer_pa: "ਦੋ ਟਿਕਟਾਂ",
+    explanation_vi: "ਦੋ là hai; ਟਿਕਟਾਂ là vé.",
+    explanation_en: "ਦੋ means two; ਟਿਕਟਾਂ means tickets.",
+    remediation_vi: "Ôn số ਦੋ và cụm vé trước khi luyện quầy giao thông.",
+    remediation_en: "Review ਦੋ and ticket phrases before transit counter practice.",
+    readiness_signal_vi: "Bạn phân biệt vé, giá và túi.",
+    readiness_signal_en: "You distinguish tickets, prices, and bags.",
+    review_targets: ["pa_a1_final_numbers_001", "pa_a1_recall_numbers_001"],
+    canada_practical: true,
+  },
+  {
+    id: "pa_a1_recognition_help_001",
+    focus: "help_request",
+    drill_type: "choose_meaning",
+    quality_tag: "review",
+    prompt_vi: "Chọn nghĩa của câu xin giúp.",
+    prompt_en: "Choose the meaning of the help request.",
+    stimulus_pa: "ਕਿਰਪਾ ਕਰਕੇ ਮਦਦ ਕਰੋ।",
+    romanization: "kirpa karke madad karo",
+    options_vi: ["Làm ơn giúp tôi.", "Bến xe ở đâu?", "Cái này bao nhiêu tiền?"],
+    options_en: ["Please help.", "Where is the bus stop?", "How much is this?"],
+    correct_answer_vi: "Làm ơn giúp tôi.",
+    correct_answer_en: "Please help.",
+    correct_answer_pa: "ਕਿਰਪਾ ਕਰਕੇ ਮਦਦ ਕਰੋ।",
+    explanation_vi: "ਮਦਦ ਕਰੋ là yêu cầu giúp; ਕਿਰਪਾ ਕਰਕੇ làm câu lịch sự.",
+    explanation_en: "ਮਦਦ ਕਰੋ asks for help; ਕਿਰਪਾ ਕਰਕੇ makes it polite.",
+    remediation_vi: "Ôn help request nếu nhầm với câu địa điểm hoặc giá.",
+    remediation_en: "Review help requests if confused with location or price questions.",
+    readiness_signal_vi: "Bạn nhận ra câu xin giúp trong bối cảnh quầy.",
+    readiness_signal_en: "You recognize a help request at a counter.",
+    review_targets: ["pa_a1_counter_help_001", "pa_a1_final_help_001"],
+    learner_trap: { audience: "both", vi: "Đừng chỉ nhận ra ਮਦਦ mà bỏ qua sắc thái lịch sự.", en: "Do not recognize only ਮਦਦ and miss the polite frame." },
+    canada_practical: true,
+  },
+  {
+    id: "pa_a1_recognition_help_002",
+    focus: "help_request",
+    drill_type: "remediation",
+    quality_tag: "remediation",
+    prompt_vi: "Chọn nghĩa của câu khi bạn không hiểu.",
+    prompt_en: "Choose the meaning of the sentence used when you do not understand.",
+    stimulus_pa: "ਮੈਨੂੰ ਸਮਝ ਨਹੀਂ ਆਉਂਦੀ।",
+    romanization: "mainu samajh nahin aundi",
+    options_vi: ["Tôi không hiểu.", "Tôi cần mẫu đơn.", "Tôi có lịch hẹn."],
+    options_en: ["I do not understand.", "I need a form.", "I have an appointment."],
+    correct_answer_vi: "Tôi không hiểu.",
+    correct_answer_en: "I do not understand.",
+    correct_answer_pa: "ਮੈਨੂੰ ਸਮਝ ਨਹੀਂ ਆਉਂਦੀ।",
+    explanation_vi: "ਨਹੀਂ là dấu hiệu phủ định trong câu này.",
+    explanation_en: "ਨਹੀਂ marks negation in this sentence.",
+    remediation_vi: "Ôn phủ định ਨਹੀਂ và yêu cầu lặp lại.",
+    remediation_en: "Review ਨਹੀਂ negation and repetition requests.",
+    readiness_signal_vi: "Bạn biết nhận ra câu báo không hiểu.",
+    readiness_signal_en: "You can recognize the phrase for not understanding.",
+    review_targets: ["pa_a1_counter_repetition_002", "pa_a1_recall_help_002"],
+    learner_trap: { audience: "vi", vi: "Đừng bỏ không/ਨਹੀਂ khi hiểu nghĩa câu.", en: "Do not miss the negative ਨਹੀਂ when interpreting the sentence." },
+    canada_practical: true,
+  },
+  {
+    id: "pa_a1_recognition_service_001",
+    focus: "canada_service_situation",
+    drill_type: "situation_match",
+    quality_tag: "final_quality",
+    prompt_vi: "Nối câu với tình huống văn phòng trường.",
+    prompt_en: "Match the sentence to a school-office situation.",
+    stimulus_pa: "ਮੈਨੂੰ ਫਾਰਮ ਚਾਹੀਦਾ ਹੈ।",
+    romanization: "mainu form chahida hai",
+    options_vi: ["Tôi cần mẫu đơn.", "Tôi cần nước.", "Bên phải."],
+    options_en: ["I need a form.", "I need water.", "Right side."],
+    correct_answer_vi: "Tôi cần mẫu đơn.",
+    correct_answer_en: "I need a form.",
+    correct_answer_pa: "ਮੈਨੂੰ ਫਾਰਮ ਚਾਹੀਦਾ ਹੈ।",
+    explanation_vi: "ਫਾਰਮ là từ mượn hữu ích ở văn phòng trường và quầy dịch vụ.",
+    explanation_en: "ਫਾਰਮ is a useful loanword at school offices and service counters.",
+    remediation_vi: "Ôn khung ਮੈਨੂੰ ... ਚਾਹੀਦਾ ਹੈ với từ dịch vụ.",
+    remediation_en: "Review ਮੈਨੂੰ ... ਚਾਹੀਦਾ ਹੈ with service words.",
+    readiness_signal_vi: "Bạn nối được câu với tình huống trường học.",
+    readiness_signal_en: "You connect the phrase to a school situation.",
+    review_targets: ["pa_a1_counter_school_001", "pa_a1_journey_services_001"],
+    canada_practical: true,
+  },
+  {
+    id: "pa_a1_recognition_service_002",
+    focus: "canada_service_situation",
+    drill_type: "situation_match",
+    quality_tag: "readiness",
+    prompt_vi: "Nối câu với tình huống phòng khám.",
+    prompt_en: "Match the sentence to a clinic situation.",
+    stimulus_pa: "ਮੇਰੀ ਅਪਾਇੰਟਮੈਂਟ ਕਦੋਂ ਹੈ?",
+    romanization: "meri appointment kadon hai?",
+    options_vi: ["Lịch hẹn của tôi là khi nào?", "Bạn có ID không?", "Cái này bao nhiêu tiền?"],
+    options_en: ["When is my appointment?", "Do you have ID?", "How much is this?"],
+    correct_answer_vi: "Lịch hẹn của tôi là khi nào?",
+    correct_answer_en: "When is my appointment?",
+    correct_answer_pa: "ਮੇਰੀ ਅਪਾਇੰਟਮੈਂਟ ਕਦੋਂ ਹੈ?",
+    explanation_vi: "ਅਪਾਇੰਟਮੈਂਟ là lịch hẹn; ਕਦੋਂ hỏi khi nào.",
+    explanation_en: "ਅਪਾਇੰਟਮੈਂਟ means appointment; ਕਦੋਂ asks when.",
+    remediation_vi: "Ôn từ ਅਪਾਇੰਟਮੈਂਟ và câu hỏi ਕਦੋਂ.",
+    remediation_en: "Review ਅਪਾਇੰਟਮੈਂਟ and the question word ਕਦੋਂ.",
+    readiness_signal_vi: "Bạn nhận ra câu hỏi lịch hẹn ở phòng khám.",
+    readiness_signal_en: "You recognize an appointment question at a clinic.",
+    review_targets: ["pa_a1_counter_clinic_001", "pa_a1_final_services_002"],
+    canada_practical: true,
+  },
+  {
+    id: "pa_a1_recognition_service_003",
+    focus: "canada_service_situation",
+    drill_type: "choose_meaning",
+    quality_tag: "review",
+    prompt_vi: "Chọn nghĩa của câu hỏi giấy tờ tùy thân.",
+    prompt_en: "Choose the meaning of the identification question.",
+    stimulus_pa: "ਕੀ ਤੁਹਾਡੇ ਕੋਲ ਪਛਾਣ ਹੈ?",
+    romanization: "ki tuhade kol pachhan hai?",
+    options_vi: ["Bạn có giấy tờ tùy thân không?", "Bạn khỏe không?", "Bến xe ở đâu?"],
+    options_en: ["Do you have ID?", "How are you?", "Where is the bus stop?"],
+    correct_answer_vi: "Bạn có giấy tờ tùy thân không?",
+    correct_answer_en: "Do you have ID?",
+    correct_answer_pa: "ਕੀ ਤੁਹਾਡੇ ਕੋਲ ਪਛਾਣ ਹੈ?",
+    explanation_vi: "ਪਛਾਣ nghĩa là giấy tờ tùy thân/ID trong bối cảnh dịch vụ.",
+    explanation_en: "ਪਛਾਣ means identification/ID in service contexts.",
+    remediation_vi: "Ôn mẫu ਕੋਲ cho nghĩa 'có'.",
+    remediation_en: "Review the ਕੋਲ pattern for 'have'.",
+    readiness_signal_vi: "Bạn phân biệt ID với chào hỏi và chỉ đường.",
+    readiness_signal_en: "You distinguish ID from greetings and directions.",
+    review_targets: ["pa_a1_counter_public_001", "pa_a1_journey_services_002"],
+    learner_trap: { audience: "en", vi: "Punjabi dùng ਕੋਲ cho 'have' trong mẫu này.", en: "Punjabi uses ਕੋਲ for 'have' in this pattern." },
+    canada_practical: true,
+  },
+  {
+    id: "pa_a1_recognition_service_004",
+    focus: "canada_service_situation",
+    drill_type: "choose_phrase",
+    quality_tag: "readiness",
+    prompt_vi: "Chọn câu hỏi vị trí bến xe buýt.",
+    prompt_en: "Choose the bus-stop location question.",
+    stimulus_pa: "ਬੱਸ ਅੱਡਾ",
+    options_pa: ["ਬੱਸ ਅੱਡਾ ਕਿੱਥੇ ਹੈ?", "ਇਹ ਕਿੰਨੇ ਦਾ ਹੈ?", "ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕਹੋ।"],
+    correct_answer_vi: "ਬੱਸ ਅੱਡਾ ਕਿੱਥੇ ਹੈ?",
+    correct_answer_en: "ਬੱਸ ਅੱਡਾ ਕਿੱਥੇ ਹੈ?",
+    correct_answer_pa: "ਬੱਸ ਅੱਡਾ ਕਿੱਥੇ ਹੈ?",
+    explanation_vi: "ਕਿੱਥੇ ਹੈ là khung hỏi địa điểm.",
+    explanation_en: "ਕਿੱਥੇ ਹੈ is the location-question frame.",
+    remediation_vi: "Ôn địa điểm nếu nhầm với giá hoặc yêu cầu lặp lại.",
+    remediation_en: "Review locations if confused with price or repetition requests.",
+    readiness_signal_vi: "Bạn chọn đúng câu cho tình huống giao thông.",
+    readiness_signal_en: "You choose the right phrase for a transit situation.",
+    review_targets: ["pa_a1_counter_location_001", "pa_a1_recall_directions_001"],
+    learner_trap: { audience: "en", vi: "Không đảo như tiếng Anh 'where is'.", en: "Do not invert like English 'where is'." },
+    canada_practical: true,
+  },
+  {
+    id: "pa_a1_recognition_service_005",
+    focus: "canada_service_situation",
+    drill_type: "remediation",
+    quality_tag: "remediation",
+    prompt_vi: "Chọn câu dùng khi cần nghe lại.",
+    prompt_en: "Choose the phrase used when you need to hear it again.",
+    stimulus_pa: "ਦੁਬਾਰਾ",
+    options_pa: ["ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕਹੋ।", "ਮੈਨੂੰ ਇੱਕ ਬੈਗ ਚਾਹੀਦਾ ਹੈ।", "ਧੰਨਵਾਦ।"],
+    correct_answer_vi: "ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕਹੋ।",
+    correct_answer_en: "ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕਹੋ।",
+    correct_answer_pa: "ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕਹੋ।",
+    explanation_vi: "ਦੁਬਾਰਾ ਕਹੋ yêu cầu người khác nói lại.",
+    explanation_en: "ਦੁਬਾਰਾ ਕਹੋ asks someone to say it again.",
+    remediation_vi: "Ôn cụm này cùng ਮੈਨੂੰ ਸਮਝ ਨਹੀਂ ਆਉਂਦੀ।",
+    remediation_en: "Review this phrase with ਮੈਨੂੰ ਸਮਝ ਨਹੀਂ ਆਉਂਦੀ।",
+    readiness_signal_vi: "Bạn biết chọn câu để sửa tình huống nghe không kịp.",
+    readiness_signal_en: "You choose the phrase that repairs a missed utterance.",
+    review_targets: ["pa_a1_counter_repetition_001", "pa_a1_counter_repetition_002"],
+    learner_trap: { audience: "vi", vi: "Đừng im lặng khi không nghe kịp.", en: "Do not stay silent when you miss something." },
+    canada_practical: true,
+  },
+  {
+    id: "pa_a1_recognition_final_001",
+    focus: "canada_service_situation",
+    drill_type: "readiness_check",
+    quality_tag: "final_quality",
+    prompt_vi: "Kiểm tra cuối: nối câu với tình huống phù hợp.",
+    prompt_en: "Final check: match phrases to suitable situations.",
+    stimulus_pa: "ਇਹ ਕਿੰਨੇ ਦਾ ਹੈ? | ਕਲਿਨਿਕ ਕਿੱਥੇ ਹੈ? | ਮੈਨੂੰ ਇੱਕ ਬੈਗ ਚਾਹੀਦਾ ਹੈ।",
+    romanization: "ih kinne da hai? | clinic kithe hai? | mainu ikk bag chahida hai",
+    options_vi: ["hỏi giá", "hỏi phòng khám ở đâu", "cần một túi"],
+    options_en: ["ask a price", "ask where the clinic is", "need one bag"],
+    correct_answer_vi: "ਇਹ ਕਿੰਨੇ ਦਾ ਹੈ? = hỏi giá; ਕਲਿਨਿਕ ਕਿੱਥੇ ਹੈ? = hỏi phòng khám ở đâu; ਮੈਨੂੰ ਇੱਕ ਬੈਗ ਚਾਹੀਦਾ ਹੈ। = cần một túi.",
+    correct_answer_en: "ਇਹ ਕਿੰਨੇ ਦਾ ਹੈ? = ask a price; ਕਲਿਨਿਕ ਕਿੱਥੇ ਹੈ? = ask where the clinic is; ਮੈਨੂੰ ਇੱਕ ਬੈਗ ਚਾਹੀਦਾ ਹੈ। = need one bag.",
+    correct_answer_pa: "ਇਹ ਕਿੰਨੇ ਦਾ ਹੈ? | ਕਲਿਨਿਕ ਕਿੱਥੇ ਹੈ? | ਮੈਨੂੰ ਇੱਕ ਬੈਗ ਚਾਹੀਦਾ ਹੈ।",
+    explanation_vi: "Bài cuối buộc phân biệt giá, địa điểm và nhu cầu trong cùng một lượt.",
+    explanation_en: "The final drill separates price, location, and need in one pass.",
+    remediation_vi: "Nếu sai một cụm, quay lại đúng nhóm: price, location hoặc need.",
+    remediation_en: "If one phrase is missed, return to the matching price, location, or need group.",
+    readiness_signal_vi: "Bạn nối đúng nhiều tình huống dịch vụ ngắn.",
+    readiness_signal_en: "You correctly map multiple short service situations.",
+    review_targets: ["pa_a1_counter_price_001", "pa_a1_counter_location_002", "pa_a1_counter_store_001"],
+    canada_practical: true,
+  },
+];
+
+export default punjabiA1RecognitionDrills;

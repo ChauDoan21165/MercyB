@@ -1,0 +1,365 @@
+// src/languages/punjabi/remediationConsistencyReview.ts
+//
+// Punjabi remediation consistency review for integration readiness and final
+// guardrail checks. Gurmukhi is primary; romanization is included only as
+// support. These review items are study support only, not official placement or
+// certification. Native review is deferred.
+
+export type PunjabiConsistencyReviewFocus =
+  | "script-confusion"
+  | "romanization-dependence"
+  | "word-order"
+  | "postpositions"
+  | "agreement"
+  | "register-mismatch"
+  | "vietnamese-transfer"
+  | "english-transfer"
+  | "service-phrase-gaps"
+  | "canada-practical-recovery";
+
+export type PunjabiConsistencyReviewEvidence =
+  | "consistency"
+  | "final-guardrail"
+  | "integration-readiness"
+  | "review";
+
+export interface PunjabiRemediationConsistencyReviewItem {
+  id: string;
+  focus: PunjabiConsistencyReviewFocus;
+  evidenceType: PunjabiConsistencyReviewEvidence;
+  audience: "vi" | "en" | "both";
+  remediationRouteId: string;
+  sourceArtifactIds: string[];
+  review_pa: string;
+  review_roman?: string;
+  review_en: string;
+  risk_vi: string;
+  risk_en: string;
+  consistencyCheck: string;
+  guardrailCheck: string;
+  ownerReviewPrompt_vi: string;
+  ownerReviewPrompt_en: string;
+  finalQaCheck: string;
+  commonTrap: string;
+  canadaPractical?: boolean;
+}
+
+export const PUNJABI_REMEDIATION_CONSISTENCY_REVIEW_NOTICE =
+  "Wave 27 consistency review only; not A11 integration. Study support only, not official placement or certification. Native review deferred. Shahmukhi is awareness only, not a full course.";
+
+export const PUNJABI_CONSISTENCY_REVIEW_FOCI: readonly PunjabiConsistencyReviewFocus[] = [
+  "script-confusion",
+  "romanization-dependence",
+  "word-order",
+  "postpositions",
+  "agreement",
+  "register-mismatch",
+  "vietnamese-transfer",
+  "english-transfer",
+  "service-phrase-gaps",
+  "canada-practical-recovery",
+] as const;
+
+export const PUNJABI_CONSISTENCY_REVIEW_EVIDENCE_TYPES: readonly PunjabiConsistencyReviewEvidence[] = [
+  "consistency",
+  "final-guardrail",
+  "integration-readiness",
+  "review",
+] as const;
+
+export const punjabiRemediationConsistencyReview: PunjabiRemediationConsistencyReviewItem[] = [
+  {
+    id: "review-script-b-p-transit",
+    focus: "script-confusion",
+    evidenceType: "consistency",
+    audience: "both",
+    remediationRouteId: "route-script-babba-pappa",
+    sourceArtifactIds: ["checklist-script-b-p-transit", "safety-script-b-p-transit"],
+    review_pa: "ਬੱਸ ਅੱਡਾ ਕਿੱਥੇ ਹੈ?",
+    review_roman: "bas adda kitthe hai?",
+    review_en: "Where is the bus stand?",
+    risk_vi: "Bản tích hợp có thể làm lẫn chữ nếu không giữ kiểm tra đọc chữ cuối cùng.",
+    risk_en: "The integration can still confuse letters if the final script check is removed.",
+    consistencyCheck: "Keep letter reading aligned across checklist and safety layers.",
+    guardrailCheck: "Do not let meaning-only approval bypass Gurmukhi reading.",
+    ownerReviewPrompt_vi: "Xác nhận chuỗi cuối vẫn giữ kiểm tra chữ viết cho mẫu hỏi xe buýt.",
+    ownerReviewPrompt_en: "Confirm the final chain still keeps script reading for the bus prompt.",
+    finalQaCheck: "Confirm final QA blocks handoff when script guessing appears.",
+    commonTrap: "Relying on transit meaning instead of reading Gurmukhi.",
+    canadaPractical: true,
+  },
+  {
+    id: "review-script-vowel-help",
+    focus: "script-confusion",
+    evidenceType: "final-guardrail",
+    audience: "both",
+    remediationRouteId: "route-script-vowel-signs",
+    sourceArtifactIds: ["checklist-script-vowel-help", "safety-script-vowel-help"],
+    review_pa: "ਕੀ ਤੁਹਾਨੂੰ ਮਦਦ ਚਾਹੀਦੀ ਹੈ?",
+    review_roman: "ki tuhanu madad chahidi hai?",
+    review_en: "Do you need help?",
+    risk_vi: "Dấu nguyên âm vẫn có thể bị làm mờ ở tầng kiểm tra cuối.",
+    risk_en: "Vowel marks can still be blurred in the last review layer.",
+    consistencyCheck: "Keep the vowel mark visible in the review copy.",
+    guardrailCheck: "Do not treat vowel signs as decorative.",
+    ownerReviewPrompt_vi: "Kiểm tra dấu nguyên âm còn nổi bật ở bản cuối.",
+    ownerReviewPrompt_en: "Check whether the vowel sign remains prominent in the final copy.",
+    finalQaCheck: "Confirm final QA catches dropped vowel signs.",
+    commonTrap: "Cleaning layout until the vowel mark disappears.",
+  },
+  {
+    id: "review-romanization-gurmukhi-first",
+    focus: "romanization-dependence",
+    evidenceType: "integration-readiness",
+    audience: "both",
+    remediationRouteId: "romanization-read-gurmukhi-first",
+    sourceArtifactIds: ["checklist-romanization-gurmukhi-first", "safety-romanization-gurmukhi-first"],
+    review_pa: "ਮੈਨੂੰ ਮਦਦ ਚਾਹੀਦੀ ਹੈ।",
+    review_roman: "mainu madad chahidi hai.",
+    review_en: "I need help.",
+    risk_vi: "Luồng tích hợp có thể trượt lại sang đọc romanization trước Gurmukhi.",
+    risk_en: "The integration flow can slide back into romanization-first reading.",
+    consistencyCheck: "Keep Gurmukhi as the first reading target.",
+    guardrailCheck: "Do not make romanization the primary script.",
+    ownerReviewPrompt_vi: "Xác nhận tích hợp vẫn ưu tiên Gurmukhi trước.",
+    ownerReviewPrompt_en: "Confirm the integration still prioritizes Gurmukhi first.",
+    finalQaCheck: "Confirm final QA requires a Gurmukhi-first read.",
+    commonTrap: "Using romanization as the main reading layer.",
+    canadaPractical: true,
+  },
+  {
+    id: "review-shahmukhi-awareness-scope",
+    focus: "romanization-dependence",
+    evidenceType: "review",
+    audience: "both",
+    remediationRouteId: "gurmukhi-shahmukhi-awareness",
+    sourceArtifactIds: ["checklist-shahmukhi-awareness-scope", "safety-shahmukhi-awareness-scope"],
+    review_pa: "ਅਸੀਂ ਗੁਰਮੁਖੀ ਪੜ੍ਹਦੇ ਹਾਂ।",
+    review_roman: "asi gurmukhi parhde haan.",
+    review_en: "We study Gurmukhi.",
+    risk_vi: "Phạm vi có thể bị mở rộng thành khóa Shahmukhi đầy đủ.",
+    risk_en: "The scope can expand into a full Shahmukhi course.",
+    consistencyCheck: "Keep Shahmukhi as awareness only.",
+    guardrailCheck: "Do not expand scope into a dual-script syllabus.",
+    ownerReviewPrompt_vi: "Xác nhận Shahmukhi chỉ là nhận biết.",
+    ownerReviewPrompt_en: "Confirm Shahmukhi stays awareness only.",
+    finalQaCheck: "Confirm final QA flags full-course Shahmukhi wording.",
+    commonTrap: "Mixing scope notes with reading goals.",
+  },
+  {
+    id: "review-word-order-sov",
+    focus: "word-order",
+    evidenceType: "consistency",
+    audience: "both",
+    remediationRouteId: "word-order-object-before-verb",
+    sourceArtifactIds: ["checklist-word-order-sov", "safety-word-order-sov"],
+    review_pa: "ਮੈਂ ਸੇਬ ਖਾਂਦਾ ਹਾਂ।",
+    review_roman: "main seb khanda haan.",
+    review_en: "I eat an apple.",
+    risk_vi: "Câu cuối có thể trượt về trật tự SVO quen thuộc.",
+    risk_en: "The final sentence can still drift back to familiar SVO order.",
+    consistencyCheck: "Keep the object before the verb phrase.",
+    guardrailCheck: "Do not let the English gloss rewrite Punjabi order.",
+    ownerReviewPrompt_vi: "Kiểm tra câu cuối không chuyển sang trật tự Anh/Việt.",
+    ownerReviewPrompt_en: "Check that the final sentence does not shift into English/Vietnamese order.",
+    finalQaCheck: "Confirm final QA catches object-after-verb transfer.",
+    commonTrap: "Copying English or Vietnamese sentence order.",
+  },
+  {
+    id: "review-english-transfer-auxiliary-final",
+    focus: "english-transfer",
+    evidenceType: "final-guardrail",
+    audience: "en",
+    remediationRouteId: "english-transfer-am-is-are",
+    sourceArtifactIds: ["checklist-english-transfer-auxiliary-final", "safety-english-transfer-auxiliary-final"],
+    review_pa: "ਮੈਂ ਵਿਦਿਆਰਥੀ ਹਾਂ।",
+    review_roman: "main vidyarthi haan.",
+    review_en: "I am a student.",
+    risk_vi: "Người học tiếng Anh có thể kéo ਹਾਂ lên trước trong bản cuối.",
+    risk_en: "English-speaking learners can pull ਹਾਂ too early in the final build.",
+    consistencyCheck: "Keep ਹਾਂ at the sentence end.",
+    guardrailCheck: "Do not mirror English copular order.",
+    ownerReviewPrompt_vi: "Xác nhận bản cuối giữ mẫu Punjabi tự nhiên.",
+    ownerReviewPrompt_en: "Confirm the final copy keeps natural Punjabi order.",
+    finalQaCheck: "Confirm final QA catches direct English copula transfer.",
+    commonTrap: "Writing ਮੈਂ ਹਾਂ ਵਿਦਿਆਰਥੀ from the English model.",
+  },
+  {
+    id: "review-vietnamese-transfer-explicit-subject",
+    focus: "vietnamese-transfer",
+    evidenceType: "review",
+    audience: "vi",
+    remediationRouteId: "vietnamese-transfer-explicit-subject",
+    sourceArtifactIds: ["checklist-vietnamese-transfer-explicit-subject", "safety-vietnamese-transfer-explicit-subject"],
+    review_pa: "ਮੈਂ ਅੱਜ ਕੰਮ ਤੇ ਜਾਂਦਾ/ਜਾਂਦੀ ਹਾਂ।",
+    review_roman: "main ajj kamm te janda/jandi haan.",
+    review_en: "I go to work today.",
+    risk_vi: "Người học Việt có thể bỏ chủ ngữ nếu phạm vi review không đủ rõ.",
+    risk_en: "Vietnamese-speaking learners can drop the subject if the review scope is unclear.",
+    consistencyCheck: "Keep a visible subject anchor.",
+    guardrailCheck: "Require explicit subject where the task asks for it.",
+    ownerReviewPrompt_vi: "Xác nhận review còn rõ cho người học Việt.",
+    ownerReviewPrompt_en: "Confirm the review stays clear for Vietnamese-speaking learners.",
+    finalQaCheck: "Confirm final QA catches dropped-subject transfer.",
+    commonTrap: "Trusting context instead of writing the subject.",
+    canadaPractical: true,
+  },
+  {
+    id: "review-postposition-human-nu",
+    focus: "postpositions",
+    evidenceType: "final-guardrail",
+    audience: "both",
+    remediationRouteId: "postpositions-nu-human-object",
+    sourceArtifactIds: ["checklist-postposition-human-nu", "safety-postposition-human-nu"],
+    review_pa: "ਮੈਂ ਉਸਨੂੰ ਦੇਖਿਆ।",
+    review_roman: "main usnu dekhia.",
+    review_en: "I saw him/her.",
+    risk_vi: "Bản cuối vẫn có thể bỏ marker ਨੂੰ với tân ngữ người cụ thể.",
+    risk_en: "The final build can still omit ਨੂੰ with a specific human object.",
+    consistencyCheck: "Use ਨੂੰ only for a specific human object.",
+    guardrailCheck: "Do not attach ਨੂੰ to every object mechanically.",
+    ownerReviewPrompt_vi: "Xác nhận review không ép dùng ਨੂੰ cho mọi tân ngữ.",
+    ownerReviewPrompt_en: "Confirm the review does not force ਨੂੰ onto every object.",
+    finalQaCheck: "Confirm final QA catches omission and overuse of ਨੂੰ.",
+    commonTrap: "Copying English object marking into Punjabi.",
+  },
+  {
+    id: "review-postposition-location-office",
+    focus: "postpositions",
+    evidenceType: "integration-readiness",
+    audience: "both",
+    remediationRouteId: "postpositions-location-vich",
+    sourceArtifactIds: ["checklist-postposition-location-office", "safety-postposition-location-office"],
+    review_pa: "ਦਫ਼ਤਰ ਵਿੱਚ",
+    review_roman: "daftar vich",
+    review_en: "in the office",
+    risk_vi: "Bản tích hợp có thể đảo ngược danh từ và hậu giới từ.",
+    risk_en: "The integration can reverse the noun and postposition.",
+    consistencyCheck: "Keep noun + ਵਿੱਚ order.",
+    guardrailCheck: "Do not render it as preposition-before-noun English.",
+    ownerReviewPrompt_vi: "Kiểm tra cụm còn dùng được trong văn phòng hoặc dịch vụ không.",
+    ownerReviewPrompt_en: "Check whether the phrase still works in office or service contexts.",
+    finalQaCheck: "Confirm final QA catches preposition-before-noun transfer.",
+    commonTrap: "Matching English phrase order instead of Punjabi order.",
+    canadaPractical: true,
+  },
+  {
+    id: "review-agreement-possessive-book",
+    focus: "agreement",
+    evidenceType: "final-guardrail",
+    audience: "both",
+    remediationRouteId: "agreement-possessive-gender",
+    sourceArtifactIds: ["checklist-agreement-possessive-book", "safety-agreement-possessive-book"],
+    review_pa: "ਮੇਰੀ ਕਿਤਾਬ ਇੱਥੇ ਹੈ।",
+    review_roman: "meri kitab itthe hai.",
+    review_en: "My book is here.",
+    risk_vi: "Bản cuối vẫn có thể sai hòa hợp sở hữu theo giới tính danh từ.",
+    risk_en: "The final build can still break possessive agreement by noun gender.",
+    consistencyCheck: "Keep the possessive form aligned with the noun.",
+    guardrailCheck: "Do not replace noun-based agreement with speaker-based habits.",
+    ownerReviewPrompt_vi: "Xác nhận review không làm mất quy tắc hòa hợp cơ bản.",
+    ownerReviewPrompt_en: "Confirm the review does not erase the basic agreement rule.",
+    finalQaCheck: "Confirm final QA catches possessive agreement errors.",
+    commonTrap: "Choosing possessives by speaker gender instead of noun gender.",
+  },
+  {
+    id: "review-register-service-counter",
+    focus: "register-mismatch",
+    evidenceType: "final-guardrail",
+    audience: "both",
+    remediationRouteId: "register-service-counter-politeness",
+    sourceArtifactIds: ["checklist-register-service-counter", "safety-register-service-counter"],
+    review_pa: "ਕਿਰਪਾ ਕਰਕੇ ਮੈਨੂੰ ਫਾਰਮ ਦੇ ਦਿਓ ਜੀ।",
+    review_roman: "kirpa karke mainu form de dio ji.",
+    review_en: "Please give me the form.",
+    risk_vi: "Bản cuối có thể hạ mức lịch sự của quầy dịch vụ xuống quá thấp.",
+    risk_en: "The final build can drop service-counter politeness too low.",
+    consistencyCheck: "Keep the service request polite and office-safe.",
+    guardrailCheck: "Do not swap in a classroom-short command.",
+    ownerReviewPrompt_vi: "Xác nhận review dùng được cho văn phòng, thư viện, hoặc quầy dịch vụ.",
+    ownerReviewPrompt_en: "Confirm the review is usable for offices, libraries, or service counters.",
+    finalQaCheck: "Confirm final QA catches casual command wording.",
+    commonTrap: "Using a short classroom command in a public-service setting.",
+    canadaPractical: true,
+  },
+  {
+    id: "review-service-phrase-library-help",
+    focus: "service-phrase-gaps",
+    evidenceType: "consistency",
+    audience: "both",
+    remediationRouteId: "service-phrase-library-help",
+    sourceArtifactIds: ["checklist-service-phrase-library-help", "safety-canada-library-card"],
+    review_pa: "ਮੈਂ ਲਾਇਬ੍ਰੇਰੀ ਕਾਰਡ ਬਣਵਾਉਣਾ ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ।",
+    review_roman: "main library card banvauna chahunda/chahundi haan.",
+    review_en: "I want to get a library card made.",
+    risk_vi: "Cụm dịch vụ có thể bị rút xuống thành từ vựng rời rạc.",
+    risk_en: "The service phrase can get reduced to isolated vocabulary.",
+    consistencyCheck: "Keep a full service phrase, not only a noun.",
+    guardrailCheck: "Do not treat the request as a word list.",
+    ownerReviewPrompt_vi: "Kiểm tra câu phục vụ còn dùng được tại thư viện không.",
+    ownerReviewPrompt_en: "Check whether the service phrase is still usable at a library counter.",
+    finalQaCheck: "Confirm final QA preserves a practical service phrase.",
+    commonTrap: "Knowing the service noun but not the usable request.",
+    canadaPractical: true,
+  },
+  {
+    id: "review-canada-library-card",
+    focus: "canada-practical-recovery",
+    evidenceType: "final-guardrail",
+    audience: "both",
+    remediationRouteId: "canada-practical-library-card",
+    sourceArtifactIds: ["checklist-canada-library-card", "safety-canada-library-card"],
+    review_pa: "ਮੈਂ ਲਾਇਬ੍ਰੇਰੀ ਕਾਰਡ ਬਣਵਾਉਣਾ ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ।",
+    review_roman: "main library card banvauna chahunda/chahundi haan.",
+    review_en: "I want to get a library card made.",
+    risk_vi: "Cụm thư viện có thể bị cắt xuống chỉ còn từ vựng rời.",
+    risk_en: "The library phrase can get reduced to isolated vocabulary.",
+    consistencyCheck: "Keep the full request sentence intact.",
+    guardrailCheck: "Do not remove the request frame from the phrase.",
+    ownerReviewPrompt_vi: "Xác nhận câu đủ thực dụng cho dịch vụ thư viện ở Canada.",
+    ownerReviewPrompt_en: "Confirm the sentence stays practical for Canadian library services.",
+    finalQaCheck: "Confirm final QA keeps the practical library scenario intact.",
+    commonTrap: "Having the noun but not the request.",
+    canadaPractical: true,
+  },
+  {
+    id: "review-canada-application-deadline",
+    focus: "canada-practical-recovery",
+    evidenceType: "integration-readiness",
+    audience: "both",
+    remediationRouteId: "canada-practical-application-deadline",
+    sourceArtifactIds: ["checklist-canada-application-deadline", "safety-canada-application-deadline"],
+    review_pa: "ਕਿਰਪਾ ਕਰਕੇ ਦੱਸੋ, ਇਹ ਅਰਜ਼ੀ ਕਦੋਂ ਤੱਕ ਜਮ੍ਹਾਂ ਕਰਨੀ ਹੈ?",
+    review_roman: "kirpa karke dasso, ih arzi kadon takk jammha karni hai?",
+    review_en: "Please tell me, by when do I need to submit this application?",
+    risk_vi: "Bản tích hợp có thể làm mờ mốc hạn nộp hồ sơ.",
+    risk_en: "The integration can blur the application deadline question.",
+    consistencyCheck: "Keep ਕਦੋਂ ਤੱਕ in the final export.",
+    guardrailCheck: "Do not strip the deadline phrase from the request.",
+    ownerReviewPrompt_vi: "Kiểm tra câu còn dùng được cho biểu mẫu hoặc hồ sơ không.",
+    ownerReviewPrompt_en: "Check whether the sentence still works for forms or applications.",
+    finalQaCheck: "Confirm final QA catches missing deadline wording.",
+    commonTrap: "Remembering ਅਰਜ਼ੀ but not the due-date question.",
+    canadaPractical: true,
+  },
+  {
+    id: "review-canada-clinic-appointment",
+    focus: "canada-practical-recovery",
+    evidenceType: "final-guardrail",
+    audience: "both",
+    remediationRouteId: "canada-practical-clinic-appointment",
+    sourceArtifactIds: ["checklist-canada-clinic-appointment", "safety-canada-clinic-appointment"],
+    review_pa: "ਮੈਨੂੰ ਡਾਕਟਰ ਨਾਲ ਅਪਾਇੰਟਮੈਂਟ ਲੈਣੀ ਹੈ।",
+    review_roman: "mainu daktar nal appointment laini hai.",
+    review_en: "I need to make an appointment with a doctor.",
+    risk_vi: "Cụm y tế có thể bị giản lược thành từ vay mượn rời rạc.",
+    risk_en: "The clinic phrase can be reduced to isolated loanwords.",
+    consistencyCheck: "Keep ਨਾਲ and the full need statement.",
+    guardrailCheck: "Do not remove the request frame during export.",
+    ownerReviewPrompt_vi: "Xác nhận câu chỉ hỗ trợ học tập, không thành tư vấn y tế.",
+    ownerReviewPrompt_en: "Confirm the sentence is study support and not medical advice.",
+    finalQaCheck: "Confirm final QA preserves practical clinic wording without audio or scoring dependencies.",
+    commonTrap: "Using only the English loanword without Punjabi structure.",
+    canadaPractical: true,
+  },
+];

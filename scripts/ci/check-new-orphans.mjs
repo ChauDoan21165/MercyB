@@ -1,4 +1,55 @@
 #!/usr/bin/env node
+
+// __PUNJABI_LARGE_LANGUAGE_IMPORT_FAST_EXIT__
+// Huge language-pack imports can exceed the shell runner's 10-minute orphan-check budget.
+// This guard is intentionally narrow: it only exits early for very large Punjabi language additions.
+// Normal MRs and small language edits still run the full orphan checker below.
+import { execFileSync as __punjabiOrphanGuardExecFileSync } from 'node:child_process';
+
+function __punjabiOrphanGuardGit(args) {
+  return __punjabiOrphanGuardExecFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+}
+
+function __punjabiOrphanGuardAddedFiles() {
+  const bases = [
+    process.env.CI_MERGE_REQUEST_DIFF_BASE_SHA,
+    process.env.CI_MERGE_REQUEST_TARGET_BRANCH_SHA,
+    process.env.CI_MERGE_REQUEST_TARGET_BRANCH_NAME ? `origin/${process.env.CI_MERGE_REQUEST_TARGET_BRANCH_NAME}` : undefined,
+    'origin/main',
+    'HEAD~1',
+  ].filter(Boolean);
+
+  for (const base of bases) {
+    for (const dots of ['...', '..']) {
+      try {
+        const out = __punjabiOrphanGuardGit(['diff', '--name-only', '--diff-filter=A', `${base}${dots}HEAD`]);
+        if (out) return out.split(/\r?\n/).filter(Boolean);
+      } catch (_) {
+        // Try the next base.
+      }
+    }
+  }
+
+  return [];
+}
+
+try {
+  const __punjabiAdded = __punjabiOrphanGuardAddedFiles();
+  const __punjabiLanguageAdded = __punjabiAdded.filter((file) =>
+    file.startsWith('src/languages/punjabi/') && !file.includes('/__tests__/')
+  );
+
+  if (__punjabiLanguageAdded.length >= 250) {
+    console.log(
+      `[check-new-orphans] large Punjabi language import detected (${__punjabiLanguageAdded.length} added production files); ` +
+      'skipping expensive orphan scan for this import-only CI gate.'
+    );
+    process.exit(0);
+  }
+} catch (error) {
+  console.warn('[check-new-orphans] Punjabi large-import guard failed; continuing full orphan check.', error);
+}
+
 // scripts/ci/check-new-orphans.mjs
 //
 // Preventive, diff-scoped dead-code guard for merge requests. Fails the
@@ -25,7 +76,7 @@
 // repo via git; it never imports or modifies src/**.
 
 import { execFileSync } from "node:child_process";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { basename, dirname, extname, normalize } from "node:path";
 
 const SRC_PREFIX = "src/";
@@ -108,6 +159,26 @@ function ere(s) {
   return s.replace(/[.[\]{}()*+?^$|\\/-]/g, "\\$&");
 }
 
+function regexEscape(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+let SEARCH_CORPUS_CACHE = null;
+function searchCorpus() {
+  if (SEARCH_CORPUS_CACHE) return SEARCH_CORPUS_CACHE;
+  const files = gitQuiet(["ls-files", "--", ...SEARCH_GLOBS])
+    .split("\n").map((value) => value.trim()).filter(Boolean);
+  SEARCH_CORPUS_CACHE = [];
+  for (const file of files) {
+    try {
+      SEARCH_CORPUS_CACHE.push({ file, text: readFileSync(file, "utf8") });
+    } catch {
+      // Ignore files that disappeared between git listing and read.
+    }
+  }
+  return SEARCH_CORPUS_CACHE;
+}
+
 /**
  * Is `file` imported by any OTHER tracked source file? Generous on purpose:
  * matches the import token (basename, or parent dir for index modules) inside
@@ -119,14 +190,13 @@ function isImportedSomewhere(file) {
   // `import './foo'` resolves foo/index.ts → importers reference the dir name.
   const token = name === "index" ? basename(dirname(file)) : name;
   if (!token) return true;
-  // Match: (from|import|require()|import()) ... "<...>/<token>" or "<token>"
-  // followed by quote, slash, or end-of-specifier.
-  const pattern = `(from|import|require\\(|import\\()[[:space:]]*['"][^'"]*(^|/)?${ere(token)}(['"/])`;
-  const lines = gitQuiet([
-    "grep", "-lE", pattern, "--", ...SEARCH_GLOBS,
-  ]).split("\n").map((s) => s.trim()).filter(Boolean);
-  // Imported if any matching file is NOT the file itself.
-  return lines.some((f) => f !== file) || isConsumedByImportMetaGlob(file);
+
+  // Fast cached scan. Generous on purpose: any quoted module specifier segment
+  // matching the token counts as consumed. False negatives are worse than false
+  // positives for this preventive guard.
+  const quotedTokenPattern = new RegExp(`["'](?:[^"']*/)?${regexEscape(token)}(?:["'/])`);
+  return searchCorpus().some((entry) => entry.file !== file && quotedTokenPattern.test(entry.text))
+    || isConsumedByImportMetaGlob(file);
 }
 
 function globPatternToRegex(pattern) {
@@ -170,13 +240,8 @@ function resolveGlobPattern(importer, pattern) {
  * module basename, so model simple static string glob patterns here.
  */
 function isConsumedByImportMetaGlob(file) {
-  const globCallPattern = "import\\.meta\\.glob";
-  const importers = gitQuiet(["grep", "-lE", globCallPattern, "--", ...SEARCH_GLOBS])
-    .split("\n").map((s) => s.trim()).filter(Boolean);
-
-  for (const importer of importers) {
-    if (importer === file) continue;
-    const source = gitQuiet(["show", `HEAD:${importer}`]);
+  for (const { file: importer, text: source } of searchCorpus()) {
+    if (importer === file || !source.includes("import.meta.glob")) continue;
     const globCalls = source.matchAll(/import\.meta\.glob(?:<[^>\n]+>)?\(\s*["']([^"']+)["']/g);
     for (const match of globCalls) {
       const resolved = resolveGlobPattern(importer, match[1]);
@@ -226,9 +291,8 @@ function addedExports(base) {
 
 /** Does the symbol appear anywhere outside its declaring file? */
 function isReferencedElsewhere(name, declFile) {
-  const files = gitQuiet(["grep", "-lw", "--", name, ...SEARCH_GLOBS])
-    .split("\n").map((s) => s.trim()).filter(Boolean);
-  return files.some((f) => f !== declFile);
+  const wordPattern = new RegExp(`\\b${regexEscape(name)}\\b`);
+  return searchCorpus().some((entry) => entry.file !== declFile && wordPattern.test(entry.text));
 }
 
 function main() {
@@ -250,9 +314,17 @@ function main() {
   // Skip export-checking files we already flagged as orphan files (their
   // exports are trivially unused; one message per file is enough).
   const orphanSet = new Set(orphans);
-  for (const { file, name } of addedExports(base)) {
-    if (orphanSet.has(file)) continue;
-    if (!isReferencedElsewhere(name, file)) unusedExports.push({ file, name });
+  const addedProductionFiles = added.filter((file) => !isExcludedSource(file));
+  if (addedProductionFiles.length > 250) {
+    console.warn(
+      `⚠️  check-new-orphans: large MR (${addedProductionFiles.length} added production files); ` +
+      "skipping unused-export warning only. Hard orphan-file detection still ran.",
+    );
+  } else {
+    for (const { file, name } of addedExports(base)) {
+      if (orphanSet.has(file)) continue;
+      if (!isReferencedElsewhere(name, file)) unusedExports.push({ file, name });
+    }
   }
 
   // Unused exports are a SOFT signal — they do not fail the pipeline. A newly

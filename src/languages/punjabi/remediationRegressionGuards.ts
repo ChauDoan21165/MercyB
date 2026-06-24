@@ -1,0 +1,362 @@
+// src/languages/punjabi/remediationRegressionGuards.ts
+//
+// Punjabi remediation regression guards for final hardening and export
+// readiness. Gurmukhi is primary; romanization is included only as support.
+// These guards are study support only, not official placement or certification.
+// Native review is deferred.
+
+export type PunjabiRegressionGuardFocus =
+  | "script-confusion"
+  | "romanization-dependence"
+  | "word-order"
+  | "postpositions"
+  | "agreement"
+  | "register-mismatch"
+  | "vietnamese-transfer"
+  | "english-transfer"
+  | "canada-practical-phrase-gaps";
+
+export type PunjabiRegressionGuardEvidence =
+  | "final-hardening"
+  | "export-readiness"
+  | "review"
+  | "regression";
+
+export interface PunjabiRemediationRegressionGuardItem {
+  id: string;
+  focus: PunjabiRegressionGuardFocus;
+  evidenceType: PunjabiRegressionGuardEvidence;
+  audience: "vi" | "en" | "both";
+  remediationRouteId: string;
+  sourceArtifactIds: string[];
+  guard_pa: string;
+  guard_roman?: string;
+  guard_en: string;
+  risk_vi: string;
+  risk_en: string;
+  regressionSignal: string;
+  hardeningCheck: string;
+  ownerReviewPrompt_vi: string;
+  ownerReviewPrompt_en: string;
+  finalQaCheck: string;
+  commonTrap: string;
+  canadaPractical?: boolean;
+}
+
+export const PUNJABI_REMEDIATION_REGRESSION_GUARDS_NOTICE =
+  "Wave 24 regression guards only; not A11 integration. Study support only, not official placement or certification. Native review deferred. Shahmukhi is awareness only, not a full course.";
+
+export const PUNJABI_REGRESSION_GUARD_FOCI: readonly PunjabiRegressionGuardFocus[] = [
+  "script-confusion",
+  "romanization-dependence",
+  "word-order",
+  "postpositions",
+  "agreement",
+  "register-mismatch",
+  "vietnamese-transfer",
+  "english-transfer",
+  "canada-practical-phrase-gaps",
+] as const;
+
+export const PUNJABI_REGRESSION_GUARD_EVIDENCE_TYPES: readonly PunjabiRegressionGuardEvidence[] = [
+  "final-hardening",
+  "export-readiness",
+  "review",
+  "regression",
+] as const;
+
+export const punjabiRemediationRegressionGuards: PunjabiRemediationRegressionGuardItem[] = [
+  {
+    id: "guard-script-b-p-transit",
+    focus: "script-confusion",
+    evidenceType: "final-hardening",
+    audience: "both",
+    remediationRouteId: "route-script-babba-pappa",
+    sourceArtifactIds: ["stress-script-b-p-transit", "proof-script-b-p-transit"],
+    guard_pa: "ਬੱਸ ਅੱਡਾ ਕਿੱਥੇ ਹੈ?",
+    guard_roman: "bas adda kitthe hai?",
+    guard_en: "Where is the bus stand?",
+    risk_vi: "Dự án vẫn có thể để người học lẫn ਬ và ਪ trong màn hình cuối.",
+    risk_en: "The project can still let learners confuse ਬ and ਪ on the final screen.",
+    regressionSignal: "A final export removes letter-level checks.",
+    hardeningCheck: "Keep a letter-focused read before meaning.",
+    ownerReviewPrompt_vi: "Xác nhận câu cuối không cho phép đoán nghĩa mà bỏ qua chữ viết.",
+    ownerReviewPrompt_en: "Confirm the final item does not allow meaning guessing without reading the script.",
+    finalQaCheck: "Confirm final QA blocks handoff if the script letters were not read.",
+    commonTrap: "Treating transit context as enough without reading Gurmukhi.",
+    canadaPractical: true,
+  },
+  {
+    id: "guard-script-vowel-help",
+    focus: "script-confusion",
+    evidenceType: "review",
+    audience: "both",
+    remediationRouteId: "route-script-vowel-signs",
+    sourceArtifactIds: ["stress-script-vowel-help", "proof-script-vowel-help"],
+    guard_pa: "ਕੀ ਤੁਹਾਨੂੰ ਮਦਦ ਚਾਹੀਦੀ ਹੈ?",
+    guard_roman: "ki tuhanu madad chahidi hai?",
+    guard_en: "Do you need help?",
+    risk_vi: "Bản cuối vẫn có thể làm mờ vai trò của dấu nguyên âm.",
+    risk_en: "The final build can still blur the role of vowel signs.",
+    regressionSignal: "A review copy collapses vowel marks into optional hints.",
+    hardeningCheck: "Keep the vowel sign visible in the review prompt.",
+    ownerReviewPrompt_vi: "Kiểm tra dấu nguyên âm còn hiện rõ trong bản phát hành hay không.",
+    ownerReviewPrompt_en: "Check whether the vowel sign remains visible in the release copy.",
+    finalQaCheck: "Confirm final QA catches skipped vowel signs.",
+    commonTrap: "Letting typographic cleanup remove the key vowel mark.",
+  },
+  {
+    id: "guard-romanization-gurmukhi-first",
+    focus: "romanization-dependence",
+    evidenceType: "export-readiness",
+    audience: "both",
+    remediationRouteId: "romanization-read-gurmukhi-first",
+    sourceArtifactIds: ["stress-romanization-first-help", "proof-romanization-gurmukhi-first"],
+    guard_pa: "ਮੈਨੂੰ ਮਦਦ ਚਾਹੀਦੀ ਹੈ।",
+    guard_roman: "mainu madad chahidi hai.",
+    guard_en: "I need help.",
+    risk_vi: "Người học có thể quay lại lệ thuộc vào romanization trong gói xuất bản.",
+    risk_en: "Learners can slip back into romanization dependence in the exported pack.",
+    regressionSignal: "The exported view presents romanization before Gurmukhi.",
+    hardeningCheck: "Keep Gurmukhi as the first reading target.",
+    ownerReviewPrompt_vi: "Xác nhận phiên bản xuất bản vẫn ưu tiên Gurmukhi trước.",
+    ownerReviewPrompt_en: "Confirm the export still prioritizes Gurmukhi first.",
+    finalQaCheck: "Confirm final QA requires a Gurmukhi-first read.",
+    commonTrap: "Using romanization as the default reading layer.",
+    canadaPractical: true,
+  },
+  {
+    id: "guard-shahmukhi-awareness-scope",
+    focus: "romanization-dependence",
+    evidenceType: "review",
+    audience: "both",
+    remediationRouteId: "gurmukhi-shahmukhi-awareness",
+    sourceArtifactIds: ["stress-shahmukhi-awareness-scope", "proof-shahmukhi-awareness-scope"],
+    guard_pa: "ਅਸੀਂ ਗੁਰਮੁਖੀ ਪੜ੍ਹਦੇ ਹਾਂ।",
+    guard_roman: "asi gurmukhi parhde haan.",
+    guard_en: "We study Gurmukhi.",
+    risk_vi: "Bản review có thể lỡ biến Shahmukhi thành một khóa thứ hai.",
+    risk_en: "The review copy can accidentally turn Shahmukhi into a second course.",
+    regressionSignal: "Shahmukhi appears as full-course content in scope text.",
+    hardeningCheck: "Keep Shahmukhi as awareness only.",
+    ownerReviewPrompt_vi: "Xác nhận phạm vi chữ viết không bị nới ra thành học hai hệ chữ.",
+    ownerReviewPrompt_en: "Confirm the script scope does not expand into two full scripts.",
+    finalQaCheck: "Confirm final QA flags any full-course Shahmukhi wording.",
+    commonTrap: "Lumping scope notes together with reading objectives.",
+  },
+  {
+    id: "guard-word-order-sov",
+    focus: "word-order",
+    evidenceType: "final-hardening",
+    audience: "both",
+    remediationRouteId: "word-order-object-before-verb",
+    sourceArtifactIds: ["stress-word-order-sov", "proof-word-order-sov"],
+    guard_pa: "ਮੈਂ ਸੇਬ ਖਾਂਦਾ ਹਾਂ।",
+    guard_roman: "main seb khanda haan.",
+    guard_en: "I eat an apple.",
+    risk_vi: "Bản cuối vẫn có thể khôi phục trật tự SVO quen thuộc.",
+    risk_en: "The final version can still revert to familiar SVO order.",
+    regressionSignal: "An object appears after the verb in the release copy.",
+    hardeningCheck: "Keep the object before the verb phrase.",
+    ownerReviewPrompt_vi: "Kiểm tra câu cuối không bị tối giản theo mẫu Anh/Việt.",
+    ownerReviewPrompt_en: "Check that the final sentence does not collapse into English/Vietnamese order.",
+    finalQaCheck: "Confirm final QA catches object-after-verb transfer.",
+    commonTrap: "Letting the English gloss drive the Punjabi word order.",
+  },
+  {
+    id: "guard-english-transfer-auxiliary-final",
+    focus: "english-transfer",
+    evidenceType: "export-readiness",
+    audience: "en",
+    remediationRouteId: "english-transfer-am-is-are",
+    sourceArtifactIds: ["stress-english-transfer-auxiliary-final", "proof-english-transfer-auxiliary-final"],
+    guard_pa: "ਮੈਂ ਵਿਦਿਆਰਥੀ ਹਾਂ।",
+    guard_roman: "main vidyarthi haan.",
+    guard_en: "I am a student.",
+    risk_vi: "Người học tiếng Anh có thể đưa ਹਾਂ lên trước trong bản xuất.",
+    risk_en: "English-speaking learners can move ਹਾਂ too early in the export build.",
+    regressionSignal: "A final copy mirrors English copular order.",
+    hardeningCheck: "Keep ਹਾਂ at the sentence end.",
+    ownerReviewPrompt_vi: "Xác nhận bản cuối giữ mẫu Punjabi chứ không bám mẫu tiếng Anh.",
+    ownerReviewPrompt_en: "Confirm the final copy keeps Punjabi order instead of English order.",
+    finalQaCheck: "Confirm final QA catches direct English copula transfer.",
+    commonTrap: "Writing ਮੈਂ ਹਾਂ ਵਿਦਿਆਰਥੀ from the English model.",
+  },
+  {
+    id: "guard-vietnamese-transfer-explicit-subject",
+    focus: "vietnamese-transfer",
+    evidenceType: "regression",
+    audience: "vi",
+    remediationRouteId: "vietnamese-transfer-explicit-subject",
+    sourceArtifactIds: ["stress-vietnamese-transfer-explicit-subject", "proof-vietnamese-transfer-explicit-subject"],
+    guard_pa: "ਮੈਂ ਅੱਜ ਕੰਮ ਤੇ ਜਾਂਦਾ/ਜਾਂਦੀ ਹਾਂ।",
+    guard_roman: "main ajj kamm te janda/jandi haan.",
+    guard_en: "I go to work today.",
+    risk_vi: "Người học Việt có thể bỏ chủ ngữ trong bản cuối nếu ngữ cảnh quá rõ.",
+    risk_en: "Vietnamese-speaking learners may drop the subject in the final build if context feels obvious.",
+    regressionSignal: "A final export omits the explicit subject.",
+    hardeningCheck: "Keep a visible subject anchor when the task asks for it.",
+    ownerReviewPrompt_vi: "Xác nhận câu cuối đủ rõ cho người học Việt khi ôn lại.",
+    ownerReviewPrompt_en: "Confirm the final item is clear for Vietnamese-speaking learners during review.",
+    finalQaCheck: "Confirm final QA catches dropped-subject transfer.",
+    commonTrap: "Trusting context instead of writing the subject.",
+    canadaPractical: true,
+  },
+  {
+    id: "guard-postposition-human-nu",
+    focus: "postpositions",
+    evidenceType: "final-hardening",
+    audience: "both",
+    remediationRouteId: "postpositions-nu-human-object",
+    sourceArtifactIds: ["stress-postposition-human-nu", "proof-postposition-human-nu"],
+    guard_pa: "ਮੈਂ ਉਸਨੂੰ ਦੇਖਿਆ।",
+    guard_roman: "main usnu dekhia.",
+    guard_en: "I saw him/her.",
+    risk_vi: "Bản cuối vẫn có thể bỏ ਤੋਂ the human-object marker ਨੂੰ.",
+    risk_en: "The final version can still omit the human-object marker ਨੂੰ.",
+    regressionSignal: "A release sample uses a bare human object.",
+    hardeningCheck: "Use ਨੂੰ only where the object is specific and human.",
+    ownerReviewPrompt_vi: "Xác nhận hướng dẫn không khiến người học gắn ਨੂੰ cho mọi tân ngữ.",
+    ownerReviewPrompt_en: "Confirm the guidance does not attach ਨੂੰ to every object.",
+    finalQaCheck: "Confirm final QA catches omission and overuse of ਨੂੰ.",
+    commonTrap: "Copying English object marking into Punjabi.",
+  },
+  {
+    id: "guard-postposition-location-office",
+    focus: "postpositions",
+    evidenceType: "review",
+    audience: "both",
+    remediationRouteId: "postpositions-location-vich",
+    sourceArtifactIds: ["stress-postposition-location-office", "proof-postposition-location-office"],
+    guard_pa: "ਦਫ਼ਤਰ ਵਿੱਚ",
+    guard_roman: "daftar vich",
+    guard_en: "in the office",
+    risk_vi: "Bản review có thể đảo ngược danh từ và hậu giới từ.",
+    risk_en: "The review copy can reverse the noun and postposition.",
+    regressionSignal: "The phrase is rendered as a preposition before the noun.",
+    hardeningCheck: "Keep noun + ਵਿੱਚ order.",
+    ownerReviewPrompt_vi: "Kiểm tra cụm này còn dùng được trong ngữ cảnh văn phòng hoặc dịch vụ không.",
+    ownerReviewPrompt_en: "Check whether the phrase still works in office or service contexts.",
+    finalQaCheck: "Confirm final QA catches preposition-before-noun transfer.",
+    commonTrap: "Matching English phrase order instead of Punjabi order.",
+    canadaPractical: true,
+  },
+  {
+    id: "guard-agreement-possessive-book",
+    focus: "agreement",
+    evidenceType: "final-hardening",
+    audience: "both",
+    remediationRouteId: "agreement-possessive-gender",
+    sourceArtifactIds: ["stress-agreement-possessive-book", "proof-agreement-possessive-book"],
+    guard_pa: "ਮੇਰੀ ਕਿਤਾਬ ਇੱਥੇ ਹੈ।",
+    guard_roman: "meri kitab itthe hai.",
+    guard_en: "My book is here.",
+    risk_vi: "Bản cuối vẫn có thể làm sai hòa hợp sở hữu theo giới tính danh từ.",
+    risk_en: "The final version can still break possessive agreement by noun gender.",
+    regressionSignal: "A masculine possessive appears with ਕਿਤਾਬ.",
+    hardeningCheck: "Keep the possessive form aligned with the noun.",
+    ownerReviewPrompt_vi: "Xác nhận phần chỉnh sửa không xóa mất quy tắc hòa hợp cơ bản.",
+    ownerReviewPrompt_en: "Confirm the edit does not erase the basic agreement rule.",
+    finalQaCheck: "Confirm final QA catches possessive agreement errors.",
+    commonTrap: "Choosing possession by speaker gender instead of noun gender.",
+  },
+  {
+    id: "guard-agreement-perfective-roti",
+    focus: "agreement",
+    evidenceType: "regression",
+    audience: "both",
+    remediationRouteId: "agreement-perfective-ne-object",
+    sourceArtifactIds: ["stress-agreement-perfective-roti", "proof-agreement-perfective-roti"],
+    guard_pa: "ਉਸ ਨੇ ਰੋਟੀ ਖਾਧੀ।",
+    guard_roman: "us ne roti khadhi.",
+    guard_en: "He/she ate bread.",
+    risk_vi: "Mẫu hoàn chỉnh vẫn có thể mất ਨੇ hoặc đổi đuôi sai.",
+    risk_en: "The completed-action pattern can still lose ਨੇ or use the wrong ending.",
+    regressionSignal: "The final proof strips the perfective marker.",
+    hardeningCheck: "Keep ਨੇ and the agreement ending together.",
+    ownerReviewPrompt_vi: "Kiểm tra có đủ mạnh để ngăn lỗi hoàn thành quay lại không.",
+    ownerReviewPrompt_en: "Check that the item is strong enough to prevent perfective backsliding.",
+    finalQaCheck: "Confirm final QA catches missing ਨੇ in the final output.",
+    commonTrap: "Applying present-tense habits to a completed action.",
+  },
+  {
+    id: "guard-register-service-counter",
+    focus: "register-mismatch",
+    evidenceType: "export-readiness",
+    audience: "both",
+    remediationRouteId: "register-service-counter-politeness",
+    sourceArtifactIds: ["stress-register-service-counter", "proof-register-service-counter"],
+    guard_pa: "ਕਿਰਪਾ ਕਰਕੇ ਮੈਨੂੰ ਫਾਰਮ ਦੇ ਦਿਓ ਜੀ।",
+    guard_roman: "kirpa karke mainu form de dio ji.",
+    guard_en: "Please give me the form.",
+    risk_vi: "Bản cuối có thể hạ mức lịch sự của quầy dịch vụ xuống quá thấp.",
+    risk_en: "The final build can drop the service-counter politeness level too low.",
+    regressionSignal: "A command appears without ਕਿਰਪਾ ਕਰਕੇ or ਜੀ.",
+    hardeningCheck: "Keep the service request polite and office-safe.",
+    ownerReviewPrompt_vi: "Xác nhận câu dùng được cho văn phòng, thư viện, hoặc quầy dịch vụ.",
+    ownerReviewPrompt_en: "Confirm the sentence is usable for offices, libraries, or service counters.",
+    finalQaCheck: "Confirm final QA catches casual command wording.",
+    commonTrap: "Using classroom-short commands in formal settings.",
+    canadaPractical: true,
+  },
+  {
+    id: "guard-canada-library-card",
+    focus: "canada-practical-phrase-gaps",
+    evidenceType: "final-hardening",
+    audience: "both",
+    remediationRouteId: "canada-practical-library-card",
+    sourceArtifactIds: ["stress-canada-library-card", "proof-canada-library-card"],
+    guard_pa: "ਮੈਂ ਲਾਇਬ੍ਰੇਰੀ ਕਾਰਡ ਬਣਵਾਉਣਾ ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ।",
+    guard_roman: "main library card banvauna chahunda/chahundi haan.",
+    guard_en: "I want to get a library card made.",
+    risk_vi: "Cụm thư viện vẫn có thể thiếu tính dùng được sau khi biên tập.",
+    risk_en: "The library phrase can still lose real-world usefulness after editing.",
+    regressionSignal: "The export leaves only isolated vocabulary.",
+    hardeningCheck: "Keep the full request sentence intact.",
+    ownerReviewPrompt_vi: "Xác nhận câu đủ thực dụng cho dịch vụ thư viện ở Canada.",
+    ownerReviewPrompt_en: "Confirm the sentence stays practical for Canadian library services.",
+    finalQaCheck: "Confirm final QA keeps the practical library scenario intact.",
+    commonTrap: "Having the noun but not the request.",
+    canadaPractical: true,
+  },
+  {
+    id: "guard-canada-application-deadline",
+    focus: "canada-practical-phrase-gaps",
+    evidenceType: "review",
+    audience: "both",
+    remediationRouteId: "canada-practical-application-deadline",
+    sourceArtifactIds: ["stress-canada-application-deadline", "proof-canada-application-deadline"],
+    guard_pa: "ਕਿਰਪਾ ਕਰਕੇ ਦੱਸੋ, ਇਹ ਅਰਜ਼ੀ ਕਦੋਂ ਤੱਕ ਜਮ੍ਹਾਂ ਕਰਨੀ ਹੈ?",
+    guard_roman: "kirpa karke dasso, ih arzi kadon takk jammha karni hai?",
+    guard_en: "Please tell me, by when do I need to submit this application?",
+    risk_vi: "Bản review có thể làm mờ mốc hạn nộp hồ sơ.",
+    risk_en: "The review copy can blur the application deadline question.",
+    regressionSignal: "The deadline phrase disappears from the sentence.",
+    hardeningCheck: "Keep ਕਦੋਂ ਤੱਕ in the final export.",
+    ownerReviewPrompt_vi: "Kiểm tra câu còn dùng được cho biểu mẫu hoặc hồ sơ không.",
+    ownerReviewPrompt_en: "Check whether the sentence still works for forms or applications.",
+    finalQaCheck: "Confirm final QA catches missing deadline wording.",
+    commonTrap: "Remembering ਅਰਜ਼ੀ but not the due-date question.",
+    canadaPractical: true,
+  },
+  {
+    id: "guard-canada-clinic-appointment",
+    focus: "canada-practical-phrase-gaps",
+    evidenceType: "final-hardening",
+    audience: "both",
+    remediationRouteId: "canada-practical-clinic-appointment",
+    sourceArtifactIds: ["stress-canada-clinic-appointment", "proof-canada-clinic-appointment"],
+    guard_pa: "ਮੈਨੂੰ ਡਾਕਟਰ ਨਾਲ ਅਪਾਇੰਟਮੈਂਟ ਲੈਣੀ ਹੈ।",
+    guard_roman: "mainu daktar nal appointment laini hai.",
+    guard_en: "I need to make an appointment with a doctor.",
+    risk_vi: "Cụm y tế có thể bị giản lược thành từ vay mượn rời rạc.",
+    risk_en: "The clinic phrase can be reduced to isolated loanwords.",
+    regressionSignal: "The export drops the full request frame.",
+    hardeningCheck: "Keep ਨਾਲ and the full need statement.",
+    ownerReviewPrompt_vi: "Xác nhận câu chỉ hỗ trợ học tập, không thành tư vấn y tế.",
+    ownerReviewPrompt_en: "Confirm the sentence is study support and not medical advice.",
+    finalQaCheck: "Confirm final QA preserves practical clinic wording without audio or scoring dependencies.",
+    commonTrap: "Using only the English loanword without Punjabi structure.",
+    canadaPractical: true,
+  },
+];

@@ -1,0 +1,362 @@
+// src/languages/punjabi/remediationCrossCheckSamples.ts
+//
+// Punjabi remediation cross-check samples for Wave 34. Gurmukhi is primary;
+// romanization is support only. These samples are study support only, not
+// official placement or certification. Native review is deferred. Shahmukhi is
+// awareness only, not a full course. This is not A11 integration.
+
+export type PunjabiCrossCheckFocus =
+  | "script-confusion"
+  | "romanization-dependence"
+  | "word-order"
+  | "postpositions"
+  | "agreement"
+  | "register-mismatch"
+  | "vietnamese-transfer"
+  | "english-transfer"
+  | "canada-practical-recovery";
+
+export type PunjabiCrossCheckKind =
+  | "cross-check"
+  | "verification"
+  | "pre-integration"
+  | "canada-recovery";
+
+export interface PunjabiRemediationCrossCheckSample {
+  id: string;
+  focus: PunjabiCrossCheckFocus;
+  checkType: PunjabiCrossCheckKind;
+  audience: "vi" | "en" | "both";
+  routeId: string;
+  sourceArtifactIds: string[];
+  fix_pa: string;
+  fix_roman?: string;
+  fix_en: string;
+  recovery_pa: string;
+  recovery_roman?: string;
+  recovery_en: string;
+  why_vi: string;
+  why_en: string;
+  crossCheck_vi: string;
+  crossCheck_en: string;
+  verificationCheck: string;
+  commonTrap: string;
+  canadaPractical?: boolean;
+}
+
+export const PUNJABI_REMEDIATION_CROSS_CHECK_SAMPLES_NOTICE =
+  "Wave 34 cross-check samples only; not A11 integration. Study support only, not official placement or certification. Native review deferred. Shahmukhi is awareness only, not a full course.";
+
+export const PUNJABI_CROSS_CHECK_FOCI: readonly PunjabiCrossCheckFocus[] = [
+  "script-confusion",
+  "romanization-dependence",
+  "word-order",
+  "postpositions",
+  "agreement",
+  "register-mismatch",
+  "vietnamese-transfer",
+  "english-transfer",
+  "canada-practical-recovery",
+] as const;
+
+export const PUNJABI_CROSS_CHECK_TYPES: readonly PunjabiCrossCheckKind[] = [
+  "cross-check",
+  "verification",
+  "pre-integration",
+  "canada-recovery",
+] as const;
+
+export const punjabiRemediationCrossCheckSamples: PunjabiRemediationCrossCheckSample[] = [
+  {
+    id: "crosscheck-script-b-p-bus",
+    focus: "script-confusion",
+    checkType: "cross-check",
+    audience: "both",
+    routeId: "route-script-babba-pappa",
+    sourceArtifactIds: ["import-script-b-p-transit", "merge-script-b-p-transit"],
+    fix_pa: "ਬੱਸ",
+    fix_roman: "bas",
+    fix_en: "bus",
+    recovery_pa: "ਬੱਸ ਅੱਡਾ ਕਿੱਥੇ ਹੈ?",
+    recovery_roman: "bas adda kitthe hai?",
+    recovery_en: "Where is the bus stand?",
+    why_vi: "Nếu còn lẫn ਬ với ਪ, câu phục hồi đi xe buýt sẽ không đáng tin.",
+    why_en: "If ਬ is still confused with ਪ, the bus recovery phrase is not reliable.",
+    crossCheck_vi: "Đọc đúng ਬੱਸ trước rồi dùng cả câu hỏi bến xe buýt.",
+    crossCheck_en: "Read ਬੱਸ correctly first, then use the full bus-stand question.",
+    verificationCheck: "Confirm the letter fix connects to the Canada transit phrase.",
+    commonTrap: "Guessing from bus context instead of checking the Gurmukhi letter.",
+    canadaPractical: true,
+  },
+  {
+    id: "crosscheck-script-vowel-help",
+    focus: "script-confusion",
+    checkType: "verification",
+    audience: "both",
+    routeId: "route-script-vowel-signs",
+    sourceArtifactIds: ["import-script-vowel-help", "merge-script-vowel-help"],
+    fix_pa: "ਕੀ",
+    fix_roman: "ki",
+    fix_en: "question marker/do",
+    recovery_pa: "ਕੀ ਤੁਹਾਨੂੰ ਮਦਦ ਚਾਹੀਦੀ ਹੈ?",
+    recovery_roman: "ki tuhanu madad chahidi hai?",
+    recovery_en: "Do you need help?",
+    why_vi: "Dấu ੀ trong ਕੀ cần được đọc đúng trước khi dùng câu hỏi trợ giúp.",
+    why_en: "The ੀ sign in ਕੀ must be read before using the help question.",
+    crossCheck_vi: "Kiểm tra dấu nguyên âm rồi nối với câu trợ giúp tại quầy dịch vụ.",
+    crossCheck_en: "Check the vowel sign, then connect it to the service-help phrase.",
+    verificationCheck: "Confirm the vowel-sign fix survives in the recovery phrase.",
+    commonTrap: "Treating vowel signs as decoration.",
+    canadaPractical: true,
+  },
+  {
+    id: "crosscheck-romanization-help",
+    focus: "romanization-dependence",
+    checkType: "pre-integration",
+    audience: "both",
+    routeId: "romanization-read-gurmukhi-first",
+    sourceArtifactIds: ["import-romanization-gurmukhi-first", "merge-romanization-gurmukhi-first"],
+    fix_pa: "ਮੈਨੂੰ ਮਦਦ ਚਾਹੀਦੀ ਹੈ।",
+    fix_roman: "mainu madad chahidi hai.",
+    fix_en: "I need help.",
+    recovery_pa: "ਕਿਰਪਾ ਕਰਕੇ ਮੈਨੂੰ ਮਦਦ ਕਰੋ।",
+    recovery_roman: "kirpa karke mainu madad karo.",
+    recovery_en: "Please help me.",
+    why_vi: "Nếu chỉ đọc romanization, người học chưa sẵn sàng dùng câu trợ giúp Gurmukhi.",
+    why_en: "If learners only read romanization, they are not ready to use the Gurmukhi help phrase.",
+    crossCheck_vi: "Đọc Gurmukhi trước, sau đó dùng câu yêu cầu giúp đỡ lịch sự.",
+    crossCheck_en: "Read Gurmukhi first, then use the polite help request.",
+    verificationCheck: "Confirm romanization remains support and the recovery line is Gurmukhi-primary.",
+    commonTrap: "Using romanization as the main reading layer.",
+    canadaPractical: true,
+  },
+  {
+    id: "crosscheck-shahmukhi-awareness-scope",
+    focus: "romanization-dependence",
+    checkType: "verification",
+    audience: "both",
+    routeId: "gurmukhi-shahmukhi-awareness",
+    sourceArtifactIds: ["import-shahmukhi-awareness-scope", "merge-shahmukhi-awareness-scope"],
+    fix_pa: "ਅਸੀਂ ਗੁਰਮੁਖੀ ਪੜ੍ਹਦੇ ਹਾਂ।",
+    fix_roman: "asi gurmukhi parhde haan.",
+    fix_en: "We study Gurmukhi.",
+    recovery_pa: "ਇਹ ਗੁਰਮੁਖੀ ਅਭਿਆਸ ਹੈ।",
+    recovery_roman: "ih gurmukhi abhyas hai.",
+    recovery_en: "This is Gurmukhi practice.",
+    why_vi: "Phạm vi cần giữ Gurmukhi chính; Shahmukhi chỉ là nhận biết.",
+    why_en: "The scope must keep Gurmukhi primary; Shahmukhi is awareness only.",
+    crossCheck_vi: "Xác nhận câu phục hồi không mở thành khóa Shahmukhi đầy đủ.",
+    crossCheck_en: "Confirm the recovery line does not open a full Shahmukhi course.",
+    verificationCheck: "Confirm Shahmukhi is mentioned only as awareness, not a full course.",
+    commonTrap: "Letting awareness notes become a second script syllabus.",
+  },
+  {
+    id: "crosscheck-word-order-appointment",
+    focus: "word-order",
+    checkType: "canada-recovery",
+    audience: "both",
+    routeId: "canada-practical-booking-appointment",
+    sourceArtifactIds: ["import-word-order-appointment-time", "merge-word-order-appointment-time"],
+    fix_pa: "ਕਿਹੜੇ ਵੇਲੇ ਹੈ?",
+    fix_roman: "kede vele hai?",
+    fix_en: "what time is it?",
+    recovery_pa: "ਮੇਰੀ ਅਪਾਇੰਟਮੈਂਟ ਕਿਹੜੇ ਵੇਲੇ ਹੈ?",
+    recovery_roman: "meri appointment kede vele hai?",
+    recovery_en: "What time is my appointment?",
+    why_vi: "Trật tự câu hỏi Punjabi cần nối trực tiếp với tình huống đặt lịch.",
+    why_en: "Punjabi question order needs to connect directly to appointment booking.",
+    crossCheck_vi: "Giữ cụm hỏi giờ ở cuối câu đặt lịch.",
+    crossCheck_en: "Keep the time question phrase at the end of the appointment line.",
+    verificationCheck: "Confirm the word-order fix works inside the Canada appointment phrase.",
+    commonTrap: "Borrowing English question order.",
+    canadaPractical: true,
+  },
+  {
+    id: "crosscheck-word-order-bank",
+    focus: "word-order",
+    checkType: "cross-check",
+    audience: "both",
+    routeId: "canada-practical-open-account",
+    sourceArtifactIds: ["import-canada-bank-account", "merge-canada-bank-account"],
+    fix_pa: "ਖਾਤਾ ਖੋਲ੍ਹਣਾ ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ",
+    fix_roman: "khata kholna chahunda/chahundi haan",
+    fix_en: "want to open an account",
+    recovery_pa: "ਮੈਂ ਖਾਤਾ ਖੋਲ੍ਹਣਾ ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ।",
+    recovery_roman: "main khata kholna chahunda/chahundi haan.",
+    recovery_en: "I want to open an account.",
+    why_vi: "Cụm động từ Punjabi phải giữ thứ tự tự nhiên trong câu ngân hàng.",
+    why_en: "The Punjabi verb phrase must keep natural order in the banking request.",
+    crossCheck_vi: "Nối sửa lỗi trật tự động từ với câu mở tài khoản.",
+    crossCheck_en: "Connect the verb-order fix to the account-opening sentence.",
+    verificationCheck: "Confirm the recovery phrase keeps the verb phrase before ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ.",
+    commonTrap: "Copying English request order at the bank counter.",
+    canadaPractical: true,
+  },
+  {
+    id: "crosscheck-postposition-human-nu",
+    focus: "postpositions",
+    checkType: "verification",
+    audience: "both",
+    routeId: "postpositions-nu-human-object",
+    sourceArtifactIds: ["import-postposition-human-nu", "merge-postposition-human-nu"],
+    fix_pa: "ਉਸਨੂੰ",
+    fix_roman: "usnu",
+    fix_en: "him/her with ਨੂੰ",
+    recovery_pa: "ਕੀ ਤੁਸੀਂ ਉਸਨੂੰ ਫੋਨ ਕਰ ਸਕਦੇ ਹੋ?",
+    recovery_roman: "ki tusi usnu phone kar sakde ho?",
+    recovery_en: "Can you call him/her?",
+    why_vi: "ਨੂੰ với người cụ thể cần xuất hiện trong câu phục hồi thực tế.",
+    why_en: "ਨੂੰ with a specific person must appear in the practical recovery phrase.",
+    crossCheck_vi: "Kiểm tra marker ਨੂੰ trước khi dùng câu nhờ gọi điện.",
+    crossCheck_en: "Check ਨੂੰ before using the call-request phrase.",
+    verificationCheck: "Confirm the postposition fix connects to the Canada service request.",
+    commonTrap: "Dropping ਨੂੰ because English has no matching marker.",
+    canadaPractical: true,
+  },
+  {
+    id: "crosscheck-postposition-location-office",
+    focus: "postpositions",
+    checkType: "pre-integration",
+    audience: "both",
+    routeId: "postpositions-location-vich",
+    sourceArtifactIds: ["import-postposition-location-office", "merge-postposition-location-office"],
+    fix_pa: "ਦਫ਼ਤਰ ਵਿੱਚ",
+    fix_roman: "daftar vich",
+    fix_en: "in the office",
+    recovery_pa: "ਦਫ਼ਤਰ ਵਿੱਚ ਮਦਦ ਮਿਲੇਗੀ।",
+    recovery_roman: "daftar vich madad milegi.",
+    recovery_en: "Help will be available in the office.",
+    why_vi: "Hậu giới từ ਵਿੱਚ cần theo sau danh từ trong câu địa điểm.",
+    why_en: "The postposition ਵਿੱਚ must follow the noun in the location phrase.",
+    crossCheck_vi: "Nối sửa lỗi danh từ + ਵਿੱਚ với câu hỏi hoặc chỉ dẫn văn phòng.",
+    crossCheck_en: "Connect noun + ਵਿੱਚ to an office help or direction phrase.",
+    verificationCheck: "Confirm the recovery phrase preserves noun plus postposition order.",
+    commonTrap: "Putting the location marker before the noun like English.",
+    canadaPractical: true,
+  },
+  {
+    id: "crosscheck-agreement-book",
+    focus: "agreement",
+    checkType: "cross-check",
+    audience: "both",
+    routeId: "agreement-possessive-gender",
+    sourceArtifactIds: ["import-agreement-possessive-book", "merge-agreement-possessive-book"],
+    fix_pa: "ਮੇਰੀ ਕਿਤਾਬ",
+    fix_roman: "meri kitab",
+    fix_en: "my book",
+    recovery_pa: "ਮੇਰੀ ਕਿਤਾਬ ਲਾਇਬ੍ਰੇਰੀ ਵਿੱਚ ਹੈ।",
+    recovery_roman: "meri kitab library vich hai.",
+    recovery_en: "My book is in the library.",
+    why_vi: "ਮੇਰੀ phải khớp với ਕਿਤਾਬ trước khi dùng câu thư viện.",
+    why_en: "ਮੇਰੀ must agree with ਕਿਤਾਬ before the library sentence is used.",
+    crossCheck_vi: "Xác nhận sửa lỗi sở hữu nối đúng với câu thư viện thực tế.",
+    crossCheck_en: "Confirm the possessive fix connects to the practical library sentence.",
+    verificationCheck: "Confirm the recovery phrase keeps feminine possessive agreement.",
+    commonTrap: "Choosing possessives by speaker gender.",
+    canadaPractical: true,
+  },
+  {
+    id: "crosscheck-agreement-roti",
+    focus: "agreement",
+    checkType: "verification",
+    audience: "both",
+    routeId: "gender-number-perfective-roti",
+    sourceArtifactIds: ["import-agreement-perfective-roti", "merge-agreement-perfective-roti"],
+    fix_pa: "ਰੋਟੀ ਖਾਧੀ",
+    fix_roman: "roti khaadhi",
+    fix_en: "ate roti",
+    recovery_pa: "ਮੈਂ ਰੋਟੀ ਖਾਧੀ ਹੈ।",
+    recovery_roman: "main roti khaadhi hai.",
+    recovery_en: "I have eaten roti.",
+    why_vi: "ਖਾਧੀ cần khớp với ਰੋਟੀ trước khi dùng câu sinh hoạt.",
+    why_en: "ਖਾਧੀ must match ਰੋਟੀ before the daily-life phrase is used.",
+    crossCheck_vi: "Nối sửa lỗi hòa hợp với câu phục hồi về ăn uống.",
+    crossCheck_en: "Connect the agreement fix to the food-related recovery phrase.",
+    verificationCheck: "Confirm the recovery phrase keeps object-based agreement.",
+    commonTrap: "Using one perfective ending for every noun.",
+  },
+  {
+    id: "crosscheck-register-service-help",
+    focus: "register-mismatch",
+    checkType: "canada-recovery",
+    audience: "both",
+    routeId: "register-soften-service-requests",
+    sourceArtifactIds: ["import-register-tusi-service", "dryrun-register-soften-service"],
+    fix_pa: "ਤੁਸੀਂ",
+    fix_roman: "tusi",
+    fix_en: "you (polite)",
+    recovery_pa: "ਕਿਰਪਾ ਕਰਕੇ ਮੈਨੂੰ ਮਦਦ ਕਰੋ।",
+    recovery_roman: "kirpa karke mainu madad karo.",
+    recovery_en: "Please help me.",
+    why_vi: "Giọng lịch sự cần nối với câu yêu cầu trợ giúp ở quầy dịch vụ.",
+    why_en: "Polite register must connect to service-counter help requests.",
+    crossCheck_vi: "Dùng giọng lịch sự rồi thêm ਕਿਰਪਾ ਕਰਕੇ cho yêu cầu.",
+    crossCheck_en: "Use polite register and add ਕਿਰਪਾ ਕਰਕੇ for the request.",
+    verificationCheck: "Confirm the register fix connects to a polite Canada service phrase.",
+    commonTrap: "Using familiar or blunt wording with strangers.",
+    canadaPractical: true,
+  },
+  {
+    id: "crosscheck-vietnamese-subject-work",
+    focus: "vietnamese-transfer",
+    checkType: "pre-integration",
+    audience: "vi",
+    routeId: "vietnamese-transfer-explicit-subject",
+    sourceArtifactIds: ["import-vietnamese-explicit-subject-work", "merge-vietnamese-explicit-subject-work"],
+    fix_pa: "ਮੈਂ",
+    fix_roman: "main",
+    fix_en: "I",
+    recovery_pa: "ਮੈਂ ਅੱਜ ਕੰਮ ਤੇ ਜਾਂਦਾ/ਜਾਂਦੀ ਹਾਂ।",
+    recovery_roman: "main ajj kamm te janda/jandi haan.",
+    recovery_en: "I go to work today.",
+    why_vi: "Người học Việt cần giữ chủ ngữ rõ khi câu phục hồi yêu cầu người nói.",
+    why_en: "Vietnamese-speaking learners need an explicit subject when the recovery line names the speaker.",
+    crossCheck_vi: "Đừng lược ਮੈਂ; nối sửa lỗi với câu đi làm ở Canada.",
+    crossCheck_en: "Do not drop ਮੈਂ; connect the fix to the work commute phrase.",
+    verificationCheck: "Confirm the Vietnamese-transfer fix keeps the subject in the recovery phrase.",
+    commonTrap: "Trusting context instead of writing the subject.",
+    canadaPractical: true,
+  },
+  {
+    id: "crosscheck-english-copula-student",
+    focus: "english-transfer",
+    checkType: "verification",
+    audience: "en",
+    routeId: "english-transfer-am-is-are",
+    sourceArtifactIds: ["import-english-copula-final", "merge-english-copula-final"],
+    fix_pa: "ਮੈਂ ਵਿਦਿਆਰਥੀ ਹਾਂ।",
+    fix_roman: "main vidyarthi haan.",
+    fix_en: "I am a student.",
+    recovery_pa: "ਮੈਂ ਨਵਾਂ ਵਿਦਿਆਰਥੀ ਹਾਂ।",
+    recovery_roman: "main nava vidyarthi haan.",
+    recovery_en: "I am a new student.",
+    why_vi: "Người học tiếng Anh cần giữ ਹਾਂ ở cuối khi giới thiệu bản thân.",
+    why_en: "English-speaking learners need to keep ਹਾਂ at the end when introducing themselves.",
+    crossCheck_vi: "Nối sửa lỗi copula với câu giới thiệu ở trường hoặc lớp.",
+    crossCheck_en: "Connect the copula fix to a school or class introduction.",
+    verificationCheck: "Confirm the recovery phrase does not copy English copula order.",
+    commonTrap: "Writing ਮੈਂ ਹਾਂ ਵਿਦਿਆਰਥੀ from English order.",
+    canadaPractical: true,
+  },
+  {
+    id: "crosscheck-canada-application-deadline",
+    focus: "canada-practical-recovery",
+    checkType: "canada-recovery",
+    audience: "both",
+    routeId: "service-phrase-application-deadline",
+    sourceArtifactIds: ["import-service-application-deadline", "merge-service-application-deadline"],
+    fix_pa: "ਅਰਜ਼ੀ ਦੀ ਆਖਰੀ ਮਿਤੀ",
+    fix_roman: "arzi di akhri miti",
+    fix_en: "application deadline",
+    recovery_pa: "ਅਰਜ਼ੀ ਦੀ ਆਖਰੀ ਮਿਤੀ ਕਦੋਂ ਹੈ?",
+    recovery_roman: "arzi di akhri miti kado hai?",
+    recovery_en: "When is the application deadline?",
+    why_vi: "Câu phục hồi Canada cần giữ cả 'đơn' và 'hạn chót'.",
+    why_en: "The Canada recovery phrase must keep both application and deadline terms.",
+    crossCheck_vi: "Xác nhận sửa lỗi từ vựng thủ tục nối với câu hỏi hạn chót.",
+    crossCheck_en: "Confirm the procedure vocabulary fix connects to the deadline question.",
+    verificationCheck: "Confirm the recovery phrase stays procedure-ready before integration.",
+    commonTrap: "Asking only about time and losing the application noun.",
+    canadaPractical: true,
+  },
+];

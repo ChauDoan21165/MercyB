@@ -1,0 +1,365 @@
+// src/languages/punjabi/finalRemediationRouting.ts
+//
+// Punjabi final remediation routing for app-side readiness gates. Gurmukhi is
+// primary; romanization is included where useful. These routes are study
+// support only, not official placement or certification. Native review is
+// deferred.
+
+export type PunjabiFinalRouteFocus =
+  | "script-support"
+  | "romanization-support"
+  | "word-order"
+  | "postpositions"
+  | "agreement"
+  | "register-support"
+  | "transfer-repair"
+  | "canada-practical-repair";
+
+export type PunjabiReadinessGate = "hold" | "guided" | "ready";
+
+export type PunjabiFinalRouteAudience = "vi" | "en" | "both";
+
+export interface PunjabiFinalRemediationRoute {
+  id: string;
+  focus: PunjabiFinalRouteFocus;
+  audience: PunjabiFinalRouteAudience;
+  readinessGate: PunjabiReadinessGate;
+  observedError: string;
+  readinessCheck: string;
+  remediationBankRef: string;
+  reviewLoop: string;
+  scriptSupport: string;
+  registerSupport: string;
+  repairTask_vi: string;
+  repairTask_en: string;
+  model_pa: string;
+  model_roman?: string;
+  model_en: string;
+  explanation_vi: string;
+  explanation_en: string;
+  commonTrap?: string;
+  canadaPractical?: boolean;
+}
+
+export const PUNJABI_FINAL_REMEDIATION_NOTICE =
+  "Study support only; not official placement or certification. Native review deferred. Shahmukhi is awareness only, not a full course. This is Wave 11 only, not A11 integration.";
+
+export const PUNJABI_FINAL_ROUTE_FOCI: readonly PunjabiFinalRouteFocus[] = [
+  "script-support",
+  "romanization-support",
+  "word-order",
+  "postpositions",
+  "agreement",
+  "register-support",
+  "transfer-repair",
+  "canada-practical-repair",
+] as const;
+
+export const PUNJABI_READINESS_GATES: readonly PunjabiReadinessGate[] = [
+  "hold",
+  "guided",
+  "ready",
+] as const;
+
+export const PUNJABI_FINAL_ROUTE_AUDIENCES: readonly PunjabiFinalRouteAudience[] = [
+  "vi",
+  "en",
+  "both",
+] as const;
+
+export const punjabiFinalRemediationRouting: PunjabiFinalRemediationRoute[] = [
+  {
+    id: "final-script-b-p-hold",
+    focus: "script-support",
+    audience: "both",
+    readinessGate: "hold",
+    observedError: "Learner reads ਬੱਸ as ਪੱਸ in a transit sign.",
+    readinessCheck: "Can distinguish ਬ/ਪ in five Gurmukhi words without romanization.",
+    remediationBankRef: "gurmukhi-pair-babba-pappa",
+    reviewLoop: "Repeat minimal-letter drill, then retry a new Canada transit sign after 24 hours.",
+    scriptSupport: "Large Gurmukhi letter contrast; romanization hidden until after attempt.",
+    registerSupport: "Neutral; do not add register complexity during script repair.",
+    repairTask_vi: "Khoanh ਬ trong 10 từ rồi đọc câu mẫu không nhìn romanization.",
+    repairTask_en: "Circle ਬ in 10 words, then read the model sentence without romanization.",
+    model_pa: "ਬੱਸ ਅੱਡਾ ਕਿੱਥੇ ਹੈ?",
+    model_roman: "bas adda kitthe hai?",
+    model_en: "Where is the bus stand?",
+    explanation_vi: "Chưa nên chuyển sang đọc đoạn dài nếu còn nhầm chữ cơ bản.",
+    explanation_en: "Do not move to longer reading while basic letter confusion remains.",
+    commonTrap: "Guessing from context instead of reading Gurmukhi.",
+    canadaPractical: true,
+  },
+  {
+    id: "final-script-vowel-guided",
+    focus: "script-support",
+    audience: "both",
+    readinessGate: "guided",
+    observedError: "Learner skips ੀ, ੁ, or ੇ in short words.",
+    readinessCheck: "Can name the vowel sign before reading the full word.",
+    remediationBankRef: "gurmukhi-vowel-sign-ee",
+    reviewLoop: "Five isolated words, then two short questions with the same vowel sign.",
+    scriptSupport: "Highlight vowel signs in Gurmukhi; fade highlights after success.",
+    registerSupport: "Neutral question frames only.",
+    repairTask_vi: "Gạch chân dấu nguyên âm trong câu rồi mới đọc nghĩa.",
+    repairTask_en: "Underline the vowel sign in the sentence before reading for meaning.",
+    model_pa: "ਕੀ ਤੁਹਾਨੂੰ ਮਦਦ ਚਾਹੀਦੀ ਹੈ?",
+    model_roman: "ki tuhanu madad chahidi hai?",
+    model_en: "Do you need help?",
+    explanation_vi: "Dấu nguyên âm là một phần của chữ, nên cần đọc trước khi đoán nghĩa.",
+    explanation_en: "The vowel sign is part of the spelling, so read it before guessing meaning.",
+  },
+  {
+    id: "final-romanization-hold",
+    focus: "romanization-support",
+    audience: "both",
+    readinessGate: "hold",
+    observedError: "Learner can read romanization but not the Gurmukhi sentence.",
+    readinessCheck: "Reads three familiar Gurmukhi survival phrases with romanization hidden.",
+    remediationBankRef: "romanization-read-gurmukhi-first",
+    reviewLoop: "Gurmukhi-first attempt, delayed romanization check, same phrase next session.",
+    scriptSupport: "Hide romanization by default; reveal after self-check.",
+    registerSupport: "Use simple neutral survival phrases before polite variants.",
+    repairTask_vi: "Che romanization và đọc Gurmukhi hai lần trước khi kiểm tra.",
+    repairTask_en: "Cover romanization and read Gurmukhi twice before checking.",
+    model_pa: "ਮੈਨੂੰ ਮਦਦ ਚਾਹੀਦੀ ਹੈ।",
+    model_roman: "mainu madad chahidi hai.",
+    model_en: "I need help.",
+    explanation_vi: "Romanization đang hỗ trợ quá mức; cần đặt Gurmukhi làm đường đọc chính.",
+    explanation_en: "Romanization is over-supporting; Gurmukhi must become the main reading path.",
+    commonTrap: "Treating romanization spellings as authoritative.",
+  },
+  {
+    id: "final-shahmukhi-boundary-ready",
+    focus: "romanization-support",
+    audience: "both",
+    readinessGate: "ready",
+    observedError: "Learner asks whether Shahmukhi examples should be used in Gurmukhi spelling answers.",
+    readinessCheck: "Can state that Gurmukhi is primary here and Shahmukhi is awareness only.",
+    remediationBankRef: "gurmukhi-shahmukhi-awareness",
+    reviewLoop: "One script-goal reminder before each spelling checkpoint.",
+    scriptSupport: "Label Gurmukhi examples as primary; Shahmukhi notes are separated.",
+    registerSupport: "Neutral script-awareness note.",
+    repairTask_vi: "Viết một câu nói mục tiêu chính là Gurmukhi.",
+    repairTask_en: "Write one sentence saying the primary goal is Gurmukhi.",
+    model_pa: "ਅਸੀਂ ਗੁਰਮੁਖੀ ਪੜ੍ਹਦੇ ਹਾਂ।",
+    model_roman: "asi gurmukhi parhde haan.",
+    model_en: "We study Gurmukhi.",
+    explanation_vi: "Shahmukhi chỉ là nhận biết, không phải khóa đầy đủ trong dữ liệu này.",
+    explanation_en: "Shahmukhi is awareness only, not a full course in this data.",
+  },
+  {
+    id: "final-word-order-sov-guided",
+    focus: "word-order",
+    audience: "both",
+    readinessGate: "guided",
+    observedError: "Learner places object after the verb in simple clauses.",
+    readinessCheck: "Can reorder five subject-object-verb sentences with 80% accuracy.",
+    remediationBankRef: "word-order-object-before-verb",
+    reviewLoop: "Reorder drill, then produce three new daily-life sentences.",
+    scriptSupport: "Keep Gurmukhi sentence tiles visible; romanization optional.",
+    registerSupport: "Neutral everyday statements.",
+    repairTask_vi: "Sắp xếp câu theo khung chủ ngữ + tân ngữ + động từ.",
+    repairTask_en: "Order sentences using the subject + object + verb frame.",
+    model_pa: "ਮੈਂ ਸੇਬ ਖਾਂਦਾ ਹਾਂ।",
+    model_roman: "main seb khanda haan.",
+    model_en: "I eat an apple.",
+    explanation_vi: "Lỗi này thường đến từ trật tự tiếng Việt hoặc tiếng Anh.",
+    explanation_en: "This error often comes from Vietnamese or English word order.",
+  },
+  {
+    id: "final-english-auxiliary-hold",
+    focus: "transfer-repair",
+    audience: "en",
+    readinessGate: "hold",
+    observedError: "Learner writes ਮੈਂ ਹਾਂ ਵਿਦਿਆਰਥੀ.",
+    readinessCheck: "Can produce ਮੈਂ X ਹਾਂ for identity statements without prompting.",
+    remediationBankRef: "english-transfer-am-is-are",
+    reviewLoop: "Ten auxiliary-final rewrites, then mixed adjective/location sentences.",
+    scriptSupport: "Show the Gurmukhi frame ਮੈਂ ___ ਹਾਂ.",
+    registerSupport: "Neutral identity statements only.",
+    repairTask_vi: "Chuyển mẫu tiếng Anh 'I am X' thành Punjabi với ਹਾਂ ở cuối.",
+    repairTask_en: "Convert English 'I am X' into Punjabi with ਹਾਂ at the end.",
+    model_pa: "ਮੈਂ ਵਿਦਿਆਰਥੀ ਹਾਂ।",
+    model_roman: "main vidyarthi haan.",
+    model_en: "I am a student.",
+    explanation_vi: "Đây là lỗi chuyển dịch tiếng Anh, không phải thiếu từ vựng.",
+    explanation_en: "This is English transfer, not a vocabulary gap.",
+  },
+  {
+    id: "final-vietnamese-subject-guided",
+    focus: "transfer-repair",
+    audience: "vi",
+    readinessGate: "guided",
+    observedError: "Learner drops the subject in written Punjabi beginner sentences.",
+    readinessCheck: "Can add ਮੈਂ, ਉਹ, or ਅਸੀਂ to five written sentences.",
+    remediationBankRef: "vietnamese-transfer-topic-drop",
+    reviewLoop: "Subject recovery drill, then three daily-routine sentences next session.",
+    scriptSupport: "Gurmukhi subject options remain visible.",
+    registerSupport: "Neutral written sentence practice.",
+    repairTask_vi: "Trước khi viết, hỏi 'ai làm?' rồi thêm chủ ngữ Punjabi.",
+    repairTask_en: "Before writing, ask 'who does it?' and add the Punjabi subject.",
+    model_pa: "ਮੈਂ ਅੱਜ ਕੰਮ ਤੇ ਜਾਂਦਾ/ਜਾਂਦੀ ਹਾਂ।",
+    model_roman: "main ajj kamm te janda/jandi haan.",
+    model_en: "I go to work today.",
+    explanation_vi: "Tiếng Việt có thể lược chủ ngữ, nhưng bài viết Punjabi cần rõ chủ ngữ.",
+    explanation_en: "Vietnamese can drop subjects, but Punjabi writing practice needs a clear subject.",
+  },
+  {
+    id: "final-postposition-nu-guided",
+    focus: "postpositions",
+    audience: "both",
+    readinessGate: "guided",
+    observedError: "Learner omits ਨੂੰ with a specific human object.",
+    readinessCheck: "Can identify when a human/specific object needs ਨੂੰ.",
+    remediationBankRef: "postpositions-nu-human-object",
+    reviewLoop: "Object sorting, sentence completion, then mixed postposition review.",
+    scriptSupport: "Highlight ਨੂੰ in Gurmukhi after the first attempt.",
+    registerSupport: "Neutral first; combine with polite requests after stable accuracy.",
+    repairTask_vi: "Phân loại tân ngữ người/xác định rồi thêm ਨੂੰ khi cần.",
+    repairTask_en: "Sort human/specific objects and add ਨੂੰ where needed.",
+    model_pa: "ਮੈਂ ਉਸਨੂੰ ਦੇਖਿਆ।",
+    model_roman: "main usnu dekhia.",
+    model_en: "I saw him/her.",
+    explanation_vi: "Tân ngữ người cụ thể thường cần hậu giới từ ਨੂੰ.",
+    explanation_en: "A specific human object often needs the postposition ਨੂੰ.",
+  },
+  {
+    id: "final-postposition-location-ready",
+    focus: "postpositions",
+    audience: "both",
+    readinessGate: "ready",
+    observedError: "Learner uses ਵਿੱਚ ਦਫ਼ਤਰ for 'in the office'.",
+    readinessCheck: "Can form noun + postposition phrases and place them inside sentences.",
+    remediationBankRef: "postpositions-location-vich",
+    reviewLoop: "Phrase swap drill, then a service-location sentence.",
+    scriptSupport: "Show Gurmukhi noun + postposition chunks.",
+    registerSupport: "Neutral; add service counter language later.",
+    repairTask_vi: "Đổi 'in/on/with X' sang X + hậu giới từ Punjabi.",
+    repairTask_en: "Convert 'in/on/with X' into Punjabi X + postposition order.",
+    model_pa: "ਦਫ਼ਤਰ ਵਿੱਚ ਲਾਈਨ ਲੰਬੀ ਹੈ।",
+    model_roman: "daftar vich line lambi hai.",
+    model_en: "The line in the office is long.",
+    explanation_vi: "Punjabi đặt hậu giới từ sau danh từ, khác tiếng Việt/Anh.",
+    explanation_en: "Punjabi places postpositions after nouns, unlike Vietnamese/English.",
+    canadaPractical: true,
+  },
+  {
+    id: "final-agreement-possessive-guided",
+    focus: "agreement",
+    audience: "both",
+    readinessGate: "guided",
+    observedError: "Learner uses ਮੇਰਾ with feminine nouns like ਕਿਤਾਬ.",
+    readinessCheck: "Can choose ਮੇਰਾ/ਮੇਰੀ/ਮੇਰੇ for familiar noun chunks.",
+    remediationBankRef: "gender-number-mera-meri",
+    reviewLoop: "Chunk matching, sentence use, delayed review with new nouns.",
+    scriptSupport: "Display noun chunks in Gurmukhi first.",
+    registerSupport: "Neutral; agreement repair before formal writing.",
+    repairTask_vi: "Ghép ਮੇਰਾ/ਮੇਰੀ/ਮੇਰੇ với danh từ quen thuộc rồi viết câu.",
+    repairTask_en: "Match ਮੇਰਾ/ਮੇਰੀ/ਮੇਰੇ with familiar nouns, then write sentences.",
+    model_pa: "ਮੇਰੀ ਕਿਤਾਬ ਮੇਜ਼ ਤੇ ਹੈ।",
+    model_roman: "meri kitaab mez te hai.",
+    model_en: "My book is on the table.",
+    explanation_vi: "Cần sửa theo cụm danh từ, không học một dạng 'my' cho mọi trường hợp.",
+    explanation_en: "Repair by noun chunks, not one universal form for 'my'.",
+  },
+  {
+    id: "final-agreement-perfective-hold",
+    focus: "agreement",
+    audience: "both",
+    readinessGate: "hold",
+    observedError: "Learner writes ਉਸ ਨੇ ਰੋਟੀ ਖਾਧਾ.",
+    readinessCheck: "Can produce familiar perfective chunks such as ਰੋਟੀ ਖਾਧੀ.",
+    remediationBankRef: "gender-number-perfective-roti",
+    reviewLoop: "Recognition drill, controlled completion, then short past-tense writing.",
+    scriptSupport: "Group noun and verb form as a Gurmukhi chunk.",
+    registerSupport: "Neutral past-tense statements.",
+    repairTask_vi: "Luyện cụm quá khứ hoàn thành với đồ ăn/uống quen thuộc.",
+    repairTask_en: "Drill perfective chunks with familiar food and drink items.",
+    model_pa: "ਉਸ ਨੇ ਰੋਟੀ ਖਾਧੀ।",
+    model_roman: "us ne roti khaadhi.",
+    model_en: "He/she ate roti.",
+    explanation_vi: "Nếu lỗi này còn lặp lại, giữ ở cổng guided/hold trước khi viết tự do.",
+    explanation_en: "If this repeats, keep the learner at guided/hold before free writing.",
+  },
+  {
+    id: "final-register-counter-hold",
+    focus: "register-support",
+    audience: "both",
+    readinessGate: "hold",
+    observedError: "Learner uses a bare command or ਤੂੰ with service staff.",
+    readinessCheck: "Can rewrite direct commands with ਕਿਰਪਾ ਕਰਕੇ and ਜੀ.",
+    remediationBankRef: "register-soften-requests",
+    reviewLoop: "Rewrite, role-play, then retry with a different public-service task.",
+    scriptSupport: "Gurmukhi polite frames with optional romanization for lower confidence readers.",
+    registerSupport: "Require polite form before marking service task ready.",
+    repairTask_vi: "Chuyển 8 mệnh lệnh thành lời nhờ lịch sự ở quầy dịch vụ.",
+    repairTask_en: "Rewrite 8 commands as polite service-counter requests.",
+    model_pa: "ਕਿਰਪਾ ਕਰਕੇ ਮੈਨੂੰ ਫਾਰਮ ਦੇ ਦਿਓ ਜੀ।",
+    model_roman: "kirpa karke mainu form de dio ji.",
+    model_en: "Please give me the form.",
+    explanation_vi: "Câu có thể đúng nghĩa nhưng vẫn chưa sẵn sàng nếu register quá thẳng.",
+    explanation_en: "Meaning may be clear, but readiness is low if the register is too blunt.",
+    commonTrap: "Assuming direct commands are neutral.",
+    canadaPractical: true,
+  },
+  {
+    id: "final-canada-library-card-ready",
+    focus: "canada-practical-repair",
+    audience: "both",
+    readinessGate: "ready",
+    observedError: "Learner says only ਲਾਇਬ੍ਰੇਰੀ ਕਾਰਡ at a service counter.",
+    readinessCheck: "Can request a card/document using a complete polite frame.",
+    remediationBankRef: "public-service-library-card",
+    reviewLoop: "Frame substitution with library card, health card, and form request.",
+    scriptSupport: "Gurmukhi service nouns first; romanization after attempt.",
+    registerSupport: "Polite first-person service request.",
+    repairTask_vi: "Thay danh từ trong khung làm/được cấp giấy tờ.",
+    repairTask_en: "Swap nouns into the document/card request frame.",
+    model_pa: "ਮੈਂ ਲਾਇਬ੍ਰੇਰੀ ਕਾਰਡ ਬਣਵਾਉਣਾ ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ।",
+    model_roman: "main library card banvauna chahunda/chahundi haan.",
+    model_en: "I would like to get a library card.",
+    explanation_vi: "Danh từ riêng lẻ chưa đủ cho nhiệm vụ Canada-practical.",
+    explanation_en: "A noun alone is not enough for a Canada-practical task.",
+    canadaPractical: true,
+  },
+  {
+    id: "final-canada-application-deadline-guided",
+    focus: "canada-practical-repair",
+    audience: "both",
+    readinessGate: "guided",
+    observedError: "Learner cannot ask about an application deadline.",
+    readinessCheck: "Can combine ਕਦੋਂ ਤੱਕ, ਜਮ੍ਹਾਂ ਕਰਨੀ ਹੈ, and polite opener.",
+    remediationBankRef: "route-b2-deadline-submission",
+    reviewLoop: "Phrase drill, workplace email prompt, delayed service-counter prompt.",
+    scriptSupport: "Highlight deadline and submission phrases in Gurmukhi.",
+    registerSupport: "Use ਕਿਰਪਾ ਕਰਕੇ ਦੱਸੋ for polite information requests.",
+    repairTask_vi: "Tạo câu hỏi về hạn nộp đơn với register lịch sự.",
+    repairTask_en: "Create a polite question about an application deadline.",
+    model_pa: "ਕਿਰਪਾ ਕਰਕੇ ਦੱਸੋ, ਇਹ ਅਰਜ਼ੀ ਕਦੋਂ ਤੱਕ ਜਮ੍ਹਾਂ ਕਰਨੀ ਹੈ?",
+    model_roman: "kirpa karke dasso, ih arzi kadon takk jamma karni hai?",
+    model_en: "Please tell me, by when must this application be submitted?",
+    explanation_vi: "Tuyến này kiểm tra cả cụm hành chính, review loop, và register.",
+    explanation_en: "This route checks administrative phrase control, review loop, and register.",
+    canadaPractical: true,
+  },
+  {
+    id: "final-canada-clinic-appointment-guided",
+    focus: "canada-practical-repair",
+    audience: "both",
+    readinessGate: "guided",
+    observedError: "Learner names ਡਾਕਟਰ but cannot book an appointment.",
+    readinessCheck: "Can produce the full appointment request frame.",
+    remediationBankRef: "public-service-appointment-clinic",
+    reviewLoop: "Appointment frame, reschedule frame, then short clinic role-play.",
+    scriptSupport: "Gurmukhi frame with medical/service nouns highlighted.",
+    registerSupport: "Polite but direct clinic request.",
+    repairTask_vi: "Nói bạn cần đặt lịch hẹn với bác sĩ bằng một câu đầy đủ.",
+    repairTask_en: "Say that you need to book a doctor's appointment in one complete sentence.",
+    model_pa: "ਮੈਨੂੰ ਡਾਕਟਰ ਨਾਲ ਅਪਾਇੰਟਮੈਂਟ ਲੈਣੀ ਹੈ।",
+    model_roman: "mainu doctor naal appointment laini hai.",
+    model_en: "I need to book an appointment with a doctor.",
+    explanation_vi: "Biết danh từ ਡਾਕਟਰ chưa đủ; cần khung chức năng hoàn chỉnh.",
+    explanation_en: "Knowing ਡਾਕਟਰ is not enough; the learner needs a complete functional frame.",
+    canadaPractical: true,
+  },
+];
