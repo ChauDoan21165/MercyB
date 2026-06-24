@@ -28,11 +28,14 @@ const EXPECTED_PILOT_TAGS = [
   "vi_l1_conditional_mix",
   "vi_l1_make_vs_do",
   "vi_l1_missing_be",
+  "vi_l1_modal_perfect",
+  "vi_l1_negative_inversion",
   "vi_l1_passive_missing_be",
   "vi_l1_past_ed",
   "vi_l1_preposition_transfer",
   "vi_l1_present_perfect_vs_past",
   "vi_l1_reported_speech",
+  "vi_l1_subjunctive_were",
 ] as const;
 
 describe("rich-lessons-pilot.json shape", () => {

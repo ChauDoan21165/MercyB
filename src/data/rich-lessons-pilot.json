@@ -1766,6 +1766,384 @@
           }
         }
       ]
+    },
+    {
+      "tag": "vi_l1_modal_perfect",
+      "title": {
+        "en": "Modal + **have** + V3 — talk about the past",
+        "vi": "Modal + **have** + V3 — nói về quá khứ"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"I should did it.\" Every learner tries this — just put the modal and the past verb together, right? English has a different move: **should have done**. One extra word that changes everything.",
+          "vi": "\"I should did it.\" Bạn nào cũng thử vậy — cứ ghép modal với động từ quá khứ là xong, đúng không? Tiếng Anh có một bước khác: **should have done**. Một từ thôi mà thay đổi tất cả.",
+          "id": "\"I should did it.\" Setiap pelajar mencoba ini — tinggal gabungkan modal dan kata kerja lampau, kan? Bahasa Inggris punya langkah berbeda: **should have done**. Satu kata tambahan yang mengubah segalanya."
+        },
+        "why": {
+          "en": "Vietnamese doesn't have a dedicated structure for past speculation or regret. **Lẽ ra** or **đáng lẽ** sits before the verb and the verb stays the same — **lẽ ra tôi nên học**. English forces **modal + have + V3** to push the speculation backward in time. The modal carries the meaning; **have + V3** carries the past.",
+          "vi": "Tiếng Việt mình không có cấu trúc riêng cho suy đoán hay tiếc nuối quá khứ. **Lẽ ra** hoặc **đáng lẽ** đặt trước động từ và động từ giữ nguyên — **lẽ ra tôi nên học**. Tiếng Anh bắt buộc **modal + have + V3** để đẩy suy đoán về quá khứ. Modal mang nghĩa; **have + V3** mang thì quá khứ.",
+          "id": "Bahasa Indonesia tidak punya struktur khusus untuk spekulasi atau penyesalan masa lampau. **Seharusnya** atau **semestinya** diletakkan sebelum kata kerja dan kata kerjanya tetap sama — **seharusnya saya belajar**. Bahasa Inggris memaksa **modal + have + V3** untuk mendorong spekulasi ke masa lampau. Modal membawa makna; **have + V3** membawa waktu lampau."
+        },
+        "pattern": {
+          "en": "**modal + have + past participle (V3)**. For past regret: **should have + V3** (*I should have studied*). For past possibility: **could have + V3** (*She could have called*). For past deduction: **must have + V3** (*He must have forgotten*). For past hypothetical: **would have + V3** (*I would have helped*). The main verb NEVER goes directly after the modal in past form.",
+          "vi": "**modal + have + quá khứ phân từ (V3)**. Tiếc nuối: **should have + V3** (*I should have studied*). Khả năng quá khứ: **could have + V3** (*She could have called*). Suy đoán quá khứ: **must have + V3** (*He must have forgotten*). Giả định quá khứ: **would have + V3** (*I would have helped*). Động từ chính KHÔNG BAO GIỜ đứng trực tiếp sau modal ở dạng quá khứ.",
+          "id": "**modal + have + past participle (V3)**. Untuk penyesalan masa lalu: **should have + V3** (*I should have studied* — Seharusnya saya belajar). Untuk kemungkinan masa lalu: **could have + V3** (*She could have called* — Dia bisa saja menelepon). Untuk deduksi masa lalu: **must have + V3** (*He must have forgotten* — Dia pasti lupa). Untuk hipotesis masa lalu: **would have + V3** (*I would have helped* — Saya akan membantu). Kata kerja utama TIDAK PERNAH langsung setelah modal dalam bentuk lampau."
+        },
+        "practice": {
+          "en": "Try these aloud and feel the **have** sitting between the modal and the V3 — it's never optional. \"I should have called her yesterday.\" \"You could have told me earlier.\" \"He must have missed the bus.\" \"She might have forgotten about it.\" \"They would have come if they knew.\"",
+          "vi": "Hãy nói thành tiếng và cảm nhận **have** nằm giữa modal và V3 — không bao giờ được bỏ. \"I should have called her yesterday.\" \"You could have told me earlier.\" \"He must have missed the bus.\" \"She might have forgotten about it.\" \"They would have come if they knew.\"",
+          "id": "Coba ucapkan dengan keras dan rasakan **have** duduk di antara modal dan V3 — tidak pernah opsional. \"I should have called her yesterday.\" \"You could have told me earlier.\" \"He must have missed the bus.\" \"She might have forgotten about it.\" \"They would have come if they knew.\""
+        },
+        "takeaway": {
+          "en": "Modal about the past → **modal + have + V3**. Never put a past-tense verb directly after a modal.",
+          "vi": "Modal nói về quá khứ → **modal + have + V3**. Không bao giờ đặt động từ quá khứ trực tiếp sau modal.",
+          "id": "Modal tentang masa lalu → **modal + have + V3**. Jangan pernah meletakkan kata kerja lampau langsung setelah modal."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "I should ___ to her yesterday.",
+            "vi": "I should ___ to her yesterday."
+          },
+          "options": [
+            "call",
+            "called",
+            "have called",
+            "calling"
+          ],
+          "correctAnswer": "have called",
+          "explanation": {
+            "en": "Past regret needs **should have + V3** — the **have** is mandatory.",
+            "vi": "Tiếc nuối quá khứ cần **should have + V3** — **have** là bắt buộc.",
+            "id": "Penyesalan masa lalu butuh **should have + V3** — **have** itu wajib."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:"
+          },
+          "options": [
+            "He must have missed the bus.",
+            "He must missed the bus.",
+            "He must have miss the bus.",
+            "He must has missed the bus."
+          ],
+          "correctAnswer": "He must have missed the bus.",
+          "explanation": {
+            "en": "**must have + V3** — the modal is followed by **have** (never **has**), then the past participle.",
+            "vi": "**must have + V3** — modal đi với **have** (không bao giờ **has**), rồi đến quá khứ phân từ.",
+            "id": "**must have + V3** — modal diikuti oleh **have** (bukan **has**), lalu past participle."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: She ___ have told me earlier.",
+            "vi": "Điền vào chỗ trống: She ___ have told me earlier."
+          },
+          "options": [
+            "can",
+            "could",
+            "should to",
+            "must to"
+          ],
+          "correctAnswer": "could",
+          "explanation": {
+            "en": "Past possibility uses **could have + V3**. No **to** between the modal and **have**.",
+            "vi": "Khả năng quá khứ dùng **could have + V3**. Không có **to** giữa modal và **have**.",
+            "id": "Kemungkinan masa lalu menggunakan **could have + V3**. Tidak ada **to** di antara modal dan **have**."
+          }
+        },
+        {
+          "question": {
+            "en": "Which sentence is correct?",
+            "vi": "Câu nào đúng?"
+          },
+          "options": [
+            "I should did it yesterday.",
+            "I should have done it yesterday.",
+            "I should have did it yesterday.",
+            "I should to do it yesterday."
+          ],
+          "correctAnswer": "I should have done it yesterday.",
+          "explanation": {
+            "en": "**should have + V3**: **done** is the past participle of **do**. The modal-perfect structure never uses the simple past form.",
+            "vi": "**should have + V3**: **done** là quá khứ phân từ của **do**. Cấu trúc modal-perfect không bao giờ dùng dạng quá khứ đơn.",
+            "id": "**should have + V3**: **done** adalah past participle dari **do**. Struktur modal-perfect tidak pernah menggunakan bentuk simple past."
+          }
+        },
+        {
+          "question": {
+            "en": "They ___ have come if they had known about the party.",
+            "vi": "They ___ have come if they had known about the party."
+          },
+          "options": [
+            "will",
+            "would",
+            "would to",
+            "had"
+          ],
+          "correctAnswer": "would",
+          "explanation": {
+            "en": "Past hypothetical third conditional: **would have + V3** in the main clause.",
+            "vi": "Giả định quá khứ câu điều kiện loại 3: **would have + V3** ở mệnh đề chính.",
+            "id": "Hipotesis masa lalu conditional type 3: **would have + V3** di klausa utama."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "vi_l1_subjunctive_were",
+      "title": {
+        "en": "**If I were** — the unreal past form",
+        "vi": "**If I were** — dạng giả định không có thật"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"If I was you, I would take the job.\" Sounds close — but English has a special form for unreal situations: **If I were you**. It's one of the last grammar moves advanced learners master, and it signals C1 control.",
+          "vi": "\"If I was you, I would take the job.\" Nghe gần đúng — nhưng tiếng Anh có một dạng đặc biệt cho tình huống không có thật: **If I were you**. Đây là một trong những điểm ngữ pháp cuối cùng mà người học nâng cao mới làm chủ được, và nó thể hiện trình độ C1.",
+          "id": "\"If I was you, I would take the job.\" Kedengarannya hampir benar — tapi bahasa Inggris punya bentuk khusus untuk situasi yang tidak nyata: **If I were you**. Ini adalah salah satu poin tata bahasa terakhir yang dikuasai pelajar tingkat lanjut, dan menandakan kemampuan C1."
+        },
+        "why": {
+          "en": "Vietnamese doesn't mark a difference between real and unreal conditions in the verb form. **Nếu tôi là bạn** uses the same **là** as any other sentence. English uses **were** (not **was**) after **if** or **wish** when the situation is imagined, hypothetical, or contrary to fact — for EVERY subject, even **I**, **he**, and **she**.",
+          "vi": "Tiếng Việt mình không đánh dấu sự khác biệt giữa điều kiện có thật và không có thật ở động từ. **Nếu tôi là bạn** dùng **là** như mọi câu khác. Tiếng Anh dùng **were** (không phải **was**) sau **if** hoặc **wish** khi tình huống là tưởng tượng, giả định, hoặc trái với thực tế — cho MỌI chủ ngữ, kể cả **I**, **he**, và **she**.",
+          "id": "Bahasa Indonesia tidak menandai perbedaan antara kondisi nyata dan tidak nyata pada bentuk kata kerja. **Kalau saya jadi kamu** menggunakan kata kerja yang sama seperti kalimat biasa. Bahasa Inggris menggunakan **were** (bukan **was**) setelah **if** atau **wish** saat situasinya imajiner, hipotetis, atau bertentangan dengan fakta — untuk SEMUA subjek, bahkan **I**, **he**, dan **she**."
+        },
+        "pattern": {
+          "en": "Use **were** (not **was**) in two places: (1) After **if** in unreal present/future conditions: **If I were you**, **If she were here**, **If it were possible**. (2) After **wish** for present unreal situations: **I wish I were taller**, **He wishes he were at the beach**. The key test: if the situation is NOT true right now, use **were**.",
+          "vi": "Dùng **were** (không phải **was**) ở hai chỗ: (1) Sau **if** trong điều kiện không có thật ở hiện tại/tương lai: **If I were you**, **If she were here**, **If it were possible**. (2) Sau **wish** cho tình huống không có thật ở hiện tại: **I wish I were taller**, **He wishes he were at the beach**. Cách kiểm tra: nếu tình huống KHÔNG có thật ngay lúc này, dùng **were**.",
+          "id": "Gunakan **were** (bukan **was**) di dua tempat: (1) Setelah **if** dalam kondisi tidak nyata saat ini/masa depan: **If I were you**, **If she were here**, **If it were possible**. (2) Setelah **wish** untuk situasi tidak nyata saat ini: **I wish I were taller**, **He wishes he were at the beach**. Tes kuncinya: jika situasinya TIDAK benar saat ini, gunakan **were**."
+        },
+        "practice": {
+          "en": "Say each one out loud and notice how **were** sounds more formal and controlled than **was**: \"If I were you, I would accept.\" \"If she were here, she would agree.\" \"I wish I were better at maths.\" \"He wishes he were on holiday right now.\" \"If it were easier, everyone would do it.\"",
+          "vi": "Hãy nói thành tiếng và để ý **were** nghe trang trọng và kiểm soát hơn **was**: \"If I were you, I would accept.\" \"If she were here, she would agree.\" \"I wish I were better at maths.\" \"He wishes he were on holiday right now.\" \"If it were easier, everyone would do it.\"",
+          "id": "Ucapkan setiap kalimat dengan keras dan perhatikan bagaimana **were** terdengar lebih formal dan terkendali daripada **was**: \"If I were you, I would accept.\" \"If she were here, she would agree.\" \"I wish I were better at maths.\" \"He wishes he were on holiday right now.\" \"If it were easier, everyone would do it.\""
+        },
+        "takeaway": {
+          "en": "Unreal situation → **were** for every subject. **If I were**, **if she were**, **I wish I were** — always.",
+          "vi": "Tình huống không có thật → **were** cho mọi chủ ngữ. **If I were**, **if she were**, **I wish I were** — luôn luôn.",
+          "id": "Situasi tidak nyata → **were** untuk setiap subjek. **If I were**, **if she were**, **I wish I were** — selalu."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:"
+          },
+          "options": [
+            "If I was you, I would take the job.",
+            "If I were you, I would take the job.",
+            "If I am you, I would take the job.",
+            "If I be you, I would take the job."
+          ],
+          "correctAnswer": "If I were you, I would take the job.",
+          "explanation": {
+            "en": "Unreal condition → **were** for every subject, including **I**.",
+            "vi": "Điều kiện không có thật → **were** cho mọi chủ ngữ, kể cả **I**.",
+            "id": "Kondisi tidak nyata → **were** untuk setiap subjek, termasuk **I**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: I wish I ___ taller.",
+            "vi": "Điền vào chỗ trống: I wish I ___ taller."
+          },
+          "options": [
+            "am",
+            "was",
+            "were",
+            "be"
+          ],
+          "correctAnswer": "were",
+          "explanation": {
+            "en": "After **wish** for an unreal present situation, use **were** — even for **I**.",
+            "vi": "Sau **wish** cho tình huống không có thật ở hiện tại, dùng **were** — kể cả cho **I**.",
+            "id": "Setelah **wish** untuk situasi tidak nyata saat ini, gunakan **were** — bahkan untuk **I**."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:"
+          },
+          "options": [
+            "If she was here, she would help us.",
+            "If she were here, she would help us.",
+            "If she is here, she would help us.",
+            "If she be here, she would help us."
+          ],
+          "correctAnswer": "If she were here, she would help us.",
+          "explanation": {
+            "en": "**She is not here** → unreal → **if she were**, not **if she was**.",
+            "vi": "**Cô ấy không có ở đây** → không có thật → **if she were**, không phải **if she was**.",
+            "id": "**Dia tidak di sini** → tidak nyata → **if she were**, bukan **if she was**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: He wishes he ___ on holiday right now.",
+            "vi": "Điền vào chỗ trống: He wishes he ___ on holiday right now."
+          },
+          "options": [
+            "is",
+            "was",
+            "were",
+            "be"
+          ],
+          "correctAnswer": "were",
+          "explanation": {
+            "en": "**wish** + unreal present → **were** for all subjects, including **he**.",
+            "vi": "**wish** + không có thật ở hiện tại → **were** cho mọi chủ ngữ, kể cả **he**.",
+            "id": "**wish** + tidak nyata saat ini → **were** untuk semua subjek, termasuk **he**."
+          }
+        },
+        {
+          "question": {
+            "en": "Which sentence is correct in formal English?",
+            "vi": "Câu nào đúng trong tiếng Anh trang trọng?"
+          },
+          "options": [
+            "If it was possible, I would fly there.",
+            "If it were possible, I would fly there.",
+            "If it is possible, I would fly there.",
+            "If it be possible, I would fly there."
+          ],
+          "correctAnswer": "If it were possible, I would fly there.",
+          "explanation": {
+            "en": "**It is not possible** → unreal condition → **if it were** is the formal/correct form.",
+            "vi": "**Điều đó không khả thi** → điều kiện không có thật → **if it were** là dạng trang trọng/đúng.",
+            "id": "**Itu tidak mungkin** → kondisi tidak nyata → **if it were** adalah bentuk formal/benar."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "vi_l1_negative_inversion",
+      "title": {
+        "en": "Negative inversion — flip the subject and auxiliary",
+        "vi": "Đảo ngữ phủ định — đảo chủ ngữ và trợ động từ"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"Never I have seen such a view.\" The words are all English, but the order sounds off. That's because English has a special rule: when a negative word opens the sentence, the subject and auxiliary **swap places**.",
+          "vi": "\"Never I have seen such a view.\" Từ nào cũng là tiếng Anh, nhưng thứ tự nghe sai. Đó là vì tiếng Anh có một quy tắc đặc biệt: khi một từ phủ định mở đầu câu, chủ ngữ và trợ động từ **đổi chỗ** cho nhau.",
+          "id": "\"Never I have seen such a view.\" Semua katanya bahasa Inggris, tapi urutannya terdengar aneh. Itu karena bahasa Inggris punya aturan khusus: saat kata negatif membuka kalimat, subjek dan auxiliary **bertukar tempat**."
+        },
+        "why": {
+          "en": "Vietnamese word order is flexible — **Chưa bao giờ tôi thấy** puts the negative time word first with no structural change to the rest of the sentence. English demands inversion: the negative adverbial pulls the auxiliary to the front, and the subject follows. **Never have I seen** — not **Never I have seen**.",
+          "vi": "Tiếng Việt mình trật tự từ linh hoạt — **Chưa bao giờ tôi thấy** đặt từ phủ định lên đầu mà không thay đổi cấu trúc phần còn lại. Tiếng Anh đòi hỏi đảo ngữ: trạng từ phủ định kéo trợ động từ lên trước, và chủ ngữ theo sau. **Never have I seen** — không phải **Never I have seen**.",
+          "id": "Urutan kata bahasa Indonesia fleksibel — **Belum pernah saya melihat** menempatkan kata negatif di depan tanpa perubahan struktur di sisa kalimat. Bahasa Inggris menuntut inversi: kata keterangan negatif menarik auxiliary ke depan, dan subjek mengikuti. **Never have I seen** — bukan **Never I have seen**."
+        },
+        "pattern": {
+          "en": "Negative adverbial + auxiliary + subject + main verb. Common triggers: **Never** (*Never have I felt so alive*), **Seldom / Rarely** (*Rarely do we see such dedication*), **Not only** (*Not only did she finish, she won*), **Hardly / Scarcely** (*Hardly had I sat down when the phone rang*), **No sooner** (*No sooner had we left than it started raining*). If there's no auxiliary in the original, add **do / does / did**.",
+          "vi": "Trạng từ phủ định + trợ động từ + chủ ngữ + động từ chính. Các từ kích hoạt thường gặp: **Never** (*Never have I felt so alive*), **Seldom / Rarely** (*Rarely do we see such dedication*), **Not only** (*Not only did she finish, she won*), **Hardly / Scarcely** (*Hardly had I sat down when the phone rang*), **No sooner** (*No sooner had we left than it started raining*). Nếu câu gốc không có trợ động từ, thêm **do / does / did**.",
+          "id": "Kata keterangan negatif + auxiliary + subjek + kata kerja utama. Pemicu umum: **Never** (*Never have I felt so alive* — Belum pernah saya merasa begitu hidup), **Seldom / Rarely** (*Rarely do we see such dedication* — Jarang kita melihat dedikasi seperti itu), **Not only** (*Not only did she finish, she won* — Tidak hanya dia menyelesaikan, dia menang), **Hardly / Scarcely** (*Hardly had I sat down when the phone rang* — Baru saja saya duduk ketika telepon berdering), **No sooner** (*No sooner had we left than it started raining* — Begitu kami pergi, hujan mulai turun). Jika kalimat asli tidak punya auxiliary, tambahkan **do / does / did**."
+        },
+        "practice": {
+          "en": "Try these aloud with the inversion — the rhythm is different from normal English, and that's the point: \"Never have I felt so alive.\" \"Rarely do we see such kindness.\" \"Not only did she pass, she got the top score.\" \"Hardly had I arrived when they called my name.\" \"No sooner had we sat down than the show began.\"",
+          "vi": "Hãy nói thành tiếng với đảo ngữ — nhịp điệu khác với tiếng Anh thông thường, và đó chính là điểm nhấn: \"Never have I felt so alive.\" \"Rarely do we see such kindness.\" \"Not only did she pass, she got the top score.\" \"Hardly had I arrived when they called my name.\" \"No sooner had we sat down than the show began.\"",
+          "id": "Coba ucapkan dengan keras dengan inversi — ritmenya berbeda dari bahasa Inggris biasa, dan itulah intinya: \"Never have I felt so alive.\" \"Rarely do we see such kindness.\" \"Not only did she pass, she got the top score.\" \"Hardly had I arrived when they called my name.\" \"No sooner had we sat down than the show began.\""
+        },
+        "takeaway": {
+          "en": "Negative word opens the sentence → swap subject and auxiliary. **Never I have** → **Never have I**. Add **do/does/did** if there's no auxiliary to swap.",
+          "vi": "Từ phủ định mở đầu câu → đảo chủ ngữ và trợ động từ. **Never I have** → **Never have I**. Thêm **do/does/did** nếu không có trợ động từ để đảo.",
+          "id": "Kata negatif membuka kalimat → tukar subjek dan auxiliary. **Never I have** → **Never have I**. Tambahkan **do/does/did** jika tidak ada auxiliary untuk ditukar."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:"
+          },
+          "options": [
+            "Never I have seen such a view.",
+            "Never have I seen such a view.",
+            "Never I seen such a view.",
+            "Never seen I have such a view."
+          ],
+          "correctAnswer": "Never have I seen such a view.",
+          "explanation": {
+            "en": "**Never** opens → auxiliary **have** inverts with subject **I**: **Never have I seen**.",
+            "vi": "**Never** mở đầu → trợ động từ **have** đảo với chủ ngữ **I**: **Never have I seen**.",
+            "id": "**Never** membuka → auxiliary **have** bertukar dengan subjek **I**: **Never have I seen**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: Rarely ___ such dedication.",
+            "vi": "Điền vào chỗ trống: Rarely ___ such dedication."
+          },
+          "options": [
+            "we see",
+            "do we see",
+            "we do see",
+            "see we"
+          ],
+          "correctAnswer": "do we see",
+          "explanation": {
+            "en": "No auxiliary in the original → add **do** and invert: **do we see**.",
+            "vi": "Câu gốc không có trợ động từ → thêm **do** và đảo: **do we see**.",
+            "id": "Tidak ada auxiliary di kalimat asli → tambahkan **do** dan tukar: **do we see**."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:"
+          },
+          "options": [
+            "Not only she finished the race, she won it.",
+            "Not only did she finish the race, she won it.",
+            "Not only she did finish the race, she won it.",
+            "Not only finished she the race, she won it."
+          ],
+          "correctAnswer": "Not only did she finish the race, she won it.",
+          "explanation": {
+            "en": "**Not only** triggers inversion → **did she finish** (add **did** + invert).",
+            "vi": "**Not only** kích hoạt đảo ngữ → **did she finish** (thêm **did** + đảo).",
+            "id": "**Not only** memicu inversi → **did she finish** (tambahkan **did** + tukar)."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: Hardly ___ down when the phone rang.",
+            "vi": "Điền vào chỗ trống: Hardly ___ down when the phone rang."
+          },
+          "options": [
+            "I had sat",
+            "had I sat",
+            "I sat",
+            "did I sat"
+          ],
+          "correctAnswer": "had I sat",
+          "explanation": {
+            "en": "**Hardly** triggers inversion with the existing auxiliary **had**: **had I sat**.",
+            "vi": "**Hardly** kích hoạt đảo ngữ với trợ động từ sẵn có **had**: **had I sat**.",
+            "id": "**Hardly** memicu inversi dengan auxiliary yang sudah ada **had**: **had I sat**."
+          }
+        },
+        {
+          "question": {
+            "en": "Which sentence is correct?",
+            "vi": "Câu nào đúng?"
+          },
+          "options": [
+            "No sooner we had arrived than it started raining.",
+            "No sooner had we arrived than it started raining.",
+            "No sooner we arrived than it started raining.",
+            "No sooner did we had arrived than it started raining."
+          ],
+          "correctAnswer": "No sooner had we arrived than it started raining.",
+          "explanation": {
+            "en": "**No sooner** → invert existing auxiliary **had** with subject **we**: **had we arrived**.",
+            "vi": "**No sooner** → đảo trợ động từ **had** với chủ ngữ **we**: **had we arrived**.",
+            "id": "**No sooner** → tukar auxiliary **had** dengan subjek **we**: **had we arrived**."
+          }
+        }
+      ]
     }
   ]
 }
