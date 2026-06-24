@@ -121,6 +121,16 @@ export type WeaknessTag =
   | "hi_c2_conditional_backshift"
   | "hi_c2_register_formality"
   | "hi_c2_academic_hedging";
+  | "ur_l1_missing_be"
+  | "ur_l1_missing_article"
+  | "ur_l1_word_order"
+  | "ur_l1_plural_s"
+  | "ur_l1_past_ed"
+  | "ur_l1_3rd_person_s"
+  | "ur_l1_preposition"
+  | "ur_l1_present_perfect_vs_past"
+  | "ur_l1_conditional_mix"
+  | "ur_c2_formal_register";
 
 export type BilingualText = {
   /** English surface — may contain `**word**` markdown bolding. */
@@ -137,6 +147,8 @@ export type BilingualText = {
   ar?: string;
   /** Hindi-native English explanation — optional, for hi-native learners. */
   hi?: string;
+  /** Urdu-native English explanation — optional, for ur-native learners. */
+  ur?: string;
 };
 
 export type WeaknessEntry = {
@@ -1326,6 +1338,85 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
         en: "Arabic expresses past actions with a single past tense (الماضي). English splits them: use **past simple** when a specific past time is named (**yesterday**, **last week**, **this morning**); use **present perfect** for past actions with present relevance and no specific time.",
         vi: "Tiếng Ả Rập dùng thì quá khứ (الماضي) cho mọi hành động quá khứ. Tiếng Anh phân biệt: dùng **past simple** khi có thời gian cụ thể trong quá khứ; dùng **present perfect** khi hành động quá khứ còn liên quan đến hiện tại và không có thời gian cụ thể.",
         ar: "تستخدم اللغة العربية زمن الماضي لكل الأفعال الماضية. أما الإنجليزية فتفصل بينهما: استخدم **past simple** عند وجود زمن محدد في الماضي (**yesterday**, **last week**, **this morning**)؛ واستخدم **present perfect** للأفعال الماضية المرتبطة بالحاضر دون زمن محدد.",
+  ur_l1_missing_be: {
+      tag: "ur_l1_missing_be",
+        en: "Missing \"to be\"",
+        vi: "Thiếu động từ \"to be\"",
+        ur: "\"to be\" کا استعمال ضروری ہے",
+        en: "Urdu can drop the copula **hai** (**ہے**) when the meaning is clear — **میں خوش** (main khush) is common for 'I am happy.' English always needs **am**, **is**, or **are** before an adjective, noun, or location. Leaving out the verb sounds incomplete.",
+        vi: "Tiếng Urdu có thể bỏ động từ nối **hai** (**ہے**) khi nghĩa rõ ràng — **میں خوش** (main khush) là cách nói phổ biến nghĩa 'tôi vui.' Tiếng Anh luôn cần **am**, **is**, hoặc **are** trước tính từ, danh từ, hoặc địa điểm. Bỏ động từ làm câu nghe chưa hoàn chỉnh.",
+        ur: "اردو میں جب معنی واضح ہو تو فعل ناقص **ہے** کو چھوڑا جا سکتا ہے — **میں خوش** عام ہے۔ انگریزی میں ہمیشہ **am**، **is**، یا **are** صفت، اسم یا مقام سے پہلے درکار ہوتا ہے۔ فعل کا چھوڑنا جملے کو نامکمل بناتا ہے۔",
+      exampleWrong: "She very happy today.",
+      exampleRight: "She is very happy today.",
+      linkedRoomId: null,
+    },
+  ur_l1_missing_article: {
+      tag: "ur_l1_missing_article",
+        en: "Articles **a / an / the**",
+        vi: "Mạo từ **a / an / the**",
+        ur: "حروف تعریف **a / an / the**",
+        en: "Urdu has no definite or indefinite articles. A noun like **کتاب** (kitaab) can mean either 'a book' or 'the book' depending on context. English almost always requires **a**, **an**, or **the** before a singular countable noun — especially the first time you mention something.",
+        vi: "Tiếng Urdu không có mạo từ xác định hay không xác định. Một danh từ như **کتاب** (kitaab) có thể mang nghĩa 'một cuốn sách' hoặc 'cuốn sách đó' tuỳ ngữ cảnh. Tiếng Anh hầu như luôn cần **a**, **an**, hoặc **the** trước danh từ đếm được số ít — đặc biệt là lần đầu nhắc đến một vật.",
+        ur: "اردو میں حروف تعریف (articles) نہیں ہوتے۔ ایک اسم جیسے **کتاب** سیاق و سباق کے مطابق 'ایک کتاب' یا 'وہ کتاب' دونوں معنی دے سکتا ہے۔ انگریزی میں تقریباً ہمیشہ واحد قابل شمار اسم سے پہلے **a**، **an**، یا **the** کی ضرورت ہوتی ہے، خاص طور پر جب پہلی بار کسی چیز کا ذکر کریں۔",
+      exampleWrong: "I bought car yesterday.",
+      exampleRight: "I bought a car yesterday.",
+  ur_l1_word_order: {
+      tag: "ur_l1_word_order",
+        en: "Word order: Subject → Verb → Object",
+        vi: "Trật tự từ: Chủ ngữ → Động từ → Tân ngữ",
+        ur: "ترتیب کلمات: فاعل → فعل → مفعول",
+        en: "Urdu is a Subject-Object-Verb (SOV) language — **میں کتاب پڑھتا ہوں** (I book read). English is Subject-Verb-Object (SVO) — **I read a book**. The verb moves before the object in English. This deep structural difference means Urdu speakers naturally place the verb at the end, which sounds wrong in English.",
+        vi: "Tiếng Urdu là ngôn ngữ Chủ ngữ-Tân ngữ-Động từ (SOV) — **میں کتاب پڑھتا ہوں** (tôi sách đọc). Tiếng Anh là Chủ ngữ-Động từ-Tân ngữ (SVO) — **I read a book**. Động từ chuyển lên trước tân ngữ trong tiếng Anh. Sự khác biệt cấu trúc sâu này khiến người nói tiếng Urdu tự nhiên đặt động từ ở cuối, và điều đó nghe sai trong tiếng Anh.",
+        ur: "اردو ایک فاعل-مفعول-فعل (SOV) زبان ہے — **میں کتاب پڑھتا ہوں**۔ انگریزی فاعل-فعل-مفعول (SVO) ہے — **I read a book**۔ فعل مفعول سے پہلے آتا ہے۔ یہ گہرا ساختی فرق اردو بولنے والوں کو فطری طور پر فعل کو آخر میں رکھنے پر مجبور کرتا ہے، جو انگریزی میں غلط لگتا ہے۔",
+      exampleWrong: "I a book read yesterday.",
+      exampleRight: "I read a book yesterday.",
+  ur_l1_plural_s: {
+      tag: "ur_l1_plural_s",
+        en: "Plural nouns with **-s**",
+        vi: "Danh từ số nhiều với **-s**",
+        ur: "جمع اسماء **-s** سے",
+        en: "Urdu marks plurals with suffixes like **-یں** (-ein), **-ات** (-aat), or internal changes — **کتابیں** (kitaabein), **مرد** → **مرد** (mard — mardon). None of these map to English's simple **-s**. English adds **-s** or **-es** to most nouns: **book → books**, **box → boxes**. A number like **two** already signals plural, so the noun must also change.",
+        vi: "Tiếng Urdu đánh dấu số nhiều bằng hậu tố như **-یں** (-ein), **-ات** (-aat), hoặc biến đổi bên trong — **کتابیں** (kitaabein). Không có cách nào khớp với **-s** đơn giản của tiếng Anh. Tiếng Anh thêm **-s** hoặc **-es** vào hầu hết danh từ: **book → books**.",
+        ur: "اردو میں جمع کے لیے لاحقے جیسے **-یں**، **-ات**، یا داخلی تبدیلیاں استعمال ہوتی ہیں — **کتابیں**، **مرد** سے **مردوں**۔ ان میں سے کوئی بھی انگریزی کے سادہ **-s** سے مطابقت نہیں رکھتا۔ انگریزی میں اکثر اسماء کے آخر میں **-s** یا **-es** لگایا جاتا ہے: **book → books**, **box → boxes**۔",
+      exampleWrong: "I have two dog.",
+      exampleRight: "I have two dogs.",
+  ur_l1_past_ed: {
+      tag: "ur_l1_past_ed",
+        en: "Past tense with **-ed**",
+        vi: "Thì quá khứ với **-ed**",
+        ur: "فعل ماضی **-ed** کے ساتھ",
+        en: "Urdu shows past time by changing the verb into a perfective participle that agrees with the subject's gender — **میں نے کام کیا** (maine kaam kiya — masculine) vs **میں نے کام کیا** (maine kaam ki — feminine). English adds **-ed** to regular verbs regardless of gender: **work → worked**. Irregular verbs must be memorised: **go → went**, **eat → ate**.",
+        vi: "Tiếng Urdu diễn tả quá khứ bằng cách chuyển động từ thành phân từ hoàn thành có chia theo giống của chủ ngữ — giống đực so với giống cái. Tiếng Anh thêm **-ed** vào động từ thường bất kể giống: **work → worked**. Động từ bất quy tắc phải học thuộc lòng: **go → went**, **eat → ate**.",
+        ur: "اردو میں ماضی کے لیے فعل کو اسم مفعول کامل میں بدلا جاتا ہے جو فاعل کی جنس سے مطابقت رکھتا ہے — **میں نے کام کیا** (مذکر) بمقابلہ **میں نے کام کیا** (مونث)۔ انگریزی میں جنس سے قطع نظر **-ed** لگایا جاتا ہے: **work → worked**۔ غیر قاعدہ افعال یاد کرنے پڑتے ہیں: **go → went**, **eat → ate**۔",
+      exampleWrong: "Yesterday I work late.",
+      exampleRight: "Yesterday I worked late.",
+  ur_l1_3rd_person_s: {
+      tag: "ur_l1_3rd_person_s",
+        en: "Subject-verb agreement (he/she/it + **-s**)",
+        vi: "Chia động từ ngôi thứ ba số ít (he/she/it + **-s**)",
+        ur: "فاعل فعل مطابقت (وہ + **-s**)",
+        en: "Urdu verbs agree with the subject's **gender and number**, not person. **وہ جاتا ہے** (woh jata hai — 'he goes') and **وہ جاتی ہے** (woh jati hai — 'she goes') differ by gender, and there is no **-s** ending for third-person singular. English adds **-s** to the verb when the subject is **he**, **she**, or **it**: **he goes**, **she runs**.",
+        vi: "Động từ tiếng Urdu chia theo **giống và số** của chủ ngữ, không theo ngôi. Không có đuôi **-s** cho ngôi thứ ba số ít. Tiếng Anh thêm **-s** vào động từ khi chủ ngữ là **he**, **she**, hoặc **it**: **he goes**, **she runs**.",
+        ur: "اردو میں فعل فاعل کی جنس اور عدد کے مطابق بدلتا ہے، شخص کے مطابق نہیں۔ **وہ جاتا ہے** اور **وہ جاتی ہے** جنس میں مختلف ہیں، اور غائب واحد کے لیے کوئی **-s** کا اضافہ نہیں ہوتا۔ انگریزی میں جب فاعل **he**، **she**، یا **it** ہو تو فعل کے آخر میں **-s** لگایا جاتا ہے: **he goes**, **she runs**۔",
+      exampleWrong: "She go to school every day.",
+      exampleRight: "She goes to school every day.",
+  ur_l1_preposition: {
+      tag: "ur_l1_preposition",
+        en: "Prepositions **in / on / at**",
+        vi: "Giới từ **in / on / at**",
+        ur: "حروف جار **in / on / at**",
+        en: "Urdu uses **postpositions** — particles that come **after** the noun: **میز پر** (meez par — table **on**), **گھر میں** (ghar **mein** — house **in**), **ساڑھے تین بجے** (saadhe teen **baje** — half three **at** ). English uses **prepositions** before the noun: **on** the table, **in** the house, **at** 3:30. The placement is flipped, and English splits the work across three words where Urdu uses different postpositions for each context.",
+        vi: "Tiếng Urdu dùng **hậu giới từ** — tiểu từ đứng **sau** danh từ: **میز پر** (meez par — bàn **trên**). Tiếng Anh dùng tiền giới từ **trước** danh từ: **on** the table. Vị trí bị đảo ngược và tiếng Anh chia ba (**in / on / at**) trong khi tiếng Urdu có các hậu giới từ riêng.",
+        ur: "اردو میں **حروف جار** اسم کے **بعد** آتے ہیں: **میز پر**، **گھر میں**، **تین بجے**۔ انگریزی میں یہ اسم سے **پہلے** آتے ہیں: **on** the table، **in** the house، **at** 3 o'clock۔ مقام الٹ ہے، اور انگریزی اس کام کو تین لفظوں میں تقسیم کرتی ہے (**in / on / at**) جبکہ اردو میں ہر سیاق کے لیے الگ حرف جار ہے۔",
+      exampleWrong: "I will meet you in Monday.",
+      exampleRight: "I will meet you on Monday.",
+  ur_l1_present_perfect_vs_past: {
+      tag: "ur_l1_present_perfect_vs_past",
+        vi: "Hiện tại hoàn thành vs quá khứ đơn",
+        ur: "ماضی قریب بمقابلہ ماضی مطلق",
+        en: "Urdu uses the perfective aspect — **میں نے کھایا** (maine khaaya) — to talk about any completed action, whether yesterday or just now. English splits: **simple past** for actions at a specific finished time (**I ate pho yesterday**), and **present perfect** for actions with present relevance or no specific time (**I have eaten pho before**). The Urdu perfective covers both.",
+        vi: "Tiếng Urdu dùng thể hoàn thành — **میں نے کھایا** (maine khaaya) — để nói về bất kỳ hành động nào đã hoàn thành. Tiếng Anh phân chia: **quá khứ đơn** cho hành động ở thời điểm cụ thể trong quá khứ, và **hiện tại hoàn thành** cho hành động còn liên quan đến hiện tại hoặc không có thời gian cụ thể.",
+        ur: "اردو میں فعل ماضی کامل — **میں نے کھایا** — کسی بھی مکمل ہونے والی کارروائی کے لیے استعمال ہوتا ہے، چاہے وہ کل ہوئی ہو یا ابھی۔ انگریزی میں تقسیم ہے: **ماضی مطلق** ماضی کے مخصوص وقت پر، اور **ماضی قریب** حال سے تعلق رکھنے والی کارروائیوں کے لیے۔ اردو کا فعل ماضی کامل دونوں صورتوں پر محیط ہے۔",
       exampleWrong: "I have eaten breakfast this morning.",
       exampleRight: "I ate breakfast this morning.",
       linkedRoomId: null,
@@ -1513,6 +1604,31 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
         hi: "हिंदी की शैक्षणिक परंपरा में दावे अक्सर सीधे कहे जाते हैं — **यह सिद्ध करता है कि…** (this proves that…)। English academic convention में hedging के ज़रिए दावों को नरम किया जाता है: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**। C2 स्तर पर, कब और कैसे hedging करनी है यह जानना अनिवार्य है — English में सीधे दावे authoritative नहीं, overconfident माने जाते हैं।",
       exampleWrong: "This proves that bilingual education improves cognitive development.",
       exampleRight: "This suggests that bilingual education may contribute to improved cognitive development.",
+  ur_l1_conditional_mix: {
+      tag: "ur_l1_conditional_mix",
+      shortLabel: {
+        en: "**If** clauses — match the tenses",
+        vi: "Câu **If** — hợp thì",
+        ur: "شرطی جملے — زمانی مطابقت",
+      },
+      longDescription: {
+        en: "Urdu conditional sentences use **اگر… تو** (agar… to) and don't change the verb tense based on real vs unreal meaning. English enforces a strict pattern: real condition → **If + present, will + V**; unreal condition → **If + past, would + V**. Never mix past tense with **will** in the same sentence.",
+        vi: "Câu điều kiện tiếng Urdu dùng **اگر… تو** (agar… to) và không đổi thì động từ dựa trên nghĩa thật hay giả. Tiếng Anh có quy tắc nghiêm ngặt: điều kiện có thật → **If + hiện tại, will + V**; điều kiện không thật → **If + quá khứ, would + V**. Không bao giờ trộn quá khứ với **will** trong cùng câu.",
+        ur: "اردو میں شرطی جملے **اگر… تو** استعمال کرتے ہیں اور حقیقت یا فرض کی بنیاد پر فعل کا زمانہ نہیں بدلتے۔ انگریزی میں سخت قاعدہ ہے: حقیقت → **If + حال, will + فعل**؛ فرض → **If + ماضی, would + فعل**۔ ایک جملے میں ماضی کو **will** کے ساتھ نہ ملائیں۔",
+      exampleWrong: "If I had money, I will buy a house.",
+      exampleRight: "If I had money, I would buy a house.",
+      linkedRoomId: null,
+    },
+  ur_c2_formal_register: {
+      tag: "ur_c2_formal_register",
+        en: "Register consistency",
+        vi: "Nhất quán văn phong",
+        ur: "انداز بیان کی یکسانیت",
+        en: "Urdu makes sharp distinctions between formal and informal address — **آپ** (aap, formal), **تم** (tum, familiar), **تو** (tu, intimate). Urdu speakers may carry this register-sensitivity into English, but the markers are different. English formal register avoids contractions, uses Latinate vocabulary, and maintains consistent tone. Mixing **gonna** with **furthermore** in the same paragraph feels jarring — a C2 writer keeps one register throughout.",
+        vi: "Tiếng Urdu phân biệt rõ giữa xưng hô trang trọng và thân mật — **آپ** (aap, trang trọng), **تم** (tum, thân thiết), **تو** (tu, thân mật). Người Urdu có thể mang sự nhạy cảm này sang tiếng Anh. Văn phong trang trọng tiếng Anh tránh viết tắt, dùng từ vựng gốc Latinh, và duy trì giọng điệu nhất quán.",
+        ur: "اردو میں رسمی اور غیر رسمی خطاب میں تیز فرق ہے — **آپ** (رسمی)، **تم** (مانوس)، **تو** (بے تکلف)۔ اردو بولنے والے اس حساسیت کو انگریزی میں بھی لا سکتے ہیں۔ انگریزی رسمی انداز مخففات سے گریز کرتا ہے، لاطینی نژاد الفاظ استعمال کرتا ہے، اور یکساں لہجہ برقرار رکھتا ہے — C2 مصنف پوری تحریر میں ایک ہی انداز رکھتا ہے۔",
+      exampleWrong: "The aforementioned findings are super interesting and you're gonna love them.",
+      exampleRight: "The aforementioned findings are highly compelling and readers will find them valuable.",
 };
 
 /** Ordered list of all tags (stable for tests + exhaustiveness checks). */

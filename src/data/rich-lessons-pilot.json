@@ -3509,6 +3509,387 @@
           }
         }
       ]
+    },
+    {
+      "tag": "ur_l1_missing_be",
+      "title": {
+        "en": "Don't drop **am / is / are**",
+        "vi": "Đừng bỏ rơi **am / is / are**",
+        "ur": "**am / is / are** کو مت چھوڑیں"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"She very happy today.\" If you speak Urdu, this sentence might feel complete. Urdu drops the copula **hai** all the time — **وہ بہت خوش** (woh bohat khush) is perfectly normal. But English requires **is** between the subject and the description.",
+          "vi": "\"She very happy today.\" Nếu bạn nói tiếng Urdu, câu này có thể có vẻ đã đầy đủ. Tiếng Urdu thường bỏ động từ nối **hai** — **وہ بہت خوش** (woh bohat khush) là hoàn toàn bình thường. Nhưng tiếng Anh yêu cầu phải có **is** giữa chủ ngữ và phần mô tả.",
+          "ur": "\"She very happy today.\" اگر آپ اردو بولتے ہیں تو یہ جملہ مکمل لگ سکتا ہے۔ اردو میں **ہے** کو چھوڑا جا سکتا ہے — **وہ بہت خوش** بالکل عام ہے۔ لیکن انگریزی میں فاعل اور وصف کے درمیان **is** ضروری ہے۔"
+        },
+        "why": {
+          "en": "Urdu allows copula-drop when the meaning is clear from context. **وہ بہت خوبصورت** (woh bohat khoobsurat) — no **hai** needed. But English never skips the be-verb between a subject and its complement. Without **am**, **is**, or **are**, the sentence is grammatically incomplete.",
+          "vi": "Tiếng Urdu cho phép bỏ động từ nối khi nghĩa đã rõ từ ngữ cảnh. **وہ بہت خوبصورت** (woh bohat khoobsurat) — không cần **hai**. Nhưng tiếng Anh không bao giờ bỏ be-verb giữa chủ ngữ và bổ ngữ. Nếu thiếu **am**, **is**, hoặc **are**, câu sai ngữ pháp.",
+          "ur": "اردو میں جب معنی سیاق و سباق سے واضح ہو تو فعل ناقص چھوڑا جا سکتا ہے۔ **وہ بہت خوبصورت** — **ہے** کی ضرورت نہیں۔ لیکن انگریزی میں فاعل اور اس کی تکمیل کے درمیان فعل ناقص کبھی نہیں چھوڑا جاتا۔ **am**، **is**، یا **are** کے بغیر جملہ نامکمل ہے۔"
+        },
+        "pattern": {
+          "en": "If the sentence has no action verb (like **run**, **eat**, **study**), you need **am / is / are** before the description. **I → am**, **you/we/they → are**, **he/she/it → is**. My name **is** Ali. I **am** a student. They **are** at home.",
+          "vi": "Nếu câu không có động từ chỉ hành động (như **run**, **eat**, **study**), bạn cần **am / is / are** trước phần mô tả. **I → am**, **you/we/they → are**, **he/she/it → is**. My name **is** Ali. I **am** a student. They **are** at home.",
+          "ur": "اگر جملے میں کوئی فعلی فعل نہیں (جیسے **run**, **eat**, **study**) تو وصف سے پہلے **am / is / are** درکار ہے۔ **I → am**، **you/we/they → are**، **he/she/it → is**۔ My name **is** Ali۔ I **am** ایک طالب علم۔ They **are** گھر پر۔"
+        },
+        "practice": {
+          "en": "Say each one out loud and feel the **be** verb sit in the middle: \"She **is** a doctor.\" \"I **am** very happy.\" \"They **are** in Lahore.\" \"He **was** tired yesterday.\" \"We **are** ready now.\" The be-verb is the anchor — never drop it.",
+          "vi": "Nói thành tiếng và cảm nhận be-verb nằm giữa câu: \"She **is** a doctor.\" \"I **am** very happy.\" \"They **are** in Lahore.\" \"He **was** tired yesterday.\" \"We **are** ready now.\" Be-verb là mỏ neo — đừng bao giờ bỏ.",
+          "ur": "ہر جملہ بلند آواز سے کہیں اور be فعل کو درمیان میں محسوس کریں: \"She **is** a doctor.\" \"I **am** very happy.\" \"They **are** in Lahore.\" \"He **was** tired yesterday.\" \"We **are** ready now.\" یہ لنگر ہے — اسے کبھی مت چھوڑیں۔"
+        },
+        "takeaway": {
+          "en": "No action verb = **be** is the verb. Add **am / is / are** every time.",
+          "vi": "Không có động từ hành động = **be** chính là động từ. Thêm **am / is / are** mỗi lần.",
+          "ur": "فعلی فعل نہ ہو = **be** ہی فعل ہے۔ ہر بار **am / is / are** لگائیں۔"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:"
+          },
+          "options": [
+            "She a doctor.",
+            "She is a doctor.",
+            "She are a doctor.",
+            "She am a doctor."
+          ],
+          "correctAnswer": "She is a doctor.",
+          "explanation": {
+            "en": "Subject **she** → use **is**.",
+            "vi": "Chủ ngữ **she** → dùng **is**.",
+            "ur": "فاعل **she** → **is** استعمال کریں۔"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: I ___ very happy today.",
+            "vi": "Điền vào chỗ trống: I ___ very happy today."
+          },
+          "options": [
+            "am",
+            "is",
+            "are",
+            "be"
+          ],
+          "correctAnswer": "am",
+          "explanation": {
+            "en": "**I** always pairs with **am** in the present.",
+            "vi": "**I** luôn đi với **am** ở hiện tại.",
+            "ur": "**I** ہمیشہ حال میں **am** کے ساتھ آتا ہے۔"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: They ___ from Karachi.",
+            "vi": "Điền vào chỗ trống: They ___ from Karachi."
+          },
+          "options": [
+            "am",
+            "is",
+            "are",
+            "was"
+          ],
+          "correctAnswer": "are",
+          "explanation": {
+            "en": "**They** in the present takes **are**.",
+            "vi": "**They** ở hiện tại dùng **are**.",
+            "ur": "**They** حال میں **are** لیتا ہے۔"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank (past): The shop ___ closed this morning.",
+            "vi": "Điền vào chỗ trống (quá khứ): The shop ___ closed this morning."
+          },
+          "options": [
+            "is",
+            "are",
+            "was",
+            "were"
+          ],
+          "correctAnswer": "was",
+          "explanation": {
+            "en": "**The shop** = **it** → past form is **was**.",
+            "vi": "**The shop** = **it** → quá khứ là **was**.",
+            "ur": "**The shop** = **it** → ماضی کی شکل **was** ہے۔"
+          }
+        },
+        {
+          "question": {
+            "en": "Which sentence is correct?",
+            "vi": "Câu nào đúng?"
+          },
+          "options": [
+            "My book blue.",
+            "My book is blue.",
+            "My book are blue.",
+            "My book am blue."
+          ],
+          "correctAnswer": "My book is blue.",
+          "explanation": {
+            "en": "Description without an action verb needs **is**.",
+            "vi": "Mô tả không có động từ hành động cần **is**.",
+            "ur": "فعلی فعل کے بغیر وصف کے لیے **is** چاہیے۔"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "ur_l1_missing_article",
+      "title": {
+        "en": "Articles **a / an / the** — words Urdu doesn't have",
+        "vi": "Mạo từ **a / an / the** — từ mà tiếng Urdu không có",
+        "ur": "حروف تعریف **a / an / the** — وہ الفاظ جو اردو میں نہیں ہیں"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"I bought car yesterday.\" In Urdu, **میں نے کل گاڑی خریدی** (maine kal gaadi khareedi) is perfectly fine — no article needed. You just say the noun. But English always marks singular countable nouns with **a / an / the**.",
+          "vi": "\"I bought car yesterday.\" Trong tiếng Urdu, **میں نے کل گاڑی خریدی** (maine kal gaadi khareedi) hoàn toàn ổn — không cần mạo từ. Bạn chỉ cần nói danh từ. Nhưng tiếng Anh luôn đánh dấu danh từ đếm được số ít bằng **a / an / the**.",
+          "ur": "\"I bought car yesterday.\" اردو میں **میں نے کل گاڑی خریدی** بالکل درست ہے — کسی حرف تعریف کی ضرورت نہیں۔ لیکن انگریزی میں ہمیشہ واحد قابل شمار اسماء کے ساتھ **a / an / the** لگتا ہے۔"
+        },
+        "why": {
+          "en": "Urdu has no articles — the noun stands alone. Context tells you whether it's specific or general. English splits the work: **a / an** introduces something for the first time (indefinite); **the** refers to something already known (definite). Using no article where one is needed is the single most common marker of Urdu-English speech.",
+          "vi": "Tiếng Urdu không có mạo từ — danh từ đứng một mình. Ngữ cảnh cho bạn biết nó cụ thể hay chung chung. Tiếng Anh phân chia: **a / an** giới thiệu lần đầu (không xác định); **the** chỉ thứ đã biết (xác định). Đây là dấu hiệu phổ biến nhất của người Urdu nói tiếng Anh.",
+          "ur": "اردو میں حروف تعریف نہیں ہوتے — اسم تنہا کھڑا ہوتا ہے۔ سیاق و سباق بتاتا ہے کہ وہ مخصوص ہے یا عام۔ انگریزی میں تقسیم ہے: **a / an** پہلی بار متعارف کراتا ہے (غیر معین)؛ **the** معروف چیز کی طرف اشارہ کرتا ہے (معین)۔ حرف تعریف کا نہ لگانا اردو-انگریزی تقریر کی سب سے عام نشانی ہے۔"
+        },
+        "pattern": {
+          "en": "**First mention** → use **a** (before consonant sound) or **an** (before vowel sound). **Second mention** → use **the**. **General statements** → use no article for plurals and uncountables. Singular countable nouns almost always need an article: \"I saw **a** dog. **The** dog was brown.\"",
+          "vi": "**Nhắc lần đầu** → dùng **a** (trước phụ âm) hoặc **an** (trước nguyên âm). **Nhắc lại** → dùng **the**. **Phát biểu chung chung** → không dùng mạo từ cho số nhiều và không đếm được. Danh từ đếm được số ít hầu như luôn cần mạo từ.",
+          "ur": "**پہلا ذکر** → **a** (صحت سے پہلے) یا **an** (مصوت سے پہلے)۔ **دوسرا ذکر** → **the**۔ **عمومی بیانات** → جمع اور ناقابل شمار کے لیے کوئی حرف تعریف نہیں۔ واحد قابل شمار اسماء کو تقریباً ہمیشہ حرف تعریف درکار ہوتا ہے۔"
+        },
+        "practice": {
+          "en": "Say these pairs and feel when the article appears: \"I bought **a** phone.\" \"**The** phone is new.\" \"She is **a** teacher.\" \"He ate **an** apple.\" \"I love flowers.\" (no article — general). \"Please close **the** door.\" (specific). The pattern is: first time → **a/an**; already known → **the**.",
+          "vi": "Nói thành tiếng và cảm nhận mạo từ xuất hiện khi nào: \"I bought **a** phone.\" \"**The** phone is new.\" \"She is **a** teacher.\" \"He ate **an** apple.\" \"I love flowers.\" (không mạo từ — chung chung). \"Please close **the** door.\" (cụ thể). Mẫu: lần đầu → **a/an**; đã biết → **the**.",
+          "ur": "یہ جوڑے بلند آواز سے کہیں اور محسوس کریں کہ حرف تعریف کب آتا ہے: \"I bought **a** phone.\" \"**The** phone is new.\" \"She is **a** teacher.\" \"He ate **an** apple.\" \"I love flowers.\" (کوئی حرف تعریف نہیں — عمومی)۔ \"Please close **the** door.\" (مخصوص)۔"
+        },
+        "takeaway": {
+          "en": "First time = **a / an**. Already known = **the**. Plural general = no article. Single items always need one.",
+          "vi": "Lần đầu = **a / an**. Đã biết = **the**. Số nhiều chung chung = không mạo từ. Vật số ít luôn cần một trong hai.",
+          "ur": "پہلی بار = **a / an**۔ پہلے سے معلوم = **the**۔ عمومی جمع = کوئی حرف تعریف نہیں۔ واحد اشیاء کو ہمیشہ حرف تعریف درکار ہے۔"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:"
+          },
+          "options": [
+            "I bought car yesterday.",
+            "I bought a car yesterday.",
+            "I bought the car yesterday.",
+            "I bought car the yesterday."
+          ],
+          "correctAnswer": "I bought a car yesterday.",
+          "explanation": {
+            "en": "First mention of **car** → use **a**.",
+            "vi": "Lần đầu nhắc đến **car** → dùng **a**.",
+            "ur": "پہلی بار **car** کا ذکر → **a** استعمال کریں۔"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: She is ___ teacher.",
+            "vi": "Điền vào chỗ trống: She is ___ teacher."
+          },
+          "options": [
+            "a",
+            "an",
+            "the",
+            "(no article)"
+          ],
+          "correctAnswer": "a",
+          "explanation": {
+            "en": "Introducing what she does for the first time → **a** teacher.",
+            "vi": "Giới thiệu nghề nghiệp lần đầu → **a** teacher.",
+            "ur": "پہلی بار بتا رہے ہیں کہ وہ کیا کرتی ہے → **a** teacher۔"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: He ate ___ apple.",
+            "vi": "Điền vào chỗ trống: He ate ___ apple."
+          },
+          "options": [
+            "a",
+            "an",
+            "the",
+            "(no article)"
+          ],
+          "correctAnswer": "an",
+          "explanation": {
+            "en": "**Apple** starts with a vowel sound → **an**.",
+            "vi": "**Apple** bắt đầu bằng nguyên âm → **an**.",
+            "ur": "**Apple** کا آغاز مصوت سے ہوتا ہے → **an**۔"
+          }
+        },
+        {
+          "question": {
+            "en": "Which sentence is correct?",
+            "vi": "Câu nào đúng?"
+          },
+          "options": [
+            "Please close door.",
+            "Please close a door.",
+            "Please close an door.",
+            "Please close the door."
+          ],
+          "correctAnswer": "Please close the door.",
+          "explanation": {
+            "en": "A specific door both speaker and listener know → **the** door.",
+            "vi": "Một cánh cửa cụ thể mà cả người nói và nghe đều biết → **the** door.",
+            "ur": "مخصوص دروازہ جس کے بارے میں بولنے والا اور سننے والا دونوں جانتے ہیں → **the** door۔"
+          }
+        },
+        {
+          "question": {
+            "en": "Which is correct for a general statement?",
+            "vi": "Câu nào đúng cho phát biểu chung chung?"
+          },
+          "options": [
+            "I love the flowers.",
+            "I love a flowers.",
+            "I love flowers.",
+            "I love an flowers."
+          ],
+          "correctAnswer": "I love flowers.",
+          "explanation": {
+            "en": "General statement about flowers as a category → no article.",
+            "vi": "Phát biểu chung chung về hoa như một thể loại → không mạo từ.",
+            "ur": "پھولوں کے بارے میں عمومی بیان → کوئی حرف تعریف نہیں۔"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "ur_l1_word_order",
+      "title": {
+        "en": "Word order — Subject first, then Verb, then Object",
+        "vi": "Trật tự từ — Chủ ngữ trước, rồi Động từ, rồi Tân ngữ",
+        "ur": "ترتیب کلمات — پہلے فاعل، پھر فعل، پھر مفعول"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"I a book read yesterday.\" If you speak Urdu, this word order feels right — **میں نے کل ایک کتاب پڑھی** puts the object before the verb. But English orders things differently: the verb comes **before** the object.",
+          "vi": "\"I a book read yesterday.\" Nếu bạn nói tiếng Urdu, trật tự từ này nghe có vẻ đúng — **میں نے کل ایک کتاب پڑھی** đặt tân ngữ trước động từ. Nhưng tiếng Anh sắp xếp khác: động từ đứng **trước** tân ngữ.",
+          "ur": "\"I a book read yesterday.\" اگر آپ اردو بولتے ہیں تو یہ ترتیب درست لگتی ہے — **میں نے کل ایک کتاب پڑھی** مفعول کو فعل سے پہلے رکھتا ہے۔ لیکن انگریزی میں چیزیں مختلف ترتیب سے آتی ہیں: فعل مفعول سے **پہلے** آتا ہے۔"
+        },
+        "why": {
+          "en": "This is the deepest structural difference between Urdu and English. Urdu is an **SOV** (Subject-Object-Verb) language — the verb always comes at the end. English is **SVO** (Subject-Verb-Object) — the verb goes **before** the object. Every single sentence you build in English needs this mental flip.",
+          "vi": "Đây là khác biệt cấu trúc sâu nhất giữa tiếng Urdu và tiếng Anh. Urdu là ngôn ngữ **SOV** (Chủ ngữ-Tân ngữ-Động từ) — động từ luôn ở cuối. Tiếng Anh là **SVO** (Chủ ngữ-Động từ-Tân ngữ) — động từ đứng trước tân ngữ. Mỗi câu bạn xây dựng bằng tiếng Anh đều cần sự đảo ngược tinh thần này.",
+          "ur": "یہ اردو اور انگریزی کا سب سے گہرا ساختی فرق ہے۔ اردو **فاعل-مفعول-فعل** (SOV) زبان ہے — فعل ہمیشہ آخر میں آتا ہے۔ انگریزی **فاعل-فعل-مفعول** (SVO) ہے — فعل مفعول سے پہلے آتا ہے۔ انگریزی کا ہر جملہ بناتے ہوئے آپ کو یہ ذہنی الٹ کرنا ہوگا۔"
+        },
+        "pattern": {
+          "en": "English: **Subject → Verb → Object**. Always. \"I **read** a book.\" (NOT \"I a book read.\") \"She **drinks** tea.\" (NOT \"She tea drinks.\") \"We **watched** a film.\" (NOT \"We a film watched.\") Think of it as: Who → Action → What.",
+          "vi": "Tiếng Anh: **Chủ ngữ → Động từ → Tân ngữ**. Luôn luôn. \"I **read** a book.\" \"She **drinks** tea.\" \"We **watched** a film.\" Hãy nghĩ: Ai → Hành động → Cái gì.",
+          "ur": "انگریزی: **فاعل → فعل → مفعول**۔ ہمیشہ۔ \"I read a book.\" (یہ نہیں: \"I a book read.\") \"She drinks tea.\" (یہ نہیں: \"She tea drinks.\") \"We watched a film.\" (یہ نہیں: \"We a film watched.\") اس طرح سوچیں: کون → عمل → کیا۔"
+        },
+        "practice": {
+          "en": "Flip these Urdu English sentences aloud: \"I tea drink\" → \"I **drink** tea.\" \"She Urdu speaks\" → \"She **speaks** Urdu.\" \"We Lahore visited\" → \"We **visited** Lahore.\" \"He a letter wrote\" → \"He **wrote** a letter.\" Force the verb from last position to **third** position.",
+          "vi": "Đảo ngược các câu tiếng Urdu-anh sau: \"I tea drink\" → \"I **drink** tea.\" \"She Urdu speaks\" → \"She **speaks** Urdu.\" \"We Lahore visited\" → \"We **visited** Lahore.\" \"He a letter wrote\" → \"He **wrote** a letter.\" Ép động từ từ cuối lên vị trí **thứ ba**.",
+          "ur": "ان اردو-انگریزی جملوں کو الٹ کر بلند آواز سے کہیں: \"I tea drink\" → \"I drink tea.\" \"She Urdu speaks\" → \"She speaks Urdu.\" \"We Lahore visited\" → \"We visited Lahore.\" \"He a letter wrote\" → \"He wrote a letter.\" فعل کو آخری پوزیشن سے **تیسری** پوزیشن پر لائیں۔"
+        },
+        "takeaway": {
+          "en": "Who → Action → What. Verb comes **before** the object, every single time.",
+          "vi": "Ai → Hành động → Cái gì. Động từ đứng **trước** tân ngữ, mỗi lần.",
+          "ur": "کون → عمل → کیا۔ فعل ہمیشہ مفعول سے **پہلے** آتا ہے۔"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct English word order:",
+            "vi": "Chọn trật tự từ đúng trong tiếng Anh:"
+          },
+          "options": [
+            "I a book read.",
+            "I read a book.",
+            "I read book a.",
+            "Read I a book."
+          ],
+          "correctAnswer": "I read a book.",
+          "explanation": {
+            "en": "English SVO: I (subject) **read** (verb) a book (object).",
+            "vi": "Tiếng Anh SVO: I (chủ ngữ) **read** (động từ) a book (tân ngữ).",
+            "ur": "انگریزی فاعل-فعل-مفعول: I (فاعل) read (فعل) a book (مفعول)۔"
+          }
+        },
+        {
+          "question": {
+            "en": "Fix this Urdu-English sentence: \"She tea drinks.\"",
+            "vi": "Sửa câu Urdu-Anh này: \"She tea drinks.\""
+          },
+          "options": [
+            "She tea drinks.",
+            "Drinks she tea.",
+            "She drinks tea.",
+            "Tea she drinks."
+          ],
+          "correctAnswer": "She drinks tea.",
+          "explanation": {
+            "en": "Verb **drinks** must come before the object **tea**.",
+            "vi": "Động từ **drinks** phải đứng trước tân ngữ **tea**.",
+            "ur": "فعل **drinks** مفعول **tea** سے پہلے آنا چاہیے۔"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: We ___ a film last night.",
+            "vi": "Điền vào chỗ trống: We ___ a film last night."
+          },
+          "options": [
+            "a film watched",
+            "watched",
+            "watched a film",
+            "film watched"
+          ],
+          "correctAnswer": "watched a film",
+          "explanation": {
+            "en": "We (subject) → **watched** (verb) → a film (object).",
+            "vi": "We (chủ ngữ) → **watched** (động từ) → a film (tân ngữ).",
+            "ur": "We (فاعل) → watched (فعل) → a film (مفعول)۔"
+          }
+        },
+        {
+          "question": {
+            "en": "Which is the correct sentence?",
+            "vi": "Câu nào đúng?"
+          },
+          "options": [
+            "He a letter wrote to his mother.",
+            "He wrote a letter to his mother.",
+            "He to his mother a letter wrote.",
+            "A letter he wrote to his mother."
+          ],
+          "correctAnswer": "He wrote a letter to his mother.",
+          "explanation": {
+            "en": "Subject **He** → verb **wrote** → object **a letter** → phrase **to his mother**.",
+            "vi": "Chủ ngữ **He** → động từ **wrote** → tân ngữ **a letter** → cụm **to his mother**.",
+            "ur": "فاعل **He** → فعل **wrote** → مفعول **a letter** → جملہ **to his mother**۔"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: My mother ___ very well.",
+            "vi": "Điền vào chỗ trống: My mother ___ very well."
+          },
+          "options": [
+            "English speaks",
+            "speaks English",
+            "speak English",
+            "English speak"
+          ],
+          "correctAnswer": "speaks English",
+          "explanation": {
+            "en": "Subject **My mother** → verb **speaks** → object **English**.",
+            "vi": "Chủ ngữ **My mother** → động từ **speaks** → tân ngữ **English**.",
+            "ur": "فاعل **My mother** → فعل **speaks** → مفعول **English**۔"
+          }
+        }
+      ]
     }
   ]
 }

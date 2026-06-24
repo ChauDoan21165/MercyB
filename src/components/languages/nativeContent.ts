@@ -14,6 +14,7 @@
 // slot changes.
 
 export type NativeLang = "vi" | "en" | "ja" | "id" | "th" | "ar";
+export type NativeLang = "vi" | "en" | "ja" | "id" | "th" | "ur";
 
 export type NativeSlots<T> = {
   vi?: T;
@@ -22,6 +23,7 @@ export type NativeSlots<T> = {
   id?: T;
   th?: T;
   ar?: T;
+  ur?: T;
 };
 
 const FALLBACK_ORDER: Record<NativeLang, readonly NativeLang[]> = {
@@ -31,6 +33,7 @@ const FALLBACK_ORDER: Record<NativeLang, readonly NativeLang[]> = {
   id: ["id", "en", "vi"],
   th: ["th", "en", "vi"],
   ar: ["ar", "en", "vi"],
+  ur: ["ur", "en", "vi"],
 };
 
 export function getNativeContent<T>(
