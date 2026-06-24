@@ -550,7 +550,7 @@ export const lessons: PunjabiLesson[] = [
         fix_en: "Use ਮੈਨੂੰ + liked thing + ਪਸੰਦ ਹੈ.",
       },
     ],
-    cultural_notes_vi: "Khi được mời đồ ăn/uống, trả lời мяг bằng ਥੋੜ੍ਹੀ/ਥੋੜ੍ਹਾ hoặc ਨਹੀਂ ਧੰਨਵਾਦ.",
+    cultural_notes_vi: "Khi được mời đồ ăn/uống, trả lời mềm bằng ਥੋੜ੍ਹੀ/ਥੋੜ੍ਹਾ hoặc ਨਹੀਂ ਧੰਨਵਾਦ.",
     cultural_notes_en: "When offered food or drink, soften answers with ਥੋੜ੍ਹੀ/ਥੋੜ੍ਹਾ or ਨਹੀਂ ਧੰਨਵਾਦ.",
     script_awareness_vi: "Gurmukhi là chữ học chính; Shahmukhi chỉ được nhắc như một hệ chữ Punjabi khác.",
     script_awareness_en: "Gurmukhi is the main learning script; Shahmukhi is only noted as another Punjabi script.",

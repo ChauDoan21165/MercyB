@@ -47,10 +47,11 @@ describe("Punjabi foundation - metadata", () => {
     expect(PUNJABI_LANGUAGE.script.toLowerCase()).toContain("awareness");
   });
 
-  it("ships exactly one starter A1 lesson in the foundation", () => {
+  it("keeps the starter A1 lesson and wires expanded A1 pack", () => {
     expect(a1Lessons).toHaveLength(1);
-    expect(PUNJABI_LESSONS_BY_LEVEL.A1).toHaveLength(1);
-    expect(allPunjabiLessons).toHaveLength(1);
+    expect(PUNJABI_LESSONS_BY_LEVEL.A1.length).toBeGreaterThanOrEqual(a1Lessons.length);
+    expect(PUNJABI_LESSONS_BY_LEVEL.A1).toEqual(expect.arrayContaining(a1Lessons));
+    expect(allPunjabiLessons.length).toBeGreaterThanOrEqual(PUNJABI_LESSONS_BY_LEVEL.A1.length);
     expect(a1Lessons[0].level).toBe("A1");
   });
 });
