@@ -1,0 +1,108 @@
+import { describe, expect, it } from "vitest";
+
+import settlementServicesCanada, {
+  PUNJABI_SETTLEMENT_SERVICES_CANADA,
+  PUNJABI_SETTLEMENT_SERVICES_CANADA_SCOPE,
+  PUNJABI_SETTLEMENT_SERVICES_CANADA_TOPICS,
+  type PunjabiSettlementServicesCanadaTopic,
+} from "@/languages/punjabi/settlementServicesCanada";
+
+const GURMUKHI = /[\u0A00-\u0A7F]/;
+const SHAHMUKHI = /[\u0600-\u06FF]/;
+
+const REQUIRED_TOPICS: PunjabiSettlementServicesCanadaTopic[] = [
+  "id_documents",
+  "address_update",
+  "forms",
+  "appointment_booking",
+  "interpreter_request",
+  "school_registration",
+  "library_help",
+  "community_help",
+  "benefits_service_desk",
+  "service_followup",
+];
+
+describe("Punjabi Canada settlement services pack", () => {
+  it("exports compact app-consumable TypeScript data", () => {
+    expect(settlementServicesCanada).toBe(PUNJABI_SETTLEMENT_SERVICES_CANADA);
+    expect(PUNJABI_SETTLEMENT_SERVICES_CANADA.length).toBeGreaterThanOrEqual(REQUIRED_TOPICS.length);
+    expect(PUNJABI_SETTLEMENT_SERVICES_CANADA.length).toBeLessThanOrEqual(14);
+    expect(PUNJABI_SETTLEMENT_SERVICES_CANADA_SCOPE.name).toContain("Settlement Services Pack");
+  });
+
+  it("declares scope, script policy, and deferred review without overclaiming", () => {
+    const scope = `${PUNJABI_SETTLEMENT_SERVICES_CANADA_SCOPE.scriptPolicy} ${PUNJABI_SETTLEMENT_SERVICES_CANADA_SCOPE.reviewStatus} ${PUNJABI_SETTLEMENT_SERVICES_CANADA_SCOPE.boundary}`.toLowerCase();
+    expect(scope).toContain("gurmukhi is primary");
+    expect(scope).toContain("shahmukhi is awareness only");
+    expect(scope).toContain("not a full course");
+    expect(scope).toContain("native review is deferred");
+    expect(scope).toContain("not legal advice");
+  });
+
+  it("covers the required Canada settlement-service topics", () => {
+    expect(new Set(PUNJABI_SETTLEMENT_SERVICES_CANADA_TOPICS)).toEqual(new Set(REQUIRED_TOPICS));
+
+    const present = new Set(PUNJABI_SETTLEMENT_SERVICES_CANADA.map((item) => item.topic));
+    for (const topic of REQUIRED_TOPICS) {
+      expect(present.has(topic), `missing topic: ${topic}`).toBe(true);
+    }
+  });
+
+  it("keeps stable ids and Gurmukhi primary", () => {
+    const ids = PUNJABI_SETTLEMENT_SERVICES_CANADA.map((item) => item.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(ids.every((id) => id.startsWith("pa-ca-settlement-"))).toBe(true);
+
+    for (const item of PUNJABI_SETTLEMENT_SERVICES_CANADA) {
+      expect(item.phrase_pa).toMatch(GURMUKHI);
+      expect(item.phrase_pa).not.toMatch(SHAHMUKHI);
+      expect(item.support_pa.length).toBeGreaterThanOrEqual(2);
+      for (const line of item.support_pa) {
+        expect(line).toMatch(GURMUKHI);
+        expect(line).not.toMatch(SHAHMUKHI);
+      }
+    }
+  });
+
+  it("includes romanization plus Vietnamese and English learner context", () => {
+    for (const item of PUNJABI_SETTLEMENT_SERVICES_CANADA) {
+      expect(item.romanization.length).toBeGreaterThan(4);
+      expect(item.situation_vi.length).toBeGreaterThan(20);
+      expect(item.situation_en.length).toBeGreaterThan(20);
+      expect(item.meaning_vi.length).toBeGreaterThan(3);
+      expect(item.meaning_en.length).toBeGreaterThan(3);
+      expect(item.use_vi.length).toBeGreaterThan(10);
+      expect(item.use_en.length).toBeGreaterThan(10);
+      expect(item.canada_example_vi).toMatch(/Canada|Ở Canada|Dùng/u);
+      expect(item.canada_example_en).toMatch(/Canada|Canadian|In Canada|Use/u);
+    }
+  });
+
+  it("includes Canada-practical settlement desk vocabulary and learner traps", () => {
+    const traps = PUNJABI_SETTLEMENT_SERVICES_CANADA.filter((item) => item.learner_trap_vi && item.learner_trap_en);
+    expect(traps.length).toBeGreaterThanOrEqual(7);
+
+    const allText = JSON.stringify(PUNJABI_SETTLEMENT_SERVICES_CANADA).toLowerCase();
+    for (const term of [
+      "id",
+      "address",
+      "form",
+      "appointment",
+      "interpreter",
+      "school",
+      "library",
+      "community",
+      "benefits",
+      "next step",
+    ]) {
+      expect(allText).toContain(term);
+    }
+  });
+
+  it("keeps forbidden integration and scoring concepts out of the data", () => {
+    const allText = JSON.stringify(PUNJABI_SETTLEMENT_SERVICES_CANADA);
+    expect(allText).not.toMatch(/audio|pronunciation scoring|Azure|auth|billing|RLS|Supabase|CI config/i);
+    expect(allText).not.toMatch(/native reviewed|reviewed by native|native-approved|full Shahmukhi course|Shahmukhi lesson/i);
+  });
+});

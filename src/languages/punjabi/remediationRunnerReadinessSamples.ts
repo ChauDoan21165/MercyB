@@ -1,0 +1,396 @@
+// src/languages/punjabi/remediationRunnerReadinessSamples.ts
+//
+// Punjabi remediation runner-readiness samples for Wave 47. Gurmukhi is primary;
+// romanization is support only. These items are study support only, not
+// official placement or certification. Native review is deferred. Shahmukhi is
+// awareness only, not a full course. This is not A11 integration.
+
+export type PunjabiRunnerReadinessFocus =
+  | "script-confusion"
+  | "romanization-dependence"
+  | "word-order"
+  | "postpositions"
+  | "agreement"
+  | "register-mismatch"
+  | "vietnamese-transfer"
+  | "english-transfer"
+  | "service-phrase-gaps"
+  | "canada-practical-recovery";
+
+export type PunjabiRunnerReadinessCheck =
+  | "runner-readiness"
+  | "pipeline-readiness"
+  | "ci-readiness"
+  | "pre-integration"
+  | "owner-acceptance"
+  | "final-acceptance"
+  | "ship-candidate"
+  | "go-no-go"
+  | "canada-recovery";
+
+export interface PunjabiRemediationRunnerReadinessSample {
+  id: string;
+  focus: PunjabiRunnerReadinessFocus;
+  checkType: PunjabiRunnerReadinessCheck;
+  audience: "vi" | "en" | "both";
+  runnerReadinessRouteId: string;
+  sourceArtifactIds: string[];
+  prompt_pa: string;
+  prompt_roman?: string;
+  prompt_en: string;
+  runnerReadyRepair_pa: string;
+  runnerReadyRepair_roman?: string;
+  runnerReadyRepair_en: string;
+  runnerReadinessCriteria_vi: string;
+  runnerReadinessCriteria_en: string;
+  rejectionSignal_vi: string;
+  rejectionSignal_en: string;
+  runnerReadinessCheck: string;
+  commonTrap: string;
+  canadaPractical?: boolean;
+}
+
+export const PUNJABI_REMEDIATION_RUNNER_READINESS_SAMPLES_NOTICE =
+  "Wave 47 runner-readiness samples only; not A11 integration. Study support only, not official placement or certification. Native review deferred. Shahmukhi is awareness only, not a full course.";
+
+export const PUNJABI_RUNNER_READINESS_FOCI: readonly PunjabiRunnerReadinessFocus[] = [
+  "script-confusion",
+  "romanization-dependence",
+  "word-order",
+  "postpositions",
+  "agreement",
+  "register-mismatch",
+  "vietnamese-transfer",
+  "english-transfer",
+  "service-phrase-gaps",
+  "canada-practical-recovery",
+] as const;
+
+export const PUNJABI_RUNNER_READINESS_CHECK_TYPES: readonly PunjabiRunnerReadinessCheck[] = [
+  "runner-readiness",
+  "pipeline-readiness",
+  "ci-readiness",
+  "pre-integration",
+  "owner-acceptance",
+  "final-acceptance",
+  "ship-candidate",
+  "go-no-go",
+  "canada-recovery",
+] as const;
+
+export const punjabiRemediationRunnerReadinessSamples: PunjabiRemediationRunnerReadinessSample[] = [
+  {
+    id: "runner-script-b-p-transit",
+    focus: "script-confusion",
+    checkType: "runner-readiness",
+    audience: "both",
+    runnerReadinessRouteId: "route-script-babba-pappa",
+    sourceArtifactIds: ["ship-script-b-p-transit", "gonogo-script-b-p-transit"],
+    prompt_pa: "ਬੱਸ",
+    prompt_roman: "bas",
+    prompt_en: "bus",
+    runnerReadyRepair_pa: "ਬੱਸ ਅੱਡਾ ਕਿੱਥੇ ਹੈ?",
+    runnerReadyRepair_roman: "bas adda kitthe hai?",
+    runnerReadyRepair_en: "Where is the bus stand?",
+    runnerReadinessCriteria_vi: "Chấp nhận khi người học đọc đúng ਬੱਸ và dùng câu hỏi bến xe buýt.",
+    runnerReadinessCriteria_en: "Accept when the learner reads ਬੱਸ correctly and uses the bus-stand question.",
+    rejectionSignal_vi: "Không chấp nhận nếu còn lẫn ਬ với ਪ hoặc chỉ đoán từ ngữ cảnh.",
+    rejectionSignal_en: "Reject if ਬ and ਪ are still confused or the learner only guesses from context.",
+    runnerReadinessCheck: "Confirm runner readiness keeps the script contrast stable before release.",
+    commonTrap: "Guessing from transit context instead of reading Gurmukhi.",
+    canadaPractical: true,
+  },
+  {
+    id: "runner-script-vowel-service",
+    focus: "script-confusion",
+    checkType: "pipeline-readiness",
+    audience: "both",
+    runnerReadinessRouteId: "route-script-vowel-signs",
+    sourceArtifactIds: ["ship-script-vowel-service", "gonogo-script-vowel-help"],
+    prompt_pa: "ਕੀ",
+    prompt_roman: "ki",
+    prompt_en: "question marker/do",
+    runnerReadyRepair_pa: "ਕੀ ਤੁਹਾਨੂੰ ਮਦਦ ਚਾਹੀਦੀ ਹੈ?",
+    runnerReadyRepair_roman: "ki tuhanu madad chahidi hai?",
+    runnerReadyRepair_en: "Do you need help?",
+    runnerReadinessCriteria_vi: "Chấp nhận khi dấu ੀ được đọc rõ trong câu hỏi trợ giúp.",
+    runnerReadinessCriteria_en: "Accept when the ੀ sign is read clearly in the help question.",
+    rejectionSignal_vi: "Không chấp nhận nếu dấu nguyên âm bị bỏ qua như dấu trang trí.",
+    rejectionSignal_en: "Reject if the vowel sign is skipped as if it were decoration.",
+    runnerReadinessCheck: "Confirm runner readiness verifies vowel signs in service recovery.",
+    commonTrap: "Treating vowel signs as decorative marks.",
+    canadaPractical: true,
+  },
+  {
+    id: "runner-romanization-help",
+    focus: "romanization-dependence",
+    checkType: "pre-integration",
+    audience: "both",
+    runnerReadinessRouteId: "romanization-read-gurmukhi-first",
+    sourceArtifactIds: ["ship-romanization-help", "gonogo-romanization-help"],
+    prompt_pa: "ਮੈਨੂੰ ਮਦਦ ਚਾਹੀਦੀ ਹੈ।",
+    prompt_roman: "mainu madad chahidi hai.",
+    prompt_en: "I need help.",
+    runnerReadyRepair_pa: "ਕਿਰਪਾ ਕਰਕੇ ਮੈਨੂੰ ਮਦਦ ਕਰੋ।",
+    runnerReadyRepair_roman: "kirpa karke mainu madad karo.",
+    runnerReadyRepair_en: "Please help me.",
+    runnerReadinessCriteria_vi: "Chấp nhận khi Gurmukhi là dòng đọc chính và romanization chỉ hỗ trợ.",
+    runnerReadinessCriteria_en: "Accept when Gurmukhi is the main reading line and romanization is support only.",
+    rejectionSignal_vi: "Không chấp nhận nếu người học đọc romanization trước Gurmukhi.",
+    rejectionSignal_en: "Reject if the learner reads romanization before Gurmukhi.",
+    runnerReadinessCheck: "Confirm runner readiness preserves Gurmukhi-first reading before integration.",
+    commonTrap: "Using romanization as the main reading layer.",
+    canadaPractical: true,
+  },
+  {
+    id: "runner-shahmukhi-awareness",
+    focus: "romanization-dependence",
+    checkType: "pre-integration",
+    audience: "en",
+    runnerReadinessRouteId: "gurmukhi-shahmukhi-awareness",
+    sourceArtifactIds: ["ship-shahmukhi-awareness", "gonogo-shahmukhi-awareness"],
+    prompt_pa: "ਅਸੀਂ ਗੁਰਮੁਖੀ ਪੜ੍ਹਦੇ ਹਾਂ।",
+    prompt_roman: "asi gurmukhi parhde haan.",
+    prompt_en: "We study Gurmukhi.",
+    runnerReadyRepair_pa: "ਇਹ ਗੁਰਮੁਖੀ ਅਭਿਆਸ ਹੈ।",
+    runnerReadyRepair_roman: "ih gurmukhi abhyas hai.",
+    runnerReadyRepair_en: "This is Gurmukhi practice.",
+    runnerReadinessCriteria_vi: "Chấp nhận khi Shahmukhi chỉ là nhận biết, không phải khóa đầy đủ.",
+    runnerReadinessCriteria_en: "Accept when Shahmukhi remains awareness only, not a full course.",
+    rejectionSignal_vi: "Không chấp nhận nếu nội dung mở thành syllabus Shahmukhi riêng.",
+    rejectionSignal_en: "Reject if the content opens into a separate Shahmukhi syllabus.",
+    runnerReadinessCheck: "Confirm runner readiness rejects full-course Shahmukhi wording.",
+    commonTrap: "Letting awareness notes become a second script syllabus.",
+  },
+  {
+    id: "runner-word-order-appointment",
+    focus: "word-order",
+    checkType: "runner-readiness",
+    audience: "both",
+    runnerReadinessRouteId: "canada-practical-booking-appointment",
+    sourceArtifactIds: ["ship-word-order-appointment", "gonogo-word-order-appointment"],
+    prompt_pa: "ਕਿਹੜੇ ਵੇਲੇ ਹੈ?",
+    prompt_roman: "kede vele hai?",
+    prompt_en: "what time is it?",
+    runnerReadyRepair_pa: "ਮੇਰੀ ਅਪਾਇੰਟਮੈਂਟ ਕਿਹੜੇ ਵੇਲੇ ਹੈ?",
+    runnerReadyRepair_roman: "meri appointment kede vele hai?",
+    runnerReadyRepair_en: "What time is my appointment?",
+    runnerReadinessCriteria_vi: "Chấp nhận khi câu hỏi giờ hẹn giữ trật tự Punjabi tự nhiên.",
+    runnerReadinessCriteria_en: "Accept when the appointment time question keeps natural Punjabi order.",
+    rejectionSignal_vi: "Không chấp nhận nếu câu hỏi sao chép trật tự tiếng Anh.",
+    rejectionSignal_en: "Reject if the question copies English word order.",
+    runnerReadinessCheck: "Confirm runner readiness catches English question-order transfer.",
+    commonTrap: "Borrowing English question order.",
+    canadaPractical: true,
+  },
+  {
+    id: "runner-word-order-bank",
+    focus: "word-order",
+    checkType: "final-acceptance",
+    audience: "both",
+    runnerReadinessRouteId: "canada-practical-open-account",
+    sourceArtifactIds: ["ship-word-order-bank", "gonogo-word-order-bank"],
+    prompt_pa: "ਖਾਤਾ ਖੋਲ੍ਹਣਾ ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ",
+    prompt_roman: "khata kholna chahunda/chahundi haan",
+    prompt_en: "want to open an account",
+    runnerReadyRepair_pa: "ਮੈਂ ਖਾਤਾ ਖੋਲ੍ਹਣਾ ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ।",
+    runnerReadyRepair_roman: "main khata kholna chahunda/chahundi haan.",
+    runnerReadyRepair_en: "I want to open an account.",
+    runnerReadinessCriteria_vi: "Chấp nhận khi yêu cầu ngân hàng giữ cụm động từ Punjabi.",
+    runnerReadinessCriteria_en: "Accept when the banking request keeps Punjabi verb order.",
+    rejectionSignal_vi: "Không chấp nhận nếu yêu cầu mở tài khoản quay về trật tự tiếng Anh.",
+    rejectionSignal_en: "Reject if the account-opening request reverts to English order.",
+    runnerReadinessCheck: "Confirm runner readiness catches broken bank-request word order.",
+    commonTrap: "Copying English request order at the bank counter.",
+    canadaPractical: true,
+  },
+  {
+    id: "runner-postposition-human-nu",
+    focus: "postpositions",
+    checkType: "ship-candidate",
+    audience: "both",
+    runnerReadinessRouteId: "postpositions-nu-human-object",
+    sourceArtifactIds: ["ship-postposition-human-nu", "gonogo-postposition-human-nu"],
+    prompt_pa: "ਉਸਨੂੰ",
+    prompt_roman: "usnu",
+    prompt_en: "him/her with ਨੂੰ",
+    runnerReadyRepair_pa: "ਕੀ ਤੁਸੀਂ ਉਸਨੂੰ ਫੋਨ ਕਰ ਸਕਦੇ ਹੋ?",
+    runnerReadyRepair_roman: "ki tusi usnu phone kar sakde ho?",
+    runnerReadyRepair_en: "Can you call him/her?",
+    runnerReadinessCriteria_vi: "Chấp nhận khi ਨੂੰ đánh dấu người cụ thể trong câu nhờ gọi.",
+    runnerReadinessCriteria_en: "Accept when ਨੂੰ marks the specific person in the call request.",
+    rejectionSignal_vi: "Không chấp nhận nếu người học bỏ ਨੂੰ vì ảnh hưởng tiếng Anh.",
+    rejectionSignal_en: "Reject if the learner drops ਨੂੰ through English transfer.",
+    runnerReadinessCheck: "Confirm runner readiness catches missing ਨੂੰ in human-object recovery.",
+    commonTrap: "Dropping ਨੂੰ because English has no matching marker.",
+    canadaPractical: true,
+  },
+  {
+    id: "runner-postposition-location-office",
+    focus: "postpositions",
+    checkType: "ci-readiness",
+    audience: "en",
+    runnerReadinessRouteId: "postpositions-location-vich",
+    sourceArtifactIds: ["ship-postposition-location-office", "gonogo-postposition-location-office"],
+    prompt_pa: "ਦਫ਼ਤਰ ਵਿੱਚ",
+    prompt_roman: "daftar vich",
+    prompt_en: "in the office",
+    runnerReadyRepair_pa: "ਦਫ਼ਤਰ ਵਿੱਚ ਮਦਦ ਮਿਲੇਗੀ।",
+    runnerReadyRepair_roman: "daftar vich madad milegi.",
+    runnerReadyRepair_en: "Help will be available in the office.",
+    runnerReadinessCriteria_vi: "Chấp nhận khi danh từ + ਵਿੱਚ đúng trong câu văn phòng.",
+    runnerReadinessCriteria_en: "Accept when noun + ਵਿੱਚ is correct in the office line.",
+    rejectionSignal_vi: "Không chấp nhận nếu marker vị trí đặt trước danh từ theo tiếng Anh.",
+    rejectionSignal_en: "Reject if the location marker is placed before the noun like English.",
+    runnerReadinessCheck: "Confirm runner readiness preserves noun plus postposition order.",
+    commonTrap: "Putting the location marker before the noun like English.",
+    canadaPractical: true,
+  },
+  {
+    id: "runner-agreement-library-book",
+    focus: "agreement",
+    checkType: "ship-candidate",
+    audience: "both",
+    runnerReadinessRouteId: "agreement-possessive-gender",
+    sourceArtifactIds: ["ship-agreement-library-book", "release-agreement-book-library"],
+    prompt_pa: "ਮੇਰੀ ਕਿਤਾਬ",
+    prompt_roman: "meri kitab",
+    prompt_en: "my book",
+    runnerReadyRepair_pa: "ਮੇਰੀ ਕਿਤਾਬ ਲਾਇਬ੍ਰੇਰੀ ਵਿੱਚ ਹੈ।",
+    runnerReadyRepair_roman: "meri kitab library vich hai.",
+    runnerReadyRepair_en: "My book is in the library.",
+    runnerReadinessCriteria_vi: "Chấp nhận khi ਮੇਰੀ khớp với ਕਿਤਾਬ trong câu thư viện.",
+    runnerReadinessCriteria_en: "Accept when ਮੇਰੀ agrees with ਕਿਤਾਬ in the library sentence.",
+    rejectionSignal_vi: "Không chấp nhận nếu người học dùng ਮੇਰਾ cho danh từ giống cái.",
+    rejectionSignal_en: "Reject if the learner uses ਮੇਰਾ with the feminine noun.",
+    runnerReadinessCheck: "Confirm runner readiness catches possessive agreement errors.",
+    commonTrap: "Using one possessive form for every noun.",
+    canadaPractical: true,
+  },
+  {
+    id: "runner-agreement-form-application",
+    focus: "agreement",
+    checkType: "canada-recovery",
+    audience: "vi",
+    runnerReadinessRouteId: "agreement-application-form",
+    sourceArtifactIds: ["ship-agreement-form-application", "release-agreement-application"],
+    prompt_pa: "ਨਵੀਂ ਅਰਜ਼ੀ",
+    prompt_roman: "navi arzi",
+    prompt_en: "new application",
+    runnerReadyRepair_pa: "ਮੈਂ ਨਵੀਂ ਅਰਜ਼ੀ ਭਰ ਰਿਹਾ/ਰਹੀ ਹਾਂ।",
+    runnerReadyRepair_roman: "main navi arzi bhar riha/rahi haan.",
+    runnerReadyRepair_en: "I am filling out a new application.",
+    runnerReadinessCriteria_vi: "Chấp nhận khi ਨਵੀਂ khớp với ਅਰਜ਼ੀ trong ngữ cảnh biểu mẫu.",
+    runnerReadinessCriteria_en: "Accept when ਨਵੀਂ agrees with ਅਰਜ਼ੀ in the form context.",
+    rejectionSignal_vi: "Không chấp nhận nếu bỏ biến đổi tính từ vì tiếng Việt không có giống ngữ pháp.",
+    rejectionSignal_en: "Reject if adjective agreement is dropped because Vietnamese has no grammatical gender.",
+    runnerReadinessCheck: "Confirm runner readiness catches Vietnamese-transfer agreement gaps.",
+    commonTrap: "Keeping the adjective unchanged for every noun.",
+    canadaPractical: true,
+  },
+  {
+    id: "runner-register-elder-service",
+    focus: "register-mismatch",
+    checkType: "owner-acceptance",
+    audience: "both",
+    runnerReadinessRouteId: "register-respectful-service",
+    sourceArtifactIds: ["ship-register-elder-service", "release-register-service"],
+    prompt_pa: "ਤੁਸੀਂ",
+    prompt_roman: "tusi",
+    prompt_en: "you, respectful/plural",
+    runnerReadyRepair_pa: "ਕੀ ਤੁਸੀਂ ਮੇਰੀ ਮਦਦ ਕਰ ਸਕਦੇ ਹੋ?",
+    runnerReadyRepair_roman: "ki tusi meri madad kar sakde ho?",
+    runnerReadyRepair_en: "Can you help me?",
+    runnerReadinessCriteria_vi: "Chấp nhận khi câu nhờ hỗ trợ dùng ਤੁਸੀਂ lịch sự.",
+    runnerReadinessCriteria_en: "Accept when the help request uses respectful ਤੁਸੀਂ.",
+    rejectionSignal_vi: "Không chấp nhận nếu dùng ਤੂੰ trong dịch vụ công hoặc với người lớn tuổi.",
+    rejectionSignal_en: "Reject if casual ਤੂੰ is used in a public-service or elder context.",
+    runnerReadinessCheck: "Confirm runner readiness catches register mismatch before release.",
+    commonTrap: "Using one English 'you' for every Punjabi context.",
+    canadaPractical: true,
+  },
+  {
+    id: "runner-vietnamese-transfer-copula",
+    focus: "vietnamese-transfer",
+    checkType: "final-acceptance",
+    audience: "vi",
+    runnerReadinessRouteId: "transfer-vietnamese-copula-present",
+    sourceArtifactIds: ["ship-vietnamese-transfer-copula", "release-vietnamese-transfer-copula"],
+    prompt_pa: "ਮੈਂ ਵਿਦਿਆਰਥੀ ਹਾਂ।",
+    prompt_roman: "main vidyarthi haan.",
+    prompt_en: "I am a student.",
+    runnerReadyRepair_pa: "ਮੈਂ ਕਾਲਜ ਦਾ ਵਿਦਿਆਰਥੀ ਹਾਂ।",
+    runnerReadyRepair_roman: "main college da vidyarthi haan.",
+    runnerReadyRepair_en: "I am a college student.",
+    runnerReadinessCriteria_vi: "Chấp nhận khi câu giới thiệu giữ ਹਾਂ thay vì bỏ động từ như tiếng Việt.",
+    runnerReadinessCriteria_en: "Accept when the introduction keeps ਹਾਂ instead of dropping the copula.",
+    rejectionSignal_vi: "Không chấp nhận nếu mẫu Punjabi thiếu ਹਾਂ do dịch từ tiếng Việt.",
+    rejectionSignal_en: "Reject if the Punjabi line loses ਹਾਂ through Vietnamese transfer.",
+    runnerReadinessCheck: "Confirm runner readiness catches missing present copula in self-introduction.",
+    commonTrap: "Translating directly from Vietnamese noun sentences.",
+    canadaPractical: true,
+  },
+  {
+    id: "runner-english-transfer-have",
+    focus: "english-transfer",
+    checkType: "go-no-go",
+    audience: "en",
+    runnerReadinessRouteId: "transfer-english-possession",
+    sourceArtifactIds: ["ship-english-transfer-have", "release-english-transfer-have"],
+    prompt_pa: "ਮੇਰੇ ਕੋਲ ਕਾਰਡ ਹੈ।",
+    prompt_roman: "mere kol card hai.",
+    prompt_en: "I have a card.",
+    runnerReadyRepair_pa: "ਮੇਰੇ ਕੋਲ ਹੈਲਥ ਕਾਰਡ ਹੈ।",
+    runnerReadyRepair_roman: "mere kol health card hai.",
+    runnerReadyRepair_en: "I have a health card.",
+    runnerReadinessCriteria_vi: "Chấp nhận khi sở hữu dùng ਮੇਰੇ ਕੋਲ thay vì dịch 'have' từng chữ.",
+    runnerReadinessCriteria_en: "Accept when possession uses ਮੇਰੇ ਕੋਲ instead of word-for-word 'have'.",
+    rejectionSignal_vi: "Không chấp nhận nếu cấu trúc sở hữu sao chép tiếng Anh.",
+    rejectionSignal_en: "Reject if the possession structure copies English.",
+    runnerReadinessCheck: "Confirm runner readiness catches English-transfer possession errors.",
+    commonTrap: "Searching for a direct Punjabi equivalent of English 'have'.",
+    canadaPractical: true,
+  },
+  {
+    id: "runner-service-phrase-repeat",
+    focus: "service-phrase-gaps",
+    checkType: "go-no-go",
+    audience: "both",
+    runnerReadinessRouteId: "service-phrases-clarification",
+    sourceArtifactIds: ["ship-service-phrase-repair", "release-service-phrase-repeat"],
+    prompt_pa: "ਫਿਰ ਦੱਸੋ ਜੀ।",
+    prompt_roman: "fir dasso ji.",
+    prompt_en: "Please say it again.",
+    runnerReadyRepair_pa: "ਕਿਰਪਾ ਕਰਕੇ ਹੌਲੀ ਹੌਲੀ ਫਿਰ ਦੱਸੋ ਜੀ।",
+    runnerReadyRepair_roman: "kirpa karke hauli hauli fir dasso ji.",
+    runnerReadyRepair_en: "Please say it again slowly.",
+    runnerReadinessCriteria_vi: "Chấp nhận khi người học có câu sửa lỗi lịch sự khi không nghe rõ.",
+    runnerReadinessCriteria_en: "Accept when the learner has a polite recovery line for not understanding.",
+    rejectionSignal_vi: "Không chấp nhận nếu thiếu câu yêu cầu nhắc lại trong tình huống dịch vụ.",
+    rejectionSignal_en: "Reject if there is no repeat-request phrase for service settings.",
+    runnerReadinessCheck: "Confirm runner readiness covers polite clarification before release.",
+    commonTrap: "Knowing vocabulary but lacking a repair phrase under pressure.",
+    canadaPractical: true,
+  },
+  {
+    id: "runner-canada-recovery-clinic",
+    focus: "canada-practical-recovery",
+    checkType: "canada-recovery",
+    audience: "both",
+    runnerReadinessRouteId: "canada-practical-clinic-checkin",
+    sourceArtifactIds: ["ship-canada-recovery-clinic", "release-canada-clinic-checkin"],
+    prompt_pa: "ਮੇਰੀ ਅਪਾਇੰਟਮੈਂਟ ਹੈ।",
+    prompt_roman: "meri appointment hai.",
+    prompt_en: "I have an appointment.",
+    runnerReadyRepair_pa: "ਮੇਰੀ ਕਲੀਨਿਕ ਵਿੱਚ ਅਪਾਇੰਟਮੈਂਟ ਹੈ।",
+    runnerReadyRepair_roman: "meri clinic vich appointment hai.",
+    runnerReadyRepair_en: "I have an appointment at the clinic.",
+    runnerReadinessCriteria_vi: "Chấp nhận khi câu check-in phòng khám đủ rõ cho bối cảnh Canada.",
+    runnerReadinessCriteria_en: "Accept when the clinic check-in line is clear enough for a Canada context.",
+    rejectionSignal_vi: "Không chấp nhận nếu câu thực tế thiếu nơi chốn hoặc không giúp phục hồi giao tiếp.",
+    rejectionSignal_en: "Reject if the practical line lacks location or does not support communication recovery.",
+    runnerReadinessCheck: "Confirm runner readiness includes Canada-practical recovery before handoff.",
+    commonTrap: "Memorizing a short line that is too vague for a real clinic desk.",
+    canadaPractical: true,
+  },
+];

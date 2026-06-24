@@ -1,0 +1,318 @@
+// src/languages/punjabi/adaptiveRemediationRoutes.ts
+//
+// Adaptive remediation routes for Punjabi learners. Gurmukhi is primary;
+// romanization is included where useful. These routes are study support only,
+// not official certification or placement. Native review is deferred.
+
+export type PunjabiAdaptiveRouteFocus =
+  | "script"
+  | "vocabulary"
+  | "postpositions"
+  | "agreement"
+  | "register"
+  | "transfer"
+  | "romanization-dependence"
+  | "public-service-gaps";
+
+export type PunjabiAdaptiveAudience = "vi" | "en" | "both";
+
+export interface PunjabiAdaptiveRoute {
+  id: string;
+  focus: PunjabiAdaptiveRouteFocus;
+  audience: PunjabiAdaptiveAudience;
+  observedMistake: string;
+  likelyCause_vi: string;
+  likelyCause_en: string;
+  routeName: string;
+  repairDrill_vi: string;
+  repairDrill_en: string;
+  model_pa: string;
+  model_roman?: string;
+  model_en: string;
+  nextStepIds: string[];
+  commonTrap?: string;
+  canadaPractical?: boolean;
+}
+
+export const PUNJABI_ADAPTIVE_NOTICE =
+  "Study support only; not official placement or certification. Native review deferred. Shahmukhi is mentioned only for awareness, not a full course.";
+
+export const PUNJABI_ADAPTIVE_ROUTE_FOCI: readonly PunjabiAdaptiveRouteFocus[] = [
+  "script",
+  "vocabulary",
+  "postpositions",
+  "agreement",
+  "register",
+  "transfer",
+  "romanization-dependence",
+  "public-service-gaps",
+] as const;
+
+export const PUNJABI_ADAPTIVE_AUDIENCES: readonly PunjabiAdaptiveAudience[] = [
+  "vi",
+  "en",
+  "both",
+] as const;
+
+export const punjabiAdaptiveRemediationRoutes: PunjabiAdaptiveRoute[] = [
+  {
+    id: "route-script-babba-pappa",
+    focus: "script",
+    audience: "both",
+    observedMistake: "Reads ਬੱਸ as ਪੱਸ or cannot distinguish ਬ from ਪ.",
+    likelyCause_vi: "Người học nhìn hình dáng tổng thể thay vì nhận diện nét khác nhau trong Gurmukhi.",
+    likelyCause_en: "The learner reads by overall shape instead of distinguishing Gurmukhi letter features.",
+    routeName: "Gurmukhi similar-letter discrimination",
+    repairDrill_vi: "Khoanh chữ ਬ trong 10 từ, sau đó đọc cặp ਬੱਸ/ਪਾਣੀ.",
+    repairDrill_en: "Circle ਬ in 10 words, then read the pair ਬੱਸ/ਪਾਣੀ.",
+    model_pa: "ਬੱਸ ਅੱਡਾ ਕਿੱਥੇ ਹੈ?",
+    model_roman: "bas adda kitthe hai?",
+    model_en: "Where is the bus stand?",
+    nextStepIds: ["gurmukhi-pair-babba-pappa", "script-gurmukhi-sign-reading"],
+    commonTrap: "Guessing from a transport context instead of reading the letters.",
+    canadaPractical: true,
+  },
+  {
+    id: "route-script-vowel-signs",
+    focus: "script",
+    audience: "both",
+    observedMistake: "Skips ੀ, ੁ, or ੇ signs when reading short words.",
+    likelyCause_vi: "Dấu nguyên âm không đứng như chữ Latin nên dễ bị bỏ qua.",
+    likelyCause_en: "Vowel signs do not behave like Latin letters, so they are easy to skip.",
+    routeName: "Vowel-sign scan before reading",
+    repairDrill_vi: "Trước khi đọc từ, đọc phụ âm chính rồi gọi tên dấu nguyên âm.",
+    repairDrill_en: "Before reading the word, name the base consonant and vowel sign.",
+    model_pa: "ਕੀ ਤੁਹਾਨੂੰ ਮਦਦ ਚਾਹੀਦੀ ਹੈ?",
+    model_roman: "ki tuhanu madad chahidi hai?",
+    model_en: "Do you need help?",
+    nextStepIds: ["gurmukhi-vowel-sign-ee", "script-romanization-dependence"],
+    commonTrap: "Reading romanization first and never checking the Gurmukhi sign.",
+  },
+  {
+    id: "route-vocabulary-form-fields",
+    focus: "vocabulary",
+    audience: "both",
+    observedMistake: "Cannot identify ਪਤਾ, ਦਸਤਖ਼ਤ, or ਅਰਜ਼ੀ on a form.",
+    likelyCause_vi: "Từ vựng hành chính ít xuất hiện trong bài hội thoại cơ bản.",
+    likelyCause_en: "Administrative vocabulary appears less often in basic conversation.",
+    routeName: "Canada-practical form vocabulary",
+    repairDrill_vi: "Luyện thẻ từ theo cụm: ਆਪਣਾ ਪਤਾ ਲਿਖੋ, ਇੱਥੇ ਦਸਤਖ਼ਤ ਕਰੋ.",
+    repairDrill_en: "Drill vocabulary in chunks: ਆਪਣਾ ਪਤਾ ਲਿਖੋ, ਇੱਥੇ ਦਸਤਖ਼ਤ ਕਰੋ.",
+    model_pa: "ਆਪਣਾ ਪਤਾ ਇੱਥੇ ਲਿਖੋ।",
+    model_roman: "aapna pata itthe likho.",
+    model_en: "Write your address here.",
+    nextStepIds: ["public-service-form-address", "vocabulary-public-service-core"],
+    commonTrap: "Knowing the English word but not recognizing the Gurmukhi form.",
+    canadaPractical: true,
+  },
+  {
+    id: "route-vocabulary-health-service",
+    focus: "vocabulary",
+    audience: "both",
+    observedMistake: "Knows ਡਾਕਟਰ but cannot express appointment, fever, or help needs.",
+    likelyCause_vi: "Người học học danh từ riêng lẻ nhưng chưa học cụm dịch vụ y tế.",
+    likelyCause_en: "The learner knows isolated nouns but not clinic-service chunks.",
+    routeName: "Clinic survival vocabulary chunks",
+    repairDrill_vi: "Ghép danh từ với khung nhu cầu: ਮੈਨੂੰ ... ਚਾਹੀਦਾ ਹੈ / ਮੈਨੂੰ ... ਹੈ.",
+    repairDrill_en: "Pair nouns with need frames: ਮੈਨੂੰ ... ਚਾਹੀਦਾ ਹੈ / ਮੈਨੂੰ ... ਹੈ.",
+    model_pa: "ਮੈਨੂੰ ਡਾਕਟਰ ਨਾਲ ਅਪਾਇੰਟਮੈਂਟ ਲੈਣੀ ਹੈ।",
+    model_roman: "mainu doctor naal appointment laini hai.",
+    model_en: "I need to book an appointment with a doctor.",
+    nextStepIds: ["public-service-appointment-clinic", "survival-clinic-appointment"],
+    commonTrap: "Saying only ਡਾਕਟਰ and expecting the listener to infer the request.",
+    canadaPractical: true,
+  },
+  {
+    id: "route-postpositions-human-object",
+    focus: "postpositions",
+    audience: "both",
+    observedMistake: "Says ਮੈਂ ਉਸ ਦੇਖਿਆ without ਨੂੰ.",
+    likelyCause_vi: "Tiếng Việt và tiếng Anh không có hậu giới từ tương ứng cho tân ngữ người.",
+    likelyCause_en: "Vietnamese and English do not use a matching postposition for human objects.",
+    routeName: "Human object ਨੂੰ repair",
+    repairDrill_vi: "Tạo 8 câu với người cụ thể làm tân ngữ và kiểm tra ਨੂੰ.",
+    repairDrill_en: "Make 8 sentences with a specific person as object and check for ਨੂੰ.",
+    model_pa: "ਮੈਂ ਉਸਨੂੰ ਦੇਖਿਆ।",
+    model_roman: "main usnu dekhia.",
+    model_en: "I saw him/her.",
+    nextStepIds: ["postpositions-nu-human-object", "grammar-postpositions-and-order"],
+    commonTrap: "Adding ਨੂੰ to every object instead of checking definiteness/person.",
+  },
+  {
+    id: "route-postpositions-location-order",
+    focus: "postpositions",
+    audience: "both",
+    observedMistake: "Writes ਵਿੱਚ ਕਮਰਾ or in-room order for ਕਮਰੇ ਵਿੱਚ.",
+    likelyCause_vi: "Ảnh hưởng giới từ trước danh từ từ tiếng Việt/Anh.",
+    likelyCause_en: "English/Vietnamese preposition order transfers into Punjabi.",
+    routeName: "Noun plus postposition order",
+    repairDrill_vi: "Đổi 10 cụm 'in/on/with X' sang thứ tự Punjabi: X + hậu giới từ.",
+    repairDrill_en: "Convert 10 'in/on/with X' phrases into Punjabi order: X + postposition.",
+    model_pa: "ਦਫ਼ਤਰ ਵਿੱਚ ਲਾਈਨ ਲੰਬੀ ਹੈ।",
+    model_roman: "daftar vich line lambi hai.",
+    model_en: "The line in the office is long.",
+    nextStepIds: ["postpositions-location-vich", "english-transfer-preposition-order"],
+    canadaPractical: true,
+  },
+  {
+    id: "route-agreement-mera-meri",
+    focus: "agreement",
+    audience: "both",
+    observedMistake: "Uses ਮੇਰਾ for feminine nouns, as in ਮੇਰਾ ਕਿਤਾਬ.",
+    likelyCause_vi: "Tiếng Việt không có giống ngữ pháp cho sở hữu.",
+    likelyCause_en: "English 'my' does not change for gender.",
+    routeName: "Possessive gender agreement chunks",
+    repairDrill_vi: "Học theo cặp danh từ: ਮੇਰੀ ਕਿਤਾਬ, ਮੇਰੀ ਫ਼ਾਈਲ, ਮੇਰਾ ਫ਼ੋਨ.",
+    repairDrill_en: "Learn noun chunks: ਮੇਰੀ ਕਿਤਾਬ, ਮੇਰੀ ਫ਼ਾਈਲ, ਮੇਰਾ ਫ਼ੋਨ.",
+    model_pa: "ਮੇਰੀ ਕਿਤਾਬ ਮੇਜ਼ ਤੇ ਹੈ।",
+    model_roman: "meri kitaab mez te hai.",
+    model_en: "My book is on the table.",
+    nextStepIds: ["gender-number-mera-meri", "grammar-gender-number-agreement"],
+    commonTrap: "Memorizing ਮੇਰਾ as the universal word for 'my'.",
+  },
+  {
+    id: "route-agreement-perfective-roti",
+    focus: "agreement",
+    audience: "both",
+    observedMistake: "Writes ਉਸ ਨੇ ਰੋਟੀ ਖਾਧਾ instead of ਖਾਧੀ.",
+    likelyCause_vi: "Người học quen cho động từ theo chủ ngữ, không theo mẫu quá khứ hoàn thành.",
+    likelyCause_en: "The learner expects subject-based agreement and misses perfective object patterns.",
+    routeName: "Perfective object agreement repair",
+    repairDrill_vi: "Luyện cụm cố định với đồ ăn: ਰੋਟੀ ਖਾਧੀ, ਚਾਹ ਪੀਤੀ.",
+    repairDrill_en: "Drill fixed food/drink chunks: ਰੋਟੀ ਖਾਧੀ, ਚਾਹ ਪੀਤੀ.",
+    model_pa: "ਉਸ ਨੇ ਰੋਟੀ ਖਾਧੀ।",
+    model_roman: "us ne roti khaadhi.",
+    model_en: "He/she ate roti.",
+    nextStepIds: ["gender-number-perfective-roti", "grammar-gender-number-agreement"],
+  },
+  {
+    id: "route-register-tu-with-staff",
+    focus: "register",
+    audience: "both",
+    observedMistake: "Uses ਤੂੰ or a bare command with service staff or elders.",
+    likelyCause_vi: "Hệ thống xưng hô tiếng Việt khác nên mức thân mật của ਤੂੰ chưa rõ.",
+    likelyCause_en: "English 'you' hides the formality distinction between ਤੂੰ and ਤੁਸੀਂ.",
+    routeName: "Respectful ਤੁਸੀਂ and ਜੀ route",
+    repairDrill_vi: "Viết lại 6 câu với ਤੁਸੀਂ, ਕਿਰਪਾ ਕਰਕੇ, và ਜੀ khi phù hợp.",
+    repairDrill_en: "Rewrite 6 sentences with ਤੁਸੀਂ, ਕਿਰਪਾ ਕਰਕੇ, and ਜੀ where appropriate.",
+    model_pa: "ਤੁਸੀਂ ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਫਾਰਮ ਦੇਖ ਸਕਦੇ ਹੋ ਜੀ?",
+    model_roman: "tusi kirpa karke ih form dekh sakde ho ji?",
+    model_en: "Could you please look at this form?",
+    nextStepIds: ["register-tusi-not-tu", "register-service-counter"],
+    commonTrap: "Thinking short direct speech is always efficient in service contexts.",
+    canadaPractical: true,
+  },
+  {
+    id: "route-register-formal-email",
+    focus: "register",
+    audience: "both",
+    observedMistake: "Starts a workplace message with ਯਾਰ or overly casual phrasing.",
+    likelyCause_vi: "Người học chuyển văn nói thân mật sang email công việc.",
+    likelyCause_en: "The learner transfers casual speech into workplace email.",
+    routeName: "Formal opening and request frame",
+    repairDrill_vi: "Chuyển 5 lời nhắn thân mật thành email có greeting, request, closing.",
+    repairDrill_en: "Convert 5 casual messages into emails with greeting, request, and closing.",
+    model_pa: "ਸਤਿਕਾਰਯੋਗ ਸਰ, ਕਿਰਪਾ ਕਰਕੇ ਮੇਰੀ ਅਰਜ਼ੀ ਦੀ ਸਥਿਤੀ ਦੱਸੋ।",
+    model_roman: "satkaryog sir, kirpa karke meri arzi di sthiti dasso.",
+    model_en: "Respected sir, please tell me the status of my application.",
+    nextStepIds: ["register-soften-requests", "workplace-public-service-form"],
+    canadaPractical: true,
+  },
+  {
+    id: "route-transfer-vietnamese-subject-drop",
+    focus: "transfer",
+    audience: "vi",
+    observedMistake: "Drops ਮੈਂ, ਉਹ, or ਅਸੀਂ in written Punjabi because context is clear.",
+    likelyCause_vi: "Tiếng Việt có thể lược chủ ngữ trong ngữ cảnh hội thoại.",
+    likelyCause_en: "Vietnamese permits subject drop in context, but Punjabi practice writing often needs the subject.",
+    routeName: "Recover the subject route",
+    repairDrill_vi: "Trước mỗi câu, hỏi 'ai làm?' rồi thêm chủ ngữ Punjabi phù hợp.",
+    repairDrill_en: "Before each sentence, ask 'who does it?' and add the Punjabi subject.",
+    model_pa: "ਮੈਂ ਅੱਜ ਕੰਮ ਤੇ ਜਾਂਦਾ/ਜਾਂਦੀ ਹਾਂ।",
+    model_roman: "main ajj kamm te janda/jandi haan.",
+    model_en: "I go to work today.",
+    nextStepIds: ["vietnamese-transfer-topic-drop", "word-order-object-before-verb"],
+    commonTrap: "Producing sentence fragments that are understandable in Vietnamese but incomplete in Punjabi writing.",
+  },
+  {
+    id: "route-transfer-english-auxiliary",
+    focus: "transfer",
+    audience: "en",
+    observedMistake: "Writes ਮੈਂ ਹਾਂ ਵਿਦਿਆਰਥੀ following English 'I am student'.",
+    likelyCause_vi: "Ảnh hưởng tiếng Anh đặt trợ động từ ngay sau chủ ngữ.",
+    likelyCause_en: "English places the auxiliary right after the subject.",
+    routeName: "Auxiliary-final Punjabi frame",
+    repairDrill_vi: "Biến 10 câu 'I am X' thành ਮੈਂ X ਹਾਂ.",
+    repairDrill_en: "Convert 10 'I am X' sentences into ਮੈਂ X ਹਾਂ.",
+    model_pa: "ਮੈਂ ਵਿਦਿਆਰਥੀ ਹਾਂ।",
+    model_roman: "main vidyarthi haan.",
+    model_en: "I am a student.",
+    nextStepIds: ["english-transfer-am-is-are", "remediation-routing-error-patterns"],
+    commonTrap: "Fixing vocabulary while leaving the English word order intact.",
+  },
+  {
+    id: "route-romanization-cover-first",
+    focus: "romanization-dependence",
+    audience: "both",
+    observedMistake: "Can read mainu madad chahidi hai but not ਮੈਨੂੰ ਮਦਦ ਚਾਹੀਦੀ ਹੈ.",
+    likelyCause_vi: "Romanization đã trở thành văn bản chính thay vì công cụ kiểm tra.",
+    likelyCause_en: "Romanization has become the main text instead of a checking aid.",
+    routeName: "Cover romanization, read Gurmukhi first",
+    repairDrill_vi: "Che romanization, đọc Gurmukhi hai lần, rồi mở romanization để kiểm tra.",
+    repairDrill_en: "Cover romanization, read Gurmukhi twice, then reveal romanization to check.",
+    model_pa: "ਮੈਨੂੰ ਮਦਦ ਚਾਹੀਦੀ ਹੈ।",
+    model_roman: "mainu madad chahidi hai.",
+    model_en: "I need help.",
+    nextStepIds: ["romanization-read-gurmukhi-first", "script-romanization-dependence"],
+    commonTrap: "Treating inconsistent romanization spellings as separate Punjabi words.",
+  },
+  {
+    id: "route-romanization-shahmukhi-boundary",
+    focus: "romanization-dependence",
+    audience: "both",
+    observedMistake: "Mixes romanization, Gurmukhi, and Shahmukhi examples in one spelling drill.",
+    likelyCause_vi: "Người học chưa phân biệt mục tiêu chữ viết của khóa học.",
+    likelyCause_en: "The learner has not separated the course script goal from awareness notes.",
+    routeName: "Script boundary reset",
+    repairDrill_vi: "Gắn nhãn tài liệu: Gurmukhi chính; Shahmukhi chỉ nhận biết, không phải khóa đầy đủ.",
+    repairDrill_en: "Label materials: Gurmukhi primary; Shahmukhi awareness only, not a full course.",
+    model_pa: "ਅਸੀਂ ਗੁਰਮੁਖੀ ਪੜ੍ਹਦੇ ਹਾਂ।",
+    model_roman: "asi gurmukhi parhde haan.",
+    model_en: "We study Gurmukhi.",
+    nextStepIds: ["gurmukhi-shahmukhi-awareness", "romanization-one-sound-many-spellings"],
+    commonTrap: "Using Shahmukhi material as if it were a Gurmukhi spelling answer.",
+  },
+  {
+    id: "route-public-service-library-card",
+    focus: "public-service-gaps",
+    audience: "both",
+    observedMistake: "Says only ਲਾਇਬ੍ਰੇਰੀ ਕਾਰਡ and cannot request one.",
+    likelyCause_vi: "Người học biết danh từ nhưng thiếu khung yêu cầu trong dịch vụ công.",
+    likelyCause_en: "The learner knows the noun but lacks a public-service request frame.",
+    routeName: "Document/card request frame",
+    repairDrill_vi: "Thay danh từ trong khung: ਮੈਂ ... ਬਣਵਾਉਣਾ ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ.",
+    repairDrill_en: "Swap nouns into the frame: ਮੈਂ ... ਬਣਵਾਉਣਾ ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ.",
+    model_pa: "ਮੈਂ ਲਾਇਬ੍ਰੇਰੀ ਕਾਰਡ ਬਣਵਾਉਣਾ ਚਾਹੁੰਦਾ/ਚਾਹੁੰਦੀ ਹਾਂ।",
+    model_roman: "main library card banvauna chahunda/chahundi haan.",
+    model_en: "I would like to get a library card.",
+    nextStepIds: ["public-service-library-card", "workplace-public-service-form"],
+    canadaPractical: true,
+  },
+  {
+    id: "route-public-service-deadline",
+    focus: "public-service-gaps",
+    audience: "both",
+    observedMistake: "Cannot ask when an application must be submitted.",
+    likelyCause_vi: "Thiếu cụm hạn nộp và động từ hành chính như ਜਮ੍ਹਾਂ ਕਰਨੀ ਹੈ.",
+    likelyCause_en: "The learner lacks deadline phrases and administrative verbs like ਜਮ੍ਹਾਂ ਕਰਨੀ ਹੈ.",
+    routeName: "Deadline and submission question",
+    repairDrill_vi: "Luyện câu hỏi với ਕਦੋਂ ਤੱਕ và ਜਮ੍ਹਾਂ ਕਰਨੀ ਹੈ.",
+    repairDrill_en: "Drill questions with ਕਦੋਂ ਤੱਕ and ਜਮ੍ਹਾਂ ਕਰਨੀ ਹੈ.",
+    model_pa: "ਇਹ ਅਰਜ਼ੀ ਕਦੋਂ ਤੱਕ ਜਮ੍ਹਾਂ ਕਰਨੀ ਹੈ?",
+    model_roman: "ih arzi kadon takk jamma karni hai?",
+    model_en: "By when must this application be submitted?",
+    nextStepIds: ["workplace-public-service-form", "public-service-form-address"],
+    commonTrap: "Asking only ਕਿੱਥੇ and missing the deadline requirement.",
+    canadaPractical: true,
+  },
+];
