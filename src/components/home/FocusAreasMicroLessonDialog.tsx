@@ -31,6 +31,10 @@
 // Thai-native English support: same pattern as id — th → en → vi fallback.
 // The per-section toggle cycles th / en / both.
 //
+// Portuguese-native English support (2026-06-24): when `nativeLanguage`
+// is "pt", section text is picked via getNativeContent() with
+// pt → en → vi fallback. The per-section toggle cycles pt / en / both.
+//
 // When `entry.linkedRoomId` is null the catalog doesn't yet have a
 // matching room — the CTA flips to a disabled "coming soon" affordance
 // instead of navigating anywhere.
@@ -82,7 +86,7 @@ interface FocusAreasMicroLessonDialogProps {
   nativeLanguage?: NativeLang;
 }
 
-type LessonLanguage = "both" | "vi" | "en" | "ja" | "id" | "th";
+type LessonLanguage = "both" | "vi" | "en" | "ja" | "id" | "th" | "pt";
 
 const SECTION_ORDER: Array<{
   key: keyof RichLesson["sections"];
@@ -253,6 +257,8 @@ function RichLessonBody({ lesson, nativeLanguage }: RichLessonBodyProps): React.
         next = current === "both" ? "id" : current === "id" ? "en" : "both";
       } else if (nativeLanguage === "th") {
         next = current === "both" ? "th" : current === "th" ? "en" : "both";
+      } else if (nativeLanguage === "pt") {
+        next = current === "both" ? "pt" : current === "pt" ? "en" : "both";
       } else {
         next = current === "both" ? "vi" : current === "vi" ? "en" : "both";
       }
@@ -271,6 +277,9 @@ function RichLessonBody({ lesson, nativeLanguage }: RichLessonBodyProps): React.
     }
     if (lang === "th") {
       return getNativeContent({ th: section.th, en: section.en, vi: section.vi }, "th");
+    }
+    if (lang === "pt") {
+      return getNativeContent({ pt: section.pt, en: section.en, vi: section.vi }, "pt");
     }
     if (lang === "en") return section.en;
     return section.vi;
@@ -324,6 +333,7 @@ function SectionBlock({
   const showJa = lang === "both" || lang === "ja";
   const showId = lang === "both" || lang === "id";
   const showTh = lang === "both" || lang === "th";
+  const showPt = lang === "both" || lang === "pt";
 
   // Pick the ja/id content via nativeContent seam (ja/id → en → vi fallback)
   const jaText = getNativeContent({ ja: section.ja, en: section.en, vi: section.vi }, "ja");
@@ -332,6 +342,8 @@ function SectionBlock({
   const idFallback = isNativeFallback({ id: section.id, en: section.en, vi: section.vi }, "id");
   const thText = getNativeContent({ th: section.th, en: section.en, vi: section.vi }, "th");
   const thFallback = isNativeFallback({ th: section.th, en: section.en, vi: section.vi }, "th");
+  const ptText = getNativeContent({ pt: section.pt, en: section.en, vi: section.vi }, "pt");
+  const ptFallback = isNativeFallback({ pt: section.pt, en: section.en, vi: section.vi }, "pt");
 
   // Toggle label adapts to nativeLanguage
   const toggleLabel =
@@ -341,7 +353,9 @@ function SectionBlock({
         ? lang === "both" ? "ID+EN" : lang === "id" ? "ID" : "EN"
         : nativeLanguage === "th"
           ? lang === "both" ? "TH+EN" : lang === "th" ? "TH" : "EN"
-          : lang === "both" ? "VI+EN" : lang === "vi" ? "VI" : "EN";
+          : nativeLanguage === "pt"
+            ? lang === "both" ? "PT+EN" : lang === "pt" ? "PT" : "EN"
+            : lang === "both" ? "VI+EN" : lang === "vi" ? "VI" : "EN";
 
   return (
     <section
@@ -415,6 +429,24 @@ function SectionBlock({
             </p>
           ) : null}
         </>
+      ) : nativeLanguage === "pt" ? (
+        <>
+          {showPt && ptText ? (
+            <p className="mt-1 text-sm leading-relaxed text-slate-800">
+              {renderInlineBold(ptText)}
+              {ptFallback && lang !== "both" && (
+                <span className="ml-1.5 rounded-full bg-slate-100 px-1.5 py-0.5 text-[9px] font-medium uppercase text-slate-600">
+                  EN
+                </span>
+              )}
+            </p>
+          ) : null}
+          {showEn ? (
+            <p className="mt-1 text-xs leading-relaxed text-slate-500">
+              {renderInlineBold(section.en)}
+            </p>
+          ) : null}
+        </>
       ) : (
         <>
           {showVi ? (
@@ -464,24 +496,24 @@ function QuizItem({ index, question, nativeLanguage }: QuizItemProps): React.Rea
 
   // Pick question text via nativeContent seam
   const questionText = getNativeContent(
-    { ja: question.question.ja, id: question.question.id, th: question.question.th, en: question.question.en, vi: question.question.vi },
+    { ja: question.question.ja, id: question.question.id, th: question.question.th, pt: question.question.pt, en: question.question.en, vi: question.question.vi },
     nativeLanguage,
   );
   const questionFallback = isNativeFallback(
-    { ja: question.question.ja, id: question.question.id, th: question.question.th, en: question.question.en, vi: question.question.vi },
+    { ja: question.question.ja, id: question.question.id, th: question.question.th, pt: question.question.pt, en: question.question.en, vi: question.question.vi },
     nativeLanguage,
   );
 
   // Pick explanation text via nativeContent seam
   const explanationText = question.explanation
     ? getNativeContent(
-        { ja: question.explanation.ja, id: question.explanation.id, th: question.explanation.th, en: question.explanation.en, vi: question.explanation.vi },
+        { ja: question.explanation.ja, id: question.explanation.id, th: question.explanation.th, pt: question.explanation.pt, en: question.explanation.en, vi: question.explanation.vi },
         nativeLanguage,
       )
     : undefined;
   const explanationFallback = question.explanation
     ? isNativeFallback(
-        { ja: question.explanation.ja, id: question.explanation.id, th: question.explanation.th, en: question.explanation.en, vi: question.explanation.vi },
+        { ja: question.explanation.ja, id: question.explanation.id, th: question.explanation.th, pt: question.explanation.pt, en: question.explanation.en, vi: question.explanation.vi },
         nativeLanguage,
       )
     : false;
@@ -489,6 +521,7 @@ function QuizItem({ index, question, nativeLanguage }: QuizItemProps): React.Rea
   const isJa = nativeLanguage === "ja";
   const isId = nativeLanguage === "id";
   const isTh = nativeLanguage === "th";
+  const isPt = nativeLanguage === "pt";
 
   return (
     <li className="rounded border border-amber-100 bg-white p-2">
@@ -531,6 +564,20 @@ function QuizItem({ index, question, nativeLanguage }: QuizItemProps): React.Rea
             )}
           </p>
           {question.question.th && (
+            <p className="text-xs text-slate-500">{question.question.en}</p>
+          )}
+        </>
+      ) : isPt ? (
+        <>
+          <p className="font-medium text-slate-800">
+            {index + 1}. {renderInlineBold(questionText ?? question.question.en)}
+            {questionFallback && (
+              <span className="ml-1.5 rounded-full bg-slate-100 px-1.5 py-0.5 text-[9px] font-medium uppercase text-slate-600">
+                EN
+              </span>
+            )}
+          </p>
+          {question.question.pt && (
             <p className="text-xs text-slate-500">{question.question.en}</p>
           )}
         </>
@@ -577,6 +624,15 @@ function QuizItem({ index, question, nativeLanguage }: QuizItemProps): React.Rea
                 )}
               </p>
             ) : isId ? (
+              <p className="mt-1 text-slate-700">
+                {renderInlineBold(explanationText ?? question.explanation.en)}
+                {explanationFallback && (
+                  <span className="ml-1.5 rounded-full bg-slate-100 px-1.5 py-0.5 text-[9px] font-medium uppercase text-slate-600">
+                    EN
+                  </span>
+                )}
+              </p>
+            ) : isPt ? (
               <p className="mt-1 text-slate-700">
                 {renderInlineBold(explanationText ?? question.explanation.en)}
                 {explanationFallback && (

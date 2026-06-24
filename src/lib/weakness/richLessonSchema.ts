@@ -43,6 +43,8 @@ export interface RichLessonSection {
   ko?: string;
   /** Optional Chinese-native English explanation — for zh-native learners. */
   zh?: string;
+  /** Optional Portuguese (Brazilian)-native English explanation — for pt-native learners. */
+  pt?: string;
 }
 
 export interface RichLessonSections {

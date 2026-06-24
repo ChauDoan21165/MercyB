@@ -5870,6 +5870,661 @@
           }
         }
       ]
+    },
+    {
+      "tag": "pt_l1_subject_pronoun_drop",
+      "title": {
+        "en": "Subject pronouns — don't drop them",
+        "vi": "Đại từ chủ ngữ — đừng bỏ"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"Speak English very well.\" If you're Brazilian, this sentence probably looks fine. **Falo inglês muito bem** — the verb ending tells you who speaks. But English is strict: every sentence needs an explicit subject.",
+          "vi": "\"Speak English very well.\" Nếu bạn nói tiếng Bồ Đào Nha, câu này có vẻ ổn. **Falo inglês muito bem** — đuôi động từ chỉ rõ ai nói. Nhưng tiếng Anh khắt khe: mỗi câu đều cần chủ ngữ rõ ràng.",
+          "pt": "\"Speak English very well.\" Se você é brasileiro, esta frase provavelmente parece correta. **Falo inglês muito bem** — a desinência verbal já indica quem fala. Mas o inglês é rigoroso: toda frase precisa de um sujeito explícito."
+        },
+        "why": {
+          "en": "Portuguese is a **pro-drop** language — the verb ending carries the subject, so you can drop **eu**, **você**, **nós**, **eles** freely. English is the opposite: it has almost no verb endings (only **-s** for he/she/it), so the subject pronoun is mandatory. **Falo português** → **I speak Portuguese**, not **Speak Portuguese**.",
+          "vi": "Tiếng Bồ Đào Nha là ngôn ngữ **pro-drop** — đuôi động từ mang thông tin chủ ngữ, nên bạn có thể bỏ **eu**, **você**, **nós**, **eles**. Tiếng Anh ngược lại: hầu như không có đuôi động từ (chỉ thêm **-s** cho he/she/it), nên đại từ chủ ngữ là bắt buộc. **Falo português** → **I speak Portuguese**, không phải **Speak Portuguese**.",
+          "pt": "O português é uma língua **pro-drop** — a desinência verbal carrega o sujeito, então você pode omitir **eu**, **você**, **nós**, **eles** à vontade. O inglês é o oposto: quase não tem desinências verbais (apenas **-s** para he/she/it), então o pronome sujeito é obrigatório. **Falo português** → **I speak Portuguese**, não **Speak Portuguese**."
+        },
+        "pattern": {
+          "en": "Every English sentence needs a subject before the verb. **I** speak. **You** go. **He** works. **She** studies. **It** rains. **We** live. **They** eat. The only exception is imperatives: **Sit down!** (you is implied). For everything else: **subject + verb** is the minimum.",
+          "vi": "Mọi câu tiếng Anh đều cần chủ ngữ trước động từ. **I** speak. **You** go. **He** works. **She** studies. **It** rains. **We** live. **They** eat. Ngoại lệ duy nhất là câu mệnh lệnh: **Sit down!** (you được ngầm hiểu). Còn lại tất cả: **chủ ngữ + động từ** là tối thiểu.",
+          "pt": "Toda frase em inglês precisa de um sujeito antes do verbo. **I** speak. **You** go. **He** works. **She** studies. **It** rains. **We** live. **They** eat. A única exceção são os imperativos: **Sit down!** (you está implícito). Para todo o resto: **sujeito + verbo** é o mínimo."
+        },
+        "practice": {
+          "en": "Say these aloud, noticing that every sentence starts with a subject: \"**I** need a coffee.\" \"**She** works at a bank.\" \"**We** went to the beach yesterday.\" \"**They** arrived late.\" \"**It** is raining outside.\" Feel how dropping the subject would sound incomplete: \"Need a coffee\" — who needs it?",
+          "vi": "Nói thành tiếng, chú ý mỗi câu đều bắt đầu bằng chủ ngữ: \"**I** need a coffee.\" \"**She** works at a bank.\" \"**We** went to the beach yesterday.\" \"**They** arrived late.\" \"**It** is raining outside.\" Cảm nhận sự thiếu hụt nếu bỏ chủ ngữ: \"Need a coffee\" — ai cần?",
+          "pt": "Diga em voz alta, notando que toda frase começa com um sujeito: \"**I** need a coffee.\" \"**She** works at a bank.\" \"**We** went to the beach yesterday.\" \"**They** arrived late.\" \"**It** is raining outside.\" Sinta como omitir o sujeito soa incompleto: \"Need a coffee\" — quem precisa?"
+        },
+        "takeaway": {
+          "en": "In English, the subject is never optional. **I** speak, **you** speak, **they** speak — every time.",
+          "vi": "Trong tiếng Anh, chủ ngữ không bao giờ được tùy chọn. **I** speak, **you** speak, **they** speak — mọi lúc.",
+          "pt": "Em inglês, o sujeito nunca é opcional. **I** speak, **you** speak, **they** speak — sempre."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "pt": "Escolha a frase correta:"
+          },
+          "options": [
+            "Speak English very well.",
+            "I speak English very well.",
+            "Speaking English very well.",
+            "To speak English very well."
+          ],
+          "correctAnswer": "I speak English very well.",
+          "explanation": {
+            "en": "English needs a subject before the verb: **I speak**.",
+            "vi": "Tiếng Anh cần chủ ngữ trước động từ: **I speak**.",
+            "pt": "O inglês precisa de um sujeito antes do verbo: **I speak**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: ___ works at a hospital.",
+            "vi": "Điền vào chỗ trống: ___ works at a hospital.",
+            "pt": "Preencha a lacuna: ___ works at a hospital."
+          },
+          "options": [
+            "She",
+            "Works",
+            "Work",
+            "Working"
+          ],
+          "correctAnswer": "She",
+          "explanation": {
+            "en": "A subject pronoun is needed before **works**: **She works**.",
+            "vi": "Cần đại từ chủ ngữ trước **works**: **She works**.",
+            "pt": "Um pronome sujeito é necessário antes de **works**: **She works**."
+          }
+        },
+        {
+          "question": {
+            "en": "Which sentence is correct?",
+            "vi": "Câu nào đúng?",
+            "pt": "Qual frase está correta?"
+          },
+          "options": [
+            "Is a doctor.",
+            "He is a doctor.",
+            "Doctor is he.",
+            "Is he doctor."
+          ],
+          "correctAnswer": "He is a doctor.",
+          "explanation": {
+            "en": "**He** as the subject before **is**: **He is a doctor**.",
+            "vi": "**He** làm chủ ngữ trước **is**: **He is a doctor**.",
+            "pt": "**He** como sujeito antes de **is**: **He is a doctor**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: ___ went to the cinema last night.",
+            "vi": "Điền vào chỗ trống: ___ went to the cinema last night.",
+            "pt": "Preencha a lacuna: ___ went to the cinema last night."
+          },
+          "options": [
+            "Went",
+            "We",
+            "Going",
+            "To go"
+          ],
+          "correctAnswer": "We",
+          "explanation": {
+            "en": "**We** is the subject. English doesn't drop it: **We went**.",
+            "vi": "**We** là chủ ngữ. Tiếng Anh không bỏ được: **We went**.",
+            "pt": "**We** é o sujeito. O inglês não o omite: **We went**."
+          }
+        },
+        {
+          "question": {
+            "en": "Which of these is correct?",
+            "vi": "Câu nào đúng?",
+            "pt": "Qual destas está correta?"
+          },
+          "options": [
+            "Are happy.",
+            "They are happy.",
+            "Happy they are.",
+            "Are they happy."
+          ],
+          "correctAnswer": "They are happy.",
+          "explanation": {
+            "en": "**They** as the explicit subject: **They are happy**.",
+            "vi": "**They** làm chủ ngữ rõ ràng: **They are happy**.",
+            "pt": "**They** como sujeito explícito: **They are happy**."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "pt_l1_double_negative",
+      "title": {
+        "en": "One negative per clause",
+        "vi": "Một phủ định mỗi mệnh đề"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"I don't have no money.\" This sentence sounds perfectly natural in Portuguese — **Não tenho dinheiro nenhum**. But in English, two negatives cancel each other out. If you don't have ANY money, say **I don't have any money**.",
+          "vi": "\"I don't have no money.\" Câu này nghe rất tự nhiên trong tiếng Bồ Đào Nha — **Não tenho dinheiro nenhum**. Nhưng trong tiếng Anh, hai phủ định triệt tiêu lẫn nhau. Nếu bạn không có tiền, hãy nói **I don't have any money**.",
+          "pt": "\"I don't have no money.\" Esta frase soa perfeitamente natural em português — **Não tenho dinheiro nenhum**. Mas em inglês, duas negações se anulam. Se você NÃO tem dinheiro, diga **I don't have any money**."
+        },
+        "why": {
+          "en": "Portuguese reinforces negatives — you use **não** before the verb and a negative word (**ninguém**, **nada**, **nenhum**) after it. English does the opposite: one negative per clause, and any following indefinite words switch to **any-** forms: **anyone**, **anything**, **any**, **ever**.",
+          "vi": "Tiếng Bồ Đào Nha nhấn mạnh phủ định — dùng **não** trước động từ và từ phủ định (**ninguém**, **nada**, **nenhum**) sau đó. Tiếng Anh ngược lại: một phủ định mỗi mệnh đề, và các từ bất định sau đó chuyển sang dạng **any-**: **anyone**, **anything**, **any**, **ever**.",
+          "pt": "O português reforça a negação — você usa **não** antes do verbo e uma palavra negativa (**ninguém**, **nada**, **nenhum**) depois. O inglês faz o oposto: uma negação por oração, e as palavras indefinidas seguintes mudam para formas com **any-**: **anyone**, **anything**, **any**, **ever**."
+        },
+        "pattern": {
+          "en": "**Rule**: Use only ONE negative word per clause. \"I don't know\" ✓. \"I don't know nothing\" ✗ → \"I don't know **anything**\" ✓. \"Nobody came\" ✓. \"Nobody didn't come\" ✗ → \"**Nobody came**\" ✓. Key pairs: **don't** + **any** (not **no**); **nobody** / **nothing** alone (no **don't** needed).",
+          "vi": "**Quy tắc**: Chỉ dùng MỘT từ phủ định mỗi mệnh đề. \"I don't know\" ✓. \"I don't know nothing\" ✗ → \"I don't know **anything**\" ✓. \"Nobody came\" ✓. \"Nobody didn't come\" ✗ → \"**Nobody came**\" ✓. Các cặp chính: **don't** + **any** (không phải **no**); **nobody** / **nothing** đứng một mình (không cần **don't**).",
+          "pt": "**Regra**: Use apenas UMA palavra negativa por oração. \"I don't know\" ✓. \"I don't know nothing\" ✗ → \"I don't know **anything**\" ✓. \"Nobody came\" ✓. \"Nobody didn't come\" ✗ → \"**Nobody came**\" ✓. Pares-chave: **don't** + **any** (não **no**); **nobody** / **nothing** sozinhos (sem **don't**)."
+        },
+        "practice": {
+          "en": "Say these corrections aloud: \"I don't have **any** money\" (not **no** money). \"She didn't see **anyone**\" (not **nobody**). \"He never does **anything**\" (not **nothing**). \"**Nobody** knows\" (not **Nobody doesn't** know). \"**Nothing** happened\" (not **Nothing didn't** happen). Feel how English strips the extra negative.",
+          "vi": "Nói to các câu sửa này: \"I don't have **any** money\" (không phải **no** money). \"She didn't see **anyone**\" (không phải **nobody**). \"He never does **anything**\" (không phải **nothing**). \"**Nobody** knows\" (không phải **Nobody doesn't** know). Cảm nhận cách tiếng Anh bỏ bớt phủ định thừa.",
+          "pt": "Diga estas correções em voz alta: \"I don't have **any** money\" (não **no** money). \"She didn't see **anyone**\" (não **nobody**). \"He never does **anything**\" (não **nothing**). \"**Nobody** knows\" (não **Nobody doesn't** know). Sinta como o inglês elimina a negação extra."
+        },
+        "takeaway": {
+          "en": "One negative per clause. If you've already used **not**, **nobody**, **nothing**, or **never**, don't add another negative.",
+          "vi": "Một phủ định mỗi mệnh đề. Nếu đã dùng **not**, **nobody**, **nothing**, hoặc **never**, đừng thêm phủ định khác.",
+          "pt": "Uma negação por oração. Se você já usou **not**, **nobody**, **nothing** ou **never**, não adicione outra negação."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "pt": "Escolha a frase correta:"
+          },
+          "options": [
+            "I don't have no money.",
+            "I don't have any money.",
+            "I have no any money.",
+            "I not have money."
+          ],
+          "correctAnswer": "I don't have any money.",
+          "explanation": {
+            "en": "**don't** + **any** is correct. **no** with **don't** is a double negative.",
+            "vi": "**don't** + **any** là đúng. **no** với **don't** là phủ định kép.",
+            "pt": "**don't** + **any** está correto. **no** com **don't** é uma dupla negação."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: She didn't see ___.",
+            "vi": "Điền vào chỗ trống: She didn't see ___.",
+            "pt": "Preencha a lacuna: She didn't see ___."
+          },
+          "options": [
+            "nobody",
+            "anybody",
+            "somebody",
+            "no one"
+          ],
+          "correctAnswer": "anybody",
+          "explanation": {
+            "en": "After **didn't**, use **anybody** (not nobody).",
+            "vi": "Sau **didn't**, dùng **anybody** (không phải nobody).",
+            "pt": "Depois de **didn't**, use **anybody** (não nobody)."
+          }
+        },
+        {
+          "question": {
+            "en": "Which is correct?",
+            "vi": "Câu nào đúng?",
+            "pt": "Qual está correta?"
+          },
+          "options": [
+            "Nobody knows the answer.",
+            "Nobody doesn't know the answer.",
+            "Anybody knows the answer.",
+            "Nobody know the answer."
+          ],
+          "correctAnswer": "Nobody knows the answer.",
+          "explanation": {
+            "en": "**Nobody** alone is enough — no extra negative needed.",
+            "vi": "**Nobody** đứng một mình là đủ — không cần thêm phủ định.",
+            "pt": "**Nobody** sozinho é suficiente — nenhuma negação extra necessária."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: He never does ___.",
+            "vi": "Điền vào chỗ trống: He never does ___.",
+            "pt": "Preencha a lacuna: He never does ___."
+          },
+          "options": [
+            "nothing",
+            "anything",
+            "something",
+            "no thing"
+          ],
+          "correctAnswer": "anything",
+          "explanation": {
+            "en": "**never** is the negative word — follow with **anything**, not nothing.",
+            "vi": "**never** là từ phủ định — theo sau là **anything**, không phải nothing.",
+            "pt": "**never** é a palavra negativa — continue com **anything**, não nothing."
+          }
+        },
+        {
+          "question": {
+            "en": "Correct the sentence: I didn't tell nobody.",
+            "vi": "Sửa câu: I didn't tell nobody.",
+            "pt": "Corrija a frase: I didn't tell nobody."
+          },
+          "options": [
+            "I didn't tell nobody.",
+            "I didn't tell anybody.",
+            "I told nobody.",
+            "I not told nobody."
+          ],
+          "correctAnswer": "I didn't tell anybody.",
+          "explanation": {
+            "en": "**didn't** + **anybody** replaces **didn't** + **nobody**.",
+            "vi": "**didn't** + **anybody** thay thế **didn't** + **nobody**.",
+            "pt": "**didn't** + **anybody** substitui **didn't** + **nobody**."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "pt_l1_present_perfect_vs_past",
+      "title": {
+        "en": "Simple past vs present perfect — **pretérito perfeito** covers both",
+        "vi": "Quá khứ đơn vs hiện tại hoàn thành — **pretérito perfeito** mang hai nghĩa"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"I have eaten breakfast this morning.\" If you're Brazilian, this sentence probably looks fine. **Comi café da manhã hoje** — one past tense for everything. But in English, **this morning** is finished if it's now afternoon, so you need simple past: **I ate breakfast this morning.**",
+          "vi": "\"I have eaten breakfast this morning.\" Nếu bạn nói tiếng Bồ Đào Nha, câu này có vẻ ổn. **Comi café da manhã hoje** — một thì quá khứ cho mọi thứ. Nhưng tiếng Anh, **this morning** đã kết thúc nếu bây giờ là chiều, nên phải dùng quá khứ đơn: **I ate breakfast this morning.**",
+          "pt": "\"I have eaten breakfast this morning.\" Se você é brasileiro, esta frase provavelmente parece correta. **Comi café da manhã hoje** — um único passado para tudo. Mas em inglês, **this morning** é um período que já terminou se agora é tarde, então você precisa do simple past: **I ate breakfast this morning.**"
+        },
+        "why": {
+          "en": "Portuguese uses **pretérito perfeito** (comprei, fiz, falei) for both simple past and present perfect contexts. English makes a sharp split: simple past for finished actions at a specific past time; present perfect for experiences, results, or ongoing relevance without a specific time. If a sentence names **yesterday**, **last week**, **in 1990**, **ago**, or a finished **this morning** — it's simple past, never present perfect.",
+          "vi": "Tiếng Bồ Đào Nha dùng **pretérito perfeito** (comprei, fiz, falei) cho cả quá khứ đơn và hiện tại hoàn thành. Tiếng Anh phân biệt rõ: quá khứ đơn cho hành động đã kết thúc ở thời điểm cụ thể; hiện tại hoàn thành cho kinh nghiệm, kết quả, hoặc sự liên quan hiện tại không có thời gian cụ thể. Nếu câu có **yesterday**, **last week**, **in 1990**, **ago** — đó là quá khứ đơn, không bao giờ là hiện tại hoàn thành.",
+          "pt": "O português usa o **pretérito perfeito** (comprei, fiz, falei) tanto para o passado simples quanto para contextos de present perfect. O inglês faz uma divisão clara: simple past para ações concluídas em um tempo passado específico; present perfect para experiências, resultados ou relevância contínua sem tempo específico. Se uma frase menciona **yesterday**, **last week**, **in 1990**, **ago** — é simple past, nunca present perfect."
+        },
+        "pattern": {
+          "en": "**Specific past time → simple past**: \"I ate breakfast this morning.\" (NOT \"I have eaten…\") **Life experience / general result → present perfect**: \"I have been to Japan.\" (no time mentioned) **Already, yet, just → present perfect**: \"She has already left.\" \"Have you finished yet?\" **Since / for → present perfect**: \"I have lived here for five years.\" Key test: if you can add **yesterday** or **last week** to the sentence and it still makes sense, use simple past.",
+          "vi": "**Thời gian cụ thể trong quá khứ → quá khứ đơn**: \"I ate breakfast this morning.\" (KHÔNG \"I have eaten…\") **Kinh nghiệm / kết quả chung → hiện tại hoàn thành**: \"I have been to Japan.\" (không có thời gian) **Already, yet, just → hiện tại hoàn thành**: \"She has already left.\" \"Have you finished yet?\" **Since / for → hiện tại hoàn thành**: \"I have lived here for five years.\" Kiểm tra: nếu bạn có thể thêm **yesterday** hoặc **last week** vào câu, dùng quá khứ đơn.",
+          "pt": "**Tempo passado específico → simple past**: \"I ate breakfast this morning.\" (NÃO \"I have eaten…\") **Experiência de vida / resultado geral → present perfect**: \"I have been to Japan.\" (sem tempo mencionado) **Already, yet, just → present perfect**: \"She has already left.\" \"Have you finished yet?\" **Since / for → present perfect**: \"I have lived here for five years.\" Teste: se você puder adicionar **yesterday** ou **last week** à frase e ela ainda fizer sentido, use simple past."
+        },
+        "practice": {
+          "en": "Say each pair aloud: \"I **ate** breakfast this morning.\" vs \"I **have eaten** sushi before.\" \"She **went** to Rio last month.\" vs \"She **has been** to Rio three times.\" \"He **left** five minutes ago.\" vs \"He **has just left**.\" The time word tells you which: specific past (yesterday, ago, last week, this morning finished) → simple past. No specific time, or already/yet/just/ever → present perfect.",
+          "vi": "Nói thành tiếng từng cặp: \"I **ate** breakfast this morning.\" vs \"I **have eaten** sushi before.\" \"She **went** to Rio last month.\" vs \"She **has been** to Rio three times.\" \"He **left** five minutes ago.\" vs \"He **has just left**.\" Từ thời gian quyết định: quá khứ cụ thể (yesterday, ago, last week) → quá khứ đơn. Không có thời gian cụ thể → hiện tại hoàn thành.",
+          "pt": "Diga cada par em voz alta: \"I **ate** breakfast this morning.\" vs \"I **have eaten** sushi before.\" \"She **went** to Rio last month.\" vs \"She **has been** to Rio three times.\" \"He **left** five minutes ago.\" vs \"He **has just left**.\" A palavra de tempo indica qual usar: passado específico (yesterday, ago, last week) → simple past. Sem tempo específico → present perfect."
+        },
+        "takeaway": {
+          "en": "Time word decides the tense. Specific past → simple past. No specific time + still relevant → present perfect. If the time period is finished (this morning when it's now afternoon), it's simple past.",
+          "vi": "Từ chỉ thời gian quyết định thì. Quá khứ cụ thể → quá khứ đơn. Không có thời gian cụ thể + còn liên quan → hiện tại hoàn thành. Nếu khoảng thời gian đã kết thúc, dùng quá khứ đơn.",
+          "pt": "A palavra de tempo decide o tempo verbal. Passado específico → simple past. Sem tempo específico + ainda relevante → present perfect. Se o período já terminou (this morning quando já é tarde), é simple past."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "pt": "Escolha a frase correta:"
+          },
+          "options": [
+            "I have eaten breakfast this morning.",
+            "I ate breakfast this morning.",
+            "I have ate breakfast this morning.",
+            "I eat breakfast this morning."
+          ],
+          "correctAnswer": "I ate breakfast this morning.",
+          "explanation": {
+            "en": "**this morning** is finished → simple past: **ate**.",
+            "vi": "**this morning** đã kết thúc → quá khứ đơn: **ate**.",
+            "pt": "**this morning** já terminou → simple past: **ate**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: I ___ to Japan three times.",
+            "vi": "Điền vào chỗ trống: I ___ to Japan three times.",
+            "pt": "Preencha a lacuna: I ___ to Japan three times."
+          },
+          "options": [
+            "went",
+            "have been",
+            "was",
+            "go"
+          ],
+          "correctAnswer": "have been",
+          "explanation": {
+            "en": "Life experience, no specific time → present perfect: **have been**.",
+            "vi": "Kinh nghiệm sống, không thời gian cụ thể → present perfect: **have been**.",
+            "pt": "Experiência de vida, sem tempo específico → present perfect: **have been**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: She ___ her homework yet.",
+            "vi": "Điền vào chỗ trống: She ___ her homework yet.",
+            "pt": "Preencha a lacuna: She ___ her homework yet."
+          },
+          "options": [
+            "didn't finish",
+            "hasn't finished",
+            "doesn't finish",
+            "not finished"
+          ],
+          "correctAnswer": "hasn't finished",
+          "explanation": {
+            "en": "**yet** signals present perfect negative: **hasn't finished**.",
+            "vi": "**yet** báo hiệu hiện tại hoàn thành phủ định: **hasn't finished**.",
+            "pt": "**yet** sinaliza present perfect negativo: **hasn't finished**."
+          }
+        },
+        {
+          "question": {
+            "en": "Which sentence is correct?",
+            "vi": "Câu nào đúng?",
+            "pt": "Qual frase está correta?"
+          },
+          "options": [
+            "He left just.",
+            "He has just left.",
+            "He just left.",
+            "He just has left."
+          ],
+          "correctAnswer": "He has just left.",
+          "explanation": {
+            "en": "**just** + present perfect: **has just left**.",
+            "vi": "**just** + hiện tại hoàn thành: **has just left**.",
+            "pt": "**just** + present perfect: **has just left**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: I ___ here since 2019.",
+            "vi": "Điền vào chỗ trống: I ___ here since 2019.",
+            "pt": "Preencha a lacuna: I ___ here since 2019."
+          },
+          "options": [
+            "lived",
+            "live",
+            "have lived",
+            "am living"
+          ],
+          "correctAnswer": "have lived",
+          "explanation": {
+            "en": "**since** + starting point → present perfect: **have lived**.",
+            "vi": "**since** + điểm bắt đầu → hiện tại hoàn thành: **have lived**.",
+            "pt": "**since** + ponto de partida → present perfect: **have lived**."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "pt_c2_inversion_emphasis",
+      "title": {
+        "en": "Inversion for emphasis",
+        "vi": "Đảo ngữ nhấn mạnh"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"Never I have seen such dedication.\" As a Portuguese speaker, this might feel right — **Nunca vi tanta dedicação** keeps the normal subject-verb order. But English flips the script: when a negative word opens the sentence, the auxiliary jumps in front of the subject.",
+          "vi": "\"Never I have seen such dedication.\" Người nói tiếng Bồ Đào Nha thấy câu này có vẻ đúng — **Nunca vi tanta dedicação** giữ nguyên trật tự chủ ngữ-động từ. Nhưng tiếng Anh đảo ngược: khi từ phủ định mở đầu câu, trợ động từ nhảy lên trước chủ ngữ.",
+          "pt": "\"Never I have seen such dedication.\" Para um falante de português, esta frase parece correta — **Nunca vi tanta dedicação** mantém a ordem sujeito-verbo normal. Mas o inglês inverte: quando uma palavra negativa abre a frase, o auxiliar pula para a frente do sujeito."
+        },
+        "why": {
+          "en": "Portuguese can put **nunca**, **talvez**, **raramente** at the front without changing word order: **Nunca vi algo assim** keeps subject-verb intact. English is stricter: after negative or restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**, the subject and auxiliary must invert. This is a C2-level marker of formal, emphatic writing.",
+          "vi": "Tiếng Bồ Đào Nha có thể đặt **nunca**, **talvez**, **raramente** ở đầu mà không đổi trật tự từ: **Nunca vi algo assim** giữ nguyên chủ ngữ-động từ. Tiếng Anh khắt khe hơn: sau các trạng từ phủ định hoặc hạn chế như **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**, chủ ngữ và trợ động từ phải đảo chỗ.",
+          "pt": "O português pode colocar **nunca**, **talvez**, **raramente** no início sem alterar a ordem das palavras: **Nunca vi algo assim** mantém sujeito-verbo intacto. O inglês é mais rigoroso: depois de advérbios negativos ou restritivos como **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**, o sujeito e o auxiliar devem inverter-se."
+        },
+        "pattern": {
+          "en": "**Structure**: Negative adverbial + auxiliary + subject + verb. \"Never **have I** seen…\" \"Rarely **does she** complain…\" \"Not only **did they** arrive late…\" \"Hardly **had we** left…\" \"No sooner **had she** finished…\" \"Under no circumstances **should you** open this door.\" The inversion mirrors question word order — think of it as making a question after the negative opener.",
+          "vi": "**Cấu trúc**: Trạng từ phủ định + trợ động từ + chủ ngữ + động từ. \"Never **have I** seen…\" \"Rarely **does she** complain…\" \"Not only **did they** arrive late…\" \"Hardly **had we** left…\" \"No sooner **had she** finished…\" \"Under no circumstances **should you** open this door.\"",
+          "pt": "**Estrutura**: Advérbio negativo + auxiliar + sujeito + verbo. \"Never **have I** seen…\" \"Rarely **does she** complain…\" \"Not only **did they** arrive late…\" \"Hardly **had we** left…\" \"No sooner **had she** finished…\" \"Under no circumstances **should you** open this door.\""
+        },
+        "practice": {
+          "en": "Read each pair, emphasizing the inverted pattern: \"**Never** have I been so embarrassed.\" \"**Rarely** does he miss a deadline.\" \"**Not only** did he finish the report, but he also prepared the presentation.\" \"**Hardly** had we sat down when the fire alarm went off.\" \"**No sooner** had she arrived than the meeting ended.\" \"**Under no circumstances** should you share your password.\"",
+          "vi": "Đọc từng cặp, nhấn mạnh cấu trúc đảo ngữ: \"**Never** have I been so embarrassed.\" \"**Rarely** does he miss a deadline.\" \"**Not only** did he finish the report…\"",
+          "pt": "Leia cada par, enfatizando o padrão invertido: \"**Never** have I been so embarrassed.\" \"**Rarely** does he miss a deadline.\" \"**Not only** did he finish the report, but he also prepared the presentation.\" \"**Hardly** had we sat down when the fire alarm went off.\""
+        },
+        "takeaway": {
+          "en": "Negative first word → invert. Think: opener + question order + rest of sentence.",
+          "vi": "Từ phủ định đầu câu → đảo ngữ. Nhớ: mở đầu + trật tự câu hỏi + phần còn lại.",
+          "pt": "Palavra negativa no início → inverta. Pense: abertura + ordem de pergunta + resto da frase."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "pt": "Escolha a frase correta:"
+          },
+          "options": [
+            "Never I have seen such beauty.",
+            "Never have I seen such beauty.",
+            "Never I seen such beauty.",
+            "Never I did see such beauty."
+          ],
+          "correctAnswer": "Never have I seen such beauty.",
+          "explanation": {
+            "en": "**Never** at the start → invert: **have I seen**.",
+            "vi": "**Never** ở đầu câu → đảo ngữ: **have I seen**.",
+            "pt": "**Never** no início → inverta: **have I seen**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: Rarely ___ such kindness.",
+            "vi": "Điền vào chỗ trống: Rarely ___ such kindness.",
+            "pt": "Preencha a lacuna: Rarely ___ such kindness."
+          },
+          "options": [
+            "I have seen",
+            "have I seen",
+            "I saw",
+            "did I saw"
+          ],
+          "correctAnswer": "have I seen",
+          "explanation": {
+            "en": "**Rarely** at the start → **have I seen**.",
+            "vi": "**Rarely** ở đầu → **have I seen**.",
+            "pt": "**Rarely** no início → **have I seen**."
+          }
+        },
+        {
+          "question": {
+            "en": "Correct this sentence: Not only he was late, but he also forgot the documents.",
+            "vi": "Sửa câu: Not only he was late, but he also forgot the documents.",
+            "pt": "Corrija: Not only he was late, but he also forgot the documents."
+          },
+          "options": [
+            "Not only he was late…",
+            "Not only was he late…",
+            "Not only he is late…",
+            "Only not he was late…"
+          ],
+          "correctAnswer": "Not only was he late…",
+          "explanation": {
+            "en": "**Not only** → invert subject and auxiliary: **was he**.",
+            "vi": "**Not only** → đảo chủ ngữ và trợ động từ: **was he**.",
+            "pt": "**Not only** → inverta sujeito e auxiliar: **was he**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: Hardly ___ left when the storm hit.",
+            "vi": "Điền vào chỗ trống: Hardly ___ left when the storm hit.",
+            "pt": "Preencha a lacuna: Hardly ___ left when the storm hit."
+          },
+          "options": [
+            "had we",
+            "we had",
+            "we have",
+            "did we"
+          ],
+          "correctAnswer": "had we",
+          "explanation": {
+            "en": "**Hardly** → **had + subject** → **had we left**.",
+            "vi": "**Hardly** → **had + chủ ngữ** → **had we left**.",
+            "pt": "**Hardly** → **had + sujeito** → **had we left**."
+          }
+        },
+        {
+          "question": {
+            "en": "Complete: Under no circumstances ___ this door.",
+            "vi": "Hoàn thành: Under no circumstances ___ this door.",
+            "pt": "Complete: Under no circumstances ___ this door."
+          },
+          "options": [
+            "you should open",
+            "should you open",
+            "you should not open",
+            "you open"
+          ],
+          "correctAnswer": "should you open",
+          "explanation": {
+            "en": "**Under no circumstances** → modal + subject: **should you open**.",
+            "vi": "**Under no circumstances** → modal + chủ ngữ: **should you open**.",
+            "pt": "**Under no circumstances** → modal + sujeito: **should you open**."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "pt_c2_cleft_focus",
+      "title": {
+        "en": "Cleft sentences for focus",
+        "vi": "Câu chẻ nhấn mạnh"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"What I need it is more time.\" You probably know that **é que** in Portuguese moves emphasis around — **O que eu preciso é de mais tempo**. English has a similar tool, but without the extra pronoun: **What I need is more time.**",
+          "vi": "\"What I need it is more time.\" Bạn hẳn biết **é que** trong tiếng Bồ Đào Nha giúp nhấn mạnh — **O que eu preciso é de mais tempo**. Tiếng Anh cũng có công cụ tương tự, nhưng không có đại từ thừa: **What I need is more time.**",
+          "pt": "\"What I need it is more time.\" Você provavelmente sabe que o **é que** do português desloca a ênfase — **O que eu preciso é de mais tempo**. O inglês tem uma ferramenta similar, mas sem o pronome extra: **What I need is more time.**"
+        },
+        "why": {
+          "en": "Portuguese uses **é que** after the focused element for emphasis: **Foi o João que quebrou a janela**. English has a richer system. **It-clefts** (**It was John who broke the window**) pull one element into the spotlight. **Wh-clefts** (**What I need is more time**) package a whole idea as the subject. The Portuguese speaker's trap: adding an extra pronoun after the **Wh**-word — English has only **What I need IS**, not **What I need it is**.",
+          "vi": "Tiếng Bồ Đào Nha dùng **é que** sau yếu tố được nhấn mạnh: **Foi o João que quebrou a janela**. Tiếng Anh có hệ thống phong phú hơn. **It-clefts** (**It was John who broke the window**) kéo một yếu tố vào tiêu điểm. **Wh-clefts** (**What I need is more time**) đóng gói cả một ý thành chủ ngữ. Bẫy: thêm đại từ thừa sau từ **Wh** — tiếng Anh chỉ có **What I need IS**, không phải **What I need it is**.",
+          "pt": "O português usa **é que** após o elemento focalizado para ênfase: **Foi o João que quebrou a janela**. O inglês tem um sistema mais rico. **It-clefts** (**It was John who broke the window**) puxam um elemento para o foco. **Wh-clefts** (**What I need is more time**) empacotam uma ideia inteira como sujeito. A armadilha para o falante de português: adicionar um pronome extra após a palavra **Wh** — o inglês tem apenas **What I need IS**, não **What I need it is**."
+        },
+        "pattern": {
+          "en": "**It-cleft**: **It is/was** + focused element + **who/that/which** + rest. \"It **was** Pedro **who** called.\" \"It **is** the deadline **that** worries me.\" **Wh-cleft**: **What** + clause + **be** + focused idea. \"**What** I need **is** more time.\" \"**What** matters most **is** family.\" **All-cleft**: **All** + subject + need/want + **be** + focus. \"**All** I want **is** a break.\"",
+          "vi": "**It-cleft**: **It is/was** + yếu tố nhấn mạnh + **who/that/which** + phần còn lại. \"It **was** Pedro **who** called.\" \"It **is** the deadline **that** worries me.\" **Wh-cleft**: **What** + mệnh đề + **be** + ý nhấn mạnh. \"**What** I need **is** more time.\" **All-cleft**: **All** + chủ ngữ + need/want + **be** + trọng tâm.",
+          "pt": "**It-cleft**: **It is/was** + elemento focalizado + **who/that/which** + resto. \"It **was** Pedro **who** called.\" \"It **is** the deadline **that** worries me.\" **Wh-cleft**: **What** + oração + **be** + ideia focalizada. \"**What** I need **is** more time.\" **All-cleft**: **All** + sujeito + need/want + **be** + foco."
+        },
+        "practice": {
+          "en": "Say these aloud, noticing the structure: \"It **was** Maria **who** won the prize.\" \"It **is** the humidity **that** bothers me.\" \"**What** I love about Brazil **is** the people.\" \"**What** she said **was** completely true.\" \"**All** I want for Christmas **is** you.\" No extra pronoun after **what** or **it**.",
+          "vi": "Nói to, chú ý cấu trúc: \"It **was** Maria **who** won the prize.\" \"It **is** the humidity **that** bothers me.\" \"**What** I love about Brazil **is** the people.\" Không thêm đại từ thừa sau **what** hay **it**.",
+          "pt": "Diga em voz alta, notando a estrutura: \"It **was** Maria **who** won the prize.\" \"It **is** the humidity **that** bothers me.\" \"**What** I love about Brazil **is** the people.\" \"**What** she said **was** completely true.\" \"**All** I want for Christmas **is** you.\" Sem pronome extra depois de **what** ou **it**."
+        },
+        "takeaway": {
+          "en": "Cleft = one element in the spotlight. **It-cleft**: It is/was + X + who/that… **Wh-cleft**: What … is … No extra pronoun after the opener.",
+          "vi": "Câu chẻ = một yếu tố trong tiêu điểm. **It-cleft**: It is/was + X + who/that… **Wh-cleft**: What … is … Không có đại từ thừa sau từ mở đầu.",
+          "pt": "Cleft = um elemento no holofote. **It-cleft**: It is/was + X + who/that… **Wh-cleft**: What … is … Sem pronome extra após a abertura."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "pt": "Escolha a frase correta:"
+          },
+          "options": [
+            "What I need it is more time.",
+            "What I need is more time.",
+            "What I need it's more time.",
+            "What do I need is more time."
+          ],
+          "correctAnswer": "What I need is more time.",
+          "explanation": {
+            "en": "**Wh-cleft**: **What** + clause + **be** + focus. No extra pronoun after **what**.",
+            "vi": "**Wh-cleft**: **What** + mệnh đề + **be** + trọng tâm. Không có đại từ thừa sau **what**.",
+            "pt": "**Wh-cleft**: **What** + oração + **be** + foco. Sem pronome extra após **what**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: It was Pedro ___ called.",
+            "vi": "Điền vào chỗ trống: It was Pedro ___ called.",
+            "pt": "Preencha a lacuna: It was Pedro ___ called."
+          },
+          "options": [
+            "who",
+            "which",
+            "what",
+            "whom"
+          ],
+          "correctAnswer": "who",
+          "explanation": {
+            "en": "**It-cleft** with a person → **who**.",
+            "vi": "**It-cleft** với người → **who**.",
+            "pt": "**It-cleft** com uma pessoa → **who**."
+          }
+        },
+        {
+          "question": {
+            "en": "Which is correct?",
+            "vi": "Câu nào đúng?",
+            "pt": "Qual está correta?"
+          },
+          "options": [
+            "It is the humidity which bothers me.",
+            "It is the humidity that bothers me.",
+            "It is the humidity who bothers me.",
+            "Both A and B are correct."
+          ],
+          "correctAnswer": "Both A and B are correct.",
+          "explanation": {
+            "en": "**It-cleft** with a thing → **that** (most common) or **which** (more formal).",
+            "vi": "**It-cleft** với vật → **that** (thông dụng) hoặc **which** (trang trọng hơn).",
+            "pt": "**It-cleft** com uma coisa → **that** (mais comum) ou **which** (mais formal)."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: All I want ___ a break.",
+            "vi": "Điền vào chỗ trống: All I want ___ a break.",
+            "pt": "Preencha a lacuna: All I want ___ a break."
+          },
+          "options": [
+            "it is",
+            "is",
+            "are",
+            "it's"
+          ],
+          "correctAnswer": "is",
+          "explanation": {
+            "en": "**All-cleft**: **All** + subject + verb + **be** + focus. Use **is** (singular).",
+            "vi": "**All-cleft**: **All** + chủ ngữ + động từ + **be** + trọng tâm. Dùng **is** (số ít).",
+            "pt": "**All-cleft**: **All** + sujeito + verbo + **be** + foco. Use **is** (singular)."
+          }
+        },
+        {
+          "question": {
+            "en": "Correct this sentence: What she said it was completely true.",
+            "vi": "Sửa câu: What she said it was completely true.",
+            "pt": "Corrija: What she said it was completely true."
+          },
+          "options": [
+            "What she said it was completely true.",
+            "What she said was completely true.",
+            "What she said it is completely true.",
+            "What she said it were completely true."
+          ],
+          "correctAnswer": "What she said was completely true.",
+          "explanation": {
+            "en": "Drop the extra pronoun **it**: **What she said was** … is the correct **Wh-cleft**.",
+            "vi": "Bỏ đại từ thừa **it**: **What she said was** … là cấu trúc **Wh-cleft** đúng.",
+            "pt": "Remova o pronome extra **it**: **What she said was** … é a **Wh-cleft** correta."
+          }
+        }
+      ]
     }
   ]
 }

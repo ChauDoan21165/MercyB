@@ -169,6 +169,14 @@ export type WeaknessTag =
   | "zh_l1_subjunctive_were"
   | "zh_c2_inversion_emphasis"
   | "zh_c2_cleft_focus";
+  | "pt_l1_subject_pronoun_drop"
+  | "pt_l1_present_perfect_vs_past"
+  | "pt_l1_double_negative"
+  | "pt_c2_inversion_emphasis"
+  | "pt_c2_cleft_focus"
+  | "pt_c2_mixed_conditional"
+  | "pt_c2_register_consistency"
+  | "pt_c2_hedging_academic";
 
 export type BilingualText = {
   /** English surface — may contain `**word**` markdown bolding. */
@@ -191,6 +199,8 @@ export type BilingualText = {
   ko?: string;
   /** Chinese-native English explanation — optional, for zh-native learners. */
   zh?: string;
+  /** Portuguese (Brazilian)-native English explanation — optional, for pt-native learners. */
+  pt?: string;
 };
 
 export type WeaknessEntry = {
@@ -1978,6 +1988,64 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
           en: "Chinese uses **是…的** to highlight — **是John打破了窗户** (It was John who broke the window). English has a richer system: **It-clefts** (**It was John who broke the window**) pull one element into focus; **Wh-clefts** (**What I need is more time**) package a whole idea as the subject.",
           vi: "Tiếng Trung dùng **是…的** để nhấn mạnh — **是John打破了窗户** (Chính John là người làm vỡ cửa sổ). Tiếng Anh có hệ thống phong phú hơn: **It-cleft** kéo một yếu tố vào tiêu điểm; **Wh-cleft** đóng gói cả một ý thành chủ ngữ.",
           zh: "汉语用 **是…的** 强调 — **是John打破了窗户**。英语有更丰富的系统：**It-cleft**（**It was John who broke the window**）将某个元素拉到焦点；**Wh-cleft**（**What I need is more time**）将整个想法包装成主语。",
+  pt_l1_subject_pronoun_drop: {
+      tag: "pt_l1_subject_pronoun_drop",
+        en: "Subject pronouns — don't drop them",
+        vi: "Đại từ chủ ngữ — đừng bỏ",
+        pt: "Pronomes sujeito — não os omita",
+        en: "Portuguese drops subject pronouns freely — **Falo inglês** is a complete sentence. English always needs the subject: **I speak English**. Even when the verb ending tells you who does the action, English still requires **I**, **you**, **he**, **she**, **it**, **we**, **they**.",
+        vi: "Tiếng Bồ Đào Nha thường bỏ đại từ chủ ngữ — **Falo inglês** là câu hoàn chỉnh. Tiếng Anh luôn cần chủ ngữ: **I speak English**. Ngay cả khi đuôi động từ đã chỉ rõ người thực hiện, tiếng Anh vẫn yêu cầu **I**, **you**, **he**, **she**, **it**, **we**, **they**.",
+        pt: "O português omite pronomes sujeito livremente — **Falo inglês** é uma frase completa. O inglês sempre precisa do sujeito: **I speak English**. Mesmo quando a desinência verbal já indica quem pratica a ação, o inglês ainda exige **I**, **you**, **he**, **she**, **it**, **we**, **they**.",
+      exampleWrong: "Speak English very well.",
+      exampleRight: "I speak English very well.",
+  pt_l1_double_negative: {
+      tag: "pt_l1_double_negative",
+        en: "One negative per clause",
+        vi: "Một phủ định mỗi mệnh đề",
+        pt: "Uma negação por oração",
+        en: "Portuguese uses double negatives naturally — **Não vi ninguém** (literally 'I didn't see nobody'). Standard English uses only **one** negative word per clause: **I didn't see anybody**, not **I didn't see nobody**.",
+        vi: "Tiếng Bồ Đào Nha dùng hai từ phủ định một cách tự nhiên — **Não vi ninguém** (nghĩa đen 'Tôi không thấy không ai'). Tiếng Anh chuẩn chỉ dùng MỘT từ phủ định mỗi mệnh đề: **I didn't see anybody**, không phải **I didn't see nobody**.",
+        pt: "O português usa dupla negação naturalmente — **Não vi ninguém**. O inglês padrão usa apenas **uma** palavra negativa por oração: **I didn't see anybody**, não **I didn't see nobody**.",
+      exampleWrong: "I don't have no money.",
+      exampleRight: "I don't have any money.",
+  pt_l1_present_perfect_vs_past: {
+      tag: "pt_l1_present_perfect_vs_past",
+        pt: "Present perfect vs passado simples",
+        en: "Portuguese uses **pretérito perfeito** (comprei, fiz, falei) for both simple past and present perfect contexts. English splits: use **past simple** when a specific past time is named (**yesterday**, **last week**, **in 1990**); use **present perfect** for past actions with present relevance and no specific time.",
+        vi: "Tiếng Bồ Đào Nha dùng **pretérito perfeito** (comprei, fiz, falei) cho cả quá khứ đơn và hiện tại hoàn thành. Tiếng Anh phân biệt: dùng **past simple** khi có thời gian quá khứ cụ thể (**yesterday**, **last week**, **in 1990**); dùng **present perfect** khi hành động quá khứ còn liên quan đến hiện tại và không có thời gian cụ thể.",
+        pt: "O português usa o **pretérito perfeito** (comprei, fiz, falei) tanto para o passado simples quanto para contextos de present perfect. O inglês separa os usos: use **past simple** quando um tempo passado específico é mencionado (**yesterday**, **last week**, **in 1990**); use **present perfect** para ações passadas com relevância presente e sem tempo específico.",
+  pt_c2_inversion_emphasis: {
+      tag: "pt_c2_inversion_emphasis",
+        pt: "Inversão para ênfase",
+        en: "Portuguese fronts adverbs without changing word order — **Talvez ele já tenha ido** keeps subject-verb intact. English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversion signals emphasis and formality — a C2 feature that separates proficient from native-like writing.",
+        vi: "Tiếng Bồ Đào Nha đưa trạng từ lên đầu câu mà không đảo trật tự từ — **Talvez ele já tenha ido** giữ nguyên chủ ngữ-động từ. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế như **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — kỹ năng cấp C2 phân biệt người thành thạo với người viết như bản ngữ.",
+        pt: "O português coloca advérbios no início sem alterar a ordem das palavras — **Talvez ele já tenha ido** mantém sujeito-verbo intacto. O inglês inverte o sujeito e o auxiliar depois de advérbios negativos/restritivos como **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. A inversão sinaliza ênfase e formalidade — um recurso de nível C2 que separa o escritor proficiente do escritor com estilo nativo.",
+  pt_c2_cleft_focus: {
+      tag: "pt_c2_cleft_focus",
+        pt: "Orações clivadas para foco",
+        en: "Portuguese uses **é que** for focus (**Foi o João que quebrou a janela**). English has a richer system: **It-clefts** (**It was John who broke the window**) pull one element into focus; **Wh-clefts** (**What I need is more time**) package a whole idea as the subject. At C2, choosing the right cleft structure controls what the reader notices first.",
+        vi: "Tiếng Bồ Đào Nha dùng **é que** để nhấn mạnh (**Foi o João que quebrou a janela**). Tiếng Anh có hệ thống phong phú hơn: **It-cleft** (**It was John who broke the window**) kéo một yếu tố vào tiêu điểm; **Wh-cleft** (**What I need is more time**) đóng gói cả một ý thành chủ ngữ. Ở cấp C2, chọn đúng cấu trúc cleft cho phép bạn kiểm soát điều người đọc chú ý đầu tiên.",
+        pt: "O português usa **é que** para foco (**Foi o João que quebrou a janela**). O inglês tem um sistema mais rico: **It-clefts** (**It was John who broke the window**) puxam um elemento para o foco; **Wh-clefts** (**What I need is more time**) empacotam uma ideia inteira como sujeito. No nível C2, escolher a estrutura clivada certa controla o que o leitor nota primeiro.",
+  pt_c2_mixed_conditional: {
+      tag: "pt_c2_mixed_conditional",
+        pt: "Condicionais mistas",
+        en: "Portuguese expresses hypotheticals with **se** and **se tivesse** without mixing conditional forms. English mixed conditionals combine past condition with present result (**If I had studied, I would be a doctor now**) or present condition with past result (**If I were taller, I would have joined the team**). Matching the tense pair is a C2 hallmark.",
+        vi: "Tiếng Bồ Đào Nha diễn tả giả định với **se** và **se tivesse** không cần trộn thể điều kiện. Câu điều kiện hỗn hợp trong tiếng Anh kết hợp điều kiện quá khứ với kết quả hiện tại (**If I had studied, I would be a doctor now**) hoặc điều kiện hiện tại với kết quả quá khứ (**If I were taller, I would have joined the team**). Ghép đúng cặp thì là dấu ấn của trình độ C2.",
+        pt: "O português expressa hipóteses com **se** e **se tivesse** sem misturar formas condicionais. As condicionais mistas do inglês combinam condição passada com resultado presente (**If I had studied, I would be a doctor now**) ou condição presente com resultado passado (**If I were taller, I would have joined the team**). Combinar o par de tempos verbais corretamente é uma marca do nível C2.",
+  pt_c2_register_consistency: {
+      tag: "pt_c2_register_consistency",
+        pt: "Consistência de registro",
+        en: "Portuguese speakers switch between formal and informal registers more fluidly than English (**você** → **tu** mid-conversation in some regions). In English, mixing **gonna** with **furthermore**, or **kids** with **offspring**, in the same paragraph sounds jarring. C2 writers maintain one register throughout a text.",
+        vi: "Người nói tiếng Bồ Đào Nha chuyển đổi giữa văn phong trang trọng và thân mật linh hoạt hơn tiếng Anh (**você** → **tu** giữa cuộc trò chuyện). Trong tiếng Anh, pha trộn **gonna** với **furthermore**, hoặc **kids** với **offspring**, trong cùng một đoạn nghe rất chói tai. Người viết C2 duy trì một văn phong nhất quán.",
+        pt: "Falantes de português alternam entre registros formais e informais com mais fluidez que o inglês (**você** → **tu** no meio da conversa em algumas regiões). Em inglês, misturar **gonna** com **furthermore**, ou **kids** com **offspring**, no mesmo parágrafo soa estranho. Escritores de nível C2 mantêm um registro consistente em todo o texto.",
+  pt_c2_hedging_academic: {
+      tag: "pt_c2_hedging_academic",
+        pt: "Atenuação acadêmica",
+        en: "Portuguese academic writing often states claims more directly than English conventions allow. English academic convention softens claims with hedging: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. At C2, knowing when and how to hedge is as important as knowing the grammar.",
+        vi: "Văn học thuật tiếng Bồ Đào Nha thường nêu nhận định trực tiếp hơn quy ước tiếng Anh cho phép. Quy ước học thuật tiếng Anh làm mềm nhận định bằng giảm nhẹ: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. Ở cấp C2, biết khi nào và cách giảm nhẹ cũng quan trọng như biết ngữ pháp.",
+        pt: "A escrita acadêmica em português frequentemente declara afirmações de forma mais direta do que as convenções do inglês permitem. A convenção acadêmica do inglês suaviza afirmações com atenuação: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. No nível C2, saber quando e como atenuar é tão importante quanto saber a gramática.",
+      exampleWrong: "This proves that social media causes depression in teenagers.",
+      exampleRight: "This suggests that social media may contribute to depressive symptoms in some teenagers.",
 };
 
 /** Ordered list of all tags (stable for tests + exhaustiveness checks). */

@@ -15,6 +15,7 @@
 
 export type NativeLang = "vi" | "en" | "ja" | "id" | "th" | "ar";
 export type NativeLang = "vi" | "en" | "ja" | "id" | "th" | "ur";
+export type NativeLang = "vi" | "en" | "ja" | "id" | "th" | "pt";
 
 export type NativeSlots<T> = {
   vi?: T;
@@ -24,6 +25,7 @@ export type NativeSlots<T> = {
   th?: T;
   ar?: T;
   ur?: T;
+  pt?: T;
 };
 
 const FALLBACK_ORDER: Record<NativeLang, readonly NativeLang[]> = {
@@ -34,6 +36,7 @@ const FALLBACK_ORDER: Record<NativeLang, readonly NativeLang[]> = {
   th: ["th", "en", "vi"],
   ar: ["ar", "en", "vi"],
   ur: ["ur", "en", "vi"],
+  pt: ["pt", "en", "vi"],
 };
 
 export function getNativeContent<T>(

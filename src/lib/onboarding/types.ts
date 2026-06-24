@@ -77,7 +77,7 @@ export interface OnboardingDraft {
 }
 
 export interface BilingualLabel { vi: string; en: string; ja?: string; id?: string;
-  th?: string;}
+  th?: string; pt?: string;}
 
 export interface BilingualCopy extends BilingualLabel {
   /** Optional one-line subhead — VI only, lighter weight. */
@@ -196,6 +196,9 @@ export const TARGET_MENU: Record<NativeLang, TargetMenuItem[]> = {
   th: [
     { value: "en", readiness: "full", recommended: true },
   ],
+  pt: [
+    { value: "en", readiness: "full", recommended: true },
+  ],
 };
 
 /** Skip default + the pre-checked recommendation per native (Phase 3
@@ -206,6 +209,7 @@ export const RECOMMENDED_TARGET: Record<NativeLang, TargetLang> = {
   ja: "en",
   id: "en",
   th: "en",
+  pt: "en",
 };
 
 /** Default honesty badge by readiness (locked #7). full ⇒ none; a
