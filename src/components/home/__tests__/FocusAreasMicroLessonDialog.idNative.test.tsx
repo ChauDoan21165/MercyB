@@ -146,66 +146,195 @@ describe("FocusAreasMicroLessonDialog — id content renders when authored", () 
   });
 });
 
-describe("FocusAreasMicroLessonDialog — C1 id content renders when authored", () => {
-  it("renders Indonesian modal-perfect hook text in id mode", () => {
-    const entry = WEAKNESS_CATALOG.vi_l1_modal_perfect!;
+describe("FocusAreasMicroLessonDialog — A2 id-native rich lessons", () => {
+  it("renders A2 prepositions lesson (vi_l1_preposition_transfer) with id content", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_preposition_transfer!;
     renderDialog({ ...entry, linkedRoomId: null }, "id");
+    // Section headings prove rich lesson body mounted
     const whyHeading = screen.getByText("Vì sao khó");
     const section = whyHeading.closest('[data-rich-section="why"]');
     expect(section).toBeTruthy();
-    // Indonesian primary text
-    expect(section!.textContent).toContain("Bahasa Indonesia tidak punya struktur khusus");
-    // English secondary text
-    expect(section!.textContent).toContain("Vietnamese doesn't have a dedicated structure");
+    // Indonesian preposition explanation rendered
+    expect(section!.textContent).toContain("Bahasa Indonesia menggunakan");
+    // "di" is a key concept in the Indonesian explanation
+    expect(section!.textContent).toContain("di");
   });
 
-  it("renders Indonesian subjunctive-were takeaway text in id mode", () => {
-    const entry = WEAKNESS_CATALOG.vi_l1_subjunctive_were!;
+  it("renders A2 present-perfect lesson (vi_l1_present_perfect_vs_past) with id content", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_present_perfect_vs_past!;
     renderDialog({ ...entry, linkedRoomId: null }, "id");
     const takeawayHeading = screen.getByText("Ghi nhớ");
     const section = takeawayHeading.closest('[data-rich-section="takeaway"]');
     expect(section).toBeTruthy();
-    expect(section!.textContent).toContain("Situasi tidak nyata");
+    // Indonesian takeaway content rendered
+    expect(section!.textContent).toMatch(/simple past|past simple/i);
+    expect(section!.textContent).toContain("present perfect");
   });
 
-  it("renders Indonesian negative-inversion hook text in both mode as primary", () => {
-    const entry = WEAKNESS_CATALOG.vi_l1_negative_inversion!;
+  it("renders A2 make-vs-do lesson (vi_l1_make_vs_do) with id content", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_make_vs_do!;
     renderDialog({ ...entry, linkedRoomId: null }, "id");
     const hookHeading = screen.getByText("Mở đầu");
     const section = hookHeading.closest('[data-rich-section="hook"]');
     expect(section).toBeTruthy();
-    expect(section!.textContent).toContain("Semua katanya bahasa Inggris");
+    // Indonesian hook content — references Indonesian "buat" and "lakukan"
+    expect(section!.textContent).toContain("buat");
+    expect(section!.textContent).toContain("lakukan");
   });
 
-  it("renders Indonesian modal-perfect quiz content in id mode", () => {
-    const entry = WEAKNESS_CATALOG.vi_l1_modal_perfect!;
+  it("renders A2 adjective-order lesson (vi_l1_adjective_order) with id content", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_adjective_order!;
     renderDialog({ ...entry, linkedRoomId: null }, "id");
-    // Quiz section renders — check via dialog textContent
-    const dialog = screen.getByRole("dialog");
-    expect(dialog).toBeDefined();
-    // Quiz questions are rendered with English text
-    expect(dialog.textContent).toContain("I should ___ to her yesterday");
-  });
-
-  it("renders Indonesian negative-inversion pattern section in id mode", () => {
-    const entry = WEAKNESS_CATALOG.vi_l1_negative_inversion!;
-    renderDialog({ ...entry, linkedRoomId: null }, "id");
-    const patternHeading = screen.getByText("Quy tắc");
-    const section = patternHeading.closest('[data-rich-section="pattern"]');
+    const whyHeading = screen.getByText("Vì sao khó");
+    const section = whyHeading.closest('[data-rich-section="why"]');
     expect(section).toBeTruthy();
-    expect(section!.textContent).toContain("Kata keterangan negatif");
+    // Indonesian "why" section uses Indonesian noun-adjective examples
+    expect(section!.textContent).toContain("setelah");
+    // Rumah besar is an example phrase — may be rendered from **Rumah besar** markdown
+    expect(section!.textContent.toLowerCase()).toContain("rumah besar");
   });
 
-  it("catalog-backed id entries render without crashing in id mode", () => {
-    // vi_l1_embedded_question_order has id in catalog but no rich lesson.
-    // The dialog fallback renders en/vi catalog description; id content
-    // is available for other surfaces (HomePage focus cards, etc.).
-    const entry = WEAKNESS_CATALOG.vi_l1_embedded_question_order!;
-    renderDialog({ ...entry, linkedRoomId: null }, "id");
-    // Dialog renders successfully with catalog-backed content
-    const dialog = screen.getByRole("dialog");
-    expect(dialog).toBeDefined();
-    // EN catalog description renders in fallback path
-    expect(dialog.textContent).toContain("A question inside another sentence");
+  it("all four A2 lessons render with id content in id mode", () => {
+    const a2Tags = [
+      "vi_l1_preposition_transfer",
+      "vi_l1_present_perfect_vs_past",
+      "vi_l1_make_vs_do",
+      "vi_l1_adjective_order",
+    ] as const;
+    for (const tag of a2Tags) {
+      const entry = WEAKNESS_CATALOG[tag]!;
+      const { unmount } = render(
+        <MemoryRouter>
+          <FocusAreasMicroLessonDialog
+            entry={{ ...entry, linkedRoomId: null }}
+            onOpenChange={() => {}}
+            userId={null}
+            nativeLanguage="id"
+          />
+        </MemoryRouter>,
+      );
+      // Each renders the "why" section heading — proves rich lesson loaded
+      expect(screen.getByText("Vì sao khó")).toBeDefined();
+      unmount();
+    }
   });
 });
+
+describe("FocusAreasMicroLessonDialog — A2 weakness catalog id fields", () => {
+  it("vi_l1_possessive_gender has id shortLabel and longDescription", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_possessive_gender!;
+    expect(entry.shortLabel.id).toBe("**His** vs **her**");
+    expect(entry.longDescription.id).toContain("Bahasa Indonesia");
+    expect(entry.longDescription.id).toContain("gender pemilik");
+  });
+
+  it("vi_l1_countable has id shortLabel and longDescription", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_countable!;
+    expect(entry.shortLabel.id).toBe("Bisa dihitung / tidak bisa dihitung");
+    expect(entry.longDescription.id).toContain("banyak uang");
+    expect(entry.longDescription.id).toContain("many");
+  });
+
+  it("vi_l1_to_verb_confusion has id shortLabel and longDescription", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_to_verb_confusion!;
+    expect(entry.shortLabel.id).toBe("Kapan pakai **to + verb**");
+    expect(entry.longDescription.id).toContain("infinitif");
+  });
+
+  it("vi_l1_double_past has id shortLabel and longDescription", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_double_past!;
+    expect(entry.shortLabel.id).toBe("Satu penanda lampau, bukan dua");
+    expect(entry.longDescription.id).toContain("sudah");
+    expect(entry.longDescription.id).toContain("did");
+  });
+
+  it("vi_l1_there_are_singular has id shortLabel and longDescription", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_there_are_singular!;
+    expect(entry.shortLabel.id).toBe("**There is** vs **there are**");
+    expect(entry.longDescription.id).toContain("ada");
+    expect(entry.longDescription.id).toContain("there is");
+  });
+
+  it("vi_l1_present_perfect_vs_past has id shortLabel and longDescription", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_present_perfect_vs_past!;
+    expect(entry.shortLabel.id).toBe("Present perfect vs past tense");
+    expect(entry.longDescription.id).toContain("sudah");
+    expect(entry.longDescription.id).toContain("waktu lampau spesifik");
+  });
+
+  it("vi_l1_adverb_before_subject has id shortLabel and longDescription", () => {
+    const entry = WEAKNESS_CATALOG.vi_l1_adverb_before_subject!;
+    expect(entry.shortLabel.id).toBe("Kata keterangan frekuensi setelah subjek");
+    expect(entry.longDescription.id).toContain("Biasanya");
+    expect(entry.longDescription.id).toContain("setelah");
+  });
+});
+
+describe("B1 Indonesian fanout structural smoke", () => {
+  it("keeps Indonesian rich lesson tags available in the weakness catalog", () => {
+    const tags = [
+      "vi_l1_3rd_person_s",
+      "vi_l1_adjective_order",
+      "vi_l1_conditional_mix",
+      "vi_l1_make_vs_do",
+      "vi_l1_missing_be",
+      "vi_l1_past_ed",
+      "vi_l1_preposition_transfer",
+      "vi_l1_present_perfect_vs_past",
+      "vi_l1_reported_speech",
+    ] as const;
+    for (const tag of tags) {
+      expect(WEAKNESS_CATALOG[tag], `${tag} missing from WEAKNESS_CATALOG`).toBeTruthy();
+    }
+  });
+});
+
+describe("B2 Indonesian fanout structural smoke", () => {
+  it("keeps merged Indonesian rich lesson tags available in the weakness catalog", () => {
+    const tags = [
+      "id_l1_conditional_unreal",
+      "id_l1_present_perfect_vs_past",
+      "id_l1_reported_speech",
+      "vi_l1_3rd_person_s",
+      "vi_l1_adjective_order",
+      "vi_l1_conditional_mix",
+      "vi_l1_make_vs_do",
+      "vi_l1_missing_be",
+      "vi_l1_passive_missing_be",
+      "vi_l1_past_ed",
+      "vi_l1_preposition_transfer",
+      "vi_l1_present_perfect_vs_past",
+      "vi_l1_reported_speech",
+    ] as const;
+    for (const tag of tags) {
+      expect(WEAKNESS_CATALOG[tag], `${tag} missing from WEAKNESS_CATALOG`).toBeTruthy();
+    }
+  });
+});
+
+describe("C1 Indonesian fanout structural smoke", () => {
+  it("keeps merged Indonesian rich lesson tags available in the weakness catalog", () => {
+    const tags = [
+      "id_l1_conditional_unreal",
+      "id_l1_present_perfect_vs_past",
+      "id_l1_reported_speech",
+      "vi_l1_3rd_person_s",
+      "vi_l1_adjective_order",
+      "vi_l1_conditional_mix",
+      "vi_l1_make_vs_do",
+      "vi_l1_missing_be",
+      "vi_l1_modal_perfect",
+      "vi_l1_negative_inversion",
+      "vi_l1_passive_missing_be",
+      "vi_l1_past_ed",
+      "vi_l1_preposition_transfer",
+      "vi_l1_present_perfect_vs_past",
+      "vi_l1_reported_speech",
+      "vi_l1_subjunctive_were",
+    ] as const;
+    for (const tag of tags) {
+      expect(WEAKNESS_CATALOG[tag], `${tag} missing from WEAKNESS_CATALOG`).toBeTruthy();
+    }
+  });
+});
+

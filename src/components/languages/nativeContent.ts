@@ -9,17 +9,18 @@
 // distinct axis from the UI-chrome language.
 //
 // Japanese-native English pilot + Indonesian-native English schema:
-// this seam now supports ja + id while preserving legacy vi/en behavior.
+// this seam now supports ja + id + th while preserving legacy vi/en behavior.
 // English lesson content stays English; only the explanation/pedagogy
 // slot changes.
 
-export type NativeLang = "vi" | "en" | "ja" | "id";
+export type NativeLang = "vi" | "en" | "ja" | "id" | "th";
 
 export type NativeSlots<T> = {
   vi?: T;
   en?: T;
   ja?: T;
   id?: T;
+  th?: T;
 };
 
 const FALLBACK_ORDER: Record<NativeLang, readonly NativeLang[]> = {
@@ -27,6 +28,7 @@ const FALLBACK_ORDER: Record<NativeLang, readonly NativeLang[]> = {
   en: ["en", "vi"],
   ja: ["ja", "en", "vi"],
   id: ["id", "en", "vi"],
+  th: ["th", "en", "vi"],
 };
 
 export function getNativeContent<T>(

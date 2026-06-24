@@ -33,6 +33,8 @@ export interface RichLessonSection {
   ja?: string;
   /** Optional Indonesian-native English explanation — for id-native learners. */
   id?: string;
+  /** Optional Thai-native English explanation — for th-native learners. */
+  th?: string;
 }
 
 export interface RichLessonSections {
@@ -158,6 +160,7 @@ function buildQuizFromPractice(ml: MicroLesson): RichLessonQuizQuestion[] {
     question: {
       en: p.prompt,
       vi: `Điền vào chỗ trống: ${p.prompt}`,
+      th: `เติมคำในช่องว่าง: ${p.prompt}`,
     },
     correctAnswer: p.answer,
   }));
@@ -170,6 +173,7 @@ function buildQuizFromPractice(ml: MicroLesson): RichLessonQuizQuestion[] {
       question: {
         en: `Quick check: ${ml.title.en}.`,
         vi: `Ôn nhanh: ${ml.title.vi}.`,
+        th: `ทบทวนเร็ว: ${ml.title.en}.`,
       },
       correctAnswer: ml.examples[0]?.right ?? ml.title.en,
     });
