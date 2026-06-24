@@ -101,7 +101,16 @@ export type WeaknessTag =
   | "id_c2_cleft_focus"
   | "id_c2_mixed_conditional"
   | "id_c2_register_consistency"
-  | "id_c2_hedging_academic";
+  | "id_c2_hedging_academic"
+  | "ar_l1_present_perfect_vs_past"
+  | "ar_l1_conditional_unreal"
+  | "ar_l1_reported_speech"
+  | "ar_l1_relative_clauses"
+  | "ar_l1_prepositions_in_on_at"
+  | "ar_c2_inversion_emphasis"
+  | "ar_c2_register_consistency"
+  | "ar_c2_hedging_academic"
+  | "ar_c2_cleft_focus";
 
 export type BilingualText = {
   /** English surface — may contain `**word**` markdown bolding. */
@@ -114,6 +123,8 @@ export type BilingualText = {
   id?: string;
   /** Thai-native English explanation — optional, for th-native learners. */
   th?: string;
+  /** Arabic-native English explanation — optional, for ar-native learners. */
+  ar?: string;
 };
 
 export type WeaknessEntry = {
@@ -1277,6 +1288,153 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
         },
         exampleWrong: "This proves that social media causes depression in teenagers.",
         exampleRight: "This suggests that social media may contribute to depressive symptoms in some teenagers.",
+        linkedRoomId: null,
+      },
+
+  // ── Arabic-native English ───────────────────────────────────────────
+
+  ar_l1_present_perfect_vs_past: {
+      tag: "ar_l1_present_perfect_vs_past",
+      shortLabel: {
+        en: "Present perfect vs past simple",
+        vi: "Present perfect vs past simple",
+        ar: "المضارع التام مقابل الماضي البسيط",
+      },
+      longDescription: {
+        en: "Arabic expresses past actions with a single past tense (الماضي). English splits them: use **past simple** when a specific past time is named (**yesterday**, **last week**, **this morning**); use **present perfect** for past actions with present relevance and no specific time.",
+        vi: "Tiếng Ả Rập dùng thì quá khứ (الماضي) cho mọi hành động quá khứ. Tiếng Anh phân biệt: dùng **past simple** khi có thời gian cụ thể trong quá khứ; dùng **present perfect** khi hành động quá khứ còn liên quan đến hiện tại và không có thời gian cụ thể.",
+        ar: "تستخدم اللغة العربية زمن الماضي لكل الأفعال الماضية. أما الإنجليزية فتفصل بينهما: استخدم **past simple** عند وجود زمن محدد في الماضي (**yesterday**, **last week**, **this morning**)؛ واستخدم **present perfect** للأفعال الماضية المرتبطة بالحاضر دون زمن محدد.",
+      },
+      exampleWrong: "I have eaten breakfast this morning.",
+      exampleRight: "I ate breakfast this morning.",
+      linkedRoomId: null,
+    },
+  ar_l1_conditional_unreal: {
+      tag: "ar_l1_conditional_unreal",
+      shortLabel: {
+        en: "Unreal conditionals (Type 2)",
+        vi: "Câu điều kiện không có thật (Type 2)",
+        ar: "الجمل الشرطية غير الحقيقية",
+      },
+      longDescription: {
+        en: "Arabic uses **لو** + past for both real and unreal conditions. English marks unreal / hypothetical conditions with **If + past tense, would + base verb** — never mix past with **will**.",
+        vi: "Tiếng Ả Rập dùng **لو** + quá khứ cho cả điều kiện thật và không thật. Tiếng Anh đánh dấu điều kiện không thật bằng **If + quá khứ, would + động từ gốc** — không trộn quá khứ với **will**.",
+        ar: "تستخدم العربية **لو** مع الفعل الماضي للشرط الحقيقي وغير الحقيقي على حد سواء. أما الإنجليزية فتميز الشرط غير الحقيقي بـ **If + past tense, would + فعل أساسي** — ولا تخلط الماضي مع **will** أبداً.",
+      },
+      exampleWrong: "If I had money, I will buy a car.",
+      exampleRight: "If I had money, I would buy a car.",
+      linkedRoomId: null,
+    },
+  ar_l1_reported_speech: {
+      tag: "ar_l1_reported_speech",
+      shortLabel: {
+        en: "Reported speech tense shift",
+        vi: "Lùi thì trong câu tường thuật",
+        ar: "نقل الكلام وتغيير الزمن",
+      },
+      longDescription: {
+        en: "Arabic often keeps the original tense in reported speech (**قال إنه متعب** stays present). English backshifts the tense: **He said he was tired**, not **he is tired**.",
+        vi: "Tiếng Ả Rập thường giữ nguyên thì trong câu tường thuật (**قال إنه متعب** giữ thì hiện tại). Tiếng Anh lùi thì: **He said he was tired**, không phải **he is tired**.",
+        ar: "كثيراً ما تبقي العربية على الزمن الأصلي في الكلام المنقول (**قال إنه متعب** يبقى في الحاضر). أما الإنجليزية فتزيح الزمن إلى الماضي: **He said he was tired**، وليس **he is tired**.",
+      },
+      exampleWrong: "She said she is tired.",
+      exampleRight: "She said she was tired.",
+      linkedRoomId: null,
+    },
+  ar_l1_relative_clauses: {
+      tag: "ar_l1_relative_clauses",
+      shortLabel: {
+        en: "Relative clauses (who/which/that)",
+        vi: "Mệnh đề quan hệ (who/which/that)",
+        ar: "جمل الوصل (who/which/that)",
+      },
+      longDescription: {
+        en: "Arabic relative clauses use a resumptive pronoun that English drops: **الرجل الذي رأيته** (lit. 'the man who I saw him'). English omits the object pronoun entirely: **the man who I saw** — adding **him** is a common Arabic-speaker error.",
+        vi: "Mệnh đề quan hệ tiếng Ả Rập dùng đại từ nối mà tiếng Anh lược bỏ: **الرجل الذي رأيته** (dịch sát: 'the man who I saw him'). Tiếng Anh bỏ hẳn đại từ tân ngữ: **the man who I saw** — thêm **him** là lỗi phổ biến của người học gốc Ả Rập.",
+        ar: "تستخدم جمل الوصل في العربية ضميراً عائداً تحذفه الإنجليزية: **الرجل الذي رأيته** (حرفياً: 'the man who I saw him'). أما الإنجليزية فتحذف ضمير المفعول تماماً: **the man who I saw** — وإضافة **him** خطأ شائع لدى المتعلمين العرب.",
+      },
+      exampleWrong: "The man who I saw him is my teacher.",
+      exampleRight: "The man who I saw is my teacher.",
+      linkedRoomId: null,
+    },
+  ar_l1_prepositions_in_on_at: {
+      tag: "ar_l1_prepositions_in_on_at",
+      shortLabel: {
+        en: "Prepositions in / on / at",
+        vi: "Giới từ in / on / at",
+        ar: "حروف الجر in / on / at",
+      },
+      longDescription: {
+        en: "Arabic uses **في** for most spatial and temporal relations where English splits across **in** (enclosed/large), **on** (surface/day), and **at** (point/time). Arabic speakers often default to **in** for everything.",
+        vi: "Tiếng Ả Rập dùng **في** cho hầu hết quan hệ không gian và thời gian, trong khi tiếng Anh chia ra **in** (không gian kín/lớn), **on** (bề mặt/ngày), và **at** (điểm/thời gian cụ thể). Người học gốc Ả Rập thường mặc định dùng **in** cho mọi thứ.",
+        ar: "تستخدم العربية **في** لمعظم العلاقات المكانية والزمانية، بينما تفرق الإنجليزية بين **in** (للمساحات المغلقة/الكبيرة)، و**on** (للأسطح/الأيام)، و**at** (للنقاط/الأوقات المحددة). ويميل المتعلمون العرب لاستخدام **in** في كل الحالات.",
+      },
+      exampleWrong: "I will meet you in Monday in the bus stop.",
+      exampleRight: "I will meet you on Monday at the bus stop.",
+      linkedRoomId: null,
+    },
+  ar_c2_inversion_emphasis: {
+        tag: "ar_c2_inversion_emphasis",
+        shortLabel: {
+          en: "Inversion for emphasis",
+          vi: "Đảo ngữ nhấn mạnh",
+          ar: "العكس للتأكيد",
+        },
+        longDescription: {
+          en: "Arabic fronts adverbials without structural change (**أبداً لم أرَ شيئاً كهذا** keeps the sentence flexible). English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversion signals emphasis and formality — a C2 feature that separates proficient from native-like writing.",
+          vi: "Tiếng Ả Rập đưa trạng từ lên đầu câu mà không thay đổi cấu trúc. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế như **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — kỹ năng cấp C2.",
+          ar: "تقدم العربية الظروف إلى بداية الجملة دون تغيير هيكلي (**أبداً لم أرَ شيئاً كهذا**). أما الإنجليزية فتعكس الفاعل والفعل المساعد بعد الظروف النافية/المقيدة مثل **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. العكس علامة تأكيد ورسمية — وهي مهارة مستوى C2.",
+        },
+        exampleWrong: "Never I have seen such dedication.",
+        exampleRight: "Never have I seen such dedication.",
+        linkedRoomId: null,
+      },
+  ar_c2_register_consistency: {
+        tag: "ar_c2_register_consistency",
+        shortLabel: {
+          en: "Register consistency",
+          vi: "Nhất quán văn phong",
+          ar: "اتساق المستوى اللغوي",
+        },
+        longDescription: {
+          en: "Arabic moves naturally between formal (فصحى) and colloquial (عامية) registers, often within the same text. In English, mixing **gonna** with **furthermore**, or **kids** with **offspring**, in the same paragraph sounds jarring. C2 writers maintain one register throughout a text.",
+          vi: "Tiếng Ả Rập chuyển đổi tự nhiên giữa văn phong trang trọng (فصحى) và thân mật (عامية), thường trong cùng một văn bản. Trong tiếng Anh, pha trộn **gonna** với **furthermore**, hoặc **kids** với **offspring**, trong cùng một đoạn nghe rất chói tai. Người viết C2 duy trì một văn phong nhất quán.",
+          ar: "تنتقل العربية بطبيعتها بين الفصحى والعامية، وغالباً في النص الواحد. أما في الإنجليزية، فخلط **gonna** مع **furthermore**، أو **kids** مع **offspring**، في نفس الفقرة يبدو نشازاً. كتّاب مستوى C2 يحافظون على مستوى لغوي واحد متسق في كامل النص.",
+        },
+        exampleWrong: "The aforementioned findings are super interesting and you're gonna love them.",
+        exampleRight: "The aforementioned findings are highly compelling and readers will find them valuable.",
+        linkedRoomId: null,
+      },
+  ar_c2_hedging_academic: {
+        tag: "ar_c2_hedging_academic",
+        shortLabel: {
+          en: "Academic hedging",
+          vi: "Giảm nhẹ học thuật",
+          ar: "التحفظ الأكاديمي",
+        },
+        longDescription: {
+          en: "Arabic academic writing, especially in the humanities, often states conclusions directly (**هذا يثبت أن…**). English academic convention softens claims with hedging: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. At C2, knowing when and how to hedge is as important as knowing the grammar.",
+          vi: "Văn học thuật tiếng Ả Rập thường nêu kết luận trực tiếp (**هذا يثبت أن…**). Quy ước học thuật tiếng Anh làm mềm nhận định bằng giảm nhẹ: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. Ở cấp C2, biết khi nào và cách giảm nhẹ cũng quan trọng như biết ngữ pháp.",
+          ar: "كثيراً ما تذكر الكتابة الأكاديمية العربية الاستنتاجات مباشرة (**هذا يثبت أن…**). أما الأعراف الأكاديمية الإنجليزية فتلطف الادعاءات بالتحفظ: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. في مستوى C2، معرفة متى وكيف تتحفظ لا تقل أهمية عن معرفة القواعد.",
+        },
+        exampleWrong: "This proves that social media causes depression in teenagers.",
+        exampleRight: "This suggests that social media may contribute to depressive symptoms in some teenagers.",
+        linkedRoomId: null,
+      },
+  ar_c2_cleft_focus: {
+        tag: "ar_c2_cleft_focus",
+        shortLabel: {
+          en: "Cleft sentences for focus",
+          vi: "Câu chẻ nhấn mạnh",
+          ar: "الجمل المشقوقة للبؤرة",
+        },
+        longDescription: {
+          en: "Arabic uses word order and particles like **إنّ** for emphasis. English has a richer system: **It-clefts** (**It was John who broke the window**) pull one element into focus; **Wh-clefts** (**What I need is more time**) package a whole idea as the subject. At C2, choosing the right cleft structure controls what the reader notices first.",
+          vi: "Tiếng Ả Rập dùng trật tự từ và tiểu từ như **إنّ** để nhấn mạnh. Tiếng Anh có hệ thống phong phú hơn: **It-cleft** (**It was John who broke the window**) kéo một yếu tố vào tiêu điểm; **Wh-cleft** (**What I need is more time**) đóng gói cả một ý thành chủ ngữ. Ở cấp C2, chọn đúng cấu trúc cleft cho phép bạn kiểm soát chính xác điều người đọc chú ý đầu tiên.",
+          ar: "تستخدم العربية ترتيب الكلمات وأدوات مثل **إنّ** للتأكيد. أما الإنجليزية فتملك نظاماً أغنى: **It-cleft** (**It was John who broke the window**) تسحب عنصراً واحداً إلى البؤرة؛ و**Wh-cleft** (**What I need is more time**) تغلف فكرة كاملة كفاعل. في مستوى C2، اختيار بنية cleft الصحيحة يمكنك من التحكم في أول ما يلاحظه القارئ.",
+        },
+        exampleWrong: "What I need it is more time.",
+        exampleRight: "What I need is more time.",
         linkedRoomId: null,
       },
 };

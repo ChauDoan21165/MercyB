@@ -1,10 +1,7 @@
 // src/data/__tests__/rich-lessons-pilot.test.ts
 //
-// Validates the hand-authored RichLesson pilot bundle. Seven concrete
-// lessons (3 A1 + 4 A2): vi_l1_3rd_person_s, vi_l1_past_ed,
-// vi_l1_missing_be, vi_l1_preposition_transfer, vi_l1_present_perfect_vs_past,
-// vi_l1_make_vs_do, vi_l1_adjective_order. CI guards their shape so future
-// authoring rounds can't silently drift away from the schema.
+// Validates the hand-authored RichLesson pilot bundle. CI guards their
+// shape so future authoring rounds can't silently drift away from the schema.
 
 import { describe, expect, it } from "vitest";
 
@@ -20,6 +17,11 @@ import {
 import { isKnownWeaknessTag } from "@/lib/weakness/weakness-catalog";
 
 const EXPECTED_PILOT_TAGS = [
+  "ar_c2_cleft_focus",
+  "ar_c2_inversion_emphasis",
+  "ar_l1_conditional_unreal",
+  "ar_l1_present_perfect_vs_past",
+  "ar_l1_reported_speech",
   "id_c2_cleft_focus",
   "id_c2_inversion_emphasis",
   "id_l1_conditional_unreal",

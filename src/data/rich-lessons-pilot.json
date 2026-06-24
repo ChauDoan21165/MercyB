@@ -2398,6 +2398,641 @@
           }
         }
       ]
+    },
+    {
+      "tag": "ar_l1_present_perfect_vs_past",
+      "title": {
+        "en": "**Present perfect** vs **past simple** — when each one?",
+        "vi": "**Present perfect** vs **past simple** — dùng cái nào khi nào?",
+        "ar": "**المضارع التام** مقابل **الماضي البسيط** — متى نستخدم كل منهما؟"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"I have seen him yesterday.\" Every Arabic speaker says this at least once. And it makes sense — in your mind, the seeing happened in the past. But English cares about WHEN you name the time. As soon as you say **yesterday**, the game changes — past simple only.",
+          "vi": "\"I have seen him yesterday.\" Người học gốc Ả Rập nào cũng từng nói câu này. Và nghe cũng hợp lý — trong đầu bạn, hành động đã xảy ra trong quá khứ. Nhưng tiếng Anh quan tâm đến việc bạn CÓ nêu thời gian cụ thể không. Hễ bạn nói **yesterday**, luật chơi thay đổi — chỉ được dùng past simple.",
+          "ar": "\"I have seen him yesterday.\" كل متعلم عربي يقول هذه الجملة مرة على الأقل. وهي منطقية — ففي ذهنك، الرؤية تمت في الماضي. لكن الإنجليزية تهتم بما إذا كنت تذكر زمناً محدداً. بمجرد أن تقول **yesterday**، تتغير القاعدة — ولا يجوز إلا past simple."
+        },
+        "why": {
+          "en": "Arabic uses the perfect (الماضي) for any past action — whether the time is named or not. English draws a line: if you name the past time (**yesterday**, **last week**, **in 2019**), you MUST use past simple. Present perfect is for past actions that still matter NOW — experiences, recent news, unfinished time periods.",
+          "vi": "Tiếng Ả Rập dùng thì quá khứ (الماضي) cho mọi hành động quá khứ — dù có nêu thời gian hay không. Tiếng Anh vạch một ranh giới: nếu bạn nêu thời gian quá khứ cụ thể (**yesterday**, **last week**, **in 2019**), bạn PHẢI dùng past simple. Present perfect dành cho hành động quá khứ còn liên quan đến HIỆN TẠI — trải nghiệm, tin tức mới, khoảng thời gian chưa kết thúc.",
+          "ar": "تستخدم العربية الماضي لأي فعل منتهٍ — سواء ذكرت الزمن أم لا. أما الإنجليزية فترسم خطاً: إن ذكرت الزمن المحدد (**yesterday**, **last week**, **in 2019**)، فيجب أن تستخدم past simple. أما present perfect فللأفعال الماضية التي لا تزال ذات صلة بالحاضر — الخبرات، الأخبار الحديثة، الفترات الزمنية غير المنتهية."
+        },
+        "pattern": {
+          "en": "**Past simple** = named past time. **I ate** breakfast this morning. **She called** yesterday. **They moved** to London in 2019. **Present perfect** = no named time, present relevance. **I have eaten** (already done, relevant now). **She has called** three times today (today is not over). **They have lived** in London since 2019 (still there). The quick test: can you add **yesterday**? If yes → past simple. If no → probably present perfect.",
+          "vi": "**Past simple** = có thời gian quá khứ cụ thể. **I ate** breakfast this morning. **She called** yesterday. **They moved** to London in 2019. **Present perfect** = không có thời gian cụ thể, còn liên quan hiện tại. **I have eaten** (đã ăn xong, liên quan bây giờ). **She has called** three times today (hôm nay chưa hết). **They have lived** in London since 2019 (vẫn đang ở). Cách thử nhanh: thêm được **yesterday** không? Có → past simple. Không → thường là present perfect.",
+          "ar": "**Past simple** = مع زمن ماضٍ محدد. **I ate** breakfast this morning. **She called** yesterday. **They moved** to London in 2019. **Present perfect** = بلا زمن محدد، مع صلة بالحاضر. **I have eaten** (انتهيت من الأكل، والأمر ذو صلة الآن). **She has called** three times today (اليوم لم ينته بعد). **They have lived** in London since 2019 (لا يزالون هناك). الاختبار السريع: هل يمكنك إضافة **yesterday**؟ إن أمكن → past simple. وإن لم يمكن → الأرجح present perfect."
+        },
+        "practice": {
+          "en": "Fill in: **I ___ (see) that movie last night.** (saw — named past time → past simple). **She ___ (never / be) to Paris.** (has never been — experience, no named time → present perfect). **We ___ (live) here since 2015.** (have lived — still true now → present perfect). **He ___ (finish) his homework an hour ago.** (finished — named time → past simple).",
+          "vi": "Điền vào chỗ trống: **I ___ (see) that movie last night.** (saw — có thời gian cụ thể → past simple). **She ___ (never / be) to Paris.** (has never been — trải nghiệm, không thời gian → present perfect). **We ___ (live) here since 2015.** (have lived — vẫn đúng → present perfect). **He ___ (finish) his homework an hour ago.** (finished — có thời gian → past simple).",
+          "ar": "املأ الفراغ: **I ___ (see) that movie last night.** (saw — زمن محدد → past simple). **She ___ (never / be) to Paris.** (has never been — خبرة بلا زمن → present perfect). **We ___ (live) here since 2015.** (have lived — لا يزال مستمراً → present perfect). **He ___ (finish) his homework an hour ago.** (finished — زمن محدد → past simple)."
+        },
+        "takeaway": {
+          "en": "Named past time = past simple. No named time + still relevant = present perfect. When in doubt, ask yourself: can I add **yesterday** to this sentence without it sounding strange?",
+          "vi": "Có thời gian quá khứ cụ thể = past simple. Không có thời gian + còn liên quan = present perfect. Khi phân vân, tự hỏi: thêm **yesterday** vào câu này có kỳ không?",
+          "ar": "زمن ماضٍ محدد = past simple. بلا زمن محدد + لا يزال ذا صلة = present perfect. وعند الشك، اسأل نفسك: هل يمكنني إضافة **yesterday** لهذه الجملة دون أن تبدو غريبة؟"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "I ___ my keys. I can't find them anywhere.",
+            "vi": "I ___ my keys. I can't find them anywhere."
+          },
+          "options": [
+            "lost",
+            "have lost",
+            "losed",
+            "was losing"
+          ],
+          "correctAnswer": "have lost",
+          "explanation": {
+            "en": "No specific time is named, and the result matters now (can't find them). Use present perfect: **have lost**.",
+            "vi": "Không có thời gian cụ thể, và kết quả còn ảnh hưởng đến hiện tại (không tìm thấy). Dùng present perfect: **have lost**.",
+            "ar": "لا يوجد زمن محدد، والنتيجة مهمة الآن (لا أجدها). استخدم present perfect: **have lost**."
+          }
+        },
+        {
+          "question": {
+            "en": "She ___ to the dentist yesterday.",
+            "vi": "She ___ to the dentist yesterday."
+          },
+          "options": [
+            "has gone",
+            "went",
+            "has went",
+            "goes"
+          ],
+          "correctAnswer": "went",
+          "explanation": {
+            "en": "**Yesterday** is a named past time — must use past simple: **went**.",
+            "vi": "**Yesterday** là thời gian quá khứ cụ thể — phải dùng past simple: **went**.",
+            "ar": "**Yesterday** زمن ماضٍ محدد — يجب استخدام past simple: **went**."
+          }
+        },
+        {
+          "question": {
+            "en": "We ___ in this house since 2018.",
+            "vi": "We ___ in this house since 2018."
+          },
+          "options": [
+            "live",
+            "lived",
+            "have lived",
+            "are living"
+          ],
+          "correctAnswer": "have lived",
+          "explanation": {
+            "en": "**Since 2018** marks a period that started in the past and continues now — use present perfect: **have lived**.",
+            "vi": "**Since 2018** đánh dấu một khoảng thời gian bắt đầu trong quá khứ và còn tiếp tục — dùng present perfect: **have lived**.",
+            "ar": "**Since 2018** تشير إلى فترة بدأت في الماضي وما زالت مستمرة — استخدم present perfect: **have lived**."
+          }
+        },
+        {
+          "question": {
+            "en": "He ___ his homework an hour ago.",
+            "vi": "He ___ his homework an hour ago."
+          },
+          "options": [
+            "has finished",
+            "finished",
+            "have finished",
+            "finishes"
+          ],
+          "correctAnswer": "finished",
+          "explanation": {
+            "en": "**An hour ago** is a specific past time — use past simple: **finished**.",
+            "vi": "**An hour ago** là thời gian quá khứ cụ thể — dùng past simple: **finished**.",
+            "ar": "**An hour ago** زمن ماضٍ محدد — استخدم past simple: **finished**."
+          }
+        },
+        {
+          "question": {
+            "en": "I ___ never ___ such a beautiful sunset before.",
+            "vi": "I ___ never ___ such a beautiful sunset before."
+          },
+          "options": [
+            "did / see",
+            "have / seen",
+            "was / seeing",
+            "has / saw"
+          ],
+          "correctAnswer": "have / seen",
+          "explanation": {
+            "en": "Life experience with **never** and no specific time — use present perfect: **have never seen**.",
+            "vi": "Trải nghiệm cuộc sống với **never** và không có thời gian cụ thể — dùng present perfect: **have never seen**.",
+            "ar": "خبرة حياتية مع **never** وبلا زمن محدد — استخدم present perfect: **have never seen**."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "ar_l1_conditional_unreal",
+      "title": {
+        "en": "**If I had… I would…** — unreal conditionals",
+        "vi": "**If I had… I would…** — câu điều kiện không có thật",
+        "ar": "**If I had… I would…** — الجمل الشرطية غير الحقيقية"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"If I have money, I will buy a car.\" Fine — if you're talking about a real possibility. But what if you're imagining something that ISN'T true right now? That's where Arabic and English part ways. Arabic uses the same **لو** for both; English changes the whole verb structure.",
+          "vi": "\"If I have money, I will buy a car.\" Ổn — nếu bạn đang nói về khả năng thực tế. Nhưng nếu bạn đang tưởng tượng điều KHÔNG có thật? Đó là lúc tiếng Ả Rập và tiếng Anh rẽ hai hướng. Tiếng Ả Rập dùng cùng một **لو** cho cả hai; tiếng Anh thay đổi toàn bộ cấu trúc động từ.",
+          "ar": "\"If I have money, I will buy a car.\" حسناً — إن كنت تتحدث عن احتمال حقيقي. لكن ماذا لو كنت تتخيل شيئاً غير حقيقي الآن؟ هنا يفترق العربي والإنجليزي. العربية تستخدم **لو** نفسها للحالتين؛ أما الإنجليزية فتغير بنية الفعل بالكامل."
+        },
+        "why": {
+          "en": "Arabic **لو** + الماضي works for both real past conditions and unreal present ones. English marks the unreal explicitly: **If + past simple, would + base verb**. The past tense in the if-clause doesn't mean past time — it signals UNREAL. Mixing with **will** is the #1 error: it turns your hypothetical into a real prediction.",
+          "vi": "Tiếng Ả Rập **لو** + quá khứ dùng cho cả điều kiện quá khứ thật và điều kiện hiện tại không thật. Tiếng Anh đánh dấu điều không thật một cách rõ ràng: **If + past simple, would + động từ gốc**. Thì quá khứ trong mệnh đề if không có nghĩa là thời gian quá khứ — nó báo hiệu KHÔNG CÓ THẬT. Trộn với **will** là lỗi số 1.",
+          "ar": "**لو** + الماضي في العربية تصلح للشرط الماضي الحقيقي وللشرط الحالي غير الحقيقي. أما الإنجليزية فتميز غير الحقيقي بوضوح: **If + past simple, would + فعل أساسي**. الزمن الماضي في جملة if لا يعني زمناً ماضياً — بل يشير إلى عدم الحقيقة. والخلط مع **will** هو الخطأ الأول."
+        },
+        "pattern": {
+          "en": "**Type 2 (unreal present/future):** If + past simple, would + base verb. **If I had** money, I **would buy** a car. (I don't have money now.) **If she spoke** English, she **would get** the job. (She doesn't speak English.) **If it weren't** so late, I **would stay**. **Contrast with Type 1 (real):** If I **have** money, I **will buy** a car. (I might have money.) The verb shift IS the meaning.",
+          "vi": "**Type 2 (không thật ở hiện tại/tương lai):** If + past simple, would + động từ gốc. **If I had** money, I **would buy** a car. (Tôi không có tiền.) **If she spoke** English, she **would get** the job. (Cô ấy không nói được tiếng Anh.) **If it weren't** so late, I **would stay**. **So sánh Type 1 (thật):** If I **have** money, I **will buy** a car. (Có thể tôi có tiền.) Sự thay đổi động từ CHÍNH LÀ ý nghĩa.",
+          "ar": "**Type 2 (غير حقيقي في الحاضر/المستقبل):** If + past simple, would + فعل أساسي. **If I had** money, I **would buy** a car. (ليس لدي مال الآن). **If she spoke** English, she **would get** the job. (هي لا تتحدث الإنجليزية). **If it weren't** so late, I **would stay**. **مقارنة مع Type 1 (حقيقي):** If I **have** money, I **will buy** a car. (قد يكون لدي مال). تغيير الفعل هو المعنى بذاته."
+        },
+        "practice": {
+          "en": "Real or unreal? Pick the right form. **If I ___ (be) you, I ___ (take) the offer.** → were, would take (I'm not you — unreal). **If it ___ (rain) tomorrow, I ___ (stay) home.** → rains, will stay (possible — real). **If he ___ (have) a car, he ___ (drive) us.** → had, would drive (he doesn't — unreal).",
+          "vi": "Thật hay không thật? Chọn dạng đúng. **If I ___ (be) you, I ___ (take) the offer.** → were, would take (tôi không phải bạn — không thật). **If it ___ (rain) tomorrow, I ___ (stay) home.** → rains, will stay (có thể — thật). **If he ___ (have) a car, he ___ (drive) us.** → had, would drive (anh ấy không có — không thật).",
+          "ar": "حقيقي أم غير حقيقي؟ اختر الشكل الصحيح. **If I ___ (be) you, I ___ (take) the offer.** → were, would take (لست أنت — غير حقيقي). **If it ___ (rain) tomorrow, I ___ (stay) home.** → rains, will stay (ممكن — حقيقي). **If he ___ (have) a car, he ___ (drive) us.** → had, would drive (ليس لديه — غير حقيقي)."
+        },
+        "takeaway": {
+          "en": "Past tense in the if-clause is your UNREAL signal. Never follow it with **will** — always **would**. If you hear yourself say \"if I will,\" stop — that's a real conditional, not a hypothetical.",
+          "vi": "Thì quá khứ trong mệnh đề if là tín hiệu KHÔNG CÓ THẬT. Đừng bao giờ theo sau nó bằng **will** — luôn luôn là **would**. Nếu bạn thấy mình định nói \"if I will,\" dừng lại — đó là câu điều kiện thật, không phải giả định.",
+          "ar": "الزمن الماضي في جملة if هو إشارة عدم الحقيقة. لا تتبعه بـ **will** أبداً — بل استخدم **would** دائماً. وإن سمعت نفسك تقول \"if I will\"، فتوقف — فهذه جملة شرطية حقيقية وليست افتراضاً."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "If I ___ rich, I would travel the world.",
+            "vi": "If I ___ rich, I would travel the world."
+          },
+          "options": [
+            "am",
+            "was",
+            "were",
+            "will be"
+          ],
+          "correctAnswer": "were",
+          "explanation": {
+            "en": "Unreal present — use **were** (the subjunctive form) with **would** in the result clause.",
+            "vi": "Không có thật ở hiện tại — dùng **were** (dạng giả định) với **would** ở mệnh đề kết quả.",
+            "ar": "غير حقيقي في الحاضر — استخدم **were** (صيغة الافتراض) مع **would** في جملة النتيجة."
+          }
+        },
+        {
+          "question": {
+            "en": "If it ___ tomorrow, we will cancel the picnic.",
+            "vi": "If it ___ tomorrow, we will cancel the picnic."
+          },
+          "options": [
+            "rained",
+            "rains",
+            "would rain",
+            "had rained"
+          ],
+          "correctAnswer": "rains",
+          "explanation": {
+            "en": "Real possibility — **will** in the result means the if-clause takes present simple: **rains**.",
+            "vi": "Khả năng thật — **will** ở mệnh đề kết quả nghĩa là mệnh đề if dùng hiện tại đơn: **rains**.",
+            "ar": "احتمال حقيقي — وجود **will** في النتيجة يعني أن جملة if تأخذ المضارع البسيط: **rains**."
+          }
+        },
+        {
+          "question": {
+            "en": "She ___ the exam if she studied more.",
+            "vi": "She ___ the exam if she studied more."
+          },
+          "options": [
+            "will pass",
+            "would pass",
+            "passes",
+            "passed"
+          ],
+          "correctAnswer": "would pass",
+          "explanation": {
+            "en": "**Studied** (past in if-clause) signals unreal — must use **would pass**, never **will**.",
+            "vi": "**Studied** (quá khứ trong mệnh đề if) báo hiệu không thật — phải dùng **would pass**, không được **will**.",
+            "ar": "**Studied** (ماضٍ في جملة if) يشير إلى غير حقيقي — يجب استخدام **would pass** وليس **will** أبداً."
+          }
+        },
+        {
+          "question": {
+            "en": "If he ___ more experience, he would get the promotion.",
+            "vi": "If he ___ more experience, he would get the promotion."
+          },
+          "options": [
+            "has",
+            "had",
+            "will have",
+            "have"
+          ],
+          "correctAnswer": "had",
+          "explanation": {
+            "en": "**Would get** in the result → unreal → if-clause takes past simple: **had**.",
+            "vi": "**Would get** ở kết quả → không thật → mệnh đề if dùng quá khứ đơn: **had**.",
+            "ar": "**Would get** في النتيجة → غير حقيقي → جملة if تأخذ الماضي البسيط: **had**."
+          }
+        },
+        {
+          "question": {
+            "en": "I ___ you if I needed help.",
+            "vi": "I ___ you if I needed help."
+          },
+          "options": [
+            "call",
+            "called",
+            "will call",
+            "would call"
+          ],
+          "correctAnswer": "would call",
+          "explanation": {
+            "en": "**Needed** = past in if-clause = unreal signal. Match with **would call**, not **will call**.",
+            "vi": "**Needed** = quá khứ trong mệnh đề if = tín hiệu không thật. Ghép với **would call**, không phải **will call**.",
+            "ar": "**Needed** = ماضٍ في جملة if = إشارة غير حقيقي. طابقها مع **would call** وليس **will call**."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "ar_l1_reported_speech",
+      "title": {
+        "en": "**She said she was…** — reported speech tense shift",
+        "vi": "**She said she was…** — lùi thì trong câu tường thuật",
+        "ar": "**She said she was…** — تغيير الزمن في الكلام المنقول"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"He said he is tired.\" If you say this, an English speaker understands you — but they also know you're not C1 yet. Arabic keeps the original tense when reporting speech. English shifts it back one step. Every. Single. Time.",
+          "vi": "\"He said he is tired.\" Người bản ngữ vẫn hiểu bạn — nhưng họ cũng biết bạn chưa đạt C1. Tiếng Ả Rập giữ nguyên thì khi tường thuật. Tiếng Anh lùi về một bậc. Luôn luôn là như vậy.",
+          "ar": "\"He said he is tired.\" إن قلتها، فسيفهمك الإنجليزي — لكنه سيعرف أيضاً أنك لم تصل إلى C1 بعد. العربية تبقي على الزمن الأصلي عند نقل الكلام. أما الإنجليزية فتزيحه خطوة إلى الوراء. في كل مرة."
+        },
+        "why": {
+          "en": "Arabic reports speech directly: **قال إنه متعب** (lit. 'he said he is tired'). English backshifts: **He said he WAS tired**. The reporting verb **said** (past) triggers the shift — the reported clause must move one tense back. This isn't optional grammar; it's how English marks the distance between the original speech and your report of it.",
+          "vi": "Tiếng Ả Rập tường thuật trực tiếp: **قال إنه متعب** (dịch sát: 'he said he is tired'). Tiếng Anh lùi thì: **He said he WAS tired**. Động từ tường thuật **said** (quá khứ) kích hoạt việc lùi thì — mệnh đề được tường thuật phải lùi một bậc. Đây không phải ngữ pháp tùy chọn; đây là cách tiếng Anh đánh dấu khoảng cách giữa lời nói gốc và lời tường thuật.",
+          "ar": "العربية تنقل الكلام مباشرة: **قال إنه متعب**. أما الإنجليزية فتزيح الزمن: **He said he WAS tired**. فعل النقل **said** (ماضٍ) يُطلق إزاحة الزمن — يجب أن يتراجع الزمن في الجملة المنقولة درجة واحدة. هذه ليست قاعدة اختيارية؛ بل هي طريقة الإنجليزية في تحديد المسافة بين الكلام الأصلي ونقلك أنت له."
+        },
+        "pattern": {
+          "en": "**Tense backshift rule**: present → past, past → past perfect, will → would, can → could. **\"I am hungry\"** → She said she **was** hungry. **\"I saw him\"** → She said she **had seen** him. **\"I will call\"** → She said she **would** call. **\"I can help\"** → She said she **could** help. **No shift**: when the reporting verb is present, or for timeless facts. **She says** she **is** hungry. He said the earth **is** round.",
+          "vi": "**Quy tắc lùi thì**: hiện tại → quá khứ, quá khứ → quá khứ hoàn thành, will → would, can → could. **\"I am hungry\"** → She said she **was** hungry. **\"I saw him\"** → She said she **had seen** him. **\"I will call\"** → She said she **would** call. **\"I can help\"** → She said she **could** help. **Không lùi thì**: khi động từ tường thuật ở hiện tại, hoặc sự thật hiển nhiên. **She says** she **is** hungry. He said the earth **is** round.",
+          "ar": "**قاعدة إزاحة الزمن**: مضارع → ماضٍ، ماضٍ → ماضٍ تام، will → would، can → could. **\"I am hungry\"** → She said she **was** hungry. **\"I saw him\"** → She said she **had seen** him. **\"I will call\"** → She said she **would** call. **\"I can help\"** → She said she **could** help. **لا إزاحة**: عندما يكون فعل النقل في المضارع، أو للحقائق الخالدة. **She says** she **is** hungry. He said the earth **is** round."
+        },
+        "practice": {
+          "en": "Report these: **\"I am tired\"** → He said he ___ tired. (was). **\"I have finished\"** → She said she ___ finished. (had). **\"We will arrive late\"** → They said they ___ arrive late. (would). **\"I can't come\"** → He said he ___ come. (couldn't).",
+          "vi": "Tường thuật lại: **\"I am tired\"** → He said he ___ tired. (was). **\"I have finished\"** → She said she ___ finished. (had). **\"We will arrive late\"** → They said they ___ arrive late. (would). **\"I can't come\"** → He said he ___ come. (couldn't).",
+          "ar": "انقل الجمل التالية: **\"I am tired\"** → He said he ___ tired. (was). **\"I have finished\"** → She said she ___ finished. (had). **\"We will arrive late\"** → They said they ___ arrive late. (would). **\"I can't come\"** → He said he ___ come. (couldn't)."
+        },
+        "takeaway": {
+          "en": "Past reporting verb = one-step-back tense shift. It's not random — it's the most reliable rule in English. If you learn nothing else from B1, learn this.",
+          "vi": "Động từ tường thuật ở quá khứ = lùi thì một bậc. Không phải ngẫu nhiên — đây là quy tắc đáng tin cậy nhất trong tiếng Anh. Nếu bạn chỉ học một thứ từ B1, hãy học điều này.",
+          "ar": "فعل نقل في الماضي = إزاحة الزمن درجة واحدة. ليست عشوائية — بل أكثر قواعد الإنجليزية ثباتاً. إن لم تتعلم شيئاً واحداً من B1، فتعلم هذه."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "\"I am hungry.\" → He said he ___ hungry.",
+            "vi": "\"I am hungry.\" → He said he ___ hungry."
+          },
+          "options": [
+            "is",
+            "was",
+            "has been",
+            "will be"
+          ],
+          "correctAnswer": "was",
+          "explanation": {
+            "en": "Present **am** backshifts to past **was** after past reporting verb **said**.",
+            "vi": "Hiện tại **am** lùi thành quá khứ **was** sau động từ tường thuật quá khứ **said**.",
+            "ar": "المضارع **am** يتراجع إلى الماضي **was** بعد فعل النقل الماضي **said**."
+          }
+        },
+        {
+          "question": {
+            "en": "\"I will call you.\" → She said she ___ call me.",
+            "vi": "\"I will call you.\" → She said she ___ call me."
+          },
+          "options": [
+            "will",
+            "would",
+            "can",
+            "is going to"
+          ],
+          "correctAnswer": "would",
+          "explanation": {
+            "en": "**Will** backshifts to **would** in reported speech — always.",
+            "vi": "**Will** lùi thành **would** trong câu tường thuật — luôn luôn.",
+            "ar": "**Will** تتراجع إلى **would** في الكلام المنقول — دائماً."
+          }
+        },
+        {
+          "question": {
+            "en": "\"I have seen that movie.\" → She said she ___ that movie.",
+            "vi": "\"I have seen that movie.\" → She said she ___ that movie."
+          },
+          "options": [
+            "has seen",
+            "had seen",
+            "saw",
+            "sees"
+          ],
+          "correctAnswer": "had seen",
+          "explanation": {
+            "en": "Present perfect **have seen** backshifts to past perfect **had seen**.",
+            "vi": "Hiện tại hoàn thành **have seen** lùi thành quá khứ hoàn thành **had seen**.",
+            "ar": "المضارع التام **have seen** يتراجع إلى الماضي التام **had seen**."
+          }
+        },
+        {
+          "question": {
+            "en": "\"I can swim.\" → He said he ___ swim.",
+            "vi": "\"I can swim.\" → He said he ___ swim."
+          },
+          "options": [
+            "can",
+            "will",
+            "could",
+            "can't"
+          ],
+          "correctAnswer": "could",
+          "explanation": {
+            "en": "**Can** backshifts to **could** in reported speech after a past reporting verb.",
+            "vi": "**Can** lùi thành **could** trong câu tường thuật sau động từ tường thuật quá khứ.",
+            "ar": "**Can** تتراجع إلى **could** في الكلام المنقول بعد فعل نقل ماضٍ."
+          }
+        },
+        {
+          "question": {
+            "en": "\"The sun rises in the east.\" → He said the sun ___ in the east.",
+            "vi": "\"The sun rises in the east.\" → He said the sun ___ in the east."
+          },
+          "options": [
+            "rose",
+            "rises",
+            "has risen",
+            "is rising"
+          ],
+          "correctAnswer": "rises",
+          "explanation": {
+            "en": "Timeless fact — no backshift needed. The sun still rises in the east.",
+            "vi": "Sự thật hiển nhiên — không cần lùi thì. Mặt trời vẫn mọc ở hướng đông.",
+            "ar": "حقيقة خالدة — لا حاجة لإزاحة الزمن. الشمس لا تزال تشرق من الشرق."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "ar_c2_inversion_emphasis",
+      "title": {
+        "en": "**Never have I seen…** — inversion for emphasis",
+        "vi": "**Never have I seen…** — đảo ngữ nhấn mạnh",
+        "ar": "**Never have I seen…** — العكس للتأكيد"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"Never I have seen such a thing.\" A native speaker hears the error before the end of the sentence. Inversion — flipping the subject and auxiliary after negative adverbials — is one of the last grammar features learners master. But once you have it, your writing sounds 30% more sophisticated instantly.",
+          "vi": "\"Never I have seen such a thing.\" Người bản ngữ nghe ra lỗi trước khi câu kết thúc. Đảo ngữ — đảo chủ ngữ và trợ động từ sau trạng từ phủ định — là một trong những điểm ngữ pháp cuối cùng người học làm chủ. Nhưng một khi đã có nó, bài viết của bạn nghe tinh tế hơn 30% ngay lập tức.",
+          "ar": "\"Never I have seen such a thing.\" يسمع المتحدث الأصلي الخطأ قبل نهاية الجملة. العكس — قلب الفاعل والفعل المساعد بعد الظروف النافية — من آخر ملامح القواعد التي يتقنها المتعلم. لكن ما إن تتقنه، يصبح أسلوب كتابتك أكثر تطوراً بنسبة 30% فوراً."
+        },
+        "why": {
+          "en": "Arabic fronts adverbials for emphasis without structural change: **أبداً لم أرَ** (never I saw) keeps normal order. English demands inversion after **never**, **rarely**, **seldom**, **hardly**, **no sooner**, **not only**, **under no circumstances**, **little did I know**, and similar negative/restrictive expressions. The auxiliary jumps before the subject. It's not decoration — it's grammar.",
+          "vi": "Tiếng Ả Rập đưa trạng từ lên đầu để nhấn mạnh mà không thay đổi cấu trúc: **أبداً لم أرَ** (chưa bao giờ tôi thấy) giữ trật tự bình thường. Tiếng Anh yêu cầu đảo ngữ sau **never**, **rarely**, **seldom**, **hardly**, **no sooner**, **not only**, **under no circumstances**, **little did I know**, và các biểu thức phủ định/hạn chế tương tự. Trợ động từ nhảy lên trước chủ ngữ. Đây không phải trang trí — đây là ngữ pháp.",
+          "ar": "العربية تقدم الظروف للتأكيد دون تغيير هيكلي: **أبداً لم أرَ** تحافظ على الترتيب الطبيعي. الإنجليزية تفرض العكس بعد **never**, **rarely**, **seldom**, **hardly**, **no sooner**, **not only**, **under no circumstances**, **little did I know**، وما شابهها من تعابير نافية/مقيدة. يقفز الفعل المساعد قبل الفاعل. ليس تجميلاً — بل قاعدة."
+        },
+        "pattern": {
+          "en": "**Formula**: negative/restrictive adverbial + auxiliary + subject + main verb. **Never** have I **seen** such dedication. **Rarely** does she **arrive** late. **Not only** did he **finish**, (but) he also **helped** others. **No sooner** had I **sat down** than the phone rang. **Under no circumstances** should you **open** that door. **Little** did I **know** what awaited me. The trick: if the sentence starts with a negative idea, check — does the auxiliary come next?",
+          "vi": "**Công thức**: trạng từ phủ định/hạn chế + trợ động từ + chủ ngữ + động từ chính. **Never** have I **seen** such dedication. **Rarely** does she **arrive** late. **Not only** did he **finish**, (but) he also **helped** others. **No sooner** had I **sat down** than the phone rang. **Under no circumstances** should you **open** that door. **Little** did I **know** what awaited me. Mẹo: nếu câu bắt đầu bằng ý phủ định, kiểm tra — trợ động từ có đứng ngay sau không?",
+          "ar": "**الصيغة**: ظرف نافٍ/مقيد + فعل مساعد + فاعل + فعل رئيسي. **Never** have I **seen** such dedication. **Rarely** does she **arrive** late. **Not only** did he **finish**, (but) he also **helped** others. **No sooner** had I **sat down** than the phone rang. **Under no circumstances** should you **open** that door. **Little** did I **know** what awaited me. الحيلة: إن بدأت الجملة بمعنى نافٍ، فتأكد — هل يأتي الفعل المساعد بعدها مباشرة؟"
+        },
+        "practice": {
+          "en": "Rewrite with inversion: **I have never been so embarrassed.** → Never ___ so embarrassed. (have I been). **She not only sings, she also dances.** → Not only ___, but she also dances. (does she sing). **I had hardly arrived when it started raining.** → Hardly ___ when it started raining. (had I arrived).",
+          "vi": "Viết lại với đảo ngữ: **I have never been so embarrassed.** → Never ___ so embarrassed. (have I been). **She not only sings, she also dances.** → Not only ___, but she also dances. (does she sing). **I had hardly arrived when it started raining.** → Hardly ___ when it started raining. (had I arrived).",
+          "ar": "أعد كتابة الجمل مع العكس: **I have never been so embarrassed.** → Never ___ so embarrassed. (have I been). **She not only sings, she also dances.** → Not only ___, but she also dances. (does she sing). **I had hardly arrived when it started raining.** → Hardly ___ when it started raining. (had I arrived)."
+        },
+        "takeaway": {
+          "en": "Inversion after negative adverbials is a precision tool. Use it once per paragraph at most — overuse sounds theatrical. One well-placed inversion per essay is a quiet signal that you're writing at C2.",
+          "vi": "Đảo ngữ sau trạng từ phủ định là công cụ chính xác. Dùng tối đa một lần mỗi đoạn — lạm dụng nghe như kịch. Một lần đảo ngữ đúng chỗ trong bài luận là tín hiệu thầm lặng rằng bạn đang viết ở trình độ C2.",
+          "ar": "العكس بعد الظروف النافية أداة دقيقة. استخدمه مرة واحدة لكل فقرة على الأكثر — الإفراط فيه يبدو مسرحياً. عكس واحد في مكانه المناسب في المقالة إشارة صامتة أنك تكتب بمستوى C2."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Never ___ such a beautiful sunset.",
+            "vi": "Never ___ such a beautiful sunset."
+          },
+          "options": [
+            "I have seen",
+            "have I seen",
+            "I saw",
+            "did I saw"
+          ],
+          "correctAnswer": "have I seen",
+          "explanation": {
+            "en": "After **never** at the start, invert: auxiliary (**have**) + subject (**I**) + main verb (**seen**).",
+            "vi": "Sau **never** ở đầu câu, đảo ngữ: trợ động từ (**have**) + chủ ngữ (**I**) + động từ chính (**seen**).",
+            "ar": "بعد **never** في بداية الجملة، اعكس: فعل مساعد (**have**) + فاعل (**I**) + فعل رئيسي (**seen**)."
+          }
+        },
+        {
+          "question": {
+            "en": "Not only ___ the exam, but he also got the highest score.",
+            "vi": "Not only ___ the exam, but he also got the highest score."
+          },
+          "options": [
+            "he passed",
+            "passed he",
+            "did he pass",
+            "he did pass"
+          ],
+          "correctAnswer": "did he pass",
+          "explanation": {
+            "en": "**Not only** triggers inversion. Since the main verb **passed** has no auxiliary, add **did**: → Not only **did he pass**.",
+            "vi": "**Not only** kích hoạt đảo ngữ. Vì động từ chính **passed** không có trợ động từ, thêm **did**: → Not only **did he pass**.",
+            "ar": "**Not only** تطلق العكس. ولأن الفعل الرئيسي **passed** ليس معه فعل مساعد، أضف **did**: → Not only **did he pass**."
+          }
+        },
+        {
+          "question": {
+            "en": "Under no circumstances ___ the building during a fire alarm.",
+            "vi": "Under no circumstances ___ the building during a fire alarm."
+          },
+          "options": [
+            "you should enter",
+            "should you enter",
+            "you enter",
+            "do you enter"
+          ],
+          "correctAnswer": "should you enter",
+          "explanation": {
+            "en": "**Under no circumstances** is a restrictive negative — invert with the modal: **should you enter**.",
+            "vi": "**Under no circumstances** là hạn chế phủ định — đảo ngữ với trợ động từ khuyết thiếu: **should you enter**.",
+            "ar": "**Under no circumstances** تقييد نافٍ — اعكس مع الفعل المساعد: **should you enter**."
+          }
+        },
+        {
+          "question": {
+            "en": "Hardly ___ the room when the meeting started.",
+            "vi": "Hardly ___ the room when the meeting started."
+          },
+          "options": [
+            "I had entered",
+            "had I entered",
+            "did I enter",
+            "I entered"
+          ],
+          "correctAnswer": "had I entered",
+          "explanation": {
+            "en": "**Hardly… when** is a past-before-past pattern — invert with past perfect: **had I entered**.",
+            "vi": "**Hardly… when** là mẫu quá khứ trước quá khứ — đảo ngữ với quá khứ hoàn thành: **had I entered**.",
+            "ar": "**Hardly… when** نمط ماضٍ قبل ماضٍ — اعكس مع الماضي التام: **had I entered**."
+          }
+        },
+        {
+          "question": {
+            "en": "Little ___ what was about to happen.",
+            "vi": "Little ___ what was about to happen."
+          },
+          "options": [
+            "I knew",
+            "did I know",
+            "knew I",
+            "I did know"
+          ],
+          "correctAnswer": "did I know",
+          "explanation": {
+            "en": "**Little** as a negative adverbial triggers inversion: **did I know**.",
+            "vi": "**Little** với nghĩa phủ định kích hoạt đảo ngữ: **did I know**.",
+            "ar": "**Little** كظرف نافٍ يطلق العكس: **did I know**."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "ar_c2_cleft_focus",
+      "title": {
+        "en": "**It was… that…** — cleft sentences for precision",
+        "vi": "**It was… that…** — câu chẻ để nhấn mạnh chính xác",
+        "ar": "**It was… that…** — الجمل المشقوقة للدقة"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"The manager approved the proposal.\" Fine — but which part matters? The manager? The approval? The proposal? English has a surgical tool for this: the cleft sentence. It lets you pull exactly one piece of information into the spotlight. Once you see how it works, you'll notice it everywhere in academic and professional writing.",
+          "vi": "\"The manager approved the proposal.\" Ổn — nhưng phần nào quan trọng? Người quản lý? Sự phê duyệt? Bản đề xuất? Tiếng Anh có một công cụ phẫu thuật cho việc này: câu chẻ. Nó cho phép bạn kéo chính xác một mẩu thông tin vào tiêu điểm. Một khi bạn thấy nó hoạt động ra sao, bạn sẽ nhận ra nó ở khắp nơi trong văn bản học thuật và chuyên nghiệp.",
+          "ar": "\"The manager approved the proposal.\" حسناً — لكن أي جزء هو المهم؟ المدير؟ الموافقة؟ الاقتراح؟ الإنجليزية تملك أداة جراحية لهذا: الجملة المشقوقة. تتيح لك سحب معلومة واحدة بالضبط إلى دائرة الضوء. وما إن تفهم كيف تعمل، ستراها في كل مكان في الكتابة الأكاديمية والمهنية."
+        },
+        "why": {
+          "en": "Arabic uses word order and particles like **إنّ** for emphasis. English clefts restructure the whole sentence: an **it-cleft** pulls one element into focus (**It was the manager who approved it**), a **wh-cleft** packages the whole idea as a subject (**What the manager did was approve it**). At C2, choosing between them controls what your reader notices first — and what they remember.",
+          "vi": "Tiếng Ả Rập dùng trật tự từ và các tiểu từ như **إنّ** để nhấn mạnh. Câu chẻ tiếng Anh tái cấu trúc toàn bộ câu: **it-cleft** kéo một yếu tố vào tiêu điểm (**It was the manager who approved it**), **wh-cleft** đóng gói toàn bộ ý thành chủ ngữ (**What the manager did was approve it**). Ở cấp C2, chọn giữa chúng cho phép bạn kiểm soát điều người đọc chú ý đầu tiên — và điều họ nhớ.",
+          "ar": "تستخدم العربية ترتيب الكلمات وأدوات مثل **إنّ** للتأكيد. أما الجمل المشقوقة الإنجليزية فتعيد هيكلة الجملة كلها: **it-cleft** تسحب عنصراً واحداً إلى البؤرة (**It was the manager who approved it**)، و**wh-cleft** تغلف الفكرة كلها كفاعل (**What the manager did was approve it**). في مستوى C2، اختيارك بينهما يتحكم في أول ما يلاحظه القارئ — وفيما يتذكره."
+        },
+        "pattern": {
+          "en": "**It-cleft**: It + be + [focus] + that/who + [rest]. **It was John** who broke the vase (focus on John). **It was yesterday** that I called (focus on time). **It is the grammar** that makes this hard (focus on grammar). **Wh-cleft**: What + [clause] + be + [focus]. **What I need** is more time. **What surprised me** was her honesty. **What you should do** is practice daily. **The rule**: clefts are for FOCUS — use them when one piece of information is the point of the sentence.",
+          "vi": "**It-cleft**: It + be + [tiêu điểm] + that/who + [phần còn lại]. **It was John** who broke the vase (nhấn John). **It was yesterday** that I called (nhấn thời gian). **It is the grammar** that makes this hard (nhấn ngữ pháp). **Wh-cleft**: What + [mệnh đề] + be + [tiêu điểm]. **What I need** is more time. **What surprised me** was her honesty. **What you should do** is practice daily. **Quy tắc**: câu chẻ dành cho TIÊU ĐIỂM — dùng khi một mẩu thông tin là trọng tâm của câu.",
+          "ar": "**It-cleft**: It + be + [البؤرة] + that/who + [الباقي]. **It was John** who broke the vase (البؤرة على John). **It was yesterday** that I called (البؤرة على الزمن). **It is the grammar** that makes this hard (البؤرة على القواعد). **Wh-cleft**: What + [جملة] + be + [البؤرة]. **What I need** is more time. **What surprised me** was her honesty. **What you should do** is practice daily. **القاعدة**: الجمل المشقوقة للبؤرة — استخدمها عندما تكون معلومة واحدة هي لب الجملة."
+        },
+        "practice": {
+          "en": "Rewrite these as it-clefts: **Sarah found the solution.** → **It was Sarah** who found the solution. **I admire his patience most.** → **It is his patience** that I admire most. **The heat, not the humidity, bothers me.** → **It is the heat** that bothers me, not the humidity. **Practice writing a wh-cleft: \"I want to improve my speaking.\"** → **What I want to improve** is my speaking.",
+          "vi": "Viết lại thành it-cleft: **Sarah found the solution.** → **It was Sarah** who found the solution. **I admire his patience most.** → **It is his patience** that I admire most. **The heat, not the humidity, bothers me.** → **It is the heat** that bothers me, not the humidity. **Tập viết wh-cleft: \"I want to improve my speaking.\"** → **What I want to improve** is my speaking.",
+          "ar": "أعد كتابتها كـ it-cleft: **Sarah found the solution.** → **It was Sarah** who found the solution. **I admire his patience most.** → **It is his patience** that I admire most. **The heat, not the humidity, bothers me.** → **It is the heat** that bothers me, not the humidity. **تدرب على wh-cleft: \"I want to improve my speaking.\"** → **What I want to improve** is my speaking."
+        },
+        "takeaway": {
+          "en": "Clefts are the difference between reporting information and controlling attention. When you write, ask: what is the ONE thing I want my reader to take away from this sentence? Put that in the cleft focus slot.",
+          "vi": "Câu chẻ là sự khác biệt giữa báo cáo thông tin và kiểm soát sự chú ý. Khi viết, tự hỏi: điều DUY NHẤT tôi muốn người đọc ghi nhớ từ câu này là gì? Đặt nó vào vị trí tiêu điểm của câu chẻ.",
+          "ar": "الجمل المشقوقة هي الفرق بين نقل المعلومات والتحكم في الانتباه. عندما تكتب، اسأل نفسك: ما هو الشيء الوحيد الذي أريد من القارئ أن يخرج به من هذه الجملة؟ ضعه في خانة البؤرة في الجملة المشقوقة."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "___ the manager who approved the proposal.",
+            "vi": "___ the manager who approved the proposal."
+          },
+          "options": [
+            "It was",
+            "There was",
+            "What was",
+            "That was"
+          ],
+          "correctAnswer": "It was",
+          "explanation": {
+            "en": "It-cleft structure: start with **It was** + focus element + **who** (for people).",
+            "vi": "Cấu trúc it-cleft: bắt đầu với **It was** + yếu tố tiêu điểm + **who** (cho người).",
+            "ar": "بنية it-cleft: ابدأ بـ **It was** + عنصر البؤرة + **who** (للأشخاص)."
+          }
+        },
+        {
+          "question": {
+            "en": "What I really need right now ___ a good night's sleep.",
+            "vi": "What I really need right now ___ a good night's sleep."
+          },
+          "options": [
+            "are",
+            "is",
+            "were",
+            "have been"
+          ],
+          "correctAnswer": "is",
+          "explanation": {
+            "en": "Wh-cleft: the whole **What…** clause is singular → use **is**.",
+            "vi": "Wh-cleft: toàn bộ mệnh đề **What…** là số ít → dùng **is**.",
+            "ar": "Wh-cleft: جملة **What…** كاملة مفردة → استخدم **is**."
+          }
+        },
+        {
+          "question": {
+            "en": "It was yesterday ___ I received the email.",
+            "vi": "It was yesterday ___ I received the email."
+          },
+          "options": [
+            "who",
+            "when",
+            "that",
+            "which"
+          ],
+          "correctAnswer": "that",
+          "explanation": {
+            "en": "For time expressions in it-clefts, use **that** (not **when**) — **that** is the default connector.",
+            "vi": "Với biểu thức thời gian trong it-cleft, dùng **that** (không phải **when**) — **that** là từ nối mặc định.",
+            "ar": "لتعابير الزمن في it-cleft، استخدم **that** (وليس **when**) — **that** هي أداة الربط الافتراضية."
+          }
+        },
+        {
+          "question": {
+            "en": "What surprised everyone ___ her sudden resignation.",
+            "vi": "What surprised everyone ___ her sudden resignation."
+          },
+          "options": [
+            "was",
+            "were",
+            "is being",
+            "have been"
+          ],
+          "correctAnswer": "was",
+          "explanation": {
+            "en": "Wh-cleft: **What surprised everyone** is a singular subject → **was**.",
+            "vi": "Wh-cleft: **What surprised everyone** là chủ ngữ số ít → **was**.",
+            "ar": "Wh-cleft: **What surprised everyone** فاعل مفرد → **was**."
+          }
+        },
+        {
+          "question": {
+            "en": "It is not the money ___ matters; it's the principle.",
+            "vi": "It is not the money ___ matters; it's the principle."
+          },
+          "options": [
+            "who",
+            "what",
+            "which",
+            "that"
+          ],
+          "correctAnswer": "that",
+          "explanation": {
+            "en": "**That** is the default cleft connector for non-people. **Which** is possible in very formal writing, but **that** is safer.",
+            "vi": "**That** là từ nối mặc định trong câu chẻ cho vật. **Which** có thể dùng trong văn rất trang trọng, nhưng **that** an toàn hơn.",
+            "ar": "**That** هي أداة الربط الافتراضية لغير الأشخاص. يمكن استخدام **which** في الكتابة شديدة الرسمية، لكن **that** أكثر أماناً."
+          }
+        }
+      ]
     }
   ]
 }

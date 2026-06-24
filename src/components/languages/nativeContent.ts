@@ -13,7 +13,7 @@
 // English lesson content stays English; only the explanation/pedagogy
 // slot changes.
 
-export type NativeLang = "vi" | "en" | "ja" | "id" | "th";
+export type NativeLang = "vi" | "en" | "ja" | "id" | "th" | "ar";
 
 export type NativeSlots<T> = {
   vi?: T;
@@ -21,6 +21,7 @@ export type NativeSlots<T> = {
   ja?: T;
   id?: T;
   th?: T;
+  ar?: T;
 };
 
 const FALLBACK_ORDER: Record<NativeLang, readonly NativeLang[]> = {
@@ -29,6 +30,7 @@ const FALLBACK_ORDER: Record<NativeLang, readonly NativeLang[]> = {
   ja: ["ja", "en", "vi"],
   id: ["id", "en", "vi"],
   th: ["th", "en", "vi"],
+  ar: ["ar", "en", "vi"],
 };
 
 export function getNativeContent<T>(
