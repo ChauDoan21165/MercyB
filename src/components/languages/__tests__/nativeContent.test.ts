@@ -50,6 +50,18 @@ describe("getNativeContent — native-language slot resolution", () => {
     expect(getNativeContent({ vi: undefined, en: undefined }, "vi")).toBeUndefined();
   });
 
+  it("ja prefers ja, falls back to en, then vi", () => {
+    expect(getNativeContent({ vi: "V", en: "E", ja: "J" }, "ja")).toBe("J");
+    expect(getNativeContent({ vi: "V", en: "E" }, "ja")).toBe("E");
+    expect(getNativeContent({ vi: "V" }, "ja")).toBe("V");
+  });
+
+  it("id prefers id, falls back to en, then vi", () => {
+    expect(getNativeContent({ vi: "V", en: "E", id: "I" }, "id")).toBe("I");
+    expect(getNativeContent({ vi: "V", en: "E" }, "id")).toBe("E");
+    expect(getNativeContent({ vi: "V" }, "id")).toBe("V");
+  });
+
   it("works for non-string payloads (array fields like roleplayPrompts)", () => {
     const slots: NativeSlots<string[]> = { vi: ["a"], en: ["b"] };
     expect(getNativeContent(slots, "vi")).toEqual(["a"]);
@@ -85,6 +97,14 @@ describe("isNativeFallback — drives the fallback badge", () => {
     expect(isNativeFallback({ vi: "V", en: "E" }, "en")).toBe(false);
     expect(isNativeFallback({ vi: "V" }, "en")).toBe(true); // showing vi under en
     expect(isNativeFallback({ en: "E" }, "en")).toBe(false);
+
+    expect(isNativeFallback({ ja: "J", en: "E", vi: "V" }, "ja")).toBe(false);
+    expect(isNativeFallback({ en: "E", vi: "V" }, "ja")).toBe(true);
+    expect(isNativeFallback({ vi: "V" }, "ja")).toBe(true);
+
+    expect(isNativeFallback({ id: "I", en: "E", vi: "V" }, "id")).toBe(false);
+    expect(isNativeFallback({ en: "E", vi: "V" }, "id")).toBe(true);
+    expect(isNativeFallback({ vi: "V" }, "id")).toBe(true);
   });
 
   it("is byte-identical to the legacy isFallback(uiLanguage,en,vi)", () => {

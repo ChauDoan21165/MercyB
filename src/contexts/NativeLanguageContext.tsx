@@ -23,7 +23,7 @@
 // native_language is now `profiles.native_language`; localStorage is
 // demoted to a synchronous *cache* that seeds state with no flash before
 // the profile query resolves. When the profile row carries a valid
-// 'vi'|'en' (i.e. the user has completed pair-selection onboarding) it
+// 'vi'|'en'|'ja'|'id'|'th'|'th'|'th' (i.e. the user has completed pair-selection onboarding) it
 // wins and is written back to the cache. A NULL/absent native_language
 // (the user still owes onboarding) is left untouched — state stays at
 // the cached/default 'vi', which the nativeContent seam already resolves
@@ -44,10 +44,15 @@ import { useProfileQuery } from "@/lib/queries/useProfileQuery";
 
 const STORAGE_KEY = "mercyblade.nativeLang";
 
+function isNativeLang(raw: unknown): raw is NativeLang {
+  return raw === "vi" || raw === "en" || raw === "ja" || raw === "id" || raw === "th" || raw === "th" || raw === "th";
+}
+
 function readStoredNativeLang(): NativeLang {
   if (typeof window === "undefined") return "vi";
   try {
-    return window.localStorage.getItem(STORAGE_KEY) === "en" ? "en" : "vi";
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    return isNativeLang(stored) ? stored : "vi";
   } catch {
     return "vi";
   }
@@ -70,7 +75,7 @@ function persistNativeLang(next: NativeLang): void {
  * and the `native_language IS NULL` onboarding gate meaningful).
  */
 function normalizeNativeLang(raw: unknown): NativeLang | null {
-  return raw === "vi" || raw === "en" ? raw : null;
+  return isNativeLang(raw) ? raw : null;
 }
 
 type NativeLanguageApi = {
@@ -95,7 +100,7 @@ export function NativeLanguageProvider({
   useEffect(() => {
     function onStorage(e: StorageEvent) {
       if (e.key !== STORAGE_KEY) return;
-      setNativeLangState(e.newValue === "en" ? "en" : "vi");
+      setNativeLangState(isNativeLang(e.newValue) ? e.newValue : "vi");
     }
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
@@ -104,7 +109,7 @@ export function NativeLanguageProvider({
   // Hydrate from the profile row — the source of truth. useProfileQuery
   // shares the app-wide cache key qk.profile(userId), so this adds no
   // extra network round-trip (every other reader already populates it).
-  // A valid 'vi'|'en' from the profile overrides the localStorage seed
+  // A valid 'vi'|'en'|'ja'|'id'|'th'|'th'|'th' from the profile overrides the localStorage seed
   // and refreshes the cache; a NULL/absent value (onboarding still owed)
   // is ignored, so state stays at the cached/default 'vi' and behavior is
   // unchanged until PR 2/3 add real consumers. Effect depends only on the

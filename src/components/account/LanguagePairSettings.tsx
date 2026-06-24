@@ -1,3 +1,8 @@
+
+function nativeCopyLang(lang: "vi" | "en" | "ja" | "id" | "th"): "vi" | "en" {
+  return lang === "vi" ? "vi" : "en";
+}
+
 // src/components/account/LanguagePairSettings.tsx
 //
 // Settings panel: manage the (native, target) language pair. Fulfils
@@ -59,7 +64,7 @@ export default function LanguagePairSettings() {
   // Existing users are backfilled to 'vi'; default the display there
   // if somehow unset so the panel is always usable.
   const native: NativeLang = nativeLanguage ?? "vi";
-  const menu = TARGET_MENU[native];
+  const menu = TARGET_MENU[nativeCopyLang(native)];
 
   const save = async (patch: Parameters<typeof persist>[0]) => {
     setBusy(true);

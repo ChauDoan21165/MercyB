@@ -76,10 +76,8 @@ export interface OnboardingDraft {
   english_level: OnboardingLevel | null;
 }
 
-export interface BilingualLabel {
-  vi: string;
-  en: string;
-}
+export interface BilingualLabel { vi: string; en: string; ja?: string; id?: string;
+  th?: string;}
 
 export interface BilingualCopy extends BilingualLabel {
   /** Optional one-line subhead — VI only, lighter weight. */
@@ -111,6 +109,7 @@ export const NATIVE_OPTIONS: Array<{
 }> = [
   { value: "vi", icon: "🇻🇳", label: { vi: "Tiếng Việt", en: "Vietnamese" } },
   { value: "en", icon: "🇬🇧", label: { vi: "Tiếng Anh", en: "English" } },
+  { value: "id", icon: "🇮🇩", label: { vi: "Tiếng Indonesia", en: "Indonesian" } },
 ];
 
 export interface TargetMeta {
@@ -142,7 +141,7 @@ export const TARGET_META: Record<TargetLang, TargetMeta> = {
  *  en-native → English names) — no more hardcoded `.labelVi`. */
 export function targetLabel(t: TargetLang, lang: NativeLang): string {
   const m = TARGET_META[t];
-  return lang === "en" ? m.labelEn : m.labelVi;
+  return lang === "vi" ? m.labelVi : m.labelEn;
 }
 
 export interface TargetMenuItem {
@@ -188,6 +187,15 @@ export const TARGET_MENU: Record<NativeLang, TargetMenuItem[]> = {
     { value: "ko", readiness: "partial" },
     { value: "vi", readiness: "partial" },
   ],
+  ja: [
+    { value: "en", readiness: "full", recommended: true },
+  ],
+  id: [
+    { value: "en", readiness: "full", recommended: true },
+  ],
+  th: [
+    { value: "en", readiness: "full", recommended: true },
+  ],
 };
 
 /** Skip default + the pre-checked recommendation per native (Phase 3
@@ -195,6 +203,9 @@ export const TARGET_MENU: Record<NativeLang, TargetMenuItem[]> = {
 export const RECOMMENDED_TARGET: Record<NativeLang, TargetLang> = {
   vi: "en",
   en: "es",
+  ja: "en",
+  id: "en",
+  th: "en",
 };
 
 /** Default honesty badge by readiness (locked #7). full ⇒ none; a

@@ -49,7 +49,7 @@ if (typeof Uint8Array !== "undefined" && !(Uint8Array.prototype as any).at) {
   }
 }
 
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
@@ -188,6 +188,31 @@ armSentryActivation({
   enqueue: bootErrors.capture,
 });
 
+
+function runAfterInitialPaint(callback: () => void, delayMs = 1500): void {
+  const run = () => {
+    try { callback(); } catch { /* non-critical boot work must never block UX */ }
+  };
+
+  const afterTwoFrames = () => {
+    const scheduleIdle = () => {
+      if (typeof window !== "undefined" && typeof window.requestIdleCallback === "function") {
+        window.requestIdleCallback(run, { timeout: delayMs + 2000 });
+      } else {
+        setTimeout(run, delayMs);
+      }
+    };
+
+    setTimeout(scheduleIdle, delayMs);
+  };
+
+  if (typeof window !== "undefined" && typeof window.requestAnimationFrame === "function") {
+    window.requestAnimationFrame(() => window.requestAnimationFrame(afterTwoFrames));
+  } else {
+    setTimeout(run, delayMs);
+  }
+}
+
 // Defer non-critical boot work out of the synchronous path:
 //   - runConfigHealthCheck: probes external services and reports to Sentry.
 //   - initializeWebVitals: subscribes to LCP/CLS/INP/TTFB/FCP observers.
@@ -212,14 +237,8 @@ armSentryActivation({
       .then((m) => m.initializeWebVitals())
       .catch(() => {});
   };
-  // `requestIdleCallback` exists in Chrome/Edge/Firefox; Safari shipped
-  // it in 16.4. setTimeout(1) is the universal fallback — still off the
-  // critical path even if not strictly idle.
-  if (typeof window !== "undefined" && typeof window.requestIdleCallback === "function") {
-    window.requestIdleCallback(run, { timeout: 2000 });
-  } else {
-    setTimeout(run, 1);
-  }
+  // Keep observability imports out of the first-render/LCP window.
+  runAfterInitialPaint(run, 2000);
 })();
 
 const devLog = (...args: unknown[]) => {
@@ -571,9 +590,11 @@ function scheduleOneTimeChunkReload(): boolean {
   // initRevenueCat() is internally a no-op on non-iOS platforms, but the
   // import itself only runs here. Never block boot.
   try {
-    void import("@/lib/iap")
-      .then((mod) => { void mod.initRevenueCat(); })
-      .catch(() => { /* never block boot */ });
+    runAfterInitialPaint(() => {
+      void import("@/lib/iap")
+        .then((mod) => { void mod.initRevenueCat(); })
+        .catch(() => { /* never block boot */ });
+    }, 1800);
   } catch { /* never block boot */ }
 })();
 
@@ -583,9 +604,11 @@ function scheduleOneTimeChunkReload(): boolean {
   // initial bundle. Never block boot — if anything throws we just
   // skip tracking. See src/services/behaviorTrackingFlag.ts.
   try {
-    void import("@/services/behaviorTrackingFlag")
-      .then((mod) => mod.initMarketingTracking())
-      .catch(() => { /* never block boot on a tracker failure */ });
+    runAfterInitialPaint(() => {
+      void import("@/services/behaviorTrackingFlag")
+        .then((mod) => mod.initMarketingTracking())
+        .catch(() => { /* never block boot on a tracker failure */ });
+    }, 2200);
   } catch { /* ignore */ }
 })();
 
@@ -597,6 +620,34 @@ function scheduleOneTimeChunkReload(): boolean {
 // no-op whenever the post-reload page was backgrounded, leaving the mark
 // stuck for the rest of the session and crashing the *next* deploy into
 // the ErrorBoundary. See src/lib/lazyWithRetry.ts.
+
+
+function DeferredBootSurfaces(): React.ReactElement | null {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    let alive = true;
+    runAfterInitialPaint(() => {
+      if (alive) setReady(true);
+    }, 1200);
+    return () => { alive = false; };
+  }, []);
+
+  if (!ready) return null;
+
+  return (
+    <Suspense fallback={null}>
+      <GlobalNavigationShortcuts />
+      <AndroidBackButton />
+      <NativeDeepLinkListener />
+      <NativeBootstrap />
+      <NotificationBootstrap />
+      <ShortcutHelpOverlay />
+      <Toaster />
+      <AccessibleToaster />
+    </Suspense>
+  );
+}
 
 const root = document.getElementById("root");
 if (!root) throw new Error("Root element #root not found");
@@ -622,16 +673,7 @@ w.__MB_REACT_ROOT__.render(
               path. fallback={null} is correct: a keyboard listener that
               hasn't loaded yet is indistinguishable from an unpressed key,
               and a toaster that hasn't loaded yet has nothing to render. */}
-          <Suspense fallback={null}>
-            <GlobalNavigationShortcuts />
-            <AndroidBackButton />
-            <NativeDeepLinkListener />
-            <NativeBootstrap />
-            <NotificationBootstrap />
-            <ShortcutHelpOverlay />
-            <Toaster />
-            <AccessibleToaster />
-          </Suspense>
+          <DeferredBootSurfaces />
           <LanguageProgressProvider>
             {/* UiLanguageProvider wraps the router so the global VI/EN
                 toggle in AppHeroShell and every routed language surface

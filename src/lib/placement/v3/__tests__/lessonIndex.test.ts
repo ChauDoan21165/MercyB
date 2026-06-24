@@ -50,5 +50,13 @@ describe("placement v3 lesson index", () => {
       expect(index.filter((lesson) => lesson.source === source).length).toBeGreaterThan(0);
     }
   });
+  it("includes Swahili language pack lessons as placement candidates", () => {
+    const swahiliLessons = index.filter((lesson) => lesson.id.startsWith("room:swahili:"));
+
+    expect(swahiliLessons).toHaveLength(47);
+    expect(swahiliLessons.some((lesson) => lesson.id === "room:swahili:swahili_c1_complex_sentences")).toBe(true);
+    expect(swahiliLessons.every((lesson) => lesson.tags.includes("swahili"))).toBe(true);
+  });
+
 });
 

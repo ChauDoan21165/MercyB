@@ -50,7 +50,11 @@ export async function openBillingPortal(returnUrl?: string): Promise<void> {
       },
     );
   } catch (err) {
-    const isAbort = err instanceof Error && err.name === "AbortError";
+    const errorName =
+      typeof err === "object" && err !== null && "name" in err
+        ? String((err as { name?: unknown }).name)
+        : "";
+    const isAbort = errorName === "AbortError";
     throw new Error(
       isAbort
         ? "Billing portal request timed out. Please try again."

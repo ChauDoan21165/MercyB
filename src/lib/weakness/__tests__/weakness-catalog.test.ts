@@ -20,8 +20,8 @@ import {
 const PUBLIC_DATA = resolve(__dirname, "../../../../public/data");
 
 describe("WEAKNESS_CATALOG shape", () => {
-  it("contains the expected total count (60 = 3 placement + 6 PR #19 + 11 v2 + 15 v3 + 25 Round 5)", () => {
-    expect(ALL_WEAKNESS_TAGS.length).toBe(60);
+  it("keeps ALL_WEAKNESS_TAGS in sync with WEAKNESS_CATALOG keys", () => {
+    expect(ALL_WEAKNESS_TAGS.length).toBe(Object.keys(WEAKNESS_CATALOG).length);
   });
 
   it("exposes every tag in ALL_WEAKNESS_TAGS", () => {

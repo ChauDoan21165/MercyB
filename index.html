@@ -33,18 +33,7 @@
          for the SPA render. fetchpriority="high" signals this is the
          LCP candidate. Lighthouse PR 3. -->
     <link rel="preload" as="image" href="/teacher-mercy.avif" type="image/avif" fetchpriority="high" />
-    <script>
-      (function () {
-        try {
-          document.documentElement.setAttribute(
-            'data-mb-route',
-            window.location.pathname.indexOf('/ai-tutor') === 0 ? 'ai-tutor' : 'default'
-          );
-        } catch (e) {
-          document.documentElement.setAttribute('data-mb-route', 'default');
-        }
-      })();
-    </script>
+    <script src="/mb-shell-safe.js"></script>
     <style>
       html[data-mb-route="ai-tutor"] #mb-static-hero {
         display: none !important;
@@ -174,11 +163,5 @@
     <script type="module" src="/src/main.tsx"></script>
     <!-- Safety net: if React doesn't remove the static hero within
          5s (e.g. non-Home route), remove it to prevent stuck shell. -->
-    <script>
-      setTimeout(function () {
-        var el = document.getElementById('mb-static-hero');
-        if (el) el.remove();
-      }, 5000);
-    </script>
   </body>
 </html>

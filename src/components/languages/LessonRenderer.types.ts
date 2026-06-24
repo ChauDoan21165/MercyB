@@ -20,6 +20,10 @@ export type NormalizedSentence = {
   romanization?: string;
   en?: string;
   vi?: string;
+  /** Japanese explanation/gloss for Japanese-native English learners. */
+  ja?: string;
+  /** Indonesian explanation/gloss for Indonesian-native English learners. */
+  id?: string;
   /** Pronunciation hints calibrated for Vietnamese-speaker learners. */
   pronunciationFocus?: string[];
   /** Pronunciation hints calibrated for English-speaker learners.
@@ -33,6 +37,10 @@ export type NormalizedVocabEntry = {
   romanization?: string;
   en?: string;
   vi?: string;
+  /** Japanese gloss for Japanese-native English learners. */
+  ja?: string;
+  /** Indonesian gloss for Indonesian-native English learners. */
+  id?: string;
   /** Phonetic hint calibrated for Vietnamese-speaker learners. */
   phonetic?: string;
   /** Phonetic hint calibrated for English-speaker learners.
@@ -46,6 +54,10 @@ export type NormalizedDialogueLine = {
   romanization?: string;
   en?: string;
   vi?: string;
+  /** Japanese gloss for Japanese-native English learners. */
+  ja?: string;
+  /** Indonesian gloss for Indonesian-native English learners. */
+  id?: string;
 };
 
 export type NormalizedExerciseFillBlank = {
@@ -56,6 +68,10 @@ export type NormalizedExerciseFillBlank = {
   hint?: string;
   /** Optional contextual hint shown to the learner, in English. */
   hintEn?: string;
+  /** Optional contextual hint shown to Japanese-native learners. */
+  hintJa?: string;
+  /** Optional contextual hint shown to Indonesian-native learners. */
+  hintId?: string;
 };
 
 export type NormalizedExerciseMatching = {
@@ -64,6 +80,10 @@ export type NormalizedExerciseMatching = {
   instruction?: string;
   /** Instruction calibrated for English-speaker learners. */
   instructionEn?: string;
+  /** Instruction calibrated for Japanese-native learners. */
+  instructionJa?: string;
+  /** Instruction calibrated for Indonesian-native learners. */
+  instructionId?: string;
   pairs: Array<{ a: string; b: string }>;
 };
 
@@ -74,6 +94,10 @@ export type NormalizedExerciseTranslation = {
   /** Source prompt in English; learner translates this into native.
    *  Optional — falls back to vi when missing. */
   en?: string;
+  /** Source prompt in Japanese for Japanese-native learners. */
+  ja?: string;
+  /** Source prompt in Indonesian for Indonesian-native learners. */
+  id?: string;
   /** Target answer in the language being learned. */
   native: string;
   romanization?: string;
@@ -105,6 +129,18 @@ export type NormalizedIdiomGloss = {
   meaningEn?: string;
   /** English-audience example. Independent sibling of `example`. */
   exampleEn?: string;
+  /** Japanese-audience literal gloss. */
+  literalJa?: string;
+  /** Japanese-audience meaning gloss. */
+  meaningJa?: string;
+  /** Japanese-audience example. */
+  exampleJa?: string;
+  /** Indonesian-audience literal gloss. */
+  literalId?: string;
+  /** Indonesian-audience meaning gloss. */
+  meaningId?: string;
+  /** Indonesian-audience example. */
+  exampleId?: string;
 };
 
 // Per-lesson hint about which LessonAudioUnit kind to use for sentence-row
@@ -123,6 +159,10 @@ export type NormalizedLesson = {
   title: {
     vi: string;
     en: string;
+    /** Japanese title/explanation title for Japanese-native learners. */
+    ja?: string;
+    /** Indonesian title/explanation title for Indonesian-native learners. */
+    id?: string;
     native?: string;
     romanization?: string;
   };
@@ -139,6 +179,10 @@ export type NormalizedLesson = {
   /** Lesson intro calibrated for English-speaker learners.
    *  Independent sibling — NOT a translation of introVi. */
   introEn?: string;
+  /** Lesson intro calibrated for Japanese-native learners. */
+  introJa?: string;
+  /** Lesson intro calibrated for Indonesian-native learners. */
+  introId?: string;
   sentences: NormalizedSentence[];
   vocabulary?: NormalizedVocabEntry[];
   dialogue?: NormalizedDialogueLine[];
@@ -148,22 +192,38 @@ export type NormalizedLesson = {
   /** Cultural notes calibrated for English-speaker learners.
    *  Independent sibling — NOT a translation of culturalNotesVi. */
   culturalNotesEn?: string;
+  /** Cultural notes calibrated for Japanese-native learners. */
+  culturalNotesJa?: string;
+  /** Cultural notes calibrated for Indonesian-native learners. */
+  culturalNotesId?: string;
   /** Study tip calibrated for Vietnamese-speaker learners. */
   tipAdviceVi?: string;
   /** Study tip calibrated for English-speaker learners.
    *  Independent sibling — NOT a translation of tipAdviceVi. */
   tipAdviceEn?: string;
+  /** Study tip calibrated for Japanese-native learners. */
+  tipAdviceJa?: string;
+  /** Study tip calibrated for Indonesian-native learners. */
+  tipAdviceId?: string;
   grammar?: NormalizedGrammarPoint[];
   /** Register / tone meta-advice for Vietnamese-speaker learners. */
   registerNotesVi?: string;
   /** Register / tone meta-advice for English-speaker learners.
    *  Independent sibling — NOT a translation of registerNotesVi. */
   registerNotesEn?: string;
+  /** Register / tone meta-advice for Japanese-native learners. */
+  registerNotesJa?: string;
+  /** Register / tone meta-advice for Indonesian-native learners. */
+  registerNotesId?: string;
   /** Roleplay / speaking-practice prompts for Vietnamese-speaker learners. */
   roleplayPromptsVi?: string[];
   /** Roleplay / speaking-practice prompts for English-speaker learners.
    *  Independent sibling — NOT a translation of roleplayPromptsVi. */
   roleplayPromptsEn?: string[];
+  /** Roleplay / speaking-practice prompts for Japanese-native learners. */
+  roleplayPromptsJa?: string[];
+  /** Roleplay / speaking-practice prompts for Indonesian-native learners. */
+  roleplayPromptsId?: string[];
   /** Idiom glosses (idiom + literal/meaning/example, each with an
    *  optional `*En` sibling). Renderer picks per `uiLanguage`. */
   idiomGlosses?: NormalizedIdiomGloss[];
