@@ -52,16 +52,27 @@ describe("AITutorCtaBanner", () => {
     );
   });
 
-  it("falls back unknown targets to English through the tutor language registry", () => {
-    render(
+  it("does not show an unsupported target CTA", () => {
+    const { container } = render(
       <MemoryRouter>
         <AITutorCtaBanner uiLang="vi" target={"unknown" as never} />
       </MemoryRouter>,
     );
 
+    expect(container).toBeEmptyDOMElement();
+    expect(screen.queryByRole("link", { name: /Luyện với AI Tutor/ })).not.toBeInTheDocument();
+  });
+
+  it("shows Turkish only when tr is a supported tutor target", () => {
+    render(
+      <MemoryRouter>
+        <AITutorCtaBanner uiLang="vi" target="tr" />
+      </MemoryRouter>,
+    );
+
     expect(screen.getByRole("link", { name: /Luyện với AI Tutor/ })).toHaveAttribute(
       "href",
-      "/ai-tutor?target=en",
+      "/ai-tutor?target=tr",
     );
   });
 });

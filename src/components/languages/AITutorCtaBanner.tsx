@@ -5,6 +5,7 @@
 import { Link } from "react-router-dom";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
 import {
+  isTutorTargetLanguageSupported,
   resolveTutorTargetLanguage,
   type TutorLanguageCode,
 } from "@/lib/tutor/languageRegistry";
@@ -16,6 +17,7 @@ type AITutorCtaBannerProps = {
 
 export default function AITutorCtaBanner({ uiLang, target = "en" }: AITutorCtaBannerProps) {
   if (!FEATURE_FLAGS.AI_TUTOR_UI_ENABLED) return null;
+  if (!isTutorTargetLanguageSupported(target)) return null;
 
   const title =
     uiLang === "en"

@@ -1,4 +1,4 @@
-export type TutorLanguageCode = "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi";
+export type TutorLanguageCode = "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi" | "tr";
 export type TutorUiLanguage = "en" | "vi" | "native";
 export type TutorLanguageDirection = "ltr" | "rtl";
 
@@ -17,7 +17,7 @@ export type TutorLanguageConfig = {
   direction: TutorLanguageDirection;
 };
 
-export const TUTOR_LANGUAGE_CODES = ["en", "fr", "zh", "de", "ja", "ko", "es", "vi"] as const;
+export const TUTOR_LANGUAGE_CODES = ["en", "fr", "zh", "de", "ja", "ko", "es", "vi", "tr"] as const;
 
 export const TUTOR_LANGUAGE_REGISTRY: Record<TutorLanguageCode, TutorLanguageConfig> = {
   en: {
@@ -132,6 +132,20 @@ export const TUTOR_LANGUAGE_REGISTRY: Record<TutorLanguageCode, TutorLanguageCon
     supportsCloudTts: true,
     direction: "ltr",
   },
+  tr: {
+    code: "tr",
+    labelEn: "Turkish",
+    labelNative: "Türkçe",
+    labelVi: "Tiếng Thổ Nhĩ Kỳ",
+    speechLocale: "tr-TR",
+    ttsLocale: "tr-TR",
+    defaultExampleSentence: "Dün pazara gidiyorum",
+    beginnerPlaceholder: 'gõ câu tiếng Thổ Nhĩ Kỳ của bạn ở đây, ví dụ: "Dün pazara gidiyorum"',
+    supportsStt: true,
+    supportsBrowserTts: true,
+    supportsCloudTts: false,
+    direction: "ltr",
+  },
 };
 
 const TUTOR_LANGUAGE_ALIASES: Record<string, TutorLanguageCode> = {
@@ -153,6 +167,9 @@ const TUTOR_LANGUAGE_ALIASES: Record<string, TutorLanguageCode> = {
   "español": "es",
   vietnamese: "vi",
   "tieng-viet": "vi",
+  turkish: "tr",
+  turkce: "tr",
+  "türkçe": "tr",
 };
 
 function normalizeRawLanguage(raw: unknown): string {
@@ -183,6 +200,10 @@ export function resolveTutorTargetLanguage(raw: unknown): TutorLanguageCode {
   const normalized = normalizeRawLanguage(raw);
   if (normalized in TUTOR_LANGUAGE_REGISTRY) return normalized as TutorLanguageCode;
   return TUTOR_LANGUAGE_ALIASES[normalized] ?? "en";
+}
+
+export function isTutorTargetLanguageSupported(raw: unknown): raw is TutorLanguageCode {
+  return normalizeRawLanguage(raw) in TUTOR_LANGUAGE_REGISTRY;
 }
 
 export function getTutorLanguageLabel(code: unknown, uiLang: string = "en"): string {

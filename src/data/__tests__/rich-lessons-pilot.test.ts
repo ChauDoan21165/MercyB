@@ -1,9 +1,10 @@
 // src/data/__tests__/rich-lessons-pilot.test.ts
 //
-// Validates the hand-authored RichLesson pilot bundle. Three concrete
-// lessons land in this round (vi_l1_3rd_person_s, vi_l1_past_ed,
-// vi_l1_missing_be); CI guards their shape so future authoring rounds
-// can't silently drift away from the schema.
+// Validates the hand-authored RichLesson pilot bundle. Seven concrete
+// lessons (3 A1 + 4 A2): vi_l1_3rd_person_s, vi_l1_past_ed,
+// vi_l1_missing_be, vi_l1_preposition_transfer, vi_l1_present_perfect_vs_past,
+// vi_l1_make_vs_do, vi_l1_adjective_order. CI guards their shape so future
+// authoring rounds can't silently drift away from the schema.
 
 import { describe, expect, it } from "vitest";
 
@@ -18,21 +19,33 @@ import {
 } from "@/lib/weakness/richLessonSchema";
 import { isKnownWeaknessTag } from "@/lib/weakness/weakness-catalog";
 
-const EXPECTED_PILOT_TAGS = new Set<string>([
+const EXPECTED_PILOT_TAGS = [
   "id_c2_cleft_focus",
   "id_c2_inversion_emphasis",
+  "id_l1_conditional_unreal",
+  "id_l1_present_perfect_vs_past",
+  "id_l1_reported_speech",
   "vi_l1_3rd_person_s",
+  "vi_l1_adjective_order",
+  "vi_l1_conditional_mix",
+  "vi_l1_make_vs_do",
   "vi_l1_missing_be",
+  "vi_l1_modal_perfect",
+  "vi_l1_negative_inversion",
+  "vi_l1_passive_missing_be",
   "vi_l1_past_ed",
+  "vi_l1_preposition_transfer",
+  "vi_l1_present_perfect_vs_past",
+  "vi_l1_reported_speech",
   "vi_l1_subjunctive_were",
-]);
+] as const;
 
 describe("rich-lessons-pilot.json shape", () => {
-  it("ships exactly the 6 expected pilot lessons", () => {
+  it("ships exactly the expected pilot lessons", () => {
     expect([...RICH_LESSON_PILOT_TAGS].sort()).toEqual(
       [...EXPECTED_PILOT_TAGS].sort(),
     );
-    expect(RICH_LESSONS_PILOT.length).toBe(6);
+    expect(RICH_LESSONS_PILOT.length).toBe(EXPECTED_PILOT_TAGS.length);
   });
 
   it("every pilot lesson tag exists in WEAKNESS_CATALOG", () => {

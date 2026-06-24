@@ -1,7 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it } from "vitest";
 
+import { UiLanguageProvider } from "@/contexts/UiLanguageContext";
+import { isTutorTargetLanguageSupported } from "@/lib/tutor/languageRegistry";
 import TurkishLessonsPage from "@/pages/languages/TurkishLessonsPage";
 
 const here = path.dirname(new URL(import.meta.url).pathname);
@@ -20,10 +24,28 @@ describe("TurkishLessonsPage", () => {
     expect(pageSrc).toContain("normalizeTurkishLesson");
   });
 
-  it("does not use remote lessons, tutor CTA, or sound promise code", () => {
+  it("does not use remote lessons or sound promise code", () => {
     expect(pageSrc).not.toMatch(/@\/lib\/supabase|supabase\.from|useLessonData|fetchLessonsBatch/);
-    expect(pageSrc).not.toMatch(/AITutorCtaBanner|ai-tutor|target="id"/i);
     expect(pageSrc).not.toMatch(/new\s+Promise|Promise\.resolve|audioBase|playAudio|lessonAudio/i);
+  });
+
+  it("shows AI Tutor CTA only through the supported Turkish target gate", () => {
+    expect(isTutorTargetLanguageSupported("tr")).toBe(true);
+    expect(pageSrc).toContain("AITutorCtaBanner");
+    expect(pageSrc).toContain('target="tr"');
+
+    render(
+      <MemoryRouter>
+        <UiLanguageProvider>
+          <TurkishLessonsPage />
+        </UiLanguageProvider>
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole("link", { name: /Luyện với AI Tutor/ })).toHaveAttribute(
+      "href",
+      "/ai-tutor?target=tr",
+    );
   });
 
   it("is linked from the language hub", () => {

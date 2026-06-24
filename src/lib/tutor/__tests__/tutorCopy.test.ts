@@ -40,4 +40,25 @@ describe("getTutorCopy", () => {
     expect(copy.placeholder).toMatch(/gõ câu tiếng Pháp/);
     expect(copy.ui.conversationFallback).toMatch(/I can still help/);
   });
+
+  it("returns Turkish target copy with Turkish names and starter prompts", () => {
+    const copy = getTutorCopy("tr", "vi");
+
+    expect(copy.targetLanguage).toBe("tr");
+    expect(copy.nameEn).toBe("Turkish");
+    expect(copy.nameVi).toBe("Tiếng Thổ Nhĩ Kỳ");
+    expect(copy.placeholder).toMatch(/tiếng Thổ Nhĩ Kỳ/);
+    expect(copy.ui.title).toBe("Teacher Mercy · Gia sư Tiếng Thổ Nhĩ Kỳ");
+    expect(copy.starterQuestions[0]).toMatch(/Sabahları/);
+    expect(copy.starterQuestions.join(" ")).toContain("Türkçe");
+    expect(copy.starterQuestions.join(" ")).not.toMatch(/français|Deutsch|español/i);
+  });
+
+  it("falls back invalid target copy to English safely", () => {
+    const copy = getTutorCopy("not-real", "en");
+
+    expect(copy.targetLanguage).toBe("en");
+    expect(copy.nameEn).toBe("English");
+    expect(copy.ui.inputLabel).toBe("Your English sentence");
+  });
 });

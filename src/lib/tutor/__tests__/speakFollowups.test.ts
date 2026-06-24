@@ -12,6 +12,7 @@ import {
   resolveSpeakFollowUpTopicId,
   selectSpeakFollowUp,
   selectSpeakFollowUpByTopicId,
+  validateAiSpeakFollowUp,
 } from "@/lib/tutor/speakFollowups";
 import {
   SPEAK_TOPIC_CORRECTION_CANDIDATES,
@@ -993,5 +994,117 @@ describe("speakFollowups", () => {
         });
       }
     });
+  });
+});
+
+// ─── validateAiSpeakFollowUp — quality-gate for AI-generated follow-ups ───
+
+describe("validateAiSpeakFollowUp — AI follow-up quality gate", () => {
+  it("passes a connected, specific, useful follow-up (golden pair)", () => {
+    // Learner: "I went to the market yesterday."
+    // AI: "Bạn đã mua gì ở chợ hôm qua?" — connected via market/chợ, specific, open-ended
+    expect(
+      validateAiSpeakFollowUp(
+        "I go to market yesterday",
+        "Bạn đã mua gì ở chợ hôm qua?",
+      ),
+    ).toBe("Bạn đã mua gì ở chợ hôm qua?");
+  });
+
+  it("rejects a generic greeting that ignores learner context", () => {
+    // Learner just described their dinner, but AI asks "How are you?"
+    expect(
+      validateAiSpeakFollowUp(
+        "I ate dinner with my family and we had fish",
+        "How are you?",
+      ),
+    ).toBeNull();
+  });
+
+  it("rejects a question barrage (two questions)", () => {
+    // AI returns two questions crammed into one response
+    expect(
+      validateAiSpeakFollowUp(
+        "I went to the beach",
+        "Did you swim? What did you see there?",
+      ),
+    ).toBeNull();
+  });
+
+  it("rejects a generic + disconnected question (poor on both dimensions)", () => {
+    // Learner talks about their job, AI asks a rote "Bạn có khỏe không?"
+    // — generic greeting AND no content-word connection = poor
+    expect(
+      validateAiSpeakFollowUp(
+        "I work at a bank in the city center",
+        "Bạn có khỏe không?",
+      ),
+    ).toBeNull();
+  });
+
+  it("rejects a question that is too hard (generic pivot, not a follow-up)", () => {
+    // "Do you want to practice another sentence?" is a pivot, not a follow-up to what they said
+    // It's detected as generic by the intelligence layer
+    expect(
+      validateAiSpeakFollowUp(
+        "My grandmother lives in a small village near the river",
+        "Do you want to practice another sentence?",
+      ),
+    ).toBeNull();
+  });
+
+  it("passes a connected follow-up even if it's a yes/no question with elaboration", () => {
+    // "Bạn có thích công việc đó không? Vì sao?" — connected via "work/làm",
+    // has enough length to be useful even though it's yes/no form
+    expect(
+      validateAiSpeakFollowUp(
+        "I work at a bank in the city center",
+        "Bạn có thích công việc ở ngân hàng không?",
+      ),
+    ).toBe("Bạn có thích công việc ở ngân hàng không?");
+  });
+
+  it("returns null for an empty AI question", () => {
+    expect(validateAiSpeakFollowUp("I like pizza", "")).toBeNull();
+  });
+
+  it("passes a salience-based follow-up about the keyword the learner mentioned", () => {
+    // The intelligence layer should recognize "Tell me more about the market"
+    // as connected (via "market") and useful (imperative prompt)
+    expect(
+      validateAiSpeakFollowUp(
+        "I went to the market yesterday and bought vegetables",
+        "Tell me more about the market.",
+      ),
+    ).toBe("Tell me more about the market.");
+  });
+
+  it("rejects a dead-end yes/no question with no elaboration", () => {
+    // "Did you like it?" — yes/no, too short, doesn't open practice
+    expect(
+      validateAiSpeakFollowUp(
+        "I watched a movie last night",
+        "Did you like it?",
+      ),
+    ).toBeNull();
+  });
+
+  it("passes a Vietnamese open-ended WH follow-up", () => {
+    // "Tại sao bạn chọn món đó?" — open-ended, connected via "chọn/food", useful
+    expect(
+      validateAiSpeakFollowUp(
+        "I ordered the fish at the restaurant",
+        "Tại sao bạn chọn món cá đó?",
+      ),
+    ).toBe("Tại sao bạn chọn món cá đó?");
+  });
+
+  it("rejects a follow-up with three questions (barrage > 1)", () => {
+    expect(
+      validateAiSpeakFollowUp(
+        "I like playing football on weekends",
+        "Where do you play? Who do you play with? How often do you play?",
+      ),
+    ).toBeNull();
   });
 });

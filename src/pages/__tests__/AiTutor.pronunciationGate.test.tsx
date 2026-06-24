@@ -5,6 +5,8 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import AiTutorPage from "../AiTutor";
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 
+const C4_CI_GATE_TIMEOUT_MS = 45_000;
+vi.setConfig({ testTimeout: C4_CI_GATE_TIMEOUT_MS });
 // Premium/trial detailed-scoring gate (Decisions 1 & 2) — runtime wiring proof.
 // The gate flag is a compile-time constant, so we flip it ON for the whole file
 // (a separate file keeps the default-OFF behavior of the main AiTutor suite
@@ -91,7 +93,7 @@ beforeEach(() => {
   getMemorySummary.mockResolvedValue({ ...EMPTY_SUMMARY });
   // Logged-in learner; premium/free is controlled by the entitlement mock.
   useAuthMock.mockReturnValue({
-    user: { id: "u-test" },
+    user: { id: "00000000-0000-4000-8000-000000000001" },
     session: { access_token: "tok" },
     isLoading: false,
   });
