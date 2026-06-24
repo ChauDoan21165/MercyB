@@ -289,3 +289,26 @@ describe("B1 Indonesian fanout structural smoke", () => {
   });
 });
 
+describe("B2 Indonesian fanout structural smoke", () => {
+  it("keeps merged Indonesian rich lesson tags available in the weakness catalog", () => {
+    const tags = [
+      "id_l1_conditional_unreal",
+      "id_l1_present_perfect_vs_past",
+      "id_l1_reported_speech",
+      "vi_l1_3rd_person_s",
+      "vi_l1_adjective_order",
+      "vi_l1_conditional_mix",
+      "vi_l1_make_vs_do",
+      "vi_l1_missing_be",
+      "vi_l1_passive_missing_be",
+      "vi_l1_past_ed",
+      "vi_l1_preposition_transfer",
+      "vi_l1_present_perfect_vs_past",
+      "vi_l1_reported_speech",
+    ] as const;
+    for (const tag of tags) {
+      expect(WEAKNESS_CATALOG[tag], `${tag} missing from WEAKNESS_CATALOG`).toBeTruthy();
+    }
+  });
+});
+
