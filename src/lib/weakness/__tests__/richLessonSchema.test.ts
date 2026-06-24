@@ -54,6 +54,17 @@ describe("fromMicroLesson adapter", () => {
 });
 
 describe("RichLesson quiz invariants", () => {
+  it("adds Thai-native prompt wrappers to adapted quiz questions", () => {
+    const sample = MICRO_LESSONS[MICRO_LESSON_TAGS[0]]!;
+    const rich = fromMicroLesson(sample);
+
+    expect(rich.quiz.length).toBeGreaterThan(0);
+    for (const question of rich.quiz) {
+      expect(question.question.th).toBeTruthy();
+      expect(question.question.th).toMatch(/เติมคำในช่องว่าง|ทบทวนเร็ว/);
+    }
+  });
+
   it("every adapted lesson has exactly RICH_LESSON_QUIZ_LENGTH questions", () => {
     for (const tag of MICRO_LESSON_TAGS) {
       const rich = fromMicroLesson(MICRO_LESSONS[tag]!);
