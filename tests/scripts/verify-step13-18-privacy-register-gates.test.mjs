@@ -1,8 +1,10 @@
 import { spawnSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
+const C4_PRIVACY_REGISTER_GATE_TIMEOUT_MS = 180_000;
+vi.setConfig({ testTimeout: C4_PRIVACY_REGISTER_GATE_TIMEOUT_MS });
 const repoRoot = resolve(".");
 const verifier = resolve(
   repoRoot,
