@@ -18,6 +18,8 @@ export default defineConfig({
   },
 
   test: {
+    // __PUNJABI_CI_ESBUILD_STABILITY_WORKER_CAP__
+    ...(process.env.CI ? { maxWorkers: 2, minWorkers: 1 } : {}),
     globals: true,
     environment: "jsdom",
     setupFiles: ["./src/test/setup.ts"],

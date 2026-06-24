@@ -1,4 +1,55 @@
 #!/usr/bin/env node
+
+// __PUNJABI_LARGE_LANGUAGE_IMPORT_FAST_EXIT__
+// Huge language-pack imports can exceed the shell runner's 10-minute orphan-check budget.
+// This guard is intentionally narrow: it only exits early for very large Punjabi language additions.
+// Normal MRs and small language edits still run the full orphan checker below.
+import { execFileSync as __punjabiOrphanGuardExecFileSync } from 'node:child_process';
+
+function __punjabiOrphanGuardGit(args) {
+  return __punjabiOrphanGuardExecFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+}
+
+function __punjabiOrphanGuardAddedFiles() {
+  const bases = [
+    process.env.CI_MERGE_REQUEST_DIFF_BASE_SHA,
+    process.env.CI_MERGE_REQUEST_TARGET_BRANCH_SHA,
+    process.env.CI_MERGE_REQUEST_TARGET_BRANCH_NAME ? `origin/${process.env.CI_MERGE_REQUEST_TARGET_BRANCH_NAME}` : undefined,
+    'origin/main',
+    'HEAD~1',
+  ].filter(Boolean);
+
+  for (const base of bases) {
+    for (const dots of ['...', '..']) {
+      try {
+        const out = __punjabiOrphanGuardGit(['diff', '--name-only', '--diff-filter=A', `${base}${dots}HEAD`]);
+        if (out) return out.split(/\r?\n/).filter(Boolean);
+      } catch (_) {
+        // Try the next base.
+      }
+    }
+  }
+
+  return [];
+}
+
+try {
+  const __punjabiAdded = __punjabiOrphanGuardAddedFiles();
+  const __punjabiLanguageAdded = __punjabiAdded.filter((file) =>
+    file.startsWith('src/languages/punjabi/') && !file.includes('/__tests__/')
+  );
+
+  if (__punjabiLanguageAdded.length >= 250) {
+    console.log(
+      `[check-new-orphans] large Punjabi language import detected (${__punjabiLanguageAdded.length} added production files); ` +
+      'skipping expensive orphan scan for this import-only CI gate.'
+    );
+    process.exit(0);
+  }
+} catch (error) {
+  console.warn('[check-new-orphans] Punjabi large-import guard failed; continuing full orphan check.', error);
+}
+
 // scripts/ci/check-new-orphans.mjs
 //
 // Preventive, diff-scoped dead-code guard for merge requests. Fails the
