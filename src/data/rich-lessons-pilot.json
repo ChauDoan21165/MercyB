@@ -956,6 +956,278 @@
           }
         }
       ]
+    },
+    {
+      "tag": "vi_l1_conditional_mix",
+      "title": {
+        "en": "If + past → **would**, never **will**",
+        "vi": "If + quá khứ → **would**, không bao giờ **will**"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"If I had money, I will buy a car.\" Every Indonesian learner writes this. In Indonesian, **kalau** doesn't change the verb — but English has a strict tense pattern for unreal situations.",
+          "vi": "\"If I had money, I will buy a car.\" Bạn học người Việt nào cũng từng viết câu này. Tiếng Việt mình **nếu...thì...** không đổi động từ — nhưng tiếng Anh có quy tắc thì nghiêm ngặt cho tình huống không có thật.",
+          "ja": "「If I had money, I will buy a car.」— 日本語の「〜たら」「〜ば」は現実でも非現実でも動詞が変わりません。でも英語では非現実の条件には決まった時制の組み合わせがあります。",
+          "id": "\"If I had money, I will buy a car.\" Setiap pelajar Indonesia pernah menulis ini. Dalam bahasa Indonesia, **kalau** tidak mengubah kata kerja — tapi bahasa Inggris punya pola tenses yang ketat untuk situasi yang tidak nyata."
+        },
+        "why": {
+          "en": "Indonesian uses **kalau...maka...** and the verb stays the same whether the condition is real or imagined. English marks the difference: real condition → **If + present, will + V**; unreal condition → **If + past, would + V**. Never mix **past** with **will**.",
+          "vi": "Tiếng Việt dùng **nếu...thì...** và động từ không đổi dù điều kiện có thật hay không. Tiếng Anh phân biệt: điều kiện có thật → **If + hiện tại, will + V**; điều kiện không có thật → **If + quá khứ, would + V**. Đừng bao giờ trộn **quá khứ** với **will**.",
+          "ja": "日本語の「もし〜たら」は条件が現実的でも非現実的でも動詞の形が同じです。英語は区別します：現実的条件 → **If + 現在形, will + V**；非現実的条件 → **If + 過去形, would + V**。過去形と **will** を混ぜてはいけません。",
+          "id": "Bahasa Indonesia menggunakan **kalau...maka...** dan kata kerjanya tetap sama baik kondisi itu nyata maupun tidak. Bahasa Inggris menandai perbedaannya: kondisi nyata → **If + present, will + V**; kondisi tidak nyata → **If + past, would + V**. Jangan pernah mencampur **past** dengan **will**."
+        },
+        "pattern": {
+          "en": "Type 1 (real/possible): **If I have money, I will buy a car.** Type 2 (unreal/imagined): **If I had money, I would buy a car.** The **past tense** in the if-clause signals the situation is imagined, not past time.",
+          "vi": "Loại 1 (có thật/có thể): **If I have money, I will buy a car.** Loại 2 (không thật/tưởng tượng): **If I had money, I would buy a car.** Thì **quá khứ** trong mệnh đề if báo hiệu tình huống là tưởng tượng, không phải thời gian quá khứ.",
+          "ja": "タイプ1（現実的）：**If I have money, I will buy a car.** タイプ2（非現実的）：**If I had money, I would buy a car.** if節の**過去形**は「過去の時間」ではなく「現実でない仮定」を表します。",
+          "id": "Tipe 1 (nyata/mungkin): **If I have money, I will buy a car.** Tipe 2 (tidak nyata/khayalan): **If I had money, I would buy a car.** **Past tense** di klausa if menandakan situasinya hanya khayalan, bukan waktu lampau."
+        },
+        "practice": {
+          "en": "Say each aloud: \"If I study, I will pass.\" (real plan) vs \"If I studied, I would pass.\" (I'm not studying now). \"If she comes, we will start.\" (real) vs \"If she came, we would start.\" (she probably won't come). Feel the shift from **will** to **would**.",
+          "vi": "Nói thành tiếng: \"If I study, I will pass.\" (kế hoạch thật) vs \"If I studied, I would pass.\" (tôi đang không học). \"If she comes, we will start.\" (thật) vs \"If she came, we would start.\" (cô ấy chắc không đến). Cảm nhận sự chuyển từ **will** sang **would**.",
+          "ja": "声に出して：「If I study, I will pass.」（現実的）vs「If I studied, I would pass.」（今勉強していない仮定）。「If she comes, we will start.」（現実的）vs「If she came, we would start.」（彼女は多分来ない）。**will** から **would** への切り替えを意識して。",
+          "id": "Ucapkan dengan keras: \"If I study, I will pass.\" (rencana nyata) vs \"If I studied, I would pass.\" (saya tidak sedang belajar sekarang). \"If she comes, we will start.\" (nyata) vs \"If she came, we would start.\" (dia mungkin tidak akan datang). Rasakan peralihan dari **will** ke **would**."
+        },
+        "takeaway": {
+          "en": "Imagined situation → If + **past**, **would** + V. Never **will** after a past if-clause.",
+          "vi": "Tình huống tưởng tượng → If + **quá khứ**, **would** + V. Không bao giờ **will** sau mệnh đề if quá khứ.",
+          "ja": "非現実の仮定 → If + **過去形**, **would** + V。過去のif節の後ろに **will** は絶対に置かない。",
+          "id": "Situasi khayalan → If + **past**, **would** + V. Jangan pernah pakai **will** setelah klausa if bentuk lampau."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct unreal conditional:",
+            "vi": "Chọn câu điều kiện không thật đúng:"
+          },
+          "options": [
+            "If I have money, I will buy a car.",
+            "If I had money, I will buy a car.",
+            "If I had money, I would buy a car.",
+            "If I have money, I would buy a car."
+          ],
+          "correctAnswer": "If I had money, I would buy a car.",
+          "explanation": {
+            "en": "Unreal (I don't have money now) → If + **past** + **would**.",
+            "vi": "Không thật (tôi không có tiền bây giờ) → If + **quá khứ** + **would**.",
+            "ja": "非現実（今お金がない）→ If + **過去形** + **would**。",
+            "id": "Tidak nyata (saya tidak punya uang sekarang) → If + **past** + **would**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in: If she ___ here, she would help us.",
+            "vi": "Điền vào chỗ trống: If she ___ here, she would help us."
+          },
+          "options": [
+            "is",
+            "was",
+            "will be",
+            "would be"
+          ],
+          "correctAnswer": "was",
+          "explanation": {
+            "en": "Unreal condition → if-clause uses **past** tense: **was** (or **were**).",
+            "vi": "Điều kiện không thật → mệnh đề if dùng thì **quá khứ**: **was** (hoặc **were**).",
+            "ja": "非現実の条件 → if節は**過去形**：**was**（または **were**）。",
+            "id": "Kondisi tidak nyata → klausa if pakai **past** tense: **was** (atau **were**)."
+          }
+        },
+        {
+          "question": {
+            "en": "Which sentence is about a REAL plan?",
+            "vi": "Câu nào nói về kế hoạch THẬT?"
+          },
+          "options": [
+            "If I knew the answer, I would tell you.",
+            "If I know the answer, I will tell you.",
+            "If I would know the answer, I will tell you.",
+            "If I known the answer, I will tell you."
+          ],
+          "correctAnswer": "If I know the answer, I will tell you.",
+          "explanation": {
+            "en": "Real/possible → **If + present, will + V**.",
+            "vi": "Có thật/khả thi → **If + hiện tại, will + V**.",
+            "ja": "現実的/可能 → **If + 現在形, will + V**。",
+            "id": "Nyata/mungkin → **If + present, will + V**."
+          }
+        },
+        {
+          "question": {
+            "en": "What is wrong? If I would be you, I would take the job.",
+            "vi": "Sai ở đâu? If I would be you, I would take the job."
+          },
+          "options": [
+            "would be → was / were",
+            "take → took",
+            "the job → a job",
+            "Nothing is wrong"
+          ],
+          "correctAnswer": "would be → was / were",
+          "explanation": {
+            "en": "The if-clause never uses **would**. Use past: **If I were you, I would take the job.**",
+            "vi": "Mệnh đề if không bao giờ dùng **would**. Dùng quá khứ: **If I were you, I would take the job.**",
+            "ja": "if節に **would** は使えません。過去形で：**If I were you, I would take the job.**",
+            "id": "Klausa if tidak pernah pakai **would**. Pakai past: **If I were you, I would take the job.**"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in: If I ___ taller, I would play basketball.",
+            "vi": "Điền vào chỗ trống: If I ___ taller, I would play basketball."
+          },
+          "options": [
+            "am",
+            "was",
+            "will be",
+            "would be"
+          ],
+          "correctAnswer": "was",
+          "explanation": {
+            "en": "Imagined situation (I'm not tall now) → **If + past, would + V**.",
+            "vi": "Tình huống tưởng tượng (tôi không cao bây giờ) → **If + quá khứ, would + V**.",
+            "ja": "非現実の仮定（今は背が高くない）→ **If + 過去形, would + V**。",
+            "id": "Situasi khayalan (saya tidak tinggi sekarang) → **If + past, would + V**."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "vi_l1_reported_speech",
+      "title": {
+        "en": "Reported speech — shift the tense back",
+        "vi": "Câu tường thuật — lùi thì một bậc"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"She said she is tired.\" Natural in Indonesian — you just quote what the person said. But English demands a tense shift. What she said happened in the past, so the verb moves back one step.",
+          "vi": "\"She said she is tired.\" Tự nhiên trong tiếng Việt — bạn chỉ cần thuật lại lời người ta nói. Nhưng tiếng Anh đòi hỏi lùi thì. Những gì cô ấy nói đã ở quá khứ, nên động từ phải lùi về một bậc.",
+          "ja": "「She said she is tired.」— 日本語の「〜と言った」では、言った内容の時制は変わりません。でも英語では、伝える内容の時制を一つ過去にずらします。",
+          "id": "\"She said she is tired.\" Wajar dalam bahasa Indonesia — kamu tinggal mengutip apa yang orang katakan. Tapi bahasa Inggris menuntut pergeseran tenses. Apa yang dia katakan sudah terjadi di masa lalu, jadi kata kerjanya mundur satu langkah."
+        },
+        "why": {
+          "en": "Indonesian reports speech directly or with **katanya** / **dia bilang** — the verb tense stays exactly as it was spoken. English shifts the tense back: present → past, past → past perfect, will → would. This is called **backshifting**.",
+          "vi": "Tiếng Việt thuật lại lời nói trực tiếp hoặc dùng **nói rằng** / **bảo là** — thì của động từ giữ nguyên. Tiếng Anh lùi thì một bậc: hiện tại → quá khứ, quá khứ → quá khứ hoàn thành, will → would. Đây gọi là **backshifting**.",
+          "ja": "日本語は「〜と言った」で直接引用しても間接引用しても動詞の形が変わりません。英語では**時制の一致**が起こり、伝える内容の動詞を一つ過去にずらします：現在→過去、過去→過去完了、will→would。",
+          "id": "Bahasa Indonesia melaporkan ucapan secara langsung atau dengan **katanya** / **dia bilang** — tenses kata kerjanya tetap sama seperti saat diucapkan. Bahasa Inggris menggeser tenses mundur: present → past, past → past perfect, will → would. Ini disebut **backshifting**."
+        },
+        "pattern": {
+          "en": "Direct: She said, \"I **am** tired.\" → Reported: She said she **was** tired. Direct: He said, \"I **will** call you.\" → Reported: He said he **would** call me. Direct: They said, \"We **went** to the market.\" → Reported: They said they **had gone** to the market.",
+          "vi": "Trực tiếp: She said, \"I **am** tired.\" → Thuật lại: She said she **was** tired. Trực tiếp: He said, \"I **will** call you.\" → Thuật lại: He said he **would** call me. Trực tiếp: They said, \"We **went** to the market.\" → Thuật lại: They said they **had gone** to the market.",
+          "ja": "直接話法：She said, \"I **am** tired.\" → 間接話法：She said she **was** tired。直接：He said, \"I **will** call you.\" → 間接：He said he **would** call me。直接：They said, \"We **went** to the market.\" → 間接：They said they **had gone** to the market。",
+          "id": "Langsung: She said, \"I **am** tired.\" → Tidak langsung: She said she **was** tired. Langsung: He said, \"I **will** call you.\" → Tidak langsung: He said he **would** call me. Langsung: They said, \"We **went** to the market.\" → Tidak langsung: They said they **had gone** to the market."
+        },
+        "practice": {
+          "en": "Convert these aloud: \"I like coffee\" → He said he **liked** coffee. \"I am working\" → She said she **was working**. \"I will come\" → He said he **would come**. \"I have finished\" → She said she **had finished**. Feel the one-step-back shift.",
+          "vi": "Chuyển đổi thành tiếng: \"I like coffee\" → He said he **liked** coffee. \"I am working\" → She said she **was working**. \"I will come\" → He said he **would come**. \"I have finished\" → She said she **had finished**. Cảm nhận bước lùi một thì.",
+          "ja": "声に出して変換：「I like coffee」→ He said he **liked** coffee。「I am working」→ She said she **was working**。「I will come」→ He said he **would come**。「I have finished」→ She said she **had finished**。一段階ずつ時制が下がる感覚をつかみましょう。",
+          "id": "Ubah dengan keras: \"I like coffee\" → He said he **liked** coffee. \"I am working\" → She said she **was working**. \"I will come\" → He said he **would come**. \"I have finished\" → She said she **had finished**. Rasakan pergeseran mundur satu langkah."
+        },
+        "takeaway": {
+          "en": "Reported speech = take the original verb and move it back one tense step. Every time.",
+          "vi": "Câu tường thuật = lấy động từ gốc và lùi về một bậc thì. Lần nào cũng vậy.",
+          "ja": "間接話法 = 元の動詞を時制で一段階戻す。毎回必ず。",
+          "id": "Kalimat tidak langsung = ambil kata kerja aslinya dan mundurkan satu langkah tenses. Setiap kali."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Report: She said, \"I am hungry.\"",
+            "vi": "Thuật lại: She said, \"I am hungry.\""
+          },
+          "options": [
+            "She said she is hungry.",
+            "She said she was hungry.",
+            "She said she has hungry.",
+            "She said she hungry."
+          ],
+          "correctAnswer": "She said she was hungry.",
+          "explanation": {
+            "en": "**am** (present) → backshift to **was** (past).",
+            "vi": "**am** (hiện tại) → lùi thành **was** (quá khứ).",
+            "ja": "**am**（現在）→ 時制の一致で **was**（過去）に。",
+            "id": "**am** (present) → mundur ke **was** (past)."
+          }
+        },
+        {
+          "question": {
+            "en": "Report: He said, \"I will call you tomorrow.\"",
+            "vi": "Thuật lại: He said, \"I will call you tomorrow.\""
+          },
+          "options": [
+            "He said he will call me tomorrow.",
+            "He said he would call me the next day.",
+            "He said he would call me tomorrow.",
+            "He said he will call me the next day."
+          ],
+          "correctAnswer": "He said he would call me the next day.",
+          "explanation": {
+            "en": "**will** → **would** (backshift). **tomorrow** → **the next day** (time expressions also shift).",
+            "vi": "**will** → **would** (lùi thì). **tomorrow** → **the next day** (từ chỉ thời gian cũng đổi).",
+            "ja": "**will** → **would**（時制の一致）。**tomorrow** → **the next day**（時の表現も変わる）。",
+            "id": "**will** → **would** (mundur). **tomorrow** → **the next day** (kata waktu juga bergeser)."
+          }
+        },
+        {
+          "question": {
+            "en": "Report: They said, \"We went to Bali last year.\"",
+            "vi": "Thuật lại: They said, \"We went to Bali last year.\""
+          },
+          "options": [
+            "They said they went to Bali last year.",
+            "They said they had gone to Bali the year before.",
+            "They said they have gone to Bali last year.",
+            "They said they go to Bali last year."
+          ],
+          "correctAnswer": "They said they had gone to Bali the year before.",
+          "explanation": {
+            "en": "**went** (past) → backshift to **had gone** (past perfect).",
+            "vi": "**went** (quá khứ) → lùi thành **had gone** (quá khứ hoàn thành).",
+            "ja": "**went**（過去）→ 時制の一致で **had gone**（過去完了）に。",
+            "id": "**went** (past) → mundur ke **had gone** (past perfect)."
+          }
+        },
+        {
+          "question": {
+            "en": "Find the WRONG reported form:",
+            "vi": "Tìm câu tường thuật SAI:"
+          },
+          "options": [
+            "She said she was tired.",
+            "He said he had finished his work.",
+            "They said they will come later.",
+            "I said I liked the movie."
+          ],
+          "correctAnswer": "They said they will come later.",
+          "explanation": {
+            "en": "**will** must shift to **would**: They said they **would** come later.",
+            "vi": "**will** phải lùi thành **would**: They said they **would** come later.",
+            "ja": "**will** は **would** に変わらなければならない：They said they **would** come later.",
+            "id": "**will** harus mundur ke **would**: They said they **would** come later."
+          }
+        },
+        {
+          "question": {
+            "en": "Report: She said, \"I have never been to Japan.\"",
+            "vi": "Thuật lại: She said, \"I have never been to Japan.\""
+          },
+          "options": [
+            "She said she has never been to Japan.",
+            "She said she had never been to Japan.",
+            "She said she never been to Japan.",
+            "She said she was never been to Japan."
+          ],
+          "correctAnswer": "She said she had never been to Japan.",
+          "explanation": {
+            "en": "**have been** (present perfect) → backshift to **had been** (past perfect).",
+            "vi": "**have been** (hiện tại hoàn thành) → lùi thành **had been** (quá khứ hoàn thành).",
+            "ja": "**have been**（現在完了）→ 時制の一致で **had been**（過去完了）に。",
+            "id": "**have been** (present perfect) → mundur ke **had been** (past perfect)."
+          }
+        }
+      ]
     }
   ]
 }

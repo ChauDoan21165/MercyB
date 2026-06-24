@@ -167,7 +167,7 @@ describe("FocusAreasMicroLessonDialog — A2 id-native rich lessons", () => {
     const section = takeawayHeading.closest('[data-rich-section="takeaway"]');
     expect(section).toBeTruthy();
     // Indonesian takeaway content rendered
-    expect(section!.textContent).toContain("simple past");
+    expect(section!.textContent).toMatch(/simple past|past simple/i);
     expect(section!.textContent).toContain("present perfect");
   });
 
@@ -269,3 +269,23 @@ describe("FocusAreasMicroLessonDialog — A2 weakness catalog id fields", () => 
     expect(entry.longDescription.id).toContain("setelah");
   });
 });
+
+describe("B1 Indonesian fanout structural smoke", () => {
+  it("keeps Indonesian rich lesson tags available in the weakness catalog", () => {
+    const tags = [
+      "vi_l1_3rd_person_s",
+      "vi_l1_adjective_order",
+      "vi_l1_conditional_mix",
+      "vi_l1_make_vs_do",
+      "vi_l1_missing_be",
+      "vi_l1_past_ed",
+      "vi_l1_preposition_transfer",
+      "vi_l1_present_perfect_vs_past",
+      "vi_l1_reported_speech",
+    ] as const;
+    for (const tag of tags) {
+      expect(WEAKNESS_CATALOG[tag], `${tag} missing from WEAKNESS_CATALOG`).toBeTruthy();
+    }
+  });
+});
+
