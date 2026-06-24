@@ -1606,7 +1606,7 @@ describe("P9 — Thắng (Frustrated B1 Learner — repeated errors)", () => {
     });
     expect(adapt.shouldAcknowledgeEffort).toBe(true);
     expect(adapt.correctionSoftnessBias).toBeGreaterThan(0.5);
-    expect(adapt.shouldStayBrief).toBe(false); // needs more explanation, not less
+    expect(adapt.shouldStayBrief).toBe(true); // frustrated learners need brief, soft, encouraging correction
   });
 
   it("P9-TEACH: encouragement timing activates for repeated-error frustrated learner", () => {
