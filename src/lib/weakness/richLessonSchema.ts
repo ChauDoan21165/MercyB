@@ -41,6 +41,8 @@ export interface RichLessonSection {
   ur?: string;
   /** Optional Korean-native English explanation — for ko-native learners. */
   ko?: string;
+  /** Optional Chinese-native English explanation — for zh-native learners. */
+  zh?: string;
 }
 
 export interface RichLessonSections {

@@ -154,6 +154,21 @@ export type WeaknessTag =
   | "ko_c2_cleft_focus"
   | "ko_c2_mixed_conditional"
   | "ko_c2_register_consistency";
+  // ── Chinese L1 (zh_native) tags ──────────────────────────────────────
+  | "zh_l1_no_articles"
+  | "zh_l1_no_tense"
+  | "zh_l1_3rd_person_s"
+  | "zh_l1_he_she"
+  | "zh_l1_plural_s"
+  | "zh_l1_present_perfect_vs_past"
+  | "zh_l1_countable_uncountable"
+  | "zh_l1_preposition_confusion"
+  | "zh_l1_conditional_unreal"
+  | "zh_l1_reported_speech"
+  | "zh_l1_passive_missing_be"
+  | "zh_l1_subjunctive_were"
+  | "zh_c2_inversion_emphasis"
+  | "zh_c2_cleft_focus";
 
 export type BilingualText = {
   /** English surface — may contain `**word**` markdown bolding. */
@@ -174,6 +189,8 @@ export type BilingualText = {
   ur?: string;
   /** Korean-native English explanation — optional, for ko-native learners. */
   ko?: string;
+  /** Chinese-native English explanation — optional, for zh-native learners. */
+  zh?: string;
 };
 
 export type WeaknessEntry = {
@@ -1828,6 +1845,139 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
         en: "Korean has a grammatically marked honorific system (해요체/해체/합쇼체) that forces register choices at every sentence. English relies on vocabulary and structure — mixing **gonna** with **furthermore**, or **kids** with **offspring**, in the same paragraph sounds jarring. C2 writers maintain one register throughout a text.",
         vi: "Tiếng Hàn có hệ thống kính ngữ được đánh dấu ngữ pháp bắt buộc chọn văn phong từng câu. Tiếng Anh dựa vào từ vựng và cấu trúc — pha trộn **gonna** với **furthermore** trong cùng đoạn văn nghe rất chói tai. Người viết C2 duy trì một văn phong nhất quán.",
         ko: "한국어는 문법적으로 표시되는 높임말 체계(해요체/해체/합쇼체)가 있어 모든 문장에서 격식 수준을 선택해야 합니다. 반면 영어는 어휘와 구조에 의존합니다 — 같은 문단에서 **gonna**와 **furthermore**를 섞어 쓰거나 **kids**와 **offspring**을 혼용하면 어색하게 들립니다. C2 작가는 전체 글에서 일관된 격식체를 유지합니다.",
+  // ── Chinese L1 entries ──────────────────────────────────────────────────
+  zh_l1_no_articles: {
+        tag: "zh_l1_no_articles",
+          en: "Articles **a / an / the**",
+          vi: "Mạo từ **a / an / the**",
+          zh: "冠词 **a / an / the**",
+          en: "Chinese has no articles — nouns stand alone. English almost always needs **a**, **an**, or **the** before a singular countable noun. The choice depends on whether the noun is specific (use **the**) or general (use **a / an**).",
+          vi: "Tiếng Trung không có mạo từ — danh từ đứng một mình là được. Tiếng Anh gần như luôn cần **a**, **an**, hoặc **the** trước danh từ đếm được số ít. Việc chọn phụ thuộc vào danh từ cụ thể (dùng **the**) hay chung chung (dùng **a / an**).",
+          zh: "汉语没有冠词 — 名词可以单独使用。英语在单数可数名词前几乎总是需要 **a**、**an** 或 **the**。选择取决于名词是特指（用 **the**）还是泛指（用 **a / an**）。",
+        exampleWrong: "I have car.",
+        exampleRight: "I have a car.",
+  zh_l1_no_tense: {
+        tag: "zh_l1_no_tense",
+          en: "Verb tense marking",
+          vi: "Thì của động từ",
+          zh: "动词时态标记",
+          en: "Chinese shows time with words like **昨天** (yesterday) or **了** (completed action marker) — the verb never changes. English changes the verb itself: **work → worked**. You must mark tense on every main verb.",
+          vi: "Tiếng Trung diễn tả thời gian bằng các từ như **昨天** (hôm qua) hoặc **了** (đã) — động từ không bao giờ thay đổi. Tiếng Anh thay đổi chính động từ: **work → worked**. Bạn phải đánh dấu thì ở mọi động từ chính.",
+          zh: "汉语用词语如 **昨天** 或 **了** 表示时间 — 动词本身不变。英语需要改变动词本身：**work → worked**。必须在每个主要动词上标记时态。",
+        exampleWrong: "Yesterday I go to school.",
+        exampleRight: "Yesterday I went to school.",
+  zh_l1_3rd_person_s: {
+        tag: "zh_l1_3rd_person_s",
+          en: "Subject-verb agreement",
+          vi: "Chia động từ theo chủ ngữ",
+          zh: "主谓一致",
+          en: "Chinese verbs don't change form for person or number. English adds **-s** to the verb when the subject is **he**, **she**, or **it** in the present simple. This is known as third-person singular agreement.",
+          vi: "Động từ tiếng Trung không thay đổi theo ngôi và số. Trong tiếng Anh, động từ thêm **-s** khi chủ ngữ là **he**, **she**, hoặc **it** ở thì hiện tại đơn. Đây gọi là chia động từ ngôi thứ ba số ít.",
+          zh: "汉语动词不随人称或数量变化。英语在一般现在时中，当主语是 **he**、**she** 或 **it** 时，动词要加 **-s**。这称为第三人称单数一致。",
+        exampleWrong: "She go to school every day.",
+        exampleRight: "She goes to school every day.",
+  zh_l1_he_she: {
+        tag: "zh_l1_he_she",
+          en: "**He** vs **she**",
+          vi: "**He** / **she**",
+          zh: "**他** vs **她** 在英语中的区分",
+          en: "Spoken Chinese uses **tā** for both male and female. English requires **he** for men and **she** for women. This distinction is mandatory and mixing them up in a sentence confuses who you mean.",
+          vi: "Tiếng Trung nói dùng **tā** cho cả nam và nữ. Tiếng Anh cần **he** cho nam và **she** cho nữ. Phân biệt này là bắt buộc và nhầm lẫn sẽ gây khó hiểu về người được nói đến.",
+          zh: "汉语口语中 **tā** 既可用于男性也可用于女性。英语则需要 **he** 指男性，**she** 指女性。这种区分是强制性的，混用会让人搞不清你在说谁。",
+        exampleWrong: "My mother, he is a teacher.",
+        exampleRight: "My mother, she is a teacher.",
+  zh_l1_plural_s: {
+        tag: "zh_l1_plural_s",
+          en: "Plural nouns with **-s**",
+          vi: "Danh từ số nhiều với **-s**",
+          zh: "名词复数加 **-s**",
+          en: "Chinese nouns don't change when counting more than one — words like **们** (for people) or **一些** (some) are optional, and a bare noun can be singular or plural. English adds **-s** to most nouns when there's more than one: **book → books**.",
+          vi: "Danh từ tiếng Trung không đổi khi đếm nhiều hơn một — các từ như **们** (cho người) hoặc **一些** (một ít) là tùy chọn. Tiếng Anh thêm **-s** vào hầu hết danh từ khi số lượng nhiều hơn một: **book → books**.",
+          zh: "汉语名词数量超过一个时本身不变 — **们**（用于人）或 **一些** 等词是可选的，单个名词可单可复。英语在大多数名词数量超过一个时要加 **-s**：**book → books**。",
+        exampleWrong: "I have two book.",
+        exampleRight: "I have two books.",
+  zh_l1_present_perfect_vs_past: {
+        tag: "zh_l1_present_perfect_vs_past",
+          en: "Present perfect vs past simple",
+          vi: "Present perfect vs past simple",
+          zh: "现在完成时 vs 一般过去时",
+          en: "Chinese uses **了** or **过** to mark past events — there's no distinction between a past action with present relevance and a past action at a specific time. English splits these: use **past simple** when a specific past time is named (**yesterday**, **last week**); use **present perfect** when no specific time is given and the action has present relevance.",
+          vi: "Tiếng Trung dùng **了** hoặc **过** để đánh dấu quá khứ — không phân biệt giữa hành động quá khứ có liên quan hiện tại và hành động quá khứ ở thời điểm cụ thể. Tiếng Anh phân biệt: dùng **past simple** khi có thời gian cụ thể; dùng **present perfect** cho hành động quá khứ còn liên quan đến hiện tại.",
+          zh: "汉语用 **了** 或 **过** 标记过去 — 不区分与现在相关的过去动作和特定时间的过去动作。英语则区分：有具体过去时间（**yesterday**、**last week**）时用 **一般过去时**；没有具体时间而动作与现在相关时用 **现在完成时**。",
+        exampleWrong: "I have eaten breakfast this morning.",
+        exampleRight: "I ate breakfast this morning.",
+  zh_l1_countable_uncountable: {
+        tag: "zh_l1_countable_uncountable",
+          en: "Countable / uncountable",
+          vi: "Đếm được / không đếm được",
+          zh: "可数名词 / 不可数名词",
+          en: "Chinese uses the same quantifier (**很多**) for everything — **很多书** (many books) and **很多水** (much water) both use **很多**. English splits: **many** for countable nouns (**many books**), **much** for uncountable nouns (**much water**), and **a lot of** for both in informal speech.",
+          vi: "Tiếng Trung dùng cùng một từ chỉ số lượng (**很多**) cho mọi thứ — **很多书** (nhiều sách) và **很多水** (nhiều nước) đều dùng **很多**. Tiếng Anh tách ra: **many** cho danh từ đếm được, **much** cho danh từ không đếm được.",
+          zh: "汉语用同一个量词（**很多**）修饰一切 — **很多书** 和 **很多水** 都用 **很多**。英语则区分：**many** 用于可数名词（many books），**much** 用于不可数名词（much water）。",
+        exampleWrong: "I have many money.",
+        exampleRight: "I have a lot of money.",
+  zh_l1_preposition_confusion: {
+        tag: "zh_l1_preposition_confusion",
+          en: "Prepositions **in / on / at**",
+          vi: "Giới từ **in / on / at**",
+          zh: "介词 **in / on / at**",
+          en: "Chinese uses **在** for both time and location — **在星期一** (on Monday), **在六月** (in June), **在家** (at home). One word covers all these. English splits the job across three prepositions: **in** for enclosed spaces and large time periods, **on** for surfaces and days, **at** for specific points.",
+          vi: "Tiếng Trung dùng **在** cho cả thời gian và địa điểm — **在星期一** (vào thứ Hai), **在六月** (vào tháng Sáu), **在家** (ở nhà). Một từ bao phủ tất cả. Tiếng Anh chia làm ba: **in** cho không gian kín và thời gian lớn, **on** cho bề mặt và ngày, **at** cho điểm cụ thể.",
+          zh: "汉语用 **在** 表示时间和地点 — **在星期一**、**在六月**、**在家**。一个词覆盖所有情况。英语则分为三个介词：**in** 用于封闭空间和大段时间，**on** 用于表面和日期，**at** 用于具体点位。",
+        exampleWrong: "See you in Monday.",
+        exampleRight: "See you on Monday.",
+  zh_l1_conditional_unreal: {
+        tag: "zh_l1_conditional_unreal",
+          en: "Unreal conditionals (Type 2)",
+          vi: "Câu điều kiện không có thật (Type 2)",
+          zh: "非真实条件句（第二类）",
+          en: "Chinese **如果…就…** uses the same structure for real and unreal conditions — the verb never changes. English marks unreal / hypothetical conditions with **If + past tense, would + base verb** — never mix past with **will**.",
+          vi: "Tiếng Trung **如果…就…** dùng cùng cấu trúc cho cả điều kiện thật và không thật — động từ không đổi. Tiếng Anh đánh dấu điều kiện không thật bằng **If + quá khứ, would + động từ gốc** — không trộn quá khứ với **will**.",
+          zh: "汉语的 **如果…就…** 对真实和非真实条件使用相同结构 — 动词不变。英语用 **If + 过去时, would + 动词原形** 标记非真实/假设条件 — 绝不能把过去时和 **will** 混用。",
+        exampleWrong: "If I had money, I will buy a car.",
+        exampleRight: "If I had money, I would buy a car.",
+  zh_l1_reported_speech: {
+        tag: "zh_l1_reported_speech",
+          en: "Reported speech tense shift",
+          vi: "Lùi thì trong câu tường thuật",
+          zh: "间接引语的时态后移",
+          en: "Chinese reports speech without changing the verb tense — **他说他很累** (tā shuō tā hěn lèi) keeps present meaning. English backshifts the tense: **She said she was tired** — not **she is tired**.",
+          vi: "Tiếng Trung tường thuật không đổi thì động từ — **他说他很累** (tā shuō tā hěn lèi) giữ nguyên nghĩa hiện tại. Tiếng Anh lùi thì: **She said she was tired**, không phải **she is tired**.",
+          zh: "汉语转述他人话语时不改变动词时态 — **他说他很累** 保持现在含义。英语则需要将时态后移：**She said she was tired** — 而不是 **she is tired**。",
+        exampleWrong: "She said she is tired.",
+        exampleRight: "She said she was tired.",
+  zh_l1_passive_missing_be: {
+        tag: "zh_l1_passive_missing_be",
+          en: "Passive needs **be + V3**",
+          vi: "Bị động cần **be + V3**",
+          zh: "被动语态需要 **be + 过去分词**",
+          en: "Chinese marks the passive with **被** before the verb — **信被写了** (the letter was written). English needs a form of **be** plus the past participle: **The letter was written**, not **The letter written**.",
+          vi: "Tiếng Trung đánh dấu bị động với **被** trước động từ — **信被写了** (bức thư đã được viết). Tiếng Anh cần dạng **be** + V3: **The letter was written**, không phải **The letter written**.",
+          zh: "汉语用 **被** 放在动词前表示被动 — **信被写了**（信已经写了）。英语则需要 **be** 的某种形式加过去分词：**The letter was written**，而不是 **The letter written**。",
+        exampleWrong: "The letter written yesterday.",
+        exampleRight: "The letter was written yesterday.",
+  zh_l1_subjunctive_were: {
+        tag: "zh_l1_subjunctive_were",
+          en: "Subjunctive **were**",
+          vi: "Giả định với **were**",
+          zh: "虚拟语气 **were**",
+          en: "Chinese has no subjunctive mood — **如果我是你** (if I am you) uses the present form for both real and unreal. After **if** or **wish**, English uses **were** for every subject in unreal/imagined situations — *If I **were** you*, not *If I **was** you*.",
+          vi: "Tiếng Trung không có thức giả định — **如果我是你** (nếu tôi là bạn) dùng thì hiện tại cho cả thật và giả định. Sau **if** hoặc **wish**, tiếng Anh dùng **were** cho mọi chủ ngữ trong tình huống không thật — *If I **were** you*, không phải *If I **was** you*.",
+          zh: "汉语没有虚拟语气 — **如果我是你** 对真实和假设情况都使用现在时。在 **if** 或 **wish** 之后，英语在非真实/想象的情境中对所有主语都用 **were** — *If I **were** you*，而不是 *If I **was** you*。",
+        exampleWrong: "If I was you, I would take the job.",
+        exampleRight: "If I were you, I would take the job.",
+  zh_c2_inversion_emphasis: {
+        tag: "zh_c2_inversion_emphasis",
+          zh: "倒装表示强调",
+          en: "Chinese fronts adverbs without changing word order — **从来没见过** (cónglái méi jiàn guò) keeps subject-verb intact. English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**. Inversion signals emphasis and formality — a C2 feature.",
+          vi: "Tiếng Trung đưa trạng từ lên đầu câu mà không đảo trật tự từ — **从来没见过** (từ trước đến nay chưa từng thấy) giữ nguyên chủ ngữ-động từ. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — kỹ năng cấp C2.",
+          zh: "汉语把副词放在句首时不改变语序 — **从来没见过** 保持主谓完整。英语在否定/限制性副词（**never**、**rarely**、**not only**、**hardly**）之后要将主语和助动词倒装。倒装表示强调和正式 — 这是C2水平的特征。",
+  zh_c2_cleft_focus: {
+        tag: "zh_c2_cleft_focus",
+          zh: "分裂句强调",
+          en: "Chinese uses **是…的** to highlight — **是John打破了窗户** (It was John who broke the window). English has a richer system: **It-clefts** (**It was John who broke the window**) pull one element into focus; **Wh-clefts** (**What I need is more time**) package a whole idea as the subject.",
+          vi: "Tiếng Trung dùng **是…的** để nhấn mạnh — **是John打破了窗户** (Chính John là người làm vỡ cửa sổ). Tiếng Anh có hệ thống phong phú hơn: **It-cleft** kéo một yếu tố vào tiêu điểm; **Wh-cleft** đóng gói cả một ý thành chủ ngữ.",
+          zh: "汉语用 **是…的** 强调 — **是John打破了窗户**。英语有更丰富的系统：**It-cleft**（**It was John who broke the window**）将某个元素拉到焦点；**Wh-cleft**（**What I need is more time**）将整个想法包装成主语。",
 };
 
 /** Ordered list of all tags (stable for tests + exhaustiveness checks). */

@@ -56,6 +56,12 @@ const EXPECTED_PILOT_TAGS = [
   "ur_l1_missing_be",
   "ur_l1_missing_article",
   "ur_l1_word_order",
+  // ── Chinese L1 pilot lessons ──────────────────────────────────────────
+  "zh_l1_no_articles",
+  "zh_l1_present_perfect_vs_past",
+  "zh_l1_conditional_unreal",
+  "zh_l1_reported_speech",
+  "zh_l1_he_she",
 ] as const;
 
 describe("rich-lessons-pilot.json shape", () => {

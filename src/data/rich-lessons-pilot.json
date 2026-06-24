@@ -5210,6 +5210,666 @@
           }
         }
       ]
+    },
+    {
+      "tag": "zh_l1_no_articles",
+      "title": {
+        "en": "**a / an / the** — three words Chinese doesn't have",
+        "vi": "**a / an / the** — ba từ tiếng Trung không có",
+        "zh": "**a / an / the** — 汉语没有的三个冠词"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"I have car.\" Every Chinese learner says this — because in Chinese, **我有车** (wǒ yǒu chē) is a perfectly complete sentence. No article needed. But English insists on **a** before singular countable nouns, and it's the most common error Chinese speakers make at every level.",
+          "vi": "\"I have car.\" Bạn học tiếng Trung nào cũng nói vậy — vì trong tiếng Trung, **我有车** (wǒ yǒu chē) là câu hoàn chỉnh. Không cần mạo từ. Nhưng tiếng Anh bắt buộc phải có **a** trước danh từ đếm được số ít, và đây là lỗi phổ biến nhất của người Trung ở mọi cấp độ.",
+          "zh": "\"I have car.\" 每个中国学习者都这样说过 — 因为在汉语中，**我有车** 是一个完全正确的句子，不需要冠词。但英语在单数可数名词前必须有 **a**，这是中文母语者最常犯的错误。"
+        },
+        "why": {
+          "en": "Chinese has no articles — no **a**, no **an**, no **the**. A noun stands alone. English demands one of these before most singular countable nouns, and the choice depends on whether the listener knows which one you mean. **a / an** = 'one of many, any one' (first mention). **the** = 'the specific one we both know' (second mention or shared knowledge).",
+          "vi": "Tiếng Trung không có mạo từ — không **a**, không **an**, không **the**. Danh từ đứng một mình. Tiếng Anh yêu cầu một trong các mạo từ này trước hầu hết danh từ đếm được số ít, và việc chọn phụ thuộc vào việc người nghe có biết bạn đang nói đến cái nào không. **a / an** = 'một trong nhiều' (lần đầu nhắc đến). **the** = 'cái cụ thể mà cả hai đều biết' (lần thứ hai hoặc kiến thức chung).",
+          "zh": "汉语没有冠词 — 没有 **a**、**an** 或 **the**。名词可以单独使用。英语在大多数单数可数名词前都要求加冠词，选择取决于听者是否知道你说的是哪一个。**a / an** = '众多之一、随便哪一个'（第一次提及）。**the** = '我们都知道的那个具体的东西'（第二次提及或共同知识）。"
+        },
+        "pattern": {
+          "en": "**a** before consonant SOUND: a cat, a university (starts with 'y'), a one-way street (starts with 'w'). **an** before vowel SOUND: an apple, an hour (silent h), an honest person. **the** before specific/shared reference: I saw **a** dog. **The** dog was black. **No article** with: proper names (China, English), meals (lunch, dinner), sports (play football), abstract concepts (life, love).",
+          "vi": "**a** trước âm phụ âm: a cat, a university (bắt đầu bằng 'y'), a one-way street (bắt đầu bằng 'w'). **an** trước âm nguyên âm: an apple, an hour (h câm), an honest person. **the** trước tham chiếu cụ thể/chung: I saw **a** dog. **The** dog was black. **Không mạo từ** với: tên riêng (China, English), bữa ăn (lunch, dinner), thể thao (play football), khái niệm trừu tượng (life, love).",
+          "zh": "**a** 放在辅音音素前：a cat, a university（以'y'音开头）, a one-way street（以'w'音开头）。**an** 放在元音音素前：an apple, an hour（h不发音）, an honest person。**the** 放在特指/共知的名词前：I saw **a** dog. **The** dog was black. **不加冠词** 的情况：专有名词（China, English）、餐食（lunch, dinner）、体育运动（play football）、抽象概念（life, love）。"
+        },
+        "practice": {
+          "en": "Say each aloud and feel the article: \"I have **a** car.\" \"She ate **an** apple.\" \"Please close **the** door.\" \"He is **a** teacher.\" \"I saw **an** elephant at **the** zoo.\" \"**The** cat is sleeping on **the** sofa.\" \"I had **a** sandwich for lunch.\"",
+          "vi": "Nói thành tiếng và cảm nhận mạo từ: \"I have **a** car.\" \"She ate **an** apple.\" \"Please close **the** door.\" \"He is **a** teacher.\" \"I saw **an** elephant at **the** zoo.\" \"**The** cat is sleeping on **the** sofa.\" \"I had **a** sandwich for lunch.\"",
+          "zh": "大声说出来，感受冠词的存在：\"I have **a** car.\" \"She ate **an** apple.\" \"Please close **the** door.\" \"He is **a** teacher.\" \"I saw **an** elephant at **the** zoo.\" \"**The** cat is sleeping on **the** sofa.\" \"I had **a** sandwich for lunch.\""
+        },
+        "takeaway": {
+          "en": "If a noun is singular and countable, ask: 'Does my listener know which one?' → Yes = **the**, No = **a / an**. If you can't answer, the noun probably needs an article.",
+          "vi": "Nếu danh từ số ít và đếm được, hãy hỏi: 'Người nghe có biết cái nào không?' → Có = **the**, Không = **a / an**. Nếu không trả lời được, danh từ đó có lẽ cần mạo từ.",
+          "zh": "如果名词是单数可数，问自己：'听者知道是哪一个吗？' → 知道 = **the**，不知道 = **a / an**。如果不能回答，名词很可能需要冠词。"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "zh": "选择正确的句子："
+          },
+          "options": [
+            "I have car.",
+            "I have a car.",
+            "I have the car.",
+            "I have an car."
+          ],
+          "correctAnswer": "I have a car.",
+          "explanation": {
+            "en": "**car** is a singular countable noun mentioned for the first time → **a car**.",
+            "vi": "**car** là danh từ đếm được số ít lần đầu nhắc đến → **a car**.",
+            "zh": "**car** 是单数可数名词，第一次提及 → **a car**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: She is ___ honest person.",
+            "vi": "Điền vào chỗ trống: She is ___ honest person.",
+            "zh": "填空：She is ___ honest person."
+          },
+          "options": [
+            "a",
+            "an",
+            "the",
+            "(no article)"
+          ],
+          "correctAnswer": "an",
+          "explanation": {
+            "en": "**honest** starts with a silent 'h' → vowel sound → use **an**.",
+            "vi": "**honest** bắt đầu bằng 'h' câm → âm nguyên âm → dùng **an**.",
+            "zh": "**honest** 以不发音的 'h' 开头 → 元音音素 → 用 **an**。"
+          }
+        },
+        {
+          "question": {
+            "en": "I saw ___ elephant at ___ zoo yesterday.",
+            "vi": "I saw ___ elephant at ___ zoo yesterday.",
+            "zh": "I saw ___ elephant at ___ zoo yesterday."
+          },
+          "options": [
+            "a / a",
+            "an / a",
+            "an / the",
+            "the / an"
+          ],
+          "correctAnswer": "an / the",
+          "explanation": {
+            "en": "**elephant** first mention (= an), **zoo** is shared knowledge (= the).",
+            "vi": "**elephant** lần đầu nhắc (= an), **zoo** là chung (= the).",
+            "zh": "**elephant** 第一次提及（用 an），**zoo** 是共知信息（用 the）。"
+          }
+        },
+        {
+          "question": {
+            "en": "Which sentence is correct?",
+            "vi": "Câu nào đúng?",
+            "zh": "哪个句子是正确的？"
+          },
+          "options": [
+            "Please close door.",
+            "Please close a door.",
+            "Please close the door.",
+            "Please close an door."
+          ],
+          "correctAnswer": "Please close the door.",
+          "explanation": {
+            "en": "**the door** is specific — we both know which door → use **the**.",
+            "vi": "**the door** cụ thể — cả hai đều biết cánh cửa nào → dùng **the**.",
+            "zh": "**the door** 是特指 — 我们都知道是哪扇门 → 用 **the**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in: He plays ___ football every weekend.",
+            "vi": "Điền: He plays ___ football every weekend.",
+            "zh": "填空：He plays ___ football every weekend."
+          },
+          "options": [
+            "a",
+            "an",
+            "the",
+            "(no article)"
+          ],
+          "correctAnswer": "(no article)",
+          "explanation": {
+            "en": "**football** is a sport → no article needed.",
+            "vi": "**football** là môn thể thao → không cần mạo từ.",
+            "zh": "**football** 是体育运动 → 不需要冠词。"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "zh_l1_present_perfect_vs_past",
+      "title": {
+        "en": "**I have done** vs **I did** — picking the right past",
+        "vi": "**I have done** vs **I did** — chọn đúng thì quá khứ",
+        "zh": "**I have done** vs **I did** — 选择正确的过去表达方式"
+      },
+      "sections": {
+        "hook": {
+          "en": "Sound familiar? \"I have eaten breakfast this morning.\" In Chinese this makes sense — **我已经吃了早饭** (wǒ yǐjīng chī le zǎo fàn) just marks completion with **了**. But when English hears 'this morning,' it triggers simple past, not present perfect. The split doesn't exist in Chinese grammar.",
+          "vi": "Nghe quen không? \"I have eaten breakfast this morning.\" Trong tiếng Trung điều này hợp lý — **我已经吃了早饭** đánh dấu hoàn thành bằng **了**. Nhưng khi tiếng Anh nghe 'this morning,' nó kích hoạt simple past, không phải present perfect. Sự phân chia này không tồn tại trong ngữ pháp tiếng Trung.",
+          "zh": "听起来熟悉吗？\"I have eaten breakfast this morning.\" 在汉语中这很合理 — **我已经吃了早饭** 用 **了** 标记完成。但当英语听到 'this morning' 时，就会使用一般过去时，而不是现在完成时。汉语语法中没有这种区分。"
+        },
+        "why": {
+          "en": "Chinese uses **了** or **过** to mark past events — one system covers all past meaning. There's no special form for 'past action with present relevance.' English splits the job: when you name a specific past time (**yesterday**, **last week**, **this morning**, **in 2020**), use simple past. When the past action still matters now and no specific time is named, use present perfect.",
+          "vi": "Tiếng Trung dùng **了** hoặc **过** để đánh dấu quá khứ — một hệ thống cho mọi nghĩa về quá khứ. Không có dạng đặc biệt cho 'hành động quá khứ còn liên quan hiện tại.' Tiếng Anh chia đôi: khi bạn nêu thời gian quá khứ cụ thể (**yesterday**, **last week**, **this morning**, **in 2020**), dùng simple past. Khi hành động quá khứ vẫn liên quan hiện tại và không có thời gian cụ thể, dùng present perfect.",
+          "zh": "汉语用 **了** 或 **过** 标记过去 — 一个系统覆盖所有过去意义。没有专门表示'与现在相关的过去动作'的形式。英语则分为两类：有具体过去时间（**yesterday**、**last week**、**this morning**、**in 2020**）时用一般过去时；没有具体时间而过去动作与现在相关时用现在完成时。"
+        },
+        "pattern": {
+          "en": "**Simple past** = specific past time named → verb in past form. \"I ate breakfast this morning.\" \"She called yesterday.\" **Present perfect** = result still relevant, no specific time → **have/has + V3**. \"I have eaten (so I'm not hungry now).\" \"She has lost her keys (still can't find them).\" **Key test:** can you add **yesterday / last / ago / in [year]** to the sentence? If yes → simple past.",
+          "vi": "**Simple past** = thời gian quá khứ cụ thể → động từ dạng quá khứ. \"I ate breakfast this morning.\" \"She called yesterday.\" **Present perfect** = kết quả vẫn liên quan, không có thời gian cụ thể → **have/has + V3**. \"I have eaten (nên giờ không đói).\" \"She has lost her keys (vẫn chưa tìm thấy).\" **Cách kiểm tra:** bạn có thêm được **yesterday / last / ago / in [năm]** vào câu không? Nếu có → simple past.",
+          "zh": "**一般过去时** = 有具体过去时间 → 动词用过去式。\"I ate breakfast this morning.\" \"She called yesterday.\" **现在完成时** = 结果仍相关，无具体时间 → **have/has + V3**。\"I have eaten（所以我現在不餓）。\" \"She has lost her keys（仍然找不到）。\" **关键测试：** 句中能否加入 **yesterday / last / ago / in [年份]**？如果能 → 用一般过去时。"
+        },
+        "practice": {
+          "en": "Say each pair aloud and feel the difference: \"I have visited Shanghai.\" (life experience, no specific time) vs \"I visited Shanghai last year.\" (specific time). \"She has finished her homework.\" (just finished, still relevant) vs \"She finished her homework an hour ago.\" (specific time). \"They have bought a new car.\" (recent, result matters) vs \"They bought a new car last month.\" (when is stated).",
+          "vi": "Nói thành tiếng từng cặp và cảm nhận sự khác biệt: \"I have visited Shanghai.\" (trải nghiệm, không thời gian cụ thể) vs \"I visited Shanghai last year.\" (thời gian cụ thể). \"She has finished her homework.\" (vừa xong, vẫn liên quan) vs \"She finished her homework an hour ago.\" (thời gian cụ thể). \"They have bought a new car.\" (gần đây, kết quả quan trọng) vs \"They bought a new car last month.\" (có thời gian).",
+          "zh": "大声说出每组句子，感受差异：\"I have visited Shanghai.\"（人生经历，无具体时间）vs \"I visited Shanghai last year.\"（具体时间）。\"She has finished her homework.\"（刚完成，结果仍相关）vs \"She finished her homework an hour ago.\"（具体时间）。\"They have bought a new car.\"（最近，结果重要）vs \"They bought a new car last month.\"（有具体时间）。"
+        },
+        "takeaway": {
+          "en": "Specific past time word (yesterday, last, ago) = simple past. No time word + result still matters = present perfect.",
+          "vi": "Có từ thời gian quá khứ cụ thể = simple past. Không có từ thời gian + kết quả vẫn quan trọng = present perfect.",
+          "zh": "有具体过去时间词（yesterday, last, ago）= 一般过去时。无时间词 + 结果仍相关 = 现在完成时。"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "zh": "选择正确的句子："
+          },
+          "options": [
+            "I have seen that movie last night.",
+            "I saw that movie last night.",
+            "I have saw that movie last night.",
+            "I seen that movie last night."
+          ],
+          "correctAnswer": "I saw that movie last night.",
+          "explanation": {
+            "en": "**last night** is a specific past time → simple past: **saw**.",
+            "vi": "**last night** là thời gian quá khứ cụ thể → simple past: **saw**.",
+            "zh": "**last night** 是具体过去时间 → 一般过去时：**saw**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "zh": "选择正确的句子："
+          },
+          "options": [
+            "She has visited her grandmother yesterday.",
+            "She visited her grandmother yesterday.",
+            "She have visited her grandmother yesterday.",
+            "She visits her grandmother yesterday."
+          ],
+          "correctAnswer": "She visited her grandmother yesterday.",
+          "explanation": {
+            "en": "**yesterday** signals a specific past moment → simple past, not present perfect.",
+            "vi": "**yesterday** là thời điểm quá khứ cụ thể → simple past, không phải present perfect.",
+            "zh": "**yesterday** 表示具体过去时间 → 一般过去时，不是现在完成时。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "zh": "选择正确的句子："
+          },
+          "options": [
+            "I have lost my keys. I still can't find them.",
+            "I lost my keys. I still can't find them.",
+            "I have lost my keys yesterday.",
+            "I losed my keys and still can't find them."
+          ],
+          "correctAnswer": "I have lost my keys. I still can't find them.",
+          "explanation": {
+            "en": "No specific past time + result still matters (can't find them now) → present perfect **have lost**.",
+            "vi": "Không có thời gian cụ thể + kết quả vẫn quan trọng (giờ vẫn chưa tìm thấy) → present perfect **have lost**.",
+            "zh": "没有具体过去时间 + 结果仍然重要（现在找不到）→ 现在完成时 **have lost**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "zh": "选择正确的句子："
+          },
+          "options": [
+            "He has finished university in 2022.",
+            "He finished university in 2022.",
+            "He have finished university in 2022.",
+            "He finish university in 2022."
+          ],
+          "correctAnswer": "He finished university in 2022.",
+          "explanation": {
+            "en": "**in 2022** is a specific past time → simple past: **finished**.",
+            "vi": "**in 2022** là thời gian quá khứ cụ thể → simple past: **finished**.",
+            "zh": "**in 2022** 是具体过去时间 → 一般过去时：**finished**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in: We _____ each other since we were kids.",
+            "vi": "Điền: We _____ each other since we were kids.",
+            "zh": "填空：We _____ each other since we were kids."
+          },
+          "options": [
+            "have known",
+            "knew",
+            "known",
+            "have knew"
+          ],
+          "correctAnswer": "have known",
+          "explanation": {
+            "en": "**since** signals an ongoing period from past to now → present perfect **have known**.",
+            "vi": "**since** chỉ khoảng thời gian kéo dài từ quá khứ đến hiện tại → present perfect **have known**.",
+            "zh": "**since** 表示从过去持续到现在的时期 → 现在完成时 **have known**。"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "zh_l1_conditional_unreal",
+      "title": {
+        "en": "**If I were** — unreal conditions in English",
+        "vi": "**If I were** — câu điều kiện không có thật",
+        "zh": "**If I were** — 英语中的非真实条件句"
+      },
+      "sections": {
+        "hook": {
+          "en": "Sound familiar? \"If I have money, I would travel the world.\" In Chinese, **如果我有钱** (rúguǒ wǒ yǒu qián) works for both 'if I have' and 'if I had' — the verb never changes. But English draws a firm line between real and unreal conditions. Mixing them sounds broken to a native ear.",
+          "vi": "Nghe quen không? \"If I have money, I would travel the world.\" Trong tiếng Trung, **如果我有钱** (rúguǒ wǒ yǒu qián) dùng cho cả 'nếu tôi có' thật và 'nếu tôi có' giả định — động từ không bao giờ đổi. Nhưng tiếng Anh phân biệt rạch ròi giữa điều kiện thật và không thật. Trộn lẫn nghe rất sai với tai người bản xứ.",
+          "zh": "听起来熟悉吗？\"If I have money, I would travel the world.\" 在汉语中，**如果我有钱** 既可用于'如果我有'（真实条件）也可用于'如果我有'（假设条件）— 动词从不变化。但英语在真实和非真实条件之间划了清晰的界限。混用听起来很别扭。"
+        },
+        "why": {
+          "en": "Chinese **如果…就…** doesn't change the verb form for unreal situations — the same structure covers both 'If it rains, I will stay home' (real) and 'If I were rich, I would travel' (unreal). English marks the difference: unreal / hypothetical conditions use **If + past tense, would + base verb**. The past tense in the **if**-clause is a signal that means 'this is imaginary,' not past time.",
+          "vi": "Tiếng Trung **如果…就…** không đổi dạng động từ cho tình huống không thật — cùng một cấu trúc cho cả 'Nếu trời mưa, tôi sẽ ở nhà' (thật) và 'Nếu tôi giàu, tôi sẽ đi du lịch' (không thật). Tiếng Anh đánh dấu sự khác biệt: điều kiện không thật dùng **If + quá khứ, would + động từ gốc**. Thì quá khứ trong mệnh đề **if** là tín hiệu có nghĩa 'đây là tưởng tượng,' không phải thời gian quá khứ.",
+          "zh": "汉语的 **如果…就…** 对非真实情况不改变动词形式 — 相同的结构既用于'如果下雨，我就待在家里'（真实），也用于'如果我有钱，我就去旅行'（假设）。英语标记了这种区别：非真实/虚拟条件使用 **If + 过去时, would + 动词原形**。**if** 从句中的过去时是一种信号，意思是'这是假想的'，而不是过去时间。"
+        },
+        "pattern": {
+          "en": "**Real condition (Type 1):** If + present simple, will + base verb. \"If it rains, I will stay home.\" **Unreal condition (Type 2):** If + simple past, would + base verb. \"If I **were** rich, I **would travel** the world.\" Note: **were** is used for ALL subjects in Type 2 — \"If I **were** you,\" not \"If I **was** you.\" The past form in the if-clause signals 'this is imaginary.'",
+          "vi": "**Điều kiện thật (Type 1):** If + hiện tại, will + động từ gốc. \"If it rains, I will stay home.\" **Điều kiện không thật (Type 2):** If + quá khứ, would + động từ gốc. \"If I **were** rich, I **would travel** the world.\" Lưu ý: **were** dùng cho TẤT CẢ các chủ ngữ trong Type 2 — \"If I **were** you,\" không phải \"If I **was** you.\"",
+          "zh": "**真实条件（第一类）：** If + 一般现在时, will + 动词原形。\"If it rains, I will stay home.\" **非真实条件（第二类）：** If + 一般过去时, would + 动词原形。\"If I **were** rich, I **would travel** the world.\" 注意：**were** 用于第二类中的所有主语 — \"If I **were** you\"，而不是 \"If I **was** you\"。"
+        },
+        "practice": {
+          "en": "Say each pair aloud and feel the contrast: \"If I have time tomorrow, I will call you.\" (real) vs \"If I had time, I would call you.\" (unreal — I don't have time). \"If she studies, she will pass.\" (real) vs \"If she studied, she would pass.\" (unreal — she doesn't study). The past tense in the **if**-clause signals 'this is pretend.'",
+          "vi": "Nói thành tiếng từng cặp và cảm nhận sự tương phản: \"If I have time tomorrow, I will call you.\" (thật) vs \"If I had time, I would call you.\" (không thật — không có thời gian). \"If she studies, she will pass.\" (thật) vs \"If she studied, she would pass.\" (không thật — cô ấy không học). Thì quá khứ trong mệnh đề **if** có nghĩa là giả vờ.",
+          "zh": "大声说出每组句子，感受对比：\"If I have time tomorrow, I will call you.\"（真实）vs \"If I had time, I would call you.\"（非真实 — 我没有时间）。\"If she studies, she will pass.\"（真实）vs \"If she studied, she would pass.\"（非真实 — 她不用功）。**if** 从句中的过去时表示'这是假设的'。"
+        },
+        "takeaway": {
+          "en": "Real present/future = present + will. Unreal/pretend = past + would. If you hear yourself say **will** after a past-tense **if**, switch to **would**.",
+          "vi": "Thật ở hiện tại/tương lai = hiện tại + will. Không thật/giả vờ = quá khứ + would. Nếu bạn nghe mình nói **will** sau mệnh đề **if** ở quá khứ, đổi sang **would**.",
+          "zh": "真实条件 = 现在时 + will。非真实/假设 = 过去时 + would。如果你听到自己在过去时的 **if** 从句后用了 **will**，改为 **would**。"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence (unreal — I don't have money):",
+            "vi": "Chọn câu đúng (không thật — tôi không có tiền):",
+            "zh": "选择正确的句子（非真实 — 我没有钱）："
+          },
+          "options": [
+            "If I have money, I will buy a house.",
+            "If I had money, I would buy a house.",
+            "If I had money, I will buy a house.",
+            "If I have money, I would buy a house."
+          ],
+          "correctAnswer": "If I had money, I would buy a house.",
+          "explanation": {
+            "en": "Unreal condition → past in **if**-clause (**had**) + **would** in result.",
+            "vi": "Điều kiện không thật → quá khứ trong **if** (**had**) + **would** ở kết quả.",
+            "zh": "非真实条件 → **if** 从句用过去时（**had**）+ 结果句用 **would**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence (giving advice):",
+            "vi": "Chọn câu đúng (đưa lời khuyên):",
+            "zh": "选择正确的句子（提建议）："
+          },
+          "options": [
+            "If I am you, I would take the job.",
+            "If I were you, I will take the job.",
+            "If I were you, I would take the job.",
+            "If I was you, I would take the job."
+          ],
+          "correctAnswer": "If I were you, I would take the job.",
+          "explanation": {
+            "en": "**If I were you** is the standard form for giving advice — use **were** for all subjects in Type 2.",
+            "vi": "**If I were you** là dạng chuẩn để đưa lời khuyên — dùng **were** cho mọi chủ ngữ trong Type 2.",
+            "zh": "**If I were you** 是提建议的标准形式 — 在第二类条件句中所有主语都用 **were**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence (real — tomorrow is possible):",
+            "vi": "Chọn câu đúng (thật — ngày mai có thể):",
+            "zh": "选择正确的句子（真实 — 明天可能发生）："
+          },
+          "options": [
+            "If it rains tomorrow, we would stay inside.",
+            "If it rained tomorrow, we will stay inside.",
+            "If it rains tomorrow, we will stay inside.",
+            "If it will rain tomorrow, we stay inside."
+          ],
+          "correctAnswer": "If it rains tomorrow, we will stay inside.",
+          "explanation": {
+            "en": "Real possibility → present in **if**-clause (**rains**) + **will** in result.",
+            "vi": "Khả năng thật → hiện tại trong **if** (**rains**) + **will** ở kết quả.",
+            "zh": "真实可能性 → **if** 从句用现在时（**rains**）+ 结果句用 **will**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Which sentence is the UNREAL version of: I don't speak Chinese, so I don't understand.",
+            "vi": "Câu nào là phiên bản KHÔNG THẬT của: Tôi không nói tiếng Trung, nên tôi không hiểu.",
+            "zh": "哪句是下面这句的非真实版本：我不会说中文，所以我听不懂。"
+          },
+          "options": [
+            "If I speak Chinese, I will understand.",
+            "If I spoke Chinese, I would understand.",
+            "If I spoke Chinese, I will understand.",
+            "If I speak Chinese, I would understand."
+          ],
+          "correctAnswer": "If I spoke Chinese, I would understand.",
+          "explanation": {
+            "en": "I don't speak Chinese (unreal now) → **spoke** (past form, unreal signal) + **would**.",
+            "vi": "Tôi không nói tiếng Trung (không thật ở hiện tại) → **spoke** (dạng quá khứ) + **would**.",
+            "zh": "我不会说中文（现在非真实）→ **spoke**（过去时形式，非真实信号）+ **would**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in: If she _____ taller, she would play basketball.",
+            "vi": "Điền: If she _____ taller, she would play basketball.",
+            "zh": "填空：If she _____ taller, she would play basketball."
+          },
+          "options": [
+            "is",
+            "was",
+            "were",
+            "will be"
+          ],
+          "correctAnswer": "were",
+          "explanation": {
+            "en": "Unreal condition about a permanent quality → **were** (subjunctive) for all subjects.",
+            "vi": "Điều kiện không thật về một đặc điểm cố định → **were** (giả định) cho mọi chủ ngữ.",
+            "zh": "关于永久特征的非真实条件 → 所有主语都用 **were**（虚拟语气）。"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "zh_l1_reported_speech",
+      "title": {
+        "en": "**She said she was** — reporting speech in English",
+        "vi": "**She said she was** — tường thuật lời nói trong tiếng Anh",
+        "zh": "**She said she was** — 英语中的间接引语"
+      },
+      "sections": {
+        "hook": {
+          "en": "Sound familiar? \"She said she is tired.\" In Chinese, this is exactly right — **她说她很累** (tā shuō tā hěn lèi). You put **说** before the quote and the verb stays the same. English doesn't work that way — when the reporting verb is in the past (**said**), the quoted verb takes one step back.",
+          "vi": "Nghe quen không? \"She said she is tired.\" Trong tiếng Trung, câu này đúng — **她说她很累** (tā shuō tā hěn lèi). Bạn chỉ cần đặt **说** trước lời nói, động từ giữ nguyên. Tiếng Anh không hoạt động như vậy — khi động từ tường thuật ở quá khứ (**said**), động từ được dẫn lùi một thì.",
+          "zh": "听起来熟悉吗？\"She said she is tired.\" 在汉语中，这是完全正确的 — **她说她很累**。你把 **说** 放在说话内容前面，动词保持不变。英语不是这样运作的 — 当转述动词是过去时（**said**）时，被转述的动词要后移一个时态。"
+        },
+        "why": {
+          "en": "Chinese reports speech without changing the verb tense. **他说他很累** keeps the present meaning; **他说他已经吃了** keeps the original form. English backshifts: if the original was present → reported becomes past; original past → reported becomes past perfect. The reporting verb **said** sets the whole sentence in the past. This is called 'tense backshift' and is mandatory.",
+          "vi": "Tiếng Trung tường thuật không đổi thì động từ. **他说他很累** giữ nghĩa hiện tại; **他说他已经吃了** giữ dạng gốc. Tiếng Anh lùi thì: gốc là hiện tại → tường thuật thành quá khứ; gốc là quá khứ → tường thuật thành quá khứ hoàn thành. Động từ tường thuật **said** đặt cả câu vào quá khứ.",
+          "zh": "汉语转述话语时不改变动词时态。**他说他很累** 保持现在含义；**他说他已经吃了** 保持原貌。英语则需后移时态：原句为现在时 → 转述为过去时；原句为过去时 → 转述为过去完成时。转述动词 **said** 将整个句子置于过去时间框架。"
+        },
+        "pattern": {
+          "en": "**Backshift rule:** present → past, past → past perfect, **will** → **would**, **can** → **could**. 'I am tired' → She said she **was** tired. 'I went there' → She said she **had gone** there. 'I will call' → She said she **would** call. **Exception — no backshift** when: the reported fact is still true now ('The earth is round' → He said the earth **is** round), or the reporting verb is present tense (**she says ...**).",
+          "vi": "**Quy tắc lùi thì:** hiện tại → quá khứ, quá khứ → quá khứ hoàn thành, **will** → **would**, **can** → **could**. 'I am tired' → She said she **was** tired. 'I went there' → She said she **had gone** there. 'I will call' → She said she **would** call. **Ngoại lệ:** khi sự thật được tường thuật vẫn đúng, hoặc động từ tường thuật ở thì hiện tại.",
+          "zh": "**时态后移规则：** 现在时 → 过去时，过去时 → 过去完成时，**will** → **would**，**can** → **could**。'I am tired' → She said she **was** tired. 'I went there' → She said she **had gone** there. 'I will call' → She said she **would** call. **不需要后移的情况：** 被转述的事实现在仍然成立（如'地球是圆的'），或转述动词是现在时（**she says ...**）。"
+        },
+        "practice": {
+          "en": "Practice the backshift out loud: Original: 'I like coffee' → 'She said she **liked** coffee.' Original: 'I am working' → 'He said he **was** working.' Original: 'We saw the movie' → 'They said they **had seen** the movie.' Original: 'I will help you' → 'She said she **would** help me.'",
+          "vi": "Luyện lùi thì thành tiếng: Gốc: 'I like coffee' → 'She said she **liked** coffee.' Gốc: 'I am working' → 'He said he **was** working.' Gốc: 'We saw the movie' → 'They said they **had seen** the movie.' Gốc: 'I will help you' → 'She said she **would** help me.'",
+          "zh": "大声练习时态后移：原文：'I like coffee' → 转述：'She said she **liked** coffee.' 原文：'I am working' → 转述：'He said he **was** working.' 原文：'We saw the movie' → 转述：'They said they **had seen** the movie.' 原文：'I will help you' → 转述：'She said she **would** help me.'"
+        },
+        "takeaway": {
+          "en": "Reporting verb in past tense (**said**, **told**) → shift everything one step back. Present becomes past. Past becomes past perfect. **Will** becomes **would**. Just like moving a timeline marker.",
+          "vi": "Động từ tường thuật ở quá khứ (**said**, **told**) → lùi mọi thứ một bước. Hiện tại thành quá khứ. Quá khứ thành quá khứ hoàn thành. **Will** thành **would**.",
+          "zh": "转述动词为过去时（**said**、**told**）→ 所有时态后移一步。现在时变过去时。过去时变过去完成时。**Will** 变 **would**。就像把时间标记往后移动。"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "'I am hungry.' → She said she _____ hungry.",
+            "vi": "'I am hungry.' → She said she _____ hungry.",
+            "zh": "'I am hungry.' → She said she _____ hungry."
+          },
+          "options": [
+            "is",
+            "was",
+            "has been",
+            "were"
+          ],
+          "correctAnswer": "was",
+          "explanation": {
+            "en": "Present **am** backshifts to past **was** in reported speech.",
+            "vi": "Hiện tại **am** lùi thành quá khứ **was** trong câu tường thuật.",
+            "zh": "现在时 **am** 在间接引语中后移至过去时 **was**。"
+          }
+        },
+        {
+          "question": {
+            "en": "'I will call you tomorrow.' → He said he _____ call me the next day.",
+            "vi": "'I will call you tomorrow.' → He said he _____ call me the next day.",
+            "zh": "'I will call you tomorrow.' → He said he _____ call me the next day."
+          },
+          "options": [
+            "will",
+            "would",
+            "can",
+            "shall"
+          ],
+          "correctAnswer": "would",
+          "explanation": {
+            "en": "**will** always backshifts to **would** with a past reporting verb.",
+            "vi": "**will** luôn lùi thành **would** với động từ tường thuật ở quá khứ.",
+            "zh": "**will** 在转述动词为过去时时总是后移为 **would**。"
+          }
+        },
+        {
+          "question": {
+            "en": "'I went to the market.' → She said she _____ to the market.",
+            "vi": "'I went to the market.' → She said she _____ to the market.",
+            "zh": "'I went to the market.' → She said she _____ to the market."
+          },
+          "options": [
+            "went",
+            "had gone",
+            "goes",
+            "has gone"
+          ],
+          "correctAnswer": "had gone",
+          "explanation": {
+            "en": "Simple past **went** backshifts to past perfect **had gone** in reported speech.",
+            "vi": "Quá khứ đơn **went** lùi thành quá khứ hoàn thành **had gone**.",
+            "zh": "一般过去时 **went** 在间接引语中后移至过去完成时 **had gone**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Which is correct reported speech for: 'I can swim.'",
+            "vi": "Câu tường thuật đúng cho: 'I can swim.' là:",
+            "zh": "'I can swim.' 的正确间接引语是："
+          },
+          "options": [
+            "She said she can swim.",
+            "She said she could swim.",
+            "She said she could swam.",
+            "She said she can swam."
+          ],
+          "correctAnswer": "She said she could swim.",
+          "explanation": {
+            "en": "**can** backshifts to **could** — the main verb **swim** stays in base form.",
+            "vi": "**can** lùi thành **could** — động từ chính **swim** giữ nguyên dạng.",
+            "zh": "**can** 后移为 **could** — 主要动词 **swim** 保持原形。"
+          }
+        },
+        {
+          "question": {
+            "en": "'I don't like vegetables.' → The child said he _____ like vegetables.",
+            "vi": "'I don't like vegetables.' → The child said he _____ like vegetables.",
+            "zh": "'I don't like vegetables.' → The child said he _____ like vegetables."
+          },
+          "options": [
+            "doesn't",
+            "didn't",
+            "don't",
+            "hadn't"
+          ],
+          "correctAnswer": "didn't",
+          "explanation": {
+            "en": "Present **don't** backshifts to past **didn't** in reported speech.",
+            "vi": "Hiện tại **don't** lùi thành quá khứ **didn't**.",
+            "zh": "现在时 **don't** 在间接引语中后移至过去时 **didn't**。"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "zh_l1_he_she",
+      "title": {
+        "en": "**He** vs **she** — don't mix them up",
+        "vi": "**He** vs **she** — đừng nhầm lẫn",
+        "zh": "**He** vs **she** — 不要混淆"
+      },
+      "sections": {
+        "hook": {
+          "en": "'My mother, **he** is a teacher.' In Chinese, you'd say **我妈妈是老师** (wǒ māma shì lǎoshī) — the word **tā** is the same for everyone. But in English, using **he** for your mother sounds like a different person. English forces a gender choice on every third-person pronoun, and Chinese speakers find this surprisingly hard.",
+          "vi": "'My mother, **he** is a teacher.' Trong tiếng Trung, bạn nói **我妈妈是老师** — từ **tā** như nhau cho mọi người. Nhưng trong tiếng Anh, dùng **he** cho mẹ bạn nghe như một người khác. Tiếng Anh bắt buộc phải chọn giới tính cho mọi đại từ ngôi thứ ba, và người Trung thấy điều này khó một cách bất ngờ.",
+          "zh": "'My mother, **he** is a teacher.' 在汉语中，你说 **我妈妈是老师** — **tā** 对所有人都是同一个词。但在英语中，用 **he** 来指你的母亲听起来像是另一个人。英语要求每一个第三人称代词都区分性别，这对中文母语者来说异常困难。"
+        },
+        "why": {
+          "en": "Spoken Chinese uses one word — **tā** (他/她) — for both 'he' and 'she.' The written characters are different but the sound is identical. English requires **he** for males (men, boys) and **she** for females (women, girls). This distinction is mandatory and mixing them up confuses who you mean. This is one of the most persistent errors for Chinese learners at every level — even advanced speakers slip.",
+          "vi": "Tiếng Trung nói chỉ dùng một từ — **tā** (他/她) — cho cả 'he' và 'she.' Chữ viết khác nhau nhưng âm đọc giống hệt. Tiếng Anh cần **he** cho nam và **she** cho nữ. Phân biệt này là bắt buộc và nhầm lẫn sẽ gây khó hiểu. Đây là một trong những lỗi dai dẳng nhất của người Trung ở mọi cấp độ.",
+          "zh": "汉语口语中只用同一个字 **tā**（他/她）表示 'he' 和 'she'。书写时文字不同但发音完全相同。英语要求用 **he** 指男性和 **she** 指女性。这种区分是强制性的，混用会让听者搞不清楚。这是中文母语者在各个水平上都持续犯的错误之一。"
+        },
+        "pattern": {
+          "en": "**he** = male person / male animal. **she** = female person / female animal. **it** = object, animal (gender unknown), or thing. **Key test:** before you say **he** or **she**, identify the person's gender. If you know the person is a woman, always use **she** (never **he**). If you know it's a man, use **he**. If you are unsure about an animal, use **it**. For a baby whose gender you don't know, use **they** (singular) or **it**.",
+          "vi": "**he** = người nam / động vật đực. **she** = người nữ / động vật cái. **it** = đồ vật, động vật (không rõ giới). **Cách kiểm tra:** trước khi nói **he** hoặc **she**, xác định giới tính. Nếu biết là nữ, luôn dùng **she** (không bao giờ **he**). Nếu biết là nam, dùng **he**. Nếu không rõ, dùng **it** hoặc **they** (số ít).",
+          "zh": "**he** = 男性 / 雄性动物。**she** = 女性 / 雌性动物。**it** = 物体、动物（性别未知）或事物。**关键测试：** 在说 **he** 或 **she** 之前，确定对方的性别。如果你知道对方是女性，总是用 **she**（绝不用 **he**）。如果是男性，用 **he**。如果不确定动物的性别，用 **it**。如果不确定婴儿性别，可以用 **they**（单数）或 **it**。"
+        },
+        "practice": {
+          "en": "Say each aloud, consciously matching gender to pronoun: 'My mother, **she** is a teacher.' 'My father, **he** is a doctor.' 'My sister, **she** likes music.' 'My brother, **he** plays football.' 'The cat, **it** is sleeping.' 'My boss — is it a man or a woman? If a woman: **She** is very kind.' Practice with people you know — name them and say the correct pronoun.",
+          "vi": "Nói thành tiếng, ý thức ghép giới tính với đại từ: 'My mother, **she** is a teacher.' 'My father, **he** is a doctor.' 'My sister, **she** likes music.' 'My brother, **he** plays football.' 'The cat, **it** is sleeping.' 'My boss — là nam hay nữ? Nếu nữ: **She** is very kind.'",
+          "zh": "大声说出来，有意识地匹配性别和代词：'My mother, **she** is a teacher.' 'My father, **he** is a doctor.' 'My sister, **she** likes music.' 'My brother, **he** plays football.' 'The cat, **it** is sleeping.' '我的老板 — 是男的还是女的？如果是女性：**She** is very kind.'"
+        },
+        "takeaway": {
+          "en": "Every third-person pronoun in English carries gender. Before you say **he** or **she**, picture who you're talking about. Mother = **she**. Father = **he**. Always.",
+          "vi": "Mọi đại từ ngôi thứ ba trong tiếng Anh đều mang giới tính. Trước khi nói **he** hoặc **she**, hình dung người bạn đang nói đến. Mẹ = **she**. Bố = **he**. Luôn luôn.",
+          "zh": "英语中的每个第三人称代词都有性别。在说 **he** 或 **she** 之前，想一下你在说谁。妈妈 = **she**。爸爸 = **he**。始终如此。"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "zh": "选择正确的句子："
+          },
+          "options": [
+            "My mother, he is a teacher.",
+            "My mother, she is a teacher.",
+            "My mother, it is a teacher.",
+            "My mother, they is a teacher."
+          ],
+          "correctAnswer": "My mother, she is a teacher.",
+          "explanation": {
+            "en": "**Mother** is female → use **she**.",
+            "vi": "**Mother** là nữ → dùng **she**.",
+            "zh": "**Mother**（母亲）是女性 → 用 **she**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: My father plays football. ___ is very tall.",
+            "vi": "Điền: My father plays football. ___ is very tall.",
+            "zh": "填空：My father plays football. ___ is very tall."
+          },
+          "options": [
+            "He",
+            "She",
+            "It",
+            "They"
+          ],
+          "correctAnswer": "He",
+          "explanation": {
+            "en": "**Father** is male → **He** plays, **He** is tall.",
+            "vi": "**Father** là nam → **He** plays, **He** is tall.",
+            "zh": "**Father**（父亲）是男性 → **He**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Where is my sister? ___ is in the kitchen.",
+            "vi": "Where is my sister? ___ is in the kitchen.",
+            "zh": "Where is my sister? ___ is in the kitchen."
+          },
+          "options": [
+            "He",
+            "She",
+            "It",
+            "Him"
+          ],
+          "correctAnswer": "She",
+          "explanation": {
+            "en": "**Sister** is female → **She**.",
+            "vi": "**Sister** là nữ → **She**.",
+            "zh": "**Sister**（姐妹）是女性 → **She**。"
+          }
+        },
+        {
+          "question": {
+            "en": "The dog is sleeping. ___ is very cute.",
+            "vi": "The dog is sleeping. ___ is very cute.",
+            "zh": "The dog is sleeping. ___ is very cute."
+          },
+          "options": [
+            "He",
+            "She",
+            "It",
+            "They"
+          ],
+          "correctAnswer": "It",
+          "explanation": {
+            "en": "For an animal whose gender isn't specified, use **it**.",
+            "vi": "Cho động vật không rõ giới tính, dùng **it**.",
+            "zh": "对于性别不明确的动物，用 **it**。"
+          }
+        },
+        {
+          "question": {
+            "en": "My grandmother called. ___ wants to see me.",
+            "vi": "My grandmother called. ___ wants to see me.",
+            "zh": "My grandmother called. ___ wants to see me."
+          },
+          "options": [
+            "He",
+            "She",
+            "It",
+            "Her"
+          ],
+          "correctAnswer": "She",
+          "explanation": {
+            "en": "**Grandmother** is female → **She** wants to see me.",
+            "vi": "**Grandmother** là nữ → **She** wants to see me.",
+            "zh": "**Grandmother**（祖母）是女性 → **She**。"
+          }
+        }
+      ]
     }
   ]
 }
