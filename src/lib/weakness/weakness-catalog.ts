@@ -177,6 +177,11 @@ export type WeaknessTag =
   | "pt_c2_mixed_conditional"
   | "pt_c2_register_consistency"
   | "pt_c2_hedging_academic";
+  | "tr_l1_missing_article"
+  | "tr_l1_word_order_sov"
+  | "tr_l1_missing_be"
+  | "tr_c2_inversion_emphasis"
+  | "tr_c2_register_consistency";
 
 export type BilingualText = {
   /** English surface — may contain `**word**` markdown bolding. */
@@ -201,6 +206,8 @@ export type BilingualText = {
   zh?: string;
   /** Portuguese (Brazilian)-native English explanation — optional, for pt-native learners. */
   pt?: string;
+  /** Turkish-native English explanation — optional, for tr-native learners. */
+  tr?: string;
 };
 
 export type WeaknessEntry = {
@@ -2046,6 +2053,40 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
         pt: "A escrita acadêmica em português frequentemente declara afirmações de forma mais direta do que as convenções do inglês permitem. A convenção acadêmica do inglês suaviza afirmações com atenuação: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. No nível C2, saber quando e como atenuar é tão importante quanto saber a gramática.",
       exampleWrong: "This proves that social media causes depression in teenagers.",
       exampleRight: "This suggests that social media may contribute to depressive symptoms in some teenagers.",
+  tr_l1_missing_article: {
+      tag: "tr_l1_missing_article",
+        tr: "**a / an / the** belirteçleri",
+        en: "Turkish has no articles — **bir** means both **a** and **one**, and there is no word for **the**. English almost always needs **a**, **an**, or **the** before a singular countable noun, and Turkish speakers often drop them.",
+        vi: "Tiếng Thổ Nhĩ Kỳ không có mạo từ — **bir** vừa mang nghĩa **a** vừa mang nghĩa **one**, và không có từ nào tương đương **the**. Tiếng Anh gần như luôn cần **a**, **an**, hoặc **the** trước danh từ đếm được số ít — và người Thổ thường bỏ mất các mạo từ này.",
+        tr: "Türkçede belirteç (article) yoktur — **bir** hem **a** hem **one** anlamına gelir ve **the** için ayrı bir kelime yoktur. İngilizce neredeyse her zaman sayılabilir tekil bir isimden önce **a**, **an** veya **the** gerektirir ve Türkçe konuşanlar bunları sıklıkla atlarlar.",
+  tr_l1_word_order_sov: {
+      tag: "tr_l1_word_order_sov",
+        en: "Word order (SVO)",
+        vi: "Trật tự từ (SVO)",
+        tr: "Kelime sırası (SVO)",
+        en: "Turkish is an SOV language — the verb goes at the end: **Ben çay severim** (I tea like). English follows SVO — **I like tea**. Turkish speakers often place the verb at the end of English sentences, producing **I the film liked** instead of **I liked the film**.",
+        vi: "Tiếng Thổ Nhĩ Kỳ theo cấu trúc SOV — động từ đứng cuối câu: **Ben çay severim** (Tôi trà thích). Tiếng Anh theo cấu trúc SVO — **I like tea**. Người Thổ thường đặt động từ ở cuối câu tiếng Anh, viết **I the film liked** thay vì **I liked the film**.",
+        tr: "Türkçede fiil cümlenin sonunda gelir (Özne-Nesne-Fiil): **Ben çay severim**. İngilizce ise Özne-Fiil-Nesne sırasını takip eder: **I like tea**. Türkçe konuşanlar genellikle fiili İngilizce cümlelerin sonuna koyarak **I the film liked** gibi hatalar yaparlar.",
+      exampleWrong: "I the film liked.",
+      exampleRight: "I liked the film.",
+  tr_l1_missing_be: {
+      tag: "tr_l1_missing_be",
+        tr: 'Eksik "olmak" fiili',
+        en: "Turkish drops the copula in the present tense — **O öğretmen** (She teacher) is a complete sentence with no linking verb. English always needs **am**, **is**, or **are** between a subject and its description: **She is a teacher**.",
+        vi: "Tiếng Thổ Nhĩ Kỳ bỏ động từ nối ở thì hiện tại — **O öğretmen** (Cô ấy giáo viên) là câu hoàn chỉnh không cần động từ. Tiếng Anh luôn cần **am**, **is**, hoặc **are** giữa chủ ngữ và phần mô tả: **She is a teacher**.",
+        tr: "Türkçede şimdiki ve geniş zamanda bildirme ekleri düşer — **O öğretmen** (O bir öğretmendir) tam bir cümledir ve ayrı bir ek fiil gerektirmez. İngilizce ise özne ve yüklem arasında her zaman **am**, **is** veya **are** gerektirir: **She is a teacher**.",
+  tr_c2_inversion_emphasis: {
+      tag: "tr_c2_inversion_emphasis",
+        tr: "Vurgu için devrik yapı",
+        en: "Turkish fronts adverbs without changing word order — **Asla böyle bir manzara görmedim** keeps the subject before the verb. English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversion signals emphasis and formality — a C2 feature that separates proficient from native-like writing.",
+        vi: "Tiếng Thổ Nhĩ Kỳ đưa trạng từ lên đầu mà không đảo trật tự — **Asla böyle bir manzara görmedim** giữ nguyên chủ ngữ trước động từ. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế như **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Đây là kỹ năng C2 phân biệt người thành thạo với người viết như bản ngữ.",
+        tr: "Türkçede zarflar cümle başına geldiğinde kelime sırası değişmez — **Asla böyle bir manzara görmedim** özneyi fiilden önce tutar. İngilizcede **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances** gibi olumsuz/sınırlayıcı zarflardan sonra özne ve yardımcı fiil yer değiştirir. Devrik yapı vurgu ve resmiyet belirtir — C2 seviyesinde yetkin yazarları ayıran bir özelliktir.",
+  tr_c2_register_consistency: {
+      tag: "tr_c2_register_consistency",
+        tr: "Biçem tutarlılığı",
+        en: "Turkish switches between formal and informal registers more freely than English (**siz** → **sen** mid-conversation). In English, mixing **gonna** with **furthermore**, or **kids** with **offspring**, in the same paragraph sounds jarring. C2 writers maintain one register throughout a text.",
+        vi: "Tiếng Thổ Nhĩ Kỳ chuyển giữa văn phong trang trọng và thân mật tự do hơn tiếng Anh (**siz** → **sen** giữa câu chuyện). Trong tiếng Anh, trộn **gonna** với **furthermore**, hoặc **kids** với **offspring**, trong cùng một đoạn nghe rất chói tai. Người viết C2 duy trì một văn phong nhất quán.",
+        tr: "Türkçede resmi ve gayriresmi dil arasında geçiş İngilizceden daha özgürdür (**siz** → **sen** sohbet ortasında). İngilizcede aynı paragrafta **gonna** ile **furthermore**'u veya **kids** ile **offspring**'i karıştırmak kulağa rahatsız edici gelir. C2 yazarları metin boyunca tek bir biçemi korur.",
 };
 
 /** Ordered list of all tags (stable for tests + exhaustiveness checks). */

@@ -6525,6 +6525,270 @@
           }
         }
       ]
+    },
+    {
+      "tag": "tr_l1_missing_article",
+      "title": {
+        "en": "**a / an / the** — words Turkish doesn't have",
+        "vi": "**a / an / the** — những từ tiếng Thổ Nhĩ Kỳ không có",
+        "tr": "**a / an / the** — Türkçede olmayan sözcükler"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"I have car.\" \"She is teacher.\" \"Please open door.\" Every Turkish learner of English says these. In Turkish, **Arabam var**, **O öğretmen**, and **Kapıyı açar mısın?** are perfectly complete — no article needed. But English insists on small words before nouns, and dropping them sounds like a telegram.",
+          "vi": "\"I have car.\" \"She is teacher.\" \"Please open door.\" Bạn học nói tiếng Thổ Nhĩ Kỳ nào cũng nói thế. Trong tiếng Thổ, **Arabam var**, **O öğretmen**, **Kapıyı açar mısın?** hoàn toàn đủ nghĩa — không cần mạo từ. Nhưng tiếng Anh bắt buộc phải có những từ nhỏ trước danh từ, và bỏ chúng đi nghe như điện tín.",
+          "tr": "\"I have car.\" \"She is teacher.\" \"Please open door.\" Her Türk İngilizce öğrencisi bunları söyler. Türkçede **Arabam var**, **O öğretmen** ve **Kapıyı açar mısın?** tamamen doğaldır — belirteç gerekmez. Ama İngilizce isimlerden önce küçük sözcükler ister ve bunları atmak telgraf gibi gelir."
+        },
+        "why": {
+          "en": "Turkish has no definite or indefinite articles. **Bir** means both **a** and **one** — not a mandatory article. For **the**, there simply is no word. English is the opposite: **a**, **an**, or **the** is required before most singular countable nouns. Every time you say **car**, English asks: which car? Any car? The car? The choice is grammar, not optional.",
+          "vi": "Tiếng Thổ Nhĩ Kỳ không có mạo từ xác định hay bất định. **Bir** vừa mang nghĩa **a** vừa mang nghĩa **one** — không phải mạo từ bắt buộc. Còn **the** thì đơn giản không có từ tương đương. Tiếng Anh ngược lại: cần **a**, **an**, hoặc **the** trước hầu hết danh từ đếm được số ít. Mỗi lần bạn nói **car**, tiếng Anh hỏi: chiếc xe nào? Xe nào cũng được? Cái xe đó? Đó là ngữ pháp, không phải tùy chọn.",
+          "tr": "Türkçede belirli veya belirsiz artikel yoktur. **Bir** hem **a** hem **one** anlamına gelir — zorunlu bir belirteç değildir. **The** içinse hiçbir karşılık yoktur. İngilizcede ise çoğu sayılabilir tekil isimden önce **a**, **an** veya **the** gereklidir. Ne zaman **car** deseniz, İngilizce sorar: hangi araba? Herhangi bir araba mı? O araba mı? Seçim dilbilgiseldir, isteğe bağlı değil."
+        },
+        "pattern": {
+          "en": "**a/an** = any one, not specific (first mention, general). **A dog barked.** (any dog). **An apple a day.** **The** = a specific one (already known, unique, defined). **The dog that barked is mine.** (that specific dog). **No article**: plural generics (**Dogs are loyal.**), uncountable generics (**Water is life.**), proper nouns (**Turkey**, **Ali**), meals, and some fixed expressions. **Key rule**: If you can replace it with **bir**, think **a/an**. If it's specific and known, think **the**.",
+          "vi": "**a/an** = một, bất kỳ, không cụ thể (nhắc lần đầu, chung chung). **A dog barked.** (con chó nào đó). **An apple a day.** **The** = một cụ thể (đã biết, duy nhất, đã xác định). **The dog that barked is mine.** (con chó cụ thể đó). **Không mạo từ**: số nhiều chung chung (**Dogs are loyal.**), không đếm được chung chung (**Water is life.**), danh từ riêng (**Turkey**, **Ali**), bữa ăn, và một số cụm cố định. **Quy tắc chính**: Nếu có thể thay bằng **bir**, nghĩ tới **a/an**. Nếu cụ thể và đã biết, nghĩ tới **the**.",
+          "tr": "**a/an** = herhangi biri, belirli değil (ilk bahsedilen, genel). **A dog barked.** (herhangi bir köpek). **An apple a day.** **The** = belirli olan (zaten bilinen, benzersiz, tanımlanmış). **The dog that barked is mine.** (o belirli köpek). **Artikelsiz**: genel çoğullar (**Dogs are loyal.**), genel sayılamazlar (**Water is life.**), özel isimler (**Turkey**, **Ali**), yemekler ve bazı kalıp ifadeler. **Kural**: Eğer **bir** koyabiliyorsanız, **a/an** düşünün. Belirli ve biliniyorsa, **the** düşünün."
+        },
+        "practice": {
+          "en": "Say each aloud and feel where the article lands: \"I have **a** car.\" \"She is **a** teacher.\" \"Please open **the** door.\" \"**The** sun rises in **the** east.\" \"I ate **an** apple.\" \"**The** apples I bought are sweet.\" Now try without: \"I like apples.\" (plural, general — no article). \"Life is beautiful.\" (abstract — no article). Feel the pattern: first mention → **a/an**, known/unique → **the**, general/abstract → nothing.",
+          "vi": "Nói thành tiếng và cảm nhận vị trí của mạo từ: \"I have **a** car.\" \"She is **a** teacher.\" \"Please open **the** door.\" \"**The** sun rises in **the** east.\" \"I ate **an** apple.\" \"**The** apples I bought are sweet.\" Giờ thử không có mạo từ: \"I like apples.\" (số nhiều, chung chung — không mạo từ). \"Life is beautiful.\" (trừu tượng — không mạo từ). Cảm nhận quy tắc: lần đầu → **a/an**, đã biết/duy nhất → **the**, chung chung/trừu tượng → không có gì.",
+          "tr": "Her birini sesli söyleyin ve artikelın nereye geldiğini hissedin: \"I have **a** car.\" \"She is **a** teacher.\" \"Please open **the** door.\" \"**The** sun rises in **the** east.\" \"I ate **an** apple.\" \"**The** apples I bought are sweet.\" Şimdi artikelsiz deneyin: \"I like apples.\" (çoğul, genel — artikel yok). \"Life is beautiful.\" (soyut — artikel yok). Kalıbı hissedin: ilk bahsetme → **a/an**, bilinen/benzersiz → **the**, genel/soyut → hiçbir şey."
+        },
+        "takeaway": {
+          "en": "Turkish has no articles — but English has three. Every noun needs a decision: **a/an**? **the**? Or nothing? Learn each noun with its article as one piece.",
+          "vi": "Tiếng Thổ không có mạo từ — nhưng tiếng Anh có ba. Mỗi danh từ cần một quyết định: **a/an**? **the**? Hay không gì cả? Học mỗi danh từ cùng với mạo từ của nó như một khối.",
+          "tr": "Türkçede artikel yoktur — ama İngilizcede üç tane var. Her isim bir karar gerektirir: **a/an**? **the**? Yoksa hiçbiri mi? Her ismi artikelıyla birlikte tek parça olarak öğrenin."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "tr": "Doğru cümleyi seçin:"
+          },
+          "options": [
+            "I have car.",
+            "I have a car.",
+            "I have the car.",
+            "I have one the car."
+          ],
+          "correctAnswer": "I have a car.",
+          "explanation": {
+            "en": "First mention — not a specific car → **a car**.",
+            "vi": "Nhắc lần đầu — không phải xe cụ thể → **a car**.",
+            "tr": "İlk bahsedilen — belirli bir araba değil → **a car**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: Please open ___ door. (the door is right here)",
+            "vi": "Điền vào chỗ trống: Please open ___ door. (cửa ở ngay đây)",
+            "tr": "Boşluğu doldurun: Please open ___ door. (kapı tam burada)"
+          },
+          "options": [
+            "a",
+            "an",
+            "the",
+            "(nothing)"
+          ],
+          "correctAnswer": "the",
+          "explanation": {
+            "en": "The door is right here — specific and known → **the**.",
+            "vi": "Cánh cửa ở ngay đây — cụ thể và đã biết → **the**.",
+            "tr": "Kapı tam burada — belirli ve biliniyor → **the**."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence (general statement):",
+            "vi": "Chọn câu đúng (câu chung chung):",
+            "tr": "Doğru cümleyi seçin (genel ifade):"
+          },
+          "options": [
+            "The dogs are loyal.",
+            "A dogs are loyal.",
+            "Dogs are loyal.",
+            "An dogs are loyal."
+          ],
+          "correctAnswer": "Dogs are loyal.",
+          "explanation": {
+            "en": "General statement about all dogs → no article, just **Dogs**.",
+            "vi": "Câu chung chung về tất cả loài chó → không mạo từ, chỉ **Dogs**.",
+            "tr": "Tüm köpekler hakkında genel ifade → artikel yok, sadece **Dogs**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: I ate ___ apple for breakfast.",
+            "vi": "Điền vào chỗ trống: I ate ___ apple for breakfast.",
+            "tr": "Boşluğu doldurun: I ate ___ apple for breakfast."
+          },
+          "options": [
+            "a",
+            "an",
+            "the",
+            "(nothing)"
+          ],
+          "correctAnswer": "an",
+          "explanation": {
+            "en": "**Apple** starts with a vowel sound → **an**.",
+            "vi": "**Apple** bắt đầu bằng nguyên âm → **an**.",
+            "tr": "**Apple** sesli harfle başlıyor → **an**."
+          }
+        },
+        {
+          "question": {
+            "en": "Which sentence is correct?",
+            "vi": "Câu nào đúng?",
+            "tr": "Hangi cümle doğru?"
+          },
+          "options": [
+            "The sun rises in east.",
+            "The sun rises in the east.",
+            "A sun rises in the east.",
+            "Sun rises in an east."
+          ],
+          "correctAnswer": "The sun rises in the east.",
+          "explanation": {
+            "en": "The sun and the east are unique → **the**.",
+            "vi": "Mặt trời và phía đông là duy nhất → **the**.",
+            "tr": "Güneş ve doğu benzersizdir → **the**."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "tr_l1_missing_be",
+      "title": {
+        "en": "Don't drop **am / is / are** — Turkish doesn't need it, English does",
+        "vi": "Đừng bỏ **am / is / are** — tiếng Thổ không cần, tiếng Anh thì có",
+        "tr": "**am / is / are**'yi atmayın — Türkçe gerektirmez, İngilizce gerektirir"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"She a teacher.\" \"I tired.\" \"My parents at home.\" In Turkish, these are complete: **O öğretmen**, **Yorgunum**, **Annem babam evde**. No linking verb needed. But English demands **am / is / are** between a subject and its description — no exceptions.",
+          "vi": "\"She a teacher.\" \"I tired.\" \"My parents at home.\" Trong tiếng Thổ, các câu này đã hoàn chỉnh: **O öğretmen**, **Yorgunum**, **Annem babam evde**. Không cần động từ nối. Nhưng tiếng Anh bắt buộc phải có **am / is / are** giữa chủ ngữ và phần mô tả — không ngoại lệ.",
+          "tr": "\"She a teacher.\" \"I tired.\" \"My parents at home.\" Türkçede bunlar tam cümledir: **O öğretmen**, **Yorgunum**, **Annem babam evde**. Ek fiil gerekmez. Ama İngilizce özne ve yüklem arasında **am / is / are** ister — istisnasız."
+        },
+        "why": {
+          "en": "Turkish doesn't use a copula in the present tense. **Güzel** means both \"beautiful\" and \"is beautiful\". **Yorgunum** is a single word meaning \"I am tired\". English works completely differently: the verb **to be** (am/is/are/was/were) is required before every adjective, noun, or place description. Your Turkish brain will tell you to skip it — fight that instinct every time.",
+          "vi": "Tiếng Thổ Nhĩ Kỳ không dùng động từ nối ở thì hiện tại. **Güzel** vừa có nghĩa \"đẹp\" vừa có nghĩa \"là đẹp\". **Yorgunum** là một từ duy nhất nghĩa là \"tôi mệt\". Tiếng Anh hoàn toàn khác: động từ **to be** (am/is/are/was/were) là bắt buộc trước mọi tính từ, danh từ, hoặc mô tả vị trí. Não tiếng Thổ của bạn sẽ bảo bỏ qua — hãy chống lại bản năng đó mỗi lần.",
+          "tr": "Türkçede şimdiki ve geniş zamanda ek fiil (copula) kullanılmaz. **Güzel** hem \"beautiful\" hem \"is beautiful\" anlamına gelir. **Yorgunum** tek bir kelime olarak \"I am tired\" demektir. İngilizce tamamen farklı çalışır: **to be** fiili (am/is/are/was/were) her sıfat, isim veya yer tanımından önce gereklidir. Türkçe beyniniz bunu atlamanızı söyleyecek — her seferinde bu içgüdüye karşı koyun."
+        },
+        "pattern": {
+          "en": "**Subject + am/is/are + description.** Present: **I → am**, **you/we/they → are**, **he/she/it → is**. Past: **I/he/she/it → was**, **you/we/they → were**. Always add **be** when the sentence has no other action verb. \"I tall\" → **I am tall**. \"She teacher\" → **She is a teacher**. \"They home\" → **They are at home**. \"It cold yesterday\" → **It was cold yesterday**.",
+          "vi": "**Chủ ngữ + am/is/are + mô tả.** Hiện tại: **I → am**, **you/we/they → are**, **he/she/it → is**. Quá khứ: **I/he/she/it → was**, **you/we/they → were**. Luôn thêm **be** khi câu không có động từ hành động. \"I tall\" → **I am tall**. \"She teacher\" → **She is a teacher**. \"They home\" → **They are at home**. \"It cold yesterday\" → **It was cold yesterday**.",
+          "tr": "**Özne + am/is/are + tanım.** Şimdiki/geniş zaman: **I → am**, **you/we/they → are**, **he/she/it → is**. Geçmiş: **I/he/she/it → was**, **you/we/they → were**. Cümlede başka bir eylem fiili yoksa her zaman **be** ekleyin. \"I tall\" → **I am tall**. \"She teacher\" → **She is a teacher**. \"They home\" → **They are at home**. \"It cold yesterday\" → **It was cold yesterday**."
+        },
+        "practice": {
+          "en": "Say each one aloud and feel the **am / is / are** sitting in the middle: \"I am a student.\" \"She is a doctor.\" \"They are at school.\" \"The weather is nice today.\" \"I am Turkish.\" \"You are right.\" \"We are friends.\" Now try the past: \"It was cold yesterday.\" \"They were at home last night.\" The **be** verb is never optional — if you hear yourself drop it, stop and add it back.",
+          "vi": "Nói thành tiếng và cảm nhận **am / is / are** nằm giữa câu: \"I am a student.\" \"She is a doctor.\" \"They are at school.\" \"The weather is nice today.\" \"I am Turkish.\" \"You are right.\" \"We are friends.\" Giờ thử quá khứ: \"It was cold yesterday.\" \"They were at home last night.\" Động từ **be** không bao giờ là tùy chọn — nếu nghe mình bỏ nó, dừng lại và thêm vào.",
+          "tr": "Her birini sesli söyleyin ve **am / is / are**'nin ortada durduğunu hissedin: \"I am a student.\" \"She is a doctor.\" \"They are at school.\" \"The weather is nice today.\" \"I am Turkish.\" \"You are right.\" \"We are friends.\" Şimdi geçmişi deneyin: \"It was cold yesterday.\" \"They were at home last night.\" **Be** fiili asla isteğe bağlı değildir — onu atladığınızı duyarsanız durun ve geri ekleyin."
+        },
+        "takeaway": {
+          "en": "Turkish can skip **is** — English never can. If your sentence has no action verb, add **am / is / are / was / were**. No exceptions.",
+          "vi": "Tiếng Thổ có thể bỏ **is** — tiếng Anh không bao giờ. Nếu câu không có động từ hành động, hãy thêm **am / is / are / was / were**. Không ngoại lệ.",
+          "tr": "Türkçe **is**'i atlayabilir — İngilizce asla atlayamaz. Cümlenizde eylem fiili yoksa, **am / is / are / was / were** ekleyin. İstisnasız."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "tr": "Doğru cümleyi seçin:"
+          },
+          "options": [
+            "She a teacher.",
+            "She is a teacher.",
+            "She are a teacher.",
+            "She be a teacher."
+          ],
+          "correctAnswer": "She is a teacher.",
+          "explanation": {
+            "en": "**She** (third person singular) → **is**.",
+            "vi": "**She** (ngôi thứ ba số ít) → **is**.",
+            "tr": "**She** (üçüncü tekil şahıs) → **is**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: I ___ tired today.",
+            "vi": "Điền vào chỗ trống: I ___ tired today.",
+            "tr": "Boşluğu doldurun: I ___ tired today."
+          },
+          "options": [
+            "am",
+            "is",
+            "are",
+            "be"
+          ],
+          "correctAnswer": "am",
+          "explanation": {
+            "en": "**I** always pairs with **am** in the present.",
+            "vi": "**I** luôn đi với **am** ở hiện tại.",
+            "tr": "**I** her zaman şimdiki zamanda **am** ile kullanılır."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: My parents ___ at home.",
+            "vi": "Điền vào chỗ trống: My parents ___ at home.",
+            "tr": "Boşluğu doldurun: My parents ___ at home."
+          },
+          "options": [
+            "am",
+            "is",
+            "are",
+            "be"
+          ],
+          "correctAnswer": "are",
+          "explanation": {
+            "en": "**My parents** = **they** → **are**.",
+            "vi": "**My parents** = **they** → **are**.",
+            "tr": "**My parents** = **they** → **are**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank (past): The weather ___ cold yesterday.",
+            "vi": "Điền vào chỗ trống (quá khứ): The weather ___ cold yesterday.",
+            "tr": "Boşluğu doldurun (geçmiş): The weather ___ cold yesterday."
+          },
+          "options": [
+            "is",
+            "are",
+            "was",
+            "were"
+          ],
+          "correctAnswer": "was",
+          "explanation": {
+            "en": "**The weather** = **it** → past form **was**.",
+            "vi": "**The weather** = **it** → quá khứ là **was**.",
+            "tr": "**The weather** = **it** → geçmiş hali **was**."
+          }
+        },
+        {
+          "question": {
+            "en": "Which sentence is correct?",
+            "vi": "Câu nào đúng?",
+            "tr": "Hangi cümle doğru?"
+          },
+          "options": [
+            "We happy for you.",
+            "We are happy for you.",
+            "We is happy for you.",
+            "We be happy for you."
+          ],
+          "correctAnswer": "We are happy for you.",
+          "explanation": {
+            "en": "**We** → **are**. No action verb → **be** is required.",
+            "vi": "**We** → **are**. Không có động từ hành động → cần **be**.",
+            "tr": "**We** → **are**. Eylem fiili yok → **be** gereklidir."
+          }
+        }
+      ]
     }
   ]
 }

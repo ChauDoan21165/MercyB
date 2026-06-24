@@ -2,6 +2,10 @@
 //
 // Validates the hand-authored RichLesson pilot bundle. CI guards their
 // shape so future authoring rounds can't silently drift away from the schema.
+// Validates the hand-authored RichLesson pilot bundle. Twenty concrete
+// lessons covering Vietnamese, Indonesian, and Turkish L1 transfer +
+// C2 mastery patterns. CI guards their shape so future authoring rounds
+// can't silently drift away from the schema.
 
 import { describe, expect, it } from "vitest";
 
@@ -45,6 +49,8 @@ const EXPECTED_PILOT_TAGS = [
   "pt_l1_double_negative",
   "pt_l1_present_perfect_vs_past",
   "pt_l1_subject_pronoun_drop",
+  "tr_l1_missing_article",
+  "tr_l1_missing_be",
   "vi_l1_3rd_person_s",
   "vi_l1_adjective_order",
   "vi_l1_conditional_mix",
