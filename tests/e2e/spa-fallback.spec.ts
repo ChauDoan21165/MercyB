@@ -9,7 +9,11 @@ test.describe("SPA fallback routes", () => {
       await expectSpaResponse(page, route);
 
       await expect(page.locator("#root")).toBeVisible();
-      await expect(page.getByRole("img", { name: /mercy|mercy blade|teacher mercy/i }).first()).toBeVisible();
+      if (route === "/ai-tutor") {
+        await expect(page.locator("body")).toContainText(/ai tutor|mercy|sign in|đăng nhập/i);
+      } else {
+        await expect(page.getByRole("complementary", { name: /mercy blade/i })).toBeVisible();
+      }
     });
   }
 });

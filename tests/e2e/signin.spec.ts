@@ -5,7 +5,7 @@ test.describe("sign-in page", () => {
   test("renders email, password, Google, and Facebook sign-in controls", async ({ page }) => {
     await expectSpaResponse(page, "/signin");
 
-    await expect(page.getByLabel("Email")).toBeVisible();
+    await expect(page.getByRole("textbox", { name: /^Email$/ })).toBeVisible();
     await expect(page.getByRole("button", { name: /google/i })).toBeVisible();
     await expect(page.getByRole("button", { name: /facebook/i })).toBeVisible();
 
