@@ -143,6 +143,17 @@ export type WeaknessTag =
   | "ja_c2_cleft_focus"
   | "ja_c2_register_consistency"
   | "ja_c2_hedging_academic";
+  // Korean-native English weakness tags
+  | "ko_l1_3rd_person_s"
+  | "ko_l1_missing_article"
+  | "ko_l1_missing_be"
+  | "ko_l1_plural_s"
+  | "ko_l1_preposition_transfer"
+  | "ko_l1_present_perfect_vs_past"
+  | "ko_c2_inversion_emphasis"
+  | "ko_c2_cleft_focus"
+  | "ko_c2_mixed_conditional"
+  | "ko_c2_register_consistency";
 
 export type BilingualText = {
   /** English surface — may contain `**word**` markdown bolding. */
@@ -161,6 +172,8 @@ export type BilingualText = {
   hi?: string;
   /** Urdu-native English explanation — optional, for ur-native learners. */
   ur?: string;
+  /** Korean-native English explanation — optional, for ko-native learners. */
+  ko?: string;
 };
 
 export type WeaknessEntry = {
@@ -1738,6 +1751,83 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
         ja: "日本語の学術文章にも緩和表現の慣習があります（〜と考えられる、〜と思われる）が、英語への文体マッピングは正確ではありません。日本語話者は、英語の学術文章で主張を直接的に述べすぎたり（日本語の学術助詞が伝える確実性を映して）、逆に tentative な表現を過剰に使ってしまうことがあります。C2レベルでは、**this suggests that…**、**it could be argued that…**、**the data appear to indicate…** など、いつどのように緩和表現を使うかを知ることが、文法知識と同じくらい重要です。",
       exampleWrong: "This experiment proves that the hypothesis is correct.",
       exampleRight: "The results of this experiment suggest that the hypothesis may be correct.",
+  // ── Korean-native English ────────────────────────────────────────────
+  ko_l1_3rd_person_s: {
+      tag: "ko_l1_3rd_person_s",
+        ko: "주어-동사 수일치",
+        en: "Korean verbs don't change form for person — **가다** stays the same for I, you, he, she. English adds **-s** when the subject is **he**, **she**, or **it**: **she goes**, **he eats**. Forgetting this **-s** is the most common A1 error for Korean learners.",
+        vi: "Động từ tiếng Hàn không thay đổi theo ngôi — **가다** giữ nguyên cho tôi, bạn, anh ấy, cô ấy. Tiếng Anh thêm **-s** khi chủ ngữ là **he**, **she**, **it**: **she goes**, **he eats**. Quên **-s** này là lỗi A1 phổ biến nhất của người Hàn.",
+        ko: "한국어 동사는 주어에 따라 형태가 변하지 않습니다 — **가다**는 나, 너, 그, 그녀 모두에 그대로 쓰입니다. 하지만 영어는 주어가 **he**, **she**, **it**일 때 동사에 **-s**를 붙입니다: **she goes**, **he eats**. 이 **-s**를 빼먹는 것이 한국인 학습자가 가장 흔히 하는 A1 수준의 실수입니다.",
+  ko_l1_missing_article: {
+      tag: "ko_l1_missing_article",
+        ko: "관사 **a / an / the**",
+        en: "Korean has no articles — **책** can mean 'book' or 'a book' or 'the book.' English almost always marks singular countable nouns with **a**, **an**, or **the**. Korean learners frequently drop them because the concept doesn't exist in the native language.",
+        vi: "Tiếng Hàn không có mạo từ — **책** có thể là 'book' hoặc 'a book' hoặc 'the book.' Tiếng Anh gần như luôn đánh dấu danh từ đếm được số ít bằng **a**, **an** hoặc **the**. Người Hàn thường bỏ mạo từ vì khái niệm này không tồn tại trong tiếng mẹ đẻ.",
+        ko: "한국어에는 관사가 없습니다 — **책** 하나로 'book', 'a book', 'the book'을 모두 표현할 수 있습니다. 하지만 영어는 셀 수 있는 단수 명사 앞에 거의 항상 **a**, **an**, **the**를 붙여야 합니다. 한국인 학습자는 모국어에 없는 개념이기 때문에 관사를 자주 빼먹습니다.",
+      exampleWrong: "I have car.",
+      exampleRight: "I have a car.",
+  ko_l1_missing_be: {
+      tag: "ko_l1_missing_be",
+        en: "Missing **to be**",
+        vi: "Thiếu động từ **to be**",
+        ko: "**be동사** 누락",
+        en: "Korean can form a complete sentence with a noun + **이다** pattern — **나는 학생** is natural without an explicit 'is.' English always needs a form of **be**: **I am a student**. Korean learners often say 'She busy' instead of 'She is busy.'",
+        vi: "Tiếng Hàn có thể tạo câu hoàn chỉnh với danh từ + **이다** — **나는 학생** là tự nhiên mà không cần 'is' rõ ràng. Tiếng Anh luôn cần một dạng của **be**: **I am a student**. Người Hàn thường nói 'She busy' thay vì 'She is busy'.",
+        ko: "한국어는 명사 + **이다** 패턴으로 완전한 문장을 만들 수 있습니다 — **나는 학생**이라고 해도 'is' 없이 자연스럽습니다. 하지만 영어는 항상 **be동사**가 필요합니다: **I am a student**. 한국인 학습자는 'She busy'처럼 **be동사**를 빼고 말하는 경우가 많습니다.",
+      exampleWrong: "She a teacher.",
+      exampleRight: "She is a teacher.",
+  ko_l1_plural_s: {
+      tag: "ko_l1_plural_s",
+        ko: "복수 명사에 **-s** 붙이기",
+        en: "Korean doesn't require plural marking when context makes the number clear — **책 세 권** (three book) has no plural marker on the noun. English adds **-s** to most countable nouns when there's more than one: **book → books**. Korean learners often skip the plural **-s**.",
+        vi: "Tiếng Hàn không bắt buộc đánh dấu số nhiều khi ngữ cảnh đã rõ số lượng — **책 세 권** (ba sách) không có dấu số nhiều trên danh từ. Tiếng Anh thêm **-s** vào hầu hết danh từ đếm được khi nhiều hơn một: **book → books**. Người Hàn thường bỏ **-s** số nhiều.",
+        ko: "한국어는 문맥상 수가 분명하면 복수 표시를 하지 않아도 됩니다 — **책 세 권**에서 명사 '책' 자체에는 복수 표시가 없습니다. 하지만 영어는 하나 이상일 때 대부분의 셀 수 있는 명사에 **-s**를 붙입니다: **book → books**. 한국인 학습자는 이 복수 **-s**를 자주 빼먹습니다.",
+      exampleWrong: "I have two book.",
+      exampleRight: "I have two books.",
+  ko_l1_preposition_transfer: {
+      tag: "ko_l1_preposition_transfer",
+        ko: "전치사 **in / on / at**",
+        en: "Korean uses particles — **에** and **에서** — attached to nouns to show location and time. English uses separate prepositions **in**, **on**, **at** with specific patterns that don't map neatly from Korean. The **에** particle alone maps to all three English prepositions depending on context, which causes confusion.",
+        vi: "Tiếng Hàn dùng tiểu từ — **에** và **에서** — gắn vào danh từ để chỉ vị trí và thời gian. Tiếng Anh dùng các giới từ riêng **in**, **on**, **at** với quy tắc cụ thể không khớp hoàn toàn với tiếng Hàn. Riêng tiểu từ **에** có thể tương ứng với cả ba giới từ tiếng Anh tùy theo ngữ cảnh, gây nhầm lẫn.",
+        ko: "한국어는 조사 — **에**와 **에서** — 를 명사에 붙여 위치와 시간을 나타냅니다. 영어는 **in**, **on**, **at**이라는 별도의 전치사를 쓰는데, 한국어 조사와 일대일로 대응되지 않습니다. 특히 조사 **에** 하나로 영어 전치사 세 개를 모두 표현할 수 있어서 한국인 학습자에게 혼란을 줍니다.",
+      exampleWrong: "I will see you in Monday.",
+      exampleRight: "I will see you on Monday.",
+  ko_l1_present_perfect_vs_past: {
+      tag: "ko_l1_present_perfect_vs_past",
+        ko: "현재완료 vs 과거시제",
+        en: "Korean uses **-었다/았다** for all completed actions regardless of relevance — the same past suffix covers 'I ate' and 'I have eaten.' English splits them: use **simple past** when a specific past time is named (**yesterday**, **last week**), and **present perfect** when the past action still matters now and no specific time is given.",
+        vi: "Tiếng Hàn dùng **-었다/았다** cho mọi hành động đã hoàn thành bất kể mức độ liên quan — cùng một đuôi quá khứ cho cả 'I ate' và 'I have eaten.' Tiếng Anh phân biệt: dùng **simple past** khi có thời gian cụ thể, và **present perfect** khi hành động quá khứ vẫn còn ảnh hưởng đến hiện tại.",
+        ko: "한국어는 과거의 모든 동작을 **-었다/았다**로 표현합니다 — 'I ate'와 'I have eaten'을 구분하지 않고 같은 과거형을 씁니다. 하지만 영어는 특정 과거 시점(**yesterday**, **last week**)이 있으면 **단순과거(simple past)**를 쓰고, 과거의 일이 지금도 영향을 미치며 특정 시점이 언급되지 않으면 **현재완료(present perfect)**를 씁니다.",
+  ko_c2_inversion_emphasis: {
+      tag: "ko_c2_inversion_emphasis",
+        ko: "도치를 이용한 강조",
+        en: "Korean places adverbs freely without changing word order — **결코 나는 본 적이 없다** keeps subject-verb intact. English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**. Inversion signals emphasis and formality — a C2 feature that separates proficient from native-like writing.",
+        vi: "Tiếng Hàn đặt trạng từ tự do mà không đảo trật tự từ — **결코 나는 본 적이 없다** giữ nguyên chủ ngữ-động từ. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — kỹ năng cấp C2.",
+        ko: "한국어는 부사를 자유롭게 두면서도 어순이 바뀌지 않습니다 — **결코 나는 본 적이 없다**에서 주어-동사 순서는 그대로입니다. 하지만 영어는 **never**, **rarely**, **not only** 같은 부정/제한 부사가 문두에 오면 주어와 조동사의 순서를 뒤집습니다. 이런 도치는 강조와 격식을 나타내며, 유창함과 원어민 수준의 글쓰기를 가르는 C2 수준의 기술입니다.",
+      exampleWrong: "Never I have seen such dedication.",
+      exampleRight: "Never have I seen such dedication.",
+  ko_c2_cleft_focus: {
+      tag: "ko_c2_cleft_focus",
+        ko: "분열문으로 초점 맞추기",
+        en: "Korean uses **은/는** and **이/가** particles to mark focus — **존이 창문을 깼어요** (It was John who broke the window). English uses cleft sentences: **It-clefts** (**It was John who broke the window**) and **Wh-clefts** (**What I need is more time**). At C2, choosing the right cleft structure controls what the reader notices first.",
+        vi: "Tiếng Hàn dùng tiểu từ **은/는** và **이/가** để đánh dấu trọng tâm. Tiếng Anh dùng câu chẻ: **It-cleft** và **Wh-cleft**. Ở cấp C2, chọn đúng cấu trúc cleft kiểm soát điều người đọc chú ý đầu tiên.",
+        ko: "한국어는 **은/는**과 **이/가** 조사로 초점을 표시합니다 — **존이 창문을 깼어요**에서 '존'에 초점이 있습니다. 영어는 분열문을 사용합니다: **It-cleft**(**It was John who broke the window**)와 **Wh-cleft**(**What I need is more time**). C2 수준에서 적절한 분열문을 선택하면 독자가 가장 먼저 주목하는 부분을 정확히 통제할 수 있습니다.",
+  ko_c2_mixed_conditional: {
+      tag: "ko_c2_mixed_conditional",
+        en: "Mixed conditionals",
+        vi: "Câu điều kiện hỗn hợp",
+        ko: "혼합 가정문",
+        en: "Korean expresses hypotheticals with **-았/었다면** without distinguishing time-mix. English mixed conditionals combine past condition with present result (**If I had studied, I would be a doctor now**) or present condition with past result (**If I were taller, I would have joined the team**). Matching the tense pair correctly is a C2 hallmark.",
+        vi: "Tiếng Hàn diễn tả giả định với **-았/었다면** mà không phân biệt hỗn hợp thời gian. Câu điều kiện hỗn hợp tiếng Anh kết hợp điều kiện quá khứ với kết quả hiện tại hoặc ngược lại. Ghép đúng cặp thì là dấu ấn C2.",
+        ko: "한국어는 **-았/었다면**으로 가정을 표현하며 시간의 혼합을 따로 구분하지 않습니다. 하지만 영어의 혼합 가정문은 과거 조건과 현재 결과(**If I had studied, I would be a doctor now**) 또는 현재 조건과 과거 결과(**If I were taller, I would have joined the team**)를 결합합니다. 시제 쌍을 정확히 맞추는 것은 C2 수준의 특징입니다.",
+      exampleWrong: "If I had studied harder at school, I will be a doctor now.",
+      exampleRight: "If I had studied harder at school, I would be a doctor now.",
+  ko_c2_register_consistency: {
+      tag: "ko_c2_register_consistency",
+        ko: "격식체 일관성 유지",
+        en: "Korean has a grammatically marked honorific system (해요체/해체/합쇼체) that forces register choices at every sentence. English relies on vocabulary and structure — mixing **gonna** with **furthermore**, or **kids** with **offspring**, in the same paragraph sounds jarring. C2 writers maintain one register throughout a text.",
+        vi: "Tiếng Hàn có hệ thống kính ngữ được đánh dấu ngữ pháp bắt buộc chọn văn phong từng câu. Tiếng Anh dựa vào từ vựng và cấu trúc — pha trộn **gonna** với **furthermore** trong cùng đoạn văn nghe rất chói tai. Người viết C2 duy trì một văn phong nhất quán.",
+        ko: "한국어는 문법적으로 표시되는 높임말 체계(해요체/해체/합쇼체)가 있어 모든 문장에서 격식 수준을 선택해야 합니다. 반면 영어는 어휘와 구조에 의존합니다 — 같은 문단에서 **gonna**와 **furthermore**를 섞어 쓰거나 **kids**와 **offspring**을 혼용하면 어색하게 들립니다. C2 작가는 전체 글에서 일관된 격식체를 유지합니다.",
 };
 
 /** Ordered list of all tags (stable for tests + exhaustiveness checks). */

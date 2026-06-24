@@ -39,6 +39,8 @@ export interface RichLessonSection {
   hi?: string;
   /** Optional Urdu-native English explanation — for ur-native learners. */
   ur?: string;
+  /** Optional Korean-native English explanation — for ko-native learners. */
+  ko?: string;
 }
 
 export interface RichLessonSections {

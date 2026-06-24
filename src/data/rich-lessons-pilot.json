@@ -4550,6 +4550,666 @@
           }
         }
       ]
+    },
+    {
+      "tag": "ko_l1_3rd_person_s",
+      "title": {
+        "en": "**He goes** not **he go** — matching the subject and verb",
+        "vi": "**He goes** chứ không phải **he go** — chia động từ theo chủ ngữ",
+        "ko": "**He goes** vs **he go** — 주어에 맞는 동사 형태"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"She go to school every day.\" This sounds natural to a Korean ear because **그녀는 매일 학교에 가요** doesn't change the verb **가다** for any person. The subject changes? The verb stays the same. But English adds **-s** to the verb when **he**, **she**, or **it** does the action.",
+          "vi": "\"She go to school every day.\" Câu này nghe tự nhiên với người Hàn vì **그녀는 매일 학교에 가요** không đổi động từ **가다** theo bất kỳ ngôi nào. Chủ ngữ thay đổi? Động từ vẫn giữ nguyên. Nhưng tiếng Anh thêm **-s** vào động từ khi chủ ngữ là **he**, **she**, **it**.",
+          "ko": "\"She go to school every day.\" 한국인 귀에는 이 말이 자연스럽게 들립니다. 왜냐하면 **그녀는 매일 학교에 가요**에서 주어가 누구든 동사 **가다**의 형태는 변하지 않기 때문입니다. 하지만 영어는 주어가 **he**, **she**, **it**일 때 동사에 **-s**를 붙여야 합니다."
+        },
+        "why": {
+          "en": "Korean verbs are invariable for person — **가다** (to go) works for I go, you go, he goes, she goes, they go. The same form covers everyone. English forces a choice: when the subject is third-person singular (he, she, it, the teacher, the dog), the verb takes **-s**. This isn't a small decoration — it's a required part of the grammar. Leaving it out sounds like a basic-level mistake to native speakers.",
+          "vi": "Động từ tiếng Hàn không thay đổi theo ngôi — **가다** (đi) dùng cho tôi đi, bạn đi, anh ấy đi, cô ấy đi, họ đi. Cùng một dạng cho mọi người. Tiếng Anh buộc phải chọn: khi chủ ngữ là ngôi thứ ba số ít (he, she, it, the teacher, the dog), động từ thêm **-s**. Đây không phải trang trí — đó là quy tắc ngữ pháp bắt buộc.",
+          "ko": "한국어 동사는 주어의 인칭에 따라 형태가 변하지 않습니다 — **가다**는 '나는 간다', '너는 간다', '그는 간다', '그녀는 간다', '그들은 간다' 모두에 동일하게 쓰입니다. 하지만 영어는 주어가 3인칭 단수(he, she, it, 선생님, 개)일 때 동사에 **-s**를 붙여야 합니다. 이는 단순한 장식이 아니라 필수 문법 규칙입니다. 이를 생략하면 원어민에게 기초 수준의 실수로 들립니다."
+        },
+        "pattern": {
+          "en": "**He / She / It + verb-s.** She **teach**es. He **run**s. It **rain**s. The dog **bark**s. **Exceptions**: verbs ending in -o, -s, -sh, -ch, -x, -z add **-es** (go → goes, wash → washes, watch → watches); verbs ending in consonant + -y change y to i and add **-es** (study → studies, try → tries). **I** and **you** never take **-s** — I go, you go, they go.",
+          "vi": "**He / She / It + động từ-s.** She **teach**es. He **run**s. It **rain**s. The dog **bark**s. **Ngoại lệ**: động từ kết thúc bằng -o, -s, -sh, -ch, -x, -z thêm **-es** (go → goes, wash → washes, watch → watches); động từ kết thúc bằng phụ âm + -y đổi y thành i và thêm **-es** (study → studies, try → tries). **I** và **you** không bao giờ thêm **-s**.",
+          "ko": "**He / She / It + 동사-s.** She **teach**es. He **run**s. The dog **bark**s. **예외**: -o, -s, -sh, -ch, -x, -z로 끝나는 동사는 **-es**를 붙입니다(go → goes, wash → washes, watch → watches); 자음 + -y로 끝나는 동사는 y를 i로 바꾸고 **-es**를 붙입니다(study → studies, try → tries). **I**와 **you**는 절대 **-s**를 붙이지 않습니다 — I go, you go, they go."
+        },
+        "practice": {
+          "en": "Say each pair aloud and feel where the **-s** lands: \"I eat\" vs \"She **eats**.\" \"They play\" vs \"He **plays**.\" \"We study\" vs \"It **studies**.\" \"You go\" vs \"My mother **goes**.\" \"The dogs bark\" vs \"The dog **barks**.\" The **-s** always attaches to he/she/it subjects — never I, you, we, or they.",
+          "vi": "Nói thành tiếng từng cặp và cảm nhận vị trí của **-s**: \"I eat\" vs \"She **eats**.\" \"They play\" vs \"He **plays**.\" \"We study\" vs \"It **studies**.\" \"You go\" vs \"My mother **goes**.\" \"The dogs bark\" vs \"The dog **barks**.\" **-s** luôn gắn với chủ ngữ he/she/it — không bao giờ với I, you, we, they.",
+          "ko": "각 쌍을 소리 내어 말하고 **-s**가 어디에 붙는지 느껴보세요: \"I eat\" vs \"She **eats**.\" \"They play\" vs \"He **plays**.\" \"We study\" vs \"It **studies**.\" \"You go\" vs \"My mother **goes**.\" \"The dogs bark\" vs \"The dog **barks**.\" **-s**는 항상 he/she/it 주어에 붙고, I, you, we, they에는 절대 붙지 않습니다."
+        },
+        "takeaway": {
+          "en": "Whenever you write a verb after **he**, **she**, or **it**, add **-s**. Always. It's the single most visible A1 marker in English.",
+          "vi": "Bất cứ khi nào viết động từ sau **he**, **she** hoặc **it**, hãy thêm **-s**. Luôn luôn. Đó là dấu hiệu A1 dễ thấy nhất trong tiếng Anh.",
+          "ko": "**he**, **she**, **it** 뒤에 동사를 쓸 때는 항상 **-s**를 붙이세요. 항상입니다. 이것이 영어에서 가장 눈에 띄는 A1 수준의 표시입니다."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "ko": "올바른 문장을 선택하세요:"
+          },
+          "options": [
+            "She go to school every day.",
+            "She goes to school every day.",
+            "She goes school every day.",
+            "She go to school every days."
+          ],
+          "correctAnswer": "She goes to school every day.",
+          "explanation": {
+            "en": "Subject = **She** (3rd person singular) → verb needs **-s**: **goes**.",
+            "vi": "Chủ ngữ = **She** (ngôi thứ ba số ít) → động từ cần **-s**: **goes**.",
+            "ko": "주어가 **She**(3인칭 단수)이므로 동사에 **-s**를 붙여 **goes**가 되어야 합니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "ko": "올바른 문장을 선택하세요:"
+          },
+          "options": [
+            "He study English every night.",
+            "He studies English every night.",
+            "He studys English every night.",
+            "He studyed English every night."
+          ],
+          "correctAnswer": "He studies English every night.",
+          "explanation": {
+            "en": "**Study** ends in consonant + **y** → change **y** to **i** and add **-es**: **studies**.",
+            "vi": "**Study** kết thúc bằng phụ âm + **y** → đổi **y** thành **i** và thêm **-es**: **studies**.",
+            "ko": "**study**는 자음 + **y**로 끝나므로 **y**를 **i**로 바꾸고 **-es**를 붙여 **studies**가 됩니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: My brother _____ (watch) TV every evening.",
+            "vi": "Điền vào chỗ trống: My brother _____ (xem) TV every evening.",
+            "ko": "빈칸을 채우세요: My brother _____ (watch) TV every evening."
+          },
+          "options": [
+            "watch",
+            "watches",
+            "watchs",
+            "watching"
+          ],
+          "correctAnswer": "watches",
+          "explanation": {
+            "en": "**watch** ends in **-ch** → add **-es**: **watches**. Subject = My brother = he.",
+            "vi": "**watch** kết thúc bằng **-ch** → thêm **-es**: **watches**. Chủ ngữ = My brother = he.",
+            "ko": "**watch**는 **-ch**로 끝나므로 **-es**를 붙여 **watches**가 됩니다. 주어 My brother는 he에 해당합니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "ko": "올바른 문장을 선택하세요:"
+          },
+          "options": [
+            "The dog bark loudly.",
+            "The dog barks loudly.",
+            "The dog barking loudly.",
+            "The dog barked loudly."
+          ],
+          "correctAnswer": "The dog barks loudly.",
+          "explanation": {
+            "en": "**The dog** = **it** (3rd person singular) → **bark** + **-s** = **barks**.",
+            "vi": "**The dog** = **it** (ngôi thứ ba số ít) → **bark** + **-s** = **barks**.",
+            "ko": "**The dog**는 **it**에 해당하므로(3인칭 단수) **bark**에 **-s**를 붙여 **barks**가 됩니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "ko": "올바른 문장을 선택하세요:"
+          },
+          "options": [
+            "They goes to the park on Sunday.",
+            "They go to the park on Sunday.",
+            "They go to the park on Sundays.",
+            "They going to the park on Sunday."
+          ],
+          "correctAnswer": "They go to the park on Sunday.",
+          "explanation": {
+            "en": "**They** is NOT 3rd person singular → do NOT add **-s**. Use the base verb: **go**.",
+            "vi": "**They** KHÔNG phải ngôi thứ ba số ít → KHÔNG thêm **-s**. Dùng động từ gốc: **go**.",
+            "ko": "**They**는 3인칭 단수가 아니므로 **-s**를 붙이지 않습니다. 동사 원형 **go**를 씁니다."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "ko_l1_missing_article",
+      "title": {
+        "en": "**A / an / the** — words English never skips",
+        "vi": "**A / an / the** — những từ tiếng Anh không bao giờ bỏ",
+        "ko": "**A / an / the** — 영어가 절대 생략하지 않는 단어들"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"I have car.\" In Korean, **나는 차가 있어요** is perfectly complete — no article needed. But in English, a singular countable noun like **car** almost always needs **a**, **an**, or **the**. Without it, the sentence feels broken to a native speaker.",
+          "vi": "\"I have car.\" Trong tiếng Hàn, **나는 차가 있어요** hoàn toàn đầy đủ — không cần mạo từ. Nhưng trong tiếng Anh, một danh từ đếm được số ít như **car** hầu như luôn cần **a**, **an** hoặc **the**. Nếu thiếu, câu văn nghe rất sai.",
+          "ko": "\"I have car.\" 한국어로 **나는 차가 있어요**는 완전한 문장이고 관사가 필요 없습니다. 하지만 영어에서 **car**처럼 셀 수 있는 단수 명사는 거의 항상 **a**, **an**, **the**가 필요합니다. 이것이 없으면 원어민에게 문장이 불완전하게 들립니다."
+        },
+        "why": {
+          "en": "Korean has no articles — zero. There's no word like **a**, **an**, or **the** in the language. Nouns stand alone: **책** means 'book' or 'a book' or 'the book' depending on context. English forces you to choose every time you use a singular countable noun: is it general/new (**a/an**) or specific/known (**the**)? This choice doesn't exist in Korean, so learners often default to nothing — which sounds wrong in English.",
+          "vi": "Tiếng Hàn không có mạo từ — con số không. Không có từ như **a**, **an**, **the** trong ngôn ngữ này. Danh từ đứng một mình: **책** có thể là 'book', 'a book' hoặc 'the book'. Tiếng Anh buộc bạn phải chọn mỗi khi dùng danh từ đếm được số ít: nó chung chung/mới (**a/an**) hay cụ thể/đã biết (**the**)? Lựa chọn này không tồn tại trong tiếng Hàn nên người học hay bỏ qua.",
+          "ko": "한국어에는 관사가 전혀 없습니다. **a**, **an**, **the** 같은 단어가 한국어에 존재하지 않습니다. 명사는 단독으로 쓰입니다: **책** 하나로 문맥에 따라 'book', 'a book', 'the book'을 모두 표현합니다. 하지만 영어는 셀 수 있는 단수 명사를 쓸 때마다 선택해야 합니다: 일반적/새로운 것이면 **a/an**, 특정/이미 알려진 것이면 **the**입니다. 이러한 선택이 한국어에는 없기 때문에 학습자들은 아무것도 붙이지 않는 쪽으로 가고, 이것이 영어에서는 어색하게 들립니다."
+        },
+        "pattern": {
+          "en": "**A/an** = one, any, not yet mentioned. Use before consonant sounds (**a dog**, **a university**) and vowel sounds (**an apple**, **an hour**). **The** = the specific one, already known. **I saw **a** dog.** → **The** dog was brown. **No article** = plural or uncountable for general meaning: **I like dogs.** **Water is life.** Also: no article with names of people, most countries, meals, sports.",
+          "vi": "**A/an** = một, bất kỳ, chưa được nhắc đến. Dùng trước phụ âm (**a dog**, **a university**) và nguyên âm (**an apple**, **an hour**). **The** = cái cụ thể, đã biết. **I saw **a** dog.** → **The** dog was brown. **Không mạo từ** = số nhiều hoặc không đếm được, nghĩa chung: **I like dogs.** **Water is life.** Cũng không dùng mạo từ với tên người, hầu hết quốc gia, bữa ăn, thể thao.",
+          "ko": "**A/an** = 하나, 어떤 것, 아직 언급되지 않음. 자음 소리 앞에는 **a**(**a dog**, **a university**), 모음 소리 앞에는 **an**(**an apple**, **an hour**). **The** = 특정한 것, 이미 알고 있음. **I saw **a** dog.** → **The** dog was brown. **관사 없음** = 일반적인 의미의 복수나 불가산 명사: **I like dogs.** **Water is life.** 사람 이름, 대부분의 국가명, 식사, 스포츠에도 관사를 쓰지 않습니다."
+        },
+        "practice": {
+          "en": "Say each pair aloud and feel when the article appears: \"I have **a** car.\" vs \"**The** car is blue.\" \"She is **a** teacher.\" vs \"**The** teacher is kind.\" \"I ate **an** apple.\" vs \"**The** apple was delicious.\" \"I like dogs.\" (general - no article) vs \"**The** dogs next door are loud.\" (specific). The article tells the listener whether you're introducing something new or talking about something already known.",
+          "vi": "Nói thành tiếng từng cặp và cảm nhận khi nào mạo từ xuất hiện: \"I have **a** car.\" vs \"**The** car is blue.\" \"She is **a** teacher.\" vs \"**The** teacher is kind.\" \"I ate **an** apple.\" vs \"**The** apple was delicious.\" Mạo từ báo cho người nghe biết bạn đang giới thiệu điều mới hay nói về điều đã biết.",
+          "ko": "각 쌍을 소리 내어 말하고 관사가 언제 나타나는지 느껴보세요: \"I have **a** car.\" vs \"**The** car is blue.\" \"She is **a** teacher.\" vs \"**The** teacher is kind.\" \"I ate **an** apple.\" vs \"**The** apple was delicious.\" 관사는 새로운 것을 소개하는지, 이미 알고 있는 것에 대해 말하는지를 청자에게 알려줍니다."
+        },
+        "takeaway": {
+          "en": "Every singular countable noun needs **a / an / the** — never leave it bare. If it's new or general → **a/an**. If it's specific or already known → **the**.",
+          "vi": "Mỗi danh từ đếm được số ít cần **a / an / the** — không bao giờ để trống. Nếu là mới hoặc chung → **a/an**. Nếu là cụ thể hoặc đã biết → **the**.",
+          "ko": "셀 수 있는 단수 명사마다 항상 **a / an / the**가 필요합니다. 새로운 것이나 일반적인 것이면 **a/an**, 특정한 것이나 이미 알고 있는 것이면 **the**를 사용하세요."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "ko": "올바른 문장을 선택하세요:"
+          },
+          "options": [
+            "I have car.",
+            "I have a car.",
+            "I have the car.",
+            "I have one car."
+          ],
+          "correctAnswer": "I have a car.",
+          "explanation": {
+            "en": "**Car** is a singular countable noun, first mention → needs **a**.",
+            "vi": "**Car** là danh từ đếm được số ít, lần đầu nhắc đến → cần **a**.",
+            "ko": "**Car**는 셀 수 있는 단수 명사이고 처음 언급하므로 **a**가 필요합니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: She wants to be _____ doctor.",
+            "vi": "Điền vào chỗ trống: She wants to be _____ doctor.",
+            "ko": "빈칸을 채우세요: She wants to be _____ doctor."
+          },
+          "options": [
+            "a",
+            "an",
+            "the",
+            "(blank)"
+          ],
+          "correctAnswer": "a",
+          "explanation": {
+            "en": "**Doctor** starts with a consonant sound → **a**. General profession, not specific.",
+            "vi": "**Doctor** bắt đầu bằng phụ âm → **a**. Nghề nghiệp chung, không cụ thể.",
+            "ko": "**Doctor**는 자음 소리로 시작하므로 **a**를 씁니다. 특정 의사가 아닌 일반적인 직업을 나타냅니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: I ate _____ apple for breakfast.",
+            "vi": "Điền vào chỗ trống: I ate _____ apple for breakfast.",
+            "ko": "빈칸을 채우세요: I ate _____ apple for breakfast."
+          },
+          "options": [
+            "a",
+            "an",
+            "the",
+            "(blank)"
+          ],
+          "correctAnswer": "an",
+          "explanation": {
+            "en": "**Apple** starts with a vowel sound → **an**.",
+            "vi": "**Apple** bắt đầu bằng nguyên âm → **an**.",
+            "ko": "**Apple**은 모음 소리로 시작하므로 **an**을 씁니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "ko": "올바른 문장을 선택하세요:"
+          },
+          "options": [
+            "The sun rises in east.",
+            "Sun rises in the east.",
+            "The sun rises in the east.",
+            "Sun rises in east."
+          ],
+          "correctAnswer": "The sun rises in the east.",
+          "explanation": {
+            "en": "**Sun** and **east** are unique/known → use **the** for both.",
+            "vi": "**Sun** và **east** là duy nhất/đã biết → dùng **the** cho cả hai.",
+            "ko": "**Sun**(태양)과 **east**(동쪽)은 유일하거나 이미 알려진 것이므로 **the**를 씁니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "ko": "올바른 문장을 선택하세요:"
+          },
+          "options": [
+            "I love the music.",
+            "I love a music.",
+            "I love music.",
+            "I love an music."
+          ],
+          "correctAnswer": "I love music.",
+          "explanation": {
+            "en": "**Music** is uncountable and general → no article.",
+            "vi": "**Music** là không đếm được và chung chung → không mạo từ.",
+            "ko": "**Music**은 불가산 명사이고 일반적인 의미이므로 관사가 없습니다."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "ko_l1_preposition_transfer",
+      "title": {
+        "en": "**In / on / at** — three ways English marks time and place",
+        "vi": "**In / on / at** — ba cách tiếng Anh đánh dấu thời gian và nơi chốn",
+        "ko": "**In / on / at** — 영어가 시간과 장소를 표시하는 세 가지 방법"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"See you in Monday!\" Korean grammar uses one particle **에** for time — **월요일에** (on Monday), **6월에** (in June), **3시에** (at 3 o'clock). One word does all the job. English splits the work across three prepositions, and picking the wrong one is the most common preposition error Korean learners make.",
+          "vi": "\"See you in Monday!\" Ngữ pháp tiếng Hàn dùng một tiểu từ **에** cho thời gian — **월요일에** (thứ Hai), **6월에** (tháng Sáu), **3시에** (lúc 3 giờ). Một từ làm tất cả. Tiếng Anh chia ra ba giới từ, và chọn sai là lỗi giới từ phổ biến nhất của người Hàn.",
+          "ko": "\"See you in Monday!\" 한국어는 시간을 나타낼 때 조사 **에** 하나만 사용합니다 — **월요일에**, **6월에**, **3시에** 모두 **에**로 됩니다. 하지만 영어는 세 가지 전치사로 나눠 사용하고, 잘못 고르는 것이 한국인 학습자의 가장 흔한 전치사 실수입니다."
+        },
+        "why": {
+          "en": "Korean **에** covers every time context — a single particle for 'at 3 o'clock,' 'on Monday,' 'in June,' 'in 2026.' Your brain learned one rule, and it works perfectly in Korean. English has no equivalent single word. You must choose **at** for precise times, **on** for days/dates, **in** for months/years/seasons. There's no shortcut — each comes from a different logic, and the patterns must be learned as fixed phrases.",
+          "vi": "Tiếng Hàn **에** bao phủ mọi ngữ cảnh thời gian — một tiểu từ duy nhất cho 'lúc 3 giờ', 'thứ Hai', 'tháng Sáu', 'năm 2026.' Não bạn học một quy tắc và nó hoạt động hoàn hảo trong tiếng Hàn. Tiếng Anh không có từ tương đương. Bạn phải chọn **at** cho thời gian chính xác, **on** cho ngày, **in** cho tháng/năm/mùa. Các mẫu này phải được học như cụm từ cố định.",
+          "ko": "한국어의 **에**는 모든 시간 맥락을 다룹니다 — '3시에', '월요일에', '6월에', '2026년에' 모두 **에** 하나로 해결됩니다. 하지만 영어에는 이렇게 하나로 대응되는 단어가 없습니다. 정확한 시각에는 **at**, 날짜에는 **on**, 월/년/계절에는 **in**을 선택해야 합니다. 각각 다른 논리에서 나온 것이므로 고정된 표현으로 외워야 합니다."
+        },
+        "pattern": {
+          "en": "**Time**: **at** + clock time / holiday period (at 7pm, at noon, at Christmas). **on** + day / date (on Monday, on June 24th, on my birthday). **in** + month / year / season / longer period (in June, in 2026, in summer, in the morning). **Place**: **at** + specific point (at the bus stop, at the door). **on** + surface / street / floor (on the table, on Main Street, on the second floor). **in** + enclosed space / area (in the room, in Seoul, in Korea).",
+          "vi": "**Thời gian**: **at** + giờ / kỳ nghỉ (at 7pm, at noon, at Christmas). **on** + ngày (on Monday, on June 24th, on my birthday). **in** + tháng / năm / mùa / khoảng dài (in June, in 2026, in summer, in the morning). **Nơi chốn**: **at** + điểm cụ thể (at the bus stop, at the door). **on** + bề mặt / đường / tầng (on the table, on Main Street, on the second floor). **in** + không gian kín / khu vực (in the room, in Seoul, in Korea).",
+          "ko": "**시간**: **at** + 정확한 시각/공휴일(at 7pm, at noon, at Christmas). **on** + 요일/날짜(on Monday, on June 24th, on my birthday). **in** + 월/년/계절/긴 기간(in June, in 2026, in summer, in the morning). **장소**: **at** + 특정 지점(at the bus stop, at the door). **on** + 표면/길/층(on the table, on Main Street, on the second floor). **in** + 밀폐된 공간/지역(in the room, in Seoul, in Korea)."
+        },
+        "practice": {
+          "en": "Say each aloud and feel where the preposition lands: \"I'll see you **on** Friday.\" \"She was born **in** March.\" \"The meeting is **at** 3pm.\" \"He lives **in** Seoul.\" \"I'm **on** the bus right now.\" \"Wait **at** the front door.\" \"We go to Busan **in** July.\" \"She is sitting **on** the sofa.\" \"The class starts **at** 9 o'clock **on** Monday **in** September.\"",
+          "vi": "Nói thành tiếng và cảm nhận vị trí của giới từ: \"I'll see you **on** Friday.\" \"She was born **in** March.\" \"The meeting is **at** 3pm.\" \"He lives **in** Seoul.\" \"I'm **on** the bus right now.\" \"Wait **at** the front door.\"",
+          "ko": "소리 내어 말하고 전치사의 위치를 느껴보세요: \"I'll see you **on** Friday.\" \"She was born **in** March.\" \"The meeting is **at** 3pm.\" \"He lives **in** Seoul.\" \"I'm **on** the bus right now.\" \"Wait **at** the front door.\""
+        },
+        "takeaway": {
+          "en": "Korean **에** ≠ one English preposition. Each pattern is a fixed phrase: at 7pm, on Monday, in June. Memorize the phrase, not the rule.",
+          "vi": "Tiếng Hàn **에** không bằng một giới từ tiếng Anh duy nhất. Mỗi mẫu là một cụm cố định: at 7pm, on Monday, in June. Học thuộc cụm, không phải quy tắc.",
+          "ko": "한국어 **에** ≠ 영어 전치사 하나. 각 패턴을 고정 표현으로 외우세요: at 7pm, on Monday, in June. 규칙보다 표현 자체를 기억하는 것이 더 쉽습니다."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "ko": "올바른 문장을 선택하세요:"
+          },
+          "options": [
+            "I will see you in Monday.",
+            "I will see you on Monday.",
+            "I will see you at Monday.",
+            "I will see you Monday."
+          ],
+          "correctAnswer": "I will see you on Monday.",
+          "explanation": {
+            "en": "Days of the week use **on** — not **in** or **at**.",
+            "vi": "Ngày trong tuần dùng **on** — không phải **in** hay **at**.",
+            "ko": "요일 앞에는 **on**을 씁니다 — **in**이나 **at**이 아닙니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: She was born _____ March.",
+            "vi": "Điền vào chỗ trống: She was born _____ March.",
+            "ko": "빈칸을 채우세요: She was born _____ March."
+          },
+          "options": [
+            "in",
+            "on",
+            "at",
+            "(blank)"
+          ],
+          "correctAnswer": "in",
+          "explanation": {
+            "en": "Months → **in**. **In March** is a fixed pattern.",
+            "vi": "Tháng → **in**. **In March** là mẫu cố định.",
+            "ko": "월(달) 앞에는 **in**을 씁니다. **In March**는 고정 패턴입니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: The meeting is _____ 3pm.",
+            "vi": "Điền vào chỗ trống: The meeting is _____ 3pm.",
+            "ko": "빈칸을 채우세요: The meeting is _____ 3pm."
+          },
+          "options": [
+            "in",
+            "on",
+            "at",
+            "(blank)"
+          ],
+          "correctAnswer": "at",
+          "explanation": {
+            "en": "Clock times → **at**. **At 3pm** is a fixed pattern.",
+            "vi": "Giờ → **at**. **At 3pm** là mẫu cố định.",
+            "ko": "정확한 시각 앞에는 **at**을 씁니다. **At 3pm**은 고정 표현입니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "ko": "올바른 문장을 선택하세요:"
+          },
+          "options": [
+            "He lives in Seoul.",
+            "He lives at Seoul.",
+            "He lives on Seoul.",
+            "He lives Seoul."
+          ],
+          "correctAnswer": "He lives in Seoul.",
+          "explanation": {
+            "en": "Cities/countries → **in**. He lives **in** Seoul.",
+            "vi": "Thành phố/quốc gia → **in**. He lives **in** Seoul.",
+            "ko": "도시/국가 앞에는 **in**을 씁니다. He lives **in** Seoul."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: I'm waiting _____ the bus stop.",
+            "vi": "Điền vào chỗ trống: I'm waiting _____ the bus stop.",
+            "ko": "빈칸을 채우세요: I'm waiting _____ the bus stop."
+          },
+          "options": [
+            "in",
+            "on",
+            "at",
+            "(blank)"
+          ],
+          "correctAnswer": "at",
+          "explanation": {
+            "en": "Specific points/places → **at**. **At the bus stop** is the fixed phrase.",
+            "vi": "Điểm cụ thể → **at**. **At the bus stop** là cụm cố định.",
+            "ko": "특정 지점/장소 앞에는 **at**을 씁니다. **At the bus stop**은 고정 표현입니다."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "ko_c2_inversion_emphasis",
+      "title": {
+        "en": "Inversion — flip the word order for impact",
+        "vi": "Đảo ngữ — đảo trật tự từ để nhấn mạnh",
+        "ko": "도치 — 강조를 위한 어순 전환"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"Never I have seen such a beautiful view.\" This sounds natural to a Korean ear — **결코 나는 본 적이 없다** keeps the subject-verb order. But English demands the verb flip: **Never have I seen…** The word that opens the sentence determines the grammar that follows.",
+          "vi": "\"Never I have seen such a beautiful view.\" Câu này nghe tự nhiên với người Hàn — **결코 나는 본 적이 없다** giữ nguyên trật tự chủ ngữ-động từ. Nhưng tiếng Anh đòi hỏi đảo động từ: **Never have I seen…** Từ mở đầu câu quyết định ngữ pháp theo sau.",
+          "ko": "\"Never I have seen such a beautiful view.\" 한국인 귀에는 이 말이 자연스럽게 들립니다. **결코 나는 본 적이 없다**에서 주어-동사 순서가 그대로 유지되기 때문입니다. 하지만 영어는 동사를 앞으로 당깁니다: **Never have I seen…** 문장을 여는 단어가 그 뒤의 문법을 결정합니다."
+        },
+        "why": {
+          "en": "Korean allows fronting adverbs without changing word order — **결코 나는 본 적이 없다** keeps subject **나는** before verb **본**. English inverts subject and auxiliary after negative or restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. The inversion signals emphasis and formality — it's a C2-level feature that separates proficient from native-like writing.",
+          "vi": "Tiếng Hàn cho phép đưa trạng từ lên đầu mà không đảo trật tự từ — **결코 나는 본 적이 없다** giữ chủ ngữ **나는** trước động từ **본**. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định. Đảo ngữ là kỹ năng cấp C2 phân biệt người thành thạo với người viết như bản ngữ.",
+          "ko": "한국어는 부사를 문두에 두어도 어순이 바뀌지 않습니다 — **결코 나는 본 적이 없다**에서 주어 **나는**이 동사 **본** 앞에 그대로 있습니다. 하지만 영어는 **never**, **rarely**, **not only** 같은 부정/제한 부사가 문장 앞에 오면 주어와 조동사의 순서를 뒤집습니다. 이러한 도치는 강조와 격식을 나타내는 C2 수준의 특징입니다."
+        },
+        "pattern": {
+          "en": "Negative/restrictive adverbial + auxiliary + subject + main verb. **Never** + **have** + **I** + seen. **Not only** + **did** + **she** + finish. **Rarely** + **does** + **he** + complain. **No sooner** + **had** + **we** + arrived than… **Under no circumstances** + **should** + **you** + open that door. The auxiliary matches the tense; if there's no auxiliary in the original, add **do/does/did**.",
+          "vi": "Trạng từ phủ định/hạn chế + trợ động từ + chủ ngữ + động từ chính. **Never** + **have** + **I** + seen. **Not only** + **did** + **she** + finish. **Rarely** + **does** + **he** + complain. Trợ động từ phải hợp thì; nếu câu gốc không có trợ động từ, thêm **do/does/did**.",
+          "ko": "부정/제한 부사 + 조동사 + 주어 + 본동사. **Never** + **have** + **I** + seen. **Not only** + **did** + **she** + finish. **Rarely** + **does** + **he** + complain. **No sooner** + **had** + **we** + arrived than… **Under no circumstances** + **should** + **you** + open that door. 조동사는 시제와 일치해야 하며, 원래 문장에 조동사가 없으면 **do/does/did**를 추가합니다."
+        },
+        "practice": {
+          "en": "Rewrite aloud: \"I have never seen such dedication.\" → \"Never have I seen such dedication.\" \"She not only finished early, but she also helped others.\" → \"Not only did she finish early, but she also helped others.\" \"You should open that door under no circumstances.\" → \"Under no circumstances should you open that door.\" Feel how the inversion puts weight on the first word.",
+          "vi": "Viết lại thành tiếng: \"I have never seen such dedication.\" → \"Never have I seen such dedication.\" \"She not only finished early, but she also helped others.\" → \"Not only did she finish early, but she also helped others.\" Cảm nhận cách đảo ngữ đặt trọng lượng vào từ đầu câu.",
+          "ko": "소리 내어 다시 말해보세요: \"I have never seen such dedication.\" → \"Never have I seen such dedication.\" \"She not only finished early, but she also helped others.\" → \"Not only did she finish early, but she also helped others.\" 도치가 어떻게 첫 단어에 무게를 실어주는지 느껴보세요."
+        },
+        "takeaway": {
+          "en": "When a negative or restrictive word opens the sentence, flip the auxiliary and subject. It's the rhythm of formal, confident English.",
+          "vi": "Khi một từ phủ định hoặc hạn chế mở đầu câu, hãy đảo trợ động từ và chủ ngữ. Đó là nhịp điệu của tiếng Anh trang trọng và tự tin.",
+          "ko": "부정이나 제한을 나타내는 부사가 문장을 열면 조동사와 주어의 순서를 바꾸세요. 이것이 격식 있고 자신감 있는 영어의 리듬입니다."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "ko": "올바른 문장을 선택하세요:"
+          },
+          "options": [
+            "Never I have been so insulted.",
+            "Never have I been so insulted.",
+            "Never I been so insulted.",
+            "Never been I so insulted."
+          ],
+          "correctAnswer": "Never have I been so insulted.",
+          "explanation": {
+            "en": "**Never** triggers inversion → auxiliary **have** before subject **I**.",
+            "vi": "**Never** kích hoạt đảo ngữ → trợ động từ **have** trước chủ ngữ **I**.",
+            "ko": "**Never**가 도치를 유발합니다 → 조동사 **have**가 주어 **I** 앞에 옵니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: Not only ___ the race, but she broke the record.",
+            "vi": "Điền vào chỗ trống: Not only ___ the race, but she broke the record.",
+            "ko": "빈칸을 채우세요: Not only ___ the race, but she broke the record."
+          },
+          "options": [
+            "she won",
+            "did she win",
+            "she did win",
+            "won she"
+          ],
+          "correctAnswer": "did she win",
+          "explanation": {
+            "en": "**Not only** requires inversion — add **did** before the subject **she**.",
+            "vi": "**Not only** đòi hỏi đảo ngữ — thêm **did** trước chủ ngữ **she**.",
+            "ko": "**Not only**는 도치가 필요합니다 — 주어 **she** 앞에 **did**를 추가합니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: Rarely ___ such dedication in one so young.",
+            "vi": "Điền vào chỗ trống: Rarely ___ such dedication in one so young.",
+            "ko": "빈칸을 채우세요: Rarely ___ such dedication in one so young."
+          },
+          "options": [
+            "one sees",
+            "does one see",
+            "one see",
+            "is one see"
+          ],
+          "correctAnswer": "does one see",
+          "explanation": {
+            "en": "**Rarely** at the start → **does** + subject + bare verb. Present simple, so use **does**.",
+            "vi": "**Rarely** ở đầu câu → **does** + chủ ngữ + động từ gốc.",
+            "ko": "**Rarely**가 문두에 오면 → **does** + 주어 + 동사 원형입니다. 현재시제이므로 **does**를 씁니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "ko": "올바른 문장을 선택하세요:"
+          },
+          "options": [
+            "Under no circumstances you should lie.",
+            "Under no circumstances should you lie.",
+            "Under no circumstances you lie.",
+            "Under no circumstances do you lie."
+          ],
+          "correctAnswer": "Under no circumstances should you lie.",
+          "explanation": {
+            "en": "**Under no circumstances** requires inversion — the modal **should** flips with the subject **you**.",
+            "vi": "**Under no circumstances** đòi hỏi đảo ngữ — modal **should** đảo với chủ ngữ **you**.",
+            "ko": "**Under no circumstances**는 도치가 필요합니다 — 조동사 **should**가 주어 **you**와 순서를 바꿉니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: No sooner ___ than the rain started.",
+            "vi": "Điền vào chỗ trống: No sooner ___ than the rain started.",
+            "ko": "빈칸을 채우세요: No sooner ___ than the rain started."
+          },
+          "options": [
+            "had we left",
+            "we had left",
+            "we left",
+            "did we leave"
+          ],
+          "correctAnswer": "had we left",
+          "explanation": {
+            "en": "**No sooner** + past perfect inversion → **had** + subject + past participle.",
+            "vi": "**No sooner** + đảo ngữ quá khứ hoàn thành → **had** + chủ ngữ + V3.",
+            "ko": "**No sooner** + 과거완료 도치 → **had** + 주어 + 과거분사입니다."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "ko_c2_cleft_focus",
+      "title": {
+        "en": "Cleft sentences — put the focus where it counts",
+        "vi": "Câu chẻ — đặt trọng tâm vào đúng chỗ",
+        "ko": "분열문 — 초점을 원하는 곳에"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"John broke the window.\" Fine. But what if you need to say who really broke it? Korean uses **은/는** and **이/가** particles to shift focus: **존이 창문을 깼어요** (It's John who broke it) vs **존은 창문을 깼어요** (As for John, he broke it). English uses a completely different structure — cleft sentences — and Korean learners often try to translate the particle logic directly.",
+          "vi": "\"John broke the window.\" Ổn. Nhưng nếu cần nói ai thực sự làm vỡ thì sao? Tiếng Hàn dùng tiểu từ **은/는** và **이/가** để chuyển trọng tâm. Tiếng Anh dùng cấu trúc hoàn toàn khác — câu chẻ.",
+          "ko": "\"John broke the window.\" 괜찮습니다. 하지만 진짜 누가 깼는지를 강조해야 한다면? 한국어는 **은/는**과 **이/가** 조사로 초점을 이동시킵니다: **존이 창문을 깼어요**(It's John who broke it) vs **존은 창문을 깼어요**(As for John, he broke it). 영어는 완전히 다른 구조 — 분열문을 사용하며, 한국인 학습자는 조사 체계를 그대로 번역하려는 경향이 있습니다."
+        },
+        "why": {
+          "en": "Korean marks focus with particles — **이/가** introduces new information, **은/는** marks topic. English has no such particles. Instead, it packages the focused element into cleft structures: **It-clefts** (**It was John who broke the window**) pull one element into focus; **Wh-clefts** (**What I need is more time**) package a whole idea as the subject. At C2 level, choosing the right cleft structure lets you control exactly what the reader notices first — that precision marks advanced, purposeful writing.",
+          "vi": "Tiếng Hàn đánh dấu trọng tâm bằng tiểu từ. Tiếng Anh không có tiểu từ như vậy mà dùng cấu trúc chẻ: **It-cleft** kéo một yếu tố vào tiêu điểm; **Wh-cleft** đóng gói cả ý thành chủ ngữ. Ở cấp C2, chọn đúng cấu trúc cleft kiểm soát chính xác điều người đọc chú ý đầu tiên.",
+          "ko": "한국어는 조사(**이/가**, **은/는**)로 초점을 표시합니다. 하지만 영어에는 이런 조사가 없습니다. 대신 분열문 구조를 사용합니다: **It-cleft**(**It was John who broke the window**)는 한 요소를 초점으로 끌어내고, **Wh-cleft**(**What I need is more time**)는 전체 아이디어를 주어로 포장합니다. C2 수준에서 적절한 분열문을 선택하는 것은 독자가 가장 먼저 주목하는 것을 정확히 통제하는 능력입니다."
+        },
+        "pattern": {
+          "en": "**It-cleft**: **It + be + focused-element + who/that + rest-of-clause**. **It was the noise that woke me.** (focus = the noise). **Wh-cleft** (pseudo-cleft): **What/Where/Why/How + clause + be + focused-element**. **What bothers me is the attitude.** (focus = the attitude). **All-cleft**: **All + clause + be + focused-element**. **All I want is a chance.**",
+          "vi": "**It-cleft**: **It + be + yếu-tố-nhấn + who/that + phần-còn-lại**. **Wh-cleft**: **What/Where/Why/How + mệnh-đề + be + yếu-tố-nhấn**. **All-cleft**: **All + mệnh-đề + be + yếu-tố-nhấn**.",
+          "ko": "**It-cleft**: **It + be + 초점 요소 + who/that + 나머지 절**. **It was the noise that woke me.**(초점 = the noise). **Wh-cleft**(유사분열문): **What/Where/Why/How + 절 + be + 초점 요소**. **What bothers me is the attitude.**(초점 = the attitude). **All-cleft**: **All + 절 + be + 초점 요소**. **All I want is a chance.**"
+        },
+        "practice": {
+          "en": "Transform aloud: \"The disrespect made me angry.\" → \"What made me angry was the disrespect.\" \"I just want a fair chance.\" → \"All I want is a fair chance.\" \"The manager, not the team, decided this.\" → \"It was the manager who decided this, not the team.\" Notice how each version directs the spotlight differently.",
+          "vi": "Biến đổi thành tiếng: \"The disrespect made me angry.\" → \"What made me angry was the disrespect.\" \"I just want a fair chance.\" → \"All I want is a fair chance.\" \"The manager, not the team, decided this.\" → \"It was the manager who decided this, not the team.\"",
+          "ko": "소리 내어 바꿔보세요: \"The disrespect made me angry.\" → \"What made me angry was the disrespect.\" \"I just want a fair chance.\" → \"All I want is a fair chance.\" \"The manager, not the team, decided this.\" → \"It was the manager who decided this, not the team.\" 각 버전이 어떻게 초점을 다르게 맞추는지 주목하세요."
+        },
+        "takeaway": {
+          "en": "Cleft sentences aren't decoration — they control attention. At C2, every word you place is a choice about what the reader feels first.",
+          "vi": "Câu chẻ không phải để trang trí — chúng kiểm soát sự chú ý. Ở cấp C2, mỗi từ bạn đặt là một lựa chọn về điều người đọc cảm nhận đầu tiên.",
+          "ko": "분열문은 장식이 아니라 주의를 통제하는 도구입니다. C2 수준에서는 모든 단어 배치가 독자가 가장 먼저 느끼는 것을 결정하는 선택입니다."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct cleft sentence:",
+            "vi": "Chọn câu chẻ đúng:",
+            "ko": "올바른 분열문을 선택하세요:"
+          },
+          "options": [
+            "What I need is more time.",
+            "What I need more time.",
+            "What I need it is more time.",
+            "That I need is more time."
+          ],
+          "correctAnswer": "What I need is more time.",
+          "explanation": {
+            "en": "**Wh-cleft**: **What** + clause + **is** + focused element. No extra pronoun **it** needed.",
+            "vi": "**Wh-cleft**: **What** + mệnh đề + **is** + yếu tố nhấn mạnh. Không cần thêm đại từ **it**.",
+            "ko": "**Wh-cleft(유사분열문)**: **What** + 절 + **is** + 초점 요소. **it**과 같은 추가 대명사가 필요하지 않습니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: It ___ the weather that ruined the trip.",
+            "vi": "Điền vào chỗ trống: It ___ the weather that ruined the trip.",
+            "ko": "빈칸을 채우세요: It ___ the weather that ruined the trip."
+          },
+          "options": [
+            "were",
+            "was",
+            "is being",
+            "been"
+          ],
+          "correctAnswer": "was",
+          "explanation": {
+            "en": "**It-cleft** uses **be** agreeing with the focused element. **The weather** is singular → **was**.",
+            "vi": "**It-cleft** dùng **be** hòa hợp với yếu tố nhấn. **The weather** số ít → **was**.",
+            "ko": "**It-cleft(It-분열문)**는 초점 요소에 수를 일치시키는 **be동사**를 씁니다. **The weather**는 단수이므로 **was**입니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: ___ bothers me is his attitude, not his words.",
+            "vi": "Điền vào chỗ trống: ___ bothers me is his attitude, not his words.",
+            "ko": "빈칸을 채우세요: ___ bothers me is his attitude, not his words."
+          },
+          "options": [
+            "That",
+            "Which",
+            "What",
+            "It"
+          ],
+          "correctAnswer": "What",
+          "explanation": {
+            "en": "**Wh-cleft** opens with **What** when the focused element is a thing or idea.",
+            "vi": "**Wh-cleft** mở đầu bằng **What** khi yếu tố nhấn mạnh là vật hoặc ý tưởng.",
+            "ko": "**Wh-cleft(유사분열문)**는 초점 요소가 사물이나 개념일 때 **What**으로 시작합니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "ko": "올바른 문장을 선택하세요:"
+          },
+          "options": [
+            "All I want it is a fair chance.",
+            "All I want is a fair chance.",
+            "All what I want is a fair chance.",
+            "All that I want it is a fair chance."
+          ],
+          "correctAnswer": "All I want is a fair chance.",
+          "explanation": {
+            "en": "**All-cleft**: **All** + clause (no **what**) + **be** + element. No extra pronoun.",
+            "vi": "**All-cleft**: **All** + mệnh đề (không **what**) + **be** + yếu tố. Không thêm đại từ.",
+            "ko": "**All-cleft(All-분열문)**: **All** + 절(**what** 없이) + **be** + 요소. 추가 대명사가 필요하지 않습니다."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: It wasn't the noise ___ woke me; it was the light.",
+            "vi": "Điền vào chỗ trống: It wasn't the noise ___ woke me; it was the light.",
+            "ko": "빈칸을 채우세요: It wasn't the noise ___ woke me; it was the light."
+          },
+          "options": [
+            "who",
+            "what",
+            "that",
+            "whom"
+          ],
+          "correctAnswer": "that",
+          "explanation": {
+            "en": "**It-cleft** with a thing → **that** (or **which** in very formal). **Who** is only for people.",
+            "vi": "**It-cleft** với đồ vật → **that** (hoặc **which** trong văn rất trang trọng). **Who** chỉ cho người.",
+            "ko": "**It-cleft(It-분열문)**에서 사물을 가리킬 때는 **that**을 씁니다(매우 격식 있는 글에서는 **which** 가능). **Who**는 사람에게만 사용합니다."
+          }
+        }
+      ]
     }
   ]
 }
