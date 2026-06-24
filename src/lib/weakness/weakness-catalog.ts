@@ -260,7 +260,7 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     longDescription: {
       en: "Vietnamese possessive **của** doesn't mark gender. English picks **his** or **her** based on the **owner's** gender, not the object's.",
       vi: "Chữ **của** trong tiếng Việt không phân biệt giới tính. Tiếng Anh chọn **his** hoặc **her** theo giới tính của **người sở hữu**, không phải của đồ vật.",
-      id: "Kata kepunyaan bahasa Indonesia **dia** tidak membedakan jenis kelamin. Bahasa Inggris memilih **his** atau **her** berdasarkan jenis kelamin **pemiliknya**, bukan bendanya.",
+      id: "Bahasa Indonesia menggunakan **dia** atau **-nya** tanpa membedakan gender pemilik. Bahasa Inggris memilih **his** atau **her** berdasarkan gender **pemiliknya**, bukan bendanya.",
     },
     exampleWrong: "My mother reads his book.",
     exampleRight: "My mother reads her book.",
@@ -270,14 +270,14 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
   vi_l1_preposition_transfer: {
     tag: "vi_l1_preposition_transfer",
     shortLabel: {
-      en: "Prepositions",
-      vi: "Giới từ",
-      id: "Kata depan",
+      en: "Prepositions **in / on / at**",
+      vi: "Giới từ **in / on / at**",
+      id: "Preposisi **in / on / at**",
     },
     longDescription: {
       en: "Vietnamese prepositions don't map one-to-one onto English. Words like **on**, **in**, **at** have patterns you memorise, not translate: **on Monday**, **in June**, **at 7pm**.",
       vi: "Giới từ tiếng Việt không dịch thẳng sang tiếng Anh. Các từ **on**, **in**, **at** có quy tắc riêng cần nhớ, không dịch từng chữ được: **on Monday**, **in June**, **at 7pm**.",
-      id: "Kata depan bahasa Indonesia tidak bisa diterjemahkan langsung ke bahasa Inggris. Kata seperti **on**, **in**, **at** punya pola yang harus dihafal, bukan diterjemahkan: **on Monday**, **in June**, **at 7pm**.",
+      id: "Bahasa Indonesia menggunakan **di** untuk lokasi dan waktu — satu kata untuk semuanya. Bahasa Inggris membagi menjadi **in** (ruang tertutup / periode besar), **on** (permukaan / hari), dan **at** (titik spesifik). Tidak bisa diterjemahkan langsung — harus dihafal per pola: **on Monday**, **in June**, **at 7pm**.",
     },
     exampleWrong: "I see you in Monday.",
     exampleRight: "I see you on Monday.",
@@ -294,7 +294,7 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     longDescription: {
       en: "Vietnamese doesn't split nouns into countable and uncountable — **nhiều tiền** and **nhiều bạn** both just use **nhiều**. English uses **many** for countable and **much** or **a lot of** for uncountable.",
       vi: "Tiếng Việt mình không chia danh từ đếm được / không đếm được — **nhiều tiền**, **nhiều bạn** đều dùng **nhiều**. Tiếng Anh dùng **many** với đếm được và **much** hoặc **a lot of** với không đếm được.",
-      id: "Bahasa Indonesia tidak membagi kata benda menjadi bisa dihitung dan tidak bisa dihitung — **banyak uang** dan **banyak teman** sama-sama pakai **banyak**. Bahasa Inggris menggunakan **many** untuk yang bisa dihitung dan **much** atau **a lot of** untuk yang tidak bisa dihitung.",
+      id: "Bahasa Indonesia tidak membagi kata benda — **banyak uang** dan **banyak teman** sama-sama pakai **banyak**. Bahasa Inggris menggunakan **many** untuk yang bisa dihitung dan **much** atau **a lot of** untuk yang tidak bisa dihitung.",
     },
     exampleWrong: "I have many money.",
     exampleRight: "I have a lot of money.",
@@ -350,7 +350,7 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     longDescription: {
       en: "Vietnamese often stacks **đã** with a past time word. In English, once you use **did**, the main verb returns to its base form — only one past marker per verb.",
       vi: "Tiếng Việt mình hay ghép **đã** với cả trạng từ thời gian quá khứ. Tiếng Anh khi đã có **did**, động từ chính trở về dạng nguyên thể — chỉ một dấu hiệu quá khứ.",
-      id: "Bahasa Indonesia sering menumpuk **sudah** dengan kata waktu lampau. Dalam bahasa Inggris, begitu kamu pakai **did**, kata kerja utama kembali ke bentuk dasar — hanya satu penanda lampau per kata kerja.",
+      id: "Bahasa Indonesia sering menggabungkan **sudah** dengan kata waktu lampau. Dalam bahasa Inggris, begitu kamu pakai **did**, kata kerja utama kembali ke bentuk dasar — hanya satu penanda lampau per kata kerja.",
     },
     exampleWrong: "I did worked late.",
     exampleRight: "I worked late.",
@@ -401,7 +401,7 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     longDescription: {
       en: "Vietnamese places the adjective **after** the noun: **áo đỏ**. English flips it — adjective comes **before** the noun: **a red shirt**.",
       vi: "Tiếng Việt mình đặt tính từ **sau** danh từ: **áo đỏ**. Tiếng Anh đảo lại — tính từ đứng **trước** danh từ: **a red shirt**.",
-      id: "Bahasa Indonesia meletakkan kata sifat **setelah** kata benda: **baju merah**. Bahasa Inggris membaliknya — kata sifat datang **sebelum** kata benda: **a red shirt**.",
+      id: "Bahasa Indonesia menempatkan kata sifat **setelah** kata benda: **baju merah**. Bahasa Inggris membaliknya — kata sifat di **depan** kata benda: **a red shirt**.",
     },
     exampleWrong: "I want a shirt red.",
     exampleRight: "I want a red shirt.",
@@ -435,7 +435,7 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     longDescription: {
       en: "Vietnamese **có** stays the same whether there's one thing or many. English switches: **there is** for one, **there are** for two or more.",
       vi: "Tiếng Việt mình dùng **có** cho cả một và nhiều. Tiếng Anh đổi: **there is** với một, **there are** với hai trở lên.",
-      id: "Bahasa Indonesia **ada** tetap sama baik satu benda maupun banyak. Bahasa Inggris berganti: **there is** untuk satu, **there are** untuk dua atau lebih.",
+      id: "Bahasa Indonesia menggunakan **ada** untuk satu maupun banyak benda. Bahasa Inggris berganti: **there is** untuk satu, **there are** untuk dua atau lebih.",
     },
     exampleWrong: "There are one book on the table.",
     exampleRight: "There is one book on the table.",
@@ -469,7 +469,7 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     longDescription: {
       en: "Vietnamese **làm** covers both English verbs. English splits the work: **make** for creating (a cake, a decision, a mistake); **do** for activities (homework, the dishes, a job).",
       vi: "Tiếng Việt mình chỉ có một chữ **làm**. Tiếng Anh chia hai: **make** khi tạo ra (bánh, quyết định, sai lầm); **do** với hoạt động (bài tập, rửa bát, công việc).",
-      id: "Bahasa Indonesia **melakukan** / **buat** mencakup dua kata kerja bahasa Inggris. Bahasa Inggris membagi: **make** untuk menciptakan (kue, keputusan, kesalahan); **do** untuk aktivitas (PR, mencuci piring, pekerjaan).",
+      id: "Bahasa Indonesia **buat** atau **lakukan** mencakup keduanya. Bahasa Inggris membagi: **make** untuk menciptakan atau menghasilkan sesuatu (kesalahan, keputusan, uang); **do** untuk aktivitas atau tugas (PR, cuci piring, pekerjaan).",
     },
     exampleWrong: "I did a mistake.",
     exampleRight: "I made a mistake.",
@@ -785,13 +785,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
       en: "Present perfect vs past",
       vi: "[VI TBD — CC4]",
       ja: "現在完了 vs 過去形",
-      id: "Present perfect vs past",
+      id: "Present perfect vs past tense",
     },
     longDescription: {
       en: "Vietnamese has no perfect aspect. When a sentence names a specific past time (**yesterday**, **last week**, **in 1990**), English requires simple past — not **have/has + past participle**.",
       vi: "[VI TBD — CC4]",
       ja: "日本語の「〜た」は「昨日食べた」（過去の一点）も「もう食べた」（完了）も同じ形で表せます。英語では、**yesterday**、**last week**、**in 1990** など特定の過去の時点を表す語があるときは、必ず**過去形**を使い、現在完了（**have + 過去分詞**）は使えません。**I ate pho yesterday**（昨日フォーを食べた）— **I have eaten pho yesterday** とは言いません。",
-      id: "Bahasa Indonesia tidak memiliki aspek perfect. Saat kalimat menyebutkan waktu lampau spesifik (**kemarin**, **minggu lalu**, **tahun 1990**), bahasa Inggris mewajibkan simple past — bukan **have/has + V3**.",
+      id: "Bahasa Indonesia menggunakan **sudah**, **pernah**, **belum** dengan kata kerja yang sama — tidak ada perubahan tense. Bahasa Inggris membedakan: kalau ada kata waktu lampau spesifik (**yesterday**, **last week**, **in 1990**), harus pakai simple past — bukan **have/has + V3**.",
     },
     exampleWrong: "I have eaten pho yesterday.",
     exampleRight: "I ate pho yesterday.",
@@ -1037,7 +1037,7 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     longDescription: {
       en: "Frequency adverbs like **always**, **usually**, **sometimes** come **after** the subject in English — *I **always** go*, not *Always I go*.",
       vi: "[VI TBD — CC4]",
-      id: "Kata keterangan frekuensi seperti **always**, **usually**, **sometimes** diletakkan **setelah** subjek dalam bahasa Inggris — *I **always** go*, bukan *Always I go*.",
+      id: "Bahasa Indonesia sering menempatkan kata keterangan di awal kalimat: **Biasanya saya pergi**. Bahasa Inggris menempatkan kata keterangan frekuensi **setelah** subjek: **I usually go** — bukan **Usually I go**.",
     },
     exampleWrong: "Always I go to school by bus.",
     exampleRight: "I always go to school by bus.",
