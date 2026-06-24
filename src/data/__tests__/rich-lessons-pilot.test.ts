@@ -20,6 +20,8 @@ import {
 import { isKnownWeaknessTag } from "@/lib/weakness/weakness-catalog";
 
 const EXPECTED_PILOT_TAGS = [
+  "id_c2_cleft_focus",
+  "id_c2_inversion_emphasis",
   "id_l1_conditional_unreal",
   "id_l1_present_perfect_vs_past",
   "id_l1_reported_speech",

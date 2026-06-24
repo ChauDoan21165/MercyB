@@ -2144,6 +2144,260 @@
           }
         }
       ]
+    },
+    {
+      "tag": "id_c2_inversion_emphasis",
+      "title": {
+        "en": "Inversion — flip the word order for impact",
+        "vi": "Đảo ngữ — đảo trật tự từ để nhấn mạnh",
+        "id": "Inversi — balik urutan kata untuk dampak"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"Never I have seen such a beautiful view.\" Sounds almost right to an Indonesian ear — **tidak pernah saya lihat** is natural in Indonesian. But English demands the verb flip: **Never have I seen…**",
+          "vi": "\"Never I have seen such a beautiful view.\" Nghe gần đúng với tai người Việt — **chưa bao giờ tôi thấy** là tự nhiên trong tiếng Việt. Nhưng tiếng Anh đòi hỏi đảo động từ: **Never have I seen…**",
+          "id": "\"Never I have seen such a beautiful view.\" Kedengarannya hampir benar di telinga orang Indonesia — **tidak pernah saya lihat** itu wajar dalam bahasa Indonesia. Tapi bahasa Inggris menuntut kata kerjanya dibalik: **Never have I seen…**"
+        },
+        "why": {
+          "en": "Indonesian often fronts adverbs without changing word order — **Mungkin dia sudah pergi** keeps subject-verb intact. English inverts subject and auxiliary after negative or restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. The inversion signals emphasis and formality — it's a C2-level feature that separates proficient from native-like writing.",
+          "vi": "Tiếng Việt thường đưa trạng từ lên đầu câu mà không đảo trật tự từ — **Có lẽ anh ấy đã đi rồi** giữ nguyên chủ ngữ-động từ. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định hoặc hạn chế như **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — đây là kỹ năng cấp C2 phân biệt người thành thạo với người viết như bản ngữ.",
+          "id": "Bahasa Indonesia sering meletakkan kata keterangan di depan tanpa mengubah urutan kata — **Mungkin dia sudah pergi** tetap subjek-kata kerja. Bahasa Inggris membalik subjek dan kata bantu setelah kata keterangan negatif atau restriktif seperti **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversi menandakan penekanan dan formalitas — ini adalah fitur level C2 yang membedakan penulis mahir dari penulis seperti penutur asli."
+        },
+        "pattern": {
+          "en": "Negative/restrictive adverbial + auxiliary + subject + main verb. **Never** + **have** + **I** + seen. **Not only** + **did** + **she** + finish. **Rarely** + **does** + **he** + complain. **No sooner** + **had** + **we** + arrived than… **Under no circumstances** + **should** + **you** + open that door. The auxiliary matches the tense; if there's no auxiliary in the original, add **do/does/did**.",
+          "vi": "Trạng từ phủ định/hạn chế + trợ động từ + chủ ngữ + động từ chính. **Never** + **have** + **I** + seen. **Not only** + **did** + **she** + finish. **Rarely** + **does** + **he** + complain. **No sooner** + **had** + **we** + arrived than… **Under no circumstances** + **should** + **you** + open that door. Trợ động từ phải hợp thì; nếu câu gốc không có trợ động từ, thêm **do/does/did**.",
+          "id": "Kata keterangan negatif/restriktif + kata bantu + subjek + kata kerja utama. **Never** + **have** + **I** + seen. **Not only** + **did** + **she** + finish. **Rarely** + **does** + **he** + complain. **No sooner** + **had** + **we** + arrived than… **Under no circumstances** + **should** + **you** + open that door. Kata bantu harus sesuai tense; kalau kalimat aslinya tidak punya kata bantu, tambahkan **do/does/did**."
+        },
+        "practice": {
+          "en": "Rewrite aloud: \"I have never seen such dedication.\" → \"Never have I seen such dedication.\" \"She not only finished early, but she also helped others.\" → \"Not only did she finish early, but she also helped others.\" \"You should open that door under no circumstances.\" → \"Under no circumstances should you open that door.\" Feel how the inversion puts weight on the first word.",
+          "vi": "Viết lại thành tiếng: \"I have never seen such dedication.\" → \"Never have I seen such dedication.\" \"She not only finished early, but she also helped others.\" → \"Not only did she finish early, but she also helped others.\" \"You should open that door under no circumstances.\" → \"Under no circumstances should you open that door.\" Cảm nhận cách đảo ngữ đặt trọng lượng vào từ đầu câu.",
+          "id": "Tulis ulang dengan keras: \"I have never seen such dedication.\" → \"Never have I seen such dedication.\" \"She not only finished early, but she also helped others.\" → \"Not only did she finish early, but she also helped others.\" \"You should open that door under no circumstances.\" → \"Under no circumstances should you open that door.\" Rasakan bagaimana inversi memberi bobot pada kata pertama."
+        },
+        "takeaway": {
+          "en": "When a negative or restrictive word opens the sentence, flip the auxiliary and subject. It's the rhythm of formal, confident English.",
+          "vi": "Khi một từ phủ định hoặc hạn chế mở đầu câu, hãy đảo trợ động từ và chủ ngữ. Đó là nhịp điệu của tiếng Anh trang trọng và tự tin.",
+          "id": "Saat kata negatif atau restriktif membuka kalimat, balik kata bantu dan subjek. Itulah ritme bahasa Inggris formal yang percaya diri."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:"
+          },
+          "options": [
+            "Never I have been so insulted.",
+            "Never have I been so insulted.",
+            "Never I been so insulted.",
+            "Never been I so insulted."
+          ],
+          "correctAnswer": "Never have I been so insulted.",
+          "explanation": {
+            "en": "**Never** triggers inversion → auxiliary **have** before subject **I**.",
+            "vi": "**Never** kích hoạt đảo ngữ → trợ động từ **have** trước chủ ngữ **I**.",
+            "id": "**Never** memicu inversi → kata bantu **have** sebelum subjek **I**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: Not only ___ the race, but she broke the record.",
+            "vi": "Điền vào chỗ trống: Not only ___ the race, but she broke the record."
+          },
+          "options": [
+            "she won",
+            "did she win",
+            "she did win",
+            "won she"
+          ],
+          "correctAnswer": "did she win",
+          "explanation": {
+            "en": "**Not only** requires inversion — add **did** before the subject **she**.",
+            "vi": "**Not only** đòi hỏi đảo ngữ — thêm **did** trước chủ ngữ **she**.",
+            "id": "**Not only** mengharuskan inversi — tambahkan **did** sebelum subjek **she**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: Rarely ___ such dedication in one so young.",
+            "vi": "Điền vào chỗ trống: Rarely ___ such dedication in one so young."
+          },
+          "options": [
+            "one sees",
+            "does one see",
+            "one see",
+            "is one see"
+          ],
+          "correctAnswer": "does one see",
+          "explanation": {
+            "en": "**Rarely** at the start → **does** + subject + bare verb. Present simple, so use **does**.",
+            "vi": "**Rarely** ở đầu câu → **does** + chủ ngữ + động từ gốc. Thì hiện tại đơn nên dùng **does**.",
+            "id": "**Rarely** di awal → **does** + subjek + kata kerja dasar. Present simple, jadi pakai **does**."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:"
+          },
+          "options": [
+            "Under no circumstances you should lie.",
+            "Under no circumstances should you lie.",
+            "Under no circumstances you lie.",
+            "Under no circumstances do you lie."
+          ],
+          "correctAnswer": "Under no circumstances should you lie.",
+          "explanation": {
+            "en": "**Under no circumstances** requires inversion — the modal **should** flips with the subject **you**.",
+            "vi": "**Under no circumstances** đòi hỏi đảo ngữ — modal **should** đảo với chủ ngữ **you**.",
+            "id": "**Under no circumstances** mengharuskan inversi — modal **should** dibalik dengan subjek **you**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: No sooner ___ than the rain started.",
+            "vi": "Điền vào chỗ trống: No sooner ___ than the rain started."
+          },
+          "options": [
+            "had we left",
+            "we had left",
+            "we left",
+            "did we leave"
+          ],
+          "correctAnswer": "had we left",
+          "explanation": {
+            "en": "**No sooner** + past perfect inversion → **had** + subject + past participle. Matches **than**.",
+            "vi": "**No sooner** + đảo ngữ quá khứ hoàn thành → **had** + chủ ngữ + V3. Ghép với **than**.",
+            "id": "**No sooner** + inversi past perfect → **had** + subjek + past participle. Berpasangan dengan **than**."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "id_c2_cleft_focus",
+      "title": {
+        "en": "Cleft sentences — put the focus where it counts",
+        "vi": "Câu chẻ — đặt trọng tâm vào đúng chỗ",
+        "id": "Kalimat cleft — letakkan fokus di tempat yang tepat"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"John broke the window.\" Fine. But what if you need to clear John's name? \"It wasn't John who broke the window.\" That's a cleft sentence — and it does something Indonesian's **yang** construction can't quite match.",
+          "vi": "\"John broke the window.\" Ổn. Nhưng nếu bạn cần minh oan cho John thì sao? \"It wasn't John who broke the window.\" Đó là câu chẻ — và nó làm điều mà cấu trúc **chính… là…** trong tiếng Việt không làm được hoàn toàn.",
+          "id": "\"John broke the window.\" Oke. Tapi gimana kalau kamu perlu membersihkan nama John? \"It wasn't John who broke the window.\" Itu kalimat cleft — dan dia melakukan sesuatu yang konstruksi **yang** dalam bahasa Indonesia tidak bisa sepenuhnya tiru."
+        },
+        "why": {
+          "en": "Indonesian uses **yang** to highlight: **Yang memecahkan jendela itu John**. English has a richer system: **It-clefts** (**It was John who broke the window**) pull one element into focus; **Wh-clefts** (**What I need is more time**) package a whole idea as the subject. At C2 level, choosing the right cleft structure lets you control exactly what the reader notices first — and that precision marks advanced, purposeful writing.",
+          "vi": "Tiếng Việt dùng **chính… là…** hoặc **… là người…** để nhấn mạnh: **Chính John là người làm vỡ cửa sổ**. Tiếng Anh có hệ thống phong phú hơn: **It-cleft** (**It was John who broke the window**) kéo một yếu tố vào tiêu điểm; **Wh-cleft** (**What I need is more time**) đóng gói cả một ý thành chủ ngữ. Ở cấp C2, chọn đúng cấu trúc cleft cho phép bạn kiểm soát chính xác điều người đọc chú ý đầu tiên — và sự chính xác đó đánh dấu lối viết nâng cao, có chủ đích.",
+          "id": "Bahasa Indonesia menggunakan **yang** untuk menyoroti: **Yang memecahkan jendela itu John**. Bahasa Inggris punya sistem yang lebih kaya: **It-cleft** (**It was John who broke the window**) menarik satu elemen ke fokus; **Wh-cleft** (**What I need is more time**) mengemas seluruh ide sebagai subjek. Di level C2, memilih struktur cleft yang tepat memungkinkan kamu mengontrol persis apa yang pertama kali pembaca perhatikan — dan presisi itu menandai tulisan mahir yang punya tujuan."
+        },
+        "pattern": {
+          "en": "**It-cleft**: **It + be + focused-element + who/that + rest-of-clause**. **It was the noise that woke me.** (focus = the noise). **Wh-cleft** (pseudo-cleft): **What/Where/Why/How + clause + be + focused-element**. **What bothers me is the attitude.** (focus = the attitude). **All-cleft**: **All + clause + be + focused-element**. **All I want is a chance.**",
+          "vi": "**It-cleft**: **It + be + yếu-tố-nhấn + who/that + phần-còn-lại**. **It was the noise that woke me.** (nhấn = the noise). **Wh-cleft**: **What/Where/Why/How + mệnh-đề + be + yếu-tố-nhấn**. **What bothers me is the attitude.** (nhấn = the attitude). **All-cleft**: **All + mệnh-đề + be + yếu-tố-nhấn**. **All I want is a chance.**",
+          "id": "**It-cleft**: **It + be + elemen-difokuskan + who/that + sisa-klausa**. **It was the noise that woke me.** (fokus = the noise). **Wh-cleft**: **What/Where/Why/How + klausa + be + elemen-difokuskan**. **What bothers me is the attitude.** (fokus = the attitude). **All-cleft**: **All + klausa + be + elemen-difokuskan**. **All I want is a chance.**"
+        },
+        "practice": {
+          "en": "Transform aloud: \"The disrespect made me angry.\" → \"What made me angry was the disrespect.\" \"I just want a fair chance.\" → \"All I want is a fair chance.\" \"The manager, not the team, decided this.\" → \"It was the manager who decided this, not the team.\" Notice how each version directs the spotlight differently.",
+          "vi": "Biến đổi thành tiếng: \"The disrespect made me angry.\" → \"What made me angry was the disrespect.\" \"I just want a fair chance.\" → \"All I want is a fair chance.\" \"The manager, not the team, decided this.\" → \"It was the manager who decided this, not the team.\" Để ý cách mỗi phiên bản hướng ánh đèn sân khấu khác nhau.",
+          "id": "Ubah dengan keras: \"The disrespect made me angry.\" → \"What made me angry was the disrespect.\" \"I just want a fair chance.\" → \"All I want is a fair chance.\" \"The manager, not the team, decided this.\" → \"It was the manager who decided this, not the team.\" Perhatikan bagaimana setiap versi mengarahkan sorotan secara berbeda."
+        },
+        "takeaway": {
+          "en": "Cleft sentences aren't decoration — they control attention. At C2, every word you place is a choice about what the reader feels first.",
+          "vi": "Câu chẻ không phải để trang trí — chúng kiểm soát sự chú ý. Ở cấp C2, mỗi từ bạn đặt là một lựa chọn về điều người đọc cảm nhận đầu tiên.",
+          "id": "Kalimat cleft bukan hiasan — mereka mengontrol perhatian. Di level C2, setiap kata yang kamu tempatkan adalah pilihan tentang apa yang pembaca rasakan pertama kali."
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct cleft sentence:",
+            "vi": "Chọn câu chẻ đúng:"
+          },
+          "options": [
+            "What I need is more time.",
+            "What I need more time.",
+            "What I need it is more time.",
+            "That I need is more time."
+          ],
+          "correctAnswer": "What I need is more time.",
+          "explanation": {
+            "en": "**Wh-cleft**: **What** + clause + **is** + focused element. No extra pronoun **it** needed.",
+            "vi": "**Wh-cleft**: **What** + mệnh đề + **is** + yếu tố nhấn mạnh. Không cần thêm đại từ **it**.",
+            "id": "**Wh-cleft**: **What** + klausa + **is** + elemen yang difokuskan. Tidak perlu kata ganti tambahan **it**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: It ___ the weather that ruined the trip.",
+            "vi": "Điền vào chỗ trống: It ___ the weather that ruined the trip."
+          },
+          "options": [
+            "were",
+            "was",
+            "is being",
+            "been"
+          ],
+          "correctAnswer": "was",
+          "explanation": {
+            "en": "**It-cleft** uses **be** agreeing with the focused element. **The weather** is singular → **was**.",
+            "vi": "**It-cleft** dùng **be** hòa hợp với yếu tố nhấn. **The weather** số ít → **was**.",
+            "id": "**It-cleft** menggunakan **be** yang sesuai dengan elemen fokus. **The weather** tunggal → **was**."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: ___ bothers me is his attitude, not his words.",
+            "vi": "Điền vào chỗ trống: ___ bothers me is his attitude, not his words."
+          },
+          "options": [
+            "That",
+            "Which",
+            "What",
+            "It"
+          ],
+          "correctAnswer": "What",
+          "explanation": {
+            "en": "**Wh-cleft** opens with **What** when the focused element is a thing or idea.",
+            "vi": "**Wh-cleft** mở đầu bằng **What** khi yếu tố nhấn mạnh là một vật hoặc ý tưởng.",
+            "id": "**Wh-cleft** dibuka dengan **What** saat elemen yang difokuskan adalah benda atau ide."
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:"
+          },
+          "options": [
+            "All I want it is a fair chance.",
+            "All I want is a fair chance.",
+            "All what I want is a fair chance.",
+            "All that I want it is a fair chance."
+          ],
+          "correctAnswer": "All I want is a fair chance.",
+          "explanation": {
+            "en": "**All-cleft**: **All** + clause (no **what**) + **be** + element. No extra pronoun.",
+            "vi": "**All-cleft**: **All** + mệnh đề (không có **what**) + **be** + yếu tố. Không thêm đại từ thừa.",
+            "id": "**All-cleft**: **All** + klausa (tanpa **what**) + **be** + elemen. Tanpa kata ganti tambahan."
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in the blank: It wasn't the noise ___ woke me; it was the light.",
+            "vi": "Điền vào chỗ trống: It wasn't the noise ___ woke me; it was the light."
+          },
+          "options": [
+            "who",
+            "what",
+            "that",
+            "whom"
+          ],
+          "correctAnswer": "that",
+          "explanation": {
+            "en": "**It-cleft** with a thing → **that** (or **which** in very formal). **Who** is only for people.",
+            "vi": "**It-cleft** với đồ vật → **that** (hoặc **which** trong văn rất trang trọng). **Who** chỉ dùng cho người.",
+            "id": "**It-cleft** dengan benda → **that** (atau **which** dalam gaya sangat formal). **Who** hanya untuk orang."
+          }
+        }
+      ]
     }
   ]
 }
