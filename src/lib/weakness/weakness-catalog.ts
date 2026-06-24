@@ -155,11 +155,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Subject-verb agreement",
       vi: "Chia động từ theo chủ ngữ",
+      th: "เติม -s กับ he/she/it",
       id: "Kesesuaian subjek-kata kerja",
     },
     longDescription: {
       en: "Vietnamese verbs don't change form for person. English adds **-s** to the verb when the subject is **he**, **she**, or **it**.",
       vi: "Động từ tiếng Việt không thay đổi theo ngôi. Trong tiếng Anh, động từ thêm **-s** khi chủ ngữ là **he**, **she**, **it**.",
+      th: "ภาษาไทยไม่เปลี่ยนรูปกริยาตามประธาน แต่ภาษาอังกฤษ A1 ต้องเติม **-s** หรือ **-es** เมื่อประธานเป็น **he**, **she**, หรือ **it** เช่น **She goes**.",
       id: "Kata kerja bahasa Indonesia tidak berubah bentuk untuk orang. Bahasa Inggris menambahkan **-s** ke kata kerja saat subjeknya **he**, **she**, atau **it**.",
     },
     exampleWrong: "She go to school every day.",
@@ -172,11 +174,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Past tense with **-ed**",
       vi: "Thì quá khứ với **-ed**",
+      th: "อดีตด้วย **-ed**",
       id: "Past tense dengan **-ed**",
     },
     longDescription: {
       en: "Vietnamese shows past time with words like **hôm qua** or **đã** — the verb doesn't change. English changes the verb itself: **work → worked**.",
       vi: "Tiếng Việt diễn tả quá khứ bằng các từ như **hôm qua** hoặc **đã**, không đổi hình thức động từ. Tiếng Anh thay đổi chính động từ: **work → worked**.",
+      th: "ภาษาไทยใช้คำบอกเวลาอย่าง **เมื่อวาน** หรือ **แล้ว** เพื่อบอกอดีต แต่ภาษาอังกฤษ A1 ต้องเปลี่ยนกริยาเอง เช่น **work → worked**.",
       id: "Bahasa Indonesia menunjukkan waktu lampau dengan kata seperti **kemarin** atau **sudah** — kata kerjanya tidak berubah. Bahasa Inggris mengubah kata kerjanya sendiri: **work → worked**.",
     },
     exampleWrong: "Yesterday I work late.",
@@ -189,11 +193,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Plural nouns with **-s**",
       vi: "Danh từ số nhiều với **-s**",
+      th: "คำนามหลายชิ้นเติม **-s**",
       id: "Kata benda jamak dengan **-s**",
     },
     longDescription: {
       en: "Vietnamese nouns don't change when counting more than one — markers like **các** or **những** do the work. English adds **-s** to most nouns when there's more than one: **book → books**.",
       vi: "Danh từ tiếng Việt không đổi khi đếm nhiều hơn một — dấu hiệu số nhiều nằm ở các từ như **các** hoặc **những**. Tiếng Anh thêm **-s** vào hầu hết danh từ khi số lượng nhiều hơn một: **book → books**.",
+      th: "ภาษาไทยมักไม่เปลี่ยนรูปคำนามเมื่อมีหลายชิ้น แต่ภาษาอังกฤษ A1 เติม **-s** หรือ **-es** กับคำนามพหูพจน์ เช่น **book → books**.",
       id: "Kata benda bahasa Indonesia tidak berubah saat menghitung lebih dari satu — penanda seperti **para** atau **beberapa** yang melakukan tugas itu. Bahasa Inggris menambahkan **-s** ke sebagian besar kata benda saat jumlahnya lebih dari satu: **book → books**.",
     },
     exampleWrong: "I have two book.",
@@ -210,11 +216,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: 'Missing "to be"',
       vi: 'Thiếu động từ "to be"',
+      th: "อย่าลืม **am / is / are**",
       id: 'Kehilangan "to be"',
     },
     longDescription: {
       en: "Vietnamese often skips the **to be** verb — **Cô ấy giáo viên** is a complete sentence. English always needs one: **She is a teacher**.",
       vi: "Tiếng Việt mình hay bỏ động từ **to be** — **Cô ấy giáo viên** là đủ câu. Tiếng Anh luôn cần có: **She is a teacher**.",
+      th: "ภาษาไทยพูดว่า **เขาเหนื่อย** ได้โดยไม่ต้องมี verb be แต่ภาษาอังกฤษต้องมี **am**, **is**, หรือ **are** เช่น **She is tired**.",
       id: "Bahasa Indonesia sering melewatkan kata kerja **to be** — **Dia guru** adalah kalimat lengkap. Bahasa Inggris selalu membutuhkannya: **She is a teacher**.",
     },
     exampleWrong: "She a teacher.",
@@ -227,11 +235,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Question structure",
       vi: "Cấu trúc câu hỏi",
+      th: "คำถามใช้ **do / does / did**",
       id: "Struktur pertanyaan",
     },
     longDescription: {
       en: "Vietnamese turns a sentence into a question just with **phải không?** or a rising tone. English adds **do / does / did** at the front: **Do you like coffee?**",
       vi: "Tiếng Việt mình chỉ cần thêm **phải không?** hoặc đổi ngữ điệu là thành câu hỏi. Tiếng Anh phải đặt **do / does / did** ở đầu câu: **Do you like coffee?**",
+      th: "ภาษาไทยทำคำถามด้วยน้ำเสียงหรือคำท้ายประโยคได้ แต่ภาษาอังกฤษ A1 มักต้องใส่ **do**, **does**, หรือ **did** หน้า câu เช่น **Do you like coffee?**.",
       id: "Bahasa Indonesia mengubah kalimat menjadi pertanyaan hanya dengan **kan?** atau nada naik. Bahasa Inggris menambahkan **do / does / did** di depan: **Do you like coffee?**",
     },
     exampleWrong: "You like coffee?",
@@ -244,11 +254,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "Articles **a / an / the**",
       vi: "Mạo từ **a / an / the**",
+      th: "ใช้ **a / an / the**",
       id: "Artikel **a / an / the**",
     },
     longDescription: {
       en: "Vietnamese has no articles — nouns stand alone. English almost always needs **a**, **an**, or **the** before a singular countable noun.",
       vi: "Tiếng Việt mình không có mạo từ — danh từ đứng một mình là được. Tiếng Anh gần như luôn cần **a**, **an**, hoặc **the** trước danh từ đếm được số ít.",
+      th: "ภาษาไทยไม่มี article แบบอังกฤษ แต่ภาษาอังกฤษ A1 มักต้องมี **a**, **an**, หรือ **the** หน้าคำนามนับได้เอกพจน์ เช่น **a book**, **an apple**.",
       id: "Bahasa Indonesia tidak memiliki artikel — kata benda berdiri sendiri. Bahasa Inggris hampir selalu membutuhkan **a**, **an**, atau **the** sebelum kata benda tunggal yang bisa dihitung.",
     },
     exampleWrong: "I have car.",
@@ -317,11 +329,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "When to use **to + verb**",
       vi: "Khi nào dùng **to + verb**",
+      th: "ใช้ **want to** + verb",
       id: "Kapan pakai **to + verb**",
     },
     longDescription: {
       en: "Vietnamese doesn't mark an infinitive. English uses **to + verb** after verbs like **want**, **need**, **plan** — but NOT after modals like **can** or **must**.",
       vi: "Tiếng Việt mình không có dạng động từ nguyên mẫu. Tiếng Anh dùng **to + verb** sau **want**, **need**, **plan**, nhưng KHÔNG dùng sau các modal như **can** hoặc **must**.",
+      th: "ภาษาไทยพูดว่า **อยากไป** ได้ตรง ๆ แต่ภาษาอังกฤษใช้ **want to + verb** เช่น **I want to go** ไม่ใช่ **I want go**.",
       id: "Bahasa Indonesia tidak menandai infinitif. Bahasa Inggris menggunakan **to + verb** setelah kata kerja seperti **want**, **need**, **plan** — tapi TIDAK setelah modal seperti **can** atau **must**.",
     },
     exampleWrong: "I want go home.",
@@ -334,11 +348,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "**Can / must** + plain verb",
       vi: "**Can / must** + động từ gốc",
+      th: "หลัง **can** ไม่ใช้ **to**",
       id: "**Can / must** + kata kerja dasar",
     },
     longDescription: {
       en: "Vietnamese **có thể** / **phải** sits right before the verb with no extra word. English modals like **can** and **must** take the plain verb — no **to** in between.",
       vi: "Tiếng Việt mình chỉ cần **có thể** / **phải** rồi động từ. Tiếng Anh các modal như **can**, **must** đi với động từ gốc — không có **to** ở giữa.",
+      th: "ภาษาอังกฤษ A1 ใช้ **can + กริยารูปธรรมดา** โดยไม่ใส่ **to** และไม่เติม **-s** เช่น **She can swim**.",
       id: "Bahasa Indonesia **bisa** / **harus** langsung di depan kata kerja tanpa kata tambahan. Modal bahasa Inggris seperti **can** dan **must** diikuti kata kerja dasar — tanpa **to** di antaranya.",
     },
     exampleWrong: "I can to swim.",
@@ -436,11 +452,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "**There is** vs **there are**",
       vi: "**There is** vs **there are**",
+      th: "ใช้ **There is / There are**",
       id: "**There is** vs **there are**",
     },
     longDescription: {
       en: "Vietnamese **có** stays the same whether there's one thing or many. English switches: **there is** for one, **there are** for two or more.",
       vi: "Tiếng Việt mình dùng **có** cho cả một và nhiều. Tiếng Anh đổi: **there is** với một, **there are** với hai trở lên.",
+      th: "ภาษาไทยใช้ **มี** ได้ทั้งหนึ่งสิ่งและหลายสิ่ง แต่ภาษาอังกฤษต้องเลือก **There is** สำหรับหนึ่งสิ่ง และ **There are** สำหรับหลายสิ่ง.",
       id: "Bahasa Indonesia menggunakan **ada** untuk satu maupun banyak benda. Bahasa Inggris berganti: **there is** untuk satu, **there are** untuk dua atau lebih.",
     },
     exampleWrong: "There are one book on the table.",
@@ -453,11 +471,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
     shortLabel: {
       en: "**Everyone** is singular",
       vi: "**Everyone** là số ít",
+      th: "**everyone** ใช้กริยาเอกพจน์",
       id: "**Everyone** itu tunggal",
     },
     longDescription: {
       en: "Vietnamese **mọi người** feels plural because it means many people. In English, **everyone** and **everybody** take a singular verb: **everyone is happy**.",
       vi: "Tiếng Việt mình **mọi người** nghe như số nhiều vì nói về nhiều người. Tiếng Anh **everyone** và **everybody** đi với động từ số ít: **everyone is happy**.",
+      th: "**everyone** หมายถึงทุกคน แต่ในไวยากรณ์อังกฤษถือเป็นเอกพจน์ จึงใช้ **is** หรือกริยาเติม **-s** เช่น **Everyone likes it**.",
       id: "Bahasa Indonesia **semua orang** terasa jamak karena artinya banyak orang. Dalam bahasa Inggris, **everyone** dan **everybody** memakai kata kerja tunggal: **everyone is happy**.",
     },
     exampleWrong: "Everyone are happy.",
