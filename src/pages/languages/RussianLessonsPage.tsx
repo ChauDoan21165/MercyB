@@ -1,157 +1,185 @@
-// src/pages/languages/RussianLessonsPage.tsx — /languages/russian
-import { useMemo } from "react";
 import { Link } from "react-router-dom";
-
+import { useUiLanguage } from "@/contexts/UiLanguageContext";
 import * as Course from "@/languages/russian";
 
-type LessonRecord = Record<string, unknown>;
 type UiLang = "vi" | "en";
+type LessonLike = Record<string, unknown>;
 
-const COURSE = Course as Record<string, unknown>;
+const FALLBACK_LESSONS: LessonLike[] = [
+  { id: 'russian-starter-1', level: 'A1', titleVi: 'Chào hỏi Russian cơ bản', titleEn: 'Basic Russian greetings', descriptionVi: 'Làm quen với chữ Cyrillic và những câu chào hỏi đầu tiên.', descriptionEn: 'Start with Cyrillic and the first everyday greetings.' },
+  { id: 'russian-starter-2', level: 'A1', titleVi: 'Tên và giới thiệu', titleEn: 'Names and introductions', descriptionVi: 'Nói tên, quê quán, công việc, và câu lịch sự đơn giản.', descriptionEn: 'Say your name, where you are from, your work, and simple polite phrases.' },
+  { id: 'russian-starter-3', level: 'A1', titleVi: 'Đọc chữ Cyrillic căn bản', titleEn: 'Basic Cyrillic reading', descriptionVi: 'Nhận diện chữ cái phổ biến và đọc chậm, rõ.', descriptionEn: 'Recognize common letters and read slowly and clearly.' },
+];
 
-function asRecord(value: unknown): LessonRecord | null {
-  return value && typeof value === "object" && !Array.isArray(value)
-    ? (value as LessonRecord)
-    : null;
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
-function asArray(value: unknown): LessonRecord[] {
-  return Array.isArray(value) ? value.filter((item): item is LessonRecord => Boolean(asRecord(item))) : [];
+function textValue(value: unknown): string | undefined {
+  if (typeof value === "string" && value.trim()) return value.trim();
+  if (typeof value === "number") return String(value);
+  return undefined;
 }
 
-function collectLessons(): LessonRecord[] {
+function chooseUiLang(api: unknown): UiLang {
+  if (api === "en" || api === "english") return "en";
+  if (api === "vi" || api === "vietnamese") return "vi";
+
+  const record = isRecord(api) ? api : {};
   const candidates = [
-    COURSE.allRussianLessons,
-    COURSE.russianLessons,
-    COURSE.lessons,
-    COURSE.default,
+    record.uiLang,
+    record.language,
+    record.lang,
+    record.locale,
+    record.currentLanguage,
+    record.currentLocale,
+    record.selectedLanguage,
+    record.displayLanguage,
+    record.translationLanguage,
+    record.value,
   ];
 
   for (const candidate of candidates) {
-    const arr = asArray(candidate);
-    if (arr.length > 0) return arr;
+    const value = textValue(candidate)?.toLowerCase();
+    if (!value) continue;
+    if (value === "en" || value.startsWith("en-") || value.includes("english")) return "en";
+    if (value === "vi" || value.startsWith("vi-") || value.includes("vietnamese")) return "vi";
   }
 
-  return [];
+  if (typeof window !== "undefined") {
+    const storageKeys = [
+      "uiLanguage",
+      "uiLang",
+      "language",
+      "locale",
+      "mercyblade-ui-language",
+      "mercy-ui-language",
+      "mb-ui-language",
+    ];
+
+    for (const key of storageKeys) {
+      const value = window.localStorage.getItem(key)?.toLowerCase();
+      if (!value) continue;
+      if (value === "en" || value.startsWith("en-") || value.includes("english")) return "en";
+      if (value === "vi" || value.startsWith("vi-") || value.includes("vietnamese")) return "vi";
+    }
+  }
+
+  return "vi";
 }
 
-const ALL_LESSONS = collectLessons();
-
-function textFrom(value: unknown, uiLang: UiLang): string | null {
-  if (typeof value === "string" && value.trim()) return value;
-  const obj = asRecord(value);
-  if (!obj) return null;
-  const preferred = obj[uiLang];
-  if (typeof preferred === "string" && preferred.trim()) return preferred;
-  const english = obj.en;
-  if (typeof english === "string" && english.trim()) return english;
-  const vietnamese = obj.vi;
-  if (typeof vietnamese === "string" && vietnamese.trim()) return vietnamese;
-  return null;
+function looksLikeLesson(value: unknown): value is LessonLike {
+  if (!isRecord(value)) return false;
+  const keys = [
+    "id",
+    "slug",
+    "level",
+    "title",
+    "titleVi",
+    "titleEn",
+    "name",
+    "topic",
+    "description",
+    "descriptionVi",
+    "descriptionEn",
+    "summary",
+    "objective",
+    "phrases",
+    "dialogue",
+    "vocabulary",
+  ];
+  return keys.filter((key) => key in value).length >= 2;
 }
 
-function pickText(lesson: LessonRecord, uiLang: UiLang, keys: string[]): string | null {
+function collectLessons(value: unknown, depth = 0, seen = new Set<unknown>()): LessonLike[] {
+  if (depth > 4) return [];
+
+  if (Array.isArray(value)) {
+    const lessonRecords = value.filter(looksLikeLesson);
+    if (lessonRecords.length > 0) return lessonRecords;
+    return value.flatMap((item) => collectLessons(item, depth + 1, seen));
+  }
+
+  if (!isRecord(value) || seen.has(value)) return [];
+  seen.add(value);
+
+  return Object.entries(value)
+    .filter(([key]) => !key.startsWith("__"))
+    .flatMap(([, child]) => collectLessons(child, depth + 1, seen));
+}
+
+function pickText(lesson: LessonLike, keys: string[], fallback: string): string {
   for (const key of keys) {
-    const value = textFrom(lesson[key], uiLang);
+    const value = textValue(lesson[key]);
     if (value) return value;
   }
-  return null;
+  return fallback;
 }
 
-function lessonTitle(lesson: LessonRecord, uiLang: UiLang, index: number): string {
-  return (
-    pickText(lesson, uiLang, [
-      "title",
-      "title_" + uiLang,
-      "titleEn",
-      "title_en",
-      "name",
-      "label",
-    ]) ?? "Russian lesson " + String(index + 1)
-  );
+function dedupeLessons(lessons: LessonLike[]): LessonLike[] {
+  const seen = new Set<string>();
+  const out: LessonLike[] = [];
+
+  for (const lesson of lessons) {
+    const key = pickText(
+      lesson,
+      ["id", "slug", "title", "titleEn", "titleVi", "name", "topic"],
+      `lesson-${out.length}`,
+    );
+
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(lesson);
+  }
+
+  return out;
 }
 
-function lessonDescription(lesson: LessonRecord, uiLang: UiLang): string {
-  return (
-    pickText(lesson, uiLang, [
-      "description",
-      "description_" + uiLang,
-      "summary",
-      "summary_" + uiLang,
-      "goal",
-      "goal_" + uiLang,
-      "learner_goal",
-      "learner_goal_" + uiLang,
-      "intro",
-      "intro_" + uiLang,
-    ]) ?? "Cyrillic is the primary script; romanization is only a temporary reading aid where present."
-  );
-}
-
-function lessonLevel(lesson: LessonRecord): string {
-  const level = lesson.level ?? lesson.cefr ?? lesson.cefrLevel;
-  return typeof level === "string" && level.trim() ? level : "Lesson";
-}
+const COURSE_LESSONS = dedupeLessons(collectLessons(Course as Record<string, unknown>));
+const DISPLAY_LESSONS = (COURSE_LESSONS.length > 0 ? COURSE_LESSONS : FALLBACK_LESSONS).slice(0, 80);
 
 export default function RussianLessonsPage() {
-  const uiLang: UiLang = "vi";
+  const uiApi = useUiLanguage();
+  const uiLang = chooseUiLang(uiApi);
 
-  const lessons = useMemo(() => ALL_LESSONS.slice(0, 96), []);
+  const intro = uiLang === "en" ? "Practical Russian lessons for learners who need Cyrillic, daily-life phrases, work situations, and clear communication." : "Bài học Russian thực dụng cho người học cần chữ Cyrillic, mẫu câu đời sống, công việc, và giao tiếp rõ ràng.";
+  const scriptNote = uiLang === "en" ? "Cyrillic is the primary script; romanization is only a temporary reading aid where present." : "Cyrillic là chữ chính; romanization chỉ là cầu đọc tạm thời khi có.";
 
   return (
-    <main className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-10">
-      <nav aria-label="Language navigation">
-        <Link
-          to="/languages"
-          className="text-sm font-semibold text-blue-700 underline-offset-4 hover:underline"
-        >
-          ← Xem ngôn ngữ khác / View other languages
-        </Link>
-      </nav>
+    <main className="mx-auto max-w-6xl px-4 py-10">
+      <Link to="/languages" className="font-semibold text-blue-700 hover:text-blue-900">
+        ← {uiLang === "en" ? "View other languages" : "Xem ngôn ngữ khác"} / {uiLang === "en" ? "Xem ngôn ngữ khác" : "View other languages"}
+      </Link>
 
-      <section className="rounded-3xl bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 p-8 text-white shadow-xl">
-        <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-200">
-          Русский
-        </p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight">
-          Russian lessons
-        </h1>
-        <p className="mt-4 max-w-3xl text-lg text-slate-100">
-          {uiLang === "vi" ? "Bài học Russian thực dụng cho người học cần chữ Cyrillic, mẫu câu đời sống, công việc, và giao tiếp rõ ràng." : "Practical Russian lessons with Cyrillic-first reading, everyday phrases, work contexts, and clear communication practice."}
-        </p>
-        <p className="mt-3 max-w-3xl text-sm text-slate-300">
-          Cyrillic is the primary script; romanization is only a temporary reading aid where present.
-        </p>
+      <section className="mt-8 rounded-3xl bg-slate-950 p-8 text-white shadow-xl">
+        <p className="text-sm font-bold uppercase tracking-[0.35em] text-blue-100">РУССКИЙ</p>
+        <h1 className="mt-4 text-4xl font-black">Russian lessons</h1>
+        <p className="mt-5 max-w-4xl text-xl leading-8 text-slate-100">{intro}</p>
+        <p className="mt-4 max-w-4xl text-base leading-7 text-slate-300">{scriptNote}</p>
       </section>
 
-      <section aria-label="Russian lesson list" className="grid gap-4 md:grid-cols-2">
-        {lessons.length === 0 ? (
-          <article className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-amber-900">
-            <h2 className="font-semibold">Lessons are being prepared</h2>
-            <p className="mt-2 text-sm">
-              The Russian route is public, but no lesson array was exported yet.
-            </p>
-          </article>
-        ) : (
-          lessons.map((lesson, index) => (
-            <article
-              key={String(lesson.id ?? lesson.slug ?? index)}
-              className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
-            >
+      <section className="mt-8 grid gap-5 md:grid-cols-2">
+        {DISPLAY_LESSONS.map((lesson, index) => {
+          const title = uiLang === "en"
+            ? pickText(lesson, ["titleEn", "title", "name", "topic", "slug", "id"], `Russian lesson`)
+            : pickText(lesson, ["titleVi", "title", "name", "topic", "slug", "id"], `Bài học Russian`);
+
+          const description = uiLang === "en"
+            ? pickText(lesson, ["descriptionEn", "description", "summary", "objective"], scriptNote)
+            : pickText(lesson, ["descriptionVi", "description", "summary", "objective"], scriptNote);
+
+          const level = pickText(lesson, ["level", "cefr", "tier"], "A1");
+
+          return (
+            <article key={`${String(pickText(lesson, ["id", "slug"], "lesson"))}-${index}`} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
               <div className="flex items-start justify-between gap-3">
-                <h2 className="text-xl font-semibold text-slate-950">
-                  {lessonTitle(lesson, uiLang, index)}
-                </h2>
-                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
-                  {lessonLevel(lesson)}
-                </span>
+                <h2 className="text-2xl font-bold text-slate-950">{title}</h2>
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-sm font-bold text-slate-700">{level}</span>
               </div>
-              <p className="mt-3 text-sm leading-6 text-slate-700">
-                {lessonDescription(lesson, uiLang)}
-              </p>
+              <p className="mt-4 leading-7 text-slate-700">{description}</p>
             </article>
-          ))
-        )}
+          );
+        })}
       </section>
     </main>
   );
