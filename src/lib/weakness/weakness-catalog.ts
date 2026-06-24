@@ -146,11 +146,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
       shortLabel: {
         en: "Subject-verb agreement",
         vi: "Chia động từ theo chủ ngữ",
+        th: "เติม -s กับ he/she/it",
         id: "Kesesuaian subjek-kata kerja",
       },
       longDescription: {
         en: "Vietnamese verbs don't change form for person. English adds **-s** to the verb when the subject is **he**, **she**, or **it**.",
         vi: "Động từ tiếng Việt không thay đổi theo ngôi. Trong tiếng Anh, động từ thêm **-s** khi chủ ngữ là **he**, **she**, **it**.",
+        th: "ภาษาไทยไม่เปลี่ยนรูปกริยาตามประธาน แต่ภาษาอังกฤษ A1 ต้องเติม **-s** หรือ **-es** เมื่อประธานเป็น **he**, **she**, หรือ **it** เช่น **She goes**.",
         id: "Kata kerja bahasa Indonesia tidak berubah bentuk untuk orang. Bahasa Inggris menambahkan **-s** ke kata kerja saat subjeknya **he**, **she**, atau **it**.",
       },
       exampleWrong: "She go to school every day.",
@@ -162,11 +164,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
       shortLabel: {
         en: "Past tense with **-ed**",
         vi: "Thì quá khứ với **-ed**",
+        th: "อดีตด้วย **-ed**",
         id: "Past tense dengan **-ed**",
       },
       longDescription: {
         en: "Vietnamese shows past time with words like **hôm qua** or **đã** — the verb doesn't change. English changes the verb itself: **work → worked**.",
         vi: "Tiếng Việt diễn tả quá khứ bằng các từ như **hôm qua** hoặc **đã**, không đổi hình thức động từ. Tiếng Anh thay đổi chính động từ: **work → worked**.",
+        th: "ภาษาไทยใช้คำบอกเวลาอย่าง **เมื่อวาน** หรือ **แล้ว** เพื่อบอกอดีต แต่ภาษาอังกฤษ A1 ต้องเปลี่ยนกริยาเอง เช่น **work → worked**.",
         id: "Bahasa Indonesia menunjukkan waktu lampau dengan kata seperti **kemarin** atau **sudah** — kata kerjanya tidak berubah. Bahasa Inggris mengubah kata kerjanya sendiri: **work → worked**.",
       },
       exampleWrong: "Yesterday I work late.",
@@ -178,11 +182,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
       shortLabel: {
         en: "Plural nouns with **-s**",
         vi: "Danh từ số nhiều với **-s**",
+        th: "คำนามหลายชิ้นเติม **-s**",
         id: "Kata benda jamak dengan **-s**",
       },
       longDescription: {
         en: "Vietnamese nouns don't change when counting more than one — markers like **các** or **những** do the work. English adds **-s** to most nouns when there's more than one: **book → books**.",
         vi: "Danh từ tiếng Việt không đổi khi đếm nhiều hơn một — dấu hiệu số nhiều nằm ở các từ như **các** hoặc **những**. Tiếng Anh thêm **-s** vào hầu hết danh từ khi số lượng nhiều hơn một: **book → books**.",
+        th: "ภาษาไทยมักไม่เปลี่ยนรูปคำนามเมื่อมีหลายชิ้น แต่ภาษาอังกฤษ A1 เติม **-s** หรือ **-es** กับคำนามพหูพจน์ เช่น **book → books**.",
         id: "Kata benda bahasa Indonesia tidak berubah saat menghitung lebih dari satu — penanda seperti **para** atau **beberapa** yang melakukan tugas itu. Bahasa Inggris menambahkan **-s** ke sebagian besar kata benda saat jumlahnya lebih dari satu: **book → books**.",
       },
       exampleWrong: "I have two book.",
@@ -194,11 +200,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
       shortLabel: {
         en: 'Missing "to be"',
         vi: 'Thiếu động từ "to be"',
+        th: "อย่าลืม **am / is / are**",
         id: 'Kehilangan "to be"',
       },
       longDescription: {
         en: "Vietnamese often skips the **to be** verb — **Cô ấy giáo viên** is a complete sentence. English always needs one: **She is a teacher**.",
         vi: "Tiếng Việt mình hay bỏ động từ **to be** — **Cô ấy giáo viên** là đủ câu. Tiếng Anh luôn cần có: **She is a teacher**.",
+        th: "ภาษาไทยพูดว่า **เขาเหนื่อย** ได้โดยไม่ต้องมี verb be แต่ภาษาอังกฤษต้องมี **am**, **is**, หรือ **are** เช่น **She is tired**.",
         id: "Bahasa Indonesia sering melewatkan kata kerja **to be** — **Dia guru** adalah kalimat lengkap. Bahasa Inggris selalu membutuhkannya: **She is a teacher**.",
       },
       exampleWrong: "She a teacher.",
@@ -210,11 +218,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
       shortLabel: {
         en: "Question structure",
         vi: "Cấu trúc câu hỏi",
+        th: "คำถามใช้ **do / does / did**",
         id: "Struktur pertanyaan",
       },
       longDescription: {
         en: "Vietnamese turns a sentence into a question just with **phải không?** or a rising tone. English adds **do / does / did** at the front: **Do you like coffee?**",
         vi: "Tiếng Việt mình chỉ cần thêm **phải không?** hoặc đổi ngữ điệu là thành câu hỏi. Tiếng Anh phải đặt **do / does / did** ở đầu câu: **Do you like coffee?**",
+        th: "ภาษาไทยทำคำถามด้วยน้ำเสียงหรือคำท้ายประโยคได้ แต่ภาษาอังกฤษ A1 มักต้องใส่ **do**, **does**, หรือ **did** หน้า câu เช่น **Do you like coffee?**.",
         id: "Bahasa Indonesia mengubah kalimat menjadi pertanyaan hanya dengan **kan?** atau nada naik. Bahasa Inggris menambahkan **do / does / did** di depan: **Do you like coffee?**",
       },
       exampleWrong: "You like coffee?",
@@ -226,11 +236,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
       shortLabel: {
         en: "Articles **a / an / the**",
         vi: "Mạo từ **a / an / the**",
+        th: "ใช้ **a / an / the**",
         id: "Artikel **a / an / the**",
       },
       longDescription: {
         en: "Vietnamese has no articles — nouns stand alone. English almost always needs **a**, **an**, or **the** before a singular countable noun.",
         vi: "Tiếng Việt mình không có mạo từ — danh từ đứng một mình là được. Tiếng Anh gần như luôn cần **a**, **an**, hoặc **the** trước danh từ đếm được số ít.",
+        th: "ภาษาไทยไม่มี article แบบอังกฤษ แต่ภาษาอังกฤษ A1 มักต้องมี **a**, **an**, หรือ **the** หน้าคำนามนับได้เอกพจน์ เช่น **a book**, **an apple**.",
         id: "Bahasa Indonesia tidak memiliki artikel — kata benda berdiri sendiri. Bahasa Inggris hampir selalu membutuhkan **a**, **an**, atau **the** sebelum kata benda tunggal yang bisa dihitung.",
       },
       exampleWrong: "I have car.",
@@ -290,11 +302,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
       shortLabel: {
         en: "When to use **to + verb**",
         vi: "Khi nào dùng **to + verb**",
+        th: "ใช้ **want to** + verb",
         id: "Kapan pakai **to + verb**",
       },
       longDescription: {
         en: "Vietnamese doesn't mark an infinitive. English uses **to + verb** after verbs like **want**, **need**, **plan** — but NOT after modals like **can** or **must**.",
         vi: "Tiếng Việt mình không có dạng động từ nguyên mẫu. Tiếng Anh dùng **to + verb** sau **want**, **need**, **plan**, nhưng KHÔNG dùng sau các modal như **can** hoặc **must**.",
+        th: "ภาษาไทยพูดว่า **อยากไป** ได้ตรง ๆ แต่ภาษาอังกฤษใช้ **want to + verb** เช่น **I want to go** ไม่ใช่ **I want go**.",
         id: "Bahasa Indonesia tidak menandai infinitif. Bahasa Inggris menggunakan **to + verb** setelah kata kerja seperti **want**, **need**, **plan** — tapi TIDAK setelah modal seperti **can** atau **must**.",
       },
       exampleWrong: "I want go home.",
@@ -306,11 +320,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
       shortLabel: {
         en: "**Can / must** + plain verb",
         vi: "**Can / must** + động từ gốc",
+        th: "หลัง **can** ไม่ใช้ **to**",
         id: "**Can / must** + kata kerja dasar",
       },
       longDescription: {
         en: "Vietnamese **có thể** / **phải** sits right before the verb with no extra word. English modals like **can** and **must** take the plain verb — no **to** in between.",
         vi: "Tiếng Việt mình chỉ cần **có thể** / **phải** rồi động từ. Tiếng Anh các modal như **can**, **must** đi với động từ gốc — không có **to** ở giữa.",
+        th: "ภาษาอังกฤษ A1 ใช้ **can + กริยารูปธรรมดา** โดยไม่ใส่ **to** และไม่เติม **-s** เช่น **She can swim**.",
         id: "Bahasa Indonesia **bisa** / **harus** langsung di depan kata kerja tanpa kata tambahan. Modal bahasa Inggris seperti **can** dan **must** diikuti kata kerja dasar — tanpa **to** di antaranya.",
       },
       exampleWrong: "I can to swim.",
@@ -402,11 +418,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
       shortLabel: {
         en: "**There is** vs **there are**",
         vi: "**There is** vs **there are**",
+        th: "ใช้ **There is / There are**",
         id: "**There is** vs **there are**",
       },
       longDescription: {
         en: "Vietnamese **có** stays the same whether there's one thing or many. English switches: **there is** for one, **there are** for two or more.",
         vi: "Tiếng Việt mình dùng **có** cho cả một và nhiều. Tiếng Anh đổi: **there is** với một, **there are** với hai trở lên.",
+        th: "ภาษาไทยใช้ **มี** ได้ทั้งหนึ่งสิ่งและหลายสิ่ง แต่ภาษาอังกฤษต้องเลือก **There is** สำหรับหนึ่งสิ่ง และ **There are** สำหรับหลายสิ่ง.",
         id: "Bahasa Indonesia menggunakan **ada** untuk satu maupun banyak benda. Bahasa Inggris berganti: **there is** untuk satu, **there are** untuk dua atau lebih.",
       },
       exampleWrong: "There are one book on the table.",
@@ -418,11 +436,13 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
       shortLabel: {
         en: "**Everyone** is singular",
         vi: "**Everyone** là số ít",
+        th: "**everyone** ใช้กริยาเอกพจน์",
         id: "**Everyone** itu tunggal",
       },
       longDescription: {
         en: "Vietnamese **mọi người** feels plural because it means many people. In English, **everyone** and **everybody** take a singular verb: **everyone is happy**.",
         vi: "Tiếng Việt mình **mọi người** nghe như số nhiều vì nói về nhiều người. Tiếng Anh **everyone** và **everybody** đi với động từ số ít: **everyone is happy**.",
+        th: "**everyone** หมายถึงทุกคน แต่ในไวยากรณ์อังกฤษถือเป็นเอกพจน์ จึงใช้ **is** หรือกริยาเติม **-s** เช่น **Everyone likes it**.",
         id: "Bahasa Indonesia **semua orang** terasa jamak karena artinya banyak orang. Dalam bahasa Inggris, **everyone** dan **everybody** memakai kata kerja tunggal: **everyone is happy**.",
       },
       exampleWrong: "Everyone are happy.",
@@ -1180,85 +1200,85 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
       linkedRoomId: null,
     },
   id_c2_inversion_emphasis: {
-      tag: "id_c2_inversion_emphasis",
-      shortLabel: {
-        en: "Inversion for emphasis",
-        vi: "Đảo ngữ nhấn mạnh",
-        id: "Inversi untuk penekanan",
+        tag: "id_c2_inversion_emphasis",
+        shortLabel: {
+          en: "Inversion for emphasis",
+          vi: "Đảo ngữ nhấn mạnh",
+          id: "Inversi untuk penekanan",
+        },
+        longDescription: {
+          en: "Indonesian fronts adverbs without changing word order (**Mungkin dia sudah pergi** keeps subject-verb intact). English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversion signals emphasis and formality — a C2 feature that separates proficient from native-like writing.",
+          vi: "Tiếng Việt đưa trạng từ lên đầu câu mà không đảo trật tự từ (**Có lẽ anh ấy đã đi rồi** giữ nguyên chủ ngữ-động từ). Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế như **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — kỹ năng cấp C2 phân biệt người thành thạo với người viết như bản ngữ.",
+          id: "Bahasa Indonesia meletakkan kata keterangan di depan tanpa mengubah urutan kata (**Mungkin dia sudah pergi** tetap subjek-kata kerja). Bahasa Inggris membalik subjek dan kata bantu setelah kata keterangan negatif/restriktif seperti **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversi menandakan penekanan dan formalitas — fitur level C2 yang membedakan penulis mahir dari penulis seperti penutur asli.",
+        },
+        exampleWrong: "Never I have seen such dedication.",
+        exampleRight: "Never have I seen such dedication.",
+        linkedRoomId: null,
       },
-      longDescription: {
-        en: "Indonesian fronts adverbs without changing word order (**Mungkin dia sudah pergi** keeps subject-verb intact). English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversion signals emphasis and formality — a C2 feature that separates proficient from native-like writing.",
-        vi: "Tiếng Việt đưa trạng từ lên đầu câu mà không đảo trật tự từ (**Có lẽ anh ấy đã đi rồi** giữ nguyên chủ ngữ-động từ). Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế như **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — kỹ năng cấp C2 phân biệt người thành thạo với người viết như bản ngữ.",
-        id: "Bahasa Indonesia meletakkan kata keterangan di depan tanpa mengubah urutan kata (**Mungkin dia sudah pergi** tetap subjek-kata kerja). Bahasa Inggris membalik subjek dan kata bantu setelah kata keterangan negatif/restriktif seperti **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversi menandakan penekanan dan formalitas — fitur level C2 yang membedakan penulis mahir dari penulis seperti penutur asli.",
-      },
-      exampleWrong: "Never I have seen such dedication.",
-      exampleRight: "Never have I seen such dedication.",
-      linkedRoomId: null,
-    },
   id_c2_cleft_focus: {
-      tag: "id_c2_cleft_focus",
-      shortLabel: {
-        en: "Cleft sentences for focus",
-        vi: "Câu chẻ nhấn mạnh",
-        id: "Kalimat cleft untuk fokus",
+        tag: "id_c2_cleft_focus",
+        shortLabel: {
+          en: "Cleft sentences for focus",
+          vi: "Câu chẻ nhấn mạnh",
+          id: "Kalimat cleft untuk fokus",
+        },
+        longDescription: {
+          en: "Indonesian uses **yang** to highlight (**Yang memecahkan jendela itu John**). English has a richer system: **It-clefts** (**It was John who broke the window**) pull one element into focus; **Wh-clefts** (**What I need is more time**) package a whole idea as the subject. At C2, choosing the right cleft structure controls what the reader notices first.",
+          vi: "Tiếng Việt dùng **chính… là…** để nhấn mạnh (**Chính John là người làm vỡ cửa sổ**). Tiếng Anh có hệ thống phong phú hơn: **It-cleft** (**It was John who broke the window**) kéo một yếu tố vào tiêu điểm; **Wh-cleft** (**What I need is more time**) đóng gói cả một ý thành chủ ngữ. Ở cấp C2, chọn đúng cấu trúc cleft cho phép bạn kiểm soát chính xác điều người đọc chú ý đầu tiên.",
+          id: "Bahasa Indonesia menggunakan **yang** untuk menyoroti (**Yang memecahkan jendela itu John**). Bahasa Inggris punya sistem yang lebih kaya: **It-cleft** (**It was John who broke the window**) menarik satu elemen ke fokus; **Wh-cleft** (**What I need is more time**) mengemas seluruh ide sebagai subjek. Di level C2, memilih struktur cleft yang tepat memungkinkan kamu mengontrol persis apa yang pertama kali pembaca perhatikan.",
+        },
+        exampleWrong: "What I need it is more time.",
+        exampleRight: "What I need is more time.",
+        linkedRoomId: null,
       },
-      longDescription: {
-        en: "Indonesian uses **yang** to highlight (**Yang memecahkan jendela itu John**). English has a richer system: **It-clefts** (**It was John who broke the window**) pull one element into focus; **Wh-clefts** (**What I need is more time**) package a whole idea as the subject. At C2, choosing the right cleft structure controls what the reader notices first.",
-        vi: "Tiếng Việt dùng **chính… là…** để nhấn mạnh (**Chính John là người làm vỡ cửa sổ**). Tiếng Anh có hệ thống phong phú hơn: **It-cleft** (**It was John who broke the window**) kéo một yếu tố vào tiêu điểm; **Wh-cleft** (**What I need is more time**) đóng gói cả một ý thành chủ ngữ. Ở cấp C2, chọn đúng cấu trúc cleft cho phép bạn kiểm soát chính xác điều người đọc chú ý đầu tiên.",
-        id: "Bahasa Indonesia menggunakan **yang** untuk menyoroti (**Yang memecahkan jendela itu John**). Bahasa Inggris punya sistem yang lebih kaya: **It-cleft** (**It was John who broke the window**) menarik satu elemen ke fokus; **Wh-cleft** (**What I need is more time**) mengemas seluruh ide sebagai subjek. Di level C2, memilih struktur cleft yang tepat memungkinkan kamu mengontrol persis apa yang pertama kali pembaca perhatikan.",
-      },
-      exampleWrong: "What I need it is more time.",
-      exampleRight: "What I need is more time.",
-      linkedRoomId: null,
-    },
   id_c2_mixed_conditional: {
-      tag: "id_c2_mixed_conditional",
-      shortLabel: {
-        en: "Mixed conditionals",
-        vi: "Câu điều kiện hỗn hợp",
-        id: "Conditional campuran",
+        tag: "id_c2_mixed_conditional",
+        shortLabel: {
+          en: "Mixed conditionals",
+          vi: "Câu điều kiện hỗn hợp",
+          id: "Conditional campuran",
+        },
+        longDescription: {
+          en: "Indonesian expresses hypotheticals with **kalau** or **seandainya** without tense shifts. English mixed conditionals combine past condition with present result (**If I had studied, I would be a doctor now**) or present condition with past result (**If I were taller, I would have joined the team**). Matching the tense pair is a C2 hallmark.",
+          vi: "Tiếng Việt diễn tả giả định với **nếu** hoặc **giá như** không cần lùi thì. Câu điều kiện hỗn hợp trong tiếng Anh kết hợp điều kiện quá khứ với kết quả hiện tại (**If I had studied, I would be a doctor now**) hoặc điều kiện hiện tại với kết quả quá khứ (**If I were taller, I would have joined the team**). Ghép đúng cặp thì là dấu ấn của trình độ C2.",
+          id: "Bahasa Indonesia mengungkapkan pengandaian dengan **kalau** atau **seandainya** tanpa pergeseran tenses. Conditional campuran dalam bahasa Inggris menggabungkan syarat lampau dengan hasil sekarang (**If I had studied, I would be a doctor now**) atau syarat sekarang dengan hasil lampau (**If I were taller, I would have joined the team**). Mencocokkan pasangan tense dengan tepat adalah ciri khas level C2.",
+        },
+        exampleWrong: "If I had studied harder at school, I will be a doctor now.",
+        exampleRight: "If I had studied harder at school, I would be a doctor now.",
+        linkedRoomId: null,
       },
-      longDescription: {
-        en: "Indonesian expresses hypotheticals with **kalau** or **seandainya** without tense shifts. English mixed conditionals combine past condition with present result (**If I had studied, I would be a doctor now**) or present condition with past result (**If I were taller, I would have joined the team**). Matching the tense pair is a C2 hallmark.",
-        vi: "Tiếng Việt diễn tả giả định với **nếu** hoặc **giá như** không cần lùi thì. Câu điều kiện hỗn hợp trong tiếng Anh kết hợp điều kiện quá khứ với kết quả hiện tại (**If I had studied, I would be a doctor now**) hoặc điều kiện hiện tại với kết quả quá khứ (**If I were taller, I would have joined the team**). Ghép đúng cặp thì là dấu ấn của trình độ C2.",
-        id: "Bahasa Indonesia mengungkapkan pengandaian dengan **kalau** atau **seandainya** tanpa pergeseran tenses. Conditional campuran dalam bahasa Inggris menggabungkan syarat lampau dengan hasil sekarang (**If I had studied, I would be a doctor now**) atau syarat sekarang dengan hasil lampau (**If I were taller, I would have joined the team**). Mencocokkan pasangan tense dengan tepat adalah ciri khas level C2.",
-      },
-      exampleWrong: "If I had studied harder at school, I will be a doctor now.",
-      exampleRight: "If I had studied harder at school, I would be a doctor now.",
-      linkedRoomId: null,
-    },
   id_c2_register_consistency: {
-      tag: "id_c2_register_consistency",
-      shortLabel: {
-        en: "Register consistency",
-        vi: "Nhất quán văn phong",
-        id: "Konsistensi register",
+        tag: "id_c2_register_consistency",
+        shortLabel: {
+          en: "Register consistency",
+          vi: "Nhất quán văn phong",
+          id: "Konsistensi register",
+        },
+        longDescription: {
+          en: "Indonesian switches between formal and informal registers more freely than English (**saya** → **gue** mid-conversation). In English, mixing **gonna** with **furthermore**, or **kids** with **offspring**, in the same paragraph sounds jarring. C2 writers maintain one register throughout a text.",
+          vi: "Tiếng Việt chuyển đổi giữa văn phong trang trọng và thân mật tự do hơn tiếng Anh (**tôi** → **tao** giữa câu chuyện). Trong tiếng Anh, pha trộn **gonna** với **furthermore**, hoặc **kids** với **offspring**, trong cùng một đoạn nghe rất chói tai. Người viết C2 duy trì một văn phong nhất quán xuyên suốt văn bản.",
+          id: "Bahasa Indonesia berganti antara register formal dan informal lebih bebas daripada bahasa Inggris (**saya** → **gue** di tengah percakapan). Dalam bahasa Inggris, mencampur **gonna** dengan **furthermore**, atau **kids** dengan **offspring**, dalam paragraf yang sama terdengar janggal. Penulis C2 menjaga satu register konsisten di seluruh teks.",
+        },
+        exampleWrong: "The aforementioned findings are super interesting and you're gonna love them.",
+        exampleRight: "The aforementioned findings are highly compelling and readers will find them valuable.",
+        linkedRoomId: null,
       },
-      longDescription: {
-        en: "Indonesian switches between formal and informal registers more freely than English (**saya** → **gue** mid-conversation). In English, mixing **gonna** with **furthermore**, or **kids** with **offspring**, in the same paragraph sounds jarring. C2 writers maintain one register throughout a text.",
-        vi: "Tiếng Việt chuyển đổi giữa văn phong trang trọng và thân mật tự do hơn tiếng Anh (**tôi** → **tao** giữa câu chuyện). Trong tiếng Anh, pha trộn **gonna** với **furthermore**, hoặc **kids** với **offspring**, trong cùng một đoạn nghe rất chói tai. Người viết C2 duy trì một văn phong nhất quán xuyên suốt văn bản.",
-        id: "Bahasa Indonesia berganti antara register formal dan informal lebih bebas daripada bahasa Inggris (**saya** → **gue** di tengah percakapan). Dalam bahasa Inggris, mencampur **gonna** dengan **furthermore**, atau **kids** dengan **offspring**, dalam paragraf yang sama terdengar janggal. Penulis C2 menjaga satu register konsisten di seluruh teks.",
-      },
-      exampleWrong: "The aforementioned findings are super interesting and you're gonna love them.",
-      exampleRight: "The aforementioned findings are highly compelling and readers will find them valuable.",
-      linkedRoomId: null,
-    },
   id_c2_hedging_academic: {
-      tag: "id_c2_hedging_academic",
-      shortLabel: {
-        en: "Academic hedging",
-        vi: "Giảm nhẹ học thuật",
-        id: "Hedging akademik",
+        tag: "id_c2_hedging_academic",
+        shortLabel: {
+          en: "Academic hedging",
+          vi: "Giảm nhẹ học thuật",
+          id: "Hedging akademik",
+        },
+        longDescription: {
+          en: "Indonesian academic writing often states claims directly (**hal ini membuktikan bahwa…**). English academic convention softens claims with hedging: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. At C2, knowing when and how to hedge is as important as knowing the grammar.",
+          vi: "Văn học thuật tiếng Việt thường nêu nhận định trực tiếp (**điều này chứng minh rằng…**). Quy ước học thuật tiếng Anh làm mềm nhận định bằng giảm nhẹ: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. Ở cấp C2, biết khi nào và cách giảm nhẹ cũng quan trọng như biết ngữ pháp.",
+          id: "Tulisan akademik bahasa Indonesia sering menyatakan klaim secara langsung (**hal ini membuktikan bahwa…**). Konvensi akademik bahasa Inggris melembutkan klaim dengan hedging: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. Di level C2, tahu kapan dan bagaimana melakukan hedging sama pentingnya dengan tahu tata bahasa.",
+        },
+        exampleWrong: "This proves that social media causes depression in teenagers.",
+        exampleRight: "This suggests that social media may contribute to depressive symptoms in some teenagers.",
+        linkedRoomId: null,
       },
-      longDescription: {
-        en: "Indonesian academic writing often states claims directly (**hal ini membuktikan bahwa…**). English academic convention softens claims with hedging: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. At C2, knowing when and how to hedge is as important as knowing the grammar.",
-        vi: "Văn học thuật tiếng Việt thường nêu nhận định trực tiếp (**điều này chứng minh rằng…**). Quy ước học thuật tiếng Anh làm mềm nhận định bằng giảm nhẹ: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. Ở cấp C2, biết khi nào và cách giảm nhẹ cũng quan trọng như biết ngữ pháp.",
-        id: "Tulisan akademik bahasa Indonesia sering menyatakan klaim secara langsung (**hal ini membuktikan bahwa…**). Konvensi akademik bahasa Inggris melembutkan klaim dengan hedging: **this suggests that…**, **it could be argued that…**, **the data appear to indicate…**. Di level C2, tahu kapan dan bagaimana melakukan hedging sama pentingnya dengan tahu tata bahasa.",
-      },
-      exampleWrong: "This proves that social media causes depression in teenagers.",
-      exampleRight: "This suggests that social media may contribute to depressive symptoms in some teenagers.",
-      linkedRoomId: null,
-    },
 };
 
 /** Ordered list of all tags (stable for tests + exhaustiveness checks). */
