@@ -46,6 +46,7 @@
     "src/screens/LevelMapScreen.tsx",
     "src/screens/OnboardingScreen.tsx",
     "src/screens/PlacementScreen.tsx",
-    "src/screens/TrainHomeScreen.tsx"
+    "src/screens/TrainHomeScreen.tsx",
+    "src/languages/punjabi/__tests__/**/*"
   ]
 }
