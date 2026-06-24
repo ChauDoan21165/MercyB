@@ -109,6 +109,7 @@ import {
   clearLearningEvents,
   type LearningEventInput,
   type LearningEventMode,
+  type LearningEventType,
 } from "@/lib/tutor/learningEvents";
 
 import {
@@ -276,7 +277,7 @@ describe("CGSR1 — Importability & Composition", () => {
     it("composes conversation → speak: golden turn has follow-up questions", () => {
       for (const conv of ALL_GOLDEN_CONVERSATIONS) {
         for (const turn of conv.turns) {
-          if (turn.teacherResponse.followUpQuestionCount > 0) {
+          if ((turn.teacherResponse.followUpQuestionCount ?? 0) > 0) {
             expect(turn.teacherResponse.vi).toBeTruthy();
           }
         }
@@ -776,7 +777,7 @@ describe("CGSR4 — Speak: Topic & Follow-Up Pipeline", () => {
   describe("CGSR4.5 — Turn policy preserves topic continuity", () => {
     it("decides to stay on topic for first turn", () => {
       const input: TurnPolicyInput = {
-        turnIndex: 0,
+        turnsOnTopic: 0,
         currentTopicId: SPEAK_TOPIC_LIBRARY[0].id,
         learnerText: "Hello, I am a student.",
         recentQuestions: [],
@@ -787,7 +788,7 @@ describe("CGSR4 — Speak: Topic & Follow-Up Pipeline", () => {
 
     it("decides to pivot after depth cap turns", () => {
       const input: TurnPolicyInput = {
-        turnIndex: SPEAK_FOLLOW_UP_DEPTH_CAP,
+        turnsOnTopic: SPEAK_FOLLOW_UP_DEPTH_CAP,
         currentTopicId: SPEAK_TOPIC_LIBRARY[0].id,
         learnerText: "I'm still talking about this.",
         recentQuestions: ["What do you like?", "Tell me more.", "How about food?", "Any hobbies?"],
@@ -798,8 +799,8 @@ describe("CGSR4 — Speak: Topic & Follow-Up Pipeline", () => {
 
     it("handles empty recentQuestions gracefully", () => {
       const input: TurnPolicyInput = {
-        turnIndex: 0,
-        currentTopicId: null,
+        turnsOnTopic: 0,
+        currentTopicId: undefined,
         learnerText: "",
         recentQuestions: [],
       };
@@ -1154,9 +1155,10 @@ describe("CGSR6 — Full Pipeline Integration", () => {
     });
 
     it("abstention redirect always returns a next prompt (never dead-ends)", () => {
-      const redirect = abstentionRedirectFromPronunciation("low_confidence_pronunciation", 0);
-      expect(redirect.nextPrompt).toBeDefined();
-      expect(redirect.nextPrompt.vi).toBeTruthy();
+      const redirect = abstentionRedirectFromPronunciation({ overallScore: 50, quality: "ok", confidence: "low" });
+      expect(redirect).not.toBeNull();
+      expect(redirect!.nextPrompt).toBeDefined();
+      expect(redirect!.nextPrompt.vi).toBeTruthy();
     });
   });
 
@@ -1228,7 +1230,7 @@ describe("CGSR6 — Full Pipeline Integration", () => {
 
       // Step 3: Speak — Follow-up quality evaluation
       for (const turn of conv.turns) {
-        if (turn.teacherResponse.followUpQuestionCount > 0) {
+        if ((turn.teacherResponse.followUpQuestionCount ?? 0) > 0) {
           const followUpResult = assessFollowUpFromResponse(
             turn.learnerInput.text,
             turn.teacherResponse.vi
@@ -1262,7 +1264,7 @@ describe("CGSR6 — Full Pipeline Integration", () => {
 
       // Speak: follow-up quality
       for (const turn of conv.turns) {
-        if (turn.teacherResponse.followUpQuestionCount > 0) {
+        if ((turn.teacherResponse.followUpQuestionCount ?? 0) > 0) {
           const quality = assessFollowUpFromResponse(
             turn.learnerInput.text,
             turn.teacherResponse.vi
@@ -1303,7 +1305,7 @@ describe("CGSR6 — Full Pipeline Integration", () => {
       const conv = GOLDEN_CONVERSATION_B2_JOB_INTERVIEW;
       // Later turns should show fewer corrections as learner improves
       const earlyCorrections = conv.turns.slice(0, 2).reduce(
-        (sum, t) => sum + t.teacherResponse.correctionCount, 0
+        (sum, t) => sum + (t.teacherResponse.correctionCount ?? 0), 0
       );
       // At minimum, the conversation demonstrates progression
       expect(conv.turns.length).toBeGreaterThanOrEqual(3);
@@ -1427,8 +1429,8 @@ describe("CGSR7 — Vietnamese-First Verification", () => {
   describe("CGSR7.7 — Turn policy reason in Vietnamese", () => {
     it("decideConversationTurnPolicy reasonVi in Vietnamese", () => {
       const decision = decideConversationTurnPolicy({
-        turnIndex: 0,
-        currentTopicId: SPEAK_TOPIC_LIBRARY[0].topicId,
+        turnsOnTopic: 0,
+        currentTopicId: SPEAK_TOPIC_LIBRARY[0].id,
         learnerText: "Hello",
         recentQuestions: [],
       });
@@ -1849,9 +1851,8 @@ describe("CGSR10 — Conscious Break Detection", () => {
 
     it("recordLearningEvent rejects unknown event type silently", () => {
       clearLearningEvents();
-      // @ts-expect-error — testing invalid event type
       const event = recordLearningEvent({
-        eventType: "invalid_event_type",
+        eventType: "invalid_event_type" as unknown as LearningEventType,
         product: "ai_tutor",
       });
       // May return null or a default; either is valid behavior

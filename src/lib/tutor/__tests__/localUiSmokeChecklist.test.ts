@@ -16,7 +16,7 @@
  * - Edge cases and determinism
  */
 
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeAll } from "vitest";
 import {
   UI_SMOKE_CHECKLIST_CATALOG,
   UI_SMOKE_SURFACE_IDS,
@@ -52,6 +52,7 @@ import {
 
 import type {
   UiSmokeDimensionId,
+  UiSmokeSurfaceId,
   UiSmokeChecklistItem,
   UiSmokeItemEvidence,
   UiSmokeChecklistInput,

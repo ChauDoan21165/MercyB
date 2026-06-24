@@ -1134,7 +1134,7 @@ describe("validation", () => {
       titleVi: "Test",
       titleEn: "Test",
       confidence: 0.5,
-    } as GainEvidenceItem;
+    } as unknown as GainEvidenceItem;
     const errors = validateGainEvidenceItem(item);
     expect(errors.some((e) => e.field === "evidenceTypeId")).toBe(true);
   });
@@ -1145,7 +1145,7 @@ describe("validation", () => {
       titleVi: "",
       titleEn: "Test",
       confidence: 0.5,
-    } as GainEvidenceItem;
+    } as unknown as GainEvidenceItem;
     const errors = validateGainEvidenceItem(item);
     expect(errors.some((e) => e.field === "titleVi")).toBe(true);
   });
@@ -1156,19 +1156,19 @@ describe("validation", () => {
       titleVi: "Test",
       titleEn: "Test",
       confidence: 1.5,
-    } as GainEvidenceItem;
+    } as unknown as GainEvidenceItem;
     const errors = validateGainEvidenceItem(item);
     expect(errors.some((e) => e.field === "confidence")).toBe(true);
   });
 
   it("validateGainClaim catches missing claimTypeId", () => {
-    const claim = { claimTypeId: "", statementVi: "Test", requiredStrength: "moderate" } as GainClaim;
+    const claim = { claimTypeId: "", statementVi: "Test", requiredStrength: "moderate" } as unknown as GainClaim;
     const errors = validateGainClaim(claim);
     expect(errors.some((e) => e.field === "claimTypeId")).toBe(true);
   });
 
   it("validateGainClaim catches missing statementVi", () => {
-    const claim = { claimTypeId: "claim-test", statementVi: "", requiredStrength: "moderate" } as GainClaim;
+    const claim = { claimTypeId: "claim-test", statementVi: "", requiredStrength: "moderate" } as unknown as GainClaim;
     const errors = validateGainClaim(claim);
     expect(errors.some((e) => e.field === "statementVi")).toBe(true);
   });

@@ -201,6 +201,7 @@ import {
 import {
   sanitizeInput,
   detectPII,
+  type SafetyContext,
 } from "../../ai-tutor/safety";
 
 // ─── Teacher-Mercy — Adaptive, Memory, Tone ───────────────────────────────
@@ -267,16 +268,18 @@ function makeTutorResponse(vi: string, correctedSentence?: string): ContractTuto
 function neutralEmotion(): TeacherEmotionState {
   return {
     primarySignal: "neutral", humorAllowance: 0.5, warmthLevel: 0.7,
-    paceAdjustment: "normal", cognitiveLoad: "moderate",
+    paceAdjustment: "normal", cognitiveLoadLevel: "moderate",
     correctionSoftnessBias: 0.5, momentumProtection: false,
+    encouragementBias: 0.5, challengeReadiness: 0.5,
   };
 }
 
 function concernedEmotion(): TeacherEmotionState {
   return {
     primarySignal: "discouraged", humorAllowance: 0.2, warmthLevel: 0.9,
-    paceAdjustment: "slow", cognitiveLoad: "high",
+    paceAdjustment: "slow", cognitiveLoadLevel: "high",
     correctionSoftnessBias: 0.8, momentumProtection: true,
+    encouragementBias: 0.7, challengeReadiness: 0.2,
   };
 }
 
@@ -445,7 +448,7 @@ describe("P1 — Lan (A1 Beginner, học sinh lớp 6)", () => {
       cefrLevel: "A1",
       isCurrentLessonTarget: true,
       sameMistakeCount: 0,
-      learnerConfidence: "low",
+      learnerConfidence: "shy",
       previousCorrectionsThisSession: 0,
       lessonFocus: "basic_sentence",
     });
@@ -511,9 +514,9 @@ describe("P1 — Lan (A1 Beginner, học sinh lớp 6)", () => {
 
   it("P1-FULL: complete A1 multi-turn pipeline through all 6 dimensions", () => {
     const turns = [
-      { text: "My sister very happy today", cefr: "A1" as const, confidence: "low" as const },
-      { text: "I see cat in the garden", cefr: "A1" as const, confidence: "low" as const },
-      { text: "I have a book new of English", cefr: "A1" as const, confidence: "medium" as const },
+      { text: "My sister very happy today", cefr: "A1" as const, confidence: "shy" as const },
+      { text: "I see cat in the garden", cefr: "A1" as const, confidence: "shy" as const },
+      { text: "I have a book new of English", cefr: "A1" as const, confidence: "normal" as const },
     ];
 
     let memory = createEmptyWeaknessMemory(NOW);
@@ -567,7 +570,7 @@ describe("P1 — Lan (A1 Beginner, học sinh lớp 6)", () => {
 
       // 6. Adapt — check that adaptation works for A1
       const adapt = adaptiveTeachingIntelligence({
-        learnerState: t.confidence === "low" ? frustratedLearnerState() : shakyLearnerState(),
+        learnerState: t.confidence === "shy" ? frustratedLearnerState() : shakyLearnerState(),
         emotion: neutralEmotion(),
         isCorrectiveTurn: true,
       });
@@ -606,7 +609,7 @@ describe("P2 — Minh (A2 Elementary, nhân viên bán hàng)", () => {
   });
 
   it("P2-DIAGNOSE: semantic implausibility detection for A2-level mistakes", () => {
-    const implausible = findSemanticImplausibility("I bought a head for my friend", "en");
+    const implausible = findSemanticImplausibility("I bought a head for my friend");
     expect(implausible).toBeDefined();
     // Should at minimum produce a result — either found or null
   });
@@ -618,7 +621,7 @@ describe("P2 — Minh (A2 Elementary, nhân viên bán hàng)", () => {
       cefrLevel: "A2",
       isCurrentLessonTarget: true,
       sameMistakeCount: 0,
-      learnerConfidence: "medium",
+      learnerConfidence: "normal",
       previousCorrectionsThisSession: 0,
       lessonFocus: "articles",
     });
@@ -672,8 +675,8 @@ describe("P2 — Minh (A2 Elementary, nhân viên bán hàng)", () => {
   it("P2-IMPROVE: evidence of product-specific improvement — retail scenario", () => {
     const confidenceStart = assessConfidence([]);
     const confidenceWithEvidence = assessConfidence([
-      { source: "interference" as const, observationVi: "article errors in retail vocab", strength: "strong" as const, occurrenceCount: 4, tag: "missing-article", lastObservedAt: NOW, supportsRecommendation: true },
-      { source: "mastery" as const, observationVi: "retail conversation practice", strength: "moderate" as const, occurrenceCount: 3, tag: "customer-service", lastObservedAt: NOW - 1000, supportsRecommendation: true },
+      { source: "interference_pattern" as const, observationVi: "article errors in retail vocab", strength: "strong" as const, occurrenceCount: 4, tag: "missing-article", lastObservedAt: NOW, supportsRecommendation: true },
+      { source: "mastery_score" as const, observationVi: "retail conversation practice", strength: "moderate" as const, occurrenceCount: 3, tag: "customer-service", lastObservedAt: NOW - 1000, supportsRecommendation: true },
     ]);
     expect(confidenceWithEvidence).toBeGreaterThan(confidenceStart);
   });
@@ -698,7 +701,7 @@ describe("P2 — Minh (A2 Elementary, nhân viên bán hàng)", () => {
       const decision = decideTeacherAction({
         learnerText: text, targetLanguage: "en", cefrLevel: "A2",
         isCurrentLessonTarget: true, sameMistakeCount: i % 2,
-        learnerConfidence: i < 2 ? "medium" : "high",
+        learnerConfidence: i < 2 ? "normal" : "confident",
         previousCorrectionsThisSession: i,
       });
       dimensionsHit.add("teach");
@@ -766,7 +769,7 @@ describe("P3 — Hương (B1 Intermediate, nhân viên văn phòng)", () => {
       cefrLevel: "B1",
       isCurrentLessonTarget: true,
       sameMistakeCount: 1,
-      learnerConfidence: "medium",
+      learnerConfidence: "normal",
       previousCorrectionsThisSession: 2,
       lessonFocus: "past_tense",
     });
@@ -830,7 +833,7 @@ describe("P3 — Hương (B1 Intermediate, nhân viên văn phòng)", () => {
       cefrLevel: "B1",
       isCurrentLessonTarget: true,
       sameMistakeCount: 1,
-      learnerConfidence: "medium",
+      learnerConfidence: "normal",
       previousCorrectionsThisSession: 0,
     };
     const decision = decideTeacherAction(input);
@@ -840,7 +843,7 @@ describe("P3 — Hương (B1 Intermediate, nhân viên văn phòng)", () => {
     if (hasActionableCorrection(decision)) {
       const evaluation = evaluateTeachingDecision(input, decision);
       expect(evaluation.classification).toBeDefined();
-      expect(isDecisionSafe(evaluation)).toBeDefined();
+      expect(isDecisionSafe(input, decision)).toBeDefined();
     }
     // Decision engine produced a valid action regardless
     expect(["CORRECT_NOW", "DEFER", "SUPPRESS", "FOLLOW_UP_FIRST", "EXPLAIN_PATTERN"]).toContain(decision.action);
@@ -848,8 +851,8 @@ describe("P3 — Hương (B1 Intermediate, nhân viên văn phòng)", () => {
 
   it("P3-IMPROVE: evidence accumulation from office English sessions", () => {
     const confidence = assessConfidence([
-      { source: "interference" as const, observationVi: "past tense in work emails", strength: "strong" as const, occurrenceCount: 5, tag: "tense-omission", lastObservedAt: NOW, supportsRecommendation: true },
-      { source: "mastery" as const, observationVi: "business vocabulary", strength: "moderate" as const, occurrenceCount: 3, tag: "business-vocab", lastObservedAt: NOW - 1000, supportsRecommendation: true },
+      { source: "interference_pattern" as const, observationVi: "past tense in work emails", strength: "strong" as const, occurrenceCount: 5, tag: "tense-omission", lastObservedAt: NOW, supportsRecommendation: true },
+      { source: "mastery_score" as const, observationVi: "business vocabulary", strength: "moderate" as const, occurrenceCount: 3, tag: "business-vocab", lastObservedAt: NOW - 1000, supportsRecommendation: true },
     ]);
     const label = getConfidenceLabelVi(confidence);
     expect(label.length).toBeGreaterThan(0);
@@ -858,9 +861,9 @@ describe("P3 — Hương (B1 Intermediate, nhân viên văn phòng)", () => {
 
   it("P3-FULL: complete B1 office worker multi-turn simulation", () => {
     const turns = [
-      { text: "I send you the report yesterday", confidence: "medium" as const },
-      { text: "I will attend meeting tomorrow at 9am", confidence: "medium" as const },
-      { text: "I sent you the report yesterday and will attend the meeting tomorrow", confidence: "high" as const },
+      { text: "I send you the report yesterday", confidence: "normal" as const },
+      { text: "I will attend meeting tomorrow at 9am", confidence: "normal" as const },
+      { text: "I sent you the report yesterday and will attend the meeting tomorrow", confidence: "confident" as const },
     ];
 
     let memory = createEmptyWeaknessMemory(NOW);
@@ -886,12 +889,7 @@ describe("P3 — Hương (B1 Intermediate, nhân viên văn phòng)", () => {
               errorCategory: ruleId, grammarPoint: ruleId, l1: "vi",
               exemplarPattern: `${t.text} → ${decision.correction.correctedText}`,
             }, NOW + i * 60000);
-            recordInterferencePattern(profile, ruleId as any, {
-              grammarPoint: ruleId,
-              learnerTextPattern: t.text,
-              correctFormPattern: decision.correction.correctedText,
-              confidence: 0.85,
-            });
+            recordInterferencePattern(profile, ruleId);
           }
         }
       }
@@ -935,7 +933,7 @@ describe("P4 — Tuấn (B1 Intermediate, sinh viên đại học)", () => {
       cefrLevel: "B1",
       isCurrentLessonTarget: true,
       sameMistakeCount: 2,
-      learnerConfidence: "medium",
+      learnerConfidence: "normal",
       previousCorrectionsThisSession: 3,
       lessonFocus: "subj_verb_agreement",
     });
@@ -991,25 +989,22 @@ describe("P4 — Tuấn (B1 Intermediate, sinh viên đại học)", () => {
 
   it("P4-IMPROVE: lesson recommendations improve from cold-start to experienced", () => {
     const coldProfile = createEmptyLearnerHistoryProfile("english", "en", NOW);
-    const coldRecs = recommendNextLessons(coldProfile, "B1");
+    const coldRecs = recommendNextLessons(coldProfile);
     expect(coldRecs.length).toBeGreaterThanOrEqual(0); // may abstain for cold-start
 
     const experienced = createEmptyLearnerHistoryProfile("english", "en", NOW);
     experienced.sessionCount = 15;
     experienced.completedSessionCount = 12;
-    recordInterferencePattern(experienced, "subj-verb-agreement", {
-      grammarPoint: "subj_verb_agreement",
-      learnerTextPattern: "She go", correctFormPattern: "She goes", confidence: 0.9,
-    });
-    const expRecs = recommendNextLessons(experienced, "B1");
+    recordInterferencePattern(experienced, "subj-verb-agreement");
+    const expRecs = recommendNextLessons(experienced);
     expect(expRecs.length).toBeGreaterThanOrEqual(0);
   });
 
   it("P4-FULL: complete B1 IELTS student multi-turn simulation", () => {
     const scenario = [
-      { text: "She go to university every day", cefr: "B1" as const, confidence: "medium" as const },
-      { text: "Last semester I study English grammar", cefr: "B1" as const, confidence: "medium" as const },
-      { text: "The students studies hard for the exam every day", cefr: "B1" as const, confidence: "low" as const },
+      { text: "She go to university every day", cefr: "B1" as const, confidence: "normal" as const },
+      { text: "Last semester I study English grammar", cefr: "B1" as const, confidence: "normal" as const },
+      { text: "The students studies hard for the exam every day", cefr: "B1" as const, confidence: "shy" as const },
     ];
 
     let memory = createEmptyWeaknessMemory(NOW);
@@ -1077,7 +1072,7 @@ describe("P5 — Hải (B2 Upper-Intermediate, kỹ sư phần mềm)", () => {
       cefrLevel: "B2",
       isCurrentLessonTarget: true,
       sameMistakeCount: 0,
-      learnerConfidence: "high",
+      learnerConfidence: "confident",
       previousCorrectionsThisSession: 0,
       lessonFocus: "prepositions",
     });
@@ -1149,9 +1144,9 @@ describe("P5 — Hải (B2 Upper-Intermediate, kỹ sư phần mềm)", () => {
 
   it("P5-FULL: complete B2 software engineer multi-turn simulation", () => {
     const turns = [
-      { text: "I'm responsible of the backend system", confidence: "high" as const },
-      { text: "We need to discuss about the architecture", confidence: "high" as const },
-      { text: "The bug is related with the database query", confidence: "medium" as const },
+      { text: "I'm responsible of the backend system", confidence: "confident" as const },
+      { text: "We need to discuss about the architecture", confidence: "confident" as const },
+      { text: "The bug is related with the database query", confidence: "normal" as const },
     ];
 
     let memory = createEmptyWeaknessMemory(NOW);
@@ -1274,15 +1269,15 @@ describe("P6 — Mai (B2 Upper-Intermediate, doanh nhân)", () => {
 
   it("P6-IMPROVE: business domain improvement — confidence calibration with more sessions", () => {
     const early = assessConfidence([{
-      source: "interference" as const, observationVi: "business presentation prep",
+      source: "interference_pattern" as const, observationVi: "business presentation prep",
       strength: "weak" as const, occurrenceCount: 1, tag: "preposition-calque",
       lastObservedAt: NOW - 86400000 * 7, supportsRecommendation: false,
     }]);
 
     const later = assessConfidence([
-      { source: "interference" as const, observationVi: "business meeting 1", strength: "strong" as const, occurrenceCount: 4, tag: "preposition-calque", lastObservedAt: NOW, supportsRecommendation: true },
-      { source: "interference" as const, observationVi: "business meeting 2", strength: "moderate" as const, occurrenceCount: 3, tag: "article", lastObservedAt: NOW - 1000, supportsRecommendation: true },
-      { source: "mastery" as const, observationVi: "negotiation vocabulary", strength: "strong" as const, occurrenceCount: 5, tag: "business-vocab", lastObservedAt: NOW - 2000, supportsRecommendation: true },
+      { source: "interference_pattern" as const, observationVi: "business meeting 1", strength: "strong" as const, occurrenceCount: 4, tag: "preposition-calque", lastObservedAt: NOW, supportsRecommendation: true },
+      { source: "interference_pattern" as const, observationVi: "business meeting 2", strength: "moderate" as const, occurrenceCount: 3, tag: "article", lastObservedAt: NOW - 1000, supportsRecommendation: true },
+      { source: "mastery_score" as const, observationVi: "negotiation vocabulary", strength: "strong" as const, occurrenceCount: 5, tag: "business-vocab", lastObservedAt: NOW - 2000, supportsRecommendation: true },
     ]);
 
     expect(later).toBeGreaterThan(early);
@@ -1302,7 +1297,7 @@ describe("P6 — Mai (B2 Upper-Intermediate, doanh nhân)", () => {
       const decision = decideTeacherAction({
         learnerText: text, targetLanguage: "en", cefrLevel: "B2",
         isCurrentLessonTarget: true, sameMistakeCount: 0,
-        learnerConfidence: "high", previousCorrectionsThisSession: 0,
+        learnerConfidence: "confident", previousCorrectionsThisSession: 0,
       });
 
       if (hasActionableCorrection(decision) && decision.correction) {
@@ -1351,7 +1346,7 @@ describe("P7 — Anh (C1 Advanced, nghiên cứu sinh)", () => {
       cefrLevel: "C1",
       isCurrentLessonTarget: true,
       sameMistakeCount: 0,
-      learnerConfidence: "high",
+      learnerConfidence: "confident",
       previousCorrectionsThisSession: 0,
       lessonFocus: "articles",
     });
@@ -1419,8 +1414,8 @@ describe("P7 — Anh (C1 Advanced, nghiên cứu sinh)", () => {
 
   it("P7-IMPROVE: C1 improvement is subtle — confidence calibrates to sophistication", () => {
     const c1Confidence = assessConfidence([
-      { source: "interference" as const, observationVi: "subtle article in research papers", strength: "weak" as const, occurrenceCount: 2, tag: "article", lastObservedAt: NOW, supportsRecommendation: true },
-      { source: "mastery" as const, observationVi: "academic vocabulary range", strength: "strong" as const, occurrenceCount: 8, tag: "C1-vocab", lastObservedAt: NOW, supportsRecommendation: true },
+      { source: "interference_pattern" as const, observationVi: "subtle article in research papers", strength: "weak" as const, occurrenceCount: 2, tag: "article", lastObservedAt: NOW, supportsRecommendation: true },
+      { source: "mastery_score" as const, observationVi: "academic vocabulary range", strength: "strong" as const, occurrenceCount: 8, tag: "C1-vocab", lastObservedAt: NOW, supportsRecommendation: true },
     ]);
     expect(c1Confidence).toBeGreaterThan(0);
     expect(getConfidenceLabelVi(c1Confidence).length).toBeGreaterThan(0);
@@ -1443,7 +1438,7 @@ describe("P7 — Anh (C1 Advanced, nghiên cứu sinh)", () => {
         const decision = decideTeacherAction({
           learnerText: t.text, targetLanguage: "en", cefrLevel: t.cefr,
           isCurrentLessonTarget: true, sameMistakeCount: 0,
-          learnerConfidence: "high", previousCorrectionsThisSession: 0,
+          learnerConfidence: "confident", previousCorrectionsThisSession: 0,
         });
 
         if (hasActionableCorrection(decision) && decision.correction) {
@@ -1660,7 +1655,7 @@ describe("P9 — Thắng (Frustrated B1 Learner — repeated errors)", () => {
   it("P9-ADAPT: discouraged learner → higher warmth, slower pace, more explanation", () => {
     const adapt = adaptiveTeachingIntelligence({
       learnerState: { confidence: "low", clarity: "lost", momentum: "stuck", affect: "frustrated" },
-      emotion: { primarySignal: "discouraged", humorAllowance: 0.1, warmthLevel: 0.95, paceAdjustment: "slow", cognitiveLoad: "high", correctionSoftnessBias: 0.9, momentumProtection: true },
+      emotion: { primarySignal: "discouraged", humorAllowance: 0.1, warmthLevel: 0.95, paceAdjustment: "slow", cognitiveLoadLevel: "high", correctionSoftnessBias: 0.9, momentumProtection: true, encouragementBias: 0.8, challengeReadiness: 0.1 },
       isCorrectiveTurn: true,
       repeatedMistake: true,
       shouldReviewConcept: true,
@@ -1718,11 +1713,11 @@ describe("P9 — Thắng (Frustrated B1 Learner — repeated errors)", () => {
   it("P9-FULL: complete frustrated learner recovery simulation (3 sessions, 5 days)", () => {
     const sessions = [
       // Session 1: frustrated, many errors
-      { texts: ["I go to market yesterday", "I see cat in garden", "She go school every day"], cefr: "B1" as const, confidence: "low" as const, sameMistake: 0 },
+      { texts: ["I go to market yesterday", "I see cat in garden", "She go school every day"], cefr: "B1" as const, confidence: "shy" as const, sameMistake: 0 },
       // Session 2: still struggling, some progress
-      { texts: ["I went to the market yesterday", "I see a cat in garden", "She goes school every day"], cefr: "B1" as const, confidence: "medium" as const, sameMistake: 1 },
+      { texts: ["I went to the market yesterday", "I see a cat in garden", "She goes school every day"], cefr: "B1" as const, confidence: "normal" as const, sameMistake: 1 },
       // Session 3: improvement visible
-      { texts: ["I went to the market yesterday", "I saw a cat in the garden", "She goes to school every day"], cefr: "B1" as const, confidence: "high" as const, sameMistake: 0 },
+      { texts: ["I went to the market yesterday", "I saw a cat in the garden", "She goes to school every day"], cefr: "B1" as const, confidence: "confident" as const, sameMistake: 0 },
     ];
 
     let memory = createEmptyWeaknessMemory(NOW - 86400000 * 5);
@@ -1774,9 +1769,7 @@ describe("P10 — Linh (Long-term Learner — multi-session improvement)", () =>
     const profile = createEmptyLearnerHistoryProfile("english", "en", NOW);
     profile.sessionCount = 20;
     profile.completedSessionCount = 16;
-    recordInterferencePattern(profile, "missing-article", {
-      grammarPoint: "articles", learnerTextPattern: "test", correctFormPattern: "test", confidence: 0.9,
-    });
+    recordInterferencePattern(profile, "missing-article");
 
     const sequence = generateLessonSequence({
       profile,
@@ -1795,9 +1788,7 @@ describe("P10 — Linh (Long-term Learner — multi-session improvement)", () =>
     const profile = createEmptyLearnerHistoryProfile("english", "en", NOW);
     profile.sessionCount = 20;
     profile.completedSessionCount = 16;
-    recordInterferencePattern(profile, "missing-article", {
-      grammarPoint: "articles", learnerTextPattern: "test", correctFormPattern: "test", confidence: 0.9,
-    });
+    recordInterferencePattern(profile, "missing-article");
     const strategy = chooseStrategy({
       profile,
       cefrLevel: "B1",
@@ -1896,16 +1887,10 @@ describe("P10 — Linh (Long-term Learner — multi-session improvement)", () =>
     const profile = createEmptyLearnerHistoryProfile("english", "en", NOW);
     profile.sessionCount = 25;
     profile.completedSessionCount = 20;
-    recordInterferencePattern(profile, "missing-article", {
-      grammarPoint: "articles", learnerTextPattern: "I go to market",
-      correctFormPattern: "I go to the market", confidence: 0.9,
-    });
-    recordInterferencePattern(profile, "tense-omission", {
-      grammarPoint: "past_tense", learnerTextPattern: "I go yesterday",
-      correctFormPattern: "I went yesterday", confidence: 0.85,
-    });
+    recordInterferencePattern(profile, "missing-article");
+    recordInterferencePattern(profile, "tense-omission");
 
-    const recs = recommendNextLessons(profile, "B1");
+    const recs = recommendNextLessons(profile);
     if (recs.length > 0 && recs[0].ruleFired !== "cold-start:abstain") {
       const explanation = explainRecommendation(
         recs[0], profile, "B1",
@@ -1932,28 +1917,19 @@ describe("P10 — Linh (Long-term Learner — multi-session improvement)", () =>
     const experiencedProfile = createEmptyLearnerHistoryProfile("english", "en", NOW);
     experiencedProfile.sessionCount = 20;
     experiencedProfile.completedSessionCount = 16;
-    recordInterferencePattern(experiencedProfile, "missing-article", {
-      grammarPoint: "articles", learnerTextPattern: "I go to market",
-      correctFormPattern: "I go to the market", confidence: 0.92,
-    });
-    recordInterferencePattern(experiencedProfile, "tense-omission", {
-      grammarPoint: "past_tense", learnerTextPattern: "I go yesterday",
-      correctFormPattern: "I went yesterday", confidence: 0.88,
-    });
-    recordInterferencePattern(experiencedProfile, "preposition-calque", {
-      grammarPoint: "prepositions", learnerTextPattern: "discuss about",
-      correctFormPattern: "discuss", confidence: 0.85,
-    });
+    recordInterferencePattern(experiencedProfile, "missing-article");
+    recordInterferencePattern(experiencedProfile, "tense-omission");
+    recordInterferencePattern(experiencedProfile, "preposition-calque");
 
     const experiencedDataPoints = countDataPoints(experiencedProfile);
     expect(experiencedDataPoints).toBeGreaterThan(coldDataPoints);
 
     const experiencedConfidence = assessConfidence([
-      { source: "interference" as const, observationVi: "article", strength: "strong" as const, occurrenceCount: 6, tag: "missing-article", lastObservedAt: NOW, supportsRecommendation: true },
-      { source: "interference" as const, observationVi: "tense", strength: "moderate" as const, occurrenceCount: 4, tag: "tense-omission", lastObservedAt: NOW - 1000, supportsRecommendation: true },
-      { source: "interference" as const, observationVi: "preposition", strength: "moderate" as const, occurrenceCount: 3, tag: "preposition-calque", lastObservedAt: NOW - 2000, supportsRecommendation: true },
-      { source: "mastery" as const, observationVi: "conversation topics", strength: "strong" as const, occurrenceCount: 8, tag: "daily_conversation", lastObservedAt: NOW - 3000, supportsRecommendation: true },
-      { source: "mastery" as const, observationVi: "grammar foundations", strength: "strong" as const, occurrenceCount: 10, tag: "basic_grammar", lastObservedAt: NOW - 4000, supportsRecommendation: true },
+      { source: "interference_pattern" as const, observationVi: "article", strength: "strong" as const, occurrenceCount: 6, tag: "missing-article", lastObservedAt: NOW, supportsRecommendation: true },
+      { source: "interference_pattern" as const, observationVi: "tense", strength: "moderate" as const, occurrenceCount: 4, tag: "tense-omission", lastObservedAt: NOW - 1000, supportsRecommendation: true },
+      { source: "interference_pattern" as const, observationVi: "preposition", strength: "moderate" as const, occurrenceCount: 3, tag: "preposition-calque", lastObservedAt: NOW - 2000, supportsRecommendation: true },
+      { source: "mastery_score" as const, observationVi: "conversation topics", strength: "strong" as const, occurrenceCount: 8, tag: "daily_conversation", lastObservedAt: NOW - 3000, supportsRecommendation: true },
+      { source: "mastery_score" as const, observationVi: "grammar foundations", strength: "strong" as const, occurrenceCount: 10, tag: "basic_grammar", lastObservedAt: NOW - 4000, supportsRecommendation: true },
     ]);
     expect(experiencedConfidence).toBeGreaterThan(coldConfidence);
     expect(experiencedConfidence).toBeGreaterThan(0.5);
@@ -1964,16 +1940,15 @@ describe("P10 — Linh (Long-term Learner — multi-session improvement)", () =>
       cefrLevel: "B1",
       prerequisiteMasteryRatio: 0.85,
       prerequisiteErrorRate: 0.1,
+      turnsSinceLastLessonAttempt: Infinity,
+      lessonAttemptsThisSession: 0,
       lessonTargetMasteryEstimate: 0.7,
+      consecutiveCorrectTurns: 5,
+      recurringPrerequisiteStruggles: [],
+      learnerConfidence: "normal",
       isShowingFrustration: false,
-      sessionCount: 20,
-      completedSessionCount: 16,
-      learningGapDays: 2,
-      sameMistakeCount: 0,
-      recentErrorCount: 1,
-      priorDrillSuccessRate: 0.8,
-      lessonIsChallenge: false,
-      hasRecentErrorRecovery: true,
+      totalTurnsInSession: 20,
+      showedProgressOnLastAttempt: true,
     });
     expect(experiencedResult.decision).toBeDefined();
     // isLearnerReady wraps decideLearnerReadiness — both return valid results
@@ -1984,16 +1959,15 @@ describe("P10 — Linh (Long-term Learner — multi-session improvement)", () =>
       cefrLevel: "B1",
       prerequisiteMasteryRatio: 0.2,
       prerequisiteErrorRate: 0.6,
+      turnsSinceLastLessonAttempt: Infinity,
+      lessonAttemptsThisSession: 3,
       lessonTargetMasteryEstimate: 0.1,
+      consecutiveCorrectTurns: 0,
+      recurringPrerequisiteStruggles: ["article"],
+      learnerConfidence: "shy",
       isShowingFrustration: true,
-      sessionCount: 0,
-      completedSessionCount: 0,
-      learningGapDays: 30,
-      sameMistakeCount: 5,
-      recentErrorCount: 8,
-      priorDrillSuccessRate: 0,
-      lessonIsChallenge: false,
-      hasRecentErrorRecovery: false,
+      totalTurnsInSession: 8,
+      showedProgressOnLastAttempt: false,
     });
     const coldReady = isLearnerReady(coldResult);
     expect(typeof coldReady).toBe("boolean");
@@ -2134,7 +2108,7 @@ describe("Cross-Persona — All 10 personas exercise the full intelligence pipel
       "I'm responsible of the backend", // P5 engineer
     ];
     for (const text of allTexts) {
-      const sanitized = sanitizeInput(text);
+      const sanitized = sanitizeInput(text, { mode: "general_chat" as const, tier: "free" as const, isKidsMode: false });
       expect(sanitized).toBeDefined();
       // PII detection should not flag educational text
       expect(detectPII(text).found).toBe(false);
@@ -2163,11 +2137,11 @@ describe("Cross-Persona — All 10 personas exercise the full intelligence pipel
 
   it("CP-DECISION: decision engine produces valid decisions for all personas", () => {
     const personaInputs: Array<{ key: string; input: TeacherDecisionInput }> = [
-      { key: "P1_A1", input: { learnerText: "My sister very happy", targetLanguage: "en", cefrLevel: "A1", isCurrentLessonTarget: true, sameMistakeCount: 0, learnerConfidence: "low", previousCorrectionsThisSession: 0 } },
-      { key: "P3_B1", input: { learnerText: "I send you the report yesterday", targetLanguage: "en", cefrLevel: "B1", isCurrentLessonTarget: true, sameMistakeCount: 2, learnerConfidence: "medium", previousCorrectionsThisSession: 3 } },
-      { key: "P5_B2", input: { learnerText: "I'm responsible of the backend", targetLanguage: "en", cefrLevel: "B2", isCurrentLessonTarget: true, sameMistakeCount: 0, learnerConfidence: "high", previousCorrectionsThisSession: 0 } },
-      { key: "P7_C1", input: { learnerText: "plays important role in development", targetLanguage: "en", cefrLevel: "C1", isCurrentLessonTarget: true, sameMistakeCount: 0, learnerConfidence: "high", previousCorrectionsThisSession: 0 } },
-      { key: "P9_frustrated", input: { learnerText: "I go to market yesterday", targetLanguage: "en", cefrLevel: "B1", isCurrentLessonTarget: true, sameMistakeCount: 5, learnerConfidence: "low", previousCorrectionsThisSession: 6 } },
+      { key: "P1_A1", input: { learnerText: "My sister very happy", targetLanguage: "en", cefrLevel: "A1", isCurrentLessonTarget: true, sameMistakeCount: 0, learnerConfidence: "shy", previousCorrectionsThisSession: 0 } },
+      { key: "P3_B1", input: { learnerText: "I send you the report yesterday", targetLanguage: "en", cefrLevel: "B1", isCurrentLessonTarget: true, sameMistakeCount: 2, learnerConfidence: "normal", previousCorrectionsThisSession: 3 } },
+      { key: "P5_B2", input: { learnerText: "I'm responsible of the backend", targetLanguage: "en", cefrLevel: "B2", isCurrentLessonTarget: true, sameMistakeCount: 0, learnerConfidence: "confident", previousCorrectionsThisSession: 0 } },
+      { key: "P7_C1", input: { learnerText: "plays important role in development", targetLanguage: "en", cefrLevel: "C1", isCurrentLessonTarget: true, sameMistakeCount: 0, learnerConfidence: "confident", previousCorrectionsThisSession: 0 } },
+      { key: "P9_frustrated", input: { learnerText: "I go to market yesterday", targetLanguage: "en", cefrLevel: "B1", isCurrentLessonTarget: true, sameMistakeCount: 5, learnerConfidence: "shy", previousCorrectionsThisSession: 6 } },
     ];
 
     for (const { key, input } of personaInputs) {
@@ -2319,7 +2293,7 @@ describe("Cross-Persona — All 10 personas exercise the full intelligence pipel
       const decision = decideTeacherAction({
         learnerText: sampleText, targetLanguage: "en",
         cefrLevel: persona.cefr, isCurrentLessonTarget: true,
-        sameMistakeCount: 0, learnerConfidence: "medium",
+        sameMistakeCount: 0, learnerConfidence: "normal",
         previousCorrectionsThisSession: 0,
       });
       if (decision.action && decision.rationaleVi.length > 0) {

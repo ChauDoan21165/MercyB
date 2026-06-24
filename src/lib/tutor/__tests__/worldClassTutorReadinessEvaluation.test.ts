@@ -346,7 +346,7 @@ describe("WG3: Core Evaluation — Full Input, Balanced Mode", () => {
 
   it("scorecard has all 6 capability scores", () => {
     expect(Object.keys(evaluation.scorecard.capabilityScores)).toHaveLength(6);
-    for (const capId of ["diagnose", "teach", "remember", "adapt", "selfCheck", "prove"]) {
+    for (const capId of ["diagnose", "teach", "remember", "adapt", "selfCheck", "prove"] as const) {
       expect(evaluation.scorecard.capabilityScores[capId]).toBeGreaterThanOrEqual(0);
       expect(evaluation.scorecard.capabilityScores[capId]).toBeLessThanOrEqual(100);
     }

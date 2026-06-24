@@ -642,11 +642,11 @@ describe("Determinism gate — pure functions are truly deterministic", () => {
     // The isDecisionSafe path is the purest subset
     const result1 = isDecisionSafe(
       { learnerText: "I go.", cefrLevel: "A2" } as TeacherDecisionInput,
-      { action: "CORRECT_NOW", timingMode: "immediate", rationale: "test" } as TeacherDecision,
+      { action: "CORRECT_NOW", timingMode: "IMMEDIATE", rationale: "test" } as unknown as TeacherDecision,
     );
     const result2 = isDecisionSafe(
       { learnerText: "I go.", cefrLevel: "A2" } as TeacherDecisionInput,
-      { action: "CORRECT_NOW", timingMode: "immediate", rationale: "test" } as TeacherDecision,
+      { action: "CORRECT_NOW", timingMode: "IMMEDIATE", rationale: "test" } as unknown as TeacherDecision,
     );
     expect(result1.safe).toBe(result2.safe);
   });
@@ -665,7 +665,7 @@ describe("Determinism gate — pure functions are truly deterministic", () => {
   it("E1-E8: assessConfidence is deterministic for identical items", () => {
     const items: EvidenceItem[] = [
       {
-        source: "interference",
+        source: "interference_pattern",
         tag: "tense-omission",
         observationVi: "test",
         strength: "strong",
@@ -751,13 +751,13 @@ describe("Telemetry consistency — format functions produce valid records", () 
       cefrLevel: "A2",
       isCurrentLessonTarget: true,
       sameMistakeCount: 1,
-      learnerConfidence: "medium" as const,
+      learnerConfidence: "normal" as const,
       previousCorrectionsThisSession: 0,
     };
     const decision: TeacherDecision = {
       action: "DEFER",
       correction: null,
-      timingMode: "defer",
+      timingMode: "DELAYED",
       rationaleVi: "Để sau sửa — chưa phải lúc.",
       rationaleEn: "Defer correction.",
       reasonCode: "defer_timing",
@@ -765,7 +765,7 @@ describe("Telemetry consistency — format functions produce valid records", () 
       enrichment: null,
       suppressionDecision: null,
       hintLadder: null,
-      readiness: { readiness: "READY_NOW" as const, reasonVi: "", reasonEn: "", gates: [] },
+      readiness: { decision: "READY_NOW" as const, reason: "", reasonCode: "" },
     };
     const evaluation = evaluateTeachingDecision(input, decision);
     const telemetry = formatEvaluationTelemetry(evaluation);
@@ -1101,29 +1101,27 @@ describe("Quick convenience APIs — regression guards", () => {
       cefrLevel: "A2",
       isCurrentLessonTarget: true,
       sameMistakeCount: 1,
-      learnerConfidence: "medium" as const,
-      sessionCorrectionCount: 0,
-      sessionDurationMinutes: 15,
-      recentlyCorrectedPatterns: [],
-      previousAction: null,
-      turnsSinceLastCorrection: null,
+      learnerConfidence: "normal" as const,
+      previousCorrectionsThisSession: 0,
     };
     const decision: TeacherDecision = {
       action: "SUPPRESS",
       correction: null,
-      timingMode: "defer",
+      timingMode: "DELAYED",
       rationaleVi: "Chưa phải lúc sửa — giữ tự tin cho bạn trước.",
       rationaleEn: "Not the right time to correct — preserving learner confidence.",
       reasonCode: "suppress_confidence",
       allCandidates: [],
       enrichment: null,
       suppressionDecision: {
-        ruleId: "R3_NO_FAKE_PRAISE",
-        reason: "learner showing low confidence",
-        severity: "weak",
+        shouldSuppress: true,
+        applicableRules: [],
+        primaryReason: null,
+        rationaleVi: "learner showing low confidence",
+        rationaleEn: "learner showing low confidence",
       },
       hintLadder: null,
-      readiness: { readiness: "READY_NOW" as const, reasonVi: "", reasonEn: "", gates: [] },
+      readiness: { decision: "READY_NOW" as const, reason: "", reasonCode: "" },
     };
     const result = evaluateDecisionQuick(decisionInput, decision);
     expect(result).toHaveProperty("classification");
@@ -1362,7 +1360,7 @@ describe("Contract + Rubric — supporting infrastructure intact", () => {
   it("checkTeacherMercyContract works in correction mode", () => {
     const result = checkTeacherMercyContract(
       { text: "I go to market yesterday.", cefrLevel: "A2", trackedWeakness: null, didSelfCorrect: false, l1: "vi" },
-      { vi: goodCorrectionVi(), correctedSentence: "I went to the market yesterday.", correctionCount: 1, mode: "correction" },
+      { vi: goodCorrectionVi(), correctedSentence: "I went to the market yesterday.", correctionCount: 1 },
     );
     expect(result).toHaveProperty("rules");
     expect(result).toHaveProperty("passed");
@@ -1373,7 +1371,7 @@ describe("Contract + Rubric — supporting infrastructure intact", () => {
   it("checkTeacherMercyContract works in conversation mode", () => {
     const result = checkTeacherMercyContract(
       { text: "I like markets.", cefrLevel: "B1", trackedWeakness: null, didSelfCorrect: false, l1: "vi" },
-      { vi: goodConversationVi(), correctedSentence: undefined, correctionCount: 0, mode: "conversation" },
+      { vi: goodConversationVi(), correctedSentence: undefined, correctionCount: 0 },
     );
     expect(result).toHaveProperty("rules");
     expect(result).toHaveProperty("passed");
@@ -1383,7 +1381,7 @@ describe("Contract + Rubric — supporting infrastructure intact", () => {
   it("evaluateRubricFocused returns valid rubric result for correction", () => {
     const result = evaluateRubricFocused(
       { text: "I go to market yesterday.", cefrLevel: "A2", trackedWeakness: null, didSelfCorrect: false, l1: "vi" },
-      { vi: goodCorrectionVi(), correctedSentence: "I went to the market yesterday.", correctionCount: 1, mode: "correction" },
+      { vi: goodCorrectionVi(), correctedSentence: "I went to the market yesterday.", correctionCount: 1 },
       "correction",
     );
     expect(result).toHaveProperty("classification");
@@ -1396,7 +1394,7 @@ describe("Contract + Rubric — supporting infrastructure intact", () => {
   it("evaluateRubricFocused returns valid rubric result for conversation", () => {
     const result = evaluateRubricFocused(
       { text: "I like markets.", cefrLevel: "B1", trackedWeakness: null, didSelfCorrect: false, l1: "vi" },
-      { vi: goodConversationVi(), correctedSentence: undefined, correctionCount: 0, mode: "conversation" },
+      { vi: goodConversationVi(), correctedSentence: undefined, correctionCount: 0 },
       "conversation",
     );
     expect(result).toHaveProperty("classification");

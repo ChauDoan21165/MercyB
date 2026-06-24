@@ -755,11 +755,9 @@ describe("buildChauReviewPacket", () => {
         summaryVi: "Đạt yêu cầu.",
         contractResult: {
           passed: true,
-          mode: "correction",
           failedCount: 0,
           rules: [],
           summaryVi: "Đạt.",
-          summaryEn: "Passed.",
         },
       };
       const packet = buildChauReviewPacket({
@@ -777,11 +775,9 @@ describe("buildChauReviewPacket", () => {
         summaryVi: "Không an toàn.",
         contractResult: {
           passed: false,
-          mode: "correction",
           failedCount: 1,
           rules: [],
           summaryVi: "Không đạt.",
-          summaryEn: "Failed.",
         },
       };
       const packet = buildChauReviewPacket({

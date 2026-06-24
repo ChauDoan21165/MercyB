@@ -351,7 +351,7 @@ describe("memorySchema — save and load integrity", () => {
 
   it("S2: saveMemory always stamps current version", () => {
     const memory = loadValidatedMemory();
-    (memory as Record<string, unknown>).version = 1; // old version
+    (memory as unknown as Record<string, unknown>).version = 1; // old version
     saveMemory(memory);
 
     const loaded = loadValidatedMemory();

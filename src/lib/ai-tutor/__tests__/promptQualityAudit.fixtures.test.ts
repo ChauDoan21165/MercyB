@@ -649,9 +649,9 @@ describe("Prompt Quality — Cross-Cutting Invariants", () => {
   it("CCI.6: serializeHistoryForProvider excludes infrastructure system messages", () => {
     const msgs: TutorMessage[] = [
       { role: "system", ts: 0, event: { kind: "greeting", name: "Chau", contextVi: "", entryPoints: ["ask"] } },
-      { role: "system", ts: 1, event: { kind: "error", error: "test error" } },
-      { role: "system", ts: 2, event: { kind: "budget_exceeded", budgetKind: "daily" } },
-      { role: "system", ts: 3, event: { kind: "session_ended", reason: "inactive" } },
+      { role: "system", ts: 1, event: { kind: "error", messageVi: "test error", retryable: true, errorKind: "unknown" } },
+      { role: "system", ts: 2, event: { kind: "budget_exceeded", messageVi: "budget", resetsAt: null, budgetType: "daily_turns" } },
+      { role: "system", ts: 3, event: { kind: "session_ended", messageVi: "ended", totalTurns: 3, itemsSaved: 0 } },
       makeLearnerMsg("real message"),
     ];
     const result = serializeHistoryForProvider(msgs, 20);
@@ -664,8 +664,8 @@ describe("Prompt Quality — Cross-Cutting Invariants", () => {
 
   it("CCI.7: serializeHistoryForProvider includes safety and fallback system messages", () => {
     const msgs: TutorMessage[] = [
-      { role: "system", ts: 0, event: { kind: "safety", safetyKind: "off_topic" } },
-      { role: "system", ts: 1, event: { kind: "fallback", tier: 2 } },
+      { role: "system", ts: 0, event: { kind: "safety", safetyKind: "off_topic", messageVi: "off-topic", sessionContinues: true } },
+      { role: "system", ts: 1, event: { kind: "fallback", tier: 2, messageVi: "fallback" } },
       makeLearnerMsg("test"),
     ];
     const result = serializeHistoryForProvider(msgs, 20);

@@ -379,42 +379,12 @@ function experiencedB1Profile(overrides: Partial<LearnerHistoryProfile> = {}): L
     completedSessionCount: 10,
     ...overrides,
   });
-  recordInterferencePattern(p, "missing-article", {
-    grammarPoint: "articles",
-    learnerTextPattern: "I go to market",
-    correctFormPattern: "I go to the market",
-    confidence: 0.85,
-  });
-  recordInterferencePattern(p, "missing-article", {
-    grammarPoint: "articles",
-    learnerTextPattern: "She is teacher",
-    correctFormPattern: "She is a teacher",
-    confidence: 0.8,
-  });
-  recordInterferencePattern(p, "tense-omission", {
-    grammarPoint: "past_tense",
-    learnerTextPattern: "I go yesterday",
-    correctFormPattern: "I went yesterday",
-    confidence: 0.9,
-  });
-  recordInterferencePattern(p, "tense-omission", {
-    grammarPoint: "past_tense",
-    learnerTextPattern: "She eat already",
-    correctFormPattern: "She ate already",
-    confidence: 0.75,
-  });
-  recordInterferencePattern(p, "tense-omission", {
-    grammarPoint: "past_tense",
-    learnerTextPattern: "We finish last week",
-    correctFormPattern: "We finished last week",
-    confidence: 0.8,
-  });
-  recordInterferencePattern(p, "preposition-calque", {
-    grammarPoint: "prepositions",
-    learnerTextPattern: "I'm interested in learn English",
-    correctFormPattern: "I'm interested in learning English",
-    confidence: 0.7,
-  });
+  recordInterferencePattern(p, "missing-article", NOW);
+  recordInterferencePattern(p, "missing-article", NOW);
+  recordInterferencePattern(p, "tense-omission", NOW);
+  recordInterferencePattern(p, "tense-omission", NOW);
+  recordInterferencePattern(p, "tense-omission", NOW);
+  recordInterferencePattern(p, "preposition-calque", NOW);
   return p;
 }
 
@@ -479,8 +449,10 @@ function neutralEmotion(): TeacherEmotionState {
     humorAllowance: 0.5,
     warmthLevel: 0.7,
     paceAdjustment: "normal",
-    cognitiveLoad: "moderate",
+    cognitiveLoadLevel: "moderate",
     correctionSoftnessBias: 0.5,
+    encouragementBias: 0.5,
+    challengeReadiness: 0.5,
     momentumProtection: false,
   };
 }
@@ -492,8 +464,10 @@ function concernedEmotion(): TeacherEmotionState {
     humorAllowance: 0.2,
     warmthLevel: 0.9,
     paceAdjustment: "slow",
-    cognitiveLoad: "high",
+    cognitiveLoadLevel: "high",
     correctionSoftnessBias: 0.8,
+    encouragementBias: 0.7,
+    challengeReadiness: 0.3,
     momentumProtection: true,
   };
 }
@@ -726,7 +700,7 @@ describe("DE1 — Diagnostic Depth", () => {
       const pattern = findCuratedLogicPattern("I am very like this song");
       // May find a match or not — depends on corpus coverage
       if (pattern) {
-        expect(pattern.pattern).toBeDefined();
+        expect(pattern.match).toBeDefined();
       }
     });
 
@@ -754,7 +728,7 @@ describe("DE2 — Teaching Quality", () => {
         cefrLevel: "B1",
         isCurrentLessonTarget: true,
         sameMistakeCount: 2,
-        learnerConfidence: "medium",
+        learnerConfidence: "normal",
         previousCorrectionsThisSession: 1,
       };
       const decision = decideTeacherAction(input);
@@ -772,7 +746,7 @@ describe("DE2 — Teaching Quality", () => {
         cefrLevel: "A2",
         isCurrentLessonTarget: true,
         sameMistakeCount: 1,
-        learnerConfidence: "medium",
+        learnerConfidence: "normal",
         previousCorrectionsThisSession: 0,
       };
       const decision = decideTeacherAction(input);
@@ -787,7 +761,7 @@ describe("DE2 — Teaching Quality", () => {
         cefrLevel: "B1",
         isCurrentLessonTarget: false,
         sameMistakeCount: 0,
-        learnerConfidence: "high",
+        learnerConfidence: "confident",
         previousCorrectionsThisSession: 0,
       };
       const decision = decideTeacherAction(input);
@@ -802,7 +776,7 @@ describe("DE2 — Teaching Quality", () => {
         cefrLevel: "B1",
         isCurrentLessonTarget: true,
         sameMistakeCount: 2,
-        learnerConfidence: "medium",
+        learnerConfidence: "normal",
         previousCorrectionsThisSession: 1,
       };
       const decision = decideTeacherAction(input);
@@ -817,7 +791,7 @@ describe("DE2 — Teaching Quality", () => {
         cefrLevel: "B1",
         isCurrentLessonTarget: true,
         sameMistakeCount: 2,
-        learnerConfidence: "low",
+        learnerConfidence: "shy",
         previousCorrectionsThisSession: 1,
       };
       const d = decideTeacherAction(input);
@@ -833,7 +807,7 @@ describe("DE2 — Teaching Quality", () => {
         cefrLevel: "B1",
         isCurrentLessonTarget: true,
         sameMistakeCount: 3,
-        learnerConfidence: "low",
+        learnerConfidence: "shy",
         previousCorrectionsThisSession: 2,
         lessonFocus: "articles",
       };
@@ -1289,7 +1263,7 @@ describe("DE3 — Memory Loop", () => {
         cefrLevel: "B1",
         isCurrentLessonTarget: true,
         sameMistakeCount: 3,
-        learnerConfidence: "low",
+        learnerConfidence: "shy",
         previousCorrectionsThisSession: 2,
         lessonFocus: "articles",
       };
@@ -1489,7 +1463,7 @@ describe("DE4 — Adaptive Teaching", () => {
   describe("DE4.4 — Recommendation adapts to learner", () => {
     it("DE4.4.1: recommendNextLessons for experienced learner returns recommendations", () => {
       const profile = experiencedB1Profile();
-      const recommendations = recommendNextLessons(profile, "B1");
+      const recommendations = recommendNextLessons(profile);
       expect(recommendations).toBeInstanceOf(Array);
       expect(recommendations.length).toBeGreaterThan(0);
       for (const rec of recommendations) {
@@ -1511,7 +1485,7 @@ describe("DE4 — Adaptive Teaching", () => {
     });
 
     it("DE4.4.4: calibrateChallengeLevel returns valid level", () => {
-      const levels = calibrateChallengeLevel("B1", 0.6, false);
+      const levels = calibrateChallengeLevel("B1", "maintain_momentum");
       expect(levels).toBeDefined();
     });
 
@@ -1577,11 +1551,8 @@ describe("DE4 — Adaptive Teaching", () => {
   describe("DE4.6 — Tone calibration from learner emotional stance", () => {
     it("DE4.6.1: calibrateTone produces valid ToneCalibrationResult from plan + learner state", () => {
       const plan = buildResponsePlan({
-        teachingMode: "correction",
         learnerState: frustratedLearnerState(),
-        emotion: neutralEmotion(),
         isCorrectiveTurn: true,
-        cefrLevel: "B1",
       });
       const result = calibrateTone({
         learnerState: frustratedLearnerState(),
@@ -1596,11 +1567,8 @@ describe("DE4 — Adaptive Teaching", () => {
 
     it("DE4.6.2: calibrateTone with frustrated learner shifts to warm/gentle", () => {
       const plan = buildResponsePlan({
-        teachingMode: "correction",
         learnerState: frustratedLearnerState(),
-        emotion: neutralEmotion(),
         isCorrectiveTurn: true,
-        cefrLevel: "B1",
       });
       const result = calibrateTone({
         learnerState: frustratedLearnerState(),
@@ -1614,11 +1582,8 @@ describe("DE4 — Adaptive Teaching", () => {
 
     it("DE4.6.3: response planner produces valid plan for tone calibration", () => {
       const plan = buildResponsePlan({
-        teachingMode: "correction",
         learnerState: engagedLearnerState(),
-        emotion: neutralEmotion(),
         isCorrectiveTurn: true,
-        cefrLevel: "B1",
       });
       expect(plan).toBeDefined();
       expect(plan.teachingMode).toBeDefined();
@@ -1744,7 +1709,7 @@ describe("DE5 — Self-Check Integration", () => {
         cefrLevel: "B1",
         isCurrentLessonTarget: true,
         sameMistakeCount: 2,
-        learnerConfidence: "medium",
+        learnerConfidence: "normal",
         previousCorrectionsThisSession: 1,
       };
       const decision = decideTeacherAction(input);
@@ -1761,7 +1726,7 @@ describe("DE5 — Self-Check Integration", () => {
         cefrLevel: "B1",
         isCurrentLessonTarget: true,
         sameMistakeCount: 2,
-        learnerConfidence: "medium",
+        learnerConfidence: "normal",
         previousCorrectionsThisSession: 1,
       };
       const decision = decideTeacherAction(input);
@@ -1848,11 +1813,18 @@ describe("DE5 — Self-Check Integration", () => {
   describe("DE5.6 — Error recovery strategy selection", () => {
     it("DE5.6.1: decideErrorRecoveryStrategy returns valid recovery method", () => {
       const strategy = decideErrorRecoveryStrategy({
-        errorType: "article",
+        errorSeverity: "grammar",
         cefrLevel: "A2",
-        sameMistakeCount: 1,
-        learnerConfidence: "medium",
+        recurringErrorCount: 1,
+        learnerConfidence: "normal",
         isCurrentLessonTarget: true,
+        hasSelfCorrectionAwareness: false,
+        isShowingFrustration: false,
+        totalTurnsInSession: 10,
+        correctionsThisSession: 1,
+        turnsSinceLastRecovery: 5,
+        previousRecoveryWorked: true,
+        lastRecoveryStrategy: null,
       });
       expect(strategy.strategy).toBeDefined();
       expect(strategy.reason.length).toBeGreaterThan(0);
@@ -1860,29 +1832,50 @@ describe("DE5 — Self-Check Integration", () => {
 
     it("DE5.6.2: strategy is in the recovery catalog", () => {
       const strategy = decideErrorRecoveryStrategy({
-        errorType: "article",
+        errorSeverity: "grammar",
         cefrLevel: "B1",
-        sameMistakeCount: 1,
-        learnerConfidence: "medium",
+        recurringErrorCount: 1,
+        learnerConfidence: "normal",
         isCurrentLessonTarget: true,
+        hasSelfCorrectionAwareness: false,
+        isShowingFrustration: false,
+        totalTurnsInSession: 10,
+        correctionsThisSession: 0,
+        turnsSinceLastRecovery: Infinity,
+        previousRecoveryWorked: true,
+        lastRecoveryStrategy: null,
       });
       expect(ERROR_RECOVERY_STRATEGY_CATALOG.some(c => c.strategy === strategy.strategy)).toBe(true);
     });
 
     it("DE5.6.3: repeated mistake gets different strategy than first-time", () => {
       const firstTime = decideErrorRecoveryStrategy({
-        errorType: "tense",
+        errorSeverity: "grammar",
         cefrLevel: "B1",
-        sameMistakeCount: 1,
-        learnerConfidence: "medium",
+        recurringErrorCount: 1,
+        learnerConfidence: "normal",
         isCurrentLessonTarget: true,
+        hasSelfCorrectionAwareness: false,
+        isShowingFrustration: false,
+        totalTurnsInSession: 10,
+        correctionsThisSession: 0,
+        turnsSinceLastRecovery: Infinity,
+        previousRecoveryWorked: true,
+        lastRecoveryStrategy: null,
       });
       const repeated = decideErrorRecoveryStrategy({
-        errorType: "tense",
+        errorSeverity: "grammar",
         cefrLevel: "B1",
-        sameMistakeCount: 5,
-        learnerConfidence: "low",
+        recurringErrorCount: 5,
+        learnerConfidence: "shy",
         isCurrentLessonTarget: true,
+        hasSelfCorrectionAwareness: false,
+        isShowingFrustration: true,
+        totalTurnsInSession: 10,
+        correctionsThisSession: 3,
+        turnsSinceLastRecovery: 2,
+        previousRecoveryWorked: false,
+        lastRecoveryStrategy: null,
       });
       // Both should produce valid strategies
       expect(firstTime.strategy).toBeDefined();
@@ -1898,9 +1891,11 @@ describe("DE5 — Self-Check Integration", () => {
         learnerText: "I like learning English very much",
         isCurrentLessonTarget: false,
         sameMistakeCount: 0,
-        learnerConfidence: "high",
+        learnerConfidence: "confident",
         previousCorrectionsThisSession: 3,
-        turnsSinceLastCorrection: 0,
+        errorSeverity: "minor",
+        cefrLevel: "B1",
+        didSelfCorrect: false,
       });
       expect(context).toBeDefined();
     });
@@ -1910,11 +1905,11 @@ describe("DE5 — Self-Check Integration", () => {
         learnerText: "I like learning English very much",
         isCurrentLessonTarget: false,
         sameMistakeCount: 0,
-        learnerConfidence: "high",
+        learnerConfidence: "confident",
         previousCorrectionsThisSession: 3,
-        turnsSinceLastCorrection: 0,
         cefrLevel: "B2",
         errorSeverity: "minor",
+        didSelfCorrect: false,
       });
       const result = evaluateSuppressions(context);
       expect(result).toBeDefined();
@@ -1951,7 +1946,7 @@ describe("DE6 — Improvement Evidence", () => {
   describe("DE6.1 — Evidence accumulation over sessions", () => {
     it("DE6.1.1: evidenceScore returns 0-10 range for a recommendation", () => {
       const profile = experiencedB1Profile();
-      const recs = recommendNextLessons(profile, "B1");
+      const recs = recommendNextLessons(profile);
       if (recs.length > 0) {
         const score = evidenceScore(recs[0], profile);
         expect(score).toBeGreaterThanOrEqual(0);
@@ -1978,12 +1973,12 @@ describe("DE6 — Improvement Evidence", () => {
     it("DE6.1.4: assessConfidence rises with more evidence", () => {
       const emptyConf = assessConfidence([]);
       const someConf = assessConfidence([
-        { source: "interference" as const, observationVi: "test", strength: "moderate" as const, occurrenceCount: 3, tag: "missing-article", lastObservedAt: NOW, supportsRecommendation: true },
+        { source: "interference_pattern" as const, observationVi: "test", strength: "moderate" as const, occurrenceCount: 3, tag: "missing-article", lastObservedAt: NOW, supportsRecommendation: true },
       ]);
       const moreConf = assessConfidence([
-        { source: "interference" as const, observationVi: "a", strength: "strong" as const, occurrenceCount: 5, tag: "missing-article", lastObservedAt: NOW, supportsRecommendation: true },
-        { source: "mastery" as const, observationVi: "b", strength: "moderate" as const, occurrenceCount: 3, tag: "tense-omission", lastObservedAt: NOW - 1000, supportsRecommendation: true },
-        { source: "interference" as const, observationVi: "c", strength: "moderate" as const, occurrenceCount: 2, tag: "preposition-calque", lastObservedAt: NOW - 2000, supportsRecommendation: true },
+        { source: "interference_pattern" as const, observationVi: "a", strength: "strong" as const, occurrenceCount: 5, tag: "missing-article", lastObservedAt: NOW, supportsRecommendation: true },
+        { source: "mastery_score" as const, observationVi: "b", strength: "moderate" as const, occurrenceCount: 3, tag: "tense-omission", lastObservedAt: NOW - 1000, supportsRecommendation: true },
+        { source: "interference_pattern" as const, observationVi: "c", strength: "moderate" as const, occurrenceCount: 2, tag: "preposition-calque", lastObservedAt: NOW - 2000, supportsRecommendation: true },
       ]);
       expect(someConf).toBeGreaterThanOrEqual(emptyConf);
       expect(moreConf).toBeGreaterThanOrEqual(someConf);
@@ -1995,13 +1990,13 @@ describe("DE6 — Improvement Evidence", () => {
   describe("DE6.2 — Recommendation quality improves with more data", () => {
     it("DE6.2.1: cold-start recommendations are fewer and broader", () => {
       const coldProfile = emptyB1Profile();
-      const coldRecs = recommendNextLessons(coldProfile, "A2");
+      const coldRecs = recommendNextLessons(coldProfile);
       expect(coldRecs.length).toBeGreaterThan(0);
     });
 
     it("DE6.2.2: experienced learner gets targeted recommendations with rule references", () => {
       const expProfile = experiencedB1Profile();
-      const expRecs = recommendNextLessons(expProfile, "B1");
+      const expRecs = recommendNextLessons(expProfile);
       expect(expRecs.length).toBeGreaterThan(0);
       for (const rec of expRecs) {
         expect(rec.ruleFired.length).toBeGreaterThan(0);
@@ -2081,18 +2076,8 @@ describe("DE6 — Improvement Evidence", () => {
   describe("DE6.4 — Mastery and improvement trends", () => {
     it("DE6.4.1: recordInterferencePattern increments observedCount for repeated patterns", () => {
       const profile = emptyB1Profile();
-      recordInterferencePattern(profile, "missing-article", {
-        grammarPoint: "articles",
-        learnerTextPattern: "market",
-        correctFormPattern: "the market",
-        confidence: 0.7,
-      });
-      recordInterferencePattern(profile, "missing-article", {
-        grammarPoint: "articles",
-        learnerTextPattern: "school",
-        correctFormPattern: "the school",
-        confidence: 0.8,
-      });
+      recordInterferencePattern(profile, "missing-article", NOW);
+      recordInterferencePattern(profile, "missing-article", NOW);
       const pattern = profile.interferencePatterns.find(p => p.tag === "missing-article");
       if (pattern) {
         expect(pattern.observedCount).toBeGreaterThanOrEqual(2);
@@ -2132,7 +2117,7 @@ describe("DE6 — Improvement Evidence", () => {
         cefrLevel: "B1",
         isCurrentLessonTarget: true,
         sameMistakeCount: 0,
-        learnerConfidence: "medium",
+        learnerConfidence: "normal",
         previousCorrectionsThisSession: 0,
         lessonFocus: "articles",
       });
@@ -2230,7 +2215,7 @@ describe("DE6 — Improvement Evidence", () => {
           cefrLevel: "B1",
           isCurrentLessonTarget: true,
           sameMistakeCount: i,
-          learnerConfidence: i === 2 ? "high" : "medium",
+          learnerConfidence: i === 2 ? "confident" : "normal",
           previousCorrectionsThisSession: i,
           lessonFocus: "articles",
         });
@@ -2265,11 +2250,11 @@ describe("DE6 — Improvement Evidence", () => {
       expect(emptyConf).toBeLessThanOrEqual(0.3);
 
       const evidenceConf = assessConfidence([
-        { source: "interference" as const, observationVi: "a", strength: "strong" as const, occurrenceCount: 5, tag: "missing-article", lastObservedAt: NOW, supportsRecommendation: true },
-        { source: "mastery" as const, observationVi: "b", strength: "moderate" as const, occurrenceCount: 4, tag: "tense-omission", lastObservedAt: NOW - 1000, supportsRecommendation: true },
-        { source: "interference" as const, observationVi: "c", strength: "moderate" as const, occurrenceCount: 3, tag: "preposition-calque", lastObservedAt: NOW - 2000, supportsRecommendation: true },
-        { source: "mastery" as const, observationVi: "d", strength: "weak" as const, occurrenceCount: 2, tag: "word-order", lastObservedAt: NOW - 3000, supportsRecommendation: true },
-        { source: "interference" as const, observationVi: "e", strength: "weak" as const, occurrenceCount: 1, tag: "subj-verb-agreement", lastObservedAt: NOW - 4000, supportsRecommendation: true },
+        { source: "interference_pattern" as const, observationVi: "a", strength: "strong" as const, occurrenceCount: 5, tag: "missing-article", lastObservedAt: NOW, supportsRecommendation: true },
+        { source: "mastery_score" as const, observationVi: "b", strength: "moderate" as const, occurrenceCount: 4, tag: "tense-omission", lastObservedAt: NOW - 1000, supportsRecommendation: true },
+        { source: "interference_pattern" as const, observationVi: "c", strength: "moderate" as const, occurrenceCount: 3, tag: "preposition-calque", lastObservedAt: NOW - 2000, supportsRecommendation: true },
+        { source: "mastery_score" as const, observationVi: "d", strength: "weak" as const, occurrenceCount: 2, tag: "word-order", lastObservedAt: NOW - 3000, supportsRecommendation: true },
+        { source: "interference_pattern" as const, observationVi: "e", strength: "weak" as const, occurrenceCount: 1, tag: "subj-verb-agreement", lastObservedAt: NOW - 4000, supportsRecommendation: true },
       ]);
       expect(evidenceConf).toBeGreaterThan(emptyConf);
       expect(evidenceConf).toBeGreaterThan(0.3);
@@ -2277,7 +2262,7 @@ describe("DE6 — Improvement Evidence", () => {
 
     it("DE6.5.6: explainRecommendation produces evidence-anchored explanation", () => {
       const profile = experiencedB1Profile();
-      const recs = recommendNextLessons(profile, "B1");
+      const recs = recommendNextLessons(profile);
       if (recs.length > 0) {
         const explanation = explainRecommendation(
           recs[0],
@@ -2306,7 +2291,7 @@ describe("DE6 — Improvement Evidence", () => {
         cefrLevel: "B1",
         isCurrentLessonTarget: true,
         sameMistakeCount: 2,
-        learnerConfidence: "medium",
+        learnerConfidence: "normal",
         previousCorrectionsThisSession: 1,
       };
       const first = decideTeacherAction(input);
@@ -2403,7 +2388,7 @@ describe("DE-SANITY — Edge cases across all dimensions", () => {
       cefrLevel: "B1",
       isCurrentLessonTarget: false,
       sameMistakeCount: 0,
-      learnerConfidence: "medium",
+      learnerConfidence: "normal",
       previousCorrectionsThisSession: 0,
     });
     expect(decision.action).toBe("SUPPRESS");
@@ -2418,7 +2403,7 @@ describe("DE-SANITY — Edge cases across all dimensions", () => {
       cefrLevel: "B2",
       isCurrentLessonTarget: false,
       sameMistakeCount: 0,
-      learnerConfidence: "high",
+      learnerConfidence: "confident",
       previousCorrectionsThisSession: 0,
     });
     expect(decision).toBeDefined();
@@ -2432,7 +2417,7 @@ describe("DE-SANITY — Edge cases across all dimensions", () => {
       cefrLevel: "B1",
       isCurrentLessonTarget: false,
       sameMistakeCount: 0,
-      learnerConfidence: "medium",
+      learnerConfidence: "normal",
       previousCorrectionsThisSession: 0,
     });
     expect(decision.action).toBe("SUPPRESS");
@@ -2458,34 +2443,55 @@ describe("DE-SANITY — Edge cases across all dimensions", () => {
 
   it("DE-S.5: all timing policy engines are importable and callable", () => {
     const encResult = decideEncouragementTiming({
+      hasSignificantImprovement: false,
+      encouragementSignal: "sustained_accuracy",
+      turnsSinceLastEncouragement: 5,
+      encouragementsThisSession: 1,
+      wasStruggling: false,
+      learnerConfidence: "shy",
+      isShowingFrustration: false,
+      cefrLevel: "B1",
+      totalCorrectionsInSession: 2,
+      didSelfCorrect: false,
+      isCorrectTurn: true,
       consecutiveCorrectTurns: 3,
-      learnerConfidence: "low",
-      totalTurnsInSession: 5,
-      lastEncouragementTurn: null,
     });
     expect(encResult).toBeDefined();
 
     const drillResult = decideDrillTiming({
-      sameMistakeCount: 3,
+      turnsSinceLastDrill: 5,
+      totalCorrectionsInSession: 3,
+      recurringErrorCount: 3,
+      errorSeverity: "grammar",
+      cefrLevel: "B1",
+      learnerConfidence: "normal",
       isCurrentLessonTarget: true,
-      learnerMomentum: "steady",
       totalTurnsInSession: 8,
+      currentLessonProgress: 50,
+      drillsThisSession: 0,
     });
     expect(drillResult).toBeDefined();
 
     const challengeResult = decideChallengeTiming({
-      consecutiveCorrectTurns: 4,
-      learnerConfidence: "high",
+      consecutiveCorrectAtLevel: 4,
+      turnsSinceLastChallenge: 5,
+      challengesThisSession: 0,
       totalTurnsInSession: 10,
+      learnerConfidence: "confident",
+      isShowingFrustration: false,
       cefrLevel: "B2",
+      hasUnnoticedRepeatedErrors: false,
+      unnoticedErrorCount: 0,
+      totalCorrectionsInSession: 0,
+      currentLessonProgress: 60,
     });
     expect(challengeResult).toBeDefined();
   });
 
   it("DE-S.6: safety modules handle edge cases", () => {
-    expect(sanitizeInput("Hello, I want to learn English")).toBeDefined();
+    expect(sanitizeInput("Hello, I want to learn English", { mode: "general_chat", tier: "free", isKidsMode: false })).toBeDefined();
 
-    const sanitized = sanitizeInput("My email is test@example.com");
+    const sanitized = sanitizeInput("My email is test@example.com", { mode: "general_chat", tier: "free", isKidsMode: false });
     expect(sanitized).toBeDefined();
 
     const pii = detectPII("My email is test@example.com");
@@ -2501,7 +2507,7 @@ describe("DE-SANITY — Edge cases across all dimensions", () => {
   it("DE-S.7: prompt assembly handles all CEFR levels", () => {
     const levels = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
     for (const level of levels) {
-      const prompt = assembleSystemPrompt("correction", level, "Học viên");
+      const prompt = assembleSystemPrompt("sentence_correction", level, "Học viên");
       expect(prompt.length).toBeGreaterThan(0);
     }
   });
@@ -2510,7 +2516,7 @@ describe("DE-SANITY — Edge cases across all dimensions", () => {
     const result = enforceTokenBudget(
       "You are a helpful tutor.",
       [{ role: "user" as const, content: "This is a test sentence for token budgeting." }],
-      "correction",
+      "sentence_correction",
     );
     expect(result).toBeDefined();
     expect(result.systemPrompt).toBeDefined();
@@ -2528,7 +2534,7 @@ describe("DE-SANITY — Edge cases across all dimensions", () => {
   });
 
   it("DE-S.11: refusal response is Vietnamese", () => {
-    const refusal = buildRefusalResponse("crisis");
+    const refusal = buildRefusalResponse("off_topic");
     expect(refusal.vi.length).toBeGreaterThan(0);
     expect(VN_DIACRITIC.test(refusal.vi)).toBe(true);
   });
@@ -2545,7 +2551,7 @@ describe("DE-SANITY — Edge cases across all dimensions", () => {
       cefrLevel: "B1",
       isCurrentLessonTarget: true,
       sameMistakeCount: 1,
-      learnerConfidence: "medium",
+      learnerConfidence: "normal",
       previousCorrectionsThisSession: 0,
     });
     expect(decision.action).toBeDefined();
@@ -2584,7 +2590,7 @@ describe("DE-SANITY — Edge cases across all dimensions", () => {
     // D6: IMPROVE
     const confBefore = assessConfidence([]);
     const confAfter = assessConfidence([
-      { source: "interference" as const, observationVi: "test", strength: "strong" as const, occurrenceCount: 5, tag: "missing-article", lastObservedAt: NOW, supportsRecommendation: true },
+      { source: "interference_pattern" as const, observationVi: "test", strength: "strong" as const, occurrenceCount: 5, tag: "missing-article", lastObservedAt: NOW, supportsRecommendation: true },
     ]);
     expect(confAfter).toBeGreaterThanOrEqual(confBefore);
 

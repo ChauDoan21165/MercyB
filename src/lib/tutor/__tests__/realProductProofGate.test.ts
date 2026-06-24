@@ -72,7 +72,7 @@ function makeCorrectionEvent(
     targetSentence: overrides.targetSentence ?? null,
     corrections: overrides.corrections ?? [
       {
-        source: "grammar",
+        source: "grammar-rule",
         position: 0,
         originalToken: "go",
         correctedToken: "went",
@@ -164,14 +164,17 @@ function makeSelfAuditResult(overrides: Partial<SelfAuditResult> = {}): SelfAudi
 function makeOverclaimResult(overrides: Partial<OverclaimGuardResult> = {}): OverclaimGuardResult {
   return {
     decision: overrides.decision ?? "PASS",
+    canShow: overrides.canShow ?? true,
+    needsRevision: overrides.needsRevision ?? false,
+    isBlocked: overrides.isBlocked ?? false,
     gates: overrides.gates ?? [],
     passedCount: overrides.passedCount ?? 8,
     firedCount: overrides.firedCount ?? 0,
+    decidingGate: overrides.decidingGate ?? null,
     summaryVi: overrides.summaryVi ?? "Không overclaim.",
     summaryEn: overrides.summaryEn ?? "No overclaim.",
-    decidingGate: overrides.decidingGate ?? null,
-    safe: overrides.safe ?? true,
-  } as OverclaimGuardResult;
+    allMatchedSnippets: overrides.allMatchedSnippets ?? [],
+  };
 }
 
 /** Build an evaluation result */
@@ -192,12 +195,18 @@ function makeEvaluationResult(overrides: Partial<EvaluationResult> = {}): Evalua
 function makeTeacherDecision(overrides: Partial<TeacherDecision> = {}): TeacherDecision {
   return {
     action: overrides.action ?? "CORRECT_NOW",
-    learnerInput: overrides.learnerInput ?? { text: "I go yesterday" },
-    correctionCandidates: overrides.correctionCandidates ?? [],
-    decidedAt: overrides.decidedAt ?? Date.now(),
-    turnNumber: overrides.turnNumber ?? 1,
-    sessionId: overrides.sessionId ?? "test-session",
-  } as TeacherDecision;
+    correction: overrides.correction ?? null,
+    timingMode: overrides.timingMode ?? "IMMEDIATE",
+    rationaleVi: overrides.rationaleVi ?? "",
+    rationaleEn: overrides.rationaleEn ?? "",
+    reasonCode: overrides.reasonCode ?? "test",
+    allCandidates: overrides.allCandidates ?? [],
+    enrichment: overrides.enrichment ?? null,
+    suppressionDecision: overrides.suppressionDecision ?? null,
+    hintLadder: overrides.hintLadder ?? null,
+    readiness:
+      overrides.readiness ?? { decision: "READY_NOW" as const, reason: "test", reasonCode: "test" },
+  } as unknown as TeacherDecision;
 }
 
 /** Build a memory snapshot */
@@ -208,26 +217,46 @@ function makeMemorySnapshot(overrides: Partial<ChauMemorySnapshot> = {}): ChauMe
     commonMistakePatterns: overrides.commonMistakePatterns ?? ["Bỏ qua -ed ở động từ quá khứ"],
     nextRecommendedFocus: overrides.nextRecommendedFocus ?? "Luyện tập thì quá khứ đơn với 10 câu",
     confidenceTrend: overrides.confidenceTrend ?? "stable",
+    totalCorrections: overrides.totalCorrections ?? 0,
+    lastUpdatedAt: overrides.lastUpdatedAt ?? new Date().toISOString(),
   };
 }
 
 /** Build a minimal tutor turn */
 function makeTutorTurn(overrides: Partial<TutorTurn> = {}): TutorTurn {
-  const base = { turnNumber: overrides.turnNumber ?? 1 };
-  return { ...base, ...overrides } as TutorTurn;
+  return {
+    id: overrides.id ?? `turn-${Date.now()}`,
+    mode: overrides.mode ?? "conversation",
+    targetLanguage: overrides.targetLanguage ?? "en",
+    explainLanguage: overrides.explainLanguage ?? "vi",
+    userText: overrides.userText ?? "",
+    correctedText: overrides.correctedText ?? "",
+    explanation: overrides.explanation ?? "",
+    shouldReadAloudText: overrides.shouldReadAloudText ?? "",
+    createdAt: overrides.createdAt ?? new Date().toISOString(),
+    naturalReply: overrides.naturalReply,
+    nextQuestion: overrides.nextQuestion,
+  } as TutorTurn;
 }
 
 /** Build a correction engine result */
-function makeCorrectionResult(overrides: Partial<CorrectionEngineResult> = {}): CorrectionEngineResult {
+function makeCorrectionResult(
+  overrides: { status?: "corrected" | "unchanged" | "needs_ai" } = {},
+): CorrectionEngineResult {
+  const status = overrides.status ?? "corrected";
+  if (status === "needs_ai") {
+    return {
+      status: "needs_ai" as const,
+      corrected: "",
+      appliedRuleIds: [],
+      message: "Mercy needs the AI correction engine for this one.",
+    } as unknown as CorrectionEngineResult;
+  }
   return {
-    corrected: overrides.corrected ?? true,
-    correctionCount: overrides.correctionCount ?? 1,
-    corrections: overrides.corrections ?? [],
-    needAiCorrection: overrides.needAiCorrection ?? false,
-    sttGarbleDetected: overrides.sttGarbleDetected ?? false,
-    semanticImplausible: overrides.semanticImplausible ?? false,
-    summaryVi: overrides.summaryVi ?? "Đã sửa 1 lỗi.",
-  } as CorrectionEngineResult;
+    status: status as "corrected" | "unchanged",
+    corrected: status === "unchanged" ? "" : "I went to school yesterday",
+    appliedRuleIds: [],
+  } as unknown as CorrectionEngineResult;
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -325,7 +354,7 @@ describe("realProductProofGate — minimal session", () => {
     const input: RealProductProofInput = {
       ...createMinimalProofInput(),
       correctionEvents: events,
-      turns: [makeTutorTurn({ turnNumber: 1 }), makeTutorTurn({ turnNumber: 2 })],
+      turns: [makeTutorTurn(), makeTutorTurn()],
       contractChecks: [
         makePassedContractCheck("R1_MEANING_FIRST"),
         makePassedContractCheck("R2_ONE_CORRECTION_MAX"),
@@ -333,8 +362,8 @@ describe("realProductProofGate — minimal session", () => {
       auditResults: [makeAuditResult()],
       selfAuditResults: [makeSelfAuditResult()],
       teacherDecisions: [
-        makeTeacherDecision({ action: "CORRECT_NOW", turnNumber: 1 }),
-        makeTeacherDecision({ action: "DEFER", turnNumber: 2 }),
+        makeTeacherDecision({ action: "CORRECT_NOW" }),
+        makeTeacherDecision({ action: "DEFER" }),
       ],
       memorySnapshots: [makeMemorySnapshot()],
       correctionResults: [makeCorrectionResult(), makeCorrectionResult()],
@@ -358,7 +387,7 @@ describe("realProductProofGate — minimal session", () => {
     const input: RealProductProofInput = {
       ...createMinimalProofInput(),
       correctionEvents: events,
-      turns: [makeTutorTurn({ turnNumber: 1 }), makeTutorTurn({ turnNumber: 2 })],
+      turns: [makeTutorTurn(), makeTutorTurn()],
     };
 
     const proof = runRealProductProof(input);
@@ -380,19 +409,19 @@ describe("realProductProofGate — strong session", () => {
     const events = [
       makeCorrectionEvent({
         id: "evt-001", turnNumber: 1,
-        corrections: [{ source: "grammar", position: 0, originalToken: "go", correctedToken: "went", confidence: 0.90, ruleId: "tense", explanationVi: "Quá khứ của go là went.", explanationEn: null }],
+        corrections: [{ source: "grammar-rule", position: 0, originalToken: "go", correctedToken: "went", confidence: 0.90, ruleId: "tense", explanationVi: "Quá khứ của go là went.", explanationEn: null }],
       }),
       makeCorrectionEvent({
         id: "evt-002", turnNumber: 2,
-        corrections: [{ source: "stt", position: 0, originalToken: "ai", correctedToken: "I", confidence: 0.80, ruleId: "stt-garble", explanationVi: "Sửa 'ai' thành 'I'.", explanationEn: null }],
+        corrections: [{ source: "stt-garble", position: 0, originalToken: "ai", correctedToken: "I", confidence: 0.80, ruleId: "stt-garble", explanationVi: "Sửa 'ai' thành 'I'.", explanationEn: null }],
       }),
       makeCorrectionEvent({
         id: "evt-003", turnNumber: 3,
-        corrections: [{ source: "grammar", position: 0, originalToken: "eated", correctedToken: "ate", confidence: 0.88, ruleId: "tense", explanationVi: "Quá khứ của eat là ate.", explanationEn: null }],
+        corrections: [{ source: "grammar-rule", position: 0, originalToken: "eated", correctedToken: "ate", confidence: 0.88, ruleId: "tense", explanationVi: "Quá khứ của eat là ate.", explanationEn: null }],
       }),
       makeCorrectionEvent({
         id: "evt-004", turnNumber: 4,
-        corrections: [{ source: "grammar", position: 0, originalToken: "a", correctedToken: "an", confidence: 0.92, ruleId: "article", explanationVi: "Dùng 'an' trước nguyên âm.", explanationEn: null }],
+        corrections: [{ source: "grammar-rule", position: 0, originalToken: "a", correctedToken: "an", confidence: 0.92, ruleId: "article", explanationVi: "Dùng 'an' trước nguyên âm.", explanationEn: null }],
       }),
       // Second half: fewer corrections (showing improvement)
       makeCorrectionEvent({ id: "evt-005", turnNumber: 5, corrections: [] }),
@@ -429,10 +458,10 @@ describe("realProductProofGate — strong session", () => {
 
     // Varied teaching decisions
     const teacherDecisions = [
-      makeTeacherDecision({ action: "CORRECT_NOW", turnNumber: 1 }),
-      makeTeacherDecision({ action: "DEFER", turnNumber: 2 }),
-      makeTeacherDecision({ action: "EXPLAIN_PATTERN", turnNumber: 3 }),
-      makeTeacherDecision({ action: "FOLLOW_UP_FIRST", turnNumber: 4 }),
+      makeTeacherDecision({ action: "CORRECT_NOW" }),
+      makeTeacherDecision({ action: "DEFER" }),
+      makeTeacherDecision({ action: "EXPLAIN_PATTERN" }),
+      makeTeacherDecision({ action: "FOLLOW_UP_FIRST" }),
     ];
 
     const memory = makeMemorySnapshot({
@@ -443,7 +472,7 @@ describe("realProductProofGate — strong session", () => {
     });
 
     const turns = Array.from({ length: 8 }, (_, i) =>
-      makeTutorTurn({ turnNumber: i + 1 }),
+      makeTutorTurn(),
     );
     const correctionResults = events.map(() => makeCorrectionResult());
 
@@ -585,18 +614,18 @@ describe("realProductProofGate — weak session", () => {
 
     // Overclaim detected
     const overclaimResults = [
-      makeOverclaimResult({ decision: "REVISE" as const }) as OverclaimGuardResult,
+      makeOverclaimResult({ decision: "REVISE" }),
     ];
 
     // Unsafe evaluation
     const evaluationResults = [
-      makeEvaluationResult({ classification: "UNSAFE" as const }) as EvaluationResult,
-      makeEvaluationResult({ classification: "NEEDS_REVIEW" as const }) as EvaluationResult,
+      makeEvaluationResult({ classification: "UNSAFE" }),
+      makeEvaluationResult({ classification: "NEEDS_REVIEW" }),
     ];
 
     // Only one decision mode
     const teacherDecisions = [
-      makeTeacherDecision({ action: "CORRECT_NOW", turnNumber: 1 }),
+      makeTeacherDecision({ action: "CORRECT_NOW" }),
     ];
 
     // Empty memory
@@ -606,13 +635,15 @@ describe("realProductProofGate — weak session", () => {
       commonMistakePatterns: [],
       nextRecommendedFocus: "",
       confidenceTrend: "unknown",
+      totalCorrections: 0,
+      lastUpdatedAt: null,
     };
 
     return {
       ...createMinimalProofInput("weak-session-001"),
       correctionEvents: events,
-      turns: [makeTutorTurn({ turnNumber: 1 })],
-      correctionResults: [makeCorrectionResult({ corrected: false, correctionCount: 0 })],
+      turns: [makeTutorTurn()],
+      correctionResults: [makeCorrectionResult({ status: "unchanged" })],
       contractChecks,
       auditResults: [],
       selfAuditResults: [], // No self-audit
@@ -686,7 +717,7 @@ describe("realProductProofGate — cross-session comparison", () => {
     const current = runRealProductProof({
       ...createMinimalProofInput("session-2"),
       correctionEvents: events,
-      turns: [makeTutorTurn({ turnNumber: 1 }), makeTutorTurn({ turnNumber: 2 })],
+      turns: [makeTutorTurn(), makeTutorTurn()],
       contractChecks: [
         makePassedContractCheck("R1_MEANING_FIRST"),
         makePassedContractCheck("R2_ONE_CORRECTION_MAX"),
@@ -726,7 +757,7 @@ describe("realProductProofGate — cross-session comparison", () => {
         makeCorrectionEvent({ turnNumber: 1 }),
         makeCorrectionEvent({ id: "evt-002", turnNumber: 2 }),
       ],
-      turns: [makeTutorTurn({ turnNumber: 1 }), makeTutorTurn({ turnNumber: 2 })],
+      turns: [makeTutorTurn(), makeTutorTurn()],
       contractChecks: [
         makePassedContractCheck("R1_MEANING_FIRST"),
         makePassedContractCheck("R2_ONE_CORRECTION_MAX"),
@@ -841,7 +872,7 @@ describe("realProductProofGate — buildProductProofFromSession", () => {
       sessionId: "params-session-2",
       learnerId: "learner-2",
       sessionTimestamp: new Date().toISOString(),
-      turns: [makeTutorTurn({ turnNumber: 1 })],
+      turns: [makeTutorTurn()],
       correctionEvents: [
         makeCorrectionEvent({ turnNumber: 1 }),
         makeCorrectionEvent({ id: "evt-002", turnNumber: 2 }),
@@ -857,7 +888,7 @@ describe("realProductProofGate — buildProductProofFromSession", () => {
       overclaimResults: [],
       evaluationResults: [],
       teacherDecisions: [
-        makeTeacherDecision({ action: "CORRECT_NOW", turnNumber: 1 }),
+        makeTeacherDecision({ action: "CORRECT_NOW" }),
       ],
       memorySnapshots: [makeMemorySnapshot()],
       learningGainResult: null,
@@ -938,10 +969,10 @@ describe("realProductProofGate — PASS verdict conditions", () => {
     const input: RealProductProofInput = {
       ...createMinimalProofInput("mid-score-session"),
       correctionEvents: events,
-      turns: [makeTutorTurn({ turnNumber: 1 })],
+      turns: [makeTutorTurn()],
       contractChecks: [makePassedContractCheck("R1_MEANING_FIRST")],
       auditResults: [makeAuditResult()],
-      correctionResults: [makeCorrectionResult({ corrected: false })],
+      correctionResults: [makeCorrectionResult({ status: "unchanged" })],
     };
     const proof = runRealProductProof(input);
     // With minimal data, should not reach PASS threshold
@@ -963,7 +994,7 @@ describe("realProductProofGate — PASS verdict conditions", () => {
       {
         ...createMinimalProofInput("session-x"),
         correctionEvents: [makeCorrectionEvent({ turnNumber: 1 })],
-        turns: [makeTutorTurn({ turnNumber: 1 })],
+        turns: [makeTutorTurn()],
         contractChecks: [
           makePassedContractCheck("R1_MEANING_FIRST"),
           makePassedContractCheck("R2_ONE_CORRECTION_MAX"),
@@ -1006,7 +1037,7 @@ describe("realProductProofGate — failure taxonomy integration", () => {
         turnNumber: 1,
         matchScore: 30, // Very low score should trigger F-DIAG-01
         corrections: [
-          { source: "grammar", position: 0, originalToken: "x", correctedToken: "x", confidence: 0.30, ruleId: null, explanationVi: null, explanationEn: null },
+          { source: "grammar-rule", position: 0, originalToken: "x", correctedToken: "x", confidence: 0.30, ruleId: null, explanationVi: null, explanationEn: null },
         ],
       }),
       makeCorrectionEvent({
@@ -1014,7 +1045,7 @@ describe("realProductProofGate — failure taxonomy integration", () => {
         turnNumber: 2,
         matchScore: 25,
         corrections: [
-          { source: "grammar", position: 0, originalToken: "x", correctedToken: "x", confidence: 0.25, ruleId: null, explanationVi: null, explanationEn: null },
+          { source: "grammar-rule", position: 0, originalToken: "x", correctedToken: "x", confidence: 0.25, ruleId: null, explanationVi: null, explanationEn: null },
         ],
       }),
       makeCorrectionEvent({
@@ -1022,7 +1053,7 @@ describe("realProductProofGate — failure taxonomy integration", () => {
         turnNumber: 3,
         matchScore: 20,
         corrections: [
-          { source: "grammar", position: 0, originalToken: "x", correctedToken: "x", confidence: 0.20, ruleId: null, explanationVi: null, explanationEn: null },
+          { source: "grammar-rule", position: 0, originalToken: "x", correctedToken: "x", confidence: 0.20, ruleId: null, explanationVi: null, explanationEn: null },
         ],
       }),
     ];
@@ -1030,7 +1061,7 @@ describe("realProductProofGate — failure taxonomy integration", () => {
     const input: RealProductProofInput = {
       ...createMinimalProofInput("taxonomy-test"),
       correctionEvents: events,
-      turns: [makeTutorTurn({ turnNumber: 1 }), makeTutorTurn({ turnNumber: 2 }), makeTutorTurn({ turnNumber: 3 })],
+      turns: [makeTutorTurn(), makeTutorTurn(), makeTutorTurn()],
       memorySnapshots: [makeMemorySnapshot()],
       correctionResults: events.map(() => makeCorrectionResult()),
     };

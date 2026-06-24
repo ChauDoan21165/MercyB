@@ -26,6 +26,7 @@ import {
   isReportableGain,
   LEARNING_GAIN_DIMENSION_CATALOG,
   type LearningGainSnapshot,
+  type LearningGainOutcome,
   type LearningGainResult,
   type LearningGainDimensionResult,
   type LearningGainDimensionId,

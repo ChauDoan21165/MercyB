@@ -35,7 +35,7 @@ import {
 
 import type { TutorTurn } from "../tutorTypes";
 import type { TranscriptCorrectionEvent } from "../transcriptCorrectionTypes";
-import type { CorrectedMode } from "../teacherMercyCorrectionTiming";
+import type { CorrectionMode } from "../teacherMercyCorrectionTiming";
 import type { AuditResult } from "../teacherMercyAuditGate";
 import type { RubricResult } from "../teacherMercyRubric";
 import type { ContractRuleCheck } from "../teacherMercyContract";

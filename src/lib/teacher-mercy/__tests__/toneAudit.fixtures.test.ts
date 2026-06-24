@@ -904,10 +904,10 @@ describe("TQ — Result Shape Integrity", () => {
     const validTones: ToneStyle[] = ["warm", "calm", "firm", "playful"];
     const scenarios = [
       { learnerState: {}, plan: {} },
-      { learnerState: { clarity: "lost" }, plan: { tone: "firm" } },
-      { learnerState: { affect: "playful", clarity: "clear", confidence: "high" }, plan: { tone: "warm", shouldUseHumor: true } },
-      { learnerState: { confidence: "low" }, plan: { tone: "firm" } },
-      { learnerState: { momentum: "flowing" }, plan: { teachingMode: "challenge", tone: "firm" } },
+      { learnerState: { clarity: "lost" as const }, plan: { tone: "firm" as const } },
+      { learnerState: { affect: "playful" as const, clarity: "clear" as const, confidence: "high" as const }, plan: { tone: "warm" as const, shouldUseHumor: true } },
+      { learnerState: { confidence: "low" as const }, plan: { tone: "firm" as const } },
+      { learnerState: { momentum: "flowing" as const }, plan: { teachingMode: "challenge" as const, tone: "firm" as const } },
     ];
     for (const scenario of scenarios) {
       const result = calibrate(scenario);
@@ -918,9 +918,9 @@ describe("TQ — Result Shape Integrity", () => {
   it("TQ.SHP.3: correctionStyle is always a valid CorrectionStyle", () => {
     const validStyles: CorrectionStyle[] = ["gentle", "direct", "contrastive"];
     const scenarios = [
-      { plan: { correctionStyle: "gentle" } },
-      { plan: { correctionStyle: "direct" }, requireDirectness: true },
-      { plan: { correctionStyle: "gentle" }, repeatedMistake: true },
+      { plan: { correctionStyle: "gentle" as const } },
+      { plan: { correctionStyle: "direct" as const }, requireDirectness: true },
+      { plan: { correctionStyle: "gentle" as const }, repeatedMistake: true },
     ];
     for (const scenario of scenarios) {
       const result = calibrate(scenario);
@@ -939,10 +939,10 @@ describe("TQ — Result Shape Integrity", () => {
   it("TQ.SHP.5: notes is always an array of strings (no null/undefined entries)", () => {
     const scenarios = [
       {},
-      { learnerState: { clarity: "lost" } },
+      { learnerState: { clarity: "lost" as const } },
       { repeatedMistake: true },
       { wantsDrill: true },
-      { learnerState: { affect: "playful", clarity: "clear", confidence: "high" }, plan: { shouldUseHumor: true, tone: "warm" } },
+      { learnerState: { affect: "playful" as const, clarity: "clear" as const, confidence: "high" as const }, plan: { shouldUseHumor: true, tone: "warm" as const } },
     ];
     for (const scenario of scenarios) {
       const result = calibrate(scenario);

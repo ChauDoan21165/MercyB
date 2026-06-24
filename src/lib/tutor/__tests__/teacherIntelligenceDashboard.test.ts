@@ -130,8 +130,7 @@ function makeEventsWithImprovingScores(
         learnerAcknowledged: hasCorrection,
         weaknessTags: hasCorrection ? ["past-tense"] : [],
         weaknessLabelsVi: hasCorrection ? ["Thì quá khứ"] : [],
-        didSelfCorrect: i > count / 2,
-      }),
+      } as unknown as Partial<TranscriptCorrectionEvent>),
     );
   }
   return events;
@@ -317,7 +316,7 @@ function makeMinimalChecklistResult(
     rubricResults.push(rubricResult);
 
     const auditResult = auditResponse(
-      learnerInput.text,
+      learnerInput,
       tutorResponse,
       "correction",
     );

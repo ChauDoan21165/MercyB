@@ -279,7 +279,8 @@ import {
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 import type { CefrLevel, LearnerGoal } from "../lessonRecommendationIntelligence";
-import type { LearnerState } from "../../teacher-mercy/types";
+import type { TutorConversationMode } from "../../ai-tutor/types";
+import type { LearnerState } from "../../teacher-mercy/learnerState";
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // HELPERS
@@ -329,7 +330,7 @@ function shakyLearnerState(): LearnerState {
   return {
     clarity: "shaky",
     confidence: "low",
-    momentum: "slow",
+    momentum: "stuck",
     affect: "frustrated",
   };
 }
@@ -339,7 +340,7 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 const VN_DIACRITIC = /[àáảãạâầấẩẫậăằắẳẵặèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ]/i;
 
 /** Safety context for non-kids adult mode. */
-const ADULT_SAFETY_CTX = { mode: "conversation" as const, tier: 0, isKidsMode: false };
+const ADULT_SAFETY_CTX = { mode: "general_chat" as const, tier: "free" as const, isKidsMode: false };
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // SG1 — IMPORTABILITY: Every Critical Intelligence Export
@@ -687,7 +688,7 @@ describe("SG3 — Cross-module composition", () => {
       cefrLevel: "B1",
       isCurrentLessonTarget: true,
       sameMistakeCount: 1,
-      learnerConfidence: "medium" as const,
+      learnerConfidence: "normal" as const,
       previousCorrectionsThisSession: 1,
     };
     const decision = decideTeacherAction(input);
@@ -706,7 +707,7 @@ describe("SG3 — Cross-module composition", () => {
       topicMastery: { "past-tense": 25, "articles": 30 },
     });
 
-    const recommendations = recommendNextLessons(profile, "B1", 1_700_000_000_000);
+    const recommendations = recommendNextLessons(profile);
     expect(recommendations).toBeDefined();
     expect(recommendations.length).toBeGreaterThan(0);
     const rec = recommendations[0];
@@ -729,11 +730,7 @@ describe("SG3 — Cross-module composition", () => {
   });
 
   it("Prompt assembly → tone calibration via plan → response planner compose", () => {
-    const sysPrompt = assembleSystemPrompt({
-      mode: "grammar",
-      cefrLevel: "B1",
-      l1Patterns: [],
-    });
+    const sysPrompt = assembleSystemPrompt("sentence_correction", "B1", null);
     expect(sysPrompt).toBeDefined();
     expect(typeof sysPrompt).toBe("string");
     expect(sysPrompt.length).toBeGreaterThan(0);
@@ -762,6 +759,7 @@ describe("SG3 — Cross-module composition", () => {
       errorCategory: "tense",
       grammarPoint: "past_tense",
       l1: "vi",
+      exemplarPattern: "I go → I went",
     });
     expect(tagged).toBeDefined();
     expect(tagged.tags.length).toBeGreaterThan(0);
@@ -778,8 +776,6 @@ describe("SG3 — Cross-module composition", () => {
   it("Emotional stance → tone calibration: classifyResponseStance composes with calibrateTone", () => {
     const decision = classifyResponseStance({
       learnerText: "I keep making the same mistake...",
-      sameMistakeCount: 4,
-      learnerConfidence: "low",
     });
     expect(decision).toBeDefined();
     expect(decision.stance).toBeDefined();
@@ -793,14 +789,12 @@ describe("SG3 — Cross-module composition", () => {
   });
 
   it("Correction → contract: corrected output passes contract check", () => {
-    const result = correctWithTutorRules("I go to school yesterday", "B1", "en");
+    const result = correctWithTutorRules("I go to school yesterday", "en");
     expect(result).toBeDefined();
     if (result && result.corrected) {
       const contractResult = checkCorrectionContract(
-        "I go to school yesterday",
-        result.corrected,
-        "B1",
-        "correction"
+        { text: "I go to school yesterday", cefrLevel: "B1", trackedWeakness: null, didSelfCorrect: false, l1: "vi" },
+        { vi: result.corrected, correctedSentence: result.corrected }
       );
       expect(contractResult).toBeDefined();
     }
@@ -814,7 +808,7 @@ describe("SG3 — Cross-module composition", () => {
         makePattern("preposition-calque", 4),
       ],
     });
-    const recs = recommendNextLessons(profile, "B1", 1_700_000_000_000);
+    const recs = recommendNextLessons(profile);
     const rec = recs[0];
     const evidenceCount = countDataPoints(profile);
     expect(evidenceCount).toBeGreaterThanOrEqual(0);
@@ -850,8 +844,7 @@ describe("SG4 — Determinism", () => {
   it("selfAuditBeforeShowing 100× deterministic (good correction)", () => {
     const input = {
       learnerText: "I go to school yesterday",
-      responseText: "Bạn dùng 'went' thay vì 'go'.",
-      responseTextVi: "Thì quá khứ cần 'went'.",
+      explanationVi: "Bạn dùng 'went' thay vì 'go'. Thì quá khứ cần 'went'.",
       mode: "correction" as const,
       cefrLevel: "B1" as CefrLevel,
     };
@@ -903,9 +896,9 @@ describe("SG4 — Determinism", () => {
         makePattern("word-order", 4),
       ],
     });
-    const first = JSON.stringify(recommendNextLessons(profile, "B1", 1_700_000_000_000));
+    const first = JSON.stringify(recommendNextLessons(profile));
     for (let i = 0; i < 100; i++) {
-      expect(JSON.stringify(recommendNextLessons(profile, "B1", 1_700_000_000_000))).toBe(first);
+      expect(JSON.stringify(recommendNextLessons(profile))).toBe(first);
     }
   });
 
@@ -928,14 +921,9 @@ describe("SG4 — Determinism", () => {
   });
 
   it("assembleSystemPrompt 100× deterministic", () => {
-    const input = {
-      mode: "grammar" as const,
-      cefrLevel: "B1" as CefrLevel,
-      l1Patterns: ["missing-article", "tense-omission"],
-    };
-    const first = assembleSystemPrompt(input);
+    const first = assembleSystemPrompt("sentence_correction", "B1", null);
     for (let i = 0; i < 100; i++) {
-      expect(assembleSystemPrompt(input)).toBe(first);
+      expect(assembleSystemPrompt("sentence_correction", "B1", null)).toBe(first);
     }
   });
 
@@ -951,7 +939,7 @@ describe("SG4 — Determinism", () => {
       sessionCount: 15,
       interferencePatterns: [makePattern("missing-article", 6)],
     });
-    const recs = recommendNextLessons(profile, "B1", 1_700_000_000_000);
+    const recs = recommendNextLessons(profile);
     const rec = recs[0];
     const explain = (r: typeof rec, p: typeof profile) =>
       explainRecommendation(r, p, null, [], [], null, null, "moderate", 1_700_000_000_000);
@@ -967,9 +955,9 @@ describe("SG4 — Determinism", () => {
       role: "user" as const,
       content: `Message number ${i}`,
     }));
-    const first = JSON.stringify(enforceTokenBudget(systemPrompt, messages, "grammar"));
+    const first = JSON.stringify(enforceTokenBudget(systemPrompt, messages, "general_chat"));
     for (let i = 0; i < 100; i++) {
-      expect(JSON.stringify(enforceTokenBudget(systemPrompt, messages, "grammar"))).toBe(first);
+      expect(JSON.stringify(enforceTokenBudget(systemPrompt, messages, "general_chat"))).toBe(first);
     }
   });
 
@@ -982,7 +970,7 @@ describe("SG4 — Determinism", () => {
   });
 
   it("classifyWeakness 100× deterministic", () => {
-    const input = { errorCategory: "tense", grammarPoint: "past_tense", l1: "vi" };
+    const input = { errorCategory: "tense", grammarPoint: "past_tense", l1: "vi", exemplarPattern: "I go → I went" };
     const first = classifyWeakness(input);
     for (let i = 0; i < 100; i++) {
       expect(classifyWeakness(input)).toBe(first);
@@ -1072,7 +1060,7 @@ describe("SG5 — Vietnamese-first", () => {
       sessionCount: 10,
       interferencePatterns: [makePattern("missing-article", 5)],
     });
-    const recs = recommendNextLessons(profile, "B1", 1_700_000_000_000);
+    const recs = recommendNextLessons(profile);
     expect(recs.length).toBeGreaterThan(0);
     const rec = recs[0];
     expect(rec.reason).toBeDefined();
@@ -1204,7 +1192,7 @@ describe("SG6 — Snapshot integrity", () => {
 describe("SG7 — Edge cases", () => {
   it("Cold-start: recommender returns fallback when sessionCount < COLD_START_THRESHOLD", () => {
     const profile = emptyProfile({ sessionCount: 3 });
-    const recs = recommendNextLessons(profile, "A1", 1_700_000_000_000);
+    const recs = recommendNextLessons(profile);
     expect(recs).toBeDefined();
     expect(recs.length).toBeGreaterThan(0);
     expect(recs[0].ruleFired).toBeDefined();
@@ -1213,7 +1201,7 @@ describe("SG7 — Edge cases", () => {
   it("Cold-start: data points < COLD_START_THRESHOLD produces fallback recommendation", () => {
     const profile = emptyProfile({ sessionCount: 2 });
     expect(countDataPoints(profile)).toBeLessThan(COLD_START_THRESHOLD);
-    const recs = recommendNextLessons(profile, "A1", 1_700_000_000_000);
+    const recs = recommendNextLessons(profile);
     expect(recs).toBeDefined();
     expect(recs.length).toBeGreaterThan(0);
   });
@@ -1222,7 +1210,7 @@ describe("SG7 — Edge cases", () => {
     const result = selfAuditCorrectionQuick(
       "I go to school yesterday",
       "Try using past tense.",
-      null
+      undefined
     );
     expect(result).toBeDefined();
     expect(result.decision).toBeDefined();
@@ -1235,11 +1223,7 @@ describe("SG7 — Edge cases", () => {
   });
 
   it("Empty/null CEFR handled gracefully by prompt assembly", () => {
-    const prompt = assembleSystemPrompt({
-      mode: "grammar",
-      cefrLevel: null,
-      l1Patterns: [],
-    });
+    const prompt = assembleSystemPrompt("general_chat", null, null);
     expect(prompt).toBeDefined();
     expect(prompt.length).toBeGreaterThan(0);
   });
@@ -1299,7 +1283,7 @@ describe("SG7 — Edge cases", () => {
 
   it("Zero session count handled gracefully by all subsystems", () => {
     const profile = emptyProfile({ sessionCount: 0 });
-    const rec = recommendNextLessons(profile, "A1", 1_700_000_000_000);
+    const rec = recommendNextLessons(profile);
     expect(rec).toBeDefined();
 
     const seq = generateLessonSequence(defaultGeneratorInput({ profile }));
@@ -1312,23 +1296,16 @@ describe("SG7 — Edge cases", () => {
 
   it("All 6 CEFR levels handled by prompt assembly", () => {
     for (const cefr of ["A1", "A2", "B1", "B2", "C1", "C2"] as CefrLevel[]) {
-      const prompt = assembleSystemPrompt({
-        mode: "grammar",
-        cefrLevel: cefr,
-        l1Patterns: [],
-      });
+      const prompt = assembleSystemPrompt("general_chat", cefr, null);
       expect(prompt).toBeDefined();
       expect(prompt.length).toBeGreaterThan(0);
     }
   });
 
   it("All 4 teaching modes handled by prompt assembly", () => {
-    for (const mode of ["journey", "grammar", "speak", "logic"] as const) {
-      const prompt = assembleSystemPrompt({
-        mode,
-        cefrLevel: "B1",
-        l1Patterns: [],
-      });
+    const validModes: TutorConversationMode[] = ["lesson_guidance", "sentence_correction", "pronunciation_coaching", "general_chat"];
+    for (const mode of validModes) {
+      const prompt = assembleSystemPrompt(mode, "B1", null);
       expect(prompt).toBeDefined();
       expect(prompt.length).toBeGreaterThan(0);
     }
@@ -1394,8 +1371,7 @@ describe("SG8 — Conscious break detection", () => {
   it("BREAK: self-audit would block empty input (not SHOW)", () => {
     const badInput = {
       learnerText: "",
-      responseText: "",
-      responseTextVi: "",
+      explanationVi: "",
       mode: "correction" as const,
       cefrLevel: "B1" as CefrLevel,
     };
@@ -1443,11 +1419,14 @@ describe("SG9 — Full pipeline", () => {
     const learnerText = "I go to school yesterday";
     const cefr = "B1" as CefrLevel;
 
-    const corrected = correctWithTutorRules(learnerText, cefr, "en");
+    const corrected = correctWithTutorRules(learnerText, "en");
     expect(corrected).toBeDefined();
 
     if (corrected && corrected.corrected) {
-      const contract = checkCorrectionContract(learnerText, corrected.corrected, cefr, "correction");
+      const contract = checkCorrectionContract(
+        { text: learnerText, cefrLevel: cefr, trackedWeakness: null, didSelfCorrect: false, l1: "vi" },
+        { vi: corrected.corrected, correctedSentence: corrected.corrected }
+      );
       expect(contract).toBeDefined();
 
       const audit = selfAuditCorrectionQuick(learnerText, corrected.corrected, corrected.corrected, cefr);
@@ -1462,7 +1441,7 @@ describe("SG9 — Full pipeline", () => {
         cefrLevel: cefr,
         isCurrentLessonTarget: true,
         sameMistakeCount: 1,
-        learnerConfidence: "medium" as const,
+        learnerConfidence: "normal" as const,
         previousCorrectionsThisSession: 0,
       };
       const evalDecision = decideTeacherAction(evalInput);
@@ -1478,11 +1457,7 @@ describe("SG9 — Full pipeline", () => {
     const safety = sanitizeInput(learnerText, ADULT_SAFETY_CTX);
     expect(safety.ok).toBe(true);
 
-    const systemPrompt = assembleSystemPrompt({
-      mode: "speak",
-      cefrLevel: cefr,
-      l1Patterns: [],
-    });
+    const systemPrompt = assembleSystemPrompt("pronunciation_coaching", cefr, null);
     expect(systemPrompt.length).toBeGreaterThan(0);
 
     const plan = buildResponsePlan({
@@ -1513,7 +1488,7 @@ describe("SG9 — Full pipeline", () => {
       },
     });
 
-    const recs = recommendNextLessons(profile, "B1", 1_700_000_000_000);
+    const recs = recommendNextLessons(profile);
     expect(recs).toBeDefined();
     expect(recs.length).toBeGreaterThan(0);
     const rec = recs[0];
@@ -1546,6 +1521,7 @@ describe("SG9 — Full pipeline", () => {
       errorCategory: "subj-verb-agreement",
       grammarPoint: "subject_verb",
       l1: "vi",
+      exemplarPattern: "I go → I went",
     });
     expect(tagged.tags.length).toBeGreaterThan(0);
 
@@ -1569,7 +1545,7 @@ describe("SG9 — Full pipeline", () => {
   });
 
   it("Full safety pipeline: sanitize → moderate → refusal/fallback", () => {
-    const safetyCtx = { mode: "conversation" as const, tier: 0, isKidsMode: false };
+    const safetyCtx = { mode: "general_chat" as const, tier: "free" as const, isKidsMode: false };
     const safe = sanitizeInput(
       "How do I say 'xin chào' in English?",
       safetyCtx
@@ -1592,7 +1568,7 @@ describe("SG9 — Full pipeline", () => {
       cefrLevel: "B1",
       isCurrentLessonTarget: true,
       sameMistakeCount: 2,
-      learnerConfidence: "medium",
+      learnerConfidence: "normal",
       previousCorrectionsThisSession: 3,
       lessonFocus: "past-tense",
     };
@@ -1698,7 +1674,7 @@ describe("SG10 — Contract & result shape", () => {
       sessionCount: 10,
       interferencePatterns: [makePattern("missing-article", 5)],
     });
-    const recs = recommendNextLessons(profile, "B1", 1_700_000_000_000);
+    const recs = recommendNextLessons(profile);
     expect(recs.length).toBeGreaterThan(0);
     const rec = recs[0];
     expect(rec).toHaveProperty("lessonTitle");
@@ -1738,7 +1714,7 @@ describe("SG10 — Contract & result shape", () => {
       cefrLevel: "B1",
       isCurrentLessonTarget: true,
       sameMistakeCount: 1,
-      learnerConfidence: "high",
+      learnerConfidence: "confident",
       previousCorrectionsThisSession: 1,
     });
     expect(decision).toHaveProperty("action");
@@ -1782,6 +1758,7 @@ describe("SG10 — Contract & result shape", () => {
       errorCategory: "subj-verb-agreement",
       grammarPoint: "subject_verb",
       l1: "vi",
+      exemplarPattern: "He think → He thinks",
     });
     expect(tagged.tags.length).toBeGreaterThan(0);
   });
@@ -1801,8 +1778,6 @@ describe("SG10 — Contract & result shape", () => {
   it("ClassifyResponseStance returns a stance decision", () => {
     const decision = classifyResponseStance({
       learnerText: "This is hard",
-      sameMistakeCount: 1,
-      learnerConfidence: "medium",
     });
     expect(decision).toHaveProperty("stance");
     expect(typeof decision.stance).toBe("string");
@@ -1852,7 +1827,7 @@ describe("SG10 — Contract & result shape", () => {
     const profile = emptyProfile({ sessionCount: 20, interferencePatterns: [
       makePattern("missing-article", 8), makePattern("tense-omission", 6),
     ]});
-    const recs = recommendNextLessons(profile, "B1", 1_700_000_000_000);
+    const recs = recommendNextLessons(profile);
     const rec = recs[0];
     const score = evidenceScore(rec, profile);
     expect(score).toBeGreaterThanOrEqual(0);
@@ -1876,7 +1851,7 @@ describe("SG10 — Contract & result shape", () => {
       sessionCount: 10,
       interferencePatterns: [makePattern("missing-article", 5)],
     });
-    const recs = recommendNextLessons(profile, "B1", 1_700_000_000_000);
+    const recs = recommendNextLessons(profile);
     const rec = recs[0];
     const evidence = collectAllEvidence(rec, profile, null, [], [], null, 1_700_000_000_000);
     expect(Array.isArray(evidence)).toBe(true);

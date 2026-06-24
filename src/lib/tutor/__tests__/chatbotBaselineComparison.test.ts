@@ -9,7 +9,7 @@
  *   - Integrates with existing modules (contract, rubric, dashboard, etc.)
  */
 
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeAll } from "vitest";
 
 import {
   // Catalog

@@ -122,7 +122,7 @@ const SCENARIO_A1_MINH: LearnerTestScenario = {
       teacherCorrectedSentence: "I am from Vietnam",
       grammarPoints: ["copula-omission", "to-be-verb"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 2,
@@ -152,7 +152,7 @@ const SCENARIO_A1_MINH: LearnerTestScenario = {
       teacherCorrectedSentence: "I am a student",
       grammarPoints: ["article-omission", "indefinite-article"],
       referencesTrackedWeakness: true,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 3,
@@ -182,7 +182,7 @@ const SCENARIO_A1_MINH: LearnerTestScenario = {
       teacherCorrectedSentence: "I am twenty years old",
       grammarPoints: ["vietlish-interference", "age-expression", "have-vs-be"],
       referencesTrackedWeakness: true,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 4,
@@ -212,7 +212,7 @@ const SCENARIO_A1_MINH: LearnerTestScenario = {
       teacherCorrectedSentence: "I am a student at a university in Hanoi",
       grammarPoints: ["article-usage", "a-vs-an", "phonetic-article"],
       referencesTrackedWeakness: true,
-      correctionTiming: "delayed",
+      correctionTiming: "DELAYED",
     },
     {
       turnNumber: 5,
@@ -240,7 +240,7 @@ const SCENARIO_A1_MINH: LearnerTestScenario = {
       teacherCorrectedSentence: "I study English because I want a good job",
       grammarPoints: ["article-retention", "self-correction-praise"],
       referencesTrackedWeakness: true,
-      correctionTiming: "delayed",
+      correctionTiming: "DELAYED",
     },
     {
       turnNumber: 6,
@@ -261,7 +261,7 @@ const SCENARIO_A1_MINH: LearnerTestScenario = {
       teacherCorrectedSentence: null,
       grammarPoints: ["session-summary", "progress-acknowledgment"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
   ],
   expectedMemory: {
@@ -323,7 +323,7 @@ const SCENARIO_A2_LAN: LearnerTestScenario = {
       teacherCorrectedSentence: "Yesterday I went to the office at 8am",
       grammarPoints: ["past-tense", "irregular-verbs"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 2,
@@ -352,7 +352,7 @@ const SCENARIO_A2_LAN: LearnerTestScenario = {
       teacherCorrectedSentence: "I worked on my computer all morning",
       grammarPoints: ["past-tense", "regular-verbs", "-ed-ending"],
       referencesTrackedWeakness: true,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 3,
@@ -380,7 +380,7 @@ const SCENARIO_A2_LAN: LearnerTestScenario = {
       teacherCorrectedSentence: "I had a meeting with my boss in the afternoon",
       grammarPoints: ["past-tense", "article-omission", "prepositions-time"],
       referencesTrackedWeakness: true,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 4,
@@ -410,7 +410,7 @@ const SCENARIO_A2_LAN: LearnerTestScenario = {
       teacherCorrectedSentence: "I went home at 6pm",
       grammarPoints: ["prepositions", "home-adverb", "exceptions"],
       referencesTrackedWeakness: true,
-      correctionTiming: "delayed",
+      correctionTiming: "DELAYED",
     },
     {
       turnNumber: 5,
@@ -440,7 +440,7 @@ const SCENARIO_A2_LAN: LearnerTestScenario = {
       teacherCorrectedSentence: "I ate dinner with my family at 7pm in the evening",
       grammarPoints: ["prepositions-time", "in-vs-on-vs-at"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 6,
@@ -469,7 +469,7 @@ const SCENARIO_A2_LAN: LearnerTestScenario = {
       teacherCorrectedSentence: "After dinner I watched TV and went to bed at 10pm",
       grammarPoints: ["past-tense", "tense-consistency", "self-correction"],
       referencesTrackedWeakness: true,
-      correctionTiming: "delayed",
+      correctionTiming: "DELAYED",
     },
     {
       turnNumber: 7,
@@ -498,7 +498,7 @@ const SCENARIO_A2_LAN: LearnerTestScenario = {
       teacherCorrectedSentence: "I got up early this morning and went to work by bus",
       grammarPoints: ["past-tense", "tense-consistency", "time-markers"],
       referencesTrackedWeakness: true,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 8,
@@ -519,7 +519,7 @@ const SCENARIO_A2_LAN: LearnerTestScenario = {
       teacherCorrectedSentence: null,
       grammarPoints: ["session-summary", "past-tense-mastery"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
   ],
   expectedMemory: {
@@ -579,7 +579,7 @@ const SCENARIO_B1_TUAN: LearnerTestScenario = {
       teacherCorrectedSentence: "I want to explain the new project",
       grammarPoints: ["word-order", "adjective-noun", "verb-patterns"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 2,
@@ -610,7 +610,7 @@ const SCENARIO_B1_TUAN: LearnerTestScenario = {
       teacherCorrectedSentence: "The bridge is very long",
       grammarPoints: ["word-order", "copula-required", "adjective-position"],
       referencesTrackedWeakness: true,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 3,
@@ -641,7 +641,7 @@ const SCENARIO_B1_TUAN: LearnerTestScenario = {
       teacherCorrectedSentence: "We must finish the design before the deadline",
       grammarPoints: ["modal-verbs", "bare-infinitive", "article-required"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 4,
@@ -672,7 +672,7 @@ const SCENARIO_B1_TUAN: LearnerTestScenario = {
       teacherCorrectedSentence: "The team can complete the work if they have enough time",
       grammarPoints: ["conditionals", "subject-required", "first-conditional"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 5,
@@ -692,7 +692,7 @@ const SCENARIO_B1_TUAN: LearnerTestScenario = {
       teacherCorrectedSentence: null,
       grammarPoints: ["correct-structure", "workplace-english"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 6,
@@ -722,7 +722,7 @@ const SCENARIO_B1_TUAN: LearnerTestScenario = {
       teacherCorrectedSentence: "I think this solution is more effective than the old one",
       grammarPoints: ["comparatives", "copula-required", "technical-writing"],
       referencesTrackedWeakness: true,
-      correctionTiming: "delayed",
+      correctionTiming: "DELAYED",
     },
     {
       turnNumber: 7,
@@ -751,7 +751,7 @@ const SCENARIO_B1_TUAN: LearnerTestScenario = {
       teacherCorrectedSentence: "The new design is more efficient and costs less money",
       grammarPoints: ["subject-verb-agreement", "self-correction"],
       referencesTrackedWeakness: false,
-      correctionTiming: "delayed",
+      correctionTiming: "DELAYED",
     },
     {
       turnNumber: 8,
@@ -771,7 +771,7 @@ const SCENARIO_B1_TUAN: LearnerTestScenario = {
       teacherCorrectedSentence: null,
       grammarPoints: ["session-summary", "word-order-mastery"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
   ],
   expectedMemory: {
@@ -831,7 +831,7 @@ const SCENARIO_B2_HUONG: LearnerTestScenario = {
         "This research investigates the relationship between social media and mental health in adolescents",
       grammarPoints: ["subject-verb-agreement", "academic-writing", "uncountable-nouns"],
       referencesTrackedWeakness: false,
-      correctionTiming: "delayed",
+      correctionTiming: "DELAYED",
     },
     {
       turnNumber: 2,
@@ -864,7 +864,7 @@ const SCENARIO_B2_HUONG: LearnerTestScenario = {
       teacherCorrectedSentence: "We conducted research on the effects of social media",
       grammarPoints: ["collocations", "academic-register", "verb-noun-pairs"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 3,
@@ -897,7 +897,7 @@ const SCENARIO_B2_HUONG: LearnerTestScenario = {
         "The results show that social media has a significant influence on teenagers",
       grammarPoints: ["subject-verb-agreement", "academic-register", "word-choice"],
       referencesTrackedWeakness: true,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 4,
@@ -931,7 +931,7 @@ const SCENARIO_B2_HUONG: LearnerTestScenario = {
         "It is recommended that more studies be conducted in this area",
       grammarPoints: ["subjunctive", "formal-register", "academic-conventions"],
       referencesTrackedWeakness: false,
-      correctionTiming: "delayed",
+      correctionTiming: "DELAYED",
     },
     {
       turnNumber: 5,
@@ -964,7 +964,7 @@ const SCENARIO_B2_HUONG: LearnerTestScenario = {
         "The findings suggest a strong correlation between screen time and anxiety",
       grammarPoints: ["word-order", "adjective-noun", "academic-phrasing"],
       referencesTrackedWeakness: false,
-      correctionTiming: "delayed",
+      correctionTiming: "DELAYED",
     },
     {
       turnNumber: 6,
@@ -996,7 +996,7 @@ const SCENARIO_B2_HUONG: LearnerTestScenario = {
         "Further research is needed to examine the long-term effects",
       grammarPoints: ["affect-vs-effect", "word-confusion", "academic-vocabulary"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 7,
@@ -1016,7 +1016,7 @@ const SCENARIO_B2_HUONG: LearnerTestScenario = {
       teacherCorrectedSentence: null,
       grammarPoints: ["academic-collocations", "register-achievement"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 8,
@@ -1036,7 +1036,7 @@ const SCENARIO_B2_HUONG: LearnerTestScenario = {
       teacherCorrectedSentence: null,
       grammarPoints: ["academic-writing", "discourse-markers", "limitations-section"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
   ],
   expectedMemory: {
@@ -1110,7 +1110,7 @@ const SCENARIO_C1_NAM: LearnerTestScenario = {
         "We are looking forward to discussing the terms of the contract with your team",
       grammarPoints: ["gerund-after-preposition", "business-email", "formal-register"],
       referencesTrackedWeakness: false,
-      correctionTiming: "delayed",
+      correctionTiming: "DELAYED",
     },
     {
       turnNumber: 2,
@@ -1144,7 +1144,7 @@ const SCENARIO_C1_NAM: LearnerTestScenario = {
         "It is essential that the delivery be made before the end of Q3",
       grammarPoints: ["subjunctive", "formal-contracts", "legal-english"],
       referencesTrackedWeakness: false,
-      correctionTiming: "delayed",
+      correctionTiming: "DELAYED",
     },
     {
       turnNumber: 3,
@@ -1177,7 +1177,7 @@ const SCENARIO_C1_NAM: LearnerTestScenario = {
         "We propose extending the payment terms to 60 days, which is common in our industry",
       grammarPoints: ["gerund-vs-infinitive", "discourse-markers", "relative-clauses"],
       referencesTrackedWeakness: true,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 4,
@@ -1211,7 +1211,7 @@ const SCENARIO_C1_NAM: LearnerTestScenario = {
         "If we receive your confirmation by Friday, we can proceed with the shipment",
       grammarPoints: ["conditionals", "first-vs-second-conditional", "business-email"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 5,
@@ -1244,7 +1244,7 @@ const SCENARIO_C1_NAM: LearnerTestScenario = {
         "We regret to inform you that the shipment has been delayed due to unforeseen circumstances",
       grammarPoints: ["transitive-verbs", "business-email", "formal-apology"],
       referencesTrackedWeakness: false,
-      correctionTiming: "delayed",
+      correctionTiming: "DELAYED",
     },
     {
       turnNumber: 6,
@@ -1264,7 +1264,7 @@ const SCENARIO_C1_NAM: LearnerTestScenario = {
       teacherCorrectedSentence: null,
       grammarPoints: ["business-email", "formal-politeness"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 7,
@@ -1284,7 +1284,7 @@ const SCENARIO_C1_NAM: LearnerTestScenario = {
       teacherCorrectedSentence: null,
       grammarPoints: ["inversion", "complex-structures", "business-negotiation"],
       referencesTrackedWeakness: false,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
     {
       turnNumber: 8,
@@ -1306,7 +1306,7 @@ const SCENARIO_C1_NAM: LearnerTestScenario = {
       teacherCorrectedSentence: null,
       grammarPoints: ["session-summary", "business-english-mastery"],
       referencesTrackedWeakness: true,
-      correctionTiming: "immediate",
+      correctionTiming: "IMMEDIATE",
     },
   ],
   expectedMemory: {
@@ -1390,7 +1390,7 @@ function runScenarioPipeline(
 
     // Audit gate
     const auditResult = auditResponse(
-      learnerInput.text,
+      learnerInput,
       buildTutorResponseFromTurn(turn),
       "correction",
     );
@@ -1850,7 +1850,7 @@ describe("Human Learner Testing Checklist", () => {
     });
 
     it("has high match scores (C1 level)", () => {
-      const avgMatch = pipeline.events.reduce((s, e) => s + e.matchScore, 0) /
+      const avgMatch = pipeline.events.reduce((s, e) => s + (e.matchScore ?? 0), 0) /
         pipeline.events.length;
       expect(avgMatch).toBeGreaterThan(80);
     });
@@ -2208,7 +2208,7 @@ describe("Human Learner Testing Checklist", () => {
             teacherCorrectedSentence: "I am a student",
             grammarPoints: ["copula"],
             referencesTrackedWeakness: false,
-            correctionTiming: "immediate",
+            correctionTiming: "IMMEDIATE",
           },
         ],
         expectedMemory: {
