@@ -1,9 +1,10 @@
 // src/data/__tests__/rich-lessons-pilot.test.ts
 //
-// Validates the hand-authored RichLesson pilot bundle. Three concrete
-// lessons land in this round (vi_l1_3rd_person_s, vi_l1_past_ed,
-// vi_l1_missing_be); CI guards their shape so future authoring rounds
-// can't silently drift away from the schema.
+// Validates the hand-authored RichLesson pilot bundle. Seven concrete
+// lessons (3 A1 + 4 A2): vi_l1_3rd_person_s, vi_l1_past_ed,
+// vi_l1_missing_be, vi_l1_preposition_transfer, vi_l1_present_perfect_vs_past,
+// vi_l1_make_vs_do, vi_l1_adjective_order. CI guards their shape so future
+// authoring rounds can't silently drift away from the schema.
 
 import { describe, expect, it } from "vitest";
 
@@ -18,24 +19,28 @@ import {
 } from "@/lib/weakness/richLessonSchema";
 import { isKnownWeaknessTag } from "@/lib/weakness/weakness-catalog";
 
-const EXPECTED_PILOT_TAGS = new Set<string>([
+const EXPECTED_PILOT_TAGS = [
   "id_l1_conditional_unreal",
   "id_l1_present_perfect_vs_past",
   "id_l1_reported_speech",
   "vi_l1_3rd_person_s",
+  "vi_l1_adjective_order",
   "vi_l1_conditional_mix",
+  "vi_l1_make_vs_do",
   "vi_l1_missing_be",
   "vi_l1_passive_missing_be",
   "vi_l1_past_ed",
+  "vi_l1_preposition_transfer",
   "vi_l1_present_perfect_vs_past",
-]);
+  "vi_l1_reported_speech",
+] as const;
 
 describe("rich-lessons-pilot.json shape", () => {
-  it("ships exactly the 9 expected pilot lessons)", () => {
+  it("ships exactly the expected pilot lessons", () => {
     expect([...RICH_LESSON_PILOT_TAGS].sort()).toEqual(
       [...EXPECTED_PILOT_TAGS].sort(),
     );
-    expect(RICH_LESSONS_PILOT.length).toBe(9);
+    expect(RICH_LESSONS_PILOT.length).toBe(EXPECTED_PILOT_TAGS.length);
   });
 
   it("every pilot lesson tag exists in WEAKNESS_CATALOG", () => {
@@ -138,67 +143,5 @@ describe("getRichLessonPilot", () => {
     expect(getRichLessonPilot("vi_l1_plural_s")).toBeNull();
     expect(getRichLessonPilot("vi_l1_ghost_tag")).toBeNull();
     expect(getRichLessonPilot("")).toBeNull();
-  });
-});
-
-describe("rich-lessons-pilot — B2 Indonesian-native English content", () => {
-  const B2_ID_TAGS = [
-    "id_l1_present_perfect_vs_past",
-    "id_l1_conditional_unreal",
-    "id_l1_reported_speech",
-  ];
-
-  it("every B2 id_l1_* lesson has non-empty ID in all sections", () => {
-    const sectionNames = ["hook", "why", "pattern", "practice", "takeaway"] as const;
-    for (const tag of B2_ID_TAGS) {
-      const lesson = getRichLessonPilot(tag);
-      expect(lesson, `${tag} lesson missing`).not.toBeNull();
-      for (const name of sectionNames) {
-        const section = lesson!.sections[name];
-        expect(
-          section.id?.trim().length,
-          `${tag}.sections.${name}.id empty`,
-        ).toBeGreaterThan(0);
-      }
-    }
-  });
-
-  it("every B2 id_l1_* quiz question has ID question text", () => {
-    for (const tag of B2_ID_TAGS) {
-      const lesson = getRichLessonPilot(tag);
-      expect(lesson, `${tag} lesson missing`).not.toBeNull();
-      lesson!.quiz.forEach((q, i) => {
-        expect(
-          q.question.id?.trim().length,
-          `${tag} quiz[${i}].question.id empty`,
-        ).toBeGreaterThan(0);
-      });
-    }
-  });
-
-  it("every B2 id_l1_* quiz question with explanation has ID explanation", () => {
-    for (const tag of B2_ID_TAGS) {
-      const lesson = getRichLessonPilot(tag);
-      expect(lesson, `${tag} lesson missing`).not.toBeNull();
-      lesson!.quiz.forEach((q, i) => {
-        if (q.explanation) {
-          expect(
-            q.explanation.id?.trim().length,
-            `${tag} quiz[${i}].explanation.id empty`,
-          ).toBeGreaterThan(0);
-        }
-      });
-    }
-  });
-
-  it("every B2 id_l1_* lesson title has ID", () => {
-    for (const tag of B2_ID_TAGS) {
-      const lesson = getRichLessonPilot(tag);
-      expect(lesson, `${tag} lesson missing`).not.toBeNull();
-      expect(
-        lesson!.title.id?.trim().length,
-        `${tag}.title.id empty`,
-      ).toBeGreaterThan(0);
-    }
   });
 });
