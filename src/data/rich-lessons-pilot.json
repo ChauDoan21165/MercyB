@@ -3890,6 +3890,666 @@
           }
         }
       ]
+    },
+    {
+      "tag": "ja_l1_subject_omission",
+      "title": {
+        "en": "**It is hot** — don't forget the subject",
+        "vi": "**It is hot** — đừng quên chủ ngữ",
+        "ja": "**It is hot** — 主語を忘れずに"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"Is very hot today.\" If you're a Japanese speaker, this sentence looks perfectly fine. In Japanese, 今日はとても暑い is complete — you don't need to say それは. But English sentences need a subject. Every time. Even when it feels obvious.",
+          "vi": "\"Is very hot today.\" Nếu bạn là người Nhật, câu này trông hoàn toàn ổn. Trong tiếng Nhật, 今日はとても暑い là đủ — bạn không cần nói それは. Nhưng câu tiếng Anh luôn cần chủ ngữ. Mọi lúc. Ngay cả khi nó hiển nhiên.",
+          "ja": "「Is very hot today」— 日本語話者にはこの文が完全に正しく見えます。日本語では「今日はとても暑い」だけで文が完成し、「それは」と言う必要はありません。しかし英語の文には主語が必要です。毎回。たとえそれが明らかな場合でも。"
+        },
+        "why": {
+          "en": "Japanese is a 'pro-drop' language — it regularly drops subjects when context makes them clear. もう食べた？ (Mou tabeta?) is a complete sentence meaning 'Did you already eat?' without the 'you.' English is NOT pro-drop: every finite verb needs an explicit subject. Even dummy subjects like **It** in **It is raining** or **There** in **There is a book on the table** are required. This is one of the hardest habits for Japanese speakers to build.",
+          "vi": "Tiếng Nhật là ngôn ngữ 'pro-drop' — thường xuyên lược bỏ chủ ngữ khi ngữ cảnh đã rõ. もう食べた？ (Mou tabeta?) là câu hoàn chỉnh nghĩa là 'Bạn đã ăn chưa?' mà không cần 'bạn.' Tiếng Anh KHÔNG phải pro-drop: mọi động từ chia đều cần chủ ngữ rõ ràng. Ngay cả chủ ngữ giả như **It** trong **It is raining** hoặc **There** trong **There is a book** cũng bắt buộc phải có.",
+          "ja": "日本語は「主語省略」が可能な言語です。文脈から明らかな場合、主語を日常的に省略します。「もう食べた？」は「あなた」という主語なしで「Did you already eat?」という完全な文になります。しかし英語は主語を省略できません。すべての定形動詞には明示的な主語が必要です。**It is raining** の **It** や **There is a book** の **There** のような仮主語でさえ必須です。これは日本語話者にとって最も根強い習慣の一つです。"
+        },
+        "pattern": {
+          "en": "Every English sentence needs a subject: **It** for weather/time/distance (**It is raining**, **It is 3pm**, **It is 5km to the station**), **There** for existence (**There is a convenience store near here**, **There are many students**), and a noun/pronoun for actions (**I went to the store**, **She speaks English**). When you catch yourself starting a sentence with a verb, STOP and ask: who or what is doing this?",
+          "vi": "Mọi câu tiếng Anh đều cần chủ ngữ: **It** cho thời tiết/thời gian/khoảng cách (**It is raining**, **It is 3pm**, **It is 5km to the station**), **There** cho sự tồn tại (**There is a convenience store near here**, **There are many students**), và danh từ/đại từ cho hành động (**I went to the store**, **She speaks English**). Khi bạn thấy mình bắt đầu câu bằng động từ, HÃY DỪNG LẠI và hỏi: ai hoặc cái gì đang làm điều này?",
+          "ja": "すべての英語の文に主語が必要です。天気・時間・距離には **It**（**It is raining**、**It is 3pm**、**It is 5km to the station**）、存在には **There**（**There is a convenience store near here**、**There are many students**）、動作には名詞・代名詞（**I went to the store**、**She speaks English**）。動詞で文を始めようとしたら、STOP して「誰が・何がこれをしているのか？」と自問しましょう。"
+        },
+        "practice": {
+          "en": "Say these out loud, feeling the subject each time: \"**It** is very hot today.\" \"**There** are three convenience stores near my house.\" \"**She** speaks Japanese and English.\" \"**We** went to Kyoto last weekend.\" \"**It** is raining outside.\" \"**I** need to buy a new phone.\" \"**They** are studying English.\" Now remove the subject in your head and notice how broken each sentence feels without it.",
+          "vi": "Nói to những câu này, cảm nhận chủ ngữ mỗi lần: \"**It** is very hot today.\" \"**There** are three convenience stores near my house.\" \"**She** speaks Japanese and English.\" \"**We** went to Kyoto last weekend.\" \"**It** is raining outside.\" \"**I** need to buy a new phone.\" \"**They** are studying English.\" Bây giờ bỏ chủ ngữ và nhận xét mỗi câu nghe thiếu thế nào.",
+          "ja": "声に出して、毎回主語を意識しましょう：「**It** is very hot today.」「**There** are three convenience stores near my house.」「**She** speaks Japanese and English.」「**We** went to Kyoto last weekend.」「**It** is raining outside.」「**I** need to buy a new phone.」「**They** are studying English.」次に、頭の中で主語を削除して、それぞれの文がどれだけ不完全に聞こえるかを確認してください。"
+        },
+        "takeaway": {
+          "en": "Never start an English sentence with a main verb. Every sentence needs a subject — **It**, **There**, or a noun/pronoun. If you can't find the subject, you don't have a complete sentence.",
+          "vi": "Đừng bao giờ bắt đầu câu tiếng Anh bằng động từ chính. Mọi câu đều cần chủ ngữ — **It**, **There**, hoặc danh từ/đại từ. Nếu bạn không tìm thấy chủ ngữ, bạn chưa có câu hoàn chỉnh.",
+          "ja": "英語の文を主動詞で始めてはいけません。すべての文に主語が必要です — **It**、**There**、または名詞・代名詞。主語が見つからなければ、それは完全な文ではありません。"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct English sentence:",
+            "vi": "Chọn câu tiếng Anh đúng:",
+            "ja": "正しい英文を選んでください："
+          },
+          "options": [
+            "Is very hot in summer.",
+            "It is very hot in summer.",
+            "Very hot in summer.",
+            "There very hot in summer."
+          ],
+          "correctAnswer": "It is very hot in summer.",
+          "explanation": {
+            "en": "Weather needs the dummy subject **It**: **It is very hot in summer.**",
+            "vi": "Thời tiết cần chủ ngữ giả **It**: **It is very hot in summer.**",
+            "ja": "天気を表す文には仮主語 **It** が必要です：**It is very hot in summer.**"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct English sentence:",
+            "vi": "Chọn câu tiếng Anh đúng:",
+            "ja": "正しい英文を選んでください："
+          },
+          "options": [
+            "Is a convenience store near the station.",
+            "It is a convenience store near the station.",
+            "There is a convenience store near the station.",
+            "A convenience store near the station."
+          ],
+          "correctAnswer": "There is a convenience store near the station.",
+          "explanation": {
+            "en": "Existence needs **There is/are**: **There is a convenience store near the station.**",
+            "vi": "Tồn tại cần **There is/are**: **There is a convenience store near the station.**",
+            "ja": "存在を表すには **There is/are** を使います：**There is a convenience store near the station.**"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct English sentence:",
+            "vi": "Chọn câu tiếng Anh đúng:",
+            "ja": "正しい英文を選んでください："
+          },
+          "options": [
+            "Went to Osaka last month.",
+            "I went to Osaka last month.",
+            "Went I to Osaka last month.",
+            "To Osaka went last month."
+          ],
+          "correctAnswer": "I went to Osaka last month.",
+          "explanation": {
+            "en": "Action sentences need a subject (I, you, she, he, we, they, name).",
+            "vi": "Câu hành động cần chủ ngữ (I, you, she, he, we, they, tên riêng).",
+            "ja": "行動を表す文には主語（I, you, she, he, we, they, 名前）が必要です。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct English sentence:",
+            "vi": "Chọn câu tiếng Anh đúng:",
+            "ja": "正しい英文を選んでください："
+          },
+          "options": [
+            "Is 3pm now.",
+            "It is 3pm now.",
+            "Now 3pm.",
+            "There is 3pm now."
+          ],
+          "correctAnswer": "It is 3pm now.",
+          "explanation": {
+            "en": "Time expressions need **It is**: **It is 3pm now.**",
+            "vi": "Thời gian cần **It is**: **It is 3pm now.**",
+            "ja": "時刻の表現には **It is** が必要です：**It is 3pm now.**"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in: _____ is a long way from Tokyo to Kyoto.",
+            "vi": "Điền vào chỗ trống: _____ is a long way from Tokyo to Kyoto.",
+            "ja": "空欄を埋めてください：_____ is a long way from Tokyo to Kyoto."
+          },
+          "options": [
+            "That",
+            "It",
+            "There",
+            "This"
+          ],
+          "correctAnswer": "It",
+          "explanation": {
+            "en": "Distance needs **It is**: **It is a long way from Tokyo to Kyoto.**",
+            "vi": "Khoảng cách cần **It is**: **It is a long way from Tokyo to Kyoto.**",
+            "ja": "距離の表現には **It is** が必要です：**It is a long way from Tokyo to Kyoto.**"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "ja_l1_article_missing",
+      "title": {
+        "en": "**a / an / the** — three little words Japanese doesn't have",
+        "vi": "**a / an / the** — ba từ nhỏ mà tiếng Nhật không có",
+        "ja": "**a / an / the** — 日本語にない三つの小さい単語"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"I have car. Car is red.\" This sounds like Tarzan-speak to an English speaker. But to a Japanese speaker, 車を持っている。その車は赤い is perfectly natural — no articles, no problem. English needs **a** for 'any one' and **the** for 'the one you know about.' Without them, your English sounds broken, even with perfect vocabulary.",
+          "vi": "\"I have car. Car is red.\" Câu này nghe như người tiền sử nói với người bản ngữ. Nhưng với người Nhật, 車を持っている。その車は赤い hoàn toàn tự nhiên — không mạo từ, không vấn đề. Tiếng Anh cần **a** cho 'một cái nào đó' và **the** cho 'cái mà bạn biết.' Không có chúng, tiếng Anh của bạn nghe vỡ vụn, dù từ vựng hoàn hảo.",
+          "ja": "「I have car. Car is red.」— 英語話者にはターザン語のように聞こえます。しかし日本語話者には「車を持っている。その車は赤い」が完全に自然です。冠詞なし、問題なし。英語には、不特定のものには **a**、特定のものには **the** が必要です。これらがないと、語彙が完璧でも英語が壊れて聞こえます。"
+        },
+        "why": {
+          "en": "Japanese has no article system. Nouns stand alone with particles (は、が、を) marking grammatical roles, not definiteness. English forces you to mark every singular countable noun as either **a/an** (indefinite — first mention, any one) or **the** (definite — specific, already known). This is a completely new grammar category for Japanese speakers — not just new words, but a new way of thinking about nouns.",
+          "vi": "Tiếng Nhật không có hệ thống mạo từ. Danh từ đứng một mình với trợ từ (は、が、を) đánh dấu vai trò ngữ pháp, không phải tính xác định. Tiếng Anh buộc bạn đánh dấu mọi danh từ đếm được số ít là **a/an** (không xác định) hoặc **the** (xác định). Đây là một phạm trù ngữ pháp hoàn toàn mới cho người Nhật — không chỉ từ mới, mà cách suy nghĩ mới về danh từ.",
+          "ja": "日本語には冠詞の体系がありません。名詞は助詞（は、が、を）によって文法的役割が示され、定性（definiteness）は示されません。英語では、すべての可算名詞単数形を **a/an**（不定 — 初出、いずれか）または **the**（定 — 特定、既知）でマークする必要があります。これは日本語話者にとって完全に新しい文法カテゴリです。新しい単語だけでなく、名詞についての新しい考え方です。"
+        },
+        "pattern": {
+          "en": "**A/an** = any one, first mention. \"I saw **a** dog.\" (you don't know which dog) **The** = specific, already known. \"**The** dog was brown.\" (we know which dog now) **No article** = plurals and uncountable nouns in general. \"I like **dogs**.\" \"I drink **coffee**.\" **Trap:** never use **the** with general statements: \"**The** dogs are animals\" is wrong — say \"Dogs are animals.\"",
+          "vi": "**A/an** = một cái bất kỳ, lần đầu nhắc. \"I saw **a** dog.\" (bạn không biết con chó nào) **The** = cụ thể, đã biết. \"**The** dog was brown.\" (giờ chúng ta biết con nào) **Không mạo từ** = danh từ số nhiều và không đếm được nói chung. \"I like **dogs**.\" \"I drink **coffee**.\" **Bẫy:** không bao giờ dùng **the** với phát biểu chung: \"**The** dogs are animals\" là sai — nói \"Dogs are animals.\"",
+          "ja": "**A/an** = いずれかのもの、初出。\"I saw **a** dog.\"（どの犬かは不明）**The** = 特定、既知。\"**The** dog was brown.\"（どの犬かわかった）**冠詞なし** = 複数形や不加算名詞の一般的な話。\"I like **dogs**.\" \"I drink **coffee**.\" **落とし穴：** 一般的な叙述に **the** を使ってはいけません。「The dogs are animals」は誤り — 「Dogs are animals」が正解です。"
+        },
+        "practice": {
+          "en": "Say these pairs and feel the difference: \"I need **a** pen\" (any pen) vs \"Can I borrow **the** pen on your desk?\" (specific pen). \"She is **a** doctor\" (describing her job) vs \"**The** doctor I saw yesterday was nice\" (specific doctor). \"I want **a** car\" (any car) vs \"**The** car in the parking lot is mine\" (specific car). \"I love **cats**\" (in general — no article) vs \"**The** cats next door are noisy\" (specific cats).",
+          "vi": "Nói to các cặp này và cảm nhận sự khác biệt: \"I need **a** pen\" (bút nào cũng được) vs \"Can I borrow **the** pen on your desk?\" (cây bút cụ thể). \"She is **a** doctor\" (miêu tả nghề) vs \"**The** doctor I saw yesterday was nice\" (bác sĩ cụ thể). \"I want **a** car\" (xe nào cũng được) vs \"**The** car in the parking lot is mine\" (xe cụ thể).",
+          "ja": "声に出して違いを感じましょう：「I need **a** pen」（どのペンでも）vs 「Can I borrow **the** pen on your desk?」（特定のペン）。「She is **a** doctor」（職業を説明）vs 「**The** doctor I saw yesterday was nice」（特定の医者）。「I want **a** car」（どの車でも）vs 「**The** car in the parking lot is mine」（特定の車）。"
+        },
+        "takeaway": {
+          "en": "First mention = **a/an**. Already known = **the**. General = no article. If the noun is singular and countable, you MUST use one of them.",
+          "vi": "Lần đầu nhắc = **a/an**. Đã biết = **the**. Nói chung = không mạo từ. Nếu danh từ số ít và đếm được, BẮT BUỘC phải dùng một trong hai.",
+          "ja": "初出 = **a/an**。既知 = **the**。一般論 = 冠詞なし。名詞が可算単数形の場合は、必ずこれらのいずれかを使わなければなりません。"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "ja": "正しい文を選んでください："
+          },
+          "options": [
+            "I have car.",
+            "I have a car.",
+            "I have the car.",
+            "I have cars."
+          ],
+          "correctAnswer": "I have a car.",
+          "explanation": {
+            "en": "First mention of a singular countable noun → **a car**.",
+            "vi": "Lần đầu nhắc danh từ đếm được số ít → **a car**.",
+            "ja": "可算単数名詞の初出 → **a car**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in: I saw ___ movie last night. ___ movie was very interesting.",
+            "vi": "Điền vào chỗ trống: I saw ___ movie last night. ___ movie was very interesting.",
+            "ja": "空欄を埋めてください：I saw ___ movie last night. ___ movie was very interesting."
+          },
+          "options": [
+            "a / A",
+            "the / The",
+            "a / The",
+            "the / A"
+          ],
+          "correctAnswer": "a / The",
+          "explanation": {
+            "en": "First mention → **a movie**. Second mention (same movie, now known) → **The movie**.",
+            "vi": "Lần đầu nhắc → **a movie**. Lần hai (cùng bộ phim, giờ đã biết) → **The movie**.",
+            "ja": "初出 → **a movie**。二度目（同じ映画、既知）→ **The movie**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "ja": "正しい文を選んでください："
+          },
+          "options": [
+            "The dogs are loyal animals.",
+            "Dogs are loyal animals.",
+            "A dogs are loyal animals.",
+            "The dog are loyal animals."
+          ],
+          "correctAnswer": "Dogs are loyal animals.",
+          "explanation": {
+            "en": "General statements about plural nouns → no article. **Dogs are loyal animals** (all dogs in general).",
+            "vi": "Phát biểu chung về danh từ số nhiều → không mạo từ.",
+            "ja": "複数名詞の一般的な叙述 → 冠詞なし。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence (you are talking about one specific shop):",
+            "vi": "Chọn câu đúng (bạn đang nói về một cửa hàng cụ thể):",
+            "ja": "正しい文を選んでください（特定の店について話しています）："
+          },
+          "options": [
+            "I went to convenience store.",
+            "I went to a convenience store.",
+            "I went to the convenience store near my house.",
+            "I went to convenience stores."
+          ],
+          "correctAnswer": "I went to the convenience store near my house.",
+          "explanation": {
+            "en": "Specific store (my house's convenience store) → **the**.",
+            "vi": "Cửa hàng cụ thể (gần nhà tôi) → **the**.",
+            "ja": "特定の店（自宅の近く）→ **the**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in: She wants to be ___ English teacher.",
+            "vi": "Điền vào chỗ trống: She wants to be ___ English teacher.",
+            "ja": "空欄を埋めてください：She wants to be ___ English teacher."
+          },
+          "options": [
+            "a",
+            "an",
+            "the",
+            "— (no article)"
+          ],
+          "correctAnswer": "an",
+          "explanation": {
+            "en": "**An** before vowel sound: **an English teacher**. Describing her profession (first mention) → indefinite.",
+            "vi": "**An** trước âm nguyên âm: **an English teacher**. Miêu tả nghề nghiệp (lần đầu) → không xác định.",
+            "ja": "母音の前は **an**：**an English teacher**。職業を説明（初出）→ 不定冠詞。"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "ja_l1_present_perfect_vs_past",
+      "title": {
+        "en": "**I have done** vs **I did** — when does the past stay present?",
+        "vi": "**I have done** vs **I did** — khi nào quá khứ còn hiện tại?",
+        "ja": "**I have done** vs **I did** — 過去はいつ現在とつながるのか？"
+      },
+      "sections": {
+        "hook": {
+          "en": "Sound familiar? \"I have visited Kyoto last year.\" Your Japanese logic says the past is the past — why does English have two ways to talk about it? The answer is that English splits 'past' into two jobs: telling a story about finished time (past simple) and connecting something from the past to the present moment (present perfect). Your Japanese **た**-form does both jobs — English uses different tenses for each.",
+          "vi": "Nghe quen không? \"I have visited Kyoto last year.\" Logic tiếng Nhật của bạn nói quá khứ là quá khứ — sao tiếng Anh có hai cách nói về nó? Câu trả lời là tiếng Anh chia 'quá khứ' thành hai nhiệm vụ: kể chuyện về thời gian đã kết thúc (past simple) và kết nối quá khứ với hiện tại (present perfect). Dạng **た** của bạn làm cả hai — tiếng Anh dùng thì khác nhau.",
+          "ja": "「I have visited Kyoto last year」— 聞き覚えがありますか？日本語の感覚では過去は過去です。なぜ英語には過去を表す二つの方法があるのでしょう？答えは、英語が「過去」を二つの役割に分割しているからです：終わった時間についての物語（過去形）と、過去の出来事を現在につなげること（現在完了）。日本語の「た形」は両方の役割を担いますが、英語は異なる時制を使い分けます。"
+        },
+        "why": {
+          "en": "Japanese **た**-form covers everything past: 昨日食べた (yesterday I ate) and もう食べた (I have already eaten) both use 食べた. The distinction comes from context words (昨日 vs もう), not verb form. English is stricter: when you name a specific finished-time word — **yesterday**, **last week**, **in 2020**, **this morning** (if morning is over) — you MUST use simple past. When the past action connects to now (experience, result, unfinished time period) with no specific past time, use present perfect **have/has + V3**.",
+          "vi": "Dạng **た** trong tiếng Nhật bao trùm mọi thứ quá khứ: 昨日食べた (hôm qua tôi đã ăn) và もう食べた (tôi đã ăn rồi) đều dùng 食べた. Sự khác biệt đến từ từ ngữ cảnh (昨日 vs もう), không phải hình thái động từ. Tiếng Anh nghiêm ngặt hơn: khi bạn nêu từ thời gian cụ thể đã kết thúc, bạn PHẢI dùng simple past. Khi hành động quá khứ kết nối với hiện tại (trải nghiệm, kết quả, khoảng thời gian chưa kết thúc), dùng present perfect.",
+          "ja": "日本語の「た形」はすべての過去をカバーします：「昨日食べた」も「もう食べた」も「食べた」です。区別は文脈語（昨日 vs もう）から来ており、動詞の形からではありません。英語はより厳密です：特定の終了した時間を表す語（**yesterday**、**last week**、**in 2020**、**this morning**（朝が終わっている場合））がある場合は必ず過去形を使います。過去の動作が現在につながっている場合（経験、結果、未完了の期間）で特定の過去の時点がない場合は、現在完了 **have/has + 過去分詞** を使います。"
+        },
+        "pattern": {
+          "en": "**Simple past** = finished time + finished action: \"I visited Kyoto **last year**.\" \"She called **yesterday**.\" \"We ate sushi **for dinner**.\" **Present perfect** = result now + no specific time: \"I **have visited** Kyoto three times.\" (life experience, no time said) \"She **has lost** her keys.\" (still can't find them) \"We **have already eaten**.\" (not hungry now) **Key test:** can you add **yesterday / last / ago / in [year]**? If yes → simple past.",
+          "vi": "**Simple past** = thời gian kết thúc + hành động kết thúc: \"I visited Kyoto **last year**.\" \"She called **yesterday**.\" \"We ate sushi **for dinner**.\" **Present perfect** = kết quả hiện tại + không thời gian cụ thể: \"I **have visited** Kyoto three times.\" \"She **has lost** her keys.\" \"We **have already eaten**.\" **Cách kiểm tra:** có thêm **yesterday / last / ago / in [năm]** không? Nếu có → simple past.",
+          "ja": "**過去形** = 終わった時間 + 終わった行動：「I visited Kyoto **last year**.」「She called **yesterday**.」「We ate sushi **for dinner**.」**現在完了** = 現在の結果 + 特定の時間なし：「I **have visited** Kyoto three times.」（人生経験、時間不特定）「She **has lost** her keys.」（まだ見つからない）「We **have already eaten**.」（今はお腹が空いていない）**確認テスト：**「yesterday / last / ago / in [年]」を付け加えられますか？ はい → 過去形。"
+        },
+        "practice": {
+          "en": "Say each pair and feel the difference: \"**I ate** breakfast this morning\" (morning is over, specific time) vs \"**I have eaten** breakfast\" (just finished, not hungry now). \"**She went** to Osaka last month\" (finished) vs \"**She has gone** to Osaka\" (she's there now). \"**I saw** that movie\" (when? unspecified but context) vs \"**I have seen** that movie three times\" (life experience). \"**He lived** in Tokyo for 5 years\" (in the past) vs \"**He has lived** in Tokyo for 5 years\" (still lives there).",
+          "vi": "Nói từng cặp và cảm nhận khác biệt: \"**I ate** breakfast this morning\" (sáng đã qua) vs \"**I have eaten** breakfast\" (vừa ăn xong, không đói). \"**She went** to Osaka last month\" (đã kết thúc) vs \"**She has gone** to Osaka\" (cô ấy đang ở đó). \"**I saw** that movie\" vs \"**I have seen** that movie three times\" (trải nghiệm). \"**He lived** in Tokyo for 5 years\" (quá khứ) vs \"**He has lived** in Tokyo for 5 years\" (vẫn sống ở đó).",
+          "ja": "各ペアを声に出して違いを感じましょう：「**I ate** breakfast this morning」（朝は終わった、特定の時間）vs 「**I have eaten** breakfast」（食べたばかり、今はお腹が空いていない）。「**She went** to Osaka last month」（完了）vs 「**She has gone** to Osaka」（今そこにいる）。「**He lived** in Tokyo for 5 years」（過去）vs 「**He has lived** in Tokyo for 5 years」（今も住んでいる）。"
+        },
+        "takeaway": {
+          "en": "If you can say **yesterday** / **last** / **ago** / **in [year]** in the same sentence, use simple past. If the past connects to now with no time word, use present perfect.",
+          "vi": "Nếu bạn có thể nói **yesterday** / **last** / **ago** / **in [năm]** trong cùng câu, dùng simple past. Nếu quá khứ kết nối với hiện tại không có từ thời gian, dùng present perfect.",
+          "ja": "**yesterday** / **last** / **ago** / **in [年]** を同じ文で言えるなら過去形。過去が現在につながっていて時間の単語がなければ現在完了。"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence:",
+            "vi": "Chọn câu đúng:",
+            "ja": "正しい文を選んでください："
+          },
+          "options": [
+            "I have seen that movie last week.",
+            "I saw that movie last week.",
+            "I have saw that movie last week.",
+            "I seen that movie last week."
+          ],
+          "correctAnswer": "I saw that movie last week.",
+          "explanation": {
+            "en": "**last week** is a specific finished time → simple past: **saw**.",
+            "vi": "**last week** là thời gian cụ thể đã kết thúc → simple past: **saw**.",
+            "ja": "**last week** は特定の終わった時間 → 過去形：**saw**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence (experience — no specific time):",
+            "vi": "Chọn câu đúng (trải nghiệm — không thời gian cụ thể):",
+            "ja": "正しい文を選んでください（経験 — 特定の時間なし）："
+          },
+          "options": [
+            "I visited Japan three times.",
+            "I have visited Japan three times.",
+            "I am visiting Japan three times.",
+            "I visit Japan three times."
+          ],
+          "correctAnswer": "I have visited Japan three times.",
+          "explanation": {
+            "en": "Life experience with no specific time → present perfect **have visited**.",
+            "vi": "Trải nghiệm cuộc sống không thời gian cụ thể → present perfect **have visited**.",
+            "ja": "特定の時間のない人生経験 → 現在完了 **have visited**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence (she still lives there):",
+            "vi": "Chọn câu đúng (cô ấy vẫn sống ở đó):",
+            "ja": "正しい文を選んでください（彼女は今もそこに住んでいます）："
+          },
+          "options": [
+            "She lived in Tokyo since 2020.",
+            "She has lived in Tokyo since 2020.",
+            "She lives in Tokyo since 2020.",
+            "She is living in Tokyo since 2020."
+          ],
+          "correctAnswer": "She has lived in Tokyo since 2020.",
+          "explanation": {
+            "en": "**since 2020** = from past to now → present perfect **has lived**.",
+            "vi": "**since 2020** = từ quá khứ đến hiện tại → present perfect **has lived**.",
+            "ja": "**since 2020** = 過去から現在まで → 現在完了 **has lived**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence (morning is over):",
+            "vi": "Chọn câu đúng (buổi sáng đã qua):",
+            "ja": "正しい文を選んでください（朝はもう終わっています）："
+          },
+          "options": [
+            "I have eaten breakfast this morning.",
+            "I ate breakfast this morning.",
+            "I have ate breakfast this morning.",
+            "I eat breakfast this morning."
+          ],
+          "correctAnswer": "I ate breakfast this morning.",
+          "explanation": {
+            "en": "**this morning** with the morning finished → simple past **ate**.",
+            "vi": "**this morning** nhưng buổi sáng đã qua → simple past **ate**.",
+            "ja": "朝が終わった後の **this morning** → 過去形 **ate**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in: I _____ never _____ to Hokkaido. Is it beautiful?",
+            "vi": "Điền vào chỗ trống: I _____ never _____ to Hokkaido. Is it beautiful?",
+            "ja": "空欄を埋めてください：I _____ never _____ to Hokkaido. Is it beautiful?"
+          },
+          "options": [
+            "have / been",
+            "have / went",
+            "did / go",
+            "— / been"
+          ],
+          "correctAnswer": "have / been",
+          "explanation": {
+            "en": "Life experience (never in my life, no specific time) → **have been**.",
+            "vi": "Trải nghiệm cuộc sống (chưa bao giờ, không thời gian cụ thể) → **have been**.",
+            "ja": "人生経験（人生で一度も、特定の時間なし）→ **have been**。"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "ja_l1_conditional_mix",
+      "title": {
+        "en": "**If I had…** — matching tenses in conditionals",
+        "vi": "**If I had…** — ghép thì trong câu điều kiện",
+        "ja": "**If I had…** — 条件節の時制の一致"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"If I had money, I will buy a car.\" In Japanese, もしお金があったら、車を買う uses the same たら for both 'if' frames — real and unreal. Your brain doesn't distinguish them. But English draws a hard line: real possibility = present + **will**; imaginary/unreal = past + **would**. Mixing them is one of the most common errors Japanese speakers make at B1-B2 level.",
+          "vi": "\"If I had money, I will buy a car.\" Trong tiếng Nhật, もしお金があったら、車を買う dùng たら cho cả 'nếu' thật và không thật. Não bạn không phân biệt chúng. Nhưng tiếng Anh phân biệt rạch ròi: khả năng thật = hiện tại + **will**; tưởng tượng/không thật = quá khứ + **would**.",
+          "ja": "「If I had money, I will buy a car.」日本語では「もしお金があったら、車を買う」は、「たら」が現実的条件と非現実的仮定の両方に使えます。あなたの頭はこれらを区別しません。しかし英語は明確に線を引きます：実現可能 = 現在形 + **will**；想像・非現実 = 過去形 + **would**。この混同は、日本語話者が B1-B2 レベルで最もよく犯す誤りの一つです。"
+        },
+        "why": {
+          "en": "Japanese conditionals (〜たら、〜ば、〜なら) don't change verb tense to show real vs unreal — the conditional marker itself handles both. お金があったら can mean 'if I have money' (possible) or 'if I had money' (unreal) depending on context. English requires different tense patterns: Type 1 (real) = **If + present simple, will + verb** — for possible future situations. Type 2 (unreal) = **If + simple past, would + verb** — for hypothetical or impossible situations. The past tense in Type 2 doesn't mean 'past time' — it means 'this is imaginary.'",
+          "vi": "Câu điều kiện tiếng Nhật (〜たら、〜ば、〜なら) không thay đổi thì động từ để phân biệt thật và không thật — bản thân từ nối điều kiện xử lý cả hai. お金があったら có thể là 'nếu tôi có tiền' (khả năng thật) hoặc 'nếu tôi có tiền' (không thật) tùy ngữ cảnh. Tiếng Anh yêu cầu các mẫu thì khác nhau: Type 1 (thật) = **If + hiện tại, will + động từ**; Type 2 (không thật) = **If + quá khứ, would + động từ**. Quá khứ trong Type 2 không có nghĩa 'thời gian quá khứ' — nó có nghĩa 'đây là tưởng tượng.'",
+          "ja": "日本語の条件表現（〜たら、〜ば、〜なら）は、現実的か非現実的かを動詞の時制で区別しません。条件のマーカー自体が両方を扱います。「お金があったら」は文脈によって「if I have money」（実現可能）にも「if I had money」（非現実）にもなります。英語では異なる時制パターンが必要です：タイプ1（現実）= **If + 現在形, will + 動詞の原形** — 実現可能な未来の状況。タイプ2（非現実）= **If + 過去形, would + 動詞の原形** — 仮定や不可能な状況。タイプ2の過去形は「過去の時間」を意味するのではなく、「これは想像です」という合図です。"
+        },
+        "pattern": {
+          "en": "**Type 1 (real possible):** If + present simple, **will** + base verb. \"If it **rains** tomorrow, I **will stay** home.\" **Type 2 (unreal/hypothetical):** If + simple past, **would** + base verb. \"If I **had** money, I **would buy** a car.\" Note: **were** is used for ALL subjects in Type 2 — \"If I **were** you,\" not \"If I **was** you.\" The past form signals 'this is imaginary.' **Never use will after a past-tense if.**",
+          "vi": "**Type 1 (thật, có thể):** If + hiện tại, **will** + động từ gốc. \"If it **rains** tomorrow, I **will stay** home.\" **Type 2 (không thật):** If + quá khứ, **would** + động từ gốc. \"If I **had** money, I **would buy** a car.\" Lưu ý: **were** dùng cho MỌI chủ ngữ trong Type 2 — \"If I **were** you,\" không phải \"If I **was** you.\" **Không bao giờ dùng will sau if ở quá khứ.**",
+          "ja": "**タイプ1（現実・実現可能）：** If + 現在形、**will** + 動詞の原形。「If it **rains** tomorrow, I **will stay** home.」**タイプ2（非現実・仮定）：** If + 過去形、**would** + 動詞の原形。「If I **had** money, I **would buy** a car.」注意：タイプ2ではすべての主語に **were** を使います — 「If I **were** you,」であり「If I **was** you」ではありません。**過去形の if の後に will を使ってはいけません。**"
+        },
+        "practice": {
+          "en": "Say each pair and feel the contrast: \"If I **have** time tomorrow, I **will call** you\" (real — tomorrow is possible) vs \"If I **had** time, I **would call** you\" (unreal — I'm busy). \"If she **studies**, she **will pass**\" (real — she might) vs \"If she **studied**, she **would pass**\" (unreal — she doesn't study). \"If it **is** sunny, we **will go** to the park\" (real) vs \"If it **were** sunny, we **would go** to the park\" (unreal — it's raining). The past in the if-clause = 'pretend.'",
+          "vi": "Nói từng cặp và cảm nhận sự tương phản: \"If I **have** time tomorrow, I **will call** you\" (thật — ngày mai có thể) vs \"If I **had** time, I **would call** you\" (không thật — tôi bận). \"If she **studies**, she **will pass**\" (thật — cô ấy có thể học) vs \"If she **studied**, she **would pass**\" (không thật — cô ấy không học). Quá khứ trong if-clause = 'giả vờ.'",
+          "ja": "各ペアを声に出して対比を感じましょう：「If I **have** time tomorrow, I **will call** you」（現実 — 明日は可能）vs 「If I **had** time, I **would call** you」（非現実 — 忙しい）。「If she **studies**, she **will pass**」（現実 — 勉強するかも）vs 「If she **studied**, she **would pass**」（非現実 — 勉強しない）。if節の過去形 = 「仮定」の合図。"
+        },
+        "takeaway": {
+          "en": "Real = present + **will**. Unreal = past + **would**. If you catch yourself saying **will** after a past-tense **if**, switch to **would**.",
+          "vi": "Thật = hiện tại + **will**. Không thật = quá khứ + **would**. Nếu bạn thấy mình nói **will** sau **if** ở quá khứ, đổi sang **would**.",
+          "ja": "現実 = 現在形 + **will**。非現実 = 過去形 + **would**。過去形の **if** の後に **will** と言っている自分に気づいたら、**would** に変えましょう。"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct sentence (unreal — I don't have a car):",
+            "vi": "Chọn câu đúng (không thật — tôi không có xe):",
+            "ja": "正しい文を選んでください（非現実 — 車を持っていません）："
+          },
+          "options": [
+            "If I have a car, I will drive to work.",
+            "If I had a car, I would drive to work.",
+            "If I had a car, I will drive to work.",
+            "If I have a car, I would drive to work."
+          ],
+          "correctAnswer": "If I had a car, I would drive to work.",
+          "explanation": {
+            "en": "Unreal (I don't have a car) → past in if-clause (**had**) + **would** in result.",
+            "vi": "Không thật (tôi không có xe) → quá khứ trong if (**had**) + **would** ở kết quả.",
+            "ja": "非現実（車を持っていない）→ if節は過去形（**had**）+ 結果は **would**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence (giving advice):",
+            "vi": "Chọn câu đúng (đưa lời khuyên):",
+            "ja": "正しい文を選んでください（アドバイス）："
+          },
+          "options": [
+            "If I am you, I would take the job.",
+            "If I were you, I will take the job.",
+            "If I were you, I would take the job.",
+            "If I was you, I would take the job."
+          ],
+          "correctAnswer": "If I were you, I would take the job.",
+          "explanation": {
+            "en": "**If I were you** is standard for advice — **were** for all subjects in Type 2.",
+            "vi": "**If I were you** là chuẩn cho lời khuyên — **were** cho mọi chủ ngữ trong Type 2.",
+            "ja": "**If I were you** はアドバイスの定型表現 — タイプ2ではすべての主語に **were** を使います。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct sentence (real — tomorrow is possible):",
+            "vi": "Chọn câu đúng (thật — ngày mai có thể):",
+            "ja": "正しい文を選んでください（現実 — 明日は可能性あり）："
+          },
+          "options": [
+            "If it rains tomorrow, we would stay inside.",
+            "If it rained tomorrow, we will stay inside.",
+            "If it rains tomorrow, we will stay inside.",
+            "If it will rain tomorrow, we stay inside."
+          ],
+          "correctAnswer": "If it rains tomorrow, we will stay inside.",
+          "explanation": {
+            "en": "Real possibility → present tense in if-clause (**rains**) + **will** in result.",
+            "vi": "Khả năng thật → hiện tại trong if (**rains**) + **will** ở kết quả.",
+            "ja": "実現可能 → if節は現在形（**rains**）+ 結果は **will**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Which sentence is the UNREAL version of: I don't speak English well, so I can't get the job.",
+            "vi": "Câu nào là phiên bản KHÔNG THẬT của: Tôi không nói tiếng Anh tốt, nên tôi không thể nhận việc.",
+            "ja": "次の文の非現実バージョンはどれですか：I don't speak English well, so I can't get the job."
+          },
+          "options": [
+            "If I speak English well, I will get the job.",
+            "If I spoke English well, I would get the job.",
+            "If I spoke English well, I will get the job.",
+            "If I speak English well, I would get the job."
+          ],
+          "correctAnswer": "If I spoke English well, I would get the job.",
+          "explanation": {
+            "en": "Unreal (I don't speak well) → **spoke** (past, unreal signal) + **would**.",
+            "vi": "Không thật (tôi không nói tốt) → **spoke** (quá khứ, tín hiệu không thật) + **would**.",
+            "ja": "非現実（英語が上手くない）→ **spoke**（過去形、非現実の合図）+ **would**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in: If I _____ taller, I would play basketball.",
+            "vi": "Điền vào chỗ trống: If I _____ taller, I would play basketball.",
+            "ja": "空欄を埋めてください：If I _____ taller, I would play basketball."
+          },
+          "options": [
+            "am",
+            "was",
+            "were",
+            "be"
+          ],
+          "correctAnswer": "were",
+          "explanation": {
+            "en": "Type 2 conditional — **were** is used with all subjects for unreal situations.",
+            "vi": "Câu điều kiện Type 2 — **were** dùng với mọi chủ ngữ cho tình huống không thật.",
+            "ja": "タイプ2条件文 — 非現実の状況ではすべての主語に **were** を使います。"
+          }
+        }
+      ]
+    },
+    {
+      "tag": "ja_c2_inversion_emphasis",
+      "title": {
+        "en": "**Never have I seen** — inversion for dramatic effect",
+        "vi": "**Never have I seen** — đảo ngữ để nhấn mạnh",
+        "ja": "**Never have I seen** — 強調のための倒置"
+      },
+      "sections": {
+        "hook": {
+          "en": "\"Never I have seen such a beautiful temple.\" This sentence is grammatically complete in Japanese — こんな美しい寺を見たことがない feels perfectly natural with normal word order. But in English, when you start a sentence with a negative word like **never**, you must flip the subject and auxiliary: **Never have I seen such a beautiful temple.** It feels strange at first, but it signals sophisticated, native-like English at C2 level.",
+          "vi": "\"Never I have seen such a beautiful temple.\" Câu này hoàn chỉnh trong tiếng Nhật — こんな美しい寺を見たことがない với trật tự từ bình thường nghe rất tự nhiên. Nhưng trong tiếng Anh, khi bắt đầu câu bằng từ phủ định như **never**, bạn phải đảo chủ ngữ và trợ động từ: **Never have I seen such a beautiful temple.** Lúc đầu nghe lạ, nhưng đó là dấu hiệu của tiếng Anh tinh tế, giống bản ngữ ở trình độ C2.",
+          "ja": "「Never I have seen such a beautiful temple.」— この文は日本語では完全に文法的です。「こんな美しい寺を見たことがない」は通常の語順で自然に聞こえます。しかし英語では、**never** のような否定語で文を始める場合、主語と助動詞を倒置しなければなりません：**Never have I seen such a beautiful temple.** 最初は奇妙に感じますが、C2レベルでは洗練されたネイティブ級の英語を示す重要なテクニックです。"
+        },
+        "why": {
+          "en": "Japanese marks emphasis through particles (は、こそ) without changing word order. こんな美しい京都を**こそ**見たことがない keeps the standard SOV order with こそ adding emphasis. English has a different strategy: fronting a negative or restrictive adverb (like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**) triggers **subject-auxiliary inversion** — the auxiliary verb moves before the subject. This is exclusively a C2-level skill that separates proficient English from truly native-like expression.",
+          "vi": "Tiếng Nhật đánh dấu nhấn mạnh qua trợ từ (は、こそ) mà không thay đổi trật tự từ. こんな美しい京都を**こそ**見たことがない giữ nguyên trật tự SOV với こそ thêm nhấn mạnh. Tiếng Anh có chiến lược khác: đưa trạng từ phủ định hoặc hạn chế lên đầu câu kích hoạt **đảo chủ ngữ-trợ động từ**. Đây là kỹ năng C2 phân biệt tiếng Anh thành thạo với biểu đạt như bản ngữ thực sự.",
+          "ja": "日本語は助詞（は、こそ）を使って強調を表し、語順は変わりません。「こんな美しい京都を**こそ**見たことがない」は標準的なSOV語順を保ちます。英語には異なる戦略があります：否定的・制限的な副詞（**never**、**rarely**、**not only**、**hardly**、**no sooner**、**under no circumstances**）を文頭に置くと、**主語-助動詞の倒置**が発生します。助動詞が主語の前に移動します。これはC2レベルのみのスキルで、熟練した英語と真にネイティブ級の表現を分けるものです。"
+        },
+        "pattern": {
+          "en": "**Normal order:** I have NEVER seen such a beautiful temple. **Inverted order:** Never **have I** seen such a beautiful temple. **The rule:** negative/restrictive adverb at the start → auxiliary verb before the subject. Common triggers: **Never**, **Rarely**, **Seldom**, **Not only**, **Hardly**, **No sooner**, **Under no circumstances**, **On no account**, **At no time**. Example pairs: \"I had **no sooner** arrived than the phone rang\" → \"**No sooner had I** arrived than the phone rang.\" \"I have **rarely** felt so happy\" → \"**Rarely have I** felt so happy.\"",
+          "vi": "**Trật tự thường:** I have NEVER seen such a beautiful temple. **Đảo ngữ:** Never **have I** seen such a beautiful temple. **Quy tắc:** trạng từ phủ định/hạn chế ở đầu câu → trợ động từ trước chủ ngữ. Từ kích hoạt phổ biến: **Never**, **Rarely**, **Seldom**, **Not only**, **Hardly**, **No sooner**, **Under no circumstances**.",
+          "ja": "**通常の語順：** I have NEVER seen such a beautiful temple. **倒置：** Never **have I** seen such a beautiful temple. **ルール：** 否定的・制限的な副詞が文頭 → 助動詞が主語の前に来る。よく使うトリガー：**Never**、**Rarely**、**Seldom**、**Not only**、**Hardly**、**No sooner**、**Under no circumstances**、**On no account**、**At no time**。例のペア：「I **had no sooner** arrived than the phone rang」→「**No sooner had I** arrived than the phone rang。」「I have **rarely** felt so happy」→「**Rarely have I** felt so happy。」"
+        },
+        "practice": {
+          "en": "Say each pair and feel the inversion: \"**Never have I** tasted such delicious ramen.\" (normal: I have never tasted…) \"**Rarely does she** complain about anything.\" (normal: She rarely complains…) \"**Not only did he** finish the report, but he also revised it.\" (normal: He not only finished…) \"**Hardly had we** left when it started raining.\" (normal: We had hardly left…) \"**Under no circumstances should you** open this door.\" (normal: You should not open this door under any circumstances.) Practice the inverted version until it rolls off the tongue naturally.",
+          "vi": "Nói từng cặp và cảm nhận sự đảo ngữ: \"**Never have I** tasted such delicious ramen.\" \"**Rarely does she** complain about anything.\" \"**Not only did he** finish the report, but he also revised it.\" \"**Hardly had we** left when it started raining.\" \"**Under no circumstances should you** open this door.\"",
+          "ja": "各ペアを声に出して倒置を感じましょう：「**Never have I** tasted such delicious ramen.」（通常：I have never tasted…）「**Rarely does she** complain about anything.」（通常：She rarely complains…）「**Not only did he** finish the report, but he also revised it.」「**Hardly had we** left when it started raining.」「**Under no circumstances should you** open this door.」倒置バージョンが自然に口から出るまで練習しましょう。"
+        },
+        "takeaway": {
+          "en": "Front a negative adverb → invert subject and auxiliary. Never + have I, Rarely + do I, No sooner + had I. This is your C2 power move.",
+          "vi": "Đưa trạng từ phủ định lên đầu → đảo chủ ngữ và trợ động từ. Never + have I, Rarely + do I, No sooner + had I. Đây là kỹ năng C2 đỉnh cao của bạn.",
+          "ja": "否定副詞を文頭に → 主語と助動詞を倒置。Never + have I、Rarely + do I、No sooner + had I。これがあなたのC2パワームーブです。"
+        }
+      },
+      "quiz": [
+        {
+          "question": {
+            "en": "Choose the correct inverted sentence:",
+            "vi": "Chọn câu đảo ngữ đúng:",
+            "ja": "正しい倒置文を選んでください："
+          },
+          "options": [
+            "Never I have seen such a beautiful sunset.",
+            "Never have I seen such a beautiful sunset.",
+            "Never I seen have such a beautiful sunset.",
+            "Never seen I have such a beautiful sunset."
+          ],
+          "correctAnswer": "Never have I seen such a beautiful sunset.",
+          "explanation": {
+            "en": "**Never** at the start → invert subject **I** and auxiliary **have**: **Never have I seen**.",
+            "vi": "**Never** ở đầu → đảo chủ ngữ **I** và trợ động từ **have**: **Never have I seen**.",
+            "ja": "文頭の **Never** → 主語 **I** と助動詞 **have** を倒置：**Never have I seen**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct inverted sentence:",
+            "vi": "Chọn câu đảo ngữ đúng:",
+            "ja": "正しい倒置文を選んでください："
+          },
+          "options": [
+            "Rarely she complains about anything.",
+            "Rarely does she complain about anything.",
+            "Rarely she does complain about anything.",
+            "Rarely complain she does about anything."
+          ],
+          "correctAnswer": "Rarely does she complain about anything.",
+          "explanation": {
+            "en": "**Rarely** at the start → add **does** and invert with subject: **Rarely does she complain**.",
+            "vi": "**Rarely** ở đầu → thêm **does** và đảo với chủ ngữ: **Rarely does she complain**.",
+            "ja": "文頭の **Rarely** → **does** を追加して主語と倒置：**Rarely does she complain**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct inverted sentence:",
+            "vi": "Chọn câu đảo ngữ đúng:",
+            "ja": "正しい倒置文を選んでください："
+          },
+          "options": [
+            "No sooner I had arrived than the meeting started.",
+            "No sooner had I arrived than the meeting started.",
+            "No sooner I arrived than the meeting started.",
+            "No sooner did I arrived than the meeting started."
+          ],
+          "correctAnswer": "No sooner had I arrived than the meeting started.",
+          "explanation": {
+            "en": "**No sooner** at the start → invert **had** and **I**: **No sooner had I arrived**.",
+            "vi": "**No sooner** ở đầu → đảo **had** và **I**: **No sooner had I arrived**.",
+            "ja": "文頭の **No sooner** → **had** と **I** を倒置：**No sooner had I arrived**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Choose the correct inverted sentence:",
+            "vi": "Chọn câu đảo ngữ đúng:",
+            "ja": "正しい倒置文を選んでください："
+          },
+          "options": [
+            "Not only he finished the report, but he also revised it.",
+            "Not only did he finish the report, but he also revised it.",
+            "Not only he did finish the report, but he also revised it.",
+            "Not only finished he the report, but he also revised it."
+          ],
+          "correctAnswer": "Not only did he finish the report, but he also revised it.",
+          "explanation": {
+            "en": "**Not only** at the start → add **did** and invert with subject: **Not only did he finish**.",
+            "vi": "**Not only** ở đầu → thêm **did** và đảo với chủ ngữ: **Not only did he finish**.",
+            "ja": "文頭の **Not only** → **did** を追加して主語と倒置：**Not only did he finish**。"
+          }
+        },
+        {
+          "question": {
+            "en": "Fill in: _____ had we left the house _____ it started raining.",
+            "vi": "Điền vào chỗ trống: _____ had we left the house _____ it started raining.",
+            "ja": "空欄を埋めてください：_____ had we left the house _____ it started raining."
+          },
+          "options": [
+            "Hardly / when",
+            "Never / than",
+            "No sooner / when",
+            "Rarely / than"
+          ],
+          "correctAnswer": "Hardly / when",
+          "explanation": {
+            "en": "**Hardly** + inverted **had we** + **when**: **Hardly had we left the house when it started raining.**",
+            "vi": "**Hardly** + đảo **had we** + **when**: **Hardly had we left the house when it started raining.**",
+            "ja": "**Hardly** + 倒置 **had we** + **when**：**Hardly had we left the house when it started raining.**"
+          }
+        }
+      ]
     }
   ]
 }

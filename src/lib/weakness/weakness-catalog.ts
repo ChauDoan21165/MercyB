@@ -131,6 +131,18 @@ export type WeaknessTag =
   | "ur_l1_present_perfect_vs_past"
   | "ur_l1_conditional_mix"
   | "ur_c2_formal_register";
+  | "ja_l1_subject_omission"
+  | "ja_l1_article_missing"
+  | "ja_l1_plural_s"
+  | "ja_l1_third_person_s"
+  | "ja_l1_missing_be"
+  | "ja_l1_present_perfect_vs_past"
+  | "ja_l1_conditional_mix"
+  | "ja_l1_reported_speech"
+  | "ja_c2_inversion_emphasis"
+  | "ja_c2_cleft_focus"
+  | "ja_c2_register_consistency"
+  | "ja_c2_hedging_academic";
 
 export type BilingualText = {
   /** English surface — may contain `**word**` markdown bolding. */
@@ -1419,8 +1431,6 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
         ur: "اردو میں فعل ماضی کامل — **میں نے کھایا** — کسی بھی مکمل ہونے والی کارروائی کے لیے استعمال ہوتا ہے، چاہے وہ کل ہوئی ہو یا ابھی۔ انگریزی میں تقسیم ہے: **ماضی مطلق** ماضی کے مخصوص وقت پر، اور **ماضی قریب** حال سے تعلق رکھنے والی کارروائیوں کے لیے۔ اردو کا فعل ماضی کامل دونوں صورتوں پر محیط ہے۔",
       exampleWrong: "I have eaten breakfast this morning.",
       exampleRight: "I ate breakfast this morning.",
-      linkedRoomId: null,
-    },
   ar_l1_conditional_unreal: {
       tag: "ar_l1_conditional_unreal",
         en: "Unreal conditionals (Type 2)",
@@ -1606,19 +1616,14 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
       exampleRight: "This suggests that bilingual education may contribute to improved cognitive development.",
   ur_l1_conditional_mix: {
       tag: "ur_l1_conditional_mix",
-      shortLabel: {
         en: "**If** clauses — match the tenses",
         vi: "Câu **If** — hợp thì",
         ur: "شرطی جملے — زمانی مطابقت",
-      },
-      longDescription: {
         en: "Urdu conditional sentences use **اگر… تو** (agar… to) and don't change the verb tense based on real vs unreal meaning. English enforces a strict pattern: real condition → **If + present, will + V**; unreal condition → **If + past, would + V**. Never mix past tense with **will** in the same sentence.",
         vi: "Câu điều kiện tiếng Urdu dùng **اگر… تو** (agar… to) và không đổi thì động từ dựa trên nghĩa thật hay giả. Tiếng Anh có quy tắc nghiêm ngặt: điều kiện có thật → **If + hiện tại, will + V**; điều kiện không thật → **If + quá khứ, would + V**. Không bao giờ trộn quá khứ với **will** trong cùng câu.",
         ur: "اردو میں شرطی جملے **اگر… تو** استعمال کرتے ہیں اور حقیقت یا فرض کی بنیاد پر فعل کا زمانہ نہیں بدلتے۔ انگریزی میں سخت قاعدہ ہے: حقیقت → **If + حال, will + فعل**؛ فرض → **If + ماضی, would + فعل**۔ ایک جملے میں ماضی کو **will** کے ساتھ نہ ملائیں۔",
       exampleWrong: "If I had money, I will buy a house.",
       exampleRight: "If I had money, I would buy a house.",
-      linkedRoomId: null,
-    },
   ur_c2_formal_register: {
       tag: "ur_c2_formal_register",
         en: "Register consistency",
@@ -1629,6 +1634,110 @@ export const WEAKNESS_CATALOG: Record<WeaknessTag, WeaknessEntry> = {
         ur: "اردو میں رسمی اور غیر رسمی خطاب میں تیز فرق ہے — **آپ** (رسمی)، **تم** (مانوس)، **تو** (بے تکلف)۔ اردو بولنے والے اس حساسیت کو انگریزی میں بھی لا سکتے ہیں۔ انگریزی رسمی انداز مخففات سے گریز کرتا ہے، لاطینی نژاد الفاظ استعمال کرتا ہے، اور یکساں لہجہ برقرار رکھتا ہے — C2 مصنف پوری تحریر میں ایک ہی انداز رکھتا ہے۔",
       exampleWrong: "The aforementioned findings are super interesting and you're gonna love them.",
       exampleRight: "The aforementioned findings are highly compelling and readers will find them valuable.",
+  ja_l1_subject_omission: {
+      tag: "ja_l1_subject_omission",
+        en: "Missing subject",
+        vi: "Thiếu chủ ngữ",
+        ja: "主語の欠落",
+        en: "Japanese routinely drops subjects when they are clear from context — 今日は学校に行く is a complete sentence. English almost always needs an explicit subject. A sentence like **Is raining** or **Went to store** is grammatically incomplete in English, even though the Japanese equivalent feels perfectly natural.",
+        vi: "Tiếng Nhật thường xuyên lược bỏ chủ ngữ khi đã rõ từ ngữ cảnh — 今日は学校に行く là một câu hoàn chỉnh. Tiếng Anh hầu như luôn cần chủ ngữ rõ ràng. Một câu như **Is raining** hoặc **Went to store** là không hoàn chỉnh về mặt ngữ pháp trong tiếng Anh, dù câu tương đương trong tiếng Nhật nghe hoàn toàn tự nhiên.",
+        ja: "日本語は文脈から明らかな主語を日常的に省略します。「今日は学校に行く」は完全な文です。しかし英語はほぼ常に明示的な主語が必要です。**Is raining** や **Went to store** のような文は英語では文法的に不完全ですが、日本語の相当表現は完全に自然に聞こえるため、日本語話者はこの誤りを犯しがちです。",
+      exampleWrong: "Is very hot today.",
+      exampleRight: "It is very hot today.",
+  ja_l1_article_missing: {
+      tag: "ja_l1_article_missing",
+        ja: "冠詞 **a / an / the**",
+        en: "Japanese has no articles — nouns stand alone with particle markers doing different work. English almost always needs **a**, **an**, or **the** before a singular countable noun. Japanese learners commonly drop articles entirely or use them inconsistently, because the concept of 'article as a required grammar word' doesn't exist in the native language.",
+        vi: "Tiếng Nhật không có mạo từ — danh từ đứng một mình và trợ từ đảm nhiệm vai trò khác. Tiếng Anh hầu như luôn cần **a**, **an**, hoặc **the** trước danh từ đếm được số ít. Người Nhật thường bỏ hẳn mạo từ hoặc dùng không nhất quán, vì khái niệm 'mạo từ là từ ngữ pháp bắt buộc' không tồn tại trong tiếng mẹ đẻ.",
+        ja: "日本語には冠詞がありません。名詞は単独で立ち、助詞が別の役割を担います。英語では、可算名詞の単数形の前にはほぼ常に **a**、**an**、または **the** が必要です。日本語話者は冠詞を完全に省略したり、一貫性なく使用したりすることがよくあります。母語に「冠詞が必須の文法語」という概念自体が存在しないからです。",
+      exampleWrong: "I have car. Car is red.",
+      exampleRight: "I have a car. The car is red.",
+  ja_l1_plural_s: {
+      tag: "ja_l1_plural_s",
+        ja: "複数形の **-s**",
+        en: "Japanese nouns don't change form for quantity — 本 can mean 'book' or 'books' depending on context. Counters like 三冊 (three books) do the work. English adds **-s** to most nouns when there's more than one. Japanese learners often omit the plural **-s** because their native grammar handles number without changing the noun itself.",
+        vi: "Danh từ tiếng Nhật không thay đổi hình thức theo số lượng — 本 có thể là 'quyển sách' hoặc 'những quyển sách' tùy ngữ cảnh. Các từ đếm như 三冊 (ba quyển sách) đảm nhiệm việc đó. Tiếng Anh thêm **-s** vào hầu hết danh từ khi có nhiều hơn một. Người Nhật thường bỏ **-s** số nhiều vì ngữ pháp tiếng mẹ đẻ xử lý số lượng mà không thay đổi bản thân danh từ.",
+        ja: "日本語の名詞は数量によって形が変わりません。「本」は文脈によって「book」にも「books」にもなります。「三冊」のような助数詞が数量を表します。英語は複数ある場合、ほとんどの名詞に **-s** を付けます。日本語話者は複数の **-s** を省略しがちです。母語の文法が名詞そのものを変えずに数量を処理するからです。",
+      exampleWrong: "I have three book.",
+      exampleRight: "I have three books.",
+  ja_l1_third_person_s: {
+      tag: "ja_l1_third_person_s",
+        en: "Subject-verb agreement",
+        vi: "Chia động từ theo chủ ngữ",
+        ja: "三人称単数現在の **-s**",
+        en: "Japanese verbs don't change form for person — 食べる (taberu) is the same for 'I eat,' 'you eat,' and 'she eats.' Politeness level (食べる vs 食べます) is about register, not person. English adds **-s** to the verb when the subject is **he**, **she**, or **it** in present tense. This extra **-s** has no equivalent in Japanese grammar.",
+        vi: "Động từ tiếng Nhật không thay đổi theo ngôi — 食べる (taberu) giống nhau cho 'tôi ăn,' 'bạn ăn,' và 'cô ấy ăn.' Mức độ lịch sự (食べる vs 食べます) là về văn phong, không phải ngôi. Tiếng Anh thêm **-s** vào động từ khi chủ ngữ là **he**, **she**, hoặc **it** ở thì hiện tại. **-s** này không có tương đương trong ngữ pháp tiếng Nhật.",
+        ja: "日本語の動詞は人称によって形が変わりません。「食べる」は「I eat」「you eat」「she eats」すべてに同じ形です。丁寧体（食べる vs 食べます）は文体の違いであり、人称による変化ではありません。英語では、現在形で主語が **he**、**she**、**it** の場合、動詞に **-s** を付けます。この **-s** は日本語の文法に相当するものがないため、習得が難しいポイントです。",
+      exampleWrong: "She eat breakfast every morning.",
+      exampleRight: "She eats breakfast every morning.",
+  ja_l1_missing_be: {
+      tag: "ja_l1_missing_be",
+        en: 'Missing "to be"',
+        vi: 'Thiếu động từ "to be"',
+        ja: 'be動詞の欠落',
+        en: "Japanese uses だ or です at the end of noun+adjective sentences — but it can be dropped in casual speech (いい天気ね = 'nice weather'). English always requires **am**, **is**, or **are** in present-tense equative and descriptive sentences. Japanese learners often drop **to be** because the copula pattern works differently in Japanese, especially in casual or shorthand writing.",
+        vi: "Tiếng Nhật dùng だ hoặc です ở cuối câu danh từ+tính từ — nhưng có thể bỏ trong văn nói thân mật (いい天気ね = 'thời tiết đẹp nhỉ'). Tiếng Anh luôn cần **am**, **is**, hoặc **are** trong câu miêu tả và đồng nhất ở hiện tại. Người Nhật thường bỏ **to be** vì trợ từ trong tiếng Nhật hoạt động khác, nhất là trong văn viết thân mật hoặc viết tắt.",
+        ja: "日本語は名詞＋形容詞の文の最後に「だ」や「です」を使いますが、日常会話では省略されることがよくあります（「いい天気ね」）。英語は現在形の等位文や記述文では常に **am**、**is**、**are** が必要です。日本語話者は **to be** を省略しがちです。日本語のコピュラの働きが異なり、特にカジュアルな会話や短い書き言葉では省略が自然だからです。",
+      exampleWrong: "She very tired.",
+      exampleRight: "She is very tired.",
+  ja_l1_present_perfect_vs_past: {
+      tag: "ja_l1_present_perfect_vs_past",
+        ja: "現在完了 vs 過去形",
+        en: "Japanese た-form covers both 'I ate' (過去形) and 'I have eaten' (現在完了). The distinction is expressed through context or adjuncts, not verb form. English splits them: use **past simple** when a specific past time is named; use **present perfect** for past actions with present relevance and no specific time. Japanese speakers commonly overuse present perfect for past events or use past simple when present perfect is needed.",
+        vi: "Dạng た trong tiếng Nhật bao hàm cả 'tôi đã ăn' (quá khứ) và 'tôi đã ăn' (hiện tại hoàn thành). Sự phân biệt được thể hiện qua ngữ cảnh hoặc từ bổ trợ, không phải hình thái động từ. Tiếng Anh phân biệt: dùng **past simple** khi có thời gian cụ thể; dùng **present perfect** cho hành động quá khứ còn liên quan hiện tại và không có thời gian cụ thể.",
+        ja: "日本語の「た形」は「昨日食べた」（過去形）と「もう食べた」（現在完了）の両方をカバーします。区別は文脈や副詞によって表現され、動詞の形では区別しません。英語では、特定の過去の時点が明示されている場合は **過去形**、特定の時点がなく過去の動作が現在に関連している場合は **現在完了 (have + 過去分詞)** を使い分けます。日本語話者はこの区別に苦労し、過去の出来事に現在完了を過剰に使ったり、逆に現在完了が必要な場面で過去形を使ってしまうことがよくあります。",
+      exampleWrong: "I have visited Kyoto last year.",
+      exampleRight: "I visited Kyoto last year.",
+  ja_l1_conditional_mix: {
+      tag: "ja_l1_conditional_mix",
+        en: "Conditional tense mixing",
+        vi: "Trộn thì câu điều kiện",
+        ja: "条件節の時制の混同",
+        en: "Japanese conditionals (〜たら、〜ば、〜なら、〜と) don't change verb form to distinguish real from unreal situations — the conditional marker itself carries the meaning. English marks the difference directly: real conditions use **If + present, will + verb**; unreal/hypothetical conditions use **If + past, would + verb**. Japanese speakers commonly use **will** after a past-tense **if** clause, producing errors like **If I had money, I will buy it**.",
+        vi: "Câu điều kiện tiếng Nhật (〜たら、〜ば、〜なら、〜と) không thay đổi hình thái động từ để phân biệt tình huống thật và không thật — bản thân từ nối điều kiện mang ý nghĩa. Tiếng Anh đánh dấu sự khác biệt trực tiếp: điều kiện thật dùng **If + hiện tại, will + động từ**; điều kiện không thật dùng **If + quá khứ, would + động từ**. Người Nhật thường dùng **will** sau mệnh đề **if** ở quá khứ, tạo lỗi như **If I had money, I will buy it**.",
+        ja: "日本語の条件表現（〜たら、〜ば、〜なら、〜と）は、現実の条件と非現実の仮定を動詞の形で区別しません。条件の接続詞自体が意味を担います。英語は直接的に区別します：実現可能な条件は **If + 現在形, will + 動詞の原形**、現実に反する仮定は **If + 過去形, would + 動詞の原形** です。日本語話者は、過去形の **if** 節の後に **will** を使ってしまい、「If I had money, I will buy it」のような誤りをよく犯します。これは日本語の「もしお金があったら買う」が時制混在のように聞こえないためです。",
+  ja_l1_reported_speech: {
+      tag: "ja_l1_reported_speech",
+        ja: "間接話法の時制の一致",
+        en: "Japanese reports speech using と言った (to itta = 'said') without changing the tense of the quoted content — 彼女は疲れていると言った keeps present tense inside. English backshifts the tense: **She said she was tired**, not **She said she is tired**. The absence of backshifting in Japanese makes this a persistent error even at B2 level.",
+        vi: "Tiếng Nhật tường thuật lời nói bằng と言った (to itta = 'đã nói') mà không thay đổi thì của nội dung được trích dẫn — 彼女は疲れていると言った giữ nguyên thì hiện tại. Tiếng Anh lùi thì: **She said she was tired**, không phải **she said she is tired**. Việc thiếu lùi thì trong tiếng Nhật khiến lỗi này kéo dài ngay cả ở trình độ B2.",
+        ja: "日本語は「と言った」を使って発言を伝える際、引用される内容の時制を変えません。「彼女は疲れていると言った」は中身の現在形を保持します。英語は時制を一つ過去にずらします（時制の一致）。**She said she was tired** が正しく、**She said she is tired** は誤りです。日本語に時制の一致の概念がないため、この誤りは B2 レベルでも続く傾向があります。",
+  ja_c2_inversion_emphasis: {
+      tag: "ja_c2_inversion_emphasis",
+        en: "Inversion for emphasis",
+        vi: "Đảo ngữ nhấn mạnh",
+        ja: "倒置による強調",
+        en: "Japanese marks emphasis through particles (は、こそ) and word order flexibility without changing the subject-verb sequence. English inverts subject and auxiliary after negative/restrictive adverbials like **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Inversion signals emphasis and formality — a C2 feature that separates proficient from native-like writing. Japanese learners often keep normal word order because Japanese emphasis doesn't require syntactic inversion.",
+        vi: "Tiếng Nhật đánh dấu nhấn mạnh qua trợ từ (は、こそ) và trật tự từ linh hoạt mà không thay đổi trình tự chủ ngữ-động từ. Tiếng Anh đảo chủ ngữ và trợ động từ sau các trạng từ phủ định/hạn chế như **never**, **rarely**, **not only**, **hardly**, **no sooner**, **under no circumstances**. Đảo ngữ là dấu hiệu nhấn mạnh và trang trọng — kỹ năng C2. Người Nhật thường giữ nguyên trật tự từ vì tiếng Nhật nhấn mạnh mà không cần đảo ngữ cú pháp.",
+        ja: "日本語は助詞（は、こそ）や語順の柔軟性によって強調を表し、主語と動詞の順序は変わりません。英語では、**never**、**rarely**、**not only**、**hardly**、**no sooner**、**under no circumstances** などの否定的・制限的な副詞が文頭に来ると、主語と助動詞を倒置します。この倒置は強調と形式張った文体を示す C2 レベルの特徴です。日本語話者は、日本語の強調が統語的倒置を必要としないため、通常の語順を維持しがちです。",
+      exampleWrong: "Never I have seen such a beautiful temple.",
+      exampleRight: "Never have I seen such a beautiful temple.",
+  ja_c2_cleft_focus: {
+      tag: "ja_c2_cleft_focus",
+        en: "Cleft sentences for focus",
+        vi: "Câu chẻ nhấn mạnh",
+        ja: "分裂文による焦点化",
+        en: "Japanese uses のは〜だ structure to highlight an element — 窓を割ったのはジョンだ (It was John who broke the window). English cleft sentences follow a different syntactic pattern: **It-clefts** (**It was John who broke the window**) and **Wh-clefts** (**What I need is more time**). While Japanese has a similar concept, the English syntax is different enough that learners produce errors like **What I need it is more time** (adding an extra pronoun).",
+        vi: "Tiếng Nhật dùng cấu trúc のは〜だ để nhấn mạnh một yếu tố — 窓を割ったのはジョンだ (Chính John là người làm vỡ cửa sổ). Câu chẻ tiếng Anh tuân theo cú pháp khác: **It-cleft** và **Wh-cleft**. Mặc dù tiếng Nhật có khái niệm tương tự, cú pháp tiếng Anh đủ khác để người học tạo ra lỗi như **What I need it is more time** (thêm đại từ thừa).",
+        ja: "日本語は「〜のは〜だ」という構造で要素を焦点化します。「窓を割ったのはジョンだ」（It was John who broke the window）。英語の分裂文は異なる構文パターンに従います。**It-cleft**（**It was John who broke the window**）と **Wh-cleft**（**What I need is more time**）です。日本語にも似た概念はありますが、英語の構文は十分に異なるため、学習者は **What I need it is more time**（余分な代名詞を挿入）のような誤りを犯します。",
+      exampleWrong: "What I need it is more time.",
+      exampleRight: "What I need is more time.",
+  ja_c2_register_consistency: {
+      tag: "ja_c2_register_consistency",
+        ja: "文体の一貫性",
+        en: "Japanese has clear register markers through 敬語 (honorific language) — です・ます体 vs だ体 — and speakers consciously switch between them. However, English register is more subtle: informal contractions and slang vs. formal academic vocabulary don't have clear 'shift' markers. Japanese speakers may mix registers unintentionally in English — using **gonna** in an academic essay or **moreover** in a casual text — because English lacks the explicit register-marking system Japanese has.",
+        vi: "Tiếng Nhật có dấu hiệu văn phong rõ ràng qua 敬語 (kính ngữ) — thể です・ます vs thể だ — và người nói có ý thức chuyển đổi giữa chúng. Tuy nhiên, văn phong tiếng Anh tinh tế hơn: các từ rút gọn thân mật và từ vựng học thuật trang trọng không có dấu hiệu 'chuyển đổi' rõ ràng. Người Nhật có thể pha trộn văn phong một cách vô ý trong tiếng Anh.",
+        ja: "日本語は敬語を通じて明確な文体の区別があります（です・ます体 vs だ体）。話者は意識的にこれらを切り替えます。しかし、英語の文体はより微妙です。くだけた短縮形やスラングとフォーマルな学術語彙の間には、日本語のような明確な「切り替え標識」がありません。そのため、日本語話者はアカデミックエッセイで **gonna** を使ったり、カジュアルな文章で **moreover** を使うなど、意図せず文体を混在させてしまうことがあります。",
+      exampleWrong: "The aforementioned methodology is super cool and you're gonna love it.",
+      exampleRight: "The aforementioned methodology is highly effective and yields compelling results.",
+  ja_c2_hedging_academic: {
+      tag: "ja_c2_hedging_academic",
+        ja: "学術的緩和表現",
+        en: "Japanese academic writing has its own hedging conventions (〜と考えられる, 〜と思われる), but the stylistic mapping to English is imprecise. Japanese speakers may state claims too directly in English academic writing, mirroring the certainty expressed by Japanese academic particles — or over-hedging by using tentative expressions too frequently. At C2, knowing when and how to hedge in English — **this suggests that…**, **it could be argued that…**, **the data appear to indicate…** — is as important as knowing the grammar.",
+        vi: "Văn học thuật tiếng Nhật có quy ước giảm nhẹ riêng (〜と考えられる, 〜と思われる), nhưng ánh xạ phong cách sang tiếng Anh không chính xác. Người Nhật có thể nêu nhận định quá trực tiếp trong văn học thuật tiếng Anh, hoặc ngược lại dùng quá nhiều biểu đạt dè dặt. Ở trình độ C2, biết khi nào và cách giảm nhẹ trong tiếng Anh cũng quan trọng như biết ngữ pháp.",
+        ja: "日本語の学術文章にも緩和表現の慣習があります（〜と考えられる、〜と思われる）が、英語への文体マッピングは正確ではありません。日本語話者は、英語の学術文章で主張を直接的に述べすぎたり（日本語の学術助詞が伝える確実性を映して）、逆に tentative な表現を過剰に使ってしまうことがあります。C2レベルでは、**this suggests that…**、**it could be argued that…**、**the data appear to indicate…** など、いつどのように緩和表現を使うかを知ることが、文法知識と同じくらい重要です。",
+      exampleWrong: "This experiment proves that the hypothesis is correct.",
+      exampleRight: "The results of this experiment suggest that the hypothesis may be correct.",
 };
 
 /** Ordered list of all tags (stable for tests + exhaustiveness checks). */
