@@ -21,6 +21,7 @@ export const lessonThemes: Record<string, LessonTheme> = {
   hindi:      { accent: "#4338CA" }, // indigo-700 (Hindi Devanagari)
   urdu:       { accent: "#0E7490" }, // cyan-700 (Urdu RTL)
   swahili:    { accent: "#0D9488" }, // teal-600 (Kiswahili — Indian Ocean coast)
+  russian:    { accent: "#2563EB" }, // blue-600 (Russian Cyrillic)
 };
 
 export const cefrPillColors: Record<string, string> = {

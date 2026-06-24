@@ -196,6 +196,26 @@ export const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
       nextStep: "Thử viết thêm một câu với 'geçen hafta'.",
     },
   },
+  ru: {
+    explanation: {
+      vi: "Câu tiếng Nga cần dùng dạng quá khứ khi nói về việc đã đi hôm qua.",
+      en: "The Russian sentence needs past tense for something you did yesterday.",
+    },
+    grammarTip: {
+      vi: "Với hành động đã xảy ra hôm qua, dùng dạng quá khứ như 'ходил/ходила' thay vì nguyên mẫu hoặc hiện tại.",
+      en: "For an action completed yesterday, use a past-tense form such as 'ходил/ходила' instead of an infinitive or present form.",
+    },
+    practicePrompt: {
+      vi: "Viết một câu tiếng Nga khác về việc bạn đã làm hôm qua.",
+      en: "Write another Russian sentence about something you did yesterday.",
+    },
+    feedback: {
+      encouragement: "Tốt! Bạn đã luyện cách diễn tả quá khứ trong tiếng Nga.",
+      tip: "Nhớ chia động từ quá khứ theo giống và số trong tiếng Nga.",
+      nextStep: "Thử viết thêm một câu với 'вчера' hoặc 'на прошлой неделе'.",
+    },
+  },
+
 };
 
 // ─── Text helpers ──────────────────────────────────────────────────────

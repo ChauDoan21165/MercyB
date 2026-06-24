@@ -1,4 +1,4 @@
-export type TutorLanguageCode = "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi" | "tr";
+export type TutorLanguageCode = "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi" | "tr" | "ru";
 export type TutorUiLanguage = "en" | "vi" | "native";
 export type TutorLanguageDirection = "ltr" | "rtl";
 
@@ -17,7 +17,7 @@ export type TutorLanguageConfig = {
   direction: TutorLanguageDirection;
 };
 
-export const TUTOR_LANGUAGE_CODES = ["en", "fr", "zh", "de", "ja", "ko", "es", "vi", "tr"] as const;
+export const TUTOR_LANGUAGE_CODES = ["en", "fr", "zh", "de", "ja", "ko", "es", "vi", "tr", "ru"] as const;
 
 export const TUTOR_LANGUAGE_REGISTRY: Record<TutorLanguageCode, TutorLanguageConfig> = {
   en: {
@@ -146,6 +146,20 @@ export const TUTOR_LANGUAGE_REGISTRY: Record<TutorLanguageCode, TutorLanguageCon
     supportsCloudTts: false,
     direction: "ltr",
   },
+  ru: {
+    code: "ru",
+    labelEn: "Russian",
+    labelNative: "Русский",
+    labelVi: "Tiếng Nga",
+    speechLocale: "ru-RU",
+    ttsLocale: "ru-RU",
+    defaultExampleSentence: "Я вчера идти в магазин",
+    beginnerPlaceholder: 'gõ câu tiếng Nga của bạn ở đây, ví dụ: "Я вчера идти в магазин"',
+    supportsStt: true,
+    supportsBrowserTts: true,
+    supportsCloudTts: false,
+    direction: "ltr",
+  },
 };
 
 const TUTOR_LANGUAGE_ALIASES: Record<string, TutorLanguageCode> = {
@@ -170,6 +184,9 @@ const TUTOR_LANGUAGE_ALIASES: Record<string, TutorLanguageCode> = {
   turkish: "tr",
   turkce: "tr",
   "türkçe": "tr",
+  russian: "ru",
+  "русский": "ru",
+  ru: "ru",
 };
 
 function normalizeRawLanguage(raw: unknown): string {

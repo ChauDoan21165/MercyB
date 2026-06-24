@@ -7,6 +7,7 @@ import { ko } from "./ko";
 import { es } from "./es";
 import { vi } from "./vi";
 import { tr } from "./tr";
+import { ru } from "./ru";
 import type { TutorLanguagePack, TutorTarget } from "../tutorCopy";
 
 export const TUTOR_LANGUAGE_PACKS: Record<TutorTarget, TutorLanguagePack> = {
@@ -19,6 +20,7 @@ export const TUTOR_LANGUAGE_PACKS: Record<TutorTarget, TutorLanguagePack> = {
   es,
   vi,
   tr,
+  ru,
 };
 
-export { en, fr, zh, de, ja, ko, es, vi, tr };
+export { en, fr, zh, de, ja, ko, es, vi, tr, ru };
