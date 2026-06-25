@@ -830,6 +830,11 @@ export default function AppRouter() {
               </AnonymousOnboardingGate>
             }
           />
+          {/* Legacy alias: /vietnamese-english → same new homepage as /.
+              Renders <Home /> directly (no AnonymousOnboardingGate) so the
+              new "Small Steps. Real Progress." homepage shows regardless of
+              auth state. */}
+          <Route path="vietnamese-english" element={<LazyPage><Home /></LazyPage>} />
           <Route path="/privacy" element={<LazyPage><Privacy /></LazyPage>} />
           <Route path="/terms"   element={<LazyPage><Terms /></LazyPage>} />
           {/* App Store / Play Store paperwork prefers /legal/* paths. Same components. */}
