@@ -38,8 +38,27 @@ import RequireAal2 from "@/components/auth/RequireAal2";
 import { WebOnlyRoute } from "@/router/WebOnlyRoute";
 import { ReviewNavEntry } from "@/features/review";
 import ParentNavEntry from "@/components/parent-view/ParentNavEntry";
+import UnsupportedPairPage from "@/pages/languages/UnsupportedPairPage";
+import { writeAnonymousPair } from "@/lib/languagePair/anonymousPair";
+import type { NativeLang } from "@/lib/onboarding/types";
 
 const MB_ROUTER_VERSION = "2026-04-11-app-router-room-alias-hardening";
+
+/** Homepage language slugs → NativeLang codes (source: nativeContent.ts). */
+const NATIVE_SLUG_TO_CODE: Record<string, NativeLang> = {
+  vietnamese: "vi",
+  english: "en",
+  japanese: "ja",
+  indonesian: "id",
+  thai: "th",
+  arabic: "ar",
+  hindi: "hi",
+  urdu: "ur",
+  korean: "ko",
+  chinese: "zh",
+  portuguese: "pt",
+  turkish: "tr",
+};
 
 const ChatHub             = lazyWithRetry(() => import("@/pages/ChatHub"));
 const AllRooms            = lazyWithRetry(() => import("@/pages/AllRooms"));
@@ -514,6 +533,18 @@ function ChatAliasRedirect() {
 function LoginRedirect()   { return <Navigate to="/signin" replace />; }
 function RedeemRedirect()  { return <Navigate to="/account" replace />; }
 
+function LanguagePairRedirect() {
+  const { nativeSlug, targetSlug } = useParams<{ nativeSlug: string; targetSlug: string }>();
+
+  if (targetSlug === "english" && nativeSlug && nativeSlug in NATIVE_SLUG_TO_CODE) {
+    const nativeCode = NATIVE_SLUG_TO_CODE[nativeSlug];
+    writeAnonymousPair(nativeCode, ["en"]);
+    return <LazyPage><Home key={nativeCode} nativeLangOverride={nativeCode} /></LazyPage>;
+  }
+
+  return <UnsupportedPairPage />;
+}
+
 function AuthRedirect() {
   const location = useLocation();
   const target = `/signin${location.search || ""}${location.hash || ""}`;
@@ -622,6 +653,14 @@ function AppHeroShell() {
     maxWidth: PAGE_MAX, margin: "0 auto", width: "100%",
     minWidth: 0, overflowX: "hidden",
   };
+
+  if (pathname === "/") {
+    return (
+      <Suspense fallback={<RouteFallback />}>
+        <Outlet />
+      </Suspense>
+    );
+  }
 
   return (
     <div style={shell}>
@@ -820,15 +859,7 @@ export default function AppRouter() {
           {/* Public pages */}
           <Route
             path="/"
-            element={
-              <AnonymousOnboardingGate
-                firstTimeAnonymous={
-                  <LazyPage><MarketingLandingPage /></LazyPage>
-                }
-              >
-                <LazyPage><Home /></LazyPage>
-              </AnonymousOnboardingGate>
-            }
+            element={<LazyPage><MarketingLandingPage /></LazyPage>}
           />
           {/* Legacy alias: /vietnamese-english → same new homepage as /.
               Renders <Home /> directly (no AnonymousOnboardingGate) so the
@@ -1112,6 +1143,11 @@ export default function AppRouter() {
           />
           <Route path="/professions/hospitality"
             element={<LazyPage><HospitalityLessonsPage /></LazyPage>}
+          />
+
+          {/* Language-pair redirect: /learn/<native>/<target> → real destination */}
+          <Route path="/learn/:nativeSlug/:targetSlug"
+            element={<LanguagePairRedirect />}
           />
 
           {/* Language learning verticals */}

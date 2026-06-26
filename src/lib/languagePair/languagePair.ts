@@ -24,7 +24,7 @@ import {
 // to ./usePairMutation.ts; that file imports from here, and the cycle
 // is broken because this module no longer imports AuthProvider.
 
-const NATIVE_VALUES: NativeLang[] = ["vi", "en", "ja", "id"];
+const NATIVE_VALUES: NativeLang[] = ["vi", "en", "ja", "id", "th", "ar", "hi", "ur", "ko", "zh", "pt", "tr"];
 const TARGET_VALUES = Object.keys(TARGET_META) as TargetLang[];
 
 function isNativeLang(v: unknown): v is NativeLang {

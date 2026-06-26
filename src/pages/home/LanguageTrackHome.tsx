@@ -39,7 +39,7 @@ export function TargetSwitcher({
   nativeLanguage?: NativeLang | null;
 }) {
   const { persist } = usePairMutation();
-  const lang: NativeLang = nativeLanguage ?? "vi";
+  const lang: "en" | "vi" = nativeLanguage === "vi" ? "vi" : "en";
   if (targets.length < 2) return null;
 
   const onPick = (t: TargetLang) => {
@@ -116,7 +116,7 @@ export default function LanguageTrackHome({
   const slug = meta?.slug ?? null;
   // Chrome follows the learner's native choice; null → VI home-market
   // default (matches NativeLanguageContext's default).
-  const lang: NativeLang = nativeLanguage ?? "vi";
+  const lang: "en" | "vi" = nativeLanguage === "vi" ? "vi" : "en";
 
   return (
     <div
@@ -237,7 +237,7 @@ export default function LanguageTrackHome({
               cursor: "pointer",
             }}
           >
-            {lang === "en" ? <span lang="en">Go home</span> : <span lang="vi">Về trang chính</span>}
+            <span lang="en">Back to Home</span>
           </button>
         )}
 
@@ -251,9 +251,7 @@ export default function LanguageTrackHome({
             lineHeight: 1.5,
           }}
         >
-          {lang === "en"
-            ? <span lang="en">Change your languages anytime in Settings.</span>
-            : <span lang="vi">Bạn có thể đổi ngôn ngữ bất cứ lúc nào trong phần Cài đặt.</span>}
+          <span lang="en">You can change your language anytime in Settings.</span>
         </p>
       </div>
     </div>

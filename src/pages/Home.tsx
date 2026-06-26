@@ -20,6 +20,7 @@ import LanguageTrackHome, {
 } from "@/pages/home/LanguageTrackHome";
 import { parseLanguagePair } from "@/lib/languagePair/languagePair";
 import { readAnonymousPair } from "@/lib/languagePair/anonymousPair";
+import type { NativeLang } from "@/components/languages/nativeContent";
 import DailyChallengeCard from "@/components/home/DailyChallengeCard";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
 import PracticeRecommendationCard from "@/components/home/PracticeRecommendationCard";
@@ -78,7 +79,7 @@ function hasOpenTeacherMercyPanel(): boolean {
   );
 }
 
-export default function Home() {
+export default function Home({ nativeLangOverride }: { nativeLangOverride?: NativeLang } = {}) {
   // Route mount-perf observer. Captured first so the elapsed time
   // covers the full hook prologue + render. Breadcrumb-only via
   // reportRouteMountPerf; zero behavior change.
@@ -263,6 +264,21 @@ export default function Home() {
     const raf = window.requestAnimationFrame(syncBubblePositions);
     return () => window.cancelAnimationFrame(raf);
   }, [isDesktopTop, viewportWidth]);
+
+  // ── Native language for copy selection ──────────────────────────────────────
+  // Moved early so t() is available in all render paths (helper functions +
+  // main return). nativeLangOverride wins for /learn/<native>/english routes;
+  // otherwise falls back to the stored pair or "vi" for legacy /vietnamese-english/.
+  const anonPairEarly = onboardingProfile ? null : readAnonymousPair();
+  const pairSourceEarly =
+    onboardingProfile ??
+    (anonPairEarly
+      ? { native_language: anonPairEarly.native, target_languages: anonPairEarly.targets }
+      : null);
+  const { nativeLanguage: pairNativeEarly } = parseLanguagePair(pairSourceEarly);
+  const effectiveNative = nativeLangOverride ?? pairNativeEarly ?? "vi";
+  const t = (vi: string, en: string) => effectiveNative === "vi" ? vi : en;
+  const showVietnameseGloss = effectiveNative === "vi";
 
   // ── Styles ──────────────────────────────────────────────────────────────────
 
@@ -478,7 +494,7 @@ export default function Home() {
         <button
           type="button"
           onClick={handleTeacherMercy}
-          aria-label="Open AI Tutor with Teacher Mercy · Mở AI Tutor với Giáo viên Mercy"
+          aria-label={t("Mở AI Tutor với Giáo viên Mercy", "Open AI Tutor with Teacher Mercy")}
           className="mb-a11y-card-button"
           style={{ display: "block", width: "100%", background: "none", border: "none", padding: 0, margin: 0, cursor: "pointer", textAlign: "center", font: "inherit", color: "inherit" }}
         >
@@ -511,12 +527,14 @@ export default function Home() {
         <div style={{ marginTop: 16, fontSize: isPhone ? z(22) : z(30), fontWeight: 950, letterSpacing: -0.5, color: "rgba(100,30,60,0.94)", lineHeight: 1.15 }}>
           Teacher Mercy
         </div>
-        <div style={{ marginTop: 4, fontSize: z(13), fontWeight: 700, color: "rgba(140,60,90,0.62)", letterSpacing: 0.2 }}>
-          Giáo viên Mercy
-        </div>
+        {showVietnameseGloss && (
+          <div style={{ marginTop: 4, fontSize: z(13), fontWeight: 700, color: "rgba(140,60,90,0.62)", letterSpacing: 0.2 }}>
+            Giáo viên Mercy
+          </div>
+        )}
 
         <div style={{ marginTop: 14, fontSize: isPhone ? z(14) : z(16), fontWeight: 700, color: "rgba(80,20,45,0.78)", lineHeight: 1.6, maxWidth: "min(340px, 100%)", margin: "14px auto 0" }}>
-          Mở AI Tutor để luyện câu với Mercy. Mercy sẽ nhớ tiến bộ học của bạn.
+          {t("Mở AI Tutor để luyện câu với Mercy. Mercy sẽ nhớ tiến bộ học của bạn.", "Open AI Tutor to practice with Mercy. Mercy remembers your progress.")}
         </div>
         {!isPhone && (
           <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(140,60,90,0.58)", lineHeight: 1.5 }}>
@@ -525,9 +543,9 @@ export default function Home() {
         )}
 
         <div style={{ marginTop: 18, display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", borderRadius: 9999, background: "rgba(180,60,100,0.10)", border: "1px solid rgba(180,60,100,0.18)", color: "rgba(120,30,60,0.90)", fontWeight: 900, fontSize: z(14) }}>
-          Mở AI Tutor →
+          {t("Mở AI Tutor →", "Open AI Tutor →")}
         </div>
-        {!access.isAuthenticated && (
+        {!access.isAuthenticated && showVietnameseGloss && (
           <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(140,60,90,0.58)", lineHeight: 1.5 }}>
             Vào AI Tutor mới để luyện câu với Mercy →
           </div>
@@ -555,11 +573,17 @@ export default function Home() {
               textAlign: "center",
             }}
           >
-            <span>Thử phát âm ngay — không cần đăng nhập</span>
-            <br />
-            <span style={{ fontWeight: 600, color: "rgba(8,75,90,0.65)" }}>
-              Try pronunciation now — no signup
-            </span>
+            {effectiveNative === "vi" ? (
+              <>
+                <span>Thử phát âm ngay — không cần đăng nhập</span>
+                <br />
+                <span style={{ fontWeight: 600, color: "rgba(8,75,90,0.65)" }}>
+                  Try pronunciation now — no signup
+                </span>
+              </>
+            ) : (
+              <span>Try pronunciation now — no signup needed</span>
+            )}
           </button>
         )}
       </div>
@@ -575,7 +599,7 @@ export default function Home() {
     <button
       type="button"
       onClick={handleTryOneWord}
-      aria-label="Try pronunciation — no signup needed · Thử phát âm — không cần đăng nhập"
+      aria-label={t("Thử phát âm — không cần đăng nhập", "Try pronunciation — no signup needed")}
       className="mb-a11y-card-button"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}
     >
@@ -613,7 +637,7 @@ export default function Home() {
           </div>
           {!isPhone && (
             <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(8,75,90,0.55)", marginTop: 2 }}>
-              Thử phát âm — không cần đăng nhập
+              {t("Thử phát âm — không cần đăng nhập", "Try pronunciation — no signup")}
             </div>
           )}
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
@@ -621,7 +645,7 @@ export default function Home() {
           </div>
           {!isPhone && (
             <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-              Nhận điểm phát âm từ MercyBlade chỉ trong 12 giây.
+              {showVietnameseGloss && "Nhận điểm phát âm từ MercyBlade chỉ trong 12 giây."}
             </div>
           )}
         </div>
@@ -635,7 +659,7 @@ export default function Home() {
 
   // ── Library secondary card ─────────────────────────────────────────────────
   const libraryCard = (
-    <button type="button" onClick={handleLibrary} aria-label="Open library · Mở thư viện"
+    <button type="button" onClick={handleLibrary} aria-label={t("Mở thư viện", "Open library")}
       className="mb-a11y-card-button"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}>
       <div style={{
@@ -651,9 +675,9 @@ export default function Home() {
 
         <div style={{ minWidth: 0, flex: 1 }}>
           <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(0,80,70,0.92)", letterSpacing: -0.3 }}>Library</div>
-          {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(0,100,85,0.52)", marginTop: 2 }}>Thư viện</div>}
+          {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(0,100,85,0.52)", marginTop: 2 }}>{t("Thư viện", "Library")}</div>}
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            {isPhone ? "Đọc. Nghe. Tiến bộ từng ngày." : "Đọc. Nghe. Suy ngẫm. Tiến bộ từng ngày."}
+            {isPhone ? t("Đọc. Nghe. Tiến bộ từng ngày.", "Read. Listen. Improve every day.") : t("Đọc. Nghe. Suy ngẫm. Tiến bộ từng ngày.", "Read. Listen. Reflect. Improve every day.")}
           </div>
           {!isPhone && (
             <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
@@ -676,7 +700,7 @@ export default function Home() {
   // shows the 30-item pack (no auth, no paywall). The premium-gated
   // timed-practice mode at /exam/toeic is unaffected.
   const toeicCard = (
-    <button type="button" onClick={() => nav("/exam-prep/toeic")} aria-label="Open TOEIC practice pack · Mở gói luyện TOEIC"
+    <button type="button" onClick={() => nav("/exam-prep/toeic")} aria-label={t("Mở gói luyện TOEIC", "Open TOEIC practice pack")}
       className="mb-a11y-card-button"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}>
       <div style={{
@@ -692,7 +716,7 @@ export default function Home() {
 
         <div style={{ minWidth: 0, flex: 1 }}>
           <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(55,48,163,0.94)", letterSpacing: -0.3 }}>
-            Luyện TOEIC
+            {t("Luyện TOEIC", "TOEIC Practice")}
           </div>
           {!isPhone && (
             <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(67,56,202,0.55)", marginTop: 2 }}>
@@ -700,11 +724,11 @@ export default function Home() {
             </div>
           )}
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            {isPhone ? "Luyện đúng định dạng, giải thích bằng tiếng Việt." : "Luyện đúng định dạng. Hiểu sâu nhờ giải thích tiếng Việt."}
+            {isPhone ? t("Luyện đúng định dạng, giải thích bằng tiếng Việt.", "Practice the official format with clear explanations.") : t("Luyện đúng định dạng. Hiểu sâu nhờ giải thích tiếng Việt.", "Practice the official format. Understand each answer clearly.")}
           </div>
           {!isPhone && (
             <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-              Official format, Vietnamese explanations — built for the score you need.
+              {t("Official format, Vietnamese explanations — built for the score you need.", "Official format, clear explanations — built for the score you need.")}
             </div>
           )}
         </div>
@@ -722,7 +746,7 @@ export default function Home() {
   // band + band-7/band-5 sample answers. Closes the IELTS revenue funnel
   // alongside Writing (PR #174), Listening, and Reading sections.
   const ieltsSpeakingCard = (
-    <button type="button" onClick={() => nav("/exam-prep/ielts/speaking")} aria-label="Open IELTS Speaking content pack · Mở gói IELTS Speaking"
+    <button type="button" onClick={() => nav("/exam-prep/ielts/speaking")} aria-label={t("Mở gói IELTS Speaking", "Open IELTS Speaking content pack")}
       className="mb-a11y-card-button"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}>
       <div style={{
@@ -746,11 +770,11 @@ export default function Home() {
             </div>
           )}
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            {isPhone ? "Biết band hiện tại, biết cách nâng lên." : "Biết band hiện tại. Biết chính xác cách nâng lên."}
+            {showVietnameseGloss ? (isPhone ? "Biết band hiện tại, biết cách nâng lên." : "Biết band hiện tại. Biết chính xác cách nâng lên.") : (isPhone ? "Know your current band and how to improve." : "Know your current band. Know exactly how to level up.")}
           </div>
           {!isPhone && (
             <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-              Chiến lược riêng cho người Việt, từ vựng theo band, bài mẫu band 5 + band 7.
+              {t("Chiến lược riêng cho người Việt, từ vựng theo band, bài mẫu band 5 + band 7.", "Band-based strategy, vocabulary, and Band 5 + Band 7 sample answers.")}
             </div>
           )}
         </div>
@@ -790,10 +814,10 @@ export default function Home() {
         </div>
 
         <div style={{ minWidth: 0, flex: 1 }}>
-          <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(7,89,133,0.92)", letterSpacing: -0.3 }}>Kiểm tra trình độ</div>
-          {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(7,89,133,0.55)", marginTop: 2 }}>Biết bắt đầu từ đâu</div>}
+          <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(7,89,133,0.92)", letterSpacing: -0.3 }}>{t("Kiểm tra trình độ", "Check Your Level")}</div>
+          {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(7,89,133,0.55)", marginTop: 2 }}>{t("Biết bắt đầu từ đâu", "Know where to start")}</div>}
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            {isPhone ? "Biết bắt đầu từ đâu — 6 phút." : "Biết chính xác trình độ thật của bạn. 6–9 phút."}
+            {showVietnameseGloss ? (isPhone ? "Biết bắt đầu từ đâu — 6 phút." : "Biết chính xác trình độ thật của bạn. 6–9 phút.") : (isPhone ? "Know where to start — 6 min." : "Know your real level. 6–9 min.")}
           </div>
           {!isPhone && (
             <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
@@ -819,7 +843,7 @@ export default function Home() {
     <button
       type="button"
       onClick={() => nav("/exam/vstep")}
-      aria-label="Open VSTEP Vietnamese national English exam prep · Mở luyện thi VSTEP"
+      aria-label={t("Mở luyện thi VSTEP", "Open VSTEP English exam prep")}
       className="mb-a11y-card-button"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}
     >
@@ -861,19 +885,19 @@ export default function Home() {
               letterSpacing: -0.3,
             }}
           >
-            Chinh phục B2 VSTEP
+            {t("Chinh phục B2 VSTEP", "B2 VSTEP Prep")}
           </div>
           {!isPhone && (
             <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(127,29,29,0.55)", marginTop: 2 }}>
-              VSTEP — Kỳ thi năng lực ngoại ngữ Việt Nam
+              {t("VSTEP — Kỳ thi năng lực ngoại ngữ Việt Nam", "VSTEP — Vietnamese national English exam")}
             </div>
           )}
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            {isPhone ? "Đúng định dạng Bộ. Đạt chuẩn đầu ra." : "Học đúng định dạng Bộ Giáo dục. Đạt chuẩn đầu ra."}
+            {isPhone ? t("Đúng định dạng Bộ. Đạt chuẩn đầu ra.", "Official format. Graduation-standard practice.") : t("Học đúng định dạng Bộ Giáo dục. Đạt chuẩn đầu ra.", "Practice the official Ministry format. Build toward the required outcome.")}
           </div>
           {!isPhone && (
             <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-              Speaking B1 + B2, 30 chủ đề, mẹo riêng cho người Việt.
+              {t("Speaking B1 + B2, 30 chủ đề, mẹo riêng cho người Việt.", "Speaking B1 + B2, 30 topics, with practical strategy.")}
             </div>
           )}
         </div>
@@ -892,7 +916,7 @@ export default function Home() {
     <button
       type="button"
       onClick={handleParentProgress}
-      aria-label="Phụ huynh — theo dõi tiến bộ của con"
+      aria-label={t("Phụ huynh — theo dõi tiến bộ của con", "Parent progress")}
       data-testid="parent-progress-home-card"
       className="mb-a11y-card-button"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}
@@ -935,19 +959,19 @@ export default function Home() {
               letterSpacing: -0.3,
             }}
           >
-            Góc phụ huynh
+            {t("Góc phụ huynh", "Parent corner")}
           </div>
           {!isPhone && (
             <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(15,118,110,0.58)", marginTop: 2 }}>
-              Theo dõi tiến bộ của con
+              {t("Theo dõi tiến bộ của con", "Track your child’s progress")}
             </div>
           )}
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            {isPhone ? "Xem con đang tiến bộ ở đâu, không tạo áp lực." : "Xem con đang tiến bộ ở đâu và cần luyện gì tiếp theo."}
+            {isPhone ? t("Xem con đang tiến bộ ở đâu, không tạo áp lực.", "See where your child is improving, without pressure.") : t("Xem con đang tiến bộ ở đâu và cần luyện gì tiếp theo.", "See where your child is improving and what to practice next.")}
           </div>
           {!isPhone && (
             <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-              Tóm tắt trung thực, dễ hiểu cho gia đình — không xếp hạng, không gây áp lực.
+              {t("Tóm tắt trung thực, dễ hiểu cho gia đình — không xếp hạng, không gây áp lực.", "An honest, easy family summary — no ranking, no pressure.")}
             </div>
           )}
         </div>
@@ -973,24 +997,18 @@ export default function Home() {
   // picker; parseLanguagePair stays the single owner of pair parsing.
   // Plain sync read (not a hook) — keeps Rules-of-Hooks ordering intact
   // ([[feedback_react_hooks_ordering]]).
-  const anonPair = onboardingProfile ? null : readAnonymousPair();
-  const pairSource =
-    onboardingProfile ??
-    (anonPair
-      ? {
-          native_language: anonPair.native,
-          target_languages: anonPair.targets,
-        }
-      : null);
   const {
-    nativeLanguage: pairNative,
     targets: pairTargets,
     primaryTarget: pairPrimary,
-  } = parseLanguagePair(pairSource);
+  } = parseLanguagePair(pairSourceEarly);
+  // Non-English targets use the focused track shell.
+  // Native-English routes stay on the real Home learning surface; Home copy
+  // is already native-aware via effectiveNative and falls back to English
+  // for non-Vietnamese learners.
   if (pairPrimary && pairPrimary !== "en") {
     return (
       <LanguageTrackHome
-        nativeLanguage={pairNative}
+        nativeLanguage={effectiveNative}
         targets={pairTargets}
         primaryTarget={pairPrimary}
       />
@@ -1036,7 +1054,7 @@ export default function Home() {
           </div>
           {!isPhone && (
             <div style={{ marginTop: 2, fontSize: z(12), fontWeight: 500, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-              Xem điểm phát âm của bạn trong 12 giây — không cần đăng nhập.
+              {t("Xem điểm phát âm của bạn trong 12 giây — không cần đăng nhập.", "See your pronunciation score in 12 seconds — no signup.")}
             </div>
           )}
         </section>
@@ -1068,7 +1086,7 @@ export default function Home() {
             <button
               type="button"
               onClick={handleTryOneWord}
-              aria-label="Try pronunciation — no signup · Thử phát âm — không cần đăng nhập"
+              aria-label={t("Thử phát âm — không cần đăng nhập", "Try pronunciation — no signup")}
               className="mb-a11y-card-button"
               style={{
                 width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer",
@@ -1082,7 +1100,7 @@ export default function Home() {
               }}>
                 <Mic size={16} style={{ color: "rgba(14,116,144,0.60)", flexShrink: 0 }} />
                 <span style={{ fontSize: z(13), fontWeight: 700, color: "rgba(8,75,90,0.78)", flex: 1, textAlign: "left" }}>
-                  Thử phát âm ngay — không cần đăng nhập
+                  {t("Thử phát âm ngay — không cần đăng nhập", "Try pronunciation now — no signup")}
                 </span>
                 <ChevronRight size={14} style={{ color: "rgba(14,116,144,0.45)", flexShrink: 0 }} />
               </div>
@@ -1119,62 +1137,68 @@ export default function Home() {
           {/* ── Intent group: "Prepare for exams" ─────────────────────
               Goal-oriented learners scan for their exam. Grouped so the
               eye can skip the whole block if not exam-prepping. */}
-          {isPhone && (
+          {isPhone && showVietnameseGloss && (
             <div style={{
               marginTop: 12, paddingTop: 10,
               borderTop: "1px solid rgba(0,0,0,0.06)",
               fontSize: z(10), fontWeight: 700, letterSpacing: 1.2,
               textTransform: "uppercase", color: "rgba(0,0,0,0.32)",
             }}>
-              Luyện thi
+              {t("Luyện thi", "Exam prep")}
             </div>
           )}
-          <ProgressiveDisclosureCard
-            cardId="ielts"
-            title="IELTS Speaking"
-            shortLine="Band 5 → Band 7"
-            accentColor="#10B981"
-            iconBg="rgba(236,253,245,0.96)"
-            iconEl={<GraduationCap size={isPhone ? 20 : 24} color="white" />}
-            onStart={() => nav("/exam-prep/ielts/speaking")}
-            startLabel="Open IELTS Speaking →"
-          >
-            {ieltsSpeakingCard}
-          </ProgressiveDisclosureCard>
-          <ProgressiveDisclosureCard
-            cardId="toeic"
-            title="Luyện TOEIC"
-            shortLine="TOEIC 450 → 750+"
-            accentColor="#6366F1"
-            iconBg="rgba(238,242,255,0.96)"
-            iconEl={<GraduationCap size={isPhone ? 20 : 24} color="white" />}
-            onStart={() => nav("/exam-prep/toeic")}
-            startLabel="Open TOEIC practice →"
-          >
-            {toeicCard}
-          </ProgressiveDisclosureCard>
-          <ProgressiveDisclosureCard
-            cardId="vstep"
-            title="Chinh phục B2 VSTEP"
-            shortLine="Đúng định dạng Bộ. Đạt chuẩn đầu ra."
-            accentColor="#B91C1C"
-            iconBg="rgba(254,242,242,0.96)"
-            iconEl={<GraduationCap size={isPhone ? 20 : 24} color="white" />}
-            onStart={() => nav("/exam/vstep")}
-            startLabel="Open VSTEP prep →"
-          >
-            {vstepCard}
-          </ProgressiveDisclosureCard>
+          {showVietnameseGloss && (
+            <ProgressiveDisclosureCard
+              cardId="ielts"
+              title="IELTS Speaking"
+              shortLine="Band 5 → Band 7"
+              accentColor="#10B981"
+              iconBg="rgba(236,253,245,0.96)"
+              iconEl={<GraduationCap size={isPhone ? 20 : 24} color="white" />}
+              onStart={() => nav("/exam-prep/ielts/speaking")}
+              startLabel="Open IELTS Speaking →"
+            >
+              {ieltsSpeakingCard}
+            </ProgressiveDisclosureCard>
+          )}
+          {showVietnameseGloss && (
+            <ProgressiveDisclosureCard
+              cardId="toeic"
+              title={t("Luyện TOEIC", "TOEIC Practice")}
+              shortLine="TOEIC 450 → 750+"
+              accentColor="#6366F1"
+              iconBg="rgba(238,242,255,0.96)"
+              iconEl={<GraduationCap size={isPhone ? 20 : 24} color="white" />}
+              onStart={() => nav("/exam-prep/toeic")}
+              startLabel="Open TOEIC practice →"
+            >
+              {toeicCard}
+            </ProgressiveDisclosureCard>
+          )}
+          {showVietnameseGloss && (
+            <ProgressiveDisclosureCard
+              cardId="vstep"
+              title={t("Chinh phục B2 VSTEP", "B2 VSTEP Prep")}
+              shortLine={t("Đúng định dạng Bộ. Đạt chuẩn đầu ra.", "Official format. Graduation-standard practice.")}
+              accentColor="#B91C1C"
+              iconBg="rgba(254,242,242,0.96)"
+              iconEl={<GraduationCap size={isPhone ? 20 : 24} color="white" />}
+              onStart={() => nav("/exam/vstep")}
+              startLabel="Open VSTEP prep →"
+            >
+              {vstepCard}
+            </ProgressiveDisclosureCard>
+          )}
           {user && (
             <ProgressiveDisclosureCard
               cardId="parent-progress"
-              title="Góc phụ huynh"
-              shortLine="Theo dõi tiến bộ của con"
+              title={t("Góc phụ huynh", "Parent corner")}
+              shortLine={t("Theo dõi tiến bộ của con", "Track your child’s progress")}
               accentColor="#B45309"
               iconBg="rgba(255,247,237,0.96)"
               iconEl={<UsersRound size={isPhone ? 20 : 24} color="white" />}
               onStart={handleParentProgress}
-              startLabel="Mở góc phụ huynh →"
+              startLabel={t("Mở góc phụ huynh →", "Open parent corner →")}
             >
               {parentProgressCard}
             </ProgressiveDisclosureCard>
@@ -1190,13 +1214,13 @@ export default function Home() {
               fontSize: z(10), fontWeight: 700, letterSpacing: 1.2,
               textTransform: "uppercase", color: "rgba(0,0,0,0.32)",
             }}>
-              Khám phá
+              {t("Khám phá", "Explore")}
             </div>
           )}
           <ProgressiveDisclosureCard
             cardId="library"
             title="Library"
-            shortLine="Đọc. Nghe. Tiến bộ từng ngày."
+            shortLine={t("Đọc. Nghe. Tiến bộ từng ngày.", "Read. Listen. Improve every day.")}
             accentColor="#14B8A6"
             iconBg="rgba(236,255,252,0.96)"
             iconEl={<LibraryBig size={isPhone ? 20 : 24} color="white" />}
@@ -1214,13 +1238,13 @@ export default function Home() {
             type="button"
             data-testid="home-weak-at-link"
             onClick={() => nav("/weak-at")}
-            aria-label="Xem điểm bạn cần luyện · See what you are working on"
+            aria-label={t("Xem điểm bạn cần luyện", "See what you are working on")}
             className="mb-a11y-card-button w-full rounded-[20px] border border-slate-200 bg-white px-5 py-4 text-left shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition hover:border-slate-300"
           >
             <div className="flex items-center justify-between gap-3">
               <div className="min-w-0">
                 <p className="text-sm font-semibold text-slate-900">
-                  Xem điểm bạn cần luyện
+                  {t("Xem điểm bạn cần luyện", "See what you need to practice")}
                 </p>
                 <p className="mt-0.5 text-xs text-slate-500">
                   See what you're working on
@@ -1232,47 +1256,6 @@ export default function Home() {
 
           {/* Weekly leaderboard — retention card (feature-flagged). */}
           {leaderboardEnabled && Boolean(user) && <LeaderboardCard />}
-
-          {/* The default home renders only the learner's chosen pair
-              (VI→EN here). The other built tracks are NOT un-surfaced
-              (STRATEGY §4 / the #582 v3.0 reversal) — they stay
-              discoverable via this explicit affordance and the
-              /languages index. Diagnosis: /languages had ZERO inbound
-              links before this; this affordance is now the discovery
-              entry point that the old all-tracks grid implicitly was. */}
-          <button
-            type="button"
-            onClick={() => nav("/languages")}
-            aria-label="Khám phá ngôn ngữ khác · Explore other languages"
-            className="mb-a11y-card-button"
-            style={{
-              marginTop: 4,
-              width: "100%",
-              padding: "14px 16px",
-              borderRadius: 16,
-              border: "1px solid rgba(0,0,0,0.08)",
-              background: "white",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-              cursor: "pointer",
-              textAlign: "left",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: 12,
-            }}
-          >
-            <span style={{ minWidth: 0 }}>
-              <span style={{ display: "block", fontSize: 15, fontWeight: 800, color: "rgba(0,0,0,0.86)" }}>
-                Khám phá ngôn ngữ khác
-              </span>
-              <span style={{ display: "block", marginTop: 2, fontSize: 12, fontWeight: 600, color: "rgba(0,0,0,0.45)" }}>
-                Hàn · Nhật · Trung · Pháp · Đức · Tây Ban Nha…
-              </span>
-            </span>
-            <span aria-hidden style={{ fontSize: 20, fontWeight: 800, color: "rgba(0,0,0,0.4)" }}>
-              →
-            </span>
-          </button>
         </section>
 
         {/* Floating bubbles */}
