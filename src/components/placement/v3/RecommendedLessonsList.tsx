@@ -1,6 +1,23 @@
 import type { PlacementV3Recommendation } from "@/lib/placement/v3/types";
 import { Button } from "@/components/ui/button";
 import BilingualLabel from "./BilingualLabel";
+import { usePlacementT } from "@/components/placement/nativeCopy";
+import type { PlacementNativeSlots } from "@/components/placement/nativeCopy";
+
+const COPY_START_THIS_LESSON: PlacementNativeSlots = {
+  en: "Start this lesson",
+  vi: "Bắt đầu bài này",
+  ja: "このレッスンを開始",
+  id: "Mulai pelajaran ini",
+  th: "เริ่มบทเรียนนี้",
+  ar: "ابدأ هذا الدرس",
+  hi: "यह पाठ शुरू करें",
+  ur: "یہ سبق شروع کریں",
+  ko: "이 레슨 시작",
+  zh: "开始此课程",
+  pt: "Iniciar esta aula",
+  tr: "Bu dersi başlat",
+};
 
 type Props = {
   recommendations: PlacementV3Recommendation[];
@@ -8,6 +25,7 @@ type Props = {
 };
 
 export function RecommendedLessonsList({ recommendations, onStartLesson }: Props) {
+  const t = usePlacementT();
   return (
     <section className="rounded-[18px] border border-emerald-200 bg-white p-5 shadow-[0_10px_30px_rgba(16,185,129,0.08)]">
       <BilingualLabel
@@ -51,7 +69,7 @@ export function RecommendedLessonsList({ recommendations, onStartLesson }: Props
                 onClick={() => onStartLesson(lesson.roomId)}
                 className="mt-4 w-full rounded-full"
               >
-                Start this lesson · Bắt đầu bài này
+                {t(COPY_START_THIS_LESSON)}
               </Button>
             ) : null}
           </article>

@@ -3,6 +3,7 @@ import type { PlacementV3Task } from "@/lib/placement/v3/types";
 import { Input } from "@/components/ui/input";
 import BilingualLabel from "./BilingualLabel";
 import GenericTaskCard from "./GenericTaskCard";
+import { useChromeLanguage } from "@/lib/i18n/chromeLanguage";
 
 type Props = {
   task: PlacementV3Task;
@@ -11,6 +12,8 @@ type Props = {
 };
 
 export function ListeningTaskCard({ task, value, onChange }: Props) {
+  const showVi = useChromeLanguage() === "vi";
+
   return (
     <GenericTaskCard instruction={task.instruction} prompt={task.prompt}>
       <div className="mb-5 rounded-[16px] border border-slate-200 bg-slate-50 p-4">
@@ -27,7 +30,9 @@ export function ListeningTaskCard({ task, value, onChange }: Props) {
         <audio controls className="w-full" src={task.audioUrl} aria-label="Listening prompt audio" />
         <p className="mt-2 text-xs font-medium text-slate-500">
           Stub audio may be unavailable locally; the production orchestrator will provide a signed audio URL.
-          <span className="block">Audio mẫu có thể chưa chạy ở máy local; backend thật sẽ trả URL nghe.</span>
+          {showVi && (
+            <span className="block">Audio mẫu có thể chưa chạy ở máy local; backend thật sẽ trả URL nghe.</span>
+          )}
         </p>
       </div>
 
@@ -41,7 +46,7 @@ export function ListeningTaskCard({ task, value, onChange }: Props) {
                 type="button"
                 role="radio"
                 aria-checked={selected}
-                aria-label={`Option ${option.id}: ${option.label.en}. ${option.label.vi}${selected ? ". Selected." : ""}`}
+                aria-label={showVi ? `Option ${option.id}: ${option.label.en}. ${option.label.vi}${selected ? ". Selected." : ""}` : `Option ${option.id}: ${option.label.en}${selected ? ". Selected." : ""}`}
                 onClick={() => onChange(option.id)}
                 className={`flex min-h-[64px] items-center gap-3 rounded-[14px] border p-4 text-left transition ${
                   selected
@@ -66,7 +71,7 @@ export function ListeningTaskCard({ task, value, onChange }: Props) {
           value={value}
           onChange={(event) => onChange(event.target.value)}
           className="h-12 rounded-[14px]"
-          placeholder="Short answer... / Câu trả lời ngắn..."
+          placeholder={showVi ? "Short answer... / Câu trả lời ngắn..." : "Short answer..."}
         />
       )}
     </GenericTaskCard>

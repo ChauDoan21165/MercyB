@@ -20,6 +20,9 @@ import {
   usePlacementProgress,
   usePlacementSubmit,
 } from "@/hooks/placement/v3";
+import { useChromeT, useChromeLanguage } from "@/lib/i18n/chromeLanguage";
+import { usePlacementT } from "@/components/placement/nativeCopy";
+import type { PlacementNativeSlots } from "@/components/placement/nativeCopy";
 
 function minAnswerLength(task: PlacementV3Task) {
   if (task.type === "writing") return 40;
@@ -31,6 +34,9 @@ function minAnswerLength(task: PlacementV3Task) {
 export default function TestPage() {
   const { sessionId = "" } = useParams();
   const navigate = useNavigate();
+  const t = useChromeT();
+  const pt = usePlacementT();
+  const showVi = useChromeLanguage() === "vi";
   const [session, setSession] = useState<PlacementV3Session | null>(null);
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(true);
@@ -148,9 +154,35 @@ export default function TestPage() {
             variant="ghost"
             className="rounded-full text-slate-500"
             onClick={() => setAbandonOpen(true)}
-            aria-label="Leave placement test · Rời bài kiểm tra trình độ"
+            aria-label={pt({
+              en: "Leave placement test",
+              vi: "Rời bài kiểm tra trình độ",
+              ja: "プレイスメントテストを終了",
+              id: "Tinggalkan tes penempatan",
+              th: "ออกจากการทดสอบวัดระดับ",
+              ar: "مغادرة اختبار تحديد المستوى",
+              hi: "प्लेसमेंट परीक्षण छोड़ें",
+              ur: "پلیسمنٹ ٹیسٹ چھوڑیں",
+              ko: "레벨 테스트 나가기",
+              zh: "离开分班测试",
+              pt: "Sair do teste de nivelamento",
+              tr: "Seviye belirleme testinden ayrıl",
+            })}
           >
-            Leave test · Rời bài
+            {pt({
+              en: "Leave test",
+              vi: "Rời bài",
+              ja: "テストを終了",
+              id: "Tinggalkan tes",
+              th: "ออกจากแบบทดสอบ",
+              ar: "مغادرة الاختبار",
+              hi: "परीक्षण छोड़ें",
+              ur: "ٹیسٹ چھوڑیں",
+              ko: "테스트 나가기",
+              zh: "离开测试",
+              pt: "Sair do teste",
+              tr: "Testten ayrıl",
+            })}
           </Button>
         </div>
 
@@ -189,10 +221,20 @@ export default function TestPage() {
             <div>
               <div className="font-black">{submitter.error ?? audio.error}</div>
               <div className="mt-1 text-xs font-medium text-rose-700">
-                Please try again, or use the typed-answer fallback for speaking.
-                <span className="block">
-                  Hãy thử lại, hoặc dùng phần gõ câu trả lời cho bài nói.
-                </span>
+                {pt({
+                  en: "Please try again, or use the typed-answer fallback for speaking.",
+                  vi: "Hãy thử lại, hoặc dùng phần gõ câu trả lời cho bài nói.",
+                  ja: "もう一度試すか、代わりに回答を入力してください。",
+                  id: "Silakan coba lagi, atau gunakan jawaban ketik sebagai alternatif.",
+                  th: "โปรดลองอีกครั้ง หรือใช้การพิมพ์คำตอบแทน",
+                  ar: "يرجى المحاولة مرة أخرى، أو استخدم كتابة الإجابة كبديل.",
+                  hi: "कृपया पुनः प्रयास करें, या टाइप किए गए उत्तर का उपयोग करें।",
+                  ur: "براہ کرم دوبارہ کوشش کریں، یا ٹائپ کردہ جواب استعمال کریں۔",
+                  ko: "다시 시도하거나 답변 입력을 대신 사용해 주세요.",
+                  zh: "请重试，或改用键盘输入答案。",
+                  pt: "Tente novamente ou use a digitação como alternativa.",
+                  tr: "Lütfen tekrar deneyin veya yazılı cevap alternatifini kullanın.",
+                })}
               </div>
               {submitter.error && submitter.canRetry ? (
                 <Button
@@ -202,7 +244,20 @@ export default function TestPage() {
                   onClick={handleRetry}
                   className="mt-3 rounded-full bg-white"
                 >
-                  Retry submit · Gửi lại
+                  {pt({
+                    en: "Retry submit",
+                    vi: "Gửi lại",
+                    ja: "再送信",
+                    id: "Kirim ulang",
+                    th: "ส่งอีกครั้ง",
+                    ar: "إعادة الإرسال",
+                    hi: "पुनः सबमिट करें",
+                    ur: "دوبارہ جمع کریں",
+                    ko: "다시 제출",
+                    zh: "重新提交",
+                    pt: "Reenviar",
+                    tr: "Yeniden gönder",
+                  })}
                 </Button>
               ) : null}
             </div>
@@ -215,11 +270,18 @@ export default function TestPage() {
           type="button"
           disabled={!canSubmit || submitter.submitting}
           onClick={handleSubmit}
-          aria-label={submitter.submitting ? "Submitting answer · Đang gửi câu trả lời" : "Submit answer · Gửi câu trả lời"}
+          aria-label={
+            submitter.submitting
+              ? pt({ en: "Submitting answer", vi: "Đang gửi câu trả lời", ja: "回答を送信中", id: "Mengirim jawaban", th: "กำลังส่งคำตอบ", ar: "جارٍ إرسال الإجابة", hi: "उत्तर सबमिट हो रहा है", ur: "جمع کر رہا ہے", ko: "답변 제출 중", zh: "正在提交答案", pt: "Enviando resposta", tr: "Cevap gönderiliyor" })
+              : pt({ en: "Submit answer", vi: "Gửi câu trả lời", ja: "回答を送信", id: "Kirim jawaban", th: "ส่งคำตอบ", ar: "إرسال الإجابة", hi: "उत्तर सबमिट करें", ur: "جواب جمع کریں", ko: "답변 제출", zh: "提交答案", pt: "Enviar resposta", tr: "Cevabı gönder" })
+          }
           className="mx-auto flex min-h-12 w-full max-w-[620px] rounded-full text-base font-black"
         >
           {submitter.submitting ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : null}
-          Submit answer · Gửi câu trả lời
+          {submitter.submitting
+            ? pt({ en: "Submitting answer", vi: "Đang gửi câu trả lời", ja: "回答を送信中", id: "Mengirim jawaban", th: "กำลังส่งคำตอบ", ar: "جارٍ إرسال الإجابة", hi: "उत्तर सबमिट हो रहा है", ur: "جمع کر رہا ہے", ko: "답변 제출 중", zh: "正在提交答案", pt: "Enviando resposta", tr: "Cevap gönderiliyor" })
+            : pt({ en: "Submit answer", vi: "Gửi câu trả lời", ja: "回答を送信", id: "Kirim jawaban", th: "ส่งคำตอบ", ar: "إرسال الإجابة", hi: "उत्तर सबमिट करें", ur: "جواب جمع کریں", ko: "답변 제출", zh: "提交答案", pt: "Enviar resposta", tr: "Cevabı gönder" })
+          }
         </Button>
       </div>
 

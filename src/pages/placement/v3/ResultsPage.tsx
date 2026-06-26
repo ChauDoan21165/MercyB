@@ -11,9 +11,72 @@ import {
 } from "@/components/placement/v3";
 import { getResults } from "@/lib/placement/v3/clientStub";
 import { recordPlacementSnapshot } from "@/lib/stage-3a/adapters/placementSnapshotAdapter";
+import { useChromeT, useChromeLanguage } from "@/lib/i18n/chromeLanguage";
+import { usePlacementT } from "@/components/placement/nativeCopy";
+import type { PlacementNativeSlots } from "@/components/placement/nativeCopy";
 import type { PlacementV3Recommendation, PlacementV3Results } from "@/lib/placement/v3/types";
 
 const ACTIVE_LESSON_KEY = "mb.placement.v3.activeLesson";
+
+const LOADING_LABEL: PlacementNativeSlots = {
+  en: "Loading your results",
+  vi: "Đang tải kết quả của bạn",
+  ja: "結果を読み込み中",
+  id: "Memuat hasil Anda",
+  th: "กำลังโหลดผลลัพธ์ของคุณ",
+  ar: "جارٍ تحميل نتائجك",
+  hi: "आपके परिणाम लोड हो रहे हैं",
+  ur: "آپ کے نتائج لوڈ ہو رہے ہیں",
+  ko: "결과를 불러오는 중",
+  zh: "正在加载您的成绩",
+  pt: "Carregando seus resultados",
+  tr: "Sonuçlarınız yükleniyor",
+};
+
+const RESUME_LESSON_LABEL: PlacementNativeSlots = {
+  en: "Resume lesson",
+  vi: "Học tiếp",
+  ja: "レッスンを再開",
+  id: "Lanjutkan pelajaran",
+  th: "เรียนต่อ",
+  ar: "استئناف الدرس",
+  hi: "पाठ जारी रखें",
+  ur: "سبق جاری رکھیں",
+  ko: "레슨 재개",
+  zh: "继续课程",
+  pt: "Continuar aula",
+  tr: "Derse devam et",
+};
+
+const SEE_OTHER_LESSONS_LABEL: PlacementNativeSlots = {
+  en: "See other lessons",
+  vi: "Xem bài khác",
+  ja: "他のレッスンを見る",
+  id: "Lihat pelajaran lain",
+  th: "ดูบทเรียนอื่นๆ",
+  ar: "مشاهدة دروس أخرى",
+  hi: "अन्य पाठ देखें",
+  ur: "دوسرے اسباق دیکھیں",
+  ko: "다른 레슨 보기",
+  zh: "查看其他课程",
+  pt: "Ver outras aulas",
+  tr: "Diğer dersleri gör",
+};
+
+const RETAKE_TEST_LABEL: PlacementNativeSlots = {
+  en: "Retake test",
+  vi: "Làm lại",
+  ja: "テストを再受験",
+  id: "Ulang tes",
+  th: "ทำแบบทดสอบอีกครั้ง",
+  ar: "إعادة الاختبار",
+  hi: "परीक्षण फिर से लें",
+  ur: "دوبارہ ٹیسٹ دیں",
+  ko: "테스트 다시 보기",
+  zh: "重新测试",
+  pt: "Refazer teste",
+  tr: "Testi tekrarla",
+};
 
 type ActiveLessonMarker = {
   sessionId: string;
@@ -25,6 +88,9 @@ type ActiveLessonMarker = {
 export default function ResultsPage() {
   const { sessionId = "" } = useParams();
   const navigate = useNavigate();
+  const t = useChromeT();
+  const pt = usePlacementT();
+  const showVi = useChromeLanguage() === "vi";
   const [results, setResults] = useState<PlacementV3Results | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeLesson, setActiveLesson] = useState<ActiveLessonMarker | null>(null);
@@ -72,7 +138,7 @@ export default function ResultsPage() {
   if (loading || !results) {
     return (
       <main id="main-content" tabIndex={-1} className="px-4 py-8">
-        <LoadingPlaceholder label={{ en: "Loading your results", vi: "Đang tải kết quả của bạn" }} />
+        <LoadingPlaceholder label={{ en: LOADING_LABEL.en ?? "Loading your results", vi: LOADING_LABEL.vi ?? "" }} />
       </main>
     );
   }
@@ -125,7 +191,7 @@ export default function ResultsPage() {
                 className="mt-4 w-full rounded-full"
                 onClick={() => routeToRoom(activeLesson.roomId)}
               >
-                Resume lesson · Học tiếp
+                {pt(RESUME_LESSON_LABEL)}
               </Button>
             </section>
           ) : null}
@@ -135,17 +201,19 @@ export default function ResultsPage() {
           />
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
             <Button type="button" variant="outline" className="rounded-full" onClick={() => navigate("/rooms")}>
-              See other lessons · Xem bài khác
+              {pt(SEE_OTHER_LESSONS_LABEL)}
             </Button>
             <Button type="button" variant="outline" className="rounded-full" onClick={() => navigate("/placement/who")}>
-              Retake test · Làm lại
+              {pt(RETAKE_TEST_LABEL)}
             </Button>
           </div>
           <div className="text-center text-xs font-medium text-slate-500">
             {results.questionCount} tasks · {new Date(results.completedAt).toLocaleDateString("en-CA")}
-            <span className="block">
-              {results.questionCount} mục · {new Date(results.completedAt).toLocaleDateString("vi-VN")}
-            </span>
+            {showVi && (
+              <span className="block">
+                {results.questionCount} mục · {new Date(results.completedAt).toLocaleDateString("vi-VN")}
+              </span>
+            )}
           </div>
         </div>
       </div>

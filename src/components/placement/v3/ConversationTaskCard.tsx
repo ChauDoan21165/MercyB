@@ -2,6 +2,7 @@ import type { PlacementV3Task } from "@/lib/placement/v3/types";
 import { Textarea } from "@/components/ui/textarea";
 import BilingualLabel from "./BilingualLabel";
 import GenericTaskCard from "./GenericTaskCard";
+import { useChromeLanguage } from "@/lib/i18n/chromeLanguage";
 
 type Props = {
   task: PlacementV3Task;
@@ -10,6 +11,8 @@ type Props = {
 };
 
 export function ConversationTaskCard({ task, value, onChange }: Props) {
+  const showVi = useChromeLanguage() === "vi";
+
   return (
     <GenericTaskCard instruction={task.instruction} prompt={task.prompt}>
       {task.mercyTurn ? (
@@ -32,7 +35,7 @@ export function ConversationTaskCard({ task, value, onChange }: Props) {
         value={value}
         onChange={(event) => onChange(event.target.value)}
         className="min-h-[150px] rounded-[14px] border-slate-200 text-base leading-relaxed"
-        placeholder="Reply to Mercy... / Trả lời Mercy..."
+        placeholder={showVi ? "Reply to Mercy... / Trả lời Mercy..." : "Reply to Mercy..."}
       />
     </GenericTaskCard>
   );

@@ -3,9 +3,59 @@ import { Baby, UserRound } from "lucide-react";
 import { BackButton, BilingualLabel } from "@/components/placement/v3";
 import { usePlacementSessionV3 } from "@/hooks/placement/v3";
 import { useAuth } from "@/providers/AuthProvider";
+import { useChromeT } from "@/lib/i18n/chromeLanguage";
+import { usePlacementT } from "@/components/placement/nativeCopy";
+import type { PlacementNativeSlots } from "@/components/placement/nativeCopy";
+
+const ADULT_LABEL_AUTHED: PlacementNativeSlots = {
+  en: "Me — an adult learner",
+  vi: "Mình — người lớn đang học",
+  ja: "自分 — 大人の学習者",
+  id: "Saya — pembelajar dewasa",
+  th: "ฉัน — ผู้เรียนที่เป็นผู้ใหญ่",
+  ar: "أنا — متعلم بالغ",
+  hi: "मैं — एक वयस्क शिक्षार्थी",
+  ur: "میں — ایک بالغ سیکھنے والا",
+  ko: "저 — 성인 학습자",
+  zh: "我 — 成年学习者",
+  pt: "Eu — um aluno adulto",
+  tr: "Ben — yetişkin bir öğrenci",
+};
+
+const ADULT_LABEL_UNAUTHED: PlacementNativeSlots = {
+  en: "Sign in to take the test",
+  vi: "Đăng nhập để làm bài test",
+  ja: "テストを受けるにはサインイン",
+  id: "Masuk untuk mengikuti tes",
+  th: "ลงชื่อเข้าใช้เพื่อทำแบบทดสอบ",
+  ar: "سجل الدخول لإجراء الاختبار",
+  hi: "परीक्षण देने के लिए साइन इन करें",
+  ur: "ٹیسٹ دینے کے لیے سائن ان کریں",
+  ko: "테스트를 보려면 로그인",
+  zh: "登录以参加测试",
+  pt: "Faça login para fazer o teste",
+  tr: "Teste girmek için oturum açın",
+};
+
+const CHILD_LABEL: PlacementNativeSlots = {
+  en: "My child (ages 4-10)",
+  vi: "Con của mình (4-10 tuổi)",
+  ja: "子ども（4〜10歳）",
+  id: "Anak saya (usia 4-10)",
+  th: "ลูกของฉัน (อายุ 4-10 ปี)",
+  ar: "طفلي (من 4 إلى 10 سنوات)",
+  hi: "मेरा बच्चा (4-10 वर्ष)",
+  ur: "میرا بچہ (4-10 سال)",
+  ko: "내 아이 (4-10세)",
+  zh: "我的孩子（4-10岁）",
+  pt: "Meu filho (4-10 anos)",
+  tr: "Çocuğum (4-10 yaş)",
+};
 
 export default function WhoForPage() {
   const navigate = useNavigate();
+  const t = useChromeT();
+  const pt = usePlacementT();
   const { user } = useAuth();
   const { loading, error, start } = usePlacementSessionV3(false);
 
@@ -34,7 +84,7 @@ export default function WhoForPage() {
           type="button"
           onClick={startAdult}
           disabled={loading}
-          aria-label={user ? "Me, an adult learner · Mình — người lớn đang học" : "Sign in to take the test · Đăng nhập để làm bài test"}
+          aria-label={user ? pt(ADULT_LABEL_AUTHED) : pt(ADULT_LABEL_UNAUTHED)}
           className="min-h-[150px] rounded-[18px] border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:border-emerald-300 hover:bg-emerald-50 disabled:cursor-wait disabled:opacity-60"
         >
           <UserRound className="h-8 w-8 text-emerald-700" aria-hidden />
@@ -62,7 +112,7 @@ export default function WhoForPage() {
         <button
           type="button"
           onClick={() => navigate("/room/alphabet_adventure_kids_l1")}
-          aria-label="My child, ages 4 to 10 · Con của mình, 4 đến 10 tuổi"
+          aria-label={pt(CHILD_LABEL)}
           className="min-h-[150px] rounded-[18px] border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:border-amber-300 hover:bg-amber-50"
         >
           <Baby className="h-8 w-8 text-amber-700" aria-hidden />

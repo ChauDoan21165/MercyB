@@ -1,4 +1,7 @@
 import type { PlacementV3Modality } from "@/lib/placement/v3/types";
+import { useChromeLanguage } from "@/lib/i18n/chromeLanguage";
+import { usePlacementT } from "@/components/placement/nativeCopy";
+import type { PlacementNativeSlots } from "@/components/placement/nativeCopy";
 
 type Props = {
   current: number;
@@ -7,15 +10,97 @@ type Props = {
   modalities: PlacementV3Modality[];
 };
 
-const labels: Record<PlacementV3Modality, { en: string; vi: string }> = {
-  writing: { en: "Writing", vi: "Viết" },
-  speaking: { en: "Speaking", vi: "Nói" },
-  reading: { en: "Reading", vi: "Đọc" },
-  listening: { en: "Listening", vi: "Nghe" },
-  conversation: { en: "Conversation", vi: "Hội thoại" },
+const MODALITY_LABELS: Record<PlacementV3Modality, PlacementNativeSlots> = {
+  writing: {
+    en: "Writing",
+    vi: "Viết",
+    ja: "ライティング",
+    id: "Menulis",
+    th: "การเขียน",
+    ar: "الكتابة",
+    hi: "लेखन",
+    ur: "لکھنا",
+    ko: "쓰기",
+    zh: "写作",
+    pt: "Escrita",
+    tr: "Yazma",
+  },
+  speaking: {
+    en: "Speaking",
+    vi: "Nói",
+    ja: "スピーキング",
+    id: "Berbicara",
+    th: "การพูด",
+    ar: "التحدث",
+    hi: "बोलना",
+    ur: "بولنا",
+    ko: "말하기",
+    zh: "口语",
+    pt: "Fala",
+    tr: "Konuşma",
+  },
+  reading: {
+    en: "Reading",
+    vi: "Đọc",
+    ja: "リーディング",
+    id: "Membaca",
+    th: "การอ่าน",
+    ar: "القراءة",
+    hi: "पढ़ना",
+    ur: "پڑھنا",
+    ko: "읽기",
+    zh: "阅读",
+    pt: "Leitura",
+    tr: "Okuma",
+  },
+  listening: {
+    en: "Listening",
+    vi: "Nghe",
+    ja: "リスニング",
+    id: "Mendengarkan",
+    th: "การฟัง",
+    ar: "الاستماع",
+    hi: "सुनना",
+    ur: "سننا",
+    ko: "듣기",
+    zh: "听力",
+    pt: "Compreensão auditiva",
+    tr: "Dinleme",
+  },
+  conversation: {
+    en: "Conversation",
+    vi: "Hội thoại",
+    ja: "会話",
+    id: "Percakapan",
+    th: "การสนทนา",
+    ar: "المحادثة",
+    hi: "बातचीत",
+    ur: "گفتگو",
+    ko: "회화",
+    zh: "对话",
+    pt: "Conversação",
+    tr: "Sohbet",
+  },
+};
+
+const TASK_LABELS: PlacementNativeSlots = {
+  en: "Task",
+  vi: "Mục",
+  ja: "タスク",
+  id: "Tugas",
+  th: "ภารกิจ",
+  ar: "مهمة",
+  hi: "कार्य",
+  ur: "کام",
+  ko: "과제",
+  zh: "题目",
+  pt: "Tarefa",
+  tr: "Görev",
 };
 
 export function ProgressStrip({ current, total, modality, modalities }: Props) {
+  const showVi = useChromeLanguage() === "vi";
+  const pt = usePlacementT();
   const safeTotal = Math.max(1, total);
   const pct = Math.min(100, Math.max(0, (current / safeTotal) * 100));
 
@@ -40,16 +125,20 @@ export function ProgressStrip({ current, total, modality, modalities }: Props) {
         </div>
         <div className="mt-2 flex items-center justify-between gap-3 text-[11px] font-black uppercase tracking-[0.06em] text-slate-600">
           <span>
-            Task {Math.min(current + 1, total)} of {total}
-            <span className="block font-medium normal-case tracking-normal text-slate-500">
-              Mục {Math.min(current + 1, total)} / {total}
-            </span>
+            {pt(TASK_LABELS)} {Math.min(current + 1, total)} of {total}
+            {showVi && (
+              <span className="block font-medium normal-case tracking-normal text-slate-500">
+                Mục {Math.min(current + 1, total)} / {total}
+              </span>
+            )}
           </span>
           <span aria-live="polite" className="text-right">
-            {labels[modality].en}
-            <span className="block font-medium normal-case tracking-normal text-slate-500">
-              {labels[modality].vi}
-            </span>
+            {pt(MODALITY_LABELS[modality])}
+            {showVi && (
+              <span className="block font-medium normal-case tracking-normal text-slate-500">
+                {MODALITY_LABELS[modality].vi}
+              </span>
+            )}
           </span>
         </div>
         <div className="mt-2 grid grid-cols-5 gap-1" aria-hidden>

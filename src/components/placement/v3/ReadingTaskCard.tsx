@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import BilingualLabel from "./BilingualLabel";
 import GenericTaskCard from "./GenericTaskCard";
+import { useChromeLanguage } from "@/lib/i18n/chromeLanguage";
 
 type Props = {
   task: PlacementV3Task;
@@ -12,7 +13,8 @@ type Props = {
 };
 
 export function ReadingTaskCard({ task, value, onChange }: Props) {
-  const [showVi, setShowVi] = useState(false);
+  const [showViPassage, setShowViPassage] = useState(false);
+  const showVi = useChromeLanguage() === "vi";
 
   return (
     <div className="mx-auto w-full max-w-[620px]">
@@ -29,15 +31,15 @@ export function ReadingTaskCard({ task, value, onChange }: Props) {
               variant="outline"
               size="sm"
               className="rounded-full text-xs"
-              onClick={() => setShowVi((next) => !next)}
-              aria-pressed={showVi}
-              aria-label={showVi ? "Hide Vietnamese passage translation" : "Show Vietnamese passage translation"}
+              onClick={() => setShowViPassage((next) => !next)}
+              aria-pressed={showViPassage}
+              aria-label={showViPassage ? "Hide Vietnamese passage translation" : "Show Vietnamese passage translation"}
             >
-              {showVi ? "Hide VI" : "Show VI"}
+              {showViPassage ? "Hide VI" : "Show VI"}
             </Button>
           </div>
           <p className="mt-4 text-[15px] leading-7 text-slate-800">{task.passage.en}</p>
-          {showVi ? (
+          {showViPassage ? (
             <p lang="vi" className="mt-3 text-sm leading-6 text-slate-500">{task.passage.vi}</p>
           ) : null}
         </section>
@@ -54,7 +56,7 @@ export function ReadingTaskCard({ task, value, onChange }: Props) {
                   type="button"
                   role="radio"
                   aria-checked={selected}
-                  aria-label={`Option ${option.id}: ${option.label.en}. ${option.label.vi}${selected ? ". Selected." : ""}`}
+                  aria-label={showVi ? `Option ${option.id}: ${option.label.en}. ${option.label.vi}${selected ? ". Selected." : ""}` : `Option ${option.id}: ${option.label.en}${selected ? ". Selected." : ""}`}
                   onClick={() => onChange(option.id)}
                   className={`flex min-h-[64px] items-center gap-3 rounded-[14px] border p-4 text-left transition ${
                     selected
@@ -79,7 +81,7 @@ export function ReadingTaskCard({ task, value, onChange }: Props) {
             value={value}
             onChange={(event) => onChange(event.target.value)}
             className="h-12 rounded-[14px]"
-            placeholder="Short answer... / Câu trả lời ngắn..."
+            placeholder={showVi ? "Short answer... / Câu trả lời ngắn..." : "Short answer..."}
           />
         )}
       </GenericTaskCard>
