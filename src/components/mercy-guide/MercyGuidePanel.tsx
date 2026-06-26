@@ -14,6 +14,8 @@ import {
   MERCY_HOST_IMAGE_SRC,
   MERCY_HOST_IMAGE_WEBP,
 } from './shared';
+import { pickHomeCopy, type HomeNativeSlots } from "@/components/home/nativeCopy";
+import { useNativeLanguage } from "@/contexts/NativeLanguageContext";
 
 function FloatingHelperLauncher({
   title,
@@ -30,6 +32,8 @@ function FloatingHelperLauncher({
   onAvatarError?: (event: React.SyntheticEvent<HTMLImageElement>) => void;
   onPanelDragStart?: (event: React.PointerEvent<HTMLDivElement>) => void;
 }) {
+  const { nativeLang } = useNativeLanguage();
+  const nt = (slots: HomeNativeSlots) => pickHomeCopy(slots, nativeLang);
   return (
     <div className="relative flex h-full min-h-0 flex-col overflow-hidden border-l border-white/70 bg-gradient-to-br from-[#FFF8F1] via-[#FFFCFA] to-[#F7F5FF] shadow-2xl">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,_rgba(255,159,122,0.14),_rgba(192,132,252,0.07)_42%,_transparent_74%)]" />
@@ -67,10 +71,10 @@ function FloatingHelperLauncher({
             {title}
           </h2>
           <p className="truncate text-[11px] font-semibold text-slate-500">
-            Chọn nơi em muốn luyện hôm nay.
+            {nt({ en: "Choose where you want to practice today.", vi: "Chọn nơi em muốn luyện hôm nay.", ja: "今日練習する場所を選んでください。", zh: "选择今天想练习的内容。", id: "Pilih tempat yang ingin kamu latih hari ini.", th: "เลือกที่ที่คุณอยากฝึกวันนี้", ar: "اختر أين تريد أن تتدرب اليوم.", hi: "चुनें कि आज आप कहां अभ्यास करना चाहते हैं।", ur: "منتخب کریں کہ آپ آج کہاں مشق کرنا چاہتے ہیں۔", ko: "오늘 어디서 연습하고 싶은지 선택하세요.", pt: "Escolha onde você quer praticar hoje.", tr: "Bugün nerede pratik yapmak istediğini seç." })}
           </p>
           <p className="truncate text-[10px] font-normal text-slate-500">
-            Choose where you want to practice.
+            {nt({ en: "Choose where you want to practice today.", vi: "Chọn nơi em muốn luyện hôm nay.", ja: "今日練習する場所を選んでください。", zh: "选择今天想练习的内容。", id: "Pilih tempat yang ingin kamu latih hari ini.", th: "เลือกที่ที่คุณอยากฝึกวันนี้", ar: "اختر أين تريد أن تتدرب اليوم.", hi: "चुनें कि आज आप कहां अभ्यास करना चाहते हैं।", ur: "منتخب کریں کہ آپ آج کہاں مشق کرنا چاہتے ہیں۔", ko: "오늘 어디서 연습하고 싶은지 선택하세요.", pt: "Escolha onde você quer praticar hoje.", tr: "Bugün nerede pratik yapmak istediğini seç." })}
           </p>
         </div>
 
@@ -98,10 +102,10 @@ function FloatingHelperLauncher({
       <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center overflow-y-auto p-4">
         <section className="mx-auto w-full max-w-[520px] rounded-3xl border border-white/85 bg-white/92 p-5 shadow-[0_18px_44px_rgba(148,163,184,0.14)]">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-amber-600">
-            Mercy Kids
+            {nt({ en: "Mercy Kids", vi: "Mercy Kids", ja: "Mercy Kids", zh: "Mercy Kids", id: "Mercy Kids", th: "Mercy Kids", ar: "Mercy Kids", hi: "Mercy Kids", ur: "Mercy Kids", ko: "Mercy Kids", pt: "Mercy Kids", tr: "Mercy Kids" })}
           </p>
           <h3 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
-            Vào không gian học của bé
+            {nt({ en: "Enter your child's learning space.", vi: "Vào không gian học của bé", ja: "お子様の学習スペースに入る。", zh: "进入孩子的学习空间。", id: "Masuki ruang belajar anakmu.", th: "เข้าสู่พื้นที่การเรียนรู้ของลูกคุณ", ar: "ادخل إلى مساحة تعلم طفلك.", hi: "अपने बच्चे की सीखने की जगह में प्रवेश करें।", ur: "اپنے بچے کی سیکھنے کی جگہ میں داخل ہوں۔", ko: "아이의 학습 공간으로 들어가보세요.", pt: "Entre no espaço de aprendizado do seu filho.", tr: "Çocuğunuzun öğrenme alanına girin." })}
           </h3>
 
           <div className="mt-5 grid gap-3">
@@ -109,7 +113,7 @@ function FloatingHelperLauncher({
               href="/kids/vi-english"
               className="inline-flex min-h-[48px] items-center justify-center rounded-2xl bg-emerald-600 px-5 py-3 text-sm font-black text-white transition hover:bg-emerald-700"
             >
-              Vào Mercy Kids
+              {nt({ en: "Enter Mercy Kids", vi: "Vào Mercy Kids", ja: "Mercyキッズに入る", zh: "进入 Mercy 儿童", id: "Masuki Mercy Kids", th: "เข้าสู่ Mercy Kids", ar: "ادخل إلى Mercy Kids", hi: "Mercy Kids में प्रवेश करें", ur: "Mercy Kids میں داخل ہوں", ko: "Mercy Kids 들어가기", pt: "Entrar no Mercy Kids", tr: "Mercy Kids'e Gir" })}
             </a>
           </div>
         </section>

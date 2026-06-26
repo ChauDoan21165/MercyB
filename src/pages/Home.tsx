@@ -21,6 +21,7 @@ import LanguageTrackHome, {
 import { parseLanguagePair } from "@/lib/languagePair/languagePair";
 import { readAnonymousPair } from "@/lib/languagePair/anonymousPair";
 import type { NativeLang } from "@/components/languages/nativeContent";
+import { pickHomeCopy, type HomeNativeSlots } from "@/components/home/nativeCopy";
 import DailyChallengeCard from "@/components/home/DailyChallengeCard";
 import FocusAreasCard from "@/components/home/FocusAreasCard";
 import PracticeRecommendationCard from "@/components/home/PracticeRecommendationCard";
@@ -278,6 +279,7 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
   const { nativeLanguage: pairNativeEarly } = parseLanguagePair(pairSourceEarly);
   const effectiveNative = nativeLangOverride ?? pairNativeEarly ?? "vi";
   const t = (vi: string, en: string) => effectiveNative === "vi" ? vi : en;
+  const nt = (slots: HomeNativeSlots) => pickHomeCopy(slots, effectiveNative);
   const showVietnameseGloss = effectiveNative === "vi";
 
   // ── Styles ──────────────────────────────────────────────────────────────────
@@ -494,7 +496,7 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
         <button
           type="button"
           onClick={handleTeacherMercy}
-          aria-label={t("Mở AI Tutor với Giáo viên Mercy", "Open AI Tutor with Teacher Mercy")}
+          aria-label={nt({ en: "Open AI Tutor with Teacher Mercy", vi: "Mở AI Tutor với Giáo viên Mercy", ja: "AIチューターを開く", zh: "打开 AI 导师", id: "Buka AI Tutor bersama Teacher Mercy", th: "เปิด AI Tutor กับ Teacher Mercy", ar: "افتح مدرس الذكاء الاصطناعي مع Teacher Mercy", hi: "Teacher Mercy के साथ AI Tutor खोलें", ur: "Teacher Mercy کے ساتھ AI Tutor کھولیں", ko: "Teacher Mercy와 함께 AI Tutor 열기", pt: "Abra o AI Tutor com Teacher Mercy", tr: "Teacher Mercy ile AI Tutor'u Aç" })}
           className="mb-a11y-card-button"
           style={{ display: "block", width: "100%", background: "none", border: "none", padding: 0, margin: 0, cursor: "pointer", textAlign: "center", font: "inherit", color: "inherit" }}
         >
@@ -534,16 +536,16 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
         )}
 
         <div style={{ marginTop: 14, fontSize: isPhone ? z(14) : z(16), fontWeight: 700, color: "rgba(80,20,45,0.78)", lineHeight: 1.6, maxWidth: "min(340px, 100%)", margin: "14px auto 0" }}>
-          {t("Mở AI Tutor để luyện câu với Mercy. Mercy sẽ nhớ tiến bộ học của bạn.", "Open AI Tutor to practice with Mercy. Mercy remembers your progress.")}
+          {nt({ en: "Open AI Tutor to practice with Mercy. Mercy remembers your progress.", vi: "Mở AI Tutor để luyện câu với Mercy. Mercy sẽ nhớ tiến bộ học của bạn.", ja: "AIチューターを開いてMercyと文章を練習。Mercyが学習の進捗を記録します。", zh: "打开 AI 导师，和 Mercy 练习句子。Mercy 会记住你的学习进度。", id: "Buka AI Tutor untuk berlatih dengan Mercy. Mercy mengingat kemajuanmu.", th: "เปิด AI Tutor เพื่อฝึกกับ Mercy Mercy จดจำความก้าวหน้าของคุณ", ar: "افتح مدرس الذكاء الاصطناعي للتدرب مع Mercy. Mercy تتذكر تقدمك.", hi: "Mercy के साथ अभ्यास करने के लिए AI Tutor खोलें। Mercy आपकी प्रगति याद रखती है।", ur: "Mercy کے ساتھ مشق کرنے کے لیے AI Tutor کھولیں۔ Mercy آپ کی پیشرفت یاد رکھتی ہے۔", ko: "Mercy와 함께 연습하려면 AI Tutor를 여세요. Mercy가 여러분의 진행 상황을 기억합니다.", pt: "Abra o AI Tutor para praticar com a Mercy. A Mercy lembra do seu progresso.", tr: "Mercy ile pratik yapmak için AI Tutor'u açın. Mercy ilerlemenizi hatırlar." })}
         </div>
         {!isPhone && (
           <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(140,60,90,0.58)", lineHeight: 1.5 }}>
-            Practice sentences with Mercy. Correction, memory, and review in one place.
+            {nt({ en: "Practice sentences with Mercy. Correction, memory, and review in one place.", vi: "Luyện câu với Mercy. Sửa lỗi, ghi nhớ, và ôn tập trong cùng một chỗ.", ja: "Mercyと文章練習。訂正、記憶、復習が一つに。", zh: "和 Mercy 练习句子。纠正、记忆和复习，一站式完成。", id: "Latih kalimat bersama Mercy. Koreksi, memori, dan ulasan dalam satu tempat.", th: "ฝึกประโยคกับ Mercy การแก้ไข การจดจำ และการทบทวนในที่เดียว", ar: "تمرن على الجمل مع Mercy. التصحيح والتذكر والمراجعة في مكان واحد.", hi: "Mercy के साथ वाक्यों का अभ्यास करें। सुधार, याद रखना और समीक्षा, सब एक जगह।", ur: "Mercy کے ساتھ جملوں کی مشق کریں۔ تصحیح، یادداشت، اور جائزہ ایک جگہ پر۔", ko: "Mercy와 함께 문장을 연습하세요. 교정, 기억, 복습이 한 곳에서 이루어집니다.", pt: "Pratique frases com a Mercy. Correção, memória e revisão em um só lugar.", tr: "Mercy ile cümle pratiği yapın. Düzeltme, hafıza ve tekrar tek bir yerde." })}
           </div>
         )}
 
         <div style={{ marginTop: 18, display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", borderRadius: 9999, background: "rgba(180,60,100,0.10)", border: "1px solid rgba(180,60,100,0.18)", color: "rgba(120,30,60,0.90)", fontWeight: 900, fontSize: z(14) }}>
-          {t("Mở AI Tutor →", "Open AI Tutor →")}
+          {nt({ en: "Open AI Tutor →", vi: "Mở AI Tutor →", ja: "AIチューターを開く →", zh: "打开 AI 导师 →", id: "Buka AI Tutor →", th: "เปิด AI Tutor →", ar: "افتح مدرس الذكاء الاصطناعي ←", hi: "AI Tutor खोलें →", ur: "AI Tutor کھولیں →", ko: "AI Tutor 열기 →", pt: "Abrir AI Tutor →", tr: "AI Tutor'u Aç →" })}
         </div>
         {!access.isAuthenticated && showVietnameseGloss && (
           <div style={{ marginTop: 6, fontSize: z(13), fontWeight: 600, color: "rgba(140,60,90,0.58)", lineHeight: 1.5 }}>
@@ -573,17 +575,7 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
               textAlign: "center",
             }}
           >
-            {effectiveNative === "vi" ? (
-              <>
-                <span>Thử phát âm ngay — không cần đăng nhập</span>
-                <br />
-                <span style={{ fontWeight: 600, color: "rgba(8,75,90,0.65)" }}>
-                  Try pronunciation now — no signup
-                </span>
-              </>
-            ) : (
-              <span>Try pronunciation now — no signup needed</span>
-            )}
+            {nt({ en: "Try pronunciation now — no signup needed", vi: "Thử phát âm ngay — không cần đăng nhập", ja: "今すぐ発音を試す — サインアップ不要", zh: "立即试发音 — 无需登录", id: "Coba pengucapan sekarang — tanpa perlu daftar", th: "ลองออกเสียงตอนนี้ — ไม่ต้องสมัครสมาชิก", ar: "جرب النطق الآن — لا حاجة للتسجيل", hi: "अभी उच्चारण आज़माएं — साइनअप की ज़रूरत नहीं", ur: "ابھی تلفظ آزمائیں — سائن اپ کی ضرورت نہیں", ko: "지금 발음을 체험해보세요 — 가입 불필요", pt: "Experimente a pronúncia agora — sem precisar se cadastrar", tr: "Şimdi telaffuzu dene — kayıt gerekmez" })}
           </button>
         )}
       </div>
@@ -599,7 +591,7 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
     <button
       type="button"
       onClick={handleTryOneWord}
-      aria-label={t("Thử phát âm — không cần đăng nhập", "Try pronunciation — no signup needed")}
+      aria-label={nt({ en: "Try pronunciation — no signup needed", vi: "Thử phát âm — không cần đăng nhập", ja: "発音を試す — サインアップ不要", zh: "试发音 — 无需登录", id: "Coba pengucapan — tanpa perlu daftar", th: "ลองออกเสียง — ไม่ต้องสมัครสมาชิก", ar: "جرب النطق — لا حاجة للتسجيل", hi: "उच्चारण आज़माएं — साइनअप की ज़रूरत नहीं", ur: "تلفظ آزمائیں — سائن اپ کی ضرورت نہیں", ko: "발음 체험하기 — 가입 불필요", pt: "Experimente a pronúncia — sem cadastro", tr: "Telaffuzu dene — kayıt gerekmez" })}
       className="mb-a11y-card-button"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}
     >
@@ -633,15 +625,17 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
 
         <div style={{ minWidth: 0, flex: 1 }}>
           <div style={{ fontSize: isPhone ? z(18) : z(20), fontWeight: 900, color: "rgba(8,75,90,0.94)", letterSpacing: -0.3 }}>
-            Try one word — no signup
+            {nt({ en: "Try one word — no signup", vi: "Thử một từ — không cần đăng nhập", ja: "一言試す — サインアップ不要", zh: "试说一个词 — 无需登录", id: "Coba satu kata — tanpa daftar", th: "ลองหนึ่งคำ — ไม่ต้องสมัคร", ar: "جرب كلمة واحدة — بدون تسجيل", hi: "एक शब्द आज़माएं — साइनअप नहीं", ur: "ایک لفظ آزمائیں — سائن اپ کی ضرورت نہیں", ko: "한 단어 체험하기 — 가입 없음", pt: "Experimente uma palavra — sem cadastro", tr: "Bir kelime dene — kayıt gerekmez" })}
           </div>
           {!isPhone && (
             <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(8,75,90,0.55)", marginTop: 2 }}>
-              {t("Thử phát âm — không cần đăng nhập", "Try pronunciation — no signup")}
+              {nt({ en: "Try pronunciation — no signup", vi: "Thử phát âm — không cần đăng nhập", ja: "発音を試す — サインアップ不要", zh: "试发音 — 无需登录", id: "Coba pengucapan — tanpa daftar", th: "ลองออกเสียง — ไม่ต้องสมัคร", ar: "جرب النطق — بدون تسجيل", hi: "उच्चारण आज़माएं — साइनअप नहीं", ur: "تلفظ آزمائیں — سائن اپ کی ضرورت نہیں", ko: "발음 체험하기 — 가입 없음", pt: "Experimente a pronúncia — sem cadastro", tr: "Telaffuzu dene — kayıt gerekmez" })}
             </div>
           )}
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            {isPhone ? "Get a pronunciation score in 12 seconds." : "Hear how MercyBlade scores your pronunciation in 12 seconds."}
+            {isPhone
+              ? nt({ en: "Get a pronunciation score in 12 seconds.", vi: "Nhận điểm phát âm trong 12 giây.", ja: "12秒で発音スコアを取得。", zh: "12 秒获得发音评分。", id: "Dapatkan skor pengucapan dalam 12 detik.", th: "รับคะแนนการออกเสียงภายใน 12 วินาที", ar: "احصل على درجة النطق في 12 ثانية.", hi: "12 सेकंड में उच्चारण स्कोर पाएं।", ur: "12 سیکنڈ میں تلفظ کا اسکور حاصل کریں۔", ko: "12초 만에 발음 점수를 확인하세요.", pt: "Obtenha uma nota para sua pronúncia em 12 segundos.", tr: "12 saniyede telaffuz puanını al." })
+              : nt({ en: "Hear how MercyBlade scores your pronunciation in 12 seconds.", vi: "Nghe MercyBlade chấm điểm phát âm của bạn trong 12 giây.", ja: "MercyBladeが12秒で発音を採点するのを聞いてみよう。", zh: "在 12 秒内，听听 MercyBlade 如何给你的发音评分。", id: "Dengarkan bagaimana MercyBlade menilai pengucapanmu dalam 12 detik.", th: "ฟังว่า MercyBlade ให้คะแนนการออกเสียงของคุณอย่างไรใน 12 วินาที", ar: "اسمع كيف يقوم MercyBlade بتقييم نطقك في 12 ثانية.", hi: "सुनें कैसे MercyBlade 12 सेकंड में आपके उच्चारण का स्कोर देता है।", ur: "سنیں کہ MercyBlade 12 سیکنڈ میں آپ کے تلفظ کو کیسے اسکور کرتا ہے۔", ko: "MercyBlade가 12초 만에 여러분의 발음을 어떻게 평가하는지 들어보세요.", pt: "Ouça como o MercyBlade avalia sua pronúncia em 12 segundos.", tr: "MercyBlade'in 12 saniyede telaffuzunu nasıl puanladığını duy." })}
           </div>
           {!isPhone && (
             <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
@@ -659,7 +653,7 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
 
   // ── Library secondary card ─────────────────────────────────────────────────
   const libraryCard = (
-    <button type="button" onClick={handleLibrary} aria-label={t("Mở thư viện", "Open library")}
+    <button type="button" onClick={handleLibrary} aria-label={nt({ en: "Open library", vi: "Mở thư viện", ja: "ライブラリを開く", zh: "打开学习库", id: "Buka perpustakaan", th: "เปิดคลังบทเรียน", ar: "افتح المكتبة", hi: "लाइब्रेरी खोलें", ur: "لائبریری کھولیں", ko: "라이브러리 열기", pt: "Abrir biblioteca", tr: "Kütüphaneyi aç" })}
       className="mb-a11y-card-button"
       style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer" }}>
       <div style={{
@@ -674,14 +668,14 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
         </div>
 
         <div style={{ minWidth: 0, flex: 1 }}>
-          <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(0,80,70,0.92)", letterSpacing: -0.3 }}>Library</div>
-          {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(0,100,85,0.52)", marginTop: 2 }}>{t("Thư viện", "Library")}</div>}
+          <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(0,80,70,0.92)", letterSpacing: -0.3 }}>{nt({ en: "Library", vi: "Thư viện", ja: "ライブラリ", zh: "学习库", id: "Perpustakaan", th: "คลังบทเรียน", ar: "المكتبة", hi: "लाइब्रेरी", ur: "لائبریری", ko: "라이브러리", pt: "Biblioteca", tr: "Kütüphane" })}</div>
+          {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(0,100,85,0.52)", marginTop: 2 }}>{nt({ en: "Library", vi: "Thư viện", ja: "ライブラリ", zh: "学习库", id: "Perpustakaan", th: "คลังบทเรียน", ar: "المكتبة", hi: "लाइब्रेरी", ur: "لائبریری", ko: "라이브러리", pt: "Biblioteca", tr: "Kütüphane" })}</div>}
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            {isPhone ? t("Đọc. Nghe. Tiến bộ từng ngày.", "Read. Listen. Improve every day.") : t("Đọc. Nghe. Suy ngẫm. Tiến bộ từng ngày.", "Read. Listen. Reflect. Improve every day.")}
+            {isPhone ? nt({ en: "Read. Listen. Improve every day.", vi: "Đọc. Nghe. Tiến bộ từng ngày.", ja: "読む。聞く。毎日上達。", zh: "阅读。倾听。每天进步。", id: "Baca. Dengarkan. Tingkatkan setiap hari.", th: "อ่าน ฟัง พัฒนาทุกวัน", ar: "اقرأ. استمع. تحسن كل يوم.", hi: "पढ़ें। सुनें। हर दिन सुधार करें।", ur: "پڑھیں۔ سنیں۔ ہر روز بہتر بنیں۔", ko: "읽으세요. 들어보세요. 매일 발전하세요.", pt: "Leia. Ouça. Melhore a cada dia.", tr: "Oku. Dinle. Her gün geliş." }) : nt({ en: "Read. Listen. Reflect. Improve every day.", vi: "Đọc. Nghe. Suy ngẫm. Tiến bộ từng ngày.", ja: "読む。聞く。振り返る。毎日上達。", zh: "阅读。倾听。反思。每天进步。", id: "Baca. Dengarkan. Renungkan. Tingkatkan setiap hari.", th: "อ่าน ฟัง ไตร่ตรอง พัฒนาทุกวัน", ar: "اقرأ. استمع. تأمل. تحسن كل يوم.", hi: "पढ़ें। सुनें। चिंतन करें। हर दिन सुधार करें।", ur: "پڑھیں۔ سنیں۔ غور کریں۔ ہر روز بہتر بنیں۔", ko: "읽으세요. 들어보세요. 생각해보세요. 매일 발전하세요.", pt: "Leia. Ouça. Reflita. Melhore a cada dia.", tr: "Oku. Dinle. Düşün. Her gün geliş." })}
           </div>
           {!isPhone && (
             <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-              Read, listen, reflect — build a real English habit.
+              {nt({ en: "Read, listen, reflect — build a real English habit.", vi: "Đọc, nghe, suy ngẫm — xây dựng thói quen tiếng Anh thực sự.", ja: "読む、聞く、振り返る — 本当の英語習慣を身につけよう。", zh: "阅读、倾听、反思 — 养成真正的英语习惯。", id: "Baca, dengarkan, renungkan — bangun kebiasaan Inggris yang nyata.", th: "อ่าน ฟัง ไตร่ตรอง — สร้างนิสัยภาษาอังกฤษที่แท้จริง", ar: "اقرأ، استمع، تأمل — ابنِ عادة إنجليزية حقيقية.", hi: "पढ़ें, सुनें, चिंतन करें — एक वास्तविक अंग्रेज़ी की आदत बनाएं।", ur: "پڑھیں، سنیں، غور کریں — ایک حقیقی انگریزی عادت بنائیں۔", ko: "읽고, 듣고, 생각하며 — 진짜 영어 습관을 만들어보세요.", pt: "Leia, ouça, reflita — crie um hábito real de inglês.", tr: "Oku, dinle, düşün — gerçek bir İngilizce alışkanlığı edin." })}
             </div>
           )}
         </div>
@@ -814,14 +808,16 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
         </div>
 
         <div style={{ minWidth: 0, flex: 1 }}>
-          <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(7,89,133,0.92)", letterSpacing: -0.3 }}>{t("Kiểm tra trình độ", "Check Your Level")}</div>
-          {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(7,89,133,0.55)", marginTop: 2 }}>{t("Biết bắt đầu từ đâu", "Know where to start")}</div>}
+          <div style={{ fontSize: secTitleSize, fontWeight: 900, color: "rgba(7,89,133,0.92)", letterSpacing: -0.3 }}>{nt({ en: "Check Your Level", vi: "Kiểm tra trình độ", ja: "レベルをチェック", zh: "检测你的水平", id: "Cek Levelmu", th: "ตรวจระดับของคุณ", ar: "اختبر مستواك", hi: "अपना स्तर जांचें", ur: "اپنی سطح چیک کریں", ko: "내 레벨 확인하기", pt: "Descubra seu nível", tr: "Seviyeni Kontrol Et" })}</div>
+          {!isPhone && <div style={{ fontSize: z(12), fontWeight: 700, color: "rgba(7,89,133,0.55)", marginTop: 2 }}>{nt({ en: "Know where to start", vi: "Biết bắt đầu từ đâu", ja: "スタート地点を確認", zh: "知道从哪里开始", id: "Tahu harus mulai dari mana", th: "รู้ว่าควรเริ่มต้นที่ไหน", ar: "اعرف من أين تبدأ", hi: "जानें कहां से शुरू करें", ur: "جانیں کہاں سے شروع کرنا ہے", ko: "어디서부터 시작할지 알아보세요", pt: "Saiba por onde começar", tr: "Nereden başlayacağını bil" })}</div>}
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(14), fontWeight: 700, color: "rgba(0,0,0,0.62)", lineHeight: 1.45 }}>
-            {showVietnameseGloss ? (isPhone ? "Biết bắt đầu từ đâu — 6 phút." : "Biết chính xác trình độ thật của bạn. 6–9 phút.") : (isPhone ? "Know where to start — 6 min." : "Know your real level. 6–9 min.")}
+            {showVietnameseGloss
+              ? (isPhone ? nt({ en: "Know where to start — 6 min.", vi: "Biết bắt đầu từ đâu — 6 phút.", ja: "スタート地点を確認 — 6分。", zh: "知道从哪里开始 — 6 分钟。", id: "Tahu harus mulai dari mana — 6 menit.", th: "รู้ว่าควรเริ่มต้นที่ไหน — 6 นาที", ar: "اعرف من أين تبدأ — 6 دقائق.", hi: "जानें कहां से शुरू करें — 6 मिनट।", ur: "جانیں کہاں سے شروع کرنا ہے — 6 منٹ۔", ko: "어디서부터 시작할지 알아보세요 — 6분.", pt: "Saiba por onde começar — 6 min.", tr: "Nereden başlayacağını bil — 6 dk." }) : nt({ en: "Know your real level. 6–9 min.", vi: "Biết chính xác trình độ thật của bạn. 6–9 phút.", ja: "本当のレベルを知ろう。6〜9分。", zh: "了解你的真实水平。6-9 分钟。", id: "Ketahui level aslimu. 6–9 menit.", th: "รู้ระดับจริงของคุณ 6–9 นาที", ar: "اعرف مستواك الحقيقي. 6–9 دقائق.", hi: "अपना वास्तविक स्तर जानें। 6–9 मिनट।", ur: "اپنی حقیقی سطح جانیں۔ 6–9 منٹ۔", ko: "실제 레벨을 확인하세요. 6–9분.", pt: "Conheça seu nível real. 6–9 min.", tr: "Gerçek seviyeni öğren. 6–9 dk." }))
+              : (isPhone ? nt({ en: "Know where to start — 6 min.", vi: "Biết bắt đầu từ đâu — 6 phút.", ja: "スタート地点を確認 — 6分。", zh: "知道从哪里开始 — 6 分钟。", id: "Tahu harus mulai dari mana — 6 menit.", th: "รู้ว่าควรเริ่มต้นที่ไหน — 6 นาที", ar: "اعرف من أين تبدأ — 6 دقائق.", hi: "जानें कहां से शुरू करें — 6 मिनट।", ur: "جانیں کہاں سے شروع کرنا ہے — 6 منٹ۔", ko: "어디서부터 시작할지 알아보세요 — 6분.", pt: "Saiba por onde começar — 6 min.", tr: "Nereden başlayacağını bil — 6 dk." }) : nt({ en: "Know your real level. 6–9 min.", vi: "Biết chính xác trình độ thật của bạn. 6–9 phút.", ja: "本当のレベルを知ろう。6〜9分。", zh: "了解你的真实水平。6-9 分钟。", id: "Ketahui level aslimu. 6–9 menit.", th: "รู้ระดับจริงของคุณ 6–9 นาที", ar: "اعرف مستواك الحقيقي. 6–9 دقائق.", hi: "अपना वास्तविक स्तर जानें। 6–9 मिनट।", ur: "اپنی حقیقی سطح جانیں۔ 6–9 منٹ۔", ko: "실제 레벨을 확인하세요. 6–9분.", pt: "Conheça seu nível real. 6–9 min.", tr: "Gerçek seviyeni öğren. 6–9 dk." }))}
           </div>
           {!isPhone && (
             <div style={{ marginTop: 3, fontSize: z(12), fontWeight: 600, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-              Know exactly where you stand. About 6–9 minutes.
+              {nt({ en: "Know exactly where you stand. About 6–9 minutes.", vi: "Biết chính xác trình độ của bạn. Khoảng 6–9 phút.", ja: "自分の正確なレベルを把握。約6〜9分。", zh: "准确了解你的水平。约 6-9 分钟。", id: "Tahu persis posisimu. Sekitar 6–9 menit.", th: "รู้แน่ชัดว่าคุณอยู่ระดับไหน ประมาณ 6–9 นาที", ar: "اعرف بالضبط أين تقف. حوالي 6–9 دقائق.", hi: "ठीक-ठीक जानें कि आप कहां खड़े हैं। लगभग 6–9 मिनट।", ur: "جانئے کہ آپ کہاں کھڑے ہیں۔ تقریباً 6–9 منٹ۔", ko: "자신의 위치를 정확히 파악하세요. 약 6–9분 소요.", pt: "Saiba exatamente onde você está. Cerca de 6–9 minutos.", tr: "Tam olarak nerede olduğunu bil. Yaklaşık 6–9 dakika." })}
             </div>
           )}
         </div>
@@ -1050,11 +1046,11 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
             English for real <span style={{ color: "rgba(13,148,136,0.92)" }}>life</span>.
           </div>
           <div style={{ marginTop: isPhone ? 4 : 6, fontSize: z(13), fontWeight: 600, color: isPhone ? "rgba(0,0,0,0.35)" : "rgba(0,0,0,0.48)", lineHeight: 1.4 }}>
-            {isPhone ? "See your pronunciation score in 12 seconds." : "See your pronunciation score in 12 seconds — no signup."}
+            {isPhone ? nt({ en: "See your pronunciation score in 12 seconds.", vi: "Xem điểm phát âm của bạn trong 12 giây.", ja: "12秒で発音スコアを確認。", zh: "12 秒查看发音评分。", id: "Lihat skor pengucapanmu dalam 12 detik.", th: "ดูคะแนนการออกเสียงของคุณใน 12 วินาที", ar: "شاهد درجة نطقك في 12 ثانية.", hi: "12 सेकंड में अपना उच्चारण स्कोर देखें।", ur: "12 سیکنڈ میں اپنا تلفظ اسکور دیکھیں۔", ko: "12초 만에 내 발음 점수를 확인하세요.", pt: "Veja sua nota de pronúncia em 12 segundos.", tr: "12 saniyede telaffuz puanını gör." }) : nt({ en: "See your pronunciation score in 12 seconds — no signup.", vi: "Xem điểm phát âm của bạn trong 12 giây — không cần đăng nhập.", ja: "12秒で発音スコアを確認 — サインアップ不要。", zh: "12 秒查看发音评分 — 无需登录。", id: "Lihat skor pengucapanmu dalam 12 detik — tanpa daftar.", th: "ดูคะแนนการออกเสียงของคุณใน 12 วินาที — ไม่ต้องสมัคร", ar: "شاهد درجة نطقك في 12 ثانية — بدون تسجيل.", hi: "12 सेकंड में अपना उच्चारण स्कोर देखें — साइनअप नहीं।", ur: "12 سیکنڈ میں اپنا تلفظ اسکور دیکھیں — سائن اپ کی ضرورت نہیں۔", ko: "12초 만에 내 발음 점수 확인 — 가입 불필요.", pt: "Veja sua nota de pronúncia em 12 segundos — sem cadastro.", tr: "12 saniyede telaffuz puanını gör — kayıt gerekmez." })}
           </div>
           {!isPhone && (
             <div style={{ marginTop: 2, fontSize: z(12), fontWeight: 500, color: "rgba(0,0,0,0.40)", lineHeight: 1.4 }}>
-              {t("Xem điểm phát âm của bạn trong 12 giây — không cần đăng nhập.", "See your pronunciation score in 12 seconds — no signup.")}
+              {nt({ en: "See your pronunciation score in 12 seconds — no signup.", vi: "Xem điểm phát âm của bạn trong 12 giây — không cần đăng nhập.", ja: "12秒で発音スコアを確認 — サインアップ不要。", zh: "12 秒查看发音评分 — 无需登录。", id: "Lihat skor pengucapanmu dalam 12 detik — tanpa daftar.", th: "ดูคะแนนการออกเสียงของคุณใน 12 วินาที — ไม่ต้องสมัคร", ar: "شاهد درجة نطقك في 12 ثانية — بدون تسجيل.", hi: "12 सेकंड में अपना उच्चारण स्कोर देखें — साइनअप नहीं।", ur: "12 سیکنڈ میں اپنا تلفظ اسکور دیکھیں — سائن اپ کی ضرورت نہیں۔", ko: "12초 만에 내 발음 점수 확인 — 가입 불필요.", pt: "Veja sua nota de pronúncia em 12 segundos — sem cadastro.", tr: "12 saniyede telaffuz puanını gör — kayıt gerekmez." })}
             </div>
           )}
         </section>
@@ -1086,7 +1082,7 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
             <button
               type="button"
               onClick={handleTryOneWord}
-              aria-label={t("Thử phát âm — không cần đăng nhập", "Try pronunciation — no signup")}
+              aria-label={nt({ en: "Try pronunciation — no signup", vi: "Thử phát âm — không cần đăng nhập", ja: "発音を試す — サインアップ不要", zh: "试发音 — 无需登录", id: "Coba pengucapan — tanpa daftar", th: "ลองออกเสียง — ไม่ต้องสมัคร", ar: "جرب النطق — بدون تسجيل", hi: "उच्चारण आज़माएं — साइनअप नहीं", ur: "تلفظ آزمائیں — سائن اپ کی ضرورت نہیں", ko: "발음 체험하기 — 가입 없음", pt: "Experimente a pronúncia — sem cadastro", tr: "Telaffuzu dene — kayıt gerekmez" })}
               className="mb-a11y-card-button"
               style={{
                 width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer",
@@ -1100,7 +1096,7 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
               }}>
                 <Mic size={16} style={{ color: "rgba(14,116,144,0.60)", flexShrink: 0 }} />
                 <span style={{ fontSize: z(13), fontWeight: 700, color: "rgba(8,75,90,0.78)", flex: 1, textAlign: "left" }}>
-                  {t("Thử phát âm ngay — không cần đăng nhập", "Try pronunciation now — no signup")}
+                  {nt({ en: "Try pronunciation now — no signup", vi: "Thử phát âm ngay — không cần đăng nhập", ja: "今すぐ発音を試す — サインアップ不要", zh: "立即试发音 — 无需登录", id: "Coba pengucapan sekarang — tanpa perlu daftar", th: "ลองออกเสียงตอนนี้ — ไม่ต้องสมัครสมาชิก", ar: "جرب النطق الآن — لا حاجة للتسجيل", hi: "अभी उच्चारण आज़माएं — साइनअप की ज़रूरत नहीं", ur: "ابھی تلفظ آزمائیں — سائن اپ کی ضرورت نہیں", ko: "지금 발음을 체험해보세요 — 가입 불필요", pt: "Experimente a pronúncia agora — sem precisar se cadastrar", tr: "Şimdi telaffuzu dene — kayıt gerekmez" })}
                 </span>
                 <ChevronRight size={14} style={{ color: "rgba(14,116,144,0.45)", flexShrink: 0 }} />
               </div>
@@ -1214,18 +1210,18 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
               fontSize: z(10), fontWeight: 700, letterSpacing: 1.2,
               textTransform: "uppercase", color: "rgba(0,0,0,0.32)",
             }}>
-              {t("Khám phá", "Explore")}
+              {nt({ en: "Explore", vi: "Khám phá", ja: "探索", zh: "探索", id: "Jelajahi", th: "สำรวจ", ar: "استكشف", hi: "एक्सप्लोर करें", ur: "دریافت کریں", ko: "둘러보기", pt: "Explorar", tr: "Keşfet" })}
             </div>
           )}
           <ProgressiveDisclosureCard
             cardId="library"
             title="Library"
-            shortLine={t("Đọc. Nghe. Tiến bộ từng ngày.", "Read. Listen. Improve every day.")}
+            shortLine={nt({ en: "Read. Listen. Improve every day.", vi: "Đọc. Nghe. Tiến bộ từng ngày.", ja: "読む。聞く。毎日上達。", zh: "阅读。倾听。每天进步。", id: "Baca. Dengarkan. Tingkatkan setiap hari.", th: "อ่าน ฟัง พัฒนาทุกวัน", ar: "اقرأ. استمع. تحسن كل يوم.", hi: "पढ़ें। सुनें। हर दिन सुधार करें।", ur: "پڑھیں۔ سنیں۔ ہر روز بہتر بنیں۔", ko: "읽으세요. 들어보세요. 매일 발전하세요.", pt: "Leia. Ouça. Melhore a cada dia.", tr: "Oku. Dinle. Her gün geliş." })}
             accentColor="#14B8A6"
             iconBg="rgba(236,255,252,0.96)"
             iconEl={<LibraryBig size={isPhone ? 20 : 24} color="white" />}
             onStart={handleLibrary}
-            startLabel="Open Library →"
+            startLabel={nt({ en: "Open Library →", vi: "Mở thư viện →", ja: "ライブラリを開く →", zh: "打开学习库 →", id: "Buka Perpustakaan →", th: "เปิดคลังบทเรียน →", ar: "افتح المكتبة ←", hi: "लाइब्रेरी खोलें →", ur: "لائبریری کھولیں →", ko: "라이브러리 열기 →", pt: "Abrir Biblioteca →", tr: "Kütüphaneyi Aç →" })}
           >
             {libraryCard}
           </ProgressiveDisclosureCard>
@@ -1238,16 +1234,16 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
             type="button"
             data-testid="home-weak-at-link"
             onClick={() => nav("/weak-at")}
-            aria-label={t("Xem điểm bạn cần luyện", "See what you are working on")}
+            aria-label={nt({ en: "See what you need to practice", vi: "Xem điểm bạn cần luyện", ja: "練習が必要な項目を見る", zh: "查看你需要练习的内容", id: "Lihat apa yang perlu kamu latih", th: "ดูสิ่งที่คุณต้องฝึก", ar: "شاهد ما تحتاج إلى التدرب عليه", hi: "देखें कि आपको किस चीज़ का अभ्यास करना है", ur: "دیکھیں کہ آپ کو کس چیز کی مشق کرنی ہے", ko: "무엇을 연습해야 할지 확인하세요", pt: "Veja o que você precisa praticar", tr: "Neyi pratik yapman gerektiğini gör" })}
             className="mb-a11y-card-button w-full rounded-[20px] border border-slate-200 bg-white px-5 py-4 text-left shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition hover:border-slate-300"
           >
             <div className="flex items-center justify-between gap-3">
               <div className="min-w-0">
                 <p className="text-sm font-semibold text-slate-900">
-                  {t("Xem điểm bạn cần luyện", "See what you need to practice")}
+                  {nt({ en: "See what you need to practice", vi: "Xem điểm bạn cần luyện", ja: "練習が必要な項目を見る", zh: "查看你需要练习的内容", id: "Lihat apa yang perlu kamu latih", th: "ดูสิ่งที่คุณต้องฝึก", ar: "شاهد ما تحتاج إلى التدرب عليه", hi: "देखें कि आपको किस चीज़ का अभ्यास करना है", ur: "دیکھیں کہ آپ کو کس چیز کی مشق کرنی ہے", ko: "무엇을 연습해야 할지 확인하세요", pt: "Veja o que você precisa praticar", tr: "Neyi pratik yapman gerektiğini gör" })}
                 </p>
                 <p className="mt-0.5 text-xs text-slate-500">
-                  See what you're working on
+                  {nt({ en: "See what you're working on", vi: "Xem những gì bạn đang luyện", ja: "現在取り組んでいる内容を見る", zh: "查看你正在练习的内容", id: "Lihat apa yang sedang kamu kerjakan", th: "ดูสิ่งที่คุณกำลังทำอยู่", ar: "شاهد ما تعمل عليه", hi: "देखें कि आप किस पर काम कर रहे हैं", ur: "دیکھیں کہ آپ کس چیز پر کام کر رہے ہیں", ko: "지금 무엇을 하고 있는지 확인하세요", pt: "Veja no que você está trabalhando", tr: "Ne üzerinde çalıştığını gör" })}
                 </p>
               </div>
               <ChevronRight size={20} className="shrink-0 text-slate-400" aria-hidden="true" />
