@@ -21,7 +21,7 @@ const TONE_BADGES: Record<string, { label: string; classes: string }> = {
   },
   sacred: {
     label: "Sacred / Trang trọng",
-    classes: "bg-slate-200 text-slate-800 border-slate-400",
+    classes: "bg-slate-200 text-slate-800 border-slate-500",
   },
   practical: {
     label: "Practical / Thực dụng",

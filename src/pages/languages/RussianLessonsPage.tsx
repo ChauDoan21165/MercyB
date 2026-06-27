@@ -303,7 +303,7 @@ export default function RussianLessonsPage() {
               className="rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-700 shadow-sm hover:border-purple-400 hover:bg-purple-50 hover:text-purple-700"
             >
               {uiLang === "en" ? level.en : level.vi}
-              <span className="ml-1 text-slate-400">({count})</span>
+              <span className="ml-1 text-slate-500">({count})</span>
             </a>
           );
         })}

@@ -191,7 +191,7 @@ function CategoryItem({
           )}
         </div>
         {expandable && (
-          <span aria-hidden className="mt-0.5 text-slate-400">
+          <span aria-hidden className="mt-0.5 text-slate-500">
             {open ? (
               <ChevronUp className="h-4 w-4" />
             ) : (

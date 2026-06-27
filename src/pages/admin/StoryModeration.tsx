@@ -261,7 +261,7 @@ export default function StoryModeration(): React.ReactElement {
                 type="button"
                 disabled={busyId === row.id || row.status === "archived"}
                 onClick={() => archive(row)}
-                className="rounded-full border border-slate-400 px-3 py-1 text-xs font-bold text-slate-700 disabled:opacity-50"
+                className="rounded-full border border-slate-500 px-3 py-1 text-xs font-bold text-slate-700 disabled:opacity-50"
               >
                 Ẩn (lưu trữ)
               </button>

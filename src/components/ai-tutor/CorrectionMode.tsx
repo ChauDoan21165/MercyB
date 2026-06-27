@@ -120,7 +120,7 @@ export default function CorrectionMode({
             placeholder={tutorCopy.placeholder}
             rows={5}
             autoFocus
-            className="w-full min-w-0 resize-none rounded-[14px] border border-slate-200 bg-slate-50 p-4 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-indigo-300 focus:bg-white focus:outline-none"
+            className="w-full min-w-0 resize-none rounded-[14px] border border-slate-200 bg-slate-50 p-4 text-[15px] leading-relaxed text-slate-900 placeholder-slate-500 transition focus:border-indigo-300 focus:bg-white focus:outline-none"
             onKeyDown={(e) => {
               if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
                 onSubmit();
@@ -133,7 +133,7 @@ export default function CorrectionMode({
               type="button"
               onClick={onSubmit}
               disabled={isEmpty || loading}
-              className="min-h-[48px] w-full flex-1 rounded-full bg-slate-900 px-4 py-3 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-400"
+              className="min-h-[48px] w-full flex-1 rounded-full bg-slate-900 px-4 py-3 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500"
             >
               {loading ? (
                 <span className="inline-flex items-center justify-center gap-2">

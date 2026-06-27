@@ -1226,7 +1226,7 @@ export default function Home() {
                   See what you're working on
                 </p>
               </div>
-              <ChevronRight size={20} className="shrink-0 text-slate-400" aria-hidden="true" />
+              <ChevronRight size={20} className="shrink-0 text-slate-500" aria-hidden="true" />
             </div>
           </button>
 

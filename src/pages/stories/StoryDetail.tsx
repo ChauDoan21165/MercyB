@@ -250,7 +250,7 @@ export default function StoryDetail(): React.ReactElement {
               type="button"
               onClick={handleHide}
               disabled={hideState === "hiding"}
-              className="mt-3 rounded-full border border-slate-400 px-4 py-1.5 text-xs font-semibold text-slate-700 hover:border-red-400 hover:text-red-700 disabled:opacity-60"
+              className="mt-3 rounded-full border border-slate-500 px-4 py-1.5 text-xs font-semibold text-slate-700 hover:border-red-400 hover:text-red-700 disabled:opacity-60"
             >
               {hideState === "hiding" ? "Đang ẩn…" : "Tôi muốn ẩn câu chuyện"}
             </button>

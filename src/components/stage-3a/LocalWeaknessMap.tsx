@@ -349,7 +349,7 @@ function SectionHeading({
 }
 
 function QuietMeta({ count, lastSeen }: { count: number; lastSeen: number }) {
-  // Quiet metadata — small, slate-400, not a focal point. No
+  // Quiet metadata — small, slate-500, not a focal point. No
   // "you-have-X" language; just facts.
   const ago = formatAgo(lastSeen);
   return (

@@ -465,7 +465,7 @@ export default function AiConversationScenarioPanel({
             if (event.target.value.length <= 1200) setInput(event.target.value);
           }}
           rows={3}
-          className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 p-3 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 focus:border-indigo-300 focus:bg-white focus:outline-none"
+          className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 p-3 text-[15px] leading-relaxed text-slate-900 placeholder-slate-500 focus:border-indigo-300 focus:bg-white focus:outline-none"
           placeholder={
             scenarioId === LEARNER_LED_AI_CONVERSATION_SCENARIO_ID
               ? "Start with your own English sentence..."
@@ -488,7 +488,7 @@ export default function AiConversationScenarioPanel({
             type="button"
             onClick={() => void handleSend()}
             disabled={!canSend || !accessToken}
-            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-400"
+            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500"
           >
             <Send className="h-4 w-4" aria-hidden />
             Send answer

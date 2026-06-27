@@ -1,12 +1,12 @@
 /**
  * A11y contrast — whole-tree static drift guard.
  *
- * Closes the slate-400 contrast lane opened by the !64 audit and
+ * Closes the slate-500 contrast lane opened by the !64 audit and
  * walked route-by-route across waves 0-6 (!68 → !72 → !83 → !88 →
  * !97 → !109 → !116). Wave 7 (this file's current shape) converts
  * the guard from an explicit-allow-list (`CONTRAST_FIXED_FILES`)
  * into a near-blanket invariant: every `src/` file is scanned for
- * bare `text-slate-400` (Tailwind) or `#94a3b8` (hex) literals. The
+ * bare `text-slate-500` (Tailwind) or `#94a3b8` (hex) literals. The
  * lane is now closed in the same shape it was opened — any new
  * regression anywhere in the tree fails CI loudly.
  *
@@ -59,10 +59,10 @@ const SRC_ROOT = resolve(REPO_ROOT, "src");
 /**
  * Variant-prefix forms carry their own contrast story:
  *
- *   - `disabled:text-slate-400` — WCAG SC 1.4.3 explicitly EXEMPTS
+ *   - `disabled:text-slate-500` — WCAG SC 1.4.3 explicitly EXEMPTS
  *     inactive UI components from text-contrast requirements.
- *   - `dark:text-slate-400` — in dark mode renders light-on-dark
- *     (slate-400 on slate-900 ≈ 5.7:1), which passes AA.
+ *   - `dark:text-slate-300` — in dark mode renders light-on-dark
+ *     (slate-500 on slate-900 ≈ 5.7:1), which passes AA.
  *   - `hover:` / `focus:` — transient interactive state.
  *   - `placeholder:` — placeholder text in form inputs; WCAG
  *     guidance treats placeholders as decorative hint text whose
@@ -71,7 +71,7 @@ const SRC_ROOT = resolve(REPO_ROOT, "src");
  * A line matching any of these prefixes is NOT a contrast violation.
  */
 const VARIANT_PREFIX_RE =
-  /\b(disabled|dark|hover|focus|group-hover|group-focus|peer-hover|peer-focus|placeholder):text-slate-400\b/;
+  /\b(disabled|dark|hover|focus|group-hover|group-focus|peer-hover|peer-focus|placeholder):text-slate-500\b/;
 
 /**
  * `aria-hidden` elements are decorative — typically icons or layout
@@ -166,11 +166,11 @@ function scanWholeTree(pattern: RegExp): { file: string; line: number; text: str
 }
 
 describe("a11y contrast — !64 audit fixes stay fixed across the whole `src/` tree", () => {
-  it("no `src/` file contains a bare `text-slate-400` class (variant prefixes + aria-hidden + exception markers excluded)", () => {
-    const offenders = scanWholeTree(/\btext-slate-400\b/);
+  it("no `src/` file contains a bare `text-slate-500` class (variant prefixes + aria-hidden + exception markers excluded)", () => {
+    const offenders = scanWholeTree(/\btext-slate-500\b/);
     expect(
       offenders,
-      `Failing slate-400 class found in src/. Use text-slate-500 (4.78:1 on white) or text-slate-600 (7.04:1 on white / 6.12:1 on slate-100) — or mark with \`// a11y-contrast:exception\` + rationale + audit doc citation:\n${offenders
+      `Failing slate-500 class found in src/. Use text-slate-500 (4.78:1 on white) or text-slate-600 (7.04:1 on white / 6.12:1 on slate-100) — or mark with \`// a11y-contrast:exception\` + rationale + audit doc citation:\n${offenders
         .map((o) => `  ${o.file}:${o.line}  ${o.text}`)
         .join("\n")}`,
     ).toEqual([]);
@@ -180,7 +180,7 @@ describe("a11y contrast — !64 audit fixes stay fixed across the whole `src/` t
     const offenders = scanWholeTree(/#94a3b8\b/i);
     expect(
       offenders,
-      `Failing slate-400 hex (#94a3b8) found in src/. Use #64748b (slate-500) or #475569 (slate-600) — or mark with \`// a11y-contrast:exception\` + rationale + audit doc citation:\n${offenders
+      `Failing slate-500 hex (#94a3b8) found in src/. Use #64748b (slate-500) or #475569 (slate-600) — or mark with \`// a11y-contrast:exception\` + rationale + audit doc citation:\n${offenders
         .map((o) => `  ${o.file}:${o.line}  ${o.text}`)
         .join("\n")}`,
     ).toEqual([]);

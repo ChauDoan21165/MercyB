@@ -34,7 +34,7 @@ export default function FamilyPlanCard({
     return (
       <div className={shellBase} style={{ padding: "16px 18px" }}>
         <div className="flex items-start gap-3">
-          <div className="flex h-[52px] w-[52px] flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-b from-slate-300 to-slate-400">
+          <div className="flex h-[52px] w-[52px] flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-b from-slate-300 to-slate-500">
             <Users className="h-6 w-6 text-white" aria-hidden />
           </div>
           <div>

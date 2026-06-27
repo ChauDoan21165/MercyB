@@ -584,7 +584,7 @@ function Bi({ text }: { text: BilingualPair }) {
       vi={text.vi}
       en={text.en}
       separator={
-        <span className="text-slate-400 mx-1" aria-hidden>
+        <span className="text-slate-500 mx-1" aria-hidden>
           ·
         </span>
       }

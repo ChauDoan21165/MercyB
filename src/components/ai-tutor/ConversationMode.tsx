@@ -443,7 +443,7 @@ export default function ConversationMode({
           }}
           placeholder={modeCopy.placeholder}
           rows={3}
-          className="w-full resize-none rounded-[14px] border border-slate-200 bg-slate-50 p-3 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 transition focus:border-indigo-300 focus:bg-white focus:outline-none"
+          className="w-full resize-none rounded-[14px] border border-slate-200 bg-slate-50 p-3 text-[15px] leading-relaxed text-slate-900 placeholder-slate-500 transition focus:border-indigo-300 focus:bg-white focus:outline-none"
           onKeyDown={(e) => {
             if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) onSend();
           }}
@@ -482,7 +482,7 @@ export default function ConversationMode({
               type="button"
               onClick={onSend}
               disabled={isEmpty || loading || atTurnCap}
-              className="inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-400"
+              className="inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500"
             >
               <Send className="h-4 w-4" aria-hidden />
               {modeCopy.send}

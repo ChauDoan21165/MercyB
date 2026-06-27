@@ -1002,7 +1002,7 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
                   setHasUserEditedDraftSinceTeacherHydration(true);
                 }}
                 placeholder={placeholder}
-                className="min-h-[190px] w-full resize-y border-0 bg-transparent p-0 text-sm leading-7 text-slate-800 outline-none placeholder:text-slate-400 focus:ring-0"
+                className="min-h-[190px] w-full resize-y border-0 bg-transparent p-0 text-sm leading-7 text-slate-800 outline-none placeholder:text-slate-500 focus:ring-0"
               />
             </div>
 
