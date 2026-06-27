@@ -20,7 +20,7 @@ export default function Writing() {
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-6">
       <header className="mb-5">
-        <Link to="/exam/ielts" className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-slate-800">
+        <Link to="/exam/ielts" className="inline-flex items-center gap-1 text-xs text-slate-600 hover:text-slate-800">
           <ChevronLeft size={14} />
           Quay lại tổng quan IELTS · Back to IELTS overview
         </Link>
@@ -32,7 +32,7 @@ export default function Writing() {
           Luyện IELTS Writing Task 2 với đề bài thực tế, dàn bài gợi ý và từ vựng chọn lọc cho người Việt.
         </p>
       </header>
-      <div className="text-xs text-slate-500 mb-3">
+      <div className="text-xs text-slate-600 mb-3">
         {IELTS_WRITING_TOPICS.length} chủ đề Task 2.
       </div>
       <div className="grid gap-3 sm:grid-cols-2">
@@ -43,10 +43,10 @@ export default function Writing() {
               <span className={"inline-block rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider " + (TYPE_BADGES[topic.task_type] ?? "bg-slate-100")}>
                 {TYPE_LABELS[topic.task_type] ?? topic.task_type}
               </span>
-              <span className="ml-auto text-[11px] font-semibold text-slate-500">{topic.recommended_minutes} min</span>
+              <span className="ml-auto text-[11px] font-semibold text-slate-600">{topic.recommended_minutes} min</span>
             </div>
             <h3 className="text-base font-bold text-slate-900">{topic.topic_title_vi}</h3>
-            <p className="text-xs text-slate-500">{topic.topic_title_en}</p>
+            <p className="text-xs text-slate-600">{topic.topic_title_en}</p>
             <p className="mt-1 text-xs leading-relaxed text-slate-600 line-clamp-2">{topic.description_vi}</p>
           </Link>
         ))}

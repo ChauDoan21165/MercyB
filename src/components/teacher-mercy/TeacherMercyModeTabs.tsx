@@ -32,7 +32,7 @@ export default function TeacherMercyModeTabs<TMode extends string>({
             aria-pressed={selected}
             onClick={() => onChange(tab.id)}
             className={`min-h-[46px] rounded-[14px] px-3 text-sm font-black transition ${
-              selected ? "bg-white text-slate-950 shadow-sm" : "text-slate-500 hover:bg-white/70"
+              selected ? "bg-white text-slate-950 shadow-sm" : "text-slate-600 hover:bg-white/70"
             }`}
           >
             {tab.label}

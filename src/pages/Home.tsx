@@ -1222,11 +1222,11 @@ export default function Home() {
                 <p className="text-sm font-semibold text-slate-900">
                   Xem điểm bạn cần luyện
                 </p>
-                <p className="mt-0.5 text-xs text-slate-500">
+                <p className="mt-0.5 text-xs text-slate-600">
                   See what you're working on
                 </p>
               </div>
-              <ChevronRight size={20} className="shrink-0 text-slate-400" aria-hidden="true" />
+              <ChevronRight size={20} className="shrink-0 text-slate-600" aria-hidden="true" />
             </div>
           </button>
 

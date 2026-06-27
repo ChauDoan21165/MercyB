@@ -294,7 +294,7 @@ export default function LanguagesIndexPage() {
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
       <header className="mb-6">
         <h1 className="text-2xl font-bold text-slate-900">{HERO_VI}</h1>
-        <p className="text-sm text-slate-500">{HERO_EN}</p>
+        <p className="text-sm text-slate-600">{HERO_EN}</p>
         <p className="mt-3 text-sm text-slate-700">
           {uiLang === "en" ? SUBTITLE_EN : SUBTITLE_VI}
         </p>
@@ -328,7 +328,7 @@ function CardTile({
         {/* Eyebrow follows the active uiLang (was always-English, a
             cross-language duplicate of the localized <h2> below). In
             EN mode it mirrors the <h2> exactly as it already did. */}
-        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+        <p className="text-xs font-semibold uppercase tracking-wider text-slate-600">
           {uiLang === "en" ? card.title_en : card.title_vi}
         </p>
       </div>

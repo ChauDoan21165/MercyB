@@ -221,7 +221,7 @@ export function TutorMomentumCard({ summary }: MomentumProps) {
         </div>
 
         <div className="mt-3 flex flex-wrap gap-1.5 text-[11px]">
-          <span className="rounded-full bg-white px-2.5 py-1 font-black uppercase text-slate-500">
+          <span className="rounded-full bg-white px-2.5 py-1 font-black uppercase text-slate-600">
             Chế độ
           </span>
           <span className="rounded-full bg-slate-100 px-2.5 py-1 font-bold text-slate-700">

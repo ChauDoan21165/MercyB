@@ -267,10 +267,10 @@ export function LessonRenderer({
               (dualTitle): it carries an English subtitle, not the other
               UI language. Every other module shows a single language. */}
           {dualTitle && (
-            <p className="text-xs text-slate-500">{lesson.title.en}</p>
+            <p className="text-xs text-slate-600">{lesson.title.en}</p>
           )}
           {lesson.title.native && (
-            <p className="text-xs italic text-slate-500 mt-0.5">
+            <p className="text-xs italic text-slate-600 mt-0.5">
               {lesson.title.native}
               {lesson.title.romanization && (
                 <span className="ml-1 not-italic">
@@ -281,7 +281,7 @@ export function LessonRenderer({
           )}
 
           {!open && (
-            <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-500">
+            <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-600">
               {vocabCount > 0 && (
                 <span className="inline-flex items-center gap-1">
                   <BookOpen className="h-3 w-3" /> {vocabCount} {labels.vocabChip}
@@ -375,7 +375,7 @@ export function LessonRenderer({
                     </p>
                   </div>
                   {s.romanization && (
-                    <p className="mt-0.5 text-xs italic text-slate-500">
+                    <p className="mt-0.5 text-xs italic text-slate-600">
                       {s.romanization}
                     </p>
                   )}
@@ -427,7 +427,7 @@ export function LessonRenderer({
                     );
                   })()}
                   {s.note && (
-                    <p className="mt-1 text-[11px] italic text-slate-500">
+                    <p className="mt-1 text-[11px] italic text-slate-600">
                       {s.note}
                     </p>
                   )}
@@ -460,7 +460,7 @@ export function LessonRenderer({
                         {v.native}
                       </span>
                       {v.romanization && (
-                        <span className="text-slate-500 ml-1">
+                        <span className="text-slate-600 ml-1">
                           {v.romanization}
                         </span>
                       )}
@@ -470,7 +470,7 @@ export function LessonRenderer({
                           nativeLanguage,
                         );
                         return gloss ? (
-                          <span className="text-slate-500 ml-2">{gloss}</span>
+                          <span className="text-slate-600 ml-2">{gloss}</span>
                         ) : null;
                       })()}
                       {(() => {
@@ -479,7 +479,7 @@ export function LessonRenderer({
                           nativeLanguage,
                         );
                         return phonetic ? (
-                          <span className="block text-[10px] text-slate-500">
+                          <span className="block text-[10px] text-slate-600">
                             {phonetic}
                           </span>
                         ) : null;
@@ -625,8 +625,8 @@ export function LessonRenderer({
             if (!text) return null;
             const fallback = isNativeFallback(slots, nativeLanguage);
             return (
-              <p className="px-1 text-[11px] italic leading-relaxed text-slate-500">
-                <span className="font-semibold uppercase tracking-wide text-slate-500 not-italic">
+              <p className="px-1 text-[11px] italic leading-relaxed text-slate-600">
+                <span className="font-semibold uppercase tracking-wide text-slate-600 not-italic">
                   {labels.registerHeading}
                   {fallback && (
                     <FallbackBadge
@@ -735,7 +735,7 @@ function ExerciseRow({
         </span>{" "}
         <span>{ex.question}</span>
         {hint && (
-          <span className="block text-[10px] text-slate-500 italic">{hint}</span>
+          <span className="block text-[10px] text-slate-600 italic">{hint}</span>
         )}
         <span className="block text-[10px] text-green-600 mt-0.5">
           → {ex.answer}
@@ -778,7 +778,7 @@ function ExerciseRow({
       <span className="block text-[10px] text-green-600 mt-0.5">
         → {ex.native}
         {ex.romanization && (
-          <span className="text-slate-500 ml-1 italic">
+          <span className="text-slate-600 ml-1 italic">
             ({ex.romanization})
           </span>
         )}
@@ -843,7 +843,7 @@ function DialogueLineRows({
             </span>{" "}
             <span className="text-slate-900 font-medium">{d.native}</span>
             {d.romanization && (
-              <span className="text-slate-500 ml-1 italic">
+              <span className="text-slate-600 ml-1 italic">
                 ({d.romanization})
               </span>
             )}
@@ -863,7 +863,7 @@ function DialogueLineRows({
                 showFallbackBadge &&
                 isNativeFallback({ en: d.en, vi: d.vi, ja: d.ja }, nativeLanguage);
               return (
-                <div className="text-slate-500 ml-5">
+                <div className="text-slate-600 ml-5">
                   {gloss}
                   {fallback && (
                     <FallbackBadge
@@ -945,7 +945,7 @@ function IdiomGlossList({
               {isOpen && (
                 <div className="space-y-0.5 border-t border-teal-50 px-2.5 py-1.5 text-xs">
                   {literal && (
-                    <p className="text-slate-500">
+                    <p className="text-slate-600">
                       <span className="italic">{literal}</span>
                     </p>
                   )}
@@ -960,7 +960,7 @@ function IdiomGlossList({
                     </p>
                   )}
                   {example && (
-                    <p className="italic text-slate-500">{example}</p>
+                    <p className="italic text-slate-600">{example}</p>
                   )}
                 </div>
               )}

@@ -73,7 +73,7 @@ export default function AccentBadge({
             size="sm"
             title="Giọng phát âm · Pronunciation accent"
           />
-          <p className="mt-2 text-[10px] text-slate-500 leading-snug">
+          <p className="mt-2 text-[10px] text-slate-600 leading-snug">
             Mercy sẽ đọc mẫu + chấm theo giọng này. ·{" "}
             <span className="italic">Mercy will speak references and score in this accent.</span>
           </p>

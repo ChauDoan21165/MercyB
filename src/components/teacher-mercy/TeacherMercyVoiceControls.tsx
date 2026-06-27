@@ -46,7 +46,7 @@ export default function TeacherMercyVoiceControls({
     return (
       <div
         role="status"
-        className={`min-h-[44px] rounded-full border border-slate-200 bg-slate-50 px-4 py-2.5 text-center text-xs font-bold text-slate-500 ${className}`}
+        className={`min-h-[44px] rounded-full border border-slate-200 bg-slate-50 px-4 py-2.5 text-center text-xs font-bold text-slate-600 ${className}`}
         data-testid={fallbackTestId}
       >
         <span className="inline-flex items-center justify-center gap-2">

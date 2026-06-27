@@ -65,10 +65,10 @@ export default function PortugueseLessonsPage() {
             ? "Brazilian pronunciation, practical dialogues, vocabulary, grammar, and culture notes across A1 to C2."
             : "Phát âm Brazil, hội thoại thực tế, từ vựng, ngữ pháp và ghi chú văn hoá từ A1 đến C2."}
         </p>
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-3 text-xs text-slate-600">
           {PORTUGUESE_TOTAL_LESSONS} {uiLang === "en" ? "lessons" : "bài"} · A1 → C2
         </p>
-        <p className="mt-1 text-xs text-slate-500">
+        <p className="mt-1 text-xs text-slate-600">
           <Link
             to="/languages"
             className="font-medium text-emerald-700 underline"
@@ -103,7 +103,7 @@ export default function PortugueseLessonsPage() {
       </nav>
 
       {lessons.length === 0 ? (
-        <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
+        <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-600">
           {uiLang === "en"
             ? "No lessons available for this level yet."
             : "Chưa có bài học cho cấp độ này."}
@@ -146,7 +146,7 @@ function CategorySection({
         <h2 className="text-base font-semibold text-slate-900">
           {uiLanguage === "en" ? category.title_en : category.title_vi}
         </h2>
-        <span className="text-xs text-slate-500">
+        <span className="text-xs text-slate-600">
           {lessons.length}{" "}
           {uiLanguage === "en"
             ? lessons.length === 1

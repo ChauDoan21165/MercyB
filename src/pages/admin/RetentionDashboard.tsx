@@ -83,7 +83,7 @@ const TIER_COLOR: Record<RetentionTier, { bg: string; fg: string }> = {
   yellow: { bg: "#fef3c7", fg: "#92400e" },
   green:  { bg: "#d1fae5", fg: "#065f46" },
   // n/a cell uses slate-600 fg on slate-100 bg (6.4:1 PASSES AA). Earlier
-  // slate-400 / slate-500 fg both failed against slate-100 — see the
+  // slate-500 / slate-500 fg both failed against slate-100 — see the
   // wave-3 LessonRenderer FallbackBadge precedent in
   // docs/a11y/audit.md §"Color contrast — at-a-glance".
   "n/a":  { bg: "#f1f5f9", fg: "#475569" },

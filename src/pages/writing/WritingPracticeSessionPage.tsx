@@ -220,7 +220,7 @@ export default function WritingPracticeSessionPage() {
           <h1 className="text-xl font-semibold text-slate-900 md:text-2xl">
             {prompt.title_vi}
           </h1>
-          <p className="mt-0.5 text-sm italic text-slate-500">
+          <p className="mt-0.5 text-sm italic text-slate-600">
             {prompt.title_en}
           </p>
           <p className="mt-3 text-sm leading-6 text-slate-800">
@@ -229,7 +229,7 @@ export default function WritingPracticeSessionPage() {
           <p className="mt-2 text-[12px] italic leading-5 text-slate-600">
             {prompt.scenario_en}
           </p>
-          <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+          <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-600">
             Mục tiêu · Target: {prompt.target_words_min}–
             {prompt.target_words_max} từ
           </p>
@@ -242,7 +242,7 @@ export default function WritingPracticeSessionPage() {
             onChange={(e) => setText(e.target.value)}
             disabled={submitting || !!feedback}
             placeholder="Viết bài của bạn tại đây... · Write your draft here..."
-            className="min-h-[220px] w-full resize-y rounded-2xl border border-[#E5CDB9] bg-white p-4 text-base leading-7 text-slate-900 shadow-sm outline-none transition placeholder:text-slate-500 focus:border-[#EFA98B] focus:ring-2 focus:ring-[#FFD3BF] disabled:bg-slate-50 disabled:text-slate-700 md:min-h-[280px]"
+            className="min-h-[220px] w-full resize-y rounded-2xl border border-[#E5CDB9] bg-white p-4 text-base leading-7 text-slate-900 shadow-sm outline-none transition placeholder:text-slate-600 focus:border-[#EFA98B] focus:ring-2 focus:ring-[#FFD3BF] disabled:bg-slate-50 disabled:text-slate-700 md:min-h-[280px]"
             aria-label="Writing submission"
           />
           <div className="mt-1.5 flex flex-wrap items-center justify-between gap-2 text-[11px]">
@@ -251,14 +251,14 @@ export default function WritingPracticeSessionPage() {
                 inRange
                   ? "text-emerald-700"
                   : tooShort
-                    ? "text-slate-500"
+                    ? "text-slate-600"
                     : "text-amber-700"
               }`}
             >
               {wordCount} / {prompt.target_words_min}–
               {prompt.target_words_max} từ
             </span>
-            <span className="italic text-slate-500">
+            <span className="italic text-slate-600">
               Tự động lưu nháp · Drafts auto-saved
             </span>
           </div>
@@ -276,7 +276,7 @@ export default function WritingPracticeSessionPage() {
               {submitting ? "Đang chấm bài..." : "Gửi bài · Submit"}
             </button>
             {tooShort ? (
-              <span className="text-[12px] text-slate-500">
+              <span className="text-[12px] text-slate-600">
                 Cần thêm{" "}
                 <strong>{prompt.target_words_min - wordCount}</strong> từ nữa
               </span>
@@ -345,7 +345,7 @@ function FeedbackPanel({
         <div className="flex items-baseline justify-between gap-3">
           <p className={`text-3xl font-bold tabular-nums ${scoreTone.text}`}>
             {feedback.score}
-            <span className="text-sm font-medium text-slate-500"> / 100</span>
+            <span className="text-sm font-medium text-slate-600"> / 100</span>
           </p>
           <span className={`text-[11px] font-semibold uppercase tracking-wide ${scoreTone.text}`}>
             Điểm · Score
@@ -388,7 +388,7 @@ function FeedbackPanel({
                   <span className="font-semibold text-rose-700 line-through decoration-rose-400">
                     {c.original}
                   </span>{" "}
-                  <span className="text-slate-500">→</span>{" "}
+                  <span className="text-slate-600">→</span>{" "}
                   <span className="font-semibold text-emerald-700">
                     {c.suggested}
                   </span>
@@ -399,7 +399,7 @@ function FeedbackPanel({
                   </p>
                 ) : null}
                 {c.reason_en ? (
-                  <p className="mt-0.5 text-[11px] italic text-slate-500">
+                  <p className="mt-0.5 text-[11px] italic text-slate-600">
                     {c.reason_en}
                   </p>
                 ) : null}
@@ -425,7 +425,7 @@ function FeedbackPanel({
                   <span className="font-semibold text-slate-700">
                     {v.user_word}
                   </span>{" "}
-                  <span className="text-slate-500">→</span>{" "}
+                  <span className="text-slate-600">→</span>{" "}
                   <span className="font-semibold text-sky-800">
                     {v.better}
                   </span>
@@ -436,7 +436,7 @@ function FeedbackPanel({
                   </p>
                 ) : null}
                 {v.context_en ? (
-                  <p className="mt-0.5 text-[11px] italic text-slate-500">
+                  <p className="mt-0.5 text-[11px] italic text-slate-600">
                     {v.context_en}
                   </p>
                 ) : null}
@@ -459,9 +459,9 @@ function FeedbackPanel({
                 className="rounded-xl border border-amber-100 bg-amber-50/40 p-3 text-[13px]"
               >
                 <p className="text-slate-700">
-                  <span className="italic text-slate-500">"</span>
+                  <span className="italic text-slate-600">"</span>
                   {g.snippet}
-                  <span className="italic text-slate-500">"</span>
+                  <span className="italic text-slate-600">"</span>
                 </p>
                 <p className="mt-1 text-emerald-700">
                   → <span className="font-semibold">{g.corrected}</span>
@@ -470,7 +470,7 @@ function FeedbackPanel({
                   <p className="mt-1 text-[12px] text-slate-700">{g.rule_vi}</p>
                 ) : null}
                 {g.rule_en ? (
-                  <p className="mt-0.5 text-[11px] italic text-slate-500">
+                  <p className="mt-0.5 text-[11px] italic text-slate-600">
                     {g.rule_en}
                   </p>
                 ) : null}

@@ -95,7 +95,7 @@ function TeacherMercyLearningShellInner<TMode extends string>(
                 {subtitle}
               </p>
               {helper && (
-                <p className="mt-1 text-xs font-medium leading-5 text-slate-500" style={{ overflowWrap: "break-word", wordBreak: "normal" }}>
+                <p className="mt-1 text-xs font-medium leading-5 text-slate-600" style={{ overflowWrap: "break-word", wordBreak: "normal" }}>
                   {helper}
                 </p>
               )}
@@ -119,7 +119,7 @@ function TeacherMercyLearningShellInner<TMode extends string>(
         </div>
 
         {footer && (
-          <footer className="border-t border-slate-100 bg-slate-50 px-4 py-3 text-center text-[11px] font-medium text-slate-500">
+          <footer className="border-t border-slate-100 bg-slate-50 px-4 py-3 text-center text-[11px] font-medium text-slate-600">
             {footer}
           </footer>
         )}

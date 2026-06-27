@@ -57,7 +57,7 @@ export default function SpeakingTopic() {
       <header className="mb-5">
         <Link
           to="/exam-prep/ielts/speaking"
-          className="text-xs text-slate-500 hover:text-slate-800"
+          className="text-xs text-slate-600 hover:text-slate-800"
         >
           ← Tất cả chủ đề Speaking · All Speaking topics
         </Link>
@@ -65,14 +65,14 @@ export default function SpeakingTopic() {
           <span className="text-[10px] uppercase tracking-wide font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
             IELTS Speaking · Part {topic.part}
           </span>
-          <span className="text-xs text-slate-500">
+          <span className="text-xs text-slate-600">
             · {topic.estimated_time_minutes} phút · min
           </span>
         </div>
         <h1 className="text-2xl font-bold text-slate-900">
           {topic.topic_title_vi}
         </h1>
-        <p className="text-sm italic text-slate-500 mt-1">
+        <p className="text-sm italic text-slate-600 mt-1">
           {topic.topic_title_en}
         </p>
       </header>
@@ -141,7 +141,7 @@ export default function SpeakingTopic() {
               <div className="text-sm text-slate-700">
                 {v.vi_translation}
               </div>
-              <div className="text-xs text-slate-500 italic mt-2 leading-relaxed">
+              <div className="text-xs text-slate-600 italic mt-2 leading-relaxed">
                 "{v.example_use_in_topic}"
               </div>
             </div>
@@ -179,7 +179,7 @@ export default function SpeakingTopic() {
         <p className="text-sm text-slate-800 leading-relaxed">
           {topic.sample_weak_answer_band_5}
         </p>
-        <p className="text-[11px] text-slate-500 italic mt-2">
+        <p className="text-[11px] text-slate-600 italic mt-2">
           Ghi chú trong [ngoặc vuông] chỉ rõ lỗi cần sửa.
           · Annotations in [square brackets] mark specific weaknesses.
         </p>

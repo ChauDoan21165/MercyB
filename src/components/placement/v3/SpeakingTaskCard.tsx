@@ -37,7 +37,7 @@ export function SpeakingTaskCard({
             <div className="text-sm font-black text-slate-800">
               {fallback ? "Microphone unavailable" : "Record your answer"}
             </div>
-            <div className="text-xs font-medium text-slate-500">
+            <div className="text-xs font-medium text-slate-600">
               {fallback ? "Không dùng được micro" : "Ghi âm câu trả lời"}
             </div>
           </div>

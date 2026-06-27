@@ -565,9 +565,9 @@ export default function Pricing() {
     // field on `Plan`. Tolerates missing / shorter VI arrays gracefully —
     // falls back to EN-only render if the VI string at the same index is
     // absent. Color is slate-500 (#64748b, 4.78:1 contrast on white) per
-    // the !64 a11y-contrast audit; do NOT switch to slate-400 even though
+    // the !64 a11y-contrast audit; do NOT switch to slate-500 even though
     // sibling muted styles still use it — the audit test forbids the
-    // failing slate-400 hex in audit-fixed files (which this file is,
+    // failing slate-500 hex in audit-fixed files (which this file is,
     // post-!58 batch-2 alignment).
     const bulletViStyle: React.CSSProperties = {
       display: "block",

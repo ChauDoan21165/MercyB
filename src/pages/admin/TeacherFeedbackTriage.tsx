@@ -230,7 +230,7 @@ export default function TeacherFeedbackTriage(): React.ReactElement {
 
       <section className="mb-5 grid grid-cols-1 gap-3 sm:grid-cols-3" aria-label="Bộ lọc">
         <div>
-          <label className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">
             Mức độ
           </label>
           <select
@@ -246,7 +246,7 @@ export default function TeacherFeedbackTriage(): React.ReactElement {
           </select>
         </div>
         <div>
-          <label className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">
             Loại nội dung
           </label>
           <select
@@ -262,7 +262,7 @@ export default function TeacherFeedbackTriage(): React.ReactElement {
           </select>
         </div>
         <div>
-          <label className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">
             Giáo viên
           </label>
           <select
@@ -287,7 +287,7 @@ export default function TeacherFeedbackTriage(): React.ReactElement {
       )}
 
       {filtered && filtered.length === 0 && !error && (
-        <p className="text-sm text-slate-500">Không có phản hồi nào.</p>
+        <p className="text-sm text-slate-600">Không có phản hồi nào.</p>
       )}
 
       <ul className="space-y-3">
@@ -307,7 +307,7 @@ export default function TeacherFeedbackTriage(): React.ReactElement {
                   <p className="break-all font-mono text-sm font-bold text-slate-900">
                     {row.content_id}
                   </p>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-slate-600">
                     {CONTENT_TYPE_LABEL_VI[row.content_type as ContentType] ?? row.content_type}
                     {" · "}
                     Mức độ {row.severity}
@@ -341,7 +341,7 @@ export default function TeacherFeedbackTriage(): React.ReactElement {
                 </pre>
               )}
 
-              <p className="mt-2 text-xs text-slate-500">
+              <p className="mt-2 text-xs text-slate-600">
                 {new Date(row.created_at).toLocaleString("vi-VN")}
               </p>
 

@@ -107,7 +107,7 @@ export default function LogicMode({ latestCorrectedSentence, latestSourceSentenc
         >
           {latestSourceSentence && (
             <>
-              <div className="text-xs font-black uppercase text-slate-500">
+              <div className="text-xs font-black uppercase text-slate-600">
                 Câu người học hiện tại
               </div>
               <p className="mt-1 text-sm font-bold leading-6 text-slate-800">
@@ -131,7 +131,7 @@ export default function LogicMode({ latestCorrectedSentence, latestSourceSentenc
         </div>
       )}
 
-      <label className="mt-4 block text-xs font-black uppercase text-slate-500" htmlFor="ai-tutor-logic-pattern">
+      <label className="mt-4 block text-xs font-black uppercase text-slate-600" htmlFor="ai-tutor-logic-pattern">
         Chọn mẫu Vietlish
       </label>
       <select
@@ -154,7 +154,7 @@ export default function LogicMode({ latestCorrectedSentence, latestSourceSentenc
       {activeExplanation && <PatternExplanation pattern={activeExplanation} />}
 
       <div className="mt-5 rounded-[16px] border border-slate-200 bg-slate-50 px-4 py-4">
-        <label className="text-xs font-black uppercase text-slate-500" htmlFor="ai-tutor-logic-free-text">
+        <label className="text-xs font-black uppercase text-slate-600" htmlFor="ai-tutor-logic-free-text">
           Hoặc nhập câu muốn giải thích
         </label>
         <textarea
@@ -162,14 +162,14 @@ export default function LogicMode({ latestCorrectedSentence, latestSourceSentenc
           value={freeText}
           onChange={(event) => setFreeText(event.target.value.slice(0, 500))}
           rows={3}
-          className="mt-2 w-full resize-none rounded-[12px] border border-slate-200 bg-white p-3 text-[15px] leading-relaxed text-slate-900 placeholder-slate-400 focus:border-indigo-300 focus:outline-none"
+          className="mt-2 w-full resize-none rounded-[12px] border border-slate-200 bg-white p-3 text-[15px] leading-relaxed text-slate-900 placeholder-slate-500 focus:border-indigo-300 focus:outline-none"
           placeholder="Nhập một câu tiếng Anh hoặc Vietlish..."
         />
         <button
           type="button"
           onClick={handleExplainFreeText}
           disabled={!freeText.trim()}
-          className="mt-3 min-h-[44px] w-full rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-400 sm:w-auto"
+          className="mt-3 min-h-[44px] w-full rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-600 sm:w-auto"
         >
           Giải thích câu này
         </button>
@@ -220,7 +220,7 @@ function PatternExplanation({ pattern }: { pattern: LogicExplanation }) {
         </p>
       </div>
       <div className="rounded-[16px] border border-slate-200 bg-white px-4 py-4">
-        <div className="text-xs font-black uppercase text-slate-500">
+        <div className="text-xs font-black uppercase text-slate-600">
           Mẹo nhớ
         </div>
         <p className="mt-1 text-sm font-semibold leading-6 text-slate-800">

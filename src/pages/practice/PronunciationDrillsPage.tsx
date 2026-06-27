@@ -81,7 +81,7 @@ function TonePairCard({ pair }: { pair: PendingTonePair }) {
           speakers, so the English gloss leads; the Vietnamese gloss (tone
           names + example words being taught) stays as the secondary line. */}
       <p className="text-sm font-black leading-6 text-slate-900">{pair.glossEn}</p>
-      <p className="mt-0.5 text-xs font-semibold leading-5 text-slate-500">{pair.glossVi}</p>
+      <p className="mt-0.5 text-xs font-semibold leading-5 text-slate-600">{pair.glossVi}</p>
       {listenOnly && (
         <p className="mt-2 inline-block rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-[11px] font-black text-amber-800">
           Listen &amp; compare only — not scored
@@ -164,8 +164,8 @@ export default function PronunciationDrillsPage() {
                   >
                     <div className="flex flex-wrap items-baseline gap-2">
                       <span className="text-base font-black text-slate-900">{p.target}</span>
-                      <span className="text-xs font-bold text-slate-500">vs</span>
-                      <span className="text-base font-bold text-slate-500">{p.contrast}</span>
+                      <span className="text-xs font-bold text-slate-600">vs</span>
+                      <span className="text-base font-bold text-slate-600">{p.contrast}</span>
                     </div>
                     <p className="mt-0.5 text-xs font-semibold leading-5 text-slate-600">
                       {p.vnWhyConfused}

@@ -95,7 +95,7 @@ export function CohortRetentionChart({
   }, [rows, cohortLimit]);
 
   if (rows === null && !error) {
-    return <p className="text-sm text-slate-500">Loading cohort retention…</p>;
+    return <p className="text-sm text-slate-600">Loading cohort retention…</p>;
   }
   if (error) {
     return (
@@ -106,7 +106,7 @@ export function CohortRetentionChart({
   }
   if (!series || series.length === 0 || cohorts.length === 0) {
     return (
-      <p className="text-sm text-slate-500">
+      <p className="text-sm text-slate-600">
         No cohort retention data yet.
       </p>
     );

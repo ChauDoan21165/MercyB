@@ -60,7 +60,7 @@ export default function CorporateDashboardPage() {
   if (account === undefined) {
     return (
       <main className="px-4 py-6 max-w-3xl mx-auto">
-        <p className="text-sm text-slate-500">Đang tải…</p>
+        <p className="text-sm text-slate-600">Đang tải…</p>
       </main>
     );
   }
@@ -106,7 +106,7 @@ export default function CorporateDashboardPage() {
       >
         <h2 className="text-base font-semibold mb-3">
           Thành viên hiện có
-          <span className="text-slate-500 font-normal ml-2">Members</span>
+          <span className="text-slate-600 font-normal ml-2">Members</span>
         </h2>
         <SeatList corporateAccountId={account.id} isAdmin />
       </section>

@@ -48,7 +48,7 @@ export default function StudyPathCard({
       className="rounded-2xl border border-indigo-100 bg-white/80 p-4 shadow-sm"
     >
       <h3 className="text-sm font-black text-indigo-900">Lộ trình học của bạn</h3>
-      <p className="mt-0.5 text-xs font-bold text-slate-500">Ưu tiên luyện trước:</p>
+      <p className="mt-0.5 text-xs font-bold text-slate-600">Ưu tiên luyện trước:</p>
       <ul className="mt-2 space-y-2">
         {top.map((item) => (
           <li key={item.patternId} data-testid="study-path-top-item" className="rounded-xl bg-indigo-50/60 p-2.5">
@@ -75,7 +75,7 @@ export default function StudyPathCard({
           {showUpcoming && (
             <ul className="mt-2 space-y-1">
               {upcoming.map((item) => (
-                <li key={item.patternId} data-testid="study-path-upcoming-item" className="text-xs font-medium text-slate-500">
+                <li key={item.patternId} data-testid="study-path-upcoming-item" className="text-xs font-medium text-slate-600">
                   {item.name}
                 </li>
               ))}

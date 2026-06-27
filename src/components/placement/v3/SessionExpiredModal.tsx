@@ -20,14 +20,14 @@ export function SessionExpiredModal({ open, onStartNew }: Props) {
         <DialogHeader>
           <DialogTitle>
             This session expired
-            <span className="mt-1 block text-sm font-medium text-slate-500">
+            <span className="mt-1 block text-sm font-medium text-slate-600">
               Phiên đánh giá đã hết hạn
             </span>
           </DialogTitle>
           <DialogDescription>
             Start a fresh placement test so your level is based on one complete
             attempt.
-            <span className="mt-2 block text-slate-500">
+            <span className="mt-2 block text-slate-600">
               Hãy bắt đầu bài mới để kết quả dựa trên một lần làm hoàn chỉnh.
             </span>
           </DialogDescription>

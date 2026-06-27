@@ -145,18 +145,18 @@ export default function TOEFLEstimatorPage() {
           <div className="mt-3 grid grid-cols-4 gap-2 text-center">
             {(["readingScaled", "listeningScaled", "speakingScaled", "writingScaled"] as const).map((key) => (
               <div key={key} className="rounded-lg border border-slate-200 bg-white p-2">
-                <p className="text-[10px] uppercase text-slate-500">{key.replace("Scaled", "")}</p>
+                <p className="text-[10px] uppercase text-slate-600">{key.replace("Scaled", "")}</p>
                 <p className="text-sm font-bold text-slate-900">{estimate[key]}/30</p>
               </div>
             ))}
           </div>
 
           <p className="mt-2 text-xs text-slate-700">{estimate.band.description_vi}</p>
-          <p className="mt-3 text-[11px] italic text-slate-500">{TOEFL_COPY.estimatorCaveat.vi}</p>
+          <p className="mt-3 text-[11px] italic text-slate-600">{TOEFL_COPY.estimatorCaveat.vi}</p>
         </div>
       ) : (
         <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 text-center">
-          <p className="text-sm text-slate-500">Nhập điểm các kỹ năng để xem kết quả.</p>
+          <p className="text-sm text-slate-600">Nhập điểm các kỹ năng để xem kết quả.</p>
         </div>
       )}
 

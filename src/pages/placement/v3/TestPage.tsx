@@ -146,7 +146,7 @@ export default function TestPage() {
           <Button
             type="button"
             variant="ghost"
-            className="rounded-full text-slate-500"
+            className="rounded-full text-slate-600"
             onClick={() => setAbandonOpen(true)}
             aria-label="Leave placement test · Rời bài kiểm tra trình độ"
           >

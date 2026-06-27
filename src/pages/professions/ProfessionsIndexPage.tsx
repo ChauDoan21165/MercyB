@@ -158,7 +158,7 @@ export default function ProfessionsIndexPage() {
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
       <header className="mb-6">
         <h1 className="text-2xl font-bold text-slate-900">{HERO_VI}</h1>
-        <p className="text-sm text-slate-500">{HERO_EN}</p>
+        <p className="text-sm text-slate-600">{HERO_EN}</p>
         <p className="mt-3 text-sm text-slate-700">{SUBTITLE_VI}</p>
       </header>
 
@@ -181,11 +181,11 @@ function CardTile({ card }: { card: Card }) {
     >
       <div className="flex items-center gap-2">
         <card.Icon className={`h-5 w-5 ${accent.icon}`} />
-        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+        <p className="text-xs font-semibold uppercase tracking-wider text-slate-600">
           {card.title_en}
         </p>
         {card.status === "soon" && (
-          <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-white/80 px-2 py-0.5 text-[10px] font-medium text-slate-500">
+          <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-white/80 px-2 py-0.5 text-[10px] font-medium text-slate-600">
             <Lock className="h-3 w-3" />
             Sắp ra mắt
           </span>

@@ -528,13 +528,13 @@ describe("<Bilingual>", () => {
     it("matches the W2 inline shape (stage-3a row title pair)", () => {
       // Inline pattern:
       //   <p lang="vi" className="text-sm font-semibold leading-snug text-slate-900">{vi}</p>
-      //   <p lang="en" className="mt-0.5 text-[12px] leading-snug text-slate-500">{en}</p>
+      //   <p lang="en" className="mt-0.5 text-[12px] leading-snug text-slate-600">{en}</p>
       const { container } = render(
         <Bilingual
           vi="Lỗi 3rd person -s"
           en="3rd person -s error"
           viClassName="text-sm font-semibold leading-snug text-slate-900"
-          enClassName="mt-0.5 text-[12px] leading-snug text-slate-500"
+          enClassName="mt-0.5 text-[12px] leading-snug text-slate-600"
         />,
       );
       const [first, second] = Array.from(container.children);
@@ -546,7 +546,7 @@ describe("<Bilingual>", () => {
       expect(second.tagName).toBe("P");
       expect(second.getAttribute("lang")).toBe("en");
       expect(second.className).toBe(
-        "mt-0.5 text-[12px] leading-snug text-slate-500",
+        "mt-0.5 text-[12px] leading-snug text-slate-600",
       );
     });
 

@@ -13,7 +13,7 @@ export function GapAnalysisSection({ strengths, gaps }: Props) {
         <BilingualLabel
           text={{ en: "Strengths", vi: "Điểm mạnh" }}
           enClassName="text-lg font-black text-slate-950"
-          viClassName="text-sm font-medium text-slate-500"
+          viClassName="text-sm font-medium text-slate-600"
         />
         <ul className="mt-4 space-y-3">
           {strengths.map((item) => (
@@ -21,7 +21,7 @@ export function GapAnalysisSection({ strengths, gaps }: Props) {
               <BilingualLabel
                 text={item}
                 enClassName="text-sm font-bold leading-6 text-slate-700"
-                viClassName="text-xs font-medium leading-5 text-slate-500"
+                viClassName="text-xs font-medium leading-5 text-slate-600"
               />
             </li>
           ))}
@@ -31,7 +31,7 @@ export function GapAnalysisSection({ strengths, gaps }: Props) {
         <BilingualLabel
           text={{ en: "Next gaps", vi: "Khoảng trống cần lấp" }}
           enClassName="text-lg font-black text-slate-950"
-          viClassName="text-sm font-medium text-slate-500"
+          viClassName="text-sm font-medium text-slate-600"
         />
         <ul className="mt-4 space-y-3">
           {gaps.map((item) => (
@@ -39,7 +39,7 @@ export function GapAnalysisSection({ strengths, gaps }: Props) {
               <BilingualLabel
                 text={item}
                 enClassName="text-sm font-bold leading-6 text-slate-700"
-                viClassName="text-xs font-medium leading-5 text-slate-500"
+                viClassName="text-xs font-medium leading-5 text-slate-600"
               />
             </li>
           ))}

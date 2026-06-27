@@ -58,7 +58,7 @@ export default function LessonUiLangToggle({ value, onChange }: Props) {
         className={`rounded-full px-2.5 py-0.5 uppercase tracking-wide transition ${
           value === "vi"
             ? "bg-slate-900 text-white"
-            : "text-slate-500 hover:text-slate-700"
+            : "text-slate-600 hover:text-slate-700"
         }`}
       >
         VI
@@ -70,7 +70,7 @@ export default function LessonUiLangToggle({ value, onChange }: Props) {
         className={`rounded-full px-2.5 py-0.5 uppercase tracking-wide transition ${
           value === "en"
             ? "bg-slate-900 text-white"
-            : "text-slate-500 hover:text-slate-700"
+            : "text-slate-600 hover:text-slate-700"
         }`}
       >
         EN

@@ -120,7 +120,7 @@ export default function LeaderboardCard() {
               <div className="mt-1 text-[13px] font-semibold leading-snug text-slate-600">
                 {leaderboardCopy.notOnBoardBody.en}
               </div>
-              <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-500">
+              <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-600">
                 {leaderboardCopy.notOnBoardBody.vi}
               </div>
             </div>
@@ -149,7 +149,7 @@ function Header() {
         <div className="mt-1.5 text-[13px] font-semibold leading-snug text-slate-600">
           {leaderboardCopy.subtitle.en}
         </div>
-        <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-500">
+        <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-600">
           {leaderboardCopy.subtitle.vi}
         </div>
       </div>
@@ -198,7 +198,7 @@ function Row({
             </span>
           )}
         </div>
-        <div className="truncate text-[11px] text-slate-500">
+        <div className="truncate text-[11px] text-slate-600">
           {entry.lessonsCompleted} {leaderboardCopy.lessonsLabel.en}
           {entry.streakDays > 0 && (
             <>
@@ -233,7 +233,7 @@ function EmptyState() {
       <div className="mt-1 text-[13px] font-semibold leading-snug text-slate-600">
         {leaderboardCopy.emptyBody.en}
       </div>
-      <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-500">
+      <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-600">
         {leaderboardCopy.emptyBody.vi}
       </div>
     </div>

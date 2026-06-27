@@ -74,7 +74,7 @@ const RATING_COLOR: Record<VitalRating, string> = {
   good: "#10b981",
   needs_improvement: "#f59e0b",
   poor: "#ef4444",
-  no_data: "#94a3b8", // a11y-contrast:exception — used as borderColor on the rating chip (WCAG 1.4.11 non-text 3:1; slate-400 on white = 3.13:1 PASSES). Not text. Audit doc §wave-5.
+  no_data: "#94a3b8", // a11y-contrast:exception — used as borderColor on the rating chip (WCAG 1.4.11 non-text 3:1; slate-500 on white = 3.13:1 PASSES). Not text. Audit doc §wave-5.
 };
 const RATING_LABEL_VI: Record<VitalRating, string> = {
   good: "Tốt",

@@ -143,7 +143,7 @@ export default function ShareProgressPage(): React.ReactElement {
     return (
       <main className="mx-auto flex min-h-[60vh] max-w-md flex-col items-center justify-center px-4 text-center">
         <h1 className="text-xl font-semibold">Cần đăng nhập</h1>
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-sm text-slate-600">
           Đăng nhập để tạo ảnh chia sẻ tiến độ.
         </p>
         <Link to="/signin" className="mt-4 text-amber-600 underline">
@@ -156,7 +156,7 @@ export default function ShareProgressPage(): React.ReactElement {
   if (loading || !stats) {
     return (
       <main className="mx-auto flex min-h-[60vh] max-w-md flex-col items-center justify-center px-4 text-center">
-        <p className="text-sm text-slate-500">Đang tạo ảnh chia sẻ…</p>
+        <p className="text-sm text-slate-600">Đang tạo ảnh chia sẻ…</p>
       </main>
     );
   }
@@ -171,7 +171,7 @@ export default function ShareProgressPage(): React.ReactElement {
             <h1 className="text-xl font-semibold text-slate-900">
               Chia sẻ tiến độ / Share progress
             </h1>
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-slate-600">
               Lưu ảnh và đăng lên Facebook hoặc Zalo của bạn.
             </p>
           </header>
@@ -205,7 +205,7 @@ export default function ShareProgressPage(): React.ReactElement {
             </Button>
           </div>
 
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-600">
             Bạn có thể chia sẻ ảnh và link hồ sơ công khai (nếu đã bật):{" "}
             {stats.username ? (
               <Link
@@ -265,7 +265,7 @@ export function FamilyShareSection({
           <h2 className="text-base font-semibold text-slate-900" lang="vi">
             Gửi cho gia đình
           </h2>
-          <p className="text-sm text-slate-500" lang="vi">
+          <p className="text-sm text-slate-600" lang="vi">
             Sao chép tin nhắn để gửi cho ba mẹ hoặc người thân.
           </p>
         </header>

@@ -33,11 +33,11 @@ export function WritingTaskCard({ task, value, onChange }: Props) {
       <div className="mt-3 flex items-center justify-between gap-3 text-sm">
         <span id="placement-writing-word-count" aria-live="polite" className={enough ? "font-bold text-emerald-700" : "font-bold text-slate-600"}>
           {words} words
-          <span className="block text-xs font-medium text-slate-500">
+          <span className="block text-xs font-medium text-slate-600">
             {words} từ
           </span>
         </span>
-        <span id="placement-writing-minimum" className="text-right text-xs font-medium text-slate-500">
+        <span id="placement-writing-minimum" className="text-right text-xs font-medium text-slate-600">
           Minimum {min} words
           <span className="block">Tối thiểu {min} từ</span>
         </span>

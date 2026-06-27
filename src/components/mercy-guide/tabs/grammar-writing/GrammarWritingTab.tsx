@@ -1002,7 +1002,7 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
                   setHasUserEditedDraftSinceTeacherHydration(true);
                 }}
                 placeholder={placeholder}
-                className="min-h-[190px] w-full resize-y border-0 bg-transparent p-0 text-sm leading-7 text-slate-800 outline-none placeholder:text-slate-400 focus:ring-0"
+                className="min-h-[190px] w-full resize-y border-0 bg-transparent p-0 text-sm leading-7 text-slate-800 outline-none placeholder:text-slate-600 focus:ring-0"
               />
             </div>
 
@@ -1057,7 +1057,7 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
                 <div>
                   <p className="text-sm font-semibold text-slate-900">{teacherEmphasis.title}</p>
                   {teacherEmphasis.subtitle ? (
-                    <p className="text-xs text-slate-500">{teacherEmphasis.subtitle}</p>
+                    <p className="text-xs text-slate-600">{teacherEmphasis.subtitle}</p>
                   ) : null}
                   <p className="mt-2 text-sm leading-6 text-slate-700">{teacherEmphasis.body}</p>
                 </div>
@@ -1069,7 +1069,7 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
             <>
               <div className="space-y-4 rounded-3xl border border-orange-100/80 bg-gradient-to-br from-white via-[#FFFDFC] to-[#F8FFFC] p-5 shadow-[0_10px_28px_rgba(148,163,184,0.06)]">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                     Your sentence
                   </p>
                   <p className="mt-1 text-sm leading-6 text-slate-700">{sourceText}</p>
@@ -1235,7 +1235,7 @@ Paste or write your English here. Mercy will keep the teacher focus while correc
 
                 {result.explanation ? (
                   <div className="rounded-2xl border border-orange-100/80 bg-orange-50/40 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                       Why Mercy changed it
                     </p>
 

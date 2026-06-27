@@ -39,7 +39,7 @@ const TIER_COLORS: Record<string, string> = {
   level4: "bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400",
   level5: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400",
   level6: "bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400",
-  level9: "bg-slate-100 text-slate-700 dark:bg-slate-900/30 dark:text-slate-400",
+  level9: "bg-slate-100 text-slate-700 dark:bg-slate-900/30 dark:text-slate-300",
   kids_1: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400",
   kids_2: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400",
   kids_3: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400",

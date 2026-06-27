@@ -16,7 +16,7 @@ export default function SpeakingTopic() {
   if (!topic) {
     return (
       <div className="mx-auto w-full max-w-3xl px-4 py-6 text-center">
-        <p className="text-slate-500">Topic not found.</p>
+        <p className="text-slate-600">Topic not found.</p>
         <Link to="/exam-prep/toefl/speaking" className="text-sm text-emerald-700 underline">Back to Speaking topics</Link>
       </div>
     );
@@ -25,12 +25,12 @@ export default function SpeakingTopic() {
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
       <header className="mb-5">
-        <Link to="/exam-prep/toefl/speaking" className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-slate-800">
+        <Link to="/exam-prep/toefl/speaking" className="inline-flex items-center gap-1 text-xs text-slate-600 hover:text-slate-800">
           <ChevronLeft size={14} />Quay lại danh sách chủ đề
         </Link>
         <h1 className="mt-2 text-xl font-bold text-slate-900">{topic.topic_title_vi}</h1>
-        <p className="text-sm text-slate-500">{topic.topic_title_en}</p>
-        <div className="mt-1 flex items-center gap-2 text-xs text-slate-500">
+        <p className="text-sm text-slate-600">{topic.topic_title_en}</p>
+        <div className="mt-1 flex items-center gap-2 text-xs text-slate-600">
           <span className="rounded bg-slate-100 px-1.5 py-0.5 uppercase">Task {topic.task_number} — {topic.task_type.replace(/_/g, " ")}</span>
           <span>·</span><Clock size={12} /><span>Prep: {topic.preparation_seconds}s</span>
           <span>·</span><span>Speak: {topic.speaking_seconds}s</span>
@@ -40,7 +40,7 @@ export default function SpeakingTopic() {
       <div className="rounded-xl border border-slate-200 bg-white p-4 mb-4">
         <h2 className="text-sm font-bold text-slate-700 mb-1">Đề bài (Prompt)</h2>
         <p className="text-sm leading-relaxed text-slate-800 whitespace-pre-line">{topic.prompt_vi}</p>
-        <p className="mt-2 text-xs italic text-slate-500 whitespace-pre-line">{topic.prompt_en}</p>
+        <p className="mt-2 text-xs italic text-slate-600 whitespace-pre-line">{topic.prompt_en}</p>
       </div>
 
       {topic.reading_passage && (
@@ -88,8 +88,8 @@ export default function SpeakingTopic() {
           <ul className="space-y-2">{topic.key_vocabulary.map((v: TOEFLSpeakingVocabularyItem, i: number) => (
             <li key={i} className="text-sm">
               <span className="font-semibold text-slate-900">{v.word}</span>
-              <span className="text-xs text-slate-500 ml-1">{v.pronunciation_ipa}</span>
-              <span className="ml-1 rounded bg-slate-100 px-1 py-0.5 text-[10px] uppercase text-slate-500">{v.level}</span>
+              <span className="text-xs text-slate-600 ml-1">{v.pronunciation_ipa}</span>
+              <span className="ml-1 rounded bg-slate-100 px-1 py-0.5 text-[10px] uppercase text-slate-600">{v.level}</span>
               <span className="block text-xs text-slate-600">{v.translation_vi}</span>
             </li>
           ))}</ul>

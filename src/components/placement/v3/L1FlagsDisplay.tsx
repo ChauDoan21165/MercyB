@@ -18,7 +18,7 @@ export function L1FlagsDisplay({ flags }: Props) {
         <BilingualLabel
           text={{ en: "No strong Vietnamese interference pattern stood out.", vi: "Chưa thấy dấu hiệu ảnh hưởng tiếng Việt nào nổi bật." }}
           enClassName="text-sm font-bold text-slate-700"
-          viClassName="text-xs font-medium text-slate-500"
+          viClassName="text-xs font-medium text-slate-600"
         />
       </section>
     );
@@ -29,7 +29,7 @@ export function L1FlagsDisplay({ flags }: Props) {
       <BilingualLabel
         text={{ en: "Vietnamese-specific focus", vi: "Trọng tâm riêng cho người Việt" }}
         enClassName="text-lg font-black text-slate-950"
-        viClassName="text-sm font-medium text-slate-500"
+        viClassName="text-sm font-medium text-slate-600"
       />
       <div className="mt-4 grid gap-3">
         {flags.map((flag) => (
@@ -43,7 +43,7 @@ export function L1FlagsDisplay({ flags }: Props) {
               text={flag.evidence}
               className="mt-2"
               enClassName="text-sm font-semibold leading-6 text-slate-700"
-              viClassName="text-xs font-medium leading-5 text-slate-500"
+              viClassName="text-xs font-medium leading-5 text-slate-600"
             />
           </article>
         ))}

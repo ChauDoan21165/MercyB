@@ -79,7 +79,7 @@ export default function JoinCorporatePage() {
           <div>
             <label htmlFor="join-code" className="block text-sm font-semibold mb-1">
               Mã mời
-              <span className="text-slate-500 font-normal ml-2">Invite code</span>
+              <span className="text-slate-600 font-normal ml-2">Invite code</span>
             </label>
             <input
               id="join-code"
@@ -94,7 +94,7 @@ export default function JoinCorporatePage() {
               className="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-transparent p-3 text-lg font-mono tracking-widest text-center"
               placeholder="ABCD2345"
             />
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-slate-600 mt-1">
               8 ký tự, không có chữ I/O và số 0/1.
             </p>
           </div>
@@ -108,7 +108,7 @@ export default function JoinCorporatePage() {
           <div className="flex items-center justify-between">
             <Link
               to="/account"
-              className="text-sm text-slate-500 hover:underline"
+              className="text-sm text-slate-600 hover:underline"
             >
               ← Về trang cá nhân
             </Link>

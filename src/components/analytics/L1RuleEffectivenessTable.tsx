@@ -81,7 +81,7 @@ export function L1RuleEffectivenessTable() {
   }
 
   if (rows === null && !error) {
-    return <p className="text-sm text-slate-500">Loading rule effectiveness…</p>;
+    return <p className="text-sm text-slate-600">Loading rule effectiveness…</p>;
   }
   if (error) {
     return (
@@ -92,7 +92,7 @@ export function L1RuleEffectivenessTable() {
   }
   if (rows && rows.length === 0) {
     return (
-      <p className="text-sm text-slate-500">
+      <p className="text-sm text-slate-600">
         No rule effectiveness data yet — needs at least one speech_attempts row with an error_code.
       </p>
     );

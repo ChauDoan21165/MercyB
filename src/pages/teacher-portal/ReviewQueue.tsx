@@ -98,7 +98,7 @@ export default function ReviewQueue(): React.ReactElement {
                 "px-3 py-2 text-sm font-semibold transition-colors " +
                 (isActive
                   ? "border-b-2 border-emerald-600 text-emerald-700"
-                  : "text-slate-500 hover:text-slate-800")
+                  : "text-slate-600 hover:text-slate-800")
               }
               aria-current={isActive ? "page" : undefined}
             >
@@ -120,16 +120,16 @@ export default function ReviewQueue(): React.ReactElement {
       )}
 
       {filtered && filtered.length === 0 && !error && (
-        <p className="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-6 text-center text-sm text-slate-500">
+        <p className="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-6 text-center text-sm text-slate-600">
           Không có mục nào cần duyệt cho {CONTENT_TYPE_LABEL_VI[activeTab]}.
           <br />
-          <span className="text-xs text-slate-500">
+          <span className="text-xs text-slate-600">
             No items pending for {CONTENT_TYPE_LABEL_EN[activeTab]}.
           </span>
         </p>
       )}
 
-      {filtered === null && <p className="text-sm text-slate-500">Đang tải…</p>}
+      {filtered === null && <p className="text-sm text-slate-600">Đang tải…</p>}
 
       <ul className="space-y-3">
         {(filtered ?? []).map((row) => {
@@ -144,14 +144,14 @@ export default function ReviewQueue(): React.ReactElement {
                   <p className="font-mono text-sm font-bold text-slate-900 break-all">
                     {row.content_id}
                   </p>
-                  <p className="mt-1 text-xs text-slate-500">
+                  <p className="mt-1 text-xs text-slate-600">
                     {CONTENT_TYPE_LABEL_VI[row.content_type as ContentType] ?? row.content_type}
                     {" · "}
                     <span
                       className={
                         row.status === "needs_revision"
                           ? "text-orange-600"
-                          : "text-slate-500"
+                          : "text-slate-600"
                       }
                     >
                       {row.status === "needs_revision"

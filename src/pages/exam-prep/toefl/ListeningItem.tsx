@@ -23,7 +23,7 @@ function QuestionBlock({ q, showKey, userAnswer, onChange, feedbackVisible }: {
   return (
     <div className="rounded-lg border border-slate-200 bg-white p-3">
       <div className="flex items-baseline gap-2">
-        <span className="text-xs font-bold text-slate-500">Q{q.number}</span>
+        <span className="text-xs font-bold text-slate-600">Q{q.number}</span>
         <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] uppercase tracking-wider text-slate-600">{q.type}</span>
       </div>
       <p className="mt-1 text-sm font-medium text-slate-900">{q.question_text}</p>
@@ -65,16 +65,16 @@ export default function ListeningItem() {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6">
-      <Link to="/exam-prep/toefl/listening" className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-slate-800">
+      <Link to="/exam-prep/toefl/listening" className="inline-flex items-center gap-1 text-xs text-slate-600 hover:text-slate-800">
         <ChevronLeft size={14} />Danh sách · Back to list
       </Link>
       <header className="mt-3">
         <div className="flex items-center gap-2">
           <span className="rounded-full border border-sky-200 bg-sky-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-sky-800">{item.section_label}</span>
-          <span className="text-[11px] uppercase tracking-wider text-slate-500">Band {item.difficulty_band} · {item.estimated_time_minutes} min</span>
+          <span className="text-[11px] uppercase tracking-wider text-slate-600">Band {item.difficulty_band} · {item.estimated_time_minutes} min</span>
         </div>
         <h1 className="mt-1 text-2xl font-extrabold text-slate-900">{item.topic_title_vi}</h1>
-        <p className="text-sm text-slate-500">{item.topic_title_en}</p>
+        <p className="text-sm text-slate-600">{item.topic_title_en}</p>
       </header>
 
       <div className="mt-4 flex flex-wrap gap-2">
@@ -108,12 +108,12 @@ export default function ListeningItem() {
       ) : null}
 
       <section className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
-        <h2 className="mb-1 flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-slate-500"><Volume2 size={12} />Transcript · Bản ghi âm thanh</h2>
+        <h2 className="mb-1 flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-slate-600"><Volume2 size={12} />Transcript · Bản ghi âm thanh</h2>
         <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-slate-800">{item.audio_script}</pre>
       </section>
 
       <section className="mt-4 space-y-2">
-        <h2 className="text-xs font-bold uppercase tracking-wider text-slate-500">Câu hỏi · Questions</h2>
+        <h2 className="text-xs font-bold uppercase tracking-wider text-slate-600">Câu hỏi · Questions</h2>
         {item.questions.map((q) => (
           <QuestionBlock key={q.number} q={q} showKey={showKey} userAnswer={answers[q.number] ?? ""}
             onChange={(v) => setAnswers((prev) => ({ ...prev, [q.number]: v }))} feedbackVisible={submitted} />
@@ -132,15 +132,15 @@ export default function ListeningItem() {
 
       {item.vocabulary_focus.length > 0 && (
         <section className="mt-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-          <h2 className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-500">Từ vựng trọng tâm · Key vocabulary</h2>
-          <table className="w-full text-xs"><thead className="text-[10px] uppercase text-slate-500"><tr><th className="text-left">Từ</th><th className="text-left">Nghĩa</th><th className="text-left">IPA</th><th className="text-left">Band</th></tr></thead>
-            <tbody>{item.vocabulary_focus.map((v, i) => (<tr key={i} className="border-t border-slate-100"><td className="py-1 font-semibold">{v.word}</td><td className="py-1">{v.vi_translation}</td><td className="py-1 font-mono">{v.ipa}</td><td className="py-1 text-slate-500">{v.band_level}</td></tr>))}</tbody></table>
+          <h2 className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-600">Từ vựng trọng tâm · Key vocabulary</h2>
+          <table className="w-full text-xs"><thead className="text-[10px] uppercase text-slate-600"><tr><th className="text-left">Từ</th><th className="text-left">Nghĩa</th><th className="text-left">IPA</th><th className="text-left">Band</th></tr></thead>
+            <tbody>{item.vocabulary_focus.map((v, i) => (<tr key={i} className="border-t border-slate-100"><td className="py-1 font-semibold">{v.word}</td><td className="py-1">{v.vi_translation}</td><td className="py-1 font-mono">{v.ipa}</td><td className="py-1 text-slate-600">{v.band_level}</td></tr>))}</tbody></table>
         </section>
       )}
 
       {item.vietnamese_speaker_strategies.length > 0 && (
         <section className="mt-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-          <h2 className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-500">Mẹo cho người Việt · VN-speaker strategies</h2>
+          <h2 className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-600">Mẹo cho người Việt · VN-speaker strategies</h2>
           <ul className="space-y-1 text-xs leading-relaxed text-slate-700">{item.vietnamese_speaker_strategies.map((s, i) => <li key={i} className="flex gap-2"><span className="text-sky-700">•</span><span>{s}</span></li>)}</ul>
         </section>
       )}

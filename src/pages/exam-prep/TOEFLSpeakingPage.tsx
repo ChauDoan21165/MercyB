@@ -30,12 +30,12 @@ function TopicCard({ topic }: { topic: TOEFLSpeakingTopic }) {
         <span className={"inline-block rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider " + (TASK_BADGE_COLORS[topic.task_number] ?? "bg-slate-100 text-slate-700 border-slate-200")}>
           Task {topic.task_number}
         </span>
-        <span className="ml-auto text-[11px] font-semibold text-slate-500">
+        <span className="ml-auto text-[11px] font-semibold text-slate-600">
           {topic.preparation_seconds + topic.speaking_seconds}s
         </span>
       </div>
       <h3 className="text-base font-bold text-slate-900">{topic.topic_title_vi}</h3>
-      <p className="text-xs text-slate-500">{topic.topic_title_en}</p>
+      <p className="text-xs text-slate-600">{topic.topic_title_en}</p>
       <p className="mt-1 text-xs leading-relaxed text-slate-600 line-clamp-2">{topic.description_vi}</p>
     </Link>
   );
@@ -64,7 +64,7 @@ export default function TOEFLSpeakingPage() {
             </button>
           ))}
         </div>
-        <div className="text-xs text-slate-500 mb-3">Hiển thị {visibleTopics.length} / {TOEFL_SPEAKING_TOPICS.length} bài.</div>
+        <div className="text-xs text-slate-600 mb-3">Hiển thị {visibleTopics.length} / {TOEFL_SPEAKING_TOPICS.length} bài.</div>
         <div className="grid gap-3 sm:grid-cols-2">{visibleTopics.map((t) => <TopicCard key={t.id} topic={t} />)}</div>
       </TOEFLPremiumGate>
     </div>
