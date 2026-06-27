@@ -166,8 +166,8 @@ function scanWholeTree(pattern: RegExp): { file: string; line: number; text: str
 }
 
 describe("a11y contrast — !64 audit fixes stay fixed across the whole `src/` tree", () => {
-  it("no `src/` file contains a bare `text-slate-600` class (variant prefixes + aria-hidden + exception markers excluded)", () => {
-    const offenders = scanWholeTree(/\btext-slate-600\b/);
+  it("no `src/` file contains a bare `text-slate-500` class (variant prefixes + aria-hidden + exception markers excluded)", () => {
+    const offenders = scanWholeTree(/\btext-slate-500\b/);
     expect(
       offenders,
       `Failing slate-500 class found in src/. Use text-slate-600 (4.78:1 on white) or text-slate-600 (7.04:1 on white / 6.12:1 on slate-100) — or mark with \`// a11y-contrast:exception\` + rationale + audit doc citation:\n${offenders
