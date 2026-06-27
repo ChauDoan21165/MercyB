@@ -35,7 +35,7 @@ export default function ParentDashboard() {
         <h1 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
           Tiến bộ của con
         </h1>
-        <p className="mt-1 text-base text-slate-500">Your child's progress</p>
+        <p className="mt-1 text-base text-slate-600">Your child's progress</p>
         <p className="mt-3 text-sm leading-relaxed text-slate-600">
           Tóm tắt những mẫu câu con đang luyện tuần này — trung thực, không
           xếp hạng, không gây áp lực.

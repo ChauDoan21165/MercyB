@@ -120,7 +120,7 @@ export default function VietnameseLessonsPage() {
             {stats.dialogueCount} dialogues · {stats.pronunciationCount} pronunciation mini-lessons
           </p>
         )}
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-3 text-xs text-slate-600">
           <Link
             to="/languages"
             className="font-medium underline"
@@ -136,10 +136,10 @@ export default function VietnameseLessonsPage() {
       {error ? (
         <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-5 text-center">
           <p className="text-sm text-red-600">Failed to load lessons.</p>
-          <p className="mt-1 text-xs text-slate-500">{error}</p>
+          <p className="mt-1 text-xs text-slate-600">{error}</p>
         </div>
       ) : !lessons ? (
-        <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
+        <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-600">
           Loading Vietnamese lessons…
         </p>
       ) : (

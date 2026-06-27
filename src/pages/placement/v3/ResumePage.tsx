@@ -31,7 +31,7 @@ export default function ResumePage() {
             vi: resume.session ? "Tiếp tục bài đánh giá dang dở?" : "Không có bài dang dở",
           }}
           enClassName="text-2xl font-black text-slate-950"
-          viClassName="text-sm font-medium text-slate-500"
+          viClassName="text-sm font-medium text-slate-600"
         />
         <BilingualLabel
           as="p"
@@ -45,7 +45,7 @@ export default function ResumePage() {
               : "Hãy bắt đầu bài đánh giá mới khi bạn sẵn sàng.",
           }}
           enClassName="text-sm font-semibold leading-6 text-slate-600"
-          viClassName="text-xs font-medium leading-5 text-slate-500"
+          viClassName="text-xs font-medium leading-5 text-slate-600"
         />
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           {resume.session ? (

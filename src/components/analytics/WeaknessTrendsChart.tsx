@@ -113,7 +113,7 @@ export function WeaknessTrendsChart({
   );
 
   if (rows === null && !error) {
-    return <p className="text-sm text-slate-500">Loading weakness trends…</p>;
+    return <p className="text-sm text-slate-600">Loading weakness trends…</p>;
   }
   if (error) {
     return (
@@ -124,7 +124,7 @@ export function WeaknessTrendsChart({
   }
   if (!rows || rows.length === 0 || !series) {
     return (
-      <p className="text-sm text-slate-500">
+      <p className="text-sm text-slate-600">
         No weakness trend data yet (needs at least one user_placements row).
       </p>
     );

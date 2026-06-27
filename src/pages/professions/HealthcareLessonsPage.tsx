@@ -61,10 +61,10 @@ export default function HealthcareLessonsPage() {
         <p className="mt-1 text-sm font-medium text-slate-600">{HERO_EN}</p>
         <p className="mt-3 text-sm italic text-slate-700">{SUB_VI}</p>
         <p className="mt-3 text-sm text-slate-700 leading-relaxed">{INTRO_VI}</p>
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-3 text-xs text-slate-600">
           50 bài · 8 chủ đề · phiên bản giao tiếp đời thực
         </p>
-        <p className="mt-1 text-xs text-slate-500">
+        <p className="mt-1 text-xs text-slate-600">
           <Link
             to="/professions"
             className="font-medium text-emerald-700 underline"
@@ -105,7 +105,7 @@ function CategorySection({ category }: CategorySectionProps) {
         <h2 className="text-base font-semibold text-slate-900">
           {category.title_vi}
         </h2>
-        <span className="text-xs text-slate-500">
+        <span className="text-xs text-slate-600">
           {category.title_en} · {lessons.length} bài
         </span>
       </header>
@@ -138,12 +138,12 @@ function LessonTile({ lesson }: LessonTileProps) {
           <p className="text-sm font-medium text-slate-900">
             {lesson.title_vi}
           </p>
-          <p className="text-xs text-slate-500">{lesson.title_en}</p>
+          <p className="text-xs text-slate-600">{lesson.title_en}</p>
         </div>
         {open ? (
-          <ChevronUp className="h-4 w-4 shrink-0 text-slate-500" />
+          <ChevronUp className="h-4 w-4 shrink-0 text-slate-600" />
         ) : (
-          <ChevronDown className="h-4 w-4 shrink-0 text-slate-500" />
+          <ChevronDown className="h-4 w-4 shrink-0 text-slate-600" />
         )}
       </button>
 

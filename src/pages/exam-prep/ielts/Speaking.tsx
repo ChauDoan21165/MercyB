@@ -47,14 +47,14 @@ export default function Speaking() {
       <header className="mb-5">
         <Link
           to="/exam/ielts"
-          className="text-xs text-slate-500 hover:text-slate-800"
+          className="text-xs text-slate-600 hover:text-slate-800"
         >
           ← Trở về tổng quan IELTS · IELTS overview
         </Link>
         <h1 className="text-2xl font-bold text-slate-900 mt-2">
           IELTS Speaking — 30 chủ đề luyện tập
         </h1>
-        <p className="text-sm text-slate-500 italic mt-1">
+        <p className="text-sm text-slate-600 italic mt-1">
           IELTS Speaking — 30 practice topics across all three parts
         </p>
         <p className="text-sm text-slate-700 mt-3 leading-relaxed">
@@ -88,7 +88,7 @@ export default function Speaking() {
             <section key={p}>
               <h2 className="text-base font-bold text-slate-800 mb-3">
                 {PART_LABELS[p].vi}
-                <span className="text-xs italic text-slate-500 ml-2">
+                <span className="text-xs italic text-slate-600 ml-2">
                   · {PART_LABELS[p].en}
                 </span>
               </h2>
@@ -108,7 +108,7 @@ export default function Speaking() {
         </div>
       )}
 
-      <p className="text-xs text-slate-500 mt-8 leading-relaxed">
+      <p className="text-xs text-slate-600 mt-8 leading-relaxed">
         Nội dung tự viết theo định dạng IELTS công khai (IDP / British Council).
         Mọi câu hỏi mẫu và đáp án minh hoạ đều là nguyên gốc — không sao chép từ
         sách Cambridge hay nhà xuất bản nào.
@@ -159,13 +159,13 @@ function TopicCard({ topic }: { topic: IELTSSpeakingTopic }) {
           Part {topic.part}
         </span>
       </div>
-      <p className="text-xs italic text-slate-500 mb-2">
+      <p className="text-xs italic text-slate-600 mb-2">
         {topic.topic_title_en}
       </p>
       <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
         {topic.description_vi}
       </p>
-      <div className="flex items-center justify-between mt-3 text-xs text-slate-500">
+      <div className="flex items-center justify-between mt-3 text-xs text-slate-600">
         <span>{topic.estimated_time_minutes} phút · min</span>
         <span className="text-emerald-700 font-semibold">
           Bắt đầu · Start →

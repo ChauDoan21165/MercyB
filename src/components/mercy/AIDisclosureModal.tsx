@@ -79,7 +79,7 @@ export function AIDisclosureModal({ onAccept }: AIDisclosureModalProps) {
           className="text-lg font-bold leading-tight text-slate-900 dark:text-slate-100"
         >
           Giáo viên Mercy dùng AI
-          <span className="mt-1 block text-sm font-normal text-slate-500 dark:text-slate-300">
+          <span className="mt-1 block text-sm font-normal text-slate-600 dark:text-slate-300">
             Teacher Mercy uses AI
           </span>
         </h2>
@@ -88,7 +88,7 @@ export function AIDisclosureModal({ onAccept }: AIDisclosureModalProps) {
           <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-200">
             Tin nhắn của bạn được xử lý bởi AI để tạo phản hồi. Nội dung không được lưu trữ lâu dài.
           </p>
-          <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-300">
+          <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
             Your messages are processed by AI to generate responses. Content is not stored long-term.
           </p>
         </div>

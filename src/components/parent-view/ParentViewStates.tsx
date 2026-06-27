@@ -17,7 +17,7 @@ export function ParentPaywallGate() {
         vi="Trang dành cho phụ huynh có trong gói Premium."
         en="The parent view is included with Premium."
         viClassName="text-base font-bold leading-snug text-slate-900"
-        enClassName="mt-1 text-[13px] leading-snug text-slate-500"
+        enClassName="mt-1 text-[13px] leading-snug text-slate-600"
       />
       <Link
         to="/pricing"
@@ -43,7 +43,7 @@ export function ParentAccessSkeleton() {
       data-testid="parent-access-loading"
       role="status"
       aria-live="polite"
-      className="mx-auto w-full max-w-[560px] px-4 py-8 text-center text-sm text-slate-500"
+      className="mx-auto w-full max-w-[560px] px-4 py-8 text-center text-sm text-slate-600"
     >
       <span lang="vi">Đang kiểm tra quyền truy cập…</span>
     </div>
@@ -80,7 +80,7 @@ export function ParentEmptyState() {
         vi="Chưa có tóm tắt tuần này. Hãy luyện thêm vài buổi để phần này hiện rõ hơn."
         en="A few more practice sessions will fill this summary in."
         viClassName="text-sm font-semibold leading-snug text-slate-900"
-        enClassName="mt-1 text-[12px] leading-snug text-slate-500"
+        enClassName="mt-1 text-[12px] leading-snug text-slate-600"
       />
     </section>
   );

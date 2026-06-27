@@ -132,7 +132,7 @@ error    : ${error ? error.message : 'null'}`}
         {url ? (
           <audio controls src={url} className="w-full" />
         ) : (
-          <p className="text-xs italic text-slate-500">
+          <p className="text-xs italic text-slate-600">
             No audio element (url is null).
           </p>
         )}
@@ -147,7 +147,7 @@ error    : ${error ? error.message : 'null'}`}
         >
           refresh()
         </button>
-        <span className="text-[11px] text-slate-500">
+        <span className="text-[11px] text-slate-600">
           Drops cache for this key, re-signs via Supabase.
         </span>
       </section>
@@ -157,12 +157,12 @@ error    : ${error ? error.message : 'null'}`}
           Latency log (most recent 10)
         </p>
         {latencyLog.length === 0 ? (
-          <p className="mt-1 text-xs italic text-slate-500">No events yet.</p>
+          <p className="mt-1 text-xs italic text-slate-600">No events yet.</p>
         ) : (
           <ul className="mt-1 space-y-0.5 text-xs text-slate-700">
             {latencyLog.map((entry, i) => (
               <li key={`${entry.at}-${i}`}>
-                <span className="text-slate-500">
+                <span className="text-slate-600">
                   {new Date(entry.at).toLocaleTimeString()}
                 </span>{' '}
                 {entry.label}
@@ -173,7 +173,7 @@ error    : ${error ? error.message : 'null'}`}
         )}
       </section>
 
-      <section className="mt-6 border-t border-slate-200 pt-4 text-[11px] text-slate-500">
+      <section className="mt-6 border-t border-slate-200 pt-4 text-[11px] text-slate-600">
         <p className="font-semibold">Expected behavior:</p>
         <ul className="mt-1 list-inside list-disc space-y-0.5">
           <li>kids/, music/, https:// → resolve synchronously, ~0ms, no Supabase call</li>

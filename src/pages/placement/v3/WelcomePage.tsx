@@ -38,7 +38,7 @@ export default function WelcomePage() {
             vi: "Hãy tìm điểm bắt đầu phù hợp cho bạn",
           }}
           enClassName="text-[28px] font-black leading-tight text-slate-950 sm:text-4xl"
-          viClassName="text-base font-medium leading-snug text-slate-500"
+          viClassName="text-base font-medium leading-snug text-slate-600"
         />
         <BilingualLabel
           as="p"
@@ -48,7 +48,7 @@ export default function WelcomePage() {
             vi: "Một bài đánh giá ngắn sẽ cho chúng tôi biết trình độ của bạn và giới thiệu bài học đầu tiên phù hợp, bạn không phải tự đoán.",
           }}
           enClassName="text-base font-semibold leading-7 text-slate-600"
-          viClassName="text-sm font-medium leading-6 text-slate-500"
+          viClassName="text-sm font-medium leading-6 text-slate-600"
         />
 
         <section className="mt-7 rounded-[18px] border border-slate-200 bg-white p-5 text-left shadow-sm">
@@ -79,7 +79,7 @@ export default function WelcomePage() {
               <BilingualLabel
                 text={text}
                 enClassName="text-sm font-black text-slate-800"
-                viClassName="text-xs font-medium text-slate-500"
+                viClassName="text-xs font-medium text-slate-600"
               />
             </div>
           ))}
@@ -94,7 +94,7 @@ export default function WelcomePage() {
         </Button>
         <button
           type="button"
-          className="mt-4 text-sm font-bold text-slate-500 hover:text-slate-600"
+          className="mt-4 text-sm font-bold text-slate-600 hover:text-slate-600"
           onClick={() => setSkipOpen(true)}
         >
           Skip for now — I'll explore on my own

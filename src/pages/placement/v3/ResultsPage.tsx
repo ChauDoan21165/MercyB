@@ -92,7 +92,7 @@ export default function ResultsPage() {
           as="h1"
           text={{ en: "Here's what we found", vi: "Đây là kết quả của bạn" }}
           enClassName="text-2xl font-black text-amber-950 sm:text-3xl"
-          viClassName="text-sm font-medium text-slate-500"
+          viClassName="text-sm font-medium text-slate-600"
         />
         <BilingualLabel
           as="p"
@@ -102,7 +102,7 @@ export default function ResultsPage() {
             vi: "Dựa trên câu trả lời của bạn. Bạn có thể làm lại bất cứ lúc nào.",
           }}
           enClassName="text-sm font-semibold text-slate-600"
-          viClassName="text-xs font-medium text-slate-500"
+          viClassName="text-xs font-medium text-slate-600"
         />
       </section>
 
@@ -118,7 +118,7 @@ export default function ResultsPage() {
               <BilingualLabel
                 text={{ en: "Resume your lesson", vi: "Học tiếp bài của bạn" }}
                 enClassName="text-lg font-black text-slate-950"
-                viClassName="text-sm font-medium text-slate-500"
+                viClassName="text-sm font-medium text-slate-600"
               />
               <Button
                 type="button"
@@ -141,7 +141,7 @@ export default function ResultsPage() {
               Retake test · Làm lại
             </Button>
           </div>
-          <div className="text-center text-xs font-medium text-slate-500">
+          <div className="text-center text-xs font-medium text-slate-600">
             {results.questionCount} tasks · {new Date(results.completedAt).toLocaleDateString("en-CA")}
             <span className="block">
               {results.questionCount} mục · {new Date(results.completedAt).toLocaleDateString("vi-VN")}

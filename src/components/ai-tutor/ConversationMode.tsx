@@ -174,7 +174,7 @@ export default function ConversationMode({
         <h2 className="mt-1 text-xl font-black text-slate-900">
           Lộ trình học hôm nay
         </h2>
-        <p className="mt-1 text-sm font-semibold leading-6 text-slate-500">
+        <p className="mt-1 text-sm font-semibold leading-6 text-slate-600">
           Bắt đầu bằng một câu ngắn. Mercy sẽ sửa và giúp bạn thử lại.
         </p>
 
@@ -215,7 +215,7 @@ export default function ConversationMode({
         <h2 className="mt-4 text-xl font-black text-slate-900">
           Trò chuyện cùng Mercy là tính năng Premium
         </h2>
-        <p className="mt-1 text-sm font-bold leading-6 text-slate-500">
+        <p className="mt-1 text-sm font-bold leading-6 text-slate-600">
           Premium feature — unlimited conversation practice
         </p>
         <p className="mt-3 max-w-md text-sm font-semibold leading-6 text-slate-600">
@@ -246,7 +246,7 @@ export default function ConversationMode({
         <h2 className="mt-1 text-xl font-black text-slate-900">
           {modeCopy.title}
         </h2>
-        <p className="mt-1 text-sm font-semibold leading-6 text-slate-500">
+        <p className="mt-1 text-sm font-semibold leading-6 text-slate-600">
           {modeCopy.description}
         </p>
         {turnUsage && (
@@ -266,7 +266,7 @@ export default function ConversationMode({
 
       <div className="flex-1 space-y-4 overflow-y-auto bg-slate-50/60 p-4 sm:p-5">
         {messages.length === 0 && (
-          <div className="rounded-[16px] border border-dashed border-slate-200 bg-white p-5 text-center text-sm font-bold text-slate-500">
+          <div className="rounded-[16px] border border-dashed border-slate-200 bg-white p-5 text-center text-sm font-bold text-slate-600">
             {ui.conversationEmpty}
           </div>
         )}
@@ -339,7 +339,7 @@ export default function ConversationMode({
                     )}
                     {message.explanation && (
                       <div>
-                        <div className="text-[11px] font-black uppercase text-slate-500">{tutorCopy.speakerLabels.shortExplanation}</div>
+                        <div className="text-[11px] font-black uppercase text-slate-600">{tutorCopy.speakerLabels.shortExplanation}</div>
                         <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">{message.explanation}</p>
                       </div>
                     )}
@@ -378,7 +378,7 @@ export default function ConversationMode({
                         {isPreparingVoice ? ui.ttsPreparing : isSpeakingVoice ? ui.ttsStop : ui.ttsPlay}
                       </button>
                     ) : allowTts ? (
-                      <div className="text-[11px] font-medium text-slate-500">{ui.ttsUnavailable}</div>
+                      <div className="text-[11px] font-medium text-slate-600">{ui.ttsUnavailable}</div>
                     ) : null}
                     {allowTts && isActiveVoice && ttsVoiceSource && (
                       <div className={`text-[11px] font-semibold ${ttsVoiceSource === "mercy" ? "text-emerald-700" : "text-amber-700"}`}>
@@ -433,7 +433,7 @@ export default function ConversationMode({
       </div>
 
       <div className="border-t border-slate-100 p-4">
-        <label className="mb-2 block text-xs font-black uppercase text-slate-500">
+        <label className="mb-2 block text-xs font-black uppercase text-slate-600">
           {modeCopy.inputLabel}
         </label>
         <textarea
@@ -482,7 +482,7 @@ export default function ConversationMode({
               type="button"
               onClick={onSend}
               disabled={isEmpty || loading || atTurnCap}
-              className="inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500"
+              className="inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-600"
             >
               <Send className="h-4 w-4" aria-hidden />
               {modeCopy.send}

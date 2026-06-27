@@ -124,7 +124,7 @@ const AITutorTab: React.FC<AITutorTabProps> = ({
             <p className="text-sm font-medium text-slate-700">
               Chào bạn! Mình là Mercy, gia sư tiếng Anh của bạn.
             </p>
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-slate-600">
               Bạn có thể hỏi mình về ngữ pháp, nhờ mình sửa câu, hoặc luyện nói.
             </p>
           </div>
@@ -158,7 +158,7 @@ const AITutorTab: React.FC<AITutorTabProps> = ({
                   <span className="h-2 w-2 animate-bounce rounded-full bg-violet-400 [animation-delay:150ms]" />
                   <span className="h-2 w-2 animate-bounce rounded-full bg-violet-400 [animation-delay:300ms]" />
                 </div>
-                <span className="text-xs text-slate-500">Mercy đang nghĩ...</span>
+                <span className="text-xs text-slate-600">Mercy đang nghĩ...</span>
               </div>
             </div>
           </div>
@@ -167,7 +167,7 @@ const AITutorTab: React.FC<AITutorTabProps> = ({
         {/* Timeout message */}
         {showTimeout && state.phase === "loading" ? (
           <div className="flex justify-center">
-            <p className="text-xs text-slate-500 italic">
+            <p className="text-xs text-slate-600 italic">
               Hơi lâu một chút — Mercy đang xử lý...
             </p>
           </div>
@@ -202,7 +202,7 @@ const AITutorTab: React.FC<AITutorTabProps> = ({
           <div className="flex justify-start">
             <div className="max-w-[85%] rounded-2xl border border-slate-200 bg-slate-50/85 px-4 py-3 shadow-sm">
               <div className="flex items-start gap-2">
-                <Ban size={16} className="mt-0.5 shrink-0 text-slate-500" />
+                <Ban size={16} className="mt-0.5 shrink-0 text-slate-600" />
                 <p className="text-sm text-slate-700">{state.messageVi}</p>
               </div>
             </div>
@@ -212,7 +212,7 @@ const AITutorTab: React.FC<AITutorTabProps> = ({
         {/* Session ended */}
         {state.phase === "ended" ? (
           <div className="flex justify-center">
-            <p className="text-xs text-slate-500">Phiên học đã kết thúc.</p>
+            <p className="text-xs text-slate-600">Phiên học đã kết thúc.</p>
           </div>
         ) : null}
       </div>
@@ -255,7 +255,7 @@ const AITutorTab: React.FC<AITutorTabProps> = ({
             onKeyDown={handleKeyDown}
             placeholder="Nhập câu hỏi tiếng Anh..."
             disabled={state.phase === "loading"}
-            className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 placeholder:text-slate-500 focus:border-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-100 disabled:opacity-50"
+            className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 placeholder:text-slate-600 focus:border-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-100 disabled:opacity-50"
             aria-label="Tutor message input"
           />
 
@@ -272,7 +272,7 @@ const AITutorTab: React.FC<AITutorTabProps> = ({
           <button
             type="button"
             onClick={handleReset}
-            className="shrink-0 rounded-xl border border-slate-200 bg-white p-2.5 text-slate-500 transition hover:text-slate-600"
+            className="shrink-0 rounded-xl border border-slate-200 bg-white p-2.5 text-slate-600 transition hover:text-slate-600"
             aria-label="Reset conversation"
           >
             <RotateCcw size={18} />

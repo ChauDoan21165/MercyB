@@ -303,7 +303,7 @@ export default function PunjabiLessonsPage() {
               className="rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-700 shadow-sm hover:border-purple-400 hover:bg-purple-50 hover:text-purple-700"
             >
               {uiLang === "en" ? level.en : level.vi}
-              <span className="ml-1 text-slate-500">({count})</span>
+              <span className="ml-1 text-slate-600">({count})</span>
             </a>
           );
         })}
@@ -324,7 +324,7 @@ export default function PunjabiLessonsPage() {
             </div>
 
             {sectionLessons.length === 0 ? (
-              <div className="rounded-xl border border-dashed border-slate-200 bg-white px-4 py-4 text-sm text-slate-500">
+              <div className="rounded-xl border border-dashed border-slate-200 bg-white px-4 py-4 text-sm text-slate-600">
                 {uiLang === "en"
                   ? `${level.id} lessons are not attached yet.`
                   : `Chưa gắn bài ${level.id}.`}
@@ -351,7 +351,7 @@ export default function PunjabiLessonsPage() {
                           <span className="block text-base font-black text-slate-950 group-hover:text-purple-700">
                             {title}
                           </span>
-                          <span className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
+                          <span className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-600">
                             <span className="rounded-full bg-emerald-100 px-2 py-0.5 font-bold text-emerald-700">
                               {level.id} · {uiLang === "en" ? level.en.split("· ")[1] : level.vi.split("· ")[1]}
                             </span>

@@ -140,7 +140,7 @@ export default function FocusAreasMicroLessonDialog({
               <DialogTitle className="text-center text-lg font-semibold">
                 {renderInlineBold(entry.shortLabel.en)}
               </DialogTitle>
-              <DialogDescription className="text-center text-sm text-slate-500">
+              <DialogDescription className="text-center text-sm text-slate-600">
                 {renderInlineBold(entry.shortLabel.vi)}
               </DialogDescription>
             </DialogHeader>
@@ -149,7 +149,7 @@ export default function FocusAreasMicroLessonDialog({
               <p className="text-sm leading-relaxed text-slate-800">
                 {renderInlineBold(entry.longDescription.en)}
               </p>
-              <p className="text-xs leading-relaxed text-slate-500">
+              <p className="text-xs leading-relaxed text-slate-600">
                 {renderInlineBold(entry.longDescription.vi)}
               </p>
 
@@ -196,7 +196,7 @@ export default function FocusAreasMicroLessonDialog({
                   type="button"
                   disabled
                   aria-disabled="true"
-                  className="w-full cursor-not-allowed bg-slate-200 text-slate-500 hover:bg-slate-200"
+                  className="w-full cursor-not-allowed bg-slate-200 text-slate-600 hover:bg-slate-200"
                 >
                   <Bilingual
                     as="span"
@@ -215,7 +215,7 @@ export default function FocusAreasMicroLessonDialog({
                 type="button"
                 variant="ghost"
                 onClick={() => onOpenChange(false)}
-                className="w-full text-slate-500"
+                className="w-full text-slate-600"
               >
                 <Bilingual
                   as="span"
@@ -364,12 +364,12 @@ function SectionBlock({
     >
       <header className="flex items-center justify-between gap-2">
         <h4 className="text-xs font-semibold uppercase tracking-wide text-amber-700">
-          {labelVi} <span className="text-slate-500">/ {labelEn}</span>
+          {labelVi} <span className="text-slate-600">/ {labelEn}</span>
         </h4>
         <button
           type="button"
           onClick={onToggleLang}
-          className="rounded border border-slate-200 px-2 py-0.5 text-[10px] font-medium uppercase text-slate-500 hover:bg-slate-50"
+          className="rounded border border-slate-200 px-2 py-0.5 text-[10px] font-medium uppercase text-slate-600 hover:bg-slate-50"
           aria-label={`Toggle language for ${labelEn}`}
         >
           {toggleLabel}
@@ -388,7 +388,7 @@ function SectionBlock({
             </p>
           ) : null}
           {showEn ? (
-            <p className="mt-1 text-xs leading-relaxed text-slate-500">
+            <p className="mt-1 text-xs leading-relaxed text-slate-600">
               {renderInlineBold(section.en)}
             </p>
           ) : null}
@@ -406,7 +406,7 @@ function SectionBlock({
             </p>
           ) : null}
           {showEn ? (
-            <p className="mt-1 text-xs leading-relaxed text-slate-500">
+            <p className="mt-1 text-xs leading-relaxed text-slate-600">
               {renderInlineBold(section.en)}
             </p>
           ) : null}
@@ -424,7 +424,7 @@ function SectionBlock({
             </p>
           ) : null}
           {showEn ? (
-            <p className="mt-1 text-xs leading-relaxed text-slate-500">
+            <p className="mt-1 text-xs leading-relaxed text-slate-600">
               {renderInlineBold(section.en)}
             </p>
           ) : null}
@@ -442,7 +442,7 @@ function SectionBlock({
             </p>
           ) : null}
           {showEn ? (
-            <p className="mt-1 text-xs leading-relaxed text-slate-500">
+            <p className="mt-1 text-xs leading-relaxed text-slate-600">
               {renderInlineBold(section.en)}
             </p>
           ) : null}
@@ -455,7 +455,7 @@ function SectionBlock({
             </p>
           ) : null}
           {showEn ? (
-            <p className="mt-1 text-xs leading-relaxed text-slate-500">
+            <p className="mt-1 text-xs leading-relaxed text-slate-600">
               {renderInlineBold(section.en)}
             </p>
           ) : null}
@@ -536,7 +536,7 @@ function QuizItem({ index, question, nativeLanguage }: QuizItemProps): React.Rea
             )}
           </p>
           {question.question.ja && (
-            <p className="text-xs text-slate-500">{question.question.en}</p>
+            <p className="text-xs text-slate-600">{question.question.en}</p>
           )}
         </>
       ) : isId ? (
@@ -550,7 +550,7 @@ function QuizItem({ index, question, nativeLanguage }: QuizItemProps): React.Rea
             )}
           </p>
           {question.question.id && (
-            <p className="text-xs text-slate-500">{question.question.en}</p>
+            <p className="text-xs text-slate-600">{question.question.en}</p>
           )}
         </>
       ) : isTh ? (
@@ -564,7 +564,7 @@ function QuizItem({ index, question, nativeLanguage }: QuizItemProps): React.Rea
             )}
           </p>
           {question.question.th && (
-            <p className="text-xs text-slate-500">{question.question.en}</p>
+            <p className="text-xs text-slate-600">{question.question.en}</p>
           )}
         </>
       ) : isPt ? (
@@ -578,7 +578,7 @@ function QuizItem({ index, question, nativeLanguage }: QuizItemProps): React.Rea
             )}
           </p>
           {question.question.pt && (
-            <p className="text-xs text-slate-500">{question.question.en}</p>
+            <p className="text-xs text-slate-600">{question.question.en}</p>
           )}
         </>
       ) : (
@@ -586,14 +586,14 @@ function QuizItem({ index, question, nativeLanguage }: QuizItemProps): React.Rea
           <p className="font-medium text-slate-800">
             {index + 1}. {question.question.vi}
           </p>
-          <p className="text-xs text-slate-500">{question.question.en}</p>
+          <p className="text-xs text-slate-600">{question.question.en}</p>
         </>
       )}
       {question.options && question.options.length > 0 ? (
         <ul className="mt-1 space-y-0.5 text-xs text-slate-600">
           {question.options.map((opt, oi) => (
             <li key={oi}>
-              <span className="mr-1 font-mono text-slate-500">
+              <span className="mr-1 font-mono text-slate-600">
                 {String.fromCharCode(65 + oi)}.
               </span>
               {opt}
@@ -646,7 +646,7 @@ function QuizItem({ index, question, nativeLanguage }: QuizItemProps): React.Rea
                 <p className="mt-1 text-slate-700">
                   {renderInlineBold(question.explanation.vi)}
                 </p>
-                <p className="text-slate-500">
+                <p className="text-slate-600">
                   {renderInlineBold(question.explanation.en)}
                 </p>
               </>

@@ -61,7 +61,7 @@ export function ParentCategoryBucket({
             viAs="h3"
             enAs="p"
             viClassName="text-sm font-bold leading-tight text-slate-900"
-            enClassName="text-[11px] leading-tight text-slate-500"
+            enClassName="text-[11px] leading-tight text-slate-600"
           />
         </div>
         {/* Q5=C — qualitative is the default; numbers are an explicit
@@ -181,7 +181,7 @@ function CategoryItem({
             vi={item.qualitativeVi}
             en={item.qualitativeEn}
             viClassName="text-sm font-semibold leading-snug text-slate-900"
-            enClassName="mt-0.5 text-[12px] leading-snug text-slate-500"
+            enClassName="mt-0.5 text-[12px] leading-snug text-slate-600"
           />
           {showNumbers && <NumericDrillIn item={item} locale={locale} />}
           {expandable && (
@@ -191,7 +191,7 @@ function CategoryItem({
           )}
         </div>
         {expandable && (
-          <span aria-hidden className="mt-0.5 text-slate-500">
+          <span aria-hidden className="mt-0.5 text-slate-600">
             {open ? (
               <ChevronUp className="h-4 w-4" />
             ) : (
@@ -211,7 +211,7 @@ function CategoryItem({
             vi={item.exampleVi}
             en={item.exampleEn}
             viClassName="text-[12px] leading-snug text-slate-700"
-            enClassName="mt-1 text-[12px] leading-snug text-slate-500"
+            enClassName="mt-1 text-[12px] leading-snug text-slate-600"
           />
         </div>
       )}
@@ -288,7 +288,7 @@ function NumericDrillIn({
     <p
       data-testid={`parent-numeric-${item.key}`}
       lang={locale}
-      className="mt-1 text-[11px] leading-snug text-slate-500"
+      className="mt-1 text-[11px] leading-snug text-slate-600"
     >
       {parts.join(" · ")}
     </p>

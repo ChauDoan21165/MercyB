@@ -14,7 +14,7 @@ export default function PurchaseGiftPage(): React.ReactElement {
   if (!user) {
     return (
       <main className="mx-auto max-w-md px-4 py-10 text-center">
-        <p className="text-sm text-slate-500">Đang tải / Loading…</p>
+        <p className="text-sm text-slate-600">Đang tải / Loading…</p>
       </main>
     );
   }
@@ -25,14 +25,14 @@ export default function PurchaseGiftPage(): React.ReactElement {
         purchaserId={user.id}
         purchaserEmail={user.email ?? null}
       />
-      <p className="mt-4 text-center text-xs text-slate-500">
+      <p className="mt-4 text-center text-xs text-slate-600">
         Đã có mã quà?{" "}
         <Link to="/gift/redeem" className="text-amber-600 underline">
           Kích hoạt tại đây / Redeem here
         </Link>
         .
       </p>
-      <p className="mt-2 text-center text-xs text-slate-500">
+      <p className="mt-2 text-center text-xs text-slate-600">
         <Link to="/gift/my" className="underline">
           Xem lịch sử quà / My gifts
         </Link>

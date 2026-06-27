@@ -97,16 +97,16 @@ export default function CorrectionMode({
             <h2 className="mt-1 text-xl font-black text-slate-900">
               {ui.correctionTitle}
             </h2>
-            <p className="mt-1 text-sm font-semibold leading-6 text-slate-500">
+            <p className="mt-1 text-sm font-semibold leading-6 text-slate-600">
               {ui.emptyBody}
             </p>
           </div>
 
           <div className="mb-2 flex items-center justify-between gap-3">
-            <label htmlFor="ai-tutor-grammar-input" className="text-xs font-black uppercase text-slate-500">
+            <label htmlFor="ai-tutor-grammar-input" className="text-xs font-black uppercase text-slate-600">
               {ui.inputLabel}
             </label>
-            <span className="shrink-0 text-[11px] font-medium text-slate-500">
+            <span className="shrink-0 text-[11px] font-medium text-slate-600">
               {charCount} / 500
             </span>
           </div>
@@ -133,7 +133,7 @@ export default function CorrectionMode({
               type="button"
               onClick={onSubmit}
               disabled={isEmpty || loading}
-              className="min-h-[48px] w-full flex-1 rounded-full bg-slate-900 px-4 py-3 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500"
+              className="min-h-[48px] w-full flex-1 rounded-full bg-slate-900 px-4 py-3 text-sm font-black text-white transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-600"
             >
               {loading ? (
                 <span className="inline-flex items-center justify-center gap-2">
@@ -146,7 +146,7 @@ export default function CorrectionMode({
             </button>
 
             <div className="rounded-[14px] border border-slate-200 bg-slate-50 px-4 py-3">
-              <div className="text-xs font-black uppercase text-slate-500">
+              <div className="text-xs font-black uppercase text-slate-600">
                 {ui.voiceInputTitle}
               </div>
               <div className="mt-3">
@@ -207,7 +207,7 @@ export default function CorrectionMode({
               type="button"
               onClick={onClear}
               disabled={!canClearBoard || loading}
-              className="min-h-[48px] w-full rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-500 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-300"
+              className="min-h-[48px] w-full rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-600 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-300"
             >
               {ui.reset}
             </button>
@@ -229,7 +229,7 @@ export default function CorrectionMode({
             <div className="mt-2 text-sm font-black text-slate-600">
               {ui.emptyTitle}
             </div>
-            <div className="mt-1 text-xs font-medium text-slate-500">
+            <div className="mt-1 text-xs font-medium text-slate-600">
               {ui.emptyBody}
             </div>
           </section>
@@ -262,7 +262,7 @@ export default function CorrectionMode({
           </div>
 
           <div className="rounded-[16px] border border-slate-200 bg-white p-5">
-            <div className="mb-2 text-xs font-black uppercase text-slate-500">
+            <div className="mb-2 text-xs font-black uppercase text-slate-600">
               {ui.explanationLabel}
             </div>
             <p className="text-sm font-semibold leading-6 text-slate-700">

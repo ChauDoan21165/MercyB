@@ -63,7 +63,7 @@ export default function SuggestionsDisableToggle({
           vi="Tắt gợi ý từ Mercy"
           en="Turn off Mercy's suggestions"
           viClassName="text-base leading-snug text-slate-900"
-          enClassName="mt-1 text-sm leading-snug text-slate-500"
+          enClassName="mt-1 text-sm leading-snug text-slate-600"
         />
       </div>
     </label>

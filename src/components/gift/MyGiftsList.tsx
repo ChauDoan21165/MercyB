@@ -44,7 +44,7 @@ export default function MyGiftsList({
   if (loading) {
     return (
       <Card>
-        <CardContent className="p-6 text-center text-sm text-slate-500">
+        <CardContent className="p-6 text-center text-sm text-slate-600">
           Đang tải / Loading…
         </CardContent>
       </Card>
@@ -84,7 +84,7 @@ function Section({ title, empty, rows, kind }: SectionProps): React.ReactElement
           {title}
         </h3>
         {rows.length === 0 ? (
-          <p className="mt-2 text-sm text-slate-500">{empty}</p>
+          <p className="mt-2 text-sm text-slate-600">{empty}</p>
         ) : (
           <ul className="mt-3 divide-y divide-slate-100">
             {rows.map((row) => (
@@ -94,12 +94,12 @@ function Section({ title, empty, rows, kind }: SectionProps): React.ReactElement
                   <p className="font-medium text-slate-900">
                     {row.durationMonths} tháng / months
                   </p>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-slate-600">
                     {kind === "purchased"
                       ? `Tặng cho / To: ${row.recipientEmail ?? "—"}`
                       : `Tặng từ / From: ${row.purchaserEmail ?? "—"}`}
                   </p>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-slate-600">
                     {kind === "purchased" ? (
                       <>
                         Mã / Code:{" "}

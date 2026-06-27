@@ -14,7 +14,7 @@ export default function MyGiftsPage(): React.ReactElement {
   if (!user) {
     return (
       <main className="mx-auto max-w-md px-4 py-10 text-center">
-        <p className="text-sm text-slate-500">Đang tải / Loading…</p>
+        <p className="text-sm text-slate-600">Đang tải / Loading…</p>
       </main>
     );
   }
@@ -25,7 +25,7 @@ export default function MyGiftsPage(): React.ReactElement {
         <h1 className="text-xl font-semibold text-slate-900">
           Quà MercyBlade / My MercyBlade gifts
         </h1>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-slate-600">
           Lịch sử mã quà bạn đã tặng và đã nhận.
         </p>
       </header>

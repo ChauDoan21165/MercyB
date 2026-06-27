@@ -29,14 +29,14 @@ export function AbandonConfirmModal({
         <DialogHeader>
           <DialogTitle>
             Leave this placement test?
-            <span className="mt-1 block text-sm font-medium text-slate-500">
+            <span className="mt-1 block text-sm font-medium text-slate-600">
               Rời khỏi bài đánh giá này?
             </span>
           </DialogTitle>
           <DialogDescription>
             Your answers in this session will be discarded. You can start again
             when you are ready.
-            <span className="mt-2 block text-slate-500">
+            <span className="mt-2 block text-slate-600">
               Các câu trả lời trong phiên này sẽ không được lưu. Bạn có thể làm
               lại khi sẵn sàng.
             </span>

@@ -53,7 +53,7 @@ export function AdminPendingSentenceRow({
         <div className="min-w-0 flex-1">
           <p className="text-base font-medium">{row.en}</p>
           <p className="text-sm text-slate-600 dark:text-slate-300" lang="vi">{row.vi}</p>
-          <p className="text-xs text-slate-500 mt-1">
+          <p className="text-xs text-slate-600 mt-1">
             Gửi: {new Date(row.submitted_at).toLocaleString()}
             {row.context ? ` · ${row.context}` : ''}
             {row.difficulty ? ` · ${row.difficulty}` : ''}
@@ -65,7 +65,7 @@ export function AdminPendingSentenceRow({
         </div>
       </div>
 
-      <label className="block text-xs text-slate-500 mt-2 mb-1" htmlFor={`notes-${row.id}`}>
+      <label className="block text-xs text-slate-600 mt-2 mb-1" htmlFor={`notes-${row.id}`}>
         Ghi chú (tuỳ chọn)
       </label>
       <textarea

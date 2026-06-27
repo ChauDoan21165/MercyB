@@ -67,7 +67,7 @@ export default function InviteFamilyMemberForm({
 
       <form onSubmit={onSubmit} className="mt-3 flex flex-col gap-2">
         <label className="text-[13px] font-bold text-slate-700">
-          Email <span className="font-normal text-slate-500">(tuỳ chọn / optional)</span>
+          Email <span className="font-normal text-slate-600">(tuỳ chọn / optional)</span>
           <input
             type="email"
             value={email}
@@ -119,7 +119,7 @@ export default function InviteFamilyMemberForm({
               )}
             </button>
           </div>
-          <div className="mt-2 text-[11px] text-slate-500">
+          <div className="mt-2 text-[11px] text-slate-600">
             Expires {lastInvite.expiresAt.slice(0, 10)} · hết hạn sau 7 ngày
           </div>
         </div>

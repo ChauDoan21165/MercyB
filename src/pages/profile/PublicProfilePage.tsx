@@ -124,7 +124,7 @@ export default function PublicProfilePage(): React.ReactElement {
             <h1 className="mt-3 text-xl font-semibold text-slate-900">
               {displayName} {flag ? <span className="ml-1">{flag}</span> : null}
             </h1>
-            <p className="text-sm text-slate-500">@{profile.username}</p>
+            <p className="text-sm text-slate-600">@{profile.username}</p>
             {profile.bio ? (
               <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-slate-700">
                 {profile.bio}
@@ -157,7 +157,7 @@ export default function PublicProfilePage(): React.ReactElement {
           </section>
 
           <section className="space-y-2 border-t border-slate-200 pt-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
               Chia sẻ / Share
             </p>
             <div className="flex flex-wrap gap-2">
@@ -220,10 +220,10 @@ function Stat({ icon, labelEn, labelVi, value }: StatProps): React.ReactElement 
     <div className="flex flex-col items-center rounded-md bg-slate-50 p-2 text-center">
       <div className="text-amber-600">{icon}</div>
       <span className="mt-1 text-lg font-semibold text-slate-900">{value}</span>
-      <span className="text-[10px] font-medium uppercase tracking-wide text-slate-500">
+      <span className="text-[10px] font-medium uppercase tracking-wide text-slate-600">
         {labelVi}
       </span>
-      <span className="text-[10px] text-slate-500">{labelEn}</span>
+      <span className="text-[10px] text-slate-600">{labelEn}</span>
     </div>
   );
 }
@@ -242,7 +242,7 @@ function CenteredMessage({
   return (
     <main className="mx-auto flex min-h-[60vh] max-w-md flex-col items-center justify-center px-4 text-center">
       <h1 className="text-xl font-semibold text-slate-900">{title}</h1>
-      <p className="mt-2 text-sm text-slate-500">{subtitle}</p>
+      <p className="mt-2 text-sm text-slate-600">{subtitle}</p>
       {cta ? <div className="mt-4">{cta}</div> : null}
     </main>
   );

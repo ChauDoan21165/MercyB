@@ -136,7 +136,7 @@ export default function InterviewPromptsModeration(): React.ReactElement {
 
       <section className="mb-5 grid grid-cols-1 gap-3 sm:grid-cols-3" aria-label="Bộ lọc">
         <div>
-          <label className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">
             Trạng thái
           </label>
           <select
@@ -152,7 +152,7 @@ export default function InterviewPromptsModeration(): React.ReactElement {
           </select>
         </div>
         <div>
-          <label className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">
             Nghề
           </label>
           <select
@@ -171,7 +171,7 @@ export default function InterviewPromptsModeration(): React.ReactElement {
           </select>
         </div>
         <div>
-          <label className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">
             Loại câu hỏi
           </label>
           <select
@@ -198,7 +198,7 @@ export default function InterviewPromptsModeration(): React.ReactElement {
       )}
 
       {rows && rows.length === 0 && !error && (
-        <p className="text-sm text-slate-500">Không có câu hỏi nào.</p>
+        <p className="text-sm text-slate-600">Không có câu hỏi nào.</p>
       )}
 
       <ul className="space-y-3">
@@ -218,7 +218,7 @@ export default function InterviewPromptsModeration(): React.ReactElement {
               <span className="rounded-full bg-slate-100 px-2 py-0.5 font-semibold text-slate-700">
                 {QUESTION_TYPE_LABELS_VI[row.question_type]}
               </span>
-              <span className="ml-auto font-mono uppercase text-slate-500">{row.status}</span>
+              <span className="ml-auto font-mono uppercase text-slate-600">{row.status}</span>
             </header>
 
             {editingId === row.id ? (
@@ -237,16 +237,16 @@ export default function InterviewPromptsModeration(): React.ReactElement {
             )}
 
             {row.question_text_vi && editingId !== row.id && (
-              <p className="mt-2 whitespace-pre-line text-xs text-slate-500">
+              <p className="mt-2 whitespace-pre-line text-xs text-slate-600">
                 VI: {row.question_text_vi}
               </p>
             )}
 
             {row.context && (
-              <p className="mt-2 text-xs italic text-slate-500">{row.context}</p>
+              <p className="mt-2 text-xs italic text-slate-600">{row.context}</p>
             )}
 
-            <p className="mt-2 text-[11px] text-slate-500">
+            <p className="mt-2 text-[11px] text-slate-600">
               {new Date(row.submitted_at).toLocaleString("vi-VN")} · {row.upvotes_count} upvotes ·{" "}
               {row.flag_count} flags
             </p>

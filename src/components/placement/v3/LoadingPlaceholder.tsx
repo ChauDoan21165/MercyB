@@ -21,7 +21,7 @@ export function LoadingPlaceholder({
       <BilingualLabel
         text={label}
         enClassName="text-sm font-black text-slate-800"
-        viClassName="text-xs font-medium text-slate-500"
+        viClassName="text-xs font-medium text-slate-600"
       />
     </div>
   );

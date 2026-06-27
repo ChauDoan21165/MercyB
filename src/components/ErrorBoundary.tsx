@@ -321,7 +321,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
             </a>
           </div>
 
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-600">
             ErrorBoundary version: v2026-05-01-01
           </p>
         </div>

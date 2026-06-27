@@ -222,7 +222,7 @@ export default function SpeakPracticeMode({
                 className="mt-3"
               />
             ) : (
-              <div className="mt-2 text-[11px] text-slate-500">{tutorCopy.ui.ttsUnavailable}</div>
+              <div className="mt-2 text-[11px] text-slate-600">{tutorCopy.ui.ttsUnavailable}</div>
             )}
             {ttsVoiceSource && (
               <div className={`mt-2 text-[11px] font-semibold ${ttsVoiceSource === "mercy" ? "text-emerald-700" : "text-amber-700"}`}>
@@ -277,7 +277,7 @@ export default function SpeakPracticeMode({
           />
 
           <div className="mt-4 rounded-[16px] border border-slate-200 bg-slate-50 px-4 py-4">
-            <div className="text-xs font-black uppercase text-slate-500">
+            <div className="text-xs font-black uppercase text-slate-600">
               Bạn đọc lại
             </div>
             <div className="mt-3">
@@ -310,7 +310,7 @@ export default function SpeakPracticeMode({
             )}
             <label
               htmlFor="ai-tutor-speak-repeat-input"
-              className="mt-3 block text-xs font-black uppercase text-slate-500"
+              className="mt-3 block text-xs font-black uppercase text-slate-600"
             >
               Gõ câu bạn đọc lại
             </label>
@@ -447,7 +447,7 @@ export default function SpeakPracticeMode({
 
           {followUpPrompt && (
             <div data-testid="ai-tutor-speak-follow-up" className="mt-4 rounded-[16px] border border-slate-200 bg-white px-4 py-4">
-              <div className="text-xs font-black uppercase text-slate-500">
+              <div className="text-xs font-black uppercase text-slate-600">
                 {followUpIsPivot ? "Đổi câu luyện" : "Câu hỏi tiếp theo"}
               </div>
 
@@ -457,7 +457,7 @@ export default function SpeakPracticeMode({
                   <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">
                     Bạn đã luyện đủ vòng cho câu này.
                   </p>
-                  <p className="text-[11px] font-semibold text-slate-500">
+                  <p className="text-[11px] font-semibold text-slate-600">
                     You've completed this sentence's rounds.
                   </p>
                   <div className="mt-3 flex flex-col gap-2 sm:flex-row">
@@ -479,7 +479,7 @@ export default function SpeakPracticeMode({
                       className="flex-1 rounded-[12px] border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-black text-slate-700 transition hover:bg-slate-100"
                     >
                       Bắt đầu câu mới
-                      <span className="block text-[10px] font-semibold text-slate-500">
+                      <span className="block text-[10px] font-semibold text-slate-600">
                         Start a fresh sentence
                       </span>
                     </button>
@@ -509,7 +509,7 @@ export default function SpeakPracticeMode({
                       className="mt-3"
                     />
                   ) : canReadFollowUp ? (
-                    <div className="mt-2 text-[11px] text-slate-500">{tutorCopy.ui.ttsUnavailable}</div>
+                    <div className="mt-2 text-[11px] text-slate-600">{tutorCopy.ui.ttsUnavailable}</div>
                   ) : null}
                   {canReadFollowUp && followUpTtsError && (
                     <div
@@ -535,7 +535,7 @@ export default function SpeakPracticeMode({
                       same mic toggle as "Bạn đọc lại": its STT commit updates the
                       current spoken response and advances to the next follow-up. */}
                   <div className="mt-3" data-testid="ai-tutor-speak-follow-up-answer">
-                    <div className="text-xs font-black uppercase text-slate-500">
+                    <div className="text-xs font-black uppercase text-slate-600">
                       Trả lời câu hỏi này
                     </div>
                     <div className="mt-2">
@@ -561,7 +561,7 @@ export default function SpeakPracticeMode({
                         {micFallbackMessage}
                       </p>
                     )}
-                    <p className="mt-2 text-[11px] font-semibold leading-5 text-slate-500">
+                    <p className="mt-2 text-[11px] font-semibold leading-5 text-slate-600">
                       Hoặc gõ câu trả lời vào ô "Gõ câu bạn đọc lại" phía trên.
                     </p>
                   </div>

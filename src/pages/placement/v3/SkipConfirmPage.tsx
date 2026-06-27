@@ -11,7 +11,7 @@ export default function SkipConfirmPage() {
           as="h1"
           text={{ en: "Skip placement test?", vi: "Bỏ qua bài đánh giá?" }}
           enClassName="text-2xl font-black text-slate-950"
-          viClassName="text-sm font-medium text-slate-500"
+          viClassName="text-sm font-medium text-slate-600"
         />
         <BilingualLabel
           as="p"
@@ -21,7 +21,7 @@ export default function SkipConfirmPage() {
             vi: "Bạn có thể làm bài này sau từ trang Tài khoản.",
           }}
           enClassName="text-sm font-semibold leading-6 text-slate-600"
-          viClassName="text-xs font-medium leading-5 text-slate-500"
+          viClassName="text-xs font-medium leading-5 text-slate-600"
         />
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           <Button type="button" className="rounded-full" onClick={() => navigate("/placement")}>

@@ -30,10 +30,10 @@ function TopicCard({ topic }: { topic: TOEFLWritingTopic }) {
         <span className={"inline-block rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider " + (TYPE_BADGES[topic.task_type] ?? "bg-slate-100")}>
           {TYPE_LABELS[topic.task_type] ?? topic.task_type}
         </span>
-        <span className="ml-auto text-[11px] font-semibold text-slate-500">{topic.recommended_minutes} min</span>
+        <span className="ml-auto text-[11px] font-semibold text-slate-600">{topic.recommended_minutes} min</span>
       </div>
       <h3 className="text-base font-bold text-slate-900">{topic.topic_title_vi}</h3>
-      <p className="text-xs text-slate-500">{topic.topic_title_en}</p>
+      <p className="text-xs text-slate-600">{topic.topic_title_en}</p>
       <p className="mt-1 text-xs leading-relaxed text-slate-600 line-clamp-2">{topic.description_vi}</p>
     </Link>
   );
@@ -47,7 +47,7 @@ export default function TOEFLWritingPage() {
         <Button asChild size="sm" variant="ghost"><Link to="/exam/toefl">{TOEFL_COPY.backToOverview.vi}</Link></Button>
       </header>
       <TOEFLPremiumGate>
-        <div className="text-xs text-slate-500 mb-3">{TOEFL_WRITING_TOPICS.length} chủ đề.</div>
+        <div className="text-xs text-slate-600 mb-3">{TOEFL_WRITING_TOPICS.length} chủ đề.</div>
         <div className="space-y-3">
           {TOEFL_WRITING_TOPICS.map((topic) => (
             <TopicCard key={topic.id} topic={topic} />

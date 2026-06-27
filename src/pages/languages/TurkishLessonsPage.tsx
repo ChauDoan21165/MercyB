@@ -62,10 +62,10 @@ export default function TurkishLessonsPage() {
             ? "A1 to C2 Turkish lessons with vowel harmony, cases, daily life, shopping, work, healthcare, formal register, media, debate, and academic language."
             : "Bài học tiếng Thổ Nhĩ Kỳ từ A1 đến C2: hài hòa nguyên âm, các cách, sinh hoạt, mua sắm, công việc, y tế, văn phong trang trọng, truyền thông, tranh luận và học thuật."}
         </p>
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-3 text-xs text-slate-600">
           {TURKISH_TOTAL_LESSONS} {uiLang === "en" ? "lessons" : "bài"} · A1 → C2
         </p>
-        <p className="mt-1 text-xs text-slate-500">
+        <p className="mt-1 text-xs text-slate-600">
           <Link
             to="/languages"
             className="font-medium text-red-700 underline"
@@ -136,7 +136,7 @@ function CategorySection({
         <h2 className="text-base font-semibold text-slate-900">
           {uiLanguage === "en" ? category.title_en : category.title_vi}
         </h2>
-        <span className="text-xs text-slate-500">
+        <span className="text-xs text-slate-600">
           {lessons.length}{" "}
           {uiLanguage === "en"
             ? lessons.length === 1

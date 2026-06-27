@@ -135,7 +135,7 @@ export default function StoryModeration(): React.ReactElement {
 
       <section className="mb-5 grid grid-cols-2 gap-3" aria-label="Bộ lọc">
         <div>
-          <label className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">
             Trạng thái
           </label>
           <select
@@ -151,7 +151,7 @@ export default function StoryModeration(): React.ReactElement {
           </select>
         </div>
         <div>
-          <label className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">
             Thẻ
           </label>
           <select
@@ -176,7 +176,7 @@ export default function StoryModeration(): React.ReactElement {
       )}
 
       {rows && rows.length === 0 && !error && (
-        <p className="text-sm text-slate-500">Không có câu chuyện nào.</p>
+        <p className="text-sm text-slate-600">Không có câu chuyện nào.</p>
       )}
 
       <ul className="space-y-3">
@@ -200,9 +200,9 @@ export default function StoryModeration(): React.ReactElement {
               <div className="min-w-0 flex-1">
                 <p className="font-semibold text-slate-900">{row.display_name}</p>
                 {row.profession && (
-                  <p className="text-xs text-slate-500">{row.profession}</p>
+                  <p className="text-xs text-slate-600">{row.profession}</p>
                 )}
-                <p className="mt-1 text-xs text-slate-500">
+                <p className="mt-1 text-xs text-slate-600">
                   {new Date(row.submitted_at).toLocaleString("vi-VN")} ·{" "}
                   <span className="font-mono uppercase">{row.status}</span>
                 </p>

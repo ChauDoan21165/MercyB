@@ -22,7 +22,7 @@ export function ParentInviteFamilyCta() {
         vi="Mời gia đình"
         en="Invite family"
         viClassName="text-sm font-semibold text-emerald-700"
-        enClassName="text-[12px] text-slate-500"
+        enClassName="text-[12px] text-slate-600"
       />
     </Link>
   );

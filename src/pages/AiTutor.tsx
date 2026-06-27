@@ -1082,7 +1082,7 @@ function TodayLessonLoopPanel({
       )}
 
       {nextFocus && (
-        <div className="mt-3 text-xs font-bold text-slate-500" style={{ overflowWrap: "break-word" }}>
+        <div className="mt-3 text-xs font-bold text-slate-600" style={{ overflowWrap: "break-word" }}>
           Ôn tiếp: {nextFocus}
         </div>
       )}

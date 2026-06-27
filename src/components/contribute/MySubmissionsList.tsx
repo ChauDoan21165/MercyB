@@ -44,14 +44,14 @@ export function MySubmissionsList({ userId }: MySubmissionsListProps) {
   }, [userId]);
 
   if (rows === null) {
-    return <p className="text-sm text-slate-500">Đang tải…</p>;
+    return <p className="text-sm text-slate-600">Đang tải…</p>;
   }
   if (error) {
     return <p className="text-sm text-red-700 dark:text-red-300" role="alert">{error}</p>;
   }
   if (rows.length === 0) {
     return (
-      <p className="text-sm text-slate-500">
+      <p className="text-sm text-slate-600">
         Bạn chưa gửi câu nào. Hãy đóng góp câu đầu tiên!
       </p>
     );
@@ -71,7 +71,7 @@ export function MySubmissionsList({ userId }: MySubmissionsListProps) {
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-medium truncate">{r.en}</p>
                 <p className="text-sm text-slate-600 dark:text-slate-300 truncate" lang="vi">{r.vi}</p>
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="text-xs text-slate-600 mt-1">
                   {new Date(r.submitted_at).toLocaleDateString()}
                   {r.context ? ` · ${r.context}` : ''}
                   {r.difficulty ? ` · ${r.difficulty}` : ''}

@@ -26,7 +26,7 @@ export default function WeakAt() {
         </h1>
         <p
           data-testid="weak-at-title-en"
-          className="mt-1 text-base text-slate-500"
+          className="mt-1 text-base text-slate-600"
         >
           What you're working on
         </p>

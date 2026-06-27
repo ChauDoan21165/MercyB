@@ -102,7 +102,7 @@ export default function PurchaseGiftForm({
             <h2 className="mt-2 text-xl font-semibold text-slate-900">
               Tặng người thân tiếng Anh
             </h2>
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-slate-600">
               Give a loved one premium MercyBlade access.
             </p>
           </header>
@@ -123,7 +123,7 @@ export default function PurchaseGiftForm({
                   aria-pressed={duration === d}
                 >
                   {d} tháng
-                  <span className="ml-1 text-xs text-slate-500">/ mo</span>
+                  <span className="ml-1 text-xs text-slate-600">/ mo</span>
                 </button>
               ))}
             </div>
@@ -145,7 +145,7 @@ export default function PurchaseGiftForm({
           <div className="space-y-2">
             <Label htmlFor="personal-message">
               Lời nhắn / Personal message{" "}
-              <span className="text-xs text-slate-500">(tuỳ chọn / optional)</span>
+              <span className="text-xs text-slate-600">(tuỳ chọn / optional)</span>
             </Label>
             <Textarea
               id="personal-message"
@@ -157,7 +157,7 @@ export default function PurchaseGiftForm({
             />
             <p
               className={`text-xs ${
-                messageOver ? "text-rose-600" : "text-slate-500"
+                messageOver ? "text-rose-600" : "text-slate-600"
               }`}
               aria-live="polite"
             >
@@ -180,7 +180,7 @@ export default function PurchaseGiftForm({
             )}
           </Button>
 
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-600">
             Beta: chưa thanh toán thật / Beta: not charging real money yet.
           </p>
         </form>
@@ -215,7 +215,7 @@ function IssuedGiftCard({ row, onReset }: IssuedGiftCardProps): React.ReactEleme
         <h2 className="text-xl font-semibold text-slate-900">
           Mã quà đã sẵn sàng / Gift ready
         </h2>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-slate-600">
           Gửi mã hoặc link cho {row.recipientEmail ?? "người nhận"}.
         </p>
         <div className="rounded-md border border-amber-200 bg-amber-50 p-4 font-mono text-2xl tracking-widest text-amber-700">

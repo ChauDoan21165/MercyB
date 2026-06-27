@@ -35,7 +35,7 @@ export type StreamingFeedbackProps = {
 
 function statusColorClass(accuracy: number): string {
   if (accuracy < 0) {
-    return "border-slate-200 bg-white text-slate-500";
+    return "border-slate-200 bg-white text-slate-600";
   }
   if (accuracy >= 80) {
     return "border-emerald-300 bg-emerald-50 text-emerald-800";
@@ -89,7 +89,7 @@ export default function StreamingFeedback({
           <div className="text-sm font-semibold text-slate-900">
             Đang nghe Mercy chấm trực tiếp
           </div>
-          <div className="text-[11px] italic text-slate-500">
+          <div className="text-[11px] italic text-slate-600">
             Live pronunciation feedback
           </div>
         </div>
@@ -99,7 +99,7 @@ export default function StreamingFeedback({
           }`}
         >
           {partial ? `${runningScore}` : "—"}
-          <span className="text-xs font-normal text-slate-500 ml-1">/100</span>
+          <span className="text-xs font-normal text-slate-600 ml-1">/100</span>
         </div>
       </div>
 
@@ -120,7 +120,7 @@ export default function StreamingFeedback({
 
       <div className="flex flex-wrap items-center gap-1.5">
         {words.length === 0 ? (
-          <span className="text-xs italic text-slate-500">
+          <span className="text-xs italic text-slate-600">
             {isStreaming
               ? "Đang chờ từ đầu tiên… · Waiting for first word…"
               : "Bấm Record để bắt đầu · Tap Record to start"}
@@ -149,7 +149,7 @@ export default function StreamingFeedback({
         )}
       </div>
 
-      <p className="mt-3 text-[10px] leading-snug text-slate-500">
+      <p className="mt-3 text-[10px] leading-snug text-slate-600">
         Xanh = ổn · Vàng = gần đúng · Đỏ = chưa rõ ·{" "}
         <span className="italic">Green = good · Amber = close · Red = unclear</span>
       </p>

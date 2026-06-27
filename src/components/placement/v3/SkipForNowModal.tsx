@@ -22,14 +22,14 @@ export function SkipForNowModal({ open, onOpenChange, onKeepTesting, onSkip }: P
         <DialogHeader>
           <DialogTitle>
             Skip placement test?
-            <span className="mt-1 block text-sm font-medium text-slate-500">
+            <span className="mt-1 block text-sm font-medium text-slate-600">
               Bỏ qua bài đánh giá?
             </span>
           </DialogTitle>
           <DialogDescription>
             You can take it anytime from your Account page, and Mercy will
             recommend a starting lesson whenever you are ready.
-            <span className="mt-2 block text-slate-500">
+            <span className="mt-2 block text-slate-600">
               Bạn có thể làm bất cứ lúc nào từ trang Tài khoản, và Mercy sẽ gợi
               ý bài học phù hợp khi bạn sẵn sàng.
             </span>

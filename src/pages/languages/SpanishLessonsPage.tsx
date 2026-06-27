@@ -112,10 +112,10 @@ export default function SpanishLessonsPage() {
         <p className="mt-3 text-sm text-slate-700 leading-relaxed">
           Ser vs estar from day one. Por vs para explained the way you actually need to hear it. Peninsular and Latin American variants throughout — you'll know which one you're learning and when.
         </p>
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-3 text-xs text-slate-600">
           {SPANISH_TOTAL_LESSONS} lessons · A1 → C2
         </p>
-        <p className="mt-1 text-xs text-slate-500">
+        <p className="mt-1 text-xs text-slate-600">
           <Link to="/languages" className="font-medium text-rose-700 underline">
             Xem ngôn ngữ khác / View other languages
           </Link>
@@ -146,7 +146,7 @@ export default function SpanishLessonsPage() {
       </nav>
 
       {lessons === null ? (
-        <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
+        <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-600">
           Loading {CEFR_PILL_LABELS_EN[level]} lessons…
         </p>
       ) : lessons.length === 0 ? (
@@ -192,7 +192,7 @@ function CategorySection({
         <h2 className="text-base font-semibold text-slate-900">
           {category.title}
         </h2>
-        <span className="text-xs text-slate-500">
+        <span className="text-xs text-slate-600">
           {lessons.length} {lessons.length === 1 ? "lesson" : "lessons"}
         </span>
       </header>

@@ -37,11 +37,11 @@ function PassageCard({ passage }: { passage: TOEFLReadingPassage }) {
       className="block rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-slate-300 hover:shadow">
       <div className="mb-1 flex items-center gap-2">
         <span className={"inline-block rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider " + (BAND_BADGE[passage.band] ?? "bg-slate-100 text-slate-700 border-slate-200")}>Band {passage.band}</span>
-        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{passage.topic_family.replace(/_/g, " ")}</span>
-        <span className="ml-auto text-[11px] font-semibold text-slate-500">{passage.time_minutes} min · {passage.questions.length} Q</span>
+        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600">{passage.topic_family.replace(/_/g, " ")}</span>
+        <span className="ml-auto text-[11px] font-semibold text-slate-600">{passage.time_minutes} min · {passage.questions.length} Q</span>
       </div>
       <h3 className="text-base font-bold text-slate-900">{passage.title_vi}</h3>
-      <p className="text-xs text-slate-500">{passage.title_en}</p>
+      <p className="text-xs text-slate-600">{passage.title_en}</p>
       <p className="mt-1 text-xs leading-relaxed text-slate-600 line-clamp-2">{passage.summary_vi}</p>
     </Link>
   );
@@ -62,7 +62,7 @@ export default function Reading() {
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-6">
       <header className="mb-5">
-        <Link to="/exam/toefl" className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-slate-800">
+        <Link to="/exam/toefl" className="inline-flex items-center gap-1 text-xs text-slate-600 hover:text-slate-800">
           <ChevronLeft size={14} />
           Quay lại tổng quan TOEFL · Back to TOEFL overview
         </Link>
@@ -73,7 +73,7 @@ export default function Reading() {
         <p className="mt-2 text-sm leading-relaxed text-slate-700">
           Luyện TOEFL Reading với bài đọc học thuật thực tế, kèm giải thích tiếng Việt cho từng câu. Mỗi bài có 10 câu hỏi trải đều các dạng: Factual Information, Inference, Vocabulary, Prose Summary, v.v.
         </p>
-        <p className="mt-1 text-xs text-slate-500">
+        <p className="mt-1 text-xs text-slate-600">
           Academic passages with Vietnamese explanations. Based on the public TOEFL iBT test specification (post-July 2023 format).
         </p>
       </header>
@@ -86,13 +86,13 @@ export default function Reading() {
         ))}
       </div>
       <div className="mb-4 flex flex-wrap items-center gap-2">
-        <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">Band:</span>
+        <span className="text-xs font-semibold uppercase tracking-wider text-slate-600">Band:</span>
         {(["all", 5.5, 6.5, 7.5, 8.5] as const).map((b) => (
           <button key={b} type="button" onClick={() => setBandFilter(b)}
             className={"rounded-full border px-3 py-0.5 text-[11px] font-semibold " + (bandFilter === b ? "border-amber-600 bg-amber-600 text-white" : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50")}>{b === "all" ? "tất cả" : b.toFixed(1)}</button>
         ))}
       </div>
-      <div className="text-xs text-slate-500">Hiển thị {visiblePassages.length} / {allPassages.length} bài.</div>
+      <div className="text-xs text-slate-600">Hiển thị {visiblePassages.length} / {allPassages.length} bài.</div>
       <div className="mt-3 grid gap-3 sm:grid-cols-2">{visiblePassages.map((p) => <PassageCard key={p.id} passage={p} />)}</div>
     </div>
   );

@@ -49,11 +49,11 @@ export default function VNCulturalIndexPage(): React.ReactElement {
         <h1 className="text-2xl font-semibold text-slate-900">
           Văn hoá Việt — giải thích bằng tiếng Anh
         </h1>
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-slate-600">
           Vietnamese culture, in English — for diaspora users explaining
           their world to coworkers, neighbors, and kids' teachers.
         </p>
-        <p className="mt-2 text-xs text-slate-500">
+        <p className="mt-2 text-xs text-slate-600">
           Miễn phí cho mọi người dùng / Free for everyone.
         </p>
       </header>
@@ -80,14 +80,14 @@ export default function VNCulturalIndexPage(): React.ReactElement {
                         {badge.label}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-500">{pack.title_en}</p>
+                    <p className="text-xs text-slate-600">{pack.title_en}</p>
                     <p className="text-sm leading-relaxed text-slate-700">
                       {pack.summary_vn}
                     </p>
-                    <p className="text-xs leading-relaxed text-slate-500">
+                    <p className="text-xs leading-relaxed text-slate-600">
                       {pack.summary_en}
                     </p>
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-slate-600">
                       {pack.phrases.length} cụm từ · {pack.dialogues.length} hội thoại
                     </p>
                   </CardContent>

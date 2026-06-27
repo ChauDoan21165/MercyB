@@ -89,7 +89,7 @@ export function CorporateAccountForm({
       <div>
         <label htmlFor="corp-name" className="block text-sm font-semibold mb-1">
           Tên tổ chức
-          <span className="text-slate-500 font-normal ml-2">Organization name</span>
+          <span className="text-slate-600 font-normal ml-2">Organization name</span>
         </label>
         <input
           id="corp-name"
@@ -105,7 +105,7 @@ export function CorporateAccountForm({
       <div>
         <label htmlFor="corp-type" className="block text-sm font-semibold mb-1">
           Loại tổ chức
-          <span className="text-slate-500 font-normal ml-2">Organization type</span>
+          <span className="text-slate-600 font-normal ml-2">Organization type</span>
         </label>
         <select
           id="corp-type"
@@ -127,7 +127,7 @@ export function CorporateAccountForm({
         <div>
           <label htmlFor="corp-email" className="block text-sm font-semibold mb-1">
             Email liên hệ
-            <span className="text-slate-500 font-normal ml-2">Contact email</span>
+            <span className="text-slate-600 font-normal ml-2">Contact email</span>
           </label>
           <input
             id="corp-email"
@@ -141,7 +141,7 @@ export function CorporateAccountForm({
         <div>
           <label htmlFor="corp-phone" className="block text-sm font-semibold mb-1">
             Số điện thoại (tuỳ chọn)
-            <span className="text-slate-500 font-normal ml-2">Contact phone</span>
+            <span className="text-slate-600 font-normal ml-2">Contact phone</span>
           </label>
           <input
             id="corp-phone"
@@ -157,7 +157,7 @@ export function CorporateAccountForm({
         <div>
           <label htmlFor="corp-country" className="block text-sm font-semibold mb-1">
             Quốc gia
-            <span className="text-slate-500 font-normal ml-2">Country</span>
+            <span className="text-slate-600 font-normal ml-2">Country</span>
           </label>
           <input
             id="corp-country"
@@ -172,7 +172,7 @@ export function CorporateAccountForm({
         <div>
           <label htmlFor="corp-seats" className="block text-sm font-semibold mb-1">
             Số ghế (tối thiểu {CORPORATE_MIN_SEAT_COUNT})
-            <span className="text-slate-500 font-normal ml-2">Seats</span>
+            <span className="text-slate-600 font-normal ml-2">Seats</span>
           </label>
           <input
             id="corp-seats"
@@ -187,7 +187,7 @@ export function CorporateAccountForm({
         </div>
       </div>
 
-      <p className="text-xs text-slate-500">
+      <p className="text-xs text-slate-600">
         Việc thanh toán Stripe sẽ được nhóm sales kích hoạt sau khi xét duyệt.
         Tài khoản này tạo trước, gắn Stripe sau.
       </p>

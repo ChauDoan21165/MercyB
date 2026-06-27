@@ -68,10 +68,10 @@ export default function PendingSentencesPage() {
         <p className="text-sm text-red-700 dark:text-red-300" role="alert">{error}</p>
       )}
 
-      {rows === null && !error && <p className="text-sm text-slate-500">Đang tải…</p>}
+      {rows === null && !error && <p className="text-sm text-slate-600">Đang tải…</p>}
 
       {rows && rows.length === 0 && !error && (
-        <p className="text-sm text-slate-500">Không có câu nào đang chờ duyệt.</p>
+        <p className="text-sm text-slate-600">Không có câu nào đang chờ duyệt.</p>
       )}
 
       {rows && rows.length > 0 && adminUserId && (

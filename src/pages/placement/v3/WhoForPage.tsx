@@ -26,7 +26,7 @@ export default function WhoForPage() {
         className="mt-6 text-center"
         text={{ en: "Who is this account for?", vi: "Tài khoản này là của ai?" }}
         enClassName="text-[28px] font-black leading-tight text-slate-950 sm:text-4xl"
-        viClassName="text-base font-medium text-slate-500"
+        viClassName="text-base font-medium text-slate-600"
       />
 
       <div className="mt-7 grid gap-4 sm:grid-cols-2">
@@ -46,7 +46,7 @@ export default function WhoForPage() {
             }
             className="mt-3"
             enClassName="text-lg font-black text-slate-900"
-            viClassName="text-sm font-medium text-slate-500"
+            viClassName="text-sm font-medium text-slate-600"
           />
           <BilingualLabel
             text={{
@@ -55,7 +55,7 @@ export default function WhoForPage() {
             }}
             className="mt-3"
             enClassName="text-sm font-semibold leading-6 text-slate-600"
-            viClassName="text-xs font-medium leading-5 text-slate-500"
+            viClassName="text-xs font-medium leading-5 text-slate-600"
           />
         </button>
 
@@ -70,7 +70,7 @@ export default function WhoForPage() {
             text={{ en: "My child (ages 4-10)", vi: "Con của mình (4-10 tuổi)" }}
             className="mt-3"
             enClassName="text-lg font-black text-slate-900"
-            viClassName="text-sm font-medium text-slate-500"
+            viClassName="text-sm font-medium text-slate-600"
           />
           <BilingualLabel
             text={{
@@ -79,7 +79,7 @@ export default function WhoForPage() {
             }}
             className="mt-3"
             enClassName="text-sm font-semibold leading-6 text-slate-600"
-            viClassName="text-xs font-medium leading-5 text-slate-500"
+            viClassName="text-xs font-medium leading-5 text-slate-600"
           />
         </button>
       </div>

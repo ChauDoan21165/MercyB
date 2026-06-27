@@ -55,7 +55,7 @@ export function ParentFamilyBridgeSection() {
         <h2 className="text-base font-bold text-slate-900" lang="vi">
           Cùng học với con
         </h2>
-        <p className="mt-1 text-[13px] text-slate-500" lang="vi">
+        <p className="mt-1 text-[13px] text-slate-600" lang="vi">
           Những tình huống thực tế giúp gia đình đồng hành cùng hành trình tiếng Anh.
         </p>
       </header>
@@ -115,7 +115,7 @@ function ScriptAccordion({ script }: { script: Wave1Script }) {
                   <span lang="en">{ex.learner.en}</span>
                 </p>
                 {ex.learner.viSupport && (
-                  <p className="pl-2 text-[12px] italic text-slate-500" lang="vi">
+                  <p className="pl-2 text-[12px] italic text-slate-600" lang="vi">
                     → {ex.learner.viSupport}
                   </p>
                 )}

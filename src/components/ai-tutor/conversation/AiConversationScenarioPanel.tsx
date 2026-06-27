@@ -343,7 +343,7 @@ export default function AiConversationScenarioPanel({
                 : "AI conversation scenario"}
             </div>
             <h2 className="mt-1 text-xl font-black text-slate-900">{scenario.title}</h2>
-            <p className="mt-1 text-sm font-semibold leading-6 text-slate-500">
+            <p className="mt-1 text-sm font-semibold leading-6 text-slate-600">
               {scenario.learnerRole}
             </p>
           </div>
@@ -456,7 +456,7 @@ export default function AiConversationScenarioPanel({
             This session reached 50 turns. Start a new session to continue.
           </div>
         )}
-        <label className="mb-2 block text-xs font-black uppercase text-slate-500">
+        <label className="mb-2 block text-xs font-black uppercase text-slate-600">
           Your answer
         </label>
         <textarea
@@ -488,7 +488,7 @@ export default function AiConversationScenarioPanel({
             type="button"
             onClick={() => void handleSend()}
             disabled={!canSend || !accessToken}
-            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500"
+            className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-black text-white disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-600"
           >
             <Send className="h-4 w-4" aria-hidden />
             Send answer

@@ -104,10 +104,10 @@ export default function FrenchLessonsPage() {
             ? "Pronunciation written for English speakers. Nasal vowels, silent letters, and liaison — explained the way English speakers actually need."
             : "Phát âm viết riêng cho người Việt. Âm mũi, âm câm, liaison — giải thích theo cách người Việt hiểu."}
         </p>
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-3 text-xs text-slate-600">
           {FRENCH_TOTAL_LESSONS} {uiLang === "en" ? "lessons" : "bài"} · A1 → C2
         </p>
-        <p className="mt-1 text-xs text-slate-500">
+        <p className="mt-1 text-xs text-slate-600">
           <Link
             to="/languages"
             className="font-medium text-blue-700 underline"
@@ -145,13 +145,13 @@ export default function FrenchLessonsPage() {
       </nav>
 
       {lessons === null ? (
-        <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
+        <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-600">
           {uiLang === "en"
             ? `Loading ${cefrPillLabel(level, uiLang)} lessons…`
             : `Đang tải bài học cấp độ ${cefrPillLabel(level, uiLang)}…`}
         </p>
       ) : lessons.length === 0 ? (
-        <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
+        <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-600">
           {uiLang === "en"
             ? "No lessons available for this level yet."
             : "Chưa có bài học cho cấp độ này."}
@@ -196,7 +196,7 @@ function CategorySection({
         </h2>
         {/* Count only — the other-language category title was UI
             duplication of the <h2> above (which already picks uiLang). */}
-        <span className="text-xs text-slate-500">
+        <span className="text-xs text-slate-600">
           {lessons.length}{" "}
           {uiLanguage === "en"
             ? lessons.length === 1

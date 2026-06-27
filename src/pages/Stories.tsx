@@ -133,10 +133,10 @@ export default function StoriesPage(): React.ReactElement {
         <h1 className="text-2xl font-semibold text-slate-900">
           Câu chuyện thật của người học
         </h1>
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-slate-600">
           Real stories from Vietnamese learners.
         </p>
-        <p className="mt-2 text-xs text-slate-500">
+        <p className="mt-2 text-xs text-slate-600">
           Mỗi câu chuyện đều do người học tự gửi và được đội ngũ MercyBlade duyệt.
         </p>
       </header>
@@ -144,7 +144,7 @@ export default function StoriesPage(): React.ReactElement {
       {/* Filters */}
       <section className="mb-6 space-y-3" aria-label="Bộ lọc">
         <div>
-          <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Thẻ / Tags</p>
+          <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-600">Thẻ / Tags</p>
           <div className="flex flex-wrap gap-2">
             {STORY_TAGS.map((tag) => {
               const on = tagFilter.includes(tag);
@@ -168,7 +168,7 @@ export default function StoriesPage(): React.ReactElement {
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">
               Nghề / Profession
             </label>
             <select
@@ -185,7 +185,7 @@ export default function StoriesPage(): React.ReactElement {
             </select>
           </div>
           <div>
-            <label className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            <label className="text-xs font-semibold uppercase tracking-wide text-slate-600">
               Kỳ thi / Exam
             </label>
             <select
@@ -212,10 +212,10 @@ export default function StoriesPage(): React.ReactElement {
         </p>
       )}
       {rows === null && !error && (
-        <p className="text-sm text-slate-500">Đang tải…</p>
+        <p className="text-sm text-slate-600">Đang tải…</p>
       )}
       {filtered && filtered.length === 0 && !error && (
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-slate-600">
           Chưa có câu chuyện phù hợp với bộ lọc. Hãy bỏ bớt bộ lọc nhé.
         </p>
       )}
@@ -235,7 +235,7 @@ export default function StoriesPage(): React.ReactElement {
                     <ScoreDelta row={r} />
                   </div>
                   {r.profession && (
-                    <p className="mt-0.5 text-xs text-slate-500">{r.profession}</p>
+                    <p className="mt-0.5 text-xs text-slate-600">{r.profession}</p>
                   )}
                   <p className="mt-2 text-sm leading-relaxed text-slate-700">
                     {excerpt(r.story_text_vi, 140)}
