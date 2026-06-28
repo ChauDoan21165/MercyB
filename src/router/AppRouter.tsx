@@ -536,11 +536,11 @@ function RedeemRedirect()  { return <Navigate to="/account" replace />; }
  * /learn/:native/english — the primary CTA from the inkwash homepage.
  * Writes the anonymous pair so Home can read it, then renders Home
  * with nativeLangOverride so the learner sees their dashboard in their
- * native language. Restored from 178c85066 (LanguagePairRedirect).
+ * native language. Unknown native slugs must fall back to English UI, not Vietnamese UI.
  */
 function EnglishLearnRedirect() {
   const { native } = useParams<{ native?: string }>();
-  const nativeCode: NativeLang = (NATIVE_SLUG_TO_CODE[native ?? ""] as NativeLang) ?? "vi";
+  const nativeCode: NativeLang = (NATIVE_SLUG_TO_CODE[native ?? ""] as NativeLang) ?? "en";
   useEffect(() => { writeAnonymousPair(nativeCode, ["en"]); }, [nativeCode]);
   return <LazyPage><Home nativeLangOverride={nativeCode} /></LazyPage>;
 }
