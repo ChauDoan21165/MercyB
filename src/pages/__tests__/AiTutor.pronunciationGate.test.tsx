@@ -5,6 +5,22 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import AiTutorPage from "../AiTutor";
 import type { MemorySummary } from "@/lib/ai-tutor/learningMemory";
 
+const AI_TUTOR_TEST_PAIR_PATH = "/ai-tutor?native=vietnamese&target=english";
+
+function seedAiTutorTestPair() {
+  window.history.pushState({}, "", AI_TUTOR_TEST_PAIR_PATH);
+  window.localStorage.setItem("mercyb:nativeLanguage", "vietnamese");
+  window.localStorage.setItem("mercyb:targetLanguage", "english");
+  window.localStorage.setItem("mercyb:selectedPair", JSON.stringify({ native: "vietnamese", target: "english" }));
+  window.localStorage.setItem("mercyb:languagePair", JSON.stringify({ native: "vietnamese", target: "english" }));
+  window.localStorage.setItem("mercyb:pair", JSON.stringify({ native: "vietnamese", target: "english" }));
+}
+
+beforeEach(() => {
+  seedAiTutorTestPair();
+});
+
+
 const C4_CI_GATE_TIMEOUT_MS = 45_000;
 vi.setConfig({ testTimeout: C4_CI_GATE_TIMEOUT_MS });
 // Premium/trial detailed-scoring gate (Decisions 1 & 2) — runtime wiring proof.
@@ -72,6 +88,7 @@ vi.mock("@/lib/placement/availability", () => ({
 }));
 
 function renderAiTutor() {
+  seedAiTutorTestPair();
   const queryClient = new QueryClient({
     defaultOptions: { queries: { retry: false }, mutations: { retry: false } },
   });
