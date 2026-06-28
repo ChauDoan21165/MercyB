@@ -1242,7 +1242,7 @@ export default function Home({ nativeLangOverride }: { nativeLangOverride?: Nati
                 <p className="text-sm font-semibold text-slate-900">
                   {nt({ en: "See what you need to practice", vi: "Xem điểm bạn cần luyện", ja: "練習が必要な項目を見る", zh: "查看你需要练习的内容", id: "Lihat apa yang perlu kamu latih", th: "ดูสิ่งที่คุณต้องฝึก", ar: "شاهد ما تحتاج إلى التدرب عليه", hi: "देखें कि आपको किस चीज़ का अभ्यास करना है", ur: "دیکھیں کہ آپ کو کس چیز کی مشق کرنی ہے", ko: "무엇을 연습해야 할지 확인하세요", pt: "Veja o que você precisa praticar", tr: "Neyi pratik yapman gerektiğini gör" })}
                 </p>
-                <p className="mt-0.5 text-xs text-slate-500">
+                <p className="mt-0.5 text-xs text-slate-600">
                   {nt({ en: "See what you're working on", vi: "Xem những gì bạn đang luyện", ja: "現在取り組んでいる内容を見る", zh: "查看你正在练习的内容", id: "Lihat apa yang sedang kamu kerjakan", th: "ดูสิ่งที่คุณกำลังทำอยู่", ar: "شاهد ما تعمل عليه", hi: "देखें कि आप किस पर काम कर रहे हैं", ur: "دیکھیں کہ آپ کس چیز پر کام کر رہے ہیں", ko: "지금 무엇을 하고 있는지 확인하세요", pt: "Veja no que você está trabalhando", tr: "Ne üzerinde çalıştığını gör" })}
                 </p>
               </div>

@@ -53,7 +53,7 @@ export default function UnsupportedPairPage() {
             >
               Về trang chủ
             </Link>
-            <Link to="/languages" className="text-sm text-slate-500 underline hover:text-slate-700">
+            <Link to="/languages" className="text-sm text-slate-600 underline hover:text-slate-700">
               Xem các ngôn ngữ khác
             </Link>
           </div>
@@ -81,7 +81,7 @@ export default function UnsupportedPairPage() {
           >
             Back to Home
           </Link>
-          <Link to="/languages" className="text-sm text-slate-500 underline hover:text-slate-700">
+          <Link to="/languages" className="text-sm text-slate-600 underline hover:text-slate-700">
             Browse other languages
           </Link>
         </div>

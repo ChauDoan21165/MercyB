@@ -60,7 +60,7 @@ export default function LanguagePairSelectorPage() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">Selected language pair</p>
           <h2 className="mt-1 font-serif text-2xl font-bold">
             <span className="text-cyan-300">{native.name}</span>
-            <span className="mx-3 text-slate-500">→</span>
+            <span className="mx-3 text-slate-600">→</span>
             <span className="text-emerald-300">{targetFromParam.name}</span>
           </h2>
           <Link
