@@ -6,7 +6,6 @@
 import React, { Suspense, useEffect, useRef } from "react";
 import { lazyWithRetry } from "@/lib/lazyWithRetry";
 import { FEATURE_FLAGS } from "@/lib/featureFlags";
-import { AnonymousOnboardingGate } from "@/router/AnonymousOnboardingGate";
 import {
   Routes,
   Route,
@@ -38,6 +37,24 @@ import RequireAal2 from "@/components/auth/RequireAal2";
 import { WebOnlyRoute } from "@/router/WebOnlyRoute";
 import { ReviewNavEntry } from "@/features/review";
 import ParentNavEntry from "@/components/parent-view/ParentNavEntry";
+import { writeAnonymousPair } from "@/lib/languagePair/anonymousPair";
+import type { NativeLang } from "@/lib/onboarding/types";
+
+/** Homepage language slugs → NativeLang codes (nativeContent.ts). */
+const NATIVE_SLUG_TO_CODE: Record<string, NativeLang> = {
+  vietnamese: "vi",
+  english: "en",
+  japanese: "ja",
+  indonesian: "id",
+  thai: "th",
+  arabic: "ar",
+  hindi: "hi",
+  urdu: "ur",
+  korean: "ko",
+  chinese: "zh",
+  portuguese: "pt",
+  turkish: "tr",
+};
 
 const MB_ROUTER_VERSION = "2026-04-11-app-router-room-alias-hardening";
 
@@ -140,6 +157,7 @@ const HindiLessonsPage      = lazyWithRetry(() => import("@/pages/languages/Hind
 const PunjabiLessonsPage      = lazyWithRetry(() => import("@/pages/languages/PunjabiLessonsPage"));
 const RussianLessonsPage      = lazyWithRetry(() => import("@/pages/languages/RussianLessonsPage"));
 const UrduLessonsPage       = lazyWithRetry(() => import("@/pages/languages/UrduLessonsPage"));
+const LearnPairRedirectPage = lazyWithRetry(() => import("@/pages/languages/LearnPairRedirectPage"));
 const ViKidsEnglishTutorPage = lazyWithRetry(() => import("@/pages/kids/ViKidsEnglishTutorPage"));
 
 // Mercy v2 — multi-turn conversation thread page (auth-required).
@@ -514,6 +532,19 @@ function ChatAliasRedirect() {
 function LoginRedirect()   { return <Navigate to="/signin" replace />; }
 function RedeemRedirect()  { return <Navigate to="/account" replace />; }
 
+/**
+ * /learn/:native/english — the primary CTA from the inkwash homepage.
+ * Writes the anonymous pair so Home can read it, then renders Home
+ * with nativeLangOverride so the learner sees their dashboard in their
+ * native language. Restored from 178c85066 (LanguagePairRedirect).
+ */
+function EnglishLearnRedirect() {
+  const { native } = useParams<{ native?: string }>();
+  const nativeCode: NativeLang = (NATIVE_SLUG_TO_CODE[native ?? ""] as NativeLang) ?? "vi";
+  useEffect(() => { writeAnonymousPair(nativeCode, ["en"]); }, [nativeCode]);
+  return <LazyPage><Home nativeLangOverride={nativeCode} /></LazyPage>;
+}
+
 function AuthRedirect() {
   const location = useLocation();
   const target = `/signin${location.search || ""}${location.hash || ""}`;
@@ -805,6 +836,15 @@ export default function AppRouter() {
         <Route path="/auth"          element={<AuthRedirect />} />
         <Route path="/auth/callback" element={<AuthRedirect />} />
 
+        {/* Public marketing landing — no chrome band, no auth gate.
+            Renders the painting-backed language selector for ALL visitors
+            at /. Restored from 178c85066 (feat: restore locked painting
+            route selector homepage). */}
+        <Route
+          path="/"
+          element={<LazyPage><MarketingLandingPage /></LazyPage>}
+        />
+
         <Route element={<AppHeroShell />}>
           {/* Onboarding — the PUBLIC pair-selection picker. Anonymous
               visitors land here as the entry point (locked #14); a
@@ -817,19 +857,8 @@ export default function AppRouter() {
             element={<LazyPage><OnboardingPage /></LazyPage>}
           />
 
-          {/* Public pages */}
-          <Route
-            path="/"
-            element={
-              <AnonymousOnboardingGate
-                firstTimeAnonymous={
-                  <LazyPage><MarketingLandingPage /></LazyPage>
-                }
-              >
-                <LazyPage><Home /></LazyPage>
-              </AnonymousOnboardingGate>
-            }
-          />
+          {/* Public pages — note: / is handled by the standalone route above,
+              so the /vietnamese-english/ route below renders Home directly. */}
           <Route path="/privacy" element={<LazyPage><Privacy /></LazyPage>} />
           <Route path="/terms"   element={<LazyPage><Terms /></LazyPage>} />
           {/* App Store / Play Store paperwork prefers /legal/* paths. Same components. */}
@@ -1110,6 +1139,19 @@ export default function AppRouter() {
           />
 
           {/* Language learning verticals */}
+          {/* /learn/:native/english — the primary CTA from the inkwash
+              homepage. Writes the anonymous pair + renders Home so the
+              learner lands on their dashboard, not a redirect. Must be
+              BEFORE the generic /learn/:native/:target route below. */}
+          <Route path="/learn/:native/english"
+            element={<EnglishLearnRedirect />}
+          />
+          {/* /learn/:native/:target — all non-English target combos.
+              Redirects to /languages/<target> for supported languages,
+              /languages for unsupported. */}
+          <Route path="/learn/:native/:target"
+            element={<LazyPage><LearnPairRedirectPage /></LazyPage>}
+          />
           <Route path="/languages"
             element={<LazyPage><LanguagesIndexPage /></LazyPage>}
           />

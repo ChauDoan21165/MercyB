@@ -2,6 +2,7 @@
 // Mock results and text helpers. Product/UI copy lives in src/lib/tutor.
 
 import { correctWithTutorRules } from "@/lib/tutor/correctionEngine";
+import { readAnonymousPair } from "@/lib/languagePair/anonymousPair";
 
 import {
   resolveTutorTargetLanguage,
@@ -379,7 +380,28 @@ export function getTutorTargetFromSearch(
   return allowedTargetLanguages?.includes(target) ? target : allowedTargetLanguages ? defaultTargetLanguage : target;
 }
 
-export function getExplainLanguage(): ExplainLanguage {
+export function getExplainLanguage(search?: string): ExplainLanguage {
+  // 1. When a ?native= param is present and the native language is NOT
+  //    Vietnamese, explanations default to English. This keeps the AI
+  //    Tutor usable for speakers of all 19 homepage languages without
+  //    requiring per-language copy for every native tongue.
+  if (search) {
+    try {
+      const native = new URLSearchParams(search).get("native")?.trim().toLowerCase();
+      if (native && native !== "vi" && native !== "vietnamese") return "en";
+    } catch { /* ignore */ }
+  }
+  // 2. No URL param — check the stored anonymous language pair from
+  //    the homepage selector. If a pair was persisted (e.g. via
+  //    /learn/thai/english), respect its native language.
+  if (typeof window !== "undefined") {
+    try {
+      const pair = readAnonymousPair();
+      if (pair && pair.native !== "vi") return "en";
+    } catch { /* ignore */ }
+  }
+  // 3. Fall back to the stored lesson UI language preference, then
+  //    Vietnamese (the primary audience default).
   if (typeof window === "undefined") return "vi";
   try {
     return window.localStorage.getItem("mercyblade.lessonUiLang") === "en" ? "en" : "vi";
