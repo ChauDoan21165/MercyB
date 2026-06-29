@@ -54,6 +54,12 @@ const NATIVE_SLUG_TO_CODE: Record<string, NativeLang> = {
   chinese: "zh",
   portuguese: "pt",
   turkish: "tr",
+  spanish: "es",
+  french: "fr",
+  german: "de",
+  russian: "ru",
+  punjabi: "pa",
+  swahili: "sw",
 };
 
 const MB_ROUTER_VERSION = "2026-04-11-app-router-room-alias-hardening";

@@ -1,4 +1,4 @@
-export type NativeLang = "en" | "vi" | "ja" | "id" | "th" | "ar" | "hi" | "ur" | "ko" | "zh" | "pt" | "tr";
+export type NativeLang = "en" | "vi" | "ja" | "id" | "th" | "ar" | "hi" | "ur" | "ko" | "zh" | "pt" | "tr" | "es" | "fr" | "de" | "ru" | "pa" | "sw";
 // src/components/languages/nativeContent.ts
 //
 // The native-language selection seam (Phase 2 / Option C — see
@@ -29,6 +29,12 @@ const FALLBACK_ORDER: Record<NativeLang, readonly NativeLang[]> = {
   zh: ["zh", "en", "vi"],
   pt: ["pt", "en", "vi"],
   tr: ["tr", "en", "vi"],
+  es: ["es", "en", "vi"],
+  fr: ["fr", "en", "vi"],
+  de: ["de", "en", "vi"],
+  ru: ["ru", "en", "vi"],
+  pa: ["pa", "en", "vi"],
+  sw: ["sw", "en", "vi"],
 };
 
 export function getNativeContent<T>(
