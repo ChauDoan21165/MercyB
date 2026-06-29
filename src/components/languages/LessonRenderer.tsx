@@ -156,6 +156,42 @@ function FallbackBadge({ other }: { other: NativeLang }) {
   );
 }
 
+
+type RuntimeLessonIdentity = {
+  contentId: string;
+  conceptId: string;
+  assetId: string;
+  targetLanguage: string;
+  level: string;
+};
+
+const RUNTIME_LESSON_IDENTITY_BY_MATCH: Record<string, RuntimeLessonIdentity> = {
+  "A1|61|Ordering With Modifications|Ask for small changes clearly.": {
+    contentId: "MB-SEN-0030953",
+    conceptId: "MB-CON-0031698",
+    assetId: "MB-SEN-0030953-AUD-VI",
+    targetLanguage: "vi",
+    level: "A1",
+  },
+};
+
+function runtimeLessonIdentityAttrs(lesson: NormalizedLesson) {
+  const key = `${lesson.level}|${lesson.id}|${lesson.title.vi ?? ""}|${lesson.title.en ?? ""}`;
+  const identity = RUNTIME_LESSON_IDENTITY_BY_MATCH[key];
+
+  if (!identity) return {};
+
+  return {
+    "data-testid": "lesson-card",
+    "data-content-id": identity.contentId,
+    "data-concept-id": identity.conceptId,
+    "data-asset-id": identity.assetId,
+    "data-target-language": identity.targetLanguage,
+    "data-level": identity.level,
+  };
+}
+
+
 interface LessonRendererProps {
   lesson: NormalizedLesson;
   theme: LessonTheme;
@@ -215,6 +251,7 @@ export function LessonRenderer({
 
   return (
     <article
+      {...runtimeLessonIdentityAttrs(lesson)}
       className="overflow-hidden rounded-xl border bg-white"
       style={{ borderColor: `${theme.accent}22` }}
     >
