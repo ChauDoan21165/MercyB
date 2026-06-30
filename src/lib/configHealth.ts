@@ -47,7 +47,7 @@ export async function runConfigHealthCheck(): Promise<ConfigCheck[]> {
   if (!supaAnon || supaAnon === "placeholder") report("Supabase anon key not configured", isDev);
 
   // ── Stripe (optional — skip if not defined) ──────────────────────
-  const stripeKey = (import.meta as any).env.VITE_STRIPE_PUBLISHABLE_KEY;
+  const stripeKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
   if (stripeKey !== undefined && (!stripeKey || stripeKey === "placeholder")) {
     checks.push({ name: "Stripe", key: "VITE_STRIPE_PUBLISHABLE_KEY", present: false });
     report("Stripe publishable key not configured", isDev);
