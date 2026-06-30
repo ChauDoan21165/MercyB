@@ -1,12 +1,12 @@
 // PATH: src/types/react-native.d.ts
 
 declare module "react-native" {
-  export const View: any;
-  export const Text: any;
-  export const ScrollView: any;
-  export const Pressable: any;
-  export const ActivityIndicator: any;
-  export const TextInput: any;
-  export const Button: any;
-  export const TouchableOpacity: any;
+  export const View: unknown;
+  export const Text: unknown;
+  export const ScrollView: unknown;
+  export const Pressable: unknown;
+  export const ActivityIndicator: unknown;
+  export const TextInput: unknown;
+  export const Button: unknown;
+  export const TouchableOpacity: unknown;
 }
