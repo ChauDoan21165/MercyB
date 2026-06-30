@@ -50,7 +50,7 @@ export const SmoothScrollContainer = forwardRef<HTMLDivElement, SmoothScrollCont
     return (
       <div
         ref={(node) => {
-          (containerRef as any).current = node;
+          (containerRef as { current: HTMLDivElement | null }).current = node;
           if (typeof ref === 'function') {
             ref(node);
           } else if (ref) {
