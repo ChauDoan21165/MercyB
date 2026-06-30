@@ -48,7 +48,7 @@ export default function CostSummaryWidget(): React.ReactElement {
     let cancelled = false;
     void (async () => {
       try {
-        const { daily } = await getTotalDailyCost(supabase as any, 1, {
+        const { daily } = await getTotalDailyCost(supabase, 1, {
           usdVndRate: DEFAULT_USD_VND_RATE,
           topN: 0,
         });
