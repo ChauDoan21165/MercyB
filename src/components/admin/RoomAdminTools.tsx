@@ -2,7 +2,7 @@ import { useAdminCheck } from '@/hooks/useAdminCheck';
 import { toast } from '@/hooks/use-toast';
 
 interface RoomAdminToolsProps {
-  roomData: any;
+  roomData: unknown;
   roomId: string;
 }
 
