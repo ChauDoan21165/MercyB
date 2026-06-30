@@ -70,10 +70,10 @@ function FloatingHelperLauncher({
           <h2 className="truncate text-sm font-black tracking-tight text-slate-900">
             {title}
           </h2>
-          <p className="truncate text-[11px] font-semibold text-slate-500">
+          <p className="truncate text-[11px] font-semibold text-slate-600">
             {nt({ en: "Choose where you want to practice today.", vi: "Chọn nơi em muốn luyện hôm nay.", ja: "今日練習する場所を選んでください。", zh: "选择今天想练习的内容。", id: "Pilih tempat yang ingin kamu latih hari ini.", th: "เลือกที่ที่คุณอยากฝึกวันนี้", ar: "اختر أين تريد أن تتدرب اليوم.", hi: "चुनें कि आज आप कहां अभ्यास करना चाहते हैं।", ur: "منتخب کریں کہ آپ آج کہاں مشق کرنا چاہتے ہیں۔", ko: "오늘 어디서 연습하고 싶은지 선택하세요.", pt: "Escolha onde você quer praticar hoje.", tr: "Bugün nerede pratik yapmak istediğini seç." })}
           </p>
-          <p className="truncate text-[10px] font-normal text-slate-500">
+          <p className="truncate text-[10px] font-normal text-slate-600">
             {nt({ en: "Choose where you want to practice today.", vi: "Chọn nơi em muốn luyện hôm nay.", ja: "今日練習する場所を選んでください。", zh: "选择今天想练习的内容。", id: "Pilih tempat yang ingin kamu latih hari ini.", th: "เลือกที่ที่คุณอยากฝึกวันนี้", ar: "اختر أين تريد أن تتدرب اليوم.", hi: "चुनें कि आज आप कहां अभ्यास करना चाहते हैं।", ur: "منتخب کریں کہ آپ آج کہاں مشق کرنا چاہتے ہیں۔", ko: "오늘 어디서 연습하고 싶은지 선택하세요.", pt: "Escolha onde você quer praticar hoje.", tr: "Bugün nerede pratik yapmak istediğini seç." })}
           </p>
         </div>

@@ -1,8 +1,13 @@
+import type { ComponentType, ReactNode } from "react";
 // FILE: Typo.tsx
 // PATH: src/components/ui/Typo.tsx
 
 import React from "react";
-import { Text } from "react-native";
+import { Text as RNText } from "react-native";
+type NativePrimitiveProps = { children?: ReactNode; [key: string]: unknown };
+type NativePrimitive = ComponentType<NativePrimitiveProps>;
+const Text = RNText as unknown as NativePrimitive;
+
 import { theme } from "../../core/ui/theme";
 
 export function H1(props: { children: React.ReactNode; style?: any }) {

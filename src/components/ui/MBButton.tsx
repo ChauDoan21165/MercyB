@@ -1,6 +1,13 @@
+import type { ComponentType, ReactNode } from "react";
 // PATH: src/components/ui/MBButton.tsx
 
-import { ActivityIndicator, Pressable, Text } from "react-native";
+import { ActivityIndicator as RNActivityIndicator, Pressable as RNPressable, Text as RNText } from "react-native";
+type NativePrimitiveProps = { children?: ReactNode; [key: string]: unknown };
+type NativePrimitive = ComponentType<NativePrimitiveProps>;
+const ActivityIndicator = RNActivityIndicator as unknown as NativePrimitive;
+const Pressable = RNPressable as unknown as NativePrimitive;
+const Text = RNText as unknown as NativePrimitive;
+
 
 // Web-friendly RN shim types
 type StyleProp<T> = T | T[] | null | undefined;

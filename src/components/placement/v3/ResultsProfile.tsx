@@ -79,7 +79,7 @@ export function ResultsProfile({ results }: Props) {
     <section className="rounded-[18px] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
       <div className="grid gap-5 sm:grid-cols-[220px_1fr]">
         <div className="text-center sm:text-left">
-          <div className="text-xs font-black uppercase tracking-[0.08em] text-slate-500">
+          <div className="text-xs font-black uppercase tracking-[0.08em] text-slate-600">
             {pt(LABEL_OVERALL_LEVEL)}
           </div>
           <div className="mt-2 text-6xl font-black leading-none text-emerald-600">
@@ -88,7 +88,7 @@ export function ResultsProfile({ results }: Props) {
           <div className="mt-2 text-sm font-bold text-slate-700">
             {Math.round(results.overallConfidence * 100)}% {pt(LABEL_CONFIDENCE)}
             {showVi && (
-              <span className="block text-xs font-medium text-slate-500">
+              <span className="block text-xs font-medium text-slate-600">
                 {LABEL_CONFIDENCE.vi} {Math.round(results.overallConfidence * 100)}%
               </span>
             )}

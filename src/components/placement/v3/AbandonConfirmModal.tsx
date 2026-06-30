@@ -97,7 +97,7 @@ export function AbandonConfirmModal({
             {showVi ? (
               <>
                 Leave this placement test?
-                <span className="mt-1 block text-sm font-medium text-slate-500">
+                <span className="mt-1 block text-sm font-medium text-slate-600">
                   {COPY_TITLE.vi}
                 </span>
               </>
@@ -109,7 +109,7 @@ export function AbandonConfirmModal({
             {showVi ? (
               <>
                 {COPY_DESCRIPTION.en}
-                <span className="mt-2 block text-slate-500">
+                <span className="mt-2 block text-slate-600">
                   {COPY_DESCRIPTION.vi}
                 </span>
               </>

@@ -12,6 +12,23 @@
 import { useNativeLanguage } from "@/contexts/NativeLanguageContext";
 import { getNativeContent, type NativeLang } from "@/components/languages/nativeContent";
 
+type PlacementNativeLanguageContext = ReturnType<typeof useNativeLanguage>;
+
+function useNativeLanguageForPlacementFallback(): PlacementNativeLanguageContext {
+  try {
+    return useNativeLanguage();
+  } catch (error) {
+    if (
+      error instanceof Error &&
+      error.message.includes("useNativeLanguage must be used inside NativeLanguageProvider")
+    ) {
+      return { nativeLang: "en", setNativeLang: () => undefined } as unknown as PlacementNativeLanguageContext;
+    }
+    throw error;
+  }
+}
+
+
 // Re-export for convenience
 export type { NativeLang };
 
@@ -41,7 +58,7 @@ export function pickPlacementCopy(
  *   <p>{t({ en: "Hello", vi: "Xin chào", ja: "こんにちは" })}</p>
  */
 export function usePlacementT(): (slots: PlacementNativeSlots) => string {
-  const { nativeLang } = useNativeLanguage();
+  const { nativeLang } = useNativeLanguageForPlacementFallback();
   return (slots: PlacementNativeSlots) => pickPlacementCopy(slots, nativeLang);
 }
 

@@ -45,6 +45,25 @@ export const MOCK_RESULTS_BY_TARGET: Record<TutorTarget, MockCorrection> = {
       nextStep: "Thử viết thêm một câu khác về người thân của bạn.",
     },
   },
+  th: {
+    explanation: {
+      vi: "Với chủ ngữ ngôi thứ ba số ít như she/he/it, động từ ở hiện tại đơn cần thêm -s hoặc -es.",
+      en: "Third-person singular subjects such as she/he/it need -s or -es in the present simple.",
+    },
+    grammarTip: {
+      vi: "Quy tắc: Chủ ngữ ngôi thứ ba số ít → động từ thêm -s/-es.",
+      en: "Rule: third-person singular subject -> verb + -s/-es.",
+    },
+    practicePrompt: {
+      vi: "Viết một câu về thói quen hằng ngày của bạn dùng thì hiện tại đơn.",
+      en: "Write one sentence about a daily habit using the present simple.",
+    },
+    feedback: {
+      encouragement: "Tốt lắm! Bạn đã thực hành thì hiện tại đơn. 🎯",
+      tip: "Nhớ thêm -s/-es cho động từ khi chủ ngữ là she / he / it nhé.",
+      nextStep: "Thử viết thêm một câu khác về người thân của bạn.",
+    },
+  },
   fr: {
     explanation: {
       vi: "Câu vẫn giữ ý gốc bằng tiếng Pháp. Mercy sửa 'neuve' thành 'nouvelle' cho tự nhiên hơn và thay dấu gạch ngang bằng dấu chấm phẩy để câu học thuật mạch lạc hơn.",

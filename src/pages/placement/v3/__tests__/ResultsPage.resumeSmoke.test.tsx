@@ -67,6 +67,7 @@ vi.mock("@/lib/supabaseClient", () => ({
 }));
 
 vi.mock("@/lib/i18n/chromeLanguage", () => ({
+  useChromeLanguage: () => "en",
   useChromeT: () => (value: { en: string; vi: string }) => value.en,
 }));
 

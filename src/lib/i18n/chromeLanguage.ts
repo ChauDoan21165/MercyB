@@ -33,6 +33,23 @@ import {
   type NativeLang,
 } from "@/components/languages/nativeContent";
 
+type ChromeNativeLanguageContext = ReturnType<typeof useNativeLanguage>;
+
+function useNativeLanguageForChromeFallback(): ChromeNativeLanguageContext {
+  try {
+    return useNativeLanguage();
+  } catch (error) {
+    if (
+      error instanceof Error &&
+      error.message.includes("useNativeLanguage must be used inside NativeLanguageProvider")
+    ) {
+      return { nativeLang: "en", setNativeLang: () => undefined } as unknown as ChromeNativeLanguageContext;
+    }
+    throw error;
+  }
+}
+
+
 export type { NativeLang };
 
 /** A chrome string authored in both UI languages. Unlike pedagogy
@@ -57,7 +74,7 @@ export function pickChrome(slots: ChromeSlots, lang: NativeLang): string {
  *  native-language choice. Must be called inside NativeLanguageProvider
  *  (true for every routed surface — see main.tsx). */
 export function useChromeLanguage(): NativeLang {
-  return useNativeLanguage().nativeLang;
+  return useNativeLanguageForChromeFallback().nativeLang;
 }
 
 /** Bound picker for render code: `const t = useChromeT(); t({ vi, en })`

@@ -1,8 +1,13 @@
+import type { ComponentType, ReactNode } from "react";
 // FILE: ProgressBar.tsx
 // PATH: src/components/ui/ProgressBar.tsx
 
 import React from "react";
-import { View } from "react-native";
+import { View as RNView } from "react-native";
+type NativePrimitiveProps = { children?: ReactNode; [key: string]: unknown };
+type NativePrimitive = ComponentType<NativePrimitiveProps>;
+const View = RNView as unknown as NativePrimitive;
+
 import { theme } from "../../core/ui/theme";
 
 export function ProgressBar(props: { value0to1: number }) {

@@ -44,7 +44,7 @@ export function BilingualLabel({
     <Tag className={className}>
       <span lang="en" className={cn("block", enClassName)}>{text.en}</span>
       {showVi && (
-        <span lang="vi" className={cn("mt-1 block text-slate-500", viClassName)}>
+        <span lang="vi" className={cn("mt-1 block text-slate-600", viClassName)}>
           {text.vi}
         </span>
       )}

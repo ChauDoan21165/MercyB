@@ -164,7 +164,7 @@ export default function WelcomePage() {
             as="h1"
             text={{ en: COPY_HEADING.en ?? "", vi: COPY_HEADING.vi ?? "" }}
             enClassName="text-[28px] font-black leading-tight text-slate-950 sm:text-4xl"
-            viClassName="text-base font-medium leading-snug text-slate-500"
+            viClassName="text-base font-medium leading-snug text-slate-600"
           />
         ) : (
           <h1 className="text-[28px] font-black leading-tight text-slate-950 sm:text-4xl">
@@ -179,7 +179,7 @@ export default function WelcomePage() {
             className="mx-auto mt-4 max-w-[460px]"
             text={{ en: COPY_SUBTITLE.en ?? "", vi: COPY_SUBTITLE.vi ?? "" }}
             enClassName="text-base font-semibold leading-7 text-slate-600"
-            viClassName="text-sm font-medium leading-6 text-slate-500"
+            viClassName="text-sm font-medium leading-6 text-slate-600"
           />
         ) : (
           <p className="mx-auto mt-4 max-w-[460px] text-base font-semibold leading-7 text-slate-600">

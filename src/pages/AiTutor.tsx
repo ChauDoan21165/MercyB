@@ -217,6 +217,26 @@ declare global {
   }
 }
 
+
+function isThaiNativeEnglishSearch(search?: string): boolean {
+  if (!search) return false;
+  try {
+    const params = new URLSearchParams(search);
+    const native = (params.get("native") ?? "").trim().toLowerCase();
+    const target = (params.get("target") ?? "en").trim().toLowerCase();
+    const nativeIsThai = native === "th" || native === "thai" || native === "ภาษาไทย" || native === "tiếng thái" || native === "tieng thai";
+    const targetIsEnglish = target === "en" || target === "english" || target === "tiếng anh" || target === "tieng anh";
+    return nativeIsThai && targetIsEnglish;
+  } catch {
+    return false;
+  }
+}
+
+function resolveAiTutorExplainLanguage(search: string | undefined, target: TutorTarget | string): ExplainLanguage {
+  if (isThaiNativeEnglishSearch(search)) return "en";
+  return resolveExplainLanguage(aiTutorConfig, getExplainLanguage(search), target);
+}
+
 const AI_TUTOR_MODES: TutorMode[] = aiTutorConfig.modes.filter(
   (mode): mode is TutorMode => mode === "journey" || mode === "grammar" || mode === "speak" || mode === "logic",
 );
@@ -225,6 +245,7 @@ const MOCK_DELAY_MS = 600;
 const TUTOR_PRODUCT: TutorProduct = "ai-tutor";
 const MEMORY_TOPIC_BY_TARGET: Record<TutorTarget, string> = {
   en: "english-correction",
+  th: "thai-correction",
   fr: "french-correction",
   zh: "chinese-correction",
   de: "german-correction",
@@ -1135,7 +1156,7 @@ export default function AiTutorPage() {
       ),
   );
   const [explainLanguage, setExplainLanguage] = useState<ExplainLanguage>(() =>
-    resolveExplainLanguage(aiTutorConfig, getExplainLanguage(typeof window === "undefined" ? undefined : window.location.search), target),
+    resolveAiTutorExplainLanguage(typeof window === "undefined" ? undefined : window.location.search, target),
   );
   const speechLang = getSpeechLocale(target);
   const ttsLang = getTtsLocale(target);
@@ -1192,7 +1213,7 @@ export default function AiTutorPage() {
           aiTutorConfig.allowedTargetLanguages,
           aiTutorConfig.defaultTargetLanguage as TutorTarget,
         ),
-      resolveExplainLanguage(aiTutorConfig, getExplainLanguage(typeof window === "undefined" ? undefined : window.location.search), typeof window === "undefined"
+      resolveAiTutorExplainLanguage(typeof window === "undefined" ? undefined : window.location.search, typeof window === "undefined"
         ? aiTutorConfig.defaultTargetLanguage
         : getTutorTargetFromSearch(
           window.location.search,
@@ -2248,7 +2269,7 @@ export default function AiTutorPage() {
   }, [activeTodayLesson, memory, mode, target]);
 
   useEffect(() => {
-    const syncExplain = () => setExplainLanguage(resolveExplainLanguage(aiTutorConfig, getExplainLanguage(typeof window === "undefined" ? undefined : window.location.search), target));
+    const syncExplain = () => setExplainLanguage(resolveAiTutorExplainLanguage(typeof window === "undefined" ? undefined : window.location.search, target));
     window.addEventListener("storage", syncExplain);
     window.addEventListener("focus", syncExplain);
     return () => {
@@ -2876,6 +2897,67 @@ export default function AiTutorPage() {
     }
     setMode(nextMode);
   };
+
+  const isThaiNativeEnglishPair =
+    typeof window !== "undefined" && isThaiNativeEnglishSearch(window.location.search);
+
+  if (isThaiNativeEnglishPair) {
+    const thaiEnglishTutorCopy = getTutorCopy("en", "en");
+    return (
+      <main
+        data-testid="thai-native-ai-tutor"
+        lang="en"
+        style={{ minHeight: "100vh", background: "#f7efe0", color: "#1a221d", padding: "32px 20px" }}
+      >
+        <section style={{ maxWidth: 1040, margin: "0 auto" }}>
+          <header style={{ marginBottom: 24 }}>
+            <p style={{ margin: "0 0 8px", fontSize: 13, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6f654d" }}>
+              Thai learner English tutor · Native language: ไทย (Thai) · Target: English
+            </p>
+            <h1 style={{ margin: 0, fontFamily: "serif", fontSize: 36, lineHeight: 1.1 }}>
+              Teacher Mercy for Thai-speaking English learners
+            </h1>
+            <p style={{ margin: "12px 0 0", maxWidth: 760, fontSize: 16, lineHeight: 1.6, color: "#575045" }}>
+              Practice English with Mercy using a Thai-native learning route. Mercy corrects English sentences and keeps this bridge separate from other native-language learner flows.
+            </p>
+            <p style={{ margin: "14px 0 0", fontSize: 14 }}>
+              <a href="/thai-english/" style={{ color: "#5d5038", fontWeight: 800 }}>
+                Open Thai-English lesson page
+              </a>
+            </p>
+          </header>
+
+          <CorrectionMode
+            input={input}
+            setInput={handleGrammarInputChange}
+            loading={loading}
+            result={result}
+            error={error}
+            micSupported={stt.supported}
+            micListening={stt.listening}
+            voiceDraft={grammarVoiceDraft}
+            voiceMessage={grammarVoiceMessage || stt.error || ""}
+            speechLang={speechLang}
+            onSubmit={handleSubmit}
+            onMicToggle={handleMicToggle}
+            onUseVoiceDraft={() => {
+              setInput(grammarVoiceDraft.slice(0, 500));
+              setGrammarVoiceDraft("");
+              setGrammarVoiceMessage("");
+            }}
+            onClearVoiceDraft={() => {
+              setGrammarVoiceDraft("");
+              setGrammarVoiceMessage("");
+            }}
+            onSendToSpeak={handleSendCorrectedSentenceToSpeak}
+            onClear={handleClear}
+            tutorCopy={thaiEnglishTutorCopy}
+            detectorHint={detectorHint}
+          />
+        </section>
+      </main>
+    );
+  }
 
   // Bare /ai-tutor with no language pair → show pair selector instead
   // of silently defaulting to Vietnamese-English.
