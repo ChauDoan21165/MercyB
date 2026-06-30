@@ -6,6 +6,18 @@
 
 export type ValidationMode = 'strict' | 'preview' | 'wip';
 
+interface RoomValidationEntry {
+  audio?: unknown;
+  audio_en?: unknown;
+  audioEn?: unknown;
+  copy?: {
+    en?: unknown;
+    vi?: unknown;
+  };
+  copy_en?: unknown;
+  copy_vi?: unknown;
+}
+
 interface ValidationConfig {
   mode: ValidationMode;
   minEntries: number;
@@ -100,7 +112,7 @@ export function validateEntryCount(
  * Validate entry audio based on mode
  */
 export function validateEntryAudio(
-  entry: any,
+  entry: RoomValidationEntry,
   entryIndex: number,
   mode?: ValidationMode
 ): { valid: boolean; message?: string } {
@@ -125,7 +137,7 @@ export function validateEntryAudio(
  * Validate entry bilingual copy based on mode
  */
 export function validateEntryBilingualCopy(
-  entry: any,
+  entry: RoomValidationEntry,
   entryIndex: number,
   mode?: ValidationMode
 ): { valid: boolean; message?: string } {

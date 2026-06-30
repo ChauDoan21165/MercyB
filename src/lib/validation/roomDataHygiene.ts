@@ -35,7 +35,7 @@ export interface RoomJson {
 export interface ValidationViolation {
   field: string;
   rule: string;
-  actual: any;
+  actual: unknown;
   expected: string;
 }
 
@@ -67,9 +67,9 @@ export function validateRoomId(id: string): ValidationViolation[] {
 
 export function validateTier(tier: string): ValidationViolation[] {
   const violations: ValidationViolation[] = [];
-  const validTiers = Object.values(TIERS);
+  const validTiers: string[] = Object.values(TIERS);
 
-  if (!validTiers.includes(tier as any)) {
+  if (!validTiers.includes(tier)) {
     violations.push({
       field: 'tier',
       rule: 'Must be one of the canonical tier values',
