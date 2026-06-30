@@ -2714,8 +2714,17 @@ export const RUNTIME_LESSON_IDENTITY_BY_MATCH: Record<string, RuntimeLessonIdent
 };
 
 export function runtimeLessonIdentityAttrs(lesson: NormalizedLesson) {
-  const title = lesson.title.vi ?? lesson.title.en ?? "";
-  const identity = RUNTIME_LESSON_IDENTITY_BY_MATCH[`${lesson.level}|${lesson.id}|${title}`];
+  const titleCandidates = Array.from(
+    new Set(
+      [lesson.title.en, lesson.title.vi]
+        .map((title) => title?.trim())
+        .filter((title): title is string => Boolean(title)),
+    ),
+  );
+
+  const identity = titleCandidates
+    .map((title) => RUNTIME_LESSON_IDENTITY_BY_MATCH[`${lesson.level}|${lesson.id}|${title}`])
+    .find((candidate): candidate is RuntimeLessonIdentity => Boolean(candidate));
 
   if (!identity) return {};
 
