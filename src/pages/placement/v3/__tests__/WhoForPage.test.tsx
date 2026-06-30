@@ -18,7 +18,16 @@ vi.mock("@/providers/AuthProvider", () => ({
   useAuth: () => ({ user: authState.user, isLoading: false }),
 }));
 
+vi.mock("@/contexts/NativeLanguageContext", () => ({
+  useNativeLanguage: () => ({
+    nativeLang: "vi",
+    setNativeLang: vi.fn(),
+  }),
+  NativeLanguageProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+}));
+
 import WhoForPage from "../WhoForPage";
+
 
 function LocationProbe() {
   const location = useLocation();
@@ -45,7 +54,7 @@ describe("WhoForPage", () => {
 
     renderPage();
 
-    const signInButton = screen.getByRole("button", { name: /sign in to take the test/i });
+    const signInButton = screen.getByRole("button", { name: /đăng nhập để làm bài test/i });
     expect(signInButton).toHaveTextContent("Đăng nhập để làm bài test");
 
     await userEvent.click(signInButton);
@@ -58,7 +67,7 @@ describe("WhoForPage", () => {
     startSessionMock.mockRejectedValueOnce(new Error("Sign in to start placement."));
 
     renderPage();
-    await userEvent.click(screen.getByRole("button", { name: /adult learner/i }));
+    await userEvent.click(screen.getByRole("button", { name: /mình — người lớn đang học/i }));
 
     await waitFor(() => {
       expect(screen.getByRole("alert")).toHaveTextContent("Sign in to start placement.");

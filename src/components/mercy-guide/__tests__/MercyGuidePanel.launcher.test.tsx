@@ -1,6 +1,15 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+vi.mock("@/contexts/NativeLanguageContext", () => ({
+  useNativeLanguage: () => ({
+    nativeLang: "vi",
+    setNativeLang: vi.fn(),
+  }),
+  NativeLanguageProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+}));
+
 import MercyGuidePanel from '../MercyGuidePanel';
+
 
 describe("MercyGuidePanel floating launcher", () => {
   it("renders a Kids-only launcher — Vào Mercy Kids is the single CTA, AI Tutor exit hidden", () => {
