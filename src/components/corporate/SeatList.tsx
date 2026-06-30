@@ -69,7 +69,7 @@ export function SeatList({ corporateAccountId, isAdmin = false }: SeatListProps)
   );
 
   if (rows === null) {
-    return <p className="text-sm text-slate-500">Đang tải danh sách thành viên…</p>;
+    return <p className="text-sm text-slate-600">Đang tải danh sách thành viên…</p>;
   }
   if (error) {
     return (
@@ -80,7 +80,7 @@ export function SeatList({ corporateAccountId, isAdmin = false }: SeatListProps)
   }
   if (rows.length === 0) {
     return (
-      <p className="text-sm text-slate-500">
+      <p className="text-sm text-slate-600">
         Chưa có thành viên nào. Mời thành viên đầu tiên ở trên.
       </p>
     );
@@ -96,7 +96,7 @@ export function SeatList({ corporateAccountId, isAdmin = false }: SeatListProps)
         >
           <div className="min-w-0 flex-1">
             <p className="text-sm font-medium font-mono truncate">{r.user_id}</p>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-600">
               Tham gia: {new Date(r.joined_at).toLocaleDateString()}
             </p>
           </div>

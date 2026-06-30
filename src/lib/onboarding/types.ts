@@ -89,6 +89,12 @@ export interface BilingualLabel {
   zh?: string;
   pt?: string;
   tr?: string;
+  es?: string;
+  fr?: string;
+  de?: string;
+  ru?: string;
+  pa?: string;
+  sw?: string;
 }export interface BilingualCopy extends BilingualLabel {
   /** Optional one-line subhead — VI only, lighter weight. */
   vi_sub?: string;
@@ -263,6 +269,12 @@ export const TARGET_MENU: Record<NativeLang, TargetMenuItem[]> = {
     { value: "ko", readiness: "partial" },
     { value: "vi", readiness: "partial" },
   ],
+  es: [{ value: "en", readiness: "full", recommended: true }],
+  fr: [{ value: "en", readiness: "full", recommended: true }],
+  de: [{ value: "en", readiness: "full", recommended: true }],
+  ru: [{ value: "en", readiness: "full", recommended: true }],
+  pa: [{ value: "en", readiness: "full", recommended: true }],
+  sw: [{ value: "en", readiness: "full", recommended: true }],
 };
 
 /** Skip default + the pre-checked recommendation per native (Phase 3
@@ -280,6 +292,12 @@ export const RECOMMENDED_TARGET: Record<NativeLang, TargetLang> = {
   ko: "es",
   zh: "es",
   tr: "es",
+  es: "en",
+  fr: "en",
+  de: "en",
+  ru: "en",
+  pa: "en",
+  sw: "en",
 };
 
 /** Default honesty badge by readiness (locked #7). full ⇒ none; a

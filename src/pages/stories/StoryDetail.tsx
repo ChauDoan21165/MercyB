@@ -148,7 +148,7 @@ export default function StoryDetail(): React.ReactElement {
   if (!row) {
     return (
       <main className="mx-auto max-w-2xl px-4 py-8">
-        <p className="text-sm text-slate-500">Đang tải…</p>
+        <p className="text-sm text-slate-600">Đang tải…</p>
       </main>
     );
   }
@@ -171,7 +171,7 @@ export default function StoryDetail(): React.ReactElement {
           <div className="min-w-0 flex-1">
             <h1 className="text-xl font-bold text-slate-900">{row.display_name}</h1>
             {row.profession && (
-              <p className="mt-0.5 text-xs text-slate-500">{row.profession}</p>
+              <p className="mt-0.5 text-xs text-slate-600">{row.profession}</p>
             )}
             <ScoreDelta row={row} />
           </div>
@@ -184,7 +184,7 @@ export default function StoryDetail(): React.ReactElement {
           {row.story_text_en && (
             <>
               <hr className="border-slate-200" />
-              <p className="whitespace-pre-line text-sm leading-relaxed text-slate-500">
+              <p className="whitespace-pre-line text-sm leading-relaxed text-slate-600">
                 {row.story_text_en}
               </p>
             </>
@@ -250,7 +250,7 @@ export default function StoryDetail(): React.ReactElement {
               type="button"
               onClick={handleHide}
               disabled={hideState === "hiding"}
-              className="mt-3 rounded-full border border-slate-400 px-4 py-1.5 text-xs font-semibold text-slate-700 hover:border-red-400 hover:text-red-700 disabled:opacity-60"
+              className="mt-3 rounded-full border border-slate-500 px-4 py-1.5 text-xs font-semibold text-slate-700 hover:border-red-400 hover:text-red-700 disabled:opacity-60"
             >
               {hideState === "hiding" ? "Đang ẩn…" : "Tôi muốn ẩn câu chuyện"}
             </button>

@@ -33,7 +33,7 @@ export default function VNCulturalPackPage(): React.ReactElement {
         <h1 className="text-xl font-semibold text-slate-900">
           Không tìm thấy gói văn hoá
         </h1>
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-sm text-slate-600">
           Cultural pack not found. /{packId}
         </p>
         <Link to="/culture/vn" className="mt-4 text-amber-600 underline">
@@ -66,16 +66,16 @@ function PackHeader({ pack }: { pack: CulturalPack }): React.ReactElement {
       <h1 className="mt-1 text-2xl font-semibold text-slate-900">
         {pack.title_vn}
       </h1>
-      <p className="text-sm text-slate-500">{pack.title_en}</p>
+      <p className="text-sm text-slate-600">{pack.title_en}</p>
       <p className="mt-3 text-sm leading-relaxed text-slate-700">
         {pack.summary_vn}
       </p>
-      <p className="text-xs leading-relaxed text-slate-500">
+      <p className="text-xs leading-relaxed text-slate-600">
         {pack.summary_en}
       </p>
       {pack.regional_note ? (
         <div className="mt-4 rounded-md border border-slate-200 bg-slate-50 p-3 text-xs text-slate-600">
-          <p className="mb-1 font-semibold uppercase tracking-wide text-slate-500">
+          <p className="mb-1 font-semibold uppercase tracking-wide text-slate-600">
             Vùng miền / Regional note
           </p>
           <p className="leading-relaxed">{pack.regional_note}</p>
@@ -107,14 +107,14 @@ function PhrasesSection({ pack }: { pack: CulturalPack }): React.ReactElement {
                     {phrase.vn_moment}
                   </p>
                 </div>
-                <p className="text-xs italic text-slate-500">
+                <p className="text-xs italic text-slate-600">
                   {phrase.context}
                 </p>
                 <blockquote className="border-l-2 border-amber-300 pl-3 text-sm leading-relaxed text-slate-800">
                   {phrase.english}
                 </blockquote>
                 <div className="rounded-md bg-slate-50 p-2 text-xs leading-relaxed text-slate-600">
-                  <span className="font-semibold uppercase text-slate-500">
+                  <span className="font-semibold uppercase text-slate-600">
                     Cultural note:{" "}
                   </span>
                   {phrase.cultural_note}
@@ -145,7 +145,7 @@ function DialoguesSection({ pack }: { pack: CulturalPack }): React.ReactElement 
                 <h3 className="text-sm font-semibold text-slate-900">
                   {dialogue.title}
                 </h3>
-                <p className="text-xs italic text-slate-500">
+                <p className="text-xs italic text-slate-600">
                   {dialogue.setting}
                 </p>
                 <ol className="mt-2 space-y-2">
@@ -156,7 +156,7 @@ function DialoguesSection({ pack }: { pack: CulturalPack }): React.ReactElement 
                       </span>{" "}
                       <span className="text-slate-800">{line.english}</span>
                       {line.vn ? (
-                        <p className="ml-4 text-xs italic text-slate-500">
+                        <p className="ml-4 text-xs italic text-slate-600">
                           {line.vn}
                         </p>
                       ) : null}

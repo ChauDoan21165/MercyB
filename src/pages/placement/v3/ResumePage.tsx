@@ -139,7 +139,7 @@ export default function ResumePage() {
             vi: resume.session ? (RESUME_HEADING.vi ?? "") : (NO_RESUME_HEADING.vi ?? ""),
           }}
           enClassName="text-2xl font-black text-slate-950"
-          viClassName="text-sm font-medium text-slate-500"
+          viClassName="text-sm font-medium text-slate-600"
         />
         <BilingualLabel
           as="p"
@@ -149,7 +149,7 @@ export default function ResumePage() {
             vi: resume.session ? (RESUME_DESC.vi ?? "") : (NO_RESUME_DESC.vi ?? ""),
           }}
           enClassName="text-sm font-semibold leading-6 text-slate-600"
-          viClassName="text-xs font-medium leading-5 text-slate-500"
+          viClassName="text-xs font-medium leading-5 text-slate-600"
         />
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           {resume.session ? (

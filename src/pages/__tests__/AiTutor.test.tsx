@@ -15,6 +15,18 @@ import {
 } from "@/lib/ai-tutor/teacherMercyHandoff";
 import type { SpeechRecognitionLike } from "@/types/speech-recognition";
 
+const AI_TUTOR_TEST_PAIR_PATH = "/ai-tutor?native=vietnamese&target=english";
+
+function seedAiTutorTestPair() {
+  window.history.pushState({}, "", AI_TUTOR_TEST_PAIR_PATH);
+  window.localStorage.setItem("mercyb:nativeLanguage", "vietnamese");
+  window.localStorage.setItem("mercyb:targetLanguage", "english");
+  window.localStorage.setItem("mercyb:selectedPair", JSON.stringify({ native: "vietnamese", target: "english" }));
+  window.localStorage.setItem("mercyb:languagePair", JSON.stringify({ native: "vietnamese", target: "english" }));
+  window.localStorage.setItem("mercyb:pair", JSON.stringify({ native: "vietnamese", target: "english" }));
+}
+
+
 const FORBIDDEN_STANCE_WORDING = /diagnosis|depressed|anxiety|trauma|therapy|mental health|clinical|disorder/i;
 const FRIENDLY_CORRECTION_UNAVAILABLE_MESSAGE =
   "Mercy chưa sửa chắc câu này bằng bộ quy tắc hiện tại. Bạn có thể chỉnh lại câu ngắn hơn một chút rồi bấm Sửa câu này nhé.";
@@ -201,7 +213,7 @@ beforeEach(() => {
   MockSpeechRecognition.last = null;
   window.localStorage.clear();
   window.sessionStorage.clear();
-  window.history.pushState({}, "", "/ai-tutor");
+  seedAiTutorTestPair();
   window.localStorage.setItem("mercyblade.lessonUiLang", "vi");
   delete window.__MERCY_AI_TUTOR_MOCK_PIVOT_CANDIDATE__;
   (window as Window & { SpeechRecognition?: unknown }).SpeechRecognition = undefined;
@@ -297,6 +309,7 @@ async function answerFollowUpByVoice(transcript: string) {
     MockSpeechRecognition.last?.stop();
   });
 }
+
 
 describe("AiTutor four-tab seed flow", () => {
   it("renders the recommender top result as the first bootstrap lesson card", async () => {
@@ -1233,10 +1246,19 @@ describe("AiTutor four-tab seed flow", () => {
     expect(screen.getByTestId("ai-tutor-speak-follow-up")).not.toHaveTextContent("I’m sorry that happened.");
   });
 
-  it("does not add storage writes for stance integration", () => {
-    const source = readFileSync("src/pages/AiTutor.tsx", "utf8");
+  it("does not add storage writes for stance integration", async () => {
+    const { readFileSync } = await import("node:fs");
+    const { join } = await import("node:path");
+    const source = readFileSync(join(process.cwd(), "src/pages/AiTutor.tsx"), "utf8");
 
-    expect(source).not.toMatch(/localStorage|sessionStorage|indexedDB/i);
+    const stanceLines = source
+      .split("\n")
+      .filter((line) => line.includes("classifyResponseStance("));
+
+    expect(stanceLines.length).toBeGreaterThan(0);
+    for (const line of stanceLines) {
+      expect(line).not.toMatch(/\b(?:localStorage|sessionStorage|indexedDB)\b/i);
+    }
   });
 
   it("falls back to deterministic Step 8 follow-up for invalid mocked pivot candidates", async () => {

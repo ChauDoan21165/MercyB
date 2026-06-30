@@ -49,7 +49,7 @@ export default function SuggestionCard({
           vi={suggestion.suggestionText.vi}
           en={suggestion.suggestionText.en}
           viClassName="text-base leading-snug text-slate-900"
-          enClassName="mt-1 text-sm leading-snug text-slate-500"
+          enClassName="mt-1 text-sm leading-snug text-slate-600"
         />
       </div>
       <button
@@ -57,7 +57,7 @@ export default function SuggestionCard({
         onClick={handleDismiss}
         data-testid="suggestion-dismiss"
         aria-label="Dismiss suggestion / Đóng gợi ý"
-        className="-mr-1 -mt-1 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+        className="-mr-1 -mt-1 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-slate-600 hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-500"
       >
         <X aria-hidden="true" className="h-5 w-5" />
       </button>

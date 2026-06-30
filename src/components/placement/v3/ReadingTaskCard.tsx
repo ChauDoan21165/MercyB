@@ -24,7 +24,7 @@ export function ReadingTaskCard({ task, value, onChange }: Props) {
             <BilingualLabel
               text={{ en: "Read the passage", vi: "Đọc đoạn văn sau" }}
               enClassName="text-sm font-black text-slate-800"
-              viClassName="text-xs font-medium text-slate-500"
+              viClassName="text-xs font-medium text-slate-600"
             />
             <Button
               type="button"
@@ -70,7 +70,7 @@ export function ReadingTaskCard({ task, value, onChange }: Props) {
                   <BilingualLabel
                     text={option.label}
                     enClassName="text-base font-bold text-slate-800"
-                    viClassName="text-xs font-medium text-slate-500"
+                    viClassName="text-xs font-medium text-slate-600"
                   />
                 </button>
               );

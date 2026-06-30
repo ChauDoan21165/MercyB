@@ -75,7 +75,7 @@ export default function MonthlyReferralLeaderboard() {
         <h1 className="text-2xl font-semibold text-slate-900">
           {REFERRAL_LB_COPY.pageTitle.vi}
         </h1>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-slate-600">
           {REFERRAL_LB_COPY.pageTitle.en}
         </p>
         <p className="mt-2 text-sm text-slate-600">
@@ -134,11 +134,11 @@ export default function MonthlyReferralLeaderboard() {
       </div>
 
       {isLoading ? (
-        <p className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-500">
+        <p className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
           {REFERRAL_LB_COPY.loading.vi}
         </p>
       ) : rows.length === 0 ? (
-        <p className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-500">
+        <p className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
           {REFERRAL_LB_COPY.empty.vi}
         </p>
       ) : (
@@ -154,7 +154,7 @@ export default function MonthlyReferralLeaderboard() {
                     "w-8 shrink-0 text-right text-xs font-mono " +
                     (row.rank <= 3
                       ? "text-amber-600 font-bold"
-                      : "text-slate-500")
+                      : "text-slate-600")
                   }
                 >
                   #{row.rank}
@@ -167,7 +167,7 @@ export default function MonthlyReferralLeaderboard() {
                     ? row.total_referrals_this_month
                     : row.total_referrals}
                 </span>
-                <span className="hidden w-16 text-right text-xs tabular-nums text-slate-500 sm:inline-block">
+                <span className="hidden w-16 text-right text-xs tabular-nums text-slate-600 sm:inline-block">
                   {row._kind === "monthly"
                     ? row.successful_conversions
                     : row.total_premium_conversions}

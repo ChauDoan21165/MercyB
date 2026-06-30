@@ -76,10 +76,10 @@ export default function UrduLessonsPage() {
             ? "Urdu-script lessons with scoped RTL display, practical romanization, and learner notes for English or Vietnamese mode."
             : "Bài học chữ Urdu với hiển thị RTL cục bộ, chuyển tự thực dụng và ghi chú theo chế độ tiếng Việt hoặc tiếng Anh."}
         </p>
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-3 text-xs text-slate-600">
           {URDU_TOTAL_LESSONS} {uiLang === "en" ? "lessons" : "bài"} · A1 → C2
         </p>
-        <p className="mt-1 text-xs text-slate-500">
+        <p className="mt-1 text-xs text-slate-600">
           <Link
             to="/languages"
             className="font-medium underline"
@@ -116,7 +116,7 @@ export default function UrduLessonsPage() {
       </nav>
 
       {lessons.length === 0 ? (
-        <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
+        <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-600">
           {uiLang === "en"
             ? "No local Urdu lessons available for this level yet."
             : "Chưa có bài học tiếng Urdu cục bộ cho cấp độ này."}
@@ -181,7 +181,7 @@ function CategorySection({
         <h2 className="text-base font-semibold text-slate-900">
           {uiLanguage === "en" ? category.title_en : category.title_vi}
         </h2>
-        <span className="shrink-0 text-xs text-slate-500">
+        <span className="shrink-0 text-xs text-slate-600">
           {lessons.length}{" "}
           {uiLanguage === "en"
             ? lessons.length === 1
@@ -246,7 +246,7 @@ function UrduLessonCard({
             </span>
           </span>
           {!open && (
-            <span className="mt-1 block text-[11px] text-slate-500">
+            <span className="mt-1 block text-[11px] text-slate-600">
               {(lesson.vocabulary?.length ?? 0)}{" "}
               {uiLanguage === "en" ? "vocab" : "từ"} ·{" "}
               {lesson.sentences.length}{" "}
@@ -256,7 +256,7 @@ function UrduLessonCard({
             </span>
           )}
         </span>
-        <span className="shrink-0 text-lg leading-none text-slate-500">
+        <span className="shrink-0 text-lg leading-none text-slate-600">
           {open ? "⌃" : "⌄"}
         </span>
       </button>
@@ -311,7 +311,7 @@ function SentenceSection({
               {sentence.ur}
             </UrduText>
             {sentence.romanization && (
-              <p className="text-xs italic text-slate-500" dir="ltr" lang="en">
+              <p className="text-xs italic text-slate-600" dir="ltr" lang="en">
                 {sentence.romanization}
               </p>
             )}
@@ -357,7 +357,7 @@ function VocabularySection({
               {entry.ur}
             </UrduText>
             {entry.romanization && (
-              <p className="text-xs italic text-slate-500" dir="ltr" lang="en">
+              <p className="text-xs italic text-slate-600" dir="ltr" lang="en">
                 {entry.romanization}
               </p>
             )}
@@ -401,7 +401,7 @@ function DialogueSection({
               {line.ur}
             </UrduText>
             {line.romanization && (
-              <p className="text-xs italic text-slate-500" dir="ltr" lang="en">
+              <p className="text-xs italic text-slate-600" dir="ltr" lang="en">
                 {line.romanization}
               </p>
             )}
@@ -432,7 +432,7 @@ function ExerciseSection({
           <div key={index} className="rounded-lg border border-slate-100 bg-slate-50 p-2">
             {exercise.type === "fill-blank" && (
               <>
-                <p className="text-xs font-semibold uppercase text-slate-500">
+                <p className="text-xs font-semibold uppercase text-slate-600">
                   {uiLanguage === "en" ? "Fill in the blank" : "Điền vào chỗ trống"}
                 </p>
                 <MaybeUrduText className="mt-1 text-sm font-medium text-slate-800">
@@ -447,7 +447,7 @@ function ExerciseSection({
 
             {exercise.type === "matching" && (
               <>
-                <p className="text-xs font-semibold uppercase text-slate-500">
+                <p className="text-xs font-semibold uppercase text-slate-600">
                   {uiLanguage === "en" ? "Match" : "Nối"}
                 </p>
                 <p className="mt-1 text-sm text-slate-700">
@@ -477,7 +477,7 @@ function ExerciseSection({
 
             {exercise.type === "translation" && (
               <>
-                <p className="text-xs font-semibold uppercase text-slate-500">
+                <p className="text-xs font-semibold uppercase text-slate-600">
                   {uiLanguage === "en" ? "Translate" : "Dịch"}
                 </p>
                 <p className="mt-1 text-sm text-slate-700">
@@ -568,7 +568,7 @@ function FocusChips({ items }: { items?: string[] }) {
 
 function OptionalNote({ children }: { children?: string }) {
   if (!children) return null;
-  return <p className="text-xs italic text-slate-500">{children}</p>;
+  return <p className="text-xs italic text-slate-600">{children}</p>;
 }
 
 function AnswerLine({
@@ -582,7 +582,7 @@ function AnswerLine({
     <div className="mt-2 rounded border border-violet-100 bg-white p-2">
       <UrduText className="text-sm font-semibold">{answer}</UrduText>
       {romanization && (
-        <p className="text-xs italic text-slate-500" dir="ltr" lang="en">
+        <p className="text-xs italic text-slate-600" dir="ltr" lang="en">
           {romanization}
         </p>
       )}

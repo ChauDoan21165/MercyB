@@ -215,7 +215,7 @@ export default function WelcomePage() {
         {/* Skip link */}
         <button
           type="button"
-          className="mt-4 text-sm font-bold text-slate-500 hover:text-slate-600"
+          className="mt-4 text-sm font-bold text-slate-600 hover:text-slate-600"
           onClick={() => setSkipOpen(true)}
         >
           {t(COPY_SKIP_LINK)}

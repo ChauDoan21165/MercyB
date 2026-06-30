@@ -34,7 +34,7 @@ export default function FamilyPlanCard({
     return (
       <div className={shellBase} style={{ padding: "16px 18px" }}>
         <div className="flex items-start gap-3">
-          <div className="flex h-[52px] w-[52px] flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-b from-slate-300 to-slate-400">
+          <div className="flex h-[52px] w-[52px] flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-b from-slate-300 to-slate-500">
             <Users className="h-6 w-6 text-white" aria-hidden />
           </div>
           <div>
@@ -76,7 +76,7 @@ export default function FamilyPlanCard({
               ? `${members.length} of ${maxMembers} seats used.`
               : "Premium covered by the plan owner."}
           </div>
-          <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-500">
+          <div className="mt-0.5 text-[12px] font-medium leading-snug text-slate-600">
             {isOwner
               ? `${members.length}/${maxMembers} chỗ đã dùng.`
               : "Premium được bao phủ bởi chủ gói."}
@@ -117,7 +117,7 @@ export default function FamilyPlanCard({
                     </span>
                   )}
                 </div>
-                <div className="truncate text-[11px] text-slate-500">
+                <div className="truncate text-[11px] text-slate-600">
                   Joined {m.joinedAt.slice(0, 10)}
                 </div>
               </div>

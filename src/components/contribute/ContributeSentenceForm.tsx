@@ -97,7 +97,7 @@ export function ContributeSentenceForm({ userId, onSubmitted }: ContributeSenten
       <div>
         <label htmlFor="contribute-en" className="block text-sm font-semibold mb-1">
           Câu tiếng Anh
-          <span className="text-slate-500 font-normal ml-2">English sentence</span>
+          <span className="text-slate-600 font-normal ml-2">English sentence</span>
         </label>
         <textarea
           id="contribute-en"
@@ -114,7 +114,7 @@ export function ContributeSentenceForm({ userId, onSubmitted }: ContributeSenten
       <div>
         <label htmlFor="contribute-vi" className="block text-sm font-semibold mb-1">
           Bản dịch tiếng Việt
-          <span className="text-slate-500 font-normal ml-2">Vietnamese translation</span>
+          <span className="text-slate-600 font-normal ml-2">Vietnamese translation</span>
         </label>
         <textarea
           id="contribute-vi"
@@ -133,7 +133,7 @@ export function ContributeSentenceForm({ userId, onSubmitted }: ContributeSenten
         <div>
           <label htmlFor="contribute-context" className="block text-sm font-semibold mb-1">
             Chủ đề
-            <span className="text-slate-500 font-normal ml-2">Context</span>
+            <span className="text-slate-600 font-normal ml-2">Context</span>
           </label>
           <select
             id="contribute-context"
@@ -151,7 +151,7 @@ export function ContributeSentenceForm({ userId, onSubmitted }: ContributeSenten
         <div>
           <label htmlFor="contribute-difficulty" className="block text-sm font-semibold mb-1">
             Mức độ
-            <span className="text-slate-500 font-normal ml-2">CEFR</span>
+            <span className="text-slate-600 font-normal ml-2">CEFR</span>
           </label>
           <select
             id="contribute-difficulty"
@@ -172,7 +172,7 @@ export function ContributeSentenceForm({ userId, onSubmitted }: ContributeSenten
       <div>
         <label htmlFor="contribute-l1" className="block text-sm font-semibold mb-1">
           Quy tắc liên quan (tuỳ chọn)
-          <span className="text-slate-500 font-normal ml-2">Suggested L1 rule (optional)</span>
+          <span className="text-slate-600 font-normal ml-2">Suggested L1 rule (optional)</span>
         </label>
         <input
           id="contribute-l1"
@@ -183,7 +183,7 @@ export function ContributeSentenceForm({ userId, onSubmitted }: ContributeSenten
           pattern="^vi_l1_[a-z0-9_]+$"
           className="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-transparent p-2 text-sm font-mono"
         />
-        <p className="text-xs text-slate-500 mt-1">
+        <p className="text-xs text-slate-600 mt-1">
           Nếu câu này luyện một lỗi L1 cụ thể — ví dụ <code>vi_l1_3rd_person_s</code>. Bỏ trống nếu không chắc.
         </p>
       </div>

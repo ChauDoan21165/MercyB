@@ -23,7 +23,7 @@ export function ConversationTaskCard({ task, value, onChange }: Props) {
           <BilingualLabel
             text={task.mercyTurn}
             enClassName="text-base font-bold leading-relaxed text-slate-900"
-            viClassName="text-sm font-medium leading-relaxed text-slate-500"
+            viClassName="text-sm font-medium leading-relaxed text-slate-600"
           />
         </div>
       ) : null}

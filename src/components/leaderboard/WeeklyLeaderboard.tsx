@@ -110,11 +110,11 @@ export function WeeklyLeaderboard({
       </header>
 
       {isLoading ? (
-        <p className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-500">
+        <p className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
           {WEEKLY_LB_COPY.loading.vi}
         </p>
       ) : rows.length === 0 ? (
-        <p className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-500">
+        <p className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
           {WEEKLY_LB_COPY.empty.vi}
         </p>
       ) : (
@@ -132,7 +132,7 @@ export function WeeklyLeaderboard({
                 <span
                   className={
                     "w-8 shrink-0 text-right text-xs font-mono " +
-                    (row.rank <= 3 ? "text-amber-600 font-bold" : "text-slate-500")
+                    (row.rank <= 3 ? "text-amber-600 font-bold" : "text-slate-600")
                   }
                 >
                   #{row.rank}
@@ -148,7 +148,7 @@ export function WeeklyLeaderboard({
                 <span className="w-16 text-right text-sm tabular-nums text-slate-700">
                   {Math.round(row.total_score)}
                 </span>
-                <span className="hidden w-16 text-right text-xs tabular-nums text-slate-500 sm:inline-block">
+                <span className="hidden w-16 text-right text-xs tabular-nums text-slate-600 sm:inline-block">
                   {row.attempts_count}
                   <span className="ml-1">×</span>
                 </span>

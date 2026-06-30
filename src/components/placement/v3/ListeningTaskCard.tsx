@@ -24,11 +24,11 @@ export function ListeningTaskCard({ task, value, onChange }: Props) {
           <BilingualLabel
             text={{ en: "Audio prompt", vi: "Đoạn nghe" }}
             enClassName="text-sm font-black text-slate-800"
-            viClassName="text-xs font-medium text-slate-500"
+            viClassName="text-xs font-medium text-slate-600"
           />
         </div>
         <audio controls className="w-full" src={task.audioUrl} aria-label="Listening prompt audio" />
-        <p className="mt-2 text-xs font-medium text-slate-500">
+        <p className="mt-2 text-xs font-medium text-slate-600">
           Stub audio may be unavailable locally; the production orchestrator will provide a signed audio URL.
           {showVi && (
             <span className="block">Audio mẫu có thể chưa chạy ở máy local; backend thật sẽ trả URL nghe.</span>
@@ -60,7 +60,7 @@ export function ListeningTaskCard({ task, value, onChange }: Props) {
                 <BilingualLabel
                   text={option.label}
                   enClassName="text-base font-bold text-slate-800"
-                  viClassName="text-xs font-medium text-slate-500"
+                  viClassName="text-xs font-medium text-slate-600"
                 />
               </button>
             );

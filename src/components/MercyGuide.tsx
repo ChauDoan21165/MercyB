@@ -1237,7 +1237,7 @@ export function MercyGuide({
             </span>
           )}
           {showBubbleLabel && teacherUi.bubbleSubtitle && (
-            <span className="mt-0.5 text-xs font-medium text-slate-500">
+            <span className="mt-0.5 text-xs font-medium text-slate-600">
               {teacherUi.bubbleSubtitle}
             </span>
           )}
@@ -1361,35 +1361,35 @@ export function MercyGuide({
           {!isFullscreen && (
             <>
               <div
-                className="absolute inset-x-3 top-0 z-[70] h-1.5 cursor-n-resize bg-slate-300/70 hover:bg-slate-400/80"
+                className="absolute inset-x-3 top-0 z-[70] h-1.5 cursor-n-resize bg-slate-300/70 hover:bg-slate-500/80"
                 onPointerDown={handleResizePointerDown('top')}
               />
               <div
-                className="absolute inset-x-3 bottom-0 z-[70] h-1.5 cursor-s-resize bg-slate-300/70 hover:bg-slate-400/80"
+                className="absolute inset-x-3 bottom-0 z-[70] h-1.5 cursor-s-resize bg-slate-300/70 hover:bg-slate-500/80"
                 onPointerDown={handleResizePointerDown('bottom')}
               />
               <div
-                className="absolute inset-y-3 left-0 z-[70] w-1.5 cursor-w-resize bg-slate-300/70 hover:bg-slate-400/80"
+                className="absolute inset-y-3 left-0 z-[70] w-1.5 cursor-w-resize bg-slate-300/70 hover:bg-slate-500/80"
                 onPointerDown={handleResizePointerDown('left')}
               />
               <div
-                className="absolute inset-y-3 right-0 z-[70] w-1.5 cursor-e-resize bg-slate-300/70 hover:bg-slate-400/80"
+                className="absolute inset-y-3 right-0 z-[70] w-1.5 cursor-e-resize bg-slate-300/70 hover:bg-slate-500/80"
                 onPointerDown={handleResizePointerDown('right')}
               />
               <div
-                className="absolute left-0 top-0 z-[80] h-2.5 w-2.5 cursor-nw-resize rounded-br bg-slate-400/80"
+                className="absolute left-0 top-0 z-[80] h-2.5 w-2.5 cursor-nw-resize rounded-br bg-slate-500/80"
                 onPointerDown={handleResizePointerDown('top-left')}
               />
               <div
-                className="absolute right-0 top-0 z-[80] h-2.5 w-2.5 cursor-ne-resize rounded-bl bg-slate-400/80"
+                className="absolute right-0 top-0 z-[80] h-2.5 w-2.5 cursor-ne-resize rounded-bl bg-slate-500/80"
                 onPointerDown={handleResizePointerDown('top-right')}
               />
               <div
-                className="absolute bottom-0 left-0 z-[80] h-2.5 w-2.5 cursor-sw-resize rounded-tr bg-slate-400/80"
+                className="absolute bottom-0 left-0 z-[80] h-2.5 w-2.5 cursor-sw-resize rounded-tr bg-slate-500/80"
                 onPointerDown={handleResizePointerDown('bottom-left')}
               />
               <div
-                className="absolute bottom-0 right-0 z-[80] h-2.5 w-2.5 cursor-se-resize rounded-tl bg-slate-400/80"
+                className="absolute bottom-0 right-0 z-[80] h-2.5 w-2.5 cursor-se-resize rounded-tl bg-slate-500/80"
                 onPointerDown={handleResizePointerDown('bottom-right')}
               />
             </>

@@ -171,11 +171,11 @@ const primaryBtn: React.CSSProperties = {
 // emergency; painting it red teaches the user that being a beginner
 // is wrong. Number stays visible.
 function scoreColor(n: number | null): string {
-  // Null branch keeps the slate-400 hex as an audited exception:
+  // Null branch keeps the slate-500 hex as an audited exception:
   // the score renders at fontSize 56 + fontWeight 950 (WCAG
   // large-text threshold 3:1) and as Bar chart fills (WCAG 1.4.11
   // non-text contrast 3:1). Both 3:1 thresholds are met by
-  // slate-400 on white = 3.13:1, so this branch passes AA without
+  // slate-500 on white = 3.13:1, so this branch passes AA without
   // matching the sub-60 darkness. "No data yet" stays quieter
   // than a real low score on the visual hierarchy. Full rationale
   // in docs/a11y/audit.md §"Color contrast — wave 2".

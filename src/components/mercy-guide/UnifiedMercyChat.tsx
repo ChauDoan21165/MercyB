@@ -211,7 +211,7 @@ export function UnifiedMercyChat(props: UnifiedMercyChatProps) {
       <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-slate-800">
         <div>
           <p className="text-sm font-semibold">Mercy</p>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-600">
             Bạn muốn học gì hôm nay? · How can I help today?
           </p>
         </div>
@@ -269,7 +269,7 @@ export function UnifiedMercyChat(props: UnifiedMercyChatProps) {
               Nhiều tab · Classic
             </Button>
           </div>
-          <p className="mt-2 text-xs text-slate-500">
+          <p className="mt-2 text-xs text-slate-600">
             Đổi sang Classic nếu em quen dùng các tab cũ. Vẫn dùng được mọi lúc.
           </p>
         </div>
@@ -286,7 +286,7 @@ export function UnifiedMercyChat(props: UnifiedMercyChatProps) {
             <p className="font-medium">
               Chào em — Mercy ở đây.
             </p>
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-slate-600">
               Hỏi Mercy về phát âm, ngữ pháp, hay nhờ Mercy ra bài tiếp theo.
             </p>
           </div>
@@ -314,7 +314,7 @@ export function UnifiedMercyChat(props: UnifiedMercyChatProps) {
             <div className="mb-1 flex items-center justify-between">
               <p className="font-semibold">
                 {INLINE_HEADERS[state.inline.kind][0]}
-                <span className="ml-2 text-xs font-normal text-slate-500">
+                <span className="ml-2 text-xs font-normal text-slate-600">
                   · {INLINE_HEADERS[state.inline.kind][1]}
                 </span>
               </p>

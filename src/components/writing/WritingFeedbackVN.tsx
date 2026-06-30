@@ -67,7 +67,7 @@ export function WritingFeedbackVN({ feedback }: Props) {
 
       {/* Base rubric pips */}
       <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-        <p className="mb-3 text-xs font-bold uppercase tracking-wide text-slate-500">
+        <p className="mb-3 text-xs font-bold uppercase tracking-wide text-slate-600">
           Điểm theo từng tiêu chí · Per-criterion scores
         </p>
         <div className="space-y-2">
@@ -75,7 +75,7 @@ export function WritingFeedbackVN({ feedback }: Props) {
             <div key={d.label_en} className="flex items-center gap-3">
               <div className="w-28 shrink-0">
                 <div className="text-xs font-bold text-slate-900">{d.label_vi}</div>
-                <div className="text-[10px] uppercase tracking-wide text-slate-500">{d.label_en}</div>
+                <div className="text-[10px] uppercase tracking-wide text-slate-600">{d.label_en}</div>
               </div>
               <div className="flex flex-1 gap-1">
                 {[0, 1, 2, 3, 4].map((idx) => (
@@ -119,7 +119,7 @@ export function WritingFeedbackVN({ feedback }: Props) {
                     {pattern.ielts_band_impact.toFixed(2)} band
                   </span>
                 </div>
-                <p className="mt-0.5 text-xs text-slate-500">{pattern.en_name}</p>
+                <p className="mt-0.5 text-xs text-slate-600">{pattern.en_name}</p>
                 <p className="mt-2 text-xs leading-relaxed text-slate-700">
                   {pattern.description_vi}
                 </p>
@@ -127,7 +127,7 @@ export function WritingFeedbackVN({ feedback }: Props) {
                   <p className="mt-2 rounded bg-slate-100 px-2 py-1 font-mono text-[11px] text-slate-700">
                     “{excerpt}”
                     {lineHits.length > 0 ? (
-                      <span className="ml-2 text-slate-500">
+                      <span className="ml-2 text-slate-600">
                         (line {lineHits.slice(0, 3).join(", ")}
                         {lineHits.length > 3 ? `, +${lineHits.length - 3}` : ""})
                       </span>
@@ -144,7 +144,7 @@ export function WritingFeedbackVN({ feedback }: Props) {
                       <span className="font-bold text-emerald-700">Đúng:</span>{" "}
                       <span className="text-slate-700">{pattern.examples[0].correct}</span>
                     </p>
-                    <p className="mt-1 text-slate-500">{pattern.examples[0].why_vi}</p>
+                    <p className="mt-1 text-slate-600">{pattern.examples[0].why_vi}</p>
                   </div>
                 ) : null}
               </div>
@@ -199,13 +199,13 @@ export function WritingFeedbackVN({ feedback }: Props) {
       {/* Top revision suggestions */}
       {topRevisions.length > 0 ? (
         <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-          <p className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-500">
+          <p className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-600">
             3 điểm nên sửa trước · Top 3 revisions
           </p>
           <ol className="space-y-2 text-xs leading-relaxed text-slate-700">
             {topRevisions.map((rev, idx) => (
               <li key={idx} className="flex gap-2">
-                <ChevronRight size={14} className="mt-0.5 shrink-0 text-slate-500" />
+                <ChevronRight size={14} className="mt-0.5 shrink-0 text-slate-600" />
                 <span>{rev.vi}</span>
               </li>
             ))}

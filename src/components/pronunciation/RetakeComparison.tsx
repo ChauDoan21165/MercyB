@@ -264,7 +264,7 @@ export default function RetakeComparison({ history, onReset }: RetakeComparisonP
               type="button"
               onClick={onReset}
               aria-label="Bắt đầu lại lịch sử so sánh · Reset comparison history"
-              className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-500 hover:text-slate-800"
+              className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-600 hover:text-slate-800"
             >
               <RotateCcw className="h-3 w-3" aria-hidden />
               Bắt đầu lại · Reset
@@ -281,7 +281,7 @@ export default function RetakeComparison({ history, onReset }: RetakeComparisonP
 function TrendIcon({ trend }: { trend: Trend }) {
   if (trend === "up") return <ArrowUp className="h-5 w-5 shrink-0 text-emerald-600" aria-hidden />;
   if (trend === "down") return <ArrowDown className="h-5 w-5 shrink-0 text-rose-600" aria-hidden />;
-  return <ArrowRight className="h-5 w-5 shrink-0 text-slate-500" aria-hidden />;
+  return <ArrowRight className="h-5 w-5 shrink-0 text-slate-600" aria-hidden />;
 }
 
 function trendLabelVi(trend: Trend, latest: number, prev: number): string {

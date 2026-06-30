@@ -56,14 +56,14 @@ export default function SuggestionsDisableToggle({
         onChange={(e) => handleChange(e.target.checked)}
         data-testid="suggestions-disable-toggle-input"
         aria-label="Turn off suggestions / Tắt gợi ý"
-        className="mt-1 h-5 w-5 shrink-0 rounded border-slate-300 text-slate-700 focus:ring-slate-400"
+        className="mt-1 h-5 w-5 shrink-0 rounded border-slate-300 text-slate-700 focus:ring-slate-500"
       />
       <div className="min-w-0 flex-1">
         <Bilingual
           vi="Tắt gợi ý từ Mercy"
           en="Turn off Mercy's suggestions"
           viClassName="text-base leading-snug text-slate-900"
-          enClassName="mt-1 text-sm leading-snug text-slate-500"
+          enClassName="mt-1 text-sm leading-snug text-slate-600"
         />
       </div>
     </label>

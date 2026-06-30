@@ -115,7 +115,7 @@ export default function ChineseLessonsPage() {
             ? `${CHINESE_TOTAL_LESSONS} lessons`
             : `${CHINESE_TOTAL_LESSONS} bài · ${CHINESE_TOTAL_LESSONS} lessons`}
         </p>
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-3 text-xs text-slate-600">
           <Link
             to="/languages"
             className="font-medium underline"
@@ -175,13 +175,13 @@ export default function ChineseLessonsPage() {
         </header>
 
         {lessons === null ? (
-          <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
+          <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-600">
             {uiLang === "en"
               ? `Loading ${cefrPillLabel(level, uiLang)} lessons…`
               : `Đang tải bài học cấp độ ${cefrPillLabel(level, uiLang)}…`}
           </p>
         ) : normalized.length === 0 ? (
-          <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
+          <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-600">
             {uiLang === "en"
               ? "No lessons available for this level yet."
               : "Chưa có bài học cho cấp độ này."}

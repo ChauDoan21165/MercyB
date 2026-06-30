@@ -362,7 +362,7 @@ export default function MockInterviewRoom() {
             </div>
             {sessionPrompt.source === "community" && (
               <p
-                className="mt-2 text-xs text-slate-500"
+                className="mt-2 text-xs text-slate-600"
                 data-testid="community-attribution"
               >
                 Câu hỏi từ cộng đồng —{" "}

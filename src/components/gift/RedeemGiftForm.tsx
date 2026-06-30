@@ -99,7 +99,7 @@ export default function RedeemGiftForm({
           <h2 className="text-xl font-semibold text-slate-900">
             Đã kích hoạt {redeemed.durationMonths} tháng MercyBlade!
           </h2>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-slate-600">
             {redeemed.durationMonths} months of MercyBlade premium added to
             your account.
           </p>

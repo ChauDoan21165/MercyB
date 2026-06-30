@@ -158,7 +158,7 @@ function L1Row({ pattern }: { pattern: L1PatternSummary }) {
             vi={lang.shortVi}
             en={lang.shortEn}
             viClassName="text-sm font-semibold leading-snug text-slate-900"
-            enClassName="mt-0.5 text-[12px] leading-snug text-slate-500"
+            enClassName="mt-0.5 text-[12px] leading-snug text-slate-600"
           />
           <QuietMeta
             count={pattern.count}
@@ -185,7 +185,7 @@ function L1Row({ pattern }: { pattern: L1PatternSummary }) {
             vi={lang.exampleVi}
             en={lang.exampleEn}
             viClassName="text-[12px] leading-snug text-slate-700"
-            enClassName="mt-1 text-[12px] leading-snug text-slate-500"
+            enClassName="mt-1 text-[12px] leading-snug text-slate-600"
           />
         </div>
       )}
@@ -230,7 +230,7 @@ function PlacementRow({ weakness }: { weakness: PlacementWeaknessSummary }) {
           vi={lang.shortVi}
           en={lang.shortEn}
           viClassName="text-sm font-semibold leading-snug text-slate-900"
-          enClassName="mt-0.5 text-[12px] leading-snug text-slate-500"
+          enClassName="mt-0.5 text-[12px] leading-snug text-slate-600"
         />
       </div>
       <SeverityDot severity={weakness.severity} />
@@ -302,12 +302,12 @@ function PronunciationRow({
           vi={lang.shortVi}
           en={lang.shortEn}
           viClassName="text-sm font-semibold leading-snug text-slate-900"
-          enClassName="mt-0.5 text-[12px] leading-snug text-slate-500"
+          enClassName="mt-0.5 text-[12px] leading-snug text-slate-600"
         />
         <p
           data-testid="pronunciation-meta"
           lang="vi"
-          className="mt-1 text-[11px] leading-snug text-slate-500"
+          className="mt-1 text-[11px] leading-snug text-slate-600"
         >
           ~{ratePct}% chưa chính xác · {painPoint.samples} lần luyện
         </p>
@@ -341,7 +341,7 @@ function SectionHeading({
           viAs="h3"
           enAs="p"
           viClassName="text-sm font-bold leading-tight text-slate-900"
-          enClassName="text-[11px] leading-tight text-slate-500"
+          enClassName="text-[11px] leading-tight text-slate-600"
         />
       </div>
     </div>
@@ -349,11 +349,11 @@ function SectionHeading({
 }
 
 function QuietMeta({ count, lastSeen }: { count: number; lastSeen: number }) {
-  // Quiet metadata — small, slate-400, not a focal point. No
+  // Quiet metadata — small, slate-500, not a focal point. No
   // "you-have-X" language; just facts.
   const ago = formatAgo(lastSeen);
   return (
-    <p lang="vi" className="mt-1 text-[11px] leading-snug text-slate-500">
+    <p lang="vi" className="mt-1 text-[11px] leading-snug text-slate-600">
       {count} lần · {ago}
     </p>
   );
@@ -408,7 +408,7 @@ function GlobalEmptyState() {
         vi="Chưa có dữ liệu — hãy hoàn thành vài bài để xem điểm yếu của bạn."
         en="Complete a few lessons to see your weakness map."
         viClassName="text-sm font-semibold leading-snug text-slate-900"
-        enClassName="mt-1 text-[12px] leading-snug text-slate-500"
+        enClassName="mt-1 text-[12px] leading-snug text-slate-600"
       />
     </section>
   );

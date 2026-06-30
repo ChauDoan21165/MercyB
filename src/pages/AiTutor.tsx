@@ -1082,7 +1082,7 @@ function TodayLessonLoopPanel({
       )}
 
       {nextFocus && (
-        <div className="mt-3 text-xs font-bold text-slate-500" style={{ overflowWrap: "break-word" }}>
+        <div className="mt-3 text-xs font-bold text-slate-600" style={{ overflowWrap: "break-word" }}>
           Ôn tiếp: {nextFocus}
         </div>
       )}
@@ -1135,7 +1135,7 @@ export default function AiTutorPage() {
       ),
   );
   const [explainLanguage, setExplainLanguage] = useState<ExplainLanguage>(() =>
-    resolveExplainLanguage(aiTutorConfig, getExplainLanguage(), target),
+    resolveExplainLanguage(aiTutorConfig, getExplainLanguage(typeof window === "undefined" ? undefined : window.location.search), target),
   );
   const speechLang = getSpeechLocale(target);
   const ttsLang = getTtsLocale(target);
@@ -1192,7 +1192,7 @@ export default function AiTutorPage() {
           aiTutorConfig.allowedTargetLanguages,
           aiTutorConfig.defaultTargetLanguage as TutorTarget,
         ),
-      resolveExplainLanguage(aiTutorConfig, getExplainLanguage(), typeof window === "undefined"
+      resolveExplainLanguage(aiTutorConfig, getExplainLanguage(typeof window === "undefined" ? undefined : window.location.search), typeof window === "undefined"
         ? aiTutorConfig.defaultTargetLanguage
         : getTutorTargetFromSearch(
           window.location.search,
@@ -2248,7 +2248,7 @@ export default function AiTutorPage() {
   }, [activeTodayLesson, memory, mode, target]);
 
   useEffect(() => {
-    const syncExplain = () => setExplainLanguage(resolveExplainLanguage(aiTutorConfig, getExplainLanguage(), target));
+    const syncExplain = () => setExplainLanguage(resolveExplainLanguage(aiTutorConfig, getExplainLanguage(typeof window === "undefined" ? undefined : window.location.search), target));
     window.addEventListener("storage", syncExplain);
     window.addEventListener("focus", syncExplain);
     return () => {
@@ -2876,6 +2876,24 @@ export default function AiTutorPage() {
     }
     setMode(nextMode);
   };
+
+  // Bare /ai-tutor with no language pair → show pair selector instead
+  // of silently defaulting to Vietnamese-English.
+  if (typeof window !== "undefined") {
+    const hasUrlPair = (() => { try { const s = window.location.search; return s.includes("native=") || s.includes("target="); } catch { return false; } })();
+    const hasStoredPair = (() => { try { return window.localStorage.getItem("mercyblade.languagePair") !== null; } catch { return false; } })();
+    if (!hasUrlPair && !hasStoredPair) {
+      return (
+        <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#f7efe0" }}>
+          <div style={{ textAlign: "center", maxWidth: 440, padding: 32 }}>
+            <h2 style={{ fontFamily: "serif", fontSize: 28, fontWeight: 600, color: "#1a221d", margin: "0 0 12px" }}>Choose Your Language</h2>
+            <p style={{ fontSize: 15, color: "#78716c", margin: "0 0 24px", lineHeight: 1.6 }}>Pick your native language and the language you want to learn so Teacher Mercy can guide you best.</p>
+            <a href="/" style={{ display: "inline-block", padding: "12px 28px", borderRadius: 14, background: "#8b7d5e", color: "#fff", fontWeight: 700, fontSize: 16, textDecoration: "none", fontFamily: "serif" }}>Choose Language →</a>
+          </div>
+        </div>
+      );
+    }
+  }
 
   return (
     <TeacherMercyLearningShell

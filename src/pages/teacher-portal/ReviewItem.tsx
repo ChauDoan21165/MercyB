@@ -246,7 +246,7 @@ export default function ReviewItem(): React.ReactElement {
                 {parsed.contentId}
               </code>
               <br />
-              <span className="text-xs text-slate-500">
+              <span className="text-xs text-slate-600">
                 Open the source content in a new tab to compare while reviewing.
               </span>
             </p>

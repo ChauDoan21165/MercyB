@@ -207,7 +207,7 @@ export default function ShareableStreakCard({
           <h2 className="text-lg font-semibold text-slate-900">
             Chia sẻ chuỗi ngày học / Share your streak
           </h2>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-600">
             Tải ảnh PNG hoặc đăng thẳng lên Facebook / Zalo.
           </p>
         </header>

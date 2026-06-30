@@ -139,7 +139,7 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
             <p className="text-sm font-semibold text-slate-900">
               {config.labelVi}
             </p>
-            <p className="text-xs text-slate-500">{config.label}</p>
+            <p className="text-xs text-slate-600">{config.label}</p>
           </div>
         </div>
         <p className="mt-2 text-xs leading-relaxed text-slate-600">
@@ -179,7 +179,7 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
                     <span className="font-medium text-slate-900">
                       {entry.word}
                     </span>
-                    <span className="text-slate-500">—</span>
+                    <span className="text-slate-600">—</span>
                     <span className="text-slate-600">{gloss}</span>
                   </div>
                 );
@@ -216,13 +216,13 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
 
       {/* Lessons */}
       {lessons === null ? (
-        <p className="rounded-lg border border-slate-200 bg-white px-3 py-3 text-xs text-slate-500">
+        <p className="rounded-lg border border-slate-200 bg-white px-3 py-3 text-xs text-slate-600">
           {uiLang === "en"
             ? `Loading ${level} lessons…`
             : `Đang tải bài học cấp độ ${level}…`}
         </p>
       ) : lessons.length === 0 ? (
-        <p className="rounded-lg border border-slate-200 bg-white px-3 py-3 text-xs text-slate-500">
+        <p className="rounded-lg border border-slate-200 bg-white px-3 py-3 text-xs text-slate-600">
           {uiLang === "en"
             ? "No lessons available for this level yet."
             : "Chưa có bài học cho cấp độ này."}
@@ -241,7 +241,7 @@ export default function LanguageLessonsView({ config, uiLang = "vi" }: Props) {
                     duplication of the <h3> above (which already picks
                     uiLang). Mirrors GermanLessonsPage; honors #523
                     single-language rule. */}
-                <span className="text-[10px] text-slate-500">
+                <span className="text-[10px] text-slate-600">
                   {catLessons.length}{" "}
                   {uiLang === "en"
                     ? catLessons.length === 1
@@ -299,9 +299,9 @@ function LessonTile({
           <p className="text-xs font-medium text-slate-900">{title}</p>
         </div>
         {open ? (
-          <ChevronUp className="h-3 w-3 shrink-0 text-slate-500" />
+          <ChevronUp className="h-3 w-3 shrink-0 text-slate-600" />
         ) : (
-          <ChevronDown className="h-3 w-3 shrink-0 text-slate-500" />
+          <ChevronDown className="h-3 w-3 shrink-0 text-slate-600" />
         )}
       </button>
 

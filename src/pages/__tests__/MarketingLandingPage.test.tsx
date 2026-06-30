@@ -1,33 +1,10 @@
-// @vitest-environment jsdom
-//
-// Landing smoke + the two behaviors that matter for conversion:
-//  - Vietnamese is the <h1> (visual primary, non-negotiable #1)
-//  - hero CTAs route correctly (/onboarding and /onboarding?direction=vn)
-//  - "Nói thử ngay" writes the default vi→en pair (so the `/` gate
-//    renders Home) and navigates to /?trypron=1 (so Home auto-opens
-//    the pronunciation trial)
-
-import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import React from "react";
-
-const mockNavigate = vi.fn();
-vi.mock("react-router-dom", async () => {
-  const actual = await vi.importActual<typeof import("react-router-dom")>(
-    "react-router-dom",
-  );
-  return { ...actual, useNavigate: () => mockNavigate };
-});
-
-const mockWritePair = vi.fn();
-vi.mock("@/lib/languagePair/anonymousPair", () => ({
-  writeAnonymousPair: (...args: unknown[]) => mockWritePair(...args),
-}));
+import { describe, expect, it } from "vitest";
 
 import MarketingLandingPage from "../MarketingLandingPage";
 
-function renderPage() {
+function renderHomepage() {
   return render(
     <MemoryRouter>
       <MarketingLandingPage />
@@ -35,47 +12,41 @@ function renderPage() {
   );
 }
 
-beforeEach(() => {
-  mockNavigate.mockReset();
-  mockWritePair.mockReset();
-});
+describe("Public homepage", () => {
+  it("renders the approved inkwash homepage shell", () => {
+    renderHomepage();
 
-afterEach(() => {
-  vi.restoreAllMocks();
-});
+    const homepage = document.querySelector("[data-mercy-marketing-home='true']");
+    expect(homepage).toBeInTheDocument();
+    expect(homepage?.getAttribute("style") ?? "").toContain("/marketing/hero-a.png");
 
-describe("MarketingLandingPage", () => {
-  it("Vietnamese positioning is the H1 (visual primary)", () => {
-    renderPage();
     const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1).toHaveAttribute("lang", "vi");
-    expect(h1.textContent).toContain("Ngoại ngữ cho người Việt");
+    expect(h1.textContent).toContain("Learn Any Language");
+    expect(h1.textContent).toContain("From Your Language");
   });
 
-  it("primary CTA links to /onboarding", () => {
-    renderPage();
-    const links = screen.getAllByRole("link", { name: "Tôi học ngoại ngữ" });
-    expect(links.length).toBeGreaterThan(0);
-    links.forEach((l) => expect(l).toHaveAttribute("href", "/onboarding"));
+  it("keeps the public brand and sign-in route", () => {
+    renderHomepage();
+
+    expect(screen.getByRole("link", { name: "MercyBlade home" })).toHaveAttribute("href", "/");
+    expect(screen.getByRole("link", { name: "Sign In" })).toHaveAttribute("href", "/login");
   });
 
-  it("secondary CTA links to /onboarding?direction=vn", () => {
-    renderPage();
-    const links = screen.getAllByRole("link", {
-      name: /I'm learning Vietnamese/i,
-    });
-    expect(links.length).toBeGreaterThan(0);
-    links.forEach((l) =>
-      expect(l).toHaveAttribute("href", "/onboarding?direction=vn"),
-    );
+  it("starts the default Vietnamese to English learning route", () => {
+    renderHomepage();
+
+    const startLink = screen.getByRole("link", { name: /Start Learning/i });
+    expect(startLink).toHaveAttribute("href", "/learn/vietnamese/english");
   });
 
-  it("'Nói thử ngay' writes the default vi→en pair then navigates to /?trypron=1", () => {
-    renderPage();
-    fireEvent.click(
-      screen.getByRole("button", { name: /Nói thử ngay/ }),
-    );
-    expect(mockWritePair).toHaveBeenCalledWith("vi", ["en"]);
-    expect(mockNavigate).toHaveBeenCalledWith("/?trypron=1");
+  it("shows native and target language selectors", () => {
+    renderHomepage();
+
+    expect(screen.getByRole("button", { name: "Swap languages" })).toBeInTheDocument();
+
+    const selectors = screen.getAllByRole("combobox");
+    expect(selectors).toHaveLength(2);
+    expect(selectors[0]).toHaveTextContent("Vietnamese");
+    expect(selectors[1]).toHaveTextContent("English");
   });
 });

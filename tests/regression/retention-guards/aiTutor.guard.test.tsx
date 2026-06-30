@@ -28,7 +28,20 @@ vi.mock("@/lib/placement/availability", () => ({ isPlacementEntryRouteAvailable:
 import AiTutorPage from "@/pages/AiTutor";
 import { startStudySession } from "@/lib/tutor/studySessionState";
 
+const AI_TUTOR_TEST_PAIR_PATH = "/ai-tutor?native=vietnamese&target=english";
+
+function seedAiTutorTestPair() {
+  window.history.pushState({}, "", AI_TUTOR_TEST_PAIR_PATH);
+  window.localStorage.setItem("mercyb:nativeLanguage", "vietnamese");
+  window.localStorage.setItem("mercyb:targetLanguage", "english");
+  window.localStorage.setItem("mercyb:selectedPair", JSON.stringify({ native: "vietnamese", target: "english" }));
+  window.localStorage.setItem("mercyb:languagePair", JSON.stringify({ native: "vietnamese", target: "english" }));
+  window.localStorage.setItem("mercyb:pair", JSON.stringify({ native: "vietnamese", target: "english" }));
+}
+
+
 function renderAiTutor() {
+  seedAiTutorTestPair();
   const queryClient = new QueryClient({
     defaultOptions: { queries: { retry: false }, mutations: { retry: false } },
   });

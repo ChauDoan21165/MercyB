@@ -19,7 +19,7 @@ export default function LeaderboardPage() {
           <h1 className="text-2xl font-semibold text-slate-900">
             {WEEKLY_LB_COPY.pageTitle.vi}
           </h1>
-          <p className="text-sm text-slate-500">{WEEKLY_LB_COPY.pageTitle.en}</p>
+          <p className="text-sm text-slate-600">{WEEKLY_LB_COPY.pageTitle.en}</p>
         </div>
         {user && (
           <Button asChild size="sm" variant="ghost">

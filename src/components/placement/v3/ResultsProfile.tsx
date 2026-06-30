@@ -97,7 +97,7 @@ export function ResultsProfile({ results }: Props) {
         <BilingualLabel
           text={results.overallSummary}
           enClassName="text-base font-bold leading-7 text-slate-800"
-          viClassName="text-sm font-medium leading-6 text-slate-500"
+          viClassName="text-sm font-medium leading-6 text-slate-600"
         />
       </div>
 
@@ -108,11 +108,11 @@ export function ResultsProfile({ results }: Props) {
               <BilingualLabel
                 text={modalityLabel(skill.modality)}
                 enClassName="text-sm font-black text-slate-800"
-                viClassName="text-xs font-medium text-slate-500"
+                viClassName="text-xs font-medium text-slate-600"
               />
               <div className="text-right">
                 <div className="text-xl font-black text-slate-950">{skill.cefr}</div>
-                <div className="text-[11px] font-bold text-slate-500">
+                <div className="text-[11px] font-bold text-slate-600">
                   {Math.round(skill.confidence * 100)}%
                 </div>
               </div>
@@ -121,7 +121,7 @@ export function ResultsProfile({ results }: Props) {
               text={skill.summary}
               className="mt-3"
               enClassName="text-sm font-semibold leading-6 text-slate-700"
-              viClassName="text-xs font-medium leading-5 text-slate-500"
+              viClassName="text-xs font-medium leading-5 text-slate-600"
             />
           </article>
         ))}

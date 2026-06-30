@@ -128,7 +128,7 @@ export default function SuggestedPracticeList({
             viAs="h3"
             enAs="p"
             viClassName="text-sm font-bold leading-tight text-slate-900"
-            enClassName="text-[11px] leading-tight text-slate-500"
+            enClassName="text-[11px] leading-tight text-slate-600"
             viProps={{ id: "suggested-practice-heading" }}
           />
         </div>
@@ -169,9 +169,9 @@ function SuggestedPracticeRow({
             vi={item.viLabel}
             en={item.enLabel}
             viClassName="text-sm font-semibold leading-snug text-slate-900"
-            enClassName="mt-0.5 text-[12px] leading-snug text-slate-500"
+            enClassName="mt-0.5 text-[12px] leading-snug text-slate-600"
           />
-          <p lang="vi" className="mt-1 text-[11px] leading-snug text-slate-500">
+          <p lang="vi" className="mt-1 text-[11px] leading-snug text-slate-600">
             {item.rationale}
           </p>
         </div>
@@ -248,7 +248,7 @@ function EmptyState() {
         vi="Chưa có gợi ý nào — luyện thêm vài bài để Mercy hiểu bạn rõ hơn."
         en="Suggestions appear after a few lessons."
         viClassName="text-sm font-semibold leading-snug text-slate-900"
-        enClassName="mt-1 text-[12px] leading-snug text-slate-500"
+        enClassName="mt-1 text-[12px] leading-snug text-slate-600"
       />
     </section>
   );

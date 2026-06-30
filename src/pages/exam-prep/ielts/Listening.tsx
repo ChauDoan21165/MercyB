@@ -50,15 +50,15 @@ function ItemCard({ item }: { item: IELTSListeningItem }) {
         >
           Section {item.section}
         </span>
-        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600">
           {item.context}
         </span>
-        <span className="ml-auto text-[11px] font-semibold text-slate-500">
+        <span className="ml-auto text-[11px] font-semibold text-slate-600">
           {item.estimated_time_minutes} min · Band {item.difficulty_band}
         </span>
       </div>
       <h3 className="text-base font-bold text-slate-900">{item.topic_title_vi}</h3>
-      <p className="text-xs text-slate-500">{item.topic_title_en}</p>
+      <p className="text-xs text-slate-600">{item.topic_title_en}</p>
     </Link>
   );
 }
@@ -83,7 +83,7 @@ export default function Listening() {
       <header className="mb-5">
         <Link
           to="/exam/ielts"
-          className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-slate-800"
+          className="inline-flex items-center gap-1 text-xs text-slate-600 hover:text-slate-800"
         >
           <ChevronLeft size={14} />
           Quay lại tổng quan IELTS · Back to IELTS overview
@@ -99,7 +99,7 @@ export default function Listening() {
           tiếng Việt cho từng câu sai. 30 bài tập trải đều bốn phần thi: 8 bài
           Phần 1, 8 bài Phần 2, 8 bài Phần 3, 6 bài Phần 4 (lectures).
         </p>
-        <p className="mt-1 text-xs text-slate-500">
+        <p className="mt-1 text-xs text-slate-600">
           30 practice items across all 4 sections. Original scripts based on
           the public IELTS test specification.
         </p>
@@ -125,7 +125,7 @@ export default function Listening() {
 
       {/* Difficulty filter */}
       <div className="mb-4 flex flex-wrap gap-2">
-        <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+        <span className="text-xs font-semibold uppercase tracking-wider text-slate-600">
           Band:
         </span>
         {(["all", 5.5, 6.5, 7.5, 8.5] as const).map((b) => (
@@ -144,7 +144,7 @@ export default function Listening() {
         ))}
       </div>
 
-      <div className="text-xs text-slate-500">
+      <div className="text-xs text-slate-600">
         Hiển thị {visibleItems.length} / {IELTS_LISTENING_ITEMS.length} bài.
       </div>
 

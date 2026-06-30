@@ -220,7 +220,7 @@ export default function WaveformComparison({
           <div className="text-sm font-semibold text-slate-900">
             So sánh với Mercy
           </div>
-          <div className="text-[11px] text-slate-500">Compare with Mercy</div>
+          <div className="text-[11px] text-slate-600">Compare with Mercy</div>
         </div>
         <div className="flex items-center gap-2 text-[11px]">
           <span className="inline-flex items-center gap-1 text-blue-600">
@@ -241,13 +241,13 @@ export default function WaveformComparison({
           aria-label="Waveform comparison: user recording on top, Mercy reference on bottom"
         />
         {showSpinner ? (
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center text-slate-500">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center text-slate-600">
             <Loader2 className="h-5 w-5 animate-spin" />
             <span className="ml-2 text-xs">Đang tạo giọng Mercy… · Generating Mercy's voice…</span>
           </div>
         ) : null}
         {!user && !showSpinner ? (
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center text-xs text-slate-500">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center text-xs text-slate-600">
             Chưa có ghi âm · No recording yet
           </div>
         ) : null}
@@ -302,7 +302,7 @@ export default function WaveformComparison({
         )}
       </div>
 
-      <p className="mt-2 text-[11px] leading-snug text-slate-500">
+      <p className="mt-2 text-[11px] leading-snug text-slate-600">
         Vùng cam: chỗ bạn khác Mercy nhiều nhất ·{" "}
         <span className="italic">Orange bands mark where you diverged most</span>
       </p>

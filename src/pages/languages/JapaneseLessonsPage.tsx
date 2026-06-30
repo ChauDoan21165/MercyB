@@ -99,11 +99,11 @@ export default function JapaneseLessonsPage() {
             ? "From the kana to intermediate grammar — explained clearly, with exercises, real dialogues, and memory tips."
             : "Từ bảng chữ cái đến ngữ pháp trung cấp — giải thích theo cách người Việt hiểu. Có bài tập, hội thoại thực tế, và mẹo ghi nhớ."}
         </p>
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-3 text-xs text-slate-600">
           {JAPANESE_TOTAL_LESSONS} {uiLang === "en" ? "lessons" : "bài"} · A1 → C2
           {uiLang === "en" ? " · real dialogues" : " · hội thoại thực tế"}
         </p>
-        <p className="mt-1 text-xs text-slate-500">
+        <p className="mt-1 text-xs text-slate-600">
           <Link
             to="/languages"
             className="font-medium text-amber-700 underline"
@@ -156,13 +156,13 @@ export default function JapaneseLessonsPage() {
         </header>
 
         {lessons === null ? (
-          <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
+          <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-600">
             {uiLang === "en"
               ? `Loading ${cefrPillLabel(level, uiLang)} lessons…`
               : `Đang tải bài học cấp độ ${cefrPillLabel(level, uiLang)}…`}
           </p>
         ) : normalized.length === 0 ? (
-          <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-500">
+          <p className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-sm text-slate-600">
             {uiLang === "en"
               ? "No lessons available for this level yet."
               : "Chưa có bài học cho cấp độ này."}

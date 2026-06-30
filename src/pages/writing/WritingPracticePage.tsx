@@ -112,7 +112,7 @@ export default function WritingPracticePage() {
         >
           {/* Category chips */}
           <div>
-            <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+            <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-600">
               Chủ đề · Category
             </p>
             <div className="flex flex-wrap gap-1.5">
@@ -141,7 +141,7 @@ export default function WritingPracticePage() {
 
           {/* Difficulty chips */}
           <div>
-            <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+            <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-600">
               Độ khó · Difficulty
             </p>
             <div className="flex flex-wrap gap-1.5">
@@ -169,7 +169,7 @@ export default function WritingPracticePage() {
           {/* Completed toggle */}
           {userId ? (
             <div>
-              <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+              <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-600">
                 Trạng thái · Status
               </p>
               <div className="flex gap-1.5">
@@ -198,7 +198,7 @@ export default function WritingPracticePage() {
                 })}
               </div>
               {loadingCompleted ? (
-                <p className="mt-1 text-[10px] italic text-slate-500">
+                <p className="mt-1 text-[10px] italic text-slate-600">
                   Đang tải lịch sử làm bài...
                 </p>
               ) : null}
@@ -212,7 +212,7 @@ export default function WritingPracticePage() {
           className="grid gap-2.5 sm:grid-cols-2"
         >
           {visiblePrompts.length === 0 ? (
-            <div className="col-span-full rounded-2xl border border-dashed border-slate-300 bg-white p-6 text-center text-sm text-slate-500">
+            <div className="col-span-full rounded-2xl border border-dashed border-slate-300 bg-white p-6 text-center text-sm text-slate-600">
               Không có đề bài nào khớp với bộ lọc. ·{" "}
               <span className="italic">
                 No prompts match these filters.
@@ -245,13 +245,13 @@ export default function WritingPracticePage() {
                   <h3 className="text-sm font-semibold text-slate-900 group-hover:text-emerald-800 md:text-base">
                     {p.title_vi}
                   </h3>
-                  <p className="mt-0.5 text-[11px] italic text-slate-500">
+                  <p className="mt-0.5 text-[11px] italic text-slate-600">
                     {p.title_en}
                   </p>
                   <p className="mt-2 line-clamp-3 text-xs leading-snug text-slate-600">
                     {p.scenario_vi}
                   </p>
-                  <p className="mt-2 text-[11px] text-slate-500">
+                  <p className="mt-2 text-[11px] text-slate-600">
                     {p.target_words_min}–{p.target_words_max} từ ·{" "}
                     <span className="italic">
                       {DIFFICULTY_LABELS[p.difficulty].en}

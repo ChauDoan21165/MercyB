@@ -156,7 +156,7 @@ export function ReferralLeaderboardOptInPanel({ defaultName }: PanelProps) {
           maxLength={30}
           disabled={state.kind === "loading" || state.kind === "submitting"}
         />
-        <p className="text-[11px] text-slate-500">
+        <p className="text-[11px] text-slate-600">
           {REFERRAL_LB_COPY.emojiHint.vi}
         </p>
 

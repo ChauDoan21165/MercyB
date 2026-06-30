@@ -22,7 +22,7 @@ export default function TrialExpiredScreen() {
         </h1>
         <p
           lang="en"
-          className="mt-1 text-center text-sm text-slate-500 dark:text-slate-400"
+          className="mt-1 text-center text-sm text-slate-600 dark:text-slate-300"
         >
           Your 3-day free trial has ended
         </p>
@@ -36,7 +36,7 @@ export default function TrialExpiredScreen() {
         </p>
         <p
           lang="en"
-          className="mt-1 text-center text-xs text-slate-500 dark:text-slate-400"
+          className="mt-1 text-center text-xs text-slate-600 dark:text-slate-300"
         >
           Upgrade to continue learning with Mercy and unlock all rooms, Speak,
           and Grammar.

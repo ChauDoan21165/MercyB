@@ -80,7 +80,7 @@ export function LearnerDiagnosticsCard(
         <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
           {title.vi}
         </p>
-        <p className="text-xs text-slate-500 dark:text-slate-400">{title.en}</p>
+        <p className="text-xs text-slate-600 dark:text-slate-300">{title.en}</p>
       </header>
       <ul
         className="space-y-2"

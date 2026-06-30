@@ -20,7 +20,7 @@ export function ParentHeadline({ summary, locale }: ParentHeadlineProps) {
         viAs="h2"
         enAs="p"
         viClassName="text-base font-bold leading-snug text-slate-900"
-        enClassName="mt-1 text-[13px] leading-snug text-slate-500"
+        enClassName="mt-1 text-[13px] leading-snug text-slate-600"
       />
       {/* L5-PENDING (Q9=A): attribution clause renders only once L4+L5
           ground it. Null today -> nothing appended; the headline stays

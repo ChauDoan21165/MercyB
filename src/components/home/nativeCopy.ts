@@ -52,7 +52,7 @@ const ROUTE_NATIVE_SLUGS: Record<string, NativeLang> = {
 
 function nativeLangFromCurrentLearnRoute(): NativeLang | null {
   if (typeof window === "undefined") return null;
-  const match = window.location.pathname.match(/^\/learn\/([^/]+)\/english(?:\/|$)/);
+  const match = window.location.pathname.match(/^\/learn\/([^/]+)\/[^/]+(?:\/|$)/);
   if (!match) return null;
   return ROUTE_NATIVE_SLUGS[match[1]] ?? null;
 }

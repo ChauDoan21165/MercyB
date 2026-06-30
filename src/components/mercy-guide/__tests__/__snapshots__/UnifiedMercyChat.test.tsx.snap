@@ -15,7 +15,7 @@ exports[`UnifiedMercyChat — snapshot > first paint snapshot 1`] = `
         Mercy
       </p>
       <p
-        class="text-xs text-slate-500"
+        class="text-xs text-slate-600"
       >
         Bạn muốn học gì hôm nay? · How can I help today?
       </p>
@@ -94,7 +94,7 @@ exports[`UnifiedMercyChat — snapshot > first paint snapshot 1`] = `
         Chào em — Mercy ở đây.
       </p>
       <p
-        class="mt-1 text-xs text-slate-500"
+        class="mt-1 text-xs text-slate-600"
       >
         Hỏi Mercy về phát âm, ngữ pháp, hay nhờ Mercy ra bài tiếp theo.
       </p>

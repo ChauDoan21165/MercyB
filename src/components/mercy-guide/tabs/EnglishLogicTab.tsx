@@ -1091,7 +1091,7 @@ export default function EnglishLogicTab({
                 </div>
 
                 <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                     Practice line
                   </p>
                   <p className="mt-2 text-lg leading-8 text-slate-700">
@@ -1216,7 +1216,7 @@ export default function EnglishLogicTab({
 
                   <div className="mt-4 grid gap-3 md:grid-cols-2">
                     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_4px_14px_rgba(15,23,42,0.03)]">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                         Your sentence
                       </p>
                       <p className="mt-2 text-sm leading-6 text-slate-700">
@@ -1252,7 +1252,7 @@ export default function EnglishLogicTab({
                   <div className="mt-4 grid gap-4 md:grid-cols-2">
                     <div className="space-y-4 text-sm">
                       <div className="rounded-2xl border border-orange-100/70 bg-gradient-to-r from-orange-50/70 to-white p-4">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                           Main focus
                         </p>
                         <p className="mt-1 text-slate-700">{logic.focus}</p>
@@ -1266,7 +1266,7 @@ export default function EnglishLogicTab({
                       </div>
 
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                           Why Mercy changed it
                         </p>
                         <p className="mt-1 text-slate-700">{logic.whyNatural}</p>
@@ -1288,7 +1288,7 @@ export default function EnglishLogicTab({
                       </div>
 
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                           English thinking
                         </p>
                         <p className="mt-1 text-slate-700">{logic.englishLogic}</p>
@@ -1301,7 +1301,7 @@ export default function EnglishLogicTab({
                       </div>
 
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                           Key shift
                         </p>
                         <div className="mt-2 space-y-2">
@@ -1325,7 +1325,7 @@ export default function EnglishLogicTab({
 
                     <div className="space-y-4 text-sm">
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                           Vietnamese thinking pattern
                         </p>
                         <p className="mt-1 text-slate-700">{logic.vietlishPattern}</p>
@@ -1338,7 +1338,7 @@ export default function EnglishLogicTab({
                       </div>
 
                       <div className="rounded-2xl border border-purple-100/70 bg-gradient-to-r from-purple-50/70 to-white p-4">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                           Sentence pattern to remember
                         </p>
                         <p className="mt-1 text-slate-700">{logic.sentencePattern}</p>
@@ -1351,7 +1351,7 @@ export default function EnglishLogicTab({
                       </div>
 
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                           Quick rule
                         </p>
                         <p className="mt-1 text-slate-700">{logic.miniRule}</p>
@@ -1383,7 +1383,7 @@ export default function EnglishLogicTab({
                     </div>
                   ) : (
                     <div className="mt-4 rounded-2xl border border-sky-100 bg-gradient-to-r from-sky-50/80 to-white p-4 text-sm shadow-[0_4px_14px_rgba(59,130,246,0.04)]">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                         Mercy note
                       </p>
                       <p className="mt-2 text-slate-700">
@@ -1399,7 +1399,7 @@ export default function EnglishLogicTab({
                   )}
 
                   <div className="mt-4 rounded-2xl border border-sky-100 bg-gradient-to-r from-sky-50/80 to-white p-4 text-sm shadow-[0_4px_14px_rgba(59,130,246,0.04)]">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                       Try this next time
                     </p>
                     <div className="mt-2 flex items-start gap-2">
@@ -1425,7 +1425,7 @@ export default function EnglishLogicTab({
 
                   <div className="mt-4 grid gap-3 md:grid-cols-2">
                     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_4px_14px_rgba(15,23,42,0.03)]">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                         Words or patterns removed
                       </p>
                       {tokenChanges.removed.length > 0 ? (
@@ -1447,7 +1447,7 @@ export default function EnglishLogicTab({
                     </div>
 
                     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_4px_14px_rgba(15,23,42,0.03)]">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                         Words or patterns added
                       </p>
                       {tokenChanges.added.length > 0 ? (
@@ -1499,7 +1499,7 @@ export default function EnglishLogicTab({
                           key={`${example.weak}-${index}`}
                           className="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_4px_14px_rgba(15,23,42,0.03)]"
                         >
-                          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                          <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                             Example {index + 1}
                           </p>
 
@@ -1537,7 +1537,7 @@ export default function EnglishLogicTab({
                   ) : null}
 
                   <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                       Best line to practice
                     </p>
                     <p className="mt-2 text-sm text-slate-700">
@@ -1635,7 +1635,7 @@ export default function EnglishLogicTab({
 
                     {grammarPoints.length > 0 ? (
                       <div className="mt-3">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                           Grammar points
                         </p>
                         <div className="mt-2 flex flex-wrap gap-2">
@@ -1653,7 +1653,7 @@ export default function EnglishLogicTab({
 
                     {troubleWordList.length > 0 ? (
                       <div className="mt-3">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
                           Pronunciation watch words
                         </p>
                         <div className="mt-2 flex flex-wrap gap-2">

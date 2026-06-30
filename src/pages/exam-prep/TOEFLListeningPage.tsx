@@ -26,11 +26,11 @@ function ItemCard({ item }: { item: TOEFLListeningItem }) {
         <span className={"inline-block rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider " + (TYPE_BADGE[item.type] ?? "bg-slate-100 text-slate-700 border-slate-200")}>
           {item.type === "conversation" ? "Hội thoại" : "Bài giảng"}
         </span>
-        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{item.section_label}</span>
-        <span className="ml-auto text-[11px] font-semibold text-slate-500">{item.estimated_time_minutes} min · Band {item.difficulty_band}</span>
+        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600">{item.section_label}</span>
+        <span className="ml-auto text-[11px] font-semibold text-slate-600">{item.estimated_time_minutes} min · Band {item.difficulty_band}</span>
       </div>
       <h3 className="text-base font-bold text-slate-900">{item.topic_title_vi}</h3>
-      <p className="text-xs text-slate-500">{item.topic_title_en}</p>
+      <p className="text-xs text-slate-600">{item.topic_title_en}</p>
     </Link>
   );
 }
@@ -62,7 +62,7 @@ export default function TOEFLListeningPage() {
           ))}
         </div>
         <div className="mb-4 flex flex-wrap items-center gap-2">
-          <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">Band:</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-slate-600">Band:</span>
           {(["all", 5.5, 6.5, 7.5, 8.5] as const).map((b) => (
             <button key={b} type="button" onClick={() => setDiffFilter(b)}
               className={"rounded-full border px-3 py-0.5 text-[11px] font-semibold " + (diffFilter === b ? "border-amber-600 bg-amber-600 text-white" : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50")}>
@@ -70,7 +70,7 @@ export default function TOEFLListeningPage() {
             </button>
           ))}
         </div>
-        <div className="text-xs text-slate-500 mb-3">Hiển thị {visibleItems.length} / {TOEFL_LISTENING_ITEMS.length} bài.</div>
+        <div className="text-xs text-slate-600 mb-3">Hiển thị {visibleItems.length} / {TOEFL_LISTENING_ITEMS.length} bài.</div>
         <div className="grid gap-3 sm:grid-cols-2">{visibleItems.map((item) => <ItemCard key={item.id} item={item} />)}</div>
       </TOEFLPremiumGate>
     </div>
