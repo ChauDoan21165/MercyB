@@ -107,6 +107,17 @@ const CARDS: Card[] = [
     accent: "violet",
   },
   {
+    slug: "thai",
+    title_en: "Thai",
+    title_vi: "Tiếng Thái",
+    blurb_vi: "Học tiếng Anh cho người nói tiếng Thái.",
+    blurb_en: "English lessons for Thai speakers.",
+    flag: "🇹🇭",
+    href: "/languages/thai-english",
+    accent: "amber",
+  },
+
+  {
     slug: "vietnamese",
     title_vi: "Vietnamese for Foreigners",
     title_en: "Survival Vietnamese",

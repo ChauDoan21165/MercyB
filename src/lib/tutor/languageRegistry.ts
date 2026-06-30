@@ -1,4 +1,4 @@
-export type TutorLanguageCode = "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi" | "tr" | "ru";
+export type TutorLanguageCode = "en" | "fr" | "zh" | "de" | "ja" | "ko" | "es" | "vi" | "tr" | "ru" | "th";
 export type TutorUiLanguage = "en" | "vi" | "native";
 export type TutorLanguageDirection = "ltr" | "rtl";
 
@@ -17,7 +17,7 @@ export type TutorLanguageConfig = {
   direction: TutorLanguageDirection;
 };
 
-export const TUTOR_LANGUAGE_CODES = ["en", "fr", "zh", "de", "ja", "ko", "es", "vi", "tr", "ru"] as const;
+export const TUTOR_LANGUAGE_CODES = ["en", "fr", "zh", "de", "ja", "ko", "es", "vi", "tr", "ru", "th"] as const;
 
 export const TUTOR_LANGUAGE_REGISTRY: Record<TutorLanguageCode, TutorLanguageConfig> = {
   en: {
@@ -160,9 +160,28 @@ export const TUTOR_LANGUAGE_REGISTRY: Record<TutorLanguageCode, TutorLanguageCon
     supportsCloudTts: false,
     direction: "ltr",
   },
+
+  th: {
+    code: "th",
+    labelEn: "Thai",
+    labelNative: "ไทย",
+    labelVi: "Tiếng Thái",
+    speechLocale: "th-TH",
+    ttsLocale: "th-TH",
+    defaultExampleSentence: "ฉันอยากฝึกภาษาอังกฤษวันนี้",
+    beginnerPlaceholder: 'พิมพ์ประโยคภาษาไทยของคุณที่นี่ เช่น "ฉันอยากฝึกภาษาอังกฤษวันนี้"',
+    supportsStt: true,
+    supportsBrowserTts: true,
+    supportsCloudTts: false,
+    direction: "ltr",
+  },
 };
 
 const TUTOR_LANGUAGE_ALIASES: Record<string, TutorLanguageCode> = {
+  "thai": "th",
+  "th": "th",
+  "tieng-thai": "th",
+  "tiếng-thái": "th",
   english: "en",
   french: "fr",
   francais: "fr",

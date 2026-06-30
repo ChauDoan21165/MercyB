@@ -90,7 +90,7 @@ export function SkipForNowModal({ open, onOpenChange, onKeepTesting, onSkip }: P
             {showVi ? (
               <>
                 Skip placement test?
-                <span className="mt-1 block text-sm font-medium text-slate-500">
+                <span className="mt-1 block text-sm font-medium text-slate-600">
                   {COPY_TITLE.vi}
                 </span>
               </>
@@ -102,7 +102,7 @@ export function SkipForNowModal({ open, onOpenChange, onKeepTesting, onSkip }: P
             {showVi ? (
               <>
                 {COPY_DESCRIPTION.en}
-                <span className="mt-2 block text-slate-500">
+                <span className="mt-2 block text-slate-600">
                   {COPY_DESCRIPTION.vi}
                 </span>
               </>

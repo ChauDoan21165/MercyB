@@ -8,10 +8,12 @@ import { es } from "./es";
 import { vi } from "./vi";
 import { tr } from "./tr";
 import { ru } from "./ru";
+import th from "./th";
 import type { TutorLanguagePack, TutorTarget } from "../tutorCopy";
 
 export const TUTOR_LANGUAGE_PACKS: Record<TutorTarget, TutorLanguagePack> = {
   en,
+  th,
   fr,
   zh,
   de,

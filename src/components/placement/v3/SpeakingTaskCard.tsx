@@ -194,7 +194,7 @@ export function SpeakingTaskCard({
               {fallback ? pt(COPY_MIC_UNAVAILABLE) : pt(COPY_RECORD)}
             </div>
             {showVi && (
-              <div className="text-xs font-medium text-slate-500">
+              <div className="text-xs font-medium text-slate-600">
                 {fallback ? COPY_MIC_UNAVAILABLE.vi : COPY_RECORD.vi}
               </div>
             )}

@@ -1,8 +1,14 @@
+import type { ComponentType, ReactNode } from "react";
 // FILE: Bits.tsx
 // PATH: src/components/ui/Bits.tsx
 
 import React from "react";
-import { View, Text } from "react-native";
+import { View as RNView, Text as RNText } from "react-native";
+type NativePrimitiveProps = { children?: ReactNode; [key: string]: unknown };
+type NativePrimitive = ComponentType<NativePrimitiveProps>;
+const View = RNView as unknown as NativePrimitive;
+const Text = RNText as unknown as NativePrimitive;
+
 import { theme } from "../../core/ui/theme";
 
 export function Divider() {

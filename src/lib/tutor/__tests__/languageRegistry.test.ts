@@ -12,7 +12,7 @@ import {
 
 describe("tutor language registry", () => {
   it("resolves all supported AI Tutor target languages", () => {
-    expect(TUTOR_LANGUAGE_CODES).toEqual(["en", "fr", "zh", "de", "ja", "ko", "es", "vi", "tr", "ru"]);
+    expect(TUTOR_LANGUAGE_CODES).toEqual(["en", "fr", "zh", "de", "ja", "ko", "es", "vi", "tr", "ru", "th"]);
 
     for (const code of TUTOR_LANGUAGE_CODES) {
       expect(resolveTutorTargetLanguage(code)).toBe(code);

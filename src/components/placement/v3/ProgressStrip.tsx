@@ -127,7 +127,7 @@ export function ProgressStrip({ current, total, modality, modalities }: Props) {
           <span>
             {pt(TASK_LABELS)} {Math.min(current + 1, total)} of {total}
             {showVi && (
-              <span className="block font-medium normal-case tracking-normal text-slate-500">
+              <span className="block font-medium normal-case tracking-normal text-slate-600">
                 Mục {Math.min(current + 1, total)} / {total}
               </span>
             )}
@@ -135,7 +135,7 @@ export function ProgressStrip({ current, total, modality, modalities }: Props) {
           <span aria-live="polite" className="text-right">
             {pt(MODALITY_LABELS[modality])}
             {showVi && (
-              <span className="block font-medium normal-case tracking-normal text-slate-500">
+              <span className="block font-medium normal-case tracking-normal text-slate-600">
                 {MODALITY_LABELS[modality].vi}
               </span>
             )}

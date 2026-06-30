@@ -121,6 +121,7 @@ const PlacementV3SkipConfirmPage = lazyWithRetry(() => import("@/pages/placement
 // with no dependencies worth code-splitting, and it must be on hand
 // to instrument every placement page's mount.
 import PlacementRouteShell from "@/pages/placement/v3/PlacementRouteShell";
+import ThaiLessonsPage from "@/pages/languages/ThaiLessonsPage";
 
 // Lane D — Spaced-repetition Review module (flag-gated, default off).
 const ReviewApp           = lazyWithRetry(() => import("@/features/review/ReviewApp"));
@@ -1881,6 +1882,10 @@ export default function AppRouter() {
               element={<LazyPage><TeacherReviewItemPage /></LazyPage>}
             />
           </Route>
+
+          {/* Thai native-English bridge routes. Keep outside /admin/*; these redirect to the existing static Thai-English landing page. */}
+          <Route path="/languages/thai" element={<LazyPage><ThaiLessonsPage /></LazyPage>} />
+          <Route path="/languages/thai-english" element={<LazyPage><ThaiLessonsPage /></LazyPage>} />
 
           {/* Admin routes */}
           <Route path="/admin/*" element={<AdminRoute />}>
