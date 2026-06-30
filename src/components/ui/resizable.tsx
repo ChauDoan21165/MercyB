@@ -2,10 +2,9 @@ import { GripVertical } from "lucide-react";
 import * as ResizablePrimitive from "react-resizable-panels";
 import { cn } from "@/lib/utils";
 
-const RP = ResizablePrimitive as any;
-const PanelGroup = RP.PanelGroup || RP.PanelGroupPrimitive || RP.PanelGroupRoot || RP.PanelGroup;
-const Panel = RP.Panel || RP.PanelPrimitive || RP.PanelRoot || RP.Panel;
-const PanelResizeHandle = RP.PanelResizeHandle || RP.ResizeHandle || RP.PanelResizeHandlePrimitive || RP.PanelResizeHandle;
+const PanelGroup = ResizablePrimitive.Group;
+const Panel = ResizablePrimitive.Panel;
+const PanelResizeHandle = ResizablePrimitive.Separator;
 
 
 const ResizablePanelGroup = ({ className, ...props }: React.ComponentProps<typeof PanelGroup>) => (
