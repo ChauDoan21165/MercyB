@@ -26,7 +26,7 @@ export function MotionSafe({ children, as = "div", ...props }: MotionSafeProps) 
 
   // During SSR or first render, render without animation
   if (!isHydrated) {
-    return <div {...(props as any)}>{children}</div>;
+    return <div {...(props as Record<string, unknown>)}>{children}</div>;
   }
 
   // After hydration, render with full animation support
