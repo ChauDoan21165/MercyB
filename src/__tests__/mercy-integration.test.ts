@@ -215,7 +215,7 @@ describe("Mercy Integration Tests", () => {
     it("should detect invalid avatar style", () => {
       state = {
         ...initialEngineState,
-        avatarStyle: "invalid-style" as any,
+        avatarStyle: "invalid-style" as unknown as typeof initialEngineState.avatarStyle,
       };
 
       mercyHeartbeat.start(getState, () => {});
