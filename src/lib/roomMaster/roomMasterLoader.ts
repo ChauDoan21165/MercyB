@@ -13,7 +13,7 @@ import { isValidTierId, tierLabelToId } from "@/lib/constants/tiers";
 type AnyRoom = {
   id: string;
   tier?: string | null;
-  [k: string]: any;
+  [k: string]: unknown;
 };
 
 function inferTierFromRoomId(roomId: string): TierId | undefined {
