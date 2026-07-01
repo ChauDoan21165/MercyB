@@ -11,7 +11,7 @@ import { updateMastery, computeGate } from "./mastery";
 import type { DrillAttemptInput } from "./scoring";
 
 import type { Session, UserProgress } from "../types/session";
-import type { GateDefinition } from "../types/curriculum";
+import type { GateDefinition, SkillId } from "../types/curriculum";
 
 import { loadUserProgress, saveUserProgress, saveSession } from "../storage/repo";
 
@@ -53,7 +53,7 @@ export async function completeDrillFlow(args: {
   // 3️⃣ Update mastery
   const updatedMastery = updateMastery(progress.mastery, {
     // keep permissive typing; mastery engine owns the final skill-key validation
-    skill: args.skillImpacted as any,
+    skill: args.skillImpacted as SkillId,
     score0to100: metrics.score,
     accuracy0to1: metrics.accuracy,
     atISO: new Date().toISOString(),
