@@ -102,7 +102,7 @@ function bestTitleTokens(entry: { title?: string | { en?: string; vi?: string } 
   return tokenize(titleStr);
 }
 
-function audioTokens(entry: any): Set<string> {
+function audioTokens(entry: { audio?: string | { en?: string; vi?: string }; audio_file?: string; meta?: { audio_file?: string }; audioEn?: string; audio_en?: string }): Set<string> {
   const audio = entry?.audio || entry?.audio_file || entry?.meta?.audio_file || entry?.audioEn || entry?.audio_en;
   let audioStr = '';
   if (typeof audio === 'string') audioStr = audio;
