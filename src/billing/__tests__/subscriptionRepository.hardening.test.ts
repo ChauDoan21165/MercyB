@@ -77,7 +77,7 @@ function makeMaybeSingleClient(result: QueryResult) {
     maybeSingleCount: 0,
   };
 
-  const eqable: any = {
+  const eqable: unknown = {
     eq(column: string, value: unknown) {
       calls.eq.push([column, value]);
       return eqable;
