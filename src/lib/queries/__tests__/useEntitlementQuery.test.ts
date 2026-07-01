@@ -13,7 +13,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 vi.mock("@/lib/authService", async () => {
-  const actual = await vi.importActual<any>("@/lib/authService");
+  const actual = await vi.importActual<typeof import("@/lib/authService")>("@/lib/authService");
   return {
     ...actual,
     fetchCurrentEntitlement: vi.fn(),
