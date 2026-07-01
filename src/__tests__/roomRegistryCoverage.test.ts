@@ -88,7 +88,7 @@ function getRoomsForTierGroup(
   candidates: readonly string[],
 ): { matchedTier: string; rooms: ReturnType<typeof getRoomsByTier> } {
   for (const tier of candidates) {
-    const rooms = getRoomsByTier(tier as any);
+    const rooms = getRoomsByTier(tier as Parameters<typeof getRoomsByTier>[0]);
     if (rooms.length > 0) {
       return { matchedTier: tier, rooms };
     }
@@ -128,7 +128,7 @@ describe("Room Registry Coverage", () => {
   });
 
   it("should have registry rooms matching dataMap entries", () => {
-    const anyReport = coverageReport as any;
+    const anyReport = coverageReport as Partial<RoomCoverageReport> & Record<string, unknown>;
 
     // Best available "expected count":
     // prefer totalDataMapEntries -> totalFetchedEntries -> totalManifestEntries.
@@ -251,7 +251,7 @@ describe("Room Validation", () => {
     const validation = await validateRoomInRegistry("adhd-support-level3");
 
     // If this room exists in manifest/dataMap, it should be in registry.
-    if (validation.inManifest || (validation as any).inDataMap) {
+    if (validation.inManifest || ("inDataMap" in validation ? validation.inDataMap : false)) {
       expect(validation.exists).toBe(true);
     }
   });
