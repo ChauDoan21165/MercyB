@@ -52,7 +52,7 @@ export interface RoomMasterError {
   rule: string;
   severity: 'error' | 'warning';
   message: string;
-  actual?: any;
+  actual?: unknown;
   expected?: string;
   autoFixable: boolean;
 }
