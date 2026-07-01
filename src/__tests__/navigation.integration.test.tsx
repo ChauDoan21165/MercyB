@@ -13,7 +13,7 @@ let __mockRoomId = "adhd-support-level3";
 
 // Mock react-router-dom
 vi.mock("react-router-dom", async () => {
-  const actual = await vi.importActual<any>("react-router-dom");
+  const actual = await vi.importActual<typeof import("react-router-dom")>("react-router-dom");
   return {
     ...actual,
     useNavigate: () => mockNavigate,
@@ -93,11 +93,11 @@ vi.mock("@/hooks/useCredits", () => ({
 }));
 
 async function getParentRouteSafe(roomId?: string): Promise<string> {
-  const routeHelper = await import("@/lib/routeHelper").catch(() => null as any);
+  const routeHelper = await import("@/lib/routeHelper").catch(() => null);
 
   const fn =
-    (routeHelper && (routeHelper as any).getParentRoute) ||
-    (routeHelper && (routeHelper as any).getParentPath) ||
+    (routeHelper && "getParentRoute" in routeHelper && routeHelper.getParentRoute) ||
+    (routeHelper && "getParentPath" in routeHelper && routeHelper.getParentPath) ||
     null;
 
   if (typeof fn === "function") {
@@ -114,26 +114,26 @@ async function getParentRouteSafe(roomId?: string): Promise<string> {
   return "/rooms";
 }
 
-async function importMaybeDefault(modulePath: string): Promise<any | null> {
+async function importMaybeDefault<T = unknown>(modulePath: string): Promise<T | null> {
   try {
-    const mod = await import(modulePath as any);
-    return (mod as any)?.default ?? null;
+    const mod = (await import(/* @vite-ignore */ modulePath)) as { default?: T };
+    return mod.default ?? null;
   } catch {
     return null;
   }
 }
 
 function makeChain(table: string) {
-  const state: any = {
+  const state: { filters: Array<{ col: string; val: unknown }> } = {
     table,
-    filters: [] as Array<{ col: string; val: any }>,
+    filters: [],
     orderBy: null as null | { col: string; ascending: boolean },
   };
 
-  const api: any = {
+  const api = {
     select: vi.fn(() => api),
 
-    eq: vi.fn((col: string, val: any) => {
+    eq: vi.fn((col: string, val: unknown) => {
       state.filters.push({ col, val });
       return api;
     }),
@@ -148,7 +148,7 @@ function makeChain(table: string) {
 
     maybeSingle: vi.fn(async () => {
       if (state.table === "rooms") {
-        const roomId = state.filters.find((f: any) => f.col === "id")?.val;
+        const roomId = state.filters.find((f) => f.col === "id")?.val;
         return {
           data: roomId ? { id: roomId, keywords: ["dummy"] } : null,
           error: null,
@@ -163,7 +163,7 @@ function makeChain(table: string) {
     returns: vi.fn(async () => {
       if (state.table === "room_entries") {
         const roomId =
-          state.filters.find((f: any) => f.col === "room_id")?.val ?? __mockRoomId;
+          state.filters.find((f) => f.col === "room_id")?.val ?? __mockRoomId;
 
         return {
           data: buildMockRoomEntries(String(roomId)),
