@@ -156,7 +156,7 @@ export function validateUrl(url: string): string {
 }
 
 // ============= GENERIC PAYLOAD VALIDATION =============
-export function validatePayloadSize(payload: any, maxBytes: number = 1_000_000): void {
+export function validatePayloadSize(payload: unknown, maxBytes: number = 1_000_000): void {
   const size = new TextEncoder().encode(JSON.stringify(payload)).length;
   
   if (size > maxBytes) {
