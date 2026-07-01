@@ -87,7 +87,7 @@ export function trackValidationMetrics(metric: ValidationMetric) {
 /**
  * Emit app-level error for dev panel
  */
-export function emitAppError(kind: string, details?: Record<string, any>) {
+export function emitAppError(kind: string, details?: Record<string, unknown>) {
   logger.error("App error", {
     scope: "AppError",
     kind,
