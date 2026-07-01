@@ -10,7 +10,7 @@ function normalize(text: unknown) {
     .trim();
 }
 
-function getBilingual(obj: any, base: string): { en: string; vi: string } {
+function getBilingual(obj: Record<string, unknown>, base: string): { en: string; vi: string } {
   const val = obj?.[base];
   if (val && typeof val === "object") {
     return { en: String(val.en || ""), vi: String(val.vi || "") };
