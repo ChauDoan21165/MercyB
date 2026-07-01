@@ -12,6 +12,11 @@ import { AlertCircle } from "lucide-react";
 import * as roomFetcher from "@/lib/roomFetcher";
 import { HighlightedContent } from "./HighlightedContent";
 
+type RoomDisclaimerLocalized = { en?: unknown; vi?: unknown };
+type RoomDisclaimerContent = { safety?: unknown; safety_disclaimer?: unknown; safety_en?: unknown; safety_vi?: unknown; crisis_footer?: unknown; crisis_footer_en?: unknown; crisis_footer_vi?: unknown };
+type RoomDisclaimerRecord = Record<string, unknown> & { safety_disclaimer?: unknown; safety_disclaimer_en?: unknown; safety_disclaimer_vi?: unknown; crisis_footer?: RoomDisclaimerLocalized; crisis_footer_en?: unknown; crisis_footer_vi?: unknown; content?: RoomDisclaimerContent };
+type RoomDisclaimerFetcher = Partial<Record<'getRoom' | 'getRoomById' | 'fetchRoom' | 'roomMasterLoader', (roomId: string) => unknown | Promise<unknown>>>;
+
 interface RoomDisclaimerProps {
   roomId: string;
 }
@@ -23,22 +28,22 @@ interface DisclaimerData {
   crisisVi?: string;
 }
 
-const toText = (v: any): string => {
+const toText = (v: unknown): string => {
   const s = typeof v === "string" ? v : "";
   return s.trim();
 };
 
 const pickBilingual = (
-  raw: any,
-  candidates: Array<(r: any) => any>,
+  raw: RoomDisclaimerRecord,
+  candidates: Array<(r: RoomDisclaimerRecord) => unknown>,
 ): { en: string; vi: string } => {
   for (const pick of candidates) {
     const v = pick(raw);
 
     // Object form: { en, vi }
     if (v && typeof v === "object" && !Array.isArray(v)) {
-      const en = toText((v as any).en);
-      const vi = toText((v as any).vi);
+      const en = toText((v as RoomDisclaimerLocalized).en);
+      const vi = toText((v as RoomDisclaimerLocalized).vi);
       if (en || vi) return { en, vi };
     }
 
@@ -65,10 +70,10 @@ export const RoomDisclaimer = ({ roomId }: RoomDisclaimerProps) => {
 
     // Build-safe resolver: support whatever function exists in roomFetcher without requiring a named export.
     const getRoomFn =
-      (roomFetcher as any).getRoom ||
-      (roomFetcher as any).getRoomById ||
-      (roomFetcher as any).fetchRoom ||
-      (roomFetcher as any).roomMasterLoader ||
+      (roomFetcher as RoomDisclaimerFetcher).getRoom ||
+      (roomFetcher as RoomDisclaimerFetcher).getRoomById ||
+      (roomFetcher as RoomDisclaimerFetcher).fetchRoom ||
+      (roomFetcher as RoomDisclaimerFetcher).roomMasterLoader ||
       null;
 
     if (typeof getRoomFn !== "function") {
@@ -87,7 +92,7 @@ export const RoomDisclaimer = ({ roomId }: RoomDisclaimerProps) => {
           return;
         }
 
-        const rawRoom = room as any;
+        const rawRoom = (room ?? {}) as RoomDisclaimerRecord;
 
         // SAFETY DISCLAIMER (accept multiple shapes)
         const safety = pickBilingual(rawRoom, [
