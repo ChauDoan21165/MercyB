@@ -24,7 +24,7 @@ interface LogContext {
   roomId?: string;
   tierId?: string;
   errorStack?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 class Logger {
