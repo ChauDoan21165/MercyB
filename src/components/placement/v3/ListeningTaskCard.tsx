@@ -55,9 +55,20 @@ export function ListeningTaskCard({ task, value, onChange, onMediaStatusChange }
           onError={() => updateMediaStatus("unplayable")}
         />
         <p className="mt-2 text-xs font-medium text-slate-600">
-          Stub audio may be unavailable locally; the production orchestrator will provide a signed audio URL.
+          {mediaStatus === "playable"
+            ? "Audio is ready. Listen first, then answer."
+            : mediaStatus === "loading"
+              ? "Loading audio. Please wait before answering."
+              : "Audio is unavailable for this question. This listening item cannot be submitted yet."}
           {showVi && (
-            <span className="block">Audio mẫu có thể chưa chạy ở máy local; backend thật sẽ trả URL nghe.</span>
+            <>
+              <br />
+              {mediaStatus === "playable"
+                ? "Âm thanh đã sẵn sàng. Hãy nghe trước khi trả lời."
+                : mediaStatus === "loading"
+                  ? "Đang tải âm thanh. Vui lòng chờ trước khi trả lời."
+                  : "Chưa nghe được âm thanh cho câu này nên chưa thể gửi câu trả lời nghe."}
+            </>
           )}
         </p>
       </div>
