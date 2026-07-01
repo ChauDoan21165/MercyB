@@ -35,7 +35,7 @@ export function CompanionProvider({
   const onReflectionSubmit: CompanionContextValue['onReflectionSubmit'] = async (text: string) => {
     // If the integration returns void, this wrapper still returns Promise<void>.
     // If it already returns a Promise, awaiting preserves behavior.
-    await c.onReflectionSubmit(text as any);
+    c.onReflectionSubmit(text);
   };
 
   const ctx: CompanionContextValue = useMemo(
