@@ -24,7 +24,7 @@ import { formatDistanceToNow } from "date-fns";
 // ---------------------------------------------------------------------------
 vi.mock("framer-motion", () => ({
   motion: {
-    div: ({ children, className, variants, initial, animate }: any) => (
+    div: ({ children, className, variants, initial, animate }: unknown) => (
       <div
         data-testid="motion-div"
         className={className}
