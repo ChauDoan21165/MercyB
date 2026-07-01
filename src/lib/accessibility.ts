@@ -95,7 +95,7 @@ export function announceToScreenReader(message: string, priority: "polite" | "as
  * Get Accessible Label
  * Generates accessible labels for common UI patterns
  */
-export function getAccessibleLabel(type: string, context?: Record<string, any>): string {
+export function getAccessibleLabel(type: string, context?: { title?: string }): string {
   const labels: Record<string, string> = {
     close: "Close",
     menu: "Open menu",
